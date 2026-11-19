@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-19-pool-7801",
+  "revision": "2026-11-19-pool-7837",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "categories": [
     "物理化學與日常材料",
@@ -12,46 +12,46 @@
     "建築交通與商業制度"
   ],
   "counts": {
-    "raw_records": 8265,
-    "canonical_questions": 8105,
-    "eligible_candidates": 7912,
-    "selected_candidates": 7801,
+    "raw_records": 8301,
+    "canonical_questions": 8141,
+    "eligible_candidates": 7948,
+    "selected_candidates": 7837,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 8793,
-    "current_research_source_urls": 5861,
-    "selected_source_urls": 6808,
-    "new_suggestions_not_added": 3543,
+    "source_urls": 8823,
+    "current_research_source_urls": 5891,
+    "selected_source_urls": 6838,
+    "new_suggestions_not_added": 3552,
     "high_similarity_pending": 0,
     "approved_scripts": 0,
     "by_category": {
       "物理化學與日常材料": {
-        "canonical": 1884,
-        "selected": 1854
+        "canonical": 1891,
+        "selected": 1861
       },
       "生物動物與植物": {
-        "canonical": 1528,
-        "selected": 1517
+        "canonical": 1529,
+        "selected": 1518
       },
       "地球天氣與太空": {
-        "canonical": 984,
-        "selected": 981
+        "canonical": 985,
+        "selected": 982
       },
       "數位科技與通訊工程": {
-        "canonical": 1474,
-        "selected": 1394
+        "canonical": 1477,
+        "selected": 1397
       },
       "飲食與廚房科學": {
-        "canonical": 518,
-        "selected": 512
+        "canonical": 536,
+        "selected": 530
       },
       "人體感官與日常行為": {
-        "canonical": 594,
-        "selected": 582
+        "canonical": 595,
+        "selected": 583
       },
       "建築交通與商業制度": {
-        "canonical": 1123,
-        "selected": 961
+        "canonical": 1128,
+        "selected": 966
       }
     }
   },
@@ -2137,6 +2137,18 @@
       "sha256": "cdb448cab58b1ff7e3fda70e64d30b8edd4ea78e93b0850fa4274c3a26707fa8"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave135-craft-20261119.json",
+      "sha256": "773e00a0caded8a4840bd6dd0759ae707946256b70fb3ee5dc5caf7294728ce5"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave135-everyday-20261119.json",
+      "sha256": "16ab6655b14087fe343d892498882dd1d3649f6080124808014e7ca60fa49515"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave135-research-20261119.json",
+      "sha256": "beea8b64b370dd24c8cc768a3115f99799930fdd53b5830ccf2da6049ba420fa"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json",
       "sha256": "f44c3f03a6e74c79e53a27fe0ab4a4d809ca20d91a1d4976cafe59bb5f02a4ed"
     },
@@ -3414,12 +3426,12 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "9b7ffd605b57319064febdb3e2a7b10fd2ebf1559b78658862c629a2085113e0"
+      "sha256": "31eef71e7f2853774fcf5b7aee21af5c3b416ec0e6f28d45b9482baf218cce2e"
     }
   ],
   "sources": {
     "file": "pool-sources.json",
-    "count": 8793
+    "count": 8823
   },
   "candidates": [
     {
@@ -153330,6 +153342,1616 @@
       "question_variants": [],
       "provenance_ids": [
         "K134-0218"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0101",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "低音號工場裡，那段彎管先被壓得扁扁的。管子都彎好了，要怎麼把凹下去的地方從裡面撐回來？",
+      "mechanism_key": "x135.workshop.tuba_bent_tube_hydroforming",
+      "answer_target": "照片上，師傅先把錐形管段壓扁，讓壓扁的一側朝外，再彎出弧度。下一張照片裡，管子躺進有凹槽的模具，彎管和模具之間還看得見空隙。工場封住管子一端，從另一端注水加壓，管壁便朝外膨起，空隙逐漸填滿。",
+      "scope": "Yamaha 製作低音號管身所示的錐形管段與水壓脹形模具。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "自繪同一段彎管的三個截面，用色塊標出扁管與凹模間的空隙最後縮到哪裡。",
+        "payoff": "模具從外面定出輪廓，管子的內壁由水壓向外推。",
+        "seconds": [
+          28,
+          45
+        ]
+      },
+      "source_locator": "Using bulge forming to beautifully inflate the tube；管身彎折前後及放入模具的製程照片。",
+      "notes": "只以示意圖重畫廠方製程序列。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪樂器剖面和裝配示意，製造商照片僅附連結。",
+      "origin": "wave135-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-ca88df052f08ebd0",
+          "origin": "wave135-craft-20261119",
+          "locator": "Using bulge forming to beautifully inflate the tube；管身彎折前後及放入模具的製程照片。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0101"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0102",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "低音管底端那塊木頭明明有平順的外表，裡面的音孔為什麼斜著走？",
+      "mechanism_key": "x135.workshop.bassoon_oblique_double_joint_holes",
+      "answer_target": "拆開來看，雙管節這塊木頭裡並排著兩段管路。外面的孔位要通到其中指定的一段，工場會相對木頭表面斜著鑽孔。在大型低音管上，這樣還能調整外側音孔之間的距離。從外頭看見孔口，不能就沿著垂直方向猜內管的位置。",
+      "scope": "Yamaha 低音管的木製雙管節，另引同頁對大型低音管音孔間距的說明。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用透明方塊畫出兩條管路，從外側孔口各牽一條線至相應內管。",
+        "payoff": "孔有兩個位置要照顧：木頭裡的管路，以及外面的孔口。",
+        "seconds": [
+          28,
+          45
+        ]
+      },
+      "source_locator": "Tone holes cut obliquely?；雙管節外觀照片與音孔方向的說明。",
+      "notes": "既有 K126-0403 是吹口金屬彎管上的弱音鍵小管，位置與作用不同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪樂器剖面和裝配示意，製造商照片僅附連結。",
+      "origin": "wave135-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a1f4f3a362d5f146",
+          "origin": "wave135-craft-20261119",
+          "locator": "Tone holes cut obliquely?；雙管節外觀照片與音孔方向的說明。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0102"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0103",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "馬林巴的同一片木音板，師傅剛敲過正中央，為什麼還要移到靠近一端的地方再敲？",
+      "mechanism_key": "x135.workshop.marimba_tuning_strike_two_modes",
+      "answer_target": "調音師從音板下側一點點磨去木料，再用槌敲給調音器讀。敲中央檢查的是基音；把槌移到距離端點約四分之一個板長處，就能檢查第四諧音。敲的是同一塊木頭，換個位置要核對的頻率就不同。",
+      "scope": "Yamaha 馬林巴木音板製程中，基音與第四諧音的工場調校。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "在自繪音板上用兩個顏色標示敲擊位置，調音器旁分別顯示基音、第四諧音。",
+        "payoff": "一次調一塊音板，卻有兩個敲擊點、兩種讀數要核對。",
+        "seconds": [
+          28,
+          45
+        ]
+      },
+      "source_locator": "The fundamental tone and the harmonics are tuned at the same time；配合音板下側研磨及調音器照片。",
+      "notes": "既有 K126-0401 追顫音琴共鳴管的旋片；本卡是木音板加工時的調音檢查。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪樂器剖面和裝配示意，製造商照片僅附連結。",
+      "origin": "wave135-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-947ffb0b5497c182",
+          "origin": "wave135-craft-20261119",
+          "locator": "The fundamental tone and the harmonics are tuned at the same time；配合音板下側研磨及調音器照片。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0103"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0104",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "小提琴的面板、背板都合上了，那根要豎在琴肚裡的音柱，師傅從哪裡送進去？",
+      "mechanism_key": "x135.workshop.violin_soundpost_install_through_fhole",
+      "answer_target": "在這座工場的裝配次序裡，琴身已合起來，琴橋也已在裝弦時立好。師傅拿專用工具從面板的 f 孔把音柱送進去，讓它在面板與背板之間立正，再核對它和琴橋的相對位置。從琴外看，f 孔就是最後這根柱子的入口。",
+      "scope": "Yamaha 小提琴上漆後的組裝工序。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用紙盒剖面畫出 f 孔、面板、背板和琴橋，沿工具的路徑讓音柱進入琴身。",
+        "payoff": "琴橋立在外頭，音柱從 f 孔進入；琴橋的位置還是音柱定位的參考。",
+        "seconds": [
+          28,
+          45
+        ]
+      },
+      "source_locator": "Install the sound post, and it is complete!；Installing the sound post through the f-hole。",
+      "notes": "不延伸為移動琴柱的自行維修教學。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪樂器剖面和裝配示意，製造商照片僅附連結。",
+      "origin": "wave135-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-19afd67af9a0671b",
+          "origin": "wave135-craft-20261119",
+          "locator": "Install the sound post, and it is complete!；Installing the sound post through the f-hole。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0104"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0105",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "新鋼琴每個鍵都已被機器彈過三百次，出廠前怎麼還要看它將來要送去哪裡，再讓它靜置好幾天？",
+      "mechanism_key": "x135.workshop.piano_destination_climate_seasoning",
+      "answer_target": "裝好琴蓋，工場用機器將每鍵按三百次，讓琴鍵和擊弦機構磨合。接下來鋼琴要靜置七到十天，這一區的溫度、濕度依客戶所在地的氣候設定。等琴在準備好的環境放過這一段時間，再進入最後調整。",
+      "scope": "Yamaha 工場組裝鋼琴後、最終整調前的環境與靜置程序。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "讓按鍵次數停在 300，再把同一架琴移到設有溫度、濕度控制的架上，日曆翻過七到十天。",
+        "payoff": "機器檢查琴鍵怎麼動，接下來的靜置連目的地的氣候也算進去。",
+        "seconds": [
+          28,
+          45
+        ]
+      },
+      "source_locator": "Seasoned for 7 to 10 Days；自動按鍵機及流動架的工序說明。",
+      "notes": "不宣稱經過這道工序以後不用再調音。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪樂器剖面和裝配示意，製造商照片僅附連結。",
+      "origin": "wave135-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b0cf7836afb08e87",
+          "origin": "wave135-craft-20261119",
+          "locator": "Seasoned for 7 to 10 Days；自動按鍵機及流動架的工序說明。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0105"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0106",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "古典吉他的弦枕這麼小，師傅為什麼要等琴身裝好才把它修到最後尺寸，連膠都不用？",
+      "mechanism_key": "x135.workshop.classical_guitar_bone_nut_saddle_custom_fit",
+      "answer_target": "工場說，裝好的每把琴可能相差百分之一毫米。師傅取牛骨上弦枕把底磨平，再依手上這把琴的形狀和高度修整，上下弦枕分別緊緊嵌入對應的位置，靠貼合固定。六條弦各有自己的弦槽。這裡免膠的是上下弦枕，琴橋是另一個零件。",
+      "scope": "Yamaha 古典吉他上、下弦枕依成琴修配的工序。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把上下弦枕各畫一種顏色，對著上端凹位、琴橋上的槽插入；放大琴橋與下弦枕的界面。",
+        "payoff": "決定最後尺寸的是已經裝好的這把琴，貼合的弦枕可以嵌牢。",
+        "seconds": [
+          28,
+          45
+        ]
+      },
+      "source_locator": "Firmly attached without glue!；牛骨上弦枕、下弦枕與裝弦檢查照片。",
+      "notes": "不推及其他廠牌的固定方式。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪樂器剖面和裝配示意，製造商照片僅附連結。",
+      "origin": "wave135-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-1bc8a029f9d5ba9e",
+          "origin": "wave135-craft-20261119",
+          "locator": "Firmly attached without glue!；牛骨上弦枕、下弦枕與裝弦檢查照片。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0106"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0107",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "長號的滑管約七十公分長，頭尾只彎了零點二毫米，為什麼師傅還要把它拿回平板檢查？",
+      "mechanism_key": "x135.workshop.trombone_four_tubes_parallel_clearance",
+      "answer_target": "長號滑管有兩根內管套進兩根外管，廠方列的徑向間隙只有約零點一毫米。四根管子都得筆直、彼此平行，才滑得順。精密機器把管子拉好以後，師傅仍用平板查直線和平行，發現細微變形便再用手校正。",
+      "scope": "Yamaha 工場展示的長號滑管；例中管長約七十公分。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把兩組套管並排畫出，放大其中一側的間隙，再讓一根管稍微偏離平行線。",
+        "payoff": "肉眼覺得夠直，並不等於能在零點一毫米的間隙裡來回滑動。",
+        "seconds": [
+          28,
+          45
+        ]
+      },
+      "source_locator": "At 70 cm long, a curve of even 0.2 mm is unacceptable!；The finish is finely adjusted by a craftsperson。",
+      "notes": "既有 D9018 問強吹長號時聲波如何變陡；本題只問套管的滑動與校直。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪樂器剖面和裝配示意，製造商照片僅附連結。",
+      "origin": "wave135-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b20aec1a486ab118",
+          "origin": "wave135-craft-20261119",
+          "locator": "At 70 cm long, a curve of even 0.2 mm is unacceptable!；The finish is finely adjusted by a craftsperson。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0107"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0001",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "剛在臺北同一站還車，想再騎一趟，為什麼有人得等十分鐘，有人馬上就能借？",
+      "mechanism_key": "x135.daily.taipei_youbike_rehire_vehicle_card",
+      "answer_target": "先看下一趟要借哪一種車。臺北的一般 YouBike 2.0 同站續借限制十分鐘，2.0E 電輔車原則上沒有這段等候。但改用臺北市敬老卡或愛心卡借 2.0E，站方又把十分鐘的限制算回來。",
+      "scope": "限以會員身分在臺北同站還車後續借。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "在同一個站柱前換上一張車型牌和一張票卡，逐次翻開計時器。",
+        "payoff": "選了電輔車還要看用哪張卡，才能判斷現在按不按得下續借。",
+        "seconds": [
+          25,
+          43
+        ]
+      },
+      "source_locator": "會員租車「詳細說明」的續借限制一款，並對照上方兩種車型。",
+      "notes": "判斷續借資格，與某一趟是否另有補助分開。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪站柱、空白票卡與計時器。",
+      "origin": "wave135-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-88287d6cbd7e6df7",
+          "origin": "wave135-everyday-20261119",
+          "locator": "會員租車「詳細說明」的續借限制一款，並對照上方兩種車型。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0002",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "高鐵這節車廂的冷氣壞了，票面金額恰好印著零元，兩成賠償要拿零乘嗎？",
+      "mechanism_key": "x135.daily.thsr_air_conditioning_zero_ticket_basis",
+      "answer_target": "第 29 條讓搭乘故障車廂且受影響的旅客請求實收票價的兩成。第 30 條接著處理票面沒寫票價或寫成零元的情形，這裡以票上身分別的全額票價為基數。若這張票參加的優惠活動另有規定，則照活動規定辦。",
+      "scope": "設定為受影響旅客，適用台灣高鐵 2026 年 3 月 30 日契約。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "紙票的金額欄寫零，在旁邊另圈出身分欄，把它接到計算式。",
+        "payoff": "同一張票的金額欄看似已回答問題，契約卻要你再讀身分欄。",
+        "seconds": [
+          25,
+          43
+        ]
+      },
+      "source_locator": "「柒、運行中斷處理、遲延退費與損害賠償」第 29、30 條，後者跨頁。",
+      "notes": "實收票價的認定僅限條款列舉的請求。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以虛構票券及自製車廂圖呈現。",
+      "origin": "wave135-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-3b5c9c384484f08d",
+          "origin": "wave135-everyday-20261119",
+          "locator": "「柒、運行中斷處理、遲延退費與損害賠償」第 29、30 條，後者跨頁。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0003",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "結帳時有滿額集點折扣，店員能不能直接幫你把那只購物用塑膠袋折成零元？",
+      "mechanism_key": "x135.daily.shopping_bag_points_merchandise_only",
+      "answer_target": "按資源循環署的問答，這種優惠可以折抵商品的售價，卻不能直接拿來折抵依公告應收費的購物用塑膠袋。收據上即使既有商品又有袋子，點數可扣的那一欄也有界線。",
+      "scope": "限受該公告規範的業者和購物用塑膠袋。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "將商品和袋子分列，讓一枚點數籌碼在兩欄之間移動。",
+        "payoff": "手上有足夠點數，和袋子的售價能否被這張折扣直接沖掉，是兩個問題。",
+        "seconds": [
+          25,
+          43
+        ]
+      },
+      "source_locator": "同名問題的答覆，對讀「商品售價」與「購物用塑膠袋價格」兩項。",
+      "notes": "未推論商家如何設定各商品售價。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "印製虛構收據，不使用真的購物紀錄。",
+      "origin": "wave135-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-2c6e1cb2e3d05096",
+          "origin": "wave135-everyday-20261119",
+          "locator": "同名問題的答覆，對讀「商品售價」與「購物用塑膠袋價格」兩項。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0004",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "家裡白天沒人，一封已經寄出的普通掛號，還能由收件人改請郵局晚上送嗎？",
+      "mechanism_key": "x135.daily.post_evening_delivery_recipient_fee",
+      "answer_target": "中華郵政接受收件人打電話或以書面向當地郵局申請掛號郵件晚間限時投遞。普通掛號要由收件人在收件時另付限時資費，地址也得在限時投遞區域內。寄件時沒先買限時服務，收件人仍有這條申請途徑。",
+      "scope": "以國內普通掛號和晚間限時投遞為例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把原信封、電話、投遞地圖及付款箭頭依時間排開。",
+        "payoff": "補付的人與時點都和在郵局窗口寄件時不同。",
+        "seconds": [
+          25,
+          43
+        ]
+      },
+      "source_locator": "答覆第 1 點的申請人、申請方式與費用，第 2 點服務區域。",
+      "notes": "晚間限時投遞無法保證自選精確到件時間。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "使用虛構門牌與自繪信封。",
+      "origin": "wave135-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-574bc3d8773bebd6",
+          "origin": "wave135-everyday-20261119",
+          "locator": "答覆第 1 點的申請人、申請方式與費用，第 2 點服務區域。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0005",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "高爾夫球從開球座掉下來，你伸手把它擺回去，跟趁它還在掉時揮桿，各要加幾桿？",
+      "mechanism_key": "x135.daily.golf_ball_falls_during_intended_stroke",
+      "answer_target": "同樣是第一次開這一洞，還未作出擊球動作，球就自己掉下來或被球員不慎碰落，可以在開球區重新架起，無須罰桿。若球員決定對正在掉落的球作出擊球，規則也不另罰，這次擊球本身卻要算一桿，球也進入比賽。",
+      "scope": "依 R&A 規則 6.2b(5)，限開球前架起的球。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "桌上支一個小球座，分別示範撿起重放與對落下的球揮桿兩條路線。",
+        "payoff": "兩次都是零罰桿，記分卡卻只有後一種會多出一次擊球。",
+        "seconds": [
+          25,
+          43
+        ]
+      },
+      "source_locator": "6.2b(5)，球放上 tee 但尚未成為比賽球，與對正在掉落的球作出 stroke 的兩段。",
+      "notes": "不延伸到已在場內比賽的球意外移動。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "用自製模型，不使用比賽影片。",
+      "origin": "wave135-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-ca6ffd34317582b8",
+          "origin": "wave135-everyday-20261119",
+          "locator": "6.2b(5)，球放上 tee 但尚未成為比賽球，與對正在掉落的球作出 stroke 的兩段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0006",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "煮不另外加果膠的水果凍，匙邊冒出兩滴糖漿，就可以關火了嗎？",
+      "mechanism_key": "x135.daily.jelly_spoon_two_drops_sheet",
+      "answer_target": "美國家庭食品保存中心的湯匙測試要看兩滴接下來怎麼走。將冷金屬匙沾過沸騰的混合液，提到鍋面上方約一英尺、移出蒸氣再讓糖漿從側面流下。兩滴合在一起，成片流下或掛在匙邊，才是這項測試的終點。",
+      "scope": "指該中心的不另加果膠水果凍配方在煮製階段的稠度判讀。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用分鏡放大匙邊，先畫分離的小滴，再畫合成一片的形狀。",
+        "payoff": "需要等待的不只是糖漿變慢，還有兩滴之間那道空隙消失。",
+        "seconds": [
+          25,
+          43
+        ]
+      },
+      "source_locator": "Preparing the Jelly 下的 Sheet or spoon test 一段。",
+      "notes": "裝罐後的處理時間另有規定。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪近景與刻度，不直接使用食譜圖片。",
+      "origin": "wave135-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-6c8bb23126cd04d9",
+          "origin": "wave135-everyday-20261119",
+          "locator": "Preparing the Jelly 下的 Sheet or spoon test 一段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0007",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "像蘿蔔的大頭菜，怎麼還沒拔就能拿尺量它？它會膨大的那一截長在哪裡？",
+      "mechanism_key": "x135.daily.kohlrabi_above_soil_swollen_stem",
+      "answer_target": "這裡說的是球莖甘藍。它會長粗的是土面正上方的莖，頂上還帶著直立的葉子。明尼蘇達大學的一般採收建議看球部的寬度，約二至三英吋就能收；一味留大，那一口反而可能變韌、木質而帶苦味。",
+      "scope": "只談 Brassica oleracea var. gongylodes。有些地方也把其他蔬菜叫大頭菜。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "側面畫出土面、細根和膨大莖，將尺水平放在土面上量寬。",
+        "payoff": "真正要量的部位就在泥土上方，無須先把根挖出來。",
+        "seconds": [
+          25,
+          43
+        ]
+      },
+      "source_locator": "An odd-looking garden plant 首段、Harvesting and storage。",
+      "notes": "特大品種不以此數字當絕對標準。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪植株剖面。",
+      "origin": "wave135-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-96b1dc81e469c085",
+          "origin": "wave135-everyday-20261119",
+          "locator": "An odd-looking garden plant 首段、Harvesting and storage。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0008",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "用 D850 拍偏在畫面右邊的人，點測光究竟會跟到右邊，還是仍量正中央？",
+      "mechanism_key": "x135.daily.nikon_d850_spot_metering_auto_area_center",
+      "answer_target": "一般情況下 D850 點測光量的是當前對焦點周圍直徑約四毫米的小圓，大約占畫面 1.5%，所以把對焦點移到右側就能量右側。但改成自動區域 AF，機身會以中央對焦點測光。手冊也把非 CPU 鏡頭和指定的 8–15 毫米魚眼鏡頭列為中央測光的例外。",
+      "scope": "比較同一部 Nikon D850 與一般支援的 CPU 鏡頭在兩種 AF 區域設定下的點測光。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "在亮窗旁畫一張臉，使測光小圓先圈住臉，再回到中央那片亮窗。",
+        "payoff": "看見畫面上有被對焦的主角，仍要查點測光的圓究竟放在哪裡。",
+        "seconds": [
+          25,
+          43
+        ]
+      },
+      "source_locator": "Exposure → Metering → Spot，四毫米圓與附加的三項中央測光條件。",
+      "notes": "僅說明取樣位置，沒有預告成像會差幾級曝光。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪構圖與小圓，不複製說明書畫面。",
+      "origin": "wave135-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-878834c781d160bd",
+          "origin": "wave135-everyday-20261119",
+          "locator": "Exposure → Metering → Spot，四毫米圓與附加的三項中央測光條件。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0009",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "把有淡淡陰影的貼圖轉成 GIF，遠看還像半透明，為什麼放大後只剩有色點和空點？",
+      "mechanism_key": "x135.daily.gif_dither_transparency_binary_pixels",
+      "answer_target": "GIF 每個像素的透明度在透明與不透明兩種狀態之間選。GIMP 轉索引色時可以啟用透明度抖色，以透明點和不透明點相間的分布模擬原本的漸淡。遠看形成過渡，逐格檢查卻找不到一個真正半透明的點。",
+      "scope": "限以 GIMP 3.0 的索引色及透明度抖色輸出 GIF，圖底有透明區。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把同一排棋盤背景上的陰影先縮小再放大，點選個別格檢視。",
+        "payoff": "淡影存在於一群像素的排列，單看一格只剩兩種可能。",
+        "seconds": [
+          25,
+          43
+        ]
+      },
+      "source_locator": "Convert Image to Indexed Colors 對 Enable dithering of transparency 的說明與示圖。",
+      "notes": "不是對所有輸出格式或一般色彩抖色的說明。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自製示意貼圖。",
+      "origin": "wave135-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-662480ccd47b3cca",
+          "origin": "wave135-everyday-20261119",
+          "locator": "Convert Image to Indexed Colors 對 Enable dithering of transparency 的說明與示圖。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0010",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "預報氣溫是華氏零下五度，風寒卻是零下三十一度，戶外水管會被風一路吹到哪個數字？",
+      "mechanism_key": "x135.daily.wind_chill_pipe_temperature_limit",
+      "answer_target": "美國國家氣象局的風寒表衡量寒冷與風從暴露皮膚帶走熱的效果。對一根原先較暖的水管，風可以讓它比較快接近當前的氣溫；單靠這種作用，不會繼續降到比實際氣溫還低的風寒讀數。兩個數字裡，零下三十一度不是這根管子的降溫目標。",
+      "scope": "借用 NWS 的華氏溫度例子，限定外界氣溫維持不變，只比較風速造成的差異。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "將兩個數字分貼在人的衣袖與管旁空氣，另用計時器標記較快降溫。",
+        "payoff": "風能改變多久冷下來，並沒有把周圍的空氣變成風寒表上那個溫度。",
+        "seconds": [
+          25,
+          43
+        ]
+      },
+      "source_locator": "Does wind chill apply only to people and animals?；對照 -5°F、-31°F 的散熱器例子。",
+      "notes": "不預測特定管材或管內液體何時結冰。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自畫儀表與管線。",
+      "origin": "wave135-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a91e8061bf6b856f",
+          "origin": "wave135-everyday-20261119",
+          "locator": "Does wind chill apply only to people and animals?；對照 -5°F、-31°F 的散熱器例子。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0011",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "拿一張美式信紙切成四張明信片，長寬比只有 1.294，怎麼仍通得過條文裡的 1.3 下限？",
+      "mechanism_key": "x135.daily.usps_four_equal_postcards_sheet_aspect_exception",
+      "answer_target": "美國郵政的商業郵件手冊原則上把按卡片價申報的長寬比訂在 1.3 至 2.5。尺寸段同時明列一個例子：11 × 8.5 吋的紙等分四張，每張是 5.5 × 4.25 吋。算出約 1.294 時，就這一款可以按例外處理，不必另剪掉紙邊。",
+      "scope": "只核對 DMM 201.1.2.1 的長寬比，假設其他卡片規格均符合。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把美式信紙十字對折後攤平，從一格的兩條邊算出 5.5 除以 4.25。",
+        "payoff": "算式沒有算錯，答案藏在手冊緊接比值的例外句。",
+        "seconds": [
+          25,
+          43
+        ]
+      },
+      "source_locator": "201.1.2.1，對卡片價申報的尺寸規定，在長寬比之後明列四等分紙張例外。",
+      "notes": "與既有方形信封判定非機器處理的核心不同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自切素紙、自畫尺寸線。",
+      "origin": "wave135-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a2e7f5ec82ba1827",
+          "origin": "wave135-everyday-20261119",
+          "locator": "201.1.2.1，對卡片價申報的尺寸規定，在長寬比之後明列四等分紙張例外。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0012",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "下次走進同一家咖啡館，不想讓 iPhone 自己連 Wi-Fi，非得把長長的密碼也一起刪掉嗎？",
+      "mechanism_key": "x135.daily.wifi_autojoin_off_preserves_password",
+      "answer_target": "在已知網路的設定裡關閉「自動加入」，iPhone 還會記得網路和密碼。這次先中斷連線，之後再走進範圍就可以自己決定要不要按網路名稱加入。選擇「忘記此網路設定」並確認，才會把網路和密碼一起從這項紀錄移除。",
+      "scope": "假設是可修改設定的普通密碼網路，分清中斷之後的自動重連與手動連線。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "畫兩張虛構網路名牌，各放一張密碼紙條；關閉自動加入時將紙條留下。",
+        "payoff": "留住下次打開網路的鑰匙，仍然可以選擇這次不自動開門。",
+        "seconds": [
+          25,
+          43
+        ]
+      },
+      "source_locator": "iPhone, iPad, Apple Vision Pro 下的 Turn off Auto-Join 與 Forget the network 兩段。",
+      "notes": "關閉自動加入並不等於立即中斷當前連線。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "使用自繪介面與虛構密碼。",
+      "origin": "wave135-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-bcb6c610b5d96673",
+          "origin": "wave135-everyday-20261119",
+          "locator": "iPhone, iPad, Apple Vision Pro 下的 Turn off Auto-Join 與 Forget the network 兩段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0012"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0201",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "美國進口水產抽驗表第 20 號冷凍蝦，10.18% 這個數字量的是什麼？",
+      "mechanism_key": "x135.shrimp_glaze.case",
+      "answer_target": "FDA 2025 年抽驗原表將第 20 號標為短重 10.18%。這是樣品對標示淨重的不足比例，並非打開某一袋後從地上撿到的冰重。",
+      "scope": "原表以樣品為單位；沒有列個別袋子的標重和實際重量。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "FDA 2025 年抽驗原表將第 20 號標為短重 10.18%。",
+        "visual": "遮住原表欄名，等觀眾猜過再揭出 % Short Weight。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R135-S01 Methodology、Findings、Follow-Up Actions、Table of Analytical Results 第 19–20 列及表註",
+      "notes": "依各原件的地區、產品和操作條件作答。原表以樣品為單位；沒有列個別袋子的標重和實際重量。",
+      "origin": "wave135-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-45503002b98187d6",
+          "origin": "wave135-research-20261119",
+          "locator": "R135-S01 Methodology、Findings、Follow-Up Actions、Table of Analytical Results 第 19–20 列及表註",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0201"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0202",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "標一磅的包裝整袋有 1.180 磅，檢查表怎麼還會記成少了？",
+      "mechanism_key": "x135.shrimp_glaze.gross",
+      "answer_target": "NIST 冰衣商品教學表的第一包毛重 1.180 磅，聲明淨重 1.000 磅，按程序處理後只剩 0.985 磅淨重。以實測淨重減聲明量，誤差是負 0.015 磅；原本多出的毛重連包材、冰衣也算在內。",
+      "scope": "表格是教材；單一示例包的負誤差不等於判定整批違規。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "NIST 冰衣商品教學表的第一包毛重 1.180 磅，聲明淨重 1.000 磅，按程序處理後只剩 0.985 磅淨重。",
+        "visual": "把同一包的三格用三張紙分開，先讓觀眾挑分母。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R135-S02 §2.6.1、§2.6.2、附錄 C Ice Glazed Package Worksheet 與示範資料，印刷頁 208–210",
+      "notes": "依各原件的地區、產品和操作條件作答。表格是教材；單一示例包的負誤差不等於判定整批違規。",
+      "origin": "wave135-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-88b151fc0b1cc1b2",
+          "origin": "wave135-research-20261119",
+          "locator": "R135-S02 §2.6.1、§2.6.2、附錄 C Ice Glazed Package Worksheet 與示範資料，印刷頁 208–210",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0202"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0203",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "「冷凍海鮮的冰不能算淨重」這件事，最早翻到的抱怨是誰寫給誰？",
+      "mechanism_key": "x135.shrimp_glaze.complaint",
+      "answer_target": "FDA 在 1991 年 6 月 4 日給冷凍水產製造商的原函中說，產業團體、業者及其他聯邦機關都反映把冰衣算進淨重的情形，指出蝦、龍蝦和魚片都曾涉及。函文明寫淨重不得含冰衣。",
+      "scope": "交代原函列的陳情者和規則，不聲稱 1991 年是第一次發生或第一次立法。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "FDA 在 1991 年 6 月 4 日給冷凍水產製造商的原函中說，產業團體、業者及其他聯邦機關都反映把冰衣算進淨重的情形，指出蝦、龍蝦和魚片都曾涉及。",
+        "visual": "從歷史信件依次標出收信人、陳情來源、要業者改正的計量方式。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R135-S03 第三節，1991-06-04 原函第一至三段",
+      "notes": "依各原件的地區、產品和操作條件作答。交代原函列的陳情者和規則，不聲稱 1991 年是第一次發生或第一次立法。",
+      "origin": "wave135-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-643cc68d9bbfea0e",
+          "origin": "wave135-research-20261119",
+          "locator": "R135-S03 第三節，1991-06-04 原函第一至三段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0203"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0204",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "冷凍魚為什麼故意穿一層會慢慢變薄的冰？",
+      "mechanism_key": "x135.shrimp_glaze.shield",
+      "answer_target": "FAO 技術手冊指出，庫內水分會由表面昇華。先讓外冰失去水分，可以減少下方魚肉乾燥；覆層隔開空氣，也能減緩表面氧化。",
+      "scope": "這是冰衣的保護用途，不能從有冰判斷是否短重。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "FAO 技術手冊指出，庫內水分會由表面昇華。",
+        "visual": "把兩個凍面並排，用箭頭標出要先失去水分的那一層。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R135-S04 第 6 章 §6.1、圖 26 的定速輸送、雙面噴水與翻面裝置",
+      "notes": "依各原件的地區、產品和操作條件作答。這是冰衣的保護用途，不能從有冰判斷是否短重。",
+      "origin": "wave135-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c4e1fc37a5b21c73",
+          "origin": "wave135-research-20261119",
+          "locator": "R135-S04 第 6 章 §6.1、圖 26 的定速輸送、雙面噴水與翻面裝置",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0204"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0205",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "如果只在運送帶上方噴水，重疊的兩塊凍魚哪裡會漏掉？",
+      "mechanism_key": "x135.shrimp_glaze.belt",
+      "answer_target": "FAO 圖 26 的設備用可調擋板把重疊的魚分開；上下都有噴淋，雙皮帶讓魚翻面，定速輸送決定通過噴淋區的時間。",
+      "scope": "依手冊的魚片設備說明遮蔽與翻面，不指稱某家實際蝦廠使用同型機器。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "FAO 圖 26 的設備用可調擋板把重疊的魚分開；上下都有噴淋，雙皮帶讓魚翻面，定速輸送決定通過噴淋區的時間。",
+        "visual": "用兩片疊住的紙魚，一次只印上表面，再翻開對照。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R135-S04 第 6 章 §6.1、圖 26 的定速輸送、雙面噴水與翻面裝置",
+      "notes": "依各原件的地區、產品和操作條件作答。依手冊的魚片設備說明遮蔽與翻面，不指稱某家實際蝦廠使用同型機器。",
+      "origin": "wave135-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c4e1fc37a5b21c73",
+          "origin": "wave135-research-20261119",
+          "locator": "R135-S04 第 6 章 §6.1、圖 26 的定速輸送、雙面噴水與翻面裝置",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0205"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0206",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "把冰都拿掉以後，裹過冰的蝦在冷凍實驗裡還能留下什麼差別？",
+      "mechanism_key": "x135.shrimp_glaze.yield",
+      "answer_target": "路易斯安那州立大學的蝦實驗把裹冰與未裹冰樣品分組，再以解凍後得率比較。在該測試裡裹冰蝦的解凍得率較高；論文也分開報風凍與低溫快速冷凍組的結果。",
+      "scope": "這一箭頭指出實驗條件下的差異，不保證每種蝦或每一種冰厚都會得到同樣數值。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "路易斯安那州立大學的蝦實驗把裹冰與未裹冰樣品分組，再以解凍後得率比較。",
+        "visual": "同時畫兩組蝦的冷凍、儲存、解凍時間線，到最後一步才比較得率。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R135-S05 第四章頁 51–55，圖 4.5–4.7；結論頁 64–65",
+      "notes": "依各原件的地區、產品和操作條件作答。這一箭頭指出實驗條件下的差異，不保證每種蝦或每一種冰厚都會得到同樣數值。",
+      "origin": "wave135-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-7d70cf54008cda1a",
+          "origin": "wave135-research-20261119",
+          "locator": "R135-S05 第四章頁 51–55，圖 4.5–4.7；結論頁 64–65",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0206"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0207",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "用冷水噴蝦，是等蝦整隻變軟，還是摸不到外冰就停？",
+      "mechanism_key": "x135.shrimp_glaze.stop",
+      "answer_target": "NIST 冰衣商品程序用輕柔的冷水噴流，翻動但避免弄碎。看到或摸到的冰衣都移除就停，通常產品仍有硬度。細小品項可能要部分解凍才洗得乾淨。",
+      "scope": "這裡是掛冰衣商品的淨重檢測；不作生食、解凍備餐或家用供餐建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "NIST 冰衣商品程序用輕柔的冷水噴流，翻動但避免弄碎。",
+        "visual": "一張卡寫「摸得到表冰」，一張寫「蝦肉變軟」，請觀眾指出停手條件。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R135-S02 §2.6.1、§2.6.2、附錄 C Ice Glazed Package Worksheet 與示範資料，印刷頁 208–210",
+      "notes": "依各原件的地區、產品和操作條件作答。這裡是掛冰衣商品的淨重檢測；不作生食、解凍備餐或家用供餐建議。",
+      "origin": "wave135-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-88b151fc0b1cc1b2",
+          "origin": "wave135-research-20261119",
+          "locator": "R135-S02 §2.6.1、§2.6.2、附錄 C Ice Glazed Package Worksheet 與示範資料，印刷頁 208–210",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0207"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0208",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "冰洗掉就馬上讀磅秤，或者一直等到再也不滴水，哪一步都漏了什麼？",
+      "mechanism_key": "x135.shrimp_glaze.drain",
+      "answer_target": "NIST 要把篩子傾約 17–20 度並計時兩分鐘，然後立即將全部產品移到已稱重的承接盤。盤加產品的讀數扣除空盤重量，才是淨重。",
+      "scope": "附錄案例依 NIST 方法說明；FDA 2025 年抽驗使用的正式方法另有名稱和編號。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "NIST 要把篩子傾約 17–20 度並計時兩分鐘，然後立即將全部產品移到已稱重的承接盤。",
+        "visual": "小計時器從 2:00 倒數；到點時將整份內容移到盤，單獨扣盤重。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R135-S02 §2.6.1、§2.6.2、附錄 C Ice Glazed Package Worksheet 與示範資料，印刷頁 208–210",
+      "notes": "依各原件的地區、產品和操作條件作答。附錄案例依 NIST 方法說明；FDA 2025 年抽驗使用的正式方法另有名稱和編號。",
+      "origin": "wave135-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-88b151fc0b1cc1b2",
+          "origin": "wave135-research-20261119",
+          "locator": "R135-S02 §2.6.1、§2.6.2、附錄 C Ice Glazed Package Worksheet 與示範資料，印刷頁 208–210",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0208"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0209",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "扇貝隔夜解凍，篩下滴出的水，為什麼不能整杯叫作原來的冰衣？",
+      "mechanism_key": "x135.shrimp_glaze.twodrains",
+      "answer_target": "德國團隊檢驗市售冷凍扇貝，先去表冰，在肉仍凍著時擦乾、複秤，差額才記作冰衣。之後另取一組去冰貝肉在篩中隔夜解凍，再測滴液。表 5 就把冰衣與解凍滴液列成兩個百分數。",
+      "scope": "這是扇貝閉殼肌實驗；數值不套用在蝦，也不把這篇的擦乾步驟混進 NIST 的步驟。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "德國團隊檢驗市售冷凍扇貝，先去表冰，在肉仍凍著時擦乾、複秤，差額才記作冰衣。",
+        "visual": "用兩支量杯畫在兩個不同日期下，並列同一表中兩欄的標頭。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R135-S06 §2.1 冷凍閉殼肌的去冰與隔夜解凍，表 5 Glaze (%) / drip loss (%)",
+      "notes": "依各原件的地區、產品和操作條件作答。這是扇貝閉殼肌實驗；數值不套用在蝦，也不把這篇的擦乾步驟混進 NIST 的步驟。",
+      "origin": "wave135-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-487f32cedfec75ef",
+          "origin": "wave135-research-20261119",
+          "locator": "R135-S06 §2.1 冷凍閉殼肌的去冰與隔夜解凍，表 5 Glaze (%) / drip loss (%)",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0209"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0210",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "蝦若封在整塊冰裡，檢查員還是只沖表面兩下嗎？",
+      "mechanism_key": "x135.shrimp_glaze.block",
+      "answer_target": "NIST 另為整塊冰封商品訂程序：拆包、不重新套塑膠袋，連網籃放進有持續水流的 23–29°C 水槽。產品解凍而失去剛性才轉篩，約 30 度傾斜瀝兩分鐘，移到去皮歸零的盤中秤。",
+      "scope": "這是官方量測對冰封塊的程序，只比較檢測分流，不作廚房退冰操作指引。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "NIST 另為整塊冰封商品訂程序：拆包、不重新套塑膠袋，連網籃放進有持續水流的 23–29°C 水槽。",
+        "visual": "畫一個冰磚與單顆裹冰的蝦，讓兩條流程在淨重格前會合。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R135-S02 §2.6.1、§2.6.2、附錄 C Ice Glazed Package Worksheet 與示範資料，印刷頁 208–210",
+      "notes": "依各原件的地區、產品和操作條件作答。這是官方量測對冰封塊的程序，只比較檢測分流，不作廚房退冰操作指引。",
+      "origin": "wave135-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-88b151fc0b1cc1b2",
+          "origin": "wave135-research-20261119",
+          "locator": "R135-S02 §2.6.1、§2.6.2、附錄 C Ice Glazed Package Worksheet 與示範資料，印刷頁 208–210",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0210"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0211",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "蝦外的冰有鹽與檸檬酸，改叫冷凍醃汁就能連殼算蝦重嗎？",
+      "mechanism_key": "x135.shrimp_glaze.marinade",
+      "answer_target": "FDA 在 2009 年對一家業者的警告函點名帶殼蝦、去殼去腸蝦及熟尾蝦。該案將冰衣或含水、檸檬酸和鹽的凍醃汁外衣算進淨量，FDA 指其標示不實。",
+      "scope": "只講該警告函指明的凍在表面的覆層，不把另附可食醬料或所有調味蝦都算同一案。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "FDA 在 2009 年對一家業者的警告函點名帶殼蝦、去殼去腸蝦及熟尾蝦。",
+        "visual": "在原函的品項下劃線，再把被計入的那一層圈起來。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R135-S07 2009-10-08 原函，Shell-On Shrimp、Peeled and Deveined Shrimp、Cooked Tail-On Shrimp 段",
+      "notes": "依各原件的地區、產品和操作條件作答。只講該警告函指明的凍在表面的覆層，不把另附可食醬料或所有調味蝦都算同一案。",
+      "origin": "wave135-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-4914fe7d0626cf39",
+          "origin": "wave135-research-20261119",
+          "locator": "R135-S07 2009-10-08 原函，Shell-On Shrimp、Peeled and Deveined Shrimp、Cooked Tail-On Shrimp 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0211"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0212",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "加拿大的蝦仁雞尾酒也有液體，瓶上只寫整瓶可食內容的淨重就夠了嗎？",
+      "mechanism_key": "x135.shrimp_glaze.cocktail",
+      "answer_target": "加拿大表列規則把冷凍裹冰水產和蝦仁雞尾酒分開。第 52 項的雞尾酒除了淨量，還要標蝦占可食內容的重量百分比，或直接標出蝦的總重量。",
+      "scope": "加拿大清單第 52 項及表註 a 的特例；不把整瓶淨量等同蝦本身。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "加拿大表列規則把冷凍裹冰水產和蝦仁雞尾酒分開。",
+        "visual": "把兩枚價籤放在裸蝦和雞尾酒旁，替後者添上蝦所占的那一格。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R135-S08 Table，第 9 項 Frozen glazed fish、第 52 項 Shrimp cocktail 及表註 a；R135-S09 Drained weight 段，canned shellfish and frozen glazed fish 例子及 SFCR 231(a)",
+      "notes": "依各原件的地區、產品和操作條件作答。加拿大清單第 52 項及表註 a 的特例；不把整瓶淨量等同蝦本身。",
+      "origin": "wave135-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-0e8d57310dc262c5",
+          "origin": "wave135-research-20261119",
+          "locator": "R135-S08 Table，第 9 項 Frozen glazed fish、第 52 項 Shrimp cocktail 及表註 a；R135-S09 Drained weight 段，canned shellfish and frozen glazed fish 例子及 SFCR 231(a)",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ce4f3db3c9c5c6e3",
+          "origin": "wave135-research-20261119",
+          "locator": "R135-S08 Table，第 9 項 Frozen glazed fish、第 52 項 Shrimp cocktail 及表註 a；R135-S09 Drained weight 段，canned shellfish and frozen glazed fish 例子及 SFCR 231(a)",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0212"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0213",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "抽驗報告上寫「一個蝦樣」，工作人員其實拿了幾包？",
+      "mechanism_key": "x135.shrimp_glaze.subsample",
+      "answer_target": "2025 年 FDA 從進口狀態採 26 個樣品，每個樣品由同一批裡隨機抽 48 個零售包裝構成；涵蓋 25 家業者、9 個來源國。實驗室以 AOAC 963.18 測瀝乾重。",
+      "scope": "與 NIST 教材是不同方法來源；單包重量與同批平均分開解讀。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "2025 年 FDA 從進口狀態採 26 個樣品，每個樣品由同一批裡隨機抽 48 個零售包裝構成；涵蓋 25 家業者、9 個來源國。",
+        "visual": "在一個樣品格裡排出 6 行、每行 8 個包裝小格。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R135-S01 Methodology、Findings、Follow-Up Actions、Table of Analytical Results 第 19–20 列及表註",
+      "notes": "依各原件的地區、產品和操作條件作答。與 NIST 教材是不同方法來源；單包重量與同批平均分開解讀。",
+      "origin": "wave135-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-45503002b98187d6",
+          "origin": "wave135-research-20261119",
+          "locator": "R135-S01 Methodology、Findings、Follow-Up Actions、Table of Analytical Results 第 19–20 列及表註",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0213"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0214",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "兩列都寫同一家 S 公司，短重數字怎麼一列 5.91%、另一列 10.18%？",
+      "mechanism_key": "x135.shrimp_glaze.firm",
+      "answer_target": "FDA 表中第 19、20 號同為印尼 S 公司的蝦樣，但代表不同樣品；短重分別為 5.91% 和 10.18%。不同批的抽驗結果可以不同，全表也不能拿來估算一家店或一個國家的普遍短重率。",
+      "scope": "原表只有字母代稱公司，亦未公布同批每包的數字；不推測哪一台機器造成落差。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "FDA 表中第 19、20 號同為印尼 S 公司的蝦樣，但代表不同樣品；短重分別為 5.91% 和 10.18%。",
+        "visual": "把原表兩列的 S 對齊，再用紙遮掉國別，只保留樣品編號。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R135-S01 Methodology、Findings、Follow-Up Actions、Table of Analytical Results 第 19–20 列及表註",
+      "notes": "依各原件的地區、產品和操作條件作答。原表只有字母代稱公司，亦未公布同批每包的數字；不推測哪一台機器造成落差。",
+      "origin": "wave135-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-45503002b98187d6",
+          "origin": "wave135-research-20261119",
+          "locator": "R135-S01 Methodology、Findings、Follow-Up Actions、Table of Analytical Results 第 19–20 列及表註",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0214"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0215",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "FDA 這次標成違例的 12 個樣品，最後是 12 家業者被攔下嗎？",
+      "mechanism_key": "x135.shrimp_glaze.refusal",
+      "answer_target": "原報告說 12 個違例樣品所屬貨批全遭拒絕進入美國市場。涉及的是 11 家業者，FDA 將相關業者與產品列入 Import Alert 99-47。抽驗單位、貨批和業者數各有各的欄。",
+      "scope": "拒絕進口指這些具體貨批；不能外推全美貨架或所有同國貨品的比例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "原報告說 12 個違例樣品所屬貨批全遭拒絕進入美國市場。",
+        "visual": "讓十二張貨批單排到十一個業者格，再回去找重複的 S。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R135-S01 Methodology、Findings、Follow-Up Actions、Table of Analytical Results 第 19–20 列及表註",
+      "notes": "依各原件的地區、產品和操作條件作答。拒絕進口指這些具體貨批；不能外推全美貨架或所有同國貨品的比例。",
+      "origin": "wave135-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-45503002b98187d6",
+          "origin": "wave135-research-20261119",
+          "locator": "R135-S01 Methodology、Findings、Follow-Up Actions、Table of Analytical Results 第 19–20 列及表註",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0215"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0216",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "同一袋裹冰水產，標籤沒印「瀝乾重」，那一個數字就含外冰嗎？",
+      "mechanism_key": "x135.shrimp_glaze.labelling",
+      "answer_target": "歐盟食品資訊規章要求裹冰食品的聲明淨重排除冰衣。執委會解釋這時淨重與瀝乾淨重相同，容許單一數字註明去冰。加拿大對其表列的裹冰水產同樣排除游離液體和冰衣，並說不一定要出現「drained weight」字樣。",
+      "scope": "分別回到管制地的文件；不據此斷言其他國家規定相同。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "歐盟食品資訊規章要求裹冰食品的聲明淨重排除冰衣。",
+        "visual": "用一枚 500 克的示意標籤試貼三種欄名，再對讀兩地條文。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R135-S09 Drained weight 段，canned shellfish and frozen glazed fish 例子及 SFCR 231(a)；R135-S10 Annex IX，第 5 點最後一句；R135-S11 冷凍裹冰食品的同值淨重與瀝乾淨重是否要分印之問答",
+      "notes": "依各原件的地區、產品和操作條件作答。分別回到管制地的文件；不據此斷言其他國家規定相同。",
+      "origin": "wave135-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-03c9bce3a409c5e2",
+          "origin": "wave135-research-20261119",
+          "locator": "R135-S09 Drained weight 段，canned shellfish and frozen glazed fish 例子及 SFCR 231(a)；R135-S10 Annex IX，第 5 點最後一句；R135-S11 冷凍裹冰食品的同值淨重與瀝乾淨重是否要分印之問答",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-20a4257b94676151",
+          "origin": "wave135-research-20261119",
+          "locator": "R135-S09 Drained weight 段，canned shellfish and frozen glazed fish 例子及 SFCR 231(a)；R135-S10 Annex IX，第 5 點最後一句；R135-S11 冷凍裹冰食品的同值淨重與瀝乾淨重是否要分印之問答",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ce4f3db3c9c5c6e3",
+          "origin": "wave135-research-20261119",
+          "locator": "R135-S09 Drained weight 段，canned shellfish and frozen glazed fish 例子及 SFCR 231(a)；R135-S10 Annex IX，第 5 點最後一句；R135-S11 冷凍裹冰食品的同值淨重與瀝乾淨重是否要分印之問答",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0216"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K135-0217",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "兩袋去冰蝦同價，一袋標 500 克、一袋標 400 克，該比較哪個每公斤數字？",
+      "mechanism_key": "x135.shrimp_glaze.unitprice",
+      "answer_target": "假設兩袋同為 8 歐元，又確實各有標示的去冰分量，每公斤分別是 16 和 20 歐元。歐盟單價指令另列：若法規要求商品同標淨重和瀝乾淨重，採瀝乾淨重標單價即可。",
+      "scope": "價格是自設算例，魚種與產品規格須可比；比較標籤的分母不能取代抽驗證明實際足量。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "假設兩袋同為 8 歐元，又確實各有標示的去冰分量，每公斤分別是 16 和 20 歐元。",
+        "visual": "先把兩個價籤的分母都寫成一公斤，再蓋上「依標示量」的註記。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R135-S10 Annex IX，第 5 點最後一句；R135-S12 第 2 條單位價格定義、第 4 條第 2 項雙重量商品之單價",
+      "notes": "依各原件的地區、產品和操作條件作答。價格是自設算例，魚種與產品規格須可比；比較標籤的分母不能取代抽驗證明實際足量。",
+      "origin": "wave135-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-9865210e03aa0614",
+          "origin": "wave135-research-20261119",
+          "locator": "R135-S10 Annex IX，第 5 點最後一句；R135-S12 第 2 條單位價格定義、第 4 條第 2 項雙重量商品之單價",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-03c9bce3a409c5e2",
+          "origin": "wave135-research-20261119",
+          "locator": "R135-S10 Annex IX，第 5 點最後一句；R135-S12 第 2 條單位價格定義、第 4 條第 2 項雙重量商品之單價",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave135-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K135-0217"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -359924,7 +361546,7 @@
   ],
   "raw_records": {
     "file": "pool-records.json",
-    "count": 8265
+    "count": 8301
   },
   "dedup": {
     "aliases": {
@@ -363138,6 +364760,42 @@
       "K134-0216": "K134-0216",
       "K134-0217": "K134-0217",
       "K134-0218": "K134-0218",
+      "K135-0101": "K135-0101",
+      "K135-0102": "K135-0102",
+      "K135-0103": "K135-0103",
+      "K135-0104": "K135-0104",
+      "K135-0105": "K135-0105",
+      "K135-0106": "K135-0106",
+      "K135-0107": "K135-0107",
+      "K135-0001": "K135-0001",
+      "K135-0002": "K135-0002",
+      "K135-0003": "K135-0003",
+      "K135-0004": "K135-0004",
+      "K135-0005": "K135-0005",
+      "K135-0006": "K135-0006",
+      "K135-0007": "K135-0007",
+      "K135-0008": "K135-0008",
+      "K135-0009": "K135-0009",
+      "K135-0010": "K135-0010",
+      "K135-0011": "K135-0011",
+      "K135-0012": "K135-0012",
+      "K135-0201": "K135-0201",
+      "K135-0202": "K135-0202",
+      "K135-0203": "K135-0203",
+      "K135-0204": "K135-0204",
+      "K135-0205": "K135-0205",
+      "K135-0206": "K135-0206",
+      "K135-0207": "K135-0207",
+      "K135-0208": "K135-0208",
+      "K135-0209": "K135-0209",
+      "K135-0210": "K135-0210",
+      "K135-0211": "K135-0211",
+      "K135-0212": "K135-0212",
+      "K135-0213": "K135-0213",
+      "K135-0214": "K135-0214",
+      "K135-0215": "K135-0215",
+      "K135-0216": "K135-0216",
+      "K135-0217": "K135-0217",
       "A14001": "A14001",
       "A14002": "A14002",
       "A14003": "A14003",
@@ -409700,6 +411358,20 @@
         ]
       },
       {
+        "id": "K135-0201~K135-0214",
+        "a": "K135-0201",
+        "b": "K135-0214",
+        "question_score": 0.154,
+        "answer_score": 0.16,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國進口水產抽驗表第 20 號冷凍蝦，10.18% 這個數字量的是什麼？",
+          "兩列都寫同一家 S 公司，短重數字怎麼一列 5.91%、另一列 10.18%？"
+        ]
+      },
+      {
         "id": "L77-017~L77-019",
         "a": "L77-017",
         "b": "L77-019",
@@ -412206,6 +413878,20 @@
         ]
       },
       {
+        "id": "K135-0201~K135-0213",
+        "a": "K135-0201",
+        "b": "K135-0213",
+        "question_score": 0.043,
+        "answer_score": 0.136,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國進口水產抽驗表第 20 號冷凍蝦，10.18% 這個數字量的是什麼？",
+          "抽驗報告上寫「一個蝦樣」，工作人員其實拿了幾包？"
+        ]
+      },
+      {
         "id": "K95-003~R6017",
         "a": "R6017",
         "b": "K95-003",
@@ -413606,6 +415292,20 @@
         ]
       },
       {
+        "id": "K135-0208~K135-0210",
+        "a": "K135-0208",
+        "b": "K135-0210",
+        "question_score": 0,
+        "answer_score": 0.125,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冰洗掉就馬上讀磅秤，或者一直等到再也不滴水，哪一步都漏了什麼？",
+          "蝦若封在整塊冰裡，檢查員還是只沖表面兩下嗎？"
+        ]
+      },
+      {
         "id": "L001~L006",
         "a": "L001",
         "b": "L006",
@@ -413813,6 +415513,20 @@
         "questions": [
           "退卡在北捷站辦，過幾天想知道辦到哪了，為什麼捷運的旅客退費框不是輸入案件編號的地方？",
           "退卡後拿到兩組資料，走進另一家超商使用 ibon，為什麼不必把已經交回的卡再放上感應區？"
+        ]
+      },
+      {
+        "id": "K135-0202~K135-0207",
+        "a": "K135-0202",
+        "b": "K135-0207",
+        "question_score": 0,
+        "answer_score": 0.124,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "標一磅的包裝整袋有 1.180 磅，檢查表怎麼還會記成少了？",
+          "用冷水噴蝦，是等蝦整隻變軟，還是摸不到外冰就停？"
         ]
       },
       {
@@ -414390,6 +416104,20 @@
         ]
       },
       {
+        "id": "K135-0203~K135-0211",
+        "a": "K135-0203",
+        "b": "K135-0211",
+        "question_score": 0.083,
+        "answer_score": 0.12,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "「冷凍海鮮的冰不能算淨重」這件事，最早翻到的抱怨是誰寫給誰？",
+          "蝦外的冰有鹽與檸檬酸，改叫冷凍醃汁就能連殼算蝦重嗎？"
+        ]
+      },
+      {
         "id": "L70-025~L73-006",
         "a": "L70-025",
         "b": "L73-006",
@@ -414513,6 +416241,20 @@
         "questions": [
           "兩瓶墨名裡都看得到 India，一瓶有蟲膠，另一瓶卻說可裝進活塞鋼筆，該聽哪瓶的說明？",
           "要留下清楚的細字再罩上水彩，有沒有為這個動作設計的鋼筆墨水？"
+        ]
+      },
+      {
+        "id": "K135-0201~K135-0216",
+        "a": "K135-0201",
+        "b": "K135-0216",
+        "question_score": 0.118,
+        "answer_score": 0.014,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國進口水產抽驗表第 20 號冷凍蝦，10.18% 這個數字量的是什麼？",
+          "同一袋裹冰水產，標籤沒印「瀝乾重」，那一個數字就含外冰嗎？"
         ]
       },
       {
@@ -416364,6 +418106,20 @@
         ]
       },
       {
+        "id": "K135-0204~K135-0211",
+        "a": "K135-0204",
+        "b": "K135-0211",
+        "question_score": 0.108,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冷凍魚為什麼故意穿一層會慢慢變薄的冰？",
+          "蝦外的冰有鹽與檸檬酸，改叫冷凍醃汁就能連殼算蝦重嗎？"
+        ]
+      },
+      {
         "id": "L066~L067",
         "a": "L066",
         "b": "L067",
@@ -416910,6 +418666,20 @@
         ]
       },
       {
+        "id": "K135-0207~K135-0210",
+        "a": "K135-0207",
+        "b": "K135-0210",
+        "question_score": 0.051,
+        "answer_score": 0.104,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "用冷水噴蝦，是等蝦整隻變軟，還是摸不到外冰就停？",
+          "蝦若封在整塊冰裡，檢查員還是只沖表面兩下嗎？"
+        ]
+      },
+      {
         "id": "K93-052~K98-039",
         "a": "K93-052",
         "b": "K98-039",
@@ -417145,6 +418915,20 @@
         "questions": [
           "鬩神星掩住遠方的星，三臺望遠鏡都拍到了，論文怎麼只畫出兩條截線？",
           "2011 年論文把鬩神星稱作冥王星的雙胞胎，當年究竟可以分出誰比較寬嗎？"
+        ]
+      },
+      {
+        "id": "K135-0203~K135-0204",
+        "a": "K135-0203",
+        "b": "K135-0204",
+        "question_score": 0.103,
+        "answer_score": 0.017,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "「冷凍海鮮的冰不能算淨重」這件事，最早翻到的抱怨是誰寫給誰？",
+          "冷凍魚為什麼故意穿一層會慢慢變薄的冰？"
         ]
       },
       {
@@ -420732,6 +422516,34 @@
         ]
       },
       {
+        "id": "K135-0203~K135-0209",
+        "a": "K135-0203",
+        "b": "K135-0209",
+        "question_score": 0.085,
+        "answer_score": 0.043,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "「冷凍海鮮的冰不能算淨重」這件事，最早翻到的抱怨是誰寫給誰？",
+          "扇貝隔夜解凍，篩下滴出的水，為什麼不能整杯叫作原來的冰衣？"
+        ]
+      },
+      {
+        "id": "K135-0214~K135-0216",
+        "a": "K135-0214",
+        "b": "K135-0216",
+        "question_score": 0.085,
+        "answer_score": 0.013,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩列都寫同一家 S 公司，短重數字怎麼一列 5.91%、另一列 10.18%？",
+          "同一袋裹冰水產，標籤沒印「瀝乾重」，那一個數字就含外冰嗎？"
+        ]
+      },
+      {
         "id": "K66-013~K73-002",
         "a": "K66-013",
         "b": "K73-002",
@@ -420911,6 +422723,20 @@
         "questions": [
           "同一張普通悠遊卡，弄壞了還可能查得到，改成掉了怎麼連路都可能斷掉？",
           "退卡後拿到兩組資料，走進另一家超商使用 ibon，為什麼不必把已經交回的卡再放上感應區？"
+        ]
+      },
+      {
+        "id": "K135-0212~K135-0216",
+        "a": "K135-0212",
+        "b": "K135-0216",
+        "question_score": 0,
+        "answer_score": 0.084,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "加拿大的蝦仁雞尾酒也有液體，瓶上只寫整瓶可食內容的淨重就夠了嗎？",
+          "同一袋裹冰水產，標籤沒印「瀝乾重」，那一個數字就含外冰嗎？"
         ]
       },
       {
@@ -421513,6 +423339,34 @@
         "questions": [
           "新視野號飛近冥王星之後，把兩顆天體縮成硬幣大，直徑實際只差多寬？",
           "秤上還坐著鬩衛一，怎麼能說贏過冥王星的是鬩神星自己？"
+        ]
+      },
+      {
+        "id": "K135-0201~K135-0202",
+        "a": "K135-0201",
+        "b": "K135-0202",
+        "question_score": 0.04,
+        "answer_score": 0.082,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國進口水產抽驗表第 20 號冷凍蝦，10.18% 這個數字量的是什麼？",
+          "標一磅的包裝整袋有 1.180 磅，檢查表怎麼還會記成少了？"
+        ]
+      },
+      {
+        "id": "K135-0216~K135-0217",
+        "a": "K135-0216",
+        "b": "K135-0217",
+        "question_score": 0.082,
+        "answer_score": 0.081,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一袋裹冰水產，標籤沒印「瀝乾重」，那一個數字就含外冰嗎？",
+          "兩袋去冰蝦同價，一袋標 500 克、一袋標 400 克，該比較哪個每公斤數字？"
         ]
       },
       {
@@ -422367,6 +424221,20 @@
         "questions": [
           "退卡後拿到兩組資料，走進另一家超商使用 ibon，為什麼不必把已經交回的卡再放上感應區？",
           "開獎後才想到壞掉的卡，哪一種持卡人其實從一開始就在等獎金自己匯進去？"
+        ]
+      },
+      {
+        "id": "K135-0211~K135-0213",
+        "a": "K135-0211",
+        "b": "K135-0213",
+        "question_score": 0,
+        "answer_score": 0.079,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "蝦外的冰有鹽與檸檬酸，改叫冷凍醃汁就能連殼算蝦重嗎？",
+          "抽驗報告上寫「一個蝦樣」，工作人員其實拿了幾包？"
         ]
       },
       {
@@ -423476,6 +425344,20 @@
         ]
       },
       {
+        "id": "K135-0201~K135-0206",
+        "a": "K135-0201",
+        "b": "K135-0206",
+        "question_score": 0.075,
+        "answer_score": 0.017,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國進口水產抽驗表第 20 號冷凍蝦，10.18% 這個數字量的是什麼？",
+          "把冰都拿掉以後，裹過冰的蝦在冷凍實驗裡還能留下什麼差別？"
+        ]
+      },
+      {
         "id": "K89-041~K92-030",
         "a": "K89-041",
         "b": "K92-030",
@@ -424215,6 +426097,34 @@
         "questions": [
           "新視野號飛近冥王星之後，把兩顆天體縮成硬幣大，直徑實際只差多寬？",
           "鬩衛一在天空畫出的軌道，為什麼一度連朝向我們的那一面也可能看反了？"
+        ]
+      },
+      {
+        "id": "K135-0213~K135-0214",
+        "a": "K135-0213",
+        "b": "K135-0214",
+        "question_score": 0,
+        "answer_score": 0.073,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "抽驗報告上寫「一個蝦樣」，工作人員其實拿了幾包？",
+          "兩列都寫同一家 S 公司，短重數字怎麼一列 5.91%、另一列 10.18%？"
+        ]
+      },
+      {
+        "id": "K135-0213~K135-0215",
+        "a": "K135-0213",
+        "b": "K135-0215",
+        "question_score": 0,
+        "answer_score": 0.073,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "抽驗報告上寫「一個蝦樣」，工作人員其實拿了幾包？",
+          "FDA 這次標成違例的 12 個樣品，最後是 12 家業者被攔下嗎？"
         ]
       },
       {
@@ -425016,6 +426926,48 @@
         ]
       },
       {
+        "id": "K135-0201~K135-0211",
+        "a": "K135-0201",
+        "b": "K135-0211",
+        "question_score": 0.039,
+        "answer_score": 0.07,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國進口水產抽驗表第 20 號冷凍蝦，10.18% 這個數字量的是什麼？",
+          "蝦外的冰有鹽與檸檬酸，改叫冷凍醃汁就能連殼算蝦重嗎？"
+        ]
+      },
+      {
+        "id": "K135-0202~K135-0210",
+        "a": "K135-0202",
+        "b": "K135-0210",
+        "question_score": 0.049,
+        "answer_score": 0.07,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "標一磅的包裝整袋有 1.180 磅，檢查表怎麼還會記成少了？",
+          "蝦若封在整塊冰裡，檢查員還是只沖表面兩下嗎？"
+        ]
+      },
+      {
+        "id": "K135-0207~K135-0208",
+        "a": "K135-0207",
+        "b": "K135-0208",
+        "question_score": 0,
+        "answer_score": 0.07,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "用冷水噴蝦，是等蝦整隻變軟，還是摸不到外冰就停？",
+          "冰洗掉就馬上讀磅秤，或者一直等到再也不滴水，哪一步都漏了什麼？"
+        ]
+      },
+      {
         "id": "P63-017~P63-018",
         "a": "P63-017",
         "b": "P63-018",
@@ -425335,6 +427287,20 @@
         "questions": [
           "新視野號飛近冥王星之後，把兩顆天體縮成硬幣大，直徑實際只差多寬？",
           "只要跟著鬩衛一跑一圈，就能替哪兩個天體一起稱重？"
+        ]
+      },
+      {
+        "id": "K135-0203~K135-0215",
+        "a": "K135-0203",
+        "b": "K135-0215",
+        "question_score": 0,
+        "answer_score": 0.069,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "「冷凍海鮮的冰不能算淨重」這件事，最早翻到的抱怨是誰寫給誰？",
+          "FDA 這次標成違例的 12 個樣品，最後是 12 家業者被攔下嗎？"
         ]
       },
       {
@@ -425825,6 +427791,20 @@
         "questions": [
           "鬩衛一在天空畫出的軌道，為什麼一度連朝向我們的那一面也可能看反了？",
           "2006 年的行星名單真的一度出現十二個名字嗎？哪一頁讓冥衛一也上了榜？"
+        ]
+      },
+      {
+        "id": "K135-0206~K135-0212",
+        "a": "K135-0206",
+        "b": "K135-0212",
+        "question_score": 0.037,
+        "answer_score": 0.068,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把冰都拿掉以後，裹過冰的蝦在冷凍實驗裡還能留下什麼差別？",
+          "加拿大的蝦仁雞尾酒也有液體，瓶上只寫整瓶可食內容的淨重就夠了嗎？"
         ]
       },
       {
@@ -426682,6 +428662,20 @@
         ]
       },
       {
+        "id": "K135-0202~K135-0208",
+        "a": "K135-0202",
+        "b": "K135-0208",
+        "question_score": 0,
+        "answer_score": 0.065,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "標一磅的包裝整袋有 1.180 磅，檢查表怎麼還會記成少了？",
+          "冰洗掉就馬上讀磅秤，或者一直等到再也不滴水，哪一步都漏了什麼？"
+        ]
+      },
+      {
         "id": "L004~V3004",
         "a": "L004",
         "b": "V3004",
@@ -426917,6 +428911,34 @@
         "questions": [
           "哈伯想量鬩神星有多寬，為什麼先拍旁邊那個看似用不著的星點？",
           "同一份冥王星掩星資料，為什麼一種解把可見邊緣放在地面，另一種卻放在霾層？"
+        ]
+      },
+      {
+        "id": "K135-0201~K135-0203",
+        "a": "K135-0201",
+        "b": "K135-0203",
+        "question_score": 0.038,
+        "answer_score": 0.064,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國進口水產抽驗表第 20 號冷凍蝦，10.18% 這個數字量的是什麼？",
+          "「冷凍海鮮的冰不能算淨重」這件事，最早翻到的抱怨是誰寫給誰？"
+        ]
+      },
+      {
+        "id": "K135-0201~K135-0215",
+        "a": "K135-0201",
+        "b": "K135-0215",
+        "question_score": 0,
+        "answer_score": 0.064,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國進口水產抽驗表第 20 號冷凍蝦，10.18% 這個數字量的是什麼？",
+          "FDA 這次標成違例的 12 個樣品，最後是 12 家業者被攔下嗎？"
         ]
       },
       {
@@ -428191,6 +430213,34 @@
         "questions": [
           "如果把巴黎百米的畫面停在六十公尺，當時領先萊爾斯的兩個人，最後都比他先到嗎？",
           "東京一場百米選拔，為什麼小室跑贏自己那組，仍和另一組的第五名爭最後一個決賽席位？"
+        ]
+      },
+      {
+        "id": "K135-0211~K135-0214",
+        "a": "K135-0211",
+        "b": "K135-0214",
+        "question_score": 0,
+        "answer_score": 0.06,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "蝦外的冰有鹽與檸檬酸，改叫冷凍醃汁就能連殼算蝦重嗎？",
+          "兩列都寫同一家 S 公司，短重數字怎麼一列 5.91%、另一列 10.18%？"
+        ]
+      },
+      {
+        "id": "K135-0211~K135-0215",
+        "a": "K135-0211",
+        "b": "K135-0215",
+        "question_score": 0,
+        "answer_score": 0.06,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "蝦外的冰有鹽與檸檬酸，改叫冷凍醃汁就能連殼算蝦重嗎？",
+          "FDA 這次標成違例的 12 個樣品，最後是 12 家業者被攔下嗎？"
         ]
       },
       {
@@ -429636,6 +431686,76 @@
         ]
       },
       {
+        "id": "K135-0201~K135-0208",
+        "a": "K135-0201",
+        "b": "K135-0208",
+        "question_score": 0.036,
+        "answer_score": 0.056,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國進口水產抽驗表第 20 號冷凍蝦，10.18% 這個數字量的是什麼？",
+          "冰洗掉就馬上讀磅秤，或者一直等到再也不滴水，哪一步都漏了什麼？"
+        ]
+      },
+      {
+        "id": "K135-0203~K135-0214",
+        "a": "K135-0203",
+        "b": "K135-0214",
+        "question_score": 0,
+        "answer_score": 0.056,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "「冷凍海鮮的冰不能算淨重」這件事，最早翻到的抱怨是誰寫給誰？",
+          "兩列都寫同一家 S 公司，短重數字怎麼一列 5.91%、另一列 10.18%？"
+        ]
+      },
+      {
+        "id": "K135-0204~K135-0205",
+        "a": "K135-0204",
+        "b": "K135-0205",
+        "question_score": 0.056,
+        "answer_score": 0.043,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冷凍魚為什麼故意穿一層會慢慢變薄的冰？",
+          "如果只在運送帶上方噴水，重疊的兩塊凍魚哪裡會漏掉？"
+        ]
+      },
+      {
+        "id": "K135-0204~K135-0209",
+        "a": "K135-0204",
+        "b": "K135-0209",
+        "question_score": 0.056,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冷凍魚為什麼故意穿一層會慢慢變薄的冰？",
+          "扇貝隔夜解凍，篩下滴出的水，為什麼不能整杯叫作原來的冰衣？"
+        ]
+      },
+      {
+        "id": "K135-0214~K135-0215",
+        "a": "K135-0214",
+        "b": "K135-0215",
+        "question_score": 0,
+        "answer_score": 0.056,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩列都寫同一家 S 公司，短重數字怎麼一列 5.91%、另一列 10.18%？",
+          "FDA 這次標成違例的 12 個樣品，最後是 12 家業者被攔下嗎？"
+        ]
+      },
+      {
         "id": "L001~L017",
         "a": "L001",
         "b": "L017",
@@ -430588,6 +432708,20 @@
         ]
       },
       {
+        "id": "K135-0201~K135-0217",
+        "a": "K135-0201",
+        "b": "K135-0217",
+        "question_score": 0.037,
+        "answer_score": 0.053,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國進口水產抽驗表第 20 號冷凍蝦，10.18% 這個數字量的是什麼？",
+          "兩袋去冰蝦同價，一袋標 500 克、一袋標 400 克，該比較哪個每公斤數字？"
+        ]
+      },
+      {
         "id": "K90-019~K90-027",
         "a": "K90-019",
         "b": "K90-027",
@@ -431313,6 +433447,34 @@
         "questions": [
           "只要跟著鬩衛一跑一圈，就能替哪兩個天體一起稱重？",
           "2006 年的行星名單真的一度出現十二個名字嗎？哪一頁讓冥衛一也上了榜？"
+        ]
+      },
+      {
+        "id": "K135-0202~K135-0216",
+        "a": "K135-0202",
+        "b": "K135-0216",
+        "question_score": 0,
+        "answer_score": 0.051,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "標一磅的包裝整袋有 1.180 磅，檢查表怎麼還會記成少了？",
+          "同一袋裹冰水產，標籤沒印「瀝乾重」，那一個數字就含外冰嗎？"
+        ]
+      },
+      {
+        "id": "K135-0204~K135-0206",
+        "a": "K135-0204",
+        "b": "K135-0206",
+        "question_score": 0.051,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冷凍魚為什麼故意穿一層會慢慢變薄的冰？",
+          "把冰都拿掉以後，裹過冰的蝦在冷凍實驗裡還能留下什麼差別？"
         ]
       },
       {
@@ -432380,6 +434542,34 @@
         ]
       },
       {
+        "id": "K135-0201~K135-0204",
+        "a": "K135-0201",
+        "b": "K135-0204",
+        "question_score": 0.048,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國進口水產抽驗表第 20 號冷凍蝦，10.18% 這個數字量的是什麼？",
+          "冷凍魚為什麼故意穿一層會慢慢變薄的冰？"
+        ]
+      },
+      {
+        "id": "K135-0213~K135-0216",
+        "a": "K135-0213",
+        "b": "K135-0216",
+        "question_score": 0.048,
+        "answer_score": 0.013,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "抽驗報告上寫「一個蝦樣」，工作人員其實拿了幾包？",
+          "同一袋裹冰水產，標籤沒印「瀝乾重」，那一個數字就含外冰嗎？"
+        ]
+      },
+      {
         "id": "P53-001~P54-002",
         "a": "P53-001",
         "b": "P54-002",
@@ -432674,6 +434864,34 @@
         ]
       },
       {
+        "id": "K135-0203~K135-0212",
+        "a": "K135-0203",
+        "b": "K135-0212",
+        "question_score": 0.037,
+        "answer_score": 0.047,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "「冷凍海鮮的冰不能算淨重」這件事，最早翻到的抱怨是誰寫給誰？",
+          "加拿大的蝦仁雞尾酒也有液體，瓶上只寫整瓶可食內容的淨重就夠了嗎？"
+        ]
+      },
+      {
+        "id": "K135-0207~K135-0216",
+        "a": "K135-0207",
+        "b": "K135-0216",
+        "question_score": 0.047,
+        "answer_score": 0.027,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "用冷水噴蝦，是等蝦整隻變軟，還是摸不到外冰就停？",
+          "同一袋裹冰水產，標籤沒印「瀝乾重」，那一個數字就含外冰嗎？"
+        ]
+      },
+      {
         "id": "K6005~S60-005",
         "a": "K6005",
         "b": "S60-005",
@@ -432867,6 +435085,20 @@
         "questions": [
           "鬩神星掩住遠方的星，三臺望遠鏡都拍到了，論文怎麼只畫出兩條截線？",
           "冥王星也遮過一顆恆星，1988 年的研究者從哪種熄燈方式看出它有大氣？"
+        ]
+      },
+      {
+        "id": "K135-0202~K135-0211",
+        "a": "K135-0202",
+        "b": "K135-0211",
+        "question_score": 0,
+        "answer_score": 0.046,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "標一磅的包裝整袋有 1.180 磅，檢查表怎麼還會記成少了？",
+          "蝦外的冰有鹽與檸檬酸，改叫冷凍醃汁就能連殼算蝦重嗎？"
         ]
       },
       {
@@ -433276,6 +435508,48 @@
         ]
       },
       {
+        "id": "K135-0206~K135-0214",
+        "a": "K135-0206",
+        "b": "K135-0214",
+        "question_score": 0,
+        "answer_score": 0.045,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把冰都拿掉以後，裹過冰的蝦在冷凍實驗裡還能留下什麼差別？",
+          "兩列都寫同一家 S 公司，短重數字怎麼一列 5.91%、另一列 10.18%？"
+        ]
+      },
+      {
+        "id": "K135-0210~K135-0215",
+        "a": "K135-0210",
+        "b": "K135-0215",
+        "question_score": 0.045,
+        "answer_score": 0.014,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "蝦若封在整塊冰裡，檢查員還是只沖表面兩下嗎？",
+          "FDA 這次標成違例的 12 個樣品，最後是 12 家業者被攔下嗎？"
+        ]
+      },
+      {
+        "id": "K135-0214~K135-0217",
+        "a": "K135-0214",
+        "b": "K135-0217",
+        "question_score": 0.04,
+        "answer_score": 0.045,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩列都寫同一家 S 公司，短重數字怎麼一列 5.91%、另一列 10.18%？",
+          "兩袋去冰蝦同價，一袋標 500 克、一袋標 400 克，該比較哪個每公斤數字？"
+        ]
+      },
+      {
         "id": "K74-015~K74-018",
         "a": "K74-015",
         "b": "K74-018",
@@ -433637,6 +435911,34 @@
         "questions": [
           "明明有 9.784 與 9.789，為什麼巴黎百米成績表不把前者寫成 9.78？",
           "北京奧運女子百米，為什麼兩個人都跑 10.98，下一位直接成了第四名？"
+        ]
+      },
+      {
+        "id": "K135-0203~K135-0213",
+        "a": "K135-0203",
+        "b": "K135-0213",
+        "question_score": 0,
+        "answer_score": 0.044,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "「冷凍海鮮的冰不能算淨重」這件事，最早翻到的抱怨是誰寫給誰？",
+          "抽驗報告上寫「一個蝦樣」，工作人員其實拿了幾包？"
+        ]
+      },
+      {
+        "id": "K135-0209~K135-0211",
+        "a": "K135-0209",
+        "b": "K135-0211",
+        "question_score": 0.044,
+        "answer_score": 0.016,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "扇貝隔夜解凍，篩下滴出的水，為什麼不能整杯叫作原來的冰衣？",
+          "蝦外的冰有鹽與檸檬酸，改叫冷凍醃汁就能連殼算蝦重嗎？"
         ]
       },
       {
@@ -434130,6 +436432,20 @@
         ]
       },
       {
+        "id": "K135-0202~K135-0214",
+        "a": "K135-0202",
+        "b": "K135-0214",
+        "question_score": 0.043,
+        "answer_score": 0.043,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "標一磅的包裝整袋有 1.180 磅，檢查表怎麼還會記成少了？",
+          "兩列都寫同一家 S 公司，短重數字怎麼一列 5.91%、另一列 10.18%？"
+        ]
+      },
+      {
         "id": "P020~P138",
         "a": "P020",
         "b": "P138",
@@ -434561,6 +436877,20 @@
         "questions": [
           "鬩神星明明走過 2003 年那三張照片，第一輪巡天程式為什麼把它漏掉了？",
           "只要跟著鬩衛一跑一圈，就能替哪兩個天體一起稱重？"
+        ]
+      },
+      {
+        "id": "K135-0206~K135-0211",
+        "a": "K135-0206",
+        "b": "K135-0211",
+        "question_score": 0.042,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把冰都拿掉以後，裹過冰的蝦在冷凍實驗裡還能留下什麼差別？",
+          "蝦外的冰有鹽與檸檬酸，改叫冷凍醃汁就能連殼算蝦重嗎？"
         ]
       },
       {
@@ -435387,6 +437717,20 @@
         "questions": [
           "巴黎百米終點已經有主相機，對側場內那部相機到底在等什麼？",
           "北京奧運女子百米，為什麼兩個人都跑 10.98，下一位直接成了第四名？"
+        ]
+      },
+      {
+        "id": "K135-0203~K135-0206",
+        "a": "K135-0203",
+        "b": "K135-0206",
+        "question_score": 0.04,
+        "answer_score": 0.015,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "「冷凍海鮮的冰不能算淨重」這件事，最早翻到的抱怨是誰寫給誰？",
+          "把冰都拿掉以後，裹過冰的蝦在冷凍實驗裡還能留下什麼差別？"
         ]
       },
       {
@@ -436496,6 +438840,20 @@
         ]
       },
       {
+        "id": "K135-0206~K135-0208",
+        "a": "K135-0206",
+        "b": "K135-0208",
+        "question_score": 0.038,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把冰都拿掉以後，裹過冰的蝦在冷凍實驗裡還能留下什麼差別？",
+          "冰洗掉就馬上讀磅秤，或者一直等到再也不滴水，哪一步都漏了什麼？"
+        ]
+      },
+      {
         "id": "K92-017~K92-026",
         "a": "K92-017",
         "b": "K92-026",
@@ -436885,6 +439243,20 @@
         "questions": [
           "鬩衛一在天空畫出的軌道，為什麼一度連朝向我們的那一面也可能看反了？",
           "如果「清除軌道鄰域」看的是本領，為什麼比較重的鬩神星在這張表還低於冥王星？"
+        ]
+      },
+      {
+        "id": "K135-0203~K135-0216",
+        "a": "K135-0203",
+        "b": "K135-0216",
+        "question_score": 0,
+        "answer_score": 0.037,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "「冷凍海鮮的冰不能算淨重」這件事，最早翻到的抱怨是誰寫給誰？",
+          "同一袋裹冰水產，標籤沒印「瀝乾重」，那一個數字就含外冰嗎？"
         ]
       },
       {
@@ -437420,6 +439792,20 @@
         ]
       },
       {
+        "id": "K135-0205~K135-0213",
+        "a": "K135-0205",
+        "b": "K135-0213",
+        "question_score": 0,
+        "answer_score": 0.036,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果只在運送帶上方噴水，重疊的兩塊凍魚哪裡會漏掉？",
+          "抽驗報告上寫「一個蝦樣」，工作人員其實拿了幾包？"
+        ]
+      },
+      {
         "id": "L76-005~L76-006",
         "a": "L76-005",
         "b": "L76-006",
@@ -437781,6 +440167,34 @@
         "questions": [
           "巴黎百米跑完，觀眾等近半分鐘才知道結果，裁判也一定花了半分鐘才分出前兩人嗎？",
           "北京奧運女子百米，為什麼兩個人都跑 10.98，下一位直接成了第四名？"
+        ]
+      },
+      {
+        "id": "K135-0201~K135-0207",
+        "a": "K135-0201",
+        "b": "K135-0207",
+        "question_score": 0,
+        "answer_score": 0.035,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國進口水產抽驗表第 20 號冷凍蝦，10.18% 這個數字量的是什麼？",
+          "用冷水噴蝦，是等蝦整隻變軟，還是摸不到外冰就停？"
+        ]
+      },
+      {
+        "id": "K135-0208~K135-0217",
+        "a": "K135-0208",
+        "b": "K135-0217",
+        "question_score": 0,
+        "answer_score": 0.035,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冰洗掉就馬上讀磅秤，或者一直等到再也不滴水，哪一步都漏了什麼？",
+          "兩袋去冰蝦同價，一袋標 500 克、一袋標 400 克，該比較哪個每公斤數字？"
         ]
       },
       {
@@ -438988,6 +441402,48 @@
         ]
       },
       {
+        "id": "K135-0207~K135-0217",
+        "a": "K135-0207",
+        "b": "K135-0217",
+        "question_score": 0,
+        "answer_score": 0.033,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "用冷水噴蝦，是等蝦整隻變軟，還是摸不到外冰就停？",
+          "兩袋去冰蝦同價，一袋標 500 克、一袋標 400 克，該比較哪個每公斤數字？"
+        ]
+      },
+      {
+        "id": "K135-0209~K135-0212",
+        "a": "K135-0209",
+        "b": "K135-0212",
+        "question_score": 0,
+        "answer_score": 0.033,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "扇貝隔夜解凍，篩下滴出的水，為什麼不能整杯叫作原來的冰衣？",
+          "加拿大的蝦仁雞尾酒也有液體，瓶上只寫整瓶可食內容的淨重就夠了嗎？"
+        ]
+      },
+      {
+        "id": "K135-0211~K135-0217",
+        "a": "K135-0211",
+        "b": "K135-0217",
+        "question_score": 0,
+        "answer_score": 0.033,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "蝦外的冰有鹽與檸檬酸，改叫冷凍醃汁就能連殼算蝦重嗎？",
+          "兩袋去冰蝦同價，一袋標 500 克、一袋標 400 克，該比較哪個每公斤數字？"
+        ]
+      },
+      {
         "id": "M5001~M5002",
         "a": "M5001",
         "b": "M5002",
@@ -439632,6 +442088,34 @@
         ]
       },
       {
+        "id": "K135-0203~K135-0208",
+        "a": "K135-0203",
+        "b": "K135-0208",
+        "question_score": 0,
+        "answer_score": 0.032,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "「冷凍海鮮的冰不能算淨重」這件事，最早翻到的抱怨是誰寫給誰？",
+          "冰洗掉就馬上讀磅秤，或者一直等到再也不滴水，哪一步都漏了什麼？"
+        ]
+      },
+      {
+        "id": "K135-0213~K135-0217",
+        "a": "K135-0213",
+        "b": "K135-0217",
+        "question_score": 0,
+        "answer_score": 0.032,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "抽驗報告上寫「一個蝦樣」，工作人員其實拿了幾包？",
+          "兩袋去冰蝦同價，一袋標 500 克、一袋標 400 克，該比較哪個每公斤數字？"
+        ]
+      },
+      {
         "id": "K90-036~T52-002",
         "a": "T52-002",
         "b": "K90-036",
@@ -440119,6 +442603,62 @@
         "questions": [
           "巴黎百米跑完，觀眾等近半分鐘才知道結果，裁判也一定花了半分鐘才分出前兩人嗎？",
           "東京一場百米選拔，為什麼小室跑贏自己那組，仍和另一組的第五名爭最後一個決賽席位？"
+        ]
+      },
+      {
+        "id": "K135-0202~K135-0217",
+        "a": "K135-0202",
+        "b": "K135-0217",
+        "question_score": 0,
+        "answer_score": 0.031,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "標一磅的包裝整袋有 1.180 磅，檢查表怎麼還會記成少了？",
+          "兩袋去冰蝦同價，一袋標 500 克、一袋標 400 克，該比較哪個每公斤數字？"
+        ]
+      },
+      {
+        "id": "K135-0206~K135-0209",
+        "a": "K135-0206",
+        "b": "K135-0209",
+        "question_score": 0,
+        "answer_score": 0.031,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把冰都拿掉以後，裹過冰的蝦在冷凍實驗裡還能留下什麼差別？",
+          "扇貝隔夜解凍，篩下滴出的水，為什麼不能整杯叫作原來的冰衣？"
+        ]
+      },
+      {
+        "id": "K135-0206~K135-0213",
+        "a": "K135-0206",
+        "b": "K135-0213",
+        "question_score": 0,
+        "answer_score": 0.031,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把冰都拿掉以後，裹過冰的蝦在冷凍實驗裡還能留下什麼差別？",
+          "抽驗報告上寫「一個蝦樣」，工作人員其實拿了幾包？"
+        ]
+      },
+      {
+        "id": "K135-0207~K135-0209",
+        "a": "K135-0207",
+        "b": "K135-0209",
+        "question_score": 0,
+        "answer_score": 0.031,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "用冷水噴蝦，是等蝦整隻變軟，還是摸不到外冰就停？",
+          "扇貝隔夜解凍，篩下滴出的水，為什麼不能整杯叫作原來的冰衣？"
         ]
       },
       {
@@ -440735,6 +443275,20 @@
         "questions": [
           "鬩神星明明走過 2003 年那三張照片，第一輪巡天程式為什麼把它漏掉了？",
           "鬩衛一在天空畫出的軌道，為什麼一度連朝向我們的那一面也可能看反了？"
+        ]
+      },
+      {
+        "id": "K135-0215~K135-0217",
+        "a": "K135-0215",
+        "b": "K135-0217",
+        "question_score": 0,
+        "answer_score": 0.03,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "FDA 這次標成違例的 12 個樣品，最後是 12 家業者被攔下嗎？",
+          "兩袋去冰蝦同價，一袋標 500 克、一袋標 400 克，該比較哪個每公斤數字？"
         ]
       },
       {
@@ -441928,6 +444482,34 @@
         ]
       },
       {
+        "id": "K135-0202~K135-0203",
+        "a": "K135-0202",
+        "b": "K135-0203",
+        "question_score": 0,
+        "answer_score": 0.028,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "標一磅的包裝整袋有 1.180 磅，檢查表怎麼還會記成少了？",
+          "「冷凍海鮮的冰不能算淨重」這件事，最早翻到的抱怨是誰寫給誰？"
+        ]
+      },
+      {
+        "id": "K135-0208~K135-0216",
+        "a": "K135-0208",
+        "b": "K135-0216",
+        "question_score": 0,
+        "answer_score": 0.028,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冰洗掉就馬上讀磅秤，或者一直等到再也不滴水，哪一步都漏了什麼？",
+          "同一袋裹冰水產，標籤沒印「瀝乾重」，那一個數字就含外冰嗎？"
+        ]
+      },
+      {
         "id": "R36008~R36009",
         "a": "R36008",
         "b": "R36009",
@@ -442681,6 +445263,20 @@
         "questions": [
           "同一份冥王星掩星資料，為什麼一種解把可見邊緣放在地面，另一種卻放在霾層？",
           "鬩衛一在天空畫出的軌道，為什麼一度連朝向我們的那一面也可能看反了？"
+        ]
+      },
+      {
+        "id": "K135-0209~K135-0216",
+        "a": "K135-0209",
+        "b": "K135-0216",
+        "question_score": 0,
+        "answer_score": 0.026,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "扇貝隔夜解凍，篩下滴出的水，為什麼不能整杯叫作原來的冰衣？",
+          "同一袋裹冰水產，標籤沒印「瀝乾重」，那一個數字就含外冰嗎？"
         ]
       },
       {
@@ -444462,6 +447058,20 @@
         ]
       },
       {
+        "id": "K135-0205~K135-0212",
+        "a": "K135-0205",
+        "b": "K135-0212",
+        "question_score": 0,
+        "answer_score": 0.02,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果只在運送帶上方噴水，重疊的兩塊凍魚哪裡會漏掉？",
+          "加拿大的蝦仁雞尾酒也有液體，瓶上只寫整瓶可食內容的淨重就夠了嗎？"
+        ]
+      },
+      {
         "id": "R41002~R41003",
         "a": "R41002",
         "b": "R41003",
@@ -444532,6 +447142,20 @@
         ]
       },
       {
+        "id": "K135-0205~K135-0206",
+        "a": "K135-0205",
+        "b": "K135-0206",
+        "question_score": 0,
+        "answer_score": 0.019,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果只在運送帶上方噴水，重疊的兩塊凍魚哪裡會漏掉？",
+          "把冰都拿掉以後，裹過冰的蝦在冷凍實驗裡還能留下什麼差別？"
+        ]
+      },
+      {
         "id": "P57-001~X5002",
         "a": "X5002",
         "b": "P57-001",
@@ -444585,6 +447209,34 @@
         "questions": [
           "巴黎奧運男子百米八個人擠在終點，從第一名到第八名，公開成績才差多少？",
           "螢幕跑出一個秒數，裁判怎麼看得出這筆是手動鍵入，還是電子判圖讀出來的？"
+        ]
+      },
+      {
+        "id": "K135-0204~K135-0213",
+        "a": "K135-0204",
+        "b": "K135-0213",
+        "question_score": 0,
+        "answer_score": 0.018,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冷凍魚為什麼故意穿一層會慢慢變薄的冰？",
+          "抽驗報告上寫「一個蝦樣」，工作人員其實拿了幾包？"
+        ]
+      },
+      {
+        "id": "K135-0208~K135-0212",
+        "a": "K135-0208",
+        "b": "K135-0212",
+        "question_score": 0,
+        "answer_score": 0.018,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冰洗掉就馬上讀磅秤，或者一直等到再也不滴水，哪一步都漏了什麼？",
+          "加拿大的蝦仁雞尾酒也有液體，瓶上只寫整瓶可食內容的淨重就夠了嗎？"
         ]
       },
       {
@@ -444725,6 +447377,76 @@
         "questions": [
           "如果把巴黎百米的畫面停在六十公尺，當時領先萊爾斯的兩個人，最後都比他先到嗎？",
           "螢幕跑出一個秒數，裁判怎麼看得出這筆是手動鍵入，還是電子判圖讀出來的？"
+        ]
+      },
+      {
+        "id": "K135-0204~K135-0214",
+        "a": "K135-0204",
+        "b": "K135-0214",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冷凍魚為什麼故意穿一層會慢慢變薄的冰？",
+          "兩列都寫同一家 S 公司，短重數字怎麼一列 5.91%、另一列 10.18%？"
+        ]
+      },
+      {
+        "id": "K135-0207~K135-0211",
+        "a": "K135-0207",
+        "b": "K135-0211",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "用冷水噴蝦，是等蝦整隻變軟，還是摸不到外冰就停？",
+          "蝦外的冰有鹽與檸檬酸，改叫冷凍醃汁就能連殼算蝦重嗎？"
+        ]
+      },
+      {
+        "id": "K135-0208~K135-0211",
+        "a": "K135-0208",
+        "b": "K135-0211",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冰洗掉就馬上讀磅秤，或者一直等到再也不滴水，哪一步都漏了什麼？",
+          "蝦外的冰有鹽與檸檬酸，改叫冷凍醃汁就能連殼算蝦重嗎？"
+        ]
+      },
+      {
+        "id": "K135-0208~K135-0213",
+        "a": "K135-0208",
+        "b": "K135-0213",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冰洗掉就馬上讀磅秤，或者一直等到再也不滴水，哪一步都漏了什麼？",
+          "抽驗報告上寫「一個蝦樣」，工作人員其實拿了幾包？"
+        ]
+      },
+      {
+        "id": "K135-0211~K135-0212",
+        "a": "K135-0211",
+        "b": "K135-0212",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "蝦外的冰有鹽與檸檬酸，改叫冷凍醃汁就能連殼算蝦重嗎？",
+          "加拿大的蝦仁雞尾酒也有液體，瓶上只寫整瓶可食內容的淨重就夠了嗎？"
         ]
       },
       {
@@ -444963,6 +447685,76 @@
         "questions": [
           "終點照裡八個人排成一張圖，為什麼從左往右讀的竟是不同時間？",
           "明明有 9.784 與 9.789，為什麼巴黎百米成績表不把前者寫成 9.78？"
+        ]
+      },
+      {
+        "id": "K135-0204~K135-0210",
+        "a": "K135-0204",
+        "b": "K135-0210",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冷凍魚為什麼故意穿一層會慢慢變薄的冰？",
+          "蝦若封在整塊冰裡，檢查員還是只沖表面兩下嗎？"
+        ]
+      },
+      {
+        "id": "K135-0206~K135-0207",
+        "a": "K135-0206",
+        "b": "K135-0207",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把冰都拿掉以後，裹過冰的蝦在冷凍實驗裡還能留下什麼差別？",
+          "用冷水噴蝦，是等蝦整隻變軟，還是摸不到外冰就停？"
+        ]
+      },
+      {
+        "id": "K135-0208~K135-0214",
+        "a": "K135-0208",
+        "b": "K135-0214",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冰洗掉就馬上讀磅秤，或者一直等到再也不滴水，哪一步都漏了什麼？",
+          "兩列都寫同一家 S 公司，短重數字怎麼一列 5.91%、另一列 10.18%？"
+        ]
+      },
+      {
+        "id": "K135-0208~K135-0215",
+        "a": "K135-0208",
+        "b": "K135-0215",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冰洗掉就馬上讀磅秤，或者一直等到再也不滴水，哪一步都漏了什麼？",
+          "FDA 這次標成違例的 12 個樣品，最後是 12 家業者被攔下嗎？"
+        ]
+      },
+      {
+        "id": "K135-0209~K135-0217",
+        "a": "K135-0209",
+        "b": "K135-0217",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "扇貝隔夜解凍，篩下滴出的水，為什麼不能整杯叫作原來的冰衣？",
+          "兩袋去冰蝦同價，一袋標 500 克、一袋標 400 克，該比較哪個每公斤數字？"
         ]
       },
       {
@@ -445369,6 +448161,118 @@
         "questions": [
           "螢幕跑出一個秒數，裁判怎麼看得出這筆是手動鍵入，還是電子判圖讀出來的？",
           "北京奧運女子百米，為什麼兩個人都跑 10.98，下一位直接成了第四名？"
+        ]
+      },
+      {
+        "id": "K135-0202~K135-0209",
+        "a": "K135-0202",
+        "b": "K135-0209",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "標一磅的包裝整袋有 1.180 磅，檢查表怎麼還會記成少了？",
+          "扇貝隔夜解凍，篩下滴出的水，為什麼不能整杯叫作原來的冰衣？"
+        ]
+      },
+      {
+        "id": "K135-0202~K135-0213",
+        "a": "K135-0202",
+        "b": "K135-0213",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "標一磅的包裝整袋有 1.180 磅，檢查表怎麼還會記成少了？",
+          "抽驗報告上寫「一個蝦樣」，工作人員其實拿了幾包？"
+        ]
+      },
+      {
+        "id": "K135-0203~K135-0207",
+        "a": "K135-0203",
+        "b": "K135-0207",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "「冷凍海鮮的冰不能算淨重」這件事，最早翻到的抱怨是誰寫給誰？",
+          "用冷水噴蝦，是等蝦整隻變軟，還是摸不到外冰就停？"
+        ]
+      },
+      {
+        "id": "K135-0203~K135-0217",
+        "a": "K135-0203",
+        "b": "K135-0217",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "「冷凍海鮮的冰不能算淨重」這件事，最早翻到的抱怨是誰寫給誰？",
+          "兩袋去冰蝦同價，一袋標 500 克、一袋標 400 克，該比較哪個每公斤數字？"
+        ]
+      },
+      {
+        "id": "K135-0206~K135-0210",
+        "a": "K135-0206",
+        "b": "K135-0210",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把冰都拿掉以後，裹過冰的蝦在冷凍實驗裡還能留下什麼差別？",
+          "蝦若封在整塊冰裡，檢查員還是只沖表面兩下嗎？"
+        ]
+      },
+      {
+        "id": "K135-0206~K135-0215",
+        "a": "K135-0206",
+        "b": "K135-0215",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把冰都拿掉以後，裹過冰的蝦在冷凍實驗裡還能留下什麼差別？",
+          "FDA 這次標成違例的 12 個樣品，最後是 12 家業者被攔下嗎？"
+        ]
+      },
+      {
+        "id": "K135-0207~K135-0215",
+        "a": "K135-0207",
+        "b": "K135-0215",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "用冷水噴蝦，是等蝦整隻變軟，還是摸不到外冰就停？",
+          "FDA 這次標成違例的 12 個樣品，最後是 12 家業者被攔下嗎？"
+        ]
+      },
+      {
+        "id": "K135-0210~K135-0217",
+        "a": "K135-0210",
+        "b": "K135-0217",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "蝦若封在整塊冰裡，檢查員還是只沖表面兩下嗎？",
+          "兩袋去冰蝦同價，一袋標 500 克、一袋標 400 克，該比較哪個每公斤數字？"
         ]
       },
       {
@@ -445985,6 +448889,34 @@
         "questions": [
           "新發現的鬩神星，怎麼能在研究發表時就有十六年的行蹤可查？",
           "只要跟著鬩衛一跑一圈，就能替哪兩個天體一起稱重？"
+        ]
+      },
+      {
+        "id": "K135-0202~K135-0215",
+        "a": "K135-0202",
+        "b": "K135-0215",
+        "question_score": 0,
+        "answer_score": 0.014,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "標一磅的包裝整袋有 1.180 磅，檢查表怎麼還會記成少了？",
+          "FDA 這次標成違例的 12 個樣品，最後是 12 家業者被攔下嗎？"
+        ]
+      },
+      {
+        "id": "K135-0209~K135-0210",
+        "a": "K135-0209",
+        "b": "K135-0210",
+        "question_score": 0,
+        "answer_score": 0.014,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "扇貝隔夜解凍，篩下滴出的水，為什麼不能整杯叫作原來的冰衣？",
+          "蝦若封在整塊冰裡，檢查員還是只沖表面兩下嗎？"
         ]
       },
       {
@@ -446811,6 +449743,34 @@
         "questions": [
           "冥王星也遮過一顆恆星，1988 年的研究者從哪種熄燈方式看出它有大氣？",
           "鬩衛一在天空畫出的軌道，為什麼一度連朝向我們的那一面也可能看反了？"
+        ]
+      },
+      {
+        "id": "K135-0206~K135-0216",
+        "a": "K135-0206",
+        "b": "K135-0216",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把冰都拿掉以後，裹過冰的蝦在冷凍實驗裡還能留下什麼差別？",
+          "同一袋裹冰水產，標籤沒印「瀝乾重」，那一個數字就含外冰嗎？"
+        ]
+      },
+      {
+        "id": "K135-0211~K135-0216",
+        "a": "K135-0211",
+        "b": "K135-0216",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "蝦外的冰有鹽與檸檬酸，改叫冷凍醃汁就能連殼算蝦重嗎？",
+          "同一袋裹冰水產，標籤沒印「瀝乾重」，那一個數字就含外冰嗎？"
         ]
       },
       {
@@ -451126,6 +454086,608 @@
         ]
       },
       {
+        "id": "K135-0201~K135-0205",
+        "a": "K135-0201",
+        "b": "K135-0205",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國進口水產抽驗表第 20 號冷凍蝦，10.18% 這個數字量的是什麼？",
+          "如果只在運送帶上方噴水，重疊的兩塊凍魚哪裡會漏掉？"
+        ]
+      },
+      {
+        "id": "K135-0201~K135-0209",
+        "a": "K135-0201",
+        "b": "K135-0209",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國進口水產抽驗表第 20 號冷凍蝦，10.18% 這個數字量的是什麼？",
+          "扇貝隔夜解凍，篩下滴出的水，為什麼不能整杯叫作原來的冰衣？"
+        ]
+      },
+      {
+        "id": "K135-0201~K135-0210",
+        "a": "K135-0201",
+        "b": "K135-0210",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國進口水產抽驗表第 20 號冷凍蝦，10.18% 這個數字量的是什麼？",
+          "蝦若封在整塊冰裡，檢查員還是只沖表面兩下嗎？"
+        ]
+      },
+      {
+        "id": "K135-0201~K135-0212",
+        "a": "K135-0201",
+        "b": "K135-0212",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國進口水產抽驗表第 20 號冷凍蝦，10.18% 這個數字量的是什麼？",
+          "加拿大的蝦仁雞尾酒也有液體，瓶上只寫整瓶可食內容的淨重就夠了嗎？"
+        ]
+      },
+      {
+        "id": "K135-0202~K135-0204",
+        "a": "K135-0202",
+        "b": "K135-0204",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "標一磅的包裝整袋有 1.180 磅，檢查表怎麼還會記成少了？",
+          "冷凍魚為什麼故意穿一層會慢慢變薄的冰？"
+        ]
+      },
+      {
+        "id": "K135-0202~K135-0205",
+        "a": "K135-0202",
+        "b": "K135-0205",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "標一磅的包裝整袋有 1.180 磅，檢查表怎麼還會記成少了？",
+          "如果只在運送帶上方噴水，重疊的兩塊凍魚哪裡會漏掉？"
+        ]
+      },
+      {
+        "id": "K135-0202~K135-0206",
+        "a": "K135-0202",
+        "b": "K135-0206",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "標一磅的包裝整袋有 1.180 磅，檢查表怎麼還會記成少了？",
+          "把冰都拿掉以後，裹過冰的蝦在冷凍實驗裡還能留下什麼差別？"
+        ]
+      },
+      {
+        "id": "K135-0202~K135-0212",
+        "a": "K135-0202",
+        "b": "K135-0212",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "標一磅的包裝整袋有 1.180 磅，檢查表怎麼還會記成少了？",
+          "加拿大的蝦仁雞尾酒也有液體，瓶上只寫整瓶可食內容的淨重就夠了嗎？"
+        ]
+      },
+      {
+        "id": "K135-0203~K135-0205",
+        "a": "K135-0203",
+        "b": "K135-0205",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "「冷凍海鮮的冰不能算淨重」這件事，最早翻到的抱怨是誰寫給誰？",
+          "如果只在運送帶上方噴水，重疊的兩塊凍魚哪裡會漏掉？"
+        ]
+      },
+      {
+        "id": "K135-0203~K135-0210",
+        "a": "K135-0203",
+        "b": "K135-0210",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "「冷凍海鮮的冰不能算淨重」這件事，最早翻到的抱怨是誰寫給誰？",
+          "蝦若封在整塊冰裡，檢查員還是只沖表面兩下嗎？"
+        ]
+      },
+      {
+        "id": "K135-0204~K135-0207",
+        "a": "K135-0204",
+        "b": "K135-0207",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冷凍魚為什麼故意穿一層會慢慢變薄的冰？",
+          "用冷水噴蝦，是等蝦整隻變軟，還是摸不到外冰就停？"
+        ]
+      },
+      {
+        "id": "K135-0204~K135-0208",
+        "a": "K135-0204",
+        "b": "K135-0208",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冷凍魚為什麼故意穿一層會慢慢變薄的冰？",
+          "冰洗掉就馬上讀磅秤，或者一直等到再也不滴水，哪一步都漏了什麼？"
+        ]
+      },
+      {
+        "id": "K135-0204~K135-0212",
+        "a": "K135-0204",
+        "b": "K135-0212",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冷凍魚為什麼故意穿一層會慢慢變薄的冰？",
+          "加拿大的蝦仁雞尾酒也有液體，瓶上只寫整瓶可食內容的淨重就夠了嗎？"
+        ]
+      },
+      {
+        "id": "K135-0204~K135-0215",
+        "a": "K135-0204",
+        "b": "K135-0215",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冷凍魚為什麼故意穿一層會慢慢變薄的冰？",
+          "FDA 這次標成違例的 12 個樣品，最後是 12 家業者被攔下嗎？"
+        ]
+      },
+      {
+        "id": "K135-0204~K135-0216",
+        "a": "K135-0204",
+        "b": "K135-0216",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冷凍魚為什麼故意穿一層會慢慢變薄的冰？",
+          "同一袋裹冰水產，標籤沒印「瀝乾重」，那一個數字就含外冰嗎？"
+        ]
+      },
+      {
+        "id": "K135-0204~K135-0217",
+        "a": "K135-0204",
+        "b": "K135-0217",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冷凍魚為什麼故意穿一層會慢慢變薄的冰？",
+          "兩袋去冰蝦同價，一袋標 500 克、一袋標 400 克，該比較哪個每公斤數字？"
+        ]
+      },
+      {
+        "id": "K135-0205~K135-0207",
+        "a": "K135-0205",
+        "b": "K135-0207",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果只在運送帶上方噴水，重疊的兩塊凍魚哪裡會漏掉？",
+          "用冷水噴蝦，是等蝦整隻變軟，還是摸不到外冰就停？"
+        ]
+      },
+      {
+        "id": "K135-0205~K135-0208",
+        "a": "K135-0205",
+        "b": "K135-0208",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果只在運送帶上方噴水，重疊的兩塊凍魚哪裡會漏掉？",
+          "冰洗掉就馬上讀磅秤，或者一直等到再也不滴水，哪一步都漏了什麼？"
+        ]
+      },
+      {
+        "id": "K135-0205~K135-0209",
+        "a": "K135-0205",
+        "b": "K135-0209",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果只在運送帶上方噴水，重疊的兩塊凍魚哪裡會漏掉？",
+          "扇貝隔夜解凍，篩下滴出的水，為什麼不能整杯叫作原來的冰衣？"
+        ]
+      },
+      {
+        "id": "K135-0205~K135-0210",
+        "a": "K135-0205",
+        "b": "K135-0210",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果只在運送帶上方噴水，重疊的兩塊凍魚哪裡會漏掉？",
+          "蝦若封在整塊冰裡，檢查員還是只沖表面兩下嗎？"
+        ]
+      },
+      {
+        "id": "K135-0205~K135-0211",
+        "a": "K135-0205",
+        "b": "K135-0211",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果只在運送帶上方噴水，重疊的兩塊凍魚哪裡會漏掉？",
+          "蝦外的冰有鹽與檸檬酸，改叫冷凍醃汁就能連殼算蝦重嗎？"
+        ]
+      },
+      {
+        "id": "K135-0205~K135-0214",
+        "a": "K135-0205",
+        "b": "K135-0214",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果只在運送帶上方噴水，重疊的兩塊凍魚哪裡會漏掉？",
+          "兩列都寫同一家 S 公司，短重數字怎麼一列 5.91%、另一列 10.18%？"
+        ]
+      },
+      {
+        "id": "K135-0205~K135-0215",
+        "a": "K135-0205",
+        "b": "K135-0215",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果只在運送帶上方噴水，重疊的兩塊凍魚哪裡會漏掉？",
+          "FDA 這次標成違例的 12 個樣品，最後是 12 家業者被攔下嗎？"
+        ]
+      },
+      {
+        "id": "K135-0205~K135-0216",
+        "a": "K135-0205",
+        "b": "K135-0216",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果只在運送帶上方噴水，重疊的兩塊凍魚哪裡會漏掉？",
+          "同一袋裹冰水產，標籤沒印「瀝乾重」，那一個數字就含外冰嗎？"
+        ]
+      },
+      {
+        "id": "K135-0205~K135-0217",
+        "a": "K135-0205",
+        "b": "K135-0217",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果只在運送帶上方噴水，重疊的兩塊凍魚哪裡會漏掉？",
+          "兩袋去冰蝦同價，一袋標 500 克、一袋標 400 克，該比較哪個每公斤數字？"
+        ]
+      },
+      {
+        "id": "K135-0206~K135-0217",
+        "a": "K135-0206",
+        "b": "K135-0217",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把冰都拿掉以後，裹過冰的蝦在冷凍實驗裡還能留下什麼差別？",
+          "兩袋去冰蝦同價，一袋標 500 克、一袋標 400 克，該比較哪個每公斤數字？"
+        ]
+      },
+      {
+        "id": "K135-0207~K135-0212",
+        "a": "K135-0207",
+        "b": "K135-0212",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "用冷水噴蝦，是等蝦整隻變軟，還是摸不到外冰就停？",
+          "加拿大的蝦仁雞尾酒也有液體，瓶上只寫整瓶可食內容的淨重就夠了嗎？"
+        ]
+      },
+      {
+        "id": "K135-0207~K135-0213",
+        "a": "K135-0207",
+        "b": "K135-0213",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "用冷水噴蝦，是等蝦整隻變軟，還是摸不到外冰就停？",
+          "抽驗報告上寫「一個蝦樣」，工作人員其實拿了幾包？"
+        ]
+      },
+      {
+        "id": "K135-0207~K135-0214",
+        "a": "K135-0207",
+        "b": "K135-0214",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "用冷水噴蝦，是等蝦整隻變軟，還是摸不到外冰就停？",
+          "兩列都寫同一家 S 公司，短重數字怎麼一列 5.91%、另一列 10.18%？"
+        ]
+      },
+      {
+        "id": "K135-0208~K135-0209",
+        "a": "K135-0208",
+        "b": "K135-0209",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冰洗掉就馬上讀磅秤，或者一直等到再也不滴水，哪一步都漏了什麼？",
+          "扇貝隔夜解凍，篩下滴出的水，為什麼不能整杯叫作原來的冰衣？"
+        ]
+      },
+      {
+        "id": "K135-0209~K135-0213",
+        "a": "K135-0209",
+        "b": "K135-0213",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "扇貝隔夜解凍，篩下滴出的水，為什麼不能整杯叫作原來的冰衣？",
+          "抽驗報告上寫「一個蝦樣」，工作人員其實拿了幾包？"
+        ]
+      },
+      {
+        "id": "K135-0209~K135-0214",
+        "a": "K135-0209",
+        "b": "K135-0214",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "扇貝隔夜解凍，篩下滴出的水，為什麼不能整杯叫作原來的冰衣？",
+          "兩列都寫同一家 S 公司，短重數字怎麼一列 5.91%、另一列 10.18%？"
+        ]
+      },
+      {
+        "id": "K135-0209~K135-0215",
+        "a": "K135-0209",
+        "b": "K135-0215",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "扇貝隔夜解凍，篩下滴出的水，為什麼不能整杯叫作原來的冰衣？",
+          "FDA 這次標成違例的 12 個樣品，最後是 12 家業者被攔下嗎？"
+        ]
+      },
+      {
+        "id": "K135-0210~K135-0211",
+        "a": "K135-0210",
+        "b": "K135-0211",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "蝦若封在整塊冰裡，檢查員還是只沖表面兩下嗎？",
+          "蝦外的冰有鹽與檸檬酸，改叫冷凍醃汁就能連殼算蝦重嗎？"
+        ]
+      },
+      {
+        "id": "K135-0210~K135-0212",
+        "a": "K135-0210",
+        "b": "K135-0212",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "蝦若封在整塊冰裡，檢查員還是只沖表面兩下嗎？",
+          "加拿大的蝦仁雞尾酒也有液體，瓶上只寫整瓶可食內容的淨重就夠了嗎？"
+        ]
+      },
+      {
+        "id": "K135-0210~K135-0213",
+        "a": "K135-0210",
+        "b": "K135-0213",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "蝦若封在整塊冰裡，檢查員還是只沖表面兩下嗎？",
+          "抽驗報告上寫「一個蝦樣」，工作人員其實拿了幾包？"
+        ]
+      },
+      {
+        "id": "K135-0210~K135-0214",
+        "a": "K135-0210",
+        "b": "K135-0214",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "蝦若封在整塊冰裡，檢查員還是只沖表面兩下嗎？",
+          "兩列都寫同一家 S 公司，短重數字怎麼一列 5.91%、另一列 10.18%？"
+        ]
+      },
+      {
+        "id": "K135-0210~K135-0216",
+        "a": "K135-0210",
+        "b": "K135-0216",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "蝦若封在整塊冰裡，檢查員還是只沖表面兩下嗎？",
+          "同一袋裹冰水產，標籤沒印「瀝乾重」，那一個數字就含外冰嗎？"
+        ]
+      },
+      {
+        "id": "K135-0212~K135-0213",
+        "a": "K135-0212",
+        "b": "K135-0213",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "加拿大的蝦仁雞尾酒也有液體，瓶上只寫整瓶可食內容的淨重就夠了嗎？",
+          "抽驗報告上寫「一個蝦樣」，工作人員其實拿了幾包？"
+        ]
+      },
+      {
+        "id": "K135-0212~K135-0214",
+        "a": "K135-0212",
+        "b": "K135-0214",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "加拿大的蝦仁雞尾酒也有液體，瓶上只寫整瓶可食內容的淨重就夠了嗎？",
+          "兩列都寫同一家 S 公司，短重數字怎麼一列 5.91%、另一列 10.18%？"
+        ]
+      },
+      {
+        "id": "K135-0212~K135-0215",
+        "a": "K135-0212",
+        "b": "K135-0215",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "加拿大的蝦仁雞尾酒也有液體，瓶上只寫整瓶可食內容的淨重就夠了嗎？",
+          "FDA 這次標成違例的 12 個樣品，最後是 12 家業者被攔下嗎？"
+        ]
+      },
+      {
+        "id": "K135-0212~K135-0217",
+        "a": "K135-0212",
+        "b": "K135-0217",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "加拿大的蝦仁雞尾酒也有液體，瓶上只寫整瓶可食內容的淨重就夠了嗎？",
+          "兩袋去冰蝦同價，一袋標 500 克、一袋標 400 克，該比較哪個每公斤數字？"
+        ]
+      },
+      {
+        "id": "K135-0215~K135-0216",
+        "a": "K135-0215",
+        "b": "K135-0216",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "FDA 這次標成違例的 12 個樣品，最後是 12 家業者被攔下嗎？",
+          "同一袋裹冰水產，標籤沒印「瀝乾重」，那一個數字就含外冰嗎？"
+        ]
+      },
+      {
         "id": "L011~L077",
         "a": "L011",
         "b": "L077",
@@ -452600,10 +456162,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-19-pool-7801",
-    "target_count": 7801,
+    "revision": "2026-11-19-pool-7837",
+    "target_count": 7837,
     "reviewed_on": "2026-11-19",
-    "reason": "第134批新增 37 張素材，入選 7764 → 7801。先前：第133批新增 36 張素材，入選 7728 → 7764。先前：第132批新增 37 張素材，入選 7691 → 7728。先前：第131批新增 37 張素材，入選 7654 → 7691。先前：第130批新增 37 張素材，入選 7617 → 7654。先前：第129批新增 37 張素材，入選 7580 → 7617。先前：第128批新增 37 張素材，入選 7543 → 7580。先前：第127批新增 37 張素材，入選 7506 → 7543。先前：第126批新增 37 張素材，入選 7469 → 7506。先前：第125批新增 36 張素材，入選 7433 → 7469。先前：第124批新增 35 張素材，入選 7398 → 7433。先前：第123批新增 37 張素材，入選 7361 → 7398。先前：第122批新增 37 張素材，入選 7324 → 7361。先前：第121批新增 36 張素材，含日常設計、樂譜判讀及旅用電器規格。入選 7288 → 7324。先前：第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
+    "reason": "第135批新增 36 張素材，入選 7801 → 7837。先前：第134批新增 37 張素材，入選 7764 → 7801。先前：第133批新增 36 張素材，入選 7728 → 7764。先前：第132批新增 37 張素材，入選 7691 → 7728。先前：第131批新增 37 張素材，入選 7654 → 7691。先前：第130批新增 37 張素材，入選 7617 → 7654。先前：第129批新增 37 張素材，入選 7580 → 7617。先前：第128批新增 37 張素材，入選 7543 → 7580。先前：第127批新增 37 張素材，入選 7506 → 7543。先前：第126批新增 37 張素材，入選 7469 → 7506。先前：第125批新增 36 張素材，入選 7433 → 7469。先前：第124批新增 35 張素材，入選 7398 → 7433。先前：第123批新增 37 張素材，入選 7361 → 7398。先前：第122批新增 37 張素材，入選 7324 → 7361。先前：第121批新增 36 張素材，含日常設計、樂譜判讀及旅用電器規格。入選 7288 → 7324。先前：第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -460405,7 +463967,43 @@
       "K134-0215",
       "K134-0216",
       "K134-0217",
-      "K134-0218"
+      "K134-0218",
+      "K135-0101",
+      "K135-0102",
+      "K135-0103",
+      "K135-0104",
+      "K135-0105",
+      "K135-0106",
+      "K135-0107",
+      "K135-0001",
+      "K135-0002",
+      "K135-0003",
+      "K135-0004",
+      "K135-0005",
+      "K135-0006",
+      "K135-0007",
+      "K135-0008",
+      "K135-0009",
+      "K135-0010",
+      "K135-0011",
+      "K135-0012",
+      "K135-0201",
+      "K135-0202",
+      "K135-0203",
+      "K135-0204",
+      "K135-0205",
+      "K135-0206",
+      "K135-0207",
+      "K135-0208",
+      "K135-0209",
+      "K135-0210",
+      "K135-0211",
+      "K135-0212",
+      "K135-0213",
+      "K135-0214",
+      "K135-0215",
+      "K135-0216",
+      "K135-0217"
     ],
     "overflow": [
       {
@@ -464785,6 +468383,94 @@
       "existing_ids": [],
       "origin": "wave134-research-20261119",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave134-research-20261119.json"
+    },
+    {
+      "id": "X135C-NA01",
+      "question": "金屬音板只敲一下，為什麼顫音琴共鳴管上方的旋片轉動就能讓音量忽大忽小？",
+      "reason": "讀製造商顫音琴旋片示意，旋片開閉共鳴管口的答案已由 K126-0401 收錄；本輪馬林巴題另查木音板調音。",
+      "existing_ids": [
+        "K126-0401"
+      ],
+      "origin": "wave135-craft-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave135-craft-20261119.json"
+    },
+    {
+      "id": "X135C-NA02",
+      "question": "低音管的彎管沒有裂，那根像針的東西到底怎麼會伸進它的中央？",
+      "reason": "讀製造商彎管弱音鍵的剖面圖，沿音孔伸至中央的小管已是 K126-0403 的答案，與這批木製雙管節的斜孔分開。",
+      "existing_ids": [
+        "K126-0403"
+      ],
+      "origin": "wave135-craft-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave135-craft-20261119.json"
+    },
+    {
+      "id": "X135C-NA03",
+      "question": "有兩支直笛的第四、第五孔大小剛好反過來，吹 Fa 為什麼要換指法？",
+      "reason": "重新比對指法與孔徑，德式、巴洛克式高音直笛的 Fa 指法和外形對照見 K126-0402。",
+      "existing_ids": [
+        "K126-0402"
+      ],
+      "origin": "wave135-craft-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave135-craft-20261119.json"
+    },
+    {
+      "id": "X135E-NA001",
+      "question": "同樣重量的卡片放進正方形信封，在美國寄就要加錢嗎？",
+      "existing_ids": [
+        "K122-0003"
+      ],
+      "reason": "舊題已由信封形狀解釋不可機器處理的附加費。本輪只採卡片價尺寸條文明列的四等分例外。",
+      "origin": "wave135-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave135-everyday-20261119.json"
+    },
+    {
+      "id": "X135E-NA002",
+      "question": "足球從邊線直接擲進對方或自己球門，各怎麼重新開球？",
+      "existing_ids": [
+        "K119-0401"
+      ],
+      "reason": "已打開 IFAB Law 15，球門球和角球兩個分支與舊題相同。",
+      "origin": "wave135-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave135-everyday-20261119.json"
+    },
+    {
+      "id": "X135E-NA003",
+      "question": "大黃的綠葉柄一定要等到變紅才採嗎？",
+      "existing_ids": [
+        "K126-0012"
+      ],
+      "reason": "明尼蘇達大學大黃指南說明品種差異；紅與綠不是一體適用的成熟判準，已收入舊題。",
+      "origin": "wave135-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave135-everyday-20261119.json"
+    },
+    {
+      "id": "R135-NA01",
+      "question": "解凍時滴下的汁有沒有肉細胞裡的酵素？",
+      "reason": "K66-008 已用豬里肌的酵素與凍融循環回答。本批只量外冰與解凍滴液的兩個重量，不再做酵素鑑別。",
+      "existing_ids": [
+        "K66-008"
+      ],
+      "origin": "wave135-research-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave135-research-20261119.json"
+    },
+    {
+      "id": "R135-NA02",
+      "question": "拿解凍後的魚汁去驗酵素，能不能看出魚以前凍過？",
+      "reason": "X34-005 已用黃鰭鮪的酵素活性解釋凍融。本批不把個別水分多寡當作凍過幾次的鑑定法。",
+      "existing_ids": [
+        "X34-005"
+      ],
+      "origin": "wave135-research-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave135-research-20261119.json"
+    },
+    {
+      "id": "R135-NA03",
+      "question": "FDA 原表的 46% 是不是說貨架上每兩包蝦就有一包短重？",
+      "reason": "這次抽的是進口狀態的多種水產，採樣與檢查層級都是貨批樣品。機關亦說設計不能代表全市場；不能用這個比率向貨架上的個包下注。",
+      "existing_ids": [],
+      "origin": "wave135-research-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave135-research-20261119.json"
     },
     {
       "question": "螞蟻的氣味如何指向食物？",
