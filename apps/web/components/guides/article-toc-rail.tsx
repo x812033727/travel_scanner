@@ -1,19 +1,35 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { ArrowUp, List, X } from "lucide-react";
+import { modalFocusTargets, registerModalLayer } from "@/lib/modal-sheet";
 
 export type ArticleTocHeading = {
   id: string;
   text: string;
 };
 
-function useScrollProgress(): number {
+function useScrollProgress(newsReading: boolean): number {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    const story = newsReading ? document.querySelector<HTMLElement>("[data-news-body]") : null;
+    let bottomNav: Element | null = null;
     function updateProgress() {
       const doc = document.documentElement;
+      if (story) {
+        const bounds = story.getBoundingClientRect();
+        // The navigation can mount after its feature settings load.
+        if (!bottomNav?.isConnected) bottomNav = document.querySelector(".app-bottom-nav");
+        const nav = bottomNav?.getBoundingClientRect();
+        const readingEdge = nav?.height ? Math.min(doc.clientHeight, nav.top) : doc.clientHeight;
+        // Begin when the story enters view. Finish when its last line clears the bottom navigation.
+        const start = Math.max(0, window.scrollY + bounds.top - readingEdge);
+        const end = window.scrollY + bounds.bottom - readingEdge;
+        const ratio = end <= start ? Number(window.scrollY >= end) : (window.scrollY - start) / (end - start);
+        setProgress(Math.floor(Math.max(0, Math.min(1, ratio)) * 100));
+        return;
+      }
       const scrollable = doc.scrollHeight - doc.clientHeight;
       if (scrollable <= 0) {
         setProgress(0);
@@ -25,8 +41,20 @@ function useScrollProgress(): number {
 
     updateProgress();
     window.addEventListener("scroll", updateProgress, { passive: true });
-    return () => window.removeEventListener("scroll", updateProgress);
-  }, []);
+    window.addEventListener("resize", updateProgress);
+    const observer = story && typeof ResizeObserver !== "undefined" ? new ResizeObserver(updateProgress) : null;
+    if (story && observer) {
+      observer.observe(story);
+      const article = story.closest("article");
+      if (article) observer.observe(article);
+      if (bottomNav) observer.observe(bottomNav);
+    }
+    return () => {
+      window.removeEventListener("scroll", updateProgress);
+      window.removeEventListener("resize", updateProgress);
+      observer?.disconnect();
+    };
+  }, [newsReading]);
 
   return progress;
 }
@@ -62,6 +90,17 @@ function useActiveHeading(headings: readonly ArticleTocHeading[]) {
 
 const EMPTY_HEADINGS: readonly ArticleTocHeading[] = [];
 
+function focusHeading(heading: HTMLElement | null) {
+  if (!heading) return;
+  if (!heading.hasAttribute("tabindex")) heading.tabIndex = -1;
+  heading.focus({ preventScroll: true });
+}
+
+function backToArticleTop() {
+  focusHeading(document.querySelector("main article h1"));
+  window.scrollTo({ top: 0, behavior: window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+}
+
 /**
  * Mobile/tablet reading progress bar pinned under the viewport top edge plus floating
  * quick-jump TOC sheet and back-to-top actions that clear the bottom tab bar once the
@@ -72,23 +111,38 @@ export function ArticleMobileProgress({
   headings = EMPTY_HEADINGS,
   contentsLabel,
   closeLabel,
+  newsReading = false,
 }: {
   backToTopLabel: string;
   headings?: readonly ArticleTocHeading[];
   contentsLabel?: string;
   closeLabel?: string;
+  newsReading?: boolean;
 }) {
-  const progress = useScrollProgress();
+  const progress = useScrollProgress(newsReading);
   const [activeId, setActiveId] = useActiveHeading(headings);
   const [sheetOpen, setSheetOpen] = useState(false);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const dialogId = useId();
 
-  useEffect(() => {
-    if (!sheetOpen) return;
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setSheetOpen(false);
+  useLayoutEffect(() => {
+    const dialog = dialogRef.current;
+    if (!sheetOpen || !dialog) return;
+    if (!dialog.open) dialog.showModal();
+    dialog.querySelector("button")?.focus({ preventScroll: true });
+    const unlock = registerModalLayer(dialog);
+    const desktop = window.matchMedia?.("(min-width: 64rem)");
+    const closeOnDesktop = () => {
+      if (!desktop?.matches) return;
+      dialog.close();
+      document.querySelector<HTMLElement>("[data-article-toc] a[aria-current]")?.focus({ preventScroll: true });
     };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    closeOnDesktop();
+    desktop?.addEventListener("change", closeOnDesktop);
+    return () => {
+      desktop?.removeEventListener("change", closeOnDesktop);
+      unlock();
+    };
   }, [sheetOpen]);
 
   const showTocTrigger = headings.length > 0 && Boolean(contentsLabel);
@@ -101,11 +155,11 @@ export function ArticleMobileProgress({
         style={{ top: "var(--ad-anchor-top, 0px)" }}
       >
         <div
-          className="h-full bg-[linear-gradient(90deg,var(--teal)_0%,var(--coral-bright)_100%)] transition-[width] duration-150"
+          className="h-full bg-[linear-gradient(90deg,var(--teal)_0%,var(--coral-bright)_100%)] transition-[width] duration-150 motion-reduce:transition-none"
           style={{ width: `${progress}%` }}
         />
       </div>
-      {progress >= 28 ? (
+      {progress >= 28 && (!newsReading || progress < 100) ? (
         <div
           style={{ bottom: "calc(5.25rem + env(safe-area-inset-bottom) + var(--ad-anchor-bottom, 0px))" }}
           className="fixed right-4 z-40 flex items-center gap-2 lg:hidden"
@@ -113,38 +167,62 @@ export function ArticleMobileProgress({
           {showTocTrigger ? (
             <button
               type="button"
+              aria-haspopup="dialog"
+              aria-controls={sheetOpen ? dialogId : undefined}
               aria-expanded={sheetOpen}
-              onClick={() => setSheetOpen((open) => !open)}
+              onClick={(event) => {
+                event.currentTarget.focus({ preventScroll: true });
+                setSheetOpen(true);
+              }}
               className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--surface)]/95 px-3.5 py-2 text-[length:var(--text-xs)] font-semibold text-[var(--ink)] shadow-[var(--shadow-md)] backdrop-blur-md transition-transform active:scale-95"
             >
               <List className="h-3.5 w-3.5 text-[var(--teal)]" aria-hidden="true" />
               <span>{contentsLabel}</span>
             </button>
           ) : null}
-          <button
-            type="button"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--teal)] bg-[var(--surface)]/95 px-3.5 py-2 text-[length:var(--text-xs)] font-semibold text-[var(--teal-dark)] shadow-[var(--shadow-md)] backdrop-blur-md transition-transform active:scale-95"
-          >
-            <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />
-            <span>{backToTopLabel}</span>
-          </button>
+          {!showTocTrigger || !newsReading ? (
+            <button
+              type="button"
+              onClick={backToArticleTop}
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--teal)] bg-[var(--surface)]/95 px-3.5 py-2 text-[length:var(--text-xs)] font-semibold text-[var(--teal-dark)] shadow-[var(--shadow-md)] backdrop-blur-md transition-transform active:scale-95"
+            >
+              <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />
+              <span>{backToTopLabel}</span>
+            </button>
+          ) : null}
         </div>
       ) : null}
 
       {sheetOpen && showTocTrigger ? (
-        <div
-          role="dialog"
-          aria-modal="true"
+        <dialog
+          ref={dialogRef}
+          id={dialogId}
           aria-label={contentsLabel}
-          onClick={(event) => {
-            if (event.target === event.currentTarget) setSheetOpen(false);
+          onClose={() => setSheetOpen(false)}
+          onKeyDown={(event) => {
+            if (event.key !== "Tab") return;
+            const items = modalFocusTargets(event.currentTarget);
+            const first = items[0];
+            const last = items.at(-1);
+            if (event.shiftKey && document.activeElement === first) {
+              event.preventDefault();
+              last?.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+              event.preventDefault();
+              first?.focus();
+            }
           }}
-          className="fixed inset-0 z-50 flex items-end bg-black/45 p-3 backdrop-blur-[2px] lg:hidden"
+          onClick={(event) => {
+            if (event.target === event.currentTarget) event.currentTarget.close();
+          }}
+          style={{
+            paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom) + var(--ad-anchor-bottom, 0px))",
+            paddingTop: "calc(0.75rem + env(safe-area-inset-top) + var(--ad-anchor-top, 0px))",
+          }}
+          className="fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none items-end bg-transparent p-3 text-[var(--ink)] open:flex backdrop:bg-black/45 backdrop:backdrop-blur-[2px]"
         >
           <div
-            style={{ marginBottom: "env(safe-area-inset-bottom)" }}
-            className="max-h-[72dvh] w-full overflow-y-auto rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-4 shadow-[var(--shadow-lg)] sm:p-5"
+            className="max-h-[min(72dvh,100%)] w-full overflow-y-auto overscroll-contain rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-4 shadow-[var(--shadow-lg)] sm:p-5"
           >
             <div className="flex items-center justify-between gap-3 border-b border-[var(--line)] pb-3">
               <div className="flex items-center gap-2.5">
@@ -158,7 +236,7 @@ export function ArticleMobileProgress({
               <button
                 type="button"
                 aria-label={closeLabel ?? contentsLabel}
-                onClick={() => setSheetOpen(false)}
+                onClick={() => dialogRef.current?.close()}
                 className="inline-grid min-h-11 min-w-11 place-items-center rounded-full border border-[var(--line)] text-[var(--muted)] transition-colors hover:border-[var(--teal)] hover:text-[var(--ink)]"
               >
                 <X size={18} aria-hidden="true" />
@@ -172,9 +250,11 @@ export function ArticleMobileProgress({
                     <a
                       href={`#${heading.id}`}
                       aria-current={isActive ? "location" : undefined}
-                      onClick={() => {
+                      onClick={(event) => {
+                        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
                         setActiveId(heading.id);
-                        setSheetOpen(false);
+                        dialogRef.current?.close();
+                        focusHeading(document.getElementById(heading.id));
                       }}
                       className={`flex min-h-11 items-center rounded-xl px-3 py-2 transition-colors ${
                         isActive
@@ -191,8 +271,18 @@ export function ArticleMobileProgress({
                 );
               })}
             </ol>
+            {newsReading ? (
+              <button
+                type="button"
+                onClick={() => { dialogRef.current?.close(); backToArticleTop(); }}
+                className="mt-2 flex min-h-11 w-full items-center gap-2 border-t border-[var(--line)] px-3 pt-2 text-sm font-semibold text-[var(--teal-dark)]"
+              >
+                <ArrowUp className="h-4 w-4" aria-hidden="true" />
+                {backToTopLabel}
+              </button>
+            ) : null}
           </div>
-        </div>
+        </dialog>
       ) : null}
     </>
   );
@@ -205,6 +295,7 @@ export function ArticleTocRail({
   progressLabel,
   seriesBackHref,
   seriesBackLabel,
+  newsReading = false,
 }: {
   headings: readonly ArticleTocHeading[];
   contentsLabel: string;
@@ -212,12 +303,14 @@ export function ArticleTocRail({
   progressLabel: string;
   seriesBackHref?: string | null;
   seriesBackLabel?: string | null;
+  newsReading?: boolean;
 }) {
   const [activeId, setActiveId] = useActiveHeading(headings);
-  const progress = useScrollProgress();
+  const progress = useScrollProgress(newsReading);
 
   return (
     <nav
+      data-article-toc
       aria-label={contentsLabel}
       className="sticky top-24 hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)] lg:block"
     >
@@ -250,7 +343,7 @@ export function ArticleTocRail({
             className="mt-2.5 h-1.5 w-full overflow-hidden rounded-full bg-[var(--line)]"
           >
             <div
-              className="h-full rounded-full bg-[var(--teal)] transition-[width] duration-150"
+              className="h-full rounded-full bg-[var(--teal)] transition-[width] duration-150 motion-reduce:transition-none"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -283,7 +376,7 @@ export function ArticleTocRail({
           <div className="mt-3.5 border-t border-[var(--line)] pt-2">
             <button
               type="button"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              onClick={backToArticleTop}
               className="inline-flex min-h-11 items-center gap-1.5 text-[length:var(--text-xs)] font-semibold text-[var(--muted)] transition-colors hover:text-[var(--teal-dark)]"
             >
               <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />
