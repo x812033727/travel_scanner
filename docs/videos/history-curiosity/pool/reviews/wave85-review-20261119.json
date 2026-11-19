@@ -1,0 +1,731 @@
+{
+  "batch": "batches/wave85-20261119.json",
+  "reviewed_on": "2026-11-19",
+  "method": "十位沒有參與研究的獨立覆核代理（R8500–R8509 依序覆核 ZW0–ZW9）逐題對照研究代理的請求紀錄與快取檔，至少重新請求一個關鍵一手／機構來源，掃描本來源至少自己轉一頁圖核對引文與頁碼，逐句核對年份、數字與引文，刪掉方向卡上沒有來源支持的預期說法，重做全池與跨系列去重，對照不收清單、1956 真人規範與 8 分鐘門檻，並把軸別改成合適的類別；修改直接寫進批次的題目與來源欄位，覆核補讀的來源編入該研究代理的來源序號，沒被收下的題引用的來源移除。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 18,
+    "NEEDS_CHECK": 11,
+    "REJECT": 9
+  },
+  "source_renames": {
+    "R8500-S001": "ZW0-S017",
+    "R8500-S002": "ZW0-S018",
+    "R8500-S003": "ZW0-S019",
+    "R8501-S001": "ZW1-S015",
+    "R8502-S001": "ZW2-S011",
+    "R8504-S001": "ZW4-S014",
+    "R8504-S002": "ZW4-S015",
+    "R8504-S003": "ZW4-S016",
+    "R8506-S001": "ZW6-S012",
+    "R8508-S001": "ZW8-S015"
+  },
+  "verdicts": [
+    {
+      "id": "N7865",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R8500",
+      "author": "ZW0",
+      "key_source_reopened": "https://cts.perseids.org/read/pdlrefwk/viaf88890045/003/perseus-eng1/L.lentulus_39（R8500 seq 1，200，6844 bytes）：Messala／Lentulus 執政官年份：Smith 辭典寫 consul B.C. 3（引 Suet. Galb. 4）。作者「只見於搜尋摘要」的換算改由此來源支持；由生日推年紀仍標為覆核推算。；https://lexundria.com/suet_nero/40-48/r（R8500 seq 2，200，23606 bytes）：重抓 ZW0 seq 2，雜湊 c4fe98715dd6c62d 相同；40.3「look out for the seventy-third year … taking no account of Galba’s years」相符。；https://lexundria.com/suet_gal/4/r（R8500 seq 3，200，8634 bytes）：Galba 4「born in the consulship of Marcus Valerius Messala and Gnaeus Lentulus, on the ninth day before the Kalends of January」相符（網址出自搜尋結果）。；https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cassius_Dio/62*.html（R8500 seq 4，200，130200 bytes）：作者沒讀到的 Dio 63.14：付女祭司四十萬塞斯特斯、Galba 追回、奪 Cirrha、廢神諭；沒有 73、沒有燒死女祭司。",
+      "changes": [
+        "改成 chapter（5–7 分鐘）：紀錄那一半只有 Suetonius 一句加上各家年紀差一歲的口徑問題，撐不起單獨一集；建議併入德爾菲雙關神諭集數（N2403、N4421 同核心）",
+        "四家年紀核對：Suetonius《Galba》23 死時「第七十三年」、Plutarch《Galba》8.1 尼祿死時「第七十三年」、Dio「七十二年又二十三天」（兩個譯本一致）、Tacitus《Histories》1.49「七十三年裡」——均在原文找到；問句原寫「彼此都對不上」過頭（Suetonius、Plutarch、Tacitus 都是 73 系），改成「說法不一」",
+        "「照 Suetonius 生日算起兵時不到 73」：補上執政官換算來源 R8500-S001（前 3 年），但年紀仍是推算，已在 answer_target 明確標為覆核推算，並從 payoff 刪除；起兵年 68 只有通俗樣本支持，正片要講推算須先補機構來源",
+        "補讀 Dio 63.14（R8500-S002）：德爾菲記事裡是尼祿付錢買神諭、Galba 追回、廢神諭，沒有 73 與燒死女祭司——加強流傳版本的翻轉",
+        "hook 刪「三十歲」（只見於論壇樣本）",
+        "刪掉尼祿臨終名言一段與 ZW0-S003（DEDUP 已有「Qualis artifex」不收紀錄，且非本題核心）"
+      ],
+      "unverified": [
+        "尼祿去德爾菲的年份與年紀",
+        "起兵年西元 68 年的機構來源",
+        "Galba 生年古今換算的學界討論（Suetonius 生日與 Dio 年數互相不合，本輪未讀論文）"
+      ],
+      "note": "來源都真實可讀、引文相符；翻轉成立但只夠一章。"
+    },
+    {
+      "id": "N7866",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R8500",
+      "author": "ZW0",
+      "key_source_reopened": "https://chinesewordingconsultant.blogspot.com/2021/04/i-want-to-avoid-falling-asleep.html（R8500 seq 5，200，112745 bytes）：找到不提做官的流傳樣本（「為了實現自已的理想」「形容堅定的學習欲望與意志」）。；ZW0 cache/015.bin（seq 15，四庫本《戰國策》卷二至五 PDF）（R8500 seq None，cache，4419295 bytes）：雜湊相同；覆核自己 pdftoppm 轉 PDF 第 30 頁 120 dpi 目讀：「讀書欲睡引錐自刺其股血流至足曰安有說人主不能出其金玉錦繡取卿相之尊者乎朞年揣摩成」相符（原字作「朞年」）。圖存 R8500/img/zgc-030.png。",
+      "changes": [
+        "覆核轉圖目讀四庫本《戰國策》PDF 第 30 頁，刺股與金玉錦繡句相符",
+        "補流傳樣本 R8500-S003（只講求知、不提做官），滿足作者自己的重開條件，premise_status 改 screened",
+        "answer_target 寫明 S013 等部分通俗版本已講出官癮，正片不能說「沒人知道」",
+        "問句、hook 刪血流描寫與「很少印出來」這類沒來源的說法"
+      ],
+      "unverified": [
+        "今本《漢書》是否有孫敬條",
+        "孫敬朝代",
+        "兩故事合成一個成語的書證"
+      ],
+      "note": "翻轉部分已流傳，但有乾淨樣本、兩個一手來源，收為章節。"
+    },
+    {
+      "id": "N7867",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R8500",
+      "author": "ZW0",
+      "key_source_reopened": "https://archive.org/advancedsearch.php?q=title%3A%28%E6%B4%99%E6%B3%97%E8%80%83%E4%BF%A1%E9%8C%84%29&fl%5B%5D=identifier&fl%5B%5D=title&fl%5B%5D=date&rows=50&output=json（R8500 seq 6，200，258 bytes）：《洙泗考信錄》標題檢索 0 筆。；https://archive.org/advancedsearch.php?q=%E8%80%83%E4%BF%A1%E9%8C%84&fl%5B%5D=identifier&fl%5B%5D=title&fl%5B%5D=date&rows=50&output=json（R8500 seq 7，200，6653 bytes）：全文欄位檢索「考信錄」前 50 筆都是無關條目（報紙、影片），未找到崔述原書。；ZW0 cache/025.bin（seq 25，四庫本《荀子》卷十九至二十）（R8500 seq None，cache，7245862 bytes）：轉 PDF 第 49–50 頁目讀：「孔子為魯攝相朝七日而誅少正卯」、門人問「得無失乎」、「人有惡者五而盜竊不與焉」與五惡、「少正卯兼有之」「小人之桀雄也不可不誅也」、湯誅尹諧…子產誅鄧析史付，均相符。；ZW0 cache/028.bin（seq 28，薈要本《史記》卷四十七至四十九）（R8500 seq None，cache，5851850 bytes）：轉 PDF 第 24 頁目讀：「定公十四年孔子年五十六由大司寇行攝相事有喜色…於是誅魯大夫亂政者少正卯與聞國政三月」相符。",
+      "changes": [
+        "覆核轉圖目讀《荀子·宥坐》PDF 第 49–50 頁、《史記·孔子世家》PDF 第 24 頁，引文相符",
+        "問句「沒有一條是他做過的壞事」改成「說的全是心思、言論和學問」，並標明「沒有具體罪行」是讀法",
+        "後代質疑明確標為轉引的轉引，崔述、錢穆不得當成讀過的出處；只寫到「誅」的記載層級",
+        "寫重開條件（見 notes）"
+      ],
+      "unverified": [
+        "朱熹的質疑原文",
+        "崔述《洙泗考信錄》原文（archive.org 檢索無結果）",
+        "一篇未講翻轉的流傳樣本"
+      ],
+      "note": "兩部一手記載確認無誤，但樣本已講翻轉、懷疑一方只有三手轉述，維持待查。"
+    },
+    {
+      "id": "N7868",
+      "verdict": "REJECT",
+      "reviewer": "R8500",
+      "author": "ZW0",
+      "key_source_reopened": "",
+      "changes": [
+        "確認作者不收理由屬實，補寫覆核版重開條件"
+      ],
+      "unverified": [
+        "《本事詩》《太平廣記》原文未讀"
+      ],
+      "note": "楊素一節本來就在流傳版本裡，翻轉不成立。"
+    },
+    {
+      "id": "N7869",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R8501",
+      "author": "ZW1",
+      "key_source_reopened": "https://shfg.wildapricot.org/Resources/Documents/42_SummerFederalist_WEB.pdf（R8501 seq 1，200，1163907 bytes）：雜湊 e18a97cb97217fb3 與作者 seq 7 相同；自行 pdftotext 第 7–8 頁全文核對：MQF、popular urban legend、NASA 內部當玩笑、原件找不到、Collins 不記得、Hirasaki 記得有簽但不在 MQF、Customs Today 沒提、1970 年 10 月 AP、never at Honolulu Airport nor in port on July 24、四行簽名、只需機長簽名、autopenned or photocopied、Apollo 14 1971-02-11 Ellington、all in fun declaration、not an official executed declaration、25,000 人，全部對上；作者漏了 Hirasaki『記得有簽過』這半句，已補。；https://www.nasa.gov/wp-content/uploads/static/history/SP-4214/ch9-7.html（R8501 seq 2，200，5894 bytes）：雜湊與作者 seq 5 相同；7 月 26 日下午抵珍珠港、Hickam、C-141、午夜後抵 Ellington、三週隔離、拖車五人（腳註），對上。本節沒提海關。",
+      "changes": [
+        "hook：『三個聯邦機關的史官』改『兩個聯邦機關的三位史官』（NASA 總部與 JSC 同屬 NASA）；刪來源沒有的『航班欄寫著阿波羅十一號』；『三個簽名』改『三名太空人和一位海關官員的簽名』（S002）",
+        "問句拿掉『隔離拖車』，改成 S001 直接撐得住的『還在太平洋上的航艦裡』",
+        "英國國家太空中心的說法補上圖說『original signatures… genuine』，answer_target 與 payoff 寫成兩說並陳；payoff 的『紀念品』改成史官原話層級的『可能想收集簽名』",
+        "補 Hirasaki 記得表格『有簽過』但不在 MQF 的另半句",
+        "標明流傳樣本 S004 本身已含部分翻轉（NASA 發言人『小玩笑』），只撐『這是真的報關文件』這一層",
+        "S006 與 S005 同一來源鏈，從 source_ids 與 sources 拿掉；S001 權利欄改 LINK_AND_ORIGINAL_SUMMARY_ONLY",
+        "risk：拿掉未讀到來源的太空人生卒說法，三名太空人與所有相關人一律只稱身分"
+      ],
+      "unverified": [
+        "1970 年 AP 稿、Houston Post 照片、海關兩百週年史都只經 S001 轉引",
+        "簽名真偽兩方都沒公開鑑定方法",
+        "cbp.gov 原頁 403，未讀"
+      ],
+      "note": "史官文章與 NASA 官方史都重抓核過，翻轉成立但素材只夠一章（6–8 分），流傳樣本自帶半個翻轉，維持 chapter。"
+    },
+    {
+      "id": "N7871",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R8501",
+      "author": "ZW1",
+      "key_source_reopened": "https://encykorea.aks.ac.kr/Article/E0072772（R8501 seq 5，200，78906 bytes）：位元組與作者 seq 10（78,926）差 20，屬動態頁面差異，正文相同：연원 및 변천 首句（전설의 고향、검은 두루마기、갓、백색 화장）、굿 裡是군졸模樣、三사자與三份飯草鞋匙箸、서울굿 사재삼성，對上。；https://repository.kulib.kyoto-u.ac.jp/server/api/core/bitstreams/4974cb22-cb45-41d3-b5b5-83bf05a8624a/content（R8501 seq 6，200，1535928 bytes）：新來源（網址來自搜尋結果）：玄幸子 2013 Дх06099 錄文『發使乘黑馬把黑幡著黑衣檢亡人家造何功德』，補上作者只讀到韓譯的十王經漢文，無『黑帽』。",
+      "changes": [
+        "新增 R8501-S001（玄幸子 2013 敦煌本十王經錄文），十王經漢文『乘黑馬把黑幡著黑衣』已核、無黑帽",
+        "刪掉 answer_target 沒有來源的『喪輿裝飾的黑笠差使早於電視』（兩個來源都沒寫年代）",
+        "問句改成『唐代就流傳的十王經』並對應新來源；payoff 照改"
+      ],
+      "unverified": [
+        "電視以前、有年代的韓國黑笠黑袍使者實物或圖像",
+        "朝鮮十王圖、甘露幀、使者圖裡使者的服色",
+        "《傳說的故鄉》哪一年開始用黑袍黑笠造型",
+        "十王經黑衣使者和韓國陰間使者形象的直接關係（只是 S009 研究員的解讀）"
+      ],
+      "note": "翻轉方向和選題卡相反：流傳的『傳統黑衣』部分站得住，答案是『多種傳統形象並存、電視挑了一種』，翻轉偏弱，且朝鮮側的年代證據缺；不收太可惜（有兩個機構來源），判待查，重開條件寫在 candidate notes。"
+    },
+    {
+      "id": "N7872",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R8501",
+      "author": "ZW1",
+      "key_source_reopened": "https://archive.org/metadata/06079777.cn（R8501 seq 3，200，29403 bytes）：題名『史記·卷一百十八~卷一百二十一』、浙江大學圖書館、檔名 06079777.cn.pdf，與作者 seq 21 相同。；https://archive.org/download/06079777.cn/06079777.cn.pdf（R8501 seq 4，200，4467577 bytes）：雜湊與作者 seq 22 相同；自轉 PDF 第 117–118 頁（130 dpi，第 117 頁另以 300 dpi 裁切）逐字核對〈儒林列傳〉：著災異之記、遼東高廟災、主父偃疾之取其書奏之天子、天子召諸生示其書有刺譏、呂步舒不知其師書以為下愚、下吏當死詔赦、竟不敢復言災異；集解徐廣曰建元六年、徐廣曰舒一作荼。另用作者 cache 019（《漢書》）自轉第 105–107 頁核對：中稾未上、主父偃候仲舒私見嫉之竊其書而奏焉、上召視諸儒、以為大愚、宋祁曰古本舒作昌、膠西王善待之、推明孔氏抑黜百家、以壽終於家。",
+      "changes": [
+        "axis 由 P 改 S（核心是人物遭遇，也和 P 軸 N6024 錯開）",
+        "自轉圖核對《史記》《漢書》兩處，補人名異文：宋祁校語古本『舒』作『昌』、集解引徐廣『舒』一作『荼』",
+        "《史記》『有刺譏』是正文敘述，不是皇帝評語，已改",
+        "刪掉來源沒有的『當場』『年輕人』『幾天後』；『從沒在朝廷當過高官』改『官位只到諸侯國相』",
+        "補膠西王『善待之』，避免把他寫成單純被迫害",
+        "牢房畫面改成被吏員帶走的背影，不畫刑具"
+      ],
+      "unverified": [
+        "草稿內容（《漢書·五行志》未讀）",
+        "罪名",
+        "『罷黜百家，獨尊儒術』八字的出處（只見搜尋摘要，未讀論文）"
+      ],
+      "note": "一手引文全部對上影像；流傳樣本偏弱（只是省略挫折），撐得住一章、撐不起整集；與 N6024 是相鄰題材不是撞題，排期分開。"
+    },
+    {
+      "id": "N7873",
+      "verdict": "REJECT",
+      "reviewer": "R8502",
+      "author": "ZW2",
+      "key_source_reopened": "",
+      "changes": [],
+      "unverified": [
+        "Crawford 1984 原書",
+        "Archibald 信原文",
+        "諾貝爾未婚與募款的機構來源",
+        "Mittag-Leffler 卒年"
+      ],
+      "note": "翻轉普遍、沒有照講不誤的樣本，問句承諾的起源只靠網路 FAQ 轉引；不收，重開條件見 not_added。"
+    },
+    {
+      "id": "N7874",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R8502",
+      "author": "ZW2",
+      "key_source_reopened": "",
+      "changes": [
+        "自行轉圖核對四庫本卷六 PDF 第 64–67 頁，「黔首或刻其石」等原文無誤",
+        "hook「司馬遷寫的第一個動詞是刻」不實（那段先出現的是守、墜、下、至、為），改為「寫那七個字的那一句裡用的動詞是刻」",
+        "question 去掉「一個也沒能逃過」的渲染，改成問處置；處死段全卡只到「石旁居民全部處死」這一層",
+        "answer_target「挨家追問」改「逐一追問」（原文「逐問」）；「流星與隕石可能是真的」改成原文照記墜星；「第五次出巡在三十七年」改為原文「三十七年十月癸丑始皇出游」（PDF 第 67 頁，覆核已讀），並註明「第五次」不是原文",
+        "《論衡》引文依論文影像改正（刪掉多出的「文」字），answer_target 與 scope 明標據論文轉引、未讀古刊本",
+        "payoff「後來的文章把刻字拿掉，才變成…」暗示演變關係而無書證，改成「今天有些文章把刻字拿掉」"
+      ],
+      "unverified": [
+        "《論衡》古刊本未讀，只有轉引",
+        "流傳樣本只有一篇（看中國 2024）"
+      ],
+      "note": "原文在《史記》裡寫明是人刻的，翻轉成立但新鮮度有限，維持 chapter（5–7 分鐘）。"
+    },
+    {
+      "id": "N7875",
+      "verdict": "REJECT",
+      "reviewer": "R8502",
+      "author": "ZW2",
+      "key_source_reopened": "",
+      "changes": [],
+      "unverified": [
+        "北皮寮地契原件",
+        "《台北市志》原文"
+      ],
+      "note": "確認作者不收的理由：沒有刑場／鬼的流傳樣本，讀到的通俗文章自己已翻轉，沒有地契或地圖原件；重開條件見 not_added。"
+    },
+    {
+      "id": "N7876",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R8502",
+      "author": "ZW2",
+      "key_source_reopened": "https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf（R8502 seq 1，200，5897672 bytes）：NTRS 原件（連結取自作者 seq 1 書目頁的 href，非猜測）。逐字核對：1.3 mm（PDF 第 5、48 頁，field lens 比正確位置遠約 1.3 mm）；field cap 不反光材料／antireflective coating 在小孔周圍剝落、加 spacers、未 staked（第 48 頁）；INC 與 RvNC 兩項檢測顯示球面像差卻被 discounted（第 5、54 頁）；成因為 conjecture／most likely（第 42 頁）。全文無 paint、washer、shim。與 spacegrant 轉存本關鍵句一致，轉存可信。",
+      "changes": [
+        "補 NTRS 原件為 R8502-S001（下載連結取自作者 seq 1 書目頁），三件事逐字核對無誤；判定 spacegrant 轉存可信",
+        "改正 1.3 mm 的寫法：原卡與 ZW2-S001 summary 寫「field lens 離下鏡約 1.3 mm」，原文是「比正確位置遠了約 1.3 mm」",
+        "hook「樣板從一開始就歪了 1.3 毫米」改為「透鏡裝遠了 1.3 毫米」（報告講的是間距，不是歪斜）；刪掉選題卡殘留、沒有來源的「全世界最貴的望遠鏡」",
+        "question「查到的元兇」改「推定的起因」（報告自稱 conjecture／most likely cause）",
+        "answer_target、scope、risk 裡描述樣本的「漆」「墊圈」改成英文原字並註明正片一律說「塗層」「墊片」，卡上不再出現「油漆」「墊圈」",
+        "risk 刪掉沒有來源的委員會主席卒年，維持只稱身分"
+      ],
+      "unverified": [
+        "1993 年維修任務只有 NASA 通俗頁，沒有任務一手紀錄",
+        "中文樣本 ZW2-S004 是省略而非錯誤，流傳版本偏弱，只靠「磨錯主鏡」一句"
+      ],
+      "note": "一手報告扎實，三件事都在 NTRS 原件；可單獨成集。"
+    },
+    {
+      "id": "N7877",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R8503",
+      "author": "ZW3",
+      "key_source_reopened": "https://archive.org/metadata/06056990.cn（R8503 seq 1，200，31887 bytes）：重抓《明史》卷125–127 條目 metadata：PDF 檔名與 md5 6ff60e7a… 與作者 cache 006.bin 完全相同；再自行轉圖第 126、128–131 頁核對授券、七十七歲、借衛卒、『遂并其妻女弟姪家口七十餘人誅之』，相符。另以作者 cache 的 metadata 核對 031.bin（唐律疏義）、034.bin（唐會要）、025.bin（科場條例第十四冊）md5 皆與 archive.org 所列一致。",
+      "changes": [
+        "自行轉圖核對《明史》卷127：原文『遂并其妻女弟姪家口七十餘人誅之』，問句由『處死』改為『被誅』並寫明妻女弟姪，卡上不出現『賜死』",
+        "洪武二十三年註明是由『十八年』加『又五年』推得",
+        "家口一段只留人數層級，scope 明寫不講處刑方式",
+        "作者把錢用勤獲赦寫成『據錢氏後人記載』是推論（報刊文章未註出處），從 payoff、visual 拿掉，scope 列為正片暫不講",
+        "visual『鐵券一剖為二』改為來源所寫『一式兩件』",
+        "role 改 chapter、minutes [5,7]：翻轉常見且李善長正是通俗文章的常用例子，只夠一章"
+      ],
+      "unverified": [
+        "《明太祖實錄》頒券與定罪條",
+        "李善長本人券文原件",
+        "錢用勤獲赦一手出處"
+      ],
+      "note": "來源真實、引文相符；翻轉已普遍，降為章節。"
+    },
+    {
+      "id": "N7878",
+      "verdict": "REJECT",
+      "reviewer": "R8503",
+      "author": "ZW3",
+      "key_source_reopened": "",
+      "changes": [],
+      "unverified": [
+        "〈打馬圖序〉公有領域原文（只經論文轉引王仲聞校註本）"
+      ],
+      "note": "流傳樣本只是沒提她愛博戲，不是會被紀錄修正的說法；通俗文章（如星島教室一文的搜尋摘要）已寫她愛賭、每賭必贏，翻轉早已普遍；原文也沒讀到。"
+    },
+    {
+      "id": "N7879",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R8503",
+      "author": "ZW3",
+      "key_source_reopened": "https://dpul.princeton.edu/global-book-forms/feature/from-bamboo-to-printed-paper（R8503 seq None，NOT_SENT，0 bytes）：重抓請求被本機權限分類器拒發，未送出；改用作者 cache 016.bin 核對「could not have been used that way」原句，逐字相符。catalog.princeton.edu、library.princeton.edu 在封鎖名單，未請求。",
+      "changes": [
+        "普林斯頓展覽原句以 cache 016.bin 核對相符",
+        "科場條例第 71 頁服式條：年份確認為列在乾隆九年上諭之後（未另標年），並更正『皮衣去面』為原文『氈衣去裏』（皮衣去面是後被停止的例）",
+        "放大核對三條縮圖：嘉慶十九年坐褥（第 80 頁）、道光二年小卷與坊刻小本與夫役代帶（第 81 頁）、道光十二年條實在第 87 頁且是誤帶八名逐出、攜帶詩文七名斥革枷號（作者寫成第 86 頁、七名誤帶）",
+        "新增乾隆九年頭場搜出懷挾二十一人、藏衣帽器具褻衣的原文，直接回答問句的『藏在哪裡』",
+        "hook 改為『大家都叫它作弊衣』，不說展覽稱它作弊衣"
+      ],
+      "unverified": [
+        "Plaks 2004 論文本文（library.princeton.edu 被擋）",
+        "嘉定背心是否用過"
+      ],
+      "note": "雙層翻轉成立、一手條文充足，可單獨成集。"
+    },
+    {
+      "id": "N7880",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R8503",
+      "author": "ZW3",
+      "key_source_reopened": "",
+      "changes": [
+        "自行轉圖核對《唐律疏議》卷26犯夜條『若坊內行者，不拘此律』與《唐會要》卷86景龍元年、開成五年兩條，相符",
+        "確認上元節弛禁沒有寫進問句、hook、payoff、visual，只在 answer_target／scope 標為不能講",
+        "payoff『夜市才冒出』（『才』無來源）、『常被引來』改為來源撐得住的寫法；景龍元年敕是各州縣市制，不專指長安",
+        "hook 刪『一百多個坊』（只有自媒體支持）；『二十板』改『二十下笞打』",
+        "role 改 chapter [5,7]：宵禁翻轉普遍，樣本自己也提宵禁"
+      ],
+      "unverified": [
+        "上元弛禁一手出處",
+        "宋代夜市"
+      ],
+      "note": "引文相符；翻轉偏弱，降章節。"
+    },
+    {
+      "id": "N7881",
+      "verdict": "REJECT",
+      "reviewer": "R8504",
+      "author": "ZW4",
+      "key_source_reopened": "",
+      "changes": [
+        "確認作者的不收：流傳樣本普遍已講翻轉，『皇帝的女兒叫格格』找不到當史實寫的樣本；也沒讀到任何一手來源",
+        "去重重查：pool、legacy、batches、原來如此池『格格』只有『一格格』字面命中，未撞題"
+      ],
+      "unverified": [],
+      "note": "不收。重開條件：讀到清初皇女稱格格、崇德或順治朝改定封號的《清實錄》或會典掃描原文（或滿文檔案 gege 指稱皇女的實例），而且找到一篇沒講這一層的流傳樣本。"
+    },
+    {
+      "id": "N7882",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R8504",
+      "author": "ZW4",
+      "key_source_reopened": "https://archive.org/download/india.history.resource.90533/90533.pdf（R8504 seq 4，200，25544785 bytes）：ZW4-S009 的 PDF 影像（檔名取自 ZW4 seq 31 metadata）；轉第 384–386 頁，題名、1866-05-14 提交、David 寄標本、Sseu-pou-siang 四特徵、Elaphurus Davidianus、皇家園囿各句都在，與作者 OCR 引文一致；https://www.academie-sciences.fr/pdf/eloges/milneedwards_vol3273.pdf（R8504 seq 6，200，5501002 bytes）：Milne-Edwards 卒年 1900（新來源 R8504-S001）；https://archive.org/download/biostor-155812/biostor-155812.pdf（R8504 seq 10，200，943093 bytes）：Armand David 1826–1900（新來源 R8504-S002；檔名取自 seq 9 metadata）；https://zsl-archive.maxarchiveservices.co.uk/index.php/russell-herbrand-arthur-1858-1940-11th-duke-of-bedford-president-of-zsl-1899-1936（R8504 seq 11，200，32941 bytes）：第十一代貝德福公爵 1858–1940（新來源 R8504-S003）",
+      "changes": [
+        "找不到公有領域刻本影像（archive.org 三次檢索），『麟頭豸尾／鱗頭豹尾』異文不能判定：問句與 hook 刪去這四字，改用『身體像龍、一拍角化紅光飛天』；scope 禁止直引贊詩頭四字",
+        "刪去『萬獸朝蒼…龍生九種』——原文是元始在講王魔等人的坐騎，不是四不相",
+        "Milne-Edwards 1866 自行下載 PDF 轉第 384–386 頁核對，引文成立",
+        "補 David（1826–1900）、Milne-Edwards（1835–1900）、第十一代貝德福公爵 Herbrand Arthur Russell（1858–1940）三人卒年與機構來源，三人都可點名",
+        "問句改成問『誰用四不像這個名字介紹給世界』，答案 1866 短文撐得住；不再暗示能回答俗名起源",
+        "role 由 episode_core 降為 chapter，minutes 6–8：中段只有 2013 年一份二手報告，撐不起獨立成集"
+      ],
+      "unverified": [
+        "明清刻本裡贊詩的確切用字",
+        "麋鹿俗名『四不像』最早出現的年代與它和小說的關係",
+        "麋鹿怎麼從北京到歐洲各動物園、Woburn 18 頭的當年紀錄"
+      ],
+      "note": "翻轉成立、來源已補齊，但素材只夠一個章節；補到 1860–1890 年代歐洲當年紀錄再考慮獨立成集。"
+    },
+    {
+      "id": "N7883",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R8504",
+      "author": "ZW4",
+      "key_source_reopened": "（未重新請求）https://archive.org/download/06058285.cn/06058285.cn.pdf（R8504 seq 0，200，4997346 bytes）：用 ZW4 cache/035.bin 轉第 55–82 頁目讀，卷一百九十八後半與卷一百九十九開頭無張安國、耿京、王世隆、辛棄疾條目",
+      "changes": [
+        "問句由『到底是誰』改成『宋代紀錄怎麼寫』，避免承諾答不出的答案",
+        "hook 標明待查",
+        "補讀《要錄》卷一百九十八後半與卷一百九十九開頭，沒有擒張安國條",
+        "notes 寫明重開條件與改判 REJECT 的條件"
+      ],
+      "unverified": [
+        "《宋史·辛棄疾傳》《魏勝傳》原文",
+        "把擒人記給王世隆的史料是哪一部、原文怎麼寫",
+        "洪邁〈稼軒記〉『五十騎、五萬眾』"
+      ],
+      "note": "沒有任何一手原文，只有一篇論文摘要；維持待查。"
+    },
+    {
+      "id": "N7884",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R8504",
+      "author": "ZW4",
+      "key_source_reopened": "（未重新請求）https://archive.org/download/02087292.cn/02087292.cn.pdf（R8504 seq 0，200，2133490 bytes）：用 ZW4 cache/019.bin（sha256 前綴相符）自行轉 PDF 第 62–63 頁目讀：寄信／廷寄定義與『或馬上飛遞…或六百里加緊，皆於封函上註明』原文一致；版心卷十三",
+      "changes": [
+        "自行轉圖核對《樞垣記略》卷十三 PDF 第 62–63 頁，原文無誤",
+        "問句、hook、payoff、scope 把『最快一級』限定為『這部軍機處掌故書記下的寄信封函列法』，不寫成清代全國唯一規定；加註哈佛教學頁的『fastest rate』是轉述 1960 研究、且與『六百里加緊』不完全一致",
+        "南部縣三百里公文改為『約 30 小時走 90 里』（原寫一晝夜 90 里，與論文換算不符）",
+        "刪梁章鉅無來源的生卒年 1775–1849 與『道光年間成書』，改依清代人身分判 1956 紅線",
+        "role 維持 chapter 5–7 分鐘"
+      ],
+      "unverified": [
+        "清代檔案中『八百里』字樣的實例與次數",
+        "《欽定大清會典事例》兵部郵政驛遞程限條原文",
+        "《樞垣記略》這條規矩適用的年代"
+      ],
+      "note": "一手原文成立、翻轉清楚，但只夠一章；必須講成『這份規制的列法』。"
+    },
+    {
+      "id": "N7885",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R8505",
+      "author": "ZW5",
+      "key_source_reopened": "https://archive.org/download/palaceofminoscom01evanuoft/palaceofminoscom01evanuoft.pdf（R8505 seq 3，200，49372157 bytes）：轉 PDF pp. 40、42、611 影像：Introduction p. 4 雙斧 outnumbering 句、p. 6 labrys→Labyrinth 句（腳註 4 記 Arkwright 不接受）、p. 533『There can be little doubt that it was the great Palace itself』全部與 OCR 一致。；https://guias-viajar.com/zh-TW/europa/turismo-en-grecia/creta-knossos-frescos-horarios-precios/（R8505 seq 4，503，1921 bytes）：想讀作為流傳樣本（網址來自覆核的搜尋結果），回 503，未重試，不算來源。",
+      "changes": [
+        "問句改押 Evans 的關鍵證據（雙斧記號）與刻意修成的廢墟",
+        "刪掉作者推論『不是因為房間多』：Ashmolean 說 Evans 自己就認為廢墟啟發了迷宮神話，兩者不衝突",
+        "補 Evans p. 6 腳註：labrys 字源在 1921 年就有學者（Arkwright）不接受",
+        "axis L 改 H",
+        "hook 不再說『靠的不是房間有多亂』"
+      ],
+      "unverified": [
+        "沒講重建的流傳樣本",
+        "把 Evans 理由講錯的流傳樣本",
+        "哪幾處是刻意修成廢墟"
+      ],
+      "note": "Evans 1921 三頁已對頁影像核對，紀錄很硬；但重建翻轉普遍，改押的兩點沒有讀到樣本，批內 T099 待合併，維持待查。"
+    },
+    {
+      "id": "N7886",
+      "verdict": "REJECT",
+      "reviewer": "R8505",
+      "author": "ZW5",
+      "key_source_reopened": "",
+      "changes": [],
+      "unverified": [
+        "《論語》《老子》原文掃描頁"
+      ],
+      "note": "確認不收：翻轉普遍，且學界對孔子是否反對以德報怨本身有爭議；重開條件寫在 not_added。"
+    },
+    {
+      "id": "N7887",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R8505",
+      "author": "ZW5",
+      "key_source_reopened": "",
+      "changes": [
+        "武舉一律稱奴才補上『咸豐二年』",
+        "張廣泗一例改寫為旗籍官員稱呼的例子，不當成漢人冒稱",
+        "hook 改明示是想像場景",
+        "answer_target 註明 S008 自己已講『滿人稱奴才、漢人稱臣』，翻轉只押漢人武將"
+      ],
+      "unverified": [
+        "所有上諭、《八旗通志》、《清稗類鈔》原件",
+        "漢人提督總兵具銜奴才的奏摺原件"
+      ],
+      "note": "沒有任何一手來源，只有一篇二手轉述；重開條件寫在 notes。"
+    },
+    {
+      "id": "N7888",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R8505",
+      "author": "ZW5",
+      "key_source_reopened": "https://archive.org/download/herndonslincolnt01inhern/herndonslincolnt01inhern.pdf（R8505 seq 1，200，15734980 bytes）：轉 PDF pp. 132、138、139、152、153 影像：Needham（書頁 p. 76，作者誤作 p. 77）、Armstrong 賭局與『Everyone knows how it ended』（pp. 82–83）、Thompson『throw him twice in succession』與 dog-fall（pp. 96–97）、Wilson 1882-02-03 腳註『two best in three, and ditched him』（p. 97）全部與 OCR 一致。；https://api.nwhof.org/hall_of_fame/bio/128（R8505 seq 2，200，29105 bytes）：重抓名人堂小傳：『had only one recorded defeat in a dozen years』在；全文無 300／three hundred（只在 CSS class 出現 gray-300）；Awards 1992 Outstanding American；另寫 Armstrong 是『county champion』。與作者 cache 021 相符。",
+      "changes": [
+        "問句『兩個說自己把他摔倒的人』改為『兩個把他摔倒的人』（Thompson 那段是 Herndon 敘述，不是 Thompson 自己說）",
+        "Needham 頁碼 p. 77 改 p. 76（頁影像核對）",
+        "『只輸一場的根據是林肯晚年回憶』改為覆核的對照、並改『1860 年競選時』（不是晚年，也不是來源說它是源頭）",
+        "Armstrong『承認』與 Risdon Moore 回憶標明是 Snopes 轉引",
+        "補名人堂小傳稱 Armstrong 為『county champion』，與當年沒有郡冠軍對照",
+        "Herndon 自己寫林肯完勝 Armstrong，answer_target 照實寫；刪掐喉細節",
+        "role 改 chapter、minutes [5,7]：一手只有 Herndon 一本，三百場出處沒找到",
+        "Weik 卒年無來源，只稱合著者"
+      ],
+      "unverified": [
+        "『三百場』最早出處",
+        "Herndon's Informants 原始訪談",
+        "Armstrong 的承認與林肯對 Risdon Moore 回憶的原件"
+      ],
+      "note": "Herndon 頁影像與名人堂官網都對得上，名人堂確實寫『十二年間只有一次有紀錄的敗績』、沒有 300；翻轉成立但只夠一章。"
+    },
+    {
+      "id": "N7889",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R8506",
+      "author": "ZW6",
+      "key_source_reopened": "https://archive.org/download/06081887.cn/06081887.cn.pdf（R8506 seq 2，200，12801930 bytes）：sha256 前綴 734077e0cbb72390 與作者 seq 5 相同；轉 PDF 第 133 頁（卷一百五十六）目讀『先是熒惑入南斗去而復還留止六旬上以諺云熒惑入南斗天子下殿走乃跣而下殿以禳之及聞魏主西奔慚曰虜亦應天象邪』，逐字相符，下接『己未武興王楊紹先為秦南秦二州刺史』",
+      "changes": [
+        "自己轉圖核對通鑑卷一五六 PDF 第 133 頁，原文相符",
+        "在作者已下載的《梁書》PDF 第 95–96 頁找到並讀到『夏四月丁卯，熒惑在南斗』原文，新增 R8506-S001，紀錄二改為讀過原件；並註明《梁書》沒有記下殿",
+        "移除跟本題無關、也不能當樣本的 ZW6-S003",
+        "hook『幾個月後』改『那一年稍後』；question『年過七十』改『七十歲』（依 ZW6-S002）"
+      ],
+      "unverified": [
+        "流傳樣本仍沒有（覆核另搜一次也沒找到）",
+        "『下殿走』軼事早於通鑑的出處未查",
+        "北魏西奔的通鑑 PDF 第 123、130 頁未重看"
+      ],
+      "note": "兩個一手原文都成立，只缺流傳樣本；不判斷天象占卜真假。重開條件寫在題卡 notes。"
+    },
+    {
+      "id": "N7890",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R8506",
+      "author": "ZW6",
+      "key_source_reopened": "https://archive.org/download/02095975.cn/02095975.cn.pdf（R8506 seq 1，200，2303510 bytes）：sha256 前綴 bf5f07a2e1bd9ad4 與作者 seq 18 相同；轉 PDF 第 14–17 頁目讀〈聖學一〉〈聖學二〉，『日必數首皆用硃筆作草』『謂之詩片』『或數日始得有終不得者上亦弗怪也』『汪文端劉文正所書其後劉文定繼之』『御製詩每歲成一本高寸許』與〈聖學一〉『命汪文端具草……御筆刪改往往有十數語只用一二語易之』全部相符",
+      "changes": [
+        "自己轉圖核對《簷曝雜記》卷一 PDF 第 14–17 頁，引文全部相符",
+        "question 拿掉『四萬多首』的確數，改成以『詩片』與書法代筆為核心，故宮一句改成『據報導故宮特展』",
+        "hook 的『大學士』改為原文的『軍機大臣』，『送出宮門、圍上來、潦草』改成原文的『令內監持出』『作草』",
+        "answer_target、scope、payoff 凡引 ZW6-S005 處都標成報導轉述；『四萬多首』標為新聞與樣本說法",
+        "確認卡上沒有『隨口念兩句、大臣補成整首』與『比全唐詩多』（只留在『正片不能講』清單與樣本摘要）",
+        "minutes 由 [8,10] 收為 [8,9]，維持 episode_core"
+      ],
+      "unverified": [
+        "台北故宮『真假乾隆』特展官方頁與圖錄未讀，書法代筆只據報導",
+        "《御製詩》各集首數沒有一手統計",
+        "北京故宮御稿的發現年份新聞自相矛盾"
+      ],
+      "note": "一手只有趙翼一篇但細節夠多，翻轉『代的是手不是詩』清楚，勉強撐得起 8–9 分鐘單集。"
+    },
+    {
+      "id": "N7891",
+      "verdict": "REJECT",
+      "reviewer": "R8506",
+      "author": "ZW6",
+      "key_source_reopened": "",
+      "changes": [],
+      "unverified": [
+        "沒有讀到任何來源"
+      ],
+      "note": "確認不收：沒有任何讀到的來源，綽號出處答不出來，題型與 N7573 重疊（已確認 N7573 存在）。重開條件寫在 not_added。"
+    },
+    {
+      "id": "N7892",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R8506",
+      "author": "ZW6",
+      "key_source_reopened": "https://archive.org/download/lesmtiersetcor00boiluoft/lesmtiersetcor00boiluoft_bw.pdf（R8506 seq 3，200，35541346 bytes）：檔名取自作者 seq 24 的 /metadata；轉 PDF 第 354–355 頁（刊本 pp. 154–155）目讀 Titre LXXIII arts. I–VI 與腳註：art. II 天亮前不得吆喝、理由 pour les perilz；art. IV 二 deniers／四 deniers；腳註 (a) 十四世紀筆跡、(d) 無法斷定原始寫法，與作者 OCR 摘要相符。註：覆核整理時誤刪 cache/003.bin，於 seq 4 重抓同一網址補回（200，35,541,346 bytes，sha256 前綴應與 seq 3 相同，見 access_log），內容即本次讀的檔案。",
+      "changes": [
+        "自己下載灰階 PDF 轉 pp. 154–155 頁影像核對 Titre LXXIII，摘要相符",
+        "question 的『13、14 世紀的行規』改成『收在中世紀巴黎行業規章裡』，answer_target 明寫只能說十四世紀筆跡、不能說 1268 年",
+        "axis H 改 L",
+        "payoff 的『兩分錢、四分錢』改為『兩個／四個德尼耶』，『兼做妓院』改為『容留娼妓』"
+      ],
+      "unverified": [
+        "沒有一篇沒自己破解『中世紀人不洗澡』的流傳樣本",
+        "浴場關閉原因的一手或研究來源",
+        "Géraud 稅冊 26 人只據 OCR"
+      ],
+      "note": "行規內容與年代保留都核實了，但流傳樣本與後半段來源都缺，維持待查 chapter。重開條件寫在題卡 notes。"
+    },
+    {
+      "id": "N7893",
+      "verdict": "REJECT",
+      "reviewer": "R8507",
+      "author": "ZW7",
+      "key_source_reopened": "https://meiji.repo.nii.ac.jp/record/14968/files/ueda_2009_bun.pdf（R8507 seq 5，200，10946616 bytes）：搜尋結果給的明治大學博士論文（上田直美 2009），想找《徭律》失期條的轉引；文字層沒有『失期』『徭律』，未用。；https://xbbjb.ucass.edu.cn/__local/9/B2/3A/F30A2D2E85C053044BA23E6EC09_BE1EC023_CFAEC.pdf（R8507 seq 6，200，850668 bytes）：作者 seq 1 連線重設的同一網址（搜尋結果給出）。齊繼偉〈秦漢『徭』制補說〉排版樣稿（帶編輯批注），引睡虎地《徭律》首條全文，依《秦簡牘合集》修訂本 2016，與作者 OCR 還原一致；並把『御中發徵』歸為中央層級的徭。；https://archive.org/download/06054554.cn/06054554.cn.pdf（R8507 seq 作者 cache/042 轉圖，(未重抓，用作者快取)，5940677 bytes）：pdftoppm -r 110 轉 PDF 第 3 頁目讀（R8507/img/sj-003.png）：卷四十八『二世元年七月發閭左適戍漁陽九百人屯大澤鄉…陳勝吳廣皆次當行為屯長會天大雨道不通度已失期失期法皆斬』，與作者引文一致。",
+      "changes": [
+        "作者待查改不收，寫明重開條件（見 not_added）",
+        "以齊繼偉論文（秦簡牘合集修訂本）獨立核對徭律條文；公有領域頁面影像不存在",
+        "指出作者『地方工程的徭役』是推論，與齊文解讀不合"
+      ],
+      "unverified": [
+        "秦代戍卒失期的罰則原文",
+        "沒講翻轉的流傳樣本"
+      ],
+      "note": "兩份紀錄都對，但翻轉普遍、問句的答案只能停在『沒有定論』，不收。"
+    },
+    {
+      "id": "N7894",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R8507",
+      "author": "ZW7",
+      "key_source_reopened": "https://cts.perseids.org/read/latinLit/phi0959/phi006/perseus-lat2/6.121-6.140（R8507 seq 4，200，17269 bytes）：與作者 seq 17 位元組相同。逐行數得 6.129–130 為『Non illud Pallas, non illud carpere Livor / possit opus. Doluit successu flava virago』，6.131 caelestia crimina，6.133 ter quater…percussit，6.136 vive quidem, pende tamen；已修正卡上行號。",
+      "changes": [
+        "布上內容改成只用奧維德的『天神的罪行』一句帶過，刪『眾神變身欺騙凡間女子』、歐羅巴與公牛（文字與畫面）",
+        "核對並修正行號：6.129–130 成立，擊額 6.132–133，vive quidem 6.136",
+        "補『沒有裁判』的對照（前一段繆斯比賽有仙女當裁判）",
+        "尋短只到『想一死了之、女神不許』，不入畫",
+        "risk 寫明和 F15 的差別與退路（改 Shorts）"
+      ],
+      "unverified": [
+        "中文『驕傲比輸』改寫的起源"
+      ],
+      "note": "翻轉不靠布上內容成立，紅線守得住，收為 chapter 5–7 分。"
+    },
+    {
+      "id": "N7895",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R8507",
+      "author": "ZW7",
+      "key_source_reopened": "https://archive.org/download/06041954.cn/06041954.cn.pdf（R8507 seq 作者 cache/022 轉圖，(未重抓，用作者快取)，13485273 bytes）：轉 PDF 第 11 頁〈輿地全圖〉卷一（R8507/img/ch-11.png）：頂端『日本』『琉球』，右側海上一座島標『小琉球』，位於大陸東南沿海外——與作者描述一致；圖無比例。",
+      "changes": [
+        "問句改成直指《籌海圖編》全國圖，去掉『跟沿岸大島一樣大』",
+        "刪 hook『差了好幾百倍』與『四百多年前』（無比例、無來源）",
+        "payoff 的名稱轉移改成待查",
+        "risk 寫明排除釣魚嶼與任何主權說法，畫面不畫那一帶島嶼"
+      ],
+      "unverified": [
+        "流傳樣本",
+        "名稱轉到琉球嶼的方志原文",
+        "學界對明代小琉球是否就是台灣的意見"
+      ],
+      "note": "地圖紀錄成立，但樣本、名稱轉移與學術爭議三項都缺，維持待查。"
+    },
+    {
+      "id": "N7896",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R8507",
+      "author": "ZW7",
+      "key_source_reopened": "https://tile.loc.gov/storage-services/service/ndnp/uuml/batch_uuml_two_ver01/data/sn85058130/00100478171/1902111501/0151.pdf（R8507 seq 1，403，6000 bytes）：Salt Lake Herald 1902-11-15 第 1 版 PDF（連結出自作者 seq 37 的版面 JSON）：回 Cloudflare 驗證頁，第一次就停，tile.loc.gov 已進共用封鎖名單；改用作者快取 OCR 核對。；https://www.loc.gov/resource/sn85058130/1902-11-15/ed-1/?fo=json&sp=1&st=text（R8507 seq 2，200，54690 bytes）：版面 JSON（網址出自作者 seq 37 的 views.text）：確認是 The Salt Lake Herald 1902-11-15 第 1 版；全文不在此 JSON。電訊全文以作者 cache/038 OCR 逐句核對：標題『GUIDE CAUGHT ONE LEAN BEAR / Tied to a Tree for the President to Shoot / INVITATION WAS DECLINED / SO POOR BRUIN WAS KNIFED BY MR. PARKER』、『A lean bear which weighs 235 pounds is hanging up at the president's camp on the Little Sunflower』、總統守候數小時後回營午餐、熊衝進水坑轉身對付獵犬並殺死一隻、Collier 套住綁樹、總統拒射、Mr. Parker 用刀了結、回營途中又追新蹤跡——全部對得上。；https://www.nps.gov/thri/forkids/teddybearhistory.htm（R8507 seq 3，200，36363 bytes）：NPS 版：235 磅、Collier 打昏後綁樹、熊被獵犬重傷、總統要人結束牠的痛苦、以獵刀殺死、Michtom 家『claimed』寫信——與作者摘要一致，確認與電訊說法不同，卡上兩說並陳。",
+      "changes": [
+        "role 改 chapter、minutes 6–8",
+        "hook 拿掉沒有來源的『傍晚』",
+        "答案刪『成年』，熊被殺只寫到『被人了結』，畫面刪吊掛的黑影",
+        "scope 明寫電訊與 NPS 兩說並陳、不判",
+        "修正 AIT 圖說『幼熊』不能等同 1902-11-16 漫畫",
+        "Collier、Michtom 夫婦、Parker 改只稱身分"
+      ],
+      "unverified": [
+        "版面影像（tile.loc.gov 403）",
+        "Mr. Parker 全名（作者 seq 36 的 Fort Mill Times 摘要列同行者有 John M. Parker of New Orleans，未確認就是他）",
+        "漫畫裡的熊多大、後續漫畫"
+      ],
+      "note": "電訊與 NPS 都對得上，翻轉成立；素材只夠一章。"
+    },
+    {
+      "id": "N7897",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R8508",
+      "author": "ZW8",
+      "key_source_reopened": "https://calteches.library.caltech.edu/304/01/milky.pdf（R8508 seq 1，200，84755 bytes）：sha256 0b3a09409a6fa57d 與作者 seq 1 相同；兩封投書全文（『shocked by the blatant display… front page of The Times (February 25)』『this filth even beyond our own solar system』；『agree with those people who are protesting… dirty pictures… bleep out… stork… Santa Claus, the Easter Bunny, and the Tooth Fairy』）、6×9 吋、『launched on March 3』、學生 3 月 2 日校刊惡搞版、木星人漫畫都在。投書沒有寫刊出日期，所以原問句『發射前一週就有人寫信』撐不住，已改。；https://nebnewspapers.unl.edu/lccn/sn96080312/1972-03-08/ed-1/seq-4.pdf（R8508 seq 2，200，365124 bytes）：sha256 98018cbdc0fbf622 與作者 seq 3 相同；覆核轉頁影像目讀：1972-03-08 第 4 版『innocent bystander』聯合專欄（Copyright Chronicle Publishing Co. 1972），『Clear Thinking Award』『first grafitti to the stars』『constructed like a Barbie Doll』『the lady initially had all her parts… flatly rejected the original version… \"a bit too explicit.\"』、清教徒外星夫妻段落均與作者摘要一致。是幽默專欄，『被退回』只能寫成專欄的說法。",
+      "changes": [
+        "問句刪掉『發射前一週』：S001 只說第一封投書針對 2 月 25 日頭版，投書刊出日期不明，改成『圖樣登上報紙頭版後』。",
+        "hook 刪掉『鎖在天線支架上』（S001 寫嵌在探測器側面）與『還沒升空就吵翻』（同上，時間不明）。",
+        "answer_target 與 payoff 刪掉『1977 年』與『五年後』：讀到的來源都沒寫金唱片年份；改成『後來的金唱片』。",
+        "補上第二封投書開頭『同意那些抗議者』，說明抗議不只一封但總數不明；『女性原圖被退回』維持只當專欄說法。",
+        "role 由 episode_core 改 chapter，minutes 7–9 改 5–7：爭議素材只有兩封轉載投書、一篇專欄、一份學生惡搞與一幅漫畫，LA Times 原件、投書總數、NASA 回應都沒有。",
+        "visual 改成人形只用剪影或單線輪廓，不畫裸體細節；報紙、海報不露內容。",
+        "1956 紅線維持：設計者三人、提議者兩人、專欄作家（2000 年過世）、金唱片圖像負責人都只稱身分。"
+      ],
+      "unverified": [
+        "《洛杉磯時報》1972-02-25 頭版與投書原件",
+        "投書刊出日期與總數",
+        "NASA 對投書的回應",
+        "女性原圖被退回是否屬實",
+        "金唱片裸照被拒與先鋒號爭議是否有因果"
+      ],
+      "note": "兩個一手來源都重抓核對無誤，題目成立，但只夠一章，適合併入『寄給外星人的訊息』一集。"
+    },
+    {
+      "id": "N7899",
+      "verdict": "REJECT",
+      "reviewer": "R8508",
+      "author": "ZW8",
+      "key_source_reopened": "http://spiders.ucr.edu/daddylonglegs.html（R8508 seq 3，200，40159 bytes）：與作者 seq 19 逐位元相同；開頭引句、Brisbane 老師、盲蛛無毒腺無毒牙『clearly false』、幽靈蛛無咬人致害紀錄與未做人體試驗都在。",
+      "changes": [
+        "作者判待查，覆核改判不收：沒有任何非闢謠的流傳樣本、翻轉在 2004 年電視節目後已普遍、起源答不出、只夠 chapter 且偏原來如此的科學題。重開條件寫在 not_added。"
+      ],
+      "unverified": [
+        "這句話的最早出處與傳播路徑",
+        "中文世界是否流傳"
+      ],
+      "note": "來源真實、事實正確，但不是奇聞檔案局要的『會被紀錄修正的流傳說法』。"
+    },
+    {
+      "id": "N7900",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R8508",
+      "author": "ZW8",
+      "key_source_reopened": "https://archive.org/metadata/twoyearsinforbid00derl（R8508 seq 4，200，85029 bytes）：取得掃描 PDF 檔名 twoyearsinforbid00derl_bw.pdf；LOC 著作權欄『unaware of any copyright restrictions』、1911。；https://archive.org/download/twoyearsinforbid00derl/twoyearsinforbid00derl_bw.pdf（R8508 seq 5，200，15854512 bytes）：pdftoppm 轉 PDF 第 266、267、269 頁（書頁 222、223、225）目讀：『watched for two hours while my brother was printing』（日光下印相，『plenty of light… sun was still high』）、『Is it bad luck?』、『chemical bath… washing them in clean water… \"Everything is quite true to life.\"』、拿鏡子比對、印十份、『Kuan Yin』『see myself as I ought to be at all times』與 OCR 一致。發現『true to life』不是在暗房裡說的，已改問句與 hook。；https://visualizingcultures.mit.edu/empress_dowager/cx_essay03.html（R8508 seq 6，200，66121 bytes）：sha256 與作者 seq 23 相同；『painted and gilded print』『applied colors digitally removed… faint outline』『Painted details… chin and lower jaw outline… illusion of youthfulness』『source for the colorized version』『carefully reworked to make Cixi appear decades younger』、Conger 致 Hay 備忘錄與黃絲黑木盒、Blair House 閣樓尋回都在。『上彩重畫』成立，對象是放大後的沖印本。；https://visualizingcultures.mit.edu/empress_dowager/cx_essay01.html（R8508 seq 7，200，81361 bytes）：sha256 與作者 seq 22 相同；裕勳齡 1880–1943、1903–1904『only surviving photographs』、近視戴眼鏡、1964 年 36 片底片、德齡 1885–1944、『raw originals prior to the heavy reworking』、街頭販賣都在。；https://www.storm.mg/article/44012（R8508 seq 8，200，731588 bytes）：新增流傳樣本（網址來自搜尋結果）：2015 年專欄說故宮找到的慈禧照片『不是百般修飾過的《宮訓圖》，而是…真實影像…眼袋、皺紋都清晰畢現』，未提沖印本上彩。",
+      "changes": [
+        "作者判待查，覆核補讀到流傳樣本 R8508-S001（2015 年專欄把故宮找到的照片說成未修飾的真實影像），premise_status 改 screened。",
+        "德齡引文轉 PDF 頁影像核對（pp. 222、223、225），文字與 OCR 一致；但『true to life』是日光印相、藥水與清水處理後說的，不是在暗房裡：問句、hook、payoff 改寫。",
+        "hook『盯著照片在藥水裡浮出來看了兩小時』改成『在太陽底下盯著照片一張張印出來看了兩小時』；『後來送到白宮的那一張和她當天看到的不一樣』改成不暗示是同一張。",
+        "MIT『上彩重畫』核對成立（放大沖印本上彩、描金、重畫下巴與下頷線），補上 Blair House 閣樓尋回。",
+        "payoff『底片跟著德齡一路漂到美國』是推論，改成『出現在德齡遺產裡，1964 年由美術館從古董商買下』。",
+        "移除 ZW8-S015（只讀到標題與 meta，網傳的是一張不是慈禧的圖）。",
+        "樣本轉引的《聖容帳》31 種 786 張不當事實用。"
+      ],
+      "unverified": [
+        "是否另有在玻璃底片上修版",
+        "誰動筆上彩",
+        "照片確切數量（只有轉引）",
+        "德齡哥哥名字只見 S012"
+      ],
+      "note": "一手（德齡 1911，已看頁影像）與機構分析（MIT）都撐得住，補到樣本後可收為單集。"
+    },
+    {
+      "id": "N7901",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R8509",
+      "author": "ZW9",
+      "key_source_reopened": "https://www.gifu-kenpaku.jp/wp-content/uploads/2026/02/%E7%9B%AE%E9%8C%B2-%E3%80%8C%E5%B0%BE%E5%BC%B5%E5%BE%B3%E5%B7%9D%E5%AE%B6%E3%82%86%E3%81%8B%E3%82%8A%E3%81%AE%E7%BE%8E%E6%BF%83%E5%88%80%E3%80%8D.pdf（R8509 seq 2，200，422515 bytes）：第 30 號『刀 銘 村正』、什寶 138、室町、明治元帳に蔵番号あり、『妖刀村正伝説に反し、駿府御分物にもある村正銘（本作が該当かは未詳）』，與 ZW9-S009 相符（sha 相同）；另發現 ☆＝徳川美術館館外公開あり，據此更正 ZW9-S010。",
+      "changes": [
+        "hook 拿掉目錄沒寫的『名古屋』『庫房』",
+        "更正 ZW9-S010：第 30 號屬『館外公開あり』而非『館外初公開』",
+        "notes 補重開條件與池內《桃源遺事》線索（S13 topic-check）"
+      ],
+      "unverified": [
+        "幕府是否下過村正禁令",
+        "清康、廣忠、信康、家康受傷四件事的史料寫法",
+        "駿府御分物帳原件",
+        "徳川美術館這把是否就是御分物那一把（館方自己說未詳）"
+      ],
+      "note": "記錄面只有一行展覽說明，核心翻轉（銷毀令）沒有一手；維持待查，補齊也只是章節。"
+    },
+    {
+      "id": "N7902",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R8509",
+      "author": "ZW9",
+      "key_source_reopened": "https://isaw.nyu.edu/publications/newsletters/023/late-shang-health（R8509 seq 3，200，20508 bytes）：第一段 King Wu Ding’s “sick tooth”、series of divinations、which ancestor、conciliatory sacrificial offering、殷墟人骨齲齒膿腫牙周病，與 ZW9-S013 相符（sha 相同）。",
+      "changes": [
+        "axis P 改 S",
+        "問句『史官』改『占卜的人』",
+        "notes 補重開條件"
+      ],
+      "unverified": [
+        "疾齒卜辭的著錄號、拓本或釋文",
+        "任何流傳樣本（『甲骨文只記國家大事／占卜是跳神』或通俗的武丁牙痛故事）"
+      ],
+      "note": "牙痛問祖先只有兩篇轉述、沒有流傳樣本；只講文獻、不判斷占卜真假，維持待查。"
+    },
+    {
+      "id": "N7903",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R8509",
+      "author": "ZW9",
+      "key_source_reopened": "",
+      "changes": [
+        "payoff 的『1988 年才出現』改成『考據者找到最早』",
+        "notes 寫明與 N7727 的關係與重開條件（併入 N7727，不單獨成集）"
+      ],
+      "unverified": [
+        "1916、1925、1965、1976、1988 各件原件",
+        "Calaprice 書第 481 頁書頁"
+      ],
+      "note": "全部只經同一個考據網站，沒有一手；與 N7727 同書同節、同一種翻轉，只宜當 N7727 的章節。"
+    },
+    {
+      "id": "N7904",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R8509",
+      "author": "ZW9",
+      "key_source_reopened": "https://www.pref.shizuoka.jp/kankosports/bunkageijutsu/bunkazai/1002825/1041003/1041884/1004983/1021367.html（R8509 seq 1，200，41503 bytes）：『文化財の説明』欄：銘文中『国家安康』『君臣豊楽』被指為詛咒家康、慶長 19（1614）年事件、這是鐘銘原本、清韓文英書；國指定、1950-08-29、MOA 美術館、非常設展示。與 ZW9-S006 相符（位元組數相同，sha 不同應是頁面動態部分）。",
+      "changes": [
+        "問句加『據研究者引用』，拿掉『事後』；hook『四百年來大家都說』改『很多人說』、『四個字』改『幾個字』",
+        "《駿府記》自行轉圖核對：七月廿六日條改寫為家康問棟札鐘銘安排、舉先例（尚未看到銘文）；補八月四日棟札、十九日抄送江戶、廿日『鐘銘棟札與先前吩咐不同，又收留許多牢人』，以及銘文中的『右僕射源朝臣家康公』『君臣豐樂、子孫殷昌』與清韓署名",
+        "清韓辯解書、五山答書、林羅山說法一律標成轉引（ZW9-S008），研究者只稱身分；risk 補清韓卒年依事件年代",
+        "answer_target 與 payoff 加入『家康同時在挑棟札與牢人』這個一手層的翻轉，不再只靠轉引撐高潮",
+        "minutes 由 [8,10] 改 [8,9]；更新 ZW9-S005 的 locator、summary、limitations"
+      ],
+      "unverified": [
+        "清韓辯解書原件與日期（只有轉引）",
+        "五山答書原文（只有轉引）",
+        "廿日條『被仰渡』的對象，與『傳長老』『上野介』的身分（未另證）",
+        "『君臣豐樂』解成『豐臣為君』出自誰"
+      ],
+      "note": "一手日記與銘文全文都核對過，可收；能單獨成集但在 8 分鐘門檻邊緣，若要求辯解書原件才能當高潮則降章節。"
+    }
+  ],
+  "process_notes": [
+    "延續前幾批：Google 圖書任何介面不准用，archive.org 上個人上傳的近代校點排印本視為有版權；研究與覆核都不安裝套件，掃描本用 pdftoppm 轉圖目讀。遺骸題（愛因斯坦大腦）只到紀錄層級；刑罰題（李善長家口、東郡刻石、少正卯）只寫到記載與人數層級；阿拉克妮掛毯只用奧維德原文「天神的罪行」一語帶過、不涉性暴力，上吊不描寫不入畫；明代小琉球題排除釣魚嶼與任何主權敘述；天象、占卜題只講文獻不判真假。",
+    "覆核改判舉例：N7868 破鏡重圓、N7870 愛因斯坦大腦、N7873 諾貝爾數學獎、N7875 剝皮寮、N7878 李清照打馬、N7881 格格、N7886 以德報怨、N7891 劉羅鍋、N7893 陳勝失期、N7898 崔護、N7899 長腳蜘蛛因翻轉已普遍、流傳樣本自己已講翻轉或缺一手不收；N7900 慈禧照片覆核補到沒講上彩的流傳樣本，由待查升可收；N7866 蘇秦刺股覆核補到乾淨樣本升可收；N7865 尼祿、N7877 李善長、N7880 犯夜、N7882 四不像、N7888 林肯摔角、N7897 先鋒十號由單集降一章。覆核抓到的研究錯誤包括：哈伯報告是透鏡裝遠約 1.3 mm 而非歪斜、《論衡》轉引多一字、《科場條例》「氈衣去裏」誤作「皮衣去面」、德齡「true to life」不是在暗房說的、《駿府記》七月廿六日家康尚未見銘文、村正簡報欄位誤讀、研究代理一次憑記憶寫網址（覆核確認內容未被引用）。",
+    "1956 真人規範與紅線：在世或 1956 年後過世、或卒年不明的研究者、太空人、設計者、專欄作家只稱身分；Armand David（1900）、Milne-Edwards（1900）、Wilmer 等已補卒年來源的可點名。",
+    "沒有發現編造的來源：十位覆核共發 51 次重抓與補讀，位元組或正文與研究代理的快取相符（動態頁只差時間戳等欄位）。"
+  ]
+}
