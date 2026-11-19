@@ -43,9 +43,33 @@ test("with 劇本先給我看 off, a question-menu opening is still sent back be
     ctx: { root: box.root, now: () => new Date("2026-11-19T00:00:00Z") },
     settings: { drama: { series_script_gate: false } },
     workdir: () => box.workdir,
+    decision: async () => null,
     fixScript: async () => { calls.fix += 1; return "rewritten"; },
   };
   assert.equal(await Automation.prototype.scriptGate.call(host, { slug: "curio-x09" }), "rewritten");
   assert.equal(calls.fix, 1);
   assert.equal(existsSync(path.join(box.workdir, "approvals.json")), false, "nothing is approved");
 });
+
+test("an owner's approval given before 劇本先給我看 was turned off still stands: the screenplay is not sent back", async () => {
+  const box = sandbox("curio-x10", "drama");
+  const file = path.join(box.dir, "video.json");
+  const doc = JSON.parse(readFileSync(file, "utf8"));
+  doc.slug = "curio-x10";
+  doc.scenes[0].lines[0].text = "為什麼雲會變灰？為什麼下午才下雨？雷又是從哪裡來的？";
+  writeFileSync(file, JSON.stringify(doc));
+  const calls = { fix: 0, pulled: 0 };
+  const host = {
+    ctx: { root: box.root, now: () => new Date("2026-11-19T00:00:00Z") },
+    settings: { drama: { series_script_gate: false } },
+    workdir: () => box.workdir,
+    decision: async () => ({ status: "approved", note: null }),
+    pulled: async () => { calls.pulled += 1; return null; },
+    fixScript: async () => { calls.fix += 1; return "rewritten"; },
+  };
+  const answer = await Automation.prototype.scriptGate.call(host, { slug: "curio-x10", notes: [] });
+  assert.equal(calls.fix, 0, "the owner's decision is kept");
+  assert.equal(calls.pulled, 1);
+  assert.match(answer, /approved the screenplay/);
+});
+

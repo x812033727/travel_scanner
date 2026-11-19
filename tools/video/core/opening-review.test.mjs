@@ -73,7 +73,7 @@ test("the opening review reads 300 seconds with three site readers, one per view
   assert.match(openingReviewProblems(doc, null)[0], /--record.*--ask/);
   const unrecorded = openingReviewRecord(doc, Object.keys(OPENING_PERSONAS).map((persona) => pass(persona, { via: undefined, model: undefined })));
   assert.ok(openingReviewProblems(doc, unrecorded).some((problem) => /not a recorded reader/.test(problem)), "a verdict counts only through --record or --ask");
-  const session = (persona, agent = `subagent-${persona}`, extra = {}) => pass(persona, { via: "session", model: undefined, agent, ...extra });
+  const session = (persona, agent = `subagent-${persona}`, extra = {}) => pass(persona, { via: "session", model: undefined, agent: `session#${persona}`, reader_name: agent, ...extra });
   const sessionRound = (list, author = "writer") => openingReviewRecord(doc, list, { author });
   assert.deepEqual(openingReviewProblems(doc, sessionRound([session("newcomer"), session("scroller"), session("stickler")])), [], "three subagents of the session that made it");
   assert.ok(openingReviewProblems(doc, sessionRound([session("newcomer", "Writer "), session("scroller"), session("stickler")])).some((problem) => /author cannot be a reader/.test(problem)), "the author never reads its own script, whatever the case or spaces");
@@ -230,3 +230,26 @@ test("the hash holds every line the packet shows, whatever the episode's pauses"
   last.text += "（改一句）";
   if (shown >= tight.scenes.flatMap((scene) => scene.lines).length) assert.notEqual(openingHash(tight), before, "a shown line changed asks for a new round");
 });
+
+test("only a plain no is no swipe; a sentence naming when the reader leaves is a swipe", async () => {
+  const { doc } = episode();
+  const answer = (swipe_at) => ({ run: async (...args) => ({ text: JSON.stringify({ ...happy(args[3]), swipe_at }), model: "m" }) });
+  for (const no of [null, "", "無", "不會", "不會滑走", "none"]) assert.equal((await askOpeningReview(answer(no), doc))[0].swipe_at, null, String(no));
+  for (const yes of ["不到一分鐘就會滑走", "不太想看，中段就走", "01:40"]) assert.equal((await askOpeningReview(answer(yes), doc))[0].swipe_at, yes, yes);
+});
+
+test("on a script longer than 300 seconds, a line the packet shows near the edge is in the hash, whatever the pauses", () => {
+  const { doc } = episode();
+  const long = structuredClone(doc);
+  const filler = "這是一句用來把稿子拉長的句子，讓前五分鐘的邊界真的落在稿子中間。";
+  for (let n = 0; n < 12; n += 1) long.scenes.push({ ...structuredClone(long.scenes.at(-1)), id: `pad-${n}`, lines: Array.from({ length: 8 }, (_, i) => ({ id: `p${n}x${i}`, text: filler, speaker: long.scenes.at(-1).lines[0].speaker })) });
+  long.pauses = { line_ms: 0, scene_ms: 150 };
+  const shown = openingPacket(long).split("\n").filter((line) => line.startsWith("- ["));
+  const total = long.scenes.flatMap((scene) => scene.lines).length;
+  assert.ok(shown.length > 0 && shown.length < total, "the 300 s edge falls inside the script");
+  const lastShown = long.scenes.flatMap((scene) => scene.lines)[shown.length - 1];
+  const before = openingHash(long);
+  lastShown.text += "（改一句）";
+  assert.notEqual(openingHash(long), before, "the last line the readers saw is bound");
+});
+

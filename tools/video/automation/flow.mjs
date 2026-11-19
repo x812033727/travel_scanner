@@ -2830,13 +2830,17 @@ export class Automation {
       const opening = openingGateProblems(video, estimateTimeline(video), { series: state.series ?? null });
       return opening.length ? this.fixScript(state, `開場不合格：${opening.map((problem) => problem.message).join("；")}`, "the opening check", "opening") : null;
     };
-    if (!hasAnimePolicy(state) && this.settings.drama?.series_script_gate === false) {
+    const settingsApprove = !hasAnimePolicy(state) && this.settings.drama?.series_script_gate === false;
+    // An owner's decision on a screenplay sent before 劇本先給我看 was turned off still stands: it is
+    // read first, and only an undecided script is checked and approved by the settings.
+    const decided = settingsApprove ? await this.decision(state, "script", file) : null;
+    if (settingsApprove && !decided) {
       const fix = openingFix();
       if (fix) return fix;
       await approve({ gate: "script", docDir: dir, workdir: this.workdir(state.slug), now: this.ctx.now(), note: "「劇本先給我看」關著，依設定自動核准" });
       return `${state.slug}: screenplay approved by the settings (劇本先給我看 is off)`;
     }
-    const review = await this.decision(state, "script", file);
+    const review = decided ?? await this.decision(state, "script", file);
     if (!review) {
       if (state.series?.hands_off) {
         // The craft rows are read on the script itself (drama-craft.md); a long anime keeps to its own policy.

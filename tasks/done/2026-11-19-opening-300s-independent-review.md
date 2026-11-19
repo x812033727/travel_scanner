@@ -91,6 +91,12 @@ gate (they go straight to storyboard and final), so nothing held a weak opening 
       drama hook; the curio and brand-story writer prompts ask for 2 opening loops; with
       「劇本先給我看」 off the host still sends a bad opening back before the settings approve it.
 
+- [x] Fourth review round: with 劇本先給我看 off, the host reads the owner's decision before the
+      settings path, so a screenplay the owner approved is never sent back; only a plain "no" is no
+      swipe (「不到一分鐘就會滑走」 is a swipe); a session reader must give its name; the hash test now
+      edits the last shown line of a script longer than 300 s; the hash comment names the per-line
+      pause exception. A voice made before the review keeps its retakes (by design).
+
 ## How to verify
 
 ```bash

@@ -64,9 +64,9 @@ export function openingLines(doc, timeline = estimateTimeline(doc)) {
 
 /** The hash of what the readers read: the title, the thumbnail headline and the opening lines. */
 export function openingHash(doc) {
-  // The window is read with no pauses at all, the shortest the episode can be timed, so it always
-  // holds every line the packet shows (whatever the episode's pauses) and a pause change alone never
-  // asks for a new round; only the words, the title and the headline do.
+  // The window is read with no gaps between lines or scenes, so it always holds every line the packet
+  // shows, and a change of the episode's gaps alone keeps the review. A line's own pause_after_ms or
+  // an action's seconds early in the script can still move a line across the 300 s edge.
   const lines = openingLines(doc, estimateTimeline({ ...doc, pauses: { line_ms: 0, scene_ms: 0 } })).map(([, speaker, text]) => [speaker, text]);
   return createHash("sha256").update(JSON.stringify(["opening-review-v1", doc.youtube?.title ?? "", cleanHeadline(doc), lines])).digest("hex");
 }
@@ -186,8 +186,8 @@ export async function askOpeningReview(api, doc, { onVerdict = () => {} } = {}) 
 function swipeAt(value) {
   if (value === null || value === undefined) return null;
   const text = String(value).trim();
-  // 「不會滑走」「沒有」… say no swipe; a time (01:40) or anything naming a moment is a swipe.
-  return !text || /^(?:null|none|n\/a|-)$/i.test(text) || (/^(?:無|沒有|不會|否|不)/.test(text) && !/\d/.test(text)) ? null : text;
+  // Only a plain "no" is no swipe; anything else (「不到一分鐘就會滑走」, a time) names a swipe.
+  return !text || /^(?:null|none|n\/a|no|-|無|沒有|不會|否|不會滑走|不會離開|沒有滑走|不會走)$/i.test(text) ? null : text;
 }
 
 const who = (name) => String(name ?? "").trim().toLowerCase();
@@ -205,6 +205,7 @@ export function openingReviewProblems(doc, record) {
   if (new Set(agents).size !== agents.length) problems.push("each reader is a different agent");
   if (verdicts.some((verdict) => verdict?.via === "session")) {
     if (!who(record.author_agent)) problems.push("a round of session readers names its author (--author)");
+    if (verdicts.some((verdict) => verdict?.via === "session" && !who(verdict?.reader_name))) problems.push("every session reader gives its name (agent)");
     else if (verdicts.some((verdict) => who(verdict?.reader_name ?? verdict?.agent) === who(record.author_agent))) problems.push("the author cannot be a reader");
   }
   for (const persona of Object.keys(OPENING_PERSONAS)) {
