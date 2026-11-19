@@ -150,12 +150,32 @@ export function chapterOpenerProblems(doc, timeline) {
 }
 
 /**
+ * An aside the narrator announces before taking it (「這裡先稍微科普一下」「還有一個支線故事」): the
+ * owner allowed one a video on 2026-11-19, said worth hearing first and held to a minute, after 13
+ * 黑猫研究院 videos showed their longest stretches without a hook (82 to 131 s) were exactly these,
+ * carried by one whole metaphor or a run of concrete detail. Where asides are read, a stretch inside
+ * the ASIDE_GAP_SECONDS after the first one is not a gap (the announcement may itself carry a forward
+ * hook, 「因為後面會用到」, and 黑猫 often asks 「什麼意思呢？」 right after it); a second aside is a warning.
+ */
+export const ASIDE_OPENER = /先岔開|岔個題|岔出去(?:講|說|聊)|插播|先(?:稍微|簡單)?科普一下|花(?:一|半|1)分鐘(?:講|說|聊)|支線故事|題外話/;
+export const ASIDE_GAP_SECONDS = 75;
+/**
+ * An item of a counted list told as events (「第一個人是…」「第二尊…」): the owner allowed one such list
+ * a video on 2026-11-19, opened on its count and a question left hanging. Each item is a turn, the
+ * way a chapter is, so where asides are read it closes the gap like any other device; a list starts
+ * at its 「第一…」, only the first list counts, and a second one is a warning of its own.
+ */
+export const LIST_ITEM_OPENER = /^(?:(?:接著|再來|然後|最後)[，、]?)?第\s?([一二三四五六七八九十]+|\d+)\s?(?:個|位|尊|件|步|招|關|項|道|層|家|點|種|條|[，、：:])/;
+/** How many 「還記得…」 an episode of the ten-step series says out loud (curio-episode SKILL.md §架構與口吻: the opening's and the close's; the middle just tells the fact). */
+export const TEN_STEP_CALLBACKS = 2;
+
+/**
  * The body (after the condensation, before the outro) read for open loops: a chapter turn, a
  * sentence that ends on a question, a forward hook or an escalation (OPEN_LOOP_FAMILY). A stretch
  * longer than `gap` seconds (HOOK_GAP_SECONDS unless the series keeps TIGHT_CADENCE) without one
  * is a warning naming its minutes.
  */
-export function hookCadenceProblems(doc, timeline, gap = HOOK_GAP_SECONDS) {
+export function hookCadenceProblems(doc, timeline, gap = HOOK_GAP_SECONDS, { asides = false } = {}) {
   const chapters = chapterList(timeline);
   if (chapters.length < 2 || !timeline?.total_frames) return [];
   const starts = lineStarts(timeline);
@@ -166,18 +186,37 @@ export function hookCadenceProblems(doc, timeline, gap = HOOK_GAP_SECONDS) {
   const to = outroAt === null ? total : frameToSeconds(outroAt);
   if (to - from <= gap) return [];
   const devices = chapters.slice(1).map((chapter) => chapter.start).filter((at) => at >= from && at < to);
+  let aside = null;
+  let asideCount = 0;
+  const lists = [];
   for (const { line } of eachLine(doc)) {
     const frame = starts.get(line.id);
     if (frame === undefined) continue;
     const at = frameToSeconds(frame);
     if (at < from || at >= to) continue;
-    if (QUESTION.test(line.text) || Object.values(OPEN_LOOP_FAMILY).some((pattern) => pattern.test(line.text))) devices.push(at);
+    let device = QUESTION.test(line.text) || Object.values(OPEN_LOOP_FAMILY).some((pattern) => pattern.test(line.text));
+    if (asides && ASIDE_OPENER.test(line.text)) {
+      asideCount++;
+      if (aside === null) {
+        aside = at;
+        device = true;
+      }
+    }
+    const item = asides ? LIST_ITEM_OPENER.exec(line.text) : null;
+    if (item) {
+      if (/^(?:一|1)$/.test(item[1])) lists.push(at);
+      if (lists.length === 1) device = true;
+    }
+    if (device) devices.push(at);
   }
   const points = [from, ...devices.sort((a, b) => a - b), to];
   const problems = [];
+  if (asideCount > 1) problems.push({ path: "scenes", message: `${asideCount} asides are announced (先岔開／科普一下／支線故事／插播／題外話): an episode takes one, said worth hearing first and held to a minute; tell the others as part of the story or cut them (script-writing.md §奇聞檔案局與品牌故事的架構)` });
+  if (lists.length > 1) problems.push({ path: "scenes", message: `${lists.length} counted lists start in the body (${lists.map((at) => formatClock(at)).join(", ")}): an episode takes one, opened on its count and a question left hanging, each item an event; only the first is read as turns (script-writing.md §奇聞檔案局與品牌故事的架構)` });
   for (let index = 1; index < points.length; index++) {
     const stretch = points[index] - points[index - 1];
     if (stretch <= gap) continue;
+    if (aside !== null && points[index - 1] >= aside && points[index] - aside <= Math.max(gap, ASIDE_GAP_SECONDS)) continue;
     problems.push({ path: "scenes", message: `no open loop between ${formatClock(points[index - 1])} and ${formatClock(points[index])} (${Math.round(stretch)} s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every ${gap} s (script-writing.md §故事主線與鉤子)` });
   }
   return problems;
@@ -459,12 +498,22 @@ export function thumbnailEchoProblems(doc, timeline, { series = null } = {}) {
  * their top ten on 2026-10-25): the name everybody knows up front, one stake or surprise word, a
  * number or a year, one question; short enough that a phone shows the point before it cuts; never a
  * calm reading question; and the thumbnail says something the title does not.
+ *
+ * Relaxed the same day (owner, 2026-11-19) after the lint was run on 黑猫研究院's own 13 most watched
+ * titles and passed one: seven ran 31 to 40 characters (a question up front, then a second clause
+ * that raises the stake), seven carried no number, and two asked nothing and set a contrast instead
+ * (「不是遊戲，而是一個抓蟲少年」「打贏任天堂，卻輸掉整個未來」). So: 38 characters, a number is welcome
+ * but not required, and no question mark is fine where the title is a contrast. None of the 13 asks
+ * two questions, and 11 of them put a stake word or a number inside the first 18 characters, so
+ * those two checks stand.
  */
-export const TITLE_CORE_MAX = 30;
+export const TITLE_CORE_MAX = 38;
 /** About what a phone feed shows before it cuts a title. */
 export const TITLE_PHONE_CHARACTERS = 18;
-export const TITLE_STAKE = /消失|不敢|騙過|差點|全部|真相|憑什麼|竟然|居然|反而|其實|根本|偷|毀|救|死|活|輸|贏|搶|逼|賠|賺|禁|怕|錯|假|騙|殺|逃|瘋|暴|唯一|第一|最|從來|沒人|沒有人|不是|不會|還能|還在|為什麼/;
-export const TITLE_NUMBER = /[0-9０-９]|[一二三四五六七八九十百千萬億兩]+(?:年|個|次|人|天|秒|分|倍|成|億|萬|塊|元|歲|代|國|種|件|艘|座|噸|公里|小時)/;
+export const TITLE_STAKE = /消失|不敢|騙過|差點|全部|真相|憑什麼|竟然|居然|反而|其實|根本|偷|毀|救|死|活|輸|贏|搶|逼|賠|賺|禁|怕|錯|假|騙|殺|逃|瘋|暴|唯一|第一|最|從來|沒人|沒有人|不是|不會|還能|還在|為什麼|到底|卻/;
+export const TITLE_NUMBER = /[0-9０-９]|[一二三四五六七八九十百千萬億兩]+(?:年|個|次|人|天|秒|分|倍|成|億|萬|塊|元|歲|代|國|種|件|艘|座|噸|公里|小時|家|條|張|包|星|顆|台|支)/;
+/** A title that asks nothing still hooks when it sets one thing against another. */
+export const TITLE_CONTRAST = /不是.+(?:而是|，是)|卻|反而/;
 export const CALM_TITLE = /改了哪裡|揭露了什麼|告訴我們什麼|有哪些|是什麼意思|怎麼看|的故事$|簡介|介紹|一次看懂|懶人包/;
 const titleCore = (title) => String(title ?? "").split(/[｜|]/)[0].trim();
 
@@ -474,15 +523,12 @@ export function titleProblems(doc, { series = null } = {}) {
   if (typeof title !== "string" || !title.trim()) return [];
   const core = titleCore(title);
   const problems = [];
-  const say = (message) => problems.push({ path: "youtube.title", message: `${message} (黑猫研究院's titles: the name everybody knows up front, one stake or surprise word, a number or a year, one question; curio-episode SKILL.md §標題與縮圖)` });
+  const say = (message) => problems.push({ path: "youtube.title", message: `${message} (黑猫研究院's titles: the name everybody knows up front, one stake or surprise word, one question or a contrast, a number where it helps; curio-episode SKILL.md §標題與縮圖)` });
   if ([...core].length > TITLE_CORE_MAX) say(`the title runs ${[...core].length} characters before the series suffix; keep it within ${TITLE_CORE_MAX}`);
   const marks = (core.match(/[？?]/g) ?? []).length;
-  if (marks === 0) say("the title asks no question: end the hook on one question mark");
+  if (marks === 0 && !TITLE_CONTRAST.test(core)) say("the title asks no question and sets no contrast: end the hook on one question mark, or set what happened against what anybody would expect (「不是…而是…」「…卻…」)");
   else if (marks > 1) say(`the title asks ${marks} questions: one is the hook, more is a menu`);
   if (!TITLE_STAKE.test(core)) say("the title has no stake or surprise word (消失、騙過、差點、憑什麼、竟然、反而、還能…): say what was at risk or what nobody expects");
-  // 原來如此 adds a number only where it is useful and sourced (refresh-20261101/SPEC.md); the two
-  // story series always carry one, as 黑猫研究院 does.
-  if (!TITLE_NUMBER.test(core) && !/^sothatswhy-/.test(doc.slug ?? "")) say("the title has no number or year: one concrete figure makes the stake real");
   if (CALM_TITLE.test(core)) say("the title reads as a calm reading question or a summary; make it the surprise itself");
   const phone = [...core].slice(0, TITLE_PHONE_CHARACTERS).join("");
   if ([...core].length > TITLE_PHONE_CHARACTERS && !TITLE_STAKE.test(phone) && !TITLE_NUMBER.test(phone)) say(`a phone cuts the title near ${TITLE_PHONE_CHARACTERS} characters and the stake and the number both come after it; bring one of them forward`);
@@ -501,15 +547,23 @@ export function openingGateProblems(doc, timeline = estimateTimeline(doc), { ser
   return [...questionMenuProblems(doc, timeline, { series }), ...thumbnailEchoProblems(doc, timeline, { series })];
 }
 
+/** 「還記得…」 said more often than the ten-step series allows: past two it reads as a formula (H01 v2 said it nine times; 黑猫研究院's 13 most watched say it once or never). */
+export function callbackCountProblems(doc, max = TEN_STEP_CALLBACKS) {
+  const ids = [];
+  for (const { line } of eachLine(doc)) if (/還記得/.test(String(line.text ?? ""))) ids.push(line.id);
+  if (ids.length <= max) return [];
+  return [{ path: "scenes", message: `「還記得…」 is said in ${ids.length} lines (${ids.slice(0, 8).join(", ")}): keep at most ${max}, the opening's and the close's; in between, tell the fact that pays the loop off and let the viewer remember (curio-episode SKILL.md §架構與口吻)` }];
+}
+
 /** Every storytelling problem of a narrated script, tagged "narrative" so the worker can hand the warnings to the writer. */
 export function narrativeProblems(doc, timeline, { minutes, cadence = DEFAULT_CADENCE } = {}) {
   const tag = (problems) => problems.map((problem) => ({ ...problem, kind: "narrative" }));
   const length = Number.isFinite(minutes) ? minutes : frameToSeconds(timeline?.total_frames ?? 0) / 60;
   // The two story series (the tight cadence) are told to one viewer; the explainers keep their register.
-  const told = cadence.gap <= TIGHT_CADENCE.gap ? viewerAddressProblems(doc) : [];
+  const told = cadence.gap <= TIGHT_CADENCE.gap ? [...viewerAddressProblems(doc), ...callbackCountProblems(doc)] : [];
   return {
     errors: tag(outroNextVideoProblems(doc)),
-    warnings: tag([...chapterOpenerProblems(doc, timeline), ...hookCadenceProblems(doc, timeline, cadence.gap), ...loopProblems(doc, timeline, length, cadence.loopsPer10), ...repeatedFactProblems(doc), ...caveatRecitationProblems(doc), ...questionMenuProblems(doc, timeline), ...thumbnailEchoProblems(doc, timeline), ...titleProblems(doc), ...told]),
+    warnings: tag([...chapterOpenerProblems(doc, timeline), ...hookCadenceProblems(doc, timeline, cadence.gap, { asides: cadence.gap <= TIGHT_CADENCE.gap }), ...loopProblems(doc, timeline, length, cadence.loopsPer10), ...repeatedFactProblems(doc), ...caveatRecitationProblems(doc), ...questionMenuProblems(doc, timeline), ...thumbnailEchoProblems(doc, timeline), ...titleProblems(doc), ...told]),
   };
 }
 
@@ -574,12 +628,13 @@ export const TUTORIAL_PANEL_QUESTIONS = Object.freeze({
  */
 export const STORY_SERIES_PANEL_QUESTIONS = Object.freeze({
   scene_first: "第一句是否就讓完全沒看過的人聽懂這是什麼、為什麼值得看（一個問句或觀眾熟悉的情境），開場是否沒有丟出觀眾還不認識的人名、文件或線索？打招呼、「今天要來分享」不算。",
-  no_spoiler: "開場（第一章）是否只講終點多大、起點多小和最多一兩個高潮的名字，沒有先把劇情照順序濃縮一遍，也沒有講掉轉折怎麼發生、原因或結局？",
+  no_spoiler: "開場（第一章）是否只講終點多大、起點多小和最多一兩個高潮的名字，沒有先把劇情照順序濃縮一遍，也沒有講掉轉折怎麼發生、原因的細節或結局？（開場可以用一句話點出答案的方向，例如「真正的原因不在對手，在自己人」，整個開場只一句：它只說往哪裡看，不說發生了什麼，不算講掉。）",
   one_line: "全片是否大致照時間順序講一個故事：承諾句之後從年代與處境講起、主角才登場，倒敘只是小段而且開頭有明確的時間提示（「其實早在 1969 年」），沒有回頭把同一段再講一次？",
-  no_toc: "是否沒有任何一句只是在宣告這支片分幾段（「接下來分三段」「第一…第二…最後」「先講 A 再講 B」「這一章回答…」）或把後面的內容排成清單？開場可以有一句「今天我們就來聊聊…」的承諾句，說出這集要回答的問題，整支片只一次。",
+  no_toc: "是否沒有任何一句只是在宣告這支片分幾段（「接下來分三段」「第一…第二…最後」「先講 A 再講 B」「這一章回答…」）或把後面的內容排成清單？開場可以有一句「今天我們就來聊聊…」的承諾句，說出這集要回答的問題，整支片只一次。正文可以有一段編號清單，全片最多一段：先給總數和一個掛著的問題（「把它救回來的是三個人」），每一項是一件發生的事（誰、做了什麼、結果），不算宣告；開場的清單、第二段清單，或每一項只是一個標題的清單，仍算。",
   chapters_link: "故事是否從頭到尾連貫、沒有沒頭沒尾的地方：每個人物、公司、文件出現時都先交代是誰或是什麼；每一段、每一章第一句都用轉場接住上一段（「但就在這時候」「時間快轉到 1983 年」「問題來了」）或上一章留下的疑問？標籤、總結、重述剛問過的話不算銜接。",
   opening_hooks: "開場是否在約 1 分 05 秒內做到：一個問句或情境、終點多大和起點多小的反差（帶數字）、最多一兩個停在結果之前的高潮標籤，再用一句承諾句「今天我們就來聊聊…」說出這集要回答的問題？（「接下來我們會看到」這種空宣告不算；超過兩個預告、或把劇情照順序講一遍，也算沒做到。）",
-  no_detour: "是否沒有岔出去或變成年報與校勘朗讀的段落：每一段都透過人的困境與出招推進開場那個問題，沒有整段脫離主線，沒有連著念法條但書、年報揭露或「查不到／沒有公布」，也沒有逐條對照三個以上史料版本或產品清單？",
+  no_detour: "是否沒有岔出去或變成年報與校勘朗讀的段落：每一段都透過人的困境與出招推進開場那個問題，沒有整段脫離主線，沒有連著念法條但書、年報揭露或「查不到／沒有公布」，也沒有逐條對照三個以上史料版本或產品清單？（全片可以有一次預告過的岔題：先用一句話說它為什麼值得聽，例如「這裡先岔開講一個支線，因為後面會用到」，約一分鐘內講完並接回主線，不算岔出去；沒有預告、第二次岔題，或明顯超過一分鐘，仍算。）",
+  no_recap: "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？章末可以有一句定論（「這就是它真正的起點」），只要那一句帶的是新的說法，就不算重講；把那一章講過的事實再念一遍，仍算。",
 });
 /** Whether a script belongs to one of the two story series the viewer wording reads. */
 export const isStorySeries = (doc) => /^(?:curio|story)-/.test(doc?.slug ?? "");

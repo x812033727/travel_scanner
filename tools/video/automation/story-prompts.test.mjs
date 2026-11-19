@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { CONDENSATION_RULE, NARRATIVE_RULES, STORY_OPENING_RULE, STORY_SERIES_SCREEN_RULE, TOLD_TO_ONE_VIEWER } from "./register.mjs";
+import { CONDENSATION_RULE, NARRATIVE_RULES, STORY_OPENING_RULE, STORY_SERIES_SCREEN_RULE, TEN_STEP_NARRATIVE_RULES, TOLD_TO_ONE_VIEWER } from "./register.mjs";
 import { STORY_HOOK_RULES, STORY_INSTRUCTIONS } from "./story-prompts.mjs";
 
 const writer = STORY_INSTRUCTIONS["writer:story"];
@@ -21,7 +21,7 @@ test("every chapter but now ends on an unanswered question or action that the ne
 
 test("a story's hooks stand on facts, keep the shared limits, and the loops table grows to eight for ten minutes", () => {
   assert.match(writer, /A hook stands on a fact of this story: a number, one person's decision, something that should\s+not have happened\. Never an empty promise \(「接下來更精采」/);
-  assert.match(writer, /at most one forward hook in the whole story says\s+so out loud, and 「還記得…」 at most five times/);
+  assert.match(writer, /at most one forward hook in the whole story says\s+so out loud, and 「還記得…」 at most twice, in the opening's payoff and the close/);
   assert.match(writer, /"loops" lists at least 8 for ten minutes of narration/);
   assert.match(writer, /at least 2 of them planted in the hook \(its contrast and the promise's\s+question; one climax label may add a third, never a menu of questions\), and every one is paid off/);
   assert.match(writer, /The hook plants at\s+least three; every chapter but "now" leaves one hanging/);
@@ -36,12 +36,25 @@ test("a story's writer follows the ten steps and talks to one viewer, after the 
   assert.ok(writer.includes(STORY_OPENING_RULE) && writer.includes(TOLD_TO_ONE_VIEWER), "both series rules are in what the worker sends");
   assert.ok(writer.indexOf(STORY_OPENING_RULE) > writer.indexOf(STORY_HOOK_RULES), "the opening follows the cadence it refines");
   // Owner, 2026-11-05: 黑猫研究院's ten steps replace the condensation in these two series.
-  assert.match(STORY_OPENING_RULE, /in place of the condensation\s+rule above, so no 30-to-60-second condensation/);
+  assert.match(STORY_OPENING_RULE, /There is no\s+condensation: no 30-to-60-second summary/);
+  // The ten-step series are sent NARRATIVE_RULES without what their own rules take back (2026-11-19).
+  assert.ok(writer.includes(TEN_STEP_NARRATIVE_RULES) && !writer.includes(NARRATIVE_RULES));
+  assert.ok(TEN_STEP_NARRATIVE_RULES.length < NARRATIVE_RULES.length - 4000, "the AI-topic section and the replaced cadence are left out");
+  for (const gone of [/written for AI and tech topics/, /Every 60 to 90 seconds of the body/, /at most five times/, /three of them planted in the condensation/, /At most one metaphor/]) assert.doesNotMatch(TEN_STEP_NARRATIVE_RULES, gone);
+  for (const kept of [/One story, not sections \(the spine\)/, /One protagonist \(a person, a company, a ship, a file, an object\)/, /Every loop is paid off later/, /The close may not claim more than the record does/, /Naming a loop is not paying it/, /Nothing announces what is coming/, /The voice of someone telling it/]) assert.match(TEN_STEP_NARRATIVE_RULES, kept);
+  assert.match(NARRATIVE_RULES, /written for AI and tech topics/, "every other narrated video keeps the rules whole");
   assert.match(STORY_OPENING_RULE, /at most one or two labels of later climaxes/);
   assert.match(STORY_OPENING_RULE, /The promise, landing at about 0:40 to 1:05: 「今天我們就來聊聊…」/);
   assert.match(STORY_OPENING_RULE, /The first chapter ends\s+here \(40 to 90 seconds; lint warns outside them\)/);
   assert.match(STORY_OPENING_RULE, /A flashback is a short insert opened by a plain time cue/);
   assert.match(STORY_OPENING_RULE, /Nothing arrives out of nowhere/);
+  // The owner's four decisions of 2026-11-19: the answer's direction, one aside, one counted list, a verdict before the open question.
+  assert.match(STORY_OPENING_RULE, /One sentence, and only one, may say which way the answer\s+lies/);
+  assert.match(STORY_OPENING_RULE, /One aside in the whole episode, announced before it is taken/);
+  assert.match(STORY_OPENING_RULE, /One counted list in the body, inside one chapter and never its first line/);
+  assert.match(STORY_OPENING_RULE, /A chapter may close on one verdict sentence before its open question/);
+  assert.match(STORY_OPENING_RULE, /a script written a chapter\s+at a time uses the first two only where "plan" puts them/);
+  assert.match(STORY_OPENING_RULE, /takes no thought to answer/);
   assert.ok(!writer.includes(CONDENSATION_RULE), "the story writer no longer carries the condensation it replaces");
   assert.match(TOLD_TO_ONE_VIEWER, /Lint warns under two 「你」 a thousand characters/);
   assert.match(TOLD_TO_ONE_VIEWER, /about 4\.5 spoken characters a second/);

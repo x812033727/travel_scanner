@@ -192,6 +192,47 @@ The close:
 `.trim();
 
 /**
+ * NARRATIVE_RULES as the ten-step series are sent them (奇聞檔案局, the brand stories, 原來如此事務所;
+ * owner, 2026-11-19). Their writers used to receive every shared paragraph and then a shape rule
+ * that took several of them back, and 奇聞檔案局's text stood 400 characters under the 40,000 the
+ * site takes. Left out here: the section written for AI and tech topics (story shapes for news,
+ * reviews and A-or-B choices, one metaphor a video), of which the thread, the one-line term and
+ * the list rule are kept in three lines; the 60-to-90-second cadence and the three loops planted
+ * in a condensation, which the series' own hook rules replace; and the five 「還記得」, which is two
+ * for these series. Every other narrated video keeps NARRATIVE_RULES whole. A marker that no longer
+ * matches throws at import, so an edit to NARRATIVE_RULES cannot silently change what is left out.
+ */
+function tenStepNarrativeRules(rules) {
+  const between = (text, from, to, replacement = "") => {
+    const start = text.indexOf(from);
+    const end = text.indexOf(to, start + from.length);
+    if (start < 0 || end < 0) throw new Error(`NARRATIVE_RULES changed: ${JSON.stringify(from.slice(0, 40))} … ${JSON.stringify(to.slice(0, 40))} not found`);
+    return text.slice(0, start) + replacement + text.slice(end);
+  };
+  const without = (text, piece) => {
+    if (!text.includes(piece)) throw new Error(`NARRATIVE_RULES changed: ${JSON.stringify(piece.slice(0, 40))} not found`);
+    return text.replace(piece, "");
+  };
+  let text = rules;
+  text = between(text, "One protagonist, one story shape (written for AI and tech topics", "Hooks (open loops):", `One thread:
+- One protagonist (a person, a company, a ship, a file, an object) is in the opening and in the
+  close, and every chapter moves it on; a new fact enters through it, never as a fresh example.
+- A term is explained in one line at the moment the protagonist meets it, as part of what happens;
+  two definitions in a row are a lecture.
+- Nothing is read out as a list of products, scores or who said what: each item that matters
+  becomes an event (the one counted list of the shape rule aside).
+`);
+  text = between(text, "- Every 60 to 90 seconds of the body", "- Every loop is paid off later");
+  text = without(text, ", at least three for ten minutes, three of them planted in the condensation");
+  text = between(text, "- 「還記得…」 appears at most five times", "- The close may not claim more");
+  const named = "and the payoff names it (「還記得那九桶嗎？」)";
+  if (!text.includes(named)) throw new Error("NARRATIVE_RULES changed: the payoff's naming sentence not found");
+  text = text.replace(named, "and the payoff brings the thing itself back (「那九桶」; 「還記得…嗎？」 only for the two the series allows)");
+  return text;
+}
+export const TEN_STEP_NARRATIVE_RULES = tenStepNarrativeRules(NARRATIVE_RULES);
+
+/**
  * How the two story series are built (奇聞檔案局 and the brand stories). 2026-10-25 measured
  * 黑猫研究院's Seiko episode against ours (docs/videos/channel-review-20261025-story-series/README.md)
  * and replaced the condensation's three or four teasers with the stakes and one promise sentence.
@@ -205,20 +246,20 @@ The close:
  * (core/lint.mjs STORY_OPENING_CHAPTER_SECONDS reads the first chapter); the other narrated
  * videos keep it.
  */
-export const STORY_OPENING_RULE = `Shape of an episode of this series (owner, 2026-11-05; the illustrated why-explainer since
-  2026-11-19; in place of the condensation
-  rule above, so no 30-to-60-second condensation, no scene told up to its first odd fact, no three
-  or four teasers and no summary of the plot up front; what stands of it: the first spoken line at
-  0:00, no greeting, no table of contents, no later chapter's result given away). There is no
-  intro bumper at all (owner, 2026-11-19): the video opens on its first line and the tool adds
-  only the outro. Ten steps, broadly in the order things happened:
+export const STORY_OPENING_RULE = `Shape of an episode of this series (owner, 2026-11-05). There is no
+  condensation: no 30-to-60-second summary, no scene told up to its first odd fact, no teasers
+  and no plot up front; the first spoken line is at 0:00, with no greeting, no table of contents
+  and no later chapter's result given away. No intro bumper (owner, 2026-11-19):
+  the tool adds only the outro. Ten steps, broadly in the order things happened:
   1. The hook, about 25 to 50 seconds: ONE question or ONE situation the viewer knows (「你有沒有用過…」
      「隨便去街上問一個人…」), never a menu of questions stacked one after another (owner,
      2026-11-19: at most one follow-up; lint warns past two questions in the opening, the promise
      aside); the other questions become the loops the later chapters open. Then the contrast, how big it ended up (with its number) against how
      small it started, and at most one or two labels of later climaxes (「一場差點破產的大戰」),
      each cut off before its result. Never how it got there, never the turns or their causes,
-     never the story told in order. The first sentence alone tells somebody who knows nothing
+     never the story told in order. One sentence, and only one, may say which way the answer
+     lies (owner, 2026-11-19: 「真正的原因不在對手，在自己人」): it tells the viewer where to look,
+     never what happened, and the viewer stays to see how. The first sentence alone tells somebody who knows nothing
      what this is and why it is worth watching: no person, document or clue the viewer has not
      met yet.
   2. The promise, landing at about 0:40 to 1:05: 「今天我們就來聊聊…」 with the question the
@@ -233,14 +274,27 @@ export const STORY_OPENING_RULE = `Shape of an episode of this series (owner, 20
   7. The comeback and the reveal, paying off what the hook held back by name (「還記得…嗎？」).
   8. The epilogue: 「故事還沒結束」, what came after, a new threat, a rival's turn.
   9. The theme: back to the hook's image or number, then one line the viewer keeps.
-  10. The close: one question about the viewer's own life for the comments, then the reason to
+  10. The close: one question about the viewer's own life that takes no thought to answer (which
+     of two, or what they own), then the reason to
      subscribe; never the next video.
   A flashback is a short insert opened by a plain time cue (「其實早在 1969 年…」), never the
   frame of the story. Nothing arrives out of nowhere: a person, a company or a document is
   introduced (who or what, and when) before it does anything, a term where the protagonist meets
   it, and every paragraph opens on a transition from the one before (「但就在這時候」「時間快轉到
   1983 年」「問題來了」). The hook's contrast, its one or two climax labels and the promise's
-  question are the loops the first chapter plants, paid off in steps 5 to 9.`;
+  question are the loops the first chapter plants, paid off in steps 5 to 9.
+  Three exceptions the owner allowed on 2026-11-19; each overrides the rules above only as far as it says, and a script written a chapter
+  at a time uses the first two only where "plan" puts them (else in its longest middle chapter):
+  - One aside in the whole episode, announced before it is taken: a sentence saying why it is
+    worth hearing (「這裡先岔開講一個支線，因為後面會用到」), at most a minute carried by one whole
+    metaphor or three concrete details, then a sentence back to the story.
+  - One counted list in the body, inside one chapter and never its first line: its count and a
+    question left hanging first (「把它救回來的是三個人」), then each item an event (who, what
+    they did, what came of it) opened on its number (「第一個人是…」). Headings are still a table
+    of contents.
+  - A chapter may close on one verdict sentence before its open question (「這就是它真正的起點。
+    但問題來了…」): new words, never the chapter's facts again; the question still comes last.
+    In the two-voice explainer the host gives the verdict and the child asks the question.`;
 
 /**
  * What these two series show and how names are said (owner, 2026-11-05). The episodes are made
@@ -303,18 +357,18 @@ export const TOLD_TO_ONE_VIEWER = `Told to one viewer (this series, as 黑猫研
     reaction never changes a fact.
   - The pace of a conversation: sentences run on with connectives (那麼、結果、然後、但是、沒想到、
     這時候), a fact is followed by what it meant for somebody, a number by what it bought or cost,
-    and a reveal is a short sentence. Aim at about 4.5 spoken characters a second over the body
-    (the reference channels run about 5; ours ran 3.3), so 13 minutes is about 3,500 characters.
+    and a reveal is a short sentence. Aim at about 4.5 spoken characters a second over the body, about 270 characters a minute.
   - Human dilemmas and moves, never a legal filing or a collation note read aloud (2026-11-18):
     tell who was cornered, what rival forced their hand, what move they made and what it cost,
-    instead of reciting source or statutory caveats out loud (「照…的資料」「年報寫」「現行…法規寫著」
-    「翻遍年報也找不到」「沒有公布…查不到」「千萬別聽成…」; lint warns when filing or missing-figure
-    hedges repeat). Exact legal scope, accounting footnotes and figures no source publishes belong
+    instead of reciting source or statutory caveats out loud (「年報寫」「翻遍年報也找不到」; lint
+    warns when they repeat). Exact legal scope, accounting footnotes and figures no source publishes belong
     in claims.md and youtube.description; in a historical mystery, stay inside one person's choice
     instead of collating three chronicle editions line by line.
-  - The close is a conversation too: the answer, then 「如果你…，留言告訴我」 on something the
-    viewer owns or does, then the subscribe reason; it may say 「好啦，這就是今天的故事」 and it
-    still never names the next video.`;
+  - Three more habits of that telling (2026-11-19). The rival or the old way is never a fool:
+    say the sound reason that bound them (a principle, a supply chain, a contract). After three
+    or four long sentences, one of two to six characters brakes (「錯了！」「怎麼辦？硬做！」). And
+    the brief's 舊世界, 對手的理由, 二次反轉, 彩蛋, 比喻, 現在 and 概念詞 lines are told where they
+    say; the 概念詞 is said as our own name for it, then used again.`;
 
 // A writing-only route inside the existing slides format. This does not alter the storytelling
 // register, voice, schema, pause calculation or QA, and is not sent to drama or translation stages.

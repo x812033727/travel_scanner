@@ -8,7 +8,7 @@
 import { CURIO_MUSIC } from "../core/curio.mjs";
 import { explainerCardTemplates } from "../core/drama.mjs";
 import { STORY_OPENING_CHAPTER_SECONDS } from "../core/lint.mjs";
-import { CONDENSATION_RULE, NARRATIVE_RULES, STORY_OPENING_RULE, STORY_SERIES_SCREEN_RULE, TOLD_TO_ONE_VIEWER } from "./register.mjs";
+import { STORY_OPENING_RULE, TEN_STEP_NARRATIVE_RULES, STORY_SERIES_SCREEN_RULE, TOLD_TO_ONE_VIEWER } from "./register.mjs";
 
 /**
  * The prompt variants of an explainer, by style preset: the one-off's bible ("planner:<bible>"),
@@ -100,7 +100,8 @@ curious viewer would ask, answered`,
   titleGuide: `youtube.title is the question followed by 「｜原來如此事務所」, written the way 黑猫研究院
   writes its most watched titles (owner, 2026-11-19): the thing everybody knows in the first six
   characters (QR Code, 冰箱門, 羽絨衣), one surprise or stake word (竟然、還能、反而、根本、憑什麼、從來),
-  a number only where it is useful and sourced, one question mark; at most 30 characters before
+  a number only where it is useful and sourced, one question mark (none only where the title
+  sets a contrast, 「不是…而是…」「…卻…」); at most 38 characters before
   the suffix, with the surprise inside the first 18 (a phone cuts there) (「QR Code 沾到咖啡，
   竟然還能嗶？」「冰箱門一關，燈竟然真的會熄？」); the thumbnail headline says what the title does not; never a
   calm reading question or a summary (「QR Code 的原理是什麼」「冰箱的故事」); lint warns
@@ -116,7 +117,14 @@ type it, and what most people wrongly assume.
 ## 原因 3 or 4 reasons, each one sentence with the source page that supports it.
 ## 大綱 ONE outline: the spine in one sentence (「主線：…」: who or what, from which moment,
 to which answer); 3 to 5 turns in the order they happened (「轉折：…」, each with the chapter
-that reveals it); the hook as the first spoken line, ONE question or situation the viewer knows
+that reveals it); where the sources carry them, also 「舊世界：…」 (what was unbearable before the
+protagonist came, told first in the era chapter), 「對手的理由：…」 (the sound reason that bound
+the rival or the old way), 「二次反轉：…」 (what the half-informed believe, overturned
+mid-episode), 「彩蛋：…」 (the second-biggest surprise, kept for 「故事還沒結束」 at about three
+quarters), 「概念詞：…」 (our own four-to-six-character name for the mechanism), on a technical
+topic 「比喻：…」 (the one everyday metaphor) and 「現在：…」 (the form the viewer uses today, for
+the epilogue), and 「岔題：第 N 章」「清單：第 N 章」 where the one aside or the one counted list
+goes, each line left out rather than invented; the hook as the first spoken line, ONE question or situation the viewer knows
 and never a menu of questions; its contrast, what everybody assumes against what is true, with at
 most one or two later moments named and cut off before their results (「鉤子：…」); the promise
 sentence 「今天我們就來聊聊…」 with the question (「承諾句：…」); the open loops (「鉤子：<what is
@@ -248,7 +256,8 @@ stands best today each have their place,`,
   history channels with hundreds of thousands of views write theirs (2026-10-25): the name
   everybody knows in the first six characters (the ship, the place, the person, the event), one
   stake word that says what was at risk or what nobody expects (消失、不敢、騙過、差點、全部、
-  真相、憑什麼), a number or a year, a question mark; at most 30 characters before the suffix
+  真相、憑什麼), a number or a year where it helps, a question mark (none only where the title
+  sets a contrast, 「不是…而是…」「…卻…」); at most 38 characters before the suffix
   (「十個人全部消失，1872 年這艘船為什麼還在走？」「曹操自己放的火？赤壁真正燒船的人是誰」),
   never a calm reading question (「燈塔的故事改了哪裡」)`,
   descriptionGuide: `description is the body only, ending on 「資料截至 YYYY-MM-DD」 with "today"'s
@@ -273,7 +282,7 @@ every other hook rule stands):
 - A hook stands on a fact of this file: a date, a number, one person's decision, something that
   should not have been there. Never an empty promise (「接下來更精采」「後面還有更驚人的」) and never
   a table of contents. At most one forward hook in the whole episode says so out loud, and
-  「還記得…」 at most five times.
+  「還記得…」 at most twice, not the five above (lint warns past two).
 - "loops" lists at least 8 for ten minutes of narration (about one for every 75 seconds), at
   least 2 of them planted in the first chapter (the hook's contrast and the promise's question; one
   climax label may add a third, never a menu of questions), and every one is paid off.
@@ -303,7 +312,14 @@ with its label and names the source page that supports it:
   open.
 ## 大綱 ONE outline: the spine in one sentence (「主線：…」: who or what, from which moment,
 to which answer); 3 to 5 turns in the order they happened (「轉折：…」, each with the chapter
-that reveals it); the hook as the first spoken line (a question or a situation the viewer knows,
+that reveals it); where the sources carry them, also 「舊世界：…」 (what was unbearable before the
+protagonist came, told first in the era chapter), 「對手的理由：…」 (the sound reason that bound
+the rival or the old way), 「二次反轉：…」 (what the half-informed believe, overturned
+mid-episode), 「彩蛋：…」 (the second-biggest surprise, kept for 「故事還沒結束」 at about three
+quarters), 「概念詞：…」 (our own four-to-six-character name for the mechanism), on a technical
+topic 「比喻：…」 (the one everyday metaphor) and 「現在：…」 (the form the viewer uses today, for
+the epilogue), and 「岔題：第 N 章」「清單：第 N 章」 where the one aside or the one counted list
+goes, each line left out rather than invented; the hook as the first spoken line (a question or a situation the viewer knows,
 which tells a newcomer what this is and why it is worth watching); the hook's contrast, how big
 it ended up against how small it started, with at most one or two climaxes named and cut off
 before their results, never the plot (「鉤子：…」); the promise sentence 「今天我們就來聊聊…」 with
@@ -466,8 +482,7 @@ not the text, its characters or its clips):
 ${p.noWords ? NO_WORDS_PICTURE_RULES : PICTURE_RULES}
 ${p.noWords ? NO_CARDS : cardRules(cards)}
 ${p.shape}
-- ${CONDENSATION_RULE}
-${NARRATIVE_RULES}${p.storyRules ? `
+${TEN_STEP_NARRATIVE_RULES}${p.storyRules ? `
 ${p.storyRules}` : ""}
 ${p.noWords ? NO_WORDS_LINE_RULES : LINE_RULES}
 - "music": {prompt (English: ${p.music})} when "drama_settings.music_enabled";

@@ -9,7 +9,7 @@
 //
 // This file imports nothing from prompts.mjs, which imports it.
 
-import { NARRATIVE_RULES, STORY_OPENING_RULE, STORY_SERIES_SCREEN_RULE, TOLD_TO_ONE_VIEWER } from "./register.mjs";
+import { STORY_OPENING_RULE, STORY_SERIES_SCREEN_RULE, TEN_STEP_NARRATIVE_RULES, TOLD_TO_ONE_VIEWER } from "./register.mjs";
 
 export const STORY_VARIANT = "story";
 export const STORY_FIX_VARIANT = "story-fix";
@@ -69,6 +69,14 @@ the comeback that pays off the hook), now (steps 8 to 10: 「故事還沒結束�
 the one observation "plan.takeaway" leaves the viewer with, back to the hook's image, then the
 close). They are beats of ONE story, not six sections: each chapter opens on what happened next,
 never on a label ("先講…", "回到…", "這一章講…").
+A chapter's "point" may carry planning marks (owner, 2026-11-19), each told in the chapter that
+carries it: 「舊世界：…」 (what was unbearable before the founder came, told before they enter),
+「對手的理由：…」 (the sound reason that bound the rival or the old way), 「二次反轉：…」 (what
+the half-informed believe, overturned), 「彩蛋：…」 (the second-biggest surprise, after
+「故事還沒結束」), 「概念詞：…」 (our own name for the mechanism, said as ours), 「比喻：…」 (the
+one everyday metaphor) and 「現在：…」 (the form the viewer uses today). Only a chapter whose
+point carries 「岔題：…」 or 「清單：…」 takes the one aside or the one counted list of the shape
+rule below; every other chapter uses neither.
 `.trim();
 
 // A story is told by one voice over still pictures, so nothing but the narration holds the
@@ -89,7 +97,7 @@ stands):
 - A hook stands on a fact of this story: a number, one person's decision, something that should
   not have happened. Never an empty promise (「接下來更精采」「後面還有更驚人的」) and never a
   table of contents. The limits above still hold: at most one forward hook in the whole story says
-  so out loud, and 「還記得…」 at most five times.
+  so out loud, and 「還記得…」 at most twice, in the opening's payoff and the close.
 - "loops" lists at least 8 for ten minutes of narration (about one for every 75 seconds; 10 for a
   13-minute story), at least 2 of them planted in the hook (its contrast and the promise's
   question; one climax label may add a third, never a menu of questions), and every one is paid off.
@@ -147,7 +155,7 @@ only)}.
   chapter>", "payoff": "<the line id that answers it, in this chapter or left out when a later
   one owns it>", "what": "<what it holds back, at most 40 characters>"}]. The hook plants at
   least three; every chapter but "now" leaves one hanging, and "now" leaves none.
-${NARRATIVE_RULES}
+${TEN_STEP_NARRATIVE_RULES}
 ${STORY_HOOK_RULES}
 ${STORY_OPENING_RULE}
 ${TOLD_TO_ONE_VIEWER}

@@ -122,17 +122,20 @@ test("one table maps each explainer preset to its variants; every name fits the 
 // file's three sections, no card and no word on screen, MiniMax image-01 prompt rules, Latin
 // names said as written, and nobody living or dead since 1956 drawn. An unfinished 奇聞檔案局
 // one-off on the host stops with video_ai_receipt_input_changed at its next stage after the deploy.
+// The four writer texts moved again on 2026-11-19 (owner): STORY_OPENING_RULE lets the hook say which
+// way the answer lies and allows one announced aside, one counted list and a verdict before a
+// chapter's open question; the same stop applies to an unfinished one-off.
 const SERIES_TEXT_PINS = {
-  "planner:bible-explainer-cartoon": [6519, "078f8a30dac91dbf89bb03f33c9672404ec96bb4dd130765f2b72f1ff5d8810f"],
-  "writer:explainer-cartoon": [34216, "41e048cb96da62d93cdea4c42d9d57a59ea4b33840d9273311495a2b02f61919"],
+  "planner:bible-explainer-cartoon": [7157, "c0c073ea08c1830520cdd8aac05655180dbf74804ddb47fdb53289a472dc7f4a"],
+  "writer:explainer-cartoon": [29414, "9b4da3761a3631968453a25a0c55677f58991ea068a9439bdec2cc02eba7b60c"],
   "verifier:explainer-cartoon": [4305, "6f41570e5090987327a200b7790a6ecdec88c8a0350de2ca49b74cb4e7ca95db"],
-  "planner:discuss-cartoon": [7246, "86fb87e98cce5315e954f8505f00c56d3aa6693ccec3e9e72d70cbb7fee014c4"],
-  "writer:discuss-cartoon": [32681, "890f1a4371096857a3dfc98ac7fe03e92ad28af1e3b66196379f6b29c706b146"],
-  "planner:bible-explainer-mystery": [9615, "8eb4a18c04b487826fa483303f255aa5b1bb8050836d597aa923038ce7b22172"],
-  "writer:explainer-mystery": [38236, "521eb34b3427f6919a7785282f6bbeba34eb0726df46fc83b7adba67bc56e2fa"],
+  "planner:discuss-cartoon": [7884, "67c29f2e2e662f11fa2eb5e91fac15a388739750b15f88916406b56950b0cc0a"],
+  "writer:discuss-cartoon": [27879, "d80dab5255695c7bb3a5db63020beb18122d501381b640651de3d62a1a5bf1db"],
+  "planner:bible-explainer-mystery": [10253, "20e96955d47455eb2b5bf9065e6f28686ecb77c9bbe5803496630452a1a4283f"],
+  "writer:explainer-mystery": [33486, "ca6cf3f680e46b925a9c087ff06f8bad3c8cddd91d17de78c7c470f004bc30bd"],
   "verifier:explainer-mystery": [6433, "e84a1810dab0b060272622dae14a95879470965678851713608fc5ac60dc4b2a"],
-  "planner:discuss-mystery": [10244, "5049e3b4666364e854671e6c2b010e5d382b974fbcdfad1defdf14f26326208c"],
-  "writer:discuss-mystery": [36773, "ec4c2d8e3ed4ca1605a3dc821cb8f9c1c773a8335a0b5fa4e6da20b4c8111bec"],
+  "planner:discuss-mystery": [10882, "953f812ff7bffa3ff7c70e2132048bcacc894477bc803017c9ac068124ac6dfa"],
+  "writer:discuss-mystery": [32023, "ff517dad6fabb07e816587ec65806358a88384c52f5616db0d92f8372b9aef4a"],
 };
 
 test("the ten texts of the two profiled series are the pinned ones, composed with no genre section", () => {
