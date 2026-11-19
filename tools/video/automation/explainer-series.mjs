@@ -97,7 +97,14 @@ curious viewer would ask, answered`,
   surprising fact or number instead of the question}, C {headline: ≤ 6 characters in one line
   contrasting two things ("圓窗 vs 方窗"), sub: ≤ 12 characters, shot: another shot showing
   both}}.`,
-  titleGuide: `youtube.title is the question followed by 「｜原來如此事務所」`,
+  titleGuide: `youtube.title is the question followed by 「｜原來如此事務所」, written the way 黑猫研究院
+  writes its most watched titles (owner, 2026-11-19): the thing everybody knows in the first six
+  characters (QR Code, 冰箱門, 羽絨衣), one surprise or stake word (竟然、還能、反而、根本、憑什麼、從來),
+  a number only where it is useful and sourced, one question mark; at most 30 characters before
+  the suffix, with the surprise inside the first 18 (a phone cuts there) (「QR Code 沾到咖啡，
+  竟然還能嗶？」「冰箱門一關，燈竟然真的會熄？」); the thumbnail headline says what the title does not; never a
+  calm reading question or a summary (「QR Code 的原理是什麼」「冰箱的故事」); lint warns
+  (narrative.mjs titleProblems)`,
   descriptionGuide: `description is the body only`,
   music: "light, curious, no vocals",
   shortOne: "Short 1 is the hook and the answer in brief",
