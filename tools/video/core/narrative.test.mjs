@@ -723,3 +723,15 @@ test("the first 15 s of curio-, story- and sothatswhy- echo the thumbnail or the
   assert.deepEqual(thumbnailEchoProblems(echoed, estimateTimeline(echoed)), [], "the thumbnail's subject in the first line");
   assert.deepEqual(thumbnailEchoProblems({ ...structuredClone(doc), slug: "daily-ai-20261119" }, estimateTimeline(doc)), [], "other series are untouched");
 });
+
+import { readsTenStepPanel } from "./narrative.mjs";
+
+test("原來如此 reads the ten-step panel too, and its opening question bans a question menu (owner 2026-11-19)", () => {
+  const sothatswhy = { ...fixture(), slug: "sothatswhy-p12-qr-code" };
+  assert.equal(readsTenStepPanel(sothatswhy), true);
+  assert.equal(isStorySeries(sothatswhy), false, "look, cadence and branding rules stay apart");
+  const questions = panelQuestions(sothatswhy);
+  assert.match(questions.find((question) => question.id === "opening_hooks").question, /問題菜單/);
+  assert.doesNotMatch(questions.find((question) => question.id === "opening_hooks").question, /至少三個後面才會揭曉的時刻/);
+  assert.equal(panelRulesSha256(sothatswhy), panelRulesSha256({ ...fixture(), slug: "curio-s27" }), "the three series share one contract");
+});

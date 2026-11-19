@@ -520,11 +520,17 @@ export const STORY_SERIES_PANEL_QUESTIONS = Object.freeze({
   one_line: "全片是否大致照時間順序講一個故事：承諾句之後從年代與處境講起、主角才登場，倒敘只是小段而且開頭有明確的時間提示（「其實早在 1969 年」），沒有回頭把同一段再講一次？",
   no_toc: "是否沒有任何一句只是在宣告這支片分幾段（「接下來分三段」「第一…第二…最後」「先講 A 再講 B」「這一章回答…」）或把後面的內容排成清單？開場可以有一句「今天我們就來聊聊…」的承諾句，說出這集要回答的問題，整支片只一次。",
   chapters_link: "故事是否從頭到尾連貫、沒有沒頭沒尾的地方：每個人物、公司、文件出現時都先交代是誰或是什麼；每一段、每一章第一句都用轉場接住上一段（「但就在這時候」「時間快轉到 1983 年」「問題來了」）或上一章留下的疑問？標籤、總結、重述剛問過的話不算銜接。",
-  opening_hooks: "開場是否在約 1 分 05 秒內做到：一個問句或情境、終點多大和起點多小的反差（帶數字）、最多一兩個停在結果之前的高潮標籤，再用一句承諾句「今天我們就來聊聊…」說出這集要回答的問題？（「接下來我們會看到」這種空宣告不算；超過兩個預告、或把劇情照順序講一遍，也算沒做到。）",
+  opening_hooks: "開場是否在約 1 分 05 秒內做到：只用一個問句或情境（最多再追問一句，沒有連丟三個以上問題排成「問題菜單」）、終點多大和起點多小的反差（帶數字）、最多一兩個停在結果之前的高潮標籤，再用一句承諾句「今天我們就來聊聊…」說出這集要回答的問題？（「接下來我們會看到」這種空宣告不算；超過兩個預告、或把劇情照順序講一遍，也算沒做到。）",
   no_detour: "是否沒有岔出去或變成年報與校勘朗讀的段落：每一段都透過人的困境與出招推進開場那個問題，沒有整段脫離主線，沒有連著念法條但書、年報揭露或「查不到／沒有公布」，也沒有逐條對照三個以上史料版本或產品清單？",
 });
 /** Whether a script belongs to one of the two story series the viewer wording reads. */
 export const isStorySeries = (doc) => /^(?:curio|story)-/.test(doc?.slug ?? "");
+/**
+ * The scripts whose blind panel reads 黑猫研究院's ten steps: the two story series and, since the
+ * owner moved new episodes to the ten steps (2026-11-19), 原來如此事務所. Kept apart from
+ * isStorySeries, which also decides look, cadence and branding rules 原來如此 does not share.
+ */
+export const readsTenStepPanel = (doc) => isStorySeries(doc) || /^sothatswhy-/.test(doc?.slug ?? "");
 
 /**
  * The checks reworded for the daily news brief (a daily-ai- slug, owner decision 2026-10-29): five
@@ -557,7 +563,7 @@ export const isDailyBrief = (doc) => /^daily-ai-/.test(doc?.slug ?? "");
 export function panelQuestions(doc) {
   const words = doc?.category === "tutorial"
     ? TUTORIAL_PANEL_QUESTIONS
-    : isStorySeries(doc)
+    : readsTenStepPanel(doc)
       ? STORY_SERIES_PANEL_QUESTIONS
       : isDailyBrief(doc)
         ? DAILY_BRIEF_PANEL_QUESTIONS
@@ -595,7 +601,7 @@ const panelRulesHash = (questions) => createHash("sha256").update(JSON.stringify
 /** The story panel's contract hash (every script that is not a tutorial). */
 export const PANEL_RULES_SHA256 = panelRulesHash(NARRATIVE_PANEL);
 /** The contract hash of the panel this script is read against. */
-export const panelRulesSha256 = (doc) => (doc?.category === "tutorial" || isStorySeries(doc) || isDailyBrief(doc) ? panelRulesHash(panelQuestions(doc)) : PANEL_RULES_SHA256);
+export const panelRulesSha256 = (doc) => (doc?.category === "tutorial" || readsTenStepPanel(doc) || isDailyBrief(doc) ? panelRulesHash(panelQuestions(doc)) : PANEL_RULES_SHA256);
 
 // Bind the exact rendered narration sent to the blind panel. The shared script check omits
 // metadata such as the title, even though the panel reads it above every chapter.
