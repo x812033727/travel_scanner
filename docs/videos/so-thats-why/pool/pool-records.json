@@ -1,5 +1,5 @@
 {
-  "revision": "2026-11-19-pool-7506",
+  "revision": "2026-11-19-pool-7543",
   "raw_records": [
     {
       "id": "LEG-B01",
@@ -107963,6 +107963,1470 @@
       "eligible": true,
       "local_references": [
         "docs/videos/so-thats-why/pool/batches/wave126-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0001",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "匹克球雙打，對面已讓發球落地一次才回擊。你站在非截擊區外，為什麼這一球還不能凌空接？",
+      "mechanism_key": "x127.daily.pickleball_two_bounces_opposite_ends",
+      "answer_target": "這條規則把兩次落地分在兩邊。先由接發方讓發球在自家場地落地一次，再將球打回；接下來換發球方讓這顆回球在自己這邊落地，才可以擊回。兩邊各落地一次之後，一般來回便可以截擊，仍得遵守非截擊區等規則。",
+      "scope": "依 Pickleball England 2026 雙打基本規則，假設發球及回球均界內。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不必讓同一球在一邊彈兩次；要認的是哪一隊還沒等到自己那次落地。",
+        "visual": "用自畫球場標兩個落點，藍點在接發方、紅點在發球方，再重播發球方過早截擊的版本。",
+        "seconds": [
+          24,
+          36
+        ]
+      },
+      "source_locator": "X127E-S01，TWO BOUNCE RULE 與 NON-VOLLEY ZONE。",
+      "notes": "第一個落點是發球過網後的落地；與球員如何執行 drop serve 分開。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "使用自製球場動畫與落點，不取用協會圖或轉播片。",
+      "origin": "wave127-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-8b17ce9d3de89cdc",
+          "origin": "wave127-everyday-20261119",
+          "locator": "X127E-S01，TWO BOUNCE RULE 與 NON-VOLLEY ZONE。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0002",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "棒球一壘有人，打者揮空第三好球，捕手卻沒接牢。為什麼一出局時打者出局，兩出局時反而能往一壘跑？",
+      "mechanism_key": "x127.daily.baseball_uncaught_third_strike_first_occupied",
+      "answer_target": "MLB 的判準有兩個入口：一壘空著，或已經兩出局。本例一壘有人，一出局時兩項都不符合，打者因三振出局；換成兩出局就符合第二項，打者可嘗試取得一壘，守方仍可能讓他出局。即使最後安全上壘，這次打席照樣記一次三振。",
+      "scope": "依 MLB 規則詞條，以揮空而第三好球未被捕手接牢為例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個揮空動作，出局燈多亮一盞會改變下一個跑壘動作，三振紀錄卻相同。",
+        "visual": "兩個計分板保持一壘有人，只改一出局、兩出局，再將「可嘗試跑」和「三振紀錄」分列。",
+        "seconds": [
+          25,
+          38
+        ]
+      },
+      "source_locator": "X127E-S02，Definition 第 2 段，if it is open or if there are two outs 與 scorebook。",
+      "notes": "不是把球沒接牢一律判安全；不同於 K123-0004 的內野高飛必死球。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行畫壘包、落球及出局燈，勿用球隊商標或球場轉播。",
+      "origin": "wave127-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-08419dc3ca027cfb",
+          "origin": "wave127-everyday-20261119",
+          "locator": "X127E-S02，Definition 第 2 段，if it is open or if there are two outs 與 scorebook。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0003",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "找圖書館的書，同一排架號為什麼 .A19 要放在 .A2 前面？把 19 當作十九，不就該排後面嗎？",
+      "mechanism_key": "x127.daily.library_cutter_digits_in_decimal_order",
+      "answer_target": "先看比的是索書號哪一段。Kent State 的美國國會圖書館分類法排架教材說，前段的整數按數值比；到了 Cutter 號，同一字母後的數字要逐位比。兩本書前面都相同時，.A19 和 .A2 比到第一個數字便是 1 對 2，所以 .A19 在前面，.A2 在後面。",
+      "scope": "限使用 LC 分類法、前段完全相同、比到單一 Cutter 號的兩本書。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "操作同一面書架，先知道在比整數還是逐位比較，才找得到正確的格子。",
+        "visual": "製作兩張虛構書標，讓相同的前綴疊合，將 .A19 與 .A2 的第一位數字逐格亮出。",
+        "seconds": [
+          22,
+          34
+        ]
+      },
+      "source_locator": "X127E-S03，Whole Number line 與 Cutter Line 的 read each digit separately。",
+      "notes": "算例自擬；不把這項規則誤用到版本年份或冊號。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "用自製書標與無書名模型，不取用圖書館導覽畫面。",
+      "origin": "wave127-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-67a43b995b761208",
+          "origin": "wave127-everyday-20261119",
+          "locator": "X127E-S03，Whole Number line 與 Cutter Line 的 read each digit separately。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0004",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "兩座陶窯的溫度計都曾顯示 1222°C，同號測溫錐的尖端怎麼還可能彎到不同位置？",
+      "mechanism_key": "x127.daily.kiln_cone_heatwork_last_heating_rate",
+      "answer_target": "溫度計的一個讀數只告訴你當時量到幾度。Orton 說，測溫錐最後彎到什麼程度，同時受終點溫度與最後約 100°C 的升溫速率影響。以 6 號自立式錐為例，表列末段每小時升 60°C 時的等效終點是 1222°C，每小時升 150°C 則是 1243°C。少掉升溫過程，就不能只用同一個最高溫預測兩支錐會彎成一樣。",
+      "scope": "以 Orton Regular - SSB 自立式 6 號錐的攝氏表為例，錐的放置條件相近。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "窯停了以後，錐彎曲的程度仍留下末段受熱過程的線索。",
+        "visual": "自畫兩條升溫曲線與兩支相同錐，分別標明速率；圖表旁放同一幀溫度計讀數。",
+        "seconds": [
+          26,
+          39
+        ]
+      },
+      "source_locator": "X127E-S04，The practical use of cones 段；X127E-S05，Temperature Equivalents (°C) 的 6 號列與兩個升溫速率欄。",
+      "notes": "數字只用來讀原廠對照表，不當作燒任何陶器的操作程序。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行生成曲線、讀數與錐體示意，不沿用原廠圖表版面或產品照。",
+      "origin": "wave127-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-df512803f04209d3",
+          "origin": "wave127-everyday-20261119",
+          "locator": "X127E-S04，The practical use of cones 段；X127E-S05，Temperature Equivalents (°C) 的 6 號列與兩個升溫速率欄。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-7289310738de6aa1",
+          "origin": "wave127-everyday-20261119",
+          "locator": "X127E-S04，The practical use of cones 段；X127E-S05，Temperature Equivalents (°C) 的 6 號列與兩個升溫速率欄。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0005",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "油畫老師說下一層要畫得「肥」一點，把顏料厚厚堆一層，就已經做到肥蓋瘦了嗎？",
+      "mechanism_key": "x127.daily.oil_paint_fat_over_lean_oil_content",
+      "answer_target": "只看顏料堆多厚，還不知道這一層在說的「肥」有沒有做到。Gamblin 的例子是先在底層少用含油媒介，上層逐步增加同一種媒介的用量，這樣上層配出的顏料含油量才會提高。另一個做法是維持媒介與顏料的混合比例，但逐層提高媒介中的油比例。這種分層安排有助畫層保持彈性、減少日後開裂。",
+      "scope": "以 Gamblin 對油畫疊色的兩種原廠示例為限。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "畫面高低起伏能看出筆觸，卻無法單靠外形讀出每一層的油比例。",
+        "visual": "自畫兩份相同顏料，向其中一份加入較多同款含油媒介；再用簡化剖面標出上下層。",
+        "seconds": [
+          24,
+          36
+        ]
+      },
+      "source_locator": "X127E-S06，開頭原則及 The first approach、The second approach。",
+      "notes": "不將肥瘦說成只由漆層厚度決定，也不提供某種溶劑操作配方。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自攝畫材及自製色塊，避用原廠示範片與他人油畫。",
+      "origin": "wave127-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a74a33bbfb372d81",
+          "origin": "wave127-everyday-20261119",
+          "locator": "X127E-S06，開頭原則及 The first approach、The second approach。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0006",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "CD 上有一個指印。軟布明明可以順著圓盤繞圈擦，保存指南為什麼反而要你從中心朝邊緣走直線？",
+      "mechanism_key": "x127.daily.optical_disc_wipe_across_tracks",
+      "answer_target": "若布面不巧帶著微粒，順著圓周擦會使可能留下的刮痕沿著資料軌道延伸，一段相鄰的讀取位置容易連續受影響。從中心向外直擦，擦痕的方向會橫跨軌道，在每一段相遇的位置較短。這就是指南選擇那個手勢的原因；無須清理時，也不用反覆擦。",
+      "scope": "以 NIST 與 CLIR 說明的一般 CD 資料讀取面和確有指印的情境為限。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把軟布的運動方向疊在軌跡上，就能看出同樣長的擦痕會沿著一段走，還是依次跨過它們。",
+        "visual": "自畫局部放大的軌道，並排兩條相同長度的布面運動路徑，不在真光碟製造刮痕。",
+        "seconds": [
+          24,
+          36
+        ]
+      },
+      "source_locator": "X127E-S07，5.2.1 Scratches 的 tangential 和 radial；X127E-S08，Quick Reference Guide 的 DO 9、DO NOT 10，以及第 6 章。",
+      "notes": "K105-0515 談 CD 與 QR Code 的錯誤更正、編碼與交錯。本卡只判斷清潔時的手勢，以沿軌或跨軌的幾何差異作答。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪軌跡，用乾淨道具演示手勢，不引用報告照片或音樂。",
+      "origin": "wave127-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-562d34e5ca1fb528",
+          "origin": "wave127-everyday-20261119",
+          "locator": "X127E-S07，5.2.1 Scratches 的 tangential 和 radial；X127E-S08，Quick Reference Guide 的 DO 9、DO NOT 10，以及第 6 章。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-441ef995d6cb7809",
+          "origin": "wave127-everyday-20261119",
+          "locator": "X127E-S07，5.2.1 Scratches 的 tangential 和 radial；X127E-S08，Quick Reference Guide 的 DO 9、DO NOT 10，以及第 6 章。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0007",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "紅外線測溫槍的雷射點準準落在一小塊溫熱的霧面磚上，退後再量一次，為什麼讀數會混進旁邊較冷的桌面？",
+      "mechanism_key": "x127.daily.infrared_thermometer_laser_spot_size",
+      "answer_target": "多數單雷射機型把小光點當作瞄準提示，真正感測的是一片區域。依儀器的距離與測量區直徑比，離得越遠，收進來的範圍通常越大。Fluke 舉例，標稱 12:1 時，距離 12 英吋約對應直徑 1 英吋。若目標比這片區域還窄，就算紅點落對，周圍表面的輻射仍會進入讀值。",
+      "scope": "限指南所述的 D:S 測溫例。假設同一小目標與背景表面容易比較，且其他量測條件不變。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "要讓儀器只看那一小塊，該比較目標與測量區的大小，不能只看紅點落在哪裡。",
+        "visual": "用霧面小目標示意，固定瞄準中心，兩種距離各畫同心測量圈，讓遠處圈跨過目標邊緣。",
+        "seconds": [
+          24,
+          36
+        ]
+      },
+      "source_locator": "X127E-S09，Step 1、Step 2；X127E-S10，雙雷射及 12:1、90% energy 的型號規格對照。",
+      "notes": "圖中的單點例是通用指引；原廠 62 MAX+ 使用雙雷射，型號說明優先。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自製靜態瞄準示意，不需使用實際雷射，自攝畫面亦不引用原廠產品圖。",
+      "origin": "wave127-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-0bd39972c143c406",
+          "origin": "wave127-everyday-20261119",
+          "locator": "X127E-S09，Step 1、Step 2；X127E-S10，雙雷射及 12:1、90% energy 的型號規格對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b5afbc850f5db8dd",
+          "origin": "wave127-everyday-20261119",
+          "locator": "X127E-S09，Step 1、Step 2；X127E-S10，雙雷射及 12:1、90% energy 的型號規格對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0008",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "秋天留一段辣根準備來年再種，為什麼上頭平切、底下斜切？同一條根的兩端不能切成一樣嗎？",
+      "mechanism_key": "x127.daily.horseradish_root_set_cut_orientation",
+      "answer_target": "這個差別是留給幾個月後種植的人看的。把原來靠近葉叢的一端切平、較下方的一端切斜，根段離開原株後仍帶著上下方向。等到春天，就能辨認該讓哪端朝上。明尼蘇達大學也說可以直栽或斜栽；斜切面本身不是在規定整條根必須斜著種。",
+      "scope": "依明尼蘇達大學為下一季保留辣根根段的做法。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "左右轉一轉就認不出哪頭原來朝上，一平一斜則讓每一段根自帶方向。",
+        "visual": "自畫尚連著葉叢的一條根，在原位先標平端與斜端，再移除葉叢讓觀眾把根段立正。",
+        "seconds": [
+          22,
+          34
+        ]
+      },
+      "source_locator": "X127E-S11，收成段 Cut the roots squarely across at the top ...；Planting root cuttings 的兩種栽植角度。",
+      "notes": "切面是辨識記號，不推論斜端有特殊吸水能力或必然發根較快。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行拍攝栽培材料或自繪示意，不搬用推廣網站相片。",
+      "origin": "wave127-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-981a272a958ad91c",
+          "origin": "wave127-everyday-20261119",
+          "locator": "X127E-S11，收成段 Cut the roots squarely across at the top ...；Planting root cuttings 的兩種栽植角度。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0009",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "美國優格營養標示寫每份總糖 15 克，下一行又寫「Includes 7g Added Sugars」。一份到底吃了 15 克還是 22 克糖？",
+      "mechanism_key": "x127.daily.nutrition_added_sugars_included_in_total",
+      "answer_target": "關鍵字 Includes 表示「其中含有」。FDA 用的例子是每份總糖 15 克，裡面已有 7 克添加糖，另外 8 克是食材本身的糖。把 7 再加到 15，等於把其中一部分重複算了一次；若吃了不只一份，才需要另外按份量換算。",
+      "scope": "限美國 FDA 一般 Nutrition Facts 標示與所舉優格範例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "用一條 15 克的長條分出 7 和 8，就能對照標籤上下兩行在算哪一種量。",
+        "visual": "自排簡化文字與 15 格圖，先圈出其中 7 格，再與整份 15 格同框。",
+        "seconds": [
+          20,
+          32
+        ]
+      },
+      "source_locator": "X127E-S12，yogurt with added sweeteners 例；X127E-S13，Having the word “includes” before Added Sugars。",
+      "notes": "例中 7 克與 8 克相加為 15 克；不從原有糖的重量自行判定它全屬哪一種糖。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自製虛構標籤局部及數量圖，不拍商標或複製 FDA 示意圖。",
+      "origin": "wave127-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-9e9f7095df202fcf",
+          "origin": "wave127-everyday-20261119",
+          "locator": "X127E-S12，yogurt with added sweeteners 例；X127E-S13，Having the word “includes” before Added Sugars。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-03fc0b8e4096bfed",
+          "origin": "wave127-everyday-20261119",
+          "locator": "X127E-S12，yogurt with added sweeteners 例；X127E-S13，Having the word “includes” before Added Sugars。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0010",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "德國威斯特法倫的帶骨火腿有歐盟 PGI 地理標示，為什麼仍不能保證每一塊用的豬都在當地出生長大？",
+      "mechanism_key": "x127.daily.eu_pgi_ham_not_all_animals_from_area",
+      "answer_target": "歐盟用這款火腿解釋 PGI。這項名稱連結到當地的傳統製法，火腿在威斯特法倫生產，但用肉不全來自當地出生、飼養的動物。一般 PGI 食品至少有一項生產、加工或製備階段在指定地區。PDO 食品的要求則是這些階段全部在指定地區，例如官方列出的希臘卡拉馬塔橄欖油。要知道一款食品保證哪一段在地，得讀所用標示和其產品規格。",
+      "scope": "限歐盟食品／農產品標示與官方兩個實例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "地名標在成品上，到底連到原料還是加工，要看對應制度與該產品的規格。",
+        "visual": "用自畫地圖框出德國產區，把原料與火腿製作分開標記；再用另一列畫希臘 PDO 橄欖油。",
+        "seconds": [
+          26,
+          39
+        ]
+      },
+      "source_locator": "X127E-S14，PDO 和 PGI 各自的 Specifications、Example。",
+      "notes": "不把這款火腿的來料條件當所有 PGI 的配方；不套用到葡萄酒或烈酒。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自畫地圖與產品，不重製官方識別章或廣告包裝。",
+      "origin": "wave127-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-9e1ab86581fc9c10",
+          "origin": "wave127-everyday-20261119",
+          "locator": "X127E-S14，PDO 和 PGI 各自的 Specifications、Example。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0011",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "競速解魔術方塊，兩人都還沒轉第一下。觀察到 15.00 秒才啟動計時器，和 17.00 秒才啟動，為什麼一個加時、一個沒成績？",
+      "mechanism_key": "x127.daily.speedcubing_inspection_boundary",
+      "answer_target": "觀察時間是開始解題之前的另一段時間。WCA 規定，在這類計時器項目裡，選手鬆手啟動計時器才算開始解。若觀察恰為 15.00 秒，就要在解題成績上加罰 2 秒；若恰為 17.00 秒，這一次則記 DNF。後一種不是再多加兩秒，也不是取消選手整場參賽資格。",
+      "scope": "依 WCA 2026-04-01 版 Article A，限採這套檢視及計時流程的項目。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩人解題碼表都才剛開始，上一段觀察鐘已經能讓兩份成績走向不同。",
+        "visual": "自製雙時鐘動畫，停在觀察 14.99、15.00、17.00 三格，另畫開始計解題時間的時點。",
+        "seconds": [
+          24,
+          36
+        ]
+      },
+      "source_locator": "X127E-S15，A4d、A4d1+ 及 A4d2+ 明文說明恰達 15.00／17.00 秒。",
+      "notes": "本卡是開始解題的邊界，不與開始動第一面、停止計時等其他違規混用。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "用自製碼表和自有道具錄影，不嵌入聯盟賽事影片。",
+      "origin": "wave127-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-323e83e38eeb3005",
+          "origin": "wave127-everyday-20261119",
+          "locator": "X127E-S15，A4d、A4d1+ 及 A4d2+ 明文說明恰達 15.00／17.00 秒。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0012",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "蘆筍園這季已經採了好幾輪，地上卻還冒出筆直的新筍。為什麼要留下一批，讓它們長成高高的羽狀綠枝？",
+      "mechanism_key": "x127.daily.asparagus_leave_late_spears_for_fern",
+      "answer_target": "採收季留下的嫩莖會展成羽狀綠枝。這些綠色部分製造養分，植株再把儲備留在地下，供下一年抽出新筍。若只把每一支剛冒出的嫩莖都當成當天的收成，就會把原本要長成綠枝的部分也持續拿走。栽培指南因此會按株齡安排採收期，採完後還要照顧綠枝。",
+      "scope": "以明尼蘇達大學栽培指南中的多年生蘆筍為例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "今天嘴裡的筍和明年會冒出的筍，中間靠的是今年留在地上、能長開的那批莖。",
+        "visual": "自畫兩季剖面：今年留下的嫩筍展成羽狀綠枝、地下器官儲備，翌季從同一株冒出新筍。",
+        "seconds": [
+          25,
+          36
+        ]
+      },
+      "source_locator": "X127E-S16，The fern creates energy that will be stored ... 與 Harvesting 中的 allow the spears to develop into ferns。",
+      "notes": "綠枝高度和停採日期不設為全球通則；當地季節與株齡不同，安排也不同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製兩季示意或拍攝已辨識的植株，不用推廣刊物原圖。",
+      "origin": "wave127-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f5da285cc47591ff",
+          "origin": "wave127-everyday-20261119",
+          "locator": "X127E-S16，The fern creates energy that will be stored ... 與 Harvesting 中的 allow the spears to develop into ferns。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-everyday-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0201",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "無印36L說明書有三組大小，把哪組三邊加起來會得到115？",
+      "mechanism_key": "x127.cabin_bag.outer",
+      "answer_target": "EEE02A2A 的全體約54×37×24，本體是50×37×24，內寸約49×35.5×23。全體三邊54+37+24才等於115。若只量箱殼高度便少4公分，對著內側量又會把厚度記作23。",
+      "scope": "無印第一版說明書的36L款。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一張表內就藏著一個看似合規的23。",
+        "visual": "三層線條標出內襯、箱殼、從輪底到箱頂的外框。",
+        "seconds": [
+          24,
+          39
+        ]
+      },
+      "source_locator": "X127D-S01 第一版（2022年5月1日）第10頁「仕様」，20L 及 36L 並列欄，區分本体、全体及內寸",
+      "notes": "尺寸單位為公分。用原廠標稱值畫自製示意；算式或旅程選項不作現場量測或放行紀錄。",
+      "origin": "wave127-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f5e02b9a2f85642e",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S01 第一版（2022年5月1日）第10頁「仕様」，20L 及 36L 並列欄，區分本体、全体及內寸",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0202",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "這只箱子和台灣虎航列出的三個數都可加到115，哪一邊多了1？",
+      "mechanism_key": "x127.cabin_bag.tiger",
+      "answer_target": "台灣虎航公告的是含輪子與手把的54×38×23。箱厚24，較23多1；箱寬37比38少的1，不能挪給厚度。兩組各自加總剛好115是算例。",
+      "scope": "以指定硬箱的標稱外寸對虎航手提行李尺寸。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "將兩個少一和多一的方向拉開來看。",
+        "visual": "從上方畫37對38，再轉側面畫24對23。",
+        "seconds": [
+          24,
+          39
+        ]
+      },
+      "source_locator": "X127D-S02 中文動態頁「手提行李說明」中數量、尺寸、重量及注意事項；「託運行李說明」的貴重物品段；X127D-S01 第一版（2022年5月1日）第10頁「仕様」，20L 及 36L 並列欄，區分本体、全体及內寸",
+      "notes": "尺寸單位為公分。用原廠標稱值畫自製示意；算式或旅程選項不作現場量測或放行紀錄。",
+      "origin": "wave127-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-5d8d803530f9efa6",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S02 中文動態頁「手提行李說明」中數量、尺寸、重量及注意事項；「託運行李說明」的貴重物品段；X127D-S01 第一版（2022年5月1日）第10頁「仕様」，20L 及 36L 並列欄，區分本体、全体及內寸",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f5e02b9a2f85642e",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S02 中文動態頁「手提行李說明」中數量、尺寸、重量及注意事項；「託運行李說明」的貴重物品段；X127D-S01 第一版（2022年5月1日）第10頁「仕様」，20L 及 36L 並列欄，區分本体、全体及內寸",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0203",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "日航百席以上國內線各邊上限都取滿，會多出幾公分？",
+      "mechanism_key": "x127.cabin_bag.jal_large",
+      "answer_target": "日航國內線百席以上要同時符合55×40×25與三邊和115。假設三邊皆取滿，合計120，超過5。無印36L約54×37×24則逐邊都符合，總和正好115。",
+      "scope": "比較尺寸項目，件數、重量與實物另外檢查。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "這回是逐邊都好，總和仍可出錯。",
+        "visual": "並排畫標稱36L和假想55×40×25長方體。",
+        "seconds": [
+          24,
+          39
+        ]
+      },
+      "source_locator": "X127D-S03 Size 表、Notes 中由大飛機接小飛機的條款、How to store your bags on board；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats；X127D-S01 第一版（2022年5月1日）第10頁「仕様」，20L 及 36L 並列欄，區分本体、全体及內寸",
+      "notes": "尺寸單位為公分。用原廠標稱值畫自製示意；算式或旅程選項不作現場量測或放行紀錄。",
+      "origin": "wave127-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-809ec4d8dcddb6e5",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S03 Size 表、Notes 中由大飛機接小飛機的條款、How to store your bags on board；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats；X127D-S01 第一版（2022年5月1日）第10頁「仕様」，20L 及 36L 並列欄，區分本体、全体及內寸",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f14d91e42d090960",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S03 Size 表、Notes 中由大飛機接小飛機的條款、How to store your bags on board；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats；X127D-S01 第一版（2022年5月1日）第10頁「仕様」，20L 及 36L 並列欄，區分本体、全体及內寸",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f5e02b9a2f85642e",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S03 Size 表、Notes 中由大飛機接小飛機的條款、How to store your bags on board；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats；X127D-S01 第一版（2022年5月1日）第10頁「仕様」，20L 及 36L 並列欄，區分本体、全体及內寸",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0204",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同一只新秀麗20吋，怎麼拉開擴充層就從日航大機型的線內跨到線外？",
+      "mechanism_key": "x127.cabin_bag.expand",
+      "answer_target": "台灣 ATTRIX 灰款 KK8*08002 收起55×35×23，合計113，容量38L。完全擴充到26公分，容量44L，按同兩邊計算合計116；既超出25的單邊上限也比115多1。",
+      "scope": "按產品規格的未擴充與全擴充兩個狀態。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連換箱子都不用，同一個箱標會算出兩種答案。",
+        "visual": "拉鍊兩側畫成實線和虛線，行李尺在113與116間跳動。",
+        "seconds": [
+          24,
+          39
+        ]
+      },
+      "source_locator": "X127D-S05 產品規格 SKU KK8*08002，尺寸、高度測量包含輪子高度、寬可擴充至、容量、容量可擴充至；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats",
+      "notes": "尺寸單位為公分。用原廠標稱值畫自製示意；算式或旅程選項不作現場量測或放行紀錄。",
+      "origin": "wave127-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-745fd1e182d571f3",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S05 產品規格 SKU KK8*08002，尺寸、高度測量包含輪子高度、寬可擴充至、容量、容量可擴充至；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f14d91e42d090960",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S05 產品規格 SKU KK8*08002，尺寸、高度測量包含輪子高度、寬可擴充至、容量、容量可擴充至；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0205",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "改查長榮的115公分，要怎麼讀懂官網那個「或」字？",
+      "mechanism_key": "x127.cabin_bag.eva",
+      "answer_target": "長榮把各邊23×36×56與三邊合計不超過115以「或」連接，同段又提醒有些深度過大的箱子雖符合總和仍可能放不進置物箱，並請旅客以櫃檯、候機室測量器評量。單靠115不能替這只無印預報現場結果。",
+      "scope": "長榮中文手提行李條文，只呈現其說法與判斷界限。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣一個115，連在旁邊的字會改變旅客該怎麼查。",
+        "visual": "把「或」與提醒保留在同一張自行重畫的條文卡。",
+        "seconds": [
+          24,
+          39
+        ]
+      },
+      "source_locator": "X127D-S06 手提行李數量與規範、Test Unit 測量器、個人物品、放置護照等貴重物的小肩包",
+      "notes": "尺寸單位為公分。用原廠標稱值畫自製示意；算式或旅程選項不作現場量測或放行紀錄。",
+      "origin": "wave127-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c819b14ac1c7ffec",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S06 手提行李數量與規範、Test Unit 測量器、個人物品、放置護照等貴重物的小肩包",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0206",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "訂位畫面上只有E90，看得出它在哪一格尺寸表嗎？",
+      "mechanism_key": "x127.cabin_bag.flight_code",
+      "answer_target": "日航說明可從國內線空位查詢讀三碼機型。日航 E90／M11 配置圖為95席，在百席未滿那欄；738／73H 的737-800列百席以上。這裡看配置的客位數，與當天實際賣了多少張機票無關。",
+      "scope": "以日航這兩組代碼及公司公告配置為例，機型可更換。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "三個字就能在出門前翻到該量的那一欄。",
+        "visual": "仿訂位卡只留73H、E90，對應兩張不同大小的外框。",
+        "seconds": [
+          24,
+          39
+        ]
+      },
+      "source_locator": "X127D-S03 Size 表、Notes 中由大飛機接小飛機的條款、How to store your bags on board；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats；X127D-S07 Domestic aircraft and seat configurations，M11 總席數與 Emergency Exit row seat",
+      "notes": "尺寸單位為公分。用原廠標稱值畫自製示意；算式或旅程選項不作現場量測或放行紀錄。",
+      "origin": "wave127-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-809ec4d8dcddb6e5",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S03 Size 表、Notes 中由大飛機接小飛機的條款、How to store your bags on board；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats；X127D-S07 Domestic aircraft and seat configurations，M11 總席數與 Emergency Exit row seat",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f14d91e42d090960",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S03 Size 表、Notes 中由大飛機接小飛機的條款、How to store your bags on board；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats；X127D-S07 Domestic aircraft and seat configurations，M11 總席數與 Emergency Exit row seat",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-7a0143a00a9db9da",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S03 Size 表、Notes 中由大飛機接小飛機的條款、How to store your bags on board；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats；X127D-S07 Domestic aircraft and seat configurations，M11 總席數與 Emergency Exit row seat",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0207",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "第一段是大飛機、第二段才是小飛機，何時該用小框量一次？",
+      "mechanism_key": "x127.cabin_bag.connect",
+      "answer_target": "日航寫明，從百席以上的大機接未滿百席的小機，各段都要查小機規則。這個比較把百席未滿的45×35×20、合計100從轉機點移到出發前，36L大機型原本成立的結果也隨之改變。",
+      "scope": "日航明載的大機接小機方向，小機指100席未滿；不是託運直掛政策。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "行李標準會沿著下一段航程回到第一段。",
+        "visual": "把小機的外框卡從第二張登機證移到兩張票上方。",
+        "seconds": [
+          24,
+          39
+        ]
+      },
+      "source_locator": "X127D-S03 Size 表、Notes 中由大飛機接小飛機的條款、How to store your bags on board；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats",
+      "notes": "尺寸單位為公分。用原廠標稱值畫自製示意；算式或旅程選項不作現場量測或放行紀錄。",
+      "origin": "wave127-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-809ec4d8dcddb6e5",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S03 Size 表、Notes 中由大飛機接小飛機的條款、How to store your bags on board；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f14d91e42d090960",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S03 Size 表、Notes 中由大飛機接小飛機的條款、How to store your bags on board；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0208",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "如果看到的是ANA班號，出發前還要抄下哪家公司的名字？",
+      "mechanism_key": "x127.cabin_bag.operating",
+      "answer_target": "ANA 寫明共掛採實際營運公司規定。IBEX 說明部分自營航班與 ANA 共掛；其 CRJ700 配置70席，IBEX 自己的手提規定也列45×35×20、合計100。看到共掛字樣可直接回營運人查，無須用票面航空公司推機艙大小。",
+      "scope": "另一個可查的日本國內線選項，未宣稱上述 JAL 航段由 IBEX 營運。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一張票上，出售座位和提供置物架的可能是不同公司。",
+        "visual": "連起 ANA 班號、IBEX 營運、70席三張自製標記。",
+        "seconds": [
+          24,
+          39
+        ]
+      },
+      "source_locator": "X127D-S08 機内に持ち込める手荷物のサイズとルール，表後「コードシェア便」及機種別座席数；X127D-S09 コードシェア提携会社 ANA(NH) 段；X127D-S10 機種與機材スペック CRJ700／座席数欄；X127D-S11 Carry-on Baggage 的 Size 表與 On-board stowage space；Valuables/Breakables",
+      "notes": "尺寸單位為公分。用原廠標稱值畫自製示意；算式或旅程選項不作現場量測或放行紀錄。",
+      "origin": "wave127-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-212cb08d6ea4f628",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S08 機内に持ち込める手荷物のサイズとルール，表後「コードシェア便」及機種別座席数；X127D-S09 コードシェア提携会社 ANA(NH) 段；X127D-S10 機種與機材スペック CRJ700／座席数欄；X127D-S11 Carry-on Baggage 的 Size 表與 On-board stowage space；Valuables/Breakables",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-1eba86f18969e032",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S08 機内に持ち込める手荷物のサイズとルール，表後「コードシェア便」及機種別座席数；X127D-S09 コードシェア提携会社 ANA(NH) 段；X127D-S10 機種與機材スペック CRJ700／座席数欄；X127D-S11 Carry-on Baggage 的 Size 表與 On-board stowage space；Valuables/Breakables",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-17c5dc6f811e9cd3",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S08 機内に持ち込める手荷物のサイズとルール，表後「コードシェア便」及機種別座席数；X127D-S09 コードシェア提携会社 ANA(NH) 段；X127D-S10 機種與機材スペック CRJ700／座席数欄；X127D-S11 Carry-on Baggage 的 Size 表與 On-board stowage space；Valuables/Breakables",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8048483f81746e5c",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S08 機内に持ち込める手荷物のサイズとルール，表後「コードシェア便」及機種別座席数；X127D-S09 コードシェア提携会社 ANA(NH) 段；X127D-S10 機種與機材スペック CRJ700／座席数欄；X127D-S11 Carry-on Baggage 的 Size 表與 On-board stowage space；Valuables/Breakables",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0209",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "36L太大，拿同系列20L來，總和99.5為什麼還卡兩處？",
+      "mechanism_key": "x127.cabin_bag.small20",
+      "answer_target": "無印說明書的20L外寸約47×32×20.5，和為99.5，小於100；對照45×35×20，長超2、厚超0.5。箱殼本體43公分的數字少算了全體高度。",
+      "scope": "限 EET01A2A／EEE01A2A 標稱數，沒有實物試框。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把箱子縮小16公升，仍未換到合適的外形。",
+        "visual": "在透明小框上同時塗出2公分與半公分的突出處。",
+        "seconds": [
+          24,
+          39
+        ]
+      },
+      "source_locator": "X127D-S01 第一版（2022年5月1日）第10頁「仕様」，20L 及 36L 並列欄，區分本体、全体及內寸；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats",
+      "notes": "尺寸單位為公分。用原廠標稱值畫自製示意；算式或旅程選項不作現場量測或放行紀錄。",
+      "origin": "wave127-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f5e02b9a2f85642e",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S01 第一版（2022年5月1日）第10頁「仕様」，20L 及 36L 並列欄，區分本体、全体及內寸；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f14d91e42d090960",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S01 第一版（2022年5月1日）第10頁「仕様」，20L 及 36L 並列欄，區分本体、全体及內寸；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0210",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "放到小機型框前，24L反而比20L更合適的是哪一只？",
+      "mechanism_key": "x127.cabin_bag.big24",
+      "answer_target": "PROTECA 360G4 02420-07 的45×34×20已含輪和把手，外寸和99，容量24L，空重2.5公斤。按日航小機型規則它逐邊、總和都對；同桌20L雖少4L卻有兩邊超出。",
+      "scope": "日本 ACE 的具名24L款與無印指定20L款，以標稱值比較。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "容量較大的硬箱可以抽中較小的登機框。",
+        "visual": "兩只箱子從最長邊對齊，揭曉20L、24L兩張牌。",
+        "seconds": [
+          24,
+          39
+        ]
+      },
+      "source_locator": "X127D-S12 スペックとサイズ：サイズ、総外寸、本体サイズ、容量、重量；キャビンサイズ/XS；X127D-S01 第一版（2022年5月1日）第10頁「仕様」，20L 及 36L 並列欄，區分本体、全体及內寸；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats",
+      "notes": "尺寸單位為公分。用原廠標稱值畫自製示意；算式或旅程選項不作現場量測或放行紀錄。",
+      "origin": "wave127-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-507d5d04c65ac65d",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S12 スペックとサイズ：サイズ、総外寸、本体サイズ、容量、重量；キャビンサイズ/XS；X127D-S01 第一版（2022年5月1日）第10頁「仕様」，20L 及 36L 並列欄，區分本体、全体及內寸；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f5e02b9a2f85642e",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S12 スペックとサイズ：サイズ、総外寸、本体サイズ、容量、重量；キャビンサイズ/XS；X127D-S01 第一版（2022年5月1日）第10頁「仕様」，20L 及 36L 並列欄，區分本体、全体及內寸；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f14d91e42d090960",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S12 スペックとサイズ：サイズ、総外寸、本体サイズ、容量、重量；キャビンサイズ/XS；X127D-S01 第一版（2022年5月1日）第10頁「仕様」，20L 及 36L 並列欄，區分本体、全体及內寸；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0211",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "如果衣物能收進16L背包，只換包材能省出多少公斤？",
+      "mechanism_key": "x127.cabin_bag.soft",
+      "answer_target": "Fjällräven 美國站的普通 Kånken 標為36×27.5×12、16L、300克。這三邊和75.5，按空包標稱值在小機主件尺寸內。與2.5公斤的24L硬箱相比，若同樣內容物裝得下，容器本身少2.2公斤；外袋裝滿後仍須重量尺寸都重查。",
+      "scope": "比較兩個具名款的空重。不保證有效容量相同，也未據此把背包算作免計第二件。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一堆衣物，容器就可能先吃掉兩公斤多額度。",
+        "visual": "把空箱與空背包放在兩台秤上，差值2.2公斤。",
+        "seconds": [
+          24,
+          39
+        ]
+      },
+      "source_locator": "X127D-S13 Technical details（Height、Width、Depth、Volume、Weight）；X127D-S12 スペックとサイズ：サイズ、総外寸、本体サイズ、容量、重量；キャビンサイズ/XS；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats",
+      "notes": "尺寸單位為公分。用原廠標稱值畫自製示意；算式或旅程選項不作現場量測或放行紀錄。",
+      "origin": "wave127-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-7898b0a6fcc79718",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S13 Technical details（Height、Width、Depth、Volume、Weight）；X127D-S12 スペックとサイズ：サイズ、総外寸、本体サイズ、容量、重量；キャビンサイズ/XS；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-507d5d04c65ac65d",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S13 Technical details（Height、Width、Depth、Volume、Weight）；X127D-S12 スペックとサイズ：サイズ、総外寸、本体サイズ、容量、重量；キャビンサイズ/XS；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f14d91e42d090960",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S13 Technical details（Height、Width、Depth、Volume、Weight）；X127D-S12 スペックとサイズ：サイズ、総外寸、本体サイズ、容量、重量；キャビンサイズ/XS；X127D-S04 Cabin baggage size (dimensions, weight) and piece number limits 表中 100 seats and above 與 Below 100 seats",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0212",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "選了24L箱後再帶小肩包，台灣虎航的磅秤看6.2還是7.1公斤？",
+      "mechanism_key": "x127.cabin_bag.weight_tiger",
+      "answer_target": "假設箱連衣物重6.2公斤，小肩包0.9，虎航一件主行李加一件個人隨身物品要合秤，得到7.1，在10公斤以內。此處24L的標稱外寸也小於虎航的三邊。",
+      "scope": "6.2、0.9是打包情境的假設讀數。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "多一個可帶的包，不等於多領一份重量。",
+        "visual": "兩件各量後同時上秤，顯示7.1。",
+        "seconds": [
+          24,
+          39
+        ]
+      },
+      "source_locator": "X127D-S02 中文動態頁「手提行李說明」中數量、尺寸、重量及注意事項；「託運行李說明」的貴重物品段；X127D-S12 スペックとサイズ：サイズ、総外寸、本体サイズ、容量、重量；キャビンサイズ/XS",
+      "notes": "尺寸單位為公分。用原廠標稱值畫自製示意；算式或旅程選項不作現場量測或放行紀錄。",
+      "origin": "wave127-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-5d8d803530f9efa6",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S02 中文動態頁「手提行李說明」中數量、尺寸、重量及注意事項；「託運行李說明」的貴重物品段；X127D-S12 スペックとサイズ：サイズ、総外寸、本体サイズ、容量、重量；キャビンサイズ/XS",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-507d5d04c65ac65d",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S02 中文動態頁「手提行李說明」中數量、尺寸、重量及注意事項；「託運行李說明」的貴重物品段；X127D-S12 スペックとサイズ：サイズ、総外寸、本体サイズ、容量、重量；キャビンサイズ/XS",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0213",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "把同一箱和小肩包帶上捷星日本 Starter，從箱子移100克到肩包有用嗎？",
+      "mechanism_key": "x127.cabin_bag.weight_starter",
+      "answer_target": "捷星日本 GK 的 Starter 一主一小合計7公斤。6.2+0.9＝7.1；將0.1從箱移到肩包會變6.1+1.0，仍是7.1。若真的少帶0.2，就成6.9。主件另有56×36×23的尺寸限制。",
+      "scope": "相同裝載假設，未估算現場秤的誤差或任何寬限。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "要讓總重量變小，得把東西從旅程拿掉，換袋只改兩個分項。",
+        "visual": "兩台小秤數字互換，合計的第三個數維持不變。",
+        "seconds": [
+          24,
+          39
+        ]
+      },
+      "source_locator": "X127D-S14 What’s my carry-on baggage allowance?／Maximum 2 items／Main item／Increasing your allowance 及星號註解",
+      "notes": "尺寸單位為公分。用原廠標稱值畫自製示意；算式或旅程選項不作現場量測或放行紀錄。",
+      "origin": "wave127-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-7e2c949e6ce28b18",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S14 What’s my carry-on baggage allowance?／Maximum 2 items／Main item／Increasing your allowance 及星號註解",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0214",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "若想把東西都留著，多買7公斤能讓一只11公斤箱直接過嗎？",
+      "mechanism_key": "x127.cabin_bag.extra",
+      "answer_target": "捷星日本頁指特定航線視可用額度可加購或選含14公斤票種。仍然一主一小，主件最多10公斤。假設主件11、小件2公斤，合計13雖在14以內，主件仍超1。加購解決本例7.1的重量問題，不會放寬尺寸或多生第三件。",
+      "scope": "以可買到該額度而且兩件尺寸合適作條件；未引用固定售價。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "公斤可增加，件數和主件個別上限都還在。",
+        "visual": "三張小卡並排標出14、2、10的不同單位。",
+        "seconds": [
+          24,
+          39
+        ]
+      },
+      "source_locator": "X127D-S14 What’s my carry-on baggage allowance?／Maximum 2 items／Main item／Increasing your allowance 及星號註解",
+      "notes": "尺寸單位為公分。用原廠標稱值畫自製示意；算式或旅程選項不作現場量測或放行紀錄。",
+      "origin": "wave127-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-7e2c949e6ce28b18",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S14 What’s my carry-on baggage allowance?／Maximum 2 items／Main item／Increasing your allowance 及星號註解",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0215",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "安檢後拿到一袋土產，算不算原先兩件之外的第三件？",
+      "mechanism_key": "x127.cabin_bag.purchase",
+      "answer_target": "以樂桃的明文為例，主件加一件個人物品合計七公斤，含過安檢後買的免稅品、土產。已有箱、小肩包又提獨立購物袋會變三件；收進原包可以回到兩件，內容物的重量仍要加入總數。",
+      "scope": "限樂桃，補充票種選項；不推為所有機場或承運人的免稅規則。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "收購物袋能改件數，收不掉上面那盒點心的重量。",
+        "visual": "點心移入箱內前後，件數由3回2，總重不變。",
+        "seconds": [
+          24,
+          39
+        ]
+      },
+      "source_locator": "X127D-S15 Carry-on baggage allowance (size/number of bag/weight)，Weight 之下兩則星號",
+      "notes": "尺寸單位為公分。用原廠標稱值畫自製示意；算式或旅程選項不作現場量測或放行紀錄。",
+      "origin": "wave127-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b0a32a5127b088a4",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S15 Carry-on baggage allowance (size/number of bag/weight)，Weight 之下兩則星號",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0216",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "輪子朝內也關不上頭頂櫃門，明明合規的24L會去哪裡？",
+      "mechanism_key": "x127.cabin_bag.locker",
+      "answer_target": "IATA 的輪箱圖示先讓輪子進櫃，若可側放就側放，否則背面朝下，最後確認櫃門可關；儲物空間已滿時，合規箱仍可能在登機口改託運。台灣虎航也明載無法妥善放置時可能要交運。",
+      "scope": "依所搭班機設備、機組指示而定。未保證費用或領回位置。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "登機尺只量了自己的箱子，沒有算上前面旅客放了多少件。",
+        "visual": "讓箱子轉側後關上櫃門，再用已滿的另一個櫃位示範。",
+        "seconds": [
+          24,
+          39
+        ]
+      },
+      "source_locator": "X127D-S17 單頁圖示 Wheels go in first 至 Check the locker closes before taking your seat；X127D-S16 Baggage Acceptance 下的 Carry-on Baggage、Checked Baggage；X127D-S02 中文動態頁「手提行李說明」中數量、尺寸、重量及注意事項；「託運行李說明」的貴重物品段",
+      "notes": "尺寸單位為公分。用原廠標稱值畫自製示意；算式或旅程選項不作現場量測或放行紀錄。",
+      "origin": "wave127-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f976283239a4b8d4",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S17 單頁圖示 Wheels go in first 至 Check the locker closes before taking your seat；X127D-S16 Baggage Acceptance 下的 Carry-on Baggage、Checked Baggage；X127D-S02 中文動態頁「手提行李說明」中數量、尺寸、重量及注意事項；「託運行李說明」的貴重物品段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-53a93aed69566ec0",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S17 單頁圖示 Wheels go in first 至 Check the locker closes before taking your seat；X127D-S16 Baggage Acceptance 下的 Carry-on Baggage、Checked Baggage；X127D-S02 中文動態頁「手提行李說明」中數量、尺寸、重量及注意事項；「託運行李說明」的貴重物品段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5d8d803530f9efa6",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S17 單頁圖示 Wheels go in first 至 Check the locker closes before taking your seat；X127D-S16 Baggage Acceptance 下的 Carry-on Baggage、Checked Baggage；X127D-S02 中文動態頁「手提行李說明」中數量、尺寸、重量及注意事項；「託運行李說明」的貴重物品段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0217",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "如果登機證印的是日航E90的20A，小肩包還能留在腳邊嗎？",
+      "mechanism_key": "x127.cabin_bag.seat",
+      "answer_target": "日航 E90、M11 的20A在緊急出口排。按日航的客艙收納說明，這一排的行李不能放腳邊或膝上。沒有前方座位的艙壁後第一排也不能把包放在腳下；依配置與機組指示使用置物櫃。",
+      "scope": "20A鎖定日航該配置，不把其他班機20排一律當出口。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "箱子完全沒變，只換一個座位，能放包的位置就變了。",
+        "visual": "在自繪簡圖圈出20A，將腳邊的小包移到櫃位。",
+        "seconds": [
+          24,
+          39
+        ]
+      },
+      "source_locator": "X127D-S07 Domestic aircraft and seat configurations，M11 總席數與 Emergency Exit row seat；X127D-S03 Size 表、Notes 中由大飛機接小飛機的條款、How to store your bags on board；X127D-S16 Baggage Acceptance 下的 Carry-on Baggage、Checked Baggage",
+      "notes": "尺寸單位為公分。用原廠標稱值畫自製示意；算式或旅程選項不作現場量測或放行紀錄。",
+      "origin": "wave127-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-7a0143a00a9db9da",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S07 Domestic aircraft and seat configurations，M11 總席數與 Emergency Exit row seat；X127D-S03 Size 表、Notes 中由大飛機接小飛機的條款、How to store your bags on board；X127D-S16 Baggage Acceptance 下的 Carry-on Baggage、Checked Baggage",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-809ec4d8dcddb6e5",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S07 Domestic aircraft and seat configurations，M11 總席數與 Emergency Exit row seat；X127D-S03 Size 表、Notes 中由大飛機接小飛機的條款、How to store your bags on board；X127D-S16 Baggage Acceptance 下的 Carry-on Baggage、Checked Baggage",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-53a93aed69566ec0",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S07 Domestic aircraft and seat configurations，M11 總席數與 Emergency Exit row seat；X127D-S03 Size 表、Notes 中由大飛機接小飛機的條款、How to store your bags on board；X127D-S16 Baggage Acceptance 下的 Carry-on Baggage、Checked Baggage",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0218",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "登機口臨時要收走24L時，先前留在小肩包的哪幾樣東西值得拿在身邊？",
+      "mechanism_key": "x127.cabin_bag.retrieve",
+      "answer_target": "IATA不建議把貴重或難以取代的物品託運；IBEX明列現金、相機等不宜放入託運行李，長榮也以護照、錢包示例說明小肩包中的重要物品。可在家就先將護照、錢包放進一件小肩包，需交出主箱時依機組指示安置小包。",
+      "scope": "沒有推定本班必須交運、收費或固定在某個轉盤交還；存放位置從當班規定。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "從一開始就配好的第二件，到登機口可以跟主箱各有去處。",
+        "visual": "開箱只取出護照和錢包，放進先前已列入件數的小肩包。",
+        "seconds": [
+          24,
+          39
+        ]
+      },
+      "source_locator": "X127D-S16 Baggage Acceptance 下的 Carry-on Baggage、Checked Baggage；X127D-S11 Carry-on Baggage 的 Size 表與 On-board stowage space；Valuables/Breakables；X127D-S06 手提行李數量與規範、Test Unit 測量器、個人物品、放置護照等貴重物的小肩包",
+      "notes": "尺寸單位為公分。用原廠標稱值畫自製示意；算式或旅程選項不作現場量測或放行紀錄。",
+      "origin": "wave127-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-53a93aed69566ec0",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S16 Baggage Acceptance 下的 Carry-on Baggage、Checked Baggage；X127D-S11 Carry-on Baggage 的 Size 表與 On-board stowage space；Valuables/Breakables；X127D-S06 手提行李數量與規範、Test Unit 測量器、個人物品、放置護照等貴重物的小肩包",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8048483f81746e5c",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S16 Baggage Acceptance 下的 Carry-on Baggage、Checked Baggage；X127D-S11 Carry-on Baggage 的 Size 表與 On-board stowage space；Valuables/Breakables；X127D-S06 手提行李數量與規範、Test Unit 測量器、個人物品、放置護照等貴重物的小肩包",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-c819b14ac1c7ffec",
+          "origin": "wave127-research-20261119",
+          "locator": "X127D-S16 Baggage Acceptance 下的 Carry-on Baggage、Checked Baggage；X127D-S11 Carry-on Baggage 的 Size 表與 On-board stowage space；Valuables/Breakables；X127D-S06 手提行李數量與規範、Test Unit 測量器、個人物品、放置護照等貴重物的小肩包",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-research-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0401",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "同一片葉門棉布，藍色火焰在還沒有布時就得先做，橫跨火焰的那行金字又是怎麼來的？",
+      "mechanism_key": "x127.textile.warp_resist_and_gold_inscription",
+      "answer_target": "先看金字上、下的藍紋。織工在縱向棉經還沒織成布時，就把要擋染液的位置紮緊，換一種顏色再做一輪。等這些帶色段的經紗織成布，火焰紋便排出來了。橫跨中央的阿拉伯字走的是另一道工序：字用金箔寫成，再用黑色勾出輪廓。",
+      "scope": "限十世紀葉門棉織殘件 1950.353 的經紗防染與銘文。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "框出金字上方的一列藍火焰，自繪同組經紗從紮束、分色到鋪排的三格圖；回到橫向字帶標出金色與黑邊。",
+        "payoff": "順著同一塊布看兩個方向，就能辨認哪些圖案在上機織布之前已經備好。",
+        "seconds": [
+          36,
+          48
+        ]
+      },
+      "source_locator": "S01 的 1950.353 主圖、Medium 與 Description。",
+      "notes": "金字與經紋依材質和館方文字辨別，不推測如何黏箔。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館方此件主圖標示 Public Domain；保留館名與館號，束紗過程用自繪。",
+      "origin": "wave127-textile-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-8d6a97c5976890aa",
+          "origin": "wave127-textile-20261119",
+          "locator": "S01 的 1950.353 主圖、Medium 與 Description。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-textile-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0402",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "把這條秘魯古布翻面，為什麼同一排頭像還在，圖案和底色卻能對調？",
+      "mechanism_key": "x127.textile.double_cloth_colour_exchange",
+      "answer_target": "這塊有幾何頭像的殘布用了雙層織法。可以用兩色各代表一層：到圖案的邊界，兩層交換哪一層在上、哪一層在下。同一個位置從另一面看，露出來的便是另一色；所以頭像的輪廓可以保留，圖案與背景的配色卻相反。",
+      "scope": "主件為帕拉卡斯 2005.14；另借 1968.246 的館方組織說明解釋雙層換位。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "從主圖圈一個方眼頭像；用自繪雙色條在方形邊界交換上下，接著翻轉示範布。",
+        "payoff": "觀眾可先猜翻面後方眼會是哪一色，再從示意布底面核對。",
+        "seconds": [
+          32,
+          45
+        ]
+      },
+      "source_locator": "S02 主圖與 Description 第一、末句；S03 的 Description 第二段對雙層依圖換位的說明。",
+      "notes": "雙色圖只示範反色原理。兩件殘布來自不同地區，主件另有刺繡，原服裝用途未知。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "主件館圖標示 Public Domain，保留 CMA 與館號；反面和斷面自行示意並標明示意圖。",
+      "origin": "wave127-textile-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-11fff36fba4eb5ff",
+          "origin": "wave127-textile-20261119",
+          "locator": "S02 主圖與 Description 第一、末句；S03 的 Description 第二段對雙層依圖換位的說明。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-13012d6cd3173579",
+          "origin": "wave127-textile-20261119",
+          "locator": "S02 主圖與 Description 第一、末句；S03 的 Description 第二段對雙層依圖換位的說明。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-textile-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0403",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "這塊十六世紀帳幔上，人物衣服和花枝都有自己的絨色。織工怎麼把這麼多顏色排進一面絲絨？",
+      "mechanism_key": "x127.textile.substituting_coloured_pile_warp",
+      "answer_target": "看下方相鄰人物的藍、粉衣，再看周圍花枝。這塊絲絨的顏色來自形成絨面的絲線。織工沿著圖案進度，在織製中以另一色絨經替換原來的絨經，讓指定位置冒出需要的顏色。館方說絨色最多達十二種；現存的絲絨已褪色，今天照片裡可辨的色階不能直接拿來清點原色。",
+      "scope": "限克里夫蘭館藏薩法維時期帳幔飾片 1948.205 的多色絨經。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "以館圖下方兩人的衣色定位；自繪放大圖讓一色絨經在下一段由另一色接手，旁列原件已褪色的註記。",
+        "payoff": "找到衣飾換色之處，就知道織機上也曾換過形成絨面的線。",
+        "seconds": [
+          34,
+          45
+        ]
+      },
+      "source_locator": "S04 Medium 及 Description 首段末二句、主圖下方。",
+      "notes": "館文給絨色上限，未列每色染料或每處接頭。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館藏主圖標示 Public Domain；保留館名、館號，絨經更換以原創簡圖呈現。",
+      "origin": "wave127-textile-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-595d4c3295bce026",
+          "origin": "wave127-textile-20261119",
+          "locator": "S04 Medium 及 Description 首段末二句、主圖下方。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-textile-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0404",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "這塊鋪平的月牙紋絲絨原來是一個長榻墊套。館員從布的哪兩處把它認出來？",
+      "mechanism_key": "x127.textile.ottoman_divan_cover_end_panels",
+      "answer_target": "把中間大月牙暫時遮住，先看兩個短邊：每端都有成排的小瓣形圖案。館方認出每個短邊各有六個瓣飾，兩端成對排列，正是這件鄂圖曼長榻墊套的用途線索。布中央另有縱向摺痕，留下的是它曾經長時間摺放的痕跡。兩端交代它做什麼用，中間那條痕則另講一段收存史。",
+      "scope": "限館號 2009.282。端飾是織出的圖樣；不推廣成有月牙的絲絨都曾包墊子。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "依次放大上、下兩排端飾，接著沿長邊中線示意摺合；標明端飾是花紋，摺線是痕跡。",
+        "payoff": "翻開被遮住的中段後，即使還看到滿布的月牙，也已經知道判斷用途應該看兩端。",
+        "seconds": [
+          32,
+          44
+        ]
+      },
+      "source_locator": "S05 館圖上下端、Description 的 six-pointed lappet designs，及 Did You Know? 的 vertical crease。",
+      "notes": "摺痕所示是摺放時間相當長，沒有提供摺放年代或使用者身分。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館圖標示 Public Domain，保留館名與館號；折疊動作以自製替代布示範。",
+      "origin": "wave127-textile-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-4c27e3ce24f5ac0e",
+          "origin": "wave127-textile-20261119",
+          "locator": "S05 館圖上下端、Description 的 six-pointed lappet designs，及 Did You Know? 的 vertical crease。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-textile-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0405",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "這片古埃及紫布的小菱形裡真有金箔。一片箔怎麼會變成能織進圖案的線？",
+      "mechanism_key": "x127.textile.gold_foil_silk_core",
+      "answer_target": "把視線收到紫色圓紋正中央。館方分析，那個菱形裡的金色紋樣，是把薄金箔包在絲芯外面，再把這條包金線織進去。裡面的絲提供連續的線身，外面露出的箔提供金色表面。再往外看，圓紋另用了額外的亞麻緯線；同一塊殘布上的淺色紋樣，材料可以不同。",
+      "scope": "限拜占庭時期埃及殘片 1983.140.c 的中央紋樣和館方對同組織物的材料說明。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "圈紫色圓紋的中央菱形，另製放大模型：先放一條絲芯，再示意薄箔包在絲外；回到原圖標出中央與外圈。",
+        "payoff": "看懂一條包金線的內外兩層，就能解釋為什麼金屬表面也可以順著織紋走。",
+        "seconds": [
+          32,
+          43
+        ]
+      },
+      "source_locator": "S06 的 1983.140.c 主圖中央、Description 第二句及末段的 supplementary linen wefts。",
+      "notes": "原圖可定位金紋，線芯組成來自館方文字；不由亮度推算含金量、箔厚或其餘紋樣用料。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "主圖標示 Public Domain，保留館名及館號；包金線放大模型自行製作。",
+      "origin": "wave127-textile-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-528edf40d8a67f2e",
+          "origin": "wave127-textile-20261119",
+          "locator": "S06 的 1983.140.c 主圖中央、Description 第二句及末段的 supplementary linen wefts。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-textile-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0406",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "把這幅舊掛毯翻面，原本的動物還看得到，毛色甚至更鮮明。圖怎麼跑到背面去了？",
+      "mechanism_key": "x127.textile.discontinuous_wefts_and_protected_reverse",
+      "answer_target": "圖案是在織的時候用彩色緯線一塊塊做出來的。每色緯線大多只在自己負責的一小段經線間來回，織緊後遮住經線；翻過去，同一塊色也就從另一面看得見。再比這塊殘片正反兩面的動物：館方指出，舊掛毯的背面通常較少受光，常能留住比正面更濃的原色。",
+      "scope": "正反影像為 V&A 862-1894。受光說明是舊掛毯常見情形，未測定該件曝光時數。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "自繪兩小塊緯線各自在幾根經線間折返，再翻面；用自做的雙面色卡示意正面久曝、背面受遮。",
+        "payoff": "背面可拿來找曾經較鮮明的配色，還能反向讀出同一幅動物圖。",
+        "seconds": [
+          35,
+          46
+        ]
+      },
+      "source_locator": "S07 Materials and technique 的 discontinuous weft、weft-faced 兩段與 862-1894 左正右背照。",
+      "notes": "此題處理同批彩緯在兩面可見及受光差；K127-0402 則是雙層換位使圖地反色。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "原圖圖說 © Victoria and Albert Museum, London，只作核對；製作時使用自織色塊及原創動物圖。",
+      "origin": "wave127-textile-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-1829a63bad2e4aa6",
+          "origin": "wave127-textile-20261119",
+          "locator": "S07 Materials and technique 的 discontinuous weft、weft-faced 兩段與 862-1894 左正右背照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-textile-20261119.json"
+      ]
+    },
+    {
+      "id": "K127-0407",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "這床亞麻被罩上，人物和衣甲像浮雕一樣鼓起。修護師怎麼從背面針腳推回棉絮可能是何時塞進去的？",
+      "mechanism_key": "x127.textile.tristan_quilt_relief_padding",
+      "answer_target": "人物有高度，是因為兩層亞麻布之間填了棉，輪廓由縫線勾出。2007 年修護時，館員發現輪廓針線通常一路穿過兩層布，背面也看得到對應的線，人物內部又都有填料。她據此判斷，較可能的順序是一邊縫輪廓一邊填棉，最後才把開口封住。這也說明留意背面，比只看正面的浮雕多知道了什麼。",
+      "scope": "限西西里《Tristan Quilt》，V&A 1391-1904；縫線走向與填棉可由檢視得知，封口順序是修護者推論。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "自製兩片淡色布的小樣；用側光照出鼓起輪廓，再翻看穿透正反的針跡。以虛線標出推測尚未封上的一小段。",
+        "payoff": "同一圈縫線在正面畫出人物、在背面留下製作順序的線索。",
+        "seconds": [
+          38,
+          50
+        ]
+      },
+      "source_locator": "S08 Physical description 的 2007 conservation notes 第 7、8 點及後一段；S09 的 1391-1904 人物細部圖。",
+      "notes": "藏品頁開頭保留從背布挑開塞棉的舊說；本卡明確採用同頁有實物依據、保留推測語氣的後段修護判讀。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "V&A 圖與細節照保留館方權利，只查閱；自製小樣、自攝側光和背面近景。",
+      "origin": "wave127-textile-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e66eb603263f73dc",
+          "origin": "wave127-textile-20261119",
+          "locator": "S08 Physical description 的 2007 conservation notes 第 7、8 點及後一段；S09 的 1391-1904 人物細部圖。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-1437fa5ebe03a642",
+          "origin": "wave127-textile-20261119",
+          "locator": "S08 Physical description 的 2007 conservation notes 第 7、8 點及後一段；S09 的 1391-1904 人物細部圖。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave127-textile-20261119.json"
       ]
     },
     {
