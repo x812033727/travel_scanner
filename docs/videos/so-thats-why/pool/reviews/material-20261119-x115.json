@@ -1,0 +1,474 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-19",
+  "baseline": "2026-11-19-pool-7078",
+  "method": "非作者逐一開啟來源正文，查閱當批答題範圍，對照既有題名、答案、機制、未收紀錄與片名。同機構多頁合看；產品頁只支持該款產品。",
+  "segment_reviews": [
+    {
+      "id": "K115-0001",
+      "decision": "screened",
+      "source_ids": [
+        "X115-S01",
+        "X115-S02"
+      ],
+      "checked": "GE 18946 首段；17654 第 2 至 5 段。後者交代暖濕空氣冷卻、內壓下降及指定機型由水封補氣。",
+      "dedup": "LEG-S76 問冰箱對整個房間的能量收支；H57-011 的壓差由持續機械排風產生。這題的現象只出現在剛關門後，關鍵是降溫與平壓。",
+      "limits": "兩頁同屬 GE，不計兩個獨立實測。不同型號的平壓秒數及通道不外推。"
+    },
+    {
+      "id": "K115-0002",
+      "decision": "screened",
+      "source_ids": [
+        "X115-S03"
+      ],
+      "checked": "Union University 正文首段、第 5 至末段，連續方程兩側的速度、截面及重力段。",
+      "dedup": "P058 的管壁先限縮截面，再求流速；P54-004 是砂柱在出口附近的收縮。這張卡追問離開管口後，重力加速如何迫使水柱自由表面內縮。",
+      "limits": "只採短距離穩定、平滑、未斷裂的水柱。"
+    },
+    {
+      "id": "K115-0003",
+      "decision": "screened",
+      "source_ids": [
+        "X115-S04"
+      ],
+      "checked": "Schwefler 等，Fluids 8(8) 225，§1.1、圖 2(a)–(c) 圖說。無孔瓶讓氣水在瓶頸爭道，開頂對照組不需由瓶頸補氣。",
+      "dedup": "D9012 與 X40-NA002 問吹瓶口的共鳴；B4025 問排水支管的水封受正、負壓移動。這張卡以氣泡與水在同一瓶頸交替通行解釋出流節奏。",
+      "limits": "限不易變形、直倒的單口瓶；無聲音量測，不解釋音高。"
+    },
+    {
+      "id": "K115-0004",
+      "decision": "screened",
+      "source_ids": [
+        "X115-S05"
+      ],
+      "checked": "YKK 第 3 回，鎖針扣住鏈牙與抬起解鎖兩節，並對照下節自動鎖拉頭。",
+      "dedup": "K113-0407 是可掛在箱包拉鍊頭的隱私掛鎖，沒有鎖針扣住鏈牙的機構。",
+      "limits": "保留「有些」及指定機構，避免把另一款自動鎖也說成必須拉到直角。"
+    },
+    {
+      "id": "K115-0005",
+      "decision": "screened",
+      "source_ids": [
+        "X115-S06",
+        "X115-S07"
+      ],
+      "checked": "標準檢驗局高雄分局汽車胎 FAQ 回答段；Michelin USA 的 How to Tell If a Tire Has Reached Maximum Wear 兩段。",
+      "dedup": "P62-009 雖引磨耗指示點，主問積水路面抓地；T62-NA001 是事故調查。新卡解釋胎肩符號如何指向胎溝內相對固定的參照高度、比對哪兩個表面。",
+      "limits": "只採定位和幾何關係，符號依廠別，沒有把橫槓當成預測里程的量表。"
+    },
+    {
+      "id": "K115-0006",
+      "decision": "screened",
+      "source_ids": [
+        "X115-S08",
+        "X115-S09"
+      ],
+      "checked": "Fisher FAQ 的 How Does a Fisher Space Pen Work?、Do Space Pens really work upside down?；NASA Spinoff 1986 年 Space Pens 首段。",
+      "dedup": "X42-001 問墨水碰到紙面後的吸收擴散；此卡問筆尖向上時，密封筆芯如何向筆珠供墨。",
+      "limits": "NASA 典藏同款設計，並非另一次性能試驗；僅解釋加壓機構。"
+    }
+  ],
+  "rejected_suggestions_checked": {
+    "X115-NA001": "K113-0101 已解釋滑動量補償鉤厚，換另一份專利不新增機制。",
+    "X115-NA002": "wave9-paper 已考慮單面受濕並排除，P49-NA002 也記錄了相同的差異膨脹與彎曲。這次換成描圖紙仍問相同機制。",
+    "X115-NA003": "F10001 已收杯底減速產生向心回流、帶入茶葉的觀察。",
+    "X115-NA004": "P70-022 和 P70-024 已將集中的聲脈衝定位到剝離前緣的橫向裂紋及帶邊。",
+    "X115-NA005": "P20006 已用光源亮度變化與逐列曝光時間錯開解釋明暗帶；把單次閃光改為週期閃爍不足以另收一張。"
+  },
+  "scope": "六張各自作為段落素材，不合併計算長片素材條數或觀眾分。",
+  "themes": {
+    "G757": {
+      "title": "同一張河景照，我的相簿有定位針，家人收到怎麼沒了？",
+      "researcher": "why_photo",
+      "reviewer": "why_inventory",
+      "verdict": "ready",
+      "fact_count": 14.25,
+      "author_fact_count": 16,
+      "est_minutes": 10.7,
+      "method": "逐卡對原文、每研究網最多 2.0 條，以每條約 0.75 分鐘估素材長度。來源多為產品或機構對自身的直接說明。出版物獨立實驗歸作者；兩項研究均以 Flickr 為受測服務，不因是同一受測平台而算成 Flickr 撰寫。Adobe 與 Google 的查地名服務不作兩個技術驗證。",
+      "networks": {
+        "NET_Apple": [
+          "PX115-S01"
+        ],
+        "NET_CIPA_JEITA": [
+          "PX115-S02"
+        ],
+        "NET_IPTC": [
+          "PX115-S03",
+          "PX115-S13"
+        ],
+        "NET_GOOGLE": [
+          "PX115-S04"
+        ],
+        "NET_KDE": [
+          "PX115-S05"
+        ],
+        "NET_ADOBE": [
+          "PX115-S09",
+          "PX115-S08"
+        ],
+        "NET_NOMINATIM": [
+          "PX115-S10"
+        ],
+        "NET_SONI": [
+          "PX115-S06"
+        ],
+        "NET_FLICKR": [
+          "PX115-S07"
+        ],
+        "NET_TBN": [
+          "PX115-S12"
+        ],
+        "NET_FORMOSA": [
+          "PX115-S11"
+        ],
+        "NET_APPLLIO": [
+          "PX115-S14"
+        ],
+        "NET_KAMIAP": [
+          "PX115-S15"
+        ],
+        "NET_LINE": [
+          "PX115-S16",
+          "PX115-S17"
+        ]
+      },
+      "network_weights": {
+        "NET_Apple": 2,
+        "NET_CIPA_JEITA": 1.75,
+        "NET_IPTC": 1.25,
+        "NET_GOOGLE": 2.0,
+        "NET_KDE": 1.75,
+        "NET_NOMINATIM": 1,
+        "NET_SONI": 0.75,
+        "NET_FLICKR": 1,
+        "NET_ADOBE": 0.5,
+        "NET_TBN": 0.5,
+        "NET_FORMOSA": 1,
+        "NET_APPLLIO": 0.25,
+        "NET_KAMIAP": 0.5,
+        "NET_LINE": 0
+      },
+      "card_verdicts": [
+        {
+          "id": "K115-0201",
+          "source_ids": [
+            "PX115-S01"
+          ],
+          "decision": "screened",
+          "network": "NET_Apple",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "Apple 安全手冊，頁首定位服務段、依位置檢視照片一節；只說這個相機與該版地圖收藏。"
+        },
+        {
+          "id": "K115-0202",
+          "source_ids": [
+            "PX115-S02"
+          ],
+          "decision": "screened",
+          "network": "NET_CIPA_JEITA",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "CIPA DC-008-2012，GPSLatitudeRef 至 GPSLongitude 定義及表 19；方向欄與角度分存，四欄選用。"
+        },
+        {
+          "id": "K115-0203",
+          "source_ids": [
+            "PX115-S02"
+          ],
+          "decision": "screened",
+          "network": "NET_CIPA_JEITA",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "同版 GPSHPositioningError 定義（公尺、無預設）及表 19 的 O。屬欄位設計，非裝置精度測試。"
+        },
+        {
+          "id": "K115-0204",
+          "source_ids": [
+            "PX115-S03"
+          ],
+          "decision": "screened",
+          "network": "NET_IPTC",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "IPTC User Guide，Locations／Location Created／Location Shown in Image 段，長焦跨境舉例。"
+        },
+        {
+          "id": "K115-0205",
+          "source_ids": [
+            "PX115-S04"
+          ],
+          "decision": "screened",
+          "network": "NET_GOOGLE",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "Google 相簿 iOS，About your photos’ locations 首段列出相機、手動與地標等來源。"
+        },
+        {
+          "id": "K115-0206",
+          "source_ids": [
+            "PX115-S05"
+          ],
+          "decision": "screened",
+          "network": "NET_KDE",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "digiKam 9.2 GPS Correlator，照片時間對 GPX、時區與鐘差段；校正僅供配對。"
+        },
+        {
+          "id": "K115-0207",
+          "source_ids": [
+            "PX115-S05"
+          ],
+          "decision": "screened",
+          "network": "NET_KDE",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "同節 Interpolate 兩段。中點與直線條件有原文，河灣落水是明示的圖解推演。"
+        },
+        {
+          "id": "K115-0208",
+          "source_ids": [
+            "PX115-S09",
+            "PX115-S10"
+          ],
+          "decision": "screened",
+          "network": "NET_NOMINATIM",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "Nominatim 5.2 Reverse 的物件選擇與密集街區例；另核 Lightroom 目錄設定中的城市、州及國家查詢。兩種服務分述，僅計 Nominatim 一次。"
+        },
+        {
+          "id": "K115-0209",
+          "source_ids": [
+            "PX115-S01"
+          ],
+          "decision": "screened",
+          "network": "NET_Apple",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "Apple 安全手冊，Stop location metadata collection 和 Don’t share location metadata 兩節。拍攝權限和當次分享選項各有自己的作用。"
+        },
+        {
+          "id": "K115-0210",
+          "source_ids": [
+            "PX115-S04"
+          ],
+          "decision": "screened",
+          "network": "NET_GOOGLE",
+          "author_weight": 0.5,
+          "review_weight": 0.5,
+          "checked": "Google 相簿 iOS，Share a photo with a location 三個分項。將自動推算與已編輯的推算位置分開。"
+        },
+        {
+          "id": "K115-0211",
+          "source_ids": [
+            "PX115-S04"
+          ],
+          "decision": "screened",
+          "network": "NET_GOOGLE",
+          "author_weight": 0.5,
+          "review_weight": 0.5,
+          "checked": "同節其後的下載再以電郵傳送段，檔案位置以裝置原先所存為準，限該服務。"
+        },
+        {
+          "id": "K115-0212",
+          "source_ids": [
+            "PX115-S06"
+          ],
+          "decision": "screened",
+          "network": "NET_SONI",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "Soni 2025 §5.2 表 2 Geolocation 列與表註、§5 首段；十張影像，三組 Doc／Chat(Image) 對照。表中 X 含移除或無法可靠取回，不推廣到其他版本。"
+        },
+        {
+          "id": "K115-0213",
+          "source_ids": [
+            "PX115-S07"
+          ],
+          "decision": "screened",
+          "network": "NET_FLICKR",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "Flickr Help，Geo Preferences 與 Note 段。網站地圖顯示與原檔存取權各自管理。"
+        },
+        {
+          "id": "K115-0214",
+          "source_ids": [
+            "PX115-S08"
+          ],
+          "decision": "screened",
+          "network": "NET_ADOBE",
+          "author_weight": 0.75,
+          "review_weight": 0.5,
+          "checked": "Adobe Metadata basics，About metadata and XMP 一節。專有 RAW 的伴隨檔與 JPEG 的內嵌 XMP；屬通用詮釋資料，僅作旁證。"
+        },
+        {
+          "id": "K115-0215",
+          "source_ids": [
+            "PX115-S12"
+          ],
+          "decision": "screened",
+          "network": "NET_TBN",
+          "author_weight": 0.75,
+          "review_weight": 0.5,
+          "checked": "TBN「敏感資料及模糊化介紹」表格的「縣市」「座標不開放」兩列。兩欄說的是公開觀測，不能推論原圖是否有 GPS。"
+        },
+        {
+          "id": "K115-0216",
+          "source_ids": [
+            "PX115-S11"
+          ],
+          "decision": "screened",
+          "network": "NET_FORMOSA",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "福爾摩沙生態守望計劃「照片」與「位置」段：自動填表、保存精確位置，特定類別公開圖片移除 EXIF。限站方自述。"
+        },
+        {
+          "id": "K115-0217",
+          "source_ids": [
+            "PX115-S13"
+          ],
+          "decision": "screened",
+          "network": "NET_IPTC",
+          "author_weight": 0.75,
+          "review_weight": 0.25,
+          "checked": "IPTC 2019 測試方法與 Flickr 免費帳號列。瀏覽器另存的 XMP 消失，原檔另有下載途徑。不能當作 GPS 實測或現版結果。"
+        },
+        {
+          "id": "K115-0218",
+          "source_ids": [
+            "PX115-S14",
+            "PX115-S15",
+            "PX115-S16",
+            "PX115-S17"
+          ],
+          "decision": "screened",
+          "network": "NET_KAMIAP",
+          "network_weight_split": {
+            "NET_KAMIAP": 0.5,
+            "NET_APPLLIO": 0.25,
+            "NET_LINE": 0
+          },
+          "author_weight": 0.75,
+          "review_weight": 0.75,
+          "checked": "カミアプ（2019-02-12）原始畫質節：同張 iPhone 原照與下載檔用 Loooks 看，送方勾原始畫質、收方選原圖，後者仍顯示拍攝日，未顯示緯度／經度／海拔；無 LINE 版號。アプリオ（2025-06-06）照片是否透露拍攝地點一節、文末版本欄：傳送原已有位置的照片、接收者在聊天室下載後，手機相片詳情未顯位置；iOS 15.7.2、Android 15.7.1，該次畫質未交代。兩個日期是文章發布日，未另推定測試日。LINE 日本官方 2017-08-24 畫質教學確認 ORIGINAL 與接收方尺寸選項；繁中支援中心「照片⋅影片」「文字或語音等檔案」分列入口，皆未給 GPS 保存結果。",
+          "dedup": "K115-0212 的三種服務不含 LINE，且比的是圖片與文件。此卡補的是在 LINE 選「原始畫質」時，收件端仍看得到拍攝日、卻未顯示經緯度。K115-0217 是瀏覽器另存與站內下載的舊版 XMP 測試，沒有 LINE 地點觀察。",
+          "limits": "兩次實測回答同一問題，合計 0.75 條。未化驗完整二進位檔，不能據顯示結果斷言 EXIF/GPS 資料完全刪除。未測 LINE 文件、現行版與其他接收端。"
+        }
+      ],
+      "chapter_budgets": [
+        {
+          "seconds": 35,
+          "min_seconds": 20,
+          "max_seconds": 45
+        },
+        {
+          "seconds": 115,
+          "min_seconds": 100,
+          "max_seconds": 225
+        },
+        {
+          "seconds": 80,
+          "min_seconds": 60,
+          "max_seconds": 135
+        },
+        {
+          "seconds": 80,
+          "min_seconds": 60,
+          "max_seconds": 135
+        },
+        {
+          "seconds": 90,
+          "min_seconds": 85,
+          "max_seconds": 175
+        },
+        {
+          "seconds": 80,
+          "min_seconds": 40,
+          "max_seconds": 90
+        }
+      ],
+      "turns": [
+        "未曾寫入相機檔案的地點，相簿也可由地標估算；用自己的時間軌跡補點時，直線內插可能落在實際路線之外。",
+        "同一次受控研究中，同一通訊服務的文件與圖片傳送模式能讓收件人得到不同的定位欄結果。"
+      ],
+      "nearby": [
+        "K108-0405 是 Exif 的沿革；K108-0410 是時戳字串，並未用時間比對 GPX 或插值。",
+        "K108-0411 講 JPEG 的 APP1 目錄與 GPS 子目錄，新卡追問座標方向、選用誤差與公開／分享後誰看得到位置。",
+        "K108-0422 說相簿資料庫記錄檔案儲存路徑，此處的地點是地理位置。"
+      ],
+      "changes": [
+        "作者已將定位結果定位至 §5.2 表 2，並依表註把圖片模式改為「未能可靠讀回」，避免把 X 一律解釋成資料已刪除。",
+        "六卡降權：K115-0203 僅為舊版規格的選用欄位；0207 河灣場景為推演；0212 為小樣本單輪測試；0214 只間接舉例；0215 公開紀錄非影像；0217 為舊版 XMP 測試，與 GPS 保留非同一主張。"
+      ],
+      "unverified": [
+        "未實機確認現版應用，未以真實帳號或受保護物種座標試驗。",
+        "補強前 17 張卡分配至六章共 480 秒。這是紙上片長預算，沒有以正式旁白量時。",
+        "LINE 的原始畫質素材限兩篇具接收端對照的歷史實測；文件傳送與現版結果仍待另測。"
+      ],
+      "note": "加入 LINE 收件端實測後為 14.25 條、約 10.7 分鐘，高於 11.4 條素材門檻。18 張各進入一章，六章合計 480 秒。素材審查與最終觀眾、需求評分分開記錄。",
+      "material_revisions": [
+        {
+          "stage": "initial",
+          "title": "同一張照片，我的相簿有地圖，家人收到怎麼沒了？",
+          "candidate_count": 17,
+          "source_count": 13,
+          "source_networks": 11,
+          "author_fact_count": 15.25,
+          "review_fact_count": 13.5,
+          "est_minutes": 10.1,
+          "chapter_budgets": [
+            {
+              "seconds": 35,
+              "min_seconds": 20,
+              "max_seconds": 45
+            },
+            {
+              "seconds": 115,
+              "min_seconds": 100,
+              "max_seconds": 225
+            },
+            {
+              "seconds": 80,
+              "min_seconds": 60,
+              "max_seconds": 135
+            },
+            {
+              "seconds": 80,
+              "min_seconds": 60,
+              "max_seconds": 135
+            },
+            {
+              "seconds": 90,
+              "min_seconds": 60,
+              "max_seconds": 135
+            },
+            {
+              "seconds": 80,
+              "min_seconds": 40,
+              "max_seconds": 90
+            }
+          ],
+          "note": "原 17 張逐卡結果與權重保留如下；學術傳輸矩陣未測 LINE。"
+        },
+        {
+          "stage": "line_recipient_check",
+          "added_card": "K115-0218",
+          "source_count": 17,
+          "source_networks": 14,
+          "positive_weight_networks": 13,
+          "added_fact_count": 0.75,
+          "review_fact_count": 14.25,
+          "est_minutes": 10.7,
+          "candidate_count": 18,
+          "chapter_seconds": 480,
+          "note": "第 5 章先回答 LINE 原始畫質，再另舉學術研究的三種服務。兩個媒體實測共同提供一項新觀察；兩頁官方說明同網，未測定位，權重為 0。"
+        }
+      ]
+    }
+  }
+}
