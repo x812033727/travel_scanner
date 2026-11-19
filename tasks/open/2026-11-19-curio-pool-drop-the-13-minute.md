@@ -1,7 +1,7 @@
 ---
 id: 2026-11-19-curio-pool-drop-the-13-minute
 title: Curio pool: drop the 13-minute upper bound on long episodes
-status: in-progress
+status: review
 priority: P2
 area: tools
 owner: claude-fable-5-2
