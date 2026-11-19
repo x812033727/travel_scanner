@@ -1159,7 +1159,9 @@ CONNECTION_TESTED_PROVIDERS = frozenset({
 })
 # The rest hold settings with no upstream to call, or read other cards' keys, so testing
 # them proves nothing and their green light already means what it says.
-LOCAL_ONLY_PROVIDERS = frozenset({"adsense", "analytics", "hotspot_guides", "layout", "runtime"})
+LOCAL_ONLY_PROVIDERS = frozenset(
+    {"adsense", "analytics", "hotspot_guides", "layout", "runtime", "video_reviews"}
+)
 
 
 def _production_test_required(provider: str, settings: Settings) -> bool:
