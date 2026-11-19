@@ -23,7 +23,7 @@ test("a story's hooks stand on facts, keep the shared limits, and the loops tabl
   assert.match(writer, /A hook stands on a fact of this story: a number, one person's decision, something that should\s+not have happened\. Never an empty promise \(「接下來更精采」/);
   assert.match(writer, /at most one forward hook in the whole story says\s+so out loud, and 「還記得…」 at most five times/);
   assert.match(writer, /"loops" lists at least 8 for ten minutes of narration/);
-  assert.match(writer, /at least 3 of them planted in the hook, and every one is paid off/);
+  assert.match(writer, /at least 2 of them planted in the hook \(its contrast and the promise's\s+question; one climax label may add a third, never a menu of questions\), and every one is paid off/);
   assert.match(writer, /The hook plants at\s+least three; every chapter but "now" leaves one hanging/);
 });
 

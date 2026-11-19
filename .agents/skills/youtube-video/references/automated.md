@@ -138,7 +138,7 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
 ## 坑
 
 - **英文卡片在紙底版型的上限**（2026-10-24 實測，`render` 不會擋，要自己看聯絡表）：`big` 有 `icon` 時只放得下一行，英文一行超過約 16 字元會自動折成兩行，第二行被關鍵句帶蓋住；兩行以上的 `big` 一律拿掉 `icon`、每行 ≤ 22 字元，一行帶圖示的 `big` 連下伸字母都會被切，所以只留 `numeral` 與極短字的圖示。`quote` 只放得下三行 100px（約 85 字元），長句只留帶事實的子句。`steps`／`compare` 有關鍵句帶時拿掉卡片 `title`。`**` 不能跨 `\n`。
-- **`captions` 要在 `assemble` 之後再跑一次**：片頭插在第一章後面，時間軸會位移；`assemble` 的訊息「captions, chapters and dubs follow it once rebuilt」就是這個意思。
+- **`captions` 要在 `assemble` 之後再跑一次**：片頭插在第一章後面時，時間軸會位移（原來如此、奇聞、品牌故事 2026-11-19 起不放片頭，不會位移）；`assemble` 的訊息「captions, chapters and dubs follow it once rebuilt」就是這個意思。
 - **配音一次只能一個語言**：`dub` 與 `check-audio` 共用工作區的 project lease（第二個會以 exit 3「held by dub」停）。八語要串成一條鏈；Claude Code 的 `run_in_background` 在程序重啟或 600 秒時會被殺，用分離的 `( … ) &` 子殼寫 log，再用 Monitor 看 log，一條鏈等上一條寫出 DONE 標記再開始；中斷後重跑從每句的快取接續。
 - **配音被標的句子改字，不只重錄**：伺服器的轉寫會寫口語縮寫、展開縮寫、挑常見同音詞，重錄十次也一樣。實測清單：pt `está`→`tá`、`estou`→`tô`、`EE. UU.`→`Estados Unidos`；es `EE. UU.` 同；th `ต.ค.`→`ตุลา`、`อีเมล`→`email`；ja 版→晩／範囲、一文→1分、代償→対象、発効→発行、フォト→povo、受信トレイ→受診歴、その語が→その後；ko 눌렀→놀랐、묻기→묶기、대가:→네,、대만→다만；vi `nối`→`nói`（改 `kết nối`）、`thư`→`thứ`（改 `email`）、`bản`→`bạn`（改 `phiên bản`）；id `sudah`→`udah`、`dimatikan`→`dimatiin`（寫法本身沒錯，換句型就過）；en `mail`→`email`、`My way`→`That way`、數字寫成英文字。塞不進視窗的句子（fit.json 的 `over`）要縮到工具給的 `max_chars`，工作表的 `max_chars` 不會自己更新。
 - **標題合成後要 ≤ 100 字元**：`package` 用的是加了系列後綴的完整標題，翻譯時 pt／id 寫到 96–98 字元就會超過；每語標題留 10 字元餘裕。

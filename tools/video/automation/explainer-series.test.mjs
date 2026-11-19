@@ -123,16 +123,16 @@ test("one table maps each explainer preset to its variants; every name fits the 
 // names said as written, and nobody living or dead since 1956 drawn. An unfinished 奇聞檔案局
 // one-off on the host stops with video_ai_receipt_input_changed at its next stage after the deploy.
 const SERIES_TEXT_PINS = {
-  "planner:bible-explainer-cartoon": [6347, "f9afae8a35b9fee5d247b6bb2a4b0729b47fd20c1f9d195eab42a76adf7ac0d2"],
-  "writer:explainer-cartoon": [27161, "24625a430c23d15dc2428d2195c3947b5a18a59b51ab7b9e6e30bcd85b4264f5"],
+  "planner:bible-explainer-cartoon": [6519, "078f8a30dac91dbf89bb03f33c9672404ec96bb4dd130765f2b72f1ff5d8810f"],
+  "writer:explainer-cartoon": [33632, "245d1d749facd12207da31f54c84c75a4cffb7094465ad988476b4958b1accab"],
   "verifier:explainer-cartoon": [4305, "6f41570e5090987327a200b7790a6ecdec88c8a0350de2ca49b74cb4e7ca95db"],
-  "planner:discuss-cartoon": [7074, "a489aa308db647b7d936eeeddcac14bed5fda21c4f2765d76acb338cc44a97f6"],
-  "writer:discuss-cartoon": [25626, "19bacf8358177a1a461c5b46643211041f91969434eba8a89404524084a17fca"],
-  "planner:bible-explainer-mystery": [9560, "96629ae4e51040e354111f8659249f1526c57070993a5025c1fbf1e58564adb6"],
-  "writer:explainer-mystery": [37710, "6070ad8763c67cd3a3a45bf3ddad6de931719b80a62d8d6c01fe0fd00e29becb"],
+  "planner:discuss-cartoon": [7246, "86fb87e98cce5315e954f8505f00c56d3aa6693ccec3e9e72d70cbb7fee014c4"],
+  "writer:discuss-cartoon": [32097, "d1ecb86c0ad68409ecbbb3e0db137882a5900a27f9ac39aff706551af082dd18"],
+  "planner:bible-explainer-mystery": [9615, "8eb4a18c04b487826fa483303f255aa5b1bb8050836d597aa923038ce7b22172"],
+  "writer:explainer-mystery": [38236, "521eb34b3427f6919a7785282f6bbeba34eb0726df46fc83b7adba67bc56e2fa"],
   "verifier:explainer-mystery": [6433, "e84a1810dab0b060272622dae14a95879470965678851713608fc5ac60dc4b2a"],
-  "planner:discuss-mystery": [10189, "615cac5cc3db625e6106081948ac8a43bddb397b06ced096bb9236201b0d1b0e"],
-  "writer:discuss-mystery": [36247, "ee1deac2fba40ee6f95461b9d9bff980a43952ca257af1b5da643235cb687644"],
+  "planner:discuss-mystery": [10244, "5049e3b4666364e854671e6c2b010e5d382b974fbcdfad1defdf14f26326208c"],
+  "writer:discuss-mystery": [36773, "ec4c2d8e3ed4ca1605a3dc821cb8f9c1c773a8335a0b5fa4e6da20b4c8111bec"],
 };
 
 test("the ten texts of the two profiled series are the pinned ones, composed with no genre section", () => {
@@ -152,7 +152,7 @@ test("the ten texts of the two profiled series are the pinned ones, composed wit
   assert.ok(standing.startsWith(EXPLAINER_SERIES_INSTRUCTIONS["writer:explainer-mystery"]) && standing.includes("旁白慢一點") && standing.includes("1. 先講事實"));
 });
 
-test("奇聞檔案局's writer keeps the brand stories' cadence and music bed; 原來如此's does not change", () => {
+test("奇聞檔案局's writer keeps the brand stories' cadence and music bed; 原來如此's takes the ten steps but keeps its cards (2026-11-19)", () => {
   // Owner, 2026-10-19: the brand stories were smoother, had more hooks and music; this series is to
   // be as good or better. Lint reads the same 45 s and eight loops on a curio- slug.
   const mystery = instructionsFor("writer", "drama", "", "explainer-mystery");
@@ -181,12 +181,21 @@ test("奇聞檔案局's writer keeps the brand stories' cadence and music bed; �
   assert.match(STORY_OPENING_RULE, /「今天我們就來聊聊…」/);
   assert.match(STORY_SERIES_SCREEN_RULE, /who died in 1956 or later, is never drawn/);
   assert.match(mystery, /the name\s+everybody knows in the first six characters/);
-  assert.ok(!EXPLAINER_SERIES_INSTRUCTIONS["writer:explainer-cartoon"].includes(TOLD_TO_ONE_VIEWER), "原來如此 keeps its register");
+  // Owner, 2026-11-19: new 原來如此 episodes follow 黑猫研究院's ten steps and are told to one viewer.
+  assert.ok(EXPLAINER_SERIES_INSTRUCTIONS["writer:explainer-cartoon"].includes(TOLD_TO_ONE_VIEWER), "原來如此 is told to one viewer");
   assert.match(instructionsFor("planner", "drama", "", "bible-explainer-mystery"), /at least eight for ten minutes/);
   const cartoon = instructionsFor("writer", "drama", "", "explainer-cartoon");
-  assert.doesNotMatch(cartoon, /45 seconds|"music" is never left out/);
-  // 原來如此 keeps its cards, its condensation and its picture rules.
-  assert.ok(!cartoon.includes(STORY_SERIES_SCREEN_RULE) && !cartoon.includes(STORY_OPENING_RULE));
+  // 2026-11-19: 原來如此 keeps the 45-second cadence of the ten steps, not 奇聞檔案局's music rule.
+  assert.match(cartoon, /No stretch of the body runs longer than 45\s+seconds without one/);
+  assert.match(cartoon, /"loops" lists at least 8 for ten minutes/);
+  assert.doesNotMatch(cartoon, /"music" is never left out/);
+  // 原來如此 keeps its cards and its picture rules; its opening is the ten steps' hook and promise.
+  assert.ok(!cartoon.includes(STORY_SERIES_SCREEN_RULE) && cartoon.includes(STORY_OPENING_RULE));
+  assert.match(cartoon, /The first chapter, 40 to 90 seconds, aimed at about a minute: the hook and the promise/);
+  assert.match(cartoon, /For a "why" question the ten steps of the shape rule below read this way/);
+  assert.match(cartoon, /never a menu of\s+questions/);
+  assert.match(cartoon, /No greeting and no intro: the first\s+line plays at 0:00/);
+  assert.doesNotMatch(cartoon, /The channel intro plays after it/);
   assert.match(cartoon, /- Cards between shots, and only these/);
   assert.match(cartoon, /"prompt" is English, at most 400 characters/);
   assert.match(cartoon, /A foreign name is said in its usual Chinese form/);

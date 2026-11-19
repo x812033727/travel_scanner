@@ -2435,3 +2435,17 @@ test("a compilation reports its series, goes up for the final gate with the six-
   assert.ok(roles.includes("metadata") && roles.includes("thumbnail") && roles.includes("captions_zh-TW") && roles.includes("description_en"));
   assert.equal(server.state.files.has(sha(readFileSync(path.join(box.workdir, "final.mp4")))), false);
 });
+
+test("the script gate refuses a 原來如此, 奇聞 or brand-story script whose opening is a question menu or misses the thumbnail (owner 2026-11-19)", async () => {
+  const box = sandbox("sothatswhy-x01", "drama");
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  doc.slug = box.slug;
+  doc.scenes[0].lines[0].text = "為什麼雲會變灰？為什麼下午才下雨？雷又是從哪裡來的？";
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+  const server = site();
+  const push = context(box, server.fetchImpl);
+  assert.notEqual(await main(["review-push", "--slug", box.slug, "--gate", "script"], push.ctx), EXIT.ok);
+  assert.match(push.out.stderr, /opening is not ready for review/);
+  assert.match(push.out.stderr, /question menu/);
+  assert.equal(server.state.reviews.length, 0, "nothing reaches the owner");
+});
