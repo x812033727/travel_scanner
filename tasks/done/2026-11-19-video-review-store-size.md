@@ -1,13 +1,13 @@
 ---
 id: 2026-11-19-video-review-store-size
 title: Owner sets the review store size from the admin
-status: review
+status: done
 priority: P1
 area: web
 owner: claude-opus-5-5-review-store
 claimed_at: 2026-11-19T00:12:04Z
 created_at: 2026-11-19T00:11:39Z
-completed_at:
+completed_at: 2026-11-19T01:40:32Z
 branch: claude/kind-mccarthy-5m28jo
 depends_on: []
 scope:
