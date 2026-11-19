@@ -6356,6 +6356,26 @@
       ]
     },
     {
+      "id": "SRC-05dc914d3b347977",
+      "url": "https://www.djo.org.uk/household-words/volume-xii/page-297.html",
+      "readings": [
+        {
+          "title": "Household Words, Volume XII（1855–56），p. 297（Nostradamus 與 Olivarius 預言的文章）",
+          "publisher": "Household Words（Charles Dickens 主編週刊，1855–56）；Dickens Journals Online，University of Buckingham 的數位版",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 15（200，120,764 bytes），python 去標籤後讀該頁文字",
+          "reading_scope": "只讀第 297 頁（文章中段）；文章開頭頁 296 與作者未讀",
+          "locator": "p. 297 首段〈made a pilgrimage to Salon…sitting up in his tomb, with pen, ink, and candles〉",
+          "summary": "1855–56 年的英國雜誌說：Salon 的市民『曾經以為、直到不久前還以為』他只是假死，其實坐在墓裡，有筆、墨、蠟燭和魔法書陪著；墓誌銘則莊嚴宣告他已死。整頁沒有提大革命開墓、頭骨或士兵。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "19 世紀中葉的雜誌通俗文章，匿名、無出處；只能當『另一個更早的墓中傳說』的樣本，不是開墓的紀錄。讀的是 DJO 的 OCR 文字，沒有看頁面影像。",
+          "review_check": "未重抓；核對 ZV0 cache（006、015）內容與 summary／locator 相符。",
+          "origin": "wave84-20261118",
+          "original_url": "https://www.djo.org.uk/household-words/volume-xii/page-297.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-05f19b9e03980e17",
       "url": "https://commons.wikimedia.org/wiki/File:The_Dance_epidemic_in_Meulebeeck.jpg",
       "readings": [
@@ -12810,6 +12830,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.chinatimes.com/newspapers/20151129000343-260107?chdtv"
+        }
+      ]
+    },
+    {
+      "id": "SRC-0b3c123609d0d45e",
+      "url": "https://archive.org/download/nlc-892-411999019284-382429/NLC892-411999019284-382429_%E9%85%8C%E4%B8%AD%E5%BF%97%E7%95%A5_%E4%BA%8C%E5%8D%81%E4%B8%89%E5%8D%B7_%E7%AC%AC6%E5%86%8A.pdf",
+      "readings": [
+        {
+          "title": "酌中志略 二十三卷 第6冊（清初抄本，中國國家圖書館善本書號 11008）",
+          "publisher": "明劉若愚撰；中國國家圖書館藏清初（1644–1722）抄本，十行二十五字無格；國圖「數字古籍」影像經 Wikimedia Commons 備份上傳 Internet Archive（條目 nlc-892-411999019284-382429）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 1（200，10,979 bytes）讀 https://archive.org/metadata/nlc-892-411999019284-382429 取得檔名與版本著錄；seq 3（200，21,326,163 bytes）下載 PDF（53 頁），pdftoppm 轉 PDF 第 1–3 頁（60 dpi 全頁）並把第 3 頁轉 200 dpi 裁出右起第一行放大看。另 seq 2 下載同條目 djvu.txt，OCR 是亂碼，沒用",
+          "reading_scope": "只讀卷二十〈飲食好尚紀畧〉卷首（PDF 第 1 頁）與正月段（PDF 第 2–3 頁）；其餘沒讀",
+          "locator": "PDF 第 1 頁卷題「飲食好尚紀畧第二十」；PDF 第 2 頁左末行「…自初九日之後即有耍燈市買燈吃元宵其製法用糯米細麪內用核桃仁白糖為果餡洒水滾成」接 PDF 第 3 頁右起第一行「如核桃大即江南所稱湯圓者十五日曰上元亦曰元宵」",
+          "summary": "另一個版本（清初抄本）的同一段：明代宮中正月初九以後逛燈市、吃「元宵」，糯米細粉、核桃仁白糖作餡、灑水滾成核桃大，「即江南所稱湯圓者」。此本楷書清楚，第二字是「圓」（框內是「員」，不是「專」）。所以 ZW2-S014 海山仙館刻本那個看不清的字，在這個早於刻本的抄本裡寫作「湯圓」。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "抄本，不是劉若愚手稿；海山仙館刻本（ZW2-S014）同字仍模糊、覆核 R8402 看似「團」，兩本可能有異文。正片引「湯圓」時以這個抄本為據，並可說「另一個刻本字跡模糊」。劉若愚寫作年分本輪仍沒查。 覆核 R8411 重抓同一 PDF（sha256 前綴相同）轉第 2–3 頁核對，「湯圓」二字清楚；並對照 ZW2-S014 刻本 PDF 第 37 頁，同字看似「團」，確認兩本異文。metadata 的 date 1722 是「清初[1644-1722]」的下限，不是抄寫年。",
+          "origin": "wave84-20261118",
+          "original_url": "https://archive.org/download/nlc-892-411999019284-382429/NLC892-411999019284-382429_%E9%85%8C%E4%B8%AD%E5%BF%97%E7%95%A5_%E4%BA%8C%E5%8D%81%E4%B8%89%E5%8D%B7_%E7%AC%AC6%E5%86%8A.pdf"
         }
       ]
     },
@@ -29453,6 +29492,25 @@
       ]
     },
     {
+      "id": "SRC-17601544ffd525b4",
+      "url": "https://content.time.com/time/specials/packages/article/0,28804,1995297_1995295_1995284,00.html",
+      "readings": [
+        {
+          "title": "Xuan Kong Si, Shanxi Province, China - Top 10 Precarious Buildings",
+          "publisher": "TIME（content.time.com 專題『Top 10 Precarious Buildings』），2010",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 5（200，38,930 bytes），python 去標籤後讀懸空寺這一則",
+          "reading_scope": "只讀懸空寺這一則全文（一段多）；同專題其他九則沒讀",
+          "locator": "正文首段『the entire complex … is kept in place with wooden crossbeams fitted into holes chiseled into the stone』",
+          "summary": "《時代》2010 年專題確實把懸空寺列為十大『岌岌可危』建築之一；文中說整片寺是靠嵌進石壁鑿孔的木橫樑固定，看起來一根木頭裂了就會掉下 75 公尺高崖，但已經撐了約 1,400 年；也寫了僧人了然始建的傳說。全段沒有提到寺下的支柱。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "雜誌專題的短文，不是工程來源；只用來確認『2010 年《時代》選為危險建築』確有其事、以及這篇也講橫樑而不是『全靠細柱』。",
+          "origin": "wave84-20261118",
+          "original_url": "https://content.time.com/time/specials/packages/article/0,28804,1995297_1995295_1995284,00.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-17663ba7a633a1b9",
       "url": "https://artsandculture.google.com/story/decoding-the-sun-stone/CwUBgE-UXSRhLw",
       "readings": [
@@ -39783,6 +39841,26 @@
           "limitations": "只讀到出版社試閱的前 14 頁，第 VIII 章（毒殺）本身沒讀到；作者是獨立研究者，書由學術出版社 Verloren 出版。",
           "origin": "wave10-20261102",
           "original_url": "https://download.boekhuis.nl/9789087049362_fragm-docb.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-1fbdd60fb9076db4",
+      "url": "https://archive.org/download/bub_gb_WSdDAAAAcAAJ/bub_gb_WSdDAAAAcAAJ_jp2.zip/bub_gb_WSdDAAAAcAAJ_jp2%2Fbub_gb_WSdDAAAAcAAJ_1010.jp2",
+      "readings": [
+        {
+          "title": "Statistique du département des Bouches-du-Rhône, tome 2（Christophe de Villeneuve）",
+          "publisher": "Marseille，1824（省長主持編纂的官方省志；archive.org 條目 bub_gb_WSdDAAAAcAAJ，Google 數位化掃描）",
+          "accessed_on": "2026-11-18",
+          "read_via": "archive.org advancedsearch（seq 8）找到條目；metadata（seq 9）列檔名；djvu.txt 文字層（seq 10，200，3,577,551 bytes）以 Nostradamus、Cordeliers、Franciscains 搜尋定位；page_numbers.json（seq 11）查得印刷頁 1004 = leaf 1010；jp2.zip 目錄頁（seq 12）取得該頁連結；下載該頁 JP2 影像（seq 13，200，571,789 bytes），轉 PNG 以眼讀全頁",
+          "reading_scope": "讀了第 1004 頁全頁影像（Salon 一節）；同卷其他提到 Nostradamus 的段落只看文字層（皆為引用其子 César 的史書，與墓無關）；卷三的名人小傳未讀",
+          "locator": "tome 2，p. 1004（PDF leaf 1010），〈On a transporté aussi à St-Laurent le tombeau du fameux Michel Nostradamus…〉",
+          "summary": "1824 年官方省志描寫 Salon 的聖羅蘭教堂（今為堂區教堂）時寫：『人們也把著名的米歇爾·諾斯特拉達姆士的墓遷到聖羅蘭，它原本在他下葬的方濟各會教堂裡。』只記遷墓這件事，沒有寫年份、原因、大革命、開墓、頭骨或任何士兵。",
+          "rights": "PUBLIC_DOMAIN",
+          "limitations": "只證明 1824 年以前墓已遷到聖羅蘭；沒有遷葬年份與經過，也沒有大革命時開墓的任何記述。不是市政或教區檔案本身。",
+          "review_check": "R8410 seq 1 重抓頁影像，bytes 與 sha256 前綴與 ZV0 seq 13 相同；ImageMagick 轉 PNG 目讀，頁碼 1004 與引文屬實；條目 metadata 為 1824 年卷二、Public Domain Mark。",
+          "origin": "wave84-20261118",
+          "original_url": "https://archive.org/download/bub_gb_WSdDAAAAcAAJ/bub_gb_WSdDAAAAcAAJ_jp2.zip/bub_gb_WSdDAAAAcAAJ_jp2%2Fbub_gb_WSdDAAAAcAAJ_1010.jp2"
         }
       ]
     },
@@ -75124,7 +75202,7 @@
           "locator": "PDF 第 37 頁（卷之二十，版心二）「自初九日之後即有耍燈市買燈，吃元宵，其製法用糯米細麪，內用核桃仁、白糖為果餡，灑水滾成，如核桃大，即江南所稱湯〔團／圓〕者（覆核 R8402 註：此本該字 600dpi 放大後，框內有貫穿豎筆與右下寸鉤，較像「團」，不能確定）。十五日曰上元，亦曰元宵」",
           "summary": "紀錄：明代宮中正月初九以後逛燈市、吃「元宵」，做法是糯米細粉、核桃仁白糖作餡、灑水滾成核桃大小，作者直接說這就是江南的叫法「湯團」或「湯圓」（此本字形不清，覆核放大看較像「團」）。也就是說，在這位明代宦官筆下，「元宵」是北京宮中的叫法，江南另有「湯團／湯圓」的叫法，兩個名字同時存在。",
           "rights": "PUBLIC_DOMAIN",
-          "limitations": "清代叢書刻本；本輪沒有查劉若愚寫作的確切年分，只稱「明代宮中」。「江南所稱湯□者」的第二字在此本是 1-bit 掃描，覆核 R8402 放大到 600dpi 仍不能斷定是「圓」還是「團」，傾向「團」；要引原字須另找一個版本核對。",
+          "limitations": "清代叢書刻本；本輪沒有查劉若愚寫作的確切年分，只稱「明代宮中」。「江南所稱湯□者」的第二字在此本是 1-bit 掃描，覆核 R8402 放大到 600dpi 仍不能斷定是「圓」還是「團」，傾向「團」；要引原字須另找一個版本核對。 覆核 R8411 轉 PDF 第 37 頁（150 dpi）對照 ZV1-S001 清初抄本：抄本作「湯圓」，此刻本看似「湯團」，兩本異文；正片以抄本為據並說明刻本作「團」。",
           "origin": "wave84-20261118",
           "original_url": "https://archive.org/download/02081888.cn/02081888.cn.pdf"
         }
@@ -76296,6 +76374,25 @@
           "limitations": "讀的是 1943 年越南文譯本，不是漢文原本；年號換算是譯者括號註。",
           "origin": "wave7-20261102",
           "original_url": "https://vi.wikisource.org/wiki/Truy%E1%BB%81n_k%E1%BB%B3_m%E1%BA%A1n_l%E1%BB%A5c/3"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3da2e4ae66879edc",
+      "url": "https://blog.sina.com.cn/s/blog_50c10b940102uwd7.html",
+      "readings": [
+        {
+          "title": "[转载]石家庄藁城台西商代遗址",
+          "publisher": "新浪部落格個人轉載文（博主暱稱為一個民間『研究院』名義，非機構），2014-07-02 發布；原出處未標",
+          "accessed_on": "2026-11-18",
+          "read_via": "R8412 fetch.sh seq 6（200，34,097 bytes），python 去標籤後讀正文；網址取自 WebSearch 結果",
+          "reading_scope": "讀了正文全文（約 8 千字元）",
+          "locator": "『可歸納為多項“世界之最”』段第一、二項；文末器物圖說『1972 年在藁城台西商代遺址出上的鐵刃銅鉞』",
+          "summary": "流傳樣本：把鐵刃銅鉞列為『世界上最早的鐵器』（寫 1972 年出土、距今 3400 多年），緊接著第二項說遺址的鐵礦石與冶煉鐵渣『證明這裡早在公元前 1400 年前就開始採礦冶鐵』；全文沒有出現『隕』字。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "個人部落格轉載、沒有原出處；它並沒有明說『鐵刃是人工冶鐵』，只是把『最早鐵器』與『冶鐵』並列、不提隕鐵，所以只是弱樣本。『世界最早』『1972』『公元前 1400 年冶鐵』都沒有來源，正片不能用。",
+          "origin": "wave84-20261118",
+          "original_url": "https://blog.sina.com.cn/s/blog_50c10b940102uwd7.html"
         }
       ]
     },
@@ -95366,6 +95463,25 @@
           "limitations": "單一作者的 arXiv 稿（有德文版、標為 Habilitation 相關）；作者自己的 1903 BCE 方案只當『其中一個新說』，片中不採。",
           "origin": "wave32-20261112",
           "original_url": "https://arxiv.org/abs/2006.04674"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4c797c763dc83b63",
+      "url": "https://www.asiaculturaltravel.co.uk/?p=8433",
+      "readings": [
+        {
+          "title": "The Hanging Temple",
+          "publisher": "China & Asia Cultural Travel（英國旅行社網站文章），2015-09-19 發布（頁面 article:published_time）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 1（200，94,597 bytes），python 去標籤後讀正文",
+          "reading_scope": "讀了正文全部（四段）；留言區與導覽沒讀",
+          "locator": "第二段『This architectural feat was achieved by chiselling holes into the cliff』至『have safely held the structure up for centuries』",
+          "summary": "流傳樣本（反方向的說法）：說寺是在崖上鑿洞、塞進承重的橡木樑撐起來的；寺下的支柱『其實只是擺設』，是為了讓遊客對它的穩定比較安心，真正撐住幾百年的是插進岩壁的樑。也說寺離地 75 公尺、躲在突出的岩石下所以少受日曬侵蝕。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "旅行社的介紹文，沒有作者與出處；『只是擺設』『為了讓遊客安心』都沒有來源；樑的樹種寫橡木，和中文樣本的鐵杉不同。它講的是『柱子是假的』，不是『全靠細柱』。",
+          "origin": "wave84-20261118",
+          "original_url": "https://www.asiaculturaltravel.co.uk/?p=8433"
         }
       ]
     },
@@ -156124,6 +156240,25 @@
       ]
     },
     {
+      "id": "SRC-7f4890791711cce0",
+      "url": "https://global.chinadaily.com.cn/a/201806/18/WS5b27075fa310010f8f59d657.html",
+      "readings": [
+        {
+          "title": "Suspended in the sky",
+          "publisher": "China Daily（中國日報英文網，Global Edition），2018-06-18，兩位記者署名",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 6（200，42,622 bytes），python 去標籤後讀正文；先試搜尋結果給的 covid-19.chinadaily.com.cn 兩個舊網址（seq 3、4，200 但是『page not found』頁），再用搜尋結果給的 global 網址讀到",
+          "reading_scope": "讀了正文前半（外觀、支柱、樑孔與地層、建築佈局）；後半宗教與旅遊段只掃過",
+          "locator": "『Seen from below, Xuankong Temple … appears extremely precarious, supported only by a few thin stanchions standing on protruding rocks』段；下一段『In fact, the stanchions were only added relatively recently as a psychological comfort to visitors』；『A series of large, deep holes were dug into the cliff's surface』；『All the beam holes were dug into the same layer of limestone』",
+          "summary": "流傳樣本（官方媒體）：先說從下面看，寺好像只靠幾根立在突岩上的細支柱撐著，2010 年因此被《時代》雜誌選進全球十大危險建築；接著說『其實』這些支柱是相對近期才加上的，給遊客心理安慰，撐住大部分重量的是幾十根浸過桐油防蟲防腐的鐵杉方樑；崖上鑿大而深的洞，樑長的三分之二連同楔子打進洞裡；所有樑孔都鑿在同一層石灰岩裡，挖掉周圍鬆軟的砂岩後，這層石灰岩就成了實際上的平台。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "報導本身已經講了『靠樑不靠柱』，所以不是『全靠細柱』的樣本；它是『柱子是近年加的、只是心理安慰』這個說法的樣本。『近期才加』『三分之二』『桐油』『同一層石灰岩』都沒有給出處，本輪沒找到任何紀錄證實或否定。",
+          "origin": "wave84-20261118",
+          "original_url": "https://global.chinadaily.com.cn/a/201806/18/WS5b27075fa310010f8f59d657.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-7f4fe1f682537f87",
       "url": "https://heyzine.com/flip-book/ca304db1d6.html",
       "readings": [
@@ -188069,6 +188204,25 @@
       ]
     },
     {
+      "id": "SRC-9aa71de93c18fefd",
+      "url": "https://xiaoxue.koolearn.com/20170310/175365_2.html",
+      "readings": [
+        {
+          "title": "春节习俗小百科：正月十五 上元食汤圆（第 2 頁，中英對照）",
+          "publisher": "新东方在线小学网，頁上時間 2017-03-10 10:56:28（頁首註「来源：网络」，文末註「来源：新东方在线论坛」）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 4（200，67,423 bytes），python 去標籤後讀元宵節段",
+          "reading_scope": "只讀第 2 頁的元宵節（Lantern Festival）段；第 1 頁沒讀",
+          "locator": "元宵節段「This food is also known as Tang Yuan (汤圆). According to the legend…」及其中譯「这也被叫做汤圆。据说…于是，他命令改名叫“汤圆”。」",
+          "summary": "流傳版本樣本（湯圓之名來自禁令）：先說這種食物也叫湯圓，接著說「據說」1912–1916 年袁世凱當政時嫌「元宵」聽來像「袁消」，「命令改名叫汤圆」。文中沒有提到湯圓在此之前就有這個名字，讀者會讀成「湯圓」這個名字是禁令改出來的；也沒有任何出處。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "教育網站的英語學習材料，轉自論壇，無出處；寫的是「据说／legend」，但沒有任何更正或質疑。只當流傳樣本。 覆核 R8411 重抓（sha256 相同）確認原句。",
+          "origin": "wave84-20261118",
+          "original_url": "https://xiaoxue.koolearn.com/20170310/175365_2.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-9ab44c600797b8dd",
       "url": "https://gradynewsource.uga.edu/?p=76923",
       "readings": [
@@ -199785,6 +199939,25 @@
           "summary": "保留既有查核來源的指向；當期可達性與支持關係要重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://philippalangley.co.uk/bookshelf.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a3d3bc11f6e4a810",
+      "url": "https://k.sina.cn/article_1653603955_628ffe7302000j1l9.html?from=fashion",
+      "readings": [
+        {
+          "title": "闹元宵｜元宵谐音“袁消”改名“汤圆”？袁世凯表示不背这个锅",
+          "publisher": "《扬子晚报》新浪號，2019-02-18；文末註出自黃新宇著《俗語鉤沉》（海天出版社）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 6（200，38,657 bytes），python 去標籤後讀全文",
+          "reading_scope": "讀了全文",
+          "locator": "「一般说法是，“元宵”改名为“汤圆”。与窃国大盗袁世凯有关」至「所谓袁世凯“下令”将元宵改名汤圆，并没有事实根据」",
+          "summary": "二手考證：先複述流傳說法（洪憲時北京賣桂花元宵，袁世凱嫌「袁消」下令改名湯圓），再轉引袁世凱三女兒的回憶錄《我的父親袁世凱》：1916 年元宵晚上，家人在居仁堂等著吃元宵，「父親和我們家里人都依然把汤圆叫元宵」，有人把外間叫湯圓的說法告訴他，他說「袁、元兩字，音同字不同，有什么可忌讳的」；作者據此認為湯圓之稱起於民間，「下令」改名沒有事實根據。另引一首民謠「大總統，洪憲年，正月十五賣湯圓」，說明當時已有人叫湯圓。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "報紙轉載書摘，回憶錄原書本輪沒讀到（archive.org 檢索 seq 7 無此書）；回憶錄作者 1956 年後過世，正片不點名，只能說「袁世凱一位女兒晚年的回憶錄，據一本民俗書轉引」。民謠沒有出處。這篇本身已講翻轉，不能當流傳樣本，只當第二個二手旁證。",
+          "origin": "wave84-20261118",
+          "original_url": "https://k.sina.cn/article_1653603955_628ffe7302000j1l9.html?from=fashion"
         }
       ]
     },
@@ -217171,6 +217344,26 @@
           "limitations": "一手期刊論文。數值表 OCR 不可讀；題目只引正文裡的數字。這篇論文只算了 A 段，1899 年地球實際遇到的是它前面的另一段（作者叫 B 段）。",
           "origin": "wave55-20261114",
           "original_url": "https://archive.org/download/philtrans08595826/08595826_djvu.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b195c34e3b27747a",
+      "url": "https://revistas.uned.es/index.php/ETFII/article/download/1761/1640/4610",
+      "readings": [
+        {
+          "title": "Viaje póstumo a París del Faraón Ramsés II / Posthumous trip to Paris of the Pharaoh Ramesses II",
+          "publisher": "Espacio, Tiempo y Forma, Serie II, Historia Antigua, t. 23（UNED，2010），págs. 61-89；作者自述為 1976–77 年該研究案中唯一的外國研究者",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 18（200，6,384,348 bytes）下載 PDF，pdftotext 取文字層（71,516 字元）後讀；以 pasaporte、passport、passeport、aduana、visado、permiso、documenta 搜尋全文",
+          "reading_scope": "讀了西英摘要、出發與抵達段（PDF 文字層第 395–445 行，期刊頁 70–72）、滅菌與回程段（期刊頁 84–85）、參考書目；中段病理與修復細節只略讀（遺體細節不用）",
+          "locator": "英文摘要；期刊頁 71〈El día 26 de Septiembre de 1976…〉至〈Fue una ceremonia muy emotiva〉；頁 72 圖 5 說明；頁 84–85〈Esta operación se realizó el día 9 de Mayo de 1977〉與〈Un día después…partió para su tierra〉；書目 BALOUT 1985",
+          "summary": "參與者寫的學術回顧：法國總統寫信向埃及總統以名譽保證歸還，派 Transall 軍機；1976 年 9 月 26 日凌晨從開羅經赫利奧波利斯機場出發，在法國大使監督下上機，事先通知了區域內各國；進入法國領空後兩架戰機護航，在 Le Bourget 由主管大學的國務秘書、埃及駐法大使、基地司令迎接，共和衛隊行對在位君主的軍禮、奏兩國國歌，國務秘書致詞稱他為古代最偉大的元首之一；依總統意願車隊先繞協和廣場方尖碑再到人類博物館；1977 年 5 月 9 日在格勒諾布爾以伽瑪射線滅菌，『隔天』以同樣禮儀返國，5 月 15 日在開羅開箱。全文詳述出入境禮儀與外交程序，以 pasaporte／passport／passeport 搜尋無結果，沒有提到任何護照或身分文件。書目列 Balout 等 1985《La Momie de Ramsès II》。",
+          "rights": "OPEN_ACCESS_ACADEMIC",
+          "limitations": "2010 年的回顧，不是 1976 年當時的報紙；作者是參與者，有親歷者視角與敘事性；『沒提護照』是全文搜尋的結果，不是作者明說『沒有護照』。作者生卒本輪未查，正片只稱身分。",
+          "review_check": "R8410 seq 2 重抓，bytes 與 sha256 前綴與 ZV0 seq 18 相同；pdftotext 核對期刊頁 71–72、84–85 引文與摘要屬實；全文無 pasaport／passport／passeport。",
+          "origin": "wave84-20261118",
+          "original_url": "https://revistas.uned.es/index.php/ETFII/article/download/1761/1640/4610"
         }
       ]
     },
@@ -235786,6 +235979,26 @@
           "limitations": "勝訴一方自己的文章，判決書本輪沒有讀；正片若提只說『代理人自己的公告說』。",
           "origin": "wave72-20261117",
           "original_url": "https://www.hdmi.org/blog/detail/187"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c0ad9d15d77b7a60",
+      "url": "https://www.salondeprovence.fr/wp-content/uploads/2021/09/6-biographie-nostradamus-1-page.pdf",
+      "readings": [
+        {
+          "title": "Michel de NOSTREDAME dit NOSTRADAMUS 1503-1566（一頁傳記）",
+          "publisher": "Salon-de-Provence 市政府網站（上傳於 2021-09；署名一位本地作者）",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 6（200，142,437 bytes），pdftotext -layout 讀全文",
+          "reading_scope": "全文一頁",
+          "locator": "倒數第三段〈Ses os enterrés d'abord dans le Couvent des Cordeliers…〉",
+          "summary": "市府頁的說法：他的骨骸先依其意願葬在方濟各會（Cordeliers）修道院，『後來被大革命的士兵弄散』，今在聖羅蘭牧師會教堂聖母小堂。沒有年份、沒有出處，也沒有頭骨喝酒或中彈。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "現代、無出處、無年份的機構通俗簡介；只能當『當地官方說法』，不能當 1791 年的一手紀錄。作者不點名。",
+          "review_check": "未重抓；核對 ZV0 cache（006、015）內容與 summary／locator 相符。",
+          "origin": "wave84-20261118",
+          "original_url": "https://www.salondeprovence.fr/wp-content/uploads/2021/09/6-biographie-nostradamus-1-page.pdf"
         }
       ]
     },
@@ -272708,6 +272921,25 @@
       ]
     },
     {
+      "id": "SRC-df3da04e4e03d9ea",
+      "url": "https://media.springernature.com/lw1200/springer-static/image/art%3A10.1038%2Fs40494-025-01608-y/MediaObjects/40494_2025_1608_Fig9_HTML.png",
+      "readings": [
+        {
+          "title": "ZW5-S009 論文的圖 2（立面與剖面）與圖 9（有限元模型），及正文模型設定段",
+          "publisher": "npj Heritage Science 13, Article 4（2025），CC BY-NC-ND 4.0；圖檔由論文頁（ZW5 cache seq 22）上的連結取得",
+          "accessed_on": "2026-11-18",
+          "read_via": "fetch.sh seq 7（200，161,993 bytes，Fig2）與 seq 8（200，826,510 bytes，Fig9），用 Read 看圖；正文模型設定段從 ZW5 cache seq 22（同一論文 HTML）python 去標籤後重讀",
+          "reading_scope": "看了圖 2、圖 9；重讀了『Finite element model of the entire structure』的模型設定句、結果節（Fig. 14–17 段）與結論 (2)(3)；其他圖沒看",
+          "locator": "圖 2『Elevation and section of the Hanging Temple』（右半剖面標『Rock』）；圖 9『The finite element model of the Hanging Temple』；正文『columns, rock foundations, cantilever beams, and rock foundations are simulated through articulated』；『The cantilever beams are fixed at the end and have a large stiffness, which bears most of the horizontal force』；『The members subjected to large stresses include all the middle columns on the first floor』",
+          "summary": "論文模型的對象是一座三層樓閣（圖 2 立面寬 21.6 公尺、剖面進深 13.2 公尺，底標高 90.0 公尺）：剖面圖上樓閣底層直接落在岩石台面上，每一層都有懸挑樑向右伸進岩壁；圖 9 的模型裡，底層柱的柱腳是一排高低不一、以鉸接落在岩石基礎上的短柱，懸挑樑末端也鉸接在岩石上。圖上沒有畫出照片裡寺下那一排從崖腳往上撐的細長支柱。論文自己的模擬結果：懸挑樑端部固定、剛度大，承擔了大部分水平（地震）力；罕遇地震下，一樓所有中柱、多數斗栱、部分邊柱與角柱頂的應力超過木材容許強度。",
+          "rights": "OPEN_ACCESS_ACADEMIC",
+          "limitations": "本代理只看圖與文字說明，沒有逐表讀數據。圖 9 的『底層柱』是樓閣一樓、立在岩台上的柱子，論文沒有說這些柱子就是遊客看到的寺下細長支柱，也沒有討論那些支柱的受力或是否後加。因此這篇論文不能用來證明或否定『支柱只是擺設』。 覆核 R8412：title 涵蓋圖 2 與圖 9，但 url 欄只列圖 9；圖 2 是 fetch.sh seq 7 的 …/40494_2025_1608_Fig2_HTML.png，兩個圖檔網址都在論文 HTML（ZW5 cache seq 22／R8412 seq 2）裡找得到。另：論文只說研究對象是『a Hanging Temple in northern China』，圖 2 的單棟三層樓閣沒有標明是寺內哪一座建築，模型更不能拿來代表寺下那排細柱。",
+          "origin": "wave84-20261118",
+          "original_url": "https://media.springernature.com/lw1200/springer-static/image/art%3A10.1038%2Fs40494-025-01608-y/MediaObjects/40494_2025_1608_Fig9_HTML.png"
+        }
+      ]
+    },
+    {
       "id": "SRC-df438c4b694ab89e",
       "url": "https://archive.org/download/sim_popular-astronomy_1916-01_24_1/sim_popular-astronomy_1916-01_24_1_djvu.txt",
       "readings": [
@@ -297412,6 +297644,25 @@
           "limitations": "作者稿，非期刊版；機制是作者自己的假說。沒寫拍照者是誰。",
           "origin": "wave2-legacy-20261101",
           "original_url": "https://www.quakefinder.com/research/EQTdata/IWSE2005_EQL_revised.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f1c06ea1dad62105",
+      "url": "https://www.qulishi.com/news/201703/186710.html",
+      "readings": [
+        {
+          "title": "关羽水淹七军吓到曹操：孙权为对付他“装孙子”",
+          "publisher": "趣历史网（網址路徑 201703，頁面時間戳 2021-09-06）",
+          "accessed_on": "2026-11-18",
+          "read_via": "先讀趣历史專題頁 https://www.qulishi.com/huati/shuiyanqijun（fetch.sh seq 11，200，65,964 bytes）找到這篇的連結；再讀本文 fetch.sh seq 12（200，85,390 bytes），python 去標籤後讀全文",
+          "reading_scope": "讀了全文",
+          "locator": "「关羽战绩惊呆了曹、孙」一節：「经过：天降大雨，连绵十多天，汉水因此暴涨，关羽挖开江堤，大水冲向赶来救援的于禁七路大军，于禁军在平地，被水淹五六丈，七军皆没。」",
+          "summary": "現代流傳樣本：以史事口吻（經過／結果／影響）寫樊城之戰，說大雨十多天、漢水暴漲後「关羽挖开江堤」，大水沖向于禁七軍；全文沒有提《三國志》原文、沒有提《三國演義》，也沒有任何說明掘堤是後人說法。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "通俗歷史網站，無出處、作者不明。寫的是「掘堤」，不是小說的「堰住水口」；它保留了大雨，把小說／後人的人為放水接在史書的大雨後面。同站專題頁（seq 11）另收一篇文章已講翻轉（說被淹「纯粹只是突发的天灾」），所以這個網站兩種說法並存，只引這一篇當樣本。 覆核 R8411 重抓（sha256 相同）確認原句與全文沒有翻轉；全文其餘照史書寫大雨十多天、平地水五六丈，只有「挖开江堤」與紀錄不同。",
+          "origin": "wave84-20261118",
+          "original_url": "https://www.qulishi.com/news/201703/186710.html"
         }
       ]
     },
