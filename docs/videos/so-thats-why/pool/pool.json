@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-19-pool-7060",
+  "revision": "2026-11-19-pool-7078",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "categories": [
     "物理化學與日常材料",
@@ -12,15 +12,15 @@
     "建築交通與商業制度"
   ],
   "counts": {
-    "raw_records": 7501,
-    "canonical_questions": 7341,
-    "eligible_candidates": 7148,
-    "selected_candidates": 7060,
+    "raw_records": 7542,
+    "canonical_questions": 7382,
+    "eligible_candidates": 7189,
+    "selected_candidates": 7078,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 7998,
-    "current_research_source_urls": 5063,
-    "selected_source_urls": 6024,
+    "source_urls": 8024,
+    "current_research_source_urls": 5089,
+    "selected_source_urls": 6039,
     "new_suggestions_not_added": 3419,
     "high_similarity_pending": 0,
     "approved_scripts": 0,
@@ -38,8 +38,8 @@
         "selected": 918
       },
       "數位科技與通訊工程": {
-        "canonical": 1300,
-        "selected": 1243
+        "canonical": 1341,
+        "selected": 1261
       },
       "飲食與廚房科學": {
         "canonical": 466,
@@ -1873,6 +1873,10 @@
       "sha256": "48b19a1e705b6575f9e900fcb9dce8ee3074698deac71f823670d721e881e710"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json",
+      "sha256": "255db8806c3890f1a30f2945719779b8582a8a303a37ebb9f38a3a7f4949300c"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json",
       "sha256": "c68fd10b96385e5620cb37a5ab85f05f4d99216b590fe1ac0cc61e0a8ba2aa70"
     },
@@ -3174,12 +3178,12 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "af471e1f40c2094f22bdcf8bed384ea428f639f6c2fccbda7802fa030bc49d17"
+      "sha256": "4ff31369b55d0de6e5a225e570a1cbcbb75a6e50b17d9a58be1715edb4a24c83"
     }
   ],
   "sources": {
     "file": "pool-sources.json",
-    "count": 7998
+    "count": 8024
   },
   "candidates": [
     {
@@ -114812,6 +114816,1817 @@
       "question_variants": [],
       "provenance_ids": [
         "K113-0815"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0601",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "記憶卡上那幾個圈起來或框起來的數字，到底在保證什麼？",
+      "mechanism_key": "x112.sd_speed_marks.all_four_families_state_minimum_write_for_frame_drop",
+      "answer_target": "保證的是『最低寫入速度』，不是最高速度。SD 卡的標準協會在官方說明頁寫：各廠記憶卡的存取速度差異很大，錄影需要固定的最低寫入速度，才不會在錄影時『掉格』；所以協會定了四種速度標示——Speed Class（C 圈住的數字，Class 2、4、6、10）、UHS Speed Class（U 裡的 1 或 3）、Video Speed Class（V6、V10、V30、V60、V90）與更新的 SD Express Speed Class（E150 到 E600）——帶數字的記號都表示最低寫入速度，協會說這是在標準規定的條件下，對最低的循序存取效能做保證。協會說這主要是給攝影機與能錄影的裝置用的。",
+      "scope": "協會自述的定義；保證條件寫在規格書，說明頁只寫『在規定條件下』。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "那一串記號講的都是『最慢不會低於多少』，不是『最快有多快』。",
+        "visual": "清爽可愛的機制剖面動畫：一張圓角小卡片躺在桌上，表面浮起四個不同形狀的小徽章：一個圓圈、一個 U 形杯、一個 V 形旗、一個方塊；每個徽章底下各連著一條水管，水管裡的水流再怎麼忽大忽小，都不會低於管壁上一條發光的底線。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_locator": "SY6-S001 正文第 1–3 段、註 *–****；SY6-S002 同段",
+      "notes": "研究網 NET_SDA；加權 1.0（網上限 2.0）。開場卡。口播不提容量、不做選購建議。作者 SY6；覆核 SVY6 重抓 seq=1 逐句對照。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-dc49be0f17a7f179",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S001 正文第 1–3 段、註 *–****；SY6-S002 同段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b43d35babcf16a83",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S001 正文第 1–3 段、註 *–****；SY6-S002 同段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0601"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0602",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "這些速度記號是誰發明的？任何廠商都能印嗎？",
+      "mechanism_key": "x112.sd_speed_marks.association_founded_2000_marks_are_licensed_trademarks",
+      "answer_target": "是一個業界協會訂的，標誌是商標。SD 協會官網寫：協會在 2000 年 1 月由三家公司發起，創會時只有 14 家會員，現在約有 800 家會員公司；協會的工作是制定 SD 標準並推動採用。網站頁尾註明 SD 與相關標誌是一家授權管理公司的商標。協會 2016 年的 App 等級白皮書也寫，凡是以標誌或卡內狀態暫存器自稱 A1 的卡，都必須符合規格要求；市面上有核准的測試設備，供卡片與主機做自我符合性測試。",
+      "scope": "協會自述；會員數為網站目前寫法；『自我符合性測試』出自 2016 年 A1 白皮書，只寫有設備可用，未寫強制送測，也未查其他等級的認證流程。不點名創始公司與商標管理公司。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "卡上的記號不是廠商自己畫的，是一個近八百家公司的協會共同的語言。",
+        "visual": "清爽可愛的機制剖面動畫：一張大圓桌旁坐滿各式各樣的小機器人，桌子中央有一本攤開的厚規格書，書頁飛出一枚枚小徽章，落到排隊經過的空白小卡片上。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_locator": "SY6-S001 協會簡介段、頁尾商標聲明；SY6-S004 p.5 表 1 下方說明、p.6 Test Equipment",
+      "notes": "研究網 NET_SDA；加權 1.0（網上限 2.0）。覆核：刪去創始公司的國籍與產業描述，只寫三家公司；刪去商標管理公司名；『由核准設備做自我符合性測試』改為白皮書原意。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-dc49be0f17a7f179",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S001 協會簡介段、頁尾商標聲明；SY6-S004 p.5 表 1 下方說明、p.6 Test Equipment",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-841e53fbb096e234",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S001 協會簡介段、頁尾商標聲明；SY6-S004 p.5 表 1 下方說明、p.6 Test Equipment",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": false,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0602"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0603",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "同樣寫著每秒 10MB，C10、U1、V10 可以互相代替嗎？",
+      "mechanism_key": "x112.sd_speed_marks.same_10mb_different_symbol_host_card_match_not_guaranteed",
+      "answer_target": "協會說不保證。官方說明頁的『主機與卡的最佳組合』段把相容關係寫成規則：在同一套記號之內，級數高的卡涵蓋級數低的要求（例如 Class 4 的要求可由 Class 4、6、10 的卡滿足，U1 的要求可由 U1、U3 滿足，V 與 E 兩套也一樣）；但主機和卡如果用的是不同套記號，例如主機標 Class 10、卡標 U1，或主機標 U1、卡標 V10，即使都代表每秒 10MB，也不會得到預期的寫入速度。協會也寫，C10 用在高速匯流排模式以上、U1 與 U3 用在 UHS 的 SDR50/DDR50 以上、V60 與 V90 用在 UHS-II 以上。",
+      "scope": "協會的相容規則；為什麼跨套不保證，頁面沒有解釋原因，口播不可自行補理由；口播只講規則怎麼定，不說『該用哪一張』。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "三套記號像三種不同的度量衡，數字一樣也不能直接換算。",
+        "visual": "清爽可愛的機制剖面動畫：三把造型不同的小尺：一把圓頭、一把 U 形、一把 V 形，刻度看起來一樣長；它們分別試著插進三個形狀不同的鎖孔，只有形狀相配的那把轉得動。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_locator": "SY6-S001 Best Combination between Speed Class Host and Card 段；正文 bus mode 句",
+      "notes": "研究網 NET_SDA；加權 0.75（網上限 2.0）。覆核：把『裝置要求某級就用同級以上的卡』這類選購語氣改寫為規格的相容規則。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-dc49be0f17a7f179",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S001 Best Combination between Speed Class Host and Card 段；正文 bus mode 句",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": false,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0603"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0604",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "C 等級說的『每秒至少幾 MB』，是在什麼條件下量的？",
+      "mechanism_key": "x112.sd_speed_class.guarantee_within_4mb_au_16kb_multiblock_class2_4_6",
+      "answer_target": "條件很具體，但這裡只能看到一家公司對當時標準的轉述。一件日本電機大廠的美國專利（2006 年日本優先權；這家公司是 SD 協會的創始公司之一）在說明它的卡片要符合的 SD 標準時寫：速度等級保證的是在一個預定的邏輯位址範圍內（例如每個 4MB 邊界）能以預定速率寫入，這個範圍在標準裡叫做 AU（配置單位）；1GB 以上的卡 AU 定為 4MB（最大值）；速度等級是以每 16KB 一次的多區塊寫入來定義。在這個條件下，Class 6、4、2 分別要保證每秒至少 6、4、2MB。同一份專利也寫，標準規定每 512 位元組的資料區塊，卡片最長只能『忙碌』250 毫秒。",
+      "scope": "專利對 2006–2007 年標準版本的轉述，不是標準原文；Class 10 與後來的版本條件未在本專利出現。口播須說『一份專利文件裡轉述的當時規格』。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "『最低速度』有前提：一整塊 4MB 的空地、一口氣接著寫。",
+        "visual": "清爽可愛的機制剖面動畫：一大片整齊的空白方格地，一台小壓路機沿著一格一格的長條往前推進，背後留下平整的路面；壓路機旁有一個小沙漏，不管推到哪一格，沙子都不會漏得太慢。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "source_locator": "SY6-S008 [2-1] Standards Concerning Timeout、[2-2] Standards Concerning Speed Class",
+      "notes": "覆核從嚴併網：本卡內容是對 SD 標準的轉述，併入 NET_SDA（該網已達上限 2.0，本卡不另加權），不再算 NET_JP_PATENT。覆核 SVY6 重抓 seq=5，OCR 並目視原圖確認數字。不寫發明人與公司名。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-89be9ac8e351ba55",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S008 [2-1] Standards Concerning Timeout、[2-2] Standards Concerning Speed Class",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": false,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0604"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0605",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "卡片明明還有空間，為什麼錄影還是可能不保證速度？",
+      "mechanism_key": "x112.sd_speed_class.defined_on_free_unfragmented_au_suspend_resume_in_vsc",
+      "answer_target": "因為保證只算在『完全空白的配置單位』上。協會官方頁的『破碎與速度』段寫：反覆刪除、寫入檔案後，資料區會逐漸破碎，因快閃記憶體的特性，寫進破碎區域通常比循序寫慢；早年容量不夠大時必須考慮破碎寫入，但現在有大容量的卡，所以速度等級的寫入被定義為對完全未破碎的區域（稱為 Free AU）循序寫入，讓主機好控制。代價是：即使卡上總空間還有剩，主機也可能無法用速度等級的方式錄影。協會說 V 等級多了『暫停／續寫』功能，可以停下循序寫再接回來，大幅提高空間利用率。",
+      "scope": "協會自述；暫停／續寫的實際運作細節寫在規格書，本頁只有一句；頁面提到的資料整理與格式化做法不轉述，不給操作建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "剩餘空間不等於能錄的空間：保證只發生在整塊空地上。",
+        "visual": "清爽可愛的機制剖面動畫：一片停車場，車位零零落落停著幾台小車，空位雖然很多卻都是東一格西一格；一列長長的小火車想整排停進去，只能在一整排全空的車道前停下來。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "SY6-S001 Fragmentation and Speed 段",
+      "notes": "研究網 NET_SDA；加權 1.0（網上限 2.0）。覆核：刪去『整理資料或搬走再格式化』的操作句。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-dc49be0f17a7f179",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S001 Fragmentation and Speed 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0605"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0606",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "卡片自己知道它的『配置單位』有多大嗎？",
+      "mechanism_key": "x112.sd_au.card_reports_au_size_host_reads_as_preferred_erase_size",
+      "answer_target": "知道，而且會告訴主機。一套開源作業系統核心的官方文件在說明 SD 卡的裝置屬性時寫：SD 卡的『較佳抹除大小』就是卡片自己指定的配置單位大小；文件也提到，一次大範圍抹除會讓卡上其他讀寫全部等待，所以主機會以這個大小分段處理。",
+      "scope": "只證明配置單位是卡片回報的參數；不涉及速度。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "配置單位不是主機猜的，是卡片自己報上來的尺寸。",
+        "visual": "清爽可愛的機制剖面動畫：一張小卡片舉起一塊寫著方格圖案的小牌子給旁邊的大主機看，主機點點頭，把一大塊工作切成同樣大小的方塊一塊塊遞過去。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          20,
+          25
+        ]
+      },
+      "source_locator": "SY6-S014 Note on Erase Size and Preferred Erase Size",
+      "notes": "研究網 NET_KERNEL_DOC；加權 0.5。覆核：作業系統核心文件記的是主機端的實際做法，獨立於協會，但『AU 由卡片指定』源自 SD 規格，從嚴維持 0.5。不寫作業系統名。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-7b797ac2961662ef",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S014 Note on Erase Size and Preferred Erase Size",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": false,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0606"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0607",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "卡片內部為什麼偏愛『一整塊接著寫』？",
+      "mechanism_key": "x112.flash_card.segments_4mb_linear_write_alternating_segments_33kbps",
+      "answer_target": "因為快閃記憶體只能整塊抹除。一篇 2011 年刊在技術新聞網站、由一位嵌入式開源組織的開發者以大量 SD 卡計時資料反推的分析寫：快閃晶片以『頁』（約 2–32KB）讀寫，但只能以大得多的『抹除區塊』（約 128KB–2MB）抹除，控制器再把抹除區塊組成更大的單位（數 GB 級的卡多為 4MB），期待資料整塊依序寫入。他量的一張 SDHC 卡，最佳讀取每秒 13.5MB、線性寫 11.5MB；這張卡一次只能開一個單位，在兩個單位之間來回寫時每次都觸發整理，速度掉到每秒只有 33KB。",
+      "scope": "單一作者以逆向工程推得，須標『一篇技術新聞網站的分析』；量測只舉一張卡。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "卡片像只會一路往前鋪的鋪路機，叫它來回跳就幾乎停擺。",
+        "visual": "清爽可愛的機制剖面動畫：兩條並排的長走廊，一位小清潔機器人原本在一條走廊裡一路往前拖地很順；接著它被叫去兩條走廊來回各拖一下，每換一次就得先把整條走廊的家具搬開又搬回去，累得冒汗。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "SY6-S009 pages and erase blocks 段；量測段（13.5、11.5MB/s、33KB/s）",
+      "notes": "研究網 NET_LWN；加權 0.75。單一作者、逆向工程、技術新聞網站，口播須說『一位工程師在技術新聞網站的分析』；不點名卡片品牌與作者。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-31e24c27527d4290",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S009 pages and erase blocks 段；量測段（13.5、11.5MB/s、33KB/s）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": false,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0607"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0608",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "有些便宜卡片為什麼特別照顧出廠時的格式？",
+      "mechanism_key": "x112.flash_card.fat_area_managed_differently_few_open_segments",
+      "answer_target": "同一篇 2011 年的技術新聞網站分析寫：他測的卡把檔案配置表所在的區域（例子中是第 4 到 8MB）另行管理，讓那裡的小筆寫入也能有效率；而各廠卡片能同時『開著寫』的單位數差很多，較好的能同時開五個以上，有些只能開一到兩個，換用出廠格式以外的檔案系統時就會不斷觸發整理。作者因此說，便宜的卡片對寫入方式很敏感，除非照著出廠的檔案配置格式使用，否則寫入延遲可能非常高。",
+      "scope": "單一作者觀察，須標歸屬；卡片品牌一律不提；本卡不給格式化建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "卡片的『快』是照著某種寫法調出來的，換一種寫法就不一定快。",
+        "visual": "清爽可愛的機制剖面動畫：一間小倉庫，入口旁有一個特別整理過的小櫃台，小紙條塞進去很快就歸位；倉庫深處的大貨架卻一次只開一兩個，搬運車在不同貨架間來回時就得一直停下來重新整理。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_locator": "SY6-S009 導言段（preformatted FAT32 file layout）、量測段（FAT 區）、Restrictions on open segments 段",
+      "notes": "研究網 NET_LWN；加權 0.5（覆核從 0.75 下修：與 K112-0607 同一篇、同一作者的觀察，且『便宜卡片對寫法敏感』是作者評語）。網合計 1.25。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-31e24c27527d4290",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S009 導言段（preformatted FAT32 file layout）、量測段（FAT 區）、Restrictions on open segments 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": false,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0608"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0609",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "為什麼協會不只更新舊等級，而要另外發明新記號？",
+      "mechanism_key": "x112.sd_speed_class.many_types_driven_by_nand_evolution_not_only_resolution",
+      "answer_target": "協會自己說，主因是快閃記憶體本身變了。官方說明頁原文寫：促成那麼多種速度等級的主要原因，是 NAND 記憶體技術的演進；早期的 Speed Class 與 UHS Speed Class 是為較舊的記憶體技術最佳化，最新的 Video Speed Class 與 SD Express Speed Class 則為最新的 NAND 快閃技術最佳化。同一頁也寫，V 與 E 兩套是為了回應 4K、8K 高畫質錄影的需求而訂，並有支援新一代快閃記憶體（例如 3D NAND）的重要特點。",
+      "scope": "協會自述；『舊等級為何不適合新記憶體』的細節寫在規格書，頁面沒有展開，口播不得把 K112-0610 的專利機制說成協會的理由。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "新記號不只因為相機變強，也因為卡片裡的記憶體換了一種脾氣。",
+        "visual": "清爽可愛的機制剖面動畫：一排鞋櫃，左邊放著舊款的小鞋、右邊是新款的大鞋；一隻小腳從舊鞋換穿到新鞋，原本合腳的鞋墊放進新鞋裡就不服貼，只好另做一塊新鞋墊，舊鞋墊仍留在原位。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "SY6-S001、SY6-S002『The main reason driving many speed class types…』段、『Video Speed Class and SD Express Speed Class are defined…』段",
+      "notes": "研究網 NET_SDA；加權 1.0（網上限 2.0）。轉折一的唯一依據；覆核 SVY6 重抓 seq=1，原句 “The main reason driving many speed class types is the evolution of NAND memory technology.” 逐字確認。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-dc49be0f17a7f179",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S001、SY6-S002『The main reason driving many speed class types…』段、『Video Speed Class and SD Express Speed Class are defined…』段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b43d35babcf16a83",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S001、SY6-S002『The main reason driving many speed class types…』段、『Video Speed Class and SD Express Speed Class are defined…』段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": false,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0609"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0610",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "快閃記憶體的區塊變大，對寫入有什麼影響？",
+      "mechanism_key": "x112.nand.larger_blocks_longer_busy_random_vs_sequential_tradeoff",
+      "answer_target": "隨機寫會更慢，而且兩種速度很難兼顧——這是一家快閃記憶體廠商在專利裡描述的 2006 年前後情況。上述日本電機大廠的專利背景段寫：NAND 以頁（例如 2、4、8KB）寫入、以區塊（例如 512KB 或 1MB）抹除；要在已寫過的區塊寫新資料，得另找一塊已抹除的區塊寫入，再把原區塊裡其他資料複製過去，主機以隨機位址寫入時這種搬移頻繁發生，寫入就變慢。近來的 NAND 容量變大、區塊也變大，搬移時間跟著變長；可是如果專門為了縮短隨機寫的忙碌時間而設計，循序位址的寫入速度又會下降。",
+      "scope": "專利背景段對 2006–2007 年 NAND 的描述，區塊大小是舉例；這是公司文件，只能當『為什麼記憶體一變，舊的寫入條件就不好用』的機制背景，不能說成協會訂新記號的理由。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "記憶體越大、搬家越久，為短距離快遞最佳化，長途貨運就慢了。",
+        "visual": "清爽可愛的機制剖面動畫：一排大貨櫃，每次只想換掉其中一小箱，就得找來一個空貨櫃，把整櫃其他箱子一箱箱搬過去；貨櫃越蓋越大，搬家的小機器人越搬越久。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "SY6-S008 Background of the Invention",
+      "notes": "研究網 NET_JP_PATENT；加權 0.75（覆核從 1.0 下修：公司專利的背景自述，且受讓公司是協會創始公司之一）。轉折一的機制旁證，不是轉折依據。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-89be9ac8e351ba55",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S008 Background of the Invention",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": false,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0610"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0611",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "錄影為什麼最怕寫入突然變慢，而不是平均太慢？",
+      "mechanism_key": "x112.video_recording.camera_buffer_overflow_drops_frames_sustained_write_contract",
+      "answer_target": "因為相機的緩衝記憶體會被塞爆。另一個記憶卡標準組織（CompactFlash Association）在 2024 年的白皮書寫：相機錄影時，資料從感光元件經處理器與內部記憶體，最後寫進記憶卡；解析度、影格率、動態範圍越高，位元率就越高。和電腦隨機讀寫小檔、沒有時間限制不同，錄影必須即時、以不低於進來資料流的速度寫進卡片，否則相機內部的緩衝溢位，畫格就遺失。所以它的『影像效能保證』被形容為相機與卡之間的一份契約：確保卡上有大段連續的快閃空間、設好錄影邊界，並讓卡與相機互通這些資訊。",
+      "scope": "另一標準體系的說明，用來對照 SD 的 V 等級，不代表 SD 規格細節。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "錄影像一條不能停的輸送帶，卡片只要慢一下，盒子就掉到地上。",
+        "visual": "清爽可愛的機制剖面動畫：一條從小相機延伸出來的輸送帶，上面一格格畫面方塊源源不絕送向一個小倉庫；倉庫門口的暫存籃本來只有半滿，倉庫門一卡住，籃子很快滿出來，方塊一個個滾落地面。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "source_locator": "SY6-S011 第 1、2 節",
+      "notes": "研究網 NET_CFA；加權 1.0。V 章主機制卡；不點名白皮書署名者與其公司。覆核 SVY6 重抓 seq=4 逐句對照。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-4f19c92ef9201f13",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S011 第 1、2 節",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0611"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0612",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "另一套記憶卡標準也用『最低持續寫入』分級嗎？誰來確認卡片做得到？",
+      "mechanism_key": "x112.video_recording.cfa_vpg_profiles_20_to_400_third_party_certified",
+      "answer_target": "是，而且同樣越疊越多。CompactFlash 協會（CFA）的白皮書列出歷代影像效能保證等級：第一代 VPG20 保證每秒持續寫入 20MB，之後是 65MB、130MB，2019 年 4 月標準化的第四代有 200MB 與 400MB 兩級，每一代都綁著當時的卡片規格。白皮書寫，帶這個標誌的卡由協會認證，有別於該協會其他標準的自我認證：廠商照協會的測試規格、用協會核准的防竄改測試器測試，報告交協會最後審核。白皮書另外寫，曾有未經認證的卡因廠商失誤或惡意把『支援』旗標設為 1，可能在錄影時掉格甚至讓相機關機，協會因此建立已認證卡片的資料庫。",
+      "scope": "CFA 體系的做法，不可說成 SD 協會也這樣認證；白皮書沒說認證制度是因為旗標問題而設，兩件事分開講。資料庫的使用建議不轉述。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "別的協會也被迫一級一級往上加，還發現光靠卡片自己舉手不夠。",
+        "visual": "清爽可愛的機制剖面動畫：一座階梯，每一階上站著一個越來越大的小水桶，桶裡的水流越來越粗；階梯旁有一位戴著徽章的小檢查員，用放大鏡檢查每個想上台階的小卡片，有一張偷偷貼了徽章的被請下台。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "SY6-S011 第 1 節、VPG Profile 表、第 3 節",
+      "notes": "研究網 NET_CFA；加權 1.0。與 K112-0611 同網，合計 2.0。覆核：刪去『理由是』的因果連接，改為白皮書的並列敘述。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-4f19c92ef9201f13",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S011 第 1 節、VPG Profile 表、第 3 節",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": false,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0612"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0613",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "V 等級從 V6 到 V90，每一級都能用在任何卡上嗎？",
+      "mechanism_key": "x112.sd_vsc.v6_to_v90_bus_mode_requirements",
+      "answer_target": "不是，越高的級數要配越快的通道。協會官方頁寫：Video Speed Class 有 V6、V10、V30、V60、V90；V6 與 V10 可用於高速匯流排與 UHS 產品，V30 用於 UHS 產品，V60 與 V90 只用於 UHS-II／UHS-III 產品。協會說明頁同時要求匯流排模式要快到不影響記憶體寫入速度。",
+      "scope": "協會自述；各級對應的錄影格式表是圖片，未轉述。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "V 後面的數字越大，卡與裝置之間的路也得越寬。",
+        "visual": "清爽可愛的機制剖面動畫：五條寬窄不同的小水道，從細細一條到寬闊的運河；五艘大小不同的小船各自找到剛好能通過的水道，最大那艘只能走最寬的那條。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "source_locator": "SY6-S001 註 ***、正文 bus mode 句",
+      "notes": "研究網 NET_SDA；加權 0.75（網上限 2.0）。補充卡。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-dc49be0f17a7f179",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S001 註 ***、正文 bus mode 句",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": false,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0613"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0614",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "速度等級越高的卡，裝 App、跑程式就一定越快嗎？",
+      "mechanism_key": "x112.sd_speed_class.not_indicative_of_app_performance_random_write_0_01mbps",
+      "answer_target": "不一定，甚至可能相反。一家電子公司在美國的研究實驗室，在 2012 年的檔案與儲存技術會議論文中，把同一支手機的資料改放在 8 張 16GB microSDHC 卡上（Class 2、4、6、10 各兩張）。用讀卡機量 4KB 隨機寫：Class 6 與 Class 10 的四張全都只有每秒 0.01MB，最好的反而是一張 Class 2 卡（每秒 1.18MB），論文說它比許多卡快到百倍；另一張 Class 2 卡則只有 0.02MB。循序寫在每秒 4.16 到 15.31MB 之間，大致隨等級上升但不單調。團隊的結論是：卡上的速度等級是為循序效能訂的，不一定能代表應用程式的表現；只換儲存，常見應用在 Wi-Fi 下的效能通常就差 100% 到 300%，極端情況超過 2000%。",
+      "scope": "2011 年的 8 張卡與一支手機，每等級僅 2 張；4KB 隨機寫、100MB 測試量；品牌、手機型號與實驗室所屬公司不轉述。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "C10 只保證大檔案一路寫；換成一堆小檔案，最高等級的卡可能最慢。",
+        "visual": "清爽可愛的機制剖面動畫：一場兩項比賽：先是直線衝刺，大隻的跑者一路領先；接著換成在一張大地圖上一格一格地插小旗子，原本跑最快的大個子手忙腳亂，反而是一隻小個子的跑者插得飛快。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "source_locator": "SY6-S007 1 Introduction『Speed class considered irrelevant』；3.1；表 3（Rn W 欄）；摘要",
+      "notes": "研究網 NET_FAST12；加權 1.0。轉折二的主卡；覆核 SVY6 重抓 seq=2，表 3 讀卡機欄 Rn W：Class 2 為 1.18／0.02，Class 4 為 0.68／0.01，Class 6、10 四張皆 0.01，逐字確認。不點名研究者、品牌與公司。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-244173afdcba55ae",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S007 1 Introduction『Speed class considered irrelevant』；3.1；表 3（Rn W 欄）；摘要",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0614"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0615",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "隨機小檔案寫得慢，會拖累手機上的什麼事？",
+      "mechanism_key": "x112.smartphone_storage.app_install_browsing_sqlite_random_sync_writes",
+      "answer_target": "同一篇 2012 年論文追查原因：手機上的網頁瀏覽、地圖、安裝應用程式、電子郵件與社群軟體，背後都有應用程式資料庫的隨機寫入與大量同步寫入；團隊認為『快閃裝置本身效能差、應用資料庫產生隨機 I/O、過度使用同步寫入』三者疊在一起，才讓儲存和應用效能強烈相關。他們也觀察到，換用較慢的卡，同一個應用的總 CPU 用量反而更高。",
+      "scope": "2011 年手機軟體環境；屬團隊對自身量測的解釋。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "手機慢，有時不是網路慢，而是一直在寫小紙條的那張卡慢。",
+        "visual": "清爽可愛的機制剖面動畫：一支卡通手機的剖面，裡面一群小郵差每收到一封信就要跑去小檔案櫃抽出一張卡片改一個字再放回去；檔案櫃越慢，排隊的小郵差越長，手機外面的轉圈圈圖示一直轉。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_locator": "SY6-S007 摘要；1 Introduction 觀察清單（Slower storage consumes more CPU）",
+      "notes": "研究網 NET_FAST12；加權 1.0。與 K112-0614 同網，合計 2.0。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-244173afdcba55ae",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S007 摘要；1 Introduction 觀察清單（Slower storage consumes more CPU）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": false,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0615"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0616",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "快閃記憶體的隨機寫入，慢的是資料量還是寫的位置？",
+      "mechanism_key": "x112.flash_io.random_write_cost_depends_on_area_spread",
+      "answer_target": "主要是位置分布。法國、冰島與丹麥三所學術機構合作、2009 年發表的快閃 I/O 模式測試，量了 11 種快閃儲存裝置（含一張 SD 卡與幾支隨身碟）：其中一支低階隨身碟的 32KB 隨機寫固定約 260 毫秒，比其他操作慢一到兩個數量級，而一款高階固態硬碟的隨機寫最多只慢到約 5 倍。團隊也發現，多數裝置只要把隨機寫集中在 4 到 16MB 的範圍內，速度就幾乎和循序寫一樣；同時往 4 到 8 個區域循序寫還可以，再多就退化成隨機寫。",
+      "scope": "2009 年裝置；260 毫秒只出自一支低階隨身碟，詳細結果的裝置不含那張 SD 卡，只當快閃共通機制，折 0.75。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "慢的不是寫多少，而是寫得多分散。",
+        "visual": "清爽可愛的機制剖面動畫：一大片農田上，一台小播種機若在一小塊田裡來回播種很輕快；一旦被叫去整片田地東一點西一點地播，就得不停開到遠處、掉頭、整地，慢得像在爬。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_locator": "SY6-S010 5 Granularity 段；Hint 4、Hint 5",
+      "notes": "研究網 NET_UFLIP；加權 0.75。覆核：『低階裝置』改為『其中一支低階隨身碟』。不寫研究者與品牌。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-77c10940b6d4d845",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S010 5 Granularity 段；Hint 4、Hint 5",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": false,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0616"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0617",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "A1 這個記號是怎麼來的？它保證什麼？",
+      "mechanism_key": "x112.sd_app_class.a1_1500_500_iops_10mbps_origin_adoptable_storage_benchmark",
+      "answer_target": "是因為記憶卡開始被拿來裝 App。SD 協會 2016 年的白皮書寫：過去記憶卡主要存照片影片，協會的規格也以循序效能與速度等級為主；後來一款主流手機作業系統在 2015 年讓記憶卡可以『被採用』成內建儲存的延伸、直接執行 App，並在採用卡片時跑基準測試，若卡片效能不到內建儲存的 25%，就跳出『卡片似乎很慢』的提示。白皮書說，消費者在購買當下無從判斷，事後才測已經太遲；所以協會在 SD 5.1 規格訂了 A1：在規定條件下，每秒隨機讀至少 1500 次、隨機寫至少 500 次，加上持續循序至少每秒 10MB。協會開發者頁另寫明，這裡的 IOPS 指每秒能完成的 4KB 讀寫指令數。",
+      "scope": "協會白皮書；作業系統基準測試細節為協會轉述；卡片不寫作業系統名。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "手機開始拿記憶卡當硬碟用，協會只好再發明一種『小步快跑』的記號。",
+        "visual": "清爽可愛的機制剖面動畫：一支卡通手機把一張小卡片吸進肚子裡，旁邊跳出一個小量尺量它一下，量尺發出黃燈；接著一枚新的小徽章貼到下一張卡上，量尺亮起綠燈。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "SY6-S004 p.4、p.5 與表 1；SY6-S003 正文第 4 段（IOPS 定義）",
+      "notes": "研究網 NET_SDA；加權 1.0（網上限 2.0）。轉折二的承接卡。覆核 SVY6 重抓 seq=3 逐句對照；『消費者不知道該買哪張』改為白皮書描述的市場問題，不帶選購語氣。不寫作業系統名。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a075a6fa2b682e9b",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S004 p.4、p.5 與表 1；SY6-S003 正文第 4 段（IOPS 定義）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-841e53fbb096e234",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S004 p.4、p.5 與表 1；SY6-S003 正文第 4 段（IOPS 定義）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": false,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0617"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0618",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "A2 比 A1 快在哪裡？插在任何手機上都有效嗎？",
+      "mechanism_key": "x112.sd_app_class.a2_4000_2000_iops_command_queue_cache_host_support",
+      "answer_target": "A2 的門檻是每秒隨機讀 4000 次、隨機寫 2000 次，由 SD 6.0 規格定義；協會說它是靠『指令佇列』與『快取』兩項功能做到的，並以維護功能協助快閃記憶體管理。但協會也寫：A2 的效能只有在主機與卡都支援 A2 時才有；A2 卡插在只支援 A1 的裝置上，至少有 A1 的效能。",
+      "scope": "協會自述；指令佇列與快取的規格細節本輪未讀。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "A2 的快一半在卡上、一半在裝置上，少了任一邊就退回 A1。",
+        "visual": "清爽可愛的機制剖面動畫：一位小服務生端著托盤，左手一疊點菜單整齊排成一列，右手一個小暫存盤先放著剛收的碗；只有當餐廳櫃台也懂得一次遞好幾張單子時，他才跑得飛快，否則只能一張一張慢慢送。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_locator": "SY6-S003 正文第 5–6 段；SY6-S005 末段（4,000／2,000 IOPS）",
+      "notes": "研究網 NET_SDA；加權 1.0（網上限 2.0）。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a075a6fa2b682e9b",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S003 正文第 5–6 段；SY6-S005 末段（4,000／2,000 IOPS）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-284cb8c8e81aa242",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S003 正文第 5–6 段；SY6-S005 末段（4,000／2,000 IOPS）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": false,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0618"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0619",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "小小的記憶卡為什麼很難把隨機讀寫做快？",
+      "mechanism_key": "x112.flash_controller.low_cost_single_cpu_500kb_ram_reorder_queue_parallel_dies",
+      "answer_target": "因為卡裡的控制器很陽春。一家美國儲存設備公司 2019 年申請的美國專利寫：隨機 IOPS 是分類可攜式記憶裝置常用的基準，但低成本的記憶系統很難做到高隨機 IOPS；這類控制器通常只有一顆處理器、約 500KB 記憶體、處理能力低、沒有硬體加速。專利提出的做法之一，是把排在佇列裡的多個隨機讀指令重新排序，讓多顆快閃晶粒同時進行最花時間的感測步驟，以縮短總時間。專利也寫，循序存取通常是 128kB 這類大筆傳輸，隨機存取多是 4kB 一頁。",
+      "scope": "專利是設計提案，不代表上市產品；只撐『為什麼指令能排隊會有幫助』的機制。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "大卡片小腦袋：能先看一整排工作再分給好幾隻手，才跑得快。",
+        "visual": "清爽可愛的機制剖面動畫：一位只有一雙手的小廚師，面前四個小爐子；原本他照單一張張煮，三個爐子常常空著；後來他先把整疊點單攤開，挑出能同時下鍋的，四個爐子一起冒煙。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_locator": "SY6-S012 Background；Detailed Description 開頭；FIG. 8–10 說明段",
+      "notes": "研究網 NET_US_PATENT_B；加權 0.75（覆核從 1.0 下修：公司設計提案的背景自述，受讓公司屬協會創始公司體系）。覆核 SVY6 重抓 seq=6，OCR 確認。不寫發明人與公司名。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-9b33069ec635cb36",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S012 Background；Detailed Description 開頭；FIG. 8–10 說明段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": false,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0619"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0621",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "卡和裝置之間的『通道速度』，和卡上的速度記號是同一件事嗎？",
+      "mechanism_key": "x112.sd_bus.interface_ceiling_25_to_624_to_3940_vs_minimum_write",
+      "answer_target": "不是。協會的匯流排介面說明頁寫：SD 的匯流排介面規格多年來從高速模式的每秒 25MB，一路提高到第三代 UHS-III 的每秒 624MB；如今的 SD Express 用電腦擴充匯流排加上固態硬碟的通訊協定，在主機與卡之間可達每秒 3940MB 的傳輸速率。速度等級頁則另外寫明，匯流排模式要夠快、不影響記憶體的寫入速度，而速度記號表示的是最低寫入速度。把兩頁並看：一個講的是卡與裝置之間的通道能有多快，一個講的是寫入最慢不低於多少。",
+      "scope": "協會沒有直接說包裝上的數字是什麼；『介面上限 vs 最低寫入』是並陳兩頁後的解讀，口播不得說『包裝數字一定是讀取速度』。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "通道再寬，也只是上限；卡上記號說的是最慢底線。",
+        "visual": "清爽可愛的機制剖面動畫：一條越拓越寬的高速公路，從兩線道變成十幾線道；路上一台小貨車穩穩開著，車尾有一條發光的線標著它最慢不會低於的速度，和頭頂那塊越來越大的道路寬度牌是兩回事。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_locator": "SY6-S006 正文第 1 段與末兩段；SY6-S001 bus mode 句",
+      "notes": "研究網 NET_SDA；加權 0.75（網上限 2.0）。『通道上限 vs 最低寫入』是並陳兩頁後的解讀，口播須說『把協會兩頁放在一起看』；不得說包裝數字一定是什麼。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-8a19141042ac4cd7",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S006 正文第 1 段與末兩段；SY6-S001 bus mode 句",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-dc49be0f17a7f179",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6-S006 正文第 1 段與末兩段；SY6-S001 bus mode 句",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": false,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0621"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0651",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "快閃記憶體為什麼不能像寫黑板一樣，哪裡錯就擦哪裡？",
+      "mechanism_key": "x112.nand_erase_block.erase_whole_block_before_page_write_textbook",
+      "answer_target": "美國一所大學的開放作業系統教科書（以固態硬碟為脈絡）寫：快閃晶片用兩種大小的單位存取——『抹除區塊』一般是 128KB 或 256KB，『頁』只有幾 KB（例如 4KB）；要寫入某一頁之前，必須先把它所在的整個區塊抹除，抹除會清掉整塊內容，要花幾毫秒。書中把讀頁、寫頁、抹除依成本排序，抹除最貴（『最貴』是由書中的比較整理）。書中稱這是學快閃時最重要也最怪的一件事，也是打造固態硬碟的挑戰所在。",
+      "scope": "教科書以固態硬碟為脈絡講快閃晶片的通則，不是記憶卡規格；128KB／256KB 是書中說的『一般』大小，不同世代晶片不同。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "快閃記憶體只能『整塊擦、整頁寫』——改一個字，要先擦掉一整面。",
+        "visual": "清爽可愛的機制剖面動畫：一塊大方磚由許多小格子組成，想在其中一格塗上新顏色時，整塊方磚得先被一把大刷子整片刷白，所有小格子一起變空，接著才能在那一格塗色。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          25,
+          30
+        ]
+      },
+      "source_locator": "44.2 第 2 段；44.3 Erase 條",
+      "notes": "原研究網 NET_WISC_TEXTBOOK，覆核 SVY6B 併入 NET_FAST12（教科書作者與 FAST'12 第二作者直接合著），該網已滿 2.0，本卡加權 0（單看內容：概念說明＋固態硬碟類比，原應 0.75）。只當區塊抹除的機制背景，不當協會訂新記號的理由。口播說『一本美國大學的作業系統教科書』，不念作者與書名縮寫。作者 SY6B；覆核 SVY6B 逐句對照 44.2、44.3。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-2c209b45b894ed19",
+          "origin": "wave114-g746-20261119",
+          "locator": "44.2 第 2 段；44.3 Erase 條",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": false,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0651"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0652",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "為什麼區塊越大，零星改寫就越吃虧？",
+      "mechanism_key": "x112.nand_erase_block.write_amplification_scales_with_pages_per_block",
+      "answer_target": "同一本教科書舉了最直接的做法當反例：若控制層把每個邏輯頁固定對到同一個實體頁，那麼每寫一頁，都得先把整個區塊讀出來、抹除、再把舊頁連同新頁全部寫回去；書中說這會造成嚴重的『寫入放大』，放大程度和一個區塊裡的頁數成正比，寫入效能甚至比有機械尋軌的傳統硬碟還差，而且同一塊被反覆擦寫，很快就會磨損。",
+      "scope": "這是教科書用來說明『為什麼不能這樣做』的教學模型，實際控制器會用更聰明的對應；『與頁數成正比』是書中對這個模型的說法，不是對任何記憶卡的量測。卡片不推論任何特定卡片採用此做法。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一個區塊裝的頁越多，改一小格要連帶搬動的就越多——這就是寫入放大。",
+        "visual": "清爽可愛的機制剖面動畫：一個小書架上排滿書，只想換其中一本時，整排書被一隻機器手全部抱下、架子擦乾淨、再一本本放回去；換成更長的書架時，機器手要搬的書明顯變多，動作也變慢。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          25,
+          30
+        ]
+      },
+      "source_locator": "44.6 第 2 段（direct mapped FTL）",
+      "notes": "原研究網 NET_WISC_TEXTBOOK，覆核 SVY6B 併入 NET_FAST12，加權 0（單看內容：教學反例＋固態硬碟類比，原應 0.5）。口播須說『教科書用一個壞例子說明』。作者 SY6B；覆核 SVY6B 逐句對照 44.6 第 2 段，『與頁數成正比』『比傳統硬碟還慢』『反覆擦寫很快磨損』皆原文。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-2c209b45b894ed19",
+          "origin": "wave114-g746-20261119",
+          "locator": "44.6 第 2 段（direct mapped FTL）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": false,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0652"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0653",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "同樣寫進一批資料，為什麼『依序整塊寫』比『東一筆西一筆』省事得多？",
+      "mechanism_key": "x112.ftl_hybrid_mapping.switch_merge_vs_full_merge_cost",
+      "answer_target": "教科書說明很多控制層採『混合對應』：先把寫入集中到少數幾個預先抹好的『日誌區塊』，之後再把它們整理回一般區塊。整理有三種情況：如果一整塊的頁剛好依原順序整批寫完，只要改一個指標就好，書中稱為 switch merge，是最好的情況；只改了其中幾頁，就得把沒改的頁讀出來補寫，稱為 partial merge，增加寫入放大；如果日誌區塊裡的頁分屬許多不同區塊，控制層必須從各處把資料湊齊、一塊塊重寫，稱為 full merge，書中說頻繁發生會嚴重拖累效能，應盡量避免。",
+      "scope": "混合對應是教科書介紹的一類常見設計，不代表每張記憶卡都用它；書中沒有記憶卡的數字。和 FAST'12 論文、LWN 分析的量測並陳時，口播說『教科書解釋了一種可能的原因』，不說『記憶卡就是這樣做』。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "對控制器來說，整塊照順序寫來的資料只要換張標籤；東一筆西一筆的資料，得四處湊齊重抄一遍。",
+        "visual": "清爽可愛的機制剖面動畫：兩條輸送帶把小方塊送進收納箱；左邊一箱方塊按順序排好，貼上一張標籤就完成；右邊一箱方塊來自各處，一隻小機器人得跑到好幾個櫃子把配套的方塊找回來，重新裝成好幾箱，忙得團團轉。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          25,
+          30
+        ]
+      },
+      "source_locator": "Hybrid Mapping 小節（switch／partial／full merge 三段）",
+      "notes": "原研究網 NET_WISC_TEXTBOOK，覆核 SVY6B 併入 NET_FAST12，加權 0（單看內容：轉述他人 FTL 設計的概念說明＋固態硬碟類比，原應 0.5）。口播說『教科書解釋了一種可能的原因』。作者 SY6B；覆核 SVY6B 逐句對照 Hybrid Mapping 小節。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-2c209b45b894ed19",
+          "origin": "wave114-g746-20261119",
+          "locator": "Hybrid Mapping 小節（switch／partial／full merge 三段）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": false,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0653"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0654",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "快閃晶片為什麼偏好『從頭依序寫到尾』？",
+      "mechanism_key": "x112.nand_program_order.pages_programmed_in_order_program_disturb",
+      "answer_target": "美國一所大學團隊的快閃晶片論文，引述晶片廠商公開資料表的典型值寫：每個區塊由 64 頁（每格存 1 位元的 SLC）或 128 頁（存多位元的 MLC）組成；抹除以整塊為單位，寫入以整頁為單位而且只能把 1 改成 0，所以要任意修改一頁就得抹掉整塊。寫入某一頁時，同一塊的其他頁也會受到微弱的寫入電壓干擾（program disturb），因此廠商『要求』MLC、『強烈建議』SLC 在同一區塊內依序寫入各頁，讓每個位元寫好後只承受一次強干擾。",
+      "scope": "這段是論文作者轉述的廠商資料表通則（論文自己標明本節數據取自公開資料表），不是該團隊的實測，等同廠商規格的二手轉述；講的是裸晶片，不是記憶卡成品，也不推論任何卡片的內部做法；廠商不具名，無法排除與 SD 協會創始公司有關。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "晶片本身就規定了『同一塊要照順序寫』，跳著寫不是它的天性。",
+        "visual": "清爽可愛的機制剖面動畫：一本空白的格子筆記本，一支小筆只能從第一行一路往下寫；每寫一行，相鄰幾行會輕輕閃一下光；若筆想跳到中間某一行，整本筆記會先輕輕搖頭。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          20,
+          30
+        ]
+      },
+      "source_locator": "2.1『Flash technology』段與 Reliability 段末 program disturb 一句",
+      "notes": "研究網 NET_UCSD_FLASH；覆核 SVY6B 加權 0.25（SY6B 自報 0.75）：資料表二手轉述折半為 0.5，再因裸晶片對記憶卡成品只是類比折半。與 LWN（K112-0607）並陳，但不說兩者是因果。不寫研究者姓名。作者 SY6B；覆核 SVY6B 逐句對照 2.1。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-6c3d045ec6741be2",
+          "origin": "wave114-g746-20261119",
+          "locator": "2.1『Flash technology』段與 Reliability 段末 program disturb 一句",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": false,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0654"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0655",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "同一塊快閃晶片裡，每一頁寫起來一樣快嗎？",
+      "mechanism_key": "x112.mlc_page_latency.fast_slow_pages_vs_datasheet_typical",
+      "answer_target": "不一樣。同一個大學團隊自製測試板，直接量了五家廠商 11 款晶片：所有受測的 MLC 晶片，同一區塊內各頁的寫入時間都有規律的快慢差異；以其中一款 MLC 晶片為例，每塊前 4 頁和之後每隔一對頁，平均比其他頁快 5.8 倍，只有這些快頁符合資料表上的『典型值』，慢頁則要超過 1 毫秒；SLC 晶片沒有這種差異。論文解釋，一個 MLC 單元的兩個位元分屬不同頁，寫低位元時脈衝較弱、次數較多，所以比較慢。論文也寫，各廠商、各型號的實測表現差異很大，也和公開資料表不同。",
+      "scope": "2009 年、50–72nm 製程的裸晶片實測（部分晶片拆自隨身碟），廠商名論文刻意不公開，卡上也不點名；不是記憶卡成品的量測，不推論任何卡片的寫入速度，也不是協會訂新記號的理由。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "每格多存一位元，寫入就分出快頁與慢頁——『平均速度』藏住了最慢的那一刻。",
+        "visual": "清爽可愛的機制剖面動畫：一排小抽屜輪流被填進小球，有的抽屜一下就裝好，有的抽屜要一顆顆慢慢推進去，計時的小沙漏在慢抽屜前流得特別久；旁邊另一排只裝一顆球的抽屜，每格都一樣快。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          25,
+          30
+        ]
+      },
+      "source_locator": "3.3 Basic operation performance 第 2 段起（MLC 頁間寫入延遲異常與成因）；摘要",
+      "notes": "研究網 NET_UCSD_FLASH；覆核 SVY6B 加權 0.75（SY6B 自報 1.0）：團隊自測，但量的是裸晶片，對記憶卡成品只是類比。網合計 1.0。和轉折一並陳時只說『每格存更多位元的快閃，寫入時間更不平均』，不說這是協會訂新記號的理由（協會理由只以 K112-0609 原文為準）。作者 SY6B；覆核 SVY6B 逐句對照 3.3 第 2–3 段、摘要，5.8 倍、超過 1 毫秒、SLC 無此差異、高低位元脈衝成因皆原文。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-6c3d045ec6741be2",
+          "origin": "wave114-g746-20261119",
+          "locator": "3.3 Basic operation performance 第 2 段起（MLC 頁間寫入延遲異常與成因）；摘要",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": false,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0655"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0661",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "在快閃晶片上對同一頁一寫再寫，同一塊裡的其他頁會怎樣？",
+      "mechanism_key": "x112.nand_program_disturb.repeat_program_one_page_measured_errors",
+      "answer_target": "可能被意外改寫。美國一所大學的團隊在自製測試板上做了這個壓力測試：先抹除一個區塊，再對其中一頁的一半反覆寫成 0，每寫一次就數整塊裡有多少位元被意外寫入。每格存 1 位元的 SLC 晶片，前 100 次都沒有出現寫入干擾；之後有幾款晶片出現有規律的錯誤（例如隔一頁出錯，或只錯在最前面幾頁），也有兩款看不出規律。每格存 2 位元的 MLC 晶片反應快得多：所有受測 MLC 晶片，只要把某些頁重寫一次，就會把同一塊裡相對位置固定的另外一頁或兩頁幾乎所有位元打亂，論文觀察到兩種位置模式（區塊頭尾幾頁例外）；圖 8 的圖說寫，多數 MLC 晶片在重寫到某個次數附近錯誤率急升。論文在 4.2 節據此整理：對 MLC 來說，寫入干擾只在寫一塊中一半的頁時成問題，另一半的頁可以承受多次寫入而沒有不良影響。",
+      "scope": "團隊自測，但這是刻意的壓力測試：抹除後反覆重寫同一頁，不是正常使用的寫法，錯誤模式依晶片型號而異。量的是 2009 年、50–72nm 製程的裸快閃晶片（部分拆自隨身碟），不是記憶卡成品；不推論任何記憶卡的寫入速度、壽命、可靠度或內部做法，不做任何使用建議，也不是 SD 協會訂新記號的理由（協會理由只以 K112-0609 原文為準）。可以和 K112-0654（資料表要求同一區塊依序寫入以減少寫入干擾）並陳，說明『寫入干擾是量得到的現象』；論文沒有說這個實驗就是資料表規定的依據，口播不得用『所以』『因此』把兩者接成因果。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "反覆寫同一頁，連同一塊裡別的頁也會被弄亂——寫入干擾是實驗量得到的現象，不只是規格書上的一句警告。",
+        "visual": "清爽可愛的機制剖面動畫：一排小格子屋，一支小印章不停在同一間屋頂上蓋章；每蓋一下，隔壁某幾間屋子的窗戶就微微晃動、亮起小小的雜點；另一排只住單人的屋子要蓋很多下才開始晃。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          18,
+          22
+        ]
+      },
+      "source_locator": "3.5 Reliability 的 Program disturb 段（實驗方法、SLC 前 100 次無干擾、MLC 重寫一次即出現兩種錯誤模式）；圖 8 圖說；4.2 Flash-aware data encoding 第 3 段（MLC 寫入干擾只影響一半頁）",
+      "notes": "研究網 NET_UCSD_FLASH；覆核 SVY6C 維持加權 0.5（SY6C 自報 0.5）：團隊自測，但量的是 2009 年裸晶片、對記憶卡成品只是類比，且是非正常寫法的壓力測試。不寫研究者姓名，不轉述論文的晶片代號與錯誤頁的頁號公式。作者 SY6C；覆核 SVY6C 重抓 seq=1，逐句對照 3.5 Program disturb 段、圖 8 圖說、4.2 第 3 段。覆核修正：MLC『另一個固定位置的頁』改為『另外一頁或兩頁』、『位置模式依晶片而不同』改為論文的『兩種模式』、補『兩款 SLC 看不出規律』、4.2『只發生』改為原文『只在寫一半的頁時成問題』；payoff 原句『所以晶片寧可規定照順序寫』把實驗接成規定的理由，與 scope 牴觸，已改。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-6c3d045ec6741be2",
+          "origin": "wave114-g746-20261119",
+          "locator": "3.5 Reliability 的 Program disturb 段（實驗方法、SLC 前 100 次無干擾、MLC 重寫一次即出現兩種錯誤模式）；圖 8 圖說；4.2 Flash-aware data encoding 第 3 段（MLC 寫入干擾只影響一半頁）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": false,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0661"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0662",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "快閃晶片被寫了上萬次之後，寫入會變慢嗎？",
+      "mechanism_key": "x112.nand_wear.program_latency_drops_with_erase_count",
+      "answer_target": "平均寫入時間反而縮短。同一個大學團隊量了寫入時間隨抹寫次數的變化：SLC 晶片在晶片 10 萬次抹寫的額定壽命內，平均寫入時間縮短將近一半（圖 5 圖說）；MLC 晶片變化小得多，只縮短約 10% 到 15%（論文寫明 MLC 的數據沒有畫成圖）。論文解釋，這是電荷被困住或閘極氧化層劣化造成的：氧化層的絕緣變差，電荷比較容易被推上浮動閘極，所以寫得快；而同一個現象也讓電荷比較容易漏掉，最終導致記憶單元失效。",
+      "scope": "團隊自測的平均寫入時間，SLC 有圖、MLC 只有內文一句；3.3 內文寫『寫入快將近 50%』、圖 5 圖說寫『寫入時間降將近 50%』，本卡以圖說為準。量的是 2009 年、50–72nm 製程的裸快閃晶片（部分拆自隨身碟），不是記憶卡成品；不推論任何記憶卡的寫入速度、壽命或內部做法，也不是 SD 協會訂新記號的理由（協會理由只以 K112-0609 原文為準）。不能說成『用久的卡比較快』『寫得變快代表快壞了』，也不做任何使用或選購建議；論文只說加快與最終失效出自同一個物理現象，沒有說寫入變快可以拿來預測失效。記憶卡的控制器會管理寫入與抹除分布，晶片層的變化不等於卡片層的表現。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "晶片寫得越來越快，和它最後會壞，論文說出自同一個原因——晶片層的寫入時間本來就不是一個固定數字。",
+        "visual": "清爽可愛的機制剖面動畫：一個小水缸外圍著一圈圍牆，小幫手往缸裡倒水；圍牆一開始很厚，倒水要用力；隨著來回倒了很多次，圍牆慢慢出現細縫，水倒得越來越順，同時也開始從細縫一滴滴滲出。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          18,
+          22
+        ]
+      },
+      "source_locator": "3.3 Basic operation performance『The second surprise』段（SLC 將近 50%、MLC 10–15%、電荷捕捉／氧化層劣化、同一現象導致失效）；圖 5 圖說；4.1 開頭第 1 段（兩種寫入時間變異之二是 SLC 隨老化的寫入延遲變化）",
+      "notes": "研究網 NET_UCSD_FLASH；覆核 SVY6C 加權 0.5（SY6C 自報 0.75）：團隊自測有圖，但量的是 2009 年裸晶片、對記憶卡成品只是類比；和題目『為什麼印三種速度記號』只是旁支背景；MLC 部分只有內文一句、無圖；且 3.3 內文『快 50%』與圖說『時間降 50%』措辭不一致，從嚴記 0.5。不寫研究者姓名，不轉述晶片代號。作者 SY6C；覆核 SVY6C 重抓 seq=1，逐句對照 3.3『The second surprise』段、圖 5 圖說、4.1 開頭。覆核修正：『反而變快，而且這不是好消息』改為原文的『同一現象最終導致失效』；MLC『快了 10–15%』改為『寫入時間縮短約 10–15%』；payoff 原句『是絕緣層撐不住的前兆』『規格表典型值只描述晶片某個時刻』都不是論文的話，已刪。",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-6c3d045ec6741be2",
+          "origin": "wave114-g746-20261119",
+          "locator": "3.3 Basic operation performance『The second surprise』段（SLC 將近 50%、MLC 10–15%、電荷捕捉／氧化層劣化、同一現象導致失效）；圖 5 圖說；4.1 開頭第 1 段（兩種寫入時間變異之二是 SLC 隨老化的寫入延遲變化）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": false,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0662"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0671",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "行車紀錄器一直在錄，為什麼出事那一刻的影片卻不在卡上？",
+      "mechanism_key": "x113.dashcam_case.accident_footage_missing_card_fault_new_card_fine",
+      "answer_target": "日本國民生活中心 2017 年公布一件委託測試：委託人說行車紀錄器裡沒有事故影像。這台機器會把開車全程常時錄進 microSD 卡、滿了就從最舊的覆蓋，受到衝擊時另存前後約 1 分鐘。中心檢查時機器讀不到卡；把卡插到電腦讀卡機上，只看到事故日很久以前的檔案，而且都無法播放，事故當天的檔案根本不在。換一張新卡後，常時錄影和衝擊錄影都正常，中心因此判斷機器本體沒問題，是那張卡出了狀況。",
+      "scope": "單一委託個案；中心沒有查卡片的速度等級，也沒有說卡片壞掉的原因。原文的保養建議不轉述。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "錄影燈亮著，不代表影片真的寫進了卡裡。",
+        "visual": "清爽可愛的機制剖面動畫：一台小小的車用攝影機黏在擋風玻璃後面，紅色小燈一閃一閃；鏡頭轉到機身裡，一條影格輸送帶通往一個小抽屜，抽屜裡只躺著幾張泛黃的舊照片，新的影格在門口散成一地。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "SY6D-S001 ２．調査 第 1–3 段；SY6D-S003 ５（１）",
+      "notes": "研究網 NET_JP_KOKUSEN；加權 1.0（網上限 2.0）。開場情境卡，取代改稿前沒有卡撐的『寫入速度不足』開場。 覆核 SVY6D：逐句對照 S001 ２．調査 與 S003 ５（１），相符。 章節：第 1 章（開場：錄影燈亮著，卻沒錄到）",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-acde2f19444aeefa",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6D-S001 ２．調査 第 1–3 段；SY6D-S003 ５（１）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b7a4cb58cae9cbb6",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6D-S001 ２．調査 第 1–3 段；SY6D-S003 ５（１）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0671"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0672",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "記憶卡明明沒存什麼東西，為什麼錄不到兩分鐘就停了？",
+      "mechanism_key": "x113.dashcam_case.bad_sectors_shrink_writable_area_stops_after_100s",
+      "answer_target": "同一個中心 2018 年報告裡的另一件委託：行車紀錄器開車時畫面變暗、自己斷電。4GB 的卡上只存了約 16.9MB 的檔案，空間卻只剩 68.8MB；這張卡插回機器後自動開始錄影，大約 1 分 40 秒就停錄，之後機器照設定自動關機；換新卡就不再停。中心推測是長期使用與反覆寫入造成的壞區（無法正常讀寫的區域）累積，讓能寫的空間變得很小。",
+      "scope": "單一個案；『壞區累積』是中心的推測（原文用『可能性が考えられました』）。不轉述保養與更換建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "卡上的空間會悄悄被壞掉的格子吃掉，錄影不是卡住，而是沒地方寫。",
+        "visual": "清爽可愛的機制剖面動畫：一個收納格很多的小櫃子，大部分格子慢慢被灰色的封條貼住，只剩角落兩三格是空的；一列影格小方塊排隊想進櫃子，塞了幾個就再也放不進去，櫃子的小燈熄掉。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_locator": "SY6D-S003 ５（２）與注 8",
+      "notes": "研究網 NET_JP_KOKUSEN；加權 1.0（網內已達上限，計入網上限 2.0）。 覆核 SVY6D：4GB、16.9MB、68.8MB、約 1 分 40 秒、注 8 推測語氣逐一相符。 章節：第 5 章（不只是速度：快滿、壞區、高溫、假容量）",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b7a4cb58cae9cbb6",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6D-S003 ５（２）與注 8",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0672"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0673",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "插了一張速度等級比規定低的卡，行車紀錄器會提醒你嗎？",
+      "mechanism_key": "x113.dashcam_test.out_of_spec_speed_class_card_detected_by_1_of_12",
+      "answer_target": "多半不會。日本國民生活中心 2018 年測了 12 款行車紀錄器，每款都在說明裡規定要用 Class 4、6 或 10 以上的卡（報告注解：速度等級是錄影這類『以固定速度寫入』時需要的最低傳輸速度）。改插一張 Class 2 的卡時，12 款裡只有 1 款把它當成異常；其他沒偵測到的機器照常開始錄影，在連續 24 小時的測試期間影像也正常記錄。中心的結論是：用了不合規格的卡，機器偵測異常的反應參差不齊，而且（在容量不合規格的那組測試裡）有機器是錄到一半才發現問題，所以不合規格的卡可能無法正常記錄。",
+      "scope": "2018 年 12 款機器；速度不符那一欄只用了一個品牌的一張 32GB Class 2 卡（報告註 ※1）。『測試期間影像正常』只代表這次 24 小時測試，不能推論等級不重要；也不能推論任何機器都能用低等級的卡。 覆核：表 3 的（※2）『錄到一半偵測異常並停錄』依 PDF 座標標在 NO.6 的容量欄（本文也寫 NO.6），不是 NO.5 的速度等級欄；原文沒寫 NO.5 對 Class 2 卡是開機時還是錄到一半偵測到，卡上不寫。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "速度等級不夠，不一定當場出事，機器也多半不會出聲提醒。",
+        "visual": "清爽可愛的機制剖面動畫：十二台並排的小車用攝影機，每台旁邊插著一張顏色不同的小卡片；只有一台頭上冒出小驚嘆號泡泡並停下動作，其他十一台的小紅燈照樣一閃一閃。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "source_locator": "SY6D-S003 ８（１）２）本文與表 3、注 10、１１（１）",
+      "notes": "研究網 NET_JP_KOKUSEN；加權 1.0（網上限 2.0）。轉折一主卡。 覆核 SVY6D：刪去『錄到一半才偵測』的錯置，其餘逐句對照 S003 表 1、表 3、注 10、１１（１），維持 1.0。 章節：第 4 章（轉折一：插錯等級的卡，12 台只有 1 台出聲）",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b7a4cb58cae9cbb6",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6D-S003 ８（１）２）本文與表 3、注 10、１１（１）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0673"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0674",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "卡片出問題時，行車紀錄器的畫面會老實告訴你嗎？",
+      "mechanism_key": "x113.dashcam_test.recording_indicator_on_but_nothing_saved_3_of_12",
+      "answer_target": "不一定。國民生活中心拿一張『電腦看得到檔案、卻無法播放也無法格式化』的故障卡測 12 款機器：9 款開機就偵測到異常，另外 3 款照常開始錄影、螢幕上也顯示錄影中，事後檢查卡片卻沒有留下任何影像。另一項測試把卡上能寫的空間壓到不到一個檔案：5 款錄到一半偵測異常並停錄，1 款直接不開始錄，3 款繼續錄但因為空間太小一直覆蓋，視停錄的時機可能什麼都沒留下；另有 3 款靠機器本身的專用格式化預留空間、防止檔案破碎而正常運作。",
+      "scope": "2018 年 12 款機器；故障卡是委託測試中取得的一張卡，可寫空間不足是用佔位檔模擬壞區。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "螢幕上那顆錄影中的紅點，有時只是在演。",
+        "visual": "清爽可愛的機制剖面動畫：一台小攝影機的螢幕上紅點穩穩亮著，旁邊一位小錄影員比讚；鏡頭往下穿進卡片內部，裡面是一間空蕩蕩的小房間，只有一陣風吹過。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_locator": "SY6D-S003 ８（１）３）表 4、４）表 5 與寫真 4；SY6D-S002 摘要四點",
+      "notes": "研究網 NET_JP_KOKUSEN；加權 0.75（網內已超過上限，實際不加分）。 覆核 SVY6D：表 4（5 停錄／1 不起錄／3 續錄可能無檔／3 專用格式化正常）與表 5（9 偵測、3 款顯示錄影中無紀錄）逐一相符。 章節：第 1 章（開場）；也可放第 5 章",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a71de8406428b13e",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6D-S003 ８（１）３）表 4、４）表 5 與寫真 4；SY6D-S002 摘要四點",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b7a4cb58cae9cbb6",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6D-S003 ８（１）３）表 4、４）表 5 與寫真 4；SY6D-S002 摘要四點",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0674"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0675",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "行車紀錄器業界自己訂的推薦條件裡，對『錄影不能斷』寫了什麼？",
+      "mechanism_key": "x113.dashcam_guideline.10fps_no_duplicate_frames_file_gap_0_2s",
+      "answer_target": "日本行車紀錄器業界團體 2019 年訂的推薦指引（基本要件編）要求：前方影像至少每秒 10 格，而且複製同一格充數的畫格不算進影格率；兩個影像檔之間沒錄到的空隙要在 0.2 秒以下；裝在有怠速熄火功能的車上時，電壓瞬間掉到約 6V，錄影也不能中斷。指引也要求在說明裡寫出記錄媒體的種類、容量、需要保養與媒體本身有壽命。協會說這份指引沒有強制力與罰則。",
+      "scope": "業界推薦指引，無強制力；沒有規定記憶卡速度等級。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "業界把『不能斷』寫成數字：最少 10 格、檔案間最多 0.2 秒空白，拿複製畫格充數不算。",
+        "visual": "清爽可愛的機制剖面動畫：一條影格膠捲在兩個小捲盤之間滑過，膠捲接縫處只留下一條細細的小縫；一隻小手想把同一格照片影印好幾張塞進去湊數，被一個小檢查章擋了下來。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          30,
+          35
+        ]
+      },
+      "source_locator": "SY6D-S004 4.1.2(3)、4.1.2(6)、4.2.2、5.3；新聞稿頁（seq=9）",
+      "notes": "研究網 NET_JDRC；加權 0.75（推薦指引、不直接談記憶卡，從嚴）。 覆核 SVY6D：重抓 S004 雜湊相符；4.1.2(3)(6)、4.2.2、5.3.3 與新聞稿『強制力、罰則規定などはありません』相符。 章節：第 4 章（轉折一）",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-bebc90332b9256f7",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6D-S004 4.1.2(3)、4.1.2(6)、4.2.2、5.3；新聞稿頁（seq=9）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0675"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0676",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "記憶卡待在車上的行車紀錄器裡，可能有多熱？",
+      "mechanism_key": "x113.dashcam_environment.car_over_90c_device_interior_10_30c_hotter",
+      "answer_target": "韓國消費者院 2013 年評價 31 款行車紀錄器時提醒：夏天停在戶外的車，車內溫度可能升到 90℃以上，而插著記憶卡的機身內部因為本身發熱，可能比外面再高 10℃到 30℃以上。同一次評價裡，31 款中有 21 款的主要性能（例如車牌辨識、視角）低於韓國國家標準。",
+      "scope": "2013 年資料；溫度是注意事項裡的敘述，原文沒寫量測方法；沒有說高溫對寫入速度的影響。不轉述原文的選購與保養建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "記憶卡在車上待的地方，比一個熱烘烘的車廂還熱。",
+        "visual": "清爽可愛的機制剖面動畫：一台停在大太陽下的小車，車窗冒出陣陣熱浪；鏡頭穿進擋風玻璃後的小攝影機，裡面的小卡片額頭冒汗，旁邊的小溫度計紅柱往上衝。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          20,
+          25
+        ]
+      },
+      "source_locator": "SY6D-S005 第 2、4 段與夏季注意事項段",
+      "notes": "研究網 NET_KR_KCA；加權 0.5（與寫入速度只間接相關、敘述無量測方法，從嚴）。 覆核 SVY6D：31 款中 21 款低於 KS、車內 90℃以上、機身內部再高 10–30℃以上，與正文相符；原文點名的品牌型號與選購、停車建議不轉述。 章節：第 5 章",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b19d7b6aa10404d0",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6D-S005 第 2、4 段與夏季注意事項段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0676"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0677",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "研究室的無線微型顯微鏡，為什麼只錄每秒 15 格？",
+      "mechanism_key": "x113.lab_recorder.miniscope_frame_rate_capped_by_mcu_capture_and_sd_write",
+      "answer_target": "美國一所大學團隊 2023 年做了一台讓大鼠背著跑的無線微型顯微鏡，影像直接存在背包裡的 microSD 卡。論文寫，板上微控制器的取像時脈有上限，寫進卡片的速度也有上限，兩者一起限制了取像和存檔的速度，所以團隊把錄影設成 608×608、每秒 15 格（硬體其實可以到 20 格）；這樣每秒大約寫 5.5MB，一張 64GB 的卡可以錄好幾個小時。",
+      "scope": "論文寫『~11-Mbps write speed』又寫每秒寫約 5.5MB，單位前後不一致，所以只引用 15／20 格與 5.5MB；限制來自主機端的微控制器，不是在比較卡片。 覆核：原文是『取像時脈上限』與『寫卡速度上限』兩項限制一起（\"Because of these constraints\"），不能說只因寫卡速度。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "錄影的格數，有時是遷就機器『寫得進卡片的速度』這類限制訂出來的。",
+        "visual": "清爽可愛的機制剖面動畫：一隻圓滾滾的小老鼠背著一個小背包跑過圓形場地，頭上頂著一支迷你顯微鏡；背包裡有一條細細的水管把影格送進小卡片，水管口旁邊的小閥門只開到一半。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          30,
+          35
+        ]
+      },
+      "source_locator": "SY6D-S006 Wire-free DAQ 段、圖 4 圖說",
+      "notes": "研究網 NET_MINISCOPE；加權 0.5（覆核 SVY6D 由 0.75 下修：限制在主機端微控制器、且與取像時脈並列，不是記憶卡本身的量測）。 章節：第 7 章（要量準有多難）",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-438a8a8cd383dbca",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6D-S006 Wire-free DAQ 段、圖 4 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0677"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0678",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "同一張記憶卡，換一台機器寫，速度會一樣嗎？",
+      "mechanism_key": "x113.host_dependence.same_microsd_two_sbc_generations_write_34_vs_52",
+      "answer_target": "不一樣。南韓一所大學 2026 年的論文拿同一張 microSD 卡（規格表寫循序寫『最高每秒 130MB』、屬隨機讀至少 4000 次的 A2 等級），分別插在兩代單板電腦上測：舊一代用 16MB 大塊循序寫每秒 34.38MB，新一代每秒 52.22MB；4KB 隨機寫從每秒 870 次變成 2353 次。作者寫，主機的處理器效能明顯影響儲存效能，而且推測下一代主機可能讓這張卡的寫入跑到飽和。",
+      "scope": "只測一張卡、兩台主機，檔案系統層量測，不是 SD 協會規定的量法；『最高 130MB』是規格表上的最高值，不是保證值，兩者不能直接比成『虛標』。不點名卡片與主機品牌。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "卡上的速度不是卡自己一個人決定的，插在哪台機器上也算數。",
+        "visual": "清爽可愛的機制剖面動畫：同一張小卡片先插進一台舊舊的小機器，輸送帶慢慢轉；再插進一台新的小機器，同一條輸送帶轉得飛快，但前方仍有一段沒跑滿的空軌道。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "source_locator": "SY6D-S008 表 2、表 6、表 7 與表 6 後一段",
+      "notes": "研究網 NET_CAU_SBC；加權 1.0。轉折二主卡。 覆核 SVY6D：重抓 S008 雜湊相符；表 2『Up to 130 MB/s』『Minimum 4,000 IOPS (A2)』、表 6 34.38／52.22、表 7 870／2,353 與『might saturate microSD card』逐一相符。 章節：第 6 章（轉折二：同一張卡，換台機器就變快）",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-ccf8f51f160c2a6f",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6D-S008 表 2、表 6、表 7 與表 6 後一段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0678"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0679",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "同一張卡，一次寫一小塊和一次寫一大塊，差多少？",
+      "mechanism_key": "x113.host_dependence.same_microsd_4kb_vs_16mb_record_write",
+      "answer_target": "同一篇論文的表 6：在舊一代主機上，這張卡用 4KB 的小塊寫，每秒只有 3.62MB；換成 16MB 的大塊，每秒 34.38MB，換算約差 9.5 倍；新一代主機上則是 8.63MB 對 52.22MB（換算約 6 倍）。論文說，小塊存取時每次讀寫的效率大幅下降，所以兩種儲存媒體在 4KB 都表現弱。",
+      "scope": "同一篇論文、一張卡；與 FAST'12 的隨機寫轉折方向一致，但不是同一實驗。 倍數（約 9.5 倍、約 6 倍）是覆核依表 6 換算，論文本身沒寫這兩個倍數，口播須說『換算起來』。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一張卡，一口氣倒一大桶和一湯匙一湯匙舀，在舊一代主機上換算差了將近十倍。",
+        "visual": "清爽可愛的機制剖面動畫：一個小水桶要倒滿：左邊用一個大水瓢一口氣倒，右邊用一根小湯匙一勺一勺舀，左邊很快就滿，右邊才鋪滿桶底。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          20,
+          25
+        ]
+      },
+      "source_locator": "SY6D-S008 表 6 與其前一段",
+      "notes": "研究網 NET_CAU_SBC；加權 0.5（同篇、與 FAST'12 機制重疊）。網合計 1.5。覆核 SVY6D：倍數標為推算。 章節：第 6 章",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-ccf8f51f160c2a6f",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6D-S008 表 6 與其前一段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0679"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0680",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "卡片沒換，只改了機器裡的程式，寫入速度會變嗎？",
+      "mechanism_key": "x113.host_dependence.driver_fence_fix_write_159kbs_to_485kbs",
+      "answer_target": "會，換算約差 3 倍。瑞士與義大利的大學團隊 2026 年替一顆開源處理器晶片設計 SD 卡控制器：理想情況下寫入每秒 11.4MB，接近這種介面模式每秒 12.5MB 的上限；但在作業系統底下，程式每次碰控制器的暫存器都多花約 500 個週期，寫入只有每秒 159kB；改寫驅動程式、跳過不必要的「清空管線與快取」動作後，提高到每秒 485kB。",
+      "scope": "延伸摘要；量的是作者自製的控制器與舊介面模式，不是消費性相機；數字只說明主機端能左右寫入速度。 『約 3 倍』是 485÷159 的換算；原文的倍數（11.3 倍）是對 SPI 基準比，不是改前改後比。主機時脈 50MHz 的研究原型，數字遠低於日常機器，只能說明『主機端程式能左右寫入速度』。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一張卡，機器裡的程式一改，寫入換算快了約三倍——慢的不一定是卡。",
+        "visual": "清爽可愛的機制剖面動畫：一位小郵差每送一封信到卡片信箱前，都要先跑回郵局簽一次名；後來簽名改成一次簽好，他沿路飛奔，信箱前的信越堆越快。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          25,
+          30
+        ]
+      },
+      "source_locator": "SY6D-S009 Results 第 2 段與右欄、Driver Support",
+      "notes": "研究網 NET_ETH_RISCV；加權 0.5（覆核 SVY6D 由 0.75 下修：2 頁延伸摘要、研究原型控制器、非消費性錄影機，屬類比證據）。 章節：第 6 章",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a36a79c7cbf0d27c",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6D-S009 Results 第 2 段與右欄、Driver Support",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0680"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0681",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "所謂『掉格』，錄出來的影片會變成什麼樣子？",
+      "mechanism_key": "x113.frame_drop.looks_like_fast_forward_300s_plays_125s",
+      "answer_target": "會像快轉，而且變短。美國一個神經科學團隊 2022 年比較兩種攝影機錄大鼠行為：論文說，掉格的影片在一般播放器裡看起來像快轉、長度變短，因為播放器假設的影格率比實際錄到的高。他們量到一台市售網路攝影機搭配某一套錄影軟體、在紅光下，目標每秒 20 格，實際只有 8.3 格；錄了約 300 秒，放出來只剩約 125 秒，等於每分鐘掉 702 格。",
+      "scope": "掉格發生在攝影機傳到電腦的路徑上，與記憶卡無關；只用來說明掉格的樣子（類比）。不點名攝影機品牌。 覆核：同一台攝影機換另一套錄影軟體就能達到設定格數，掉格與軟體介面有關；約 300 秒、約 125 秒是五段錄影的平均（表 3：300.56、124.77）。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "掉格的影片會偷偷變短：五分鐘的錄影，放完只剩兩分鐘。",
+        "visual": "清爽可愛的機制剖面動畫：一捲長長的影片膠捲被一把小剪刀東剪一格西剪一格，剪剩的膠捲接起來變得很短；放映機一轉，畫面裡的小老鼠跑得像快轉一樣。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          25,
+          30
+        ]
+      },
+      "source_locator": "SY6D-S007 Frame rate analysis 第 1 段、表 3、審稿回覆 3",
+      "notes": "研究網 NET_PIUSBCAM；加權 0.25（覆核 SVY6D 由 0.5 下修：不是記憶卡實驗，掉格出在攝影機到電腦的軟體路徑，純類比）。 章節：第 2 章（掉格長什麼樣）",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-55f73665582bbcfc",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6D-S007 Frame rate analysis 第 1 段、表 3、審稿回覆 3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0681"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0682",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "有些記憶卡寫到一半，後面的資料為什麼會整個消失？",
+      "mechanism_key": "x113.fake_capacity.writes_beyond_physical_space_discarded",
+      "answer_target": "一位個人測試者自 2023 年 7 月起買了各種 microSD 卡（含假容量卡）長期測試，他在網站上說明『假容量卡』：卡片對主機報的容量比實際晶片大（例如號稱 1TB、實際接近 8GB），實際空間通常在位址開頭，超出的寫入會被直接丟掉、讀回來多半是零；因為檔案系統大多從頭依序往後填，使用者往往要等寫滿真正的空間之後，才發現後面存的資料不見了，而且救不回來。",
+      "scope": "個人網站、無同儕審查，口播須說『一位個人測試者』；原文的品牌與通路比較不轉述；不做任何辨識或選購建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "有的卡謊報自己有多大，錄到超出真實空間的那一刻起，後面全寫進空氣裡。",
+        "visual": "清爽可愛的機制剖面動畫：一個外觀很大的寶箱，打開蓋子卻只有底部一小格是真的空間；小方塊一個個丟進去，填滿那一小格後，後面的方塊穿過假底板掉進一片黑暗。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          25,
+          30
+        ]
+      },
+      "source_locator": "SY6D-S010 前言第 1 段、Authenticity 測試方法段",
+      "notes": "研究網 NET_PERSONAL_SURVEY；加權 0.5（個人網站）。 覆核 SVY6D：原文沒寫『上百張』，已刪；其餘與前言第 1–2 段相符。網頁標題含作者本名（在世），來源與口播都不轉錄。 章節：第 5 章",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-522caab3ee99e571",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6D-S010 前言第 1 段、Authenticity 測試方法段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0682"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0683",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "一般人想自己測卡上的 V30 是不是真的，為什麼很難？",
+      "mechanism_key": "x113.verification_gap.usb_readers_cannot_enter_video_speed_mode",
+      "answer_target": "同一位個人測試者寫，他沒辦法完全照 SD 規格測速度等級：多數速度等級要主機先下指令讓卡進入對應的運作狀態，Video Speed Class 還要主機下指令進入錄影模式、指定要寫哪一個配置單位、照順序寫到底再換下一塊；但一般 USB 讀卡機不提供下這些指令的方法，所以他的測試只能『近似規格的精神』。他說，有的卡遠遠超過所標記號的要求，有的遠遠不到，也有的卡落在差一點的灰色地帶。",
+      "scope": "個人網站；作者自承測法不合規格，沒有可引用的達標比例，卡上不寫任何比例或品牌。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "V 等級是相機和卡之間的約定，拿一般讀卡機在電腦上測，連那個模式都叫不出來。",
+        "visual": "清爽可愛的機制剖面動畫：一張小卡片面前有兩扇門：一扇門上畫著攝影機圖案，只有一台小攝影機拿著特製鑰匙能打開；一台小電腦拿著普通鑰匙在門口轉來轉去打不開，只好從旁邊的普通門進去。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          20,
+          25
+        ]
+      },
+      "source_locator": "SY6D-S010 Performance 限制清單第 1–3 點、Speed class 段末",
+      "notes": "研究網 NET_PERSONAL_SURVEY；加權 0.25（個人網站、作者自述限制）。網合計 0.75。 覆核 SVY6D：CMD20、Video Speed Class 指定 AU 依序寫、USB 讀卡機無法下指令、『approximate the spirit』『far beyond / far short / gray area』皆與原文相符。 章節：第 7 章（要量準有多難）",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-522caab3ee99e571",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6D-S010 Performance 限制清單第 1–3 點、Speed class 段末",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0683"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K112-0684",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "同一張卡，錄 4K 和錄一般高畫質，能錄的時間差多少？",
+      "mechanism_key": "x113.video_data.same_32gb_80min_hd_vs_20min_4k",
+      "answer_target": "美國一本消費者雜誌的說明寫：一張 32GB 的卡大約可以錄 80 分鐘的高畫質（HD）影片，同一張卡改錄 4K，大約只剩四分之一，也就是約 20 分鐘。",
+      "scope": "雜誌只給整數概數，沒寫位元率與編碼條件；『每秒要寫進卡的資料約多四倍』是由此換算，口播須說『換算起來』。不轉述原文任何選購建議與受訪者的話。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "畫質一升級，每秒要塞進卡片的資料就跟著暴增。",
+        "visual": "清爽可愛的機制剖面動畫：兩條並排的輸送帶通往同一個小倉庫：左邊每秒送來一個小箱子，右邊同時送來四個；右邊的倉庫很快就堆滿了。不放任何文字、數字、字卡，不畫人物面孔。",
+        "seconds": [
+          20,
+          25
+        ]
+      },
+      "source_locator": "SY6D-S011『If you shoot video…』段",
+      "notes": "研究網 NET_CR；加權 0.25（覆核 SVY6D 由 0.5 下修：選購文章裡的一句整數概數，無位元率與編碼條件）。 章節：第 2 章（掉格長什麼樣）",
+      "origin": "wave114-g746-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-77f56bf89d8fcfd2",
+          "origin": "wave114-g746-20261119",
+          "locator": "SY6D-S011『If you shoot video…』段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave114-g746-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K112-0684"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -324036,7 +325851,7 @@
   ],
   "raw_records": {
     "file": "pool-records.json",
-    "count": 7501
+    "count": 7542
   },
   "dedup": {
     "aliases": {
@@ -326425,6 +328240,47 @@
       "K113-0813": "K113-0813",
       "K113-0814": "K113-0814",
       "K113-0815": "K113-0815",
+      "K112-0601": "K112-0601",
+      "K112-0602": "K112-0602",
+      "K112-0603": "K112-0603",
+      "K112-0604": "K112-0604",
+      "K112-0605": "K112-0605",
+      "K112-0606": "K112-0606",
+      "K112-0607": "K112-0607",
+      "K112-0608": "K112-0608",
+      "K112-0609": "K112-0609",
+      "K112-0610": "K112-0610",
+      "K112-0611": "K112-0611",
+      "K112-0612": "K112-0612",
+      "K112-0613": "K112-0613",
+      "K112-0614": "K112-0614",
+      "K112-0615": "K112-0615",
+      "K112-0616": "K112-0616",
+      "K112-0617": "K112-0617",
+      "K112-0618": "K112-0618",
+      "K112-0619": "K112-0619",
+      "K112-0621": "K112-0621",
+      "K112-0651": "K112-0651",
+      "K112-0652": "K112-0652",
+      "K112-0653": "K112-0653",
+      "K112-0654": "K112-0654",
+      "K112-0655": "K112-0655",
+      "K112-0661": "K112-0661",
+      "K112-0662": "K112-0662",
+      "K112-0671": "K112-0671",
+      "K112-0672": "K112-0672",
+      "K112-0673": "K112-0673",
+      "K112-0674": "K112-0674",
+      "K112-0675": "K112-0675",
+      "K112-0676": "K112-0676",
+      "K112-0677": "K112-0677",
+      "K112-0678": "K112-0678",
+      "K112-0679": "K112-0679",
+      "K112-0680": "K112-0680",
+      "K112-0681": "K112-0681",
+      "K112-0682": "K112-0682",
+      "K112-0683": "K112-0683",
+      "K112-0684": "K112-0684",
       "D12001": "D12001",
       "D12002": "D12002",
       "D12003": "D12003",
@@ -369856,6 +371712,20 @@
         ]
       },
       {
+        "id": "K112-0678~K112-0679",
+        "a": "K112-0678",
+        "b": "K112-0679",
+        "question_score": 0.121,
+        "answer_score": 0.211,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張記憶卡，換一台機器寫，速度會一樣嗎？",
+          "同一張卡，一次寫一小塊和一次寫一大塊，差多少？"
+        ]
+      },
+      {
         "id": "L054~L057",
         "a": "L054",
         "b": "L057",
@@ -370945,6 +372815,20 @@
         "questions": [
           "當噴燈噴射高達攝氏一千度的火焰直吹厚度僅數毫米的氣凝膠片時，置於其背面的鮮花為什麼能歷時數分鐘毫無枯萎捲曲？",
           "氣凝膠的微觀固相骨架僅佔體積不到1%，其固體熱傳導是如何在無限曲折的微觀網絡中被幾何阻斷的？"
+        ]
+      },
+      {
+        "id": "K112-0654~K112-0661",
+        "a": "K112-0654",
+        "b": "K112-0661",
+        "question_score": 0.171,
+        "answer_score": 0.159,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "快閃晶片為什麼偏好『從頭依序寫到尾』？",
+          "在快閃晶片上對同一頁一寫再寫，同一塊裡的其他頁會怎樣？"
         ]
       },
       {
@@ -375862,6 +377746,20 @@
         ]
       },
       {
+        "id": "K112-0651~K112-0652",
+        "a": "K112-0651",
+        "b": "K112-0652",
+        "question_score": 0,
+        "answer_score": 0.08,
+        "key_score": 0.556,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "快閃記憶體為什麼不能像寫黑板一樣，哪裡錯就擦哪裡？",
+          "為什麼區塊越大，零星改寫就越吃虧？"
+        ]
+      },
+      {
         "id": "L234~L235",
         "a": "L234",
         "b": "L235",
@@ -376027,6 +377925,20 @@
         "questions": [
           "看成藍黑的人，是不是本來就比較容易把淡藍色看成藍？",
           "如果讓人工智慧學看顏色，它也會分成兩派嗎？"
+        ]
+      },
+      {
+        "id": "K112-0651~K91-029",
+        "a": "K112-0651",
+        "b": "K91-029",
+        "question_score": 0,
+        "answer_score": 0.077,
+        "key_score": 0.533,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "快閃記憶體為什麼不能像寫黑板一樣，哪裡錯就擦哪裡？",
+          "固態硬碟寫入數據時明明只要幾十微秒，為什麼擦除整塊數據卻要花上好幾毫秒？"
         ]
       },
       {
@@ -382236,10 +384148,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-19-pool-7060",
-    "target_count": 7060,
+    "revision": "2026-11-19-pool-7078",
+    "target_count": 7078,
     "reviewed_on": "2026-11-18",
-    "reason": "原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
+    "reason": "G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -389300,7 +391212,25 @@
       "K113-0810",
       "K113-0815",
       "K113-0813",
-      "K113-0804"
+      "K113-0804",
+      "K112-0671",
+      "K112-0674",
+      "K112-0681",
+      "K112-0684",
+      "K112-0611",
+      "K112-0601",
+      "K112-0605",
+      "K112-0673",
+      "K112-0675",
+      "K112-0672",
+      "K112-0682",
+      "K112-0676",
+      "K112-0678",
+      "K112-0679",
+      "K112-0680",
+      "K112-0677",
+      "K112-0683",
+      "K112-0614"
     ],
     "overflow": [
       {
