@@ -168,11 +168,14 @@ test('cross-series duplicates against the so-thats-why pool block selection unti
 
 test('editorial estimates are honest: an episode core must reach 8 minutes, otherwise it is a chapter', () => {
   assert.throws(() => validateEditorial({ id: 'N1', editorial: { role: 'episode_core', payoff: 'a', visual: 'b', minutes: [3, 5] } }), /mark it a chapter/);
-  assert.throws(() => validateEditorial({ id: 'N1', editorial: { role: 'chapter', payoff: 'a', visual: 'b', minutes: [3, 15] } }), /within/);
+  assert.throws(() => validateEditorial({ id: 'N1', editorial: { role: 'chapter', payoff: 'a', visual: 'b', minutes: [5, 3] } }), /lo no larger than hi/);
+  assert.throws(() => validateEditorial({ id: 'N1', editorial: { role: 'chapter', payoff: 'a', visual: 'b', minutes: [0, 4] } }), /above 0/);
+  // 沒有上限（站主 2026-11-19）：估到 13 分鐘以上不再被擋。
+  validateEditorial({ id: 'N1', editorial: { role: 'episode_core', payoff: 'a', visual: 'b', minutes: [12, 18] } });
   validateEditorial({ id: 'N1', editorial: { role: 'chapter', payoff: 'a', visual: 'b', minutes: [2, 4] } });
 });
 
-test('themes are 8–13 minutes, add up exactly, use each core once and never plan produced or thin-alone cores', () => {
+test('themes are at least 8 minutes with no upper bound, add up exactly, use each core once and never plan produced or thin-alone cores', () => {
   const batch = { batch_id: 'wave1', sources: [source('S1', 'https://example.org/one'), source('S2', 'https://example.org/two')], candidates: [candidate('N101', '貝奇莫號為什麼漂了幾十年？'), candidate('N102', 'Carroll Deering 號的船員去哪了？', { editorial: { role: 'chapter', payoff: 'a', visual: 'b', minutes: [3, 5] } })] };
   const episodes = { 'curio-h01': { 'video.json': { title: '一艘船' } } };
   const pool = buildPool(fixture({ topics: [topic('H01', '一艘船', 'scripted')], batch, episodes, selection: { revision: 'r', reviewed_on: '2026-11-01', reason: 'test', target_count: 2, ids: ['N101', 'N102'] } }));
@@ -188,8 +191,9 @@ test('themes are 8–13 minutes, add up exactly, use each core once and never pl
   assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: { ...five, score: 7 } })] }, pool), /needs a demand score/);
   assert.doesNotThrow(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: undefined, material: { verdict: 'reserve', reviewed_on: '2026-11-11', review: 'fixture', missing: 'fixture' } })] }, pool));
   assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101'], 10)] }, pool), /N102.*cannot stand alone/);
-  assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 7, { range_minutes: [7, 9] })] }, pool), /8–13 minutes/);
-  assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 14, { range_minutes: [12, 14] })] }, pool), /8–13 minutes/);
+  assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 7, { range_minutes: [7, 9] })] }, pool), /at least 8 minutes/);
+  assert.doesNotThrow(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 14, { range_minutes: [12, 14] })] }, pool));
+  assert.doesNotThrow(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 20, { range_minutes: [18, 22] })] }, pool));
   const off = theme('T01', ['N101', 'N102'], 10); off.chapters[0].seconds += 5;
   assert.throws(() => validateThemes({ episodes: [off] }, pool), /add up to the target exactly/);
   const short = theme('T01', ['N101', 'N102'], 10); short.chapters[0].seconds -= 140; short.chapters[1].seconds += 140;
