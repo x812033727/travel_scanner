@@ -150,12 +150,28 @@ export function chapterOpenerProblems(doc, timeline) {
 }
 
 /**
+ * An aside the narrator announces before taking it (「這裡先稍微科普一下」「還有一個支線故事」): the
+ * owner allowed one a video on 2026-11-19, said worth hearing first and held to a minute, after 13
+ * 黑猫研究院 videos showed their longest stretches without a hook (82 to 131 s) were exactly these,
+ * carried by one whole metaphor or a run of concrete detail. Where asides are read, the stretch that
+ * follows the first one may run to ASIDE_GAP_SECONDS before the cadence warns.
+ */
+export const ASIDE_OPENER = /先岔開|岔個題|岔出去(?:講|說|聊)|插播|先(?:稍微|簡單)?科普一下|花(?:一|半|1)分鐘(?:講|說|聊)|支線故事|題外話/;
+export const ASIDE_GAP_SECONDS = 75;
+/**
+ * An item of a counted list told as events (「第一個人是…」「第二尊…」): the owner allowed one such list
+ * a video on 2026-11-19, opened on its count and a question left hanging. Each item is a turn, the
+ * way a chapter is, so where asides are read it closes the gap like any other device.
+ */
+export const LIST_ITEM_OPENER = /^第[一二三四五六七八九十]+(?:個|位|尊|件|步|招|關|項)/;
+
+/**
  * The body (after the condensation, before the outro) read for open loops: a chapter turn, a
  * sentence that ends on a question, a forward hook or an escalation (OPEN_LOOP_FAMILY). A stretch
  * longer than `gap` seconds (HOOK_GAP_SECONDS unless the series keeps TIGHT_CADENCE) without one
  * is a warning naming its minutes.
  */
-export function hookCadenceProblems(doc, timeline, gap = HOOK_GAP_SECONDS) {
+export function hookCadenceProblems(doc, timeline, gap = HOOK_GAP_SECONDS, { asides = false } = {}) {
   const chapters = chapterList(timeline);
   if (chapters.length < 2 || !timeline?.total_frames) return [];
   const starts = lineStarts(timeline);
@@ -166,18 +182,24 @@ export function hookCadenceProblems(doc, timeline, gap = HOOK_GAP_SECONDS) {
   const to = outroAt === null ? total : frameToSeconds(outroAt);
   if (to - from <= gap) return [];
   const devices = chapters.slice(1).map((chapter) => chapter.start).filter((at) => at >= from && at < to);
+  let aside = null;
   for (const { line } of eachLine(doc)) {
     const frame = starts.get(line.id);
     if (frame === undefined) continue;
     const at = frameToSeconds(frame);
     if (at < from || at >= to) continue;
     if (QUESTION.test(line.text) || Object.values(OPEN_LOOP_FAMILY).some((pattern) => pattern.test(line.text))) devices.push(at);
+    else if (asides && LIST_ITEM_OPENER.test(line.text)) devices.push(at);
+    else if (asides && aside === null && ASIDE_OPENER.test(line.text)) {
+      aside = at;
+      devices.push(at);
+    }
   }
   const points = [from, ...devices.sort((a, b) => a - b), to];
   const problems = [];
   for (let index = 1; index < points.length; index++) {
     const stretch = points[index] - points[index - 1];
-    if (stretch <= gap) continue;
+    if (stretch <= (points[index - 1] === aside ? Math.max(gap, ASIDE_GAP_SECONDS) : gap)) continue;
     problems.push({ path: "scenes", message: `no open loop between ${formatClock(points[index - 1])} and ${formatClock(points[index])} (${Math.round(stretch)} s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every ${gap} s (script-writing.md §故事主線與鉤子)` });
   }
   return problems;
@@ -509,7 +531,7 @@ export function narrativeProblems(doc, timeline, { minutes, cadence = DEFAULT_CA
   const told = cadence.gap <= TIGHT_CADENCE.gap ? viewerAddressProblems(doc) : [];
   return {
     errors: tag(outroNextVideoProblems(doc)),
-    warnings: tag([...chapterOpenerProblems(doc, timeline), ...hookCadenceProblems(doc, timeline, cadence.gap), ...loopProblems(doc, timeline, length, cadence.loopsPer10), ...repeatedFactProblems(doc), ...caveatRecitationProblems(doc), ...questionMenuProblems(doc, timeline), ...thumbnailEchoProblems(doc, timeline), ...titleProblems(doc), ...told]),
+    warnings: tag([...chapterOpenerProblems(doc, timeline), ...hookCadenceProblems(doc, timeline, cadence.gap, { asides: cadence.gap <= TIGHT_CADENCE.gap }), ...loopProblems(doc, timeline, length, cadence.loopsPer10), ...repeatedFactProblems(doc), ...caveatRecitationProblems(doc), ...questionMenuProblems(doc, timeline), ...thumbnailEchoProblems(doc, timeline), ...titleProblems(doc), ...told]),
   };
 }
 
@@ -574,12 +596,13 @@ export const TUTORIAL_PANEL_QUESTIONS = Object.freeze({
  */
 export const STORY_SERIES_PANEL_QUESTIONS = Object.freeze({
   scene_first: "第一句是否就讓完全沒看過的人聽懂這是什麼、為什麼值得看（一個問句或觀眾熟悉的情境），開場是否沒有丟出觀眾還不認識的人名、文件或線索？打招呼、「今天要來分享」不算。",
-  no_spoiler: "開場（第一章）是否只講終點多大、起點多小和最多一兩個高潮的名字，沒有先把劇情照順序濃縮一遍，也沒有講掉轉折怎麼發生、原因或結局？",
+  no_spoiler: "開場（第一章）是否只講終點多大、起點多小和最多一兩個高潮的名字，沒有先把劇情照順序濃縮一遍，也沒有講掉轉折怎麼發生、原因的細節或結局？（開場可以用一句話點出答案的方向，例如「真正的原因不在對手，在自己人」，整個開場只一句：它只說往哪裡看，不說發生了什麼，不算講掉。）",
   one_line: "全片是否大致照時間順序講一個故事：承諾句之後從年代與處境講起、主角才登場，倒敘只是小段而且開頭有明確的時間提示（「其實早在 1969 年」），沒有回頭把同一段再講一次？",
-  no_toc: "是否沒有任何一句只是在宣告這支片分幾段（「接下來分三段」「第一…第二…最後」「先講 A 再講 B」「這一章回答…」）或把後面的內容排成清單？開場可以有一句「今天我們就來聊聊…」的承諾句，說出這集要回答的問題，整支片只一次。",
+  no_toc: "是否沒有任何一句只是在宣告這支片分幾段（「接下來分三段」「第一…第二…最後」「先講 A 再講 B」「這一章回答…」）或把後面的內容排成清單？開場可以有一句「今天我們就來聊聊…」的承諾句，說出這集要回答的問題，整支片只一次。正文可以有一段編號清單，全片最多一段：先給總數和一個掛著的問題（「把它救回來的是三個人」），每一項是一件發生的事（誰、做了什麼、結果），不算宣告；開場的清單、第二段清單，或每一項只是一個標題的清單，仍算。",
   chapters_link: "故事是否從頭到尾連貫、沒有沒頭沒尾的地方：每個人物、公司、文件出現時都先交代是誰或是什麼；每一段、每一章第一句都用轉場接住上一段（「但就在這時候」「時間快轉到 1983 年」「問題來了」）或上一章留下的疑問？標籤、總結、重述剛問過的話不算銜接。",
   opening_hooks: "開場是否在約 1 分 05 秒內做到：一個問句或情境、終點多大和起點多小的反差（帶數字）、最多一兩個停在結果之前的高潮標籤，再用一句承諾句「今天我們就來聊聊…」說出這集要回答的問題？（「接下來我們會看到」這種空宣告不算；超過兩個預告、或把劇情照順序講一遍，也算沒做到。）",
-  no_detour: "是否沒有岔出去或變成年報與校勘朗讀的段落：每一段都透過人的困境與出招推進開場那個問題，沒有整段脫離主線，沒有連著念法條但書、年報揭露或「查不到／沒有公布」，也沒有逐條對照三個以上史料版本或產品清單？",
+  no_detour: "是否沒有岔出去或變成年報與校勘朗讀的段落：每一段都透過人的困境與出招推進開場那個問題，沒有整段脫離主線，沒有連著念法條但書、年報揭露或「查不到／沒有公布」，也沒有逐條對照三個以上史料版本或產品清單？（全片可以有一次預告過的岔題：先用一句話說它為什麼值得聽，例如「這裡先岔開講一個支線，因為後面會用到」，約一分鐘內講完並接回主線，不算岔出去；沒有預告、第二次岔題，或明顯超過一分鐘，仍算。）",
+  no_recap: "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？章末可以有一句定論（「這就是它真正的起點」），只要那一句帶的是新的說法，就不算重講；把那一章講過的事實再念一遍，仍算。",
 });
 /** Whether a script belongs to one of the two story series the viewer wording reads. */
 export const isStorySeries = (doc) => /^(?:curio|story)-/.test(doc?.slug ?? "");

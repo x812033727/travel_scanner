@@ -9,6 +9,9 @@ import {
   DEFAULT_CADENCE,
   chapterOpenerProblems,
   HOOK_GAP_SECONDS,
+  ASIDE_GAP_SECONDS,
+  ASIDE_OPENER,
+  LIST_ITEM_OPENER,
   hookCadenceProblems,
   isNarrated,
   LABEL_OPENERS,
@@ -123,6 +126,49 @@ test("the body carries an open loop at least every 90 seconds: a question, a for
     });
     assert.deepEqual(hookCadenceProblems(hooked, estimateTimeline(hooked)), [], device);
   }
+});
+
+test("where asides are read, one announced aside may run to 75 seconds and each item of a counted list is a turn", () => {
+  assert.equal(ASIDE_GAP_SECONDS, 75);
+  for (const opener of ["這裡先稍微科普一下。", "還有一個支線故事。", "先岔開講一件事。"]) assert.match(opener, ASIDE_OPENER);
+  for (const item of ["第一個人是工程師。", "第二尊大神來了。", "第三步是關掉它。"]) assert.match(item, LIST_ITEM_OPENER);
+  assert.doesNotMatch("第一次世界大戰剛結束。", LIST_ITEM_OPENER);
+  const flat = () => {
+    const doc = stretched();
+    for (const scene of padScenes(doc)) delete scene.chapter;
+    return doc;
+  };
+  const plain = flat();
+  const before = hookCadenceProblems(plain, estimateTimeline(plain), TIGHT_CADENCE.gap, { asides: true });
+  assert.ok(before.length > 0, "nothing hanging is still a warning");
+  // A counted list told as events: every item closes the gap.
+  const listed = flat();
+  padScenes(listed).forEach((scene, index) => {
+    scene.lines[0].text = `第${"一二三四五六七八九十"[index % 10]}個人做了一件事。`;
+  });
+  assert.deepEqual(hookCadenceProblems(listed, estimateTimeline(listed), TIGHT_CADENCE.gap, { asides: true }), []);
+  assert.ok(hookCadenceProblems(listed, estimateTimeline(listed), TIGHT_CADENCE.gap).length > 0, "the other narrated videos do not read list items");
+  // An announced aside buys its own stretch 75 seconds, once: the same words without the reading warn sooner.
+  const aside = flat();
+  padScenes(aside)[0].lines[0].text = "這裡先稍微科普一下。";
+  const read = hookCadenceProblems(aside, estimateTimeline(aside), TIGHT_CADENCE.gap, { asides: true });
+  const unread = hookCadenceProblems(aside, estimateTimeline(aside), TIGHT_CADENCE.gap);
+  assert.ok(read.length <= unread.length);
+  const seconds = (problems) => problems.map((problem) => Number(/\((\d+) s\)/.exec(problem.message)[1]));
+  assert.ok(seconds(read).every((each) => each > TIGHT_CADENCE.gap));
+});
+
+test("the ten-step panel carries the owner's four decisions of 2026-11-19", () => {
+  const byId = new Map(panelQuestions({ slug: "curio-fixture" }).map((question) => [question.id, question.question]));
+  assert.match(byId.get("no_spoiler"), /可以用一句話點出答案的方向/);
+  assert.match(byId.get("no_spoiler"), /原因的細節或結局/);
+  assert.match(byId.get("no_toc"), /全片最多一段：先給總數和一個掛著的問題/);
+  assert.match(byId.get("no_detour"), /全片可以有一次預告過的岔題/);
+  assert.match(byId.get("no_recap"), /章末可以有一句定論/);
+  const explainer = new Map(panelQuestions({ slug: "sothatswhy-fixture" }).map((question) => [question.id, question.question]));
+  for (const id of ["no_spoiler", "no_toc", "no_detour", "no_recap"]) assert.equal(explainer.get(id), byId.get(id), id);
+  const other = new Map(panelQuestions({ slug: "ai-fixture" }).map((question) => [question.id, question.question]));
+  assert.doesNotMatch(other.get("no_detour"), /預告過的岔題/, "the other narrated videos keep their wording");
 });
 
 test("the loops table: enough for the length, three planted in the condensation, none in the outro", () => {

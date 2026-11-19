@@ -218,7 +218,9 @@ export const STORY_OPENING_RULE = `Shape of an episode of this series (owner, 20
      aside); the other questions become the loops the later chapters open. Then the contrast, how big it ended up (with its number) against how
      small it started, and at most one or two labels of later climaxes (「一場差點破產的大戰」),
      each cut off before its result. Never how it got there, never the turns or their causes,
-     never the story told in order. The first sentence alone tells somebody who knows nothing
+     never the story told in order. One sentence, and only one, may say which way the answer
+     lies (owner, 2026-11-19: 「真正的原因不在對手，在自己人」): it tells the viewer where to look,
+     never what happened, and the viewer stays to see how. The first sentence alone tells somebody who knows nothing
      what this is and why it is worth watching: no person, document or clue the viewer has not
      met yet.
   2. The promise, landing at about 0:40 to 1:05: 「今天我們就來聊聊…」 with the question the
@@ -240,7 +242,18 @@ export const STORY_OPENING_RULE = `Shape of an episode of this series (owner, 20
   introduced (who or what, and when) before it does anything, a term where the protagonist meets
   it, and every paragraph opens on a transition from the one before (「但就在這時候」「時間快轉到
   1983 年」「問題來了」). The hook's contrast, its one or two climax labels and the promise's
-  question are the loops the first chapter plants, paid off in steps 5 to 9.`;
+  question are the loops the first chapter plants, paid off in steps 5 to 9.
+  Three exceptions the owner allowed on 2026-11-19 (黑猫研究院's 13 most watched, read line by
+  line), each at most as often as it says:
+  - One aside in the whole episode, announced before it is taken: a sentence saying why it is
+    worth hearing (「這裡先岔開講一個支線，因為後面會用到」), at most a minute carried by one whole
+    metaphor or three concrete details, then a sentence back to the story.
+  - One counted list in the body, never in the opening: its count and a question left hanging
+    first (「把它救回來的是三個人」), then each item an event (who, what they did, what came of
+    it) opened on its number (「第一個人是…」). A list of headings is still a table of contents.
+  - A chapter may close on one verdict sentence before its open question (「這就是它真正的起點。
+    但問題來了…」): new words, never the chapter's facts again; the question still comes last.
+    In the two-voice explainer the host gives the verdict and the child asks the question.`;
 
 /**
  * What these two series show and how names are said (owner, 2026-11-05). The episodes are made

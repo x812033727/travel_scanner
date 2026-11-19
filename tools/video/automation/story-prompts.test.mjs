@@ -42,6 +42,11 @@ test("a story's writer follows the ten steps and talks to one viewer, after the 
   assert.match(STORY_OPENING_RULE, /The first chapter ends\s+here \(40 to 90 seconds; lint warns outside them\)/);
   assert.match(STORY_OPENING_RULE, /A flashback is a short insert opened by a plain time cue/);
   assert.match(STORY_OPENING_RULE, /Nothing arrives out of nowhere/);
+  // The owner's four decisions of 2026-11-19: the answer's direction, one aside, one counted list, a verdict before the open question.
+  assert.match(STORY_OPENING_RULE, /One sentence, and only one, may say which way the answer\s+lies/);
+  assert.match(STORY_OPENING_RULE, /One aside in the whole episode, announced before it is taken/);
+  assert.match(STORY_OPENING_RULE, /One counted list in the body, never in the opening/);
+  assert.match(STORY_OPENING_RULE, /A chapter may close on one verdict sentence before its open question/);
   assert.ok(!writer.includes(CONDENSATION_RULE), "the story writer no longer carries the condensation it replaces");
   assert.match(TOLD_TO_ONE_VIEWER, /Lint warns under two 「你」 a thousand characters/);
   assert.match(TOLD_TO_ONE_VIEWER, /about 4\.5 spoken characters a second/);
