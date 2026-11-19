@@ -1,0 +1,50 @@
+---
+id: 2026-11-19-opening-300s-independent-review
+title: Strict first-300-seconds review by three independent readers before any voice
+status: done
+priority: P1
+area: tools
+owner: claude-opus-elegant-hypatia
+claimed_at: 2026-11-19T02:55:32Z
+created_at: 2026-11-19T03:00:00Z
+completed_at: 2026-11-19T02:55:33Z
+branch: claude/elegant-hypatia-07i3yx
+depends_on: []
+scope:
+  - tools/video/core/opening-review.mjs
+  - tools/video/core/opening-review.test.mjs
+  - tools/video/cli.mjs
+  - tools/video/tts/cli.mjs
+  - docs/videos/so-thats-why/dialogue-pilot-20261103/README.md
+  - .agents/skills/curio-episode/SKILL.md
+  - .claude/skills/curio-episode/SKILL.md
+  - .agents/skills/brand-story/SKILL.md
+  - .claude/skills/brand-story/SKILL.md
+  - .agents/skills/youtube-video/references/script-writing.md
+  - docs/videos/lessons/sothatswhy.md
+  - docs/videos/lessons/curio.md
+---
+
+# Strict first-300-seconds review by three independent readers before any voice
+
+## Why
+
+Owner 2026-11-19: 「應該要前300秒都不會滑走比較好，嚴格審核」「多一點獨立代理來看」. The new opening
+rules were only warnings, and hand-made 原來如此 / 奇聞 / brand-story episodes never pass the script
+gate (they go straight to storyboard and final), so nothing held a weak opening before paid voice.
+
+## Definition of done
+
+- [x] `opening-review --slug S` writes the packet (thumbnail, title, first 300 s timed); `--record F --author A`
+      records three readers' verdicts bound to the script.
+- [x] Pass only when three distinct readers (not the author), one per persona (newcomer, scroller,
+      stickler), each score >= 8.5, would stay 300 s, swipe_at null and problems empty; any edit invalidates.
+- [x] `tts` refuses a hand-made episode of the three series until it passes (not a dry run, not a host
+      worker video with auto.json, not a cut with a final approval).
+- [x] Skills, the sothatswhy template, script-writing.md and lessons describe the step.
+
+## How to verify
+
+```bash
+node --test tools/video/core/opening-review.test.mjs && npm run test:tools
+```

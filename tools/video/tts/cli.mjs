@@ -14,6 +14,7 @@ import { requireStorySpeechLexicon } from "../core/lexicon-store.mjs";
 import { StoryLexiconError } from "../core/story-lexicon.mjs";
 import { atomicWrite, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { requireProjectLease } from "../core/project-lease.mjs";
+import { needsOpeningReview, OPENING_REVIEW, OPENING_REVIEW_SECONDS, openingReviewProblems } from "../core/opening-review.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { buildTimeline, checkChapters, formatClock, frameToSeconds, speechHash } from "../core/timeline.mjs";
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
@@ -400,6 +401,12 @@ async function tts(args, ctx) {
   const estimate = requests.reduce((sum, request) => sum + billableForRequest(request.body), 0);
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
   requireStorySpeechLexicon(project, workdir);
+  // 原來如此, 奇聞 and brand stories made by hand pass the strict first-300-seconds review before
+  // any voice is paid for (owner, 2026-11-19; core/opening-review.mjs).
+  if (!values["dry-run"] && needsOpeningReview(doc, { series: project.series, workdir })) {
+    const problems = openingReviewProblems(doc, readJson(path.join(workdir, ...OPENING_REVIEW), null));
+    if (problems.length) throw new UsageError(`the first ${OPENING_REVIEW_SECONDS} seconds have not passed the opening review: ${problems.join("; ")}`);
+  }
   const cache = readCache(workdir);
   const redo = values.redo ? flaggedLines(readJson(path.resolve(values.redo))) : new Set();
   // A flagged repeat belongs to the same take: retake its original once, then replace all repeats.

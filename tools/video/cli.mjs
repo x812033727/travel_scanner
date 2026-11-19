@@ -20,6 +20,7 @@ import { estimateTimeline } from "./core/timeline.mjs";
 import { eachLine, LINE_ID } from "./core/schema.mjs";
 import { StageError, runCaptions } from "./core/stages.mjs";
 import { narrativeHash, writeScreenplay } from "./core/screenplay.mjs";
+import { OPENING_PACKET, OPENING_PERSONAS, OPENING_REVIEW, openingPacket, openingReviewProblems, openingReviewRecord } from "./core/opening-review.mjs";
 import { lintProject, loadProject, pipelineStatus } from "./core/state.mjs";
 
 // `incomplete`: a STOP file ended the stage before it finished. What it made so far is kept and a
@@ -80,6 +81,9 @@ Usage: node tools/video/cli.mjs <command> [options]
   ids      [--count N] [--slug S]                  fresh line ids that are not in use
   approve  --slug S --gate outline|script|look|storyboard|audio|final|publish [--workdir D] [--note T]
                                                    record the owner's approval of the file as it is now
+  opening-review --slug S [--record F --author A] [--workdir D]
+                                                   the strict first-300-seconds review of 原來如此, 奇聞 and brand stories:
+                                                   writes the packet, or records three independent readers' verdicts; tts waits for it
   narrative --slug S [--answers F] [--workdir D] [--json]
                                                    the storytelling panel (script-writing.md §故事主線與鉤子): without --answers it
                                                    prints the narration and its ten yes-or-no questions for a blind reader; with
@@ -268,6 +272,38 @@ async function cmdNarrative(args, ctx) {
   return verdict.passed ? EXIT.ok : EXIT.lint;
 }
 
+/**
+ * The opening review (core/opening-review.mjs; owner, 2026-11-19): without --record it writes the
+ * packet three independent readers read (review/opening-packet.md); with --record <file> (a JSON
+ * array of their verdicts) and --author it records the round bound to the script and exits 1 until
+ * every reader would stay the first 300 seconds with nothing to fix. tts refuses until it passes.
+ */
+async function cmdOpeningReview(args, ctx) {
+  const values = parse(args, { slug: { type: "string" }, workdir: { type: "string" }, record: { type: "string" }, author: { type: "string" } });
+  if (!values.slug) throw new UsageError("opening-review needs --slug");
+  const project = loadProject({ slug: values.slug, root: ctx.root });
+  const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: project.doc.slug, root: ctx.root });
+  const reviewFile = path.join(workdir, ...OPENING_REVIEW);
+  if (!values.record) {
+    const packet = path.join(workdir, ...OPENING_PACKET);
+    mkdirSync(path.dirname(packet), { recursive: true });
+    atomicWrite(packet, openingPacket(project.doc));
+    ctx.stdout.write(`${project.doc.slug}: wrote ${packet}\nGive it to three independent readers in fresh sessions, one per persona (${Object.keys(OPENING_PERSONAS).join(", ")}), then record their JSON answers with --record <file> --author <you>.\n`);
+    return EXIT.ok;
+  }
+  if (!values.author) throw new UsageError("opening-review --record needs --author (the agent that wrote the script)");
+  const verdicts = readJson(path.resolve(values.record));
+  if (!Array.isArray(verdicts)) throw new UsageError("--record names a JSON array of the readers' verdicts");
+  const round = (readJson(reviewFile, null)?.round ?? 0) + 1;
+  const record = openingReviewRecord(project.doc, verdicts, { author: values.author, round, at: ctx.now() });
+  mkdirSync(path.dirname(reviewFile), { recursive: true });
+  atomicWrite(reviewFile, `${JSON.stringify(record, null, 2)}\n`);
+  const problems = openingReviewProblems(project.doc, record);
+  ctx.stdout.write(`${project.doc.slug}: opening review round ${round} ${problems.length ? "failed" : "passed"} (${reviewFile})\n`);
+  for (const problem of problems) ctx.stdout.write(`  FAIL  ${problem}\n`);
+  return problems.length ? EXIT.lint : EXIT.ok;
+}
+
 async function cmdScript(args, ctx) {
   const values = parse(args, { slug: { type: "string" } });
   if (!values.slug) throw new UsageError("script needs --slug");
@@ -374,7 +410,7 @@ async function delegate(command, args, ctx) {
   return module.run(command, args, { ...ctx, EXIT });
 }
 
-const COMMANDS = { lint: cmdLint, status: cmdStatus, ids: cmdIds, approve: cmdApprove, narrative: cmdNarrative, script: cmdScript, captions: cmdCaptions, "story-lexicon-migrate": cmdStoryLexiconMigrate, "story-lexicon-revise": cmdStoryLexiconRevise };
+const COMMANDS = { lint: cmdLint, status: cmdStatus, ids: cmdIds, approve: cmdApprove, narrative: cmdNarrative, "opening-review": cmdOpeningReview, script: cmdScript, captions: cmdCaptions, "story-lexicon-migrate": cmdStoryLexiconMigrate, "story-lexicon-revise": cmdStoryLexiconRevise };
 
 export async function main(argv, overrides = {}) {
   const ctx = { root: ROOT, here: HERE, env: process.env, stdout: process.stdout, stderr: process.stderr, now: () => new Date(), ...overrides };
