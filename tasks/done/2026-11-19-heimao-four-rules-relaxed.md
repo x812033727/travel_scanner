@@ -70,8 +70,7 @@ npm run test:tools && npm run check:tasks
 ## Notes
 
 - 52 條的完整報告與兩個系列的逐條對照只在那次對話裡，沒有寫進 repo；這張票只落實站主決定的部分。
-- 沒做、另外要處理的：奇聞題庫工具 `tools/video/curio/pool/core.mjs` 的 `LONG_MAX = 13` 仍會擋超過
-  13 分鐘的題案（改它要連帶重產題案文件）；兩個系列規則檔內部三十多處互相矛盾的舊數字；52 條裡
+- 奇聞題庫工具的 13 分鐘上限由 PR #2181 拿掉（同一天合併）。沒做、另外要處理的：兩個系列規則檔內部三十多處互相矛盾的舊數字；52 條裡
   「沒有／部分」的其餘手法。
 - 改盲評題目會讓還沒過關的稿子用新題目重讀；已過關的收據照 `narrative.mjs` 的版本規則處理。
 - 四份撰稿提示（`writer:explainer-cartoon`、`writer:discuss-cartoon`、`writer:explainer-mystery`、
