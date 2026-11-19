@@ -124,10 +124,10 @@ test("one table maps each explainer preset to its variants; every name fits the 
 // one-off on the host stops with video_ai_receipt_input_changed at its next stage after the deploy.
 const SERIES_TEXT_PINS = {
   "planner:bible-explainer-cartoon": [6519, "078f8a30dac91dbf89bb03f33c9672404ec96bb4dd130765f2b72f1ff5d8810f"],
-  "writer:explainer-cartoon": [33632, "245d1d749facd12207da31f54c84c75a4cffb7094465ad988476b4958b1accab"],
+  "writer:explainer-cartoon": [34216, "41e048cb96da62d93cdea4c42d9d57a59ea4b33840d9273311495a2b02f61919"],
   "verifier:explainer-cartoon": [4305, "6f41570e5090987327a200b7790a6ecdec88c8a0350de2ca49b74cb4e7ca95db"],
   "planner:discuss-cartoon": [7246, "86fb87e98cce5315e954f8505f00c56d3aa6693ccec3e9e72d70cbb7fee014c4"],
-  "writer:discuss-cartoon": [32097, "d1ecb86c0ad68409ecbbb3e0db137882a5900a27f9ac39aff706551af082dd18"],
+  "writer:discuss-cartoon": [32681, "890f1a4371096857a3dfc98ac7fe03e92ad28af1e3b66196379f6b29c706b146"],
   "planner:bible-explainer-mystery": [9615, "8eb4a18c04b487826fa483303f255aa5b1bb8050836d597aa923038ce7b22172"],
   "writer:explainer-mystery": [38236, "521eb34b3427f6919a7785282f6bbeba34eb0726df46fc83b7adba67bc56e2fa"],
   "verifier:explainer-mystery": [6433, "e84a1810dab0b060272622dae14a95879470965678851713608fc5ac60dc4b2a"],

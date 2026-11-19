@@ -767,3 +767,22 @@ test("the ten-step series plant two loops in the opening (contrast and promise),
   doc.loops[1].setup = "cd04";
   assert.doesNotMatch(messages(loopProblems(doc, timeline, minutes)), /plants \d+ loops?;/, "two are enough; the menu of three or four is not asked for");
 });
+
+import { titleProblems, TITLE_CORE_MAX } from "./narrative.mjs";
+
+test("titles of the three series follow 黑猫研究院: name up front, a stake word, a number, one question, short, not a calm reading question (owner 2026-11-19)", () => {
+  assert.equal(TITLE_CORE_MAX, 30);
+  const doc = (title, headline = "船在走 人沒了") => ({ slug: "curio-x01", youtube: { title }, thumbnail: { data: { headline } } });
+  assert.deepEqual(titleProblems(doc("十個人全部消失，1872 年這艘船為什麼還在走？｜奇聞檔案局")), [], "the series' own example passes");
+  assert.deepEqual(titleProblems(doc("賣輪胎的公司，憑什麼決定全世界最好吃的 3 星餐廳？｜品牌故事")), []);
+  const messages = (title, headline) => titleProblems(doc(title, headline)).map((problem) => problem.message).join("\n");
+  assert.match(messages("燈塔的故事改了哪裡？｜奇聞檔案局"), /calm reading question/);
+  assert.match(messages("燈塔的故事改了哪裡？｜奇聞檔案局"), /no number or year/);
+  assert.match(messages("燈塔看守人的故事｜奇聞檔案局"), /asks no question/);
+  assert.match(messages("為什麼 1872 年這艘船還在走？為什麼人不見了？｜奇聞檔案局"), /asks 2 questions/);
+  assert.match(messages("一艘在大西洋上漂流了很久很久很久很久的船上面的十個人到底去哪裡了呢？｜奇聞檔案局"), /characters before the series suffix/);
+  assert.match(messages("那艘在大西洋上漂了很久的船上的人去哪裡，1872 年消失？｜奇聞檔案局"), /phone cuts the title/);
+  assert.match(messages("船在走人沒了，1872 年為什麼？｜奇聞檔案局", "船在走人沒了"), /only repeats the title/);
+  assert.deepEqual(titleProblems({ slug: "daily-ai-20261119", youtube: { title: "AI 新聞" } }), [], "other series are untouched");
+  assert.deepEqual(titleProblems({ slug: "sothatswhy-x01", youtube: { title: "冰箱門一關，燈竟然真的會熄？｜原來如此事務所" } }), [], "原來如此 adds a number only where it is useful (refresh SPEC)");
+});

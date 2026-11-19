@@ -454,6 +454,44 @@ export function thumbnailEchoProblems(doc, timeline, { series = null } = {}) {
 }
 
 /**
+ * The title of 奇聞檔案局, a brand story or 原來如此事務所, written the way 黑猫研究院 writes its most
+ * watched ones (owner, 2026-11-19: 「先照黑貓的方式做」; curio-episode SKILL.md §標題與縮圖 measured
+ * their top ten on 2026-10-25): the name everybody knows up front, one stake or surprise word, a
+ * number or a year, one question; short enough that a phone shows the point before it cuts; never a
+ * calm reading question; and the thumbnail says something the title does not.
+ */
+export const TITLE_CORE_MAX = 30;
+/** About what a phone feed shows before it cuts a title. */
+export const TITLE_PHONE_CHARACTERS = 18;
+export const TITLE_STAKE = /消失|不敢|騙過|差點|全部|真相|憑什麼|竟然|居然|反而|其實|根本|偷|毀|救|死|活|輸|贏|搶|逼|賠|賺|禁|怕|錯|假|騙|殺|逃|瘋|暴|唯一|第一|最|從來|沒人|沒有人|不是|不會|還能|還在|為什麼/;
+export const TITLE_NUMBER = /[0-9０-９]|[一二三四五六七八九十百千萬億兩]+(?:年|個|次|人|天|秒|分|倍|成|億|萬|塊|元|歲|代|國|種|件|艘|座|噸|公里|小時)/;
+export const CALM_TITLE = /改了哪裡|揭露了什麼|告訴我們什麼|有哪些|是什麼意思|怎麼看|的故事$|簡介|介紹|一次看懂|懶人包/;
+const titleCore = (title) => String(title ?? "").split(/[｜|]/)[0].trim();
+
+export function titleProblems(doc, { series = null } = {}) {
+  if (!isOpeningHookSeries(doc, series)) return [];
+  const title = doc.youtube?.title;
+  if (typeof title !== "string" || !title.trim()) return [];
+  const core = titleCore(title);
+  const problems = [];
+  const say = (message) => problems.push({ path: "youtube.title", message: `${message} (黑猫研究院's titles: the name everybody knows up front, one stake or surprise word, a number or a year, one question; curio-episode SKILL.md §標題與縮圖)` });
+  if ([...core].length > TITLE_CORE_MAX) say(`the title runs ${[...core].length} characters before the series suffix; keep it within ${TITLE_CORE_MAX}`);
+  const marks = (core.match(/[？?]/g) ?? []).length;
+  if (marks === 0) say("the title asks no question: end the hook on one question mark");
+  else if (marks > 1) say(`the title asks ${marks} questions: one is the hook, more is a menu`);
+  if (!TITLE_STAKE.test(core)) say("the title has no stake or surprise word (消失、騙過、差點、憑什麼、竟然、反而、還能…): say what was at risk or what nobody expects");
+  // 原來如此 adds a number only where it is useful and sourced (refresh-20261101/SPEC.md); the two
+  // story series always carry one, as 黑猫研究院 does.
+  if (!TITLE_NUMBER.test(core) && !/^sothatswhy-/.test(doc.slug ?? "")) say("the title has no number or year: one concrete figure makes the stake real");
+  if (CALM_TITLE.test(core)) say("the title reads as a calm reading question or a summary; make it the surprise itself");
+  const phone = [...core].slice(0, TITLE_PHONE_CHARACTERS).join("");
+  if ([...core].length > TITLE_PHONE_CHARACTERS && !TITLE_STAKE.test(phone) && !TITLE_NUMBER.test(phone)) say(`a phone cuts the title near ${TITLE_PHONE_CHARACTERS} characters and the stake and the number both come after it; bring one of them forward`);
+  const headline = String(doc.thumbnail?.data?.headline ?? "").replace(/\*\*/g, "").replace(/\s+/g, "");
+  if (headline.length >= 4 && core.replace(/\s+/g, "").includes(headline)) say("the thumbnail headline only repeats the title: let the thumbnail carry the contrast or the number the title does not");
+  return problems;
+}
+
+/**
  * What holds a script of 奇聞檔案局, a brand story or 原來如此事務所 at the script gate (owner, 2026-11-19:
  * these were only warnings, and a draft could reach the owner and paid audio and pictures with a
  * question menu or an opening that does not keep the thumbnail's promise). review-push --gate script
@@ -471,7 +509,7 @@ export function narrativeProblems(doc, timeline, { minutes, cadence = DEFAULT_CA
   const told = cadence.gap <= TIGHT_CADENCE.gap ? viewerAddressProblems(doc) : [];
   return {
     errors: tag(outroNextVideoProblems(doc)),
-    warnings: tag([...chapterOpenerProblems(doc, timeline), ...hookCadenceProblems(doc, timeline, cadence.gap), ...loopProblems(doc, timeline, length, cadence.loopsPer10), ...repeatedFactProblems(doc), ...caveatRecitationProblems(doc), ...questionMenuProblems(doc, timeline), ...thumbnailEchoProblems(doc, timeline), ...told]),
+    warnings: tag([...chapterOpenerProblems(doc, timeline), ...hookCadenceProblems(doc, timeline, cadence.gap), ...loopProblems(doc, timeline, length, cadence.loopsPer10), ...repeatedFactProblems(doc), ...caveatRecitationProblems(doc), ...questionMenuProblems(doc, timeline), ...thumbnailEchoProblems(doc, timeline), ...titleProblems(doc), ...told]),
   };
 }
 
