@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-19-pool-7617",
+  "revision": "2026-11-19-pool-7654",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "categories": [
     "物理化學與日常材料",
@@ -12,46 +12,46 @@
     "建築交通與商業制度"
   ],
   "counts": {
-    "raw_records": 8081,
-    "canonical_questions": 7921,
-    "eligible_candidates": 7728,
-    "selected_candidates": 7617,
+    "raw_records": 8118,
+    "canonical_questions": 7958,
+    "eligible_candidates": 7765,
+    "selected_candidates": 7654,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 8613,
-    "current_research_source_urls": 5681,
-    "selected_source_urls": 6628,
-    "new_suggestions_not_added": 3503,
+    "source_urls": 8651,
+    "current_research_source_urls": 5719,
+    "selected_source_urls": 6666,
+    "new_suggestions_not_added": 3511,
     "high_similarity_pending": 0,
     "approved_scripts": 0,
     "by_category": {
       "物理化學與日常材料": {
-        "canonical": 1827,
-        "selected": 1797
+        "canonical": 1835,
+        "selected": 1805
       },
       "生物動物與植物": {
-        "canonical": 1522,
-        "selected": 1511
+        "canonical": 1524,
+        "selected": 1513
       },
       "地球天氣與太空": {
-        "canonical": 960,
-        "selected": 957
+        "canonical": 961,
+        "selected": 958
       },
       "數位科技與通訊工程": {
-        "canonical": 1427,
-        "selected": 1347
+        "canonical": 1448,
+        "selected": 1368
       },
       "飲食與廚房科學": {
-        "canonical": 512,
-        "selected": 506
+        "canonical": 513,
+        "selected": 507
       },
       "人體感官與日常行為": {
-        "canonical": 586,
-        "selected": 574
+        "canonical": 589,
+        "selected": 577
       },
       "建築交通與商業制度": {
-        "canonical": 1087,
-        "selected": 925
+        "canonical": 1088,
+        "selected": 926
       }
     }
   },
@@ -2077,6 +2077,18 @@
       "sha256": "8e6b37dd5165fec6adff99a9d73df1898349f74f41d46c82889e47b5802b5dd1"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave130-craft-20261119.json",
+      "sha256": "c2479f314845a64afbe9b598feab66df3ae7c8410dd369d7adf5b4d424083f8e"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave130-everyday-20261119.json",
+      "sha256": "96072b8adfc3cf22b11bbee57b3883742b8fb188355892b6c6a0410460c7906b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave130-research-20261119.json",
+      "sha256": "18bca898a71691004c1e4a98cface1ef069152c750aba411e84e0b9162f25571"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json",
       "sha256": "f44c3f03a6e74c79e53a27fe0ab4a4d809ca20d91a1d4976cafe59bb5f02a4ed"
     },
@@ -3354,12 +3366,12 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "c27f4fbf2b03375082460e70ed7741c5cd475a543489534f518cb7f5ff4e6d08"
+      "sha256": "aa826780b72de910c40ac6b999863aa38d9dfdd310a5fdf949754715de6e5a81"
     }
   ],
   "sources": {
     "file": "pool-sources.json",
-    "count": 8613
+    "count": 8651
   },
   "candidates": [
     {
@@ -144646,6 +144658,1749 @@
       "question_variants": [],
       "provenance_ids": [
         "G13009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0401",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "中世紀的梅羅德銀杯上，三條藍綠色尖窗看起來像教堂的小窗。杯子明明是金屬做的，光從哪裡穿過來？",
+      "mechanism_key": "x130.metal.open_enamel_panels",
+      "answer_target": "先看杯身中段。銀片在這裡開了孔，外側裝上有框的琺瑯面板。工匠在小格裡燒好玻璃質的色料，再移去背後的襯底。尖窗下方依次是綠、藍、綠三道透光的長格，後方的光可以穿過色層；旁邊留著的銀帶仍擋光。",
+      "scope": "依 V&A 的 Mérode Cup 杯身面板，不用這件杯子推論所有琺瑯器都能透光。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "自繪一段杯壁和一扇綠藍綠尖窗，讓背後的光分別照到剩餘銀壁與無襯底的色格。",
+        "payoff": "色窗背後有真正的開口。拿掉背襯後，玻璃的顏色就能靠透射光亮起來。",
+        "seconds": [
+          31,
+          46
+        ]
+      },
+      "source_locator": "S02 的 physicalDescription 杯腹透空處，S01 的 Plique-à-jour 段。",
+      "notes": "開口上覆的是裝好的面板，杯壁各處的結構不同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館方藏品影像僅連結供核對。成片自繪局部、截面或工序示意。",
+      "origin": "wave130-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-535133c7e15823d4",
+          "origin": "wave130-craft-20261119",
+          "locator": "S02 的 physicalDescription 杯腹透空處，S01 的 Plique-à-jour 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-1b6915b10c4824ee",
+          "origin": "wave130-craft-20261119",
+          "locator": "S02 的 physicalDescription 杯腹透空處，S01 的 Plique-à-jour 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0401"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0402",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "畫著人與獅子的十二世紀琺瑯牌上，獅鬃是紅線，人物的頭髮是藍線。這兩種顏色怎麼留在那麼細的線裡？",
+      "mechanism_key": "x130.metal.engraved_lines_infill",
+      "answer_target": "這塊鎏金銅合金牌的細節要看刻痕。人臉與頭髮先刻出線，槽裡填藍色琺瑯；獅鬃的刻線則填入不透明的紅釉。館方解說的鏨胎工法先在金屬表面去掉一部分，讓色料有凹槽可以停留並在裡面燒成。同一塊圖牌還用過掐絲，必須分區辨認。",
+      "scope": "只指出館錄列名的頭髮與鬃毛兩處。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用銅色紙板截面畫兩段凹下的刻紋，各填紅或藍，旁邊保留一塊未挖的金屬作對照。",
+        "payoff": "紅鬃與藍髮有各自的刻槽；色線的路徑先留在銅胎裡。",
+        "seconds": [
+          28,
+          43
+        ]
+      },
+      "source_locator": "S03 的 Front 實物描述點出藍色臉部線紋與紅色鬃毛，S01 的 Champlévé enamelling 解釋凹槽工法。",
+      "notes": "不把牌上其餘色區也一律歸成鏨胎。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館方藏品影像僅連結供核對。成片自繪局部、截面或工序示意。",
+      "origin": "wave130-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-535133c7e15823d4",
+          "origin": "wave130-craft-20261119",
+          "locator": "S03 的 Front 實物描述點出藍色臉部線紋與紅色鬃毛，S01 的 Champlévé enamelling 解釋凹槽工法。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ad39cd32aa5d0148",
+          "origin": "wave130-craft-20261119",
+          "locator": "S03 的 Front 實物描述點出藍色臉部線紋與紅色鬃毛，S01 的 Champlévé enamelling 解釋凹槽工法。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0402"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0403",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "加特契納宮彩蛋表面已經覆了好幾層琺瑯，怎麼還透得出底下那麼整齊的細紋？",
+      "mechanism_key": "x130.metal.engraved_gold_under_enamel",
+      "answer_target": "華特斯館錄把蛋殼分成兩層來看。下面的黃金先用機械刻出規則的紋路，上面再施多層半透明琺瑯。V&A 的工法說明展示裝飾車床如何以穩定的深度切出一連串凹紋，覆上色料燒結、拋光後，金面的刻紋依然透得出來。",
+      "scope": "聚焦 1901 年加特契納宮彩蛋的蛋殼底紋。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "在自繪剖面先畫出有齒狀細槽的金面，再疊上半透明薄片；與不透明紙覆蓋的同一張圖並列。",
+        "payoff": "轉動彩蛋看到的細紋，先刻在金裡，最外面才是平滑的琺瑯。",
+        "seconds": [
+          28,
+          44
+        ]
+      },
+      "source_locator": "S04 蛋殼 guilloché 及 multiple layers 段，S05 的車床刻紋、玻璃粉和拋光段。",
+      "notes": "勿把蛋殼表面另外貼上的花飾、寶石也說成底層刻紋。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館方藏品影像僅連結供核對。成片自繪局部、截面或工序示意。",
+      "origin": "wave130-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b8ee836d0e574475",
+          "origin": "wave130-craft-20261119",
+          "locator": "S04 蛋殼 guilloché 及 multiple layers 段，S05 的車床刻紋、玻璃粉和拋光段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-c50f87608aded72d",
+          "origin": "wave130-craft-20261119",
+          "locator": "S04 蛋殼 guilloché 及 multiple layers 段，S05 的車床刻紋、玻璃粉和拋光段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0403"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0404",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "老墨水架有一排排鏤空，裡頭明明是銅，沖出小孔時怎麼把孔壁也包上銀色？",
+      "mechanism_key": "x130.metal.drawn_silver_piercings",
+      "answer_target": "謝菲爾德銀包銅把薄銀和銅先用熱貼合，一起軋成片。若把鏤空花紋一格格鋸掉，切面會露出銅色。館方把這件藍玻璃罐墨水架用作沖孔例子：沖頭壓進片材時，較軟的銀表層也隨沖頭往孔內延伸，蓋到孔壁上的銅。",
+      "scope": "約 1780 年英國銀包銅墨水架，分別指認銀架和藍玻璃罐。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "自畫銀包銅兩色截面，分成鋸開和沖壓兩格，只放大比較新形成的孔壁。",
+        "payoff": "孔邊的銀原本在板面上，沖頭把它一起帶進了孔裡。",
+        "seconds": [
+          30,
+          46
+        ]
+      },
+      "source_locator": "S06 的 Inkstand 兩段及 pierced arcade，S01 的 Fly pressing 段指明銀層隨沖頭包住銅芯。",
+      "notes": "沒有測過這件墨水架每個孔壁；呈現館方記載的製造機理。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館方藏品影像僅連結供核對。成片自繪局部、截面或工序示意。",
+      "origin": "wave130-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-535133c7e15823d4",
+          "origin": "wave130-craft-20261119",
+          "locator": "S06 的 Inkstand 兩段及 pierced arcade，S01 的 Fly pressing 段指明銀層隨沖頭包住銅芯。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b7798be595c100e3",
+          "origin": "wave130-craft-20261119",
+          "locator": "S06 的 Inkstand 兩段及 pierced arcade，S01 的 Fly pressing 段指明銀層隨沖頭包住銅芯。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0404"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0405",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "這件十八世紀腰掛佩鏈像鑲了一排碎鑽。為什麼做出閃光的那顆小釘子，當初還要給它做螺紋？",
+      "mechanism_key": "x130.metal.removable_faceted_steel",
+      "answer_target": "伍德斯托克這件佩鏈用的是有切面的鋼釘。匠人處理釘頭邊緣，讓許多小平面分別接住光，轉動佩鏈時，亮點便一個個閃起來。鋼還有生鏽的問題。V&A 的工藝說明指出這類釘子做有螺紋，能分別旋下清潔，再裝回去。",
+      "scope": "限這類切面鋼首飾的釘飾，不涉及佩鏈下端的印章或串珠。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "自畫心形掛扣下的鏈節，取一顆鋼釘放大，轉動帶出亮面的變化，再畫出背後螺紋。",
+        "payoff": "釘頭的切面負責閃光，釘背的螺紋讓容易鏽的零件可以單獨清潔。",
+        "seconds": [
+          28,
+          44
+        ]
+      },
+      "source_locator": "S07 的 physicalDescription 列出六條鏈及鋼釘；S01 的 Cut steel 段列出切面、螺紋及清潔用途。",
+      "notes": "對照館方的工藝說明，未實際拆卸藏品。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館方藏品影像僅連結供核對。成片自繪局部、截面或工序示意。",
+      "origin": "wave130-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-535133c7e15823d4",
+          "origin": "wave130-craft-20261119",
+          "locator": "S07 的 physicalDescription 列出六條鏈及鋼釘；S01 的 Cut steel 段列出切面、螺紋及清潔用途。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2d07f3132bf970d1",
+          "origin": "wave130-craft-20261119",
+          "locator": "S07 的 physicalDescription 列出六條鏈及鋼釘；S01 的 Cut steel 段列出切面、螺紋及清潔用途。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0405"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0406",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "這件像溪石的銀雕塑，表面的金色細流怎麼貼得住？金匠用的金一開始是什麼形狀？",
+      "mechanism_key": "x130.metal.heat_pressure_gold_foil",
+      "answer_target": "Jessica Jue 先用鎚子和成形支鐵把平銀片打成立體，外形取自水流過石頭。金色來自一縷縷 24K 薄金箔。她採用韓國的貼金工藝 keum-boo，讓貼在銀上的箔受熱、受壓，與底下的銀結合。雕塑的體積由銀片撐起，沿著外形走的金線則來自另外加上的箔。",
+      "scope": "限 Jessica Jue 2022 年的 Ever Flowing Sculpture。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "自製銀色紙模型，在表面順曲線貼窄金紙並畫出加熱、加壓的方向；標明紙只示意金箔的位置。",
+        "payoff": "銀片先立體成形，金箔再沿表面貼合。細流的顏色就藏在這一層。",
+        "seconds": [
+          31,
+          46
+        ]
+      },
+      "source_locator": "S08 的 physicalDescription、briefDescription 及提到 water flowing over pebbles 的館內標籤；S01 的 Keum-boo 段。",
+      "notes": "本卡只解釋材料與層次，不提供溫度或實作參數。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館方藏品影像僅連結供核對。成片自繪局部、截面或工序示意。",
+      "origin": "wave130-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-535133c7e15823d4",
+          "origin": "wave130-craft-20261119",
+          "locator": "S08 的 physicalDescription、briefDescription 及提到 water flowing over pebbles 的館內標籤；S01 的 Keum-boo 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8b18e742fe6388f8",
+          "origin": "wave130-craft-20261119",
+          "locator": "S08 的 physicalDescription、briefDescription 及提到 water flowing over pebbles 的館內標籤；S01 的 Keum-boo 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0406"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0407",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "玫瑰堡的王座旁原是銀獅。V&A 這隻長達 170 公分的複製獅也一身銀色，模具拆掉時，先得到的是哪種金屬？",
+      "mechanism_key": "x130.metal.detached_electroformed_copper",
+      "answer_target": "先從原作取模，在槽中讓銅沉積到模具上，逐漸形成能保留獅子外形的銅層。取走模具後，留下的是立體的銅製複本，還得在表面另鍍一層銀，才有眼前的銀色。館錄把這隻獅子的材質寫成銅上鍍銀，也記下它複製的是丹麥王室舊藏的銀獅。",
+      "scope": "只談 Elkington & Co. 約 1885 年製作、V&A 登錄為 REPRO.1885-194 的複本。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "畫出獅鬃的一小片陰模、沿模長出的銅層和脫模後覆上的銀色皮層，最後標示整件長度。",
+        "payoff": "銅留下獅形，銀留下外觀。去模後這兩道工序還隔著最後一次表面處理。",
+        "seconds": [
+          30,
+          46
+        ]
+      },
+      "source_locator": "S09 的 physicalDescription、summaryDescription 末段及長度 170 公分；S01 的 Electroforming 節。",
+      "notes": "館方配圖可見多隻獅子，題中尺寸只指該館藏編號。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館方藏品影像僅連結供核對。成片自繪局部、截面或工序示意。",
+      "origin": "wave130-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-535133c7e15823d4",
+          "origin": "wave130-craft-20261119",
+          "locator": "S09 的 physicalDescription、summaryDescription 末段及長度 170 公分；S01 的 Electroforming 節。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-93dde455b4794ab2",
+          "origin": "wave130-craft-20261119",
+          "locator": "S09 的 physicalDescription、summaryDescription 末段及長度 170 公分；S01 的 Electroforming 節。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0407"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0001",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "在日本郵局寄一張商品券，為什麼不能單獨選「現金書留」，可是加上一張日圓鈔票，兩樣又能放進同一封？",
+      "mechanism_key": "x130.daily.japanpost_voucher_cash_enclosure",
+      "answer_target": "商品券有面額，日本郵便仍將它和現金分開。只寄商品券時可選一般或簡易掛號；若同封日圓現金，這封郵件須按現金書留投寄，商品券可一併寄出。分岔點在於信封裡是否真的有現金。",
+      "scope": "日本國內郵便的商品券與日圓，按日本郵便規定使用適當封筒。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同面額的商品券和紙鈔，會把櫃檯的寄法分成兩條。",
+        "visual": "自畫兩只信封，一封只有禮券，另一封加上寫著日圓的紙條，再對照服務名稱。",
+        "seconds": [
+          25,
+          42
+        ]
+      },
+      "source_locator": "FAQ 644 全文；「書留」對現金內容物的規定。",
+      "notes": "不延伸到跨國寄送或私營快遞。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "不用真實券面、鈔票圖案或郵政標誌。",
+      "origin": "wave130-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c5cca2c7f62f78bb",
+          "origin": "wave130-everyday-20261119",
+          "locator": "FAQ 644 全文；「書留」對現金內容物的規定。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-1d983e6d55f6fbe9",
+          "origin": "wave130-everyday-20261119",
+          "locator": "FAQ 644 全文；「書留」對現金內容物的規定。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0002",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "甲、乙跳高都過了兩公尺。甲在低處失手兩次，乙只在兩公尺失手一次，為什麼名次反而可能是甲在前？",
+      "mechanism_key": "x130.daily.high_jump_countback_last_clearance",
+      "answer_target": "假設兩人的最後成功高度同為兩公尺，甲在這個高度一跳就過，乙要第二跳才過。田徑技術規則先比最後成功高度用了幾跳，這一步甲就領先。只有這項也相同，才累計到該高度為止的所有失敗。",
+      "scope": "依 World Athletics 技術規則 26.8，例子是決定非首名的名次，沒有特殊賽制。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "先用紙遮住下面幾排成績，只看兩公尺這一欄就已能排出甲、乙。",
+        "visual": "自畫兩名選手的 O、X 成績格，先亮出最後成功高度，再揭低處的失敗紀錄。",
+        "seconds": [
+          25,
+          42
+        ]
+      },
+      "source_locator": "Book C2.1，26.8.1–26.8.3。",
+      "notes": "首名仍平手時還有其他規定，這個例子在第一步已有結果。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "原創記分例，不用賽事轉播。",
+      "origin": "wave130-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-695749b5f667785e",
+          "origin": "wave130-everyday-20261119",
+          "locator": "Book C2.1，26.8.1–26.8.3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0003",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "種甜菜時，每個小洞明明只放一顆，怎麼同一點冒出兩三株，還得自己留下其中一株？",
+      "mechanism_key": "x130.daily.beet_seedball_multiple_fruits",
+      "answer_target": "常見餐用甜菜的那顆粗糙播種材料是種球，由多個各含一粒種子的果實長在一起。只放一顆種球，裡頭卻可能有幾粒種子各自發芽。若想收肥大的根，就要在同一小叢間苗，給留下的植株生長空間。",
+      "scope": "適用會出多苗的餐用甜菜種球；包裝若標單胚，不能照此預期出苗數。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "數的是播下去的種球，最後要留空間的卻是一株株甜菜。",
+        "visual": "自畫一顆種球的多果示意及同一位置的三株幼苗，標成示意不代表固定顆數。",
+        "seconds": [
+          25,
+          42
+        ]
+      },
+      "source_locator": "FSA6063，Planting 與「Every time I plant beet seeds…」問答。",
+      "notes": "示意數量不等於每個種球保證出三株。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪發芽對照，不轉印推廣圖。",
+      "origin": "wave130-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a20ba52df2cddc29",
+          "origin": "wave130-everyday-20261119",
+          "locator": "FSA6063，Planting 與「Every time I plant beet seeds…」問答。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0004",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "這季只想吃超甜玉米，完全不打算留種，隔壁同時開花的另一種甜玉米為什麼還是可能讓你吃到硬粒？",
+      "mechanism_key": "x130.daily.sweetcorn_pollen_sh_kernel_texture",
+      "answer_target": "玉米靠風把花粉帶到雌穗。明尼蘇達大學推廣指南指出，Shrunken 超甜型和其他類型混授粉，受影響的籽粒會變得帶澱粉感、口感偏硬。這些籽粒就是本季採來吃的部分。種植時拉開距離或安排開花時間錯開，保護的是眼前這一穗的口感。",
+      "scope": "例子限 Shrunken 型和不相容類型同期授粉；不把所有兩品種並種都視為相同結果。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "花粉換了來源，差異可以在正在形成的那穗就吃出來。",
+        "visual": "自繪兩排同時吐絲和散粉的玉米，以不同顏色標記花粉來源與部分受影響的籽粒。",
+        "seconds": [
+          25,
+          42
+        ]
+      },
+      "source_locator": "Shrunken、Isolate corn to prevent cross-pollination 及 Isolate by space and time。",
+      "notes": "K126-0008 講每根玉米鬚對一粒及缺粒；本題講已形成籽粒的口感。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "不用種子商包裝、田間照片或指南插圖。",
+      "origin": "wave130-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-ea7d53c8263c0150",
+          "origin": "wave130-everyday-20261119",
+          "locator": "Shrunken、Isolate corn to prevent cross-pollination 及 Isolate by space and time。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0005",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "空派殼已經用叉子戳好洞，烤出來邊緣還是往下滑。壓派石要顧到哪裡，才能保住那圈高度？",
+      "mechanism_key": "x130.daily.prebaked_crust_weight_sidewalls",
+      "answer_target": "King Arthur 的五張派殼試烤使用同一配方，冷藏並刺孔後分組。沒加重物的對照組明顯順著盤邊滑下；另外四組用重物撐住底與側壁，都保住了外形。作者也說，只在底部鋪一條烘焙鋼珠鏈，雖可壓住底部鼓起，覆蓋和重量卻不足以支撐旁邊那圈麵皮。",
+      "scope": "限文中隆起派邊的空殼與配方；鋼珠鏈是作者說明，五組實驗裡沒有鋼珠鏈組。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "用剖面看，只壓平盤底時，站在盤壁上的那圈麵皮仍少了一份支撐。",
+        "visual": "自畫派殼剖面，對比底上一道鏈與填滿側壁的米，五組結果另畫成示意紀錄。",
+        "seconds": [
+          25,
+          42
+        ]
+      },
+      "source_locator": "Baking trials，five crusts、control crust 及 stainless steel pie chain 段落。",
+      "notes": "空殼試驗四種壓重為矽膠重袋、陶珠、米、糖；不宣稱其他派皮一定同樣。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自畫剖面，不用試作者照片。",
+      "origin": "wave130-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-7bc232a898d64378",
+          "origin": "wave130-everyday-20261119",
+          "locator": "Baking trials，five crusts、control crust 及 stainless steel pie chain 段落。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0006",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "物流標籤上的 GS1-128 條碼，下方幾組數字各自有括號。為什麼掃出原始資料後，數字都在，唯獨括號消失了？",
+      "mechanism_key": "x130.daily.gs1_128_parentheses_hri",
+      "answer_target": "那些括號印給人看，幫忙認出每一個應用識別碼以及接著的資料。製作 GS1-128 符號時，並不將印在識別碼左右的括號編進黑條。讀取軟體依標準識別碼格式解讀資料，因此原始內容少了這兩個可見符號正是預期結果。",
+      "scope": "限 GS1-128 應用識別碼的人讀標示及符號內容。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一張標籤同時照顧人眼和讀碼器，兩邊用的分段線索不同。",
+        "visual": "自畫兩列示意資料，第一列標出括號，第二列只圈識別碼；不製作可被誤刷的真條碼。",
+        "seconds": [
+          25,
+          42
+        ]
+      },
+      "source_locator": "GS1 GO FAQ 43000734297，回答前兩段。",
+      "notes": "顯示軟體可以重新排版，螢幕有無括號不能單獨當作解碼品質檢查。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "原創示意，勿使用商品識別號或企業標誌。",
+      "origin": "wave130-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f8fc03251c3c7556",
+          "origin": "wave130-everyday-20261119",
+          "locator": "GS1 GO FAQ 43000734297，回答前兩段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0007",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "兩顆透明底線軸看起來差不多，一顆標 15，另一顆標 15J。把它們側身放平，哪個小差別能看出不能拿來互換？",
+      "mechanism_key": "x130.daily.singer_class15_15j_bobbin",
+      "answer_target": "SINGER 的對照說明把透明 Class 15 的上下端面列為全平，Class 15J 的兩端則帶很輕微的弧。表列尺寸也不同，前者直徑約 21 毫米、高約 12，後者約 20 毫米、高約 11。就算線能纏上兩顆，還是得依機型指定的底線軸類型裝。",
+      "scope": "只比較 SINGER 列的透明 Class 15 與 15J，數字採該頁公制標稱約值。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "辨清那個 J，再依機型選尺寸與端面都匹配的一顆。",
+        "visual": "自畫兩個放大的側面輪廓、放在尺邊的直徑，註明弧度為示意。",
+        "seconds": [
+          25,
+          42
+        ]
+      },
+      "source_locator": "How do I choose the right SINGER bobbin，兩款透明梭芯條目。",
+      "notes": "K118-0004 解釋兩條線如何做出鎖式線跡，此題回答替換件的外形規格。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "不用原廠照片、商標圖形或產品渲染。",
+      "origin": "wave130-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-70f085a8772c11c3",
+          "origin": "wave130-everyday-20261119",
+          "locator": "How do I choose the right SINGER bobbin，兩款透明梭芯條目。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0008",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "摸讀統一英語點字時，為什麼同一個單點可以是字母 a，也能是數字 1？要寫 12，得在每個數字前各加一次提示嗎？",
+      "mechanism_key": "x130.daily.ueb_numeric_mode_digits",
+      "answer_target": "在 UEB 裡，數字符會建立數字模式，接下來 a 到 j 的十種點形可以依序表示 1 到 0。要寫連在一起的整數 12，先放數字符，再接相當於 a 和 b 的兩格。第二位仍在這串數字中，只需讀成 2，毋須再放一次起頭符號。",
+      "scope": "統一英語點字 UEB 的連續整數 12，沒有空格或其他終止數字模式的符號。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把數字符放到兩格前面，後兩格連起來就能讀成十二。",
+        "visual": "自畫六點方格，分別演示單一字母 a、數字 1 與完整的 12。",
+        "seconds": [
+          25,
+          42
+        ]
+      },
+      "source_locator": "The Rules of Unified English Braille，§6.1–6.3 數字模式及規則例。",
+      "notes": "不同語文及數學或音樂專用點字體系須另查。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行以點位畫符號，不用手冊圖版。",
+      "origin": "wave130-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a387e1638f40ec70",
+          "origin": "wave130-everyday-20261119",
+          "locator": "The Rules of Unified English Braille，§6.1–6.3 數字模式及規則例。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0009",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "西洋棋輪到你走，自己的騎士歪在方格邊上。為什麼有時可以扶正後改走城堡，有時碰了騎士就得走它？",
+      "mechanism_key": "x130.daily.fide_touch_adjust_declaration",
+      "answer_target": "FIDE 規則允許輪到行棋的人先向對手表明只是要擺正，再把棋子放回原格。若原意是走棋而有意碰了自己的騎士，且它有合法走法，就必須走第一枚這樣碰到而能走的棋子。兩種動作手指碰到的是同一枚，事前聲明和接觸目的卻不同。",
+      "scope": "FIDE 實體對局，假設騎士可合法移動，且是這回合先碰的己方棋子。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "先開口再把它擺回原格，和先摸了準備走才改主意，裁判有不同條款可依。",
+        "visual": "以紙製棋子畫兩條時間線，一條先說要擺正，另一條先有意摸子行棋。",
+        "seconds": [
+          25,
+          42
+        ]
+      },
+      "source_locator": "FIDE Laws，4.2.1、4.2.2、4.3.1。",
+      "notes": "清楚的意外接觸及碰到多枚棋子的案例另論。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "原創紙棋盤，不用賽事截圖。",
+      "origin": "wave130-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-ee09812c6f5b0e57",
+          "origin": "wave130-everyday-20261119",
+          "locator": "FIDE Laws，4.2.1、4.2.2、4.3.1。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0010",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "機場觀測裡同時有 SCT025 和 BKN070，較稀疏的那層雲底在 2,500 英尺。為什麼報出的雲幕高卻要讀作 7,000 英尺？",
+      "mechanism_key": "x130.daily.metar_sct_bkn_ceiling",
+      "answer_target": "兩組尾碼標各層雲底離地的百英尺數。SCT 是疏雲，雖然它更低，卻未達構成雲幕的覆蓋類別。美國氣象局手冊把最低的 BKN（多雲）或 OVC（密雲）層列為雲幕。這筆特別觀測裡第一個符合的雲層是 BKN070，故為離地 7,000 英尺。",
+      "scope": "取 NWS 手冊 SPECI_KARA_061345Z 範例的天空狀況；完全遮蔽時另按垂直能見度處理。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "先挑出能算成雲幕的覆蓋類別，再在其中找最低的高度。",
+        "visual": "自畫兩層並標離地高度，以稀疏與大片雲塊表示代碼，在符合的層下加線。",
+        "seconds": [
+          25,
+          42
+        ]
+      },
+      "source_locator": "WSOH No. 8 §6.3.9、雲底高度三碼欄及 SPECI_KARA_061345Z 範例。",
+      "notes": "這裡只是讀懂觀測中的兩組雲況，不用來決定實際飛行。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "原創情境圖，不用飛行圖或 NWS 圖表。",
+      "origin": "wave130-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-6bee82f24a2494b6",
+          "origin": "wave130-everyday-20261119",
+          "locator": "WSOH No. 8 §6.3.9、雲底高度三碼欄及 SPECI_KARA_061345Z 範例。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0011",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "把 2003 年 12 月 29 日那筆收據按 ISO 週次歸檔，程式竟把它放進 2004 年第 1 週。明明跨年夜還沒到，程式提早換年了嗎？",
+      "mechanism_key": "x130.daily.iso_week_year_thursday",
+      "answer_target": "ISO 週曆從星期一到星期日，歸年的第 1 週要包含該公曆年的第一個星期四。2004 年 1 月 1 日恰好是星期四，那一週早在 2003 年 12 月 29 日星期一就開始了。Python 的 isocalendar() 因此回傳週年 2004、週次 1、星期數 1；收據上的公曆日期仍是 12 月 29 日。",
+      "scope": "示範 Python date.isocalendar() 與 ISO 週曆，不涉及自訂會計週。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "年末同一筆資料，依日期分一年，依完整的一週歸檔就可能落進下一年。",
+        "visual": "自畫七天橫排的小月曆，跨過元旦，標記星期四，再把整列圈為 W01。",
+        "seconds": [
+          25,
+          42
+        ]
+      },
+      "source_locator": "date.isocalendar() 段落及 date(2003, 12, 29) 範例。",
+      "notes": "週年欄必須和週次一起用，不代表所有報表都遵循 ISO。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "手繪日曆與自行輸入的示例，不用文件截圖。",
+      "origin": "wave130-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-af654527887648ff",
+          "origin": "wave130-everyday-20261119",
+          "locator": "date.isocalendar() 段落及 date(2003, 12, 29) 範例。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0012",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "直式講義用「長邊左側」雙面印，像書一樣往左翻。改印橫式講義，同樣想從左邊翻頁，為什麼選單這回得找「短邊左側」？",
+      "mechanism_key": "x130.daily.brother_landscape_flip_left",
+      "answer_target": "裝訂邊說的是紙張哪一條實體邊充當翻頁的軸。直式紙的左側是長邊，轉成橫式後左側就變成短邊。Brother 這款 Windows 驅動的表格也跟著方向換列：直式左側在 Long Edge，橫式左側在 Short Edge，橫式的長邊則在上或下。",
+      "scope": "Brother MFC-J5335DW 的 Windows 雙面列印設定，例子使用非正方形紙。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "先拿一張橫放的紙按住左邊翻，再回看驅動程式裡那條邊的名稱。",
+        "visual": "自畫直橫各兩頁，以鉸鏈線標左側，順著鉸鏈翻動畫在紙上的箭頭。",
+        "seconds": [
+          25,
+          42
+        ]
+      },
+      "source_locator": "2-sided Type 的 Option for Portrait／Option for Landscape 對照。",
+      "notes": "不將驅動程式顯示的名稱當作其他印表機的統一名稱。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行畫示意選項，不用廠商截圖。",
+      "origin": "wave130-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-eded3f5f08e7dc5a",
+          "origin": "wave130-everyday-20261119",
+          "locator": "2-sided Type 的 Option for Portrait／Option for Landscape 對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0012"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0201",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "雙方都拿出大瀧詠一《A LONG VACATION》的十二吋四十週年版，為什麼你要用 33 檔，朋友的盒裝版卻要用 45？",
+      "mechanism_key": "x130.record.edition_speed",
+      "answer_target": "日本索尼公告把 2021 年單售版寫作十二吋、一片、33 回轉；VOX 盒內的黑膠同是十二吋，卻是兩片、45 回轉。AT-LP70X 的 33 檔實際對應 33⅓ 轉。要照手上這個發行版本選速度。",
+      "scope": "限指定發行，未親見兩種盤標上的實際排字。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把同專輯的兩條規格抄到各自的內袋卡，速度欄會出現兩種答案。",
+        "visual": "自繪等大的圓，一側排一片，另一側排兩片，對照公告欄。",
+        "seconds": [
+          23,
+          40
+        ]
+      },
+      "source_locator": "X130D-S01 2020-11-23 新聞最後兩段，由 Tim Young 半速刻片到 VOX 兩片 45 回轉；X130D-S02 「サイズセレクター」及「回転数セレクター」兩步與 33-1/3、45 圖說",
+      "notes": "用自繪機構圖、規格抄錄和自製聲音示範。家庭聽片與錄音為假設情境，不重製商業音樂。",
+      "origin": "wave130-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-6bd769dfdaf0efaf",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S01 2020-11-23 新聞最後兩段，由 Tim Young 半速刻片到 VOX 兩片 45 回轉；X130D-S02 「サイズセレクター」及「回転数セレクター」兩步與 33-1/3、45 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2a16f2742d6e8427",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S01 2020-11-23 新聞最後兩段，由 Tim Young 半速刻片到 VOX 兩片 45 回轉；X130D-S02 「サイズセレクター」及「回転数セレクター」兩步與 33-1/3、45 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0201"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0202",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "假設有一段 45 轉時恰好長一分鐘的錄音，若用 33⅓ 轉去播，為什麼要等 81 秒才播完？",
+      "mechanism_key": "x130.record.constant_ratio",
+      "answer_target": "同一段聲音占用的圈數固定。原本 45 圈走一分鐘；每分鐘走 33⅓ 圈時，走完要 45÷(100/3) 分鐘，也就是 81 秒。波形相同的振動也被拉長，節奏與音高一起下降。",
+      "scope": "理想等速的算例；沒有把任何一首商業錄音的長度量成 60 秒。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "只要人聲和鼓點一同拉長到 1.35 倍，就值得先核對轉速檔。",
+        "visual": "用自錄口數加節拍做 60／81 秒兩條時間尺。",
+        "seconds": [
+          23,
+          40
+        ]
+      },
+      "source_locator": "X130D-S05 「レコードは片面何分まで収録可能でしょうか」「33 1/3回転と45回転の違い」的 7/12 吋表，及「レコードの外周部と内周部」；X130D-S03 Speed Multiplier、Percentage Change、Standard Vinyl rpm 三節",
+      "notes": "用自繪機構圖、規格抄錄和自製聲音示範。家庭聽片與錄音為假設情境，不重製商業音樂。",
+      "origin": "wave130-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-9070d74f2aae1116",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S05 「レコードは片面何分まで収録可能でしょうか」「33 1/3回転と45回転の違い」的 7/12 吋表，及「レコードの外周部と内周部」；X130D-S03 Speed Multiplier、Percentage Change、Standard Vinyl rpm 三節",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ca18c842f463e8bc",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S05 「レコードは片面何分まで収録可能でしょうか」「33 1/3回転と45回転の違い」的 7/12 吋表，及「レコードの外周部と内周部」；X130D-S03 Speed Multiplier、Percentage Change、Standard Vinyl rpm 三節",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0202"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0203",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "朋友唱盤邊上的一排點看起來沒在動，為什麼這還不能證明他選對這張唱片的速度？",
+      "mechanism_key": "x130.record.strobe_reference",
+      "answer_target": "Technics SL-1200GR 以頻閃燈照盤緣四排刻點。正常速度那一排看似靜止，表示轉盤符合此刻選的標稱轉速；RESET 也只會把微調還原到那個檔。選在 33⅓，燈並不會替 45 轉唱片辨認版本。",
+      "scope": "限 GR 原廠頻閃燈及指定鏡列。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "校準「選的檔」和查清「這張片應該哪一檔」，是兩次不同檢查。",
+        "visual": "畫固定光源和四排刻點，旁邊翻轉 33／45 小牌。",
+        "seconds": [
+          23,
+          40
+        ]
+      },
+      "source_locator": "X130D-S04 印刷頁 24，Pitch control；To measure pitch 與 To reset pitch to the preset value；X130D-S01 2020-11-23 新聞最後兩段，由 Tim Young 半速刻片到 VOX 兩片 45 回轉",
+      "notes": "用自繪機構圖、規格抄錄和自製聲音示範。家庭聽片與錄音為假設情境，不重製商業音樂。",
+      "origin": "wave130-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-aef94390011a9284",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S04 印刷頁 24，Pitch control；To measure pitch 與 To reset pitch to the preset value；X130D-S01 2020-11-23 新聞最後兩段，由 Tim Young 半速刻片到 VOX 兩片 45 回轉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-6bd769dfdaf0efaf",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S04 印刷頁 24，Pitch control；To measure pitch 與 To reset pitch to the preset value；X130D-S01 2020-11-23 新聞最後兩段，由 Tim Young 半速刻片到 VOX 兩片 45 回轉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0203"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0204",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "同是十二吋，如果都要留住合適音量，日本壓片廠為什麼給 45 轉的單面時間比較短？",
+      "mechanism_key": "x130.record.duration_budget",
+      "answer_target": "東洋化成列十二吋每面建議 33 檔至 20 分、45 檔至 11 分。每分鐘轉得越多，刻同一分鐘音樂所需圈數越多。把更多音樂擠進同一面還牽涉到溝寬、音量和素材。",
+      "scope": "自家建議值，不是所有唱片的固定截止時間。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "單片兩面與雙片四面，會給同張專輯很不一樣的分面餘裕。",
+        "visual": "自繪兩行時間帶，示範分成兩面或四面。",
+        "seconds": [
+          23,
+          40
+        ]
+      },
+      "source_locator": "X130D-S05 「レコードは片面何分まで収録可能でしょうか」「33 1/3回転と45回転の違い」的 7/12 吋表，及「レコードの外周部と内周部」；X130D-S01 2020-11-23 新聞最後兩段，由 Tim Young 半速刻片到 VOX 兩片 45 回轉",
+      "notes": "用自繪機構圖、規格抄錄和自製聲音示範。家庭聽片與錄音為假設情境，不重製商業音樂。",
+      "origin": "wave130-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-9070d74f2aae1116",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S05 「レコードは片面何分まで収録可能でしょうか」「33 1/3回転と45回転の違い」的 7/12 吋表，及「レコードの外周部と内周部」；X130D-S01 2020-11-23 新聞最後兩段，由 Tim Young 半速刻片到 VOX 兩片 45 回轉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-6bd769dfdaf0efaf",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S05 「レコードは片面何分まで収録可能でしょうか」「33 1/3回転と45回転の違い」的 7/12 吋表，及「レコードの外周部と内周部」；X130D-S01 2020-11-23 新聞最後兩段，由 Tim Young 半速刻片到 VOX 兩片 45 回轉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0204"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0205",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "單售版寫著「半速刻片」，為什麼唱機卻不用把 33⅓ 再除以二？",
+      "mechanism_key": "x130.record.half_speed_cut",
+      "answer_target": "Abbey Road 工程師解釋，製作這類半速刻片時，音源與車床一同減半。正常 33⅓ 的例子，車床製作時轉 16⅔，兩邊同降使完成品仍以正常速度回放。索尼公告所述單售版由倫敦 Metropolis 的 Tim Young 半速刻片。",
+      "scope": "Abbey Road 說明通用工法，並非本專輯的刻片地點。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「半速」在工廠端發生，唱盤仍用發行規格所寫的轉速。",
+        "visual": "兩個時鐘代表音源與車床，同時放慢再指回家中機台。",
+        "seconds": [
+          23,
+          40
+        ]
+      },
+      "source_locator": "X130D-S06 工程師 Miles Showell 回答半速流程的第一個問題；X130D-S01 2020-11-23 新聞最後兩段，由 Tim Young 半速刻片到 VOX 兩片 45 回轉",
+      "notes": "用自繪機構圖、規格抄錄和自製聲音示範。家庭聽片與錄音為假設情境，不重製商業音樂。",
+      "origin": "wave130-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-d13b2b76dbc53ab0",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S06 工程師 Miles Showell 回答半速流程的第一個問題；X130D-S01 2020-11-23 新聞最後兩段，由 Tim Young 半速刻片到 VOX 兩片 45 回轉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-6bd769dfdaf0efaf",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S06 工程師 Miles Showell 回答半速流程的第一個問題；X130D-S01 2020-11-23 新聞最後兩段，由 Tim Young 半速刻片到 VOX 兩片 45 回轉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0205"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0206",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "一面唱片從外圈走到內圈，唱盤一直是 33⅓ 轉，針尖下每秒經過的溝長也一直相同嗎？",
+      "mechanism_key": "x130.record.inner_linear_speed",
+      "answer_target": "同一面每轉時間固定，內圈每圈的圓周卻較短。東洋化成說明，這會令內圈高頻較容易減衰，過去會把某些動態大的曲目放在靠外處。",
+      "scope": "說明幾何與廠方編排建議，沒有聲稱某張專輯就是依這個理由來排曲序。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "相同的轉速，並沒有保證盤面上每個半徑的線速度相同。",
+        "visual": "畫內外同時繞過一圈，將兩段弧拉直。",
+        "seconds": [
+          23,
+          40
+        ]
+      },
+      "source_locator": "X130D-S05 「レコードは片面何分まで収録可能でしょうか」「33 1/3回転と45回転の違い」的 7/12 吋表，及「レコードの外周部と内周部」",
+      "notes": "用自繪機構圖、規格抄錄和自製聲音示範。家庭聽片與錄音為假設情境，不重製商業音樂。",
+      "origin": "wave130-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-9070d74f2aae1116",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S05 「レコードは片面何分まで収録可能でしょうか」「33 1/3回転と45回転の違い」的 7/12 吋表，及「レコードの外周部と内周部」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0206"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0207",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "在鐵三角 AT-LP70X 上，剛換的 45 轉盤仍是十二吋。為什麼要改一個開關、另一個留在 12？",
+      "mechanism_key": "x130.record.size_landing",
+      "answer_target": "原廠把直徑的尺寸選擇器與轉速選擇器分開。直徑約 30 公分設 12，17 公分設 7；插上朋友那張十二吋的 45 轉盒裝盤時，盤徑一樣，只有轉速要改。尺寸須在轉盤停下時設定。",
+      "scope": "限具名全自動機，不推定每部機都會自動選起始位置。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把速度切到 45，不會把十二吋唱片變成七吋。",
+        "visual": "自繪機身的尺寸撥桿與速度按鍵，分兩次標示。",
+        "seconds": [
+          23,
+          40
+        ]
+      },
+      "source_locator": "X130D-S02 「サイズセレクター」及「回転数セレクター」兩步與 33-1/3、45 圖說；X130D-S01 2020-11-23 新聞最後兩段，由 Tim Young 半速刻片到 VOX 兩片 45 回轉",
+      "notes": "用自繪機構圖、規格抄錄和自製聲音示範。家庭聽片與錄音為假設情境，不重製商業音樂。",
+      "origin": "wave130-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-2a16f2742d6e8427",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S02 「サイズセレクター」及「回転数セレクター」兩步與 33-1/3、45 圖說；X130D-S01 2020-11-23 新聞最後兩段，由 Tim Young 半速刻片到 VOX 兩片 45 回轉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-6bd769dfdaf0efaf",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S02 「サイズセレクター」及「回転数セレクター」兩步與 33-1/3、45 圖說；X130D-S01 2020-11-23 新聞最後兩段，由 Tim Young 半速刻片到 VOX 兩片 45 回轉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0207"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0208",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "唱機附了一枚「45 轉轉接器」。遇到甜甜圈大孔盤時，到底是靠那枚圓環定心，還是靠它換速度？",
+      "mechanism_key": "x130.record.large_center_adapter",
+      "answer_target": "Denon DP-400 說明書先把轉接器套上中心軸來放甜甜圈盤，再按封套或盤標另選轉速。圓環填補中央大孔、讓片心對準軸；轉速仍由機身設定。",
+      "scope": "同名配件不能保證所有 45 轉的中央孔同樣大。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "拿到圓環先看孔，想知道每分鐘幾轉要回頭看盤片資料。",
+        "visual": "畫甜甜圈孔、主軸及填入的圓環剖面。",
+        "seconds": [
+          23,
+          40
+        ]
+      },
+      "source_locator": "X130D-S07 第 1 步 EP (“doughnut”) 與轉接器、第 2 步選轉速；X130D-S02 「サイズセレクター」及「回転数セレクター」兩步與 33-1/3、45 圖說",
+      "notes": "用自繪機構圖、規格抄錄和自製聲音示範。家庭聽片與錄音為假設情境，不重製商業音樂。",
+      "origin": "wave130-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-71e2146334e35a95",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S07 第 1 步 EP (“doughnut”) 與轉接器、第 2 步選轉速；X130D-S02 「サイズセレクター」及「回転数セレクター」兩步與 33-1/3、45 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2a16f2742d6e8427",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S07 第 1 步 EP (“doughnut”) 與轉接器、第 2 步選轉速；X130D-S02 「サイズセレクター」及「回転数セレクター」兩步與 33-1/3、45 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0208"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0209",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "Jack White 的〈Just One Drink〉會先聽到電聲或原聲開場。轉速沒動，為什麼再落一次針就可能換版本？",
+      "mechanism_key": "x130.record.parallel_intro",
+      "answer_target": "Third Man Records 說《Lazaretto》ULTRA LP 在同一首的開頭設了兩條溝，針落進哪一條便決定先聽到哪種開場。兩條溝稍後匯合，進入相同的歌曲主體。",
+      "scope": "只限發行方指定 ULTRA LP；不指示用手干預旋轉中的唱臂。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "若只是開場換了，從分岔後又匯合的唱溝就能解釋，無須把整首加速。",
+        "visual": "用兩條不同顏色的線合併成一條，音源改用自錄示例。",
+        "seconds": [
+          23,
+          40
+        ]
+      },
+      "source_locator": "X130D-S08 Ultra LP features 清單的 Side A plays from the inside out 與 Dual-groove technology",
+      "notes": "用自繪機構圖、規格抄錄和自製聲音示範。家庭聽片與錄音為假設情境，不重製商業音樂。",
+      "origin": "wave130-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c8701984b844e9f6",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S08 Ultra LP features 清單的 Side A plays from the inside out 與 Dual-groove technology",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0209"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0210",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "AT-LP120XBT-USB 面板上看見 33 和 45 兩鍵，祖父的 78 轉 SP 盤真能靠這兩鍵選到 78 嗎？",
+      "mechanism_key": "x130.record.third_speed_selector",
+      "answer_target": "原廠步驟是同時按下 33 與 45，兩鍵都亮紅燈代表 78 檔。索尼 PS-LX310BT 的 FAQ 則明列只支援 33 與 45，沒有這個第三檔。",
+      "scope": "兩個具名機型的差異，不憑面板按鍵數推測其他機型。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩鍵可以代表第三種組合，但得看當台說明書。",
+        "visual": "同場只畫兩張說明圖，在鐵三角那張把兩個燈一起點亮。",
+        "seconds": [
+          23,
+          40
+        ]
+      },
+      "source_locator": "X130D-S09 圖示「78回転時」下方兩段；X130D-S14 Playback and recording 第一問；Bluetooth connection「Can I pair my turntable with a TV, computer, or smartphone?」",
+      "notes": "用自繪機構圖、規格抄錄和自製聲音示範。家庭聽片與錄音為假設情境，不重製商業音樂。",
+      "origin": "wave130-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-2c433265955b7d0e",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S09 圖示「78回転時」下方兩段；X130D-S14 Playback and recording 第一問；Bluetooth connection「Can I pair my turntable with a TV, computer, or smartphone?」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ee76c7366bb62131",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S09 圖示「78回転時」下方兩段；X130D-S14 Playback and recording 第一問；Bluetooth connection「Can I pair my turntable with a TV, computer, or smartphone?」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0210"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0211",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "轉盤已能轉到 78，Ortofon 為什麼仍替老式蟲膠唱片做一顆半徑 65 微米的球形針尖？",
+      "mechanism_key": "x130.record.sp_stylus",
+      "answer_target": "Ortofon 說明蟲膠盤需要較大的針尖輪廓，2M 78 規格列球形、針尖半徑 65 微米。鐵三角也特別要求播放 SP 唱片前備妥相應唱頭或針。機器轉得到，並不能替你選好接觸唱溝的幾何形狀。",
+      "scope": "不同品牌的例子，不主張兩款針可互換，也不把針尖半徑當成溝寬。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "先確認唱片材質與唱溝規格，再談指針下方接觸哪裡。",
+        "visual": "在示意的唱溝旁標出球形針尖的半徑，另畫轉速表。",
+        "seconds": [
+          23,
+          40
+        ]
+      },
+      "source_locator": "X130D-S10 Designed for playing 78 rpm shellac records、Specifications、Stylus Type；X130D-S09 圖示「78回転時」下方兩段",
+      "notes": "用自繪機構圖、規格抄錄和自製聲音示範。家庭聽片與錄音為假設情境，不重製商業音樂。",
+      "origin": "wave130-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-50b3ecedfd325ee8",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S10 Designed for playing 78 rpm shellac records、Specifications、Stylus Type；X130D-S09 圖示「78回転時」下方兩段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2c433265955b7d0e",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S10 Designed for playing 78 rpm shellac records、Specifications、Stylus Type；X130D-S09 圖示「78回転時」下方兩段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0211"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0212",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "老唱片找不到原始轉速，把它統一登記成精確的 78.00 轉，保存工作者為什麼不這麼做？",
+      "mechanism_key": "x130.record.historical_speed_metadata",
+      "answer_target": "美國國會圖書館與 CLIR 的圓桌報告指出，早期圓盤多在 78 左右，但標準直到這個時代的較後期才形成。報告建議以可變速設備細聽，記下所採用的速度和變動，讓後人知道轉錄依據。",
+      "scope": "處理未標明的歷史盤，不否認有明確規格的現代發行；未替假設中的祖父唱片判定實際速度。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "盤上缺少依據時，把不知道的速度留下，比憑年代補上兩位小數更可查。",
+        "visual": "在家庭盤清單留一個待考欄，對照有發行規格的大瀧雙片。",
+        "seconds": [
+          23,
+          40
+        ]
+      },
+      "source_locator": "X130D-S11 印刷頁 28，Recommendations for Best Practices、Speed（PDF 第 34 頁）",
+      "notes": "用自繪機構圖、規格抄錄和自製聲音示範。家庭聽片與錄音為假設情境，不重製商業音樂。",
+      "origin": "wave130-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-6f3455932c1bde1c",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S11 印刷頁 28，Recommendations for Best Practices、Speed（PDF 第 34 頁）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0212"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0213",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "朋友的 MM 唱頭接了 Rega 前級，為什麼擴大機明明有 PHONO 孔，前級的輸出卻應接一般線路輸入？",
+      "mechanism_key": "x130.record.phono_line",
+      "answer_target": "Fono Mini A2D 把 MM 唱頭的微弱訊號放大到線路等級，Rega 指定其 RCA 輸出接擴大機的線路輸入，切勿再送進內建 PHONO 級。Sony 對有 PHONO/LINE 開關的唱機，也要求依下一個輸入級選路。",
+      "scope": "限所列器材與接法。此處比較訊號等級，與唱片轉速無關。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣的紅白插頭，還要沿線找出前級放大已經發生在哪裡。",
+        "visual": "畫唱頭、唱放、線路輸入三格，將前級只放在其中一處。",
+        "seconds": [
+          23,
+          40
+        ]
+      },
+      "source_locator": "X130D-S12 Introduction、Connections via USB to PC、Output Connections (2)；X130D-S17 A turntable with a PHONO/LINE switch 與頁尾 NOTE",
+      "notes": "用自繪機構圖、規格抄錄和自製聲音示範。家庭聽片與錄音為假設情境，不重製商業音樂。",
+      "origin": "wave130-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-58e977dda5fd1811",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S12 Introduction、Connections via USB to PC、Output Connections (2)；X130D-S17 A turntable with a PHONO/LINE switch 與頁尾 NOTE",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b8573a6b617db891",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S12 Introduction、Connections via USB to PC、Output Connections (2)；X130D-S17 A turntable with a PHONO/LINE switch 與頁尾 NOTE",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0213"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0214",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "把唱頭訊號直接送進 Yamaha RX-A6A 的 PHONO，換成低輸出 MC 唱頭後，為什麼使用手冊還要多加一級？",
+      "mechanism_key": "x130.record.phono_cartridge_compat",
+      "answer_target": "RX-A6A 的 PHONO 輸入相容 MM。Yamaha 明寫低輸出 MC 唱頭需加升壓變壓器。即使兩條線的插頭沒變，輸入級能處理的唱頭型式仍有限。",
+      "scope": "限該機與低輸出 MC；不以本例涵蓋高輸出 MC 或其他擴大機。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "前級除了有沒有接，還要和唱頭的輸出型式相符。",
+        "visual": "分兩條路徑比較 MM、低輸出 MC，標示後者的升壓級。",
+        "seconds": [
+          23,
+          40
+        ]
+      },
+      "source_locator": "X130D-S13 When connecting a turntable 的 PHONO 相容性及下一行 GND 說明",
+      "notes": "用自繪機構圖、規格抄錄和自製聲音示範。家庭聽片與錄音為假設情境，不重製商業音樂。",
+      "origin": "wave130-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c066b1cb201f9bdc",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S13 When connecting a turntable 的 PHONO 相容性及下一行 GND 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0214"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0215",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "Sony PS-LX310BT 能把黑膠播給藍牙耳機，為什麼家人拿出手機，卻不能用同一種配對方式把聲音接走？",
+      "mechanism_key": "x130.record.wireless_direction",
+      "answer_target": "此機 FAQ 限定可配對的對象是耳機、喇叭等音訊播放設備，明列不支援與電視、電腦、手機配對。兩端都有藍牙標誌，並不保證手機可以用這條路接收、錄下這台唱機送出的聲音。",
+      "scope": "限 PS-LX310BT 的藍牙配對；電腦的 USB 錄音另依機器規格。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "要給手機一個檔，得另找能接收並儲存音訊的路。",
+        "visual": "將耳機與手機畫在兩邊，標出該機支援的連線端。",
+        "seconds": [
+          23,
+          40
+        ]
+      },
+      "source_locator": "X130D-S14 Playback and recording 第一問；Bluetooth connection「Can I pair my turntable with a TV, computer, or smartphone?」",
+      "notes": "用自繪機構圖、規格抄錄和自製聲音示範。家庭聽片與錄音為假設情境，不重製商業音樂。",
+      "origin": "wave130-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-ee76c7366bb62131",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S14 Playback and recording 第一問；Bluetooth connection「Can I pair my turntable with a TV, computer, or smartphone?」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0215"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0216",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "把 MM 唱頭接到 Rega Fono Mini A2D，喇叭的紅白線已經有聲。要在電腦錄檔，訊號還得走哪個介面？",
+      "mechanism_key": "x130.record.usb_conversion",
+      "answer_target": "原廠讓 RCA 線路輸出送到擴大機，另用 USB 介面將聲音傳進裝有音訊編輯器的電腦。可在電腦看表頭，配合前面板 Level 設定錄音電平。能從喇叭聽到聲音，和電腦正在錄音，是兩個確認點。",
+      "scope": "限此具備 USB 功能的 MM 唱放；只以自錄素材示範電平。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "紅白線去聆聽，USB 加錄音軟體才把這一路寫入電腦。",
+        "visual": "自錄音源的訊號分成擴大機與電腦表頭兩條線。",
+        "seconds": [
+          23,
+          40
+        ]
+      },
+      "source_locator": "X130D-S12 Introduction、Connections via USB to PC、Output Connections (2)",
+      "notes": "用自繪機構圖、規格抄錄和自製聲音示範。家庭聽片與錄音為假設情境，不重製商業音樂。",
+      "origin": "wave130-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-58e977dda5fd1811",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S12 Introduction、Connections via USB to PC、Output Connections (2)",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0216"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0217",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "Denon DP-450USB 上一面播完了，為什麼隨身碟裡可能只有一個檔，還會繼續錄到後面的空白？",
+      "mechanism_key": "x130.record.digital_boundaries",
+      "answer_target": "這款機器可選 WAV 或 MP3，每次從開始錄到按停算一個檔。說明書明載唱片播完不自動停止錄音，故單面曲間的空隙也不會讓它逐曲另建檔案。",
+      "scope": "限本機的 USB 直錄；不推論其他軟體的自動分軌功能。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "錄音檔的邊界在錄音按鍵，不在唱片上一首歌的最後一拍。",
+        "visual": "畫一行按鍵與波形，在落針、曲間、結尾、按停四處標時。",
+        "seconds": [
+          23,
+          40
+        ]
+      },
+      "source_locator": "X130D-S15 錄製步驟 1–4，與 A single file is created 及 Recording does not stop automatically 兩段",
+      "notes": "用自繪機構圖、規格抄錄和自製聲音示範。家庭聽片與錄音為假設情境，不重製商業音樂。",
+      "origin": "wave130-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-2ba9c25e66955264",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S15 錄製步驟 1–4，與 A single file is created 及 Recording does not stop automatically 兩段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0217"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K130-0218",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "開場的一分鐘被慢錄成 81 秒，為什麼只用軟體「改節奏」縮到一分鐘，聲音仍然偏低？",
+      "mechanism_key": "x130.record.speed_vs_tempo",
+      "answer_target": "Audacity 的 Change Tempo 保留音高；Change Speed and Pitch 才讓速度、音高一起變動。等速慢錄的範例在後者選 from 33⅓、to 45，等於把速度乘 1.35，81÷1.35 回到 60 秒，同時把頻率乘回原比例。",
+      "scope": "只修正理想的固定速比，不聲稱能補回失真或消除忽快忽慢。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "時間尺和音高都回去，才對應最初機械轉速造成的兩個變化。",
+        "visual": "用自製音調和節拍做兩份示範，對照 81 秒變回 60 秒後的頻率。",
+        "seconds": [
+          23,
+          40
+        ]
+      },
+      "source_locator": "X130D-S03 Speed Multiplier、Percentage Change、Standard Vinyl rpm 三節；X130D-S16 開頭與 Time-stretching effect 說明",
+      "notes": "用自繪機構圖、規格抄錄和自製聲音示範。家庭聽片與錄音為假設情境，不重製商業音樂。",
+      "origin": "wave130-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-ca18c842f463e8bc",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S03 Speed Multiplier、Percentage Change、Standard Vinyl rpm 三節；X130D-S16 開頭與 Time-stretching effect 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-177d99f1b784457b",
+          "origin": "wave130-research-20261119",
+          "locator": "X130D-S03 Speed Multiplier、Percentage Change、Standard Vinyl rpm 三節；X130D-S16 開頭與 Time-stretching effect 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave130-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K130-0218"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -351240,7 +352995,7 @@
   ],
   "raw_records": {
     "file": "pool-records.json",
-    "count": 8081
+    "count": 8118
   },
   "dedup": {
     "aliases": {
@@ -354270,6 +356025,43 @@
       "G13007": "G13007",
       "G13008": "G13008",
       "G13009": "G13009",
+      "K130-0401": "K130-0401",
+      "K130-0402": "K130-0402",
+      "K130-0403": "K130-0403",
+      "K130-0404": "K130-0404",
+      "K130-0405": "K130-0405",
+      "K130-0406": "K130-0406",
+      "K130-0407": "K130-0407",
+      "K130-0001": "K130-0001",
+      "K130-0002": "K130-0002",
+      "K130-0003": "K130-0003",
+      "K130-0004": "K130-0004",
+      "K130-0005": "K130-0005",
+      "K130-0006": "K130-0006",
+      "K130-0007": "K130-0007",
+      "K130-0008": "K130-0008",
+      "K130-0009": "K130-0009",
+      "K130-0010": "K130-0010",
+      "K130-0011": "K130-0011",
+      "K130-0012": "K130-0012",
+      "K130-0201": "K130-0201",
+      "K130-0202": "K130-0202",
+      "K130-0203": "K130-0203",
+      "K130-0204": "K130-0204",
+      "K130-0205": "K130-0205",
+      "K130-0206": "K130-0206",
+      "K130-0207": "K130-0207",
+      "K130-0208": "K130-0208",
+      "K130-0209": "K130-0209",
+      "K130-0210": "K130-0210",
+      "K130-0211": "K130-0211",
+      "K130-0212": "K130-0212",
+      "K130-0213": "K130-0213",
+      "K130-0214": "K130-0214",
+      "K130-0215": "K130-0215",
+      "K130-0216": "K130-0216",
+      "K130-0217": "K130-0217",
+      "K130-0218": "K130-0218",
       "A14001": "A14001",
       "A14002": "A14002",
       "A14003": "A14003",
@@ -398130,6 +399922,20 @@
         ]
       },
       {
+        "id": "K130-0213~K130-0216",
+        "a": "K130-0213",
+        "b": "K130-0216",
+        "question_score": 0.212,
+        "answer_score": 0.088,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友的 MM 唱頭接了 Rega 前級，為什麼擴大機明明有 PHONO 孔，前級的輸出卻應接一般線路輸入？",
+          "把 MM 唱頭接到 Rega Fono Mini A2D，喇叭的紅白線已經有聲。要在電腦錄檔，訊號還得走哪個介面？"
+        ]
+      },
+      {
         "id": "K112-0678~K112-0679",
         "a": "K112-0678",
         "b": "K112-0679",
@@ -401182,6 +402988,20 @@
         ]
       },
       {
+        "id": "K130-0204~K130-0207",
+        "a": "K130-0204",
+        "b": "K130-0207",
+        "question_score": 0.152,
+        "answer_score": 0.048,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同是十二吋，如果都要留住合適音量，日本壓片廠為什麼給 45 轉的單面時間比較短？",
+          "在鐵三角 AT-LP70X 上，剛換的 45 轉盤仍是十二吋。為什麼要改一個開關、另一個留在 12？"
+        ]
+      },
+      {
         "id": "P65-004~P65-005",
         "a": "P65-004",
         "b": "P65-005",
@@ -401795,6 +403615,20 @@
         "questions": [
           "SanDisk 的 256GB Switch 2 擴充卡寫可裝約九套，怎麼換成朋友想借的幾款就數不準？",
           "朋友拿出初代 Switch，《勇者鬥惡龍 I & II HD-2D 重製版》兩種盒子哪一種能在兩代主機上輪流用？"
+        ]
+      },
+      {
+        "id": "K130-0213~K130-0214",
+        "a": "K130-0213",
+        "b": "K130-0214",
+        "question_score": 0.145,
+        "answer_score": 0.14,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友的 MM 唱頭接了 Rega 前級，為什麼擴大機明明有 PHONO 孔，前級的輸出卻應接一般線路輸入？",
+          "把唱頭訊號直接送進 Yamaha RX-A6A 的 PHONO，換成低輸出 MC 唱頭後，為什麼使用手冊還要多加一級？"
         ]
       },
       {
@@ -402663,6 +404497,20 @@
         "questions": [
           "同一只新秀麗20吋，怎麼拉開擴充層就從日航大機型的線內跨到線外？",
           "放到小機型框前，24L反而比20L更合適的是哪一只？"
+        ]
+      },
+      {
+        "id": "K130-0205~K130-0206",
+        "a": "K130-0205",
+        "b": "K130-0206",
+        "question_score": 0.136,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "單售版寫著「半速刻片」，為什麼唱機卻不用把 33⅓ 再除以二？",
+          "一面唱片從外圈走到內圈，唱盤一直是 33⅓ 轉，針尖下每秒經過的溝長也一直相同嗎？"
         ]
       },
       {
@@ -403629,6 +405477,20 @@
         "questions": [
           "晚上九點把小包放進成田一般日租小櫃，凌晨一點取，為什麼四小時要付800日圓？",
           "明早要回來的行程如果移到東京迪士尼樂園門口，小櫃的500日圓要乘二嗎？"
+        ]
+      },
+      {
+        "id": "K130-0202~K130-0218",
+        "a": "K130-0202",
+        "b": "K130-0218",
+        "question_score": 0.127,
+        "answer_score": 0.126,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "假設有一段 45 轉時恰好長一分鐘的錄音，若用 33⅓ 轉去播，為什麼要等 81 秒才播完？",
+          "開場的一分鐘被慢錄成 81 秒，為什麼只用軟體「改節奏」縮到一分鐘，聲音仍然偏低？"
         ]
       },
       {
@@ -404707,6 +406569,20 @@
         "questions": [
           "臺灣賣場那盒《雙影奇境》寫「盒裝序號版」，能把已兌換的同一張紙交給朋友再用一次嗎？",
           "兩家人想今晚同時冒險，《雙影奇境》的朋友可以用什麼加入，而不用拿走持有者的遊戲？"
+        ]
+      },
+      {
+        "id": "K130-0201~K130-0205",
+        "a": "K130-0201",
+        "b": "K130-0205",
+        "question_score": 0.029,
+        "answer_score": 0.118,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "雙方都拿出大瀧詠一《A LONG VACATION》的十二吋四十週年版，為什麼你要用 33 檔，朋友的盒裝版卻要用 45？",
+          "單售版寫著「半速刻片」，為什麼唱機卻不用把 33⅓ 再除以二？"
         ]
       },
       {
@@ -405953,6 +407829,34 @@
         "questions": [
           "臺灣賣場那盒《雙影奇境》寫「盒裝序號版」，能把已兌換的同一張紙交給朋友再用一次嗎？",
           "第二天主人沒上線，昨天用《雙影奇境》好友通行證玩的客人，既有進度和繼續玩全篇是同一件事嗎？"
+        ]
+      },
+      {
+        "id": "K130-0202~K130-0204",
+        "a": "K130-0202",
+        "b": "K130-0204",
+        "question_score": 0.061,
+        "answer_score": 0.11,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "假設有一段 45 轉時恰好長一分鐘的錄音，若用 33⅓ 轉去播，為什麼要等 81 秒才播完？",
+          "同是十二吋，如果都要留住合適音量，日本壓片廠為什麼給 45 轉的單面時間比較短？"
+        ]
+      },
+      {
+        "id": "K130-0203~K130-0218",
+        "a": "K130-0203",
+        "b": "K130-0218",
+        "question_score": 0.034,
+        "answer_score": 0.11,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友唱盤邊上的一排點看起來沒在動，為什麼這還不能證明他選對這張唱片的速度？",
+          "開場的一分鐘被慢錄成 81 秒，為什麼只用軟體「改節奏」縮到一分鐘，聲音仍然偏低？"
         ]
       },
       {
@@ -407328,6 +409232,20 @@
         ]
       },
       {
+        "id": "K130-0201~K130-0207",
+        "a": "K130-0201",
+        "b": "K130-0207",
+        "question_score": 0.1,
+        "answer_score": 0.057,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "雙方都拿出大瀧詠一《A LONG VACATION》的十二吋四十週年版，為什麼你要用 33 檔，朋友的盒裝版卻要用 45？",
+          "在鐵三角 AT-LP70X 上，剛換的 45 轉盤仍是十二吋。為什麼要改一個開關、另一個留在 12？"
+        ]
+      },
+      {
         "id": "K66-001~K66-009",
         "a": "K66-001",
         "b": "K66-009",
@@ -407661,6 +409579,20 @@
         "questions": [
           "同是 D850 翻拍底片，為什麼負片轉成正像時只拿到 JPEG，翻拍正片卻可以留 NEF？",
           "合照的 JPEG 傳給家人了，為什麼還要另外挑一個合適的套子把原片留下？"
+        ]
+      },
+      {
+        "id": "K130-0201~K130-0203",
+        "a": "K130-0201",
+        "b": "K130-0203",
+        "question_score": 0.026,
+        "answer_score": 0.098,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "雙方都拿出大瀧詠一《A LONG VACATION》的十二吋四十週年版，為什麼你要用 33 檔，朋友的盒裝版卻要用 45？",
+          "朋友唱盤邊上的一排點看起來沒在動，為什麼這還不能證明他選對這張唱片的速度？"
         ]
       },
       {
@@ -408011,6 +409943,20 @@
         "questions": [
           "兩個片筒都寫著黑白 400，為什麼日本沖洗店把 HP5 PLUS 和 XP2 SUPER 分到不同的單？",
           "拿回來的 XP2 底片偏灰粉，拍白襯衫的人真的被沖成粉紅色了嗎？"
+        ]
+      },
+      {
+        "id": "K130-0205~K130-0218",
+        "a": "K130-0205",
+        "b": "K130-0218",
+        "question_score": 0,
+        "answer_score": 0.096,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "單售版寫著「半速刻片」，為什麼唱機卻不用把 33⅓ 再除以二？",
+          "開場的一分鐘被慢錄成 81 秒，為什麼只用軟體「改節奏」縮到一分鐘，聲音仍然偏低？"
         ]
       },
       {
@@ -409442,6 +411388,20 @@
         ]
       },
       {
+        "id": "K130-0201~K130-0204",
+        "a": "K130-0201",
+        "b": "K130-0204",
+        "question_score": 0.079,
+        "answer_score": 0.088,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "雙方都拿出大瀧詠一《A LONG VACATION》的十二吋四十週年版，為什麼你要用 33 檔，朋友的盒裝版卻要用 45？",
+          "同是十二吋，如果都要留住合適音量，日本壓片廠為什麼給 45 轉的單面時間比較短？"
+        ]
+      },
+      {
         "id": "L77-103~L77-104",
         "a": "L77-103",
         "b": "L77-104",
@@ -410324,6 +412284,20 @@
         ]
       },
       {
+        "id": "K130-0201~K130-0218",
+        "a": "K130-0201",
+        "b": "K130-0218",
+        "question_score": 0,
+        "answer_score": 0.083,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "雙方都拿出大瀧詠一《A LONG VACATION》的十二吋四十週年版，為什麼你要用 33 檔，朋友的盒裝版卻要用 45？",
+          "開場的一分鐘被慢錄成 81 秒，為什麼只用軟體「改節奏」縮到一分鐘，聲音仍然偏低？"
+        ]
+      },
+      {
         "id": "L138~N145",
         "a": "L138",
         "b": "N145",
@@ -411080,6 +413054,20 @@
         ]
       },
       {
+        "id": "K130-0202~K130-0217",
+        "a": "K130-0202",
+        "b": "K130-0217",
+        "question_score": 0.08,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "假設有一段 45 轉時恰好長一分鐘的錄音，若用 33⅓ 轉去播，為什麼要等 81 秒才播完？",
+          "Denon DP-450USB 上一面播完了，為什麼隨身碟裡可能只有一個檔，還會繼續錄到後面的空白？"
+        ]
+      },
+      {
         "id": "L234~L235",
         "a": "L234",
         "b": "L235",
@@ -411472,6 +413460,20 @@
         ]
       },
       {
+        "id": "K130-0201~K130-0210",
+        "a": "K130-0201",
+        "b": "K130-0210",
+        "question_score": 0.069,
+        "answer_score": 0.078,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "雙方都拿出大瀧詠一《A LONG VACATION》的十二吋四十週年版，為什麼你要用 33 檔，朋友的盒裝版卻要用 45？",
+          "AT-LP120XBT-USB 面板上看見 33 和 45 兩鍵，祖父的 78 轉 SP 盤真能靠這兩鍵選到 78 嗎？"
+        ]
+      },
+      {
         "id": "R43002~R43010",
         "a": "R43002",
         "b": "R43010",
@@ -411763,6 +413765,20 @@
         "questions": [
           "開沖洗單時，「黑白 135、加兩級」究竟要看哪個價目欄？",
           "一格室外、一格室內如果堅持併在同一張掃描檔，兩張能分開調明暗嗎？"
+        ]
+      },
+      {
+        "id": "K130-0202~K130-0203",
+        "a": "K130-0202",
+        "b": "K130-0203",
+        "question_score": 0,
+        "answer_score": 0.077,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "假設有一段 45 轉時恰好長一分鐘的錄音，若用 33⅓ 轉去播，為什麼要等 81 秒才播完？",
+          "朋友唱盤邊上的一排點看起來沒在動，為什麼這還不能證明他選對這張唱片的速度？"
         ]
       },
       {
@@ -412225,6 +414241,20 @@
         "questions": [
           "開沖洗單時，「黑白 135、加兩級」究竟要看哪個價目欄？",
           "家人要看的是可透光直接辨認的黑白合照，有沒有出廠就為這件事設計的底片？"
+        ]
+      },
+      {
+        "id": "K130-0201~K130-0202",
+        "a": "K130-0201",
+        "b": "K130-0202",
+        "question_score": 0.075,
+        "answer_score": 0.071,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "雙方都拿出大瀧詠一《A LONG VACATION》的十二吋四十週年版，為什麼你要用 33 檔，朋友的盒裝版卻要用 45？",
+          "假設有一段 45 轉時恰好長一分鐘的錄音，若用 33⅓ 轉去播，為什麼要等 81 秒才播完？"
         ]
       },
       {
@@ -413068,6 +415098,20 @@
         ]
       },
       {
+        "id": "K130-0201~K130-0213",
+        "a": "K130-0201",
+        "b": "K130-0213",
+        "question_score": 0.071,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "雙方都拿出大瀧詠一《A LONG VACATION》的十二吋四十週年版，為什麼你要用 33 檔，朋友的盒裝版卻要用 45？",
+          "朋友的 MM 唱頭接了 Rega 前級，為什麼擴大機明明有 PHONO 孔，前級的輸出卻應接一般線路輸入？"
+        ]
+      },
+      {
         "id": "K90-050~K94-011",
         "a": "K90-050",
         "b": "K94-011",
@@ -413471,6 +415515,20 @@
         "questions": [
           "第一段是大飛機、第二段才是小飛機，何時該用小框量一次？",
           "如果衣物能收進16L背包，只換包材能省出多少公斤？"
+        ]
+      },
+      {
+        "id": "K130-0209~K130-0217",
+        "a": "K130-0209",
+        "b": "K130-0217",
+        "question_score": 0.069,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Jack White 的〈Just One Drink〉會先聽到電聲或原聲開場。轉速沒動，為什麼再落一次針就可能換版本？",
+          "Denon DP-450USB 上一面播完了，為什麼隨身碟裡可能只有一個檔，還會繼續錄到後面的空白？"
         ]
       },
       {
@@ -414328,6 +416386,20 @@
         ]
       },
       {
+        "id": "K130-0402~K130-0403",
+        "a": "K130-0402",
+        "b": "K130-0403",
+        "question_score": 0.057,
+        "answer_score": 0.066,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "畫著人與獅子的十二世紀琺瑯牌上，獅鬃是紅線，人物的頭髮是藍線。這兩種顏色怎麼留在那麼細的線裡？",
+          "加特契納宮彩蛋表面已經覆了好幾層琺瑯，怎麼還透得出底下那麼整齊的細紋？"
+        ]
+      },
+      {
         "id": "E2045~E2185",
         "a": "E2045",
         "b": "E2185",
@@ -414493,6 +416565,20 @@
         "questions": [
           "日本卡普空的《快打旋風 6 Years 1–2》把卡和紙放在一起，借走鑰匙卡的朋友也會拿到你換過的兩年角色嗎？",
           "兩家人想今晚同時冒險，《雙影奇境》的朋友可以用什麼加入，而不用拿走持有者的遊戲？"
+        ]
+      },
+      {
+        "id": "K130-0203~K130-0207",
+        "a": "K130-0203",
+        "b": "K130-0207",
+        "question_score": 0,
+        "answer_score": 0.065,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友唱盤邊上的一排點看起來沒在動，為什麼這還不能證明他選對這張唱片的速度？",
+          "在鐵三角 AT-LP70X 上，剛換的 45 轉盤仍是十二吋。為什麼要改一個開關、另一個留在 12？"
         ]
       },
       {
@@ -416162,6 +418248,20 @@
         ]
       },
       {
+        "id": "K130-0211~K130-0212",
+        "a": "K130-0211",
+        "b": "K130-0212",
+        "question_score": 0.058,
+        "answer_score": 0.013,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "轉盤已能轉到 78，Ortofon 為什麼仍替老式蟲膠唱片做一顆半徑 65 微米的球形針尖？",
+          "老唱片找不到原始轉速，把它統一登記成精確的 78.00 轉，保存工作者為什麼不這麼做？"
+        ]
+      },
+      {
         "id": "R41004~R41005",
         "a": "R41004",
         "b": "R41005",
@@ -416582,6 +418682,20 @@
         ]
       },
       {
+        "id": "K130-0202~K130-0207",
+        "a": "K130-0202",
+        "b": "K130-0207",
+        "question_score": 0.057,
+        "answer_score": 0.015,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "假設有一段 45 轉時恰好長一分鐘的錄音，若用 33⅓ 轉去播，為什麼要等 81 秒才播完？",
+          "在鐵三角 AT-LP70X 上，剛換的 45 轉盤仍是十二吋。為什麼要改一個開關、另一個留在 12？"
+        ]
+      },
+      {
         "id": "L064~L067",
         "a": "L064",
         "b": "L067",
@@ -416918,6 +419032,20 @@
         ]
       },
       {
+        "id": "K130-0206~K130-0211",
+        "a": "K130-0206",
+        "b": "K130-0211",
+        "question_score": 0.056,
+        "answer_score": 0.03,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一面唱片從外圈走到內圈，唱盤一直是 33⅓ 轉，針尖下每秒經過的溝長也一直相同嗎？",
+          "轉盤已能轉到 78，Ortofon 為什麼仍替老式蟲膠唱片做一顆半徑 65 微米的球形針尖？"
+        ]
+      },
+      {
         "id": "L001~L017",
         "a": "L001",
         "b": "L017",
@@ -417139,6 +419267,34 @@
         "questions": [
           "如果希望把合照原片放在燈箱上直接看出原來的彩色，EKTACHROME E100 的交件單要換哪一欄？",
           "合照的 JPEG 傳給家人了，為什麼還要另外挑一個合適的套子把原片留下？"
+        ]
+      },
+      {
+        "id": "K130-0210~K130-0218",
+        "a": "K130-0210",
+        "b": "K130-0218",
+        "question_score": 0,
+        "answer_score": 0.055,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "AT-LP120XBT-USB 面板上看見 33 和 45 兩鍵，祖父的 78 轉 SP 盤真能靠這兩鍵選到 78 嗎？",
+          "開場的一分鐘被慢錄成 81 秒，為什麼只用軟體「改節奏」縮到一分鐘，聲音仍然偏低？"
+        ]
+      },
+      {
+        "id": "K130-0215~K130-0216",
+        "a": "K130-0215",
+        "b": "K130-0216",
+        "question_score": 0.022,
+        "answer_score": 0.055,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Sony PS-LX310BT 能把黑膠播給藍牙耳機，為什麼家人拿出手機，卻不能用同一種配對方式把聲音接走？",
+          "把 MM 唱頭接到 Rega Fono Mini A2D，喇叭的紅白線已經有聲。要在電腦錄檔，訊號還得走哪個介面？"
         ]
       },
       {
@@ -417713,6 +419869,34 @@
         "questions": [
           "朋友第一次插入借來的鑰匙卡，為什麼要連網，卻不必拿走你的 Nintendo Account？",
           "第二天主人沒上線，昨天用《雙影奇境》好友通行證玩的客人，既有進度和繼續玩全篇是同一件事嗎？"
+        ]
+      },
+      {
+        "id": "K130-0207~K130-0217",
+        "a": "K130-0207",
+        "b": "K130-0217",
+        "question_score": 0.053,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在鐵三角 AT-LP70X 上，剛換的 45 轉盤仍是十二吋。為什麼要改一個開關、另一個留在 12？",
+          "Denon DP-450USB 上一面播完了，為什麼隨身碟裡可能只有一個檔，還會繼續錄到後面的空白？"
+        ]
+      },
+      {
+        "id": "K130-0210~K130-0212",
+        "a": "K130-0210",
+        "b": "K130-0212",
+        "question_score": 0.053,
+        "answer_score": 0.031,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "AT-LP120XBT-USB 面板上看見 33 和 45 兩鍵，祖父的 78 轉 SP 盤真能靠這兩鍵選到 78 嗎？",
+          "老唱片找不到原始轉速，把它統一登記成精確的 78.00 轉，保存工作者為什麼不這麼做？"
         ]
       },
       {
@@ -418374,6 +420558,34 @@
         ]
       },
       {
+        "id": "K130-0210~K130-0211",
+        "a": "K130-0210",
+        "b": "K130-0211",
+        "question_score": 0.051,
+        "answer_score": 0.015,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "AT-LP120XBT-USB 面板上看見 33 和 45 兩鍵，祖父的 78 轉 SP 盤真能靠這兩鍵選到 78 嗎？",
+          "轉盤已能轉到 78，Ortofon 為什麼仍替老式蟲膠唱片做一顆半徑 65 微米的球形針尖？"
+        ]
+      },
+      {
+        "id": "K130-0213~K130-0217",
+        "a": "K130-0213",
+        "b": "K130-0217",
+        "question_score": 0.051,
+        "answer_score": 0.014,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友的 MM 唱頭接了 Rega 前級，為什麼擴大機明明有 PHONO 孔，前級的輸出卻應接一般線路輸入？",
+          "Denon DP-450USB 上一面播完了，為什麼隨身碟裡可能只有一個檔，還會繼續錄到後面的空白？"
+        ]
+      },
+      {
         "id": "L049~L053",
         "a": "L049",
         "b": "L053",
@@ -418850,6 +421062,34 @@
         ]
       },
       {
+        "id": "K130-0211~K130-0213",
+        "a": "K130-0211",
+        "b": "K130-0213",
+        "question_score": 0.027,
+        "answer_score": 0.049,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "轉盤已能轉到 78，Ortofon 為什麼仍替老式蟲膠唱片做一顆半徑 65 微米的球形針尖？",
+          "朋友的 MM 唱頭接了 Rega 前級，為什麼擴大機明明有 PHONO 孔，前級的輸出卻應接一般線路輸入？"
+        ]
+      },
+      {
+        "id": "K130-0211~K130-0216",
+        "a": "K130-0211",
+        "b": "K130-0216",
+        "question_score": 0.049,
+        "answer_score": 0,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "轉盤已能轉到 78，Ortofon 為什麼仍替老式蟲膠唱片做一顆半徑 65 微米的球形針尖？",
+          "把 MM 唱頭接到 Rega Fono Mini A2D，喇叭的紅白線已經有聲。要在電腦錄檔，訊號還得走哪個介面？"
+        ]
+      },
+      {
         "id": "L085~L47-001",
         "a": "L085",
         "b": "L47-001",
@@ -419228,6 +421468,20 @@
         ]
       },
       {
+        "id": "K130-0209~K130-0211",
+        "a": "K130-0209",
+        "b": "K130-0211",
+        "question_score": 0.048,
+        "answer_score": 0.026,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Jack White 的〈Just One Drink〉會先聽到電聲或原聲開場。轉速沒動，為什麼再落一次針就可能換版本？",
+          "轉盤已能轉到 78，Ortofon 為什麼仍替老式蟲膠唱片做一顆半徑 65 微米的球形針尖？"
+        ]
+      },
+      {
         "id": "P53-001~P54-002",
         "a": "P53-001",
         "b": "P54-002",
@@ -419463,6 +421717,34 @@
         "questions": [
           "朋友第一次插入借來的鑰匙卡，為什麼要連網，卻不必拿走你的 Nintendo Account？",
           "朋友主機顯示有48GB可用，《人中之龍 0 導演版》和《快打旋風 6》的日本盒裝各差多少？"
+        ]
+      },
+      {
+        "id": "K130-0201~K130-0217",
+        "a": "K130-0201",
+        "b": "K130-0217",
+        "question_score": 0.047,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "雙方都拿出大瀧詠一《A LONG VACATION》的十二吋四十週年版，為什麼你要用 33 檔，朋友的盒裝版卻要用 45？",
+          "Denon DP-450USB 上一面播完了，為什麼隨身碟裡可能只有一個檔，還會繼續錄到後面的空白？"
+        ]
+      },
+      {
+        "id": "K130-0216~K130-0217",
+        "a": "K130-0216",
+        "b": "K130-0217",
+        "question_score": 0.047,
+        "answer_score": 0.015,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把 MM 唱頭接到 Rega Fono Mini A2D，喇叭的紅白線已經有聲。要在電腦錄檔，訊號還得走哪個介面？",
+          "Denon DP-450USB 上一面播完了，為什麼隨身碟裡可能只有一個檔，還會繼續錄到後面的空白？"
         ]
       },
       {
@@ -419984,6 +422266,20 @@
         ]
       },
       {
+        "id": "K130-0201~K130-0215",
+        "a": "K130-0201",
+        "b": "K130-0215",
+        "question_score": 0.045,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "雙方都拿出大瀧詠一《A LONG VACATION》的十二吋四十週年版，為什麼你要用 33 檔，朋友的盒裝版卻要用 45？",
+          "Sony PS-LX310BT 能把黑膠播給藍牙耳機，為什麼家人拿出手機，卻不能用同一種配對方式把聲音接走？"
+        ]
+      },
+      {
         "id": "K74-015~K74-018",
         "a": "K74-015",
         "b": "K74-018",
@@ -420275,6 +422571,20 @@
         "questions": [
           "為了騰空間刪掉已下載的遊戲，進度也會一起被騰出去嗎？",
           "朋友拿出初代 Switch，《勇者鬥惡龍 I & II HD-2D 重製版》兩種盒子哪一種能在兩代主機上輪流用？"
+        ]
+      },
+      {
+        "id": "K130-0202~K130-0209",
+        "a": "K130-0202",
+        "b": "K130-0209",
+        "question_score": 0,
+        "answer_score": 0.044,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "假設有一段 45 轉時恰好長一分鐘的錄音，若用 33⅓ 轉去播，為什麼要等 81 秒才播完？",
+          "Jack White 的〈Just One Drink〉會先聽到電聲或原聲開場。轉速沒動，為什麼再落一次針就可能換版本？"
         ]
       },
       {
@@ -420653,6 +422963,48 @@
         "questions": [
           "放到小機型框前，24L反而比20L更合適的是哪一只？",
           "若想把東西都留著，多買7公斤能讓一只11公斤箱直接過嗎？"
+        ]
+      },
+      {
+        "id": "K130-0201~K130-0209",
+        "a": "K130-0201",
+        "b": "K130-0209",
+        "question_score": 0.043,
+        "answer_score": 0.014,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "雙方都拿出大瀧詠一《A LONG VACATION》的十二吋四十週年版，為什麼你要用 33 檔，朋友的盒裝版卻要用 45？",
+          "Jack White 的〈Just One Drink〉會先聽到電聲或原聲開場。轉速沒動，為什麼再落一次針就可能換版本？"
+        ]
+      },
+      {
+        "id": "K130-0209~K130-0216",
+        "a": "K130-0209",
+        "b": "K130-0216",
+        "question_score": 0.043,
+        "answer_score": 0.014,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Jack White 的〈Just One Drink〉會先聽到電聲或原聲開場。轉速沒動，為什麼再落一次針就可能換版本？",
+          "把 MM 唱頭接到 Rega Fono Mini A2D，喇叭的紅白線已經有聲。要在電腦錄檔，訊號還得走哪個介面？"
+        ]
+      },
+      {
+        "id": "K130-0211~K130-0217",
+        "a": "K130-0211",
+        "b": "K130-0217",
+        "question_score": 0.026,
+        "answer_score": 0.043,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "轉盤已能轉到 78，Ortofon 為什麼仍替老式蟲膠唱片做一顆半徑 65 微米的球形針尖？",
+          "Denon DP-450USB 上一面播完了，為什麼隨身碟裡可能只有一個檔，還會繼續錄到後面的空白？"
         ]
       },
       {
@@ -421370,6 +423722,20 @@
         ]
       },
       {
+        "id": "K130-0205~K130-0210",
+        "a": "K130-0205",
+        "b": "K130-0210",
+        "question_score": 0.031,
+        "answer_score": 0.041,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "單售版寫著「半速刻片」，為什麼唱機卻不用把 33⅓ 再除以二？",
+          "AT-LP120XBT-USB 面板上看見 33 和 45 兩鍵，祖父的 78 轉 SP 盤真能靠這兩鍵選到 78 嗎？"
+        ]
+      },
+      {
         "id": "L62-002~R37007",
         "a": "R37007",
         "b": "L62-002",
@@ -421661,6 +424027,34 @@
         "questions": [
           "這件羅馬玻璃盤裡的紅圈，有的圍著黃點，有的圍著白點。做盤子的人怎麼讓同一組小點反覆出現？",
           "這只九至十世紀玻璃瓶，上半深藍、下半綠，跑獸圖案全在下面。工匠是把瓶身的一半塗成藍色嗎？"
+        ]
+      },
+      {
+        "id": "K130-0203~K130-0204",
+        "a": "K130-0203",
+        "b": "K130-0204",
+        "question_score": 0,
+        "answer_score": 0.04,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友唱盤邊上的一排點看起來沒在動，為什麼這還不能證明他選對這張唱片的速度？",
+          "同是十二吋，如果都要留住合適音量，日本壓片廠為什麼給 45 轉的單面時間比較短？"
+        ]
+      },
+      {
+        "id": "K130-0203~K130-0217",
+        "a": "K130-0203",
+        "b": "K130-0217",
+        "question_score": 0,
+        "answer_score": 0.04,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友唱盤邊上的一排點看起來沒在動，為什麼這還不能證明他選對這張唱片的速度？",
+          "Denon DP-450USB 上一面播完了，為什麼隨身碟裡可能只有一個檔，還會繼續錄到後面的空白？"
         ]
       },
       {
@@ -422837,6 +425231,34 @@
         "questions": [
           "朋友改借一台 Plustek 8200i。片夾能裝六張，是按一次按鈕就會自己往前掃六張嗎？",
           "兩卷黑白旅行照都掃到了灰塵，為什麼 Epson 4870 的紅外除塵在 XP2 上能用，在傳統銀影黑白片上卻要關？"
+        ]
+      },
+      {
+        "id": "K130-0203~K130-0209",
+        "a": "K130-0203",
+        "b": "K130-0209",
+        "question_score": 0,
+        "answer_score": 0.037,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友唱盤邊上的一排點看起來沒在動，為什麼這還不能證明他選對這張唱片的速度？",
+          "Jack White 的〈Just One Drink〉會先聽到電聲或原聲開場。轉速沒動，為什麼再落一次針就可能換版本？"
+        ]
+      },
+      {
+        "id": "K130-0209~K130-0218",
+        "a": "K130-0209",
+        "b": "K130-0218",
+        "question_score": 0.027,
+        "answer_score": 0.037,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Jack White 的〈Just One Drink〉會先聽到電聲或原聲開場。轉速沒動，為什麼再落一次針就可能換版本？",
+          "開場的一分鐘被慢錄成 81 秒，為什麼只用軟體「改節奏」縮到一分鐘，聲音仍然偏低？"
         ]
       },
       {
@@ -424366,6 +426788,20 @@
         ]
       },
       {
+        "id": "K130-0403~K130-0406",
+        "a": "K130-0403",
+        "b": "K130-0406",
+        "question_score": 0.033,
+        "answer_score": 0.01,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "加特契納宮彩蛋表面已經覆了好幾層琺瑯，怎麼還透得出底下那麼整齊的細紋？",
+          "這件像溪石的銀雕塑，表面的金色細流怎麼貼得住？金匠用的金一開始是什麼形狀？"
+        ]
+      },
+      {
         "id": "M5001~M5002",
         "a": "M5001",
         "b": "M5002",
@@ -425514,6 +427950,20 @@
         ]
       },
       {
+        "id": "K130-0203~K130-0211",
+        "a": "K130-0203",
+        "b": "K130-0211",
+        "question_score": 0.03,
+        "answer_score": 0.024,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友唱盤邊上的一排點看起來沒在動，為什麼這還不能證明他選對這張唱片的速度？",
+          "轉盤已能轉到 78，Ortofon 為什麼仍替老式蟲膠唱片做一顆半徑 65 微米的球形針尖？"
+        ]
+      },
+      {
         "id": "K100-012~P099",
         "a": "P099",
         "b": "K100-012",
@@ -425805,6 +428255,62 @@
         "questions": [
           "家人要看的是可透光直接辨認的黑白合照，有沒有出廠就為這件事設計的底片？",
           "一格室外、一格室內如果堅持併在同一張掃描檔，兩張能分開調明暗嗎？"
+        ]
+      },
+      {
+        "id": "K130-0203~K130-0213",
+        "a": "K130-0203",
+        "b": "K130-0213",
+        "question_score": 0.029,
+        "answer_score": 0.023,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友唱盤邊上的一排點看起來沒在動，為什麼這還不能證明他選對這張唱片的速度？",
+          "朋友的 MM 唱頭接了 Rega 前級，為什麼擴大機明明有 PHONO 孔，前級的輸出卻應接一般線路輸入？"
+        ]
+      },
+      {
+        "id": "K130-0206~K130-0212",
+        "a": "K130-0206",
+        "b": "K130-0212",
+        "question_score": 0.029,
+        "answer_score": 0.016,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一面唱片從外圈走到內圈，唱盤一直是 33⅓ 轉，針尖下每秒經過的溝長也一直相同嗎？",
+          "老唱片找不到原始轉速，把它統一登記成精確的 78.00 轉，保存工作者為什麼不這麼做？"
+        ]
+      },
+      {
+        "id": "K130-0208~K130-0211",
+        "a": "K130-0208",
+        "b": "K130-0211",
+        "question_score": 0,
+        "answer_score": 0.029,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "唱機附了一枚「45 轉轉接器」。遇到甜甜圈大孔盤時，到底是靠那枚圓環定心，還是靠它換速度？",
+          "轉盤已能轉到 78，Ortofon 為什麼仍替老式蟲膠唱片做一顆半徑 65 微米的球形針尖？"
+        ]
+      },
+      {
+        "id": "K130-0211~K130-0214",
+        "a": "K130-0211",
+        "b": "K130-0214",
+        "question_score": 0.025,
+        "answer_score": 0.029,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "轉盤已能轉到 78，Ortofon 為什麼仍替老式蟲膠唱片做一顆半徑 65 微米的球形針尖？",
+          "把唱頭訊號直接送進 Yamaha RX-A6A 的 PHONO，換成低輸出 MC 唱頭後，為什麼使用手冊還要多加一級？"
         ]
       },
       {
@@ -426270,6 +428776,62 @@
         ]
       },
       {
+        "id": "K130-0204~K130-0217",
+        "a": "K130-0204",
+        "b": "K130-0217",
+        "question_score": 0.028,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同是十二吋，如果都要留住合適音量，日本壓片廠為什麼給 45 轉的單面時間比較短？",
+          "Denon DP-450USB 上一面播完了，為什麼隨身碟裡可能只有一個檔，還會繼續錄到後面的空白？"
+        ]
+      },
+      {
+        "id": "K130-0207~K130-0211",
+        "a": "K130-0207",
+        "b": "K130-0211",
+        "question_score": 0.028,
+        "answer_score": 0,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在鐵三角 AT-LP70X 上，剛換的 45 轉盤仍是十二吋。為什麼要改一個開關、另一個留在 12？",
+          "轉盤已能轉到 78，Ortofon 為什麼仍替老式蟲膠唱片做一顆半徑 65 微米的球形針尖？"
+        ]
+      },
+      {
+        "id": "K130-0207~K130-0216",
+        "a": "K130-0207",
+        "b": "K130-0216",
+        "question_score": 0,
+        "answer_score": 0.028,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在鐵三角 AT-LP70X 上，剛換的 45 轉盤仍是十二吋。為什麼要改一個開關、另一個留在 12？",
+          "把 MM 唱頭接到 Rega Fono Mini A2D，喇叭的紅白線已經有聲。要在電腦錄檔，訊號還得走哪個介面？"
+        ]
+      },
+      {
+        "id": "K130-0215~K130-0218",
+        "a": "K130-0215",
+        "b": "K130-0218",
+        "question_score": 0.028,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Sony PS-LX310BT 能把黑膠播給藍牙耳機，為什麼家人拿出手機，卻不能用同一種配對方式把聲音接走？",
+          "開場的一分鐘被慢錄成 81 秒，為什麼只用軟體「改節奏」縮到一分鐘，聲音仍然偏低？"
+        ]
+      },
+      {
         "id": "R36008~R36009",
         "a": "R36008",
         "b": "R36009",
@@ -426564,6 +429126,48 @@
         ]
       },
       {
+        "id": "K130-0201~K130-0212",
+        "a": "K130-0201",
+        "b": "K130-0212",
+        "question_score": 0,
+        "answer_score": 0.027,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "雙方都拿出大瀧詠一《A LONG VACATION》的十二吋四十週年版，為什麼你要用 33 檔，朋友的盒裝版卻要用 45？",
+          "老唱片找不到原始轉速，把它統一登記成精確的 78.00 轉，保存工作者為什麼不這麼做？"
+        ]
+      },
+      {
+        "id": "K130-0203~K130-0215",
+        "a": "K130-0203",
+        "b": "K130-0215",
+        "question_score": 0.027,
+        "answer_score": 0.013,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友唱盤邊上的一排點看起來沒在動，為什麼這還不能證明他選對這張唱片的速度？",
+          "Sony PS-LX310BT 能把黑膠播給藍牙耳機，為什麼家人拿出手機，卻不能用同一種配對方式把聲音接走？"
+        ]
+      },
+      {
+        "id": "K130-0211~K130-0215",
+        "a": "K130-0211",
+        "b": "K130-0215",
+        "question_score": 0.025,
+        "answer_score": 0.027,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "轉盤已能轉到 78，Ortofon 為什麼仍替老式蟲膠唱片做一顆半徑 65 微米的球形針尖？",
+          "Sony PS-LX310BT 能把黑膠播給藍牙耳機，為什麼家人拿出手機，卻不能用同一種配對方式把聲音接走？"
+        ]
+      },
+      {
         "id": "K92-053~P234",
         "a": "P234",
         "b": "K92-053",
@@ -426799,6 +429403,34 @@
         "questions": [
           "朋友改借一台 Plustek 8200i。片夾能裝六張，是按一次按鈕就會自己往前掃六張嗎？",
           "合照的 JPEG 傳給家人了，為什麼還要另外挑一個合適的套子把原片留下？"
+        ]
+      },
+      {
+        "id": "K130-0204~K130-0218",
+        "a": "K130-0204",
+        "b": "K130-0218",
+        "question_score": 0,
+        "answer_score": 0.026,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同是十二吋，如果都要留住合適音量，日本壓片廠為什麼給 45 轉的單面時間比較短？",
+          "開場的一分鐘被慢錄成 81 秒，為什麼只用軟體「改節奏」縮到一分鐘，聲音仍然偏低？"
+        ]
+      },
+      {
+        "id": "K130-0206~K130-0210",
+        "a": "K130-0206",
+        "b": "K130-0210",
+        "question_score": 0.026,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一面唱片從外圈走到內圈，唱盤一直是 33⅓ 轉，針尖下每秒經過的溝長也一直相同嗎？",
+          "AT-LP120XBT-USB 面板上看見 33 和 45 兩鍵，祖父的 78 轉 SP 盤真能靠這兩鍵選到 78 嗎？"
         ]
       },
       {
@@ -427320,6 +429952,48 @@
         ]
       },
       {
+        "id": "K130-0201~K130-0206",
+        "a": "K130-0201",
+        "b": "K130-0206",
+        "question_score": 0.025,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "雙方都拿出大瀧詠一《A LONG VACATION》的十二吋四十週年版，為什麼你要用 33 檔，朋友的盒裝版卻要用 45？",
+          "一面唱片從外圈走到內圈，唱盤一直是 33⅓ 轉，針尖下每秒經過的溝長也一直相同嗎？"
+        ]
+      },
+      {
+        "id": "K130-0201~K130-0211",
+        "a": "K130-0201",
+        "b": "K130-0211",
+        "question_score": 0.025,
+        "answer_score": 0,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "雙方都拿出大瀧詠一《A LONG VACATION》的十二吋四十週年版，為什麼你要用 33 檔，朋友的盒裝版卻要用 45？",
+          "轉盤已能轉到 78，Ortofon 為什麼仍替老式蟲膠唱片做一顆半徑 65 微米的球形針尖？"
+        ]
+      },
+      {
+        "id": "K130-0202~K130-0215",
+        "a": "K130-0202",
+        "b": "K130-0215",
+        "question_score": 0.025,
+        "answer_score": 0.015,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "假設有一段 45 轉時恰好長一分鐘的錄音，若用 33⅓ 轉去播，為什麼要等 81 秒才播完？",
+          "Sony PS-LX310BT 能把黑膠播給藍牙耳機，為什麼家人拿出手機，卻不能用同一種配對方式把聲音接走？"
+        ]
+      },
+      {
         "id": "K91-001~K91-004",
         "a": "K91-001",
         "b": "K91-004",
@@ -427614,6 +430288,76 @@
         ]
       },
       {
+        "id": "K130-0205~K130-0212",
+        "a": "K130-0205",
+        "b": "K130-0212",
+        "question_score": 0,
+        "answer_score": 0.024,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "單售版寫著「半速刻片」，為什麼唱機卻不用把 33⅓ 再除以二？",
+          "老唱片找不到原始轉速，把它統一登記成精確的 78.00 轉，保存工作者為什麼不這麼做？"
+        ]
+      },
+      {
+        "id": "K130-0212~K130-0218",
+        "a": "K130-0212",
+        "b": "K130-0218",
+        "question_score": 0,
+        "answer_score": 0.024,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "老唱片找不到原始轉速，把它統一登記成精確的 78.00 轉，保存工作者為什麼不這麼做？",
+          "開場的一分鐘被慢錄成 81 秒，為什麼只用軟體「改節奏」縮到一分鐘，聲音仍然偏低？"
+        ]
+      },
+      {
+        "id": "K130-0213~K130-0215",
+        "a": "K130-0213",
+        "b": "K130-0215",
+        "question_score": 0.024,
+        "answer_score": 0.013,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友的 MM 唱頭接了 Rega 前級，為什麼擴大機明明有 PHONO 孔，前級的輸出卻應接一般線路輸入？",
+          "Sony PS-LX310BT 能把黑膠播給藍牙耳機，為什麼家人拿出手機，卻不能用同一種配對方式把聲音接走？"
+        ]
+      },
+      {
+        "id": "K130-0215~K130-0217",
+        "a": "K130-0215",
+        "b": "K130-0217",
+        "question_score": 0.024,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Sony PS-LX310BT 能把黑膠播給藍牙耳機，為什麼家人拿出手機，卻不能用同一種配對方式把聲音接走？",
+          "Denon DP-450USB 上一面播完了，為什麼隨身碟裡可能只有一個檔，還會繼續錄到後面的空白？"
+        ]
+      },
+      {
+        "id": "K130-0401~K130-0403",
+        "a": "K130-0401",
+        "b": "K130-0403",
+        "question_score": 0,
+        "answer_score": 0.024,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "中世紀的梅羅德銀杯上，三條藍綠色尖窗看起來像教堂的小窗。杯子明明是金屬做的，光從哪裡穿過來？",
+          "加特契納宮彩蛋表面已經覆了好幾層琺瑯，怎麼還透得出底下那麼整齊的細紋？"
+        ]
+      },
+      {
         "id": "K116-0201~K116-0210",
         "a": "K116-0201",
         "b": "K116-0210",
@@ -427863,6 +430607,34 @@
         "questions": [
           "另一卷 HP5 PLUS 從頭到尾按 EI 1600 曝光，為什麼增感要在交整卷時說明？",
           "兩卷黑白旅行照都掃到了灰塵，為什麼 Epson 4870 的紅外除塵在 XP2 上能用，在傳統銀影黑白片上卻要關？"
+        ]
+      },
+      {
+        "id": "K130-0209~K130-0213",
+        "a": "K130-0209",
+        "b": "K130-0213",
+        "question_score": 0.023,
+        "answer_score": 0.013,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Jack White 的〈Just One Drink〉會先聽到電聲或原聲開場。轉速沒動，為什麼再落一次針就可能換版本？",
+          "朋友的 MM 唱頭接了 Rega 前級，為什麼擴大機明明有 PHONO 孔，前級的輸出卻應接一般線路輸入？"
+        ]
+      },
+      {
+        "id": "K130-0211~K130-0218",
+        "a": "K130-0211",
+        "b": "K130-0218",
+        "question_score": 0,
+        "answer_score": 0.023,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "轉盤已能轉到 78，Ortofon 為什麼仍替老式蟲膠唱片做一顆半徑 65 微米的球形針尖？",
+          "開場的一分鐘被慢錄成 81 秒，為什麼只用軟體「改節奏」縮到一分鐘，聲音仍然偏低？"
         ]
       },
       {
@@ -428157,6 +430929,34 @@
         "questions": [
           "輪胎變窄以後，「26 吋」為什麼還跟著它？",
           "外胎寬徑都對了，拿起這兩盒內胎前還缺哪個實車資訊？"
+        ]
+      },
+      {
+        "id": "K130-0201~K130-0216",
+        "a": "K130-0201",
+        "b": "K130-0216",
+        "question_score": 0.022,
+        "answer_score": 0.013,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "雙方都拿出大瀧詠一《A LONG VACATION》的十二吋四十週年版，為什麼你要用 33 檔，朋友的盒裝版卻要用 45？",
+          "把 MM 唱頭接到 Rega Fono Mini A2D，喇叭的紅白線已經有聲。要在電腦錄檔，訊號還得走哪個介面？"
+        ]
+      },
+      {
+        "id": "K130-0209~K130-0215",
+        "a": "K130-0209",
+        "b": "K130-0215",
+        "question_score": 0.022,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Jack White 的〈Just One Drink〉會先聽到電聲或原聲開場。轉速沒動，為什麼再落一次針就可能換版本？",
+          "Sony PS-LX310BT 能把黑膠播給藍牙耳機，為什麼家人拿出手機，卻不能用同一種配對方式把聲音接走？"
         ]
       },
       {
@@ -428832,6 +431632,20 @@
         ]
       },
       {
+        "id": "K130-0204~K130-0209",
+        "a": "K130-0204",
+        "b": "K130-0209",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同是十二吋，如果都要留住合適音量，日本壓片廠為什麼給 45 轉的單面時間比較短？",
+          "Jack White 的〈Just One Drink〉會先聽到電聲或原聲開場。轉速沒動，為什麼再落一次針就可能換版本？"
+        ]
+      },
+      {
         "id": "K116-0309~K116-0310",
         "a": "K116-0309",
         "b": "K116-0310",
@@ -429277,6 +432091,34 @@
         "questions": [
           "為什麼 36 張反轉片選了價目表的「マウント」，取件時仍得自己裝框？",
           "合照的 JPEG 傳給家人了，為什麼還要另外挑一個合適的套子把原片留下？"
+        ]
+      },
+      {
+        "id": "K130-0202~K130-0216",
+        "a": "K130-0202",
+        "b": "K130-0216",
+        "question_score": 0,
+        "answer_score": 0.014,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "假設有一段 45 轉時恰好長一分鐘的錄音，若用 33⅓ 轉去播，為什麼要等 81 秒才播完？",
+          "把 MM 唱頭接到 Rega Fono Mini A2D，喇叭的紅白線已經有聲。要在電腦錄檔，訊號還得走哪個介面？"
+        ]
+      },
+      {
+        "id": "K130-0204~K130-0211",
+        "a": "K130-0204",
+        "b": "K130-0211",
+        "question_score": 0,
+        "answer_score": 0.014,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同是十二吋，如果都要留住合適音量，日本壓片廠為什麼給 45 轉的單面時間比較短？",
+          "轉盤已能轉到 78，Ortofon 為什麼仍替老式蟲膠唱片做一顆半徑 65 微米的球形針尖？"
         ]
       },
       {
@@ -429963,6 +432805,34 @@
         "questions": [
           "朋友改借一台 Plustek 8200i。片夾能裝六張，是按一次按鈕就會自己往前掃六張嗎？",
           "同是 D850 翻拍底片，為什麼負片轉成正像時只拿到 JPEG，翻拍正片卻可以留 NEF？"
+        ]
+      },
+      {
+        "id": "K130-0207~K130-0218",
+        "a": "K130-0207",
+        "b": "K130-0218",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在鐵三角 AT-LP70X 上，剛換的 45 轉盤仍是十二吋。為什麼要改一個開關、另一個留在 12？",
+          "開場的一分鐘被慢錄成 81 秒，為什麼只用軟體「改節奏」縮到一分鐘，聲音仍然偏低？"
+        ]
+      },
+      {
+        "id": "K130-0217~K130-0218",
+        "a": "K130-0217",
+        "b": "K130-0218",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Denon DP-450USB 上一面播完了，為什麼隨身碟裡可能只有一個檔，還會繼續錄到後面的空白？",
+          "開場的一分鐘被慢錄成 81 秒，為什麼只用軟體「改節奏」縮到一分鐘，聲音仍然偏低？"
         ]
       },
       {
@@ -430873,6 +433743,20 @@
         "questions": [
           "訂位畫面上只有E90，看得出它在哪一格尺寸表嗎？",
           "如果衣物能收進16L背包，只換包材能省出多少公斤？"
+        ]
+      },
+      {
+        "id": "K130-0213~K130-0218",
+        "a": "K130-0213",
+        "b": "K130-0218",
+        "question_score": 0,
+        "answer_score": 0.011,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友的 MM 唱頭接了 Rega 前級，為什麼擴大機明明有 PHONO 孔，前級的輸出卻應接一般線路輸入？",
+          "開場的一分鐘被慢錄成 81 秒，為什麼只用軟體「改節奏」縮到一分鐘，聲音仍然偏低？"
         ]
       },
       {
@@ -433074,6 +435958,174 @@
         ]
       },
       {
+        "id": "K130-0202~K130-0211",
+        "a": "K130-0202",
+        "b": "K130-0211",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "假設有一段 45 轉時恰好長一分鐘的錄音，若用 33⅓ 轉去播，為什麼要等 81 秒才播完？",
+          "轉盤已能轉到 78，Ortofon 為什麼仍替老式蟲膠唱片做一顆半徑 65 微米的球形針尖？"
+        ]
+      },
+      {
+        "id": "K130-0202~K130-0213",
+        "a": "K130-0202",
+        "b": "K130-0213",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "假設有一段 45 轉時恰好長一分鐘的錄音，若用 33⅓ 轉去播，為什麼要等 81 秒才播完？",
+          "朋友的 MM 唱頭接了 Rega 前級，為什麼擴大機明明有 PHONO 孔，前級的輸出卻應接一般線路輸入？"
+        ]
+      },
+      {
+        "id": "K130-0203~K130-0216",
+        "a": "K130-0203",
+        "b": "K130-0216",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友唱盤邊上的一排點看起來沒在動，為什麼這還不能證明他選對這張唱片的速度？",
+          "把 MM 唱頭接到 Rega Fono Mini A2D，喇叭的紅白線已經有聲。要在電腦錄檔，訊號還得走哪個介面？"
+        ]
+      },
+      {
+        "id": "K130-0204~K130-0213",
+        "a": "K130-0204",
+        "b": "K130-0213",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同是十二吋，如果都要留住合適音量，日本壓片廠為什麼給 45 轉的單面時間比較短？",
+          "朋友的 MM 唱頭接了 Rega 前級，為什麼擴大機明明有 PHONO 孔，前級的輸出卻應接一般線路輸入？"
+        ]
+      },
+      {
+        "id": "K130-0204~K130-0215",
+        "a": "K130-0204",
+        "b": "K130-0215",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同是十二吋，如果都要留住合適音量，日本壓片廠為什麼給 45 轉的單面時間比較短？",
+          "Sony PS-LX310BT 能把黑膠播給藍牙耳機，為什麼家人拿出手機，卻不能用同一種配對方式把聲音接走？"
+        ]
+      },
+      {
+        "id": "K130-0204~K130-0216",
+        "a": "K130-0204",
+        "b": "K130-0216",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同是十二吋，如果都要留住合適音量，日本壓片廠為什麼給 45 轉的單面時間比較短？",
+          "把 MM 唱頭接到 Rega Fono Mini A2D，喇叭的紅白線已經有聲。要在電腦錄檔，訊號還得走哪個介面？"
+        ]
+      },
+      {
+        "id": "K130-0205~K130-0211",
+        "a": "K130-0205",
+        "b": "K130-0211",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "單售版寫著「半速刻片」，為什麼唱機卻不用把 33⅓ 再除以二？",
+          "轉盤已能轉到 78，Ortofon 為什麼仍替老式蟲膠唱片做一顆半徑 65 微米的球形針尖？"
+        ]
+      },
+      {
+        "id": "K130-0206~K130-0218",
+        "a": "K130-0206",
+        "b": "K130-0218",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一面唱片從外圈走到內圈，唱盤一直是 33⅓ 轉，針尖下每秒經過的溝長也一直相同嗎？",
+          "開場的一分鐘被慢錄成 81 秒，為什麼只用軟體「改節奏」縮到一分鐘，聲音仍然偏低？"
+        ]
+      },
+      {
+        "id": "K130-0207~K130-0209",
+        "a": "K130-0207",
+        "b": "K130-0209",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在鐵三角 AT-LP70X 上，剛換的 45 轉盤仍是十二吋。為什麼要改一個開關、另一個留在 12？",
+          "Jack White 的〈Just One Drink〉會先聽到電聲或原聲開場。轉速沒動，為什麼再落一次針就可能換版本？"
+        ]
+      },
+      {
+        "id": "K130-0207~K130-0213",
+        "a": "K130-0207",
+        "b": "K130-0213",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在鐵三角 AT-LP70X 上，剛換的 45 轉盤仍是十二吋。為什麼要改一個開關、另一個留在 12？",
+          "朋友的 MM 唱頭接了 Rega 前級，為什麼擴大機明明有 PHONO 孔，前級的輸出卻應接一般線路輸入？"
+        ]
+      },
+      {
+        "id": "K130-0207~K130-0215",
+        "a": "K130-0207",
+        "b": "K130-0215",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在鐵三角 AT-LP70X 上，剛換的 45 轉盤仍是十二吋。為什麼要改一個開關、另一個留在 12？",
+          "Sony PS-LX310BT 能把黑膠播給藍牙耳機，為什麼家人拿出手機，卻不能用同一種配對方式把聲音接走？"
+        ]
+      },
+      {
+        "id": "K130-0216~K130-0218",
+        "a": "K130-0216",
+        "b": "K130-0218",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把 MM 唱頭接到 Rega Fono Mini A2D，喇叭的紅白線已經有聲。要在電腦錄檔，訊號還得走哪個介面？",
+          "開場的一分鐘被慢錄成 81 秒，為什麼只用軟體「改節奏」縮到一分鐘，聲音仍然偏低？"
+        ]
+      },
+      {
         "id": "L011~L077",
         "a": "L011",
         "b": "L077",
@@ -434548,10 +437600,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-19-pool-7617",
-    "target_count": 7617,
+    "revision": "2026-11-19-pool-7654",
+    "target_count": 7654,
     "reviewed_on": "2026-11-19",
-    "reason": "第129批新增 37 張素材，入選 7580 → 7617。先前：第128批新增 37 張素材，入選 7543 → 7580。先前：第127批新增 37 張素材，入選 7506 → 7543。先前：第126批新增 37 張素材，入選 7469 → 7506。先前：第125批新增 36 張素材，入選 7433 → 7469。先前：第124批新增 35 張素材，入選 7398 → 7433。先前：第123批新增 37 張素材，入選 7361 → 7398。先前：第122批新增 37 張素材，入選 7324 → 7361。先前：第121批新增 36 張素材，含日常設計、樂譜判讀及旅用電器規格。入選 7288 → 7324。先前：第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
+    "reason": "第130批新增 37 張素材，入選 7617 → 7654。先前：第129批新增 37 張素材，入選 7580 → 7617。先前：第128批新增 37 張素材，入選 7543 → 7580。先前：第127批新增 37 張素材，入選 7506 → 7543。先前：第126批新增 37 張素材，入選 7469 → 7506。先前：第125批新增 36 張素材，入選 7433 → 7469。先前：第124批新增 35 張素材，入選 7398 → 7433。先前：第123批新增 37 張素材，入選 7361 → 7398。先前：第122批新增 37 張素材，入選 7324 → 7361。先前：第121批新增 36 張素材，含日常設計、樂譜判讀及旅用電器規格。入選 7288 → 7324。先前：第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -442169,7 +445221,44 @@
       "K129-0215",
       "K129-0216",
       "K129-0217",
-      "K129-0218"
+      "K129-0218",
+      "K130-0401",
+      "K130-0402",
+      "K130-0403",
+      "K130-0404",
+      "K130-0405",
+      "K130-0406",
+      "K130-0407",
+      "K130-0001",
+      "K130-0002",
+      "K130-0003",
+      "K130-0004",
+      "K130-0005",
+      "K130-0006",
+      "K130-0007",
+      "K130-0008",
+      "K130-0009",
+      "K130-0010",
+      "K130-0011",
+      "K130-0012",
+      "K130-0201",
+      "K130-0202",
+      "K130-0203",
+      "K130-0204",
+      "K130-0205",
+      "K130-0206",
+      "K130-0207",
+      "K130-0208",
+      "K130-0209",
+      "K130-0210",
+      "K130-0211",
+      "K130-0212",
+      "K130-0213",
+      "K130-0214",
+      "K130-0215",
+      "K130-0216",
+      "K130-0217",
+      "K130-0218"
     ],
     "overflow": [
       {
@@ -446152,6 +449241,87 @@
       "source_ids": [],
       "origin": "wave13-granular-20261101",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+    },
+    {
+      "id": "X130C-NA01",
+      "question": "掐絲琺瑯的細金線，是填好顏色才畫上去的嗎？",
+      "reason": "K119-0001 已用先固定金屬絲、再分格填釉的順序回答。",
+      "existing_ids": [
+        "K119-0001"
+      ],
+      "origin": "wave130-craft-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave130-craft-20261119.json"
+    },
+    {
+      "id": "X130C-NA02",
+      "question": "要複製金屬戒指的花紋，為什麼先做得細細的蠟模型最後竟要熔掉？",
+      "reason": "D2136 已說明失蠟鑄造中去蠟留下模腔給金屬佔據，換展示物並未增加新機理。",
+      "existing_ids": [
+        "D2136"
+      ],
+      "origin": "wave130-craft-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave130-craft-20261119.json"
+    },
+    {
+      "id": "X130E-NA001",
+      "question": "足球界外球直接丟進自家球門或對方球門，要從哪裡重新開始？",
+      "existing_ids": [
+        "K119-0401"
+      ],
+      "reason": "重讀 IFAB Law 15，兩種直接入門後的重新開球方式正是既有題的核心。",
+      "origin": "wave130-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave130-everyday-20261119.json"
+    },
+    {
+      "id": "X130E-NA002",
+      "question": "同屬美國 Grade A 的兩瓶楓糖漿，怎麼還能按透光量一深一淺？",
+      "existing_ids": [
+        "K121-0008"
+      ],
+      "reason": "USDA §52.5964 的透光級距與既有題完全相同。",
+      "origin": "wave130-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave130-everyday-20261119.json"
+    },
+    {
+      "id": "X130E-NA003",
+      "question": "NOAA 潮汐預報明明是低潮，怎麼有時高於零、有時低於零？",
+      "existing_ids": [
+        "K120-0404"
+      ],
+      "reason": "讀 NOAA 的 MLLW 定義後比對，既有題已用舊金山低潮解釋參考面的意義。",
+      "origin": "wave130-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave130-everyday-20261119.json"
+    },
+    {
+      "id": "X130E-NA004",
+      "question": "把 8×42 雙筒鏡拿離眼睛看到的亮圓有多大？",
+      "existing_ids": [
+        "K121-0005"
+      ],
+      "reason": "重讀 Nikon 的 Exit pupil 計算公式，既有題已用同一組數字做出同一解釋。",
+      "origin": "wave130-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave130-everyday-20261119.json"
+    },
+    {
+      "id": "X130D-NA01",
+      "question": "珍貴老唱片表面已剝落，能不能只拍照片就把聲音接回去？",
+      "reason": "P28001、P28002 與 G284 已按非接觸影像復原與碎片接溝成題。本批不討論光學取聲。",
+      "existing_ids": [
+        "P28001",
+        "P28002"
+      ],
+      "origin": "wave130-research-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave130-research-20261119.json"
+    },
+    {
+      "id": "X130D-NA02",
+      "question": "美國黑膠銷量超過 CD，是不是突然多了很多人買唱盤？",
+      "reason": "奇聞 N7305 已比對黑膠與 CD 的實物銷量及基數變化。本案只比較具名發行規格，不推演市場需求。",
+      "existing_ids": [
+        "N7305"
+      ],
+      "origin": "wave130-research-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave130-research-20261119.json"
     },
     {
       "question": "螞蟻的氣味如何指向食物？",
