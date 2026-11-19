@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-19-pool-7361",
+  "revision": "2026-11-19-pool-7398",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "categories": [
     "物理化學與日常材料",
@@ -12,46 +12,46 @@
     "建築交通與商業制度"
   ],
   "counts": {
-    "raw_records": 7825,
-    "canonical_questions": 7665,
-    "eligible_candidates": 7472,
-    "selected_candidates": 7361,
+    "raw_records": 7862,
+    "canonical_questions": 7702,
+    "eligible_candidates": 7509,
+    "selected_candidates": 7398,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 8326,
-    "current_research_source_urls": 5392,
-    "selected_source_urls": 6341,
-    "new_suggestions_not_added": 3457,
+    "source_urls": 8370,
+    "current_research_source_urls": 5437,
+    "selected_source_urls": 6385,
+    "new_suggestions_not_added": 3463,
     "high_similarity_pending": 0,
     "approved_scripts": 0,
     "by_category": {
       "物理化學與日常材料": {
-        "canonical": 1764,
-        "selected": 1734
+        "canonical": 1768,
+        "selected": 1738
       },
       "生物動物與植物": {
-        "canonical": 1508,
-        "selected": 1497
+        "canonical": 1510,
+        "selected": 1499
       },
       "地球天氣與太空": {
-        "canonical": 947,
-        "selected": 944
+        "canonical": 954,
+        "selected": 951
       },
       "數位科技與通訊工程": {
         "canonical": 1386,
         "selected": 1306
       },
       "飲食與廚房科學": {
-        "canonical": 502,
-        "selected": 496
+        "canonical": 504,
+        "selected": 498
       },
       "人體感官與日常行為": {
-        "canonical": 565,
-        "selected": 553
+        "canonical": 568,
+        "selected": 556
       },
       "建築交通與商業制度": {
-        "canonical": 993,
-        "selected": 831
+        "canonical": 1012,
+        "selected": 850
       }
     }
   },
@@ -1981,6 +1981,18 @@
       "sha256": "a6a5fe657ae1180d7044181dde7e0b66facb1eaff12619ba20091f7b1afdaadb"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave123-everyday-20261119.json",
+      "sha256": "2cdcd81dd845ad95e0afe3fa778b5e2e169ac34cc821e024dc8d5427c269a69e"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave123-research-20261119.json",
+      "sha256": "8b141a67c5c6c4d467f43cab20b131116008c6f7f847790fd6c84e4c3924d4fd"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave123-sky-20261119.json",
+      "sha256": "13ddd511561ce24bdff1f8dc551ffdd8487de7188e279651a45cd980941cff05"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json",
       "sha256": "6af9ce3e1a1bed1e6d5f849c3aa716d5fdd591bc0e45abd9aba352e271e2c5de"
     },
@@ -3270,12 +3282,12 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "5921cc2b36c2e6d9488953f3833d54ecddf834cf34b91df813e0a92a19570504"
+      "sha256": "cd29938b40e7759c2d450a5811913dfd5690794a790d2a16f6cca89f3c1558d7"
     }
   ],
   "sources": {
     "file": "pool-sources.json",
-    "count": 8326
+    "count": 8370
   },
   "candidates": [
     {
@@ -131133,6 +131145,1807 @@
       "question_variants": [],
       "provenance_ids": [
         "K122-0218"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0001",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "單車前輪拆下來了，原本讓碟盤通過的縫，為什麼原廠還建議放一片墊片？",
+      "mechanism_key": "x123.daily.disc_brake_wheel_out_spacer",
+      "answer_target": "輪子一拆，碟盤也離開兩片來令片之間。若此時又按下液壓煞車拉桿，沒有墊片擋著，卡鉗裡的活塞會比平時更往外伸。墊片是拆輪時用來保住這個空間的。手冊同時提醒，輪子拆下時不要按拉桿。",
+      "scope": "以 SHIMANO UM-8VR0A-009 手冊對應的液壓碟煞為例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "騎乘時碟盤占的位置，拆輪後要留到輪子裝回來。",
+        "visual": "兩張剖面圖對照碟盤和運送墊片所在位置，車輪放在旁邊。",
+        "seconds": [
+          24,
+          38
+        ]
+      },
+      "source_locator": "X123E-S01，Notice 的 pad spacers／wheel is removed 段。",
+      "notes": "講原因，不延伸成卡鉗拆修教學。",
+      "origin": "wave123-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-1f7468aa56474d2e",
+          "origin": "wave123-everyday-20261119",
+          "locator": "X123E-S01，Notice 的 pad spacers／wheel is removed 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0002",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "instax mini 12 明明拍過幾張，誤開一次背蓋，為什麼剩餘張數就不能照計數窗讀？",
+      "mechanism_key": "x123.daily.instax_back_open_frame_counter",
+      "answer_target": "正常使用時，計數窗從 10 隨每次拍攝往下扣。原廠說裝著底片打開背蓋，計數器會重置；數字無法替你認出盒裡哪些張數已拍過。手冊還提醒，這樣會讓未拍的底片見光變白。不能靠再開一次蓋確認。",
+      "scope": "限 mini 12 和裝著 instax mini 底片的情境。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "計數窗和底片是兩件事；計數器重置不會把舊底片變回新片。",
+        "visual": "動畫並排正常遞減的計數窗與已用過的底片盒，避免用實機開蓋示範。",
+        "seconds": [
+          24,
+          36
+        ]
+      },
+      "source_locator": "X123E-S02 的 reset；X123E-S03 的 Taking Pictures 開蓋警語及計數窗段。",
+      "notes": "沒有把重置後第一格一概寫成 10；10 是正常開始拍攝的倒數。",
+      "origin": "wave123-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-968bdfc98e665d5d",
+          "origin": "wave123-everyday-20261119",
+          "locator": "X123E-S02 的 reset；X123E-S03 的 Taking Pictures 開蓋警語及計數窗段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-fb8e918f85cadae5",
+          "origin": "wave123-everyday-20261119",
+          "locator": "X123E-S02 的 reset；X123E-S03 的 Taking Pictures 開蓋警語及計數窗段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0003",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "同款 MAVIS 350 尼龍羽球，為什麼 8°C 和 28°C 的場館，球筒蓋上圈的顏色不同？",
+      "mechanism_key": "x123.daily.nylon_shuttle_cap_speed_temperature",
+      "answer_target": "YONEX 說尼龍裙部的硬度會隨溫度改變，原廠用不同顏色標出速度和建議環溫。8°C 落在紅蓋快速球的 0–13°C，28°C 落在綠蓋慢速球的 22–33°C；另外還有藍蓋中速。先看的是球場溫度，不是球員打得快或慢。",
+      "scope": "以 YONEX MAVIS 350 商品表的三組色碼為限。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一位球員到不同溫度的場館，可以按筒蓋選不同速度的球。",
+        "visual": "用兩支溫度計對上同型號紅、綠兩行規格，藍蓋保留在中央。",
+        "seconds": [
+          24,
+          35
+        ]
+      },
+      "source_locator": "X123E-S04，MAVIS 350 說明和三色 CAP 溫度區間。",
+      "notes": "數字取在各區間中間，不要求把交界溫度分到唯一顏色。",
+      "origin": "wave123-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-10a2dbdb1ab53c39",
+          "origin": "wave123-everyday-20261119",
+          "locator": "X123E-S04，MAVIS 350 說明和三色 CAP 溫度區間。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0004",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "棒球場上一、二壘有人、只有一出局，一顆高飛球最後沒人接到，為什麼打者還是出局？",
+      "mechanism_key": "x123.daily.baseball_infield_fly_eliminates_force",
+      "answer_target": "先看裁判是否宣告內野高飛必死球。本例未滿兩出局且一、二壘都有人；界內飛球若以內野手一般守備能力可接住，且不是平飛球或觸擊，就符合規則的球路條件。裁判宣告後，即使球落地，打者也出局。如此守方不能靠故意不接球，讓原本留在壘上的跑者突然面臨連續封殺。",
+      "scope": "依 MLB 規則詞條，滿壘也符合占壘條件。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "規則先解除因打者上壘而產生的推進義務，跑者仍可自行判斷是否冒險往前。",
+        "visual": "重播同一顆界內飛球，標出一、二壘的跑者與裁判宣告的時點。",
+        "seconds": [
+          27,
+          41
+        ]
+      },
+      "source_locator": "X123E-S05，Definition 兩段。",
+      "notes": "不能只因球落在內野就判；也沒有把球誤寫為死球。",
+      "origin": "wave123-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-17ba86d19cfbcd72",
+          "origin": "wave123-everyday-20261119",
+          "locator": "X123E-S05，Definition 兩段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0005",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "橋牌最後叫成「一無王」，莊家這一方只拿到六墩，為什麼連最低的一階都還差一墩？",
+      "mechanism_key": "x123.daily.contract_bridge_book_plus_level",
+      "answer_target": "一副牌共打十三墩。叫品把六墩當作共同的底數，牌桌上的「一」只計超過六墩的承諾，所以一無王要拿到七墩，六墩仍少一墩。「無王」交代這一副不設王牌花色；它不會把六墩底數取消。",
+      "scope": "以定約橋牌的定約墩數為限。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "叫品上的一、桌上拿下的七墩和最後計分表上的分數是不同的量。",
+        "visual": "先在十三個格子下括起六格，再讓一無王的「一」落在第七格。",
+        "seconds": [
+          23,
+          33
+        ]
+      },
+      "source_locator": "X123E-S06，The Play 的 13 tricks／book，以及 1 is a commitment to take 6 + 1 = 7 tricks。",
+      "notes": "不展開成約獎分、身價或賽制。",
+      "origin": "wave123-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-9154a5710aed4252",
+          "origin": "wave123-everyday-20261119",
+          "locator": "X123E-S06，The Play 的 13 tricks／book，以及 1 is a commitment to take 6 + 1 = 7 tricks。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0006",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "線已經細到標成蕾絲線，圖樣反而要用較大的棒針。這樣織出來的洞，是選錯針了嗎？",
+      "mechanism_key": "x123.daily.lace_weight_openwork_gauge",
+      "answer_target": "美國 Craft Yarn Council 把線的粗細分類，表上的針號和密度列的是常見用法。它特別註明，蕾絲線常用較大的針，以便織出有空隙的花紋；這一類很難指定通用密度。要做圖上的那件作品，仍得回到該圖樣要求的密度。",
+      "scope": "限蕾絲線的鏤空用途；相同線材也可另作他用。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "細線是材料的分類，孔眼的大小和作品要織到的密度還得看花樣。",
+        "visual": "放大同一股線和針圈的空隙，並列線材分類表與圖樣的密度欄。",
+        "seconds": [
+          23,
+          35
+        ]
+      },
+      "source_locator": "X123E-S07，表下 * GUIDELINES ONLY 和 ** Lace weight yarns 兩則註解。",
+      "notes": "不把業界建議讀成所有花樣都須遵循的針號。",
+      "origin": "wave123-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-ca69e757a82a4b8f",
+          "origin": "wave123-everyday-20261119",
+          "locator": "X123E-S07，表下 * GUIDELINES ONLY 和 ** Lace weight yarns 兩則註解。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0007",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "澳洲央行的鈔票量尺只有卡片大，鈔票比它長，為什麼把鈔票翻過尺頂就能摸出面額？",
+      "mechanism_key": "x123.daily.rba_fold_measure_denomination",
+      "answer_target": "各面額的澳元紙鈔長度不同。把鈔票短邊抵住量尺的摺線，再將鈔票翻過量尺頂端。起點固定後，另一端就會落在不同的凸線旁；摸刻線和點字數字便能讀出對應面額。央行影片用較長的 50 元鈔再示範一次。",
+      "scope": "限澳洲央行為盲人或低視力者設計的 Banknote Measure Device。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "用摺線固定鈔票起點，就能讓票長變成手指找得到的刻度。",
+        "visual": "俯視鈔票短邊抵住尺的中央摺線，將長端繞過尺頂，標出對齊的凸線。",
+        "seconds": [
+          24,
+          37
+        ]
+      },
+      "source_locator": "X123E-S08 的三步和 $50 影片逐字稿；X123E-S09 的 Different Lengths。",
+      "notes": "尺上有點字標記。另有部分澳鈔長邊自帶凸點，並非本題使用的尺面。",
+      "origin": "wave123-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-dd6bce1b798eb779",
+          "origin": "wave123-everyday-20261119",
+          "locator": "X123E-S08 的三步和 $50 影片逐字稿；X123E-S09 的 Different Lengths。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f8ae08954031bc57",
+          "origin": "wave123-everyday-20261119",
+          "locator": "X123E-S08 的三步和 $50 影片逐字稿；X123E-S09 的 Different Lengths。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0008",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "在 Libby 暫停等候一本電子書，名次還往前走，書卻一直借不到。預約到底停了哪一步？",
+      "mechanism_key": "x123.daily.libby_suspend_queue_position_delivery",
+      "answer_target": "Libby 讓暫停的預約繼續往隊伍前方移動，讀者還沒準備好時，可借的館藏會繼續流轉給別人。你得手動解除暫停，才會再獲得借閱機會；若館藏仍借出，還要等歸還或前面已恢復預約的人。官方也說，連續暫停滿 365 天的預約會失效。",
+      "scope": "依 2026 年 10 月更新的 Libby 說明，不推及其他圖書館系統。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "排隊順序在動，可借時是否把書送到這位讀者，則由暫停狀態決定。",
+        "visual": "保留同一個讀者號碼，讓名次前移；一本還回的書先流向下一位可接書的人。",
+        "seconds": [
+          24,
+          37
+        ]
+      },
+      "source_locator": "X123E-S10 的 moving up 與 365 consecutive days；X123E-S11 的 days or weeks。",
+      "notes": "不承諾解除後立刻取得一份，也不宣稱可無限期保留。",
+      "origin": "wave123-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-cc6e082f1918e9c6",
+          "origin": "wave123-everyday-20261119",
+          "locator": "X123E-S10 的 moving up 與 365 consecutive days；X123E-S11 的 days or weeks。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-d8a05fe414da3b66",
+          "origin": "wave123-everyday-20261119",
+          "locator": "X123E-S10 的 moving up 與 365 consecutive days；X123E-S11 的 days or weeks。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0009",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "明明買了矮化砧的蘋果苗，為什麼嫁接處埋得太深，往後反而可能長成大樹？",
+      "mechanism_key": "x123.daily.apple_graft_union_scion_roots",
+      "answer_target": "苗木上半段是結果品種的接穗，下半段是控制樹勢的砧木。明尼蘇達大學的指南指出，嫁接處太接近或低於土面時，接穗自己也會發根。此後即使原來用的是矮化砧，樹仍可能長到一般尺寸，而且更晚開始結果。",
+      "scope": "限嫁接蘋果苗的矮化效果。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把接合處埋住，可能多長出一套屬於接穗的根。",
+        "visual": "在嫁接膨大處上、下標兩種組織，讓土線升高後接穗旁伸出第二組根。",
+        "seconds": [
+          24,
+          37
+        ]
+      },
+      "source_locator": "X123E-S12，Selecting plants 與 Planting 的 graft union／scion will root。",
+      "notes": "不把嫁接處保留高度的地方栽培建議當成所有樹種的通則。",
+      "origin": "wave123-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b344e5eb619dfba2",
+          "origin": "wave123-everyday-20261119",
+          "locator": "X123E-S12，Selecting plants 與 Planting 的 graft union／scion will root。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0010",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "秋天已經採過一枝覆盆子，怎麼隔年夏天，同一枝的下半段還能再結果？",
+      "mechanism_key": "x123.daily.raspberry_tips_then_lower_crop",
+      "answer_target": "對能在一年生枝結果的秋果型覆盆子，新枝第一年先在枝尖開花結果。若留住這枝過冬，第二年較低的部位還能有一批夏果。若採只留秋果、春前整批剪到地面的管理方式，就不會留下這段枝條來收夏果。",
+      "scope": "限能在一年生枝結果的品種，不套用到僅在二年生枝結果的夏果型。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一枝兩次收穫，分佈在不同枝段、不同生長季。",
+        "visual": "在同一枝條的上端掛秋季標籤，再在下一格把夏季標籤移到枝條下段。",
+        "seconds": [
+          24,
+          35
+        ]
+      },
+      "source_locator": "X123E-S13，primocanes／floricanes、Everbearing raspberries 及 fall-only 管理條目。",
+      "notes": "園區示例照品種的結果習性，不保證各地都收得到兩季。",
+      "origin": "wave123-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-762a05db7140a2bc",
+          "origin": "wave123-everyday-20261119",
+          "locator": "X123E-S13，primocanes／floricanes、Everbearing raspberries 及 fall-only 管理條目。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0011",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "做透明水果凍，濾袋還滴著果汁，為什麼食譜偏要你等，不把最後一把汁擠出來？",
+      "mechanism_key": "x123.daily.jelly_free_drip_clarity",
+      "answer_target": "煮軟的水果放入濕濾袋，就讓果汁自己滴進盆裡。美國家庭食品保存中心說，這樣取得的汁做出的果凍最清澈。賓州州立大學的指引也提醒，過度擠壓煮軟的水果會讓果凍混濁。這一步決定的是要留下多清的果汁。",
+      "scope": "以用濾清果汁做的 jelly 為例，和保留果肉的 jam 分開。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最後用力擠，可能多收了汁，也把原先要保留的清澈度丟掉了。",
+        "visual": "同一批煮軟水果分兩袋，畫出只接自然滴汁和額外擠壓兩種液體的透光差異。",
+        "seconds": [
+          23,
+          34
+        ]
+      },
+      "source_locator": "X123E-S14，The clearest jelly 段；X123E-S15，Preparing Juice for Jelly。",
+      "notes": "不是用透明度判定保存安全或凝膠是否合格。",
+      "origin": "wave123-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-140921d3b060b44b",
+          "origin": "wave123-everyday-20261119",
+          "locator": "X123E-S14，The clearest jelly 段；X123E-S15，Preparing Juice for Jelly。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-3abb1c84bae8e82f",
+          "origin": "wave123-everyday-20261119",
+          "locator": "X123E-S14，The clearest jelly 段；X123E-S15，Preparing Juice for Jelly。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0012",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "擠花袋裡還有半袋奶油霜，想把圓點換成星紋，為什麼有的袋子在外面轉一下就能換嘴？",
+      "mechanism_key": "x123.daily.piping_tip_external_coupler",
+      "answer_target": "先看袋子有沒有裝轉接器。Wilton 的底座在填霜前就放進袋裡，外側的環負責把適配的花嘴鎖住。取下環，換嘴再固定，底座和同一袋霜都留著。若從頭到尾只用一個嘴，原廠也示範把嘴直接放入袋尖，不必另裝轉接器。",
+      "scope": "以 Wilton 的相容轉接器、花嘴及擠花袋為例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "擠出圓點或星紋的是外端的嘴，讓嘴能拆換的是袋子內外那兩件零件。",
+        "visual": "剖面圖依序標袋內底座、袋尖、花嘴、外環；換成星嘴時留下底座。",
+        "seconds": [
+          24,
+          36
+        ]
+      },
+      "source_locator": "X123E-S16，If you’re planning to use more than one tip 與 If you don’t plan on changing tips。",
+      "notes": "實際圖案也受手法影響；不宣稱不同尺寸的嘴可以共用同一外環。",
+      "origin": "wave123-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-4faa0bfd9a870f58",
+          "origin": "wave123-everyday-20261119",
+          "locator": "X123E-S16，If you’re planning to use more than one tip 與 If you don’t plan on changing tips。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0012"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0201",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "台灣寫「猗窩座再襲」，日本寫「猗窩座再来」，怎麼認出家人挑的是同一部電影？",
+      "mechanism_key": "x123.cinema_ratings.matched_feature",
+      "answer_target": "兩邊都有《無限城》第一章及猗窩座副標。光點華山片單寫日語、外崎春雄、155 分鐘，映倫編號 124908 的紀錄寫 2 小時 35 分。兩種片長換算相符，再對片名及年份便能排除其他章節。",
+      "scope": "比的是同一作品在兩地的院線資料，不能據此推定逐格相同。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "改譯一個字不會把第一章變成另一集。",
+        "visual": "手寫兩張片單，把 2 × 60 + 35 填進同一格。",
+        "seconds": [
+          19,
+          31
+        ]
+      },
+      "source_locator": "X123D-S01 電影介紹，片名至「2025/8/08起」；X123D-S06 審查日 2025-06-27，映倫番号 124908，指定理由及片長",
+      "notes": "按片單、歷史活動公告或院方規則自繪；家庭選場為假設案例。",
+      "origin": "wave123-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-9675981d7f04f9de",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S01 電影介紹，片名至「2025/8/08起」；X123D-S06 審查日 2025-06-27，映倫番号 124908，指定理由及片長",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b0cfa1602f1cc468",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S01 電影介紹，片名至「2025/8/08起」；X123D-S06 審查日 2025-06-27，映倫番号 124908，指定理由及片長",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0201"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0202",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "台灣影城和日本片方都印「PG12」，十一歲有家長陪，為什麼兩個櫃檯給不同答案？",
+      "mechanism_key": "x123.cinema_ratings.territorial_label",
+      "answer_target": "高雄環球的分級表把台灣的輔導十二歲級也標為 PG12，下一行規則是未滿十二歲不能觀看。日本片方的 PG12 則請監護人對未滿十二歲者提供建議及指導。白天選場時，即使大人同行，孩子在台灣仍被分級擋下；在日本，有指導即可就片級觀看。",
+      "scope": "日本答案只判定電影本身的分級，個別場次另查。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連英文字母都相同，還得讀售票地的說明。",
+        "visual": "用兩張紙遮住地名，猜一次，再掀開各自的規則。",
+        "seconds": [
+          24,
+          37
+        ]
+      },
+      "source_locator": "X123D-S04 電影分級制度第一行、輔導十二歲級與保護級；X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款；X123D-S08 2025-07-04 公告，PG12 下兩句；X123D-S02 級別、片長、字幕與上映日期",
+      "notes": "按片單、歷史活動公告或院方規則自繪；家庭選場為假設案例。",
+      "origin": "wave123-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-9c75520870ac8dd3",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S04 電影分級制度第一行、輔導十二歲級與保護級；X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款；X123D-S08 2025-07-04 公告，PG12 下兩句；X123D-S02 級別、片長、字幕與上映日期",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-29e16651ac705719",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S04 電影分級制度第一行、輔導十二歲級與保護級；X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款；X123D-S08 2025-07-04 公告，PG12 下兩句；X123D-S02 級別、片長、字幕與上映日期",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-15da7ca5dcdb37e5",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S04 電影分級制度第一行、輔導十二歲級與保護級；X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款；X123D-S08 2025-07-04 公告，PG12 下兩句；X123D-S02 級別、片長、字幕與上映日期",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-a4c4bab682ca970f",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S04 電影分級制度第一行、輔導十二歲級與保護級；X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款；X123D-S08 2025-07-04 公告，PG12 下兩句；X123D-S02 級別、片長、字幕與上映日期",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0202"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0203",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同一張家庭行事曆上，6 月 27 日、7 月 18 日、8 月 8 日，哪一天能開始在台北看第一章？",
+      "mechanism_key": "x123.cinema_ratings.release_not_review",
+      "answer_target": "6 月 27 日是映倫完成日本審查的日期。片方另公告 7 月 18 日為日本公開首日，台北誠品電影院的上映欄則是 8 月 8 日。三個日期各有用途，台灣家庭要看的是當地上映欄。",
+      "scope": "只指上述 2025 年片單，不推出其他地區的上映時間。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "審完的日子與家附近開演的日子各有一欄。",
+        "visual": "日曆三格依次放入審查章、日本場次、台北片單。",
+        "seconds": [
+          18,
+          30
+        ]
+      },
+      "source_locator": "X123D-S02 級別、片長、字幕與上映日期；X123D-S06 審查日 2025-06-27，映倫番号 124908，指定理由及片長；X123D-S11 2025-07-06 公告，實施日時、座席販売開始、實施劇場、分級及 18 歲註記",
+      "notes": "按片單、歷史活動公告或院方規則自繪；家庭選場為假設案例。",
+      "origin": "wave123-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a4c4bab682ca970f",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S02 級別、片長、字幕與上映日期；X123D-S06 審查日 2025-06-27，映倫番号 124908，指定理由及片長；X123D-S11 2025-07-06 公告，實施日時、座席販売開始、實施劇場、分級及 18 歲註記",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b0cfa1602f1cc468",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S02 級別、片長、字幕與上映日期；X123D-S06 審查日 2025-06-27，映倫番号 124908，指定理由及片長；X123D-S11 2025-07-06 公告，實施日時、座席販売開始、實施劇場、分級及 18 歲註記",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-4067a3f1f8e64be6",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S02 級別、片長、字幕與上映日期；X123D-S06 審查日 2025-06-27，映倫番号 124908，指定理由及片長；X123D-S11 2025-07-06 公告，實施日時、座席販売開始、實施劇場、分級及 18 歲註記",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0203"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0204",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "十一歲想看台灣院線電影，家長的陪同在哪一個級別真的管用？",
+      "mechanism_key": "x123.cinema_ratings.protected_age",
+      "answer_target": "依第 8 條，保護級對已滿六歲、未滿十二歲的兒童要求父母、師長或成年親友陪伴輔導。輔十二級另列未滿十二歲不得觀賞，沒有這種陪同條件。光點把這部第一章列在輔十二級，十一歲與父母同行仍不能進。",
+      "scope": "是各級別的入場條件，不評價個別孩子成熟度。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "只換片級，同一名成人陪同就可能改變結果。",
+        "visual": "孩子與家長兩枚棋子依次放在「護」、「輔十二」兩格。",
+        "seconds": [
+          22,
+          34
+        ]
+      },
+      "source_locator": "X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款；X123D-S01 電影介紹，片名至「2025/8/08起」",
+      "notes": "按片單、歷史活動公告或院方規則自繪；家庭選場為假設案例。",
+      "origin": "wave123-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-29e16651ac705719",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款；X123D-S01 電影介紹，片名至「2025/8/08起」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-9675981d7f04f9de",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款；X123D-S01 電影介紹，片名至「2025/8/08起」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0204"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0205",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "台北光點的優待票明明包括十一歲兒童，可以拿它買這部《鬼滅之刃》嗎？",
+      "mechanism_key": "x123.cinema_ratings.child_fare",
+      "answer_target": "票價表把 2 至 12 歲兒童列為出示年齡證明可買優待票的對象。本片另外有輔十二級門檻。十一歲符合折扣年齡，能把這項折扣用在可看的片；付全票或改用優待票都不會讓他取得本片的觀影資格。",
+      "scope": "以光點的一般票價資訊與該館所列電影並讀，不推估當年票價。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "便宜一點的票和有資格進去的票，是兩個問題。",
+        "visual": "同一張紙分票價與分級欄，各蓋一次章。",
+        "seconds": [
+          22,
+          34
+        ]
+      },
+      "source_locator": "X123D-S05 優待票與免費入場兩段的兒童條件；X123D-S01 電影介紹，片名至「2025/8/08起」；X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款",
+      "notes": "按片單、歷史活動公告或院方規則自繪；家庭選場為假設案例。",
+      "origin": "wave123-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-1161bce4d827dec0",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S05 優待票與免費入場兩段的兒童條件；X123D-S01 電影介紹，片名至「2025/8/08起」；X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-9675981d7f04f9de",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S05 優待票與免費入場兩段的兒童條件；X123D-S01 電影介紹，片名至「2025/8/08起」；X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-29e16651ac705719",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S05 優待票與免費入場兩段的兒童條件；X123D-S01 電影介紹，片名至「2025/8/08起」；X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0205"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0206",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "如果媽媽自己排隊買兩張電影票，高雄環球規定驗的是誰的年齡？",
+      "mechanism_key": "x123.cinema_ratings.viewers_age",
+      "answer_target": "影城須知把購票與入場驗票都列出，要求出示能證明觀影者年齡符合分級的文件。家長的證件能證明家長的年齡，不能代替孩子的。回到十一歲這個例子，換一個人付錢也無法符合輔十二。",
+      "scope": "只說明該影城公布的查驗對象，沒有代列所有可接受證件。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "櫃檯真正需要知道的是誰要進影廳。",
+        "visual": "把「付款人」寫在收據，「觀影者」寫在兩張座位卡。",
+        "seconds": [
+          20,
+          33
+        ]
+      },
+      "source_locator": "X123D-S04 電影分級制度第一行、輔導十二歲級與保護級；X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款",
+      "notes": "按片單、歷史活動公告或院方規則自繪；家庭選場為假設案例。",
+      "origin": "wave123-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-9c75520870ac8dd3",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S04 電影分級制度第一行、輔導十二歲級與保護級；X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-29e16651ac705719",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S04 電影分級制度第一行、輔導十二歲級與保護級；X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0206"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0207",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "片方在 7 月 4 日才公告 PG12，誰在更早之前留下了分級理由？",
+      "mechanism_key": "x123.cinema_ratings.who_decides",
+      "answer_target": "日本映倫 6 月 27 日的本片紀錄已列出片長、申請者、編號 124908 及分級理由，片方 7 月 4 日才公告結果。映倫自述為獨立的非政府機構。台灣則依文化部辦法向中央主管機關送審，由主管機關公布審議結論及理由。",
+      "scope": "用程序解釋兩地標籤的來處，沒有把個案差異歸因於國民性。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "查片方之前，先找到哪一筆審查紀錄產生這個標示。",
+        "visual": "按日期連起審查紀錄與片方公告，旁放台灣送審流程。",
+        "seconds": [
+          21,
+          33
+        ]
+      },
+      "source_locator": "X123D-S06 審查日 2025-06-27，映倫番号 124908，指定理由及片長；X123D-S07 Introduction 首段及 1956 年改組；X123D-S08 2025-07-04 公告，PG12 下兩句；X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款",
+      "notes": "按片單、歷史活動公告或院方規則自繪；家庭選場為假設案例。",
+      "origin": "wave123-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b0cfa1602f1cc468",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S06 審查日 2025-06-27，映倫番号 124908，指定理由及片長；X123D-S07 Introduction 首段及 1956 年改組；X123D-S08 2025-07-04 公告，PG12 下兩句；X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5a8a0dbb3dafb234",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S06 審查日 2025-06-27，映倫番号 124908，指定理由及片長；X123D-S07 Introduction 首段及 1956 年改組；X123D-S08 2025-07-04 公告，PG12 下兩句；X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-15da7ca5dcdb37e5",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S06 審查日 2025-06-27，映倫番号 124908，指定理由及片長；X123D-S07 Introduction 首段及 1956 年改組；X123D-S08 2025-07-04 公告，PG12 下兩句；X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-29e16651ac705719",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S06 審查日 2025-06-27，映倫番号 124908，指定理由及片長；X123D-S07 Introduction 首段及 1956 年改組；X123D-S08 2025-07-04 公告，PG12 下兩句；X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0207"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0208",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "日本把判斷交回家長，映倫給了什麼具體資訊，好讓大人和孩子談？",
+      "mechanism_key": "x123.cinema_ratings.content_guidance",
+      "answer_target": "指定理由提到動畫中有刀劍造成傷亡、畫面見血。家長可以據此和十一歲孩子談能否接受這類場面。片方對 PG12 寫的是未滿十二歲需要監護人建議與指導；該公告本身沒有要求大人一定買鄰座，亦不能代替當日影城規定。",
+      "scope": "只轉述審查機構指出的內容，不提供兒童發展或醫療判斷。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「要給建議」有可談的具體畫面。",
+        "visual": "不播片段，讓家長讀兩句原意，再把想問孩子的話寫下。",
+        "seconds": [
+          22,
+          35
+        ]
+      },
+      "source_locator": "X123D-S06 審查日 2025-06-27，映倫番号 124908，指定理由及片長；X123D-S08 2025-07-04 公告，PG12 下兩句",
+      "notes": "按片單、歷史活動公告或院方規則自繪；家庭選場為假設案例。",
+      "origin": "wave123-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b0cfa1602f1cc468",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S06 審查日 2025-06-27，映倫番号 124908，指定理由及片長；X123D-S08 2025-07-04 公告，PG12 下兩句",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-15da7ca5dcdb37e5",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S06 審查日 2025-06-27，映倫番号 124908，指定理由及片長；X123D-S08 2025-07-04 公告，PG12 下兩句",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0208"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0209",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "如果日本海報的角標換成 R15+，同一段家長說明還能讓孩子進去嗎？",
+      "mechanism_key": "x123.cinema_ratings.guidance_vs_gate",
+      "answer_target": "大阪的テアトル梅田把 PG12 與 R15+ 放在同一則問答，前者對未滿十二歲者要求監護人指導，後者列滿十五歲才可觀賞。十一歲孩子面對 R15+ 時，即使家長了解內容也沒有達到年齡門檻。本片在日本列 PG12。",
+      "scope": "另一個片級作反例。テアトル梅田與舉辦本片特別場的 TOHO 梅田是兩座場館。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "讀清級別，才能知道決定權交給了誰。",
+        "visual": "用同一張十一歲觀眾卡試放到 PG12 與 R15+ 的框裡。",
+        "seconds": [
+          19,
+          31
+        ]
+      },
+      "source_locator": "X123D-S09 PG12、R15+ 對照及未滿 16、18 歲的晚場問答；X123D-S08 2025-07-04 公告，PG12 下兩句",
+      "notes": "按片單、歷史活動公告或院方規則自繪；家庭選場為假設案例。",
+      "origin": "wave123-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-8a6763bfa50dccb6",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S09 PG12、R15+ 對照及未滿 16、18 歲的晚場問答；X123D-S08 2025-07-04 公告，PG12 下兩句",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-15da7ca5dcdb37e5",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S09 PG12、R15+ 對照及未滿 16、18 歲的晚場問答；X123D-S08 2025-07-04 公告，PG12 下兩句",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0209"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0210",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "大阪 TOHO 的電影晚上九點就開演，十一歲與媽媽一起去，還少查哪個時間？",
+      "mechanism_key": "x123.cinema_ratings.which_clock",
+      "answer_target": "院方大阪地區的說明看終映時刻。未滿十八歲，即使監護人同行，也不能看超過 22 時才散場的場次。這部正片就有 155 分鐘；若假設 21:00 開始放正片，算到 23:35 已跨線，還沒計入可能的其他節目。",
+      "scope": "21:00 是純試算，不是查到的歷史場次；實際以院方公布終映時間為準。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把片長加進去，就知道趕在十點前坐下還不夠。",
+        "visual": "在鐘面上從 21:00 走兩小時三十五分，再圈官網「終映」。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_locator": "X123D-S10 FAQ 2883，一般兒童觀影問答與大阪府附註；X123D-S11 2025-07-06 公告，實施日時、座席販売開始、實施劇場、分級及 18 歲註記",
+      "notes": "按片單、歷史活動公告或院方規則自繪；家庭選場為假設案例。",
+      "origin": "wave123-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-6e2df6c4ecffb8ca",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S10 FAQ 2883，一般兒童觀影問答與大阪府附註；X123D-S11 2025-07-06 公告，實施日時、座席販売開始、實施劇場、分級及 18 歲註記",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-4067a3f1f8e64be6",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S10 FAQ 2883，一般兒童觀影問答與大阪府附註；X123D-S11 2025-07-06 公告，實施日時、座席販売開始、實施劇場、分級及 18 歲註記",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0210"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0211",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同樣假設在大阪晚間八點散場，十一歲孩子的家長若改在門口接他，會改變什麼？",
+      "mechanism_key": "x123.cinema_ratings.early_evening",
+      "answer_target": "大阪 TOHO 對未滿十六歲且沒有監護人陪同者，還有 19 時終映上限；在 20:00 散場的假設下，獨自進場超過上限，與監護人同看則仍在 22 時以內。另一家テアトル梅田也公布這兩個時間。",
+      "scope": "此處僅演算時間條件；電影片級與持票另判。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣的散場鐘點，家長在座位或只在門外，可能改變可選場次。",
+        "visual": "畫 19:00、20:00、22:00 三個刻度，把家長移到影廳內外。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_locator": "X123D-S09 PG12、R15+ 對照及未滿 16、18 歲的晚場問答；X123D-S10 FAQ 2883，一般兒童觀影問答與大阪府附註",
+      "notes": "按片單、歷史活動公告或院方規則自繪；家庭選場為假設案例。",
+      "origin": "wave123-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-8a6763bfa50dccb6",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S09 PG12、R15+ 對照及未滿 16、18 歲的晚場問答；X123D-S10 FAQ 2883，一般兒童觀影問答與大阪府附註",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-6e2df6c4ecffb8ca",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S09 PG12、R15+ 對照及未滿 16、18 歲的晚場問答；X123D-S10 FAQ 2883，一般兒童觀影問答與大阪府附註",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0211"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0212",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "2025 年 7 月 18 日零時的大阪梅田首映，家長能帶十一歲孩子去搶先看嗎？",
+      "mechanism_key": "x123.cinema_ratings.midnight_event",
+      "answer_target": "Aniplex 的首映公告點名大阪 TOHO 梅田，並明訂該次零時開演，未滿十八歲即使家長陪同也不能入場。這是 7 月 17 日的午夜跨入 18 日。公告只為宮城縣註明有監護人同場的例外，名單中的宮城場館是仙台。",
+      "scope": "只取這一場活動，不能把大阪或宮城的例子套到日本所有晚場。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "PG12 的這部片，在這家戲院的首場確實擋下了有家長陪的孩子。",
+        "visual": "用首映名單圈出大阪梅田，再給宮城仙台例外註一行小字。",
+        "seconds": [
+          26,
+          40
+        ]
+      },
+      "source_locator": "X123D-S11 2025-07-06 公告，實施日時、座席販売開始、實施劇場、分級及 18 歲註記；X123D-S10 FAQ 2883，一般兒童觀影問答與大阪府附註",
+      "notes": "按片單、歷史活動公告或院方規則自繪；家庭選場為假設案例。",
+      "origin": "wave123-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-4067a3f1f8e64be6",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S11 2025-07-06 公告，實施日時、座席販売開始、實施劇場、分級及 18 歲註記；X123D-S10 FAQ 2883，一般兒童觀影問答與大阪府附註",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-6e2df6c4ecffb8ca",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S11 2025-07-06 公告，實施日時、座席販売開始、實施劇場、分級及 18 歲註記；X123D-S10 FAQ 2883，一般兒童觀影問答與大阪府附註",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0212"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0213",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "英國的九十秒預告明明是 12A，為什麼一家人不能拿它的分級去買正片？",
+      "mechanism_key": "x123.cinema_ratings.trailer_feature",
+      "answer_target": "BBFC 的同片頁把 2025 年 8 月 8 日的主預告登記為 1 分 30 秒、12A。8 月 12 日登記的是 2D 院線正片，155 分 2 秒，級別 15。替孩子找入場條件，必須先核對條目是正片還是那一支預告。",
+      "scope": "獨立比對這兩筆，不將本片所有預告一概列為 12A。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一頁有兩個對的分級，貼錯對象就會買錯。",
+        "visual": "把同頁兩行的日期、片長和分級連成兩組。",
+        "seconds": [
+          21,
+          34
+        ]
+      },
+      "source_locator": "X123D-S14 Cinema／2D／12 August 2025／155m 2s；Trailers／8 August 2025／1m 30s 兩筆及分級徽章；X123D-S15 What does the 15 age rating mean? 首兩句",
+      "notes": "按片單、歷史活動公告或院方規則自繪；家庭選場為假設案例。",
+      "origin": "wave123-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-8bea74e3e6ab727a",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S14 Cinema／2D／12 August 2025／155m 2s；Trailers／8 August 2025／1m 30s 兩筆及分級徽章；X123D-S15 What does the 15 age rating mean? 首兩句",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-21c8bd85d732d8a3",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S14 Cinema／2D／12 August 2025／155m 2s；Trailers／8 August 2025／1m 30s 兩筆及分級徽章；X123D-S15 What does the 15 age rating mean? 首兩句",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0213"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0214",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "在英國，爸媽拿著兩張票坐在十一歲孩子旁邊，能看到《無限城篇》正片嗎？",
+      "mechanism_key": "x123.cinema_ratings.british_adult",
+      "answer_target": "英國 ODEON 把 12A 的陪同例外寫得很清楚，未滿十二歲可以和成人同看。正片的 15 級則禁止未滿十五歲者在影院觀看。對這個家庭，有成人在旁並不能把 15 改成 12A。",
+      "scope": "限英國院線分級；沒有討論串流或家用版本。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "家長陪同真正有用的欄位，是英國的 12A。",
+        "visual": "家長和孩子兩張座位卡放進英國正片那欄。",
+        "seconds": [
+          19,
+          32
+        ]
+      },
+      "source_locator": "X123D-S16 12A 與 15 的影院入場條件；X123D-S14 Cinema／2D／12 August 2025／155m 2s；Trailers／8 August 2025／1m 30s 兩筆及分級徽章；X123D-S15 What does the 15 age rating mean? 首兩句",
+      "notes": "按片單、歷史活動公告或院方規則自繪；家庭選場為假設案例。",
+      "origin": "wave123-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-dd2de4a4ef559cdc",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S16 12A 與 15 的影院入場條件；X123D-S14 Cinema／2D／12 August 2025／155m 2s；Trailers／8 August 2025／1m 30s 兩筆及分級徽章；X123D-S15 What does the 15 age rating mean? 首兩句",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8bea74e3e6ab727a",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S16 12A 與 15 的影院入場條件；X123D-S14 Cinema／2D／12 August 2025／155m 2s；Trailers／8 August 2025／1m 30s 兩筆及分級徽章；X123D-S15 What does the 15 age rating mean? 首兩句",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-21c8bd85d732d8a3",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S16 12A 與 15 的影院入場條件；X123D-S14 Cinema／2D／12 August 2025／155m 2s；Trailers／8 August 2025／1m 30s 兩筆及分級徽章；X123D-S15 What does the 15 age rating mean? 首兩句",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0214"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0215",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同一部電影到了澳洲也有「15」，為什麼十一歲孩子這次可以跟媽媽一起買票看？",
+      "mechanism_key": "x123.cinema_ratings.australian_parent",
+      "answer_target": "澳洲 2025 年 8 月 6 日的原版日語紀錄 CLAS-933940 把本片列為 MA15+。未滿十五歲可以由父母或成年監護人購票並全程陪看。HOYTS 提醒，代買一張票就離開不符條件；朋友或年長手足通常也不等於行使親職照顧的監護人。",
+      "scope": "只在 MA15+ 的影院情境判定。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "這個 15 要問誰買票、誰坐下、陪多久。",
+        "visual": "授票後將家長一路留在旁座，放到片尾才起身。",
+        "seconds": [
+          25,
+          39
+        ]
+      },
+      "source_locator": "X123D-S17 Industry details，2025-08-06，CLAS-933940；X123D-S18 Restricted ratings / Mature Accompanied (MA 15+)；X123D-S19 The MA15+ classification 及 Who qualifies as a guardian?",
+      "notes": "按片單、歷史活動公告或院方規則自繪；家庭選場為假設案例。",
+      "origin": "wave123-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-13f055e39c27e7d0",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S17 Industry details，2025-08-06，CLAS-933940；X123D-S18 Restricted ratings / Mature Accompanied (MA 15+)；X123D-S19 The MA15+ classification 及 Who qualifies as a guardian?",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-bdb725b14b160c55",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S17 Industry details，2025-08-06，CLAS-933940；X123D-S18 Restricted ratings / Mature Accompanied (MA 15+)；X123D-S19 The MA15+ classification 及 Who qualifies as a guardian?",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-fb7f1218e38ceb44",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S17 Industry details，2025-08-06，CLAS-933940；X123D-S18 Restricted ratings / Mature Accompanied (MA 15+)；X123D-S19 The MA15+ classification 及 Who qualifies as a guardian?",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0215"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0216",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "把大阪 TOHO 梅田的場次往後翻兩天，十一歲和家長當年可以選哪一場？",
+      "mechanism_key": "x123.cinema_ratings.same_cinema_day",
+      "answer_target": "7 月 20 日的梅田上午 8:30 場放完正片才有舞台見面會。它和 18 日午夜的場次在同一間戲院，電影和 PG12 都沒換。一般票 2,200 日圓，高中生及 junior 票 1,200 日圓；依活動條款，三歲以上各自需要票。兩人已備好票且家長有指導時，上午場符合這家人的條件。",
+      "scope": "重建已公布的 2025 年活動選項，不主張觀眾實際出席。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "只換開演時間與持有的場次票，同一家人就有合適的選擇。",
+        "visual": "在同一張梅田地圖釘上午夜和上午兩張不同日期的票。",
+        "seconds": [
+          22,
+          35
+        ]
+      },
+      "source_locator": "X123D-S12 7/20 梅田 8:30 場、料金、先行抽選、劇場販売、注意事項；X123D-S11 2025-07-06 公告，實施日時、座席販売開始、實施劇場、分級及 18 歲註記；X123D-S08 2025-07-04 公告，PG12 下兩句",
+      "notes": "按片單、歷史活動公告或院方規則自繪；家庭選場為假設案例。",
+      "origin": "wave123-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f79db7dc4ac2f847",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S12 7/20 梅田 8:30 場、料金、先行抽選、劇場販売、注意事項；X123D-S11 2025-07-06 公告，實施日時、座席販売開始、實施劇場、分級及 18 歲註記；X123D-S08 2025-07-04 公告，PG12 下兩句",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-4067a3f1f8e64be6",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S12 7/20 梅田 8:30 場、料金、先行抽選、劇場販売、注意事項；X123D-S11 2025-07-06 公告，實施日時、座席販売開始、實施劇場、分級及 18 歲註記；X123D-S08 2025-07-04 公告，PG12 下兩句",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-15da7ca5dcdb37e5",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S12 7/20 梅田 8:30 場、料金、先行抽選、劇場販売、注意事項；X123D-S11 2025-07-06 公告，實施日時、座席販売開始、實施劇場、分級及 18 歲註記；X123D-S08 2025-07-04 公告，PG12 下兩句",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0216"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0217",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "規則允許去梅田早場，為何一家人當年仍不能保證在門口才買得到兩個位子？",
+      "mechanism_key": "x123.cinema_ratings.entry_vs_seat",
+      "answer_target": "本場先由 Ticket Pia 抽選，一人最多申請兩張；若抽選已售完就不轉影城，網路又售完便沒有櫃檯票。主辦方還寫明全席指定。Pia 的 7 月 20 日大阪紀錄已標抽選結束，因此能回推他們當時可選哪場，卻不能聲稱家人真的買到了票。",
+      "scope": "不推定剩票數、不以現行一般票價回算活動票。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "符合年齡的上午場，仍須買到對日期與場館的票。",
+        "visual": "在活動圖上讓兩張票從抽選移到席位，剩票才畫到櫃檯。",
+        "seconds": [
+          20,
+          32
+        ]
+      },
+      "source_locator": "X123D-S13 公開記念舞台挨拶／大阪，2025/7/20(日)、兩家戲院及抽選受付終了；X123D-S12 7/20 梅田 8:30 場、料金、先行抽選、劇場販売、注意事項",
+      "notes": "按片單、歷史活動公告或院方規則自繪；家庭選場為假設案例。",
+      "origin": "wave123-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-35c33737fe585d93",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S13 公開記念舞台挨拶／大阪，2025/7/20(日)、兩家戲院及抽選受付終了；X123D-S12 7/20 梅田 8:30 場、料金、先行抽選、劇場販売、注意事項",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f79db7dc4ac2f847",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S13 公開記念舞台挨拶／大阪，2025/7/20(日)、兩家戲院及抽選受付終了；X123D-S12 7/20 梅田 8:30 場、料金、先行抽選、劇場販売、注意事項",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0217"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0218",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "台灣這部片如果剛好排在孩子十二歲生日前後，哪一次能過分級這一關？",
+      "mechanism_key": "x123.cinema_ratings.birthday_cutoff",
+      "answer_target": "條文以未滿十二歲作界線。十一歲時，即使家長同去也不能看本片；已滿十二歲則達到輔十二級的年齡條件。日本片方 PG12 公告指名需要監護人指導的亦是未滿十二歲，生日只改變該年齡條件，不會讓大阪未滿十八歲的午夜場跟著開放。",
+      "scope": "紙上演算生日前後，並非聲稱特定生日放映或觀眾到場。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一個生日能跨過台灣片級，跨不過大阪午夜場的十八歲門檻。",
+        "visual": "年齡牌從 11 翻到 12，只擦掉已跨過的那條限制。",
+        "seconds": [
+          23,
+          36
+        ]
+      },
+      "source_locator": "X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款；X123D-S08 2025-07-04 公告，PG12 下兩句；X123D-S11 2025-07-06 公告，實施日時、座席販売開始、實施劇場、分級及 18 歲註記",
+      "notes": "按片單、歷史活動公告或院方規則自繪；家庭選場為假設案例。",
+      "origin": "wave123-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-29e16651ac705719",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款；X123D-S08 2025-07-04 公告，PG12 下兩句；X123D-S11 2025-07-06 公告，實施日時、座席販売開始、實施劇場、分級及 18 歲註記",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-15da7ca5dcdb37e5",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款；X123D-S08 2025-07-04 公告，PG12 下兩句；X123D-S11 2025-07-06 公告，實施日時、座席販売開始、實施劇場、分級及 18 歲註記",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-4067a3f1f8e64be6",
+          "origin": "wave123-research-20261119",
+          "locator": "X123D-S03 第 2、6、7、8 條，尤其第 8 條第 3、4 款；X123D-S08 2025-07-04 公告，PG12 下兩句；X123D-S11 2025-07-06 公告，實施日時、座席販売開始、實施劇場、分級及 18 歲註記",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0218"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0401",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "臺北的月出表在 11 月 2 日空了一格，旁邊卻有月落時間。這一天到底有沒有月亮？",
+      "mechanism_key": "x123.sky.calendar_blank_moonrise",
+      "answer_target": "讀美國海軍天文台的 2026 年臺北月出月落表。11 月 1 日 23:07 月亮已經升起，跨過午夜後，在 2 日 12:49 落下；再一次升起已經是 3 日 00:11。橫列切的是當地的一個日曆日，所以 2 日有月落可填，當天沒有月出事件可填。",
+      "scope": "座標北緯 25.03 度、東經 121.56 度，東八區。表中是預算時刻，能否從家裡實際看見另受遮蔽和天候影響。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "畫跨三日的橫軸，把兩個午夜畫成直線，再把三個事件分配回表格。",
+        "payoff": "2 日那格回答的是當天有沒有一次升起，前一晚已在天上的月亮仍然會落下。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "S01，Nov. 01–03，Rise／Set 分欄及表末空白註記；S02，Rise and Set 定義。",
+      "notes": "對照相鄰三日，同時留著 2 日的 Set 欄。",
+      "origin": "wave123-sky-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-3a836813683f0500",
+          "origin": "wave123-sky-20261119",
+          "locator": "S01，Nov. 01–03，Rise／Set 分欄及表末空白註記；S02，Rise and Set 定義。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-1f210f2f859fd56e",
+          "origin": "wave123-sky-20261119",
+          "locator": "S01，Nov. 01–03，Rise／Set 分欄及表末空白註記；S02，Rise and Set 定義。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-sky-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0401"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0402",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "已經把日期、時間對好的紙本星座盤，從朝北改成朝西看時，該重轉內盤還是轉整張？",
+      "mechanism_key": "x123.sky.rotatable_chart_facing",
+      "answer_target": "Sky & Telescope 的星座盤靠內盤和外套的相對位置選日期與時間。先保留這個對齊，再把整張轉到標示你面前方向的 Facing 字樣位於下緣、正向可讀。面向西方時，這段橢圓邊就對應眼前的西方地平線，往圖心看代表越往頭頂。",
+      "scope": "採用原版標示適用北緯 30 至 50 度的星座盤。以北緯 40 度同一地點、同一時刻轉身為例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "先將兩個刻度對齊畫記，再把手連同整張紙轉動，只讓 Facing West 轉到下側。",
+        "payoff": "轉身改的是眼前哪一段地平線，盤上的日期與時間仍保持原位。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "S03，Using the Star Wheel 兩段及 Facing 圖說；後段緯度範圍。",
+      "notes": "北緯 40 度是教學情境，沒有宣稱這張盤能精準套用臺北。",
+      "origin": "wave123-sky-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-114ee3392457c3a6",
+          "origin": "wave123-sky-20261119",
+          "locator": "S03，Using the Star Wheel 兩段及 Facing 圖說；後段緯度範圍。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-sky-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0402"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0403",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "在 NASA 的月面動畫裡按快轉，剛才那個撞擊坑的名字怎麼慢慢消失了？",
+      "mechanism_key": "x123.sky.lunar_map_fading_names",
+      "answer_target": "這部 2026 年月面動畫會把靠近晝夜交界的撞擊坑名字顯示出來。斜照使附近的地形投下長陰影，起伏特別顯眼；交界往前移，新的名字出現，原有標籤就淡去。要追同一個坑，得看它的地形位置和光照，同時留意字樣是這部動畫選擇顯示的。",
+      "scope": "限 NASA SVS 的 2026 年北向上、有地名版本。畫面是由月球資料製成的地心視角。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用同一處自繪地形做相鄰時刻兩格，讓明暗線往前移，保留坑的位置，讓字淡出。",
+        "payoff": "消失的是跟著明暗界線移動的標籤；名字不再顯示，不能據此判定撞擊坑已轉到月背。",
+        "seconds": [
+          26,
+          41
+        ]
+      },
+      "source_locator": "S04，geocentric 動畫說明、long shadows near the terminator，以及中央大圖的 Crater labels 說明。",
+      "notes": "不把動畫的標籤規則泛化為所有月球地圖。",
+      "origin": "wave123-sky-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-83562d35b434354c",
+          "origin": "wave123-sky-20261119",
+          "locator": "S04，geocentric 動畫說明、long shadows near the terminator，以及中央大圖的 Crater labels 說明。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-sky-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0403"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0404",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "變星觀測圖把兩顆星標成 84 和 90。要找較亮的比較星，應該選哪一顆？",
+      "mechanism_key": "x123.sky.comparison_star_label",
+      "answer_target": "AAVSO 的星圖把比較星亮度標到十分位。手冊例子的 84 是 8.4 等，90 是 9.0 等；圖上刻意省掉小數點，以免看起來又多出一顆星。星等數值越小越亮，所以較亮的是標 84 的那顆。兩個已知亮度可用來和旁邊的變星比較。",
+      "scope": "限 AAVSO 目視變星圖的比較星標號與目視星等。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "畫兩個星點及標籤，讓小數點短暫回到兩碼中間，再指出容易被認成星點的位置。",
+        "payoff": "先把標號讀回 8.4 和 9.0，再比較亮度，就知道該把哪顆選作亮的一端。",
+        "seconds": [
+          24,
+          38
+        ]
+      },
+      "source_locator": "S05，The magnitude scale；手冊以 84、90 說明小數點省略及比較星用途。",
+      "notes": "不將此標法套用到其他星表的恆星編號。",
+      "origin": "wave123-sky-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-fed46f0a153918f1",
+          "origin": "wave123-sky-20261119",
+          "locator": "S05，The magnitude scale；手冊以 84、90 說明小數點省略及比較星用途。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-sky-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0404"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0405",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "在英仙座那塊三角形天區數星星、替流星觀測做紀錄時，畫出三角形的三顆星也要算嗎？",
+      "mechanism_key": "x123.sky.meteor_watch_count_field",
+      "answer_target": "國際流星組織用指定天區的可見星數估計觀測者當時能看見多暗的星。表 1 的第 2 區用英仙座 β、δ、ζ 三顆星定界，計數包括角星。如果連角星共看見六顆，對照表 2 第 2 區的 N=6，極限星等是 5.15。記下時間、區號與星數，另一區要查它自己的欄。",
+      "scope": "單一指定天區的查表示範。正式紀錄建議每次使用至少兩區，優先選觀測方向附近且仰角超過 40 度的區域。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把三顆角星圈起再補三顆內部星，對照 Field 2 的 N、Lm 兩欄。",
+        "payoff": "六顆是用來估計那晚目力與天空條件的恆星數目，流星經過的次數另記。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "S06，The limiting magnitude、Table 1 的 Field 2、Table 2 的 Per 欄 N=6 / Lm=5.15。",
+      "notes": "N054 處理英仙座流星雨命名與母天體，本卡交付的是指定天區計數與查表。",
+      "origin": "wave123-sky-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-5e6d64f0fd51c94e",
+          "origin": "wave123-sky-20261119",
+          "locator": "S06，The limiting magnitude、Table 1 的 Field 2、Table 2 的 Per 欄 N=6 / Lm=5.15。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-sky-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0405"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0406",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "金星星曆印著「33.2284 /L」，哪個部分看得出該把觀星行程排在清晨？",
+      "mechanism_key": "x123.sky.horizons_elongation_suffix",
+      "answer_target": "在 JPL Horizons 的臺北查詢點，把 2026 年 11 月 18 日 21:30 UT 換成臺北當地時間，就是 19 日 05:30。S-O-T 欄的 33.2284 度是金星和太陽在天球上的角距；後面的 /L 表示金星沿地球自轉造成的天空運動領先太陽，這是晨空的一側。地面觀測表的 /T 則是落在太陽之後的昏空。只拿角度數值，分不出這兩側。",
+      "scope": "使用金星、地球表面東經 121.56 度北緯 25.03 度的 observer table，只做星曆判讀。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "在同一行用兩種框分開 33.2284 和 /L，再把 UT 時刻寫到臺北時間軸。",
+        "payoff": "角度說的是金星離太陽多遠，尾碼才交代它領先還是落後太陽。",
+        "seconds": [
+          30,
+          44
+        ]
+      },
+      "source_locator": "S07，2026-Nov-18 21:30 UT 這一列及 S-O-T /r 說明；S08，observer quantity 23 的地面觀測者 Case A。",
+      "notes": "數值是星曆預算，沒有記錄本地天氣或肉眼目擊。",
+      "origin": "wave123-sky-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-cdca63939c0391d8",
+          "origin": "wave123-sky-20261119",
+          "locator": "S07，2026-Nov-18 21:30 UT 這一列及 S-O-T /r 說明；S08，observer quantity 23 的地面觀測者 Case A。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ff10f82b67e85a43",
+          "origin": "wave123-sky-20261119",
+          "locator": "S07，2026-Nov-18 21:30 UT 這一列及 S-O-T /r 說明；S08，observer quantity 23 的地面觀測者 Case A。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-sky-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0406"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K123-0407",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "雙星目錄裡同一個位置代碼下，最新角距一列寫 34.3 角秒，另一列只有 0.3。今晚的望遠鏡究竟要找哪一對？",
+      "mechanism_key": "x123.sky.double_star_component_pair",
+      "answer_target": "先對照華盛頓雙星目錄的成員欄。19307+2758 底下，STFA 43 的 AB 列記的是 A、B 兩個成員，2025 年列出的最近角距為 34.3 角秒。MCA 55 的 Aa,Ac 列追的是另外兩個成員，其最近值是 2024 年的 0.3 角秒。位置代碼相同，不表示兩列量的是同一對；把成員配對和那一列最近的觀測年一起抄到清單才有意義。",
+      "scope": "取 2026 年 11 月 19 日查閱的 WDS 18–23 小時分表。目錄列值來自歷次觀測，不能讀成今晚的實測或保證某架望遠鏡能分開。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "裁出兩行文字，保留代碼、配對、年份與角距；用寬尺和窄尺畫出兩筆不同組合。",
+        "payoff": "想看 AB，就看 AB 那列；Aa,Ac 的小間距不代表同一對星在兩次觀測間忽然靠近了。",
+        "seconds": [
+          32,
+          48
+        ]
+      },
+      "source_locator": "S09，19307+2758 的 STFA 43 AB、MCA 55 Aa,Ac 兩列；S10，Components、Dates of first/last observations、Separation first/last。",
+      "notes": "沒有根據兩列角距反推週期、距離或引力束縛。",
+      "origin": "wave123-sky-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-515e79c0b2715b5f",
+          "origin": "wave123-sky-20261119",
+          "locator": "S09，19307+2758 的 STFA 43 AB、MCA 55 Aa,Ac 兩列；S10，Components、Dates of first/last observations、Separation first/last。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-73ae81f2e1291431",
+          "origin": "wave123-sky-20261119",
+          "locator": "S09，19307+2758 的 STFA 43 AB、MCA 55 Aa,Ac 兩列；S10，Components、Dates of first/last observations、Separation first/last。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave123-sky-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K123-0407"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -338916,7 +340729,7 @@
   ],
   "raw_records": {
     "file": "pool-records.json",
-    "count": 7825
+    "count": 7862
   },
   "dedup": {
     "aliases": {
@@ -341663,6 +343476,43 @@
       "K122-0216": "K122-0216",
       "K122-0217": "K122-0217",
       "K122-0218": "K122-0218",
+      "K123-0001": "K123-0001",
+      "K123-0002": "K123-0002",
+      "K123-0003": "K123-0003",
+      "K123-0004": "K123-0004",
+      "K123-0005": "K123-0005",
+      "K123-0006": "K123-0006",
+      "K123-0007": "K123-0007",
+      "K123-0008": "K123-0008",
+      "K123-0009": "K123-0009",
+      "K123-0010": "K123-0010",
+      "K123-0011": "K123-0011",
+      "K123-0012": "K123-0012",
+      "K123-0201": "K123-0201",
+      "K123-0202": "K123-0202",
+      "K123-0203": "K123-0203",
+      "K123-0204": "K123-0204",
+      "K123-0205": "K123-0205",
+      "K123-0206": "K123-0206",
+      "K123-0207": "K123-0207",
+      "K123-0208": "K123-0208",
+      "K123-0209": "K123-0209",
+      "K123-0210": "K123-0210",
+      "K123-0211": "K123-0211",
+      "K123-0212": "K123-0212",
+      "K123-0213": "K123-0213",
+      "K123-0214": "K123-0214",
+      "K123-0215": "K123-0215",
+      "K123-0216": "K123-0216",
+      "K123-0217": "K123-0217",
+      "K123-0218": "K123-0218",
+      "K123-0401": "K123-0401",
+      "K123-0402": "K123-0402",
+      "K123-0403": "K123-0403",
+      "K123-0404": "K123-0404",
+      "K123-0405": "K123-0405",
+      "K123-0406": "K123-0406",
+      "K123-0407": "K123-0407",
       "X13001": "X13001",
       "X13002": "X13002",
       "X13003": "X13003",
@@ -384654,6 +386504,20 @@
         ]
       },
       {
+        "id": "K123-0209~K123-0218",
+        "a": "K123-0209",
+        "b": "K123-0218",
+        "question_score": 0.069,
+        "answer_score": 0.262,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果日本海報的角標換成 R15+，同一段家長說明還能讓孩子進去嗎？",
+          "台灣這部片如果剛好排在孩子十二歲生日前後，哪一次能過分級這一關？"
+        ]
+      },
+      {
         "id": "K93-047~K98-037",
         "a": "K93-047",
         "b": "K98-037",
@@ -385032,6 +386896,20 @@
         ]
       },
       {
+        "id": "K123-0210~K123-0216",
+        "a": "K123-0210",
+        "b": "K123-0216",
+        "question_score": 0.23,
+        "answer_score": 0.053,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "大阪 TOHO 的電影晚上九點就開演，十一歲與媽媽一起去，還少查哪個時間？",
+          "把大阪 TOHO 梅田的場次往後翻兩天，十一歲和家長當年可以選哪一場？"
+        ]
+      },
+      {
         "id": "B2313~K97-008",
         "a": "B2313",
         "b": "K97-008",
@@ -385214,6 +387092,20 @@
         ]
       },
       {
+        "id": "K123-0208~K123-0218",
+        "a": "K123-0208",
+        "b": "K123-0218",
+        "question_score": 0.036,
+        "answer_score": 0.216,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本把判斷交回家長，映倫給了什麼具體資訊，好讓大人和孩子談？",
+          "台灣這部片如果剛好排在孩子十二歲生日前後，哪一次能過分級這一關？"
+        ]
+      },
+      {
         "id": "K90-043~K94-001",
         "a": "K90-043",
         "b": "K94-001",
@@ -385351,6 +387243,20 @@
         "questions": [
           "左旋蝸牛不好找對象，為什麼還會在某些地方變成一整個物種？",
           "有吃蝸牛蛇的地方，左旋蝸牛真的比較多嗎？"
+        ]
+      },
+      {
+        "id": "K123-0202~K123-0209",
+        "a": "K123-0202",
+        "b": "K123-0209",
+        "question_score": 0.068,
+        "answer_score": 0.209,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣影城和日本片方都印「PG12」，十一歲有家長陪，為什麼兩個櫃檯給不同答案？",
+          "如果日本海報的角標換成 R15+，同一段家長說明還能讓孩子進去嗎？"
         ]
       },
       {
@@ -385522,6 +387428,20 @@
         ]
       },
       {
+        "id": "K123-0210~K123-0215",
+        "a": "K123-0210",
+        "b": "K123-0215",
+        "question_score": 0.2,
+        "answer_score": 0.077,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "大阪 TOHO 的電影晚上九點就開演，十一歲與媽媽一起去，還少查哪個時間？",
+          "同一部電影到了澳洲也有「15」，為什麼十一歲孩子這次可以跟媽媽一起買票看？"
+        ]
+      },
+      {
         "id": "L262~L264",
         "a": "L262",
         "b": "L264",
@@ -385561,6 +387481,20 @@
         "questions": [
           "在真空裡撕膠帶，真的會放出 X 光嗎？",
           "撕膠帶只要一點點力，哪來的能量放 X 光？"
+        ]
+      },
+      {
+        "id": "K123-0202~K123-0218",
+        "a": "K123-0202",
+        "b": "K123-0218",
+        "question_score": 0.034,
+        "answer_score": 0.198,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣影城和日本片方都印「PG12」，十一歲有家長陪，為什麼兩個櫃檯給不同答案？",
+          "台灣這部片如果剛好排在孩子十二歲生日前後，哪一次能過分級這一關？"
         ]
       },
       {
@@ -385718,6 +387652,20 @@
         ]
       },
       {
+        "id": "K123-0208~K123-0209",
+        "a": "K123-0208",
+        "b": "K123-0209",
+        "question_score": 0.109,
+        "answer_score": 0.193,
+        "key_score": 0.8,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本把判斷交回家長，映倫給了什麼具體資訊，好讓大人和孩子談？",
+          "如果日本海報的角標換成 R15+，同一段家長說明還能讓孩子進去嗎？"
+        ]
+      },
+      {
         "id": "K110-0623~K110-0624",
         "a": "K110-0623",
         "b": "K110-0624",
@@ -385743,6 +387691,20 @@
         "questions": [
           "同品牌 EH-NA9F 印著兩段電壓，開盒後會自行知道自己在哪個國家嗎？",
           "EH-NA9F 手冊列了海外用法，為什麼保證書還寫「只限日本」？"
+        ]
+      },
+      {
+        "id": "K123-0210~K123-0211",
+        "a": "K123-0210",
+        "b": "K123-0211",
+        "question_score": 0.095,
+        "answer_score": 0.192,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "大阪 TOHO 的電影晚上九點就開演，十一歲與媽媽一起去，還少查哪個時間？",
+          "同樣假設在大阪晚間八點散場，十一歲孩子的家長若改在門口接他，會改變什麼？"
         ]
       },
       {
@@ -385883,6 +387845,20 @@
         "questions": [
           "EH-NA9F 功耗欄有 1000W 和 1400W，在台灣 110V 應該抄哪一個？",
           "Nikon 充電器的規格同時寫 100–240V 和 8.4V，帶回台灣時該先對哪一行？"
+        ]
+      },
+      {
+        "id": "K123-0211~K123-0212",
+        "a": "K123-0211",
+        "b": "K123-0212",
+        "question_score": 0.188,
+        "answer_score": 0.173,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣假設在大阪晚間八點散場，十一歲孩子的家長若改在門口接他，會改變什麼？",
+          "2025 年 7 月 18 日零時的大阪梅田首映，家長能帶十一歲孩子去搶先看嗎？"
         ]
       },
       {
@@ -386264,6 +388240,20 @@
         ]
       },
       {
+        "id": "K123-0202~K123-0208",
+        "a": "K123-0202",
+        "b": "K123-0208",
+        "question_score": 0.071,
+        "answer_score": 0.178,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣影城和日本片方都印「PG12」，十一歲有家長陪，為什麼兩個櫃檯給不同答案？",
+          "日本把判斷交回家長，映倫給了什麼具體資訊，好讓大人和孩子談？"
+        ]
+      },
+      {
         "id": "L237~L238",
         "a": "L237",
         "b": "L238",
@@ -386513,6 +388503,20 @@
         "questions": [
           "一組四罐 200 毫升的小可樂，外面只有一層包裝，FairPrice 結帳要收幾份押金？",
           "四入組先付了四角押金，機器只確認收進三罐，這次卡裡應該會出現多少？"
+        ]
+      },
+      {
+        "id": "K123-0212~K123-0218",
+        "a": "K123-0212",
+        "b": "K123-0218",
+        "question_score": 0.033,
+        "answer_score": 0.174,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "2025 年 7 月 18 日零時的大阪梅田首映，家長能帶十一歲孩子去搶先看嗎？",
+          "台灣這部片如果剛好排在孩子十二歲生日前後，哪一次能過分級這一關？"
         ]
       },
       {
@@ -387062,6 +389066,20 @@
         ]
       },
       {
+        "id": "K123-0212~K123-0216",
+        "a": "K123-0212",
+        "b": "K123-0216",
+        "question_score": 0.161,
+        "answer_score": 0.082,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "2025 年 7 月 18 日零時的大阪梅田首映，家長能帶十一歲孩子去搶先看嗎？",
+          "把大阪 TOHO 梅田的場次往後翻兩天，十一歲和家長當年可以選哪一場？"
+        ]
+      },
+      {
         "id": "K86-001~K86-002",
         "a": "K86-001",
         "b": "K86-002",
@@ -387510,6 +389528,20 @@
         ]
       },
       {
+        "id": "K123-0201~K123-0215",
+        "a": "K123-0201",
+        "b": "K123-0215",
+        "question_score": 0.154,
+        "answer_score": 0.034,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣寫「猗窩座再襲」，日本寫「猗窩座再来」，怎麼認出家人挑的是同一部電影？",
+          "同一部電影到了澳洲也有「15」，為什麼十一歲孩子這次可以跟媽媽一起買票看？"
+        ]
+      },
+      {
         "id": "L070~L072",
         "a": "L070",
         "b": "L072",
@@ -387622,6 +389654,20 @@
         ]
       },
       {
+        "id": "K123-0210~K123-0212",
+        "a": "K123-0210",
+        "b": "K123-0212",
+        "question_score": 0.095,
+        "answer_score": 0.153,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "大阪 TOHO 的電影晚上九點就開演，十一歲與媽媽一起去，還少查哪個時間？",
+          "2025 年 7 月 18 日零時的大阪梅田首映，家長能帶十一歲孩子去搶先看嗎？"
+        ]
+      },
+      {
         "id": "K101-015~K96-017",
         "a": "K101-015",
         "b": "K96-017",
@@ -387647,6 +389693,34 @@
         "questions": [
           "現在業界的約定是什麼：誰有刻痕、誰有線？",
           "最後寫進標準的沐浴乳記號，是視障者最喜歡的那個嗎？"
+        ]
+      },
+      {
+        "id": "K123-0204~K123-0218",
+        "a": "K123-0204",
+        "b": "K123-0218",
+        "question_score": 0.074,
+        "answer_score": 0.152,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "十一歲想看台灣院線電影，家長的陪同在哪一個級別真的管用？",
+          "台灣這部片如果剛好排在孩子十二歲生日前後，哪一次能過分級這一關？"
+        ]
+      },
+      {
+        "id": "K123-0209~K123-0211",
+        "a": "K123-0209",
+        "b": "K123-0211",
+        "question_score": 0.066,
+        "answer_score": 0.152,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果日本海報的角標換成 R15+，同一段家長說明還能讓孩子進去嗎？",
+          "同樣假設在大阪晚間八點散場，十一歲孩子的家長若改在門口接他，會改變什麼？"
         ]
       },
       {
@@ -388098,6 +390172,34 @@
         ]
       },
       {
+        "id": "K123-0202~K123-0204",
+        "a": "K123-0202",
+        "b": "K123-0204",
+        "question_score": 0.145,
+        "answer_score": 0.099,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣影城和日本片方都印「PG12」，十一歲有家長陪，為什麼兩個櫃檯給不同答案？",
+          "十一歲想看台灣院線電影，家長的陪同在哪一個級別真的管用？"
+        ]
+      },
+      {
+        "id": "K123-0204~K123-0216",
+        "a": "K123-0204",
+        "b": "K123-0216",
+        "question_score": 0.145,
+        "answer_score": 0.011,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "十一歲想看台灣院線電影，家長的陪同在哪一個級別真的管用？",
+          "把大阪 TOHO 梅田的場次往後翻兩天，十一歲和家長當年可以選哪一場？"
+        ]
+      },
+      {
         "id": "E74-004~E74-005",
         "a": "E74-004",
         "b": "E74-005",
@@ -388249,6 +390351,20 @@
         "questions": [
           "ICOCA 在入口和出口各碰一次，哪一次才會在卡上扣掉這段的車資？",
           "在阪急京都線月台看到「特急」，只想坐普通車廂，還要去找賣特急券的機器嗎？"
+        ]
+      },
+      {
+        "id": "K123-0202~K123-0207",
+        "a": "K123-0202",
+        "b": "K123-0207",
+        "question_score": 0.143,
+        "answer_score": 0.069,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣影城和日本片方都印「PG12」，十一歲有家長陪，為什麼兩個櫃檯給不同答案？",
+          "片方在 7 月 4 日才公告 PG12，誰在更早之前留下了分級理由？"
         ]
       },
       {
@@ -388445,6 +390561,20 @@
         "questions": [
           "Nikon 充電器的規格同時寫 100–240V 和 8.4V，帶回台灣時該先對哪一行？",
           "舊款 5W USB 充電器和 20W USB-C 充電器差這麼多，能接的牆上電壓也會差四倍嗎？"
+        ]
+      },
+      {
+        "id": "K123-0214~K123-0215",
+        "a": "K123-0214",
+        "b": "K123-0215",
+        "question_score": 0.14,
+        "answer_score": 0.084,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在英國，爸媽拿著兩張票坐在十一歲孩子旁邊，能看到《無限城篇》正片嗎？",
+          "同一部電影到了澳洲也有「15」，為什麼十一歲孩子這次可以跟媽媽一起買票看？"
         ]
       },
       {
@@ -388714,6 +390844,20 @@
         ]
       },
       {
+        "id": "K123-0205~K123-0206",
+        "a": "K123-0205",
+        "b": "K123-0206",
+        "question_score": 0,
+        "answer_score": 0.137,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台北光點的優待票明明包括十一歲兒童，可以拿它買這部《鬼滅之刃》嗎？",
+          "如果媽媽自己排隊買兩張電影票，高雄環球規定驗的是誰的年齡？"
+        ]
+      },
+      {
         "id": "K95-003~R6017",
         "a": "R6017",
         "b": "K95-003",
@@ -388910,6 +391054,48 @@
         ]
       },
       {
+        "id": "K123-0210~K123-0218",
+        "a": "K123-0210",
+        "b": "K123-0218",
+        "question_score": 0,
+        "answer_score": 0.133,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "大阪 TOHO 的電影晚上九點就開演，十一歲與媽媽一起去，還少查哪個時間？",
+          "台灣這部片如果剛好排在孩子十二歲生日前後，哪一次能過分級這一關？"
+        ]
+      },
+      {
+        "id": "K123-0211~K123-0214",
+        "a": "K123-0211",
+        "b": "K123-0214",
+        "question_score": 0.133,
+        "answer_score": 0.071,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣假設在大阪晚間八點散場，十一歲孩子的家長若改在門口接他，會改變什麼？",
+          "在英國，爸媽拿著兩張票坐在十一歲孩子旁邊，能看到《無限城篇》正片嗎？"
+        ]
+      },
+      {
+        "id": "K123-0212~K123-0214",
+        "a": "K123-0212",
+        "b": "K123-0214",
+        "question_score": 0.133,
+        "answer_score": 0.078,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "2025 年 7 月 18 日零時的大阪梅田首映，家長能帶十一歲孩子去搶先看嗎？",
+          "在英國，爸媽拿著兩張票坐在十一歲孩子旁邊，能看到《無限城篇》正片嗎？"
+        ]
+      },
+      {
         "id": "L013~L017",
         "a": "L013",
         "b": "L017",
@@ -389022,6 +391208,20 @@
         ]
       },
       {
+        "id": "K123-0203~K123-0207",
+        "a": "K123-0203",
+        "b": "K123-0207",
+        "question_score": 0.033,
+        "answer_score": 0.132,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張家庭行事曆上，6 月 27 日、7 月 18 日、8 月 8 日，哪一天能開始在台北看第一章？",
+          "片方在 7 月 4 日才公告 PG12，誰在更早之前留下了分級理由？"
+        ]
+      },
+      {
         "id": "K116-0201~K116-0203",
         "a": "K116-0201",
         "b": "K116-0203",
@@ -389075,6 +391275,34 @@
         "questions": [
           "在阪急京都線月台看到「特急」，只想坐普通車廂，還要去找賣特急券的機器嗎？",
           "京阪特急月台的機器也能刷 ICOCA。這一刷和剛才進站時的一刷，各買到什麼？"
+        ]
+      },
+      {
+        "id": "K123-0211~K123-0215",
+        "a": "K123-0211",
+        "b": "K123-0215",
+        "question_score": 0.131,
+        "answer_score": 0.069,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣假設在大阪晚間八點散場，十一歲孩子的家長若改在門口接他，會改變什麼？",
+          "同一部電影到了澳洲也有「15」，為什麼十一歲孩子這次可以跟媽媽一起買票看？"
+        ]
+      },
+      {
+        "id": "K123-0212~K123-0215",
+        "a": "K123-0212",
+        "b": "K123-0215",
+        "question_score": 0.131,
+        "answer_score": 0.074,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "2025 年 7 月 18 日零時的大阪梅田首映，家長能帶十一歲孩子去搶先看嗎？",
+          "同一部電影到了澳洲也有「15」，為什麼十一歲孩子這次可以跟媽媽一起買票看？"
         ]
       },
       {
@@ -389257,6 +391485,20 @@
         "questions": [
           "在日本看同一台 Sharp 微波爐，為什麼 100V 規格沒變，輸出表卻要分兩欄？",
           "另一台微波爐把 900W 印在賣點上，設定加熱好幾分鐘都會維持這個數字嗎？"
+        ]
+      },
+      {
+        "id": "K123-0211~K123-0216",
+        "a": "K123-0211",
+        "b": "K123-0216",
+        "question_score": 0.129,
+        "answer_score": 0.044,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣假設在大阪晚間八點散場，十一歲孩子的家長若改在門口接他，會改變什麼？",
+          "把大阪 TOHO 梅田的場次往後翻兩天，十一歲和家長當年可以選哪一場？"
         ]
       },
       {
@@ -389526,6 +391768,34 @@
         ]
       },
       {
+        "id": "K123-0201~K123-0207",
+        "a": "K123-0201",
+        "b": "K123-0207",
+        "question_score": 0,
+        "answer_score": 0.125,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣寫「猗窩座再襲」，日本寫「猗窩座再来」，怎麼認出家人挑的是同一部電影？",
+          "片方在 7 月 4 日才公告 PG12，誰在更早之前留下了分級理由？"
+        ]
+      },
+      {
+        "id": "K123-0205~K123-0218",
+        "a": "K123-0205",
+        "b": "K123-0218",
+        "question_score": 0.035,
+        "answer_score": 0.125,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台北光點的優待票明明包括十一歲兒童，可以拿它買這部《鬼滅之刃》嗎？",
+          "台灣這部片如果剛好排在孩子十二歲生日前後，哪一次能過分級這一關？"
+        ]
+      },
+      {
         "id": "L001~L006",
         "a": "L001",
         "b": "L006",
@@ -389764,6 +392034,20 @@
         ]
       },
       {
+        "id": "K123-0206~K123-0208",
+        "a": "K123-0206",
+        "b": "K123-0208",
+        "question_score": 0,
+        "answer_score": 0.123,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果媽媽自己排隊買兩張電影票，高雄環球規定驗的是誰的年齡？",
+          "日本把判斷交回家長，映倫給了什麼具體資訊，好讓大人和孩子談？"
+        ]
+      },
+      {
         "id": "X5002~X5004",
         "a": "X5002",
         "b": "X5004",
@@ -389831,6 +392115,20 @@
         "questions": [
           "改搭近鐵的特急去奈良，如果我願意站著，可以省下特急券嗎？",
           "同樣在近鐵京都站等「急行」，為什麼早上六點這一班和十四分那一班不能只看車種選？"
+        ]
+      },
+      {
+        "id": "K123-0203~K123-0212",
+        "a": "K123-0203",
+        "b": "K123-0212",
+        "question_score": 0.121,
+        "answer_score": 0.078,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張家庭行事曆上，6 月 27 日、7 月 18 日、8 月 8 日，哪一天能開始在台北看第一章？",
+          "2025 年 7 月 18 日零時的大阪梅田首映，家長能帶十一歲孩子去搶先看嗎？"
         ]
       },
       {
@@ -390030,6 +392328,20 @@
         ]
       },
       {
+        "id": "K123-0209~K123-0214",
+        "a": "K123-0209",
+        "b": "K123-0214",
+        "question_score": 0.035,
+        "answer_score": 0.12,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果日本海報的角標換成 R15+，同一段家長說明還能讓孩子進去嗎？",
+          "在英國，爸媽拿著兩張票坐在十一歲孩子旁邊，能看到《無限城篇》正片嗎？"
+        ]
+      },
+      {
         "id": "L70-025~L73-006",
         "a": "L70-025",
         "b": "L73-006",
@@ -390226,6 +392538,34 @@
         ]
       },
       {
+        "id": "K123-0202~K123-0214",
+        "a": "K123-0202",
+        "b": "K123-0214",
+        "question_score": 0.069,
+        "answer_score": 0.117,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣影城和日本片方都印「PG12」，十一歲有家長陪，為什麼兩個櫃檯給不同答案？",
+          "在英國，爸媽拿著兩張票坐在十一歲孩子旁邊，能看到《無限城篇》正片嗎？"
+        ]
+      },
+      {
+        "id": "K123-0206~K123-0218",
+        "a": "K123-0206",
+        "b": "K123-0218",
+        "question_score": 0.036,
+        "answer_score": 0.117,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果媽媽自己排隊買兩張電影票，高雄環球規定驗的是誰的年齡？",
+          "台灣這部片如果剛好排在孩子十二歲生日前後，哪一次能過分級這一關？"
+        ]
+      },
+      {
         "id": "R43001~R43002",
         "a": "R43001",
         "b": "R43002",
@@ -390419,6 +392759,20 @@
         "questions": [
           "EH-NA9F 功耗欄有 1000W 和 1400W，在台灣 110V 應該抄哪一個？",
           "舊款 5W USB 充電器和 20W USB-C 充電器差這麼多，能接的牆上電壓也會差四倍嗎？"
+        ]
+      },
+      {
+        "id": "K123-0204~K123-0209",
+        "a": "K123-0204",
+        "b": "K123-0209",
+        "question_score": 0.037,
+        "answer_score": 0.114,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "十一歲想看台灣院線電影，家長的陪同在哪一個級別真的管用？",
+          "如果日本海報的角標換成 R15+，同一段家長說明還能讓孩子進去嗎？"
         ]
       },
       {
@@ -390814,6 +393168,20 @@
         ]
       },
       {
+        "id": "K123-0204~K123-0215",
+        "a": "K123-0204",
+        "b": "K123-0215",
+        "question_score": 0.111,
+        "answer_score": 0.069,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "十一歲想看台灣院線電影，家長的陪同在哪一個級別真的管用？",
+          "同一部電影到了澳洲也有「15」，為什麼十一歲孩子這次可以跟媽媽一起買票看？"
+        ]
+      },
+      {
         "id": "L001~L002",
         "a": "L001",
         "b": "L002",
@@ -391206,6 +393574,20 @@
         ]
       },
       {
+        "id": "K123-0204~K123-0208",
+        "a": "K123-0204",
+        "b": "K123-0208",
+        "question_score": 0.039,
+        "answer_score": 0.108,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "十一歲想看台灣院線電影，家長的陪同在哪一個級別真的管用？",
+          "日本把判斷交回家長，映倫給了什麼具體資訊，好讓大人和孩子談？"
+        ]
+      },
+      {
         "id": "L066~L067",
         "a": "L066",
         "b": "L067",
@@ -391276,6 +393658,34 @@
         ]
       },
       {
+        "id": "K123-0204~K123-0210",
+        "a": "K123-0204",
+        "b": "K123-0210",
+        "question_score": 0.107,
+        "answer_score": 0.064,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "十一歲想看台灣院線電影，家長的陪同在哪一個級別真的管用？",
+          "大阪 TOHO 的電影晚上九點就開演，十一歲與媽媽一起去，還少查哪個時間？"
+        ]
+      },
+      {
+        "id": "K123-0213~K123-0217",
+        "a": "K123-0213",
+        "b": "K123-0217",
+        "question_score": 0.107,
+        "answer_score": 0.012,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "英國的九十秒預告明明是 12A，為什麼一家人不能拿它的分級去買正片？",
+          "規則允許去梅田早場，為何一家人當年仍不能保證在門口才買得到兩個位子？"
+        ]
+      },
+      {
         "id": "X34-001~X34-006",
         "a": "X34-001",
         "b": "X34-006",
@@ -391343,6 +393753,62 @@
         "questions": [
           "鋁罐上條碼明明還能看，為什麼用手捏扁，退罐機反而可能把它推出來？",
           "退罐機已吞下空罐，卻印了一張服務單，紙上列的金額算入帳了嗎？"
+        ]
+      },
+      {
+        "id": "K123-0204~K123-0211",
+        "a": "K123-0204",
+        "b": "K123-0211",
+        "question_score": 0.105,
+        "answer_score": 0.068,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "十一歲想看台灣院線電影，家長的陪同在哪一個級別真的管用？",
+          "同樣假設在大阪晚間八點散場，十一歲孩子的家長若改在門口接他，會改變什麼？"
+        ]
+      },
+      {
+        "id": "K123-0204~K123-0212",
+        "a": "K123-0204",
+        "b": "K123-0212",
+        "question_score": 0.105,
+        "answer_score": 0.049,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "十一歲想看台灣院線電影，家長的陪同在哪一個級別真的管用？",
+          "2025 年 7 月 18 日零時的大阪梅田首映，家長能帶十一歲孩子去搶先看嗎？"
+        ]
+      },
+      {
+        "id": "K123-0205~K123-0215",
+        "a": "K123-0205",
+        "b": "K123-0215",
+        "question_score": 0.105,
+        "answer_score": 0.023,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台北光點的優待票明明包括十一歲兒童，可以拿它買這部《鬼滅之刃》嗎？",
+          "同一部電影到了澳洲也有「15」，為什麼十一歲孩子這次可以跟媽媽一起買票看？"
+        ]
+      },
+      {
+        "id": "K123-0209~K123-0212",
+        "a": "K123-0209",
+        "b": "K123-0212",
+        "question_score": 0.066,
+        "answer_score": 0.105,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果日本海報的角標換成 R15+，同一段家長說明還能讓孩子進去嗎？",
+          "2025 年 7 月 18 日零時的大阪梅田首映，家長能帶十一歲孩子去搶先看嗎？"
         ]
       },
       {
@@ -391542,6 +394008,48 @@
         ]
       },
       {
+        "id": "K123-0205~K123-0216",
+        "a": "K123-0205",
+        "b": "K123-0216",
+        "question_score": 0.103,
+        "answer_score": 0.022,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台北光點的優待票明明包括十一歲兒童，可以拿它買這部《鬼滅之刃》嗎？",
+          "把大阪 TOHO 梅田的場次往後翻兩天，十一歲和家長當年可以選哪一場？"
+        ]
+      },
+      {
+        "id": "K123-0208~K123-0211",
+        "a": "K123-0208",
+        "b": "K123-0211",
+        "question_score": 0.103,
+        "answer_score": 0.06,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本把判斷交回家長，映倫給了什麼具體資訊，好讓大人和孩子談？",
+          "同樣假設在大阪晚間八點散場，十一歲孩子的家長若改在門口接他，會改變什麼？"
+        ]
+      },
+      {
+        "id": "K123-0209~K123-0215",
+        "a": "K123-0209",
+        "b": "K123-0215",
+        "question_score": 0.103,
+        "answer_score": 0.098,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果日本海報的角標換成 R15+，同一段家長說明還能讓孩子進去嗎？",
+          "同一部電影到了澳洲也有「15」，為什麼十一歲孩子這次可以跟媽媽一起買票看？"
+        ]
+      },
+      {
         "id": "M2016~P268",
         "a": "P268",
         "b": "M2016",
@@ -391623,6 +394131,34 @@
         "questions": [
           "抽屜裡的兩扁腳旅行轉接頭，能幫單標 100V 的電器補掉那 10V 差距嗎？",
           "在日本看同一台 Sharp 微波爐，為什麼 100V 規格沒變，輸出表卻要分兩欄？"
+        ]
+      },
+      {
+        "id": "K123-0213~K123-0215",
+        "a": "K123-0213",
+        "b": "K123-0215",
+        "question_score": 0,
+        "answer_score": 0.102,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "英國的九十秒預告明明是 12A，為什麼一家人不能拿它的分級去買正片？",
+          "同一部電影到了澳洲也有「15」，為什麼十一歲孩子這次可以跟媽媽一起買票看？"
+        ]
+      },
+      {
+        "id": "K123-0215~K123-0216",
+        "a": "K123-0215",
+        "b": "K123-0216",
+        "question_score": 0.102,
+        "answer_score": 0.029,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一部電影到了澳洲也有「15」，為什麼十一歲孩子這次可以跟媽媽一起買票看？",
+          "把大阪 TOHO 梅田的場次往後翻兩天，十一歲和家長當年可以選哪一場？"
         ]
       },
       {
@@ -391735,6 +394271,20 @@
         "questions": [
           "手上若是京都市地下鐵巴士一日券，能跟近鐵一日券一樣，把京都到奈良的那段勾掉嗎？",
           "去同一個近鐵奈良站，京都月台那班不必加 520 日圓的急行，為什麼還先到？"
+        ]
+      },
+      {
+        "id": "K123-0202~K123-0216",
+        "a": "K123-0202",
+        "b": "K123-0216",
+        "question_score": 0.1,
+        "answer_score": 0.052,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣影城和日本片方都印「PG12」，十一歲有家長陪，為什麼兩個櫃檯給不同答案？",
+          "把大阪 TOHO 梅田的場次往後翻兩天，十一歲和家長當年可以選哪一場？"
         ]
       },
       {
@@ -392074,6 +394624,34 @@
         ]
       },
       {
+        "id": "K123-0202~K123-0211",
+        "a": "K123-0202",
+        "b": "K123-0211",
+        "question_score": 0.097,
+        "answer_score": 0.074,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣影城和日本片方都印「PG12」，十一歲有家長陪，為什麼兩個櫃檯給不同答案？",
+          "同樣假設在大阪晚間八點散場，十一歲孩子的家長若改在門口接他，會改變什麼？"
+        ]
+      },
+      {
+        "id": "K123-0202~K123-0212",
+        "a": "K123-0202",
+        "b": "K123-0212",
+        "question_score": 0.097,
+        "answer_score": 0.08,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣影城和日本片方都印「PG12」，十一歲有家長陪，為什麼兩個櫃檯給不同答案？",
+          "2025 年 7 月 18 日零時的大阪梅田首映，家長能帶十一歲孩子去搶先看嗎？"
+        ]
+      },
+      {
         "id": "L77-066~L77-068",
         "a": "L77-066",
         "b": "L77-068",
@@ -392382,6 +394960,20 @@
         ]
       },
       {
+        "id": "K123-0202~K123-0210",
+        "a": "K123-0202",
+        "b": "K123-0210",
+        "question_score": 0.066,
+        "answer_score": 0.094,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣影城和日本片方都印「PG12」，十一歲有家長陪，為什麼兩個櫃檯給不同答案？",
+          "大阪 TOHO 的電影晚上九點就開演，十一歲與媽媽一起去，還少查哪個時間？"
+        ]
+      },
+      {
         "id": "K91-010~K91-011",
         "a": "K91-010",
         "b": "K91-011",
@@ -392533,6 +395125,20 @@
         "questions": [
           "改搭近鐵的特急去奈良，如果我願意站著，可以省下特急券嗎？",
           "南海 Rapi:t 的座位明明寫 Regular，為什麼不能照 Southern 自由席的方式上車？"
+        ]
+      },
+      {
+        "id": "K123-0204~K123-0205",
+        "a": "K123-0204",
+        "b": "K123-0205",
+        "question_score": 0.075,
+        "answer_score": 0.093,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "十一歲想看台灣院線電影，家長的陪同在哪一個級別真的管用？",
+          "台北光點的優待票明明包括十一歲兒童，可以拿它買這部《鬼滅之刃》嗎？"
         ]
       },
       {
@@ -392729,6 +395335,20 @@
         "questions": [
           "抽屜裡的兩扁腳旅行轉接頭，能幫單標 100V 的電器補掉那 10V 差距嗎？",
           "日本販售的 EH-NA0J 規格寫泰國製，哪一行才決定它能不能列進台灣 110V 的清單？"
+        ]
+      },
+      {
+        "id": "K123-0206~K123-0209",
+        "a": "K123-0206",
+        "b": "K123-0209",
+        "question_score": 0.036,
+        "answer_score": 0.091,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果媽媽自己排隊買兩張電影票，高雄環球規定驗的是誰的年齡？",
+          "如果日本海報的角標換成 R15+，同一段家長說明還能讓孩子進去嗎？"
         ]
       },
       {
@@ -392967,6 +395587,20 @@
         "questions": [
           "兩張鉤針織圖都寫 dc，照一樣的動作鉤，為什麼英國那張的第一排就做錯了？",
           "同一個藏寶盒裡的旅行吊牌，兩人都記下編號，為什麼只有一人會出現在它的搬運紀錄裡？"
+        ]
+      },
+      {
+        "id": "K123-0208~K123-0214",
+        "a": "K123-0208",
+        "b": "K123-0214",
+        "question_score": 0.037,
+        "answer_score": 0.089,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本把判斷交回家長，映倫給了什麼具體資訊，好讓大人和孩子談？",
+          "在英國，爸媽拿著兩張票坐在十一歲孩子旁邊，能看到《無限城篇》正片嗎？"
         ]
       },
       {
@@ -393236,6 +395870,20 @@
         ]
       },
       {
+        "id": "K123-0205~K123-0209",
+        "a": "K123-0205",
+        "b": "K123-0209",
+        "question_score": 0,
+        "answer_score": 0.087,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台北光點的優待票明明包括十一歲兒童，可以拿它買這部《鬼滅之刃》嗎？",
+          "如果日本海報的角標換成 R15+，同一段家長說明還能讓孩子進去嗎？"
+        ]
+      },
+      {
         "id": "K66-005~K66-011",
         "a": "K66-005",
         "b": "K66-011",
@@ -393418,6 +396066,20 @@
         ]
       },
       {
+        "id": "K123-0204~K123-0214",
+        "a": "K123-0204",
+        "b": "K123-0214",
+        "question_score": 0.075,
+        "answer_score": 0.086,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "十一歲想看台灣院線電影，家長的陪同在哪一個級別真的管用？",
+          "在英國，爸媽拿著兩張票坐在十一歲孩子旁邊，能看到《無限城篇》正片嗎？"
+        ]
+      },
+      {
         "id": "P74-020~P74-024",
         "a": "P74-020",
         "b": "P74-024",
@@ -393558,6 +396220,48 @@
         ]
       },
       {
+        "id": "K123-0209~K123-0210",
+        "a": "K123-0209",
+        "b": "K123-0210",
+        "question_score": 0,
+        "answer_score": 0.084,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果日本海報的角標換成 R15+，同一段家長說明還能讓孩子進去嗎？",
+          "大阪 TOHO 的電影晚上九點就開演，十一歲與媽媽一起去，還少查哪個時間？"
+        ]
+      },
+      {
+        "id": "K123-0209~K123-0216",
+        "a": "K123-0209",
+        "b": "K123-0216",
+        "question_score": 0.034,
+        "answer_score": 0.084,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果日本海報的角標換成 R15+，同一段家長說明還能讓孩子進去嗎？",
+          "把大阪 TOHO 梅田的場次往後翻兩天，十一歲和家長當年可以選哪一場？"
+        ]
+      },
+      {
+        "id": "K123-0216~K123-0218",
+        "a": "K123-0216",
+        "b": "K123-0218",
+        "question_score": 0.034,
+        "answer_score": 0.084,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把大阪 TOHO 梅田的場次往後翻兩天，十一歲和家長當年可以選哪一場？",
+          "台灣這部片如果剛好排在孩子十二歲生日前後，哪一次能過分級這一關？"
+        ]
+      },
+      {
         "id": "E2006~E2021",
         "a": "E2006",
         "b": "E2021",
@@ -393667,6 +396371,34 @@
         "questions": [
           "校方說京都到近鐵奈良，特急約 35 分、急行約 45 分。到了月台，能直接把這兩個數字當抵達時間嗎？",
           "近鐵網頁的兩個購票按鈕都寫「特急」，哪個買完還得準備 ICOCA 或基本乘車券？"
+        ]
+      },
+      {
+        "id": "K123-0201~K123-0204",
+        "a": "K123-0201",
+        "b": "K123-0204",
+        "question_score": 0.083,
+        "answer_score": 0.04,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣寫「猗窩座再襲」，日本寫「猗窩座再来」，怎麼認出家人挑的是同一部電影？",
+          "十一歲想看台灣院線電影，家長的陪同在哪一個級別真的管用？"
+        ]
+      },
+      {
+        "id": "K123-0204~K123-0206",
+        "a": "K123-0204",
+        "b": "K123-0206",
+        "question_score": 0.039,
+        "answer_score": 0.083,
+        "key_score": 0.8,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "十一歲想看台灣院線電影，家長的陪同在哪一個級別真的管用？",
+          "如果媽媽自己排隊買兩張電影票，高雄環球規定驗的是誰的年齡？"
         ]
       },
       {
@@ -393922,6 +396654,20 @@
         ]
       },
       {
+        "id": "K123-0201~K123-0206",
+        "a": "K123-0201",
+        "b": "K123-0206",
+        "question_score": 0.082,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣寫「猗窩座再襲」，日本寫「猗窩座再来」，怎麼認出家人挑的是同一部電影？",
+          "如果媽媽自己排隊買兩張電影票，高雄環球規定驗的是誰的年齡？"
+        ]
+      },
+      {
         "id": "K89-036~K92-030",
         "a": "K89-036",
         "b": "K92-030",
@@ -394003,6 +396749,20 @@
         "questions": [
           "鋁罐上條碼明明還能看，為什麼用手捏扁，退罐機反而可能把它推出來？",
           "退罐口要你保住圓罐，為什麼同一款機器肚子裡偏偏有壓縮機？"
+        ]
+      },
+      {
+        "id": "K123-0210~K123-0214",
+        "a": "K123-0210",
+        "b": "K123-0214",
+        "question_score": 0.068,
+        "answer_score": 0.081,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "大阪 TOHO 的電影晚上九點就開演，十一歲與媽媽一起去，還少查哪個時間？",
+          "在英國，爸媽拿著兩張票坐在十一歲孩子旁邊，能看到《無限城篇》正片嗎？"
         ]
       },
       {
@@ -394171,6 +396931,20 @@
         "questions": [
           "同樣在近鐵京都站等「急行」，為什麼早上六點這一班和十四分那一班不能只看車種選？",
           "近鐵網頁的兩個購票按鈕都寫「特急」，哪個買完還得準備 ICOCA 或基本乘車券？"
+        ]
+      },
+      {
+        "id": "K123-0214~K123-0218",
+        "a": "K123-0214",
+        "b": "K123-0218",
+        "question_score": 0.035,
+        "answer_score": 0.08,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在英國，爸媽拿著兩張票坐在十一歲孩子旁邊，能看到《無限城篇》正片嗎？",
+          "台灣這部片如果剛好排在孩子十二歲生日前後，哪一次能過分級這一關？"
         ]
       },
       {
@@ -394398,6 +397172,20 @@
         ]
       },
       {
+        "id": "K123-0208~K123-0212",
+        "a": "K123-0208",
+        "b": "K123-0212",
+        "question_score": 0.069,
+        "answer_score": 0.078,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本把判斷交回家長，映倫給了什麼具體資訊，好讓大人和孩子談？",
+          "2025 年 7 月 18 日零時的大阪梅田首映，家長能帶十一歲孩子去搶先看嗎？"
+        ]
+      },
+      {
         "id": "R43002~R43010",
         "a": "R43002",
         "b": "R43010",
@@ -394608,6 +397396,34 @@
         ]
       },
       {
+        "id": "K123-0201~K123-0209",
+        "a": "K123-0201",
+        "b": "K123-0209",
+        "question_score": 0.077,
+        "answer_score": 0.025,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣寫「猗窩座再襲」，日本寫「猗窩座再来」，怎麼認出家人挑的是同一部電影？",
+          "如果日本海報的角標換成 R15+，同一段家長說明還能讓孩子進去嗎？"
+        ]
+      },
+      {
+        "id": "K123-0213~K123-0216",
+        "a": "K123-0213",
+        "b": "K123-0216",
+        "question_score": 0,
+        "answer_score": 0.077,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "英國的九十秒預告明明是 12A，為什麼一家人不能拿它的分級去買正片？",
+          "把大阪 TOHO 梅田的場次往後翻兩天，十一歲和家長當年可以選哪一場？"
+        ]
+      },
+      {
         "id": "L135~N145",
         "a": "L135",
         "b": "N145",
@@ -394748,6 +397564,34 @@
         ]
       },
       {
+        "id": "K123-0201~K123-0210",
+        "a": "K123-0201",
+        "b": "K123-0210",
+        "question_score": 0.037,
+        "answer_score": 0.076,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣寫「猗窩座再襲」，日本寫「猗窩座再来」，怎麼認出家人挑的是同一部電影？",
+          "大阪 TOHO 的電影晚上九點就開演，十一歲與媽媽一起去，還少查哪個時間？"
+        ]
+      },
+      {
+        "id": "K123-0215~K123-0218",
+        "a": "K123-0215",
+        "b": "K123-0218",
+        "question_score": 0.034,
+        "answer_score": 0.076,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一部電影到了澳洲也有「15」，為什麼十一歲孩子這次可以跟媽媽一起買票看？",
+          "台灣這部片如果剛好排在孩子十二歲生日前後，哪一次能過分級這一關？"
+        ]
+      },
+      {
         "id": "P74-063~P74-064",
         "a": "P74-063",
         "b": "P74-064",
@@ -394815,6 +397659,34 @@
         "questions": [
           "ICOCA 在入口和出口各碰一次，哪一次才會在卡上扣掉這段的車資？",
           "約在奈良縣立美術館，朋友傳「一號出口走五分鐘」，是哪一個奈良站？"
+        ]
+      },
+      {
+        "id": "K123-0201~K123-0202",
+        "a": "K123-0201",
+        "b": "K123-0202",
+        "question_score": 0.075,
+        "answer_score": 0.012,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣寫「猗窩座再襲」，日本寫「猗窩座再来」，怎麼認出家人挑的是同一部電影？",
+          "台灣影城和日本片方都印「PG12」，十一歲有家長陪，為什麼兩個櫃檯給不同答案？"
+        ]
+      },
+      {
+        "id": "K123-0207~K123-0213",
+        "a": "K123-0207",
+        "b": "K123-0213",
+        "question_score": 0.075,
+        "answer_score": 0.025,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "片方在 7 月 4 日才公告 PG12，誰在更早之前留下了分級理由？",
+          "英國的九十秒預告明明是 12A，為什麼一家人不能拿它的分級去買正片？"
         ]
       },
       {
@@ -395196,6 +398068,48 @@
         ]
       },
       {
+        "id": "K123-0205~K123-0213",
+        "a": "K123-0205",
+        "b": "K123-0213",
+        "question_score": 0.073,
+        "answer_score": 0.026,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台北光點的優待票明明包括十一歲兒童，可以拿它買這部《鬼滅之刃》嗎？",
+          "英國的九十秒預告明明是 12A，為什麼一家人不能拿它的分級去買正片？"
+        ]
+      },
+      {
+        "id": "K123-0206~K123-0215",
+        "a": "K123-0206",
+        "b": "K123-0215",
+        "question_score": 0.073,
+        "answer_score": 0.012,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果媽媽自己排隊買兩張電影票，高雄環球規定驗的是誰的年齡？",
+          "同一部電影到了澳洲也有「15」，為什麼十一歲孩子這次可以跟媽媽一起買票看？"
+        ]
+      },
+      {
+        "id": "K123-0213~K123-0214",
+        "a": "K123-0213",
+        "b": "K123-0214",
+        "question_score": 0.073,
+        "answer_score": 0.056,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "英國的九十秒預告明明是 12A，為什麼一家人不能拿它的分級去買正片？",
+          "在英國，爸媽拿著兩張票坐在十一歲孩子旁邊，能看到《無限城篇》正片嗎？"
+        ]
+      },
+      {
         "id": "L58-001~R40009",
         "a": "R40009",
         "b": "L58-001",
@@ -395378,6 +398292,20 @@
         ]
       },
       {
+        "id": "K123-0205~K123-0214",
+        "a": "K123-0205",
+        "b": "K123-0214",
+        "question_score": 0.071,
+        "answer_score": 0.056,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台北光點的優待票明明包括十一歲兒童，可以拿它買這部《鬼滅之刃》嗎？",
+          "在英國，爸媽拿著兩張票坐在十一歲孩子旁邊，能看到《無限城篇》正片嗎？"
+        ]
+      },
+      {
         "id": "K90-050~K94-011",
         "a": "K90-050",
         "b": "K94-011",
@@ -395487,6 +398415,34 @@
         "questions": [
           "在阪急京都線月台看到「特急」，只想坐普通車廂，還要去找賣特急券的機器嗎？",
           "去同一個近鐵奈良站，京都月台那班不必加 520 日圓的急行，為什麼還先到？"
+        ]
+      },
+      {
+        "id": "K123-0203~K123-0213",
+        "a": "K123-0203",
+        "b": "K123-0213",
+        "question_score": 0,
+        "answer_score": 0.07,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張家庭行事曆上，6 月 27 日、7 月 18 日、8 月 8 日，哪一天能開始在台北看第一章？",
+          "英國的九十秒預告明明是 12A，為什麼一家人不能拿它的分級去買正片？"
+        ]
+      },
+      {
+        "id": "K123-0206~K123-0210",
+        "a": "K123-0206",
+        "b": "K123-0210",
+        "question_score": 0.07,
+        "answer_score": 0.013,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果媽媽自己排隊買兩張電影票，高雄環球規定驗的是誰的年齡？",
+          "大阪 TOHO 的電影晚上九點就開演，十一歲與媽媽一起去，還少查哪個時間？"
         ]
       },
       {
@@ -395627,6 +398583,34 @@
         "questions": [
           "阪急有一班車把小石庭搬進車廂，為什麼看起來更像觀光專車，反而不必買座席券？",
           "南海的 Southern 掛著「特急」，一列八節怎麼有一半不用買指定席券？"
+        ]
+      },
+      {
+        "id": "K123-0202~K123-0205",
+        "a": "K123-0202",
+        "b": "K123-0205",
+        "question_score": 0.069,
+        "answer_score": 0.049,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣影城和日本片方都印「PG12」，十一歲有家長陪，為什麼兩個櫃檯給不同答案？",
+          "台北光點的優待票明明包括十一歲兒童，可以拿它買這部《鬼滅之刃》嗎？"
+        ]
+      },
+      {
+        "id": "K123-0214~K123-0216",
+        "a": "K123-0214",
+        "b": "K123-0216",
+        "question_score": 0.069,
+        "answer_score": 0.023,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在英國，爸媽拿著兩張票坐在十一歲孩子旁邊，能看到《無限城篇》正片嗎？",
+          "把大阪 TOHO 梅田的場次往後翻兩天，十一歲和家長當年可以選哪一場？"
         ]
       },
       {
@@ -395826,6 +398810,48 @@
         ]
       },
       {
+        "id": "K123-0202~K123-0215",
+        "a": "K123-0202",
+        "b": "K123-0215",
+        "question_score": 0.068,
+        "answer_score": 0.053,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣影城和日本片方都印「PG12」，十一歲有家長陪，為什麼兩個櫃檯給不同答案？",
+          "同一部電影到了澳洲也有「15」，為什麼十一歲孩子這次可以跟媽媽一起買票看？"
+        ]
+      },
+      {
+        "id": "K123-0205~K123-0210",
+        "a": "K123-0205",
+        "b": "K123-0210",
+        "question_score": 0.068,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台北光點的優待票明明包括十一歲兒童，可以拿它買這部《鬼滅之刃》嗎？",
+          "大阪 TOHO 的電影晚上九點就開演，十一歲與媽媽一起去，還少查哪個時間？"
+        ]
+      },
+      {
+        "id": "K123-0216~K123-0217",
+        "a": "K123-0216",
+        "b": "K123-0217",
+        "question_score": 0.068,
+        "answer_score": 0.05,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把大阪 TOHO 梅田的場次往後翻兩天，十一歲和家長當年可以選哪一場？",
+          "規則允許去梅田早場，為何一家人當年仍不能保證在門口才買得到兩個位子？"
+        ]
+      },
+      {
         "id": "E2115~E2173",
         "a": "E2115",
         "b": "E2173",
@@ -395949,6 +398975,34 @@
         "questions": [
           "在阪急京都線月台看到「特急」，只想坐普通車廂，還要去找賣特急券的機器嗎？",
           "已經在近鐵網站買好特急券，截下有座號的畫面，車上查票就能給乘務員看嗎？"
+        ]
+      },
+      {
+        "id": "K123-0205~K123-0211",
+        "a": "K123-0205",
+        "b": "K123-0211",
+        "question_score": 0.067,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台北光點的優待票明明包括十一歲兒童，可以拿它買這部《鬼滅之刃》嗎？",
+          "同樣假設在大阪晚間八點散場，十一歲孩子的家長若改在門口接他，會改變什麼？"
+        ]
+      },
+      {
+        "id": "K123-0205~K123-0212",
+        "a": "K123-0205",
+        "b": "K123-0212",
+        "question_score": 0.067,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台北光點的優待票明明包括十一歲兒童，可以拿它買這部《鬼滅之刃》嗎？",
+          "2025 年 7 月 18 日零時的大阪梅田首映，家長能帶十一歲孩子去搶先看嗎？"
         ]
       },
       {
@@ -396131,6 +399185,20 @@
         "questions": [
           "同樣在近鐵京都站等「急行」，為什麼早上六點這一班和十四分那一班不能只看車種選？",
           "已經在近鐵網站買好特急券，截下有座號的畫面，車上查票就能給乘務員看嗎？"
+        ]
+      },
+      {
+        "id": "K123-0211~K123-0217",
+        "a": "K123-0211",
+        "b": "K123-0217",
+        "question_score": 0.066,
+        "answer_score": 0.036,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣假設在大阪晚間八點散場，十一歲孩子的家長若改在門口接他，會改變什麼？",
+          "規則允許去梅田早場，為何一家人當年仍不能保證在門口才買得到兩個位子？"
         ]
       },
       {
@@ -396680,6 +399748,20 @@
         ]
       },
       {
+        "id": "K123-0211~K123-0218",
+        "a": "K123-0211",
+        "b": "K123-0218",
+        "question_score": 0.033,
+        "answer_score": 0.063,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣假設在大阪晚間八點散場，十一歲孩子的家長若改在門口接他，會改變什麼？",
+          "台灣這部片如果剛好排在孩子十二歲生日前後，哪一次能過分級這一關？"
+        ]
+      },
+      {
         "id": "K66-006~K66-013",
         "a": "K66-006",
         "b": "K66-013",
@@ -396929,6 +400011,20 @@
         "questions": [
           "近鐵網頁的兩個購票按鈕都寫「特急」，哪個買完還得準備 ICOCA 或基本乘車券？",
           "手上若是京都市地下鐵巴士一日券，能跟近鐵一日券一樣，把京都到奈良的那段勾掉嗎？"
+        ]
+      },
+      {
+        "id": "K123-0208~K123-0216",
+        "a": "K123-0208",
+        "b": "K123-0216",
+        "question_score": 0.036,
+        "answer_score": 0.061,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本把判斷交回家長，映倫給了什麼具體資訊，好讓大人和孩子談？",
+          "把大阪 TOHO 梅田的場次往後翻兩天，十一歲和家長當年可以選哪一場？"
         ]
       },
       {
@@ -397184,6 +400280,20 @@
         ]
       },
       {
+        "id": "K123-0207~K123-0218",
+        "a": "K123-0207",
+        "b": "K123-0218",
+        "question_score": 0.036,
+        "answer_score": 0.059,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "片方在 7 月 4 日才公告 PG12，誰在更早之前留下了分級理由？",
+          "台灣這部片如果剛好排在孩子十二歲生日前後，哪一次能過分級這一關？"
+        ]
+      },
+      {
         "id": "L006~L017",
         "a": "L006",
         "b": "L017",
@@ -397349,6 +400459,20 @@
         "questions": [
           "ICOCA 在入口和出口各碰一次，哪一次才會在卡上扣掉這段的車資？",
           "改搭近鐵的特急去奈良，如果我願意站著，可以省下特急券嗎？"
+        ]
+      },
+      {
+        "id": "K123-0203~K123-0216",
+        "a": "K123-0203",
+        "b": "K123-0216",
+        "question_score": 0.031,
+        "answer_score": 0.058,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張家庭行事曆上，6 月 27 日、7 月 18 日、8 月 8 日，哪一天能開始在台北看第一章？",
+          "把大阪 TOHO 梅田的場次往後翻兩天，十一歲和家長當年可以選哪一場？"
         ]
       },
       {
@@ -397590,6 +400714,20 @@
         ]
       },
       {
+        "id": "K123-0208~K123-0210",
+        "a": "K123-0208",
+        "b": "K123-0210",
+        "question_score": 0,
+        "answer_score": 0.057,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本把判斷交回家長，映倫給了什麼具體資訊，好讓大人和孩子談？",
+          "大阪 TOHO 的電影晚上九點就開演，十一歲與媽媽一起去，還少查哪個時間？"
+        ]
+      },
+      {
         "id": "L064~L067",
         "a": "L064",
         "b": "L067",
@@ -397825,6 +400963,34 @@
         "questions": [
           "校方說京都到近鐵奈良，特急約 35 分、急行約 45 分。到了月台，能直接把這兩個數字當抵達時間嗎？",
           "京阪特急月台的機器也能刷 ICOCA。這一刷和剛才進站時的一刷，各買到什麼？"
+        ]
+      },
+      {
+        "id": "K123-0207~K123-0217",
+        "a": "K123-0207",
+        "b": "K123-0217",
+        "question_score": 0,
+        "answer_score": 0.056,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "片方在 7 月 4 日才公告 PG12，誰在更早之前留下了分級理由？",
+          "規則允許去梅田早場，為何一家人當年仍不能保證在門口才買得到兩個位子？"
+        ]
+      },
+      {
+        "id": "K123-0404~K123-0407",
+        "a": "K123-0404",
+        "b": "K123-0407",
+        "question_score": 0.056,
+        "answer_score": 0.029,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "變星觀測圖把兩顆星標成 84 和 90。要找較亮的比較星，應該選哪一顆？",
+          "雙星目錄裡同一個位置代碼下，最新角距一列寫 34.3 角秒，另一列只有 0.3。今晚的望遠鏡究竟要找哪一對？"
         ]
       },
       {
@@ -398388,6 +401554,20 @@
         ]
       },
       {
+        "id": "K123-0201~K123-0213",
+        "a": "K123-0201",
+        "b": "K123-0213",
+        "question_score": 0.04,
+        "answer_score": 0.053,
+        "key_score": 0.8,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣寫「猗窩座再襲」，日本寫「猗窩座再来」，怎麼認出家人挑的是同一部電影？",
+          "英國的九十秒預告明明是 12A，為什麼一家人不能拿它的分級去買正片？"
+        ]
+      },
+      {
         "id": "K90-019~K90-027",
         "a": "K90-019",
         "b": "K90-027",
@@ -398654,6 +401834,34 @@
         ]
       },
       {
+        "id": "K123-0202~K123-0203",
+        "a": "K123-0202",
+        "b": "K123-0203",
+        "question_score": 0,
+        "answer_score": 0.052,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣影城和日本片方都印「PG12」，十一歲有家長陪，為什麼兩個櫃檯給不同答案？",
+          "同一張家庭行事曆上，6 月 27 日、7 月 18 日、8 月 8 日，哪一天能開始在台北看第一章？"
+        ]
+      },
+      {
+        "id": "K123-0208~K123-0215",
+        "a": "K123-0208",
+        "b": "K123-0215",
+        "question_score": 0.036,
+        "answer_score": 0.052,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本把判斷交回家長，映倫給了什麼具體資訊，好讓大人和孩子談？",
+          "同一部電影到了澳洲也有「15」，為什麼十一歲孩子這次可以跟媽媽一起買票看？"
+        ]
+      },
+      {
         "id": "A26001~A26002",
         "a": "A26001",
         "b": "A26002",
@@ -398819,6 +402027,34 @@
         "questions": [
           "ICOCA 在入口和出口各碰一次，哪一次才會在卡上扣掉這段的車資？",
           "已經在近鐵網站買好特急券，截下有座號的畫面，車上查票就能給乘務員看嗎？"
+        ]
+      },
+      {
+        "id": "K123-0202~K123-0206",
+        "a": "K123-0202",
+        "b": "K123-0206",
+        "question_score": 0,
+        "answer_score": 0.051,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣影城和日本片方都印「PG12」，十一歲有家長陪，為什麼兩個櫃檯給不同答案？",
+          "如果媽媽自己排隊買兩張電影票，高雄環球規定驗的是誰的年齡？"
+        ]
+      },
+      {
+        "id": "K123-0210~K123-0213",
+        "a": "K123-0210",
+        "b": "K123-0213",
+        "question_score": 0,
+        "answer_score": 0.051,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "大阪 TOHO 的電影晚上九點就開演，十一歲與媽媽一起去，還少查哪個時間？",
+          "英國的九十秒預告明明是 12A，為什麼一家人不能拿它的分級去買正片？"
         ]
       },
       {
@@ -399088,6 +402324,20 @@
         ]
       },
       {
+        "id": "K123-0212~K123-0213",
+        "a": "K123-0212",
+        "b": "K123-0213",
+        "question_score": 0,
+        "answer_score": 0.049,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "2025 年 7 月 18 日零時的大阪梅田首映，家長能帶十一歲孩子去搶先看嗎？",
+          "英國的九十秒預告明明是 12A，為什麼一家人不能拿它的分級去買正片？"
+        ]
+      },
+      {
         "id": "L085~L47-001",
         "a": "L085",
         "b": "L47-001",
@@ -399267,6 +402517,20 @@
         "questions": [
           "店裡另一個旅行配件寫了伏特，為什麼配件盒上還要再列安培或瓦特？",
           "EH-NA9F 手冊列了海外用法，為什麼保證書還寫「只限日本」？"
+        ]
+      },
+      {
+        "id": "K123-0205~K123-0208",
+        "a": "K123-0205",
+        "b": "K123-0208",
+        "question_score": 0,
+        "answer_score": 0.048,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台北光點的優待票明明包括十一歲兒童，可以拿它買這部《鬼滅之刃》嗎？",
+          "日本把判斷交回家長，映倫給了什麼具體資訊，好讓大人和孩子談？"
         ]
       },
       {
@@ -399550,6 +402814,20 @@
         ]
       },
       {
+        "id": "K123-0207~K123-0212",
+        "a": "K123-0207",
+        "b": "K123-0212",
+        "question_score": 0.034,
+        "answer_score": 0.046,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "片方在 7 月 4 日才公告 PG12，誰在更早之前留下了分級理由？",
+          "2025 年 7 月 18 日零時的大阪梅田首映，家長能帶十一歲孩子去搶先看嗎？"
+        ]
+      },
+      {
         "id": "E2028~E2029",
         "a": "E2028",
         "b": "E2029",
@@ -399760,6 +403038,20 @@
         ]
       },
       {
+        "id": "K123-0207~K123-0208",
+        "a": "K123-0207",
+        "b": "K123-0208",
+        "question_score": 0,
+        "answer_score": 0.045,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "片方在 7 月 4 日才公告 PG12，誰在更早之前留下了分級理由？",
+          "日本把判斷交回家長，映倫給了什麼具體資訊，好讓大人和孩子談？"
+        ]
+      },
+      {
         "id": "K74-015~K74-018",
         "a": "K74-015",
         "b": "K74-018",
@@ -399939,6 +403231,20 @@
         "questions": [
           "阪急有一班車把小石庭搬進車廂，為什麼看起來更像觀光專車，反而不必買座席券？",
           "京阪特急月台的機器也能刷 ICOCA。這一刷和剛才進站時的一刷，各買到什麼？"
+        ]
+      },
+      {
+        "id": "K123-0206~K123-0214",
+        "a": "K123-0206",
+        "b": "K123-0214",
+        "question_score": 0.037,
+        "answer_score": 0.044,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果媽媽自己排隊買兩張電影票，高雄環球規定驗的是誰的年齡？",
+          "在英國，爸媽拿著兩張票坐在十一歲孩子旁邊，能看到《無限城篇》正片嗎？"
         ]
       },
       {
@@ -400191,6 +403497,20 @@
         "questions": [
           "從京都按下「去奈良」，為什麼跳出的都路快速會把你送到另一個奈良車站？",
           "已經在近鐵網站買好特急券，截下有座號的畫面，車上查票就能給乘務員看嗎？"
+        ]
+      },
+      {
+        "id": "K123-0208~K123-0217",
+        "a": "K123-0208",
+        "b": "K123-0217",
+        "question_score": 0,
+        "answer_score": 0.043,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本把判斷交回家長，映倫給了什麼具體資訊，好讓大人和孩子談？",
+          "規則允許去梅田早場，為何一家人當年仍不能保證在門口才買得到兩個位子？"
         ]
       },
       {
@@ -400474,6 +403794,20 @@
         ]
       },
       {
+        "id": "K123-0207~K123-0216",
+        "a": "K123-0207",
+        "b": "K123-0216",
+        "question_score": 0,
+        "answer_score": 0.042,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "片方在 7 月 4 日才公告 PG12，誰在更早之前留下了分級理由？",
+          "把大阪 TOHO 梅田的場次往後翻兩天，十一歲和家長當年可以選哪一場？"
+        ]
+      },
+      {
         "id": "R41001~R41005",
         "a": "R41001",
         "b": "R41005",
@@ -400712,6 +404046,34 @@
         ]
       },
       {
+        "id": "K123-0201~K123-0208",
+        "a": "K123-0201",
+        "b": "K123-0208",
+        "question_score": 0.041,
+        "answer_score": 0.012,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣寫「猗窩座再襲」，日本寫「猗窩座再来」，怎麼認出家人挑的是同一部電影？",
+          "日本把判斷交回家長，映倫給了什麼具體資訊，好讓大人和孩子談？"
+        ]
+      },
+      {
+        "id": "K123-0206~K123-0213",
+        "a": "K123-0206",
+        "b": "K123-0213",
+        "question_score": 0,
+        "answer_score": 0.041,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果媽媽自己排隊買兩張電影票，高雄環球規定驗的是誰的年齡？",
+          "英國的九十秒預告明明是 12A，為什麼一家人不能拿它的分級去買正片？"
+        ]
+      },
+      {
         "id": "L62-002~R37007",
         "a": "R37007",
         "b": "L62-002",
@@ -400877,6 +404239,20 @@
         "questions": [
           "退罐前仔細找，為什麼有的罐子把圖案印在罐身，有的另貼一張帶小方碼的貼紙？",
           "退罐口要你保住圓罐，為什麼同一款機器肚子裡偏偏有壓縮機？"
+        ]
+      },
+      {
+        "id": "K123-0203~K123-0218",
+        "a": "K123-0203",
+        "b": "K123-0218",
+        "question_score": 0.032,
+        "answer_score": 0.04,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張家庭行事曆上，6 月 27 日、7 月 18 日、8 月 8 日，哪一天能開始在台北看第一章？",
+          "台灣這部片如果剛好排在孩子十二歲生日前後，哪一次能過分級這一關？"
         ]
       },
       {
@@ -401384,6 +404760,62 @@
         ]
       },
       {
+        "id": "K123-0201~K123-0217",
+        "a": "K123-0201",
+        "b": "K123-0217",
+        "question_score": 0.038,
+        "answer_score": 0.012,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣寫「猗窩座再襲」，日本寫「猗窩座再来」，怎麼認出家人挑的是同一部電影？",
+          "規則允許去梅田早場，為何一家人當年仍不能保證在門口才買得到兩個位子？"
+        ]
+      },
+      {
+        "id": "K123-0201~K123-0218",
+        "a": "K123-0201",
+        "b": "K123-0218",
+        "question_score": 0.038,
+        "answer_score": 0.013,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣寫「猗窩座再襲」，日本寫「猗窩座再来」，怎麼認出家人挑的是同一部電影？",
+          "台灣這部片如果剛好排在孩子十二歲生日前後，哪一次能過分級這一關？"
+        ]
+      },
+      {
+        "id": "K123-0203~K123-0208",
+        "a": "K123-0203",
+        "b": "K123-0208",
+        "question_score": 0,
+        "answer_score": 0.038,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張家庭行事曆上，6 月 27 日、7 月 18 日、8 月 8 日，哪一天能開始在台北看第一章？",
+          "日本把判斷交回家長，映倫給了什麼具體資訊，好讓大人和孩子談？"
+        ]
+      },
+      {
+        "id": "K123-0206~K123-0212",
+        "a": "K123-0206",
+        "b": "K123-0212",
+        "question_score": 0,
+        "answer_score": 0.038,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果媽媽自己排隊買兩張電影票，高雄環球規定驗的是誰的年齡？",
+          "2025 年 7 月 18 日零時的大阪梅田首映，家長能帶十一歲孩子去搶先看嗎？"
+        ]
+      },
+      {
         "id": "K92-017~K92-026",
         "a": "K92-017",
         "b": "K92-026",
@@ -401535,6 +404967,20 @@
         "questions": [
           "京阪寫特急的時刻表旁邊，怎麼會有一班只寫「急行」也明列 400 日圓？",
           "南海 Rapi:t 的座位明明寫 Regular，為什麼不能照 Southern 自由席的方式上車？"
+        ]
+      },
+      {
+        "id": "K123-0209~K123-0213",
+        "a": "K123-0209",
+        "b": "K123-0213",
+        "question_score": 0,
+        "answer_score": 0.037,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果日本海報的角標換成 R15+，同一段家長說明還能讓孩子進去嗎？",
+          "英國的九十秒預告明明是 12A，為什麼一家人不能拿它的分級去買正片？"
         ]
       },
       {
@@ -401804,6 +405250,48 @@
         ]
       },
       {
+        "id": "K123-0207~K123-0209",
+        "a": "K123-0207",
+        "b": "K123-0209",
+        "question_score": 0,
+        "answer_score": 0.036,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "片方在 7 月 4 日才公告 PG12，誰在更早之前留下了分級理由？",
+          "如果日本海報的角標換成 R15+，同一段家長說明還能讓孩子進去嗎？"
+        ]
+      },
+      {
+        "id": "K123-0208~K123-0213",
+        "a": "K123-0208",
+        "b": "K123-0213",
+        "question_score": 0,
+        "answer_score": 0.036,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本把判斷交回家長，映倫給了什麼具體資訊，好讓大人和孩子談？",
+          "英國的九十秒預告明明是 12A，為什麼一家人不能拿它的分級去買正片？"
+        ]
+      },
+      {
+        "id": "K123-0213~K123-0218",
+        "a": "K123-0213",
+        "b": "K123-0218",
+        "question_score": 0.036,
+        "answer_score": 0.025,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "英國的九十秒預告明明是 12A，為什麼一家人不能拿它的分級去買正片？",
+          "台灣這部片如果剛好排在孩子十二歲生日前後，哪一次能過分級這一關？"
+        ]
+      },
+      {
         "id": "L76-005~L76-006",
         "a": "L76-005",
         "b": "L76-006",
@@ -401927,6 +405415,34 @@
         "questions": [
           "已經在近鐵網站買好特急券，截下有座號的畫面，車上查票就能給乘務員看嗎？",
           "京阪寫特急的時刻表旁邊，怎麼會有一班只寫「急行」也明列 400 日圓？"
+        ]
+      },
+      {
+        "id": "K123-0201~K123-0203",
+        "a": "K123-0201",
+        "b": "K123-0203",
+        "question_score": 0.035,
+        "answer_score": 0.014,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣寫「猗窩座再襲」，日本寫「猗窩座再来」，怎麼認出家人挑的是同一部電影？",
+          "同一張家庭行事曆上，6 月 27 日、7 月 18 日、8 月 8 日，哪一天能開始在台北看第一章？"
+        ]
+      },
+      {
+        "id": "K123-0202~K123-0213",
+        "a": "K123-0202",
+        "b": "K123-0213",
+        "question_score": 0.035,
+        "answer_score": 0.024,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣影城和日本片方都印「PG12」，十一歲有家長陪，為什麼兩個櫃檯給不同答案？",
+          "英國的九十秒預告明明是 12A，為什麼一家人不能拿它的分級去買正片？"
         ]
       },
       {
@@ -402238,6 +405754,48 @@
         ]
       },
       {
+        "id": "K123-0202~K123-0217",
+        "a": "K123-0202",
+        "b": "K123-0217",
+        "question_score": 0.034,
+        "answer_score": 0.011,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣影城和日本片方都印「PG12」，十一歲有家長陪，為什麼兩個櫃檯給不同答案？",
+          "規則允許去梅田早場，為何一家人當年仍不能保證在門口才買得到兩個位子？"
+        ]
+      },
+      {
+        "id": "K123-0203~K123-0204",
+        "a": "K123-0203",
+        "b": "K123-0204",
+        "question_score": 0.034,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張家庭行事曆上，6 月 27 日、7 月 18 日、8 月 8 日，哪一天能開始在台北看第一章？",
+          "十一歲想看台灣院線電影，家長的陪同在哪一個級別真的管用？"
+        ]
+      },
+      {
+        "id": "K123-0206~K123-0216",
+        "a": "K123-0206",
+        "b": "K123-0216",
+        "question_score": 0,
+        "answer_score": 0.034,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果媽媽自己排隊買兩張電影票，高雄環球規定驗的是誰的年齡？",
+          "把大阪 TOHO 梅田的場次往後翻兩天，十一歲和家長當年可以選哪一場？"
+        ]
+      },
+      {
         "id": "K116-0202~K116-0216",
         "a": "K116-0202",
         "b": "K116-0216",
@@ -402434,6 +405992,20 @@
         ]
       },
       {
+        "id": "K123-0212~K123-0217",
+        "a": "K123-0212",
+        "b": "K123-0217",
+        "question_score": 0.033,
+        "answer_score": 0.033,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "2025 年 7 月 18 日零時的大阪梅田首映，家長能帶十一歲孩子去搶先看嗎？",
+          "規則允許去梅田早場，為何一家人當年仍不能保證在門口才買得到兩個位子？"
+        ]
+      },
+      {
         "id": "M5001~M5002",
         "a": "M5001",
         "b": "M5002",
@@ -402599,6 +406171,62 @@
         "questions": [
           "已經在近鐵網站買好特急券，截下有座號的畫面，車上查票就能給乘務員看嗎？",
           "京阪特急月台的機器也能刷 ICOCA。這一刷和剛才進站時的一刷，各買到什麼？"
+        ]
+      },
+      {
+        "id": "K123-0203~K123-0205",
+        "a": "K123-0203",
+        "b": "K123-0205",
+        "question_score": 0.032,
+        "answer_score": 0.014,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張家庭行事曆上，6 月 27 日、7 月 18 日、8 月 8 日，哪一天能開始在台北看第一章？",
+          "台北光點的優待票明明包括十一歲兒童，可以拿它買這部《鬼滅之刃》嗎？"
+        ]
+      },
+      {
+        "id": "K123-0203~K123-0209",
+        "a": "K123-0203",
+        "b": "K123-0209",
+        "question_score": 0.032,
+        "answer_score": 0.013,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張家庭行事曆上，6 月 27 日、7 月 18 日、8 月 8 日，哪一天能開始在台北看第一章？",
+          "如果日本海報的角標換成 R15+，同一段家長說明還能讓孩子進去嗎？"
+        ]
+      },
+      {
+        "id": "K123-0203~K123-0215",
+        "a": "K123-0203",
+        "b": "K123-0215",
+        "question_score": 0.032,
+        "answer_score": 0.012,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張家庭行事曆上，6 月 27 日、7 月 18 日、8 月 8 日，哪一天能開始在台北看第一章？",
+          "同一部電影到了澳洲也有「15」，為什麼十一歲孩子這次可以跟媽媽一起買票看？"
+        ]
+      },
+      {
+        "id": "K123-0207~K123-0215",
+        "a": "K123-0207",
+        "b": "K123-0215",
+        "question_score": 0,
+        "answer_score": 0.032,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "片方在 7 月 4 日才公告 PG12，誰在更早之前留下了分級理由？",
+          "同一部電影到了澳洲也有「15」，為什麼十一歲孩子這次可以跟媽媽一起買票看？"
         ]
       },
       {
@@ -402851,6 +406479,20 @@
         "questions": [
           "同台微波爐在 60Hz 的資料出現 650W 和 1320W，哪一個是從插座取電的額定值？",
           "一個 USB 電源可以替相機裡的電池充電，這是否保證接著電源就能一直拍？"
+        ]
+      },
+      {
+        "id": "K123-0203~K123-0214",
+        "a": "K123-0203",
+        "b": "K123-0214",
+        "question_score": 0,
+        "answer_score": 0.03,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張家庭行事曆上，6 月 27 日、7 月 18 日、8 月 8 日，哪一天能開始在台北看第一章？",
+          "在英國，爸媽拿著兩張票坐在十一歲孩子旁邊，能看到《無限城篇》正片嗎？"
         ]
       },
       {
@@ -403162,6 +406804,20 @@
         ]
       },
       {
+        "id": "K123-0201~K123-0214",
+        "a": "K123-0201",
+        "b": "K123-0214",
+        "question_score": 0,
+        "answer_score": 0.028,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣寫「猗窩座再襲」，日本寫「猗窩座再来」，怎麼認出家人挑的是同一部電影？",
+          "在英國，爸媽拿著兩張票坐在十一歲孩子旁邊，能看到《無限城篇》正片嗎？"
+        ]
+      },
+      {
         "id": "R36008~R36009",
         "a": "R36008",
         "b": "R36009",
@@ -403299,6 +406955,20 @@
         "questions": [
           "盒內小袋裡附了 C-2 轉接頭，這個配件和吹風機機身的電壓開關分別管什麼？",
           "同台微波爐在 60Hz 的資料出現 650W 和 1320W，哪一個是從插座取電的額定值？"
+        ]
+      },
+      {
+        "id": "K123-0206~K123-0207",
+        "a": "K123-0206",
+        "b": "K123-0207",
+        "question_score": 0,
+        "answer_score": 0.026,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果媽媽自己排隊買兩張電影票，高雄環球規定驗的是誰的年齡？",
+          "片方在 7 月 4 日才公告 PG12，誰在更早之前留下了分級理由？"
         ]
       },
       {
@@ -403456,6 +407126,48 @@
         ]
       },
       {
+        "id": "K123-0203~K123-0217",
+        "a": "K123-0203",
+        "b": "K123-0217",
+        "question_score": 0,
+        "answer_score": 0.025,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張家庭行事曆上，6 月 27 日、7 月 18 日、8 月 8 日，哪一天能開始在台北看第一章？",
+          "規則允許去梅田早場，為何一家人當年仍不能保證在門口才買得到兩個位子？"
+        ]
+      },
+      {
+        "id": "K123-0205~K123-0207",
+        "a": "K123-0205",
+        "b": "K123-0207",
+        "question_score": 0,
+        "answer_score": 0.025,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台北光點的優待票明明包括十一歲兒童，可以拿它買這部《鬼滅之刃》嗎？",
+          "片方在 7 月 4 日才公告 PG12，誰在更早之前留下了分級理由？"
+        ]
+      },
+      {
+        "id": "K123-0214~K123-0217",
+        "a": "K123-0214",
+        "b": "K123-0217",
+        "question_score": 0,
+        "answer_score": 0.025,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在英國，爸媽拿著兩張票坐在十一歲孩子旁邊，能看到《無限城篇》正片嗎？",
+          "規則允許去梅田早場，為何一家人當年仍不能保證在門口才買得到兩個位子？"
+        ]
+      },
+      {
         "id": "K91-001~K91-004",
         "a": "K91-001",
         "b": "K91-004",
@@ -403610,6 +407322,34 @@
         ]
       },
       {
+        "id": "K123-0204~K123-0217",
+        "a": "K123-0204",
+        "b": "K123-0217",
+        "question_score": 0,
+        "answer_score": 0.024,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "十一歲想看台灣院線電影，家長的陪同在哪一個級別真的管用？",
+          "規則允許去梅田早場，為何一家人當年仍不能保證在門口才買得到兩個位子？"
+        ]
+      },
+      {
+        "id": "K123-0206~K123-0217",
+        "a": "K123-0206",
+        "b": "K123-0217",
+        "question_score": 0,
+        "answer_score": 0.024,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果媽媽自己排隊買兩張電影票，高雄環球規定驗的是誰的年齡？",
+          "規則允許去梅田早場，為何一家人當年仍不能保證在門口才買得到兩個位子？"
+        ]
+      },
+      {
         "id": "K116-0201~K116-0210",
         "a": "K116-0201",
         "b": "K116-0210",
@@ -403719,6 +407459,20 @@
         "questions": [
           "手上若是京都市地下鐵巴士一日券，能跟近鐵一日券一樣，把京都到奈良的那段勾掉嗎？",
           "南海 Rapi:t 的座位明明寫 Regular，為什麼不能照 Southern 自由席的方式上車？"
+        ]
+      },
+      {
+        "id": "K123-0210~K123-0217",
+        "a": "K123-0210",
+        "b": "K123-0217",
+        "question_score": 0,
+        "answer_score": 0.023,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "大阪 TOHO 的電影晚上九點就開演，十一歲與媽媽一起去，還少查哪個時間？",
+          "規則允許去梅田早場，為何一家人當年仍不能保證在門口才買得到兩個位子？"
         ]
       },
       {
@@ -403904,6 +407658,34 @@
         ]
       },
       {
+        "id": "K123-0209~K123-0217",
+        "a": "K123-0209",
+        "b": "K123-0217",
+        "question_score": 0,
+        "answer_score": 0.022,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果日本海報的角標換成 R15+，同一段家長說明還能讓孩子進去嗎？",
+          "規則允許去梅田早場，為何一家人當年仍不能保證在門口才買得到兩個位子？"
+        ]
+      },
+      {
+        "id": "K123-0217~K123-0218",
+        "a": "K123-0217",
+        "b": "K123-0218",
+        "question_score": 0,
+        "answer_score": 0.022,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "規則允許去梅田早場，為何一家人當年仍不能保證在門口才買得到兩個位子？",
+          "台灣這部片如果剛好排在孩子十二歲生日前後，哪一次能過分級這一關？"
+        ]
+      },
+      {
         "id": "K120-0206~K120-0216",
         "a": "K120-0206",
         "b": "K120-0216",
@@ -403929,6 +407711,20 @@
         "questions": [
           "相機充電器已標 100–240V，出門再多帶一個旅行變壓器會更保險嗎？",
           "日本買的器材在外地找到能用的電源，保固地區會隨人一起移到新住處嗎？"
+        ]
+      },
+      {
+        "id": "K123-0215~K123-0217",
+        "a": "K123-0215",
+        "b": "K123-0217",
+        "question_score": 0,
+        "answer_score": 0.021,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一部電影到了澳洲也有「15」，為什麼十一歲孩子這次可以跟媽媽一起買票看？",
+          "規則允許去梅田早場，為何一家人當年仍不能保證在門口才買得到兩個位子？"
         ]
       },
       {
@@ -404688,6 +408484,76 @@
         ]
       },
       {
+        "id": "K123-0201~K123-0205",
+        "a": "K123-0201",
+        "b": "K123-0205",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣寫「猗窩座再襲」，日本寫「猗窩座再来」，怎麼認出家人挑的是同一部電影？",
+          "台北光點的優待票明明包括十一歲兒童，可以拿它買這部《鬼滅之刃》嗎？"
+        ]
+      },
+      {
+        "id": "K123-0204~K123-0213",
+        "a": "K123-0204",
+        "b": "K123-0213",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "十一歲想看台灣院線電影，家長的陪同在哪一個級別真的管用？",
+          "英國的九十秒預告明明是 12A，為什麼一家人不能拿它的分級去買正片？"
+        ]
+      },
+      {
+        "id": "K123-0207~K123-0211",
+        "a": "K123-0207",
+        "b": "K123-0211",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "片方在 7 月 4 日才公告 PG12，誰在更早之前留下了分級理由？",
+          "同樣假設在大阪晚間八點散場，十一歲孩子的家長若改在門口接他，會改變什麼？"
+        ]
+      },
+      {
+        "id": "K123-0207~K123-0214",
+        "a": "K123-0207",
+        "b": "K123-0214",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "片方在 7 月 4 日才公告 PG12，誰在更早之前留下了分級理由？",
+          "在英國，爸媽拿著兩張票坐在十一歲孩子旁邊，能看到《無限城篇》正片嗎？"
+        ]
+      },
+      {
+        "id": "K123-0211~K123-0213",
+        "a": "K123-0211",
+        "b": "K123-0213",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣假設在大阪晚間八點散場，十一歲孩子的家長若改在門口接他，會改變什麼？",
+          "英國的九十秒預告明明是 12A，為什麼一家人不能拿它的分級去買正片？"
+        ]
+      },
+      {
         "id": "R43005~R43009",
         "a": "R43005",
         "b": "R43009",
@@ -405203,6 +409069,20 @@
         "questions": [
           "阪急有一班車把小石庭搬進車廂，為什麼看起來更像觀光專車，反而不必買座席券？",
           "手上若是京都市地下鐵巴士一日券，能跟近鐵一日券一樣，把京都到奈良的那段勾掉嗎？"
+        ]
+      },
+      {
+        "id": "K123-0201~K123-0216",
+        "a": "K123-0201",
+        "b": "K123-0216",
+        "question_score": 0,
+        "answer_score": 0.011,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣寫「猗窩座再襲」，日本寫「猗窩座再来」，怎麼認出家人挑的是同一部電影？",
+          "把大阪 TOHO 梅田的場次往後翻兩天，十一歲和家長當年可以選哪一場？"
         ]
       },
       {
@@ -406365,6 +410245,132 @@
         "questions": [
           "手上若是京都市地下鐵巴士一日券，能跟近鐵一日券一樣，把京都到奈良的那段勾掉嗎？",
           "京阪寫特急的時刻表旁邊，怎麼會有一班只寫「急行」也明列 400 日圓？"
+        ]
+      },
+      {
+        "id": "K123-0201~K123-0211",
+        "a": "K123-0201",
+        "b": "K123-0211",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣寫「猗窩座再襲」，日本寫「猗窩座再来」，怎麼認出家人挑的是同一部電影？",
+          "同樣假設在大阪晚間八點散場，十一歲孩子的家長若改在門口接他，會改變什麼？"
+        ]
+      },
+      {
+        "id": "K123-0201~K123-0212",
+        "a": "K123-0201",
+        "b": "K123-0212",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣寫「猗窩座再襲」，日本寫「猗窩座再来」，怎麼認出家人挑的是同一部電影？",
+          "2025 年 7 月 18 日零時的大阪梅田首映，家長能帶十一歲孩子去搶先看嗎？"
+        ]
+      },
+      {
+        "id": "K123-0203~K123-0206",
+        "a": "K123-0203",
+        "b": "K123-0206",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張家庭行事曆上，6 月 27 日、7 月 18 日、8 月 8 日，哪一天能開始在台北看第一章？",
+          "如果媽媽自己排隊買兩張電影票，高雄環球規定驗的是誰的年齡？"
+        ]
+      },
+      {
+        "id": "K123-0203~K123-0210",
+        "a": "K123-0203",
+        "b": "K123-0210",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張家庭行事曆上，6 月 27 日、7 月 18 日、8 月 8 日，哪一天能開始在台北看第一章？",
+          "大阪 TOHO 的電影晚上九點就開演，十一歲與媽媽一起去，還少查哪個時間？"
+        ]
+      },
+      {
+        "id": "K123-0203~K123-0211",
+        "a": "K123-0203",
+        "b": "K123-0211",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張家庭行事曆上，6 月 27 日、7 月 18 日、8 月 8 日，哪一天能開始在台北看第一章？",
+          "同樣假設在大阪晚間八點散場，十一歲孩子的家長若改在門口接他，會改變什麼？"
+        ]
+      },
+      {
+        "id": "K123-0204~K123-0207",
+        "a": "K123-0204",
+        "b": "K123-0207",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "十一歲想看台灣院線電影，家長的陪同在哪一個級別真的管用？",
+          "片方在 7 月 4 日才公告 PG12，誰在更早之前留下了分級理由？"
+        ]
+      },
+      {
+        "id": "K123-0205~K123-0217",
+        "a": "K123-0205",
+        "b": "K123-0217",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台北光點的優待票明明包括十一歲兒童，可以拿它買這部《鬼滅之刃》嗎？",
+          "規則允許去梅田早場，為何一家人當年仍不能保證在門口才買得到兩個位子？"
+        ]
+      },
+      {
+        "id": "K123-0206~K123-0211",
+        "a": "K123-0206",
+        "b": "K123-0211",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果媽媽自己排隊買兩張電影票，高雄環球規定驗的是誰的年齡？",
+          "同樣假設在大阪晚間八點散場，十一歲孩子的家長若改在門口接他，會改變什麼？"
+        ]
+      },
+      {
+        "id": "K123-0207~K123-0210",
+        "a": "K123-0207",
+        "b": "K123-0210",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "片方在 7 月 4 日才公告 PG12，誰在更早之前留下了分級理由？",
+          "大阪 TOHO 的電影晚上九點就開演，十一歲與媽媽一起去，還少查哪個時間？"
         ]
       },
       {
@@ -407842,10 +411848,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-19-pool-7361",
-    "target_count": 7361,
+    "revision": "2026-11-19-pool-7398",
+    "target_count": 7398,
     "reviewed_on": "2026-11-19",
-    "reason": "第122批新增 37 張素材，入選 7324 → 7361。先前：第121批新增 36 張素材，含日常設計、樂譜判讀及旅用電器規格。入選 7288 → 7324。先前：第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
+    "reason": "第123批新增 37 張素材，入選 7361 → 7398。先前：第122批新增 37 張素材，入選 7324 → 7361。先前：第121批新增 36 張素材，含日常設計、樂譜判讀及旅用電器規格。入選 7288 → 7324。先前：第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -415207,7 +419213,44 @@
       "K122-0215",
       "K122-0216",
       "K122-0217",
-      "K122-0218"
+      "K122-0218",
+      "K123-0001",
+      "K123-0002",
+      "K123-0003",
+      "K123-0004",
+      "K123-0005",
+      "K123-0006",
+      "K123-0007",
+      "K123-0008",
+      "K123-0009",
+      "K123-0010",
+      "K123-0011",
+      "K123-0012",
+      "K123-0201",
+      "K123-0202",
+      "K123-0203",
+      "K123-0204",
+      "K123-0205",
+      "K123-0206",
+      "K123-0207",
+      "K123-0208",
+      "K123-0209",
+      "K123-0210",
+      "K123-0211",
+      "K123-0212",
+      "K123-0213",
+      "K123-0214",
+      "K123-0215",
+      "K123-0216",
+      "K123-0217",
+      "K123-0218",
+      "K123-0401",
+      "K123-0402",
+      "K123-0403",
+      "K123-0404",
+      "K123-0405",
+      "K123-0406",
+      "K123-0407"
     ],
     "overflow": [
       {
@@ -418186,6 +422229,66 @@
       ],
       "origin": "wave122-research-20261119",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave122-research-20261119.json"
+    },
+    {
+      "id": "X123E-NA001",
+      "question": "郵資漲過價後，一張老 Forever 郵票怎麼還能付今天的基本信資？",
+      "existing_ids": [
+        "K117-0007"
+      ],
+      "reason": "舊題已完整解釋標準國內一盎司信件的服務面值，改用另一張舊郵票仍是同一答案。",
+      "origin": "wave123-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave123-everyday-20261119.json"
+    },
+    {
+      "id": "X123E-NA002",
+      "question": "兩瓶美國 A 級楓糖漿透光程度差很多，深色那瓶也能是 A 級嗎？",
+      "existing_ids": [
+        "K121-0008"
+      ],
+      "reason": "舊題已分別說明 A 級條件與色級，且已並列兩瓶做對照。",
+      "origin": "wave123-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave123-everyday-20261119.json"
+    },
+    {
+      "id": "X123E-NA003",
+      "question": "盒裝冰淇淋越打越蓬，美國的冰淇淋規格究竟怎麼限制空氣量？",
+      "existing_ids": [
+        "H55-002"
+      ],
+      "reason": "舊題已有把打入空氣造成的容量變化與法規限制連在一起的完整問答。",
+      "origin": "wave123-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave123-everyday-20261119.json"
+    },
+    {
+      "id": "X123D-NA01",
+      "question": "怎麼會兩張電影票之外，爆米花還要另外花那麼多錢？",
+      "reason": "原來如此 LEG-B38 已拆解票房分帳與爆米花毛利，本題保留兒童票資格與片級。",
+      "existing_ids": [
+        "LEG-B38"
+      ],
+      "origin": "wave123-research-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave123-research-20261119.json"
+    },
+    {
+      "id": "X123D-NA02",
+      "question": "在日本刷卡買電影票，機台問是否改用台幣付款又是什麼意思？",
+      "reason": "原來如此 LEG-T60 已收海外刷卡的動態貨幣轉換。本題只追同場可入場者與購票條件。",
+      "existing_ids": [
+        "LEG-T60"
+      ],
+      "origin": "wave123-research-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave123-research-20261119.json"
+    },
+    {
+      "id": "X123S-NA01",
+      "question": "看英仙座流星雨，天上的流星真的是從英仙座的星星飛過來嗎？",
+      "reason": "原來如此 N054 已用視覺輻射點與實際母天體回答這個問題，改採觀星行程的情境仍是同一個核心。",
+      "existing_ids": [
+        "N054"
+      ],
+      "origin": "wave123-sky-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave123-sky-20261119.json"
     },
     {
       "question": "只看恆星晃動，怎麼找看不見的行星？",
