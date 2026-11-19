@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-19-pool-7102",
+  "revision": "2026-11-19-pool-7147",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "categories": [
     "物理化學與日常材料",
@@ -12,46 +12,46 @@
     "建築交通與商業制度"
   ],
   "counts": {
-    "raw_records": 7566,
-    "canonical_questions": 7406,
-    "eligible_candidates": 7213,
-    "selected_candidates": 7102,
+    "raw_records": 7611,
+    "canonical_questions": 7451,
+    "eligible_candidates": 7258,
+    "selected_candidates": 7147,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 8050,
-    "current_research_source_urls": 5115,
-    "selected_source_urls": 6065,
-    "new_suggestions_not_added": 3424,
+    "source_urls": 8094,
+    "current_research_source_urls": 5159,
+    "selected_source_urls": 6109,
+    "new_suggestions_not_added": 3427,
     "high_similarity_pending": 0,
     "approved_scripts": 0,
     "by_category": {
       "物理化學與日常材料": {
-        "canonical": 1700,
-        "selected": 1670
+        "canonical": 1706,
+        "selected": 1676
       },
       "生物動物與植物": {
         "canonical": 1506,
         "selected": 1495
       },
       "地球天氣與太空": {
-        "canonical": 921,
-        "selected": 918
+        "canonical": 941,
+        "selected": 938
       },
       "數位科技與通訊工程": {
-        "canonical": 1359,
-        "selected": 1279
+        "canonical": 1375,
+        "selected": 1295
       },
       "飲食與廚房科學": {
-        "canonical": 466,
-        "selected": 460
+        "canonical": 468,
+        "selected": 462
       },
       "人體感官與日常行為": {
         "canonical": 560,
         "selected": 548
       },
       "建築交通與商業制度": {
-        "canonical": 894,
-        "selected": 732
+        "canonical": 895,
+        "selected": 733
       }
     }
   },
@@ -1885,6 +1885,18 @@
       "sha256": "3c689716876747a3baea086ff8adb4cb89413aa9b9c313f2a449894dd418c757"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave116-everyday-20261119.json",
+      "sha256": "0b78c134c997bbff09082d6153dd7716d3a3b86e57a8b7074d614b937dcd872e"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave116-phone-20261119.json",
+      "sha256": "2f8e641e5dd4b91edbc1d98ee4f7fa4d62be0dad13fa1c12a81f813218e0ab32"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave116-quake-20261119.json",
+      "sha256": "437820a8c0c2129f8b5760f4ea4512361150622785cab75bcafa91e227c18263"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json",
       "sha256": "c68fd10b96385e5620cb37a5ab85f05f4d99216b590fe1ac0cc61e0a8ba2aa70"
     },
@@ -3186,12 +3198,12 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "7547c2519572da5829717235b6fdb2cb712054a236228f6d0ac9cf8ee3917cef"
+      "sha256": "37773625754da2cc504dd56ac933fc0c6422836d26a143249cf88298417272f4"
     }
   ],
   "sources": {
     "file": "pool-sources.json",
-    "count": 8050
+    "count": 8094
   },
   "candidates": [
     {
@@ -117709,6 +117721,2043 @@
       "question_variants": [],
       "provenance_ids": [
         "K115-0006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0001",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "超商的三角飯糰看起來早就包好了，為什麼拆開時海苔還會喀嚓響？",
+      "mechanism_key": "x116.onigiri.split_inner_films_keep_nori_apart_until_opening",
+      "answer_target": "選一顆外膜中央有撕條、包海苔的三角飯糰。隔著透明外膜看，海苔好像貼緊了飯，其實中間還墊著兩片內膜，米飯的水分不會直接沾上海苔。沿中央撕開，再抽走左右包裝，內膜也跟著退出。這個時候，原本乾脆的海苔才真正貼上飯。",
+      "scope": "限海苔與米飯分裝的手捲式包裝；直接裹海苔的飯糰是另一種做法。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "撕最後一角，是在把米飯與海苔中間那層膜抽走。",
+        "visual": "從半透明剖面拍出海苔、內膜、飯的順序，再拍手沿中央拉撕條、向兩側抽離。把內膜上色，讓最後一片退出的瞬間看得清楚。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X116-S01 說明書【0003】內膜排列及開封動作；X116-S02 便利商店包裝與乾海苔段。",
+      "notes": "奇聞 N2302 追節分吃惠方卷的史料；此題追三角飯糰包裝隔開水分的構造。",
+      "origin": "wave116-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a175916a93eee965",
+          "origin": "wave116-everyday-20261119",
+          "locator": "X116-S01 說明書【0003】內膜排列及開封動作；X116-S02 便利商店包裝與乾海苔段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-7158b80dccc226fb",
+          "origin": "wave116-everyday-20261119",
+          "locator": "X116-S01 說明書【0003】內膜排列及開封動作；X116-S02 便利商店包裝與乾海苔段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0002",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "拆開一個保久乳紙盒，裡面那層銀色薄膜負責擋什麼？",
+      "mechanism_key": "x116.aseptic_carton.aluminium_barrier_blocks_light_oxygen_separate_from_polymer_seals",
+      "answer_target": "含鋁的無菌紙盒是一疊不同材料。紙板撐起盒子的形狀，聚乙烯層可以防潮、幫不同材質黏合，也把液體留在盒內。極薄的鋁層隔絕光和氧氣。盒子可以擋住光氧，內容物還要經過適當處理並在無菌條件下裝填，未開封常溫保存才有依據。",
+      "scope": "限使用鋁箔阻隔層的無菌紙盒；不同設計可能選用其他阻隔材料。保存方式與期限以實際產品為準。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "撐住紙盒、擋住牛奶和隔開光氧，分別靠疊在一起的不同層。",
+        "visual": "把空紙盒展平，以剖面放大紙板、薄鋁與塑膠層。用擠壓、液滴與光束三個動作，依序指認各層最容易看懂的功能。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X116-S03 冷藏與無菌包材差異、無菌紙盒如何製作兩則 FAQ，另見無菌充填條件。",
+      "notes": "D2230 問的是充填界面怎麼避免再污染；這張解的是盒壁內銀色阻隔層的用途。",
+      "origin": "wave116-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a19b9bb0696eb3de",
+          "origin": "wave116-everyday-20261119",
+          "locator": "X116-S03 冷藏與無菌包材差異、無菌紙盒如何製作兩則 FAQ，另見無菌充填條件。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0003",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "把汽水寶特瓶翻過來，瓶底為什麼有五個像花瓣的腳？",
+      "mechanism_key": "x116.carbonated_pet.petaloid_five_feet_for_pressure_and_standing",
+      "answer_target": "把空汽水瓶放在平桌上，接觸桌面的是底部幾個伸出的腳。日本製罐廠的耐壓型碳酸飲料瓶常把底部做成五腳花瓣形，同一個底形兼顧兩件事：封瓶時承受二氧化碳造成的內壓，放在平面上又能自己站穩。",
+      "scope": "只談製造商列出的五腳耐壓瓶設計。未主張腳數越多越耐壓，也不以底形推算可承受的壓力。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一組花瓣腳，裝著汽水時要扛壓，放上桌時要讓瓶子站穩。",
+        "visual": "從正下方拍五腳瓶底，再輕輕放到透明平板上，從板下看哪些位置真正接觸。側邊疊上密封汽水瓶內壓的示意。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X116-S04 產品說明中耐壓及自立性的五腳形底部一段。",
+      "notes": "已查花瓣底、五腳、耐壓瓶、petaloid 及碳酸飲料瓶；雙池未見同機制題。",
+      "origin": "wave116-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-4e7f9b20694d1d90",
+          "origin": "wave116-everyday-20261119",
+          "locator": "X116-S04 產品說明中耐壓及自立性的五腳形底部一段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0004",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "拉環是往上拉的，為什麼飲料罐的開口片反而往下翻？",
+      "mechanism_key": "x116.stay_on_tab.rivet_pivot_drives_nose_down_along_partial_score",
+      "answer_target": "先看拉環中間固定在罐蓋的那顆鉚釘。掀起拉環的手指在一端，支點在鉚釘附近，另一端的小鼻頭便向下壓。蓋上預先壓出的刻痕圈住開口片，受壓後沿線裂開。刻痕兩端之間留著一截相連的金屬，所以片子朝罐內翻，仍連在罐蓋上。",
+      "scope": "限有留片式拉環的飲料罐；整蓋掀走的食品罐採用不同開口形式。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一根手指往上，拉環另一頭卻往下。刻痕還故意留一截，讓開口片翻下去時仍有地方連著。",
+        "visual": "側面慢放拉環兩端的相反動作，接著切俯視，沿刻痕畫出開裂路徑，把未切斷的一小段留在畫面中央。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X116-S05 易開蓋加工與開口類型；X116-S06 背景技術中鉚釘支點、拉環前端與未閉合刻痕段。",
+      "notes": "K113-0516 提到拉環連在罐上的設計影響其他包裝；本題辨認開口片為何往下翻及留在蓋上。",
+      "origin": "wave116-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c7674d23e6240a55",
+          "origin": "wave116-everyday-20261119",
+          "locator": "X116-S05 易開蓋加工與開口類型；X116-S06 背景技術中鉚釘支點、拉環前端與未閉合刻痕段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-0f1a0318726343ad",
+          "origin": "wave116-everyday-20261119",
+          "locator": "X116-S05 易開蓋加工與開口類型；X116-S06 背景技術中鉚釘支點、拉環前端與未閉合刻痕段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0005",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "一疊紙的角落只剩一道壓痕，沒打洞、沒釘針，怎麼就訂住了？",
+      "mechanism_key": "x116.stapleless_press.press_lock_binds_sheets_and_releases_by_rubbing",
+      "answer_target": "這款壓接式訂書機用把手在紙角壓出一小塊結合處，幾張紙就靠紙與紙被壓合的這一塊連在一起。裝訂之後可以對著光看，紙上沒有穿孔。想分開時，用硬筆蓋在結合處來回磨壓，紙張就能拆開。",
+      "scope": "限原廠示範的 Harinacs Press。額定約五張一般影印紙，張數會受紙材影響。卡片不推測紙纖維之間的微觀鍵結。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "角落那道看得見的壓痕，就是幾頁紙接在一起的地方。",
+        "visual": "用三張不同顏色的紙示範，掀開紙角給觀眾看連結處，透光看有無通孔，最後以筆蓋磨壓同一處再分開。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X116-S07 Product Features 關於壓合與用硬物拆開的兩點，以及產品適用張數。",
+      "notes": "已比對無針釘、壓接式、stapleless 與訂紙等名稱。此題聚焦壓合型，沒有混入切出紙舌的另一種無針裝訂。",
+      "origin": "wave116-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e5de4d140a843173",
+          "origin": "wave116-everyday-20261119",
+          "locator": "X116-S07 Product Features 關於壓合與用硬物拆開的兩點，以及產品適用張數。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0006",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "不用轉筆，為什麼這支自動鉛筆的筆芯不容易磨出一個斜面？",
+      "mechanism_key": "x116.mechanical_pencil.stroke_actuated_gears_rotate_lead_for_even_wear",
+      "answer_target": "寫完一筆把筆尖提起，再落到紙上。這款自動鉛筆會利用按下和放開的動作，讓裡面的齒輪帶著筆芯轉過一小段。下一筆磨到的便是另一個方向。筆尖的磨耗分散在四周，即使手指一直握著原來的位置，也不會老把同一面磨平。",
+      "scope": "限以落筆、提筆驅動旋芯的設計；不指定每次角度，也不把長時間不提筆的線條等同於多個筆畫。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "寫字的人沒轉筆；每寫完一筆，筆裡的小齒輪就替下一筆換了一面。",
+        "visual": "固定相機與握筆角度，鉛芯剖面加一個顏色記號。每次提筆再落筆時放大記號的小幅位移，最後比較筆尖兩側磨耗。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X116-S08 Features 中齒輪隨筆芯接觸和抬離紙張而轉動的一段。",
+      "notes": "K113-0202、K113-0204 查石墨與筆芯硬度；本卡講筆芯受力後改變朝向的機械機構。",
+      "origin": "wave116-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-01934973c999961e",
+          "origin": "wave116-everyday-20261119",
+          "locator": "X116-S08 Features 中齒輪隨筆芯接觸和抬離紙張而轉動的一段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0007",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "修正帶在紙上一劃，為什麼白色留下了，帶子卻被收回去？",
+      "mechanism_key": "x116.correction_tape.pressure_adhesive_transfers_white_film_carrier_rewinds",
+      "answer_target": "修正帶原本就分成幾層。壓著筆誤劃過時，感壓膠把含白色顏料的薄膜貼到紙上，舊字被遮住，還能在膜上重寫。承載薄膜的底帶繼續往前走；在這款裝置裡，供帶輪透過齒輪帶動另一個捲輪，把用過的底帶收回盒內。",
+      "scope": "材料據原廠三層構造說明，捲輪據該廠的齒輪回收設計。卡片不指定所有底帶都透明，也不涵蓋液態修正液。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "紙面留的是修正膜；在盒內越收越厚的，是轉印完的底帶。",
+        "visual": "同時拍攝紙面白帶和透明外殼內的兩個捲輪；動畫在尖端把帶子剖開，一層貼紙，一層轉彎回到盒裡。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X116-S09 三層材料的第 1 至 3 點；X116-S10 供帶與收帶捲輪的第一段。",
+      "notes": "已查修正帶、立可帶、correction tape；雙池未見同機制。錄影不把白色覆蓋誤拍為墨水本身消失。",
+      "origin": "wave116-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-ebcd20c8899ac72f",
+          "origin": "wave116-everyday-20261119",
+          "locator": "X116-S09 三層材料的第 1 至 3 點；X116-S10 供帶與收帶捲輪的第一段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-4b3b70d6ed404e21",
+          "origin": "wave116-everyday-20261119",
+          "locator": "X116-S09 三層材料的第 1 至 3 點；X116-S10 供帶與收帶捲輪的第一段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0008",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "把剪刀一路合到尖端，有些剪刀的兩片刃為什麼看起來還是張著差不多的角度？",
+      "mechanism_key": "x116.curved_scissors.working_intersection_angle_maintained_along_blades",
+      "answer_target": "剪刀一合，兩片刃實際碰到紙的位置會從根部跑向尖端。在一款弧刃剪刀上，根部和尖端的刃口朝向各不相同。這些彎曲的刃線配在一起，能讓剪切點一路往前時，兩片刃在那一點的夾角仍維持在約三十度，幫助穩定夾住要剪的材料。",
+      "scope": "限原廠這種弧刃幾何。這個角度是剪切點上兩條刃線相交的角，不是單片刀刃磨出的斜面。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把手機暫停在兩片刃交會的那一點。手柄明明越合越緊，那裡的角度卻差不多。",
+        "visual": "鏡頭垂直俯拍剪紙。在開口較大、較小的兩格分別追到切點，在兩條刃線上各畫一條切線，疊合兩張局部圖對照。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X116-S11 直刃的滑移、約三十度工作角與弧刃設計三段。",
+      "notes": "P49-NA013 已排除把剪紙、剪布當不同機制。這張只比較剪切點上的刃線幾何。",
+      "origin": "wave116-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-646160177f709183",
+          "origin": "wave116-everyday-20261119",
+          "locator": "X116-S11 直刃的滑移、約三十度工作角與弧刃設計三段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0009",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "在雙北公車上刷了兩次卡，為什麼有時算一段票，有時算兩段？",
+      "mechanism_key": "x116.taipei_bus.section_fare_depends_on_crossing_buffer_not_tap_count",
+      "answer_target": "上車刷一次、下車再刷一次，記下的是這趟車從哪裡搭到哪裡。雙北採分段收費的市區公車，票算幾段要看你搭過幾個分段點或分段緩衝區。在只有一個緩衝區的兩段票路線，同在緩衝區前上下車是一段；從前面搭過整個緩衝區、在另一側下車要加一段。二者都會聽到上下車兩次感應聲。",
+      "scope": "限雙北市區公車一般分段票的單趟比較，示意路線只有一個分段緩衝區；不含月票、轉乘優惠或里程收費路線。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩聲嗶交代了哪站上、哪站下；要不要多算一段，得看這兩站在緩衝區哪一邊。",
+        "visual": "畫一條站牌線和一段帶狀緩衝區。兩名乘客同一站上車，一人在區前下車，一人搭到另一側；並排重播兩組刷卡聲，再指回各自走過的路線。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X116-S12 票價資訊開頭的跨區加段規則；X116-S13 第一段的上下車感應與段次收費。",
+      "notes": "K105-0113 問 2013 年票卡離線交易，LEG-A68 問感應供電。本卡比較起訖站在分段界線的位置與應計段數。",
+      "origin": "wave116-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a5af0703b7b97d7a",
+          "origin": "wave116-everyday-20261119",
+          "locator": "X116-S12 票價資訊開頭的跨區加段規則；X116-S13 第一段的上下車感應與段次收費。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-55507ef783a1627b",
+          "origin": "wave116-everyday-20261119",
+          "locator": "X116-S12 票價資訊開頭的跨區加段規則；X116-S13 第一段的上下車感應與段次收費。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0010",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "雨量站裡的小斗明明一直接滿又倒空，怎麼還記得下了多少雨？",
+      "mechanism_key": "x116.tipping_bucket.rainfall_accumulated_by_counting_calibrated_pulses",
+      "answer_target": "雨先經漏斗流進一對小斗其中一邊。這邊裝到設計的量就翻過去把水倒掉，另一邊同時接到漏斗下面，繼續接雨。每翻一次，開關會送出一個脈衝；把次數乘上每次代表的雨量，就得到記錄的累積雨量。留在記錄器裡的，是一次次翻動的訊號。",
+      "scope": "只適用傾斗式雨量儀。翻轉需要時間，強降雨時仍流入的水會影響精度；不把每次的標稱雨量說成所有機器都相同。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "這個雨量計會倒水，卻不會把剛剛那一斗的紀錄也倒掉。",
+        "visual": "從集水漏斗跟著一滴雨，看兩斗交替翻轉。每翻一次旁邊亮一小格，把計數器留在鏡頭裡，和已經倒空的小斗一起看。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X116-S14 傾斗式雨量儀與誤差與校正兩小節。",
+      "notes": "已查傾斗、翻斗、雨量計、雨量儀、tipping bucket；沒有把誤差、校正另算成一張。",
+      "origin": "wave116-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-6ab892230ae1cb1f",
+          "origin": "wave116-everyday-20261119",
+          "locator": "X116-S14 傾斗式雨量儀與誤差與校正兩小節。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0301",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "台灣手機寫成 +886 9xx xxx xxx，國內開頭的 0 原本負責什麼？",
+      "mechanism_key": "x116.phone.tw_mobile_prefix",
+      "answer_target": "對照台灣公報的 09 欄，國內格式可以拆成行動通信冠碼 0 和後面九個位置。業者示範從國外撥回時，在 +886 後接從 9 起算的九碼。",
+      "scope": "限台灣 09 開頭的一般行動門號。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把國內、國際兩行從右對齊，朋友整段有效號碼都還在。",
+        "visual": "旅客手寫兩行遮罩門號，紙片從右往左疊合。",
+        "seconds": [
+          20,
+          40
+        ]
+      },
+      "source_locator": "TEL116-S01 附件一表首「行動通信號碼」，0＋9BC＋DE＋FGHI 一列；TEL116-S15 第四章，行動通信網路號碼之國內書寫格式與國際書寫格式，0ABC DE FGHI 欄位說明；TEL116-S02 國際漫遊撥號方式／打回台灣，首段與提醒行",
+      "notes": "NET_TW_Number_Regulation；作者素材估重 1。",
+      "origin": "wave116-phone-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-213a8fa24af82479",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S01 附件一表首「行動通信號碼」，0＋9BC＋DE＋FGHI 一列；TEL116-S15 第四章，行動通信網路號碼之國內書寫格式與國際書寫格式，0ABC DE FGHI 欄位說明；TEL116-S02 國際漫遊撥號方式／打回台灣，首段與提醒行",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-0f8c61ed591c620b",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S01 附件一表首「行動通信號碼」，0＋9BC＋DE＋FGHI 一列；TEL116-S15 第四章，行動通信網路號碼之國內書寫格式與國際書寫格式，0ABC DE FGHI 欄位說明；TEL116-S02 國際漫遊撥號方式／打回台灣，首段與提醒行",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-fe5cb36801063eb6",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S01 附件一表首「行動通信號碼」，0＋9BC＋DE＋FGHI 一列；TEL116-S15 第四章，行動通信網路號碼之國內書寫格式與國際書寫格式，0ABC DE FGHI 欄位說明；TEL116-S02 國際漫遊撥號方式／打回台灣，首段與提醒行",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-phone-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0301"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0302",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "台灣大哥大的海外撥號示範，為什麼教人長按剛剛才刪掉的 0？",
+      "mechanism_key": "x116.phone.hold_zero",
+      "answer_target": "示範中的手機長按 0 鍵會叫出 + 符號，畫面上留下的是加號。短按輸入一個數字與長按叫出符號，是同一顆鍵的兩種動作。",
+      "scope": "台灣大哥大說明頁的手機操作例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最容易弄混的兩個 0，連按下去的動作都不同。",
+        "visual": "手指點一下和按住，輸入框分別只留一個字元。",
+        "seconds": [
+          10,
+          25
+        ]
+      },
+      "source_locator": "TEL116-S02 國際漫遊撥號方式／打回台灣，首段與提醒行",
+      "notes": "NET_TaiwanMobile；作者素材估重 0.5。",
+      "origin": "wave116-phone-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-fe5cb36801063eb6",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S02 國際漫遊撥號方式／打回台灣，首段與提醒行",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-phone-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0302"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0303",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "國際號碼最多十五碼，算的是哪一段？",
+      "mechanism_key": "x116.phone.destination_number_structure",
+      "answer_target": "ITU-T E.164 把地理區國際號碼切成國碼與國內有效號碼，建議上限十五個十進位數字。對台灣這張名片而言，三碼國碼加九碼有效號碼，共十二個數字。用來從當地撥出去的冠碼另計。",
+      "scope": "E.164 地理區號碼；不以長度推論有無用戶。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看名片就能算出哪幾個數字一起指向受話門號。",
+        "visual": "把三格與九格對齊，讓 + 留在格外。",
+        "seconds": [
+          20,
+          40
+        ]
+      },
+      "source_locator": "TEL116-S03 §§6.1、6.2.1–2、7.2、7.3.1–2；圖一；TEL116-S01 附件一表首「行動通信號碼」，0＋9BC＋DE＋FGHI 一列",
+      "notes": "NET_ITU_Number_Standards；作者素材估重 1。",
+      "origin": "wave116-phone-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-bb6065bcb237ca1d",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S03 §§6.1、6.2.1–2、7.2、7.3.1–2；圖一；TEL116-S01 附件一表首「行動通信號碼」，0＋9BC＋DE＋FGHI 一列",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-213a8fa24af82479",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S03 §§6.1、6.2.1–2、7.2、7.3.1–2；圖一；TEL116-S01 附件一表首「行動通信號碼」，0＋9BC＋DE＋FGHI 一列",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-phone-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0303"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0304",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "日本一部電話進入國際線要按 010，台灣朋友的名片也該加上這三碼嗎？",
+      "mechanism_key": "x116.phone.outbound_access",
+      "answer_target": "KDDI 的日本 IP 電話指南把 010 寫在目的地國碼前。它是這項服務的國際撥號入口，接著輸入的 886 和有效號碼仍指向同一支台灣手機。名片上的 + 留給撥出端依當地方式處理。",
+      "scope": "只舉 KDDI-IP Phone，未概括日本所有話機。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一張名片交給不同撥出端，目的門號穩定，取國際線的方式可以不同。",
+        "visual": "手機名片放在日本桌機旁，010 只放到桌機按鍵上。",
+        "seconds": [
+          20,
+          40
+        ]
+      },
+      "source_locator": "TEL116-S04 Using the service → International calls，第一句；TEL116-S13 §§1–2 名片同列國內與國際號碼；§7.1 國際冠碼符號、§7.2 括號",
+      "notes": "NET_KDDI；作者素材估重 1。",
+      "origin": "wave116-phone-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-7c4323c7d9c7b1cc",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S04 Using the service → International calls，第一句；TEL116-S13 §§1–2 名片同列國內與國際號碼；§7.1 國際冠碼符號、§7.2 括號",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-09ea4c042fe5ad61",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S04 Using the service → International calls，第一句；TEL116-S13 §§1–2 名片同列國內與國際號碼；§7.1 國際冠碼符號、§7.2 括號",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-phone-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0304"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0305",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "看到一張 +1 名片，為什麼還不能肯定對方申辦的是美國門號？",
+      "mechanism_key": "x116.phone.shared_country_code",
+      "answer_target": "北美編號計畫讓美國、加拿大等參與地區共用國碼 1。其後還有三碼地區碼及七碼本地號碼。一個國碼可以指向一套跨境共用的號碼計畫。",
+      "scope": "NANPA 管理範圍，舉美加一組。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "國碼能把來話帶進號碼計畫，僅看這碼未必連申辦國都能唯一決定。",
+        "visual": "在 +1 後遮住所有數字，並排加拿大、美國兩張旅客行李牌。",
+        "seconds": [
+          18,
+          35
+        ]
+      },
+      "source_locator": "TEL116-S05 About the NANP，前四段（20 個參與國家／地區、country code、NPA）",
+      "notes": "NET_NANPA；作者素材估重 1。",
+      "origin": "wave116-phone-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-1308ee96dc08cfa9",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S05 About the NANP，前四段（20 個參與國家／地區、country code、NPA）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-phone-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0305"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0306",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "旅館名片上的 +39 06…，刪掉 0 還算羅馬的地理號碼嗎？",
+      "mechanism_key": "x116.phone.rome_geographic_zero",
+      "answer_target": "義大利向 ITU 申報的表格將羅馬地區碼列作 06。編號計畫還把有效號碼起首 0 分給地理號碼，3 分給行動與個人服務。因此旅館的 0 要留在 +39 後面；義大利手機也沒有一個一概該補的 0。",
+      "scope": "只比較義大利地理及行動通信類別。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一欄的 0，在兩張名片上各有自己的身分。",
+        "visual": "給羅馬旅館的 +39 06… 蓋印，再把義大利行動服務放到 3 開頭那欄。",
+        "seconds": [
+          25,
+          50
+        ]
+      },
+      "source_locator": "TEL116-S07 第 1 頁 Overview 首碼表；明細表列 06 (NDC) / Area code of Roma；TEL116-S06 Numerazione dei servizi per prima cifra，0 與 3 兩列",
+      "notes": "NET_AGCOM_ItalyPlan；作者素材估重 1。",
+      "origin": "wave116-phone-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-35c9995df3e52d62",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S07 第 1 頁 Overview 首碼表；明細表列 06 (NDC) / Area code of Roma；TEL116-S06 Numerazione dei servizi per prima cifra，0 與 3 兩列",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-9773bfe73e574625",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S07 第 1 頁 Overview 首碼表；明細表列 06 (NDC) / Area code of Roma；TEL116-S06 Numerazione dei servizi per prima cifra，0 與 3 兩列",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-phone-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0306"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0307",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "1998 年，羅馬人打給同一區的鄰居，為什麼也得多按幾碼？",
+      "mechanism_key": "x116.phone.rome_local_dialling_change",
+      "answer_target": "當年營運工程文章記錄，6 月 19 日開始引進完整的固定電話撥號，同區也輸入 0、區碼其餘部分和用戶號碼；12 月 18 日起公共固網只採此法。文章的羅馬對照例也把國際格式從 +39 6… 改成 +39 06…。",
+      "scope": "義大利固網 1998 年變更，號碼均遮罩。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "朋友沒有搬家，出版社卻得一起改本地及國外讀者手上的電話簿。",
+        "visual": "同一本羅馬電話簿貼上六月、十二月兩張訂正條。",
+        "seconds": [
+          25,
+          55
+        ]
+      },
+      "source_locator": "TEL116-S08 紙本頁 104–105，§4.1 Numerazione per i servizi geografici 及 Tabella 2 的 Esempio nazionale／internazionale",
+      "notes": "NET_TelecomItalia_Engineering；作者素材估重 1。",
+      "origin": "wave116-phone-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-cd68da0c965bf626",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S08 紙本頁 104–105，§4.1 Numerazione per i servizi geografici 及 Tabella 2 的 Esempio nazionale／internazionale",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-phone-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0307"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0308",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "明明每通市內電話都多按幾碼，工程師怎麼會說反而多出號碼？",
+      "mechanism_key": "x116.phone.subscriber_capacity",
+      "answer_target": "先撥完整區碼後，後面的用戶號碼可以重新用 0 或 1 起頭。Telecom Italia 的作者估計，這讓區內約可回收兩成的號碼空間。原本開頭要留給其他撥號用法的數字，能在區碼後發給用戶。",
+      "scope": "兩成是當年文章估計的區內編號空間，不是新增客戶數。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "前面固定多撥區碼，後面的第一格反而多了兩種選擇。",
+        "visual": "將原先封住的 0、1 兩列號碼抽屜拉開。",
+        "seconds": [
+          25,
+          50
+        ]
+      },
+      "source_locator": "TEL116-S08 紙本頁 104–105，§4.1 Numerazione per i servizi geografici 及 Tabella 2 的 Esempio nazionale／internazionale",
+      "notes": "NET_TelecomItalia_Engineering；作者素材估重 1。",
+      "origin": "wave116-phone-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-cd68da0c965bf626",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S08 紙本頁 104–105，§4.1 Numerazione per i servizi geografici 及 Tabella 2 的 Esempio nazionale／internazionale",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-phone-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0308"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0309",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "台灣朋友換了一家電信公司，為什麼整張門號名片仍然能沿用？",
+      "mechanism_key": "x116.phone.portability",
+      "answer_target": "在台灣轉換業者繼續使用同類服務時，用戶可申請保留原號。業者透過號碼可攜集中式資料庫管理中心辦理移轉。即使讀出號段，單靠它也不能保證認出朋友現在的業者。",
+      "scope": "台灣跨業者攜碼，與暫時出國漫遊分開。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一人可以換長期服務業者，聯絡人手中的數字依舊相同。",
+        "visual": "把電信商名稱換掉，聯絡卡上的遮罩門號不動。",
+        "seconds": [
+          20,
+          40
+        ]
+      },
+      "source_locator": "TEL116-S14 號碼可攜服務及集中式資料庫管理中心兩段",
+      "notes": "NET_TW_Number_Regulation；作者素材估重 1。",
+      "origin": "wave116-phone-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-32ad71b7328f5d9b",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S14 號碼可攜服務及集中式資料庫管理中心兩段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-phone-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0309"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0310",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "把羅馬旅館號碼塞進一個整數欄位，那顆重要的 0 怎麼保存？",
+      "mechanism_key": "x116.phone.integer_leading_zero",
+      "answer_target": "整數本身無法區分以 0 起頭與刪掉這個 0 的寫法。Google 的 libphonenumber 保存數值時另設欄位，標記國際格式仍要保留的前導零，必要時還可記數量。",
+      "scope": "僅指這個公開號碼工具的資料結構，未推論手機原生通訊錄也採同樣格式。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "資料庫表面可能只剩一串數值，重新排成國際號碼時還需要另一項資訊。",
+        "visual": "把 +39 06… 拆成國碼、數值、留首零三張卡，再重新印回名片。",
+        "seconds": [
+          23,
+          48
+        ]
+      },
+      "source_locator": "TEL116-S10 PhoneNumber 之 national_number、italian_leading_zero 和 number_of_leading_zeros 欄位及註解；TEL116-S09 Parsing 之國碼／區碼歧義（Germany、Indonesia），以及 Why was the national prefix not removed",
+      "notes": "NET_Google_libphonenumber；作者素材估重 1。",
+      "origin": "wave116-phone-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-4d99d628ba32234a",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S10 PhoneNumber 之 national_number、italian_leading_zero 和 number_of_leading_zeros 欄位及註解；TEL116-S09 Parsing 之國碼／區碼歧義（Germany、Indonesia），以及 Why was the national prefix not removed",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e0e76b616650ce61",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S10 PhoneNumber 之 national_number、italian_leading_zero 和 number_of_leading_zeros 欄位及註解；TEL116-S09 Parsing 之國碼／區碼歧義（Germany、Indonesia），以及 Why was the national prefix not removed",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-phone-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0310"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0311",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "一串數字已經以 49 開頭，通訊錄工具怎麼還猜不到前兩碼是不是國碼？",
+      "mechanism_key": "x116.phone.ambiguous_digits",
+      "answer_target": "維護者用德國舉例。49 可作德國國碼，也可能是區內號碼的開頭，且容許的長度不只一種。給該工具德國脈絡時，若整串已是可能的區內號碼，工具不會逕把前兩碼拆作國碼；號碼已知是國際格式時，加在前面的 + 能說明意圖。",
+      "scope": "指 libphonenumber 的解析順序，不推論所有軟體或任何具體號碼。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "少掉加號，可能失去的是整串數字該從哪一層讀起的線索。",
+        "visual": "在相同的遮罩數字左側翻出一張 + 紙卡。",
+        "seconds": [
+          20,
+          45
+        ]
+      },
+      "source_locator": "TEL116-S09 Parsing 之國碼／區碼歧義（Germany、Indonesia），以及 Why was the national prefix not removed",
+      "notes": "NET_Google_libphonenumber；作者素材估重 1。",
+      "origin": "wave116-phone-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e0e76b616650ce61",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S09 Parsing 之國碼／區碼歧義（Germany、Indonesia），以及 Why was the national prefix not removed",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-phone-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0311"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0312",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "旅館房內電話要先取外線，那顆鍵要抄進朋友的號碼嗎？",
+      "mechanism_key": "x116.phone.private_exchange_access",
+      "answer_target": "RFC 3966 把某支電話實際要按的鍵與要找的聯絡號碼分開。旅館的私人交換機可能要求先按一個外線碼；帶著手機離開飯店，這個取線動作沒有理由跟著朋友的國際號碼搬家。",
+      "scope": "標準列舉的私人交換機情境，未指定任何真實旅館。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一位朋友的手機名片可以不動，房內電話卻可能需要額外的第一步。",
+        "visual": "單獨給房內電話一張「取外線」紙條，房門關上時紙條留在房內。",
+        "seconds": [
+          18,
+          38
+        ]
+      },
+      "source_locator": "TEL116-S11 §1 識別號碼與 dial string、§5.1.5 的 outside line、§5.3 Phone Extensions",
+      "notes": "NET_IETF_RFC3966；作者素材估重 1。",
+      "origin": "wave116-phone-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-4ca5e699bdeb3ae6",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S11 §1 識別號碼與 dial string、§5.1.5 的 outside line、§5.3 Phone Extensions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-phone-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0312"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0313",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "旅館官網同時印總機和分機，能直接把分機接在國際號碼最後面嗎？",
+      "mechanism_key": "x116.phone.extension",
+      "answer_target": "RFC 3966 的電話連結把交換機後方的分機另存在分機參數。總機的全球號碼與總機內要找的分機，各處理一段的選擇；把兩者黏成一串會改變對全球號碼的解讀。",
+      "scope": "限 RFC 3966 的 tel 連結表達，未假定各手機都可自動轉分機。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "取外線用在自己撥出的一端；分機則指向受話端總機後方的座席。",
+        "visual": "讓名片的「總機」「訂房分機」分居兩欄。",
+        "seconds": [
+          18,
+          38
+        ]
+      },
+      "source_locator": "TEL116-S11 §1 識別號碼與 dial string、§5.1.5 的 outside line、§5.3 Phone Extensions",
+      "notes": "NET_IETF_RFC3966；作者素材估重 0.75。",
+      "origin": "wave116-phone-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-4ca5e699bdeb3ae6",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S11 §1 識別號碼與 dial string、§5.1.5 的 outside line、§5.3 Phone Extensions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-phone-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0313"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0314",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "台灣朋友落地羅馬看到當地業者名稱，為什麼親友還是可以撥原號？",
+      "mechanism_key": "x116.phone.home_and_visited_network",
+      "answer_target": "以 GSMA 的一般漫遊說明，當地網路與原業者有漫遊協議，當地網路向原業者核對這位用戶可否漫遊。獲准後，這個台灣門號可使用當地網路服務。",
+      "scope": "假設保留原門號、可語音漫遊且當地有合作網路；不含改辦當地新號。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "手機顯示的網路名稱可以變，通訊錄裡的台灣號碼仍在原計畫裡。",
+        "visual": "同一張 09 名片旁的訊號欄改成「當地網路」，不放商標或實際帳號。",
+        "seconds": [
+          20,
+          42
+        ]
+      },
+      "source_locator": "TEL116-S12 How does my mobile work in foreign countries? 與 Is this different if I receive a call?",
+      "notes": "NET_GSMA_Roaming；作者素材估重 1。",
+      "origin": "wave116-phone-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-0fb28296d4505027",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S12 How does my mobile work in foreign countries? 與 Is this different if I receive a call?",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-phone-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0314"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0315",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "兩個台灣朋友都在羅馬，打給漫遊中的那一位，來電怎麼找到這裡？",
+      "mechanism_key": "x116.phone.incoming_roaming_number",
+      "answer_target": "GSMA 描述的一般來話先到受話者原屬網路，再由原網路轉往他正在漫遊的網路，由當地網路接通。即使來電也在羅馬，聯絡人的國際寫法仍是原來的 +886 9…。",
+      "scope": "典型語音來話的概念流程，不聲稱所有來電實際語音都繞行同一物理路線。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "相隔一條街的兩個人，彼此使用的號碼也未必屬於當地。",
+        "visual": "兩張人物紙偶同在羅馬；把「原業者」「當地業者」放到一張來電示意圖。",
+        "seconds": [
+          25,
+          50
+        ]
+      },
+      "source_locator": "TEL116-S12 How does my mobile work in foreign countries? 與 Is this different if I receive a call?",
+      "notes": "NET_GSMA_Roaming；作者素材估重 1。",
+      "origin": "wave116-phone-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-0fb28296d4505027",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S12 How does my mobile work in foreign countries? 與 Is this different if I receive a call?",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-phone-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0315"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0316",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "自己印名片，怎麼讓國內外朋友一眼看出哪個 0 該撥？",
+      "mechanism_key": "x116.phone.print_two_lines",
+      "answer_target": "ITU-T 的印刷建議把國內、國際寫法分行，讓對應數字上下對齊。括號在國內格式可提醒某些數字視情況才需撥，國際號碼建議不加括號。用這張版面重排，台灣手機的國際列從 +886 9… 起，羅馬地理號碼的國際列從 +39 06… 起。",
+      "scope": "ITU-T 印刷格式建議；兩地數字來自各自的號碼計畫，未收錄真實門號。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾可以親手把最初兩張名片排好，解答原本看似衝突的兩個 0。",
+        "visual": "白紙印兩行，從右對齊相同數字，把最後一張遮住的 0 紙片放回羅馬那欄。",
+        "seconds": [
+          20,
+          45
+        ]
+      },
+      "source_locator": "TEL116-S13 §§1–2 名片同列國內與國際號碼；§7.1 國際冠碼符號、§7.2 括號；TEL116-S01 附件一表首「行動通信號碼」，0＋9BC＋DE＋FGHI 一列；TEL116-S07 第 1 頁 Overview 首碼表；明細表列 06 (NDC) / Area code of Roma",
+      "notes": "NET_ITU_Number_Standards；作者素材估重 1。",
+      "origin": "wave116-phone-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-09ea4c042fe5ad61",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S13 §§1–2 名片同列國內與國際號碼；§7.1 國際冠碼符號、§7.2 括號；TEL116-S01 附件一表首「行動通信號碼」，0＋9BC＋DE＋FGHI 一列；TEL116-S07 第 1 頁 Overview 首碼表；明細表列 06 (NDC) / Area code of Roma",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-213a8fa24af82479",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S13 §§1–2 名片同列國內與國際號碼；§7.1 國際冠碼符號、§7.2 括號；TEL116-S01 附件一表首「行動通信號碼」，0＋9BC＋DE＋FGHI 一列；TEL116-S07 第 1 頁 Overview 首碼表；明細表列 06 (NDC) / Area code of Roma",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-35c9995df3e52d62",
+          "origin": "wave116-phone-20261119",
+          "locator": "TEL116-S13 §§1–2 名片同列國內與國際號碼；§7.1 國際冠碼符號、§7.2 括號；TEL116-S01 附件一表首「行動通信號碼」，0＋9BC＋DE＋FGHI 一列；TEL116-S07 第 1 頁 Overview 首碼表；明細表列 06 (NDC) / Area code of Roma",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-phone-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0316"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0201",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "0403 地震的報告寫「臺北市最大震度 5 弱」，木柵、陽明山也都量到 5 弱嗎？",
+      "mechanism_key": "x116.hualien_eew.station_maximum",
+      "answer_target": "編號 019 的臺北市地區下面有三筆：名為「臺北市」的測站 5 弱、木柵 4 級、陽明山 3 級。縣市標籤取的是測站最大值。把這張觀測表和手機警報地圖並排，兩張圖分別回答事後哪裡量到多大、當時哪裡達到預估門檻。",
+      "scope": "只談列出的測站，住處與體感無法由此回推。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一座城市，三個測站留下三個數字。",
+        "visual": "先給一個市界，放大後標出三個有站名的點。",
+        "seconds": [
+          15,
+          45
+        ]
+      },
+      "source_locator": "Q116-S01 表頭及各地震度／臺北市地區最大震度列；Q116-S02 第 1 頁「第 1 次」「第 2 次」名單、電視及網路兩段與末段發送條件",
+      "notes": "NET_TW_CENTRAL；作者素材估重 0.25，已分攤同網上限。",
+      "origin": "wave116-quake-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-05057811c0162193",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S01 表頭及各地震度／臺北市地區最大震度列；Q116-S02 第 1 頁「第 1 次」「第 2 次」名單、電視及網路兩段與末段發送條件",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-876430d3b21db92a",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S01 表頭及各地震度／臺北市地區最大震度列；Q116-S02 第 1 頁「第 1 次」「第 2 次」名單、電視及網路兩段與末段發送條件",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-quake-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0201"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0202",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "臺北捷運上的乘客，怎麼可能等車停了才知道外面發生地震？",
+      "mechanism_key": "x116.hualien_eew.train_passenger_account",
+      "answer_target": "中央社當天訪到一位正在搭文湖線的乘客。她描述行車時沒什麼感覺，車子停下後才從廣播知道發生地震。從她的車廂出發，同一場地震已有三條獨立線索：本人何時感覺到、車內廣播何時說、手機警報對哪裡發。這段經驗只記錄了前兩項的先後。",
+      "scope": "單一訪談，沒有車次、精確停車秒數或當事人手機紀錄。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "乘客先知道地震的途徑，可以是車廂廣播。",
+        "visual": "車窗外移動的景物停下來，車內廣播符號亮起。",
+        "seconds": [
+          15,
+          45
+        ]
+      },
+      "source_locator": "Q116-S09 署名陳怡璇的台北電稿，文湖線乘客受訪段",
+      "notes": "NET_WENHU_PASSENGER；作者素材估重 1，已分攤同網上限。",
+      "origin": "wave116-quake-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-62b8c49d5781839d",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S09 署名陳怡璇的台北電稿，文湖線乘客受訪段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-quake-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0202"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0203",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "0403 花蓮地震，第一張手機發送名單已經有彰化，為什麼第二張有新竹縣卻沒有新竹市？",
+      "mechanism_key": "x116.hualien_eew.dispatch_counties",
+      "answer_target": "按當日氣象署說明，07:58:18 向花蓮、宜蘭、南投、彰化四縣發布，07:58:24 另向臺中、苗栗、新竹縣、雲林、嘉義縣市、臺南、臺東八縣市發布。條件是估規模至少 5，且該地估震度至少 4。當時低估規模，有些地方預估未達 4；臺北市與新竹市均列在氣象署點名未發的七個縣市。",
+      "scope": "臺灣時間，按新聞稿重建兩批對象；沒有逐機發送或收件數。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同名的新竹縣和新竹市，兩份名單給出的答案不同。",
+        "visual": "先點亮四地，再用第二色添八地；放大新竹縣市邊界。",
+        "seconds": [
+          15,
+          45
+        ]
+      },
+      "source_locator": "Q116-S02 第 1 頁「第 1 次」「第 2 次」名單、電視及網路兩段與末段發送條件",
+      "notes": "NET_TW_CENTRAL；作者素材估重 0.5，已分攤同網上限。",
+      "origin": "wave116-quake-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-876430d3b21db92a",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S02 第 1 頁「第 1 次」「第 2 次」名單、電視及網路兩段與末段發送條件",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-quake-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0203"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0204",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "同一場花蓮地震，為什麼 6.2、6.8、7.2、7.1 都查得到？",
+      "mechanism_key": "x116.hualien_eew.magnitude_versions",
+      "answer_target": "兩次手機警報決策用的規模依次估為 6.2 和 6.8。當日氣象署事件說明寫的是 7.2，國家災害防救科技中心的彙整也保存那個版本。交通年鑑另交代，震源經人工定位後，規模修訂為 7.1，現存第 019 號事件頁也列 7.1。查得到較完整的事後數字，無法讓它成為當時已經可用的資料。",
+      "scope": "上述皆依臺灣機關所用規模，勿混用國外研究報的矩震級。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "警報、當日事件報告、後來年鑑各自保留了判讀當刻的版本。",
+        "visual": "在同一條時間軸上蓋四個版本章，事後兩份往右放。",
+        "seconds": [
+          15,
+          45
+        ]
+      },
+      "source_locator": "Q116-S03 第三章第六節 0403 說明、當年地震表編號 19；Q116-S02 第 1 頁「第 1 次」「第 2 次」名單、電視及網路兩段與末段發送條件；Q116-S01 表頭及各地震度／臺北市地區最大震度列；Q116-S05 第三章圖 3-1 與緊接的定位修訂段；第六章圖 6-1 前後的來源資訊",
+      "notes": "NET_TW_CENTRAL；作者素材估重 0.25，已分攤同網上限。",
+      "origin": "wave116-quake-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b105f75f362802d5",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S03 第三章第六節 0403 說明、當年地震表編號 19；Q116-S02 第 1 頁「第 1 次」「第 2 次」名單、電視及網路兩段與末段發送條件；Q116-S01 表頭及各地震度／臺北市地區最大震度列；Q116-S05 第三章圖 3-1 與緊接的定位修訂段；第六章圖 6-1 前後的來源資訊",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-876430d3b21db92a",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S03 第三章第六節 0403 說明、當年地震表編號 19；Q116-S02 第 1 頁「第 1 次」「第 2 次」名單、電視及網路兩段與末段發送條件；Q116-S01 表頭及各地震度／臺北市地區最大震度列；Q116-S05 第三章圖 3-1 與緊接的定位修訂段；第六章圖 6-1 前後的來源資訊",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-05057811c0162193",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S03 第三章第六節 0403 說明、當年地震表編號 19；Q116-S02 第 1 頁「第 1 次」「第 2 次」名單、電視及網路兩段與末段發送條件；Q116-S01 表頭及各地震度／臺北市地區最大震度列；Q116-S05 第三章圖 3-1 與緊接的定位修訂段；第六章圖 6-1 前後的來源資訊",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b875f06941a1c70d",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S03 第三章第六節 0403 說明、當年地震表編號 19；Q116-S02 第 1 頁「第 1 次」「第 2 次」名單、電視及網路兩段與末段發送條件；Q116-S01 表頭及各地震度／臺北市地區最大震度列；Q116-S05 第三章圖 3-1 與緊接的定位修訂段；第六章圖 6-1 前後的來源資訊",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-quake-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0204"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0205",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "第一批手機警報發出時，這場地震最劇烈的破裂階段已經過了嗎？",
+      "mechanism_key": "x116.hualien_eew.rupture_release_curve",
+      "answer_target": "按當日氣象署時刻，第一批發布距發震約八秒。Zheng 等人事後利用地震與地表形變記錄，反推整個震源的地震矩釋放率：偏好模型約第 12 秒達最高，約第 26 秒另有一峰，整體破裂約 48 秒。把兩條時序疊起來，第一批發送時連模型裡的第一個大峰都還沒到。",
+      "scope": "地震矩釋放率描述震源過程；高峰不等於臺北最搖的那一秒。兩份來源的秒數只作約略對時。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "發第一報時，斷層還在繼續破裂。",
+        "visual": "先遮住時間軸右半，依序揭開模型的兩個峰及尾端。",
+        "seconds": [
+          15,
+          45
+        ]
+      },
+      "source_locator": "Q116-S07 Results 的 Listric fault geometry、Temporospatial rupture kinematics、圖 2c / 圖 3；Q116-S02 第 1 頁「第 1 次」「第 2 次」名單、電視及網路兩段與末段發送條件",
+      "notes": "NET_ZHENG_RUPTURE；作者素材估重 1，已分攤同網上限。",
+      "origin": "wave116-quake-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-9f1348b2d61351a6",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S07 Results 的 Listric fault geometry、Temporospatial rupture kinematics、圖 2c / 圖 3；Q116-S02 第 1 頁「第 1 次」「第 2 次」名單、電視及網路兩段與末段發送條件",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-876430d3b21db92a",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S07 Results 的 Listric fault geometry、Temporospatial rupture kinematics、圖 2c / 圖 3；Q116-S02 第 1 頁「第 1 次」「第 2 次」名單、電視及網路兩段與末段發送條件",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-quake-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0205"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0206",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "事後用衛星看到地面移動，為什麼還得拿遠方地震站的波形一起拼？",
+      "mechanism_key": "x116.hualien_eew.retrospective_fault_geometry",
+      "answer_target": "同一場地震，近場地表位移對較淺處的斷層形狀敏感，遠震波形保留的低頻成分能約束整體破裂。研究者發現，最能配合地表資料的陡角度對某些方向的遠震波形吻合較差，於是比較隨深度改變傾角的斷層模型。事後那張完整破裂圖需要多種量測互相約束。",
+      "scope": "限本研究採用的近場大地測量、遠震 P 波及其偏好模型；不把模型當作攝影畫面或氣象署當時的算法。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "地表移了多少和地下怎麼裂，靠不同量測才能接起來。",
+        "visual": "上層放震後地表位移輪廓，下層放遠端波形，疊成地下剖面。",
+        "seconds": [
+          15,
+          45
+        ]
+      },
+      "source_locator": "Q116-S07 Results 的 Listric fault geometry、Temporospatial rupture kinematics、圖 2c / 圖 3",
+      "notes": "NET_ZHENG_RUPTURE；作者素材估重 0.75，已分攤同網上限。",
+      "origin": "wave116-quake-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-9f1348b2d61351a6",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S07 Results 的 Listric fault geometry、Temporospatial rupture kinematics、圖 2c / 圖 3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-quake-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0206"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0207",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "如果把前八秒的波形再算一次，會得到唯一一個規模嗎？",
+      "mechanism_key": "x116.hualien_eew.palert_replay_estimators",
+      "answer_target": "臺大研究者拿 P-Alert 測站的記錄回放，用三種波形指標估規模。約第八秒分別得到 6.9、6.3、6.8；到約第 35 秒，結果已集中在 7.1 到 7.3。三條曲線來自同一場地震、同一份研究；早期對訊號取什麼特徵，會改變估值。",
+      "scope": "圖 6；上述值是回放估算，不是三封真實警報，不能用來倒數臺北的手機。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一段波形、同一個時刻，研究團隊用不同讀法能得到三個估值。",
+        "visual": "先遮住三條線右端，定格第八秒，延長到第三十五秒再比較。",
+        "seconds": [
+          15,
+          45
+        ]
+      },
+      "source_locator": "Q116-S06 Results and discussion，圖 6 回放；圖 7 將測站依震央分南北另算",
+      "notes": "NET_TW_PALERT；作者素材估重 1，已分攤同網上限。",
+      "origin": "wave116-quake-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-2a6fbd698e886765",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S06 Results and discussion，圖 6 回放；圖 7 將測站依震央分南北另算",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-quake-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0207"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0208",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "同一場花蓮地震，把南邊和北邊的測站分開，哪一組會估得比較小？",
+      "mechanism_key": "x116.hualien_eew.palert_split_stations",
+      "answer_target": "研究者改用震央北、南兩群測站各自回算，南側群得到的規模明顯低於北側群。這次破裂主要朝北發展，作者認為分組差異顯示測站相對破裂方向會影響估算。沿用同一方法，只換進入計算的站，結果就不同。",
+      "scope": "圖 7 的現有站網分組實驗；無法據此認定氣象署漏發只有單一原因或北側測站永遠較準。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "哪一側的站先提供線索，會改變同一事件的早期樣貌。",
+        "visual": "固定同一震央，以兩色挑出兩群測站、各畫一條估算帶。",
+        "seconds": [
+          15,
+          45
+        ]
+      },
+      "source_locator": "Q116-S06 Results and discussion，圖 6 回放；圖 7 將測站依震央分南北另算",
+      "notes": "NET_TW_PALERT；作者素材估重 1，已分攤同網上限。",
+      "origin": "wave116-quake-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-2a6fbd698e886765",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S06 Results and discussion，圖 6 回放；圖 7 將測站依震央分南北另算",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-quake-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0208"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0209",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "氣象署對臺北市沒有發那兩則手機警報，北捷怎麼還能停車巡檢？",
+      "mechanism_key": "x116.hualien_eew.metro_mode",
+      "answer_target": "北捷說明其行控中心有自己的地震監測系統，依各儀器震度的眾數判斷；眾數達 4 級便啟動暫停行駛等措施。0403 當天確有全系統巡檢。手機名單看所在地預估，北捷值班員看自己的儀器與作業規定，同城的列車因此有另一條決策依據。",
+      "scope": "當天營運處置與作業規定有原文；不推測單一車次的觸發時刻。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "市內測站的最高值和北捷行控看的眾數，是不同的統計。",
+        "visual": "用五盞示意燈排列、圈出最常出現的顏色；明標為示意。",
+        "seconds": [
+          15,
+          45
+        ]
+      },
+      "source_locator": "Q116-S08 「4月3日地震後」「依據臺北捷運公司地震SOP規定」「臺北捷運目前」三段",
+      "notes": "NET_TAIPEI_MUNICIPAL；作者素材估重 1，已分攤同網上限。",
+      "origin": "wave116-quake-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-1cde8f8be4aafda7",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S08 「4月3日地震後」「依據臺北捷運公司地震SOP規定」「臺北捷運目前」三段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-quake-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0209"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0210",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "氣象署在 07:58:24 寄出，國震中心表裡為什麼還有另外兩個時間？",
+      "mechanism_key": "x116.hualien_eew.school_three_timestamps",
+      "answer_target": "國震中心的複合式地震速報表註明，氣象署 07:58:24 寄出，國震 07:58:28.058 收到；表格對應列的系統紀錄時間則是 07:58:28.084。該列涵蓋臺北市 12 區。正是因為這條管道保留了不同節點的時間，才能看清其中一刻不能代替另一刻。",
+      "scope": "只談國震報告紙頁 24 的這一筆；這三個時間都不是某支手機或教室的響鈴時間。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一筆訊息可以有寄出、收到、入表三個時鐘。",
+        "visual": "三張來源標籤排在同一條秒刻度，終點留在國震中心。",
+        "seconds": [
+          15,
+          45
+        ]
+      },
+      "source_locator": "Q116-S04 紙頁 5 地震概述、紙頁 24 複合式地震速報資訊，表及下方註記",
+      "notes": "NET_TW_CENTRAL；作者素材估重 0.25，已分攤同網上限。",
+      "origin": "wave116-quake-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-1aedc17689f46958",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S04 紙頁 5 地震概述、紙頁 24 複合式地震速報資訊，表及下方註記",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-quake-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0210"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0211",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "新北市沒列進那兩則手機警報，蘆洲國中的師生那天卻聽到了什麼？",
+      "mechanism_key": "x116.hualien_eew.classroom_two_announcements",
+      "answer_target": "校方記錄，警報聲響後學務處廣播請師生就地掩護，待劇烈搖晃趨緩才再次廣播疏散。學生的當日札記也描述了在教室裡的反應。校內響起的聲音與初次掩護、第二次疏散有現場紀錄，不能拿來反證新北市獲發手機警報。",
+      "scope": "所見是單校的行動順序。校方未確認校內第一個警聲由哪種硬體、哪個通報節點觸發。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "學生聽見的第二聲廣播，和第一聲要做的事不同。",
+        "visual": "空教室先響起就地掩護提示，稍後換成集合指引；不仿播真實告警聲。",
+        "seconds": [
+          15,
+          45
+        ]
+      },
+      "source_locator": "Q116-S10 首段校內應變、次段人數與集結及學生當日札記段",
+      "notes": "NET_LUZHOU_SCHOOL；作者素材估重 1，已分攤同網上限。",
+      "origin": "wave116-quake-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a9e2e59e19e7334b",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S10 首段校內應變、次段人數與集結及學生當日札記段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-quake-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0211"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0212",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "同一場地震，為什麼新聞台可以插播，機構也能收到網路通知，手機名單卻比較短？",
+      "mechanism_key": "x116.hualien_eew.route_thresholds",
+      "answer_target": "當日說明列出不同門檻。電視為規模 5 以上且任一縣市預估震度達 3；網路為規模 4.5 以上且任一縣市達 3；手機看當地預估是否達 4。當天氣象署在 18 秒及 24 秒經 12 家電視台對本島發送，並在 24 秒向 4,610 個機構對象發送網路通報，其中包含 4,173 所中小學。",
+      "scope": "此處 18、24 秒均指 07:58 的鐘面秒位。機構列入發送不代表每校都響、每人都聽見。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一份估算送進不同管道，發送條件和收件對象都會改變。",
+        "visual": "手機地圖、電視畫面、機構收件三欄，各放一行當日條件。",
+        "seconds": [
+          15,
+          45
+        ]
+      },
+      "source_locator": "Q116-S02 第 1 頁「第 1 次」「第 2 次」名單、電視及網路兩段與末段發送條件",
+      "notes": "NET_TW_CENTRAL；作者素材估重 0.25，已分攤同網上限。",
+      "origin": "wave116-quake-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-876430d3b21db92a",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S02 第 1 頁「第 1 次」「第 2 次」名單、電視及網路兩段與末段發送條件",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-quake-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0212"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0213",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "日本對同一場花蓮地震列出「82.8 秒」，那是誰可以提早反應的時間？",
+      "mechanism_key": "x116.hualien_eew.japan_detection_clock",
+      "answer_target": "日本氣象廳表列當地時間 08:58:33.9 檢知地震波，08:59:56.7 提供第一報。表內的 82.8 秒從日方檢知起算，到日方發報為止。算某地提前多久還要該地強搖的到時，若要知道個人情況，還缺當事人收到的時間。",
+      "scope": "同一地震在日本的獨立記錄。日本當地鐘面比臺灣快一小時；制度、時鐘及當地參照點各自標示。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "先看秒錶的起點和終點，才能解釋數字。",
+        "visual": "日本欄只畫檢知與發報兩根豎線，另外留出當地到時的位置。",
+        "seconds": [
+          15,
+          45
+        ]
+      },
+      "source_locator": "Q116-S12 （3）震度圖 3-1、（5）緊急地震速報の内容，表 5-1、5-2 與圖 5-1",
+      "notes": "NET_JMA；作者素材估重 1，已分攤同網上限。",
+      "origin": "wave116-quake-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e10a8488bfebf461",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S12 （3）震度圖 3-1、（5）緊急地震速報の内容，表 5-1、5-2 與圖 5-1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-quake-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0213"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0214",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "同一場地震，臺北市的預估偏低，隔海的與那國島也一定偏低嗎？",
+      "mechanism_key": "x116.hualien_eew.yonaguni_predicted_above_observed",
+      "answer_target": "日本氣象廳當次警報對與那國島列預估震度約 5 弱；事後月報記載，與那國町觀測到日方境內最大的震度 4。同一場地震可以在臺灣一地低估，日方另一次估算卻比當地實測高。這裡只比較各自預估與各自實測的高低方向。",
+      "scope": "日本數字使用日方制度，未做臺日震度換算。此例也不是比較哪個國家更準。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同場地震，兩個地方、兩套系統，估算誤差可以指向相反方向。",
+        "visual": "同一個海域事件，臺、日各畫一組本地預估與觀測箭頭。",
+        "seconds": [
+          15,
+          45
+        ]
+      },
+      "source_locator": "Q116-S12 （3）震度圖 3-1、（5）緊急地震速報の内容，表 5-1、5-2 與圖 5-1",
+      "notes": "NET_JMA；作者素材估重 1，已分攤同網上限。",
+      "origin": "wave116-quake-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e10a8488bfebf461",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S12 （3）震度圖 3-1、（5）緊急地震速報の内容，表 5-1、5-2 與圖 5-1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-quake-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0214"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0215",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "假設地震剛開始時就知道最終規模與位置，還會猜錯某個地方要搖多大嗎？",
+      "mechanism_key": "x116.hualien_eew.perfect_source_not_ground_motion",
+      "answer_target": "Minson 等人刻意給模型不可能的優待：從起點就知道最後的震源參數。當模型從震源推算各地搖晃，同樣的預測條件下實際地動仍有分散；部分地點會落在門檻的另一邊。這把震源估錯與由震源推估當地搖晃的兩層不確定性分開。",
+      "scope": "2019 年理想化地動預估研究；並非將模型套到臺北，也不能只靠它推定這次漏報的原因。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "就算把震源那一關答對，地點那一關仍可能答錯。",
+        "visual": "一個已知震源對一片地點，線條在門檻上下散開。",
+        "seconds": [
+          15,
+          45
+        ]
+      },
+      "source_locator": "Q116-S13 Introduction 的理想化假定，圖 1 與圖 7D 情境 a–c，以及各分母的敘述",
+      "notes": "NET_MINSON_USGS；作者素材估重 1，已分攤同網上限。",
+      "origin": "wave116-quake-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-03e5ce81345bb4bd",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S13 Introduction 的理想化假定，圖 1 與圖 7D 情境 a–c，以及各分母的敘述",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-quake-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0215"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0216",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "放寬預警條件後，「漏得比較少」和「多做幾次白工」為什麼能同時成立？",
+      "mechanism_key": "x116.hualien_eew.alert_tradeoff_denominators",
+      "answer_target": "在 Minson 等人圖 7D 的假想使用者與模擬地震中，放寬觸發條件使該地超過損害門檻的事件較少漏掉；同時，收到的警報裡，最後未達該地損害門檻的占比變高。兩個比例用的分母不同，一個從真的超標事件數起算，一個從警報數起算。",
+      "scope": "研究所說的 false alert 仍可對應真地震，只是該地沒達設定的損害門檻。此模擬不提供臺灣政策改制的成效數字。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一個問題從有地動的事件開始數，另一個從已發的警報開始數。",
+        "visual": "併排兩盤籌碼，一盤寫實際超標，一盤寫收到警報。",
+        "seconds": [
+          15,
+          45
+        ]
+      },
+      "source_locator": "Q116-S13 Introduction 的理想化假定，圖 1 與圖 7D 情境 a–c，以及各分母的敘述",
+      "notes": "NET_MINSON_USGS；作者素材估重 1，已分攤同網上限。",
+      "origin": "wave116-quake-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-03e5ce81345bb4bd",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S13 Introduction 的理想化假定，圖 1 與圖 7D 情境 a–c，以及各分母的敘述",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-quake-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0216"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0217",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "0403 後手機地震警報改條件，是不是從此只要預估震度 3 級就發？",
+      "mechanism_key": "x116.hualien_eew.september_branch",
+      "answer_target": "氣象署公告 2024 年 9 月 1 日增加一條路：估規模達 6.5，當地估震度達 3；原有估規模達 5 且當地估震度達 4 的條件繼續適用。把 6.2、6.8 放回規模那一欄，就看得到要進新條件還需要哪一筆地方估值。公告本身沒有逐機模擬四月的收件結果。",
+      "scope": "2024-09-01 起當時新增的 PWS 條件；本卡不保證回放原事件哪支手機一定收到。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "要看地區門檻，也要看這場地震估出來多大。",
+        "visual": "兩個並列的雙欄條件框，將九月生效日期明列在四月年表右方。",
+        "seconds": [
+          15,
+          45
+        ]
+      },
+      "source_locator": "Q116-S14 正文「發布條件新增預估規模6.5以上地震」、附圖第二頁並列兩條件",
+      "notes": "NET_TW_CENTRAL；作者素材估重 0.5，已分攤同網上限。",
+      "origin": "wave116-quake-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-72ef861952da1100",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S14 正文「發布條件新增預估規模6.5以上地震」、附圖第二頁並列兩條件",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-quake-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0217"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0218",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "0403 流傳的「早三分鐘就警告」影片，畫面上自己的時鐘說了什麼？",
+      "mechanism_key": "x116.hualien_eew.viral_clock",
+      "answer_target": "台灣事實查核中心追查了一段福建資訊終端影片的來源，並為截圖上的時鐘加框：畫面顯示 07:59，花蓮主震在 07:58 已發生。這個畫面不能支持網傳「發震前三分鐘」的說法，也不提供某支臺灣手機或當地地動的到時。",
+      "scope": "時鐘只到分鐘，不推精確延遲；只談此支已查證影片，手機告警地圖的問題仍回到臺灣當日發布記錄。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "剪掉秒數的畫面，也要先問它到底拍到了哪一地的哪個時鐘。",
+        "visual": "重畫分鐘鐘面，旁邊標明福建資訊終端與花蓮主震各自的來源。",
+        "seconds": [
+          15,
+          45
+        ]
+      },
+      "source_locator": "Q116-S15 查核點（一）至（三）、圖 3 影片擷圖與可讀時鐘",
+      "notes": "NET_TFC_VIDEO；作者素材估重 0.5，已分攤同網上限。",
+      "origin": "wave116-quake-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c13e6aff260a65f7",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S15 查核點（一）至（三）、圖 3 影片擷圖與可讀時鐘",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-quake-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0218"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K116-0219",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "臺北市地震應變中心在 8:01 和 8:13，各根據哪一個數字行動？",
+      "mechanism_key": "x116.hualien_eew.municipal_escalation",
+      "answer_target": "臺北市記錄，08:01 因地震速報系統顯示本市 4 級，災害應變中心啟動強化三級開設；08:13 依氣象署正式報告的本市 5 弱，提升為二級開設。沿著同一座城的時鐘看，市府接到後續震情、調整應變的時刻，與手機警報漏列臺北是兩件各有記錄的事。",
+      "scope": "限 0403 臺北市開設作業。應變層級與地震震度分開標示。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "即使手機發送名單空白，同一城市的應變紀錄仍會繼續更新。",
+        "visual": "同一張市府紀錄卡先蓋 08:01，再蓋 08:13，旁邊寫各有何依據。",
+        "seconds": [
+          15,
+          45
+        ]
+      },
+      "source_locator": "Q116-S11 紙頁 3，三、本市因應處置作為（一）災害應變中心開設，第 2–4 點",
+      "notes": "NET_TAIPEI_MUNICIPAL；作者素材估重 1，已分攤同網上限。",
+      "origin": "wave116-quake-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-0a4d3e2b103c33db",
+          "origin": "wave116-quake-20261119",
+          "locator": "Q116-S11 紙頁 3，三、本市因應處置作為（一）災害應變中心開設，第 2–4 點",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave116-quake-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K116-0219"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -326933,7 +328982,7 @@
   ],
   "raw_records": {
     "file": "pool-records.json",
-    "count": 7566
+    "count": 7611
   },
   "dedup": {
     "aliases": {
@@ -329387,6 +331436,51 @@
       "K115-0004": "K115-0004",
       "K115-0005": "K115-0005",
       "K115-0006": "K115-0006",
+      "K116-0001": "K116-0001",
+      "K116-0002": "K116-0002",
+      "K116-0003": "K116-0003",
+      "K116-0004": "K116-0004",
+      "K116-0005": "K116-0005",
+      "K116-0006": "K116-0006",
+      "K116-0007": "K116-0007",
+      "K116-0008": "K116-0008",
+      "K116-0009": "K116-0009",
+      "K116-0010": "K116-0010",
+      "K116-0301": "K116-0301",
+      "K116-0302": "K116-0302",
+      "K116-0303": "K116-0303",
+      "K116-0304": "K116-0304",
+      "K116-0305": "K116-0305",
+      "K116-0306": "K116-0306",
+      "K116-0307": "K116-0307",
+      "K116-0308": "K116-0308",
+      "K116-0309": "K116-0309",
+      "K116-0310": "K116-0310",
+      "K116-0311": "K116-0311",
+      "K116-0312": "K116-0312",
+      "K116-0313": "K116-0313",
+      "K116-0314": "K116-0314",
+      "K116-0315": "K116-0315",
+      "K116-0316": "K116-0316",
+      "K116-0201": "K116-0201",
+      "K116-0202": "K116-0202",
+      "K116-0203": "K116-0203",
+      "K116-0204": "K116-0204",
+      "K116-0205": "K116-0205",
+      "K116-0206": "K116-0206",
+      "K116-0207": "K116-0207",
+      "K116-0208": "K116-0208",
+      "K116-0209": "K116-0209",
+      "K116-0210": "K116-0210",
+      "K116-0211": "K116-0211",
+      "K116-0212": "K116-0212",
+      "K116-0213": "K116-0213",
+      "K116-0214": "K116-0214",
+      "K116-0215": "K116-0215",
+      "K116-0216": "K116-0216",
+      "K116-0217": "K116-0217",
+      "K116-0218": "K116-0218",
+      "K116-0219": "K116-0219",
       "D12001": "D12001",
       "D12002": "D12002",
       "D12003": "D12003",
@@ -371866,6 +373960,20 @@
         ]
       },
       {
+        "id": "K116-0209~K116-0211",
+        "a": "K116-0209",
+        "b": "K116-0211",
+        "question_score": 0.314,
+        "answer_score": 0.011,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "氣象署對臺北市沒有發那兩則手機警報，北捷怎麼還能停車巡檢？",
+          "新北市沒列進那兩則手機警報，蘆洲國中的師生那天卻聽到了什麼？"
+        ]
+      },
+      {
         "id": "K95-040~K98-040",
         "a": "K95-040",
         "b": "K98-040",
@@ -372160,6 +374268,20 @@
         ]
       },
       {
+        "id": "K116-0204~K116-0208",
+        "a": "K116-0204",
+        "b": "K116-0208",
+        "question_score": 0.273,
+        "answer_score": 0.031,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場花蓮地震，為什麼 6.2、6.8、7.2、7.1 都查得到？",
+          "同一場花蓮地震，把南邊和北邊的測站分開，哪一組會估得比較小？"
+        ]
+      },
+      {
         "id": "L233~L234",
         "a": "L233",
         "b": "L234",
@@ -372213,6 +374335,20 @@
         "questions": [
           "天生看不見、後來開刀重見光明的人，交叉手還會把先後說反嗎？",
           "一直到七歲才開刀看見的人，交叉手時還會被騙嗎？"
+        ]
+      },
+      {
+        "id": "K116-0204~K116-0213",
+        "a": "K116-0204",
+        "b": "K116-0213",
+        "question_score": 0.267,
+        "answer_score": 0.01,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場花蓮地震，為什麼 6.2、6.8、7.2、7.1 都查得到？",
+          "日本對同一場花蓮地震列出「82.8 秒」，那是誰可以提早反應的時間？"
         ]
       },
       {
@@ -372664,6 +374800,20 @@
         ]
       },
       {
+        "id": "K116-0208~K116-0213",
+        "a": "K116-0208",
+        "b": "K116-0213",
+        "question_score": 0.226,
+        "answer_score": 0.012,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場花蓮地震，把南邊和北邊的測站分開，哪一組會估得比較小？",
+          "日本對同一場花蓮地震列出「82.8 秒」，那是誰可以提早反應的時間？"
+        ]
+      },
+      {
         "id": "K90-033~K95-044",
         "a": "K90-033",
         "b": "K95-044",
@@ -372997,6 +375147,20 @@
         "questions": [
           "日本法規怎麼用車廂地板面積決定電梯至少要撐多重？",
           "台灣檢查電梯時，車廂面積和載重怎麼對？跟日本像不像？"
+        ]
+      },
+      {
+        "id": "K116-0303~K116-0313",
+        "a": "K116-0303",
+        "b": "K116-0313",
+        "question_score": 0.2,
+        "answer_score": 0.03,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "國際號碼最多十五碼，算的是哪一段？",
+          "旅館官網同時印總機和分機，能直接把分機接在國際號碼最後面嗎？"
         ]
       },
       {
@@ -373714,6 +375878,20 @@
         ]
       },
       {
+        "id": "K116-0312~K116-0313",
+        "a": "K116-0312",
+        "b": "K116-0313",
+        "question_score": 0.083,
+        "answer_score": 0.176,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館房內電話要先取外線，那顆鍵要抄進朋友的號碼嗎？",
+          "旅館官網同時印總機和分機，能直接把分機接在國際號碼最後面嗎？"
+        ]
+      },
+      {
         "id": "L129~L131",
         "a": "L129",
         "b": "L131",
@@ -373767,6 +375945,20 @@
         "questions": [
           "同樣在 190 °C 空燒，不同的油要多久才走到 25% 極性物那條劣化刻度？",
           "油裡原本的天然抗氧化成分，在熱油裡撐得了多久？"
+        ]
+      },
+      {
+        "id": "K116-0201~K116-0217",
+        "a": "K116-0201",
+        "b": "K116-0217",
+        "question_score": 0.175,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 地震的報告寫「臺北市最大震度 5 弱」，木柵、陽明山也都量到 5 弱嗎？",
+          "0403 後手機地震警報改條件，是不是從此只要預估震度 3 級就發？"
         ]
       },
       {
@@ -374075,6 +376267,20 @@
         "questions": [
           "台灣的醫用口罩和 N95，各歸哪一號國家標準？",
           "台灣的外科口罩與防塵口罩，檢驗項目差在哪？"
+        ]
+      },
+      {
+        "id": "K116-0203~K116-0217",
+        "a": "K116-0203",
+        "b": "K116-0217",
+        "question_score": 0.167,
+        "answer_score": 0.127,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 花蓮地震，第一張手機發送名單已經有彰化，為什麼第二張有新竹縣卻沒有新竹市？",
+          "0403 後手機地震警報改條件，是不是從此只要預估震度 3 級就發？"
         ]
       },
       {
@@ -374526,6 +376732,34 @@
         ]
       },
       {
+        "id": "K116-0304~K116-0309",
+        "a": "K116-0304",
+        "b": "K116-0309",
+        "question_score": 0.154,
+        "answer_score": 0.042,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本一部電話進入國際線要按 010，台灣朋友的名片也該加上這三碼嗎？",
+          "台灣朋友換了一家電信公司，為什麼整張門號名片仍然能沿用？"
+        ]
+      },
+      {
+        "id": "K116-0304~K116-0312",
+        "a": "K116-0304",
+        "b": "K116-0312",
+        "question_score": 0.154,
+        "answer_score": 0.066,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本一部電話進入國際線要按 010，台灣朋友的名片也該加上這三碼嗎？",
+          "旅館房內電話要先取外線，那顆鍵要抄進朋友的號碼嗎？"
+        ]
+      },
+      {
         "id": "L070~L072",
         "a": "L070",
         "b": "L072",
@@ -374691,6 +376925,20 @@
         "questions": [
           "發票上那串英文加數字，是店家自己編的嗎？",
           "電子發票的號碼又是誰給的？申請太多用不完會怎樣？"
+        ]
+      },
+      {
+        "id": "K116-0212~K116-0214",
+        "a": "K116-0212",
+        "b": "K116-0214",
+        "question_score": 0.151,
+        "answer_score": 0.055,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場地震，為什麼新聞台可以插播，機構也能收到網路通知，手機名單卻比較短？",
+          "同一場地震，臺北市的預估偏低，隔海的與那國島也一定偏低嗎？"
         ]
       },
       {
@@ -375002,6 +377250,20 @@
         ]
       },
       {
+        "id": "K116-0208~K116-0212",
+        "a": "K116-0208",
+        "b": "K116-0212",
+        "question_score": 0.145,
+        "answer_score": 0.023,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場花蓮地震，把南邊和北邊的測站分開，哪一組會估得比較小？",
+          "同一場地震，為什麼新聞台可以插播，機構也能收到網路通知，手機名單卻比較短？"
+        ]
+      },
+      {
         "id": "E74-004~E74-005",
         "a": "E74-004",
         "b": "E74-005",
@@ -375055,6 +377317,34 @@
         "questions": [
           "在台灣，誰有權檢查你的託運行李？法源寫在哪裡？",
           "在成田機場，託運行李被發現有問題時，一定會叫你到場嗎？"
+        ]
+      },
+      {
+        "id": "K116-0204~K116-0214",
+        "a": "K116-0204",
+        "b": "K116-0214",
+        "question_score": 0.143,
+        "answer_score": 0.041,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場花蓮地震，為什麼 6.2、6.8、7.2、7.1 都查得到？",
+          "同一場地震，臺北市的預估偏低，隔海的與那國島也一定偏低嗎？"
+        ]
+      },
+      {
+        "id": "K116-0212~K116-0213",
+        "a": "K116-0212",
+        "b": "K116-0213",
+        "question_score": 0.143,
+        "answer_score": 0.033,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場地震，為什麼新聞台可以插播，機構也能收到網路通知，手機名單卻比較短？",
+          "日本對同一場花蓮地震列出「82.8 秒」，那是誰可以提早反應的時間？"
         ]
       },
       {
@@ -375296,6 +377586,20 @@
         ]
       },
       {
+        "id": "K116-0203~K116-0205",
+        "a": "K116-0203",
+        "b": "K116-0205",
+        "question_score": 0.138,
+        "answer_score": 0.06,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 花蓮地震，第一張手機發送名單已經有彰化，為什麼第二張有新竹縣卻沒有新竹市？",
+          "第一批手機警報發出時，這場地震最劇烈的破裂階段已經過了嗎？"
+        ]
+      },
+      {
         "id": "L128~L129",
         "a": "L128",
         "b": "L129",
@@ -375534,6 +377838,34 @@
         ]
       },
       {
+        "id": "K116-0203~K116-0212",
+        "a": "K116-0203",
+        "b": "K116-0212",
+        "question_score": 0.098,
+        "answer_score": 0.133,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 花蓮地震，第一張手機發送名單已經有彰化，為什麼第二張有新竹縣卻沒有新竹市？",
+          "同一場地震，為什麼新聞台可以插播，機構也能收到網路通知，手機名單卻比較短？"
+        ]
+      },
+      {
+        "id": "K116-0306~K116-0310",
+        "a": "K116-0306",
+        "b": "K116-0310",
+        "question_score": 0.133,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館名片上的 +39 06…，刪掉 0 還算羅馬的地理號碼嗎？",
+          "把羅馬旅館號碼塞進一個整數欄位，那顆重要的 0 怎麼保存？"
+        ]
+      },
+      {
         "id": "L013~L017",
         "a": "L013",
         "b": "L017",
@@ -375646,6 +377978,20 @@
         ]
       },
       {
+        "id": "K116-0201~K116-0203",
+        "a": "K116-0201",
+        "b": "K116-0203",
+        "question_score": 0.131,
+        "answer_score": 0.055,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 地震的報告寫「臺北市最大震度 5 弱」，木柵、陽明山也都量到 5 弱嗎？",
+          "0403 花蓮地震，第一張手機發送名單已經有彰化，為什麼第二張有新竹縣卻沒有新竹市？"
+        ]
+      },
+      {
         "id": "E2052~E2133",
         "a": "E2052",
         "b": "E2133",
@@ -375671,6 +378017,48 @@
         "questions": [
           "雲裡沒有電線，閃電的第一下是什麼？",
           "同一場雷雨裡，有多少閃電是這樣開始的？打到地面的那種也是嗎？"
+        ]
+      },
+      {
+        "id": "K116-0210~K116-0219",
+        "a": "K116-0210",
+        "b": "K116-0219",
+        "question_score": 0.039,
+        "answer_score": 0.13,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "氣象署在 07:58:24 寄出，國震中心表裡為什麼還有另外兩個時間？",
+          "臺北市地震應變中心在 8:01 和 8:13，各根據哪一個數字行動？"
+        ]
+      },
+      {
+        "id": "K116-0309~K116-0314",
+        "a": "K116-0309",
+        "b": "K116-0314",
+        "question_score": 0.13,
+        "answer_score": 0.103,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣朋友換了一家電信公司，為什麼整張門號名片仍然能沿用？",
+          "台灣朋友落地羅馬看到當地業者名稱，為什麼親友還是可以撥原號？"
+        ]
+      },
+      {
+        "id": "K116-0309~K116-0315",
+        "a": "K116-0309",
+        "b": "K116-0315",
+        "question_score": 0.13,
+        "answer_score": 0.015,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣朋友換了一家電信公司，為什麼整張門號名片仍然能沿用？",
+          "兩個台灣朋友都在羅馬，打給漫遊中的那一位，來電怎麼找到這裡？"
         ]
       },
       {
@@ -375797,6 +378185,20 @@
         "questions": [
           "同一份通訊錄，換個語言排序為什麼就變了？",
           "同一個 i 改成大寫，為什麼不同語言可能多出一個點？"
+        ]
+      },
+      {
+        "id": "K116-0204~K116-0212",
+        "a": "K116-0204",
+        "b": "K116-0212",
+        "question_score": 0.128,
+        "answer_score": 0.057,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場花蓮地震，為什麼 6.2、6.8、7.2、7.1 都查得到？",
+          "同一場地震，為什麼新聞台可以插播，機構也能收到網路通知，手機名單卻比較短？"
         ]
       },
       {
@@ -376220,6 +378622,48 @@
         ]
       },
       {
+        "id": "K116-0203~K116-0204",
+        "a": "K116-0203",
+        "b": "K116-0204",
+        "question_score": 0.12,
+        "answer_score": 0.066,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 花蓮地震，第一張手機發送名單已經有彰化，為什麼第二張有新竹縣卻沒有新竹市？",
+          "同一場花蓮地震，為什麼 6.2、6.8、7.2、7.1 都查得到？"
+        ]
+      },
+      {
+        "id": "K116-0205~K116-0209",
+        "a": "K116-0205",
+        "b": "K116-0209",
+        "question_score": 0.12,
+        "answer_score": 0.021,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "第一批手機警報發出時，這場地震最劇烈的破裂階段已經過了嗎？",
+          "氣象署對臺北市沒有發那兩則手機警報，北捷怎麼還能停車巡檢？"
+        ]
+      },
+      {
+        "id": "K116-0214~K116-0219",
+        "a": "K116-0214",
+        "b": "K116-0219",
+        "question_score": 0.12,
+        "answer_score": 0.056,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場地震，臺北市的預估偏低，隔海的與那國島也一定偏低嗎？",
+          "臺北市地震應變中心在 8:01 和 8:13，各根據哪一個數字行動？"
+        ]
+      },
+      {
         "id": "L70-025~L73-006",
         "a": "L70-025",
         "b": "L73-006",
@@ -376472,6 +378916,20 @@
         ]
       },
       {
+        "id": "K116-0210~K116-0213",
+        "a": "K116-0210",
+        "b": "K116-0213",
+        "question_score": 0.077,
+        "answer_score": 0.115,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "氣象署在 07:58:24 寄出，國震中心表裡為什麼還有另外兩個時間？",
+          "日本對同一場花蓮地震列出「82.8 秒」，那是誰可以提早反應的時間？"
+        ]
+      },
+      {
         "id": "A5015~A5016",
         "a": "A5015",
         "b": "A5016",
@@ -376595,6 +379053,34 @@
         "questions": [
           "三條像口哨的聲音，怎麼有人聽得出整句話？",
           "如果把人聲換成幾道沙沙聲，留住什麼才聽得出字？"
+        ]
+      },
+      {
+        "id": "K116-0201~K116-0214",
+        "a": "K116-0201",
+        "b": "K116-0214",
+        "question_score": 0.113,
+        "answer_score": 0.072,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 地震的報告寫「臺北市最大震度 5 弱」，木柵、陽明山也都量到 5 弱嗎？",
+          "同一場地震，臺北市的預估偏低，隔海的與那國島也一定偏低嗎？"
+        ]
+      },
+      {
+        "id": "K116-0205~K116-0211",
+        "a": "K116-0205",
+        "b": "K116-0211",
+        "question_score": 0.113,
+        "answer_score": 0.032,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "第一批手機警報發出時，這場地震最劇烈的破裂階段已經過了嗎？",
+          "新北市沒列進那兩則手機警報，蘆洲國中的師生那天卻聽到了什麼？"
         ]
       },
       {
@@ -376749,6 +379235,20 @@
         "questions": [
           "大檔案還沒收完，怎麼就能知道前半段有被改動？",
           "連線突然沒資料了，怎麼分辨是傳完還是被截斷？"
+        ]
+      },
+      {
+        "id": "K116-0205~K116-0217",
+        "a": "K116-0205",
+        "b": "K116-0217",
+        "question_score": 0.111,
+        "answer_score": 0.031,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "第一批手機警報發出時，這場地震最劇烈的破裂階段已經過了嗎？",
+          "0403 後手機地震警報改條件，是不是從此只要預估震度 3 級就發？"
         ]
       },
       {
@@ -376934,6 +379434,48 @@
         ]
       },
       {
+        "id": "K116-0201~K116-0219",
+        "a": "K116-0201",
+        "b": "K116-0219",
+        "question_score": 0.109,
+        "answer_score": 0.091,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 地震的報告寫「臺北市最大震度 5 弱」，木柵、陽明山也都量到 5 弱嗎？",
+          "臺北市地震應變中心在 8:01 和 8:13，各根據哪一個數字行動？"
+        ]
+      },
+      {
+        "id": "K116-0205~K116-0212",
+        "a": "K116-0205",
+        "b": "K116-0212",
+        "question_score": 0.109,
+        "answer_score": 0.061,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "第一批手機警報發出時，這場地震最劇烈的破裂階段已經過了嗎？",
+          "同一場地震，為什麼新聞台可以插播，機構也能收到網路通知，手機名單卻比較短？"
+        ]
+      },
+      {
+        "id": "K116-0217~K116-0218",
+        "a": "K116-0217",
+        "b": "K116-0218",
+        "question_score": 0.109,
+        "answer_score": 0.011,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 後手機地震警報改條件，是不是從此只要預估震度 3 級就發？",
+          "0403 流傳的「早三分鐘就警告」影片，畫面上自己的時鐘說了什麼？"
+        ]
+      },
+      {
         "id": "K66-001~K66-011",
         "a": "K66-001",
         "b": "K66-011",
@@ -377029,6 +379571,34 @@
         "questions": [
           "植物要先『算出』137.5 度的黃金角，才排得出費氏數嗎？",
           "黃金角是為了讓葉子曬到最多陽光嗎？"
+        ]
+      },
+      {
+        "id": "K116-0201~K116-0218",
+        "a": "K116-0201",
+        "b": "K116-0218",
+        "question_score": 0.107,
+        "answer_score": 0.012,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 地震的報告寫「臺北市最大震度 5 弱」，木柵、陽明山也都量到 5 弱嗎？",
+          "0403 流傳的「早三分鐘就警告」影片，畫面上自己的時鐘說了什麼？"
+        ]
+      },
+      {
+        "id": "K116-0212~K116-0217",
+        "a": "K116-0212",
+        "b": "K116-0217",
+        "question_score": 0.07,
+        "answer_score": 0.107,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場地震，為什麼新聞台可以插播，機構也能收到網路通知，手機名單卻比較短？",
+          "0403 後手機地震警報改條件，是不是從此只要預估震度 3 級就發？"
         ]
       },
       {
@@ -377242,6 +379812,20 @@
         ]
       },
       {
+        "id": "K116-0203~K116-0208",
+        "a": "K116-0203",
+        "b": "K116-0208",
+        "question_score": 0.103,
+        "answer_score": 0.011,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 花蓮地震，第一張手機發送名單已經有彰化，為什麼第二張有新竹縣卻沒有新竹市？",
+          "同一場花蓮地震，把南邊和北邊的測站分開，哪一組會估得比較小？"
+        ]
+      },
+      {
         "id": "M2016~P268",
         "a": "P268",
         "b": "M2016",
@@ -377281,6 +379865,34 @@
         "questions": [
           "酸鹼一滴滴加進去，為什麼快到某個點時 pH 會突然跳很大？",
           "酸鹼剛好依比例反應完，pH 就一定等於七嗎？"
+        ]
+      },
+      {
+        "id": "K116-0203~K116-0213",
+        "a": "K116-0203",
+        "b": "K116-0213",
+        "question_score": 0.102,
+        "answer_score": 0.044,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 花蓮地震，第一張手機發送名單已經有彰化，為什麼第二張有新竹縣卻沒有新竹市？",
+          "日本對同一場花蓮地震列出「82.8 秒」，那是誰可以提早反應的時間？"
+        ]
+      },
+      {
+        "id": "K116-0203~K116-0218",
+        "a": "K116-0203",
+        "b": "K116-0218",
+        "question_score": 0.102,
+        "answer_score": 0.043,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 花蓮地震，第一張手機發送名單已經有彰化，為什麼第二張有新竹縣卻沒有新竹市？",
+          "0403 流傳的「早三分鐘就警告」影片，畫面上自己的時鐘說了什麼？"
         ]
       },
       {
@@ -377508,6 +380120,20 @@
         ]
       },
       {
+        "id": "K116-0309~K116-0316",
+        "a": "K116-0309",
+        "b": "K116-0316",
+        "question_score": 0.098,
+        "answer_score": 0.027,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣朋友換了一家電信公司，為什麼整張門號名片仍然能沿用？",
+          "自己印名片，怎麼讓國內外朋友一眼看出哪個 0 該撥？"
+        ]
+      },
+      {
         "id": "K66-007~K66-011",
         "a": "K66-007",
         "b": "K66-011",
@@ -377645,6 +380271,20 @@
         "questions": [
           "測量船明明停住，儀器為什麼說它正往上游走？",
           "河床真的在動的時候，量到的流量會被吃掉多少？"
+        ]
+      },
+      {
+        "id": "K116-0203~K116-0210",
+        "a": "K116-0203",
+        "b": "K116-0210",
+        "question_score": 0,
+        "answer_score": 0.095,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 花蓮地震，第一張手機發送名單已經有彰化，為什麼第二張有新竹縣卻沒有新竹市？",
+          "氣象署在 07:58:24 寄出，國震中心表裡為什麼還有另外兩個時間？"
         ]
       },
       {
@@ -378068,6 +380708,20 @@
         ]
       },
       {
+        "id": "K116-0305~K116-0309",
+        "a": "K116-0305",
+        "b": "K116-0309",
+        "question_score": 0.091,
+        "answer_score": 0.034,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "看到一張 +1 名片，為什麼還不能肯定對方申辦的是美國門號？",
+          "台灣朋友換了一家電信公司，為什麼整張門號名片仍然能沿用？"
+        ]
+      },
+      {
         "id": "K66-001~K66-005",
         "a": "K66-001",
         "b": "K66-005",
@@ -378390,6 +381044,62 @@
         ]
       },
       {
+        "id": "K116-0202~K116-0209",
+        "a": "K116-0202",
+        "b": "K116-0209",
+        "question_score": 0.087,
+        "answer_score": 0.032,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北捷運上的乘客，怎麼可能等車停了才知道外面發生地震？",
+          "氣象署對臺北市沒有發那兩則手機警報，北捷怎麼還能停車巡檢？"
+        ]
+      },
+      {
+        "id": "K116-0204~K116-0219",
+        "a": "K116-0204",
+        "b": "K116-0219",
+        "question_score": 0.045,
+        "answer_score": 0.087,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場花蓮地震，為什麼 6.2、6.8、7.2、7.1 都查得到？",
+          "臺北市地震應變中心在 8:01 和 8:13，各根據哪一個數字行動？"
+        ]
+      },
+      {
+        "id": "K116-0206~K116-0207",
+        "a": "K116-0206",
+        "b": "K116-0207",
+        "question_score": 0.087,
+        "answer_score": 0.087,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "事後用衛星看到地面移動，為什麼還得拿遠方地震站的波形一起拼？",
+          "如果把前八秒的波形再算一次，會得到唯一一個規模嗎？"
+        ]
+      },
+      {
+        "id": "K116-0301~K116-0302",
+        "a": "K116-0301",
+        "b": "K116-0302",
+        "question_score": 0.087,
+        "answer_score": 0.02,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣手機寫成 +886 9xx xxx xxx，國內開頭的 0 原本負責什麼？",
+          "台灣大哥大的海外撥號示範，為什麼教人長按剛剛才刪掉的 0？"
+        ]
+      },
+      {
         "id": "K66-005~K66-011",
         "a": "K66-005",
         "b": "K66-011",
@@ -378600,6 +381310,20 @@
         ]
       },
       {
+        "id": "K116-0207~K116-0208",
+        "a": "K116-0207",
+        "b": "K116-0208",
+        "question_score": 0,
+        "answer_score": 0.084,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把前八秒的波形再算一次，會得到唯一一個規模嗎？",
+          "同一場花蓮地震，把南邊和北邊的測站分開，哪一組會估得比較小？"
+        ]
+      },
+      {
         "id": "E2006~E2021",
         "a": "E2006",
         "b": "E2021",
@@ -378639,6 +381363,48 @@
         "questions": [
           "久沒開的網站，離線資料為什麼可能自己不見？",
           "瀏覽器回報用了多少空間，為什麼可能只是估計值？"
+        ]
+      },
+      {
+        "id": "K116-0202~K116-0219",
+        "a": "K116-0202",
+        "b": "K116-0219",
+        "question_score": 0.083,
+        "answer_score": 0.063,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北捷運上的乘客，怎麼可能等車停了才知道外面發生地震？",
+          "臺北市地震應變中心在 8:01 和 8:13，各根據哪一個數字行動？"
+        ]
+      },
+      {
+        "id": "K116-0209~K116-0214",
+        "a": "K116-0209",
+        "b": "K116-0214",
+        "question_score": 0.083,
+        "answer_score": 0.045,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "氣象署對臺北市沒有發那兩則手機警報，北捷怎麼還能停車巡檢？",
+          "同一場地震，臺北市的預估偏低，隔海的與那國島也一定偏低嗎？"
+        ]
+      },
+      {
+        "id": "K116-0310~K116-0313",
+        "a": "K116-0310",
+        "b": "K116-0313",
+        "question_score": 0.083,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把羅馬旅館號碼塞進一個整數欄位，那顆重要的 0 怎麼保存？",
+          "旅館官網同時印總機和分機，能直接把分機接在國際號碼最後面嗎？"
         ]
       },
       {
@@ -378782,6 +381548,76 @@
         ]
       },
       {
+        "id": "K116-0201~K116-0204",
+        "a": "K116-0201",
+        "b": "K116-0204",
+        "question_score": 0.043,
+        "answer_score": 0.082,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 地震的報告寫「臺北市最大震度 5 弱」，木柵、陽明山也都量到 5 弱嗎？",
+          "同一場花蓮地震，為什麼 6.2、6.8、7.2、7.1 都查得到？"
+        ]
+      },
+      {
+        "id": "K116-0208~K116-0216",
+        "a": "K116-0208",
+        "b": "K116-0216",
+        "question_score": 0.082,
+        "answer_score": 0.036,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場花蓮地震，把南邊和北邊的測站分開，哪一組會估得比較小？",
+          "放寬預警條件後，「漏得比較少」和「多做幾次白工」為什麼能同時成立？"
+        ]
+      },
+      {
+        "id": "K116-0209~K116-0210",
+        "a": "K116-0209",
+        "b": "K116-0210",
+        "question_score": 0.082,
+        "answer_score": 0.044,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "氣象署對臺北市沒有發那兩則手機警報，北捷怎麼還能停車巡檢？",
+          "氣象署在 07:58:24 寄出，國震中心表裡為什麼還有另外兩個時間？"
+        ]
+      },
+      {
+        "id": "K116-0213~K116-0218",
+        "a": "K116-0213",
+        "b": "K116-0218",
+        "question_score": 0.037,
+        "answer_score": 0.082,
+        "key_score": 0.727,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本對同一場花蓮地震列出「82.8 秒」，那是誰可以提早反應的時間？",
+          "0403 流傳的「早三分鐘就警告」影片，畫面上自己的時鐘說了什麼？"
+        ]
+      },
+      {
+        "id": "K116-0306~K116-0313",
+        "a": "K116-0306",
+        "b": "K116-0313",
+        "question_score": 0.082,
+        "answer_score": 0.029,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館名片上的 +39 06…，刪掉 0 還算羅馬的地理號碼嗎？",
+          "旅館官網同時印總機和分機，能直接把分機接在國際號碼最後面嗎？"
+        ]
+      },
+      {
         "id": "K89-036~K92-030",
         "a": "K89-036",
         "b": "K92-030",
@@ -378908,6 +381744,20 @@
         ]
       },
       {
+        "id": "K116-0209~K116-0219",
+        "a": "K116-0209",
+        "b": "K116-0219",
+        "question_score": 0.08,
+        "answer_score": 0.075,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "氣象署對臺北市沒有發那兩則手機警報，北捷怎麼還能停車巡檢？",
+          "臺北市地震應變中心在 8:01 和 8:13，各根據哪一個數字行動？"
+        ]
+      },
+      {
         "id": "L234~L235",
         "a": "L234",
         "b": "L235",
@@ -379006,6 +381856,20 @@
         ]
       },
       {
+        "id": "K116-0201~K116-0202",
+        "a": "K116-0201",
+        "b": "K116-0202",
+        "question_score": 0.078,
+        "answer_score": 0.056,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 地震的報告寫「臺北市最大震度 5 弱」，木柵、陽明山也都量到 5 弱嗎？",
+          "臺北捷運上的乘客，怎麼可能等車停了才知道外面發生地震？"
+        ]
+      },
+      {
         "id": "R43002~R43010",
         "a": "R43002",
         "b": "R43010",
@@ -379087,6 +381951,76 @@
         "questions": [
           "快閃記憶體為什麼不能像寫黑板一樣，哪裡錯就擦哪裡？",
           "固態硬碟寫入數據時明明只要幾十微秒，為什麼擦除整塊數據卻要花上好幾毫秒？"
+        ]
+      },
+      {
+        "id": "K116-0202~K116-0207",
+        "a": "K116-0202",
+        "b": "K116-0207",
+        "question_score": 0,
+        "answer_score": 0.077,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北捷運上的乘客，怎麼可能等車停了才知道外面發生地震？",
+          "如果把前八秒的波形再算一次，會得到唯一一個規模嗎？"
+        ]
+      },
+      {
+        "id": "K116-0208~K116-0219",
+        "a": "K116-0208",
+        "b": "K116-0219",
+        "question_score": 0.077,
+        "answer_score": 0.023,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場花蓮地震，把南邊和北邊的測站分開，哪一組會估得比較小？",
+          "臺北市地震應變中心在 8:01 和 8:13，各根據哪一個數字行動？"
+        ]
+      },
+      {
+        "id": "K116-0209~K116-0217",
+        "a": "K116-0209",
+        "b": "K116-0217",
+        "question_score": 0.077,
+        "answer_score": 0.033,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "氣象署對臺北市沒有發那兩則手機警報，北捷怎麼還能停車巡檢？",
+          "0403 後手機地震警報改條件，是不是從此只要預估震度 3 級就發？"
+        ]
+      },
+      {
+        "id": "K116-0214~K116-0217",
+        "a": "K116-0214",
+        "b": "K116-0217",
+        "question_score": 0.077,
+        "answer_score": 0.046,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場地震，臺北市的預估偏低，隔海的與那國島也一定偏低嗎？",
+          "0403 後手機地震警報改條件，是不是從此只要預估震度 3 級就發？"
+        ]
+      },
+      {
+        "id": "K116-0306~K116-0307",
+        "a": "K116-0306",
+        "b": "K116-0307",
+        "question_score": 0.045,
+        "answer_score": 0.077,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館名片上的 +39 06…，刪掉 0 還算羅馬的地理號碼嗎？",
+          "1998 年，羅馬人打給同一區的鄰居，為什麼也得多按幾碼？"
         ]
       },
       {
@@ -379213,6 +382147,20 @@
         "questions": [
           "光暗到像淡淡月光，怎麼測出守宮選的是藍色，而不只是比較亮的一張？",
           "換了夜裡照花的光，天蛾還認得原先受訓的顏色嗎？"
+        ]
+      },
+      {
+        "id": "K116-0201~K116-0209",
+        "a": "K116-0201",
+        "b": "K116-0209",
+        "question_score": 0.075,
+        "answer_score": 0.034,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 地震的報告寫「臺北市最大震度 5 弱」，木柵、陽明山也都量到 5 弱嗎？",
+          "氣象署對臺北市沒有發那兩則手機警報，北捷怎麼還能停車巡檢？"
         ]
       },
       {
@@ -379356,6 +382304,34 @@
         ]
       },
       {
+        "id": "K116-0209~K116-0212",
+        "a": "K116-0209",
+        "b": "K116-0212",
+        "question_score": 0.038,
+        "answer_score": 0.074,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "氣象署對臺北市沒有發那兩則手機警報，北捷怎麼還能停車巡檢？",
+          "同一場地震，為什麼新聞台可以插播，機構也能收到網路通知，手機名單卻比較短？"
+        ]
+      },
+      {
+        "id": "K116-0211~K116-0218",
+        "a": "K116-0211",
+        "b": "K116-0218",
+        "question_score": 0.074,
+        "answer_score": 0.023,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "新北市沒列進那兩則手機警報，蘆洲國中的師生那天卻聽到了什麼？",
+          "0403 流傳的「早三分鐘就警告」影片，畫面上自己的時鐘說了什麼？"
+        ]
+      },
+      {
         "id": "K92-045~P62-006",
         "a": "P62-006",
         "b": "K92-045",
@@ -379482,6 +382458,20 @@
         ]
       },
       {
+        "id": "K116-0211~K116-0217",
+        "a": "K116-0211",
+        "b": "K116-0217",
+        "question_score": 0.073,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "新北市沒列進那兩則手機警報，蘆洲國中的師生那天卻聽到了什麼？",
+          "0403 後手機地震警報改條件，是不是從此只要預估震度 3 級就發？"
+        ]
+      },
+      {
         "id": "L58-001~R40009",
         "a": "R40009",
         "b": "L58-001",
@@ -379535,6 +382525,34 @@
         "questions": [
           "資料庫索引為什麼有時故意漏掉大部分資料？",
           "為什麼某些資料要唯一，另一些卻可以重複？"
+        ]
+      },
+      {
+        "id": "K116-0203~K116-0209",
+        "a": "K116-0203",
+        "b": "K116-0209",
+        "question_score": 0.071,
+        "answer_score": 0.042,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 花蓮地震，第一張手機發送名單已經有彰化，為什麼第二張有新竹縣卻沒有新竹市？",
+          "氣象署對臺北市沒有發那兩則手機警報，北捷怎麼還能停車巡檢？"
+        ]
+      },
+      {
+        "id": "K116-0205~K116-0206",
+        "a": "K116-0205",
+        "b": "K116-0206",
+        "question_score": 0.04,
+        "answer_score": 0.071,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "第一批手機警報發出時，這場地震最劇烈的破裂階段已經過了嗎？",
+          "事後用衛星看到地面移動，為什麼還得拿遠方地震站的波形一起拼？"
         ]
       },
       {
@@ -379776,6 +382794,34 @@
         ]
       },
       {
+        "id": "K116-0207~K116-0217",
+        "a": "K116-0207",
+        "b": "K116-0217",
+        "question_score": 0,
+        "answer_score": 0.068,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把前八秒的波形再算一次，會得到唯一一個規模嗎？",
+          "0403 後手機地震警報改條件，是不是從此只要預估震度 3 級就發？"
+        ]
+      },
+      {
+        "id": "K116-0210~K116-0218",
+        "a": "K116-0210",
+        "b": "K116-0218",
+        "question_score": 0,
+        "answer_score": 0.068,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "氣象署在 07:58:24 寄出，國震中心表裡為什麼還有另外兩個時間？",
+          "0403 流傳的「早三分鐘就警告」影片，畫面上自己的時鐘說了什麼？"
+        ]
+      },
+      {
         "id": "E2115~E2173",
         "a": "E2115",
         "b": "E2173",
@@ -379815,6 +382861,20 @@
         "questions": [
           "換新加密鑰匙時，怎麼讓舊資料暫時還讀得到？",
           "串流還在繼續，為什麼要把前一把鑰匙忘掉？"
+        ]
+      },
+      {
+        "id": "K116-0202~K116-0211",
+        "a": "K116-0202",
+        "b": "K116-0211",
+        "question_score": 0,
+        "answer_score": 0.067,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北捷運上的乘客，怎麼可能等車停了才知道外面發生地震？",
+          "新北市沒列進那兩則手機警報，蘆洲國中的師生那天卻聽到了什麼？"
         ]
       },
       {
@@ -380182,6 +383242,20 @@
         ]
       },
       {
+        "id": "K116-0210~K116-0212",
+        "a": "K116-0210",
+        "b": "K116-0212",
+        "question_score": 0,
+        "answer_score": 0.064,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "氣象署在 07:58:24 寄出，國震中心表裡為什麼還有另外兩個時間？",
+          "同一場地震，為什麼新聞台可以插播，機構也能收到網路通知，手機名單卻比較短？"
+        ]
+      },
+      {
         "id": "E2096~E2158",
         "a": "E2096",
         "b": "E2158",
@@ -380532,6 +383606,20 @@
         ]
       },
       {
+        "id": "K116-0204~K116-0217",
+        "a": "K116-0204",
+        "b": "K116-0217",
+        "question_score": 0.043,
+        "answer_score": 0.059,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場花蓮地震，為什麼 6.2、6.8、7.2、7.1 都查得到？",
+          "0403 後手機地震警報改條件，是不是從此只要預估震度 3 級就發？"
+        ]
+      },
+      {
         "id": "L006~L017",
         "a": "L006",
         "b": "L017",
@@ -380655,6 +383743,20 @@
         "questions": [
           "手沒交叉、只把手裡兩根棒子交叉，棒尖被敲的先後也會說反嗎？",
           "是不是左右腦的手區互相干擾，或是眼睛看到手交叉才搞錯？"
+        ]
+      },
+      {
+        "id": "K116-0213~K116-0216",
+        "a": "K116-0213",
+        "b": "K116-0216",
+        "question_score": 0,
+        "answer_score": 0.058,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本對同一場花蓮地震列出「82.8 秒」，那是誰可以提早反應的時間？",
+          "放寬預警條件後，「漏得比較少」和「多做幾次白工」為什麼能同時成立？"
         ]
       },
       {
@@ -380826,6 +383928,20 @@
         ]
       },
       {
+        "id": "K116-0206~K116-0208",
+        "a": "K116-0206",
+        "b": "K116-0208",
+        "question_score": 0.04,
+        "answer_score": 0.057,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "事後用衛星看到地面移動，為什麼還得拿遠方地震站的波形一起拼？",
+          "同一場花蓮地震，把南邊和北邊的測站分開，哪一組會估得比較小？"
+        ]
+      },
+      {
         "id": "L064~L067",
         "a": "L064",
         "b": "L067",
@@ -380966,6 +384082,34 @@
         ]
       },
       {
+        "id": "K116-0204~K116-0205",
+        "a": "K116-0204",
+        "b": "K116-0205",
+        "question_score": 0.045,
+        "answer_score": 0.056,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場花蓮地震，為什麼 6.2、6.8、7.2、7.1 都查得到？",
+          "第一批手機警報發出時，這場地震最劇烈的破裂階段已經過了嗎？"
+        ]
+      },
+      {
+        "id": "K116-0211~K116-0219",
+        "a": "K116-0211",
+        "b": "K116-0219",
+        "question_score": 0.038,
+        "answer_score": 0.056,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "新北市沒列進那兩則手機警報，蘆洲國中的師生那天卻聽到了什麼？",
+          "臺北市地震應變中心在 8:01 和 8:13，各根據哪一個數字行動？"
+        ]
+      },
+      {
         "id": "L001~L017",
         "a": "L001",
         "b": "L017",
@@ -381005,6 +384149,48 @@
         "questions": [
           "明明要把磷拿掉，污水廠為什麼先讓細菌把磷吐出來？",
           "讓除磷細菌在池裡待更久，為什麼反而可能吐回更多磷？"
+        ]
+      },
+      {
+        "id": "K116-0203~K116-0214",
+        "a": "K116-0203",
+        "b": "K116-0214",
+        "question_score": 0.036,
+        "answer_score": 0.055,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 花蓮地震，第一張手機發送名單已經有彰化，為什麼第二張有新竹縣卻沒有新竹市？",
+          "同一場地震，臺北市的預估偏低，隔海的與那國島也一定偏低嗎？"
+        ]
+      },
+      {
+        "id": "K116-0218~K116-0219",
+        "a": "K116-0218",
+        "b": "K116-0219",
+        "question_score": 0,
+        "answer_score": 0.055,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 流傳的「早三分鐘就警告」影片，畫面上自己的時鐘說了什麼？",
+          "臺北市地震應變中心在 8:01 和 8:13，各根據哪一個數字行動？"
+        ]
+      },
+      {
+        "id": "K116-0313~K116-0316",
+        "a": "K116-0313",
+        "b": "K116-0316",
+        "question_score": 0,
+        "answer_score": 0.055,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館官網同時印總機和分機，能直接把分機接在國際號碼最後面嗎？",
+          "自己印名片，怎麼讓國內外朋友一眼看出哪個 0 該撥？"
         ]
       },
       {
@@ -381386,6 +384572,20 @@
         ]
       },
       {
+        "id": "K116-0203~K116-0219",
+        "a": "K116-0203",
+        "b": "K116-0219",
+        "question_score": 0.034,
+        "answer_score": 0.052,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 花蓮地震，第一張手機發送名單已經有彰化，為什麼第二張有新竹縣卻沒有新竹市？",
+          "臺北市地震應變中心在 8:01 和 8:13，各根據哪一個數字行動？"
+        ]
+      },
+      {
         "id": "A26001~A26002",
         "a": "A26001",
         "b": "A26002",
@@ -381467,6 +384667,20 @@
         "questions": [
           "人在河這一岸拍對岸的橋，照片的地點該標在哪一岸？",
           "明明沿著河岸轉彎，補完定位，照片怎麼會落在水面上？"
+        ]
+      },
+      {
+        "id": "K116-0205~K116-0219",
+        "a": "K116-0205",
+        "b": "K116-0219",
+        "question_score": 0.038,
+        "answer_score": 0.051,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "第一批手機警報發出時，這場地震最劇烈的破裂階段已經過了嗎？",
+          "臺北市地震應變中心在 8:01 和 8:13，各根據哪一個數字行動？"
         ]
       },
       {
@@ -381582,6 +384796,62 @@
         ]
       },
       {
+        "id": "K116-0202~K116-0204",
+        "a": "K116-0202",
+        "b": "K116-0204",
+        "question_score": 0.05,
+        "answer_score": 0.029,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北捷運上的乘客，怎麼可能等車停了才知道外面發生地震？",
+          "同一場花蓮地震，為什麼 6.2、6.8、7.2、7.1 都查得到？"
+        ]
+      },
+      {
+        "id": "K116-0204~K116-0207",
+        "a": "K116-0204",
+        "b": "K116-0207",
+        "question_score": 0.05,
+        "answer_score": 0.04,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場花蓮地震，為什麼 6.2、6.8、7.2、7.1 都查得到？",
+          "如果把前八秒的波形再算一次，會得到唯一一個規模嗎？"
+        ]
+      },
+      {
+        "id": "K116-0304~K116-0311",
+        "a": "K116-0304",
+        "b": "K116-0311",
+        "question_score": 0,
+        "answer_score": 0.05,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本一部電話進入國際線要按 010，台灣朋友的名片也該加上這三碼嗎？",
+          "一串數字已經以 49 開頭，通訊錄工具怎麼還猜不到前兩碼是不是國碼？"
+        ]
+      },
+      {
+        "id": "K116-0308~K116-0311",
+        "a": "K116-0308",
+        "b": "K116-0311",
+        "question_score": 0,
+        "answer_score": 0.05,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "明明每通市內電話都多按幾碼，工程師怎麼會說反而多出號碼？",
+          "一串數字已經以 49 開頭，通訊錄工具怎麼還猜不到前兩碼是不是國碼？"
+        ]
+      },
+      {
         "id": "L159~L161",
         "a": "L159",
         "b": "L161",
@@ -381621,6 +384891,20 @@
         "questions": [
           "看陌生口音的影集，字幕用哪種語言，會影響之後聽懂新台詞嗎？",
           "旁邊的人從英語改說聽不懂的外語，熟悉的聲音還有一樣大的優勢嗎？"
+        ]
+      },
+      {
+        "id": "K116-0302~K116-0304",
+        "a": "K116-0302",
+        "b": "K116-0304",
+        "question_score": 0.038,
+        "answer_score": 0.049,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣大哥大的海外撥號示範，為什麼教人長按剛剛才刪掉的 0？",
+          "日本一部電話進入國際線要按 010，台灣朋友的名片也該加上這三碼嗎？"
         ]
       },
       {
@@ -381733,6 +385017,34 @@
         "questions": [
           "Base64 字串最後常見的等號，是原本資料的一部分嗎？",
           "為了保密，資料為什麼有時故意塞進沒有內容的填充？"
+        ]
+      },
+      {
+        "id": "K116-0201~K116-0211",
+        "a": "K116-0201",
+        "b": "K116-0211",
+        "question_score": 0.036,
+        "answer_score": 0.048,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 地震的報告寫「臺北市最大震度 5 弱」，木柵、陽明山也都量到 5 弱嗎？",
+          "新北市沒列進那兩則手機警報，蘆洲國中的師生那天卻聽到了什麼？"
+        ]
+      },
+      {
+        "id": "K116-0204~K116-0206",
+        "a": "K116-0204",
+        "b": "K116-0206",
+        "question_score": 0.048,
+        "answer_score": 0.029,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場花蓮地震，為什麼 6.2、6.8、7.2、7.1 都查得到？",
+          "事後用衛星看到地面移動，為什麼還得拿遠方地震站的波形一起拼？"
         ]
       },
       {
@@ -382016,6 +385328,104 @@
         ]
       },
       {
+        "id": "K116-0201~K116-0212",
+        "a": "K116-0201",
+        "b": "K116-0212",
+        "question_score": 0.034,
+        "answer_score": 0.045,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 地震的報告寫「臺北市最大震度 5 弱」，木柵、陽明山也都量到 5 弱嗎？",
+          "同一場地震，為什麼新聞台可以插播，機構也能收到網路通知，手機名單卻比較短？"
+        ]
+      },
+      {
+        "id": "K116-0210~K116-0216",
+        "a": "K116-0210",
+        "b": "K116-0216",
+        "question_score": 0,
+        "answer_score": 0.045,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "氣象署在 07:58:24 寄出，國震中心表裡為什麼還有另外兩個時間？",
+          "放寬預警條件後，「漏得比較少」和「多做幾次白工」為什麼能同時成立？"
+        ]
+      },
+      {
+        "id": "K116-0213~K116-0219",
+        "a": "K116-0213",
+        "b": "K116-0219",
+        "question_score": 0.038,
+        "answer_score": 0.045,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本對同一場花蓮地震列出「82.8 秒」，那是誰可以提早反應的時間？",
+          "臺北市地震應變中心在 8:01 和 8:13，各根據哪一個數字行動？"
+        ]
+      },
+      {
+        "id": "K116-0301~K116-0304",
+        "a": "K116-0301",
+        "b": "K116-0304",
+        "question_score": 0.037,
+        "answer_score": 0.045,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣手機寫成 +886 9xx xxx xxx，國內開頭的 0 原本負責什麼？",
+          "日本一部電話進入國際線要按 010，台灣朋友的名片也該加上這三碼嗎？"
+        ]
+      },
+      {
+        "id": "K116-0302~K116-0309",
+        "a": "K116-0302",
+        "b": "K116-0309",
+        "question_score": 0.045,
+        "answer_score": 0,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣大哥大的海外撥號示範，為什麼教人長按剛剛才刪掉的 0？",
+          "台灣朋友換了一家電信公司，為什麼整張門號名片仍然能沿用？"
+        ]
+      },
+      {
+        "id": "K116-0302~K116-0310",
+        "a": "K116-0302",
+        "b": "K116-0310",
+        "question_score": 0.045,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣大哥大的海外撥號示範，為什麼教人長按剛剛才刪掉的 0？",
+          "把羅馬旅館號碼塞進一個整數欄位，那顆重要的 0 怎麼保存？"
+        ]
+      },
+      {
+        "id": "K116-0309~K116-0312",
+        "a": "K116-0309",
+        "b": "K116-0312",
+        "question_score": 0.045,
+        "answer_score": 0.028,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣朋友換了一家電信公司，為什麼整張門號名片仍然能沿用？",
+          "旅館房內電話要先取外線，那顆鍵要抄進朋友的號碼嗎？"
+        ]
+      },
+      {
         "id": "K74-015~K74-018",
         "a": "K74-015",
         "b": "K74-018",
@@ -382142,6 +385552,48 @@
         ]
       },
       {
+        "id": "K116-0216~K116-0219",
+        "a": "K116-0216",
+        "b": "K116-0219",
+        "question_score": 0,
+        "answer_score": 0.044,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "放寬預警條件後，「漏得比較少」和「多做幾次白工」為什麼能同時成立？",
+          "臺北市地震應變中心在 8:01 和 8:13，各根據哪一個數字行動？"
+        ]
+      },
+      {
+        "id": "K116-0302~K116-0306",
+        "a": "K116-0302",
+        "b": "K116-0306",
+        "question_score": 0.044,
+        "answer_score": 0.033,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣大哥大的海外撥號示範，為什麼教人長按剛剛才刪掉的 0？",
+          "旅館名片上的 +39 06…，刪掉 0 還算羅馬的地理號碼嗎？"
+        ]
+      },
+      {
+        "id": "K116-0306~K116-0309",
+        "a": "K116-0306",
+        "b": "K116-0309",
+        "question_score": 0.044,
+        "answer_score": 0.028,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館名片上的 +39 06…，刪掉 0 還算羅馬的地理號碼嗎？",
+          "台灣朋友換了一家電信公司，為什麼整張門號名片仍然能沿用？"
+        ]
+      },
+      {
         "id": "P076~P077",
         "a": "P076",
         "b": "P077",
@@ -382223,6 +385675,76 @@
         "questions": [
           "兩件東西碰在一起，熱一定從能量總量多的流向少的嗎？",
           "量微小電壓時，吹過一陣風怎麼也可能改變結果？"
+        ]
+      },
+      {
+        "id": "K116-0202~K116-0206",
+        "a": "K116-0202",
+        "b": "K116-0206",
+        "question_score": 0.043,
+        "answer_score": 0.042,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北捷運上的乘客，怎麼可能等車停了才知道外面發生地震？",
+          "事後用衛星看到地面移動，為什麼還得拿遠方地震站的波形一起拼？"
+        ]
+      },
+      {
+        "id": "K116-0205~K116-0207",
+        "a": "K116-0205",
+        "b": "K116-0207",
+        "question_score": 0,
+        "answer_score": 0.043,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "第一批手機警報發出時，這場地震最劇烈的破裂階段已經過了嗎？",
+          "如果把前八秒的波形再算一次，會得到唯一一個規模嗎？"
+        ]
+      },
+      {
+        "id": "K116-0205~K116-0213",
+        "a": "K116-0205",
+        "b": "K116-0213",
+        "question_score": 0.038,
+        "answer_score": 0.043,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "第一批手機警報發出時，這場地震最劇烈的破裂階段已經過了嗎？",
+          "日本對同一場花蓮地震列出「82.8 秒」，那是誰可以提早反應的時間？"
+        ]
+      },
+      {
+        "id": "K116-0301~K116-0309",
+        "a": "K116-0301",
+        "b": "K116-0309",
+        "question_score": 0.043,
+        "answer_score": 0.033,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣手機寫成 +886 9xx xxx xxx，國內開頭的 0 原本負責什麼？",
+          "台灣朋友換了一家電信公司，為什麼整張門號名片仍然能沿用？"
+        ]
+      },
+      {
+        "id": "K116-0304~K116-0313",
+        "a": "K116-0304",
+        "b": "K116-0313",
+        "question_score": 0.036,
+        "answer_score": 0.043,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本一部電話進入國際線要按 010，台灣朋友的名片也該加上這三碼嗎？",
+          "旅館官網同時印總機和分機，能直接把分機接在國際號碼最後面嗎？"
         ]
       },
       {
@@ -382352,6 +385874,76 @@
         ]
       },
       {
+        "id": "K116-0202~K116-0205",
+        "a": "K116-0202",
+        "b": "K116-0205",
+        "question_score": 0.042,
+        "answer_score": 0.02,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北捷運上的乘客，怎麼可能等車停了才知道外面發生地震？",
+          "第一批手機警報發出時，這場地震最劇烈的破裂階段已經過了嗎？"
+        ]
+      },
+      {
+        "id": "K116-0202~K116-0208",
+        "a": "K116-0202",
+        "b": "K116-0208",
+        "question_score": 0.042,
+        "answer_score": 0.011,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北捷運上的乘客，怎麼可能等車停了才知道外面發生地震？",
+          "同一場花蓮地震，把南邊和北邊的測站分開，哪一組會估得比較小？"
+        ]
+      },
+      {
+        "id": "K116-0205~K116-0210",
+        "a": "K116-0205",
+        "b": "K116-0210",
+        "question_score": 0,
+        "answer_score": 0.042,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "第一批手機警報發出時，這場地震最劇烈的破裂階段已經過了嗎？",
+          "氣象署在 07:58:24 寄出，國震中心表裡為什麼還有另外兩個時間？"
+        ]
+      },
+      {
+        "id": "K116-0207~K116-0219",
+        "a": "K116-0207",
+        "b": "K116-0219",
+        "question_score": 0.042,
+        "answer_score": 0.033,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把前八秒的波形再算一次，會得到唯一一個規模嗎？",
+          "臺北市地震應變中心在 8:01 和 8:13，各根據哪一個數字行動？"
+        ]
+      },
+      {
+        "id": "K116-0308~K116-0309",
+        "a": "K116-0308",
+        "b": "K116-0309",
+        "question_score": 0,
+        "answer_score": 0.042,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "明明每通市內電話都多按幾碼，工程師怎麼會說反而多出號碼？",
+          "台灣朋友換了一家電信公司，為什麼整張門號名片仍然能沿用？"
+        ]
+      },
+      {
         "id": "R41001~R41005",
         "a": "R41001",
         "b": "R41005",
@@ -382464,6 +386056,48 @@
         ]
       },
       {
+        "id": "K116-0202~K116-0213",
+        "a": "K116-0202",
+        "b": "K116-0213",
+        "question_score": 0.041,
+        "answer_score": 0.022,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北捷運上的乘客，怎麼可能等車停了才知道外面發生地震？",
+          "日本對同一場花蓮地震列出「82.8 秒」，那是誰可以提早反應的時間？"
+        ]
+      },
+      {
+        "id": "K116-0204~K116-0211",
+        "a": "K116-0204",
+        "b": "K116-0211",
+        "question_score": 0,
+        "answer_score": 0.041,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場花蓮地震，為什麼 6.2、6.8、7.2、7.1 都查得到？",
+          "新北市沒列進那兩則手機警報，蘆洲國中的師生那天卻聽到了什麼？"
+        ]
+      },
+      {
+        "id": "K116-0308~K116-0313",
+        "a": "K116-0308",
+        "b": "K116-0313",
+        "question_score": 0.041,
+        "answer_score": 0.014,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "明明每通市內電話都多按幾碼，工程師怎麼會說反而多出號碼？",
+          "旅館官網同時印總機和分機，能直接把分機接在國際號碼最後面嗎？"
+        ]
+      },
+      {
         "id": "L62-002~R37007",
         "a": "R37007",
         "b": "L62-002",
@@ -382503,6 +386137,62 @@
         "questions": [
           "剛看完說話的嘴形，螢幕關掉後，怎麼連純聲音也聽得不太一樣？",
           "看不清整張臉，只剩跟著嘴巴動的光點，吵的地方還能幫你聽懂嗎？"
+        ]
+      },
+      {
+        "id": "K116-0202~K116-0217",
+        "a": "K116-0202",
+        "b": "K116-0217",
+        "question_score": 0.04,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北捷運上的乘客，怎麼可能等車停了才知道外面發生地震？",
+          "0403 後手機地震警報改條件，是不是從此只要預估震度 3 級就發？"
+        ]
+      },
+      {
+        "id": "K116-0204~K116-0210",
+        "a": "K116-0204",
+        "b": "K116-0210",
+        "question_score": 0,
+        "answer_score": 0.04,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場花蓮地震，為什麼 6.2、6.8、7.2、7.1 都查得到？",
+          "氣象署在 07:58:24 寄出，國震中心表裡為什麼還有另外兩個時間？"
+        ]
+      },
+      {
+        "id": "K116-0204~K116-0216",
+        "a": "K116-0204",
+        "b": "K116-0216",
+        "question_score": 0,
+        "answer_score": 0.04,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場花蓮地震，為什麼 6.2、6.8、7.2、7.1 都查得到？",
+          "放寬預警條件後，「漏得比較少」和「多做幾次白工」為什麼能同時成立？"
+        ]
+      },
+      {
+        "id": "K116-0206~K116-0219",
+        "a": "K116-0206",
+        "b": "K116-0219",
+        "question_score": 0.04,
+        "answer_score": 0.021,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "事後用衛星看到地面移動，為什麼還得拿遠方地震站的波形一起拼？",
+          "臺北市地震應變中心在 8:01 和 8:13，各根據哪一個數字行動？"
         ]
       },
       {
@@ -382559,6 +386249,90 @@
         "questions": [
           "人在河這一岸拍對岸的橋，照片的地點該標在哪一岸？",
           "旅行照沒有記座標，相簿怎麼還把它放進某個城市？"
+        ]
+      },
+      {
+        "id": "K116-0202~K116-0212",
+        "a": "K116-0202",
+        "b": "K116-0212",
+        "question_score": 0.039,
+        "answer_score": 0.021,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北捷運上的乘客，怎麼可能等車停了才知道外面發生地震？",
+          "同一場地震，為什麼新聞台可以插播，機構也能收到網路通知，手機名單卻比較短？"
+        ]
+      },
+      {
+        "id": "K116-0204~K116-0209",
+        "a": "K116-0204",
+        "b": "K116-0209",
+        "question_score": 0,
+        "answer_score": 0.039,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場花蓮地震，為什麼 6.2、6.8、7.2、7.1 都查得到？",
+          "氣象署對臺北市沒有發那兩則手機警報，北捷怎麼還能停車巡檢？"
+        ]
+      },
+      {
+        "id": "K116-0206~K116-0213",
+        "a": "K116-0206",
+        "b": "K116-0213",
+        "question_score": 0.039,
+        "answer_score": 0.022,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "事後用衛星看到地面移動，為什麼還得拿遠方地震站的波形一起拼？",
+          "日本對同一場花蓮地震列出「82.8 秒」，那是誰可以提早反應的時間？"
+        ]
+      },
+      {
+        "id": "K116-0216~K116-0217",
+        "a": "K116-0216",
+        "b": "K116-0217",
+        "question_score": 0.039,
+        "answer_score": 0.023,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "放寬預警條件後，「漏得比較少」和「多做幾次白工」為什麼能同時成立？",
+          "0403 後手機地震警報改條件，是不是從此只要預估震度 3 級就發？"
+        ]
+      },
+      {
+        "id": "K116-0301~K116-0311",
+        "a": "K116-0301",
+        "b": "K116-0311",
+        "question_score": 0.039,
+        "answer_score": 0.015,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣手機寫成 +886 9xx xxx xxx，國內開頭的 0 原本負責什麼？",
+          "一串數字已經以 49 開頭，通訊錄工具怎麼還猜不到前兩碼是不是國碼？"
+        ]
+      },
+      {
+        "id": "K116-0304~K116-0308",
+        "a": "K116-0304",
+        "b": "K116-0308",
+        "question_score": 0.038,
+        "answer_score": 0.039,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本一部電話進入國際線要按 010，台灣朋友的名片也該加上這三碼嗎？",
+          "明明每通市內電話都多按幾碼，工程師怎麼會說反而多出號碼？"
         ]
       },
       {
@@ -382660,6 +386434,76 @@
         ]
       },
       {
+        "id": "K116-0201~K116-0206",
+        "a": "K116-0201",
+        "b": "K116-0206",
+        "question_score": 0.038,
+        "answer_score": 0.011,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 地震的報告寫「臺北市最大震度 5 弱」，木柵、陽明山也都量到 5 弱嗎？",
+          "事後用衛星看到地面移動，為什麼還得拿遠方地震站的波形一起拼？"
+        ]
+      },
+      {
+        "id": "K116-0205~K116-0208",
+        "a": "K116-0205",
+        "b": "K116-0208",
+        "question_score": 0.038,
+        "answer_score": 0.011,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "第一批手機警報發出時，這場地震最劇烈的破裂階段已經過了嗎？",
+          "同一場花蓮地震，把南邊和北邊的測站分開，哪一組會估得比較小？"
+        ]
+      },
+      {
+        "id": "K116-0206~K116-0212",
+        "a": "K116-0206",
+        "b": "K116-0212",
+        "question_score": 0.038,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "事後用衛星看到地面移動，為什麼還得拿遠方地震站的波形一起拼？",
+          "同一場地震，為什麼新聞台可以插播，機構也能收到網路通知，手機名單卻比較短？"
+        ]
+      },
+      {
+        "id": "K116-0206~K116-0217",
+        "a": "K116-0206",
+        "b": "K116-0217",
+        "question_score": 0.038,
+        "answer_score": 0.011,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "事後用衛星看到地面移動，為什麼還得拿遠方地震站的波形一起拼？",
+          "0403 後手機地震警報改條件，是不是從此只要預估震度 3 級就發？"
+        ]
+      },
+      {
+        "id": "K116-0212~K116-0216",
+        "a": "K116-0212",
+        "b": "K116-0216",
+        "question_score": 0.038,
+        "answer_score": 0.022,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場地震，為什麼新聞台可以插播，機構也能收到網路通知，手機名單卻比較短？",
+          "放寬預警條件後，「漏得比較少」和「多做幾次白工」為什麼能同時成立？"
+        ]
+      },
+      {
         "id": "K92-017~K92-026",
         "a": "K92-017",
         "b": "K92-026",
@@ -382685,6 +386529,48 @@
         "questions": [
           "沙沙的人聲本來聽不清，先知道它在說什麼，對下一句也有幫助嗎？",
           "兩人同時說話，熟人搶著講，是幫你認出他的話，還是也幫你忽略他？"
+        ]
+      },
+      {
+        "id": "K116-0202~K116-0203",
+        "a": "K116-0202",
+        "b": "K116-0203",
+        "question_score": 0.037,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北捷運上的乘客，怎麼可能等車停了才知道外面發生地震？",
+          "0403 花蓮地震，第一張手機發送名單已經有彰化，為什麼第二張有新竹縣卻沒有新竹市？"
+        ]
+      },
+      {
+        "id": "K116-0208~K116-0217",
+        "a": "K116-0208",
+        "b": "K116-0217",
+        "question_score": 0.037,
+        "answer_score": 0.035,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場花蓮地震，把南邊和北邊的測站分開，哪一組會估得比較小？",
+          "0403 後手機地震警報改條件，是不是從此只要預估震度 3 級就發？"
+        ]
+      },
+      {
+        "id": "K116-0217~K116-0219",
+        "a": "K116-0217",
+        "b": "K116-0219",
+        "question_score": 0.037,
+        "answer_score": 0.022,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 後手機地震警報改條件，是不是從此只要預估震度 3 級就發？",
+          "臺北市地震應變中心在 8:01 和 8:13，各根據哪一個數字行動？"
         ]
       },
       {
@@ -382730,6 +386616,104 @@
         ]
       },
       {
+        "id": "K116-0201~K116-0205",
+        "a": "K116-0201",
+        "b": "K116-0205",
+        "question_score": 0.036,
+        "answer_score": 0.011,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 地震的報告寫「臺北市最大震度 5 弱」，木柵、陽明山也都量到 5 弱嗎？",
+          "第一批手機警報發出時，這場地震最劇烈的破裂階段已經過了嗎？"
+        ]
+      },
+      {
+        "id": "K116-0201~K116-0208",
+        "a": "K116-0201",
+        "b": "K116-0208",
+        "question_score": 0.036,
+        "answer_score": 0.012,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 地震的報告寫「臺北市最大震度 5 弱」，木柵、陽明山也都量到 5 弱嗎？",
+          "同一場花蓮地震，把南邊和北邊的測站分開，哪一組會估得比較小？"
+        ]
+      },
+      {
+        "id": "K116-0201~K116-0213",
+        "a": "K116-0201",
+        "b": "K116-0213",
+        "question_score": 0.036,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 地震的報告寫「臺北市最大震度 5 弱」，木柵、陽明山也都量到 5 弱嗎？",
+          "日本對同一場花蓮地震列出「82.8 秒」，那是誰可以提早反應的時間？"
+        ]
+      },
+      {
+        "id": "K116-0203~K116-0206",
+        "a": "K116-0203",
+        "b": "K116-0206",
+        "question_score": 0.036,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 花蓮地震，第一張手機發送名單已經有彰化，為什麼第二張有新竹縣卻沒有新竹市？",
+          "事後用衛星看到地面移動，為什麼還得拿遠方地震站的波形一起拼？"
+        ]
+      },
+      {
+        "id": "K116-0211~K116-0212",
+        "a": "K116-0211",
+        "b": "K116-0212",
+        "question_score": 0.036,
+        "answer_score": 0.022,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "新北市沒列進那兩則手機警報，蘆洲國中的師生那天卻聽到了什麼？",
+          "同一場地震，為什麼新聞台可以插播，機構也能收到網路通知，手機名單卻比較短？"
+        ]
+      },
+      {
+        "id": "K116-0212~K116-0219",
+        "a": "K116-0212",
+        "b": "K116-0219",
+        "question_score": 0.036,
+        "answer_score": 0.031,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場地震，為什麼新聞台可以插播，機構也能收到網路通知，手機名單卻比較短？",
+          "臺北市地震應變中心在 8:01 和 8:13，各根據哪一個數字行動？"
+        ]
+      },
+      {
+        "id": "K116-0213~K116-0217",
+        "a": "K116-0213",
+        "b": "K116-0217",
+        "question_score": 0.036,
+        "answer_score": 0.023,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "日本對同一場花蓮地震列出「82.8 秒」，那是誰可以提早反應的時間？",
+          "0403 後手機地震警報改條件，是不是從此只要預估震度 3 級就發？"
+        ]
+      },
+      {
         "id": "L76-005~L76-006",
         "a": "L76-005",
         "b": "L76-006",
@@ -382769,6 +386753,62 @@
         "questions": [
           "版本還在，為什麼歷史列表有時看不到它？",
           "網頁明明換了內容，按上一頁為什麼會直接離開網站？"
+        ]
+      },
+      {
+        "id": "K116-0203~K116-0211",
+        "a": "K116-0203",
+        "b": "K116-0211",
+        "question_score": 0.034,
+        "answer_score": 0.022,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 花蓮地震，第一張手機發送名單已經有彰化，為什麼第二張有新竹縣卻沒有新竹市？",
+          "新北市沒列進那兩則手機警報，蘆洲國中的師生那天卻聽到了什麼？"
+        ]
+      },
+      {
+        "id": "K116-0210~K116-0211",
+        "a": "K116-0210",
+        "b": "K116-0211",
+        "question_score": 0,
+        "answer_score": 0.034,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "氣象署在 07:58:24 寄出，國震中心表裡為什麼還有另外兩個時間？",
+          "新北市沒列進那兩則手機警報，蘆洲國中的師生那天卻聽到了什麼？"
+        ]
+      },
+      {
+        "id": "K116-0202~K116-0216",
+        "a": "K116-0202",
+        "b": "K116-0216",
+        "question_score": 0,
+        "answer_score": 0.033,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北捷運上的乘客，怎麼可能等車停了才知道外面發生地震？",
+          "放寬預警條件後，「漏得比較少」和「多做幾次白工」為什麼能同時成立？"
+        ]
+      },
+      {
+        "id": "K116-0210~K116-0217",
+        "a": "K116-0210",
+        "b": "K116-0217",
+        "question_score": 0,
+        "answer_score": 0.033,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "氣象署在 07:58:24 寄出，國震中心表裡為什麼還有另外兩個時間？",
+          "0403 後手機地震警報改條件，是不是從此只要預估震度 3 級就發？"
         ]
       },
       {
@@ -382825,6 +386865,34 @@
         "questions": [
           "嘴唇合起來，為什麼還能一直發出「嗯」的聲音？",
           "舌尖明明碰到上面，為什麼發 l 音時氣流還過得去？"
+        ]
+      },
+      {
+        "id": "K116-0203~K116-0216",
+        "a": "K116-0203",
+        "b": "K116-0216",
+        "question_score": 0,
+        "answer_score": 0.032,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 花蓮地震，第一張手機發送名單已經有彰化，為什麼第二張有新竹縣卻沒有新竹市？",
+          "放寬預警條件後，「漏得比較少」和「多做幾次白工」為什麼能同時成立？"
+        ]
+      },
+      {
+        "id": "K116-0205~K116-0216",
+        "a": "K116-0205",
+        "b": "K116-0216",
+        "question_score": 0,
+        "answer_score": 0.032,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "第一批手機警報發出時，這場地震最劇烈的破裂階段已經過了嗎？",
+          "放寬預警條件後，「漏得比較少」和「多做幾次白工」為什麼能同時成立？"
         ]
       },
       {
@@ -382912,6 +386980,34 @@
         ]
       },
       {
+        "id": "K116-0301~K116-0308",
+        "a": "K116-0301",
+        "b": "K116-0308",
+        "question_score": 0,
+        "answer_score": 0.03,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣手機寫成 +886 9xx xxx xxx，國內開頭的 0 原本負責什麼？",
+          "明明每通市內電話都多按幾碼，工程師怎麼會說反而多出號碼？"
+        ]
+      },
+      {
+        "id": "K116-0303~K116-0315",
+        "a": "K116-0303",
+        "b": "K116-0315",
+        "question_score": 0,
+        "answer_score": 0.03,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "國際號碼最多十五碼，算的是哪一段？",
+          "兩個台灣朋友都在羅馬，打給漫遊中的那一位，來電怎麼找到這裡？"
+        ]
+      },
+      {
         "id": "K100-012~P099",
         "a": "P099",
         "b": "K100-012",
@@ -382923,6 +387019,20 @@
         "questions": [
           "發紅和發白的熱物體，光的顏色為什麼會隨溫度改變？",
           "水熊蟲在經受沸水（攝氏100度）短暫煮沸後，為什麼部分個體依然能復原存活？其蛋白質高溫變性閾值如何被大幅提升？"
+        ]
+      },
+      {
+        "id": "K116-0303~K116-0309",
+        "a": "K116-0303",
+        "b": "K116-0309",
+        "question_score": 0,
+        "answer_score": 0.029,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "國際號碼最多十五碼，算的是哪一段？",
+          "台灣朋友換了一家電信公司，為什麼整張門號名片仍然能沿用？"
         ]
       },
       {
@@ -382993,6 +387103,20 @@
         "questions": [
           "明明指了左邊那張臉，為什麼拿到右邊，還能解釋自己喜歡它哪裡？",
           "剛選好的果醬被換成另一款，大家都能立刻發現嗎？"
+        ]
+      },
+      {
+        "id": "K116-0311~K116-0313",
+        "a": "K116-0311",
+        "b": "K116-0313",
+        "question_score": 0,
+        "answer_score": 0.028,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一串數字已經以 49 開頭，通訊錄工具怎麼還猜不到前兩碼是不是國碼？",
+          "旅館官網同時印總機和分機，能直接把分機接在國際號碼最後面嗎？"
         ]
       },
       {
@@ -383094,6 +387218,76 @@
         ]
       },
       {
+        "id": "K116-0201~K116-0207",
+        "a": "K116-0201",
+        "b": "K116-0207",
+        "question_score": 0,
+        "answer_score": 0.024,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 地震的報告寫「臺北市最大震度 5 弱」，木柵、陽明山也都量到 5 弱嗎？",
+          "如果把前八秒的波形再算一次，會得到唯一一個規模嗎？"
+        ]
+      },
+      {
+        "id": "K116-0201~K116-0216",
+        "a": "K116-0201",
+        "b": "K116-0216",
+        "question_score": 0,
+        "answer_score": 0.024,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 地震的報告寫「臺北市最大震度 5 弱」，木柵、陽明山也都量到 5 弱嗎？",
+          "放寬預警條件後，「漏得比較少」和「多做幾次白工」為什麼能同時成立？"
+        ]
+      },
+      {
+        "id": "K116-0201~K116-0210",
+        "a": "K116-0201",
+        "b": "K116-0210",
+        "question_score": 0,
+        "answer_score": 0.023,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 地震的報告寫「臺北市最大震度 5 弱」，木柵、陽明山也都量到 5 弱嗎？",
+          "氣象署在 07:58:24 寄出，國震中心表裡為什麼還有另外兩個時間？"
+        ]
+      },
+      {
+        "id": "K116-0207~K116-0216",
+        "a": "K116-0207",
+        "b": "K116-0216",
+        "question_score": 0,
+        "answer_score": 0.023,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把前八秒的波形再算一次，會得到唯一一個規模嗎？",
+          "放寬預警條件後，「漏得比較少」和「多做幾次白工」為什麼能同時成立？"
+        ]
+      },
+      {
+        "id": "K116-0214~K116-0218",
+        "a": "K116-0214",
+        "b": "K116-0218",
+        "question_score": 0,
+        "answer_score": 0.023,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場地震，臺北市的預估偏低，隔海的與那國島也一定偏低嗎？",
+          "0403 流傳的「早三分鐘就警告」影片，畫面上自己的時鐘說了什麼？"
+        ]
+      },
+      {
         "id": "R41004~R41009",
         "a": "R41004",
         "b": "R41009",
@@ -383105,6 +387299,104 @@
         "questions": [
           "兩朵看起來一樣的花，一朵邊緣暖、一朵中間暖，熊蜂分得出來嗎？",
           "昨天喝過的糖水多一點咖啡因，為什麼蜜蜂隔天只聞花香就更常伸喙？"
+        ]
+      },
+      {
+        "id": "K116-0202~K116-0218",
+        "a": "K116-0202",
+        "b": "K116-0218",
+        "question_score": 0,
+        "answer_score": 0.022,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北捷運上的乘客，怎麼可能等車停了才知道外面發生地震？",
+          "0403 流傳的「早三分鐘就警告」影片，畫面上自己的時鐘說了什麼？"
+        ]
+      },
+      {
+        "id": "K116-0203~K116-0207",
+        "a": "K116-0203",
+        "b": "K116-0207",
+        "question_score": 0,
+        "answer_score": 0.022,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "0403 花蓮地震，第一張手機發送名單已經有彰化，為什麼第二張有新竹縣卻沒有新竹市？",
+          "如果把前八秒的波形再算一次，會得到唯一一個規模嗎？"
+        ]
+      },
+      {
+        "id": "K116-0206~K116-0210",
+        "a": "K116-0206",
+        "b": "K116-0210",
+        "question_score": 0,
+        "answer_score": 0.022,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "事後用衛星看到地面移動，為什麼還得拿遠方地震站的波形一起拼？",
+          "氣象署在 07:58:24 寄出，國震中心表裡為什麼還有另外兩個時間？"
+        ]
+      },
+      {
+        "id": "K116-0206~K116-0216",
+        "a": "K116-0206",
+        "b": "K116-0216",
+        "question_score": 0,
+        "answer_score": 0.022,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "事後用衛星看到地面移動，為什麼還得拿遠方地震站的波形一起拼？",
+          "放寬預警條件後，「漏得比較少」和「多做幾次白工」為什麼能同時成立？"
+        ]
+      },
+      {
+        "id": "K116-0207~K116-0212",
+        "a": "K116-0207",
+        "b": "K116-0212",
+        "question_score": 0,
+        "answer_score": 0.022,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把前八秒的波形再算一次，會得到唯一一個規模嗎？",
+          "同一場地震，為什麼新聞台可以插播，機構也能收到網路通知，手機名單卻比較短？"
+        ]
+      },
+      {
+        "id": "K116-0209~K116-0218",
+        "a": "K116-0209",
+        "b": "K116-0218",
+        "question_score": 0,
+        "answer_score": 0.022,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "氣象署對臺北市沒有發那兩則手機警報，北捷怎麼還能停車巡檢？",
+          "0403 流傳的「早三分鐘就警告」影片，畫面上自己的時鐘說了什麼？"
+        ]
+      },
+      {
+        "id": "K116-0212~K116-0218",
+        "a": "K116-0212",
+        "b": "K116-0218",
+        "question_score": 0,
+        "answer_score": 0.022,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場地震，為什麼新聞台可以插播，機構也能收到網路通知，手機名單卻比較短？",
+          "0403 流傳的「早三分鐘就警告」影片，畫面上自己的時鐘說了什麼？"
         ]
       },
       {
@@ -383133,6 +387425,20 @@
         "questions": [
           "把蝴蝶鱗片裡的小柱拿掉，黑會差多少？",
           "只做出結構、不染黑，白色的羊毛會變黑嗎？"
+        ]
+      },
+      {
+        "id": "K116-0204~K116-0218",
+        "a": "K116-0204",
+        "b": "K116-0218",
+        "question_score": 0,
+        "answer_score": 0.02,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場花蓮地震，為什麼 6.2、6.8、7.2、7.1 都查得到？",
+          "0403 流傳的「早三分鐘就警告」影片，畫面上自己的時鐘說了什麼？"
         ]
       },
       {
@@ -383175,6 +387481,20 @@
         "questions": [
           "同一根不太能拉長的線，織成針織布後為什麼變得這麼有彈性？",
           "圍巾一拉就長一大截，裡面那條線到底伸長了多少？"
+        ]
+      },
+      {
+        "id": "K116-0305~K116-0313",
+        "a": "K116-0305",
+        "b": "K116-0313",
+        "question_score": 0,
+        "answer_score": 0.018,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "看到一張 +1 名片，為什麼還不能肯定對方申辦的是美國門號？",
+          "旅館官網同時印總機和分機，能直接把分機接在國際號碼最後面嗎？"
         ]
       },
       {
@@ -383262,6 +387582,34 @@
         ]
       },
       {
+        "id": "K116-0302~K116-0308",
+        "a": "K116-0302",
+        "b": "K116-0308",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣大哥大的海外撥號示範，為什麼教人長按剛剛才刪掉的 0？",
+          "明明每通市內電話都多按幾碼，工程師怎麼會說反而多出號碼？"
+        ]
+      },
+      {
+        "id": "K116-0309~K116-0313",
+        "a": "K116-0309",
+        "b": "K116-0313",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣朋友換了一家電信公司，為什麼整張門號名片仍然能沿用？",
+          "旅館官網同時印總機和分機，能直接把分機接在國際號碼最後面嗎？"
+        ]
+      },
+      {
         "id": "R41003~R41010",
         "a": "R41003",
         "b": "R41010",
@@ -383301,6 +387649,20 @@
         "questions": [
           "開頭介在兩個音之間，為什麼換個詞尾，你會猜成另一個字？",
           "旁邊的人從英語改說聽不懂的外語，熟悉的聲音還有一樣大的優勢嗎？"
+        ]
+      },
+      {
+        "id": "K116-0309~K116-0310",
+        "a": "K116-0309",
+        "b": "K116-0310",
+        "question_score": 0,
+        "answer_score": 0.014,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣朋友換了一家電信公司，為什麼整張門號名片仍然能沿用？",
+          "把羅馬旅館號碼塞進一個整數欄位，那顆重要的 0 怎麼保存？"
         ]
       },
       {
@@ -383388,6 +387750,20 @@
         ]
       },
       {
+        "id": "K116-0309~K116-0311",
+        "a": "K116-0309",
+        "b": "K116-0311",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣朋友換了一家電信公司，為什麼整張門號名片仍然能沿用？",
+          "一串數字已經以 49 開頭，通訊錄工具怎麼還猜不到前兩碼是不是國碼？"
+        ]
+      },
+      {
         "id": "R43005~R43009",
         "a": "R43005",
         "b": "R43009",
@@ -383416,6 +387792,76 @@
         ]
       },
       {
+        "id": "K116-0207~K116-0211",
+        "a": "K116-0207",
+        "b": "K116-0211",
+        "question_score": 0,
+        "answer_score": 0.012,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把前八秒的波形再算一次，會得到唯一一個規模嗎？",
+          "新北市沒列進那兩則手機警報，蘆洲國中的師生那天卻聽到了什麼？"
+        ]
+      },
+      {
+        "id": "K116-0207~K116-0213",
+        "a": "K116-0207",
+        "b": "K116-0213",
+        "question_score": 0,
+        "answer_score": 0.012,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把前八秒的波形再算一次，會得到唯一一個規模嗎？",
+          "日本對同一場花蓮地震列出「82.8 秒」，那是誰可以提早反應的時間？"
+        ]
+      },
+      {
+        "id": "K116-0208~K116-0210",
+        "a": "K116-0208",
+        "b": "K116-0210",
+        "question_score": 0,
+        "answer_score": 0.012,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場花蓮地震，把南邊和北邊的測站分開，哪一組會估得比較小？",
+          "氣象署在 07:58:24 寄出，國震中心表裡為什麼還有另外兩個時間？"
+        ]
+      },
+      {
+        "id": "K116-0208~K116-0218",
+        "a": "K116-0208",
+        "b": "K116-0218",
+        "question_score": 0,
+        "answer_score": 0.012,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場花蓮地震，把南邊和北邊的測站分開，哪一組會估得比較小？",
+          "0403 流傳的「早三分鐘就警告」影片，畫面上自己的時鐘說了什麼？"
+        ]
+      },
+      {
+        "id": "K116-0211~K116-0216",
+        "a": "K116-0211",
+        "b": "K116-0216",
+        "question_score": 0,
+        "answer_score": 0.012,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "新北市沒列進那兩則手機警報，蘆洲國中的師生那天卻聽到了什麼？",
+          "放寬預警條件後，「漏得比較少」和「多做幾次白工」為什麼能同時成立？"
+        ]
+      },
+      {
         "id": "P64-025~P64-028",
         "a": "P64-025",
         "b": "P64-028",
@@ -383441,6 +387887,104 @@
         "questions": [
           "三條像口哨的聲音，怎麼有人聽得出整句話？",
           "兩人同時說話，熟人搶著講，是幫你認出他的話，還是也幫你忽略他？"
+        ]
+      },
+      {
+        "id": "K116-0202~K116-0210",
+        "a": "K116-0202",
+        "b": "K116-0210",
+        "question_score": 0,
+        "answer_score": 0.011,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北捷運上的乘客，怎麼可能等車停了才知道外面發生地震？",
+          "氣象署在 07:58:24 寄出，國震中心表裡為什麼還有另外兩個時間？"
+        ]
+      },
+      {
+        "id": "K116-0205~K116-0218",
+        "a": "K116-0205",
+        "b": "K116-0218",
+        "question_score": 0,
+        "answer_score": 0.011,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "第一批手機警報發出時，這場地震最劇烈的破裂階段已經過了嗎？",
+          "0403 流傳的「早三分鐘就警告」影片，畫面上自己的時鐘說了什麼？"
+        ]
+      },
+      {
+        "id": "K116-0206~K116-0209",
+        "a": "K116-0206",
+        "b": "K116-0209",
+        "question_score": 0,
+        "answer_score": 0.011,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "事後用衛星看到地面移動，為什麼還得拿遠方地震站的波形一起拼？",
+          "氣象署對臺北市沒有發那兩則手機警報，北捷怎麼還能停車巡檢？"
+        ]
+      },
+      {
+        "id": "K116-0207~K116-0209",
+        "a": "K116-0207",
+        "b": "K116-0209",
+        "question_score": 0,
+        "answer_score": 0.011,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把前八秒的波形再算一次，會得到唯一一個規模嗎？",
+          "氣象署對臺北市沒有發那兩則手機警報，北捷怎麼還能停車巡檢？"
+        ]
+      },
+      {
+        "id": "K116-0207~K116-0210",
+        "a": "K116-0207",
+        "b": "K116-0210",
+        "question_score": 0,
+        "answer_score": 0.011,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把前八秒的波形再算一次，會得到唯一一個規模嗎？",
+          "氣象署在 07:58:24 寄出，國震中心表裡為什麼還有另外兩個時間？"
+        ]
+      },
+      {
+        "id": "K116-0209~K116-0213",
+        "a": "K116-0209",
+        "b": "K116-0213",
+        "question_score": 0,
+        "answer_score": 0.011,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "氣象署對臺北市沒有發那兩則手機警報，北捷怎麼還能停車巡檢？",
+          "日本對同一場花蓮地震列出「82.8 秒」，那是誰可以提早反應的時間？"
+        ]
+      },
+      {
+        "id": "K116-0209~K116-0216",
+        "a": "K116-0209",
+        "b": "K116-0216",
+        "question_score": 0,
+        "answer_score": 0.011,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "氣象署對臺北市沒有發那兩則手機警報，北捷怎麼還能停車巡檢？",
+          "放寬預警條件後，「漏得比較少」和「多做幾次白工」為什麼能同時成立？"
         ]
       },
       {
@@ -383875,6 +388419,174 @@
         "questions": [
           "連線突然沒資料了，怎麼分辨是傳完還是被截斷？",
           "串流還在繼續，為什麼要把前一把鑰匙忘掉？"
+        ]
+      },
+      {
+        "id": "K116-0206~K116-0211",
+        "a": "K116-0206",
+        "b": "K116-0211",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "事後用衛星看到地面移動，為什麼還得拿遠方地震站的波形一起拼？",
+          "新北市沒列進那兩則手機警報，蘆洲國中的師生那天卻聽到了什麼？"
+        ]
+      },
+      {
+        "id": "K116-0206~K116-0218",
+        "a": "K116-0206",
+        "b": "K116-0218",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "事後用衛星看到地面移動，為什麼還得拿遠方地震站的波形一起拼？",
+          "0403 流傳的「早三分鐘就警告」影片，畫面上自己的時鐘說了什麼？"
+        ]
+      },
+      {
+        "id": "K116-0207~K116-0218",
+        "a": "K116-0207",
+        "b": "K116-0218",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把前八秒的波形再算一次，會得到唯一一個規模嗎？",
+          "0403 流傳的「早三分鐘就警告」影片，畫面上自己的時鐘說了什麼？"
+        ]
+      },
+      {
+        "id": "K116-0208~K116-0209",
+        "a": "K116-0208",
+        "b": "K116-0209",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場花蓮地震，把南邊和北邊的測站分開，哪一組會估得比較小？",
+          "氣象署對臺北市沒有發那兩則手機警報，北捷怎麼還能停車巡檢？"
+        ]
+      },
+      {
+        "id": "K116-0208~K116-0211",
+        "a": "K116-0208",
+        "b": "K116-0211",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一場花蓮地震，把南邊和北邊的測站分開，哪一組會估得比較小？",
+          "新北市沒列進那兩則手機警報，蘆洲國中的師生那天卻聽到了什麼？"
+        ]
+      },
+      {
+        "id": "K116-0211~K116-0213",
+        "a": "K116-0211",
+        "b": "K116-0213",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "新北市沒列進那兩則手機警報，蘆洲國中的師生那天卻聽到了什麼？",
+          "日本對同一場花蓮地震列出「82.8 秒」，那是誰可以提早反應的時間？"
+        ]
+      },
+      {
+        "id": "K116-0216~K116-0218",
+        "a": "K116-0216",
+        "b": "K116-0218",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "放寬預警條件後，「漏得比較少」和「多做幾次白工」為什麼能同時成立？",
+          "0403 流傳的「早三分鐘就警告」影片，畫面上自己的時鐘說了什麼？"
+        ]
+      },
+      {
+        "id": "K116-0301~K116-0313",
+        "a": "K116-0301",
+        "b": "K116-0313",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣手機寫成 +886 9xx xxx xxx，國內開頭的 0 原本負責什麼？",
+          "旅館官網同時印總機和分機，能直接把分機接在國際號碼最後面嗎？"
+        ]
+      },
+      {
+        "id": "K116-0302~K116-0311",
+        "a": "K116-0302",
+        "b": "K116-0311",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣大哥大的海外撥號示範，為什麼教人長按剛剛才刪掉的 0？",
+          "一串數字已經以 49 開頭，通訊錄工具怎麼還猜不到前兩碼是不是國碼？"
+        ]
+      },
+      {
+        "id": "K116-0302~K116-0313",
+        "a": "K116-0302",
+        "b": "K116-0313",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "台灣大哥大的海外撥號示範，為什麼教人長按剛剛才刪掉的 0？",
+          "旅館官網同時印總機和分機，能直接把分機接在國際號碼最後面嗎？"
+        ]
+      },
+      {
+        "id": "K116-0313~K116-0314",
+        "a": "K116-0313",
+        "b": "K116-0314",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館官網同時印總機和分機，能直接把分機接在國際號碼最後面嗎？",
+          "台灣朋友落地羅馬看到當地業者名稱，為什麼親友還是可以撥原號？"
+        ]
+      },
+      {
+        "id": "K116-0313~K116-0315",
+        "a": "K116-0313",
+        "b": "K116-0315",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅館官網同時印總機和分機，能直接把分機接在國際號碼最後面嗎？",
+          "兩個台灣朋友都在羅馬，打給漫遊中的那一位，來電怎麼找到這裡？"
         ]
       },
       {
@@ -385352,10 +390064,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-19-pool-7102",
-    "target_count": 7102,
+    "revision": "2026-11-19-pool-7147",
+    "target_count": 7147,
     "reviewed_on": "2026-11-19",
-    "reason": "第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
+    "reason": "第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -392458,7 +397170,52 @@
       "K115-0215",
       "K115-0216",
       "K115-0217",
-      "K115-0218"
+      "K115-0218",
+      "K116-0001",
+      "K116-0002",
+      "K116-0003",
+      "K116-0004",
+      "K116-0005",
+      "K116-0006",
+      "K116-0007",
+      "K116-0008",
+      "K116-0009",
+      "K116-0010",
+      "K116-0301",
+      "K116-0302",
+      "K116-0303",
+      "K116-0304",
+      "K116-0305",
+      "K116-0306",
+      "K116-0307",
+      "K116-0308",
+      "K116-0309",
+      "K116-0310",
+      "K116-0311",
+      "K116-0312",
+      "K116-0313",
+      "K116-0314",
+      "K116-0315",
+      "K116-0316",
+      "K116-0201",
+      "K116-0202",
+      "K116-0203",
+      "K116-0204",
+      "K116-0205",
+      "K116-0206",
+      "K116-0207",
+      "K116-0208",
+      "K116-0209",
+      "K116-0210",
+      "K116-0211",
+      "K116-0212",
+      "K116-0213",
+      "K116-0214",
+      "K116-0215",
+      "K116-0216",
+      "K116-0217",
+      "K116-0218",
+      "K116-0219"
     ],
     "overflow": [
       {
@@ -394610,6 +399367,37 @@
       ],
       "origin": "wave115-x115-20261119",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave115-x115-20261119.json"
+    },
+    {
+      "id": "X116-NA001",
+      "question": "兩孔醬油瓶倒起來為什麼比單口瓶順？",
+      "reason": "單獨拿進氣通道和單口瓶競爭進氣做比較，仍會大幅重講 K115-0003 的氣液共用瓶口。本批先留下裝置與答案更獨立的題。",
+      "existing_ids": [
+        "K115-0003"
+      ],
+      "origin": "wave116-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave116-everyday-20261119.json"
+    },
+    {
+      "id": "X116-NA002",
+      "question": "改問剪布或剪塑膠時，算不算另一種弧刃幾何？",
+      "reason": "材質換了，兩刃交角如何維持的問題相同。併在 K116-0008，承接 P49-NA013 已記錄的材料去重。",
+      "existing_ids": [
+        "K116-0008"
+      ],
+      "origin": "wave116-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave116-everyday-20261119.json"
+    },
+    {
+      "id": "X116-NA003",
+      "question": "為什麼瓶身用凸紋讓人摸出哪一瓶是洗髮精？",
+      "reason": "K108-0116、K108-0117 已涵蓋洗髮用品瓶身的觸覺區分，加另一個瓶身照片不再收。",
+      "existing_ids": [
+        "K108-0116",
+        "K108-0117"
+      ],
+      "origin": "wave116-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave116-everyday-20261119.json"
     },
     {
       "question": "網路斷掉後重送，怎麼不重複下單？",
