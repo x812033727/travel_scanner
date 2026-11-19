@@ -10,6 +10,14 @@
 #     water, which replaces the script's bamboo buckets: the picked wheel has none, bible 〈道具〉);
 #   the new channel at sunset (e034 s26): the same grade of set-shentan-qu-l1 (round 4, 37043: a dry earthen channel dug
 #     across the furrowed field beside the tall frame's posts and the boulder) -> set-shentan-qu-xi-l1.
+# After the e034 independent review (2026-11-19, 必改 2, 建議 9), two more, each a new id (rule 19); the first two stay as they were:
+#   set-shentan-shi2-l3: a wider crop round the boulder (800x450 at 512,286; the wheel's lower right paddles and trestle at the
+#     left, the stone edge with the flat sandy bank above it and the tall frame's two posts in the middle, the boulder at the
+#     right about four tenths of the height with room above it for a person standing on it): -shi-l3 enlarged a 560x315 box
+#     2.34x, the boulder filled two thirds of it with no room for Qin Shuang knees-up on top, and its left half was water where
+#     s10 stood Xu Yan (e034 s10, s18 now send -shi2);
+#   set-shentan-qu-xi2-l1: a lighter sunset grade of set-shentan-qu-l1 (less contrast, less saturation, shadows lifted, only a
+#     faint warm balance, no strong red): -qu-xi-l1's orange and black read as CG against the pool and the fields (e034 s26).
 # The noon light (e034 s01-s21) sends set-shentan-l3 and its e033 crops as they are (shentan_l3.sh).
 # Usage: bash shentan_xi.sh refs-live/set-shentan-l3.png refs-live/set-shentan-qu-l1.png OUTDIR
 set -e
@@ -17,9 +25,12 @@ A=$1; Q=$2; O=$3
 G="eq=brightness=-0.06:saturation=1.10:contrast=1.05:gamma=0.92,colorbalance=rs=0.12:gs=0.02:bs=-0.16:rm=0.16:gm=0.04:bm=-0.16:rh=0.14:gh=0.04:bh=-0.18"
 c() { ffmpeg -v error -y -i "$1" -vf "crop=$3,scale=1312:736:flags=lanczos" -flags +bitexact -fflags +bitexact "$O/$2.png"; }
 c "$A" set-shentan-shi-l3 560:315:752:421   # the big grey boulder at the right, the stone edge and water, the tall frame's posts
+c "$A" set-shentan-shi2-l3 800:450:512:286  # wider: the wheel's lower paddles, the sandy bank and the posts, the boulder at the right
 X="$O/set-shentan-xi-l3.png"
 ffmpeg -v error -y -i "$A" -vf "$G" -flags +bitexact -fflags +bitexact "$X"
 c "$X" set-shentan-xi-an-l3  640:360:0:250    # as set-shentan-an-l3, at sunset
 c "$X" set-shentan-xi-lun-l3 640:360:380:200  # as set-shentan-lun-l3, at sunset
 c "$X" set-shentan-xi-ye-l3  560:315:340:20   # the top of the wheel, its upper paddles against the sky, at sunset
 ffmpeg -v error -y -i "$Q" -vf "$G" -flags +bitexact -fflags +bitexact "$O/set-shentan-qu-xi-l1.png"
+G2="eq=brightness=-0.02:saturation=0.80:contrast=0.82:gamma=1.10,colorbalance=rs=0.04:bs=-0.04:rm=0.06:gm=0.02:bm=-0.08:rh=0.06:gh=0.03:bh=-0.08"
+ffmpeg -v error -y -i "$Q" -vf "$G2" -flags +bitexact -fflags +bitexact "$O/set-shentan-qu-xi2-l1.png"

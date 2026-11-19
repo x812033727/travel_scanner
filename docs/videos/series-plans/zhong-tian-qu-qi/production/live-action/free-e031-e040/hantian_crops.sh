@@ -9,13 +9,15 @@
 #   -tian: the middle: sky, far hills and houses over a strip of field (s28, s33)
 #   -di:   the furrows only (s36)
 #   -hui (the whole picture, s40), -hui-tian (s37, s38), -hui-geng (s39): the grey grade and its crops.
-# First (2026-11-19, looked at 4x): ffmpeg delogo paints out three tiny dark verticals on the far field line (a figure-like post
-# at x 822-836, y 372-394; a thin pole at x 739-751; a thin pole by the right-hand houses at x 590-602) (rules 13, 34: nobody
-# extra in the frame, nothing modern); the patches are soft and only seen when magnified.
+# First: hantian_clean.py paints out three tiny dark verticals on the far field line (a figure-like post at x 825-837, y 376-395;
+# a thin goal-post-like frame at x 724-751; a thin pole by the right-hand houses at x 593-603) (rules 13, 34: nobody extra in the
+# frame, nothing modern). Until the e034 independent review (建議 7) this was ffmpeg delogo, which left soft grey boxes on the
+# horizon (visible in -tian, -liu and -di); hantian_clean.py interpolates straight across each thin box from the pixels just
+# outside it, feathered, so the horizon, the tree line and the furrows carry through (rule 33).
 # Usage: bash hantian_crops.sh refs-live/set-hantian-l1.png OUTDIR
 set -e
 S=$1; O=$2; A="$O/.hantian-clean.png"
-ffmpeg -v error -y -i "$S" -vf "delogo=x=822:y=372:w=14:h=22,delogo=x=739:y=364:w=12:h=32,delogo=x=590:y=346:w=12:h=26" -flags +bitexact -fflags +bitexact "$A"
+python3 -I "$(dirname "$0")/hantian_clean.py" "$S" "$A"
 c() { ffmpeg -v error -y -i "$1" -vf "crop=$3,scale=1312:736:flags=lanczos" -flags +bitexact -fflags +bitexact "$O/$2.png"; }
 c "$A" set-hantian-geng-l1 640:360:0:300
 c "$A" set-hantian-liu-l1  560:315:752:200

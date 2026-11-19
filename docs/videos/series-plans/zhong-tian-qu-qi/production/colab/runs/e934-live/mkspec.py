@@ -20,16 +20,21 @@ Run: python3 -I mkspec.py
   hand at the corner (s01), the over-the-shoulder backs (s05 left, s06 upper right), the girl's legs across his shoulders (s39),
   the three backs (s40). s12, s15, s19, s27, s30 keep ref2manifest's "Besides ..., only the other people the composition names"
   sentence (the composition counts them); s26 has none (no person sent) and the composition says "exactly four people".
-- Wides with Qin Shuang (s12, s19): extras_patch's shoes sentence would take her leather boots away; it names her boots there.
+- Wides with Qin Shuang (s12, s19): extras_patch's shoes sentence would take her leather boots away. e034 independent review
+  建議 3 (and e933 必改 6: no shoes for feet nobody sees): s12 names her boots and the two men on the stone edge only (the four
+  men in the water are waist-deep); s19 names Xu Yan and Carpenter Shi only (Qin Shuang knee-deep and the two men waist-deep).
   e933 review 必改 6: a wide whose people show no feet gets no shoes sentence: s23 (nobody), s40 (backs cut at the shoulders).
+- e034 independent review 必改 1: extras' clean sentence ends "the air is clear and still, a clean natural film image" (CLEAR),
+  which fights the wind of the pinwheel shots (s01-s03: the hot gust that spins it backwards; s34: it spins the right way) and
+  the swarm (s40: a band of specks in the air), and A-ling's cold wind (s38). Replaced per shot, as e923-live/mkspec.py's CLEAR.
 - The speaking gaze never names an unsent listener (e927 必改 5, bible rule 31): r2.py's GAZE_REFINE (the same words in d1 and in
   the refine text).
 - Every motion that opens a sentence after "never the mood. " is capitalised (e928 review 必改 1's fix); s03, s23, s24, s26, s40
   (no person) open with r2.py's NOBODY sentence, so the separator is there once.
 - Sets (r2.py PLACES): noon and afternoon set-shentan-l3 (s12, s19; gen-dh's own pick = pilot.py's newest, not swapped), -an-l3
   (s04, s06, s07, s13, s14, s15, s20, s21), -bian-l3 (s01, s08, s09, s17), -lun-l3 (s05), -tian-l3 (s02, s11, s16; s03 as the sky
-  only), -shi-l3 (s10, s18); sunset -xi-an-l3 (s22), -xi-l3 (s23), -xi-ye-l3 (s24), -xi-lun-l3 (s25), the channel
-  set-shentan-qu-xi-l1 (s26); the fields set-hantian-geng-l1 (s27, s29, s34, s35), -tian-l1 (s28, s33), -liu-l1 (s30, s31, s32),
+  only), the wider boulder crop -shi2-l3 (s10, s18; review 必改 2; -shi-l3 is not sent); sunset -xi-an-l3 (s22), -xi-l3 (s23),
+  -xi-ye-l3 (s24), -xi-lun-l3 (s25), the channel in the lighter grade set-shentan-qu-xi2-l1 (s26; review 建議 9); the fields set-hantian-geng-l1 (s27, s29, s34, s35), -tian-l1 (s28, s33), -liu-l1 (s30, s31, s32),
   -di-l1 (s36), grey -hui-tian-l1 (s37, s38), -hui-geng-l1 (s39), -hui-l1 (s40). Every swap is sent with an absolute path by
   prep934.sh.
 - No seed of this episode has been run. Seeds 9341101/9341102.
@@ -55,7 +60,12 @@ SKY_CLAUSE = "The pale sky shown in <Picture 1> gives only the colour of the bac
 NOBODY_OLD = "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. "
 NOBODY_SKY = "Throughout the shot the framing stays as it is. The picture gives the colour of the sky only, never the mood. "
 SHOES = "Every person in the frame wears dark cloth shoes on both feet."
-SHOES_QIN = "Qin Shuang wears her leather boots and every other person in the frame dark cloth shoes on both feet."
+SHOES_S12 = "Qin Shuang wears her leather boots and the two men on the stone edge dark cloth shoes on both feet."
+SHOES_S19 = "Xu Yan and Carpenter Shi wear dark cloth shoes on both feet."
+CLEAR = "the air is clear and still, a clean natural film image"
+WINDY = "the air is clear, a steady wind blowing, a clean natural film image"
+COLD = "a cold wind rising, a clean natural film image"
+FILM = "a clean natural film image"
 STAFF = ", leaning on a polished old bamboo walking staff"
 ST = "set-shentan-l3.png"    # pilot.py's newest set-shentan for dh-set-shentan-t1 (every LOC opens with or carries "deep pool")
 INSERTS = ["s03"]
@@ -107,8 +117,13 @@ for sid in ids:
         add(sid, [ONLY_SHE if sc["data"]["characters"][0] in ("qinshuang", "xiaohe", "aling") else ONLY_HE, NO_COPY])
 
 # The wides with Qin Shuang: her boots. The wides whose people show no feet: no shoes sentence (e933 必改 6).
-for sid in ("s12", "s19"):
-    add(sid, [SHOES, SHOES_QIN])
+add("s12", [SHOES, SHOES_S12])
+add("s19", [SHOES, SHOES_S19])
+# The clean sentence (review 必改 1): the wind of the pinwheel, A-ling's cold wind, the swarm in the air.
+for sid in ("s01", "s02", "s03", "s34"):
+    add(sid, [CLEAR, WINDY])
+add("s38", [CLEAR, COLD])
+add("s40", [CLEAR, FILM])
 for sid in ("s23", "s40"):
     add(sid, [SHOES + " ", ""])
 # Elder Han holds no staff (s21, s22, s27, s28, s29).
@@ -153,9 +168,9 @@ PLACE = {
     ST: {"set-shentan-l3.png": ["s12", "s19"],
          "set-shentan-an-l3.png": ["s04", "s06", "s07", "s13", "s14", "s15", "s20", "s21"],
          "set-shentan-bian-l3.png": ["s01", "s08", "s09", "s17"], "set-shentan-lun-l3.png": ["s05"],
-         "set-shentan-tian-l3.png": ["s02", "s03", "s11", "s16"], "set-shentan-shi-l3.png": ["s10", "s18"],
+         "set-shentan-tian-l3.png": ["s02", "s03", "s11", "s16"], "set-shentan-shi2-l3.png": ["s10", "s18"],
          "set-shentan-xi-an-l3.png": ["s22"], "set-shentan-xi-l3.png": ["s23"], "set-shentan-xi-ye-l3.png": ["s24"],
-         "set-shentan-xi-lun-l3.png": ["s25"], "set-shentan-qu-xi-l1.png": ["s26"],
+         "set-shentan-xi-lun-l3.png": ["s25"], "set-shentan-qu-xi2-l1.png": ["s26"],
          "set-hantian-geng-l1.png": ["s27", "s29", "s34", "s35"], "set-hantian-tian-l1.png": ["s28", "s33"],
          "set-hantian-liu-l1.png": ["s30", "s31", "s32"], "set-hantian-di-l1.png": ["s36"],
          "set-hantian-hui-tian-l1.png": ["s37", "s38"], "set-hantian-hui-geng-l1.png": ["s39"], "set-hantian-hui-l1.png": ["s40"]},
@@ -187,7 +202,7 @@ spec = {
               "place sentence, one sky crop written as the colour of the sky only), s23, s24 (the wheel), s26 (the channel), s40 (the "
               "swarm). Xu Yan's angle-b nowhere; the wide s19 his portrait only; s08, s09, s33 his portrait then angle-a. "
               "A-ling never angle-b; s14 her portrait only; s36, s38 her portrait then angle-a. Qian Yuanwai never angle-b; s30 his "
-              "portrait only. Sets: see mkspec.py (the pool at noon and afternoon set-shentan-l3 and crops, the free sunset -xi, the "
+              "portrait only. The clean sentence's 'clear and still' replaced in s01-s03, s34 (wind), s38 (cold wind), s40 (the swarm). Sets: see mkspec.py (the pool at noon and afternoon set-shentan-l3 and crops, the free sunset -xi, the "
               "channel -qu-xi, the fields set-hantian crops and the grey -hui); the pool words leave the field and channel prompts. "
               "No off-screen sentence (r2.py OFFSCREEN_SPEECH = False). Seeds 9341101/9341102."),
     "seeds": [9341101, 9341102],

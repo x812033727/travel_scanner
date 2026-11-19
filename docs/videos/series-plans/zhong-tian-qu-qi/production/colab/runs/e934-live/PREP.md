@@ -4,6 +4,7 @@
 - 依據：第 33 集收尾後的前置全套（`writer-tools/e033-r2/{r2.py,review.md,review-independent.md}`、`colab/runs/e933/extras.json`、`colab/runs/e933-live/{mkspec.py,spec.json,PREP.md}`、scratchpad `tools/{build933.sh,prep933.sh,rec933.sh,mkhints933.py,fw933.py,f0y933.py,span933.sh}`、`e933d1.sh`）、`r2-bible-e031-e040.md`（〈接點〉33→34 已照 `set-shentan-l3` 改過）、任務檔的教訓、兩份第 33 集審稿的通則。
 - **第 33 集還沒拍完**：s01 照第 33 集 `r2.py` 的 s35（許硯在左半、手按右緣的葉板，`-bian-l3`）與 s40（錢員外在田邊笑，第 34 集不重播）寫。**第 33 集成片後要照實拍（`e933-live.mp4` 最後 15 秒）重核 s01**：許硯在畫面哪一側、哪隻手按葉板、紙風車在不在畫面裡、光。
 - scratchpad = `/tmp/claude-0/-home-user-travel-scanner/31162243-7ed2-5899-b9c2-443c1f2a5c1a/scratchpad`；進度 `e934prep/PROGRESS.md`。
+- **2026-11-19 收尾（錄音後核對＋獨立審稿套用）**：40 句錄音核對完（§4；重錄 4 句的腳本 `tools/rec934-retake.sh`，**沒跑**）；獨立審稿 `writer-tools/e034-r2/review-independent.md` 必改 4 項全改、建議 12 項改 10 項（§7）。改完重跑 `build934.sh`、`prep934.sh`：**80 支、564 秒不變**，preflight 0／0、`check_manifest`／`h3r` 0／0、所有掃描 0、免費圖 22 張逐位元重建相同；`e934d1.sh` `DRY=1` 通過。改前的檔在 scratchpad `e934prep/*-before-review.*`。
 
 ## 1. 分鏡（`writer-tools/e034-r2/r2.py`，40 鏡＝c01–c40）
 
@@ -31,10 +32,10 @@
 
 | 圖 | 怎麼來 | 鏡 |
 | --- | --- | --- |
-| `set-shentan-shi-l3` | `shentan_xi.sh`：`set-shentan-l3` 裁大石一帶 | s10、s18 |
+| ~~`set-shentan-shi-l3`~~ → **`set-shentan-shi2-l3`** | `shentan_xi.sh`：`set-shentan-l3` 裁大石一帶；獨立審稿必改 2 後改送較寬的 `800:450:512:286`（石頂上方留得出膝以上的人、許硯站沙岸不站水裡） | s10、s18 |
 | `set-shentan-xi-l3`／`-xi-an-l3`／`-xi-lun-l3`／`-xi-ye-l3` | 同上：日落調色與裁切（`-xi-ye` 是輪頂葉板對天的新框） | s23／s22／s25／s24 |
-| `set-shentan-qu-xi-l1` | 同上：`set-shentan-qu-l1` 日落調色 | s26 |
-| `set-hantian-geng-l1`／`-liu-l1`／`-tian-l1`／`-di-l1` | `hantian_crops.sh`：`set-hantian-l1` 先 delogo 塗掉遠處三根小竿（一根像人影），再裁 | s27 s29 s34 s35／s30–s32／s28 s33／s36 |
+| ~~`set-shentan-qu-xi-l1`~~ → **`set-shentan-qu-xi2-l1`** | 同上：`set-shentan-qu-l1` 日落調色；建議 9 後改送較輕的調色（降對比、降飽和、提暗部，不再橘黑） | s26 |
+| `set-hantian-geng-l1`／`-liu-l1`／`-tian-l1`／`-di-l1` | `hantian_crops.sh`：`set-hantian-l1` 先塗掉遠處三根小竿（一根像人影），再裁；建議 7 後塗竿改用 `hantian_clean.py`（從框外像素內插、柔邊；原本 delogo 留下灰色方塊），同 id 重做 | s27 s29 s34 s35／s30–s32／s28 s33／s36 |
 | `set-hantian-hui-l1`／`-hui-tian-l1`／`-hui-geng-l1` | 同上：灰暗調色（蝗群吃掉夕陽）與裁切 | s40／s37 s38／s39 |
 
 沿用第 33 集：`set-shentan-l3`（s12、s19）、`-an-l3`（s04、s06、s07、s13、s14、s15、s20、s21）、`-bian-l3`（s01、s08、s09、s17）、`-lun-l3`（s05）、`-tian-l3`（s02、s11、s16；s03 插鏡只當天的顏色）。
@@ -48,11 +49,20 @@
 | scratchpad `tools/prep934.sh` | 照 `prep933.sh` 的順序與檢查，加：田與渠沒有潭字、沒有竹斗木槽、蝗群不寫煙雲、竹杖與繩分開、鐵錘只在 s13、不寫 soaked／muddy、阿令不寫紅唇。log `tools/prep934.log` |
 | scratchpad `e934d1.sh` | 80 支，G4、session `zt-live3`（**第 33 集跑完、確認 session 空了才可以跑**）、兩輪補缺、跑完釋放 VM。**沒有執行**（`DRY=1` 0 錯） |
 
-**檢查結果（2026-11-19）**：`build934.sh` 40 鏡、storyboard-check 215 秒、shot_reading 6 個 `cast.speaker`（同上，刻意）；免費圖 20 張逐位元重建相同、`set-shentan` 最新版 l3、`set-hantian` 最新版 l1；st1 DRY `check_manifest` 0／0、st1 preflight 0 錯 6 警告（s02 s14 s15 s22 s34 s37 的 paper：紙風車的白紙葉，CG 階段的提醒）；**80 支、564 秒**（5 秒 4、6 秒 38、8 秒 32、10 秒 6）；分隔句每支各一次；精修句漏進 d1 0；`prompt_sha256` 與兩種子一致；送圖、點名、場景、光線逐鏡相符；**preflight 0 錯 0 警告**；`check_manifest.py`、`h3r.sh check` 0／0；否定名詞、會長字的名詞、掛著的東西、open、點名畫外人、插鏡地點字、兵器字、泥／金箔、田裡的潭字、竹斗木槽、煙雲、crowd／gully 全 0。`e934d1.sh` `DRY=1` 0 錯。
+**檢查結果（2026-11-19，獨立審稿套用後重跑；數字跟第一次一樣，除了免費圖 22 張）**：`build934.sh` 40 鏡、storyboard-check 215 秒、shot_reading 6 個 `cast.speaker`（同上，刻意）；免費圖 22 張逐位元重建相同（加 `-shi2`、`-qu-xi2`）、`set-shentan` 最新版 l3、`set-hantian` 最新版 l1；st1 DRY `check_manifest` 0／0、st1 preflight 0 錯 6 警告（s02 s14 s15 s22 s34 s37 的 paper：紙風車的白紙葉，CG 階段的提醒）；**80 支、564 秒**（5 秒 4、6 秒 38、8 秒 32、10 秒 6）；分隔句每支各一次；精修句漏進 d1 0；`prompt_sha256` 與兩種子一致；送圖、點名、場景、光線逐鏡相符；**preflight 0 錯 0 警告**；`check_manifest.py`、`h3r.sh check` 0／0；否定名詞、會長字的名詞、掛著的東西、open、點名畫外人、插鏡地點字、兵器字、泥／金箔、田裡的潭字、竹斗木槽、煙雲、crowd／gully 全 0；加上獨立審稿的逐鏡斷言（s01–s03、s34、s38、s40 沒有 clear and still；s10 沙岸；s30 人眼高、沒有仰拍；s22 閘在兩段石階中間、水從缺口衝出；s24 沒有地點句；s01 兩手；s12 新木板與鞋句；s19 鞋句；s37 s38 背景只有天；s35 s36 水光；s14 畫右的水車）全過。`e934d1.sh` `DRY=1` 0 錯。
 
 **估價**：照第 33 集的估法（80 支 582 秒約 26–30 CU）與第 31、32 集實跑，本集 80 支 564 秒約 **2.5–2.9 小時、25–29 CU（約 US$2.5–2.9）**。Colab 餘額以第 33 集 d1 跑完後的數字為準（第 33 集收尾時 477.98 CU，d1 再用約 26–30）；近 400 CU 先問站主。
 
-## 4. 錄音（`tools/rec934.sh`，**沒跑**：站台 TTS，等協調者）
+## 4. 錄音（`tools/rec934.sh`，協調者 2026-11-19 錄好 40 句）與錄音後核對
+
+**核對結果**（全文 `~/mokaair-work/videos/zhong-tian-qu-qi-e934-dh/audio/README-retakes.txt`；聽寫 `fw934.txt`、音高 `f0y934.txt`、人聲長度 `span934.txt`）：
+- **聽寫**（faster-whisper，單句與帶上下文）：帶上下文 40 句都讀對（只有標點差）；系統三句的濾波讓單句聽寫聽錯，原檔 raw-tts 讀對，照第 33 集接受。
+- **要重錄 4 句**（`tools/rec934-retake.sh`，站台 TTS 四次，**沒跑**；第一次的檔移到 `take1/`）：**a02**（許硯 s03 畫外，錄音直接用）音高 219 Hz，愣住的自語念成快喊，改語氣「畫外，愣住，低聲自語，聲音低沉平穩」；**a17**（秦霜 s16）單句聽成「第一次片放好了」，四→八→十二是這場的笑點，改語氣「喘，咬字清楚」；**a19**（秦霜 s18）多一個 0.6 秒的「欸」、「三班」聽成「三白」，TTS 改用同音字「到」不用拼音（第 33 集 a19 的教訓）；**a27**（韓伯 s28）多一個「啊」（許先生啊），也是全集最緊的一句（7.20 秒／8 秒）。s16、s18、s28 人在畫面上（片段的聲音為主），只有 a02 是一定會用到的錄音；重錄前剪接先用 `a02-p75`。
+- **音高**（YIN，拍法 43）：**阿令**四句 178–193 Hz，跟第 31 集一樣低於聖經 225–265，照第 31 集**不升**（升上去會撞秦霜）。**阿令與秦霜**：第二場秦霜 231–251，差 3.1–4.0 個半音，夠；第三場秦霜 s31 那句 198 太近（1.8／0.6），做 `a30-p117`（rubberband 升，234 Hz，差 3.3 以上）；s35 的笑 346 超出範圍，做 `a35-p73`（asetrate 降，258）。**韓伯與石木匠**：這集石木匠升 1.19 倍會撞上韓伯哭與喊（141–143），改把韓伯平穩的兩句稍降：第一場 `a06-p93`（120，比石木匠 148 低 3.6）、第三場 `a27-p91`（97，比石木匠 116 低 3.1；重錄後再量）；第二場本來就差 3.6。範圍外的備援：錢員外 `a29-p75`、`a31-p80`（原 221／208）、秦霜 s19 的喊 `a20-p85`、s23 畫外「轉了！」`a24-p119`（原 165，偏低，聽過再挑）。所有變調檔帶上下文聽寫都 r1.00。往下一律 asetrate（加 atempo 保長度）、往上 rubberband 保留共振峰。
+- **人聲長度對 BUY**：40 句都放得下，**BUY 不改**。指定看的 s12 3.68 秒／6、s22 3.76／6、s34 4.36／6、s40 6.08／8；最緊 s28 7.20／8（重錄）、s25 6.72／8、s32 6.40／8。有 11 個 8 秒鏡的台詞 4.3–5.2 秒、6 秒也放得下，照「品質為主」留 8 秒（慢的角色、停頓、動作）；改 6 秒可省 44 秒草稿（約 2 CU），站主要省再改。
+- 聖經〈人物〉的阿令、韓伯列已記下這集的實測與做法。
+
+以下是錄音前的計畫（留著對照）：
 
 40 句、7 個聲音加系統（許硯 Umbriel、小禾 Leda、韓伯 Enceladus、石木匠 Schedar、秦霜 Autonoe、阿令 Achernar、錢員外 Algenib、系統 Callirrhoe）。
 TTS 拼音提示（`tools/mkhints934.py` 從 video.json 產生 `tools/e934-tts-hints.json`，字幕不動，14 句）：轉 zhuàn a01 a02 a05 a23 a24 a25 a34、釘 dìng a04 a12 a14（第 33 集 a19 第二個「釘」被吞掉的教訓）、數 shǔ a18、倒 dào a19、長 zhǎng／得 děi a31、晃 huǎng a36。
@@ -105,6 +115,7 @@ TTS 拼音提示（`tools/mkhints934.py` 從 video.json 產生 `tools/e934-tts-h
 
 ## 5. 還缺、要付費才補得上的（都不擋 d1；建議，不自己跑）
 
+0. **獨立審稿兩項等 d1 看了再定**（2026-11-19）：(a) **s40 蝗群參考圖**：d1 兩支都畫成一團煙或沙塵（必改 1 的 clear-air 句已經拿掉），才在 `set-hantian-hui-l1` 的遠山上用 Pillow 撒小黑點組成一條前緣散開的帶子，新 id（免費）。(b) **「田壟有水」付費圖** `set-hantian-shui-l1`（下面第 2 項，約 1.5–2 CU）：s35、s36 已在文字寫出腳邊渠水與田壟裡閃光的褐水（建議 5）；d1 兩支都看不出水、或畫成整片水田，才做，s27、s29、s34–s36 一起受益。
 1. **閘門與石邊缺口**圖上沒有（s20–s22、第 33 集 s32–s33 同）：文字寫在 `-an-l3`／`-xi-an-l3` 的石階缺口。若第 33 集 d1 的閘門畫不出來，建議開拍前用一次 Qwen-Image-Edit「只改一件事」在 `set-shentan-an-l3` 的石階缺口加一道三片木板的小閘與閘頂一條短粗繩，做 `set-shentan-an-l4`（再免費做日落版），第 33、34 集 fix 共用；Colab 冷啟動加兩個種子約 **1.5–2 CU**。
 2. **水進田**：`set-hantian-l1` 是乾的，水只寫在文字。若 d1 畫成整片水田或完全沒水，建議 Qwen 只改一件事：「田埂前那幾條田壟裡有一薄層褐水」，做 `set-hantian-shui-l1`（再免費裁切與調灰），約 **1.5–2 CU**；第 35 集的 `-yang`（插秧）不受影響。
 3. **田的季節**：大樹與遠處的樹是金黃與紅的秋葉（早春大旱應該是光禿或剛冒芽）。挑圖時接受過；要改就 Qwen 只改一件事「大樹與遠處的樹變成光禿的枯枝」，約 **1.5–2 CU**，第 35、39、40 集的 `-yang`／`-shou`／`gucang-wai` 也要跟著重做才接得上，**建議不改**。
@@ -113,8 +124,34 @@ TTS 拼音提示（`tools/mkhints934.py` 從 video.json 產生 `tools/e934-tts-h
 
 ## 6. 還擋著開拍的事
 
+**fix／retake 的提醒（獨立審稿建議 6，一定要做）**：d1 的潭字是 `mkspec.py` 拿掉的；**s26–s40 的每個 fix／retake spec 都要帶 `[R2.POOLMARK, ""]`（s27–s40）與 `[R2.XQ_GEN, R2.XQ_LIVE]`（s26）兩組替換**，`prep` 的「田裡沒有潭字」檢查照跑。第 23 集 `fix1/spec.json` 那種自己重寫 replace 清單的做法，漏了就會把「below the deep pool」帶回來、模型在田裡畫出潭。同理，fix 也要帶 `mkspec.py` 的 clear-air 逐鏡替換（s01–s03、s34、s38、s40）與鞋句（s12、s19）。`video.json`／`storyboard.md` 表上的提示詞仍帶這些字（給 `gen-dh` 的 `SET` 用），表頭已加一行說明。
+
+
 1. 第 33 集 d1 還在 `zt-live3` 跑；第 34 集 d1 要等它跑完、session 放掉。
-2. 錄音（`tools/rec934.sh`，站台 TTS 40 句）與錄音後核對、BUY 重核。
-3. 獨立分鏡審查（`e934prep/review-prompt.md`），審完照必改改 `r2.py`、重跑 `build934.sh`、`prep934.sh`。
+2. ~~錄音與錄音後核對、BUY 重核~~（2026-11-19 做完，BUY 不改）；重錄 4 句 `tools/rec934-retake.sh` 等協調者（不擋 d1：只影響剪接）。
+3. ~~獨立分鏡審查~~（2026-11-19 做完並套用，§7）。
 4. 第 33 集成片後重核 s01。
 5. 花錢：`e934d1.sh` 約 25–29 CU，等協調者／站主。
+
+## 7. 獨立審稿怎麼套（2026-11-19，`writer-tools/e034-r2/review-independent.md`）
+
+| 項目 | 怎麼處理 |
+| --- | --- |
+| 必改 1：extras 的「the air is clear and still」 | `mkspec.py` 加 `CLEAR` 逐鏡替換：s01、s02、s03、s34 →「the air is clear, a steady wind blowing, a clean natural film image」；s38 →「a cold wind rising, a clean natural film image」；s40 →「a clean natural film image」。`prep934.sh` 斷言 |
+| 必改 2：s10、s18 大石框太緊 | `shentan_xi.sh` 加較寬的 `set-shentan-shi2-l3`（`800:450:512:286`，全尺寸看過）；`PLACE` 改送；s10 許硯改站「石邊後的沙岸、畫面中間」；`-shi-l3` 不送 |
+| 必改 3：s30 低角度仰拍高田埂 | `cam` 改「Wide shot, slow push in」、comp 人眼高越過田壟看大樹下的田埂、視線「the water in the furrows before him」（`GAZE_REFINE` 同步）、zh 改「照圖的高度」 |
+| 必改 4：s22 閘門位置與水流 | comp 寫閘門立在他前面兩段石階中間的窄缺口；motion 改「a white rush of water pours through the gap toward the wheel at the right」（拿掉 pond water） |
+| 建議 1：s24 地點句 | 加 `xi_e`（只寫時間與光），s24 改用 |
+| 建議 2：s01 與第 33 集 s35 的手 | s01 改兩手平掌、動作改手指蜷起（中景保留：左下的小手要入鏡）；聖經〈接點〉33→34 改成兩手。第 33 集成片後照實拍再核 |
+| 建議 3：s12 前景與鞋句 | 前景改三片新木板；鞋句 s12 只寫秦霜皮靴與石邊兩人、s19 只寫許硯與石木匠（水裡的人看不到腳）；s19 三班兩人寫「再外面一步」 |
+| 建議 4：s37、s38 山在背後又在畫右 | 背景只寫變暗的天；s38 動作改「偏頭側耳聽、定住」 |
+| 建議 5：s35、s36 水光 | s35 前景寫腳邊渠水沿田壟流進、閃著、水光映在臉上；s36 背景寫田壟裡閃著的褐水 |
+| 建議 6：fix／retake 的潭字 | 寫進本檔 §6 與 `r2.py` 表頭（`storyboard.md`） |
+| 建議 7：田的 delogo 灰塊 | `hantian_clean.py` 重塗（窄框內插、柔邊），田的 7 張同 id 重做，`prep934.sh` 逐位元比對 22 張 |
+| 建議 8：聖經金柳紅樹 | 聖經〈時間線〉與〈場景〉（井坑列、旱田列）照實改：圖上有金柳與紅樹、挑圖時接受、文字不寫葉色；改圖不做（約 1.5–2 CU、第 35、39、40 集四張要重做） |
+| 建議 9：s26 新渠太 CG | 免費較輕調色 `set-shentan-qu-xi2-l1`；重畫不做；d1 讀不出就照稿子刪 c26 |
+| 建議 10：s40 蝗群會畫成煙 | **先不做**，等 d1（§5 第 0 項 (a)）；必改 1 已拿掉 clear-air 句 |
+| 建議 11：s14 視線 | 改「toward the wheel at the right of the frame」，`GAZE_REFINE` 同步 |
+| 建議 12：s10、s18 的備案（必改 2 沒做時用） | 不用：必改 2 已做 |
+| 付費的「田壟有水」圖 | **先不做**，等 d1（§5 第 0 項 (b)） |
+
