@@ -128,11 +128,11 @@ const SERIES_TEXT_PINS = {
   "verifier:explainer-cartoon": [4305, "6f41570e5090987327a200b7790a6ecdec88c8a0350de2ca49b74cb4e7ca95db"],
   "planner:discuss-cartoon": [7246, "86fb87e98cce5315e954f8505f00c56d3aa6693ccec3e9e72d70cbb7fee014c4"],
   "writer:discuss-cartoon": [32097, "d1ecb86c0ad68409ecbbb3e0db137882a5900a27f9ac39aff706551af082dd18"],
-  "planner:bible-explainer-mystery": [9560, "96629ae4e51040e354111f8659249f1526c57070993a5025c1fbf1e58564adb6"],
-  "writer:explainer-mystery": [38124, "748d45b5237a76e76aa8190454ec08ee0671e8376077225236b10f26f65d5daa"],
+  "planner:bible-explainer-mystery": [9615, "8eb4a18c04b487826fa483303f255aa5b1bb8050836d597aa923038ce7b22172"],
+  "writer:explainer-mystery": [38236, "521eb34b3427f6919a7785282f6bbeba34eb0726df46fc83b7adba67bc56e2fa"],
   "verifier:explainer-mystery": [6433, "e84a1810dab0b060272622dae14a95879470965678851713608fc5ac60dc4b2a"],
-  "planner:discuss-mystery": [10189, "615cac5cc3db625e6106081948ac8a43bddb397b06ced096bb9236201b0d1b0e"],
-  "writer:discuss-mystery": [36661, "ab0d9b7bf78a62b4b520377331d5534c56360c1494ee4131844a1470b97d80df"],
+  "planner:discuss-mystery": [10244, "5049e3b4666364e854671e6c2b010e5d382b974fbcdfad1defdf14f26326208c"],
+  "writer:discuss-mystery": [36773, "ec4c2d8e3ed4ca1605a3dc821cb8f9c1c773a8335a0b5fa4e6da20b4c8111bec"],
 };
 
 test("the ten texts of the two profiled series are the pinned ones, composed with no genre section", () => {

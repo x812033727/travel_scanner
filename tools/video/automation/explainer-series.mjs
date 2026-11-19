@@ -268,7 +268,8 @@ every other hook rule stands):
   a table of contents. At most one forward hook in the whole episode says so out loud, and
   「還記得…」 at most five times.
 - "loops" lists at least 8 for ten minutes of narration (about one for every 75 seconds), at
-  least 3 of them planted in the first chapter, and every one is paid off.
+  least 2 of them planted in the first chapter (the hook's contrast and the promise's question; one
+  climax label may add a third, never a menu of questions), and every one is paid off.
 - The series has a music bed under the whole narration, as the brand stories do: when
   "drama_settings.music_enabled" is true, "music" is never left out.
 ${STORY_OPENING_RULE}
@@ -300,8 +301,8 @@ which tells a newcomer what this is and why it is worth watching); the hook's co
 it ended up against how small it started, with at most one or two climaxes named and cut off
 before their results, never the plot (「鉤子：…」); the promise sentence 「今天我們就來聊聊…」 with
 the question (「承諾句：…」); the open loops (「鉤子：<what is held back> → 第 N 章回收」,
-at least eight for ten minutes, about one for every 75 seconds of the body, three of them planted
-in the first chapter); then the chapters of the ten steps (the era and the origin, the first rise and
+at least eight for ten minutes, about one for every 75 seconds of the body, at least two of them
+planted in the first chapter: the hook's contrast and the promise's question); then the chapters of the ten steps (the era and the origin, the first rise and
 fall, two to four escalating stages, the biggest turn, the comeback, 「故事還沒結束」, the theme,
 the close), telling every line of 原因 where it falls in time, with estimated seconds (each ≥ 10 s; 250 spoken characters a minute; the
 whole aimed at "series.target_minutes", never under 8 minutes; over it is fine); each chapter's

@@ -2822,7 +2822,17 @@ export class Automation {
       return this.verify(state);
     }
     const file = writeScreenplay(dir, video);
+    // A 奇聞, brand-story or 原來如此 script whose opening asks a question menu or misses the
+    // thumbnail goes back to the writer before it is approved by the settings or sent to the owner
+    // (owner, 2026-11-19), so review-push never parks the video on its refusal; past
+    // MAX_PROMPT_FIX_ROUNDS fixScript stops for the owner. A script already decided is not touched.
+    const openingFix = () => {
+      const opening = openingGateProblems(video, estimateTimeline(video), { series: state.series ?? null });
+      return opening.length ? this.fixScript(state, `開場不合格：${opening.map((problem) => problem.message).join("；")}`, "the opening check", "opening") : null;
+    };
     if (!hasAnimePolicy(state) && this.settings.drama?.series_script_gate === false) {
+      const fix = openingFix();
+      if (fix) return fix;
       await approve({ gate: "script", docDir: dir, workdir: this.workdir(state.slug), now: this.ctx.now(), note: "「劇本先給我看」關著，依設定自動核准" });
       return `${state.slug}: screenplay approved by the settings (劇本先給我看 is off)`;
     }
@@ -2835,11 +2845,8 @@ export class Automation {
         const rounds = state.prompt_fixes?.script ?? 0;
         if (!verdict.passed && rounds < MAX_PROMPT_FIX_ROUNDS) return this.fixScript(state, verdict.problems.join("；"), "the checker");
       }
-      // review-push refuses a 奇聞, brand-story or 原來如此 script whose opening asks a question menu
-      // or misses the thumbnail (owner, 2026-11-19): the writer rewrites it first, so the video is
-      // not parked on the refusal; past MAX_PROMPT_FIX_ROUNDS fixScript stops for the owner.
-      const opening = openingGateProblems(video, estimateTimeline(video), { series: state.series ?? null });
-      if (opening.length) return this.fixScript(state, `開場不合格：${opening.map((problem) => problem.message).join("；")}`, "the opening check", "opening");
+      const fix = openingFix();
+      if (fix) return fix;
       const result = await run(this.ctx, ["review-push", "--slug", state.slug, "--gate", "script"]);
       if (result.code !== 0) return this.block(state, `review-push failed: ${lastLine(result.out)}`);
       return `${state.slug}: screenplay sent to /admin/videos`;

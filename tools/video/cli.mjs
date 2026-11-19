@@ -274,10 +274,10 @@ async function cmdNarrative(args, ctx) {
 
 /**
  * The opening review (core/opening-review.mjs; owner, 2026-11-19): writes the packet the readers
- * read (review/opening-packet.md); with --ask it asks the site's model for the three readers, one
- * request per viewer, records the round bound to what they read and exits 1 until every reader
- * would stay the first 300 seconds with nothing to fix; --check prints where it stands. tts refuses
- * a hand-made episode until it passes.
+ * read (review/opening-packet.md); --record <file> --author <name> records three fresh subagents of
+ * the session that made the episode, --ask asks the site's model instead, one request per viewer.
+ * Either exits 1 until every reader would stay the first 300 seconds with nothing to fix; --check
+ * prints where it stands. tts refuses a hand-made episode until it passes.
  */
 async function cmdOpeningReview(args, ctx) {
   const values = parse(args, { slug: { type: "string" }, workdir: { type: "string" }, ask: { type: "boolean" }, check: { type: "boolean" }, record: { type: "string" }, author: { type: "string" } });
@@ -291,6 +291,7 @@ async function cmdOpeningReview(args, ctx) {
     for (const problem of problems) ctx.stdout.write(`  FAIL  ${problem}\n`);
     return problems.length ? EXIT.lint : EXIT.ok;
   };
+  if (values.record && values.ask) throw new UsageError("opening-review takes --record or --ask, not both");
   if (values.check) return report(readJson(reviewFile, null), "is");
   const packet = path.join(workdir, ...OPENING_PACKET);
   mkdirSync(path.dirname(packet), { recursive: true });

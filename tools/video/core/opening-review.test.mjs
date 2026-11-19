@@ -204,3 +204,29 @@ test("a session's own three subagents can pass the review through --record, with
   await main(["tts", "--slug", box.slug], after.ctx);
   assert.doesNotMatch(after.out.stderr, /opening review/, "past the gate");
 });
+
+test("--redo after the opening was rewritten is a new voice, not a retake; a voice made before the review keeps its retakes", async () => {
+  const { box, doc } = episode();
+  mkdirSync(path.join(box.workdir, "review"), { recursive: true });
+  writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify({ speech_hash: "an older script", lines: [] }));
+  const redo = path.join(box.base, "flags.json");
+  writeFileSync(redo, JSON.stringify({ flags: [] }));
+  writeFileSync(path.join(box.workdir, "review", "opening-voiced.json"), JSON.stringify({ opening_hash: "0".repeat(64) }));
+  const rewritten = capture(box);
+  assert.notEqual(await main(["tts", "--slug", box.slug, "--redo", redo], rewritten.ctx), EXIT.ok);
+  assert.match(rewritten.out.stderr, /have not passed the opening review/);
+  writeFileSync(path.join(box.workdir, "review", "opening-voiced.json"), JSON.stringify({ opening_hash: openingHash(doc) }));
+  const same = capture(box);
+  await main(["tts", "--slug", box.slug, "--redo", redo], same.ctx);
+  assert.doesNotMatch(same.out.stderr, /opening review/, "a retake of the same opening");
+});
+
+test("the hash holds every line the packet shows, whatever the episode's pauses", () => {
+  const { doc } = episode();
+  const tight = { ...structuredClone(doc), pauses: { line_ms: 0, scene_ms: 150 } };
+  const shown = openingPacket(tight).split("\n").filter((line) => line.startsWith("- [")).length;
+  const last = tight.scenes.at(-1).lines.at(-1);
+  const before = openingHash(tight);
+  last.text += "（改一句）";
+  if (shown >= tight.scenes.flatMap((scene) => scene.lines).length) assert.notEqual(openingHash(tight), before, "a shown line changed asks for a new round");
+});

@@ -14,7 +14,8 @@ import { requireStorySpeechLexicon } from "../core/lexicon-store.mjs";
 import { StoryLexiconError } from "../core/story-lexicon.mjs";
 import { atomicWrite, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { requireProjectLease } from "../core/project-lease.mjs";
-import { needsOpeningReview, OPENING_REVIEW, OPENING_REVIEW_SECONDS, openingReviewProblems } from "../core/opening-review.mjs";
+import { needsOpeningReview, openingHash, OPENING_REVIEW, OPENING_REVIEW_SECONDS, OPENING_VOICED, openingReviewProblems } from "../core/opening-review.mjs";
+import { isOpeningHookSeries } from "../core/narrative.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { buildTimeline, checkChapters, formatClock, frameToSeconds, speechHash } from "../core/timeline.mjs";
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
@@ -405,9 +406,11 @@ async function tts(args, ctx) {
   // any voice is paid for (owner, 2026-11-19; core/opening-review.mjs).
   const voicedTimeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
   const voiced = voicedTimeline?.speech_hash === speechHash(doc, lexicon);
-  // A retake only counts as one when there is a voice to retake: --redo on a script never voiced
-  // is a first voice and passes the review like any other.
-  const retake = Boolean((values.redo || values["refresh-evidence"]) && voicedTimeline);
+  // A retake only counts as one when there is a voice of this same opening to retake: --redo on a
+  // script never voiced, or after the opening was rewritten, is a new voice and passes the review.
+  // A voice made before the review existed has no record of its opening and keeps its retakes.
+  const voicedOpening = readJson(path.join(workdir, ...OPENING_VOICED), null)?.opening_hash;
+  const retake = Boolean((values.redo || values["refresh-evidence"]) && voicedTimeline && (voicedOpening === undefined || voicedOpening === openingHash(doc)));
   if (needsOpeningReview(doc, { series: project.series, workdir, voiced, retake })) {
     const problems = openingReviewProblems(doc, readJson(path.join(workdir, ...OPENING_REVIEW), null));
     // A dry run only prices, and says where the review stands so the next step is plain.
@@ -652,6 +655,8 @@ async function tts(args, ctx) {
   const bound = bindAudioEvidence(timeline, workdir);
   const lines = bound.lines.map((line) => (timings.has(line.id) ? { ...line, timing: timings.get(line.id) } : line));
   atomicWrite(path.join(workdir, ARTIFACTS.timeline), `${JSON.stringify({ ...bound, lines }, null, 2)}\n`);
+  // Which opening this voice speaks, so a later --redo is a retake only of this same opening.
+  if (isOpeningHookSeries(doc, project.series)) atomicWrite(path.join(workdir, ...OPENING_VOICED), `${JSON.stringify({ opening_hash: openingHash(doc) }, null, 2)}\n`);
   // Lint checked the chapters on an estimate; this is the real check. Chapters YouTube would not
   // show fail the run, after the files are written, so a fix to the script reuses every take whose
   // words it keeps. The run is recorded either way: its characters were paid for.

@@ -529,7 +529,8 @@ export function lintVideo(doc, context = {}) {
   const opening = chapters[0]?.seconds;
   // A brand story, a 奇聞檔案局 episode and a narrator's explainer are narrated and open on their
   // hook and promise even when their pictures have a cast (such as the series' silent researcher).
-  if (opening !== undefined && hasCast(doc) && !isStory(context.series) && !isStorySeries(doc) && !isNarratedExplainer(doc)) {
+  // 原來如此's dialogue episodes have a cast but open on the ten steps' hook and promise (2026-11-19).
+  if (opening !== undefined && hasCast(doc) && !isStory(context.series) && !isStorySeries(doc) && !readsTenStepPanel(doc) && !isNarratedExplainer(doc)) {
     if (opening > DRAMA_HOOK_SECONDS) warn("scenes[0]", `the opening chapter runs about ${Math.round(opening)} s; the hook should land within ${DRAMA_HOOK_SECONDS} s`);
   } else if (opening !== undefined && !isCompilation(doc) && episodeLengthForNarrative) {
     // Read on an episode only, as episodeScriptProblems is: the examples run seconds.

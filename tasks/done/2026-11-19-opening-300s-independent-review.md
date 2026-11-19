@@ -36,6 +36,10 @@ scope:
   - .agents/skills/curio-episode/references/w03-lessons.md
   - docs/videos/long-form/review.md
   - docs/videos/long-form/review.json
+  - tools/video/core/lint.mjs
+  - tools/video/automation/story-prompts.mjs
+  - tools/video/automation/story-prompts.test.mjs
+  - .claude/skills/curio-episode/SKILL.md
 ---
 
 # Strict first-300-seconds review by three independent readers before any voice
@@ -78,6 +82,14 @@ gate (they go straight to storyboard and final), so nothing held a weak opening 
       tokens; `--redo` on a never-voiced script is still gated; the hash ignores pauses; the ten-step
       series need 2 opening loops, not 3; the 原來如此 prompt uses one opening range (40–90 s) and
       maps the ten steps to a why-question; stale docs marked.
+
+- [x] Third review round: the hash window is timed with no pauses, so it always holds every line
+      the packet shows; tts records which opening it voiced (`review/opening-voiced.json`) and a
+      `--redo` after the opening changed is a new voice; session readers are named by persona (the
+      author check reads the name each gave); `--record` and `--ask` together is refused; 「不會滑走」
+      reads as no swipe; 原來如此 dialogue episodes take the 40–90 s opening in lint, not the 30 s
+      drama hook; the curio and brand-story writer prompts ask for 2 opening loops; with
+      「劇本先給我看」 off the host still sends a bad opening back before the settings approve it.
 
 ## How to verify
 

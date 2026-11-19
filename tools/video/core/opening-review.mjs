@@ -1,11 +1,11 @@
 // The opening review of 原來如此事務所, 奇聞檔案局 and the brand stories (owner, 2026-11-19: 「應該要前300秒
-// 都不會滑走比較好，嚴格審核」, with several independent agents). Before any paid voice, three
-// independent readers, each in a fresh session and each reading as a different viewer, read the
-// first 300 seconds of the script with the thumbnail and the title beside it, and say where they
-// would swipe away. The script passes only when every one of them would stay all 300 seconds and
-// names nothing to fix. The verdicts are bound to what the readers read (openingHash: the title, the
-// thumbnail headline and every line that starts in the first 300 seconds, with its speaker), and each
-// reader echoes that hash: an edit there asks for a new round, an edit later in the script does not.
+// 都不會滑走比較好，嚴格審核」, with several independent readers). Before any paid voice, three readers,
+// each reading as a different viewer, read the first 300 seconds of the script with the thumbnail and
+// the title beside it, and say where they would swipe away: by default three fresh subagents of the AI
+// making the episode (--record), or the site's model (--ask). The script passes only when every one
+// of them would stay all 300 seconds and names nothing to fix. The verdicts are bound to what the
+// readers read (openingHash: the title, the thumbnail headline and every line that can start in the
+// first 300 seconds, with its speaker): an edit there asks for a new round, an edit later does not.
 import { createHash } from "node:crypto";
 import { existsSync } from "node:fs";
 import path from "node:path";
@@ -18,6 +18,8 @@ import { estimateTimeline, formatClock, frameToSeconds } from "./timeline.mjs";
 export const OPENING_REVIEW = ["review", "opening-review.json"];
 /** Where the packet the readers read is written. */
 export const OPENING_PACKET = ["review", "opening-packet.md"];
+/** Which opening the voice on disk speaks (tts writes it), so a retake cannot carry a new opening. */
+export const OPENING_VOICED = ["review", "opening-voiced.json"];
 export const OPENING_REVIEW_SECONDS = 300;
 export const OPENING_REVIEW_MIN_SCORE = 8.5;
 /** Room for a reasoning model to finish its JSON answer. */
@@ -62,9 +64,10 @@ export function openingLines(doc, timeline = estimateTimeline(doc)) {
 
 /** The hash of what the readers read: the title, the thumbnail headline and the opening lines. */
 export function openingHash(doc) {
-  // Which lines fall in the window is read on a timeline without the episode's pauses, so a pause
-  // or pacing change alone never asks for a new round; only the words, the title and the headline do.
-  const lines = openingLines(doc, estimateTimeline({ ...doc, pauses: undefined })).map(([, speaker, text]) => [speaker, text]);
+  // The window is read with no pauses at all, the shortest the episode can be timed, so it always
+  // holds every line the packet shows (whatever the episode's pauses) and a pause change alone never
+  // asks for a new round; only the words, the title and the headline do.
+  const lines = openingLines(doc, estimateTimeline({ ...doc, pauses: { line_ms: 0, scene_ms: 0 } })).map(([, speaker, text]) => [speaker, text]);
   return createHash("sha256").update(JSON.stringify(["opening-review-v1", doc.youtube?.title ?? "", cleanHeadline(doc), lines])).digest("hex");
 }
 
@@ -123,7 +126,9 @@ export function openingReviewRecord(doc, verdicts, { round = 1, at = new Date(),
  * the packet's opening_hash.
  */
 export function sessionVerdicts(verdicts) {
-  return verdicts.map((verdict) => ({ ...verdict, swipe_at: swipeAt(verdict?.swipe_at), via: "session" }));
+  // Fresh subagents of one model often all call themselves "Claude"; the reader is named by its
+  // persona, and the name it gave is kept beside it for the author check.
+  return verdicts.map((verdict) => ({ ...verdict, swipe_at: swipeAt(verdict?.swipe_at), reader_name: String(verdict?.agent ?? "").trim(), agent: `session#${verdict?.persona ?? "?"}`, via: "session" }));
 }
 
 /** What each reader is told; the packet and its persona come in the payload. */
@@ -164,7 +169,7 @@ export async function askOpeningReview(api, doc, { onVerdict = () => {} } = {}) 
         parsed = { score: 0, would_stay_300: false, swipe_at: null, problems: [{ at: "?", line: "", why: `the answer could not be read: ${error.message}`, fix: "ask again" }] };
       }
       // The tool sent the packet, so it binds the verdict to that packet itself; the model's copy
-      // of the hash is not trusted either way.
+      // of the hash is not trusted either way. A rerun of --ask asks all three again.
       verdict = { ...parsed, swipe_at: swipeAt(parsed.swipe_at), opening_hash: hash, persona, agent: `site:${answer.model}#${persona}`, via: "site", model: answer.model, tokens: (answer.input_tokens ?? 0) + (answer.output_tokens ?? 0) };
     } catch (error) {
       // A refused or lost request is a failed reader, recorded with the ones already answered, so
@@ -181,7 +186,8 @@ export async function askOpeningReview(api, doc, { onVerdict = () => {} } = {}) 
 function swipeAt(value) {
   if (value === null || value === undefined) return null;
   const text = String(value).trim();
-  return !text || /^(?:null|none|n\/a|無|沒有|不會|否|-)$/i.test(text) ? null : text;
+  // 「不會滑走」「沒有」… say no swipe; a time (01:40) or anything naming a moment is a swipe.
+  return !text || /^(?:null|none|n\/a|-)$/i.test(text) || (/^(?:無|沒有|不會|否|不)/.test(text) && !/\d/.test(text)) ? null : text;
 }
 
 const who = (name) => String(name ?? "").trim().toLowerCase();
@@ -199,7 +205,7 @@ export function openingReviewProblems(doc, record) {
   if (new Set(agents).size !== agents.length) problems.push("each reader is a different agent");
   if (verdicts.some((verdict) => verdict?.via === "session")) {
     if (!who(record.author_agent)) problems.push("a round of session readers names its author (--author)");
-    else if (agents.includes(who(record.author_agent))) problems.push("the author cannot be a reader");
+    else if (verdicts.some((verdict) => who(verdict?.reader_name ?? verdict?.agent) === who(record.author_agent))) problems.push("the author cannot be a reader");
   }
   for (const persona of Object.keys(OPENING_PERSONAS)) {
     if (!verdicts.some((verdict) => verdict?.persona === persona)) problems.push(`no reader read as ${persona}`);
