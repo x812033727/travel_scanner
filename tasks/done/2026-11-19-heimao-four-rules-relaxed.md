@@ -22,6 +22,7 @@ scope:
   - tools/video/core/opening-review.mjs
   - .agents/skills/brand-story/SKILL.md
   - .claude/skills/brand-story/SKILL.md
+  - docs/videos/packaging-refresh-20261111/README.md
   - .agents/skills/curio-episode/SKILL.md
   - .claude/skills/curio-episode/SKILL.md
   - docs/videos/so-thats-why/dialogue-pilot-20261103/README.md
@@ -83,5 +84,7 @@ npm run test:tools && npm run check:tasks
 - 查證後不成立的：原來如此的鉤子節奏其實已是 45 秒（`lint.mjs`），所以例外對它有效；黑猫 13 支標題沒有
   一支有兩個問號。
 - 用黑猫 13 支的真實標題跑 `titleProblems`（#2179）：只有辛拉麵 1 支過，7 支超過 30 字、7 支沒有數字、
-  2 支沒有問號。公式要不要放寬是站主的決定，這張票沒有動。
+  2 支沒有問號。站主同一天決定放寬，第三個 commit 改了：上限 30 → 38 字、數字不再必備、反差句
+  （「不是…而是…」「…卻…」）可以沒有問號；兩個問號與「前 18 字要有利害詞或數字」照舊。放寬後 13 支過
+  12 支（剩 40 字的 1TB）。今天已改名的 59 支在新規則下全過，標題表裡另外 8 列的值是 `keep`，不是標題。
 - `script-writing.md` 只有 `.agents` 一份（`.claude/skills` 只鏡像各 skill 的 `SKILL.md`）。
