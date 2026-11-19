@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-19-pool-7728",
+  "revision": "2026-11-19-pool-7764",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "categories": [
     "物理化學與日常材料",
@@ -12,46 +12,46 @@
     "建築交通與商業制度"
   ],
   "counts": {
-    "raw_records": 8192,
-    "canonical_questions": 8032,
-    "eligible_candidates": 7839,
-    "selected_candidates": 7728,
+    "raw_records": 8228,
+    "canonical_questions": 8068,
+    "eligible_candidates": 7875,
+    "selected_candidates": 7764,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 8720,
-    "current_research_source_urls": 5788,
-    "selected_source_urls": 6735,
-    "new_suggestions_not_added": 3524,
+    "source_urls": 8754,
+    "current_research_source_urls": 5822,
+    "selected_source_urls": 6769,
+    "new_suggestions_not_added": 3532,
     "high_similarity_pending": 0,
     "approved_scripts": 0,
     "by_category": {
       "物理化學與日常材料": {
-        "canonical": 1869,
-        "selected": 1839
+        "canonical": 1877,
+        "selected": 1847
       },
       "生物動物與植物": {
-        "canonical": 1526,
-        "selected": 1515
+        "canonical": 1527,
+        "selected": 1516
       },
       "地球天氣與太空": {
         "canonical": 965,
         "selected": 962
       },
       "數位科技與通訊工程": {
-        "canonical": 1452,
-        "selected": 1372
+        "canonical": 1471,
+        "selected": 1391
       },
       "飲食與廚房科學": {
-        "canonical": 516,
-        "selected": 510
+        "canonical": 517,
+        "selected": 511
       },
       "人體感官與日常行為": {
-        "canonical": 592,
-        "selected": 580
+        "canonical": 593,
+        "selected": 581
       },
       "建築交通與商業制度": {
-        "canonical": 1112,
-        "selected": 950
+        "canonical": 1118,
+        "selected": 956
       }
     }
   },
@@ -2113,6 +2113,18 @@
       "sha256": "c5ce5359a3adc73040bde379a5275d6f607274e848419443811d048a07b45fe7"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave133-craft-20261119.json",
+      "sha256": "227c15fdecf06f88d4f66ed5daa1fcc49e9f30dd349dc7ed3e86962f37f32aa8"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave133-everyday-20261119.json",
+      "sha256": "68efe13a67bbf25cbeb279c64eb0565245625958df33e32095789ffe122c6186"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave133-research-20261119.json",
+      "sha256": "0cf0d1cd14c3b84f49204ce3baed3d7fbd57bcaf7b65e737af3277efd3ed8333"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json",
       "sha256": "f44c3f03a6e74c79e53a27fe0ab4a4d809ca20d91a1d4976cafe59bb5f02a4ed"
     },
@@ -3390,12 +3402,12 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "8c29b1b6c7373b9c94eb044f41fb0d93acfb8fae899f08d7773fa7d44e36d209"
+      "sha256": "29ab581074f7ac3df5ee06fccdff25b26c7d6640d6a8fbf98c4d07529437b187"
     }
   ],
   "sources": {
     "file": "pool-sources.json",
-    "count": 8720
+    "count": 8754
   },
   "candidates": [
     {
@@ -149887,6 +149899,1694 @@
       "question_variants": [],
       "provenance_ids": [
         "K132-0218"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0401",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "十八世紀一件背心還是一整塊布，上面卻已經繡好了左胸和鈕扣。左口袋為什麼偏偏繡在別處？",
+      "mechanism_key": "x133.costume.narrow_loom_separated_waistcoat_panels",
+      "answer_target": "當時織出來的布幅窄。把左口袋的繡花另排在放得下的位置，就能省布，不必照穿在身上的位置把所有花樣排成一整片。待前片、口袋和鈕扣都繡好，裁縫才剪下、縫合，再配上素面的後背。",
+      "scope": "大都會藏法國未裁繡布 Habit à la disposition，1760 至 1775 年，2009.300.2932。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "拿一條窄紙當布，分別標記左胸與口袋的位置；從紙上剪下口袋，移到做好的背心前片。",
+        "payoff": "衣服穿上後，口袋回到手搆得到的地方；看裁剪前的繡布，才知道它原先排在哪裡。",
+        "seconds": [
+          30,
+          42
+        ]
+      },
+      "source_locator": "S01「This rare flat textile」段，尤其是 limited loom width 和 left pocket。",
+      "notes": "以紙樣自行模擬排布；藏品本身仍是未裁狀態。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館藏影像僅連結供辨認，示範衣物、圖案與活動剖面另行自製。",
+      "origin": "wave133-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-55b875fcb203a9d6",
+          "origin": "wave133-craft-20261119",
+          "locator": "S01「This rare flat textile」段，尤其是 limited loom width 和 left pocket。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0401"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0402",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "Lady Clapham 娃娃有個可以整個解下來的口袋。穿上長裙，手從哪裡伸進去拿東西？",
+      "mechanism_key": "x133.costume.separate_waist_pocket_accessed_through_skirt_slits",
+      "answer_target": "先把麻布口袋用帶子綁在腰間，垂在裙子裡。裙子和襯裙都留開口，手穿過這些開口，才摸到獨立袋子本身的袋口。解開腰帶，就能把整個袋子拿走。娃娃衣櫥裡還有另一件直接縫了口袋的襯裙，同一套收藏看得到兩種做法。",
+      "scope": "V&A 所藏英國 Lady Clapham 娃娃，約 1690 至 1700 年，T.846-1974，以及館方繫式口袋穿戴圖。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "給模型腰間繫一只顏色鮮明的布袋，再罩兩層有開口的裙布。沿手的路線翻開三層，最後把腰袋整只解下。",
+        "payoff": "裙子上的開口是手的通道，真正兜住東西的是另一件能穿脫的配件。",
+        "seconds": [
+          32,
+          46
+        ]
+      },
+      "source_locator": "S02 梨形繫袋段、穿戴模型圖和 Lady Clapham 的衣物清單。",
+      "notes": "襯裙自帶口袋與獨立繫袋為兩種配件，不推定娃娃穿每件衣物時都用同一組合。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館藏影像僅連結供辨認，示範衣物、圖案與活動剖面另行自製。",
+      "origin": "wave133-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b1a98e245a31aec6",
+          "origin": "wave133-craft-20261119",
+          "locator": "S02 梨形繫袋段、穿戴模型圖和 Lady Clapham 的衣物清單。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0402"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0403",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "京都館藏兩張照片，一張是白天的禮服，一張是晚上的，怎麼連裙擺都一模一樣？",
+      "mechanism_key": "x133.costume.interchangeable_bodices_share_one_skirt",
+      "answer_target": "照片裡搭的是同一件裙子。約 1895 年 ELEONORE LELONG 店這套衣服把上身和裙子分開做，白天搭一件上衣，到了晚間可換上另一件。認出那條裙子，就能看懂一套為什麼可以拍出兩身不同的正式穿著。",
+      "scope": "京都服飾文化研究財團展覽「晝與夜的兩件上衣」開頭並列照中的 ELEONORE LELONG 套裝。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "在腰線處把自繪服裝紙偶分件，將同一張裙片留在桌上，只輪換兩張上衣；最後並排重畫兩身。",
+        "payoff": "兩張照片拍的是兩種穿法，衣櫥裡只須放一件配套的裙子。",
+        "seconds": [
+          25,
+          38
+        ]
+      },
+      "source_locator": "S03 開頭左右圖說、日文主文第二段及英文 Exhibited works。",
+      "notes": "只說明衣服可以怎麼換；KCI 對可能省下一條裙子的費用用了推測語氣。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館藏影像僅連結供辨認，示範衣物、圖案與活動剖面另行自製。",
+      "origin": "wave133-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-dcebde1a163b42c8",
+          "origin": "wave133-craft-20261119",
+          "locator": "S03 開頭左右圖說、日文主文第二段及英文 Exhibited works。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0403"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0404",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "裙子後面靠六條鋼線撐出一大塊，人一坐下，這副架子要往哪裡收？",
+      "mechanism_key": "x133.costume.new_phantom_bustle_bows_turn_about_shared_axis",
+      "answer_target": "英國 The New Phantom 臀撐的六條彎鋼線，每一條的兩端都套在同一根直軸上。站著時鋼線張開，替裙子撐出向後的弧度；坐下時它們能繞著那根軸轉動，向內收攏。人一起身，鋼線又回到撐開的位置。",
+      "scope": "V&A T.131C-1919，Stapley & Smith 的 The New Phantom，館方展覽圖說將實物年代列作約 1887 至 1888 年。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用六條不同顏色的弧形紙條套在同一根紙軸上。側拍它們向內收疊，將各條兩端留在鏡頭裡。",
+        "payoff": "坐下時消失的是鋼線之間的空間；留在原位的那根直軸讓六條線都能轉回去。",
+        "seconds": [
+          30,
+          44
+        ]
+      },
+      "source_locator": "S04 Past Gallery Labels 對六條鋼線和直軸的說明；S05 的 New Phantom 圖說。",
+      "notes": "只演示這一款可轉動的鋼線臀撐，圖中以手帶動紙條模擬。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館藏影像僅連結供辨認，示範衣物、圖案與活動剖面另行自製。",
+      "origin": "wave133-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a34ce51edfd575b4",
+          "origin": "wave133-craft-20261119",
+          "locator": "S04 Past Gallery Labels 對六條鋼線和直軸的說明；S05 的 New Phantom 圖說。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8ec99ea6c01eb5b0",
+          "origin": "wave133-craft-20261119",
+          "locator": "S04 Past Gallery Labels 對六條鋼線和直軸的說明；S05 的 New Phantom 圖說。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0404"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0405",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "這件絲緞洋裝的兩個袖窿和衣身側縫，都綴了玻璃珠。這些珠子除了好看，還有什麼用？",
+      "mechanism_key": "x133.costume.delphos_glass_beads_weight_armhole_and_side_seams",
+      "answer_target": "京都收藏的綠色 Delphos 把珠子綴在手臂伸出的袖窿和衣身側縫。珠子有重量，把那些位置的絲料往下帶。穿起來能看見玻璃珠作裝飾，也能看見肩上垂下的一條條細褶順著身形落下。",
+      "scope": "Mariano Fortuny 的 1910 年代 Delphos 絲緞洋裝，京都服飾文化研究財團 AC3189 80-8-3。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "在細褶布樣上以線標出袖窿和側縫，換上有珠與無珠的同款布樣，讓觀眾看受重的是哪些部位。",
+        "payoff": "在這件衣服上，緣飾同時也是配重；要找它的功能，可以沿著珠子的位置往下看。",
+        "seconds": [
+          26,
+          39
+        ]
+      },
+      "source_locator": "S06 Material 的「glass beads at armholes and side seams」與次段「used as weights」。",
+      "notes": "比較布樣只為示意重量，不量化館藏衣褶的伸長程度，也不推論珠子製成褶紋。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館藏影像僅連結供辨認，示範衣物、圖案與活動剖面另行自製。",
+      "origin": "wave133-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-fbaf0b612c3baca1",
+          "origin": "wave133-craft-20261119",
+          "locator": "S06 Material 的「glass beads at armholes and side seams」與次段「used as weights」。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0405"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0406",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "這件三宅一生的黑白洋裝平放像一個長方形。為什麼工廠得先縫一件大得多的衣服？",
+      "mechanism_key": "x133.costume.pleats_please_heat_sets_preassembled_oversize_garment",
+      "answer_target": "褶是在整件衣服縫好之後才壓的。先用大片聚酯布縫出寬大的衣身，再整件摺好、夾在兩層紙之間進機器熱定型。布料收進一道道褶裡，原來過大的衣身便縮到想要的尺寸；這款衣服洗過晾乾仍能保有褶紋。",
+      "scope": "大都會的黑白 Pleats Please 洋裝，約 1993 年，2015.227。ASU FIDM 館以另一件印花款解說系列工序。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "先用兩片紙縫成寬大的小衣服，再連著接縫一起打褶，前後放上同一把尺；用示意圖補熱定型步驟。",
+        "payoff": "把成品的褶攤開看，才發現原先多裁的那些布都留在衣服裡。",
+        "seconds": [
+          32,
+          47
+        ]
+      },
+      "source_locator": "S07 館藏工序段及材質欄，S08 首段的 oversized garment、two sheets of paper 與 heat-set。",
+      "notes": "紙模型只示範縫合與打褶先後，耐洗性引自兩館的聚酯纖維成衣紀錄。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館藏影像僅連結供辨認，示範衣物、圖案與活動剖面另行自製。",
+      "origin": "wave133-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e9af4f69b557c543",
+          "origin": "wave133-craft-20261119",
+          "locator": "S07 館藏工序段及材質欄，S08 首段的 oversized garment、two sheets of paper 與 heat-set。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b9205aeb34549fc5",
+          "origin": "wave133-craft-20261119",
+          "locator": "S07 館藏工序段及材質欄，S08 首段的 oversized garment、two sheets of paper 與 heat-set。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0406"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0407",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "倫敦博物館那隻紅皮女鞋，鞋面和鞋底都縫起來了，鞋匠怎麼把接縫收進裡頭？",
+      "mechanism_key": "x133.costume.red_leather_turnshoe_assembled_inside_out",
+      "answer_target": "這是一隻用翻鞋工法做的展示鞋。鞋匠先讓鞋子的裡面朝外，把鞋縫好，再把整隻翻回正面。紅皮於是朝外，鞋面裡是白色小山羊皮；鞋口故意讓那層白皮露出一線，所以成鞋上還找得到襯裡的邊。",
+      "scope": "London Museum A24105，一隻 1850 至 1870 年間製作、未穿過的紅色皮女鞋。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用兩色軟布作鞋面與襯裡，在反面縫上軟底；從鞋口翻正後特寫鞋口的白邊。",
+        "payoff": "順著鞋口的一圈白色看進去，它和鞋面內側原來就是同一層。",
+        "seconds": [
+          30,
+          43
+        ]
+      },
+      "source_locator": "S09 Description 首段，核對 turnshoe、white kid leather 及 deliberately shows。",
+      "notes": "模型用軟布；館方標明原物為無跟皮底、白色鞋面裡襯及藍絲腳底襯。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館藏影像僅連結供辨認，示範衣物、圖案與活動剖面另行自製。",
+      "origin": "wave133-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-d3b87813b3e53c86",
+          "origin": "wave133-craft-20261119",
+          "locator": "S09 Description 首段，核對 turnshoe、white kid leather 及 deliberately shows。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0407"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0001",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "信封角落都印著「國內郵資已付」了，直接丟進郵筒，怎麼還會被郵局當成欠資信？",
+      "mechanism_key": "x133.daily.postage_paid_imprint_counter_settlement",
+      "answer_target": "中華郵政說，這種戳記可以先印在郵件上；寄件人還要把郵件拿到郵局，交付郵資完成交寄。只印了戳記就直接投筒，少了這次繳款，郵局會按欠資郵件處理。",
+      "scope": "比較同樣預印戳記的國內郵件，一封到郵局繳資，一封未繳資就投筒。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "信封上的四個字早就印好，交寄時是否繳款才決定處理方式。",
+        "visual": "畫兩個相同信封，各接一條路到櫃檯與郵筒，在繳款位置標記差別。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "題名所示問答，交付郵資與投入郵筒的處理。",
+      "notes": "不推論欠資金額、向誰追收或郵資機符誌。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "使用手繪信封與文字，不仿製正式印戳。",
+      "origin": "wave133-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-45a30619bb8a2e5f",
+          "origin": "wave133-everyday-20261119",
+          "locator": "題名所示問答，交付郵資與投入郵筒的處理。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0002",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "兩個紙袋各裝一堆意外撕破的新臺幣碎片。一袋能拼回原鈔，一袋湊起來也有整張那麼大。銀行為什麼不能光比面積？",
+      "mechanism_key": "x133.daily.damaged_twd_fragments_fit",
+      "answer_target": "依央行收兌標準，一張紙鈔意外破掉，碎片能一一吻合拼回整張，且沒有其他不予收兌情形，可照全額收兌。另一袋若混了不同紙鈔的碎片，湊成一張的面積卻對不起來，就落在「拼湊成張不能脗合」的不予收兌情形。",
+      "scope": "假設真偽可辨；第二袋只用來說明不能把異張碎片合當一張收兌。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "總面積一樣，仍要看這些碎片能不能拼成同一張紙鈔。",
+        "visual": "用無面額、無圖紋的拼圖紙，疊出兩袋碎片的接縫。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "第2條第3至7款及第3條第1、2款。",
+      "notes": "與 K117-0403 的歐元殘鈔半張門檻不同；不推論個別殘片另行送兌的結果。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "不剪真鈔、不重製鈔券。",
+      "origin": "wave133-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-d47ee3dbcd313c26",
+          "origin": "wave133-everyday-20261119",
+          "locator": "第2條第3至7款及第3條第1、2款。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0003",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "北市圖預約書已經跳出「調出日期」，為什麼這時跑去取書館，書還可能沒到？",
+      "mechanism_key": "x133.daily.tpml_hold_transfer_pickup_status",
+      "answer_target": "登入北市圖查預約時，「目前情況」可看排隊位置。顯示「調出日期」，是這本書即將送往指定取書館；書實際到館後才會顯示「取書期限」。看到後一個欄位，再依期限前往領書。",
+      "scope": "以臺北市立圖書館需要送往取書館的預約圖書為例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一筆預約有兩種日期，一個標示調書進度，另一個才告訴你最晚何時領。",
+        "visual": "自畫排隊、待運、到館三格，在不同格子放入兩個日期欄名。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "答覆「目前情況欄」、「調出日期」及「取書期限」。",
+      "notes": "不假設每天固定哪個時間運書。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "不用真讀者帳戶或館藏系統截圖。",
+      "origin": "wave133-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-01555369e3c79381",
+          "origin": "wave133-everyday-20261119",
+          "locator": "答覆「目前情況欄」、「調出日期」及「取書期限」。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0004",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "在百貨美食街外帶，攤商可以用塑膠袋直接裝未包裝的食物。為什麼先裝進餐盒，再向店家拿一個外袋，規定就不同？",
+      "mechanism_key": "x133.daily.food_court_bag_food_or_box",
+      "answer_target": "資源循環署把這兩個用途分開。袋子直接盛裝未經包裝的食物，可以使用。食物已在餐盒內，另外拿來提餐盒的袋子成了購物用塑膠袋，這類攤位不得免費提供。",
+      "scope": "限定百貨公司及購物中心內的餐飲攤位，討論購物用塑膠袋限制。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看清袋子裡直接接觸的是散裝食物，還是已經包好的餐點。",
+        "visual": "畫同一攤位兩份外帶餐，把餐盒插進第二幅圖的食物與袋子之間。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "問答內「已用餐盒裝盛」與「直接盛裝未經任何包裝之食物」兩段。",
+      "notes": "不推及其他行業或所有包材的收費，也不給食材包裝安全建議。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪餐盒與提袋。",
+      "origin": "wave133-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-d0197af743b54178",
+          "origin": "wave133-everyday-20261119",
+          "locator": "問答內「已用餐盒裝盛」與「直接盛裝未經任何包裝之食物」兩段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0005",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "你今天第一次搭計程車上國道，車程才十公里，為什麼不能要求把自己的每日二十公里優惠用掉？",
+      "mechanism_key": "x133.daily.taxi_daily_freeway_allowance_vehicle",
+      "answer_target": "高公局的一般平假日方案把小型車每日二十公里優惠歸到車號，依該車當天通過的門架累計。搭計程車時，乘客的通行費按實際行駛里程計，當日優惠里程歸車輛所有人。換乘客不會替同一輛車重開一次里程優惠。",
+      "scope": "以一般費率日的小型計程車為例，只談國道通行費。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一輛車一天載了好幾人，優惠仍只跟著同一車號。",
+        "visual": "沿著一天的路線換三個乘客圖示，車號代碼與同一條里程帳始終保留。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "一（二）平假日費率方案、二（二）第1項、三（三）用路人搭乘計程車。",
+      "notes": "不把通行費和跳表車資混在一起，不估連假費率。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "車號使用虛構代碼，不用實際司機或車輛資訊。",
+      "origin": "wave133-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-9a66883b089be83b",
+          "origin": "wave133-everyday-20261119",
+          "locator": "一（二）平假日費率方案、二（二）第1項、三（三）用路人搭乘計程車。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0006",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "混雙冰壺這一局兩邊都是零分。光看計分板，怎麼還不知道下一局誰有權選預置壺的位置？",
+      "mechanism_key": "x133.daily.mixed_doubles_blank_end_stone_choice",
+      "answer_target": "假設紅隊這局有權選位置，選了圈內，黃隊先投。若打完圈裡沒有得分壺，下一局由這局先投的黃隊選位置。若是兩隊最靠近圓心的壺量過仍分不出遠近，因而判空局，下一局卻仍歸原本握有選擇權的紅隊。",
+      "scope": "依 World Curling 混雙規則，等距量測的假設關乎哪一隊得分。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "零比零有兩種來歷，得追到這一局為何沒有分數。",
+        "visual": "同一張零比零計分板下並列空圈與兩顆等距壺，將下一局選擇權移給黃或紅。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "印刷頁19 R12(f)(i)；頁25至27 R17(f)、(g)(iii)、(i)。",
+      "notes": "K119-0406 計算單局得幾分；本題判下一局的預置壺位置選擇權。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪圓圈與色點，不重製規則插圖或賽事轉播。",
+      "origin": "wave133-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-675edd0e90b7358e",
+          "origin": "wave133-everyday-20261119",
+          "locator": "印刷頁19 R12(f)(i)；頁25至27 R17(f)、(g)(iii)、(i)。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0007",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "同一欄只看得見100，Excel 小計公式換一個代碼，怎麼一下算出140、一下只算100？",
+      "mechanism_key": "x133.daily.excel_subtotal_hidden_filtered_rows",
+      "answer_target": "假設三列依次是100、40、60：100顯示，40手動隱藏，60被篩選排除。SUBTOTAL 用9加總時包含手動隱藏列，結果是140；改用109，手動隱藏列也排除，剩100。被篩掉的60在兩次計算都不算。",
+      "scope": "同一個直向數值範圍，無其他小計，兩種操作分別施於不同列。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "畫面看不到的兩列來自不同操作，只有手動隱藏那列會讓兩個公式分道揚鑣。",
+        "visual": "自畫數字欄，給40標「隱藏」、60標「篩除」，再分別圈出兩次加總的數。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "Syntax 函數代碼表 9／109（SUM）；Remarks 的 Hide Rows 與 filter 兩段。",
+      "notes": "此規則針對列；不要用隱藏欄的例子演示。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自製方格，不取用軟體畫面。",
+      "origin": "wave133-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-da4154be13bd2f74",
+          "origin": "wave133-everyday-20261119",
+          "locator": "Syntax 函數代碼表 9／109（SUM）；Remarks 的 Hide Rows 與 filter 兩段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0008",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "同一款天使蛋糕，一個連模倒扣，另一個端正放涼。後者怎麼放涼後，表面就比剛出爐時矮了近三英吋？",
+      "mechanism_key": "x133.daily.angel_food_cake_inverted_cooling",
+      "answer_target": "King Arthur 的作者用同一配方試烤。正放的蛋糕先從中空模的中央柱縮開，放涼至少一小時後，表面比剛出爐時低了近三英吋。另一個出爐便連模倒扣，冷卻後仍較高、切面較蓬鬆。這款蛋糕麵粉少，蛋白冷卻時收縮；倒扣讓重力在結構定形前幫忙撐住高度。",
+      "scope": "近三英吋是正放那一個相較自身剛出爐時的變化；原文沒給兩個成品的高度差數值。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "量高度要對準同一個基準。試作有記錄正放時縮下去的距離，也有兩款成品的切面比較。",
+        "visual": "自畫兩個中空模，先在正放模註記剛出爐高度，再畫出放涼後的凹面。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "So why the flip?；The test；What happens when you don’t flip your angel food cake?",
+      "notes": "只述作者同方兩次試作，不把數字推及任何蛋糕。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自畫剖面，不使用測試者照片。",
+      "origin": "wave133-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b8982e47ea7b4b9f",
+          "origin": "wave133-everyday-20261119",
+          "locator": "So why the flip?；The test；What happens when you don’t flip your angel food cake?",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0009",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "十字繡明明照著布上的方孔走，圖樣一出現「四分之一針」，為什麼針尖突然得往沒有現成孔的格子中央鑽？",
+      "mechanism_key": "x133.daily.fractional_cross_stitch_center_entry",
+      "answer_target": "一個完整的十字有兩條對角線。DMC 示範的半針從一角走到對角，完成一整條斜線；四分之一針只從圖樣指定的角走到格心，剛好走完半條斜線。Aida 布的現成孔在格角，落在格心時得把針從布纖維間穿過。",
+      "scope": "依 DMC 的 Aida 方格布分數針作法，以單一格比較。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "四分之一量的是完整十字的份量，起點到終點只占半條對角線。",
+        "visual": "放大一格布，以兩條顏色不同的線畫全針，再抽出其中半條斜線。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "Fractional Cross Stitch 下的 1/4、1/2 和 3/4 Cross Stitch。",
+      "notes": "不推及其他底布與不同刺繡針法。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "使用自畫格子或自繡布樣，不翻拍廠商示範圖。",
+      "origin": "wave133-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-4fb3f4b92d67d759",
+          "origin": "wave133-everyday-20261119",
+          "locator": "Fractional Cross Stitch 下的 1/4、1/2 和 3/4 Cross Stitch。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0010",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "相機裡兩張記憶卡，一張滿了，另一張明明還能裝照片。為什麼 Nikon D850 有時能繼續拍，有時快門卻按不下去？",
+      "mechanism_key": "x133.daily.d850_backup_full_card_shutter_lock",
+      "answer_target": "看第二卡槽被指定做什麼。若用接續儲存（Overflow），主卡滿後才開始寫第二張卡；若用同步備份（Backup），每拍一張都必須同時寫進兩張卡，任何一張先滿便不能再拍。備份模式顯示還能拍幾張，也是依剩餘容量較少的那張卡。",
+      "scope": "假設拍靜態照片時主卡剛滿、副卡有空間；比較同一台 D850 的兩種設定。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩張卡可能是先後使用的兩段空間，也可能是每次都必須同時收到照片的兩個目的地。",
+        "visual": "各畫兩條容量條，第一格先填滿，讓同一張照片按設定進入第二條或必須同時寫入兩條。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "Secondary slot function 說明；“Backup” and “RAW Primary - JPEG Secondary” 提示。",
+      "notes": "不延伸到錄影存放位置，也不混入 RAW 與 JPEG 分卡設定。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪卡槽及容量條，不重製廠商圖示。",
+      "origin": "wave133-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-397fe47f5d63e614",
+          "origin": "wave133-everyday-20261119",
+          "locator": "Secondary slot function 說明；“Backup” and “RAW Primary - JPEG Secondary” 提示。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0011",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "水仙花謝了，園丁摘掉殘花，卻把不再好看的綠葉留在原地，連打結收整都不建議。明年那朵花還要靠哪裡？",
+      "mechanism_key": "x133.daily.daffodil_spent_flower_green_leaf",
+      "answer_target": "若目標是讓鱗莖來年再開花，摘除殘花可避免植株把資源花在結種子。仍綠的葉片會繼續光合作用，為地下鱗莖回補儲備，RHS 建議讓葉片舒展，等轉黃再剪。想讓水仙自行結籽繁殖時，便有理由把殘花留下。",
+      "scope": "以 RHS 水仙養護指南為據，區分續養鱗莖與留種兩種目標。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "花謝只表示這次花期已過，葉子回補鱗莖的工作還在進行。",
+        "visual": "畫出殘花、綠葉與地下鱗莖，在花謝和葉黃兩個時間點標示可剪部位。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "Deadheading 與 Pruning and Training。",
+      "notes": "不把約幾週的參考值寫成統一剪葉期限。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自畫植株與日照箭頭，不使用 RHS 照片。",
+      "origin": "wave133-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-fb7312513f2309da",
+          "origin": "wave133-everyday-20261119",
+          "locator": "Deadheading 與 Pruning and Training。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0012",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "買了 JR 東日本超過一百公里的普通乘車券，想在半途出站吃午餐再回來。為什麼光看公里數還不夠？",
+      "mechanism_key": "x133.daily.jr_east_suburban_stopover_exception",
+      "answer_target": "JR 的「途中下車」指旅程中間出站後，再用原票繼續。規則另外列出一種限制：同一大都市近郊區間內相互發到的普通乘車券，在該區間內不能這樣出站續用。假設全程都在公告的東京近郊區間，即使超過一百公里，仍然碰得到這條限制。",
+      "scope": "以全程留在指定東京近郊區間的普通乘車券為例，中途出站是為了自行用餐。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "檢查行程除了量長短，還得看整段落在哪一個公告的路線範圍。",
+        "visual": "自畫網狀路線，畫出近郊區間外框，把同屬框內的一對端點連起。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "第156條本文、第1款與第2款，含東京近郊區間路線及註記。",
+      "notes": "不把站內轉車算作出站，也不推及另購特別票或新幹線。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自畫無站名簡圖，不翻製業者路線圖。",
+      "origin": "wave133-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-9e3838bad5d5cd50",
+          "origin": "wave133-everyday-20261119",
+          "locator": "第156條本文、第1款與第2款，含東京近郊區間路線及註記。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0012"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0201",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "巴黎奧運男子百米八個人擠在終點，從第一名到第八名，公開成績才差多少？",
+      "mechanism_key": "x133.finish.spread",
+      "answer_target": "官方成績表第一列 9.79，最後一列 9.91。八人都跑進十秒，頭尾的公布成績只差 0.12 秒，第一、第二列的百分秒更是完全相同。",
+      "scope": "0.12 是依公布的百分秒相減。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "官方成績表第一列 9.79，最後一列 9.91。",
+        "visual": "蓋住姓名與名次，排開八張百分秒紙條。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R133-S01 04 AUG 2024 21:50，POS、MARK、ms*、Reaction Time 與圖例",
+      "notes": "重新繪圖，採原件可支持的範圍。0.12 是依公布的百分秒相減。",
+      "origin": "wave133-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-9bc0f0658b062393",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S01 04 AUG 2024 21:50，POS、MARK、ms*、Reaction Time 與圖例",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0201"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0202",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "衝完巴黎百米後，為什麼連萊爾斯本人都先把勝利讓給隔壁的對手？",
+      "mechanism_key": "x133.finish.guess",
+      "answer_target": "萊爾斯對 NBC 記者說，他以為湯普森壓線更早，當下還跟對方說自己覺得是他贏。直到看見自己的名字排在第一，他才改判。",
+      "scope": "是萊爾斯描述自己當時的感覺，沒有裁判效力。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "萊爾斯對 NBC 記者說，他以為湯普森壓線更早，當下還跟對方說自己覺得是他贏。",
+        "visual": "將選手賽後自述和揭曉前的空白名次格並排。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R133-S02 轉播頁的終點圖圖說、近 30 秒公布、Lewis Johnson 訪問萊爾斯與湯普森記者會答覆",
+      "notes": "重新繪圖，採原件可支持的範圍。是萊爾斯描述自己當時的感覺，沒有裁判效力。",
+      "origin": "wave133-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-45e0cfe32a1c1c7e",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S02 轉播頁的終點圖圖說、近 30 秒公布、Lewis Johnson 訪問萊爾斯與湯普森記者會答覆",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0202"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0203",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "如果把巴黎百米的畫面停在六十公尺，當時領先萊爾斯的兩個人，最後都比他先到嗎？",
+      "mechanism_key": "x133.finish.sixty",
+      "answer_target": "美國田徑協會的賽場報告寫到，萊爾斯跑到六十公尺仍在湯普森和克利後方，後段才逐步縮小差距。終點表上三人的名次依序是萊爾斯、湯普森、克利。",
+      "scope": "只畫出相對位置，不替三人補上來源未列的分段秒數。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "美國田徑協會的賽場報告寫到，萊爾斯跑到六十公尺仍在湯普森和克利後方，後段才逐步縮小差距。",
+        "visual": "六十公尺與終點各排一次三個姓名磁鐵。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R133-S01 04 AUG 2024 21:50，POS、MARK、ms*、Reaction Time 與圖例；R133-S03 巴黎發稿，Moving into a tie 段的 60 公尺前後賽況",
+      "notes": "重新繪圖，採原件可支持的範圍。只畫出相對位置，不替三人補上來源未列的分段秒數。",
+      "origin": "wave133-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-bc197daa556a9b57",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S01 04 AUG 2024 21:50，POS、MARK、ms*、Reaction Time 與圖例；R133-S03 巴黎發稿，Moving into a tie 段的 60 公尺前後賽況",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-9bc0f0658b062393",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S01 04 AUG 2024 21:50，POS、MARK、ms*、Reaction Time 與圖例；R133-S03 巴黎發稿，Moving into a tie 段的 60 公尺前後賽況",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0203"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0204",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "百米起跑的號令為什麼值得分送到各跑道？讓受試者聽到同一聲音的不同音量，改變了哪一步？",
+      "mechanism_key": "x133.finish.sound",
+      "answer_target": "Brown 等人讓十二名未受訓者和四名受訓短跑者，聽隨機播放的 80、100、120 分貝錄音後蹬起跑器。三種音量的平均反應時間依序為 138、128、120 毫秒，水平峰值力量沒有顯著差異。田徑規則也建議用各道揚聲器同步傳令，尤其是分道錯位起跑。",
+      "scope": "是別組受試者的研究，不能用來判巴黎某一跑道佔了便宜。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "Brown 等人讓十二名未受訓者和四名受訓短跑者，聽隨機播放的 80、100、120 分貝錄音後蹬起跑器。",
+        "visual": "以同一圖示的三個音量配三條反應時間尺。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R133-S04 原論文頁 1144 摘要與 1147 實驗數據，聲音大小、平均反應和水平峰值力量；R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138",
+      "notes": "重新繪圖，採原件可支持的範圍。是別組受試者的研究，不能用來判巴黎某一跑道佔了便宜。",
+      "origin": "wave133-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-1a74cdbbb52b0f00",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S04 原論文頁 1144 摘要與 1147 實驗數據，聲音大小、平均反應和水平峰值力量；R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5080e3a90668bf25",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S04 原論文頁 1144 摘要與 1147 實驗數據，聲音大小、平均反應和水平峰值力量；R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0204"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0205",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "巴黎百米起跑表上，萊爾斯比湯普森慢了 0.002 秒，裁判會把各自的反應時間扣回去嗎？",
+      "mechanism_key": "x133.finish.gun",
+      "answer_target": "全自動系統由發令訊號啟動。公開表把 0.178 與 0.176 秒列在另外的反應時間欄，兩位的百米成績都從同一聲號令算起。起步反應快了兩毫秒，不能換成終點領先兩毫秒。",
+      "scope": "反應欄不能代替全程時間；不把反應值說成離開起跑器的時刻。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "全自動系統由發令訊號啟動。",
+        "visual": "讓兩列共用一條起點刻線，分別標示反應值。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R133-S01 04 AUG 2024 21:50，POS、MARK、ms*、Reaction Time 與圖例；R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138",
+      "notes": "重新繪圖，採原件可支持的範圍。反應欄不能代替全程時間；不把反應值說成離開起跑器的時刻。",
+      "origin": "wave133-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-9bc0f0658b062393",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S01 04 AUG 2024 21:50，POS、MARK、ms*、Reaction Time 與圖例；R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5080e3a90668bf25",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S01 04 AUG 2024 21:50，POS、MARK、ms*、Reaction Time 與圖例；R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0205"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0206",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "選手還沒上場，終點裁判為什麼就得先請發令員測一次零點？",
+      "mechanism_key": "x133.finish.sync",
+      "answer_target": "按巴黎當屆規則，每個競賽時段開始前須測試發令能自動啟動系統，整體延遲固定且不超過 0.001 秒。它驗的是發令和計時的連動；選手要多久才反應則另記。",
+      "scope": "規則規定的容許延遲，不是本場實測值或相機取樣週期。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "按巴黎當屆規則，每個競賽時段開始前須測試發令能自動啟動系統，整體延遲固定且不超過 0.001 秒。",
+        "visual": "先畫空跑道上的發令與時鐘，再讓選手走進畫面。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138",
+      "notes": "重新繪圖，採原件可支持的範圍。規則規定的容許延遲，不是本場實測值或相機取樣週期。",
+      "origin": "wave133-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-5080e3a90668bf25",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0206"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0207",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "手機用每秒六十格錄下兩人相差五毫秒的衝線，逐格播放為什麼還可能找不到兩人之間那一格？",
+      "mechanism_key": "x133.finish.phone",
+      "answer_target": "以 iPhone 15 可選的每秒 60 格定格試算，固定影格率下兩次取樣約隔 16.7 毫秒。相差 5 毫秒的兩次抵達可以都落在同一對取樣點之間，將同一格再放大也不會多出一次取樣。",
+      "scope": "示例不是巴黎轉播規格，也不是每次都剛好漏掉兩個瞬間。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "以 iPhone 15 可選的每秒 60 格定格試算，固定影格率下兩次取樣約隔 16.7 毫秒。",
+        "visual": "在相隔 16.7 毫秒的兩道刻線裡擺兩個相距 5 毫秒的點。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R133-S01 04 AUG 2024 21:50，POS、MARK、ms*、Reaction Time 與圖例；R133-S06 錄影／4K 杜比視界與 1080p HD 可選影格率",
+      "notes": "重新繪圖，採原件可支持的範圍。示例不是巴黎轉播規格，也不是每次都剛好漏掉兩個瞬間。",
+      "origin": "wave133-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-5234e4fa19e334e6",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S01 04 AUG 2024 21:50，POS、MARK、ms*、Reaction Time 與圖例；R133-S06 錄影／4K 杜比視界與 1080p HD 可選影格率",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-9bc0f0658b062393",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S01 04 AUG 2024 21:50，POS、MARK、ms*、Reaction Time 與圖例；R133-S06 錄影／4K 杜比視界與 1080p HD 可選影格率",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0207"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0208",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "百米白線有五公分寬，鞋尖先踩到白漆，離裁判要看的那一刻還差在哪裡？",
+      "mechanism_key": "x133.finish.plane",
+      "answer_target": "當屆田徑規則以軀幹任何部分抵達白線近端的垂直面判先後。這五公分要取跑者首先遇到的邊；頭、頸、手、臂、腿與腳都排除，所以鞋尖、額頭各自越過仍不足以下判。",
+      "scope": "適用競技場徑賽；不猜現場誰的鞋實際先過。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "當屆田徑規則以軀幹任何部分抵達白線近端的垂直面判先後。",
+        "visual": "從白線近端立起一張透明片，在人體紙偶上圈可判範圍。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138",
+      "notes": "重新繪圖，採原件可支持的範圍。適用競技場徑賽；不猜現場誰的鞋實際先過。",
+      "origin": "wave133-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-5080e3a90668bf25",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0208"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0209",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "美國高中田徑裁判看終點，為什麼有時候先看背景是白色還是紅色，才看選手的胸口？",
+      "mechanism_key": "x133.finish.paint",
+      "answer_target": "科羅拉多州資格賽指引要求賽前看終點圖背景。對多數當地跑道，白色是鏡頭對準白線的線索，若是紅色或黑色跑道底，得先重新對線；賽中才依圖上的軀幹核對游標。",
+      "scope": "指引以常見跑道顏色舉例，不主張所有賽場底色都相同。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "科羅拉多州資格賽指引要求賽前看終點圖背景。",
+        "visual": "以紅跑道、白終點兩張卡片輪替視窗底色。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R133-S07 Timing for State Qualifying Meets，第 1 頁賽前、賽中與賽後；第 2 頁 CORRECT／INCORRECT",
+      "notes": "重新繪圖，採原件可支持的範圍。指引以常見跑道顏色舉例，不主張所有賽場底色都相同。",
+      "origin": "wave133-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-26c2d811ea634bc8",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S07 Timing for State Qualifying Meets，第 1 頁賽前、賽中與賽後；第 2 頁 CORRECT／INCORRECT",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0209"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0210",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "終點照裡八個人排成一張圖，為什麼從左往右讀的竟是不同時間？",
+      "mechanism_key": "x133.finish.strip",
+      "answer_target": "精工示範的終點相機反覆拍攝同一條線，把每一次的一列影像依時間橫向排開。照片只收進各部位通過那個面的先後，橫軸不是同一瞬間跑者之間的公尺數。",
+      "scope": "精工說明的是自家系統的原理；巴黎採用另一家設備。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "精工示範的終點相機反覆拍攝同一條線，把每一次的一列影像依時間橫向排開。",
+        "visual": "讓八個紙偶先後穿過一條豎縫，把窄條按時序排成圖。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R133-S08 「1,000分の1秒」はどう測る？一節；文首 2026 年 5 月的男子百米挑戰賽事例；R133-S11 How do you determine the winner 及 How quickly can you make that decision 問答",
+      "notes": "重新繪圖，採原件可支持的範圍。精工說明的是自家系統的原理；巴黎採用另一家設備。",
+      "origin": "wave133-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-fceedbb380cedb66",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S08 「1,000分の1秒」はどう測る？一節；文首 2026 年 5 月的男子百米挑戰賽事例；R133-S11 How do you determine the winner 及 How quickly can you make that decision 問答",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-62c8923afd0f95da",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S08 「1,000分の1秒」はどう測る？一節；文首 2026 年 5 月的男子百米挑戰賽事例；R133-S11 How do you determine the winner 及 How quickly can you make that decision 問答",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0210"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0211",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "同一條白色終點線，為什麼計時員慢慢轉動鏡頭時，螢幕上的白帶會變寬？",
+      "mechanism_key": "x133.finish.pan",
+      "answer_target": "FinishLynx 架機手冊請操作員左右橫轉相機掃過終點。轉得慢，同一條白線就留在視野裡更久，累積的窄條更多，所以白帶變寬。這個架機示範可以拿來檢查自己有沒有把時間軸看成地面距離。",
+      "scope": "只在架設示例中轉動相機，正式比賽鏡頭固定對準終點。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "FinishLynx 架機手冊請操作員左右橫轉相機掃過終點。",
+        "visual": "兩張紙上的白線一樣寬，一次快掃、一次慢掃。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R133-S08 「1,000分の1秒」はどう測る？一節；文首 2026 年 5 月的男子百米挑戰賽事例；R133-S09 頁 3-18 Step 9 What is Pan；頁 6-6 圖 64 Multiple Camera Views",
+      "notes": "重新繪圖，採原件可支持的範圍。只在架設示例中轉動相機，正式比賽鏡頭固定對準終點。",
+      "origin": "wave133-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-05a1945a3ecda38a",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S08 「1,000分の1秒」はどう測る？一節；文首 2026 年 5 月的男子百米挑戰賽事例；R133-S09 頁 3-18 Step 9 What is Pan；頁 6-6 圖 64 Multiple Camera Views",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-fceedbb380cedb66",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S08 「1,000分の1秒」はどう測る？一節；文首 2026 年 5 月的男子百米挑戰賽事例；R133-S09 頁 3-18 Step 9 What is Pan；頁 6-6 圖 64 Multiple Camera Views",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0211"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0212",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "巴黎百米終點已經有主相機，對側場內那部相機到底在等什麼？",
+      "mechanism_key": "x133.finish.reverse",
+      "answer_target": "巴黎計時負責人受訪解釋四個角度的配置，當中有一部從內場看向終點。依當屆規則，事先指定正式相機，主圖有跑者被遮住等疑點時可用輔助視角判清。手冊示例也可把總覽、放大與對側圖並排。",
+      "scope": "不主張這一場一定靠第四部才分出勝負。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "巴黎計時負責人受訪解釋四個角度的配置，當中有一部從內場看向終點。",
+        "visual": "把兩個紙偶前後遮住，再從透明片的另一側觀察。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138；R133-S09 頁 3-18 Step 9 What is Pan；頁 6-6 圖 64 Multiple Camera Views；R133-S11 How do you determine the winner 及 How quickly can you make that decision 問答",
+      "notes": "重新繪圖，採原件可支持的範圍。不主張這一場一定靠第四部才分出勝負。",
+      "origin": "wave133-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-62c8923afd0f95da",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138；R133-S09 頁 3-18 Step 9 What is Pan；頁 6-6 圖 64 Multiple Camera Views；R133-S11 How do you determine the winner 及 How quickly can you make that decision 問答",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5080e3a90668bf25",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138；R133-S09 頁 3-18 Step 9 What is Pan；頁 6-6 圖 64 Multiple Camera Views；R133-S11 How do you determine the winner 及 How quickly can you make that decision 問答",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-05a1945a3ecda38a",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138；R133-S09 頁 3-18 Step 9 What is Pan；頁 6-6 圖 64 Multiple Camera Views；R133-S11 How do you determine the winner 及 How quickly can you make that decision 問答",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0212"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0213",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "螢幕跑出一個秒數，裁判怎麼看得出這筆是手動鍵入，還是電子判圖讀出來的？",
+      "mechanism_key": "x133.finish.manual",
+      "answer_target": "科羅拉多州高中資格賽的核對表提醒裁判，在指定軟體畫面中紅色時間表示人工輸入。要把終點圖讀出的數字與最後公告逐筆核對，賽後還要保留原檔到賽季結束。",
+      "scope": "只作當地採用 FinishLynx 的操作反例，不把巴黎的字色當判讀依據。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "科羅拉多州高中資格賽的核對表提醒裁判，在指定軟體畫面中紅色時間表示人工輸入。",
+        "visual": "用紅字、原圖、最後公布表三張紙核數字。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R133-S07 Timing for State Qualifying Meets，第 1 頁賽前、賽中與賽後；第 2 頁 CORRECT／INCORRECT",
+      "notes": "重新繪圖，採原件可支持的範圍。只作當地採用 FinishLynx 的操作反例，不把巴黎的字色當判讀依據。",
+      "origin": "wave133-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-26c2d811ea634bc8",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S07 Timing for State Qualifying Meets，第 1 頁賽前、賽中與賽後；第 2 頁 CORRECT／INCORRECT",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0213"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0214",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "明明有 9.784 與 9.789，為什麼巴黎百米成績表不把前者寫成 9.78？",
+      "mechanism_key": "x133.finish.ceiling",
+      "answer_target": "萬公尺及以下的場內徑賽，讀值若不剛好是整百分秒，就向上到下一個百分秒。9.784 和 9.789 都記為 9.79；右側毫秒欄的 .784 與 .789 才顯出兩人相差 0.005 秒，萊爾斯較早。",
+      "scope": "攝影機的取樣上限、公布位數與實際時間差是三個量。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "萬公尺及以下的場內徑賽，讀值若不剛好是整百分秒，就向上到下一個百分秒。",
+        "visual": "在 9.78 和 9.79 之間標兩個點，分別往上連到 9.79。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R133-S01 04 AUG 2024 21:50，POS、MARK、ms*、Reaction Time 與圖例；R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138；R133-S10 The new Scan‘O’Vision ULTIMATE photofinish camera 段",
+      "notes": "重新繪圖，採原件可支持的範圍。攝影機的取樣上限、公布位數與實際時間差是三個量。",
+      "origin": "wave133-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-9bc0f0658b062393",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S01 04 AUG 2024 21:50，POS、MARK、ms*、Reaction Time 與圖例；R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138；R133-S10 The new Scan‘O’Vision ULTIMATE photofinish camera 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5080e3a90668bf25",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S01 04 AUG 2024 21:50，POS、MARK、ms*、Reaction Time 與圖例；R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138；R133-S10 The new Scan‘O’Vision ULTIMATE photofinish camera 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-a8102954ed87dd41",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S01 04 AUG 2024 21:50，POS、MARK、ms*、Reaction Time 與圖例；R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138；R133-S10 The new Scan‘O’Vision ULTIMATE photofinish camera 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0214"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0215",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "巴黎百米跑完，觀眾等近半分鐘才知道結果，裁判也一定花了半分鐘才分出前兩人嗎？",
+      "mechanism_key": "x133.finish.wait",
+      "answer_target": "NBC 描述從衝線到結果明朗接近三十秒。計時負責人受訪時估計，現場判出前兩名約花十秒。前者說的是觀眾等到消息，後者是對判讀工作的估計，兩段時間不能當成同一支秒表。",
+      "scope": "不是公開的操作日誌，不能再細分每一秒花在哪裡。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "NBC 描述從衝線到結果明朗接近三十秒。",
+        "visual": "一條軸從衝線畫到看板，另一條只畫「估計判讀」。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R133-S02 轉播頁的終點圖圖說、近 30 秒公布、Lewis Johnson 訪問萊爾斯與湯普森記者會答覆；R133-S11 How do you determine the winner 及 How quickly can you make that decision 問答",
+      "notes": "重新繪圖，採原件可支持的範圍。不是公開的操作日誌，不能再細分每一秒花在哪裡。",
+      "origin": "wave133-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-45e0cfe32a1c1c7e",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S02 轉播頁的終點圖圖說、近 30 秒公布、Lewis Johnson 訪問萊爾斯與湯普森記者會答覆；R133-S11 How do you determine the winner 及 How quickly can you make that decision 問答",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-62c8923afd0f95da",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S02 轉播頁的終點圖圖說、近 30 秒公布、Lewis Johnson 訪問萊爾斯與湯普森記者會答覆；R133-S11 How do you determine the winner 及 How quickly can you make that decision 問答",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0215"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0216",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "北京奧運女子百米，為什麼兩個人都跑 10.98，下一位直接成了第四名？",
+      "mechanism_key": "x133.finish.beijing",
+      "answer_target": "官方當日報導寫明辛普森與史都華比到千分之一秒仍無法分開，同得銀牌。表上弗雷澤第一，兩人都第二，威廉斯第四。這次決賽真的並列，和巴黎兩個 9.79 最後列第一、第二不同。",
+      "scope": "未知兩位北京選手未公布的完整讀值，不代填。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "官方當日報導寫明辛普森與史都華比到千分之一秒仍無法分開，同得銀牌。",
+        "visual": "巴黎成績表旁另畫北京前四列，核對 1、2、2、4。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138；R133-S12 17 AUG 2008 22:25，POS 與 MARK 的前四人；R133-S13 2008 年 8 月 17 日，Behind Fraser 與 As Stewart and Simpson 段",
+      "notes": "重新繪圖，採原件可支持的範圍。未知兩位北京選手未公布的完整讀值，不代填。",
+      "origin": "wave133-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-51d0620b3bfb829e",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138；R133-S12 17 AUG 2008 22:25，POS 與 MARK 的前四人；R133-S13 2008 年 8 月 17 日，Behind Fraser 與 As Stewart and Simpson 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-50429079b7ef4bf9",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138；R133-S12 17 AUG 2008 22:25，POS 與 MARK 的前四人；R133-S13 2008 年 8 月 17 日，Behind Fraser 與 As Stewart and Simpson 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5080e3a90668bf25",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138；R133-S12 17 AUG 2008 22:25，POS 與 MARK 的前四人；R133-S13 2008 年 8 月 17 日，Behind Fraser 與 As Stewart and Simpson 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0216"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K133-0217",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "東京一場百米選拔，為什麼小室跑贏自己那組，仍和另一組的第五名爭最後一個決賽席位？",
+      "mechanism_key": "x133.finish.qualify",
+      "answer_target": "2026 東京黃金大獎賽男子百米挑戰賽明定三組合取最快五人。小室步久斗在第三組第一，山縣亮太在第二組第五，兩人都報 10.23、總表並列第五。山縣的列多了晉級記號，也出現在決賽表。搶的是下一輪席位，挑戰賽的同名次仍留在表上。",
+      "scope": "精工記兩人千分位也同；不臆測現場抽籤動作。巴黎決賽不需再分配下一輪的跑道。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "2026 東京黃金大獎賽男子百米挑戰賽明定三組合取最快五人。",
+        "visual": "剪開第二組與第三組兩列，移進「跨組取五人」的格子，再對決賽名單。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138；R133-S08 「1,000分の1秒」はどう測る？一節；文首 2026 年 5 月的男子百米挑戰賽事例；R133-S14 GGP Men’s 100Metres Challenge Race，5 fastest times (q)，Heat2、Heat3、Summary Top8；後一頁 Final",
+      "notes": "重新繪圖，採原件可支持的範圍。精工記兩人千分位也同；不臆測現場抽籤動作。巴黎決賽不需再分配下一輪的跑道。",
+      "origin": "wave133-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-576a62af3e5ba1a9",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138；R133-S08 「1,000分の1秒」はどう測る？一節；文首 2026 年 5 月的男子百米挑戰賽事例；R133-S14 GGP Men’s 100Metres Challenge Race，5 fastest times (q)，Heat2、Heat3、Summary Top8；後一頁 Final",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-fceedbb380cedb66",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138；R133-S08 「1,000分の1秒」はどう測る？一節；文首 2026 年 5 月的男子百米挑戰賽事例；R133-S14 GGP Men’s 100Metres Challenge Race，5 fastest times (q)，Heat2、Heat3、Summary Top8；後一頁 Final",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5080e3a90668bf25",
+          "origin": "wave133-research-20261119",
+          "locator": "R133-S05 發令員與召回員一節；TR18 The Finish；TR19 Photo Finish System 與 Operation；TR21 Ties；印刷頁 121、124–127、137–138；R133-S08 「1,000分の1秒」はどう測る？一節；文首 2026 年 5 月的男子百米挑戰賽事例；R133-S14 GGP Men’s 100Metres Challenge Race，5 fastest times (q)，Heat2、Heat3、Summary Top8；後一頁 Final",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave133-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K133-0217"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -356481,7 +358181,7 @@
   ],
   "raw_records": {
     "file": "pool-records.json",
-    "count": 8192
+    "count": 8228
   },
   "dedup": {
     "aliases": {
@@ -359622,6 +361322,42 @@
       "K132-0216": "K132-0216",
       "K132-0217": "K132-0217",
       "K132-0218": "K132-0218",
+      "K133-0401": "K133-0401",
+      "K133-0402": "K133-0402",
+      "K133-0403": "K133-0403",
+      "K133-0404": "K133-0404",
+      "K133-0405": "K133-0405",
+      "K133-0406": "K133-0406",
+      "K133-0407": "K133-0407",
+      "K133-0001": "K133-0001",
+      "K133-0002": "K133-0002",
+      "K133-0003": "K133-0003",
+      "K133-0004": "K133-0004",
+      "K133-0005": "K133-0005",
+      "K133-0006": "K133-0006",
+      "K133-0007": "K133-0007",
+      "K133-0008": "K133-0008",
+      "K133-0009": "K133-0009",
+      "K133-0010": "K133-0010",
+      "K133-0011": "K133-0011",
+      "K133-0012": "K133-0012",
+      "K133-0201": "K133-0201",
+      "K133-0202": "K133-0202",
+      "K133-0203": "K133-0203",
+      "K133-0204": "K133-0204",
+      "K133-0205": "K133-0205",
+      "K133-0206": "K133-0206",
+      "K133-0207": "K133-0207",
+      "K133-0208": "K133-0208",
+      "K133-0209": "K133-0209",
+      "K133-0210": "K133-0210",
+      "K133-0211": "K133-0211",
+      "K133-0212": "K133-0212",
+      "K133-0213": "K133-0213",
+      "K133-0214": "K133-0214",
+      "K133-0215": "K133-0215",
+      "K133-0216": "K133-0216",
+      "K133-0217": "K133-0217",
       "A14001": "A14001",
       "A14002": "A14002",
       "A14003": "A14003",
@@ -405344,6 +407080,20 @@
         ]
       },
       {
+        "id": "K133-0202~K133-0203",
+        "a": "K133-0202",
+        "b": "K133-0203",
+        "question_score": 0.172,
+        "answer_score": 0.096,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "衝完巴黎百米後，為什麼連萊爾斯本人都先把勝利讓給隔壁的對手？",
+          "如果把巴黎百米的畫面停在六十公尺，當時領先萊爾斯的兩個人，最後都比他先到嗎？"
+        ]
+      },
+      {
         "id": "K101-017~K96-017",
         "a": "K101-017",
         "b": "K96-017",
@@ -405495,6 +407245,20 @@
         "questions": [
           "EH-NA9F 功耗欄有 1000W 和 1400W，在台灣 110V 應該抄哪一個？",
           "相機充電器已標 100–240V，出門再多帶一個旅行變壓器會更保險嗎？"
+        ]
+      },
+      {
+        "id": "K133-0202~K133-0205",
+        "a": "K133-0202",
+        "b": "K133-0205",
+        "question_score": 0.169,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "衝完巴黎百米後，為什麼連萊爾斯本人都先把勝利讓給隔壁的對手？",
+          "巴黎百米起跑表上，萊爾斯比湯普森慢了 0.002 秒，裁判會把各自的反應時間扣回去嗎？"
         ]
       },
       {
@@ -406674,6 +408438,20 @@
         ]
       },
       {
+        "id": "K133-0201~K133-0216",
+        "a": "K133-0201",
+        "b": "K133-0216",
+        "question_score": 0.143,
+        "answer_score": 0.153,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎奧運男子百米八個人擠在終點，從第一名到第八名，公開成績才差多少？",
+          "北京奧運女子百米，為什麼兩個人都跑 10.98，下一位直接成了第四名？"
+        ]
+      },
+      {
         "id": "K101-015~K96-017",
         "a": "K101-015",
         "b": "K96-017",
@@ -406783,6 +408561,20 @@
         "questions": [
           "同是十二吋，如果都要留住合適音量，日本壓片廠為什麼給 45 轉的單面時間比較短？",
           "在鐵三角 AT-LP70X 上，剛換的 45 轉盤仍是十二吋。為什麼要改一個開關、另一個留在 12？"
+        ]
+      },
+      {
+        "id": "K133-0209~K133-0213",
+        "a": "K133-0209",
+        "b": "K133-0213",
+        "question_score": 0.1,
+        "answer_score": 0.152,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國高中田徑裁判看終點，為什麼有時候先看背景是白色還是紅色，才看選手的胸口？",
+          "螢幕跑出一個秒數，裁判怎麼看得出這筆是手動鍵入，還是電子判圖讀出來的？"
         ]
       },
       {
@@ -407413,6 +409205,20 @@
         "questions": [
           "朋友的 MM 唱頭接了 Rega 前級，為什麼擴大機明明有 PHONO 孔，前級的輸出卻應接一般線路輸入？",
           "把唱頭訊號直接送進 Yamaha RX-A6A 的 PHONO，換成低輸出 MC 唱頭後，為什麼使用手冊還要多加一級？"
+        ]
+      },
+      {
+        "id": "K133-0203~K133-0205",
+        "a": "K133-0203",
+        "b": "K133-0205",
+        "question_score": 0.145,
+        "answer_score": 0.017,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把巴黎百米的畫面停在六十公尺，當時領先萊爾斯的兩個人，最後都比他先到嗎？",
+          "巴黎百米起跑表上，萊爾斯比湯普森慢了 0.002 秒，裁判會把各自的反應時間扣回去嗎？"
         ]
       },
       {
@@ -409292,6 +411098,34 @@
         ]
       },
       {
+        "id": "K133-0202~K133-0214",
+        "a": "K133-0202",
+        "b": "K133-0214",
+        "question_score": 0.128,
+        "answer_score": 0.035,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "衝完巴黎百米後，為什麼連萊爾斯本人都先把勝利讓給隔壁的對手？",
+          "明明有 9.784 與 9.789，為什麼巴黎百米成績表不把前者寫成 9.78？"
+        ]
+      },
+      {
+        "id": "K133-0212~K133-0214",
+        "a": "K133-0212",
+        "b": "K133-0214",
+        "question_score": 0.128,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎百米終點已經有主相機，對側場內那部相機到底在等什麼？",
+          "明明有 9.784 與 9.789，為什麼巴黎百米成績表不把前者寫成 9.78？"
+        ]
+      },
+      {
         "id": "P140~P144",
         "a": "P140",
         "b": "P144",
@@ -409625,6 +411459,20 @@
         "questions": [
           "退卡後拿到兩組資料，走進另一家超商使用 ibon，為什麼不必把已經交回的卡再放上感應區？",
           "朋友 9 月 25 日就知道大獎號碼，為什麼在全家機台查到結果的日子和可印的日子還不同？"
+        ]
+      },
+      {
+        "id": "K133-0202~K133-0212",
+        "a": "K133-0202",
+        "b": "K133-0212",
+        "question_score": 0.125,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "衝完巴黎百米後，為什麼連萊爾斯本人都先把勝利讓給隔壁的對手？",
+          "巴黎百米終點已經有主相機，對側場內那部相機到底在等什麼？"
         ]
       },
       {
@@ -410143,6 +411991,20 @@
         "questions": [
           "悠遊卡已經記了你的名字，為什麼財政部的手機條碼裡仍可能找不到它的發票？",
           "退卡後拿到兩組資料，走進另一家超商使用 ibon，為什麼不必把已經交回的卡再放上感應區？"
+        ]
+      },
+      {
+        "id": "K133-0205~K133-0215",
+        "a": "K133-0205",
+        "b": "K133-0215",
+        "question_score": 0.121,
+        "answer_score": 0.044,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎百米起跑表上，萊爾斯比湯普森慢了 0.002 秒，裁判會把各自的反應時間扣回去嗎？",
+          "巴黎百米跑完，觀眾等近半分鐘才知道結果，裁判也一定花了半分鐘才分出前兩人嗎？"
         ]
       },
       {
@@ -410832,6 +412694,20 @@
         ]
       },
       {
+        "id": "K133-0206~K133-0209",
+        "a": "K133-0206",
+        "b": "K133-0209",
+        "question_score": 0.115,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "選手還沒上場，終點裁判為什麼就得先請發令員測一次零點？",
+          "美國高中田徑裁判看終點，為什麼有時候先看背景是白色還是紅色，才看選手的胸口？"
+        ]
+      },
+      {
         "id": "A5015~A5016",
         "a": "A5015",
         "b": "A5016",
@@ -411308,6 +413184,34 @@
         ]
       },
       {
+        "id": "K133-0201~K133-0210",
+        "a": "K133-0201",
+        "b": "K133-0210",
+        "question_score": 0.113,
+        "answer_score": 0.036,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎奧運男子百米八個人擠在終點，從第一名到第八名，公開成績才差多少？",
+          "終點照裡八個人排成一張圖，為什麼從左往右讀的竟是不同時間？"
+        ]
+      },
+      {
+        "id": "K133-0201~K133-0214",
+        "a": "K133-0201",
+        "b": "K133-0214",
+        "question_score": 0.113,
+        "answer_score": 0.088,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎奧運男子百米八個人擠在終點，從第一名到第八名，公開成績才差多少？",
+          "明明有 9.784 與 9.789，為什麼巴黎百米成績表不把前者寫成 9.78？"
+        ]
+      },
+      {
         "id": "K97-004~L77-093",
         "a": "L77-093",
         "b": "K97-004",
@@ -411571,6 +413475,34 @@
         "questions": [
           "一支短小的 Kaweco Liliput 要改用瓶裝墨，為什麼吸墨器連活塞桿都做成能折的？",
           "兩瓶墨名裡都看得到 India，一瓶有蟲膠，另一瓶卻說可裝進活塞鋼筆，該聽哪瓶的說明？"
+        ]
+      },
+      {
+        "id": "K133-0201~K133-0212",
+        "a": "K133-0201",
+        "b": "K133-0212",
+        "question_score": 0.111,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎奧運男子百米八個人擠在終點，從第一名到第八名，公開成績才差多少？",
+          "巴黎百米終點已經有主相機，對側場內那部相機到底在等什麼？"
+        ]
+      },
+      {
+        "id": "K133-0214~K133-0215",
+        "a": "K133-0214",
+        "b": "K133-0215",
+        "question_score": 0.111,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "明明有 9.784 與 9.789，為什麼巴黎百米成績表不把前者寫成 9.78？",
+          "巴黎百米跑完，觀眾等近半分鐘才知道結果，裁判也一定花了半分鐘才分出前兩人嗎？"
         ]
       },
       {
@@ -412064,6 +413996,48 @@
         ]
       },
       {
+        "id": "K133-0202~K133-0215",
+        "a": "K133-0202",
+        "b": "K133-0215",
+        "question_score": 0.109,
+        "answer_score": 0.05,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "衝完巴黎百米後，為什麼連萊爾斯本人都先把勝利讓給隔壁的對手？",
+          "巴黎百米跑完，觀眾等近半分鐘才知道結果，裁判也一定花了半分鐘才分出前兩人嗎？"
+        ]
+      },
+      {
+        "id": "K133-0205~K133-0206",
+        "a": "K133-0205",
+        "b": "K133-0206",
+        "question_score": 0.036,
+        "answer_score": 0.109,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎百米起跑表上，萊爾斯比湯普森慢了 0.002 秒，裁判會把各自的反應時間扣回去嗎？",
+          "選手還沒上場，終點裁判為什麼就得先請發令員測一次零點？"
+        ]
+      },
+      {
+        "id": "K133-0212~K133-0215",
+        "a": "K133-0212",
+        "b": "K133-0215",
+        "question_score": 0.109,
+        "answer_score": 0.08,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎百米終點已經有主相機，對側場內那部相機到底在等什麼？",
+          "巴黎百米跑完，觀眾等近半分鐘才知道結果，裁判也一定花了半分鐘才分出前兩人嗎？"
+        ]
+      },
+      {
         "id": "K66-001~K66-011",
         "a": "K66-001",
         "b": "K66-011",
@@ -412540,6 +414514,20 @@
         ]
       },
       {
+        "id": "K133-0203~K133-0214",
+        "a": "K133-0203",
+        "b": "K133-0214",
+        "question_score": 0.105,
+        "answer_score": 0.05,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把巴黎百米的畫面停在六十公尺，當時領先萊爾斯的兩個人，最後都比他先到嗎？",
+          "明明有 9.784 與 9.789，為什麼巴黎百米成績表不把前者寫成 9.78？"
+        ]
+      },
+      {
         "id": "L056~L057",
         "a": "L056",
         "b": "L057",
@@ -412904,6 +414892,34 @@
         ]
       },
       {
+        "id": "K133-0203~K133-0212",
+        "a": "K133-0203",
+        "b": "K133-0212",
+        "question_score": 0.103,
+        "answer_score": 0.015,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把巴黎百米的畫面停在六十公尺，當時領先萊爾斯的兩個人，最後都比他先到嗎？",
+          "巴黎百米終點已經有主相機，對側場內那部相機到底在等什麼？"
+        ]
+      },
+      {
+        "id": "K133-0205~K133-0214",
+        "a": "K133-0205",
+        "b": "K133-0214",
+        "question_score": 0.103,
+        "answer_score": 0.03,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎百米起跑表上，萊爾斯比湯普森慢了 0.002 秒，裁判會把各自的反應時間扣回去嗎？",
+          "明明有 9.784 與 9.789，為什麼巴黎百米成績表不把前者寫成 9.78？"
+        ]
+      },
+      {
         "id": "M2016~P268",
         "a": "P268",
         "b": "M2016",
@@ -413041,6 +415057,20 @@
         "questions": [
           "家裡已經裝好《星際大戰：亡命之徒》，借走的是一張卡，為什麼自己那台就啟動不了？",
           "朋友第一次插入借來的鑰匙卡，為什麼要連網，卻不必拿走你的 Nintendo Account？"
+        ]
+      },
+      {
+        "id": "K133-0205~K133-0212",
+        "a": "K133-0205",
+        "b": "K133-0212",
+        "question_score": 0.102,
+        "answer_score": 0.014,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎百米起跑表上，萊爾斯比湯普森慢了 0.002 秒，裁判會把各自的反應時間扣回去嗎？",
+          "巴黎百米終點已經有主相機，對側場內那部相機到底在等什麼？"
         ]
       },
       {
@@ -413282,6 +415312,20 @@
         ]
       },
       {
+        "id": "K133-0203~K133-0216",
+        "a": "K133-0203",
+        "b": "K133-0216",
+        "question_score": 0.1,
+        "answer_score": 0.032,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把巴黎百米的畫面停在六十公尺，當時領先萊爾斯的兩個人，最後都比他先到嗎？",
+          "北京奧運女子百米，為什麼兩個人都跑 10.98，下一位直接成了第四名？"
+        ]
+      },
+      {
         "id": "K66-001~K66-009",
         "a": "K66-001",
         "b": "K66-009",
@@ -413475,6 +415519,20 @@
         "questions": [
           "家裡已經裝好《星際大戰：亡命之徒》，借走的是一張卡，為什麼自己那台就啟動不了？",
           "朋友拿出初代 Switch，《勇者鬥惡龍 I & II HD-2D 重製版》兩種盒子哪一種能在兩代主機上輪流用？"
+        ]
+      },
+      {
+        "id": "K133-0216~K133-0217",
+        "a": "K133-0216",
+        "b": "K133-0217",
+        "question_score": 0.034,
+        "answer_score": 0.099,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "北京奧運女子百米，為什麼兩個人都跑 10.98，下一位直接成了第四名？",
+          "東京一場百米選拔，為什麼小室跑贏自己那組，仍和另一組的第五名爭最後一個決賽席位？"
         ]
       },
       {
@@ -414472,6 +416530,20 @@
         ]
       },
       {
+        "id": "K133-0201~K133-0203",
+        "a": "K133-0201",
+        "b": "K133-0203",
+        "question_score": 0.094,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎奧運男子百米八個人擠在終點，從第一名到第八名，公開成績才差多少？",
+          "如果把巴黎百米的畫面停在六十公尺，當時領先萊爾斯的兩個人，最後都比他先到嗎？"
+        ]
+      },
+      {
         "id": "K91-010~K91-011",
         "a": "K91-010",
         "b": "K91-011",
@@ -414861,6 +416933,20 @@
         "questions": [
           "拿官網翻拍示範裡的 Nikon ES-2 回家，為什麼連條的正片和裝框後的正片要換片夾？",
           "同是 D850 翻拍底片，為什麼負片轉成正像時只拿到 JPEG，翻拍正片卻可以留 NEF？"
+        ]
+      },
+      {
+        "id": "K133-0203~K133-0215",
+        "a": "K133-0203",
+        "b": "K133-0215",
+        "question_score": 0.092,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把巴黎百米的畫面停在六十公尺，當時領先萊爾斯的兩個人，最後都比他先到嗎？",
+          "巴黎百米跑完，觀眾等近半分鐘才知道結果，裁判也一定花了半分鐘才分出前兩人嗎？"
         ]
       },
       {
@@ -416054,6 +418140,20 @@
         ]
       },
       {
+        "id": "K133-0204~K133-0205",
+        "a": "K133-0204",
+        "b": "K133-0205",
+        "question_score": 0.086,
+        "answer_score": 0.06,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "百米起跑的號令為什麼值得分送到各跑道？讓受試者聽到同一聲音的不同音量，改變了哪一步？",
+          "巴黎百米起跑表上，萊爾斯比湯普森慢了 0.002 秒，裁判會把各自的反應時間扣回去嗎？"
+        ]
+      },
+      {
         "id": "P74-020~P74-024",
         "a": "P74-020",
         "b": "P74-024",
@@ -416555,6 +418655,20 @@
         "questions": [
           "悠遊卡已經記了你的名字，為什麼財政部的手機條碼裡仍可能找不到它的發票？",
           "退卡在北捷站辦，過幾天想知道辦到哪了，為什麼捷運的旅客退費框不是輸入案件編號的地方？"
+        ]
+      },
+      {
+        "id": "K133-0210~K133-0211",
+        "a": "K133-0210",
+        "b": "K133-0211",
+        "question_score": 0.041,
+        "answer_score": 0.083,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "終點照裡八個人排成一張圖，為什麼從左往右讀的竟是不同時間？",
+          "同一條白色終點線，為什麼計時員慢慢轉動鏡頭時，螢幕上的白帶會變寬？"
         ]
       },
       {
@@ -417409,6 +419523,20 @@
         "questions": [
           "兩個人都在全家刷悠遊卡，怎麼只有一個人的發票出現在手機條碼？",
           "同一張普通悠遊卡，弄壞了還可能查得到，改成掉了怎麼連路都可能斷掉？"
+        ]
+      },
+      {
+        "id": "K133-0202~K133-0216",
+        "a": "K133-0202",
+        "b": "K133-0216",
+        "question_score": 0.08,
+        "answer_score": 0.034,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "衝完巴黎百米後，為什麼連萊爾斯本人都先把勝利讓給隔壁的對手？",
+          "北京奧運女子百米，為什麼兩個人都跑 10.98，下一位直接成了第四名？"
         ]
       },
       {
@@ -418938,6 +421066,20 @@
         ]
       },
       {
+        "id": "K133-0201~K133-0202",
+        "a": "K133-0201",
+        "b": "K133-0202",
+        "question_score": 0.074,
+        "answer_score": 0.021,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎奧運男子百米八個人擠在終點，從第一名到第八名，公開成績才差多少？",
+          "衝完巴黎百米後，為什麼連萊爾斯本人都先把勝利讓給隔壁的對手？"
+        ]
+      },
+      {
         "id": "K92-045~P62-006",
         "a": "P62-006",
         "b": "K92-045",
@@ -419817,6 +421959,34 @@
         "questions": [
           "全家機台能印出中獎證明聯，為什麼隔壁櫃檯不能把千萬元交給你？",
           "領獎日到銀行，帶著自己的國民身分證和朋友轉傳的清冊就夠嗎？"
+        ]
+      },
+      {
+        "id": "K133-0206~K133-0212",
+        "a": "K133-0206",
+        "b": "K133-0212",
+        "question_score": 0.044,
+        "answer_score": 0.07,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "選手還沒上場，終點裁判為什麼就得先請發令員測一次零點？",
+          "巴黎百米終點已經有主相機，對側場內那部相機到底在等什麼？"
+        ]
+      },
+      {
+        "id": "K133-0209~K133-0211",
+        "a": "K133-0209",
+        "b": "K133-0211",
+        "question_score": 0.07,
+        "answer_score": 0.027,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國高中田徑裁判看終點，為什麼有時候先看背景是白色還是紅色，才看選手的胸口？",
+          "同一條白色終點線，為什麼計時員慢慢轉動鏡頭時，螢幕上的白帶會變寬？"
         ]
       },
       {
@@ -420702,6 +422872,20 @@
         ]
       },
       {
+        "id": "K133-0208~K133-0215",
+        "a": "K133-0208",
+        "b": "K133-0215",
+        "question_score": 0.067,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "百米白線有五公分寬，鞋尖先踩到白漆，離裁判要看的那一刻還差在哪裡？",
+          "巴黎百米跑完，觀眾等近半分鐘才知道結果，裁判也一定花了半分鐘才分出前兩人嗎？"
+        ]
+      },
+      {
         "id": "L163~L164",
         "a": "L163",
         "b": "L164",
@@ -421021,6 +423205,20 @@
         "questions": [
           "兩個人都在全家刷悠遊卡，怎麼只有一個人的發票出現在手機條碼？",
           "同一張中獎雲端發票，為什麼列印前 App 能領的獎，列印以後 App 可能不收？"
+        ]
+      },
+      {
+        "id": "K133-0201~K133-0215",
+        "a": "K133-0201",
+        "b": "K133-0215",
+        "question_score": 0.066,
+        "answer_score": 0.017,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎奧運男子百米八個人擠在終點，從第一名到第八名，公開成績才差多少？",
+          "巴黎百米跑完，觀眾等近半分鐘才知道結果，裁判也一定花了半分鐘才分出前兩人嗎？"
         ]
       },
       {
@@ -421808,6 +424006,20 @@
         ]
       },
       {
+        "id": "K133-0205~K133-0208",
+        "a": "K133-0205",
+        "b": "K133-0208",
+        "question_score": 0.063,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎百米起跑表上，萊爾斯比湯普森慢了 0.002 秒，裁判會把各自的反應時間扣回去嗎？",
+          "百米白線有五公分寬，鞋尖先踩到白漆，離裁判要看的那一刻還差在哪裡？"
+        ]
+      },
+      {
         "id": "K66-006~K66-013",
         "a": "K66-006",
         "b": "K66-013",
@@ -422001,6 +424213,20 @@
         "questions": [
           "假中獎信說信用卡歸戶出了問題，收件人怎麼會一毛獎金沒領到，反而少了三萬多元？",
           "還握著一張讀不到的普通悠遊卡，去捷運站辦退卡時為什麼要多說一句「我還要查發票」？"
+        ]
+      },
+      {
+        "id": "K133-0201~K133-0205",
+        "a": "K133-0201",
+        "b": "K133-0205",
+        "question_score": 0.062,
+        "answer_score": 0.053,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎奧運男子百米八個人擠在終點，從第一名到第八名，公開成績才差多少？",
+          "巴黎百米起跑表上，萊爾斯比湯普森慢了 0.002 秒，裁判會把各自的反應時間扣回去嗎？"
         ]
       },
       {
@@ -422631,6 +424857,20 @@
         "questions": [
           "假中獎信說信用卡歸戶出了問題，收件人怎麼會一毛獎金沒領到，反而少了三萬多元？",
           "全家機台能印出中獎證明聯，為什麼隔壁櫃檯不能把千萬元交給你？"
+        ]
+      },
+      {
+        "id": "K133-0203~K133-0217",
+        "a": "K133-0203",
+        "b": "K133-0217",
+        "question_score": 0.06,
+        "answer_score": 0.027,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把巴黎百米的畫面停在六十公尺，當時領先萊爾斯的兩個人，最後都比他先到嗎？",
+          "東京一場百米選拔，為什麼小室跑贏自己那組，仍和另一組的第五名爭最後一個決賽席位？"
         ]
       },
       {
@@ -426246,6 +428486,20 @@
         ]
       },
       {
+        "id": "K133-0204~K133-0206",
+        "a": "K133-0204",
+        "b": "K133-0206",
+        "question_score": 0,
+        "answer_score": 0.049,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "百米起跑的號令為什麼值得分送到各跑道？讓受試者聽到同一聲音的不同音量，改變了哪一步？",
+          "選手還沒上場，終點裁判為什麼就得先請發令員測一次零點？"
+        ]
+      },
+      {
         "id": "L085~L47-001",
         "a": "L085",
         "b": "L47-001",
@@ -426694,6 +428948,20 @@
         ]
       },
       {
+        "id": "K133-0204~K133-0208",
+        "a": "K133-0204",
+        "b": "K133-0208",
+        "question_score": 0.031,
+        "answer_score": 0.048,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "百米起跑的號令為什麼值得分送到各跑道？讓受試者聽到同一聲音的不同音量，改變了哪一步？",
+          "百米白線有五公分寬，鞋尖先踩到白漆，離裁判要看的那一刻還差在哪裡？"
+        ]
+      },
+      {
         "id": "P53-001~P54-002",
         "a": "P53-001",
         "b": "P54-002",
@@ -426971,6 +429239,20 @@
         "questions": [
           "看到發票尾數是 565，就算不是新店那張千萬票，也至少中兩百元了嗎？",
           "同一張中獎雲端發票，為什麼列印前 App 能領的獎，列印以後 App 可能不收？"
+        ]
+      },
+      {
+        "id": "K133-0205~K133-0210",
+        "a": "K133-0205",
+        "b": "K133-0210",
+        "question_score": 0.034,
+        "answer_score": 0.047,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎百米起跑表上，萊爾斯比湯普森慢了 0.002 秒，裁判會把各自的反應時間扣回去嗎？",
+          "終點照裡八個人排成一張圖，為什麼從左往右讀的竟是不同時間？"
         ]
       },
       {
@@ -427520,6 +429802,34 @@
         ]
       },
       {
+        "id": "K133-0206~K133-0210",
+        "a": "K133-0206",
+        "b": "K133-0210",
+        "question_score": 0.045,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "選手還沒上場，終點裁判為什麼就得先請發令員測一次零點？",
+          "終點照裡八個人排成一張圖，為什麼從左往右讀的竟是不同時間？"
+        ]
+      },
+      {
+        "id": "K133-0207~K133-0210",
+        "a": "K133-0207",
+        "b": "K133-0210",
+        "question_score": 0,
+        "answer_score": 0.045,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "手機用每秒六十格錄下兩人相差五毫秒的衝線，逐格播放為什麼還可能找不到兩人之間那一格？",
+          "終點照裡八個人排成一張圖，為什麼從左往右讀的竟是不同時間？"
+        ]
+      },
+      {
         "id": "K74-015~K74-018",
         "a": "K74-015",
         "b": "K74-018",
@@ -427867,6 +430177,20 @@
         "questions": [
           "還握著一張讀不到的普通悠遊卡，去捷運站辦退卡時為什麼要多說一句「我還要查發票」？",
           "領獎日到銀行，帶著自己的國民身分證和朋友轉傳的清冊就夠嗎？"
+        ]
+      },
+      {
+        "id": "K133-0214~K133-0216",
+        "a": "K133-0214",
+        "b": "K133-0216",
+        "question_score": 0.041,
+        "answer_score": 0.044,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "明明有 9.784 與 9.789，為什麼巴黎百米成績表不把前者寫成 9.78？",
+          "北京奧運女子百米，為什麼兩個人都跑 10.98，下一位直接成了第四名？"
         ]
       },
       {
@@ -428318,6 +430642,48 @@
         ]
       },
       {
+        "id": "K133-0201~K133-0217",
+        "a": "K133-0201",
+        "b": "K133-0217",
+        "question_score": 0.032,
+        "answer_score": 0.043,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎奧運男子百米八個人擠在終點，從第一名到第八名，公開成績才差多少？",
+          "東京一場百米選拔，為什麼小室跑贏自己那組，仍和另一組的第五名爭最後一個決賽席位？"
+        ]
+      },
+      {
+        "id": "K133-0206~K133-0211",
+        "a": "K133-0206",
+        "b": "K133-0211",
+        "question_score": 0.043,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "選手還沒上場，終點裁判為什麼就得先請發令員測一次零點？",
+          "同一條白色終點線，為什麼計時員慢慢轉動鏡頭時，螢幕上的白帶會變寬？"
+        ]
+      },
+      {
+        "id": "K133-0210~K133-0212",
+        "a": "K133-0210",
+        "b": "K133-0212",
+        "question_score": 0.043,
+        "answer_score": 0.042,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "終點照裡八個人排成一張圖，為什麼從左往右讀的竟是不同時間？",
+          "巴黎百米終點已經有主相機，對側場內那部相機到底在等什麼？"
+        ]
+      },
+      {
         "id": "P020~P138",
         "a": "P020",
         "b": "P138",
@@ -428724,6 +431090,20 @@
         ]
       },
       {
+        "id": "K133-0208~K133-0212",
+        "a": "K133-0208",
+        "b": "K133-0212",
+        "question_score": 0.038,
+        "answer_score": 0.042,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "百米白線有五公分寬，鞋尖先踩到白漆，離裁判要看的那一刻還差在哪裡？",
+          "巴黎百米終點已經有主相機，對側場內那部相機到底在等什麼？"
+        ]
+      },
+      {
         "id": "R41001~R41005",
         "a": "R41001",
         "b": "R41005",
@@ -429102,6 +431482,34 @@
         ]
       },
       {
+        "id": "K133-0205~K133-0211",
+        "a": "K133-0205",
+        "b": "K133-0211",
+        "question_score": 0,
+        "answer_score": 0.041,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎百米起跑表上，萊爾斯比湯普森慢了 0.002 秒，裁判會把各自的反應時間扣回去嗎？",
+          "同一條白色終點線，為什麼計時員慢慢轉動鏡頭時，螢幕上的白帶會變寬？"
+        ]
+      },
+      {
+        "id": "K133-0210~K133-0216",
+        "a": "K133-0210",
+        "b": "K133-0216",
+        "question_score": 0.041,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "終點照裡八個人排成一張圖，為什麼從左往右讀的竟是不同時間？",
+          "北京奧運女子百米，為什麼兩個人都跑 10.98，下一位直接成了第四名？"
+        ]
+      },
+      {
         "id": "L62-002~R37007",
         "a": "R37007",
         "b": "L62-002",
@@ -429449,6 +431857,62 @@
         "questions": [
           "假中獎信說信用卡歸戶出了問題，收件人怎麼會一毛獎金沒領到，反而少了三萬多元？",
           "從新店永安街帶著千萬發票出門，任意一家掛著「可兌發票」的金融機構都能收嗎？"
+        ]
+      },
+      {
+        "id": "K133-0206~K133-0208",
+        "a": "K133-0206",
+        "b": "K133-0208",
+        "question_score": 0.04,
+        "answer_score": 0.031,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "選手還沒上場，終點裁判為什麼就得先請發令員測一次零點？",
+          "百米白線有五公分寬，鞋尖先踩到白漆，離裁判要看的那一刻還差在哪裡？"
+        ]
+      },
+      {
+        "id": "K133-0206~K133-0213",
+        "a": "K133-0206",
+        "b": "K133-0213",
+        "question_score": 0.04,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "選手還沒上場，終點裁判為什麼就得先請發令員測一次零點？",
+          "螢幕跑出一個秒數，裁判怎麼看得出這筆是手動鍵入，還是電子判圖讀出來的？"
+        ]
+      },
+      {
+        "id": "K133-0211~K133-0212",
+        "a": "K133-0211",
+        "b": "K133-0212",
+        "question_score": 0.04,
+        "answer_score": 0.037,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一條白色終點線，為什麼計時員慢慢轉動鏡頭時，螢幕上的白帶會變寬？",
+          "巴黎百米終點已經有主相機，對側場內那部相機到底在等什麼？"
+        ]
+      },
+      {
+        "id": "K133-0212~K133-0216",
+        "a": "K133-0212",
+        "b": "K133-0216",
+        "question_score": 0.04,
+        "answer_score": 0.013,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎百米終點已經有主相機，對側場內那部相機到底在等什麼？",
+          "北京奧運女子百米，為什麼兩個人都跑 10.98，下一位直接成了第四名？"
         ]
       },
       {
@@ -429855,6 +432319,20 @@
         "questions": [
           "從新店永安街帶著千萬發票出門，任意一家掛著「可兌發票」的金融機構都能收嗎？",
           "同樣中一千萬元，為什麼兩種兌領方式算出來能差到四萬元？"
+        ]
+      },
+      {
+        "id": "K133-0201~K133-0206",
+        "a": "K133-0201",
+        "b": "K133-0206",
+        "question_score": 0.039,
+        "answer_score": 0.018,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎奧運男子百米八個人擠在終點，從第一名到第八名，公開成績才差多少？",
+          "選手還沒上場，終點裁判為什麼就得先請發令員測一次零點？"
         ]
       },
       {
@@ -430404,6 +432882,48 @@
         ]
       },
       {
+        "id": "K133-0202~K133-0208",
+        "a": "K133-0202",
+        "b": "K133-0208",
+        "question_score": 0.038,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "衝完巴黎百米後，為什麼連萊爾斯本人都先把勝利讓給隔壁的對手？",
+          "百米白線有五公分寬，鞋尖先踩到白漆，離裁判要看的那一刻還差在哪裡？"
+        ]
+      },
+      {
+        "id": "K133-0206~K133-0215",
+        "a": "K133-0206",
+        "b": "K133-0215",
+        "question_score": 0.038,
+        "answer_score": 0.03,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "選手還沒上場，終點裁判為什麼就得先請發令員測一次零點？",
+          "巴黎百米跑完，觀眾等近半分鐘才知道結果，裁判也一定花了半分鐘才分出前兩人嗎？"
+        ]
+      },
+      {
+        "id": "K133-0208~K133-0214",
+        "a": "K133-0208",
+        "b": "K133-0214",
+        "question_score": 0.038,
+        "answer_score": 0.015,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "百米白線有五公分寬，鞋尖先踩到白漆，離裁判要看的那一刻還差在哪裡？",
+          "明明有 9.784 與 9.789，為什麼巴黎百米成績表不把前者寫成 9.78？"
+        ]
+      },
+      {
         "id": "K92-017~K92-026",
         "a": "K92-017",
         "b": "K92-026",
@@ -430751,6 +433271,20 @@
         "questions": [
           "悠遊卡感應不到了，全家結帳時用它存的那張發票究竟是寫在哪裡？",
           "朋友 9 月 25 日就知道大獎號碼，為什麼在全家機台查到結果的日子和可印的日子還不同？"
+        ]
+      },
+      {
+        "id": "K133-0209~K133-0210",
+        "a": "K133-0209",
+        "b": "K133-0210",
+        "question_score": 0.037,
+        "answer_score": 0.016,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國高中田徑裁判看終點，為什麼有時候先看背景是白色還是紅色，才看選手的胸口？",
+          "終點照裡八個人排成一張圖，為什麼從左往右讀的竟是不同時間？"
         ]
       },
       {
@@ -431202,6 +433736,76 @@
         ]
       },
       {
+        "id": "K133-0201~K133-0211",
+        "a": "K133-0201",
+        "b": "K133-0211",
+        "question_score": 0.036,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎奧運男子百米八個人擠在終點，從第一名到第八名，公開成績才差多少？",
+          "同一條白色終點線，為什麼計時員慢慢轉動鏡頭時，螢幕上的白帶會變寬？"
+        ]
+      },
+      {
+        "id": "K133-0208~K133-0216",
+        "a": "K133-0208",
+        "b": "K133-0216",
+        "question_score": 0.036,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "百米白線有五公分寬，鞋尖先踩到白漆，離裁判要看的那一刻還差在哪裡？",
+          "北京奧運女子百米，為什麼兩個人都跑 10.98，下一位直接成了第四名？"
+        ]
+      },
+      {
+        "id": "K133-0209~K133-0212",
+        "a": "K133-0209",
+        "b": "K133-0212",
+        "question_score": 0.036,
+        "answer_score": 0.014,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國高中田徑裁判看終點，為什麼有時候先看背景是白色還是紅色，才看選手的胸口？",
+          "巴黎百米終點已經有主相機，對側場內那部相機到底在等什麼？"
+        ]
+      },
+      {
+        "id": "K133-0211~K133-0213",
+        "a": "K133-0211",
+        "b": "K133-0213",
+        "question_score": 0.036,
+        "answer_score": 0.027,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一條白色終點線，為什麼計時員慢慢轉動鏡頭時，螢幕上的白帶會變寬？",
+          "螢幕跑出一個秒數，裁判怎麼看得出這筆是手動鍵入，還是電子判圖讀出來的？"
+        ]
+      },
+      {
+        "id": "K133-0214~K133-0217",
+        "a": "K133-0214",
+        "b": "K133-0217",
+        "question_score": 0.036,
+        "answer_score": 0.025,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "明明有 9.784 與 9.789，為什麼巴黎百米成績表不把前者寫成 9.78？",
+          "東京一場百米選拔，為什麼小室跑贏自己那組，仍和另一組的第五名爭最後一個決賽席位？"
+        ]
+      },
+      {
         "id": "L76-005~L76-006",
         "a": "L76-005",
         "b": "L76-006",
@@ -431507,6 +434111,62 @@
         "questions": [
           "從新店永安街帶著千萬發票出門，任意一家掛著「可兌發票」的金融機構都能收嗎？",
           "領獎日到銀行，帶著自己的國民身分證和朋友轉傳的清冊就夠嗎？"
+        ]
+      },
+      {
+        "id": "K133-0202~K133-0217",
+        "a": "K133-0202",
+        "b": "K133-0217",
+        "question_score": 0.035,
+        "answer_score": 0.029,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "衝完巴黎百米後，為什麼連萊爾斯本人都先把勝利讓給隔壁的對手？",
+          "東京一場百米選拔，為什麼小室跑贏自己那組，仍和另一組的第五名爭最後一個決賽席位？"
+        ]
+      },
+      {
+        "id": "K133-0203~K133-0210",
+        "a": "K133-0203",
+        "b": "K133-0210",
+        "question_score": 0.035,
+        "answer_score": 0.034,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把巴黎百米的畫面停在六十公尺，當時領先萊爾斯的兩個人，最後都比他先到嗎？",
+          "終點照裡八個人排成一張圖，為什麼從左往右讀的竟是不同時間？"
+        ]
+      },
+      {
+        "id": "K133-0212~K133-0217",
+        "a": "K133-0212",
+        "b": "K133-0217",
+        "question_score": 0.035,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎百米終點已經有主相機，對側場內那部相機到底在等什麼？",
+          "東京一場百米選拔，為什麼小室跑贏自己那組，仍和另一組的第五名爭最後一個決賽席位？"
+        ]
+      },
+      {
+        "id": "K133-0215~K133-0216",
+        "a": "K133-0215",
+        "b": "K133-0216",
+        "question_score": 0.035,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎百米跑完，觀眾等近半分鐘才知道結果，裁判也一定花了半分鐘才分出前兩人嗎？",
+          "北京奧運女子百米，為什麼兩個人都跑 10.98，下一位直接成了第四名？"
         ]
       },
       {
@@ -432070,6 +434730,90 @@
         ]
       },
       {
+        "id": "K133-0201~K133-0208",
+        "a": "K133-0201",
+        "b": "K133-0208",
+        "question_score": 0.034,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎奧運男子百米八個人擠在終點，從第一名到第八名，公開成績才差多少？",
+          "百米白線有五公分寬，鞋尖先踩到白漆，離裁判要看的那一刻還差在哪裡？"
+        ]
+      },
+      {
+        "id": "K133-0202~K133-0204",
+        "a": "K133-0202",
+        "b": "K133-0204",
+        "question_score": 0.034,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "衝完巴黎百米後，為什麼連萊爾斯本人都先把勝利讓給隔壁的對手？",
+          "百米起跑的號令為什麼值得分送到各跑道？讓受試者聽到同一聲音的不同音量，改變了哪一步？"
+        ]
+      },
+      {
+        "id": "K133-0204~K133-0210",
+        "a": "K133-0204",
+        "b": "K133-0210",
+        "question_score": 0.034,
+        "answer_score": 0.024,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "百米起跑的號令為什麼值得分送到各跑道？讓受試者聽到同一聲音的不同音量，改變了哪一步？",
+          "終點照裡八個人排成一張圖，為什麼從左往右讀的竟是不同時間？"
+        ]
+      },
+      {
+        "id": "K133-0204~K133-0212",
+        "a": "K133-0204",
+        "b": "K133-0212",
+        "question_score": 0.034,
+        "answer_score": 0.022,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "百米起跑的號令為什麼值得分送到各跑道？讓受試者聽到同一聲音的不同音量，改變了哪一步？",
+          "巴黎百米終點已經有主相機，對側場內那部相機到底在等什麼？"
+        ]
+      },
+      {
+        "id": "K133-0204~K133-0214",
+        "a": "K133-0204",
+        "b": "K133-0214",
+        "question_score": 0.034,
+        "answer_score": 0.024,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "百米起跑的號令為什麼值得分送到各跑道？讓受試者聽到同一聲音的不同音量，改變了哪一步？",
+          "明明有 9.784 與 9.789，為什麼巴黎百米成績表不把前者寫成 9.78？"
+        ]
+      },
+      {
+        "id": "K133-0208~K133-0213",
+        "a": "K133-0208",
+        "b": "K133-0213",
+        "question_score": 0.034,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "百米白線有五公分寬，鞋尖先踩到白漆，離裁判要看的那一刻還差在哪裡？",
+          "螢幕跑出一個秒數，裁判怎麼看得出這筆是手動鍵入，還是電子判圖讀出來的？"
+        ]
+      },
+      {
         "id": "K116-0202~K116-0216",
         "a": "K116-0202",
         "b": "K116-0216",
@@ -432543,6 +435287,90 @@
         "questions": [
           "還握著一張讀不到的普通悠遊卡，去捷運站辦退卡時為什麼要多說一句「我還要查發票」？",
           "看到發票尾數是 565，就算不是新店那張千萬票，也至少中兩百元了嗎？"
+        ]
+      },
+      {
+        "id": "K133-0201~K133-0209",
+        "a": "K133-0201",
+        "b": "K133-0209",
+        "question_score": 0.033,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎奧運男子百米八個人擠在終點，從第一名到第八名，公開成績才差多少？",
+          "美國高中田徑裁判看終點，為什麼有時候先看背景是白色還是紅色，才看選手的胸口？"
+        ]
+      },
+      {
+        "id": "K133-0204~K133-0211",
+        "a": "K133-0204",
+        "b": "K133-0211",
+        "question_score": 0.033,
+        "answer_score": 0.022,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "百米起跑的號令為什麼值得分送到各跑道？讓受試者聽到同一聲音的不同音量，改變了哪一步？",
+          "同一條白色終點線，為什麼計時員慢慢轉動鏡頭時，螢幕上的白帶會變寬？"
+        ]
+      },
+      {
+        "id": "K133-0204~K133-0216",
+        "a": "K133-0204",
+        "b": "K133-0216",
+        "question_score": 0.033,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "百米起跑的號令為什麼值得分送到各跑道？讓受試者聽到同一聲音的不同音量，改變了哪一步？",
+          "北京奧運女子百米，為什麼兩個人都跑 10.98，下一位直接成了第四名？"
+        ]
+      },
+      {
+        "id": "K133-0205~K133-0216",
+        "a": "K133-0205",
+        "b": "K133-0216",
+        "question_score": 0.033,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎百米起跑表上，萊爾斯比湯普森慢了 0.002 秒，裁判會把各自的反應時間扣回去嗎？",
+          "北京奧運女子百米，為什麼兩個人都跑 10.98，下一位直接成了第四名？"
+        ]
+      },
+      {
+        "id": "K133-0208~K133-0209",
+        "a": "K133-0208",
+        "b": "K133-0209",
+        "question_score": 0.033,
+        "answer_score": 0.031,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "百米白線有五公分寬，鞋尖先踩到白漆，離裁判要看的那一刻還差在哪裡？",
+          "美國高中田徑裁判看終點，為什麼有時候先看背景是白色還是紅色，才看選手的胸口？"
+        ]
+      },
+      {
+        "id": "K133-0213~K133-0215",
+        "a": "K133-0213",
+        "b": "K133-0215",
+        "question_score": 0.033,
+        "answer_score": 0.015,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "螢幕跑出一個秒數，裁判怎麼看得出這筆是手動鍵入，還是電子判圖讀出來的？",
+          "巴黎百米跑完，觀眾等近半分鐘才知道結果，裁判也一定花了半分鐘才分出前兩人嗎？"
         ]
       },
       {
@@ -433120,6 +435948,62 @@
         ]
       },
       {
+        "id": "K133-0203~K133-0208",
+        "a": "K133-0203",
+        "b": "K133-0208",
+        "question_score": 0.032,
+        "answer_score": 0.017,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把巴黎百米的畫面停在六十公尺，當時領先萊爾斯的兩個人，最後都比他先到嗎？",
+          "百米白線有五公分寬，鞋尖先踩到白漆，離裁判要看的那一刻還差在哪裡？"
+        ]
+      },
+      {
+        "id": "K133-0208~K133-0217",
+        "a": "K133-0208",
+        "b": "K133-0217",
+        "question_score": 0.032,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "百米白線有五公分寬，鞋尖先踩到白漆，離裁判要看的那一刻還差在哪裡？",
+          "東京一場百米選拔，為什麼小室跑贏自己那組，仍和另一組的第五名爭最後一個決賽席位？"
+        ]
+      },
+      {
+        "id": "K133-0209~K133-0215",
+        "a": "K133-0209",
+        "b": "K133-0215",
+        "question_score": 0.032,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國高中田徑裁判看終點，為什麼有時候先看背景是白色還是紅色，才看選手的胸口？",
+          "巴黎百米跑完，觀眾等近半分鐘才知道結果，裁判也一定花了半分鐘才分出前兩人嗎？"
+        ]
+      },
+      {
+        "id": "K133-0213~K133-0217",
+        "a": "K133-0213",
+        "b": "K133-0217",
+        "question_score": 0.032,
+        "answer_score": 0.013,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "螢幕跑出一個秒數，裁判怎麼看得出這筆是手動鍵入，還是電子判圖讀出來的？",
+          "東京一場百米選拔，為什麼小室跑贏自己那組，仍和另一組的第五名爭最後一個決賽席位？"
+        ]
+      },
+      {
         "id": "K90-036~T52-002",
         "a": "T52-002",
         "b": "K90-036",
@@ -433523,6 +436407,90 @@
         "questions": [
           "退卡在北捷站辦，過幾天想知道辦到哪了，為什麼捷運的旅客退費框不是輸入案件編號的地方？",
           "全家機台能印出中獎證明聯，為什麼隔壁櫃檯不能把千萬元交給你？"
+        ]
+      },
+      {
+        "id": "K133-0201~K133-0204",
+        "a": "K133-0201",
+        "b": "K133-0204",
+        "question_score": 0.031,
+        "answer_score": 0.027,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎奧運男子百米八個人擠在終點，從第一名到第八名，公開成績才差多少？",
+          "百米起跑的號令為什麼值得分送到各跑道？讓受試者聽到同一聲音的不同音量，改變了哪一步？"
+        ]
+      },
+      {
+        "id": "K133-0205~K133-0213",
+        "a": "K133-0205",
+        "b": "K133-0213",
+        "question_score": 0.031,
+        "answer_score": 0.03,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎百米起跑表上，萊爾斯比湯普森慢了 0.002 秒，裁判會把各自的反應時間扣回去嗎？",
+          "螢幕跑出一個秒數，裁判怎麼看得出這筆是手動鍵入，還是電子判圖讀出來的？"
+        ]
+      },
+      {
+        "id": "K133-0207~K133-0208",
+        "a": "K133-0207",
+        "b": "K133-0208",
+        "question_score": 0.031,
+        "answer_score": 0.015,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "手機用每秒六十格錄下兩人相差五毫秒的衝線，逐格播放為什麼還可能找不到兩人之間那一格？",
+          "百米白線有五公分寬，鞋尖先踩到白漆，離裁判要看的那一刻還差在哪裡？"
+        ]
+      },
+      {
+        "id": "K133-0208~K133-0210",
+        "a": "K133-0208",
+        "b": "K133-0210",
+        "question_score": 0,
+        "answer_score": 0.031,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "百米白線有五公分寬，鞋尖先踩到白漆，離裁判要看的那一刻還差在哪裡？",
+          "終點照裡八個人排成一張圖，為什麼從左往右讀的竟是不同時間？"
+        ]
+      },
+      {
+        "id": "K133-0210~K133-0213",
+        "a": "K133-0210",
+        "b": "K133-0213",
+        "question_score": 0,
+        "answer_score": 0.031,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "終點照裡八個人排成一張圖，為什麼從左往右讀的竟是不同時間？",
+          "螢幕跑出一個秒數，裁判怎麼看得出這筆是手動鍵入，還是電子判圖讀出來的？"
+        ]
+      },
+      {
+        "id": "K133-0215~K133-0217",
+        "a": "K133-0215",
+        "b": "K133-0217",
+        "question_score": 0.031,
+        "answer_score": 0.012,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎百米跑完，觀眾等近半分鐘才知道結果，裁判也一定花了半分鐘才分出前兩人嗎？",
+          "東京一場百米選拔，為什麼小室跑贏自己那組，仍和另一組的第五名爭最後一個決賽席位？"
         ]
       },
       {
@@ -434072,6 +437040,62 @@
         ]
       },
       {
+        "id": "K133-0204~K133-0215",
+        "a": "K133-0204",
+        "b": "K133-0215",
+        "question_score": 0.03,
+        "answer_score": 0.012,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "百米起跑的號令為什麼值得分送到各跑道？讓受試者聽到同一聲音的不同音量，改變了哪一步？",
+          "巴黎百米跑完，觀眾等近半分鐘才知道結果，裁判也一定花了半分鐘才分出前兩人嗎？"
+        ]
+      },
+      {
+        "id": "K133-0205~K133-0209",
+        "a": "K133-0205",
+        "b": "K133-0209",
+        "question_score": 0.03,
+        "answer_score": 0.015,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎百米起跑表上，萊爾斯比湯普森慢了 0.002 秒，裁判會把各自的反應時間扣回去嗎？",
+          "美國高中田徑裁判看終點，為什麼有時候先看背景是白色還是紅色，才看選手的胸口？"
+        ]
+      },
+      {
+        "id": "K133-0207~K133-0215",
+        "a": "K133-0207",
+        "b": "K133-0215",
+        "question_score": 0.03,
+        "answer_score": 0.014,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "手機用每秒六十格錄下兩人相差五毫秒的衝線，逐格播放為什麼還可能找不到兩人之間那一格？",
+          "巴黎百米跑完，觀眾等近半分鐘才知道結果，裁判也一定花了半分鐘才分出前兩人嗎？"
+        ]
+      },
+      {
+        "id": "K133-0210~K133-0215",
+        "a": "K133-0210",
+        "b": "K133-0215",
+        "question_score": 0,
+        "answer_score": 0.03,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "終點照裡八個人排成一張圖，為什麼從左往右讀的竟是不同時間？",
+          "巴黎百米跑完，觀眾等近半分鐘才知道結果，裁判也一定花了半分鐘才分出前兩人嗎？"
+        ]
+      },
+      {
         "id": "K100-012~P099",
         "a": "P099",
         "b": "K100-012",
@@ -434531,6 +437555,90 @@
         "questions": [
           "假中獎信說信用卡歸戶出了問題，收件人怎麼會一毛獎金沒領到，反而少了三萬多元？",
           "退卡在北捷站辦，過幾天想知道辦到哪了，為什麼捷運的旅客退費框不是輸入案件編號的地方？"
+        ]
+      },
+      {
+        "id": "K133-0203~K133-0204",
+        "a": "K133-0203",
+        "b": "K133-0204",
+        "question_score": 0.029,
+        "answer_score": 0.026,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把巴黎百米的畫面停在六十公尺，當時領先萊爾斯的兩個人，最後都比他先到嗎？",
+          "百米起跑的號令為什麼值得分送到各跑道？讓受試者聽到同一聲音的不同音量，改變了哪一步？"
+        ]
+      },
+      {
+        "id": "K133-0203~K133-0207",
+        "a": "K133-0203",
+        "b": "K133-0207",
+        "question_score": 0.029,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把巴黎百米的畫面停在六十公尺，當時領先萊爾斯的兩個人，最後都比他先到嗎？",
+          "手機用每秒六十格錄下兩人相差五毫秒的衝線，逐格播放為什麼還可能找不到兩人之間那一格？"
+        ]
+      },
+      {
+        "id": "K133-0204~K133-0217",
+        "a": "K133-0204",
+        "b": "K133-0217",
+        "question_score": 0.029,
+        "answer_score": 0.021,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "百米起跑的號令為什麼值得分送到各跑道？讓受試者聽到同一聲音的不同音量，改變了哪一步？",
+          "東京一場百米選拔，為什麼小室跑贏自己那組，仍和另一組的第五名爭最後一個決賽席位？"
+        ]
+      },
+      {
+        "id": "K133-0205~K133-0207",
+        "a": "K133-0205",
+        "b": "K133-0207",
+        "question_score": 0,
+        "answer_score": 0.029,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎百米起跑表上，萊爾斯比湯普森慢了 0.002 秒，裁判會把各自的反應時間扣回去嗎？",
+          "手機用每秒六十格錄下兩人相差五毫秒的衝線，逐格播放為什麼還可能找不到兩人之間那一格？"
+        ]
+      },
+      {
+        "id": "K133-0205~K133-0217",
+        "a": "K133-0205",
+        "b": "K133-0217",
+        "question_score": 0.029,
+        "answer_score": 0.013,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎百米起跑表上，萊爾斯比湯普森慢了 0.002 秒，裁判會把各自的反應時間扣回去嗎？",
+          "東京一場百米選拔，為什麼小室跑贏自己那組，仍和另一組的第五名爭最後一個決賽席位？"
+        ]
+      },
+      {
+        "id": "K133-0207~K133-0214",
+        "a": "K133-0207",
+        "b": "K133-0214",
+        "question_score": 0,
+        "answer_score": 0.029,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "手機用每秒六十格錄下兩人相差五毫秒的衝線，逐格播放為什麼還可能找不到兩人之間那一格？",
+          "明明有 9.784 與 9.789，為什麼巴黎百米成績表不把前者寫成 9.78？"
         ]
       },
       {
@@ -435150,6 +438258,20 @@
         ]
       },
       {
+        "id": "K133-0212~K133-0213",
+        "a": "K133-0212",
+        "b": "K133-0213",
+        "question_score": 0,
+        "answer_score": 0.028,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎百米終點已經有主相機，對側場內那部相機到底在等什麼？",
+          "螢幕跑出一個秒數，裁判怎麼看得出這筆是手動鍵入，還是電子判圖讀出來的？"
+        ]
+      },
+      {
         "id": "R36008~R36009",
         "a": "R36008",
         "b": "R36009",
@@ -435514,6 +438636,20 @@
         ]
       },
       {
+        "id": "K133-0208~K133-0211",
+        "a": "K133-0208",
+        "b": "K133-0211",
+        "question_score": 0,
+        "answer_score": 0.027,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "百米白線有五公分寬，鞋尖先踩到白漆，離裁判要看的那一刻還差在哪裡？",
+          "同一條白色終點線，為什麼計時員慢慢轉動鏡頭時，螢幕上的白帶會變寬？"
+        ]
+      },
+      {
         "id": "K92-053~P234",
         "a": "P234",
         "b": "K92-053",
@@ -435805,6 +438941,34 @@
         "questions": [
           "書法墨瓶上寫 AA 級永久性，名字已經乾了，還可能被水彩筆帶走嗎？",
           "卡片寫好要出門，hocoro 沒有筆蓋，洗好的筆尖該怎麼收？Kakimori 的筆座又要留意哪裡的水？"
+        ]
+      },
+      {
+        "id": "K133-0207~K133-0211",
+        "a": "K133-0207",
+        "b": "K133-0211",
+        "question_score": 0,
+        "answer_score": 0.026,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "手機用每秒六十格錄下兩人相差五毫秒的衝線，逐格播放為什麼還可能找不到兩人之間那一格？",
+          "同一條白色終點線，為什麼計時員慢慢轉動鏡頭時，螢幕上的白帶會變寬？"
+        ]
+      },
+      {
+        "id": "K133-0211~K133-0215",
+        "a": "K133-0211",
+        "b": "K133-0215",
+        "question_score": 0,
+        "answer_score": 0.026,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一條白色終點線，為什麼計時員慢慢轉動鏡頭時，螢幕上的白帶會變寬？",
+          "巴黎百米跑完，觀眾等近半分鐘才知道結果，裁判也一定花了半分鐘才分出前兩人嗎？"
         ]
       },
       {
@@ -437656,6 +440820,20 @@
         ]
       },
       {
+        "id": "K133-0201~K133-0213",
+        "a": "K133-0201",
+        "b": "K133-0213",
+        "question_score": 0,
+        "answer_score": 0.018,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎奧運男子百米八個人擠在終點，從第一名到第八名，公開成績才差多少？",
+          "螢幕跑出一個秒數，裁判怎麼看得出這筆是手動鍵入，還是電子判圖讀出來的？"
+        ]
+      },
+      {
         "id": "K92-023~L77-059",
         "a": "L77-059",
         "b": "K92-023",
@@ -437765,6 +440943,34 @@
         "questions": [
           "假中獎信說信用卡歸戶出了問題，收件人怎麼會一毛獎金沒領到，反而少了三萬多元？",
           "朋友 9 月 25 日就知道大獎號碼，為什麼在全家機台查到結果的日子和可印的日子還不同？"
+        ]
+      },
+      {
+        "id": "K133-0203~K133-0209",
+        "a": "K133-0203",
+        "b": "K133-0209",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把巴黎百米的畫面停在六十公尺，當時領先萊爾斯的兩個人，最後都比他先到嗎？",
+          "美國高中田徑裁判看終點，為什麼有時候先看背景是白色還是紅色，才看選手的胸口？"
+        ]
+      },
+      {
+        "id": "K133-0203~K133-0213",
+        "a": "K133-0203",
+        "b": "K133-0213",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把巴黎百米的畫面停在六十公尺，當時領先萊爾斯的兩個人，最後都比他先到嗎？",
+          "螢幕跑出一個秒數，裁判怎麼看得出這筆是手動鍵入，還是電子判圖讀出來的？"
         ]
       },
       {
@@ -437975,6 +441181,34 @@
         "questions": [
           "看到發票尾數是 565，就算不是新店那張千萬票，也至少中兩百元了嗎？",
           "開獎後才想到壞掉的卡，哪一種持卡人其實從一開始就在等獎金自己匯進去？"
+        ]
+      },
+      {
+        "id": "K133-0206~K133-0214",
+        "a": "K133-0206",
+        "b": "K133-0214",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "選手還沒上場，終點裁判為什麼就得先請發令員測一次零點？",
+          "明明有 9.784 與 9.789，為什麼巴黎百米成績表不把前者寫成 9.78？"
+        ]
+      },
+      {
+        "id": "K133-0210~K133-0214",
+        "a": "K133-0210",
+        "b": "K133-0214",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "終點照裡八個人排成一張圖，為什麼從左往右讀的竟是不同時間？",
+          "明明有 9.784 與 9.789，為什麼巴黎百米成績表不把前者寫成 9.78？"
         ]
       },
       {
@@ -438311,6 +441545,76 @@
         "questions": [
           "看到發票尾數是 565，就算不是新店那張千萬票，也至少中兩百元了嗎？",
           "領獎日到銀行，帶著自己的國民身分證和朋友轉傳的清冊就夠嗎？"
+        ]
+      },
+      {
+        "id": "K133-0202~K133-0211",
+        "a": "K133-0202",
+        "b": "K133-0211",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "衝完巴黎百米後，為什麼連萊爾斯本人都先把勝利讓給隔壁的對手？",
+          "同一條白色終點線，為什麼計時員慢慢轉動鏡頭時，螢幕上的白帶會變寬？"
+        ]
+      },
+      {
+        "id": "K133-0203~K133-0211",
+        "a": "K133-0203",
+        "b": "K133-0211",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把巴黎百米的畫面停在六十公尺，當時領先萊爾斯的兩個人，最後都比他先到嗎？",
+          "同一條白色終點線，為什麼計時員慢慢轉動鏡頭時，螢幕上的白帶會變寬？"
+        ]
+      },
+      {
+        "id": "K133-0206~K133-0207",
+        "a": "K133-0206",
+        "b": "K133-0207",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "選手還沒上場，終點裁判為什麼就得先請發令員測一次零點？",
+          "手機用每秒六十格錄下兩人相差五毫秒的衝線，逐格播放為什麼還可能找不到兩人之間那一格？"
+        ]
+      },
+      {
+        "id": "K133-0206~K133-0216",
+        "a": "K133-0206",
+        "b": "K133-0216",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "選手還沒上場，終點裁判為什麼就得先請發令員測一次零點？",
+          "北京奧運女子百米，為什麼兩個人都跑 10.98，下一位直接成了第四名？"
+        ]
+      },
+      {
+        "id": "K133-0213~K133-0216",
+        "a": "K133-0213",
+        "b": "K133-0216",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "螢幕跑出一個秒數，裁判怎麼看得出這筆是手動鍵入，還是電子判圖讀出來的？",
+          "北京奧運女子百米，為什麼兩個人都跑 10.98，下一位直接成了第四名？"
         ]
       },
       {
@@ -439658,6 +442962,34 @@
         ]
       },
       {
+        "id": "K133-0206~K133-0217",
+        "a": "K133-0206",
+        "b": "K133-0217",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "選手還沒上場，終點裁判為什麼就得先請發令員測一次零點？",
+          "東京一場百米選拔，為什麼小室跑贏自己那組，仍和另一組的第五名爭最後一個決賽席位？"
+        ]
+      },
+      {
+        "id": "K133-0207~K133-0212",
+        "a": "K133-0207",
+        "b": "K133-0212",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "手機用每秒六十格錄下兩人相差五毫秒的衝線，逐格播放為什麼還可能找不到兩人之間那一格？",
+          "巴黎百米終點已經有主相機，對側場內那部相機到底在等什麼？"
+        ]
+      },
+      {
         "id": "R43005~R43009",
         "a": "R43005",
         "b": "R43009",
@@ -440271,6 +443603,48 @@
         "questions": [
           "同一張普通悠遊卡，弄壞了還可能查得到，改成掉了怎麼連路都可能斷掉？",
           "從新店永安街帶著千萬發票出門，任意一家掛著「可兌發票」的金融機構都能收嗎？"
+        ]
+      },
+      {
+        "id": "K133-0204~K133-0207",
+        "a": "K133-0204",
+        "b": "K133-0207",
+        "question_score": 0,
+        "answer_score": 0.012,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "百米起跑的號令為什麼值得分送到各跑道？讓受試者聽到同一聲音的不同音量，改變了哪一步？",
+          "手機用每秒六十格錄下兩人相差五毫秒的衝線，逐格播放為什麼還可能找不到兩人之間那一格？"
+        ]
+      },
+      {
+        "id": "K133-0204~K133-0213",
+        "a": "K133-0204",
+        "b": "K133-0213",
+        "question_score": 0,
+        "answer_score": 0.012,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "百米起跑的號令為什麼值得分送到各跑道？讓受試者聽到同一聲音的不同音量，改變了哪一步？",
+          "螢幕跑出一個秒數，裁判怎麼看得出這筆是手動鍵入，還是電子判圖讀出來的？"
+        ]
+      },
+      {
+        "id": "K133-0211~K133-0217",
+        "a": "K133-0211",
+        "b": "K133-0217",
+        "question_score": 0,
+        "answer_score": 0.012,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一條白色終點線，為什麼計時員慢慢轉動鏡頭時，螢幕上的白帶會變寬？",
+          "東京一場百米選拔，為什麼小室跑贏自己那組，仍和另一組的第五名爭最後一個決賽席位？"
         ]
       },
       {
@@ -443550,6 +446924,272 @@
         ]
       },
       {
+        "id": "K133-0201~K133-0207",
+        "a": "K133-0201",
+        "b": "K133-0207",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "巴黎奧運男子百米八個人擠在終點，從第一名到第八名，公開成績才差多少？",
+          "手機用每秒六十格錄下兩人相差五毫秒的衝線，逐格播放為什麼還可能找不到兩人之間那一格？"
+        ]
+      },
+      {
+        "id": "K133-0202~K133-0206",
+        "a": "K133-0202",
+        "b": "K133-0206",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "衝完巴黎百米後，為什麼連萊爾斯本人都先把勝利讓給隔壁的對手？",
+          "選手還沒上場，終點裁判為什麼就得先請發令員測一次零點？"
+        ]
+      },
+      {
+        "id": "K133-0202~K133-0207",
+        "a": "K133-0202",
+        "b": "K133-0207",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "衝完巴黎百米後，為什麼連萊爾斯本人都先把勝利讓給隔壁的對手？",
+          "手機用每秒六十格錄下兩人相差五毫秒的衝線，逐格播放為什麼還可能找不到兩人之間那一格？"
+        ]
+      },
+      {
+        "id": "K133-0202~K133-0209",
+        "a": "K133-0202",
+        "b": "K133-0209",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "衝完巴黎百米後，為什麼連萊爾斯本人都先把勝利讓給隔壁的對手？",
+          "美國高中田徑裁判看終點，為什麼有時候先看背景是白色還是紅色，才看選手的胸口？"
+        ]
+      },
+      {
+        "id": "K133-0202~K133-0210",
+        "a": "K133-0202",
+        "b": "K133-0210",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "衝完巴黎百米後，為什麼連萊爾斯本人都先把勝利讓給隔壁的對手？",
+          "終點照裡八個人排成一張圖，為什麼從左往右讀的竟是不同時間？"
+        ]
+      },
+      {
+        "id": "K133-0202~K133-0213",
+        "a": "K133-0202",
+        "b": "K133-0213",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "衝完巴黎百米後，為什麼連萊爾斯本人都先把勝利讓給隔壁的對手？",
+          "螢幕跑出一個秒數，裁判怎麼看得出這筆是手動鍵入，還是電子判圖讀出來的？"
+        ]
+      },
+      {
+        "id": "K133-0203~K133-0206",
+        "a": "K133-0203",
+        "b": "K133-0206",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把巴黎百米的畫面停在六十公尺，當時領先萊爾斯的兩個人，最後都比他先到嗎？",
+          "選手還沒上場，終點裁判為什麼就得先請發令員測一次零點？"
+        ]
+      },
+      {
+        "id": "K133-0204~K133-0209",
+        "a": "K133-0204",
+        "b": "K133-0209",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "百米起跑的號令為什麼值得分送到各跑道？讓受試者聽到同一聲音的不同音量，改變了哪一步？",
+          "美國高中田徑裁判看終點，為什麼有時候先看背景是白色還是紅色，才看選手的胸口？"
+        ]
+      },
+      {
+        "id": "K133-0207~K133-0209",
+        "a": "K133-0207",
+        "b": "K133-0209",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "手機用每秒六十格錄下兩人相差五毫秒的衝線，逐格播放為什麼還可能找不到兩人之間那一格？",
+          "美國高中田徑裁判看終點，為什麼有時候先看背景是白色還是紅色，才看選手的胸口？"
+        ]
+      },
+      {
+        "id": "K133-0207~K133-0213",
+        "a": "K133-0207",
+        "b": "K133-0213",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "手機用每秒六十格錄下兩人相差五毫秒的衝線，逐格播放為什麼還可能找不到兩人之間那一格？",
+          "螢幕跑出一個秒數，裁判怎麼看得出這筆是手動鍵入，還是電子判圖讀出來的？"
+        ]
+      },
+      {
+        "id": "K133-0207~K133-0216",
+        "a": "K133-0207",
+        "b": "K133-0216",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "手機用每秒六十格錄下兩人相差五毫秒的衝線，逐格播放為什麼還可能找不到兩人之間那一格？",
+          "北京奧運女子百米，為什麼兩個人都跑 10.98，下一位直接成了第四名？"
+        ]
+      },
+      {
+        "id": "K133-0207~K133-0217",
+        "a": "K133-0207",
+        "b": "K133-0217",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "手機用每秒六十格錄下兩人相差五毫秒的衝線，逐格播放為什麼還可能找不到兩人之間那一格？",
+          "東京一場百米選拔，為什麼小室跑贏自己那組，仍和另一組的第五名爭最後一個決賽席位？"
+        ]
+      },
+      {
+        "id": "K133-0209~K133-0214",
+        "a": "K133-0209",
+        "b": "K133-0214",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國高中田徑裁判看終點，為什麼有時候先看背景是白色還是紅色，才看選手的胸口？",
+          "明明有 9.784 與 9.789，為什麼巴黎百米成績表不把前者寫成 9.78？"
+        ]
+      },
+      {
+        "id": "K133-0209~K133-0216",
+        "a": "K133-0209",
+        "b": "K133-0216",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國高中田徑裁判看終點，為什麼有時候先看背景是白色還是紅色，才看選手的胸口？",
+          "北京奧運女子百米，為什麼兩個人都跑 10.98，下一位直接成了第四名？"
+        ]
+      },
+      {
+        "id": "K133-0209~K133-0217",
+        "a": "K133-0209",
+        "b": "K133-0217",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "美國高中田徑裁判看終點，為什麼有時候先看背景是白色還是紅色，才看選手的胸口？",
+          "東京一場百米選拔，為什麼小室跑贏自己那組，仍和另一組的第五名爭最後一個決賽席位？"
+        ]
+      },
+      {
+        "id": "K133-0210~K133-0217",
+        "a": "K133-0210",
+        "b": "K133-0217",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "終點照裡八個人排成一張圖，為什麼從左往右讀的竟是不同時間？",
+          "東京一場百米選拔，為什麼小室跑贏自己那組，仍和另一組的第五名爭最後一個決賽席位？"
+        ]
+      },
+      {
+        "id": "K133-0211~K133-0214",
+        "a": "K133-0211",
+        "b": "K133-0214",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一條白色終點線，為什麼計時員慢慢轉動鏡頭時，螢幕上的白帶會變寬？",
+          "明明有 9.784 與 9.789，為什麼巴黎百米成績表不把前者寫成 9.78？"
+        ]
+      },
+      {
+        "id": "K133-0211~K133-0216",
+        "a": "K133-0211",
+        "b": "K133-0216",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一條白色終點線，為什麼計時員慢慢轉動鏡頭時，螢幕上的白帶會變寬？",
+          "北京奧運女子百米，為什麼兩個人都跑 10.98，下一位直接成了第四名？"
+        ]
+      },
+      {
+        "id": "K133-0213~K133-0214",
+        "a": "K133-0213",
+        "b": "K133-0214",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "螢幕跑出一個秒數，裁判怎麼看得出這筆是手動鍵入，還是電子判圖讀出來的？",
+          "明明有 9.784 與 9.789，為什麼巴黎百米成績表不把前者寫成 9.78？"
+        ]
+      },
+      {
         "id": "L011~L077",
         "a": "L011",
         "b": "L077",
@@ -445024,10 +448664,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-19-pool-7728",
-    "target_count": 7728,
+    "revision": "2026-11-19-pool-7764",
+    "target_count": 7764,
     "reviewed_on": "2026-11-19",
-    "reason": "第132批新增 37 張素材，入選 7691 → 7728。先前：第131批新增 37 張素材，入選 7654 → 7691。先前：第130批新增 37 張素材，入選 7617 → 7654。先前：第129批新增 37 張素材，入選 7580 → 7617。先前：第128批新增 37 張素材，入選 7543 → 7580。先前：第127批新增 37 張素材，入選 7506 → 7543。先前：第126批新增 37 張素材，入選 7469 → 7506。先前：第125批新增 36 張素材，入選 7433 → 7469。先前：第124批新增 35 張素材，入選 7398 → 7433。先前：第123批新增 37 張素材，入選 7361 → 7398。先前：第122批新增 37 張素材，入選 7324 → 7361。先前：第121批新增 36 張素材，含日常設計、樂譜判讀及旅用電器規格。入選 7288 → 7324。先前：第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
+    "reason": "第133批新增 36 張素材，入選 7728 → 7764。先前：第132批新增 37 張素材，入選 7691 → 7728。先前：第131批新增 37 張素材，入選 7654 → 7691。先前：第130批新增 37 張素材，入選 7617 → 7654。先前：第129批新增 37 張素材，入選 7580 → 7617。先前：第128批新增 37 張素材，入選 7543 → 7580。先前：第127批新增 37 張素材，入選 7506 → 7543。先前：第126批新增 37 張素材，入選 7469 → 7506。先前：第125批新增 36 張素材，入選 7433 → 7469。先前：第124批新增 35 張素材，入選 7398 → 7433。先前：第123批新增 37 張素材，入選 7361 → 7398。先前：第122批新增 37 張素材，入選 7324 → 7361。先前：第121批新增 36 張素材，含日常設計、樂譜判讀及旅用電器規格。入選 7288 → 7324。先前：第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -452756,7 +456396,43 @@
       "K132-0215",
       "K132-0216",
       "K132-0217",
-      "K132-0218"
+      "K132-0218",
+      "K133-0401",
+      "K133-0402",
+      "K133-0403",
+      "K133-0404",
+      "K133-0405",
+      "K133-0406",
+      "K133-0407",
+      "K133-0001",
+      "K133-0002",
+      "K133-0003",
+      "K133-0004",
+      "K133-0005",
+      "K133-0006",
+      "K133-0007",
+      "K133-0008",
+      "K133-0009",
+      "K133-0010",
+      "K133-0011",
+      "K133-0012",
+      "K133-0201",
+      "K133-0202",
+      "K133-0203",
+      "K133-0204",
+      "K133-0205",
+      "K133-0206",
+      "K133-0207",
+      "K133-0208",
+      "K133-0209",
+      "K133-0210",
+      "K133-0211",
+      "K133-0212",
+      "K133-0213",
+      "K133-0214",
+      "K133-0215",
+      "K133-0216",
+      "K133-0217"
     ],
     "overflow": [
       {
@@ -456950,6 +460626,84 @@
       ],
       "origin": "wave132-research-20261119",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave132-research-20261119.json"
+    },
+    {
+      "id": "X133C-NA01",
+      "question": "工作褲的袋口已經縫牢，為什麼還要在兩角釘上銅釘？",
+      "reason": "K117-0011 已解釋牛仔褲袋口兩角承受拉扯，以鉚釘固定受力位置。改問早年的工作褲仍是同一結構。",
+      "existing_ids": [
+        "K117-0011"
+      ],
+      "origin": "wave133-craft-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave133-craft-20261119.json"
+    },
+    {
+      "id": "X133C-NA02",
+      "question": "把褲襠拉鍊的拉片放平，為什麼滑塊就卡住，拉片抬起來才推得動？",
+      "reason": "K115-0004 已拆解自動鎖拉頭，拉片放下或抬起會改變鎖定狀態，更換穿搭情境沒有增加另一個動作原理。",
+      "existing_ids": [
+        "K115-0004"
+      ],
+      "origin": "wave133-craft-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave133-craft-20261119.json"
+    },
+    {
+      "id": "X133E-NA001",
+      "question": "為什麼覆盆子去年在枝尖結果，隔年同一枝較低的位置還能再採？",
+      "existing_ids": [
+        "K123-0010"
+      ],
+      "reason": "已讀明尼蘇達大學推廣部 Growing raspberries in the home garden 的 primocane-fruiting 段；一年枝尖、次年下段兩次結果的答案與 K123-0010 相同。",
+      "origin": "wave133-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave133-everyday-20261119.json"
+    },
+    {
+      "id": "X133E-NA002",
+      "question": "冰壺賽裡，大本營留著三顆紅壺，為什麼不一定替紅隊加三分？",
+      "existing_ids": [
+        "K119-0406"
+      ],
+      "reason": "逐讀 World Curling 2026 R12(b)，紅壺必須比對方所有壺更靠近圓心才各計一分。K119-0406 已用三紅一黃的局面回答計分；改收混雙空局的下一局選擇權。",
+      "origin": "wave133-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave133-everyday-20261119.json"
+    },
+    {
+      "id": "X133E-NA003",
+      "question": "換人用相機，怎麼要再把目鏡調過？",
+      "existing_ids": [
+        "K120-0005"
+      ],
+      "reason": "開啟 Nikon D850 手冊的 The Diopter Adjustment Control 及故障排查，觀景框線清晰度是診斷線索，但光學核心仍是目鏡屈光補償，與雙筒望遠鏡既有題接近。",
+      "origin": "wave133-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave133-everyday-20261119.json"
+    },
+    {
+      "id": "R133-NA01",
+      "question": "兩個人跳高都過兩公尺，裁判是不是可以像跑步同時衝線一樣直接發兩面獎牌？",
+      "reason": "比最後成功高度所需試跳及累計失敗次數，已有 K130-0002 拆過判讀順序；硬加跳高會岔開百米的主線。",
+      "existing_ids": [
+        "K130-0002"
+      ],
+      "origin": "wave133-research-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave133-research-20261119.json"
+    },
+    {
+      "id": "R133-NA02",
+      "question": "把比賽畫面停格，只要看見競走選手兩腳同時離地，就能說裁判看漏嗎？",
+      "reason": "H74-016 已用競走感測資料和真人裁判對看片段；原答案是肉眼對短時離地的辨識限制，這次不另收或挪成終點判讀的證據。",
+      "existing_ids": [
+        "H74-016"
+      ],
+      "origin": "wave133-research-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave133-research-20261119.json"
+    },
+    {
+      "id": "R133-NA03",
+      "question": "可不可以直接拿巴黎男子百米速度曲線，報出奧運冠軍究竟在第幾公尺反超？",
+      "reason": "實際打開 OMEGA 的《Paris 2024 – Race Analysis》原表，標題下為 7 月 7 日男子百米，與 8 月 4 日奧運決賽不同。這張同城市同距離原表退案；不把它套到萊爾斯身上。",
+      "existing_ids": [],
+      "origin": "wave133-research-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave133-research-20261119.json"
     },
     {
       "question": "螞蟻的氣味如何指向食物？",
