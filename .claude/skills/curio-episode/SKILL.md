@@ -26,7 +26,7 @@ metadata:
 | 照片 | 2026-11-05 起新集不用：照片卡也是卡片（§不用卡片）。之前可放，限公有領域（CC BY 不用），做成貼圖式照片卡 | 站主 2026-10-10、L08、2026-11-05 |
 | 人物與設定卡 | 1956 年以前過世（70 年以上）可入畫（Prompt 用年代／身分／服裝描述，不寫真名）。**單一可入畫歷史人物或串場研究員只要跨 ≥ 4 鏡出場，開畫前必先用 `generate_image` 產一張角色設定圖（鎖死五官、髮色、髮型與主色服裝），每鏡出場時 `ImagePaths` 必傳該設定圖**（重繪既有鏡頭時一併傳入前一版圖檔）。**在世或 1956 年後過世的人不入畫**，連「代表他的路人」也不畫：講到他們時畫串場角色、物件，或明顯是一般人的匿名角色（§誰可以入畫） | README §內容守則；站主 2026-11-05、2026-11-14 |
 | 長度 | **2026-11-01 站主改為看內容決定：至少 8 分鐘、最多 13 分鐘**（「≥8 分鐘都可以」）。片長跟著素材走：撐不住就剪短，或跟同一個核心問題的兄弟題排成一集，不用重述、停頓或慢唸補時間。後台建立單集時照題案的 `target_minutes` 選（`docs/videos/history-curiosity/pool/THEMES.md`；沒有題案的單題照題卡素材估，至少 8 分鐘），正文約 4.5 字／秒：8 分鐘約 2,100 字、13 分鐘約 3,500 字。2026-10-25 曾定一律 13 分鐘（參考頻道中位 13–31 分，§跟高點閱頻道的差距），已被這條取代；已製作與製作中的集照原本的長度 | `docs/videos/long-form/README.md`；`docs/videos/channel-review-20261025-story-series/README.md` |
-| 片頭片尾 | 頻道片頭放在第一章（鉤子＋承諾句）之後（`intro_at` = after_first_chapter）；片尾 v4-endscreen，旁白不提下一支 | `docs/videos/BRANDING.md` |
+| 片頭片尾 | **2026-11-19 起不放片頭**：`0:00` 就是鉤子的第一句（工具預設 `intro_at: "none"`，`core/branding.mjs` `noIntroSeries`；已 pin 的舊片不動）；片尾 v4-endscreen，旁白不提下一支。開場只問一個問題、不疊問題菜單，開頭 15 秒接上縮圖或標題（`narrative.mjs` `questionMenuProblems`、`thumbnailEchoProblems`） | `docs/videos/BRANDING.md` |
 | 語速與停頓 | **2026-11-13 站主：實測語速至少 4.4 字／秒**（字數不含標點，除以每句錄音長度加總，不算句間空白）；停頓照 PR #2069：`"pauses": {"line_ms": 0, "scene_ms": 150}`、`"still_motion": "beat"`。**不符合的集數一律重做**，連已核准、待上傳的也重做；重錄旁白時八語配音一起改用 MiniMax（PR #2085），中文旁白維持 Gemini `Sulafat`。聲音指示寫「一秒四到五個字」只念到約 4.1–4.3（Gemini 會打折扣），要寫得比目標快（見 §稿子 的語速） | 站主 2026-11-13「不符合的都要重製」「重錄的話八語就用 minimax」 |
 | 八語 | **2026-11-13 起每集預設八語都做**（en、ja、ko、es、pt、id、vi、th：標題說明、CC、配音）。工具的 `DEFAULT_LOCALES` 仍只有 zh-TW、en、ja、ko，所以每集要明確選這八個語言（站台的語言勾選／`languages.json`，`i18n-sheet --locale en,ja,ko,es,pt,id,vi,th`、`dub --locale <loc>` 逐一跑），不能靠預設；外語配音固定用 MiniMax；外語標題要在手機清單寬度內（lint `at most 36`），外語縮圖標題手機寬度 ≥ 24 px 且副標 `sub` 避免單字孤行換行；外語（尤其泰文，每字 3 bytes）組完說明欄壓在 `< 4,500` UTF-8 bytes 安全區間 | 站主 2026-11-13、2026-11-14 |
 | 語言 | zh-TW 先做完（Gemini `Sulafat`）；外語照上一列「八語」全做（MiniMax） | `docs/videos/DUBS.md` |
@@ -227,6 +227,8 @@ metadata:
 2. 先用內建 `generate_image`（`AspectRatio: "16:9"`）畫出單集跨 ≥ 4 鏡出場的角色設定圖，再逐批生成全集關鍵影格（有角色出場必傳 `ImagePaths`）。若遇 `gemini-3.1-flash-image` 配額冷卻，先跑完八語翻譯、配音與 `check-audio`，等配額恢復再繼續生圖，**絕不退回 MiniMax**。
 3. 將所有關鍵影格轉為 `1920×1080` PNG 並切出四格 2x 放大圖，交由獨立子代理逐張審過（零文字、零白邊、角色一致、五指與地理／時代道具無誤），不合格鏡頭帶原圖進 `ImagePaths` 重繪。
 4. 全數審過後，逐鏡執行 `node tools/video/cli.mjs keyframes import --slug <SLUG> --shot <ID> --file <PNG> --provider external --usd 0` 寫入 `keyframes/manifest.json`，再鎖定並推送 `storyboard` 關卡。注意：之後只要改動 `video.json` 某景的 `prompt`，該景的外部匯入紀錄就會失效，務必先定稿 `video.json` 再匯入。
+
+**前 300 秒觀眾審查（站主 2026-11-19「前300秒都不會滑走、嚴格審核」，配音前必過）**：劇本定稿後、跑 `tts` 之前，先 `node tools/video/cli.mjs opening-review --slug <SLUG>` 寫出審查包（`review/opening-packet.md`：縮圖大字、標題、前 300 秒的口白與時間，有角色時顯示名字而不是代號）。**預設由製作中的 AI 自己派三個全新的子代理**（Claude Code、Codex 都可以；不花站台額度），各開新的對話、只給這份審查包，分別扮演 `newcomer`（第一次點進來的路人）、`scroller`（邊滑手機、隨時想走）、`stickler`（專抓沒頭沒尾和跳接），把三份 JSON 存成陣列後 `opening-review --slug <SLUG> --record <檔案> --author <你的名字>` 記錄；作者不能當讀者，每位讀者要照抄審查包裡的 `opening_hash`。另一種是 `opening-review --slug <SLUG> --ask`，改由站台用站主為漫劇查核階段選的模型跑三次（算進每月額度，結果由工具直接向站台要，最難造假）。**三位都要 score ≥ 8.5、不會滑走、problems 為空**才算過；沒過就照列出的問題改稿，再找**新的**三位重審。審查結果綁定這一版的縮圖大字、標題和前 300 秒口白，這三樣一改就要重審；300 秒之後的修改、停頓、念法微調和重錄單句不用。沒過關之前 `tts` 會拒絕合成；`tts --dry-run` 和 `opening-review --check` 會顯示目前狀態（主機產線用自己的盲評，不受影響）。
 
 **配樂、觀眾評分關卡與成片推送**
 

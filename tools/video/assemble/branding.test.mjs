@@ -26,6 +26,16 @@ test("the wrapper copies normalized pictures but trims decoded audio to exact sa
   assert.match(filter, /alimiter=.*:level=false:latency=true/, "no makeup gain or lookahead delay");
 });
 
+test("a cut with no intro joins the body and the outro only, and records a zero-frame intro (owner 2026-11-19)", () => {
+  const none = { ...selected, intro_at: "none" };
+  const args = brandingJoinArgs({ bodyFile: "body.mp4", bodyFrames: 301, branding: none, outFile: "final.mp4", videoList: "join.ffconcat" });
+  const filter = args[args.indexOf("-filter_complex") + 1];
+  assert.deepEqual(args.filter((arg, index) => args[index - 1] === "-i"), ["join.ffconcat", "body.mp4", "outro.mp4"], "the intro is never read");
+  for (const count of [481600, 144000]) assert.match(filter, new RegExp(`atrim=end_sample=${count},apad=whole_len=${count}`));
+  assert.ok(filter.endsWith(`concat=n=2:v=0:a=1,${BRANDING_PEAK_FILTER}[a]`));
+  assert.throws(() => brandingJoinArgs({ bodyFile: "body.mp4", bodyFrames: 301, branding: none, outFile: "final.mp4", introAtFrame: 30 }), /cannot put its intro/);
+});
+
 test("real AAC branding limits decoded true peaks without moving the body or losing tail samples", async (t) => {
   let tools;
   try { tools = await locateFfmpeg(); }

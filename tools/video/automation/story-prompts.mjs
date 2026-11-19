@@ -91,7 +91,8 @@ stands):
   table of contents. The limits above still hold: at most one forward hook in the whole story says
   so out loud, and 「還記得…」 at most five times.
 - "loops" lists at least 8 for ten minutes of narration (about one for every 75 seconds; 10 for a
-  13-minute story), at least 3 of them planted in the hook, and every one is paid off.
+  13-minute story), at least 2 of them planted in the hook (its contrast and the promise's
+  question; one climax label may add a third, never a menu of questions), and every one is paid off.
 `.trim();
 
 const WRITER = `${STORY_COMMON}

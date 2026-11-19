@@ -19,6 +19,8 @@ export const HOOK_GAP_SECONDS = 90;
 // After its one scene the condensation teases this many later moments, each a loop it plants
 // (owner, 2026-10-13: the opening needs many hooks that make the viewer want the whole video).
 export const OPENING_TEASERS = 3;
+/** What the opening of the ten-step series plants instead: the contrast and the promise's question. */
+export const OPENING_HOOK_TEASERS = 2;
 /** How many loops a ten-minute narrated video plants (its "loops" table), at least two whatever its length. */
 export const LOOPS_PER_10_MINUTES = 3;
 
@@ -235,7 +237,10 @@ export function loopProblems(doc, timeline, minutes, per10 = LOOPS_PER_10_MINUTE
   };
   const teasers = loops.filter(planted).length;
   if (chapters.length > 1 && !teasers) problems.push({ path: "loops", message: "the condensation plants no loop: at least one setup line sits in the first chapter, paid off in a later one" });
-  else if (chapters.length > 1 && teasers < OPENING_TEASERS) problems.push({ path: "loops", message: `the condensation plants ${teasers} loop${teasers === 1 ? "" : "s"}; after its one scene it teases at least ${OPENING_TEASERS} later moments, each cut off before its result and paid off where the body reaches it (script-writing.md §開場濃縮)` });
+  // The ten-step series open on ONE question, its contrast and the promise (owner, 2026-11-19: no
+  // question menu), so two loops planted there are enough: the contrast and the promise's question.
+  else if (chapters.length > 1 && isOpeningHookSeries(doc) && teasers < OPENING_HOOK_TEASERS) problems.push({ path: "loops", message: `the opening plants ${teasers} loop${teasers === 1 ? "" : "s"}; the hook's contrast and the promise's question are at least ${OPENING_HOOK_TEASERS}, paid off where the body reaches them (one question, never a menu; script-writing.md §奇聞檔案局與品牌故事的架構)` });
+  else if (chapters.length > 1 && !isOpeningHookSeries(doc) && teasers < OPENING_TEASERS) problems.push({ path: "loops", message: `the condensation plants ${teasers} loop${teasers === 1 ? "" : "s"}; after its one scene it teases at least ${OPENING_TEASERS} later moments, each cut off before its result and paid off where the body reaches it (script-writing.md §開場濃縮)` });
   const outro = (doc.scenes ?? []).find((scene) => scene.template === "outro");
   const closing = new Set((outro?.lines ?? []).map((line) => line.id));
   loops.forEach((loop, index) => {
@@ -361,6 +366,103 @@ export function caveatRecitationProblems(doc) {
   }];
 }
 
+/**
+ * The opening hook of 奇聞檔案局, the brand stories and 原來如此事務所 asks ONE question (owner,
+ * 2026-11-19: 「開場鉤子禁疊問題菜單」): a question or a situation the viewer knows, its contrast and
+ * the promise, the way 黑猫研究院 opens. Three or more questions stacked there (「為什麼…？為什麼…？
+ * 那…呢？」) read as a menu of what the video will cover. One follow-up is tolerated (in the
+ * dialogue series the kid may ask 「那它為什麼不會掉下來？」 after her first question).
+ */
+export const OPENING_QUESTION_MAX = 2;
+/** How far the opening is read: its first chapter, never past this; the first 60 s when there are no chapters. */
+export const OPENING_QUESTION_WINDOW_SECONDS = 90;
+const NO_CHAPTER_OPENING_SECONDS = 60;
+export const isOpeningHookSeries = (doc, series = null) => /^(?:curio|story|sothatswhy)-/.test(doc?.slug ?? "") || isStory(series);
+const SENTENCE = /[^。！？!?…]+[。！？!?…]*/g;
+/** The promise sentence restates the hook's question; it is not one more item on a menu. */
+const PROMISE_SENTENCE = /今天(?:我們)?(?:就)?來(?:聊聊|看看|說說)|這一?集(?:要|就)?(?:回答|告訴你)/;
+
+export function questionMenuProblems(doc, timeline, { series = null } = {}) {
+  if (!isOpeningHookSeries(doc, series) || !timeline) return [];
+  const chapters = chapterList(timeline);
+  const end = Math.min(chapters.length > 1 ? chapters[1].start : NO_CHAPTER_OPENING_SECONDS, OPENING_QUESTION_WINDOW_SECONDS);
+  const starts = lineStarts(timeline);
+  const questions = [];
+  for (const { line } of eachLine(doc)) {
+    const frame = starts.get(line.id);
+    if (frame === undefined || frameToSeconds(frame) >= end) continue;
+    for (const sentence of String(line.text ?? "").match(SENTENCE) ?? []) {
+      if (/[？?]/.test(sentence) && !PROMISE_SENTENCE.test(sentence)) questions.push({ id: line.id, text: sentence.trim() });
+    }
+  }
+  if (questions.length <= OPENING_QUESTION_MAX) return [];
+  const shown = questions.slice(0, 4).map(({ id, text }) => `${id}:「${text.length > 24 ? `${text.slice(0, 24)}…` : text}」`).join(", ");
+  return [{
+    path: "scenes[0]",
+    message: `the opening asks ${questions.length} questions in its first ${Math.round(end)} s (${shown}${questions.length > 4 ? " …" : ""}): a question menu, not a hook. Open on ONE question or situation the viewer knows (at most one follow-up), then its contrast and the promise 「今天我們就來聊聊…」; the other questions become the loops the chapters open later (owner 2026-11-19, 開場鉤子禁疊問題菜單)`,
+  }];
+}
+
+/**
+ * The first seconds keep the thumbnail's promise (owner, 2026-11-19, after So That's Why's QR Code
+ * episode lost about 40% of its viewers in its first 15 s): a viewer who clicked a picture and a
+ * headline has to hear that headline's subject at once, or they think they clicked the wrong video.
+ * Read as overlap: the thumbnail headline's (or else the title's) two-character terms and Latin
+ * words against what is said in the first FIRST_SECONDS_WINDOW seconds.
+ */
+export const FIRST_SECONDS_WINDOW = 15;
+export const THUMBNAIL_ECHO_MIN = 0.3;
+/** Or this many of its terms, whatever the share: a long title is echoed by its subject alone. */
+export const THUMBNAIL_ECHO_TERMS = 3;
+const SERIES_SUFFIX = /[｜|].*$/;
+/**
+ * Two-character pairs that carry no subject (為什麼, 不會, 真的, 到底…): a first line can say three of
+ * them without ever naming what the thumbnail promised, so they never count as an echo.
+ */
+const FILLER_PAIR = /^(?:為什|什麼|怎麼|為何|如何|不會|不是|沒有|下來|起來|出來|真的|到底|究竟|其實|可能|可以|還是|就是|這個|那個|一個|我們|你們|他們|自己|是誰|是什|哪裡|竟然|居然|原來|到了|會不|是不|了什|的是)$|[的了嗎呢吧啊？]/;
+function promiseTerms(text) {
+  const clean = String(text ?? "").replace(SERIES_SUFFIX, "").replace(/\*\*/g, "").replace(/\\n|\n/g, " ");
+  const latin = (clean.match(/[A-Za-z0-9]{2,}/g) ?? []).map((word) => word.toLowerCase());
+  const han = clean.replace(/[^\p{Script=Han}]+/gu, " ").trim().split(/\s+/).filter(Boolean);
+  const pairs = han.flatMap((run) => Array.from({ length: Math.max(run.length - 1, 0) }, (_, i) => run.slice(i, i + 2))).filter((pair) => !FILLER_PAIR.test(pair));
+  return [...new Set([...latin, ...pairs])];
+}
+
+export function thumbnailEchoProblems(doc, timeline, { series = null } = {}) {
+  if (!isOpeningHookSeries(doc, series) || !timeline) return [];
+  const promises = [doc.thumbnail?.data?.headline, doc.youtube?.title].filter((text) => promiseTerms(text).length >= 2);
+  if (!promises.length) return [];
+  const starts = lineStarts(timeline);
+  const opening = [];
+  for (const { line } of eachLine(doc)) {
+    const frame = starts.get(line.id);
+    if (frame !== undefined && frameToSeconds(frame) < FIRST_SECONDS_WINDOW) opening.push(String(line.text ?? ""));
+  }
+  const said = opening.join(" ").toLowerCase();
+  if (!said) return [];
+  // Either the thumbnail's headline or the title is enough: a headline is often a feeling (「他反而高興」)
+  // whose subject the title names.
+  const echoes = promises.map((text) => {
+    const terms = promiseTerms(text);
+    return { text: String(text).replace(SERIES_SUFFIX, "").replace(/\*\*/g, "").replace(/\n/g, " "), heard: terms.filter((term) => said.includes(term)).length, of: terms.length };
+  });
+  if (echoes.some(({ heard, of }) => heard >= THUMBNAIL_ECHO_TERMS || heard / of >= THUMBNAIL_ECHO_MIN)) return [];
+  return [{
+    path: "scenes[0]",
+    message: `the first ${FIRST_SECONDS_WINDOW} s barely echo the thumbnail or the title (${echoes.map(({ text, heard, of }) => `「${text}」 ${heard}/${of}`).join(", ")} terms said): a viewer who clicked them hears their subject in the first line, over the thumbnail's picture, or thinks they clicked the wrong video (owner 2026-11-19)`,
+  }];
+}
+
+/**
+ * What holds a script of 奇聞檔案局, a brand story or 原來如此事務所 at the script gate (owner, 2026-11-19:
+ * these were only warnings, and a draft could reach the owner and paid audio and pictures with a
+ * question menu or an opening that does not keep the thumbnail's promise). review-push --gate script
+ * refuses while any is left.
+ */
+export function openingGateProblems(doc, timeline = estimateTimeline(doc), { series = null } = {}) {
+  return [...questionMenuProblems(doc, timeline, { series }), ...thumbnailEchoProblems(doc, timeline, { series })];
+}
+
 /** Every storytelling problem of a narrated script, tagged "narrative" so the worker can hand the warnings to the writer. */
 export function narrativeProblems(doc, timeline, { minutes, cadence = DEFAULT_CADENCE } = {}) {
   const tag = (problems) => problems.map((problem) => ({ ...problem, kind: "narrative" }));
@@ -369,7 +471,7 @@ export function narrativeProblems(doc, timeline, { minutes, cadence = DEFAULT_CA
   const told = cadence.gap <= TIGHT_CADENCE.gap ? viewerAddressProblems(doc) : [];
   return {
     errors: tag(outroNextVideoProblems(doc)),
-    warnings: tag([...chapterOpenerProblems(doc, timeline), ...hookCadenceProblems(doc, timeline, cadence.gap), ...loopProblems(doc, timeline, length, cadence.loopsPer10), ...repeatedFactProblems(doc), ...caveatRecitationProblems(doc), ...told]),
+    warnings: tag([...chapterOpenerProblems(doc, timeline), ...hookCadenceProblems(doc, timeline, cadence.gap), ...loopProblems(doc, timeline, length, cadence.loopsPer10), ...repeatedFactProblems(doc), ...caveatRecitationProblems(doc), ...questionMenuProblems(doc, timeline), ...thumbnailEchoProblems(doc, timeline), ...told]),
   };
 }
 
@@ -443,6 +545,12 @@ export const STORY_SERIES_PANEL_QUESTIONS = Object.freeze({
 });
 /** Whether a script belongs to one of the two story series the viewer wording reads. */
 export const isStorySeries = (doc) => /^(?:curio|story)-/.test(doc?.slug ?? "");
+/**
+ * The scripts whose blind panel reads 黑猫研究院's ten steps: the two story series and, since the
+ * owner moved new episodes to the ten steps (2026-11-19), 原來如此事務所. Kept apart from
+ * isStorySeries, which also decides look, cadence and branding rules 原來如此 does not share.
+ */
+export const readsTenStepPanel = (doc) => isStorySeries(doc) || /^sothatswhy-/.test(doc?.slug ?? "");
 
 /**
  * The checks reworded for the daily news brief (a daily-ai- slug, owner decision 2026-10-29): five
@@ -475,7 +583,7 @@ export const isDailyBrief = (doc) => /^daily-ai-/.test(doc?.slug ?? "");
 export function panelQuestions(doc) {
   const words = doc?.category === "tutorial"
     ? TUTORIAL_PANEL_QUESTIONS
-    : isStorySeries(doc)
+    : readsTenStepPanel(doc)
       ? STORY_SERIES_PANEL_QUESTIONS
       : isDailyBrief(doc)
         ? DAILY_BRIEF_PANEL_QUESTIONS
@@ -513,7 +621,7 @@ const panelRulesHash = (questions) => createHash("sha256").update(JSON.stringify
 /** The story panel's contract hash (every script that is not a tutorial). */
 export const PANEL_RULES_SHA256 = panelRulesHash(NARRATIVE_PANEL);
 /** The contract hash of the panel this script is read against. */
-export const panelRulesSha256 = (doc) => (doc?.category === "tutorial" || isStorySeries(doc) || isDailyBrief(doc) ? panelRulesHash(panelQuestions(doc)) : PANEL_RULES_SHA256);
+export const panelRulesSha256 = (doc) => (doc?.category === "tutorial" || readsTenStepPanel(doc) || isDailyBrief(doc) ? panelRulesHash(panelQuestions(doc)) : PANEL_RULES_SHA256);
 
 // Bind the exact rendered narration sent to the blind panel. The shared script check omits
 // metadata such as the title, even though the panel reads it above every chapter.

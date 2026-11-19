@@ -674,3 +674,96 @@ test("no_orphans asks every script whether anything arrives out of nowhere; a tw
   assert.match(narrationText(duo, estimateTimeline(duo)), new RegExp(`\\] 小問：${firstLine.text.slice(0, 4)}`));
   assert.doesNotMatch(narrationText(base, estimateTimeline(base)), /小問：|所長：/, "one voice: no names");
 });
+
+import { isOpeningHookSeries, OPENING_QUESTION_MAX, questionMenuProblems } from "./narrative.mjs";
+
+test("the opening hook of curio-, story- and sothatswhy- asks one question, never a question menu (owner 2026-11-19)", () => {
+  assert.equal(OPENING_QUESTION_MAX, 2);
+  assert.equal(isOpeningHookSeries({ slug: "sothatswhy-p02-cloud-rain" }), true);
+  assert.equal(isOpeningHookSeries({ slug: "curio-w01" }), true);
+  assert.equal(isOpeningHookSeries({ slug: "story-adapt-seiko" }), true);
+  assert.equal(isOpeningHookSeries({ slug: "daily-ai-20261119" }), false);
+
+  const hook = stretched();
+  hook.slug = "sothatswhy-x01";
+  hook.scenes[0].lines[0].text = "雲裡面真的有水嗎？今天我們就來聊聊，雲為什麼不會掉下來？";
+  assert.deepEqual(questionMenuProblems(hook, estimateTimeline(hook)), [], "one question, the promise and one follow-up (the fixture's cd06) is a hook");
+
+  const menu = structuredClone(hook);
+  menu.scenes[0].lines[0].text = "為什麼雲會變灰？為什麼下午才下雨？雷又是從哪裡來的？";
+  const [warning] = questionMenuProblems(menu, estimateTimeline(menu));
+  assert.equal(warning.path, "scenes[0]");
+  assert.match(warning.message, /asks 4 questions/);
+  assert.match(warning.message, /question menu/);
+  assert.match(warning.message, /開場鉤子禁疊問題菜單/);
+  assert.match(messages(lintVideo({ ...structuredClone(menu), slug: "curio-w99" }, context()).warnings), /question menu/);
+
+  const later = structuredClone(hook);
+  const body = later.scenes.find((scene, index) => index > 1 && scene.chapter);
+  body.lines[0].text = "為什麼雲會變灰？為什麼下午才下雨？雷又是從哪裡來的？";
+  assert.deepEqual(questionMenuProblems(later, estimateTimeline(later)), [], "questions past the opening are the chapters' loops");
+  assert.deepEqual(questionMenuProblems({ ...structuredClone(menu), slug: "daily-ai-20261119" }, estimateTimeline(menu)), [], "other series are untouched");
+});
+
+import { thumbnailEchoProblems } from "./narrative.mjs";
+
+test("the first 15 s of curio-, story- and sothatswhy- echo the thumbnail or the title (owner 2026-11-19)", () => {
+  const doc = stretched();
+  doc.slug = "curio-s27";
+  doc.thumbnail = { template: "thumb", data: { headline: "維京盔\n**沒有角**" } };
+  doc.youtube = { ...doc.youtube, title: "維京人的頭盔，為什麼沒有角？｜奇聞檔案局" };
+  doc.scenes[0].lines[0].text = "一九四三年春天，挪威林厄里克，一個農家兒子替父母蓋房子。";
+  const [warning] = thumbnailEchoProblems(doc, estimateTimeline(doc));
+  assert.equal(warning.path, "scenes[0]");
+  assert.match(warning.message, /barely echo the thumbnail or the title/);
+  assert.match(warning.message, /「維京盔 沒有角」 0\/3/);
+
+  const echoed = structuredClone(doc);
+  echoed.scenes[0].lines[0].text = "你印象中的維京人，頭盔上是不是有兩隻角？";
+  assert.deepEqual(thumbnailEchoProblems(echoed, estimateTimeline(echoed)), [], "the thumbnail's subject in the first line");
+  assert.deepEqual(thumbnailEchoProblems({ ...structuredClone(doc), slug: "daily-ai-20261119" }, estimateTimeline(doc)), [], "other series are untouched");
+
+  const filler = structuredClone(doc);
+  filler.thumbnail = { template: "thumb", data: { headline: "飛機\n不會掉？" } };
+  filler.youtube = { ...filler.youtube, title: "為什麼飛機不會掉下來？｜原來如此事務所" };
+  filler.scenes[0].lines[0].text = "為什麼？到底為什麼它不會？真的不會嗎？";
+  assert.equal(thumbnailEchoProblems(filler, estimateTimeline(filler)).length, 1, "為什麼、不會、下來 never stand in for the subject");
+  filler.scenes[0].lines[0].text = "一架幾百噸的飛機，為什麼不會掉下來？";
+  assert.deepEqual(thumbnailEchoProblems(filler, estimateTimeline(filler)), [], "naming 飛機 echoes it");
+});
+
+import { readsTenStepPanel } from "./narrative.mjs";
+
+test("原來如此 reads the ten-step panel too, and its opening question bans a question menu (owner 2026-11-19)", () => {
+  const sothatswhy = { ...fixture(), slug: "sothatswhy-p12-qr-code" };
+  assert.equal(readsTenStepPanel(sothatswhy), true);
+  assert.equal(isStorySeries(sothatswhy), false, "look, cadence and branding rules stay apart");
+  const questions = panelQuestions(sothatswhy);
+  // The question menu is held by lint and the writer prompts; the panel wording of the two story
+  // series stays byte-identical so their saved verdicts and brand-story pilots are not re-opened.
+  assert.doesNotMatch(questions.find((question) => question.id === "opening_hooks").question, /至少三個後面才會揭曉的時刻/);
+  assert.equal(panelRulesSha256(sothatswhy), panelRulesSha256({ ...fixture(), slug: "curio-s27" }), "the three series share one contract");
+});
+
+test("原來如此 keeps the ten steps' 45-second hook cadence in lint (owner 2026-11-19)", () => {
+  const doc = stretched();
+  const required = (slug) => Number(messages(lintVideo({ ...structuredClone(doc), slug }, context()).warnings).match(/plants at least (\d+)/)?.[1]);
+  assert.equal(required("sothatswhy-x02"), required("curio-x02"), "the same loop minimum as 奇聞檔案局 (TIGHT_CADENCE)");
+  assert.ok(required("sothatswhy-x02") > required("explainer-x02"), "more than the default cadence asks");
+});
+
+test("the ten-step series plant two loops in the opening (contrast and promise), never a teaser menu (owner 2026-11-19)", () => {
+  const doc = stretched();
+  doc.slug = "sothatswhy-x03";
+  const timeline = estimateTimeline(doc);
+  const minutes = timeline.total_frames / FPS / 60;
+  const pads = padScenes(doc);
+  doc.loops = [
+    { setup: "cd06", payoff: pads[3].lines[0].id, what: "十個人去了哪裡" },
+    { setup: pads[0].lines[1].id, payoff: pads[4].lines[2].id, what: "那九個桶" },
+    { setup: pads[1].lines[0].id, payoff: pads[5].lines[0].id, what: "劍上的痕跡" },
+  ];
+  assert.match(messages(loopProblems(doc, timeline, minutes)), /the opening plants 1 loop; the hook's contrast and the promise's question are at least 2/);
+  doc.loops[1].setup = "cd04";
+  assert.doesNotMatch(messages(loopProblems(doc, timeline, minutes)), /plants \d+ loops?;/, "two are enough; the menu of three or four is not asked for");
+});
