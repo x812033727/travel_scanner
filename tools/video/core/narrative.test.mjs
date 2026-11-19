@@ -735,3 +735,10 @@ test("原來如此 reads the ten-step panel too, and its opening question bans a
   assert.doesNotMatch(questions.find((question) => question.id === "opening_hooks").question, /至少三個後面才會揭曉的時刻/);
   assert.equal(panelRulesSha256(sothatswhy), panelRulesSha256({ ...fixture(), slug: "curio-s27" }), "the three series share one contract");
 });
+
+test("原來如此 keeps the ten steps' 45-second hook cadence in lint (owner 2026-11-19)", () => {
+  const doc = stretched();
+  const required = (slug) => Number(messages(lintVideo({ ...structuredClone(doc), slug }, context()).warnings).match(/plants at least (\d+)/)?.[1]);
+  assert.equal(required("sothatswhy-x02"), required("curio-x02"), "the same loop minimum as 奇聞檔案局 (TIGHT_CADENCE)");
+  assert.ok(required("sothatswhy-x02") > required("explainer-x02"), "more than the default cadence asks");
+});

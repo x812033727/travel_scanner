@@ -564,7 +564,8 @@ export function lintVideo(doc, context = {}) {
     for (const problem of episodeScriptProblems(doc, timeline, { outroCount: !isExplainer(doc) })) warn(problem.path, problem.message);
     // A brand story and a 奇聞檔案局 episode are held by the narration alone, so they keep a hook
     // inside every 45 s and plant eight loops for ten minutes (narrative.mjs TIGHT_CADENCE).
-    const cadence = isStory(context.series) || isCurio(doc) ? TIGHT_CADENCE : DEFAULT_CADENCE;
+    // 原來如此事務所 keeps the same cadence since its episodes follow the ten steps (owner, 2026-11-19).
+    const cadence = isStory(context.series) || isCurio(doc) || /^sothatswhy-/.test(doc.slug ?? "") ? TIGHT_CADENCE : DEFAULT_CADENCE;
     const story = narrativeProblems(doc, timeline, { minutes, cadence });
     for (const problem of story.errors) error(problem.path, problem.message, problem.kind);
     for (const problem of story.warnings) warn(problem.path, problem.message, problem.kind);

@@ -17,6 +17,10 @@ scope:
   - tools/video/automation/explainer-series.test.mjs
   - tools/video/automation/story-prompts.test.mjs
   - .agents/skills/youtube-video/references/script-writing.md
+  - tools/video/core/lint.mjs
+  - tools/video/core/narrative.test.mjs
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
   - docs/videos/so-thats-why/dialogue-pilot-20261103/README.md
 ---
 
@@ -34,6 +38,8 @@ prompts still say "the channel intro plays after it" (奇聞, 原來如此) and 
 - [x] 奇聞 profile: no intro in its shape and its tool-added-clips line.
 - [x] 原來如此 profile: shape and bible follow the ten steps (hook + promise 40–60 s, no condensation, no intro).
 - [x] SERIES_TEXT_PINS refreshed; script-writing.md and the sothatswhy template name the ten steps.
+
+- [x] 原來如此 keeps the 45-second hook cadence and 8 loops per ten minutes (lint TIGHT_CADENCE, writer prompt), owner 2026-11-19.
 
 ## How to verify
 

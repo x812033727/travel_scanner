@@ -135,7 +135,16 @@ prompt is not a fault: the series draws them.`,
   refusals: "a cast, dialogue, a mascot, a real person or a logo drawn",
   // The owner (2026-11-19) moved new episodes to 黑猫研究院's ten steps, as 奇聞檔案局 tells them:
   // a one-question hook and the promise in place of the condensation, no intro, told to one viewer.
-  storyRules: `${STORY_OPENING_RULE}
+  storyRules: `Hooks (owner, 2026-11-19: the same cadence as 黑猫研究院's ten steps; these replace the
+60-to-90-second cadence and the three-loops-for-ten-minutes minimum of the hook rules above;
+every other hook rule stands):
+- About every 30 to 45 seconds of the body (about 130 to 200 spoken characters) at least one
+  question is left hanging: a wrong guess not yet overturned, a number not yet explained, a
+  "但這還不是最怪的", holding back the why, or a turn. No stretch of the body runs longer than 45
+  seconds without one; lint warns past it. "loops" lists at least 8 for ten minutes.
+- Every chapter but the close ends on one concrete, unanswered question, and the next chapter's
+  first sentence picks it up, so the viewer is never dropped between two parts.
+${STORY_OPENING_RULE}
 ${TOLD_TO_ONE_VIEWER}`,
 };
 

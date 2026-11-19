@@ -124,10 +124,10 @@ test("one table maps each explainer preset to its variants; every name fits the 
 // one-off on the host stops with video_ai_receipt_input_changed at its next stage after the deploy.
 const SERIES_TEXT_PINS = {
   "planner:bible-explainer-cartoon": [6519, "078f8a30dac91dbf89bb03f33c9672404ec96bb4dd130765f2b72f1ff5d8810f"],
-  "writer:explainer-cartoon": [32576, "0522fa26c7956a3fc0b47f1ea9be06dea14d09cd5491f711bcc9c5d9c7832307"],
+  "writer:explainer-cartoon": [33319, "b10f79ddedb915133c340a28d5e444ed3b11b44a64533e9f0536b12367e96fde"],
   "verifier:explainer-cartoon": [4305, "6f41570e5090987327a200b7790a6ecdec88c8a0350de2ca49b74cb4e7ca95db"],
   "planner:discuss-cartoon": [7246, "86fb87e98cce5315e954f8505f00c56d3aa6693ccec3e9e72d70cbb7fee014c4"],
-  "writer:discuss-cartoon": [31041, "1e10d0bf92e15bb0c512cfd0367a5bd3647e5651a05d44e1c728b87383ed6cb8"],
+  "writer:discuss-cartoon": [31784, "dc2e7045d5cada0b6ab20c5f976b7fd11afb805cc231417a42d2bab6faa024f4"],
   "planner:bible-explainer-mystery": [9560, "96629ae4e51040e354111f8659249f1526c57070993a5025c1fbf1e58564adb6"],
   "writer:explainer-mystery": [38124, "748d45b5237a76e76aa8190454ec08ee0671e8376077225236b10f26f65d5daa"],
   "verifier:explainer-mystery": [6433, "e84a1810dab0b060272622dae14a95879470965678851713608fc5ac60dc4b2a"],
@@ -185,7 +185,10 @@ test("奇聞檔案局's writer keeps the brand stories' cadence and music bed; �
   assert.ok(EXPLAINER_SERIES_INSTRUCTIONS["writer:explainer-cartoon"].includes(TOLD_TO_ONE_VIEWER), "原來如此 is told to one viewer");
   assert.match(instructionsFor("planner", "drama", "", "bible-explainer-mystery"), /at least eight for ten minutes/);
   const cartoon = instructionsFor("writer", "drama", "", "explainer-cartoon");
-  assert.doesNotMatch(cartoon, /45 seconds|"music" is never left out/);
+  // 2026-11-19: 原來如此 keeps the 45-second cadence of the ten steps, not 奇聞檔案局's music rule.
+  assert.match(cartoon, /No stretch of the body runs longer than 45\s+seconds without one/);
+  assert.match(cartoon, /"loops" lists at least 8 for ten minutes/);
+  assert.doesNotMatch(cartoon, /"music" is never left out/);
   // 原來如此 keeps its cards and its picture rules; its opening is the ten steps' hook and promise.
   assert.ok(!cartoon.includes(STORY_SERIES_SCREEN_RULE) && cartoon.includes(STORY_OPENING_RULE));
   assert.match(cartoon, /The first chapter, 40 to 60 seconds: the hook and the promise/);
