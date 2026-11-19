@@ -49,8 +49,9 @@ export const FAILED_RETRY_MS = 6 * 60 * 60 * 1000;
 // Reports that only say "queued" or repeat a done the site missed; the token's window is 120 a minute.
 export const REPORTS_PER_ROUND = 10;
 // Backed-up videos whose Drive folder and final.mp4 ids the site asks for (needs_drive_ids), read
-// with two `rclone lsjson --stat` each, so the admin can link them (owner, 2026-11-18). Videos the
-// host already cleared count too: only Drive is read.
+// with two `rclone lsjson` each (the parent's listing for the folder, `--stat` for final.mp4), so
+// the admin can link them (owner, 2026-11-18). Videos the host already cleared count too: only
+// Drive is read.
 export const DRIVE_LOOKUPS_PER_ROUND = 20;
 const DRIVE_ID = /^[A-Za-z0-9_-]{10,200}$/;
 // The full tier's extra files, beside upload/ (docs/videos/BACKUP.md §每一層備份哪些檔).
@@ -815,16 +816,38 @@ export async function backupRound(ctx, { copy = true, client: given, rclone: run
   return { lines, gate: withDeleted({ enabled: true, verdicts }) };
 }
 
-/** The Drive id rclone reports for one file or folder, or null when it is not there. */
-async function driveId(job, where) {
-  const found = await job.rclone(["lsjson", "--stat", where]);
-  if (found.code !== 0) return null;
+const parseJson = (text) => {
   try {
-    const item = JSON.parse(found.stdout);
-    return typeof item?.ID === "string" && DRIVE_ID.test(item.ID) ? item.ID : null;
+    return JSON.parse(text);
   } catch {
     return null;
   }
+};
+const idOf = (item) => (typeof item?.ID === "string" && DRIVE_ID.test(item.ID) ? item.ID : null);
+
+/** The Drive id rclone reports for one file, or null when it is not there. */
+async function driveFileId(job, where) {
+  const found = await job.rclone(["lsjson", "--stat", where]);
+  return found.code === 0 ? idOf(parseJson(found.stdout)) : null;
+}
+
+/**
+ * The Drive id of one folder, or null when it is not there or its name is not unique. rclone
+ * answers `lsjson --stat` on a folder as the root of its own listing, with no ID (rclone 1.74,
+ * seen on the host 2026-11-19), so the folder is looked up in its parent's listing instead.
+ */
+async function driveFolderId(job, where) {
+  const colon = where.indexOf(":");
+  const inside = where.slice(colon + 1);
+  const slash = inside.lastIndexOf("/");
+  const name = inside.slice(slash + 1);
+  if (!name) return null;
+  const parent = `${where.slice(0, colon + 1)}${slash < 0 ? "" : inside.slice(0, slash)}`;
+  const listed = await job.rclone(["lsjson", "--dirs-only", parent]);
+  if (listed.code !== 0) return null;
+  const items = parseJson(listed.stdout);
+  const matches = Array.isArray(items) ? items.filter((item) => item?.IsDir && item.Name === name) : [];
+  return matches.length === 1 ? idOf(matches[0]) : null;
 }
 
 /**
@@ -839,12 +862,12 @@ export async function linkDriveIds(job, videos) {
     if (looked >= DRIVE_LOOKUPS_PER_ROUND) break;
     looked += 1;
     const where = `${job.remote}:${remoteJoin(job.prefix, video.folder)}`;
-    const folderId = await driveId(job, where);
+    const folderId = await driveFolderId(job, where);
     if (!folderId) {
       job.lines.push(`backup: ${video.slug}: the id of its Drive folder could not be read; the next round tries again`);
       continue;
     }
-    const finalId = await driveId(job, `${where}/final.mp4`);
+    const finalId = await driveFileId(job, `${where}/final.mp4`);
     try {
       await job.client.drive(video.slug, { folder: video.folder, folder_id: folderId, ...(finalId ? { final_file_id: finalId } : {}) });
     } catch (error) {
