@@ -1,5 +1,5 @@
 {
-  "revision": "2026-11-19-pool-7060",
+  "revision": "2026-11-19-pool-7078",
   "sources": [
     {
       "id": "SRC-00165a550997c7aa",
@@ -24940,6 +24940,28 @@
       ]
     },
     {
+      "id": "SRC-244173afdcba55ae",
+      "url": "https://static.usenix.org/events/fast12/tech/full_papers/Kim.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://static.usenix.org/events/fast12/tech/full_papers/Kim.pdf",
+          "title": "Revisiting Storage for Smartphones",
+          "publisher": "USENIX FAST '12（第 10 屆檔案與儲存技術會議，2012）；一家日本電子公司在美國的研究實驗室（第一作者為該實驗室實習生，後轉往美國一所理工大學）",
+          "version": "會議論文 PDF 全文 14 頁（USENIX 開放取用）",
+          "accessed_on": "2026-11-18",
+          "read_via": "Mokaair-editorial/1.0 標頭，以共用 fetch.sh 下載，與前一筆請求間隔 1.2 秒以上（SY6 seq=4，HTTP 200，776988 位元組，sha256 前 16 碼 7c9dca7c69c49a4f）；pdftotext（含 -layout）轉文字後逐節讀。",
+          "reading_scope": "摘要、1 Introduction（觀察清單）、3.1 Mobile Device Setup、表 2、表 3 全部 8 列、3.2、4 節應用測試概要、參考文獻 [17]。",
+          "locator": "1 Introduction『Speed class considered irrelevant』條；3.1 與表 3（8 張 16GB microSDHC，各速度等級 2 張；桌機讀卡機 4KB 隨機寫：Class 2 兩張 1.18 與 0.02 MB/s，Class 4 兩張 0.68 與 0.01，Class 6、10 四張皆 0.01；循序寫 4.16–15.31 MB/s）；3.1 末段總結（循序寫大致隨等級上升但不單調、隨機寫 0.02 MB/s 以下）；摘要（只換儲存，Wi-Fi 下應用效能差 100%–300%，極端超過 2000%）",
+          "summary": "團隊把同一支手機換插 8 張不同速度等級的卡，發現等級標示不能代表 App 表現：多數卡 4KB 隨機寫只有每秒 0.01–0.02 MB，最好的反而是一張 Class 2 卡（1.18 MB/s），隨機寫比循序寫差了幾個數量級。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "2011 年的卡與手機，8 張卡、每等級 2 張；隨機寫是 4KB、100MB 測試量；作者論文點名的卡片品牌與手機型號一律不轉述。研究者姓名不寫。 覆核重抓（SVY6 seq=2）雜湊相同；表 3 與 3.1 節數字逐一對過。作者單位只有該企業實驗室與實習生後來的大學，與 SD 協會、CFA、兩件專利的受讓公司、uFLIP 團隊都沒有合著或從屬關係。網址檔名是第一作者的姓，口播與畫面不得出現。卡片不點名實驗室所屬公司。",
+          "network": "NET_FAST12",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://static.usenix.org/events/fast12/tech/full_papers/Kim.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-2447193884cee3ae",
       "url": "https://www.nist.gov/publications/electromagnetic-signal-attenuation-construction-materials",
       "readings": [
@@ -28055,6 +28077,28 @@
       ]
     },
     {
+      "id": "SRC-284cb8c8e81aa242",
+      "url": "https://www.sdcard.org/press/thoughtleadership/delivering-advanced-mobile-application-performance-with-a1/",
+      "readings": [
+        {
+          "canonical_url": "https://www.sdcard.org/press/thoughtleadership/delivering-advanced-mobile-application-performance-with-a1/",
+          "title": "Delivering Advanced Mobile Application Performance with A1（協會網站專欄）",
+          "publisher": "SD Association 網站 thought leadership 專欄（作者為會員公司主管，文末註明為個人觀點）",
+          "version": "線上網頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "Mokaair-editorial/1.0 標頭，以共用 fetch.sh 下載，與前一筆請求間隔 1.2 秒以上（SY6 seq=11，HTTP 200，99005 位元組，sha256 前 16 碼 ddf0f485f877e77e）；本機去標籤後全文讀。",
+          "reading_scope": "全文。",
+          "locator": "『Reading data randomly involves a higher number of seek operations…』段；A1 1,500/500 IOPS 段；末段 A2 4,000 IOPS 讀、2,000 IOPS 寫",
+          "summary": "協會網站專欄寫明 A2 的隨機讀 4,000 IOPS、隨機寫 2,000 IOPS。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "專欄作者是會員公司主管，屬協會體系與業界觀點；文中市場數字不引用。不點名作者與公司。",
+          "network": "NET_SDA",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://www.sdcard.org/press/thoughtleadership/delivering-advanced-mobile-application-performance-with-a1/"
+        }
+      ]
+    },
+    {
       "id": "SRC-28536a19f047e45c",
       "url": "https://www.faa.gov/regulations_policies/advisory_circulars/index.cfm/go/document.information/documentid/73587",
       "readings": [
@@ -30924,6 +30968,29 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.1149/1.2128859"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2c209b45b894ed19",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/file-ssd.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://pages.cs.wisc.edu/~remzi/OSTEP/file-ssd.pdf",
+          "title": "Flash-based SSDs（開放教科書《Operating Systems: Three Easy Pieces》第 44 章）",
+          "publisher": "美國威斯康辛大學麥迪遜分校電腦科學系教師撰寫、在校方網站公開的免費作業系統教科書（版本 1.10，著作權年 2008–23）",
+          "version": "章節 PDF 全文 24 頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "Mokaair-editorial/1.0 標頭，以共用 fetch.sh 下載，與前一筆請求間隔 1.2 秒以上（SY6B seq=1，HTTP 200，200630 位元組，sha256 前 16 碼 e8de0c6036d75cfb）；pdftotext（含與不含 -layout 兩版）轉文字後逐節讀。網址出處：搜尋結果中一份大學課程講義標明的原始位置。",
+          "reading_scope": "44.2 From Bits to Banks/Planes、44.3 Basic Flash Operations、44.4 Flash Performance And Reliability、44.5 From Raw Flash to Flash-Based SSDs、44.6 FTL Organization: A Bad Approach、44.7 前段、44.8 開頭、Hybrid Mapping 小節（switch／partial／full merge）、圖 44.4 下方段落。",
+          "locator": "44.2 第 2 段（erase block 一般 128KB 或 256KB、page 幾 KB 如 4KB；寫 page 前要先抹除整個 block）；44.3 Erase 條（抹除需幾毫秒、會清掉整塊內容）；44.5 末段（FTL 通常在抹除過的 block 內由低到高依序寫入 page 以減少干擾）；44.6 第 2 段（直接對應的 FTL 每次寫都要讀整塊、抹除、重寫，寫入放大與每塊 page 數成正比，寫入比傳統硬碟還慢）；Hybrid Mapping 小節（switch merge 是最佳情況；partial merge 要額外讀寫，增加寫入放大；full merge 要從許多 block 湊資料，頻繁發生會嚴重拖累效能）",
+          "summary": "大學開放教科書說明快閃記憶體的基本限制：只能整塊抹除、以頁為單位寫入，而控制層（FTL）把主機的寫入轉成抹除與寫頁；寫法若讓控制層必須整塊搬移，就會產生寫入放大、拖慢寫入；依序整塊寫是最省事的情況，分散改寫最費事。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "教科書對象是固態硬碟，不是記憶卡；書中的直接對應 FTL 是教學用的『壞例子』，混合對應三種合併是概念說明（引自他人 FTL 文獻），沒有記憶卡的實測。44.4 的延遲數字作者自承取自大眾媒體，不採用。圖 44.4 點名市售產品，一律不轉述。作者為在世學者，不寫姓名、不寫書名縮寫，只稱『美國一所大學的作業系統教科書』；網址路徑含作者名，口播、畫面與卡上文字不得出現。覆核 SVY6B 併網：教科書兩位作者與 FAST'12 論文（SY6-S007）第二作者在 2009 年 USENIX FAST 論文直接合著（同校指導關係，SVY6B seq=4 讀到該論文首頁作者欄），依從嚴規則併入 NET_FAST12；該網已達上限 2.0，本來源三卡不另加權。教科書引用 SY6B-S002（[GC+09]）與 FAST'12 第二作者另一篇 SSD 論文（[A+08]），引用不算合著。",
+          "network": "NET_FAST12（覆核併網：原 NET_WISC_TEXTBOOK）",
+          "review_note": "SVY6B 重抓 seq=1：200、200630 位元組、雜湊 e8de0c6036d75cfb，與 SY6B seq=1 位元組完全相同（cmp）。網址出處（大學課程講義）SY6B 未存搜尋回應，無法由 cache 證明；檔名、內容與標題相符。",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://pages.cs.wisc.edu/~remzi/OSTEP/file-ssd.pdf"
         }
       ]
     },
@@ -35041,6 +35108,28 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave8-food-20261101",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12173133/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-31e24c27527d4290",
+      "url": "https://lwn.net/Articles/428584/",
+      "readings": [
+        {
+          "canonical_url": "https://lwn.net/Articles/428584/",
+          "title": "一篇談在開源作業系統上善用廉價快閃記憶卡的技術分析（原標題含作業系統名，此處不轉錄）",
+          "publisher": "LWN.net（技術新聞網站），2011-02-18；作者為一個嵌入式開源聯盟核心工作小組的開發者",
+          "version": "線上文章全文",
+          "accessed_on": "2026-11-18",
+          "read_via": "Mokaair-editorial/1.0 標頭，以共用 fetch.sh 下載，與前一筆請求間隔 1.2 秒以上（SY6 seq=7，HTTP 200，161373 位元組，sha256 前 16 碼 4658bbb6fd151701）；本機去標籤後全文讀，留言區只略讀。",
+          "reading_scope": "正文全部：導言、頁與抹除區塊、segment／allocation unit、查表、量測圖說明、Restrictions on open segments、建議段。",
+          "locator": "『pages and erase blocks』段（頁 2–32KB、抹除區塊 128KB–2MB、再組成多為 4MB 的 segment）；量測段（一張 SDHC 卡最佳讀 13.5MB/s、線性寫 11.5MB/s，為線性寫最佳化，兩個 segment 交替寫時掉到 33KB/s，FAT 表區域另行管理）；Restrictions on open segments（有些卡只能同時開 1–2 個 segment，用 FAT32 以外的檔案系統時不斷垃圾回收）",
+          "summary": "作者以大量 SD 卡的時序資料反推卡內控制器怎麼運作：卡片把抹除區塊組成約 4MB 的單位，期待資料整塊依序寫入，並特別照顧出廠格式的檔案配置表區；違反這種寫法時寫入速度可掉到每秒幾十 KB。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "技術新聞網站文章，作者自述資料多由逆向工程與計時推得，非廠商公開資料；屬單一作者的觀察，卡片須標歸屬（『一篇 2011 年技術新聞網站的分析』）。卡片不寫作業系統名稱與品牌。 覆核：以作者單一署名、逆向工程推得、技術新聞網站刊登，從嚴每卡 0.75／0.5。",
+          "network": "NET_LWN",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://lwn.net/Articles/428584/"
         }
       ]
     },
@@ -48258,6 +48347,28 @@
       ]
     },
     {
+      "id": "SRC-438a8a8cd383dbca",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10121160/fullTextXML",
+      "readings": [
+        {
+          "title": "Miniscope-LFOV: A large-field-of-view, single-cell-resolution, miniature microscope for wired and wire-free imaging of neural dynamics in freely behaving animals",
+          "publisher": "Science Advances（2023），美國一所大學團隊；Europe PMC 開放全文（PMC10121160，編號取自 Europe PMC 搜尋 API 回傳，SY6D seq=5）",
+          "version": "期刊正式版全文 XML",
+          "accessed_on": "2026-11-19",
+          "read_via": "fetch.sh 單次請求，Mokaair-editorial/1.0 標頭，與前一筆請求間隔 1.2 秒以上（SY6D seq=6，HTTP 200，201267 位元組，sha256 前 16 碼 02f90f030d26d11d）；本機去標籤後讀含 SD 卡的各段。",
+          "reading_scope": "Wire-free DAQ 一節全文、圖 4 圖說、Methods 中 wire-free 資料處理段。",
+          "locator": "Wire-free DAQ 段（微控制器寫入 microSD 的上限限制取像；錄影窗 608×608、每秒 15 格，硬體可達 20 格；每秒約寫 5.5MB；64GB 卡可錄數小時）",
+          "network": "NET_MINISCOPE",
+          "independence": "神經科學儀器論文，作者群與既有各網無合著關係（既有 UCSD 快閃晶片論文是另一校）。",
+          "limitations": "論文寫『~11-Mbps write speed』又寫每秒寫約 5.5MB，單位前後不一致，卡上只引用 15／20 格與 5.5MB；瓶頸在主機端微控制器，不是在測記憶卡。 覆核：寫卡速度上限與取像時脈上限是並列的兩項限制。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "summary": "美國一所大學團隊 2023 年做了一台讓大鼠背著跑的無線微型顯微鏡，影像直接存在背包裡的 microSD 卡。",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10121160/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-438b225296e282dd",
       "url": "https://www.apple.com/batteries/why-lithium-ion/",
       "readings": [
@@ -56527,6 +56638,28 @@
       ]
     },
     {
+      "id": "SRC-4f19c92ef9201f13",
+      "url": "https://compactflash.org/wp-content/uploads/2024/10/2024-10-31-Whitepaper-Video-Performance-Guarantee-Profile-4-v1.0.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://compactflash.org/wp-content/uploads/2024/10/2024-10-31-Whitepaper-Video-Performance-Guarantee-Profile-4-v1.0.pdf",
+          "title": "Whitepaper – Video Performance Guarantee Profile 4, Version 1.0",
+          "publisher": "CompactFlash Association（另一個記憶卡標準組織）白皮書，2024-10-31",
+          "version": "PDF 6 頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "Mokaair-editorial/1.0 標頭，以共用 fetch.sh 下載，與前一筆請求間隔 1.2 秒以上（SY6 seq=15，HTTP 200，227137 位元組，sha256 前 16 碼 a9f584c8cc2f20a1）；pdftotext 轉文字後全文讀（PDF xref 有小錯，文字完整）。",
+          "reading_scope": "第 1–4 節全部與 VPG Profile 表。",
+          "locator": "1（VPG 保證最低持續寫入以免掉格；VPG4 於 2019 年 4 月標準化）；2（相機要即時把資料流寫進卡片，速度至少等於進來的位元率；不同於電腦的隨機小檔讀寫；Profile 確保大段連續快閃空間、錄影邊界並讓卡與相機溝通，避免相機內部緩衝溢位而掉格；Profile 表 VPG20 20MB/s、VPG65 65、VPG130 130、VPG200 200、VPG400 400）；3（VPG 標誌須經協會認證，有別於協會其他標準的自我認證；有卡片未經認證卻把 VPG 旗標設為 1）",
+          "summary": "另一個記憶卡標準組織也走同一條路：錄影卡要保證的是『最低持續寫入』，因為相機的緩衝記憶體一旦被塞滿就會掉格；它的保證等級一路從每秒 20MB 疊到 400MB，而且這個標誌要第三方認證，因為曾有卡片自己宣稱支援。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "標準組織自述；作者署名者的姓名與公司不寫；本卡只用來和 SD 體系對照，不轉述 SD 標誌的認證方式（SD 方面只有 S004 提到 self-compliance tests）。 覆核重抓（SVY6 seq=4）雜湊相同。署名兩人，一位屬一家相機公司、一位屬 CFA，與 SD 協會論文或專利作者無合著；CFA 是獨立的另一個協會（其舊卡規格商標由一家美國儲存公司授權，這家公司也是第二件專利的受讓人；從屬關係已記錄，但不構成同一組織，仍分網）。白皮書沒有說『因為有卡自設旗標才改成協會認證』，兩件事是並列敘述，卡片已改寫。",
+          "network": "NET_CFA",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://compactflash.org/wp-content/uploads/2024/10/2024-10-31-Whitepaper-Video-Performance-Guarantee-Profile-4-v1.0.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-4f3329a71c52eff4",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9056534/fullTextXML",
       "readings": [
@@ -58909,6 +59042,28 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://nhess.copernicus.org/articles/21/2643/2021/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-522caab3ee99e571",
+      "url": "https://www.bahjeez.com/the-great-microsd-card-survey/",
+      "readings": [
+        {
+          "title": "On the Capacity, Performance, and Reliability of microSD Cards（The Great microSD Card Survey）",
+          "publisher": "一位個人測試者的網站（自 2023 年 7 月起持續測試的長文）；網址取自搜尋結果",
+          "version": "線上網頁，2026-11-19 讀取時版本（頁內圖表會自動更新）",
+          "accessed_on": "2026-11-19",
+          "read_via": "fetch.sh 單次請求，Mokaair-editorial/1.0 標頭，與前一筆請求間隔 1.2 秒以上（SY6D seq=13，HTTP 200，602467 位元組，sha256 前 16 碼 ef33c963963644e7）；本機去標籤後讀前言、測試方法（容量、效能）與限制段。",
+          "reading_scope": "前言、Speed class 說明、Authenticity 測試方法、Performance 測試方法與其限制清單。",
+          "locator": "前言第 1 段（假容量卡：超出實際空間的寫入直接被丟掉，讀回多為零，使用者寫滿前不易察覺）；Performance 限制清單第 1–3 點（一般 USB 讀卡機無法下指令讓卡進入速度等級／Video Speed Class 錄影模式；測試只能近似規格）；Speed class 段末（有的卡遠超標示，有的遠遠不到，有的在灰色地帶）",
+          "network": "NET_PERSONAL_SURVEY",
+          "independence": "個人網站，獨立於標準組織與廠商，但沒有同儕審查。",
+          "limitations": "個人網站、無同儕審查，口播須說『一位個人測試者』；原文大量點名品牌與通路，本池一律不轉述；作者自承測試條件不合規格，沒有可引用的『未達標比例』。 覆核：網頁標題含作者本名（在世），不轉錄。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "summary": "一位個人測試者自 2023 年 7 月起買了各種 microSD 卡（含假容量卡）長期測試，他在網站上說明『假容量卡』：卡片對主機報的容量比實際晶片大（例如號稱 1TB、實際接近 8GB），實際空間通常在位址開頭，超出的寫入會被直接丟掉、讀回來多半是零；因為檔案系統大多從頭依序往後填，使用者往往要等寫滿真正的空間之後，才發現後面存的資料不見了，而且救不回來。同一位個人測試者寫，他沒辦法完全照 SD 規格測速度等級：多數速度等級要主機先下指令讓卡進入對應的運作狀態，Video Speed Class 還要主機下指令進入錄影模式、指定要寫哪一個配置單位、照順序寫到底再換下一塊；但一般 USB 讀卡機不提供下這些指令的方法，所以他的測試只能『近似規格的精神』。",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://www.bahjeez.com/the-great-microsd-card-survey/"
         }
       ]
     },
@@ -61562,6 +61717,28 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=K0120001&flno=50"
+        }
+      ]
+    },
+    {
+      "id": "SRC-55f73665582bbcfc",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9522465/fullTextXML",
+      "readings": [
+        {
+          "title": "一篇用單板電腦自製 USB 攝影機做動物行為錄影的方法論文（eNeuro 2022，PMC9522465；原標題含單板電腦品牌名，此處不轉錄）",
+          "publisher": "eNeuro（2022），美國大學神經科學團隊；Europe PMC 開放全文（編號取自 Europe PMC 搜尋 API 回傳，SY6D seq=5）",
+          "version": "期刊正式版全文 XML（含審稿意見與回覆）",
+          "accessed_on": "2026-11-19",
+          "read_via": "fetch.sh 單次請求，Mokaair-editorial/1.0 標頭，與前一筆請求間隔 1.2 秒以上（SY6D seq=7，HTTP 200，177469 位元組，sha256 前 16 碼 b48efd9ee46fe19b）；本機去標籤後讀 Frame rate analysis 一節、表 3 與審稿回覆。",
+          "reading_scope": "Frame rate analysis 方法段、表 3、對審稿意見 3 的回覆。",
+          "locator": "Frame rate analysis 第 1 段（掉格的影片在播放器裡像快轉、長度變短）；表 3（市售網路攝影機紅光下：錄 300.56 秒，播放 124.77 秒，目標 20fps、實得 8.30fps，每分鐘掉 702 格）；回覆 3（五段錄影平均）",
+          "network": "NET_PIUSBCAM",
+          "independence": "與既有各網無關。",
+          "limitations": "掉格發生在 USB 攝影機傳到電腦的路徑上，與記憶卡無關；只用來說明『掉格的影片長什麼樣』，類比證據。 覆核：市售網路攝影機只有搭配某套錄影軟體時掉格，換另一套軟體可達設定格數。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "summary": "美國一個神經科學團隊 2022 年比較兩種攝影機錄大鼠行為：論文說，掉格的影片在一般播放器裡看起來像快轉、長度變短，因為播放器假設的影格率比實際錄到的高。",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9522465/fullTextXML"
         }
       ]
     },
@@ -77815,6 +77992,29 @@
       ]
     },
     {
+      "id": "SRC-6c3d045ec6741be2",
+      "url": "https://cmrr-star.ucsd.edu/static/pubs/flash_characterization.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://cmrr-star.ucsd.edu/static/pubs/flash_characterization.pdf",
+          "title": "Characterizing Flash Memory: Anomalies, Observations, and Applications",
+          "publisher": "MICRO '09（第 42 屆 IEEE/ACM 微架構研討會，2009）；美國加州大學聖地牙哥分校電腦科學與工程系及該校磁記錄研究中心，PDF 放在該研究中心網站",
+          "version": "會議論文 PDF（研究中心網站公開版）",
+          "accessed_on": "2026-11-18",
+          "read_via": "Mokaair-editorial/1.0 標頭，以共用 fetch.sh 下載，與前一筆請求間隔 1.2 秒以上（SY6B seq=2，HTTP 200，1522126 位元組，sha256 前 16 碼 85ac04de8c114644）；pdftotext（含與不含 -layout 兩版）轉文字後逐節讀。網址來自搜尋結果。（覆核 SVY6C 重抓 seq=1：HTTP 200，1522126 位元組，sha256 前 16 碼 85ac04de8c114644，cmp 與 SY6B cache 完全相同。）",
+          "reading_scope": "摘要、1 Introduction、表 1、2 Flash Memory 與 2.1 全節（Flash technology、Performance and power、Reliability、program disturb 段）、3.1–3.3（測試板、表 2 說明、Basic operation performance 全段含 MLC 頁間寫入延遲異常與其成因）、4 節 Mango FTL 概要。；SY6C 補讀、SVY6C 覆核重讀：3.3『The second surprise』段、3.5 Reliability 的 wear-out、Program disturb、Read disturb 三段、圖 5 與圖 8 圖說、4.1 開頭、4.2 第 3 段起。",
+          "locator": "2.1『Flash technology』段（每個 plane 由許多 block 組成，每 block 64 頁〔SLC〕或 128 頁〔MLC〕；抹除以整塊為單位、寫入以整頁為單位且只能把 1 改成 0，要任意修改頁內容就得抹除整塊）；Reliability 段末（為減輕 program disturb，廠商要求〔MLC〕或強烈建議〔SLC〕同一 block 內的頁依序寫入；此節數據作者標明取自公開資料表）；3.3 第 2 段起（所測全部 MLC 晶片同一 block 內各頁寫入延遲有規律差異；某一款 MLC 晶片（論文代號不轉述）每塊前 4 頁及之後每隔一對頁平均快 5.8 倍，只有快頁符合資料表的『典型值』，慢頁寫入超過 1 毫秒；SLC 無此差異；成因是一個 MLC 單元的兩個位元分屬不同頁，低位元需要更多較弱的脈衝）；3.3『The second surprise』段與圖 5 圖說（SLC 在 10 萬次抹寫內平均寫入時間降將近 50%、MLC 未畫降 10–15%、成因為電荷捕捉或閘極氧化層劣化，同一現象最終導致失效）；3.5 Program disturb 段與圖 8 圖說（抹除後反覆寫同一頁的一半；SLC 前 100 次無干擾；MLC 重寫某些頁一次即打亂固定位置的另一或兩頁）；4.2 第 3 段（MLC 寫入干擾只在寫一半的頁時成問題）",
+          "summary": "大學團隊自製測試板，直接量了五家廠商 11 款快閃晶片：抹除是整塊、寫入是整頁、同塊內要依序寫；而存兩位元的 MLC 晶片，同一塊裡快頁與慢頁的寫入時間差好幾倍，資料表的『典型值』只對得上快頁。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "量的是裸晶片（部分拆自隨身碟），不是記憶卡成品，也沒有量記憶卡的速度等級；2009 年、50–72nm 製程；論文刻意不公開廠商名，卡上也不點名，因此無法排除受測晶片或資料表出自 SD 協會創始公司。第 2 節的頁數、壽命與依序寫入規定是作者整理的公開資料表數值，非自測。作者為在世學者，不寫姓名，只稱『美國一所大學的團隊』。經費來自美國國家科學基金會與校內研究中心，未列公司。覆核 SVY6B 合著查核：作者與 NEC FAST'12 三位作者、uFLIP 三所機構作者、教科書作者均未找到直接合著；與 FAST'12 作者只有經第三人（企業研究院一位研究者分別與兩邊合著）的間接關係，依『直接合著』規則不併網。與 SD 協會、CFA、兩件專利受讓公司無合著或署名從屬。",
+          "network": "NET_UCSD_FLASH",
+          "review_note": "SVY6B 重抓 seq=2：200、1522126 位元組、雜湊 85ac04de8c114644，與 SY6B seq=2 位元組完全相同（cmp）。網址出處 SY6B 未存搜尋回應。",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://cmrr-star.ucsd.edu/static/pubs/flash_characterization.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-6c42ced4468f6f2b",
       "url": "https://doi.org/10.3758/BF03206916",
       "readings": [
@@ -85762,6 +85962,28 @@
       ]
     },
     {
+      "id": "SRC-77c10940b6d4d845",
+      "url": "https://arxiv.org/pdf/0909.1780",
+      "readings": [
+        {
+          "canonical_url": "https://arxiv.org/pdf/0909.1780",
+          "title": "uFLIP: Understanding Flash IO Patterns",
+          "publisher": "CIDR 2009（第 4 屆創新資料系統研究研討會）；法國國家資訊與自動化研究所與凡爾賽大學、冰島雷克雅維克大學、丹麥哥本哈根大學",
+          "version": "arXiv 預印本 PDF 全文",
+          "accessed_on": "2026-11-18",
+          "read_via": "Mokaair-editorial/1.0 標頭，以共用 fetch.sh 下載，與前一筆請求間隔 1.2 秒以上（SY6 seq=13，HTTP 200，711228 位元組，sha256 前 16 碼 0ffb8c08d943e38c）；pdftotext 轉文字後讀方法、結果與結論。",
+          "reading_scope": "摘要、1 Introduction、4 方法（random state enforcement）、5 結果（Table 2 裝置、Granularity、Table 3 摘要）、Hints 1–7、6 Conclusion。",
+          "locator": "Table 2（11 種裝置，含 1 張 SD 卡與低階 USB 隨身碟）；5 節 Granularity（低階隨身碟 32KB 隨機寫約 260 ms，比其他操作慢一到兩個數量級；高階 SSD 只慢到 5 倍）；Hint 4（多數裝置把隨機寫集中在 4–16MB 範圍內，幾乎和循序寫一樣快）；Hint 5（同時往 4–8 個區域循序寫尚可，超過就退化成隨機寫）",
+          "summary": "團隊量了 11 種快閃儲存裝置，低階裝置的隨機寫比循序寫慢一到兩個數量級，但若隨機寫集中在幾 MB 的範圍內就幾乎不慢——快閃記憶體的『慢』取決於寫的位置分布，而不是資料量。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "2009 年裝置；260 毫秒與『慢一到兩個數量級』只出自其中一支低階隨身碟，SD 卡不在詳列結果中，本卡只當快閃記憶體共通機制，折為 0.75。作者單位是法國、冰島、丹麥三所學術機構，與 FAST'12 論文、SD 協會、CFA 無合著或從屬關係。研究者姓名與品牌不寫。",
+          "network": "NET_UFLIP",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://arxiv.org/pdf/0909.1780"
+        }
+      ]
+    },
+    {
       "id": "SRC-77ca859e5aa46183",
       "url": "https://www.lucs.lu.se/fileadmin/user_upload/lucs/2011/01/Johansson-et-al.-2005-Failure-to-Detect-Mismatches-Between-Intention-and-Outcome-in-a-Simple-Decision-Task.pdf",
       "readings": [
@@ -85886,6 +86108,28 @@
           "limitations": "受控實驗室與野外原位觀測數據，無利益衝突。",
           "origin": "wave97-physics-20261116",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12519733/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-77f56bf89d8fcfd2",
+      "url": "https://www.consumerreports.org/digital-cameras/which-sd-memory-card-do-you-need-for-your-digital-camera/",
+      "readings": [
+        {
+          "title": "Which SD Memory Card Do You Need?",
+          "publisher": "美國消費者雜誌 Consumer Reports 網站；網址取自搜尋結果",
+          "version": "線上網頁（舊文，頁上無明確日期），2026-11-19 讀取",
+          "accessed_on": "2026-11-19",
+          "read_via": "fetch.sh 單次請求，Mokaair-editorial/1.0 標頭，與前一筆請求間隔 1.2 秒以上（SY6D seq=8，HTTP 200，330281 位元組，sha256 前 16 碼 80a00d8c3faf15fd）；本機去標籤後讀正文。",
+          "reading_scope": "正文全部（容量、速度、影片規格各段）。",
+          "locator": "『If you shoot video…』段（32GB 卡約可錄 80 分鐘 HD，同一張卡錄 4K 約只剩四分之一、約 20 分鐘）",
+          "network": "NET_CR",
+          "independence": "消費者雜誌，與標準組織無關。",
+          "limitations": "選購導向文章；文中速度段大量引用一家記憶卡公司主管的話與一位攝影師（在世）的話，本池不採用；只採雜誌自己寫的容量換算句，且沒寫位元率條件。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "summary": "美國一本消費者雜誌的說明寫：一張 32GB 的卡大約可以錄 80 分鐘的高畫質（HD）影片，同一張卡改錄 4K，大約只剩四分之一，也就是約 20 分鐘。",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://www.consumerreports.org/digital-cameras/which-sd-memory-card-do-you-need-for-your-digital-camera/"
         }
       ]
     },
@@ -88626,6 +88870,28 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.cdc.gov/yellow-book/hcp/travel-air-sea/jet-lag-disorder.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-7b797ac2961662ef",
+      "url": "https://docs.kernel.org/7.1/_sources/driver-api/mmc/mmc-dev-attrs.rst.txt",
+      "readings": [
+        {
+          "canonical_url": "https://docs.kernel.org/7.1/_sources/driver-api/mmc/mmc-dev-attrs.rst.txt",
+          "title": "SD and MMC Block Device Attributes（一套開源作業系統核心的文件）",
+          "publisher": "一套開源作業系統核心的官方文件（7.1 版文件原始檔）",
+          "version": "純文字",
+          "accessed_on": "2026-11-18",
+          "read_via": "Mokaair-editorial/1.0 標頭，以共用 fetch.sh 下載，與前一筆請求間隔 1.2 秒以上（SY6 seq=18，HTTP 200，3349 位元組，sha256 前 16 碼 f47dd61f02c6a9fc）；全文讀。",
+          "reading_scope": "全文。",
+          "locator": "Note on Erase Size and Preferred Erase Size（SD 卡的 preferred_erase_size 是卡片自己回報的配置單位大小；一次大範圍抹除會讓卡上其他 I/O 都等待）",
+          "summary": "核心文件寫明：SD 卡會把自己的『配置單位』大小回報給主機，主機拿它當抹除的較佳分段大小。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只證明主機端把卡片回報的配置單位當作較佳抹除大小、大範圍抹除會讓其他讀寫等待；不涉及速度數字。『配置單位由卡片指定』本身源自 SD 規格，本網只計主機端的實際做法，折 0.5。卡片不寫作業系統名稱。",
+          "network": "NET_KERNEL_DOC",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://docs.kernel.org/7.1/_sources/driver-api/mmc/mmc-dev-attrs.rst.txt"
         }
       ]
     },
@@ -95156,6 +95422,28 @@
       ]
     },
     {
+      "id": "SRC-841e53fbb096e234",
+      "url": "https://www.sdcard.org/downloads/pls/latest_whitepapers/Application_Peformance_Class_White_Paper.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.sdcard.org/downloads/pls/latest_whitepapers/Application_Peformance_Class_White_Paper.pdf",
+          "title": "Application Performance Class: The new class of performance for applications on SD memory cards (SD 5.1)",
+          "publisher": "SD Association 白皮書，2016 年 11 月",
+          "version": "PDF 8 頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "Mokaair-editorial/1.0 標頭，以共用 fetch.sh 下載，與前一筆請求間隔 1.2 秒以上（SY6 seq=3，HTTP 200，1630098 位元組，sha256 前 16 碼 039af64751334f9e）；pdftotext 轉文字後逐頁全讀。",
+          "reading_scope": "Executive Summary、Background on Market Situations、主流手機作業系統的『可採用儲存』與基準測試段、Solution、表 1、What is expected from product manufacturers、Test Equipment、Summary。",
+          "locator": "p.4 Background（過去以循序效能與速度等級為主）；p.5（作業系統在採用記憶卡時跑基準測試，低於內建儲存 25% 跳出卡片太慢的提示；表 1 A1：RD 1500 IOPS、WR 500 IOPS、循序 10MB/s）；p.6 Test Equipment（核准測試設備供 self-compliance tests）",
+          "summary": "白皮書交代 A1 的由來：記憶卡開始被拿來裝 App，手機系統會在採用卡片時測速、太慢就警告，消費者在店頭卻沒辦法知道哪張卡夠快；協會於是訂了隨機讀寫次數加循序速度的最低保證。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "協會白皮書；作業系統基準測試的細節是協會轉述，未讀作業系統原始碼。卡片不寫作業系統名稱。 覆核重抓（SVY6 seq=3）雜湊相同。白皮書只寫市面有核准測試設備供『自我符合性測試』使用，沒寫 A1 卡必須經這些設備測試。",
+          "network": "NET_SDA",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://www.sdcard.org/downloads/pls/latest_whitepapers/Application_Peformance_Class_White_Paper.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-8425b11c49da2652",
       "url": "https://lwn.net/ml/linux-kernel/CAK8P3a2iZyA1VSFqvcEc9o59F76GgzLBiOAmEuHKD81FErPLDQ@mail.gmail.com/",
       "readings": [
@@ -99558,6 +99846,28 @@
       ]
     },
     {
+      "id": "SRC-89be9ac8e351ba55",
+      "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/9058254",
+      "readings": [
+        {
+          "canonical_url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/9058254",
+          "title": "US 9,058,254 B2 Memory Device",
+          "publisher": "美國專利商標局公開專利全文（受讓人：一家日本電機大廠，是 SD 協會三家創始公司之一；2012 年申請，延續 2007 年申請案，2006 年日本優先權）",
+          "version": "USPTO 專利 PDF 19 頁（影像檔）",
+          "accessed_on": "2026-11-18",
+          "read_via": "Mokaair-editorial/1.0 標頭，以共用 fetch.sh 下載，與前一筆請求間隔 1.2 秒以上（SY6 seq=12，HTTP 200，1144725 位元組，sha256 前 16 碼 f8cc2e84e9d3a38b）；PDF 為影像，以 pdftoppm 200 dpi 轉圖後本機 tesseract OCR，再逐段讀 OCR 文字；數字與原圖逐一目視對照。",
+          "reading_scope": "Background of the Invention、[2-1] Standards Concerning Timeout、[2-2] Standards Concerning Speed Class、[3] Data Write Operation 前段（page shift 方法說明）。",
+          "locator": "Background（NAND 以頁寫入、以區塊抹除；寫過的區塊要搬移；隨機位址寫入時搬移頻繁使寫入變慢；區塊隨容量變大，搬移時間變長；若專為隨機寫縮短忙碌時間，循序寫速度會下降）；[2-1]（每 512B 資料區塊最長忙碌時間 250 ms）；[2-2]（速度等級保證在預定邏輯位址範圍＝AU 內以預定速率寫入，以每 16KB 多區塊寫定義；1GB 以上 AU 最大 4MB；Class 6/4/2 最低保證 6/4/2 MB/s）",
+          "summary": "專利背景段把當時 SD 速度等級的定義寫得很具體：保證的是在 4MB 的配置單位內、以 16KB 為單位連續寫入時的最低速度；也解釋了 NAND 只能整塊抹除，使隨機寫特別慢，而且為隨機寫最佳化會犧牲循序寫。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "專利是受讓公司的技術文件，不是標準原文，也不是協會說法。[2-2] 節是對當時 SD 標準的轉述，按『同一套規格的轉述不另成網』併入 NET_SDA 計算；背景段的 NAND 機制是公司自己的說明，另計 NET_JP_PATENT，但只能當機制背景，不能撐『協會為何訂新記號』。受讓公司是 SD 協會創始公司之一，屬協會體系的關係企業，從嚴折計。覆核重抓（SVY6 seq=5）：位元組數相同，只差 PDF 建檔時間戳 5 個位元組；以 pdftoppm 200 dpi 轉圖、tesseract OCR，並目視原圖第 5 欄確認 4MB、16KB、6/4/2 MB/s。發明人姓名不寫。",
+          "network": "NET_JP_PATENT",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/9058254"
+        }
+      ]
+    },
+    {
       "id": "SRC-89c40202fca86cd5",
       "url": "https://www.archives.go.jp/ayumi/kobetsu/m05_1872_03.html",
       "readings": [
@@ -99658,6 +99968,28 @@
           },
           "origin": "wave74-life-20261111",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6934701/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-8a19141042ac4cd7",
+      "url": "https://www.sdcard.org/consumers/about-sd-memory-card-choices/bus-interface-speed-standards-for-large-size-data-transfer/",
+      "readings": [
+        {
+          "canonical_url": "https://www.sdcard.org/consumers/about-sd-memory-card-choices/bus-interface-speed-standards-for-large-size-data-transfer/",
+          "title": "Bus Interface Speed Standards for Large Size Data Transfer",
+          "publisher": "SD Association 官方網站消費者頁",
+          "version": "線上網頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "Mokaair-editorial/1.0 標頭，以共用 fetch.sh 下載，與前一筆請求間隔 1.2 秒以上（SY6 seq=6，HTTP 200，86607 位元組，sha256 前 16 碼 cdf8f5191b9a57d4）；本機去標籤後全文讀。",
+          "reading_scope": "正文全部。",
+          "locator": "正文第 1 段（High Speed 25MB/s 到 UHS-III 624MB/s；SD Express 3940MB/s）；末兩段（主機與卡要支援同一介面才發揮）",
+          "summary": "匯流排介面規格從 25MB/s 一路升到 624MB/s，再到 3940MB/s；這是主機與卡之間的傳輸通道上限。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "頁面沒有說包裝數字是什麼；『介面上限不等於寫入保證』是本卡把 S001 的『需要夠快的匯流排才不影響寫入』與本頁並陳後的解讀。",
+          "network": "NET_SDA",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://www.sdcard.org/consumers/about-sd-memory-card-choices/bus-interface-speed-standards-for-large-size-data-transfer/"
         }
       ]
     },
@@ -112727,6 +113059,28 @@
       ]
     },
     {
+      "id": "SRC-9b33069ec635cb36",
+      "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/11262947",
+      "readings": [
+        {
+          "canonical_url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/11262947",
+          "title": "US 11,262,947 B2 Non-Volatile Storage System with Adaptive Command Processing",
+          "publisher": "美國專利商標局公開專利全文（受讓人：一家美國儲存設備公司，旗下品牌是 SD 協會三家創始公司之一；2019 年申請）",
+          "version": "USPTO 專利 PDF 25 頁（影像檔）",
+          "accessed_on": "2026-11-18",
+          "read_via": "Mokaair-editorial/1.0 標頭，以共用 fetch.sh 下載，與前一筆請求間隔 1.2 秒以上（SY6 seq=16，HTTP 200，1540954 位元組，sha256 前 16 碼 af064299a81d5b63）；以 pdftoppm 200 dpi 轉圖、tesseract OCR 後讀。",
+          "reading_scope": "Background、Brief Description of Drawings、Detailed Description 開頭、FIG. 8–10 說明段。",
+          "locator": "Background（隨機 IOPS 是分類可攜式記憶裝置常用的基準；低成本記憶系統很難達到高隨機 IOPS）；Detailed Description 開頭（低成本控制器常只有單一處理器、約 500 KB RAM、無硬體加速）；FIG. 8–10 段（循序 IOPS 多為 128kB 等大傳輸，隨機 IOPS 多為 4kB 一頁；把佇列中的隨機讀指令重排，讓多顆晶粒同時感測，以縮短總時間）",
+          "summary": "專利說明為什麼小卡片的隨機讀寫難做：卡內控制器為了便宜只有一顆處理器、約 500KB 記憶體；改善方法之一是把排隊的指令重新排序，讓多顆快閃晶片同時工作。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "專利是申請公司的設計提案，背景段是公司自述，不代表任何上市產品；受讓公司屬協會創始公司體系，從嚴折 0.75。覆核重抓（SVY6 seq=6）：位元組數相同，只差 PDF 建檔時間戳 2 個位元組；OCR 確認 Background（隨機 IOPS 是分類可攜式記憶裝置的常用基準）、Detailed Description（單一處理器、約 500 KB RAM、無硬體加速）、FIG. 8–10 段（循序 IOPS 多為 128 kB、隨機多為 4 kB）。發明人姓名不寫。",
+          "network": "NET_US_PATENT_B",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/11262947"
+        }
+      ]
+    },
+    {
       "id": "SRC-9b3411475b347b51",
       "url": "https://www.arxiv.org/pdf/1501.03255",
       "readings": [
@@ -116640,6 +116994,28 @@
       ]
     },
     {
+      "id": "SRC-a075a6fa2b682e9b",
+      "url": "https://www.sdcard.org/developers/sd-standard-overview/application-performance-class/",
+      "readings": [
+        {
+          "canonical_url": "https://www.sdcard.org/developers/sd-standard-overview/application-performance-class/",
+          "title": "Application Performance Class（開發者頁）",
+          "publisher": "SD Association 官方網站開發者頁",
+          "version": "線上網頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "Mokaair-editorial/1.0 標頭，以共用 fetch.sh 下載，與前一筆請求間隔 1.2 秒以上（SY6 seq=2，HTTP 200，92262 位元組，sha256 前 16 碼 9ff20c191fd481fc）；本機去標籤後全文讀；等級表是圖片未轉述，數值改取 SY6-S004、SY6-S005。",
+          "reading_scope": "正文全部。",
+          "locator": "正文第 1–6 段（A1 由 SD 5.1 定義、A2 由 SD 6.0 定義、以 Command Queuing 與 Cache 提升、IOPS 指每秒可完成的 4KB 讀寫指令數、A2 只有主機與卡都支援才有）",
+          "summary": "協會說明 App 等級量的是 4KB 隨機讀寫次數加上最低持續循序速度；A2 靠指令佇列與快取，必須主機也支援。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "標準組織自述。",
+          "network": "NET_SDA",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://www.sdcard.org/developers/sd-standard-overview/application-performance-class/"
+        }
+      ]
+    },
+    {
       "id": "SRC-a076f7399d5ecd6a",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12516350/fullTextXML",
       "readings": [
@@ -118643,6 +119019,28 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave3-earth-observation-20261101",
           "original_url": "https://www.weather.gov/mrx/radarrainfallestimates"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a36a79c7cbf0d27c",
+      "url": "https://arxiv.org/pdf/2603.11849v1",
+      "readings": [
+        {
+          "title": "Implementing and Optimizing an Open-Source SD-card Host Controller for RISC-V SoCs",
+          "publisher": "arXiv:2603.11849v1（2026-03-12），瑞士與義大利大學的積體電路研究團隊；RISC-V Summit Europe 2026 延伸摘要；編號取自 arXiv API 搜尋回傳（SY6D seq=12）",
+          "version": "arXiv v1 PDF，2 頁",
+          "accessed_on": "2026-11-19",
+          "read_via": "fetch.sh 單次請求，Mokaair-editorial/1.0 標頭，與前一筆請求間隔 1.2 秒以上（SY6D seq=14，HTTP 200，422206 位元組，sha256 前 16 碼 48192367a19e9fea）；本機 pdftotext -layout 轉文字後全文讀。",
+          "reading_scope": "摘要、Driver Support、Results 全文、圖 2 圖說。",
+          "locator": "Results 第 2 段（理想情況寫入 11.4MB/s，接近介面上限 12.5MB/s；整合進晶片後 9.1MB/s）；Results 右欄（作業系統下改寫驅動程式前寫入 159kB/s、改後 485kB/s）；Driver Support（每次存取暫存器約 500 個週期的額外負擔）",
+          "network": "NET_ETH_RISCV",
+          "independence": "與既有各網無合著。",
+          "limitations": "延伸摘要，非完整論文；量的是作者自製主機控制器，卡片時脈 25MHz 的舊介面模式；說明的是主機端，不是記憶卡成品。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "summary": "瑞士與義大利的大學團隊 2026 年替一顆開源處理器晶片設計 SD 卡控制器：理想情況下寫入每秒 11.4MB，接近這種介面模式每秒 12.5MB 的上限；但在作業系統底下，程式每次碰控制器的暫存器都多花約 500 個週期，寫入只有每秒 159kB；改寫驅動程式、跳過不必要的「清空管線與快取」動作後，提高到每秒 485kB。",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://arxiv.org/pdf/2603.11849v1"
         }
       ]
     },
@@ -121228,6 +121626,28 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.spain.info/export/sites/segtur/.content/Folletos/folletos/Gastronomia_Ingles_A4_Final_Web.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a71de8406428b13e",
+      "url": "https://www.kokusen.go.jp/news/data/n-20180802_2.html",
+      "readings": [
+        {
+          "title": "ドライブレコーダーの映像を定期的に確認しましょう－SDカードの異常により映像が記録されていないことも－（公表ページ）",
+          "publisher": "日本 獨立行政法人國民生活中心",
+          "version": "2018-08-02 公表、2018-11-06 更新（加入業界回應）；網址取自搜尋結果",
+          "accessed_on": "2026-11-19",
+          "read_via": "fetch.sh 單次請求，Mokaair-editorial/1.0 標頭，與前一筆請求間隔 1.2 秒以上（SY6D seq=2，HTTP 200，17868 位元組，sha256 前 16 碼 5feb9ddcf512d44b）；本機去標籤後全文讀。",
+          "reading_scope": "全文：背景（PIO-NET 相談件數）、問卷要點、異常卡測試要點、表示調查、要望先、業界の対応。",
+          "locator": "冒頭第 2 段（2013 年度以降 444 件、記録に関する相談 88 件）；『異常のあるSDカードを用いたときの動作』四點",
+          "network": "NET_JP_KOKUSEN",
+          "independence": "與 S001、S003 同一機構，併為同一網。",
+          "limitations": "摘要頁；數字細節以 S003 報告本文為準。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "summary": "國民生活中心拿一張『電腦看得到檔案、卻無法播放也無法格式化』的故障卡測 12 款機器：9 款開機就偵測到異常，另外 3 款照常開始錄影、螢幕上也顯示錄影中，事後檢查卡片卻沒有留下任何影像。",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://www.kokusen.go.jp/news/data/n-20180802_2.html"
         }
       ]
     },
@@ -126412,6 +126832,28 @@
       ]
     },
     {
+      "id": "SRC-acde2f19444aeefa",
+      "url": "https://www.kokusen.go.jp/pdf/n-20170302_3.pdf",
+      "readings": [
+        {
+          "title": "事故時の映像が録画されていなかったドライブレコーダー（相談解決のためのテストから No.109）",
+          "publisher": "日本 獨立行政法人國民生活中心（国民生活センター）商品測試部，報道發表資料",
+          "version": "2017-03-02 發表，2 頁 PDF；網址取自搜尋結果",
+          "accessed_on": "2026-11-19",
+          "read_via": "fetch.sh 單次請求，Mokaair-editorial/1.0 標頭，與前一筆請求間隔 1.2 秒以上（SY6D seq=1，HTTP 200，349265 位元組，sha256 前 16 碼 c168c1e3ef741f4d）；本機 pdftotext -layout 轉文字後全文讀。",
+          "reading_scope": "全文：１．依頼内容、２．調査（含圖）、３．消費者へのアドバイス。",
+          "locator": "２．調査 第 1–3 段（卡片無法辨識；讀卡機上只有事故日很久以前的檔案且無法播放；換新卡後常時錄影與衝擊錄影皆正常）",
+          "network": "NET_JP_KOKUSEN",
+          "independence": "日本政府體系的消費者機構依地方消費生活中心委託做的實機測試；與 SD 協會、CFA、FAST'12 等既有九網無機構或作者重疊。",
+          "limitations": "單一委託個案；沒有查卡片的速度等級或故障原因，只判斷『本體無問題、卡片有不具合』。原文第 3 節是給消費者的保養建議，本池不轉述為建議。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "summary": "日本國民生活中心 2017 年公布一件委託測試：委託人說行車紀錄器裡沒有事故影像。",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://www.kokusen.go.jp/pdf/n-20170302_3.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-acf3707a57201e7d",
       "url": "https://www.today.com/food/drinks/starbucks-sizes-rcna130099",
       "readings": [
@@ -129489,6 +129931,28 @@
       ]
     },
     {
+      "id": "SRC-b19d7b6aa10404d0",
+      "url": "https://m.korea.kr/news/interviewView.do?newsId=148769731",
+      "readings": [
+        {
+          "title": "가격·품질 천차만별 블랙박스…올바른 선택법은（韓國消費者院 31 款行車紀錄器評價結果）",
+          "publisher": "大韓民國 政策briefing（korea.kr）轉載公平交易委員會／韓國消費者院資料",
+          "version": "2013-11-12；網址取自搜尋結果",
+          "accessed_on": "2026-11-19",
+          "read_via": "fetch.sh 單次請求，Mokaair-editorial/1.0 標頭，與前一筆請求間隔 1.2 秒以上（SY6D seq=15，HTTP 200，211705 位元組，sha256 前 16 碼 8cc3d6355cc61949）；本機去標籤後讀正文全文。",
+          "reading_scope": "正文全文（評價項目、KS 基準以下件數、使用注意事項）。",
+          "locator": "第 2 段（影像品質、動畫儲存性能、耐環境性）；第 4 段（31 款中 21 款主要性能低於 KS 基準）；注意事項中夏季車內溫度段（車內可超過 90℃，記憶卡所在的機身內部因自身發熱再高 10–30℃以上）",
+          "network": "NET_KR_KCA",
+          "independence": "韓國政府體系；與日本國民生活中心、SD 協會無關。",
+          "limitations": "2013 年資料；溫度段是注意事項的敘述，原文沒寫量測方法。原文的品牌評比與選購建議本池不轉述。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "summary": "韓國消費者院 2013 年評價 31 款行車紀錄器時提醒：夏天停在戶外的車，車內溫度可能升到 90℃以上，而插著記憶卡的機身內部因為本身發熱，可能比外面再高 10℃到 30℃以上。",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://m.korea.kr/news/interviewView.do?newsId=148769731"
+        }
+      ]
+    },
+    {
       "id": "SRC-b1abe00caaa39faf",
       "url": "https://scied.ucar.edu/learning-zone/how-climate-works/greenhouse-effect",
       "readings": [
@@ -131343,6 +131807,28 @@
           "version_note": "取用日可讀頁；未沿用時效性數字或操作規則。",
           "origin": "wave7-earth-20261101",
           "original_url": "https://www.nps.gov/articles/000/lava-flow-forms.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b43d35babcf16a83",
+      "url": "https://www.sdcard.org/developers/sd-standard-overview/speed-class/",
+      "readings": [
+        {
+          "canonical_url": "https://www.sdcard.org/developers/sd-standard-overview/speed-class/",
+          "title": "Speed Class（開發者頁）",
+          "publisher": "SD Association 官方網站開發者頁",
+          "version": "線上網頁",
+          "accessed_on": "2026-11-18",
+          "read_via": "Mokaair-editorial/1.0 標頭，以共用 fetch.sh 下載，與前一筆請求間隔 1.2 秒以上（SY6 seq=5，HTTP 200，97498 位元組，sha256 前 16 碼 0d0e0ffb192c0966）；本機去標籤後全文讀；正文與 SY6-S001 相同，只當交叉確認。",
+          "reading_scope": "正文全部。",
+          "locator": "與 SY6-S001 同段落（NAND 演進、V60/V90 需 UHS-II 以上）",
+          "summary": "開發者版本的同一份說明，內容與消費者頁一致。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "與 S001 同一網、同一段文字，不另計。",
+          "network": "NET_SDA",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://www.sdcard.org/developers/sd-standard-overview/speed-class/"
         }
       ]
     },
@@ -134113,6 +134599,28 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000012/googexhibit991q42025.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b7a4cb58cae9cbb6",
+      "url": "https://www.kokusen.go.jp/pdf/n-20180802_2.pdf",
+      "readings": [
+        {
+          "title": "ドライブレコーダーの映像を定期的に確認しましょう－SDカードの異常により映像が記録されていないことも－（報告書本文）",
+          "publisher": "日本 獨立行政法人國民生活中心 商品測試部",
+          "version": "2018-08-02，報告本文 PDF（約 19 頁）；連結取自 S002 頁面上的『報告書本文[PDF形式]』",
+          "accessed_on": "2026-11-19",
+          "read_via": "fetch.sh 單次請求，Mokaair-editorial/1.0 標頭，與前一筆請求間隔 1.2 秒以上（SY6D seq=3，HTTP 200，793142 位元組，sha256 前 16 碼 02dfd444677fec14）；本機 pdftotext -layout 轉文字後讀相關各節。",
+          "reading_scope": "５．委託測試事例（１）（２）；６．問卷（圖 4、圖 6 與注 10）；８．テスト結果（１）２）仕様範囲外、３）書き込み可能領域が極端に少ない、４）読み書きできない；表 3、表 4、表 5、寫真 4）；１１．テスト方法（１）（２）與圖 8。",
+          "locator": "５（２）（4GB 卡只存 16.9MB 卻只剩 68.8MB 空間、約 1 分 40 秒停錄後自動斷電）；注 10（SD 速度等級的定義）；表 3（速度等級不符 Class 2 卡只有 NO.5 偵測）；表 4（可寫區域極少時 5 台停錄、1 台不起錄、3 台續錄但檔案可能不留、3 台以專用格式化正常）；表 5／寫真 4（3 台畫面顯示錄影中卻無紀錄）；１１（１）（未偵測者連續錄 24 小時，128GB 卡 48 小時）",
+          "network": "NET_JP_KOKUSEN",
+          "independence": "同上。報告中的商品型號表本池不轉錄。",
+          "limitations": "樣本是 2018 年 12 台行車紀錄器；速度等級不符那一欄每種條件只用一個品牌的卡（※1）；報告自己寫明結果是特定條件下的一例，不是所有 SD 卡都會發生。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "summary": "日本國民生活中心 2017 年公布一件委託測試：委託人說行車紀錄器裡沒有事故影像。同一個中心 2018 年報告裡的另一件委託：行車紀錄器開車時畫面變暗、自己斷電。",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://www.kokusen.go.jp/pdf/n-20180802_2.pdf"
         }
       ]
     },
@@ -139196,6 +139704,28 @@
           "limitations": "受控實驗室與野外原位觀測數據，無利益衝突。",
           "origin": "wave102-tech-20261116",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC125200045/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-bebc90332b9256f7",
+      "url": "https://cdn.kyodonewsprwire.jp/prwfile/release/M105445/201903264653/_prw_PA1fl_7v6nEmNn.pdf",
+      "readings": [
+        {
+          "title": "ドライブレコーダー推奨ガイドライン 基本要件編（初版 2019/03/28）",
+          "publisher": "日本 一般社團法人ドライブレコーダー協議会（推奨ガイドライン作成部会），附於該會在共同通信 PR Wire 的新聞稿",
+          "version": "初版 2019-03-28，2 頁 PDF；連結取自新聞稿頁（SY6D seq=9，HTTP 200，107740 位元組，sha256 前 16 碼 24de3a0e45331630）上的『プレスリリース添付ファイル』",
+          "accessed_on": "2026-11-19",
+          "read_via": "fetch.sh 單次請求，Mokaair-editorial/1.0 標頭，與前一筆請求間隔 1.2 秒以上（SY6D seq=10，HTTP 200，181375 位元組，sha256 前 16 碼 91ff11c9c9e241f2）；本機 pdftotext -layout 轉文字後全文讀；新聞稿頁另讀，確認指引無強制力與罰則。",
+          "reading_scope": "全文 1–5 章。",
+          "locator": "4.1.2(3)（10fps 以上；複製同一格不算進影格率）；4.1.2(6)（檔案間空隙 0.2 秒以下）；4.2.2（電壓瞬降到約 6V 錄影不中斷）；5.3（記錄媒體的種類、容量、壽命與保養須記載）",
+          "network": "NET_JDRC",
+          "independence": "日本行車紀錄器業界團體自訂的推薦指引；不是政府文件，也不是 SD 協會規格的轉述；國民生活中心 2018 年報告把它列為要望先，兩者是不同組織。",
+          "limitations": "推薦指引，新聞稿寫明無強制力與罰則；沒有寫記憶卡速度等級。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "summary": "日本行車紀錄器業界團體 2019 年訂的推薦指引（基本要件編）要求：前方影像至少每秒 10 格，而且複製同一格充數的畫格不算進影格率；兩個影像檔之間沒錄到的空隙要在 0.2 秒以下；裝在有怠速熄火功能的車上時，電壓瞬間掉到約 6V，錄影也不能中斷。",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://cdn.kyodonewsprwire.jp/prwfile/release/M105445/201903264653/_prw_PA1fl_7v6nEmNn.pdf"
         }
       ]
     },
@@ -149804,6 +150334,28 @@
       ]
     },
     {
+      "id": "SRC-ccf8f51f160c2a6f",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12864792/fullTextXML",
+      "readings": [
+        {
+          "title": "Exploring the effects and potential of unlocked I/O-powered single board computer clusters",
+          "publisher": "Scientific Reports（2026），南韓一所大學資安相關學系團隊；Europe PMC 開放全文（PMC12864792，編號取自 Europe PMC 搜尋 API 回傳，SY6D seq=4）",
+          "version": "期刊正式版全文 XML",
+          "accessed_on": "2026-11-19",
+          "read_via": "fetch.sh 單次請求，Mokaair-editorial/1.0 標頭，與前一筆請求間隔 1.2 秒以上（SY6D seq=17，HTTP 200，173335 位元組，sha256 前 16 碼 e96542bc27d15399）；本機去標籤後讀儲存媒體各節與表 2、6、7。",
+          "reading_scope": "Storage media 一節、表 2（受測 microSD 與 SSD 規格）、Storage media performance 一節、表 6、表 7。",
+          "locator": "表 2（受測 microSD：循序寫『最高 130MB/s』、隨機讀至少 4000 IOPS 的 A2 等級）；表 6（同一張卡在舊一代主機：4KB 記錄寫 3.62、16MB 記錄寫 34.38MB/s；新一代主機：4KB 8.63、16MB 52.22MB/s）；表 7（4K 隨機寫 870 → 2353 IOPS）；表 6 後一段（作者推測下一代主機可能讓卡的寫入飽和）",
+          "network": "NET_CAU_SBC",
+          "independence": "大學團隊對市售記憶卡成品的實測；與既有各網無合著。",
+          "limitations": "只測一張卡、兩代單板電腦、iozone 檔案系統層量測；『最高 130MB/s』是論文轉錄的規格表數字，量測不在原廠條件下。不點名卡片與主機品牌。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "summary": "南韓一所大學 2026 年的論文拿同一張 microSD 卡（規格表寫循序寫『最高每秒 130MB』、屬隨機讀至少 4000 次的 A2 等級），分別插在兩代單板電腦上測：舊一代用 16MB 大塊循序寫每秒 34.38MB，新一代每秒 52.22MB；4KB 隨機寫從每秒 870 次變成 2353 次。同一篇論文的表 6：在舊一代主機上，這張卡用 4KB 的小塊寫，每秒只有 3.62MB；換成 16MB 的大塊，每秒 34.38MB，換算約差 9.5 倍；新一代主機上則是 8.63MB 對 52.22MB（換算約 6 倍）。",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12864792/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-ccfda24a2b8c079b",
       "url": "https://www.metmuseum.org/art/collection/search/459214",
       "readings": [
@@ -160271,6 +160823,28 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.nokia.com/system/files/files/q4-2007-earnings-release-pdf.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-dc49be0f17a7f179",
+      "url": "https://www.sdcard.org/consumers/speed-class/",
+      "readings": [
+        {
+          "canonical_url": "https://www.sdcard.org/consumers/speed-class/",
+          "title": "SD Standard for Video Recording（Speed Class）",
+          "publisher": "SD Association（業界標準協會）官方網站消費者頁",
+          "version": "線上網頁，2026-11-18 讀取時版本",
+          "accessed_on": "2026-11-18",
+          "read_via": "Mokaair-editorial/1.0 標頭，以共用 fetch.sh 下載，與前一筆請求間隔 1.2 秒以上（SY6 seq=1，HTTP 200，97498 位元組，sha256 前 16 碼 7b1436b8904700b2）；本機去標籤後全文讀。",
+          "reading_scope": "頁首協會簡介、正文全部（四種速度標示、匯流排模式、為何有多種速度等級、各等級註解、主機與卡的組合、Fragmentation and Speed）；影片格式對照表是圖片，未轉述。",
+          "locator": "協會簡介段（2000 年 1 月由三家公司創立（卡片不點名）、創會 14 家、現約 800 家會員）；正文第 1–4 段（frame drop、四種標示皆為最低寫入速度）；『main reason driving many speed class types is the evolution of NAND memory technology』段；註 *–****（Class 2/4/6/10、U1/U3、V6/10/30/60/90、E150–E600）；Best Combination 段（不同符號即使同為 10MB/s 也不保證）；Fragmentation and Speed 段（Free AU、Suspend/Resume）",
+          "summary": "協會自己說明：記憶卡各廠速度差很大，錄影需要固定的最低寫入速度以免掉格，所以訂了速度等級；四種標示的數字都是最低寫入速度；之所以有那麼多種等級，主因是 NAND 快閃記憶體技術演進，早期兩套為舊記憶體最佳化；速度等級的寫入定義在完全未破碎的空白配置單位上。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "標準組織自述，非獨立量測；完整條件寫在規格書，本頁只寫『under defined conditions』。 覆核重抓（SVY6 seq=1）：位元組數相同，去標籤後正文逐字相同，雜湊差異只來自頁尾防機器人腳本的隨機參數。頁面寫的是商標屬於一家授權管理公司，卡片不寫公司名。",
+          "network": "NET_SDA",
+          "origin": "wave114-g746-20261119",
+          "original_url": "https://www.sdcard.org/consumers/speed-class/"
         }
       ]
     },
