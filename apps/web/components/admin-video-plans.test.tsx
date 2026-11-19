@@ -16,8 +16,8 @@ const plan = (fields: Partial<VideoPlan> = {}): VideoPlan => ({
   source_package_path: null, source_package_sha256: null, details: [{ label: "effective_inputs", text: "Source-bound narrative premise" }], ...fields,
 });
 const page = (items = [plan()], fields: Partial<VideoPlanPage> = {}): VideoPlanPage => ({
-  items, total: 473, page: 1, page_size: 25, catalog_total: 473, plans_sha256: "c".repeat(64),
-  catalogs: [{ catalog: "season1", count: 100 }, { catalog: "season2", count: 92 }, { catalog: "season3", count: 100 }, { catalog: "brand-stories", count: 100 }, { catalog: "ai-terms", count: 81 }], ...fields,
+  items, total: 373, page: 1, page_size: 25, catalog_total: 373, plans_sha256: "c".repeat(64),
+  catalogs: [{ catalog: "season1", count: 100 }, { catalog: "season2", count: 92 }, { catalog: "season3", count: 100 }, { catalog: "ai-terms", count: 81 }], ...fields,
 });
 const calls = () => vi.mocked(api).mock.calls.filter(([path]) => path.startsWith("/admin/video-plans"));
 afterEach(() => {
@@ -30,14 +30,14 @@ describe("long-form plans in video admin", () => {
     vi.mocked(api).mockResolvedValue(page());
     window.history.replaceState(null, "", "/zh-TW/admin/videos?tab=plans");
     render(<AdminOperationsProvider bootstrap={{ admin_roles: [], admin_capabilities: ["content.read"], navigation: [], pending_counts: {}, system_status: {}, environment: "test", can_deploy: false, can_manage_database: false }}><AdminVideoReviews /></AdminOperationsProvider>);
-    expect(await screen.findByText("五類共 473 筆企劃")).toBeTruthy();
+    expect(await screen.findByText("四類共 373 筆企劃")).toBeTruthy();
     expect(screen.getByRole("tab", { name: copy.tab }).getAttribute("aria-selected")).toBe("true");
     expect(screen.getByRole("heading", { name: plan().title })).toBeTruthy();
     expect(screen.getByText(copy.stages.REVIEWED_OUTLINE_NOT_MEDIA)).toBeTruthy();
     expect(screen.getByText(copy.minimum)).toBeTruthy();
     const catalog = screen.getByRole("combobox", { name: copy.catalog });
     expect(within(catalog).getAllByRole("option").map((option) => option.textContent))
-      .toEqual(["全部分類 (473)", "原來如此事務所・第一季 (100)", "原來如此事務所・第二季 (92)", "原來如此事務所・第三季 (100)", "品牌故事 (100)", "AI 名詞 (81)"]);
+      .toEqual(["全部分類 (373)", "原來如此事務所・第一季 (100)", "原來如此事務所・第二季 (92)", "原來如此事務所・第三季 (100)", "AI 名詞 (81)"]);
     fireEvent.click(screen.getByText(copy.details));
     expect(screen.getByText("Source-bound narrative premise")).toBeTruthy();
     expect(screen.getByText(copy.historical)).toBeTruthy();
@@ -54,7 +54,7 @@ describe("long-form plans in video admin", () => {
     });
     window.history.replaceState(null, "", "/zh-TW/admin/videos?tab=plans&keep=yes");
     const view = render(<AdminVideoPlans />);
-    await screen.findByText("五類共 473 筆企劃");
+    await screen.findByText("四類共 373 筆企劃");
     fireEvent.change(screen.getByRole("combobox", { name: copy.catalog }), { target: { value: "season3" } });
     await waitFor(() => expect(calls().at(-1)?.[0]).toContain("catalog=season3"));
     expect(await screen.findByText(copy.stages.CHECKED_CANDIDATE_REQUIRES_OUTLINE)).toBeTruthy();
@@ -79,23 +79,23 @@ describe("long-form plans in video admin", () => {
     expect(calls().every(([, options]) => !options?.method || options.method === "GET")).toBe(true);
   });
 
-  it("retains covered references and the longer brand target without making them production status", async () => {
+  it("retains covered references alongside active term plans without making them production status", async () => {
     vi.mocked(api).mockResolvedValue(page([
       plan({ catalog: "ai-terms", id: "ai-agent", title: "AI Agent", stage: "COVERED_DO_NOT_REMAKE", source_status: "covered" }),
-      plan({ catalog: "brand-stories", id: "B28", title: "Brand narrative", stage: "REVIEWED_STORY_PLAN_NOT_MEDIA", source_status: "reviewed-plan", target_duration_seconds: 780 }),
+      plan({ catalog: "ai-terms", id: "token", title: "Token", stage: "TERM_PLAN_NOT_MEDIA", source_status: "planned", target_duration_seconds: 600 }),
     ], { total: 2 }));
     render(<AdminVideoPlans />);
     const reference = await screen.findByText(copy.stages.COVERED_DO_NOT_REMAKE);
     expect(within(reference.closest("article")!).queryByText("製作目標：10 分鐘")).toBeNull();
-    expect(screen.getByText("製作目標：13 分鐘")).toBeTruthy();
-    expect(screen.getByRole("heading", { name: "Brand narrative" })).toBeTruthy();
+    expect(screen.getByText("製作目標：10 分鐘")).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Token" })).toBeTruthy();
     expect(screen.getByRole("heading", { name: "AI Agent" })).toBeTruthy();
   });
 
   it("discards unsent search text when history returns to an earlier query", async () => {
     vi.mocked(api).mockResolvedValue(page());
     render(<AdminVideoPlans />);
-    await screen.findByText("五類共 473 筆企劃");
+    await screen.findByText("四類共 373 筆企劃");
     const input = screen.getByRole("searchbox", { name: copy.search });
     fireEvent.change(input, { target: { value: "B28" } });
     fireEvent.click(screen.getByRole("button", { name: copy.searchButton }));

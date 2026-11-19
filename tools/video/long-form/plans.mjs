@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
 export const DIRECTORY = "docs/videos/long-form";
-export const CATALOG_COUNTS = { season1: 100, season2: 92, season3: 100, "brand-stories": 100, "ai-terms": 81 };
+export const CATALOG_COUNTS = { season1: 100, season2: 92, season3: 100, "ai-terms": 81 };
 export const DURATION_NOTE = "長片製作目標10分鐘（600秒）；實際正文及成片至少8分鐘（480秒），片頭片尾不計正文。沿已查核內容補案例、因果步驟與適用界線，不用停頓、重複旁白或拉慢語速補秒；合成後重算章節。";
 const digest = (value) => createHash("sha256").update(value).digest("hex");
 export const recordHash = (value) => digest(JSON.stringify(value));
@@ -17,13 +17,12 @@ export function validatePolicy(policy) {
   if (policy?.schema_version !== 1 || policy?.scope !== "KNOWLEDGE_AND_NONFICTION_LONG_FORM") problems.push("invalid duration policy");
   if (policy?.minimum_content_seconds !== 480 || policy?.minimum_final_seconds !== 480) problems.push("both measured minimums must be 480 seconds");
   if (policy?.shorts !== "UNCHANGED") problems.push("Shorts must stay unchanged");
-  if (JSON.stringify(Object.keys(policy?.catalogs ?? {}).sort()) !== JSON.stringify(Object.keys(CATALOG_COUNTS).sort())) problems.push("all five catalogs are required");
+  if (JSON.stringify(Object.keys(policy?.catalogs ?? {}).sort()) !== JSON.stringify(Object.keys(CATALOG_COUNTS).sort())) problems.push("all four catalogs are required");
   for (const [name, count] of Object.entries(CATALOG_COUNTS)) {
     const config = policy?.catalogs?.[name];
     if (config?.expected_entries !== count) problems.push(`${name}: expected ${count} entries`);
     if (!Number.isInteger(config?.target_seconds) || config.target_seconds < 600) problems.push(`${name}: production target must be at least 600 seconds`);
-    if (name !== "brand-stories" && config?.target_seconds !== 600) problems.push(`${name}: this revision uses a 600-second production target`);
-    if (name === "brand-stories" && config?.target_seconds < 780) problems.push("brand-stories: preserve the existing 13-minute target");
+    if (config?.target_seconds !== 600) problems.push(`${name}: this revision uses a 600-second production target`);
   }
   return problems;
 }
@@ -148,11 +147,6 @@ export function buildPlans(root = ROOT) {
     bind(sourceCheck);
     add("season3", episode, thirdSource, { video_slug: `sothatswhy-${episode.id.toLowerCase()}`, stage: "CHECKED_CANDIDATE_REQUIRES_OUTLINE", source_check: sourceCheck });
   }
-
-  const storySource = "docs/videos/story-plans/brand-stories-100/stories.json";
-  const stories = json(storySource);
-  if (stories.series.target_minutes * 60 !== policy.catalogs["brand-stories"].target_seconds) throw new Error("brand-stories: target must match the existing story series");
-  for (const story of stories.stories) add("brand-stories", story, storySource, { video_slug: story.slug, stage: "REVIEWED_STORY_PLAN_NOT_MEDIA", target_range_seconds: [720, 900] });
 
   const termsSource = "docs/videos/ai-terms/terms.json";
   const terms = json(termsSource);

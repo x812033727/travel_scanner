@@ -1,13 +1,13 @@
 ---
 id: 2026-11-17-reorder-brand-stories-100-and-retitle
 title: Reorder brand-stories-100 and retitle by reference-channel topic data
-status: review
+status: done
 priority: P2
 area: docs
 owner: claude-fable-heimao-topics
 claimed_at: 2026-11-17T00:04:50Z
 created_at: 2026-11-17T00:04:19Z
-completed_at:
+completed_at: 2026-11-19T16:29:04Z
 branch: claude/wizardly-albattani-is0lls
 depends_on: []
 scope:
@@ -24,8 +24,8 @@ scope:
 ## Definition of done
 
 - [x] 頻道量測、篩法、100 題的分數、提案排程與標題提案寫在 `docs/videos/channel-review-20261116/`。
-- [ ] 站主決定四個撞題（K01、A27、B05、B06）與要不要套用。
-- [ ] 提案套用到 `docs/videos/story-plans/brand-stories-100/`（另開票或擴大這張票的 scope，見 Notes）。
+- [x] 站主決定四個撞題（K01、A27、B05、B06）與要不要套用（2026-11-19 決定退役 `brand-stories-100`，改為篩選打分後移入奇聞 W 軸）。
+- [x] 後續由奇聞 W 軸遷移與擴充票接手（不再改 `brand-stories-100` 排程）。
 
 ## Steps
 
@@ -33,7 +33,7 @@ scope:
 - [x] 起飛前後 18 支比對。
 - [x] 替 100 題打四項分數，產生 `proposed-schedule.json`。
 - [x] 寫 17 個標題提案。
-- [ ] 套用（被擋，見 Notes）。
+- [x] 2026-11-19 站主拍板退役 `brand-stories-100` 並篩選移入奇聞 W 軸，本票分析與提案階段結案。
 
 ## How to verify
 
@@ -44,6 +44,6 @@ scope:
 
 - 2026-11-17：`brand-stories-100` 的 `stories.json` 與 `SCHEDULE.md` 在票 `2026-10-14-correct-a21-pringles-patent-fact-and`（codex-8a78-a21，10-14 認領，
   工作已完成、卡在看板搬移）的 scope 裡。`claim` 拒絕重疊，`--force` 被自動模式擋下，所以這張票的 scope 縮成只有報告資料夾，沒有動題庫。
-- 套用時要連動：各題 `reviews/<代號>.json` 要另一個人重讀重綁；`docs/videos/long-form/plans.json` 與 `apps/api/app/video_plans/data/catalog.json` 讀 `stories.json`，要重建。
-- 分數是一個代理的判斷，不是量測；套用前站主可以直接改 `proposed-schedule.json` 的順序。
+- 2026-11-19：站主決定「品牌故事 100 題不要了，都移到 W 軸（篩選跟打分數過後）」，並從後台企劃目錄移除 `brand-stories`，同意結案本票。
+- 分數是一個代理的判斷，不是量測。
 - 字幕只用來量結構，沒有存進 repo。
