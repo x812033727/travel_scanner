@@ -8,7 +8,7 @@
 import { CURIO_MUSIC } from "../core/curio.mjs";
 import { explainerCardTemplates } from "../core/drama.mjs";
 import { STORY_OPENING_CHAPTER_SECONDS } from "../core/lint.mjs";
-import { CONDENSATION_RULE, NARRATIVE_RULES, STORY_OPENING_RULE, STORY_SERIES_SCREEN_RULE, TOLD_TO_ONE_VIEWER } from "./register.mjs";
+import { STORY_OPENING_RULE, TEN_STEP_NARRATIVE_RULES, STORY_SERIES_SCREEN_RULE, TOLD_TO_ONE_VIEWER } from "./register.mjs";
 
 /**
  * The prompt variants of an explainer, by style preset: the one-off's bible ("planner:<bible>"),
@@ -482,8 +482,7 @@ not the text, its characters or its clips):
 ${p.noWords ? NO_WORDS_PICTURE_RULES : PICTURE_RULES}
 ${p.noWords ? NO_CARDS : cardRules(cards)}
 ${p.shape}
-- ${CONDENSATION_RULE}
-${NARRATIVE_RULES}${p.storyRules ? `
+${TEN_STEP_NARRATIVE_RULES}${p.storyRules ? `
 ${p.storyRules}` : ""}
 ${p.noWords ? NO_WORDS_LINE_RULES : LINE_RULES}
 - "music": {prompt (English: ${p.music})} when "drama_settings.music_enabled";

@@ -127,15 +127,15 @@ test("one table maps each explainer preset to its variants; every name fits the 
 // chapter's open question; the same stop applies to an unfinished one-off.
 const SERIES_TEXT_PINS = {
   "planner:bible-explainer-cartoon": [7157, "c0c073ea08c1830520cdd8aac05655180dbf74804ddb47fdb53289a472dc7f4a"],
-  "writer:explainer-cartoon": [35511, "6a203643c99021ea4839e0f70a46c5681eed81056069592c76a287cfc3edbb88"],
+  "writer:explainer-cartoon": [29414, "9b4da3761a3631968453a25a0c55677f58991ea068a9439bdec2cc02eba7b60c"],
   "verifier:explainer-cartoon": [4305, "6f41570e5090987327a200b7790a6ecdec88c8a0350de2ca49b74cb4e7ca95db"],
   "planner:discuss-cartoon": [7884, "67c29f2e2e662f11fa2eb5e91fac15a388739750b15f88916406b56950b0cc0a"],
-  "writer:discuss-cartoon": [33976, "b6f5f375128fbd642aff778778486218c98948bc430f04605b76ff7052489a3a"],
+  "writer:discuss-cartoon": [27879, "d80dab5255695c7bb3a5db63020beb18122d501381b640651de3d62a1a5bf1db"],
   "planner:bible-explainer-mystery": [10253, "20e96955d47455eb2b5bf9065e6f28686ecb77c9bbe5803496630452a1a4283f"],
-  "writer:explainer-mystery": [39583, "3adeaf8ce0dff0d4f5b2033770585ffffabae43fca6a432169ee79a117b755ad"],
+  "writer:explainer-mystery": [33486, "ca6cf3f680e46b925a9c087ff06f8bad3c8cddd91d17de78c7c470f004bc30bd"],
   "verifier:explainer-mystery": [6433, "e84a1810dab0b060272622dae14a95879470965678851713608fc5ac60dc4b2a"],
   "planner:discuss-mystery": [10882, "953f812ff7bffa3ff7c70e2132048bcacc894477bc803017c9ac068124ac6dfa"],
-  "writer:discuss-mystery": [38120, "0f00b95cc880d9071a77247a0e23fac6be7a87f5f89b8a1dd38882c51acbb2a1"],
+  "writer:discuss-mystery": [32023, "ff517dad6fabb07e816587ec65806358a88384c52f5616db0d92f8372b9aef4a"],
 };
 
 test("the ten texts of the two profiled series are the pinned ones, composed with no genre section", () => {

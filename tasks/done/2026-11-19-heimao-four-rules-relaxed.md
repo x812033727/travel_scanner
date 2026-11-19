@@ -77,7 +77,7 @@ npm run test:tools && npm run check:tasks
 - 四份撰稿提示（`writer:explainer-cartoon`、`writer:discuss-cartoon`、`writer:explainer-mystery`、
   `writer:discuss-mystery`）的固定雜湊跟著動了：部署後，主機上做到一半的奇聞／原來如此單集會在下一個
   階段以 `video_ai_receipt_input_changed` 停下來，要重跑那個階段。`writer:explainer-mystery` 現在
-  39,589 字，離 40,000 的上限剩約 400 字，下一次加規則之前得先瘦身。
+  瘦身前 39,589 字、離 40,000 的上限剩約 400 字；第七個 commit 瘦身後 33,426 字。
 - 開 PR 後站主請 Gemini 審了兩輪，查證屬實並在同一個 PR 修掉的：岔題的 75 秒放寬原本只算緊鄰預告句的那一格，
   而且預告句自己帶「後面會」或問號時根本認不出來（連撰稿提示的示範句都中）；清單與岔題沒有次數上限；
   `LIST_ITEM_OPENER` 漏了「第一，」「接著，第二步」「第 1 步」與常見量詞；前 300 秒觀眾審查的題目沒同步；
@@ -94,4 +94,9 @@ npm run test:tools && npm run check:tasks
   品牌故事沒有企劃提示（企劃是人寫的 JSON，匯入會拒絕不認得的欄位），所以改成在每章 `point` 的文字裡
   用標記寫，撰稿提示的 `CHAPTER_GUIDE` 認得（第六個 commit）；「還記得」在共用的 `NARRATIVE_RULES` 仍寫五次，
   十步系列的段落寫明以兩次為準（改共用那段會讓其他系列做到一半的片子也停下來）。
+- 第七個 commit（站主：瘦身也做在這個 PR）：`TEN_STEP_NARRATIVE_RULES` 讓十步系列不再收它已推翻的共用段落
+  （AI 與科技片那一節、60–90 秒節奏、開場濃縮、五次「還記得」），奇聞撰稿提示 39,583 → 33,426 字，
+  其他旁白影片的提示沒有變。刪的是規則，品質有沒有受影響還沒有用真的稿子驗證過：合併後第一支照新提示
+  寫的稿子要看盲評 `one_thread`、`no_detour`、`no_orphans` 有沒有比以前常退。
+  成片觀眾審查與縮圖規則加了「副標要跟片尾對得上」。
 - `script-writing.md` 只有 `.agents` 一份（`.claude/skills` 只鏡像各 skill 的 `SKILL.md`）。

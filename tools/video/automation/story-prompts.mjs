@@ -9,7 +9,7 @@
 //
 // This file imports nothing from prompts.mjs, which imports it.
 
-import { NARRATIVE_RULES, STORY_OPENING_RULE, STORY_SERIES_SCREEN_RULE, TOLD_TO_ONE_VIEWER } from "./register.mjs";
+import { STORY_OPENING_RULE, STORY_SERIES_SCREEN_RULE, TEN_STEP_NARRATIVE_RULES, TOLD_TO_ONE_VIEWER } from "./register.mjs";
 
 export const STORY_VARIANT = "story";
 export const STORY_FIX_VARIANT = "story-fix";
@@ -155,7 +155,7 @@ only)}.
   chapter>", "payoff": "<the line id that answers it, in this chapter or left out when a later
   one owns it>", "what": "<what it holds back, at most 40 characters>"}]. The hook plants at
   least three; every chapter but "now" leaves one hanging, and "now" leaves none.
-${NARRATIVE_RULES}
+${TEN_STEP_NARRATIVE_RULES}
 ${STORY_HOOK_RULES}
 ${STORY_OPENING_RULE}
 ${TOLD_TO_ONE_VIEWER}

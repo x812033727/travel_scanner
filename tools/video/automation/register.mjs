@@ -192,6 +192,47 @@ The close:
 `.trim();
 
 /**
+ * NARRATIVE_RULES as the ten-step series are sent them (奇聞檔案局, the brand stories, 原來如此事務所;
+ * owner, 2026-11-19). Their writers used to receive every shared paragraph and then a shape rule
+ * that took several of them back, and 奇聞檔案局's text stood 400 characters under the 40,000 the
+ * site takes. Left out here: the section written for AI and tech topics (story shapes for news,
+ * reviews and A-or-B choices, one metaphor a video), of which the thread, the one-line term and
+ * the list rule are kept in three lines; the 60-to-90-second cadence and the three loops planted
+ * in a condensation, which the series' own hook rules replace; and the five 「還記得」, which is two
+ * for these series. Every other narrated video keeps NARRATIVE_RULES whole. A marker that no longer
+ * matches throws at import, so an edit to NARRATIVE_RULES cannot silently change what is left out.
+ */
+function tenStepNarrativeRules(rules) {
+  const between = (text, from, to, replacement = "") => {
+    const start = text.indexOf(from);
+    const end = text.indexOf(to, start + from.length);
+    if (start < 0 || end < 0) throw new Error(`NARRATIVE_RULES changed: ${JSON.stringify(from.slice(0, 40))} … ${JSON.stringify(to.slice(0, 40))} not found`);
+    return text.slice(0, start) + replacement + text.slice(end);
+  };
+  const without = (text, piece) => {
+    if (!text.includes(piece)) throw new Error(`NARRATIVE_RULES changed: ${JSON.stringify(piece.slice(0, 40))} not found`);
+    return text.replace(piece, "");
+  };
+  let text = rules;
+  text = between(text, "One protagonist, one story shape (written for AI and tech topics", "Hooks (open loops):", `One thread:
+- One protagonist (a person, a company, a ship, a file, an object) is in the opening and in the
+  close, and every chapter moves it on; a new fact enters through it, never as a fresh example.
+- A term is explained in one line at the moment the protagonist meets it, as part of what happens;
+  two definitions in a row are a lecture.
+- Nothing is read out as a list of products, scores or who said what: each item that matters
+  becomes an event (the one counted list of the shape rule aside).
+`);
+  text = between(text, "- Every 60 to 90 seconds of the body", "- Every loop is paid off later");
+  text = without(text, ", at least three for ten minutes, three of them planted in the condensation");
+  text = between(text, "- 「還記得…」 appears at most five times", "- The close may not claim more");
+  const named = "and the payoff names it (「還記得那九桶嗎？」)";
+  if (!text.includes(named)) throw new Error("NARRATIVE_RULES changed: the payoff's naming sentence not found");
+  text = text.replace(named, "and the payoff brings the thing itself back (「那九桶」; 「還記得…嗎？」 only for the two the series allows)");
+  return text;
+}
+export const TEN_STEP_NARRATIVE_RULES = tenStepNarrativeRules(NARRATIVE_RULES);
+
+/**
  * How the two story series are built (奇聞檔案局 and the brand stories). 2026-10-25 measured
  * 黑猫研究院's Seiko episode against ours (docs/videos/channel-review-20261025-story-series/README.md)
  * and replaced the condensation's three or four teasers with the stakes and one promise sentence.
@@ -205,10 +246,10 @@ The close:
  * (core/lint.mjs STORY_OPENING_CHAPTER_SECONDS reads the first chapter); the other narrated
  * videos keep it.
  */
-export const STORY_OPENING_RULE = `Shape of an episode of this series (owner, 2026-11-05; in place of the condensation
-  rule above, so no 30-to-60-second condensation, no scene told up to its first odd fact, no
-  teasers and no plot summary up front; still: the first spoken line at 0:00, no greeting, no
-  table of contents, no later chapter's result given away). No intro bumper (owner, 2026-11-19):
+export const STORY_OPENING_RULE = `Shape of an episode of this series (owner, 2026-11-05). There is no
+  condensation: no 30-to-60-second summary, no scene told up to its first odd fact, no teasers
+  and no plot up front; the first spoken line is at 0:00, with no greeting, no table of contents
+  and no later chapter's result given away. No intro bumper (owner, 2026-11-19):
   the tool adds only the outro. Ten steps, broadly in the order things happened:
   1. The hook, about 25 to 50 seconds: ONE question or ONE situation the viewer knows (「你有沒有用過…」
      「隨便去街上問一個人…」), never a menu of questions stacked one after another (owner,

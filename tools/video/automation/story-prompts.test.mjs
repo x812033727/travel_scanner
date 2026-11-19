@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { CONDENSATION_RULE, NARRATIVE_RULES, STORY_OPENING_RULE, STORY_SERIES_SCREEN_RULE, TOLD_TO_ONE_VIEWER } from "./register.mjs";
+import { CONDENSATION_RULE, NARRATIVE_RULES, STORY_OPENING_RULE, STORY_SERIES_SCREEN_RULE, TEN_STEP_NARRATIVE_RULES, TOLD_TO_ONE_VIEWER } from "./register.mjs";
 import { STORY_HOOK_RULES, STORY_INSTRUCTIONS } from "./story-prompts.mjs";
 
 const writer = STORY_INSTRUCTIONS["writer:story"];
@@ -36,7 +36,13 @@ test("a story's writer follows the ten steps and talks to one viewer, after the 
   assert.ok(writer.includes(STORY_OPENING_RULE) && writer.includes(TOLD_TO_ONE_VIEWER), "both series rules are in what the worker sends");
   assert.ok(writer.indexOf(STORY_OPENING_RULE) > writer.indexOf(STORY_HOOK_RULES), "the opening follows the cadence it refines");
   // Owner, 2026-11-05: 黑猫研究院's ten steps replace the condensation in these two series.
-  assert.match(STORY_OPENING_RULE, /in place of the condensation\s+rule above, so no 30-to-60-second condensation/);
+  assert.match(STORY_OPENING_RULE, /There is no\s+condensation: no 30-to-60-second summary/);
+  // The ten-step series are sent NARRATIVE_RULES without what their own rules take back (2026-11-19).
+  assert.ok(writer.includes(TEN_STEP_NARRATIVE_RULES) && !writer.includes(NARRATIVE_RULES));
+  assert.ok(TEN_STEP_NARRATIVE_RULES.length < NARRATIVE_RULES.length - 4000, "the AI-topic section and the replaced cadence are left out");
+  for (const gone of [/written for AI and tech topics/, /Every 60 to 90 seconds of the body/, /at most five times/, /three of them planted in the condensation/, /At most one metaphor/]) assert.doesNotMatch(TEN_STEP_NARRATIVE_RULES, gone);
+  for (const kept of [/One story, not sections \(the spine\)/, /One protagonist \(a person, a company, a ship, a file, an object\)/, /Every loop is paid off later/, /The close may not claim more than the record does/, /Naming a loop is not paying it/, /Nothing announces what is coming/, /The voice of someone telling it/]) assert.match(TEN_STEP_NARRATIVE_RULES, kept);
+  assert.match(NARRATIVE_RULES, /written for AI and tech topics/, "every other narrated video keeps the rules whole");
   assert.match(STORY_OPENING_RULE, /at most one or two labels of later climaxes/);
   assert.match(STORY_OPENING_RULE, /The promise, landing at about 0:40 to 1:05: 「今天我們就來聊聊…」/);
   assert.match(STORY_OPENING_RULE, /The first chapter ends\s+here \(40 to 90 seconds; lint warns outside them\)/);
