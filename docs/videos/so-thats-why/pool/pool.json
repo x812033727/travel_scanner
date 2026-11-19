@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-19-pool-7469",
+  "revision": "2026-11-19-pool-7506",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "categories": [
     "物理化學與日常材料",
@@ -12,46 +12,46 @@
     "建築交通與商業制度"
   ],
   "counts": {
-    "raw_records": 7933,
-    "canonical_questions": 7773,
-    "eligible_candidates": 7580,
-    "selected_candidates": 7469,
+    "raw_records": 7970,
+    "canonical_questions": 7810,
+    "eligible_candidates": 7617,
+    "selected_candidates": 7506,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 8446,
-    "current_research_source_urls": 5513,
-    "selected_source_urls": 6461,
-    "new_suggestions_not_added": 3477,
+    "source_urls": 8486,
+    "current_research_source_urls": 5554,
+    "selected_source_urls": 6501,
+    "new_suggestions_not_added": 3484,
     "high_similarity_pending": 0,
     "approved_scripts": 0,
     "by_category": {
       "物理化學與日常材料": {
-        "canonical": 1774,
-        "selected": 1744
+        "canonical": 1781,
+        "selected": 1751
       },
       "生物動物與植物": {
-        "canonical": 1514,
-        "selected": 1503
+        "canonical": 1516,
+        "selected": 1505
       },
       "地球天氣與太空": {
         "canonical": 959,
         "selected": 956
       },
       "數位科技與通訊工程": {
-        "canonical": 1403,
-        "selected": 1323
+        "canonical": 1406,
+        "selected": 1326
       },
       "飲食與廚房科學": {
-        "canonical": 508,
-        "selected": 502
+        "canonical": 509,
+        "selected": 503
       },
       "人體感官與日常行為": {
-        "canonical": 574,
-        "selected": 562
+        "canonical": 577,
+        "selected": 565
       },
       "建築交通與商業制度": {
-        "canonical": 1041,
-        "selected": 879
+        "canonical": 1062,
+        "selected": 900
       }
     }
   },
@@ -2017,6 +2017,18 @@
       "sha256": "bd1b0963b48e0b98fdff649d254c669df4cb74d3c733fd81b79a3a3a3053d42f"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave126-everyday-20261119.json",
+      "sha256": "2336777d6c8c2626540afa9fddee2dd8fc5c6e7908ebf21ab5efed9f52df511c"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave126-music-20261119.json",
+      "sha256": "c85713bb178e7e07c88b97ea214b43195a9de01818cd14ec471ce152c5542567"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave126-research-20261119.json",
+      "sha256": "39eea06af8ac221fd56cbf4944f706f43dbbe6845c0d3331677ccfe43abf2bc3"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json",
       "sha256": "6af9ce3e1a1bed1e6d5f849c3aa716d5fdd591bc0e45abd9aba352e271e2c5de"
     },
@@ -3306,12 +3318,12 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "e29f6c705355a26aba71825213bc74fcc686395e23291ffbc70d376938bb4599"
+      "sha256": "a8ac9f009ebf2cdc04d9061753eac5cd9b94ebbf2d5bdb7196d92283414ef5e3"
     }
   ],
   "sources": {
     "file": "pool-sources.json",
-    "count": 8446
+    "count": 8486
   },
   "candidates": [
     {
@@ -136323,6 +136335,1815 @@
       "question_variants": [],
       "provenance_ids": [
         "K125-0217"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0001",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "地板滾球紅、藍雙方都已投過球。藍方剛投完一顆，裁判怎麼還是讓藍方再投？",
+      "mechanism_key": "x126.daily.boccia_farther_side_plays_next",
+      "answer_target": "先找離白色目標球最近的那顆有色球。假設它是紅球，藍方這一投雖然靠得比剛才近，卻還沒超過紅球，藍方手中又有球，就仍由藍方投。等藍球成了最近的一顆才換紅方追；若一方球先用完，另一方再把剩下的球投完。",
+      "scope": "依 World Boccia 的一般局面，雙方已各出第一顆有色球，排除等距。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "要決定下一手，裁判得看哪一方還在追分，單看上一手是哪個顏色不夠。",
+        "visual": "自畫俯視球場，白球外標出最近的紅球；藍球先停在較遠處，再以另一種局面讓藍球超前。",
+        "seconds": [
+          23,
+          36
+        ]
+      },
+      "source_locator": "X126E-S01，The jack is thrown first 段；X126E-S02，The team furthest from the Jack keeps throwing。",
+      "notes": "與冰壺計分題 K119-0406 不同；本題只判斷局中出球權。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行製作有色圓球與量距動畫，不用賽事畫面。",
+      "origin": "wave126-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-79242419b60f1acc",
+          "origin": "wave126-everyday-20261119",
+          "locator": "X126E-S01，The jack is thrown first 段；X126E-S02，The team furthest from the Jack keeps throwing。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-679270b5985f1360",
+          "origin": "wave126-everyday-20261119",
+          "locator": "X126E-S01，The jack is thrown first 段；X126E-S02，The team furthest from the Jack keeps throwing。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0002",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "西洋棋裡，城堡形的「車」移出一格，再走回原位。為什麼王還是不能跟這一側的車易位？",
+      "mechanism_key": "x126.daily.chess_castling_rook_returned",
+      "answer_target": "易位資格會記住這輛車有沒有走過。只要它曾離開起點，搬回原位也無法恢復與它易位的權利。反過來，若王和車都沒動過，只是兩者之間暫時站了一個棋子，待路線清空、王所在及通過或到達的格也沒有受攻擊，才可能易位。",
+      "scope": "依 FIDE 標準西洋棋規則，比較原本同一側的車。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩張棋盤照片可以一模一樣，是否合法還要回看那輛車先前走了哪一步。",
+        "visual": "兩盤並排，A 車留在原位，B 車前移又退回，最後切換棋譜歷史檢查易位權。",
+        "seconds": [
+          24,
+          36
+        ]
+      },
+      "source_locator": "X126E-S03，3.8.2.1 及 3.8.2.2。",
+      "notes": "不說一輛車移動就消除另一側尚存的資格。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行排棋、繪製棋盤或拍攝實體棋子，不引用賽譜轉播。",
+      "origin": "wave126-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-3b8249269728f06b",
+          "origin": "wave126-everyday-20261119",
+          "locator": "X126E-S03，3.8.2.1 及 3.8.2.2。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0003",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "把 AT2020 直立在桌上，從頂端對它說話。明明嘴巴離網罩很近，為什麼原廠標的收音正面在機身側邊？",
+      "mechanism_key": "x126.daily.microphone_side_address_primary_axis",
+      "answer_target": "AT2020 是側錄式麥克風，收音元件最敏感的正前方朝向機身側面。它又採心形指向，元件正前方的聲音較突出，從其他方位來的聲音收得較弱。對這支麥克風，比起順著細長機身朝頂端講，應先找準收音正面，讓說話方向對準它。",
+      "scope": "以原廠 XLR 接頭 AT2020 的指向為例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "元件的正前方和機身的頂端是兩個不同方向。",
+        "visual": "用自製剖面在收音元件前方畫箭頭；固定嘴與麥克風距離和增益，錄兩次同一句作示意。",
+        "seconds": [
+          23,
+          35
+        ]
+      },
+      "source_locator": "X126E-S04，Overview 的 side-address 與 cardioid；X126E-S05，Description 的 directly in front of the element。",
+      "notes": "只要比較不同方向的相對收音；不宣稱從頂端會完全無聲。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行拍攝裝置、繪剖面與錄製比較音檔，不取用原廠圖錄或音檔。",
+      "origin": "wave126-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f169dd7361da0f01",
+          "origin": "wave126-everyday-20261119",
+          "locator": "X126E-S04，Overview 的 side-address 與 cardioid；X126E-S05，Description 的 directly in front of the element。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-be0487655898ba3d",
+          "origin": "wave126-everyday-20261119",
+          "locator": "X126E-S04，Overview 的 side-address 與 cardioid；X126E-S05，Description 的 directly in front of the element。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0004",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "兩片拼布都買四分之一碼，怎麼一片裁得出 12 英吋見方的正方形，另一片把方向轉來轉去都裁不出？",
+      "mechanism_key": "x126.daily.quilting_fat_quarter_cut_geometry",
+      "answer_target": "假設原布寬 42 英吋，一般四分之一碼是從布捲切下長 9 英吋的一條，裁片為 9 × 42。拼布用的 fat quarter 則先取半碼，也就是長 18 英吋，再把布寬分半，得到 18 × 21。兩者面積同為 378 平方英吋，前一片的短邊卻只有 9 英吋，連 12 英吋見方的方片也容不下。",
+      "scope": "用同一匹寬 42 英吋的布，尺寸為修邊前範例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "買到的布量相同，裁法已經決定可以取出多大的方塊。",
+        "visual": "在同寬布捲上用兩色標出 9 × 42 與 18 × 21，再將相同 12 英吋見方紙樣放進去。",
+        "seconds": [
+          25,
+          38
+        ]
+      },
+      "source_locator": "X126E-S06，The Difference Between a Fat Quarter and a Quarter Yard of Fabric；X126E-S07，half yard、along the fold 與 selvage。",
+      "notes": "沒有把各家布寬固定為 42 英吋；布邊與縫份由實際作品另計。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自畫網格和紙樣或自攝無圖布料，不用商店布樣照片。",
+      "origin": "wave126-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-d7c8eb3f1e695066",
+          "origin": "wave126-everyday-20261119",
+          "locator": "X126E-S06，The Difference Between a Fat Quarter and a Quarter Yard of Fabric；X126E-S07，half yard、along the fold 與 selvage。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-80e5e279fc6850d7",
+          "origin": "wave126-everyday-20261119",
+          "locator": "X126E-S06，The Difference Between a Fat Quarter and a Quarter Yard of Fabric；X126E-S07，half yard、along the fold 與 selvage。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0005",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "馬桶外面的地板一滴水都沒有，怎麼只在水箱加幾滴食用色素，就能知道它有沒有悄悄漏進便盆？",
+      "mechanism_key": "x126.daily.toilet_tank_dye_bowl_without_flushing",
+      "answer_target": "把色素加在水箱，先不要沖水。EPA 建議十分鐘後看便盆：如果原本清澈的水出現同樣的顏色，表示有水在沒有沖水的時候從水箱流進便盆。整條路都在馬桶裡，外面自然可以看不到水漬。看完就沖水，免得留下染痕。",
+      "scope": "限有水箱的馬桶及這個水箱到便盆的漏水測試。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "食用色素把平時同色、看不出來的水流標記了出來。",
+        "visual": "用透明示意剖面區分上方水箱與下方便盆；固定鏡頭、十分鐘後再比較便盆水色。",
+        "seconds": [
+          23,
+          35
+        ]
+      },
+      "source_locator": "X126E-S08，Identify toilet leaks 的 food coloring、after 10 minutes 和沖掉色素提醒。",
+      "notes": "能驗出這條漏水路徑；要找到確切故障零件仍須另行檢查。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行畫剖面或錄家用測試，時間變化標示清楚。",
+      "origin": "wave126-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-833a2f2fd2e0e919",
+          "origin": "wave126-everyday-20261119",
+          "locator": "X126E-S08，Identify toilet leaks 的 food coloring、after 10 minutes 和沖掉色素提醒。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0006",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "有張美元紙鈔的流水號，最後一個英文字母的位置卻印了一顆星。這顆星是在替哪一道製鈔流程留紀錄？",
+      "mechanism_key": "x126.daily.us_note_star_suffix_replacement",
+      "answer_target": "美國貨幣教育計畫說明，生產過程需要替代鈔券時，有些鈔票會以尾端的星號作為辨識。製鈔局的序號說明也把星號寫在一般尾碼字母的位置。辨認時先找流水號的最末端；這顆星能說明該鈔作為替代券的身分，並沒有編碼說明被替代的那張究竟出了什麼問題。",
+      "scope": "以美國聯邦準備券流水號的星號尾碼為限。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣是印在鈔票上的星星，落在序號尾端才帶有這個製程訊息。",
+        "visual": "畫兩個抽象序號局部，框起尾碼字母與星號的位置，再畫替代券進入生產序列的示意。",
+        "seconds": [
+          22,
+          34
+        ]
+      },
+      "source_locator": "X126E-S09，A “star” suffix 段；X126E-S10，On some notes, a star appears in place of the last letter。",
+      "notes": "沒有把星號當作市場估價、特定面額或單憑就能驗真的記號。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "只畫虛構序號的短小局部，不重製票面、圖樣或完整真實序號。",
+      "origin": "wave126-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-83ec5b4fb0525bc0",
+          "origin": "wave126-everyday-20261119",
+          "locator": "X126E-S09，A “star” suffix 段；X126E-S10，On some notes, a star appears in place of the last letter。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-44792a28da5af7b5",
+          "origin": "wave126-everyday-20261119",
+          "locator": "X126E-S09，A “star” suffix 段；X126E-S10，On some notes, a star appears in place of the last letter。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0007",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "乳霜盒上只有一個打開的罐子和「12M」。同一天買了兩瓶，一瓶今天開、另一瓶月底才開，這十二個月分別從哪天算？",
+      "mechanism_key": "x126.daily.cosmetics_period_after_opening",
+      "answer_target": "在歐洲這套標示裡，開罐圖的時間是產品第一次打開使用後的期間。兩瓶的開封日不同，各自的十二個月也從不同日開始。若包裝另外寫明某個日曆日期，那要讀它所標示的日期種類；單從「12M」無法倒推出這批貨哪一天生產。",
+      "scope": "以適用開封後使用期間標示、正常保存的歐洲化妝品為例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "買回家的日期可以一樣，兩瓶開始計算開封後期間的日期仍可不同。",
+        "visual": "兩個虛構容器配兩張日曆，分別在開罐日蓋章，再用原創圖解讀「12M」。",
+        "seconds": [
+          24,
+          35
+        ]
+      },
+      "source_locator": "X126E-S11，The date of minimum durability 下的 after being used for the first time；X126E-S12，Article 19(1)(c)。",
+      "notes": "最低耐久超過三十個月的產品有列明的適用與例外；包裝密封原狀的保存時間不能由此圖單獨得出。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪日曆、容器、符號意義，不取用品牌包裝相片。",
+      "origin": "wave126-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-bfcc63182a3e4838",
+          "origin": "wave126-everyday-20261119",
+          "locator": "X126E-S11，The date of minimum durability 下的 after being used for the first time；X126E-S12，Article 19(1)(c)。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ff50da6b894414ac",
+          "origin": "wave126-everyday-20261119",
+          "locator": "X126E-S11，The date of minimum durability 下的 after being used for the first time；X126E-S12，Article 19(1)(c)。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0008",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "整根玉米只長出一把鬚，為什麼不是這把鬚隨便接到一粒花粉，整根就能一起結滿？",
+      "mechanism_key": "x126.daily.corn_each_silk_one_ovule",
+      "answer_target": "看起來是一把，實際由許多獨立的花絲組成。每一條玉米鬚各自連到一個胚珠，也就是未來可能的一顆玉米粒。花粉落到相應的花絲後，還得沿花絲長出花粉管、完成受精，那個位置才有機會發育出籽粒。其他位置各有自己的路徑，因此同一穗上可以有些飽滿、有些留空。",
+      "scope": "依 Purdue 的玉米生殖構造與籽粒形成說明。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "順著其中一根鬚畫回去，終點是一個胚珠，不是一整排玉米粒。",
+        "visual": "自畫三條不同色的花絲，各連到一個胚珠；讓一條花粉管沿一根鬚向下生長。",
+        "seconds": [
+          25,
+          37
+        ]
+      },
+      "source_locator": "X126E-S13，Each silk connects to an individual ovule 及 Pollination、Fertilization 的區別。",
+      "notes": "不能憑缺粒外觀診斷唯一原因；受精後也可能發育中止。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自攝玉米與鬚或自行畫線連接，避免取用推廣資料的原始照片。",
+      "origin": "wave126-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-73577e53267fe54c",
+          "origin": "wave126-everyday-20261119",
+          "locator": "X126E-S13，Each silk connects to an individual ovule 及 Pollination、Fertilization 的區別。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0009",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "餐桌上兩顆橄欖同樣深黑，能看出哪顆一定是在樹上等到完全變黑才採的嗎？",
+      "mechanism_key": "x126.daily.table_olive_processing_oxidation_color",
+      "answer_target": "國際橄欖理事會分開描述兩條路徑。有些黑橄欖接近充分成熟時採下，已帶有品種成熟時的色澤。另一些果實在剛開始轉色、還沒全熟時便採收，再於處理中透過氧化加深顏色；加州式餐桌橄欖便可使用這種方法。光憑端上桌的成品顏色，無法把採收時的顏色還原出來。",
+      "scope": "比較 IOC 所列 Olives turning colour 與 Black olives 的加工類別。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣的深色可以在樹上逐漸形成，也可能有一部分是在採收之後才形成。",
+        "visual": "自畫兩條路徑：一顆深色後採，一顆轉色時採再經氧化；終點放兩只深色果實的碟子。",
+        "seconds": [
+          24,
+          35
+        ]
+      },
+      "source_locator": "X126E-S14，Olives turning colour 下 oxidation to darken the fruit，以及 Black olives 的 close to full ripeness。",
+      "notes": "不以外觀指認某一罐的產地、製法，也不提供加工操作配方。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自攝無品牌果實與菜盤或繪圖，原文內容僅轉述。",
+      "origin": "wave126-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-34775cf053b5f14a",
+          "origin": "wave126-everyday-20261119",
+          "locator": "X126E-S14，Olives turning colour 下 oxidation to darken the fruit，以及 Black olives 的 close to full ripeness。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0010",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "從機窗看出去，跑道頭先是一串白箭頭，隔一段才有橫跨跑道的白線。前面那段既然不給這個方向落地，為什麼還留作跑道？",
+      "mechanism_key": "x126.daily.runway_displaced_threshold_arrowed_area",
+      "answer_target": "FAA 把這種配置稱為內移入口。沿箭頭方向降落時，落地可用的跑道從內移的入口起算，所以比完整鋪面短。入口前的鋪面仍可供兩個方向的起飛使用，也可供從另一方向降落的航機使用。箭頭區的用途取決於航機從哪裡來、正在起飛還是降落。",
+      "scope": "限 FAA AIM 所示的正常內移入口白箭頭、白色入口線配置。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一段鋪面，換成反方向看，能否作為降落跑道的一部分也會改變。",
+        "visual": "自畫跑道俯視圖，只放白箭頭與入口線，用兩個相反的方向箭頭標出可用的落地區段。",
+        "seconds": [
+          26,
+          38
+        ]
+      },
+      "source_locator": "X126E-S15，Displaced Threshold 段與 FIG 2-3-4；X126E-S16，DISPLACED THRESHOLD 詞條。",
+      "notes": "不把同色施工標示、黃人字紋或暫時封閉的鋪面混成同一案例。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "用自繪簡圖呈現位置和方向，不取用機場照片或翻製 FAA 圖版。",
+      "origin": "wave126-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c449d0d80a6c5117",
+          "origin": "wave126-everyday-20261119",
+          "locator": "X126E-S15，Displaced Threshold 段與 FIG 2-3-4；X126E-S16，DISPLACED THRESHOLD 詞條。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-69ea61eff205e3bb",
+          "origin": "wave126-everyday-20261119",
+          "locator": "X126E-S15，Displaced Threshold 段與 FIG 2-3-4；X126E-S16，DISPLACED THRESHOLD 詞條。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0011",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "法式氣嘴的自行車已經接上相容的打氣筒，怎麼剛才忘了鬆開頂端那顆小螺帽，空氣就進不去？",
+      "mechanism_key": "x126.daily.presta_tip_locknut_air_admission",
+      "answer_target": "這種 Presta 氣嘴在閥桿頂端有一顆可鬆開的小螺帽。鎖緊時，閥桿不能像打氣時那樣動作；打氣前先鬆開它，讓閥能打開，空氣才能進入內胎。Park Tool 也建議接泵前輕按一下，確認閥桿沒有黏住。要找的就是氣嘴最頂端的小螺帽。",
+      "scope": "以 Park Tool 圖解的傳統 Presta 為例，內胎已安裝好、泵頭相容。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "泵頭套得上，只表示連接得上；氣嘴裡的閥要先能活動，才有進氣通道。",
+        "visual": "把一個已裝好的法式氣嘴頂部放大，並排標出螺帽已鎖、已鬆兩個狀態，讓閥桿移動。",
+        "seconds": [
+          23,
+          34
+        ]
+      },
+      "source_locator": "X126E-S17，The Presta valve is common 段，small locknut、before air can enter、To inflate。",
+      "notes": "與 G769 的內胎包裝及輪圈孔適配不同；本題從已裝好的車開始。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行拍攝或繪製氣嘴頂部，不取原廠維修圖。",
+      "origin": "wave126-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-40d98e3f76f0b12d",
+          "origin": "wave126-everyday-20261119",
+          "locator": "X126E-S17，The Presta valve is common 段，small locknut、before air can enter、To inflate。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0012",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "家裡食用大黃的葉柄長得又粗又綠，鄰居那株卻紅得像草莓。一定要等自己的也變紅，才能採來做派嗎？",
+      "mechanism_key": "x126.daily.rhubarb_variety_color_full_length",
+      "answer_target": "先看品種與株齡。食用大黃有的品種葉柄幾乎全綠，有的接近全紅；原來就是綠色的品種不必等紅。明尼蘇達大學的栽培指引說，已建立、可以採收的植株，葉柄長到該品種應有的全長就可開始採。不同品種的全長也會相差很多，不能拿鄰株的紅色當作採收倒數。",
+      "scope": "僅談已可採收的食用大黃葉柄，不包括葉片。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "留意的是自家品種的葉柄有沒有長足，而不是和別株比顏色。",
+        "visual": "自畫兩個品種的成熟葉柄，分別標出各自的全長與色澤，最後只將葉柄畫進派餡。",
+        "seconds": [
+          24,
+          36
+        ]
+      },
+      "source_locator": "X126E-S18，Choosing rhubarb varieties 及 Harvesting 內的 reached their full length。",
+      "notes": "新定植或播種的植株仍要先養成；不由鮮紅色推論甜度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自攝食用大黃葉柄或自畫植株，不使用推廣網站相片。",
+      "origin": "wave126-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-8f09cdf0dcdefff6",
+          "origin": "wave126-everyday-20261119",
+          "locator": "X126E-S18，Choosing rhubarb varieties 及 Harvesting 內的 reached their full length。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0012"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0401",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "顫音琴手只敲了一下，同一個音怎麼一陣響、一陣輕，連起伏的快慢都能轉旋鈕改？",
+      "mechanism_key": "x126.music.vibraphone_rotating_resonator_discs",
+      "answer_target": "先讓金屬音板維持振動，再往音板下方看。共鳴管口上方有一排裝在同一根軸上的旋片；軸轉動時，旋片輪流讓開或遮住管口。管口打開時，共鳴讓聲音較響。軸一圈圈轉，持續的音就一陣響、一陣輕；調快馬達，起伏也變密。",
+      "scope": "限 Yamaha 所示帶旋片馬達、音板仍在發聲的顫音琴。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "剖開自繪的一支共鳴管，讓旋片轉到兩個位置；在同一條延音下畫出疏、密兩種音量包絡。",
+        "payoff": "手只敲一次，後來每次音量起伏都能在管口找到對應位置。",
+        "seconds": [
+          32,
+          44
+        ]
+      },
+      "source_locator": "S01 首段與 Fans, which open and close 兩張管口開閉照片。",
+      "notes": "談管口開閉帶來的音量變化，不指定轉一圈等於幾次可聞起伏。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "依證據自繪圖解與音型，使用自製示意音；原站照片、譜圖與錄音僅作查核。",
+      "origin": "wave126-music-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-8900fd72a4afb212",
+          "origin": "wave126-music-20261119",
+          "locator": "S01 首段與 Fans, which open and close 兩張管口開閉照片。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-music-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0401"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0402",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "借來的高音直笛吹 Do、Re、Mi 都對，一吹 Fa 卻要換指法。看管身哪兩個孔就能先猜出原因？",
+      "mechanism_key": "x126.music.recorder_german_baroque_fourth_fifth",
+      "answer_target": "把兩支笛的吹口朝同一頭，從吹口往下數正面音孔。依 Yamaha 的對照圖，德式的第四孔比第五孔大，巴洛克式剛好相反。在高音直笛的這一組低音指法裡，德式 Fa 可以順著音階依序開孔；巴洛克式 Fa 的按孔中間有跳開的孔。看出兩種孔徑布局，就知道該查哪一張指法表。",
+      "scope": "比較原廠圖中的德式、巴洛克式高音直笛與低音區 F。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "兩支自繪笛身同步圈住第四、五孔，用兩種顏色排出順次與交叉按孔。",
+        "payoff": "笛上的第四、五孔會提示該拿哪一張 Fa 指法表。",
+        "seconds": [
+          30,
+          43
+        ]
+      },
+      "source_locator": "S02 Differences between Baroque style and German style 兩型圖及 soprano F 一列。",
+      "notes": "管身背面的拇指孔不計入正面孔序，未將高音直笛指法套用到中音直笛。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "依證據自繪圖解與音型，使用自製示意音；原站照片、譜圖與錄音僅作查核。",
+      "origin": "wave126-music-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e40ef087cf019fb3",
+          "origin": "wave126-music-20261119",
+          "locator": "S02 Differences between Baroque style and German style 兩型圖及 soprano F 一列。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-music-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0402"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0403",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "低音管的金屬彎管靠軟木塞處有個小音孔，從裡面看怎麼像有根細針伸進管子中央？",
+      "mechanism_key": "x126.music.bassoon_bocal_pianissimo_vent_tube",
+      "answer_target": "從彎管外面看，這個弱音鍵的小孔可由連到小管節的鍵墊蓋住。把剖面轉到裡面，孔口後面還接著一支針般細的小管，一直伸到彎管中央，內端呈小圓盤形。因此從管內看到的突出物，和外側能被鍵墊蓋住的開口是同一組構造。",
+      "scope": "限 Yamaha 圖中低音管金屬彎管（bocal）的弱音鍵孔。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "先標出軟木塞旁的外孔，再旋轉自繪剖面，沿細管走到內側的圓盤端。",
+        "payoff": "內外兩個視角接起來，才看得出那根「針」本身也是一段管。",
+        "seconds": [
+          30,
+          42
+        ]
+      },
+      "source_locator": "S03 首段、外側及內側照片、Pianissimo key diagram。",
+      "notes": "不提出拆卸或加工方法，也不把所有低音管鍵孔都畫成這種剖面。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "依證據自繪圖解與音型，使用自製示意音；原站照片、譜圖與錄音僅作查核。",
+      "origin": "wave126-music-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-5e6085ed85add78e",
+          "origin": "wave126-music-20261119",
+          "locator": "S03 首段、外側及內側照片、Pianissimo key diagram。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-music-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0403"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0404",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "在一種早期管風琴上，從最低的 Do 彈到上一個 Do，整段竟只碰得到一個黑鍵。少掉的半音去哪了？",
+      "mechanism_key": "x126.music.historical_organ_omitted_low_chromatic_pipes",
+      "answer_target": "把這種布局的最低八度逐音寫出來，是 C、D、E、F、G、A、降 B、B，再回到 C。清單中只有降 B 用黑鍵。按 Yamaha 的歷史說明，有些早期教堂用琴省下低音區較少需要的半音，把逐半音的音域留在常用區段；低音管做起來更粗、更長，製作成本也高。這一段缺的音在設計時就省去了。",
+      "scope": "只講 Yamaha 所列最低八度的這種舊布局。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "排兩列自製音名卡，一列完整半音階，一列依史料排列；把少掉的低音管以虛線示意。",
+        "payoff": "那一個黑鍵有名字，是降 B；音列本身就能說明少的是哪些音。",
+        "seconds": [
+          34,
+          47
+        ]
+      },
+      "source_locator": "S04 Partial bass range 主文括號列出的九個音與末句成本說明。",
+      "notes": "未將音列指認為某一架具名館藏，也未假定所有古琴都採用同樣的省略方式。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "依證據自繪圖解與音型，使用自製示意音；原站照片、譜圖與錄音僅作查核。",
+      "origin": "wave126-music-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-7698e5edaaa686b0",
+          "origin": "wave126-music-20261119",
+          "locator": "S04 Partial bass range 主文括號列出的九個音與末句成本說明。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-music-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0404"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0405",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "豎琴譜上那排七根短棒，第二根和最後一根都落在橫線下方。還沒奏出一個音，怎麼就讀得出升 Do 和升 La？",
+      "mechanism_key": "x126.music.harp_pedal_diagram_order_left_right",
+      "answer_target": "先找中央的長豎線。左邊三格照左腳踏板位置讀 D、C、B，右邊四格照右腳讀 E、F、G、A。短棒在橫線上方、線上、下方，分別對應降、本位、升。對著 MusicXML 4.0 的實例看，線下的第二格是 C，最後一格是 A，正好對上檔裡 C 與 A 各加一個半音。這一排記的是七個踏板此刻的位置。",
+      "scope": "音樂會踏板豎琴的圖形記法，採用 MusicXML 4.0 公開譜例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "自製七格踏板圖，先畫中央分隔與左右腳，再翻兩張線下短棒音名卡。",
+        "payoff": "圖能先告訴你哪兩個音名調成升音，沒有指示演奏者先彈第二根或最後一根弦。",
+        "seconds": [
+          38,
+          52
+        ]
+      },
+      "source_locator": "S05 首段建議順序；S06 七組 pedal-tuning 與例圖；S07 Visual diagram；S08 現代豎琴 C 踏板的位置例子。",
+      "notes": "橫線上的短棒是本位。只展示教材的完整圖，不把這七格當成七個即將出聲的音。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "依證據自繪圖解與音型，使用自製示意音；原站照片、譜圖與錄音僅作查核。",
+      "origin": "wave126-music-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-29d7024bdb40d917",
+          "origin": "wave126-music-20261119",
+          "locator": "S05 首段建議順序；S06 七組 pedal-tuning 與例圖；S07 Visual diagram；S08 現代豎琴 C 踏板的位置例子。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-6906738db6c77333",
+          "origin": "wave126-music-20261119",
+          "locator": "S05 首段建議順序；S06 七組 pedal-tuning 與例圖；S07 Visual diagram；S08 現代豎琴 C 踏板的位置例子。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-1ef6f5eb1b421e9c",
+          "origin": "wave126-music-20261119",
+          "locator": "S05 首段建議順序；S06 七組 pedal-tuning 與例圖；S07 Visual diagram；S08 現代豎琴 C 踏板的位置例子。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-808231a08be5691e",
+          "origin": "wave126-music-20261119",
+          "locator": "S05 首段建議順序；S06 七組 pedal-tuning 與例圖；S07 Visual diagram；S08 現代豎琴 C 踏板的位置例子。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-music-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0405"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0406",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "四個全音符疊在同一柱，左邊多一條沒有箭頭的波浪線。照譜落鍵，哪一個音先響？",
+      "mechanism_key": "x126.music.arpeggiate_default_low_to_high",
+      "answer_target": "MusicXML 的第 23 小節譜例疊出 G4、B4、D5、G5。左側從下延伸到上的波線把它們標成琶音；四個音同屬編號 1，沒有另外標方向。依規格的預設，先響的是較低的 G4，再依序上行到 B4、D5、G5。若譜上另外有向下的箭頭，就改從高音往低音展開。",
+      "scope": "限此琶音譜號與 MusicXML 4.0 預設音序。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "自繪四個堆疊音符，播放自行合成的上行與下行聲音，在第二遍波線上加箭頭。",
+        "payoff": "同一疊音仍構成一個和弦，波線和箭頭讓人知道手指依哪個方向展開。",
+        "seconds": [
+          31,
+          44
+        ]
+      },
+      "source_locator": "S09 Attributes 的 direction；S10 第 23 小節的四個 pitch 與 arpeggiate 屬性。",
+      "notes": "不從全音符外形推算各次落鍵之間固定間隔。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "依證據自繪圖解與音型，使用自製示意音；原站照片、譜圖與錄音僅作查核。",
+      "origin": "wave126-music-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-5277113eb1f67666",
+          "origin": "wave126-music-20261119",
+          "locator": "S09 Attributes 的 direction；S10 第 23 小節的四個 pitch 與 arpeggiate 屬性。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-a7be06a8b873232b",
+          "origin": "wave126-music-20261119",
+          "locator": "S09 Attributes 的 direction；S10 第 23 小節的四個 pitch 與 arpeggiate 屬性。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-music-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0406"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0407",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "譜上方標「8va」明明要彈高八度，為什麼讀同一段 MusicXML，方向竟然寫 down？",
+      "mechanism_key": "x126.music.octave_shift_display_vs_sounding_reference",
+      "answer_target": "先把出發點分開。鋼琴手看見譜上的 8va，從眼前的譜面位置往高一個八度彈。MusicXML 的音符資料卻從實際演奏音高出發，再指定這個音在紙上移往哪裡。舉例，實際要奏 C6，把音符畫在 C5 的位置，上方補一條 8va；從資料 C6 回到紙面 C5 就是 down。標記結束後要照下一段譜面另讀。",
+      "scope": "限 MusicXML 4.0 的 octave-shift；以高音譜上方的 8va 說明。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "自畫一張有上下兩層的音高尺，先由紙面 C5 指向鍵盤 C6，再沿反向箭頭繪回譜面。",
+        "payoff": "同一個八度，演奏者從紙面走向聲音，排譜程式從聲音走回紙面。",
+        "seconds": [
+          34,
+          46
+        ]
+      },
+      "source_locator": "S11 首段與 type 說明；S12 公開譜圖與 size=\"8\" type=\"down\" 的碼例。",
+      "notes": "C5/C6 是自製算例；官方片段只提供方向，不據它推定例圖的絕對音名。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "依證據自繪圖解與音型，使用自製示意音；原站照片、譜圖與錄音僅作查核。",
+      "origin": "wave126-music-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-bf1860c7cb4194a7",
+          "origin": "wave126-music-20261119",
+          "locator": "S11 首段與 type 說明；S12 公開譜圖與 size=\"8\" type=\"down\" 的碼例。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-a3ca0979e7b854b3",
+          "origin": "wave126-music-20261119",
+          "locator": "S11 首段與 type 說明；S12 公開譜圖與 size=\"8\" type=\"down\" 的碼例。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-music-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0407"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0201",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "朋友把兩台摺車都叫20吋，他的 Link D8 原廠表上要抄哪串數字？",
+      "mechanism_key": "x126.fold_tire.link",
+      "answer_target": "Tern 這份第五代 Link D8 標準配備把 Schwalbe Big Apple 列為 50-406。Park Tool 尺寸表把 406 歸在 20 吋的一個家族。若朋友早已換過胎，訂購時還需讀實車胎側。",
+      "scope": "第五代 Link D8 原廠標準配備。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "先把舊胎規格寫下，才能跟貨架比。",
+        "visual": "自繪胎側標籤 50-406，旁放世代卡。",
+        "seconds": [
+          24,
+          37
+        ]
+      },
+      "source_locator": "X126D-S01 Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S04 1 Tire and Rim Sizing（Inch、French、ISO/ETRTO）；2 Inner Tube Types and Sizing（Valve type）；3 Tire Sizing Table",
+      "notes": "採具名標準配備、規格表或教學頁。尺寸示意採名義值；未實裝、未量測輪周。示意圖自繪。",
+      "origin": "wave126-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c5de26bb0c029c33",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S01 Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S04 1 Tire and Rim Sizing（Inch、French、ISO/ETRTO）；2 Inner Tube Types and Sizing（Valve type）；3 Tire Sizing Table",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-cd401836f6f47131",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S01 Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S04 1 Tire and Rim Sizing（Inch、French、ISO/ETRTO）；2 Inner Tube Types and Sizing（Valve type）；3 Tire Sizing Table",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0201"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0202",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "另一台 Verge P10 規格頁寫「451 輪組」，為什麼車友也可能向店員說是20吋？",
+      "mechanism_key": "x126.fold_tire.verge",
+      "answer_target": "本頁第二代 Verge P10 列 Schwalbe One 28-451。Park Tool 將 451 列在另一種 20 吋家族；它與 Link D8 的 406 是不同的胎圈座直徑。",
+      "scope": "第二代 Verge P10 原廠標準配備。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個英吋俗稱可以指到兩個實際圈徑。",
+        "visual": "把規格單上粗體 451 與 20 吋貨架牌分開。",
+        "seconds": [
+          24,
+          37
+        ]
+      },
+      "source_locator": "X126D-S02 Overview 的 451 wheels；Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S04 1 Tire and Rim Sizing（Inch、French、ISO/ETRTO）；2 Inner Tube Types and Sizing（Valve type）；3 Tire Sizing Table",
+      "notes": "採具名標準配備、規格表或教學頁。尺寸示意採名義值；未實裝、未量測輪周。示意圖自繪。",
+      "origin": "wave126-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c786b58773cc1245",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S02 Overview 的 451 wheels；Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S04 1 Tire and Rim Sizing（Inch、French、ISO/ETRTO）；2 Inner Tube Types and Sizing（Valve type）；3 Tire Sizing Table",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-cd401836f6f47131",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S02 Overview 的 451 wheels；Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S04 1 Tire and Rim Sizing（Inch、French、ISO/ETRTO）；2 Inner Tube Types and Sizing（Valve type）；3 Tire Sizing Table",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0202"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0203",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "50-406 和 28-451 的外圈可以畫得多接近？",
+      "mechanism_key": "x126.fold_tire.outside",
+      "answer_target": "以 Cycling UK 的近似法把充氣胎截面高度暫當成寬度，外徑約等於胎圈座直徑加兩倍胎寬。50-406 得到 406+2×50=506 mm；28-451 得到 451+2×28=507 mm。兩者名義外徑只差 1 mm，這是粗估。",
+      "scope": "理想截面計算，不作兩台車實際直徑差的證據。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "胖胎可以把較小的輪圈包到幾乎一樣大。",
+        "visual": "自繪同心圓，把胎寬標在輪圈上下兩側。",
+        "seconds": [
+          24,
+          37
+        ]
+      },
+      "source_locator": "X126D-S03 Tyre sizing systems 的輪胎截面與 bead diameter 說明；Imperial, metric and American；Tyre size table；X126D-S01 Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S02 Overview 的 451 wheels；Specifications：Generation、Wheels → Tires、頁尾 Note",
+      "notes": "採具名標準配備、規格表或教學頁。尺寸示意採名義值；未實裝、未量測輪周。示意圖自繪。",
+      "origin": "wave126-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f6c63ed5e9723e75",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S03 Tyre sizing systems 的輪胎截面與 bead diameter 說明；Imperial, metric and American；Tyre size table；X126D-S01 Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S02 Overview 的 451 wheels；Specifications：Generation、Wheels → Tires、頁尾 Note",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-c5de26bb0c029c33",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S03 Tyre sizing systems 的輪胎截面與 bead diameter 說明；Imperial, metric and American；Tyre size table；X126D-S01 Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S02 Overview 的 451 wheels；Specifications：Generation、Wheels → Tires、頁尾 Note",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-c786b58773cc1245",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S03 Tyre sizing systems 的輪胎截面與 bead diameter 說明；Imperial, metric and American；Tyre size table；X126D-S01 Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S02 Overview 的 451 wheels；Specifications：Generation、Wheels → Tires、頁尾 Note",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0203"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0204",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "想買同圈徑的外胎，尺該對輪框外緣、胎紋，還是托住胎唇的那一圈？",
+      "mechanism_key": "x126.fold_tire.seat",
+      "answer_target": "ISO／ETRTO 外胎尺寸前數是名義截面寬，後數是胎圈座直徑，單位毫米。前兩台的胎固定處直徑相差 451−406＝45 mm。兩個英吋俗稱都接近整輪外徑，卻不足以配胎。",
+      "scope": "只比較原配外胎與輪圈的直徑條件。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "決定胎唇能不能坐好的是裡面的固定圓。",
+        "visual": "剖開自繪輪圈，將尺移到兩側胎唇定位的座面。",
+        "seconds": [
+          24,
+          37
+        ]
+      },
+      "source_locator": "X126D-S04 1 Tire and Rim Sizing（Inch、French、ISO/ETRTO）；2 Inner Tube Types and Sizing（Valve type）；3 Tire Sizing Table；X126D-S03 Tyre sizing systems 的輪胎截面與 bead diameter 說明；Imperial, metric and American；Tyre size table",
+      "notes": "採具名標準配備、規格表或教學頁。尺寸示意採名義值；未實裝、未量測輪周。示意圖自繪。",
+      "origin": "wave126-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-cd401836f6f47131",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S04 1 Tire and Rim Sizing（Inch、French、ISO/ETRTO）；2 Inner Tube Types and Sizing（Valve type）；3 Tire Sizing Table；X126D-S03 Tyre sizing systems 的輪胎截面與 bead diameter 說明；Imperial, metric and American；Tyre size table",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f6c63ed5e9723e75",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S04 1 Tire and Rim Sizing（Inch、French、ISO/ETRTO）；2 Inner Tube Types and Sizing（Valve type）；3 Tire Sizing Table；X126D-S03 Tyre sizing systems 的輪胎截面與 bead diameter 說明；Imperial, metric and American；Tyre size table",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0204"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0205",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "Minits Lite 黑面兩條都標6,160日圓，哪一條與 28-451 舊胎的兩個數都一樣？",
+      "mechanism_key": "x126.fold_tire.shelf",
+      "answer_target": "Panaracer 日本表的 F20125BAX-MNL4 是 20×1.25、32-406；F2081BAX-MNL4 是 20×1⅛、28-451。兩款含稅參考價同為 6,160 日圓，只有後一款與指定 Verge P10 原配胎的寬、徑同標。前一款雖與 Link D8 同為 406，卻比原配 50 窄。",
+      "scope": "日本商品表的兩款黑面規格，比對名義尺寸，不保證店頭售價或所有安裝條件。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同品牌、同系列、同價還不足以判定尺寸。",
+        "visual": "把兩張日圓小卡排在胎側數字下，核對黑面品號。",
+        "seconds": [
+          24,
+          37
+        ]
+      },
+      "source_locator": "X126D-S05 Detail：黑面 F20125BAX-MNL4、F2087BAX-MNL4、F2081BAX-MNL4 的表記サイズ、ETRTO、税込参考価格；X126D-S02 Overview 的 451 wheels；Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S01 Specifications：Generation、Wheels → Tires、頁尾 Note",
+      "notes": "採具名標準配備、規格表或教學頁。尺寸示意採名義值；未實裝、未量測輪周。示意圖自繪。",
+      "origin": "wave126-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-5c2f4aa03ac20005",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S05 Detail：黑面 F20125BAX-MNL4、F2087BAX-MNL4、F2081BAX-MNL4 的表記サイズ、ETRTO、税込参考価格；X126D-S02 Overview 的 451 wheels；Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S01 Specifications：Generation、Wheels → Tires、頁尾 Note",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-c786b58773cc1245",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S05 Detail：黑面 F20125BAX-MNL4、F2087BAX-MNL4、F2081BAX-MNL4 的表記サイズ、ETRTO、税込参考価格；X126D-S02 Overview 的 451 wheels；Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S01 Specifications：Generation、Wheels → Tires、頁尾 Note",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-c5de26bb0c029c33",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S05 Detail：黑面 F20125BAX-MNL4、F2087BAX-MNL4、F2081BAX-MNL4 的表記サイズ、ETRTO、税込参考価格；X126D-S02 Overview 的 451 wheels；Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S01 Specifications：Generation、Wheels → Tires、頁尾 Note",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0205"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0206",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "再加一條同價的 20×7/8，胎圈跟 28-451 相同，外胎便是同一條嗎？",
+      "mechanism_key": "x126.fold_tire.narrow",
+      "answer_target": "同表 F2087BAX-MNL4 為 23-451。它與 28-451 的圈徑相同，但名義寬度窄 5 mm；若要買回相同標示，不能只看它們都以 451 結尾。是否更換寬度須另核圈寬及車身。",
+      "scope": "僅比較廠方列出的兩種 Minits Lite 寬度。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "第一道直徑對了，寬度還有下一題。",
+        "visual": "疊畫 23 mm 和 28 mm 兩個截面並畫出 5 mm 寬差。",
+        "seconds": [
+          24,
+          37
+        ]
+      },
+      "source_locator": "X126D-S05 Detail：黑面 F20125BAX-MNL4、F2087BAX-MNL4、F2081BAX-MNL4 的表記サイズ、ETRTO、税込参考価格；X126D-S08 Why are tires often narrower than the size indicated?；Does the tire fit my frame?；Which tire fits which rim?",
+      "notes": "採具名標準配備、規格表或教學頁。尺寸示意採名義值；未實裝、未量測輪周。示意圖自繪。",
+      "origin": "wave126-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-5c2f4aa03ac20005",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S05 Detail：黑面 F20125BAX-MNL4、F2087BAX-MNL4、F2081BAX-MNL4 的表記サイズ、ETRTO、税込参考価格；X126D-S08 Why are tires often narrower than the size indicated?；Does the tire fit my frame?；Which tire fits which rim?",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-c9c36fdc5c99476a",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S05 Detail：黑面 F20125BAX-MNL4、F2087BAX-MNL4、F2081BAX-MNL4 的表記サイズ、ETRTO、税込参考価格；X126D-S08 Why are tires often narrower than the size indicated?；Does the tire fit my frame?；Which tire fits which rim?",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0206"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0207",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "26×1.75 和 26×1¾ 算術上相等，老 Schwinn 的 S-7 能拿一般登山車胎替換嗎？",
+      "mechanism_key": "x126.fold_tire.fraction",
+      "answer_target": "Sheldon Brown 的尺寸史料把老 Schwinn S-7 的 26×1¾ 列為 571 mm，一般登山車常見十進位 26×1.75 配 559 mm。兩個寬度寫法算起來相等，對應的胎圈座直徑卻差 12 mm。",
+      "scope": "限此對英吋舊標與具名 Schwinn 規格，並非所有分數胎都有固定對應。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把分數約掉，會把照著兩套舊規格做的胎看成一種。",
+        "visual": "一邊用算盤把 1¾ 變 1.75，另一邊拉出 571 與 559 兩道圓。",
+        "seconds": [
+          24,
+          37
+        ]
+      },
+      "source_locator": "X126D-S06 Traditional Sizing Systems 的 balloon tire 與 middleweight 段；The Decimal/ Fractional distinction；Fractional and Decimal size tables；X126D-S04 1 Tire and Rim Sizing（Inch、French、ISO/ETRTO）；2 Inner Tube Types and Sizing（Valve type）；3 Tire Sizing Table",
+      "notes": "採具名標準配備、規格表或教學頁。尺寸示意採名義值；未實裝、未量測輪周。示意圖自繪。",
+      "origin": "wave126-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-42449c4fafd997f7",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S06 Traditional Sizing Systems 的 balloon tire 與 middleweight 段；The Decimal/ Fractional distinction；Fractional and Decimal size tables；X126D-S04 1 Tire and Rim Sizing（Inch、French、ISO/ETRTO）；2 Inner Tube Types and Sizing（Valve type）；3 Tire Sizing Table",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-cd401836f6f47131",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S06 Traditional Sizing Systems 的 balloon tire 與 middleweight 段；The Decimal/ Fractional distinction；Fractional and Decimal size tables；X126D-S04 1 Tire and Rim Sizing（Inch、French、ISO/ETRTO）；2 Inner Tube Types and Sizing（Valve type）；3 Tire Sizing Table",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0207"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0208",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "反過來，一條寫 700×32C、另一條用三個英吋數字，兩者也能是同一種名義寬徑嗎？",
+      "mechanism_key": "x126.fold_tire.alias",
+      "answer_target": "Cycling UK 舉例，700×32C、28×1¾×1¼ 都可對到 32-622。原來看似不同的名稱，也可能指相同名義胎寬和胎圈座直徑，須查該胎公制標示。",
+      "scope": "限原文表舉的完整標示，不能把單獨 28 或 700 當作判斷。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "名字相同會分家，名字不同也會相遇。",
+        "visual": "兩條紙條翻到背面，對齊 32-622。",
+        "seconds": [
+          24,
+          37
+        ]
+      },
+      "source_locator": "X126D-S03 Tyre sizing systems 的輪胎截面與 bead diameter 說明；Imperial, metric and American；Tyre size table",
+      "notes": "採具名標準配備、規格表或教學頁。尺寸示意採名義值；未實裝、未量測輪周。示意圖自繪。",
+      "origin": "wave126-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-f6c63ed5e9723e75",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S03 Tyre sizing systems 的輪胎截面與 bead diameter 說明；Imperial, metric and American；Tyre size table",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0208"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0209",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "輪胎變窄以後，「26 吋」為什麼還跟著它？",
+      "mechanism_key": "x126.fold_tire.legacy",
+      "answer_target": "Sheldon Brown 以早期 26×2.125 胖胎為例，後來較輕的 26×1.75 沿用同一圈徑，較矮、較窄的胎讓整個輪子變小，「26 吋」這個家族名卻留了下來。這段歷史解釋為什麼拿尺直接量外緣，很可能對不上俗稱。",
+      "scope": "這是北美胖胎與後來登山車尺寸的例子，不當作所有輪徑系統的共同起源。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "實物外徑會變，習慣叫法卻能沿用。",
+        "visual": "固定輪圈半徑，替換自繪高低兩條胎。",
+        "seconds": [
+          24,
+          37
+        ]
+      },
+      "source_locator": "X126D-S06 Traditional Sizing Systems 的 balloon tire 與 middleweight 段；The Decimal/ Fractional distinction；Fractional and Decimal size tables",
+      "notes": "採具名標準配備、規格表或教學頁。尺寸示意採名義值；未實裝、未量測輪周。示意圖自繪。",
+      "origin": "wave126-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-42449c4fafd997f7",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S06 Traditional Sizing Systems 的 balloon tire 與 middleweight 段；The Decimal/ Fractional distinction；Fractional and Decimal size tables",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0209"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0210",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "WTB 輪圈型號裡的 i25，25 是該配多寬的胎嗎？",
+      "mechanism_key": "x126.fold_tire.rimwidth",
+      "answer_target": "WTB 說其 i25 表示輪圈內寬 25 mm。原廠拿胎的截面寬與輪圈內寬對其相容表，兩個數並非同一物件、也不必相等。只核尾碼無法取代這項篩選。",
+      "scope": "WTB 自家命名與表格讀法，未把 i25 指派給本題兩台車。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "就算胎唇直徑答對，還要看圈給胎多寬的支撐。",
+        "visual": "把 25 mm 量尺放在圈的內壁間，另一把量胎面最寬處。",
+        "seconds": [
+          24,
+          37
+        ]
+      },
+      "source_locator": "X126D-S07 Step 1 What is your tire size?；Step 2 What is your rim size?；X126D-S08 Why are tires often narrower than the size indicated?；Does the tire fit my frame?；Which tire fits which rim?",
+      "notes": "採具名標準配備、規格表或教學頁。尺寸示意採名義值；未實裝、未量測輪周。示意圖自繪。",
+      "origin": "wave126-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-e7f867aaf2fe04ff",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S07 Step 1 What is your tire size?；Step 2 What is your rim size?；X126D-S08 Why are tires often narrower than the size indicated?；Does the tire fit my frame?；Which tire fits which rim?",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-c9c36fdc5c99476a",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S07 Step 1 What is your tire size?；Step 2 What is your rim size?；X126D-S08 Why are tires often narrower than the size indicated?；Does the tire fit my frame?；Which tire fits which rim?",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0210"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0211",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "胎側印了寬度，為什麼換上車後還有人重新量一次？",
+      "mechanism_key": "x126.fold_tire.mounted",
+      "answer_target": "Schwalbe 將胎寬量在最寬處，包含向外突出的胎紋；輪胎在不同胎壓下寬度會變，剛裝上的胎也可能在一段時間後再擴 1–2 mm。胎側數字可先選型，檢查空間時則要看實物。",
+      "scope": "廠方的一般說明，不預測這兩條 Tern 原配外胎一定會變多少。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "輪圈看的是內寬，通過車架的是充氣後最寬的外側。",
+        "visual": "自繪卡尺先夾胎邊，再平移至突出的胎紋。",
+        "seconds": [
+          24,
+          37
+        ]
+      },
+      "source_locator": "X126D-S08 Why are tires often narrower than the size indicated?；Does the tire fit my frame?；Which tire fits which rim?",
+      "notes": "採具名標準配備、規格表或教學頁。尺寸示意採名義值；未實裝、未量測輪周。示意圖自繪。",
+      "origin": "wave126-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c9c36fdc5c99476a",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S08 Why are tires often narrower than the size indicated?；Does the tire fit my frame?；Which tire fits which rim?",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0211"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0212",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "Synapse Carbon 原配 30–32 毫米，官網為什麼另寫「量得 42 毫米」？",
+      "mechanism_key": "x126.fold_tire.frame",
+      "answer_target": "Cannondale 對這款公路車列出原配胎 30–32 mm，另說能容下實測 42 mm 的胎。兩個數回答出廠裝了什麼與車身還有多大空間。若把寫著 42 的盒子抱回家，最後仍得核實際胎寬。",
+      "scope": "只引用這款 Synapse Carbon 的留空說明，不能用以斷定兩台 Tern 可裝 42 mm。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "配備尺寸與車身容許尺寸要向車廠問兩次。",
+        "visual": "畫一輛借來示範的公路車，掛上原配與實測上限的分色牌。",
+        "seconds": [
+          24,
+          37
+        ]
+      },
+      "source_locator": "X126D-S09 Paved, Unpaved, Unbothered. 段，標有 measured 42 mm tires；X126D-S08 Why are tires often narrower than the size indicated?；Does the tire fit my frame?；Which tire fits which rim?",
+      "notes": "採具名標準配備、規格表或教學頁。尺寸示意採名義值；未實裝、未量測輪周。示意圖自繪。",
+      "origin": "wave126-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-0dcf3f7f7650c302",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S09 Paved, Unpaved, Unbothered. 段，標有 measured 42 mm tires；X126D-S08 Why are tires often narrower than the size indicated?；Does the tire fit my frame?；Which tire fits which rim?",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-c9c36fdc5c99476a",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S09 Paved, Unpaved, Unbothered. 段，標有 measured 42 mm tires；X126D-S08 Why are tires often narrower than the size indicated?；Does the tire fit my frame?；Which tire fits which rim?",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0212"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0213",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "旅行前先挑 Schwalbe 7 號內胎，它能收下 50-406 和 28-451 哪一個？",
+      "mechanism_key": "x126.fold_tire.seven",
+      "answer_target": "7 號的 406 規格涵蓋 40–62 mm 寬，故 Link D8 表列的 50-406 落在範圍內。它另列 54-428，並沒有 28-451。若改選前面同圈徑的 32-406，32 更已小於 7 號的下限 40。當外胎決定更換寬度，內胎這關要重算。",
+      "scope": "核對產品所列胎尺寸；指定料號氣嘴需與實車另核。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "第一個備品只通過其中一台的尺寸題。",
+        "visual": "把 50 放到 40–62 的區間，再把 451 與合適清單比對。",
+        "seconds": [
+          24,
+          37
+        ]
+      },
+      "source_locator": "X126D-S10 Product description、Details / Product data；Item 7，10462530；X126D-S01 Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S02 Overview 的 451 wheels；Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S05 Detail：黑面 F20125BAX-MNL4、F2087BAX-MNL4、F2081BAX-MNL4 的表記サイズ、ETRTO、税込参考価格",
+      "notes": "採具名標準配備、規格表或教學頁。尺寸示意採名義值；未實裝、未量測輪周。示意圖自繪。",
+      "origin": "wave126-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-57bd76a420ef697d",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S10 Product description、Details / Product data；Item 7，10462530；X126D-S01 Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S02 Overview 的 451 wheels；Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S05 Detail：黑面 F20125BAX-MNL4、F2087BAX-MNL4、F2081BAX-MNL4 的表記サイズ、ETRTO、税込参考価格",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-c5de26bb0c029c33",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S10 Product description、Details / Product data；Item 7，10462530；X126D-S01 Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S02 Overview 的 451 wheels；Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S05 Detail：黑面 F20125BAX-MNL4、F2087BAX-MNL4、F2081BAX-MNL4 的表記サイズ、ETRTO、税込参考価格",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-c786b58773cc1245",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S10 Product description、Details / Product data；Item 7，10462530；X126D-S01 Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S02 Overview 的 451 wheels；Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S05 Detail：黑面 F20125BAX-MNL4、F2087BAX-MNL4、F2081BAX-MNL4 的表記サイズ、ETRTO、税込参考価格",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5c2f4aa03ac20005",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S10 Product description、Details / Product data；Item 7，10462530；X126D-S01 Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S02 Overview 的 451 wheels；Specifications：Generation、Wheels → Tires、頁尾 Note；X126D-S05 Detail：黑面 F20125BAX-MNL4、F2087BAX-MNL4、F2081BAX-MNL4 的表記サイズ、ETRTO、税込参考価格",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0213"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0214",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "盒上多一個 S 的 7S，能不能反過來當兩台的共用備品？",
+      "mechanism_key": "x126.fold_tire.sevenS",
+      "answer_target": "7S 明列 37-438、28–37-440、28–37-451，Verge P10 的 28-451 正好落在最後一組。清單沒有 50-406，7S 也不能替兩台原配胎共用。這支內胎本身跨了三個直徑，只能依它明列的寬徑組合選。",
+      "scope": "只回答比較的 7、7S 兩型，不推論所有內胎在任何尺寸下都不能共用。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "內胎能伸，原廠仍一組一組列出它能涵蓋的寬與徑。",
+        "visual": "把三組寬與徑畫成三列，分別插入兩台車的原配規格。",
+        "seconds": [
+          24,
+          37
+        ]
+      },
+      "source_locator": "X126D-S11 Product description、Size range (ETRTO)；Item 7S，10462550；X126D-S10 Product description、Details / Product data；Item 7，10462530",
+      "notes": "採具名標準配備、規格表或教學頁。尺寸示意採名義值；未實裝、未量測輪周。示意圖自繪。",
+      "origin": "wave126-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-564a0e5090f1b2b9",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S11 Product description、Size range (ETRTO)；Item 7S，10462550；X126D-S10 Product description、Details / Product data；Item 7，10462530",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-57bd76a420ef697d",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S11 Product description、Size range (ETRTO)；Item 7S，10462550；X126D-S10 Product description、Details / Product data；Item 7，10462530",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0214"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0215",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "外胎寬徑都對了，拿起這兩盒內胎前還缺哪個實車資訊？",
+      "mechanism_key": "x126.fold_tire.valve",
+      "answer_target": "這兩張 Schwalbe 頁面所選的 10462530 與 10462550，技術資料均為 AV 40 mm。Park Tool 說輪圈的孔須與氣嘴相配，圈框的高度也會影響所需的氣嘴長度。兩台整車胎欄只提供外胎資料，不能據它直接保證指定料號的氣嘴適合。",
+      "scope": "只辨識尺寸與選擇條件，未量兩台實車的孔徑、圈高，也不涉及氣嘴操作。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一支內胎通過橡膠尺寸這關，還要拿對能穿過輪圈的氣嘴。",
+        "visual": "把已勾選的外胎欄放左邊，右邊留下「孔型、長度」待實車填寫。",
+        "seconds": [
+          24,
+          37
+        ]
+      },
+      "source_locator": "X126D-S04 1 Tire and Rim Sizing（Inch、French、ISO/ETRTO）；2 Inner Tube Types and Sizing（Valve type）；3 Tire Sizing Table；X126D-S10 Product description、Details / Product data；Item 7，10462530；X126D-S11 Product description、Size range (ETRTO)；Item 7S，10462550",
+      "notes": "採具名標準配備、規格表或教學頁。尺寸示意採名義值；未實裝、未量測輪周。示意圖自繪。",
+      "origin": "wave126-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-cd401836f6f47131",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S04 1 Tire and Rim Sizing（Inch、French、ISO/ETRTO）；2 Inner Tube Types and Sizing（Valve type）；3 Tire Sizing Table；X126D-S10 Product description、Details / Product data；Item 7，10462530；X126D-S11 Product description、Size range (ETRTO)；Item 7S，10462550",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-57bd76a420ef697d",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S04 1 Tire and Rim Sizing（Inch、French、ISO/ETRTO）；2 Inner Tube Types and Sizing（Valve type）；3 Tire Sizing Table；X126D-S10 Product description、Details / Product data；Item 7，10462530；X126D-S11 Product description、Size range (ETRTO)；Item 7S，10462550",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-564a0e5090f1b2b9",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S04 1 Tire and Rim Sizing（Inch、French、ISO/ETRTO）；2 Inner Tube Types and Sizing（Valve type）；3 Tire Sizing Table；X126D-S10 Product description、Details / Product data；Item 7，10462530；X126D-S11 Product description、Size range (ETRTO)；Item 7S，10462550",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0215"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0216",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "如果把碼錶參考表裡兩種 20 吋的輪周互換，輪子轉一千次會差多少？",
+      "mechanism_key": "x126.fold_tire.chart",
+      "answer_target": "CatEye 的表把 50-406 列為 1,565 mm，28-451 列為 1,545 mm。以一千轉固定比較，兩個設定值算出的距離相差 20,000 mm，即 20 m；這是把表值交叉設定的數學差，不是量到兩車真實相差 20 m。",
+      "scope": "同一轉數、只比較該表 L(mm) 兩列。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "選單上兩格只差 20 mm，里程卻會隨圈數一路累積。",
+        "visual": "以計數器自一轉跳到一千轉，並顯示計算單位。",
+        "seconds": [
+          24,
+          37
+        ]
+      },
+      "source_locator": "X126D-S12 原廠單頁 PDF 左欄 50-406、28-451，表首壓力說明，L(mm) 與 L(cm) 欄",
+      "notes": "採具名標準配備、規格表或教學頁。尺寸示意採名義值；未實裝、未量測輪周。示意圖自繪。",
+      "origin": "wave126-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-4a8a8fea26a9b1fc",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S12 原廠單頁 PDF 左欄 50-406、28-451，表首壓力說明，L(mm) 與 L(cm) 欄",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0216"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0217",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "碼錶想知道這顆輪子走一圈有多遠，氣嘴可以怎麼替地面標一條尺？",
+      "mechanism_key": "x126.fold_tire.rollout",
+      "answer_target": "Wahoo 建議依平常騎乘胎壓，前輪氣嘴朝下時在地面標起點，直線推動一整圈，氣嘴再次朝下時標終點，量兩點的距離。此法針對已裝上車的輪胎，反映實際尺寸而非開場的截面近似。",
+      "scope": "Wahoo 速度感測器說明中的手動量測流程。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "選外胎去讀胎唇，設定感測器改量輪子實際滾過的地面。",
+        "visual": "自繪氣嘴依序經過十二、三、六點，再落回第二個標記。",
+        "seconds": [
+          24,
+          37
+        ]
+      },
+      "source_locator": "X126D-S13 Manual Rollout Measurement 全段；Tire Size > Wheel Circumference Approximation Chart 說明；X126D-S03 Tyre sizing systems 的輪胎截面與 bead diameter 說明；Imperial, metric and American；Tyre size table",
+      "notes": "採具名標準配備、規格表或教學頁。尺寸示意採名義值；未實裝、未量測輪周。示意圖自繪。",
+      "origin": "wave126-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a5a4a00440b41ead",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S13 Manual Rollout Measurement 全段；Tire Size > Wheel Circumference Approximation Chart 說明；X126D-S03 Tyre sizing systems 的輪胎截面與 bead diameter 說明；Imperial, metric and American；Tyre size table",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f6c63ed5e9723e75",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S13 Manual Rollout Measurement 全段；Tire Size > Wheel Circumference Approximation Chart 說明；X126D-S03 Tyre sizing systems 的輪胎截面與 bead diameter 說明；Imperial, metric and American；Tyre size table",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0217"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K126-0218",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "地上的兩個記號假設隔了 1,560 毫米，為什麼 Wahoo 的欄位要填 1.560？",
+      "mechanism_key": "x126.fold_tire.units",
+      "answer_target": "該頁請把測量結果換算成公尺輸入。假設標記間隔 1,560 mm，公尺欄填 1.560；發生換算之前的 1,560 才是與 CatEye 毫米表可直接對照的量。這個示例讀數與兩台型號無關。",
+      "scope": "單位依該 Wahoo 操作頁，其他裝置依自己的說明。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最後一個容易填錯的數與輪胎大小無關，藏在輸入框的單位裡。",
+        "visual": "把同一段地面距離接到 mm、m 兩欄，給公尺欄移小數點。",
+        "seconds": [
+          24,
+          37
+        ]
+      },
+      "source_locator": "X126D-S13 Manual Rollout Measurement 全段；Tire Size > Wheel Circumference Approximation Chart 說明；X126D-S12 原廠單頁 PDF 左欄 50-406、28-451，表首壓力說明，L(mm) 與 L(cm) 欄",
+      "notes": "採具名標準配備、規格表或教學頁。尺寸示意採名義值；未實裝、未量測輪周。示意圖自繪。",
+      "origin": "wave126-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a5a4a00440b41ead",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S13 Manual Rollout Measurement 全段；Tire Size > Wheel Circumference Approximation Chart 說明；X126D-S12 原廠單頁 PDF 左欄 50-406、28-451，表首壓力說明，L(mm) 與 L(cm) 欄",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-4a8a8fea26a9b1fc",
+          "origin": "wave126-research-20261119",
+          "locator": "X126D-S13 Manual Rollout Measurement 全段；Tire Size > Wheel Circumference Approximation Chart 說明；X126D-S12 原廠單頁 PDF 左欄 50-406、28-451，表首壓力說明，L(mm) 與 L(cm) 欄",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave126-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K126-0218"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -344106,7 +345927,7 @@
   ],
   "raw_records": {
     "file": "pool-records.json",
-    "count": 7933
+    "count": 7970
   },
   "dedup": {
     "aliases": {
@@ -346961,6 +348782,43 @@
       "K125-0215": "K125-0215",
       "K125-0216": "K125-0216",
       "K125-0217": "K125-0217",
+      "K126-0001": "K126-0001",
+      "K126-0002": "K126-0002",
+      "K126-0003": "K126-0003",
+      "K126-0004": "K126-0004",
+      "K126-0005": "K126-0005",
+      "K126-0006": "K126-0006",
+      "K126-0007": "K126-0007",
+      "K126-0008": "K126-0008",
+      "K126-0009": "K126-0009",
+      "K126-0010": "K126-0010",
+      "K126-0011": "K126-0011",
+      "K126-0012": "K126-0012",
+      "K126-0401": "K126-0401",
+      "K126-0402": "K126-0402",
+      "K126-0403": "K126-0403",
+      "K126-0404": "K126-0404",
+      "K126-0405": "K126-0405",
+      "K126-0406": "K126-0406",
+      "K126-0407": "K126-0407",
+      "K126-0201": "K126-0201",
+      "K126-0202": "K126-0202",
+      "K126-0203": "K126-0203",
+      "K126-0204": "K126-0204",
+      "K126-0205": "K126-0205",
+      "K126-0206": "K126-0206",
+      "K126-0207": "K126-0207",
+      "K126-0208": "K126-0208",
+      "K126-0209": "K126-0209",
+      "K126-0210": "K126-0210",
+      "K126-0211": "K126-0211",
+      "K126-0212": "K126-0212",
+      "K126-0213": "K126-0213",
+      "K126-0214": "K126-0214",
+      "K126-0215": "K126-0215",
+      "K126-0216": "K126-0216",
+      "K126-0217": "K126-0217",
+      "K126-0218": "K126-0218",
       "X13001": "X13001",
       "X13002": "X13002",
       "X13003": "X13003",
@@ -389126,6 +390984,20 @@
         ]
       },
       {
+        "id": "K126-0203~K126-0213",
+        "a": "K126-0203",
+        "b": "K126-0213",
+        "question_score": 0.37,
+        "answer_score": 0.145,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "50-406 和 28-451 的外圈可以畫得多接近？",
+          "旅行前先挑 Schwalbe 7 號內胎，它能收下 50-406 和 28-451 哪一個？"
+        ]
+      },
+      {
         "id": "K93-044~K98-031",
         "a": "K93-044",
         "b": "K98-031",
@@ -389305,6 +391177,20 @@
         "questions": [
           "將兩層只有一個碳原子厚度的石墨烯旋轉精確的一點一度「魔角」，絕緣體為什麼會奇蹟般轉化為高溫超導體？",
           "魔角雙層石墨烯為什麼在約1.1度特定扭轉角下會自發湧現出非常規超導電性？"
+        ]
+      },
+      {
+        "id": "K126-0201~K126-0202",
+        "a": "K126-0201",
+        "b": "K126-0202",
+        "question_score": 0.066,
+        "answer_score": 0.327,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友把兩台摺車都叫20吋，他的 Link D8 原廠表上要抄哪串數字？",
+          "另一台 Verge P10 規格頁寫「451 輪組」，為什麼車友也可能向店員說是20吋？"
         ]
       },
       {
@@ -390050,6 +391936,20 @@
         ]
       },
       {
+        "id": "K126-0202~K126-0205",
+        "a": "K126-0202",
+        "b": "K126-0205",
+        "question_score": 0.057,
+        "answer_score": 0.256,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "另一台 Verge P10 規格頁寫「451 輪組」，為什麼車友也可能向店員說是20吋？",
+          "Minits Lite 黑面兩條都標6,160日圓，哪一條與 28-451 舊胎的兩個數都一樣？"
+        ]
+      },
+      {
         "id": "K120-0204~K120-0211",
         "a": "K120-0204",
         "b": "K120-0211",
@@ -390470,6 +392370,20 @@
         ]
       },
       {
+        "id": "K126-0207~K126-0209",
+        "a": "K126-0207",
+        "b": "K126-0209",
+        "question_score": 0.041,
+        "answer_score": 0.224,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "26×1.75 和 26×1¾ 算術上相等，老 Schwinn 的 S-7 能拿一般登山車胎替換嗎？",
+          "輪胎變窄以後，「26 吋」為什麼還跟著它？"
+        ]
+      },
+      {
         "id": "E2006~E2023",
         "a": "E2006",
         "b": "E2023",
@@ -390481,6 +392395,20 @@
         "questions": [
           "金屬很會導電，是否就永遠無法保留靜電？",
           "把電荷放進空心金屬球再接觸內壁，為什麼外面也會帶電？"
+        ]
+      },
+      {
+        "id": "K126-0205~K126-0214",
+        "a": "K126-0205",
+        "b": "K126-0214",
+        "question_score": 0,
+        "answer_score": 0.222,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Minits Lite 黑面兩條都標6,160日圓，哪一條與 28-451 舊胎的兩個數都一樣？",
+          "盒上多一個 S 的 7S，能不能反過來當兩台的共用備品？"
         ]
       },
       {
@@ -390904,6 +392832,20 @@
         ]
       },
       {
+        "id": "K126-0203~K126-0208",
+        "a": "K126-0203",
+        "b": "K126-0208",
+        "question_score": 0,
+        "answer_score": 0.201,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "50-406 和 28-451 的外圈可以畫得多接近？",
+          "反過來，一條寫 700×32C、另一條用三個英吋數字，兩者也能是同一種名義寬徑嗎？"
+        ]
+      },
+      {
         "id": "I3076~I3079",
         "a": "I3076",
         "b": "I3079",
@@ -391083,6 +393025,20 @@
         "questions": [
           "晶片怎麼用一連串「比較大還比較小」猜出一個電壓？",
           "逐次逼近型（SAR）模數轉換器如何像天平稱重二分搜索一樣，在微秒內完成數十比特的高精確度數字量化？"
+        ]
+      },
+      {
+        "id": "K126-0201~K126-0215",
+        "a": "K126-0201",
+        "b": "K126-0215",
+        "question_score": 0,
+        "answer_score": 0.197,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友把兩台摺車都叫20吋，他的 Link D8 原廠表上要抄哪串數字？",
+          "外胎寬徑都對了，拿起這兩盒內胎前還缺哪個實車資訊？"
         ]
       },
       {
@@ -391380,6 +393336,20 @@
         ]
       },
       {
+        "id": "K126-0202~K126-0214",
+        "a": "K126-0202",
+        "b": "K126-0214",
+        "question_score": 0,
+        "answer_score": 0.189,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "另一台 Verge P10 規格頁寫「451 輪組」，為什麼車友也可能向店員說是20吋？",
+          "盒上多一個 S 的 7S，能不能反過來當兩台的共用備品？"
+        ]
+      },
+      {
         "id": "B2167~B2169",
         "a": "B2167",
         "b": "B2169",
@@ -391447,6 +393417,20 @@
         "questions": [
           "晚上九點把小包放進成田一般日租小櫃，凌晨一點取，為什麼四小時要付800日圓？",
           "在成田T2，安檢前的三樓和二樓都列一般櫃；凌晨一點該把取件路線畫在哪一層？"
+        ]
+      },
+      {
+        "id": "K126-0202~K126-0215",
+        "a": "K126-0202",
+        "b": "K126-0215",
+        "question_score": 0,
+        "answer_score": 0.188,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "另一台 Verge P10 規格頁寫「451 輪組」，為什麼車友也可能向店員說是20吋？",
+          "外胎寬徑都對了，拿起這兩盒內胎前還缺哪個實車資訊？"
         ]
       },
       {
@@ -392276,6 +394260,20 @@
         ]
       },
       {
+        "id": "K126-0203~K126-0204",
+        "a": "K126-0203",
+        "b": "K126-0204",
+        "question_score": 0.043,
+        "answer_score": 0.171,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "50-406 和 28-451 的外圈可以畫得多接近？",
+          "想買同圈徑的外胎，尺該對輪框外緣、胎紋，還是托住胎唇的那一圈？"
+        ]
+      },
+      {
         "id": "K98-005~V3034",
         "a": "V3034",
         "b": "K98-005",
@@ -392500,6 +394498,20 @@
         ]
       },
       {
+        "id": "K126-0203~K126-0206",
+        "a": "K126-0203",
+        "b": "K126-0206",
+        "question_score": 0.167,
+        "answer_score": 0.093,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "50-406 和 28-451 的外圈可以畫得多接近？",
+          "再加一條同價的 20×7/8，胎圈跟 28-451 相同，外胎便是同一條嗎？"
+        ]
+      },
+      {
         "id": "L060~L062",
         "a": "L060",
         "b": "L062",
@@ -392581,6 +394593,20 @@
         "questions": [
           "退罐前仔細找，為什麼有的罐子把圖案印在罐身，有的另貼一張帶小方碼的貼紙？",
           "鋁罐上條碼明明還能看，為什麼用手捏扁，退罐機反而可能把它推出來？"
+        ]
+      },
+      {
+        "id": "K126-0205~K126-0206",
+        "a": "K126-0205",
+        "b": "K126-0206",
+        "question_score": 0.152,
+        "answer_score": 0.164,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Minits Lite 黑面兩條都標6,160日圓，哪一條與 28-451 舊胎的兩個數都一樣？",
+          "再加一條同價的 20×7/8，胎圈跟 28-451 相同，外胎便是同一條嗎？"
         ]
       },
       {
@@ -392766,6 +394792,20 @@
         ]
       },
       {
+        "id": "K126-0213~K126-0214",
+        "a": "K126-0213",
+        "b": "K126-0214",
+        "question_score": 0.036,
+        "answer_score": 0.16,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅行前先挑 Schwalbe 7 號內胎，它能收下 50-406 和 28-451 哪一個？",
+          "盒上多一個 S 的 7S，能不能反過來當兩台的共用備品？"
+        ]
+      },
+      {
         "id": "L77-017~L77-019",
         "a": "L77-017",
         "b": "L77-019",
@@ -392805,6 +394845,20 @@
         "questions": [
           "日本販售的 EH-NA0J 規格寫泰國製，哪一行才決定它能不能列進台灣 110V 的清單？",
           "相機充電器已標 100–240V，出門再多帶一個旅行變壓器會更保險嗎？"
+        ]
+      },
+      {
+        "id": "K126-0202~K126-0203",
+        "a": "K126-0202",
+        "b": "K126-0203",
+        "question_score": 0.077,
+        "answer_score": 0.159,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "另一台 Verge P10 規格頁寫「451 輪組」，為什麼車友也可能向店員說是20吋？",
+          "50-406 和 28-451 的外圈可以畫得多接近？"
         ]
       },
       {
@@ -392987,6 +395041,20 @@
         "questions": [
           "在新加坡找不到押金標記的過渡期舊罐沒付押金，換作芬蘭一只沒標記的玻璃瓶，也能只靠瓶身下結論嗎？",
           "同樣有押金標記的飲料罐，為什麼在參加新加坡內用回收方案的店裡，帳單可以不向客人收那一角？"
+        ]
+      },
+      {
+        "id": "K126-0202~K126-0213",
+        "a": "K126-0202",
+        "b": "K126-0213",
+        "question_score": 0.061,
+        "answer_score": 0.156,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "另一台 Verge P10 規格頁寫「451 輪組」，為什麼車友也可能向店員說是20吋？",
+          "旅行前先挑 Schwalbe 7 號內胎，它能收下 50-406 和 28-451 哪一個？"
         ]
       },
       {
@@ -393183,6 +395251,20 @@
         "questions": [
           "明早要回來的行程如果移到東京迪士尼樂園門口，小櫃的500日圓要乘二嗎？",
           "同樣打算凌晨一點拿包，為了先留一格，成田多功能小櫃的400日圓為什麼會變成900？"
+        ]
+      },
+      {
+        "id": "K126-0203~K126-0216",
+        "a": "K126-0203",
+        "b": "K126-0216",
+        "question_score": 0,
+        "answer_score": 0.154,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "50-406 和 28-451 的外圈可以畫得多接近？",
+          "如果把碼錶參考表裡兩種 20 吋的輪周互換，輪子轉一千次會差多少？"
         ]
       },
       {
@@ -393449,6 +395531,20 @@
         "questions": [
           "同一場地震，為什麼新聞台可以插播，機構也能收到網路通知，手機名單卻比較短？",
           "同一場地震，臺北市的預估偏低，隔海的與那國島也一定偏低嗎？"
+        ]
+      },
+      {
+        "id": "K126-0205~K126-0213",
+        "a": "K126-0205",
+        "b": "K126-0213",
+        "question_score": 0.139,
+        "answer_score": 0.151,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Minits Lite 黑面兩條都標6,160日圓，哪一條與 28-451 舊胎的兩個數都一樣？",
+          "旅行前先挑 Schwalbe 7 號內胎，它能收下 50-406 和 28-451 哪一個？"
         ]
       },
       {
@@ -394166,6 +396262,20 @@
         ]
       },
       {
+        "id": "K126-0202~K126-0204",
+        "a": "K126-0202",
+        "b": "K126-0204",
+        "question_score": 0,
+        "answer_score": 0.142,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "另一台 Verge P10 規格頁寫「451 輪組」，為什麼車友也可能向店員說是20吋？",
+          "想買同圈徑的外胎，尺該對輪框外緣、胎紋，還是托住胎唇的那一圈？"
+        ]
+      },
+      {
         "id": "E74-062~E75-002",
         "a": "E74-062",
         "b": "E75-002",
@@ -394513,6 +396623,20 @@
         "questions": [
           "同一只背包改放在成田T2地下一樓，怎麼有一台只算300日圓？",
           "同樣打算凌晨一點拿包，為了先留一格，成田多功能小櫃的400日圓為什麼會變成900？"
+        ]
+      },
+      {
+        "id": "K126-0203~K126-0205",
+        "a": "K126-0203",
+        "b": "K126-0205",
+        "question_score": 0.138,
+        "answer_score": 0.098,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "50-406 和 28-451 的外圈可以畫得多接近？",
+          "Minits Lite 黑面兩條都標6,160日圓，哪一條與 28-451 舊胎的兩個數都一樣？"
         ]
       },
       {
@@ -395062,6 +397186,20 @@
         ]
       },
       {
+        "id": "K126-0207~K126-0208",
+        "a": "K126-0207",
+        "b": "K126-0208",
+        "question_score": 0,
+        "answer_score": 0.132,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "26×1.75 和 26×1¾ 算術上相等，老 Schwinn 的 S-7 能拿一般登山車胎替換嗎？",
+          "反過來，一條寫 700×32C、另一條用三個英吋數字，兩者也能是同一種名義寬徑嗎？"
+        ]
+      },
+      {
         "id": "K116-0201~K116-0203",
         "a": "K116-0201",
         "b": "K116-0203",
@@ -395230,6 +397368,48 @@
         ]
       },
       {
+        "id": "K126-0201~K126-0205",
+        "a": "K126-0201",
+        "b": "K126-0205",
+        "question_score": 0.06,
+        "answer_score": 0.13,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友把兩台摺車都叫20吋，他的 Link D8 原廠表上要抄哪串數字？",
+          "Minits Lite 黑面兩條都標6,160日圓，哪一條與 28-451 舊胎的兩個數都一樣？"
+        ]
+      },
+      {
+        "id": "K126-0202~K126-0207",
+        "a": "K126-0202",
+        "b": "K126-0207",
+        "question_score": 0,
+        "answer_score": 0.13,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "另一台 Verge P10 規格頁寫「451 輪組」，為什麼車友也可能向店員說是20吋？",
+          "26×1.75 和 26×1¾ 算術上相等，老 Schwinn 的 S-7 能拿一般登山車胎替換嗎？"
+        ]
+      },
+      {
+        "id": "K126-0202~K126-0208",
+        "a": "K126-0202",
+        "b": "K126-0208",
+        "question_score": 0.03,
+        "answer_score": 0.13,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "另一台 Verge P10 規格頁寫「451 輪組」，為什麼車友也可能向店員說是20吋？",
+          "反過來，一條寫 700×32C、另一條用三個英吋數字，兩者也能是同一種名義寬徑嗎？"
+        ]
+      },
+      {
         "id": "P027~P028",
         "a": "P027",
         "b": "P028",
@@ -395353,6 +397533,48 @@
         "questions": [
           "同一只背包改放在成田T2地下一樓，怎麼有一台只算300日圓？",
           "為什麼成田計時小櫃凌晨三點整取要300，三點零一分卻是700？"
+        ]
+      },
+      {
+        "id": "K126-0204~K126-0207",
+        "a": "K126-0204",
+        "b": "K126-0207",
+        "question_score": 0,
+        "answer_score": 0.129,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "想買同圈徑的外胎，尺該對輪框外緣、胎紋，還是托住胎唇的那一圈？",
+          "26×1.75 和 26×1¾ 算術上相等，老 Schwinn 的 S-7 能拿一般登山車胎替換嗎？"
+        ]
+      },
+      {
+        "id": "K126-0206~K126-0208",
+        "a": "K126-0206",
+        "b": "K126-0208",
+        "question_score": 0.129,
+        "answer_score": 0.058,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "再加一條同價的 20×7/8，胎圈跟 28-451 相同，外胎便是同一條嗎？",
+          "反過來，一條寫 700×32C、另一條用三個英吋數字，兩者也能是同一種名義寬徑嗎？"
+        ]
+      },
+      {
+        "id": "K126-0206~K126-0213",
+        "a": "K126-0206",
+        "b": "K126-0213",
+        "question_score": 0.129,
+        "answer_score": 0.118,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "再加一條同價的 20×7/8，胎圈跟 28-451 相同，外胎便是同一條嗎？",
+          "旅行前先挑 Schwalbe 7 號內胎，它能收下 50-406 和 28-451 哪一個？"
         ]
       },
       {
@@ -395566,6 +397788,48 @@
         ]
       },
       {
+        "id": "K126-0202~K126-0211",
+        "a": "K126-0202",
+        "b": "K126-0211",
+        "question_score": 0,
+        "answer_score": 0.126,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "另一台 Verge P10 規格頁寫「451 輪組」，為什麼車友也可能向店員說是20吋？",
+          "胎側印了寬度，為什麼換上車後還有人重新量一次？"
+        ]
+      },
+      {
+        "id": "K126-0203~K126-0214",
+        "a": "K126-0203",
+        "b": "K126-0214",
+        "question_score": 0,
+        "answer_score": 0.126,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "50-406 和 28-451 的外圈可以畫得多接近？",
+          "盒上多一個 S 的 7S，能不能反過來當兩台的共用備品？"
+        ]
+      },
+      {
+        "id": "K126-0213~K126-0216",
+        "a": "K126-0213",
+        "b": "K126-0216",
+        "question_score": 0,
+        "answer_score": 0.126,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅行前先挑 Schwalbe 7 號內胎，它能收下 50-406 和 28-451 哪一個？",
+          "如果把碼錶參考表裡兩種 20 吋的輪周互換，輪子轉一千次會差多少？"
+        ]
+      },
+      {
         "id": "E2021~E2022",
         "a": "E2021",
         "b": "E2022",
@@ -395675,6 +397939,20 @@
         "questions": [
           "台北光點的優待票明明包括十一歲兒童，可以拿它買這部《鬼滅之刃》嗎？",
           "台灣這部片如果剛好排在孩子十二歲生日前後，哪一次能過分級這一關？"
+        ]
+      },
+      {
+        "id": "K126-0216~K126-0218",
+        "a": "K126-0216",
+        "b": "K126-0218",
+        "question_score": 0,
+        "answer_score": 0.125,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把碼錶參考表裡兩種 20 吋的輪周互換，輪子轉一千次會差多少？",
+          "地上的兩個記號假設隔了 1,560 毫米，為什麼 Wahoo 的欄位要填 1.560？"
         ]
       },
       {
@@ -395930,6 +398208,20 @@
         ]
       },
       {
+        "id": "K126-0204~K126-0216",
+        "a": "K126-0204",
+        "b": "K126-0216",
+        "question_score": 0,
+        "answer_score": 0.123,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "想買同圈徑的外胎，尺該對輪框外緣、胎紋，還是托住胎唇的那一圈？",
+          "如果把碼錶參考表裡兩種 20 吋的輪周互換，輪子轉一千次會差多少？"
+        ]
+      },
+      {
         "id": "X5002~X5004",
         "a": "X5002",
         "b": "X5004",
@@ -396053,6 +398345,20 @@
         "questions": [
           "北村網頁的DSC和標準L都寫59日圓，拿尺量，買到的兩張紙真的一樣大嗎？",
           "下單都選方形，日本相館、台灣沖印和自行買日本方相紙，成品會一樣能放進小袋嗎？"
+        ]
+      },
+      {
+        "id": "K126-0203~K126-0207",
+        "a": "K126-0203",
+        "b": "K126-0207",
+        "question_score": 0.035,
+        "answer_score": 0.121,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "50-406 和 28-451 的外圈可以畫得多接近？",
+          "26×1.75 和 26×1¾ 算術上相等，老 Schwinn 的 S-7 能拿一般登山車胎替換嗎？"
         ]
       },
       {
@@ -396980,6 +399286,20 @@
         ]
       },
       {
+        "id": "K126-0207~K126-0213",
+        "a": "K126-0207",
+        "b": "K126-0213",
+        "question_score": 0.113,
+        "answer_score": 0.048,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "26×1.75 和 26×1¾ 算術上相等，老 Schwinn 的 S-7 能拿一般登山車胎替換嗎？",
+          "旅行前先挑 Schwalbe 7 號內胎，它能收下 50-406 和 28-451 哪一個？"
+        ]
+      },
+      {
         "id": "K97-004~L77-093",
         "a": "L77-093",
         "b": "K97-004",
@@ -397372,6 +399692,20 @@
         ]
       },
       {
+        "id": "K126-0202~K126-0216",
+        "a": "K126-0202",
+        "b": "K126-0216",
+        "question_score": 0.067,
+        "answer_score": 0.11,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "另一台 Verge P10 規格頁寫「451 輪組」，為什麼車友也可能向店員說是20吋？",
+          "如果把碼錶參考表裡兩種 20 吋的輪周互換，輪子轉一千次會差多少？"
+        ]
+      },
+      {
         "id": "K90-030~K90-037",
         "a": "K90-030",
         "b": "K90-037",
@@ -397677,6 +400011,20 @@
         "questions": [
           "如果航班改從羽田T3走，價目上的一天又從哪裡算？",
           "同樣打算凌晨一點拿包，為了先留一格，成田多功能小櫃的400日圓為什麼會變成900？"
+        ]
+      },
+      {
+        "id": "K126-0201~K126-0213",
+        "a": "K126-0201",
+        "b": "K126-0213",
+        "question_score": 0,
+        "answer_score": 0.108,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友把兩台摺車都叫20吋，他的 Link D8 原廠表上要抄哪串數字？",
+          "旅行前先挑 Schwalbe 7 號內胎，它能收下 50-406 和 28-451 哪一個？"
         ]
       },
       {
@@ -397988,6 +400336,20 @@
         ]
       },
       {
+        "id": "K126-0214~K126-0216",
+        "a": "K126-0214",
+        "b": "K126-0216",
+        "question_score": 0,
+        "answer_score": 0.105,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "盒上多一個 S 的 7S，能不能反過來當兩台的共用備品？",
+          "如果把碼錶參考表裡兩種 20 吋的輪周互換，輪子轉一千次會差多少？"
+        ]
+      },
+      {
         "id": "L056~L057",
         "a": "L056",
         "b": "L057",
@@ -398282,6 +400644,20 @@
         ]
       },
       {
+        "id": "K126-0201~K126-0211",
+        "a": "K126-0201",
+        "b": "K126-0211",
+        "question_score": 0,
+        "answer_score": 0.103,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友把兩台摺車都叫20吋，他的 Link D8 原廠表上要抄哪串數字？",
+          "胎側印了寬度，為什麼換上車後還有人重新量一次？"
+        ]
+      },
+      {
         "id": "M2016~P268",
         "a": "P268",
         "b": "M2016",
@@ -398394,6 +400770,20 @@
         ]
       },
       {
+        "id": "K126-0207~K126-0211",
+        "a": "K126-0207",
+        "b": "K126-0211",
+        "question_score": 0,
+        "answer_score": 0.102,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "26×1.75 和 26×1¾ 算術上相等，老 Schwinn 的 S-7 能拿一般登山車胎替換嗎？",
+          "胎側印了寬度，為什麼換上車後還有人重新量一次？"
+        ]
+      },
+      {
         "id": "K100-018~K94-055",
         "a": "K100-018",
         "b": "K94-055",
@@ -398478,6 +400868,20 @@
         ]
       },
       {
+        "id": "K126-0201~K126-0216",
+        "a": "K126-0201",
+        "b": "K126-0216",
+        "question_score": 0.07,
+        "answer_score": 0.101,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友把兩台摺車都叫20吋，他的 Link D8 原廠表上要抄哪串數字？",
+          "如果把碼錶參考表裡兩種 20 吋的輪周互換，輪子轉一千次會差多少？"
+        ]
+      },
+      {
         "id": "P64-017~P65-005",
         "a": "P64-017",
         "b": "P65-005",
@@ -398559,6 +400963,20 @@
         "questions": [
           "台灣影城和日本片方都印「PG12」，十一歲有家長陪，為什麼兩個櫃檯給不同答案？",
           "把大阪 TOHO 梅田的場次往後翻兩天，十一歲和家長當年可以選哪一場？"
+        ]
+      },
+      {
+        "id": "K126-0202~K126-0206",
+        "a": "K126-0202",
+        "b": "K126-0206",
+        "question_score": 0.1,
+        "answer_score": 0.086,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "另一台 Verge P10 規格頁寫「451 輪組」，為什麼車友也可能向店員說是20吋？",
+          "再加一條同價的 20×7/8，胎圈跟 28-451 相同，外胎便是同一條嗎？"
         ]
       },
       {
@@ -399052,6 +401470,20 @@
         ]
       },
       {
+        "id": "K126-0206~K126-0216",
+        "a": "K126-0206",
+        "b": "K126-0216",
+        "question_score": 0.036,
+        "answer_score": 0.097,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "再加一條同價的 20×7/8，胎圈跟 28-451 相同，外胎便是同一條嗎？",
+          "如果把碼錶參考表裡兩種 20 吋的輪周互換，輪子轉一千次會差多少？"
+        ]
+      },
+      {
         "id": "L77-066~L77-068",
         "a": "L77-066",
         "b": "L77-068",
@@ -399416,6 +401848,34 @@
         ]
       },
       {
+        "id": "K126-0204~K126-0214",
+        "a": "K126-0204",
+        "b": "K126-0214",
+        "question_score": 0,
+        "answer_score": 0.094,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "想買同圈徑的外胎，尺該對輪框外緣、胎紋，還是托住胎唇的那一圈？",
+          "盒上多一個 S 的 7S，能不能反過來當兩台的共用備品？"
+        ]
+      },
+      {
+        "id": "K126-0205~K126-0208",
+        "a": "K126-0205",
+        "b": "K126-0208",
+        "question_score": 0.028,
+        "answer_score": 0.094,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Minits Lite 黑面兩條都標6,160日圓，哪一條與 28-451 舊胎的兩個數都一樣？",
+          "反過來，一條寫 700×32C、另一條用三個英吋數字，兩者也能是同一種名義寬徑嗎？"
+        ]
+      },
+      {
         "id": "K91-010~K91-011",
         "a": "K91-010",
         "b": "K91-011",
@@ -399693,6 +402153,34 @@
         "questions": [
           "回台灣把同一張4:3橫照放到點點印的4×6，若想保留整張，要留多寬的空位？",
           "下單都選方形，日本相館、台灣沖印和自行買日本方相紙，成品會一樣能放進小袋嗎？"
+        ]
+      },
+      {
+        "id": "K126-0205~K126-0218",
+        "a": "K126-0205",
+        "b": "K126-0218",
+        "question_score": 0.092,
+        "answer_score": 0.012,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Minits Lite 黑面兩條都標6,160日圓，哪一條與 28-451 舊胎的兩個數都一樣？",
+          "地上的兩個記號假設隔了 1,560 毫米，為什麼 Wahoo 的欄位要填 1.560？"
+        ]
+      },
+      {
+        "id": "K126-0211~K126-0215",
+        "a": "K126-0211",
+        "b": "K126-0215",
+        "question_score": 0,
+        "answer_score": 0.092,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "胎側印了寬度，為什麼換上車後還有人重新量一次？",
+          "外胎寬徑都對了，拿起這兩盒內胎前還缺哪個實車資訊？"
         ]
       },
       {
@@ -400015,6 +402503,20 @@
         "questions": [
           "在日本7-ELEVEN選「ましかく」方照片，為什麼從出口接到手裡的可以是一張長方形相紙？",
           "下單都選方形，日本相館、台灣沖印和自行買日本方相紙，成品會一樣能放進小袋嗎？"
+        ]
+      },
+      {
+        "id": "K126-0205~K126-0216",
+        "a": "K126-0205",
+        "b": "K126-0216",
+        "question_score": 0,
+        "answer_score": 0.09,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Minits Lite 黑面兩條都標6,160日圓，哪一條與 28-451 舊胎的兩個數都一樣？",
+          "如果把碼錶參考表裡兩種 20 吋的輪周互換，輪子轉一千次會差多少？"
         ]
       },
       {
@@ -400662,6 +403164,20 @@
         ]
       },
       {
+        "id": "K126-0204~K126-0206",
+        "a": "K126-0204",
+        "b": "K126-0206",
+        "question_score": 0.037,
+        "answer_score": 0.086,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "想買同圈徑的外胎，尺該對輪框外緣、胎紋，還是托住胎唇的那一圈？",
+          "再加一條同價的 20×7/8，胎圈跟 28-451 相同，外胎便是同一條嗎？"
+        ]
+      },
+      {
         "id": "P74-020~P74-024",
         "a": "P74-020",
         "b": "P74-024",
@@ -400869,6 +403385,20 @@
         "questions": [
           "如果航班改從羽田T3走，價目上的一天又從哪裡算？",
           "回到成田，同一個小包改成上午九點到下午四點，原來最便宜的計時櫃還能贏嗎？"
+        ]
+      },
+      {
+        "id": "K126-0201~K126-0207",
+        "a": "K126-0201",
+        "b": "K126-0207",
+        "question_score": 0.03,
+        "answer_score": 0.084,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友把兩台摺車都叫20吋，他的 Link D8 原廠表上要抄哪串數字？",
+          "26×1.75 和 26×1¾ 算術上相等，老 Schwinn 的 S-7 能拿一般登山車胎替換嗎？"
         ]
       },
       {
@@ -401642,6 +404172,20 @@
         ]
       },
       {
+        "id": "K126-0211~K126-0212",
+        "a": "K126-0211",
+        "b": "K126-0212",
+        "question_score": 0,
+        "answer_score": 0.08,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "胎側印了寬度，為什麼換上車後還有人重新量一次？",
+          "Synapse Carbon 原配 30–32 毫米，官網為什麼另寫「量得 42 毫米」？"
+        ]
+      },
+      {
         "id": "L234~L235",
         "a": "L234",
         "b": "L235",
@@ -401796,6 +404340,20 @@
         ]
       },
       {
+        "id": "K126-0205~K126-0215",
+        "a": "K126-0205",
+        "b": "K126-0215",
+        "question_score": 0,
+        "answer_score": 0.079,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Minits Lite 黑面兩條都標6,160日圓，哪一條與 28-451 舊胎的兩個數都一樣？",
+          "外胎寬徑都對了，拿起這兩盒內胎前還缺哪個實車資訊？"
+        ]
+      },
+      {
         "id": "H60-007~R44010",
         "a": "R44010",
         "b": "H60-007",
@@ -401947,6 +404505,20 @@
         "questions": [
           "北村網頁的DSC和標準L都寫59日圓，拿尺量，買到的兩張紙真的一樣大嗎？",
           "在手機按快門前把4:3改為16:9，哪一張89毫米短邊相紙比較貼近畫面？"
+        ]
+      },
+      {
+        "id": "K126-0204~K126-0210",
+        "a": "K126-0204",
+        "b": "K126-0210",
+        "question_score": 0,
+        "answer_score": 0.078,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "想買同圈徑的外胎，尺該對輪框外緣、胎紋，還是托住胎唇的那一圈？",
+          "WTB 輪圈型號裡的 i25，25 是該配多寬的胎嗎？"
         ]
       },
       {
@@ -402216,6 +404788,20 @@
         ]
       },
       {
+        "id": "K126-0204~K126-0213",
+        "a": "K126-0204",
+        "b": "K126-0213",
+        "question_score": 0,
+        "answer_score": 0.077,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "想買同圈徑的外胎，尺該對輪框外緣、胎紋，還是托住胎唇的那一圈？",
+          "旅行前先挑 Schwalbe 7 號內胎，它能收下 50-406 和 28-451 哪一個？"
+        ]
+      },
+      {
         "id": "L135~N145",
         "a": "L135",
         "b": "N145",
@@ -402398,6 +404984,20 @@
         ]
       },
       {
+        "id": "K126-0213~K126-0215",
+        "a": "K126-0213",
+        "b": "K126-0215",
+        "question_score": 0.036,
+        "answer_score": 0.076,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅行前先挑 Schwalbe 7 號內胎，它能收下 50-406 和 28-451 哪一個？",
+          "外胎寬徑都對了，拿起這兩盒內胎前還缺哪個實車資訊？"
+        ]
+      },
+      {
         "id": "P74-063~P74-064",
         "a": "P74-063",
         "b": "P74-064",
@@ -402507,6 +405107,34 @@
         "questions": [
           "晚上九點把小包放進成田一般日租小櫃，凌晨一點取，為什麼四小時要付800日圓？",
           "上野站的Metro Commerce一般櫃也在凌晨兩點多算一天，可以跟成田T2的多功能櫃一樣兩點前隨時回去嗎？"
+        ]
+      },
+      {
+        "id": "K126-0207~K126-0212",
+        "a": "K126-0207",
+        "b": "K126-0212",
+        "question_score": 0,
+        "answer_score": 0.075,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "26×1.75 和 26×1¾ 算術上相等，老 Schwinn 的 S-7 能拿一般登山車胎替換嗎？",
+          "Synapse Carbon 原配 30–32 毫米，官網為什麼另寫「量得 42 毫米」？"
+        ]
+      },
+      {
+        "id": "K126-0216~K126-0217",
+        "a": "K126-0216",
+        "b": "K126-0217",
+        "question_score": 0.075,
+        "answer_score": 0.027,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "如果把碼錶參考表裡兩種 20 吋的輪周互換，輪子轉一千次會差多少？",
+          "碼錶想知道這顆輪子走一圈有多遠，氣嘴可以怎麼替地面標一條尺？"
         ]
       },
       {
@@ -402972,6 +405600,20 @@
         ]
       },
       {
+        "id": "K126-0201~K126-0203",
+        "a": "K126-0201",
+        "b": "K126-0203",
+        "question_score": 0,
+        "answer_score": 0.073,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友把兩台摺車都叫20吋，他的 Link D8 原廠表上要抄哪串數字？",
+          "50-406 和 28-451 的外圈可以畫得多接近？"
+        ]
+      },
+      {
         "id": "L58-001~R40009",
         "a": "R40009",
         "b": "L58-001",
@@ -403025,6 +405667,20 @@
         "questions": [
           "阪急特急上想買 500 日圓的座位，從月台哪一端數第四節才對？",
           "改搭近鐵的特急去奈良，如果我願意站著，可以省下特急券嗎？"
+        ]
+      },
+      {
+        "id": "K126-0204~K126-0208",
+        "a": "K126-0204",
+        "b": "K126-0208",
+        "question_score": 0,
+        "answer_score": 0.072,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "想買同圈徑的外胎，尺該對輪框外緣、胎紋，還是托住胎唇的那一圈？",
+          "反過來，一條寫 700×32C、另一條用三個英吋數字，兩者也能是同一種名義寬徑嗎？"
         ]
       },
       {
@@ -403207,6 +405863,20 @@
         "questions": [
           "為什麼しまうま提醒，下單印的照片即使預覽看得到，也要把文字往紙邊裡面挪？",
           "13×18公分相框裝進10×15照片後，送人的照片為什麼仍會藏住四周？"
+        ]
+      },
+      {
+        "id": "K126-0208~K126-0214",
+        "a": "K126-0208",
+        "b": "K126-0214",
+        "question_score": 0.071,
+        "answer_score": 0.027,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "反過來，一條寫 700×32C、另一條用三個英吋數字，兩者也能是同一種名義寬徑嗎？",
+          "盒上多一個 S 的 7S，能不能反過來當兩台的共用備品？"
         ]
       },
       {
@@ -403868,6 +406538,20 @@
         ]
       },
       {
+        "id": "K126-0206~K126-0214",
+        "a": "K126-0206",
+        "b": "K126-0214",
+        "question_score": 0,
+        "answer_score": 0.068,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "再加一條同價的 20×7/8，胎圈跟 28-451 相同，外胎便是同一條嗎？",
+          "盒上多一個 S 的 7S，能不能反過來當兩台的共用備品？"
+        ]
+      },
+      {
         "id": "E2115~E2173",
         "a": "E2115",
         "b": "E2173",
@@ -404019,6 +406703,20 @@
         "questions": [
           "台北光點的優待票明明包括十一歲兒童，可以拿它買這部《鬼滅之刃》嗎？",
           "2025 年 7 月 18 日零時的大阪梅田首映，家長能帶十一歲孩子去搶先看嗎？"
+        ]
+      },
+      {
+        "id": "K126-0214~K126-0215",
+        "a": "K126-0214",
+        "b": "K126-0215",
+        "question_score": 0,
+        "answer_score": 0.067,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "盒上多一個 S 的 7S，能不能反過來當兩台的共用備品？",
+          "外胎寬徑都對了，拿起這兩盒內胎前還缺哪個實車資訊？"
         ]
       },
       {
@@ -404229,6 +406927,20 @@
         "questions": [
           "不肯丟掉合照的四角，整張縮進L版的話，白邊該出現在哪一側？",
           "合照左右兩張臉各在x=300及3700，拿正方形框左右拖，找得到兩張臉都保留的位置嗎？"
+        ]
+      },
+      {
+        "id": "K126-0208~K126-0213",
+        "a": "K126-0208",
+        "b": "K126-0213",
+        "question_score": 0,
+        "answer_score": 0.066,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "反過來，一條寫 700×32C、另一條用三個英吋數字，兩者也能是同一種名義寬徑嗎？",
+          "旅行前先挑 Schwalbe 7 號內胎，它能收下 50-406 和 28-451 哪一個？"
         ]
       },
       {
@@ -404960,6 +407672,20 @@
         ]
       },
       {
+        "id": "K126-0201~K126-0214",
+        "a": "K126-0201",
+        "b": "K126-0214",
+        "question_score": 0.039,
+        "answer_score": 0.062,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友把兩台摺車都叫20吋，他的 Link D8 原廠表上要抄哪串數字？",
+          "盒上多一個 S 的 7S，能不能反過來當兩台的共用備品？"
+        ]
+      },
+      {
         "id": "B2301~B2303",
         "a": "B2301",
         "b": "B2303",
@@ -405450,6 +408176,20 @@
         ]
       },
       {
+        "id": "K126-0215~K126-0218",
+        "a": "K126-0215",
+        "b": "K126-0218",
+        "question_score": 0,
+        "answer_score": 0.059,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "外胎寬徑都對了，拿起這兩盒內胎前還缺哪個實車資訊？",
+          "地上的兩個記號假設隔了 1,560 毫米，為什麼 Wahoo 的欄位要填 1.560？"
+        ]
+      },
+      {
         "id": "L006~L017",
         "a": "L006",
         "b": "L017",
@@ -405657,6 +408397,34 @@
         "questions": [
           "在成田已預約一整天的MULTIECUBE，能先開一次拿外套、晚上再回同一格拿包嗎？",
           "回到成田，同一個小包改成上午九點到下午四點，原來最便宜的計時櫃還能贏嗎？"
+        ]
+      },
+      {
+        "id": "K126-0204~K126-0205",
+        "a": "K126-0204",
+        "b": "K126-0205",
+        "question_score": 0,
+        "answer_score": 0.058,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "想買同圈徑的外胎，尺該對輪框外緣、胎紋，還是托住胎唇的那一圈？",
+          "Minits Lite 黑面兩條都標6,160日圓，哪一條與 28-451 舊胎的兩個數都一樣？"
+        ]
+      },
+      {
+        "id": "K126-0204~K126-0215",
+        "a": "K126-0204",
+        "b": "K126-0215",
+        "question_score": 0.042,
+        "answer_score": 0.058,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "想買同圈徑的外胎，尺該對輪框外緣、胎紋，還是托住胎唇的那一圈？",
+          "外胎寬徑都對了，拿起這兩盒內胎前還缺哪個實車資訊？"
         ]
       },
       {
@@ -405979,6 +408747,34 @@
         "questions": [
           "回台灣把同一張4:3橫照放到點點印的4×6，若想保留整張，要留多寬的空位？",
           "為什麼しまうま提醒，下單印的照片即使預覽看得到，也要把文字往紙邊裡面挪？"
+        ]
+      },
+      {
+        "id": "K126-0208~K126-0211",
+        "a": "K126-0208",
+        "b": "K126-0211",
+        "question_score": 0,
+        "answer_score": 0.057,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "反過來，一條寫 700×32C、另一條用三個英吋數字，兩者也能是同一種名義寬徑嗎？",
+          "胎側印了寬度，為什麼換上車後還有人重新量一次？"
+        ]
+      },
+      {
+        "id": "K126-0215~K126-0216",
+        "a": "K126-0215",
+        "b": "K126-0216",
+        "question_score": 0,
+        "answer_score": 0.057,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "外胎寬徑都對了，拿起這兩盒內胎前還缺哪個實車資訊？",
+          "如果把碼錶參考表裡兩種 20 吋的輪周互換，輪子轉一千次會差多少？"
         ]
       },
       {
@@ -406430,6 +409226,34 @@
         ]
       },
       {
+        "id": "K126-0203~K126-0215",
+        "a": "K126-0203",
+        "b": "K126-0215",
+        "question_score": 0,
+        "answer_score": 0.055,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "50-406 和 28-451 的外圈可以畫得多接近？",
+          "外胎寬徑都對了，拿起這兩盒內胎前還缺哪個實車資訊？"
+        ]
+      },
+      {
+        "id": "K126-0211~K126-0217",
+        "a": "K126-0211",
+        "b": "K126-0217",
+        "question_score": 0,
+        "answer_score": 0.055,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "胎側印了寬度，為什麼換上車後還有人重新量一次？",
+          "碼錶想知道這顆輪子走一圈有多遠，氣嘴可以怎麼替地面標一條尺？"
+        ]
+      },
+      {
         "id": "B2026~B2028",
         "a": "B2026",
         "b": "B2028",
@@ -406609,6 +409433,34 @@
         "questions": [
           "已經在近鐵網站買好特急券，截下有座號的畫面，車上查票就能給乘務員看嗎？",
           "南海的 Southern 掛著「特急」，一列八節怎麼有一半不用買指定席券？"
+        ]
+      },
+      {
+        "id": "K126-0204~K126-0212",
+        "a": "K126-0204",
+        "b": "K126-0212",
+        "question_score": 0,
+        "answer_score": 0.054,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "想買同圈徑的外胎，尺該對輪框外緣、胎紋，還是托住胎唇的那一圈？",
+          "Synapse Carbon 原配 30–32 毫米，官網為什麼另寫「量得 42 毫米」？"
+        ]
+      },
+      {
+        "id": "K126-0207~K126-0215",
+        "a": "K126-0207",
+        "b": "K126-0215",
+        "question_score": 0,
+        "answer_score": 0.054,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "26×1.75 和 26×1¾ 算術上相等，老 Schwinn 的 S-7 能拿一般登山車胎替換嗎？",
+          "外胎寬徑都對了，拿起這兩盒內胎前還缺哪個實車資訊？"
         ]
       },
       {
@@ -407200,6 +410052,20 @@
         ]
       },
       {
+        "id": "K126-0201~K126-0204",
+        "a": "K126-0201",
+        "b": "K126-0204",
+        "question_score": 0,
+        "answer_score": 0.052,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友把兩台摺車都叫20吋，他的 Link D8 原廠表上要抄哪串數字？",
+          "想買同圈徑的外胎，尺該對輪框外緣、胎紋，還是托住胎唇的那一圈？"
+        ]
+      },
+      {
         "id": "A26001~A26002",
         "a": "A26001",
         "b": "A26002",
@@ -407617,6 +410483,20 @@
         "questions": [
           "校方說京都到近鐵奈良，特急約 35 分、急行約 45 分。到了月台，能直接把這兩個數字當抵達時間嗎？",
           "約在奈良縣立美術館，朋友傳「一號出口走五分鐘」，是哪一個奈良站？"
+        ]
+      },
+      {
+        "id": "K126-0212~K126-0213",
+        "a": "K126-0212",
+        "b": "K126-0213",
+        "question_score": 0,
+        "answer_score": 0.05,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Synapse Carbon 原配 30–32 毫米，官網為什麼另寫「量得 42 毫米」？",
+          "旅行前先挑 Schwalbe 7 號內胎，它能收下 50-406 和 28-451 哪一個？"
         ]
       },
       {
@@ -408558,6 +411438,48 @@
         ]
       },
       {
+        "id": "K126-0205~K126-0212",
+        "a": "K126-0205",
+        "b": "K126-0212",
+        "question_score": 0,
+        "answer_score": 0.045,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Minits Lite 黑面兩條都標6,160日圓，哪一條與 28-451 舊胎的兩個數都一樣？",
+          "Synapse Carbon 原配 30–32 毫米，官網為什麼另寫「量得 42 毫米」？"
+        ]
+      },
+      {
+        "id": "K126-0210~K126-0212",
+        "a": "K126-0210",
+        "b": "K126-0212",
+        "question_score": 0,
+        "answer_score": 0.045,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "WTB 輪圈型號裡的 i25，25 是該配多寬的胎嗎？",
+          "Synapse Carbon 原配 30–32 毫米，官網為什麼另寫「量得 42 毫米」？"
+        ]
+      },
+      {
+        "id": "K126-0210~K126-0216",
+        "a": "K126-0210",
+        "b": "K126-0216",
+        "question_score": 0,
+        "answer_score": 0.045,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "WTB 輪圈型號裡的 i25，25 是該配多寬的胎嗎？",
+          "如果把碼錶參考表裡兩種 20 吋的輪周互換，輪子轉一千次會差多少？"
+        ]
+      },
+      {
         "id": "K74-015~K74-018",
         "a": "K74-015",
         "b": "K74-018",
@@ -408793,6 +411715,20 @@
         "questions": [
           "不肯丟掉合照的四角，整張縮進L版的話，白邊該出現在哪一側？",
           "13×18公分相框裝進10×15照片後，送人的照片為什麼仍會藏住四周？"
+        ]
+      },
+      {
+        "id": "K126-0203~K126-0217",
+        "a": "K126-0203",
+        "b": "K126-0217",
+        "question_score": 0.044,
+        "answer_score": 0.026,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "50-406 和 28-451 的外圈可以畫得多接近？",
+          "碼錶想知道這顆輪子走一圈有多遠，氣嘴可以怎麼替地面標一條尺？"
         ]
       },
       {
@@ -409087,6 +412023,48 @@
         "questions": [
           "把照片檔改標成300 ppi，L版預覽裡被切掉的帽尖會自己跑回來嗎？",
           "「明信片」照片拿來配相框，北村KG和Canon的明信片模式會給同一個圖面嗎？"
+        ]
+      },
+      {
+        "id": "K126-0204~K126-0218",
+        "a": "K126-0204",
+        "b": "K126-0218",
+        "question_score": 0,
+        "answer_score": 0.043,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "想買同圈徑的外胎，尺該對輪框外緣、胎紋，還是托住胎唇的那一圈？",
+          "地上的兩個記號假設隔了 1,560 毫米，為什麼 Wahoo 的欄位要填 1.560？"
+        ]
+      },
+      {
+        "id": "K126-0205~K126-0207",
+        "a": "K126-0205",
+        "b": "K126-0207",
+        "question_score": 0.027,
+        "answer_score": 0.043,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Minits Lite 黑面兩條都標6,160日圓，哪一條與 28-451 舊胎的兩個數都一樣？",
+          "26×1.75 和 26×1¾ 算術上相等，老 Schwinn 的 S-7 能拿一般登山車胎替換嗎？"
+        ]
+      },
+      {
+        "id": "K126-0207~K126-0210",
+        "a": "K126-0207",
+        "b": "K126-0210",
+        "question_score": 0,
+        "answer_score": 0.043,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "26×1.75 和 26×1¾ 算術上相等，老 Schwinn 的 S-7 能拿一般登山車胎替換嗎？",
+          "WTB 輪圈型號裡的 i25，25 是該配多寬的胎嗎？"
         ]
       },
       {
@@ -409692,6 +412670,20 @@
         ]
       },
       {
+        "id": "K126-0202~K126-0212",
+        "a": "K126-0202",
+        "b": "K126-0212",
+        "question_score": 0,
+        "answer_score": 0.041,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "另一台 Verge P10 規格頁寫「451 輪組」，為什麼車友也可能向店員說是20吋？",
+          "Synapse Carbon 原配 30–32 毫米，官網為什麼另寫「量得 42 毫米」？"
+        ]
+      },
+      {
         "id": "L62-002~R37007",
         "a": "R37007",
         "b": "L62-002",
@@ -409899,6 +412891,20 @@
         "questions": [
           "把照片檔改標成300 ppi，L版預覽裡被切掉的帽尖會自己跑回來嗎？",
           "想送出10×15的照片，拿架上一大一小兩個RÖDALM，相框正面都可能看到完整的10×15嗎？"
+        ]
+      },
+      {
+        "id": "K126-0206~K126-0215",
+        "a": "K126-0206",
+        "b": "K126-0215",
+        "question_score": 0.04,
+        "answer_score": 0.024,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "再加一條同價的 20×7/8，胎圈跟 28-451 相同，外胎便是同一條嗎？",
+          "外胎寬徑都對了，拿起這兩盒內胎前還缺哪個實車資訊？"
         ]
       },
       {
@@ -410137,6 +413143,90 @@
         "questions": [
           "滿版的裁切框是先看檔案多大，還是先看哪一邊碰到紙？",
           "在手機按快門前把4:3改為16:9，哪一張89毫米短邊相紙比較貼近畫面？"
+        ]
+      },
+      {
+        "id": "K126-0201~K126-0217",
+        "a": "K126-0201",
+        "b": "K126-0217",
+        "question_score": 0,
+        "answer_score": 0.039,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友把兩台摺車都叫20吋，他的 Link D8 原廠表上要抄哪串數字？",
+          "碼錶想知道這顆輪子走一圈有多遠，氣嘴可以怎麼替地面標一條尺？"
+        ]
+      },
+      {
+        "id": "K126-0203~K126-0211",
+        "a": "K126-0203",
+        "b": "K126-0211",
+        "question_score": 0,
+        "answer_score": 0.039,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "50-406 和 28-451 的外圈可以畫得多接近？",
+          "胎側印了寬度，為什麼換上車後還有人重新量一次？"
+        ]
+      },
+      {
+        "id": "K126-0204~K126-0217",
+        "a": "K126-0204",
+        "b": "K126-0217",
+        "question_score": 0.039,
+        "answer_score": 0.028,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "想買同圈徑的外胎，尺該對輪框外緣、胎紋，還是托住胎唇的那一圈？",
+          "碼錶想知道這顆輪子走一圈有多遠，氣嘴可以怎麼替地面標一條尺？"
+        ]
+      },
+      {
+        "id": "K126-0208~K126-0209",
+        "a": "K126-0208",
+        "b": "K126-0209",
+        "question_score": 0,
+        "answer_score": 0.039,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "反過來，一條寫 700×32C、另一條用三個英吋數字，兩者也能是同一種名義寬徑嗎？",
+          "輪胎變窄以後，「26 吋」為什麼還跟著它？"
+        ]
+      },
+      {
+        "id": "K126-0212~K126-0214",
+        "a": "K126-0212",
+        "b": "K126-0214",
+        "question_score": 0,
+        "answer_score": 0.039,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Synapse Carbon 原配 30–32 毫米，官網為什麼另寫「量得 42 毫米」？",
+          "盒上多一個 S 的 7S，能不能反過來當兩台的共用備品？"
+        ]
+      },
+      {
+        "id": "K126-0212~K126-0216",
+        "a": "K126-0212",
+        "b": "K126-0216",
+        "question_score": 0,
+        "answer_score": 0.039,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Synapse Carbon 原配 30–32 毫米，官網為什麼另寫「量得 42 毫米」？",
+          "如果把碼錶參考表裡兩種 20 吋的輪周互換，輪子轉一千次會差多少？"
         ]
       },
       {
@@ -410487,6 +413577,90 @@
         "questions": [
           "同一只背包改放在成田T2地下一樓，怎麼有一台只算300日圓？",
           "如果把留在上野的一天延長成一週，同一扇櫃門還會替你保留七天嗎？"
+        ]
+      },
+      {
+        "id": "K126-0202~K126-0209",
+        "a": "K126-0202",
+        "b": "K126-0209",
+        "question_score": 0,
+        "answer_score": 0.038,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "另一台 Verge P10 規格頁寫「451 輪組」，為什麼車友也可能向店員說是20吋？",
+          "輪胎變窄以後，「26 吋」為什麼還跟著它？"
+        ]
+      },
+      {
+        "id": "K126-0206~K126-0217",
+        "a": "K126-0206",
+        "b": "K126-0217",
+        "question_score": 0.038,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "再加一條同價的 20×7/8，胎圈跟 28-451 相同，外胎便是同一條嗎？",
+          "碼錶想知道這顆輪子走一圈有多遠，氣嘴可以怎麼替地面標一條尺？"
+        ]
+      },
+      {
+        "id": "K126-0207~K126-0216",
+        "a": "K126-0207",
+        "b": "K126-0216",
+        "question_score": 0,
+        "answer_score": 0.038,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "26×1.75 和 26×1¾ 算術上相等，老 Schwinn 的 S-7 能拿一般登山車胎替換嗎？",
+          "如果把碼錶參考表裡兩種 20 吋的輪周互換，輪子轉一千次會差多少？"
+        ]
+      },
+      {
+        "id": "K126-0209~K126-0211",
+        "a": "K126-0209",
+        "b": "K126-0211",
+        "question_score": 0,
+        "answer_score": 0.038,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "輪胎變窄以後，「26 吋」為什麼還跟著它？",
+          "胎側印了寬度，為什麼換上車後還有人重新量一次？"
+        ]
+      },
+      {
+        "id": "K126-0210~K126-0215",
+        "a": "K126-0210",
+        "b": "K126-0215",
+        "question_score": 0,
+        "answer_score": 0.038,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "WTB 輪圈型號裡的 i25，25 是該配多寬的胎嗎？",
+          "外胎寬徑都對了，拿起這兩盒內胎前還缺哪個實車資訊？"
+        ]
+      },
+      {
+        "id": "K126-0211~K126-0213",
+        "a": "K126-0211",
+        "b": "K126-0213",
+        "question_score": 0,
+        "answer_score": 0.038,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "胎側印了寬度，為什麼換上車後還有人重新量一次？",
+          "旅行前先挑 Schwalbe 7 號內胎，它能收下 50-406 和 28-451 哪一個？"
         ]
       },
       {
@@ -411106,6 +414280,34 @@
         ]
       },
       {
+        "id": "K126-0208~K126-0215",
+        "a": "K126-0208",
+        "b": "K126-0215",
+        "question_score": 0.036,
+        "answer_score": 0.012,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "反過來，一條寫 700×32C、另一條用三個英吋數字，兩者也能是同一種名義寬徑嗎？",
+          "外胎寬徑都對了，拿起這兩盒內胎前還缺哪個實車資訊？"
+        ]
+      },
+      {
+        "id": "K126-0212~K126-0218",
+        "a": "K126-0212",
+        "b": "K126-0218",
+        "question_score": 0.036,
+        "answer_score": 0.027,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Synapse Carbon 原配 30–32 毫米，官網為什麼另寫「量得 42 毫米」？",
+          "地上的兩個記號假設隔了 1,560 毫米，為什麼 Wahoo 的欄位要填 1.560？"
+        ]
+      },
+      {
         "id": "L76-005~L76-006",
         "a": "L76-005",
         "b": "L76-006",
@@ -411257,6 +414459,34 @@
         "questions": [
           "台灣影城和日本片方都印「PG12」，十一歲有家長陪，為什麼兩個櫃檯給不同答案？",
           "英國的九十秒預告明明是 12A，為什麼一家人不能拿它的分級去買正片？"
+        ]
+      },
+      {
+        "id": "K126-0201~K126-0206",
+        "a": "K126-0201",
+        "b": "K126-0206",
+        "question_score": 0.035,
+        "answer_score": 0.013,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友把兩台摺車都叫20吋，他的 Link D8 原廠表上要抄哪串數字？",
+          "再加一條同價的 20×7/8，胎圈跟 28-451 相同，外胎便是同一條嗎？"
+        ]
+      },
+      {
+        "id": "K126-0215~K126-0217",
+        "a": "K126-0215",
+        "b": "K126-0217",
+        "question_score": 0,
+        "answer_score": 0.035,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "外胎寬徑都對了，拿起這兩盒內胎前還缺哪個實車資訊？",
+          "碼錶想知道這顆輪子走一圈有多遠，氣嘴可以怎麼替地面標一條尺？"
         ]
       },
       {
@@ -411652,6 +414882,34 @@
         ]
       },
       {
+        "id": "K126-0208~K126-0217",
+        "a": "K126-0208",
+        "b": "K126-0217",
+        "question_score": 0.034,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "反過來，一條寫 700×32C、另一條用三個英吋數字，兩者也能是同一種名義寬徑嗎？",
+          "碼錶想知道這顆輪子走一圈有多遠，氣嘴可以怎麼替地面標一條尺？"
+        ]
+      },
+      {
+        "id": "K126-0212~K126-0215",
+        "a": "K126-0212",
+        "b": "K126-0215",
+        "question_score": 0,
+        "answer_score": 0.034,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Synapse Carbon 原配 30–32 毫米，官網為什麼另寫「量得 42 毫米」？",
+          "外胎寬徑都對了，拿起這兩盒內胎前還缺哪個實車資訊？"
+        ]
+      },
+      {
         "id": "K116-0202~K116-0216",
         "a": "K116-0202",
         "b": "K116-0216",
@@ -411971,6 +415229,20 @@
         "questions": [
           "為什麼しまうま提醒，下單印的照片即使預覽看得到，也要把文字往紙邊裡面挪？",
           "「明信片」照片拿來配相框，北村KG和Canon的明信片模式會給同一個圖面嗎？"
+        ]
+      },
+      {
+        "id": "K126-0213~K126-0218",
+        "a": "K126-0213",
+        "b": "K126-0218",
+        "question_score": 0.033,
+        "answer_score": 0.013,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅行前先挑 Schwalbe 7 號內胎，它能收下 50-406 和 28-451 哪一個？",
+          "地上的兩個記號假設隔了 1,560 毫米，為什麼 Wahoo 的欄位要填 1.560？"
         ]
       },
       {
@@ -412296,6 +415568,76 @@
         ]
       },
       {
+        "id": "K126-0201~K126-0208",
+        "a": "K126-0201",
+        "b": "K126-0208",
+        "question_score": 0.032,
+        "answer_score": 0.026,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友把兩台摺車都叫20吋，他的 Link D8 原廠表上要抄哪串數字？",
+          "反過來，一條寫 700×32C、另一條用三個英吋數字，兩者也能是同一種名義寬徑嗎？"
+        ]
+      },
+      {
+        "id": "K126-0205~K126-0209",
+        "a": "K126-0205",
+        "b": "K126-0209",
+        "question_score": 0,
+        "answer_score": 0.032,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Minits Lite 黑面兩條都標6,160日圓，哪一條與 28-451 舊胎的兩個數都一樣？",
+          "輪胎變窄以後，「26 吋」為什麼還跟著它？"
+        ]
+      },
+      {
+        "id": "K126-0205~K126-0217",
+        "a": "K126-0205",
+        "b": "K126-0217",
+        "question_score": 0.032,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Minits Lite 黑面兩條都標6,160日圓，哪一條與 28-451 舊胎的兩個數都一樣？",
+          "碼錶想知道這顆輪子走一圈有多遠，氣嘴可以怎麼替地面標一條尺？"
+        ]
+      },
+      {
+        "id": "K126-0206~K126-0210",
+        "a": "K126-0206",
+        "b": "K126-0210",
+        "question_score": 0,
+        "answer_score": 0.032,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "再加一條同價的 20×7/8，胎圈跟 28-451 相同，外胎便是同一條嗎？",
+          "WTB 輪圈型號裡的 i25，25 是該配多寬的胎嗎？"
+        ]
+      },
+      {
+        "id": "K126-0208~K126-0212",
+        "a": "K126-0208",
+        "b": "K126-0212",
+        "question_score": 0.032,
+        "answer_score": 0.028,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "反過來，一條寫 700×32C、另一條用三個英吋數字，兩者也能是同一種名義寬徑嗎？",
+          "Synapse Carbon 原配 30–32 毫米，官網為什麼另寫「量得 42 毫米」？"
+        ]
+      },
+      {
         "id": "K90-036~T52-002",
         "a": "T52-002",
         "b": "K90-036",
@@ -412461,6 +415803,20 @@
         "questions": [
           "為什麼しまうま提醒，下單印的照片即使預覽看得到，也要把文字往紙邊裡面挪？",
           "在日本7-ELEVEN選「ましかく」方照片，為什麼從出口接到手裡的可以是一張長方形相紙？"
+        ]
+      },
+      {
+        "id": "K126-0210~K126-0217",
+        "a": "K126-0210",
+        "b": "K126-0217",
+        "question_score": 0,
+        "answer_score": 0.031,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "WTB 輪圈型號裡的 i25，25 是該配多寬的胎嗎？",
+          "碼錶想知道這顆輪子走一圈有多遠，氣嘴可以怎麼替地面標一條尺？"
         ]
       },
       {
@@ -412884,6 +416240,20 @@
         ]
       },
       {
+        "id": "K126-0203~K126-0210",
+        "a": "K126-0203",
+        "b": "K126-0210",
+        "question_score": 0,
+        "answer_score": 0.029,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "50-406 和 28-451 的外圈可以畫得多接近？",
+          "WTB 輪圈型號裡的 i25，25 是該配多寬的胎嗎？"
+        ]
+      },
+      {
         "id": "L285~T54-010",
         "a": "L285",
         "b": "T54-010",
@@ -413094,6 +416464,76 @@
         ]
       },
       {
+        "id": "K126-0202~K126-0217",
+        "a": "K126-0202",
+        "b": "K126-0217",
+        "question_score": 0,
+        "answer_score": 0.028,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "另一台 Verge P10 規格頁寫「451 輪組」，為什麼車友也可能向店員說是20吋？",
+          "碼錶想知道這顆輪子走一圈有多遠，氣嘴可以怎麼替地面標一條尺？"
+        ]
+      },
+      {
+        "id": "K126-0204~K126-0211",
+        "a": "K126-0204",
+        "b": "K126-0211",
+        "question_score": 0,
+        "answer_score": 0.028,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "想買同圈徑的外胎，尺該對輪框外緣、胎紋，還是托住胎唇的那一圈？",
+          "胎側印了寬度，為什麼換上車後還有人重新量一次？"
+        ]
+      },
+      {
+        "id": "K126-0206~K126-0211",
+        "a": "K126-0206",
+        "b": "K126-0211",
+        "question_score": 0,
+        "answer_score": 0.028,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "再加一條同價的 20×7/8，胎圈跟 28-451 相同，外胎便是同一條嗎？",
+          "胎側印了寬度，為什麼換上車後還有人重新量一次？"
+        ]
+      },
+      {
+        "id": "K126-0208~K126-0216",
+        "a": "K126-0208",
+        "b": "K126-0216",
+        "question_score": 0,
+        "answer_score": 0.028,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "反過來，一條寫 700×32C、另一條用三個英吋數字，兩者也能是同一種名義寬徑嗎？",
+          "如果把碼錶參考表裡兩種 20 吋的輪周互換，輪子轉一千次會差多少？"
+        ]
+      },
+      {
+        "id": "K126-0209~K126-0210",
+        "a": "K126-0209",
+        "b": "K126-0210",
+        "question_score": 0,
+        "answer_score": 0.028,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "輪胎變窄以後，「26 吋」為什麼還跟著它？",
+          "WTB 輪圈型號裡的 i25，25 是該配多寬的胎嗎？"
+        ]
+      },
+      {
         "id": "R36008~R36009",
         "a": "R36008",
         "b": "R36009",
@@ -413192,6 +416632,34 @@
         ]
       },
       {
+        "id": "K126-0206~K126-0212",
+        "a": "K126-0206",
+        "b": "K126-0212",
+        "question_score": 0,
+        "answer_score": 0.027,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "再加一條同價的 20×7/8，胎圈跟 28-451 相同，外胎便是同一條嗎？",
+          "Synapse Carbon 原配 30–32 毫米，官網為什麼另寫「量得 42 毫米」？"
+        ]
+      },
+      {
+        "id": "K126-0211~K126-0216",
+        "a": "K126-0211",
+        "b": "K126-0216",
+        "question_score": 0,
+        "answer_score": 0.027,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "胎側印了寬度，為什麼換上車後還有人重新量一次？",
+          "如果把碼錶參考表裡兩種 20 吋的輪周互換，輪子轉一千次會差多少？"
+        ]
+      },
+      {
         "id": "K92-053~P234",
         "a": "P234",
         "b": "K92-053",
@@ -413287,6 +416755,34 @@
         "questions": [
           "帽尖距合照上沿60畫素，DSC與L兩張置中滿版預覽各看得到嗎？",
           "在日本7-ELEVEN選「ましかく」方照片，為什麼從出口接到手裡的可以是一張長方形相紙？"
+        ]
+      },
+      {
+        "id": "K126-0206~K126-0207",
+        "a": "K126-0206",
+        "b": "K126-0207",
+        "question_score": 0,
+        "answer_score": 0.026,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "再加一條同價的 20×7/8，胎圈跟 28-451 相同，外胎便是同一條嗎？",
+          "26×1.75 和 26×1¾ 算術上相等，老 Schwinn 的 S-7 能拿一般登山車胎替換嗎？"
+        ]
+      },
+      {
+        "id": "K126-0209~K126-0218",
+        "a": "K126-0209",
+        "b": "K126-0218",
+        "question_score": 0,
+        "answer_score": 0.026,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "輪胎變窄以後，「26 吋」為什麼還跟著它？",
+          "地上的兩個記號假設隔了 1,560 毫米，為什麼 Wahoo 的欄位要填 1.560？"
         ]
       },
       {
@@ -413511,6 +417007,90 @@
         "questions": [
           "北村網頁的DSC和標準L都寫59日圓，拿尺量，買到的兩張紙真的一樣大嗎？",
           "回台灣把同一張4:3橫照放到點點印的4×6，若想保留整張，要留多寬的空位？"
+        ]
+      },
+      {
+        "id": "K126-0201~K126-0212",
+        "a": "K126-0201",
+        "b": "K126-0212",
+        "question_score": 0,
+        "answer_score": 0.025,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友把兩台摺車都叫20吋，他的 Link D8 原廠表上要抄哪串數字？",
+          "Synapse Carbon 原配 30–32 毫米，官網為什麼另寫「量得 42 毫米」？"
+        ]
+      },
+      {
+        "id": "K126-0203~K126-0212",
+        "a": "K126-0203",
+        "b": "K126-0212",
+        "question_score": 0,
+        "answer_score": 0.025,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "50-406 和 28-451 的外圈可以畫得多接近？",
+          "Synapse Carbon 原配 30–32 毫米，官網為什麼另寫「量得 42 毫米」？"
+        ]
+      },
+      {
+        "id": "K126-0204~K126-0209",
+        "a": "K126-0204",
+        "b": "K126-0209",
+        "question_score": 0,
+        "answer_score": 0.025,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "想買同圈徑的外胎，尺該對輪框外緣、胎紋，還是托住胎唇的那一圈？",
+          "輪胎變窄以後，「26 吋」為什麼還跟著它？"
+        ]
+      },
+      {
+        "id": "K126-0205~K126-0210",
+        "a": "K126-0205",
+        "b": "K126-0210",
+        "question_score": 0,
+        "answer_score": 0.025,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Minits Lite 黑面兩條都標6,160日圓，哪一條與 28-451 舊胎的兩個數都一樣？",
+          "WTB 輪圈型號裡的 i25，25 是該配多寬的胎嗎？"
+        ]
+      },
+      {
+        "id": "K126-0207~K126-0214",
+        "a": "K126-0207",
+        "b": "K126-0214",
+        "question_score": 0,
+        "answer_score": 0.025,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "26×1.75 和 26×1¾ 算術上相等，老 Schwinn 的 S-7 能拿一般登山車胎替換嗎？",
+          "盒上多一個 S 的 7S，能不能反過來當兩台的共用備品？"
+        ]
+      },
+      {
+        "id": "K126-0209~K126-0212",
+        "a": "K126-0209",
+        "b": "K126-0212",
+        "question_score": 0,
+        "answer_score": 0.025,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "輪胎變窄以後，「26 吋」為什麼還跟著它？",
+          "Synapse Carbon 原配 30–32 毫米，官網為什麼另寫「量得 42 毫米」？"
         ]
       },
       {
@@ -413749,6 +417329,20 @@
         "questions": [
           "在手機按快門前把4:3改為16:9，哪一張89毫米短邊相紙比較貼近畫面？",
           "13×18公分相框裝進10×15照片後，送人的照片為什麼仍會藏住四周？"
+        ]
+      },
+      {
+        "id": "K126-0201~K126-0209",
+        "a": "K126-0201",
+        "b": "K126-0209",
+        "question_score": 0,
+        "answer_score": 0.024,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友把兩台摺車都叫20吋，他的 Link D8 原廠表上要抄哪串數字？",
+          "輪胎變窄以後，「26 吋」為什麼還跟著它？"
         ]
       },
       {
@@ -414214,6 +417808,20 @@
         ]
       },
       {
+        "id": "K126-0209~K126-0215",
+        "a": "K126-0209",
+        "b": "K126-0215",
+        "question_score": 0,
+        "answer_score": 0.022,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "輪胎變窄以後，「26 吋」為什麼還跟著它？",
+          "外胎寬徑都對了，拿起這兩盒內胎前還缺哪個實車資訊？"
+        ]
+      },
+      {
         "id": "K120-0206~K120-0216",
         "a": "K120-0206",
         "b": "K120-0216",
@@ -414592,6 +418200,20 @@
         ]
       },
       {
+        "id": "K126-0210~K126-0218",
+        "a": "K126-0210",
+        "b": "K126-0218",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "WTB 輪圈型號裡的 i25，25 是該配多寬的胎嗎？",
+          "地上的兩個記號假設隔了 1,560 毫米，為什麼 Wahoo 的欄位要填 1.560？"
+        ]
+      },
+      {
         "id": "R41003~R41010",
         "a": "R41003",
         "b": "R41010",
@@ -414659,6 +418281,34 @@
         "questions": [
           "南海的 Southern 掛著「特急」，一列八節怎麼有一半不用買指定席券？",
           "約在奈良縣立美術館，朋友傳「一號出口走五分鐘」，是哪一個奈良站？"
+        ]
+      },
+      {
+        "id": "K126-0210~K126-0211",
+        "a": "K126-0210",
+        "b": "K126-0211",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "WTB 輪圈型號裡的 i25，25 是該配多寬的胎嗎？",
+          "胎側印了寬度，為什麼換上車後還有人重新量一次？"
+        ]
+      },
+      {
+        "id": "K126-0210~K126-0214",
+        "a": "K126-0210",
+        "b": "K126-0214",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "WTB 輪圈型號裡的 i25，25 是該配多寬的胎嗎？",
+          "盒上多一個 S 的 7S，能不能反過來當兩台的共用備品？"
         ]
       },
       {
@@ -414827,6 +418477,62 @@
         "questions": [
           "京阪寫特急的時刻表旁邊，怎麼會有一班只寫「急行」也明列 400 日圓？",
           "約在奈良縣立美術館，朋友傳「一號出口走五分鐘」，是哪一個奈良站？"
+        ]
+      },
+      {
+        "id": "K126-0206~K126-0218",
+        "a": "K126-0206",
+        "b": "K126-0218",
+        "question_score": 0,
+        "answer_score": 0.014,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "再加一條同價的 20×7/8，胎圈跟 28-451 相同，外胎便是同一條嗎？",
+          "地上的兩個記號假設隔了 1,560 毫米，為什麼 Wahoo 的欄位要填 1.560？"
+        ]
+      },
+      {
+        "id": "K126-0210~K126-0213",
+        "a": "K126-0210",
+        "b": "K126-0213",
+        "question_score": 0,
+        "answer_score": 0.014,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "WTB 輪圈型號裡的 i25，25 是該配多寬的胎嗎？",
+          "旅行前先挑 Schwalbe 7 號內胎，它能收下 50-406 和 28-451 哪一個？"
+        ]
+      },
+      {
+        "id": "K126-0211~K126-0218",
+        "a": "K126-0211",
+        "b": "K126-0218",
+        "question_score": 0,
+        "answer_score": 0.014,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "胎側印了寬度，為什麼換上車後還有人重新量一次？",
+          "地上的兩個記號假設隔了 1,560 毫米，為什麼 Wahoo 的欄位要填 1.560？"
+        ]
+      },
+      {
+        "id": "K126-0214~K126-0218",
+        "a": "K126-0214",
+        "b": "K126-0218",
+        "question_score": 0,
+        "answer_score": 0.014,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "盒上多一個 S 的 7S，能不能反過來當兩台的共用備品？",
+          "地上的兩個記號假設隔了 1,560 毫米，為什麼 Wahoo 的欄位要填 1.560？"
         ]
       },
       {
@@ -415205,6 +418911,104 @@
         "questions": [
           "北村網頁的DSC和標準L都寫59日圓，拿尺量，買到的兩張紙真的一樣大嗎？",
           "為什麼しまうま提醒，下單印的照片即使預覽看得到，也要把文字往紙邊裡面挪？"
+        ]
+      },
+      {
+        "id": "K126-0201~K126-0218",
+        "a": "K126-0201",
+        "b": "K126-0218",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友把兩台摺車都叫20吋，他的 Link D8 原廠表上要抄哪串數字？",
+          "地上的兩個記號假設隔了 1,560 毫米，為什麼 Wahoo 的欄位要填 1.560？"
+        ]
+      },
+      {
+        "id": "K126-0203~K126-0218",
+        "a": "K126-0203",
+        "b": "K126-0218",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "50-406 和 28-451 的外圈可以畫得多接近？",
+          "地上的兩個記號假設隔了 1,560 毫米，為什麼 Wahoo 的欄位要填 1.560？"
+        ]
+      },
+      {
+        "id": "K126-0206~K126-0209",
+        "a": "K126-0206",
+        "b": "K126-0209",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "再加一條同價的 20×7/8，胎圈跟 28-451 相同，外胎便是同一條嗎？",
+          "輪胎變窄以後，「26 吋」為什麼還跟著它？"
+        ]
+      },
+      {
+        "id": "K126-0207~K126-0217",
+        "a": "K126-0207",
+        "b": "K126-0217",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "26×1.75 和 26×1¾ 算術上相等，老 Schwinn 的 S-7 能拿一般登山車胎替換嗎？",
+          "碼錶想知道這顆輪子走一圈有多遠，氣嘴可以怎麼替地面標一條尺？"
+        ]
+      },
+      {
+        "id": "K126-0207~K126-0218",
+        "a": "K126-0207",
+        "b": "K126-0218",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "26×1.75 和 26×1¾ 算術上相等，老 Schwinn 的 S-7 能拿一般登山車胎替換嗎？",
+          "地上的兩個記號假設隔了 1,560 毫米，為什麼 Wahoo 的欄位要填 1.560？"
+        ]
+      },
+      {
+        "id": "K126-0211~K126-0214",
+        "a": "K126-0211",
+        "b": "K126-0214",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "胎側印了寬度，為什麼換上車後還有人重新量一次？",
+          "盒上多一個 S 的 7S，能不能反過來當兩台的共用備品？"
+        ]
+      },
+      {
+        "id": "K126-0212~K126-0217",
+        "a": "K126-0212",
+        "b": "K126-0217",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Synapse Carbon 原配 30–32 毫米，官網為什麼另寫「量得 42 毫米」？",
+          "碼錶想知道這顆輪子走一圈有多遠，氣嘴可以怎麼替地面標一條尺？"
         ]
       },
       {
@@ -415670,6 +419474,48 @@
         ]
       },
       {
+        "id": "K126-0203~K126-0209",
+        "a": "K126-0203",
+        "b": "K126-0209",
+        "question_score": 0,
+        "answer_score": 0.012,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "50-406 和 28-451 的外圈可以畫得多接近？",
+          "輪胎變窄以後，「26 吋」為什麼還跟著它？"
+        ]
+      },
+      {
+        "id": "K126-0209~K126-0213",
+        "a": "K126-0209",
+        "b": "K126-0213",
+        "question_score": 0,
+        "answer_score": 0.012,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "輪胎變窄以後，「26 吋」為什麼還跟著它？",
+          "旅行前先挑 Schwalbe 7 號內胎，它能收下 50-406 和 28-451 哪一個？"
+        ]
+      },
+      {
+        "id": "K126-0209~K126-0214",
+        "a": "K126-0209",
+        "b": "K126-0214",
+        "question_score": 0,
+        "answer_score": 0.012,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "輪胎變窄以後，「26 吋」為什麼還跟著它？",
+          "盒上多一個 S 的 7S，能不能反過來當兩台的共用備品？"
+        ]
+      },
+      {
         "id": "P64-025~P64-028",
         "a": "P64-025",
         "b": "P64-028",
@@ -415961,6 +419807,20 @@
         "questions": [
           "回台灣把同一張4:3橫照放到點點印的4×6，若想保留整張，要留多寬的空位？",
           "形狀已經完全對好，家裡印無邊照片時，為什麼預覽邊緣的細線仍可能出不來？"
+        ]
+      },
+      {
+        "id": "K126-0205~K126-0211",
+        "a": "K126-0205",
+        "b": "K126-0211",
+        "question_score": 0,
+        "answer_score": 0.011,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Minits Lite 黑面兩條都標6,160日圓，哪一條與 28-451 舊胎的兩個數都一樣？",
+          "胎側印了寬度，為什麼換上車後還有人重新量一次？"
         ]
       },
       {
@@ -417403,6 +421263,146 @@
         "questions": [
           "把照片檔改標成300 ppi，L版預覽裡被切掉的帽尖會自己跑回來嗎？",
           "下單都選方形，日本相館、台灣沖印和自行買日本方相紙，成品會一樣能放進小袋嗎？"
+        ]
+      },
+      {
+        "id": "K126-0201~K126-0210",
+        "a": "K126-0201",
+        "b": "K126-0210",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友把兩台摺車都叫20吋，他的 Link D8 原廠表上要抄哪串數字？",
+          "WTB 輪圈型號裡的 i25，25 是該配多寬的胎嗎？"
+        ]
+      },
+      {
+        "id": "K126-0202~K126-0210",
+        "a": "K126-0202",
+        "b": "K126-0210",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "另一台 Verge P10 規格頁寫「451 輪組」，為什麼車友也可能向店員說是20吋？",
+          "WTB 輪圈型號裡的 i25，25 是該配多寬的胎嗎？"
+        ]
+      },
+      {
+        "id": "K126-0202~K126-0218",
+        "a": "K126-0202",
+        "b": "K126-0218",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "另一台 Verge P10 規格頁寫「451 輪組」，為什麼車友也可能向店員說是20吋？",
+          "地上的兩個記號假設隔了 1,560 毫米，為什麼 Wahoo 的欄位要填 1.560？"
+        ]
+      },
+      {
+        "id": "K126-0208~K126-0210",
+        "a": "K126-0208",
+        "b": "K126-0210",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "反過來，一條寫 700×32C、另一條用三個英吋數字，兩者也能是同一種名義寬徑嗎？",
+          "WTB 輪圈型號裡的 i25，25 是該配多寬的胎嗎？"
+        ]
+      },
+      {
+        "id": "K126-0208~K126-0218",
+        "a": "K126-0208",
+        "b": "K126-0218",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "反過來，一條寫 700×32C、另一條用三個英吋數字，兩者也能是同一種名義寬徑嗎？",
+          "地上的兩個記號假設隔了 1,560 毫米，為什麼 Wahoo 的欄位要填 1.560？"
+        ]
+      },
+      {
+        "id": "K126-0209~K126-0216",
+        "a": "K126-0209",
+        "b": "K126-0216",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "輪胎變窄以後，「26 吋」為什麼還跟著它？",
+          "如果把碼錶參考表裡兩種 20 吋的輪周互換，輪子轉一千次會差多少？"
+        ]
+      },
+      {
+        "id": "K126-0209~K126-0217",
+        "a": "K126-0209",
+        "b": "K126-0217",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.857,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "輪胎變窄以後，「26 吋」為什麼還跟著它？",
+          "碼錶想知道這顆輪子走一圈有多遠，氣嘴可以怎麼替地面標一條尺？"
+        ]
+      },
+      {
+        "id": "K126-0213~K126-0217",
+        "a": "K126-0213",
+        "b": "K126-0217",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "旅行前先挑 Schwalbe 7 號內胎，它能收下 50-406 和 28-451 哪一個？",
+          "碼錶想知道這顆輪子走一圈有多遠，氣嘴可以怎麼替地面標一條尺？"
+        ]
+      },
+      {
+        "id": "K126-0214~K126-0217",
+        "a": "K126-0214",
+        "b": "K126-0217",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "盒上多一個 S 的 7S，能不能反過來當兩台的共用備品？",
+          "碼錶想知道這顆輪子走一圈有多遠，氣嘴可以怎麼替地面標一條尺？"
+        ]
+      },
+      {
+        "id": "K126-0217~K126-0218",
+        "a": "K126-0217",
+        "b": "K126-0218",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "碼錶想知道這顆輪子走一圈有多遠，氣嘴可以怎麼替地面標一條尺？",
+          "地上的兩個記號假設隔了 1,560 毫米，為什麼 Wahoo 的欄位要填 1.560？"
         ]
       },
       {
@@ -418880,10 +422880,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-19-pool-7469",
-    "target_count": 7469,
+    "revision": "2026-11-19-pool-7506",
+    "target_count": 7506,
     "reviewed_on": "2026-11-19",
-    "reason": "第125批新增 36 張素材，入選 7433 → 7469。先前：第124批新增 35 張素材，入選 7398 → 7433。先前：第123批新增 37 張素材，入選 7361 → 7398。先前：第122批新增 37 張素材，入選 7324 → 7361。先前：第121批新增 36 張素材，含日常設計、樂譜判讀及旅用電器規格。入選 7288 → 7324。先前：第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
+    "reason": "第126批新增 37 張素材，入選 7469 → 7506。先前：第125批新增 36 張素材，入選 7433 → 7469。先前：第124批新增 35 張素材，入選 7398 → 7433。先前：第123批新增 37 張素材，入選 7361 → 7398。先前：第122批新增 37 張素材，入選 7324 → 7361。先前：第121批新增 36 張素材，含日常設計、樂譜判讀及旅用電器規格。入選 7288 → 7324。先前：第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -426353,7 +430353,44 @@
       "K125-0214",
       "K125-0215",
       "K125-0216",
-      "K125-0217"
+      "K125-0217",
+      "K126-0001",
+      "K126-0002",
+      "K126-0003",
+      "K126-0004",
+      "K126-0005",
+      "K126-0006",
+      "K126-0007",
+      "K126-0008",
+      "K126-0009",
+      "K126-0010",
+      "K126-0011",
+      "K126-0012",
+      "K126-0401",
+      "K126-0402",
+      "K126-0403",
+      "K126-0404",
+      "K126-0405",
+      "K126-0406",
+      "K126-0407",
+      "K126-0201",
+      "K126-0202",
+      "K126-0203",
+      "K126-0204",
+      "K126-0205",
+      "K126-0206",
+      "K126-0207",
+      "K126-0208",
+      "K126-0209",
+      "K126-0210",
+      "K126-0211",
+      "K126-0212",
+      "K126-0213",
+      "K126-0214",
+      "K126-0215",
+      "K126-0216",
+      "K126-0217",
+      "K126-0218"
     ],
     "overflow": [
       {
@@ -429532,6 +433569,76 @@
       ],
       "origin": "wave125-research-20261119",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave125-research-20261119.json"
+    },
+    {
+      "id": "X126E-NA001",
+      "question": "紙本書售完重印，外觀接近原版，哪種更動仍必須換一個 ISBN？",
+      "existing_ids": [
+        "K118-0402"
+      ],
+      "reason": "舊卡已處理同書再印和版本變動何時要換識別號，並給出同樣的出版端判準。",
+      "origin": "wave126-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave126-everyday-20261119.json"
+    },
+    {
+      "id": "X126E-NA002",
+      "question": "想在家種出洋蔥球，長日種子包是在指定哪段日照時數？",
+      "existing_ids": [
+        "K122-0012"
+      ],
+      "reason": "舊卡完整說明日長觸發成球與種苗分類；換一袋種子仍重複同一判斷。",
+      "origin": "wave126-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave126-everyday-20261119.json"
+    },
+    {
+      "id": "X126E-NA003",
+      "question": "無籽西瓜在架上明明吃不到硬籽，育苗時的那顆種子又是從哪裡來？",
+      "existing_ids": [
+        "R6003"
+      ],
+      "reason": "舊卡已區分可播的種子如何生產、果實內為何沒有普通成熟種子。",
+      "origin": "wave126-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave126-everyday-20261119.json"
+    },
+    {
+      "id": "X126M-NA01",
+      "question": "定音鼓升高鼓音後鬆開腳，為什麼鼓皮沒把剛踩下的踏板拉回來？",
+      "reason": "K120-0004 已以 Yamaha 平衡式踏板的鼓皮張力與彈簧作用回答相同疑問，免再收一張。",
+      "existing_ids": [
+        "K120-0004"
+      ],
+      "origin": "wave126-music-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave126-music-20261119.json"
+    },
+    {
+      "id": "X126M-NA02",
+      "question": "合奏時長笛與降 B 單簧管都照分譜的 Do 吹，實際音高怎麼會差一個全音？",
+      "reason": "K121-0406 已把降 B 單簧管的記譜 C 與鋼琴實際音對讀；改拿長笛當對照仍然是相同移調規則。",
+      "existing_ids": [
+        "K121-0406"
+      ],
+      "origin": "wave126-music-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave126-music-20261119.json"
+    },
+    {
+      "id": "X126D-NA01",
+      "question": "拆下摺車內胎發現成對的小口，為什麼會一下子破兩處？",
+      "reason": "K121-0010 已以相對裂口辨認夾胎；本批研究各尺寸的配合，並未加入重複破胎診斷。",
+      "existing_ids": [
+        "K121-0010"
+      ],
+      "origin": "wave126-research-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave126-research-20261119.json"
+    },
+    {
+      "id": "X126D-NA02",
+      "question": "自行車輪子轉起來能自己滑行，保持平衡只靠輪圈像陀螺嗎？",
+      "reason": "D2215 已比較自行車平衡與陀螺效應；本批只以輪子轉數與實際輪周計里程。",
+      "existing_ids": [
+        "D2215"
+      ],
+      "origin": "wave126-research-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave126-research-20261119.json"
     },
     {
       "question": "只看恆星晃動，怎麼找看不見的行星？",
