@@ -25,6 +25,7 @@ scope:
   - apps/web/lib/video-review-store-copy.ts
   - apps/web/lib/video-review-store-messages
   - .env.example
+  - apps/api/tests/test_migration_0144_video_runpod_sessions.py
 ---
 
 # Owner sets the review store size from the admin
