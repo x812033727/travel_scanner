@@ -69,6 +69,14 @@ the comeback that pays off the hook), now (steps 8 to 10: 「故事還沒結束�
 the one observation "plan.takeaway" leaves the viewer with, back to the hook's image, then the
 close). They are beats of ONE story, not six sections: each chapter opens on what happened next,
 never on a label ("先講…", "回到…", "這一章講…").
+A chapter's "point" may carry planning marks (owner, 2026-11-19), each told in the chapter that
+carries it: 「舊世界：…」 (what was unbearable before the founder came, told before they enter),
+「對手的理由：…」 (the sound reason that bound the rival or the old way), 「二次反轉：…」 (what
+the half-informed believe, overturned), 「彩蛋：…」 (the second-biggest surprise, after
+「故事還沒結束」), 「概念詞：…」 (our own name for the mechanism, said as ours), 「比喻：…」 (the
+one everyday metaphor) and 「現在：…」 (the form the viewer uses today). Only a chapter whose
+point carries 「岔題：…」 or 「清單：…」 takes the one aside or the one counted list of the shape
+rule below; every other chapter uses neither.
 `.trim();
 
 // A story is told by one voice over still pictures, so nothing but the narration holds the

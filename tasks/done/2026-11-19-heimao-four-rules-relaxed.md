@@ -23,6 +23,7 @@ scope:
   - .agents/skills/brand-story/SKILL.md
   - .claude/skills/brand-story/SKILL.md
   - docs/videos/packaging-refresh-20261111/README.md
+  - docs/videos/STORY.md
   - .agents/skills/curio-episode/SKILL.md
   - .claude/skills/curio-episode/SKILL.md
   - docs/videos/so-thats-why/dialogue-pilot-20261103/README.md
@@ -90,6 +91,7 @@ npm run test:tools && npm run check:tasks
 - 站主接著要求把 Gemini 意見裡「採納方向」的也做在同一個 PR（第五個 commit）：撰稿提示先瘦身（十步的開頭、
   重複的片尾段、13 分鐘的換算），再加句子層三個習慣；企劃大綱多七個可填欄位（舊世界、對手的理由、
   二次反轉、彩蛋、概念詞、比喻、現在）與岔題、清單放第幾章；前 300 秒觀眾審查多一題縮圖看不看得出主角。
-  品牌故事的企劃提示（`story-prompts.mjs`）沒有加這些欄位；「還記得」在共用的 `NARRATIVE_RULES` 仍寫五次，
+  品牌故事沒有企劃提示（企劃是人寫的 JSON，匯入會拒絕不認得的欄位），所以改成在每章 `point` 的文字裡
+  用標記寫，撰稿提示的 `CHAPTER_GUIDE` 認得（第六個 commit）；「還記得」在共用的 `NARRATIVE_RULES` 仍寫五次，
   十步系列的段落寫明以兩次為準（改共用那段會讓其他系列做到一半的片子也停下來）。
 - `script-writing.md` 只有 `.agents` 一份（`.claude/skills` 只鏡像各 skill 的 `SKILL.md`）。

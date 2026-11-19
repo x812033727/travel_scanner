@@ -127,6 +127,12 @@ MiniMax `image-01` 的內容相關插畫占正文至少 **70%**，兩張插畫�
 3. **匯入列**：`episodes/<ID>.json`（六章 `beats`：`hook`、`origin`、`idea`、`engine`、`turn`、`now`；
    `must_verify`、`sources`、`caveats`、`names`、`cast`、`image_notes`、`sensitivity`、`thumbnail`、`publish`）。
    欄位意思在 `docs/videos/STORY.md` §企劃清單與集數列。
+   **寫每章重點（`chapters[].point`，60–400 字）時可以加這些標記（2026-11-19，來源撐不起就不寫）**：
+   「舊世界：…」（主角出場前有多難受，放 `origin`）、「對手的理由：…」（對手或舊做法被什麼合理的理由綁住）、
+   「二次反轉：…」（半內行的人相信的說法，放 `engine` 或 `turn`）、「彩蛋：…」（全片第二大的意外，放 `now`）、
+   「概念詞：…」（我們替機制取的 4–6 字名字）、技術題的「比喻：…」與「現在：…」（觀眾今天在用的形態，放 `now`）。
+   全片唯一的岔題與唯一的編號清單，在要用的那一章寫「岔題：…」「清單：…」；撰稿是逐章進行，沒有標記的章不會用。
+   這些寫在 `point` 的文字裡，不是新欄位：匯入會拒絕企劃裡不認得的欄位（`apps/api/app/video_automation/stories.py`）。
 4. **獨立查核**：每一集交給**另一個代理**逐來源對過 `must_verify`，寫 `episodes/reviews/<ID>.json`，綁故事
    內容的雜湊——故事改一個字就要重查。查核的人留下的 `notes`（最多 800 字）會變成撰稿模型讀的 `caveats`。
 5. **編譯**：`node docs/videos/brand-stories-adapt-20261017/build.mjs`（新的一批複製這支並改路徑；

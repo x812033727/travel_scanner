@@ -100,7 +100,7 @@
 | `category`、`region` | `everyday`／`asia-brand`／`tech`；`global`／`jp`／`kr`／`tw` |
 | `subject` | 主題，例如「輪子行李箱」 |
 | `question` | 開場要回答的那個問題 |
-| `chapters` | 六段，各一個 `{key, point}`：`hook`、`origin`、`idea`、`engine`、`turn`、`now` |
+| `chapters` | 六段，各一個 `{key, point}`：`hook`、`origin`、`idea`、`engine`、`turn`、`now`。`point` 裡可以用標記交代這一章要講的寫法（2026-11-19）：「舊世界：」「對手的理由：」「二次反轉：」「彩蛋：」「概念詞：」「比喻：」「現在：」，以及全片各只能出現一次的「岔題：」「清單：」；撰稿提示認得它們（`story-prompts.mjs` `CHAPTER_GUIDE`），寫法見 `.agents/skills/brand-story/SKILL.md` |
 | `takeaway` | 留給觀眾的一句觀察 |
 | `must_verify` | 查核一定要對到來源的事實（年份、數字、引述），各是 `{claim, sources, core?, attributed?, reviewer_only?}`：`sources` 是 `sources` 的索引；`core` 是標題靠的那一條；`attributed` 表示旁白要說是誰的說法；`reviewer_only` 表示這一條只有工人讀不到的文件可以佐證，工人查核時以企劃為準 |
 | `sources` | 至少 3 個 `{url, publisher, kind, supports, checked}`，https。企劃時照工人的方式讀過：每個都有回應，每個必查事實至少有一頁是工人讀得到文字的 |
