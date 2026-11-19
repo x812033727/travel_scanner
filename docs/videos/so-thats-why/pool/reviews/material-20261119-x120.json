@@ -1,0 +1,568 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-19",
+  "reviewer": "check120",
+  "baselines": {
+    "so_thats_why": {
+      "candidates": 7556,
+      "selected": 7252,
+      "themes": 761
+    },
+    "curio": {
+      "candidates": 2687,
+      "selected": 1815,
+      "themes": 155
+    }
+  },
+  "method": "由非作者逐一另開原廠、博物館、製圖機構、政府及方案營運者資料，並重取 NOAA 潮位預報、TOMRA 型錄、BCRS 規範及退款單示意。以雙池原始問題、候選、退案與影片題案的核心答案對照排重。",
+  "segment_reviews": [
+    {
+      "id": "K120-0001",
+      "decision": "screened",
+      "source_ids": [
+        "X120E-S01"
+      ],
+      "checked": "Pentel 的 Orenz 說明與剖面展示，筆尖的管件隨筆芯磨耗滑動，讓芯在受保護狀態下繼續書寫。",
+      "dedup_and_scope": "K116-0006 問三菱機構旋轉筆芯以維持筆尖，兩種筆各自改變的零件與方向不同。"
+    },
+    {
+      "id": "K120-0002",
+      "decision": "screened",
+      "source_ids": [
+        "X120E-S02"
+      ],
+      "checked": "Tate 的 Drypoint 說明以尖針刻痕的兩側毛刺留住油墨，形成絨面般的印線。凹版印刷壓力會壓壞細毛刺，因此這種版常只少量印製。",
+      "dedup_and_scope": "限乾刻版的毛刺，未把各種銅版都說成同樣印量或指定固定印數。"
+    },
+    {
+      "id": "K120-0003",
+      "decision": "screened",
+      "source_ids": [
+        "X120E-S03"
+      ],
+      "checked": "DMC 的 Mouliné Spécial 產品說明標出六股可分開使用，依抽用幾股可改變線條的細節與層次。",
+      "dedup_and_scope": "針對六股可分線產品；不把所有刺繡線的股數、能否拆股一概而論。"
+    },
+    {
+      "id": "K120-0004",
+      "decision": "screened",
+      "source_ids": [
+        "X120E-S04"
+      ],
+      "checked": "Yamaha 依鼓型分列。平衡式定音鼓踏板下壓會同時拉緊底座彈簧，與鼓皮張力達成平衡，腳移開後踏板可停在對應位置。",
+      "dedup_and_scope": "P48-NA003／D9003 關心鼓膜振型與周圍空氣，本題只核這一種踏板的平衡機構。"
+    },
+    {
+      "id": "K120-0005",
+      "decision": "screened",
+      "source_ids": [
+        "X120E-S05"
+      ],
+      "checked": "Nikon 的中央對焦雙筒操作說明先用中央輪令左眼所見清晰，再以右屈光環補兩眼差異。個人差異調好後，多數距離用中央輪即可。",
+      "dedup_and_scope": "原文把右側有屈光調整、中央對焦的一類，與各眼獨立調焦式區分開。"
+    },
+    {
+      "id": "K120-0006",
+      "decision": "screened",
+      "source_ids": [
+        "X120E-S06"
+      ],
+      "checked": "Polaroid 客服以相紙上方棕色 U／V 未顯影區示意。近因是藥膏沒鋪滿，原文列壓輥沒有推勻、藥包份量不足、藥膏乾掉等可能。",
+      "dedup_and_scope": "不能單憑缺角判定某一個原因。與一般底片見光或影像曝光過度不同。"
+    },
+    {
+      "id": "K120-0007",
+      "decision": "screened",
+      "source_ids": [
+        "X120E-S07"
+      ],
+      "checked": "TINE 的製程保留分出凝乳後的乳清，與奶混合，再放入大鍋熬煮。原廠說明熬煮時間決定色澤深淺，後續經控制冷卻讓糖結晶。",
+      "dedup_and_scope": "K119-0007 也從乳清開始，Ricotta 的解答是讓殘餘蛋白再凝聚。這張只問 TINE 褐色乳酪的熬煮與色澤。"
+    },
+    {
+      "id": "K120-0008",
+      "decision": "screened",
+      "source_ids": [
+        "X120E-S08"
+      ],
+      "checked": "Sparx 的 Radius Rings 在傳統凹槽下分列 1/4 英吋的深凹槽與 1 又 3/4 英吋的淺凹槽。較小的凹弧半徑磨得更深、較咬冰，較大的弧較平、更偏滑行。",
+      "dedup_and_scope": "舊 P72-001 等以冰溫、冰刀下摩擦為題。本卡比較該冰球刀研磨系列的刀底幾何，沒有量測速度差。"
+    },
+    {
+      "id": "K120-0009",
+      "decision": "screened",
+      "source_ids": [
+        "X120E-S09"
+      ],
+      "checked": "Apple iPhone 使用手冊示範，先靠第一個物件並點一下儲存斜度，移到第二個物件調到綠色。顏色這時表示符合先前所存斜度。",
+      "dedup_and_scope": "限已記錄第一個物體斜度的模式。手冊說水平儀讀數僅供近似參考。"
+    },
+    {
+      "id": "K120-0010",
+      "decision": "screened",
+      "source_ids": [
+        "X120E-S10",
+        "X120E-S11"
+      ],
+      "checked": "摩德納傳統巴薩米克醋 PDO 協會在瓶封說明列出序號開頭 A、E，並以熟成說明核對至少 12 年及 Extravecchio 至少 25 年的條件。",
+      "dedup_and_scope": "限 Traditional Balsamic Vinegar of Modena P.D.O. 兩種指定類別。序號標示類別及門檻，無法單由字母讀出該瓶精確年齡。"
+    },
+    {
+      "id": "K120-0011",
+      "decision": "screened",
+      "source_ids": [
+        "X120E-S12"
+      ],
+      "checked": "Oxford Punch Needle FAQ 說明，從背面穿下去送進一段紗線，提針留下線圈。緊密相鄰的線圈與底布小孔對它們的握持，使作品毋須逐圈打結。",
+      "dedup_and_scope": "可被拉出或受損，不承諾每一圈會永久鎖死。"
+    },
+    {
+      "id": "K120-0012",
+      "decision": "screened",
+      "source_ids": [
+        "X120E-S13"
+      ],
+      "checked": "Rolex 在 Perpetual rotor 原文和分解圖把半月形擺陀、傳動齒輪及反向輪分開，兩個方向的擺動皆可為主發條上鍊。",
+      "dedup_and_scope": "限該廠所述傳動。沒有把每種機械錶、單向自動上鍊或電子錶都歸入相同構造。"
+    },
+    {
+      "id": "K120-0401",
+      "decision": "screened",
+      "source_ids": [
+        "X120M-S01"
+      ],
+      "checked": "USGS 在北緯 38 度的比較列出緯度一度約 69 英里，沿該緯圈的經度一度約 54.6 英里。往極地經線匯聚，同樣經度差的地表距離會縮短。",
+      "dedup_and_scope": "兩個數字指不同方向。限北緯 38 度附近示例，未用它們當全球通用常數。"
+    },
+    {
+      "id": "K120-0402",
+      "decision": "screened",
+      "source_ids": [
+        "X120M-S02"
+      ],
+      "checked": "OS National Grid 架構有兩字母辨認百公里方格。四位數先讀東距再北距，按一公里格的西南角定位，六位數把該格每邊再分十份，可指向其中一個百公尺格。",
+      "dedup_and_scope": "同一套 British National Grid。增加位數縮小索引格，仍不能辨識百公尺方格內的單一物件。"
+    },
+    {
+      "id": "K120-0403",
+      "decision": "screened",
+      "source_ids": [
+        "X120M-S03"
+      ],
+      "checked": "USGS 將 7.5 分傳統系列與 US Topo 分列。傳統圖在 1950 年代中期用相隔一公里的藍短刻，1979 年改黑色實線，1992 與 1994 年再度改變政策。與林務局合作的國有林圖是另列例外。",
+      "dedup_and_scope": "同一個 UTM 格網有不同印法。舊 M2085 關注格網北和真北，沒有處理圖框短刻和整條網線。"
+    },
+    {
+      "id": "K120-0404",
+      "decision": "screened",
+      "source_ids": [
+        "X120M-S04",
+        "X120M-S05"
+      ],
+      "checked": "NOAA 的 MLLW 是指定潮位基準期內，各潮汐日較低低潮高度的平均值。它與同頁最低天文潮的定義不同。實測潮位若低過所採用的 MLLW 零點，就能出現負值。舊金山站 9414290 的 2024 年 12 月 1 日預報在當地 04:25 標 1.002 公尺低潮、17:32 標 −0.210 公尺低潮。",
+      "dedup_and_scope": "此處引用 NOAA 預報並非現場實測。不能靠潮位負號直接算出海床深度，也不把平均值說成絕對最低。"
+    },
+    {
+      "id": "K120-0405",
+      "decision": "screened",
+      "source_ids": [
+        "X120M-S06"
+      ],
+      "checked": "NOAA 把 Offsetting features 列為海圖製圖規則。陸上的近鄰道路與鐵路圖線可為清晰而錯開，水中礁石、航道界線或浮標則保留實際位置。小比例尺可把相近數塊礁石合併畫為一片礁脊。",
+      "dedup_and_scope": "與 M2076 已講的放大沒有多出資料分開。此處的判斷是製圖者遇到符號相疊時，哪些可挪動、哪些要用別的畫法。"
+    },
+    {
+      "id": "K120-0406",
+      "decision": "screened",
+      "source_ids": [
+        "X120M-S07",
+        "X120M-S08"
+      ],
+      "checked": "OS 說明 Explorer 的開放步行地面狀標示，再由英國政府核對英格蘭與威爾斯 access land 的步行與臨時限制。在符合開放條件的範圍內，可離開既有小徑步行。",
+      "dedup_and_scope": "依所在地、活動與當日限制判斷。地圖標色不等於私人土地所有權移轉，也不能由此推論全英或一切活動均可通行。"
+    }
+  ],
+  "rejected_suggestions_checked": {
+    "X120E-NA001": "已核對 K116-0006〈不用轉筆，為什麼這支自動鉛筆的筆芯不容易磨出一個斜面？〉。K116-0006 已就書寫受力帶動芯旋轉、均勻耗損入選。這一批改收 Orenz 保護筆芯的滑管，兩者不是同一機構。",
+    "X120E-NA002": "已核對 K117-0002〈包裝寫「青銅模」的義大利麵，手指摸到的粗糙表面是哪一步做出來的？〉。K117-0002 已用青銅模擠製解釋粗糙麵面，換另一品牌也不會出現新答案。",
+    "X120E-NA003": "已核對 X5004〈平針布沒有被拉，邊緣為什麼還會自己捲起來？〉、P57-003〈平針布到底往哪邊捲：左右捲還是上下捲？〉。X5004 已解釋無外力時平針邊緣捲曲，P57-003 再區分邊的方向。換成圍巾試片仍會回答同一機制。",
+    "X120M-NA01": "已核對 M2085〈不看指南針，地圖上怎麼仍然可能有兩種「北」？〉。本輪比對查到 M2085 已經用格網線與地理經線解釋兩種北向。",
+    "X120M-NA02": "已核對 M2076〈把世界地圖放大，為什麼不會憑空長出每條小巷？〉。M2076 已說明放大已概化的圖無法補回細節。"
+  },
+  "scope": "12 張日常卡、6 張讀地圖卡、18 張分章說明押金的研究卡。",
+  "themes": {
+    "G763": {
+      "title": "2026 年夏天買的兩罐同款汽水，為什麼新加坡退罐機只還一罐一角？",
+      "researcher": "deep120",
+      "reviewer": "check120",
+      "verdict": "ready",
+      "fact_count": 12.5,
+      "author_fact_count": 12.75,
+      "est_minutes": 9.4,
+      "method": "先為每卡可單獨說明的事實給分，再將同一研究網封頂於兩條。新加坡稅務局、國家環境局與陸路交通管理局全資的 SimplyGo 併入新加坡政府網。BCRS 是飲料生產商組成的非營利營運者，自有的退件與服務單資訊另計；不把轉述同一流程分拆到多網。折算片長為加權事實乘 0.75 分鐘。",
+      "network_grouping_source": "https://www.simplygo.com.sg/about-us/",
+      "networks": {
+        "新加坡政府": [
+          "X120D-S01",
+          "X120D-S03",
+          "X120D-S08",
+          "X120D-S10"
+        ],
+        "FairPrice 超市": [
+          "X120D-S02"
+        ],
+        "BCRS Ltd.": [
+          "X120D-S04",
+          "X120D-S05"
+        ],
+        "TOMRA": [
+          "X120D-S06",
+          "X120D-S07"
+        ],
+        "星展銀行": [
+          "X120D-S09"
+        ],
+        "香港環保署與環境局": [
+          "X120D-S11",
+          "X120D-S12"
+        ],
+        "芬蘭 PALPA": [
+          "X120D-S13"
+        ],
+        "愛爾蘭 Re-turn": [
+          "X120D-S14"
+        ]
+      },
+      "network_weights": {
+        "新加坡政府": 2.0,
+        "FairPrice 超市": 2.0,
+        "芬蘭 PALPA": 1.0,
+        "BCRS Ltd.": 2.0,
+        "TOMRA": 1.75,
+        "星展銀行": 1.0,
+        "香港環保署與環境局": 1.75,
+        "愛爾蘭 Re-turn": 1.0
+      },
+      "card_verdicts": [
+        {
+          "id": "K120-0201",
+          "source_ids": [
+            "X120D-S01",
+            "X120D-S02"
+          ],
+          "network": "新加坡政府",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "NEA 標出 2026/4/1 至 9/30 的過渡期。同款飲品可能新舊並存，無押金標的舊貨無須付押金；10/1 起全面實施限受管制飲料。"
+        },
+        {
+          "id": "K120-0202",
+          "source_ids": [
+            "X120D-S02"
+          ],
+          "network": "FairPrice 超市",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "FairPrice FAQ 第 5 問列出四罐各 200 毫升的組合。每個合資格罐 S$0.10，合計 S$0.40，收據或付款頁另顯示押金總額。這是店方列明的例子。"
+        },
+        {
+          "id": "K120-0203",
+          "source_ids": [
+            "X120D-S03"
+          ],
+          "network": "新加坡政府",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.5,
+          "checked": "IRAS 的示例列出含稅水款 S$2.00、可退押金 S$0.10，實付 S$2.10；前者按 9/109 換算 S$0.17 的 GST，押金免計入該稅基。"
+        },
+        {
+          "id": "K120-0204",
+          "source_ids": [
+            "X120D-S02",
+            "X120D-S03"
+          ],
+          "network": "新加坡政府",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 0.25,
+          "checked": "IRAS 允許在同一份稅務憑證列出押金或另開。押金無 GST，業者亦可僅為受管制飲料開具適用憑證。這是稅務文件規則，沒有將 FairPrice 的呈現方式推為所有店通例。"
+        },
+        {
+          "id": "K120-0205",
+          "source_ids": [
+            "X120D-S13",
+            "X120D-S01"
+          ],
+          "network": "芬蘭 PALPA",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "PALPA 在 Deposit marking 段分清金屬罐、塑膠瓶與玻璃瓶。有押金玻璃瓶不一定印押金標記，可以看收據、貨架或該系統查詢。限芬蘭示例。"
+        },
+        {
+          "id": "K120-0206",
+          "source_ids": [
+            "X120D-S04",
+            "X120D-S05"
+          ],
+          "network": "BCRS Ltd.",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "營運者產品標示規範和 FAQ 交叉確認，可用符合規範的貼紙。具條碼及二維矩陣碼者需可讀；消費者拿標誌判斷，機台還會核對識別資料。"
+        },
+        {
+          "id": "K120-0207",
+          "source_ids": [
+            "X120D-S05",
+            "X120D-S06",
+            "X120D-S07"
+          ],
+          "network": "TOMRA",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "新加坡 B5 Mix 的規格列容器辨識、重量及金屬偵測、條碼和二維碼讀取。Return Right 另明列壓扁、讀不清或未倒空為拒收情況。單憑此規格無從還原某罐的確切拒收演算法。"
+        },
+        {
+          "id": "K120-0208",
+          "source_ids": [
+            "X120D-S05",
+            "X120D-S06",
+            "X120D-S07"
+          ],
+          "network": "TOMRA",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "TOMRA 型錄第 4 頁將辨識室、壓縮機及儲存空間拆開，標示混合壓縮機可處理塑膠瓶與金屬罐；內部壓縮和入口前先把罐壓壞是不同階段。"
+        },
+        {
+          "id": "K120-0209",
+          "source_ids": [
+            "X120D-S01",
+            "X120D-S05"
+          ],
+          "network": "BCRS Ltd.",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 0.5,
+          "checked": "Return Right 說一般回收桶可收該類空容器，但投入者會放棄新加坡押金退款。無標舊包裝在過渡期可由一般回收渠道收集，本來便沒有押金可退。"
+        },
+        {
+          "id": "K120-0210",
+          "source_ids": [
+            "X120D-S08"
+          ],
+          "network": "新加坡政府",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.25,
+          "checked": "NEA 的 RRFS 限參加方案的內用店將容器收回。可倒入杯子或讓客人留下空罐；參與店與未參與店的收款方式須分清。"
+        },
+        {
+          "id": "K120-0211",
+          "source_ids": [
+            "X120D-S02"
+          ],
+          "network": "FairPrice 超市",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "FairPrice FAQ 第 6、7 問分列：到貨損壞應聯絡客服；依既有退貨政策且商品實際交回，店家退商品售價及押金。空罐的正常押金退還是另一種作業。"
+        },
+        {
+          "id": "K120-0212",
+          "source_ids": [
+            "X120D-S09",
+            "X120D-S05"
+          ],
+          "network": "星展銀行",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "DBS 說明用 PayLah! 的 My QR 給機台掃，退款可在錢包或交易紀錄查看。營運者的人工退費另由旅客拿手機掃紙單上 QR 碼（若該單有印）；兩次掃描方向不同。"
+        },
+        {
+          "id": "K120-0213",
+          "source_ids": [
+            "X120D-S10"
+          ],
+          "network": "新加坡政府",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.25,
+          "checked": "SimplyGo 的退款 FAQ 把已配對的 SimplyGo EZ-Link 卡列入 Card Details，交易標示 BCRS LTD。非 SimplyGo 的優惠卡可能顯示 ASNTPCC。正式題限前一情境。"
+        },
+        {
+          "id": "K120-0214",
+          "source_ids": [
+            "X120D-S05",
+            "X120D-S10"
+          ],
+          "network": "BCRS Ltd.",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 0.75,
+          "checked": "Return Right 人工退款條款與頁上 Refund Ticket 圖同時核到交易編號、機台編號、日期時間、容器數及應退額；自開單日起 30 日內申請並保留單據，未成功入帳的紙單並非直接領現。"
+        },
+        {
+          "id": "K120-0215",
+          "source_ids": [
+            "X120D-S01",
+            "X120D-S11",
+            "X120D-S12"
+          ],
+          "network": "香港環保署與環境局",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "香港環保署列 2021 第一季推出的試驗為每個合資格塑膠飲料容器即時電子回贈 HK$0.1，香港的推出背景與新加坡同額字面須分開。"
+        },
+        {
+          "id": "K120-0216",
+          "source_ids": [
+            "X120D-S12"
+          ],
+          "network": "香港環保署與環境局",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 0.75,
+          "checked": "2021/6/23 香港政府立法會答覆（4）項說約 92% 回贈總金額經八達通，支付寶香港及捐款各約 4%。分母為已支付的金額，沒有從中推算人口比例。"
+        },
+        {
+          "id": "K120-0217",
+          "source_ids": [
+            "X120D-S14",
+            "X120D-S01"
+          ],
+          "network": "愛爾蘭 Re-turn",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "Re-turn 額度 FAQ 明列至 500mL（含）€0.15，超過 500mL 至 3L €0.25。以都符合當地制度的 500、501mL 兩罐計算總額 €0.40。"
+        },
+        {
+          "id": "K120-0218",
+          "source_ids": [
+            "X120D-S02",
+            "X120D-S10"
+          ],
+          "network": "新加坡政府",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0,
+          "checked": "SimplyGo 明列退費取決於機器實際接受數量。FairPrice 已述每合資格罐一角，四罐買入但只投三罐的小計 S$0.30 為算例，不再把重述的單罐押金另計。"
+        }
+      ],
+      "chapter_budgets": [
+        {
+          "chapter": 1,
+          "title": "兩罐同款汽水，先看結帳時哪一罐多付了一角",
+          "candidate_ids": [
+            "K120-0201",
+            "K120-0202"
+          ],
+          "target_seconds": 60,
+          "evidence_seconds": [
+            58,
+            89
+          ]
+        },
+        {
+          "chapter": 2,
+          "title": "收據找不到的一角，罐身找得到嗎？",
+          "candidate_ids": [
+            "K120-0203",
+            "K120-0204",
+            "K120-0205",
+            "K120-0206"
+          ],
+          "target_seconds": 98,
+          "evidence_seconds": [
+            98,
+            151
+          ]
+        },
+        {
+          "chapter": 3,
+          "title": "入口要完整的圓罐，為什麼機器裡面卻有壓縮機？",
+          "candidate_ids": [
+            "K120-0207",
+            "K120-0208",
+            "K120-0209"
+          ],
+          "target_seconds": 78,
+          "evidence_seconds": [
+            77,
+            116
+          ]
+        },
+        {
+          "chapter": 4,
+          "title": "先看要退的是一罐飲料，還是一只空罐",
+          "candidate_ids": [
+            "K120-0210",
+            "K120-0211"
+          ],
+          "target_seconds": 62,
+          "evidence_seconds": [
+            59,
+            87
+          ]
+        },
+        {
+          "chapter": 5,
+          "title": "機器收走了罐子，錢會顯示在手機的哪一行？",
+          "candidate_ids": [
+            "K120-0212",
+            "K120-0213",
+            "K120-0214"
+          ],
+          "target_seconds": 102,
+          "evidence_seconds": [
+            76,
+            115
+          ]
+        },
+        {
+          "chapter": 6,
+          "title": "同樣寫一角的機器，最後怎麼對回自己的四入組？",
+          "candidate_ids": [
+            "K120-0215",
+            "K120-0216",
+            "K120-0217",
+            "K120-0218"
+          ],
+          "target_seconds": 110,
+          "evidence_seconds": [
+            100,
+            157
+          ]
+        }
+      ],
+      "turns": [
+        "兩罐屬同款飲料。2026 年新加坡換標過渡期可同時有已收押金的新罐、從未收押金的舊罐。香港另有以即時回贈鼓勵回收的試驗。",
+        "入口要保住罐形，機器收下罐子後才壓縮。內用店可收回容器自行處理；喝完退空罐和向商店退回損壞商品涉及不同款項。"
+      ],
+      "nearby": [
+        "G730／K108-0611 問塑膠材料標記或台灣回收費，沒有處理消費者是否已付可退押金。",
+        "G753／K113-0553 問連身瓶蓋及葡萄牙試驗的附蓋比例。舊題與本案共用回收機外觀，核心答案不同。"
+      ],
+      "changes": [
+        "把 B5 Mix 的感測敘述縮到原廠資料可逐字核對的項目，保留壓扁罐可能遭拒的營運方說明。不再按原草稿推定要辨識的三種外觀細項。",
+        "芬蘭玻璃瓶與愛爾蘭容量級距補成兩個可自行核對的對照。第 2 章與第 6 章重分 6 秒，各章均落在所用卡標列的秒數範圍內。",
+        "TOMRA 的入口辨識與 BCRS 的不壓扁規則部分重疊，獨立覆核後全題 12.5 條。單純四罐買入、只交三罐的算例與先前金額重疊，該卡保留但不另給分。"
+      ],
+      "unverified": [
+        "沒有個別消費者的當時收據或實拍同款貨架。四罐案例取自超市 FAQ，僅按規則重畫情境。",
+        "退款機具、付款方式與條件依國家與方案而異。型錄是具名機型，並未證明每個新加坡回收站都安裝該機。",
+        "510 秒是製作前正文預算，素材估時不是成片實測。"
+      ],
+      "note": "18 張研究卡各使用一次，8 個來源網合計 12.5 條獨立加權事實，可用素材折算 9.4 分鐘。"
+    }
+  }
+}
