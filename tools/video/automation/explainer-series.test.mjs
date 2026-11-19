@@ -123,16 +123,16 @@ test("one table maps each explainer preset to its variants; every name fits the 
 // names said as written, and nobody living or dead since 1956 drawn. An unfinished 奇聞檔案局
 // one-off on the host stops with video_ai_receipt_input_changed at its next stage after the deploy.
 const SERIES_TEXT_PINS = {
-  "planner:bible-explainer-cartoon": [6347, "f9afae8a35b9fee5d247b6bb2a4b0729b47fd20c1f9d195eab42a76adf7ac0d2"],
-  "writer:explainer-cartoon": [27161, "24625a430c23d15dc2428d2195c3947b5a18a59b51ab7b9e6e30bcd85b4264f5"],
+  "planner:bible-explainer-cartoon": [6519, "078f8a30dac91dbf89bb03f33c9672404ec96bb4dd130765f2b72f1ff5d8810f"],
+  "writer:explainer-cartoon": [32576, "0522fa26c7956a3fc0b47f1ea9be06dea14d09cd5491f711bcc9c5d9c7832307"],
   "verifier:explainer-cartoon": [4305, "6f41570e5090987327a200b7790a6ecdec88c8a0350de2ca49b74cb4e7ca95db"],
-  "planner:discuss-cartoon": [7074, "a489aa308db647b7d936eeeddcac14bed5fda21c4f2765d76acb338cc44a97f6"],
-  "writer:discuss-cartoon": [25626, "19bacf8358177a1a461c5b46643211041f91969434eba8a89404524084a17fca"],
+  "planner:discuss-cartoon": [7246, "86fb87e98cce5315e954f8505f00c56d3aa6693ccec3e9e72d70cbb7fee014c4"],
+  "writer:discuss-cartoon": [31041, "1e10d0bf92e15bb0c512cfd0367a5bd3647e5651a05d44e1c728b87383ed6cb8"],
   "planner:bible-explainer-mystery": [9560, "96629ae4e51040e354111f8659249f1526c57070993a5025c1fbf1e58564adb6"],
-  "writer:explainer-mystery": [37710, "6070ad8763c67cd3a3a45bf3ddad6de931719b80a62d8d6c01fe0fd00e29becb"],
+  "writer:explainer-mystery": [38124, "748d45b5237a76e76aa8190454ec08ee0671e8376077225236b10f26f65d5daa"],
   "verifier:explainer-mystery": [6433, "e84a1810dab0b060272622dae14a95879470965678851713608fc5ac60dc4b2a"],
   "planner:discuss-mystery": [10189, "615cac5cc3db625e6106081948ac8a43bddb397b06ced096bb9236201b0d1b0e"],
-  "writer:discuss-mystery": [36247, "ee1deac2fba40ee6f95461b9d9bff980a43952ca257af1b5da643235cb687644"],
+  "writer:discuss-mystery": [36661, "ab0d9b7bf78a62b4b520377331d5534c56360c1494ee4131844a1470b97d80df"],
 };
 
 test("the ten texts of the two profiled series are the pinned ones, composed with no genre section", () => {
@@ -152,7 +152,7 @@ test("the ten texts of the two profiled series are the pinned ones, composed wit
   assert.ok(standing.startsWith(EXPLAINER_SERIES_INSTRUCTIONS["writer:explainer-mystery"]) && standing.includes("旁白慢一點") && standing.includes("1. 先講事實"));
 });
 
-test("奇聞檔案局's writer keeps the brand stories' cadence and music bed; 原來如此's does not change", () => {
+test("奇聞檔案局's writer keeps the brand stories' cadence and music bed; 原來如此's takes the ten steps but keeps its cards (2026-11-19)", () => {
   // Owner, 2026-10-19: the brand stories were smoother, had more hooks and music; this series is to
   // be as good or better. Lint reads the same 45 s and eight loops on a curio- slug.
   const mystery = instructionsFor("writer", "drama", "", "explainer-mystery");
@@ -181,12 +181,17 @@ test("奇聞檔案局's writer keeps the brand stories' cadence and music bed; �
   assert.match(STORY_OPENING_RULE, /「今天我們就來聊聊…」/);
   assert.match(STORY_SERIES_SCREEN_RULE, /who died in 1956 or later, is never drawn/);
   assert.match(mystery, /the name\s+everybody knows in the first six characters/);
-  assert.ok(!EXPLAINER_SERIES_INSTRUCTIONS["writer:explainer-cartoon"].includes(TOLD_TO_ONE_VIEWER), "原來如此 keeps its register");
+  // Owner, 2026-11-19: new 原來如此 episodes follow 黑猫研究院's ten steps and are told to one viewer.
+  assert.ok(EXPLAINER_SERIES_INSTRUCTIONS["writer:explainer-cartoon"].includes(TOLD_TO_ONE_VIEWER), "原來如此 is told to one viewer");
   assert.match(instructionsFor("planner", "drama", "", "bible-explainer-mystery"), /at least eight for ten minutes/);
   const cartoon = instructionsFor("writer", "drama", "", "explainer-cartoon");
   assert.doesNotMatch(cartoon, /45 seconds|"music" is never left out/);
-  // 原來如此 keeps its cards, its condensation and its picture rules.
-  assert.ok(!cartoon.includes(STORY_SERIES_SCREEN_RULE) && !cartoon.includes(STORY_OPENING_RULE));
+  // 原來如此 keeps its cards and its picture rules; its opening is the ten steps' hook and promise.
+  assert.ok(!cartoon.includes(STORY_SERIES_SCREEN_RULE) && cartoon.includes(STORY_OPENING_RULE));
+  assert.match(cartoon, /The first chapter, 40 to 60 seconds: the hook and the promise/);
+  assert.match(cartoon, /never a menu of\s+questions/);
+  assert.match(cartoon, /No greeting and no intro: the first\s+line plays at 0:00/);
+  assert.doesNotMatch(cartoon, /The channel intro plays after it/);
   assert.match(cartoon, /- Cards between shots, and only these/);
   assert.match(cartoon, /"prompt" is English, at most 400 characters/);
   assert.match(cartoon, /A foreign name is said in its usual Chinese form/);

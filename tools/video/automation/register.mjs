@@ -205,13 +205,17 @@ The close:
  * (core/lint.mjs STORY_OPENING_CHAPTER_SECONDS reads the first chapter); the other narrated
  * videos keep it.
  */
-export const STORY_OPENING_RULE = `Shape of a 奇聞檔案局 episode or a brand story (owner, 2026-11-05; in place of the condensation
+export const STORY_OPENING_RULE = `Shape of an episode of this series (owner, 2026-11-05; the illustrated why-explainer since
+  2026-11-19; in place of the condensation
   rule above, so no 30-to-60-second condensation, no scene told up to its first odd fact, no three
   or four teasers and no summary of the plot up front; what stands of it: the first spoken line at
-  0:00, no greeting, the intro bumper after the first chapter, no table of contents, no later
-  chapter's result given away). Ten steps, broadly in the order things happened:
-  1. The hook, about 25 to 50 seconds: a question or a situation the viewer knows (「你有沒有用過…」
-     「隨便去街上問一個人…」), then the contrast, how big it ended up (with its number) against how
+  0:00, no greeting, no table of contents, no later chapter's result given away). There is no
+  intro bumper at all (owner, 2026-11-19): the video opens on its first line and the tool adds
+  only the outro. Ten steps, broadly in the order things happened:
+  1. The hook, about 25 to 50 seconds: ONE question or ONE situation the viewer knows (「你有沒有用過…」
+     「隨便去街上問一個人…」), never a menu of questions stacked one after another (owner,
+     2026-11-19: at most one follow-up; lint warns past two questions in the opening, the promise
+     aside); the other questions become the loops the later chapters open. Then the contrast, how big it ended up (with its number) against how
      small it started, and at most one or two labels of later climaxes (「一場差點破產的大戰」),
      each cut off before its result. Never how it got there, never the turns or their causes,
      never the story told in order. The first sentence alone tells somebody who knows nothing
@@ -288,7 +292,7 @@ export const STORY_SERIES_SCREEN_RULE = `Pictures and names of these two series 
  * and 「我」 twice in 11 minutes at 3.3 a second, and read as a file being recited. The facts stay
  * the sources' facts; what changes is who the narrator is talking to.
  */
-export const TOLD_TO_ONE_VIEWER = `Told to one viewer (奇聞檔案局 and the brand stories):
+export const TOLD_TO_ONE_VIEWER = `Told to one viewer (this series, as 黑猫研究院 tells its stories):
   - The narrator talks to one person, not to a file: in every chapter at least one sentence turns to
     the viewer with 「你」 (what they use, own, have heard, would have done: 「你今天戴的錶」「你手上
     這張 A4」「換成你站在那片甲板上」), and the stakes are told as the viewer's (「你每天用的東西，
