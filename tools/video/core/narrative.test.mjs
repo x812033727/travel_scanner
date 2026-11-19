@@ -674,3 +674,33 @@ test("no_orphans asks every script whether anything arrives out of nowhere; a tw
   assert.match(narrationText(duo, estimateTimeline(duo)), new RegExp(`\\] 小問：${firstLine.text.slice(0, 4)}`));
   assert.doesNotMatch(narrationText(base, estimateTimeline(base)), /小問：|所長：/, "one voice: no names");
 });
+
+import { isOpeningHookSeries, OPENING_QUESTION_MAX, questionMenuProblems } from "./narrative.mjs";
+
+test("the opening hook of curio-, story- and sothatswhy- asks one question, never a question menu (owner 2026-11-19)", () => {
+  assert.equal(OPENING_QUESTION_MAX, 2);
+  assert.equal(isOpeningHookSeries({ slug: "sothatswhy-p02-cloud-rain" }), true);
+  assert.equal(isOpeningHookSeries({ slug: "curio-w01" }), true);
+  assert.equal(isOpeningHookSeries({ slug: "story-adapt-seiko" }), true);
+  assert.equal(isOpeningHookSeries({ slug: "daily-ai-20261119" }), false);
+
+  const hook = stretched();
+  hook.slug = "sothatswhy-x01";
+  hook.scenes[0].lines[0].text = "雲裡面真的有水嗎？今天我們就來聊聊，雲為什麼不會掉下來？";
+  assert.deepEqual(questionMenuProblems(hook, estimateTimeline(hook)), [], "one question, the promise and one follow-up (the fixture's cd06) is a hook");
+
+  const menu = structuredClone(hook);
+  menu.scenes[0].lines[0].text = "為什麼雲會變灰？為什麼下午才下雨？雷又是從哪裡來的？";
+  const [warning] = questionMenuProblems(menu, estimateTimeline(menu));
+  assert.equal(warning.path, "scenes[0]");
+  assert.match(warning.message, /asks 4 questions/);
+  assert.match(warning.message, /question menu/);
+  assert.match(warning.message, /開場鉤子禁疊問題菜單/);
+  assert.match(messages(lintVideo({ ...structuredClone(menu), slug: "curio-w99" }, context()).warnings), /question menu/);
+
+  const later = structuredClone(hook);
+  const body = later.scenes.find((scene, index) => index > 1 && scene.chapter);
+  body.lines[0].text = "為什麼雲會變灰？為什麼下午才下雨？雷又是從哪裡來的？";
+  assert.deepEqual(questionMenuProblems(later, estimateTimeline(later)), [], "questions past the opening are the chapters' loops");
+  assert.deepEqual(questionMenuProblems({ ...structuredClone(menu), slug: "daily-ai-20261119" }, estimateTimeline(menu)), [], "other series are untouched");
+});

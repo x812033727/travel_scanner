@@ -361,6 +361,43 @@ export function caveatRecitationProblems(doc) {
   }];
 }
 
+/**
+ * The opening hook of 奇聞檔案局, the brand stories and 原來如此事務所 asks ONE question (owner,
+ * 2026-11-19: 「開場鉤子禁疊問題菜單」): a question or a situation the viewer knows, its contrast and
+ * the promise, the way 黑猫研究院 opens. Three or more questions stacked there (「為什麼…？為什麼…？
+ * 那…呢？」) read as a menu of what the video will cover. One follow-up is tolerated (in the
+ * dialogue series the kid may ask 「那它為什麼不會掉下來？」 after her first question).
+ */
+export const OPENING_QUESTION_MAX = 2;
+/** How far the opening is read: its first chapter, never past this; the first 60 s when there are no chapters. */
+export const OPENING_QUESTION_WINDOW_SECONDS = 90;
+const NO_CHAPTER_OPENING_SECONDS = 60;
+export const isOpeningHookSeries = (doc, series = null) => /^(?:curio|story|sothatswhy)-/.test(doc?.slug ?? "") || isStory(series);
+const SENTENCE = /[^。！？!?…]+[。！？!?…]*/g;
+/** The promise sentence restates the hook's question; it is not one more item on a menu. */
+const PROMISE_SENTENCE = /今天(?:我們)?(?:就)?來(?:聊聊|看看|說說)|這一?集(?:要|就)?(?:回答|告訴你)/;
+
+export function questionMenuProblems(doc, timeline, { series = null } = {}) {
+  if (!isOpeningHookSeries(doc, series) || !timeline) return [];
+  const chapters = chapterList(timeline);
+  const end = Math.min(chapters.length > 1 ? chapters[1].start : NO_CHAPTER_OPENING_SECONDS, OPENING_QUESTION_WINDOW_SECONDS);
+  const starts = lineStarts(timeline);
+  const questions = [];
+  for (const { line } of eachLine(doc)) {
+    const frame = starts.get(line.id);
+    if (frame === undefined || frameToSeconds(frame) >= end) continue;
+    for (const sentence of String(line.text ?? "").match(SENTENCE) ?? []) {
+      if (/[？?]/.test(sentence) && !PROMISE_SENTENCE.test(sentence)) questions.push({ id: line.id, text: sentence.trim() });
+    }
+  }
+  if (questions.length <= OPENING_QUESTION_MAX) return [];
+  const shown = questions.slice(0, 4).map(({ id, text }) => `${id}:「${text.length > 24 ? `${text.slice(0, 24)}…` : text}」`).join(", ");
+  return [{
+    path: "scenes[0]",
+    message: `the opening asks ${questions.length} questions in its first ${Math.round(end)} s (${shown}${questions.length > 4 ? " …" : ""}): a question menu, not a hook. Open on ONE question or situation the viewer knows (at most one follow-up), then its contrast and the promise 「今天我們就來聊聊…」; the other questions become the loops the chapters open later (owner 2026-11-19, 開場鉤子禁疊問題菜單)`,
+  }];
+}
+
 /** Every storytelling problem of a narrated script, tagged "narrative" so the worker can hand the warnings to the writer. */
 export function narrativeProblems(doc, timeline, { minutes, cadence = DEFAULT_CADENCE } = {}) {
   const tag = (problems) => problems.map((problem) => ({ ...problem, kind: "narrative" }));
