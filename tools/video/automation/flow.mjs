@@ -27,7 +27,7 @@ import { effectiveEpisodeMinutes } from "../core/duration.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { initializeStoryLexicon, mergeSharedLexicon, videoLexicon } from "../core/lexicon-store.mjs";
 import { stanceProblems } from "../core/lint.mjs";
-import { isDailyBrief, isNarrated, mergePanelVerdicts, NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelQuestions, panelVerdict, STORY_PANEL_READERS } from "../core/narrative.mjs";
+import { isDailyBrief, isNarrated, mergePanelVerdicts, NARRATIVE_REVIEW, openingGateProblems, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelQuestions, panelVerdict, STORY_PANEL_READERS } from "../core/narrative.mjs";
 import { articlePath, SITE, titleBudget } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, stopRequested, UsageError } from "../core/paths.mjs";
 import { eachLine, LINE_ID, TARGET_LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, NARRATION_LOCALE, narrationLocale, spokenText, textHash, VIDEO_CATEGORIES } from "../core/schema.mjs";
@@ -2835,6 +2835,11 @@ export class Automation {
         const rounds = state.prompt_fixes?.script ?? 0;
         if (!verdict.passed && rounds < MAX_PROMPT_FIX_ROUNDS) return this.fixScript(state, verdict.problems.join("；"), "the checker");
       }
+      // review-push refuses a 奇聞, brand-story or 原來如此 script whose opening asks a question menu
+      // or misses the thumbnail (owner, 2026-11-19): the writer rewrites it first, so the video is
+      // not parked on the refusal; past MAX_PROMPT_FIX_ROUNDS fixScript stops for the owner.
+      const opening = openingGateProblems(video, estimateTimeline(video), { series: state.series ?? null });
+      if (opening.length) return this.fixScript(state, `開場不合格：${opening.map((problem) => problem.message).join("；")}`, "the opening check", "opening");
       const result = await run(this.ctx, ["review-push", "--slug", state.slug, "--gate", "script"]);
       if (result.code !== 0) return this.block(state, `review-push failed: ${lastLine(result.out)}`);
       return `${state.slug}: screenplay sent to /admin/videos`;

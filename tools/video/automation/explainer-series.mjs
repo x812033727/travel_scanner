@@ -7,7 +7,7 @@
 // one series is never overwritten by another's.
 import { CURIO_MUSIC } from "../core/curio.mjs";
 import { explainerCardTemplates } from "../core/drama.mjs";
-import { OPENING_CHAPTER_SECONDS, STORY_OPENING_CHAPTER_SECONDS } from "../core/lint.mjs";
+import { STORY_OPENING_CHAPTER_SECONDS } from "../core/lint.mjs";
 import { CONDENSATION_RULE, NARRATIVE_RULES, STORY_OPENING_RULE, STORY_SERIES_SCREEN_RULE, TOLD_TO_ONE_VIEWER } from "./register.mjs";
 
 /**
@@ -64,7 +64,10 @@ curious viewer would ask, answered`,
   the condensation), in this order. The lengths are for the 10-minute target; with another
   "target_minutes" the first chapter and the close keep theirs and the parts between scale in
   the same proportion. The parts together reach the target and never fall under 8 minutes.
-  1. The first chapter, 40 to ${OPENING_CHAPTER_SECONDS[1]} seconds: the hook and the promise (steps 1 and 2). ONE
+  For a "why" question the ten steps of the shape rule below read this way: the era and the
+  origin are where the thing began; its protagonist is the thing itself or the people who made it;
+  the escalating stages are the brief's reasons; the biggest turn is the most surprising reason.
+  1. The first chapter, ${STORY_OPENING_CHAPTER_SECONDS[0]} to ${STORY_OPENING_CHAPTER_SECONDS[1]} seconds, aimed at about a minute: the hook and the promise (steps 1 and 2). ONE
      question put the counter-intuitive way over the most striking picture, never a menu of
      questions (at most one follow-up); its contrast (what everybody assumes against what is
      true, with a number); at most one or two later moments named and cut off before their

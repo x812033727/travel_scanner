@@ -403,12 +403,15 @@ async function tts(args, ctx) {
   requireStorySpeechLexicon(project, workdir);
   // 原來如此, 奇聞 and brand stories made by hand pass the strict first-300-seconds review before
   // any voice is paid for (owner, 2026-11-19; core/opening-review.mjs).
-  const voiced = readJson(path.join(workdir, ARTIFACTS.timeline), null)?.speech_hash === speechHash(doc, lexicon);
-  const retake = Boolean(values.redo || values["refresh-evidence"]);
+  const voicedTimeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
+  const voiced = voicedTimeline?.speech_hash === speechHash(doc, lexicon);
+  // A retake only counts as one when there is a voice to retake: --redo on a script never voiced
+  // is a first voice and passes the review like any other.
+  const retake = Boolean((values.redo || values["refresh-evidence"]) && voicedTimeline);
   if (needsOpeningReview(doc, { series: project.series, workdir, voiced, retake })) {
     const problems = openingReviewProblems(doc, readJson(path.join(workdir, ...OPENING_REVIEW), null));
     // A dry run only prices, and says where the review stands so the next step is plain.
-    if (values["dry-run"]) ctx.stdout.write(`opening review: ${problems.length ? `not passed yet (opening-review --slug ${doc.slug} --ask); ${problems[0]}` : "passed"}\n`);
+    if (values["dry-run"]) ctx.stdout.write(`opening review: ${problems.length ? `not passed yet (opening-review --slug ${doc.slug}, then --record three subagents' answers or --ask); ${problems[0]}` : "passed"}\n`);
     else if (problems.length) throw new UsageError(`the first ${OPENING_REVIEW_SECONDS} seconds have not passed the opening review: ${problems.join("; ")}`);
   }
   const cache = readCache(workdir);

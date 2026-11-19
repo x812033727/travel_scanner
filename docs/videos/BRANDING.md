@@ -170,12 +170,12 @@ API 只讀它唯讀掛載的工作卷，而且只給目前 `current.json`（全�
 
 | 影片 | 片頭位置 |
 | --- | --- |
-| 有旁白的長片：slides、screencast、解說漫劇（`isExplainer`，含「原來如此」357 格系列片頭）、品牌故事（即使畫面有角色） | `after_first_chapter` |
+| 有旁白的長片：slides、screencast、解說漫劇（`isExplainer`）；原來如此、奇聞與品牌故事 2026-11-19 以前的集數 | `after_first_chapter` |
 | 有角色的漫劇、合集、Shorts | `start`（維持原樣） |
 | 原來如此事務所（`sothatswhy-`）、奇聞檔案局（`curio-`）、品牌故事（`story-`、`isStory`）的新集（站主 2026-11-19「以後開頭就不要有片頭了，直接開始」） | `none`：不放片頭，`0:00` 就是第一句，只接片尾；`checks.branding.intro_frames` 為 0。已 pin `branding.json` 的舊片照舊（`core/branding.mjs` `noIntroSeries`） |
 | 合集作品的每一集（`series.json` `compilation: true`，不是合集影片本身） | 不包：成片＝本體，片頭片尾只在合集放一次（[`BINGE.md`](BINGE.md) §合集；2026-10-24） |
 
-位置記在 pin：`branding.json` 的 `intro_at` 是 `"start"` 或 `"after_first_chapter"`。
+位置記在 pin：`branding.json` 的 `intro_at` 是 `"start"`、`"after_first_chapter"` 或 `"none"`（不放片頭，2026-11-19）。
 2026-10-13 前寫的 pin 沒有這個欄位，一律讀成 `"start"`，hash 不變，所以舊片重建得到
 同一組 bytes；之後成功成片寫入的 pin 一律明寫 `intro_at`。新片第一次成片與
 `--adopt-branding` 依上表選位置；既有 pin 保持原位置，更新 current 或程式也不會移動它。

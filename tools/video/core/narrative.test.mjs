@@ -751,3 +751,19 @@ test("原來如此 keeps the ten steps' 45-second hook cadence in lint (owner 20
   assert.equal(required("sothatswhy-x02"), required("curio-x02"), "the same loop minimum as 奇聞檔案局 (TIGHT_CADENCE)");
   assert.ok(required("sothatswhy-x02") > required("explainer-x02"), "more than the default cadence asks");
 });
+
+test("the ten-step series plant two loops in the opening (contrast and promise), never a teaser menu (owner 2026-11-19)", () => {
+  const doc = stretched();
+  doc.slug = "sothatswhy-x03";
+  const timeline = estimateTimeline(doc);
+  const minutes = timeline.total_frames / FPS / 60;
+  const pads = padScenes(doc);
+  doc.loops = [
+    { setup: "cd06", payoff: pads[3].lines[0].id, what: "十個人去了哪裡" },
+    { setup: pads[0].lines[1].id, payoff: pads[4].lines[2].id, what: "那九個桶" },
+    { setup: pads[1].lines[0].id, payoff: pads[5].lines[0].id, what: "劍上的痕跡" },
+  ];
+  assert.match(messages(loopProblems(doc, timeline, minutes)), /the opening plants 1 loop; the hook's contrast and the promise's question are at least 2/);
+  doc.loops[1].setup = "cd04";
+  assert.doesNotMatch(messages(loopProblems(doc, timeline, minutes)), /plants \d+ loops?;/, "two are enough; the menu of three or four is not asked for");
+});

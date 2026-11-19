@@ -19,6 +19,8 @@ export const HOOK_GAP_SECONDS = 90;
 // After its one scene the condensation teases this many later moments, each a loop it plants
 // (owner, 2026-10-13: the opening needs many hooks that make the viewer want the whole video).
 export const OPENING_TEASERS = 3;
+/** What the opening of the ten-step series plants instead: the contrast and the promise's question. */
+export const OPENING_HOOK_TEASERS = 2;
 /** How many loops a ten-minute narrated video plants (its "loops" table), at least two whatever its length. */
 export const LOOPS_PER_10_MINUTES = 3;
 
@@ -235,7 +237,10 @@ export function loopProblems(doc, timeline, minutes, per10 = LOOPS_PER_10_MINUTE
   };
   const teasers = loops.filter(planted).length;
   if (chapters.length > 1 && !teasers) problems.push({ path: "loops", message: "the condensation plants no loop: at least one setup line sits in the first chapter, paid off in a later one" });
-  else if (chapters.length > 1 && teasers < OPENING_TEASERS) problems.push({ path: "loops", message: `the condensation plants ${teasers} loop${teasers === 1 ? "" : "s"}; after its one scene it teases at least ${OPENING_TEASERS} later moments, each cut off before its result and paid off where the body reaches it (script-writing.md §開場濃縮)` });
+  // The ten-step series open on ONE question, its contrast and the promise (owner, 2026-11-19: no
+  // question menu), so two loops planted there are enough: the contrast and the promise's question.
+  else if (chapters.length > 1 && isOpeningHookSeries(doc) && teasers < OPENING_HOOK_TEASERS) problems.push({ path: "loops", message: `the opening plants ${teasers} loop${teasers === 1 ? "" : "s"}; the hook's contrast and the promise's question are at least ${OPENING_HOOK_TEASERS}, paid off where the body reaches them (one question, never a menu; script-writing.md §奇聞檔案局與品牌故事的架構)` });
+  else if (chapters.length > 1 && !isOpeningHookSeries(doc) && teasers < OPENING_TEASERS) problems.push({ path: "loops", message: `the condensation plants ${teasers} loop${teasers === 1 ? "" : "s"}; after its one scene it teases at least ${OPENING_TEASERS} later moments, each cut off before its result and paid off where the body reaches it (script-writing.md §開場濃縮)` });
   const outro = (doc.scenes ?? []).find((scene) => scene.template === "outro");
   const closing = new Set((outro?.lines ?? []).map((line) => line.id));
   loops.forEach((loop, index) => {

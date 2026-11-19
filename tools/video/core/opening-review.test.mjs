@@ -70,9 +70,14 @@ test("the opening review reads 300 seconds with three site readers, one per view
   assert.match(packet, /- \[00:00\]/);
 
   assert.deepEqual(openingReviewProblems(doc, openingReviewRecord(doc, allPass())), []);
-  assert.match(openingReviewProblems(doc, null)[0], /--ask/);
-  const byHand = openingReviewRecord(doc, Object.keys(OPENING_PERSONAS).map((persona) => pass(persona, { via: undefined, model: undefined })));
-  assert.ok(openingReviewProblems(doc, byHand).some((problem) => /typed in by hand does not count/.test(problem)), "only the site's readers count");
+  assert.match(openingReviewProblems(doc, null)[0], /--record.*--ask/);
+  const unrecorded = openingReviewRecord(doc, Object.keys(OPENING_PERSONAS).map((persona) => pass(persona, { via: undefined, model: undefined })));
+  assert.ok(openingReviewProblems(doc, unrecorded).some((problem) => /not a recorded reader/.test(problem)), "a verdict counts only through --record or --ask");
+  const session = (persona, agent = `subagent-${persona}`, extra = {}) => pass(persona, { via: "session", model: undefined, agent, ...extra });
+  const sessionRound = (list, author = "writer") => openingReviewRecord(doc, list, { author });
+  assert.deepEqual(openingReviewProblems(doc, sessionRound([session("newcomer"), session("scroller"), session("stickler")])), [], "three subagents of the session that made it");
+  assert.ok(openingReviewProblems(doc, sessionRound([session("newcomer", "Writer "), session("scroller"), session("stickler")])).some((problem) => /author cannot be a reader/.test(problem)), "the author never reads its own script, whatever the case or spaces");
+  assert.ok(openingReviewProblems(doc, openingReviewRecord(doc, [session("newcomer"), session("scroller"), session("stickler")])).some((problem) => /names its author/.test(problem)));
   const two = openingReviewRecord(doc, allPass().slice(0, 2));
   assert.ok(openingReviewProblems(doc, two).some((problem) => /no reader read as stickler/.test(problem)), "every viewer is read");
   const same = openingReviewRecord(doc, [pass("newcomer", { agent: "Reader " }), pass("scroller", { agent: "reader" }), pass("stickler")]);
@@ -122,7 +127,7 @@ test("tts refuses a hand-made 原來如此 episode until the site's readers pass
   assert.match(blocked.out.stderr, /have not passed the opening review/);
   const dry = capture(box);
   assert.equal(await main(["tts", "--slug", box.slug, "--dry-run"], dry.ctx), EXIT.ok, "a dry run only prices");
-  assert.match(dry.out.stdout, /opening review: not passed yet \(opening-review --slug sothatswhy-x01 --ask\)/);
+  assert.match(dry.out.stdout, /opening review: not passed yet \(opening-review --slug sothatswhy-x01, then --record three subagents' answers or --ask\)/);
 
   const strict = fakeSite((payload) => ({ ...happy(payload), ...(payload.persona === "scroller" ? { score: 7, would_stay_300: false, swipe_at: "02:10", problems: [{ at: "02:10", line: "…", why: "拖", fix: "砍半" }] } : {}) }));
   const failed = capture(box, strict.fetchImpl);
@@ -146,4 +151,56 @@ test("tts refuses a hand-made 原來如此 episode until the site's readers pass
   mkdirSync(box.workdir, { recursive: true });
   writeFileSync(path.join(box.workdir, "auto.json"), "{}");
   assert.equal(needsOpeningReview({ slug: box.slug }, { workdir: box.workdir }), false, "the host's worker keeps its own blind panel");
+});
+
+test("the site's readers are kept robust: a lost request keeps the answers before it, 無 means no swipe, the tool binds the hash, pauses alone ask for nothing", async () => {
+  const { doc } = episode();
+  current = openingHash(doc);
+  let n = 0;
+  const saved = [];
+  const api = { run: async (...args) => {
+    n += 1;
+    if (n === 2) throw new Error("429 too many");
+    return { text: JSON.stringify({ ...happy(args[3]), opening_hash: "a mis-copied hash", swipe_at: "無" }), model: "claude-test" };
+  } };
+  const verdicts = await askOpeningReview(api, doc, { onVerdict: (list) => saved.push(list.length) });
+  assert.deepEqual(saved, [1, 2, 3], "each answer is saved as it arrives");
+  assert.equal(verdicts[0].swipe_at, null, "無 is no swipe");
+  assert.equal(verdicts[0].opening_hash, current, "the tool binds the packet it sent");
+  assert.equal(verdicts[1].via, "error");
+  const problems = openingReviewProblems(doc, openingReviewRecord(doc, verdicts));
+  assert.ok(problems.some((problem) => /did not answer: 429/.test(problem)), "the lost reader fails the round");
+  assert.ok(!problems.some((problem) => /newcomer.*read another version/.test(problem)));
+
+  const paced = { ...structuredClone(doc), pauses: { line_ms: 900, scene_ms: 2000 } };
+  assert.equal(openingHash(paced), current, "a pause change alone keeps the review");
+});
+
+test("tts --redo on a script never voiced is a first voice and still waits for the review", async () => {
+  const { box } = episode();
+  const redo = path.join(box.base, "flags.json");
+  writeFileSync(redo, JSON.stringify({ flags: [] }));
+  const run = capture(box);
+  assert.notEqual(await main(["tts", "--slug", box.slug, "--redo", redo], run.ctx), EXIT.ok);
+  assert.match(run.out.stderr, /have not passed the opening review/);
+});
+
+test("a session's own three subagents can pass the review through --record, with the author named apart", async () => {
+  const { box } = episode();
+  current = openingHash(JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8")));
+  const packet = capture(box);
+  assert.equal(await main(["opening-review", "--slug", box.slug], packet.ctx), EXIT.ok);
+  assert.match(packet.out.stdout, /three fresh subagents of this session/);
+  const answers = path.join(box.base, "answers.json");
+  const reader = (persona, agent) => ({ opening_hash: current, agent, persona, score: 9, would_stay_300: true, swipe_at: "無", problems: [] });
+  writeFileSync(answers, JSON.stringify([reader("newcomer", "writer"), reader("scroller", "b"), reader("stickler", "c")]));
+  const self = capture(box);
+  assert.equal(await main(["opening-review", "--slug", box.slug, "--record", answers, "--author", "writer"], self.ctx), EXIT.lint);
+  assert.match(self.out.stdout, /author cannot be a reader/);
+  writeFileSync(answers, JSON.stringify([reader("newcomer", "a"), reader("scroller", "b"), reader("stickler", "c")]));
+  const ok = capture(box);
+  assert.equal(await main(["opening-review", "--slug", box.slug, "--record", answers, "--author", "writer"], ok.ctx), EXIT.ok, ok.out.stdout);
+  const after = capture(box);
+  await main(["tts", "--slug", box.slug], after.ctx);
+  assert.doesNotMatch(after.out.stderr, /opening review/, "past the gate");
 });

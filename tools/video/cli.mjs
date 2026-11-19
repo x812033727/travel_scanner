@@ -20,7 +20,7 @@ import { estimateTimeline } from "./core/timeline.mjs";
 import { eachLine, LINE_ID } from "./core/schema.mjs";
 import { StageError, runCaptions } from "./core/stages.mjs";
 import { narrativeHash, writeScreenplay } from "./core/screenplay.mjs";
-import { askOpeningReview, OPENING_PACKET, OPENING_PERSONAS, OPENING_REVIEW, openingPacket, openingReviewProblems, openingReviewRecord } from "./core/opening-review.mjs";
+import { askOpeningReview, OPENING_PACKET, OPENING_PERSONAS, OPENING_REVIEW, openingPacket, openingReviewProblems, openingReviewRecord, sessionVerdicts } from "./core/opening-review.mjs";
 import { lintProject, loadProject, pipelineStatus } from "./core/state.mjs";
 
 // `incomplete`: a STOP file ended the stage before it finished. What it made so far is kept and a
@@ -81,9 +81,9 @@ Usage: node tools/video/cli.mjs <command> [options]
   ids      [--count N] [--slug S]                  fresh line ids that are not in use
   approve  --slug S --gate outline|script|look|storyboard|audio|final|publish [--workdir D] [--note T]
                                                    record the owner's approval of the file as it is now
-  opening-review --slug S [--ask | --check] [--workdir D]
+  opening-review --slug S [--record F --author A | --ask | --check] [--workdir D]
                                                    the strict first-300-seconds review of 原來如此, 奇聞 and brand stories:
-                                                   writes the packet; --ask has the site's model read it as three viewers; tts waits for it
+                                                   writes the packet; --record takes three subagents' answers, --ask the site's model; tts waits for it
   narrative --slug S [--answers F] [--workdir D] [--json]
                                                    the storytelling panel (script-writing.md §故事主線與鉤子): without --answers it
                                                    prints the narration and its ten yes-or-no questions for a blind reader; with
@@ -280,7 +280,7 @@ async function cmdNarrative(args, ctx) {
  * a hand-made episode until it passes.
  */
 async function cmdOpeningReview(args, ctx) {
-  const values = parse(args, { slug: { type: "string" }, workdir: { type: "string" }, ask: { type: "boolean" }, check: { type: "boolean" } });
+  const values = parse(args, { slug: { type: "string" }, workdir: { type: "string" }, ask: { type: "boolean" }, check: { type: "boolean" }, record: { type: "string" }, author: { type: "string" } });
   if (!values.slug) throw new UsageError("opening-review needs --slug");
   const project = loadProject({ slug: values.slug, root: ctx.root });
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: project.doc.slug, root: ctx.root, home: ctx.home });
@@ -295,17 +295,32 @@ async function cmdOpeningReview(args, ctx) {
   const packet = path.join(workdir, ...OPENING_PACKET);
   mkdirSync(path.dirname(packet), { recursive: true });
   atomicWrite(packet, openingPacket(project.doc));
+  if (values.record) {
+    // Three fresh subagents of the session making the episode read the packet, one per viewer.
+    if (!values.author) throw new UsageError("opening-review --record needs --author (the agent that wrote the script, never one of its readers)");
+    const verdicts = readJson(path.resolve(values.record));
+    if (!Array.isArray(verdicts)) throw new UsageError("--record names a JSON array of the three readers' answers");
+    const round = (readJson(reviewFile, null)?.round ?? 0) + 1;
+    const record = openingReviewRecord(project.doc, sessionVerdicts(verdicts), { round, at: ctx.now(), author: values.author });
+    mkdirSync(path.dirname(reviewFile), { recursive: true });
+    atomicWrite(reviewFile, `${JSON.stringify(record, null, 2)}\n`);
+    return report(record, `round ${round}`);
+  }
   if (!values.ask) {
-    ctx.stdout.write(`${project.doc.slug}: wrote ${packet}\nRun again with --ask: the site's model reads it as three viewers (${Object.keys(OPENING_PERSONAS).join(", ")}), one request each.\n`);
+    ctx.stdout.write(`${project.doc.slug}: wrote ${packet}\nGive it to three fresh subagents of this session, one per viewer (${Object.keys(OPENING_PERSONAS).join(", ")}), and record their answers with --record <file> --author <you>; or run --ask to have the site's model read it.\n`);
     return EXIT.ok;
   }
   const { automationClient } = await import("./automation/client.mjs");
-  const verdicts = await askOpeningReview(automationClient(ctx, { attempts: 2 }), project.doc);
   const round = (readJson(reviewFile, null)?.round ?? 0) + 1;
-  const record = openingReviewRecord(project.doc, verdicts, { round, at: ctx.now() });
   mkdirSync(path.dirname(reviewFile), { recursive: true });
-  atomicWrite(reviewFile, `${JSON.stringify(record, null, 2)}\n`);
-  return report(record, `round ${round}`);
+  // Each answer is saved as it arrives, so a request that fails later does not lose the paid ones.
+  const save = (verdicts) => {
+    const record = openingReviewRecord(project.doc, verdicts, { round, at: ctx.now() });
+    atomicWrite(reviewFile, `${JSON.stringify(record, null, 2)}\n`);
+    return record;
+  };
+  const verdicts = await askOpeningReview(automationClient(ctx, { attempts: 2 }), project.doc, { onVerdict: save });
+  return report(save(verdicts), `round ${round}`);
 }
 
 async function cmdScript(args, ctx) {

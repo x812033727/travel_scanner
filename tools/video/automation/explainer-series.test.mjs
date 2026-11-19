@@ -124,10 +124,10 @@ test("one table maps each explainer preset to its variants; every name fits the 
 // one-off on the host stops with video_ai_receipt_input_changed at its next stage after the deploy.
 const SERIES_TEXT_PINS = {
   "planner:bible-explainer-cartoon": [6519, "078f8a30dac91dbf89bb03f33c9672404ec96bb4dd130765f2b72f1ff5d8810f"],
-  "writer:explainer-cartoon": [33319, "b10f79ddedb915133c340a28d5e444ed3b11b44a64533e9f0536b12367e96fde"],
+  "writer:explainer-cartoon": [33632, "245d1d749facd12207da31f54c84c75a4cffb7094465ad988476b4958b1accab"],
   "verifier:explainer-cartoon": [4305, "6f41570e5090987327a200b7790a6ecdec88c8a0350de2ca49b74cb4e7ca95db"],
   "planner:discuss-cartoon": [7246, "86fb87e98cce5315e954f8505f00c56d3aa6693ccec3e9e72d70cbb7fee014c4"],
-  "writer:discuss-cartoon": [31784, "dc2e7045d5cada0b6ab20c5f976b7fd11afb805cc231417a42d2bab6faa024f4"],
+  "writer:discuss-cartoon": [32097, "d1ecb86c0ad68409ecbbb3e0db137882a5900a27f9ac39aff706551af082dd18"],
   "planner:bible-explainer-mystery": [9560, "96629ae4e51040e354111f8659249f1526c57070993a5025c1fbf1e58564adb6"],
   "writer:explainer-mystery": [38124, "748d45b5237a76e76aa8190454ec08ee0671e8376077225236b10f26f65d5daa"],
   "verifier:explainer-mystery": [6433, "e84a1810dab0b060272622dae14a95879470965678851713608fc5ac60dc4b2a"],
@@ -191,7 +191,8 @@ test("奇聞檔案局's writer keeps the brand stories' cadence and music bed; �
   assert.doesNotMatch(cartoon, /"music" is never left out/);
   // 原來如此 keeps its cards and its picture rules; its opening is the ten steps' hook and promise.
   assert.ok(!cartoon.includes(STORY_SERIES_SCREEN_RULE) && cartoon.includes(STORY_OPENING_RULE));
-  assert.match(cartoon, /The first chapter, 40 to 60 seconds: the hook and the promise/);
+  assert.match(cartoon, /The first chapter, 40 to 90 seconds, aimed at about a minute: the hook and the promise/);
+  assert.match(cartoon, /For a "why" question the ten steps of the shape rule below read this way/);
   assert.match(cartoon, /never a menu of\s+questions/);
   assert.match(cartoon, /No greeting and no intro: the first\s+line plays at 0:00/);
   assert.doesNotMatch(cartoon, /The channel intro plays after it/);

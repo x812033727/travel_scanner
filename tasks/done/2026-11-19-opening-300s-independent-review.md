@@ -23,6 +23,19 @@ scope:
   - .agents/skills/youtube-video/references/script-writing.md
   - docs/videos/lessons/sothatswhy.md
   - docs/videos/lessons/curio.md
+  - tools/video/automation/flow.mjs
+  - tools/video/automation/opening-gate.test.mjs
+  - tools/video/core/narrative.mjs
+  - tools/video/core/narrative.test.mjs
+  - tools/video/automation/explainer-series.mjs
+  - tools/video/automation/explainer-series.test.mjs
+  - docs/videos/BRANDING.md
+  - docs/videos/STORY.md
+  - docs/videos/so-thats-why/README.md
+  - .agents/skills/youtube-video/references/automated.md
+  - .agents/skills/curio-episode/references/w03-lessons.md
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # Strict first-300-seconds review by three independent readers before any voice
@@ -55,6 +68,16 @@ gate (they go straight to storyboard and final), so nothing held a weak opening 
       `via: "site"` and the model, and the gate takes no verdict typed in by hand (`--record` removed).
       `tts --dry-run` and `opening-review --check` show where the review stands. Residual: the record
       is still a local file, so a deliberate hand edit could forge `via`; the site keeps each prompt.
+
+- [x] Owner 2026-11-19 「用每個跑的AI?」: both sources count. By default the AI making the episode
+      asks three fresh subagents and records them with `--record F --author A` (via "session"; no site
+      quota; the author is never a reader); `--ask` stays for the site's model (via "site").
+- [x] End-to-end review fixes: the host's script gate sends a bad opening back to the writer
+      (`fixScript(..., "opening")`) instead of parking on the review-push refusal; `--ask` binds the
+      hash itself, keeps answers when a later request fails, reads 無/空字串 as no swipe, 8,000 output
+      tokens; `--redo` on a never-voiced script is still gated; the hash ignores pauses; the ten-step
+      series need 2 opening loops, not 3; the 原來如此 prompt uses one opening range (40–90 s) and
+      maps the ten steps to a why-question; stale docs marked.
 
 ## How to verify
 
