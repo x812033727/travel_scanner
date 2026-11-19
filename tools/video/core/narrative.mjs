@@ -498,12 +498,22 @@ export function thumbnailEchoProblems(doc, timeline, { series = null } = {}) {
  * their top ten on 2026-10-25): the name everybody knows up front, one stake or surprise word, a
  * number or a year, one question; short enough that a phone shows the point before it cuts; never a
  * calm reading question; and the thumbnail says something the title does not.
+ *
+ * Relaxed the same day (owner, 2026-11-19) after the lint was run on 黑猫研究院's own 13 most watched
+ * titles and passed one: seven ran 31 to 40 characters (a question up front, then a second clause
+ * that raises the stake), seven carried no number, and two asked nothing and set a contrast instead
+ * (「不是遊戲，而是一個抓蟲少年」「打贏任天堂，卻輸掉整個未來」). So: 38 characters, a number is welcome
+ * but not required, and no question mark is fine where the title is a contrast. None of the 13 asks
+ * two questions, and 11 of them put a stake word or a number inside the first 18 characters, so
+ * those two checks stand.
  */
-export const TITLE_CORE_MAX = 30;
+export const TITLE_CORE_MAX = 38;
 /** About what a phone feed shows before it cuts a title. */
 export const TITLE_PHONE_CHARACTERS = 18;
-export const TITLE_STAKE = /消失|不敢|騙過|差點|全部|真相|憑什麼|竟然|居然|反而|其實|根本|偷|毀|救|死|活|輸|贏|搶|逼|賠|賺|禁|怕|錯|假|騙|殺|逃|瘋|暴|唯一|第一|最|從來|沒人|沒有人|不是|不會|還能|還在|為什麼/;
-export const TITLE_NUMBER = /[0-9０-９]|[一二三四五六七八九十百千萬億兩]+(?:年|個|次|人|天|秒|分|倍|成|億|萬|塊|元|歲|代|國|種|件|艘|座|噸|公里|小時)/;
+export const TITLE_STAKE = /消失|不敢|騙過|差點|全部|真相|憑什麼|竟然|居然|反而|其實|根本|偷|毀|救|死|活|輸|贏|搶|逼|賠|賺|禁|怕|錯|假|騙|殺|逃|瘋|暴|唯一|第一|最|從來|沒人|沒有人|不是|不會|還能|還在|為什麼|到底|卻/;
+export const TITLE_NUMBER = /[0-9０-９]|[一二三四五六七八九十百千萬億兩]+(?:年|個|次|人|天|秒|分|倍|成|億|萬|塊|元|歲|代|國|種|件|艘|座|噸|公里|小時|家|條|張|包|星|顆|台|支)/;
+/** A title that asks nothing still hooks when it sets one thing against another. */
+export const TITLE_CONTRAST = /不是.+(?:而是|，是)|卻|反而/;
 export const CALM_TITLE = /改了哪裡|揭露了什麼|告訴我們什麼|有哪些|是什麼意思|怎麼看|的故事$|簡介|介紹|一次看懂|懶人包/;
 const titleCore = (title) => String(title ?? "").split(/[｜|]/)[0].trim();
 
@@ -513,15 +523,12 @@ export function titleProblems(doc, { series = null } = {}) {
   if (typeof title !== "string" || !title.trim()) return [];
   const core = titleCore(title);
   const problems = [];
-  const say = (message) => problems.push({ path: "youtube.title", message: `${message} (黑猫研究院's titles: the name everybody knows up front, one stake or surprise word, a number or a year, one question; curio-episode SKILL.md §標題與縮圖)` });
+  const say = (message) => problems.push({ path: "youtube.title", message: `${message} (黑猫研究院's titles: the name everybody knows up front, one stake or surprise word, one question or a contrast, a number where it helps; curio-episode SKILL.md §標題與縮圖)` });
   if ([...core].length > TITLE_CORE_MAX) say(`the title runs ${[...core].length} characters before the series suffix; keep it within ${TITLE_CORE_MAX}`);
   const marks = (core.match(/[？?]/g) ?? []).length;
-  if (marks === 0) say("the title asks no question: end the hook on one question mark");
+  if (marks === 0 && !TITLE_CONTRAST.test(core)) say("the title asks no question and sets no contrast: end the hook on one question mark, or set what happened against what anybody would expect (「不是…而是…」「…卻…」)");
   else if (marks > 1) say(`the title asks ${marks} questions: one is the hook, more is a menu`);
   if (!TITLE_STAKE.test(core)) say("the title has no stake or surprise word (消失、騙過、差點、憑什麼、竟然、反而、還能…): say what was at risk or what nobody expects");
-  // 原來如此 adds a number only where it is useful and sourced (refresh-20261101/SPEC.md); the two
-  // story series always carry one, as 黑猫研究院 does.
-  if (!TITLE_NUMBER.test(core) && !/^sothatswhy-/.test(doc.slug ?? "")) say("the title has no number or year: one concrete figure makes the stake real");
   if (CALM_TITLE.test(core)) say("the title reads as a calm reading question or a summary; make it the surprise itself");
   const phone = [...core].slice(0, TITLE_PHONE_CHARACTERS).join("");
   if ([...core].length > TITLE_PHONE_CHARACTERS && !TITLE_STAKE.test(phone) && !TITLE_NUMBER.test(phone)) say(`a phone cuts the title near ${TITLE_PHONE_CHARACTERS} characters and the stake and the number both come after it; bring one of them forward`);

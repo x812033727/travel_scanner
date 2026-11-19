@@ -100,7 +100,8 @@ curious viewer would ask, answered`,
   titleGuide: `youtube.title is the question followed by 「｜原來如此事務所」, written the way 黑猫研究院
   writes its most watched titles (owner, 2026-11-19): the thing everybody knows in the first six
   characters (QR Code, 冰箱門, 羽絨衣), one surprise or stake word (竟然、還能、反而、根本、憑什麼、從來),
-  a number only where it is useful and sourced, one question mark; at most 30 characters before
+  a number only where it is useful and sourced, one question mark (none only where the title
+  sets a contrast, 「不是…而是…」「…卻…」); at most 38 characters before
   the suffix, with the surprise inside the first 18 (a phone cuts there) (「QR Code 沾到咖啡，
   竟然還能嗶？」「冰箱門一關，燈竟然真的會熄？」); the thumbnail headline says what the title does not; never a
   calm reading question or a summary (「QR Code 的原理是什麼」「冰箱的故事」); lint warns
@@ -248,7 +249,8 @@ stands best today each have their place,`,
   history channels with hundreds of thousands of views write theirs (2026-10-25): the name
   everybody knows in the first six characters (the ship, the place, the person, the event), one
   stake word that says what was at risk or what nobody expects (消失、不敢、騙過、差點、全部、
-  真相、憑什麼), a number or a year, a question mark; at most 30 characters before the suffix
+  真相、憑什麼), a number or a year where it helps, a question mark (none only where the title
+  sets a contrast, 「不是…而是…」「…卻…」); at most 38 characters before the suffix
   (「十個人全部消失，1872 年這艘船為什麼還在走？」「曹操自己放的火？赤壁真正燒船的人是誰」),
   never a calm reading question (「燈塔的故事改了哪裡」)`,
   descriptionGuide: `description is the body only, ending on 「資料截至 YYYY-MM-DD」 with "today"'s
