@@ -10,6 +10,8 @@ and deletes one already dropped.
 
 from __future__ import annotations
 
+import asyncio
+import shutil
 from typing import Annotated, Any
 from uuid import UUID
 
@@ -56,6 +58,7 @@ from app.video_reviews.schemas import (
     YoutubeIn,
 )
 from app.video_reviews.storage import PART_BYTES, ReviewStore, StorageRefused
+from app.video_reviews.store_view import ReviewStoreView
 from app.video_shorts.schemas import ShortsFilter, ShortsState
 from app.video_speech.admin_api import VideoTool
 
@@ -170,6 +173,27 @@ async def list_videos(
         limit=limit,
         before=before,
         work_dir=runtime.video_work_dir,
+    )
+
+
+# Declared before /{slug}, which would otherwise take "store" for a video's slug.
+@admin_router.get("/store", response_model=ReviewStoreView)
+async def review_store_status(user: ContentReader, session: Session) -> ReviewStoreView:
+    """How full the preview store is, for the 審片空間 card on the video settings tab."""
+    _ = user
+    store = await _store(session)
+    try:
+        disk = shutil.disk_usage(store.root if store.root.exists() else store.root.parent)
+        free: int | None = disk.free
+        total: int | None = disk.total
+    except OSError:
+        free = total = None
+    return ReviewStoreView(
+        used_bytes=await asyncio.to_thread(store.used_bytes),
+        max_total_bytes=store.max_total_bytes,
+        max_file_bytes=store.max_file_bytes,
+        disk_free_bytes=free,
+        disk_total_bytes=total,
     )
 
 
