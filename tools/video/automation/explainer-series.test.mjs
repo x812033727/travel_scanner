@@ -126,16 +126,16 @@ test("one table maps each explainer preset to its variants; every name fits the 
 // way the answer lies and allows one announced aside, one counted list and a verdict before a
 // chapter's open question; the same stop applies to an unfinished one-off.
 const SERIES_TEXT_PINS = {
-  "planner:bible-explainer-cartoon": [6519, "078f8a30dac91dbf89bb03f33c9672404ec96bb4dd130765f2b72f1ff5d8810f"],
-  "writer:explainer-cartoon": [35613, "a135c514d9ff6f35dbe88c6e7d4d5d81bac24ca55a450ac8d220fea83937a634"],
+  "planner:bible-explainer-cartoon": [7157, "c0c073ea08c1830520cdd8aac05655180dbf74804ddb47fdb53289a472dc7f4a"],
+  "writer:explainer-cartoon": [35511, "6a203643c99021ea4839e0f70a46c5681eed81056069592c76a287cfc3edbb88"],
   "verifier:explainer-cartoon": [4305, "6f41570e5090987327a200b7790a6ecdec88c8a0350de2ca49b74cb4e7ca95db"],
-  "planner:discuss-cartoon": [7246, "86fb87e98cce5315e954f8505f00c56d3aa6693ccec3e9e72d70cbb7fee014c4"],
-  "writer:discuss-cartoon": [34078, "0db8abed5306553d3885facce2424101e2f2406026482394c9d3e361828586e9"],
-  "planner:bible-explainer-mystery": [9615, "8eb4a18c04b487826fa483303f255aa5b1bb8050836d597aa923038ce7b22172"],
-  "writer:explainer-mystery": [39665, "e9dd502bbf9a7eae47eaf2fe53ce597e6be413d5725a3b6badc68d940568bde9"],
+  "planner:discuss-cartoon": [7884, "67c29f2e2e662f11fa2eb5e91fac15a388739750b15f88916406b56950b0cc0a"],
+  "writer:discuss-cartoon": [33976, "b6f5f375128fbd642aff778778486218c98948bc430f04605b76ff7052489a3a"],
+  "planner:bible-explainer-mystery": [10253, "20e96955d47455eb2b5bf9065e6f28686ecb77c9bbe5803496630452a1a4283f"],
+  "writer:explainer-mystery": [39583, "3adeaf8ce0dff0d4f5b2033770585ffffabae43fca6a432169ee79a117b755ad"],
   "verifier:explainer-mystery": [6433, "e84a1810dab0b060272622dae14a95879470965678851713608fc5ac60dc4b2a"],
-  "planner:discuss-mystery": [10244, "5049e3b4666364e854671e6c2b010e5d382b974fbcdfad1defdf14f26326208c"],
-  "writer:discuss-mystery": [38202, "65a85808c6bb48c7d0fed3d4df52c84bcf78252056ee1ee5d6ce1aa7aca497ca"],
+  "planner:discuss-mystery": [10882, "953f812ff7bffa3ff7c70e2132048bcacc894477bc803017c9ac068124ac6dfa"],
+  "writer:discuss-mystery": [38120, "0f00b95cc880d9071a77247a0e23fac6be7a87f5f89b8a1dd38882c51acbb2a1"],
 };
 
 test("the ten texts of the two profiled series are the pinned ones, composed with no genre section", () => {

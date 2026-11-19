@@ -205,13 +205,11 @@ The close:
  * (core/lint.mjs STORY_OPENING_CHAPTER_SECONDS reads the first chapter); the other narrated
  * videos keep it.
  */
-export const STORY_OPENING_RULE = `Shape of an episode of this series (owner, 2026-11-05; the illustrated why-explainer since
-  2026-11-19; in place of the condensation
-  rule above, so no 30-to-60-second condensation, no scene told up to its first odd fact, no three
-  or four teasers and no summary of the plot up front; what stands of it: the first spoken line at
-  0:00, no greeting, no table of contents, no later chapter's result given away). There is no
-  intro bumper at all (owner, 2026-11-19): the video opens on its first line and the tool adds
-  only the outro. Ten steps, broadly in the order things happened:
+export const STORY_OPENING_RULE = `Shape of an episode of this series (owner, 2026-11-05; in place of the condensation
+  rule above, so no 30-to-60-second condensation, no scene told up to its first odd fact, no
+  teasers and no plot summary up front; still: the first spoken line at 0:00, no greeting, no
+  table of contents, no later chapter's result given away). No intro bumper (owner, 2026-11-19):
+  the tool adds only the outro. Ten steps, broadly in the order things happened:
   1. The hook, about 25 to 50 seconds: ONE question or ONE situation the viewer knows (「你有沒有用過…」
      「隨便去街上問一個人…」), never a menu of questions stacked one after another (owner,
      2026-11-19: at most one follow-up; lint warns past two questions in the opening, the promise
@@ -244,8 +242,7 @@ export const STORY_OPENING_RULE = `Shape of an episode of this series (owner, 20
   it, and every paragraph opens on a transition from the one before (「但就在這時候」「時間快轉到
   1983 年」「問題來了」). The hook's contrast, its one or two climax labels and the promise's
   question are the loops the first chapter plants, paid off in steps 5 to 9.
-  Three exceptions the owner allowed on 2026-11-19 (黑猫研究院's 13 most watched, read line by
-  line); each overrides the rules above only as far as it says, and a script written a chapter
+  Three exceptions the owner allowed on 2026-11-19; each overrides the rules above only as far as it says, and a script written a chapter
   at a time uses the first two only where "plan" puts them (else in its longest middle chapter):
   - One aside in the whole episode, announced before it is taken: a sentence saying why it is
     worth hearing (「這裡先岔開講一個支線，因為後面會用到」), at most a minute carried by one whole
@@ -319,18 +316,18 @@ export const TOLD_TO_ONE_VIEWER = `Told to one viewer (this series, as 黑猫研
     reaction never changes a fact.
   - The pace of a conversation: sentences run on with connectives (那麼、結果、然後、但是、沒想到、
     這時候), a fact is followed by what it meant for somebody, a number by what it bought or cost,
-    and a reveal is a short sentence. Aim at about 4.5 spoken characters a second over the body
-    (the reference channels run about 5; ours ran 3.3), so 13 minutes is about 3,500 characters.
+    and a reveal is a short sentence. Aim at about 4.5 spoken characters a second over the body, about 270 characters a minute.
   - Human dilemmas and moves, never a legal filing or a collation note read aloud (2026-11-18):
     tell who was cornered, what rival forced their hand, what move they made and what it cost,
-    instead of reciting source or statutory caveats out loud (「照…的資料」「年報寫」「現行…法規寫著」
-    「翻遍年報也找不到」「沒有公布…查不到」「千萬別聽成…」; lint warns when filing or missing-figure
-    hedges repeat). Exact legal scope, accounting footnotes and figures no source publishes belong
+    instead of reciting source or statutory caveats out loud (「年報寫」「翻遍年報也找不到」; lint
+    warns when they repeat). Exact legal scope, accounting footnotes and figures no source publishes belong
     in claims.md and youtube.description; in a historical mystery, stay inside one person's choice
     instead of collating three chronicle editions line by line.
-  - The close is a conversation too: the answer, then 「如果你…，留言告訴我」 on something the
-    viewer owns or does, then the subscribe reason; it may say 「好啦，這就是今天的故事」 and it
-    still never names the next video.`;
+  - Three more habits of that telling (2026-11-19). The rival or the old way is never a fool:
+    say the sound reason that bound them (a principle, a supply chain, a contract). After three
+    or four long sentences, one of two to six characters brakes (「錯了！」「怎麼辦？硬做！」). And
+    the brief's 舊世界, 對手的理由, 二次反轉, 彩蛋, 比喻, 現在 and 概念詞 lines are told where they
+    say; the 概念詞 is said as our own name for it, then used again.`;
 
 // A writing-only route inside the existing slides format. This does not alter the storytelling
 // register, voice, schema, pause calculation or QA, and is not sent to drama or translation stages.

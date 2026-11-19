@@ -117,7 +117,14 @@ type it, and what most people wrongly assume.
 ## 原因 3 or 4 reasons, each one sentence with the source page that supports it.
 ## 大綱 ONE outline: the spine in one sentence (「主線：…」: who or what, from which moment,
 to which answer); 3 to 5 turns in the order they happened (「轉折：…」, each with the chapter
-that reveals it); the hook as the first spoken line, ONE question or situation the viewer knows
+that reveals it); where the sources carry them, also 「舊世界：…」 (what was unbearable before the
+protagonist came, told first in the era chapter), 「對手的理由：…」 (the sound reason that bound
+the rival or the old way), 「二次反轉：…」 (what the half-informed believe, overturned
+mid-episode), 「彩蛋：…」 (the second-biggest surprise, kept for 「故事還沒結束」 at about three
+quarters), 「概念詞：…」 (our own four-to-six-character name for the mechanism), on a technical
+topic 「比喻：…」 (the one everyday metaphor) and 「現在：…」 (the form the viewer uses today, for
+the epilogue), and 「岔題：第 N 章」「清單：第 N 章」 where the one aside or the one counted list
+goes, each line left out rather than invented; the hook as the first spoken line, ONE question or situation the viewer knows
 and never a menu of questions; its contrast, what everybody assumes against what is true, with at
 most one or two later moments named and cut off before their results (「鉤子：…」); the promise
 sentence 「今天我們就來聊聊…」 with the question (「承諾句：…」); the open loops (「鉤子：<what is
@@ -275,7 +282,7 @@ every other hook rule stands):
 - A hook stands on a fact of this file: a date, a number, one person's decision, something that
   should not have been there. Never an empty promise (「接下來更精采」「後面還有更驚人的」) and never
   a table of contents. At most one forward hook in the whole episode says so out loud, and
-  「還記得…」 at most twice (lint warns past two).
+  「還記得…」 at most twice, not the five above (lint warns past two).
 - "loops" lists at least 8 for ten minutes of narration (about one for every 75 seconds), at
   least 2 of them planted in the first chapter (the hook's contrast and the promise's question; one
   climax label may add a third, never a menu of questions), and every one is paid off.
@@ -305,7 +312,14 @@ with its label and names the source page that supports it:
   open.
 ## 大綱 ONE outline: the spine in one sentence (「主線：…」: who or what, from which moment,
 to which answer); 3 to 5 turns in the order they happened (「轉折：…」, each with the chapter
-that reveals it); the hook as the first spoken line (a question or a situation the viewer knows,
+that reveals it); where the sources carry them, also 「舊世界：…」 (what was unbearable before the
+protagonist came, told first in the era chapter), 「對手的理由：…」 (the sound reason that bound
+the rival or the old way), 「二次反轉：…」 (what the half-informed believe, overturned
+mid-episode), 「彩蛋：…」 (the second-biggest surprise, kept for 「故事還沒結束」 at about three
+quarters), 「概念詞：…」 (our own four-to-six-character name for the mechanism), on a technical
+topic 「比喻：…」 (the one everyday metaphor) and 「現在：…」 (the form the viewer uses today, for
+the epilogue), and 「岔題：第 N 章」「清單：第 N 章」 where the one aside or the one counted list
+goes, each line left out rather than invented; the hook as the first spoken line (a question or a situation the viewer knows,
 which tells a newcomer what this is and why it is worth watching); the hook's contrast, how big
 it ended up against how small it started, with at most one or two climaxes named and cut off
 before their results, never the plot (「鉤子：…」); the promise sentence 「今天我們就來聊聊…」 with
