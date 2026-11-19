@@ -5,14 +5,20 @@ import test from "node:test";
 
 import { EXIT, main } from "../cli.mjs";
 import { sandbox } from "./fixtures/load.mjs";
-import { needsOpeningReview, openingHash, OPENING_PERSONAS, OPENING_REVIEW_MIN_SCORE, OPENING_REVIEW_SECONDS, openingPacket, openingReviewProblems, openingReviewRecord } from "./opening-review.mjs";
+import { askOpeningReview, needsOpeningReview, openingHash, OPENING_PERSONAS, OPENING_REVIEW_MIN_SCORE, OPENING_REVIEW_SECONDS, openingPacket, openingReviewProblems, openingReviewRecord, parseOpeningAnswer } from "./opening-review.mjs";
 
-function capture(box) {
+const SITE = "https://mokaair.test";
+
+function capture(box, fetchImpl = null) {
   const out = { stdout: "", stderr: "" };
+  // Only the site's readers need the token; tts without one stops before any voice request.
+  const env = fetchImpl ? { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: "t".repeat(40), MOKAAIR_SITE: SITE } : { VIDEO_WORKDIR: box.work };
   return {
     out,
     ctx: {
-      root: box.root, env: { VIDEO_WORKDIR: box.work }, home: box.base,
+      root: box.root, env, home: box.base,
+      ...(fetchImpl ? { fetch: fetchImpl } : {}),
+      sleep: async () => {},
       stdout: { write: (text) => (out.stdout += text) },
       stderr: { write: (text) => (out.stderr += text) },
       now: () => new Date("2026-11-19T05:00:00Z"),
@@ -30,10 +36,26 @@ function episode(slug = "sothatswhy-x01") {
 }
 
 let current = null;
-const pass = (persona, agent = `reader-${persona}`) => ({ opening_hash: current, agent, persona, score: 9, would_stay_300: true, swipe_at: null, problems: [] });
+const pass = (persona, extra = {}) => ({ opening_hash: current, agent: `site:claude-test#${persona}`, via: "site", model: "claude-test", persona, score: 9, would_stay_300: true, swipe_at: null, problems: [], ...extra });
 const allPass = () => Object.keys(OPENING_PERSONAS).map((persona) => pass(persona));
 
-test("the opening review reads 300 seconds with three readers, one per viewer, all strict (owner 2026-11-19)", () => {
+/** A site whose verifier answers as `answer(payload)` says. */
+function fakeSite(answer) {
+  const calls = [];
+  const fetchImpl = async (url, init = {}) => {
+    const { pathname } = new URL(url);
+    const body = init.body ? JSON.parse(init.body) : null;
+    if (pathname === "/api/video/automation/run") {
+      calls.push(body);
+      return new Response(JSON.stringify({ text: `好的：\n${JSON.stringify(answer(body.payload))}`, provider: "anthropic", model: "claude-test", input_tokens: 10, output_tokens: 5, usage: { tokens: 15, token_budget: 1_000_000, drafts: 0, draft_budget: 8, calls: 1, failed_calls: 0 } }), { status: 200, headers: { "content-type": "application/json" } });
+    }
+    return new Response(JSON.stringify({ code: "not_found", detail: pathname }), { status: 404, headers: { "content-type": "application/json" } });
+  };
+  return { calls, fetchImpl };
+}
+const happy = (payload) => ({ opening_hash: payload.opening_hash, persona: payload.persona, agent: "x", score: 9, would_stay_300: true, swipe_at: null, problems: [] });
+
+test("the opening review reads 300 seconds with three site readers, one per viewer, all strict (owner 2026-11-19)", () => {
   assert.equal(OPENING_REVIEW_SECONDS, 300);
   assert.equal(OPENING_REVIEW_MIN_SCORE, 8.5);
   assert.deepEqual(Object.keys(OPENING_PERSONAS), ["newcomer", "scroller", "stickler"]);
@@ -42,28 +64,31 @@ test("the opening review reads 300 seconds with three readers, one per viewer, a
   const packet = openingPacket(doc);
   assert.ok(packet.includes(current), "the packet carries the hash each reader echoes");
   assert.ok(/精衛：|炎帝：/.test(packet) && !/jingwei：|yandi：/.test(packet), "readers see the characters' names, not their ids");
-  assert.match(packet, /前 300 秒觀眾審查/);
   assert.match(packet, /縮圖大字/);
   assert.match(packet, /問題菜單/);
   assert.match(packet, /沒頭沒尾/);
   assert.match(packet, /- \[00:00\]/);
 
-  assert.deepEqual(openingReviewProblems(doc, openingReviewRecord(doc, allPass(), { author: "writer" })), []);
-  assert.match(openingReviewProblems(doc, null)[0], /no opening review yet/);
-  const two = openingReviewRecord(doc, allPass().slice(0, 2), { author: "writer" });
+  assert.deepEqual(openingReviewProblems(doc, openingReviewRecord(doc, allPass())), []);
+  assert.match(openingReviewProblems(doc, null)[0], /--ask/);
+  const byHand = openingReviewRecord(doc, Object.keys(OPENING_PERSONAS).map((persona) => pass(persona, { via: undefined, model: undefined })));
+  assert.ok(openingReviewProblems(doc, byHand).some((problem) => /typed in by hand does not count/.test(problem)), "only the site's readers count");
+  const two = openingReviewRecord(doc, allPass().slice(0, 2));
   assert.ok(openingReviewProblems(doc, two).some((problem) => /no reader read as stickler/.test(problem)), "every viewer is read");
-  const same = openingReviewRecord(doc, Object.keys(OPENING_PERSONAS).map((persona) => pass(persona, "one-agent")), { author: "writer" });
-  assert.ok(openingReviewProblems(doc, same).some((problem) => /different agent/.test(problem)));
-  const self = openingReviewRecord(doc, [pass("newcomer", "writer"), pass("scroller"), pass("stickler")], { author: "writer" });
-  assert.ok(openingReviewProblems(doc, self).some((problem) => /author cannot be a reader/.test(problem)));
-  const low = openingReviewRecord(doc, [{ ...pass("newcomer"), score: 8 }, pass("scroller"), pass("stickler")], { author: "writer" });
+  const same = openingReviewRecord(doc, [pass("newcomer", { agent: "Reader " }), pass("scroller", { agent: "reader" }), pass("stickler")]);
+  assert.ok(openingReviewProblems(doc, same).some((problem) => /different agent/.test(problem)), "names compare without case or spaces");
+  const low = openingReviewRecord(doc, [pass("newcomer", { score: 8 }), pass("scroller"), pass("stickler")]);
   assert.ok(openingReviewProblems(doc, low).some((problem) => /under 8.5/.test(problem)));
-  const swipe = openingReviewRecord(doc, [pass("newcomer"), { ...pass("scroller"), would_stay_300: false, swipe_at: "1:40" }, pass("stickler")], { author: "writer" });
-  assert.ok(openingReviewProblems(doc, swipe).some((problem) => /swipe away at 1:40/.test(problem)));
-  const nit = openingReviewRecord(doc, [pass("newcomer"), pass("scroller"), { ...pass("stickler"), problems: [{ at: "0:42", line: "某句", why: "沒交代是誰", fix: "先說他是誰" }] }], { author: "writer" });
+  const swipe = openingReviewRecord(doc, [pass("newcomer"), pass("scroller", { would_stay_300: false, swipe_at: "01:40" }), pass("stickler")]);
+  assert.ok(openingReviewProblems(doc, swipe).some((problem) => /swipe away at 01:40/.test(problem)));
+  const nit = openingReviewRecord(doc, [pass("newcomer"), pass("scroller"), pass("stickler", { problems: [{ at: "00:42", line: "某句", why: "沒交代是誰", fix: "先說他是誰" }] })]);
   assert.ok(openingReviewProblems(doc, nit).some((problem) => /沒交代是誰/.test(problem)), "any problem named keeps it from passing");
+  const text = openingReviewRecord(doc, [pass("newcomer"), pass("scroller"), pass("stickler", { problems: "drags at 1:40" })]);
+  assert.ok(openingReviewProblems(doc, text).some((problem) => /must be a list/.test(problem)));
+  const stale = openingReviewRecord(doc, [pass("newcomer", { opening_hash: "0".repeat(64) }), pass("scroller"), pass("stickler")]);
+  assert.ok(openingReviewProblems(doc, stale).some((problem) => /read another version/.test(problem)), "a reader of an older packet does not count");
 
-  const passed = openingReviewRecord(doc, allPass(), { author: "writer" });
+  const passed = openingReviewRecord(doc, allPass());
   const edited = structuredClone(doc);
   edited.scenes[0].lines[0].text += "改了一句。";
   assert.ok(openingReviewProblems(edited, passed).some((problem) => /first 300 seconds changed/.test(problem)), "an edit in the opening asks for a new round");
@@ -71,43 +96,52 @@ test("the opening review reads 300 seconds with three readers, one per viewer, a
   assert.ok(openingReviewProblems(retitled, passed).some((problem) => /changed after the opening review/.test(problem)), "so does a new title");
   const reheadlined = { ...structuredClone(doc), thumbnail: { ...doc.thumbnail, data: { ...doc.thumbnail.data, headline: "新大字" } } };
   assert.ok(openingReviewProblems(reheadlined, passed).length > 0, "and a new thumbnail headline");
-  const stale = openingReviewRecord(doc, [{ ...pass("newcomer"), opening_hash: "0".repeat(64) }, pass("scroller"), pass("stickler")], { author: "writer" });
-  assert.ok(openingReviewProblems(doc, stale).some((problem) => /read another version/.test(problem)), "a reader of an older packet does not count");
-  const text = openingReviewRecord(doc, [pass("newcomer"), pass("scroller"), { ...pass("stickler"), problems: "drags at 1:40" }], { author: "writer" });
-  assert.ok(openingReviewProblems(doc, text).some((problem) => /must be a list/.test(problem)));
-  const cased = openingReviewRecord(doc, [pass("newcomer", "Writer "), pass("scroller"), pass("stickler")], { author: "writer" });
-  assert.ok(openingReviewProblems(doc, cased).some((problem) => /author cannot be a reader/.test(problem)), "names compare without case or spaces");
+
   assert.equal(needsOpeningReview(doc, { voiced: true }), false, "a voice already made for this script is not asked again");
   assert.equal(needsOpeningReview(doc, { retake: true }), false, "nor a retake");
   assert.equal(needsOpeningReview({ slug: "daily-ai-20261119" }), false, "other series are untouched");
+  assert.deepEqual(parseOpeningAnswer("```json\n{\"score\": 9}\n```"), { score: 9 });
 });
 
-test("tts refuses a hand-made 原來如此 episode until the opening review passes; the command records a round", async () => {
+test("askOpeningReview sends one verifier request per viewer and records that the site answered", async () => {
+  const { doc } = episode();
+  const calls = [];
+  const api = { run: async (...args) => { calls.push(args); return { text: JSON.stringify(happy(args[3])), model: "claude-test", input_tokens: 1, output_tokens: 1 }; } };
+  const verdicts = await askOpeningReview(api, doc);
+  assert.deepEqual(calls.map((call) => [call[0], call[5], call[6], call[3].persona]), [["verifier", "drama", "opening-review", "newcomer"], ["verifier", "drama", "opening-review", "scroller"], ["verifier", "drama", "opening-review", "stickler"]]);
+  assert.ok(verdicts.every((verdict) => verdict.via === "site" && verdict.model === "claude-test"));
+  assert.deepEqual(openingReviewProblems(doc, openingReviewRecord(doc, verdicts)), []);
+  const broken = await askOpeningReview({ run: async () => ({ text: "我覺得很好看", model: "m" }) }, doc);
+  assert.ok(openingReviewProblems(doc, openingReviewRecord(doc, broken)).some((problem) => /could not be read/.test(problem)), "an unreadable answer fails, it never passes");
+});
+
+test("tts refuses a hand-made 原來如此 episode until the site's readers pass it; --dry-run says where it stands", async () => {
   const { box } = episode();
   const blocked = capture(box);
   assert.notEqual(await main(["tts", "--slug", box.slug], blocked.ctx), EXIT.ok);
   assert.match(blocked.out.stderr, /have not passed the opening review/);
   const dry = capture(box);
   assert.equal(await main(["tts", "--slug", box.slug, "--dry-run"], dry.ctx), EXIT.ok, "a dry run only prices");
+  assert.match(dry.out.stdout, /opening review: not passed yet \(opening-review --slug sothatswhy-x01 --ask\)/);
 
-  const packet = capture(box);
-  assert.equal(await main(["opening-review", "--slug", box.slug], packet.ctx), EXIT.ok, packet.out.stderr);
+  const strict = fakeSite((payload) => ({ ...happy(payload), ...(payload.persona === "scroller" ? { score: 7, would_stay_300: false, swipe_at: "02:10", problems: [{ at: "02:10", line: "…", why: "拖", fix: "砍半" }] } : {}) }));
+  const failed = capture(box, strict.fetchImpl);
+  assert.equal(await main(["opening-review", "--slug", box.slug, "--ask"], failed.ctx), EXIT.lint, failed.out.stderr);
+  assert.equal(strict.calls.length, 3, "three requests, one per viewer");
+  assert.ok(strict.calls.every((call) => call.stage === "verifier" && call.variant === "opening-review"));
+  assert.match(failed.out.stdout, /round 1 not passed/);
+  assert.match(failed.out.stdout, /swipe away at 02:10/);
   assert.match(readFileSync(path.join(box.workdir, "review", "opening-packet.md"), "utf8"), /前 300 秒觀眾審查/);
 
-  const answers = path.join(box.base, "answers.json");
-  current = openingHash(JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8")));
-  writeFileSync(answers, JSON.stringify([pass("newcomer"), { ...pass("scroller"), score: 7 }, pass("stickler")]));
-  const failed = capture(box);
-  assert.equal(await main(["opening-review", "--slug", box.slug, "--record", answers, "--author", "writer"], failed.ctx), EXIT.lint);
-  assert.match(failed.out.stdout, /round 1 failed/);
-
-  writeFileSync(answers, JSON.stringify(allPass()));
-  const passed = capture(box);
-  assert.equal(await main(["opening-review", "--slug", box.slug, "--record", answers, "--author", "writer"], passed.ctx), EXIT.ok, passed.out.stdout);
+  const good = fakeSite(happy);
+  const passed = capture(box, good.fetchImpl);
+  assert.equal(await main(["opening-review", "--slug", box.slug, "--ask"], passed.ctx), EXIT.ok, passed.out.stdout + passed.out.stderr);
   assert.match(passed.out.stdout, /round 2 passed/);
+  const check = capture(box);
+  assert.equal(await main(["opening-review", "--slug", box.slug, "--check"], check.ctx), EXIT.ok);
   const after = capture(box);
   await main(["tts", "--slug", box.slug], after.ctx);
-  assert.doesNotMatch(after.out.stderr, /opening review/, "past the gate (the voice itself still needs its login)");
+  assert.doesNotMatch(after.out.stderr, /opening review/, "past the gate");
 
   mkdirSync(box.workdir, { recursive: true });
   writeFileSync(path.join(box.workdir, "auto.json"), "{}");

@@ -108,31 +108,71 @@ ${personas}
 }
 
 /** A record of one round, bound to what the readers read. */
-export function openingReviewRecord(doc, verdicts, { author, round = 1, at = new Date() } = {}) {
-  return { opening_hash: openingHash(doc), window_seconds: OPENING_REVIEW_SECONDS, author_agent: author ?? null, round, recorded_at: at.toISOString(), verdicts };
+export function openingReviewRecord(doc, verdicts, { round = 1, at = new Date() } = {}) {
+  return { opening_hash: openingHash(doc), window_seconds: OPENING_REVIEW_SECONDS, round, recorded_at: at.toISOString(), verdicts };
+}
+
+/** What each reader is told; the packet and its persona come in the payload. */
+export const OPENING_REVIEW_INSTRUCTIONS = `You are ONE independent viewer of a zh-TW YouTube video. You did not make it and know nothing
+about it beyond the payload. payload.packet is everything you see: the thumbnail headline, the title
+and the first 300 seconds of the script, timed. Read it strictly as the viewer payload.persona
+describes (payload.persona_description), and answer honestly whether you would swipe away inside
+the first 300 seconds and why. Be strict: anything that would make you leave or frown is a problem,
+with a concrete fix. Answer with the JSON object the packet asks for and nothing else, in zh-TW,
+copying payload.opening_hash into "opening_hash" and payload.persona into "persona".`;
+
+/** The JSON object of an answer, also when the model wrapped it in a fence or a sentence. */
+export function parseOpeningAnswer(text) {
+  const body = String(text ?? "");
+  const start = body.indexOf("{");
+  const end = body.lastIndexOf("}");
+  if (start < 0 || end <= start) throw new Error("the reader's answer holds no JSON object");
+  return JSON.parse(body.slice(start, end + 1));
+}
+
+/**
+ * Ask the site's model for the three readers, one request each (the verifier stage, the model the
+ * owner chose for it). The verdicts record that the site gave them (via, model): the gate takes no
+ * verdict typed in by hand.
+ */
+export async function askOpeningReview(api, doc) {
+  const timeline = estimateTimeline(doc);
+  const packet = openingPacket(doc, timeline);
+  const hash = openingHash(doc, timeline);
+  const verdicts = [];
+  for (const [persona, description] of Object.entries(OPENING_PERSONAS)) {
+    const answer = await api.run("verifier", doc.slug, OPENING_REVIEW_INSTRUCTIONS, { packet, persona, persona_description: description, opening_hash: hash }, 4_000, "drama", "opening-review");
+    let parsed;
+    try {
+      parsed = parseOpeningAnswer(answer.text);
+    } catch (error) {
+      parsed = { score: 0, would_stay_300: false, swipe_at: null, problems: [{ at: "?", line: "", why: `the answer could not be read: ${error.message}`, fix: "ask again" }] };
+    }
+    verdicts.push({ ...parsed, persona, agent: `site:${answer.model}#${persona}`, via: "site", model: answer.model, tokens: (answer.input_tokens ?? 0) + (answer.output_tokens ?? 0) });
+  }
+  return verdicts;
 }
 
 const who = (name) => String(name ?? "").trim().toLowerCase();
 
 /** What keeps a record from passing: empty when the current script passed the strict round. */
 export function openingReviewProblems(doc, record) {
-  if (!record) return ["no opening review yet: run `opening-review --slug <slug>` and have three independent readers answer it"];
+  if (!record) return ["no opening review yet: run `opening-review --slug <slug> --ask` (three independent readers on the site's model)"];
   const problems = [];
   const current = openingHash(doc);
   if (record.opening_hash !== current) problems.push("the title, the thumbnail headline or the first 300 seconds changed after the opening review; run a new round on the current packet");
   if (record.window_seconds !== OPENING_REVIEW_SECONDS) problems.push(`the review must read the first ${OPENING_REVIEW_SECONDS} seconds`);
   const verdicts = Array.isArray(record.verdicts) ? record.verdicts : [];
   const agents = verdicts.map((verdict) => who(verdict?.agent));
-  if (!who(record.author_agent)) problems.push("the record names no author_agent");
   if (agents.some((agent) => !agent)) problems.push("every verdict names its reader (agent)");
   if (new Set(agents).size !== agents.length) problems.push("each reader is a different agent");
-  if (who(record.author_agent) && agents.includes(who(record.author_agent))) problems.push("the author cannot be a reader");
   for (const persona of Object.keys(OPENING_PERSONAS)) {
     if (!verdicts.some((verdict) => verdict?.persona === persona)) problems.push(`no reader read as ${persona}`);
   }
   for (const verdict of verdicts) {
     const reader = `${verdict?.agent ?? "?"} (${verdict?.persona ?? "?"})`;
     if (!Object.hasOwn(OPENING_PERSONAS, verdict?.persona)) problems.push(`${reader}: unknown persona`);
+    if (verdict?.via !== "site" || !verdict?.model) problems.push(`${reader}: not asked of the site's model (run opening-review --ask; a verdict typed in by hand does not count)`);
     if (!(Number(verdict?.score) >= OPENING_REVIEW_MIN_SCORE)) problems.push(`${reader}: score ${verdict?.score} is under ${OPENING_REVIEW_MIN_SCORE}`);
     if (verdict?.would_stay_300 !== true) problems.push(`${reader}: would not stay the first ${OPENING_REVIEW_SECONDS} seconds`);
     if (verdict?.swipe_at !== null && verdict?.swipe_at !== undefined) problems.push(`${reader}: would swipe away at ${verdict.swipe_at}`);

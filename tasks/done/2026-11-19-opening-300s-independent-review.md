@@ -50,6 +50,12 @@ gate (they go straight to storyboard and final), so nothing held a weak opening 
       gated); `problems` must be a list; names compare without case or spaces; the packet shows
       character names (所長, 小問), not ids.
 
+- [x] Owner 2026-11-19 「都修一修吧」: the readers are asked by the tool itself (`opening-review --ask`,
+      three verifier requests on the site's model, variant `opening-review`), each verdict records
+      `via: "site"` and the model, and the gate takes no verdict typed in by hand (`--record` removed).
+      `tts --dry-run` and `opening-review --check` show where the review stands. Residual: the record
+      is still a local file, so a deliberate hand edit could forge `via`; the site keeps each prompt.
+
 ## How to verify
 
 ```bash

@@ -405,9 +405,11 @@ async function tts(args, ctx) {
   // any voice is paid for (owner, 2026-11-19; core/opening-review.mjs).
   const voiced = readJson(path.join(workdir, ARTIFACTS.timeline), null)?.speech_hash === speechHash(doc, lexicon);
   const retake = Boolean(values.redo || values["refresh-evidence"]);
-  if (!values["dry-run"] && needsOpeningReview(doc, { series: project.series, workdir, voiced, retake })) {
+  if (needsOpeningReview(doc, { series: project.series, workdir, voiced, retake })) {
     const problems = openingReviewProblems(doc, readJson(path.join(workdir, ...OPENING_REVIEW), null));
-    if (problems.length) throw new UsageError(`the first ${OPENING_REVIEW_SECONDS} seconds have not passed the opening review: ${problems.join("; ")}`);
+    // A dry run only prices, and says where the review stands so the next step is plain.
+    if (values["dry-run"]) ctx.stdout.write(`opening review: ${problems.length ? `not passed yet (opening-review --slug ${doc.slug} --ask); ${problems[0]}` : "passed"}\n`);
+    else if (problems.length) throw new UsageError(`the first ${OPENING_REVIEW_SECONDS} seconds have not passed the opening review: ${problems.join("; ")}`);
   }
   const cache = readCache(workdir);
   const redo = values.redo ? flaggedLines(readJson(path.resolve(values.redo))) : new Set();
