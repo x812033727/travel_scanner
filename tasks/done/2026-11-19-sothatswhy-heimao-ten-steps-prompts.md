@@ -21,6 +21,11 @@ scope:
   - tools/video/core/narrative.test.mjs
   - docs/videos/long-form/review.md
   - docs/videos/long-form/review.json
+  - .agents/skills/curio-episode/SKILL.md
+  - .claude/skills/curio-episode/SKILL.md
+  - .agents/skills/brand-story/SKILL.md
+  - .claude/skills/brand-story/SKILL.md
+  - docs/videos/history-curiosity/README.md
   - docs/videos/so-thats-why/dialogue-pilot-20261103/README.md
 ---
 
