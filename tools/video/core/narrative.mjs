@@ -153,17 +153,21 @@ export function chapterOpenerProblems(doc, timeline) {
  * An aside the narrator announces before taking it (「這裡先稍微科普一下」「還有一個支線故事」): the
  * owner allowed one a video on 2026-11-19, said worth hearing first and held to a minute, after 13
  * 黑猫研究院 videos showed their longest stretches without a hook (82 to 131 s) were exactly these,
- * carried by one whole metaphor or a run of concrete detail. Where asides are read, the stretch that
- * follows the first one may run to ASIDE_GAP_SECONDS before the cadence warns.
+ * carried by one whole metaphor or a run of concrete detail. Where asides are read, a stretch inside
+ * the ASIDE_GAP_SECONDS after the first one is not a gap (the announcement may itself carry a forward
+ * hook, 「因為後面會用到」, and 黑猫 often asks 「什麼意思呢？」 right after it); a second aside is a warning.
  */
 export const ASIDE_OPENER = /先岔開|岔個題|岔出去(?:講|說|聊)|插播|先(?:稍微|簡單)?科普一下|花(?:一|半|1)分鐘(?:講|說|聊)|支線故事|題外話/;
 export const ASIDE_GAP_SECONDS = 75;
 /**
  * An item of a counted list told as events (「第一個人是…」「第二尊…」): the owner allowed one such list
  * a video on 2026-11-19, opened on its count and a question left hanging. Each item is a turn, the
- * way a chapter is, so where asides are read it closes the gap like any other device.
+ * way a chapter is, so where asides are read it closes the gap like any other device; a list starts
+ * at its 「第一…」, only the first list counts, and a second one is a warning of its own.
  */
-export const LIST_ITEM_OPENER = /^第[一二三四五六七八九十]+(?:個|位|尊|件|步|招|關|項)/;
+export const LIST_ITEM_OPENER = /^(?:(?:接著|再來|然後|最後)[，、]?)?第\s?([一二三四五六七八九十]+|\d+)\s?(?:個|位|尊|件|步|招|關|項|道|層|家|點|種|條|[，、：:])/;
+/** How many 「還記得…」 an episode of the ten-step series says out loud (curio-episode SKILL.md §架構與口吻: the opening's and the close's; the middle just tells the fact). */
+export const TEN_STEP_CALLBACKS = 2;
 
 /**
  * The body (after the condensation, before the outro) read for open loops: a chapter turn, a
@@ -183,23 +187,36 @@ export function hookCadenceProblems(doc, timeline, gap = HOOK_GAP_SECONDS, { asi
   if (to - from <= gap) return [];
   const devices = chapters.slice(1).map((chapter) => chapter.start).filter((at) => at >= from && at < to);
   let aside = null;
+  let asideCount = 0;
+  const lists = [];
   for (const { line } of eachLine(doc)) {
     const frame = starts.get(line.id);
     if (frame === undefined) continue;
     const at = frameToSeconds(frame);
     if (at < from || at >= to) continue;
-    if (QUESTION.test(line.text) || Object.values(OPEN_LOOP_FAMILY).some((pattern) => pattern.test(line.text))) devices.push(at);
-    else if (asides && LIST_ITEM_OPENER.test(line.text)) devices.push(at);
-    else if (asides && aside === null && ASIDE_OPENER.test(line.text)) {
-      aside = at;
-      devices.push(at);
+    let device = QUESTION.test(line.text) || Object.values(OPEN_LOOP_FAMILY).some((pattern) => pattern.test(line.text));
+    if (asides && ASIDE_OPENER.test(line.text)) {
+      asideCount++;
+      if (aside === null) {
+        aside = at;
+        device = true;
+      }
     }
+    const item = asides ? LIST_ITEM_OPENER.exec(line.text) : null;
+    if (item) {
+      if (/^(?:一|1)$/.test(item[1])) lists.push(at);
+      if (lists.length === 1) device = true;
+    }
+    if (device) devices.push(at);
   }
   const points = [from, ...devices.sort((a, b) => a - b), to];
   const problems = [];
+  if (asideCount > 1) problems.push({ path: "scenes", message: `${asideCount} asides are announced (先岔開／科普一下／支線故事／插播／題外話): an episode takes one, said worth hearing first and held to a minute; tell the others as part of the story or cut them (script-writing.md §奇聞檔案局與品牌故事的架構)` });
+  if (lists.length > 1) problems.push({ path: "scenes", message: `${lists.length} counted lists start in the body (${lists.map((at) => formatClock(at)).join(", ")}): an episode takes one, opened on its count and a question left hanging, each item an event; only the first is read as turns (script-writing.md §奇聞檔案局與品牌故事的架構)` });
   for (let index = 1; index < points.length; index++) {
     const stretch = points[index] - points[index - 1];
-    if (stretch <= (points[index - 1] === aside ? Math.max(gap, ASIDE_GAP_SECONDS) : gap)) continue;
+    if (stretch <= gap) continue;
+    if (aside !== null && points[index - 1] >= aside && points[index] - aside <= Math.max(gap, ASIDE_GAP_SECONDS)) continue;
     problems.push({ path: "scenes", message: `no open loop between ${formatClock(points[index - 1])} and ${formatClock(points[index])} (${Math.round(stretch)} s): no forward hook (等一下／先記住／之後會), no escalation (但這還不是／更怪的是／問題來了), no question and no chapter turn; plant one at least every ${gap} s (script-writing.md §故事主線與鉤子)` });
   }
   return problems;
@@ -523,12 +540,20 @@ export function openingGateProblems(doc, timeline = estimateTimeline(doc), { ser
   return [...questionMenuProblems(doc, timeline, { series }), ...thumbnailEchoProblems(doc, timeline, { series })];
 }
 
+/** 「還記得…」 said more often than the ten-step series allows: past two it reads as a formula (H01 v2 said it nine times; 黑猫研究院's 13 most watched say it once or never). */
+export function callbackCountProblems(doc, max = TEN_STEP_CALLBACKS) {
+  const ids = [];
+  for (const { line } of eachLine(doc)) if (/還記得/.test(String(line.text ?? ""))) ids.push(line.id);
+  if (ids.length <= max) return [];
+  return [{ path: "scenes", message: `「還記得…」 is said in ${ids.length} lines (${ids.slice(0, 8).join(", ")}): keep at most ${max}, the opening's and the close's; in between, tell the fact that pays the loop off and let the viewer remember (curio-episode SKILL.md §架構與口吻)` }];
+}
+
 /** Every storytelling problem of a narrated script, tagged "narrative" so the worker can hand the warnings to the writer. */
 export function narrativeProblems(doc, timeline, { minutes, cadence = DEFAULT_CADENCE } = {}) {
   const tag = (problems) => problems.map((problem) => ({ ...problem, kind: "narrative" }));
   const length = Number.isFinite(minutes) ? minutes : frameToSeconds(timeline?.total_frames ?? 0) / 60;
   // The two story series (the tight cadence) are told to one viewer; the explainers keep their register.
-  const told = cadence.gap <= TIGHT_CADENCE.gap ? viewerAddressProblems(doc) : [];
+  const told = cadence.gap <= TIGHT_CADENCE.gap ? [...viewerAddressProblems(doc), ...callbackCountProblems(doc)] : [];
   return {
     errors: tag(outroNextVideoProblems(doc)),
     warnings: tag([...chapterOpenerProblems(doc, timeline), ...hookCadenceProblems(doc, timeline, cadence.gap, { asides: cadence.gap <= TIGHT_CADENCE.gap }), ...loopProblems(doc, timeline, length, cadence.loopsPer10), ...repeatedFactProblems(doc), ...caveatRecitationProblems(doc), ...questionMenuProblems(doc, timeline), ...thumbnailEchoProblems(doc, timeline), ...titleProblems(doc), ...told]),

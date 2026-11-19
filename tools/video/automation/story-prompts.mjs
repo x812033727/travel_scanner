@@ -89,7 +89,7 @@ stands):
 - A hook stands on a fact of this story: a number, one person's decision, something that should
   not have happened. Never an empty promise (「接下來更精采」「後面還有更驚人的」) and never a
   table of contents. The limits above still hold: at most one forward hook in the whole story says
-  so out loud, and 「還記得…」 at most five times.
+  so out loud, and 「還記得…」 at most twice, in the opening's payoff and the close.
 - "loops" lists at least 8 for ten minutes of narration (about one for every 75 seconds; 10 for a
   13-minute story), at least 2 of them planted in the hook (its contrast and the promise's
   question; one climax label may add a third, never a menu of questions), and every one is paid off.

@@ -12,6 +12,8 @@ import {
   ASIDE_GAP_SECONDS,
   ASIDE_OPENER,
   LIST_ITEM_OPENER,
+  callbackCountProblems,
+  TEN_STEP_CALLBACKS,
   hookCadenceProblems,
   isNarrated,
   LABEL_OPENERS,
@@ -128,34 +130,75 @@ test("the body carries an open loop at least every 90 seconds: a question, a for
   }
 });
 
-test("where asides are read, one announced aside may run to 75 seconds and each item of a counted list is a turn", () => {
+test("where asides are read, one announced aside may run to 75 seconds and each item of the one counted list is a turn", () => {
   assert.equal(ASIDE_GAP_SECONDS, 75);
-  for (const opener of ["這裡先稍微科普一下。", "還有一個支線故事。", "先岔開講一件事。"]) assert.match(opener, ASIDE_OPENER);
-  for (const item of ["第一個人是工程師。", "第二尊大神來了。", "第三步是關掉它。"]) assert.match(item, LIST_ITEM_OPENER);
-  assert.doesNotMatch("第一次世界大戰剛結束。", LIST_ITEM_OPENER);
+  for (const opener of ["這裡先稍微科普一下。", "還有一個支線故事。", "這裡先岔開講一個支線，因為後面會用到。"]) assert.match(opener, ASIDE_OPENER);
+  for (const item of ["第一個人是工程師。", "第二尊大神來了。", "第三步是關掉它。", "第一，它不用權利金。", "接著，第二步是電影院。", "第 1 步先裝解碼器。", "第一道防線是商標。"]) assert.match(item, LIST_ITEM_OPENER);
+  for (const other of ["第一次世界大戰剛結束。", "第一代機器賣得很差。", "第一名是瑞士人。"]) assert.doesNotMatch(other, LIST_ITEM_OPENER);
   const flat = () => {
     const doc = stretched();
     for (const scene of padScenes(doc)) delete scene.chapter;
     return doc;
   };
+  const read = (doc) => hookCadenceProblems(doc, estimateTimeline(doc), TIGHT_CADENCE.gap, { asides: true });
+  const gaps = (problems) => problems.filter((problem) => /no open loop/.test(problem.message));
+  const seconds = (problems) => gaps(problems).map((problem) => Number(/\((\d+) s\)/.exec(problem.message)[1]));
   const plain = flat();
-  const before = hookCadenceProblems(plain, estimateTimeline(plain), TIGHT_CADENCE.gap, { asides: true });
-  assert.ok(before.length > 0, "nothing hanging is still a warning");
-  // A counted list told as events: every item closes the gap.
+  const before = seconds(read(plain));
+  assert.ok(before.length > 0 && before.every((each) => each > ASIDE_GAP_SECONDS), "the fixture's flat body is one long stretch");
+  // A counted list told as events: every item closes the gap; the other narrated videos do not read it.
   const listed = flat();
   padScenes(listed).forEach((scene, index) => {
     scene.lines[0].text = `第${"一二三四五六七八九十"[index % 10]}個人做了一件事。`;
   });
-  assert.deepEqual(hookCadenceProblems(listed, estimateTimeline(listed), TIGHT_CADENCE.gap, { asides: true }), []);
-  assert.ok(hookCadenceProblems(listed, estimateTimeline(listed), TIGHT_CADENCE.gap).length > 0, "the other narrated videos do not read list items");
-  // An announced aside buys its own stretch 75 seconds, once: the same words without the reading warn sooner.
-  const aside = flat();
-  padScenes(aside)[0].lines[0].text = "這裡先稍微科普一下。";
-  const read = hookCadenceProblems(aside, estimateTimeline(aside), TIGHT_CADENCE.gap, { asides: true });
-  const unread = hookCadenceProblems(aside, estimateTimeline(aside), TIGHT_CADENCE.gap);
-  assert.ok(read.length <= unread.length);
-  const seconds = (problems) => problems.map((problem) => Number(/\((\d+) s\)/.exec(problem.message)[1]));
-  assert.ok(seconds(read).every((each) => each > TIGHT_CADENCE.gap));
+  if (padScenes(listed).length <= 10) assert.deepEqual(read(listed), []);
+  assert.ok(gaps(hookCadenceProblems(listed, estimateTimeline(listed), TIGHT_CADENCE.gap)).length > 0);
+  // A second list is a warning of its own and is not read as turns.
+  const twice = flat();
+  padScenes(twice).forEach((scene, index) => {
+    scene.lines[0].text = `第${"一二"[index % 2]}步做了一件事。`;
+  });
+  assert.ok(read(twice).some((problem) => /counted lists start in the body/.test(problem.message)));
+  // The announcement is found whatever else its sentence carries: the prompt's own example says
+  // 「後面會」, a forward hook, and still opens the aside's 75 seconds; a question asked right after
+  // it does not use them up.
+  // Each padded chapter runs about 33 s, so a question two scenes on is about 66 s away: over the 45
+  // but inside the aside's 75.
+  const padded = (first) => {
+    const doc = flat();
+    const scenes = padScenes(doc);
+    first.forEach((text, index) => {
+      scenes[0].lines[index].text = text;
+    });
+    scenes[2].lines[0].text = "那它到底怎麼做到的？";
+    return doc;
+  };
+  for (const [aside, plain] of [
+    [["這裡先岔開講一個支線，因為後面會用到。"], ["這件事後面會用到。"]],
+    [["這裡先稍微科普一下。", "什麼意思呢？"], ["這一句只是一個普通的句子。", "什麼意思呢？"]],
+  ]) {
+    assert.ok(gaps(read(padded(aside))).length < gaps(read(padded(plain))).length, aside.join(" "));
+  }
+  // Two announced asides: the second is named.
+  const two = flat();
+  padScenes(two)[0].lines[0].text = "這裡先稍微科普一下。";
+  padScenes(two).at(-1).lines[0].text = "還有一個支線故事。";
+  assert.ok(read(two).some((problem) => /2 asides are announced/.test(problem.message)));
+  assert.ok(!hookCadenceProblems(two, estimateTimeline(two), TIGHT_CADENCE.gap).some((problem) => /asides are announced/.test(problem.message)));
+});
+
+test("the ten-step series say 「還記得」 at most twice", () => {
+  assert.equal(TEN_STEP_CALLBACKS, 2);
+  const doc = stretched();
+  assert.deepEqual(callbackCountProblems(doc), []);
+  padScenes(doc).slice(0, 3).forEach((scene) => {
+    scene.lines[0].text = "還記得開頭那個數字嗎？";
+  });
+  const problems = callbackCountProblems(doc);
+  assert.equal(problems.length, 1);
+  assert.match(problems[0].message, /「還記得…」 is said in 3 lines/);
+  assert.ok(narrativeProblems(doc, estimateTimeline(doc), { cadence: TIGHT_CADENCE }).warnings.some((problem) => /「還記得…」 is said in/.test(problem.message)));
+  assert.ok(!narrativeProblems(doc, estimateTimeline(doc)).warnings.some((problem) => /「還記得…」 is said in/.test(problem.message)), "the other narrated videos keep their five");
 });
 
 test("the ten-step panel carries the owner's four decisions of 2026-11-19", () => {

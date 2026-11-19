@@ -17,6 +17,11 @@ scope:
   - tools/video/automation/story-prompts.test.mjs
   - .agents/skills/youtube-video/references/script-writing.md
   - tools/video/automation/explainer-series.test.mjs
+  - tools/video/automation/explainer-series.mjs
+  - tools/video/automation/story-prompts.mjs
+  - tools/video/core/opening-review.mjs
+  - .agents/skills/brand-story/SKILL.md
+  - .claude/skills/brand-story/SKILL.md
   - .agents/skills/curio-episode/SKILL.md
   - .claude/skills/curio-episode/SKILL.md
   - docs/videos/so-thats-why/dialogue-pilot-20261103/README.md
@@ -70,5 +75,13 @@ npm run test:tools && npm run check:tasks
 - 四份撰稿提示（`writer:explainer-cartoon`、`writer:discuss-cartoon`、`writer:explainer-mystery`、
   `writer:discuss-mystery`）的固定雜湊跟著動了：部署後，主機上做到一半的奇聞／原來如此單集會在下一個
   階段以 `video_ai_receipt_input_changed` 停下來，要重跑那個階段。`writer:explainer-mystery` 現在
-  39,352 字，離 40,000 的上限剩不到 700 字。
+  39,589 字，離 40,000 的上限剩約 400 字，下一次加規則之前得先瘦身。
+- 開 PR 後站主請 Gemini 審了兩輪，查證屬實並在同一個 PR 修掉的：岔題的 75 秒放寬原本只算緊鄰預告句的那一格，
+  而且預告句自己帶「後面會」或問號時根本認不出來（連撰稿提示的示範句都中）；清單與岔題沒有次數上限；
+  `LIST_ITEM_OPENER` 漏了「第一，」「接著，第二步」「第 1 步」與常見量詞；前 300 秒觀眾審查的題目沒同步；
+  「還記得」SKILL 寫 2 次、提示寫 5 次；品牌故事逐章撰稿會各用一次例外；品牌故事 SKILL 沒更新。
+- 查證後不成立的：原來如此的鉤子節奏其實已是 45 秒（`lint.mjs`），所以例外對它有效；黑猫 13 支標題沒有
+  一支有兩個問號。
+- 用黑猫 13 支的真實標題跑 `titleProblems`（#2179）：只有辛拉麵 1 支過，7 支超過 30 字、7 支沒有數字、
+  2 支沒有問號。公式要不要放寬是站主的決定，這張票沒有動。
 - `script-writing.md` 只有 `.agents` 一份（`.claude/skills` 只鏡像各 skill 的 `SKILL.md`）。

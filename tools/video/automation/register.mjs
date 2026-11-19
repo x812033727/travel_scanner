@@ -235,7 +235,8 @@ export const STORY_OPENING_RULE = `Shape of an episode of this series (owner, 20
   7. The comeback and the reveal, paying off what the hook held back by name (「還記得…嗎？」).
   8. The epilogue: 「故事還沒結束」, what came after, a new threat, a rival's turn.
   9. The theme: back to the hook's image or number, then one line the viewer keeps.
-  10. The close: one question about the viewer's own life for the comments, then the reason to
+  10. The close: one question about the viewer's own life that takes no thought to answer (which
+     of two, or what they own), then the reason to
      subscribe; never the next video.
   A flashback is a short insert opened by a plain time cue (「其實早在 1969 年…」), never the
   frame of the story. Nothing arrives out of nowhere: a person, a company or a document is
@@ -244,13 +245,15 @@ export const STORY_OPENING_RULE = `Shape of an episode of this series (owner, 20
   1983 年」「問題來了」). The hook's contrast, its one or two climax labels and the promise's
   question are the loops the first chapter plants, paid off in steps 5 to 9.
   Three exceptions the owner allowed on 2026-11-19 (黑猫研究院's 13 most watched, read line by
-  line), each at most as often as it says:
+  line); each overrides the rules above only as far as it says, and a script written a chapter
+  at a time uses the first two only where "plan" puts them (else in its longest middle chapter):
   - One aside in the whole episode, announced before it is taken: a sentence saying why it is
     worth hearing (「這裡先岔開講一個支線，因為後面會用到」), at most a minute carried by one whole
     metaphor or three concrete details, then a sentence back to the story.
-  - One counted list in the body, never in the opening: its count and a question left hanging
-    first (「把它救回來的是三個人」), then each item an event (who, what they did, what came of
-    it) opened on its number (「第一個人是…」). A list of headings is still a table of contents.
+  - One counted list in the body, inside one chapter and never its first line: its count and a
+    question left hanging first (「把它救回來的是三個人」), then each item an event (who, what
+    they did, what came of it) opened on its number (「第一個人是…」). Headings are still a table
+    of contents.
   - A chapter may close on one verdict sentence before its open question (「這就是它真正的起點。
     但問題來了…」): new words, never the chapter's facts again; the question still comes last.
     In the two-voice explainer the host gives the verdict and the child asks the question.`;

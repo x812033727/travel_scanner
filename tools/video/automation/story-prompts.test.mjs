@@ -21,7 +21,7 @@ test("every chapter but now ends on an unanswered question or action that the ne
 
 test("a story's hooks stand on facts, keep the shared limits, and the loops table grows to eight for ten minutes", () => {
   assert.match(writer, /A hook stands on a fact of this story: a number, one person's decision, something that should\s+not have happened\. Never an empty promise \(「接下來更精采」/);
-  assert.match(writer, /at most one forward hook in the whole story says\s+so out loud, and 「還記得…」 at most five times/);
+  assert.match(writer, /at most one forward hook in the whole story says\s+so out loud, and 「還記得…」 at most twice, in the opening's payoff and the close/);
   assert.match(writer, /"loops" lists at least 8 for ten minutes of narration/);
   assert.match(writer, /at least 2 of them planted in the hook \(its contrast and the promise's\s+question; one climax label may add a third, never a menu of questions\), and every one is paid off/);
   assert.match(writer, /The hook plants at\s+least three; every chapter but "now" leaves one hanging/);
@@ -45,8 +45,10 @@ test("a story's writer follows the ten steps and talks to one viewer, after the 
   // The owner's four decisions of 2026-11-19: the answer's direction, one aside, one counted list, a verdict before the open question.
   assert.match(STORY_OPENING_RULE, /One sentence, and only one, may say which way the answer\s+lies/);
   assert.match(STORY_OPENING_RULE, /One aside in the whole episode, announced before it is taken/);
-  assert.match(STORY_OPENING_RULE, /One counted list in the body, never in the opening/);
+  assert.match(STORY_OPENING_RULE, /One counted list in the body, inside one chapter and never its first line/);
   assert.match(STORY_OPENING_RULE, /A chapter may close on one verdict sentence before its open question/);
+  assert.match(STORY_OPENING_RULE, /a script written a chapter\s+at a time uses the first two only where "plan" puts them/);
+  assert.match(STORY_OPENING_RULE, /takes no thought to answer/);
   assert.ok(!writer.includes(CONDENSATION_RULE), "the story writer no longer carries the condensation it replaces");
   assert.match(TOLD_TO_ONE_VIEWER, /Lint warns under two 「你」 a thousand characters/);
   assert.match(TOLD_TO_ONE_VIEWER, /about 4\.5 spoken characters a second/);

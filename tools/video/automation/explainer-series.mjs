@@ -273,7 +273,7 @@ every other hook rule stands):
 - A hook stands on a fact of this file: a date, a number, one person's decision, something that
   should not have been there. Never an empty promise (「接下來更精采」「後面還有更驚人的」) and never
   a table of contents. At most one forward hook in the whole episode says so out loud, and
-  「還記得…」 at most five times.
+  「還記得…」 at most twice (lint warns past two).
 - "loops" lists at least 8 for ten minutes of narration (about one for every 75 seconds), at
   least 2 of them planted in the first chapter (the hook's contrast and the promise's question; one
   climax label may add a third, never a menu of questions), and every one is paid off.
