@@ -105,7 +105,7 @@ OWNER_ONLY_CONFIG_FIELDS: dict[str, tuple[str, ...]] = {
 
 # Rows that are never disabled: a disabled row nulls its secrets, and these hold
 # settings every feature shares rather than one provider that can be switched off.
-ALWAYS_ENABLED_PROVIDERS = frozenset({"runtime", "layout", "ai_vendors"})
+ALWAYS_ENABLED_PROVIDERS = frozenset({"runtime", "layout", "ai_vendors", "video_reviews"})
 # The city the AI planner connection test plans for. It must be a name
 # ``match_destination`` resolves, or the test would load zero candidates and quietly
 # stop exercising the path it exists to cover.
@@ -246,6 +246,16 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         "規則在 docs/videos/ILLUSTRATED.md。",
         ("pexels_api_base_url", "pixabay_api_base_url"),
         ("pexels_api_key", "pixabay_api_key"),
+    ),
+    # The owner sets how much the preview store may hold from /admin/videos → 設定 (owner,
+    # 2026-11-19), instead of editing VIDEO_REVIEW_MAX_TOTAL_BYTES in the host's .env and
+    # rebuilding the API. The .env value is the default; a saved one wins. Edited on its own
+    # card (apps/web/components/admin-video-review-store.tsx), not the generic settings page.
+    "video_reviews": ProviderDefinition(
+        "審片空間",
+        "後台審片用的預覽與成片檔案區，總量上限滿了就不能再送新的預覽（507）。",
+        ("video_review_max_total_bytes",),
+        (),
     ),
     "runpod": ProviderDefinition(
         "RunPod GPU（MiniMax H3 片段）",
@@ -1447,6 +1457,13 @@ def _validate_provider_values(
                 "provider_setting_invalid",
                 f"{field} 必須是布林值",
             )
+    if (
+        "video_review_max_total_bytes" in merged
+        and type(merged["video_review_max_total_bytes"]) is not int
+    ):
+        raise AppError(
+            422, "provider_setting_invalid", "video_review_max_total_bytes 必須是整數（位元組）"
+        )
     if "catalog_review_max_calls" in merged and type(merged["catalog_review_max_calls"]) is not int:
         raise AppError(422, "provider_setting_invalid", "catalog_review_max_calls 必須是整數")
     if "ga4_measurement_id" in merged:

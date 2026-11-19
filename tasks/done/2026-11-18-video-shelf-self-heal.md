@@ -1,13 +1,13 @@
 ---
 id: 2026-11-18-video-shelf-self-heal
 title: Admin video catalog files old videos under their show on its own
-status: review
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5-video-shelf
 claimed_at: 2026-11-18T10:04:49Z
 created_at: 2026-11-18T10:04:04Z
-completed_at:
+completed_at: 2026-11-19T00:12:03Z
 branch: claude/kind-mccarthy-5m28jo
 depends_on: []
 scope:
