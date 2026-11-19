@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-19-pool-7691",
+  "revision": "2026-11-19-pool-7728",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "categories": [
     "物理化學與日常材料",
@@ -12,46 +12,46 @@
     "建築交通與商業制度"
   ],
   "counts": {
-    "raw_records": 8155,
-    "canonical_questions": 7995,
-    "eligible_candidates": 7802,
-    "selected_candidates": 7691,
+    "raw_records": 8192,
+    "canonical_questions": 8032,
+    "eligible_candidates": 7839,
+    "selected_candidates": 7728,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 8687,
-    "current_research_source_urls": 5755,
-    "selected_source_urls": 6702,
-    "new_suggestions_not_added": 3517,
+    "source_urls": 8720,
+    "current_research_source_urls": 5788,
+    "selected_source_urls": 6735,
+    "new_suggestions_not_added": 3524,
     "high_similarity_pending": 0,
     "approved_scripts": 0,
     "by_category": {
       "物理化學與日常材料": {
-        "canonical": 1861,
-        "selected": 1831
+        "canonical": 1869,
+        "selected": 1839
       },
       "生物動物與植物": {
-        "canonical": 1525,
-        "selected": 1514
+        "canonical": 1526,
+        "selected": 1515
       },
       "地球天氣與太空": {
-        "canonical": 963,
-        "selected": 960
+        "canonical": 965,
+        "selected": 962
       },
       "數位科技與通訊工程": {
-        "canonical": 1450,
-        "selected": 1370
+        "canonical": 1452,
+        "selected": 1372
       },
       "飲食與廚房科學": {
-        "canonical": 515,
-        "selected": 509
+        "canonical": 516,
+        "selected": 510
       },
       "人體感官與日常行為": {
-        "canonical": 590,
-        "selected": 578
+        "canonical": 592,
+        "selected": 580
       },
       "建築交通與商業制度": {
-        "canonical": 1091,
-        "selected": 929
+        "canonical": 1112,
+        "selected": 950
       }
     }
   },
@@ -2101,6 +2101,18 @@
       "sha256": "885769a2def6799123b70478725de650cbccb6af71ca34b3fc538f042e657a91"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave132-craft-20261119.json",
+      "sha256": "0fc323047be727be43375bccb0f2ee8715e56900a66f08651bd31a4b9d298747"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave132-everyday-20261119.json",
+      "sha256": "3a0673e4878fc87f9516d9314d31f359776ae197bb1f7550e04968de34d7c363"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave132-research-20261119.json",
+      "sha256": "c5ce5359a3adc73040bde379a5275d6f607274e848419443811d048a07b45fe7"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json",
       "sha256": "f44c3f03a6e74c79e53a27fe0ab4a4d809ca20d91a1d4976cafe59bb5f02a4ed"
     },
@@ -3378,12 +3390,12 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "2cd6f6e5bbd7a187298e8dd5462a322d6a0ce4a0a52c7cf139388e1dca1ebd06"
+      "sha256": "8c29b1b6c7373b9c94eb044f41fb0d93acfb8fae899f08d7773fa7d44e36d209"
     }
   ],
   "sources": {
     "file": "pool-sources.json",
-    "count": 8687
+    "count": 8720
   },
   "candidates": [
     {
@@ -148120,6 +148132,1761 @@
       "question_variants": [],
       "provenance_ids": [
         "K131-0218"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0401",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "這本《詩篇》從兩面打開，怎麼都能從頭讀？從書口看，旁邊還多出一條書脊。",
+      "mechanism_key": "x132.binding.shared_board_opposite_spines",
+      "answer_target": "把書豎起來，從頂端沿著封皮走一遍。封皮先包過第一疊書頁，經過中間一塊硬板，接著往另一側包過第二疊書頁，走出一個 S。兩部《詩篇》共用中間那塊背板，書脊朝向相反；翻過整本，手裡就是另一部詩篇的前封。",
+      "scope": "Folger 的背靠背裝幀藏本，STC 2406 與 STC 2544.2。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "兩色摺紙當書頁，中間共用硬板。先從書口平視，再切到頂端沿 S 形封皮逐段描線。",
+        "payoff": "同一側可以同時看到一冊的書口、另一冊的書脊。",
+        "seconds": [
+          34,
+          47
+        ]
+      },
+      "source_locator": "S01 書頂、書口的示意與兩部 Psalms 的編目段落。",
+      "notes": "只解釋從兩側各自開讀的結構，收藏者的裝訂動機無法確認。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館藏影像僅連結供比對，示範物、圖案和剖面另行自製。",
+      "origin": "wave132-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-2fba83e5be7d725a",
+          "origin": "wave132-craft-20261119",
+          "locator": "S01 書頂、書口的示意與兩部 Psalms 的編目段落。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0401"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0402",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "把同一本書的金色書口往前撥，露出倫敦一座劇院；往回撥，又怎麼換成另一座？",
+      "mechanism_key": "x132.binding.opposed_fanned_fore_edge_images",
+      "answer_target": "書頁斜斜錯開，每張紙便露出一線原本疊在裡面的紙面。朝一個方向展開，這些細線拼出柯芬園皇家劇院；把書頁朝反方向展開，露出另一面的一組細線，拼出德魯里巷皇家劇院。把紙疊理齊，兩張畫都藏回去，只見金色的邊。",
+      "scope": "Folger 所藏、1822 年出版的塔索作品英譯本上的雙面書口畫。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "自製放大的紙片，兩側窄帶各畫一道不同顏色的弧線，從合攏拍到朝兩側斜展。",
+        "payoff": "觀眾換的是紙頁錯開的方向，畫的兩組線條一直在原處。",
+        "seconds": [
+          33,
+          48
+        ]
+      },
+      "source_locator": "S02 雙書口畫、兩座劇院的展開方向及版本說明。",
+      "notes": "頁面可核出書的出版年；不替匿名作者或作畫日期下結論。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館藏影像僅連結供比對，示範物、圖案和剖面另行自製。",
+      "origin": "wave132-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-d0280f83856836a6",
+          "origin": "wave132-craft-20261119",
+          "locator": "S02 雙書口畫、兩座劇院的展開方向及版本說明。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0402"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0403",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "兩本繡著同一個故事的書，把封面攤平，大衛怎麼連拿東西的手都左右對調了？",
+      "mechanism_key": "x132.binding.pricked_pattern_reversal",
+      "answer_target": "Folger 藏本的大衛用左手，英國圖書館藏本的大衛用右手。就算把前、後封面的兩幅圖互換，人物也不會換手。館員提出一個能對得上的工法：沿輪廓把紙樣刺孔，把炭粉從孔洞擦到緞面上；同一種紙樣翻一面再轉圖，繡線跟著底圖走，整幅便成了鏡像。",
+      "scope": "以 Folger 的 1639 年《詩篇》和館員對照的 British Library c143a10 刺繡書衣為例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用揮左手的人物自畫一份刺孔紙樣，在兩張布上正反轉印。排成鏡像，再試著只交換前後兩片。",
+        "payoff": "看手的方向，就能分辨兩幅圖互換位置，還是整張輪廓翻了面。",
+        "seconds": [
+          36,
+          50
+        ]
+      },
+      "source_locator": "S03 兩館大衛的左右手比較，以及 Mary Brooks 所述的刺孔轉印。",
+      "notes": "作品顯示鏡像，工法是文章提出的解釋。未見刺繡者實際使用的紙樣。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館藏影像僅連結供比對，示範物、圖案和剖面另行自製。",
+      "origin": "wave132-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-768ab3a16d009a9a",
+          "origin": "wave132-craft-20261119",
+          "locator": "S03 兩館大衛的左右手比較，以及 Mary Brooks 所述的刺孔轉印。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0403"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0404",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "一本古書的紅皮護片原本要包住書口，合起來卻短一截。牛津館員怎麼從書脊找到另一條線索？",
+      "mechanism_key": "x132.binding.undersized_flap_rebacked_cover",
+      "answer_target": "往書口折的皮片需要跨過書頁的厚度，這本《古蘭經》的折片深度卻比需要的短。再看書的另一側，書脊曾用顏色相近的紅皮重新包過。兩件事放在一起，館員推測這套書衣原配另一本大小相近的書，移過來時重新處理了書脊。",
+      "scope": "牛津大學 Lady Margaret Hall 的十七世紀初《古蘭經》寫本，BR 297.5 1。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用側剖紙模對準封面和書頁的上下緣，合起護片後量短少的深度，再把模型轉向新包的書脊。",
+        "payoff": "封面的長寬可以相近，折片卻會把書本厚度的差異顯出來。",
+        "seconds": [
+          32,
+          46
+        ]
+      },
+      "source_locator": "S04「Clasps, flaps and ties」下「An example of Islamic bookbinding」。",
+      "notes": "折片太淺和重新包脊是可記錄的痕跡；原書身分和移裝時間仍未知。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館藏影像僅連結供比對，示範物、圖案和剖面另行自製。",
+      "origin": "wave132-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-89bb9c67856faf9a",
+          "origin": "wave132-craft-20261119",
+          "locator": "S04「Clasps, flaps and ties」下「An example of Islamic bookbinding」。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0404"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0405",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "一本西班牙法令集的羊皮紙封面整張掉了。修復師為什麼先檢查靠近書脊的空孔？",
+      "mechanism_key": "x132.binding.broken_sewing_supports_relaced",
+      "answer_target": "那排孔原來穿著和書頁連在一起的支撐帶。帶子斷損，封面便失去固定。修復師沿原來的縫線孔用未漂白棉線把新帶縫在舊帶上，再修好封面的穿帶孔，把帶子重新穿回去。封面和整疊書頁就又能一起拿起來了。",
+      "scope": "美國國會圖書館所藏 1681 年馬德里版《印度諸王國法令彙編》。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "畫面從脫離的封面退到書脊帶子，分兩色畫出縫合新舊帶的棉線和穿回封面的支撐帶。",
+        "payoff": "書頁上的舊針孔用來接帶，封面上的孔則讓整條帶子穿過。",
+        "seconds": [
+          34,
+          48
+        ]
+      },
+      "source_locator": "S05 修前「Note the holes」圖說、以 unbleached cotton thread 接帶及最後重新穿帶段。",
+      "notes": "兩處孔位分開畫，避免把修復表現成直接把棉線穿過封面縫死。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館藏影像僅連結供比對，示範物、圖案和剖面另行自製。",
+      "origin": "wave132-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a72e3d34acc8b722",
+          "origin": "wave132-craft-20261119",
+          "locator": "S05 修前「Note the holes」圖說、以 unbleached cotton thread 接帶及最後重新穿帶段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0405"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0406",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "京都一本貝殼圖案集破了兩頁，正面能打開約 120 度，背面只有 30 度。修復師怎麼補到窄的那一側？",
+      "mechanism_key": "x132.binding.alternating_repairs_joined_accordion_leaves",
+      "answer_target": "這兩頁在外側書口摺成一體，靠書脊處卻裂開了。修復師保留裝訂，從能張得較開的正面沿著已有裂縫輕抬紙頁，才夠得著背面。他補一段背面，就回來補正面，再往下做。若一直拉著前頁只顧著補後頁，前頁反而可能被扯脫。",
+      "scope": "史密森尼圖書館修復師 Noah Smutz 記錄的 1913 年京都版《貝殼斷面圖案》。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "做一組書口相連的摺紙頁，在另一端留裂縫。側拍兩個開口角度，再用兩色標籤標示交替補強的位置。",
+        "payoff": "從寬的一側伸到窄的一側，還得折返護住拿來當通道的那一頁。",
+        "seconds": [
+          36,
+          52
+        ]
+      },
+      "source_locator": "S06「Without disbinding the book」段的角度與操作順序；S07 出版紀錄與 Condition and Treatment。",
+      "notes": "約 120 度、30 度是這兩頁的操作空間。示意只用仿製紙頁。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館藏影像僅連結供比對，示範物、圖案和剖面另行自製。",
+      "origin": "wave132-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-fd6a5ddee3dcf7c2",
+          "origin": "wave132-craft-20261119",
+          "locator": "S06「Without disbinding the book」段的角度與操作順序；S07 出版紀錄與 Condition and Treatment。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5c0c74c2f231ba79",
+          "origin": "wave132-craft-20261119",
+          "locator": "S06「Without disbinding the book」段的角度與操作順序；S07 出版紀錄與 Condition and Treatment。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0406"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0407",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "一疊能收平的紙片，一拉開就看得見整條泰晤士河隧道。從小孔望進去，隧道的「深」藏在哪裡？",
+      "mechanism_key": "x132.binding.bellows_spacing_cutaway_paper_scenery",
+      "answer_target": "畫面拆成一層層，有的地方印著拱門和人物，有的地方挖空。風箱般的摺紙連著各層，拉開時把原本貼在一起的畫片分隔開。眼睛靠著前板的小孔，視線穿過近處的空隙，接著看到下一層，再看到後方的背景。收攏摺紙，這些前後距離就消失了。",
+      "scope": "V&A 紙景 The Thames Tunnel at London，約 1851 年德國製，館藏編號 Gestetner 176。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "切出三種大小的自繪紙拱門，接上摺紙。先拍外側一層層分開，再從前方固定的小孔對準最後的背景。",
+        "payoff": "長隧道能裝進扁紙盒，因為收起來的是畫片之間的空間。",
+        "seconds": [
+          32,
+          47
+        ]
+      },
+      "source_locator": "S08 開頭紙景構造及 Gestetner 176 外觀、孔內兩張圖的圖說。",
+      "notes": "辨認館藏編號 176，其他隧道紙景可有不同窗口。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "館藏影像僅連結供比對，示範物、圖案和剖面另行自製。",
+      "origin": "wave132-craft-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a60e082b04484b11",
+          "origin": "wave132-craft-20261119",
+          "locator": "S08 開頭紙景構造及 Gestetner 176 外觀、孔內兩張圖的圖說。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-craft-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0407"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0001",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "臺北自來水事業處這次沒抄到你家的水表，帳單用水度數竟和上一期一樣。下次抄得到，這段用水又怎麼算？",
+      "mechanism_key": "x132.daily.taipei_water_unread_settlement",
+      "answer_target": "若因用戶的緣故無法抄表，用戶可以自抄。北水處也可暫照上一期的用水度數計算，等下期按抄到的表數結算。這一次帳單上的重複數字，便可能只是暫算依據。",
+      "scope": "假設北水處供水區的一戶這一期未能讓抄表員讀表，也未自報。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "下一次實抄後還要結算，連續兩期寫同樣的數字不能據以斷定實際用量相同。",
+        "visual": "自畫三期讀表紀錄，在中間一期蓋上暫算記號，在下一期連線結算。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "答覆第2、3、4點。",
+      "notes": "不涵蓋連續兩次無法抄表、表具故障或漏水。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "不用真帳單、門牌或水號。",
+      "origin": "wave132-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-ec5252f029718824",
+          "origin": "wave132-everyday-20261119",
+          "locator": "答覆第2、3、4點。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0002",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "寄一封國內掛號信，貼上要寄回來的回執後重了幾克。秤信時，那張回程用的紙也要算嗎？",
+      "mechanism_key": "x132.daily.postal_return_receipt_joint_weighing",
+      "answer_target": "寄件人要留下收妥的憑據，可在掛號之外加付回執費、填附回執；郵件送達後，收件人或其他依法可收件的人簽章退回。雖然這張紙後來會回到寄件人手上，交寄時仍須連同郵件一起秤重。",
+      "scope": "中華郵政臨櫃交寄國內掛號信並附回執。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "回執費和交寄重量是兩件事；已繳回執費，回執本身仍上秤。",
+        "visual": "一個空白信封與自製示意單一起上秤，再用箭頭標出單據回程。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "第六節「回執」，第一百四十條第1至3項。",
+      "notes": "只說回執列入計重，不保證增加幾克就會跨重量級距。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自畫單據，不使用收寄件簽名或真實地址。",
+      "origin": "wave132-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-72694ee679a728e5",
+          "origin": "wave132-everyday-20261119",
+          "locator": "第六節「回執」，第一百四十條第1至3項。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0003",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "桃園一把壞傘拆成三件，金屬傘骨交給回收車。拆下來的塑膠傘柄，為什麼卻要和傘布一起等垃圾車？",
+      "mechanism_key": "x132.daily.taoyuan_scrap_umbrella_material_routing",
+      "answer_target": "桃園環管處對這種複合材質雨傘列了各零件的清運去向：分出的金屬骨架進廢金屬回收，防水傘布與塑膠柄都歸一般垃圾。分出塑膠零件，不等於該零件就進市府這一類資收管道。",
+      "scope": "依桃園市2025年10月14日公告，比較同一把金屬骨、塑膠柄的壞傘。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看這把傘拆出了什麼部件，也要對照當地實際收哪些部件。",
+        "visual": "自畫骨架、傘布、塑膠柄，再移到兩種車旁的小框裡。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "「拆解方式」、「金屬骨架」、「傘布與塑膠傘柄」。",
+      "notes": "不推及外縣市清運規範、所有塑膠製品或非金屬骨架。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "用自畫分類示意，不取用官方宣傳圖。",
+      "origin": "wave132-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-aa32cc7b97088c40",
+          "origin": "wave132-everyday-20261119",
+          "locator": "「拆解方式」、「金屬骨架」、「傘布與塑膠傘柄」。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0004",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "一座高山氣象站的日照率若寫101%，難道一天還能多曬出百分之一的太陽？",
+      "mechanism_key": "x132.daily.cwa_mountain_sunshine_ratio_reference",
+      "answer_target": "這個欄位把實測日照時數除以天文日照時數，再換成百分比。氣象署註明，有些高山站可能接收到從地平線下來的陽光，實測時數會超過用來對照的天文時數。101% 說的是分子略大於分母，不是整天長過24小時。",
+      "scope": "以綜合氣象觀測表的 RateOfSunshine 欄為準；101% 是假設讀值。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分母是天文日照時數，並非全天24小時，也不是儀器能承受的最大亮度。",
+        "visual": "自畫天文時段與稍長的實測時段，將前者放進分母。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "印刷頁33–34，RateOfSunshine 列及接續欄。",
+      "notes": "不指認特定站日，不借這條規則推斷任何單筆超值必然正確。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自製時間軸及假設數據，不重製官方圖表。",
+      "origin": "wave132-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-d06869aa12b7ebd4",
+          "origin": "wave132-everyday-20261119",
+          "locator": "印刷頁33–34，RateOfSunshine 列及接續欄。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0005",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "日本將棋棋盤上，你這一縱行明明已經有一個從步兵走出來的棋子。為什麼它翻成「と」之後，同一行反而能再打入步兵？",
+      "mechanism_key": "x132.daily.shogi_promoted_pawn_file_drop",
+      "answer_target": "比較兩個單獨的局面：己方這一縱行已有未升變的步兵，再從手上打入步兵會犯「二步」。若這枚棋子已升變成「と」，棋盤上就不是原來那一枚未升變步兵的身分。此時同一行打入一枚步，不因二步被禁止。",
+      "scope": "假定該縱行沒有其他己方步兵，落點為空且其他規定均允許。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "判斷看目前朝上的棋子身分，不能只看它從哪種棋升上來。",
+        "visual": "自製局部棋盤，固定落點，僅替換原有棋子的朝上字。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "「二歩」兩個棋盤及解說。",
+      "notes": "不把「不構成二步」擴張成任何落點都合法。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "不重製聯盟圖例或轉播畫面。",
+      "origin": "wave132-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-ebee3ef9e17c1550",
+          "origin": "wave132-everyday-20261119",
+          "locator": "「二歩」兩個棋盤及解說。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0006",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "保齡球第一格第一球，十個瓶全倒，球員出手後腳卻踩過犯規線碰到球道。為什麼第二球前還得重新擺十個瓶？",
+      "mechanism_key": "x132.daily.tenpin_first_ball_foul_replacement",
+      "answer_target": "依國際保齡球總會十瓶通則，投這一球時或投出後，身體越線碰到球道屬犯規。球員已用掉這一次投球，但它打倒的瓶數不計；這一格若還可再投，就要把這球打倒的瓶放回。第一格第一球意外犯規打掉十瓶，下一球仍面對整組十瓶。",
+      "scope": "第一格原有十瓶，意外犯規，假設沒有其他異常。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "倒瓶可以歸零，投球次數卻不會退回。",
+        "visual": "自製計分格與十個圖點；格內標犯規，瓶回到原位，投球次數保留。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "2.8.1、2.8.3–4（Foul）。",
+      "notes": "與 K129-0003 的全倒、補中加算不同；不含故意犯規與第十格。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "用自畫球道示意，不用比賽影像。",
+      "origin": "wave132-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b2efdd473896b835",
+          "origin": "wave132-everyday-20261119",
+          "locator": "2.8.1、2.8.3–4（Foul）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0007",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "嫁接玫瑰旁長出一枝葉色略淡的新枝，剪到土面還可能再冒。園丁為什麼先要沿著那枝往土裡找？",
+      "mechanism_key": "x132.daily.grafted_rose_sucker_root_origin",
+      "answer_target": "皇家園藝學會建議先辨認枝條起點。根砧萌蘗可從嫁接處以下、土中的根上長出，葉色或小葉數也可能與上方的玫瑰不同。若根部的萌蘗只在地面處被剪斷，原來的生長處還在，枝條可能再長；處理位置得追到它從根上長出的地方。",
+      "scope": "限嫁接玫瑰辨認砧木萌蘗。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "葉片給的是線索，找出生長位置才知道碰到的是哪一部分的枝。",
+        "visual": "畫地面、嫁接點與根，從淡色枝沿線追到地下，再對照地面剪口。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "「How can I identify suckers on my grafted rose」一問。",
+      "notes": "葉色淡或小葉數不同本身不足以確定是砧木；自根玫瑰不適用。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪剖面，不取用 RHS 照片。",
+      "origin": "wave132-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a973c9bdafc0fd30",
+          "origin": "wave132-everyday-20261119",
+          "locator": "「How can I identify suckers on my grafted rose」一問。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0008",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "麵包配方已經寫了麵粉100%，怎麼下一列還能加66%的水，最後加總甚至達到169.2%？",
+      "mechanism_key": "x132.daily.bread_bakers_percent_flour_denominator",
+      "answer_target": "King Arthur 的例子用50磅麵粉、33磅水、1磅鹽與0.6磅酵母。烘焙百分比每一列都拿同一份麵粉重量當分母，因此四列依序是100%、66%、2%與1.2%。它們合計169.2%，相當於整份麵團重是麵粉重的1.692倍。",
+      "scope": "依專業配方表首例，以重量計。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "要算水占整個麵團的比例得換分母；表內的66%在回答水與麵粉的重量比。",
+        "visual": "畫同一秤盤，將50放在四道除法的分母，再把四項實重合計。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "首例與隨後的 flour、water、salt、yeast 百分比表。",
+      "notes": "不使用量杯容積或含預發酵種的複雜配方。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自製數字演算及食材圖示，不翻印原表。",
+      "origin": "wave132-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-3ea4a0f949ca7b35",
+          "origin": "wave132-everyday-20261119",
+          "locator": "首例與隨後的 flour、water、salt、yeast 百分比表。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0009",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "同一天的試算表資料，一本在儲存格裡存40729，另一本竟存39267。只抄底下那個整數，日期會跑去哪裡？",
+      "mechanism_key": "x132.daily.excel_date_system_offset_1462",
+      "answer_target": "Excel 的1900與1904日期系統起算基準不同。微軟以2011年7月5日為例，兩套系統的序號分別是40729與39267，相差1462日。如果把40729原樣當成1904系統的日期值解讀，會比原日期晚1462日；若跨系統時讓軟體適當轉換底值，就能維持原日期。",
+      "scope": "假定比較同一曆日的序號，並明確指定兩本活頁簿的日期系統。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "數字單獨看不出是哪一天，還得知道用哪一套起算基準。",
+        "visual": "畫兩根日期軸，先將同一天對齊，再把同一個數值移到另一軸。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "The 1900 date system、The 1904 date system 與 2011-07-05 對照表。",
+      "notes": "不概括所有跨檔貼上操作都不轉換。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自畫時間軸和試算表格，不重製軟體介面。",
+      "origin": "wave132-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-bbd08ddb33a9d44e",
+          "origin": "wave132-everyday-20261119",
+          "locator": "The 1900 date system、The 1904 date system 與 2011-07-05 對照表。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0010",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "在 InDesign 排價目表，「111」與「888」明明一樣高、位數也相同，下一欄卻一行比一行早開始。要對齊，字型還缺哪個條件？",
+      "mechanism_key": "x132.daily.indesign_tabular_lining_equal_advance",
+      "answer_target": "在支援相應 OpenType 功能的字型裡，Proportional Lining 讓數字具有一致的全高，但不同數字仍可有不同寬度。換成 Tabular Lining，各數字占用相同寬度也保持全高。相同字級、相同字距設定下，同位數的兩串數字就能占一樣寬。",
+      "scope": "比較同字型兩套數字樣式，排除另加定位點、字偶調整等變項。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "字高控制齊線的外觀，對齊同位數欄位還要看每個數字占的寬度。",
+        "visual": "以方框代表每個字的占位，再把比例寬切換成相同寬度。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "數字表格的 Tabular Lining、Proportional Lining、Tabular Oldstyle 三列。",
+      "notes": "字型須提供對應字形；不要說所有字型的1一定比8窄。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "手繪矩形占位，不展示受限制的商用字型。",
+      "origin": "wave132-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-a0fac891f6136966",
+          "origin": "wave132-everyday-20261119",
+          "locator": "數字表格的 Tabular Lining、Proportional Lining、Tabular Oldstyle 三列。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0011",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "縫隱形拉鍊時，壓布腳底下有一道槽。師傅怎麼把拉鍊齒放進槽裡，而不是把它們完全撥到壓腳外面？",
+      "mechanism_key": "x132.daily.sewing_concealed_zipper_foot_groove",
+      "answer_target": "Brother 這份機型手冊先讓使用者疏縫兩側、拆掉開口處的暫時縫線。接著把齒排放進隱形拉鍊壓腳的導槽，縫到開口底部時仍讓齒排留在槽內。齒排本身成了導引線，幫助針路持續沿著它前進。",
+      "scope": "限 Brother 產品代碼884-T78手冊中 Invisible Zipper Foot 所示的作法。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "壓腳下這一道空間用來導引齒排，讓布與拉鍊沿同一路徑前進。",
+        "visual": "自繪壓腳底面、齒排與進布方向，以俯視圖讓齒排進槽。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "目錄列印刷頁22，Invisible Zipper Foot 步驟1–8，特別是第8步與壓腳圖。",
+      "notes": "不延伸至所有壓腳，也不宣稱針應直接穿過拉鍊齒。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪結構，不描摹手冊插圖。",
+      "origin": "wave132-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-ec1324635155bbcf",
+          "origin": "wave132-everyday-20261119",
+          "locator": "目錄列印刷頁22，Invisible Zipper Foot 步驟1–8，特別是第8步與壓腳圖。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0012",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "日本兩個測站都是微小水滴懸在空中。一站視程900公尺，另一站正好1公里，觀測用語為什麼就從「霧」換成「もや」？",
+      "mechanism_key": "x132.daily.jma_fog_mist_one_km_boundary",
+      "answer_target": "日本氣象廳將浮游微小水滴導致、視程不足1公里的狀態稱作「霧」。視程到了1公里且未滿10公里，若成因為浮游水滴或潮濕微粒，則歸「もや」。兩站假設都是水滴，剛好達到1公里也會改歸後一欄。",
+      "scope": "假設兩個日本地面觀測的視程確如題述，不含乾塵、煙或降水遮蔽。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "改名不一定表示水滴改變種類，這一題跨過的是視程的分類邊界。",
+        "visual": "畫一條0到10公里的刻度，以空心、實心端點分清1公里屬哪一段。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "「霧や視程に関する用語」中「霧」「もや」「かすみ」。",
+      "notes": "N180比較霧與乾粒霾的成分；K128-0009是METAR代碼9999。本題只比較日文觀測分類。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "不用實測站名或杜撰的觀測照片。",
+      "origin": "wave132-everyday-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-306f5ba57975d8c6",
+          "origin": "wave132-everyday-20261119",
+          "locator": "「霧や視程に関する用語」中「霧」「もや」「かすみ」。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-everyday-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0012"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0201",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "朋友貼出新店全家那筆 123 元食品的千萬清冊，你也買過同價的東西，為什麼手上仍沒有中獎證明？",
+      "mechanism_key": "x132.invoice.roster",
+      "answer_target": "清冊第七筆給出開立的商家、地址、項目、金額和中獎發票號碼，沒有持有人的名字或付款方式。兩個人記得同一個價錢，不能據此分出誰握有那一筆。",
+      "scope": "清冊是真例，追壞卡的消費者是假設。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "清冊第七筆給出開立的商家、地址、項目、金額和中獎發票號碼，沒有持有人的名字或付款方式。",
+        "visual": "自繪第七列，在姓名的位置留白。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R132-S01 特別獎第 7 筆，表格欄名及同獎別其餘列；R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落",
+      "notes": "以公開資料自繪示意，不使用消費者或銀行客戶資料。清冊是真例，追壞卡的消費者是假設。",
+      "origin": "wave132-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-ef1f2f1a9ac70a18",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S01 特別獎第 7 筆，表格欄名及同獎別其餘列；R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-09e19ba6498c3c54",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S01 特別獎第 7 筆，表格欄名及同獎別其餘列；R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0201"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0202",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "悠遊卡感應不到了，全家結帳時用它存的那張發票究竟是寫在哪裡？",
+      "mechanism_key": "x132.invoice.index",
+      "answer_target": "全家說收銀機取載具號碼作電子發票索引，拿不到消費者個人資料。載具儲存的雲端發票仍可由平台查詢，卡片讀不到只是少了平常出示索引的辦法。",
+      "scope": "限結帳時確實指定以該卡存發票。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "全家說收銀機取載具號碼作電子發票索引，拿不到消費者個人資料。",
+        "visual": "一張卡片連到平台上的發票，移開卡後保留發票。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R132-S03 如何開立、結帳後取得之憑證、手機條碼載具設定例一、查詢中獎發票；R132-S04 查詢電子發票要求輸入驗證碼、無記名卡遺失、記名卡遺失、聯名卡及一般悠遊卡毀損各題",
+      "notes": "以公開資料自繪示意，不使用消費者或銀行客戶資料。限結帳時確實指定以該卡存發票。",
+      "origin": "wave132-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-00e8b087479d08a2",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S03 如何開立、結帳後取得之憑證、手機條碼載具設定例一、查詢中獎發票；R132-S04 查詢電子發票要求輸入驗證碼、無記名卡遺失、記名卡遺失、聯名卡及一般悠遊卡毀損各題",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-78fbe8656a3ef0a0",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S03 如何開立、結帳後取得之憑證、手機條碼載具設定例一、查詢中獎發票；R132-S04 查詢電子發票要求輸入驗證碼、無記名卡遺失、記名卡遺失、聯名卡及一般悠遊卡毀損各題",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0202"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0203",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "結帳時說「我要明細」，手上那張紙為什麼未必就是千萬獎能用的證明聯？",
+      "mechanism_key": "x132.invoice.detail",
+      "answer_target": "全家的流程區分交易內有無載具。已有載具時，只要求明細會得到交易明細，發票仍存雲端；要求發票加明細則會同時印出電子發票證明聯。",
+      "scope": "只還原全家有載具的這兩個選項。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "全家的流程區分交易內有無載具。",
+        "visual": "桌上各放一張自繪的交易明細與證明聯。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R132-S03 如何開立、結帳後取得之憑證、手機條碼載具設定例一、查詢中獎發票；R132-S13 第三點（一）至（四）、第四點及第八點（三）",
+      "notes": "以公開資料自繪示意，不使用消費者或銀行客戶資料。只還原全家有載具的這兩個選項。",
+      "origin": "wave132-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-00e8b087479d08a2",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S03 如何開立、結帳後取得之憑證、手機條碼載具設定例一、查詢中獎發票；R132-S13 第三點（一）至（四）、第四點及第八點（三）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b959280af081eea8",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S03 如何開立、結帳後取得之憑證、手機條碼載具設定例一、查詢中獎發票；R132-S13 第三點（一）至（四）、第四點及第八點（三）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0203"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0204",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "兩個人都在全家刷悠遊卡，怎麼只有一個人的發票出現在手機條碼？",
+      "mechanism_key": "x132.invoice.member",
+      "answer_target": "全家的實例中，會員事先綁好財政部手機條碼，刷悠遊卡付款又用該會員累點，發票會直存手機條碼。只看付錢的卡，無法反推使用哪個載具。",
+      "scope": "示範壞卡案另設為未用這項會員設定，已指定存在悠遊卡。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "全家的實例中，會員事先綁好財政部手機條碼，刷悠遊卡付款又用該會員累點，發票會直存手機條碼。",
+        "visual": "把付款和存發票畫成左右兩欄。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R132-S03 如何開立、結帳後取得之憑證、手機條碼載具設定例一、查詢中獎發票",
+      "notes": "以公開資料自繪示意，不使用消費者或銀行客戶資料。示範壞卡案另設為未用這項會員設定，已指定存在悠遊卡。",
+      "origin": "wave132-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-00e8b087479d08a2",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S03 如何開立、結帳後取得之憑證、手機條碼載具設定例一、查詢中獎發票",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0204"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0205",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "悠遊卡已經記了你的名字，為什麼財政部的手機條碼裡仍可能找不到它的發票？",
+      "mechanism_key": "x132.invoice.registration",
+      "answer_target": "記名讓持卡人能按條件向悠遊卡公司核身掛失；是否把卡歸戶手機條碼是另一項設定。開獎前未歸戶的悠遊卡須自行到平台或超商機台查。",
+      "scope": "沒有通知不能當成這期未中，也不等於所有種類的載具都要自行查。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "記名讓持卡人能按條件向悠遊卡公司核身掛失；是否把卡歸戶手機條碼是另一項設定。",
+        "visual": "在「向卡公司記名」「向平台歸戶」兩個勾選框各示範一次。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R132-S04 查詢電子發票要求輸入驗證碼、無記名卡遺失、記名卡遺失、聯名卡及一般悠遊卡毀損各題；R132-S05 手機條碼與開獎前已歸戶、未歸戶電子票證、各種會員載具通知方式",
+      "notes": "以公開資料自繪示意，不使用消費者或銀行客戶資料。沒有通知不能當成這期未中，也不等於所有種類的載具都要自行查。",
+      "origin": "wave132-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-78fbe8656a3ef0a0",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S04 查詢電子發票要求輸入驗證碼、無記名卡遺失、記名卡遺失、聯名卡及一般悠遊卡毀損各題；R132-S05 手機條碼與開獎前已歸戶、未歸戶電子票證、各種會員載具通知方式",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-90e866db7a6e778a",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S04 查詢電子發票要求輸入驗證碼、無記名卡遺失、記名卡遺失、聯名卡及一般悠遊卡毀損各題；R132-S05 手機條碼與開獎前已歸戶、未歸戶電子票證、各種會員載具通知方式",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0205"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0206",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "假中獎信說信用卡歸戶出了問題，收件人怎麼會一毛獎金沒領到，反而少了三萬多元？",
+      "mechanism_key": "x132.invoice.phish",
+      "answer_target": "警政署記錄林姓婦人收到冒用財政部名義的中獎郵件，在假頁面被要求重新驗證信用卡，遭盜刷三萬餘元。自行從官方 App 或機台查自己的發票，才可核實這封信的說法。",
+      "scope": "是警方另案；官方確實會在相應條件下寄通知，不能憑有無郵件判定真假或中獎。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "警政署記錄林姓婦人收到冒用財政部名義的中獎郵件，在假頁面被要求重新驗證信用卡，遭盜刷三萬餘元。",
+        "visual": "只畫無連結的信件信封，再畫自己打開的官方查詢管道。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R132-S06 北部林姓婦人遭假發票中獎信盜刷之通報；R132-S05 手機條碼與開獎前已歸戶、未歸戶電子票證、各種會員載具通知方式",
+      "notes": "以公開資料自繪示意，不使用消費者或銀行客戶資料。是警方另案；官方確實會在相應條件下寄通知，不能憑有無郵件判定真假或中獎。",
+      "origin": "wave132-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-39da368dc553354f",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S06 北部林姓婦人遭假發票中獎信盜刷之通報；R132-S05 手機條碼與開獎前已歸戶、未歸戶電子票證、各種會員載具通知方式",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-90e866db7a6e778a",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S06 北部林姓婦人遭假發票中獎信盜刷之通報；R132-S05 手機條碼與開獎前已歸戶、未歸戶電子票證、各種會員載具通知方式",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0206"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0207",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "還握著一張讀不到的普通悠遊卡，去捷運站辦退卡時為什麼要多說一句「我還要查發票」？",
+      "mechanism_key": "x132.invoice.return",
+      "answer_target": "未歸戶的一般卡毀損時，持卡人可到北捷各站退卡退費並告知需要電子發票驗證碼。公司後續以電子郵件或簡訊寄驗證碼和卡片內碼，供機台輸入對獎。",
+      "scope": "悠遊卡餘額退費與發票獎金分開，不保證獲獎。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "未歸戶的一般卡毀損時，持卡人可到北捷各站退卡退費並告知需要電子發票驗證碼。",
+        "visual": "卡片、退費單和另寄兩組資料分三格。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R132-S04 查詢電子發票要求輸入驗證碼、無記名卡遺失、記名卡遺失、聯名卡及一般悠遊卡毀損各題",
+      "notes": "以公開資料自繪示意，不使用消費者或銀行客戶資料。悠遊卡餘額退費與發票獎金分開，不保證獲獎。",
+      "origin": "wave132-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-78fbe8656a3ef0a0",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S04 查詢電子發票要求輸入驗證碼、無記名卡遺失、記名卡遺失、聯名卡及一般悠遊卡毀損各題",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0207"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0208",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "退卡在北捷站辦，過幾天想知道辦到哪了，為什麼捷運的旅客退費框不是輸入案件編號的地方？",
+      "mechanism_key": "x132.invoice.refunddesk",
+      "answer_target": "北捷自家的旅客退費頁，把悠遊卡退卡案件另指向悠遊卡公司的進度查詢。原卡也可以掛號寄給卡公司，依規定附上資料、寫明索取發票驗證碼；退卡受理跟完成對獎仍是兩件事。",
+      "scope": "北捷頁只指向退卡案件進度，不查詢發票或獎金。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "北捷自家的旅客退費頁，把悠遊卡退卡案件另指向悠遊卡公司的進度查詢。",
+        "visual": "從北捷服務台的箭頭轉到卡公司的案件進度。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R132-S07 案件編號查詢框上方的悠遊卡退卡專用指引；R132-S04 查詢電子發票要求輸入驗證碼、無記名卡遺失、記名卡遺失、聯名卡及一般悠遊卡毀損各題",
+      "notes": "以公開資料自繪示意，不使用消費者或銀行客戶資料。北捷頁只指向退卡案件進度，不查詢發票或獎金。",
+      "origin": "wave132-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-80b94ede1e9bf86a",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S07 案件編號查詢框上方的悠遊卡退卡專用指引；R132-S04 查詢電子發票要求輸入驗證碼、無記名卡遺失、記名卡遺失、聯名卡及一般悠遊卡毀損各題",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-78fbe8656a3ef0a0",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S07 案件編號查詢框上方的悠遊卡退卡專用指引；R132-S04 查詢電子發票要求輸入驗證碼、無記名卡遺失、記名卡遺失、聯名卡及一般悠遊卡毀損各題",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0208"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0209",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同一張普通悠遊卡，弄壞了還可能查得到，改成掉了怎麼連路都可能斷掉？",
+      "mechanism_key": "x132.invoice.missing",
+      "answer_target": "遺失且未歸戶時，卡公司明說無記名卡無法協助；記名卡或依法可掛失的卡可核身掛失並要求驗證碼。若是未歸戶的悠遊聯名卡，還須向發卡銀行辦掛失或毀損補發、索取 8 開頭的 16 碼悠遊卡號，再按程序找財稅中心。",
+      "scope": "在手上、遺失、記名、聯名分格處理，不把信用卡號當悠遊卡號。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "遺失且未歸戶時，卡公司明說無記名卡無法協助；記名卡或依法可掛失的卡可核身掛失並要求驗證碼。",
+        "visual": "桌上畫卡片留在手上或已遺失的兩條支線。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R132-S04 查詢電子發票要求輸入驗證碼、無記名卡遺失、記名卡遺失、聯名卡及一般悠遊卡毀損各題",
+      "notes": "以公開資料自繪示意，不使用消費者或銀行客戶資料。在手上、遺失、記名、聯名分格處理，不把信用卡號當悠遊卡號。",
+      "origin": "wave132-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-78fbe8656a3ef0a0",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S04 查詢電子發票要求輸入驗證碼、無記名卡遺失、記名卡遺失、聯名卡及一般悠遊卡毀損各題",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0209"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0210",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "退卡後拿到兩組資料，走進另一家超商使用 ibon，為什麼不必把已經交回的卡再放上感應區？",
+      "mechanism_key": "x132.invoice.terminal",
+      "answer_target": "悠遊卡公司指定可在 ibon 或 FamiPort 以驗證碼和卡片內碼對獎。ibon 在電子發票服務中另列財政部整合服務；卡的驗證碼也和財政部手機條碼驗證碼有別。",
+      "scope": "依發卡公司給壞卡的程序，不公開任何實卡號碼或驗證碼。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "悠遊卡公司指定可在 ibon 或 FamiPort 以驗證碼和卡片內碼對獎。",
+        "visual": "機台前改以兩個空白欄位代替卡片感應。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R132-S08 電子發票之財政部電子發票整合服務與商家發票服務列表；R132-S04 查詢電子發票要求輸入驗證碼、無記名卡遺失、記名卡遺失、聯名卡及一般悠遊卡毀損各題；R132-S03 如何開立、結帳後取得之憑證、手機條碼載具設定例一、查詢中獎發票",
+      "notes": "以公開資料自繪示意，不使用消費者或銀行客戶資料。依發卡公司給壞卡的程序，不公開任何實卡號碼或驗證碼。",
+      "origin": "wave132-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-c1ff99333a1693bd",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S08 電子發票之財政部電子發票整合服務與商家發票服務列表；R132-S04 查詢電子發票要求輸入驗證碼、無記名卡遺失、記名卡遺失、聯名卡及一般悠遊卡毀損各題；R132-S03 如何開立、結帳後取得之憑證、手機條碼載具設定例一、查詢中獎發票",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-78fbe8656a3ef0a0",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S08 電子發票之財政部電子發票整合服務與商家發票服務列表；R132-S04 查詢電子發票要求輸入驗證碼、無記名卡遺失、記名卡遺失、聯名卡及一般悠遊卡毀損各題；R132-S03 如何開立、結帳後取得之憑證、手機條碼載具設定例一、查詢中獎發票",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-00e8b087479d08a2",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S08 電子發票之財政部電子發票整合服務與商家發票服務列表；R132-S04 查詢電子發票要求輸入驗證碼、無記名卡遺失、記名卡遺失、聯名卡及一般悠遊卡毀損各題；R132-S03 如何開立、結帳後取得之憑證、手機條碼載具設定例一、查詢中獎發票",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0210"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0211",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "看到發票尾數是 565，就算不是新店那張千萬票，也至少中兩百元了嗎？",
+      "mechanism_key": "x132.invoice.digits",
+      "answer_target": "這期特別獎是 89996565，八碼全部相同才中千萬。六獎所比的是三組頭獎末三碼 835、397、111。因此單憑尾數 565，兩種獎都不能據此認定。",
+      "scope": "示範當期一般號碼獎，不憑三碼排除其他獎項。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "這期特別獎是 89996565，八碼全部相同才中千萬。",
+        "visual": "給「特別獎」與「頭獎」兩欄各剪一條八格數字紙。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R132-S09 特別獎、三組頭獎、六獎、領獎期限及注意事項第五點；R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落",
+      "notes": "以公開資料自繪示意，不使用消費者或銀行客戶資料。示範當期一般號碼獎，不憑三碼排除其他獎項。",
+      "origin": "wave132-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-fe05451e94559265",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S09 特別獎、三組頭獎、六獎、領獎期限及注意事項第五點；R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-09e19ba6498c3c54",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S09 特別獎、三組頭獎、六獎、領獎期限及注意事項第五點；R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0211"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0212",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "朋友 9 月 25 日就知道大獎號碼，為什麼在全家機台查到結果的日子和可印的日子還不同？",
+      "mechanism_key": "x132.invoice.calendar",
+      "answer_target": "全家 FamiPort 說明列單月 25 日開獎、28 日可持載具查、雙月 6 日可印中獎證明聯。對到本期就是 9 月 25 日、9 月 28 日與 10 月 6 日。",
+      "scope": "這是該機台公布的時程，不推成每項查詢功能一律同時更新。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "全家 FamiPort 說明列單月 25 日開獎、28 日可持載具查、雙月 6 日可印中獎證明聯。",
+        "visual": "日曆翻三張，在格子上分貼開獎、查、印。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R132-S03 如何開立、結帳後取得之憑證、手機條碼載具設定例一、查詢中獎發票；R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落；R132-S10 新聞稿附表 PDF 第 1 頁，全部獎別、指定金融機構、超商及 App 四組欄位",
+      "notes": "以公開資料自繪示意，不使用消費者或銀行客戶資料。這是該機台公布的時程，不推成每項查詢功能一律同時更新。",
+      "origin": "wave132-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-00e8b087479d08a2",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S03 如何開立、結帳後取得之憑證、手機條碼載具設定例一、查詢中獎發票；R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落；R132-S10 新聞稿附表 PDF 第 1 頁，全部獎別、指定金融機構、超商及 App 四組欄位",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-09e19ba6498c3c54",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S03 如何開立、結帳後取得之憑證、手機條碼載具設定例一、查詢中獎發票；R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落；R132-S10 新聞稿附表 PDF 第 1 頁，全部獎別、指定金融機構、超商及 App 四組欄位",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-09b42c60e5905775",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S03 如何開立、結帳後取得之憑證、手機條碼載具設定例一、查詢中獎發票；R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落；R132-S10 新聞稿附表 PDF 第 1 頁，全部獎別、指定金融機構、超商及 App 四組欄位",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0212"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0213",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "開獎後才想到壞掉的卡，哪一種持卡人其實從一開始就在等獎金自己匯進去？",
+      "mechanism_key": "x132.invoice.autopay",
+      "answer_target": "當期公告說，115 年 9 月 24 日以前已歸戶至手機條碼且設妥指定自動匯款帳戶者，符合條件的雲端發票獎金自 10 月 6 日起匯入。退卡手續沒有這個效果。",
+      "scope": "只說開獎前完成設定的另一位假想持卡人，主線仍是未歸戶卡。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "當期公告說，115 年 9 月 24 日以前已歸戶至手機條碼且設妥指定自動匯款帳戶者，符合條件的雲端發票獎金自 10 月 6 日起匯入。",
+        "visual": "在開獎日左邊畫兩個事先完成的勾。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落；R132-S05 手機條碼與開獎前已歸戶、未歸戶電子票證、各種會員載具通知方式；R132-S10 新聞稿附表 PDF 第 1 頁，全部獎別、指定金融機構、超商及 App 四組欄位",
+      "notes": "以公開資料自繪示意，不使用消費者或銀行客戶資料。只說開獎前完成設定的另一位假想持卡人，主線仍是未歸戶卡。",
+      "origin": "wave132-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-09e19ba6498c3c54",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落；R132-S05 手機條碼與開獎前已歸戶、未歸戶電子票證、各種會員載具通知方式；R132-S10 新聞稿附表 PDF 第 1 頁，全部獎別、指定金融機構、超商及 App 四組欄位",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-90e866db7a6e778a",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落；R132-S05 手機條碼與開獎前已歸戶、未歸戶電子票證、各種會員載具通知方式；R132-S10 新聞稿附表 PDF 第 1 頁，全部獎別、指定金融機構、超商及 App 四組欄位",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-09b42c60e5905775",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落；R132-S05 手機條碼與開獎前已歸戶、未歸戶電子票證、各種會員載具通知方式；R132-S10 新聞稿附表 PDF 第 1 頁，全部獎別、指定金融機構、超商及 App 四組欄位",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0213"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0214",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同一張中獎雲端發票，為什麼列印前 App 能領的獎，列印以後 App 可能不收？",
+      "mechanism_key": "x132.invoice.printbranch",
+      "answer_target": "當期附表列明，已歸戶手機條碼且未列印的雲端發票，設有領獎帳戶可用 App 兌全部獎別。開獎後印出證明聯，App 只兌五、六獎及雲端專屬 800、500 元獎，沒有千萬這一格。",
+      "scope": "未歸戶壞卡持有人取得驗證碼，不等於已符合 App 兌全部獎別條件。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "當期附表列明，已歸戶手機條碼且未列印的雲端發票，設有領獎帳戶可用 App 兌全部獎別。",
+        "visual": "把同一張雲端票放進「未印」「已印」兩欄，逐欄看千萬獎。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R132-S10 新聞稿附表 PDF 第 1 頁，全部獎別、指定金融機構、超商及 App 四組欄位；R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落",
+      "notes": "以公開資料自繪示意，不使用消費者或銀行客戶資料。未歸戶壞卡持有人取得驗證碼，不等於已符合 App 兌全部獎別條件。",
+      "origin": "wave132-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-09b42c60e5905775",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S10 新聞稿附表 PDF 第 1 頁，全部獎別、指定金融機構、超商及 App 四組欄位；R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-09e19ba6498c3c54",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S10 新聞稿附表 PDF 第 1 頁，全部獎別、指定金融機構、超商及 App 四組欄位；R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0214"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0215",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "全家機台能印出中獎證明聯，為什麼隔壁櫃檯不能把千萬元交給你？",
+      "mechanism_key": "x132.invoice.counter",
+      "answer_target": "機台提供查詢及列印，當期附表則把便利商店可兌獎別限在五、六獎與雲端專屬 800、500 元獎。全家另說已歸戶且匯款的中獎發票機台不再列印，以免重複領獎。",
+      "scope": "不承諾任何實際門市機台正常出紙；列印異常可用該店列示的重印服務。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "機台提供查詢及列印，當期附表則把便利商店可兌獎別限在五、六獎與雲端專屬 800、500 元獎。",
+        "visual": "店內畫出機台和櫃檯，在兩個位置標不同的功能。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R132-S03 如何開立、結帳後取得之憑證、手機條碼載具設定例一、查詢中獎發票；R132-S10 新聞稿附表 PDF 第 1 頁，全部獎別、指定金融機構、超商及 App 四組欄位",
+      "notes": "以公開資料自繪示意，不使用消費者或銀行客戶資料。不承諾任何實際門市機台正常出紙；列印異常可用該店列示的重印服務。",
+      "origin": "wave132-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-00e8b087479d08a2",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S03 如何開立、結帳後取得之憑證、手機條碼載具設定例一、查詢中獎發票；R132-S10 新聞稿附表 PDF 第 1 頁，全部獎別、指定金融機構、超商及 App 四組欄位",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-09b42c60e5905775",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S03 如何開立、結帳後取得之憑證、手機條碼載具設定例一、查詢中獎發票；R132-S10 新聞稿附表 PDF 第 1 頁，全部獎別、指定金融機構、超商及 App 四組欄位",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0215"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0216",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "從新店永安街帶著千萬發票出門，任意一家掛著「可兌發票」的金融機構都能收嗎？",
+      "mechanism_key": "x132.invoice.bank",
+      "answer_target": "當期附表把第一銀行、彰化銀行、全國農業金庫等列在全部獎別；指定農漁會信用部一般列於二獎以下及指定雲端獎，不能一概視為全國農業金庫。可在第一銀行自己的分行頁找到新店中興路三段 134 號這個具體選擇。",
+      "scope": "當期附表另明列連江縣農會信用部等例外；不主張新店分行最近或實際中獎人來過。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "當期附表把第一銀行、彰化銀行、全國農業金庫等列在全部獎別；指定農漁會信用部一般列於二獎以下及指定雲端獎，不能一概視為全國農業金庫。",
+        "visual": "一張新店街圖上標出開票商家和一銀分行兩個地址。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R132-S10 新聞稿附表 PDF 第 1 頁，全部獎別、指定金融機構、超商及 App 四組欄位；R132-S11 新店分行相關資訊表格，通匯代號 0072218 及分行地址；R132-S12 服務項目「代兌統一發票中獎獎金」",
+      "notes": "以公開資料自繪示意，不使用消費者或銀行客戶資料。當期附表另明列連江縣農會信用部等例外；不主張新店分行最近或實際中獎人來過。",
+      "origin": "wave132-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-09b42c60e5905775",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S10 新聞稿附表 PDF 第 1 頁，全部獎別、指定金融機構、超商及 App 四組欄位；R132-S11 新店分行相關資訊表格，通匯代號 0072218 及分行地址；R132-S12 服務項目「代兌統一發票中獎獎金」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-69e75632da716659",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S10 新聞稿附表 PDF 第 1 頁，全部獎別、指定金融機構、超商及 App 四組欄位；R132-S11 新店分行相關資訊表格，通匯代號 0072218 及分行地址；R132-S12 服務項目「代兌統一發票中獎獎金」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-adb25a47d8506682",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S10 新聞稿附表 PDF 第 1 頁，全部獎別、指定金融機構、超商及 App 四組欄位；R132-S11 新店分行相關資訊表格，通匯代號 0072218 及分行地址；R132-S12 服務項目「代兌統一發票中獎獎金」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0216"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0217",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "領獎日到銀行，帶著自己的國民身分證和朋友轉傳的清冊就夠嗎？",
+      "mechanism_key": "x132.invoice.evidence",
+      "answer_target": "實體據點須核驗身分和中獎統一發票；此案的文件是從載具合法列印的中獎電子發票證明聯。本國人帶國民身分證，按規定填姓名、獎金及電話，並須在本期 116 年 1 月 5 日截止前的領獎期間到場。",
+      "scope": "限一般本國人領獎示範，未代任何人辦理或證實已領。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "實體據點須核驗身分和中獎統一發票；此案的文件是從載具合法列印的中獎電子發票證明聯。",
+        "visual": "清冊截圖留在桌上，證明聯和身分證走到櫃檯前。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R132-S13 第三點（一）至（四）、第四點及第八點（三）；R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落",
+      "notes": "以公開資料自繪示意，不使用消費者或銀行客戶資料。限一般本國人領獎示範，未代任何人辦理或證實已領。",
+      "origin": "wave132-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-b959280af081eea8",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S13 第三點（一）至（四）、第四點及第八點（三）；R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-09e19ba6498c3c54",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S13 第三點（一）至（四）、第四點及第八點（三）；R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0217"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K132-0218",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同樣中一千萬元，為什麼兩種兌領方式算出來能差到四萬元？",
+      "mechanism_key": "x132.invoice.stamp",
+      "answer_target": "當期附註規定，三獎以上扣 20% 所得稅，中五獎等符合條件者另繳 0.4% 印花稅。特別獎一千萬元的印花稅是四萬元；若符合平台或 App 設定帳戶兌領的免印花條件，省去的是這四萬元，所得稅仍照規定扣繳。",
+      "scope": "依當期表作相同獎額試算，不推算真實消費者的帳戶或實收。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "當期附註規定，三獎以上扣 20% 所得稅，中五獎等符合條件者另繳 0.4% 印花稅。",
+        "visual": "一千萬元下畫二百萬元所得稅和四萬元印花稅，第二張只劃掉印花稅。",
+        "seconds": [
+          22,
+          39
+        ]
+      },
+      "source_locator": "R132-S09 特別獎、三組頭獎、六獎、領獎期限及注意事項第五點；R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落；R132-S13 第三點（一）至（四）、第四點及第八點（三）",
+      "notes": "以公開資料自繪示意，不使用消費者或銀行客戶資料。依當期表作相同獎額試算，不推算真實消費者的帳戶或實收。",
+      "origin": "wave132-research-20261119",
+      "source_refs": [
+        {
+          "source_id": "SRC-fe05451e94559265",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S09 特別獎、三組頭獎、六獎、領獎期限及注意事項第五點；R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落；R132-S13 第三點（一）至（四）、第四點及第八點（三）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-09e19ba6498c3c54",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S09 特別獎、三組頭獎、六獎、領獎期限及注意事項第五點；R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落；R132-S13 第三點（一）至（四）、第四點及第八點（三）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b959280af081eea8",
+          "origin": "wave132-research-20261119",
+          "locator": "R132-S09 特別獎、三組頭獎、六獎、領獎期限及注意事項第五點；R132-S02 開獎號碼、排除不符規定發票、9 月 24 日與 10 月 6 日段落；R132-S13 第三點（一）至（四）、第四點及第八點（三）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave132-research-20261119.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K132-0218"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -354714,7 +356481,7 @@
   ],
   "raw_records": {
     "file": "pool-records.json",
-    "count": 8155
+    "count": 8192
   },
   "dedup": {
     "aliases": {
@@ -357818,6 +359585,43 @@
       "K131-0216": "K131-0216",
       "K131-0217": "K131-0217",
       "K131-0218": "K131-0218",
+      "K132-0401": "K132-0401",
+      "K132-0402": "K132-0402",
+      "K132-0403": "K132-0403",
+      "K132-0404": "K132-0404",
+      "K132-0405": "K132-0405",
+      "K132-0406": "K132-0406",
+      "K132-0407": "K132-0407",
+      "K132-0001": "K132-0001",
+      "K132-0002": "K132-0002",
+      "K132-0003": "K132-0003",
+      "K132-0004": "K132-0004",
+      "K132-0005": "K132-0005",
+      "K132-0006": "K132-0006",
+      "K132-0007": "K132-0007",
+      "K132-0008": "K132-0008",
+      "K132-0009": "K132-0009",
+      "K132-0010": "K132-0010",
+      "K132-0011": "K132-0011",
+      "K132-0012": "K132-0012",
+      "K132-0201": "K132-0201",
+      "K132-0202": "K132-0202",
+      "K132-0203": "K132-0203",
+      "K132-0204": "K132-0204",
+      "K132-0205": "K132-0205",
+      "K132-0206": "K132-0206",
+      "K132-0207": "K132-0207",
+      "K132-0208": "K132-0208",
+      "K132-0209": "K132-0209",
+      "K132-0210": "K132-0210",
+      "K132-0211": "K132-0211",
+      "K132-0212": "K132-0212",
+      "K132-0213": "K132-0213",
+      "K132-0214": "K132-0214",
+      "K132-0215": "K132-0215",
+      "K132-0216": "K132-0216",
+      "K132-0217": "K132-0217",
+      "K132-0218": "K132-0218",
       "A14001": "A14001",
       "A14002": "A14002",
       "A14003": "A14003",
@@ -400264,6 +402068,20 @@
         ]
       },
       {
+        "id": "K122-0008~K132-0008",
+        "a": "K122-0008",
+        "b": "K132-0008",
+        "question_score": 0.317,
+        "answer_score": 0.115,
+        "key_score": 0.615,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "麵包配方裡兩種麵粉的百分比都加到 100% 了，怎麼底下還能再寫 76% 的水？",
+          "麵包配方已經寫了麵粉100%，怎麼下一列還能加66%的水，最後加總甚至達到169.2%？"
+        ]
+      },
+      {
         "id": "K128-0213~K128-0214",
         "a": "K128-0213",
         "b": "K128-0214",
@@ -400275,6 +402093,20 @@
         "questions": [
           "朋友拿出初代 Switch，《勇者鬥惡龍 I & II HD-2D 重製版》兩種盒子哪一種能在兩代主機上輪流用？",
           "朋友先在舊版《勇者鬥惡龍 I & II》玩了十小時，改買 Switch 2 版就能接著這十小時嗎？"
+        ]
+      },
+      {
+        "id": "K132-0214~K132-0215",
+        "a": "K132-0214",
+        "b": "K132-0215",
+        "question_score": 0.04,
+        "answer_score": 0.316,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張中獎雲端發票，為什麼列印前 App 能領的獎，列印以後 App 可能不收？",
+          "全家機台能印出中獎證明聯，為什麼隔壁櫃檯不能把千萬元交給你？"
         ]
       },
       {
@@ -400807,6 +402639,20 @@
         "questions": [
           "超導體被冷卻到臨界溫度以下時，外部磁力線為什麼會被百分之百完全排出體外一絲不存？",
           "釔鋇銅氧陶瓷在浸入液氮降溫跨越臨界溫度時，為什麼會自發將內部磁力線徹底排出體外？"
+        ]
+      },
+      {
+        "id": "K132-0204~K132-0205",
+        "a": "K132-0204",
+        "b": "K132-0205",
+        "question_score": 0.264,
+        "answer_score": 0.094,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩個人都在全家刷悠遊卡，怎麼只有一個人的發票出現在手機條碼？",
+          "悠遊卡已經記了你的名字，為什麼財政部的手機條碼裡仍可能找不到它的發票？"
         ]
       },
       {
@@ -402112,6 +403958,20 @@
         ]
       },
       {
+        "id": "K132-0207~K132-0210",
+        "a": "K132-0207",
+        "b": "K132-0210",
+        "question_score": 0.029,
+        "answer_score": 0.198,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "還握著一張讀不到的普通悠遊卡，去捷運站辦退卡時為什麼要多說一句「我還要查發票」？",
+          "退卡後拿到兩組資料，走進另一家超商使用 ibon，為什麼不必把已經交回的卡再放上感應區？"
+        ]
+      },
+      {
         "id": "L74-047~L76-001",
         "a": "L74-047",
         "b": "L76-001",
@@ -402277,6 +404137,20 @@
         "questions": [
           "索引已經有答案，為什麼資料庫還要回原表看一次？",
           "資料庫索引為什麼有時故意漏掉大部分資料？"
+        ]
+      },
+      {
+        "id": "K132-0213~K132-0214",
+        "a": "K132-0213",
+        "b": "K132-0214",
+        "question_score": 0,
+        "answer_score": 0.194,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "開獎後才想到壞掉的卡，哪一種持卡人其實從一開始就在等獎金自己匯進去？",
+          "同一張中獎雲端發票，為什麼列印前 App 能領的獎，列印以後 App 可能不收？"
         ]
       },
       {
@@ -403022,6 +404896,20 @@
         ]
       },
       {
+        "id": "K132-0205~K132-0209",
+        "a": "K132-0205",
+        "b": "K132-0209",
+        "question_score": 0.109,
+        "answer_score": 0.178,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡已經記了你的名字，為什麼財政部的手機條碼裡仍可能找不到它的發票？",
+          "同一張普通悠遊卡，弄壞了還可能查得到，改成掉了怎麼連路都可能斷掉？"
+        ]
+      },
+      {
         "id": "L237~L238",
         "a": "L237",
         "b": "L238",
@@ -403439,6 +405327,20 @@
         "questions": [
           "書法墨瓶上寫 AA 級永久性，名字已經乾了，還可能被水彩筆帶走嗎？",
           "兩瓶墨名裡都看得到 India，一瓶有蟲膠，另一瓶卻說可裝進活塞鋼筆，該聽哪瓶的說明？"
+        ]
+      },
+      {
+        "id": "K132-0207~K132-0209",
+        "a": "K132-0207",
+        "b": "K132-0209",
+        "question_score": 0.172,
+        "answer_score": 0.1,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "還握著一張讀不到的普通悠遊卡，去捷運站辦退卡時為什麼要多說一句「我還要查發票」？",
+          "同一張普通悠遊卡，弄壞了還可能查得到，改成掉了怎麼連路都可能斷掉？"
         ]
       },
       {
@@ -404016,6 +405918,20 @@
         ]
       },
       {
+        "id": "K132-0201~K132-0215",
+        "a": "K132-0201",
+        "b": "K132-0215",
+        "question_score": 0.161,
+        "answer_score": 0.049,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友貼出新店全家那筆 123 元食品的千萬清冊，你也買過同價的東西，為什麼手上仍沒有中獎證明？",
+          "全家機台能印出中獎證明聯，為什麼隔壁櫃檯不能把千萬元交給你？"
+        ]
+      },
+      {
         "id": "K86-001~K86-002",
         "a": "K86-001",
         "b": "K86-002",
@@ -404156,6 +406072,20 @@
         ]
       },
       {
+        "id": "K132-0207~K132-0208",
+        "a": "K132-0207",
+        "b": "K132-0208",
+        "question_score": 0.09,
+        "answer_score": 0.159,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "還握著一張讀不到的普通悠遊卡，去捷運站辦退卡時為什麼要多說一句「我還要查發票」？",
+          "退卡在北捷站辦，過幾天想知道辦到哪了，為什麼捷運的旅客退費框不是輸入案件編號的地方？"
+        ]
+      },
+      {
         "id": "P71-007~P73-001",
         "a": "P71-007",
         "b": "P73-001",
@@ -404209,6 +406139,20 @@
         "questions": [
           "京阪特急月台的機器也能刷 ICOCA。這一刷和剛才進站時的一刷，各買到什麼？",
           "京阪寫特急的時刻表旁邊，怎麼會有一班只寫「急行」也明列 400 日圓？"
+        ]
+      },
+      {
+        "id": "K132-0204~K132-0210",
+        "a": "K132-0204",
+        "b": "K132-0210",
+        "question_score": 0,
+        "answer_score": 0.158,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩個人都在全家刷悠遊卡，怎麼只有一個人的發票出現在手機條碼？",
+          "退卡後拿到兩組資料，走進另一家超商使用 ibon，為什麼不必把已經交回的卡再放上感應區？"
         ]
       },
       {
@@ -404307,6 +406251,20 @@
         "questions": [
           "在日本看同一台 Sharp 微波爐，為什麼 100V 規格沒變，輸出表卻要分兩欄？",
           "相機充電器已標 100–240V，出門再多帶一個旅行變壓器會更保險嗎？"
+        ]
+      },
+      {
+        "id": "K132-0202~K132-0204",
+        "a": "K132-0202",
+        "b": "K132-0204",
+        "question_score": 0.157,
+        "answer_score": 0.055,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡感應不到了，全家結帳時用它存的那張發票究竟是寫在哪裡？",
+          "兩個人都在全家刷悠遊卡，怎麼只有一個人的發票出現在手機條碼？"
         ]
       },
       {
@@ -405668,6 +407626,20 @@
         ]
       },
       {
+        "id": "K132-0202~K132-0205",
+        "a": "K132-0202",
+        "b": "K132-0205",
+        "question_score": 0.143,
+        "answer_score": 0.036,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡感應不到了，全家結帳時用它存的那張發票究竟是寫在哪裡？",
+          "悠遊卡已經記了你的名字，為什麼財政部的手機條碼裡仍可能找不到它的發票？"
+        ]
+      },
+      {
         "id": "K74-002~K74-009",
         "a": "K74-002",
         "b": "K74-009",
@@ -406354,6 +408326,20 @@
         ]
       },
       {
+        "id": "K132-0202~K132-0207",
+        "a": "K132-0202",
+        "b": "K132-0207",
+        "question_score": 0.136,
+        "answer_score": 0.069,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡感應不到了，全家結帳時用它存的那張發票究竟是寫在哪裡？",
+          "還握著一張讀不到的普通悠遊卡，去捷運站辦退卡時為什麼要多說一句「我還要查發票」？"
+        ]
+      },
+      {
         "id": "K95-003~R6017",
         "a": "R6017",
         "b": "K95-003",
@@ -406802,6 +408788,20 @@
         ]
       },
       {
+        "id": "K132-0202~K132-0203",
+        "a": "K132-0202",
+        "b": "K132-0203",
+        "question_score": 0.115,
+        "answer_score": 0.132,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡感應不到了，全家結帳時用它存的那張發票究竟是寫在哪裡？",
+          "結帳時說「我要明細」，手上那張紙為什麼未必就是千萬獎能用的證明聯？"
+        ]
+      },
+      {
         "id": "K116-0201~K116-0203",
         "a": "K116-0201",
         "b": "K116-0203",
@@ -406897,6 +408897,20 @@
         "questions": [
           "日航百席以上國內線各邊上限都取滿，會多出幾公分？",
           "同一只新秀麗20吋，怎麼拉開擴充層就從日航大機型的線內跨到線外？"
+        ]
+      },
+      {
+        "id": "K132-0205~K132-0207",
+        "a": "K132-0205",
+        "b": "K132-0207",
+        "question_score": 0.131,
+        "answer_score": 0.124,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡已經記了你的名字，為什麼財政部的手機條碼裡仍可能找不到它的發票？",
+          "還握著一張讀不到的普通悠遊卡，去捷運站辦退卡時為什麼要多說一句「我還要查發票」？"
         ]
       },
       {
@@ -407600,6 +409614,20 @@
         ]
       },
       {
+        "id": "K132-0210~K132-0212",
+        "a": "K132-0210",
+        "b": "K132-0212",
+        "question_score": 0,
+        "answer_score": 0.125,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "退卡後拿到兩組資料，走進另一家超商使用 ibon，為什麼不必把已經交回的卡再放上感應區？",
+          "朋友 9 月 25 日就知道大獎號碼，為什麼在全家機台查到結果的日子和可印的日子還不同？"
+        ]
+      },
+      {
         "id": "L001~L006",
         "a": "L001",
         "b": "L006",
@@ -407796,6 +409824,20 @@
         ]
       },
       {
+        "id": "K132-0208~K132-0210",
+        "a": "K132-0208",
+        "b": "K132-0210",
+        "question_score": 0.028,
+        "answer_score": 0.124,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "退卡在北捷站辦，過幾天想知道辦到哪了，為什麼捷運的旅客退費框不是輸入案件編號的地方？",
+          "退卡後拿到兩組資料，走進另一家超商使用 ibon，為什麼不必把已經交回的卡再放上感應區？"
+        ]
+      },
+      {
         "id": "K90-039~K98-046",
         "a": "K90-039",
         "b": "K98-046",
@@ -407964,6 +410006,20 @@
         ]
       },
       {
+        "id": "K132-0203~K132-0215",
+        "a": "K132-0203",
+        "b": "K132-0215",
+        "question_score": 0.122,
+        "answer_score": 0.053,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "結帳時說「我要明細」，手上那張紙為什麼未必就是千萬獎能用的證明聯？",
+          "全家機台能印出中獎證明聯，為什麼隔壁櫃檯不能把千萬元交給你？"
+        ]
+      },
+      {
         "id": "H65-005~H69-004",
         "a": "H65-005",
         "b": "H69-004",
@@ -408073,6 +410129,20 @@
         "questions": [
           "XP2 在戶外按 EI 200 測光，進屋後按 800 測光，同一卷一定得請店家分成兩截沖嗎？",
           "另一卷 HP5 PLUS 從頭到尾按 EI 1600 曝光，為什麼增感要在交整卷時說明？"
+        ]
+      },
+      {
+        "id": "K132-0205~K132-0210",
+        "a": "K132-0205",
+        "b": "K132-0210",
+        "question_score": 0.031,
+        "answer_score": 0.121,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡已經記了你的名字，為什麼財政部的手機條碼裡仍可能找不到它的發票？",
+          "退卡後拿到兩組資料，走進另一家超商使用 ibon，為什麼不必把已經交回的卡再放上感應區？"
         ]
       },
       {
@@ -408745,6 +410815,20 @@
         "questions": [
           "在阪急京都線月台看到「特急」，只想坐普通車廂，還要去找賣特急券的機器嗎？",
           "近鐵網頁的兩個購票按鈕都寫「特急」，哪個買完還得準備 ICOCA 或基本乘車券？"
+        ]
+      },
+      {
+        "id": "K132-0209~K132-0214",
+        "a": "K132-0209",
+        "b": "K132-0214",
+        "question_score": 0.115,
+        "answer_score": 0.027,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張普通悠遊卡，弄壞了還可能查得到，改成掉了怎麼連路都可能斷掉？",
+          "同一張中獎雲端發票，為什麼列印前 App 能領的獎，列印以後 App 可能不收？"
         ]
       },
       {
@@ -409728,6 +411812,20 @@
         ]
       },
       {
+        "id": "K132-0203~K132-0217",
+        "a": "K132-0203",
+        "b": "K132-0217",
+        "question_score": 0,
+        "answer_score": 0.11,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "結帳時說「我要明細」，手上那張紙為什麼未必就是千萬獎能用的證明聯？",
+          "領獎日到銀行，帶著自己的國民身分證和朋友轉傳的清冊就夠嗎？"
+        ]
+      },
+      {
         "id": "K90-030~K90-037",
         "a": "K90-030",
         "b": "K90-037",
@@ -410218,6 +412316,34 @@
         ]
       },
       {
+        "id": "K132-0204~K132-0207",
+        "a": "K132-0204",
+        "b": "K132-0207",
+        "question_score": 0.107,
+        "answer_score": 0.018,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩個人都在全家刷悠遊卡，怎麼只有一個人的發票出現在手機條碼？",
+          "還握著一張讀不到的普通悠遊卡，去捷運站辦退卡時為什麼要多說一句「我還要查發票」？"
+        ]
+      },
+      {
+        "id": "K132-0212~K132-0215",
+        "a": "K132-0212",
+        "b": "K132-0215",
+        "question_score": 0.107,
+        "answer_score": 0.035,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友 9 月 25 日就知道大獎號碼，為什麼在全家機台查到結果的日子和可印的日子還不同？",
+          "全家機台能印出中獎證明聯，為什麼隔壁櫃檯不能把千萬元交給你？"
+        ]
+      },
+      {
         "id": "X34-001~X34-006",
         "a": "X34-001",
         "b": "X34-006",
@@ -410579,6 +412705,20 @@
         "questions": [
           "兩個片筒都寫著黑白 400，為什麼日本沖洗店把 HP5 PLUS 和 XP2 SUPER 分到不同的單？",
           "朋友改借一台 Plustek 8200i。片夾能裝六張，是按一次按鈕就會自己往前掃六張嗎？"
+        ]
+      },
+      {
+        "id": "K132-0212~K132-0213",
+        "a": "K132-0212",
+        "b": "K132-0213",
+        "question_score": 0,
+        "answer_score": 0.104,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友 9 月 25 日就知道大獎號碼，為什麼在全家機台查到結果的日子和可印的日子還不同？",
+          "開獎後才想到壞掉的卡，哪一種持卡人其實從一開始就在等獎金自己匯進去？"
         ]
       },
       {
@@ -411128,6 +413268,20 @@
         ]
       },
       {
+        "id": "K132-0211~K132-0216",
+        "a": "K132-0211",
+        "b": "K132-0216",
+        "question_score": 0.1,
+        "answer_score": 0.029,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "看到發票尾數是 565，就算不是新店那張千萬票，也至少中兩百元了嗎？",
+          "從新店永安街帶著千萬發票出門，任意一家掛著「可兌發票」的金融機構都能收嗎？"
+        ]
+      },
+      {
         "id": "K66-001~K66-009",
         "a": "K66-001",
         "b": "K66-009",
@@ -411489,6 +413643,20 @@
         "questions": [
           "新的百樂 Kakuno 明明把墨囊插到底，第一筆沒有顏色，還得把管子扭得更緊嗎？",
           "寫樂 hocoro 明明有鋼筆筆尖，為什麼借它寫字時根本不用先找墨囊？"
+        ]
+      },
+      {
+        "id": "K132-0205~K132-0214",
+        "a": "K132-0205",
+        "b": "K132-0214",
+        "question_score": 0.073,
+        "answer_score": 0.098,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡已經記了你的名字，為什麼財政部的手機條碼裡仍可能找不到它的發票？",
+          "同一張中獎雲端發票，為什麼列印前 App 能領的獎，列印以後 App 可能不收？"
         ]
       },
       {
@@ -412010,6 +414178,34 @@
         ]
       },
       {
+        "id": "K132-0201~K132-0203",
+        "a": "K132-0201",
+        "b": "K132-0203",
+        "question_score": 0.095,
+        "answer_score": 0.019,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友貼出新店全家那筆 123 元食品的千萬清冊，你也買過同價的東西，為什麼手上仍沒有中獎證明？",
+          "結帳時說「我要明細」，手上那張紙為什麼未必就是千萬獎能用的證明聯？"
+        ]
+      },
+      {
+        "id": "K132-0208~K132-0209",
+        "a": "K132-0208",
+        "b": "K132-0209",
+        "question_score": 0,
+        "answer_score": 0.095,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "退卡在北捷站辦，過幾天想知道辦到哪了，為什麼捷運的旅客退費框不是輸入案件編號的地方？",
+          "同一張普通悠遊卡，弄壞了還可能查得到，改成掉了怎麼連路都可能斷掉？"
+        ]
+      },
+      {
         "id": "K66-005~K66-009",
         "a": "K66-005",
         "b": "K66-009",
@@ -412248,6 +414444,34 @@
         ]
       },
       {
+        "id": "K132-0212~K132-0217",
+        "a": "K132-0212",
+        "b": "K132-0217",
+        "question_score": 0.034,
+        "answer_score": 0.094,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友 9 月 25 日就知道大獎號碼，為什麼在全家機台查到結果的日子和可印的日子還不同？",
+          "領獎日到銀行，帶著自己的國民身分證和朋友轉傳的清冊就夠嗎？"
+        ]
+      },
+      {
+        "id": "K132-0214~K132-0216",
+        "a": "K132-0214",
+        "b": "K132-0216",
+        "question_score": 0.035,
+        "answer_score": 0.094,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張中獎雲端發票，為什麼列印前 App 能領的獎，列印以後 App 可能不收？",
+          "從新店永安街帶著千萬發票出門，任意一家掛著「可兌發票」的金融機構都能收嗎？"
+        ]
+      },
+      {
         "id": "K91-010~K91-011",
         "a": "K91-010",
         "b": "K91-011",
@@ -412441,6 +414665,20 @@
         "questions": [
           "家裡已經裝好《星際大戰：亡命之徒》，借走的是一張卡，為什麼自己那台就啟動不了？",
           "日本卡普空的《快打旋風 6 Years 1–2》把卡和紙放在一起，借走鑰匙卡的朋友也會拿到你換過的兩年角色嗎？"
+        ]
+      },
+      {
+        "id": "K132-0213~K132-0215",
+        "a": "K132-0213",
+        "b": "K132-0215",
+        "question_score": 0,
+        "answer_score": 0.093,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "開獎後才想到壞掉的卡，哪一種持卡人其實從一開始就在等獎金自己匯進去？",
+          "全家機台能印出中獎證明聯，為什麼隔壁櫃檯不能把千萬元交給你？"
         ]
       },
       {
@@ -412763,6 +415001,20 @@
         "questions": [
           "無印36L說明書有三組大小，把哪組三邊加起來會得到115？",
           "改查長榮的115公分，要怎麼讀懂官網那個「或」字？"
+        ]
+      },
+      {
+        "id": "K132-0215~K132-0218",
+        "a": "K132-0215",
+        "b": "K132-0218",
+        "question_score": 0.091,
+        "answer_score": 0.029,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "全家機台能印出中獎證明聯，為什麼隔壁櫃檯不能把千萬元交給你？",
+          "同樣中一千萬元，為什麼兩種兌領方式算出來能差到四萬元？"
         ]
       },
       {
@@ -413900,6 +416152,34 @@
         ]
       },
       {
+        "id": "K132-0203~K132-0214",
+        "a": "K132-0203",
+        "b": "K132-0214",
+        "question_score": 0,
+        "answer_score": 0.085,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "結帳時說「我要明細」，手上那張紙為什麼未必就是千萬獎能用的證明聯？",
+          "同一張中獎雲端發票，為什麼列印前 App 能領的獎，列印以後 App 可能不收？"
+        ]
+      },
+      {
+        "id": "K132-0214~K132-0218",
+        "a": "K132-0214",
+        "b": "K132-0218",
+        "question_score": 0,
+        "answer_score": 0.085,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張中獎雲端發票，為什麼列印前 App 能領的獎，列印以後 App 可能不收？",
+          "同樣中一千萬元，為什麼兩種兌領方式算出來能差到四萬元？"
+        ]
+      },
+      {
         "id": "K66-013~K73-002",
         "a": "K66-013",
         "b": "K73-002",
@@ -414051,6 +416331,34 @@
         "questions": [
           "兩個片筒都寫著黑白 400，為什麼日本沖洗店把 HP5 PLUS 和 XP2 SUPER 分到不同的單？",
           "開沖洗單時，「黑白 135、加兩級」究竟要看哪個價目欄？"
+        ]
+      },
+      {
+        "id": "K132-0205~K132-0213",
+        "a": "K132-0205",
+        "b": "K132-0213",
+        "question_score": 0,
+        "answer_score": 0.084,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡已經記了你的名字，為什麼財政部的手機條碼裡仍可能找不到它的發票？",
+          "開獎後才想到壞掉的卡，哪一種持卡人其實從一開始就在等獎金自己匯進去？"
+        ]
+      },
+      {
+        "id": "K132-0209~K132-0210",
+        "a": "K132-0209",
+        "b": "K132-0210",
+        "question_score": 0,
+        "answer_score": 0.084,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張普通悠遊卡，弄壞了還可能查得到，改成掉了怎麼連路都可能斷掉？",
+          "退卡後拿到兩組資料，走進另一家超商使用 ibon，為什麼不必把已經交回的卡再放上感應區？"
         ]
       },
       {
@@ -414233,6 +416541,20 @@
         "questions": [
           "雙方都拿出大瀧詠一《A LONG VACATION》的十二吋四十週年版，為什麼你要用 33 檔，朋友的盒裝版卻要用 45？",
           "開場的一分鐘被慢錄成 81 秒，為什麼只用軟體「改節奏」縮到一分鐘，聲音仍然偏低？"
+        ]
+      },
+      {
+        "id": "K132-0205~K132-0208",
+        "a": "K132-0205",
+        "b": "K132-0208",
+        "question_score": 0,
+        "answer_score": 0.083,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡已經記了你的名字，為什麼財政部的手機條碼裡仍可能找不到它的發票？",
+          "退卡在北捷站辦，過幾天想知道辦到哪了，為什麼捷運的旅客退費框不是輸入案件編號的地方？"
         ]
       },
       {
@@ -414544,6 +416866,20 @@
         ]
       },
       {
+        "id": "K132-0214~K132-0217",
+        "a": "K132-0214",
+        "b": "K132-0217",
+        "question_score": 0,
+        "answer_score": 0.082,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張中獎雲端發票，為什麼列印前 App 能領的獎，列印以後 App 可能不收？",
+          "領獎日到銀行，帶著自己的國民身分證和朋友轉傳的清冊就夠嗎？"
+        ]
+      },
+      {
         "id": "K89-036~K92-030",
         "a": "K89-036",
         "b": "K92-030",
@@ -414751,6 +417087,20 @@
         "questions": [
           "朋友說她的 Kaweco 也叫 Sport，怎麼補墨時找不到拆出墨管的步驟？",
           "書法墨瓶上寫 AA 級永久性，名字已經乾了，還可能被水彩筆帶走嗎？"
+        ]
+      },
+      {
+        "id": "K132-0203~K132-0212",
+        "a": "K132-0203",
+        "b": "K132-0212",
+        "question_score": 0,
+        "answer_score": 0.081,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "結帳時說「我要明細」，手上那張紙為什麼未必就是千萬獎能用的證明聯？",
+          "朋友 9 月 25 日就知道大獎號碼，為什麼在全家機台查到結果的日子和可印的日子還不同？"
         ]
       },
       {
@@ -415048,6 +417398,20 @@
         ]
       },
       {
+        "id": "K132-0204~K132-0209",
+        "a": "K132-0204",
+        "b": "K132-0209",
+        "question_score": 0.08,
+        "answer_score": 0.075,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩個人都在全家刷悠遊卡，怎麼只有一個人的發票出現在手機條碼？",
+          "同一張普通悠遊卡，弄壞了還可能查得到，改成掉了怎麼連路都可能斷掉？"
+        ]
+      },
+      {
         "id": "L234~L235",
         "a": "L234",
         "b": "L235",
@@ -415269,6 +417633,34 @@
         "questions": [
           "同是 D850 翻拍底片，為什麼負片轉成正像時只拿到 JPEG，翻拍正片卻可以留 NEF？",
           "兩卷黑白旅行照都掃到了灰塵，為什麼 Epson 4870 的紅外除塵在 XP2 上能用，在傳統銀影黑白片上卻要關？"
+        ]
+      },
+      {
+        "id": "K132-0203~K132-0204",
+        "a": "K132-0203",
+        "b": "K132-0204",
+        "question_score": 0,
+        "answer_score": 0.079,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "結帳時說「我要明細」，手上那張紙為什麼未必就是千萬獎能用的證明聯？",
+          "兩個人都在全家刷悠遊卡，怎麼只有一個人的發票出現在手機條碼？"
+        ]
+      },
+      {
+        "id": "K132-0210~K132-0213",
+        "a": "K132-0210",
+        "b": "K132-0213",
+        "question_score": 0.03,
+        "answer_score": 0.079,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "退卡後拿到兩組資料，走進另一家超商使用 ibon，為什麼不必把已經交回的卡再放上感應區？",
+          "開獎後才想到壞掉的卡，哪一種持卡人其實從一開始就在等獎金自己匯進去？"
         ]
       },
       {
@@ -416238,6 +418630,20 @@
         ]
       },
       {
+        "id": "K132-0202~K132-0209",
+        "a": "K132-0202",
+        "b": "K132-0209",
+        "question_score": 0.075,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡感應不到了，全家結帳時用它存的那張發票究竟是寫在哪裡？",
+          "同一張普通悠遊卡，弄壞了還可能查得到，改成掉了怎麼連路都可能斷掉？"
+        ]
+      },
+      {
         "id": "K89-041~K92-030",
         "a": "K89-041",
         "b": "K92-030",
@@ -416518,6 +418924,20 @@
         ]
       },
       {
+        "id": "K132-0203~K132-0211",
+        "a": "K132-0203",
+        "b": "K132-0211",
+        "question_score": 0.074,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "結帳時說「我要明細」，手上那張紙為什麼未必就是千萬獎能用的證明聯？",
+          "看到發票尾數是 565，就算不是新店那張千萬票，也至少中兩百元了嗎？"
+        ]
+      },
+      {
         "id": "K92-045~P62-006",
         "a": "P62-006",
         "b": "K92-045",
@@ -416756,6 +419176,20 @@
         ]
       },
       {
+        "id": "K132-0204~K132-0216",
+        "a": "K132-0204",
+        "b": "K132-0216",
+        "question_score": 0.073,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩個人都在全家刷悠遊卡，怎麼只有一個人的發票出現在手機條碼？",
+          "從新店永安街帶著千萬發票出門，任意一家掛著「可兌發票」的金融機構都能收嗎？"
+        ]
+      },
+      {
         "id": "L58-001~R40009",
         "a": "R40009",
         "b": "L58-001",
@@ -416851,6 +419285,20 @@
         "questions": [
           "拿回來的 XP2 底片偏灰粉，拍白襯衫的人真的被沖成粉紅色了嗎？",
           "兩卷黑白旅行照都掃到了灰塵，為什麼 Epson 4870 的紅外除塵在 XP2 上能用，在傳統銀影黑白片上卻要關？"
+        ]
+      },
+      {
+        "id": "K132-0213~K132-0218",
+        "a": "K132-0213",
+        "b": "K132-0218",
+        "question_score": 0,
+        "answer_score": 0.072,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "開獎後才想到壞掉的卡，哪一種持卡人其實從一開始就在等獎金自己匯進去？",
+          "同樣中一千萬元，為什麼兩種兌領方式算出來能差到四萬元？"
         ]
       },
       {
@@ -417106,6 +419554,34 @@
         ]
       },
       {
+        "id": "K132-0202~K132-0211",
+        "a": "K132-0202",
+        "b": "K132-0211",
+        "question_score": 0.071,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡感應不到了，全家結帳時用它存的那張發票究竟是寫在哪裡？",
+          "看到發票尾數是 565，就算不是新店那張千萬票，也至少中兩百元了嗎？"
+        ]
+      },
+      {
+        "id": "K132-0204~K132-0212",
+        "a": "K132-0204",
+        "b": "K132-0212",
+        "question_score": 0.071,
+        "answer_score": 0.039,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩個人都在全家刷悠遊卡，怎麼只有一個人的發票出現在手機條碼？",
+          "朋友 9 月 25 日就知道大獎號碼，為什麼在全家機台查到結果的日子和可印的日子還不同？"
+        ]
+      },
+      {
         "id": "K90-050~K94-011",
         "a": "K90-050",
         "b": "K94-011",
@@ -417330,6 +419806,20 @@
         ]
       },
       {
+        "id": "K132-0215~K132-0217",
+        "a": "K132-0215",
+        "b": "K132-0217",
+        "question_score": 0,
+        "answer_score": 0.07,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "全家機台能印出中獎證明聯，為什麼隔壁櫃檯不能把千萬元交給你？",
+          "領獎日到銀行，帶著自己的國民身分證和朋友轉傳的清冊就夠嗎？"
+        ]
+      },
+      {
         "id": "P63-017~P63-018",
         "a": "P63-017",
         "b": "P63-018",
@@ -417537,6 +420027,34 @@
         "questions": [
           "Jack White 的〈Just One Drink〉會先聽到電聲或原聲開場。轉速沒動，為什麼再落一次針就可能換版本？",
           "Denon DP-450USB 上一面播完了，為什麼隨身碟裡可能只有一個檔，還會繼續錄到後面的空白？"
+        ]
+      },
+      {
+        "id": "K132-0207~K132-0214",
+        "a": "K132-0207",
+        "b": "K132-0214",
+        "question_score": 0.069,
+        "answer_score": 0.031,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "還握著一張讀不到的普通悠遊卡，去捷運站辦退卡時為什麼要多說一句「我還要查發票」？",
+          "同一張中獎雲端發票，為什麼列印前 App 能領的獎，列印以後 App 可能不收？"
+        ]
+      },
+      {
+        "id": "K132-0215~K132-0216",
+        "a": "K132-0215",
+        "b": "K132-0216",
+        "question_score": 0.036,
+        "answer_score": 0.069,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "全家機台能印出中獎證明聯，為什麼隔壁櫃檯不能把千萬元交給你？",
+          "從新店永安街帶著千萬發票出門，任意一家掛著「可兌發票」的金融機構都能收嗎？"
         ]
       },
       {
@@ -417932,6 +420450,20 @@
         ]
       },
       {
+        "id": "K132-0204~K132-0213",
+        "a": "K132-0204",
+        "b": "K132-0213",
+        "question_score": 0,
+        "answer_score": 0.068,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩個人都在全家刷悠遊卡，怎麼只有一個人的發票出現在手機條碼？",
+          "開獎後才想到壞掉的卡，哪一種持卡人其實從一開始就在等獎金自己匯進去？"
+        ]
+      },
+      {
         "id": "E2115~E2173",
         "a": "E2115",
         "b": "E2173",
@@ -418139,6 +420671,34 @@
         "questions": [
           "朋友說她的 Kaweco 也叫 Sport，怎麼補墨時找不到拆出墨管的步驟？",
           "LAMY T 52 的墨快用完時，瓶底那個凹槽和外面的紙卷哪一個能把墨聚起來？"
+        ]
+      },
+      {
+        "id": "K132-0202~K132-0210",
+        "a": "K132-0202",
+        "b": "K132-0210",
+        "question_score": 0.032,
+        "answer_score": 0.067,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡感應不到了，全家結帳時用它存的那張發票究竟是寫在哪裡？",
+          "退卡後拿到兩組資料，走進另一家超商使用 ibon，為什麼不必把已經交回的卡再放上感應區？"
+        ]
+      },
+      {
+        "id": "K132-0204~K132-0208",
+        "a": "K132-0204",
+        "b": "K132-0208",
+        "question_score": 0,
+        "answer_score": 0.067,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩個人都在全家刷悠遊卡，怎麼只有一個人的發票出現在手機條碼？",
+          "退卡在北捷站辦，過幾天想知道辦到哪了，為什麼捷運的旅客退費框不是輸入案件編號的地方？"
         ]
       },
       {
@@ -418419,6 +420979,48 @@
         "questions": [
           "畫著人與獅子的十二世紀琺瑯牌上，獅鬃是紅線，人物的頭髮是藍線。這兩種顏色怎麼留在那麼細的線裡？",
           "加特契納宮彩蛋表面已經覆了好幾層琺瑯，怎麼還透得出底下那麼整齊的細紋？"
+        ]
+      },
+      {
+        "id": "K132-0202~K132-0213",
+        "a": "K132-0202",
+        "b": "K132-0213",
+        "question_score": 0,
+        "answer_score": 0.066,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡感應不到了，全家結帳時用它存的那張發票究竟是寫在哪裡？",
+          "開獎後才想到壞掉的卡，哪一種持卡人其實從一開始就在等獎金自己匯進去？"
+        ]
+      },
+      {
+        "id": "K132-0202~K132-0215",
+        "a": "K132-0202",
+        "b": "K132-0215",
+        "question_score": 0.039,
+        "answer_score": 0.066,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡感應不到了，全家結帳時用它存的那張發票究竟是寫在哪裡？",
+          "全家機台能印出中獎證明聯，為什麼隔壁櫃檯不能把千萬元交給你？"
+        ]
+      },
+      {
+        "id": "K132-0204~K132-0214",
+        "a": "K132-0204",
+        "b": "K132-0214",
+        "question_score": 0.04,
+        "answer_score": 0.066,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩個人都在全家刷悠遊卡，怎麼只有一個人的發票出現在手機條碼？",
+          "同一張中獎雲端發票，為什麼列印前 App 能領的獎，列印以後 App 可能不收？"
         ]
       },
       {
@@ -419164,6 +421766,48 @@
         ]
       },
       {
+        "id": "K132-0201~K132-0217",
+        "a": "K132-0201",
+        "b": "K132-0217",
+        "question_score": 0.063,
+        "answer_score": 0.044,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友貼出新店全家那筆 123 元食品的千萬清冊，你也買過同價的東西，為什麼手上仍沒有中獎證明？",
+          "領獎日到銀行，帶著自己的國民身分證和朋友轉傳的清冊就夠嗎？"
+        ]
+      },
+      {
+        "id": "K132-0202~K132-0214",
+        "a": "K132-0202",
+        "b": "K132-0214",
+        "question_score": 0.038,
+        "answer_score": 0.063,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡感應不到了，全家結帳時用它存的那張發票究竟是寫在哪裡？",
+          "同一張中獎雲端發票，為什麼列印前 App 能領的獎，列印以後 App 可能不收？"
+        ]
+      },
+      {
+        "id": "K132-0205~K132-0218",
+        "a": "K132-0205",
+        "b": "K132-0218",
+        "question_score": 0,
+        "answer_score": 0.063,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡已經記了你的名字，為什麼財政部的手機條碼裡仍可能找不到它的發票？",
+          "同樣中一千萬元，為什麼兩種兌領方式算出來能差到四萬元？"
+        ]
+      },
+      {
         "id": "K66-006~K66-013",
         "a": "K66-006",
         "b": "K66-013",
@@ -419343,6 +421987,20 @@
         "questions": [
           "開沖洗單時，「黑白 135、加兩級」究竟要看哪個價目欄？",
           "同是 D850 翻拍底片，為什麼負片轉成正像時只拿到 JPEG，翻拍正片卻可以留 NEF？"
+        ]
+      },
+      {
+        "id": "K132-0206~K132-0207",
+        "a": "K132-0206",
+        "b": "K132-0207",
+        "question_score": 0,
+        "answer_score": 0.062,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "假中獎信說信用卡歸戶出了問題，收件人怎麼會一毛獎金沒領到，反而少了三萬多元？",
+          "還握著一張讀不到的普通悠遊卡，去捷運站辦退卡時為什麼要多說一句「我還要查發票」？"
         ]
       },
       {
@@ -419595,6 +422253,48 @@
         "questions": [
           "寫樂 hocoro 明明有鋼筆筆尖，為什麼借它寫字時根本不用先找墨囊？",
           "用 Kakimori 的金屬蘸水尖在名字下畫線，明明還看得到墨，線色變淡時只有再蘸一次嗎？"
+        ]
+      },
+      {
+        "id": "K132-0206~K132-0210",
+        "a": "K132-0206",
+        "b": "K132-0210",
+        "question_score": 0,
+        "answer_score": 0.061,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "假中獎信說信用卡歸戶出了問題，收件人怎麼會一毛獎金沒領到，反而少了三萬多元？",
+          "退卡後拿到兩組資料，走進另一家超商使用 ibon，為什麼不必把已經交回的卡再放上感應區？"
+        ]
+      },
+      {
+        "id": "K132-0210~K132-0214",
+        "a": "K132-0210",
+        "b": "K132-0214",
+        "question_score": 0,
+        "answer_score": 0.061,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "退卡後拿到兩組資料，走進另一家超商使用 ibon，為什麼不必把已經交回的卡再放上感應區？",
+          "同一張中獎雲端發票，為什麼列印前 App 能領的獎，列印以後 App 可能不收？"
+        ]
+      },
+      {
+        "id": "K132-0211~K132-0218",
+        "a": "K132-0211",
+        "b": "K132-0218",
+        "question_score": 0.041,
+        "answer_score": 0.061,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "看到發票尾數是 565，就算不是新店那張千萬票，也至少中兩百元了嗎？",
+          "同樣中一千萬元，為什麼兩種兌領方式算出來能差到四萬元？"
         ]
       },
       {
@@ -419906,6 +422606,34 @@
         ]
       },
       {
+        "id": "K132-0201~K132-0211",
+        "a": "K132-0201",
+        "b": "K132-0211",
+        "question_score": 0.06,
+        "answer_score": 0.051,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友貼出新店全家那筆 123 元食品的千萬清冊，你也買過同價的東西，為什麼手上仍沒有中獎證明？",
+          "看到發票尾數是 565，就算不是新店那張千萬票，也至少中兩百元了嗎？"
+        ]
+      },
+      {
+        "id": "K132-0206~K132-0215",
+        "a": "K132-0206",
+        "b": "K132-0215",
+        "question_score": 0.036,
+        "answer_score": 0.06,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "假中獎信說信用卡歸戶出了問題，收件人怎麼會一毛獎金沒領到，反而少了三萬多元？",
+          "全家機台能印出中獎證明聯，為什麼隔壁櫃檯不能把千萬元交給你？"
+        ]
+      },
+      {
         "id": "I3024~I3029",
         "a": "I3024",
         "b": "I3029",
@@ -420071,6 +422799,20 @@
         "questions": [
           "墨囊前面的塞子要先用手挖掉嗎？為什麼有些筆會聽見一聲卡響，另一些管子裝完卻多出一顆能動的鋼珠？",
           "一支輝柏鋼筆打開竟有兩管墨。前面那管在寫，後面原封不動的一管也有工作嗎？"
+        ]
+      },
+      {
+        "id": "K132-0202~K132-0217",
+        "a": "K132-0202",
+        "b": "K132-0217",
+        "question_score": 0,
+        "answer_score": 0.059,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡感應不到了，全家結帳時用它存的那張發票究竟是寫在哪裡？",
+          "領獎日到銀行，帶著自己的國民身分證和朋友轉傳的清冊就夠嗎？"
         ]
       },
       {
@@ -420449,6 +423191,20 @@
         "questions": [
           "只剩薄薄一層墨時，瓶子不換，為什麼白金 PROCYON 伸進去一小段就能吸？",
           "卡片寫好要出門，hocoro 沒有筆蓋，洗好的筆尖該怎麼收？Kakimori 的筆座又要留意哪裡的水？"
+        ]
+      },
+      {
+        "id": "K132-0201~K132-0216",
+        "a": "K132-0201",
+        "b": "K132-0216",
+        "question_score": 0.058,
+        "answer_score": 0.014,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友貼出新店全家那筆 123 元食品的千萬清冊，你也買過同價的東西，為什麼手上仍沒有中獎證明？",
+          "從新店永安街帶著千萬發票出門，任意一家掛著「可兌發票」的金融機構都能收嗎？"
         ]
       },
       {
@@ -420900,6 +423656,20 @@
         ]
       },
       {
+        "id": "K132-0201~K132-0212",
+        "a": "K132-0201",
+        "b": "K132-0212",
+        "question_score": 0.057,
+        "answer_score": 0.018,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友貼出新店全家那筆 123 元食品的千萬清冊，你也買過同價的東西，為什麼手上仍沒有中獎證明？",
+          "朋友 9 月 25 日就知道大獎號碼，為什麼在全家機台查到結果的日子和可印的日子還不同？"
+        ]
+      },
+      {
         "id": "L064~L067",
         "a": "L064",
         "b": "L067",
@@ -421250,6 +424020,20 @@
         ]
       },
       {
+        "id": "K132-0203~K132-0207",
+        "a": "K132-0203",
+        "b": "K132-0207",
+        "question_score": 0,
+        "answer_score": 0.056,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "結帳時說「我要明細」，手上那張紙為什麼未必就是千萬獎能用的證明聯？",
+          "還握著一張讀不到的普通悠遊卡，去捷運站辦退卡時為什麼要多說一句「我還要查發票」？"
+        ]
+      },
+      {
         "id": "L001~L017",
         "a": "L001",
         "b": "L017",
@@ -421513,6 +424297,20 @@
         "questions": [
           "同樣寫著百樂 Plumix，妹妹拿來的國際規格墨囊，怎麼可能只跟她那支筆配得上？",
           "墨囊前面的塞子要先用手挖掉嗎？為什麼有些筆會聽見一聲卡響，另一些管子裝完卻多出一顆能動的鋼珠？"
+        ]
+      },
+      {
+        "id": "K132-0213~K132-0216",
+        "a": "K132-0213",
+        "b": "K132-0216",
+        "question_score": 0,
+        "answer_score": 0.055,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "開獎後才想到壞掉的卡，哪一種持卡人其實從一開始就在等獎金自己匯進去？",
+          "從新店永安街帶著千萬發票出門，任意一家掛著「可兌發票」的金融機構都能收嗎？"
         ]
       },
       {
@@ -421807,6 +424605,20 @@
         "questions": [
           "墨囊前面的塞子要先用手挖掉嗎？為什麼有些筆會聽見一聲卡響，另一些管子裝完卻多出一顆能動的鋼珠？",
           "新的百樂 Kakuno 明明把墨囊插到底，第一筆沒有顏色，還得把管子扭得更緊嗎？"
+        ]
+      },
+      {
+        "id": "K132-0203~K132-0210",
+        "a": "K132-0203",
+        "b": "K132-0210",
+        "question_score": 0,
+        "answer_score": 0.054,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "結帳時說「我要明細」，手上那張紙為什麼未必就是千萬獎能用的證明聯？",
+          "退卡後拿到兩組資料，走進另一家超商使用 ibon，為什麼不必把已經交回的卡再放上感應區？"
         ]
       },
       {
@@ -422538,6 +425350,20 @@
         ]
       },
       {
+        "id": "K132-0201~K132-0202",
+        "a": "K132-0201",
+        "b": "K132-0202",
+        "question_score": 0.031,
+        "answer_score": 0.052,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友貼出新店全家那筆 123 元食品的千萬清冊，你也買過同價的東西，為什麼手上仍沒有中獎證明？",
+          "悠遊卡感應不到了，全家結帳時用它存的那張發票究竟是寫在哪裡？"
+        ]
+      },
+      {
         "id": "A26001~A26002",
         "a": "A26001",
         "b": "A26002",
@@ -423196,6 +426022,20 @@
         ]
       },
       {
+        "id": "K132-0212~K132-0214",
+        "a": "K132-0212",
+        "b": "K132-0214",
+        "question_score": 0,
+        "answer_score": 0.05,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友 9 月 25 日就知道大獎號碼，為什麼在全家機台查到結果的日子和可印的日子還不同？",
+          "同一張中獎雲端發票，為什麼列印前 App 能領的獎，列印以後 App 可能不收？"
+        ]
+      },
+      {
         "id": "L159~L161",
         "a": "L159",
         "b": "L161",
@@ -423375,6 +426215,34 @@
         "questions": [
           "轉盤已能轉到 78，Ortofon 為什麼仍替老式蟲膠唱片做一顆半徑 65 微米的球形針尖？",
           "把 MM 唱頭接到 Rega Fono Mini A2D，喇叭的紅白線已經有聲。要在電腦錄檔，訊號還得走哪個介面？"
+        ]
+      },
+      {
+        "id": "K132-0204~K132-0206",
+        "a": "K132-0204",
+        "b": "K132-0206",
+        "question_score": 0,
+        "answer_score": 0.049,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩個人都在全家刷悠遊卡，怎麼只有一個人的發票出現在手機條碼？",
+          "假中獎信說信用卡歸戶出了問題，收件人怎麼會一毛獎金沒領到，反而少了三萬多元？"
+        ]
+      },
+      {
+        "id": "K132-0207~K132-0215",
+        "a": "K132-0207",
+        "b": "K132-0215",
+        "question_score": 0,
+        "answer_score": 0.049,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "還握著一張讀不到的普通悠遊卡，去捷運站辦退卡時為什麼要多說一句「我還要查發票」？",
+          "全家機台能印出中獎證明聯，為什麼隔壁櫃檯不能把千萬元交給你？"
         ]
       },
       {
@@ -423784,6 +426652,48 @@
         ]
       },
       {
+        "id": "K132-0202~K132-0208",
+        "a": "K132-0202",
+        "b": "K132-0208",
+        "question_score": 0,
+        "answer_score": 0.048,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡感應不到了，全家結帳時用它存的那張發票究竟是寫在哪裡？",
+          "退卡在北捷站辦，過幾天想知道辦到哪了，為什麼捷運的旅客退費框不是輸入案件編號的地方？"
+        ]
+      },
+      {
+        "id": "K132-0205~K132-0206",
+        "a": "K132-0205",
+        "b": "K132-0206",
+        "question_score": 0,
+        "answer_score": 0.048,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡已經記了你的名字，為什麼財政部的手機條碼裡仍可能找不到它的發票？",
+          "假中獎信說信用卡歸戶出了問題，收件人怎麼會一毛獎金沒領到，反而少了三萬多元？"
+        ]
+      },
+      {
+        "id": "K132-0207~K132-0213",
+        "a": "K132-0207",
+        "b": "K132-0213",
+        "question_score": 0,
+        "answer_score": 0.048,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "還握著一張讀不到的普通悠遊卡，去捷運站辦退卡時為什麼要多說一句「我還要查發票」？",
+          "開獎後才想到壞掉的卡，哪一種持卡人其實從一開始就在等獎金自己匯進去？"
+        ]
+      },
+      {
         "id": "P53-001~P54-002",
         "a": "P53-001",
         "b": "P54-002",
@@ -424047,6 +426957,20 @@
         "questions": [
           "把 MM 唱頭接到 Rega Fono Mini A2D，喇叭的紅白線已經有聲。要在電腦錄檔，訊號還得走哪個介面？",
           "Denon DP-450USB 上一面播完了，為什麼隨身碟裡可能只有一個檔，還會繼續錄到後面的空白？"
+        ]
+      },
+      {
+        "id": "K132-0211~K132-0214",
+        "a": "K132-0211",
+        "b": "K132-0214",
+        "question_score": 0.036,
+        "answer_score": 0.047,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "看到發票尾數是 565，就算不是新店那張千萬票，也至少中兩百元了嗎？",
+          "同一張中獎雲端發票，為什麼列印前 App 能領的獎，列印以後 App 可能不收？"
         ]
       },
       {
@@ -424918,6 +427842,34 @@
         ]
       },
       {
+        "id": "K132-0203~K132-0218",
+        "a": "K132-0203",
+        "b": "K132-0218",
+        "question_score": 0.044,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "結帳時說「我要明細」，手上那張紙為什麼未必就是千萬獎能用的證明聯？",
+          "同樣中一千萬元，為什麼兩種兌領方式算出來能差到四萬元？"
+        ]
+      },
+      {
+        "id": "K132-0207~K132-0217",
+        "a": "K132-0207",
+        "b": "K132-0217",
+        "question_score": 0,
+        "answer_score": 0.044,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "還握著一張讀不到的普通悠遊卡，去捷運站辦退卡時為什麼要多說一句「我還要查發票」？",
+          "領獎日到銀行，帶著自己的國民身分證和朋友轉傳的清冊就夠嗎？"
+        ]
+      },
+      {
         "id": "P076~P077",
         "a": "P076",
         "b": "P077",
@@ -425338,6 +428290,34 @@
         ]
       },
       {
+        "id": "K132-0206~K132-0214",
+        "a": "K132-0206",
+        "b": "K132-0214",
+        "question_score": 0.034,
+        "answer_score": 0.043,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "假中獎信說信用卡歸戶出了問題，收件人怎麼會一毛獎金沒領到，反而少了三萬多元？",
+          "同一張中獎雲端發票，為什麼列印前 App 能領的獎，列印以後 App 可能不收？"
+        ]
+      },
+      {
+        "id": "K132-0210~K132-0217",
+        "a": "K132-0210",
+        "b": "K132-0217",
+        "question_score": 0,
+        "answer_score": 0.043,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "退卡後拿到兩組資料，走進另一家超商使用 ibon，為什麼不必把已經交回的卡再放上感應區？",
+          "領獎日到銀行，帶著自己的國民身分證和朋友轉傳的清冊就夠嗎？"
+        ]
+      },
+      {
         "id": "P020~P138",
         "a": "P020",
         "b": "P138",
@@ -425716,6 +428696,34 @@
         ]
       },
       {
+        "id": "K132-0204~K132-0215",
+        "a": "K132-0204",
+        "b": "K132-0215",
+        "question_score": 0.042,
+        "answer_score": 0.034,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩個人都在全家刷悠遊卡，怎麼只有一個人的發票出現在手機條碼？",
+          "全家機台能印出中獎證明聯，為什麼隔壁櫃檯不能把千萬元交給你？"
+        ]
+      },
+      {
+        "id": "K132-0213~K132-0217",
+        "a": "K132-0213",
+        "b": "K132-0217",
+        "question_score": 0.035,
+        "answer_score": 0.042,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "開獎後才想到壞掉的卡，哪一種持卡人其實從一開始就在等獎金自己匯進去？",
+          "領獎日到銀行，帶著自己的國民身分證和朋友轉傳的清冊就夠嗎？"
+        ]
+      },
+      {
         "id": "R41001~R41005",
         "a": "R41001",
         "b": "R41005",
@@ -426080,6 +429088,20 @@
         ]
       },
       {
+        "id": "K132-0206~K132-0217",
+        "a": "K132-0206",
+        "b": "K132-0217",
+        "question_score": 0,
+        "answer_score": 0.041,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "假中獎信說信用卡歸戶出了問題，收件人怎麼會一毛獎金沒領到，反而少了三萬多元？",
+          "領獎日到銀行，帶著自己的國民身分證和朋友轉傳的清冊就夠嗎？"
+        ]
+      },
+      {
         "id": "L62-002~R37007",
         "a": "R37007",
         "b": "L62-002",
@@ -426399,6 +429421,34 @@
         "questions": [
           "朋友唱盤邊上的一排點看起來沒在動，為什麼這還不能證明他選對這張唱片的速度？",
           "Denon DP-450USB 上一面播完了，為什麼隨身碟裡可能只有一個檔，還會繼續錄到後面的空白？"
+        ]
+      },
+      {
+        "id": "K132-0206~K132-0209",
+        "a": "K132-0206",
+        "b": "K132-0209",
+        "question_score": 0,
+        "answer_score": 0.04,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "假中獎信說信用卡歸戶出了問題，收件人怎麼會一毛獎金沒領到，反而少了三萬多元？",
+          "同一張普通悠遊卡，弄壞了還可能查得到，改成掉了怎麼連路都可能斷掉？"
+        ]
+      },
+      {
+        "id": "K132-0206~K132-0216",
+        "a": "K132-0206",
+        "b": "K132-0216",
+        "question_score": 0,
+        "answer_score": 0.04,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "假中獎信說信用卡歸戶出了問題，收件人怎麼會一毛獎金沒領到，反而少了三萬多元？",
+          "從新店永安街帶著千萬發票出門，任意一家掛著「可兌發票」的金融機構都能收嗎？"
         ]
       },
       {
@@ -426791,6 +429841,20 @@
         "questions": [
           "一支短小的 Kaweco Liliput 要改用瓶裝墨，為什麼吸墨器連活塞桿都做成能折的？",
           "用 Kakimori 的金屬蘸水尖在名字下畫線，明明還看得到墨，線色變淡時只有再蘸一次嗎？"
+        ]
+      },
+      {
+        "id": "K132-0216~K132-0218",
+        "a": "K132-0216",
+        "b": "K132-0218",
+        "question_score": 0.039,
+        "answer_score": 0.039,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "從新店永安街帶著千萬發票出門，任意一家掛著「可兌發票」的金融機構都能收嗎？",
+          "同樣中一千萬元，為什麼兩種兌領方式算出來能差到四萬元？"
         ]
       },
       {
@@ -427312,6 +430376,34 @@
         ]
       },
       {
+        "id": "K132-0204~K132-0211",
+        "a": "K132-0204",
+        "b": "K132-0211",
+        "question_score": 0.038,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩個人都在全家刷悠遊卡，怎麼只有一個人的發票出現在手機條碼？",
+          "看到發票尾數是 565，就算不是新店那張千萬票，也至少中兩百元了嗎？"
+        ]
+      },
+      {
+        "id": "K132-0211~K132-0215",
+        "a": "K132-0211",
+        "b": "K132-0215",
+        "question_score": 0.038,
+        "answer_score": 0.016,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "看到發票尾數是 565，就算不是新店那張千萬票，也至少中兩百元了嗎？",
+          "全家機台能印出中獎證明聯，為什麼隔壁櫃檯不能把千萬元交給你？"
+        ]
+      },
+      {
         "id": "K92-017~K92-026",
         "a": "K92-017",
         "b": "K92-026",
@@ -427645,6 +430737,20 @@
         "questions": [
           "要留下清楚的細字再罩上水彩，有沒有為這個動作設計的鋼筆墨水？",
           "寫樂 hocoro 明明有鋼筆筆尖，為什麼借它寫字時根本不用先找墨囊？"
+        ]
+      },
+      {
+        "id": "K132-0202~K132-0212",
+        "a": "K132-0202",
+        "b": "K132-0212",
+        "question_score": 0.034,
+        "answer_score": 0.037,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡感應不到了，全家結帳時用它存的那張發票究竟是寫在哪裡？",
+          "朋友 9 月 25 日就知道大獎號碼，為什麼在全家機台查到結果的日子和可印的日子還不同？"
         ]
       },
       {
@@ -428068,6 +431174,34 @@
         ]
       },
       {
+        "id": "K132-0201~K132-0204",
+        "a": "K132-0201",
+        "b": "K132-0204",
+        "question_score": 0.032,
+        "answer_score": 0.036,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友貼出新店全家那筆 123 元食品的千萬清冊，你也買過同價的東西，為什麼手上仍沒有中獎證明？",
+          "兩個人都在全家刷悠遊卡，怎麼只有一個人的發票出現在手機條碼？"
+        ]
+      },
+      {
+        "id": "K132-0203~K132-0216",
+        "a": "K132-0203",
+        "b": "K132-0216",
+        "question_score": 0.036,
+        "answer_score": 0.016,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "結帳時說「我要明細」，手上那張紙為什麼未必就是千萬獎能用的證明聯？",
+          "從新店永安街帶著千萬發票出門，任意一家掛著「可兌發票」的金融機構都能收嗎？"
+        ]
+      },
+      {
         "id": "L76-005~L76-006",
         "a": "L76-005",
         "b": "L76-006",
@@ -428345,6 +431479,34 @@
         "questions": [
           "LAMY T 52 的墨快用完時，瓶底那個凹槽和外面的紙卷哪一個能把墨聚起來？",
           "只剩薄薄一層墨時，瓶子不換，為什麼白金 PROCYON 伸進去一小段就能吸？"
+        ]
+      },
+      {
+        "id": "K132-0203~K132-0213",
+        "a": "K132-0203",
+        "b": "K132-0213",
+        "question_score": 0,
+        "answer_score": 0.035,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "結帳時說「我要明細」，手上那張紙為什麼未必就是千萬獎能用的證明聯？",
+          "開獎後才想到壞掉的卡，哪一種持卡人其實從一開始就在等獎金自己匯進去？"
+        ]
+      },
+      {
+        "id": "K132-0216~K132-0217",
+        "a": "K132-0216",
+        "b": "K132-0217",
+        "question_score": 0.035,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "從新店永安街帶著千萬發票出門，任意一家掛著「可兌發票」的金融機構都能收嗎？",
+          "領獎日到銀行，帶著自己的國民身分證和朋友轉傳的清冊就夠嗎？"
         ]
       },
       {
@@ -428824,6 +431986,90 @@
         ]
       },
       {
+        "id": "K132-0201~K132-0218",
+        "a": "K132-0201",
+        "b": "K132-0218",
+        "question_score": 0.034,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友貼出新店全家那筆 123 元食品的千萬清冊，你也買過同價的東西，為什麼手上仍沒有中獎證明？",
+          "同樣中一千萬元，為什麼兩種兌領方式算出來能差到四萬元？"
+        ]
+      },
+      {
+        "id": "K132-0202~K132-0216",
+        "a": "K132-0202",
+        "b": "K132-0216",
+        "question_score": 0.034,
+        "answer_score": 0.015,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡感應不到了，全家結帳時用它存的那張發票究竟是寫在哪裡？",
+          "從新店永安街帶著千萬發票出門，任意一家掛著「可兌發票」的金融機構都能收嗎？"
+        ]
+      },
+      {
+        "id": "K132-0203~K132-0206",
+        "a": "K132-0203",
+        "b": "K132-0206",
+        "question_score": 0,
+        "answer_score": 0.034,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "結帳時說「我要明細」，手上那張紙為什麼未必就是千萬獎能用的證明聯？",
+          "假中獎信說信用卡歸戶出了問題，收件人怎麼會一毛獎金沒領到，反而少了三萬多元？"
+        ]
+      },
+      {
+        "id": "K132-0203~K132-0208",
+        "a": "K132-0203",
+        "b": "K132-0208",
+        "question_score": 0,
+        "answer_score": 0.034,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "結帳時說「我要明細」，手上那張紙為什麼未必就是千萬獎能用的證明聯？",
+          "退卡在北捷站辦，過幾天想知道辦到哪了，為什麼捷運的旅客退費框不是輸入案件編號的地方？"
+        ]
+      },
+      {
+        "id": "K132-0205~K132-0211",
+        "a": "K132-0205",
+        "b": "K132-0211",
+        "question_score": 0.034,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡已經記了你的名字，為什麼財政部的手機條碼裡仍可能找不到它的發票？",
+          "看到發票尾數是 565，就算不是新店那張千萬票，也至少中兩百元了嗎？"
+        ]
+      },
+      {
+        "id": "K132-0205~K132-0215",
+        "a": "K132-0205",
+        "b": "K132-0215",
+        "question_score": 0,
+        "answer_score": 0.034,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡已經記了你的名字，為什麼財政部的手機條碼裡仍可能找不到它的發票？",
+          "全家機台能印出中獎證明聯，為什麼隔壁櫃檯不能把千萬元交給你？"
+        ]
+      },
+      {
         "id": "K116-0202~K116-0216",
         "a": "K116-0202",
         "b": "K116-0216",
@@ -429269,6 +432515,34 @@
         "questions": [
           "新的百樂 Kakuno 明明把墨囊插到底，第一筆沒有顏色，還得把管子扭得更緊嗎？",
           "要留下清楚的細字再罩上水彩，有沒有為這個動作設計的鋼筆墨水？"
+        ]
+      },
+      {
+        "id": "K132-0205~K132-0216",
+        "a": "K132-0205",
+        "b": "K132-0216",
+        "question_score": 0.033,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡已經記了你的名字，為什麼財政部的手機條碼裡仍可能找不到它的發票？",
+          "從新店永安街帶著千萬發票出門，任意一家掛著「可兌發票」的金融機構都能收嗎？"
+        ]
+      },
+      {
+        "id": "K132-0207~K132-0211",
+        "a": "K132-0207",
+        "b": "K132-0211",
+        "question_score": 0.033,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "還握著一張讀不到的普通悠遊卡，去捷運站辦退卡時為什麼要多說一句「我還要查發票」？",
+          "看到發票尾數是 565，就算不是新店那張千萬票，也至少中兩百元了嗎？"
         ]
       },
       {
@@ -429804,6 +433078,48 @@
         ]
       },
       {
+        "id": "K132-0201~K132-0213",
+        "a": "K132-0201",
+        "b": "K132-0213",
+        "question_score": 0,
+        "answer_score": 0.032,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友貼出新店全家那筆 123 元食品的千萬清冊，你也買過同價的東西，為什麼手上仍沒有中獎證明？",
+          "開獎後才想到壞掉的卡，哪一種持卡人其實從一開始就在等獎金自己匯進去？"
+        ]
+      },
+      {
+        "id": "K132-0206~K132-0213",
+        "a": "K132-0206",
+        "b": "K132-0213",
+        "question_score": 0.032,
+        "answer_score": 0.015,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "假中獎信說信用卡歸戶出了問題，收件人怎麼會一毛獎金沒領到，反而少了三萬多元？",
+          "開獎後才想到壞掉的卡，哪一種持卡人其實從一開始就在等獎金自己匯進去？"
+        ]
+      },
+      {
+        "id": "K132-0207~K132-0216",
+        "a": "K132-0207",
+        "b": "K132-0216",
+        "question_score": 0.032,
+        "answer_score": 0.014,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "還握著一張讀不到的普通悠遊卡，去捷運站辦退卡時為什麼要多說一句「我還要查發票」？",
+          "從新店永安街帶著千萬發票出門，任意一家掛著「可兌發票」的金融機構都能收嗎？"
+        ]
+      },
+      {
         "id": "K90-036~T52-002",
         "a": "T52-002",
         "b": "K90-036",
@@ -430123,6 +433439,90 @@
         "questions": [
           "書法墨瓶上寫 AA 級永久性，名字已經乾了，還可能被水彩筆帶走嗎？",
           "同樣是 Hahnemühle 水彩明信片，要畫醒目的粗紋，和要落一行細字，該挑哪一款紙？"
+        ]
+      },
+      {
+        "id": "K132-0201~K132-0206",
+        "a": "K132-0201",
+        "b": "K132-0206",
+        "question_score": 0.029,
+        "answer_score": 0.031,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友貼出新店全家那筆 123 元食品的千萬清冊，你也買過同價的東西，為什麼手上仍沒有中獎證明？",
+          "假中獎信說信用卡歸戶出了問題，收件人怎麼會一毛獎金沒領到，反而少了三萬多元？"
+        ]
+      },
+      {
+        "id": "K132-0201~K132-0214",
+        "a": "K132-0201",
+        "b": "K132-0214",
+        "question_score": 0.031,
+        "answer_score": 0.031,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友貼出新店全家那筆 123 元食品的千萬清冊，你也買過同價的東西，為什麼手上仍沒有中獎證明？",
+          "同一張中獎雲端發票，為什麼列印前 App 能領的獎，列印以後 App 可能不收？"
+        ]
+      },
+      {
+        "id": "K132-0202~K132-0206",
+        "a": "K132-0202",
+        "b": "K132-0206",
+        "question_score": 0,
+        "answer_score": 0.031,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡感應不到了，全家結帳時用它存的那張發票究竟是寫在哪裡？",
+          "假中獎信說信用卡歸戶出了問題，收件人怎麼會一毛獎金沒領到，反而少了三萬多元？"
+        ]
+      },
+      {
+        "id": "K132-0204~K132-0217",
+        "a": "K132-0204",
+        "b": "K132-0217",
+        "question_score": 0,
+        "answer_score": 0.031,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩個人都在全家刷悠遊卡，怎麼只有一個人的發票出現在手機條碼？",
+          "領獎日到銀行，帶著自己的國民身分證和朋友轉傳的清冊就夠嗎？"
+        ]
+      },
+      {
+        "id": "K132-0208~K132-0211",
+        "a": "K132-0208",
+        "b": "K132-0211",
+        "question_score": 0.031,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "退卡在北捷站辦，過幾天想知道辦到哪了，為什麼捷運的旅客退費框不是輸入案件編號的地方？",
+          "看到發票尾數是 565，就算不是新店那張千萬票，也至少中兩百元了嗎？"
+        ]
+      },
+      {
+        "id": "K132-0208~K132-0215",
+        "a": "K132-0208",
+        "b": "K132-0215",
+        "question_score": 0,
+        "answer_score": 0.031,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "退卡在北捷站辦，過幾天想知道辦到哪了，為什麼捷運的旅客退費框不是輸入案件編號的地方？",
+          "全家機台能印出中獎證明聯，為什麼隔壁櫃檯不能把千萬元交給你？"
         ]
       },
       {
@@ -430630,6 +434030,48 @@
         ]
       },
       {
+        "id": "K132-0208~K132-0212",
+        "a": "K132-0208",
+        "b": "K132-0212",
+        "question_score": 0.03,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "退卡在北捷站辦，過幾天想知道辦到哪了，為什麼捷運的旅客退費框不是輸入案件編號的地方？",
+          "朋友 9 月 25 日就知道大獎號碼，為什麼在全家機台查到結果的日子和可印的日子還不同？"
+        ]
+      },
+      {
+        "id": "K132-0208~K132-0213",
+        "a": "K132-0208",
+        "b": "K132-0213",
+        "question_score": 0,
+        "answer_score": 0.03,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "退卡在北捷站辦，過幾天想知道辦到哪了，為什麼捷運的旅客退費框不是輸入案件編號的地方？",
+          "開獎後才想到壞掉的卡，哪一種持卡人其實從一開始就在等獎金自己匯進去？"
+        ]
+      },
+      {
+        "id": "K132-0210~K132-0216",
+        "a": "K132-0210",
+        "b": "K132-0216",
+        "question_score": 0.03,
+        "answer_score": 0.028,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "退卡後拿到兩組資料，走進另一家超商使用 ibon，為什麼不必把已經交回的卡再放上感應區？",
+          "從新店永安街帶著千萬發票出門，任意一家掛著「可兌發票」的金融機構都能收嗎？"
+        ]
+      },
+      {
         "id": "K100-012~P099",
         "a": "P099",
         "b": "K100-012",
@@ -431075,6 +434517,20 @@
         "questions": [
           "LAMY T 52 的墨快用完時，瓶底那個凹槽和外面的紙卷哪一個能把墨聚起來？",
           "同樣是 Hahnemühle 水彩明信片，要畫醒目的粗紋，和要落一行細字，該挑哪一款紙？"
+        ]
+      },
+      {
+        "id": "K132-0206~K132-0208",
+        "a": "K132-0206",
+        "b": "K132-0208",
+        "question_score": 0,
+        "answer_score": 0.029,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "假中獎信說信用卡歸戶出了問題，收件人怎麼會一毛獎金沒領到，反而少了三萬多元？",
+          "退卡在北捷站辦，過幾天想知道辦到哪了，為什麼捷運的旅客退費框不是輸入案件編號的地方？"
         ]
       },
       {
@@ -431663,6 +435119,34 @@
         "questions": [
           "用 hocoro 的 2.0 mm 尖寫大字，尖下多一塊齒狀配件，裡面藏了一整管墨嗎？",
           "用 Kakimori 的金屬蘸水尖在名字下畫線，明明還看得到墨，線色變淡時只有再蘸一次嗎？"
+        ]
+      },
+      {
+        "id": "K132-0206~K132-0218",
+        "a": "K132-0206",
+        "b": "K132-0218",
+        "question_score": 0,
+        "answer_score": 0.028,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "假中獎信說信用卡歸戶出了問題，收件人怎麼會一毛獎金沒領到，反而少了三萬多元？",
+          "同樣中一千萬元，為什麼兩種兌領方式算出來能差到四萬元？"
+        ]
+      },
+      {
+        "id": "K132-0208~K132-0217",
+        "a": "K132-0208",
+        "b": "K132-0217",
+        "question_score": 0,
+        "answer_score": 0.028,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "退卡在北捷站辦，過幾天想知道辦到哪了，為什麼捷運的旅客退費框不是輸入案件編號的地方？",
+          "領獎日到銀行，帶著自己的國民身分證和朋友轉傳的清冊就夠嗎？"
         ]
       },
       {
@@ -434116,6 +437600,20 @@
         ]
       },
       {
+        "id": "K132-0205~K132-0212",
+        "a": "K132-0205",
+        "b": "K132-0212",
+        "question_score": 0,
+        "answer_score": 0.019,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡已經記了你的名字，為什麼財政部的手機條碼裡仍可能找不到它的發票？",
+          "朋友 9 月 25 日就知道大獎號碼，為什麼在全家機台查到結果的日子和可印的日子還不同？"
+        ]
+      },
+      {
         "id": "P57-001~X5002",
         "a": "X5002",
         "b": "P57-001",
@@ -434225,6 +437723,48 @@
         "questions": [
           "LAMY T 52 的墨快用完時，瓶底那個凹槽和外面的紙卷哪一個能把墨聚起來？",
           "用 hocoro 的 2.0 mm 尖寫大字，尖下多一塊齒狀配件，裡面藏了一整管墨嗎？"
+        ]
+      },
+      {
+        "id": "K132-0201~K132-0207",
+        "a": "K132-0201",
+        "b": "K132-0207",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友貼出新店全家那筆 123 元食品的千萬清冊，你也買過同價的東西，為什麼手上仍沒有中獎證明？",
+          "還握著一張讀不到的普通悠遊卡，去捷運站辦退卡時為什麼要多說一句「我還要查發票」？"
+        ]
+      },
+      {
+        "id": "K132-0201~K132-0210",
+        "a": "K132-0201",
+        "b": "K132-0210",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友貼出新店全家那筆 123 元食品的千萬清冊，你也買過同價的東西，為什麼手上仍沒有中獎證明？",
+          "退卡後拿到兩組資料，走進另一家超商使用 ibon，為什麼不必把已經交回的卡再放上感應區？"
+        ]
+      },
+      {
+        "id": "K132-0206~K132-0212",
+        "a": "K132-0206",
+        "b": "K132-0212",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "假中獎信說信用卡歸戶出了問題，收件人怎麼會一毛獎金沒領到，反而少了三萬多元？",
+          "朋友 9 月 25 日就知道大獎號碼，為什麼在全家機台查到結果的日子和可印的日子還不同？"
         ]
       },
       {
@@ -434393,6 +437933,48 @@
         "questions": [
           "寫樂 hocoro 明明有鋼筆筆尖，為什麼借它寫字時根本不用先找墨囊？",
           "同樣是 Hahnemühle 水彩明信片，要畫醒目的粗紋，和要落一行細字，該挑哪一款紙？"
+        ]
+      },
+      {
+        "id": "K132-0201~K132-0208",
+        "a": "K132-0201",
+        "b": "K132-0208",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友貼出新店全家那筆 123 元食品的千萬清冊，你也買過同價的東西，為什麼手上仍沒有中獎證明？",
+          "退卡在北捷站辦，過幾天想知道辦到哪了，為什麼捷運的旅客退費框不是輸入案件編號的地方？"
+        ]
+      },
+      {
+        "id": "K132-0210~K132-0215",
+        "a": "K132-0210",
+        "b": "K132-0215",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "退卡後拿到兩組資料，走進另一家超商使用 ibon，為什麼不必把已經交回的卡再放上感應區？",
+          "全家機台能印出中獎證明聯，為什麼隔壁櫃檯不能把千萬元交給你？"
+        ]
+      },
+      {
+        "id": "K132-0211~K132-0213",
+        "a": "K132-0211",
+        "b": "K132-0213",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "看到發票尾數是 565，就算不是新店那張千萬票，也至少中兩百元了嗎？",
+          "開獎後才想到壞掉的卡，哪一種持卡人其實從一開始就在等獎金自己匯進去？"
         ]
       },
       {
@@ -434673,6 +438255,62 @@
         "questions": [
           "書法墨瓶上寫 AA 級永久性，名字已經乾了，還可能被水彩筆帶走嗎？",
           "寫樂 hocoro 明明有鋼筆筆尖，為什麼借它寫字時根本不用先找墨囊？"
+        ]
+      },
+      {
+        "id": "K132-0202~K132-0218",
+        "a": "K132-0202",
+        "b": "K132-0218",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡感應不到了，全家結帳時用它存的那張發票究竟是寫在哪裡？",
+          "同樣中一千萬元，為什麼兩種兌領方式算出來能差到四萬元？"
+        ]
+      },
+      {
+        "id": "K132-0203~K132-0209",
+        "a": "K132-0203",
+        "b": "K132-0209",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "結帳時說「我要明細」，手上那張紙為什麼未必就是千萬獎能用的證明聯？",
+          "同一張普通悠遊卡，弄壞了還可能查得到，改成掉了怎麼連路都可能斷掉？"
+        ]
+      },
+      {
+        "id": "K132-0208~K132-0214",
+        "a": "K132-0208",
+        "b": "K132-0214",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "退卡在北捷站辦，過幾天想知道辦到哪了，為什麼捷運的旅客退費框不是輸入案件編號的地方？",
+          "同一張中獎雲端發票，為什麼列印前 App 能領的獎，列印以後 App 可能不收？"
+        ]
+      },
+      {
+        "id": "K132-0211~K132-0217",
+        "a": "K132-0211",
+        "b": "K132-0217",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "看到發票尾數是 565，就算不是新店那張千萬票，也至少中兩百元了嗎？",
+          "領獎日到銀行，帶著自己的國民身分證和朋友轉傳的清冊就夠嗎？"
         ]
       },
       {
@@ -435219,6 +438857,48 @@
         "questions": [
           "要留下清楚的細字再罩上水彩，有沒有為這個動作設計的鋼筆墨水？",
           "用 Kakimori 的金屬蘸水尖在名字下畫線，明明還看得到墨，線色變淡時只有再蘸一次嗎？"
+        ]
+      },
+      {
+        "id": "K132-0208~K132-0218",
+        "a": "K132-0208",
+        "b": "K132-0218",
+        "question_score": 0,
+        "answer_score": 0.014,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "退卡在北捷站辦，過幾天想知道辦到哪了，為什麼捷運的旅客退費框不是輸入案件編號的地方？",
+          "同樣中一千萬元，為什麼兩種兌領方式算出來能差到四萬元？"
+        ]
+      },
+      {
+        "id": "K132-0209~K132-0213",
+        "a": "K132-0209",
+        "b": "K132-0213",
+        "question_score": 0,
+        "answer_score": 0.014,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張普通悠遊卡，弄壞了還可能查得到，改成掉了怎麼連路都可能斷掉？",
+          "開獎後才想到壞掉的卡，哪一種持卡人其實從一開始就在等獎金自己匯進去？"
+        ]
+      },
+      {
+        "id": "K132-0209~K132-0215",
+        "a": "K132-0209",
+        "b": "K132-0215",
+        "question_score": 0,
+        "answer_score": 0.014,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張普通悠遊卡，弄壞了還可能查得到，改成掉了怎麼連路都可能斷掉？",
+          "全家機台能印出中獎證明聯，為什麼隔壁櫃檯不能把千萬元交給你？"
         ]
       },
       {
@@ -435936,6 +439616,48 @@
         ]
       },
       {
+        "id": "K132-0209~K132-0217",
+        "a": "K132-0209",
+        "b": "K132-0217",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張普通悠遊卡，弄壞了還可能查得到，改成掉了怎麼連路都可能斷掉？",
+          "領獎日到銀行，帶著自己的國民身分證和朋友轉傳的清冊就夠嗎？"
+        ]
+      },
+      {
+        "id": "K132-0209~K132-0218",
+        "a": "K132-0209",
+        "b": "K132-0218",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張普通悠遊卡，弄壞了還可能查得到，改成掉了怎麼連路都可能斷掉？",
+          "同樣中一千萬元，為什麼兩種兌領方式算出來能差到四萬元？"
+        ]
+      },
+      {
+        "id": "K132-0217~K132-0218",
+        "a": "K132-0217",
+        "b": "K132-0218",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "領獎日到銀行，帶著自己的國民身分證和朋友轉傳的清冊就夠嗎？",
+          "同樣中一千萬元，為什麼兩種兌領方式算出來能差到四萬元？"
+        ]
+      },
+      {
         "id": "R43005~R43009",
         "a": "R43005",
         "b": "R43009",
@@ -436535,6 +440257,20 @@
         "questions": [
           "兩瓶墨名裡都看得到 India，一瓶有蟲膠，另一瓶卻說可裝進活塞鋼筆，該聽哪瓶的說明？",
           "同樣是 Hahnemühle 水彩明信片，要畫醒目的粗紋，和要落一行細字，該挑哪一款紙？"
+        ]
+      },
+      {
+        "id": "K132-0209~K132-0216",
+        "a": "K132-0209",
+        "b": "K132-0216",
+        "question_score": 0,
+        "answer_score": 0.012,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張普通悠遊卡，弄壞了還可能查得到，改成掉了怎麼連路都可能斷掉？",
+          "從新店永安街帶著千萬發票出門，任意一家掛著「可兌發票」的金融機構都能收嗎？"
         ]
       },
       {
@@ -439590,6 +443326,230 @@
         ]
       },
       {
+        "id": "K132-0201~K132-0205",
+        "a": "K132-0201",
+        "b": "K132-0205",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友貼出新店全家那筆 123 元食品的千萬清冊，你也買過同價的東西，為什麼手上仍沒有中獎證明？",
+          "悠遊卡已經記了你的名字，為什麼財政部的手機條碼裡仍可能找不到它的發票？"
+        ]
+      },
+      {
+        "id": "K132-0201~K132-0209",
+        "a": "K132-0201",
+        "b": "K132-0209",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友貼出新店全家那筆 123 元食品的千萬清冊，你也買過同價的東西，為什麼手上仍沒有中獎證明？",
+          "同一張普通悠遊卡，弄壞了還可能查得到，改成掉了怎麼連路都可能斷掉？"
+        ]
+      },
+      {
+        "id": "K132-0203~K132-0205",
+        "a": "K132-0203",
+        "b": "K132-0205",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "結帳時說「我要明細」，手上那張紙為什麼未必就是千萬獎能用的證明聯？",
+          "悠遊卡已經記了你的名字，為什麼財政部的手機條碼裡仍可能找不到它的發票？"
+        ]
+      },
+      {
+        "id": "K132-0204~K132-0218",
+        "a": "K132-0204",
+        "b": "K132-0218",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩個人都在全家刷悠遊卡，怎麼只有一個人的發票出現在手機條碼？",
+          "同樣中一千萬元，為什麼兩種兌領方式算出來能差到四萬元？"
+        ]
+      },
+      {
+        "id": "K132-0205~K132-0217",
+        "a": "K132-0205",
+        "b": "K132-0217",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "悠遊卡已經記了你的名字，為什麼財政部的手機條碼裡仍可能找不到它的發票？",
+          "領獎日到銀行，帶著自己的國民身分證和朋友轉傳的清冊就夠嗎？"
+        ]
+      },
+      {
+        "id": "K132-0206~K132-0211",
+        "a": "K132-0206",
+        "b": "K132-0211",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "假中獎信說信用卡歸戶出了問題，收件人怎麼會一毛獎金沒領到，反而少了三萬多元？",
+          "看到發票尾數是 565，就算不是新店那張千萬票，也至少中兩百元了嗎？"
+        ]
+      },
+      {
+        "id": "K132-0207~K132-0212",
+        "a": "K132-0207",
+        "b": "K132-0212",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "還握著一張讀不到的普通悠遊卡，去捷運站辦退卡時為什麼要多說一句「我還要查發票」？",
+          "朋友 9 月 25 日就知道大獎號碼，為什麼在全家機台查到結果的日子和可印的日子還不同？"
+        ]
+      },
+      {
+        "id": "K132-0207~K132-0218",
+        "a": "K132-0207",
+        "b": "K132-0218",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "還握著一張讀不到的普通悠遊卡，去捷運站辦退卡時為什麼要多說一句「我還要查發票」？",
+          "同樣中一千萬元，為什麼兩種兌領方式算出來能差到四萬元？"
+        ]
+      },
+      {
+        "id": "K132-0208~K132-0216",
+        "a": "K132-0208",
+        "b": "K132-0216",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "退卡在北捷站辦，過幾天想知道辦到哪了，為什麼捷運的旅客退費框不是輸入案件編號的地方？",
+          "從新店永安街帶著千萬發票出門，任意一家掛著「可兌發票」的金融機構都能收嗎？"
+        ]
+      },
+      {
+        "id": "K132-0209~K132-0211",
+        "a": "K132-0209",
+        "b": "K132-0211",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張普通悠遊卡，弄壞了還可能查得到，改成掉了怎麼連路都可能斷掉？",
+          "看到發票尾數是 565，就算不是新店那張千萬票，也至少中兩百元了嗎？"
+        ]
+      },
+      {
+        "id": "K132-0209~K132-0212",
+        "a": "K132-0209",
+        "b": "K132-0212",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張普通悠遊卡，弄壞了還可能查得到，改成掉了怎麼連路都可能斷掉？",
+          "朋友 9 月 25 日就知道大獎號碼，為什麼在全家機台查到結果的日子和可印的日子還不同？"
+        ]
+      },
+      {
+        "id": "K132-0210~K132-0211",
+        "a": "K132-0210",
+        "b": "K132-0211",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "退卡後拿到兩組資料，走進另一家超商使用 ibon，為什麼不必把已經交回的卡再放上感應區？",
+          "看到發票尾數是 565，就算不是新店那張千萬票，也至少中兩百元了嗎？"
+        ]
+      },
+      {
+        "id": "K132-0210~K132-0218",
+        "a": "K132-0210",
+        "b": "K132-0218",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "退卡後拿到兩組資料，走進另一家超商使用 ibon，為什麼不必把已經交回的卡再放上感應區？",
+          "同樣中一千萬元，為什麼兩種兌領方式算出來能差到四萬元？"
+        ]
+      },
+      {
+        "id": "K132-0211~K132-0212",
+        "a": "K132-0211",
+        "b": "K132-0212",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "看到發票尾數是 565，就算不是新店那張千萬票，也至少中兩百元了嗎？",
+          "朋友 9 月 25 日就知道大獎號碼，為什麼在全家機台查到結果的日子和可印的日子還不同？"
+        ]
+      },
+      {
+        "id": "K132-0212~K132-0216",
+        "a": "K132-0212",
+        "b": "K132-0216",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友 9 月 25 日就知道大獎號碼，為什麼在全家機台查到結果的日子和可印的日子還不同？",
+          "從新店永安街帶著千萬發票出門，任意一家掛著「可兌發票」的金融機構都能收嗎？"
+        ]
+      },
+      {
+        "id": "K132-0212~K132-0218",
+        "a": "K132-0212",
+        "b": "K132-0218",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "朋友 9 月 25 日就知道大獎號碼，為什麼在全家機台查到結果的日子和可印的日子還不同？",
+          "同樣中一千萬元，為什麼兩種兌領方式算出來能差到四萬元？"
+        ]
+      },
+      {
         "id": "L011~L077",
         "a": "L011",
         "b": "L077",
@@ -441064,10 +445024,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-19-pool-7691",
-    "target_count": 7691,
+    "revision": "2026-11-19-pool-7728",
+    "target_count": 7728,
     "reviewed_on": "2026-11-19",
-    "reason": "第131批新增 37 張素材，入選 7654 → 7691。先前：第130批新增 37 張素材，入選 7617 → 7654。先前：第129批新增 37 張素材，入選 7580 → 7617。先前：第128批新增 37 張素材，入選 7543 → 7580。先前：第127批新增 37 張素材，入選 7506 → 7543。先前：第126批新增 37 張素材，入選 7469 → 7506。先前：第125批新增 36 張素材，入選 7433 → 7469。先前：第124批新增 35 張素材，入選 7398 → 7433。先前：第123批新增 37 張素材，入選 7361 → 7398。先前：第122批新增 37 張素材，入選 7324 → 7361。先前：第121批新增 36 張素材，含日常設計、樂譜判讀及旅用電器規格。入選 7288 → 7324。先前：第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
+    "reason": "第132批新增 37 張素材，入選 7691 → 7728。先前：第131批新增 37 張素材，入選 7654 → 7691。先前：第130批新增 37 張素材，入選 7617 → 7654。先前：第129批新增 37 張素材，入選 7580 → 7617。先前：第128批新增 37 張素材，入選 7543 → 7580。先前：第127批新增 37 張素材，入選 7506 → 7543。先前：第126批新增 37 張素材，入選 7469 → 7506。先前：第125批新增 36 張素材，入選 7433 → 7469。先前：第124批新增 35 張素材，入選 7398 → 7433。先前：第123批新增 37 張素材，入選 7361 → 7398。先前：第122批新增 37 張素材，入選 7324 → 7361。先前：第121批新增 36 張素材，含日常設計、樂譜判讀及旅用電器規格。入選 7288 → 7324。先前：第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -448759,7 +452719,44 @@
       "K131-0215",
       "K131-0216",
       "K131-0217",
-      "K131-0218"
+      "K131-0218",
+      "K132-0401",
+      "K132-0402",
+      "K132-0403",
+      "K132-0404",
+      "K132-0405",
+      "K132-0406",
+      "K132-0407",
+      "K132-0001",
+      "K132-0002",
+      "K132-0003",
+      "K132-0004",
+      "K132-0005",
+      "K132-0006",
+      "K132-0007",
+      "K132-0008",
+      "K132-0009",
+      "K132-0010",
+      "K132-0011",
+      "K132-0012",
+      "K132-0201",
+      "K132-0202",
+      "K132-0203",
+      "K132-0204",
+      "K132-0205",
+      "K132-0206",
+      "K132-0207",
+      "K132-0208",
+      "K132-0209",
+      "K132-0210",
+      "K132-0211",
+      "K132-0212",
+      "K132-0213",
+      "K132-0214",
+      "K132-0215",
+      "K132-0216",
+      "K132-0217",
+      "K132-0218"
     ],
     "overflow": [
       {
@@ -452883,6 +456880,76 @@
       ],
       "origin": "wave131-research-20261119",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave131-research-20261119.json"
+    },
+    {
+      "id": "X132C-NA01",
+      "question": "一本自己印的小誌只有十頁，對摺再騎馬釘，空白頁怎麼冒出來了？",
+      "reason": "K131-0011 已把同一張紙對摺給出四個頁面、頁數不足一組時需補白說清楚。換成手作小誌仍導向同一答案。",
+      "existing_ids": [
+        "K131-0011"
+      ],
+      "origin": "wave132-craft-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave132-craft-20261119.json"
+    },
+    {
+      "id": "X132C-NA02",
+      "question": "紙疊角落壓出凹凸的痕跡，抽屜裡那臺無針裝訂器怎麼讓紙黏在一起？",
+      "reason": "K116-0005 已說明 Harinacs Press 在紙角壓出接合處，紙張便能連在一起。換成手帳內頁仍然是同一種壓合式裝訂。",
+      "existing_ids": [
+        "K116-0005"
+      ],
+      "origin": "wave132-craft-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave132-craft-20261119.json"
+    },
+    {
+      "id": "X132E-NA001",
+      "question": "北捷同站進出，為什麼十五分鐘內並不一律免費？",
+      "existing_ids": [
+        "K118-0203"
+      ],
+      "reason": "北捷同站FAQ引用旅客須知第13、14點，時限與最低票價各有規定；K118-0203已用十分鐘和十六分鐘回答此核心。",
+      "origin": "wave132-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave132-everyday-20261119.json"
+    },
+    {
+      "id": "X132E-NA002",
+      "question": "兩張鉤針圖樣都寫dc，英式及美式怎麼會鉤出不同的高度？",
+      "existing_ids": [
+        "K122-0004"
+      ],
+      "reason": "依DMC英美鉤針術語表核對，英式dc對應美式sc，已由 K122-0004 收錄。",
+      "origin": "wave132-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave132-everyday-20261119.json"
+    },
+    {
+      "id": "X132E-NA003",
+      "question": "預烤派皮只在底部堆重石，為什麼外圈仍會往下縮？",
+      "existing_ids": [
+        "K130-0005"
+      ],
+      "reason": "King Arthur 的預烤文章對照壓重與派殼側壁；K130-0005 已專問叉孔與重石護住側壁的差別。",
+      "origin": "wave132-everyday-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave132-everyday-20261119.json"
+    },
+    {
+      "id": "R132-NA01",
+      "question": "發票前面兩個英文字母會不會改變中獎機率？",
+      "reason": "K106-0330 已比較字軌與中獎機率。這次只看各種獎別實際對哪一組號碼。",
+      "existing_ids": [
+        "K106-0330"
+      ],
+      "origin": "wave132-research-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave132-research-20261119.json"
+    },
+    {
+      "id": "R132-NA02",
+      "question": "商店只收 123 元，千萬元獎金從哪裡來？",
+      "reason": "K106-0303 已追到統一發票給獎經費；同一資金來源換金額仍是舊解。",
+      "existing_ids": [
+        "K106-0303"
+      ],
+      "origin": "wave132-research-20261119",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave132-research-20261119.json"
     },
     {
       "question": "螞蟻的氣味如何指向食物？",
