@@ -6,14 +6,15 @@
 # the next dawn); the picture's own light is a clear low sun, the script's is three others, so three grades:
 #   -zong: the afternoon under the swarm, a dull brown half-light (darker, drained, warm-brown balance; the blue sky turns a dull
 #          olive brown): the whole picture (s12, the wide with the cages) and the crops -zong-geng (the left: the paddy, the
-#          ridge, the dry field, the houses and hills; s13, s15, s17b), -zong-liu (the right: the big tree, the grassy bank and
-#          the paddy; s12b, s16, s18), -zong-an (the grassy bank by the water, the tree's trunk; s17), -zong-tian (the sky and the
-#          far hills over a strip of field; s14);
+#          ridge, the dry field, the houses and hills; s15, s18), -zong-liu (the right: the big tree, the grassy bank and the
+#          paddy; s12b, s16), -zong-an (the grassy bank by the water, the tree's trunk; s13, s17), -zong-tian (the sky and the far
+#          hills over a strip of field; s14), -zong-shui (the water and the seedlings only; s17b, the close-up of the ducks);
 #   -xi:   the same evening, A-ling alone with the ducks, a low orange light (warmer, the sky pulled toward amber): the whole
 #          picture (s19);
 #   -chen: the next dawn, a soft grey-gold light with a thin white mist (lower contrast and saturation, cool shadows, warm
-#          highlights, a blurred bright layer screened over at 45%): the whole picture (s20) and -chen-geng (s20b, s23),
-#          -chen-liu (s22, s24), -chen-an (s25), -chen-shui (the water and the seedlings only, for the insert s21).
+#          highlights, a blurred bright layer screened over at 45%): the whole picture (s20) and -chen-liu (s20b, s22, s23, s24),
+#          -chen-an (s25), -chen-shui (the water and the seedlings only, for the insert s21), -chen-geng (not sent in d1; kept
+#          for a fix).
 # First: hantian_yang_clean.py paints out the three tiny dark verticals on the far field line (as hantian_clean.py on
 # set-hantian-l1; set-hantian-yang-l1 carries the same three a few pixels to the right).
 # Usage: bash hantian_yang.sh refs-live/set-hantian-yang-l1.png OUTDIR

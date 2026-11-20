@@ -371,7 +371,9 @@ for (const [i, m] of (edit.music ?? []).entries()) {
 }
 // Every system line rings a ding just before it.
 const cues = [...(edit.sfx ?? [])];
-for (const l of lineAt) if (l.speaker === "xitong") cues.push({ synth: "ding", abs: l.start - 0.22, gain: -9 });
+// `ding: {line id: gain dB | null}` in the edit list: that line's ding at another gain, or none (e934 live REVIEW 3: s09's
+// system line follows s08's within 7 s in the same beat, a second ding read as a second task); a line not named keeps -9.
+for (const l of lineAt) if (l.speaker === "xitong" && edit.ding?.[l.id] !== null) cues.push({ synth: "ding", abs: l.start - 0.22, gain: edit.ding?.[l.id] ?? -9 });
 for (const name of Object.keys(edit.names ?? {})) cues.push({ file: edit.name_whoosh ?? "swish-9", at: name, off: (edit.name_at?.[name] ?? 0.25) - 0.1, gain: -16 });
 for (const [i, c] of cues.entries()) {
   const a = c.abs ?? tAt(c.at, c.off ?? 0);

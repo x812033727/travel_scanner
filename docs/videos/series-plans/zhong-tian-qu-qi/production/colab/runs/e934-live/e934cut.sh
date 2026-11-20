@@ -30,11 +30,12 @@ cutw laugh-s25 s25 0.40 2.30 "asetrate=29760,aresample=48000,atempo=1.612903,afa
 [ $L/buzzloop.wav -nt $C/s40-t1.mp4 ] || { ffmpeg -nostdin -v error -y -ss 1.5 -to 6.5 -i $C/s40-t1.mp4 -vn -ac 2 -ar 48000 $L/_b.wav && \
   ffmpeg -nostdin -v error -y -i $L/_b.wav -i $L/_b.wav -i $L/_b.wav -i $L/_b.wav -filter_complex "[0][1]acrossfade=d=0.5[x];[x][2]acrossfade=d=0.5[y];[y][3]acrossfade=d=0.5" $L/buzzloop.wav && rm -f $L/_b.wav; } || exit 1
 # 剪接表假設的剪點與種子（picks.json 由 colab/runs/e934-live 的 refine-prep.py 34 picks-merged.tsv fix1/review-picks.tsv
-# fix2/review-picks.tsv cut-trims.tsv 產生；印出的 refine 沒跑）。cut-trims.tsv 是第一版剪接改的剪點：s08 終點 10.125→7.5。
+# fix2/review-picks.tsv cut-trims.tsv review3-trims.tsv fix3/review-picks.tsv 產生，scratchpad e934refine.sh PREP=1）。cut-trims.tsv 是第一版剪接改的剪點：s08 終點 10.125→7.5；
+# review3-trims.tsv 是 REVIEW 3 的剪點（s03 s12 s16 剪尾；s33 見 fix3 結果）。
 # 整格：起點往下、終點往上取到小數三位，容差 0.001；只警告不停。
 python3 -c "
 import json;p=json.load(open('$E/picks.json'))
-want={'s01':(0.0,4.0),'s02':(1.5,6.583),'s03':(0.0,8.0),'s04':(0.75,6.25),'s05':(1.875,8.0),'s06':(1.0,6.583),'s07':(3.5,8.0),'s08':(0.0,7.5),'s09':(0.0,8.0),'s10':(2.25,6.583),'s11':(0.208,6.583),'s12':(0.125,6.583),'s13':(1.208,8.0),'s14':(0.0,6.375),'s15':(1.5,8.0),'s16':(2.0,6.583),'s17':(1.5,8.0),'s18':(0.542,6.583),'s19':(2.333,6.583),'s20':(0.75,6.583),'s21':(1.0,8.0),'s22':(0.458,6.583),'s23':(0.0,6.583),'s24':(0.0,5.167),'s25':(0.0,8.0),'s26':(2.75,5.167),'s27':(0.25,8.0),'s28':(0.875,8.0),'s29':(0.25,6.5),'s30':(1.875,8.0),'s31':(1.25,6.583),'s32':(0.0,7.5),'s33':(0.0,10.125),'s34':(0.292,6.583),'s35':(2.0,6.583),'s36':(2.0,6.583),'s37':(0.583,6.583),'s38':(1.0,6.25),'s39':(1.25,8.0),'s40':(0.0,6.75)}
+want={'s01':(0.0,4.0),'s02':(1.5,6.583),'s03':(0.0,6.875),'s04':(0.75,6.25),'s05':(1.875,8.0),'s06':(1.0,6.583),'s07':(3.5,8.0),'s08':(0.0,7.5),'s09':(0.0,8.0),'s10':(2.25,6.583),'s11':(0.208,6.583),'s12':(0.125,5.75),'s13':(1.208,8.0),'s14':(0.0,6.375),'s15':(1.5,8.0),'s16':(2.0,5.333),'s17':(1.5,8.0),'s18':(0.542,6.583),'s19':(2.333,6.583),'s20':(0.75,6.583),'s21':(1.0,8.0),'s22':(0.458,6.583),'s23':(0.0,6.583),'s24':(0.0,5.167),'s25':(0.0,8.0),'s26':(2.75,5.167),'s27':(0.25,8.0),'s28':(0.875,8.0),'s29':(0.25,6.5),'s30':(1.875,8.0),'s31':(1.25,6.583),'s32':(0.0,7.5),'s33':(0.0,10.125),'s34':(0.292,6.583),'s35':(2.0,6.583),'s36':(2.0,6.583),'s37':(0.583,6.583),'s38':(1.0,6.25),'s39':(1.25,8.0),'s40':(0.0,6.75)}
 seed={'s01':9341102,'s07':9341102,'s08':9341102,'s09':9341211,'s12':9341102,'s13':9341102,'s14':9341102,'s20':9341102,'s21':9341102,'s24':9341102,'s25':9341102,'s27':9341102,'s28':9341212,'s30':9341102,'s32':9341211,'s34':9341102,'s35':9341102,'s36':9341102,'s37':9341211,'s39':9341102}
 bad=[f'{s} start {p[s][\"trim\"].get(\"start\",0)} end-before {p[s][\"trim\"].get(\"end-before\",0)} (want {a} {b})' for s,(a,b) in want.items()
      if s in p and (abs(p[s]['trim'].get('start',0)-a)>0.001 or abs(p[s]['trim'].get('end-before',0)-b)>0.001)]
@@ -49,8 +50,9 @@ print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
 # a25（rubberband 1.31＋atempo 1.15）、a40（asetrate 0.86），系統 a07 a09 a32 到 −13.8。少了改寫就停。
 A=/root/mokaair-work/videos/zhong-tian-qu-qi-e934-dh/audio
 for n in 02 07 08 09 10 12 13 17 19 20 24 25 32 33 40; do [ -f $A/orig/zq934a$n.wav ] || { echo "audio/zq934a$n.wav is not the leveled file (no orig/ copy)"; exit 1; }; done
-# e934 沒有拿掉的鏡（DROP 空，40 鏡全用）；$VL 是 video.json 去掉 DROP 的鏡。
-VL=$E/video-live.json; DROP=""
+# REVIEW 3 拿掉 s24（輪頂水簾像透明塑膠片，審查 2 中等 5；s23 全景接 s25 大笑看過接得上，colab/runs/e934-live/review3-plan.md B3）；
+# $VL 是 video.json 去掉 DROP 的鏡。s24 仍在 picks.json（精修過），只是不進成片。
+VL=$E/video-live.json; DROP="s24"
 python3 -c "import json,sys;v=json.load(open('$VJ'));d='$DROP'.split();v['scenes']=[s for s in v['scenes'] if s.get('id') not in d];json.dump(v,open('$VL','w'),ensure_ascii=False,indent=1)"
 cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos nice node assemble-v4.mjs $VL $R/docs/videos/zhong-tian-qu-qi-e034-r2/overlays.json $P/hailuo/edit-dh-e934-live.json $E $E/cut/e934-live.mp4 > $E/cut/final.log 2>&1; tail -3 $E/cut/final.log
 [ -f $E/cut/e934-live.mp4 ] || exit 1
