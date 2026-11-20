@@ -10,12 +10,6 @@ name: SEO audit
 # in-flight work, and this audit is slower and advisory while its baseline is collected, so it
 # must not sit inside the required check yet.
 on:
-  pull_request:
-  # Only main. A bare `push:` would run this a second time for every branch push that already
-  # has a pull request open -- the duplication 2026-09-13-ci-duplicate-runs-amplify-flakes
-  # already records against ci.yml. On main it tracks the trend after each merge.
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

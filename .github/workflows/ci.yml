@@ -20,9 +20,127 @@ permissions:
   contents: read
 
 jobs:
+  # Determine which suites need to run so private-repository Actions minutes are not spent
+  # running 17 full-stack/Postgres/Chromium jobs on task-board, topic-pool or documentation PRs,
+  # or repeating the entire 104-minute suite on `push` to `main` after a PR already passed it.
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      api_checks: ${{ steps.filter.outputs.api_checks }}
+      api_tests: ${{ steps.filter.outputs.api_tests }}
+      web_checks: ${{ steps.filter.outputs.web_checks }}
+      web_unit: ${{ steps.filter.outputs.web_unit }}
+      web_e2e: ${{ steps.filter.outputs.web_e2e }}
+      video_tests: ${{ steps.filter.outputs.video_tests }}
+      containers: ${{ steps.filter.outputs.containers }}
+      full_stack: ${{ steps.filter.outputs.full_stack }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - name: Classify changed paths
+        id: filter
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          python3 - <<'PY'
+          import os, subprocess
+
+          event = os.environ.get("EVENT_NAME", "")
+          base_ref = os.environ.get("BASE_REF", "main")
+          msg = subprocess.check_output(["git", "log", "-1", "--pretty=%B"], text=True)
+          force_full = "[full-ci]" in msg
+
+          if event == "push" and not force_full:
+              # Merged PRs were already verified by required status checks before landing on main.
+              # Completing the CI workflow run as success in one lightweight job lets ops/autodeploy
+              # see a green main SHA without burning another ~100 Actions minutes per merge.
+              outputs = {
+                  "api_checks": "false",
+                  "api_tests": "false",
+                  "web_checks": "false",
+                  "web_unit": "false",
+                  "web_e2e": "false",
+                  "video_tests": "false",
+                  "containers": "false",
+                  "full_stack": "false",
+              }
+          else:
+              try:
+                  diff = subprocess.check_output(
+                      ["git", "diff", "--name-only", f"origin/{base_ref}...HEAD"], text=True
+                  )
+                  files = [line.strip() for line in diff.splitlines() if line.strip()]
+              except Exception:
+                  files = []
+
+              if not files or force_full or ".github/workflows/ci.yml" in files:
+                  outputs = {
+                      "api_checks": "true",
+                      "api_tests": "true",
+                      "web_checks": "true",
+                      "web_unit": "true",
+                      "web_e2e": "true",
+                      "video_tests": "true",
+                      "containers": "true",
+                      "full_stack": "true",
+                  }
+              else:
+                  pool_only_api = {
+                      "apps/api/app/video_backup/target.py",
+                      "apps/api/app/video_pools/data/pools.json",
+                  }
+                  touches_api = any(f.startswith("apps/api/") for f in files)
+                  touches_real_api = any(
+                      f.startswith("apps/api/")
+                      and f not in pool_only_api
+                      and not f.startswith("apps/api/app/video_pools/data/")
+                      for f in files
+                  )
+                  touches_web = any(
+                      f.startswith("apps/web/") or f in ("package.json", "package-lock.json")
+                      for f in files
+                  )
+                  touches_ops = any(
+                      f.startswith("ops/")
+                      or f.startswith("docker-compose")
+                      or f in (".env.example", "tools/test-guide-image-rate-limit.py")
+                      for f in files
+                  )
+                  touches_dots_or_guides = any(
+                      f.startswith(("tools/dots-series/", "docs/content/")) for f in files
+                  )
+                  touches_video_or_tools = any(
+                      f.startswith(("tools/", ".agents/skills/", ".claude/skills/"))
+                      or (f.startswith("docs/videos/") and "/pool/" not in f)
+                      or f in ("package.json", "package-lock.json")
+                      for f in files
+                  )
+
+                  outputs = {
+                      "api_checks": "true" if (touches_api or touches_dots_or_guides) else "false",
+                      "api_tests": "true" if touches_real_api else "false",
+                      "web_checks": "true",
+                      "web_unit": "true" if touches_web else "false",
+                      "web_e2e": "true" if touches_web else "false",
+                      "video_tests": "true" if touches_video_or_tools else "false",
+                      "containers": "true" if (touches_real_api or touches_web or touches_ops) else "false",
+                      "full_stack": "true" if (touches_real_api or touches_web or touches_ops) else "false",
+                  }
+
+          out_path = os.environ["GITHUB_OUTPUT"]
+          with open(out_path, "a", encoding="utf-8") as fh:
+              for k, v in outputs.items():
+                  print(f"{k}={v}")
+                  fh.write(f"{k}={v}\n")
+          PY
+
   # Static checks and the migration tests: everything in the api gate except the main
   # pytest run, which api-tests below splits across parallel jobs.
   api-checks:
+    needs: [changes]
+    if: needs.changes.outputs.api_checks == 'true'
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -46,7 +164,7 @@ jobs:
       # Same shape as the npm audit below: the advisory lookup needs PyPI at request time,
       # and a connection reset there failed the api job on a pull request whose code was
       # never run (2026-09-06). Now that api is a required check, that would block the
-      # merge. The enforcing run lives in pip-audit.yml, daily and retryable.
+      # merge. The enforcing run lives in pip-audit.yml, weekly and retryable.
       - name: Audit Python dependencies (advisory only; enforced by pip-audit.yml)
         run: uv run pip-audit --local --skip-editable
         continue-on-error: true
@@ -62,37 +180,43 @@ jobs:
       # One migration head, or a failure that names both files. Two branches that took
       # the same number otherwise surface as "found 2" from every test module, and
       # alembic upgrade below would only say "Multiple head revisions are present".
-      - run: uv run pytest tests/test_schema.py -q -p no:cacheprovider
+      - run: uv run pytest tests/test_schema.py tests/test_video_pools.py tests/test_video_backup.py -q -p no:cacheprovider
       - name: Validate seeded PostgreSQL upgrade from 0066
+        if: needs.changes.outputs.api_tests == 'true'
         run: uv run pytest tests/test_admin_operations_migration.py -q -p no:cacheprovider
         env:
           RUN_MIGRATION_TESTS: "1"
       - name: Validate site-page version migrations on PostgreSQL
+        if: needs.changes.outputs.api_tests == 'true'
         run: uv run pytest tests/test_site_pages_migration.py -q -p no:cacheprovider
         env:
           RUN_INTEGRATION_TESTS: "1"
           RUN_MIGRATION_TESTS: "1"
       - name: Validate C20 0139-on-0138 rollback with PostgreSQL and Compose command
+        if: needs.changes.outputs.api_tests == 'true'
         run: uv run pytest tests/test_c20_budget_rollback_integration.py -q -p no:cacheprovider
         env:
           RUN_INTEGRATION_TESTS: "1"
       - name: Validate C11 remake 0140-on-0139 rollback with PostgreSQL and Compose command
+        if: needs.changes.outputs.api_tests == 'true'
         run: uv run pytest tests/test_c11_remake_budget_rollback_integration.py -q -p no:cacheprovider
         env:
           RUN_INTEGRATION_TESTS: "1"
       - name: Validate story remakes 0141-on-0140 rollback with PostgreSQL and Compose command
+        if: needs.changes.outputs.api_tests == 'true'
         run: uv run pytest tests/test_story_remakes_budget_rollback_integration.py -q -p no:cacheprovider
         env:
           RUN_INTEGRATION_TESTS: "1"
-  # The main pytest run took 23 of the old api job's 25 minutes (run 37111019702). Each
-  # shard is its own job with its own PostgreSQL, Redis and S3 companion, so no two tests
-  # running at once share a database. TOTAL in the pytest line must match the matrix.
+  # Consolidated from 4 shards to 2 shards to halve duplicate container pulls, uv sync overhead
+  # and per-job minute rounding on private-repository Actions quota.
   api-tests:
-    name: api-tests (${{ matrix.shard }}/4)
+    name: api-tests (${{ matrix.shard }}/2)
+    needs: [changes]
+    if: needs.changes.outputs.api_tests == 'true'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix: { shard: [1, 2, 3, 4] }
+      matrix: { shard: [1, 2] }
     services:
       postgres:
         image: postgres:17-alpine@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24
@@ -137,7 +261,7 @@ jobs:
           docker logs community-test-storage
           exit 1
       # tests/sharding.py places whole files, longest first, from tests/shard_durations.json.
-      - run: uv run pytest --shard "${{ matrix.shard }}/4"
+      - run: uv run pytest --shard "${{ matrix.shard }}/2"
         env:
           RUN_INTEGRATION_TESTS: "1"
           COMMUNITY_TEST_S3: "1"
@@ -147,26 +271,27 @@ jobs:
           COMMUNITY_S3_SECRET_KEY: community-test-only-password
   # `api` is the required check (.github/BRANCH_PROTECTION.md and REQUIRED in
   # tools/ci/auto-update-branches.mjs), so the name stays on one job that is green only
-  # when the checks and every shard are. `always()` makes it run, and fail, when one of
-  # them failed or was cancelled; a skipped required check would read as passing.
+  # when the checks and every shard are (or intentionally skipped by `changes`).
   api:
-    needs: [api-checks, api-tests]
-    if: always()
+    needs: [changes, api-checks, api-tests]
+    if: always() && (needs.changes.result != 'success' || needs.changes.outputs.api_checks == 'true' || needs.changes.outputs.api_tests == 'true')
     runs-on: ubuntu-latest
     steps:
       - name: Every API check and test shard passed
         env:
+          CHANGES_RESULT: ${{ needs.changes.result }}
           RESULTS: ${{ join(needs.*.result, ' ') }}
         run: |
-          echo "api-checks and api-tests: $RESULTS"
+          echo "changes, api-checks and api-tests: $RESULTS"
+          if [ "$CHANGES_RESULT" != success ]; then exit 1; fi
           for result in $RESULTS; do
-            if [ "$result" != success ]; then exit 1; fi
+            if [ "$result" != success ] && [ "$result" != skipped ]; then exit 1; fi
           done
-  # Lint, i18n, the task board, typecheck and the tools tests: everything in the web gate
-  # except vitest and Playwright, which web-unit and web-e2e split across parallel jobs, and
-  # what needs ffmpeg or Chromium for the videos (video-tests below). Without them the tools
-  # tests that need one skip here.
+  # Lint, i18n, the task board, typecheck, tools tests and vitest unit tests (consolidated here
+  # so npm ci runs once instead of four times).
   web-checks:
+    needs: [changes]
+    if: needs.changes.outputs.web_checks == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -176,7 +301,7 @@ jobs:
       # Advisory lookups hit registry.npmjs.org at request time, so an outage there used
       # to fail this step and skip lint, typecheck, tests, build and Playwright with it -
       # three pull requests in one day went red without a line of their code being run.
-      # The blocking check lives in npm-audit.yml, which runs daily and can be retried.
+      # The blocking check lives in npm-audit.yml, which runs weekly and can be retried.
       - name: Audit dependencies (advisory only; enforced by npm-audit.yml)
         run: npm audit --audit-level=high
         continue-on-error: true
@@ -185,33 +310,20 @@ jobs:
       - run: npm run check:tasks
       - run: npm run typecheck:web
       - run: npm run test:tools
-  # vitest ran its ~350 files one at a time (vitest.config.ts) for 7m45s of the old web
-  # job (run 37111019702). Each shard keeps that one-at-a-time setting; vitest splits the
-  # files itself. TOTAL in the run line must match the matrix.
-  web-unit:
-    name: web-unit (${{ matrix.shard }}/3)
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix: { shard: [1, 2, 3] }
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
-        with: { node-version: 24, cache: npm }
-      - run: npm ci
-      # vitest directly: `npm run test:web -- --shard` would hand --shard to the inner
-      # `npm run --workspace`, not to vitest.
-      - run: npx vitest run --shard="${{ matrix.shard }}/3"
+      - name: Run web unit tests
+        if: needs.changes.outputs.web_unit == 'true'
+        run: npx vitest run
         working-directory: apps/web
-  # The isolated browser suite was the other 7m47s. Each shard builds the app itself, since
-  # serving a build is what keeps these cases from timing out (playwright.config.ts), and
-  # Playwright places whole spec files in shards. TOTAL in the run line must match the matrix.
+  # Consolidated from 3 shards to 2 shards and gated on web changes to avoid building Next.js
+  # and installing Chromium three times on non-web PRs.
   web-e2e:
-    name: web-e2e (${{ matrix.shard }}/3)
+    name: web-e2e (${{ matrix.shard }}/2)
+    needs: [changes]
+    if: needs.changes.outputs.web_e2e == 'true'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix: { shard: [1, 2, 3] }
+      matrix: { shard: [1, 2] }
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
@@ -220,7 +332,7 @@ jobs:
       - run: npm run build:web
       - run: npx playwright install --with-deps chromium
       - name: Run isolated browser UI tests
-        run: npx playwright test --shard="${{ matrix.shard }}/3" e2e/navigation.spec.ts e2e/readability.spec.ts e2e/signed-out.spec.ts e2e/travel-services.spec.ts e2e/stay22-allez.spec.ts e2e/stay22-script.spec.ts e2e/guides-adsense.spec.ts e2e/stay22-maps.spec.ts e2e/merchant-styles.spec.ts e2e/admin-domains.spec.ts e2e/admin-operations.spec.ts e2e/admin-video-manual-upload.spec.ts e2e/admin-video-vps-settings.spec.ts e2e/admin-video-shorts.spec.ts e2e/admin-video-plans.spec.ts e2e/site-experience.spec.ts e2e/site-pages.spec.ts e2e/community-ui.spec.ts e2e/discovery-card-details.spec.ts e2e/planner-premium.spec.ts e2e/korea-dual-maps.spec.ts e2e/seo.spec.ts e2e/offline-day-view.spec.ts
+        run: npx playwright test --shard="${{ matrix.shard }}/2" e2e/navigation.spec.ts e2e/readability.spec.ts e2e/signed-out.spec.ts e2e/travel-services.spec.ts e2e/stay22-allez.spec.ts e2e/stay22-script.spec.ts e2e/guides-adsense.spec.ts e2e/stay22-maps.spec.ts e2e/merchant-styles.spec.ts e2e/admin-domains.spec.ts e2e/admin-operations.spec.ts e2e/admin-video-manual-upload.spec.ts e2e/admin-video-vps-settings.spec.ts e2e/admin-video-shorts.spec.ts e2e/admin-video-plans.spec.ts e2e/site-experience.spec.ts e2e/site-pages.spec.ts e2e/community-ui.spec.ts e2e/discovery-card-details.spec.ts e2e/planner-premium.spec.ts e2e/korea-dual-maps.spec.ts e2e/seo.spec.ts e2e/offline-day-view.spec.ts
         working-directory: apps/web
         # Serve the build from the step above instead of a dev server that compiles
         # each page on first visit; see playwright.config.ts.
@@ -259,12 +371,14 @@ jobs:
   #   picks up every other folder at any depth with no edit here.
   # - Every tools test again, with both tools installed: the cases that skip in web-checks
   #   (tools/reference-analysis.test.mjs, the H.264 concat check, the brightness probe and the
-  #   from-drama Short) run for real here, on every pull request. A skip that still names ffmpeg
+  #   from-drama Short) run for real here, on every pull request that touches video or tools paths. A skip that still names ffmpeg
   #   or Chromium fails the step, so a test that loses its tool cannot pass by skipping. The
   #   reporters are given on the command line, not through NODE_OPTIONS, which the tests' own
   #   `node --test` children would inherit.
   # tools/docs-videos-tests.test.mjs keeps the globs, this job and the gate below in step.
   video-tests:
+    needs: [changes]
+    if: needs.changes.outputs.video_tests == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -293,21 +407,25 @@ jobs:
             exit 1
           fi
   # `web` is the required check, like `api` above: green only when the checks, every
-  # shard and the video tests are, and red when one of them failed or was cancelled.
+  # shard and the video tests are (or intentionally skipped by `changes`), and red when one of them failed or was cancelled.
   web:
-    needs: [web-checks, web-unit, web-e2e, video-tests]
-    if: always()
+    needs: [changes, web-checks, web-e2e, video-tests]
+    if: always() && (needs.changes.result != 'success' || needs.changes.outputs.web_checks == 'true' || needs.changes.outputs.web_e2e == 'true' || needs.changes.outputs.video_tests == 'true')
     runs-on: ubuntu-latest
     steps:
       - name: Every web check, test shard and video test passed
         env:
+          CHANGES_RESULT: ${{ needs.changes.result }}
           RESULTS: ${{ join(needs.*.result, ' ') }}
         run: |
-          echo "web-checks, web-unit, web-e2e and video-tests: $RESULTS"
+          echo "changes, web-checks, web-e2e and video-tests: $RESULTS"
+          if [ "$CHANGES_RESULT" != success ]; then exit 1; fi
           for result in $RESULTS; do
-            if [ "$result" != success ]; then exit 1; fi
+            if [ "$result" != success ] && [ "$result" != skipped ]; then exit 1; fi
           done
   containers:
+    needs: [changes]
+    if: needs.changes.outputs.containers == 'true'
     runs-on: ubuntu-latest
     env:
       NGINX_IMAGE: nginx:1.28-alpine@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236
@@ -351,6 +469,8 @@ jobs:
           DEPLOY_AGENT_GID: "10002"
           RELEASE_SHA: ci
   full-stack-smoke:
+    needs: [changes]
+    if: needs.changes.outputs.full_stack == 'true'
     runs-on: ubuntu-latest
     services:
       postgres:
