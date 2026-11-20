@@ -1,6 +1,38 @@
-# S14 巖流島「故意遲到」：寫稿紀錄
+# S14 巖流島「故意遲到」：重製與審片紀錄
 
-## 查核（2026-10-19）
+## 2026-11-20 重製進度（R20 定稿、九語音軌全數通過、71 張 2x 審圖清單）
+
+### 1. 劇本、審查與九語音軌狀態（100% 完成並備份雲端）
+- **定稿版本**：R20（70 景、70 句旁白、無卡片、`intro_at: "none"`、`"pauses": {"line_ms": 0, "scene_ms": 150}`、`"still_motion": "beat"`、`thumbnail.data.layout: "heimao"`）；`node tools/video/cli.mjs lint --slug curio-s14` → **`0 errors, 0 warnings`**。
+- **獨立查核（`verify-2.md`）**：對照 [`verify-1.md`](verify-1.md) 45 列與 11 項核心禁令（不提春山、兩雄同時相會字義但書、不畫傷勢／倒地者、《二天記》船夫「大多來自」並拆開 1712→1755→1776、區分岸上削槳與小說船上削破槳且不指認艪／艫、「小次郎負たり」、不提物干竿與燕返、直木先吉川後且標批評出處未查、《五輪書》死前約一週且不稱親筆原稿、吉川英治 1962 歿不入畫、「我們覺得」標示觀點）全數 **PASS**。
+- **前 300 秒觀眾審查（`opening-review`）**：三位全新獨立子代理（`r20-reader-newcomer`、`r20-reader-scroller`、`r20-reader-stickler`，`opening_hash: 0e7e2355bdffea8b07a0e1f74757f72c601379d953eeef532ccd4930eb657ffc`）皆為 **`9.2 / 10`**、`would_stay_300: true`、`swipe_at: null`、`problems: []`（紀錄於 `review/opening-review.json`）。
+- **盲評兩位獨立讀者（`narrative`）**：[`panel/reader-1.json`](panel/reader-1.json) 與 [`panel/reader-2.json`](panel/reader-2.json) 皆 **`14 / 14` 通過**（`narrative` hash `61c187b6046b094e`，紀錄於 `review/narrative.json`）。
+- **九語黑猫滿版縮圖**：`thumbnail.jpg`（`zh-TW`）與 `thumbnails/{en,ja,ko,es,pt,id,vi,th}.jpg` 全數渲染並逐張目視檢查通過（單行亮黃大標、單行純白副標、零壓臉、零孤字斷行）。
+- **中文旁白與配樂**：
+  - `zh-TW`（Gemini `Sulafat`，`tempo: 1.24`）：片長 **`09:00`**，純講話實測語速 **`4.60 字／秒`**（≥ 4.4 字／秒下限），`check-audio` **`70 / 70` 全數通過（`0 flagged`）**。
+  - 配樂：綁定 `curio-bed-w02-5846379f.mp3`（`gain_db: -20, duck_db: -10`）。
+- **八語 MiniMax 配音（`dub --provider minimax`＋`check-audio --second-opinion`）**：`en, ja, ko, es, pt, id, vi, th` 八語音軌（`dubs/<locale>.m4a`）全數合入時窗且逐語 **`70 / 70` 全數通過（`0 flagged`）**。
+
+### 2. 71 張插圖四格 2x 放大審圖結果（35 張 PASS 保留、36 張待 `gemini-3.1-flash-image` 配額恢復後重繪）
+因 `gemini-3.1-flash-image` 處於配額冷卻（預計 `2026-11-20T18:25Z` 恢復；依系列鐵律**絕不退回 MiniMax 生圖**），已完成全集 71 張圖（`00-hero`＋70 景）的四格 2x 放大審查並將現階段檔案備份至雲端硬碟 `AI/備份/AI劇/奇聞檔案局/S14/製作檔/`（`0 differences`）：
+- **已通過保留（35 張 PASS）**：
+  - 縮圖主視覺 `stock/1abe3f593f0ec72e1e2c987fc475c0da9b41281af61a22de7e5b5560141c3f0f.png`（`00-hero`）
+  - 串場研究員 `Ada` 全 3 鏡：`07-ada-open`、`18-ada-simultaneous`、`70-ada-subscribe`（對齊 `ada-canon-v2.png` 3.5 頭身）
+  - 無人物件／環境鏡 31 鏡：`09-youth-top`、`12-kokura-castle`、`19-moji-castle`、`20-kojiro-name`、`22-early-books`、`23-box-mystery`、`24-draft-bundle`、`25-gold-fan`、`27-empty-room`、`29-letter-washi`、`30-letter-corner`、`37-niten-magnify`、`38-old-mouth`、`40-strait-sail`、`41-higo-hills`、`42-ukiyo-stage`、`43-niten-sign`、`45-kensho-stack`、`47-wastebasket`、`48-reason`、`50-grave-search`、`53-two-sheets`、`54-clan-box`、`55-archive-shelf`、`58-cowardly`、`59-note-box`、`65-dandelion-spread`、`66-cave-box`、`67-brochure-again`、`68-closed-archive`、`69-answer`
+- **待配額恢復後以內建 `generate_image`（`16:9`）重繪匯入（36 張 FAIL）**：
+  1. **先產 3 張 3.5 頭身角色設定圖**（`ImagePaths` 帶 `ada-canon-v2.png` 鎖定 3.5 頭身比例與厚塗水粉筆觸）：`characters/musashi-29.png`（29 歲青年武藏，蓬鬆束髻、深靛麻布小袖右衽＋炭灰袴）、`characters/kojiro.png`（青年劍客小次郎，高馬尾、朱紅羽織配淺蔥小袖右衽）、`characters/meiji-editor.png`（1909 年熊本編者，3.5 頭身明治紋付羽織袴右衽）。
+  2. **6 張 `nobody: true` 物件鏡重繪**：
+     - `06-clash-hero`：原檔與 `00-hero` 完全重複且木刀未削成劍形 → 獨立構圖畫沙灘低角度削尖大木刀與三尺真刀刀尖對峙。
+     - `11-gorin-blank`、`44-niten-open`：誤畫西洋皮面硬殼精裝書 → 改畫江戶傳統線裝和本（`stitched thread-bound washi wahon`）與空白卷軸。
+     - `51-kensho-compendium`、`62-essay-compendium`：桌緣垂掛白紙條像空白字條 → 清掉桌緣白紙條，保持乾淨厚塗木桌。
+     - `61-asahi-press`：誤畫江戶木版與硯台 → 改畫 1930 年代昭和金屬滾筒輪轉印刷機送出完全空白無字的新聞紙捲。
+  3. **30 張人物鏡重繪**（統一 3.5 頭身厚塗水粉、修正 `左衽` 為左領壓右領 `右衽`、木刀無圓鍔無刀鞘）：
+     `01-unveil`、`02-four-months`（補齊兩座青銅像同框與海峽背景、2003 年工人穿工作靴）、`03-popular`（去漫畫震動線與懸空刀鞘）、`04-tease-cave`（60 歲束髻武藏於岩洞內而非榻榻米現代短髮）、`05-tease-iori`、`08-cave-climb`、`10-record`、`13-iori-raises`（滑輪繩索結構合理、伊織看石碑不對鏡頭揮手）、`14-nameless`、`15-real-blade`、`16-two-arrive`（對齊 R20 交換順序後的新景：兩位劍士同時踏上海島沙灘對望，左提木刀、右佩真刀）、`17-lightning`（對齊交換順序後的新景：武藏垂握無鍔無鞘木刀立於岸邊、遠海閃電，腰間不掛木刀鞘）、`21-numata-doubt`、`26-officials`、`28-found`（從街上看旅店內武藏、去西洋高桅帆船）、`31-oversleep`、`32-carve`、`33-late-arrive`（去幽靈船槳與無人島建築）、`34-scabbard`、`35-smile`（去木刀圓鍔）、`36-bow`（去木刀圓鍔、修正五指與朝向）、`39-toyoda-listens`（去背景襖門墨跡）、`46-kensho-book`（去西洋精裝書與儀錶盤）、`49-ages`、`52-slowly`、`56-naoki-desk`（純背影不露側臉、素色羽織無字母花紋）、`57-naoki-plan`（去枕邊武士刀、修右衽）、`60-naoki-defends`（去交叉重複木棒）、`63-just-right`（坐在小船內削船底斷槳）、`64-accuse`（修右衽與單一刀鞘）。
+
+---
+
+## 早期初稿紀錄（2026-10-19）
+
 
 - 事實全部來自 [`../history-curiosity/topic-checks/S14.md`](../history-curiosity/topic-checks/S14.md)：42 列逐列開原文，獨立覆核 33 列維持、
   7 列加但書、2 列推翻。寫稿前照覆核〈表外要改的〉改了那份檔案（每處標「依覆核」）：
