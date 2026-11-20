@@ -1,5 +1,5 @@
 {
-  "revision": "2026-11-20-curio-1921",
+  "revision": "2026-11-20-curio-1925",
   "raw_records": [
     {
       "id": "F01",
@@ -57159,6 +57159,408 @@
       "eligible": true,
       "local_references": [
         "docs/videos/history-curiosity/pool/batches/wave113-20261120.json"
+      ]
+    },
+    {
+      "id": "N8055",
+      "axis": "W",
+      "case_key": "case.nintendo_alarmo_two_sleepers_button_mode",
+      "question": "兩個人睡同一張床，任天堂的鬧鐘響了，你一下床，它先安靜下來，又對著床上那個人響起來。明明已經叫醒你，它還在等誰？",
+      "hook": "桌上用膠帶框出床的位置，放兩枚人偶，約定左邊的是要上早班的人。鬧鐘一響就拿走左邊的那枚，讓觀眾猜它能不能辨認任務已完成。",
+      "answer_target": "Alarmo 的感應器用反射電波感知物體的移動，棉被下的動作也能測到。它判斷設定區域裡還有沒有動靜，無法辨認哪一位是該上早班的人。任天堂支援頁列出同床例子：一人離床，鬧鈴可能先停止，感到另一人仍在便再響。開發團隊為不同家庭留下按鍵停止模式，不必靠動作感應決定是否止鬧。",
+      "scope": "任天堂的 Alarmo 感知床上動作，認不出哪一位是該起床的人。一人離床可能讓鬧鈴先停，床上另一人仍在，鬧鈴可能再響；同床者也可以選按鍵停止。",
+      "source_locator": "W114A-S01：使用環境與多人同床的問題，以及 Button Mode 段落；W114A-S02：Tamori、Akama 與主持人的訪談，radio wave sensor 與 duvet 段；W114A-S03：one person、family members、dial button 段；W114A-S04：「享受Alarmo鬧鐘樂趣的方法」一段，下床、鼓勵音效及反應區域說明；W114A-S05：開頭多人同床提醒，以及「Alarmo 的感應區域」。",
+      "premise_status": "screened",
+      "notes": "從黑貓 7D6KGntJh5A、8_DMCELcPBg 的任天堂主機競爭與企業成長換到床頭：把主角換成同床的兩個人，看家庭的使用情境如何讓開發者保留一個實體按鍵。 原來如此 K139-0003 問 Wii 手把和感應條哪端接收紅外線；本件用電波感應床上動作與多人止鬧。K92-024 問自然醒的體內激素。奇聞 N8046 的任天堂漂移維修與此無同一答案。",
+      "risk": "多人同床是原廠的可能情境；不寫每次都先停止、精確停幾秒或一定再響。 與一人起床後返回床鋪、防止再度入睡的再響條件是不同狀況；不把該段一小時設計當同床案例的時間。 只說感到目標移動、無法分辨特定使用者，不推算能由訊號認名字、診斷睡眠。",
+      "editorial": {
+        "role": "episode_core",
+        "minutes": [
+          8,
+          10
+        ],
+        "payoff": "任天堂的 Alarmo 感知床上動作，認不出哪一位是該起床的人。一人離床可能讓鬧鈴先停，床上另一人仍在，鬧鈴可能再響；同床者也可以選按鍵停止。",
+        "visual": "同一個感應區域、兩張姓名卡和兩枚人偶，先照「人離開就結束」猜一次，再拔掉姓名卡，只看框內發生的動作重走一次。最後讓早班的人按下紙製旋鈕，對照按鍵模式。"
+      },
+      "origin": "wave114-20261120",
+      "domain": "W 生意與品牌的奇聞",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-39bfdbc2e999563c",
+          "origin": "wave114-20261120",
+          "locator": "W114A-S01：使用環境與多人同床的問題，以及 Button Mode 段落",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        },
+        {
+          "source_id": "SRC-2e57e542a47fa1fd",
+          "origin": "wave114-20261120",
+          "locator": "W114A-S02：Tamori、Akama 與主持人的訪談，radio wave sensor 與 duvet 段",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        },
+        {
+          "source_id": "SRC-de5804f8635b5be0",
+          "origin": "wave114-20261120",
+          "locator": "W114A-S03：one person、family members、dial button 段",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        },
+        {
+          "source_id": "SRC-fceec299039243db",
+          "origin": "wave114-20261120",
+          "locator": "W114A-S04：「享受Alarmo鬧鐘樂趣的方法」一段，下床、鼓勵音效及反應區域說明",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        },
+        {
+          "source_id": "SRC-7daa9c89eaa9605f",
+          "origin": "wave114-20261120",
+          "locator": "W114A-S05：開頭多人同床提醒，以及「Alarmo 的感應區域」。",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave114-20261120.json"
+      ]
+    },
+    {
+      "id": "N8056",
+      "axis": "W",
+      "case_key": "case.apple_find_my_magsafe_wallet_detachment_vs_airtag",
+      "question": "自己的行李箱裡放了磁吸卡套和 AirTag，手機卻還把卡套標在剛才那家咖啡店。同一袋裡的兩件東西，地圖怎麼可能給你兩個位置？",
+      "hook": "把支援「尋找」的卡套從手機取下，和 AirTag 一起放進要託運的箱子。先在咖啡店地圖插兩根圖釘，猜箱子遠離手機後，哪一根還有機會移動。",
+      "answer_target": "先看這個卡套是否支援「尋找」、是否加入帳號和開啟分開通知。卡套吸在 iPhone 上時可顯示所在位置；脫離一分鐘可以收到提示，對應的是卡套最後已知位置。把卡套繼續帶走，這個點仍只交代分開時的位置。假如自己的行李另放 AirTag，行李離開你手機的藍牙範圍後，附近參與「尋找」網絡的裝置可偵測標籤的藍牙訊號並回報位置，地圖因此可能收到更新。",
+      "scope": "支援「尋找」的卡套記下與 iPhone 分開時的位置，開啟通知後，分開一分鐘便可收到提示。另放的 AirTag 若離開主人手機的藍牙範圍，附近參與尋找網絡的裝置仍可能回報它的位置。",
+      "source_locator": "W114A-S06：2021-09-14 新聞稿，Pricing and Availability 中 new iPhone Leather Wallet with MagSafe；W114A-S07：頁面正文「首次將 iPhone MagSafe 卡套連接到 iPhone 時將其加入」；W114A-S08：「收到 iPhone MagSafe 卡套分開的通知」段落，一分鐘及「分開時通知」；W114A-S09：支援 MagSafe 卡套的項目，以及「在地圖上查看你裝置的位置」；W114A-S10：2021-04-20，A Comprehensive Finding Experience 與首段 Find My network 的 Bluetooth signals。",
+      "premise_status": "screened",
+      "notes": "從 #2182 N9052 的 iPhone 配件規格，改問手機上同一個「尋找」圖示顯示的究竟是哪一次已知位置。 原來如此 LEG-A45 問 MagSafe 對準充電線圈和發熱；K127-0218 講登機口交運要隨身留甚麼；K120-0212 是電子錢包掃碼。#2182 N9052 是耳機接頭普及與移除，B06 的零錢包是角色品牌，不回答手機與磁吸卡套的分離提示。",
+      "risk": "僅適用支援「尋找」的 Apple 卡套、相容手機及啟用設定。一分鐘是可發出脫離提示的時間，不能說是卡套每分鐘主動回報。 AirTag 不保證即時、固定頻率或必有附近裝置；僅演示尋回自己的物品。 可證 2021 新品有「尋找」，未取得所有舊配色或料號的對照，所以不以顏色或肉眼辨識所有世代。",
+      "editorial": {
+        "role": "episode_core",
+        "minutes": [
+          8,
+          10
+        ],
+        "payoff": "卡套的通知提醒你它在哪裡離開 iPhone。箱子離開主人手機的藍牙範圍後，附近參與「尋找」的裝置仍可能替 AirTag 回報位置；卡套那枚圖釘可以繼續留在分開的地方。",
+        "visual": "兩個圖釘各附一張來源卡：「卡套最後附在手機的位置」「附近裝置偵測到自己 AirTag 的位置」。在同一張紙地圖移動自己的行李，不展示真實住家或個人位置。"
+      },
+      "origin": "wave114-20261120",
+      "domain": "W 生意與品牌的奇聞",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-07a7c0a4aa56b3e5",
+          "origin": "wave114-20261120",
+          "locator": "W114A-S06：2021-09-14 新聞稿，Pricing and Availability 中 new iPhone Leather Wallet with MagSafe",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        },
+        {
+          "source_id": "SRC-ab32a533e6184eab",
+          "origin": "wave114-20261120",
+          "locator": "W114A-S07：頁面正文「首次將 iPhone MagSafe 卡套連接到 iPhone 時將其加入」",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        },
+        {
+          "source_id": "SRC-ccd5471545b19d0b",
+          "origin": "wave114-20261120",
+          "locator": "W114A-S08：「收到 iPhone MagSafe 卡套分開的通知」段落，一分鐘及「分開時通知」",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        },
+        {
+          "source_id": "SRC-12acdc00ec4217cf",
+          "origin": "wave114-20261120",
+          "locator": "W114A-S09：支援 MagSafe 卡套的項目，以及「在地圖上查看你裝置的位置」",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        },
+        {
+          "source_id": "SRC-ac5143532ee0eb2b",
+          "origin": "wave114-20261120",
+          "locator": "W114A-S10：2021-04-20，A Comprehensive Finding Experience 與首段 Find My network 的 Bluetooth signals。",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave114-20261120.json"
+      ]
+    },
+    {
+      "id": "N8057",
+      "axis": "W",
+      "case_key": "case.hasbro_potato_head_1952_foam_2021_family_brand",
+      "question": "如果要讓一個孩子照一九五二年的玩法替蛋頭先生安上鼻子，他可以先把鼻子插在哪裡，又有哪樣能當成頭的東西要自己去廚房找？",
+      "hook": "桌上擺一顆馬鈴薯、泡棉頭和後來大家認得的塑膠薯身，再發一張寫著「1952」的空盒卡。把當年盒裡真的有的移進去。",
+      "answer_target": "1952 年那套附可自由插的五官、用於練習的泡棉頭，真蔬菜則可自備。1964 年才引入硬塑膠馬鈴薯身體。2021 年改的是整條產品線由 Mr. Potato Head 改叫 Potato Head，廠商同一則公告明說個別 Mr. 和 Mrs. 的名字保留，另推有兩大一小身體的家庭組。三個時間點分別查盒內物、插五官的材質、品牌與角色名。",
+      "scope": "1952 年盒裡有五官和一顆練習用的泡棉頭，孩子也能自己找蔬菜來插。2021 年換掉的是整條產品線的名稱，孩之寶在同一則公告保留了兩個角色各自的稱呼。",
+      "source_locator": "W114B-S01：Mr. Potato Head Funny-Face Kit；1991.0394.01，Credit Line、Related Dates、Physical Description；W114B-S02：National Toy Hall of Fame，Mr. Potato Head，首段；W114B-S03：Collection Spotlight，1952 借展套件及 1964 器物圖說；W114B-S04：Mr. Potato Head Brand Update，2021-02-25，品牌首段與 CREATE YOUR POTATO HEAD FAMILY 段。",
+      "premise_status": "screened",
+      "notes": "兩池及 #2182 參照未找到相同「泡棉練習頭／硬塑膠身體／產品線與角色」核心。N8024 也是玩具，題旨為樂高積木與人偶功能及商標保護，未問美國玩具盒裡的實物。",
+      "risk": "不能說早期「什麼頭也沒附」或盒內附生馬鈴薯；1952 件與 1964 硬塑膠身不能混為同一件。家庭特別組不代表當年所有盒款都附三具身體。",
+      "editorial": {
+        "role": "episode_core",
+        "minutes": [
+          8,
+          10
+        ],
+        "payoff": "盒中有能插五官的練習泡棉頭，孩子也可以自備真蔬菜。硬塑膠馬鈴薯身體到1964年才加入；2021年更名的則是產品線，個別角色仍叫蛋頭先生和蛋頭太太。",
+        "visual": "George Lerner 捐贈的 1952 年 Funny-Face Kit，1991.0394.01。泡棉練習頭、真蔬菜、1964 硬塑膠身體的三張圖卡。2021-02-25 公司公告、家庭包兩大一小身體與 42 件配件。"
+      },
+      "origin": "wave114-20261120",
+      "domain": "W 生意與品牌的奇聞",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-d2a09c1f9cbde185",
+          "origin": "wave114-20261120",
+          "locator": "W114B-S01：Mr. Potato Head Funny-Face Kit；1991.0394.01，Credit Line、Related Dates、Physical Description",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        },
+        {
+          "source_id": "SRC-e607c366376cd25b",
+          "origin": "wave114-20261120",
+          "locator": "W114B-S02：National Toy Hall of Fame，Mr. Potato Head，首段",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        },
+        {
+          "source_id": "SRC-09b9ae681008c393",
+          "origin": "wave114-20261120",
+          "locator": "W114B-S03：Collection Spotlight，1952 借展套件及 1964 器物圖說",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        },
+        {
+          "source_id": "SRC-be591423739b6c06",
+          "origin": "wave114-20261120",
+          "locator": "W114B-S04：Mr. Potato Head Brand Update，2021-02-25，品牌首段與 CREATE YOUR POTATO HEAD FAMILY 段。",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave114-20261120.json"
+      ]
+    },
+    {
+      "id": "N8058",
+      "axis": "W",
+      "case_key": "case.victor_his_masters_voice_barraud_repaint_1899",
+      "question": "那隻狗歪著頭聽大喇叭，是不少唱片上看過的畫面。為什麼收藏原畫的人會請你換個角度，找一台畫家本來放在狗面前的機器？",
+      "hook": "先用兩張輪廓圖讓觀眾選：狗對面是能插圓筒的機器，還是放平圓盤的機器？接著把兩張疊在同一張畫布的位置，再讀保存原畫的機構怎麼形容下層輪廓。",
+      "answer_target": "畫家 Barraud 原畫是狗聽圓筒式留聲機，向 Gramophone Company 借器材時，經理問能否換成自家機器。畫家同意借實物來畫，遂改作圓盤式 Gramophone；持藏原畫的 EMI 檔案館記 1899 年 9 月報價是畫作本身 50 英鎊、著作權另 50 英鎊，並說合適角度可見下層原輪廓。後來這套構圖登上美國工廠玻璃窗。",
+      "scope": "畫家先畫小狗聽圓筒留聲機，後來借到 Gramophone Company 的圓盤機才改畫。EMI 檔案館指出，角度合適時畫下原機輪廓仍看得見；1899 年畫作及著作權另行報價。",
+      "source_locator": "W114B-S05：Secrets of the EMI Archive – 3；圖片來源、Strand 自述引文與 September 1899 交易段；W114B-S06：Stained glass window showing RCA’s Nipper mascot；ME.330390，Description (Brief)；W114B-S07：No Nipper? No!；RCA Victor Camden/Frederick O. Barnum III collection 所藏商標文件與原畫沿革。",
+      "premise_status": "screened",
+      "notes": "跨池及 #2182 搜過 Nipper、His Master’s Voice、Barraud 與主人之聲。既有唱機條目涉及設備或錄音，未問畫作對著哪款喇叭及買畫、著作權各買到什麼。",
+      "risk": "不推斷唱片播的是已故主人聲音，不把臆測的棺木、Edison-Bell 拒絕時逐字說法或臆測的商標動機當實錄。總額按英國畫作交易報價，並非法定商標費；不把美國商標註冊日當英國交易日。",
+      "editorial": {
+        "role": "episode_core",
+        "minutes": [
+          8,
+          10
+        ],
+        "payoff": "Barraud 本來畫圓筒式留聲機；向 Gramophone Company 借器材時，經理問能否改畫自家機器。後來的圓盤機覆在舊畫上，檔案館說從合適角度仍能看出原先輪廓。",
+        "visual": "EMI 檔案館所藏 His Master’s Voice 原畫、館方所說的覆畫底線。據檔案館引錄，畫家自述願意更換實機的答話。Victor 在 Camden 廠房的 1915 年窗型設計，史密森尼所藏 ME.330390。"
+      },
+      "origin": "wave114-20261120",
+      "domain": "W 生意與品牌的奇聞",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-4dd643dd56f39f16",
+          "origin": "wave114-20261120",
+          "locator": "W114B-S05：Secrets of the EMI Archive – 3；圖片來源、Strand 自述引文與 September 1899 交易段",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        },
+        {
+          "source_id": "SRC-fe40649b81da5e41",
+          "origin": "wave114-20261120",
+          "locator": "W114B-S06：Stained glass window showing RCA’s Nipper mascot；ME.330390，Description (Brief)",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        },
+        {
+          "source_id": "SRC-0423631a02bfd7c3",
+          "origin": "wave114-20261120",
+          "locator": "W114B-S07：No Nipper? No!；RCA Victor Camden/Frederick O. Barnum III collection 所藏商標文件與原畫沿革。",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave114-20261120.json"
+      ]
+    },
+    {
+      "id": "N8059",
+      "axis": "W",
+      "case_key": "case.kellogg_shredded_wheat_carton_hotel_1938",
+      "question": "早餐麥餅的名字和枕頭形都可以沿用，1938 年美國最高法院為什麼還要查飯店收到的是散裝麥餅，還是印有廠名的兩片小盒？",
+      "hook": "先把兩塊枕頭形麥餅放進空白碗，再拿出標十五片和十二片的兩個紙盒。用同一個名字能不能賣是一件事，客人會不會買錯廠牌又怎麼查？",
+      "answer_target": "法院認為 Shredded Wheat 是通用名稱；當時相關專利已到期，枕形在這個產品上亦有功能性。但競業仍須採合理方式區別自家商品。卷內標準盒為 Kellogg 十五片、原告十二片，包裝大小、形色、醒目商名都不相同；Kellogg 僅 2.5% 售往飯店餐廳等通路，該部分再有 98% 用標著廠名的兩片小盒。法院用這兩層分母估量端上無包裝麥餅的混淆機會。",
+      "scope": "枕形與通用名稱可以沿用，販售時仍得讓人分得出來源。法院查到 Kellogg 售往飯店等通路的部分佔 2.5%，其中 98% 又是標著廠名的兩片小盒，兩個比例的分母不同。",
+      "source_locator": "W114B-S08：Kellogg Co. v. National Biscuit Co., 305 U.S. 111，1938-11-14；印刷頁 116–123；W114B-S09：PDF 第 1–2 頁說明書，第 3 頁更正證明；W114B-S10：Trade Card for Shredded Wheat Biscuits，THF298555，circa 1930，National Biscuit Company。",
+      "premise_status": "screened",
+      "notes": "N8039 問 Pocky 留一段手持的功能；N8024 問樂高兩樣立體商標。本案核心為通用名及專利到期後，法庭如何用紙盒與餐飲通路分母查來源辨識。",
+      "risk": "不可把 98% 說成美國飯店都用該品牌，也不可說 98% 的全部銷售都為兩片盒。法院沒有裁判碗中兩塊餅的圖案是否單獨構成商標侵害；不可因此推論任何仿包裝都准許。",
+      "editorial": {
+        "role": "episode_core",
+        "minutes": [
+          8,
+          10
+        ],
+        "payoff": "枕形與通用名稱可以沿用，販售時仍得讓人分得出來源。法院查到 Kellogg 售往飯店等通路的部分佔 2.5%，其中 98% 又是標著廠名的兩片小盒，兩個比例的分母不同。",
+        "visual": "Perky 1895 年專利首頁、標題與製絲段。Henry Ford 館藏約 1930 年 National Biscuit 廣告卡 THF298555。1938 判決的 15／12 片與供飯店等通路的兩片小盒。"
+      },
+      "origin": "wave114-20261120",
+      "domain": "W 生意與品牌的奇聞",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-5b060df6203eb301",
+          "origin": "wave114-20261120",
+          "locator": "W114B-S08：Kellogg Co. v. National Biscuit Co., 305 U.S. 111，1938-11-14；印刷頁 116–123",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        },
+        {
+          "source_id": "SRC-064a99afbbc0a936",
+          "origin": "wave114-20261120",
+          "locator": "W114B-S09：PDF 第 1–2 頁說明書，第 3 頁更正證明",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        },
+        {
+          "source_id": "SRC-1a5fe8ec1f1f91d2",
+          "origin": "wave114-20261120",
+          "locator": "W114B-S10：Trade Card for Shredded Wheat Biscuits，THF298555，circa 1930，National Biscuit Company。",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave114-20261120.json"
+      ]
+    },
+    {
+      "id": "N8060",
+      "axis": "W",
+      "case_key": "case.toybiz_kingpin_jumpsie_1994_htsus_03_2",
+      "question": "蜘蛛人的對手金霸王穿著一身西裝，外表像人。若你替美國海關給這盒公仔算稅，法官為什麼會要你把頭和手也拿來和那套西裝比一比？",
+      "hook": "先把公仔的頭和手遮住，只看衣服選「只表現人類的娃娃」或「其他玩具」。拿走遮片，再看進口商為什麼要為這兩個選項上法庭。",
+      "answer_target": "1994 年美國稅表對這兩種玩具有不同稅率。海關用「只表現人類」的娃娃稅目；法院檢視金霸王公仔，合看特別小的頭、大手、壯碩的身體與蜘蛛人故事中的傳奇形象，採 Toy Biz 主張的其他玩具稅目。換一盒同案的 Jumpsie，抽走小跳床仍剩下一個可玩的女孩娃娃，法院就留下娃娃分類。",
+      "scope": "美國國際貿易法院把人物背景和這個公仔的小頭、大手等外形合看，依涉案年度稅則改歸其他玩具。換成同案的 Jumpsie 女孩娃娃，拿掉小跳床仍可獨立玩，關稅分類也不同。",
+      "source_locator": "W114C-S04：判決頁 2–4 Facts，頁 25–27 Spider-Man 四個反派，頁 29–32 Jumpsie 及 Conclusion；W114C-S06：第 95 章兩行原表，9502.10.40（承接 9502 的限定，只表現人類）及 9503.49.00（回讀 Animals or non-human creatures 標頭）；讀 General 欄。",
+      "premise_status": "screened",
+      "notes": "#2182「桌面／口袋 30 公分掃描」從 N9079 小車的物理細節改問玩具進口商：同一個可握在手上的角色，手與頭的比例如何移動一張稅單。 兩池最近的是奇聞 F20 的漫威版洛基家譜，與健達玩具食品海關退案（not_added 第 107 筆）；前者追人物關係，後者問食品夾帶物規則。 參考 PR 的 N9075 問夾娃娃機的賭博與取物制度；退案原 A21 問品客改配方後的英國加值稅，已有成片，本題聚焦美國稅表、玩具比例及 Jumpsie 對照。 第113批的巧克力產地是應計原料重量；第 113 批七案與十筆退案、#2182 兩批、第 142 批三份短題與黑貓兩份片目無同一裁判。與同批 N8057 蛋頭先生的盒內配件及 2021 品牌命名不同。",
+      "risk": "只說 1994 年本案進口品、普通從價稅率與 2003 年美國國際貿易法院的結果。法官把體態與敘事合看；故事沒提超能力，不能把他編成變種人，也不能說漫威自己作原告。",
+      "editorial": {
+        "role": "episode_core",
+        "minutes": [
+          8,
+          10
+        ],
+        "payoff": "法院把金霸王特別小的頭、大手、身體比例和故事形象一起考量，改列其他玩具；依1994年涉案稅目，普通稅率從12%變6.8%。",
+        "visual": "用無商標西裝布、手杖、兩張數字牌與抽走紙跳床的動作；角色只用普通鉛字點名，不重製漫畫、官方角色輪廓或包裝。"
+      },
+      "origin": "wave114-20261120",
+      "domain": "W 生意與品牌的奇聞",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-ebcb11133aa9e69b",
+          "origin": "wave114-20261120",
+          "locator": "W114C-S04：判決頁 2–4 Facts，頁 25–27 Spider-Man 四個反派，頁 29–32 Jumpsie 及 Conclusion",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        },
+        {
+          "source_id": "SRC-e2498d9b4acef0c0",
+          "origin": "wave114-20261120",
+          "locator": "W114C-S06：第 95 章兩行原表，9502.10.40（承接 9502 的限定，只表現人類）及 9503.49.00（回讀 Animals or non-human creatures 標頭）；讀 General 欄。",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave114-20261120.json"
+      ]
+    },
+    {
+      "id": "N8061",
+      "axis": "W",
+      "case_key": "case.trunki_uksc12_43427_horns_contrast",
+      "question": "兩只孩子能跨坐的行李箱都有紅底黑點，看起來就像一對瓢蟲。英國法官審原廠控告對手的案子時，為什麼要先把其中一只換成六張灰階圖？",
+      "hook": "桌上放兩只紅底黑點箱和一個六格紙夾。你要判後來那只箱子有沒有侵權，會留下兩件市售品，還是拿走其中一只、把紙夾打開？",
+      "answer_target": "原廠以 2003 年的一件註冊設計起訴。六張圖合看，是一隻有角的動物，箱身和輪子、輪輻、帶子與飾條還有顏色對比。對手兩款的印象分別是有觸角的瓢蟲和有耳朵的老虎。即使對手看過 Trunki 才想到填補便宜款的空缺，英國最高法院仍維持這兩款沒有侵害這項註冊設計的結果。",
+      "scope": "英國法院拿註冊設計的六張灰階圖去比對被告行李箱。圖中有角動物的輪廓、箱身與零件的明暗對比，都與對手瓢蟲或老虎款的整體印象有別，法院維持未侵權的結果。",
+      "source_locator": "W114C-S01：第 1–5 段，判決印頁 2–3 圖：2003 灰階註冊圖、2010 原廠兩款、被告兩款；第 35–42、49、51–57、61 段；W114C-S02：頁 1–2 Background、Judgment、Reasons，三項批評與主文；W114C-S03：段 9–13（2016 年 6 月 1 日生效）；段 10 以本案有明暗的電腦圖和另一案輪廓線圖並列。",
+      "premise_status": "screened",
+      "notes": "#2182「贏家翻轉輸家」追問有先發產品、得過獎的起家廠為何輸給看過它的折扣款；並從原 A01 輪子行李箱已製作的普及史岔開，改查註冊圖限制了哪一件案子的勝算。 #2182 原品牌 A01 退案查輪子行李箱普及時間，原來如此 K113-0403、K113-0407 與 G752 查海關鎖、主鑰匙與使用認證；均無兩品牌的註冊圖比對。 奇聞 N8024 的樂高輪廓涉及立體商標的技術功能，N8039 及其簡化退案涉及 Pocky 商業外觀的功能性。第113批 N8051 的亞馬遜案是專利請求解讀及臨時禁制令，N8054 是雕像與照片分層授權。 與同批 N8059 的枕頭形麥餅、包裝標示與來源混淆也不同。兩池、黑貓片目與 #2182 兩批皆未見本案。",
+      "risk": "僅限特定登記及 2016 裁判；沒判定原廠後來的登記無效、換輪色就能避侵權或換線圖必能勝訴。兩種色調呈部件對比，不限定實品灰黑。",
+      "editorial": {
+        "role": "episode_core",
+        "minutes": [
+          8,
+          10
+        ],
+        "payoff": "這場官司主張的是2003年的註冊設計，法官要拿六張圖中的整體印象去比被告款式。註冊圖像有角動物、零件有明暗對比；瓢蟲與老虎款給的印象有別，最高法院維持未侵權。",
+        "visual": "以三張無品牌自畫概念卡示意「2003 登記／原廠較晚的花色款／對手款」，用灰紙輪、圓點與條紋讓觀眾選比對對象。判決印頁 2–3 的原圖僅供研究，圖像權利另行處理。"
+      },
+      "origin": "wave114-20261120",
+      "domain": "W 生意與品牌的奇聞",
+      "bank_status": null,
+      "production": {
+        "states": [],
+        "locators": []
+      },
+      "locked": false,
+      "source_refs": [
+        {
+          "source_id": "SRC-fdec0867f46cabc2",
+          "origin": "wave114-20261120",
+          "locator": "W114C-S01：第 1–5 段，判決印頁 2–3 圖：2003 灰階註冊圖、2010 原廠兩款、被告兩款；第 35–42、49、51–57、61 段",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        },
+        {
+          "source_id": "SRC-368710843f6159a5",
+          "origin": "wave114-20261120",
+          "locator": "W114C-S02：頁 1–2 Background、Judgment、Reasons，三項批評與主文",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        },
+        {
+          "source_id": "SRC-af50b2cbb7e2bef5",
+          "origin": "wave114-20261120",
+          "locator": "W114C-S03：段 9–13（2016 年 6 月 1 日生效）；段 10 以本案有明暗的電腦圖和另一案輪廓線圖並列。",
+          "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/history-curiosity/pool/batches/wave114-20261120.json"
       ]
     },
     {
