@@ -492,7 +492,7 @@ FOOT = [
 # 10 s about 9.2 s; Xu Yan about 4 characters a second (thoughts 4-4.3), Tang Xiaotang median 3.4, A-ling 3.4, Qian Yuanwai
 # 2.2-2.9, the system 9 characters in about 2.4 s; Qin Shuang (Autonoe) not measured in arc 4, estimated at 3.5-4.
 # 10 s: s26 (Qian Yuanwai 18, urgent: 6.2-8.2 s), s11 (thought 19 + system 9 with a pause: 7.3-7.7 s, past an 8 s clip's 7.3).
-# 8 s: s03 (Qian 13 shouted, two stops), s04 (Qian 15), s10 (Qian 15, sneered and drawled), s11 (thought 19 + system 9, about
+# 8 s: s03 (Qian 13 shouted, two stops), s04 (Qian 15), s10 (Qian 15, sneered and drawled),
 #      s24 (Qin 17 word by word), s28 (Qian 14, the back), s35 (Qin 17, cold, two sentences), s09 (Xu Yan 18 with stops).
 # 6 s: s02, s31 (no line, two beats); every other spoken shot (gen-dh's default, written out for the recordings over a shot).
 # 5 s: s15, s17 (the inserts), s36, s37 (no line).
