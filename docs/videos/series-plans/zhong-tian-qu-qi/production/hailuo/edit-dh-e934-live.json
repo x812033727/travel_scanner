@@ -1,0 +1,434 @@
+{
+ "tempo": 1.0,
+ "grades": {},
+ "default_grade": "dh",
+ "finish": "vignette=angle=PI/5,format=yuv420p",
+ "names": {},
+ "punch": false,
+ "slow_max": 1.1,
+ "interpolate": false,
+ "duck_ratio": 3.5,
+ "duck_release_ms": 900,
+ "sfx_dirs": [
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx",
+  "<VIDEO_WORKDIR>/_live-e934/zhong-tian-qu-qi-e934-dh/sfx-local"
+ ],
+ "name_whoosh": "swish-9",
+ "music": [
+  {
+   "cue": "standoff",
+   "from": "s04",
+   "to": "s11",
+   "offset": 20.0,
+   "gain": -26,
+   "fade_in": 0.8,
+   "fade_out": 1.2,
+   "tail": 0.3
+  },
+  {
+   "cue": "farming-montage",
+   "from": "s12",
+   "to": "s19",
+   "offset": 30.0,
+   "gain": -26,
+   "fade_in": 0.6,
+   "fade_out": 1.0,
+   "tail": 0.0
+  },
+  {
+   "cue": "drone31",
+   "from": "s20",
+   "to": "s22",
+   "offset": 20.0,
+   "gain": -28,
+   "fade_in": 1.0,
+   "fade_out": 0.3,
+   "tail": 0.0
+  },
+  {
+   "cue": "face-slap",
+   "from": "s23",
+   "to": "s29",
+   "offset": 20.0,
+   "gain": -24,
+   "fade_in": 0.15,
+   "fade_out": 2.0,
+   "tail": 0.0
+  },
+  {
+   "cue": "scheming",
+   "from": "s31",
+   "to": "s32",
+   "offset": 30.0,
+   "gain": -25,
+   "fade_in": 0.4,
+   "fade_out": 1.0,
+   "tail": 0.0
+  },
+  {
+   "cue": "sweet-romance",
+   "from": "s33",
+   "to": "s36",
+   "offset": 20.0,
+   "gain": -27,
+   "fade_in": 1.0,
+   "fade_out": 1.0,
+   "tail": 0.0
+  },
+  {
+   "cue": "cliffhanger",
+   "from": "s37",
+   "to": "s40",
+   "offset": 0.0,
+   "gain": -20,
+   "fade_in": 1.5,
+   "fade_out": 1.0,
+   "tail": 0.0
+  }
+ ],
+ "sfx": [
+  {
+   "file": "wind1",
+   "at": "s01",
+   "off": 0,
+   "gain": -10,
+   "to": "s03"
+  },
+  {
+   "file": "Wind",
+   "at": "s04",
+   "off": -0.4,
+   "gain": -11,
+   "to": "s11"
+  },
+  {
+   "file": "Wind",
+   "at": "s12",
+   "off": -0.4,
+   "gain": -11,
+   "to": "s21"
+  },
+  {
+   "file": "birds",
+   "at": "s12",
+   "off": -0.4,
+   "gain": -26,
+   "to": "s21"
+  },
+  {
+   "file": "Wind",
+   "at": "s22",
+   "off": -0.4,
+   "gain": -13,
+   "to": "s26"
+  },
+  {
+   "file": "water-s23",
+   "at": "s25",
+   "off": -0.2,
+   "gain": -4,
+   "to": "s25"
+  },
+  {
+   "file": "wind1",
+   "at": "s27",
+   "off": -0.4,
+   "gain": -14,
+   "to": "s36"
+  },
+  {
+   "file": "birds",
+   "at": "s27",
+   "off": -0.4,
+   "gain": -27,
+   "to": "s36"
+  },
+  {
+   "file": "water-s23",
+   "at": "s27",
+   "off": -0.4,
+   "gain": -16,
+   "to": "s36"
+  },
+  {
+   "file": "wind1",
+   "at": "s37",
+   "off": -0.4,
+   "gain": -8,
+   "to": "s40"
+  },
+  {
+   "file": "buzzloop",
+   "at": "s37",
+   "off": 0.5,
+   "gain": -20,
+   "to": "s37"
+  },
+  {
+   "file": "buzzloop",
+   "at": "s38",
+   "off": -0.4,
+   "gain": -12,
+   "to": "s38"
+  },
+  {
+   "file": "buzzloop",
+   "at": "s39",
+   "off": -0.4,
+   "gain": -7,
+   "to": "s39"
+  },
+  {
+   "file": "buzzloop",
+   "at": "s40",
+   "off": -0.4,
+   "gain": -6,
+   "to": "s40"
+  },
+  {
+   "file": "pin-s03",
+   "at": "s01",
+   "off": 0.0,
+   "gain": -2
+  },
+  {
+   "file": "paper_04",
+   "at": "s02",
+   "off": 0.6,
+   "gain": -18
+  },
+  {
+   "file": "pin-s03",
+   "at": "s03",
+   "off": 0.0,
+   "gain": 4
+  },
+  {
+   "file": "impactPunch_heavy_000",
+   "at": "s04",
+   "off": 0.3,
+   "gain": -16
+  },
+  {
+   "file": "impactWood_heavy_002",
+   "at": "s11",
+   "off": 5.1,
+   "gain": -14
+  },
+  {
+   "file": "splash_01",
+   "at": "s11",
+   "off": 5.2,
+   "gain": -20
+  },
+  {
+   "file": "water-s12",
+   "at": "s12",
+   "off": 4.0,
+   "gain": 10
+  },
+  {
+   "file": "impactPlank_medium_000",
+   "at": "s12",
+   "off": 4.55,
+   "gain": -16
+  },
+  {
+   "file": "impactWood_heavy_000",
+   "at": "s19",
+   "off": 0.25,
+   "gain": -12
+  },
+  {
+   "file": "creak1",
+   "at": "s22",
+   "off": 1.5,
+   "gain": -4
+  },
+  {
+   "file": "impactPunch_heavy_000",
+   "at": "s23",
+   "off": 0.0,
+   "gain": -15
+  },
+  {
+   "file": "water-s23",
+   "at": "s23",
+   "off": 0.0,
+   "gain": 3
+  },
+  {
+   "file": "creak3",
+   "at": "s23",
+   "off": 0.6,
+   "gain": -8
+  },
+  {
+   "file": "creak1",
+   "at": "s23",
+   "off": 2.4,
+   "gain": -8
+  },
+  {
+   "file": "creak2",
+   "at": "s23",
+   "off": 4.0,
+   "gain": -8
+  },
+  {
+   "file": "water-s24",
+   "at": "s24",
+   "off": 0.0,
+   "gain": 6
+  },
+  {
+   "file": "creak2",
+   "at": "s24",
+   "off": 1.0,
+   "gain": -10
+  },
+  {
+   "file": "laugh-s25",
+   "at": "s25",
+   "off": 0.4,
+   "gain": 0
+  },
+  {
+   "file": "water-s26",
+   "at": "s26",
+   "off": 0.0,
+   "gain": 3
+  },
+  {
+   "file": "swish-7",
+   "at": "s32",
+   "off": 1.0,
+   "gain": -12
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s32",
+   "off": 2.2,
+   "gain": -24
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s32",
+   "off": 3.0,
+   "gain": -10
+  },
+  {
+   "file": "buzz-s40",
+   "at": "s40",
+   "off": 0.0,
+   "gain": 4
+  }
+ ],
+ "frame_round": true,
+ "clip_voice": true,
+ "voice_skip": {},
+ "voice_until": {},
+ "clip_af": {
+  "s13": {
+   "from": 0,
+   "af": "rubberband=pitch=1.15:formant=preserved,volume=1.0dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s14": {
+   "from": 0,
+   "af": "rubberband=pitch=0.95:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s34": {
+   "from": 0,
+   "af": "rubberband=pitch=0.95:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s10": {
+   "from": 0,
+   "af": "asetrate=37440,aresample=48000,atempo=1.282051,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s28": {
+   "from": 0,
+   "af": "asetrate=41280,aresample=48000,atempo=1.162791,volume=1.0dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s15": {
+   "from": 0,
+   "af": "asetrate=40320,aresample=48000,atempo=1.190476,volume=-1.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s17": {
+   "from": 0,
+   "af": "asetrate=36000,aresample=48000,atempo=1.333333,volume=-1.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s36": {
+   "from": 0,
+   "af": "asetrate=41280,aresample=48000,atempo=1.162791,volume=-1.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s38": {
+   "from": 0,
+   "af": "asetrate=40800,aresample=48000,atempo=1.176471,volume=-2.0dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s39": {
+   "from": 0,
+   "af": "volume=2.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s20": {
+   "from": 0,
+   "af": "volume=1.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s35": {
+   "from": 0,
+   "af": "volume=-2.0dB"
+  },
+  "s22": {
+   "from": 0,
+   "af": "volume=-1.0dB"
+  }
+ },
+ "voice_off": [
+  "s11",
+  "s12",
+  "s16",
+  "s18",
+  "s19",
+  "s25"
+ ],
+ "move_lines": {},
+ "min": {
+  "s40": 7.75
+ },
+ "line_at": {
+  "zq934a02": 1.5,
+  "zq934a07": 0.6,
+  "zq934a08": 4.0,
+  "zq934a09": 0.5,
+  "zq934a10": 5.0,
+  "zq934a12": 0.3,
+  "zq934a13": 0.26,
+  "zq934a17": 0.44,
+  "zq934a19": 0.72,
+  "zq934a20": 0.49,
+  "zq934a24": 2.2,
+  "zq934a25": 2.35,
+  "zq934a32": 0.5,
+  "zq934a33": 3.5,
+  "zq934a40": 0.5
+ },
+ "line_lead": {},
+ "panel_y": {
+  "s08": 820,
+  "s33": 840
+ },
+ "panel_from": {
+  "s08": 0.5,
+  "s33": 0.4
+ },
+ "panel_color": {},
+ "panel_until": {},
+ "vf": {
+  "s24": "hflip",
+  "s40": "eq=brightness=-0.05:saturation=0.52:gamma=0.90:contrast=1.04,colorbalance=rs=0.02:bs=-0.06:rm=0.02:bm=-0.05:rh=0.02:bh=-0.07,fade=t=out:st=6.30:d=0.45"
+ },
+ "slow_shot": {
+  "s40": 1.0
+ },
+ "subtitle_lines": [],
+ "_note": "真人版第 34 集第一版，2026-11-20 照 edit-dh-e933-live.json 第一版的做法寫：精修並放好的片段（_live-e934/zhong-tian-qu-qi-e934-dh/clips/sNN-t1.mp4，40 鏡、全用、沒有拿掉的鏡）；clip_voice、不放大（punch false）、慢放 ≤ 1.1、不補格、frame_round、沒有片名卡、names {}、一律硬切。第 34 集是第 4 篇〈旱年〉第四集（r2-bible-e031-e040.md）：s01 接第 33 集最後（第十日正午，水車停住、錢員外在田埂上笑，本集不重播笑）；s40 交給第 35 集（同一夜，許家屋內）。下面所有秒數都是從剪過的鏡頭第一格算（c）。不花錢：沒用 Colab、RunPod、站台 TTS，沒重做精修，沒有新配樂，沒匯入後台，沒 commit。\n來源：docs/videos/zhong-tian-qu-qi-e034-r2 的 script.md／storyboard.md／video.json／overlays.json（以 script.md〈音樂與音效〉〈剪接〉與各場場頭為準；拍攝稿 writer-tools/e034-r2/r2.py 改過的地方照 colab/runs/e934-live/PREP.md §1：c24 是輪頂葉板瀉水、沒有竹斗木槽，c35–c40 留在田邊）。picks.json 由 colab/runs/e934-live 的 refine-prep.py 34 picks-merged.tsv fix1/review-picks.tsv fix2/review-picks.tsv cut-trims.tsv 產生（印出的 refine 沒跑；重跑前後比對：只有 s08 終點變，st2-*.json、skip.txt、live-clips-e934.json 逐位元相同）。fix1 換 s09 9341211、s37 9341211；s28 9341212、s32 9341211 是 fix1 的備案（fix2 兩輪四支都不如，協調者決定，見 fix2/plan.md）。cut-trims.tsv 是本版自己改的一個剪點：s08 終點 10.125→7.5（系統 a07＋心裡話 a08 在 c6.4 前說完，原本句後空 3.7 秒、9 秒後頭頂被切）。精修片 runpod/a/st2/refined/ 40/40，stage.py 34 放好 40 支（0 缺、沒有 crop）；每支精修片 1.0 秒的縮圖跟該鏡所有草稿逐一比對（thumbchk.py），差最小的都是 picks.json 指的那支（40/40，差 2.1–3.5，其他 9.4–68.6；s40 的另一支 9.4、s23 的 14.7 最接近，仍分得開）。e934cut.sh 的 want／seed 表照 picks.json。pyworld 這次 session 不在，pip 裝回（免費）。連結：zhong-tian-qu-qi-e934-dh/music/ 是手做的目錄（照 e933）：_series 的 cue-*.mp3、cue-drone31／tension31 → assets/music/e031-e032/，另加 Flow Music 庫（_series/.../music/flow-music-20261118）的底樂連結 cue-standoff／farming-montage／face-slap／sweet-romance／scheming／festival.mp3 → zhongtian-bed-<名>-take1.m4a、cue-cliffhanger／reveal-hit.mp3 → zhongtian-cue-<名>-take1.m4a（ffmpeg 照內容讀；festival、reveal-hit、tension31 連了沒用）。本集自己的音效在 _live-e934/.../sfx-local/（剪接表 sfx_dirs 第二個目錄，e934cut.sh 從放好的片子切；沒有台詞、台詞是畫外錄音、或片中原聲整支靜音的鏡，片中的環境聲會跟著靜音，所以切出來放回去）：pin-s03（s03 整支，風車呼呼轉）、water-s12（s12 c4.0 起，葉板推進水）、water-s23、water-s24、water-s26（水頭與跑步）、buzz-s40（s40 整支嗡聲）、buzzloop（s40 c1.5–6.5 交叉淡化接成 18 秒）、laugh-s25（石木匠 c0.40–2.30 大笑，asetrate 0.62、長度不變：278 Hz → 約 172）。assemble-v4.mjs 沒改。工作檔：session scratchpad e934c/（mkov934.py＋vol.json＋music.json＋beds.json＋spots.json → overrides.json，mkedit934.py＋note.txt → 本檔；lev934.py、thumbchk.py、f0e.py、f0h.py、f0yc.py、mom8.py、sfxlev.py、env.py、cuefeat.py、fwall.py、fw2.py；clipf0e.txt、clipf0h.txt、clipf0y.txt、recf0.txt、lev.txt、mom1–4.txt、sfx2／sfx3.txt、cutf0.txt（run3）、cutf0-run4.txt、fwcut.txt（run3）、fw-run4.txt、run1–4.log、img/、bak/（refine-prep 前的 picks.json 與 st2 manifest）；PROGRESS.md 是中途進度）。\n挑片交代的處理：s24 水平翻轉（vf hflip；畫面只有輪頂葉板、天、木架與瀉水，沒有衣襟，翻後輪頂往左＝逆時針，跟 s23 1101 同向）；s40 整支壓暗調灰（eq brightness −0.05、saturation 0.52、gamma 0.90＋colorbalance 藍往下：天的藍去掉、接 s37 s38 的灰），剪點照挑片收在黑點最密的 6.75（c6.30 起淡出 0.45 秒，6.75 全黑）；s26 只用 2.750–5.167（picks.json 本來就是這段，2.42 秒當過場）；s09 系統 a09 與心裡話 a10 都鋪錄音（片中無人聲，組片程式照例靜音片中聲音），嘴全程閉（fix1 9341211 逐格看過）；s08、s33 同（a07＋a08、a32＋a33）。\n人聲：畫面上說話的 28 鏡用片中原聲；voice_off 6 鏡（s11 s12 s16 s18 s19 s25）——片中原聲比角色高太多，Harvest（f0e／f0h）與 YIN（f0yc）兩種量法一致：秦霜 s11 417／422、s12 488／459、s16 510／409、s18 422／413、s19 453／421（角色 195–240，e932 喊的 260–275）；石木匠 s25 台詞段 324／329（角色 110–175，e933 成片 146–163）；降到角色要 ×0.5–0.62，在 PR #2151「≥ 0.6 倍才不糊」的邊上或以下（e933 s32 ×0.656 單聽已糊），所以整句改鋪錄音、靜音片中原聲，line_at 對片中開口：a12 c0.30（s11）、a13 c0.26（s12）、a17 c0.44（s16）、a19 c0.72（s18，c0.28 的吸氣之後）、a20 c0.49（s19）、a25 c2.35（s25，大笑 laugh-s25 c0.40–2.30 之後）。s25 的大笑從片子切出來降調當音效放回（c0.40）。沒有台詞的鏡（s01 s24 s26）照例靜音。鋪的錄音：畫外 a02（s03 c1.50，重錄版 147 Hz，a02-p75 不用了）、a24（s23 c2.20，來源 a24-p119，輪子開始轉時）、a40（s40 c0.50）；系統 a07（s08 c0.60）、a09（s09 c0.50）、a32（s33 c0.50）；心裡話 a08（s08 c4.00，眼睛落回之後）、a10（s09 c5.00，臉轉向畫右之後）、a33（s33 c3.50）。subtitle_lines 空（系統 a07 a32 在面板上；a09 沒有面板、照常 CC）。錄音 README 說的 a06-p93、a27-p91、a30-p117、a35-p73、a29-p75、a31-p80、a20 原檔都沒用到（那些鏡用片中原聲，或 s19 用 a20-p85）。\n音高（成片每句 f0e 中位數，cutf0.txt＝run3、cutf0-run4.txt＝run4 改過的四句；PR #2151：往下 asetrate 連共振峰＋atempo 1/k 長度不變，往上 rubberband formant=preserved）：秦霜錄音 a12 204、a13 236、a17（重錄版 167 → rubberband 1.52）227、a19（重錄版 209 → 1.16）240、a20（a20-p85）238、a24（a24-p119）194，片中原聲 s31 255、s35 245。阿令片中原聲 s15 217 asetrate 0.84 → 181、s17 249 → 0.75 → 183、s36 223 → 0.86 → 195、s38 225 → 0.85 → 189（她的錄音 178–193、e931 量 170–193；README 的決定：低而冷的聲音讓她跟秦霜分開，不把她拉進 225–265）。阿令與秦霜同場（聖經第 43 條 ≥ 3 個半音）：第二場 a17 227／a19 240 對 s15 181／s17 183 = 3.9–4.7（run3 是 a17 1.42、a19 1.10、阿令 0.88／0.78，量出 213／222 對 191／192 只差 1.9／2.5，run4 改成現在這樣）；第三場 s31 255／s35 245 對 s36 195／s38 189 = 4.3–5.1。石木匠 s05 164 不動、s13 130 ×1.15 → 152、錄音 a25（116 → rubberband 1.31＋atempo 1.15，6.72 → 5.86 秒，片中台詞段只有 4.8 秒）147；韓伯 s07 119、s21 96、s27 122 不動，s28 136 asetrate 0.86 → 117，錄音 a40 143 asetrate 0.86 → 113；同場：第一場 s05 164 對 s07 119 = 5.6、第二場 s13 152 對 s21 96 = 8.0、第三場 a25 147 對 s27 122／s28 117／a40 113 = 3.2／3.9／4.5（README 原本建議第三場不升石木匠，但這版石木匠是升過的錄音、韓伯是片中原聲，所以照 e932／e933 把石木匠放在 146–165、韓伯往下）。許硯 s04 163、s06 113、s10 280 asetrate 0.78 → 213（急、喊，喊到 220）、s20 109、s29 145（急）、s39 111；錄音 a02 129、心裡話 a08 134、a10 85（錄音本身 77，氣聲，偏低）、a33 107。小禾 s02 294、s22 295、s37 310 不動，s14 415 ×0.95 → 318（f0e 450 上限把喊的部分量低，YIN 約 395）、s34 418 ×0.95 → 339（同上）。錢員外 s30 133、s32 158 不動。系統 a07 196、a09 185、a32 173。\n錄音（audio/，第一次動之前原檔複製到 audio/orig/；lev934.py = lev933.py 給 e934）：目標 −13.5（3:1 壓縮＋volume＋alimiter 0.84）：a02 −18.6、a08 −17.6、a10 −22.1、a12 −17.6、a13 −14.6、a33 −19.7、a20（來源 a20-p85 −15.1）、a24（來源 a24-p119 −19.7）、a17（重錄版，PRE rubberband 1.52）、a19（重錄版，PRE rubberband 1.16）、a25（PRE rubberband 1.31＋atempo 1.15）→ −13.5..−13.7；a40（PRE asetrate 0.86）到 −12.9（run1 量在成片 −15.2，蓋在嗡聲上，加大）；系統 a07 a09 到 −13.9、a32 到 −12.7（run1 −16.4 最低）（只 volume＋alimiter 0.89 attack 10）。沒動：其他錄音、-p 版本、raw-tts、take1/。心裡話沒加空間感。\n音量（mom8.py，0.4 秒 momentary 每句最大值 8 dB 內的中位數；vol.json，加音量的都接 alimiter 0.89）：s39 +2.5（壓低聲音的耳語，run1 −16.4）、s20 +1.5、s13 +1.0、s28 +1.0、s22 −1.0、s15 s17 s36 −1.5、s35 s38 −2.0。成片（mom3／mom4）每句 −11.6..−14.9：最低 a39（s39 −14.9，耳語，刻意偏輕）、a32（系統 −14.8）、a21（s20 −14.9）。底噪：s01–s03 wind1 −10（強風、風車）；s04–s11 Wind −11；s12–s21 Wind −11＋birds −26；s22–s26 Wind −13（水聲在片中原聲與 sfx-local）；s25 water-s23 循環 −4（s25 片中原聲靜音，水聲補回）；s27–s36 wind1 −14＋birds −27＋water-s23 循環 −16（渠水流進田）；s37–s40 wind1 −8（冷風起）＋buzzloop s37 −20（c0.5 起）／s38 −12／s39 −7／s40 −6，s40 再疊 buzz-s40 +4（嗡聲一路漸大，蓋到結尾黑畫面）。每段從前一鏡結尾前 0.4 秒進。\n面板（不燒字幕，CC 在下方；淡藍框）：s08「旱災任務，今日日落到期」配 a07：panel_y 820（許硯臉在上半，面板在胸前），panel_from 0.50；s33「旱災任務完成，稻種保住」配 a32：panel_y 840，panel_from 0.40。\n配樂（cuefeat.py 看過特徵；一場一段照稿子場頭）：(1) s01–s03 沒有配樂，只有風與風車（稿子「c01–c03 只有風聲與風車的呼呼聲」）；(2) standoff（低二胡、太鼓、緊張的弦樂頑固音型 96 bpm）從 20 秒起 s04–s11（−26，0.8／1.2）＋s04 c0.30 impactPunch_heavy_000（−16，想通的重音）：稿子「c04 想通一個亮的重音，接一段漸快的 strings」；(3) farming-montage（第 33 集工地那首，換段：從 30 秒起）s12–s19（−26）＋s19 c0.25 impactWood_heavy_000（最後一顆釘、翻完的重音）；(4) drone31 從 20 秒起 s20–s22（−28，屏息，交閘繩到拉閘）；(5) face-slap（大鼓、琵琶、勝利 118 bpm）從 20 秒起 s23–s29（−24，進 0.15）＋s23 c0 impactPunch_heavy_000（水車轉起來，全集最大的揭曉）；(6) s30 沒有配樂（稿子「c30 錢員外一句底下停一拍」）；(7) scheming 從 30 秒起 s31–s32（−25）；(8) sweet-romance 從 20 秒起 s33–s36（−27：任務完成、騎肩、秦霜阿令鬥嘴）；(9) cliffhanger（Flow Music 短音樂，前 10 秒是低頻、centroid 530 Hz、低頻佔 0.85）從 0 秒起 s37–s40（−20，進 1.5）：稿子「c37 起樂聲被嗡嗡聲蓋過，只剩低音」。側鏈壓縮 3.5:1、release 900 ms。\n音效（成片 20 ms RMS，sfxlev.py，sfx3.txt；IN = 量在台詞上）：s01 pin-s03 −2（片子 s01 本身只有 −50 dB 風聲）；s02 paper_04 c0.6（吹風車）；s03 pin-s03 +4（−34，蓋在 a02 下）；s04 impactPunch_heavy_000 c0.30（−10）；s11 impactWood_heavy_002 c5.10 −14＋splash_01 c5.20（閘板落下、水停，畫面只拍秦霜，交給音效）；s12 water-s12 c4.0 +10（−40）＋impactPlank_medium_000 c4.55（葉板推出）；s13 鐵錘聲在片中原聲裡；s19 impactWood_heavy_000 c0.25（−15，最後一顆釘；s19 片中原聲靜音）；s22 creak1 c1.50 −4（閘板拉起，−26，片中水衝出來的聲音保留）；s23 impactPunch_heavy_000 c0＋water-s23 +3＋creak3／creak1／creak2 c0.6／2.4／4.0 −8（輪子嘎吱轉、越轉越快）；s24 water-s24 +6、creak2 c1.0；s25 laugh-s25 c0.40（−12）；s26 water-s26 +3；s32 swish-7 c1.0 −12（甩袖）、footstep_grass_000／001 c2.2／3.0（走開）；s40 buzz-s40。叮由組片程式自動放在每句系統前（a07 a09 a32）。沒做：s04 拍葉板（畫面是朝輪子一揮）、s14 跑步竹籃、s18 跳進淺水（畫面沒有跳）、s25 拳捶木架（畫面是抓著橫木）、s26 遠處歡呼與 s19 歡呼（音效庫沒有人聲歡呼）、s27 泥水從指縫流下、s30 後退、s35 手肘碰（畫面沒有碰）。\nVF：s24 hflip；s40 壓暗調灰＋fade=t=out:st=6.30:d=0.45，slow_shot s40 1.0、min 7.75（6.75 起全黑 1.0 秒，嗡聲與低音延續，e934cut.sh 聲音最後 1.0 秒淡出）。沒有其他調色改動（default dh）、沒有裁切、沒有 vidstab（cut-qa jitter 40 鏡 ok）。\n結尾與接點：開頭 s01 第一格許硯兩手平掌按在葉板上、紙風車在左下（挑片照第 33 集 s35 1212 接）；第 33 集成片最後 10 秒是錢員外（s39–s40）大笑後淡出黑畫面，本集 s01 是許硯在輪腳下：第 33 集調色偏灰暗、陰天感，本集 s01 正午晴、白亮，光不一樣，要人眼。開頭 10 秒 −13.6 LUFS（沒有台詞的 s01 與 s02 前段：風、風車）、最後 10 秒 −14.1。第 33 集還在 REVIEW 3（s34 加速、s30 重拍），接點等第 33 集定版後再核一次。結尾 s40 韓伯「那不是雲，是蝗蟲！蝗蟲過山了！」（c0.50–6.17）說完後 c6.30 起淡出，蝗群最密的 6.0–6.75 在淡出裡。鉤子兌現：s22 拉閘、白水衝出，s23 水車從停到一路加速，s24 輪頂瀉水，s26 水頭沖過裂縫、村民舉手，s34 騎肩、風車轉對，s40 黑點滿天，都在畫面裡。\n聽寫（fwall.py → fwcut.txt，run3 成片上一句一個行程，單聽與帶上一句當提示，之後三段盲聽 0–86.5／85.5–172.5／171.5–結尾；run4 改的 a16–a19 四句另聽 fw-run4.txt）：40 句都在、順序對；帶上一句 40 句字對（標點不算）。單聽有出入的：a25（s25，錄音 ×1.31＋atempo 1.15）單聽「哼，算起來了，七天沒白熬，涼沒白菜」（哼是大笑的尾巴，轉→算、拆→菜），盲聽「算起來了…涼沒白拆」，帶提示對——要人耳；a24（s23）單聽「鑽了」、盲聽「转了」；a19（s18）單聽與盲聽「眼睛大剪三般／三班」；a40 單聽「那博士雲」、盲聽對；a07 a32 系統濾波照例單聽糊（「您參加任務」「零，漢齋任務完成，各種稿注」），帶提示對（e933 同）；a12 的「釘」唸成停一下的「定」（錄音核對就記過）。單聽與盲聽的同音近音：頁板／夜板、齊雙、阿鈴、篇、柳西、衣紮／衣閘、糧（梁）、爸（壩）、袁外、漢齋（旱災）、抱住、孤著／估著、你（妳）、小和、徐先生、飲（引）、嘍、探測任務／到齊（a07 盲聽）。\n結果：e934cut.sh 第四次跑（run1：全部第一版；run2：vol.json、a40 a32 加大；run3：弱音效加大；run4：第二場秦霜與阿令拉開）：244.54 秒（40 鏡；畫面 243.54 淡出完，之後 1.00 秒黑畫面）；−14.0 LUFS、LRA 6.0、峰值 −4.0 dBFS，loudnorm2 線性（之前 −14.65 LUFS、−4.17 dBTP，加增益後 −3.52 ≤ −2.2）；cut-qa：fps 24、loudness ok、jitter ok（40 鏡）、motion 8.4／static 10%（調色與暗角後 6.9／13%），held FAIL s40 1.00 秒、black FAIL 1.04 秒——都是刻意的結尾（同 e932 e933）；cut-jumps 0；audio-qa 40 句 0 問題（note：s02 前 5.1 秒沒有台詞＝s01 無台詞；s25 前 10.9 秒＝s23 揭曉、s24 瀉水、s25 大笑）；CC 38 條（a07 a32 在面板上）。長於 1 秒沒台詞的鏡尾：s03 1.53（風車越轉越快）、s08 1.07、s11 1.83（a12 比片中原聲短 1.7 秒；閘板落下的音效在這裡）、s12 2.96（葉板推進水，挑片要留）、s16 1.85（a17 比片中原聲短 1.5 秒）、s18 1.20、s23 3.37（水車加速，刻意）、s33 1.60、s40 1.58＋黑畫面。cut/ 只留 run4 成片；run1–3 在 cut/old-runs/。\n人耳／人眼（BY EAR / EYE）：0.00–4.00 s01 接第 33 集結尾（第 33 集灰暗陰天感 vs 本集正午白亮；第 33 集定版後再核）；58.50 s11、64.83 s12、90.92 s16、101.96 s18、107.96 s19 五鏡秦霜改鋪錄音的嘴形（a12 比片中原聲短 1.7 秒、a17 短 1.5 秒；s12 s19 全景較不明顯，s11 s16 s18 是中近景）、跟 s31 180.58／s35 209.75 的片中原聲是不是同一個人；91.36 a17 rubberband 1.52、102.68 a19 1.16 升調自然不自然；142.75 s25 石木匠改鋪錄音（a25 ×1.31＋atempo 1.15，c2.35 起、單聽糊）、降調的大笑 laugh-s25（asetrate 0.62）接不接得上，以及他跟 s05 22.54（原聲 164）、s13 71.25（×1.15）是不是同一個人；阿令 s15 84.42 ×0.84、s17 95.46 ×0.75、s36 214.29 ×0.86、s38 224.79 ×0.85 降調（聲音變粗、變老？）；許硯 s10 54.21 ×0.78（急喊）、心裡話 a10 51.21（85 Hz，很低的氣聲）；韓伯 s28 161.08 ×0.86、a40 237.29 ×0.86（喊得夠不夠）；小禾 s14 78.04、s34 203.50 ×0.95；10.54 a02 重錄版（愣住自語）；133.24 a24-p119「轉了」；s39 230.04 耳語 +2.5 dB 還是偏輕（−14.9）；38.71 s08 系統 a07 與面板、193.37 s33 系統 a32 −14.8；s04 17.34 重音、s19 108.21 釘、s23 131.04 揭曉的鼓與 face-slap 進來、s30 174.46 停一拍、s37 218.83 起嗡聲漸大是不是讀得成蝗蟲；s11 63.60 閘板落下的音效（畫面上沒有閘）；137.58–142.75 s24 翻轉後輪子方向跟 s23 是不是一致、水簾偏透明；150.92 s26 2.42 秒的過場；236.79–244.54 s40 調灰的程度、手機大小下黑點讀不讀得成蟲、淡出蓋掉最密的 6.0–6.75 可不可以、1.0 秒黑畫面；s28 161.08（fix1 備案：說『給您磕個頭』嘴大開露牙、7.0 秒才磕）與 s32 185.87（fix1 備案：得意地笑、視線平看畫左）站主接不接受；s37 218.83 第一兩格左下緣的紅色小尖角；s31 180.58 左下田壟的黃色亮點；s36 214.29 說到「眼睛了」嘴角有沒有上揚；s35 209.75 畫左渠水過曝；s21 117.96 最後半句笑不笑；s06 28.67、s15 84.42、s18 101.96 的笑。"
+}
