@@ -225,9 +225,9 @@ metadata:
 **插圖生成、2x 放大審圖與匯入（2026-11-14 現行流程）**
 
 1. 嚴禁呼叫 `node tools/video/cli.mjs keyframes` 讓站台調用 MiniMax 生圖。
-2. 先用內建 `generate_image`（`AspectRatio: "16:9"`）畫出單集跨 ≥ 4 鏡出場的角色設定圖，再逐批生成全集關鍵影格（有角色出場必傳 `ImagePaths`）。若遇 `gemini-3.1-flash-image` 配額冷卻，先跑完八語翻譯、配音與 `check-audio`，等配額恢復再繼續生圖，**絕不退回 MiniMax**。
-3. 將所有關鍵影格轉為 `1920×1080` PNG 並切出四格 2x 放大圖，交由獨立子代理逐張審過（零文字、零白邊、角色一致、五指與地理／時代道具無誤），不合格鏡頭帶原圖進 `ImagePaths` 重繪。
-4. 全數審過後，逐鏡執行 `node tools/video/cli.mjs keyframes import --slug <SLUG> --shot <ID> --file <PNG> --provider external --usd 0` 寫入 `keyframes/manifest.json`，再鎖定並推送 `storyboard` 關卡。注意：之後只要改動 `video.json` 某景的 `prompt`，該景的外部匯入紀錄就會失效，務必先定稿 `video.json` 再匯入。
+2. 先用內建 `generate_image`（`AspectRatio: "16:9"`）畫出單集跨 ≥ 4 鏡出場的**單人居中全身正面**角色設定圖（勿畫三視圖，避免後續鏡頭複製出分身），再逐批生成全集關鍵影格（有角色出場必傳 `ImagePaths`；**`nobody: true` 純物件鏡嚴禁傳含人物設定圖或掛 `character` 角色參考，只可傳無人物件鏡作畫風參考**；攤開的東亞線裝和本採 **90 度正俯視平拍**並明寫薄軟紙封與內頁齊平、僅正中央折縫縫白絲線；無護手削木刀正面寫 `plain smooth guardless suburito wooden oar-sword`，禁寫負面詞 `no tsuba` 以免觸發畫出圓鍔）。若遇 `gemini-3.1-flash-image` 配額冷卻，先跑完八語翻譯、配音與 `check-audio`，等配額恢復再繼續生圖（或經站主明確同意後改走站台 `/api/video/media/images` 指定同款 `image_model: "gemini-3.1-flash-image"`、`size: "2K"`、`aspect: "16:9"` 生圖），**絕不退回 MiniMax**。
+3. 將所有關鍵影格轉為 `1920×1080` PNG 並切出四格 2x 放大圖，交由獨立子代理逐張審過（零文字、零白邊、角色一致、五指與地理／時代道具無誤），不合格鏡頭針對性重繪（若舊圖 `左衽` 折線頑固則不帶舊圖、改只帶標準 `右衽` 設定圖或改背側四分之三視角）。
+4. 全數審過後，逐鏡執行 `node tools/video/cli.mjs keyframes import --slug <SLUG> --shot <ID> --file <PNG> --provider external --usd 0` 寫入 `keyframes/manifest.json`（若期間曾微調 `video.json`，記得把未重繪的既有合格鏡頭也重跑一次 `keyframes import` 補齊新 `visual_hash` 清單），確認 `status` 顯示 `[x] keyframes drawn` 後推送 `storyboard` 關卡。注意：之後只要改動 `video.json` 某景的 `prompt`，該景的外部匯入紀錄就會失效，務必先定稿 `video.json` 再匯入。
 
 **前 300 秒觀眾審查（站主 2026-11-19「前300秒都不會滑走、嚴格審核」，配音前必過）**：劇本定稿後、跑 `tts` 之前，先 `node tools/video/cli.mjs opening-review --slug <SLUG>` 寫出審查包（`review/opening-packet.md`：縮圖大字、標題、前 300 秒的口白與時間，有角色時顯示名字而不是代號）。**預設由製作中的 AI 自己派三個全新的子代理**（Claude Code、Codex 都可以；不花站台額度），各開新的對話、只給這份審查包，分別扮演 `newcomer`（第一次點進來的路人）、`scroller`（邊滑手機、隨時想走）、`stickler`（專抓沒頭沒尾和跳接），把三份 JSON 存成陣列後 `opening-review --slug <SLUG> --record <檔案> --author <你的名字>` 記錄；作者不能當讀者，每位讀者要照抄審查包裡的 `opening_hash`。另一種是 `opening-review --slug <SLUG> --ask`，改由站台用站主為漫劇查核階段選的模型跑三次（算進每月額度，結果由工具直接向站台要，最難造假）。**三位都要 score ≥ 8.5、不會滑走、problems 為空**才算過；沒過就照列出的問題改稿，再找**新的**三位重審。審查結果綁定這一版的縮圖大字、標題和前 300 秒口白，這三樣一改就要重審；300 秒之後的修改、停頓、念法微調和重錄單句不用。沒過關之前 `tts` 會拒絕合成；`tts --dry-run` 和 `opening-review --check` 會顯示目前狀態（主機產線用自己的盲評，不受影響）。
 

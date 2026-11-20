@@ -13,21 +13,20 @@
   - 配樂：綁定 `curio-bed-w02-5846379f.mp3`（`gain_db: -20, duck_db: -10`）。
 - **八語 MiniMax 配音（`dub --provider minimax`＋`check-audio --second-opinion`）**：`en, ja, ko, es, pt, id, vi, th` 八語音軌（`dubs/<locale>.m4a`）全數合入時窗且逐語 **`70 / 70` 全數通過（`0 flagged`）**。
 
-### 2. 71 張插圖四格 2x 放大審圖結果（35 張 PASS 保留、36 張待 `gemini-3.1-flash-image` 配額恢復後重繪）
-因 `gemini-3.1-flash-image` 處於配額冷卻（預計 `2026-11-20T18:25Z` 恢復；依系列鐵律**絕不退回 MiniMax 生圖**），已完成全集 71 張圖（`00-hero`＋70 景）的四格 2x 放大審查並將現階段檔案備份至雲端硬碟 `AI/備份/AI劇/奇聞檔案局/S14/製作檔/`（`0 differences`）：
-- **已通過保留（35 張 PASS）**：
-  - 縮圖主視覺 `stock/1abe3f593f0ec72e1e2c987fc475c0da9b41281af61a22de7e5b5560141c3f0f.png`（`00-hero`）
-  - 串場研究員 `Ada` 全 3 鏡：`07-ada-open`、`18-ada-simultaneous`、`70-ada-subscribe`（對齊 `ada-canon-v2.png` 3.5 頭身）
-  - 無人物件／環境鏡 31 鏡：`09-youth-top`、`12-kokura-castle`、`19-moji-castle`、`20-kojiro-name`、`22-early-books`、`23-box-mystery`、`24-draft-bundle`、`25-gold-fan`、`27-empty-room`、`29-letter-washi`、`30-letter-corner`、`37-niten-magnify`、`38-old-mouth`、`40-strait-sail`、`41-higo-hills`、`42-ukiyo-stage`、`43-niten-sign`、`45-kensho-stack`、`47-wastebasket`、`48-reason`、`50-grave-search`、`53-two-sheets`、`54-clan-box`、`55-archive-shelf`、`58-cowardly`、`59-note-box`、`65-dandelion-spread`、`66-cave-box`、`67-brochure-again`、`68-closed-archive`、`69-answer`
-- **待配額恢復後以內建 `generate_image`（`16:9`）重繪匯入（36 張 FAIL）**：
-  1. **先產 3 張 3.5 頭身角色設定圖**（`ImagePaths` 帶 `ada-canon-v2.png` 鎖定 3.5 頭身比例與厚塗水粉筆觸）：`characters/musashi-29.png`（29 歲青年武藏，蓬鬆束髻、深靛麻布小袖右衽＋炭灰袴）、`characters/kojiro.png`（青年劍客小次郎，高馬尾、朱紅羽織配淺蔥小袖右衽）、`characters/meiji-editor.png`（1909 年熊本編者，3.5 頭身明治紋付羽織袴右衽）。
-  2. **6 張 `nobody: true` 物件鏡重繪**：
-     - `06-clash-hero`：原檔與 `00-hero` 完全重複且木刀未削成劍形 → 獨立構圖畫沙灘低角度削尖大木刀與三尺真刀刀尖對峙。
-     - `11-gorin-blank`、`44-niten-open`：誤畫西洋皮面硬殼精裝書 → 改畫江戶傳統線裝和本（`stitched thread-bound washi wahon`）與空白卷軸。
-     - `51-kensho-compendium`、`62-essay-compendium`：桌緣垂掛白紙條像空白字條 → 清掉桌緣白紙條，保持乾淨厚塗木桌。
-     - `61-asahi-press`：誤畫江戶木版與硯台 → 改畫 1930 年代昭和金屬滾筒輪轉印刷機送出完全空白無字的新聞紙捲。
-  3. **30 張人物鏡重繪**（統一 3.5 頭身厚塗水粉、修正 `左衽` 為左領壓右領 `右衽`、木刀無圓鍔無刀鞘）：
-     `01-unveil`、`02-four-months`（補齊兩座青銅像同框與海峽背景、2003 年工人穿工作靴）、`03-popular`（去漫畫震動線與懸空刀鞘）、`04-tease-cave`（60 歲束髻武藏於岩洞內而非榻榻米現代短髮）、`05-tease-iori`、`08-cave-climb`、`10-record`、`13-iori-raises`（滑輪繩索結構合理、伊織看石碑不對鏡頭揮手）、`14-nameless`、`15-real-blade`、`16-two-arrive`（對齊 R20 交換順序後的新景：兩位劍士同時踏上海島沙灘對望，左提木刀、右佩真刀）、`17-lightning`（對齊交換順序後的新景：武藏垂握無鍔無鞘木刀立於岸邊、遠海閃電，腰間不掛木刀鞘）、`21-numata-doubt`、`26-officials`、`28-found`（從街上看旅店內武藏、去西洋高桅帆船）、`31-oversleep`、`32-carve`、`33-late-arrive`（去幽靈船槳與無人島建築）、`34-scabbard`、`35-smile`（去木刀圓鍔）、`36-bow`（去木刀圓鍔、修正五指與朝向）、`39-toyoda-listens`（去背景襖門墨跡）、`46-kensho-book`（去西洋精裝書與儀錶盤）、`49-ages`、`52-slowly`、`56-naoki-desk`（純背影不露側臉、素色羽織無字母花紋）、`57-naoki-plan`（去枕邊武士刀、修右衽）、`60-naoki-defends`（去交叉重複木棒）、`63-just-right`（坐在小船內削船底斷槳）、`64-accuse`（修右衽與單一刀鞘）。
+### 2. 71 張插圖四格 2x 放大審圖與匯入狀態（`71 / 71` 100% 通過並推送 `storyboard`）
+站主授權於內建生圖冷卻期間改走站台 Gemini 生圖 API（`/api/video/media/images`，指定 `image_model: "gemini-3.1-flash-image"`、`size: "2K"`、`aspect: "16:9"`，絕不使用 MiniMax），已完成 4 張單人正面設定圖（`characters/{musashi-29,kojiro,musashi-60,meiji-editor}.png`）與全部 36 張待修關鍵影格重繪，並全數通過程式外框滿版檢測（`0 border/size flags`）與獨立子代理四格 2x 放大審查（連同既有合格圖合計 **`71 / 71` 張 100% PASS**）：
+- **角色設定圖（4 張，對齊 `ada-canon-v2.png` 3.5–4 頭身修長劇場水粉比例）**：
+  - `characters/musashi-29.png`（29 歲青年武藏：深靛小袖標準小寫 `y` 字右衽、空腰帶零刀鞘、一體成形無鍔無護手削木刀 `suburito`）
+  - `characters/kojiro.png`（青年小次郎：高馬尾、朱紅無袖羽織配淺蔥小袖右衽、左腰單把長刀）
+  - `characters/musashi-60.png`（60 歲晚年武藏：灰白束髻短鬚、炭褐小袖右衽配灰藍袴）
+  - `characters/meiji-editor.png`（1909 年熊本顯彰會編者：中分黑髮、短髭、細圓框眼鏡、明治深灰三件式西裝，與 `48-reason`、`50-grave-search` 完全一致）
+- **獨立子代理四格 2x 放大審查全數通過（`71 / 71` PASS）**：
+  - 既有保留 35 張：`00-hero`（`stock/1abe3f59...png`）、`Ada` 全 3 鏡（`07-ada-open`、`18-ada-simultaneous`、`70-ada-subscribe`）及 31 張無人物件／環境鏡。
+  - 重繪通過 36 張：
+    - 6 張 `nobody: true` 物件鏡（`06-clash-hero` 獨立海浪刀尖對峙構圖；`11-gorin-blank`、`44-niten-open`、`51-kensho-compendium`、`62-essay-compendium` 採 90 度正俯視袋綴線裝和本，薄軟紙封與內頁齊平、僅正中央折縫縫白線、零西洋硬殼圓拱書背與歐洲花布；`61-asahi-press` 1930 年代昭和鋼製滾筒輪轉印刷機送出全白新聞紙）。
+    - 30 張人物鏡（`01-unveil`、`02-four-months` 兩尊無甲束髻右衽青銅劍士像配舉 4 指工作人員、`03-popular`、`04-tease-cave`、`05-tease-iori`、`08-cave-climb` 背影朝上爬向山洞、`10-record`、`13-iori-raises` 單座石碑配三腳木架滑輪繩索吊裝、`14-nameless` 背側石匠五指持槌鑿對空白碑、`15-real-blade`、`16-two-arrive` 無現代輪船海平線雙雄同時登島、`17-lightning`、`21-numata-doubt`、`26-officials` 素面肩衣零印章亂碼、`28-found` 無招牌旅店門口指向室內空手武藏、`31-oversleep` 標準右衽打呵欠、`32-carve`、`33-late-arrive` 船夫單槳搖櫓與武藏船首抱木刀、`34-scabbard` 左腰零殘留鯉口、`35-smile`、`36-bow`、`39-toyoda-listens` 右衽配全素襖門、`46-kensho-book` 全素色書脊、`49-ages` 全素布面書疊、`52-slowly` 素面床之間壁龕零掛軸字與雙手五指、`56-naoki-desk` 純背影素羽織、`57-naoki-plan`、`60-naoki-defends`、`63-just-right`、`64-accuse`）。
+- **匯入與分鏡送審**：70 景全數寫入 `keyframes/manifest.json`（`[x] keyframes drawn`），完成 `render`（`[x] frames rendered`），並執行 `review-push --slug curio-s14 --gate storyboard` 送交 `/admin/videos` 待站主核准分鏡後即可跑 `clips` → `assemble` → `qa` → `audience-review.md`。
+
 
 ---
 
