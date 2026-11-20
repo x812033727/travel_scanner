@@ -59,6 +59,77 @@
   margin-block-start: 0.65rem;
 }
 
+.reading [data-news-table] {
+  container-type: inline-size;
+  overscroll-behavior-x: contain;
+}
+
+.reading [data-news-table]:focus-visible {
+  outline: 2px solid var(--teal-dark);
+  outline-offset: 2px;
+}
+
+.reading [data-news-table] caption {
+  caption-side: top;
+  padding: 0;
+  border-block-start: 0;
+  border-block-end: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+/* The title stays readable even when the reader pans across a much wider table. */
+.reading [data-news-table] caption > span {
+  position: sticky;
+  inset-inline-start: 0;
+  display: block;
+  max-inline-size: 100cqi;
+  padding: 0.625rem 0.875rem;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 39.999rem) {
+  .reading [data-news-table] :is(th, td) {
+    padding: 0.5rem 0.625rem;
+    overflow-wrap: anywhere;
+  }
+
+  .reading :is([data-news-table="1"], [data-news-table="2"]) table {
+    table-layout: fixed;
+  }
+
+  .reading :is([data-news-table="1"], [data-news-table="2"]) :is(th, td) {
+    min-width: 0;
+  }
+
+  .reading [data-news-table="2"] th:first-child {
+    width: 34%;
+  }
+
+  .reading [data-news-table] td:first-child {
+    font-weight: 600;
+  }
+
+  .reading [data-news-table][tabindex] :is(th, td) {
+    min-width: 9.5rem;
+  }
+
+  .reading [data-news-table][tabindex] :is(th, td):first-child {
+    position: sticky;
+    inset-inline-start: 0;
+    width: 6rem;
+    min-width: 6rem;
+    background-color: var(--surface);
+    box-shadow: inset -1px 0 var(--line);
+  }
+
+  .reading [data-news-table][tabindex] th:first-child {
+    background-color: var(--surface-tint);
+  }
+}
+
 .trending {
   margin-block-start: 2rem;
 }
