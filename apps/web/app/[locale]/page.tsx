@@ -17,12 +17,13 @@ import { normalizeLocale } from "@/i18n/routing";
 import { CommunityHero, CommunityHome } from "@/components/community/home";
 import { DiscoveryHomeGate } from "@/components/discovery/explorer";
 import { StructuredData } from "@/components/structured-data";
-import { organization, webSite } from "@/lib/structured-data";
+import { itemList, organization, webSite } from "@/lib/structured-data";
 import { getDiscoveryStatus } from "@/lib/discovery-status.server";
 import { discoveryFeedPath, getInitialDiscoveryFeed } from "@/lib/discovery.server";
 import type { Metadata } from "next";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
 import { featureEnabled } from "@/lib/site-features";
+import { guideHref } from "@/lib/guides";
 import { DISCOVER_ROBOTS } from "@/lib/seo";
 import { HomeGuides, loadHomeGuides } from "@/components/home-guides";
 
@@ -44,8 +45,7 @@ export default async function Home() {
     { key: "cost", icon: CircleDollarSign, text: t("costBenefit") },
   ];
   // Through featureEnabled, not an inline status check: a settings read that timed out is not
-  // a closed feature, and the home page should not drop its quick cards or its SearchAction
-  // graph over one slow moment.
+  // a closed feature, and the home page should not drop its quick cards over one slow moment.
   const hotspotsEnabled = featureEnabled(visibility, "hotspots");
   const tripsEnabled = featureEnabled(visibility, "trips");
   // The feed the gate is about to render, fetched here so it is in the response body rather
@@ -215,8 +215,21 @@ export default async function Home() {
   return (
     <>
       <SiteHeader />
-      {/* Outside the gate: the graph reaches a crawler with either discovery state. */}
-      <StructuredData data={[organization(), webSite(locale, hotspotsEnabled)]} />
+      {/* Outside the gate: the graph reaches a crawler with either discovery state.
+          SearchAction targets /search/articles, which stays public regardless of hotspots. */}
+      <StructuredData
+        data={[
+          organization(),
+          webSite(locale, true),
+          itemList(
+            locale,
+            guides.news.map((article) => ({
+              name: article.title,
+              path: guideHref(article.kind, article.slug),
+            })),
+          ),
+        ]}
+      />
       {/* Keep the site context and article entrances ahead of the discovery feed in both
           the server response and the client's later switch resolution. */}
       <main>

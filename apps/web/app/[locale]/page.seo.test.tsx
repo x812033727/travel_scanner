@@ -2,11 +2,26 @@ import { renderToString } from "react-dom/server";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import Home from "./page";
 
-const state = vi.hoisted(() => ({ enabled: false, featuresEnabled: true, feed: null as unknown }));
+const state = vi.hoisted(() => ({
+  enabled: false,
+  featuresEnabled: true,
+  feed: null as unknown,
+  news: [] as unknown[],
+}));
 vi.mock("@/lib/discovery-status.server", () => ({ getDiscoveryStatus: async () => ({ enabled: state.enabled }) }));
 vi.mock("@/lib/site-visibility.server", () => ({ getSiteVisibility: async () => ({
   status: "ready", features: { hotspots_enabled: state.featuresEnabled, trips_enabled: state.featuresEnabled },
 }) }));
+vi.mock("@/lib/guides.server", async (original) => ({
+  ...await original<typeof import("@/lib/guides.server")>(),
+  getGuideList: async (_locale: string, filters?: { sort?: string; topic?: string }) => ({
+    articles: filters?.sort === "news" && filters?.topic === "ai-news" ? state.news : [],
+    next_cursor: null,
+    available: true,
+  }),
+  getTrendingGuides: async () => ({ articles: [], next_cursor: null, available: true }),
+  getSeriesIndex: async () => [],
+}));
 vi.mock("@/lib/discovery", async (original) => ({
   ...await original<typeof import("@/lib/discovery")>(), useDiscoveryStatus: () => ({ enabled: false, loading: true }),
 }));
@@ -28,7 +43,7 @@ vi.mock("@/components/header-session", () => ({
 }));
 vi.mock("@/components/community/provider", () => ({ useCommunity: () => ({ flags: { enabled: false }, me: null }) }));
 
-beforeEach(() => { state.enabled = false; state.featuresEnabled = true; state.feed = null; });
+beforeEach(() => { state.enabled = false; state.featuresEnabled = true; state.feed = null; state.news = []; });
 
 describe("marketing homepage server HTML", () => {
   it("contains heading, localized destination rail, and safe JSON-LD without client effects", async () => {
@@ -38,16 +53,38 @@ describe("marketing homepage server HTML", () => {
     expect(html).toContain('id="trip-search"');
     expect(html).toContain('"@type":"Organization"');
     expect(html).toContain('"@type":"SearchAction"');
+    expect(html).not.toContain('"@type":"ItemList"');
   });
 
-  it("does not render closed module links or structured search actions", async () => {
+  it("hides closed module links while preserving article SearchAction", async () => {
     state.featuresEnabled = false;
     const html = renderToString(await Home());
     expect(html).not.toContain('href="/hotspots"');
     expect(html).not.toContain('href="/trips"');
-    expect(html).not.toContain('"@type":"SearchAction"');
+    expect(html).toContain('"@type":"SearchAction"');
+    expect(html).toContain("/search/articles?q={search_term_string}");
     expect(html).toContain('href="/foods"');
     expect(html).toContain('href="/destinations/tokyo"');
+  });
+
+  it("emits an ItemList graph for rendered homepage news stories", async () => {
+    state.news = [{
+      slug: "openai-new-model",
+      kind: "life",
+      destination_id: null,
+      destination_label: null,
+      topics: [{ slug: "ai-news", label: "AI" }],
+      title: "OpenAI Release Summary",
+      description: "Key takeaways.",
+      published_at: "2026-11-20T08:00:00Z",
+      valid_until: null,
+      news_date: "2026-11-20",
+      featured: false,
+    }];
+    const html = renderToString(await Home());
+    expect(html).toContain('"@type":"ItemList"');
+    expect(html).toContain("OpenAI Release Summary");
+    expect(html).toContain("/zh-TW/life/openai-new-model");
   });
 });
 

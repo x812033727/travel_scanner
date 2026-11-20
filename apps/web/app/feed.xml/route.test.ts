@@ -71,8 +71,25 @@ describe("/feed.xml", () => {
     const body = await response.text();
     expect(response.status).toBe(200);
     expect(response.headers.get("Content-Type")).toBe("application/atom+xml; charset=utf-8");
-    expect(body).toContain('<feed xmlns="http://www.w3.org/2005/Atom">');
+    expect(body).toContain('<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">');
     expect(body).toContain('<link rel="self" href=');
     expect(body).not.toContain("<entry>");
+  });
+
+  it("emits media:thumbnail for real heroes and omits synthetic news-assets placeholders", async () => {
+    lists.travel.articles = [
+      article({
+        slug: "with-hero",
+        hero: { src: "/guides/photos/tokyo.jpg", alt: "Tokyo", width: 1600, height: 900, credit: null },
+      }),
+      article({
+        slug: "synthetic-hero",
+        hero: { src: "/guides/news-assets/ai-1.svg", alt: "Synthetic", width: 1200, height: 630, credit: null },
+      }),
+    ];
+
+    const body = await (await GET()).text();
+    expect(body).toContain('<media:thumbnail url="http://localhost:3000/guides/photos/tokyo.jpg" width="1600" height="900"/>');
+    expect(body).not.toContain("/guides/news-assets/ai-1.svg");
   });
 });

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getGuideList } from "@/lib/guides.server";
-import { guideHref, guideSections, type GuideSummary } from "@/lib/guides";
+import { guideHref, guideSections, visibleGuideHero, type GuideSummary } from "@/lib/guides";
 import { FEED_PATH, localeUrl, siteUrl } from "@/lib/seo";
 import { defaultLocale } from "@/i18n/routing";
 
@@ -46,6 +46,10 @@ const iso = (value: string) => {
 function entry(article: GuideSummary): string {
   const url = localeUrl(defaultLocale, guideHref(article.kind, article.slug));
   const updated = iso(article.published_at) ?? new Date().toISOString();
+  const hero = visibleGuideHero(article.hero);
+  const thumbnail = hero
+    ? `    <media:thumbnail url="${escape(`${siteUrl}${hero.src}`)}" width="${hero.width}" height="${hero.height}"/>`
+    : "";
   const categories = article.topics.map(
     (topic) => `    <category term="${escape(topic.slug)}" label="${escape(topic.label)}"/>`,
   );
@@ -59,6 +63,7 @@ function entry(article: GuideSummary): string {
     `    <published>${updated}</published>`,
     ...categories,
     article.description ? `    <summary>${escape(article.description)}</summary>` : "",
+    thumbnail,
     "  </entry>",
   ].filter(Boolean).join("\n");
 }
@@ -92,7 +97,7 @@ export async function GET(): Promise<NextResponse> {
 
   const body = [
     '<?xml version="1.0" encoding="UTF-8"?>',
-    '<feed xmlns="http://www.w3.org/2005/Atom">',
+    '<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">',
     "  <title>Mokaair</title>",
     "  <author><name>Mokaair</name></author>",
     `  <id>${escape(`${siteUrl}/`)}</id>`,
