@@ -8,6 +8,13 @@
 這份會自動同步到雲端硬碟 `AI劇/奇聞檔案局/_規則與教訓/教訓/教訓.md`（docs/videos/rules-sync）。
 之前的教訓：`.agents/skills/curio-episode/references/w03-lessons.md`。
 
+## 2026-11-20 · curio-s14 · Antigravity（Gemini） · 盲評證據格式、保雜湊中文 `say` 修音與江戶古裝／古籍 2x 審圖陷阱
+重製 `curio-s14`（宮本武藏巖流島遲到之謎）通過 20 輪改稿、前 300 秒審查、中文與八語驗音及 71 張 2x 四格審圖時發現：
+- **盲評 `narrative --answers` 的 `evidence` 只讀前 200 字且拒收破折號區間**：`narrative.mjs` 會把每題 `evidence` 截斷在 200 字元，並用 `/\[[A-Za-z0-9_-]{2,}(?: (?:\d+:)?\d{2}:\d{2})?\]/` 檢查行號；若讀者寫 `[mu607–mu609]`（帶連接號）或把行號放在 200 字後，會直接報 `no line id quoted` 失敗。派獨立盲評子代理時必交代：`evidence` 壓在 160 字內，且行號一律單獨標記如 `[mu607]`。
+- **中文 `check-audio` 同音／罕見詞優先補 `line.say`＋`say_for`，不改 `line.text`**：前 300 秒審查（`opening-review`）、盲評（`narrative`）與八語翻譯（`i18n/*.json` 的 `source_hash`）都綁死 `line.text` 雜湊，但不受 `line.say` 影響。當中文旁白因古地名或文言詞（如「小倉鄰城」「檢使封島」「一字不差」「直木三十五」）被雙轉寫器誤聽時，在該句補白話同音 `say` 與 `say_for = textHash(line.text)` 重錄單句即可清零 `flagged`，不必重跑 `opening-review`、盲評與八語對齊。
+- **東亞古裝與古籍關鍵影格四大高頻穿幫（2x 審圖必抓）**：70 張舊稿關鍵影格切四格 2x 放大審查時，抓出四類機器與縮圖小看漏掉的歷史穿幫：(1) **和服／古裝衣領畫反成壽衣「左衽」**：AI 極常把右領壓在左領上（左衽為逝者穿法），凡東亞古裝與和服鏡頭，生圖 Prompt 必明寫 `traditional right-over-left kimono collar wrap where the wearer's left lapel folds neatly over the right lapel (y-shaped collar)`；(2) **江戶古籍畫成西洋皮面精裝書**：《五輪書》《二天記》等中日韓古書若只寫 `old book`，模型預設畫西洋硬殼圓背書，必明寫 `traditional Japanese thread-bound washi book (wahon fukurotoji) with exposed stitched spine or rolled handscroll`；(3) **削船槳木刀誤畫圓形金屬護手（鍔）或刀鞘**：船槳削成的木刀無護手亦無刀鞘，Prompt 需寫明一體成形的無護手削木刀且腰間不掛木刀鞘；(4) **縮圖主視覺 `00-hero` 不可原檔複製充當正文鏡頭**（`06-clash-hero` 曾直接沿用同檔，正文鏡頭應獨立構圖）。
+- 已升為規則：`docs/videos/history-curiosity/look.md`、`.agents/skills/curio-episode/SKILL.md`、`.claude/skills/curio-episode/SKILL.md`。
+
 ## 2026-11-19 · 站主定：開場鉤子禁疊「問題菜單」、開頭不放片頭
 - **標題照黑貓公式，工具會檢查**：大家認得的名字放前面、一個利害或意外的字、數字（原來如此有用才加）、一個問號、後綴前 30 字內、重點在前 18 字（手機截斷處）、不跟縮圖大字重複（`narrative.mjs` `titleProblems`）。舊集改標題的交付表在 `docs/videos/packaging-refresh-20261111/`，由站主在 Studio 或主機指令換。
 - **前 300 秒觀眾審查（硬性關卡）**：警告擋不住，所以配音前加一關：三位獨立讀者用三種觀眾身分（路人、滑手機的人、挑剔的老觀眾）讀前 300 秒，三位都 ≥ 8.5、不滑走、沒有任何問題才可以 `tts`。預設由製作中的 AI 自己派三個全新子代理（`--record`，不花站台額度，作者不能當讀者）；要多一層保險就用 `--ask` 讓站台的模型跑。多人比一人好：每個身分抓的問題不一樣。
