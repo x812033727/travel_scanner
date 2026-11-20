@@ -473,7 +473,7 @@ HEAD = [
     "- **軸線（照圖）**：村口照 `set-cunkou-zha2-l1`（第 35 集付費改的那張）：柵門在**左**、垂柳在中、木板橋與乾溝、土路往**右**到三間屋；鏡頭在村裡。**沒有門樓**：錢員外站在柵門旁的土台上（第 35 集 s31）。新渠照 `set-shanjiao-qu-l1`：乾渠從前景**筆直往遠處**延伸（稿子『由右往左』是深度）、**左岸**新土堆與乾草、平坦乾黃地與遠處松樹（稿子的山腳）、**右岸**乾草與青秧田；帳桌在左岸平地（唐小棠右端、阿令左端）；秦霜沿右岸秧田來、兩人在右岸說話。院子照 `set-xujia-yuan-ye-dong2-l1`（拍法 42）：屋與屋門在**左**、柴堆在屋前、院門在後牆中間、**草蓆在後牆右段牆下**、井在前右；秦霜在後牆右段牆頭背對鏡頭。",
     "- **時間與光**：第一場傍晚橘紅天加火把（第 35 集同一刻）；第二場開工頭幾天上午白光（s13–s20）→ 約第一六六天正午（s21–s25）→ 約第一七〇天午後（s26–s28）→ 約第一七五天傍晚斜陽（s29–s30，本集免費做的 `-xi`）；第三場夜三更冷月光。時間跳都在剪點（s12b→s13、s20→s21、s25→s26、s28→s29、s30→s31），不在鏡頭裡變光。",
     "- **原版必修**：第 36 集無必修；院子照拍法 42 改、三個探子只拍腳手背影（聖經〈原版必修〉）。原版建議：開門是橘紅傍晚（s01）；『不說話的女人』時許硯不笑、眼神往帳桌一瞥（s25）；唐小棠『幾百支火把』不笑（s38，從背後）、秦霜牆頭冷臉（s35）；名冊虛焦（s17：拍法 38 更嚴，紙面空白）；虎口的繭寫成粗糙發黃的硬皮、指節舊疤（s23）；三張空蓆（s32）；錢員外糧價跌有原因（s27）、說的時候不笑（s26）。",
-    "- 要買的秒數（BUY，錄音前照第 35 集實測估：一句 6 秒的鏡放得下約 5.9 秒人聲、8 秒約 7.3 秒、10 秒約 9.2 秒；第 35 集量到許硯約 4 字／秒、唐小棠中位 3.4、阿令 3.4、錢員外 2.2–2.9、系統 9 字約 2.4 秒）：**s26 買 10 秒**（錢員外 18 字）；s03、s04、s10、s11、s24、s28、s35、s09 買 8 秒；s02、s31 買 6 秒（無台詞、兩拍）；s15、s17、s36、s37 買 5 秒（插鏡與無台詞）；其他說話鏡 6 秒。",
+    "- 要買的秒數（BUY，錄音前照第 35 集實測估：一句 6 秒的鏡放得下約 5.9 秒人聲、8 秒約 7.3 秒、10 秒約 9.2 秒；第 35 集量到許硯約 4 字／秒、唐小棠中位 3.4、阿令 3.4、錢員外 2.2–2.9、系統 9 字約 2.4 秒）：**s26、s11 買 10 秒**（錢員外 18 字；心裡話 19 字加系統 9 字約 7.3–7.7 秒）；s03、s04、s10、s24、s28、s35、s09 買 8 秒；s02、s31 買 6 秒（無台詞、兩拍）；s15、s17、s36、s37 買 5 秒（插鏡與無台詞）；其他說話鏡 6 秒。",
     "- **表上的「秒」欄是 lint 估法**，比錄音短；剪接以錄音的人聲長度為準。",
     "- **新渠（s13–s30）表上的提示詞帶「below the deep pool」**：只為了讓 `gen-dh` 的 `SET` 選到深潭那張圖（再由 `spec.json` 換成新渠的圖；`new channel` 會選到 `set-xinqu`，真人版沒有那張、`pilot.py` 會停），d1 由 `mkspec.py` 拿掉（`R2.POOLMARK`→空）；**之後每個 fix／retake spec 都要帶同一組替換**，不然模型會在渠邊畫出潭。院子的提示詞帶「night yard of the Xu farmhouse」讓 `SET` 選到 `set-xujia-yuan-ye`（l2），`spec.json` 一律換成 `-ye-dong2` 與它的裁切。",
 ]
@@ -491,13 +491,13 @@ FOOT = [
 # Seconds to buy, estimated from e935's measured lines (PREP §4 there): a 6 s shot holds about 5.9 s of speech, 8 s about 7.3 s,
 # 10 s about 9.2 s; Xu Yan about 4 characters a second (thoughts 4-4.3), Tang Xiaotang median 3.4, A-ling 3.4, Qian Yuanwai
 # 2.2-2.9, the system 9 characters in about 2.4 s; Qin Shuang (Autonoe) not measured in arc 4, estimated at 3.5-4.
-# 10 s: s26 (Qian Yuanwai 18, urgent: 6.2-8.2 s).
+# 10 s: s26 (Qian Yuanwai 18, urgent: 6.2-8.2 s), s11 (thought 19 + system 9 with a pause: 7.3-7.7 s, past an 8 s clip's 7.3).
 # 8 s: s03 (Qian 13 shouted, two stops), s04 (Qian 15), s10 (Qian 15, sneered and drawled), s11 (thought 19 + system 9, about
-#      7.2 s), s24 (Qin 17 word by word), s28 (Qian 14, the back), s35 (Qin 17, cold, two sentences), s09 (Xu Yan 18 with stops).
+#      s24 (Qin 17 word by word), s28 (Qian 14, the back), s35 (Qin 17, cold, two sentences), s09 (Xu Yan 18 with stops).
 # 6 s: s02, s31 (no line, two beats); every other spoken shot (gen-dh's default, written out for the recordings over a shot).
 # 5 s: s15, s17 (the inserts), s36, s37 (no line).
-BUY = {"s26": 10,
-       "s03": 8, "s04": 8, "s10": 8, "s11": 8, "s24": 8, "s28": 8, "s35": 8, "s09": 8,
+BUY = {"s26": 10, "s11": 10,
+       "s03": 8, "s04": 8, "s10": 8, "s24": 8, "s28": 8, "s35": 8, "s09": 8,
        "s02": 6, "s31": 6, "s01": 6, "s05": 6, "s11b": 6, "s16": 6, "s22": 6, "s23": 6, "s29": 6, "s32": 6, "s33": 6,
        "s15": 5, "s17": 5, "s36": 5, "s37": 5}
 
