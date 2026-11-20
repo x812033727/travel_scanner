@@ -1,5 +1,5 @@
 import type { Locale } from "@/i18n/routing";
-import type { GuideKind } from "@/lib/guides";
+import type { GuideKind, GuideSection } from "@/lib/guides";
 
 export const ARTICLE_OG_WIDTH = 1200;
 export const ARTICLE_OG_HEIGHT = 630;
@@ -15,6 +15,16 @@ export const ARTICLE_OG_HEIGHT = 630;
  */
 export function articleOgImagePath(locale: Locale, kind: GuideKind, slug: string): string {
   return `/og/${locale}/${kind}/${slug}/card.png`;
+}
+
+/** Dynamic 1200x630 editorial preview card for a destination city guide page. */
+export function destinationOgImagePath(locale: Locale, destinationId: string): string {
+  return `/og/${locale}/destinations/${encodeURIComponent(destinationId)}/card.png`;
+}
+
+/** Dynamic 1200x630 editorial preview card for a topic hub without bespoke lead photography. */
+export function topicOgImagePath(locale: Locale, section: GuideSection, topic: string): string {
+  return `/og/${locale}/topics/${section}/${encodeURIComponent(topic)}/card.png`;
 }
 
 const NON_LATIN_SCRIPT = /[^\u0000-\u024F\u2000-\u206F]/;
