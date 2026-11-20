@@ -51,4 +51,8 @@ picks-merged → fix1 → fix2 → **cut-trims** → **review3-trims** → fix3�
   - **s01 9351238**：明顯從中遠景推到中景，回頭→轉回→往前壓，外衣看得到。1237 幾乎一樣但看不出外衣。
   - **s30 9351230**：明顯從中景推到近景、風吹頭髮，橘紅天不變；左下前景一支火把。1239 天一路變紫藍，接 s31 會跳。
   - 五鏡都比原片好，全部換；沒有沿用原片的鏡，所以這輪不需要剪接慢推來補 s01、s30。
-- **精修**：見下面〈精修〉。
+- **精修**：`SESSION=zt-live3 PREP=1 PRECHECK_ONLY=1 ONLY=s01,s24,s25,s30,s32 bash scratchpad/e935refine.sh` 40 鏡核對全過（picks 等於六個 tsv 疊起來、
+  openings、manifest、`refine.py --check` 0 錯）；真跑 12:46–13:12，舊精修移到 `refined/old/`（s01-9351211、s24-9351101、s25-9351102、s30-9351212、s32-9351101），
+  第一次上傳 session not found、第二輪起 5/5，`.seed` 由 progress 檔補（1312×736，格數等於草稿）。剩一台未記名 `[?]` VM，`zt-live3` history 證明是本次的，手動 unassign，0 assignments。
+  292.13 → 286.57 CU（5.56）。**fix3 合計 8.09 CU**（草稿 2.53＋精修 5.56），餘額 **286.57 CU**。精修與草稿每鏡四格並排看過（scratchpad `e935f3/pick/refined.jpg`）：門關著、臉與構圖跟草稿一樣。
+- 剪接、量測與還要站主決定的見 `../review3-plan.md`。
