@@ -28,7 +28,7 @@
   {
    "cue": "heart-short",
    "from": "s10",
-   "to": "s11",
+   "to": "s11b",
    "offset": 20.0,
    "gain": -28,
    "fade_in": 0.8,
@@ -102,7 +102,7 @@
    "at": "s01",
    "off": 0,
    "gain": -22,
-   "to": "s11"
+   "to": "s11b"
   },
   {
    "file": "Wind",
@@ -161,7 +161,7 @@
    "file": "cloth1",
    "at": "s06",
    "off": 0.3,
-   "gain": -24
+   "gain": -18
   },
   {
    "file": "abacus-s07",
@@ -244,19 +244,19 @@
   {
    "file": "swish-7",
    "at": "s24",
-   "off": 5.75,
+   "off": 4.75,
    "gain": -22
   },
   {
    "file": "footstep_grass_000",
    "at": "s24",
-   "off": 6.2,
+   "off": 6.05,
    "gain": -22
   },
   {
    "file": "footstep_grass_001",
    "at": "s24",
-   "off": 6.75,
+   "off": 6.55,
    "gain": -22
   },
   {
@@ -275,7 +275,7 @@
    "file": "impactWood_light_001",
    "at": "s35",
    "off": 0.15,
-   "gain": -16
+   "gain": -12
   }
  ],
  "frame_round": true,
@@ -297,7 +297,7 @@
   },
   "s24": {
    "from": 0,
-   "af": "rubberband=pitch=1.12:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=0.9:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s16": {
    "from": 0,
@@ -305,7 +305,7 @@
   },
   "s25": {
    "from": 0,
-   "af": "asetrate=36000,aresample=48000,atempo=1.333333,volume=-4.0dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "asetrate=37440,aresample=48000,atempo=1.282051,volume=-4.0dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s33": {
    "from": 0,
@@ -333,13 +333,13 @@
   "zq935a15": 0.8,
   "zq935a16": 0.15,
   "zq935a17": 1.0,
-  "zq935a20": 2.1,
+  "zq935a20": 1.1,
   "zq935a24": 0.8,
   "zq935a27": 0.9,
   "zq935a28": 0.6,
   "zq935a29": 0.5,
-  "zq935a31": 1.2,
-  "zq935a32": 4.6,
+  "zq935a31": 1.5,
+  "zq935a32": 4.7,
   "zq935a33": 0.52,
   "zq935a34": 0.6,
   "zq935a36": 1.5
@@ -363,9 +363,14 @@
  "panel_until": {},
  "vf": {
   "s10": "crop=1762:991:0:89,scale=1920:1080:flags=lanczos",
-  "s14": "split[m0][m1];movie=/root/mokaair-work/videos/_live-e935/zhong-tian-qu-qi-e935-dh/vfx/locust-e934s40.mp4,setpts=PTS-STARTPTS,scale=1920:1080,crop=1280:150:120:350,format=gray,lutyuv=y='clip((val-45)*255/100,0,255)',scale=1100:130,format=gray,geq=lum='255-(255-lum(X,Y))*min(1,min(min(X,W-X)/140,min(Y,H-Y)/30))',format=yuv420p[band];color=white:s=1920x1080:r=24,format=yuv420p[wc];[wc][band]overlay=520:120:shortest=0:eof_action=pass,trim=duration=5.25[canvas];[m1][canvas]blend=c0_mode=multiply:c0_opacity=0.8:c1_mode=normal:c1_opacity=1:c2_mode=normal:c2_opacity=1[mb];[m0][mb]overlay",
+  "s14": "split[m0][m1];movie=/root/mokaair-work/videos/_live-e935/zhong-tian-qu-qi-e935-dh/vfx/locust-e934s40.mp4,setpts=PTS-STARTPTS,scale=1920:1080,crop=1280:150:120:350,format=gray,lutyuv=y='clip((val-45)*255/100,0,255)',scale=1100:130,format=gray,geq=lum='255-(255-lum(X,Y))*clip(min(X\\,W-X)/260\\,0\\,1)*clip((Y-16-12*sin(X/37)-8*sin(X/13+1))/40\\,0\\,1)*clip((H-Y)/45\\,0\\,1)',format=yuv420p[band];color=white:s=1920x1080:r=24,format=yuv420p[wc];[wc][band]overlay=520:120:shortest=0:eof_action=pass,trim=duration=5.25[canvas];[m1][canvas]blend=c0_mode=multiply:c0_opacity=0.72:c1_mode=normal:c1_opacity=1:c2_mode=normal:c2_opacity=1[mb];[m0][mb]overlay",
   "s17b": "hflip",
   "s18": "crop=1778:1000:71:0,scale=1920:1080:flags=lanczos",
+  "s06": "format=gbrp,split=3[o][d][k];[k]geq=r='255*clip((1430-X)/30\\,0\\,1)*clip((X-850)/30\\,0\\,1)*clip((Y-215)/20\\,0\\,1)*clip((1010-Y)/40\\,0\\,1)*clip((b(X\\,Y)-r(X\\,Y)-4)/14\\,0\\,1)':g='255*clip((1430-X)/30\\,0\\,1)*clip((X-850)/30\\,0\\,1)*clip((Y-215)/20\\,0\\,1)*clip((1010-Y)/40\\,0\\,1)*clip((b(X\\,Y)-r(X\\,Y)-4)/14\\,0\\,1)':b='255*clip((1430-X)/30\\,0\\,1)*clip((X-850)/30\\,0\\,1)*clip((Y-215)/20\\,0\\,1)*clip((1010-Y)/40\\,0\\,1)*clip((b(X\\,Y)-r(X\\,Y)-4)/14\\,0\\,1)'[km];[d]lutrgb=r='val*0.28':g='val*0.28':b='val*0.28'[dk];movie=/root/mokaair-work/videos/_live-e935/zhong-tian-qu-qi-e935-dh/vfx/specks-s06.mp4,setpts=PTS-STARTPTS,format=gbrp[spk];[dk][spk]blend=all_mode=multiply[dd];[o][dd][km]maskedmerge,format=yuv420p",
+  "s02b": "scale=3840:2160:flags=lanczos,zoompan=z='min(1+0.05*on/128\\,1.05)':x='(iw-iw/zoom)*0.42':y='(ih-ih/zoom)*0.35':d=1:s=1920x1080:fps=24",
+  "s22": "scale=3840:2160:flags=lanczos,zoompan=z='min(1+0.05*on/192\\,1.05)':x='(iw-iw/zoom)*0.5':y='(ih-ih/zoom)*0.3':d=1:s=1920x1080:fps=24",
+  "s27": "scale=3840:2160:flags=lanczos,zoompan=z='min(1+0.05*on/90\\,1.05)':x='(iw-iw/zoom)*0.45':y='(ih-ih/zoom)*0.4':d=1:s=1920x1080:fps=24",
+  "s35": "scale=3840:2160:flags=lanczos,zoompan=z='min(1+0.08*on/162\\,1.08)':x='(iw-iw/zoom)*0.5':y='(ih-ih/zoom)*0.45':d=1:s=1920x1080:fps=24",
   "s12": "eq=brightness=-0.04:saturation=0.92:gamma=0.96,colorbalance=rs=0.05:gs=0.01:bs=-0.06:rm=0.04:bm=-0.05"
  },
  "slow_shot": {},
@@ -373,7 +378,11 @@
   "zq935a02"
  ],
  "ding": {
-  "zq935a02": null
+  "zq935a02": null,
+  "zq935a01": -1,
+  "zq935a13": -1,
+  "zq935a28": -1,
+  "zq935a31": -1
  },
  "_note": "真人版第 35 集第一版，2026-11-20 照 edit-dh-e934-live.json 第一版的做法寫：精修並放好的片段（_live-e935/zhong-tian-qu-qi-e935-dh/clips/sNN-t1.mp4，40 鏡、全用、沒有拿掉的鏡）；clip_voice、不放大（punch false）、慢放 ≤ 1.1、不補格、frame_round、沒有片名卡、names {}、一律硬切。第 35 集是第 4 篇〈旱年〉第五集（r2-bible-e031-e040.md）：s01 接第 34 集最後（同一夜，蝗群過山 → 許家屋內），s35 交給第 36 集（許硯的手按在門閂上，沒拉）。下面所有秒數都是從剪過的鏡頭第一格算（c）；成片秒數是 run4 的。不花錢：沒用 Colab、RunPod、站台 TTS，沒重做精修，沒有新配樂，沒匯入後台，沒 commit，沒動第 33、34 集的檔（第 34 集只讀：成片結尾、s40 片子與 sfx-local/buzzloop.wav 複製過來用）。\n來源：docs/videos/zhong-tian-qu-qi-e035-r2 的 script.md／video.json／overlays.json（以 script.md〈音樂與音效〉〈剪接〉與各場場頭為準；拍攝稿改過的地方照 colab/runs/e935-live/PREP.md §1：唐小棠說話全部從背後、c07 算盤插鏡、窗在後牆左、田照圖左右反過來、錢員外站柵門旁的土台、沒有泥）。picks.json 由 colab/runs/e935-live 的 refine-prep.py 35 picks-merged.tsv fix1/review-picks.tsv fix2/review-picks.tsv 產生（fix1 換 s01 9351211、s23 9351212、s30 9351212、s34 9351212；fix2 換 s17b 9351222）。cut-trims.tsv 是本版的剪點：s09 5.208、s29 4.0 量過不改，另外八鏡剪尾（s03 5.75、s07 6.25、s11b 5.25、s12b 6.25、s14 5.25、s23 6.75、s27 4.25、s28 5.5：run1 句後 2.1–2.8 秒只有背影或空鏡）；refine-prep 沒重跑（它會重寫 st1／st2 與 clips-live），改用 scratchpad e935c/applytrims.py 把 cut-trims.tsv 的 start@／end-before@ 套在 picks.json（種子要相同，原檔 e935c/bak/picks.json），再 stage.py 35 重放。精修片 runpod/a/st2/refined/ 40/40，stage.py 35 放好 40 支（0 缺、沒有 crop）；thumbchk.py：每支精修片 1.0 秒縮圖跟該鏡所有草稿比，差最小的都是 picks.json 指的那支（40/40，差 2.0–3.2，其他 12.1–64.6；s01 fix1 1212 的 12.1、s01 d1 1101 的 12.3 最接近，仍分得開）。e935cut.sh 的 want／seed 表照 picks.json。music/：zhong-tian-qu-qi-e935-dh/music/ 手做（照 e934：e934-dh/music 的連結全抄，加 Flow Music 庫 cue-village-comedy／night-village／farewell／system-whimsy.mp3 → zhongtian-bed-<名>-take1.m4a、cue-heart／comedy／face-slap／system-short.mp3 → zhongtian-cue-<名>-take1.m4a；用到 drone31、heart-short、village-comedy、farming-montage、face-slap、warm、cliffhanger）。本集自己的音效在 _live-e935/.../sfx-local/（剪接表 sfx_dirs 第二個目錄，e935cut.sh 產生）：沒有片中人聲的鏡（無台詞、台詞是錄音）組片程式整支靜音片中聲音，有用的切出來放回：duck-s12（開籠、鴨群）、duck-s13（撲翅、鴨叫）、whistle-s17（短哨 c1.0–2.0）、duck-s17b、duck-s19、duck-s20、peck-s21、water-s23；whistle1（s17 c0.85–1.75 一聲哨，s19 兩聲、s20 一聲）；abacus-s07（Flow Music 庫 zhongtian-sfx-abacus 前 7.5 秒 +12 dB）；rasp-in（第 34 集 sfx-local/buzzloop.wav 低通 1800 Hz、高通 120：屋外蝗群撲窗，隔著牆；接第 34 集結尾的嗡聲）。_live-e935/.../vfx/locust-e934s40.mp4 是第 34 集 s40 片子的複本（s14 用）。assemble-v4.mjs 沒改。工作檔：session scratchpad e935c/（mkov935.py＋vol.json＋music.json＋beds.json＋spots.json → overrides.json，mkedit935.py＋note.txt → 本檔；lev935.py、applytrims.py、thumbchk.py、f0e.py、f0h.py、f0yc.py、meas.py、mom8.py、sfxlev.py、env.py、cuefeat.py、fwall.py、fw2.py、clipamb.sh；clipf0e／f0h／f0y.txt、recf0.txt、recmeas.txt、lev.txt、clipamb.txt、mom1–3.txt、cutf0-run1／2／3.txt、fwcut.txt（run3）、a33-src.wav、s14vf.txt、run1–4.log、img/、bak/；PROGRESS.md 是中途進度）。\n挑片交代的處理：s17b 水平翻轉（vf hflip；鴨子抬頭轉向畫右，接 s17 阿令在畫右的田埂；畫面只有鴨、水、秧、田埂）；s10 放大約 9%、錨左下（vf crop=1762:991:0:89 再放回 1920×1080；c0 的第二張側臉在原片 x 1790 以右、c0.7 在 1840 以右，都裁掉，頂端藍色小光點也出框；第一格右緣逐格看過，只剩牆上掛的黑布）；s14 遠山蝗群加深（不花錢的局部處理：第 34 集 s40 的蝗群帶子 crop 1280×150、灰階、lutyuv 把天拉成白、黑點留黑，縮成 1100×130、四邊羽化，疊成白底的乘法遮罩，只乘在亮度上 0.8，放在遠山 x 520–1620、y 120–250；本來片中的小黑點變成一條看得出的黑點帶，從山腰蓋到樹梢，鳥群般跟著第 34 集的蝗群動）；s18 c0–0.9 下緣的一點火光：整鏡上錨裁約 7%（crop=1778:1000:71:0，下緣 80 px 出框；run3 試過壓暗羽化框，看得出灰塊；delogo 會把貼邊的火光往上抹）；s12 調往棕暗（eq brightness −0.04、saturation 0.92、gamma 0.96＋colorbalance 往暖：合併說『光偏灰粉不夠棕暗，剪接可統一調色』）；s09 剪點 5.208 量過（a11 整平後人聲 3.73 秒，line_at c0.80 → 句尾 c4.53，5.24／5.40 許硯開口前還有 0.68 秒）；s29 剪到 4.0、錄音 a30 用 line_lead −0.35 從 c0.35 鋪起、句尾 0.87 秒鋪進 s30（s30 的系統 a31 c1.20 起，夾著 a30 之後）；s24 錄音 a25 7.23／8 最緊——s24 是片中原聲（錢員外畫面上說話），片中人聲 0.53–6.33、哼在 c0.40 留著、7.0 起轉身走開也留；s06、s13、s11 的笑照 picks 剪點（s06 2.0–6.583、s13 0–4.0、s11 0–3.0；s13 錄音 a16 3.56 秒要 4.02 秒，最後 1 格是停格）。\n人聲：畫面上說話的 14 鏡用片中原聲（s02b s04 s05 s06 s08 s10 s15 s16 s18 s20b s22 s24 s25 s33）；voice_off 1 鏡 s31——錢員外片中喊聲 367 Hz（Harvest 368、YIN 383），降到他喊的上限 200 要 ×0.54（< 0.6，PR #2151 會糊），整句改鋪錄音 a33 並對嘴：錄音照片中嘴切四段重排（scratchpad e935c/a33-src.wav：「關門」0、「糧不夠」1.37、「誰敢開門」2.76、「全村一起餓」4.10 且 atempo 0.85，對片中 c0.52／1.89／3.28／4.62 開口；片中最後一段嘴到 6.05），line_at c0.52。唐小棠九句全是背影或畫外（nospeak），組片程式本來就鋪錄音、靜音片中聲音。錄音鋪的：系統 a01（s01 c1.00）、a02（s01 c4.30，第二句不放叮）、a13（s11 c0.35）、a28（s27 c0.60）、a31（s30 c1.20）；心裡話 a03（s02 c0.90）、a32（s30 c4.60）、a36（s35 c1.50）；唐小棠 a05（s03 c0.60）、a09（s07 c1.00）、a11（s09 c0.80）、a14（s11b c0.60）、a15（s12b c0.80，來源 a15-p104）、a17（s14 c1.00，她 1.0 舉手）、a20（s17b c2.10，鴨子 2.75–3.25 抬頭之前起、之後說完）、a24（s23 c0.80）、a27（s26 c0.90）、a29（s28 c0.50）、a34（s32 c0.60，來源 a34-p119）；小禾畫外 a16（s13 c0.15）；流民婦人 a30（s29 line_lead）。subtitle_lines a02（系統第二句不在面板上，照常 CC）。用哪個錄音照 audio/README-retakes.txt 與 PREP.md §4：a06 a22 a23 是重錄（但 s04 s20b s22 用片中原聲，錄音沒鋪）、a15-p104、a34-p119、a30-p82 沒用（見音高）。\n音高（成片每句 f0e 中位數，cutf0-run3.txt；PR #2151：往下 asetrate 連共振峰＋atempo 1/k 長度不變，往上與小孩 rubberband formant=preserved）：片中原聲許硯 s02b 94、s04 110、s06 100、s08 110、s10 95、s15 126、s18 107 都在 88–145，不動；小禾 s05 420（Harvest 上限 600 量 423、YIN 420）rubberband 0.86 → 361、s20b 469 → 0.78 → 361（聖經 300–360、喊到 420）；阿令 s16 232 → asetrate 0.78 → 181、s25 234 → 0.75 → 178、s33 207 → 0.96 → 201（她的錄音 189–197、第 31／34 集 170–193；run1 用 0.82／0.81，成片 190／197 對唐 a20 220 只差 2.5／2.0 半音，run2 改；run2 s33 0.93 量 192 對婦人 164 只差 2.7，run3 改 0.96）；錢員外 s22 143／s24 137 rubberband 1.12 → 159／153（第二場許硯 s15 126 同場，原本只差 2.2 半音；他的錄音 a33 155）。錄音：小禾 a16 291 → rubberband 1.13 → 324（s13 接 s14 唐 a17 265，原本只差 1.6 半音）；流民婦人 a30 用重錄版直接 asetrate 0.715 → 159（a30-p82 的 189 跟阿令 s33 同場不到 3 半音；單聽「徐秀才」、帶提示與盲聽都對）；唐小棠 a34 用 a34-p119 再 rubberband 1.04 → 249。同場（聖經拍法 43，≥ 3 半音）：第一場唐 a05 219／a09 247／a11 300／a14 211 對小禾 s05 361 = 3.2–9.0；第二場唐 a15 229／a17 254／a20 226／a24 245 對阿令 a19 181／a26 178 = 3.8–6.0、對小禾 a16 324／a22 361 = 4.2–8.1；許硯 a18 124／a21 107 對錢員外 a23 159／a25 153 = 3.6–6.3；第三場唐 a27 266／a29 250／a34 249 對阿令 a35 201 = 3.7–4.8、對婦人 a30 159 = 7.6–9.1，阿令 201 對婦人 159 = 4.1；許硯 a32 113／a36 112 對錢員外 a33 156 = 5.7。系統 a01 212、a02 183、a13 194、a28 182、a31 195。\n錄音（audio/，第一次動之前原檔複製到 audio/orig/；lev935.py = lev934.py 給 e935）：目標 −13.5（3:1 壓縮＋volume＋alimiter 0.84）：a03 a05 a09 a11 a14 a17 a20 a24 a27 a29 a32 a36、a15（SRC a15-p104）、a34（SRC a34-p119，PRE rubberband 1.04）、a16（PRE rubberband 1.13）、a30（重錄，PRE asetrate 0.715）、a33（SRC a33-src.wav 重排）→ −13.4..−13.6；系統 a01 a02 a28 到 −14.0、a13 a31 到 −13.3（run1 成片 −14.8 最低，重整平）（只 volume＋alimiter 0.89 attack 10）。系統句的濾波在錄音檔本身（rec935.sh，raw-tts.wav 是原聲），照前幾集。沒動：a04 a06 a07 a08 a10 a12 a18 a19 a21 a22 a23 a25 a26 a35（那些鏡用片中原聲）、-p 版本、raw-tts、take1/、take2/。心裡話沒加空間感。\n音量（mom8.py，0.4 秒 momentary 每句最大值 8 dB 內的中位數；vol.json，加音量的都接 alimiter 0.89）：阿令 s16 s25 s33 −4.0（片中原聲降調後 run1 −10.5..−11.0）、s08 +1.5（run2 audio-qa：a10 比前一秒小）。成片（mom3）每句 −12.5..−14.4：最低 a28（系統 −14.4）、a04（s02b 低聲 −14.4）、a02 a01 a31（系統 −14.2..−14.3）；最響 a30 a35（−12.5）。底噪：s01–s11 rasp-in −22（屋外蝗群撲窗，從第一格起）；s12–s19 Wind −15；s20–s25 Wind −17＋birds −26；s26–s35 wind1 −17；s29–s35 fire −27（火把）。每段從前一鏡結尾前 0.4 秒進。\n面板（不燒字幕，CC 在下方；淡藍框）：s01「兌換：鴨群治蝗法」配 a01：panel_y 800（許硯臉在左上半），panel_from 0.90；s11「唐小棠 好感 +3 → 45」配 a13：panel_y 820（她抱算盤在胸前，面板在裙上），panel_from 0.30；s27「蝗災擋下，柳溪的田保住」：panel_y 860，panel_from 0.55；s30「天下歸心，百分之一到百分之二」：panel_y 860，panel_from 1.15。\n配樂（cuefeat.py 看過特徵；照稿子各場場頭的段落）：(1) drone31（低沉緊張）從 20 秒起 s01–s09（−28）：稿子「低沉、緊張的 drone 底下一直有蝗蟲撲窗的沙沙聲」；(2) heart-short（Flow Music 短音樂 heart）從 20 秒起 s10–s11（−28）：稿子「c10『押』之後轉溫柔；c11『叮』一個輕的重音」（叮由組片程式放）；(3) village-comedy 從 10 秒起 s12–s15（−25）：「c12–c15 輕快、亂糟糟的喜劇曲」；(4) s16–s19 沒有配樂：「c16 阿令出場時停」（s19 只有鴨群與兩聲哨）；(5) farming-montage 從 30 秒起 s20–s21（−25）：「c20 白線湧進田時起一段寬闊的旋律」；(6) drone31 從 40 秒起 s22（−27）：「c22 錢員外一句底下一聲低音」；(7) face-slap 從 20 秒起 s23–s25（−25，進 0.15）：唐小棠回嘴、錢員外臉一沉；(8) warm 從 10 秒起 s26–s30（−25，出 0.3）：「c26–c30 溫暖、寬闊的旋律」；(9) cliffhanger 從 0 秒起 s31–s35（−20，進 0.2、出 0.6）：「c31 錢員外一喊全部收掉，換低沉的 strings；c35 停在最高點不收」（前 10 秒低頻、之後一路升）。側鏈壓縮 3.5:1、release 900 ms。\n音效（成片 20 ms RMS，sfxlev.py；IN = 量在台詞上）：s01 impactSoft_heavy_000 c1.20 −32（窗框一撞，片中 1.0–1.5 小黑點掠過）＋rasp-in；s03 footstep_wood_000 c0.20 −24；s05 paper_02 c0.20 −22（窗紙破）；s06 cloth1 c0.30 −24（布團塞洞）；s07 abacus-s07 −6（撥算盤，整鏡）；s12 duck-s12 +4＋impactWood_light_000 c0.45 −20（竹籠門）；s13 duck-s13 −8（撲翅）；s17 whistle-s17（短哨）；s17b duck-s17b；s19 duck-s19＋whistle1 c0.50 −4／c3.20 −6；s20 duck-s20＋whistle1 c0.30 −4；s21 peck-s21 +4；s23 water-s23；s24 swish-7 c5.75 −22（甩袖轉身）、footstep_grass_000／001 c6.20／6.75；s34 footstep_grass_000／001 c2.60／3.60；s35 impactWood_light_001 c0.15 −16（手掌按上門閂）。叮由組片程式自動放在每句系統前（a01 a13 a28 a31；a02 不放）。沒做：s03 推門關門（畫面第一格她已在屋裡）、s05 蝗蟲爬、s16 布條紮緊（片中原聲照用）、s29 人群與哭聲（音效庫沒有人聲群眾；片中聲音 −49 dB，幾乎無聲）、s31 手拍欄杆（沒有欄杆，他站土台）。\nVF：s10 放大錨左下；s14 蝗群遮罩（movie= 讀 vfx/locust-e934s40.mp4）；s17b hflip；s18 上錨裁 7%；s12 棕暗。沒有其他調色改動（default dh）、沒有 vidstab（cut-qa jitter 40 鏡 ok）。\n結尾與接點：第 34 集定版成片（cut/e934-live.mp4，232.76 秒）最後 6 秒：灰藍暮色、三個背影、遠山上一條褐黑帶子散成小黑點、大垂柳，之後漸黑、最後約 1 秒全黑；本集 s01 第一格：夜裡許家屋內，許硯坐在桌左、回頭望後牆左邊的窗（窗外暗藍）、桌上一朵火的暖光，c0.90 面板。黑接夜、蝗群從第 34 集的畫面帶子接到本集屋外的撲窗聲（rasp-in 從 c0 起，就是第 34 集結尾那條嗡聲低通過），讀得通；第 34 集最後 10 秒 −13.9 LUFS、本集開頭 10 秒 −14.2。舊灰外衣在 s01 看不太出來（fix1 已記），s02–s06 是披著的。結尾 s35 許硯手按門閂、a36「開了，糧不夠分；不開，門外是人命」（c1.50–5.38），之後 2.62 秒停在門閂上、cliffhanger 升到最高點，聲音最後 0.6 秒淡出（沒有黑畫面）。鉤子兌現：s17b 六隻鴨子一起抬頭、s20 白線湧進田、s21 鴨嘴叼走蝗蟲、s23 錢員外臉垂下、s29 流民跪、s34 柵門一直關著、s35 手按門閂沒拉，都在畫面裡。\n聽寫（fwall.py → fwcut.txt，run3 成片上一句一個行程，單聽與帶上一句當提示，之後三段盲聽 0–86.5／85.5–172.5／171.5–結尾；run4 只改 s18 的畫面，聲音同 run3）：36 句都在、順序對；帶上一句 34 句字對（標點不算），兩句漏字：a06（s04 片中原聲）帶提示漏句首「三千隻。」（單聽與盲聽都有「三千只／三千隻」）、a25（s24 片中原聲）三次都沒轉出句首「哼」（片中 c0.40 有一聲短哼，whisper 常丟語氣詞）。單聽與盲聽的同音近音：鴉群製黃髮／鴨裙治黃髮（a01 系統濾波）、當中（當初）、黃蔥（蝗蟲）、只（隻）、他們（牠們）、戈壩（哥把）、許季、獻奢／現奢（縣賒）、壓（押）、雅／鴨（押）、唐小唐、好敢、縣營、車站／車賬（賒帳，錄音核對就記過）、他（她）、鴨子治黃、園外、林村、聽皇宅檔下／請皇宅董事（a28 系統）、柳西、寶座、炸門、找你拜、填寶柱、許晏；盲聽 121.92–123.82「哈哈哈」在 s20 尾到 s20b 開頭（鴨叫與小禾的笑）。系統 a01 a13 a28 a31 濾波單聽糊，帶提示對（e933 e934 同）。\n結果：e935cut.sh 第四次跑（run1：全部第一版；run2：阿令降更多與 −2.5 dB、系統 a13 a31 加大、八鏡剪尾；run3：阿令 s33 0.96 與再 −1.5、s08 +1.5、五個音效調小；run4：s18 改上錨裁）：222.93 秒（40 鏡；最後 0.6 秒聲音淡出）；−14.0 LUFS、LRA 6.6、峰值 −2.8 dBFS，loudnorm2 線性（之前 −14.77 LUFS、−3.56 dBTP，加增益後 −2.79 ≤ −2.2）；cut-qa：fps 24、loudness ok、jitter ok（40 鏡）、black 0；motion FAIL 4.2／static 29%（調色與暗角後 3.5／40%）——片子本身多固定鏡：s01 0.8／100%、s30 2.0／100%、s22 2.5／97%、s02b 2.1／95%、s27 2.5／95%、s35 2.5／84%、s17b 1.3／74%、s11 2.7／64%、s10 2.6／55%（cut-qa 量的是放好的片子，剪接改不了；e934 是 8.2）；cut-jumps 0；audio-qa 36 句 0 問題（note：a30 鋪進 s30 0.87 秒是刻意的；gap s12b 前 6.8 秒＝s11b 尾到 s12 開籠、s17b 前 6.1＝s17 吹哨、s20b 前 11.6＝s19 練鴨、s20 白線、s22 前 4.1＝s21 鴨嘴、s35 前 8.0＝s34 走到門前）；CC 32 條（a01 a13 a28 a31 在面板上）。長於 1 秒沒台詞的鏡尾：s01 1.81（他看回桌面）、s03 1.08、s12b 1.01、s14 1.32（看遠山蝗群）、s24 1.17（轉身走開）、s28 1.36（許硯轉頭看門外）、s30 1.25、s32 1.71、s35 2.62（結尾停在門閂上）。cut/ 只留 run4 成片；run1–3 在 cut/old-runs/。\n人耳／人眼（BY EAR / EYE）：0.00–8.00 s01 接第 34 集結尾（第 34 集灰藍暮色漸黑 → 本集夜裡屋內；舊灰外衣看不太出來，s02 起披著；右前景多一盞虛焦油燈）；s01 全鏡近乎靜止（motion 0.8）；190.29 s31 錢員外改鋪錄音的四段對嘴（「全村一起餓」atempo 0.85）跟 s22 133.33、s24 148.08 片中原聲升 1.12 是不是同一個人；176.17 s29 婦人錄音降到 159 Hz 會不會太粗、跟哭腔合不合，句尾鋪進 s30 的 0.87 秒；阿令 s16 93.96 ×0.78、s25 155.58 ×0.75（降得最多）、s33 203.33 ×0.96 降調會不會變粗變老；小禾 s05 29.13 ×0.86、s20b 123.29 ×0.78（rubberband）、錄音 a16 79.79 ×1.13 自然不自然；s13 79.79 最後 1 格停格；83.92–89.17 s14 遠山加深的蝗群帶子（手機大小讀不讀得成蟲、蓋到樹梢的黑會不會像髒污）；55.46 s10 放大 9% 後的畫質與右緣、說『押』前後的嘴角（1102 c0.1 有一點笑）；107.33 s18 上錨裁 7% 與 c0.5–0.9 的嘴角；101.25 s17b 翻轉後鴨子朝向；68.38 s12 調棕暗；38.96 s07 算盤音效跟手指；60.63 s11 唐小棠唯一正臉的小笑（2.0 起）、34.42 s06 許硯哄妹妹的笑、79.79 s13 苦笑；面板 s01 2.00、s11 61.0、s27 167.5、s30 181.4 的位置；s23 141.33 唐小棠丸子下的小辮（fix1 記過）；s34 208.37 兩個女生並排、石燈籠；s22 133.33 錢員外冷笑（稿子准）；配樂 s10 heart 進來、s16–s19 無配樂、s31 190.29 cliffhanger 接替 warm 的硬切、s35 結尾 0.6 秒淡出夠不夠「停在最高點不收」。"
 }
