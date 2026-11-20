@@ -5079,6 +5079,17 @@ Ran: Node v24.22.2, Linux, in `/home/antigravity/x812033727/travel_scanner` on b
 Non-claims: this is a 5-file incremental source duration review. It does not review the other 103 bound files beyond verifying their SHA-256 hashes are unchanged, does not judge thumbnail visual composition, localized thumbnail rendering or whether an author accurately records the prior thumbnail in `thumbnail.replaces` (beyond proving that any non-matching prior thumbnail fails closed and cannot mask scene, theme or audio changes), and does not accept media, paid production, deployment, upload or publication.
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #2193 info-only layout visibility switches increment: 5 files (2026-11-20)
+
+Reviewer: `antigravity-duration-reviewer-pr2193-20261120`. Author: `antigravity` (PR #2193, "feat(layout): add default-off visibility toggles for flight search, videos, and member chrome"). Scope: DURATION_ONLY.
+
+Findings: Each of the five `apps/web/messages/{en,ja,ko,zh-CN,zh-TW}/admin.json` files adds only three layout-visibility label/help entries (`flight_search_enabled`, `videos_enabled`, `member_features_enabled`) under `layout.fields`. Zero existing lines were modified or removed; every video duration label, bound, and policy string across all five locales is byte-unchanged, and all 103 other bound files remain untouched at their previously accepted hashes.
+
+Ran: `npm run check:i18n` (Validated 5 locales across 25 namespaces), `node tools/video/long-form/cli.mjs check`, and `node --test tools/video/long-form/review.test.mjs`.
+
+Non-claims: DURATION_ONLY compatibility review of the five `admin.json` hash updates; does not accept unrelated layout UI features, run TTS/ffmpeg, or touch production.
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings" in the merged report is byte-identical to `dec59b7c5^1`'s report up to that heading followed by main's "Channel intro after the opening condensation increment" section byte-identical to `dec59b7c5^2`'s; main's report is the merge base's report plus that section only, so no earlier section was dropped or altered on either side. After the heading, the table has the same 115 lines as each parent; it differs from `dec59b7c5^1` in exactly the five #1481 rows and from `dec59b7c5^2` in exactly the 15 rows of this branch's increments, and every row equals one parent's row.
 
 Ran (in the worktree at `dec59b7c5`, Node on Windows): `node tools/video/long-form/cli.mjs check` before any edit; a script kept outside the repository that hashes the working tree and the blobs of the merge, both parents and the merge base, and compares both receipts and both reports as in 1 to 4; `git ls-files --eol` (LF in index and worktree for both receipt files). The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
@@ -7611,11 +7622,11 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `apps/web/components/admin-video-series.test.tsx` | `73b243289900507d88bdaef56d488260f844743c4bac02f4e81e49d0d5bd9f38` |
 | `apps/web/components/admin-video-series.tsx` | `8ae6ad52a8912ae43baa883f9f429889e23dc1696fce5f088c6806410d596b64` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `77e60906ecea1edb2189059c66d158094613ed6b1bb1dce3b6aeb717e2298596` |
-| `apps/web/messages/en/admin.json` | `83406e4b53c3528ce89a63f9413e37140dd4f4643146efef3b74748749de7c27` |
-| `apps/web/messages/ja/admin.json` | `b60f472f409587dfda77a9156c543cdf87a7a651ee156811bd53d1cbe25d3c55` |
-| `apps/web/messages/ko/admin.json` | `58177436fdeb130640719a651f005f46c5891808067435e578c898e8c29f33f9` |
-| `apps/web/messages/zh-CN/admin.json` | `66b5b26020844b437d10dd25f1c3aeb0d9170594026fcec5b9a1fa59fcdb3ab9` |
-| `apps/web/messages/zh-TW/admin.json` | `4bfe9c0d3d596c237d55a466f17b8a73b190073651a856ba3593b6834789fa5c` |
+| `apps/web/messages/en/admin.json` | `5b7418c713406ee0ba8b9cc9d127b3c7e51e24c9cc3e6d0843d7f0bc4f3fdc03` |
+| `apps/web/messages/ja/admin.json` | `bcb778fad34f50443edb5edf3d0d6d9fae1726d0653ccca7de2d6ea53723d51f` |
+| `apps/web/messages/ko/admin.json` | `f1da1ad7e2cfbc6e13474bc87ed25af44fdbd51d6386b1c46ff0634e48d09527` |
+| `apps/web/messages/zh-CN/admin.json` | `09bdbbd7022b0765f6a0014cb7bcf8ef1dd97d0954414b183021140a42947a09` |
+| `apps/web/messages/zh-TW/admin.json` | `e9c0d589dd7eff483f839547ca84cf1ca9eabe7dccdcf5274e471618efba4097` |
 | `docs/videos/DESIGN.md` | `867d485df9b0509a6d16ce2054608e1c9e4ba44eb6ff79da5f326bf2b90c3405` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `8bf5a55173e25c07c18b865853ffd37e839408ccf731bdc3c4ebf208e195b5b5` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |

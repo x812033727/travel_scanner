@@ -837,6 +837,18 @@
       "pricing_enabled": {
         "label": "요금제 및 사용 팩",
         "help": "요금 탐색 메뉴, 사용 팩 작업 및 /pricing 페이지를 제어합니다."
+      },
+      "flight_search_enabled": {
+        "label": "항공편 및 숙소 검색",
+        "help": "항공편·숙소 검색 버튼과 홈 검색 폼 노출을 제어합니다."
+      },
+      "videos_enabled": {
+        "label": "동영상 섹션",
+        "help": "상단 내비게이션, 홈 동영상 바로가기, 푸터의 동영상 링크 노출을 제어합니다."
+      },
+      "member_features_enabled": {
+        "label": "회원 기능 및 로그인 표시",
+        "help": "로그인 버튼, 저장, 마이, 내 여행 메뉴 및 카드의 저장·여행 추가 버튼을 제어합니다. 관리자는 /login 주소로 직접 로그인할 수 있습니다."
       }
     }
   },
@@ -2250,10 +2262,10 @@
     "loadError": "영상을 불러오지 못했습니다",
     "retry": "다시 시도",
     "retryVideoTitle": "동영상 작업이 멈췄습니다",
-        "retryVideoHelp": "원인을 해결한 뒤 작업자에게 이 동영상을 한 번 다시 시도하도록 요청하세요.",
-        "retryVideoPending": "재시도를 요청했습니다. 다음 실행에서 처리됩니다.",
-        "retryVideoButton": "이 동영상 다시 시도",
-        "retryVideoError": "재시도를 요청할 수 없습니다: {message}",
+    "retryVideoHelp": "원인을 해결한 뒤 작업자에게 이 동영상을 한 번 다시 시도하도록 요청하세요.",
+    "retryVideoPending": "재시도를 요청했습니다. 다음 실행에서 처리됩니다.",
+    "retryVideoButton": "이 동영상 다시 시도",
+    "retryVideoError": "재시도를 요청할 수 없습니다: {message}",
     "pending": "결정 대기 {count}건",
     "noPendingShort": "결정 대기 없음",
     "progress": "진행 {done}/{total}",

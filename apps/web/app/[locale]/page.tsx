@@ -48,6 +48,9 @@ export default async function Home() {
   // a closed feature, and the home page should not drop its quick cards over one slow moment.
   const hotspotsEnabled = featureEnabled(visibility, "hotspots");
   const tripsEnabled = featureEnabled(visibility, "trips");
+  const flightSearchEnabled = featureEnabled(visibility, "flight_search");
+  const videosEnabled = featureEnabled(visibility, "videos");
+  const memberFeaturesEnabled = featureEnabled(visibility, "member_features");
   // The feed the gate is about to render, fetched here so it is in the response body rather
   // than three grey rectangles. `/explore` has done this since it was written; the home page
   // never did, which is why its whole body -- hero, rail and all -- was a skeleton to a
@@ -67,7 +70,7 @@ export default async function Home() {
         {/* Keep the planning form compact on phones: a short hero, the
             workbench, and the three trust lines underneath.
             On desktop the lines keep their place beside the form. */}
-        <section className="grid gap-6 pb-6 pt-8 lg:grid-cols-[1fr_1.15fr] lg:items-center lg:gap-8 lg:py-14">
+        {flightSearchEnabled && <section className="grid gap-6 pb-6 pt-8 lg:grid-cols-[1fr_1.15fr] lg:items-center lg:gap-8 lg:py-14">
           <div className="lg:pr-4 xl:pr-8">
             <p className="mb-3 flex items-center gap-2 text-sm font-semibold text-[var(--teal)] lg:mb-4">
               <Sparkles size={16} />
@@ -112,8 +115,8 @@ export default async function Home() {
               ))}
             </ul>
           </div>
-        </section>
-        <section aria-labelledby="quick-actions-title" className="pb-8">
+        </section>}
+        <section aria-labelledby="quick-actions-title" className="pb-8 pt-6">
           <div className="mb-4 flex items-end justify-between gap-4">
             <div>
               <p className="text-sm font-semibold text-[var(--teal)]">
@@ -143,7 +146,7 @@ export default async function Home() {
                 <small>{t("quickFoodsDescription")}</small>
               </span>
             </Link>
-            {tripsEnabled && <Link href="/trips" className="app-quick-card">
+            {tripsEnabled && memberFeaturesEnabled && <Link href="/trips" className="app-quick-card">
               <span className="app-quick-icon bg-sky-50 text-sky-800">
                 <Route size={22} />
               </span>
@@ -171,12 +174,12 @@ export default async function Home() {
                 {t("destinationTitle")}
               </h2>
             </div>
-            <a
+            {flightSearchEnabled && <a
               href="#trip-search"
               className="inline-flex min-h-11 items-center rounded-full border border-[var(--teal)] px-4 text-sm font-semibold text-[var(--teal)]"
             >
               {t("backToSearch")}
-            </a>
+            </a>}
           </div>
           <div className="destination-card-rail mt-6">
             {countryKeys.map((country) => {
@@ -233,7 +236,12 @@ export default async function Home() {
       {/* Keep the site context and article entrances ahead of the discovery feed in both
           the server response and the client's later switch resolution. */}
       <main>
-        <HomeGuides {...guides} hotspotsEnabled={hotspotsEnabled} />
+        <HomeGuides
+          {...guides}
+          hotspotsEnabled={hotspotsEnabled}
+          flightSearchEnabled={flightSearchEnabled}
+          videosEnabled={videosEnabled}
+        />
         <DiscoveryHomeGate initialEnabled={seeded} initialFeed={feed}>{body}</DiscoveryHomeGate>
       </main>
     </>

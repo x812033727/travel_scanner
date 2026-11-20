@@ -93,6 +93,9 @@ SITE_VISIBILITY_FIELDS = (
     "flight_status_enabled",
     "airline_fares_enabled",
     "pricing_enabled",
+    "flight_search_enabled",
+    "videos_enabled",
+    "member_features_enabled",
 )
 
 # Settings that put the owner's personal subscription accounts to work for the site.

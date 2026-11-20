@@ -837,6 +837,18 @@
       "pricing_enabled": {
         "label": "方案与次数包",
         "help": "控制方案导航、查看次数包操作与 /pricing 页面。"
+      },
+      "flight_search_enabled": {
+        "label": "机票与住宿搜索",
+        "help": "控制前台搜索机票与住宿入口及首页搜索表单的显示。"
+      },
+      "videos_enabled": {
+        "label": "影音专区",
+        "help": "控制导航栏、首页影音快捷入口与页脚的视频链接显示。"
+      },
+      "member_features_enabled": {
+        "label": "会员功能与登录入口",
+        "help": "控制前台登录按钮、收藏、我的、我的旅程导航及卡片收藏／加入旅程操作。管理员仍可直接访问 /login 登录。"
       }
     }
   },
@@ -2250,10 +2262,10 @@
     "loadError": "读取不到视频资料",
     "retry": "重试",
     "retryVideoTitle": "视频卡住了",
-        "retryVideoHelp": "确认原因已修复后，可让工作进程在下一轮重试这段视频一次。",
-        "retryVideoPending": "已请求重试，工作进程会在下一轮处理。",
-        "retryVideoButton": "重试这段视频",
-        "retryVideoError": "无法请求重试：{message}",
+    "retryVideoHelp": "确认原因已修复后，可让工作进程在下一轮重试这段视频一次。",
+    "retryVideoPending": "已请求重试，工作进程会在下一轮处理。",
+    "retryVideoButton": "重试这段视频",
+    "retryVideoError": "无法请求重试：{message}",
     "pending": "{count} 项待决定",
     "noPendingShort": "没有待决定",
     "progress": "进度 {done}/{total}",

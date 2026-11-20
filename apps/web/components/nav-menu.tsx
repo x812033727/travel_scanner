@@ -13,7 +13,8 @@ const linkClass = "-mx-2 inline-flex min-h-11 items-center rounded-lg px-2 trans
 /** The items of a group the owner has not switched off, in the list's order. */
 export function useVisibleItems(group: NavGroup) {
   const visibility = useSiteVisibility();
-  return group.items.filter((item) => !item.feature || featureVisible(visibility, item.feature));
+  const memberFeaturesVisible = featureVisible(visibility, "member_features");
+  return group.items.filter((item) => (!item.feature || featureVisible(visibility, item.feature)) && (item.feature !== "trips" || memberFeaturesVisible));
 }
 
 /**

@@ -221,6 +221,9 @@ class Settings(BaseSettings):
     flight_status_enabled: bool = True
     airline_fares_enabled: bool = True
     pricing_enabled: bool = True
+    flight_search_enabled: bool = False
+    videos_enabled: bool = False
+    member_features_enabled: bool = False
     trust_proxy_client_ip: bool = False
     # Proof that a forwarded address came from our own BFF rather than from something else
     # that can reach this API. Nothing at the network layer can tell those apart: neither

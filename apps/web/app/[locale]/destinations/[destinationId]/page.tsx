@@ -124,7 +124,16 @@ export default async function DestinationGuidePage({ params }: { params: Promise
             : null,
         ]}
       />
-      <DestinationGuide locale={locale} destination={destination} places={places} hotspotsEnabled={hotspotsEnabled} merchants={merchants} related={related} guides={guides} />
+      <DestinationGuide
+        locale={locale}
+        destination={destination}
+        places={places}
+        hotspotsEnabled={hotspotsEnabled}
+        flightSearchEnabled={featureEnabled(visibility, "flight_search")}
+        merchants={merchants}
+        related={related}
+        guides={guides}
+      />
     </>
   );
 }

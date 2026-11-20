@@ -10,7 +10,18 @@ const state = vi.hoisted(() => ({
 }));
 vi.mock("@/lib/discovery-status.server", () => ({ getDiscoveryStatus: async () => ({ enabled: state.enabled }) }));
 vi.mock("@/lib/site-visibility.server", () => ({ getSiteVisibility: async () => ({
-  status: "ready", features: { hotspots_enabled: state.featuresEnabled, trips_enabled: state.featuresEnabled },
+  status: "ready",
+  features: {
+    hotspots_enabled: state.featuresEnabled,
+    trips_enabled: state.featuresEnabled,
+    alerts_enabled: state.featuresEnabled,
+    flight_status_enabled: state.featuresEnabled,
+    airline_fares_enabled: state.featuresEnabled,
+    pricing_enabled: state.featuresEnabled,
+    flight_search_enabled: state.featuresEnabled,
+    videos_enabled: state.featuresEnabled,
+    member_features_enabled: state.featuresEnabled,
+  },
 }) }));
 vi.mock("@/lib/guides.server", async (original) => ({
   ...await original<typeof import("@/lib/guides.server")>(),
