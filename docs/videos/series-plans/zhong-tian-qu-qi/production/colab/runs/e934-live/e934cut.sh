@@ -46,7 +46,8 @@ bad+=[f'{s} in picks.json, not in the want table' for s in p if s not in want]
 bad+=[f'{s} has crop {p[s].get(\"crop\")} (none may)' for s in p if p[s].get('crop')]
 print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
 # 剪接表鋪的錄音在 audio/ 改寫過（原檔在 audio/orig/；_note〈錄音〉）：整平到 −13.5 LUFS 的 a02（重錄版）a08 a10 a12 a13 a33、
-# a17（重錄版，rubberband 1.42）、a19（重錄版，rubberband 1.10）、a20（來源 a20-p85）、a24（來源 a24-p119）、
+# REVIEW 3：a12 改成 rubberband 1.15 後照 s11 嘴的三段重排、a17 rubberband 1.52 兩段各 atempo 0.85 重排（scratchpad e934r3/mkaud.py，再用 lev934.py SRC= 整平）；
+# a17（重錄版，rubberband 1.52）、a19（重錄版，rubberband 1.10）、a20（來源 a20-p85）、a24（來源 a24-p119）、
 # a25（rubberband 1.31＋atempo 1.15）、a40（asetrate 0.86），系統 a07 a09 a32 到 −13.8。少了改寫就停。
 A=/root/mokaair-work/videos/zhong-tian-qu-qi-e934-dh/audio
 for n in 02 07 08 09 10 12 13 17 19 20 24 25 32 33 40; do [ -f $A/orig/zq934a$n.wav ] || { echo "audio/zq934a$n.wav is not the leveled file (no orig/ copy)"; exit 1; }; done
