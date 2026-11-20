@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-20-pool-8029",
+  "revision": "2026-11-20-pool-8056",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "categories": [
     "物理化學與日常材料",
@@ -12,22 +12,22 @@
     "建築交通與商業制度"
   ],
   "counts": {
-    "raw_records": 8493,
-    "canonical_questions": 8333,
-    "eligible_candidates": 8140,
-    "selected_candidates": 8029,
+    "raw_records": 8520,
+    "canonical_questions": 8360,
+    "eligible_candidates": 8167,
+    "selected_candidates": 8056,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 9015,
-    "current_research_source_urls": 6087,
-    "selected_source_urls": 7026,
-    "new_suggestions_not_added": 3615,
+    "source_urls": 9057,
+    "current_research_source_urls": 6129,
+    "selected_source_urls": 7062,
+    "new_suggestions_not_added": 3626,
     "high_similarity_pending": 0,
     "approved_scripts": 0,
     "by_category": {
       "物理化學與日常材料": {
-        "canonical": 1950,
-        "selected": 1920
+        "canonical": 1960,
+        "selected": 1930
       },
       "生物動物與植物": {
         "canonical": 1550,
@@ -38,16 +38,16 @@
         "selected": 985
       },
       "數位科技與通訊工程": {
-        "canonical": 1508,
-        "selected": 1428
+        "canonical": 1522,
+        "selected": 1442
       },
       "飲食與廚房科學": {
-        "canonical": 539,
-        "selected": 533
+        "canonical": 540,
+        "selected": 534
       },
       "人體感官與日常行為": {
-        "canonical": 602,
-        "selected": 590
+        "canonical": 604,
+        "selected": 592
       },
       "建築交通與商業制度": {
         "canonical": 1196,
@@ -2233,6 +2233,18 @@
       "sha256": "cae7ddd4c3b661e69ef2f2bd25f7f4e14ca931b049cddaad261ec4f001ccfb9e"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave142-craft-20261120.json",
+      "sha256": "dd318b2f342dcc5a440854027c80ea8a4d704c71af4e34139f32e329fa3f992d"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave142-everyday-20261120.json",
+      "sha256": "c8573c5ec5bfd72f1908b72a597ba81961c7edc01eaf311628e6f5a997452ff4"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave142-research-20261120.json",
+      "sha256": "e2ba8b13e8244437627d72b9d82ae59bbb2d4e6924cbbc13a629a8c5b988a064"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json",
       "sha256": "e605e7db36362ae0b323a39fa3bc79d43a6a8c54584a02a66764aeb5495e4bfb"
     },
@@ -3498,12 +3510,12 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "f17959dc1347deb86bdf71666082e41dfb0b0462e967188e285712d25007a112"
+      "sha256": "84bf7d1f50a4d9f60c0215e132cffb28361040812240790787bc7e657d9b4fcf"
     }
   ],
   "sources": {
     "file": "pool-sources.json",
-    "count": 9015
+    "count": 9057
   },
   "candidates": [
     {
@@ -165031,6 +165043,1349 @@
       "question_variants": [],
       "provenance_ids": [
         "K141-0216"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0101",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "白線在威尼斯酒杯上圍出一格格菱形，裡頭的小氣泡怎麼都跑到格子正中央？",
+      "mechanism_key": "x142.craft.bubbles_in_a_net",
+      "answer_target": "科寧這只酒杯的每個菱格中央都有小氣泡。工匠先把帶白線的玻璃往一個方向扭，再把另一團往反方向扭，套在一起吹脹貼合。兩組白線交錯成網格，兩層之間困住的空氣就留在格內。大都會的同技法玻璃盤也能辨出層間氣泡。",
+      "scope": "每格中央有泡是 50.3.68 的描述；不推到所有同技法玻璃。透明片只示意線的方向。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用兩張斜線片展示旋向，再畫一小段器壁的放大剖面，指給觀眾看氣泡在哪兩層之間。",
+        "payoff": "把兩組反向白線疊起來，格紋和氣泡的位置一起有了來歷：空氣困在貼合的兩層之間。",
+        "seconds": [
+          29,
+          47
+        ]
+      },
+      "source_locator": "X142C-S01 50.3.68，Physical Description。X142C-S02 91.1.1505，藏品介紹首段及 Artwork Details。X142C-S03 N is for network glass；R is for reverse painting；J is for joke glass，配圖與圖說緊鄰各段。",
+      "notes": "K134-0401 的菱格與圓點是模具印紋；K134-0402 的網從厚壁鏤空並留橋。此例是兩層反向螺旋線交疊，點是困住的空氣。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自畫剖面、拍攝紙卡與透明片示意。館藏照及影片逐件檢查影像授權後才取用。",
+      "origin": "wave142-craft-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-662aff9514aed1e2",
+          "origin": "wave142-craft-20261120",
+          "locator": "X142C-S01 50.3.68，Physical Description。X142C-S02 91.1.1505，藏品介紹首段及 Artwork Details。X142C-S03 N is for network glass；R is for reverse painting；J is for joke glass，配圖與圖說緊鄰各段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2a781e625ad9041c",
+          "origin": "wave142-craft-20261120",
+          "locator": "X142C-S01 50.3.68，Physical Description。X142C-S02 91.1.1505，藏品介紹首段及 Artwork Details。X142C-S03 N is for network glass；R is for reverse painting；J is for joke glass，配圖與圖說緊鄰各段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-4531596f9c636d60",
+          "origin": "wave142-craft-20261120",
+          "locator": "X142C-S01 50.3.68，Physical Description。X142C-S02 91.1.1505，藏品介紹首段及 Artwork Details。X142C-S03 N is for network glass；R is for reverse painting；J is for joke glass，配圖與圖說緊鄰各段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-craft-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0101"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0102",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "羅馬化妝瓶有兩個並排的細管，上面還架了一個提把。工匠手上只有一團吹脹的玻璃時，哪一部分已經做得出來？",
+      "mechanism_key": "x142.craft.one_blob_two_tubes",
+      "answer_target": "兩根管是同一個瓶身。工匠沿著吹好的玻璃坯兩側縱向夾捏，讓中間成為隔壁；兩旁各留一個可從上方伸入的空間。這件瓶子真正另加的是提把，館藏把它拆解為四條玻璃條。旁邊另一件瓶身同樣捏出兩管，外面另繞玻璃線。",
+      "scope": "四條提把僅見 30.115.76 的描述。館名辨為化妝／眼妝用瓶，未說兩格殘留不同成分。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "捏合紙筒模型並畫俯視截面，用不同色的紙條接出四段提把；同框標清兩件藏品。",
+        "payoff": "四根另加的玻璃條在提把上；並排的兩個空間，出自同一團玻璃中間縱向捏成的隔壁。",
+        "seconds": [
+          31,
+          48
+        ]
+      },
+      "source_locator": "X142C-S04 30.115.76，藏品說明中 single inflated gather 與 four separate rods 兩處。X142C-S05 30.115.74，藏品說明第 2、3 句，另見 Object Number。",
+      "notes": "K129-0405 與 X134C-NA03 是將兩段已各自成形的玻璃趁熱相接，本瓶雙管是同一坯縱捏；K135-0102 是木製低音管內孔走向。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自畫剖面、拍攝紙卡與透明片示意。館藏照及影片逐件檢查影像授權後才取用。",
+      "origin": "wave142-craft-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-76bc2fe95853302b",
+          "origin": "wave142-craft-20261120",
+          "locator": "X142C-S04 30.115.76，藏品說明中 single inflated gather 與 four separate rods 兩處。X142C-S05 30.115.74，藏品說明第 2、3 句，另見 Object Number。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-6a8ddd022de032ca",
+          "origin": "wave142-craft-20261120",
+          "locator": "X142C-S04 30.115.76，藏品說明中 single inflated gather 與 four separate rods 兩處。X142C-S05 30.115.74，藏品說明第 2、3 句，另見 Object Number。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-craft-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0102"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0103",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "威尼斯玻璃碗上像撒了金粉。把其中一點放大一百二十倍，為什麼會看見有稜有角的小片？",
+      "mechanism_key": "x142.craft.copper_stars",
+      "answer_target": "科陶德這只碗的砂金玻璃裡，反光的是小小的金屬銅晶。氧化銅在製作時還原成銅，結晶析出，在緩慢冷卻時繼續長大。館方把樣品放大一百二十倍，拍到三角和六角的形狀。肉眼覺得像金粉閃動，看近才辨出一片片結晶。",
+      "scope": "三角、六角來自此館藏的顯微照；氧化銅意外掉進爐內的故事僅為傳說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "自畫放大框並分清碗身的彩色渦紋與局部閃點；用反光紙片做光線示意，標示其為模型。",
+        "payoff": "金點放大後能數出稜角。玻璃裡反光的是冷卻時長大的銅晶。",
+        "seconds": [
+          28,
+          46
+        ]
+      },
+      "source_locator": "X142C-S06 O.1966.GP.188 的器物圖與 ×120 顯微圖。X142C-S07 A transformative experience、Producing the copper crystals 兩節及碗的顯微圖。",
+      "notes": "K129-0403 是真金箔被夾進玻璃帶，K134-0405 是銀染燒出黃色。此碗的金色閃點來自緩冷長大的銅晶。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自畫剖面、拍攝紙卡與透明片示意。館藏照及影片逐件檢查影像授權後才取用。",
+      "origin": "wave142-craft-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-e82fd17203aeb474",
+          "origin": "wave142-craft-20261120",
+          "locator": "X142C-S06 O.1966.GP.188 的器物圖與 ×120 顯微圖。X142C-S07 A transformative experience、Producing the copper crystals 兩節及碗的顯微圖。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-53ecf919aeedb61f",
+          "origin": "wave142-craft-20261120",
+          "locator": "X142C-S06 O.1966.GP.188 的器物圖與 ×120 顯微圖。X142C-S07 A transformative experience、Producing the copper crystals 兩節及碗的顯微圖。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-craft-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0103"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0104",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "從盤口往下看，玻璃盤裡的人物清清楚楚。要留住眼裡那一點亮光，畫師該在畫背景前還是畫完背景後下筆？",
+      "mechanism_key": "x142.craft.first_glint_last_background",
+      "answer_target": "1498 年這只盤的畫在底面和外側。觀眾從盤裡看，最先看到緊貼玻璃的那一層，於是畫師須先放前景細節和高光，再加後面的顏色與背景。館方用眼中反光的一筆解釋這個順序。翻看盤底還看得到紅色顏料；館方說這層顏料和膠泥、織物將畫層固定在玻璃上。",
+      "scope": "眼中亮點是館方的技法舉例，勿寫成對這只盤某張臉的顯微分析。器物另有透明色層與金屬箔，不需為這個答案臆定細部次序。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "兩張透明片各畫一眼、一亮點和一塊背景，從觀眾那側比色；另以剖面標出固定畫層的紅色顏料。",
+        "payoff": "從盤口這一側看，最早畫上去的亮點反而在最前面。",
+        "seconds": [
+          27,
+          45
+        ]
+      },
+      "source_locator": "X142C-S08 1498 年器，2008.278；The dish is exceptionally large 一段及背面照。X142C-S03 N is for network glass；R is for reverse painting；J is for joke glass，配圖與圖說緊鄰各段。",
+      "notes": "K139-0103 以琥珀背刻後襯箔反光。此題的核心是從另一側觀看，決定不透明顏料的遮蓋順序。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自畫剖面、拍攝紙卡與透明片示意。館藏照及影片逐件檢查影像授權後才取用。",
+      "origin": "wave142-craft-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-ca38f89a583e7908",
+          "origin": "wave142-craft-20261120",
+          "locator": "X142C-S08 1498 年器，2008.278；The dish is exceptionally large 一段及背面照。X142C-S03 N is for network glass；R is for reverse painting；J is for joke glass，配圖與圖說緊鄰各段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-4531596f9c636d60",
+          "origin": "wave142-craft-20261120",
+          "locator": "X142C-S08 1498 年器，2008.278；The dish is exceptionally large 一段及背面照。X142C-S03 N is for network glass；R is for reverse painting；J is for joke glass，配圖與圖說緊鄰各段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-craft-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0104"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0105",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "同一只玻璃酒杯，兩個人都對著鹿嘴吸，怎麼一個人喝到酒，另一個只吸到空氣？",
+      "mechanism_key": "x142.craft.sipping_through_the_stag",
+      "answer_target": "鹿嘴接到鹿身內的管，管子又套上杯中另一根管。空心的杯柄側面留有小孔，偽裝成三個裝飾突點之一。喝的人用手指蓋住正確的孔，再從鹿嘴吸，就能喝到杯裡的液體；孔開著，從鹿嘴吸到的只有空氣。",
+      "scope": "只據館藏 5509-1859 的實體結構，勿把所有謎壺、虹吸杯都寫成同一構造。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用可拆的透明軟管剖面分色標出鹿嘴、杯柄側孔與液體。以水和示意圖拍攝，並排對照手指兩個位置。",
+        "payoff": "三顆凸點只有一顆藏著側孔。手指封住它，鹿嘴才能吸到液體。",
+        "seconds": [
+          29,
+          47
+        ]
+      },
+      "source_locator": "X142C-S09 5509-1859，Object details 的 Physical description、Summary；藏品 O1378。X142C-S03 N is for network glass；R is for reverse painting；J is for joke glass，配圖與圖說緊鄰各段。",
+      "notes": "K115-0003 是倒轉單口瓶時水和補入的空氣爭同一瓶口；此杯是鹿嘴連著一條故意開側孔的飲管，遮孔才吸到液體。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自畫剖面、拍攝紙卡與透明片示意。館藏照及影片逐件檢查影像授權後才取用。",
+      "origin": "wave142-craft-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-861512651cec2540",
+          "origin": "wave142-craft-20261120",
+          "locator": "X142C-S09 5509-1859，Object details 的 Physical description、Summary；藏品 O1378。X142C-S03 N is for network glass；R is for reverse painting；J is for joke glass，配圖與圖說緊鄰各段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-4531596f9c636d60",
+          "origin": "wave142-craft-20261120",
+          "locator": "X142C-S09 5509-1859，Object details 的 Physical description、Summary；藏品 O1378。X142C-S03 N is for network glass；R is for reverse painting；J is for joke glass，配圖與圖說緊鄰各段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-craft-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0105"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0106",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "師傅把杯壁靠上轉動的銅輪，玻璃上的小屋和兩座塔越刻越清楚。碰到杯壁的那一圈，究竟是什麼在磨走玻璃？",
+      "mechanism_key": "x142.craft.what_grinds_the_glass",
+      "answer_target": "科寧的英國高腳杯上刻有屋舍、人物和塔狀建築。銅輪雕刻時，工匠把含磨料的油抹在小輪外緣；旋轉的輪子把磨粒按向玻璃，由磨粒磨掉表面。用不同大小、厚薄或邊緣形狀的輪子，便能控制留下的刻痕。",
+      "scope": "79.2.83 是館方用來展示輪刻的器物；館方技法頁列不同磨料，沒有辨定這件杯子當年用哪種顆粒。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "畫出杯壁、磨粒、輪緣三層，將輪盤朝向與推力標清楚；另用紙輪展示寬、窄兩個輪緣會畫過哪一段。",
+        "payoff": "銅輪控制刻痕走到哪裡，輪緣帶著的磨粒負責一點點磨去玻璃。",
+        "seconds": [
+          28,
+          45
+        ]
+      },
+      "source_locator": "X142C-S10 Glass Dictionary Definition，第 1 段。X142C-S11 Wheel Engraving，版畫 112110、2020 示範、英國高腳杯 79.2.83。",
+      "notes": "K138-0105 教墨付分格、在圓杯決定花樣位置；K129-0402 教削去外層白玻璃。此題揭示軟金屬輪負責帶料加壓，實際磨蝕來自磨粒。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自畫剖面、拍攝紙卡與透明片示意。館藏照及影片逐件檢查影像授權後才取用。",
+      "origin": "wave142-craft-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-e8d6f279d8a0818d",
+          "origin": "wave142-craft-20261120",
+          "locator": "X142C-S10 Glass Dictionary Definition，第 1 段。X142C-S11 Wheel Engraving，版畫 112110、2020 示範、英國高腳杯 79.2.83。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-bd86baee67b787b6",
+          "origin": "wave142-craft-20261120",
+          "locator": "X142C-S10 Glass Dictionary Definition，第 1 段。X142C-S11 Wheel Engraving，版畫 112110、2020 示範、英國高腳杯 79.2.83。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-craft-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0106"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0001",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "兩把剪刀的握把都適合左手。沿鉛筆線往前剪時，一把剪刀的上刃卻遮住了線；真正的左手剪把哪裡對調了？",
+      "mechanism_key": "x142.everyday.left_scissor_blade_order",
+      "answer_target": "Lefty’s 的左右手差別也在刀片相對位置。左手款把刀片排列反過來，讓左手握剪時能看見正在剪的線，刀片也配合左手合剪的動作。單換握柄形狀並不會對調刀片。",
+      "scope": "原廠青年款和一般用途 8.5 吋款均明列反向刃。示意聚焦構造，不據此推論每位左撇者的慣用握姿。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用紙板做左右配置各一把，兩把都握在左手，沿同方向的鉛筆線前進，請觀眾先圈出哪片會擋住線。",
+        "payoff": "讓剪線留在視線裡的關鍵，在兩片刀刃誰疊在誰前面。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X142E-S01 What Makes This Product Left-Handed?。X142E-S02 What Makes This Product Left-Handed?。",
+      "notes": "K116-0008 是弧形刀刃保持合剪交角；#2182 N9060 是 OLFA 折刃刀的切角和規格，兩者均未解釋換手時的可見切線。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行拍攝物件、棋子和示意模型。原廠照片、影片、規則插圖與網站畫面逐檔另核授權。",
+      "origin": "wave142-everyday-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-a20e438ea12e1725",
+          "origin": "wave142-everyday-20261120",
+          "locator": "X142E-S01 What Makes This Product Left-Handed?。X142E-S02 What Makes This Product Left-Handed?。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b30e00563883d139",
+          "origin": "wave142-everyday-20261120",
+          "locator": "X142E-S01 What Makes This Product Left-Handed?。X142E-S02 What Makes This Product Left-Handed?。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-everyday-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0002",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "束線帶繞住一束細軟電線，扣頭仍然咬得住尾端。這款束帶為什麼要把整排齒紋翻到外側？",
+      "mechanism_key": "x142.everyday.outside_teeth_smooth_bundle",
+      "answer_target": "外齒設計將咬合的齒紋排在離開線束的一側，使貼著護套的內面平滑；相較於讓齒直接壓著軟護套，可減少齒紋壓出的凹痕。帶頭仍能固定尾端。",
+      "scope": "原廠類目明寫保護敏感線束和軟管，PT2A 型號亦明列外齒及平滑內面。在不同張力、材料下不能承諾完全無痕或護線不受損。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用相同寬度的軟圓條和模型束帶，先讓觀眾在兩面各塗不同顏色，再比較哪一面會接觸圓條。用模型示意接觸紋路即可。",
+        "payoff": "鬆開束帶再看一次，負責咬合的細齒原來一直朝外，軟線碰的是平滑面。",
+        "seconds": [
+          25,
+          39
+        ]
+      },
+      "source_locator": "X142E-S03 類目開頭 Cable Ties Outside Serrated，sensitive cables / smooth surface on the inside。X142E-S04 Features，Outside serrated cable tie with smooth surface to the bundle；規格和照片。",
+      "notes": "#2182 N9090 追的是 Thomas & Betts 原創束帶的金屬咬合件、商業採用及太空用途；這裡只問外齒帶合上後哪個表面接觸軟護套。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行拍攝物件、棋子和示意模型。原廠照片、影片、規則插圖與網站畫面逐檔另核授權。",
+      "origin": "wave142-everyday-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-e5f0d57fba8f2ec2",
+          "origin": "wave142-everyday-20261120",
+          "locator": "X142E-S03 類目開頭 Cable Ties Outside Serrated，sensitive cables / smooth surface on the inside。X142E-S04 Features，Outside serrated cable tie with smooth surface to the bundle；規格和照片。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-874f288d2e44999f",
+          "origin": "wave142-everyday-20261120",
+          "locator": "X142E-S03 類目開頭 Cable Ties Outside Serrated，sensitive cables / smooth surface on the inside。X142E-S04 Features，Outside serrated cable tie with smooth surface to the bundle；規格和照片。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-everyday-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0003",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "兩段相同的右旋外牙水管，一段的止洩帶順著鎖緊方向纏，另一段反著纏。接上內牙的第一圈時，哪一段的帶頭容易被推開？",
+      "mechanism_key": "x142.everyday.pipe_tape_winding_direction",
+      "answer_target": "Oatey 的示範從管端看順時針纏，方向與右牙鎖緊時一致。正向使帶材能跟著螺牙壓入牙底，反向則容易在旋合時鬆捲。原廠也要最前一牙保留乾淨，讓多餘的帶不易進管。",
+      "scope": "只說原廠指引所列、用 PTFE 止洩帶的右旋螺紋水管。纏圈數取決於帶材、產品與牙紋，不由這段演示推及所有管件。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "以兩個未連接、沒有壓力的示範接頭，先在止洩帶邊緣畫記號，再各旋入一圈，指認捲開的方向。",
+        "payoff": "照著右牙旋緊的方向纏，帶尾能隨旋合壓進牙底；反纏的帶尾容易翻鬆。",
+        "seconds": [
+          30,
+          46
+        ]
+      },
+      "source_locator": "X142E-S05 Step 3, What Direction Do You Put on the Plumber’s Tape?。X142E-S06 Application steps 與 troubleshooting 內 Wrapped in the wrong direction。",
+      "notes": "K103-1307、K103-1308 問 PTFE 表面如何與水或膠作用。本案需預測旋合時帶是否鬆捲，是纏繞方向與右旋牙紋共同作用。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行拍攝物件、棋子和示意模型。原廠照片、影片、規則插圖與網站畫面逐檔另核授權。",
+      "origin": "wave142-everyday-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-ce086816b480e1fa",
+          "origin": "wave142-everyday-20261120",
+          "locator": "X142E-S05 Step 3, What Direction Do You Put on the Plumber’s Tape?。X142E-S06 Application steps 與 troubleshooting 內 Wrapped in the wrong direction。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-7cb332f48afae1ea",
+          "origin": "wave142-everyday-20261120",
+          "locator": "X142E-S05 Step 3, What Direction Do You Put on the Plumber’s Tape?。X142E-S06 Application steps 與 troubleshooting 內 Wrapped in the wrong direction。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-everyday-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0004",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "同一包中筋麵粉，兩杯都把杯口刮平。直接把量杯伸進袋裡舀，跟先撥鬆、輕輕盛滿，哪一杯放上秤可能比較重？",
+      "mechanism_key": "x142.everyday.flour_cup_packing",
+      "answer_target": "刮平固定了體積，裝進去的粉粒有多緊實仍會改變質量。King Arthur 測試廚房列舉，壓實的一杯中筋麵粉可到 160 克，撥鬆、盛入再刮平約 120 克；該廠食譜以後者計算。",
+      "scope": "示例是該廠食譜與中筋麵粉，不保證每杯精準相差 40 克；其他粉種、杯規或食譜的約定質量另查。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把兩個空杯歸零，分別直接入袋舀裝與分次輕放，最後用同一把直邊刮平，比較實際重量並保留每次數字。",
+        "payoff": "刮平只對齊了杯口。要比較杯內裝了多少粉，還得把它放上秤。",
+        "seconds": [
+          25,
+          42
+        ]
+      },
+      "source_locator": "X142E-S07 Do I really need to measure flour by weight? 附秤與原文 160 grams 段。X142E-S08 Fluff, Sprinkle, and Scrape 示範及影片說明。X142E-S09 All-Purpose Flour 列，1 cup。",
+      "notes": "K122-0008、K132-0008 都以麵粉質量作烘焙百分比的分母。本題在稱重前就改變了相同體積中容納的粉量。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行拍攝物件、棋子和示意模型。原廠照片、影片、規則插圖與網站畫面逐檔另核授權。",
+      "origin": "wave142-everyday-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-edd4ea0a142d304f",
+          "origin": "wave142-everyday-20261120",
+          "locator": "X142E-S07 Do I really need to measure flour by weight? 附秤與原文 160 grams 段。X142E-S08 Fluff, Sprinkle, and Scrape 示範及影片說明。X142E-S09 All-Purpose Flour 列，1 cup。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-77db1eeaba9245c7",
+          "origin": "wave142-everyday-20261120",
+          "locator": "X142E-S07 Do I really need to measure flour by weight? 附秤與原文 160 grams 段。X142E-S08 Fluff, Sprinkle, and Scrape 示範及影片說明。X142E-S09 All-Purpose Flour 列，1 cup。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-3ca0ee116c1b4ecd",
+          "origin": "wave142-everyday-20261120",
+          "locator": "X142E-S07 Do I really need to measure flour by weight? 附秤與原文 160 grams 段。X142E-S08 Fluff, Sprinkle, and Scrape 示範及影片說明。X142E-S09 All-Purpose Flour 列，1 cup。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-everyday-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0005",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "游完泳，Apple Watch 螢幕按不動。為什麼按住數位錶冠解鎖時，是手錶喇叭先響幾聲？",
+      "mechanism_key": "x142.everyday.water_lock_speaker_tones",
+      "answer_target": "水中鎖定會讓觸控螢幕暫停回應，避免水中意外觸碰。按住數位錶冠解鎖時會播放一串音調，清出留在喇叭裡的水，再恢復正常觸控。兩種動作各處理一個部位。",
+      "scope": "只說有 Water Lock 功能的機型；watchOS 8 或以前是轉動錶冠解鎖。排的是喇叭內殘水，不能據此聲稱填掉機身縫隙或提高防水等級。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "先看錶上水滴圖示，試著輕觸；再按住錶冠，先聽喇叭、再試螢幕。不需把示範錶浸水也能觀察鎖定與解鎖。",
+        "payoff": "同一次解除鎖定，螢幕恢復觸控；喇叭播放音調，把裡面的殘水排走。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_locator": "X142E-S10 When Water Lock is on；How to turn off Water Lock and eject water；watchOS 8 註腳。",
+      "notes": "K112-0415 與 K112-0455 分別問水如何穿過錶殼密封處、潛水錶進水檢查；這次限定清出喇叭裡的水。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行拍攝物件、棋子和示意模型。原廠照片、影片、規則插圖與網站畫面逐檔另核授權。",
+      "origin": "wave142-everyday-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-07f1b9ca7cba25bb",
+          "origin": "wave142-everyday-20261120",
+          "locator": "X142E-S10 When Water Lock is on；How to turn off Water Lock and eject water；watchOS 8 註腳。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-everyday-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0006",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "西洋雙陸棋，己方已有十四枚移出棋盤，唯一剩下的一枚在中柱等著進場。擲出 2 和 5，進場方向的第 2 點、第 5 點都空著，第 7 點有兩枚敵棋。這回合能挑二點嗎？",
+      "mechanism_key": "x142.everyday.backgammon_bar_higher_die",
+      "answer_target": "正常要盡量用完兩個點數。此盤兩顆骰都能各自讓棋子進場，但無論怎樣排序，第二次移動都會落在已被兩枚對手棋擋住的第七點。規則指明若任一顆都能獨用而不能並用，必須使用較大的點數，因此用五點入場。",
+      "scope": "其餘十四枚己方棋子已移離棋盤。以 USBGF 頁面的標準玩法為準；若只有一個點數本來就能走而無法走另一點，必須走那個可行點，未必是大的。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用一枚中柱棋子和兩枚封住第七點的敵棋各演算 2→5、5→2，再移開封點棋子，比較能用兩顆骰時的差別。",
+        "payoff": "不論先走哪顆，另一顆都碰到封點；兩顆各自能走時，這次由較大的五點進場。",
+        "seconds": [
+          36,
+          56
+        ]
+      },
+      "source_locator": "X142E-S11 Movement of the Checkers：A player must use both numbers；Hitting and Entering 的中柱入場規則。",
+      "notes": "K141-0004 卡坦島是舊持有人仍否並列，K141-0003 八號球依開球是否合法決定選擇權。雙陸棋靠可行步序與兩骰高低的限制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行拍攝物件、棋子和示意模型。原廠照片、影片、規則插圖與網站畫面逐檔另核授權。",
+      "origin": "wave142-everyday-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-b624418e048968fa",
+          "origin": "wave142-everyday-20261120",
+          "locator": "X142E-S11 Movement of the Checkers：A player must use both numbers；Hitting and Entering 的中柱入場規則。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-everyday-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0007",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "比較兩球碰到三柱門時的畫面。第一球只讓柱頂的橫木歪了一點，第二球讓橫木落下後卡在兩根門柱之間。哪一次達到規則所說的橫木脫落？",
+      "mechanism_key": "x142.everyday.bail_lodged_below_top",
+      "answer_target": "MCC 規則判斷的是橫木是否已完全離開柱頂。它即使位置變了，只在頂部擾動仍不夠；下落後卡在兩根柱之間，則明定視為已完全移除。橫木無須掉到地上才能符合。",
+      "scope": "依 2017 Code 第四版（2026）的第29條，設定球直接碰門且其他情況相同。本題只判 wicket 是否按規定擊破，不從一張圖判所有出局條件。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用小模型放上橫木，各停格在頂端偏移與低於柱頂卡在兩柱之間，請觀眾先據位置選。",
+        "payoff": "看柱頂就能判斷。橫木已落下、夾在兩柱之間，即使沒有碰到地面也算離開了。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_locator": "X142E-S12 Law 29.2.1–29.2.2，A bail in falling lodges between two of the stumps。X142E-S13 正式法規入口的第四版 2026 英文原件。",
+      "notes": "K140-0003 桌球辨球桌上表面或垂直側面，K119-0404 高爾夫旗桿靠洞唇的球另有定義；本案是橫木離開柱頂的狀態。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行拍攝物件、棋子和示意模型。原廠照片、影片、規則插圖與網站畫面逐檔另核授權。",
+      "origin": "wave142-everyday-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-9fd5d744a8885d95",
+          "origin": "wave142-everyday-20261120",
+          "locator": "X142E-S12 Law 29.2.1–29.2.2，A bail in falling lodges between two of the stumps。X142E-S13 正式法規入口的第四版 2026 英文原件。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-630aaa58886b3251",
+          "origin": "wave142-everyday-20261120",
+          "locator": "X142E-S12 Law 29.2.1–29.2.2，A bail in falling lodges between two of the stumps。X142E-S13 正式法規入口的第四版 2026 英文原件。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-everyday-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0201",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "同一張紐約馬拉松證書，同時印著 42.195 公里和 19,924 公尺。哪一個才是跑者報名的距離？",
+      "mechanism_key": "x142.marathon.ny_two_distances",
+      "answer_target": "NY22001JHP 的路程欄是 42.195 公里，另一欄填起終點間的直線 19,924 公尺。賽道沿著道路前進，端點間拉直的線跨過了沿路的轉向。",
+      "scope": "只解讀 2022-08-26 生效的這張證書，不能用端點直線長度推回每位選手的路徑。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "NY22001JHP 的路程欄是 42.195 公里，另一欄填起終點間的直線 19,924 公尺。賽道沿著道路前進，端點間拉直的線跨過了沿路的轉向。",
+        "visual": "自繪起終點與連線，另沿路畫一條賽道；把證書兩個欄名各放回一條線。",
+        "seconds": [
+          28,
+          42
+        ]
+      },
+      "source_locator": "R142-S09 證書p1–2與附圖；生效2022-08-26 R142-S01 TR55.3；Note (ii)、(iii)",
+      "notes": "只解讀 2022-08-26 生效的這張證書，不能用端點直線長度推回每位選手的路徑。",
+      "origin": "wave142-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-e5bd15fa57a0c12b",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S09 證書p1–2與附圖；生效2022-08-26 R142-S01 TR55.3；Note (ii)、(iii)",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-cc9f62ce41162fd9",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S09 證書p1–2與附圖；生效2022-08-26 R142-S01 TR55.3；Note (ii)、(iii)",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0201"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0202",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "臺北馬拉松大會介紹的自行車，輪上明明只有格數器，騎過終點怎麼還得交報告？",
+      "mechanism_key": "x142.marathon.taipei_bike",
+      "answer_target": "大會說明合格丈量員用裝有 Jones 格數器的自行車丈量，完成後須將丈量過程寫入報告送審；通過才有該條路線的場地丈量證明。",
+      "scope": "這是大會公開說明。車輪格數、個人手錶軌跡與路線證明分別代表不同資料。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "大會說明合格丈量員用裝有 Jones 格數器的自行車丈量，完成後須將丈量過程寫入報告送審；通過才有該條路線的場地丈量證明。",
+        "visual": "從自行車格數器拉三個鏡頭到路線圖、署名丈量報告與證書，先遮裝置名稱讓觀眾猜。",
+        "seconds": [
+          27,
+          40
+        ]
+      },
+      "source_locator": "R142-S10 官頁29–37行 R142-S02 Riding the shortest possible route；Bicycle calibration；Calculate the constant for the day；Appendix 2",
+      "notes": "這是大會公開說明。車輪格數、個人手錶軌跡與路線證明分別代表不同資料。",
+      "origin": "wave142-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-c12b480130edde70",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S10 官頁29–37行 R142-S02 Riding the shortest possible route；Bicycle calibration；Calculate the constant for the day；Appendix 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8f94c3c0a51ecacd",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S10 官頁29–37行 R142-S02 Riding the shortest possible route；Bicycle calibration；Calculate the constant for the day；Appendix 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0202"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0203",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "賽道彎了兩次，丈量單車該跟著中央線轉兩次，還是能斜跨路面去接下一個彎？",
+      "mechanism_key": "x142.marathon.kerb_tangent",
+      "answer_target": "只在比賽開放的路面內找跑者可走的最短路徑。依丈量手冊，沿實體路緣通常約離邊緣 30 公分，在連續彎之間則尋找合法切線。",
+      "scope": "約 30 公分是硬邊界丈量方法。實際跑者可因人群或補給另走較長的線。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "只在比賽開放的路面內找跑者可走的最短路徑。依丈量手冊，沿實體路緣通常約離邊緣 30 公分，在連續彎之間則尋找合法切線。",
+        "visual": "在紙上畫出兩彎，沿中央放一條線，再用棉線連接兩個彎的可走內側。",
+        "seconds": [
+          32,
+          48
+        ]
+      },
+      "source_locator": "R142-S01 TR55.3；Note (ii)、(iii) R142-S02 Riding the shortest possible route；Bicycle calibration；Calculate the constant for the day；Appendix 2",
+      "notes": "約 30 公分是硬邊界丈量方法。實際跑者可因人群或補給另走較長的線。",
+      "origin": "wave142-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-cc9f62ce41162fd9",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S01 TR55.3；Note (ii)、(iii) R142-S02 Riding the shortest possible route；Bicycle calibration；Calculate the constant for the day；Appendix 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8f94c3c0a51ecacd",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S01 TR55.3；Note (ii)、(iii) R142-S02 Riding the shortest possible route；Bicycle calibration；Calculate the constant for the day；Appendix 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0203"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0204",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "同一個十字路口，把比賽用的路錐往外挪一點，丈量員為何要重新看那張路口圖？",
+      "mechanism_key": "x142.marathon.cone_position",
+      "answer_target": "路錐、路障或臨時設施若決定跑者可用的路面，就決定最短合法路徑能切到哪裡。世界田徑總會要求這些位置至遲於丈量時確定，並將位置詳載丈量報告。",
+      "scope": "這是規則對臨時邊界的要求，不據此推定任何特定比賽的錐筒曾被移動。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "路錐、路障或臨時設施若決定跑者可用的路面，就決定最短合法路徑能切到哪裡。世界田徑總會要求這些位置至遲於丈量時確定，並將位置詳載丈量報告。",
+        "visual": "用三枚棋子排出轉角，再把中間一枚向外移，請觀眾在兩張路口圖上重拉最短線。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "R142-S01 TR55.3；Note (ii)、(iii) R142-S02 Riding the shortest possible route；Bicycle calibration；Calculate the constant for the day；Appendix 2",
+      "notes": "這是規則對臨時邊界的要求，不據此推定任何特定比賽的錐筒曾被移動。",
+      "origin": "wave142-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-cc9f62ce41162fd9",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S01 TR55.3；Note (ii)、(iii) R142-S02 Riding the shortest possible route；Bicycle calibration；Calculate the constant for the day；Appendix 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8f94c3c0a51ecacd",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S01 TR55.3；Note (ii)、(iii) R142-S02 Riding the shortest possible route；Bicycle calibration；Calculate the constant for the day；Appendix 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0204"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0205",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "倫敦奧運丈量員在兩根燈柱間鋪尺，去程 328.645 公尺、回程 328.648 公尺，正式採用值怎麼會比兩個都短？",
+      "mechanism_key": "x142.marathon.tape_correction",
+      "answer_target": "團隊在 2012 年六月十三日於 The Mall 第 18 與 30 號燈柱東側定點，先取往返平均 328.6465 公尺，再以尺的校驗、現場拉力及當晚 11°C 做修正，採用 328.597 公尺。",
+      "scope": "每 50 公尺的尺長／拉力與溫度修正各為 −2.3、−5.2 毫米。這兩根燈柱只界定校正路段。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "團隊在 2012 年六月十三日於 The Mall 第 18 與 30 號燈柱東側定點，先取往返平均 328.6465 公尺，再以尺的校驗、現場拉力及當晚 11°C 做修正，採用 328.597 公尺。",
+        "visual": "在方格紙畫六格長段和一格尾段，寫上往返兩張讀數；取平均後再加上修正。",
+        "seconds": [
+          27,
+          43
+        ]
+      },
+      "source_locator": "R142-S04 The Length of the Calibration Course in The Mall；Independent Check Using a Laser Ranger；Summary & Comparison of Data",
+      "notes": "每 50 公尺的尺長／拉力與溫度修正各為 −2.3、−5.2 毫米。這兩根燈柱只界定校正路段。",
+      "origin": "wave142-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-b450559d4b1e6814",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S04 The Length of the Calibration Course in The Mall；Independent Check Using a Laser Ranger；Summary & Comparison of Data",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0205"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0206",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "同兩根倫敦燈柱，雷射回算的路段多出 34 毫米，可以把這 34 毫米貼到整場馬拉松上嗎？",
+      "mechanism_key": "x142.marathon.laser_check",
+      "answer_target": "報告比較的是同一段校正路。鋼尺修正後為 328.597 公尺，雷射得 328.631 公尺，差 34 毫米。當天丈量所採用的基線仍為鋼尺值，這項比較沒有直接測出全程誤差。",
+      "scope": "兩方法的報告出於同一團隊。NIST 另記載在 60 公尺隧道內分段校驗一把 100 公尺尺，實驗室條件與不確定度均不可移作賽道精度，該新聞未公布能配對倫敦報告的校驗編號。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "報告比較的是同一段校正路。鋼尺修正後為 328.597 公尺，雷射得 328.631 公尺，差 34 毫米。當天丈量所採用的基線仍為鋼尺值，這項比較沒有直接測出全程誤差。",
+        "visual": "讓觀眾把「34 毫米」的紙條貼到燈柱之間或全程地圖，翻看原報告量的是哪一段。",
+        "seconds": [
+          23,
+          36
+        ]
+      },
+      "source_locator": "R142-S04 The Length of the Calibration Course in The Mall；Independent Check Using a Laser Ranger；Summary & Comparison of Data R142-S05 2012-06-27，作者訪 Blackburn／官頁124–130行",
+      "notes": "兩方法的報告出於同一團隊。NIST 另記載在 60 公尺隧道內分段校驗一把 100 公尺尺，實驗室條件與不確定度均不可移作賽道精度，該新聞未公布能配對倫敦報告的校驗編號。",
+      "origin": "wave142-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-b450559d4b1e6814",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S04 The Length of the Calibration Course in The Mall；Independent Check Using a Laser Ranger；Summary & Comparison of Data R142-S05 2012-06-27，作者訪 Blackburn／官頁124–130行",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-1912496b45c2fee1",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S04 The Length of the Calibration Course in The Mall；Independent Check Using a Laser Ranger；Summary & Comparison of Data R142-S05 2012-06-27，作者訪 Blackburn／官頁124–130行",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0206"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0207",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "自行車騎上這條已知長度的路，為什麼同一張表要在丈量賽道前、後各填四次？",
+      "mechanism_key": "x142.marathon.ratio_bike",
+      "answer_target": "共同手冊的表格以各次終讀數減起讀數，算出平均格數，除以已知基線再換算每公里。把前後校正所得的兩個常數平均，作當日換算基準；倫敦資料有實填的兩組讀數。",
+      "scope": "表中前後常數均已乘防短係數，不能再多乘一次。空白表本身不是另一場實測。 前後常數取平均是一般程序，手冊 Appendix 2 指出特定情況可採兩者較大值。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "共同手冊的表格以各次終讀數減起讀數，算出平均格數，除以已知基線再換算每公里。把前後校正所得的兩個常數平均，作當日換算基準；倫敦資料有實填的兩組讀數。",
+        "visual": "在紙上用兩色夾子標起點和終點，先做差，再翻到倫敦丈量表找四趟騎行各自的讀數。",
+        "seconds": [
+          23,
+          36
+        ]
+      },
+      "source_locator": "R142-S03 表格內前後校正與日期/溫度/起訖讀數各欄 R142-S02 Riding the shortest possible route；Bicycle calibration；Calculate the constant for the day；Appendix 2 R142-S04 The Length of the Calibration Course in The Mall；Independent Check Using a Laser Ranger；Summary & Comparison of Data",
+      "notes": "表中前後常數均已乘防短係數，不能再多乘一次。空白表本身不是另一場實測。 前後常數取平均是一般程序，手冊 Appendix 2 指出特定情況可採兩者較大值。",
+      "origin": "wave142-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-d69636bc2a4bfa8b",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S03 表格內前後校正與日期/溫度/起訖讀數各欄 R142-S02 Riding the shortest possible route；Bicycle calibration；Calculate the constant for the day；Appendix 2 R142-S04 The Length of the Calibration Course in The Mall；Independent Check Using a Laser Ranger；Summary & Comparison of Data",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8f94c3c0a51ecacd",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S03 表格內前後校正與日期/溫度/起訖讀數各欄 R142-S02 Riding the shortest possible route；Bicycle calibration；Calculate the constant for the day；Appendix 2 R142-S04 The Length of the Calibration Course in The Mall；Independent Check Using a Laser Ranger；Summary & Comparison of Data",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b450559d4b1e6814",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S03 表格內前後校正與日期/溫度/起訖讀數各欄 R142-S02 Riding the shortest possible route；Bicycle calibration；Calculate the constant for the day；Appendix 2 R142-S04 The Length of the Calibration Course in The Mall；Independent Check Using a Laser Ranger；Summary & Comparison of Data",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0207"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0208",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "自行車輪上的「每公里格數」已經算出來，為什麼表格還把它乘上 1.001？",
+      "mechanism_key": "x142.marathon.factor",
+      "answer_target": "這是為防路線在覆測時比公稱距離短而使用的係數。世界田徑總會建議自行車丈量採 0.1%，共同手冊的表格乘 1.001；確定路線的方法和某名選手多跑多少分屬兩件事。",
+      "scope": "係數是丈量流程的一步。選手實際走線、儀器誤差與路線日後的改動不能由它推算。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "這是為防路線在覆測時比公稱距離短而使用的係數。世界田徑總會建議自行車丈量採 0.1%，共同手冊的表格乘 1.001；確定路線的方法和某名選手多跑多少分屬兩件事。",
+        "visual": "在填完的每公里格數旁加一張 1.001 小卡。觀眾把這張卡放回丈量表或自己的手錶。",
+        "seconds": [
+          17,
+          29
+        ]
+      },
+      "source_locator": "R142-S01 TR55.3；Note (ii)、(iii) R142-S03 表格內前後校正與日期/溫度/起訖讀數各欄 R142-S02 Riding the shortest possible route；Bicycle calibration；Calculate the constant for the day；Appendix 2",
+      "notes": "係數是丈量流程的一步。選手實際走線、儀器誤差與路線日後的改動不能由它推算。",
+      "origin": "wave142-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-cc9f62ce41162fd9",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S01 TR55.3；Note (ii)、(iii) R142-S03 表格內前後校正與日期/溫度/起訖讀數各欄 R142-S02 Riding the shortest possible route；Bicycle calibration；Calculate the constant for the day；Appendix 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-d69636bc2a4bfa8b",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S01 TR55.3；Note (ii)、(iii) R142-S03 表格內前後校正與日期/溫度/起訖讀數各欄 R142-S02 Riding the shortest possible route；Bicycle calibration；Calculate the constant for the day；Appendix 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8f94c3c0a51ecacd",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S01 TR55.3；Note (ii)、(iii) R142-S03 表格內前後校正與日期/溫度/起訖讀數各欄 R142-S02 Riding the shortest possible route；Bicycle calibration；Calculate the constant for the day；Appendix 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0208"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0209",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "把同一段移動連成折線，為何一種畫法使結果偏長，另一種畫法卻會把一個彎量短？",
+      "mechanism_key": "x142.marathon.jitter_and_chord",
+      "answer_target": "定位點在直線兩側偏移，逐段加總會產生鋸齒；研究證明在插值誤差可忽略的條件下，量測誤差可造成系統性偏長。取樣很疏、漏掉彎中位置時，以兩端的直線代替弧線則可低估。",
+      "scope": "同時比較兩種方向。K115-0207 已談照片補點在河中，單獨重講跨彎補點不另成題。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "定位點在直線兩側偏移，逐段加總會產生鋸齒；研究證明在插值誤差可忽略的條件下，量測誤差可造成系統性偏長。取樣很疏、漏掉彎中位置時，以兩端的直線代替弧線則可低估。",
+        "visual": "在直線兩側貼點、用線段相連；再在大彎只留首尾，把直線和彎的長度並排。",
+        "seconds": [
+          35,
+          48
+        ]
+      },
+      "source_locator": "R142-S06 §3與 §5 實驗、§6 Discussion",
+      "notes": "同時比較兩種方向。K115-0207 已談照片補點在河中，單獨重講跨彎補點不另成題。",
+      "origin": "wave142-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-e20494640eda51e7",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S06 §3與 §5 實驗、§6 Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0209"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0210",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "同一排定位點，全部向旁邊移一步，和每隔一點就往反邊移，逐段相加的距離會一樣嗎？",
+      "mechanism_key": "x142.marathon.offset_neighbours",
+      "answer_target": "整排平移會改變畫在地圖上的位置，卻保留各相鄰點間距；左右交替偏移的點會使原本的直路變成折線。作者指出，在其模型條件下，相鄰測位誤差間的相關程度也會影響對距離的高估。",
+      "scope": "兩幅幾何圖是教學示例，原研究包含行人與車輛，沒有量到開場那位假設跑者的手錶。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "整排平移會改變畫在地圖上的位置，卻保留各相鄰點間距；左右交替偏移的點會使原本的直路變成折線。作者指出，在其模型條件下，相鄰測位誤差間的相關程度也會影響對距離的高估。",
+        "visual": "兩張透明紙各貼一排點，在底下放直路，分別整張挪動和逐點挪動，最後都以棉線加總。",
+        "seconds": [
+          31,
+          45
+        ]
+      },
+      "source_locator": "R142-S06 §3與 §5 實驗、§6 Discussion",
+      "notes": "兩幅幾何圖是教學示例，原研究包含行人與車輛，沒有量到開場那位假設跑者的手錶。",
+      "origin": "wave142-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-e20494640eda51e7",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S06 §3與 §5 實驗、§6 Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0210"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0211",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "同一人戴著八款錶換城市街道、林地和跑道測，能先猜它們都把距離算長嗎？",
+      "mechanism_key": "x142.marathon.watch_course",
+      "answer_target": "研究以同一位受試者比較八款定位運動錶，在三種場地各做十二段走、跑或騎的量測。城市及林地多傾向低估；田徑場中有六款呈現高估傾向。",
+      "scope": "取用原論文指定的路段與當時型號，不以平均方向代替某位選手或任何一款新品。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "研究以同一位受試者比較八款定位運動錶，在三種場地各做十二段走、跑或騎的量測。城市及林地多傾向低估；田徑場中有六款呈現高估傾向。",
+        "visual": "先遮去表 2 至 4 的結果，按戶外場地翻出正負方向，把六款在跑道的結果保留在該欄。",
+        "seconds": [
+          38,
+          54
+        ]
+      },
+      "source_locator": "R142-S07 Methods、Table 1–4、Results 的城市/林地/跑道與三種活動",
+      "notes": "取用原論文指定的路段與當時型號，不以平均方向代替某位選手或任何一款新品。",
+      "origin": "wave142-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-8c51262d039938a0",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S07 Methods、Table 1–4、Results 的城市/林地/跑道與三種活動",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0211"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0212",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "八款運動錶的平均絕對百分誤差落在 3.2% 到 6.1%，能拿這一行判定自己的錶究竟多跑還是少跑嗎？",
+      "mechanism_key": "x142.marathon.watch_mape",
+      "answer_target": "平均絕對百分誤差先取每次偏差的大小、去除正負方向；各裝置跨場景的平均落在這個區間。要判斷哪裡偏長、哪裡偏短，得回看場地別的有方向差異。",
+      "scope": "參照路段從 404.0 到 4,296.9 公尺。該研究沒給任一全馬手錶讀數的固定換算率。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "平均絕對百分誤差先取每次偏差的大小、去除正負方向；各裝置跨場景的平均落在這個區間。要判斷哪裡偏長、哪裡偏短，得回看場地別的有方向差異。",
+        "visual": "用等長紙條標出一正一負，翻面後只剩誤差大小，再把跑者想加減的箭頭暫時拿掉。",
+        "seconds": [
+          33,
+          50
+        ]
+      },
+      "source_locator": "R142-S07 Methods、Table 1–4、Results 的城市/林地/跑道與三種活動",
+      "notes": "參照路段從 404.0 到 4,296.9 公尺。該研究沒給任一全馬手錶讀數的固定換算率。",
+      "origin": "wave142-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-8c51262d039938a0",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S07 Methods、Table 1–4、Results 的城市/林地/跑道與三種活動",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0212"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0213",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "Yehualaw 跑出半馬 1:03:44，世界田徑總會的年末公報為什麼把它寫在不予認證欄？",
+      "mechanism_key": "x142.marathon.larne_verdict",
+      "answer_target": "2021 年八月二十九日 Larne 的這筆成績在第 228 期公報與「場地短 54 公尺」列在同一行，不能認證為該項世界紀錄。隔年她又在當地跑出 1:04:22，是另一年比賽。",
+      "scope": "當年並沒有先批准該紀錄再撤銷。原件沒有說哪裡使路線縮短或由誰造成。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "2021 年八月二十九日 Larne 的這筆成績在第 228 期公報與「場地短 54 公尺」列在同一行，不能認證為該項世界紀錄。隔年她又在當地跑出 1:04:22，是另一年比賽。",
+        "visual": "遮起公報同一行的理由，給觀眾判斷只看完賽時間是否足夠，另把隔年成績放到下一頁。",
+        "seconds": [
+          35,
+          56
+        ]
+      },
+      "source_locator": "R142-S12 Rejected / unratifiable，Yalemzerf Yehualaw，2021-08-29 Larne R142-S08 2022-08-28 report，回顧2021年賽後驗證",
+      "notes": "當年並沒有先批准該紀錄再撤銷。原件沒有說哪裡使路線縮短或由誰造成。",
+      "origin": "wave142-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-1cc468359bc4a55b",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S12 Rejected / unratifiable，Yalemzerf Yehualaw，2021-08-29 Larne R142-S08 2022-08-28 report，回顧2021年賽後驗證",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-d742c5a83957422a",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S12 Rejected / unratifiable，Yalemzerf Yehualaw，2021-08-29 Larne R142-S08 2022-08-28 report，回顧2021年賽後驗證",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0213"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K142-0214",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "這次路跑臨時換了路，還能用同一張紐約證書、加上一份跑者的錶上軌跡，替新路線作證嗎？",
+      "mechanism_key": "x142.marathon.changed_route",
+      "answer_target": "NY22001JHP 載明路線有所變更，原認證即失效，改後路線須重新認證。個人軌跡還受選線及定位誤差影響；要判斷哪一場跑了多遠，要有該場實際邊界和路線的丈量資料。",
+      "scope": "紐約以該張證書示範。臺灣田徑協會 2018 年辦法另列全馬、半馬的公稱距離，不代替另一地賽事的認證。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "NY22001JHP 載明路線有所變更，原認證即失效，改後路線須重新認證。個人軌跡還受選線及定位誤差影響；要判斷哪一場跑了多遠，要有該場實際邊界和路線的丈量資料。",
+        "visual": "把手機軌跡、公布的賽道路線、有效證書分成三疊；用手指沿終點前最後一彎對照當時開放範圍。",
+        "seconds": [
+          33,
+          48
+        ]
+      },
+      "source_locator": "R142-S09 證書p1–2與附圖；生效2022-08-26 R142-S01 TR55.3；Note (ii)、(iii) R142-S11 2018.5.17 版§2與程序及附錄 R142-S10 官頁29–37行",
+      "notes": "紐約以該張證書示範。臺灣田徑協會 2018 年辦法另列全馬、半馬的公稱距離，不代替另一地賽事的認證。",
+      "origin": "wave142-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-e5bd15fa57a0c12b",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S09 證書p1–2與附圖；生效2022-08-26 R142-S01 TR55.3；Note (ii)、(iii) R142-S11 2018.5.17 版§2與程序及附錄 R142-S10 官頁29–37行",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-cc9f62ce41162fd9",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S09 證書p1–2與附圖；生效2022-08-26 R142-S01 TR55.3；Note (ii)、(iii) R142-S11 2018.5.17 版§2與程序及附錄 R142-S10 官頁29–37行",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ead433973d50589c",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S09 證書p1–2與附圖；生效2022-08-26 R142-S01 TR55.3；Note (ii)、(iii) R142-S11 2018.5.17 版§2與程序及附錄 R142-S10 官頁29–37行",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-c12b480130edde70",
+          "origin": "wave142-research-20261120",
+          "locator": "R142-S09 證書p1–2與附圖；生效2022-08-26 R142-S01 TR55.3；Note (ii)、(iii) R142-S11 2018.5.17 版§2與程序及附錄 R142-S10 官頁29–37行",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave142-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K142-0214"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -370526,7 +371881,7 @@
   ],
   "raw_records": {
     "file": "pool-records.json",
-    "count": 8493
+    "count": 8520
   },
   "dedup": {
     "aliases": {
@@ -373993,6 +375348,33 @@
       "K141-0214": "K141-0214",
       "K141-0215": "K141-0215",
       "K141-0216": "K141-0216",
+      "K142-0101": "K142-0101",
+      "K142-0102": "K142-0102",
+      "K142-0103": "K142-0103",
+      "K142-0104": "K142-0104",
+      "K142-0105": "K142-0105",
+      "K142-0106": "K142-0106",
+      "K142-0001": "K142-0001",
+      "K142-0002": "K142-0002",
+      "K142-0003": "K142-0003",
+      "K142-0004": "K142-0004",
+      "K142-0005": "K142-0005",
+      "K142-0006": "K142-0006",
+      "K142-0007": "K142-0007",
+      "K142-0201": "K142-0201",
+      "K142-0202": "K142-0202",
+      "K142-0203": "K142-0203",
+      "K142-0204": "K142-0204",
+      "K142-0205": "K142-0205",
+      "K142-0206": "K142-0206",
+      "K142-0207": "K142-0207",
+      "K142-0208": "K142-0208",
+      "K142-0209": "K142-0209",
+      "K142-0210": "K142-0210",
+      "K142-0211": "K142-0211",
+      "K142-0212": "K142-0212",
+      "K142-0213": "K142-0213",
+      "K142-0214": "K142-0214",
       "F15001": "F15001",
       "F15002": "F15002",
       "F15003": "F15003",
@@ -419452,6 +420834,20 @@
         ]
       },
       {
+        "id": "K142-0202~K142-0208",
+        "a": "K142-0202",
+        "b": "K142-0208",
+        "question_score": 0.179,
+        "answer_score": 0.1,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北馬拉松大會介紹的自行車，輪上明明只有格數器，騎過終點怎麼還得交報告？",
+          "自行車輪上的「每公里格數」已經算出來，為什麼表格還把它乘上 1.001？"
+        ]
+      },
+      {
         "id": "E2004~E2023",
         "a": "E2004",
         "b": "E2023",
@@ -420751,6 +422147,20 @@
         "questions": [
           "美國進口水產抽驗表第 20 號冷凍蝦，10.18% 這個數字量的是什麼？",
           "兩列都寫同一家 S 公司，短重數字怎麼一列 5.91%、另一列 10.18%？"
+        ]
+      },
+      {
+        "id": "K142-0201~K142-0214",
+        "a": "K142-0201",
+        "b": "K142-0214",
+        "question_score": 0.16,
+        "answer_score": 0.138,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張紐約馬拉松證書，同時印著 42.195 公里和 19,924 公尺。哪一個才是跑者報名的距離？",
+          "這次路跑臨時換了路，還能用同一張紐約證書、加上一份跑者的錶上軌跡，替新路線作證嗎？"
         ]
       },
       {
@@ -422434,6 +423844,20 @@
         ]
       },
       {
+        "id": "K142-0203~K142-0204",
+        "a": "K142-0203",
+        "b": "K142-0204",
+        "question_score": 0.068,
+        "answer_score": 0.144,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "賽道彎了兩次，丈量單車該跟著中央線轉兩次，還是能斜跨路面去接下一個彎？",
+          "同一個十字路口，把比賽用的路錐往外挪一點，丈量員為何要重新看那張路口圖？"
+        ]
+      },
+      {
         "id": "L77-043~L77-044",
         "a": "L77-043",
         "b": "L77-044",
@@ -422669,6 +424093,20 @@
         "questions": [
           "鬩神星的直徑後來下修，能靠這一條測量把冥王星填回行星名單嗎？",
           "如果「清除軌道鄰域」看的是本領，為什麼比較重的鬩神星在這張表還低於冥王星？"
+        ]
+      },
+      {
+        "id": "K142-0205~K142-0206",
+        "a": "K142-0205",
+        "b": "K142-0206",
+        "question_score": 0.083,
+        "answer_score": 0.143,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "倫敦奧運丈量員在兩根燈柱間鋪尺，去程 328.645 公尺、回程 328.648 公尺，正式採用值怎麼會比兩個都短？",
+          "同兩根倫敦燈柱，雷射回算的路段多出 34 毫米，可以把這 34 毫米貼到整場馬拉松上嗎？"
         ]
       },
       {
@@ -424839,6 +426277,20 @@
         "questions": [
           "赫爾辛基近郊 L 線 03:33 開、03:20 到，怎麼看出它其實表定跑了四十七分鐘？",
           "赫爾辛基凌晨 02:30 發的 456N 在 04:45 到，乘客真的坐了兩小時十五分嗎？"
+        ]
+      },
+      {
+        "id": "K142-0204~K142-0208",
+        "a": "K142-0204",
+        "b": "K142-0208",
+        "question_score": 0,
+        "answer_score": 0.126,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一個十字路口，把比賽用的路錐往外挪一點，丈量員為何要重新看那張路口圖？",
+          "自行車輪上的「每公里格數」已經算出來，為什麼表格還把它乘上 1.001？"
         ]
       },
       {
@@ -428188,6 +429640,20 @@
         ]
       },
       {
+        "id": "K142-0201~K142-0213",
+        "a": "K142-0201",
+        "b": "K142-0213",
+        "question_score": 0,
+        "answer_score": 0.107,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張紐約馬拉松證書，同時印著 42.195 公里和 19,924 公尺。哪一個才是跑者報名的距離？",
+          "Yehualaw 跑出半馬 1:03:44，世界田徑總會的年末公報為什麼把它寫在不予認證欄？"
+        ]
+      },
+      {
         "id": "X34-001~X34-006",
         "a": "X34-001",
         "b": "X34-006",
@@ -428409,6 +429875,20 @@
         "questions": [
           "如果把巴黎百米的畫面停在六十公尺，當時領先萊爾斯的兩個人，最後都比他先到嗎？",
           "明明有 9.784 與 9.789，為什麼巴黎百米成績表不把前者寫成 9.78？"
+        ]
+      },
+      {
+        "id": "K142-0204~K142-0207",
+        "a": "K142-0204",
+        "b": "K142-0207",
+        "question_score": 0.105,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一個十字路口，把比賽用的路錐往外挪一點，丈量員為何要重新看那張路口圖？",
+          "自行車騎上這條已知長度的路，為什麼同一張表要在丈量賽道前、後各填四次？"
         ]
       },
       {
@@ -430176,6 +431656,20 @@
         ]
       },
       {
+        "id": "K142-0101~K142-0103",
+        "a": "K142-0101",
+        "b": "K142-0103",
+        "question_score": 0.097,
+        "answer_score": 0.034,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "白線在威尼斯酒杯上圍出一格格菱形，裡頭的小氣泡怎麼都跑到格子正中央？",
+          "威尼斯玻璃碗上像撒了金粉。把其中一點放大一百二十倍，為什麼會看見有稜有角的小片？"
+        ]
+      },
+      {
         "id": "L77-066~L77-068",
         "a": "L77-066",
         "b": "L77-068",
@@ -431279,6 +432773,20 @@
         "questions": [
           "白天兩條線看來差不多亮，台灣公路局為什麼還要用另一個讀值檢查夜間反光？",
           "台灣校園一條高抗滑黃線每月量了一次，白天看來夠亮，能不能據此保證雨夜也看得清楚？"
+        ]
+      },
+      {
+        "id": "K142-0207~K142-0208",
+        "a": "K142-0207",
+        "b": "K142-0208",
+        "question_score": 0.074,
+        "answer_score": 0.092,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "自行車騎上這條已知長度的路，為什麼同一張表要在丈量賽道前、後各填四次？",
+          "自行車輪上的「每公里格數」已經算出來，為什麼表格還把它乘上 1.001？"
         ]
       },
       {
@@ -433004,6 +434512,20 @@
         ]
       },
       {
+        "id": "K142-0209~K142-0210",
+        "a": "K142-0209",
+        "b": "K142-0210",
+        "question_score": 0.033,
+        "answer_score": 0.085,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把同一段移動連成折線，為何一種畫法使結果偏長，另一種畫法卻會把一個彎量短？",
+          "同一排定位點，全部向旁邊移一步，和每隔一點就往反邊移，逐段相加的距離會一樣嗎？"
+        ]
+      },
+      {
         "id": "K66-013~K73-002",
         "a": "K66-013",
         "b": "K73-002",
@@ -433533,6 +435055,20 @@
         "questions": [
           "澳洲工廠的 Dave 在春季少站一小時，為什麼薪資單還是算八小時？",
           "同一張時刻表上 03:03 到 03:50 出現兩次，怎麼辨認它在這一夜確實排了兩趟？"
+        ]
+      },
+      {
+        "id": "K142-0201~K142-0210",
+        "a": "K142-0201",
+        "b": "K142-0210",
+        "question_score": 0.083,
+        "answer_score": 0.045,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張紐約馬拉松證書，同時印著 42.195 公里和 19,924 公尺。哪一個才是跑者報名的距離？",
+          "同一排定位點，全部向旁邊移一步，和每隔一點就往反邊移，逐段相加的距離會一樣嗎？"
         ]
       },
       {
@@ -437260,6 +438796,20 @@
         ]
       },
       {
+        "id": "K142-0208~K142-0214",
+        "a": "K142-0208",
+        "b": "K142-0214",
+        "question_score": 0,
+        "answer_score": 0.072,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "自行車輪上的「每公里格數」已經算出來，為什麼表格還把它乘上 1.001？",
+          "這次路跑臨時換了路，還能用同一張紐約證書、加上一份跑者的錶上軌跡，替新路線作證嗎？"
+        ]
+      },
+      {
         "id": "K89-043~K89-045",
         "a": "K89-043",
         "b": "K89-045",
@@ -438114,6 +439664,20 @@
         ]
       },
       {
+        "id": "K142-0204~K142-0209",
+        "a": "K142-0204",
+        "b": "K142-0209",
+        "question_score": 0.07,
+        "answer_score": 0.031,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一個十字路口，把比賽用的路錐往外挪一點，丈量員為何要重新看那張路口圖？",
+          "把同一段移動連成折線，為何一種畫法使結果偏長，另一種畫法卻會把一個彎量短？"
+        ]
+      },
+      {
         "id": "P63-017~P63-018",
         "a": "P63-017",
         "b": "P63-018",
@@ -438503,6 +440067,48 @@
         "questions": [
           "引水人從另一艘船上看不見岩鹽船的載重線，英國港口檢查員靠岸後查到了什麼？",
           "巴拿馬運河文件同時提個船通航核准和載重線證書。兩個吃水上限不同時，應看哪個？"
+        ]
+      },
+      {
+        "id": "K142-0202~K142-0207",
+        "a": "K142-0202",
+        "b": "K142-0207",
+        "question_score": 0.069,
+        "answer_score": 0.018,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北馬拉松大會介紹的自行車，輪上明明只有格數器，騎過終點怎麼還得交報告？",
+          "自行車騎上這條已知長度的路，為什麼同一張表要在丈量賽道前、後各填四次？"
+        ]
+      },
+      {
+        "id": "K142-0203~K142-0207",
+        "a": "K142-0203",
+        "b": "K142-0207",
+        "question_score": 0.069,
+        "answer_score": 0.018,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "賽道彎了兩次，丈量單車該跟著中央線轉兩次，還是能斜跨路面去接下一個彎？",
+          "自行車騎上這條已知長度的路，為什麼同一張表要在丈量賽道前、後各填四次？"
+        ]
+      },
+      {
+        "id": "K142-0203~K142-0209",
+        "a": "K142-0203",
+        "b": "K142-0209",
+        "question_score": 0.069,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "賽道彎了兩次，丈量單車該跟著中央線轉兩次，還是能斜跨路面去接下一個彎？",
+          "把同一段移動連成折線，為何一種畫法使結果偏長，另一種畫法卻會把一個彎量短？"
         ]
       },
       {
@@ -439850,6 +441456,20 @@
         ]
       },
       {
+        "id": "K142-0202~K142-0214",
+        "a": "K142-0202",
+        "b": "K142-0214",
+        "question_score": 0,
+        "answer_score": 0.066,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北馬拉松大會介紹的自行車，輪上明明只有格數器，騎過終點怎麼還得交報告？",
+          "這次路跑臨時換了路，還能用同一張紐約證書、加上一份跑者的錶上軌跡，替新路線作證嗎？"
+        ]
+      },
+      {
         "id": "E2045~E2185",
         "a": "E2045",
         "b": "E2185",
@@ -440169,6 +441789,48 @@
         "questions": [
           "赫爾辛基凌晨 02:30 發的 456N 在 04:45 到，乘客真的坐了兩小時十五分嗎？",
           "把打卡單換成 1979 年 9 月 30 日台北的 23:30，地點和年月日都齊了，為什麼仍可能少一格？"
+        ]
+      },
+      {
+        "id": "K142-0204~K142-0210",
+        "a": "K142-0204",
+        "b": "K142-0210",
+        "question_score": 0.065,
+        "answer_score": 0.015,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一個十字路口，把比賽用的路錐往外挪一點，丈量員為何要重新看那張路口圖？",
+          "同一排定位點，全部向旁邊移一步，和每隔一點就往反邊移，逐段相加的距離會一樣嗎？"
+        ]
+      },
+      {
+        "id": "K142-0208~K142-0213",
+        "a": "K142-0208",
+        "b": "K142-0213",
+        "question_score": 0.065,
+        "answer_score": 0.029,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "自行車輪上的「每公里格數」已經算出來，為什麼表格還把它乘上 1.001？",
+          "Yehualaw 跑出半馬 1:03:44，世界田徑總會的年末公報為什麼把它寫在不予認證欄？"
+        ]
+      },
+      {
+        "id": "K142-0209~K142-0211",
+        "a": "K142-0209",
+        "b": "K142-0211",
+        "question_score": 0.034,
+        "answer_score": 0.065,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把同一段移動連成折線，為何一種畫法使結果偏長，另一種畫法卻會把一個彎量短？",
+          "同一人戴著八款錶換城市街道、林地和跑道測，能先猜它們都把距離算長嗎？"
         ]
       },
       {
@@ -441009,6 +442671,62 @@
         "questions": [
           "同一張散裝船舷側照上，9M 到 14M 與橫線穿過的圈，哪邊記水面在船上到哪裡？",
           "加拿大駁船舷側還留著一套舊線，調查員怎麼知道不能拿它來判事發時是否超載？"
+        ]
+      },
+      {
+        "id": "K142-0202~K142-0206",
+        "a": "K142-0202",
+        "b": "K142-0206",
+        "question_score": 0.063,
+        "answer_score": 0.034,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北馬拉松大會介紹的自行車，輪上明明只有格數器，騎過終點怎麼還得交報告？",
+          "同兩根倫敦燈柱，雷射回算的路段多出 34 毫米，可以把這 34 毫米貼到整場馬拉松上嗎？"
+        ]
+      },
+      {
+        "id": "K142-0207~K142-0214",
+        "a": "K142-0207",
+        "b": "K142-0214",
+        "question_score": 0.063,
+        "answer_score": 0.015,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "自行車騎上這條已知長度的路，為什麼同一張表要在丈量賽道前、後各填四次？",
+          "這次路跑臨時換了路，還能用同一張紐約證書、加上一份跑者的錶上軌跡，替新路線作證嗎？"
+        ]
+      },
+      {
+        "id": "K142-0210~K142-0211",
+        "a": "K142-0210",
+        "b": "K142-0211",
+        "question_score": 0.063,
+        "answer_score": 0.015,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一排定位點，全部向旁邊移一步，和每隔一點就往反邊移，逐段相加的距離會一樣嗎？",
+          "同一人戴著八款錶換城市街道、林地和跑道測，能先猜它們都把距離算長嗎？"
+        ]
+      },
+      {
+        "id": "K142-0212~K142-0214",
+        "a": "K142-0212",
+        "b": "K142-0214",
+        "question_score": 0.026,
+        "answer_score": 0.063,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "八款運動錶的平均絕對百分誤差落在 3.2% 到 6.1%，能拿這一行判定自己的錶究竟多跑還是少跑嗎？",
+          "這次路跑臨時換了路，還能用同一張紐約證書、加上一份跑者的錶上軌跡，替新路線作證嗎？"
         ]
       },
       {
@@ -442062,6 +443780,34 @@
         ]
       },
       {
+        "id": "K142-0201~K142-0207",
+        "a": "K142-0201",
+        "b": "K142-0207",
+        "question_score": 0.06,
+        "answer_score": 0.016,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張紐約馬拉松證書，同時印著 42.195 公里和 19,924 公尺。哪一個才是跑者報名的距離？",
+          "自行車騎上這條已知長度的路，為什麼同一張表要在丈量賽道前、後各填四次？"
+        ]
+      },
+      {
+        "id": "K142-0201~K142-0209",
+        "a": "K142-0201",
+        "b": "K142-0209",
+        "question_score": 0.06,
+        "answer_score": 0.031,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張紐約馬拉松證書，同時印著 42.195 公里和 19,924 公尺。哪一個才是跑者報名的距離？",
+          "把同一段移動連成折線，為何一種畫法使結果偏長，另一種畫法卻會把一個彎量短？"
+        ]
+      },
+      {
         "id": "I3024~I3029",
         "a": "I3024",
         "b": "I3029",
@@ -442325,6 +444071,48 @@
         "questions": [
           "同在泰晤士河口、同是五月，兩份港務局表格為什麼抄不出同一個水的密度？",
           "船一件貨都沒卸，為什麼 2024 年同一水閘可以提早放寬到 13.71 公尺？"
+        ]
+      },
+      {
+        "id": "K142-0201~K142-0204",
+        "a": "K142-0201",
+        "b": "K142-0204",
+        "question_score": 0.059,
+        "answer_score": 0.017,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張紐約馬拉松證書，同時印著 42.195 公里和 19,924 公尺。哪一個才是跑者報名的距離？",
+          "同一個十字路口，把比賽用的路錐往外挪一點，丈量員為何要重新看那張路口圖？"
+        ]
+      },
+      {
+        "id": "K142-0201~K142-0205",
+        "a": "K142-0201",
+        "b": "K142-0205",
+        "question_score": 0.051,
+        "answer_score": 0.059,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張紐約馬拉松證書，同時印著 42.195 公里和 19,924 公尺。哪一個才是跑者報名的距離？",
+          "倫敦奧運丈量員在兩根燈柱間鋪尺，去程 328.645 公尺、回程 328.648 公尺，正式採用值怎麼會比兩個都短？"
+        ]
+      },
+      {
+        "id": "K142-0204~K142-0205",
+        "a": "K142-0204",
+        "b": "K142-0205",
+        "question_score": 0.059,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一個十字路口，把比賽用的路錐往外挪一點，丈量員為何要重新看那張路口圖？",
+          "倫敦奧運丈量員在兩根燈柱間鋪尺，去程 328.645 公尺、回程 328.648 公尺，正式採用值怎麼會比兩個都短？"
         ]
       },
       {
@@ -442759,6 +444547,34 @@
         "questions": [
           "若證書給足 120 毫米淡水裕量，遇比重 1.010 的河水，怎麼會只算 72 毫米？",
           "加拿大駁船舷側還留著一套舊線，調查員怎麼知道不能拿它來判事發時是否超載？"
+        ]
+      },
+      {
+        "id": "K142-0201~K142-0202",
+        "a": "K142-0201",
+        "b": "K142-0202",
+        "question_score": 0.058,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張紐約馬拉松證書，同時印著 42.195 公里和 19,924 公尺。哪一個才是跑者報名的距離？",
+          "臺北馬拉松大會介紹的自行車，輪上明明只有格數器，騎過終點怎麼還得交報告？"
+        ]
+      },
+      {
+        "id": "K142-0201~K142-0211",
+        "a": "K142-0201",
+        "b": "K142-0211",
+        "question_score": 0.058,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張紐約馬拉松證書，同時印著 42.195 公里和 19,924 公尺。哪一個才是跑者報名的距離？",
+          "同一人戴著八款錶換城市街道、林地和跑道測，能先猜它們都把距離算長嗎？"
         ]
       },
       {
@@ -443781,6 +445597,20 @@
         "questions": [
           "勘劃人員在船身上量完標線，為什麼台灣規則還交代要回證書查哪些線已刪除？",
           "巴拿馬運河文件同時提個船通航核准和載重線證書。兩個吃水上限不同時，應看哪個？"
+        ]
+      },
+      {
+        "id": "K142-0201~K142-0206",
+        "a": "K142-0201",
+        "b": "K142-0206",
+        "question_score": 0.056,
+        "answer_score": 0.016,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張紐約馬拉松證書，同時印著 42.195 公里和 19,924 公尺。哪一個才是跑者報名的距離？",
+          "同兩根倫敦燈柱，雷射回算的路段多出 34 毫米，可以把這 34 毫米貼到整場馬拉松上嗎？"
         ]
       },
       {
@@ -447074,6 +448904,20 @@
         ]
       },
       {
+        "id": "K142-0204~K142-0206",
+        "a": "K142-0204",
+        "b": "K142-0206",
+        "question_score": 0.032,
+        "answer_score": 0.048,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一個十字路口，把比賽用的路錐往外挪一點，丈量員為何要重新看那張路口圖？",
+          "同兩根倫敦燈柱，雷射回算的路段多出 34 毫米，可以把這 34 毫米貼到整場馬拉松上嗎？"
+        ]
+      },
+      {
         "id": "P53-001~P54-002",
         "a": "P53-001",
         "b": "P54-002",
@@ -448936,6 +450780,20 @@
         ]
       },
       {
+        "id": "K142-0206~K142-0213",
+        "a": "K142-0206",
+        "b": "K142-0213",
+        "question_score": 0.029,
+        "answer_score": 0.044,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同兩根倫敦燈柱，雷射回算的路段多出 34 毫米，可以把這 34 毫米貼到整場馬拉松上嗎？",
+          "Yehualaw 跑出半馬 1:03:44，世界田徑總會的年末公報為什麼把它寫在不予認證欄？"
+        ]
+      },
+      {
         "id": "P076~P077",
         "a": "P076",
         "b": "P077",
@@ -449594,6 +451452,20 @@
         ]
       },
       {
+        "id": "K142-0213~K142-0214",
+        "a": "K142-0213",
+        "b": "K142-0214",
+        "question_score": 0,
+        "answer_score": 0.043,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Yehualaw 跑出半馬 1:03:44，世界田徑總會的年末公報為什麼把它寫在不予認證欄？",
+          "這次路跑臨時換了路，還能用同一張紐約證書、加上一份跑者的錶上軌跡，替新路線作證嗎？"
+        ]
+      },
+      {
         "id": "P020~P138",
         "a": "P020",
         "b": "P138",
@@ -450210,6 +452082,20 @@
         ]
       },
       {
+        "id": "K142-0210~K142-0214",
+        "a": "K142-0210",
+        "b": "K142-0214",
+        "question_score": 0.029,
+        "answer_score": 0.042,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一排定位點，全部向旁邊移一步，和每隔一點就往反邊移，逐段相加的距離會一樣嗎？",
+          "這次路跑臨時換了路，還能用同一張紐約證書、加上一份跑者的錶上軌跡，替新路線作證嗎？"
+        ]
+      },
+      {
         "id": "R41001~R41005",
         "a": "R41001",
         "b": "R41005",
@@ -450753,6 +452639,20 @@
         "questions": [
           "同款 UV 膜分別貼在雙層窗兩側，十條和十一條草雀航線如何分？",
           "點貼在公車亭外面，原來從亭內側撞到玻璃的紀錄有變嗎？"
+        ]
+      },
+      {
+        "id": "K142-0205~K142-0213",
+        "a": "K142-0205",
+        "b": "K142-0213",
+        "question_score": 0,
+        "answer_score": 0.041,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "倫敦奧運丈量員在兩根燈柱間鋪尺，去程 328.645 公尺、回程 328.648 公尺，正式採用值怎麼會比兩個都短？",
+          "Yehualaw 跑出半馬 1:03:44，世界田徑總會的年末公報為什麼把它寫在不予認證欄？"
         ]
       },
       {
@@ -454200,6 +456100,34 @@
         ]
       },
       {
+        "id": "K142-0202~K142-0204",
+        "a": "K142-0202",
+        "b": "K142-0204",
+        "question_score": 0,
+        "answer_score": 0.036,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北馬拉松大會介紹的自行車，輪上明明只有格數器，騎過終點怎麼還得交報告？",
+          "同一個十字路口，把比賽用的路錐往外挪一點，丈量員為何要重新看那張路口圖？"
+        ]
+      },
+      {
+        "id": "K142-0207~K142-0209",
+        "a": "K142-0207",
+        "b": "K142-0209",
+        "question_score": 0.036,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "自行車騎上這條已知長度的路，為什麼同一張表要在丈量賽道前、後各填四次？",
+          "把同一段移動連成折線，為何一種畫法使結果偏長，另一種畫法卻會把一個彎量短？"
+        ]
+      },
+      {
         "id": "L76-005~L76-006",
         "a": "L76-005",
         "b": "L76-006",
@@ -455586,6 +457514,34 @@
         ]
       },
       {
+        "id": "K142-0204~K142-0211",
+        "a": "K142-0204",
+        "b": "K142-0211",
+        "question_score": 0.034,
+        "answer_score": 0.017,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一個十字路口，把比賽用的路錐往外挪一點，丈量員為何要重新看那張路口圖？",
+          "同一人戴著八款錶換城市街道、林地和跑道測，能先猜它們都把距離算長嗎？"
+        ]
+      },
+      {
+        "id": "K142-0207~K142-0211",
+        "a": "K142-0207",
+        "b": "K142-0211",
+        "question_score": 0.034,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "自行車騎上這條已知長度的路，為什麼同一張表要在丈量賽道前、後各填四次？",
+          "同一人戴著八款錶換城市街道、林地和跑道測，能先猜它們都把距離算長嗎？"
+        ]
+      },
+      {
         "id": "K116-0202~K116-0216",
         "a": "K116-0202",
         "b": "K116-0216",
@@ -456566,6 +458522,76 @@
         ]
       },
       {
+        "id": "K142-0202~K142-0213",
+        "a": "K142-0202",
+        "b": "K142-0213",
+        "question_score": 0,
+        "answer_score": 0.033,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北馬拉松大會介紹的自行車，輪上明明只有格數器，騎過終點怎麼還得交報告？",
+          "Yehualaw 跑出半馬 1:03:44，世界田徑總會的年末公報為什麼把它寫在不予認證欄？"
+        ]
+      },
+      {
+        "id": "K142-0203~K142-0208",
+        "a": "K142-0203",
+        "b": "K142-0208",
+        "question_score": 0,
+        "answer_score": 0.033,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "賽道彎了兩次，丈量單車該跟著中央線轉兩次，還是能斜跨路面去接下一個彎？",
+          "自行車輪上的「每公里格數」已經算出來，為什麼表格還把它乘上 1.001？"
+        ]
+      },
+      {
+        "id": "K142-0206~K142-0207",
+        "a": "K142-0206",
+        "b": "K142-0207",
+        "question_score": 0.033,
+        "answer_score": 0.031,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同兩根倫敦燈柱，雷射回算的路段多出 34 毫米，可以把這 34 毫米貼到整場馬拉松上嗎？",
+          "自行車騎上這條已知長度的路，為什麼同一張表要在丈量賽道前、後各填四次？"
+        ]
+      },
+      {
+        "id": "K142-0206~K142-0211",
+        "a": "K142-0206",
+        "b": "K142-0211",
+        "question_score": 0,
+        "answer_score": 0.033,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同兩根倫敦燈柱，雷射回算的路段多出 34 毫米，可以把這 34 毫米貼到整場馬拉松上嗎？",
+          "同一人戴著八款錶換城市街道、林地和跑道測，能先猜它們都把距離算長嗎？"
+        ]
+      },
+      {
+        "id": "K142-0207~K142-0210",
+        "a": "K142-0207",
+        "b": "K142-0210",
+        "question_score": 0.033,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "自行車騎上這條已知長度的路，為什麼同一張表要在丈量賽道前、後各填四次？",
+          "同一排定位點，全部向旁邊移一步，和每隔一點就往反邊移，逐段相加的距離會一樣嗎？"
+        ]
+      },
+      {
         "id": "M5001~M5002",
         "a": "M5001",
         "b": "M5002",
@@ -457448,6 +459474,20 @@
         ]
       },
       {
+        "id": "K142-0209~K142-0212",
+        "a": "K142-0209",
+        "b": "K142-0212",
+        "question_score": 0,
+        "answer_score": 0.032,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把同一段移動連成折線，為何一種畫法使結果偏長，另一種畫法卻會把一個彎量短？",
+          "八款運動錶的平均絕對百分誤差落在 3.2% 到 6.1%，能拿這一行判定自己的錶究竟多跑還是少跑嗎？"
+        ]
+      },
+      {
         "id": "K90-036~T52-002",
         "a": "T52-002",
         "b": "K90-036",
@@ -458302,6 +460342,76 @@
         ]
       },
       {
+        "id": "K142-0201~K142-0208",
+        "a": "K142-0201",
+        "b": "K142-0208",
+        "question_score": 0.031,
+        "answer_score": 0.031,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張紐約馬拉松證書，同時印著 42.195 公里和 19,924 公尺。哪一個才是跑者報名的距離？",
+          "自行車輪上的「每公里格數」已經算出來，為什麼表格還把它乘上 1.001？"
+        ]
+      },
+      {
+        "id": "K142-0204~K142-0214",
+        "a": "K142-0204",
+        "b": "K142-0214",
+        "question_score": 0.031,
+        "answer_score": 0.016,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一個十字路口，把比賽用的路錐往外挪一點，丈量員為何要重新看那張路口圖？",
+          "這次路跑臨時換了路，還能用同一張紐約證書、加上一份跑者的錶上軌跡，替新路線作證嗎？"
+        ]
+      },
+      {
+        "id": "K142-0205~K142-0212",
+        "a": "K142-0205",
+        "b": "K142-0212",
+        "question_score": 0.025,
+        "answer_score": 0.031,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "倫敦奧運丈量員在兩根燈柱間鋪尺，去程 328.645 公尺、回程 328.648 公尺，正式採用值怎麼會比兩個都短？",
+          "八款運動錶的平均絕對百分誤差落在 3.2% 到 6.1%，能拿這一行判定自己的錶究竟多跑還是少跑嗎？"
+        ]
+      },
+      {
+        "id": "K142-0209~K142-0214",
+        "a": "K142-0209",
+        "b": "K142-0214",
+        "question_score": 0.031,
+        "answer_score": 0.029,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把同一段移動連成折線，為何一種畫法使結果偏長，另一種畫法卻會把一個彎量短？",
+          "這次路跑臨時換了路，還能用同一張紐約證書、加上一份跑者的錶上軌跡，替新路線作證嗎？"
+        ]
+      },
+      {
+        "id": "K142-0211~K142-0213",
+        "a": "K142-0211",
+        "b": "K142-0213",
+        "question_score": 0,
+        "answer_score": 0.031,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一人戴著八款錶換城市街道、林地和跑道測，能先猜它們都把距離算長嗎？",
+          "Yehualaw 跑出半馬 1:03:44，世界田徑總會的年末公報為什麼把它寫在不予認證欄？"
+        ]
+      },
+      {
         "id": "R41003~R41008",
         "a": "R41003",
         "b": "R41008",
@@ -459044,6 +461154,62 @@
         ]
       },
       {
+        "id": "K142-0205~K142-0207",
+        "a": "K142-0205",
+        "b": "K142-0207",
+        "question_score": 0.03,
+        "answer_score": 0.015,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "倫敦奧運丈量員在兩根燈柱間鋪尺，去程 328.645 公尺、回程 328.648 公尺，正式採用值怎麼會比兩個都短？",
+          "自行車騎上這條已知長度的路，為什麼同一張表要在丈量賽道前、後各填四次？"
+        ]
+      },
+      {
+        "id": "K142-0206~K142-0208",
+        "a": "K142-0206",
+        "b": "K142-0208",
+        "question_score": 0,
+        "answer_score": 0.03,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同兩根倫敦燈柱，雷射回算的路段多出 34 毫米，可以把這 34 毫米貼到整場馬拉松上嗎？",
+          "自行車輪上的「每公里格數」已經算出來，為什麼表格還把它乘上 1.001？"
+        ]
+      },
+      {
+        "id": "K142-0206~K142-0214",
+        "a": "K142-0206",
+        "b": "K142-0214",
+        "question_score": 0,
+        "answer_score": 0.03,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同兩根倫敦燈柱，雷射回算的路段多出 34 毫米，可以把這 34 毫米貼到整場馬拉松上嗎？",
+          "這次路跑臨時換了路，還能用同一張紐約證書、加上一份跑者的錶上軌跡，替新路線作證嗎？"
+        ]
+      },
+      {
+        "id": "K142-0211~K142-0214",
+        "a": "K142-0211",
+        "b": "K142-0214",
+        "question_score": 0.03,
+        "answer_score": 0.016,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一人戴著八款錶換城市街道、林地和跑道測，能先猜它們都把距離算長嗎？",
+          "這次路跑臨時換了路，還能用同一張紐約證書、加上一份跑者的錶上軌跡，替新路線作證嗎？"
+        ]
+      },
+      {
         "id": "K100-012~P099",
         "a": "P099",
         "b": "K100-012",
@@ -459713,6 +461879,62 @@
         "questions": [
           "進港前拿去年同月的密度平均，就能直接替今天碼頭邊的船算吃水嗎？",
           "同一艘船從夏季線切到冬季線，為什麼准許的水面反而畫低了？"
+        ]
+      },
+      {
+        "id": "K142-0201~K142-0203",
+        "a": "K142-0201",
+        "b": "K142-0203",
+        "question_score": 0.029,
+        "answer_score": 0.018,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張紐約馬拉松證書，同時印著 42.195 公里和 19,924 公尺。哪一個才是跑者報名的距離？",
+          "賽道彎了兩次，丈量單車該跟著中央線轉兩次，還是能斜跨路面去接下一個彎？"
+        ]
+      },
+      {
+        "id": "K142-0203~K142-0205",
+        "a": "K142-0203",
+        "b": "K142-0205",
+        "question_score": 0.029,
+        "answer_score": 0.016,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "賽道彎了兩次，丈量單車該跟著中央線轉兩次，還是能斜跨路面去接下一個彎？",
+          "倫敦奧運丈量員在兩根燈柱間鋪尺，去程 328.645 公尺、回程 328.648 公尺，正式採用值怎麼會比兩個都短？"
+        ]
+      },
+      {
+        "id": "K142-0203~K142-0212",
+        "a": "K142-0203",
+        "b": "K142-0212",
+        "question_score": 0.029,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "賽道彎了兩次，丈量單車該跟著中央線轉兩次，還是能斜跨路面去接下一個彎？",
+          "八款運動錶的平均絕對百分誤差落在 3.2% 到 6.1%，能拿這一行判定自己的錶究竟多跑還是少跑嗎？"
+        ]
+      },
+      {
+        "id": "K142-0211~K142-0212",
+        "a": "K142-0211",
+        "b": "K142-0212",
+        "question_score": 0.029,
+        "answer_score": 0.018,
+        "key_score": 0.75,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一人戴著八款錶換城市街道、林地和跑道測，能先猜它們都把距離算長嗎？",
+          "八款運動錶的平均絕對百分誤差落在 3.2% 到 6.1%，能拿這一行判定自己的錶究竟多跑還是少跑嗎？"
         ]
       },
       {
@@ -460413,6 +462635,20 @@
         "questions": [
           "若證書給足 120 毫米淡水裕量，遇比重 1.010 的河水，怎麼會只算 72 毫米？",
           "運河通告寫 TFW 的數字，為什麼不能只照海水裡看到的船側水線讀？"
+        ]
+      },
+      {
+        "id": "K142-0205~K142-0214",
+        "a": "K142-0205",
+        "b": "K142-0214",
+        "question_score": 0,
+        "answer_score": 0.028,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "倫敦奧運丈量員在兩根燈柱間鋪尺，去程 328.645 公尺、回程 328.648 公尺，正式採用值怎麼會比兩個都短？",
+          "這次路跑臨時換了路，還能用同一張紐約證書、加上一份跑者的錶上軌跡，替新路線作證嗎？"
         ]
       },
       {
@@ -463370,6 +465606,48 @@
         ]
       },
       {
+        "id": "K142-0202~K142-0203",
+        "a": "K142-0202",
+        "b": "K142-0203",
+        "question_score": 0,
+        "answer_score": 0.019,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北馬拉松大會介紹的自行車，輪上明明只有格數器，騎過終點怎麼還得交報告？",
+          "賽道彎了兩次，丈量單車該跟著中央線轉兩次，還是能斜跨路面去接下一個彎？"
+        ]
+      },
+      {
+        "id": "K142-0202~K142-0211",
+        "a": "K142-0202",
+        "b": "K142-0211",
+        "question_score": 0,
+        "answer_score": 0.019,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北馬拉松大會介紹的自行車，輪上明明只有格數器，騎過終點怎麼還得交報告？",
+          "同一人戴著八款錶換城市街道、林地和跑道測，能先猜它們都把距離算長嗎？"
+        ]
+      },
+      {
+        "id": "K142-0202~K142-0212",
+        "a": "K142-0202",
+        "b": "K142-0212",
+        "question_score": 0,
+        "answer_score": 0.019,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北馬拉松大會介紹的自行車，輪上明明只有格數器，騎過終點怎麼還得交報告？",
+          "八款運動錶的平均絕對百分誤差落在 3.2% 到 6.1%，能拿這一行判定自己的錶究竟多跑還是少跑嗎？"
+        ]
+      },
+      {
         "id": "P57-001~X5002",
         "a": "X5002",
         "b": "P57-001",
@@ -464028,6 +466306,76 @@
         ]
       },
       {
+        "id": "K142-0202~K142-0209",
+        "a": "K142-0202",
+        "b": "K142-0209",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北馬拉松大會介紹的自行車，輪上明明只有格數器，騎過終點怎麼還得交報告？",
+          "把同一段移動連成折線，為何一種畫法使結果偏長，另一種畫法卻會把一個彎量短？"
+        ]
+      },
+      {
+        "id": "K142-0203~K142-0206",
+        "a": "K142-0203",
+        "b": "K142-0206",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "賽道彎了兩次，丈量單車該跟著中央線轉兩次，還是能斜跨路面去接下一個彎？",
+          "同兩根倫敦燈柱，雷射回算的路段多出 34 毫米，可以把這 34 毫米貼到整場馬拉松上嗎？"
+        ]
+      },
+      {
+        "id": "K142-0204~K142-0212",
+        "a": "K142-0204",
+        "b": "K142-0212",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一個十字路口，把比賽用的路錐往外挪一點，丈量員為何要重新看那張路口圖？",
+          "八款運動錶的平均絕對百分誤差落在 3.2% 到 6.1%，能拿這一行判定自己的錶究竟多跑還是少跑嗎？"
+        ]
+      },
+      {
+        "id": "K142-0206~K142-0212",
+        "a": "K142-0206",
+        "b": "K142-0212",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同兩根倫敦燈柱，雷射回算的路段多出 34 毫米，可以把這 34 毫米貼到整場馬拉松上嗎？",
+          "八款運動錶的平均絕對百分誤差落在 3.2% 到 6.1%，能拿這一行判定自己的錶究竟多跑還是少跑嗎？"
+        ]
+      },
+      {
+        "id": "K142-0207~K142-0212",
+        "a": "K142-0207",
+        "b": "K142-0212",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "自行車騎上這條已知長度的路，為什麼同一張表要在丈量賽道前、後各填四次？",
+          "八款運動錶的平均絕對百分誤差落在 3.2% 到 6.1%，能拿這一行判定自己的錶究竟多跑還是少跑嗎？"
+        ]
+      },
+      {
         "id": "R37010~R37011",
         "a": "R37010",
         "b": "R37011",
@@ -464669,6 +467017,62 @@
         "questions": [
           "貼了 154 張大型猛禽剪影，能從巴西這兩棟樓判定鳥怕老鷹嗎？",
           "站牌貼好後里長沒再接到通報，怎樣才能知道固定巡查發現的撞擊有沒有變少？"
+        ]
+      },
+      {
+        "id": "K142-0203~K142-0213",
+        "a": "K142-0203",
+        "b": "K142-0213",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "賽道彎了兩次，丈量單車該跟著中央線轉兩次，還是能斜跨路面去接下一個彎？",
+          "Yehualaw 跑出半馬 1:03:44，世界田徑總會的年末公報為什麼把它寫在不予認證欄？"
+        ]
+      },
+      {
+        "id": "K142-0203~K142-0214",
+        "a": "K142-0203",
+        "b": "K142-0214",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "賽道彎了兩次，丈量單車該跟著中央線轉兩次，還是能斜跨路面去接下一個彎？",
+          "這次路跑臨時換了路，還能用同一張紐約證書、加上一份跑者的錶上軌跡，替新路線作證嗎？"
+        ]
+      },
+      {
+        "id": "K142-0208~K142-0211",
+        "a": "K142-0208",
+        "b": "K142-0211",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "自行車輪上的「每公里格數」已經算出來，為什麼表格還把它乘上 1.001？",
+          "同一人戴著八款錶換城市街道、林地和跑道測，能先猜它們都把距離算長嗎？"
+        ]
+      },
+      {
+        "id": "K142-0212~K142-0213",
+        "a": "K142-0212",
+        "b": "K142-0213",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "八款運動錶的平均絕對百分誤差落在 3.2% 到 6.1%，能拿這一行判定自己的錶究竟多跑還是少跑嗎？",
+          "Yehualaw 跑出半馬 1:03:44，世界田徑總會的年末公報為什麼把它寫在不予認證欄？"
         ]
       },
       {
@@ -465467,6 +467871,62 @@
         "questions": [
           "兩艘都在冬季航行的船，哪一艘的北大西洋線還要比普通冬線多留 50 毫米？",
           "勘劃人員在船身上量完標線，為什麼台灣規則還交代要回證書查哪些線已刪除？"
+        ]
+      },
+      {
+        "id": "K142-0204~K142-0213",
+        "a": "K142-0204",
+        "b": "K142-0213",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一個十字路口，把比賽用的路錐往外挪一點，丈量員為何要重新看那張路口圖？",
+          "Yehualaw 跑出半馬 1:03:44，世界田徑總會的年末公報為什麼把它寫在不予認證欄？"
+        ]
+      },
+      {
+        "id": "K142-0206~K142-0209",
+        "a": "K142-0206",
+        "b": "K142-0209",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同兩根倫敦燈柱，雷射回算的路段多出 34 毫米，可以把這 34 毫米貼到整場馬拉松上嗎？",
+          "把同一段移動連成折線，為何一種畫法使結果偏長，另一種畫法卻會把一個彎量短？"
+        ]
+      },
+      {
+        "id": "K142-0208~K142-0209",
+        "a": "K142-0208",
+        "b": "K142-0209",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "自行車輪上的「每公里格數」已經算出來，為什麼表格還把它乘上 1.001？",
+          "把同一段移動連成折線，為何一種畫法使結果偏長，另一種畫法卻會把一個彎量短？"
+        ]
+      },
+      {
+        "id": "K142-0210~K142-0212",
+        "a": "K142-0210",
+        "b": "K142-0212",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一排定位點，全部向旁邊移一步，和每隔一點就往反邊移，逐段相加的距離會一樣嗎？",
+          "八款運動錶的平均絕對百分誤差落在 3.2% 到 6.1%，能拿這一行判定自己的錶究竟多跑還是少跑嗎？"
         ]
       },
       {
@@ -466321,6 +468781,48 @@
         "questions": [
           "加拿大駁船舷側還留著一套舊線，調查員怎麼知道不能拿它來判事發時是否超載？",
           "勘劃人員在船身上量完標線，為什麼台灣規則還交代要回證書查哪些線已刪除？"
+        ]
+      },
+      {
+        "id": "K142-0205~K142-0208",
+        "a": "K142-0205",
+        "b": "K142-0208",
+        "question_score": 0,
+        "answer_score": 0.014,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "倫敦奧運丈量員在兩根燈柱間鋪尺，去程 328.645 公尺、回程 328.648 公尺，正式採用值怎麼會比兩個都短？",
+          "自行車輪上的「每公里格數」已經算出來，為什麼表格還把它乘上 1.001？"
+        ]
+      },
+      {
+        "id": "K142-0206~K142-0210",
+        "a": "K142-0206",
+        "b": "K142-0210",
+        "question_score": 0,
+        "answer_score": 0.014,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同兩根倫敦燈柱，雷射回算的路段多出 34 毫米，可以把這 34 毫米貼到整場馬拉松上嗎？",
+          "同一排定位點，全部向旁邊移一步，和每隔一點就往反邊移，逐段相加的距離會一樣嗎？"
+        ]
+      },
+      {
+        "id": "K142-0208~K142-0210",
+        "a": "K142-0208",
+        "b": "K142-0210",
+        "question_score": 0,
+        "answer_score": 0.014,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "自行車輪上的「每公里格數」已經算出來，為什麼表格還把它乘上 1.001？",
+          "同一排定位點，全部向旁邊移一步，和每隔一點就往反邊移，逐段相加的距離會一樣嗎？"
         ]
       },
       {
@@ -474570,6 +477072,20 @@
         ]
       },
       {
+        "id": "K141-0102~K142-0102",
+        "a": "K141-0102",
+        "b": "K142-0102",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "雷東用薄薄的一張紙接住石印，下面卻連著更大的厚紙。這兩張紙在哪個步驟才疊成一件作品？",
+          "羅馬化妝瓶有兩個並排的細管，上面還架了一個提把。工匠手上只有一團吹脹的玻璃時，哪一部分已經做得出來？"
+        ]
+      },
+      {
         "id": "K141-0201~K141-0208",
         "a": "K141-0201",
         "b": "K141-0208",
@@ -474875,6 +477391,174 @@
         "questions": [
           "勘劃人員在船身上量完標線，為什麼台灣規則還交代要回證書查哪些線已刪除？",
           "船一件貨都沒卸，為什麼 2024 年同一水閘可以提早放寬到 13.71 公尺？"
+        ]
+      },
+      {
+        "id": "K142-0201~K142-0212",
+        "a": "K142-0201",
+        "b": "K142-0212",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一張紐約馬拉松證書，同時印著 42.195 公里和 19,924 公尺。哪一個才是跑者報名的距離？",
+          "八款運動錶的平均絕對百分誤差落在 3.2% 到 6.1%，能拿這一行判定自己的錶究竟多跑還是少跑嗎？"
+        ]
+      },
+      {
+        "id": "K142-0202~K142-0205",
+        "a": "K142-0202",
+        "b": "K142-0205",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北馬拉松大會介紹的自行車，輪上明明只有格數器，騎過終點怎麼還得交報告？",
+          "倫敦奧運丈量員在兩根燈柱間鋪尺，去程 328.645 公尺、回程 328.648 公尺，正式採用值怎麼會比兩個都短？"
+        ]
+      },
+      {
+        "id": "K142-0202~K142-0210",
+        "a": "K142-0202",
+        "b": "K142-0210",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺北馬拉松大會介紹的自行車，輪上明明只有格數器，騎過終點怎麼還得交報告？",
+          "同一排定位點，全部向旁邊移一步，和每隔一點就往反邊移，逐段相加的距離會一樣嗎？"
+        ]
+      },
+      {
+        "id": "K142-0203~K142-0210",
+        "a": "K142-0203",
+        "b": "K142-0210",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "賽道彎了兩次，丈量單車該跟著中央線轉兩次，還是能斜跨路面去接下一個彎？",
+          "同一排定位點，全部向旁邊移一步，和每隔一點就往反邊移，逐段相加的距離會一樣嗎？"
+        ]
+      },
+      {
+        "id": "K142-0203~K142-0211",
+        "a": "K142-0203",
+        "b": "K142-0211",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "賽道彎了兩次，丈量單車該跟著中央線轉兩次，還是能斜跨路面去接下一個彎？",
+          "同一人戴著八款錶換城市街道、林地和跑道測，能先猜它們都把距離算長嗎？"
+        ]
+      },
+      {
+        "id": "K142-0205~K142-0209",
+        "a": "K142-0205",
+        "b": "K142-0209",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "倫敦奧運丈量員在兩根燈柱間鋪尺，去程 328.645 公尺、回程 328.648 公尺，正式採用值怎麼會比兩個都短？",
+          "把同一段移動連成折線，為何一種畫法使結果偏長，另一種畫法卻會把一個彎量短？"
+        ]
+      },
+      {
+        "id": "K142-0205~K142-0210",
+        "a": "K142-0205",
+        "b": "K142-0210",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "倫敦奧運丈量員在兩根燈柱間鋪尺，去程 328.645 公尺、回程 328.648 公尺，正式採用值怎麼會比兩個都短？",
+          "同一排定位點，全部向旁邊移一步，和每隔一點就往反邊移，逐段相加的距離會一樣嗎？"
+        ]
+      },
+      {
+        "id": "K142-0205~K142-0211",
+        "a": "K142-0205",
+        "b": "K142-0211",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "倫敦奧運丈量員在兩根燈柱間鋪尺，去程 328.645 公尺、回程 328.648 公尺，正式採用值怎麼會比兩個都短？",
+          "同一人戴著八款錶換城市街道、林地和跑道測，能先猜它們都把距離算長嗎？"
+        ]
+      },
+      {
+        "id": "K142-0207~K142-0213",
+        "a": "K142-0207",
+        "b": "K142-0213",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "自行車騎上這條已知長度的路，為什麼同一張表要在丈量賽道前、後各填四次？",
+          "Yehualaw 跑出半馬 1:03:44，世界田徑總會的年末公報為什麼把它寫在不予認證欄？"
+        ]
+      },
+      {
+        "id": "K142-0208~K142-0212",
+        "a": "K142-0208",
+        "b": "K142-0212",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "自行車輪上的「每公里格數」已經算出來，為什麼表格還把它乘上 1.001？",
+          "八款運動錶的平均絕對百分誤差落在 3.2% 到 6.1%，能拿這一行判定自己的錶究竟多跑還是少跑嗎？"
+        ]
+      },
+      {
+        "id": "K142-0209~K142-0213",
+        "a": "K142-0209",
+        "b": "K142-0213",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把同一段移動連成折線，為何一種畫法使結果偏長，另一種畫法卻會把一個彎量短？",
+          "Yehualaw 跑出半馬 1:03:44，世界田徑總會的年末公報為什麼把它寫在不予認證欄？"
+        ]
+      },
+      {
+        "id": "K142-0210~K142-0213",
+        "a": "K142-0210",
+        "b": "K142-0213",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一排定位點，全部向旁邊移一步，和每隔一點就往反邊移，逐段相加的距離會一樣嗎？",
+          "Yehualaw 跑出半馬 1:03:44，世界田徑總會的年末公報為什麼把它寫在不予認證欄？"
         ]
       },
       {
@@ -476352,10 +479036,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-20-pool-8029",
-    "target_count": 8029,
+    "revision": "2026-11-20-pool-8056",
+    "target_count": 8056,
     "reviewed_on": "2026-11-20",
-    "reason": "第141批新增 27 張素材，入選 8002 → 8029。先前：第140批新增 28 張素材，入選 7974 → 8002。先前：第139批新增 28 張素材，入選 7946 → 7974。先前：第138批新增 37 張素材，入選 7909 → 7946。先前：第137批新增 36 張素材，入選 7873 → 7909。先前：第136批新增 36 張素材，入選 7837 → 7873。先前：第135批新增 36 張素材，入選 7801 → 7837。先前：第134批新增 37 張素材，入選 7764 → 7801。先前：第133批新增 36 張素材，入選 7728 → 7764。先前：第132批新增 37 張素材，入選 7691 → 7728。先前：第131批新增 37 張素材，入選 7654 → 7691。先前：第130批新增 37 張素材，入選 7617 → 7654。先前：第129批新增 37 張素材，入選 7580 → 7617。先前：第128批新增 37 張素材，入選 7543 → 7580。先前：第127批新增 37 張素材，入選 7506 → 7543。先前：第126批新增 37 張素材，入選 7469 → 7506。先前：第125批新增 36 張素材，入選 7433 → 7469。先前：第124批新增 35 張素材，入選 7398 → 7433。先前：第123批新增 37 張素材，入選 7361 → 7398。先前：第122批新增 37 張素材，入選 7324 → 7361。先前：第121批新增 36 張素材，含日常設計、樂譜判讀及旅用電器規格。入選 7288 → 7324。先前：第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
+    "reason": "第142批新增 27 張素材，入選 8029 → 8056。先前：第141批新增 27 張素材，入選 8002 → 8029。先前：第140批新增 28 張素材，入選 7974 → 8002。先前：第139批新增 28 張素材，入選 7946 → 7974。先前：第138批新增 37 張素材，入選 7909 → 7946。先前：第137批新增 36 張素材，入選 7873 → 7909。先前：第136批新增 36 張素材，入選 7837 → 7873。先前：第135批新增 36 張素材，入選 7801 → 7837。先前：第134批新增 37 張素材，入選 7764 → 7801。先前：第133批新增 36 張素材，入選 7728 → 7764。先前：第132批新增 37 張素材，入選 7691 → 7728。先前：第131批新增 37 張素材，入選 7654 → 7691。先前：第130批新增 37 張素材，入選 7617 → 7654。先前：第129批新增 37 張素材，入選 7580 → 7617。先前：第128批新增 37 張素材，入選 7543 → 7580。先前：第127批新增 37 張素材，入選 7506 → 7543。先前：第126批新增 37 張素材，入選 7469 → 7506。先前：第125批新增 36 張素材，入選 7433 → 7469。先前：第124批新增 35 張素材，入選 7398 → 7433。先前：第123批新增 37 張素材，入選 7361 → 7398。先前：第122批新增 37 張素材，入選 7324 → 7361。先前：第121批新增 36 張素材，含日常設計、樂譜判讀及旅用電器規格。入選 7288 → 7324。先前：第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -484385,7 +487069,34 @@
       "K141-0213",
       "K141-0214",
       "K141-0215",
-      "K141-0216"
+      "K141-0216",
+      "K142-0101",
+      "K142-0102",
+      "K142-0103",
+      "K142-0104",
+      "K142-0105",
+      "K142-0106",
+      "K142-0001",
+      "K142-0002",
+      "K142-0003",
+      "K142-0004",
+      "K142-0005",
+      "K142-0006",
+      "K142-0007",
+      "K142-0201",
+      "K142-0202",
+      "K142-0203",
+      "K142-0204",
+      "K142-0205",
+      "K142-0206",
+      "K142-0207",
+      "K142-0208",
+      "K142-0209",
+      "K142-0210",
+      "K142-0211",
+      "K142-0212",
+      "K142-0213",
+      "K142-0214"
     ],
     "overflow": [
       {
@@ -490229,6 +492940,158 @@
       ],
       "origin": "wave141-research-20261120",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave141-research-20261120.json"
+    },
+    {
+      "id": "X142C-NA01",
+      "question": "水晶紙鎮裡一圈圈粉紅玫瑰，是怎樣重複出同樣的花？",
+      "reason": "78.3.124 明列將有圖紋的玻璃棒拉長、切片，每片留有同圖。K129-0401 已用羅馬玻璃盤回答，X134C-NA02 也以此退案。",
+      "existing_ids": [
+        "K129-0401",
+        "X134C-NA02"
+      ],
+      "source_ids": [
+        "X142C-S12"
+      ],
+      "source_locator": "X142C-S12 78.3.124，Web Text 及 Physical Description。",
+      "origin": "wave142-craft-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave142-craft-20261120.json"
+    },
+    {
+      "id": "X142C-NA02",
+      "question": "埃及藍玻璃瓶腰上成排的彩羽，為什麼相鄰兩束朝相反方向偏？",
+      "reason": "66.1.213 就是 K134-0404 已採用的原件；既有答案已畫出彩線上下交替拖紋。",
+      "existing_ids": [
+        "K134-0404"
+      ],
+      "source_ids": [
+        "X142C-S13"
+      ],
+      "source_locator": "X142C-S13 66.1.213，Physical Description 的 two registers 與 dragged alternately。",
+      "origin": "wave142-craft-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave142-craft-20261120.json"
+    },
+    {
+      "id": "X142C-NA03",
+      "question": "藍花瓶上凸出的白色雛菊，工匠是怎麼只讓白花留下來的？",
+      "reason": "62.2.1 的館藏紀錄是刪去多餘的白玻璃外層。花瓣改為海蟹或人像，沿輪廓保留白層的答案不變。",
+      "existing_ids": [
+        "K129-0402",
+        "X134C-NA04"
+      ],
+      "source_ids": [
+        "X142C-S14"
+      ],
+      "source_locator": "X142C-S14 62.2.1，Physical Description。",
+      "origin": "wave142-craft-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave142-craft-20261120.json"
+    },
+    {
+      "id": "X142C-NA04",
+      "question": "兩層玻璃中間的狩獵金圖，隔著杯壁怎麼看得見？",
+      "reason": "53.3.4 有兩隻相套的杯與金銀葉；若只問隔著玻璃看見金圖，與既有金帶香水瓶同答。杯口如何密合需要該件的詳證才能另議。",
+      "existing_ids": [
+        "K129-0403"
+      ],
+      "source_ids": [
+        "X142C-S15"
+      ],
+      "source_locator": "X142C-S15 53.3.4，Physical Description。",
+      "origin": "wave142-craft-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave142-craft-20261120.json"
+    },
+    {
+      "id": "X142E-NA01",
+      "question": "風吹動果嶺上已放回的球，要不要放回標記處？",
+      "reason": "已有退案 X137E-NA002 使用同問；雖 R&A 第 13 條仍可讀，重用同場景不能成新題。",
+      "existing_ids": [
+        "X137E-NA002"
+      ],
+      "source_ids": [
+        "X142E-S14"
+      ],
+      "source_locator": "X142E-S14 13.1d(2)，ball moved by natural forces。",
+      "origin": "wave142-everyday-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave142-everyday-20261120.json"
+    },
+    {
+      "id": "X142E-NA02",
+      "question": "小號手為何用左手把第三活塞滑管往外拉？",
+      "reason": "K119-0006 完整回答相同小號指環、補正音準及伸長管子的動作。",
+      "existing_ids": [
+        "K119-0006"
+      ],
+      "source_ids": [
+        "X142E-S15"
+      ],
+      "source_locator": "X142E-S15 Controlling the pitch using the slides。",
+      "origin": "wave142-everyday-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave142-everyday-20261120.json"
+    },
+    {
+      "id": "X142E-NA03",
+      "question": "牛仔褲拉片放平，拉鍊頭就會鎖住？",
+      "reason": "K115-0004 與退案 X133C-NA02 已對準拉片和鎖銷的同一動作。",
+      "existing_ids": [
+        "K115-0004",
+        "X133C-NA02"
+      ],
+      "source_ids": [
+        "X142E-S16"
+      ],
+      "source_locator": "X142E-S16 Pin Lock Sliders 及 Auto Lock Sliders 對照。",
+      "origin": "wave142-everyday-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave142-everyday-20261120.json"
+    },
+    {
+      "id": "X142E-NA04",
+      "question": "捲尺的鐵鉤故意有一點鬆，拉緊和頂住為何都能量？",
+      "reason": "K113-0101 已問同一鐵鉤前後移與零位校正。 X115-NA001 亦已直接退回內、外兩種量法的對零問題。",
+      "existing_ids": [
+        "K113-0101",
+        "X115-NA001"
+      ],
+      "source_ids": [
+        "X142E-S17"
+      ],
+      "source_locator": "X142E-S17 產品頁功能與端鉤。",
+      "origin": "wave142-everyday-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave142-everyday-20261120.json"
+    },
+    {
+      "id": "R142-NA01",
+      "question": "手錶超過公稱距離，主辦必定把全程多鋪42.195公尺？",
+      "reason": "防短係數與個人走的路不同，亦沒有該跑者與該場路線的配對量測。",
+      "existing_ids": [],
+      "source_ids": [
+        "R142-S01",
+        "R142-S07"
+      ],
+      "origin": "wave142-research-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave142-research-20261120.json"
+    },
+    {
+      "id": "R142-NA02",
+      "question": "NIST新聞稿有沒有證明文中的100m尺恰好是倫敦丈量記錄中使用前50m的那一把？",
+      "reason": "實地報告明載NIST測試號與日期，官網新聞稿沒有揭示相同測試號。兩篇記事不能憑長度相同唯一配對。",
+      "existing_ids": [],
+      "source_ids": [
+        "R142-S04",
+        "R142-S05"
+      ],
+      "origin": "wave142-research-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave142-research-20261120.json"
+    },
+    {
+      "id": "R142-NA03",
+      "question": "Larne當年短54m就是一名路人挪動彎道錐筒？",
+      "reason": "官方證實距離異常，所開原件沒有確定出錯位置與責任人。",
+      "existing_ids": [],
+      "source_ids": [
+        "R142-S12",
+        "R142-S08"
+      ],
+      "origin": "wave142-research-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave142-research-20261120.json"
     },
     {
       "id": "F15-NA01",
