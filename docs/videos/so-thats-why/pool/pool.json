@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-20-pool-7974",
+  "revision": "2026-11-20-pool-8002",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "categories": [
     "物理化學與日常材料",
@@ -12,46 +12,46 @@
     "建築交通與商業制度"
   ],
   "counts": {
-    "raw_records": 8438,
-    "canonical_questions": 8278,
-    "eligible_candidates": 8085,
-    "selected_candidates": 7974,
+    "raw_records": 8466,
+    "canonical_questions": 8306,
+    "eligible_candidates": 8113,
+    "selected_candidates": 8002,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 8934,
-    "current_research_source_urls": 6006,
-    "selected_source_urls": 6948,
-    "new_suggestions_not_added": 3596,
+    "source_urls": 8977,
+    "current_research_source_urls": 6049,
+    "selected_source_urls": 6990,
+    "new_suggestions_not_added": 3605,
     "high_similarity_pending": 0,
     "approved_scripts": 0,
     "by_category": {
       "物理化學與日常材料": {
-        "canonical": 1934,
-        "selected": 1904
+        "canonical": 1942,
+        "selected": 1912
       },
       "生物動物與植物": {
-        "canonical": 1535,
-        "selected": 1524
+        "canonical": 1550,
+        "selected": 1539
       },
       "地球天氣與太空": {
         "canonical": 988,
         "selected": 985
       },
       "數位科技與通訊工程": {
-        "canonical": 1506,
-        "selected": 1426
+        "canonical": 1508,
+        "selected": 1428
       },
       "飲食與廚房科學": {
         "canonical": 538,
         "selected": 532
       },
       "人體感官與日常行為": {
-        "canonical": 600,
-        "selected": 588
+        "canonical": 601,
+        "selected": 589
       },
       "建築交通與商業制度": {
-        "canonical": 1177,
-        "selected": 1015
+        "canonical": 1179,
+        "selected": 1017
       }
     }
   },
@@ -2209,6 +2209,18 @@
       "sha256": "de3b0612607512e3afe87676e3a93591d85d4989e0f400ee09532cc7c2e8d071"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave140-craft-20261120.json",
+      "sha256": "2d77163ea92d09e4606a198ffbc4a88ee788dd8b09965262691a0ea1e345f51f"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave140-everyday-20261120.json",
+      "sha256": "373f0ce5981d5f9dbf29ebdcf7711ededcc416868c46f9a55aeead76bdf79754"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave140-research-20261120.json",
+      "sha256": "c5f77954e6f6b6bba7ebc64f34fcc8305a1092d760b4311042e38c40a439c6ea"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json",
       "sha256": "e605e7db36362ae0b323a39fa3bc79d43a6a8c54584a02a66764aeb5495e4bfb"
     },
@@ -3474,12 +3486,12 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "7b3f45e5b69e96e6e5e122b7c60be703dc6842407320e175352c0d3f5255adc3"
+      "sha256": "3534803457b9d1bd018523c3c807470b8224f41dce7b8c9f2657ae54afce4218"
     }
   ],
   "sources": {
     "file": "pool-sources.json",
-    "count": 8934
+    "count": 8977
   },
   "candidates": [
     {
@@ -162306,6 +162318,1386 @@
       "question_variants": [],
       "provenance_ids": [
         "P14010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0101",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "皇家代爾夫特工坊在白盤上畫黑花，又噴白釉把花整個蓋住。出窯那圈藍花從哪裡來？",
+      "mechanism_key": "x140.craft.black_paint_blue_pot",
+      "answer_target": "廠裡的畫師用以氧化鈷為主的黑料作畫，再用水調出濃淡。噴上去的釉還沒燒時白而不透明，會把黑花遮住。等到第二次入窯，釉熔成透明的一層，畫料也在燒成中從黑轉藍。廠方把這個顏色歸於坯體、化妝土、顏料和釉在燒製時的共同反應。",
+      "scope": "僅講該廠傳統窯燒工序。當日帶走的 DIY 用藍顏料；別把二者混拍。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "拍三張自繪盤子依次切換：未上釉的黑線、噴白釉後看不見的花、燒好後透明釉下的藍線。把同一片花瓣在三張畫裡的位置對齊。",
+        "payoff": "窯前的白層和黑紋在同一趟燒成各自變化，窯後才看得到透明釉下的藍花。",
+        "seconds": [
+          28,
+          45
+        ]
+      },
+      "source_locator": "X140C-S01 How is hand painted Delft Blue made? 首段；Stage 05 – decorating；Stage 06 – glazing & firing。X140C-S02 Traditional plate painting workshop 首段及 DIY tile painting workshop 首段。X140C-S03 5.1(g) 攝影器材及 5.6 商用。",
+      "notes": "K131-0404 青花陶盤整疊黏死在窯內；奇聞「柳樹圖案」退案談瓷盤傳說；K139-0102 的背釉保護正面，三者都不解釋黑畫料與白覆層兩次變色。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製三個階段。館規 5.6 要求館內拍攝影像商用先取得明示書面許可。",
+      "origin": "wave140-craft-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-0a07cfde4e71c609",
+          "origin": "wave140-craft-20261120",
+          "locator": "X140C-S01 How is hand painted Delft Blue made? 首段；Stage 05 – decorating；Stage 06 – glazing & firing。X140C-S02 Traditional plate painting workshop 首段及 DIY tile painting workshop 首段。X140C-S03 5.1(g) 攝影器材及 5.6 商用。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-78ad76b117cbd25c",
+          "origin": "wave140-craft-20261120",
+          "locator": "X140C-S01 How is hand painted Delft Blue made? 首段；Stage 05 – decorating；Stage 06 – glazing & firing。X140C-S02 Traditional plate painting workshop 首段及 DIY tile painting workshop 首段。X140C-S03 5.1(g) 攝影器材及 5.6 商用。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-3a8a13e1425a1d39",
+          "origin": "wave140-craft-20261120",
+          "locator": "X140C-S01 How is hand painted Delft Blue made? 首段；Stage 05 – decorating；Stage 06 – glazing & firing。X140C-S02 Traditional plate painting workshop 首段及 DIY tile painting workshop 首段。X140C-S03 5.1(g) 攝影器材及 5.6 商用。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-craft-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0101"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0102",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "這本五百多年前的皮面書，封面上有金屬護角和凸起的飾章。書平放時，哪幾處把皮封和桌面隔開？",
+      "mechanism_key": "x140.craft.book_cover_on_table",
+      "answer_target": "Getty 的館藏出自約 1450 年的科隆。橡木板外包著壓印皮革，封面四角的金屬件及凸起的飾章，在書平放時護住皮封。細看中央，像彩窗的黃、綠、藍小塊其實是染色羊皮紙。館方沒有量出哪一件凸得最高。",
+      "scope": "限 MS. LUDWIG I 13；未測量伸出高度、耐磨程度。彩色嵌片和金屬護件各有位置。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用厚書形模型貼上自製護角和圓形凸件，側視示意凸件與桌面相隔的皮層，另外俯拍中央的三色紙嵌片。",
+        "payoff": "金屬護角和凸飾讓平放的書少磨到皮革，中央的小「彩窗」則是羊皮紙。",
+        "seconds": [
+          27,
+          43
+        ]
+      },
+      "source_locator": "X140C-S04 Binding 最後兩句，從 metal corner pieces and raised medallions 到 stained-glass-window effect。該節亦連製作示範影片自 4:28 起。X140C-S05 放大圖旁物件欄，Cologne, about 1450／Stamped leather over oak boards。X140C-S06 Terms of Use 開頭第 1 至 5 點，以及 Open Content／Creative Commons 段。",
+      "notes": "K122-0402 老帳本翻拍用外置書托；K116-0005 討論紙角壓合。這件驗證書封自身哪些部分承受桌面接觸。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "採自製無圖案模型。展覽頁照片和示範片未逐項確認開放標示，不跟用；Getty 個別標明的 Open Content 資料另依其條件。",
+      "origin": "wave140-craft-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-887a76651f53d1b7",
+          "origin": "wave140-craft-20261120",
+          "locator": "X140C-S04 Binding 最後兩句，從 metal corner pieces and raised medallions 到 stained-glass-window effect。該節亦連製作示範影片自 4:28 起。X140C-S05 放大圖旁物件欄，Cologne, about 1450／Stamped leather over oak boards。X140C-S06 Terms of Use 開頭第 1 至 5 點，以及 Open Content／Creative Commons 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-221fc23872c5b465",
+          "origin": "wave140-craft-20261120",
+          "locator": "X140C-S04 Binding 最後兩句，從 metal corner pieces and raised medallions 到 stained-glass-window effect。該節亦連製作示範影片自 4:28 起。X140C-S05 放大圖旁物件欄，Cologne, about 1450／Stamped leather over oak boards。X140C-S06 Terms of Use 開頭第 1 至 5 點，以及 Open Content／Creative Commons 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f5bd99894d3b9355",
+          "origin": "wave140-craft-20261120",
+          "locator": "X140C-S04 Binding 最後兩句，從 metal corner pieces and raised medallions 到 stained-glass-window effect。該節亦連製作示範影片自 4:28 起。X140C-S05 放大圖旁物件欄，Cologne, about 1450／Stamped leather over oak boards。X140C-S06 Terms of Use 開頭第 1 至 5 點，以及 Open Content／Creative Commons 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-craft-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0102"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0103",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "織工背後掛著朝右的畫稿。直立式的高經織機怎麼擺一面鏡子，讓織出的魚也向右游？",
+      "mechanism_key": "x140.craft.mirror_at_loom",
+      "answer_target": "織工從掛毯背面工作。把原尺寸畫稿掛在織工背後，前方擺一面能照到畫稿的鏡子。工人朝著鏡中的魚去織，得到的是反向的背面。把織物翻到正面，魚游的方向就跟原稿一致。",
+      "scope": "只說館方所述的高經織法；鏡中所見為設計圖。低經的左右反轉只用一格作解題準備。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用朝右的紙魚作畫稿，固定在繪製者背後，鏡面朝向畫稿；把鏡中所見描到標明背面的透明格紙，再翻到正面比對魚頭的位置。",
+        "payoff": "鏡子照的是織工背後的畫稿，織物翻面後，魚又回到原來的方向。",
+        "seconds": [
+          32,
+          48
+        ]
+      },
+      "source_locator": "X140C-S07 The design 第一段；依序說明 low-warp 放在經線下的實大畫稿、從背面織、high-warp 背後畫稿及鏡中影像。X140C-S12 開頭 V&A Owned Content 與 Commercial use 段。",
+      "notes": "K127-0406 說彩緯為何兩面都看得到及背面少受光；N7981 已寫低經織機會反轉，主題是長條畫稿與英王印記。此案的獨立答案是高經織機上原稿、鏡子與織工的實際相對方向。 K127-0406 共用這篇館文，只收本篇〈The design〉的高經鏡像段，答題需排出織工、畫稿與鏡子的位置。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "本提案採自畫重演與來源連結。V&A 網站條款區別館有內容的非商用及商用，引用示範影片、畫稿照片或影音擷圖須另核該項授權。",
+      "origin": "wave140-craft-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-1829a63bad2e4aa6",
+          "origin": "wave140-craft-20261120",
+          "locator": "X140C-S07 The design 第一段；依序說明 low-warp 放在經線下的實大畫稿、從背面織、high-warp 背後畫稿及鏡中影像。X140C-S12 開頭 V&A Owned Content 與 Commercial use 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-eebc214d094eb449",
+          "origin": "wave140-craft-20261120",
+          "locator": "X140C-S07 The design 第一段；依序說明 low-warp 放在經線下的實大畫稿、從背面織、high-warp 背後畫稿及鏡中影像。X140C-S12 開頭 V&A Owned Content 與 Commercial use 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-craft-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0103"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0104",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "一只印度金耳環已經燒好琺瑯，鑲工怎麼把鑽石固定在脆薄的琺瑯面上？",
+      "mechanism_key": "x140.craft.soft_gold_earring",
+      "answer_target": "V&A 在孟買和齋浦爾工坊記錄了一只琺瑯金耳環的做法。打造金胎、燒好琺瑯後，由鑲工以柔軟的二十四 K 純金把鑽石鑲在表面，這道工序叫 kundan。軟金能配合不同形狀的寶石，館方也記錄了在雕過的玉石或水晶上使用這種鑲法。",
+      "scope": "原文未量硬度、施力或抗摔。只把軟金鑲接視為這件耳環的示範，不替所有琺瑯飾品指定固定方式。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "分色畫出軟金、鑽石和已燒好的琺瑯。用黏土與不規則紙石作材料相對位置示意，將工序時間線標在模型旁。",
+        "payoff": "在已燒成的琺瑯面上，鑲住異形寶石要用柔軟的純金。",
+        "seconds": [
+          30,
+          46
+        ]
+      },
+      "source_locator": "X140C-S08 首段採訪孟買與齋浦爾工坊；Each stage 開頭段及 Kundan setting 節唯一技術說明段。X140C-S12 開頭 V&A Owned Content 與 Commercial use 段。",
+      "notes": "K139-0102 關心肖像背釉與畫片形變，K139-0104 接合的是金線與織物，這裡是已燒琺瑯上的寶石與軟金。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "本提案採自畫重演與來源連結。V&A 網站條款區別館有內容的非商用及商用，引用示範影片、畫稿照片或影音擷圖須另核該項授權。",
+      "origin": "wave140-craft-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-a76b17669c0725a6",
+          "origin": "wave140-craft-20261120",
+          "locator": "X140C-S08 首段採訪孟買與齋浦爾工坊；Each stage 開頭段及 Kundan setting 節唯一技術說明段。X140C-S12 開頭 V&A Owned Content 與 Commercial use 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-eebc214d094eb449",
+          "origin": "wave140-craft-20261120",
+          "locator": "X140C-S08 首段採訪孟買與齋浦爾工坊；Each stage 開頭段及 Kundan setting 節唯一技術說明段。X140C-S12 開頭 V&A Owned Content 與 Commercial use 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-craft-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0104"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0105",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "牆上貼的明明是紙，手指順著花紋摸過去，怎麼摸到像天鵝絨的細毛？",
+      "mechanism_key": "x140.craft.wallpaper_that_feels_woven",
+      "answer_target": "植絨工藝用有厚度的毛屑做圖案。Winterthur 的館員記錄，工匠可先在紙或布上印出膠紋，再讓毛織業留下的羊毛細屑黏上去；有膠的地方於是凸起，摸來像絨布。V&A 收藏約 1735 年的一張紅絨牆紙，花樣與漢普頓宮王后會客室曾用的壁紙相同。",
+      "scope": "館藏殘片是同圖樣，勿說從宮內拆下。紙樣摸感以新製示範重現；現代植絨可用別種人造纖維。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "在自製卡紙上印一個膠花紋，撒短纖維、倒掉鬆屑，分正面和側面拍花紋凸起處。",
+        "payoff": "膠紋決定毛屑停在哪裡，花紋的高度就從一粒粒纖維堆起來。",
+        "seconds": [
+          28,
+          45
+        ]
+      },
+      "source_locator": "X140C-S09 第一段 Flock wallpaper was originally invented；其後 Panel of red flock wallpaper 圖說 E.3594-1922。X140C-S14 第 2 段 Around this time, flock papers were also introduced，及 The Chinese Parlor 展室圖說。X140C-S12 開頭 V&A Owned Content 與 Commercial use 段。",
+      "notes": "奇聞 W15 是清潔壁紙材料轉為 Play-Doh；原來如此 P74-059 問紡織品超黑。K139-0104 隱藏的是刺繡固定線；這裡的花紋由散纖維與黏層成形。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "本提案採自畫重演與來源連結。V&A 網站條款區別館有內容的非商用及商用，引用示範影片、畫稿照片或影音擷圖須另核該項授權。",
+      "origin": "wave140-craft-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-d4e7b5d15d1eee4c",
+          "origin": "wave140-craft-20261120",
+          "locator": "X140C-S09 第一段 Flock wallpaper was originally invented；其後 Panel of red flock wallpaper 圖說 E.3594-1922。X140C-S14 第 2 段 Around this time, flock papers were also introduced，及 The Chinese Parlor 展室圖說。X140C-S12 開頭 V&A Owned Content 與 Commercial use 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-a093559dbe0ecf77",
+          "origin": "wave140-craft-20261120",
+          "locator": "X140C-S09 第一段 Flock wallpaper was originally invented；其後 Panel of red flock wallpaper 圖說 E.3594-1922。X140C-S14 第 2 段 Around this time, flock papers were also introduced，及 The Chinese Parlor 展室圖說。X140C-S12 開頭 V&A Owned Content 與 Commercial use 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-eebc214d094eb449",
+          "origin": "wave140-craft-20261120",
+          "locator": "X140C-S09 第一段 Flock wallpaper was originally invented；其後 Panel of red flock wallpaper 圖說 E.3594-1922。X140C-S14 第 2 段 Around this time, flock papers were also introduced，及 The Chinese Parlor 展室圖說。X140C-S12 開頭 V&A Owned Content 與 Commercial use 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-craft-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0105"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0106",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "抽屜正面鑲了一片金色捲葉。師傅怎麼用一道切口，讓葉子的彎邊和深色底板咬合？",
+      "mechanism_key": "x140.craft.matching_marquetry_cut",
+      "answer_target": "布爾鑲嵌可以把兩種不同的薄料疊在一起，沿圖樣只切一遍。拆開這疊薄片，把一層切下的花嵌到另一層的底，原先共用一道切線的彎邊就能對位。大都會藏的抽屜櫃在平面上嵌著黃銅和玳瑁；一旁立體凸出的鎏金青銅飾件另行製作。",
+      "scope": "不推斷大都會此櫃上的兩幅圖必出自一疊材料；歷史材料與現代示範替代材分開說。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用兩色紙疊在一起剪出葉形、互換內塊；再從抽屜的自繪剖面指出平面鑲花和立體配件。",
+        "payoff": "先疊再切，交換內外兩塊時，葉片和底板就沿同一條曲線相合。",
+        "seconds": [
+          30,
+          47
+        ]
+      },
+      "source_locator": "X140C-S10 Boulle marquetry 小標後第 1 段，切多層圖案及本次示範材料。X140C-S11 作品敘述 Its design is echoed 段及 Artwork Details 的 Date／Medium。X140C-S15 Audio Guide 2254／audio transcript，NARRATOR 段 In boulle work 與 The resulting shapes。X140C-S12 開頭 V&A Owned Content 與 Commercial use 段。X140C-S13 Open Access 段與館藏頁 Public Domain 圖示。",
+      "notes": "K139-0105 用彩色石膏填入槽內模仿石鑲；K139-0103 把琥珀背面刻痕襯箔，此案的關鍵是多層材料共用一條切線。 同層裁切再互換的直接記錄見大都會另一件藏品的語音逐字稿；抽屜櫃本身只示範實際用材與平面鑲花。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "本提案採自畫重演與來源連結。V&A 網站條款區別館有內容的非商用及商用，引用示範影片、畫稿照片或影音擷圖須另核該項授權。 大都會 1982.60.82 館藏頁將其圖標為 Public Domain；若取圖，須選該頁對應的開放圖檔並保留藏品編號。",
+      "origin": "wave140-craft-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-68d3b83fe483430c",
+          "origin": "wave140-craft-20261120",
+          "locator": "X140C-S10 Boulle marquetry 小標後第 1 段，切多層圖案及本次示範材料。X140C-S11 作品敘述 Its design is echoed 段及 Artwork Details 的 Date／Medium。X140C-S15 Audio Guide 2254／audio transcript，NARRATOR 段 In boulle work 與 The resulting shapes。X140C-S12 開頭 V&A Owned Content 與 Commercial use 段。X140C-S13 Open Access 段與館藏頁 Public Domain 圖示。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-4bfcfe8066f0ec8d",
+          "origin": "wave140-craft-20261120",
+          "locator": "X140C-S10 Boulle marquetry 小標後第 1 段，切多層圖案及本次示範材料。X140C-S11 作品敘述 Its design is echoed 段及 Artwork Details 的 Date／Medium。X140C-S15 Audio Guide 2254／audio transcript，NARRATOR 段 In boulle work 與 The resulting shapes。X140C-S12 開頭 V&A Owned Content 與 Commercial use 段。X140C-S13 Open Access 段與館藏頁 Public Domain 圖示。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-a49341b330ea5d67",
+          "origin": "wave140-craft-20261120",
+          "locator": "X140C-S10 Boulle marquetry 小標後第 1 段，切多層圖案及本次示範材料。X140C-S11 作品敘述 Its design is echoed 段及 Artwork Details 的 Date／Medium。X140C-S15 Audio Guide 2254／audio transcript，NARRATOR 段 In boulle work 與 The resulting shapes。X140C-S12 開頭 V&A Owned Content 與 Commercial use 段。X140C-S13 Open Access 段與館藏頁 Public Domain 圖示。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-eebc214d094eb449",
+          "origin": "wave140-craft-20261120",
+          "locator": "X140C-S10 Boulle marquetry 小標後第 1 段，切多層圖案及本次示範材料。X140C-S11 作品敘述 Its design is echoed 段及 Artwork Details 的 Date／Medium。X140C-S15 Audio Guide 2254／audio transcript，NARRATOR 段 In boulle work 與 The resulting shapes。X140C-S12 開頭 V&A Owned Content 與 Commercial use 段。X140C-S13 Open Access 段與館藏頁 Public Domain 圖示。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-93b71f31002654ec",
+          "origin": "wave140-craft-20261120",
+          "locator": "X140C-S10 Boulle marquetry 小標後第 1 段，切多層圖案及本次示範材料。X140C-S11 作品敘述 Its design is echoed 段及 Artwork Details 的 Date／Medium。X140C-S15 Audio Guide 2254／audio transcript，NARRATOR 段 In boulle work 與 The resulting shapes。X140C-S12 開頭 V&A Owned Content 與 Commercial use 段。X140C-S13 Open Access 段與館藏頁 Public Domain 圖示。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-craft-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0106"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0001",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "把同一張條碼直貼和橫貼在細瓶上，哪一種擺法能讓掃描光從瓶子正面讀完整排黑白線？",
+      "mechanism_key": "x140.everyday.cylinder_ladder_barcode",
+      "answer_target": "瓶子直立時，讓黑條像梯級橫過瓶身，從第一條掃到最後一條的方向就沿瓶子的長軸，掃描線比較能留在接近平面的位置。反過來排，最邊緣的條紋會繞向瓶身兩側。",
+      "scope": "限一維線性條碼，細圓柱與能選印刷方向的情形。只預測幾何差異，不能承諾某支手機、某台掃描器一定失敗。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "拿兩枚相同紙條碼，分別以兩個方向包細圓筒，從同一面標出能看見的首尾條；換寬罐再比。",
+        "payoff": "讓黑條像梯子橫檔，掃描光就能沿瓶子的長軸，從第一條一路走到最後一條。",
+        "seconds": [
+          27,
+          42
+        ]
+      },
+      "source_locator": "X140E-S01 第六章圓柱形包裝，圖 6-5 與前一段。X140E-S02 第一組 placement 建議，On cylindrical products 段。",
+      "notes": "K120-0207 是退罐機如何合併容器識別、重量等條件。#2182 N9043 問香蕉牛奶甕形包裝的市場與商標。均不以掃描線與瓶軸角度為答案。 N8035。細瓶條碼的梯式擺向使掃讀線沿瓶軸，與用外膜暗記追客戶不同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "用自畫圖、自備器物或自製樣品拍攝。原廠手冊與運動賽事影片保留原件連結。",
+      "origin": "wave140-everyday-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-186252c65fb354f2",
+          "origin": "wave140-everyday-20261120",
+          "locator": "X140E-S01 第六章圓柱形包裝，圖 6-5 與前一段。X140E-S02 第一組 placement 建議，On cylindrical products 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-cd61eb7b46c9e5d5",
+          "origin": "wave140-everyday-20261120",
+          "locator": "X140E-S01 第六章圓柱形包裝，圖 6-5 與前一段。X140E-S02 第一組 placement 建議，On cylindrical products 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-everyday-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0002",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "在 Casio 桌上計算機按 100、＋、10、％，螢幕為什麼冒出 111.111…？",
+      "mechanism_key": "x140.everyday.calculator_margin_denominator",
+      "answer_target": "這些機型把 100 元當成成本。10% 指的是利潤占售價的比例，成本就占售價的 90%。用 100 除以 0.9，得到 111.111… 元。再用手冊的另一例驗算：成本 120 元，想讓利潤占售價的四分之一，售價要開到 160 元。",
+      "scope": "限 CASIO 原廠所列機型與鍵序。機型可有獨立 MU 鍵，不把桌機行為推到手機、其他計算機或會計的淨利率。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把成本換成 120、目標改成售價的 25%，先在 150 與 160 中選一個；把各自的利潤除以售價驗算。",
+        "payoff": "拿 160 元售價減掉 120 元成本，剩 40 元，剛好占售價的四分之一。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "X140E-S03 問題標題、Markup on price 公式與 Target product 名單。X140E-S04 Percentage Calculations 末列 120、25 與鍵序圖。",
+      "notes": "LEG-A57、K105-0705 與黑貓 QJVwLc6jpoA 處理數字鍵盤上下排。#2182 N9009 處理零售業獲利。這裡的驗證是按鍵的數學分母。 N8033、N8034。CASIO 指定機型的按鍵次序用售價作毛利率分母；加盟成本及卡丁車案估損比例的分母另有規定。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "用自畫圖、自備器物或自製樣品拍攝。原廠手冊與運動賽事影片保留原件連結。",
+      "origin": "wave140-everyday-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-cb5fff4266999b5d",
+          "origin": "wave140-everyday-20261120",
+          "locator": "X140E-S03 問題標題、Markup on price 公式與 Target product 名單。X140E-S04 Percentage Calculations 末列 120、25 與鍵序圖。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-7045aa6c66ef38ff",
+          "origin": "wave140-everyday-20261120",
+          "locator": "X140E-S03 問題標題、Markup on price 公式與 Target product 名單。X140E-S04 Percentage Calculations 末列 120、25 與鍵序圖。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-everyday-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0003",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "桌球從桌外斜過來，喀一聲擦過邊。為什麼裁判還要看球接著往上彈，還是繼續往下掉？",
+      "mechanism_key": "x140.everyday.table_tennis_edge_trajectory",
+      "answer_target": "桌面的上表面算比賽區，垂直側邊不算。從外側上方進來的球尤其難判；接觸以後若往上，較有理由判碰到上表面，繼續往下則較像碰側邊。裁判也看來球路徑；單憑彈走方向沒有百分之百把握。",
+      "scope": "限規則與裁判判讀線索。影片若沒拍到接觸，不保證能替單次爭議下判決。白邊線寬度和球拍膠皮不另開支線。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "先把側拍慢動作停在碰撞前，請觀眾說清楚球已越過桌面、仍從桌下往上，還是從外側上方而來，再看後半段。",
+        "payoff": "兩球都擦邊、都發出聲音，判斷要看接觸的是桌板上表面還是垂直側壁。",
+        "seconds": [
+          27,
+          44
+        ]
+      },
+      "source_locator": "X140E-S05 第 2.1.1–2.1.2 條。X140E-S06 §12.2.1–12.2.3 Edge Balls。",
+      "notes": "P45-001／G490 同是乒乓球，量的是杯水衝量；K128-0002 輪椅網球問第二次落地是否可救，判定對象不同。 K139-0006。桌球規則用接觸前後運動辨別上表面或側邊，保齡球規則要求掌心蓋住持球記號。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "用自畫圖、自備器物或自製樣品拍攝。原廠手冊與運動賽事影片保留原件連結。",
+      "origin": "wave140-everyday-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-dc978a6bd4d0502d",
+          "origin": "wave140-everyday-20261120",
+          "locator": "X140E-S05 第 2.1.1–2.1.2 條。X140E-S06 §12.2.1–12.2.3 Edge Balls。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-4aaa702d3142a3f3",
+          "origin": "wave140-everyday-20261120",
+          "locator": "X140E-S05 第 2.1.1–2.1.2 條。X140E-S06 §12.2.1–12.2.3 Edge Balls。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-everyday-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0004",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "冰箱蔬果抽屜撥到「高濕」，裡面的風口是開還是關？一把沒包起來的葉菜會差在哪裡？",
+      "mechanism_key": "x140.everyday.crisper_vent_humidity",
+      "answer_target": "在有手動風門的這兩類機型，高濕時讓風口關小或關閉，抽屜裡的潮濕空氣較能留下；低濕時開口讓空氣交換。葉菜容易失水萎軟，所以這類控制把葉菜列在高濕側。",
+      "scope": "限有可動導風板的蔬果盒。高濕非加水，不保證多存幾天；買來的葉菜狀態與包裝都影響差異。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "先看滑桿後面的洞，再拿兩把狀況接近的葉菜，在相同溫度、裝載和包裝下換風門設定，量起始與隔天重量。這是示範設計，非本件實測。",
+        "payoff": "高濕那端把開口關小，葉子散出的水分比較容易留在抽屜裡。",
+        "seconds": [
+          31,
+          48
+        ]
+      },
+      "source_locator": "X140E-S07 「新鮮蔬果抽屜（選用）」與類型 1／類型 2 圖。X140E-S08 Side by Side Refrigerator，LOW／HIGH 段。X140E-S09 Materials and Methods、Figure 4 及 Figure 3／Table 4 說明。",
+      "notes": "K139-0001 是烘衣機少量衣物沒接觸感應區；#2182 退案「泡菜冰箱普及」是產品史。主案預測的是抽屜開口與水分散失。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "用自畫圖、自備器物或自製樣品拍攝。原廠手冊與運動賽事影片保留原件連結。",
+      "origin": "wave140-everyday-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-08dcd64898cfd8e2",
+          "origin": "wave140-everyday-20261120",
+          "locator": "X140E-S07 「新鮮蔬果抽屜（選用）」與類型 1／類型 2 圖。X140E-S08 Side by Side Refrigerator，LOW／HIGH 段。X140E-S09 Materials and Methods、Figure 4 及 Figure 3／Table 4 說明。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-0eef4e317234c8f7",
+          "origin": "wave140-everyday-20261120",
+          "locator": "X140E-S07 「新鮮蔬果抽屜（選用）」與類型 1／類型 2 圖。X140E-S08 Side by Side Refrigerator，LOW／HIGH 段。X140E-S09 Materials and Methods、Figure 4 及 Figure 3／Table 4 說明。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-bd200644047448ed",
+          "origin": "wave140-everyday-20261120",
+          "locator": "X140E-S07 「新鮮蔬果抽屜（選用）」與類型 1／類型 2 圖。X140E-S08 Side by Side Refrigerator，LOW／HIGH 段。X140E-S09 Materials and Methods、Figure 4 及 Figure 3／Table 4 說明。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-everyday-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0005",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "搬家後向中華郵政辦好改寄，朋友卻還在寫舊址。隔月和第七個月各寄一封，兩封會投往同一處嗎？",
+      "mechanism_key": "x140.everyday.taiwan_moving_mail_window",
+      "answer_target": "假設郵件符合改寄條件，第一封會改送新址。郵局從同意提供服務之日起算六個月，期滿後恢復照信封所寫的地址投遞。第七個月那封還寫著舊址，就按舊址投遞。對同一組舊址和新址，收件人限申請一次。",
+      "scope": "依台灣中華郵政之 2026 服務說明，假設寄件人未更正地址。逾期照舊址投遞，不保證有人簽收，也不預測其後退件日。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "在兩張信封寫同一舊地址、同一收件人，一張記到達在服務期內，一張在期滿後；另拿一封封面印了「不得改投或改寄」的來比較。",
+        "payoff": "同一個人、同一個舊地址，郵局同意服務後的六個月一過，就恢復按信封地址投遞。",
+        "seconds": [
+          26,
+          42
+        ]
+      },
+      "source_locator": "X140E-S10 第 1 頁一（一）–（三）、第 2 頁二（一）與附註。X140E-S11 「申請郵件改投、改寄新地址」及「申請投遞前掛號函件改投上班地點」。",
+      "notes": "K128-0001 的寄件人一開始就指定存局候領，計算在郵局保管多久。本題信封原來寫的是住址，核心是搬遷名冊的服務效期。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "用自畫圖、自備器物或自製樣品拍攝。原廠手冊與運動賽事影片保留原件連結。",
+      "origin": "wave140-everyday-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-038e3b4874f069d0",
+          "origin": "wave140-everyday-20261120",
+          "locator": "X140E-S10 第 1 頁一（一）–（三）、第 2 頁二（一）與附註。X140E-S11 「申請郵件改投、改寄新地址」及「申請投遞前掛號函件改投上班地點」。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-472d53fe3788ca3c",
+          "origin": "wave140-everyday-20261120",
+          "locator": "X140E-S10 第 1 頁一（一）–（三）、第 2 頁二（一）與附註。X140E-S11 「申請郵件改投、改寄新地址」及「申請投遞前掛號函件改投上班地點」。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-everyday-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0006",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "衣襬翻過來，布底纏成一團。面線和梭芯線各用一種顏色，你會從哪一頭開始重新穿線？",
+      "mechanism_key": "x140.everyday.sewing_underside_upper_thread",
+      "answer_target": "這兩家原廠描述的症狀，是面線走錯路，沒被張力機構與挑線桿適當帶起；穿過布的面線留在下面，繞在梭殼附近。重穿時先抬壓布腳，線才有機會進入上線的張力機構。",
+      "scope": "限原廠列出的特定症狀，不把所有卡線、斷線或線跡不美觀都歸因於上線。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "先在已縫壞的雙色樣布上圈出鬆圈的顏色。關機、抬壓布腳重穿面線，再用同樣兩種線縫試布，翻到反面比對重穿前後的線跡。",
+        "payoff": "先認出布底的線團是面線，再重穿機頭；拉回面線的機構在布上方。",
+        "seconds": [
+          32,
+          48
+        ]
+      },
+      "source_locator": "X140E-S12 Symptoms、Cause 與 Remedy 開頭。X140E-S13 Thread Loops on Underside 與 Thread Loops on Top of Fabric。",
+      "notes": "K118-0004 確實提到挑線桿，但問正常線圈怎樣繞過梭殼；這題讓觀眾從布底的面線辨別穿線故障。K139-0104 是手工金線刺繡留下的固定圈。如果只做正常鎖式線跡示意，併回 K118-0004。 K118-0004 已用異色線示範正常鎖式線跡，本題拍到重穿後才翻面比對故障有沒有解除。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "用自畫圖、自備器物或自製樣品拍攝。原廠手冊與運動賽事影片保留原件連結。",
+      "origin": "wave140-everyday-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-3af52a047f1c3e07",
+          "origin": "wave140-everyday-20261120",
+          "locator": "X140E-S12 Symptoms、Cause 與 Remedy 開頭。X140E-S13 Thread Loops on Underside 與 Thread Loops on Top of Fabric。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5bd4be478eff3742",
+          "origin": "wave140-everyday-20261120",
+          "locator": "X140E-S12 Symptoms、Cause 與 Remedy 開頭。X140E-S13 Thread Loops on Underside 與 Thread Loops on Top of Fabric。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-everyday-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0007",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "EOS 850D 對焦在前排公仔，為什麼按住按鍵讓觀景窗變暗，反倒能預先看清楚後排會不會糊？",
+      "mechanism_key": "x140.everyday.slr_stopdown_optical_preview",
+      "answer_target": "預覽鍵讓鏡頭實際收至設定光圈。小開口讓進入觀景窗的光變少，同時讓前後可接受清晰的距離範圍變大，所以能在拍前看第二排。光圈先決拍攝時，相機另選快門時間來取得標準曝光。",
+      "scope": "限能用光學觀景窗與景深預覽的單眼機身／鏡頭。明暗體驗不外推電子觀景窗；也不保證最小光圈有最佳畫質。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "固定對焦在前排與構圖，先用大光圈按預覽，再換小光圈按住，對照第二排與觀景窗亮度。",
+        "payoff": "按住預覽鍵，小光圈同時改變進光量和景深，第二排的輪廓變得容易判讀。",
+        "seconds": [
+          28,
+          44
+        ]
+      },
+      "source_locator": "X140E-S14 Av 開頭與 Depth-of-Field Preview 段。X140E-S15 「自動對焦模式、手動對焦模式、變焦和景深」段。",
+      "notes": "O7003 看感測器傾斜後的對焦平面，G165 問事後重對焦。退案 I15-NA01、O7021 談縮小光圈與整體畫質，這題以預覽鍵按下前後的光路為界。 K139-0003、K139-0004。縮光圈預覽的視窗變暗和可見景深，是不同於相機檢查 Wii 紅外線、Canon 相印機往返上色的現象。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "用自畫圖、自備器物或自製樣品拍攝。原廠手冊與運動賽事影片保留原件連結。",
+      "origin": "wave140-everyday-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-5c74949d826113b7",
+          "origin": "wave140-everyday-20261120",
+          "locator": "X140E-S14 Av 開頭與 Depth-of-Field Preview 段。X140E-S15 「自動對焦模式、手動對焦模式、變焦和景深」段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-9ad85d4fc8bdd14f",
+          "origin": "wave140-everyday-20261120",
+          "locator": "X140E-S14 Av 開頭與 Depth-of-Field Preview 段。X140E-S15 「自動對焦模式、手動對焦模式、變焦和景深」段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-everyday-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0201",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "臺大小福的窗上已有一隻老鷹，鳥還往哪裡飛？",
+      "mechanism_key": "x140.bird_window.hawk_gap",
+      "answer_target": "小福的爬牆虎修剪後，校方觀察到碰撞變多，每扇窗各貼一張老鷹仍有碰撞。現場同學看到鳥往剪影旁的空隙飛去，於是提議把整片玻璃的空隙縮小。",
+      "scope": "校方的事後記錄未列碰撞數，也未記每張老鷹貼在哪一面。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "小福的爬牆虎修剪後，校方觀察到碰撞變多，每扇窗各貼一張老鷹仍有碰撞。現場同學看到鳥往剪影旁的空隙飛去，於是提議把整片玻璃的空隙縮小。",
+        "visual": "先露出剪影，請觀眾在旁邊仍透光的地方圈一條路。",
+        "seconds": [
+          24,
+          40
+        ]
+      },
+      "source_locator": "R140-S01 「小福玻璃窗戶的改造歷程大公開」第 1 至 3 段與附圖。",
+      "notes": "校方的事後記錄未列碰撞數，也未記每張老鷹貼在哪一面。",
+      "origin": "wave140-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-6e6ed9379d514a58",
+          "origin": "wave140-research-20261120",
+          "locator": "R140-S01 「小福玻璃窗戶的改造歷程大公開」第 1 至 3 段與附圖。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0201"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0202",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "窗內年節貼紙換回常年圖案，小福留下了什麼觀察？",
+      "mechanism_key": "x140.bird_window.ntuchronology",
+      "answer_target": "2021 年底店家從室內貼上節慶窗花，盡量填掉大空隙，校方記錄了半年未再看見碰撞。隔年暑假換成一整片內貼點陣 PVC，後續也未觀察到窗殺。",
+      "scope": "校方表示從窗外仍看得到清玻璃後的貼紙。兩期都沒有同時巡查的未改窗，無法拆出換形狀、填空隙或內貼各自的效果。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "2021 年底店家從室內貼上節慶窗花，盡量填掉大空隙，校方記錄了半年未再看見碰撞。隔年暑假換成一整片內貼點陣 PVC，後續也未觀察到窗殺。",
+        "visual": "逐層移開節慶剪紙，露出暑假換上的內側點陣。",
+        "seconds": [
+          24,
+          40
+        ]
+      },
+      "source_locator": "R140-S01 「小福玻璃窗戶的改造歷程大公開」第 1 至 3 段與附圖。",
+      "notes": "校方表示從窗外仍看得到清玻璃後的貼紙。兩期都沒有同時巡查的未改窗，無法拆出換形狀、填空隙或內貼各自的效果。",
+      "origin": "wave140-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-6e6ed9379d514a58",
+          "origin": "wave140-research-20261120",
+          "locator": "R140-S01 「小福玻璃窗戶的改造歷程大公開」第 1 至 3 段與附圖。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0202"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0203",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "窗上那棵樹在玻璃前面還是後面，怎麼分？",
+      "mechanism_key": "x140.bird_window.two_trees",
+      "answer_target": "在小窗模型後方擺一盆樹，前方擺另一盆。逐一移走，穿過玻璃看見的後景和正面映出的樹影可以分開。在老穀倉的實地研究，一年記到清玻璃四件、反景玻璃三件碰撞，兩種玻璃都有實例。",
+      "scope": "模型示意光路。七件紀錄不能比較碰撞率，也不能替鳥描述當時所見。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在小窗模型後方擺一盆樹，前方擺另一盆。逐一移走，穿過玻璃看見的後景和正面映出的樹影可以分開。在老穀倉的實地研究，一年記到清玻璃四件、反景玻璃三件碰撞，兩種玻璃都有實例。",
+        "visual": "相機固定，依序拿走後方和前方兩盆不同形狀的樹。",
+        "seconds": [
+          26,
+          40
+        ]
+      },
+      "source_locator": "R140-S06 Wilson Bulletin 101, 606–620，Field experiments 第四組與 Results Experiments 最後一段；Fig. 4 示清玻璃在部分角度也有反景。",
+      "notes": "模型示意光路。七件紀錄不能比較碰撞率，也不能替鳥描述當時所見。",
+      "origin": "wave140-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-4ee07b541553f595",
+          "origin": "wave140-research-20261120",
+          "locator": "R140-S06 Wilson Bulletin 101, 606–620，Field experiments 第四組與 Results Experiments 最後一段；Fig. 4 示清玻璃在部分角度也有反景。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0203"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0204",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "把同一批圖樣前的窗景換成反射天光，還能直接報出圖樣少了幾成效果嗎？",
+      "mechanism_key": "x140.bird_window.reflection_test",
+      "answer_target": "韓國研究團隊讓 507 隻小型野生雀形目鳥各飛一次，兩種情境比較三款圖樣。反景情境的三款迴避點估計都較低，但整體情境差異未達顯著，無效飛行卻較多。",
+      "scope": "引述作者摘要，不給反光導致的固定折扣，也不把人眼示範當成鳥的觀測結果。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "韓國研究團隊讓 507 隻小型野生雀形目鳥各飛一次，兩種情境比較三款圖樣。反景情境的三款迴避點估計都較低，但整體情境差異未達顯著，無效飛行卻較多。",
+        "visual": "用兩張透明片切換透景與反景，三組箭頭旁各保留誤差。",
+        "seconds": [
+          23,
+          38
+        ]
+      },
+      "source_locator": "R140-S08 Kim, Youn, Kang & Lee 2026，Animals 16(21), 3332，作者摘要結果句。",
+      "notes": "引述作者摘要，不給反光導致的固定折扣，也不把人眼示範當成鳥的觀測結果。",
+      "origin": "wave140-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-e05670f314b25ae4",
+          "origin": "wave140-research-20261120",
+          "locator": "R140-S08 Kim, Youn, Kang & Lee 2026，Animals 16(21), 3332，作者摘要結果句。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0204"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0205",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "玻璃前一公尺就有網，研究者怎麼判斷草雀原會朝哪扇窗飛？",
+      "mechanism_key": "x140.bird_window.net_approach",
+      "answer_target": "網在兩扇並排的雙層窗前攔住鳥。研究者從沒有標出試驗條件的飛行影片判斷牠在靠近時會往哪扇窗或避開兩扇。只有原會撞向某一扇的航線才納入二選一的計數。",
+      "scope": "樣本為圈養斑胸草雀。二選一分母不包括已轉彎或停飛的個體，沒有讓鳥真的撞窗。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "網在兩扇並排的雙層窗前攔住鳥。研究者從沒有標出試驗條件的飛行影片判斷牠在靠近時會往哪扇窗或避開兩扇。只有原會撞向某一扇的航線才納入二選一的計數。",
+        "visual": "在剖面畫出室外、室內與網，把轉走的航線先挪出兩窗計數盤。",
+        "seconds": [
+          25,
+          38
+        ]
+      },
+      "source_locator": "R140-S02 PeerJ e14676。Fig. 1 及 Quantifying collision risk and avoidance；Fig. 2A–D 為二選一的可能碰撞窗，Fig. 3 為同一鳥不同條件下的迴避差。Funding 頁。",
+      "notes": "樣本為圈養斑胸草雀。二選一分母不包括已轉彎或停飛的個體，沒有讓鳥真的撞窗。",
+      "origin": "wave140-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-a814dabb9d3aee69",
+          "origin": "wave140-research-20261120",
+          "locator": "R140-S02 PeerJ e14676。Fig. 1 及 Quantifying collision risk and avoidance；Fig. 2A–D 為二選一的可能碰撞窗，Fig. 3 為同一鳥不同條件下的迴避差。Funding 頁。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0205"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0206",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "同款 UV 膜分別貼在雙層窗兩側，十條和十一條草雀航線如何分？",
+      "mechanism_key": "x140.bird_window.uv_side_choice",
+      "answer_target": "外貼那組，有十條原會撞向玻璃的航線，九條向裸窗、一條向貼膜窗。另一批草雀面對內貼膜，有十一條航線進入比較，七條向裸窗、四條向貼膜窗。",
+      "scope": "這是兩批鳥，不能說九隻鳥改貼內側後有幾隻改了主意。航線不是窗外實際碰撞件數。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "外貼那組，有十條原會撞向玻璃的航線，九條向裸窗、一條向貼膜窗。另一批草雀面對內貼膜，有十一條航線進入比較，七條向裸窗、四條向貼膜窗。",
+        "visual": "讓觀眾分兩盤排 9+1 和 7+4 枚透明籌碼，盤上標不同組。",
+        "seconds": [
+          24,
+          42
+        ]
+      },
+      "source_locator": "R140-S02 PeerJ e14676。Fig. 1 及 Quantifying collision risk and avoidance；Fig. 2A–D 為二選一的可能碰撞窗，Fig. 3 為同一鳥不同條件下的迴避差。Funding 頁。",
+      "notes": "這是兩批鳥，不能說九隻鳥改貼內側後有幾隻改了主意。航線不是窗外實際碰撞件數。",
+      "origin": "wave140-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-a814dabb9d3aee69",
+          "origin": "wave140-research-20261120",
+          "locator": "R140-S02 PeerJ e14676。Fig. 1 及 Quantifying collision risk and avoidance；Fig. 2A–D 為二選一的可能碰撞窗，Fig. 3 為同一鳥不同條件下的迴避差。Funding 頁。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0206"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0207",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "外貼兩種膜，草雀的迴避反應也一樣明確嗎？",
+      "mechanism_key": "x140.bird_window.two_films",
+      "answer_target": "同一組草雀分別在裸窗和貼膜條件下飛行，研究者看個體迴避的變化。UV 膜貼外側的證據較明確，另一款外貼膜只見相同方向的較弱證據。兩款貼在室內面都未顯示明確改善。",
+      "scope": "內外貼分別由不同組測試。未見迴避改善，不能據此推斷牠完全看不見貼膜；UV 膜廠商資助了其產品測試。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一組草雀分別在裸窗和貼膜條件下飛行，研究者看個體迴避的變化。UV 膜貼外側的證據較明確，另一款外貼膜只見相同方向的較弱證據。兩款貼在室內面都未顯示明確改善。",
+        "visual": "用透明片在雙層窗的最外和最內表面移位，將兩種膜的四組結果並排。",
+        "seconds": [
+          28,
+          44
+        ]
+      },
+      "source_locator": "R140-S02 PeerJ e14676。Fig. 1 及 Quantifying collision risk and avoidance；Fig. 2A–D 為二選一的可能碰撞窗，Fig. 3 為同一鳥不同條件下的迴避差。Funding 頁。",
+      "notes": "內外貼分別由不同組測試。未見迴避改善，不能據此推斷牠完全看不見貼膜；UV 膜廠商資助了其產品測試。",
+      "origin": "wave140-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-a814dabb9d3aee69",
+          "origin": "wave140-research-20261120",
+          "locator": "R140-S02 PeerJ e14676。Fig. 1 及 Quantifying collision risk and avoidance；Fig. 2A–D 為二選一的可能碰撞窗，Fig. 3 為同一鳥不同條件下的迴避差。Funding 頁。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0207"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0208",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "同寬、同間距的白條紋轉九十度，還有多少鳥向標記窗飛？",
+      "mechanism_key": "x140.bird_window.stripe_rotation",
+      "answer_target": "奧地利飛行隧道以相同寬二公分、間距十公分的白條比較方向。直條時有 10/177 次有效選擇朝標記窗飛，橫條是 19/88。",
+      "scope": "不同組的有效選擇數不同，須保留分母。通道給的是窗板選擇，不能把百分比當成街頭死亡率。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "奧地利飛行隧道以相同寬二公分、間距十公分的白條比較方向。直條時有 10/177 次有效選擇朝標記窗飛，橫條是 19/88。",
+        "visual": "轉一次白條卡，先遮住兩個分母，揭曉時把分子分母成對顯示。",
+        "seconds": [
+          24,
+          38
+        ]
+      },
+      "source_locator": "R140-S03 Biologia 70, 535–541，Fig. 1–2；Table 2 圖樣，Table 4 飛向標記窗的分子與分母，Discussion (2)–(3)。",
+      "notes": "不同組的有效選擇數不同，須保留分母。通道給的是窗板選擇，不能把百分比當成街頭死亡率。",
+      "origin": "wave140-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-f7172a67159856e4",
+          "origin": "wave140-research-20261120",
+          "locator": "R140-S03 Biologia 70, 535–541，Fig. 1–2；Table 2 圖樣，Table 4 飛向標記窗的分子與分母，Discussion (2)–(3)。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0208"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0209",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "少遮一點玻璃的細條，有沒有接近遮掉半窗的圖樣？",
+      "mechanism_key": "x140.bird_window.coverage_area",
+      "answer_target": "一款細橫條遮掉 6.7% 窗面，89 次有效選擇有 6 次朝標記飛；另一款粗直條遮掉 50%，85 次中有 5 次朝標記飛。保持景觀的圖樣也可能讓鳥改向。",
+      "scope": "這兩款的方向、間距與材料等條件一併改變，不能把差異單歸到條紋寬度。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一款細橫條遮掉 6.7% 窗面，89 次有效選擇有 6 次朝標記飛；另一款粗直條遮掉 50%，85 次中有 5 次朝標記飛。保持景觀的圖樣也可能讓鳥改向。",
+        "visual": "自畫等面積窗板，以兩色標出仍然透光的部分，數點數後才秀遮面積。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_locator": "R140-S03 Biologia 70, 535–541，Fig. 1–2；Table 2 圖樣，Table 4 飛向標記窗的分子與分母，Discussion (2)–(3)。",
+      "notes": "這兩款的方向、間距與材料等條件一併改變，不能把差異單歸到條紋寬度。",
+      "origin": "wave140-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-f7172a67159856e4",
+          "origin": "wave140-research-20261120",
+          "locator": "R140-S03 Biologia 70, 535–541，Fig. 1–2；Table 2 圖樣，Table 4 飛向標記窗的分子與分母，Discussion (2)–(3)。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0209"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0210",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "貼了 154 張大型猛禽剪影，能從巴西這兩棟樓判定鳥怕老鷹嗎？",
+      "mechanism_key": "x140.bird_window.silhouette_survey",
+      "answer_target": "巴西團隊在兩棟熱點建物分散貼上大型白色猛禽剪影。前後記錄有 19 件與 10 件，按觀察日換算也見下降，但統計比較未能排除波動。",
+      "scope": "缺少同樣密度與時段的非猛禽圖樣對照，無從判定下降由剪影的天敵形狀造成。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "巴西團隊在兩棟熱點建物分散貼上大型白色猛禽剪影。前後記錄有 19 件與 10 件，按觀察日換算也見下降，但統計比較未能排除波動。",
+        "visual": "把一張剪影貼在一扇窗，只劃出實際覆蓋範圍，將前後觀察期分開寫。",
+        "seconds": [
+          18,
+          30
+        ]
+      },
+      "source_locator": "R140-S09 Materials and methods「154」段、Results 第 1 段與 Table 1。",
+      "notes": "缺少同樣密度與時段的非猛禽圖樣對照，無從判定下降由剪影的天敵形狀造成。",
+      "origin": "wave140-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-0f5873c98475fc94",
+          "origin": "wave140-research-20261120",
+          "locator": "R140-S09 Materials and methods「154」段、Results 第 1 段與 Table 1。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0210"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0211",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "同棟大樓只在鏡面的一區加標記，未改的地方兩個冬天記到什麼？",
+      "mechanism_key": "x140.bird_window.facade_control",
+      "answer_target": "猶他同棟建物處理區的碰撞從七件到兩件，另一區兩冬都是八件。研究比較的是區域隨季節的變化，區域與季節交互作用得到 P=.03。",
+      "scope": "這是單棟、兩冬的碰撞事件，其中也有暈眩的鳥。單獨比較處理區前後是 P=.06。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "猶他同棟建物處理區的碰撞從七件到兩件，另一區兩冬都是八件。研究比較的是區域隨季節的變化，區域與季節交互作用得到 P=.03。",
+        "visual": "先保留未處理側，轉動兩個冬天的日曆，同棟兩列同時更新。",
+        "seconds": [
+          23,
+          35
+        ]
+      },
+      "source_locator": "R140-S07 PeerJ 7:e7620，Results > Mitigation building collisions，Fig. 3、原文 Methods 的巡查定義。",
+      "notes": "這是單棟、兩冬的碰撞事件，其中也有暈眩的鳥。單獨比較處理區前後是 P=.06。",
+      "origin": "wave140-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-f231f0125b36e217",
+          "origin": "wave140-research-20261120",
+          "locator": "R140-S07 PeerJ 7:e7620，Results > Mitigation building collisions，Fig. 3、原文 Methods 的巡查定義。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0211"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0212",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "原本最常撞的九座候車亭貼了點陣，巡查員怎麼分辨前後變化？",
+      "mechanism_key": "x140.bird_window.shelter_effort",
+      "answer_target": "奧克拉荷馬團隊優先處理原先最常撞的九亭，2019 年外貼點陣。2016 和 2020 整理到 32 件與 5 件，另九亭從兩件增加。比較兩年時也將巡查量納入模型。",
+      "scope": "2020 未改九亭正文報 14 件，逐亭表為 15 件。兩來源都含六具鳥屍，只有撞痕等其他證據的紀錄相差一件。無法從這批資料算個別鳥的存活率。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "奧克拉荷馬團隊優先處理原先最常撞的九亭，2019 年外貼點陣。2016 和 2020 整理到 32 件與 5 件，另九亭從兩件增加。比較兩年時也將巡查量納入模型。",
+        "visual": "把逐亭 CSV 同年月同分組加總，兩張分列的件數卡只在有出入的欄位摺起一角。",
+        "seconds": [
+          24,
+          40
+        ]
+      },
+      "source_locator": "R140-S04 Riggs et al., Urban Ecosystems，Results 的 Bird‑collision surveys 與 BACI and 2020 analyses、Fig. 3、Discussion 各側分析限制；作者附件 MOESM2 逐亭前後總件（18 亭×2 年）、MOESM3 2020 證據類型（36 亭）、MOESM1 和 MOESM4 分析程式。 R140-S12 MOESM2 的 year、treated_untreated、total_collision。 R140-S13 MOESM3 的 shelter_id、carcass、evidence_only。",
+      "notes": "2020 未改九亭正文報 14 件，逐亭表為 15 件。兩來源都含六具鳥屍，只有撞痕等其他證據的紀錄相差一件。無法從這批資料算個別鳥的存活率。",
+      "origin": "wave140-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-7cbabbbeac64b389",
+          "origin": "wave140-research-20261120",
+          "locator": "R140-S04 Riggs et al., Urban Ecosystems，Results 的 Bird‑collision surveys 與 BACI and 2020 analyses、Fig. 3、Discussion 各側分析限制；作者附件 MOESM2 逐亭前後總件（18 亭×2 年）、MOESM3 2020 證據類型（36 亭）、MOESM1 和 MOESM4 分析程式。 R140-S12 MOESM2 的 year、treated_untreated、total_collision。 R140-S13 MOESM3 的 shelter_id、carcass、evidence_only。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e2247f63a5a7972d",
+          "origin": "wave140-research-20261120",
+          "locator": "R140-S04 Riggs et al., Urban Ecosystems，Results 的 Bird‑collision surveys 與 BACI and 2020 analyses、Fig. 3、Discussion 各側分析限制；作者附件 MOESM2 逐亭前後總件（18 亭×2 年）、MOESM3 2020 證據類型（36 亭）、MOESM1 和 MOESM4 分析程式。 R140-S12 MOESM2 的 year、treated_untreated、total_collision。 R140-S13 MOESM3 的 shelter_id、carcass、evidence_only。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b5901307c961637b",
+          "origin": "wave140-research-20261120",
+          "locator": "R140-S04 Riggs et al., Urban Ecosystems，Results 的 Bird‑collision surveys 與 BACI and 2020 analyses、Fig. 3、Discussion 各側分析限制；作者附件 MOESM2 逐亭前後總件（18 亭×2 年）、MOESM3 2020 證據類型（36 亭）、MOESM1 和 MOESM4 分析程式。 R140-S12 MOESM2 的 year、treated_untreated、total_collision。 R140-S13 MOESM3 的 shelter_id、carcass、evidence_only。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0212"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0213",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "點貼在公車亭外面，原來從亭內側撞到玻璃的紀錄有變嗎？",
+      "mechanism_key": "x140.bird_window.open_shelter_sides",
+      "answer_target": "九座處理亭按撞擊位置分，亭內側由十三件降為一件，亭外側由十九件降到四件。兩列合回同一批 32 件和 5 件；亭子由三面玻璃圍成，另留一面開口，鳥能從玻璃兩側飛近。",
+      "scope": "分面僅為作者描述，沒有分面顯著性檢定。依屍體或僅痕跡分類是另一拆法，附件也未列逐件撞到哪一面。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "九座處理亭按撞擊位置分，亭內側由十三件降為一件，亭外側由十九件降到四件。兩列合回同一批 32 件和 5 件；亭子由三面玻璃圍成，另留一面開口，鳥能從玻璃兩側飛近。",
+        "visual": "翻轉立體站亭，保留兩面箭頭；用不同圖示區隔「哪一面」和「留下什麼」。",
+        "seconds": [
+          23,
+          41
+        ]
+      },
+      "source_locator": "R140-S04 Riggs et al., Urban Ecosystems，Results 的 Bird‑collision surveys 與 BACI and 2020 analyses、Fig. 3、Discussion 各側分析限制；作者附件 MOESM2 逐亭前後總件（18 亭×2 年）、MOESM3 2020 證據類型（36 亭）、MOESM1 和 MOESM4 分析程式。",
+      "notes": "分面僅為作者描述，沒有分面顯著性檢定。依屍體或僅痕跡分類是另一拆法，附件也未列逐件撞到哪一面。",
+      "origin": "wave140-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-7cbabbbeac64b389",
+          "origin": "wave140-research-20261120",
+          "locator": "R140-S04 Riggs et al., Urban Ecosystems，Results 的 Bird‑collision surveys 與 BACI and 2020 analyses、Fig. 3、Discussion 各側分析限制；作者附件 MOESM2 逐亭前後總件（18 亭×2 年）、MOESM3 2020 證據類型（36 亭）、MOESM1 和 MOESM4 分析程式。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0213"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0214",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "新北五月寫八座、十一月寫九座，哪個數能填在實際改造欄？",
+      "mechanism_key": "x140.bird_window.installed_denominator",
+      "answer_target": "五月方案計畫處理八座候車亭。八月市府公布潭之鄉的示範張貼，十一月記載改善九座候車亭，設計融入十五種鳥圖騰，規律標示間距在 5×5 公分以內。",
+      "scope": "五月是計畫，八月是已公開的示範記錄，十一月是市府彙報的改善範圍。公文發布日無法當作動工日。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "五月方案計畫處理八座候車亭。八月市府公布潭之鄉的示範張貼，十一月記載改善九座候車亭，設計融入十五種鳥圖騰，規律標示間距在 5×5 公分以內。",
+        "visual": "自畫三張不同形狀的時間戳記，分別標上計畫、示範張貼與改善數，再用尺量圖案空隙。",
+        "seconds": [
+          26,
+          44
+        ]
+      },
+      "source_locator": "R140-S05 新聞正文與站亭照片圖說。 R140-S10 新聞正文與站亭照片圖說。 R140-S11 新聞正文與站亭照片圖說。",
+      "notes": "五月是計畫，八月是已公開的示範記錄，十一月是市府彙報的改善範圍。公文發布日無法當作動工日。",
+      "origin": "wave140-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-daae7d8519ca37ad",
+          "origin": "wave140-research-20261120",
+          "locator": "R140-S05 新聞正文與站亭照片圖說。 R140-S10 新聞正文與站亭照片圖說。 R140-S11 新聞正文與站亭照片圖說。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-cde77fea4cb43689",
+          "origin": "wave140-research-20261120",
+          "locator": "R140-S05 新聞正文與站亭照片圖說。 R140-S10 新聞正文與站亭照片圖說。 R140-S11 新聞正文與站亭照片圖說。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-d9e0670673f4e8df",
+          "origin": "wave140-research-20261120",
+          "locator": "R140-S05 新聞正文與站亭照片圖說。 R140-S10 新聞正文與站亭照片圖說。 R140-S11 新聞正文與站亭照片圖說。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0214"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K140-0215",
+      "category": "生物動物與植物",
+      "domain": "生物動物與植物",
+      "question": "站牌貼好後里長沒再接到通報，怎樣才能知道固定巡查發現的撞擊有沒有變少？",
+      "mechanism_key": "x140.bird_window.reports_vs_surveys",
+      "answer_target": "新北市府轉述潭之鄉所在地里長近期未再接到民眾通報。在改過和未改的窗各按固定時段巡查，記錄日期、巡查量、撞痕或屍體，才有可比的事件數；奧克拉荷馬的做法提供實例。",
+      "scope": "未接到通報只描述通報途徑。里長提到的一站、建物清玻璃以及雙層窗隧道回答不同問題。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "新北市府轉述潭之鄉所在地里長近期未再接到民眾通報。在改過和未改的窗各按固定時段巡查，記錄日期、巡查量、撞痕或屍體，才有可比的事件數；奧克拉荷馬的做法提供實例。",
+        "visual": "站牌通報簿旁擺兩張有逐次日期的巡查表，讓觀眾挑能回答實際事件變化的一張。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_locator": "R140-S11 新聞正文與站亭照片圖說。 R140-S04 Riggs et al., Urban Ecosystems，Results 的 Bird‑collision surveys 與 BACI and 2020 analyses、Fig. 3、Discussion 各側分析限制；作者附件 MOESM2 逐亭前後總件（18 亭×2 年）、MOESM3 2020 證據類型（36 亭）、MOESM1 和 MOESM4 分析程式。",
+      "notes": "未接到通報只描述通報途徑。里長提到的一站、建物清玻璃以及雙層窗隧道回答不同問題。",
+      "origin": "wave140-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-d9e0670673f4e8df",
+          "origin": "wave140-research-20261120",
+          "locator": "R140-S11 新聞正文與站亭照片圖說。 R140-S04 Riggs et al., Urban Ecosystems，Results 的 Bird‑collision surveys 與 BACI and 2020 analyses、Fig. 3、Discussion 各側分析限制；作者附件 MOESM2 逐亭前後總件（18 亭×2 年）、MOESM3 2020 證據類型（36 亭）、MOESM1 和 MOESM4 分析程式。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-7cbabbbeac64b389",
+          "origin": "wave140-research-20261120",
+          "locator": "R140-S11 新聞正文與站亭照片圖說。 R140-S04 Riggs et al., Urban Ecosystems，Results 的 Bird‑collision surveys 與 BACI and 2020 analyses、Fig. 3、Discussion 各側分析限制；作者附件 MOESM2 逐亭前後總件（18 亭×2 年）、MOESM3 2020 證據類型（36 亭）、MOESM1 和 MOESM4 分析程式。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave140-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K140-0215"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -367801,7 +369193,7 @@
   ],
   "raw_records": {
     "file": "pool-records.json",
-    "count": 8438
+    "count": 8466
   },
   "dedup": {
     "aliases": {
@@ -371213,6 +372605,34 @@
       "P14008": "P14008",
       "P14009": "P14009",
       "P14010": "P14010",
+      "K140-0101": "K140-0101",
+      "K140-0102": "K140-0102",
+      "K140-0103": "K140-0103",
+      "K140-0104": "K140-0104",
+      "K140-0105": "K140-0105",
+      "K140-0106": "K140-0106",
+      "K140-0001": "K140-0001",
+      "K140-0002": "K140-0002",
+      "K140-0003": "K140-0003",
+      "K140-0004": "K140-0004",
+      "K140-0005": "K140-0005",
+      "K140-0006": "K140-0006",
+      "K140-0007": "K140-0007",
+      "K140-0201": "K140-0201",
+      "K140-0202": "K140-0202",
+      "K140-0203": "K140-0203",
+      "K140-0204": "K140-0204",
+      "K140-0205": "K140-0205",
+      "K140-0206": "K140-0206",
+      "K140-0207": "K140-0207",
+      "K140-0208": "K140-0208",
+      "K140-0209": "K140-0209",
+      "K140-0210": "K140-0210",
+      "K140-0211": "K140-0211",
+      "K140-0212": "K140-0212",
+      "K140-0213": "K140-0213",
+      "K140-0214": "K140-0214",
+      "K140-0215": "K140-0215",
       "F15001": "F15001",
       "F15002": "F15002",
       "F15003": "F15003",
@@ -418156,6 +419576,20 @@
         ]
       },
       {
+        "id": "K140-0208~K140-0209",
+        "a": "K140-0208",
+        "b": "K140-0209",
+        "question_score": 0,
+        "answer_score": 0.158,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同寬、同間距的白條紋轉九十度，還有多少鳥向標記窗飛？",
+          "少遮一點玻璃的細條，有沒有接近遮掉半窗的圖樣？"
+        ]
+      },
+      {
         "id": "L333~L334",
         "a": "L333",
         "b": "L334",
@@ -424428,6 +425862,20 @@
         ]
       },
       {
+        "id": "K140-0203~K140-0205",
+        "a": "K140-0203",
+        "b": "K140-0205",
+        "question_score": 0.111,
+        "answer_score": 0.015,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗上那棵樹在玻璃前面還是後面，怎麼分？",
+          "玻璃前一公尺就有網，研究者怎麼判斷草雀原會朝哪扇窗飛？"
+        ]
+      },
+      {
         "id": "L001~L002",
         "a": "L001",
         "b": "L002",
@@ -426007,6 +427455,20 @@
         "questions": [
           "白天兩條線看來差不多亮，台灣公路局為什麼還要用另一個讀值檢查夜間反光？",
           "玻璃珠是透明的，為什麼把它半埋進白漆，夜裡反而能把頭燈的光送回車子？"
+        ]
+      },
+      {
+        "id": "K140-0201~K140-0202",
+        "a": "K140-0201",
+        "b": "K140-0202",
+        "question_score": 0.053,
+        "answer_score": 0.103,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺大小福的窗上已有一隻老鷹，鳥還往哪裡飛？",
+          "窗內年節貼紙換回常年圖案，小福留下了什麼觀察？"
         ]
       },
       {
@@ -428082,6 +429544,20 @@
         ]
       },
       {
+        "id": "K140-0209~K140-0213",
+        "a": "K140-0209",
+        "b": "K140-0213",
+        "question_score": 0.093,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "少遮一點玻璃的細條，有沒有接近遮掉半窗的圖樣？",
+          "點貼在公車亭外面，原來從亭內側撞到玻璃的紀錄有變嗎？"
+        ]
+      },
+      {
         "id": "L66-012~L66-017",
         "a": "L66-012",
         "b": "L66-017",
@@ -428555,6 +430031,20 @@
         "questions": [
           "門將手邊沒有電視，球真的越過球門線時，誰先收到訊息？",
           "維拉門將抱著球向後跌，為什麼第 42 分鐘主裁沒有指向中圈？"
+        ]
+      },
+      {
+        "id": "K140-0212~K140-0215",
+        "a": "K140-0212",
+        "b": "K140-0215",
+        "question_score": 0.036,
+        "answer_score": 0.091,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "原本最常撞的九座候車亭貼了點陣，巡查員怎麼分辨前後變化？",
+          "站牌貼好後里長沒再接到通報，怎樣才能知道固定巡查發現的撞擊有沒有變少？"
         ]
       },
       {
@@ -429034,6 +430524,20 @@
         ]
       },
       {
+        "id": "K140-0205~K140-0206",
+        "a": "K140-0205",
+        "b": "K140-0206",
+        "question_score": 0.042,
+        "answer_score": 0.089,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "玻璃前一公尺就有網，研究者怎麼判斷草雀原會朝哪扇窗飛？",
+          "同款 UV 膜分別貼在雙層窗兩側，十條和十一條草雀航線如何分？"
+        ]
+      },
+      {
         "id": "L200~L201",
         "a": "L200",
         "b": "L201",
@@ -429227,6 +430731,20 @@
         "questions": [
           "美國夜班從 23:00 到 07:30，照常休息半小時，怎麼會有一晚做七小時、另一晚卻做九小時？",
           "2026 年 4 月 5 日凌晨，在豪勳爵島盯著鐘看，第二次會完整看見 01:00 到 01:59 嗎？"
+        ]
+      },
+      {
+        "id": "K140-0206~K140-0207",
+        "a": "K140-0206",
+        "b": "K140-0207",
+        "question_score": 0.047,
+        "answer_score": 0.088,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同款 UV 膜分別貼在雙層窗兩側，十條和十一條草雀航線如何分？",
+          "外貼兩種膜，草雀的迴避反應也一樣明確嗎？"
         ]
       },
       {
@@ -432506,6 +434024,20 @@
         ]
       },
       {
+        "id": "K140-0209~K140-0215",
+        "a": "K140-0209",
+        "b": "K140-0215",
+        "question_score": 0.077,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "少遮一點玻璃的細條，有沒有接近遮掉半窗的圖樣？",
+          "站牌貼好後里長沒再接到通報，怎樣才能知道固定巡查發現的撞擊有沒有變少？"
+        ]
+      },
+      {
         "id": "L135~N145",
         "a": "L135",
         "b": "N145",
@@ -432741,6 +434273,20 @@
         "questions": [
           "澳洲工廠的 Dave 在春季少站一小時，為什麼薪資單還是算八小時？",
           "赫爾辛基近郊 L 線 03:33 開、03:20 到，怎麼看出它其實表定跑了四十七分鐘？"
+        ]
+      },
+      {
+        "id": "K140-0208~K140-0210",
+        "a": "K140-0208",
+        "b": "K140-0210",
+        "question_score": 0,
+        "answer_score": 0.076,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同寬、同間距的白條紋轉九十度，還有多少鳥向標記窗飛？",
+          "貼了 154 張大型猛禽剪影，能從巴西這兩棟樓判定鳥怕老鷹嗎？"
         ]
       },
       {
@@ -434928,6 +436474,20 @@
         ]
       },
       {
+        "id": "K140-0211~K140-0212",
+        "a": "K140-0211",
+        "b": "K140-0212",
+        "question_score": 0,
+        "answer_score": 0.07,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同棟大樓只在鏡面的一區加標記，未改的地方兩個冬天記到什麼？",
+          "原本最常撞的九座候車亭貼了點陣，巡查員怎麼分辨前後變化？"
+        ]
+      },
+      {
         "id": "P63-017~P63-018",
         "a": "P63-017",
         "b": "P63-018",
@@ -435866,6 +437426,20 @@
         ]
       },
       {
+        "id": "K140-0210~K140-0212",
+        "a": "K140-0210",
+        "b": "K140-0212",
+        "question_score": 0.041,
+        "answer_score": 0.068,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "貼了 154 張大型猛禽剪影，能從巴西這兩棟樓判定鳥怕老鷹嗎？",
+          "原本最常撞的九座候車亭貼了點陣，巡查員怎麼分辨前後變化？"
+        ]
+      },
+      {
         "id": "E2115~E2173",
         "a": "E2115",
         "b": "E2173",
@@ -436549,6 +438123,34 @@
         "questions": [
           "同樣寫著濕路，把水倒完再量，跟水一直落在標線上，會得到同一種成績嗎？",
           "同一批駕駛在同一段濕路停下來數虛線，能把「看見幾條」直接填進剛才的公尺欄嗎？"
+        ]
+      },
+      {
+        "id": "K140-0202~K140-0212",
+        "a": "K140-0202",
+        "b": "K140-0212",
+        "question_score": 0,
+        "answer_score": 0.066,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗內年節貼紙換回常年圖案，小福留下了什麼觀察？",
+          "原本最常撞的九座候車亭貼了點陣，巡查員怎麼分辨前後變化？"
+        ]
+      },
+      {
+        "id": "K140-0207~K140-0211",
+        "a": "K140-0207",
+        "b": "K140-0211",
+        "question_score": 0,
+        "answer_score": 0.066,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "外貼兩種膜，草雀的迴避反應也一樣明確嗎？",
+          "同棟大樓只在鏡面的一區加標記，未改的地方兩個冬天記到什麼？"
         ]
       },
       {
@@ -437669,6 +439271,34 @@
         "questions": [
           "同款濕態標線帶只從四吋加寬到六吋，德州灑水試道上的駕駛會提早發現它嗎？",
           "真的下雨時，坐在研究車上的人怎麼知道駕駛剛喊「看到了」，車輪還離白線的斷點多遠？"
+        ]
+      },
+      {
+        "id": "K140-0201~K140-0203",
+        "a": "K140-0201",
+        "b": "K140-0203",
+        "question_score": 0.063,
+        "answer_score": 0.031,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺大小福的窗上已有一隻老鷹，鳥還往哪裡飛？",
+          "窗上那棵樹在玻璃前面還是後面，怎麼分？"
+        ]
+      },
+      {
+        "id": "K140-0212~K140-0213",
+        "a": "K140-0212",
+        "b": "K140-0213",
+        "question_score": 0.043,
+        "answer_score": 0.063,
+        "key_score": 0.727,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "原本最常撞的九座候車亭貼了點陣，巡查員怎麼分辨前後變化？",
+          "點貼在公車亭外面，原來從亭內側撞到玻璃的紀錄有變嗎？"
         ]
       },
       {
@@ -438915,6 +440545,34 @@
         "questions": [
           "美國夜班從 23:00 到 07:30，照常休息半小時，怎麼會有一晚做七小時、另一晚卻做九小時？",
           "把打卡單換成 1979 年 9 月 30 日台北的 23:30，地點和年月日都齊了，為什麼仍可能少一格？"
+        ]
+      },
+      {
+        "id": "K140-0203~K140-0209",
+        "a": "K140-0203",
+        "b": "K140-0209",
+        "question_score": 0.059,
+        "answer_score": 0.017,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗上那棵樹在玻璃前面還是後面，怎麼分？",
+          "少遮一點玻璃的細條，有沒有接近遮掉半窗的圖樣？"
+        ]
+      },
+      {
+        "id": "K140-0205~K140-0207",
+        "a": "K140-0205",
+        "b": "K140-0207",
+        "question_score": 0.051,
+        "answer_score": 0.059,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "玻璃前一公尺就有網，研究者怎麼判斷草雀原會朝哪扇窗飛？",
+          "外貼兩種膜，草雀的迴避反應也一樣明確嗎？"
         ]
       },
       {
@@ -440934,6 +442592,34 @@
         ]
       },
       {
+        "id": "K140-0203~K140-0213",
+        "a": "K140-0203",
+        "b": "K140-0213",
+        "question_score": 0.054,
+        "answer_score": 0.045,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗上那棵樹在玻璃前面還是後面，怎麼分？",
+          "點貼在公車亭外面，原來從亭內側撞到玻璃的紀錄有變嗎？"
+        ]
+      },
+      {
+        "id": "K140-0208~K140-0212",
+        "a": "K140-0208",
+        "b": "K140-0212",
+        "question_score": 0,
+        "answer_score": 0.054,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同寬、同間距的白條紋轉九十度，還有多少鳥向標記窗飛？",
+          "原本最常撞的九座候車亭貼了點陣，巡查員怎麼分辨前後變化？"
+        ]
+      },
+      {
         "id": "L158~L159",
         "a": "L158",
         "b": "L159",
@@ -441757,6 +443443,20 @@
         "questions": [
           "三笘薰那腳飛向門前，為什麼計分表上寫的是田中碧？",
           "裁判一定要自己跑到場邊看螢幕，才有資格確認客觀的出界位置嗎？"
+        ]
+      },
+      {
+        "id": "K140-0202~K140-0210",
+        "a": "K140-0202",
+        "b": "K140-0210",
+        "question_score": 0,
+        "answer_score": 0.052,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗內年節貼紙換回常年圖案，小福留下了什麼觀察？",
+          "貼了 154 張大型猛禽剪影，能從巴西這兩棟樓判定鳥怕老鷹嗎？"
         ]
       },
       {
@@ -442670,6 +444370,20 @@
         ]
       },
       {
+        "id": "K140-0207~K140-0208",
+        "a": "K140-0207",
+        "b": "K140-0208",
+        "question_score": 0,
+        "answer_score": 0.05,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "外貼兩種膜，草雀的迴避反應也一樣明確嗎？",
+          "同寬、同間距的白條紋轉九十度，還有多少鳥向標記窗飛？"
+        ]
+      },
+      {
         "id": "L159~L161",
         "a": "L159",
         "b": "L161",
@@ -442933,6 +444647,20 @@
         "questions": [
           "錢角少一點也照比例扣款嗎？澳洲那把尺為什麼兩頭填的不是乘法？",
           "瑞士一塊殘鈔明明超過半張，想走櫃檯通常可立即交換的情形，還要看清哪一行？"
+        ]
+      },
+      {
+        "id": "K140-0203~K140-0211",
+        "a": "K140-0203",
+        "b": "K140-0211",
+        "question_score": 0,
+        "answer_score": 0.049,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗上那棵樹在玻璃前面還是後面，怎麼分？",
+          "同棟大樓只在鏡面的一區加標記，未改的地方兩個冬天記到什麼？"
         ]
       },
       {
@@ -443468,6 +445196,20 @@
         ]
       },
       {
+        "id": "K140-0205~K140-0209",
+        "a": "K140-0205",
+        "b": "K140-0209",
+        "question_score": 0.048,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "玻璃前一公尺就有網，研究者怎麼判斷草雀原會朝哪扇窗飛？",
+          "少遮一點玻璃的細條，有沒有接近遮掉半窗的圖樣？"
+        ]
+      },
+      {
         "id": "P53-001~P54-002",
         "a": "P53-001",
         "b": "P54-002",
@@ -443888,6 +445630,20 @@
         ]
       },
       {
+        "id": "K140-0214~K140-0215",
+        "a": "K140-0214",
+        "b": "K140-0215",
+        "question_score": 0,
+        "answer_score": 0.047,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "新北五月寫八座、十一月寫九座，哪個數能填在實際改造欄？",
+          "站牌貼好後里長沒再接到通報，怎樣才能知道固定巡查發現的撞擊有沒有變少？"
+        ]
+      },
+      {
         "id": "K6005~S60-005",
         "a": "K6005",
         "b": "S60-005",
@@ -444151,6 +445907,20 @@
         "questions": [
           "芬蘭夜車 03:23 到站、03:26 開走，怎麼會表定停靠六十三分鐘？",
           "兩張洛杉磯打卡單都印著 2020 年 11 月 1 日 01:00，加上什麼記號能指出哪張較早？"
+        ]
+      },
+      {
+        "id": "K140-0204~K140-0207",
+        "a": "K140-0204",
+        "b": "K140-0207",
+        "question_score": 0,
+        "answer_score": 0.046,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把同一批圖樣前的窗景換成反射天光，還能直接報出圖樣少了幾成效果嗎？",
+          "外貼兩種膜，草雀的迴避反應也一樣明確嗎？"
         ]
       },
       {
@@ -444672,6 +446442,48 @@
         ]
       },
       {
+        "id": "K140-0201~K140-0210",
+        "a": "K140-0201",
+        "b": "K140-0210",
+        "question_score": 0.045,
+        "answer_score": 0.036,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺大小福的窗上已有一隻老鷹，鳥還往哪裡飛？",
+          "貼了 154 張大型猛禽剪影，能從巴西這兩棟樓判定鳥怕老鷹嗎？"
+        ]
+      },
+      {
+        "id": "K140-0203~K140-0204",
+        "a": "K140-0203",
+        "b": "K140-0204",
+        "question_score": 0,
+        "answer_score": 0.045,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗上那棵樹在玻璃前面還是後面，怎麼分？",
+          "把同一批圖樣前的窗景換成反射天光，還能直接報出圖樣少了幾成效果嗎？"
+        ]
+      },
+      {
+        "id": "K140-0205~K140-0208",
+        "a": "K140-0205",
+        "b": "K140-0208",
+        "question_score": 0.045,
+        "answer_score": 0.017,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "玻璃前一公尺就有網，研究者怎麼判斷草雀原會朝哪扇窗飛？",
+          "同寬、同間距的白條紋轉九十度，還有多少鳥向標記窗飛？"
+        ]
+      },
+      {
         "id": "K74-015~K74-018",
         "a": "K74-015",
         "b": "K74-018",
@@ -445173,6 +446985,34 @@
         "questions": [
           "猶他同一批服役 460 天的標線，乾測全都超過比較值，為什麼雨停後再量就只剩一種過線？",
           "台灣校園一條高抗滑黃線每月量了一次，白天看來夠亮，能不能據此保證雨夜也看得清楚？"
+        ]
+      },
+      {
+        "id": "K140-0205~K140-0213",
+        "a": "K140-0205",
+        "b": "K140-0213",
+        "question_score": 0.044,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "玻璃前一公尺就有網，研究者怎麼判斷草雀原會朝哪扇窗飛？",
+          "點貼在公車亭外面，原來從亭內側撞到玻璃的紀錄有變嗎？"
+        ]
+      },
+      {
+        "id": "K140-0212~K140-0214",
+        "a": "K140-0212",
+        "b": "K140-0214",
+        "question_score": 0.044,
+        "answer_score": 0.017,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "原本最常撞的九座候車亭貼了點陣，巡查員怎麼分辨前後變化？",
+          "新北五月寫八座、十一月寫九座，哪個數能填在實際改造欄？"
         ]
       },
       {
@@ -445778,6 +447618,34 @@
         ]
       },
       {
+        "id": "K140-0201~K140-0204",
+        "a": "K140-0201",
+        "b": "K140-0204",
+        "question_score": 0.043,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺大小福的窗上已有一隻老鷹，鳥還往哪裡飛？",
+          "把同一批圖樣前的窗景換成反射天光，還能直接報出圖樣少了幾成效果嗎？"
+        ]
+      },
+      {
+        "id": "K140-0202~K140-0211",
+        "a": "K140-0202",
+        "b": "K140-0211",
+        "question_score": 0.043,
+        "answer_score": 0.018,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗內年節貼紙換回常年圖案，小福留下了什麼觀察？",
+          "同棟大樓只在鏡面的一區加標記，未改的地方兩個冬天記到什麼？"
+        ]
+      },
+      {
         "id": "P020~P138",
         "a": "P020",
         "b": "P138",
@@ -446338,6 +448206,34 @@
         ]
       },
       {
+        "id": "K140-0206~K140-0214",
+        "a": "K140-0206",
+        "b": "K140-0214",
+        "question_score": 0.042,
+        "answer_score": 0.019,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同款 UV 膜分別貼在雙層窗兩側，十條和十一條草雀航線如何分？",
+          "新北五月寫八座、十一月寫九座，哪個數能填在實際改造欄？"
+        ]
+      },
+      {
+        "id": "K140-0208~K140-0211",
+        "a": "K140-0208",
+        "b": "K140-0211",
+        "question_score": 0.042,
+        "answer_score": 0.019,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同寬、同間距的白條紋轉九十度，還有多少鳥向標記窗飛？",
+          "同棟大樓只在鏡面的一區加標記，未改的地方兩個冬天記到什麼？"
+        ]
+      },
+      {
         "id": "R41001~R41005",
         "a": "R41001",
         "b": "R41005",
@@ -446839,6 +448735,48 @@
         "questions": [
           "芬蘭夜車 03:23 到站、03:26 開走，怎麼會表定停靠六十三分鐘？",
           "如果洛杉磯兩張 01:00 打卡單都傳回台北，台北辦公桌上的鐘各會顯示幾點？"
+        ]
+      },
+      {
+        "id": "K140-0204~K140-0209",
+        "a": "K140-0204",
+        "b": "K140-0209",
+        "question_score": 0.041,
+        "answer_score": 0.035,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把同一批圖樣前的窗景換成反射天光，還能直接報出圖樣少了幾成效果嗎？",
+          "少遮一點玻璃的細條，有沒有接近遮掉半窗的圖樣？"
+        ]
+      },
+      {
+        "id": "K140-0206~K140-0211",
+        "a": "K140-0206",
+        "b": "K140-0211",
+        "question_score": 0,
+        "answer_score": 0.041,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同款 UV 膜分別貼在雙層窗兩側，十條和十一條草雀航線如何分？",
+          "同棟大樓只在鏡面的一區加標記，未改的地方兩個冬天記到什麼？"
+        ]
+      },
+      {
+        "id": "K140-0206~K140-0213",
+        "a": "K140-0206",
+        "b": "K140-0213",
+        "question_score": 0.041,
+        "answer_score": 0.037,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同款 UV 膜分別貼在雙層窗兩側，十條和十一條草雀航線如何分？",
+          "點貼在公車亭外面，原來從亭內側撞到玻璃的紀錄有變嗎？"
         ]
       },
       {
@@ -447903,6 +449841,20 @@
         "questions": [
           "同樣寫著濕路，把水倒完再量，跟水一直落在標線上，會得到同一種成績嗎？",
           "要在晚上看清白線，工人該讓玻璃珠多露一點，還是把它整顆壓進漆裡？"
+        ]
+      },
+      {
+        "id": "K140-0201~K140-0206",
+        "a": "K140-0201",
+        "b": "K140-0206",
+        "question_score": 0,
+        "answer_score": 0.039,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺大小福的窗上已有一隻老鷹，鳥還往哪裡飛？",
+          "同款 UV 膜分別貼在雙層窗兩側，十條和十一條草雀航線如何分？"
         ]
       },
       {
@@ -449250,6 +451202,48 @@
         ]
       },
       {
+        "id": "K140-0206~K140-0212",
+        "a": "K140-0206",
+        "b": "K140-0212",
+        "question_score": 0,
+        "answer_score": 0.037,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同款 UV 膜分別貼在雙層窗兩側，十條和十一條草雀航線如何分？",
+          "原本最常撞的九座候車亭貼了點陣，巡查員怎麼分辨前後變化？"
+        ]
+      },
+      {
+        "id": "K140-0208~K140-0214",
+        "a": "K140-0208",
+        "b": "K140-0214",
+        "question_score": 0,
+        "answer_score": 0.037,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同寬、同間距的白條紋轉九十度，還有多少鳥向標記窗飛？",
+          "新北五月寫八座、十一月寫九座，哪個數能填在實際改造欄？"
+        ]
+      },
+      {
+        "id": "K140-0210~K140-0211",
+        "a": "K140-0210",
+        "b": "K140-0211",
+        "question_score": 0,
+        "answer_score": 0.037,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "貼了 154 張大型猛禽剪影，能從巴西這兩棟樓判定鳥怕老鷹嗎？",
+          "同棟大樓只在鏡面的一區加標記，未改的地方兩個冬天記到什麼？"
+        ]
+      },
+      {
         "id": "L74-079~L74-080",
         "a": "L74-079",
         "b": "L74-080",
@@ -450020,6 +452014,34 @@
         ]
       },
       {
+        "id": "K140-0204~K140-0208",
+        "a": "K140-0204",
+        "b": "K140-0208",
+        "question_score": 0,
+        "answer_score": 0.036,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把同一批圖樣前的窗景換成反射天光，還能直接報出圖樣少了幾成效果嗎？",
+          "同寬、同間距的白條紋轉九十度，還有多少鳥向標記窗飛？"
+        ]
+      },
+      {
+        "id": "K140-0213~K140-0215",
+        "a": "K140-0213",
+        "b": "K140-0215",
+        "question_score": 0.036,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "點貼在公車亭外面，原來從亭內側撞到玻璃的紀錄有變嗎？",
+          "站牌貼好後里長沒再接到通報，怎樣才能知道固定巡查發現的撞擊有沒有變少？"
+        ]
+      },
+      {
         "id": "L76-005~L76-006",
         "a": "L76-005",
         "b": "L76-006",
@@ -450535,6 +452557,34 @@
         "questions": [
           "2026 年 11 月 1 日夜裡，在美國哪裡值班，才真的會遇到兩次一點？",
           "那晚奧盧路線規劃器若還顯示原定鐘點，乘客為什麼不能用它判斷第二次三點有車？"
+        ]
+      },
+      {
+        "id": "K140-0203~K140-0206",
+        "a": "K140-0203",
+        "b": "K140-0206",
+        "question_score": 0,
+        "answer_score": 0.035,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗上那棵樹在玻璃前面還是後面，怎麼分？",
+          "同款 UV 膜分別貼在雙層窗兩側，十條和十一條草雀航線如何分？"
+        ]
+      },
+      {
+        "id": "K140-0204~K140-0211",
+        "a": "K140-0204",
+        "b": "K140-0211",
+        "question_score": 0,
+        "answer_score": 0.035,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把同一批圖樣前的窗景換成反射天光，還能直接報出圖樣少了幾成效果嗎？",
+          "同棟大樓只在鏡面的一區加標記，未改的地方兩個冬天記到什麼？"
         ]
       },
       {
@@ -451263,6 +453313,20 @@
         "questions": [
           "玻璃珠是透明的，為什麼把它半埋進白漆，夜裡反而能把頭燈的光送回車子？",
           "同一批駕駛在同一段濕路停下來數虛線，能把「看見幾條」直接填進剛才的公尺欄嗎？"
+        ]
+      },
+      {
+        "id": "K140-0204~K140-0210",
+        "a": "K140-0204",
+        "b": "K140-0210",
+        "question_score": 0,
+        "answer_score": 0.034,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把同一批圖樣前的窗景換成反射天光，還能直接報出圖樣少了幾成效果嗎？",
+          "貼了 154 張大型猛禽剪影，能從巴西這兩棟樓判定鳥怕老鷹嗎？"
         ]
       },
       {
@@ -452162,6 +454226,34 @@
         ]
       },
       {
+        "id": "K140-0207~K140-0209",
+        "a": "K140-0207",
+        "b": "K140-0209",
+        "question_score": 0,
+        "answer_score": 0.033,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "外貼兩種膜，草雀的迴避反應也一樣明確嗎？",
+          "少遮一點玻璃的細條，有沒有接近遮掉半窗的圖樣？"
+        ]
+      },
+      {
+        "id": "K140-0213~K140-0214",
+        "a": "K140-0213",
+        "b": "K140-0214",
+        "question_score": 0,
+        "answer_score": 0.033,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "點貼在公車亭外面，原來從亭內側撞到玻璃的紀錄有變嗎？",
+          "新北五月寫八座、十一月寫九座，哪個數能填在實際改造欄？"
+        ]
+      },
+      {
         "id": "M5001~M5002",
         "a": "M5001",
         "b": "M5002",
@@ -452988,6 +455080,20 @@
         ]
       },
       {
+        "id": "K140-0204~K140-0212",
+        "a": "K140-0204",
+        "b": "K140-0212",
+        "question_score": 0,
+        "answer_score": 0.032,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把同一批圖樣前的窗景換成反射天光，還能直接報出圖樣少了幾成效果嗎？",
+          "原本最常撞的九座候車亭貼了點陣，巡查員怎麼分辨前後變化？"
+        ]
+      },
+      {
         "id": "K90-036~T52-002",
         "a": "T52-002",
         "b": "K90-036",
@@ -453758,6 +455864,48 @@
         ]
       },
       {
+        "id": "K140-0202~K140-0203",
+        "a": "K140-0202",
+        "b": "K140-0203",
+        "question_score": 0,
+        "answer_score": 0.031,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗內年節貼紙換回常年圖案，小福留下了什麼觀察？",
+          "窗上那棵樹在玻璃前面還是後面，怎麼分？"
+        ]
+      },
+      {
+        "id": "K140-0202~K140-0215",
+        "a": "K140-0202",
+        "b": "K140-0215",
+        "question_score": 0,
+        "answer_score": 0.031,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗內年節貼紙換回常年圖案，小福留下了什麼觀察？",
+          "站牌貼好後里長沒再接到通報，怎樣才能知道固定巡查發現的撞擊有沒有變少？"
+        ]
+      },
+      {
+        "id": "K140-0204~K140-0205",
+        "a": "K140-0204",
+        "b": "K140-0205",
+        "question_score": 0,
+        "answer_score": 0.031,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把同一批圖樣前的窗景換成反射天光，還能直接報出圖樣少了幾成效果嗎？",
+          "玻璃前一公尺就有網，研究者怎麼判斷草雀原會朝哪扇窗飛？"
+        ]
+      },
+      {
         "id": "R41003~R41008",
         "a": "R41003",
         "b": "R41008",
@@ -454458,6 +456606,20 @@
         ]
       },
       {
+        "id": "K140-0207~K140-0213",
+        "a": "K140-0207",
+        "b": "K140-0213",
+        "question_score": 0,
+        "answer_score": 0.03,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "外貼兩種膜，草雀的迴避反應也一樣明確嗎？",
+          "點貼在公車亭外面，原來從亭內側撞到玻璃的紀錄有變嗎？"
+        ]
+      },
+      {
         "id": "K100-012~P099",
         "a": "P099",
         "b": "K100-012",
@@ -455099,6 +457261,20 @@
         "questions": [
           "一條施工區白線既要應付乾夜也要應付雨夜，為什麼原型的同一顆核心上放了兩種折射率的小珠？",
           "猶他同一批服役 460 天的標線，乾測全都超過比較值，為什麼雨停後再量就只剩一種過線？"
+        ]
+      },
+      {
+        "id": "K140-0203~K140-0207",
+        "a": "K140-0203",
+        "b": "K140-0207",
+        "question_score": 0,
+        "answer_score": 0.029,
+        "key_score": 0.8,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗上那棵樹在玻璃前面還是後面，怎麼分？",
+          "外貼兩種膜，草雀的迴避反應也一樣明確嗎？"
         ]
       },
       {
@@ -458364,6 +460540,34 @@
         ]
       },
       {
+        "id": "K140-0206~K140-0208",
+        "a": "K140-0206",
+        "b": "K140-0208",
+        "question_score": 0,
+        "answer_score": 0.021,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同款 UV 膜分別貼在雙層窗兩側，十條和十一條草雀航線如何分？",
+          "同寬、同間距的白條紋轉九十度，還有多少鳥向標記窗飛？"
+        ]
+      },
+      {
+        "id": "K140-0206~K140-0209",
+        "a": "K140-0206",
+        "b": "K140-0209",
+        "question_score": 0,
+        "answer_score": 0.021,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同款 UV 膜分別貼在雙層窗兩側，十條和十一條草雀航線如何分？",
+          "少遮一點玻璃的細條，有沒有接近遮掉半窗的圖樣？"
+        ]
+      },
+      {
         "id": "P57-005~X5002",
         "a": "X5002",
         "b": "P57-005",
@@ -458459,6 +460663,20 @@
         "questions": [
           "人工雨裡哪種白色邊線能先被發現？圖上的 120 呎和 116 呎又夠不夠判輸贏？",
           "台灣校園一條高抗滑黃線每月量了一次，白天看來夠亮，能不能據此保證雨夜也看得清楚？"
+        ]
+      },
+      {
+        "id": "K140-0206~K140-0210",
+        "a": "K140-0206",
+        "b": "K140-0210",
+        "question_score": 0,
+        "answer_score": 0.02,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同款 UV 膜分別貼在雙層窗兩側，十條和十一條草雀航線如何分？",
+          "貼了 154 張大型猛禽剪影，能從巴西這兩棟樓判定鳥怕老鷹嗎？"
         ]
       },
       {
@@ -458571,6 +460789,48 @@
         "questions": [
           "2026 年 11 月 1 日夜裡，在美國哪裡值班，才真的會遇到兩次一點？",
           "同次回撥夜，在奧盧錯過第一次三點的 2N，第二次三點還會照表再發嗎？"
+        ]
+      },
+      {
+        "id": "K140-0202~K140-0206",
+        "a": "K140-0202",
+        "b": "K140-0206",
+        "question_score": 0,
+        "answer_score": 0.019,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗內年節貼紙換回常年圖案，小福留下了什麼觀察？",
+          "同款 UV 膜分別貼在雙層窗兩側，十條和十一條草雀航線如何分？"
+        ]
+      },
+      {
+        "id": "K140-0204~K140-0206",
+        "a": "K140-0204",
+        "b": "K140-0206",
+        "question_score": 0,
+        "answer_score": 0.019,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把同一批圖樣前的窗景換成反射天光，還能直接報出圖樣少了幾成效果嗎？",
+          "同款 UV 膜分別貼在雙層窗兩側，十條和十一條草雀航線如何分？"
+        ]
+      },
+      {
+        "id": "K140-0209~K140-0211",
+        "a": "K140-0209",
+        "b": "K140-0211",
+        "question_score": 0,
+        "answer_score": 0.019,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "少遮一點玻璃的細條，有沒有接近遮掉半窗的圖樣？",
+          "同棟大樓只在鏡面的一區加標記，未改的地方兩個冬天記到什麼？"
         ]
       },
       {
@@ -458767,6 +461027,34 @@
         "questions": [
           "同一塊 36% 的紙片，放在日本的五分之二門檻前，為什麼連半額也沒有？",
           "德國大水過後，送來的鈔票看來還有一整捆，為什麼不能直接送進點鈔機？"
+        ]
+      },
+      {
+        "id": "K140-0201~K140-0211",
+        "a": "K140-0201",
+        "b": "K140-0211",
+        "question_score": 0,
+        "answer_score": 0.018,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺大小福的窗上已有一隻老鷹，鳥還往哪裡飛？",
+          "同棟大樓只在鏡面的一區加標記，未改的地方兩個冬天記到什麼？"
+        ]
+      },
+      {
+        "id": "K140-0211~K140-0214",
+        "a": "K140-0211",
+        "b": "K140-0214",
+        "question_score": 0,
+        "answer_score": 0.018,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同棟大樓只在鏡面的一區加標記，未改的地方兩個冬天記到什麼？",
+          "新北五月寫八座、十一月寫九座，哪個數能填在實際改造欄？"
         ]
       },
       {
@@ -459145,6 +461433,48 @@
         "questions": [
           "一盒燒焦的日圓，紙已經脆到快散，為什麼還要保住殘片的位置？",
           "德國央行在乾衣機放網球，再用鋪路石壓鈔票，兩件東西各管哪一步？"
+        ]
+      },
+      {
+        "id": "K140-0201~K140-0213",
+        "a": "K140-0201",
+        "b": "K140-0213",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺大小福的窗上已有一隻老鷹，鳥還往哪裡飛？",
+          "點貼在公車亭外面，原來從亭內側撞到玻璃的紀錄有變嗎？"
+        ]
+      },
+      {
+        "id": "K140-0205~K140-0211",
+        "a": "K140-0205",
+        "b": "K140-0211",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "玻璃前一公尺就有網，研究者怎麼判斷草雀原會朝哪扇窗飛？",
+          "同棟大樓只在鏡面的一區加標記，未改的地方兩個冬天記到什麼？"
+        ]
+      },
+      {
+        "id": "K140-0211~K140-0213",
+        "a": "K140-0211",
+        "b": "K140-0213",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同棟大樓只在鏡面的一區加標記，未改的地方兩個冬天記到什麼？",
+          "點貼在公車亭外面，原來從亭內側撞到玻璃的紀錄有變嗎？"
         ]
       },
       {
@@ -459691,6 +462021,104 @@
         "questions": [
           "那晚奧盧路線規劃器若還顯示原定鐘點，乘客為什麼不能用它判斷第二次三點有車？",
           "兩張洛杉磯打卡單都印著 2020 年 11 月 1 日 01:00，加上什麼記號能指出哪張較早？"
+        ]
+      },
+      {
+        "id": "K140-0201~K140-0205",
+        "a": "K140-0201",
+        "b": "K140-0205",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺大小福的窗上已有一隻老鷹，鳥還往哪裡飛？",
+          "玻璃前一公尺就有網，研究者怎麼判斷草雀原會朝哪扇窗飛？"
+        ]
+      },
+      {
+        "id": "K140-0201~K140-0215",
+        "a": "K140-0201",
+        "b": "K140-0215",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺大小福的窗上已有一隻老鷹，鳥還往哪裡飛？",
+          "站牌貼好後里長沒再接到通報，怎樣才能知道固定巡查發現的撞擊有沒有變少？"
+        ]
+      },
+      {
+        "id": "K140-0202~K140-0207",
+        "a": "K140-0202",
+        "b": "K140-0207",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗內年節貼紙換回常年圖案，小福留下了什麼觀察？",
+          "外貼兩種膜，草雀的迴避反應也一樣明確嗎？"
+        ]
+      },
+      {
+        "id": "K140-0205~K140-0210",
+        "a": "K140-0205",
+        "b": "K140-0210",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "玻璃前一公尺就有網，研究者怎麼判斷草雀原會朝哪扇窗飛？",
+          "貼了 154 張大型猛禽剪影，能從巴西這兩棟樓判定鳥怕老鷹嗎？"
+        ]
+      },
+      {
+        "id": "K140-0205~K140-0212",
+        "a": "K140-0205",
+        "b": "K140-0212",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "玻璃前一公尺就有網，研究者怎麼判斷草雀原會朝哪扇窗飛？",
+          "原本最常撞的九座候車亭貼了點陣，巡查員怎麼分辨前後變化？"
+        ]
+      },
+      {
+        "id": "K140-0207~K140-0214",
+        "a": "K140-0207",
+        "b": "K140-0214",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "外貼兩種膜，草雀的迴避反應也一樣明確嗎？",
+          "新北五月寫八座、十一月寫九座，哪個數能填在實際改造欄？"
+        ]
+      },
+      {
+        "id": "K140-0210~K140-0215",
+        "a": "K140-0210",
+        "b": "K140-0215",
+        "question_score": 0,
+        "answer_score": 0.016,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "貼了 154 張大型猛禽剪影，能從巴西這兩棟樓判定鳥怕老鷹嗎？",
+          "站牌貼好後里長沒再接到通報，怎樣才能知道固定巡查發現的撞擊有沒有變少？"
         ]
       },
       {
@@ -460405,6 +462833,34 @@
         "questions": [
           "同次回撥夜，在奧盧錯過第一次三點的 2N，第二次三點還會照表再發嗎？",
           "如果洛杉磯兩張 01:00 打卡單都傳回台北，台北辦公桌上的鐘各會顯示幾點？"
+        ]
+      },
+      {
+        "id": "K140-0203~K140-0212",
+        "a": "K140-0203",
+        "b": "K140-0212",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗上那棵樹在玻璃前面還是後面，怎麼分？",
+          "原本最常撞的九座候車亭貼了點陣，巡查員怎麼分辨前後變化？"
+        ]
+      },
+      {
+        "id": "K140-0207~K140-0212",
+        "a": "K140-0207",
+        "b": "K140-0212",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "外貼兩種膜，草雀的迴避反應也一樣明確嗎？",
+          "原本最常撞的九座候車亭貼了點陣，巡查員怎麼分辨前後變化？"
         ]
       },
       {
@@ -461189,6 +463645,20 @@
         "questions": [
           "玻璃珠是透明的，為什麼把它半埋進白漆，夜裡反而能把頭燈的光送回車子？",
           "魁北克查新劃的標線，為什麼可以趁太陽低時找自己的影子，還要看影子上方那一小段？"
+        ]
+      },
+      {
+        "id": "K140-0203~K140-0215",
+        "a": "K140-0203",
+        "b": "K140-0215",
+        "question_score": 0,
+        "answer_score": 0.014,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗上那棵樹在玻璃前面還是後面，怎麼分？",
+          "站牌貼好後里長沒再接到通報，怎樣才能知道固定巡查發現的撞擊有沒有變少？"
         ]
       },
       {
@@ -468948,6 +471418,426 @@
         ]
       },
       {
+        "id": "K140-0201~K140-0207",
+        "a": "K140-0201",
+        "b": "K140-0207",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺大小福的窗上已有一隻老鷹，鳥還往哪裡飛？",
+          "外貼兩種膜，草雀的迴避反應也一樣明確嗎？"
+        ]
+      },
+      {
+        "id": "K140-0201~K140-0208",
+        "a": "K140-0201",
+        "b": "K140-0208",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺大小福的窗上已有一隻老鷹，鳥還往哪裡飛？",
+          "同寬、同間距的白條紋轉九十度，還有多少鳥向標記窗飛？"
+        ]
+      },
+      {
+        "id": "K140-0201~K140-0209",
+        "a": "K140-0201",
+        "b": "K140-0209",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺大小福的窗上已有一隻老鷹，鳥還往哪裡飛？",
+          "少遮一點玻璃的細條，有沒有接近遮掉半窗的圖樣？"
+        ]
+      },
+      {
+        "id": "K140-0201~K140-0212",
+        "a": "K140-0201",
+        "b": "K140-0212",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺大小福的窗上已有一隻老鷹，鳥還往哪裡飛？",
+          "原本最常撞的九座候車亭貼了點陣，巡查員怎麼分辨前後變化？"
+        ]
+      },
+      {
+        "id": "K140-0201~K140-0214",
+        "a": "K140-0201",
+        "b": "K140-0214",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "臺大小福的窗上已有一隻老鷹，鳥還往哪裡飛？",
+          "新北五月寫八座、十一月寫九座，哪個數能填在實際改造欄？"
+        ]
+      },
+      {
+        "id": "K140-0202~K140-0204",
+        "a": "K140-0202",
+        "b": "K140-0204",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗內年節貼紙換回常年圖案，小福留下了什麼觀察？",
+          "把同一批圖樣前的窗景換成反射天光，還能直接報出圖樣少了幾成效果嗎？"
+        ]
+      },
+      {
+        "id": "K140-0202~K140-0205",
+        "a": "K140-0202",
+        "b": "K140-0205",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗內年節貼紙換回常年圖案，小福留下了什麼觀察？",
+          "玻璃前一公尺就有網，研究者怎麼判斷草雀原會朝哪扇窗飛？"
+        ]
+      },
+      {
+        "id": "K140-0202~K140-0208",
+        "a": "K140-0202",
+        "b": "K140-0208",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗內年節貼紙換回常年圖案，小福留下了什麼觀察？",
+          "同寬、同間距的白條紋轉九十度，還有多少鳥向標記窗飛？"
+        ]
+      },
+      {
+        "id": "K140-0202~K140-0209",
+        "a": "K140-0202",
+        "b": "K140-0209",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗內年節貼紙換回常年圖案，小福留下了什麼觀察？",
+          "少遮一點玻璃的細條，有沒有接近遮掉半窗的圖樣？"
+        ]
+      },
+      {
+        "id": "K140-0202~K140-0213",
+        "a": "K140-0202",
+        "b": "K140-0213",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗內年節貼紙換回常年圖案，小福留下了什麼觀察？",
+          "點貼在公車亭外面，原來從亭內側撞到玻璃的紀錄有變嗎？"
+        ]
+      },
+      {
+        "id": "K140-0202~K140-0214",
+        "a": "K140-0202",
+        "b": "K140-0214",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗內年節貼紙換回常年圖案，小福留下了什麼觀察？",
+          "新北五月寫八座、十一月寫九座，哪個數能填在實際改造欄？"
+        ]
+      },
+      {
+        "id": "K140-0203~K140-0208",
+        "a": "K140-0203",
+        "b": "K140-0208",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗上那棵樹在玻璃前面還是後面，怎麼分？",
+          "同寬、同間距的白條紋轉九十度，還有多少鳥向標記窗飛？"
+        ]
+      },
+      {
+        "id": "K140-0203~K140-0210",
+        "a": "K140-0203",
+        "b": "K140-0210",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗上那棵樹在玻璃前面還是後面，怎麼分？",
+          "貼了 154 張大型猛禽剪影，能從巴西這兩棟樓判定鳥怕老鷹嗎？"
+        ]
+      },
+      {
+        "id": "K140-0203~K140-0214",
+        "a": "K140-0203",
+        "b": "K140-0214",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "窗上那棵樹在玻璃前面還是後面，怎麼分？",
+          "新北五月寫八座、十一月寫九座，哪個數能填在實際改造欄？"
+        ]
+      },
+      {
+        "id": "K140-0204~K140-0213",
+        "a": "K140-0204",
+        "b": "K140-0213",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把同一批圖樣前的窗景換成反射天光，還能直接報出圖樣少了幾成效果嗎？",
+          "點貼在公車亭外面，原來從亭內側撞到玻璃的紀錄有變嗎？"
+        ]
+      },
+      {
+        "id": "K140-0204~K140-0214",
+        "a": "K140-0204",
+        "b": "K140-0214",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把同一批圖樣前的窗景換成反射天光，還能直接報出圖樣少了幾成效果嗎？",
+          "新北五月寫八座、十一月寫九座，哪個數能填在實際改造欄？"
+        ]
+      },
+      {
+        "id": "K140-0204~K140-0215",
+        "a": "K140-0204",
+        "b": "K140-0215",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把同一批圖樣前的窗景換成反射天光，還能直接報出圖樣少了幾成效果嗎？",
+          "站牌貼好後里長沒再接到通報，怎樣才能知道固定巡查發現的撞擊有沒有變少？"
+        ]
+      },
+      {
+        "id": "K140-0205~K140-0214",
+        "a": "K140-0205",
+        "b": "K140-0214",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "玻璃前一公尺就有網，研究者怎麼判斷草雀原會朝哪扇窗飛？",
+          "新北五月寫八座、十一月寫九座，哪個數能填在實際改造欄？"
+        ]
+      },
+      {
+        "id": "K140-0205~K140-0215",
+        "a": "K140-0205",
+        "b": "K140-0215",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "玻璃前一公尺就有網，研究者怎麼判斷草雀原會朝哪扇窗飛？",
+          "站牌貼好後里長沒再接到通報，怎樣才能知道固定巡查發現的撞擊有沒有變少？"
+        ]
+      },
+      {
+        "id": "K140-0206~K140-0215",
+        "a": "K140-0206",
+        "b": "K140-0215",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同款 UV 膜分別貼在雙層窗兩側，十條和十一條草雀航線如何分？",
+          "站牌貼好後里長沒再接到通報，怎樣才能知道固定巡查發現的撞擊有沒有變少？"
+        ]
+      },
+      {
+        "id": "K140-0207~K140-0210",
+        "a": "K140-0207",
+        "b": "K140-0210",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "外貼兩種膜，草雀的迴避反應也一樣明確嗎？",
+          "貼了 154 張大型猛禽剪影，能從巴西這兩棟樓判定鳥怕老鷹嗎？"
+        ]
+      },
+      {
+        "id": "K140-0207~K140-0215",
+        "a": "K140-0207",
+        "b": "K140-0215",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "外貼兩種膜，草雀的迴避反應也一樣明確嗎？",
+          "站牌貼好後里長沒再接到通報，怎樣才能知道固定巡查發現的撞擊有沒有變少？"
+        ]
+      },
+      {
+        "id": "K140-0208~K140-0213",
+        "a": "K140-0208",
+        "b": "K140-0213",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同寬、同間距的白條紋轉九十度，還有多少鳥向標記窗飛？",
+          "點貼在公車亭外面，原來從亭內側撞到玻璃的紀錄有變嗎？"
+        ]
+      },
+      {
+        "id": "K140-0208~K140-0215",
+        "a": "K140-0208",
+        "b": "K140-0215",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同寬、同間距的白條紋轉九十度，還有多少鳥向標記窗飛？",
+          "站牌貼好後里長沒再接到通報，怎樣才能知道固定巡查發現的撞擊有沒有變少？"
+        ]
+      },
+      {
+        "id": "K140-0209~K140-0210",
+        "a": "K140-0209",
+        "b": "K140-0210",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "少遮一點玻璃的細條，有沒有接近遮掉半窗的圖樣？",
+          "貼了 154 張大型猛禽剪影，能從巴西這兩棟樓判定鳥怕老鷹嗎？"
+        ]
+      },
+      {
+        "id": "K140-0209~K140-0212",
+        "a": "K140-0209",
+        "b": "K140-0212",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "少遮一點玻璃的細條，有沒有接近遮掉半窗的圖樣？",
+          "原本最常撞的九座候車亭貼了點陣，巡查員怎麼分辨前後變化？"
+        ]
+      },
+      {
+        "id": "K140-0209~K140-0214",
+        "a": "K140-0209",
+        "b": "K140-0214",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "少遮一點玻璃的細條，有沒有接近遮掉半窗的圖樣？",
+          "新北五月寫八座、十一月寫九座，哪個數能填在實際改造欄？"
+        ]
+      },
+      {
+        "id": "K140-0210~K140-0213",
+        "a": "K140-0210",
+        "b": "K140-0213",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "貼了 154 張大型猛禽剪影，能從巴西這兩棟樓判定鳥怕老鷹嗎？",
+          "點貼在公車亭外面，原來從亭內側撞到玻璃的紀錄有變嗎？"
+        ]
+      },
+      {
+        "id": "K140-0210~K140-0214",
+        "a": "K140-0210",
+        "b": "K140-0214",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "貼了 154 張大型猛禽剪影，能從巴西這兩棟樓判定鳥怕老鷹嗎？",
+          "新北五月寫八座、十一月寫九座，哪個數能填在實際改造欄？"
+        ]
+      },
+      {
+        "id": "K140-0211~K140-0215",
+        "a": "K140-0211",
+        "b": "K140-0215",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同棟大樓只在鏡面的一區加標記，未改的地方兩個冬天記到什麼？",
+          "站牌貼好後里長沒再接到通報，怎樣才能知道固定巡查發現的撞擊有沒有變少？"
+        ]
+      },
+      {
         "id": "L011~L077",
         "a": "L011",
         "b": "L077",
@@ -470422,10 +473312,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-20-pool-7974",
-    "target_count": 7974,
+    "revision": "2026-11-20-pool-8002",
+    "target_count": 8002,
     "reviewed_on": "2026-11-20",
-    "reason": "第139批新增 28 張素材，入選 7946 → 7974。先前：第138批新增 37 張素材，入選 7909 → 7946。先前：第137批新增 36 張素材，入選 7873 → 7909。先前：第136批新增 36 張素材，入選 7837 → 7873。先前：第135批新增 36 張素材，入選 7801 → 7837。先前：第134批新增 37 張素材，入選 7764 → 7801。先前：第133批新增 36 張素材，入選 7728 → 7764。先前：第132批新增 37 張素材，入選 7691 → 7728。先前：第131批新增 37 張素材，入選 7654 → 7691。先前：第130批新增 37 張素材，入選 7617 → 7654。先前：第129批新增 37 張素材，入選 7580 → 7617。先前：第128批新增 37 張素材，入選 7543 → 7580。先前：第127批新增 37 張素材，入選 7506 → 7543。先前：第126批新增 37 張素材，入選 7469 → 7506。先前：第125批新增 36 張素材，入選 7433 → 7469。先前：第124批新增 35 張素材，入選 7398 → 7433。先前：第123批新增 37 張素材，入選 7361 → 7398。先前：第122批新增 37 張素材，入選 7324 → 7361。先前：第121批新增 36 張素材，含日常設計、樂譜判讀及旅用電器規格。入選 7288 → 7324。先前：第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
+    "reason": "第140批新增 28 張素材，入選 7974 → 8002。先前：第139批新增 28 張素材，入選 7946 → 7974。先前：第138批新增 37 張素材，入選 7909 → 7946。先前：第137批新增 36 張素材，入選 7873 → 7909。先前：第136批新增 36 張素材，入選 7837 → 7873。先前：第135批新增 36 張素材，入選 7801 → 7837。先前：第134批新增 37 張素材，入選 7764 → 7801。先前：第133批新增 36 張素材，入選 7728 → 7764。先前：第132批新增 37 張素材，入選 7691 → 7728。先前：第131批新增 37 張素材，入選 7654 → 7691。先前：第130批新增 37 張素材，入選 7617 → 7654。先前：第129批新增 37 張素材，入選 7580 → 7617。先前：第128批新增 37 張素材，入選 7543 → 7580。先前：第127批新增 37 張素材，入選 7506 → 7543。先前：第126批新增 37 張素材，入選 7469 → 7506。先前：第125批新增 36 張素材，入選 7433 → 7469。先前：第124批新增 35 張素材，入選 7398 → 7433。先前：第123批新增 37 張素材，入選 7361 → 7398。先前：第122批新增 37 張素材，入選 7324 → 7361。先前：第121批新增 36 張素材，含日常設計、樂譜判讀及旅用電器規格。入選 7288 → 7324。先前：第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -478400,7 +481290,35 @@
       "K139-0213",
       "K139-0214",
       "K139-0215",
-      "K139-0216"
+      "K139-0216",
+      "K140-0101",
+      "K140-0102",
+      "K140-0103",
+      "K140-0104",
+      "K140-0105",
+      "K140-0106",
+      "K140-0001",
+      "K140-0002",
+      "K140-0003",
+      "K140-0004",
+      "K140-0005",
+      "K140-0006",
+      "K140-0007",
+      "K140-0201",
+      "K140-0202",
+      "K140-0203",
+      "K140-0204",
+      "K140-0205",
+      "K140-0206",
+      "K140-0207",
+      "K140-0208",
+      "K140-0209",
+      "K140-0210",
+      "K140-0211",
+      "K140-0212",
+      "K140-0213",
+      "K140-0214",
+      "K140-0215"
     ],
     "overflow": [
       {
@@ -483980,6 +486898,128 @@
       "reason": "歷史not_added已有拒收；容量依任務/組塊，非固定人人數值。",
       "origin": "wave14-perception-20261101",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+    },
+    {
+      "id": "X140C-NA01",
+      "question": "把古掛毯翻過去，哪一面的動物顏色會比較鮮？",
+      "reason": "K127-0406 已明說緯線與背面避光，亦用同一件 V&A 動物殘片展示兩面。",
+      "existing_ids": [
+        "K127-0406"
+      ],
+      "source_ids": [
+        "X140C-S07"
+      ],
+      "source_locator": "X140C-S07 The design 第一段；依序說明 low-warp 放在經線下的實大畫稿、從背面織、high-warp 背後畫稿及鏡中影像。",
+      "origin": "wave140-craft-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave140-craft-20261120.json"
+    },
+    {
+      "id": "X140C-NA02",
+      "question": "皇家代爾夫特館內只要是親手畫的藍花，都是用黑料入窯變出的嗎？",
+      "reason": "館方並列可立即帶走的 DIY 工作坊，直接使用藍色顏料。這個全稱前提與當事工坊的紀錄衝突。",
+      "existing_ids": [],
+      "source_ids": [
+        "X140C-S02"
+      ],
+      "source_locator": "X140C-S02 Traditional plate painting workshop 首段及 DIY tile painting workshop 首段。",
+      "origin": "wave140-craft-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave140-craft-20261120.json"
+    },
+    {
+      "id": "X140C-NA03",
+      "question": "中世紀這本書中央嵌的黃、綠、藍玻璃如何切片牢牢固定？",
+      "reason": "Getty Binding 段明記材料是染色羊皮紙，彩窗只是視覺效果；沒有三色玻璃鑲嵌工序。",
+      "existing_ids": [],
+      "source_ids": [
+        "X140C-S04",
+        "X140C-S05"
+      ],
+      "source_locator": "X140C-S04 Binding 最後兩句，從 metal corner pieces and raised medallions 到 stained-glass-window effect。該節亦連製作示範影片自 4:28 起。X140C-S05 放大圖旁物件欄，Cologne, about 1450／Stamped leather over oak boards。",
+      "origin": "wave140-craft-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave140-craft-20261120.json"
+    },
+    {
+      "id": "X140E-NA01",
+      "question": "行事曆的全天活動為什麼把結束日寫成隔天？",
+      "reason": "直接重複 K137-0005 的不含結束日規則。",
+      "existing_ids": [
+        "K137-0005"
+      ],
+      "source_ids": [
+        "X140E-S16"
+      ],
+      "source_locator": "X140E-S16 RFC 5545 §3.6.1 Event Component，蒙特婁爵士節範例。",
+      "origin": "wave140-everyday-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave140-everyday-20261120.json"
+    },
+    {
+      "id": "X140E-NA02",
+      "question": "鋼琴中間踏板究竟留下某些音，還是讓整段練習變小聲？",
+      "reason": "直接重複 K118-0007，X125E-NA001 已用同一理由退過。",
+      "existing_ids": [
+        "K118-0007",
+        "X125E-NA001"
+      ],
+      "source_ids": [
+        "X140E-S17"
+      ],
+      "source_locator": "X140E-S17 Pedals：Sostenuto pedal 與 Muffler pedal。",
+      "origin": "wave140-everyday-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave140-everyday-20261120.json"
+    },
+    {
+      "id": "X140E-NA03",
+      "question": "合照無邊界複印時，貼著紙邊的帽尖怎麼不見了？",
+      "reason": "已讀 Epson L3360 的自動放大說明。驅動程式原因雖可區分，觀眾要解的帽尖裁切與保全四角已在 K125-0203、K125-0204、K125-0205，多數分鏡重用，這輪捨棄。",
+      "existing_ids": [
+        "K125-0203",
+        "K125-0204",
+        "K125-0205"
+      ],
+      "source_ids": [
+        "X140E-S18"
+      ],
+      "source_locator": "X140E-S18 L3360 系列使用說明／疑難排解／無邊界複印期間，影像邊緣被裁切。",
+      "origin": "wave140-everyday-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave140-everyday-20261120.json"
+    },
+    {
+      "id": "X140E-NA04",
+      "question": "跳遠落地雙腳一樣遠，怎麼多一個手印成績會縮短？",
+      "reason": "與 K119-0403 完全同一判定規則。",
+      "existing_ids": [
+        "K119-0403"
+      ],
+      "source_ids": [
+        "X140E-S19"
+      ],
+      "source_locator": "X140E-S19 How does long jump work?／Measurement of distance 段；自起跳線到最近沙痕。",
+      "origin": "wave140-everyday-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave140-everyday-20261120.json"
+    },
+    {
+      "id": "R140-NA01",
+      "question": "撞窗後還能飛走的鳥，後來有多少活下來？",
+      "reason": "Samuels 等住家後院影像的 29 次碰撞中，23 次鳥立刻飛離，兩次當場死亡。另查 Kornreich 等救傷紀錄，3,033 筆有後續結果的活體轉入案例中，約四成野放，約六成住院死亡或安樂死。前一組飛出鏡頭，後一組只含被發現且送醫者。 兩份真資料的抽樣對象沒有銜接，無法回答「能自行飛走」的存活率，更無台灣自由飛離個體追蹤。另題退案，不將 60% 借來製造主片高潮。",
+      "existing_ids": [],
+      "source_urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9784330/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0306362"
+      ],
+      "origin": "wave140-research-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave140-research-20261120.json"
+    },
+    {
+      "id": "R140-NA02",
+      "question": "只要貼上老鷹，鳥就會因為害怕天敵而繞開嗎？",
+      "reason": "台灣換過空隙、方向與圖案，巴西猛禽剪影調查規模小，沒有同密度的非猛禽對照；奧地利通道直接測的是幾何圖樣。就恐懼機制另開長題缺乏可分辨證據。 猛禽剪影案只保留觀察結果與設計界線。",
+      "existing_ids": [],
+      "source_ids": [
+        "R140-S01",
+        "R140-S09"
+      ],
+      "origin": "wave140-research-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave140-research-20261120.json"
     },
     {
       "id": "F15-NA01",

@@ -1,50 +1,50 @@
 {
   "status": "CANDIDATE_EXPORT_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 8438,
-    "canonical_questions": 8278,
-    "eligible_candidates": 8085,
-    "selected_candidates": 7974,
+    "raw_records": 8466,
+    "canonical_questions": 8306,
+    "eligible_candidates": 8113,
+    "selected_candidates": 8002,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 8934,
-    "current_research_source_urls": 6006,
-    "selected_source_urls": 6948,
-    "new_suggestions_not_added": 3596,
+    "source_urls": 8977,
+    "current_research_source_urls": 6049,
+    "selected_source_urls": 6990,
+    "new_suggestions_not_added": 3605,
     "high_similarity_pending": 0,
     "approved_scripts": 0,
     "by_category": {
       "物理化學與日常材料": {
-        "canonical": 1934,
-        "selected": 1904
+        "canonical": 1942,
+        "selected": 1912
       },
       "生物動物與植物": {
-        "canonical": 1535,
-        "selected": 1524
+        "canonical": 1550,
+        "selected": 1539
       },
       "地球天氣與太空": {
         "canonical": 988,
         "selected": 985
       },
       "數位科技與通訊工程": {
-        "canonical": 1506,
-        "selected": 1426
+        "canonical": 1508,
+        "selected": 1428
       },
       "飲食與廚房科學": {
         "canonical": 538,
         "selected": 532
       },
       "人體感官與日常行為": {
-        "canonical": 600,
-        "selected": 588
+        "canonical": 601,
+        "selected": 589
       },
       "建築交通與商業制度": {
-        "canonical": 1177,
-        "selected": 1015
+        "canonical": 1179,
+        "selected": 1017
       }
     }
   },
-  "theme_count": 781,
+  "theme_count": 782,
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
@@ -2199,6 +2199,18 @@
       "sha256": "de3b0612607512e3afe87676e3a93591d85d4989e0f400ee09532cc7c2e8d071"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave140-craft-20261120.json",
+      "sha256": "2d77163ea92d09e4606a198ffbc4a88ee788dd8b09965262691a0ea1e345f51f"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave140-everyday-20261120.json",
+      "sha256": "373f0ce5981d5f9dbf29ebdcf7711ededcc416868c46f9a55aeead76bdf79754"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave140-research-20261120.json",
+      "sha256": "c5f77954e6f6b6bba7ebc64f34fcc8305a1092d760b4311042e38c40a439c6ea"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json",
       "sha256": "e605e7db36362ae0b323a39fa3bc79d43a6a8c54584a02a66764aeb5495e4bfb"
     },
@@ -3464,46 +3476,46 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "7b3f45e5b69e96e6e5e122b7c60be703dc6842407320e175352c0d3f5255adc3"
+      "sha256": "3534803457b9d1bd018523c3c807470b8224f41dce7b8c9f2657ae54afce4218"
     }
   ],
-  "theme_definition_sha256": "0224377b8905051706fd423b5b3836142a9b75d96b01b31f5cd6149c4d501d85",
+  "theme_definition_sha256": "1ff1ed5c14474dc73f3c6bda41ec5084298f1282aa8633df36303266087fba67",
   "files": [
     {
       "file": "pool.json",
-      "sha256": "e530651976a09e02dff07caf8148be5690a238fb47356691e99d850e5dae8ebb"
+      "sha256": "f19e174b539245ffd21db632774ec982d08293354e812903e09a5ead58f969b0"
     },
     {
       "file": "pool-sources.json",
-      "sha256": "ab491381f82e4725cde0dbe8ce2505c5f23b3c71dbe38cbd03553e4dab34c392"
+      "sha256": "9e7c8e1701610a9a7f25cdea92415f343816974f66fca64ebadf371c6615341d"
     },
     {
       "file": "pool-records.json",
-      "sha256": "16a50b021fa94425c9f48b1c5de3f2b5386dc35cb0fa054c5f3c742bf8d4fc5e"
+      "sha256": "f45b21ab17ac773967d3239db8abf26ac1678b8738cd6483ac32383f09067711"
     },
     {
       "file": "QUESTIONS.md",
-      "sha256": "a3d081ffd65390cbb7ba74981c260ab78284ec3b0e9898366f8c11139f19b2e8"
+      "sha256": "9b4b4afd53d29886b54e7fe990caba29206609d00a86be543ae2657d234a65fc"
     },
     {
       "file": "SOURCES.md",
-      "sha256": "c22db43a46802d44a9c5fba77e15fcbaafdc691fe4189df50fd6a860e84a7a11"
+      "sha256": "979d89b652fdffd047915b21954096858889fcb478962a73d8e9c078efc36ccc"
     },
     {
       "file": "DEDUP.md",
-      "sha256": "b0528f51763c17a9078c1e91a798d73a1a60d7df955fd6aac70a9ceb5832f7ff"
+      "sha256": "fb47911424fb82db77842452bde117be38884317a2ace8d0a072bd3a892496fb"
     },
     {
       "file": "THEMES.md",
-      "sha256": "bd8d5c667e67c59a0dc85abb5ecaf6d7e67cc62833cab4a4e883730b3d4d2aea"
+      "sha256": "b342811fa25ee1d542a78a4219907b1e2b78a565a2cbb4ec40ca9c77d4f1a629"
     },
     {
       "file": "index.html",
-      "sha256": "70138e6217962016a739813c2f367548d1d05faf3a4b4bf9319fa6953b30ae7b"
+      "sha256": "6e6f1a10afce25306316232380f0b24b600dc50cbb43092f79519acdc1514499"
     },
     {
       "file": "PRODUCIBLE.html",
-      "sha256": "13b264f9671a62f2132002d54344abd8db101e9b83cdcb7b23af7b6758f718eb"
+      "sha256": "a85ca5fabdb378092b8f20a16758b511da4e5dcf89c562de0abc93ce8de1cd1c"
     }
   ]
 }
