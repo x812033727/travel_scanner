@@ -28,6 +28,7 @@ describe("/videos", () => {
     const { container } = await open();
     const card = screen.getByRole("listitem");
     expect(within(card).getByRole("heading", { name: "影片 a" })).toBeTruthy();
+    expect(within(card).getByRole("link", { name: "影片 a" }).getAttribute("href")).toBe("/videos/a");
     expect(within(card).getByText("教學")).toBeTruthy();
     expect(within(card).getByRole("link", { name: "看文章版" }).getAttribute("href")).toBe("/life/cursor-editor-guide");
     expect(card.querySelector("iframe")).toBeNull();

@@ -1,6 +1,12 @@
 import { cache } from "react";
 import { publicServerHeaders } from "@/lib/public-server-fetch";
-import { isPublicVideo, type PublicVideoPage, type VideoKind } from "@/lib/videos";
+import {
+  isPublicVideo,
+  type PublicVideo,
+  type PublicVideoDetailResult,
+  type PublicVideoPage,
+  type VideoKind,
+} from "@/lib/videos";
 
 function apiBase() {
   return (process.env.API_INTERNAL_URL || "http://localhost:8000").replace(/\/$/, "");
@@ -32,3 +38,47 @@ async function loadVideos(locale: string, filters: VideoFilters, limit = 24): Pr
 }
 
 export const getVideos = cache(loadVideos);
+
+/** One published video and its related picks for `/videos/[slug]`. */
+async function loadVideo(locale: string, slug: string): Promise<PublicVideoDetailResult> {
+  try {
+    const response = await fetch(`${apiBase()}/api/v1/videos/${encodeURIComponent(slug)}`, {
+      cache: "no-store",
+      signal: AbortSignal.timeout(3000),
+      headers: await publicServerHeaders(locale),
+    });
+    if (response.status === 404) return { status: "not_found" };
+    const body = (await response.json().catch(() => null)) as Record<string, unknown> | null;
+    if (!response.ok || !body || !isPublicVideo(body.video)) return { status: "unavailable" };
+    const related = Array.isArray(body.related) ? body.related.filter(isPublicVideo) : [];
+    return { status: "found", video: body.video, related };
+  } catch {
+    return { status: "unavailable" };
+  }
+}
+
+export const getVideo = cache(loadVideo);
+
+/** Walks published video pages up to `maxPages` (max 480 videos) for `/sitemap-videos.xml`. */
+export async function getAllPublishedVideos(
+  locale: string,
+  maxPages = 10,
+): Promise<{ available: boolean; videos: PublicVideo[] }> {
+  const videos: PublicVideo[] = [];
+  const seen = new Set<string>();
+  let cursor: string | undefined;
+
+  for (let page = 0; page < maxPages; page += 1) {
+    const result = await loadVideos(locale, { cursor }, 48);
+    if (!result.available) return { available: false, videos: [] };
+    for (const item of result.videos) {
+      if (seen.has(item.slug)) continue;
+      seen.add(item.slug);
+      videos.push(item);
+    }
+    if (!result.next_cursor || result.next_cursor === cursor) break;
+    cursor = result.next_cursor;
+  }
+
+  return { available: true, videos };
+}

@@ -3,7 +3,7 @@
 import { ExternalLink, Play } from "lucide-react";
 import { useState } from "react";
 import { Link } from "@/i18n/navigation";
-import { videoArticleHref, type PublicVideo } from "@/lib/videos";
+import { videoArticleHref, videoHref, type PublicVideo } from "@/lib/videos";
 
 export type VideoCardLabels = { play: string; watchOnYoutube: string; readArticle: string; category?: string | null };
 
@@ -16,6 +16,7 @@ export function VideoCard({ video, labels, date }: { video: PublicVideo; labels:
   const [playing, setPlaying] = useState(false);
   const id = video.youtube_video_id;
   const article = videoArticleHref(video);
+  const watchHref = videoHref(video.slug);
   const shorts = video.kind === "shorts";
   return (
     <li className="min-w-0 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--paper)]">
@@ -46,7 +47,11 @@ export function VideoCard({ video, labels, date }: { video: PublicVideo; labels:
       </div>
       <div className="grid gap-2 p-4">
         {labels.category ? <p className="text-sm font-semibold text-[var(--teal)]">{labels.category}</p> : null}
-        <h3 className="text-lg font-bold leading-7">{video.title}</h3>
+        <h3 className="text-lg font-bold leading-7">
+          <Link href={watchHref} className="underline-offset-4 hover:text-[var(--teal)] hover:underline">
+            {video.title}
+          </Link>
+        </h3>
         <p className="text-sm text-[var(--muted)]"><time dateTime={video.published_at}>{date}</time></p>
         <div className="flex flex-wrap gap-x-4">
           {article ? (

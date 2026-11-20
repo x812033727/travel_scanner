@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { NEWS_SITEMAP_PATH, siteUrl } from "@/lib/seo";
+import { NEWS_SITEMAP_PATH, VIDEO_SITEMAP_PATH, siteUrl } from "@/lib/seo";
 
 // Rendered per request rather than at build time, so `AI_CRAWLER_POLICY` takes effect on the
 // next fetch of robots.txt and needs no rebuild.
@@ -90,6 +90,10 @@ export default function robots(): MetadataRoute.Robots {
       },
       ...refusedCrawlers().map((userAgent) => ({ userAgent, disallow: "/" })),
     ],
-    sitemap: [`${siteUrl}/sitemap.xml`, `${siteUrl}${NEWS_SITEMAP_PATH}`],
+    sitemap: [
+      `${siteUrl}/sitemap.xml`,
+      `${siteUrl}${NEWS_SITEMAP_PATH}`,
+      `${siteUrl}${VIDEO_SITEMAP_PATH}`,
+    ],
   };
 }
