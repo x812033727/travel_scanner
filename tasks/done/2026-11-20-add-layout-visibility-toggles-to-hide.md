@@ -45,6 +45,8 @@ scope:
   - apps/web/lib/site-visibility.server.test.ts
   - apps/web/lib/site-visibility.server.ts
   - apps/web/messages
+  - docs/videos/long-form/review.json
+  - docs/videos/long-form/review.md
   - tools/e2e-runtime-api.mjs
 ---
 
