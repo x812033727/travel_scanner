@@ -319,3 +319,52 @@ async def test_narration_switches_keys_end_to_end(monkeypatch: pytest.MonkeyPatc
     assert await redis.get(f"gmpool:rest:{fingerprint('ua')}") == "exhausted"
     assert await narrate() == "ok" and used[-1] == "site"
     await client.aclose()
+
+
+def test_named_slots_and_budgets_parse_json_and_legacy_comma_lists() -> None:
+    raw_slots = gemini_pool.serialize_extra_slots({"C": "uc", "A": "ua", "B": "ub"})
+    assert raw_slots == '{"A": "ua", "B": "ub", "C": "uc"}'
+    assert gemini_pool.parse_extra_slots(raw_slots) == {"A": "ua", "B": "ub", "C": "uc"}
+    assert gemini_pool.parse_extra_slots("ua, ub") == {"A": "ua", "B": "ub"}
+
+    raw_budgets = gemini_pool.serialize_slot_budgets({"A": 95, "C": 80, "B": 0})
+    assert raw_budgets == '{"A": 95.0, "C": 80.0}'
+    s = _settings(extra=raw_slots, budgets_usd=raw_budgets)
+    assert gemini_pool.pool_slots(s) == [("A", "ua"), ("B", "ub"), ("C", "uc"), ("SITE", "site")]
+    assert budgets(s) == [95.0, None, 80.0, None]
+
+
+@pytest.mark.asyncio
+async def test_circular_turn_rotates_a_to_b_to_c_and_wraps_back_to_a_plus_manual_start() -> None:
+    redis = _redis()
+    settings = _settings(
+        extra=gemini_pool.serialize_extra_slots({"A": "ua", "B": "ub", "C": "uc"})
+    )
+
+    # Starts at slot A
+    assert await gemini_pool.current_turn(redis, settings, now=lambda: NOW) == "A"
+    assert await choose(redis, settings, now=lambda: NOW) == "ua"
+
+    # A hits quota / rate limit -> turn advances to B
+    await rest(redis, fingerprint("ua"), "busy", now=lambda: NOW)
+    assert await choose(redis, settings, now=lambda: NOW) == "ub"
+    assert await gemini_pool.current_turn(redis, settings, now=lambda: NOW) == "B"
+
+    # Even after A's cooldown finishes, B keeps its turn until B itself hits quota
+    await redis.delete(f"gmpool:rest:{fingerprint('ua')}")
+    assert await choose(redis, settings, now=lambda: NOW) == "ub"
+
+    # B runs out of credit -> turn advances to C
+    await rest(redis, fingerprint("ub"), "exhausted", now=lambda: NOW)
+    assert await choose(redis, settings, now=lambda: NOW) == "uc"
+    assert await gemini_pool.current_turn(redis, settings, now=lambda: NOW) == "C"
+
+    # C hits quota -> wraps around from C back to A
+    await rest(redis, fingerprint("uc"), "exhausted", now=lambda: NOW)
+    assert await choose(redis, settings, now=lambda: NOW) == "ua"
+    assert await gemini_pool.current_turn(redis, settings, now=lambda: NOW) == "A"
+
+    # Owner manually clicks "start from C": C's rest is cleared and C takes the turn immediately
+    await gemini_pool.set_turn(redis, settings, "c", now=lambda: NOW)
+    assert await gemini_pool.current_turn(redis, settings, now=lambda: NOW) == "C"
+    assert await choose(redis, settings, now=lambda: NOW) == "uc"

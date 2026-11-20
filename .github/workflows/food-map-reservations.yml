@@ -1,11 +1,6 @@
 name: Food map and reservations
 on:
-  # Push runs are for `main` only and `pull_request` covers every branch. A bare `push:`
-  # ran this workflow a second time for every push to a branch with a pull request open,
-  # the duplication 2026-09-13-ci-duplicate-runs-amplify-flakes fixed in ci.yml.
-  push:
-    branches: [main]
-  pull_request:
+  workflow_dispatch:
 
 # One live run per pull request: a new push cancels the run of the commit it replaced.
 # Runs on `main` are never grouped, so none of them is cancelled or left pending.

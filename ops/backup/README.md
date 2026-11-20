@@ -38,7 +38,8 @@ exits 1; the previous complete runs are untouched.
 `manifest-paths.txt` is the list of what a rebuilt host needs and git does not have: the
 runtime `.env`, `/etc/travel-scanner`, the uploader secrets, the nginx site and project
 files, Let's Encrypt, the deploy script itself (it is not in git), the installed systemd
-units and the rclone config of the offsite task. A missing path is listed under
+units, the rclone config of the offsite task and `/var/lib/mokaair-ai-accounts` (the
+signed-in Claude Code, Codex, Antigravity `agy` and Colab account slots). A missing path is listed under
 `config.missing` in the manifest, not an error, so the list can name files that are not on
 every host yet.
 

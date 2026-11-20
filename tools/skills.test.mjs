@@ -178,3 +178,15 @@ test("the entrypoint stays short enough to load on every invocation", () => {
     );
   }
 });
+
+test("AGENTS.md, CLAUDE.md and GEMINI.md stay byte-identical at the repository root", () => {
+  const canonical = join(ROOT, "AGENTS.md");
+  assert.ok(existsSync(canonical), "missing AGENTS.md at repository root");
+  const baseBytes = readFileSync(canonical);
+  for (const mirror of ["CLAUDE.md", "GEMINI.md"]) {
+    const target = join(ROOT, mirror);
+    const fix = `cp AGENTS.md ${mirror}`;
+    assert.ok(existsSync(target), `missing ${mirror}; run: ${fix}`);
+    assert.ok(baseBytes.equals(readFileSync(target)), `${mirror} differs from AGENTS.md; run: ${fix}`);
+  }
+});
