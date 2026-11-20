@@ -71,3 +71,17 @@ book／ledger（會長字的冊子）；`open` 後面接 flat／bare／field／g
 2. **s04 的錄音 a03**：背影鏡全靠錄音，降調版 177 Hz 是 TTS 第一版；明天 08:10 UTC 補錄時可順便以「聲音低沉、煽動」重錄比較。
 3. 人眼看一次再決定的小問題（`review-picks.tsv`）：s01 門中縫上端那條細亮線、s12b 前景她的臉頰輪廓、s20 桌右那疊黃紙與阿令沒抬眼、s26 拍桌與台詞間的停頓、
    s28 沒有明顯甩袖、s18 丸子下的小髮尾。目前都不建議重拍。
+
+## fix2 與精修（2026-11-20，協調者決定）
+
+- **fix2 s31**（`../fix2/mkjobs.py`，基底 fix1 9361212 原樣：九張蓆、左右各三人睡、中間三張空蓆、蓆間露地，人數 9 → 6，樹寫成暗天前的光禿枝；種子 9361221／9361222，zt-live3，
+  scratchpad `e936f2.sh`，一輪 2／2，跑完 `ONLY_SELF=1` 釋放、assignments 0）：兩支都不比 fix1 1212 好，**KEEP fix1 1212**（理由在 `../fix2/review-picks.tsv`）。餘額 250.14 → 249.77 CU。
+- **精修**：scratchpad `e936refine.sh`（照 `e935refine.sh`；讀 picks-merged → fix1 → fix2 → cut-trims／review3-trims／fix3+ 若有；頭句改寫在 scratchpad `tools/heads936.py`：
+  s01、s06、s12b 加「the young woman seen only from behind」、s04 改成不點名不寫臉的背影；`shot on a cinema camera` 一律不准；s28 的 `open field` 是形容詞、放行）。
+  `PREP=1 PRECHECK_ONLY=1` 0 錯後，BATCH=1（20 鏡）在 zt-live2、BATCH=2（20 鏡）在 zt-live3 同時背景跑（20:28 UTC 起）。
+- **精修結果**（20:28–21:52 UTC）：兩批都沒被殺，**40/40**。BATCH=2 第一次 launch 斷線（`Connection was lost`），腳本自己第二次起來；斷線那次留下一台未記名 [?] VM
+  （20:28 建、asia-south1），20:48 手動 unassign。s18、s38 收在時限邊緣沒有 .seed，`seedfix` 從 colab-progress 補（種子與 picks 相同）。兩批各自 `ONLY_SELF=1 colab-release.sh`，
+  之後 `colab sessions` 空、assignments 0、rate 0。餘額 249.77 → **224.31 CU**（約 25.5 CU）。
+- 精修核對（scratchpad `e936refine-verify.sh`）：40 支的 `.seed` = picks.json 的種子 = 草稿檔名的種子，1312×736、格數與草稿一樣，**0 錯**；九鏡從 fix1、其他 d1。
+  草稿／精修每秒一格並排（scratchpad `e936rv/`、`all0-4.jpg`）全部看過，s03 s20 s26 s34 臉裁大看：構圖、人數、道具跟草稿一致，沒有新的笑或換臉；
+  s01 s18 s28 沒有多出人；s04 精修仍整支背影、看不到臉。
