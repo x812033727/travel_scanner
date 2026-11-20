@@ -186,3 +186,13 @@ Colab 餘額以跑之前的數字為準（任務檔記 2026-11-19 餘額 405.99 
 | 建議 10：s14 按緞帶的手蓋住丸子 | 左手那一拍拿掉，改 `the loose tail of one pink ribbon fluttering in the wind at the side of her head, both buns still clear` |
 | 建議 11：s31 指的門閂不在框裡 | `thrusts it down toward the gate below him` |
 | 建議 12：錄音後重核 s24、s30、s12b、s20b | **做完**（§4）：s24 7.23／8、s30 7.58／10、s12b 4.63／8、s20b 重錄 4.45／6，都放得下，BUY 不改 |
+
+## 8. 教訓：提示詞開頭的 `shot on a cinema camera` 會被畫成攝影機加腳架（2026-11-20，合併兼 fix1 代理）
+
+d1 的 s23 1102（錢員外身後）與 s22 1102（家丁手上）各出現一台黑色「機器」，放大看是**電影攝影機與腳架**：Ref2VA 提示詞開頭的風格句
+`Photorealistic live-action film footage ..., shot on a cinema camera.` 被模型當成畫面裡的物件。處理：
+- fix1 s23 這一句改 `with the look of a feature film.`（`fix1/mkspec.py`），1212 背後乾淨、沒有機器。
+- 精修（scratchpad `e935refine.sh` 第 1 步）把 40 支精修提示詞裡的 `shot on a cinema camera`（`refine-prep.py` 的 STYLE 開頭句，以及任何重拍的動作段）
+  一律改成 `with the look of a feature film`，第 3 步核對一個都沒留。
+- **之後的集**：d1 的 mkspec 與每個 fix 都應直接用 `with the look of a feature film`（或拿掉這半句）；挑片時背景裡的「黑色機器、箱子」先放大看是不是攝影機。
+  `live-action/refine-prep.py` 的 STYLE 與 pilot 的開頭句也還寫著 cinema camera，要改請另開一張票（本代理沒動共用工具）。
