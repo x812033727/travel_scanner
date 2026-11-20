@@ -22,6 +22,7 @@ AI劇/
   種田娶妻打天下/_規則與教訓/          ← 第 1 層：設定、大綱、分鏡規則、第一季檢討…
   種田娶妻打天下（真人版）/_規則與教訓/ ← 第 1 層：r2 角色與場景設定、原作設定
   恁祖媽今年18/_規則與教訓/            ← 第 1 層：設定、各季、試鏡決定
+  Shorts/_規則與教訓/                  ← 第 1 層：零台詞 Shorts 共用規則（shorts-drama）、四系列個別規則與教訓（另在 汪家夫妻／闖禍小浣熊／網美小豬／社畜地獄 各放一份）
   <劇>/<集數>/教訓/<slug>-NOTES.md    ← 第 2 層：單集的製作紀錄（奇聞與原來如此為 <系列>/<分類>/<代碼>/教訓/）
 ```
 
@@ -30,7 +31,7 @@ AI劇/
 ## 以後怎麼更新
 
 - **學到教訓**：寫進 `docs/videos/lessons/` 對應的那一份。所有劇都會遇到的寫 `shared.md`，奇聞和原來如此都會遇到的寫
-  `explainer.md`，只跟一部劇有關的寫那部劇的（`curio.md`、`sothatswhy.md`、`zhong-tian-qu-qi.md`、`zhong-tian-qu-qi-r2.md`、
+  `explainer.md`，無語音 Shorts 短劇都會遇到的寫 `shorts.md`，只跟一部長劇有關的寫那部劇的（`curio.md`、`sothatswhy.md`、`zhong-tian-qu-qi.md`、`zhong-tian-qu-qi-r2.md`、
   `tai-nainai.md`）。單集的寫在那一集資料夾的 `NOTES.md`。
 - **規則改了**：改 repo 裡的正本，合併後一小時內雲端就會更新。
 - **教訓變成正式規則**：搬進規則檔，教訓檔留一行「已升為規則：<檔案>」。
