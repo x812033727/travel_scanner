@@ -1,6 +1,7 @@
 # 第 36 集重製版 r2（e036-r2，內部 936）真人版開拍前置
 
-- 2026-11-20，第 36 集前置代理。**沒送任何生成**（Colab、RunPod 都沒開，`zt-live2`、`zt-live3` 都沒碰）、**沒有付費圖**、沒 commit、沒改第 33–35 集的檔。
+- 2026-11-20，第 36 集前置代理。**沒送任何生成**（Colab、RunPod 都沒開，`zt-live2`、`zt-live3` 都沒碰）、**沒有付費圖**（協調者准的開門圖被自動權限擋下，見 §7）、沒 commit、沒改第 33–35 集的檔。
+  **獨立審稿已套用**（§7；改前的檔在 scratchpad `e936prep/*-before-review.*`）。
   **站台 TTS 有用**（協調者准）：15:58 UTC 錄到第 3 句時站台回 **429**（`video_speech_upstream_busy`，Gemini 額度），照指示停下、不重試，**錄到 3／35**，見 §4。
   （注意：本代理寫到一半的檔被別的代理的 commit `46e8c6e93`〈e935 live: imported for owner review〉一起收進去了——那時的 `r2.py`、`video.json`、`mkspec.py`、`spec.json`、
   免費圖與三支腳本；之後本代理又改了 `r2.py`、`video.json`、`storyboard.md`、`clips-dh-e936.json`、refs-live README 與本檔，**工作區比那個 commit 新**。）
@@ -20,7 +21,7 @@
   `storyboard-check.py` 稿子 38 鏡 194.5 秒；lint 估 166 秒；`shot_reading` 8 個 `cast.speaker`（s05、s16 唐小棠畫外；s11、s29 系統；s22、s23、s32 秦霜畫外；s28 錢員外背影錄音：
   `OFFSCREEN_SPEECH = False` 的刻意寫法），其他陷阱 0。台詞 35 句逐字照稿。
 - **拆鏡**：**s11b**（c11 心裡話＋系統＋心裡話約 11 秒人聲，10 秒片段放不下：第三句拆出來，中近景吸一口氣挺肩）、**s12b**（c12 阿令說完、許硯轉向唐小棠說：兩個人說話拆兩鏡）。
-- **集長**：BUY 一個種子 258 秒（5 秒 4、6 秒 27、8 秒 7、10 秒 2）；稿子估 194.5 秒；剪接以錄音人聲為準，預估成片約 3 分 20 秒–3 分 40 秒（第 35 集稿子 193 秒、BUY 262 秒、成片 218.93 秒）。
+- **集長**：BUY 一個種子 260 秒（5 秒 4、6 秒 26、8 秒 8、10 秒 2；獨立審稿後 s30 8 秒）；稿子估 194.5 秒；剪接以錄音人聲為準，預估成片約 3 分 20 秒–3 分 40 秒（第 35 集稿子 193 秒、BUY 262 秒、成片 218.93 秒）。
 - 照聖經與第 35 集審稿、挑片、修片的教訓改稿子的地方（各鏡 zh 有寫）：
   | 稿子 | 真人版 | 為什麼 |
   | --- | --- | --- |
@@ -65,15 +66,15 @@
 | `colab/runs/e936/extras.json` | 乾淨畫面句；秦霜身分句拿掉柴刀；阿令不寫紅唇；錢員外錦袍 medallions、`small shrewd eyes` → `small narrow eyes under heavy brows`（第 35 集 fix1） |
 | `colab/runs/e936-live/mkspec.py` → `spec.json` | 40 鏡全部有改：唐小棠背影五鏡拿掉三張圖與身分句、`only` 句寫她從背後只出現一次；s14、s27 她一個人時把地點句開頭大寫（錨點用新的 `with the look of a feature film.`，**不再是 cinema camera**）；過肩與小背影（s01、s06、s12b）的 `only` 句；許硯 angle-b 不送、全景與背影 s01 s02 s09 s13 s29 只送 l1、近景 s11 先 l1 後 angle-a；阿令 angle-b 不送、s01 只送 l1；錢員外 angle-b 不送；插鏡 s05 s15 s17 s22 s23 拿掉地點句、一張裁切只當地面與光；渠（s13–s30）拿掉給 `SET` 用的 `below the deep pool`；s02 s09 s13 s29 草鞋句；clear-and-still 句：村口火把（s01 s02）、晚風（s03–s12b）、塵土（s13）、油燈（s34 s38）、夜氣（s31–s33 s35–s37）；s36 沒有人、拿掉鞋句；視線句；大寫 |
 | scratchpad `tools/prep936.sh` | 照 `prep935.sh` 的順序與檢查，改成本集：唐小棠的名字與圖全集沒有、背影鏡的寫法、金算盤只在 s05；s01 門關著（寫兩次）、s02 起推開、s02 之後不送 `-men`；沒有門樓／欄杆／樓梯；渠沒有潭字、渠的句子照圖（乾）；紙與筆只在阿令五鏡、紙 blank、筆尖在紙上方，沒有 stroke／writ／ink／register；鋤頭、竹籌素面；探子只在 s22 腳、s23 手、s30 背影；夜院子照拍法 42；火光照拍法 37；油燈只在 s34 s38；沒有 cinema camera、stubble、shrewd；布鞋句只在全景、流民草鞋。log `tools/prep936.log` |
-| scratchpad `e936d1.sh` | 80 支 516 秒，G4、session `zt-live3`（**先確認沒有別的集在跑**）、兩輪補缺、跑完釋放 VM。**沒有執行**（`DRY=1` 0 錯） |
+| scratchpad `e936d1.sh` | 80 支 520 秒，G4、session `zt-live3`（**先確認沒有別的集在跑**）、兩輪補缺、跑完釋放 VM。**沒有執行**（`DRY=1` 0 錯） |
 
-**檢查結果（2026-11-20）**：`build936.sh` 40 鏡、storyboard-check 194.5 秒、shot_reading 8 個 `cast.speaker`（刻意）；免費圖 18 張逐位元重建相同；
+**檢查結果（2026-11-20）**：`build936.sh` 40 鏡、storyboard-check 194.5 秒、shot_reading 8 個 `cast.speaker`（刻意）；免費圖 26 張逐位元重建相同（獨立審稿後）；
 `set-cunkou`（l1）、`set-xujia-yuan-ye`（l2）、`set-shanjiao-qu`、`set-cunkou-zha2`、`set-xujia-yuan-ye-dong2`（l1）最新版；st1 DRY `check_manifest` 0／0、st1 preflight 0 錯 3 警告
-（s06、s08、s12b 許硯 angle-b 帶笑：d1 已拿掉）；**80 支、516 秒**（5 秒 8、6 秒 54、8 秒 14、10 秒 4）；分隔句每支各一次；精修句漏進 d1 0；`prompt_sha256` 與兩種子一致；
+（s06、s08、s12b 許硯 angle-b 帶笑：d1 已拿掉）；**80 支、520 秒**（5 秒 8、6 秒 52、8 秒 16、10 秒 4；獨立審稿後）；分隔句每支各一次；精修句漏進 d1 0；`prompt_sha256` 與兩種子一致；
 送圖、點名、場景、光線逐鏡相符；**preflight 0 錯 0 警告**；`check_manifest.py`、`h3r.sh check` 0／0；否定名詞、會長字的名詞、掛著的東西、open、點名畫外人、插鏡地點字、兵器字、泥／金箔、潭字、
 唐小棠被點名、cinema camera，全 0。`e936d1.sh` `DRY=1` 0 錯。
 
-**估價**：照第 35 集（80 支 524 秒，估 23–27 CU）與第 32 集實跑（78 支 518 秒約 2.4 小時），本集 80 支 516 秒約 **2.3–2.6 小時、22–26 CU（約 US$2.2–2.6）**。
+**估價**：照第 35 集（80 支 524 秒，估 23–27 CU）與第 32 集實跑（78 支 518 秒約 2.4 小時），本集 80 支 520 秒約 **2.3–2.6 小時、22–26 CU（約 US$2.2–2.6）**。
 Colab 餘額以跑之前的數字為準（第 35 集 fix4 記 2026-11-20 餘額 276.93 CU）；**剩約 100 CU 時先問站主**。
 
 ## 4. 錄音（`tools/rec936.sh`）
@@ -130,7 +131,7 @@ log `tools/rec936.log`；檔在 `~/mokaair-work/videos/zhong-tian-qu-qi-e936-dh/
 | s27 | zq936a27 | 唐小棠（背影） | 流民有工換飯，誰還買你貴三成的米？ | 不慌 | 6 |
 | s28 | zq936a28 | 錢員外（背影，錄音） | 許硯斷我財路，這筆帳我記下了！ | 咬牙 | 8 |
 | s29 | zq936a29 | 系統 | 叮。以工代賑，達成。 | 冷，宣布 | 6 |
-| s30 | zq936a30 | 秦霜 | 渠通了，那三個人還沒走。今晚我守院子。 | 淡淡的，篤定 | 6 |
+| s30 | zq936a30 | 秦霜 | 渠通了，那三個人還沒走。今晚我守院子。 | 淡淡的，篤定 | 8 |
 | s32 | zq936a31 | 秦霜（畫外） | 三張蓆子空了，還是熱的，人剛走。 | 壓低聲音 | 6 |
 | s33 | zq936a32 | 秦霜（背影，錄音） | 鼓聲……是從山上傳下來的。 | 很低，警覺 | 6 |
 | s34 | zq936a33 | 許硯 | 鼓聲哪來的？那三個新鞋的人呢？ | 急，壓低 | 6 |
@@ -151,6 +152,35 @@ log `tools/rec936.log`；檔在 `~/mokaair-work/videos/zhong-tian-qu-qi-e936-dh/
 `prep` 的「沒有潭字」檢查照跑。fix 也要帶 `mkspec.py` 的唐小棠背影替換（身分句、三張圖、`only` 句）、clear-air 逐鏡替換與草鞋句；風格句的錨點用 `with the look of a feature film.`。
 `video.json`／`storyboard.md` 表上的提示詞仍帶 `below the deep pool`（給 `gen-dh` 的 `SET` 用），表頭已寫說明。
 
-1. 獨立分鏡審查（協調者派，提示在 scratchpad `e936prep/review-prompt.md`）；套用後重跑 `build936.sh`、`prep936.sh`、`e936d1.sh DRY=1`。
+1. ~~獨立分鏡審查~~（2026-11-20 做完、已套用，§7）。**付費開門圖還沒跑**（§7）：跑 `e936kai.sh`、挑一張、`r2.py` 設 `KAI = True`、重跑 `build936.sh`、`prep936.sh`、`e936d1.sh DRY=1`。
 2. 錄音：32 句等站台額度（`rec936.sh` 重跑），錄齊後 `rec936-check.sh`、重錄不合的、重核 BUY（s11、s26、s14、s24、s35、s09 先看）。
 3. 花錢：`e936d1.sh` 約 22–26 CU，等協調者／站主；先確認 `zt-live3` 上沒有別的集在跑。
+
+## 7. 獨立審稿怎麼套（2026-11-20，`writer-tools/e036-r2/review-independent.md`；協調者的決定）
+
+改前的檔在 scratchpad `e936prep/*-before-review.*`（`r2`、`mkspec`、`PREP`、`cunkou_zha2_e936`、`shanjiao_qu`、`xujia_yuan_ye_e936`、`prep936`、`e936d1`、`bible`，加 `refs-before-review/` 三張）。
+改完重跑 `build936.sh`（40 鏡、shot_reading 8 個刻意的 `cast.speaker`、其他陷阱 0）、`prep936.sh`（**80 支、520 秒**、preflight 0／0、`check_manifest`／`h3r` 0／0、所有掃描 0、免費圖 26 張逐位元相同，加了下表每項的斷言）、`e936d1.sh` `DRY=1` 0 錯。
+
+| 項目 | 怎麼處理 |
+| --- | --- |
+| 必改 1：s02 送的 `-men` 門關著、文字寫已推開 | 協調者定做付費開門圖（建議 2）；**挑定前**送免費裁切 `set-cunkou-zha2-wai2-l1`（沒有門扇），構圖 `S02_WAI2`：門口在畫左外、門閂斜靠在左緣、人從左緣一個接一個走進來，守門兩人在左前景背對、許硯在右邊短籬笆旁。開門圖挑定後 `r2.py` 設 `KAI = True`，s02 換成 `S02_KAI`（從門裡看兩扇門往內推開、跟籬笆垂直、門閂靠左門柱）並送 `set-cunkou-zha2-kai-l1`（`mkspec.py`、`prep936.sh` 已照 `KAI` 分兩種寫法） |
+| 必改 2：s02 火把沒寫誰拿 | 點名：炭灰、橄欖綠、赭黃、芥黃四人各一支；前排老人兩手空著（要作揖）、牽孩子的婦人另一手拉包袱帶；守門兩人各一支＝六支 |
+| 必改 3：s02 之後又有關著的門 | 免費新裁切 `-ding2`（只有瓦頂與天：s03 s04 s10）、`-wai2`（s06 s07 s12b）；`GATE_BACK` 改寫左上一角瓦簷、左緣斜靠的圓木 |
+| 必改 4：s18 往左傾身會轉側臉 | `her shoulders square to the table, facing straight away from us like the rest of her`，動作只留右手停在算盤上 |
+| 必改 5：s35 回頭的肩膀寫反 | 構圖、動作、`GAZE_REFINE["s35"]` 都改 `over her left shoulder` |
+| 必改 6：渠一人深 | `about knee-deep, wide and flat-bottomed` |
+| 必改 7：`-zhuo` 背景白色現代護欄 | `shanjiao_qu_clean.py` 塗掉 → `set-shanjiao-qu-jing-l1`、`-zhuo2`、`-tian2`、`-xi2`、`-xi2-zhuo`（新 id） |
+| 必改 8：十二張草蓆頭尾相接放不下 | `SLEEPERS` 改並排、頭朝牆、從樹右邊到右牆角、在井後面、睡的人背對鏡頭；s32 三張空蓆並排、頭靠牆腳 |
+| 必改 9：s30 BUY | 6 → **8 秒**（兩種子 +4 秒） |
+| **建議 2（付費，協調者定做）：村口開門圖** | 清單 `colab/runs/e936-live/cunkou-kai/{jobs.json,prompt.txt,negative.txt}`（Qwen-Image-Edit-2509，`latent: image1`，種子 9361201–9361204，從 `set-cunkou-zha2-l1` 只改門扇推開、門閂靠左門柱；`check_images_manifest` 0／0）。**沒跑**：送之前 `colab sessions` 沒有 session、餘額 **276.93 CU**、assignments 0；`h3.sh images … --session zt-live3` 的呼叫**被 Claude Code 的自動權限擋下**（判定為不想要的動作），照規則不繞過。跑法寫成 scratchpad `e936kai.sh`（先查 session、跑、`ONLY_SELF=1 colab-release.sh zt-live3`、查 assignments、拼 `sheet.jpg`），**要協調者或站主跑**（或給這個代理加權限）；估 1.5–2 CU（第 35 集同樣四張最多 2.84 CU）。挑定後：存成 `refs-live/set-cunkou-zha2-kai-l1.png`、README 記一行、`r2.py` `KAI = True`、重跑。聖經〈道具〉柵門列已加註 |
+| 建議 1：s01 守門人左右、阿令頭髮 | `GUARDS_LR`（暗青在左端、深酒紅在右端）；阿令加 `the long rest of her black hair falling straight down her back to the waist`（掃描擋 `hanging`，改 falling） |
+| 建議 3：s09 站到門外 | 改送 `-dao`，背景寫三間屋與遠山 |
+| 建議 4：s17 對焦清楚的白紙 | 對焦在指尖與筆尖，紙面虛焦、側光 |
+| 建議 5：s16／s19 阿令臉的方向相反、s19 背景 | s19 臉與 `GAZE_REFINE` 改朝畫右看紙；背景改送 `-zhuo2`、寫乾黃地與松樹 |
+| 建議 6：渠中段的直立木板會長字 | 同 `shanjiao_qu_clean.py` 改成一根細木樁；`CHANNEL` 寫 `on one thin wooden post` |
+| 建議 7：`-xi` 不像傍晚 | 重調 `-xi2`（天上一層橘、不加綠）；文字 `QXI` 改 `warm low amber evening light from the right, the sky glowing orange above the far pines`（不寫長影子） |
+| 建議 8：`-shan` 拉長、有樹幹與瓦頂 | 16:9 新裁切 `-shan2`；文字加左上幾根枯枝 |
+| 建議 9：`-xi-an` 沒有地平線 | `-xi2-zhuo`（傍晚的左岸平地與松樹），s30 背景句與地點句改左岸平地 |
+| 建議 10：s26 錢員外正面 | 先照寫跑 d1；**備案**（d1 兩支都笑或張嘴亂說時直接用）：`wide shot from behind`、不送圖不點名、`QIAN_BACK` 服裝句，第一格已背對鏡頭站在桌前，平掌往桌上一拍、竹筐裡的竹籌跳起，臉不入鏡，台詞放錄音 `zq936a26`（第 34、35 集 fix4 的做法）。a26 錄完照 a02 a03 量音高、偏高就降調 |
+| 建議 11：錄音後重核 BUY | 等明天 08:10 UTC 的錄音重試；先核 s23、s12、s14、s10、s11、s38（審稿估的最緊六鏡）與 s30、s26 |
+| 建議 12：第 37 集院門本來就半開 | 記進聖經〈接點〉36→37（本集不改） |

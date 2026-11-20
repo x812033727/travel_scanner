@@ -14,6 +14,16 @@
 #   -tian: the right bank, its dry grass and the green paddy beyond (s21: Qin Shuang comes along the paddy's edge)
 #   -xi:   the same picture at dusk, the low sun from the right (warmer, the sky pulled to amber, darker, long shadows read from the
 #          picture's own): the whole picture (s29) and -xi-an (the earth mound and the straw at dusk: s30)
+# After the e036 independent review (2026-11-20, 必改 7, 建議 6, 7, 9), new ids from a cleaned copy (the first ones stay, unsent):
+#   shanjiao_qu_clean.py paints out the white modern guard rail on the terraced bank at the left and turns the flat upright
+#   board under the plank into one thin post (a flat board grows writing);
+#   -jing:   the cleaned picture itself (s13)
+#   -zhuo2:  -zhuo's crop of the cleaned picture (s14, s16, s18, s19, s20, s26, s27, s28)
+#   -tian2:  -tian's crop of the cleaned picture (s21, s24)
+#   -xi2:    a new dusk grade of the cleaned picture: a warm orange glow added over the upper half of the sky (geq), warmer and less
+#            green than -xi (which read as an olive / teal filter), a soft vignette (s29); -xi2-zhuo its crop of the flat left bank
+#            and the pines (s30: the three far backs need ground to walk on, 建議 9)
+# -an and -di are not touched by the cleaning (the rail and the board lie outside them) and stay as they are.
 # Usage: bash shanjiao_qu.sh refs-live/set-shanjiao-qu-l1.png OUTDIR
 set -e
 S=$1; O=$2
@@ -24,3 +34,9 @@ c "$S" set-shanjiao-qu-di-l1   400:225:520:500
 c "$S" set-shanjiao-qu-tian-l1 560:315:752:330
 ffmpeg -v error -y -i "$S" -vf "eq=brightness=-0.12:saturation=1.05:contrast=1.04:gamma=0.86,colorbalance=rs=0.22:gs=0.04:bs=-0.30:rm=0.20:gm=0.02:bm=-0.26:rh=0.24:gh=0.05:bh=-0.34,vignette=PI/6" -flags +bitexact -fflags +bitexact "$O/set-shanjiao-qu-xi-l1.png"
 c "$O/set-shanjiao-qu-xi-l1.png" set-shanjiao-qu-xi-an-l1 560:315:40:400
+J="$O/set-shanjiao-qu-jing-l1.png"
+python3 -I "$(dirname "$0")/shanjiao_qu_clean.py" "$S" "$J"
+c "$J" set-shanjiao-qu-zhuo2-l1 640:360:0:200
+c "$J" set-shanjiao-qu-tian2-l1 560:315:752:330
+ffmpeg -v error -y -i "$J" -vf "format=rgb24,geq=r='min(255,r(X,Y)+80*max(0,1-Y/(H*0.48)))':g='min(255,g(X,Y)+22*max(0,1-Y/(H*0.48)))':b='max(0,b(X,Y)-30*max(0,1-Y/(H*0.48)))',eq=brightness=-0.07:saturation=1.1:contrast=1.05:gamma=0.9,colorbalance=rs=0.14:gs=0.00:bs=-0.18:rm=0.16:gm=0.00:bm=-0.24:rh=0.22:gh=0.00:bh=-0.36,vignette=PI/6" -frames:v 1 -flags +bitexact -fflags +bitexact "$O/set-shanjiao-qu-xi2-l1.png"
+c "$O/set-shanjiao-qu-xi2-l1.png" set-shanjiao-qu-xi2-zhuo-l1 640:360:0:200

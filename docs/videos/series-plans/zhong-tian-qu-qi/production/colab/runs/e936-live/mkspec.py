@@ -34,11 +34,11 @@ Run: python3 -I mkspec.py
   the lamp's flame (s34, s38) and the night air (s31-s33, s35-s37); the calm day at the table keeps it.
 - The speaking gaze never names an unsent listener (bible rule 31): r2.py's GAZE_REFINE (the same words in d1 and in the refine
   text). Every motion that opens a sentence after "never the mood. " is capitalised (e928 review 必改 1's fix).
-- Sets (r2.py PLACES): the gate: e935's free crops of set-cunkou-zha2-l1 (-men s01 s02, -ding s03 s04 s10, -wai s06 s07 s09
-  s12b, -dao s08 s12, -kong s11 s11b) and this episode's -di (s05), swapped for gen-dh's / pilot.py's set-cunkou-l1 (never sent);
-  the channel: set-shanjiao-qu-l1 (s13) and this episode's free crops and grade (shanjiao_qu.sh), swapped for pilot.py's newest
-  set-shentan (never sent); the yard: e931's set-xujia-yuan-ye-dong2-l1 (s31) and this episode's free crops
-  (xujia_yuan_ye_e936.sh), swapped for pilot.py's newest set-xujia-yuan-ye (l2, never sent). Every swap is sent with an absolute
+- Sets (r2.py PLACES, after the independent review): the gate: e935's -men (s01, shut), -dao (s08 s09 s12), -kong (s11 s11b)
+  and this episode's free -ding2 (s03 s04 s10), -wai2 (s02 until r2.KAI, then the paid -kai; s06 s07 s12b), -di (s05), swapped for
+  gen-dh's / pilot.py's set-cunkou-l1 (never sent); the channel: the cleaned set-shanjiao-qu-jing-l1 (s13), -zhuo2, -tian2,
+  -xi2, -xi2-zhuo, and -an, -di (shanjiao_qu.sh), swapped for pilot.py's newest set-shentan (never sent); the yard: e931's
+  set-xujia-yuan-ye-dong2-l1 (s31) and this episode's free crops (xujia_yuan_ye_e936.sh; -shan2 for s36), swapped for pilot.py's newest set-xujia-yuan-ye (l2, never sent). Every swap is sent with an absolute
   path by prep936.sh.
 - No seed of this episode has been run. Seeds 9361101/9361102.
 """
@@ -245,17 +245,20 @@ for sid in QI:
     drop(sid, "qianyuanwai-angle-b-l1.png")
 
 SWAP = {sid: {} for sid in ids}
-PLACE = {
-    CK: {"set-cunkou-zha2-men-l1.png": ["s01", "s02"], "set-cunkou-zha2-ding-l1.png": ["s03", "s04", "s10"],
-         "set-cunkou-zha2-di-l1.png": ["s05"], "set-cunkou-zha2-wai-l1.png": ["s06", "s07", "s09", "s12b"],
-         "set-cunkou-zha2-dao-l1.png": ["s08", "s12"], "set-cunkou-zha2-kong-l1.png": ["s11", "s11b"]},
-    ST: {"set-shanjiao-qu-l1.png": ["s13"],
-         "set-shanjiao-qu-zhuo-l1.png": ["s14", "s16", "s18", "s20", "s26", "s27", "s28"],
-         "set-shanjiao-qu-an-l1.png": ["s19", "s23", "s25"], "set-shanjiao-qu-di-l1.png": ["s15", "s17", "s22"],
-         "set-shanjiao-qu-tian-l1.png": ["s21", "s24"], "set-shanjiao-qu-xi-l1.png": ["s29"],
-         "set-shanjiao-qu-xi-an-l1.png": ["s30"]},
+# s02: the paid open-gate picture -kai once r2.KAI (review 建議 2), the free -wai2 until then (必改 1)
+PLACE = {  # after the independent review (必改 1, 3, 7; 建議 3, 5, 7, 8, 9)
+    CK: {"set-cunkou-zha2-men-l1.png": ["s01"], "set-cunkou-zha2-ding2-l1.png": ["s03", "s04", "s10"],
+         "set-cunkou-zha2-di-l1.png": ["s05"],
+         "set-cunkou-zha2-wai2-l1.png": (["s06", "s07", "s12b"] if R2.KAI else ["s02", "s06", "s07", "s12b"]),
+         **({"set-cunkou-zha2-kai-l1.png": ["s02"]} if R2.KAI else {}), "set-cunkou-zha2-dao-l1.png": ["s08", "s09", "s12"],
+         "set-cunkou-zha2-kong-l1.png": ["s11", "s11b"]},
+    ST: {"set-shanjiao-qu-jing-l1.png": ["s13"],
+         "set-shanjiao-qu-zhuo2-l1.png": ["s14", "s16", "s18", "s19", "s20", "s26", "s27", "s28"],
+         "set-shanjiao-qu-an-l1.png": ["s23", "s25"], "set-shanjiao-qu-di-l1.png": ["s15", "s17", "s22"],
+         "set-shanjiao-qu-tian2-l1.png": ["s21", "s24"], "set-shanjiao-qu-xi2-l1.png": ["s29"],
+         "set-shanjiao-qu-xi2-zhuo-l1.png": ["s30"]},
     YY: {"set-xujia-yuan-ye-dong2-l1.png": ["s31"], "set-xujia-yuan-ye-dong2-qiang-l1.png": ["s32", "s33", "s35"],
-         "set-xujia-yuan-ye-dong2-chai-l1.png": ["s34"], "set-xujia-yuan-ye-dong2-shan-l1.png": ["s36"],
+         "set-xujia-yuan-ye-dong2-chai-l1.png": ["s34"], "set-xujia-yuan-ye-dong2-shan2-l1.png": ["s36"],
          "set-xujia-yuan-ye-dong2-wu-l1.png": ["s37"], "set-xujia-yuan-ye-dong2-zhong-l1.png": ["s38"]},
 }
 seen = set()
@@ -286,7 +289,8 @@ spec = {
               "never angle-b. Qin Shuang: her portrait only (gen-dh sends no angle of hers). The channel prompts lose ' below the "
               "deep pool' (every later fix of s13-s30 must too). The clean sentence's 'clear and still' replaced at the gate "
               "(torches, the evening breeze), s13 (dust) and the yard (the lamp, the night air). Straw sandals beside Xu Yan's cloth "
-              "shoes (s02, s09, s13, s29). Sets: see mkspec.py. No off-screen sentence (r2.py OFFSCREEN_SPEECH = False). Seeds "
+              "shoes (s02, s09, s13, s29). After the independent review: no shut gate leaves after s01 (-ding2, -wai2), the cleaned channel "
+              "picture (-jing, -zhuo2, -tian2, -xi2), -shan2. Sets: see mkspec.py. No off-screen sentence (r2.py OFFSCREEN_SPEECH = False). Seeds "
               "9361101/9361102."),
     "seeds": [9361101, 9361102],
     "shots": shots,

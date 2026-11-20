@@ -13,6 +13,8 @@
 #           the line of small flames down the hillside)
 #   -wu:    the dark doorway at the far left of the house and the stacked firewood beside it (s37: A-ling at the door)
 #   -zhong: the middle of the yard, the bucket, the tree and the gate behind (s38)
+# After the e036 independent review (2026-11-20, 建議 8): -shan2, a true 16:9 crop of the wall top, the dark fields and the far
+# hills right of the tree and the gate roof (-shan was 640x270 stretched 1.33x tall and had the tree trunk and the roof in it) (s36)
 # Usage: bash xujia_yuan_ye_e936.sh refs-live/set-xujia-yuan-ye-dong2-l1.png OUTDIR
 set -e
 S=$1; O=$2
@@ -22,3 +24,4 @@ c set-xujia-yuan-ye-dong2-qiang-l1 560:315:752:250
 c set-xujia-yuan-ye-dong2-shan-l1  640:270:672:140
 c set-xujia-yuan-ye-dong2-wu-l1    480:270:0:290
 c set-xujia-yuan-ye-dong2-zhong-l1 640:360:330:250
+c set-xujia-yuan-ye-dong2-shan2-l1 520:292:792:120
