@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans KR','Apple SD Gothic Neo',system-ui,sans-serif">
+  <title id="title">부산 2박 3일 권역별 동선 안내도 / Busan 3-day itinerary by area</title>
+  <desc id="desc">실제 축척이 아닌 부산 주요 권역 약도예요. 왼쪽 김해국제공항에서 부산김해경전철로 6분이면 사상역에 닿고 2호선으로 갈아타면 서면까지 8정거장, 서면에서 해운대까지는 2호선 16정거장(광안·센텀시티 경유), 서면에서 남포동까지는 1호선 8정거장이에요. 공항 리무진 해운대 노선은 9,500원으로 약 1시간 만에 해운대까지 직통으로 연결하며 07:10–21:40에 공항에서 출발해요. Day 1은 해운대와 광안리(해운대역에서 2호선 6정거장, 광안대교 야경), Day 2는 감천문화마을(토성역 6번 출구에서 마을버스 사하 1-1·서구 2·2-2 환승, 3–10월 09:00–18:00, 무료)과 남포동의 자갈치시장·BIFF 광장·용두산공원, Day 3은 오전에 송도해상케이블카(왕복 19,000원부터) 또는 기장 해동용궁사(04:30–19:20, 무료)를 보고 오후에 해운대 블루라인파크 미포에서 청사포까지 스카이캡슐(약 30분)과 송정까지 이어지는 해변열차를 타는 코스예요.</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <path d="M 0 840 C 250 810, 450 830, 700 750 C 900 680, 1020 630, 1150 590 C 1300 540, 1450 420, 1600 300 L 1600 900 L 0 900 Z" fill="#BFD9E3" opacity="0.8"/>
+  <text x="1465" y="660" font-size="18" font-weight="700" fill="#3F6C7A">바다 · Sea</text>
+  <text x="60" y="66" font-size="34" font-weight="700" fill="#102A2B">부산 2박 3일: 하루 한 권역씩, 바다는 아침저녁으로</text>
+  <text x="60" y="100" font-size="19" fill="#5C6B6B">Busan in 3 days · 약도(실제 축척 아님) · 요금·운영시간 2026년 9월 공식 홈페이지 기준</text>
+  <defs>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#B8442D"/></marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2E7D5B"/></marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2F6F9F"/></marker>
+  </defs>
+
+  <!-- airport limousine to Haeundae -->
+  <path d="M 170 250 C 170 130, 860 110, 1140 396" fill="none" stroke="#B8442D" stroke-width="6" stroke-dasharray="16 12" stroke-linecap="round" marker-end="url(#arrowRed)"/>
+  <text x="385" y="146" font-size="18" font-weight="700" fill="#B8442D">공항 리무진 해운대 노선 9,500원 · 약 1시간 · 07:10–21:40 공항 출발</text>
+
+  <!-- airport, light rail, line 2 -->
+  <rect x="60" y="250" width="215" height="90" rx="22" fill="#0D6B68"/>
+  <text x="167" y="288" font-size="24" font-weight="700" fill="#FFFFFF" text-anchor="middle">김해국제공항</text>
+  <text x="167" y="318" font-size="16" fill="#E6F2F1" text-anchor="middle">Gimhae Airport · PUS</text>
+  <line x1="275" y1="295" x2="395" y2="295" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+  <text x="335" y="276" font-size="16" font-weight="700" fill="#0D6B68" text-anchor="middle">경전철 6분</text>
+  <line x1="395" y1="295" x2="540" y2="295" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
+  <text x="468" y="276" font-size="16" font-weight="700" fill="#6B4A3A" text-anchor="middle">2호선 8정거장</text>
+  <circle cx="395" cy="295" r="13" fill="#FFFFFF" stroke="#0D6B68" stroke-width="6"/>
+  <text x="395" y="336" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">사상 Sasang</text>
+
+  <!-- Seomyeon -->
+  <rect x="540" y="250" width="235" height="90" rx="22" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="5"/>
+  <text x="657" y="288" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">서면 Seomyeon</text>
+  <text x="657" y="318" font-size="15" fill="#5C6B6B" text-anchor="middle">숙소·환승 중심 · 1·2호선</text>
+
+  <!-- line 2 to Haeundae -->
+  <path d="M 775 295 C 905 295, 985 420, 1070 448" fill="none" stroke="#6B4A3A" stroke-width="8" stroke-linecap="round"/>
+  <text x="808" y="392" font-size="16" font-weight="700" fill="#6B4A3A">2호선 16정거장</text>
+  <text x="808" y="415" font-size="15" font-weight="700" fill="#6B4A3A">광안·센텀시티 경유</text>
+
+  <!-- line 1 to Nampo -->
+  <line x1="650" y1="340" x2="640" y2="468" stroke="#D97A2B" stroke-width="8" stroke-linecap="round"/>
+  <text x="664" y="410" font-size="16" font-weight="700" fill="#D97A2B">1호선 8정거장</text>
+
+  <!-- Haeundae: Day 1 evening, Day 3 afternoon -->
+  <rect x="1070" y="400" width="265" height="114" rx="22" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <circle cx="1070" cy="400" r="29" fill="#2F6F9F"/><text x="1070" y="405" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 1</text>
+  <circle cx="1335" cy="400" r="29" fill="#2E7D5B"/><text x="1335" y="405" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 3</text>
+  <text x="1202" y="444" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">해운대 Haeundae</text>
+  <text x="1202" y="472" font-size="15" fill="#5C6B6B" text-anchor="middle">Day 1 저녁 해변·동백섬</text>
+  <text x="1202" y="497" font-size="15" fill="#5C6B6B" text-anchor="middle">Day 3 오후 블루라인파크</text>
+
+  <!-- Blueline Park -->
+  <path d="M 1335 470 L 1385 458 L 1465 400 L 1545 330" fill="none" stroke="#0D6B68" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="1385" cy="458" r="9" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5"/>
+  <circle cx="1465" cy="400" r="9" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5"/>
+  <circle cx="1545" cy="330" r="9" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5"/>
+  <text x="1398" y="482" font-size="15" font-weight="700" fill="#102A2B">미포 Mipo</text>
+  <text x="1478" y="416" font-size="15" font-weight="700" fill="#102A2B">청사포</text>
+  <text x="1532" y="316" font-size="15" font-weight="700" fill="#102A2B" text-anchor="end">송정 Songjeong</text>
+  <text x="1572" y="544" font-size="15" font-weight="700" fill="#0D6B68" text-anchor="end">스카이캡슐 미포↔청사포 약 30분</text>
+  <text x="1572" y="568" font-size="15" font-weight="700" fill="#0D6B68" text-anchor="end">해변열차 송정까지 연결</text>
+
+  <!-- Gijang / Yonggungsa: Day 3 option B -->
+  <rect x="1275" y="148" width="295" height="106" rx="20" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="6"/>
+  <circle cx="1275" cy="148" r="29" fill="#2E7D5B"/><text x="1275" y="153" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 3</text>
+  <text x="1422" y="188" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">기장 · 해동용궁사</text>
+  <text x="1422" y="215" font-size="15" fill="#5C6B6B" text-anchor="middle">04:30–19:20 · 입장 무료</text>
+  <text x="1422" y="239" font-size="15" fill="#5C6B6B" text-anchor="middle">선택 B · 해운대에서 버스 환승</text>
+  <path d="M 1210 398 C 1235 330, 1265 298, 1305 256" fill="none" stroke="#2E7D5B" stroke-width="5" stroke-dasharray="10 8" marker-end="url(#arrowGreen)"/>
+  <text x="1282" y="324" font-size="15" font-weight="700" fill="#2E7D5B">버스</text>
+
+  <!-- Gwangalli: Day 1 night -->
+  <rect x="823" y="580" width="255" height="104" rx="22" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <circle cx="823" cy="580" r="29" fill="#2F6F9F"/><text x="823" y="585" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 1</text>
+  <text x="950" y="622" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">광안리 Gwangalli</text>
+  <text x="950" y="654" font-size="15" fill="#5C6B6B" text-anchor="middle">광안대교 야경 · 2호선 광안역</text>
+  <path d="M 1130 516 C 1118 558, 1106 580, 1088 596" fill="none" stroke="#2F6F9F" stroke-width="5" stroke-dasharray="10 8" marker-end="url(#arrowBlue)"/>
+  <text x="1142" y="566" font-size="15" font-weight="700" fill="#2F6F9F">2호선 6정거장</text>
+
+  <!-- Nampo: Day 2 -->
+  <rect x="505" y="470" width="265" height="112" rx="22" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+  <circle cx="505" cy="470" r="29" fill="#B8442D"/><text x="505" y="475" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 2</text>
+  <text x="637" y="510" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">남포동 Nampo</text>
+  <text x="637" y="538" font-size="15" fill="#5C6B6B" text-anchor="middle">자갈치시장 · BIFF 광장 · 용두산</text>
+  <text x="637" y="563" font-size="15" fill="#5C6B6B" text-anchor="middle">1호선 자갈치역 / 남포역</text>
+
+  <!-- Gamcheon: Day 2 -->
+  <rect x="115" y="560" width="320" height="106" rx="22" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+  <circle cx="115" cy="560" r="29" fill="#B8442D"/><text x="115" y="565" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 2</text>
+  <text x="275" y="598" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">감천문화마을 Gamcheon</text>
+  <text x="275" y="624" font-size="15" fill="#5C6B6B" text-anchor="middle">09:00–18:00 (3–10월) · 무료</text>
+  <text x="275" y="649" font-size="15" fill="#5C6B6B" text-anchor="middle">토성역 6번 출구에서 마을버스</text>
+  <path d="M 503 546 C 482 560, 464 574, 440 590" fill="none" stroke="#B8442D" stroke-width="5" stroke-dasharray="10 8" marker-end="url(#arrowRed)"/>
+  <text x="458" y="530" font-size="15" font-weight="700" fill="#B8442D" text-anchor="end">마을버스 사하 1-1 / 서구 2, 2-2</text>
+
+  <!-- Songdo: Day 3 option A -->
+  <rect x="90" y="720" width="310" height="104" rx="22" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="6"/>
+  <circle cx="90" cy="720" r="29" fill="#2E7D5B"/><text x="90" y="725" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 3</text>
+  <text x="245" y="758" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">송도 Songdo</text>
+  <text x="245" y="786" font-size="15" fill="#5C6B6B" text-anchor="middle">해상케이블카 왕복 19,000원부터</text>
+  <text x="245" y="810" font-size="15" fill="#5C6B6B" text-anchor="middle">선택 A · 남포동에서 버스·택시</text>
+  <path d="M 565 584 C 505 650, 445 690, 385 718" fill="none" stroke="#2E7D5B" stroke-width="5" stroke-dasharray="10 8" marker-end="url(#arrowGreen)"/>
+  <text x="506" y="666" font-size="15" font-weight="700" fill="#2E7D5B">버스·택시</text>
+
+  <!-- legend -->
+  <g font-size="16" fill="#102A2B">
+    <circle cx="70" cy="860" r="9" fill="#2F6F9F"/><text x="88" y="866" font-size="16">Day 1</text>
+    <circle cx="160" cy="860" r="9" fill="#B8442D"/><text x="178" y="866" font-size="16">Day 2</text>
+    <circle cx="250" cy="860" r="9" fill="#2E7D5B"/><text x="268" y="866" font-size="16">Day 3</text>
+    <line x1="340" y1="860" x2="390" y2="860" stroke="#0D6B68" stroke-width="8" stroke-linecap="round"/><text x="402" y="866" font-size="16">경전철 · 블루라인파크</text>
+    <line x1="590" y1="860" x2="640" y2="860" stroke="#6B4A3A" stroke-width="8" stroke-linecap="round"/><text x="652" y="866" font-size="16">지하철 2호선</text>
+    <line x1="775" y1="860" x2="825" y2="860" stroke="#D97A2B" stroke-width="8" stroke-linecap="round"/><text x="837" y="866" font-size="16">지하철 1호선</text>
+    <line x1="960" y1="860" x2="1010" y2="860" stroke="#B8442D" stroke-width="6" stroke-dasharray="14 10" stroke-linecap="round"/><text x="1022" y="866" font-size="16">버스 · 택시</text>
+    <text x="1310" y="866" font-size="16" fill="#5C6B6B">© Mokaair 제작 2026</text>
+  </g>
+</svg>
