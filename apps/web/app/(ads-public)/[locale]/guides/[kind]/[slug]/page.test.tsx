@@ -111,9 +111,9 @@ describe("a published article", () => {
     expect(container.querySelector("a[hreflang]")).toBeNull();
   });
 
-  it("shares the article with the layout image when it has no editorial hero", async () => {
+  it("shares the article with its dynamic editorial OG card when it has no bespoke hero", async () => {
     const metadata = await generateMetadata({ params: params() }, parent);
-    const images = [{ url: "/og.png", width: 1200, height: 630, alt: "Mokaair" }];
+    const images = [{ url: "/og/zh-TW/howto/narita-to-tokyo/card.png", width: 1200, height: 630, alt: document.title }];
     expect(metadata.openGraph).toMatchObject({
       type: "article", url: metadata.alternates?.canonical, title: document.title, description: document.description,
       locale: "zh_TW", alternateLocale: ["ja_JP"], publishedTime: document.published_at, images,
@@ -123,7 +123,12 @@ describe("a published article", () => {
     });
     const { container } = render(await GuideArticlePage({ params: params() }));
     const article = jsonLd(container).find((graph) => graph["@type"] === "Article")!;
-    expect(article.image).toBeUndefined();
+    expect(article.image).toMatchObject({
+      "@type": "ImageObject",
+      url: expect.stringContaining("/og/zh-TW/howto/narita-to-tokyo/card.png"),
+      width: 1200,
+      height: 630,
+    });
     expect(article.dateModified).toBe("2026-09-01T00:00:00Z");
   });
 

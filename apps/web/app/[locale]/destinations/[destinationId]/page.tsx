@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   if (!destination) return {};
   const copy = destinationsCopy(locale);
   return {
-    title: `${destination.city} | Mokaair`,
+    title: copy.guideMetaTitle.replace("{city}", destination.city),
     description: destination.reason || copy.indexIntro,
   };
 }
