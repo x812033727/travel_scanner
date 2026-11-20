@@ -10,6 +10,9 @@ const payload = {
   flight_status_enabled: false,
   airline_fares_enabled: true,
   pricing_enabled: false,
+  flight_search_enabled: false,
+  videos_enabled: false,
+  member_features_enabled: false,
 };
 
 const ok = () => vi.fn().mockResolvedValue(new Response(JSON.stringify(payload), { status: 200 }));
@@ -22,7 +25,7 @@ afterEach(() => {
 });
 
 describe("loadSiteVisibility", () => {
-  it("loads the six public flags without caching", async () => {
+  it("loads the nine public flags without caching", async () => {
     const fetchMock = ok();
     vi.stubGlobal("fetch", fetchMock);
 
@@ -31,6 +34,28 @@ describe("loadSiteVisibility", () => {
       "http://localhost:8000/api/v1/runtime/site-visibility",
       expect.objectContaining({ cache: "no-store" }),
     );
+  });
+
+  it("defaults omitted info-only flags to false for rolling-deploy compatibility", async () => {
+    const legacy = {
+      hotspots_enabled: true,
+      trips_enabled: true,
+      alerts_enabled: false,
+      flight_status_enabled: false,
+      airline_fares_enabled: false,
+      pricing_enabled: false,
+    };
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify(legacy), { status: 200 })));
+
+    await expect(loadSiteVisibility()).resolves.toEqual({
+      status: "ready",
+      features: {
+        ...legacy,
+        flight_search_enabled: false,
+        videos_enabled: false,
+        member_features_enabled: false,
+      },
+    });
   });
 
   it("fails closed when nothing has ever been read", async () => {

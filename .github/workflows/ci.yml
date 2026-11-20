@@ -506,6 +506,9 @@ jobs:
       ADMIN_EMAILS: admin-workspace-desktop@example.com,admin-workspace-mobile@example.com
       DATABASE_ADMIN_EMAILS: admin-workspace-desktop@example.com,admin-workspace-mobile@example.com
       ADMIN_DATABASE_MAINTENANCE_ENABLED: "true"
+      FLIGHT_SEARCH_ENABLED: "true"
+      VIDEOS_ENABLED: "true"
+      MEMBER_FEATURES_ENABLED: "true"
       DEPLOY_AGENT_SOCKET: /tmp/travel-scanner-e2e-agent.sock
       DEPLOY_AGENT_HMAC_KEY: ci-signed-e2e-agent-key-at-least-32-characters
       RELEASE_SHA: cccccccccccccccccccccccccccccccccccccccc

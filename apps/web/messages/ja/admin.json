@@ -837,6 +837,18 @@
       "pricing_enabled": {
         "label": "プランと利用パック",
         "help": "料金ナビゲーション、利用パック操作、/pricing ページを制御します。"
+      },
+      "flight_search_enabled": {
+        "label": "航空券・宿泊検索",
+        "help": "航空券・宿泊検索の導線やトップページの検索フォーム表示を制御します。"
+      },
+      "videos_enabled": {
+        "label": "動画ライブラリ",
+        "help": "ナビゲーションやトップページ、フッターの動画リンク表示を制御します。"
+      },
+      "member_features_enabled": {
+        "label": "会員機能・ログイン表示",
+        "help": "ログインボタン、保存、マイページ、マイ旅行導線、カード上の保存・旅行追加ボタンを制御します。管理者は /login から直接ログインできます。"
       }
     }
   },
@@ -2250,10 +2262,10 @@
     "loadError": "動画を読み込めませんでした",
     "retry": "再試行",
     "retryVideoTitle": "動画が停止しています",
-        "retryVideoHelp": "原因を修正したら、ワーカーにこの動画を一度だけ再試行させます。",
-        "retryVideoPending": "再試行を依頼しました。次の実行時に処理されます。",
-        "retryVideoButton": "この動画を再試行",
-        "retryVideoError": "再試行を依頼できませんでした: {message}",
+    "retryVideoHelp": "原因を修正したら、ワーカーにこの動画を一度だけ再試行させます。",
+    "retryVideoPending": "再試行を依頼しました。次の実行時に処理されます。",
+    "retryVideoButton": "この動画を再試行",
+    "retryVideoError": "再試行を依頼できませんでした: {message}",
     "pending": "判断待ち {count} 件",
     "noPendingShort": "判断待ちなし",
     "progress": "進捗 {done}/{total}",

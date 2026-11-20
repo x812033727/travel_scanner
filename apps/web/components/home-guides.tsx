@@ -103,6 +103,8 @@ export function HomeGuides({
   software = [],
   series = [],
   hotspotsEnabled = true,
+  flightSearchEnabled = true,
+  videosEnabled = true,
 }: {
   blocks: HomeGuideBlock[];
   news?: GuideSummary[];
@@ -111,6 +113,8 @@ export function HomeGuides({
   software?: GuideSummary[];
   series?: SeriesSummary[];
   hotspotsEnabled?: boolean;
+  flightSearchEnabled?: boolean;
+  videosEnabled?: boolean;
 }) {
   const rawLocale = useLocale();
   const locale = normalizeLocale(rawLocale);
@@ -165,12 +169,14 @@ export function HomeGuides({
             {t("title")}
           </h1>
         </div>
-        <Link
-          href="/search/new"
-          className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[var(--teal)] bg-[var(--surface)] px-4 py-2 text-sm font-semibold text-[var(--teal)] shadow-[var(--shadow-sm)] transition-all hover:-translate-y-0.5 hover:bg-[var(--teal-soft)]"
-        >
-          {flow.searchTrips}<ArrowRight size={17} className="shrink-0" aria-hidden />
-        </Link>
+        {flightSearchEnabled ? (
+          <Link
+            href="/search/new"
+            className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[var(--teal)] bg-[var(--surface)] px-4 py-2 text-sm font-semibold text-[var(--teal)] shadow-[var(--shadow-sm)] transition-all hover:-translate-y-0.5 hover:bg-[var(--teal-soft)]"
+          >
+            {flow.searchTrips}<ArrowRight size={17} className="shrink-0" aria-hidden />
+          </Link>
+        ) : null}
       </div>
       <p className="mt-2.5 max-w-3xl text-sm leading-6 text-[var(--muted)] sm:mt-3 sm:text-base sm:leading-7">
         {t("intro")}
@@ -233,13 +239,15 @@ export function HomeGuides({
             <Soup size={15} className="text-[var(--coral)]" aria-hidden />
             {t("quickFoodsShort")}
           </Link>
-          <Link
-            href="/videos"
-            className="inline-flex min-h-11 shrink-0 snap-start items-center gap-1.5 whitespace-nowrap rounded-full border border-[var(--line)] bg-[var(--surface)] px-3.5 text-[var(--ink)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
-          >
-            <Film size={15} className="text-[var(--teal)]" aria-hidden />
-            {t("quickVideosShort")}
-          </Link>
+          {videosEnabled ? (
+            <Link
+              href="/videos"
+              className="inline-flex min-h-11 shrink-0 snap-start items-center gap-1.5 whitespace-nowrap rounded-full border border-[var(--line)] bg-[var(--surface)] px-3.5 text-[var(--ink)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
+            >
+              <Film size={15} className="text-[var(--teal)]" aria-hidden />
+              {t("quickVideosShort")}
+            </Link>
+          ) : null}
           {news.length === 0 ? (
             <a
               href={`/${locale}/life/feed.xml`}

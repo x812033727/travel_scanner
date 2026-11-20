@@ -7,7 +7,7 @@ import { ThemeProvider } from "./theme-provider";
 import { MyDirectory } from "./community/home";
 import { frontendCopy } from "@/lib/frontend-navigation";
 
-const state = vi.hoisted(() => ({ enabled: true, community: false, posting: true, pathname: "/", trips: true }));
+const state = vi.hoisted(() => ({ enabled: true, community: false, posting: true, pathname: "/", trips: true, videos: true, memberFeatures: true, flightSearch: true }));
 vi.mock("@/lib/discovery", async (original) => ({ ...await original<typeof import("@/lib/discovery")>(), useDiscoveryStatus: () => ({ enabled: state.enabled, loading: false }) }));
 vi.mock("@/i18n/navigation", () => ({
   Link: ({ href, children, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => <a href={href} {...props}>{children}</a>,
@@ -15,10 +15,10 @@ vi.mock("@/i18n/navigation", () => ({
   useRouter: () => ({ push: vi.fn(), replace: vi.fn(), refresh: vi.fn() }),
 }));
 vi.mock("./community/provider", () => ({ useCommunity: () => ({ flags: { enabled: state.community, posting_enabled: state.posting }, unread: 2 }) }));
-vi.mock("./site-visibility-provider", () => ({ useSiteVisibility: () => ({ status: "ready", features: { trips_enabled: state.trips, hotspots_enabled: true, alerts_enabled: true, flight_status_enabled: true, airline_fares_enabled: true, pricing_enabled: true } }) }));
+vi.mock("./site-visibility-provider", () => ({ useSiteVisibility: () => ({ status: "ready", features: { trips_enabled: state.trips, hotspots_enabled: true, alerts_enabled: true, flight_status_enabled: true, airline_fares_enabled: true, pricing_enabled: true, flight_search_enabled: state.flightSearch, videos_enabled: state.videos, member_features_enabled: state.memberFeatures } }) }));
 vi.mock("./header-auth", () => ({ HeaderAuth: () => null }));
 
-beforeEach(() => { state.enabled = true; state.community = false; state.posting = true; state.pathname = "/"; state.trips = true; });
+beforeEach(() => { state.enabled = true; state.community = false; state.posting = true; state.pathname = "/"; state.trips = true; state.videos = true; state.memberFeatures = true; state.flightSearch = true; });
 
 describe("discovery navigation", () => {
   it("keeps four useful mobile destinations without requiring community activation", () => {
@@ -98,6 +98,21 @@ describe("discovery navigation", () => {
     const desktop = screen.getByRole("navigation");
     expect(within(desktop).getByRole("link", { name: frontendCopy("zh-TW").trips }).getAttribute("href")).toBe("/trips");
     expect(within(desktop).getByRole("link", { name: "收藏" }).getAttribute("href")).toBe("/explore/collections");
+  });
+
+  it("hides collections, trips, my, and videos in info-only mode while keeping editorial groups", async () => {
+    state.memberFeatures = false;
+    state.videos = false;
+    state.flightSearch = false;
+    render(<ThemeProvider><SiteNavigation /></ThemeProvider>);
+    await act(async () => {});
+    const desktop = screen.getByRole("navigation");
+    expect(within(desktop).getByRole("link", { name: frontendCopy("zh-TW").explore }).getAttribute("href")).toBe("/explore");
+    expect(within(desktop).queryByRole("link", { name: frontendCopy("zh-TW").collections })).toBeNull();
+    expect(within(desktop).queryByRole("link", { name: frontendCopy("zh-TW").trips })).toBeNull();
+    expect(within(desktop).queryByRole("link", { name: frontendCopy("zh-TW").my })).toBeNull();
+    expect(within(desktop).queryByRole("link", { name: "影片" })).toBeNull();
+    expect(within(desktop).getByRole("link", { name: "AI 應用" }).getAttribute("href")).toBe("/ai");
   });
 
   it("keeps the display card above the directory links", async () => {

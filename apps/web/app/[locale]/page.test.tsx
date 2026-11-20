@@ -9,7 +9,15 @@ import type { DiscoveryItem } from "@/lib/discovery";
 import type { InitialDiscoveryFeed } from "@/lib/discovery.server";
 import type { GuideSummary } from "@/lib/guides";
 
-const state = vi.hoisted(() => ({ enabled: false, loading: false, feed: null as InitialDiscoveryFeed, guides: vi.fn() }));
+import { openSiteVisibility, type SiteVisibility } from "@/lib/site-features";
+
+const state = vi.hoisted(() => ({
+  enabled: false,
+  loading: false,
+  feed: null as InitialDiscoveryFeed,
+  guides: vi.fn(),
+  visibility: null as SiteVisibility | null,
+}));
 
 vi.mock("next/navigation", () => ({ useRouter: () => ({ push: vi.fn(), refresh: vi.fn() }), useSearchParams: () => new URLSearchParams() }));
 vi.mock("@/i18n/navigation", () => ({
@@ -21,6 +29,9 @@ vi.mock("@/i18n/navigation", () => ({
 }));
 vi.mock("@/lib/discovery", async (original) => ({ ...await original<typeof import("@/lib/discovery")>(), useDiscoveryStatus: () => ({ enabled: state.enabled, loading: state.loading }) }));
 vi.mock("@/lib/discovery-status.server", () => ({ getDiscoveryStatus: async () => ({ enabled: state.enabled }) }));
+vi.mock("@/lib/site-visibility.server", () => ({
+  getSiteVisibility: async () => ({ status: "ready" as const, features: state.visibility ?? openSiteVisibility }),
+}));
 vi.mock("@/lib/discovery.server", async (original) => ({
   ...await original<typeof import("@/lib/discovery.server")>(), getInitialDiscoveryFeed: async () => state.feed,
 }));

@@ -54,6 +54,20 @@ describe("the home page's portal and guide sections", () => {
     expect(within(screen.getByTestId("home-guides-money")).getByRole("link", { name: /信用卡入門/ }).getAttribute("href")).toBe("/life/credit-card-basics");
   });
 
+  it("hides flights & stays search CTA and videos shortcut when those switches are off", () => {
+    render(
+      <HomeGuides
+        blocks={blocks([article("tokyo-first-trip", "howto", "東京第一次自由行")], [], [])}
+        flightSearchEnabled={false}
+        videosEnabled={false}
+      />,
+    );
+    expect(screen.queryByRole("link", { name: "搜尋機票與住宿" })).toBeNull();
+    expect(screen.queryByRole("link", { name: "影音專區" })).toBeNull();
+    expect(screen.getByRole("search").getAttribute("action")).toBe("/zh-TW/search/articles");
+    expect(screen.getByRole("link", { name: "城市美食" }).getAttribute("href")).toBe("/foods");
+  });
+
   it("renders the hero lead story, chronological daily news desk, trending rail, and interactive category filter tabs", () => {
     const news = [
       article("gpt-5-release-20261112", "life", "GPT-5.5 推出免費額度與 API 降價總整理", {

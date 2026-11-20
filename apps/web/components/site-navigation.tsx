@@ -26,15 +26,16 @@ export function SiteNavigation() {
     : liveDiscovery;
   const copy = frontendCopy(useLocale());
   const pathname = usePathname();
+  const memberFeaturesVisible = featureVisible(visibility, "member_features");
   return (
     <>
       <MobileNav />
       <nav aria-label={t("primaryLabel")} className="hidden items-center justify-between gap-5 text-sm text-[var(--muted)] lg:flex">
-        {discovery.loading ? <span aria-hidden className="h-11 w-64 rounded-xl bg-[var(--paper)]" /> : discovery.enabled ? frontendDestinations.filter((item) => !item.feature || featureVisible(visibility, item.feature)).map((item) => <Link key={item.key} href={item.href} aria-current={frontendActive(item.key, pathname) ? "page" : undefined} className="frontend-nav-link inline-flex min-h-11 items-center rounded-xl px-4 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--teal)]">{copy[item.key]}</Link>) : community.flags.enabled ? <>
+        {discovery.loading ? <span aria-hidden className="h-11 w-64 rounded-xl bg-[var(--paper)]" /> : discovery.enabled ? frontendDestinations.filter((item) => (!item.feature || featureVisible(visibility, item.feature)) && (item.key !== "trips" || memberFeaturesVisible)).map((item) => <Link key={item.key} href={item.href} aria-current={frontendActive(item.key, pathname) ? "page" : undefined} className="frontend-nav-link inline-flex min-h-11 items-center rounded-xl px-4 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--teal)]">{copy[item.key]}</Link>) : community.flags.enabled ? <>
           <Link href="/explore" className="inline-flex min-h-11 items-center">{tc("exploreTravel")}</Link>
           <Link href="/community" className="inline-flex min-h-11 items-center">{tc("title")}</Link>
           <Link href="/pet-friendly" className="inline-flex min-h-11 items-center">{tc("pets")}</Link>
-          {featureVisible(visibility, "trips") && <Link href="/trips" className="inline-flex min-h-11 items-center">{tc("myTrips")}</Link>}
+          {memberFeaturesVisible && featureVisible(visibility, "trips") && <Link href="/trips" className="inline-flex min-h-11 items-center">{tc("myTrips")}</Link>}
           {community.flags.posting_enabled && <Link href="/community/new" className="inline-flex min-h-11 items-center">{tc("publish")}</Link>}
           <Link href="/community/messages" className="inline-flex min-h-11 items-center">{tc("messages")}{community.unread > 0 ? ` (${community.unread})` : ""}</Link>
         </> : null}
@@ -44,7 +45,7 @@ export function SiteNavigation() {
             2026-09-11-no-sign-in-entry-in-discovery. Only the travel tools stay out of those
             two modes, which carry their own trips and tools links. */}
         {!discovery.loading && navGroups
-          .filter((group) => !group.travelToolsOnly || (!discovery.enabled && !community.flags.enabled))
+          .filter((group) => (!group.feature || featureVisible(visibility, group.feature)) && (!group.travelToolsOnly || (!discovery.enabled && !community.flags.enabled)))
           .map((group) => <NavMenu key={group.key} group={group} />)}
         {/* No ThemeSwitcher here: SiteHeader now renders one unconditionally, and a
             second copy in this branch put two identical Appearance selects side by side

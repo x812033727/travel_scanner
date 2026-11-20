@@ -590,6 +590,9 @@ async def test_layout_update_records_changed_fields_and_effective_visibility(
             "flight_status_enabled": True,
             "airline_fares_enabled": True,
             "pricing_enabled": True,
+            "flight_search_enabled": False,
+            "videos_enabled": False,
+            "member_features_enabled": False,
         },
     }
 
