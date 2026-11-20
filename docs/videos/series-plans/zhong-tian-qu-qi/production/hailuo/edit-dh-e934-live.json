@@ -116,13 +116,6 @@
    "to": "s26"
   },
   {
-   "file": "water-s23",
-   "at": "s25",
-   "off": -0.2,
-   "gain": -4,
-   "to": "s25"
-  },
-  {
    "file": "wind1",
    "at": "s27",
    "off": -0.4,
@@ -203,8 +196,15 @@
    "file": "water-s23",
    "at": "s22",
    "off": 3.0,
-   "gain": -6,
+   "gain": 2,
    "to": "s22"
+  },
+  {
+   "file": "water-s23",
+   "at": "s25",
+   "off": -0.6,
+   "gain": -4,
+   "to": "s25"
   },
   {
    "file": "pin-s03",
@@ -350,6 +350,14 @@
    "from": 0,
    "af": "rubberband=pitch=0.95:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
+  "s06": {
+   "from": 0,
+   "af": "rubberband=pitch=1.06:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s30": {
+   "from": 0,
+   "af": "rubberband=pitch=1.12:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
   "s10": {
    "from": 0,
    "af": "asetrate=33600,aresample=48000,atempo=1.428571,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
@@ -372,11 +380,11 @@
   },
   "s15": {
    "from": 0,
-   "af": "asetrate=40320,aresample=48000,atempo=1.190476,volume=-1.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "aselect='not(between(t,4.33,4.46))',asetpts=N/SR/TB,asetrate=43200,aresample=48000,atempo=1.111111,volume=-1.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s17": {
    "from": 0,
-   "af": "asetrate=36000,aresample=48000,atempo=1.333333,volume=-1.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "asetrate=37440,aresample=48000,atempo=1.282051,volume=-1.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s36": {
    "from": 0,
