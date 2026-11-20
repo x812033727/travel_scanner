@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-20-pool-8084",
+  "revision": "2026-11-20-pool-8110",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "categories": [
     "物理化學與日常材料",
@@ -12,22 +12,22 @@
     "建築交通與商業制度"
   ],
   "counts": {
-    "raw_records": 8548,
-    "canonical_questions": 8388,
-    "eligible_candidates": 8195,
-    "selected_candidates": 8084,
+    "raw_records": 8574,
+    "canonical_questions": 8414,
+    "eligible_candidates": 8221,
+    "selected_candidates": 8110,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 9101,
-    "current_research_source_urls": 6173,
-    "selected_source_urls": 7101,
-    "new_suggestions_not_added": 3638,
+    "source_urls": 9140,
+    "current_research_source_urls": 6212,
+    "selected_source_urls": 7138,
+    "new_suggestions_not_added": 3650,
     "high_similarity_pending": 0,
     "approved_scripts": 0,
     "by_category": {
       "物理化學與日常材料": {
-        "canonical": 1968,
-        "selected": 1938
+        "canonical": 1988,
+        "selected": 1958
       },
       "生物動物與植物": {
         "canonical": 1550,
@@ -38,20 +38,20 @@
         "selected": 985
       },
       "數位科技與通訊工程": {
-        "canonical": 1523,
-        "selected": 1443
+        "canonical": 1524,
+        "selected": 1444
       },
       "飲食與廚房科學": {
-        "canonical": 541,
-        "selected": 535
+        "canonical": 543,
+        "selected": 537
       },
       "人體感官與日常行為": {
-        "canonical": 606,
-        "selected": 594
+        "canonical": 608,
+        "selected": 596
       },
       "建築交通與商業制度": {
-        "canonical": 1212,
-        "selected": 1050
+        "canonical": 1213,
+        "selected": 1051
       }
     }
   },
@@ -2257,6 +2257,18 @@
       "sha256": "2fb35848539d194b98576675058c97b8b43b8fa82711efc793eada808a05c8e0"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave144-craft-20261120.json",
+      "sha256": "517acc1722e1c5740514728810a825b994b670997deed7fec53fbae976102709"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave144-everyday-20261120.json",
+      "sha256": "a0edef459b70ea4c1c2a47e9cf35fb8753df0759aba53cf95c5a70bf3f284671"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave144-research-20261120.json",
+      "sha256": "e086c3b5317f0f5cf2353c9cf2c7ea485fba3c6c516f0ad3ecd2e562233c0675"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json",
       "sha256": "e605e7db36362ae0b323a39fa3bc79d43a6a8c54584a02a66764aeb5495e4bfb"
     },
@@ -3522,12 +3534,12 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "eb3a312e94d7c527c084e3c1dbbd6cbd80a0b8eea7c67645a7e867230a060816"
+      "sha256": "bf8910d95cc7cec9daf27399ffa28ffb7d315ed7b5e047fc8335e9778e93d23f"
     }
   ],
   "sources": {
     "file": "pool-sources.json",
-    "count": 9101
+    "count": 9140
   },
   "candidates": [
     {
@@ -167858,6 +167870,1284 @@
       "question_variants": [],
       "provenance_ids": [
         "K143-0214"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0101",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "把這枚十八世紀花形胸針別在衣襟上，怎麼人一走動，連扣得好好的花朵都會發顫？",
+      "mechanism_key": "x144.craft.trembling_floral_spring",
+      "answer_target": "Powerhouse 的胸針能拆成兩束，花冠下面有細線繞成的彈簧。胸針扣在衣服上，花仍會隨身體移動而晃。V&A 收藏的另一束花飾也把部分鑽石花裝在彈簧上，讓花一動就閃。",
+      "scope": "兩館各有一件作品。Powerhouse 記為法國或英國，不指定哪國工匠，也不把花上的材料全稱為鑽石。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "慢動作並排自製兩朵花，再畫一條線標出固定扣和可動花頭的位置。",
+        "payoff": "扣針固定在衣襟上，細線繞成的彈簧卻讓花隨腳步晃動。",
+        "seconds": [
+          26,
+          42
+        ]
+      },
+      "source_locator": "X144C-S02 Physical Description，two part ribbon-tied floral spray、wire springs。X144C-S03 19th-century jewellery，M.115-1951 的配圖與上一段 spring fastening。",
+      "notes": "K130-0405 用鋼釘的切面使佩鏈閃光，本題的花能動，是花頭裝在彈簧上。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製器形和結構，以紙模型或自製道具示意。原藏品影像與機構示範先連結，另用前逐件查權。",
+      "origin": "wave144-craft-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-b87672d9f345a230",
+          "origin": "wave144-craft-20261120",
+          "locator": "X144C-S02 Physical Description，two part ribbon-tied floral spray、wire springs。X144C-S03 19th-century jewellery，M.115-1951 的配圖與上一段 spring fastening。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-962aadc0a92ce640",
+          "origin": "wave144-craft-20261120",
+          "locator": "X144C-S02 Physical Description，two part ribbon-tied floral spray、wire springs。X144C-S03 19th-century jewellery，M.115-1951 的配圖與上一段 spring fastening。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-craft-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0101"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0102",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "這只日本鐵盒的工法叫「布目象嵌」。花紋下面真有一小片布，還是鐵面自己能留住金屬薄片？",
+      "mechanism_key": "x144.craft.nunome_crosshatching_on_iron",
+      "answer_target": "市川正美的鐵盒把布目象嵌列作其工法。匠人先從不同方向刻鐵面，留下像織布交會的細密紋路，金屬薄片便可固定其上。布目形容的是鐵上刻出的交叉紋。",
+      "scope": "畫的是工法示意，不從照片猜本件每一片的金屬種類。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用瓦楞紙做出鐵底、交紋、薄片三層示意，側面顯示花紋下方的支承。",
+        "payoff": "匠人從不同方向把鐵面刻出密紋，金屬薄片便有了可附著的表面。工法的「布」指的是刻紋的樣子。",
+        "seconds": [
+          28,
+          44
+        ]
+      },
+      "source_locator": "X144C-S04 2018、Techniques Used / Metal overlay、cloth-pattern inlay。X144C-S05 展覽說明首段 Nunome inlay；incised in various directions。X144C-S01 作品標題、作者及 2018 年出品。",
+      "notes": "K130-0406 把金箔加熱加壓貼在銀上；這裡使薄片附在鐵面的是多方向刻出的紋路。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製器形和結構，以紙模型或自製道具示意。原藏品影像與機構示範先連結，另用前逐件查權。",
+      "origin": "wave144-craft-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-ffc977dc85976e3c",
+          "origin": "wave144-craft-20261120",
+          "locator": "X144C-S04 2018、Techniques Used / Metal overlay、cloth-pattern inlay。X144C-S05 展覽說明首段 Nunome inlay；incised in various directions。X144C-S01 作品標題、作者及 2018 年出品。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-a91d50906ac5d684",
+          "origin": "wave144-craft-20261120",
+          "locator": "X144C-S04 2018、Techniques Used / Metal overlay、cloth-pattern inlay。X144C-S05 展覽說明首段 Nunome inlay；incised in various directions。X144C-S01 作品標題、作者及 2018 年出品。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-9231daa285428ba2",
+          "origin": "wave144-craft-20261120",
+          "locator": "X144C-S04 2018、Techniques Used / Metal overlay、cloth-pattern inlay。X144C-S05 展覽說明首段 Nunome inlay；incised in various directions。X144C-S01 作品標題、作者及 2018 年出品。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-craft-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0102"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0103",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "這枚中世紀銀胸針只有兩排橫溝發黑。要是把黑線當作污痕擦掉，可能正好擦掉了什麼？",
+      "mechanism_key": "x144.craft.niello_filled_grooves",
+      "answer_target": "威爾斯國家博物館的藏品記錄指出，這兩組橫向刻槽填的是 niello。這種鑲黑材料含金屬硫化物，可以在淺色金屬上留下有光澤的深色線條。",
+      "scope": "研究者分析的是其他器物，尚無本件填料的精確組成；不提供清潔或鑑定古董的方法。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "在自製銀灰紙環畫出兩處刻溝剖面，以深色紙條示意填料的位置。",
+        "payoff": "兩排黑線是刻槽裡的鑲黑裝飾；館方在紀錄裡明寫填入 niello。",
+        "seconds": [
+          28,
+          43
+        ]
+      },
+      "source_locator": "X144C-S06 館藏 2015.25H，圖說首段 two clusters of transverse grooves。X144C-S07 Abstract、Introduction 及 Composition，本刊作者對九件拜占庭銀器取十二份樣本。",
+      "notes": "K130-0402 的獅鬃槽裡燒的是有色琺瑯。這枚銀針的兩組深線是另一種已識別的硫化物填料。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製器形和結構，以紙模型或自製道具示意。原藏品影像與機構示範先連結，另用前逐件查權。",
+      "origin": "wave144-craft-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-c8864b5dc4e53889",
+          "origin": "wave144-craft-20261120",
+          "locator": "X144C-S06 館藏 2015.25H，圖說首段 two clusters of transverse grooves。X144C-S07 Abstract、Introduction 及 Composition，本刊作者對九件拜占庭銀器取十二份樣本。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-464c0bceab86c433",
+          "origin": "wave144-craft-20261120",
+          "locator": "X144C-S06 館藏 2015.25H，圖說首段 two clusters of transverse grooves。X144C-S07 Abstract、Introduction 及 Composition，本刊作者對九件拜占庭銀器取十二份樣本。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-craft-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0103"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0104",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "要在溫網女單獎盤找 1957、1958 和 2016 三年的冠軍，怎麼把盤子翻面還少找到一個？",
+      "mechanism_key": "x144.craft.wimbledon_winners_three_locations",
+      "answer_target": "全英俱樂部的獎盃資料把刻名分成三段。1884 至 1957 年的冠軍刻在正面，從 1958 年改刻背面，2016 年起改刻到底座。刻字師的現場訪談也記下 2026 年女單冠軍的名字刻在底座。",
+      "scope": "說的是賽會頒獎所用獎盤的刻名位置。首頒年份另為 1886，早期冠軍可追刻。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "從正面翻到盤背，再拉遠看底座，三張年份卡最後都能對上。",
+        "payoff": "1957 看盤面，1958 要翻面，2016 則要看盤下方的底座。",
+        "seconds": [
+          30,
+          47
+        ]
+      },
+      "source_locator": "X144C-S08 Ladies’ Singles Championship 左欄，1884–1957／1958／2016；diamond-shaped mark 764。X144C-S09 現場署名訪問中 draw on the letters by hand 及 It was James who engraved 段落。",
+      "notes": "K130-0407 問從模具得到什麼金屬複本；本題按賽會記錄定位不同年的刻名，重點不在電鑄。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製器形和結構，以紙模型或自製道具示意。原藏品影像與機構示範先連結，另用前逐件查權。",
+      "origin": "wave144-craft-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-058b979ca87194ea",
+          "origin": "wave144-craft-20261120",
+          "locator": "X144C-S08 Ladies’ Singles Championship 左欄，1884–1957／1958／2016；diamond-shaped mark 764。X144C-S09 現場署名訪問中 draw on the letters by hand 及 It was James who engraved 段落。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-785a0d7296e6c705",
+          "origin": "wave144-craft-20261120",
+          "locator": "X144C-S08 Ladies’ Singles Championship 左欄，1884–1957／1958／2016；diamond-shaped mark 764。X144C-S09 現場署名訪問中 draw on the letters by hand 及 It was James who engraved 段落。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-craft-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0104"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0105",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "十八世紀燭臺後方一圈圈花紋會映出火光。做成這些捲花的材料，怎麼會是一條條紙？",
+      "mechanism_key": "x144.craft.quillwork_sconce_mica",
+      "answer_target": "Eunice Deering 用窄紙條捲成小卷，彼此並排黏在深框裡成花。這件燭臺的紙飾上覆著雲母，燭火在框前一亮，背後便能反光。倫敦博物館的另一件卷紙作品也記有用紙仿金銀花絲的傳統。",
+      "scope": "只把雲母層指給 Deering 的燭臺，不推成每件衍紙都有雲母。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "以紙條重建一角，小手電筒照向紙花和示意雲母的反光片；不必點火。",
+        "payoff": "窄紙條決定花紋的形狀，上面覆的雲母把燭光映回來。",
+        "seconds": [
+          27,
+          43
+        ]
+      },
+      "source_locator": "X144C-S10 物件說明首段及 Artwork Details，Eunice Deering、mica-covered quillwork。X144C-S11 圖說 A quilled wax full-length figure、Fligree or quillwork。",
+      "notes": "K130-0405 的亮點來自鋼釘的切面；本件的花形由紙捲組成，反光層另有雲母。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製器形和結構，以紙模型或自製道具示意。原藏品影像與機構示範先連結，另用前逐件查權。",
+      "origin": "wave144-craft-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-61bf8663e9af7662",
+          "origin": "wave144-craft-20261120",
+          "locator": "X144C-S10 物件說明首段及 Artwork Details，Eunice Deering、mica-covered quillwork。X144C-S11 圖說 A quilled wax full-length figure、Fligree or quillwork。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-a3a3705b46d12c52",
+          "origin": "wave144-craft-20261120",
+          "locator": "X144C-S10 物件說明首段及 Artwork Details，Eunice Deering、mica-covered quillwork。X144C-S11 圖說 A quilled wax full-length figure、Fligree or quillwork。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-craft-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0105"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0106",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "十七世紀這塊小鳥鑲板上的羽色，是拼好後才畫上去，還是選石片時就得找對花紋？",
+      "mechanism_key": "x144.craft.pietre_dure_bird_stone_veining",
+      "answer_target": "蘇恩博物館這塊鳥圖用有色硬石與石材拼成，各片邊界仍可辨認。館方指出，鳥的羽色讓匠人用上不同石料天然的色澤和紋脈。同時期另一座收藏櫃的石製水果，也借用了斑點與石紋。",
+      "scope": "S60 的確切工坊未定；不替每片石材認礦種，也不說所有鳥圖都同工同料。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "移動紙框取不同色紋，再把挑好的幾片重新拼出一隻鳥，保留接縫。",
+        "payoff": "羽毛圖案借用了不同石片本身的顏色和紋脈。挑哪一段石紋，會改變鳥的模樣。",
+        "seconds": [
+          28,
+          44
+        ]
+      },
+      "source_locator": "X144C-S12 S60，實物描述及 Curatorial note 的 colours and veining。X144C-S13 Della Rovere Jewelry Cabinet，veining and mottling of the hardstone fruit。",
+      "notes": "K139-0105 的桌面以石膏填槽仿石片。S60 的花紋確由不同石片組成，取用各自的色紋。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製器形和結構，以紙模型或自製道具示意。原藏品影像與機構示範先連結，另用前逐件查權。",
+      "origin": "wave144-craft-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-56b12a6144a8d6b4",
+          "origin": "wave144-craft-20261120",
+          "locator": "X144C-S12 S60，實物描述及 Curatorial note 的 colours and veining。X144C-S13 Della Rovere Jewelry Cabinet，veining and mottling of the hardstone fruit。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-61fa1ef522f51578",
+          "origin": "wave144-craft-20261120",
+          "locator": "X144C-S12 S60，實物描述及 Curatorial note 的 colours and veining。X144C-S13 Della Rovere Jewelry Cabinet，veining and mottling of the hardstone fruit。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-craft-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0106"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0107",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "這件腰掛工具匣像黃金，館方在材料欄卻寫 pinchbeck。究竟哪兩種金屬能配出這種金色？",
+      "mechanism_key": "x144.craft.pinchbeck_toolcase_alloy",
+      "answer_target": "倫敦博物館的工具匣用稱為 pinchbeck 的銅鋅合金做出近似金的顏色，另外鑲有帶紅斑的血石。西班牙衣裝博物館也指出這類仿金合金的比例可變。",
+      "scope": "不憑外觀推英國這件的精確百分比，也不以金屬色判定所有同式佩具的真偽。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "畫工具匣剖面，把「銅＋鋅」放在合金本體，「紅色斑點」留給嵌石。",
+        "payoff": "工具匣的金色來自銅與鋅形成的合金，另嵌的深色血石才有紅斑。",
+        "seconds": [
+          26,
+          42
+        ]
+      },
+      "source_locator": "X144C-S14 館藏 object-128513，Description 及材料、配件清單。X144C-S15 藏品說明 Pinchbeck is a copper and zinc alloy in varying proportions 段。",
+      "notes": "K130-0404 的銀外觀來自銅芯上另包一層銀；這個工具匣的仿金色來自銅鋅合金本體。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製器形和結構，以紙模型或自製道具示意。原藏品影像與機構示範先連結，另用前逐件查權。",
+      "origin": "wave144-craft-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-9652a2750f8c1f91",
+          "origin": "wave144-craft-20261120",
+          "locator": "X144C-S14 館藏 object-128513，Description 及材料、配件清單。X144C-S15 藏品說明 Pinchbeck is a copper and zinc alloy in varying proportions 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-1c26f3304693b690",
+          "origin": "wave144-craft-20261120",
+          "locator": "X144C-S14 館藏 object-128513，Description 及材料、配件清單。X144C-S15 藏品說明 Pinchbeck is a copper and zinc alloy in varying proportions 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-craft-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0107"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0001",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "用葵花籽醬做的餅乾，放涼切開竟然是綠色。麵團裡沒加抹茶，是哪一種原來就在瓜子裡的成分變了？",
+      "mechanism_key": "x144.everyday.sunflower_butter_green_cookie",
+      "answer_target": "葵花籽裡的綠原酸在偏鹼的環境中氧化，後續與蛋白質等成分反應可生成綠色衍生物。SunButter 說配方裡的小蘇打或泡打粉可能令成品放涼時發綠。研究者改用不同蛋料與烘烤溫度，看到切面綠色深淺也跟著變。",
+      "scope": "限特定葵花籽醬烘焙品；不憑顏色判斷任何隔夜點心是否可食。不將溫度、蛋料兩個因素合在一起當單一因果。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把「用蛋、較低烤溫」和「用香蕉替蛋、較高烤溫」的切面明暗畫成兩張示意卡，比對哪一組的內部綠色較深。",
+        "payoff": "一半是放涼後的綠色切面，另一半是配方與溫度的試驗。造成綠色的是葵花籽本身的綠原酸在偏鹼環境下參與反應。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "X144E-S01 Help! My cookies turned green, what happened?。X144E-S02 原研究摘要，兩種溫度與三種蛋料的試驗與對照結果。",
+      "notes": "K86-003 等查蘋果切口的酵素褐變；K85-006 看葵花油氧化對餅乾的影響。此題看含蛋白質的葵花籽醬餅乾在偏鹼條件下變綠。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "僅用自繪切面及標籤。",
+      "origin": "wave144-everyday-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-c1440de6ea7876d8",
+          "origin": "wave144-everyday-20261120",
+          "locator": "X144E-S01 Help! My cookies turned green, what happened?。X144E-S02 原研究摘要，兩種溫度與三種蛋料的試驗與對照結果。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-99259ff3c4101125",
+          "origin": "wave144-everyday-20261120",
+          "locator": "X144E-S01 Help! My cookies turned green, what happened?。X144E-S02 原研究摘要，兩種溫度與三種蛋料的試驗與對照結果。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-everyday-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0002",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "游泳後，Apple Watch 上還留著水滴圖示。按住數位錶冠解鎖，那一串提示音除了告訴你螢幕可以碰了，還會做什麼？",
+      "mechanism_key": "x144.everyday.water_lock_speaker_ejection",
+      "answer_target": "水中鎖定開啟時先停用螢幕觸控，避免游泳時誤按。解除時手錶播放一系列聲音來排出揚聲器殘水，螢幕才恢復平常的觸控；兩步分別處理輸入與揚聲器內的水。",
+      "scope": "依 Apple 的支援版本，watchOS 8 或之前須轉動錶冠；較新系統按住。防潑水等級另依機型。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把「防止誤觸」和「排揚聲器殘水」兩張卡交給觀眾，請依開啟／解除貼回手錶示意畫。",
+        "payoff": "水滴圖示亮起時停用觸控；解除後播放的聲音把積水從揚聲器排出。",
+        "seconds": [
+          23,
+          37
+        ]
+      },
+      "source_locator": "X144E-S03 開啟與關閉水中鎖定，含系統版本尾註。X144E-S04 What if my Apple Watch gets wet?、speaker 步驟。",
+      "notes": "K143-0005 是佩戴者說話後 AirPods 媒體變小；本題用手錶解鎖播放聲音來清除揚聲器積水。#2182 N9052 是耳機接口產業變遷。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪手錶、圖示、揚聲器與排水位置。",
+      "origin": "wave144-everyday-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-b79f32f8312cc030",
+          "origin": "wave144-everyday-20261120",
+          "locator": "X144E-S03 開啟與關閉水中鎖定，含系統版本尾註。X144E-S04 What if my Apple Watch gets wet?、speaker 步驟。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-c11d4d47ee16e275",
+          "origin": "wave144-everyday-20261120",
+          "locator": "X144E-S03 開啟與關閉水中鎖定，含系統版本尾註。X144E-S04 What if my Apple Watch gets wet?、speaker 步驟。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-everyday-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0003",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "同一支 F 調法國號，演奏者的右手本來就放在喇叭口。樂譜突然印了一個「＋」，這隻手接下來要怎麼動，聲音又會怎麼變？",
+      "mechanism_key": "x144.everyday.f_horn_hand_stop",
+      "answer_target": "Yamaha 的演奏示範把「＋」標為完全塞音：右手將喇叭口封緊，聲音出現尖銳金屬色彩；依該頁示範，全塞音約比原音高半音。標「0」回到正常手位。略遮與完全封住產生的效果不同。",
+      "scope": "音高差以廠方演奏說明及示意 F 號為限，常態手位不等於完全塞住，也不把手的位置當作唯一的調音方式。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "自畫一行譜，只標「＋」「0」與兩張右手姿勢；先找應封緊的位置，再聽演奏者示範一般音與全塞音。",
+        "payoff": "右手把喇叭口封緊就是「＋」。依這個 F 號示範，聲音帶金屬感、約高半音，到「0」再回到正常手位。",
+        "seconds": [
+          28,
+          43
+        ]
+      },
+      "source_locator": "X144E-S05 What is the hand-stopping technique? 樂譜與「＋」「0」文字。X144E-S06 The allure of the horn；The F single horn。",
+      "notes": "K143-0003 鋼片琴藉匹配的低音共鳴箱增響；這題看演奏者右手與 ＋／0 如何改變銅管音色。同輪奇聞的 Yamaha 音叉廠徽查外圈、M 字。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自己繪簡譜和手形，若使用演奏錄音，另核授權。",
+      "origin": "wave144-everyday-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-e1a90ea6cf30f3dc",
+          "origin": "wave144-everyday-20261120",
+          "locator": "X144E-S05 What is the hand-stopping technique? 樂譜與「＋」「0」文字。X144E-S06 The allure of the horn；The F single horn。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5b196cf3d7e86a5a",
+          "origin": "wave144-everyday-20261120",
+          "locator": "X144E-S05 What is the hand-stopping technique? 樂譜與「＋」「0」文字。X144E-S06 The allure of the horn；The F single horn。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-everyday-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0004",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "兩件外套都把拉鍊拉到頂，其中一件在拉頭上方還縫了頂小布帽。換成 YKK AquaGuard 的橋形上止，為什麼可以省掉這塊布？",
+      "mechanism_key": "x144.everyday.bridge_zipper_top_stop",
+      "answer_target": "YKK 把這款拉鍊的上止做成一道跨在頂端的結構，保護拉鍊頂端可能進水的位置，讓服裝可以省去原本覆在那裡的 zipper garage，也讓拉片較容易摸到。",
+      "scope": "限定 YKK 這款 AquaGuard Coil with Bridge Top Stop。原廠稱降低頂端進水的可能，未提供衣服整體耐水壓或浸水承諾。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "畫衣領、拉頭與上止的放大圖，將兩張布料模型互換，猜猜橋形構件代替的布要縫在哪裡。",
+        "payoff": "製衣廠能省下的是拉鍊上端的小布罩，橋形上止本身已遮護這一處。",
+        "seconds": [
+          27,
+          41
+        ]
+      },
+      "source_locator": "X144E-S07 商品首圖與 Bridge Top Stop 說明。",
+      "notes": "K115-0004 以鎖針卡進鏈牙解釋拉片放平後止滑。這題處理端部的水路與衣帽；#2182 N9014 是黏扣帶名稱保護。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪衣領剖面、上止及布罩示意。",
+      "origin": "wave144-everyday-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-35c709b1513464ee",
+          "origin": "wave144-everyday-20261120",
+          "locator": "X144E-S07 商品首圖與 Bridge Top Stop 說明。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-everyday-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0005",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "玩 Euchre 用一副沒有鬼牌的牌，約定這副牌的王牌是方塊。桌上已經出了方塊 A，為什麼看起來屬於另一個花色的紅心 J 能勝過它？",
+      "mechanism_key": "x144.everyday.euchre_left_bower",
+      "answer_target": "發牌後確定方塊作王牌，方塊 J 是最高王牌；與它同為紅色的紅心 J 依規則成為第二高王牌，排在方塊 A 前。另兩個黑花色的 J 沒有這個身分。",
+      "scope": "採 Bicycle 刊出的無鬼牌玩法。若約定加鬼牌，鬼牌可成最高王牌；不要把此序推到橋牌或所有吃墩遊戲。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用方塊 A、紅心 J 和方塊 J 排一個三張牌的名次，再翻出黑桃 J 問能不能拿來代替紅心 J。",
+        "payoff": "方塊 J 最大，紅心 J 排第二，方塊 A 再下一位。與王牌同色的另一張 J 在這局會被當作王牌。",
+        "seconds": [
+          26,
+          42
+        ]
+      },
+      "source_locator": "X144E-S08 Rank of Cards，以 diamonds 作 trump 的例子；The Play。",
+      "notes": "K122-0010 的 Cribbage 公共起始牌加入手牌計分，K143-0006 的 FIDE 看觸棋先後；這題看另一花色同色 J 在已定王牌中的身分。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "用點數與花色自畫三張牌。",
+      "origin": "wave144-everyday-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-edddd1da5ba24532",
+          "origin": "wave144-everyday-20261120",
+          "locator": "X144E-S08 Rank of Cards，以 diamonds 作 trump 的例子；The Play。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-everyday-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0006",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "排球在網前被合法攔了一下，球彈回攔網隊自己這邊。場地從室內換到沙灘，同一隊還能打三下再送回去嗎？",
+      "mechanism_key": "x144.everyday.indoor_beach_block_count",
+      "answer_target": "USA Volleyball 的室內規則把攔網觸球排除在三次擊球外，之後還有三次；沙灘規則把攔網觸球列作第一次，只剩兩次。兩種規則都允許剛才碰到攔網的球員作下一次擊球。",
+      "scope": "限 2025–27 USAV 兩本規則中的合法攔網，球仍在比賽中；不把嘗試攔網但沒碰到球算入。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "兩邊各放三枚計數籌碼，先只演攔網觸球和反彈，請觀眾決定哪一邊現在就要拿走第一枚。",
+        "payoff": "在室內，合法的攔網觸球後還可再打三次。沙灘排球的攔網觸球已用掉一次，只剩兩次。",
+        "seconds": [
+          29,
+          46
+        ]
+      },
+      "source_locator": "X144E-S09 14.4.1–14.4.2，Block and Team Hits。X144E-S10 14.4.1–14.4.2，Block and Team Hits。",
+      "notes": "K143-0007 的掃瓶桿與排瓶機觸瓶改變保齡球得分；本題判兩本排球規則的觸球次數。#2182 N9088 是計算機位數和保齡球計分的產品沿革。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自錄動作或以手、球與三枚紙籌碼演示。",
+      "origin": "wave144-everyday-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-f49c9dfb13bf7de3",
+          "origin": "wave144-everyday-20261120",
+          "locator": "X144E-S09 14.4.1–14.4.2，Block and Team Hits。X144E-S10 14.4.1–14.4.2，Block and Team Hits。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-052478266344ea52",
+          "origin": "wave144-everyday-20261120",
+          "locator": "X144E-S09 14.4.1–14.4.2，Block and Team Hits。X144E-S10 14.4.1–14.4.2，Block and Team Hits。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-everyday-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0007",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "不另加果膠的水果汁凍，從海邊搬到海拔 2,000 呎的廚房。糖液的起鍋溫度要調低，已裝罐的處理時間又該怎麼改？",
+      "mechanism_key": "x144.everyday.jelly_altitude_two_tables",
+      "answer_target": "美國國家家庭食品保存中心在表三列的是煮果汁糖液的凝膠終點，海平面華氏 220 度，2,000 呎為 216 度。表一列的是分裝後的沸水處理時間，該規格罐在海平面列 5 分鐘，2,000 呎列 10 分鐘。兩張表量的是不同步驟。",
+      "scope": "只讀這份完整程序中標明的不另添果膠、熱裝半品脫或一品脫罐。數字不替代完整配方，不外推其他果醬或容器。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "畫一個煮鍋和一個已裝罐的沸水鍋，讓觀眾把溫度計、計時器各放到表格正確那一側，再讀出兩地四個數字。",
+        "payoff": "從海平面到海拔 2,000 呎，煮果汁糖液判斷凝膠終點要從華氏 220 度改讀 216 度；另一鍋沸水處理熱裝罐，表列時間則由 5 分鐘變 10 分鐘。",
+        "seconds": [
+          32,
+          49
+        ]
+      },
+      "source_locator": "X144E-S11 Temperature test、Table 1、Table 3。",
+      "notes": "D2024–D2026 談果膠種類、糖與鈣如何影響凝膠；這題辨認同一份製程中「糖液凝膠終點」與「裝罐後沸水處理」的兩張海拔表。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪兩鍋、玻璃罐和海拔表，不重製整份配方。",
+      "origin": "wave144-everyday-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-6c8bb23126cd04d9",
+          "origin": "wave144-everyday-20261120",
+          "locator": "X144E-S11 Temperature test、Table 1、Table 3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-everyday-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0201",
+      "domain": "物理化學與日常材料",
+      "category": "物理化學與日常材料",
+      "question": "同是 1623 年印的《理查二世》第 45 頁，報信人開口之後，為什麼一本裡的國王回了話，另一本卻直接讓下一人進場？",
+      "mechanism_key": "x144.folio.two_lines",
+      "answer_target": "Folger 35 號本的圖版裡，報信人說完就是 Fitz-waters 進場。校後頁多出 Bullingbrooke 感謝 Percy、答應給他相稱報償的兩行，然後才輪到下一人。兩頁保留了同一批書在印刷中改動前、後的狀態。",
+      "scope": "用 Blayney 的對照圖及牛津 Arch. G c.7 原葉逐行對。圖版沒有留下劇作者親自刪改的記錄。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "Folger 35 號本的圖版裡，報信人說完就是 Fitz-waters 進場。校後頁多出 Bullingbrooke 感謝 Percy、答應給他相稱報償的兩行，然後才輪到下一人。兩頁保留了同一批書在印刷中改動前、後的狀態。",
+        "visual": "把兩頁進場提示框起，只揭開它們正上方的字。讓觀眾沿對白讀到有人回話或直接換人。",
+        "seconds": [
+          36,
+          49
+        ]
+      },
+      "source_locator": "書頁14–15，Stop-press corrections，兩幅末場圖版；原件數位影像右上角印45；左欄末、右欄第3及第4行；數位藏本謄文 Histories 頁45，Northumberland 進場後、Fitz-waters 進場前",
+      "notes": "用 Blayney 的對照圖及牛津 Arch. G c.7 原葉逐行對。圖版沒有留下劇作者親自刪改的記錄。",
+      "origin": "wave144-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-8ef68cae73185d93",
+          "origin": "wave144-research-20261120",
+          "locator": "書頁14–15，Stop-press corrections，兩幅末場圖版；原件數位影像右上角印45；左欄末、右欄第3及第4行；數位藏本謄文 Histories 頁45，Northumberland 進場後、Fitz-waters 進場前",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2b4f78de5059db56",
+          "origin": "wave144-research-20261120",
+          "locator": "書頁14–15，Stop-press corrections，兩幅末場圖版；原件數位影像右上角印45；左欄末、右欄第3及第4行；數位藏本謄文 Histories 頁45，Northumberland 進場後、Fitz-waters 進場前",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ef944b68f802b565",
+          "origin": "wave144-research-20261120",
+          "locator": "書頁14–15，Stop-press corrections，兩幅末場圖版；原件數位影像右上角印45；左欄末、右欄第3及第4行；數位藏本謄文 Histories 頁45，Northumberland 進場後、Fitz-waters 進場前",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0201"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0202",
+      "domain": "物理化學與日常材料",
+      "category": "物理化學與日常材料",
+      "question": "翻到有答話的那一本，右欄最頂端也變了。原先放在那裡的兩行報信，被擠到下一頁去了嗎？",
+      "mechanism_key": "x144.folio.column_move",
+      "answer_target": "兩行還在同頁。校前頁右欄開頭，Northumberland 說已把四人的首級送往倫敦；校後版把這兩行挪到左欄最底。牛津的實物影像在右欄第三、四行才看得到國王答謝 Percy。",
+      "scope": "數牛津藏本右欄行次只用書葉照片，圖書館的現代數位謄文另供讀字，不以其換行定位。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩行還在同頁。校前頁右欄開頭，Northumberland 說已把四人的首級送往倫敦；校後版把這兩行挪到左欄最底。牛津的實物影像在右欄第三、四行才看得到國王答謝 Percy。",
+        "visual": "用一對半透明色框標上兩行報信，從校前右欄頂移到校後左欄底，再另用一色圈答話。",
+        "seconds": [
+          30,
+          46
+        ]
+      },
+      "source_locator": "書頁14–15，Stop-press corrections，兩幅末場圖版；原件數位影像右上角印45；左欄末、右欄第3及第4行；數位藏本謄文 Histories 頁45，Northumberland 進場後、Fitz-waters 進場前",
+      "notes": "數牛津藏本右欄行次只用書葉照片，圖書館的現代數位謄文另供讀字，不以其換行定位。",
+      "origin": "wave144-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-8ef68cae73185d93",
+          "origin": "wave144-research-20261120",
+          "locator": "書頁14–15，Stop-press corrections，兩幅末場圖版；原件數位影像右上角印45；左欄末、右欄第3及第4行；數位藏本謄文 Histories 頁45，Northumberland 進場後、Fitz-waters 進場前",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2b4f78de5059db56",
+          "origin": "wave144-research-20261120",
+          "locator": "書頁14–15，Stop-press corrections，兩幅末場圖版；原件數位影像右上角印45；左欄末、右欄第3及第4行；數位藏本謄文 Histories 頁45，Northumberland 進場後、Fitz-waters 進場前",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ef944b68f802b565",
+          "origin": "wave144-research-20261120",
+          "locator": "書頁14–15，Stop-press corrections，兩幅末場圖版；原件數位影像右上角印45；左欄末、右欄第3及第4行；數位藏本謄文 Histories 頁45，Northumberland 進場後、Fitz-waters 進場前",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0202"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0203",
+      "domain": "物理化學與日常材料",
+      "category": "物理化學與日常材料",
+      "question": "35 號本裡有一頁是印到半途改字之前留下的。怎麼還不能替這一整本掛上「比隔壁那本早印」的牌子？",
+      "mechanism_key": "x144.folio.dry_sheets",
+      "answer_target": "改字之前已印好的紙仍會拿來裝書。紙張分成小疊晾乾，再收起合堆，原先的前後順序會打亂。同一冊便可能既有校前頁，也有校後頁。",
+      "scope": "校前、校後在此只指一張紙上可辨的印刷狀態。這頁不能用來排出所有整冊的先後。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "改字之前已印好的紙仍會拿來裝書。紙張分成小疊晾乾，再收起合堆，原先的前後順序會打亂。同一冊便可能既有校前頁，也有校後頁。",
+        "visual": "用兩色籤夾在一疊紙上，拆成小疊晾掛、再交錯收起，請觀眾找哪一小疊能代表整本。",
+        "seconds": [
+          23,
+          36
+        ]
+      },
+      "source_locator": "書頁14–15，Stop-press corrections，兩幅末場圖版",
+      "notes": "校前、校後在此只指一張紙上可辨的印刷狀態。這頁不能用來排出所有整冊的先後。",
+      "origin": "wave144-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-8ef68cae73185d93",
+          "origin": "wave144-research-20261120",
+          "locator": "書頁14–15，Stop-press corrections，兩幅末場圖版",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0203"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0204",
+      "domain": "物理化學與日常材料",
+      "category": "物理化學與日常材料",
+      "question": "兩本書放上對勘機，同一頁忽明忽暗。明明紙都沒動，怎麼有些字看起來在跳？",
+      "mechanism_key": "x144.folio.blink",
+      "answer_target": "操作者先將兩頁的影像疊準，再交替照亮兩本。相同位置上的字看來穩定，局部的字形或排列差異會閃動。紙張伸縮也能造成較大範圍的錯位，看見晃動時要再回到原頁讀。",
+      "scope": "Walkling 的現場示範用的是 1692–93 年《The Fairy-Queen》歌劇腳本。這是儀器操作的實錄，不是 35 號本的量測。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "操作者先將兩頁的影像疊準，再交替照亮兩本。相同位置上的字看來穩定，局部的字形或排列差異會閃動。紙張伸縮也能造成較大範圍的錯位，看見晃動時要再回到原頁讀。",
+        "visual": "並排畫兩個受光書架，再交替投出同一位置。先找單字局部移動，再看整欄的相對位移。",
+        "seconds": [
+          27,
+          41
+        ]
+      },
+      "source_locator": "作者示範兩本書對準、交替照明；頁末關於紙張伸縮的註",
+      "notes": "Walkling 的現場示範用的是 1692–93 年《The Fairy-Queen》歌劇腳本。這是儀器操作的實錄，不是 35 號本的量測。",
+      "origin": "wave144-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-b1ad39c07f4a43aa",
+          "origin": "wave144-research-20261120",
+          "locator": "作者示範兩本書對準、交替照明；頁末關於紙張伸縮的註",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0204"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0205",
+      "domain": "物理化學與日常材料",
+      "category": "物理化學與日常材料",
+      "question": "館藏箱裡明明有莎士比亞第一對開本的校樣和印版，館藏號 MS 69 能證明這是 1623 年印刷工留下的工具嗎？",
+      "mechanism_key": "x144.folio.archive_age",
+      "answer_target": "堪薩斯大學把這批檔案裡的信件、校樣和印版歸在 Hinman 編製的 1968 年 Norton 影印版。館方還列有他的捐贈紀錄。要先認明它們屬於哪次出版。",
+      "scope": "MS 69 在此用的是案卷級描述；沒有打開其中每一封信，也沒有藉這個館號判定 1623 年的某一個字由誰改。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "堪薩斯大學把這批檔案裡的信件、校樣和印版歸在 Hinman 編製的 1968 年 Norton 影印版。館方還列有他的捐贈紀錄。要先認明它們屬於哪次出版。",
+        "visual": "遮住案卷標題只看 proof sheets 與 printing plates，再揭開編者、出版年和館號。",
+        "seconds": [
+          23,
+          34
+        ]
+      },
+      "source_locator": "Overview、Call Number、Immediate Source of Acquisition；作者示範兩本書對準、交替照明；頁末關於紙張伸縮的註",
+      "notes": "MS 69 在此用的是案卷級描述；沒有打開其中每一封信，也沒有藉這個館號判定 1623 年的某一個字由誰改。",
+      "origin": "wave144-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-b22e7883f761f15f",
+          "origin": "wave144-research-20261120",
+          "locator": "Overview、Call Number、Immediate Source of Acquisition；作者示範兩本書對準、交替照明；頁末關於紙張伸縮的註",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b1ad39c07f4a43aa",
+          "origin": "wave144-research-20261120",
+          "locator": "Overview、Call Number、Immediate Source of Acquisition；作者示範兩本書對準、交替照明；頁末關於紙張伸縮的註",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0205"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0206",
+      "domain": "物理化學與日常材料",
+      "category": "物理化學與日常材料",
+      "question": "Folger 33 號本有四張是真正的 1623 年書葉，館方卻說這四張是後來補的，兩句話怎麼會都成立？",
+      "mechanism_key": "x144.folio.donor_leaf",
+      "answer_target": "33 號本有四張缺葉由別冊第一對開本的原葉補配。紙葉的印年能對得上，不能由此認定它從最初裝訂就屬於這一冊。",
+      "scope": "1875 年這一冊曾為拍攝影印本而拆訂。館方分別記錄兩件事，沒有把當年說成四張葉子的補入日期。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "33 號本有四張缺葉由別冊第一對開本的原葉補配。紙葉的印年能對得上，不能由此認定它從最初裝訂就屬於這一冊。",
+        "visual": "把裝訂線和四張同年但來自不同冊的紙以不同顏色標出，掀開 33 號的館藏說明。",
+        "seconds": [
+          27,
+          40
+        ]
+      },
+      "source_locator": "館藏亮點前兩段，補配四葉及1875年拆書攝影",
+      "notes": "1875 年這一冊曾為拍攝影印本而拆訂。館方分別記錄兩件事，沒有把當年說成四張葉子的補入日期。",
+      "origin": "wave144-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-6b37fe6b659ee1d5",
+          "origin": "wave144-research-20261120",
+          "locator": "館藏亮點前兩段，補配四葉及1875年拆書攝影",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0206"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0207",
+      "domain": "物理化學與日常材料",
+      "category": "物理化學與日常材料",
+      "question": "打開 Folger 59 號本，扉頁看來也是古書的樣子。為什麼查到的 1807 年只說明這一葉的來歷？",
+      "mechanism_key": "x144.folio.later_title",
+      "answer_target": "該館的圖說指出，59 號本所補的扉頁來自 1807 年出版的第一對開本仿印版。1807 是仿印版問世的年份，圖說沒有交代它何時被裝到 59 號本裡。",
+      "scope": "59 號的仿印扉頁與 33 號的原葉補配分別查核。光看裝訂在一起無法將兩者年代變成同一年。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "該館的圖說指出，59 號本所補的扉頁來自 1807 年出版的第一對開本仿印版。1807 是仿印版問世的年份，圖說沒有交代它何時被裝到 59 號本裡。",
+        "visual": "讓觀眾把標有「仿印版出版」與「補入59號」的兩張年份卡放回時間線，留空圖說沒有的日期。",
+        "seconds": [
+          21,
+          33
+        ]
+      },
+      "source_locator": "No.59 title leaf from the 1807 First Folio facsimile 圖說；下接手抄補頁例；館藏亮點前兩段，補配四葉及1875年拆書攝影",
+      "notes": "59 號的仿印扉頁與 33 號的原葉補配分別查核。光看裝訂在一起無法將兩者年代變成同一年。",
+      "origin": "wave144-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-4217a321c783710d",
+          "origin": "wave144-research-20261120",
+          "locator": "No.59 title leaf from the 1807 First Folio facsimile 圖說；下接手抄補頁例；館藏亮點前兩段，補配四葉及1875年拆書攝影",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-6b37fe6b659ee1d5",
+          "origin": "wave144-research-20261120",
+          "locator": "No.59 title leaf from the 1807 First Folio facsimile 圖說；下接手抄補頁例；館藏亮點前兩段，補配四葉及1875年拆書攝影",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0207"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0208",
+      "domain": "物理化學與日常材料",
+      "category": "物理化學與日常材料",
+      "question": "里茲那一本的讀者寫到一半就停了嗎？為什麼有些頁邊註記只剩下半截？",
+      "mechanism_key": "x144.folio.cut_notes",
+      "answer_target": "里茲特藏的保存說明寫到，過去裝訂時把書芯邊緣裁短，部分註記也隨著紙邊被切掉。館方另記扉頁下緣補紙並以墨摹補，對扉頁是否原葉仍保留可能。",
+      "scope": "殘存筆畫能提示裁切，不據此補寫讀者原句，也不把扉頁的推測說成定案。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "里茲特藏的保存說明寫到，過去裝訂時把書芯邊緣裁短，部分註記也隨著紙邊被切掉。館方另記扉頁下緣補紙並以墨摹補，對扉頁是否原葉仍保留可能。",
+        "visual": "在頁邊筆記的示意上疊一條裁切線，比較文字原先寫到哪裡與今天能看見哪裡。",
+        "seconds": [
+          18,
+          29
+        ]
+      },
+      "source_locator": "紙況描述：title page、ink facsimile、last page、textblock",
+      "notes": "殘存筆畫能提示裁切，不據此補寫讀者原句，也不把扉頁的推測說成定案。",
+      "origin": "wave144-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-c73f77de329f522f",
+          "origin": "wave144-research-20261120",
+          "locator": "紙況描述：title page、ink facsimile、last page、textblock",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0208"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0209",
+      "domain": "物理化學與日常材料",
+      "category": "物理化學與日常材料",
+      "question": "牛津的裝訂日簿把這齣戲集列在 1624 年 2 月 17 日，這一天究竟是哪一道工序的日期？",
+      "mechanism_key": "x144.folio.day_book",
+      "answer_target": "博德利圖書館把第一對開本與另外九個書名同批送交裝訂匠 William Wildgoose，這天是日簿登記的送裝日。書本已經印好，裝訂批次可以晚於 1623 年的印年。",
+      "scope": "日簿按書名列件，不表示十件都是莎士比亞戲集，或十件在該日完成裝訂。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "博德利圖書館把第一對開本與另外九個書名同批送交裝訂匠 William Wildgoose，這天是日簿登記的送裝日。書本已經印好，裝訂批次可以晚於 1623 年的印年。",
+        "visual": "左右擺 1623 印年與 1624 年日簿，讓觀眾把「送裝」字卡貼到正確日期。",
+        "seconds": [
+          26,
+          39
+        ]
+      },
+      "source_locator": "Introduction；送裝日簿原理與1624年2月17日一單；紙料及裝訂比較",
+      "notes": "日簿按書名列件，不表示十件都是莎士比亞戲集，或十件在該日完成裝訂。",
+      "origin": "wave144-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-4dc38a96a5b48b47",
+          "origin": "wave144-research-20261120",
+          "locator": "Introduction；送裝日簿原理與1624年2月17日一單；紙料及裝訂比較",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0209"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0210",
+      "domain": "物理化學與日常材料",
+      "category": "物理化學與日常材料",
+      "question": "1905 年有人把一本莎士比亞拿到牛津詢問。光憑書名認不出是哪一本，藏在書封內的廢紙怎麼幫上忙？",
+      "mechanism_key": "x144.folio.paste_down",
+      "answer_target": "館員 Gibson 辨出曾上鏈收藏的裝訂特徵，並將封內作貼襯的印刷廢紙與同批送裝的其他書比對。把這些線索湊在一起，才把流出館方的舊藏本認回來。",
+      "scope": "辨認的是這冊的裝訂、來源與流轉。要判斷同冊第 45 頁保留哪種台詞，仍須翻開正文逐行看。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "館員 Gibson 辨出曾上鏈收藏的裝訂特徵，並將封內作貼襯的印刷廢紙與同批送裝的其他書比對。把這些線索湊在一起，才把流出館方的舊藏本認回來。",
+        "visual": "把戲名遮起，讓觀眾從幾本不同內容的書找相配的貼襯，再翻回當年的同批清單。",
+        "seconds": [
+          25,
+          39
+        ]
+      },
+      "source_locator": "Introduction；送裝日簿原理與1624年2月17日一單；紙料及裝訂比較；原件數位影像右上角印45；左欄末、右欄第3及第4行",
+      "notes": "辨認的是這冊的裝訂、來源與流轉。要判斷同冊第 45 頁保留哪種台詞，仍須翻開正文逐行看。",
+      "origin": "wave144-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-4dc38a96a5b48b47",
+          "origin": "wave144-research-20261120",
+          "locator": "Introduction；送裝日簿原理與1624年2月17日一單；紙料及裝訂比較；原件數位影像右上角印45；左欄末、右欄第3及第4行",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2b4f78de5059db56",
+          "origin": "wave144-research-20261120",
+          "locator": "Introduction；送裝日簿原理與1624年2月17日一單；紙料及裝訂比較；原件數位影像右上角印45；左欄末、右欄第3及第4行",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0210"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0211",
+      "domain": "物理化學與日常材料",
+      "category": "物理化學與日常材料",
+      "question": "英國館員拿到一冊從日本送來的書，讀者的筆記連疑似墨漬都在。為什麼館方仍把它登為影印本？",
+      "mechanism_key": "x144.folio.facsimile_stains",
+      "answer_target": "捐贈的是明星大學製作的限量 350 冊影印本。原藏書上的舊藏書票、手寫註記和疑似墨漬連同書頁被複製，看起來像手寫不代表有人在這一冊新紙上寫過。",
+      "scope": "明星大學的 MR774 有原件登錄，受贈館文章記的是收到的複製本，未列日本校內的藏號。不要把日本的原冊移交說成這次捐贈內容。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "捐贈的是明星大學製作的限量 350 冊影印本。原藏書上的舊藏書票、手寫註記和疑似墨漬連同書頁被複製，看起來像手寫不代表有人在這一冊新紙上寫過。",
+        "visual": "分別顯示原冊的館藏號與受贈文章的 facsimile 標籤，再遮掉標籤，請觀眾說只看筆跡還少什麼。",
+        "seconds": [
+          27,
+          42
+        ]
+      },
+      "source_locator": "貴重書登録番号 MR774、外觀尺寸及原書所有者批註說明；受贈書說明：Meisei University、藏書票與墨漬、350冊",
+      "notes": "明星大學的 MR774 有原件登錄，受贈館文章記的是收到的複製本，未列日本校內的藏號。不要把日本的原冊移交說成這次捐贈內容。",
+      "origin": "wave144-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-d3f303e4225ceded",
+          "origin": "wave144-research-20261120",
+          "locator": "貴重書登録番号 MR774、外觀尺寸及原書所有者批註說明；受贈書說明：Meisei University、藏書票與墨漬、350冊",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-a574b91aba7cb9aa",
+          "origin": "wave144-research-20261120",
+          "locator": "貴重書登録番号 MR774、外觀尺寸及原書所有者批註說明；受贈書說明：Meisei University、藏書票與墨漬、350冊",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0211"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K144-0212",
+      "domain": "物理化學與日常材料",
+      "category": "物理化學與日常材料",
+      "question": "線上檔案裡相鄰的圖都列在「第一對開本」底下，是否一定能在同一本古書裡翻到這一串紙葉？",
+      "mechanism_key": "x144.folio.several_copies_online",
+      "answer_target": "MIT 的電子檔案在說明中分列影像的來源與頁面狀態。R6v 的指定狀態來自紐約公共圖書館 Lennox 本，rr3r 的另一狀態則來自 Huntington 的 Church 本。線上編排集合了不同實物的圖。",
+      "scope": "這兩個例子證明該檔案跨冊選頁，不拿它們代指《理查二世》第 45 頁。查片頭本頁仍需用明確館號及圖版。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "MIT 的電子檔案在說明中分列影像的來源與頁面狀態。R6v 的指定狀態來自紐約公共圖書館 Lennox 本，rr3r 的另一狀態則來自 Huntington 的 Church 本。線上編排集合了不同實物的圖。",
+        "visual": "把兩張數位圖的紙葉代碼各貼到收藏館，最後請觀眾在開場兩圖也寫出館藏和頁碼。",
+        "seconds": [
+          23,
+          36
+        ]
+      },
+      "source_locator": "First Folio：Norton Facsimile、R6v 與 rr3r 影像取樣說明；書頁14–15，Stop-press corrections，兩幅末場圖版；原件數位影像右上角印45；左欄末、右欄第3及第4行",
+      "notes": "這兩個例子證明該檔案跨冊選頁，不拿它們代指《理查二世》第 45 頁。查片頭本頁仍需用明確館號及圖版。",
+      "origin": "wave144-research-20261120",
+      "source_refs": [
+        {
+          "source_id": "SRC-206d1aea7dcdd5ec",
+          "origin": "wave144-research-20261120",
+          "locator": "First Folio：Norton Facsimile、R6v 與 rr3r 影像取樣說明；書頁14–15，Stop-press corrections，兩幅末場圖版；原件數位影像右上角印45；左欄末、右欄第3及第4行",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8ef68cae73185d93",
+          "origin": "wave144-research-20261120",
+          "locator": "First Folio：Norton Facsimile、R6v 與 rr3r 影像取樣說明；書頁14–15，Stop-press corrections，兩幅末場圖版；原件數位影像右上角印45；左欄末、右欄第3及第4行",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2b4f78de5059db56",
+          "origin": "wave144-research-20261120",
+          "locator": "First Folio：Norton Facsimile、R6v 與 rr3r 影像取樣說明；書頁14–15，Stop-press corrections，兩幅末場圖版；原件數位影像右上角印45；左欄末、右欄第3及第4行",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave144-research-20261120.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K144-0212"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -373353,7 +374643,7 @@
   ],
   "raw_records": {
     "file": "pool-records.json",
-    "count": 8548
+    "count": 8574
   },
   "dedup": {
     "aliases": {
@@ -376875,6 +378165,32 @@
       "K143-0212": "K143-0212",
       "K143-0213": "K143-0213",
       "K143-0214": "K143-0214",
+      "K144-0101": "K144-0101",
+      "K144-0102": "K144-0102",
+      "K144-0103": "K144-0103",
+      "K144-0104": "K144-0104",
+      "K144-0105": "K144-0105",
+      "K144-0106": "K144-0106",
+      "K144-0107": "K144-0107",
+      "K144-0001": "K144-0001",
+      "K144-0002": "K144-0002",
+      "K144-0003": "K144-0003",
+      "K144-0004": "K144-0004",
+      "K144-0005": "K144-0005",
+      "K144-0006": "K144-0006",
+      "K144-0007": "K144-0007",
+      "K144-0201": "K144-0201",
+      "K144-0202": "K144-0202",
+      "K144-0203": "K144-0203",
+      "K144-0204": "K144-0204",
+      "K144-0205": "K144-0205",
+      "K144-0206": "K144-0206",
+      "K144-0207": "K144-0207",
+      "K144-0208": "K144-0208",
+      "K144-0209": "K144-0209",
+      "K144-0210": "K144-0210",
+      "K144-0211": "K144-0211",
+      "K144-0212": "K144-0212",
       "F15001": "F15001",
       "F15002": "F15002",
       "F15003": "F15003",
@@ -418036,6 +419352,20 @@
         ]
       },
       {
+        "id": "K142-0005~K144-0002",
+        "a": "K142-0005",
+        "b": "K144-0002",
+        "question_score": 0.4,
+        "answer_score": 0.195,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "游完泳，Apple Watch 螢幕按不動。為什麼按住數位錶冠解鎖時，是手錶喇叭先響幾聲？",
+          "游泳後，Apple Watch 上還留著水滴圖示。按住數位錶冠解鎖，那一串提示音除了告訴你螢幕可以碰了，還會做什麼？"
+        ]
+      },
+      {
         "id": "K90-034~K95-051",
         "a": "K90-034",
         "b": "K95-051",
@@ -422530,6 +423860,20 @@
         ]
       },
       {
+        "id": "K144-0206~K144-0207",
+        "a": "K144-0206",
+        "b": "K144-0207",
+        "question_score": 0.177,
+        "answer_score": 0.098,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Folger 33 號本有四張是真正的 1623 年書葉，館方卻說這四張是後來補的，兩句話怎麼會都成立？",
+          "打開 Folger 59 號本，扉頁看來也是古書的樣子。為什麼查到的 1807 年只說明這一葉的來歷？"
+        ]
+      },
+      {
         "id": "L70-001~L70-003",
         "a": "L70-001",
         "b": "L70-003",
@@ -426646,6 +427990,20 @@
         ]
       },
       {
+        "id": "K144-0201~K144-0205",
+        "a": "K144-0201",
+        "b": "K144-0205",
+        "question_score": 0.135,
+        "answer_score": 0.013,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同是 1623 年印的《理查二世》第 45 頁，報信人開口之後，為什麼一本裡的國王回了話，另一本卻直接讓下一人進場？",
+          "館藏箱裡明明有莎士比亞第一對開本的校樣和印版，館藏號 MS 69 能證明這是 1623 年印刷工留下的工具嗎？"
+        ]
+      },
+      {
         "id": "K89-032~K89-038",
         "a": "K89-032",
         "b": "K89-038",
@@ -429205,6 +430563,20 @@
         "questions": [
           "假設一張紙依序寫著 Couser、Barnes、Wilkie。現在輪到 Couser 出局，為什麼要跳過紙上第二個名字？",
           "三月的 Wilkie 首選有 5,382 張，八月有 13,788 張，可以把這兩個數字加起來替他過門檻嗎？"
+        ]
+      },
+      {
+        "id": "K144-0206~K144-0209",
+        "a": "K144-0206",
+        "b": "K144-0209",
+        "question_score": 0.052,
+        "answer_score": 0.118,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Folger 33 號本有四張是真正的 1623 年書葉，館方卻說這四張是後來補的，兩句話怎麼會都成立？",
+          "牛津的裝訂日簿把這齣戲集列在 1624 年 2 月 17 日，這一天究竟是哪一道工序的日期？"
         ]
       },
       {
@@ -432512,6 +433884,20 @@
         ]
       },
       {
+        "id": "K144-0201~K144-0202",
+        "a": "K144-0201",
+        "b": "K144-0202",
+        "question_score": 0.101,
+        "answer_score": 0.083,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同是 1623 年印的《理查二世》第 45 頁，報信人開口之後，為什麼一本裡的國王回了話，另一本卻直接讓下一人進場？",
+          "翻到有答話的那一本，右欄最頂端也變了。原先放在那裡的兩行報信，被擠到下一頁去了嗎？"
+        ]
+      },
+      {
         "id": "P64-017~P65-005",
         "a": "P64-017",
         "b": "P65-005",
@@ -433450,6 +434836,20 @@
         ]
       },
       {
+        "id": "K144-0202~K144-0208",
+        "a": "K144-0202",
+        "b": "K144-0208",
+        "question_score": 0.097,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "翻到有答話的那一本，右欄最頂端也變了。原先放在那裡的兩行報信，被擠到下一頁去了嗎？",
+          "里茲那一本的讀者寫到一半就停了嗎？為什麼有些頁邊註記只剩下半截？"
+        ]
+      },
+      {
         "id": "L77-066~L77-068",
         "a": "L77-066",
         "b": "L77-068",
@@ -433573,6 +434973,20 @@
         "questions": [
           "哈伯想量鬩神星有多寬，為什麼先拍旁邊那個看似用不著的星點？",
           "新視野號飛近冥王星之後，把兩顆天體縮成硬幣大，直徑實際只差多寬？"
+        ]
+      },
+      {
+        "id": "K144-0201~K144-0206",
+        "a": "K144-0201",
+        "b": "K144-0206",
+        "question_score": 0.096,
+        "answer_score": 0.028,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同是 1623 年印的《理查二世》第 45 頁，報信人開口之後，為什麼一本裡的國王回了話，另一本卻直接讓下一人進場？",
+          "Folger 33 號本有四張是真正的 1623 年書葉，館方卻說這四張是後來補的，兩句話怎麼會都成立？"
         ]
       },
       {
@@ -434315,6 +435729,20 @@
         "questions": [
           "少遮一點玻璃的細條，有沒有接近遮掉半窗的圖樣？",
           "點貼在公車亭外面，原來從亭內側撞到玻璃的紀錄有變嗎？"
+        ]
+      },
+      {
+        "id": "K144-0205~K144-0206",
+        "a": "K144-0205",
+        "b": "K144-0206",
+        "question_score": 0.093,
+        "answer_score": 0.018,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "館藏箱裡明明有莎士比亞第一對開本的校樣和印版，館藏號 MS 69 能證明這是 1623 年印刷工留下的工具嗎？",
+          "Folger 33 號本有四張是真正的 1623 年書葉，館方卻說這四張是後來補的，兩句話怎麼會都成立？"
         ]
       },
       {
@@ -438532,6 +439960,20 @@
         ]
       },
       {
+        "id": "K144-0209~K144-0210",
+        "a": "K144-0209",
+        "b": "K144-0210",
+        "question_score": 0.078,
+        "answer_score": 0.074,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "牛津的裝訂日簿把這齣戲集列在 1624 年 2 月 17 日，這一天究竟是哪一道工序的日期？",
+          "1905 年有人把一本莎士比亞拿到牛津詢問。光憑書名認不出是哪一本，藏在書封內的廢紙怎麼幫上忙？"
+        ]
+      },
+      {
         "id": "R43002~R43010",
         "a": "R43002",
         "b": "R43010",
@@ -441066,6 +442508,20 @@
         ]
       },
       {
+        "id": "K144-0202~K144-0205",
+        "a": "K144-0202",
+        "b": "K144-0205",
+        "question_score": 0,
+        "answer_score": 0.071,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "翻到有答話的那一本，右欄最頂端也變了。原先放在那裡的兩行報信，被擠到下一頁去了嗎？",
+          "館藏箱裡明明有莎士比亞第一對開本的校樣和印版，館藏號 MS 69 能證明這是 1623 年印刷工留下的工具嗎？"
+        ]
+      },
+      {
         "id": "K90-050~K94-011",
         "a": "K90-050",
         "b": "K94-011",
@@ -441539,6 +442995,20 @@
         "questions": [
           "同一個十字路口，把比賽用的路錐往外挪一點，丈量員為何要重新看那張路口圖？",
           "把同一段移動連成折線，為何一種畫法使結果偏長，另一種畫法卻會把一個彎量短？"
+        ]
+      },
+      {
+        "id": "K144-0205~K144-0210",
+        "a": "K144-0205",
+        "b": "K144-0210",
+        "question_score": 0.07,
+        "answer_score": 0.047,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "館藏箱裡明明有莎士比亞第一對開本的校樣和印版，館藏號 MS 69 能證明這是 1623 年印刷工留下的工具嗎？",
+          "1905 年有人把一本莎士比亞拿到牛津詢問。光憑書名認不出是哪一本，藏在書封內的廢紙怎麼幫上忙？"
         ]
       },
       {
@@ -443726,6 +445196,20 @@
         ]
       },
       {
+        "id": "K144-0208~K144-0211",
+        "a": "K144-0208",
+        "b": "K144-0211",
+        "question_score": 0.065,
+        "answer_score": 0.016,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "里茲那一本的讀者寫到一半就停了嗎？為什麼有些頁邊註記只剩下半截？",
+          "英國館員拿到一冊從日本送來的書，讀者的筆記連疑似墨漬都在。為什麼館方仍把它登為影印本？"
+        ]
+      },
+      {
         "id": "L004~V3004",
         "a": "L004",
         "b": "V3004",
@@ -443989,6 +445473,20 @@
         "questions": [
           "美國進口水產抽驗表第 20 號冷凍蝦，10.18% 這個數字量的是什麼？",
           "FDA 這次標成違例的 12 個樣品，最後是 12 家業者被攔下嗎？"
+        ]
+      },
+      {
+        "id": "K144-0207~K144-0209",
+        "a": "K144-0207",
+        "b": "K144-0209",
+        "question_score": 0.026,
+        "answer_score": 0.064,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "打開 Folger 59 號本，扉頁看來也是古書的樣子。為什麼查到的 1807 年只說明這一葉的來歷？",
+          "牛津的裝訂日簿把這齣戲集列在 1624 年 2 月 17 日，這一天究竟是哪一道工序的日期？"
         ]
       },
       {
@@ -447884,6 +449382,20 @@
         ]
       },
       {
+        "id": "K144-0201~K144-0203",
+        "a": "K144-0201",
+        "b": "K144-0203",
+        "question_score": 0.049,
+        "answer_score": 0.055,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同是 1623 年印的《理查二世》第 45 頁，報信人開口之後，為什麼一本裡的國王回了話，另一本卻直接讓下一人進場？",
+          "35 號本裡有一頁是印到半途改字之前留下的。怎麼還不能替這一整本掛上「比隔壁那本早印」的牌子？"
+        ]
+      },
+      {
         "id": "B2026~B2028",
         "a": "B2026",
         "b": "B2028",
@@ -449578,6 +451090,20 @@
         ]
       },
       {
+        "id": "K144-0203~K144-0207",
+        "a": "K144-0203",
+        "b": "K144-0207",
+        "question_score": 0.051,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "35 號本裡有一頁是印到半途改字之前留下的。怎麼還不能替這一整本掛上「比隔壁那本早印」的牌子？",
+          "打開 Folger 59 號本，扉頁看來也是古書的樣子。為什麼查到的 1807 年只說明這一葉的來歷？"
+        ]
+      },
+      {
         "id": "L049~L053",
         "a": "L049",
         "b": "L053",
@@ -450051,6 +451577,20 @@
         "questions": [
           "外貼兩種膜，草雀的迴避反應也一樣明確嗎？",
           "同寬、同間距的白條紋轉九十度，還有多少鳥向標記窗飛？"
+        ]
+      },
+      {
+        "id": "K144-0201~K144-0209",
+        "a": "K144-0201",
+        "b": "K144-0209",
+        "question_score": 0.05,
+        "answer_score": 0.036,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同是 1623 年印的《理查二世》第 45 頁，報信人開口之後，為什麼一本裡的國王回了話，另一本卻直接讓下一人進場？",
+          "牛津的裝訂日簿把這齣戲集列在 1624 年 2 月 17 日，這一天究竟是哪一道工序的日期？"
         ]
       },
       {
@@ -450936,6 +452476,34 @@
         ]
       },
       {
+        "id": "K144-0205~K144-0209",
+        "a": "K144-0205",
+        "b": "K144-0209",
+        "question_score": 0.048,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "館藏箱裡明明有莎士比亞第一對開本的校樣和印版，館藏號 MS 69 能證明這是 1623 年印刷工留下的工具嗎？",
+          "牛津的裝訂日簿把這齣戲集列在 1624 年 2 月 17 日，這一天究竟是哪一道工序的日期？"
+        ]
+      },
+      {
+        "id": "K144-0208~K144-0210",
+        "a": "K144-0208",
+        "b": "K144-0210",
+        "question_score": 0.03,
+        "answer_score": 0.048,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "里茲那一本的讀者寫到一半就停了嗎？為什麼有些頁邊註記只剩下半截？",
+          "1905 年有人把一本莎士比亞拿到牛津詢問。光憑書名認不出是哪一本，藏在書封內的廢紙怎麼幫上忙？"
+        ]
+      },
+      {
         "id": "P53-001~P54-002",
         "a": "P53-001",
         "b": "P54-002",
@@ -451381,6 +452949,48 @@
         "questions": [
           "加拿大駁船舷側還留著一套舊線，調查員怎麼知道不能拿它來判事發時是否超載？",
           "引水人從另一艘船上看不見岩鹽船的載重線，英國港口檢查員靠岸後查到了什麼？"
+        ]
+      },
+      {
+        "id": "K144-0202~K144-0203",
+        "a": "K144-0202",
+        "b": "K144-0203",
+        "question_score": 0.027,
+        "answer_score": 0.047,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "翻到有答話的那一本，右欄最頂端也變了。原先放在那裡的兩行報信，被擠到下一頁去了嗎？",
+          "35 號本裡有一頁是印到半途改字之前留下的。怎麼還不能替這一整本掛上「比隔壁那本早印」的牌子？"
+        ]
+      },
+      {
+        "id": "K144-0203~K144-0205",
+        "a": "K144-0203",
+        "b": "K144-0205",
+        "question_score": 0.047,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "35 號本裡有一頁是印到半途改字之前留下的。怎麼還不能替這一整本掛上「比隔壁那本早印」的牌子？",
+          "館藏箱裡明明有莎士比亞第一對開本的校樣和印版，館藏號 MS 69 能證明這是 1623 年印刷工留下的工具嗎？"
+        ]
+      },
+      {
+        "id": "K144-0205~K144-0211",
+        "a": "K144-0205",
+        "b": "K144-0211",
+        "question_score": 0,
+        "answer_score": 0.047,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "館藏箱裡明明有莎士比亞第一對開本的校樣和印版，館藏號 MS 69 能證明這是 1623 年印刷工留下的工具嗎？",
+          "英國館員拿到一冊從日本送來的書，讀者的筆記連疑似墨漬都在。為什麼館方仍把它登為影印本？"
         ]
       },
       {
@@ -457292,6 +458902,34 @@
         ]
       },
       {
+        "id": "K144-0204~K144-0208",
+        "a": "K144-0204",
+        "b": "K144-0208",
+        "question_score": 0.037,
+        "answer_score": 0,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩本書放上對勘機，同一頁忽明忽暗。明明紙都沒動，怎麼有些字看起來在跳？",
+          "里茲那一本的讀者寫到一半就停了嗎？為什麼有些頁邊註記只剩下半截？"
+        ]
+      },
+      {
+        "id": "K144-0206~K144-0208",
+        "a": "K144-0206",
+        "b": "K144-0208",
+        "question_score": 0,
+        "answer_score": 0.037,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Folger 33 號本有四張是真正的 1623 年書葉，館方卻說這四張是後來補的，兩句話怎麼會都成立？",
+          "里茲那一本的讀者寫到一半就停了嗎？為什麼有些頁邊註記只剩下半截？"
+        ]
+      },
+      {
         "id": "L74-079~L74-080",
         "a": "L74-079",
         "b": "L74-080",
@@ -458199,6 +459837,34 @@
         "questions": [
           "後來轉入 Simpkins 票堆的 1,147 張裡，能從合計表算出有幾張最後去了 Wilkie 嗎？",
           "同樣在 Denison，同一年另一張選舉表卻寫著配額 10,630。把它當作 8 月那一席的當選線，錯在哪裡？"
+        ]
+      },
+      {
+        "id": "K144-0206~K144-0210",
+        "a": "K144-0206",
+        "b": "K144-0210",
+        "question_score": 0,
+        "answer_score": 0.036,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Folger 33 號本有四張是真正的 1623 年書葉，館方卻說這四張是後來補的，兩句話怎麼會都成立？",
+          "1905 年有人把一本莎士比亞拿到牛津詢問。光憑書名認不出是哪一本，藏在書封內的廢紙怎麼幫上忙？"
+        ]
+      },
+      {
+        "id": "K144-0206~K144-0211",
+        "a": "K144-0206",
+        "b": "K144-0211",
+        "question_score": 0.026,
+        "answer_score": 0.036,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "Folger 33 號本有四張是真正的 1623 年書葉，館方卻說這四張是後來補的，兩句話怎麼會都成立？",
+          "英國館員拿到一冊從日本送來的書，讀者的筆記連疑似墨漬都在。為什麼館方仍把它登為影印本？"
         ]
       },
       {
@@ -459641,6 +461307,20 @@
         "questions": [
           "自行車騎上這條已知長度的路，為什麼同一張表要在丈量賽道前、後各填四次？",
           "同一人戴著八款錶換城市街道、林地和跑道測，能先猜它們都把距離算長嗎？"
+        ]
+      },
+      {
+        "id": "K144-0205~K144-0207",
+        "a": "K144-0205",
+        "b": "K144-0207",
+        "question_score": 0.024,
+        "answer_score": 0.034,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "館藏箱裡明明有莎士比亞第一對開本的校樣和印版，館藏號 MS 69 能證明這是 1623 年印刷工留下的工具嗎？",
+          "打開 Folger 59 號本，扉頁看來也是古書的樣子。為什麼查到的 1807 年只說明這一葉的來歷？"
         ]
       },
       {
@@ -461604,6 +463284,20 @@
         ]
       },
       {
+        "id": "K144-0210~K144-0211",
+        "a": "K144-0210",
+        "b": "K144-0211",
+        "question_score": 0.026,
+        "answer_score": 0.032,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "1905 年有人把一本莎士比亞拿到牛津詢問。光憑書名認不出是哪一本，藏在書封內的廢紙怎麼幫上忙？",
+          "英國館員拿到一冊從日本送來的書，讀者的筆記連疑似墨漬都在。為什麼館方仍把它登為影印本？"
+        ]
+      },
+      {
         "id": "K90-036~T52-002",
         "a": "T52-002",
         "b": "K90-036",
@@ -462542,6 +464236,34 @@
         ]
       },
       {
+        "id": "K144-0202~K144-0204",
+        "a": "K144-0202",
+        "b": "K144-0204",
+        "question_score": 0.031,
+        "answer_score": 0.014,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "翻到有答話的那一本，右欄最頂端也變了。原先放在那裡的兩行報信，被擠到下一頁去了嗎？",
+          "兩本書放上對勘機，同一頁忽明忽暗。明明紙都沒動，怎麼有些字看起來在跳？"
+        ]
+      },
+      {
+        "id": "K144-0204~K144-0212",
+        "a": "K144-0204",
+        "b": "K144-0212",
+        "question_score": 0.031,
+        "answer_score": 0.013,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩本書放上對勘機，同一頁忽明忽暗。明明紙都沒動，怎麼有些字看起來在跳？",
+          "線上檔案裡相鄰的圖都列在「第一對開本」底下，是否一定能在同一本古書裡翻到這一串紙葉？"
+        ]
+      },
+      {
         "id": "R41003~R41008",
         "a": "R41003",
         "b": "R41008",
@@ -463340,6 +465062,20 @@
         ]
       },
       {
+        "id": "K144-0203~K144-0204",
+        "a": "K144-0203",
+        "b": "K144-0204",
+        "question_score": 0.03,
+        "answer_score": 0.017,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "35 號本裡有一頁是印到半途改字之前留下的。怎麼還不能替這一整本掛上「比隔壁那本早印」的牌子？",
+          "兩本書放上對勘機，同一頁忽明忽暗。明明紙都沒動，怎麼有些字看起來在跳？"
+        ]
+      },
+      {
         "id": "K100-012~P099",
         "a": "P099",
         "b": "K100-012",
@@ -464079,6 +465815,20 @@
         "questions": [
           "選票上五位候選人都有數字，第一輪要把這一張紙分到幾個人的票堆？",
           "後來轉入 Simpkins 票堆的 1,147 張裡，能從合計表算出有幾張最後去了 Wilkie 嗎？"
+        ]
+      },
+      {
+        "id": "K144-0201~K144-0208",
+        "a": "K144-0201",
+        "b": "K144-0208",
+        "question_score": 0.029,
+        "answer_score": 0.013,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同是 1623 年印的《理查二世》第 45 頁，報信人開口之後，為什麼一本裡的國王回了話，另一本卻直接讓下一人進場？",
+          "里茲那一本的讀者寫到一半就停了嗎？為什麼有些頁邊註記只剩下半截？"
         ]
       },
       {
@@ -464824,6 +466574,20 @@
         ]
       },
       {
+        "id": "K144-0205~K144-0208",
+        "a": "K144-0205",
+        "b": "K144-0208",
+        "question_score": 0.028,
+        "answer_score": 0.016,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "館藏箱裡明明有莎士比亞第一對開本的校樣和印版，館藏號 MS 69 能證明這是 1623 年印刷工留下的工具嗎？",
+          "里茲那一本的讀者寫到一半就停了嗎？為什麼有些頁邊註記只剩下半截？"
+        ]
+      },
+      {
         "id": "R36008~R36009",
         "a": "R36008",
         "b": "R36009",
@@ -465227,6 +466991,34 @@
         "questions": [
           "紐西蘭殘券留到剛好三分之二，和只多留在半張附近的那一角，價值怎麼跳？",
           "澳洲央行為一場風災處理約九萬二千張鈔票，為什麼得數上不只一遍？"
+        ]
+      },
+      {
+        "id": "K144-0201~K144-0207",
+        "a": "K144-0201",
+        "b": "K144-0207",
+        "question_score": 0,
+        "answer_score": 0.027,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同是 1623 年印的《理查二世》第 45 頁，報信人開口之後，為什麼一本裡的國王回了話，另一本卻直接讓下一人進場？",
+          "打開 Folger 59 號本，扉頁看來也是古書的樣子。為什麼查到的 1807 年只說明這一葉的來歷？"
+        ]
+      },
+      {
+        "id": "K144-0204~K144-0205",
+        "a": "K144-0204",
+        "b": "K144-0205",
+        "question_score": 0.027,
+        "answer_score": 0,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩本書放上對勘機，同一頁忽明忽暗。明明紙都沒動，怎麼有些字看起來在跳？",
+          "館藏箱裡明明有莎士比亞第一對開本的校樣和印版，館藏號 MS 69 能證明這是 1623 年印刷工留下的工具嗎？"
         ]
       },
       {
@@ -465661,6 +467453,48 @@
         "questions": [
           "五個方格已依序填了 1 到 4，只留最後一格空白，2010 年的聯邦眾議院規則會怎麼讀這一張票？",
           "後來轉入 Simpkins 票堆的 1,147 張裡，能從合計表算出有幾張最後去了 Wilkie 嗎？"
+        ]
+      },
+      {
+        "id": "K144-0202~K144-0206",
+        "a": "K144-0202",
+        "b": "K144-0206",
+        "question_score": 0.026,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "翻到有答話的那一本，右欄最頂端也變了。原先放在那裡的兩行報信，被擠到下一頁去了嗎？",
+          "Folger 33 號本有四張是真正的 1623 年書葉，館方卻說這四張是後來補的，兩句話怎麼會都成立？"
+        ]
+      },
+      {
+        "id": "K144-0202~K144-0210",
+        "a": "K144-0202",
+        "b": "K144-0210",
+        "question_score": 0.026,
+        "answer_score": 0.014,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "翻到有答話的那一本，右欄最頂端也變了。原先放在那裡的兩行報信，被擠到下一頁去了嗎？",
+          "1905 年有人把一本莎士比亞拿到牛津詢問。光憑書名認不出是哪一本，藏在書封內的廢紙怎麼幫上忙？"
+        ]
+      },
+      {
+        "id": "K144-0203~K144-0209",
+        "a": "K144-0203",
+        "b": "K144-0209",
+        "question_score": 0.026,
+        "answer_score": 0.016,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "35 號本裡有一頁是印到半途改字之前留下的。怎麼還不能替這一整本掛上「比隔壁那本早印」的牌子？",
+          "牛津的裝訂日簿把這齣戲集列在 1624 年 2 月 17 日，這一天究竟是哪一道工序的日期？"
         ]
       },
       {
@@ -466294,6 +468128,20 @@
         ]
       },
       {
+        "id": "K144-0203~K144-0206",
+        "a": "K144-0203",
+        "b": "K144-0206",
+        "question_score": 0.025,
+        "answer_score": 0.02,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "35 號本裡有一頁是印到半途改字之前留下的。怎麼還不能替這一整本掛上「比隔壁那本早印」的牌子？",
+          "Folger 33 號本有四張是真正的 1623 年書葉，館方卻說這四張是後來補的，兩句話怎麼會都成立？"
+        ]
+      },
+      {
         "id": "K91-001~K91-004",
         "a": "K91-001",
         "b": "K91-004",
@@ -466697,6 +468545,20 @@
         "questions": [
           "要在晚上看清白線，工人該讓玻璃珠多露一點，還是把它整顆壓進漆裡？",
           "猶他同一批服役 460 天的標線，乾測全都超過比較值，為什麼雨停後再量就只剩一種過線？"
+        ]
+      },
+      {
+        "id": "K144-0201~K144-0210",
+        "a": "K144-0201",
+        "b": "K144-0210",
+        "question_score": 0.024,
+        "answer_score": 0.013,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同是 1623 年印的《理查二世》第 45 頁，報信人開口之後，為什麼一本裡的國王回了話，另一本卻直接讓下一人進場？",
+          "1905 年有人把一本莎士比亞拿到牛津詢問。光憑書名認不出是哪一本，藏在書封內的廢紙怎麼幫上忙？"
         ]
       },
       {
@@ -468055,6 +469917,48 @@
         "questions": [
           "同棟大樓只在鏡面的一區加標記，未改的地方兩個冬天記到什麼？",
           "新北五月寫八座、十一月寫九座，哪個數能填在實際改造欄？"
+        ]
+      },
+      {
+        "id": "K144-0203~K144-0208",
+        "a": "K144-0203",
+        "b": "K144-0208",
+        "question_score": 0,
+        "answer_score": 0.018,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "35 號本裡有一頁是印到半途改字之前留下的。怎麼還不能替這一整本掛上「比隔壁那本早印」的牌子？",
+          "里茲那一本的讀者寫到一半就停了嗎？為什麼有些頁邊註記只剩下半截？"
+        ]
+      },
+      {
+        "id": "K144-0203~K144-0211",
+        "a": "K144-0203",
+        "b": "K144-0211",
+        "question_score": 0,
+        "answer_score": 0.018,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "35 號本裡有一頁是印到半途改字之前留下的。怎麼還不能替這一整本掛上「比隔壁那本早印」的牌子？",
+          "英國館員拿到一冊從日本送來的書，讀者的筆記連疑似墨漬都在。為什麼館方仍把它登為影印本？"
+        ]
+      },
+      {
+        "id": "K144-0207~K144-0208",
+        "a": "K144-0207",
+        "b": "K144-0208",
+        "question_score": 0,
+        "answer_score": 0.018,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "打開 Folger 59 號本，扉頁看來也是古書的樣子。為什麼查到的 1807 年只說明這一葉的來歷？",
+          "里茲那一本的讀者寫到一半就停了嗎？為什麼有些頁邊註記只剩下半截？"
         ]
       },
       {
@@ -470116,6 +472020,34 @@
         ]
       },
       {
+        "id": "K144-0204~K144-0211",
+        "a": "K144-0204",
+        "b": "K144-0211",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩本書放上對勘機，同一頁忽明忽暗。明明紙都沒動，怎麼有些字看起來在跳？",
+          "英國館員拿到一冊從日本送來的書，讀者的筆記連疑似墨漬都在。為什麼館方仍把它登為影印本？"
+        ]
+      },
+      {
+        "id": "K144-0208~K144-0209",
+        "a": "K144-0208",
+        "b": "K144-0209",
+        "question_score": 0,
+        "answer_score": 0.015,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "里茲那一本的讀者寫到一半就停了嗎？為什麼有些頁邊註記只剩下半截？",
+          "牛津的裝訂日簿把這齣戲集列在 1624 年 2 月 17 日，這一天究竟是哪一道工序的日期？"
+        ]
+      },
+      {
         "id": "K116-0309~K116-0310",
         "a": "K116-0309",
         "b": "K116-0310",
@@ -472104,6 +474036,20 @@
         ]
       },
       {
+        "id": "K144-0201~K144-0211",
+        "a": "K144-0201",
+        "b": "K144-0211",
+        "question_score": 0,
+        "answer_score": 0.013,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同是 1623 年印的《理查二世》第 45 頁，報信人開口之後，為什麼一本裡的國王回了話，另一本卻直接讓下一人進場？",
+          "英國館員拿到一冊從日本送來的書，讀者的筆記連疑似墨漬都在。為什麼館方仍把它登為影印本？"
+        ]
+      },
+      {
         "id": "R43005~R43009",
         "a": "R43005",
         "b": "R43009",
@@ -472941,6 +474887,20 @@
         "questions": [
           "同一批駕駛在同一段濕路停下來數虛線，能把「看見幾條」直接填進剛才的公尺欄嗎？",
           "台灣校園一條高抗滑黃線每月量了一次，白天看來夠亮，能不能據此保證雨夜也看得清楚？"
+        ]
+      },
+      {
+        "id": "K144-0201~K144-0204",
+        "a": "K144-0201",
+        "b": "K144-0204",
+        "question_score": 0,
+        "answer_score": 0.012,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同是 1623 年印的《理查二世》第 45 頁，報信人開口之後，為什麼一本裡的國王回了話，另一本卻直接讓下一人進場？",
+          "兩本書放上對勘機，同一頁忽明忽暗。明明紙都沒動，怎麼有些字看起來在跳？"
         ]
       },
       {
@@ -479818,6 +481778,174 @@
         ]
       },
       {
+        "id": "K144-0003~K144-0004",
+        "a": "K144-0003",
+        "b": "K144-0004",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一支 F 調法國號，演奏者的右手本來就放在喇叭口。樂譜突然印了一個「＋」，這隻手接下來要怎麼動，聲音又會怎麼變？",
+          "兩件外套都把拉鍊拉到頂，其中一件在拉頭上方還縫了頂小布帽。換成 YKK AquaGuard 的橋形上止，為什麼可以省掉這塊布？"
+        ]
+      },
+      {
+        "id": "K144-0202~K144-0207",
+        "a": "K144-0202",
+        "b": "K144-0207",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "翻到有答話的那一本，右欄最頂端也變了。原先放在那裡的兩行報信，被擠到下一頁去了嗎？",
+          "打開 Folger 59 號本，扉頁看來也是古書的樣子。為什麼查到的 1807 年只說明這一葉的來歷？"
+        ]
+      },
+      {
+        "id": "K144-0202~K144-0209",
+        "a": "K144-0202",
+        "b": "K144-0209",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "翻到有答話的那一本，右欄最頂端也變了。原先放在那裡的兩行報信，被擠到下一頁去了嗎？",
+          "牛津的裝訂日簿把這齣戲集列在 1624 年 2 月 17 日，這一天究竟是哪一道工序的日期？"
+        ]
+      },
+      {
+        "id": "K144-0202~K144-0211",
+        "a": "K144-0202",
+        "b": "K144-0211",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "翻到有答話的那一本，右欄最頂端也變了。原先放在那裡的兩行報信，被擠到下一頁去了嗎？",
+          "英國館員拿到一冊從日本送來的書，讀者的筆記連疑似墨漬都在。為什麼館方仍把它登為影印本？"
+        ]
+      },
+      {
+        "id": "K144-0203~K144-0210",
+        "a": "K144-0203",
+        "b": "K144-0210",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "35 號本裡有一頁是印到半途改字之前留下的。怎麼還不能替這一整本掛上「比隔壁那本早印」的牌子？",
+          "1905 年有人把一本莎士比亞拿到牛津詢問。光憑書名認不出是哪一本，藏在書封內的廢紙怎麼幫上忙？"
+        ]
+      },
+      {
+        "id": "K144-0204~K144-0206",
+        "a": "K144-0204",
+        "b": "K144-0206",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩本書放上對勘機，同一頁忽明忽暗。明明紙都沒動，怎麼有些字看起來在跳？",
+          "Folger 33 號本有四張是真正的 1623 年書葉，館方卻說這四張是後來補的，兩句話怎麼會都成立？"
+        ]
+      },
+      {
+        "id": "K144-0204~K144-0207",
+        "a": "K144-0204",
+        "b": "K144-0207",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩本書放上對勘機，同一頁忽明忽暗。明明紙都沒動，怎麼有些字看起來在跳？",
+          "打開 Folger 59 號本，扉頁看來也是古書的樣子。為什麼查到的 1807 年只說明這一葉的來歷？"
+        ]
+      },
+      {
+        "id": "K144-0204~K144-0209",
+        "a": "K144-0204",
+        "b": "K144-0209",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩本書放上對勘機，同一頁忽明忽暗。明明紙都沒動，怎麼有些字看起來在跳？",
+          "牛津的裝訂日簿把這齣戲集列在 1624 年 2 月 17 日，這一天究竟是哪一道工序的日期？"
+        ]
+      },
+      {
+        "id": "K144-0204~K144-0210",
+        "a": "K144-0204",
+        "b": "K144-0210",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩本書放上對勘機，同一頁忽明忽暗。明明紙都沒動，怎麼有些字看起來在跳？",
+          "1905 年有人把一本莎士比亞拿到牛津詢問。光憑書名認不出是哪一本，藏在書封內的廢紙怎麼幫上忙？"
+        ]
+      },
+      {
+        "id": "K144-0207~K144-0210",
+        "a": "K144-0207",
+        "b": "K144-0210",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "打開 Folger 59 號本，扉頁看來也是古書的樣子。為什麼查到的 1807 年只說明這一葉的來歷？",
+          "1905 年有人把一本莎士比亞拿到牛津詢問。光憑書名認不出是哪一本，藏在書封內的廢紙怎麼幫上忙？"
+        ]
+      },
+      {
+        "id": "K144-0207~K144-0211",
+        "a": "K144-0207",
+        "b": "K144-0211",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "打開 Folger 59 號本，扉頁看來也是古書的樣子。為什麼查到的 1807 年只說明這一葉的來歷？",
+          "英國館員拿到一冊從日本送來的書，讀者的筆記連疑似墨漬都在。為什麼館方仍把它登為影印本？"
+        ]
+      },
+      {
+        "id": "K144-0209~K144-0211",
+        "a": "K144-0209",
+        "b": "K144-0211",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "牛津的裝訂日簿把這齣戲集列在 1624 年 2 月 17 日，這一天究竟是哪一道工序的日期？",
+          "英國館員拿到一冊從日本送來的書，讀者的筆記連疑似墨漬都在。為什麼館方仍把它登為影印本？"
+        ]
+      },
+      {
         "id": "L011~L077",
         "a": "L011",
         "b": "L077",
@@ -481292,10 +483420,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-20-pool-8084",
-    "target_count": 8084,
+    "revision": "2026-11-20-pool-8110",
+    "target_count": 8110,
     "reviewed_on": "2026-11-20",
-    "reason": "第143批新增 28 張素材，入選 8056 → 8084。先前：第142批新增 27 張素材，入選 8029 → 8056。先前：第141批新增 27 張素材，入選 8002 → 8029。先前：第140批新增 28 張素材，入選 7974 → 8002。先前：第139批新增 28 張素材，入選 7946 → 7974。先前：第138批新增 37 張素材，入選 7909 → 7946。先前：第137批新增 36 張素材，入選 7873 → 7909。先前：第136批新增 36 張素材，入選 7837 → 7873。先前：第135批新增 36 張素材，入選 7801 → 7837。先前：第134批新增 37 張素材，入選 7764 → 7801。先前：第133批新增 36 張素材，入選 7728 → 7764。先前：第132批新增 37 張素材，入選 7691 → 7728。先前：第131批新增 37 張素材，入選 7654 → 7691。先前：第130批新增 37 張素材，入選 7617 → 7654。先前：第129批新增 37 張素材，入選 7580 → 7617。先前：第128批新增 37 張素材，入選 7543 → 7580。先前：第127批新增 37 張素材，入選 7506 → 7543。先前：第126批新增 37 張素材，入選 7469 → 7506。先前：第125批新增 36 張素材，入選 7433 → 7469。先前：第124批新增 35 張素材，入選 7398 → 7433。先前：第123批新增 37 張素材，入選 7361 → 7398。先前：第122批新增 37 張素材，入選 7324 → 7361。先前：第121批新增 36 張素材，含日常設計、樂譜判讀及旅用電器規格。入選 7288 → 7324。先前：第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
+    "reason": "第144批新增 26 張素材，入選 8084 → 8110。先前：第143批新增 28 張素材，入選 8056 → 8084。先前：第142批新增 27 張素材，入選 8029 → 8056。先前：第141批新增 27 張素材，入選 8002 → 8029。先前：第140批新增 28 張素材，入選 7974 → 8002。先前：第139批新增 28 張素材，入選 7946 → 7974。先前：第138批新增 37 張素材，入選 7909 → 7946。先前：第137批新增 36 張素材，入選 7873 → 7909。先前：第136批新增 36 張素材，入選 7837 → 7873。先前：第135批新增 36 張素材，入選 7801 → 7837。先前：第134批新增 37 張素材，入選 7764 → 7801。先前：第133批新增 36 張素材，入選 7728 → 7764。先前：第132批新增 37 張素材，入選 7691 → 7728。先前：第131批新增 37 張素材，入選 7654 → 7691。先前：第130批新增 37 張素材，入選 7617 → 7654。先前：第129批新增 37 張素材，入選 7580 → 7617。先前：第128批新增 37 張素材，入選 7543 → 7580。先前：第127批新增 37 張素材，入選 7506 → 7543。先前：第126批新增 37 張素材，入選 7469 → 7506。先前：第125批新增 36 張素材，入選 7433 → 7469。先前：第124批新增 35 張素材，入選 7398 → 7433。先前：第123批新增 37 張素材，入選 7361 → 7398。先前：第122批新增 37 張素材，入選 7324 → 7361。先前：第121批新增 36 張素材，含日常設計、樂譜判讀及旅用電器規格。入選 7288 → 7324。先前：第120批新增 36 張素材，含日常設計、地圖判讀及飲料容器押金。入選 7252 → 7288。先前：第119批新增 34 張素材，含日常設計、運動判例及轉機行李。入選 7218 → 7252。先前：第118批新增 36 張素材，含日常設計、出版編目及捷運同站進出。入選 7182 → 7218。先前：第117批新增 35 張素材，含日常設計、歐元現金及雞蛋噴印與流通追溯。入選 7147 → 7182。先前：第116批收錄 45 張經覆核的新卡，包含日常物件、0403 地震警報及國際電話號碼。入選 7102 → 7147。先前：第 115 批新增 6 張日常物件段落、18 張照片定位素材。G757 六章共八分鐘，素材與評分另見 x115 覆核。入選 7078 → 7102。先前：G746 記憶卡重做研究：補研究 SY6D、覆核 SVY6D ready，新片名定稿觀眾分 7.33 過 6.5，入選 7060 → 7078。先前：原來如此再擴充第五輪：G749–G756 八組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6925 → 7060。先前：原來如此再擴充第四輪：G741–G745、G747、G748 七組新題案研究覆核 ready 且定稿觀眾分過 6.5，入選 6804 → 6925。先前：G736、G738 薄題補強，入選 6799 → 6804。先前：原來如此再擴充第三輪：G734–G740 七組新題案研究覆核後都 ready，入選 6680 → 6799。先前：G727、G731 補強新研究網，入選 6674 → 6680。先前：原來如此再擴充：G725–G732 八組新題案研究覆核後都 ready，入選 6531 → 6674。先前：薄題補強：G711、G714、G717、G718、G719、G723 補新研究網，入選 6490 → 6531（needs_check 卡移出）。先前：原來如此再擴充：8 組新長題案（G717–G724）的 118 張實讀新卡入選（needs_check 卡不入選）；入選 6372 → 6490。先前：原來如此擴充：7 組新長題案（G710–G716）的 112 張實讀新卡入選；入選 6260 → 6372。先前：OpenStax 補來源：G06 改用 wave104-openstax 的 11 張實讀新卡；入選 6249 → 6260。先前：重做被隔離的長題案：G668、G679、G685 三組改用 wave103-redo 的 44 張實讀新卡，恢復為可成題；入選 6205 → 6249。先前：第五十二輪 56 題候選全部經獨立非作者審核採納，長題組 G707–G709 雙輪審稿達標；入選題庫擴增至 6205 題。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -489380,7 +491508,33 @@
       "K143-0211",
       "K143-0212",
       "K143-0213",
-      "K143-0214"
+      "K143-0214",
+      "K144-0101",
+      "K144-0102",
+      "K144-0103",
+      "K144-0104",
+      "K144-0105",
+      "K144-0106",
+      "K144-0107",
+      "K144-0001",
+      "K144-0002",
+      "K144-0003",
+      "K144-0004",
+      "K144-0005",
+      "K144-0006",
+      "K144-0007",
+      "K144-0201",
+      "K144-0202",
+      "K144-0203",
+      "K144-0204",
+      "K144-0205",
+      "K144-0206",
+      "K144-0207",
+      "K144-0208",
+      "K144-0209",
+      "K144-0210",
+      "K144-0211",
+      "K144-0212"
     ],
     "overflow": [
       {
@@ -495534,6 +497688,169 @@
       "reason": "協議第 1.2 至 1.4 條及他當日的受訪說明處理選後在國會如何投票。選舉當日兩黨偏好表的百分比是按紙票排序另行計算。協議不能補作選民投票動機的證據。",
       "origin": "wave143-research-20261120",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave143-research-20261120.json"
+    },
+    {
+      "id": "X144C-NA01",
+      "question": "有切面的鋼手鐲隨手腕轉動就像碎鑽，能再做一題嗎？",
+      "reason": "機械固定細節各異，若只講多個切面輪流反光，K130-0405 的伍德斯托克佩鏈已回答。",
+      "existing_ids": [
+        "K130-0405"
+      ],
+      "source_ids": [
+        "X144C-S16"
+      ],
+      "source_locator": "X144C-S16 object-128246，Description，faceted steel studs。",
+      "origin": "wave144-craft-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave144-craft-20261120.json"
+    },
+    {
+      "id": "X144C-NA02",
+      "question": "把彩蛋換成裝飾牌，再問半透明琺瑯怎麼透出規律刻紋，會有新答案嗎？",
+      "reason": "換器物仍然是車床在金屬刻紋再施琺瑯，與既有加特契納宮彩蛋同一核心。",
+      "existing_ids": [
+        "K130-0403"
+      ],
+      "source_ids": [
+        "X144C-S17"
+      ],
+      "source_locator": "X144C-S17 Rose-engine lathe 段落、館方重建影片與 metal plaque。",
+      "origin": "wave144-craft-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave144-craft-20261120.json"
+    },
+    {
+      "id": "X144C-NA03",
+      "question": "溫網得主舉起的那一面玫瑰露水盤，確切是哪一年做的？",
+      "reason": "V&A 說 Elkington 製於1864，俱樂部 2023 年官方獎盃資料列1884。兩件來源都記1886為首次頒發，目前的證據無法消解製作日期差異。",
+      "existing_ids": [],
+      "source_ids": [
+        "X144C-S18",
+        "X144C-S08"
+      ],
+      "source_locator": "X144C-S18 The Venus Rosewater Basin、1864、first presented at Wimbledon in 1886。X144C-S08 Ladies’ Singles Championship 左欄，1884–1957／1958／2016；diamond-shaped mark 764。",
+      "origin": "wave144-craft-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave144-craft-20261120.json"
+    },
+    {
+      "id": "X144C-NA04",
+      "question": "威爾斯出土這枚胸針的每一條黑線，一定都用了同一種確切比例的銀、銅和鉛嗎？",
+      "reason": "藏品卡只辨認填料類型，另一研究取樣自拜占庭銀器，不能代替為本件驗料。",
+      "existing_ids": [],
+      "source_ids": [
+        "X144C-S06",
+        "X144C-S07"
+      ],
+      "source_locator": "X144C-S06 館藏 2015.25H，圖說首段 two clusters of transverse grooves。X144C-S07 Abstract、Introduction 及 Composition，本刊作者對九件拜占庭銀器取十二份樣本。",
+      "origin": "wave144-craft-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave144-craft-20261120.json"
+    },
+    {
+      "id": "X144E-NA01",
+      "question": "instax mini 12 近拍時把轉環多扭一格",
+      "reason": "K121-0006 與 X141E-NA04 已核同機型 30–50 公分近拍的取景中心校正。#2182 的 86/A 拍立得品牌起源另有退案；兩者都需比到核心。",
+      "existing_ids": [
+        "K121-0006",
+        "X141E-NA04"
+      ],
+      "source_ids": [
+        "X144E-S12"
+      ],
+      "source_locator": "X144E-S12 Perfect for Close-Up Shots、Close-up mode ON / OFF。",
+      "origin": "wave144-everyday-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave144-everyday-20261120.json"
+    },
+    {
+      "id": "X144E-NA02",
+      "question": "換成另一位棋手先摸車也能王車易位？",
+      "reason": "與剛完成的 K143-0006 同看觸碰車與王的順序、該側易位是否合法。",
+      "existing_ids": [
+        "K143-0006"
+      ],
+      "source_ids": [
+        "X144E-S13"
+      ],
+      "source_locator": "X144E-S13 4.4.1–4.4.3。",
+      "origin": "wave144-everyday-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave144-everyday-20261120.json"
+    },
+    {
+      "id": "X144E-NA03",
+      "question": "朋友說話讓耳機聽來比較小聲？",
+      "reason": "佩戴者開始說話觸發 Apple 對話感知、前方語音增強與媒體下降已在 K143-0005，改成咖啡廳地點不改答案。",
+      "existing_ids": [
+        "K143-0005"
+      ],
+      "source_ids": [
+        "X144E-S14"
+      ],
+      "source_locator": "X144E-S14 About Conversation Awareness。",
+      "origin": "wave144-everyday-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave144-everyday-20261120.json"
+    },
+    {
+      "id": "X144E-NA04",
+      "question": "排瓶機直接碰倒的最後一個瓶算不算？",
+      "reason": "K143-0007 已對照靜止掃瓶桿彈回的飛瓶與排瓶設備直接碰瓶，不將其中一半再投。",
+      "existing_ids": [
+        "K143-0007"
+      ],
+      "source_ids": [
+        "X144E-S15"
+      ],
+      "source_locator": "X144E-S15 6a.3、6b.4。",
+      "origin": "wave144-everyday-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave144-everyday-20261120.json"
+    },
+    {
+      "id": "R144-NA01",
+      "question": "第一對開本的目錄為什麼漏了一齣戲，翻進去又突然印著 79 頁？",
+      "existing_ids": [
+        "N7994"
+      ],
+      "source_ids": [
+        "R144-S02"
+      ],
+      "reason": "N7994 已循《特洛伊羅斯與克瑞西達》的目錄與頁碼解答，與本批《理查二世》的印中校改分開。",
+      "origin": "wave144-research-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave144-research-20261120.json"
+    },
+    {
+      "id": "R144-NA02",
+      "question": "35 號本少的兩句，是莎士比亞本人親手劃掉的嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "R144-S02",
+        "R144-S01"
+      ],
+      "reason": "原件只證兩種排印狀態。排字工如何誤解校樣屬研究者的重建，沒有劇作者親手改動的原件。",
+      "origin": "wave144-research-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave144-research-20261120.json"
+    },
+    {
+      "id": "R144-NA03",
+      "question": "可以只用兩面鏡子或一張摺紙，另拍一集解開國王怎麼少了兩句嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "R144-S05",
+        "R144-S02"
+      ],
+      "reason": "儀器演示與紙疊模型可幫助讀圖，單靠它們沒有另一組書頁、問題或獨立的書史答案。",
+      "origin": "wave144-research-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave144-research-20261120.json"
+    },
+    {
+      "id": "R144-NA04",
+      "question": "1632 年戲集上的墨筆訂正，能證明這兩行也有人事後用筆補上嗎？",
+      "existing_ids": [
+        "N2605"
+      ],
+      "source_ids": [
+        "R144-S02",
+        "R144-S01",
+        "R144-S08"
+      ],
+      "reason": "N2605 是第二對開本上的筆訂與鉛筆底稿。本案的兩種狀態見於不同印出的文字及欄位，不能將另一冊的筆跡移作證據。",
+      "origin": "wave144-research-20261120",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave144-research-20261120.json"
     },
     {
       "id": "F15-NA01",
