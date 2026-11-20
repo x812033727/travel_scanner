@@ -358,6 +358,14 @@
    "from": 0,
    "af": "rubberband=pitch=1.12:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
+  "s29": {
+   "from": 0,
+   "af": "rubberband=pitch=1.06:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s39": {
+   "from": 0,
+   "af": "asetrate=41280,aresample=48000,atempo=1.162791,volume=2.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
   "s10": {
    "from": 0,
    "af": "asetrate=33600,aresample=48000,atempo=1.428571,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
@@ -380,7 +388,7 @@
   },
   "s15": {
    "from": 0,
-   "af": "aselect='not(between(t,4.33,4.46))',asetpts=N/SR/TB,asetrate=43200,aresample=48000,atempo=1.111111,volume=-1.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "asplit[s15a][s15b];[s15a]atrim=end=4.335[s15c];[s15b]atrim=start=4.455,asetpts=PTS-STARTPTS[s15d];[s15c][s15d]acrossfade=d=0.010,asetrate=43200,aresample=48000,atempo=1.111111,volume=-1.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s17": {
    "from": 0,
@@ -393,10 +401,6 @@
   "s38": {
    "from": 0,
    "af": "asetrate=40800,aresample=48000,atempo=1.176471,volume=-2.0dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
-  },
-  "s39": {
-   "from": 0,
-   "af": "volume=2.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s35": {
    "from": 0,
@@ -428,7 +432,7 @@
   "zq934a10": 5.0,
   "zq934a12": 0.3,
   "zq934a13": 0.26,
-  "zq934a17": 0.55,
+  "zq934a17": 0.3,
   "zq934a19": 0.72,
   "zq934a20": 0.49,
   "zq934a24": 2.2,
@@ -450,6 +454,7 @@
  "panel_color": {},
  "panel_until": {},
  "vf": {
+  "s25": "eq=brightness=0.08:contrast=1.06:gamma=1.05,colorbalance=rs=0.05:bs=-0.05:rm=0.04:bm=-0.04",
   "s23": "eq=brightness=-0.03:saturation=1.08,colorbalance=rs=0.04:bs=-0.04:rm=0.04:bm=-0.04",
   "s37": "crop=1867:1050:26:0,scale=1920:1080:flags=lanczos",
   "s40": "eq=brightness=-0.05:saturation=0.52:gamma=0.90:contrast=1.04,colorbalance=rs=0.02:bs=-0.06:rm=0.02:bm=-0.05:rh=0.02:bh=-0.07,fade=t=out:st=6.30:d=0.45"
