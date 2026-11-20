@@ -18,19 +18,43 @@ import { localeUrl, siteUrl } from "@/lib/seo";
 const CONTEXT = "https://schema.org";
 const BRAND = "Mokaair";
 
+/** Parse comma-separated verified HTTPS entity URLs (e.g. official YouTube channel) for `sameAs`. */
+export function parseSameAs(raw: string | undefined): string[] {
+  if (!raw) return [];
+  const urls: string[] = [];
+  const seen = new Set<string>();
+  for (const part of raw.split(",")) {
+    const trimmed = part.trim();
+    if (!trimmed) continue;
+    try {
+      const parsed = new URL(trimmed);
+      if (parsed.protocol !== "https:") continue;
+      const normalized = parsed.toString();
+      if (seen.has(normalized)) continue;
+      seen.add(normalized);
+      urls.push(normalized);
+    } catch {
+      continue;
+    }
+  }
+  return urls;
+}
+
 /** The brand as a nested node. No `@context`: a node inside another graph inherits the
  *  enclosing one, and repeating it is noise a validator has to look past. */
-function brand(): object {
+function brand(sameAs?: readonly string[]): object {
+  const verified = sameAs ?? parseSameAs(process.env.NEXT_PUBLIC_SITE_SAME_AS);
   return {
     "@type": "Organization",
     name: BRAND,
     url: siteUrl,
     logo: `${siteUrl}/brand/mokaair-monogram.png`,
+    ...(verified.length ? { sameAs: verified } : {}),
   };
 }
 
-export function organization(): object {
-  return { "@context": CONTEXT, ...brand() };
+export function organization(sameAs?: readonly string[]): object {
+  return { "@context": CONTEXT, ...brand(sameAs) };
 }
 
 export function webSite(locale: Locale, searchEnabled = true): object {

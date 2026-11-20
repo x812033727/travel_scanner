@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { siteUrl } from "@/lib/seo";
 import {
   definedTerm, faqPage, breadcrumbs, foodEstablishment, foodEstablishments, guideArticle, itemList, organization,
-  touristDestination, videoObject, webSite, type MerchantCard,
+  parseSameAs, touristDestination, videoObject, webSite, type MerchantCard,
 } from "@/lib/structured-data";
 
 const parse = (value: object | null) => JSON.parse(JSON.stringify(value));
@@ -15,6 +15,16 @@ describe("organization", () => {
     expect(data.name).toBe("Mokaair");
     expect(data.url).toBe(siteUrl);
     expect(data.logo.startsWith(`${siteUrl}/`)).toBe(true);
+    expect(data).not.toHaveProperty("sameAs");
+  });
+
+  it("attaches verified HTTPS sameAs entity links and ignores non-HTTPS or malformed values", () => {
+    const links = parseSameAs(
+      " https://www.youtube.com/@mokaair , http://insecure.example, javascript:alert(1), not-a-url, https://www.youtube.com/@mokaair, https://www.threads.net/@mokaair ",
+    );
+    expect(links).toEqual(["https://www.youtube.com/@mokaair", "https://www.threads.net/@mokaair"]);
+    const data = parse(organization(links)) as { sameAs?: string[] };
+    expect(data.sameAs).toEqual(links);
   });
 });
 
