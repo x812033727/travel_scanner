@@ -25,7 +25,15 @@
   - 重繪通過 36 張：
     - 6 張 `nobody: true` 物件鏡（`06-clash-hero` 獨立海浪刀尖對峙構圖；`11-gorin-blank`、`44-niten-open`、`51-kensho-compendium`、`62-essay-compendium` 採 90 度正俯視袋綴線裝和本，薄軟紙封與內頁齊平、僅正中央折縫縫白線、零西洋硬殼圓拱書背與歐洲花布；`61-asahi-press` 1930 年代昭和鋼製滾筒輪轉印刷機送出全白新聞紙）。
     - 30 張人物鏡（`01-unveil`、`02-four-months` 兩尊無甲束髻右衽青銅劍士像配舉 4 指工作人員、`03-popular`、`04-tease-cave`、`05-tease-iori`、`08-cave-climb` 背影朝上爬向山洞、`10-record`、`13-iori-raises` 單座石碑配三腳木架滑輪繩索吊裝、`14-nameless` 背側石匠五指持槌鑿對空白碑、`15-real-blade`、`16-two-arrive` 無現代輪船海平線雙雄同時登島、`17-lightning`、`21-numata-doubt`、`26-officials` 素面肩衣零印章亂碼、`28-found` 無招牌旅店門口指向室內空手武藏、`31-oversleep` 標準右衽打呵欠、`32-carve`、`33-late-arrive` 船夫單槳搖櫓與武藏船首抱木刀、`34-scabbard` 左腰零殘留鯉口、`35-smile`、`36-bow`、`39-toyoda-listens` 右衽配全素襖門、`46-kensho-book` 全素色書脊、`49-ages` 全素布面書疊、`52-slowly` 素面床之間壁龕零掛軸字與雙手五指、`56-naoki-desk` 純背影素羽織、`57-naoki-plan`、`60-naoki-defends`、`63-just-right`、`64-accuse`）。
-- **匯入與分鏡送審**：70 景全數寫入 `keyframes/manifest.json`（`[x] keyframes drawn`），完成 `render`（`[x] frames rendered`），並執行 `review-push --slug curio-s14 --gate storyboard` 送交 `/admin/videos` 待站主核准分鏡後即可跑 `clips` → `assemble` → `qa` → `audience-review.md`。
+- **匯入與分鏡核准**：70 景全數寫入 `keyframes/manifest.json`（`[x] keyframes drawn`），完成 `render`（`[x] frames rendered`），推送 `storyboard` 並由站主核准（`[x] storyboard approved`），`clips` 產出 70 靜圖運鏡清單（`US$0.00`）。
+
+### 3. 成片合成、`qa`（`11 / 11`）與獨立觀眾視角審查（`8.60 / 10` PASS）
+- **成片合成與品管（`qa` `11 / 11` 全過）**：
+  - `assemble --slug curio-s14 --adopt-branding`：`final.mp4`（`sha256: 06530d2067da`，總長 `9m21.21s`／`16,835` 格，零片頭＋片尾 `mokaair-brand-package-v4-endscreen`，`-14.0 LUFS`）；八語音軌零成本重混對齊片尾長度後，`captions` 與 `qa` **`11 of 11 checks passed`**（`assemble`、`render`、`narration`、`pace`、`captions`、`metadata`、`facts`、`links`、`thumbnail`、`policy` `0.72`、`disclosure`）。
+- **獨立一般觀眾視角評分挑刺（`review/audience-review.md`）**：
+  - 六項指標得分：`8.8`（標題與縮圖吸睛度）、`8.5`（九語縮圖排版與說明欄前兩行鉤子）、`8.9`（開場前 300 秒留存力與敘事推進）、`8.5`（旁白語速、咬字與配樂混音聽感）、`8.2`（全片畫風統一性、光影色溫節奏與時代考證）、`8.7`（無字視覺敘事清楚度與首尾承諾兌現），**總平均 `8.60 / 10`（門檻 ≥ 8.0），`0` 阻斷級瑕疵（PASS）**；2026-11-19 承諾兌現對照題 **100% 正面兌現（PASS）**。
+- **雲端備份與後台推送**：完整備份至 Google Drive `S14` 雙目錄（`0 differences`）並執行 `review-push --slug curio-s14 --gate final` 送交後台審核（待站主核准 `final` 後再依序執行 `package` → `review-push --gate publish` → `publish` 核准後補推 `--gate languages`）。
+
 
 
 ---

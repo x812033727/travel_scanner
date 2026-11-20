@@ -17,6 +17,7 @@
   3. **泰語（`th`）單音節近音詞**：`ลือว่า`（「傳聞說」）必被聽成 `หรือว่า`（「或者」），改寫複合詞 `เล่าลือกันว่า`；`จากพาย`（「從船槳」）易聽成 `จากไผ่`（「從竹子」），寫全 `จากพายเรือ`；`ไม่เพี้ยนสักคำ` 易聽成 `ไม่เพียงสักคำ`，改寫 `ไม่ผิดแม้แต่คำเดียว`。
   4. **西／葡語（`es`／`pt`）分號問句與跨詞連音**：句中寫 `; ¿qué …?` 或 `; como …?` 時，TTS 不會升調而直接平讀過去，導致轉寫器把疑問詞聽成關係代名詞 `que／como`；一律拆成獨立句 `. ¿Pero qué …?`／`. Mas como …?`。西語句首避免 `Sumó`（易聽成相撲 `Sumo`，改用 `Añadió`）；葡語避免 `com Musashi`（連音成 `como o sachê`，改 `contra Musashi`）、`e o Nitenki`（連音成 `Unitank`，改 `e depois o livro Nitenki`）與 `do Numata`（連音成 `no mata`，改 `do livro Numata`）。
 - **雲端容器跑 `check-audio --second-opinion` 一次只跑一個語系**：日韓語常有 20–40 句進入 CPU Whisper `medium` 覆核（單語耗時 3–5 分鐘），若用 `&&` 一次串跑三語超過容器背景串流時限會觸發 uVM 重啟中斷；務必一語一個指令順序執行。
+- **若在 `assemble` 前先跑完八語 `dub`，`assemble` 釘上片尾 `branding` 後需零成本重混一次八語音軌**：在等待生圖期間先跑完八語 `dub` 時，`dubs/<locale>.m4a` 只含正片長度；等 `assemble --adopt-branding` 接上 `v4-endscreen` 片尾後，`qa` 的 `captions` 檢查會報 `the <loc> dub track ... does not match the branding`。此時重跑 `dub --provider minimax --locale en,ja,ko,es,pt,id,vi,th`（務必顯式帶 `--locale`，因 `DEFAULT_LOCALES` 僅含 `en,ja,ko`）會 100% 重用已快取單句音檔（`0 billable characters`），重新混入片尾長度後再跑 `captions`＋`qa` 即 `11/11` 全過。
 - 已升為規則：`.agents/skills/curio-episode/SKILL.md`、`.claude/skills/curio-episode/SKILL.md`。
 
 ## 2026-11-18 · 奇聞檔案局／原來如此事務所 · 縮圖全面升級正宗黑猫研究院（`@qiqiqushi0`）滿版置頂雙行粗黑邊＋「巨型代表物×戲劇衝突／反應」公式
