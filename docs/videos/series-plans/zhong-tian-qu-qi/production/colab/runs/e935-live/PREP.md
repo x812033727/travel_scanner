@@ -6,7 +6,7 @@
   `tools/{build934.sh,prep934.sh,rec934.sh,mkhints934.py,fw934.py,f0y934.py,span934.sh}`、`e934d1.sh`）、第 31、33 集的唐小棠背影寫法（`writer-tools/e031-r2/r2.py`、
   `e033-r2/r2.py`、`colab/runs/e931-live/mkspec.py`、`e933-live/mkspec.py`）、`r2-bible-e031-e040.md`（拍法 1–43、〈接點〉34→35 與 35→36、〈道具〉〈人物〉〈小角色〉〈場景〉〈原版必修〉第 35 集）、
   任務檔的教訓、兩份第 34 集審稿的通則。稿子 `docs/videos/zhong-tian-qu-qi-e035-r2/script.md`（35 鏡）。
-- **接點 34→35 照第 34 集成片寫**：`/root/mokaair-work/videos/_live-e934/zhong-tian-qu-qi-e934-dh/cut/e934-live.mp4`（244.6 秒）最後 15 秒抽 10 格看過：
+- **接點 34→35 照第 34 集成片寫**：`/root/mokaair-work/videos/_live-e934/zhong-tian-qu-qi-e934-dh/cut/e934-live.mp4` 最後 15 秒抽 10 格看過（當時 244.6 秒；**現在是 05:03 版 233.3 秒**，獨立審稿抽 15 格看過，s38–s40 不變、s01 不用改）：
   s38 阿令（灰白衣、木簪）朝畫右、背景暗下來的田與遠山；s39 許硯（藍灰袍、沒有外衣）肩上騎著小禾（只露腿、草兔子），朝畫右；s40 三個背影（短灰鬚老漢、鐵鏽紅婦人、男孩）在下緣，
   遠山上一條褐黑帶子散成滿天小黑點、右邊大垂柳、灰藍的暮色；最後約 0.3 秒全黑。第 35 集 s01 是**同一夜、許家屋內**（聖經〈接點〉34→35）：許硯坐桌左側、面向畫右、
   **披上舊灰外衣**（聖經：夜裡加外衣；第 34 集 s39 還沒披，中間回家了）、窗外黑暗裡小黑影撞窗框（接 s40 的蝗群）、只有桌上一朵火的暖光（接 s40 熄掉的暖光）。
@@ -21,7 +21,7 @@
   s35 心裡話：`OFFSCREEN_SPEECH = False` 的刻意寫法），其他陷阱 0。台詞 36 句逐字照稿。
 - **拆鏡**（`sid`，同第 31 集的 s21b）：**s02b**（c02 先心裡話閉嘴、再開口說：嘴從閉到開模型對不準）、**s11b**（c11 好感 +3 的正臉反應 s11 不說話，後半句從背後說）、
   **s12b**（c12 鴨子出籠一鏡、唐小棠報帳一鏡）、**s17b**（c17 近景裡看不到身後鴨子回頭：六隻鴨子同時轉頭的近景，唐小棠的話蓋在上面）、**s20b**（c20 全景裡的小禾數不出數，拆成她的中近景）。
-- **集長**：BUY 一個種子 258 秒（5 秒 4、6 秒 26、8 秒 9、10 秒 1）；稿子估 193 秒；剪接以錄音人聲為準，預估成片約 3 分 20 秒–3 分 40 秒（第 34 集稿子 215 秒、BUY 282 秒、成片 244.6 秒）。
+- **集長**：BUY 一個種子 262 秒（5 秒 4、6 秒 25、8 秒 9、10 秒 2；獨立審稿後 s22 10 秒、s31 8 秒）；稿子估 193 秒；剪接以錄音人聲為準，預估成片約 3 分 20 秒–3 分 40 秒（第 34 集稿子 215 秒、BUY 282 秒、成片 233.3 秒，05:03 版）。
 - 照聖經與第 33、34 集審稿通則改稿子的地方（各鏡 zh 有寫）：
   | 稿子 | 真人版 | 為什麼 |
   | --- | --- | --- |
@@ -52,7 +52,9 @@
 | `set-hantian-yang-chen-l1` 與 `-chen-liu`／`-an`／`-shui`（`-geng` 備用） | 同上：清晨灰金加薄霧與裁切 | s20／s20b s22 s23 s24／s25／s21 |
 | `set-cunkou-men-l1`／`-zha-l1`／`-ding-l1`／`-kong-l1`／`-dao-l1` | `cunkou_crops.sh`：`set-cunkou-l1` 裁切（柵門、柵門的木頭與橫木、瓦頂與天、橘紅天、土路與小屋） | s28 s29 s32 s34／s35／s31／s27 s30／s33 |
 
-沿用：e922 的 `set-xujia-wu-ye-table-l1`（s01、s03、s04、s08、s09、s11b）、`set-cunkou-l1`（s26）。
+**獨立審稿後改送**（§7）：`set-hantian-yang-zong2-*`（取代 `-zong-*`，建議 3）、`set-hantian-yang-chen2-*`（取代 `-chen-*`，建議 2）、**付費** `set-cunkou-zha2-l1`（取代 `set-cunkou-l1`，建議 1）與它的免費裁切 `-zha2-men`／`-zha`／`-ding`／`-kong`／`-dao`／`-wai`（`cunkou_zha2_crops.sh`；`-wai` 是必改 3）。上表第一版的田與村口圖留著、不再送。
+
+沿用：e922 的 `set-xujia-wu-ye-table-l1`（s01、s03、s04、s08、s09、s11b）。
 
 ## 3. d1（種子 9351101／9351102）
 
@@ -63,12 +65,12 @@
 | scratchpad `tools/prep935.sh` | 照 `prep934.sh` 的順序與檢查，加：唐小棠的名字與圖只在 s11、背影鏡的寫法、沒有高立領／淡杏外衣／金算盤；屋內沒有 candle／yard；田沒有潭字、只有這一塊水田是綠的；村口沒有門樓／欄杆／籬笆；鴨子不寫數字；火把只在村口、六支每支在一個人手上；布鞋句只在全景、流民草鞋。log `tools/prep935.log` |
 | scratchpad `e935d1.sh` | 80 支，G4、session `zt-live3`（**先確認沒有別的集在跑**）、兩輪補缺、跑完釋放 VM。**沒有執行**（`DRY=1` 0 錯） |
 
-**檢查結果（2026-11-20）**：`build935.sh` 40 鏡、storyboard-check 193 秒、shot_reading 9 個 `cast.speaker`（刻意）；免費圖 21 張逐位元重建相同；`set-xujia-wu`、`set-cunkou`、`set-hantian-yang` 最新版 l1；
-st1 DRY `check_manifest` 0／0、st1 preflight 0 錯 1 警告（s32 許硯 angle-b 帶笑：d1 已拿掉）；**80 支、516 秒**（5 秒 8、6 秒 52、8 秒 18、10 秒 2）；分隔句每支各一次；精修句漏進 d1 0；
+**檢查結果（2026-11-20，獨立審稿套用後重跑）**：`build935.sh` 40 鏡、storyboard-check 193 秒、shot_reading 9 個 `cast.speaker`（刻意）；免費圖 38 張逐位元重建相同（本集第一版 21 張＋審稿後的 `-zong2`／`-chen2` 11 張＋改過的村口圖的裁切 6 張；付費的 `set-cunkou-zha2-l1` 本身不重建）；`set-xujia-wu`、`set-cunkou`、`set-hantian-yang` 最新版 l1；
+st1 DRY `check_manifest` 0／0、st1 preflight 0 錯 1 警告（s32 許硯 angle-b 帶笑：d1 已拿掉）；**80 支、524 秒**（5 秒 8、6 秒 50、8 秒 18、10 秒 4；獨立審稿套用後）；分隔句每支各一次；精修句漏進 d1 0；
 `prompt_sha256` 與兩種子一致；送圖、點名、場景、光線逐鏡相符；**preflight 0 錯 0 警告**；`check_manifest.py`、`h3r.sh check` 0／0；否定名詞、會長字的名詞、掛著的東西、open、點名畫外人、
 插鏡地點字、兵器字、泥／金箔、潭字、唐小棠在 s11 以外被點名，全 0。`e935d1.sh` `DRY=1` 0 錯。
 
-**估價**：照第 34 集的估法（80 支 564 秒約 25–29 CU）與第 32 集實跑（78 支 518 秒約 2.4 小時），本集 80 支 516 秒約 **2.3–2.7 小時、23–27 CU（約 US$2.3–2.7）**。
+**估價**：照第 34 集的估法（80 支 564 秒約 25–29 CU）與第 32 集實跑（78 支 518 秒約 2.4 小時），本集 80 支 524 秒約 **2.3–2.7 小時、23–27 CU（約 US$2.3–2.7）**。
 Colab 餘額以跑之前的數字為準（任務檔記 2026-11-19 餘額 405.99 CU，第 33 集精修、第 34 集 fix2 與精修等加購決定）；**剩約 100 CU 時先問站主**。
 
 ## 4. 錄音（`tools/rec935.sh`）與錄音後核對
@@ -138,7 +140,7 @@ s01 兩句系統合 4.7 秒＋停頓，放得下 8 秒；s02 3.45 秒放得下 6
 
 ## 5. 還缺、要付費才補得上的（都不擋 d1；建議，不自己跑）
 
-1. **村口沒有門樓、柵門兩邊沒有籬笆**（`set-cunkou-l1`）：本集照稿子備案（錢員外站在土台上）、流民在柵門外的土路上。第 36 集第一場「拉開門閂、流民進來」也在這張圖上：
+1. ~~**村口沒有門樓、柵門兩邊沒有籬笆**~~ **已做（2026-11-20，§7）**：`set-cunkou-zha2-l1`。原文：（`set-cunkou-l1`）：本集照稿子備案（錢員外站在土台上）、流民在柵門外的土路上。第 36 集第一場「拉開門閂、流民進來」也在這張圖上：
    柵門擋不住人是第 36 集最明顯的問題。若要補：Qwen「只改一件事」在柵門兩邊各加一段齊胸的木柵（同材質的圓木），新 id `set-cunkou-zha2-l1`／再免費重裁，約 **1.5–2 CU**，第 35、36 集共用。
    **建議第 36 集前置時一起決定**；本集的鏡（s26、s28、s29、s32、s34）看 d1：流民沒有繞過柵門走進來就不改。
 2. **屋內偏 CG**（e922 `set-xujia-wu-ye-l1`，README 記過）：13 鏡都在這張圖上。草稿 CG 感太重才考慮灰底重畫夜裡屋內，約 **1.5–2 CU**（第 36–38 集的屋內也受益）；**建議先看 d1**。
@@ -156,3 +158,29 @@ s01 兩句系統合 4.7 秒＋停頓，放得下 8 秒；s02 3.45 秒放得下 6
 2. **錄音沒錄完**（站台 TTS 429，3／36）：再跑 `tools/rec935.sh` 接著錄、`tools/rec935-check.sh` 核對，寫進 §4；BUY 照結果重核（不擋 d1：錄音只影響剪接，但唐小棠九句是成片的聲音）。
 3. 第 34 集定版後重核 s01（見本檔開頭）。
 4. 花錢：`e935d1.sh` 約 23–27 CU，等協調者／站主；先確認 `zt-live3` 上沒有別的集在跑。
+
+## 7. 獨立審稿怎麼套（2026-11-20，`writer-tools/e035-r2/review-independent.md`；協調者的決定）
+
+改前的檔在 scratchpad `e935prep/*-before-review.*`（`r2`、`mkspec`、`PREP`、`cunkou_crops`、`hantian_yang`、`prep935`、`e935d1`，加 `refs-before-review/` 16 張第一版圖）。
+改完重跑 `build935.sh`（40 鏡、lint 171 秒、shot_reading 9 個刻意的 `cast.speaker`、其他陷阱 0）、`prep935.sh`（**80 支、524 秒**、preflight 0／0、`check_manifest`／`h3r` 0／0、所有掃描 0、免費圖 38 張逐位元相同，加了下表每項的斷言）、`e935d1.sh` `DRY=1` 0 錯。
+
+| 項目 | 怎麼處理 |
+| --- | --- |
+| 必改 1：s05 低角度「在桌底下」跟 `-di` 相反 | 改中景、略高往下（照圖）：小禾蹲在桌子左前腳邊、半躲在桌沿下、左手抓桌腳；動作 `shrinks closer against the table leg` |
+| 必改 2：s13 跌坐的位置（`-zong2-an` 六成是水） | `on the low earthen bank in the right half of the frame, where it runs from the trunk of the big old tree down to the lower right as in the picture, the flooded paddy below him at the left` |
+| 必改 3：s29 柵門佔三分之二 | 新的免費裁切 `set-cunkou-zha2-wai-l1`（`720:405:360:220`，改過的村口圖上裁）；位置句改「石溝與木板橋後、柳樹一帶的乾地」；流民加 `their faces gaunt and pleading, eyes wet, not smiling` |
+| 必改 4：s12、s19、s20、s34 沒寫表情 | 開籠的四人 `busy and harried, not smiling`；s19 阿令 `calm and intent, not smiling`；s20 `intent and still, not smiling`；s34 守門兩人 `grave, not smiling` |
+| 必改 5：錢員外慢（2.2–2.9 字／秒） | **BUY s22 8→10、s31 6→8**（每種子 +6 秒；兩種子 +12 秒，約 +0.5 CU） |
+| 必改 6：s25 長竿與哨繩 | `{POLE} held upright out at her right side, well apart from the whistle's cord` |
+| 建議 1：村口柵門（協調者定：d1 前改、第 35、36 集共用） | **付費改圖** `set-cunkou-zha2-l1`：Colab `zt-live2`（G4），Qwen-Image-Edit-2509 只改一件事，4 個種子（9351201–9351204），清單 `cunkou-zha2/jobs.json`，輸出 `~/mokaair-work/videos/zhong-tian-qu-qi-e935-dh/cunkou-zha2/`（`sheet.jpg`）。第一次 Hugging Face 下載模型 429 失敗（`run2.log`），重跑一次成功（`run3.log`）。**選 9351204**：兩扇圓木門扇、門縫、兩根橫木以鐵件扣在門縫上（下面那根齊腰＝門閂）、左柱接籬笆、右下一小段籬笆；其他三支：木板門加圓環（像屋門）、Z 形斜撐、交叉斜撐還在。**花費**：Colab 餘額 351.15 → 348.31 CU（05:15 → 05:31），**最多 2.84 CU**（05:19 時 `zt-live3` 也有一個別的代理的 assignment，部分可能是它的）；跑完 `ONLY_SELF=1 colab-release.sh zt-live2`，`colab sessions` 沒有 session、assignments 0、沒有未記名 VM。重裁 `cunkou_zha2_crops.sh` 六張；`r2.py` 的 `GATE`／`ENTRANCE` 改寫兩扇門扇、鐵件扣住的橫門閂與籬笆，s35 寫門縫上的鐵件；聖經〈場景〉村口列、〈道具〉柵門列、〈接點〉35→36 跟著改。**沒有門樓**仍照備案（錢員外站土台） |
+| 建議 2：`-chen` 遠樹像開花的果樹 | `hantian_yang_trees.py`（遠處樹列降飽和、拉向暗橄欖褐）再上晨霧調色 → `-chen2` 一族，s20–s25 改送 |
+| 建議 3：`-zong` 不像棕色半明半暗；clear-and-still | 重調 `-zong2`（不加綠、更暗、暗角），s12–s18 改送；`mkspec` 把 s12、s12b、s13、s15–s18、s17b 的 clear 句換成 `the air dim and dusty under the dull brown sky`（s14 仍是風） |
+| 建議 4：火把鏡的 clear 句 | s29、s30、s32、s34、s35 → `the warm evening air, the torch flames wavering`（審稿寫 flickering，`flick` 是會長字的掃描字，改 wavering）；s28、s31、s33 → s26 的晚風句 |
+| 建議 5：屋內窗外 | `black with night` → `dark blue with night`（9 處） |
+| 建議 6：s16 站位 | 阿令 `further along the bank toward the tree`，拿竹竿的人 `nearer us at the lower right of the bank`；s12b 不改 |
+| 建議 7：屋內站位統一 | s04、s08、s09、s11b 許硯 `at the left side of the small dark square table`；s09、s11b 唐小棠 `at the right side of the table` |
+| 建議 8：s17b、s21「貼水面」與俯看的圖 | **接受**（插鏡、背景只當水面） |
+| 建議 9：第 34 集成片 233.3 秒 | 本檔開頭與 §1 改了（05:03 版；s38–s40 不變，s01 不用改）；第 34 集定版後照舊再核 |
+| 建議 10：s14 按緞帶的手蓋住丸子 | 左手那一拍拿掉，改 `the loose tail of one pink ribbon fluttering in the wind at the side of her head, both buns still clear` |
+| 建議 11：s31 指的門閂不在框裡 | `thrusts it down toward the gate below him` |
+| 建議 12：錄音後重核 s24、s30、s12b、s20b | **等錄音**（協調者排 08:10 UTC 重試 `rec935.sh`）；`rec935-check.sh` 的 `span935-buy.txt` 會標出放不下的鏡；s24 超過 7.3 秒就改 10 秒 |

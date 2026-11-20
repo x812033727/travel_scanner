@@ -36,8 +36,10 @@ Run: python3 -I mkspec.py
 - Sets (r2.py PLACES): the room by night: e922's set-xujia-wu-ye-table-l1 (s01, s03, s04, s08, s09, s11b) and the free crops
   -chuang (s02, s02b, s06, s10), -qiang (s11), -zhuo (s07), -di (s05), swapped for gen-dh's/pilot.py's set-xujia-wu-l1 (the day
   room, never sent); the fields: the free grades and crops of set-hantian-yang-l1 (hantian_yang.sh), swapped for pilot.py's
-  newest set-shentan (gen-dh's dh-set-shentan-t1, never sent); the gate: set-cunkou-l1 (s26, gen-dh's own pick, not swapped) and
-  the free crops -kong (s27, s30), -men (s28, s29, s32, s34), -ding (s31), -dao (s33), -zha (s35). Every swap is sent with an
+  newest set-shentan (gen-dh's dh-set-shentan-t1, never sent); the gate (after the independent review, 建議 1): the paid edit
+  set-cunkou-zha2-l1 (s26: two gate leaves, a crossbar in iron fittings, a log fence) and its free crops -kong (s27, s30), -men
+  (s28, s32, s34), -wai (s29, 必改 3), -ding (s31), -dao (s33), -zha (s35), swapped for gen-dh's/pilot.py's set-cunkou-l1 (never
+  sent). The fields send the second grades -zong2 (建議 3) and -chen2 (建議 2). Every swap is sent with an
   absolute path by prep935.sh.
 - No seed of this episode has been run. Seeds 9351101/9351102.
 """
@@ -245,9 +247,9 @@ PLACE = {
          "set-hantian-yang-xi-l1.png": ["s19"], "set-hantian-yang-chen2-l1.png": ["s20"],
          "set-hantian-yang-chen2-liu-l1.png": ["s20b", "s22", "s23", "s24"], "set-hantian-yang-chen2-shui-l1.png": ["s21"],
          "set-hantian-yang-chen2-an-l1.png": ["s25"]},
-    CK: {"set-cunkou-l1.png": ["s26"], "set-cunkou-kong-l1.png": ["s27", "s30"],
-         "set-cunkou-men-l1.png": ["s28", "s29", "s32", "s34"], "set-cunkou-ding-l1.png": ["s31"], "set-cunkou-dao-l1.png": ["s33"],
-         "set-cunkou-zha-l1.png": ["s35"]},
+    CK: {"set-cunkou-zha2-l1.png": ["s26"], "set-cunkou-zha2-kong-l1.png": ["s27", "s30"],
+         "set-cunkou-zha2-men-l1.png": ["s28", "s32", "s34"], "set-cunkou-zha2-wai-l1.png": ["s29"],
+         "set-cunkou-zha2-ding-l1.png": ["s31"], "set-cunkou-zha2-dao-l1.png": ["s33"], "set-cunkou-zha2-zha-l1.png": ["s35"]},
 }
 seen = set()
 for gen, pics in PLACE.items():

@@ -6,7 +6,7 @@ R=/home/user/travel_scanner; P=$R/docs/videos/series-plans/zhong-tian-qu-qi/prod
 E=/root/mokaair-work/videos/_live-e934/zhong-tian-qu-qi-e934-dh; VJ=$R/docs/videos/zhong-tian-qu-qi-e034-r2/video.json
 mkdir -p $E/cut; [ -f $E/cut/e934-live.mp4 ] && { mkdir -p $E/cut/old-$(date +%H%M); mv $E/cut/e934-live.* $E/cut/final.log $E/cut/old-$(date +%H%M)/ 2>/dev/null; }
 rm -rf $E/segments-v4
-# 精修片由 live-action/stage.py 34 放好（精修畫面＋草稿原聲＋剪點 -> clips/sNN-t1.mp4；s15 s17 s30 s33 是 fix3（REVIEW 3，fix3/plan.md）；s09 s37 是 fix1、s28 s32 是 fix1 備案 9341212／9341211，
+# 精修片由 live-action/stage.py 34 放好（精修畫面＋草稿原聲＋剪點 -> clips/sNN-t1.mp4；s15 s17 s30 s33 是 fix3（REVIEW 3，fix3/plan.md）；s32 是 fix4 9341511（背影甩袖走開、a31 鋪錄音，fix4/plan.md）；s09 s37 是 fix1、s28 是 fix1 備案 9341212，
 # fix2 兩輪都不如 fix1，見 colab/runs/e934-live/fix2/plan.md）；缺片或 picks.json 比片新（重跑過 refine-prep.py 34）就重跑。
 # stage.py 把 $E/audio、$E/music 連到 zhong-tian-qu-qi-e934-dh/audio、music；music/ 是一個目錄（e934 第一版手做，照 e933）：
 # _series/zhong-tian-qu-qi/music 的 cue-*.mp3 各一個連結，cue-drone31／tension31.mp3 -> assets/music/e031-e032/cue-suspense／tension.mp3，
@@ -30,13 +30,13 @@ cutw laugh-s25 s25 0.40 2.30 "asetrate=29760,aresample=48000,atempo=1.612903,afa
 [ $L/buzzloop.wav -nt $C/s40-t1.mp4 ] || { ffmpeg -nostdin -v error -y -ss 1.5 -to 6.5 -i $C/s40-t1.mp4 -vn -ac 2 -ar 48000 $L/_b.wav && \
   ffmpeg -nostdin -v error -y -i $L/_b.wav -i $L/_b.wav -i $L/_b.wav -i $L/_b.wav -filter_complex "[0][1]acrossfade=d=0.5[x];[x][2]acrossfade=d=0.5[y];[y][3]acrossfade=d=0.5" $L/buzzloop.wav && rm -f $L/_b.wav; } || exit 1
 # 剪接表假設的剪點與種子（picks.json 由 colab/runs/e934-live 的 refine-prep.py 34 picks-merged.tsv fix1/review-picks.tsv
-# fix2/review-picks.tsv cut-trims.tsv review3-trims.tsv fix3/review-picks.tsv 產生，scratchpad e934refine.sh PREP=1）。cut-trims.tsv 是第一版剪接改的剪點：s08 終點 10.125→7.5；
+# fix2/review-picks.tsv cut-trims.tsv review3-trims.tsv fix3/review-picks.tsv fix4/review-picks.tsv 產生，scratchpad e934refine.sh PREP=1）。cut-trims.tsv 是第一版剪接改的剪點：s08 終點 10.125→7.5；
 # review3-trims.tsv 是 REVIEW 3 的剪點（s03 s12 s16 剪尾；s33 見 fix3 結果）。
 # 整格：起點往下、終點往上取到小數三位，容差 0.001；只警告不停。
 python3 -c "
 import json;p=json.load(open('$E/picks.json'))
-want={'s01':(0.0,4.0),'s02':(1.5,6.583),'s03':(0.0,6.875),'s04':(0.75,6.25),'s05':(1.875,8.0),'s06':(1.0,6.583),'s07':(3.5,8.0),'s08':(0.0,7.5),'s09':(0.0,8.0),'s10':(2.25,6.583),'s11':(0.208,6.583),'s12':(0.125,5.75),'s13':(1.208,8.0),'s14':(0.0,6.375),'s15':(0.75,6.125),'s16':(2.0,5.333),'s17':(2.375,8.0),'s18':(0.542,6.583),'s19':(2.333,6.583),'s20':(0.75,6.583),'s21':(1.0,8.0),'s22':(0.458,6.583),'s23':(0.0,6.583),'s24':(0.0,5.167),'s25':(0.0,8.0),'s26':(2.75,5.167),'s27':(0.25,8.0),'s28':(0.875,8.0),'s29':(0.25,6.5),'s30':(1.25,7.5),'s31':(1.25,6.583),'s32':(0.0,7.5),'s33':(0.0,9.0),'s34':(0.292,6.583),'s35':(2.0,6.583),'s36':(2.0,6.583),'s37':(0.583,6.583),'s38':(1.0,6.25),'s39':(1.25,8.0),'s40':(0.0,6.75)}
-seed={'s01':9341102,'s07':9341102,'s08':9341102,'s09':9341211,'s12':9341102,'s13':9341102,'s14':9341102,'s20':9341102,'s21':9341102,'s24':9341102,'s25':9341102,'s27':9341102,'s28':9341212,'s30':9341415,'s15':9341411,'s17':9341413,'s33':9341420,'s32':9341211,'s34':9341102,'s35':9341102,'s36':9341102,'s37':9341211,'s39':9341102}
+want={'s01':(0.0,4.0),'s02':(1.5,6.583),'s03':(0.0,6.875),'s04':(0.75,6.25),'s05':(1.875,8.0),'s06':(1.0,6.583),'s07':(3.5,8.0),'s08':(0.0,7.5),'s09':(0.0,8.0),'s10':(2.25,6.583),'s11':(0.208,6.583),'s12':(0.125,5.75),'s13':(1.208,8.0),'s14':(0.0,6.375),'s15':(0.75,6.125),'s16':(2.0,5.333),'s17':(2.375,8.0),'s18':(0.542,6.583),'s19':(2.333,6.583),'s20':(0.75,6.583),'s21':(1.0,8.0),'s22':(0.458,6.583),'s23':(0.0,6.583),'s24':(0.0,5.167),'s25':(0.0,8.0),'s26':(2.75,5.167),'s27':(0.25,8.0),'s28':(0.875,8.0),'s29':(0.25,6.5),'s30':(1.25,7.5),'s31':(1.25,6.583),'s32':(0.0,7.0),'s33':(0.0,9.0),'s34':(0.292,6.583),'s35':(2.0,6.583),'s36':(2.0,6.583),'s37':(0.583,6.583),'s38':(1.0,6.25),'s39':(1.25,8.0),'s40':(0.0,6.75)}
+seed={'s01':9341102,'s07':9341102,'s08':9341102,'s09':9341211,'s12':9341102,'s13':9341102,'s14':9341102,'s20':9341102,'s21':9341102,'s24':9341102,'s25':9341102,'s27':9341102,'s28':9341212,'s30':9341415,'s15':9341411,'s17':9341413,'s33':9341420,'s32':9341511,'s34':9341102,'s35':9341102,'s36':9341102,'s37':9341211,'s39':9341102}
 bad=[f'{s} start {p[s][\"trim\"].get(\"start\",0)} end-before {p[s][\"trim\"].get(\"end-before\",0)} (want {a} {b})' for s,(a,b) in want.items()
      if s in p and (abs(p[s]['trim'].get('start',0)-a)>0.001 or abs(p[s]['trim'].get('end-before',0)-b)>0.001)]
 bad+=[f'{s} seed {p[s][\"seed\"]} (want {v})' for s,v in seed.items() if s in p and p[s]['seed']!=v]
@@ -48,9 +48,9 @@ print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
 # 剪接表鋪的錄音在 audio/ 改寫過（原檔在 audio/orig/；_note〈錄音〉）：整平到 −13.5 LUFS 的 a02（重錄版）a08 a10 a12 a13 a33、
 # REVIEW 3：a12 改成 rubberband 1.15 後照 s11 嘴的三段重排、a17 rubberband 1.52 兩段各 atempo 0.85 重排（scratchpad e934r3/mkaud.py，再用 lev934.py SRC= 整平）；
 # a17（重錄版，rubberband 1.52）、a19（重錄版，rubberband 1.10）、a20（來源 a20-p85）、a24（來源 a24-p119）、
-# a25（rubberband 1.31＋atempo 1.15）、a40（asetrate 0.86），系統 a07 a09 a32 到 −13.8。少了改寫就停。
+# a25（rubberband 1.31＋atempo 1.15）、a40（asetrate 0.86）、a31（fix4：來源 a31-p80，s32 背影鋪錄音），系統 a07 a09 a32 到 −13.8。少了改寫就停。
 A=/root/mokaair-work/videos/zhong-tian-qu-qi-e934-dh/audio
-for n in 02 07 08 09 10 12 13 17 19 20 24 25 32 33 40; do [ -f $A/orig/zq934a$n.wav ] || { echo "audio/zq934a$n.wav is not the leveled file (no orig/ copy)"; exit 1; }; done
+for n in 02 07 08 09 10 12 13 17 19 20 24 25 31 32 33 40; do [ -f $A/orig/zq934a$n.wav ] || { echo "audio/zq934a$n.wav is not the leveled file (no orig/ copy)"; exit 1; }; done
 # REVIEW 3 拿掉 s24（輪頂水簾像透明塑膠片，審查 2 中等 5；s23 全景接 s25 大笑看過接得上，colab/runs/e934-live/review3-plan.md B3）；
 # $VL 是 video.json 去掉 DROP 的鏡。s24 仍在 picks.json（精修過），只是不進成片。
 VL=$E/video-live.json; DROP="s24"
