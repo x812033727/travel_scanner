@@ -84,6 +84,8 @@ CLEAR = "the air is clear and still, a clean natural film image"
 WINDY = "the air is clear, a dry wind blowing, a clean natural film image"
 MIST = "a thin white mist lying low over the water, a clean natural film image"
 BREEZE = "a light evening breeze in the air, a clean natural film image"
+DUSTY = "the air dim and dusty under the dull brown sky, a clean natural film image"
+TORCHY = "the warm evening air, the torch flames wavering, a clean natural film image"
 INSERTS = ["s07", "s21", "s35"]
 NOPERSON = ["s07", "s12", "s17b", "s21", "s29", "s35"]
 
@@ -187,6 +189,12 @@ add("s11", [ONLY_SHE, NO_COPY])
 add("s29", [SHOES, SANDALS])
 # The clean sentence (e034 review 必改 1): the wind and the swarm, the dawn mist, the evening breeze.
 add("s14", [CLEAR, WINDY])
+for sid in ("s12", "s12b", "s13", "s15", "s16", "s17", "s17b", "s18"):  # review 建議 3: the swarm-dimmed afternoon
+    add(sid, [CLEAR, DUSTY])
+for sid in ("s29", "s30", "s32", "s34", "s35"):  # review 建議 4: the torches
+    add(sid, [CLEAR, TORCHY])
+for sid in ("s28", "s31", "s33"):
+    add(sid, [CLEAR, BREEZE])
 for sid in ("s20", "s20b", "s21", "s22", "s23", "s24", "s25"):
     add(sid, [CLEAR, MIST])
 add("s26", [CLEAR, BREEZE])
@@ -231,12 +239,12 @@ PLACE = {
     WU: {"set-xujia-wu-ye-table-l1.png": ["s01", "s03", "s04", "s08", "s09", "s11b"],
          "set-xujia-wu-ye-chuang-l1.png": ["s02", "s02b", "s06", "s10"], "set-xujia-wu-ye-qiang-l1.png": ["s11"],
          "set-xujia-wu-ye-zhuo-l1.png": ["s07"], "set-xujia-wu-ye-di-l1.png": ["s05"]},
-    ST: {"set-hantian-yang-zong-l1.png": ["s12"], "set-hantian-yang-zong-liu-l1.png": ["s12b", "s16"],
-         "set-hantian-yang-zong-an-l1.png": ["s13", "s17"], "set-hantian-yang-zong-tian-l1.png": ["s14"],
-         "set-hantian-yang-zong-geng-l1.png": ["s15", "s18"], "set-hantian-yang-zong-shui-l1.png": ["s17b"],
-         "set-hantian-yang-xi-l1.png": ["s19"], "set-hantian-yang-chen-l1.png": ["s20"],
-         "set-hantian-yang-chen-liu-l1.png": ["s20b", "s22", "s23", "s24"], "set-hantian-yang-chen-shui-l1.png": ["s21"],
-         "set-hantian-yang-chen-an-l1.png": ["s25"]},
+    ST: {"set-hantian-yang-zong2-l1.png": ["s12"], "set-hantian-yang-zong2-liu-l1.png": ["s12b", "s16"],
+         "set-hantian-yang-zong2-an-l1.png": ["s13", "s17"], "set-hantian-yang-zong2-tian-l1.png": ["s14"],
+         "set-hantian-yang-zong2-geng-l1.png": ["s15", "s18"], "set-hantian-yang-zong2-shui-l1.png": ["s17b"],
+         "set-hantian-yang-xi-l1.png": ["s19"], "set-hantian-yang-chen2-l1.png": ["s20"],
+         "set-hantian-yang-chen2-liu-l1.png": ["s20b", "s22", "s23", "s24"], "set-hantian-yang-chen2-shui-l1.png": ["s21"],
+         "set-hantian-yang-chen2-an-l1.png": ["s25"]},
     CK: {"set-cunkou-l1.png": ["s26"], "set-cunkou-kong-l1.png": ["s27", "s30"],
          "set-cunkou-men-l1.png": ["s28", "s29", "s32", "s34"], "set-cunkou-ding-l1.png": ["s31"], "set-cunkou-dao-l1.png": ["s33"],
          "set-cunkou-zha-l1.png": ["s35"]},

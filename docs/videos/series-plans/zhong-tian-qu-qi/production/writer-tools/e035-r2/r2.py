@@ -447,7 +447,7 @@ HEAD = [
     "- **軸線（照圖）**：屋內照 `set-xujia-wu-ye-l1`（拍法 42）：窗在後牆**左**、小方桌在中間偏右、門在畫外右；許硯坐桌**左側**朝畫右，唐小棠從右邊進來站桌右側，小禾在桌下。田照 `set-hantian-yang-l1`：水田在前、田埂後是乾裂的地、左邊小屋遠山、**右邊大樹下一道長草的高田埂**——稿子『田埂在左、白線由左往右』照圖反過來：人、竹籠、鴨子從右邊田埂出發，白線往**左**推進水田；錢員外在同一道田埂的大樹下。村口照 `set-cunkou-l1`：柵門在**左**（小瓦頂、交叉斜撐、一根粗橫木＝門閂）、中間垂柳與木板橋、土路彎到右邊三間泥磚屋；**圖上沒有門樓、沒有籬笆**：錢員外照稿子的備案站在柵門旁的土台上（s31）；村裡是鏡頭這側與右邊村道，流民在柵門外左邊（聖經〈接點〉35→36：柵門左、村道右）。",
     "- **時間與光**：第一場夜、只有桌上一朵火（拍法 8；稿子的油燈照圖寫成『桌上那一朵火』、不寫蠟燭）；第二場兩天後下午，蝗群壓在天上的棕色半明半暗（本集免費做的 `-yang-zong`）→ 同日傍晚橘光（`-yang-xi`，s19）→ 隔天清晨灰金光、水上薄霧（`-yang-chen`，s20–s25）；第三場五天後傍晚橘紅天（`set-cunkou-l1` 本來的光）加流民手上的火把。時間跳都在剪點（s11b→s12、s18→s19、s19→s20、s25→s26），不在鏡頭裡變光。",
     "- **原版必修**（聖經第 35 集）：四周旱地變成整片春天水田、背景開花的果樹 → 田的場景句寫『只有這一塊水田是綠的，田埂後面的地乾裂光禿』（`set-hantian-yang-l1` 只有田埂前那塊灌水插秧；不寫 blossom 的否定句）。原版建議：s27 鬆一口氣不是驚嚇；s30 心裡話嘴閉著不對村民笑；s14 整句不笑（從背後）；s13 鴨子真的站在跌坐的許硯頭上；錢員外胸前沒有吊牌；s05 小禾中景、臉在畫面上；s25 對鴨群說『往下一片』、鴨群在田裡。",
-    "- 要買的秒數（BUY，錄音前照第 34 集的估法與實測：一句 6 秒的鏡放得下約 5.9 秒人聲、8 秒約 7.3 秒；第 34 集量到許硯約 3.5–4 字／秒、小禾 3.3–3.6、阿令慢；唐小棠（Laomedeia）本篇第一次大量用，照稿子『快、精明』估 4 字／秒，c09 慢下來）：s30 買 10 秒（系統 14 字加心裡話 15 字）；s01、s07、s09、s12b、s22、s23、s24、s29、s35 買 8 秒（系統兩句；18 字以上；慢、哭腔；結尾的鉤子）；s12、s17、s19、s21 買 5 秒（沒有台詞的鏡、插鏡）；其餘 6 秒（說話的鏡、畫外的話蓋在上面的鏡、兩拍的動作：s20 白線推進、s34 走到門閂前）。**錄音後照 `span935.sh` 量人聲長度重核**（PREP.md §4）。",
+    "- 要買的秒數（BUY，錄音前照第 34 集的估法與實測：一句 6 秒的鏡放得下約 5.9 秒人聲、8 秒約 7.3 秒；第 34 集量到許硯約 3.5–4 字／秒、小禾 3.3–3.6、阿令慢；唐小棠（Laomedeia）本篇第一次大量用，照稿子『快、精明』估 4 字／秒，c09 慢下來）：s30 買 10 秒（系統 14 字加心裡話 15 字）、**s22 買 10 秒**（錢員外冷笑拖長音 17 字）；s01、s07、s09、s12b、s23、s24、s29、**s31**、s35 買 8 秒（系統兩句；18 字以上；慢、哭腔；錢員外大喊三個驚嘆停頓；結尾的鉤子）——s22、s31 是獨立審稿必改 5：第 31–34 集錢員外實測 2.2–2.9 字／秒；s12、s17、s19、s21 買 5 秒（沒有台詞的鏡、插鏡）；其餘 6 秒（說話的鏡、畫外的話蓋在上面的鏡、兩拍的動作：s20 白線推進、s34 走到門閂前）。**錄音後照 `span935.sh` 量人聲長度重核**（PREP.md §4）。",
     "- **表上的「秒」欄是 lint 估法**，比錄音短；剪接以錄音的人聲長度為準。",
     "- **田（s12–s25）表上的提示詞帶「below the deep pool」**：只為了讓 `gen-dh` 的 `SET` 選到深潭那張圖（再由 `spec.json` 換成田的圖），d1 由 `mkspec.py` 拿掉（`R2.POOLMARK`→空）；**之後每個 fix／retake spec 都要帶同一組替換**，不然模型會在田裡畫出潭（第 34 集獨立審稿建議 6）。屋內的提示詞帶「Inside the farmhouse」讓 `SET` 選到 `set-xujia-wu`（白天那張），`spec.json` 一律換成夜版與它的裁切。",
 ]
@@ -465,7 +465,9 @@ FOOT = [
 # Seconds to buy. Estimated as e934 (before its recordings; e934's recheck changed nothing): a 6 s shot holds about 5.9 s of
 # speech, 8 s about 7.3 s; e934's lines ran Xu Yan 3.5-4 characters a second, little Xiaohe 3.3-3.6, A-ling slow (as Elder
 # Han); Tang Xiaotang (Laomedeia) estimated at 4 (quick), slower in c09.
-# 10 s: s30 (system 14 + thought 15 with a pause).
+# 10 s: s30 (system 14 + thought 15 with a pause), s22 (Qian Yuanwai 17, drawled: e931-e934 measured him at 2.2-2.9 characters a
+#       second; independent review 必改 5).
+# 8 s also s31 (Qian Yuanwai 14 shouted with three stops; 必改 5).
 # 8 s: s01 (two system lines, 20), s07 (Tang 18, muffled, the beads), s09 (Tang 16, slow and small), s12b (Tang 21), s22
 #      (Qian Yuanwai 17, drawled), s23 (Tang 20), s24 (Qian Yuanwai 18 walking off), s29 (the refugee woman 14, weeping, an unmeasured
 #      voice), s35 (the thought 14, the hook's held tail).

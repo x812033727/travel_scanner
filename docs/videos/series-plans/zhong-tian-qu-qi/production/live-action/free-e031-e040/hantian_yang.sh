@@ -15,6 +15,13 @@
 #          highlights, a blurred bright layer screened over at 45%): the whole picture (s20) and -chen-liu (s20b, s22, s23, s24),
 #          -chen-an (s25), -chen-shui (the water and the seedlings only, for the insert s21), -chen-geng (not sent in d1; kept
 #          for a fix).
+# After the e035 independent review (2026-11-20, 建議 2, 3), two more grades, each a new id family (rule 19); the first ones stay:
+#   -zong2: the brown half-light made browner and dimmer (no green in the balance, more blue pulled out, darker, a soft
+#           vignette): -zong read as an olive / teal retro filter, not a sky pressed down by the swarm. The whole picture (s12)
+#           and -zong2-geng (s15, s18), -zong2-liu (s12b, s16), -zong2-an (s13, s17), -zong2-tian (s14), -zong2-shui (s17b);
+#   -chen2: the same dawn grade over a copy whose far tree line has had its colour drained (hantian_yang_trees.py): -chen turned
+#           the far red tree salmon pink and the yellow ones milky white, an orchard in blossom at small size (原版必修 e035).
+#           The whole picture (s20) and -chen2-liu (s20b, s22, s23, s24), -chen2-an (s25), -chen2-shui (s21), -chen2-geng (spare).
 # First: hantian_yang_clean.py paints out the three tiny dark verticals on the far field line (as hantian_clean.py on
 # set-hantian-l1; set-hantian-yang-l1 carries the same three a few pixels to the right).
 # Usage: bash hantian_yang.sh refs-live/set-hantian-yang-l1.png OUTDIR
@@ -36,4 +43,20 @@ c "$C" set-hantian-yang-chen-geng-l1 640:360:0:220
 c "$C" set-hantian-yang-chen-liu-l1  640:360:672:170
 c "$C" set-hantian-yang-chen-an-l1   512:288:800:330
 c "$C" set-hantian-yang-chen-shui-l1 480:270:300:466
-rm -f "$A"
+G2="eq=brightness=-0.26:saturation=0.55:contrast=0.88:gamma=0.82,colorbalance=rs=0.16:gs=0.00:bs=-0.24:rm=0.16:gm=0.00:bm=-0.22:rh=0.18:gh=0.00:bh=-0.28,vignette=PI/5"
+g set-hantian-yang-zong2-l1 "$G2"
+Z2="$O/set-hantian-yang-zong2-l1.png"
+c "$Z2" set-hantian-yang-zong2-geng-l1 640:360:0:220
+c "$Z2" set-hantian-yang-zong2-liu-l1  640:360:672:170
+c "$Z2" set-hantian-yang-zong2-an-l1   512:288:800:330
+c "$Z2" set-hantian-yang-zong2-tian-l1 640:360:330:60
+c "$Z2" set-hantian-yang-zong2-shui-l1 480:270:300:466
+T="$O/.hantian-yang-trees.png"
+python3 -I "$(dirname "$0")/hantian_yang_trees.py" "$A" "$T"
+ffmpeg -v error -y -i "$T" -filter_complex "eq=brightness=0.00:saturation=0.55:contrast=0.80:gamma=1.04,colorbalance=rs=-0.03:bs=0.04:rm=0.02:bm=0.00:rh=0.08:gh=0.05:bh=-0.04,split[a][b];[b]gblur=sigma=30,eq=brightness=0.20:saturation=0.25[c];[a][c]blend=all_mode=screen:all_opacity=0.45" -flags +bitexact -fflags +bitexact "$O/set-hantian-yang-chen2-l1.png"
+C2="$O/set-hantian-yang-chen2-l1.png"
+c "$C2" set-hantian-yang-chen2-geng-l1 640:360:0:220
+c "$C2" set-hantian-yang-chen2-liu-l1  640:360:672:170
+c "$C2" set-hantian-yang-chen2-an-l1   512:288:800:330
+c "$C2" set-hantian-yang-chen2-shui-l1 480:270:300:466
+rm -f "$A" "$T"
