@@ -1,0 +1,577 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-19",
+  "reviewer": "check121",
+  "baselines": {
+    "so_thats_why": {
+      "candidates": 7592,
+      "selected": 7288,
+      "themes": 762
+    },
+    "curio": {
+      "candidates": 2692,
+      "selected": 1820,
+      "themes": 155
+    }
+  },
+  "method": "由非作者分別檢查各機構及製造商原文，對照適用型號、量測條件、文件定位，並重取日規產品 PDF 與網路記譜規格。依兩池候選、原始問題、退案與影片題案比對相同核心答案。",
+  "segment_reviews": [
+    {
+      "id": "K121-0001",
+      "decision": "screened",
+      "source_ids": [
+        "X121E-S01"
+      ],
+      "checked": "美國鑄幣局的 Coin Production 逐類區分敲印次數，當中 proof 樣式至少敲兩次，流通幣敲一次。",
+      "dedup_and_scope": "K119-0008 已問過幣坯壓出凸邊，這裡比較正、反模同步壓印與同一枚幣的壓印次數。"
+    },
+    {
+      "id": "K121-0002",
+      "decision": "screened",
+      "source_ids": [
+        "X121E-S02"
+      ],
+      "checked": "Tate 的 Monotype 條目說明單刷版的設色或刮除作畫，第二次可能留下較淡的印跡，通常難以複製第一次的效果。",
+      "dedup_and_scope": "K120-0002 討論乾刻針造成的毛刺被壓平；本題的圖像來自版面油墨，可印性不同。"
+    },
+    {
+      "id": "K121-0003",
+      "decision": "screened",
+      "source_ids": [
+        "X121E-S03"
+      ],
+      "checked": "SCHMETZ 針具表中，針柄肩部的上色圈識別針型，下色圈識別針號。廠商也列出沒有上圈的情形。",
+      "dedup_and_scope": "顏色依 SCHMETZ 的機針標示讀；電阻色環 E2065 雖也有色環卻編不同資訊。"
+    },
+    {
+      "id": "K121-0004",
+      "decision": "screened",
+      "source_ids": [
+        "X121E-S04"
+      ],
+      "checked": "Yamaha 介紹左手食指、中指之間的鍵蓋與相鄰指環機械連動，按指環時，該蓋一起遮住另一個音孔。",
+      "dedup_and_scope": "與樂譜組 K121-0406 的降 B 單簧管移調是同一種樂器的另一個問題。這裡只說該鍵和鄰近指環。"
+    },
+    {
+      "id": "K121-0005",
+      "decision": "screened",
+      "source_ids": [
+        "X121E-S05"
+      ],
+      "checked": "Nikon 定義出瞳是從接目鏡後方看到的亮圓，直徑為物鏡有效口徑除以倍率。原廠 8×42 算例約 5.3 毫米；實際明亮感還取決於人的瞳孔。",
+      "dedup_and_scope": "K120-0005 分別調整左右眼清晰度；本題算送到接目鏡端的光束直徑。"
+    },
+    {
+      "id": "K121-0006",
+      "decision": "screened",
+      "source_ids": [
+        "X121E-S06",
+        "X121E-S07"
+      ],
+      "checked": "Fujifilm 明列 instax mini 12 近拍模式使用 0.3 到 0.5 公尺的距離，光學取景器具視差校正，由於看景與鏡頭的位置分開，近物的構圖線索會隨模式改變。",
+      "dedup_and_scope": "K120-0006 已用顯影膏未鋪滿說明照片的褐色缺口，這裡保留正常成像，對準的是取景窗和底片上的近物。"
+    },
+    {
+      "id": "K121-0007",
+      "decision": "screened",
+      "source_ids": [
+        "X121E-S08"
+      ],
+      "checked": "Apple 支援頁示範拖曳影格、放開、點 Make Key Photo 以改原況照片的主要照片。",
+      "dedup_and_scope": "原況照片選影格與 G757 的旅行照片定位標記、分享端位置是否留存不同。"
+    },
+    {
+      "id": "K121-0008",
+      "decision": "screened",
+      "source_ids": [
+        "X121E-S09",
+        "X121E-S10"
+      ],
+      "checked": "美國農業部列 U.S. Grade A 顏色均一等要求。佛蒙特業者協會在同一零售等級下列出 Golden、Amber、Dark 與 Very Dark 的色澤與相應風味。",
+      "dedup_and_scope": "只比較此分級制度，不把單看顏色視為所有品質條件均已達標。"
+    },
+    {
+      "id": "K121-0009",
+      "decision": "screened",
+      "source_ids": [
+        "X121E-S11"
+      ],
+      "checked": "Whole Grains Council 將一般壓片燕麥的蒸與壓片對比快熟型，後者可壓更薄、蒸更久或兼用兩種做法。原料仍可為全穀。",
+      "dedup_and_scope": "食物的熟成時間與 L79-007 用燕麥當黏菌測試的食物，答案不同。"
+    },
+    {
+      "id": "K121-0010",
+      "decision": "screened",
+      "source_ids": [
+        "X121E-S12"
+      ],
+      "checked": "Park Tool 的內胎診斷以兩道對稱裂口作為輪圈夾傷的常見線索，坑緣等物可使內胎在撞擊時被夾住。",
+      "dedup_and_scope": "判讀破孔形狀的線索，不把它說成足以證實所有破胎原因。"
+    },
+    {
+      "id": "K121-0011",
+      "decision": "screened",
+      "source_ids": [
+        "X121E-S13"
+      ],
+      "checked": "Lodge 說明養鍋的油脂受熱聚合，從液體變為黏附在鑄鐵表面的硬化層，後續使用仍可養成。",
+      "dedup_and_scope": "核對成膜的物理意義，不把單純把油抹上去或掛著一層油池等同已形成的鍋面。"
+    },
+    {
+      "id": "K121-0012",
+      "decision": "screened",
+      "source_ids": [
+        "X121E-S14"
+      ],
+      "checked": "R&A 18.2a 與 18.3a–c 處理可能遺失在罰桿區外或可能出界時的暫定球。符合條件尋回原球且暫定球尚未成為比賽球時，須放棄暫定球，其相關擊數不算。",
+      "dedup_and_scope": "K119-0404/0405 問球洞、旗桿及等待時限；這張區分正在比賽的球與有條件暫用的球。"
+    },
+    {
+      "id": "K121-0401",
+      "decision": "screened",
+      "source_ids": [
+        "X121M-S01"
+      ],
+      "checked": "MuseScore 將延音線的同音延續與圓滑線的連奏區分，LilyPond 對 tie 也明訂相鄰同音合併時值。Do 接 Do 與 Do 接 Re 的示例符合兩者。",
+      "dedup_and_scope": "只論單旋律示例。圓滑線內仍會有不同音高，何種運弓或吐音則依樂器而異。"
+    },
+    {
+      "id": "K121-0402",
+      "decision": "screened",
+      "source_ids": [
+        "X121M-S02",
+        "X121M-S03"
+      ],
+      "checked": "MuseScore 的 volta 架設第一、第二遍各自的結尾；MusicXML ending 的 number 可載明適用的遍次。條件設定後按 A、B、A、C 走完。",
+      "dedup_and_scope": "例中設定兩遍，排除另外的返回記號。"
+    },
+    {
+      "id": "K121-0403",
+      "decision": "screened",
+      "source_ids": [
+        "X121M-S04",
+        "X121M-S05"
+      ],
+      "checked": "MuseScore 的整小節休止說明看起來通常像全休止符，中央表示整小節該聲部無音。W3C 的 rest 可用 measure=yes 標整小節。3/4 與 4/4 兩個示例成立。",
+      "dedup_and_scope": "留意其他拍號有不同字形；這張只計算完整的三拍與四拍小節。"
+    },
+    {
+      "id": "K121-0404",
+      "decision": "screened",
+      "source_ids": [
+        "X121M-S06"
+      ],
+      "checked": "W3C MusicXML 4.0 的 cue 明說即使以 type 指定正常大小仍無播放，反之一般可播放音符能指定 cue 大小。",
+      "dedup_and_scope": "限 MusicXML 的語義，分開字級與音符身分；沒有把軟體是否正確實作說成格式的保證。"
+    },
+    {
+      "id": "K121-0405",
+      "decision": "screened",
+      "source_ids": [
+        "X121M-S07",
+        "X121M-S08"
+      ],
+      "checked": "W3C 的 measure (partwise) 說弱起小節的 number 通常為 0、implicit 通常為 yes；後者表示小節號不應印出。LilyPond 的 Upbeats 另示不完全小節長度。",
+      "dedup_and_scope": "示例中的 0 用來編小節號，不能由此把弱起解為沒有節拍。"
+    },
+    {
+      "id": "K121-0406",
+      "decision": "screened",
+      "source_ids": [
+        "X121M-S09",
+        "X121M-S10"
+      ],
+      "checked": "LilyPond 以降 B 單簧管分譜與小提琴演奏同一音示範移調，MusicXML 規定 chromatic 是加在記譜音上得到實際音的半音數。因此這個例子的書寫 C 出聲為其下方的降 B，同奏中央 C 時單簧管寫 D。",
+      "dedup_and_scope": "只採常見降 B 單簧管與其移調分譜，已用實際音高記譜的資料勿重複轉換。"
+    }
+  ],
+  "rejected_suggestions_checked": {
+    "X121E-NA001": "比對舊題 K117-0010〈同一支樂高拆磚器，碰到光滑的平磚，為什麼要掉轉方向用另一端？〉。查到 K117-0010 已用光滑平磚及拆磚器另一頭解釋，這一輪不再換色重收。",
+    "X121E-NA002": "比對舊題 K119-0008〈硬幣上的人像還沒壓下去，光禿禿的金屬圓片怎麼已經有一圈凸邊？〉。本輪閱讀美國鑄幣局製程時，發現凸邊加工和 K119-0008 相同，另收精製幣壓印次數的問題。",
+    "X121E-NA003": "比對舊題 K120-0006〈拍立得相片上緣缺了一塊棕色的 V，為什麼要先看出片滾輪和底片，而不是先調取景位置？〉。K120-0006 已用未被顯影膏鋪滿的上緣區域解釋，本批近拍題只談取景窗的視差。",
+    "X121M-NA01": "比對舊題 N7926〈貝多芬《英雄》交響曲的封面上，拿破崙的名字被刮出一個洞。翻開貝多芬自己的信，以及後來出版的樂譜，還找得到誰的名字？〉。奇聞 N7926 已用譜本、作曲家通信與初版題獻追查這個刮痕。",
+    "X121D-NA01": "比對舊題 K106-0701〈日本東邊 50、西邊 60 赫茲，最早是誰先「選」的？〉。比對時找到原來如此長題 G723 及 K106-0701 已追查購置設備與兩網形成。本批只讀指定機型的雙頻規格。",
+    "X121D-NA02": "比對舊題 N7303〈出國總要多帶一顆轉接頭，好像世界上從來沒有通用插頭——可是國際標準組織 1986 年真的公布過一款，想搶先採用的南非，後來怎麼反而多了一種幾乎只有自己在用的插頭？〉。奇聞 N7303 已收國際標準與南非採用過程，本批只談眼前配件能改變哪個條件。"
+  },
+  "scope": "12 張日常卡、6 張讀樂譜卡、18 張以兩款日版吹風機比較供電與保固的研究卡。",
+  "themes": {
+    "G764": {
+      "title": "日本買的兩支 Panasonic 吹風機，一支寫 100V、一支寫 100–120V，帶回台灣差在哪？",
+      "researcher": "deep121",
+      "reviewer": "check121",
+      "verdict": "ready",
+      "fact_count": 12.75,
+      "author_fact_count": 14.0,
+      "est_minutes": 9.6,
+      "method": "分卡核對可獨立敘述的事實，同一出版網的總權重最多兩條。Panasonic 的商品頁、規格表和兩份 PDF 合併為一網，Canon 的兩段 EOS R3 手冊也合併。C-2 配件的形狀轉接在前卡已說明，不另給分。對照機型只計各自額外提供的限制。折算片長為加權事實乘 0.75 分鐘。",
+      "networks": {
+        "交通部觀光署": [
+          "X121D-S01"
+        ],
+        "日本政府觀光局 JNTO": [
+          "X121D-S02"
+        ],
+        "Electrical Safety First": [
+          "X121D-S03"
+        ],
+        "Panasonic 日本": [
+          "X121D-S04",
+          "X121D-S05",
+          "X121D-S06",
+          "X121D-S07",
+          "X121D-S08"
+        ],
+        "Sharp 日本": [
+          "X121D-S09"
+        ],
+        "東芝生活家電": [
+          "X121D-S10"
+        ],
+        "Nikon": [
+          "X121D-S11"
+        ],
+        "Canon": [
+          "X121D-S12",
+          "X121D-S14"
+        ],
+        "Apple": [
+          "X121D-S13"
+        ],
+        "Nintendo 美洲": [
+          "X121D-S15"
+        ]
+      },
+      "network_weights": {
+        "日本政府觀光局 JNTO": 1.0,
+        "交通部觀光署": 1.0,
+        "Electrical Safety First": 2.0,
+        "Panasonic 日本": 2.0,
+        "Sharp 日本": 1.75,
+        "東芝生活家電": 1.0,
+        "Nikon": 1.0,
+        "Canon": 1.75,
+        "Apple": 0.5,
+        "Nintendo 美洲": 0.75
+      },
+      "card_verdicts": [
+        {
+          "id": "K121-0201",
+          "source_ids": [
+            "X121D-S01",
+            "X121D-S02"
+          ],
+          "network": "日本政府觀光局 JNTO",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "JNTO 法文原文以大阪為西日本 60 Hz 的例子，又列日本一般交流 100 V。台灣一般供電同為 60 Hz，電壓為 110 V。旅館及家庭是供電已知的假設地點。"
+        },
+        {
+          "id": "K121-0202",
+          "source_ids": [
+            "X121D-S01"
+          ],
+          "network": "交通部觀光署",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "觀光署 Electricity 段將一般 110 V、60 cycles 和不少建築的 220 V 冷氣用插座分開。第 1 章對家用示例的數值作了限定。"
+        },
+        {
+          "id": "K121-0203",
+          "source_ids": [
+            "X121D-S03"
+          ],
+          "network": "Electrical Safety First",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "英國 Electrical Safety First 台灣頁畫出 A 型兩扁腳、B 型多一圓形接地腳，並明說旅行插頭轉接器不轉換電壓或頻率。"
+        },
+        {
+          "id": "K121-0204",
+          "source_ids": [
+            "X121D-S04",
+            "X121D-S05"
+          ],
+          "network": "Panasonic 日本",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.5,
+          "checked": "EH-NA0J 日本官網列生產國泰國、AC100V、50–60Hz、1200W。另取該型手冊核對日本國內專用與交流 100 V。此日本銷售版本的額定不含台灣一般 110 V。"
+        },
+        {
+          "id": "K121-0205",
+          "source_ids": [
+            "X121D-S06",
+            "X121D-S07",
+            "X121D-S08"
+          ],
+          "network": "Panasonic 日本",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.5,
+          "checked": "EH-NA9F 產品頁說明手動選擇電壓、出廠設在高檔。電源規格低檔 AC100–120V、50–60Hz 與 PDF 內容相符，限判斷已確認的 110V／60Hz 地點。"
+        },
+        {
+          "id": "K121-0206",
+          "source_ids": [
+            "X121D-S03",
+            "X121D-S07",
+            "X121D-S08"
+          ],
+          "network": "Panasonic 日本",
+          "decision": "screened",
+          "author_weight": 0.5,
+          "review_weight": 0,
+          "checked": "日本產品頁核到 C-2 配件，說明書 PDF 第 7、13 頁另列機身開關與插頭配件。配件本身不改變電壓已記在 0203，實際盒裝品資訊歸原廠。"
+        },
+        {
+          "id": "K121-0207",
+          "source_ids": [
+            "X121D-S06",
+            "X121D-S08"
+          ],
+          "network": "Panasonic 日本",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.5,
+          "checked": "核對 EH-NA9F 商品頁與 PDF 第 13 頁，TURBO/HOT 在 100／200 V 時標 1000 W，120／240 V 時標 1400 W。110 V 在低檔額定內，但沒有這個測點的功耗值。"
+        },
+        {
+          "id": "K121-0208",
+          "source_ids": [
+            "X121D-S04",
+            "X121D-S05",
+            "X121D-S06"
+          ],
+          "network": "Panasonic 日本",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 0.25,
+          "checked": "EH-NA9F 的 TURBO 風量列每分鐘 1.1 立方公尺（100 V）及 1.2（120 V）。EH-NA0J 的 1200 W 和 9F 的 1400 W 均屬耗電資料，不能推出兩機在 110 V 的出風排名。"
+        },
+        {
+          "id": "K121-0209",
+          "source_ids": [
+            "X121D-S03",
+            "X121D-S05"
+          ],
+          "network": "Electrical Safety First",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 1,
+          "checked": "Electrical Safety First 的 Voltage converters and transformers 段列轉換設備的最大電流或功率。作者只引用額定上限，0J 手冊的國內專用條款另行成立。"
+        },
+        {
+          "id": "K121-0210",
+          "source_ids": [
+            "X121D-S02",
+            "X121D-S09"
+          ],
+          "network": "Sharp 日本",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "Sharp RE-TM18 電源是 AC100V 50/60Hz 共用，註 2 將微波輸出依兩個市電頻率列為 520W、650W。兩個頻率都支援，並不讓輸出值相同。"
+        },
+        {
+          "id": "K121-0211",
+          "source_ids": [
+            "X121D-S09"
+          ],
+          "network": "Sharp 日本",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "Sharp 另一列的額定耗電分別是 970W、1320W。60Hz 的 650W 微波輸出在 0210 已計，這張只計辨別輸入側的新增證據，亦不作運轉實測。"
+        },
+        {
+          "id": "K121-0212",
+          "source_ids": [
+            "X121D-S10"
+          ],
+          "network": "東芝生活家電",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "東芝 ER-S17Y 標 900 W 最長 1 分 30 秒，自動切為連續輸出 600 W；能用 900 W 的自動選單只列「1.あたため」。未把另一台東芝的計時規則套用到 Sharp。"
+        },
+        {
+          "id": "K121-0213",
+          "source_ids": [
+            "X121D-S11"
+          ],
+          "network": "Nikon",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "Nikon Z 50 手冊 MH-32 規格表的 Rated input 為 AC 100–240 V、50/60 Hz，Rated output 為 DC 8.4 V/1.12 A（MAX），另列 EN-EL25a／EN-EL25 電池。"
+        },
+        {
+          "id": "K121-0214",
+          "source_ids": [
+            "X121D-S12"
+          ],
+          "network": "Canon",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "Canon EOS R3 電池充電器說明列 100–240 V、50/60 Hz 並容許合適的插頭轉接器，接著明說毋接便攜式變壓器，以免損壞。插腳形狀先前已解釋，新增在相機原廠限制。"
+        },
+        {
+          "id": "K121-0215",
+          "source_ids": [
+            "X121D-S13"
+          ],
+          "network": "Apple",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.5,
+          "checked": "Apple 的 USB 電源轉接器頁將供電共同範圍訂為 100–240 V、50–60 Hz，同頁分別列 5W USB 及 20W USB-C。此例強化牆側、設備側可分開讀，未量到實際充電速度。"
+        },
+        {
+          "id": "K121-0216",
+          "source_ids": [
+            "X121D-S14"
+          ],
+          "network": "Canon",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "Canon EOS R3 使用手冊明載 PD-E1 能替機內 LP-E19 充電，末段又明載不能由這個配件供該相機運轉。限制必須保留機身與配件型號。"
+        },
+        {
+          "id": "K121-0217",
+          "source_ids": [
+            "X121D-S15"
+          ],
+          "network": "Nintendo 美洲",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "Nintendo 美洲區域 FAQ 分列跨區使用的電壓、無線規範及保固。主機有限保固只適用於原定銷售國家或地區，用以對照另一種設備服務範圍，未套用到日本吹風機。"
+        },
+        {
+          "id": "K121-0218",
+          "source_ids": [
+            "X121D-S01",
+            "X121D-S05",
+            "X121D-S06",
+            "X121D-S08"
+          ],
+          "network": "Panasonic 日本",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.25,
+          "checked": "EH-NA9F 手冊 PDF 第 13 頁海外使用欄與第 18 頁保證書第 5 條分讀，後者只在日本國內有效。110 V 的電氣判斷於前章已計，此處核的是同一台機器的保證書。"
+        }
+      ],
+      "chapter_budgets": [
+        {
+          "chapter": 1,
+          "title": "在大阪買、回台灣用，先把兩盒吹風機放上同一張桌",
+          "candidate_ids": [
+            "K121-0201",
+            "K121-0202",
+            "K121-0203"
+          ],
+          "target_seconds": 80,
+          "evidence_seconds": [
+            62,
+            99
+          ]
+        },
+        {
+          "chapter": 2,
+          "title": "泰國製、日本國內專用、海外可用，哪一行是在回答電壓？",
+          "candidate_ids": [
+            "K121-0204",
+            "K121-0205",
+            "K121-0206"
+          ],
+          "target_seconds": 95,
+          "evidence_seconds": [
+            65,
+            105
+          ]
+        },
+        {
+          "chapter": 3,
+          "title": "台灣的 110V 在範圍內，為什麼瓦特欄還要留白？",
+          "candidate_ids": [
+            "K121-0207",
+            "K121-0208",
+            "K121-0209"
+          ],
+          "target_seconds": 90,
+          "evidence_seconds": [
+            66,
+            107
+          ]
+        },
+        {
+          "chapter": 4,
+          "title": "一張微波爐規格表，試試你會抄 650W 還是 1320W",
+          "candidate_ids": [
+            "K121-0210",
+            "K121-0211",
+            "K121-0212"
+          ],
+          "target_seconds": 85,
+          "evidence_seconds": [
+            64,
+            97
+          ]
+        },
+        {
+          "chapter": 5,
+          "title": "把行李裡的充電器翻到背面，哪一行朝向牆壁？",
+          "candidate_ids": [
+            "K121-0213",
+            "K121-0214",
+            "K121-0215",
+            "K121-0216"
+          ],
+          "target_seconds": 95,
+          "evidence_seconds": [
+            82,
+            130
+          ]
+        },
+        {
+          "chapter": 6,
+          "title": "回到兩盒吹風機，電壓勾對以後還剩哪一個空格？",
+          "candidate_ids": [
+            "K121-0217",
+            "K121-0218"
+          ],
+          "target_seconds": 65,
+          "evidence_seconds": [
+            52,
+            81
+          ]
+        }
+      ],
+      "turns": [
+        "大阪與台灣一般插座的頻率相同，允許的輸入電壓卻足以改變兩個日版型號的選擇。9F 即使低檔涵蓋 110V，出廠仍預設高檔。",
+        "9F 額定範圍涵蓋 110V，原廠卻未列該電壓的耗電與風量測點；同一本手冊的海外使用說明和保證書又有各自的適用地。"
+      ],
+      "nearby": [
+        "G723、K106-0714 追日本電網分區的來歷及單頻電器跨區的物理後果，本題比較兩款有名有型號的電器及原廠承諾。",
+        "奇聞 N7303 談統一插頭標準的採行史，E2170／E2171 談變壓器線圈及功率。G731、奇聞 N7533 看充電器認證符號的法律身分。均未處理這兩台吹風機。"
+      ],
+      "changes": [
+        "核對 EH-NA9F 的兩個高檔下限寫法，片中只判定相符的低檔；功耗按四個指定測點逐項引用。",
+        "第 4 章釐清 1320W 是 Sharp 的額定耗電；第 5 章將 Nikon 資料注明為原廠的規格表。",
+        "相同的轉接工作、反覆列舉的輸出功率及類似機身案例扣重後，獨立估 12.75 條；盒內 C-2 配件仍可協助辨識，未另計素材。"
+      ],
+      "unverified": [
+        "兩盒購物及回台使用是選購示例。沒有在台通電、實拍兩台銘板或測量 110V 下的耗電與風量。",
+        "9F 規格表主欄高檔起於 200V，頁尾附記寫 220V，沒有推論 200–219V 整段均適用。",
+        "未調查特定安裝插座、付費維修、通路保固或個別買家可主張的權利。510 秒是章節製作預算，未作成片計時。"
+      ],
+      "note": "18 張研究卡均有對應章節；10 個來源網保守加權 12.75 條，可用素材約 9.6 分鐘。"
+    }
+  }
+}

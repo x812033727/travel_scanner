@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-19",
+  "method": "兩位未參與照片題撰稿與五項評分的評審，只讀題卡。第一次 G751 的在地判斷與舊紀錄不同。釐清「在地」須是核心追問的背景，兩人重新獨立判讀；三組對照遂與原判一致。正式題案以及後來補進 LINE 版本實測的題案均另行盲讀，兩輪的判斷一致。",
+  "controls": [
+    "G750",
+    "G751",
+    "G756"
+  ],
+  "readers": {
+    "a": {
+      "line_research": [
+        "1000",
+        "照片就在自己的手機相簿。核心從家人收圖時少一支定位針開始，換別種傳圖工具問題一樣成立。LINE 原始畫質是其中一個實例，整題追的是地點資料從何而來、傳出去哪份還在，沒有以規格訂定、費用或日本品牌為主角。"
+      ],
+      "controls": {
+        "G750": {
+          "have": true,
+          "local": false,
+          "standard": true,
+          "lose_or_jp": false
+        },
+        "G751": {
+          "have": true,
+          "local": false,
+          "standard": true,
+          "lose_or_jp": false
+        },
+        "G756": {
+          "have": false,
+          "local": true,
+          "standard": true,
+          "lose_or_jp": false
+        }
+      },
+      "first_G751": [
+        "1110",
+        "衣櫃裡就有標 M 的衣服。日本與韓國怎麼在吊牌標尺寸有專章，國家尺碼標準和店家標示的關係貫穿全題。講到日本的是制度，沒有日本品牌當主角。"
+      ],
+      "recheck_G751": [
+        "1010",
+        "M 號衣服是家中常見物品。兩家店的同一個尺碼穿起來不同，是跨國共通的發問；日韓標籤是後續比較之一。國家尺碼標準和品牌自行標示是核心，沒有聚焦日本品牌或大公司落敗。"
+      ],
+      "G757": {
+        "answers": {
+          "have": true,
+          "local": false,
+          "standard": false,
+          "lose_or_jp": false
+        },
+        "reason": "手機相簿裡的照片是手上就有的物件。家人收圖後是否看得見定位，是各地都有的分享問題。章節著眼在誰記下地點、換了按鈕會帶走什麼，沒有以某項規格、費用或品牌輸贏為核心。"
+      }
+    },
+    "b": {
+      "line_research": [
+        "1000",
+        "河景照是手機裡的日常物件；定位針從哪裡來、分享時哪些資料會留下的核心不變，LINE 是第五章的案例，單選原始畫質也沒有把全題變成規格或品牌故事。"
+      ],
+      "controls": {
+        "G750": {
+          "have": true,
+          "local": false,
+          "standard": true,
+          "lose_or_jp": false
+        },
+        "G751": {
+          "have": true,
+          "local": false,
+          "standard": true,
+          "lose_or_jp": false
+        },
+        "G756": {
+          "have": false,
+          "local": true,
+          "standard": true,
+          "lose_or_jp": false
+        }
+      },
+      "first_G751": [
+        "1110",
+        "衣櫃裡有尺碼不同的衣服，這題追問服飾標示標準，也具體談日韓讓消費者在標籤上讀身體尺寸的做法。"
+      ],
+      "recheck_G751": [
+        "1010",
+        "家中的衣服與各家尺碼是發問起點，尺碼標準是主線；日韓身體尺寸標示是其中一章的比較，沒有構成整題的在地起點。"
+      ],
+      "G757": {
+        "answers": {
+          "have": true,
+          "local": false,
+          "standard": false,
+          "lose_or_jp": false
+        },
+        "reason": "手機相簿裡的照片就在觀眾手上。定稿追問定位的來源及分享按鈕如何影響家人看見的地點，核心仍是相簿和分享行為；沒有以東亞特定制度、規格／拆帳或品牌勝負為主題。"
+      }
+    }
+  },
+  "themes": [
+    {
+      "id": "G757",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": false
+      },
+      "demand": 3.25,
+      "reason": "手機相簿裡的照片是手上就有的物件。家人收圖後是否看得見定位，是各地都有的分享問題。章節著眼在誰記下地點、換了按鈕會帶走什麼，沒有以某項規格、費用或品牌輸贏為核心。"
+    }
+  ]
+}

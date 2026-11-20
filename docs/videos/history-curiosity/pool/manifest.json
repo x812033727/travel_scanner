@@ -1,37 +1,37 @@
 {
   "status": "CANDIDATE_EXPORT_NOT_PRODUCTION",
-  "revision": "2026-11-19-curio-1882",
+  "revision": "2026-11-20-curio-1956",
   "counts": {
-    "raw_records": 2768,
-    "canonical_cores": 2749,
-    "alias_records": 19,
+    "raw_records": 2934,
+    "canonical_cores": 2914,
+    "alias_records": 20,
     "produced_cores": 48,
-    "selected_candidates": 1882,
-    "held_candidates": 279,
+    "selected_candidates": 1956,
+    "held_candidates": 370,
     "reserve_candidates": 167,
     "shorts_candidates": 89,
     "excluded_cores": 284,
-    "new_batch_records": 2437,
-    "source_urls": 15857,
-    "current_research_source_urls": 11035,
-    "selected_source_urls": 12821,
-    "new_suggestions_not_added": 3364,
+    "new_batch_records": 2603,
+    "source_urls": 16442,
+    "current_research_source_urls": 11620,
+    "selected_source_urls": 13092,
+    "new_suggestions_not_added": 3496,
     "high_similarity_pending": 0,
     "cross_series_pending": 0,
     "approved_scripts": 0,
     "by_category": {
       "H-歷史懸案": {
-        "canonical": 330,
-        "selected": 250,
+        "canonical": 428,
+        "selected": 283,
         "produced": 1
       },
       "S-歷史人物與名場面": {
-        "canonical": 426,
-        "selected": 239,
+        "canonical": 435,
+        "selected": 245,
         "produced": 28
       },
       "M-奇異現象與自然": {
-        "canonical": 314,
+        "canonical": 315,
         "selected": 209,
         "produced": 0
       },
@@ -56,13 +56,13 @@
         "produced": 0
       },
       "U-外星太空與未知訊號": {
-        "canonical": 298,
+        "canonical": 299,
         "selected": 203,
         "produced": 0
       },
       "W-商業與品牌奇聞": {
-        "canonical": 239,
-        "selected": 176,
+        "canonical": 295,
+        "selected": 211,
         "produced": 19
       }
     }
@@ -938,6 +938,14 @@
       "sha256": "a97aaa1df7042224fd014877e1f540d67ff4e58f8bdb541e66259ed95a05620b"
     },
     {
+      "file": "docs/videos/history-curiosity/pool/batches/w-heimao-01-20261119.json",
+      "sha256": "1d14da4cb945e1cd685d10ddbd3a46a8474fc47a33740f7802c16a52742e0969"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/w-heimao-02-20261119.json",
+      "sha256": "b40c155c1b96aa747d5f331263122ff1e5f92f62a3addab59bd53f6e872bf48b"
+    },
+    {
       "file": "docs/videos/history-curiosity/pool/batches/wave1-20261101.json",
       "sha256": "52ec5faffa02fb01332a5fc7adedf92beef417914c5eb0c086e90a6ed1d0e872"
     },
@@ -946,8 +954,76 @@
       "sha256": "13645ad4da409c19ddcd3c634f1e42f85ac65ca8044594d8c9f09c8dc5e47583"
     },
     {
+      "file": "docs/videos/history-curiosity/pool/batches/wave100-20261119.json",
+      "sha256": "bfcf0ce0f3d40cf246b30f8142441440fb77b18c93384ab81bfc7c5d46478062"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave101-20261119.json",
+      "sha256": "0a37860b137e3b2b612aee6eaa5d03ea4106a22089a3e2c408779d85e42acf43"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave102-20261119.json",
+      "sha256": "31bba65054331f1406afe5cafde170da447fbdd8e6e197f3e693051bca6b2efa"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave103-20261119.json",
+      "sha256": "e5ce40ce6571a51f08d237b9d2613d1fc223c33d311b462c8abc2809da4112bd"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave104-20261119.json",
+      "sha256": "8acf6fb16c535333efc93c118b66b9be6291aee92cd66c3e3dd02bb9c0284f70"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave105-20261119.json",
+      "sha256": "a65eaba5acf1f1db6f2657458064fe345f76c87049e4b41d71962852ba022333"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave106-20261119.json",
+      "sha256": "7b41f70f0894081b82ec64a4c0ebfbb25b4647ba0a65023332ed4956e1acc70f"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave107-20261119.json",
+      "sha256": "1782bcf7a3f3ea3772168fa7e27477be059b3e3fb942a37cf5a89fd018cc4590"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave108-20261119.json",
+      "sha256": "6b6acabc526790eae771413d68982c21678ef09d650ac06edc1764a67c1ad4f0"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave109-20261120.json",
+      "sha256": "7053f68f9b799018e3fe5862cd5f5e89a4b34f04431e6d952adeaf89c227710c"
+    },
+    {
       "file": "docs/videos/history-curiosity/pool/batches/wave11-20261102.json",
       "sha256": "a876755e09a5e835a55178c12e89a86f64af28a5a1a2d14d31813833277c31ee"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave110-20261120.json",
+      "sha256": "2e0b1f9752f86602e2efcd927e3fae1319254caa542a0cdf7a108022397344ce"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave111-20261120.json",
+      "sha256": "040cc670d95c6705412dfeffb62a25e329d33cbe1e054c0441a8f8adc72a9d97"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave112-20261120.json",
+      "sha256": "2005600f3f2ee7e7ef70ad3c8d95a9e8d5dac12379337a432b260825910576be"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave113-20261120.json",
+      "sha256": "c51aec89ad2d19e724c6de18c19b4b9cc7589db1f593d65582c042422630f157"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave114-20261120.json",
+      "sha256": "5df60a560afd80d0b5763bfd3f0ade536ce7ed1052a72d3014635c2df7b4db77"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave115-20261120.json",
+      "sha256": "122d3c00814b7cd2cb38fbd58ce5ab020cb7652fe2f8e29b0e0638b4fcb97cd0"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave116-20261120.json",
+      "sha256": "7e8bce990e5fb49dbe17ab0d3cce04028661eb0d53644c8075abd5c785a9e4c5"
     },
     {
       "file": "docs/videos/history-curiosity/pool/batches/wave12-20261102.json",
@@ -1278,16 +1354,64 @@
       "sha256": "1ca99552c6f5d8a637f76c8e2e003bae41be47f1255ac99a5518e8e219a7a2fc"
     },
     {
-      "file": "docs/videos/history-curiosity/pool/batches/wave86-w-heimao-20261119.json",
-      "sha256": "b127d2544fc85315cd7e64a9ccb1ca26dc3cbf689b1904611718847ffba56aac"
+      "file": "docs/videos/history-curiosity/pool/batches/wave86-20261119.json",
+      "sha256": "18fe4e5fb1f8dcac18299977fda4868033980de95f56f317c2efe9aa2ef41eac"
     },
     {
-      "file": "docs/videos/history-curiosity/pool/batches/wave87-w-heimao-20261119.json",
-      "sha256": "239f20533534fb7c812b291a79bffce45fda3d7ca2274740132e99d8313258ac"
+      "file": "docs/videos/history-curiosity/pool/batches/wave87-20261119.json",
+      "sha256": "ef501a69a768dae3c31f3702a23a9920b64aa195b4e8f1db951906077efbe33f"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave88-20261119.json",
+      "sha256": "a0a6bb748f347f2d26519de05bdf4f5535ab84f97499bc369a1ae5a84b721d3c"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave89-20261119.json",
+      "sha256": "87dd7961362e2c4c13de16b3e212069d94a9ead6607642a42975024c2afb8a63"
     },
     {
       "file": "docs/videos/history-curiosity/pool/batches/wave9-20261102.json",
       "sha256": "7fbee2462d481291da3cbe5d909e19432082ee4155fe09f685ce096ffb5c6d3a"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave90-20261119.json",
+      "sha256": "d02a0e55ee990b62b387153c7d83dd9a35c494964623e892eac98455bcaeb3a3"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave91-20261119.json",
+      "sha256": "19834d8aeab0de8507e0f26136babb902dda854d345ce9cd5580039e9fa546bc"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave92-20261119.json",
+      "sha256": "e875ae2200147276ba73a6390b9bcdb25159e387b84e589446681e381f872411"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave93-20261119.json",
+      "sha256": "114708d4c4c673085c4bc58b7d3c25cf71fa6f141cb0e32c0fb0bac777d1ed82"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave94-20261119.json",
+      "sha256": "5c1567e31f19bf2ac85b6997b1dc74cf3b653158659cfeb27718e008ee3bf4f3"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave95-20261119.json",
+      "sha256": "180eecbc7bf378fcf799268212649400f09c2e0cbfcb7b69521328f71bf54e45"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave96-20261119.json",
+      "sha256": "12083b1c43b58f55c61eb1b116d24663d85d7d6d6c2dcdfe44f3c94a4e46f27b"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave97-20261119.json",
+      "sha256": "59eb76c14fd4404fc94081ef48d9066554ca70d4df6407081ddfed1e68a2ee3f"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave98-20261119.json",
+      "sha256": "12622344d96e5bda934e93ce1533dadd281a9266b8b585a9fcb571c0740311c6"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave99-20261119.json",
+      "sha256": "26233da4b00c856877cfc4e05f4205654b5c0f8df50930b25d89357b100c59ea"
     },
     {
       "file": "docs/videos/history-curiosity/pool/external/so-thats-why-cores.json",
@@ -1695,11 +1819,11 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/dedup-decisions.json",
-      "sha256": "e39b2cd19278c647756764085aa56fff6b9bef9cf425558582817f52d5e80e9b"
+      "sha256": "86158800e91fca817121437d3712f86312b2a843a792a1a35a1012ed4d4aed13"
     },
     {
       "file": "docs/videos/history-curiosity/pool/selection.json",
-      "sha256": "9c8e3df1139c40317b730bdddccf5d601222c625329667a7bd38da5195e2f78d"
+      "sha256": "09b1bc4f5dc57db6e9c1b677365408a25e8497f2dce3098fada6a1516f09f579"
     },
     {
       "file": "docs/videos/history-curiosity/pool/reviews/audience-20261114-r2.json",
@@ -1862,8 +1986,260 @@
       "sha256": "6b9173c7b2bd6ead45810a83874f8af9bd0d0646497a51f7dfbc2380ff881b4d"
     },
     {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave100.json",
+      "sha256": "2ae6beebe88920a6af77ef64d80cb453aa85a8f0faeeb0ccb7f4069bd9c54d6a"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave101.json",
+      "sha256": "97eec5dc7a2a9c23f79693bd5cd85e8b706c7a8e3554e7f18e39fa2540004352"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave102.json",
+      "sha256": "f17e4797f0735a89889cdb834a3b6b5d1652456ae778015c24d439c5604937e5"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave103.json",
+      "sha256": "ba568ab7c8e4073097a4ee423b046e30177059e7ea1953128047e1142b5c7987"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave104.json",
+      "sha256": "d9fd488f27c13738c0d6995b68e0db6f1a513433abb7569233a1d43bd4bbcf90"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave105.json",
+      "sha256": "9029b0f0b1151da545f649167bd6dfa4d7104b2b369506bf66a1487d95bb91cd"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave106.json",
+      "sha256": "7a98601cd082f64c07197e737f71422ccc3dc6d2fd3297496508ab37dbef9ba0"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave107.json",
+      "sha256": "5810b715d9ee0320907f65852a38db71b16706e9df0a0d735cac4f8b1d5d49f9"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave108.json",
+      "sha256": "177fdf18e1d57fb7accb1581a9e65204f0f728031e6abd85a5414d29fa9890f3"
+    },
+    {
       "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave85.json",
       "sha256": "8afb23ac08ba9abb44265f25a01db469e46940f252cc1ec9d6e45030a0ea79f0"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave86.json",
+      "sha256": "59aa2353c1ae87077e16c63a2eea1fd8f81e1b516ac431b692862dd9fb447642"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave87.json",
+      "sha256": "0da422d7b80c78f201c51b701e77e5a7cf07abb528c8f156c343da63b1060c0a"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave88.json",
+      "sha256": "b696eee186bd388b7cfa5b188c6f30dad02a09ca4ca8f9fc2abf203a5f1fbdaa"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave89.json",
+      "sha256": "961e8340278b2d274b395655ad2f6fdd7a414b19fe846025b502f646e16efc51"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave90.json",
+      "sha256": "77f4b1f32228ac8e61bcd98830b43c003a87b8b8c905e1a9698988bc151cf70b"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave91.json",
+      "sha256": "0dfb3feb6ee037a9abfe1022fd4c095debed75c92301b11399d3266592fc8609"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave92.json",
+      "sha256": "bb766ac82f6595cd0c9548d27924fcad68d7a48910a3ac8e039944e22847d3f4"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave93.json",
+      "sha256": "e173c6961c9a893e0a68108eae5b5f0ec1ca6ed54b9f7c8aba0be1c609222d3a"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave94.json",
+      "sha256": "9dc96baafbc27948d629f0de00c696873bee99b66797b1e39bbba9211fd445ac"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave95.json",
+      "sha256": "4b365175c09811323809088b694221a661d4944ea9a9e6984e55e29c1be91ce6"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave96.json",
+      "sha256": "8835669b3195205fdb54241853c41cdaa9dfa72ec54ce237f1299204b2eb32a2"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave97.json",
+      "sha256": "86b404675c801ba522f51abdf3865be32a734e7f33194036a8aaa2caae58b19f"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave98.json",
+      "sha256": "18e6d5381a43a5f08f3f7d2ff65bcced54577eb755d64ff05a8ca3faa3bdb5fd"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119-wave99.json",
+      "sha256": "020815f408f5b390865ac80c7ed87c05349e63c6eedf2b1126163962a567d5c8"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119z-wave100-repack.json",
+      "sha256": "a12af4f89460bf25b97e8ba0a5283bc067095dc5b733e5b074fac0479d848743"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119z-wave101-repack.json",
+      "sha256": "ef3dbb003749059643fbd037a9ca0d1d6c121407370012bf693258cc6e39496d"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119z-wave102-repack.json",
+      "sha256": "d005d74877aa9f07d8f9790de48b2ccf1aabae45f32f0311712be784dc82104a"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119z-wave103-repack.json",
+      "sha256": "6050fece68661bf4566dc13bd26379ff0f9ba0896ff79fe30efbe3dd409ff6b8"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119z-wave104-repack.json",
+      "sha256": "f9727b376f5001295836650e74756f9de766a08c67b0da4aff8b88efd8f38fc5"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119z-wave105-repack.json",
+      "sha256": "7dd4dfbc3b411b2379f4170a1dcebdf47582450adb3ad6332ad31b30d0bb0d7a"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119z-wave106-repack.json",
+      "sha256": "b708b1a139fde19471f491078cac0f12965bea3d4416b7a5ffa074ab8b6a974f"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119z-wave107-repack.json",
+      "sha256": "479c3e6833b2291fbeeae9509fd187b5bc878260307de9abd9e326a4f81a6b6f"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119z-wave108-repack.json",
+      "sha256": "c30987de52587ef99613407d05611f35a1411a690e1c11ee75a2c3162cc11a17"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119z-wave86-repack.json",
+      "sha256": "dff726e098af05617e2a37775d823525b790e72d052b959c4822f1f87fe88d70"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119z-wave87-repack.json",
+      "sha256": "c9f79e7977a5114bf1386b108f6cc8395e90930994afa0332420398a56c67774"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119z-wave88-repack.json",
+      "sha256": "2720b1fdc577194c6f1f991e0ffe58aaa5132961ed8d30c5dfcba3ba658a476d"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119z-wave89-repack.json",
+      "sha256": "67f0b46622986ebdf58a41e41caadebb127d450b405130926a7706c5c096aeb1"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119z-wave90-repack.json",
+      "sha256": "b25f9da1fc41e3746acf48cf555680ed691b078ff7aff45ead6aaa884886bbac"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119z-wave91-repack.json",
+      "sha256": "9cf02de357879f584e5bbd95df3d43521e81d166183ebe27b77225438090c295"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119z-wave92-repack.json",
+      "sha256": "e151a7a149a86a2e9683ff09d37d31e5546ef00c643c0e8d30fc9d1c91fb6d2c"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119z-wave93-repack.json",
+      "sha256": "3f41de472426be77786275315d2a62705d55ed22bb7e450f86a00d3fe7e9302e"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119z-wave94-repack.json",
+      "sha256": "7f7ae4786da15b06d8c1c8d25fd31d5ce4909ebec4a906780563254dfc76cfb0"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119z-wave95-repack.json",
+      "sha256": "49ca719761f409b9922f0cd8bc2b61d48b7dc049829afe0d24837147e2664dc3"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119z-wave96-repack.json",
+      "sha256": "cf658c85fba8e43d9814d424d43d83a467ef45f9a2c5f2f105dd63646c513e65"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119z-wave97-repack.json",
+      "sha256": "814d497c46aee140460d76420b2a8c349480b066288a63988ee36cceceae5324"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119z-wave98-repack.json",
+      "sha256": "b383ae4731926340ad9b182eebb576dd64ecd93ee981bd0f98aff0b0fd92cb00"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119z-wave99-repack.json",
+      "sha256": "b2be96020ceb38a8f321cc481708a1a35c9882b5a1005ddbac30ac95deff47a9"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261119zz-wave91-anne.json",
+      "sha256": "d4416d1e0e84968be3984fe96388d1d22214cd3f8237b3fbdc696ee33b196f29"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261120-wave109.json",
+      "sha256": "3db3b94b370dd8a5d2a4de0b7ccf8007cc752e20b2f7838f36c4209bbd905e44"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261120-wave110.json",
+      "sha256": "464e08aa8359845bdac8ae8e47098978a9ea9a2141c0d5258f236ece029d7029"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261120-wave111.json",
+      "sha256": "6b22f43848a2e410a1ae7e9f0cc53628f5b36ad3bbfa8a16d1cf994ce0037d8b"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261120-wave112.json",
+      "sha256": "75d9af670913dd74cfdf9de4afba71aba7250942b50ff18f4444201a9e10ef95"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261120-wave113.json",
+      "sha256": "c72e5c759de65de33d442e152f58ec46bd95d2926c6939b456b89be216de59f4"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261120-wave114.json",
+      "sha256": "9321977370227a36f1dbc74444c5ae0632bcc896ccb8bcbbb9a5b2ca15f18a3c"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261120-wave115.json",
+      "sha256": "f6399dca53d758f5fe5168d27a8450f847904def7cb1b10da2b227cdd071b924"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261120-wave116.json",
+      "sha256": "67c35b417702ba65b474a00313da43c349d68f6bbf611079eb3a11d2c4e1d945"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261120z-wave109-repack.json",
+      "sha256": "96ae44237953ffb8bd78f5f49d4c7ea50ad99dc0b8525114488e168d30fd0e24"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261120z-wave110-repack.json",
+      "sha256": "35e3c912f2f5b8b0a39f6a0293e6952550e3e5cda207bce4468297cb734c31bf"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261120z-wave111-repack.json",
+      "sha256": "0a92efb08c2434a443b1dea9e050818038d5f799e75f0f824951c5341b375c6f"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261120z-wave112-repack.json",
+      "sha256": "7ec79ef17a9990a9f7ace59c2a6c0fec6d7e9cf952d359d166d24985ca281484"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261120z-wave113-repack.json",
+      "sha256": "53cc4392697fc2d9287db0f993dd1e89717f4b1beb09699aa5f665b4b0032502"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261120z-wave114-repack.json",
+      "sha256": "76547ada114550beaf1c29ff19768dee586d2eb77a3ff7e304e4e2ddc99dac05"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261120z-wave115-repack.json",
+      "sha256": "69d6019b20cc7bc7ea6c72c7685c0792f0dc0c00aeb4f5a156e1217f17041032"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261120z-wave116-repack.json",
+      "sha256": "88392d60d83dc89bb0c672b7a8946bd60ccd3fa6ef3ab1efeca43eb0f06d8956"
     },
     {
       "file": "docs/videos/history-curiosity/pool/reviews/demand-20261117-cores.json",
@@ -1950,35 +2326,159 @@
       "sha256": "88350d92298a6a92a5fb1723826b877fd5b2d33d458c3461e51e0ce4b418cb7f"
     },
     {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave100.json",
+      "sha256": "960d2f3820b87d73f243832b8ca2db1e9134c42a9475b0a77c66be2b70f9c1d2"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave101.json",
+      "sha256": "8b120de48a4df5c3033bdb21e7a5002904822147f887509bef1735ac17844bd8"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave102.json",
+      "sha256": "5e717f380f0959753d98ada9e8bf266aa0f61aa6e9964291cc6547a823f92f8a"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave103.json",
+      "sha256": "59eb73f816c33022ce76ac978a9f12fee334c367b5fcb9aacb0ed947a63f6eaa"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave104.json",
+      "sha256": "8f51d175aa0618060c79f50791a59eacf4323d89b8990de7399bf8042e3edac2"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave105.json",
+      "sha256": "fb65d9ebbae0e5508be7a9dc5036811ea8603a62929fb5a842c28d90d36e4506"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave106.json",
+      "sha256": "c16a36b219ab65d2c5d6dbd3cb57b14452c5c63d73ca63b79bfd55984e5908ff"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave107.json",
+      "sha256": "fea2d353356cc88b3c6b3728cabe4e65b74db883a5374bd8270d3681d696376e"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave108.json",
+      "sha256": "7df2b14309b7f9f273d73ec5caefcc43c58fbe14295c2937a17b19e4277ddea2"
+    },
+    {
       "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave85.json",
       "sha256": "1213477746b0b6995e0c1fa9409ad76bd177d3bff6d1ac13cc3ca61111d17ddc"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave86.json",
+      "sha256": "d5a00dbd7e533df584ba080b6783beffa0b49ced1ea3c95d5996888a6280da35"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave87.json",
+      "sha256": "ed11fc37db4d2b3ebdbbd3685ee1a4a0d75b66115c50b400bd341014c27169d0"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave88.json",
+      "sha256": "1d6b6f612a222d3d7d5a92cd041c5c61d12026fdcb624ea4f4fd9640810310f0"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave89.json",
+      "sha256": "fc0e7fda179dfe5435497f7cd85a48907e46254bb35ccaf94e017efcfaca4e12"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave90.json",
+      "sha256": "37ea25eef0c116f5827927dfea651920a21dc237e47e85291691fa423b169d3c"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave91.json",
+      "sha256": "1f569682279c22c014e85cc9b7b5b1abec73a4ae604b8e610f974fd2836a5764"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave92.json",
+      "sha256": "107ed1843d19b725e11d0db5cb67d24ffae995f735abcb6381f6b04f04ff801e"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave93.json",
+      "sha256": "f83f249eb10e780065e5ee062161394354eda7f19616f81df1a70aa56df5e001"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave94.json",
+      "sha256": "414f1f63d5ece5883247d7f508aeb0ad424b8f91be80972d7955edf6a2a28288"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave95.json",
+      "sha256": "6ff0ebbfad4a0e44334a775218e30229d306697978b8b023ab5ba13bfe836970"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave96.json",
+      "sha256": "8475f5ff1c17dccb15f04a0aaa28978fa2896e0d2776211c49c665f081482e74"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave97.json",
+      "sha256": "40ff0e2ed6f6f556d477a7e86f3c3d3ec6b0d4989c8a46dec8fff8ede4f39e38"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave98.json",
+      "sha256": "ccf83755cc18a7db25d06fe523c8144103c3f1a6b0669393b2354babcd353e7e"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave99.json",
+      "sha256": "8465dabd090231f9b9ef3e52b82a8267c8db36223db6c9b0cb2712c3a4da9271"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261120-wave109.json",
+      "sha256": "243db91c36b01042fda4134c86787117668f1bbfa5f5014398647a4038f7124a"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261120-wave110.json",
+      "sha256": "4ce0292a678d838faabfd347af8d0c56bdc1ccdfc9f088ad3f89b9a409bdda6d"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261120-wave111.json",
+      "sha256": "eecb7af0d61323abc8e8612d51ab2f59be659ee79af36df6ba56ba5cd58ccc1f"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261120-wave112.json",
+      "sha256": "e280b7c6dbce5691a8a5aa67b10587c888322d011edb0b73e51e8bca91bd6223"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261120-wave113.json",
+      "sha256": "2f70b4fe7d54061302b68b83bf941ba92bdd52e0d27229b52609f1af88f97a17"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261120-wave114.json",
+      "sha256": "9fa5428474fd09862ad7008157f90898776599c924bb405dbcdb9b508be99414"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261120-wave115.json",
+      "sha256": "a6a24c37e455026f283700e186405e7e2604ad45343cb113a4411d5e4094fa57"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261120-wave116.json",
+      "sha256": "1ba2dcc1590cef614910eaf2f85cd6da62a0c0636fc2bd86fa16b8b96ecc6ad1"
     }
   ],
   "theme_definition_sha256": "3794d2fd2e377a0871e4bbc22f41bca81a3b4245aa7373ff07908eaede57362c",
   "files": [
     {
       "file": "pool.json",
-      "sha256": "2e978cb6bcd039138bc441954acfc84f2afd088a04c703db406adf0f437f20a2"
+      "sha256": "59524dc2be1b0eeae761e19a5b6457d84b20e4e8350db4e2fd385208da31ab1b"
     },
     {
       "file": "pool-sources.json",
-      "sha256": "efce441eea34c334999ad49816ded860b5cbe7ba98fc6651eeac48bee6144e89"
+      "sha256": "3514273de193893bb8e42198a68b24f9da352851520a0eea79c000e436ccb3ec"
     },
     {
       "file": "pool-records.json",
-      "sha256": "dd048f3578bbce6fe99bb908be41b11cc9b6bcd2752091855b8061d91b0be70f"
+      "sha256": "809483cc545e2515e44a09686d3ff228654d2d2ce1fef867b87da16c1d373d2f"
     },
     {
       "file": "QUESTIONS.md",
-      "sha256": "ff427611de121b0dd8a1d584317b8ac656b6e228f9c2078cb223fe263077feec"
+      "sha256": "a1608d2c663a32d190f287b16f8c2e627c58bf10f7a3eb2018f61cf9b834d9df"
     },
     {
       "file": "SOURCES.md",
-      "sha256": "7b97e9e9908f89286af839c3a22d9aee3f150a7e717baee32e945395fcabc4e1"
+      "sha256": "a170c1ed9fb81cb3634a8999f19bcd0b2b28ccbdc2d3089282dc2dee762ff4a0"
     },
     {
       "file": "DEDUP.md",
-      "sha256": "809475dcffcc5bf708ea9ab6da626652d1c7d7b49de98077ef69b3087ae63663"
+      "sha256": "077e29115ba233299b0d08a4973d8e1dfa699377692a9c83cb00cf3f3b512ec1"
     },
     {
       "file": "THEMES.md",
@@ -1986,11 +2486,11 @@
     },
     {
       "file": "index.html",
-      "sha256": "4a7c5620cc987d0a6e202111d94705d945280d349c28ba6bba40c2c3000d8c43"
+      "sha256": "3dba4b5886688e13407b5aa648096d46d287bd7ef1056be413a2b3e1db0a7c84"
     },
     {
       "file": "PRODUCIBLE.html",
-      "sha256": "dbdad08a30c29f1f760a1348a7ccefade4ae897ba2565703c15e0f8b80c9ba67"
+      "sha256": "56d93c059fd2a91c5fac665cdc52fc056b42ca31e8d001a9438cdb3c930c9f71"
     }
   ]
 }

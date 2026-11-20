@@ -1,6 +1,6 @@
 # 品牌故事企劃清單（100 個｜2026-11-19 已退役移入奇聞 W 軸）
 
-> **2026-11-19 站主定案（已退役）**：這份 100 題清單已自後台長片企劃目錄（`/admin/videos?tab=plans`、`docs/videos/long-form/plans.json`、`apps/api/app/video_plans/data/catalog.json`）移除，**不再匯入主機每日品牌故事產線**。全 100 題已依黑猫研究院選題規則完成盤點：先篩 W 軸需求四問（`have`、`why`、`standard`、`lose_or_jp`）答「是」≥ 2 題並剔除與奇聞／原來如此／黑猫既有題撞題及非商業題共 55 題（逐筆列於批次 `not_added`），其餘 45 題改寫為「進攻型商業博弈問法」、於 2026-11-19 重抓實讀來源並經非作者獨立覆核與雙評審盲評打分後，45 題總分全數 ≥ 6.83（最高 9.22）正式入選奇聞檔案局 `W-商業與品牌奇聞` `N9001–N9045`（[`docs/videos/history-curiosity/pool/batches/wave86-w-heimao-20261119.json`](../../history-curiosity/pool/batches/wave86-w-heimao-20261119.json)）。本資料夾原始檔與 `stories.json` 完整保留，供歷史查核溯源與後端測試 fixture（`apps/api/tests/test_video_story_admin.py`、`tools/video/story-plans/validate.mjs`）使用，請勿刪除。
+> **2026-11-19 站主定案（已退役）**：這份 100 題清單已自後台長片企劃目錄（`/admin/videos?tab=plans`、`docs/videos/long-form/plans.json`、`apps/api/app/video_plans/data/catalog.json`）移除，**不再匯入主機每日品牌故事產線**。全 100 題已依黑猫研究院選題規則完成盤點：先篩 W 軸需求四問（`have`、`why`、`standard`、`lose_or_jp`）答「是」≥ 2 題並剔除與奇聞／原來如此／黑猫既有題撞題及非商業題共 55 題（逐筆列於批次 `not_added`，連同新題覆核剔除的 `N9055` 合計 56 筆），其餘 45 題改寫為「進攻型商業博弈問法」、於 2026-11-19 重抓實讀來源並經非作者獨立覆核與雙評審盲評打分後，45 題總分全數 ≥ 6.83（最高 9.22）正式入選奇聞檔案局 `W-商業與品牌奇聞` `N9001–N9045`（[`docs/videos/history-curiosity/pool/batches/w-heimao-01-20261119.json`](../../history-curiosity/pool/batches/w-heimao-01-20261119.json)）。本資料夾原始檔與 `stories.json` 完整保留，供歷史查核溯源與後端測試 fixture（`apps/api/tests/test_video_story_admin.py`、`tools/video/story-plans/validate.mjs`）使用，請勿刪除。
 
 （以下為 2026-09-28 建立時的歷史說明。）
 

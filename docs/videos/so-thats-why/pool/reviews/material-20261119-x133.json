@@ -1,0 +1,586 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-19",
+  "reviewer": "check133",
+  "baselines": {
+    "curio": {
+      "candidates": 2752,
+      "selected": 1880,
+      "themes": 155
+    },
+    "so_thats_why": {
+      "candidates": 8032,
+      "selected": 7728,
+      "themes": 774
+    }
+  },
+  "method": "逐一另開宣告的來源，定位器材館藏、實作試驗、主管機關及賽會原件。以核心問題／可得答案在兩池候選、原始記錄、題組與退案檢索異譯、近義詞與同機制；獨立編寫事實折算，未接觸盲評分數。",
+  "segment_reviews": [
+    {
+      "id": "K133-0001",
+      "source_ids": [
+        "X133E-S01"
+      ],
+      "decision": "screened",
+      "checked": "中華郵政郵件交寄問答逐句說戳記可先有，實際郵資仍須交郵局；只投郵筒按欠資處理。",
+      "dedup_and_scope": "查郵資已付、預付戳與欠資；與歷史半票實寄鑑定 K124-0402 的跨票封銷戳分開。"
+    },
+    {
+      "id": "K133-0002",
+      "source_ids": [
+        "X133E-S02"
+      ],
+      "decision": "screened",
+      "checked": "央行收兌標準第2條第6款排除不能脗合的拼湊，第3條另列破損但片片能脗合，且須先排除第2條的拒兌原因。",
+      "dedup_and_scope": "查破鈔、殘鈔、半額收兌、拼鈔。只問同鈔破片與湊自不同張，沒有把紙面面積當成唯一條件。"
+    },
+    {
+      "id": "K133-0003",
+      "source_ids": [
+        "X133E-S03"
+      ],
+      "decision": "screened",
+      "checked": "北市圖查詢預約狀態問答的『目前情況』列排隊位置；『調出日期』是即將送往指定館，『取書期限』在實際到館後顯示。",
+      "dedup_and_scope": "查調出、預約序位、到館與取書期限；對象是本館系統欄位。"
+    },
+    {
+      "id": "K133-0004",
+      "source_ids": [
+        "X133E-S04"
+      ],
+      "decision": "screened",
+      "checked": "資源循環署針對百貨購物中心餐飲攤位說，盛未包裝食物的袋可用；已用餐盒或其他包裝，提袋須依購物用塑膠袋限制，不得免費。",
+      "dedup_and_scope": "查限塑、餐盒、食品盛裝和購物用塑膠袋；限於該類營業場所，不延伸所有店家。"
+    },
+    {
+      "id": "K133-0005",
+      "source_ids": [
+        "X133E-S05"
+      ],
+      "decision": "screened",
+      "checked": "高公局一般方案小型車每日每車優惠20公里；計程車條文另明定乘客按實際行駛里程計，優惠里程歸車輛所有人。",
+      "dedup_and_scope": "搜國道通行費、計程車、每日里程折扣，沒有把優惠認成依乘客個人重算，亦未當成假期特別方案。"
+    },
+    {
+      "id": "K133-0006",
+      "source_ids": [
+        "X133E-S06"
+      ],
+      "decision": "screened",
+      "checked": "World Curling 2026 規則 R17(g)(iii) 在無分端先投者取得下局選擇，但 equal measure 空局由原有權者保留；對讀(i)由圈外預置壺方先投，支持紅選圈內黃先投的例子。",
+      "dedup_and_scope": "搜空局、混雙、等距、預置壺、先後手。K119-0406 已答按靠近圓心的石數計分；這是下局選擇權的兩種判法。"
+    },
+    {
+      "id": "K133-0007",
+      "source_ids": [
+        "X133E-S07"
+      ],
+      "decision": "screened",
+      "checked": "Microsoft SUBTOTAL 語法表9與109同為 SUM；1–11 包含手動隱藏列，101–111 排除；兩套都剔除篩選掉的列。例中100+40和100與規格吻合。",
+      "dedup_and_scope": "查小計、篩除、手動隱藏列與 SUBTOTAL；縱向列示例，不推到隱藏欄。"
+    },
+    {
+      "id": "K133-0008",
+      "source_ids": [
+        "X133E-S08"
+      ],
+      "decision": "screened",
+      "checked": "King Arthur 作者兩次用 Traditional Angel Food Cake 配方。正放者先離中柱，至少一小時後比剛出爐時降低近3英吋；倒扣者在該次比較中高且疏鬆。文內蛋白冷卻向內收縮是此配方的解釋。",
+      "dedup_and_scope": "查天使蛋糕、倒扣、冷卻塌陷，保留本次試烤基準，並未給所有蛋糕通用的高度差。"
+    },
+    {
+      "id": "K133-0009",
+      "source_ids": [
+        "X133E-S09"
+      ],
+      "decision": "screened",
+      "checked": "DMC Fractionals 區逐分1/4、1/2與3/4。四分之一從指定角至方格中心，Aida 上須從紗線間穿下；整個對角線才是半針。",
+      "dedup_and_scope": "查十字繡、分數針、繡布格心與補針。題眼是格點如何映到角和中央，非泛教縫紉。"
+    },
+    {
+      "id": "K133-0010",
+      "source_ids": [
+        "X133E-S10"
+      ],
+      "decision": "screened",
+      "checked": "D850 Using Two Memory Cards 寫 Overflow 直到主卡滿才用副卡；Backup 每張需寫兩卡，只要任一卡滿不能釋放快門。",
+      "dedup_and_scope": "另搜雙卡、備份卡、空間、溢位與禁止快門；原屈光度提案已退給同核心 K120-0005，替代題據明訂的雙卡寫入條件。"
+    },
+    {
+      "id": "K133-0011",
+      "source_ids": [
+        "X133E-S11"
+      ],
+      "decision": "screened",
+      "checked": "RHS 水仙栽培指南 Deadheading、Pruning and Training 兩段，想留種可保留殘花；葉綠時繼續光合作用補鱗莖儲備，不宜打結，待黃再剪。",
+      "dedup_and_scope": "查水仙、留葉、花後打結、鱗莖回補與去殘花，限來年開花和自行結籽兩個目的。"
+    },
+    {
+      "id": "K133-0012",
+      "source_ids": [
+        "X133E-S12"
+      ],
+      "decision": "screened",
+      "checked": "JR 東日本旅客營業規則156條定義途中下車，例外第1款為營業公里100以下，第2款獨立列同一大都市近郊區間內相互發到的普通券；前者不適用也仍須檢後者。",
+      "dedup_and_scope": "查大都市近郊區間、途中下車、長程乗車券。只答這種乘車券的區間限制，不推定各種特急券或優惠券。"
+    },
+    {
+      "id": "K133-0401",
+      "source_ids": [
+        "X133C-S01"
+      ],
+      "decision": "screened",
+      "checked": "Met 2009.300.2932 藏品說明逐項指右前片、左胸、左袋與鈕扣在裁切之前已繡出；18世紀織幅有限，左袋另排節布。館展文章的另一塊未裁繡布右緣小圓各作鈕扣，不能移當主件的位置證據。",
+      "dedup_and_scope": "跨池搜背心、裁片、左袋、織幅、預先刺繡與釦面。核心是布幅限制下的排版，不等同加工印花或泛談服飾紋樣。"
+    },
+    {
+      "id": "K133-0402",
+      "source_ids": [
+        "X133C-S02"
+      ],
+      "decision": "screened",
+      "checked": "V&A〈Women's tie pockets〉藏品 T.846-1974 及穿戴段，袋以帶綁腰、裙和襯裙留可伸手的開口；Clapham 娃娃另有手提袋，同一套收藏可照見不同用途。",
+      "dedup_and_scope": "搜繫腰、口袋、裙縫、假口袋與 Clapham；只答獨立袋在哪裡、手怎樣伸到，沒有推出所有時代的女裝都無縫袋。"
+    },
+    {
+      "id": "K133-0403",
+      "source_ids": [
+        "X133C-S03"
+      ],
+      "decision": "screened",
+      "checked": "KCI 第32回展頁圖說標 ELEONORE LELONG 店、約1895年，並列晝用與夜用ボディス；內文明述一裙配晝、夜兩件上衣，可換穿。節省一條裙的費用在原文是推想。",
+      "dedup_and_scope": "查日夜禮服、共用裙與可換上衣。換的是同裙兩件上衣，不與裙架、可卸袖等物件合算。"
+    },
+    {
+      "id": "K133-0404",
+      "source_ids": [
+        "X133C-S04",
+        "X133C-S05"
+      ],
+      "decision": "screened",
+      "checked": "V&A T.131C-1919 館藏結構與 The New Phantom 印記，弧形鋼線環在同一直桿上活動；館文描述坐下可收、站起回復外凸。可用該件示意，不能將其他裙撐專利構造補入。",
+      "dedup_and_scope": "搜臀撐、tournure、hinge、可收裙撐與鋼骨裙；編號 N2986 只有降神會年代服裝的文字鄰近，無同構造核心。"
+    },
+    {
+      "id": "K133-0405",
+      "source_ids": [
+        "X133C-S06"
+      ],
+      "decision": "screened",
+      "checked": "KCI AC3189 80-8-3 材質欄定位細褶及袖窿、側縫玻璃珠，圖錄下段說玻璃珠作為配重兼裝飾。未提供珠重估算。",
+      "dedup_and_scope": "搜 Fortuny、Delphos、側縫配重、玻璃珠；與同輪熱定褶的剪裁順序是不同答案。"
+    },
+    {
+      "id": "K133-0406",
+      "source_ids": [
+        "X133C-S07",
+        "X133C-S08"
+      ],
+      "decision": "screened",
+      "checked": "Met 2015.227 描述先製成二至三倍尺寸衣物，折疊、夾紙後進熱壓機，成衣獲永久褶；對讀 FIDM 館文先縫後夾兩張紙、聚酯熱定形的說明。",
+      "dedup_and_scope": "查三宅一生、成衣壓褶、聚酯與先縫後褶。僅答此系列的製作順序，不把館中另一年代的衣物當作同一件。"
+    },
+    {
+      "id": "K133-0407",
+      "source_ids": [
+        "X133C-S09"
+      ],
+      "decision": "screened",
+      "checked": "London Museum A24105 原件說明稱 turnshoe 是反面縫合再翻正；紅皮鞋面所襯白色小山羊皮刻意從鞋口露出作 beading，足底另襯藍絲。",
+      "dedup_and_scope": "搜翻鞋、反縫、鞋口留白與童鞋。資料說明本件紅鞋做法與白邊，不能據除此推定全體皮鞋。"
+    }
+  ],
+  "rejected_suggestions_checked": {
+    "X133E-NA001": "K123-0010。明尼蘇達大學品種說明與舊選題核心，第一年枝尖及次年同枝較低部位兩季採果已收。",
+    "X133E-NA002": "K119-0406。對讀規則 R12(b) 與舊卡，一局內同色壺須比所有對方壺更靠心，已有同樣示例。",
+    "X133E-NA003": "K120-0005。兩者靠目鏡視度補償觀者視差，將望遠鏡換相機還不足另開此機制；已以雙卡規則替換。",
+    "X133C-NA01": "K117-0011。舊卡以工作褲口袋受力角解銅鉚釘加固；換作服裝史仍重合。",
+    "X133C-NA02": "K115-0004。舊卡說拉片放平令鎖銷卡住滑塊，與投案解同一現象。",
+    "R133-NA01": "K130-0002。舊卡已有成功高度與試跳、失敗數逐項排位的步驟；它不是百米平手案例。",
+    "R133-NA02": "H74-016。競走判定是否兩腳同時離地與肉眼可辨的題已收，不能把它當百米軀幹攝影的另一筆證據。",
+    "R133-NA03": "另開 OMEGA Paris 2024 Race Analysis PDF，封面 100m Men (Sun 07 Jul 2024)，與8月4日奧運決賽不是同場；無可對應的舊卡ID，原因是來源配錯場次。"
+  },
+  "scope": "19張段落逐卡限定器材、藏品、場域或適用規則；長題以原件量測與讀表為準，兩場另例明標，與巴黎本場區分。",
+  "themes": {
+    "G776": {
+      "title": "巴黎百米決賽，前兩名都是 9 秒 79。把畫面停在終點，你會把金牌給誰？",
+      "researcher": "long133",
+      "reviewer": "check133",
+      "verdict": "ready",
+      "fact_count": 11.5,
+      "author_fact_count": 12.25,
+      "est_minutes": 8.6,
+      "method": [
+        "以文件生產與事例來源歸網絡，世界田總規則與兩屆成績、戰報共封2條；Swatch與親訪其計時主管併算。",
+        "每卡另查實際頁、數表、規則與試驗。手機幀率演算、掃線演示共用機制、等待時間估計已折算，末章按可用秒數上限驗算。",
+        "每個折算獨立事實乘0.75分鐘。估算用於是否送8.5分鐘提案，未實錄影片。"
+      ],
+      "networks": {
+        "世界田徑總會": [
+          "R133-S01",
+          "R133-S05",
+          "R133-S12",
+          "R133-S13"
+        ],
+        "NBC Olympics": [
+          "R133-S02"
+        ],
+        "美國田徑協會": [
+          "R133-S03"
+        ],
+        "Brown 等人的起跑實驗團隊": [
+          "R133-S04"
+        ],
+        "Apple": [
+          "R133-S06"
+        ],
+        "科羅拉多州高中活動協會": [
+          "R133-S07"
+        ],
+        "精工集團": [
+          "R133-S08"
+        ],
+        "Lynx System Developers": [
+          "R133-S09"
+        ],
+        "OMEGA／Swatch Group": [
+          "R133-S10",
+          "R133-S11"
+        ],
+        "日本田徑連盟": [
+          "R133-S14"
+        ]
+      },
+      "network_weights": {
+        "世界田徑總會": 2.0,
+        "NBC Olympics": 1.5,
+        "美國田徑協會": 1,
+        "Brown 等人的起跑實驗團隊": 1,
+        "Apple": 0.5,
+        "科羅拉多州高中活動協會": 1.75,
+        "精工集團": 1,
+        "Lynx System Developers": 0.75,
+        "OMEGA／Swatch Group": 1,
+        "日本田徑連盟": 1
+      },
+      "card_verdicts": [
+        {
+          "id": "K133-0201",
+          "source_ids": [
+            "R133-S01"
+          ],
+          "network": "世界田徑總會",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.25,
+          "checked": "巴黎官方決賽列依次9.79、9.79，末列9.91；0.12秒是公布成績差，未據此估實際距離，與後面拆秒表的卡共用一份賽果。"
+        },
+        {
+          "id": "K133-0202",
+          "source_ids": [
+            "R133-S02"
+          ],
+          "network": "NBC Olympics",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "NBC 的 Lewis Johnson 直接訪問萊爾斯，原話 I thought I got out-leaned / I think you had that one；同篇也引對手在記者會的回憶。卡交代當事人最初的判斷，沒有當作終點技術記錄。"
+        },
+        {
+          "id": "K133-0203",
+          "source_ids": [
+            "R133-S03",
+            "R133-S01"
+          ],
+          "network": "美國田徑協會",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "USATF 賽事報告寫 Lyles trailed Thompson and the fast-starting Kerley through 60 meters，後段才縮小；最終次序另對主辦成績。是該隊賽場描述，不能前推精確反超距離。"
+        },
+        {
+          "id": "K133-0204",
+          "source_ids": [
+            "R133-S04",
+            "R133-S05"
+          ],
+          "network": "Brown 等人的起跑實驗團隊",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "Brown 等人原研究摘要與方法交代受訓4、未受訓12，隨機80/100/120 dB，反應均值138/128/120 ms；摘要特別寫峰力未受音量影響。當屆規則另有按道轉送號令的建議，未對巴黎選手移植實驗結果。"
+        },
+        {
+          "id": "K133-0205",
+          "source_ids": [
+            "R133-S01",
+            "R133-S05"
+          ],
+          "network": "世界田徑總會",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.25,
+          "checked": "2024 全自動計時規則從發令訊號開始，官方表頭明分 Reaction Time 與成績，前兩列0.178、0.176；共享表格和同一競賽規則，折算。"
+        },
+        {
+          "id": "K133-0206",
+          "source_ids": [
+            "R133-S05"
+          ],
+          "network": "世界田徑總會",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.25,
+          "checked": "2024 TR19.13.2、19.18 要求整體延遲固定且不超0.001秒，並在每個比賽時段前與發令員作零點檢測；與起跑反應卡有相鄰但不同的檢驗對象。"
+        },
+        {
+          "id": "K133-0207",
+          "source_ids": [
+            "R133-S06",
+            "R133-S01"
+          ],
+          "network": "Apple",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 0.5,
+          "checked": "Apple iPhone 15 技術規格有每秒60格錄影。1/60秒約16.7毫秒，兩次相隔5毫秒可發生在同一組相鄰取樣中，是固定幀率假設的演算，沒有新增巴黎比賽影像，僅計半條。"
+        },
+        {
+          "id": "K133-0208",
+          "source_ids": [
+            "R133-S05"
+          ],
+          "network": "世界田徑總會",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.5,
+          "checked": "TR18.1、18.2 的白線寬50 mm，取近緣垂直面，僅看軀幹，原文明列排除 head, neck, arms, legs, hands or feet。與機構其他規則同組。"
+        },
+        {
+          "id": "K133-0209",
+          "source_ids": [
+            "R133-S07"
+          ],
+          "network": "科羅拉多州高中活動協會",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "科州高中資格賽裁判指引第1頁 Before the meet，常見白底、跑道紅或黑底是架機對線線索；後頁兩圖標出 torso 正確與錯誤游標。未假設巴黎也採用這份軟體查核表。"
+        },
+        {
+          "id": "K133-0210",
+          "source_ids": [
+            "R133-S08",
+            "R133-S11"
+          ],
+          "network": "精工集團",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "精工技術人員用自家狹縫攝影說明不斷捕捉同一終點線、時間軸依次排列；原賽事媒體採訪中的 OMEGA 時序解釋同義，不添第二份權重。"
+        },
+        {
+          "id": "K133-0211",
+          "source_ids": [
+            "R133-S09",
+            "R133-S08"
+          ],
+          "network": "Lynx System Developers",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "FinishLynx Version 4 用例明示橫移鏡頭慢、固定終點線在畫面上白帶較寬；可用動作做反證，部分原理與精工橫軸卡相同。"
+        },
+        {
+          "id": "K133-0212",
+          "source_ids": [
+            "R133-S11",
+            "R133-S05",
+            "R133-S09"
+          ],
+          "network": "OMEGA／Swatch Group",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "Zobrist 受訪逐一描述主機、同側輔機和較低輔機、內場對側機共四角，規則 TR19.20 主機預先指定，另側用於受遮擋等疑點。Swatch 規格是每秒最多40,000張，不當本場每一刻的實測速率。訪問與製造商同一網絡。"
+        },
+        {
+          "id": "K133-0213",
+          "source_ids": [
+            "R133-S07"
+          ],
+          "network": "科羅拉多州高中活動協會",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 0.75,
+          "checked": "科州第1頁 During/After the meet 把紅色的時間判作手動輸入，應與終點圖及公布結果核對，原檔存到季末。是同一裁判指引內有別於賽前架機的程序。"
+        },
+        {
+          "id": "K133-0214",
+          "source_ids": [
+            "R133-S01",
+            "R133-S05",
+            "R133-S10"
+          ],
+          "network": "世界田徑總會",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.5,
+          "checked": "TR19.24.1 萬公尺及以下場內徑賽非整百分秒一律進至下一個百分秒；巴黎原表 ms* 欄 .784、.789 都對應9.79，差0.005秒。同榜開場已計部分權重。"
+        },
+        {
+          "id": "K133-0215",
+          "source_ids": [
+            "R133-S02",
+            "R133-S11"
+          ],
+          "network": "NBC Olympics",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 0.5,
+          "checked": "NBC 描述約30秒才見結果明朗，另一份採訪中計時負責人是事後估計約10秒判前兩人；來源口徑不同，只算兩種等待的界線。不能反推工作人員或計分板有固定20秒延遲。"
+        },
+        {
+          "id": "K133-0216",
+          "source_ids": [
+            "R133-S12",
+            "R133-S13",
+            "R133-S05"
+          ],
+          "network": "世界田徑總會",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.25,
+          "checked": "北京原始成績表標2、2、4；當日報告說兩人到千分之一仍不能分開，皆10.98。原規則及報導共同支撐對照案例，世界田總同組封頂。"
+        },
+        {
+          "id": "K133-0217",
+          "source_ids": [
+            "R133-S14",
+            "R133-S08",
+            "R133-S05"
+          ],
+          "network": "日本田徑連盟",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "日本田連2026東京正式成績冊男子100mチャレンジ，分組、跨組總表與決賽名單可相互查到兩位10.23與唯一晉級標記。精工補述兩人千分位相同。未推斷規則外的甄選原因。"
+        }
+      ],
+      "chapter_budgets": [
+        {
+          "chapter": 1,
+          "title": "把兩個 9 秒 79 並排，該準備幾面金牌？",
+          "candidate_ids": [
+            "K133-0201",
+            "K133-0202",
+            "K133-0203"
+          ],
+          "target_seconds": 80,
+          "evidence_seconds": [
+            66,
+            117
+          ],
+          "checked": "官方八列、NBC當事人訪談與USATF六十公尺觀察可支撐三次轉折；保留實際領先幾公分未知。"
+        },
+        {
+          "chapter": 2,
+          "title": "如果一個人聽槍慢了，碼表會等他第一步才動嗎？",
+          "candidate_ids": [
+            "K133-0204",
+            "K133-0205",
+            "K133-0206"
+          ],
+          "target_seconds": 87,
+          "evidence_seconds": [
+            66,
+            117
+          ],
+          "checked": "原則、反應欄、零點校正與聲量實驗分開陳述，實驗可演示，不能重建巴黎個人的心理或反應原因。"
+        },
+        {
+          "chapter": 3,
+          "title": "畫面裡先過去一隻鞋，下得了判決嗎？",
+          "candidate_ids": [
+            "K133-0207",
+            "K133-0208",
+            "K133-0209"
+          ],
+          "target_seconds": 88,
+          "evidence_seconds": [
+            66,
+            117
+          ],
+          "checked": "手機取樣演算對應實際規格，白線部位以規則定位，另場高中架機例子已明標。"
+        },
+        {
+          "chapter": 4,
+          "title": "終點照片裡八條跑道都在，為什麼橫著讀卻是在讀時間？",
+          "candidate_ids": [
+            "K133-0210",
+            "K133-0211",
+            "K133-0212"
+          ],
+          "target_seconds": 90,
+          "evidence_seconds": [
+            66,
+            117
+          ],
+          "checked": "廠方掃線、手冊移動架機、當屆相機和對側判讀各有可顯示的紀錄；四萬為上限。"
+        },
+        {
+          "chapter": 5,
+          "title": "判得出先後，為什麼成績表偏偏又把兩人寫成一樣？",
+          "candidate_ids": [
+            "K133-0213",
+            "K133-0214",
+            "K133-0215"
+          ],
+          "target_seconds": 87,
+          "evidence_seconds": [
+            66,
+            117
+          ],
+          "checked": "高中校表是示例，巴黎數值直接讀表；近30秒是看到結果、約10秒是計時負責人的估計，不外推剩餘時間。"
+        },
+        {
+          "chapter": 6,
+          "title": "如果放大到底還分不開，裁判真的會頒兩面同色獎牌嗎？",
+          "candidate_ids": [
+            "K133-0216",
+            "K133-0217"
+          ],
+          "target_seconds": 78,
+          "evidence_seconds": [
+            44,
+            78
+          ],
+          "checked": "北京同名次由成績／當日報告支持；東京是晉級實例，有正式總表與決賽列，沒有寫出推測的選人過程。尾章78秒正好位於兩張卡的可用上緣。"
+        }
+      ],
+      "turns": [
+        "同秒數卻不同名次：分清公布位數和決勝資訊。",
+        "先定共同發令，再定近緣的軀幹位置；橫軸才可以按時間讀。",
+        "北京確定並列，東京在同名次外另有晉級紀錄，回查巴黎表上的第一與第二。"
+      ],
+      "nearby": "搜百米、百公尺、終點照、線掃描、毫秒、反應時間、同名次與光電計時；H74-016 是競走人眼辨識標準，K130-0002 是跳高過桿排名，G714/K105-0534 是讀碼器掃描，均未回答巴黎同9.79的百米名次。",
+      "changes": [
+        "僅把60 m列為隊報觀察；精確反超位置的七月圖表退案。",
+        "按公布與判讀各自口徑描述近30秒及約10秒，不把兩個數字寫成同一支鐘。"
+      ],
+      "unverified": [
+        "未有巴黎衝線精確平面公分距，也未檢證每台現場相機當時的實際掃描率。",
+        "東京晉級標記及名單可核，依這些表不能認定抽籤、退賽或其他最終選擇細節。"
+      ],
+      "note": "17張研究卡，14份資料，覆核折為11.5條獨立事實、約8.6分鐘。",
+      "reviewed_source_files_sha256": {
+        "batch": "0cf0d1cd14c3b84f49204ce3baed3d7fbd57bcaf7b65e737af3277efd3ed8333",
+        "theme": "0763c760f83d8827143802de25747467038e8cc0b0b9f6a4e09edb62d2e7cf94"
+      }
+    }
+  },
+  "reviewed_segment_files_sha256": {
+    "daily": "68efe13a67bbf25cbeb279c64eb0565245625958df33e32095789ffe122c6186",
+    "craft": "227c15fdecf06f88d4f66ed5daa1fcc49e9f30dd349dc7ed3e86962f37f32aa8"
+  }
+}
