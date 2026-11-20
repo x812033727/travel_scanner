@@ -537,6 +537,8 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
     >
       {hasDesktopToc ? (
         <ArticleTocRail
+          key={canonicalUrl}
+          newsReading={isNewsReading}
           headings={headings}
           contentsLabel={labels.contents}
           backToTopLabel={t("guides.backToTop")}
@@ -554,6 +556,8 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
       <SiteHeader />
       {!isHub ? (
         <ArticleMobileProgress
+          key={canonicalUrl}
+          newsReading={isNewsReading}
           backToTopLabel={t("guides.backToTop")}
           headings={headings.length >= CONTENTS_MIN_HEADINGS ? headings : undefined}
           contentsLabel={labels.contents}

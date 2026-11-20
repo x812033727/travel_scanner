@@ -247,7 +247,7 @@ export function GuideArticle({
     </header>
   );
 
-  const body = (
+  const story = (
     <>
       {extras.summary ? (
         <SummaryCard id="article-summary" items={extras.summary.items} heading={labels.summary}
@@ -336,7 +336,7 @@ export function GuideArticle({
                       blocks={piece.blocks} labels={labels.blocks} headingStart={piece.headingStart}
                       subsectionStart={subsectionStarts[index][pieceIndex]}
                       articleLinks={state.article_links} locale={state.locale} termLabels={labels.term}
-                      constrainDiagrams={constrainDiagrams}
+                      constrainDiagrams={constrainDiagrams} newsReading={newsReading}
                       renderFaq={(block, blockIndex) => <FaqSection items={block.items} {...faqSections.get(offset + blockIndex)} />}
                     />
                   ) : null}
@@ -369,6 +369,11 @@ export function GuideArticle({
         );
       })}
 
+    </>
+  );
+
+  const afterStory = (
+    <>
       {showAffiliate && affiliateDestination ? (
         <DestinationAffiliateOptions
           destinationId={affiliateDestination}
@@ -440,7 +445,12 @@ export function GuideArticle({
     <article data-news-reading={newsReading || undefined} className="space-y-6 break-words [overflow-wrap:anywhere]">
       {geminiMember && geminiSeries ? <GeminiNavigation series={geminiSeries} number={geminiMember.number} position="top" /> : null}
       {header}
-      {newsReading ? <div data-news-body className="space-y-6">{body}</div> : body}
+      {newsReading ? (
+        <div className="min-w-0 space-y-6">
+          <div data-news-body className="space-y-6 empty:hidden">{story}</div>
+          {afterStory}
+        </div>
+      ) : <>{story}{afterStory}</>}
       {newsReading ? newsRail : null}
     </article>
   );
