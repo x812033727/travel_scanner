@@ -59,6 +59,26 @@ Rules and lessons are different: their only original is this repository, and Dri
 copy on its own (`docs/videos/rules-sync/`). Write a lesson into the matching `docs/videos/lessons/`
 file (all dramas, the two explainer series, or one drama) or the episode's `NOTES.md`, never into Drive.
 
+## Multi-agent workspaces on Google Drive (`Claude`, `Codex`, `Gemini`)
+
+Never place a live `.git` worktree, `node_modules` or `.venv` directly on a mounted Google Drive
+folder (`G:\我的雲端硬碟` or `rclone mount`): `.git/index.lock` races, symlink limitations and
+100k-file rate limits corrupt the checkout. Instead, keep active checkouts on local/VPS disk and
+hand off uncommitted work across Claude Code, Codex and Gemini (`agy` / Antigravity) through a
+hash-verified Google Drive workspace capsule (`tools/workspace-sync.mjs`, `npm run ws`), stored under
+`AI/工作區/<id>/` (or `videobackup:工作區/<id>/`):
+
+```bash
+npm run ws -- status                                          # branch, base SHA, tracked/untracked & Drive target
+npm run ws -- push [id] --note "Ready for cross-model review" # pack wip.patch + untracked/ + HANDOFF.md to Drive
+npm run ws -- pull <id>                                       # verify SHA-256, checkout branch, apply patch & files
+npm run ws -- list                                            # list capsules on Drive
+npm run ws -- delegate --to <claude|codex|gemini> --slot a --prompt "..."  # cross-agent call via host account pool
+```
+
+`AGENTS.md`, `CLAUDE.md` and `GEMINI.md` at the repository root are byte-identical (`npm run test:tools`
+enforces parity) so all three agent harnesses load the same rules on startup.
+
 ## Where things are
 
 `apps/web` is the Next.js frontend and its same-origin BFF, `apps/api` is the FastAPI
