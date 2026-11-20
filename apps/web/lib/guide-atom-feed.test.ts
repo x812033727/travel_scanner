@@ -49,7 +49,11 @@ describe("buildGuideAtomFeed", () => {
       articles: [story],
     });
 
-    expect(xml.startsWith('<?xml version="1.0" encoding="UTF-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-TW">')).toBe(true);
+    expect(
+      xml.startsWith(
+        '<?xml version="1.0" encoding="UTF-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="zh-TW">',
+      ),
+    ).toBe(true);
     expect(xml).toContain("<title>Mokaair｜每日 AI 科技快訊 &amp; 軟體動態</title>");
     expect(xml).toContain(`<link rel="self" type="application/atom+xml" href="${siteUrl}/zh-TW/life/feed.xml"/>`);
     expect(xml).toContain(`<link rel="alternate" type="text/html" href="${siteUrl}/zh-TW/life"/>`);
@@ -57,6 +61,29 @@ describe("buildGuideAtomFeed", () => {
     expect(xml).toContain(`<id>${siteUrl}/zh-TW/life/gemini-cli-release</id>`);
     expect(xml).toContain("<updated>2026-11-12T08:30:00.000Z</updated>");
     expect(xml).toContain('<category term="ai-news" label="AI 新聞"/>');
+  });
+
+  it("emits media:thumbnail only for real editorial heroes", () => {
+    const xml = buildGuideAtomFeed({
+      locale: "zh-TW",
+      feedPath: "/life/feed.xml",
+      hubPath: "/life",
+      title: "Mokaair",
+      articles: [
+        {
+          ...story,
+          slug: "real-photo",
+          hero: { src: "/guides/photos/hero.jpg", alt: "Hero", width: 1200, height: 675, credit: null },
+        },
+        {
+          ...story,
+          slug: "placeholder-art",
+          hero: { src: "/guides/news-assets/placeholder.png", alt: "Placeholder", width: 1200, height: 630, credit: null },
+        },
+      ],
+    });
+    expect(xml).toContain(`<media:thumbnail url="${siteUrl}/guides/photos/hero.jpg" width="1200" height="675"/>`);
+    expect(xml).not.toContain("/guides/news-assets/placeholder.png");
   });
 
   it("handles an empty feed with a deterministic fallback timestamp", () => {

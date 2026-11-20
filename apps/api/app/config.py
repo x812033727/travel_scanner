@@ -86,6 +86,8 @@ OFFICIAL_PROVIDER_HOSTS: dict[str, frozenset[str]] = {
     # balance and GPU stock that REST does not report.
     "runpod_api_base_url": frozenset({"rest.runpod.io"}),
     "runpod_graphql_url": frozenset({"api.runpod.io"}),
+    # IndexNow instant indexing notifications (Bing, Yahoo TW, Naver, DuckDuckGo, ChatGPT).
+    "indexnow_endpoint": frozenset({"api.indexnow.org"}),
 }
 
 
@@ -420,6 +422,8 @@ class Settings(BaseSettings):
     # The free Basic tier allows 30 calls/day; keep five calls for connection checks.
     odsay_daily_request_limit: int = Field(default=25, ge=0, le=10_000_000)
     next_public_site_url: str = "http://localhost:3000"
+    indexnow_key: str | None = None
+    indexnow_endpoint: str = "https://api.indexnow.org/indexnow"
     airline_crawler_user_agent: str = (
         "TravelScannerBot/0.1 (+https://github.com/x812033727/travel_scanner)"
     )

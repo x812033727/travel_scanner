@@ -390,6 +390,29 @@ describe("rendering the rich blocks", () => {
     expect(container.querySelector("table")!.parentElement!.className).toContain("overflow-x-auto");
   });
 
+  it("fits a two-column news table without adding a keyboard stop", () => {
+    render(<ContentBlocks newsReading blocks={blocks} labels={labels} />);
+    const table = screen.getByRole("table", { name: "2026 年 9 月查證" });
+    expect(table.parentElement?.getAttribute("data-news-table")).toBe("2");
+    expect(table.parentElement?.hasAttribute("tabindex")).toBe(false);
+    expect(within(table).getAllByRole("columnheader")).toHaveLength(2);
+  });
+
+  it.each([
+    ["比較兩種部署方式", "比較兩種部署方式"],
+    [undefined, "項目 · DGD · IEC"],
+  ])("names a keyboard-scrollable news table from its caption or localized headers", (caption, name) => {
+    render(<ContentBlocks newsReading blocks={[{
+      type: "table", header: ["項目", "DGD", "IEC"], rows: [["適合對象", "團隊", "管理員"]], caption,
+    }]} />);
+    const region = screen.getByRole("region", { name });
+    expect(region.tabIndex).toBe(0);
+    expect(region.dataset.newsTable).toBe("3");
+    const table = within(region).getByRole("table");
+    expect(table.querySelector("caption")?.textContent).toBe(caption);
+    expect(within(table).getAllByRole("columnheader").map((cell) => cell.getAttribute("scope"))).toEqual(["col", "col", "col"]);
+  });
+
   it("draws a callout as a note headed by its tone and title", () => {
     render(<ContentBlocks blocks={blocks} labels={labels} />);
     const note = screen.getByRole("note");
@@ -405,6 +428,8 @@ describe("rendering the rich blocks", () => {
     const table = screen.getByRole("table");
     expect(table.className).toContain("[overflow-wrap:normal]");
     expect(table.parentElement!.className).toContain("overflow-x-auto");
+    expect(table.parentElement?.hasAttribute("data-news-table")).toBe(false);
+    expect(table.parentElement?.hasAttribute("tabindex")).toBe(false);
     for (const cell of [...screen.getAllByRole("columnheader"), ...screen.getAllByRole("cell")]) {
       expect(cell.className).toContain("min-w-28");
     }
