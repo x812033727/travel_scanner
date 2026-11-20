@@ -55,7 +55,7 @@ for shot, p in picks.items():
     p["draft"] = src
     p["motion_from"] = Path(src).parent.parent.name  # d1, fix1, fix2, ...
     shutil.copyfile(src, W / "st1" / "out" / f"{shot}.mp4")
-STYLE = [("[Shot 1] 3D CG.", "[Shot 1] Photorealistic live-action film footage of real actors in an ancient Chinese (Song-dynasty) period drama, shot on a cinema camera."),
+STYLE = [("[Shot 1] 3D CG.", "[Shot 1] Photorealistic live-action film footage of real actors in an ancient Chinese (Song-dynasty) period drama, with the look of a feature film."),
          ("Smooth, weighty 3D CG character animation; faces, hair and costumes stay as in the first frame.",
           "Natural, realistic human motion of real actors; faces, hair and costumes stay as in the first frame.")]
 clips = json.loads((REPO / f"docs/videos/series-plans/zhong-tian-qu-qi/production/hailuo/clips-dh-e{900 + N}.json").read_text(encoding="utf-8"))

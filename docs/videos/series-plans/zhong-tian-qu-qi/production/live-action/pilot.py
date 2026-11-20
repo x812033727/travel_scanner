@@ -24,7 +24,7 @@ src, out, shots = Path(sys.argv[1]), Path(sys.argv[2]), sys.argv[3:]
 (out / "prompts").mkdir(parents=True, exist_ok=True)
 
 STYLE_OLD = ["[Shot 1] 3D CG.", "Smooth, weighty 3D CG character animation; faces, hair and costumes stay as in their reference pictures."]
-STYLE_NEW = ["[Shot 1] Photorealistic live-action film footage of real actors in an ancient Chinese (Song-dynasty) period drama, shot on a cinema camera.",
+STYLE_NEW = ["[Shot 1] Photorealistic live-action film footage of real actors in an ancient Chinese (Song-dynasty) period drama, with the look of a feature film.",
              # the live portraits are neutral studio faces; "faces stay as in their pictures" froze every face blank
              # (e901 live expression review 2026-11-08: 14 of 34 faces flat, blank or wrong), so the pictures fix identity only
              "Natural, realistic human motion and acting of real actors: each person keeps the identity, hair and costume of their "

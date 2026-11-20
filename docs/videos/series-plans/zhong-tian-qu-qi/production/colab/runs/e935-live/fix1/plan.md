@@ -61,3 +61,15 @@ s30／s34 d1 原句的 `not smiling`（第 34 集起的掃描不准）——改�
 1. **s17b（協調者決定做 fix2，已做，見 `../fix2/review-picks.tsv`：取 9351222，換掉 fix1 1211）**：轉頭不是同一刻（1.5–3.0 秒一隻接一隻抬頭），鉤子變弱。若要再拍：把動作壓成一拍——「頭兩秒六隻都低頭在水裡；在第二秒，六隻同一格猛抬頭」，
    並把岸寫在鴨子朝的那一邊（這張 `-zong2-shui` 的田埂在畫左，就寫 toward the dark bank at the left edge，剪接不必翻轉）；6 秒、兩支，約 0.7 CU。
 2. 其他接受的小問題寫在 `review-picks.tsv`（s01 多一盞前景油燈與外衣不明顯、s23 唐小棠丸子下的小辮、s34 兩個女生最後並排），人眼看一次再決定，目前不建議重拍。
+
+## fix2 與精修（2026-11-20，協調者決定）
+
+- **fix2 s17b**（`../fix2/mkjobs.py`，基底 fix1 1211 原樣、只改兩句：頭兩秒六隻全低頭，然後同一瞬間猛抬頭轉向畫左的暗色田埂；種子 9351221／9351222，zt-live3）：
+  取 **9351222**（六隻、2.75–3.25 秒幾乎同時抬頭、看得到岸），換掉 fix1 1211；剪接仍建議 hflip 對 s17 的方向（`../fix2/review-picks.tsv`）。餘額 322.48 → 321.64 CU。
+- **精修**：scratchpad `e935refine.sh`（照 `e934refine.sh`；讀 picks-merged → fix1 → fix2 → cut-trims／review3-trims／fix3+ 若有；s04 s08 s33 加過肩背影的開頭；
+  所有精修提示詞的 `shot on a cinema camera` → `with the look of a feature film`；fix1 s34 動作段的鞋句拿掉）。`PREP=1 PRECHECK_ONLY=1` 0 錯後，BATCH=1（20 鏡）在 zt-live2、
+  BATCH=2（20 鏡）在 zt-live3 **同時**背景跑，09:05–10:32，都沒被殺，**40/40**。兩批各自 `ONLY_SELF=1 colab-release.sh`；之後 `colab sessions` 剩一台未記名 [?] VM
+  （`history/zt-live2.jsonl` 09:05 建的，就是 BATCH=1 那台），手動 unassign 後 sessions 空、assignments 0、rate 0。餘額 321.64 → **295.49 CU**（約 26.2 CU）。
+- 精修核對（scratchpad `e935refine-verify.sh`）：40 支的 `.seed` = picks.json 的種子 = 草稿檔名的種子，1312×736、格數與草稿一樣，0 錯；s01 s23 s30 s34 從 fix1、s17b 從 fix2。
+  草稿／精修每秒一格並排（scratchpad `e935rv/`）全部看過：構圖、人數、道具跟草稿一致，沒有新的笑或臉跑掉；s23 錢員外、s30 許硯的嘴放大看仍整鏡閉著。
+  草稿本來就有的（s02 0–1.5 秒笑、s11 2 秒起小笑、s13 苦笑）精修照樣保留，剪點照 picks。
