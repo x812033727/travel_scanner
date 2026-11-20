@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import DestinationGuidePage from "./page";
+import DestinationGuidePage, { generateMetadata } from "./page";
 import { locales } from "@/i18n/routing";
 import { destinationDecisions } from "@/lib/destination-decisions";
 import { destinationsCopy } from "@/lib/destinations-copy";
@@ -9,7 +9,7 @@ import { guideHref, type GuideSummary } from "@/lib/guides";
 import { openSiteVisibility } from "@/lib/site-features";
 
 const mocks = vi.hoisted(() => ({
-  catalog: vi.fn(), places: vi.fn(), merchants: vi.fn(), visibility: vi.fn(), guides: vi.fn(),
+  catalog: vi.fn(), destination: vi.fn(), places: vi.fn(), merchants: vi.fn(), visibility: vi.fn(), guides: vi.fn(),
 }));
 vi.mock("@/components/site-header", () => ({ SiteHeader: () => null }));
 vi.mock("@/components/destination-affiliate-options", () => ({
@@ -18,7 +18,7 @@ vi.mock("@/components/destination-affiliate-options", () => ({
 vi.mock("@/lib/site-visibility.server", () => ({ getSiteVisibility: mocks.visibility }));
 vi.mock("@/lib/guides.server", () => ({ getGuideList: mocks.guides }));
 vi.mock("@/lib/destinations.server", () => ({
-  getDestinations: mocks.catalog, getDestination: vi.fn(),
+  getDestinations: mocks.catalog, getDestination: mocks.destination,
   getGuidePlaces: mocks.places, getGuideMerchants: mocks.merchants,
 }));
 
@@ -140,5 +140,13 @@ describe("destination guide publication boundaries", () => {
       expect(html.indexOf(row.sources[0].url)).toBeGreaterThan(-1);
       expect(html.indexOf(row.sources[0].url)).toBeLessThan(partnerAt);
     }
+  });
+
+  it.each(locales)("emits an intent-rich localized SEO title for %s destination guides", async (locale) => {
+    mocks.destination.mockResolvedValueOnce(tokyo);
+    const meta = await generateMetadata({ params: Promise.resolve({ locale, destinationId: "tokyo" }) });
+    expect(meta.title).toBe(destinationsCopy(locale).guideMetaTitle.replace("{city}", "Tokyo"));
+    expect(meta.title).not.toBe("Tokyo | Mokaair");
+    expect(meta.description).toBe(tokyo.reason);
   });
 });

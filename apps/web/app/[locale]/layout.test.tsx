@@ -20,6 +20,7 @@ vi.mock("next-intl/server", () => ({
 }));
 vi.mock("@/lib/adsense-config", () => ({ fetchAdsenseConfig: adsConfig }));
 vi.mock("@/lib/community/server", () => ({ getCommunityState: async () => ({ enabled: false }) }));
+vi.mock("@/lib/discovery-status.server", () => ({ getDiscoveryStatus: async () => ({ enabled: false }) }));
 vi.mock("@/lib/site-visibility.server", () => ({ getSiteVisibility: async () => ({}) }));
 vi.mock("@/lib/usage-catalog.server", () => ({ getUsageCatalog: async () => ({}) }));
 // Named so the tree walk below can find them by identity.
@@ -27,6 +28,7 @@ vi.mock("@/components/header-session", () => passthrough("HeaderSessionProvider"
 vi.mock("@/components/saved-items-provider", () => passthrough("SavedItemsProvider"));
 vi.mock("@/components/theme-provider", () => passthrough("ThemeProvider"));
 vi.mock("@/components/site-visibility-provider", () => passthrough("SiteVisibilityProvider"));
+vi.mock("@/components/discovery-status-provider", () => passthrough("DiscoveryStatusProvider"));
 vi.mock("@/components/usage-catalog-provider", () => passthrough("UsageCatalogProvider"));
 vi.mock("@/components/community/provider", () => passthrough("CommunityProvider"));
 vi.mock("@/components/analytics-provider", () => passthrough("AnalyticsProvider"));
@@ -38,6 +40,7 @@ vi.mock("@/components/ads/adsense-loader", () => ({ AdsenseLoader: () => null })
 
 import LocaleLayout, { generateMetadata } from "./layout";
 import { ADS_TXT_FALLBACK_PUBLISHER_ID } from "@/app/ads.txt/ads-txt";
+import { DiscoveryStatusProvider } from "@/components/discovery-status-provider";
 import { HeaderSessionProvider } from "@/components/header-session";
 import { SavedItemsProvider } from "@/components/saved-items-provider";
 import { AdsenseLoader } from "@/components/ads/adsense-loader";
@@ -68,6 +71,7 @@ describe("the shared locale document", () => {
     const tree = await LocaleLayout({ children: null, params });
     expect(findAll(tree, HeaderSessionProvider)[0].hasSession).toBe(true);
     expect(findAll(tree, SavedItemsProvider)[0].hasSession).toBe(true);
+    expect(findAll(tree, DiscoveryStatusProvider)[0].initialEnabled).toBe(false);
     expect(findAll(tree, AdsenseLoader)).toHaveLength(0);
   });
 

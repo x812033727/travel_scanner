@@ -10,6 +10,7 @@ import { NavMenu } from "@/components/nav-menu";
 import { navGroups } from "@/lib/nav-links";
 import { featureVisible } from "@/lib/site-features";
 import { useCommunity } from "@/components/community/provider";
+import { useInitialDiscoveryEnabled } from "@/components/discovery-status-provider";
 import { useDiscoveryStatus } from "@/lib/discovery";
 import { frontendActive, frontendCopy, frontendDestinations } from "@/lib/frontend-navigation";
 
@@ -18,7 +19,11 @@ export function SiteNavigation() {
   const visibility = useSiteVisibility();
   const community = useCommunity();
   const tc = useTranslations("community");
-  const discovery = useDiscoveryStatus();
+  const liveDiscovery = useDiscoveryStatus();
+  const initialDiscovery = useInitialDiscoveryEnabled();
+  const discovery = liveDiscovery.loading && initialDiscovery !== undefined
+    ? { enabled: initialDiscovery, loading: false }
+    : liveDiscovery;
   const copy = frontendCopy(useLocale());
   const pathname = usePathname();
   return (
