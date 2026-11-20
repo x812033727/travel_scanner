@@ -57,19 +57,19 @@ async function selectedPlans(page: Page) {
   await expect(page.getByRole("region", { name: copy.title, exact: true })).toBeVisible();
 }
 
-test("all 473 authored plans are visible; search and catalog survive reload", async ({ page }) => {
-  expect(bundle.entries).toHaveLength(473);
+test("all 373 authored plans are visible; search and catalog survive reload", async ({ page }) => {
+  expect(bundle.entries).toHaveLength(373);
   await page.goto("/zh-TW/admin/videos?tab=plans");
   await selectedPlans(page);
-  await expect(page.getByText("五類共 473 筆企劃", { exact: true })).toBeVisible();
+  await expect(page.getByText("四類共 373 筆企劃", { exact: true })).toBeVisible();
   await expect(page.getByText(copy.minimum, { exact: true })).toBeVisible();
   const catalog = page.getByRole("combobox", { name: copy.catalog, exact: true });
   await expect(catalog.locator("option")).toHaveText([
-    "全部分類 (473)", "原來如此事務所・第一季 (100)", "原來如此事務所・第二季 (92)", "原來如此事務所・第三季 (100)", "品牌故事 (100)", "AI 名詞 (81)",
+    "全部分類 (373)", "原來如此事務所・第一季 (100)", "原來如此事務所・第二季 (92)", "原來如此事務所・第三季 (100)", "AI 名詞 (81)",
   ]);
   await expect(page.getByRole("article")).toHaveCount(25);
   await page.getByRole("button", { name: copy.next, exact: true }).click();
-  await expect(page.getByText("第 2 頁，共 19 頁", { exact: true })).toBeVisible();
+  await expect(page.getByText("第 2 頁，共 15 頁", { exact: true })).toBeVisible();
   await catalog.selectOption("season2");
   await expect(page.getByText("符合條件的企劃：92 筆", { exact: true })).toBeVisible();
   await page.getByRole("searchbox", { name: copy.search, exact: true }).fill("B28");
@@ -88,14 +88,11 @@ test("all 473 authored plans are visible; search and catalog survive reload", as
   await expect(page.getByText(copy.historical, { exact: true })).toBeVisible();
 });
 
-test("candidate and covered plans retain their stages and brand stories retain the 13-minute target", async ({ page }) => {
+test("candidate and covered plans retain their stages without showing targets on covered references", async ({ page }) => {
   await page.goto("/zh-TW/admin/videos?tab=plans&plan_catalog=season3");
   await selectedPlans(page);
   await expect(page.getByText(copy.stages.CHECKED_CANDIDATE_REQUIRES_OUTLINE, { exact: true }).first()).toBeVisible();
   const catalog = page.getByRole("combobox", { name: copy.catalog, exact: true });
-  await catalog.selectOption("brand-stories");
-  await expect(page.getByText("製作目標：13 分鐘", { exact: true }).first()).toBeVisible();
-  await expect(page.getByText(copy.stages.REVIEWED_STORY_PLAN_NOT_MEDIA, { exact: true }).first()).toBeVisible();
   await catalog.selectOption("ai-terms");
   await page.getByRole("searchbox", { name: copy.search, exact: true }).fill("ai-agent");
   await page.getByRole("button", { name: copy.searchButton, exact: true }).click();

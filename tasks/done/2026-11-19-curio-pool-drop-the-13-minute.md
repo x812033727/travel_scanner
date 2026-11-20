@@ -1,13 +1,13 @@
 ---
 id: 2026-11-19-curio-pool-drop-the-13-minute
 title: Curio pool: drop the 13-minute upper bound on long episodes
-status: review
+status: done
 priority: P2
 area: tools
 owner: claude-fable-5-2
 claimed_at: 2026-11-19T11:27:49Z
 created_at: 2026-11-19T11:27:42Z
-completed_at:
+completed_at: 2026-11-19T16:29:05Z
 branch: claude/curio-pool-no-13-minute-cap
 depends_on: []
 scope:
@@ -59,3 +59,4 @@ npm run test:tools && npm run check:tasks
   判斷是照當時規則留下的紀錄。其中因為超過 13 分鐘才暫緩、退回或轉 Shorts 的題，以及題案撤案條件裡
   「合計不得超過 13 分鐘」，要不要重新評估是編輯決定，這張票沒有處理。
 - 品牌故事（`story-`）的 13 分鐘是站主另外定的，沒有動。
+- 2026-11-19：工作已由 PR #2181（`c9ac6676`）合併進 `main`，經站主同意補結案搬移至 `tasks/done/`。

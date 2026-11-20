@@ -6,12 +6,11 @@ import { buildPlans, CATALOG_COUNTS, chapterBudget, DIRECTORY, findPlan, recordH
 
 const json = (relative) => JSON.parse(readFileSync(path.join(ROOT, relative), "utf8"));
 
-test("all five source catalogs are complete and historical statuses stay intact", () => {
+test("all four source catalogs are complete and historical statuses stay intact", () => {
   const plans = buildPlans();
-  assert.equal(plans.totals.entries, 473);
+  assert.equal(plans.totals.entries, 373);
   assert.deepEqual(plans.totals.catalogs, CATALOG_COUNTS);
   assert.equal(plans.totals.covered_ai_terms, 1);
-  assert.equal(plans.entries.filter((row) => row.catalog === "brand-stories").every((row) => row.target_seconds === 780), true);
   assert.equal(plans.entries.filter((row) => row.catalog === "ai-terms").every((row) => JSON.stringify(row.target_range_seconds) === "[540,660]"), true);
   const covered = findPlan(plans, "ai-terms", "ai-agent");
   assert.equal(covered.source_status, "covered");
@@ -72,7 +71,7 @@ test("a missing catalog, stale source, low duration or fake measured acceptance 
   for (const mutate of [
     (value) => { value.minimum_content_seconds = 479; },
     (value) => { value.catalogs.season1.target_seconds = 480; },
-    (value) => { value.catalogs["brand-stories"].target_seconds = 600; },
+    (value) => { value.catalogs["ai-terms"].target_seconds = 780; },
     (value) => { delete value.catalogs.season3; },
     (value) => { value.shorts = "LONG_FORM"; },
   ]) {

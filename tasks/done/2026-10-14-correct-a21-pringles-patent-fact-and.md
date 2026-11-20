@@ -1,13 +1,13 @@
 ---
 id: 2026-10-14-correct-a21-pringles-patent-fact-and
 title: Correct A21 Pringles patent fact and re-review source plan
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: codex-8a78-a21
 claimed_at: 2026-10-14T14:29:44Z
 created_at: 2026-10-14T14:16:39Z
-completed_at:
+completed_at: 2026-11-19T16:29:03Z
 branch: codex/brand-stories-five-20261014
 depends_on: []
 scope:
