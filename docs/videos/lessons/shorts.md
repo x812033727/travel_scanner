@@ -9,6 +9,13 @@
 
 ---
 
+## 2026-11-20 · 全系列（前檢自動化、9:16 安全區、重播迴圈與 Google Flow／Veo 3.1 路線）· 站主／規則升級
+光靠文字規則與人工自檢，仍容易在寫 20 集規格檔時漏掉某鏡的 `magazine cover`、收尾音效時間超界或開頭過長（實測拿 2026-11-04 的 `influencer-piglet-e02.json` 與 `raccoon-mischief-e02.json` 跑新版前檢，立刻抓出開頭 2.6 秒過長、`magazine cover` 亂碼詞與 2.2 秒鑰匙聲反應鏡）：
+- **花錢前必先跑機械前檢**：新增零外部依賴的 `docs/videos/shorts-drama/preflight.mjs`（納入 `npm run test:docs-videos` 單元測試），在送獨立審稿代理與 Colab／Google Flow 前，先用程式硬擋片長、單鏡動態 > 3.5s、SFX 超界、雙人框、人手／畫外伸手／`magazine cover`、系列禁忌與 9:16 安全區 `anchor` 超界；同時提供 `score-blind` 自動核對盲評八軸加總與抓滑走陷阱，以及 `export-flow` 一鍵產出 Google Flow（Veo 3.1）提示詞單。
+- **9:16 介面安全區與無黑屏重播**：核心臉部、毛爪與地面／角落線索一律留在 `x: 78–902, y: 180–1380`，成片審核改用 `ffmpeg drawbox` 疊紅框檢查；片尾禁放無意義黑畫面或慢漸黑，讓 11–16 秒短劇自然接回第 1 格衝出 `>100%` 重播留存。
+- **Google Flow／Veo 3.1 音訊避險**：Veo 3.1 原生音訊必開、容易自動冒出含糊人聲或怪配樂，Flow／Veo 提示詞必須移除 H3 的 `<Picture 1>` 並強制加無台詞防護句，剪接時預設 `-an` 抽離原片音軌改由 `edit.py` 統一混音。
+- 已升為規則：`docs/videos/shorts-drama/preflight.mjs`、`docs/videos/shorts-drama/PRODUCTION-ROUTES.md`、`docs/videos/shorts-drama/WRITING.md`、`docs/videos/shorts-drama/REVIEW.md`、`docs/videos/shorts-drama/series/_template.md`。
+
 ## 2026-11-19 · 全系列（汪家夫妻／闖禍小浣熊／網美小豬／社畜地獄）· 站主
 將無語音 Shorts 的五拍分鏡結構、聲音三層設計、第 0 關 AI 避險、花錢前審劇本三道檢查與成片四關品管正式收進 repo 規則，並拆成「共用區」與「四系列個別區」，納入雲端硬碟每小時規則同步：
 - 先前 20 集零台詞短劇的品管規範（`QA.md`）、五輪審核紀錄（`QA-2026-11-04.md`）、重剪腳本（`recut.py`）與各系列 README 只打包在雲端硬碟 `AI/備份/Shorts/<系列>/`，沒有進 repo 的 `docs/videos/` 與 `rules-sync`，新開的對話一旦沒去翻雲端硬碟就會重新踩到「開頭太慢、畫出人手、背景有路人、笑點動作畫不出來、收尾音效被切掉」的坑。

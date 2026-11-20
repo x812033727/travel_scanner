@@ -43,6 +43,25 @@
   1. **情緒升高／凝視特寫慢推**：`Close-up, slow push in`（英文：`The camera pushes in with small amplitude at slow speed.`），或在剪接表 `edit/plan.json` 用 `push: [1.0, 1.15~1.8]`、`anchor: [x, y]` 推向破綻細節（如瀑布頂的水豚頭、門縫裡的拖鞋）。
   2. **假景穿幫拉遠**：《網美小豬》第 2 鏡揭曉假景，從唯美近景拉開到看見破舊頂樓／停車場與苦力男友的全景。
 
+### 3. 9:16 YouTube Shorts 介面安全區（Safe Zone）鐵律
+YouTube Shorts／Reels／TikTok 播放時，手機介面會蓋掉直式畫面四周，尤其**右側按讚／留言／分享欄**與**底部頻道名／標題區**遮擋最重。對齊 [`../SHORTS.md`](../SHORTS.md) 與 `tools/video/shorts/build.mjs` 的安全區規格（以 `1080×1920` 畫布為準）：
+
+| 區域 | 像素範圍（`1080×1920`） | 比例範圍（`0.0–1.0`） | 構圖規定 |
+| --- | --- | --- | --- |
+| **核心安全區** | **`x: 78–902`、`y: 180–1380`** | **`x: 0.07–0.84`、`y: 0.09–0.72`** | **主角臉部微表情、毛爪道具、核心破綻細節（如瀑布頂的水豚頭、門縫裡的拖鞋）一律放在此區內** |
+| 頂部避開區 | `y: 0–180` | `y < 0.09` | 手機狀態列、搜尋與返回按鈕區，只放純背景或天花板 |
+| 右側避開區 | `x: 902–1080` | `x > 0.84` | 按讚、倒讚、留言、分享、混音按鈕直列，**絕不把破綻或第二主角放最右側** |
+| 底部避開區 | `y: 1380–1920` | `y > 0.72` | 頻道頭像、標題、相關影片連結與進度條（佔整張畫面下緣 28%），**絕不把地上的關鍵線索（如奶油掌印、碎花瓶、散落粉紅捲毛）壓在畫面最底緣** |
+
+- **英文 `ff` 構圖保護句**：只要該鏡有地面線索或角落破綻，在 `ff` 尾端明寫 `Keep key face, furry paws, and punchline props framed inside the middle-upper 9:16 safe area, clear of the bottom quarter and right edge.`。
+- **剪接推近 `anchor` 規範**：在 `edit/plan.json` 用 `push`＋`anchor: [ax, ay]` 推近細節時，`ax` 必須落在 `0.07–0.84`、`ay` 必須落在 `0.09–0.72`（`preflight.mjs` 會自動檢查）。
+
+### 4. 無縫重播迴圈（Seamless Loop）與高留存設計
+Shorts 演算法最看重 **`average_view_duration_percentage > 100%`**（觀眾看完自動重播至少多看幾秒）。11–16 秒的零台詞短劇可用三種實戰手法拉高重播率：
+1. **首尾同景別對稱（Match-Frame Loop）**：最後一鏡和第 1 鏡在同一空間或相同機位，結尾停 `0.5–0.7s` 後直接硬切回第 1 格，讓觀眾在笑出來的瞬間自然重看開頭。
+2. **微細節重播誘因（Rewatch Bait）**：最後 1.5–2 秒藏一個「第一遍快來不及看清的細節」（例如牆上咕咕鐘裡是爸爸、成品照角落露出一顆水豚頭、老婆身後多出一堆鍋子），觀眾會自動多看一遍確認。
+3. **禁止黑畫面收尾與慢漸黑**：除非像《社畜地獄》「跳電熄燈」那樣黑畫面本身就是笑點（`lights_out`），**片尾絕不放黑卡、Logo 片尾或超過 0.2 秒的漸黑**——黑畫面等於主動提醒觀眾「結束了，可以滑走」。
+
 ---
 
 ## 三、聲音三層結構：無語音 Shorts 的台詞就是「音效＋靜音」
@@ -127,9 +146,18 @@
 - [ ] **7. 零文字、零 Logo**：筆電、手機、時鐘、圖表、遙控器、包裝袋有沒有寫 `plain, unbranded, no text, no numbers, no logos`？有沒有誤寫 `magazine cover`？
 - [ ] **8. 具體表情與閉嘴**：每一鏡露臉角色有沒有寫五官部位（眉、眼、耳、嘴）與 `lips remain closed`？不能笑的鏡有沒有寫 `no smile at any moment until the last frame`？
 - [ ] **9. 音效在鏡內且總長 11–16 秒**：每一顆音效（特別是最後一鏡的 `sting`／`dun`）的 `at` 時間點是不是比該鏡 `dur` 至少早 0.5 秒？全集加總秒數是否落在 11–16 秒（不超過 20 秒）？
+- [ ] **10. 9:16 安全區與無黑屏結尾**：主角臉部、毛爪、地上或角落的因果線索是否都避開右側 16.5%（`x > 0.84`）與底部 28%（`y > 0.72`）？片尾是否沒有多餘黑畫面或慢漸黑，且停在最強反應格或無縫接回第 1 格？
+
+寫完 `<slug>.json`（或 `edit/plan.json`）後，**先跑自動化機械前檢**（0 錯誤才准送獨立審稿；走 Google Flow 時改帶 `--engine flow`）：
+
+```bash
+node docs/videos/shorts-drama/preflight.mjs check <slug>.json --engine h3
+# 若改走 Google Flow（Veo 3.1），前檢通過後可直接一鍵匯出提示詞單：
+node docs/videos/shorts-drama/preflight.mjs export-flow <slug>.json --out flow-prompts.md
+```
 
 ### 第三道：獨立審稿代理檢查（Read-Only Storyboard Review）
-寫稿者自檢通過後，**開一個沒參與寫這批分鏡的獨立子代理（Read-Only）**，把下面這段交辦範本貼給它審稿。審稿代理找出的高、中風險問題全部改完，才准進 Colab 生圖與生片段。
+寫稿者自檢與 `preflight.mjs` 自動前檢通過後，**開一個沒參與寫這批分鏡的獨立子代理（Read-Only）**，把下面這段交辦範本貼給它審稿。審稿代理找出的高、中風險問題全部改完，才准進 Colab 或 Google Flow 生圖與生片段。
 
 #### 審劇本／審分鏡交辦範本（貼給獨立審稿代理，換掉 `{}` 內容）
 
@@ -140,11 +168,11 @@ Report in 繁體中文 (Taiwan usage).
 
 Target files to review: {列出這批分鏡檔或 spec JSON 路徑，例如 docs/videos/shorts-drama/... 或 gen_specs.py}
 Series rules to check against:
-1. Shared rules: docs/videos/shorts-drama/README.md and docs/videos/shorts-drama/WRITING.md (read entirely)
+1. Shared rules: docs/videos/shorts-drama/README.md, WRITING.md, and PRODUCTION-ROUTES.md (read entirely)
 2. Series-specific rules: docs/videos/shorts-drama/series/{系列檔名}.md
 3. Past lessons: docs/videos/lessons/shorts.md
 
-Examine every episode and every shot against these 6 gates:
+Examine every episode and every shot against these 7 gates:
 (1) 黃金五拍與秒數：
     - 第 1 鏡鉤子是否在 0.8–1.2 秒內直接呈現衝突或怪事（沒有漫長走位或超過 1.5 秒的靜態鋪陳）？
     - 第 2 鏡驚覺／反應是否壓在 0.6–1.5 秒（鑰匙聲呆臉不可超過 0.8 秒）？
@@ -164,8 +192,12 @@ Examine every episode and every shot against these 6 gates:
     - 表情與閉嘴：是否寫出具體五官動作、lips remain closed，且嚴肅／慌張鏡寫明 no smile at any moment？
 (5) 音效打點位置：
     - 每一顆音效（特別是最後一鏡的收尾重音 sting / dun / click）的觸發時間 at 是否在該鏡 dur 結束前至少 0.5 秒（絕不會在鏡頭結束後被切掉）？
-(6) 系列個別規則：
+(6) 9:16 介面安全區與重播迴圈：
+    - 臉部表情、毛爪與地面／角落線索是否都避開右側 16.5%（按讚留言欄）與底部 28%（標題進度條）？
+    - 片尾是否沒有無意義黑屏或慢漸黑，且停在最強格或能自然接回第 1 格形成重播迴圈？
+(7) 系列個別規則與引擎適配：
     - 是否符合該系列固定角色外觀錨點與專屬禁忌（如《網美小豬》小豬與水豚絕不同框）？
+    - 若走 Google Flow／Veo 3.1，是否已移除 <Picture 1> 並帶無台詞音訊防護句？
 
 Output format:
 1. 一張逐鏡問題總表：
