@@ -73,14 +73,24 @@ export default async function GuidesHubPage({ params }: { params: Promise<{ loca
           itemList(locale, everything.map((article) => ({ name: article.title, path: guideHref(article.kind, article.slug) }))),
         ]}
       />
-      <main className="mx-auto max-w-5xl px-5 py-10 md:px-8">
-        <HubHero
-          title={t("guides.hubTitle")}
-          intro={t("guides.hubIntro")}
-          section="travel"
-          action={`/${locale}/search/articles`}
-          labels={{ label: t("guides.searchLabel"), placeholder: t("guides.searchPlaceholder"), submit: t("guides.searchSubmit") }}
-        />
+      <main className="mx-auto max-w-5xl px-5 py-6 sm:py-10 md:px-8">
+        <nav aria-label={t("guides.breadcrumb")} className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[length:var(--text-meta)] text-[var(--muted)]">
+          <Link className="inline-flex min-h-11 items-center underline decoration-[var(--line)] underline-offset-4 transition-colors hover:text-[var(--teal)] hover:decoration-[var(--teal)]" href="/">
+            {nav("home")}
+          </Link>
+          <span aria-hidden>›</span>
+          <span aria-current="page" className="py-1.5 font-medium text-[var(--ink)]">{t("guides.hubTitle")}</span>
+        </nav>
+
+        <div className="mt-2">
+          <HubHero
+            title={t("guides.hubTitle")}
+            intro={t("guides.hubIntro")}
+            section="travel"
+            action={`/${locale}/search/articles`}
+            labels={{ label: t("guides.searchLabel"), placeholder: t("guides.searchPlaceholder"), submit: t("guides.searchSubmit") }}
+          />
+        </div>
 
         <TopicTiles
           section="travel"

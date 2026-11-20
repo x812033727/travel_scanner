@@ -24,9 +24,20 @@ beforeEach(() => {
 });
 
 describe("/videos", () => {
-  it("lists each video with its article and plays it in place only when asked", async () => {
-    await open();
+  it("lists each video with its article, intrinsic thumbnail dimensions, breadcrumb and ItemList JSON-LD, playing in place only when asked", async () => {
+    const { container } = await open();
+    const crumb = screen.getByRole("navigation", { name: "頁面路徑" });
+    expect(within(crumb).getByRole("link", { name: "首頁" }).getAttribute("href")).toBe("/");
+    const graphs = [...container.querySelectorAll("script[type='application/ld+json']")]
+      .flatMap((node) => JSON.parse(node.textContent ?? "[]") as Record<string, unknown>[]);
+    expect(graphs.map((g) => g["@type"])).toEqual(["BreadcrumbList", "ItemList"]);
+
     const card = screen.getByRole("listitem");
+    expect(card.getAttribute("id")).toBe("video-a");
+    const thumb = card.querySelector("img")!;
+    expect(thumb.getAttribute("width")).toBe("480");
+    expect(thumb.getAttribute("height")).toBe("360");
+    expect(thumb.getAttribute("decoding")).toBe("async");
     expect(within(card).getByRole("heading", { name: "影片 a" })).toBeTruthy();
     expect(within(card).getByText("教學")).toBeTruthy();
     expect(within(card).getByRole("link", { name: "看文章版" }).getAttribute("href")).toBe("/life/cursor-editor-guide");

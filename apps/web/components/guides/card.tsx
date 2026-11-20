@@ -45,6 +45,7 @@ export function GuideCard({
             width={hero.width}
             height={hero.height}
             loading={featured ? "eager" : "lazy"}
+            fetchPriority={featured ? "high" : undefined}
             decoding="async"
             className="aspect-video w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
           />

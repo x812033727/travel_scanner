@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { siteUrl } from "@/lib/seo";
 import {
   definedTerm, faqPage, breadcrumbs, foodEstablishment, foodEstablishments, guideArticle, itemList, organization,
-  touristDestination, webSite, type MerchantCard,
+  touristDestination, videoItemList, webSite, type MerchantCard,
 } from "@/lib/structured-data";
 
 const parse = (value: object | null) => JSON.parse(JSON.stringify(value));
@@ -103,6 +103,33 @@ describe("empty graphs", () => {
     // useful to emit. The component drops nulls instead of writing them into the document.
     expect(breadcrumbs("en", [])).toBeNull();
     expect(itemList("en", [])).toBeNull();
+    expect(videoItemList("en", [])).toBeNull();
+  });
+});
+
+describe("videoItemList", () => {
+  it("lists each video's canonical YouTube watch URL and links its companion article when present", () => {
+    const data = parse(videoItemList("zh-TW", [
+      { slug: "cursor-guide", title: "Cursor 入門實測", youtube_video_id: "abcdefghijk", articlePath: "/life/cursor-editor-guide" },
+      { slug: "short-clip", title: "AI 30 秒重點", youtube_video_id: "12345678901", articlePath: null },
+    ]));
+    expect(data["@context"]).toBe("https://schema.org");
+    expect(data["@type"]).toBe("ItemList");
+    expect(data.itemListElement).toEqual([
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Cursor 入門實測",
+        url: "https://www.youtube.com/watch?v=abcdefghijk",
+        subjectOf: { "@type": "Article", url: `${siteUrl}/zh-TW/life/cursor-editor-guide` },
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "AI 30 秒重點",
+        url: "https://www.youtube.com/watch?v=12345678901",
+      },
+    ]);
   });
 });
 

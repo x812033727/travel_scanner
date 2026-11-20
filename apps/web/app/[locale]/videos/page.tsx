@@ -6,8 +6,8 @@ import { StructuredData } from "@/components/structured-data";
 import { VideoCard } from "@/components/videos/video-card";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
-import { breadcrumbs } from "@/lib/structured-data";
-import { isVideoKind, videosHref, type VideoKind } from "@/lib/videos";
+import { breadcrumbs, videoItemList } from "@/lib/structured-data";
+import { isVideoKind, videoArticleHref, videosHref, type VideoKind } from "@/lib/videos";
 import { getVideos } from "@/lib/videos.server";
 
 type Params = { locale: Locale };
@@ -57,16 +57,36 @@ export default async function VideosPage(
   if (filters.cursor && page.available && !page.videos.length) redirect(`/${locale}${videosHref({ ...filters, cursor: null })}`);
   const date = new Intl.DateTimeFormat(locale, { year: "numeric", month: "short", day: "numeric" });
   const categoryLabel = (code: string | null) => (code && t.has(`videos.categories.${code}`) ? t(`videos.categories.${code}`) : null);
-  const chip = (active: boolean) =>
-    `inline-flex min-h-11 items-center rounded-full border px-4 text-sm font-semibold ${active ? "border-[var(--teal)] bg-[var(--teal-soft)] text-[var(--teal)]" : "border-[var(--line)] hover:border-[var(--teal)]"}`;
+  const chip = (active: boolean) => `app-filter-chip ${active ? "app-filter-chip-active" : ""}`;
   const kinds: (VideoKind | null)[] = [null, "long", "shorts"];
 
   return (
     <>
       <SiteHeader />
-      <StructuredData data={[breadcrumbs(locale, [{ name: nav("home"), path: "/" }, { name: t("videos.title"), path: "/videos" }])]} />
-      <main className="mx-auto max-w-6xl px-5 py-10 md:px-8">
-        <header className="portal-hero-shell rounded-3xl p-6 md:p-10">
+      <StructuredData
+        data={[
+          breadcrumbs(locale, [{ name: nav("home"), path: "/" }, { name: t("videos.title"), path: "/videos" }]),
+          videoItemList(
+            locale,
+            page.videos.map((video) => ({
+              slug: video.slug,
+              title: video.title,
+              youtube_video_id: video.youtube_video_id,
+              articlePath: videoArticleHref(video),
+            })),
+          ),
+        ]}
+      />
+      <main className="mx-auto max-w-6xl px-5 py-6 sm:py-10 md:px-8">
+        <nav aria-label={t("guides.breadcrumb")} className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[length:var(--text-meta)] text-[var(--muted)]">
+          <Link className="inline-flex min-h-11 items-center underline decoration-[var(--line)] underline-offset-4 transition-colors hover:text-[var(--teal)] hover:decoration-[var(--teal)]" href="/">
+            {nav("home")}
+          </Link>
+          <span aria-hidden>›</span>
+          <span aria-current="page" className="py-1.5 font-medium text-[var(--ink)]">{t("videos.title")}</span>
+        </nav>
+
+        <header className="portal-hero-shell mt-2 rounded-3xl p-6 md:p-10">
           <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">{t("videos.title")}</h1>
           <p className="mt-4 max-w-2xl text-lg leading-8 text-[var(--muted)]">{t("videos.intro")}</p>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--muted)]">{t("videos.privacy")}</p>
@@ -113,7 +133,10 @@ export default async function VideosPage(
 
         {page.next_cursor ? (
           <p className="mt-8">
-            <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={videosHref({ ...filters, cursor: page.next_cursor })}>
+            <Link
+              className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] bg-[var(--surface)] px-5 py-2 text-sm font-semibold text-[var(--teal)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]"
+              href={videosHref({ ...filters, cursor: page.next_cursor })}
+            >
               {t("videos.more")}
             </Link>
           </p>

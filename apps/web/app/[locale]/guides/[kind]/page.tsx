@@ -101,6 +101,7 @@ export default async function GuideListPage(
     intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life"),
   };
   const searchLabels = { label: t("guides.searchLabel"), placeholder: t("guides.searchPlaceholder"), submit: t("guides.searchSubmit") };
+  const unfilteredFirstPage = !search.topic && !search.destination && !search.country && !search.cursor && !search.sort;
   const next = `${listing}${listing.includes("?") ? "&" : "?"}cursor=`;
 
   return (
@@ -116,9 +117,21 @@ export default async function GuideListPage(
           itemList(locale, list.articles.map((article) => ({ name: article.title, path: guideHref(article.kind, article.slug) }))),
         ]}
       />
-      <main className="mx-auto max-w-5xl px-5 py-10 md:px-8">
-        <header className="rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-6 shadow-[var(--shadow-sm)] md:p-8">
-          <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">{heading}</h1>
+      <main className="mx-auto max-w-5xl px-5 py-6 sm:py-10 md:px-8">
+        <nav aria-label={t("guides.breadcrumb")} className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[length:var(--text-meta)] text-[var(--muted)]">
+          <Link className="inline-flex min-h-11 items-center underline decoration-[var(--line)] underline-offset-4 transition-colors hover:text-[var(--teal)] hover:decoration-[var(--teal)]" href="/">
+            {nav("home")}
+          </Link>
+          <span aria-hidden>›</span>
+          <Link className="inline-flex min-h-11 items-center underline decoration-[var(--line)] underline-offset-4 transition-colors hover:text-[var(--teal)] hover:decoration-[var(--teal)]" href="/guides">
+            {t("guides.hubTitle")}
+          </Link>
+          <span aria-hidden>›</span>
+          <span aria-current="page" className="py-1.5 font-medium text-[var(--ink)]">{heading}</span>
+        </nav>
+
+        <header className="portal-hero-shell mt-2 rounded-3xl p-6 sm:p-8 md:p-10">
+          <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">{heading}</h1>
           <p className="mt-3 max-w-2xl text-lg leading-8 text-[var(--muted)]">{lead}</p>
         </header>
 
@@ -137,8 +150,13 @@ export default async function GuideListPage(
 
         {list.articles.length ? (
           <ul className="mt-6 grid gap-4 sm:grid-cols-2">
-            {list.articles.map((article) => (
-              <GuideCard key={article.slug} article={article} labels={cardLabels} />
+            {list.articles.map((article, index) => (
+              <GuideCard
+                key={article.slug}
+                article={article}
+                labels={cardLabels}
+                variant={unfilteredFirstPage && index === 0 ? "featured" : "default"}
+              />
             ))}
           </ul>
         ) : (

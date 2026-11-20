@@ -14,7 +14,9 @@ describe("a guide card", () => {
   it("shows the hero lazily, the badge, the title as the link, the description and the topics", () => {
     const { container } = render(<ul><GuideCard article={article} labels={labels} /></ul>);
     expect(screen.getByRole("link", { name: "成田機場到東京" }).getAttribute("href")).toBe("/guides/howto/narita-to-tokyo");
-    expect(screen.getByRole("img", { name: "成田機場" }).getAttribute("loading")).toBe("lazy");
+    const defaultImg = screen.getByRole("img", { name: "成田機場" });
+    expect(defaultImg.getAttribute("loading")).toBe("lazy");
+    expect(defaultImg.getAttribute("fetchpriority")).toBeNull();
     expect(screen.getByText("攻略")).toBeTruthy();
     expect(screen.getByText("交通")).toBeTruthy();
     expect(container.querySelector("li")?.getAttribute("data-variant")).toBe("default");
@@ -29,11 +31,13 @@ describe("a guide card", () => {
     expect(container.querySelector("li")?.getAttribute("data-variant")).toBe("compact");
   });
 
-  it("spans the grid and loads its hero eagerly when featured, since it leads the page", () => {
+  it("spans the grid and loads its hero eagerly with high fetch priority when featured, since it leads the page", () => {
     const { container } = render(<ul><GuideCard article={article} labels={labels} variant="featured" /></ul>);
     const card = container.querySelector("li")!;
     expect(card.className).toContain("sm:col-span-2");
-    expect(screen.getByRole("img", { name: "成田機場" }).getAttribute("loading")).toBe("eager");
+    const featuredImg = screen.getByRole("img", { name: "成田機場" });
+    expect(featuredImg.getAttribute("loading")).toBe("eager");
+    expect(featuredImg.getAttribute("fetchpriority")).toBe("high");
     expect(card.querySelector("h3")?.className).toContain("text-2xl");
     expect(card.querySelector("time")).toBeNull();
   });
