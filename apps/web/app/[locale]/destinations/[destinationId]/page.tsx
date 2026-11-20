@@ -5,15 +5,21 @@ import { DestinationGuide } from "@/components/destination-guide";
 import { SiteHeader } from "@/components/site-header";
 import { StructuredData } from "@/components/structured-data";
 import { PUBLIC_DESTINATIONS } from "@/components/travel-services/options";
-import type { Locale } from "@/i18n/routing";
+import { routing, type Locale } from "@/i18n/routing";
+import { ARTICLE_OG_HEIGHT, ARTICLE_OG_WIDTH, destinationOgImagePath } from "@/lib/article-og";
 import { destinationsCopy } from "@/lib/destinations-copy";
 import { getDestination, getDestinations, getGuideMerchants, getGuidePlaces } from "@/lib/destinations.server";
+import { guideHref } from "@/lib/guides";
 import { getGuideList } from "@/lib/guides.server";
-import { breadcrumbs, touristDestination } from "@/lib/structured-data";
+import { DISCOVER_ROBOTS, localeUrl } from "@/lib/seo";
+import { breadcrumbs, itemList, touristDestination } from "@/lib/structured-data";
 import { featureEnabled } from "@/lib/site-features";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
 
 type Params = { locale: Locale; destinationId: string };
+
+/** Expose enough city guides on the hub page so crawlers reach long-tail travel articles directly. */
+export const DESTINATION_GUIDES_LIMIT = 12;
 
 const known = (id: string) => (PUBLIC_DESTINATIONS as readonly string[]).includes(id);
 
@@ -23,9 +29,36 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const destination = await getDestination(locale, destinationId);
   if (!destination) return {};
   const copy = destinationsCopy(locale);
+  const title = copy.guideMetaTitle.replace("{city}", destination.city);
+  const description = destination.reason || copy.indexIntro;
+  const ogImage = {
+    url: destinationOgImagePath(locale, destinationId),
+    width: ARTICLE_OG_WIDTH,
+    height: ARTICLE_OG_HEIGHT,
+    alt: title,
+  };
   return {
-    title: copy.guideMetaTitle.replace("{city}", destination.city),
-    description: destination.reason || copy.indexIntro,
+    title,
+    description,
+    robots: DISCOVER_ROBOTS,
+    openGraph: {
+      type: "website",
+      siteName: "Mokaair",
+      url: localeUrl(locale, `/destinations/${destinationId}`),
+      title,
+      description,
+      locale: locale.replace("-", "_"),
+      alternateLocale: routing.locales
+        .filter((value) => value !== locale)
+        .map((value) => value.replace("-", "_")),
+      images: [ogImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
+    },
   };
 }
 
@@ -51,7 +84,7 @@ export default async function DestinationGuidePage({ params }: { params: Promise
   const [places, merchants, guides] = await Promise.all([
     hotspotsEnabled ? getGuidePlaces(locale, destinationId) : Promise.resolve(null),
     getGuideMerchants(locale, destinationId),
-    getGuideList(locale, { section: "travel", destination: destinationId }, 3),
+    getGuideList(locale, { section: "travel", destination: destinationId }, DESTINATION_GUIDES_LIMIT),
   ]);
 
   const copy = destinationsCopy(locale);
@@ -79,6 +112,16 @@ export default async function DestinationGuidePage({ params }: { params: Promise
             alternateName: [destination.localName, destination.englishName].filter((value): value is string => Boolean(value)),
             center: destination.center,
           }),
+          guides.available && guides.articles.length
+            ? itemList(
+                locale,
+                guides.articles.map((article) => ({
+                  name: article.title,
+                  path: guideHref(article.kind, article.slug),
+                })),
+                copy.guidesTitle,
+              )
+            : null,
         ]}
       />
       <DestinationGuide locale={locale} destination={destination} places={places} hotspotsEnabled={hotspotsEnabled} merchants={merchants} related={related} guides={guides} />

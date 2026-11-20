@@ -203,7 +203,7 @@ describe("the topic hub", () => {
 });
 
 describe("what the topic hub tells search engines", () => {
-  it("uses the displayed lead's own art for a channel share and skips synthetic artwork and archive pages", async () => {
+  it("uses the displayed lead's own art for a channel share, falls back to dynamic topic OG card over synthetic art, and skips archive pages", async () => {
     const publishedTopic = { ...topics[2], count: 4, counts: { "zh-TW": 4, en: 1 } };
     const hero = { src: "/guides/lead/shot.webp", width: 1600, height: 900, alt: "The model settings", credit: null };
     const lead = { ...summary, news_date: "2026-11-18", hero };
@@ -215,7 +215,10 @@ describe("what the topic hub tells search engines", () => {
     expect(metadata.twitter?.images).toEqual(metadata.openGraph?.images);
     expect((await topicHubMetadata({ ...channel, cursor: "next" })).openGraph).toBeUndefined();
     mocks.list.mockResolvedValue({ articles: [{ ...lead, hero: { ...hero, src: "/guides/news-assets/hero.webp" } }] });
-    expect((await topicHubMetadata(channel)).openGraph).toBeUndefined();
+    const fallback = await topicHubMetadata(channel);
+    expect(fallback.openGraph?.images).toEqual([
+      { url: "/og/zh-TW/topics/life/ai-news/card.png", width: 1200, height: 630, alt: fallback.title },
+    ]);
   });
 
   it("is indexable where the topic publishes, with a self canonical and only the published languages", async () => {

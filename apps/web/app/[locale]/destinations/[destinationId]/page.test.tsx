@@ -72,7 +72,7 @@ describe("destination guide publication boundaries", () => {
 
   it.each(locales)("requests published travel articles filtered to the city in %s", async (locale) => {
     render(await DestinationGuidePage({ params: Promise.resolve({ locale, destinationId: "tokyo" }) }));
-    expect(mocks.guides).toHaveBeenCalledExactlyOnceWith(locale, { section: "travel", destination: "tokyo" }, 3);
+    expect(mocks.guides).toHaveBeenCalledExactlyOnceWith(locale, { section: "travel", destination: "tokyo" }, 12);
     expect(screen.getByRole("link", { name: article.title }).getAttribute("href"))
       .toBe(guideHref(article.kind, article.slug));
     expect(screen.getByText(article.description)).toBeTruthy();
@@ -83,7 +83,7 @@ describe("destination guide publication boundaries", () => {
     mocks.catalog.mockResolvedValue([tokyo, other]);
     mocks.guides.mockResolvedValue({ articles: [], next_cursor: null, available: true });
     render(await DestinationGuidePage({ params: Promise.resolve({ locale: "en", destinationId: "busan" }) }));
-    expect(mocks.guides).toHaveBeenCalledExactlyOnceWith("en", { section: "travel", destination: "busan" }, 3);
+    expect(mocks.guides).toHaveBeenCalledExactlyOnceWith("en", { section: "travel", destination: "busan" }, 12);
     expect(screen.getByText(other.areas[0])).toBeTruthy();
     expect(screen.getByText(other.areas[1])).toBeTruthy();
     expect(screen.queryByRole("region", { name: destinationDecisions("en", "tokyo")!.title })).toBeNull();
@@ -124,13 +124,14 @@ describe("destination guide publication boundaries", () => {
     expect(screen.getByRole("region", { name: destinationDecisions("en", "tokyo")!.title })).toBeTruthy();
   });
 
-  it("awaits three published articles and renders evidence before partner options in server HTML", async () => {
+  it("awaits published city articles, renders evidence before partner options, and emits ItemList JSON-LD", async () => {
     const articles = [article, { ...article, slug: "second-guide", title: "Second published article" },
       { ...article, slug: "third-guide", title: "Third published article" }];
     mocks.guides.mockResolvedValue({ articles, next_cursor: "more", available: true });
     const html = renderToStaticMarkup(await DestinationGuidePage({ params }));
     const partnerAt = html.indexOf('data-testid="affiliate"');
     expect(partnerAt).toBeGreaterThan(-1);
+    expect(html).toContain('"@type":"ItemList"');
     for (const row of articles) {
       expect(html.indexOf(row.title)).toBeGreaterThan(-1);
       expect(html.indexOf(row.title)).toBeLessThan(partnerAt);
@@ -142,11 +143,19 @@ describe("destination guide publication boundaries", () => {
     }
   });
 
-  it.each(locales)("emits an intent-rich localized SEO title for %s destination guides", async (locale) => {
+  it.each(locales)("emits an intent-rich SEO title, Discover robots, and dynamic OG card for %s destination guides", async (locale) => {
     mocks.destination.mockResolvedValueOnce(tokyo);
     const meta = await generateMetadata({ params: Promise.resolve({ locale, destinationId: "tokyo" }) });
     expect(meta.title).toBe(destinationsCopy(locale).guideMetaTitle.replace("{city}", "Tokyo"));
     expect(meta.title).not.toBe("Tokyo | Mokaair");
     expect(meta.description).toBe(tokyo.reason);
+    expect(meta.robots).toMatchObject({
+      index: true,
+      follow: true,
+      googleBot: { "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
+    });
+    expect(meta.openGraph?.images).toEqual([
+      { url: `/og/${locale}/destinations/tokyo/card.png`, width: 1200, height: 630, alt: meta.title },
+    ]);
   });
 });
