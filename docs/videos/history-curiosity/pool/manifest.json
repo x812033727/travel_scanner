@@ -1,21 +1,21 @@
 {
   "status": "CANDIDATE_EXPORT_NOT_PRODUCTION",
-  "revision": "2026-11-19-curio-1902",
+  "revision": "2026-11-20-curio-1907",
   "counts": {
-    "raw_records": 2794,
-    "canonical_cores": 2775,
+    "raw_records": 2800,
+    "canonical_cores": 2781,
     "alias_records": 19,
     "produced_cores": 48,
-    "selected_candidates": 1902,
-    "held_candidates": 285,
+    "selected_candidates": 1907,
+    "held_candidates": 286,
     "reserve_candidates": 167,
     "shorts_candidates": 89,
     "excluded_cores": 284,
-    "new_batch_records": 2463,
-    "source_urls": 15799,
-    "current_research_source_urls": 10977,
-    "selected_source_urls": 12747,
-    "new_suggestions_not_added": 3370,
+    "new_batch_records": 2469,
+    "source_urls": 15814,
+    "current_research_source_urls": 10992,
+    "selected_source_urls": 12759,
+    "new_suggestions_not_added": 3374,
     "high_similarity_pending": 0,
     "cross_series_pending": 0,
     "approved_scripts": 0,
@@ -61,8 +61,8 @@
         "produced": 0
       },
       "W-商業與品牌奇聞": {
-        "canonical": 156,
-        "selected": 92,
+        "canonical": 162,
+        "selected": 97,
         "produced": 19
       }
     }
@@ -982,6 +982,10 @@
       "sha256": "6b6acabc526790eae771413d68982c21678ef09d650ac06edc1764a67c1ad4f0"
     },
     {
+      "file": "docs/videos/history-curiosity/pool/batches/wave109-20261120.json",
+      "sha256": "7053f68f9b799018e3fe5862cd5f5e89a4b34f04431e6d952adeaf89c227710c"
+    },
+    {
       "file": "docs/videos/history-curiosity/pool/batches/wave11-20261102.json",
       "sha256": "a876755e09a5e835a55178c12e89a86f64af28a5a1a2d14d31813833277c31ee"
     },
@@ -1783,7 +1787,7 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/selection.json",
-      "sha256": "d93b4dad04be00b537d8c9ad126b111392236db5ad551b4757918cbca47e307b"
+      "sha256": "b958258be2b0b5a7b909ca2587b1ef2ba35d35845ff859b30610c00c6edfc2a2"
     },
     {
       "file": "docs/videos/history-curiosity/pool/reviews/audience-20261114-r2.json",
@@ -2130,6 +2134,14 @@
       "sha256": "10d729b79b4f4e75a34e03eea23b8671b80a007b6faed54b6003def0778b5500"
     },
     {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261120-wave109.json",
+      "sha256": "3db3b94b370dd8a5d2a4de0b7ccf8007cc752e20b2f7838f36c4209bbd905e44"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/audience-20261120z-wave109-repack.json",
+      "sha256": "96ae44237953ffb8bd78f5f49d4c7ea50ad99dc0b8525114488e168d30fd0e24"
+    },
+    {
       "file": "docs/videos/history-curiosity/pool/reviews/demand-20261117-cores.json",
       "sha256": "ad0885cce24c65eb540a9ab2ea45cbfc1af06aa0cc9f675a4d491a5569651add"
     },
@@ -2300,33 +2312,37 @@
     {
       "file": "docs/videos/history-curiosity/pool/reviews/demand-20261119-wave99.json",
       "sha256": "3b3f45afafd2c5ea3cf8131aee97246121fccc03de71d322ac44c01832fe2a43"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/reviews/demand-20261120-wave109.json",
+      "sha256": "243db91c36b01042fda4134c86787117668f1bbfa5f5014398647a4038f7124a"
     }
   ],
   "theme_definition_sha256": "3794d2fd2e377a0871e4bbc22f41bca81a3b4245aa7373ff07908eaede57362c",
   "files": [
     {
       "file": "pool.json",
-      "sha256": "1fd8c9b5977aa258c615434aa64dc90a1f82da32ac9ca8364789f7c289472904"
+      "sha256": "35c6c559e0030119d1b93af923c9fa1eb45ba0f7ce3f70930371b5cc242bfc8f"
     },
     {
       "file": "pool-sources.json",
-      "sha256": "f86ba6dcf84d7c409043bd7d2f0c0d469c179b7fe4669644594ca9bcd03d06c3"
+      "sha256": "c05c571c57385ea96741e3fe3be2b9b890edc1992158d4bb53230d62f9d94382"
     },
     {
       "file": "pool-records.json",
-      "sha256": "272b9222bfd1d8032c6cf9ae071ad5e8d45b2b459ab3c6d4d2da60e41a5ad36e"
+      "sha256": "d53e30c1ffe2920dd5c0251bcfceb2b708472786c55e62e499d25618f747cffa"
     },
     {
       "file": "QUESTIONS.md",
-      "sha256": "196aeb8e626c53439e462d731c32f43a2e2f0dc592bde28bf5707c7375c4657f"
+      "sha256": "bace2599b745595316be5aca6bf2eccb133965981ef53b146b747d1fb9d96148"
     },
     {
       "file": "SOURCES.md",
-      "sha256": "4e1213125a6b18ccebae0ed27f5732134e88f7fc3461d92d6fb30c8a5846706f"
+      "sha256": "3d1e08eb860373f4aeb7204bb65cb22159dec3f58d8bbeb4de5d6a284de1f233"
     },
     {
       "file": "DEDUP.md",
-      "sha256": "52cefd521684682b4979c3859c97a8560c11836a753e4b0bad949db8ca577db5"
+      "sha256": "23da57b2f93d7f27b69f499157660f2198df098bb90b904c3aa8d0a99b575ae0"
     },
     {
       "file": "THEMES.md",
@@ -2334,11 +2350,11 @@
     },
     {
       "file": "index.html",
-      "sha256": "491f7ed8d175e67fe0116da153fa1f554445970e3844d9e86bd40e0e3aa977c6"
+      "sha256": "3eeb7b1be9a6ad07ba02bcc8b2ff29b2f87f7310e164d192875a5e4c11626f3a"
     },
     {
       "file": "PRODUCIBLE.html",
-      "sha256": "69ad5f68be31043fac64ec97ed47462d78433dfed9f291c3572d18e7ff35838b"
+      "sha256": "1ca050ae5258581fb316a3cc403b60b4e9f5ee55c7eaabd00b7e20b5ccd3fbe3"
     }
   ]
 }
