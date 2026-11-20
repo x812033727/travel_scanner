@@ -179,7 +179,7 @@
    "file": "impactSoft_heavy_000",
    "at": "s04",
    "off": 7.0,
-   "gain": -22
+   "gain": -10
   },
   {
    "file": "creak2",
@@ -227,19 +227,19 @@
    "file": "impactSoft_heavy_000",
    "at": "s17",
    "off": 3.7,
-   "gain": -14
+   "gain": -8
   },
   {
    "file": "handleCoins",
    "at": "s17",
    "off": 3.74,
-   "gain": -22
+   "gain": -14
   },
   {
    "file": "handleCoins2",
    "at": "s18",
    "off": 0.1,
-   "gain": -22
+   "gain": -16
   },
   {
    "file": "wooden_01",
@@ -263,37 +263,37 @@
    "file": "impactPlank_medium_000",
    "at": "s22",
    "off": 1.5,
-   "gain": -18
+   "gain": -10
   },
   {
    "file": "impactWood_medium_000",
    "at": "s24",
    "off": 2.0,
-   "gain": -18
+   "gain": -10
   },
   {
    "file": "rustle03",
    "at": "s27",
    "off": 0.6,
-   "gain": -20
+   "gain": -8
   },
   {
    "file": "paper_04",
    "at": "s27",
    "off": 1.0,
-   "gain": -24
+   "gain": -12
   },
   {
    "file": "creak1",
    "at": "s33",
    "off": 5.1,
-   "gain": -16
+   "gain": -8
   },
   {
    "file": "impactWood_medium_001",
    "at": "s33",
    "off": 6.1,
-   "gain": -18
+   "gain": -12
   },
   {
    "file": "water-s33",
@@ -311,25 +311,25 @@
    "file": "creak3",
    "at": "s34",
    "off": 0.3,
-   "gain": -14
+   "gain": -6
   },
   {
    "file": "creak1",
    "at": "s34",
    "off": 2.0,
-   "gain": -14
+   "gain": -6
   },
   {
    "file": "creak2",
    "at": "s34",
    "off": 3.8,
-   "gain": -14
+   "gain": -6
   },
   {
    "file": "impactWood_heavy_000",
    "at": "s34",
    "off": 5.15,
-   "gain": -14
+   "gain": -8
   },
   {
    "file": "impactWood_light_000",
@@ -340,16 +340,18 @@
  ],
  "frame_round": true,
  "clip_voice": true,
- "voice_skip": {},
+ "voice_skip": {
+  "s08": 3.2
+ },
  "voice_until": {},
  "clip_af": {
   "s03": {
    "from": 0,
-   "af": "rubberband=pitch=1.08:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=1.08:formant=preserved,volume=2.0dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s06": {
    "from": 0,
-   "af": "rubberband=pitch=1.3:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=1.3:formant=preserved,volume=-1.0dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s14": {
    "from": 0,
@@ -365,27 +367,27 @@
   },
   "s11": {
    "from": 0,
-   "af": "rubberband=pitch=1.19:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=1.19:formant=preserved,volume=1.0dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s18": {
    "from": 0,
-   "af": "rubberband=pitch=1.44:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=1.44:formant=preserved,volume=1.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s28": {
    "from": 0,
-   "af": "rubberband=pitch=1.3:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=1.3:formant=preserved,volume=5.0dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s29": {
    "from": 0,
-   "af": "rubberband=pitch=1.35:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=1.35:formant=preserved,volume=2.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s21": {
    "from": 0,
-   "af": "rubberband=pitch=1.27:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=1.27:formant=preserved,volume=1.0dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s23": {
    "from": 0,
-   "af": "rubberband=pitch=0.95:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=0.95:formant=preserved,volume=-1.0dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s26": {
    "from": 0,
@@ -393,7 +395,7 @@
   },
   "s07": {
    "from": 0,
-   "af": "asetrate=40800,aresample=48000,atempo=1.176471,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "asetrate=40800,aresample=48000,atempo=1.176471,volume=1.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s38": {
    "from": 0,
@@ -401,15 +403,23 @@
   },
   "s32": {
    "from": 0,
-   "af": "asetrate=38400,aresample=48000,atempo=1.250000,rubberband=pitch=0.82:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "asetrate=38400,aresample=48000,atempo=1.250000,rubberband=pitch=0.82:formant=preserved,volume=2.0dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s39": {
    "from": 0,
-   "af": "asetrate=38400,aresample=48000,atempo=1.250000,rubberband=pitch=0.94:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "asetrate=38400,aresample=48000,atempo=1.250000,rubberband=pitch=0.94:formant=preserved,volume=5.0dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s24": {
    "from": 2.3,
-   "af": "asetrate=36000,aresample=48000,atempo=1.333333,rubberband=pitch=0.90:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "asetrate=36000,aresample=48000,atempo=1.333333,rubberband=pitch=0.90:formant=preserved,volume=4.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s25": {
+   "from": 0,
+   "af": "volume=1.0dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s36": {
+   "from": 0,
+   "af": "volume=-1.0dB"
   }
  },
  "voice_off": [
@@ -460,5 +470,5 @@
   "s40": 1.0
  },
  "subtitle_lines": [],
- "_note": "draft"
+ "_note": "真人版第 33 集第一版，2026-11-20 照 edit-dh-e932-live.json 第一版的做法寫：精修並放好的片段（_live-e933/zhong-tian-qu-qi-e933-dh/clips/sNN-t1.mp4，40 鏡、全用、沒有拿掉的鏡）；clip_voice、不放大、慢放 ≤ 1.1、不補格、frame_round、沒有片名卡、names {}。第 33 集是第 4 篇〈旱年〉第三集（r2-bible-e031-e040.md）：s01 接第 32 集 s36–s37 同一刻（黃昏祠堂，許硯拿圖卷走進門、韓伯與村人跪著）；s40 交給第 34 集（第十日正午，水車停住、錢員外在田埂上笑）。下面所有秒數都是從剪過的鏡頭第一格算（c）。不花錢：沒用 Colab、RunPod、站台 TTS，沒重做精修，沒有新配樂，沒匯入後台，沒 commit。\n來源：docs/videos/zhong-tian-qu-qi-e033-r2 的 script.md／storyboard.md／video.json／overlays.json（以 script.md〈音樂與音效〉〈剪接〉為準）；picks.json 由 colab/runs/e933-live 的 refine-prep.py 33 picks-merged.tsv fix1/review-picks.tsv fix2/review-picks.tsv cut-trims.tsv 產生（印出的 refine 沒跑；fix1 換 s01 s03 s05 s07 s22 s33 s35 s36，fix2 換 s34 為 9331313 0–7.500）。cut-trims.tsv 是本版自己改的三個剪點：s30 終點 10.125→8.125（見〈畫面〉）、s16 10.125→7.5、s17 6.542→4.5（run1 句後空 3.43／3.17 秒）。精修片 runpod/a/st2/refined/ 40/40，stage.py 33 放好 40 支（0 缺、沒有 crop）；每支精修片 1.0 秒的縮圖跟該鏡所有草稿逐一比對（thumbchk.py），差最小的都是 picks.json 指的那支（40/40，差 2.0–3.0，其他 9–105；s28 的另一支 9.0 最接近，仍分得開）。e933cut.sh 的 want／seed 表照 picks.json。連結：zhong-tian-qu-qi-e933-dh/music/ 是手做的目錄：同 e932（_series 的 cue-*.mp3、cue-drone31／tension31／comedy31 → assets/music/e031-e032/），另加 Flow Music 庫（_series/.../music/flow-music-20261118，2026-11-18 入庫）的四首底樂連結 cue-imperial-court／farming-montage／scheming（另 farewell、night-village 連了沒用）.mp3 → zhongtian-bed-<名>-take1.m4a（ffmpeg 照內容讀）。本集自己的音效在 _live-e933/.../sfx-local/（剪接表 sfx_dirs 第二個目錄，e933cut.sh 從放好的片子切）：water-s33.wav（s33 c4.40 起的片中水聲，淡入 0.3）、water-s34.wav（s34 整支 7.5 秒的片中水聲）。assemble-v4.mjs 沒改。工作檔：session scratchpad e933c/（mkov933.py＋vol.json＋music.json＋beds.json＋spots.json → overrides.json，mkedit933.py＋note.txt → 本檔；lev933.py、thumbchk.py、f0e.py、f0h.py（Harvest 直方圖，看八度錯）、f0yc.py（YIN 交叉驗證）、mom8.py、sfxlev.py、env.py、meas.py、cuefeat.py、fwall.py、fw2.py；clipf0e.txt、lev.txt、mom*.txt、run*.log、fwcut.txt、img/；PROGRESS.md 是中途進度）。\n@@RESULTS@@"
 }
