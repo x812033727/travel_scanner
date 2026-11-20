@@ -348,20 +348,23 @@ describe("breadcrumb, summary, FAQ and glossary markup", () => {
       document: { ...document, hero: syntheticHero },
     });
     const meta = await guideArticleMetadata({ locale: "en", kind: "life", slug: "claude-code-news-2026-11-12" });
+    const dynamicCard = "/og/en/life/claude-code-news-2026-11-12/card.png";
     expect(meta.openGraph).toMatchObject({
       type: "article", url: meta.alternates?.canonical, title: document.title, description: document.description,
       publishedTime: document.published_at, section: "AI 新聞", tags: ["AI 新聞"], locale: "en_US", alternateLocale: ["ja_JP"],
-      images: [{ url: "/og.png" }],
+      images: [{ url: dynamicCard, width: 1200, height: 630, alt: document.title }],
     });
     expect(meta.twitter).toMatchObject({
-      card: "summary_large_image", title: document.title, description: document.description, images: [{ url: "/og.png" }],
+      card: "summary_large_image", title: document.title, description: document.description,
+      images: [{ url: dynamicCard, width: 1200, height: 630, alt: document.title }],
     });
 
     const { container } = render(await renderGuideArticle({ locale: "en", kind: "life", slug: "claude-code-news-2026-11-12" }));
     const graphs = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));
     const newsGraph = graphs.find(item => item["@type"] === "NewsArticle");
     expect(newsGraph.articleSection).toBe("AI 新聞");
-    expect(newsGraph).not.toHaveProperty("image");
+    expect(newsGraph.image).toMatchObject({ "@type": "ImageObject", width: 1200, height: 630 });
+    expect(new URL(newsGraph.image.url).pathname).toBe(dynamicCard);
     expect(container.querySelector("img")).toBeNull();
   });
 
@@ -432,15 +435,15 @@ describe("breadcrumb, summary, FAQ and glossary markup", () => {
       ...state, ...route, series: null, news_date: newsDate, topics: [{ slug: topic, label: topic === "crypto" ? "암호화폐" : "금융" }],
       document: { ...document, hero: hasHero ? { ...picture, src: "/guides/network/cover.jpg" } : null, blocks: [{ type: "image", ...picture }] },
     });
+    const fallbackCard = "/og/ko/life/network/card.png";
     const meta = await guideArticleMetadata(route);
-    expect(meta.openGraph).toMatchObject({ section, images: [{ url: expectedImage ?? "/og.png" }] });
-    expect(meta.twitter).toMatchObject({ images: [{ url: expectedImage ?? "/og.png" }] });
+    expect(meta.openGraph).toMatchObject({ section, images: [{ url: expectedImage ?? fallbackCard }] });
+    expect(meta.twitter).toMatchObject({ images: [{ url: expectedImage ?? fallbackCard }] });
     const { container } = render(await renderGuideArticle(route));
     const graphs = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));
     const article = graphs.find(item => item["@type"] === (newsDate ? "NewsArticle" : "Article"));
     expect(article.articleSection).toBe(section);
-    if (expectedImage) expect(new URL(article.image.url).pathname).toBe(expectedImage);
-    else expect(article).not.toHaveProperty("image");
+    expect(new URL(article.image.url).pathname).toBe(expectedImage ?? fallbackCard);
   });
 
   it("emits Discover max-image-preview:large metadata and renders share actions plus right-rail trending recirculation", async () => {
@@ -561,6 +564,9 @@ describe("breadcrumb, summary, FAQ and glossary markup", () => {
     const headerShare = screen.getByRole("group", { name: "分享文章" });
     expect(within(headerShare).getByRole("button", { name: "複製連結" })).toBeTruthy();
     expect(within(headerShare).getByRole("link", { name: "LINE 分享" }).getAttribute("href")).toContain("social-plugins.line.me/lineit/share");
+    expect(within(headerShare).getByRole("link", { name: "Threads" }).getAttribute("href")).toContain("threads.net/intent/post");
+    expect(within(headerShare).getByRole("link", { name: "Facebook" }).getAttribute("href")).toContain("facebook.com/sharer/sharer.php");
+    expect(within(headerShare).getByRole("link", { name: "X" }).getAttribute("href")).toContain("x.com/intent/post");
     const footerShare = screen.getByTestId("article-share-footer");
     expect(within(footerShare).getByText("覺得這篇整理實用嗎？分享給需要的朋友")).toBeTruthy();
     expect(within(footerShare).getByRole("button", { name: "複製連結" })).toBeTruthy();

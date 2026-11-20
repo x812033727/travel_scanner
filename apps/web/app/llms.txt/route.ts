@@ -128,6 +128,7 @@ export async function GET(): Promise<Response> {
   for (const [path, title, note] of [
     ["/guides", "guidesTitle", "guidesDescription"],
     ["/life", "lifeTitle", "lifeDescription"],
+    ["/videos", "videosTitle", "videosDescription"],
   ] as const) {
     if (open.has(path)) lines.push(entry(plain(t(title)), url(path), plain(t(note))));
   }

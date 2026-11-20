@@ -384,6 +384,43 @@ export function foodEstablishments(locale: Locale, seed: unknown, awards: Awards
 }
 
 /**
+ * A published YouTube video rendered on `/videos` or embedded under its source article.
+ *
+ * Every field matches what `VideoCard` renders: the title, the YouTube `hqdefault.jpg`
+ * thumbnail, the publication timestamp, the `youtube-nocookie` embed URL and the canonical
+ * watch URL. No invented duration or interaction counts.
+ */
+export function videoObject(
+  locale: Locale,
+  input: {
+    slug: string;
+    title: string;
+    youtubeVideoId: string;
+    publishedAt: string;
+    description?: string | null;
+    articlePath?: string | null;
+    pagePath?: string;
+  },
+): object {
+  const id = input.youtubeVideoId;
+  const pageUrl = localeUrl(locale, input.pagePath ?? "/videos");
+  return {
+    "@context": CONTEXT,
+    "@type": "VideoObject",
+    "@id": `${pageUrl}#video-${input.slug}`,
+    name: input.title,
+    description: input.description?.trim() || input.title,
+    thumbnailUrl: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
+    uploadDate: input.publishedAt,
+    contentUrl: `https://www.youtube.com/watch?v=${id}`,
+    embedUrl: `https://www.youtube-nocookie.com/embed/${id}`,
+    inLanguage: locale,
+    publisher: brand(),
+    ...(input.articlePath ? { mainEntityOfPage: localeUrl(locale, input.articlePath) } : {}),
+  };
+}
+
+/**
  * Two graphs this corpus looks like it should carry and must not.
  *
  * `HowTo`, for the 106 `howto` articles: only 20 of them hold an ordered list at all, and those

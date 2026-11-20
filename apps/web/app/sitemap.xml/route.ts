@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
-import { guideSitemapSummary } from "@/lib/guides.server";
+import { guideSection } from "@/lib/guides";
+import { guideSitemapSummary, type GuideSitemapSummary } from "@/lib/guides.server";
 import { siteUrl } from "@/lib/seo";
-import { listedSitemapChildren, sitemapChildPath } from "../sitemaps/sitemap";
+import { listedSitemapChildren, parseSitemapChild, sitemapChildPath } from "../sitemaps/sitemap";
 
 /**
  * `/sitemap.xml` is a sitemap index: one child for the static routes and, per section and
@@ -27,12 +28,30 @@ export const dynamic = "force-dynamic";
 
 const escape = (value: string) => value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
+/** Newest real revision timestamp for a section child, or null for `static` and legacy APIs. */
+function childLastModified(summary: GuideSitemapSummary, id: string): string | null {
+  const target = parseSitemapChild(id);
+  if (!target || !summary.available) return null;
+  let newestMs = -Infinity;
+  for (const row of summary.counts) {
+    if (guideSection(row.kind) !== target.section || row.locale !== target.locale || !row.latest_modified_at) continue;
+    const ms = Date.parse(row.latest_modified_at);
+    if (Number.isFinite(ms) && ms > newestMs) newestMs = ms;
+  }
+  return Number.isFinite(newestMs) ? new Date(newestMs).toISOString() : null;
+}
+
 export async function GET(): Promise<NextResponse> {
-  const children = listedSitemapChildren(await guideSitemapSummary());
+  const summary = await guideSitemapSummary();
+  const children = listedSitemapChildren(summary);
   const body = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    ...children.map((id) => `  <sitemap><loc>${escape(`${siteUrl}${sitemapChildPath(id)}`)}</loc></sitemap>`),
+    ...children.map((id) => {
+      const lastmod = childLastModified(summary, id);
+      const tag = lastmod ? `<lastmod>${escape(lastmod)}</lastmod>` : "";
+      return `  <sitemap><loc>${escape(`${siteUrl}${sitemapChildPath(id)}`)}</loc>${tag}</sitemap>`;
+    }),
     "</sitemapindex>",
     "",
   ].join("\n");
