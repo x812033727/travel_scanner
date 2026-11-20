@@ -2,32 +2,45 @@
   "fields": {
     "hotspot_guide_gemini_key_budgets_usd": {
       "label": "Gemini キーごとの月間予算（USD）",
-      "help": "空欄可。「追加の Gemini キー」の順、最後に上のキーに対応し、カンマ区切りで入力（例：95,95,0）。0 または空欄は予算なし。実際にキーを切り替えるのは Google の拒否です：前払い残高が尽きると 402、月間支出上限を設定していればその到達時に 429。"
+      "help": "空欄可。上の「Gemini キープール」でスロット A、B、C、D… ごとに個別保存できます（0 または空欄は予算なし）。前払い残高が尽きると 402、月間支出上限で 429 が返り次のスロットへ切り替わります。"
     }
   },
   "secrets": {
     "hotspot_guide_gemini_api_keys_extra": {
       "label": "追加の Gemini キー（Google AI Ultra アカウント）",
-      "help": "複数可、カンマまたは改行で区切ります。これらのキー（Ultra アカウントの毎月の Google Cloud クレジット）を順に使い切り、すべて Google に拒否されてから上のキーを使います。"
+      "help": "上の「Gemini キープール」でスロット A、B、C、D… ごとに個別に入力・保存してください。A → B → C → … → A の順で循環ローテーションし、すべて使い切った場合のみサイトのキーを使用します。"
     }
   },
   "panel": {
-    "title": "Gemini キープール",
-    "intro": "順番に使用します。クレジットや支出上限で Google に拒否されたキーは休止し、最長 12 時間後に再試行します。今月の支出はサイトの推定値で、実際の残高は AI Studio の請求ページで確認してください。",
+    "title": "Gemini キープール（Google AI Ultra スロット管理）",
+    "intro": "スロット A、B、C、D… ごとにキーを個別に入力・保存でき、「＋ スロット追加」でいつでも拡張できます。現在のスロットがクレジット切れや上限に達すると次のスロット（A → B → C → … 最後は A に戻る）へ移り、開始スロットを手動で指定することもできます。",
     "key": "キー",
-    "order": "順番",
+    "order": "スロット",
     "spent": "今月（推定）",
-    "budget": "予算",
+    "budget": "月予算 (USD)",
     "state": "状態",
+    "actions": "操作",
     "active": "使用中",
     "ready": "待機",
     "exhausted": "クレジット切れ、休止終了",
     "busy": "混雑、休止終了",
     "over": "予算超過",
     "none": "なし",
+    "unconfigured": "未設定",
     "billing": "AI Studio の請求ページを開く",
     "error": "キープールの状態を読み込めません",
-    "single": "Gemini キーは 1 本だけです。上の「追加の Gemini キー」に Ultra アカウントのキーを入れると、ここに一覧表示されます。",
-    "siteKey": "サイトのキー"
+    "single": "Gemini キーは 1 本だけです。下のスロット（A、B、C…）に Ultra アカウントのキーを個別保存するとローテーションが有効になります。",
+    "siteKey": "サイトのキー",
+    "slotLabel": "アカウント",
+    "currentTurn": "現在の順番",
+    "startHere": "ここから開始",
+    "saveSlot": "保存",
+    "clearSlot": "クリア",
+    "addSlot": "＋ スロット追加",
+    "keyPlaceholder": "このスロットの Gemini API Key を入力",
+    "keyConfiguredPlaceholder": "保存済み（新しいキーで更新）",
+    "budgetPlaceholder": "上限なし",
+    "savedNotice": "スロットを更新しました：",
+    "turnNotice": "開始スロットを切り替えました："
   }
 }

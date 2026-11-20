@@ -2,32 +2,45 @@
   "fields": {
     "hotspot_guide_gemini_key_budgets_usd": {
       "label": "Monthly budget per Gemini key (USD)",
-      "help": "Optional. Same order as the extra Gemini keys, then the key above, comma separated, e.g. 95,95,0; 0 or blank means no budget. What actually switches keys is Google refusing: 402 once a prepaid balance runs out, or 429 at a monthly spending cap if one is set."
+      "help": "Optional. Configure and save per slot (A, B, C, D...) directly in the Gemini key pool above; 0 or blank means no budget. What actually switches keys is Google refusing: 402 once a prepaid balance runs out, or 429 at a monthly spending cap."
     }
   },
   "secrets": {
     "hotspot_guide_gemini_api_keys_extra": {
       "label": "Extra Gemini keys (Google AI Ultra accounts)",
-      "help": "Several allowed, separated by commas or new lines. These keys (each Ultra account's monthly Google Cloud credit) are used up in order first; the key above only takes over once Google refuses all of them."
+      "help": "Enter and save keys individually per slot (A, B, C, D...) in the Gemini key pool above. Slots rotate circularly (A -> B -> C -> ... -> A) as each Ultra account's credit is used up; the site key only takes over once all Ultra slots are exhausted."
     }
   },
   "panel": {
-    "title": "Gemini key pool",
-    "intro": "Used in order. A key Google refuses for credit or spending cap rests and is tried again after at most 12 hours. This month's spend is the site's estimate; the AI Studio billing page shows the real balance.",
+    "title": "Gemini key pool (Google AI Ultra slots)",
+    "intro": "Enter and save each Google AI Ultra key in its own slot (A, B, C, D...) and add more slots anytime. When the active slot runs out of credit or hits its cap, the pool advances to the next slot (A -> B -> C -> ... and wraps back to A). You can also pick which slot to start from.",
     "key": "Key",
-    "order": "Order",
+    "order": "Slot",
     "spent": "This month (est.)",
-    "budget": "Budget",
+    "budget": "Budget (USD)",
     "state": "State",
+    "actions": "Actions",
     "active": "In use",
     "ready": "Standby",
     "exhausted": "Out of credit, resting until",
     "busy": "Busy, resting until",
     "over": "Over budget",
     "none": "None",
+    "unconfigured": "Not set",
     "billing": "Open AI Studio billing",
     "error": "Could not read the key pool",
-    "single": "There is only one Gemini key. Add the Ultra accounts' keys under Extra Gemini keys above and each one will be listed here.",
-    "siteKey": "Site key"
+    "single": "There is only one Gemini key. Save Ultra account keys in slots A, B, C... below to enable circular rotation.",
+    "siteKey": "Site key",
+    "slotLabel": "Slot",
+    "currentTurn": "Current turn",
+    "startHere": "Start here",
+    "saveSlot": "Save",
+    "clearSlot": "Clear",
+    "addSlot": "+ Add account slot",
+    "keyPlaceholder": "Enter Gemini API key for this slot",
+    "keyConfiguredPlaceholder": "Saved; enter new key to update",
+    "budgetPlaceholder": "No cap",
+    "savedNotice": "Saved slot",
+    "turnNotice": "Starting slot set to:"
   }
 }

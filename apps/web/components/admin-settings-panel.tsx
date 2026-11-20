@@ -1149,7 +1149,7 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
         {provider.provider === "azure_speech" && usage && <AzureSpeechUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
         {provider.provider === "azure_speech" && <VideoToolTokens canManage={manage.allowed} />}
         {provider.provider === "runpod" && <AdminRunpodPanel canManage={manage.allowed} />}
-        {provider.provider === "ai_vendors" && provider.secrets.hotspot_guide_gemini_api_keys_extra?.configured && <AdminGeminiPool />}
+        {provider.provider === "ai_vendors" && "hotspot_guide_gemini_api_keys_extra" in provider.secrets && <AdminGeminiPool canManage={manage.allowed} />}
         {provider.provider === "youtube_guides" && usage && <YouTubeUsagePanel usage={usage} automaticSearchBudget={Number(provider.config.hotspot_guide_youtube_daily_search_budget || 80)} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
 
         <fieldset disabled={busy || !manage.allowed} title={!manage.allowed ? manage.disabledReason : undefined} className="min-w-0 disabled:opacity-70">
