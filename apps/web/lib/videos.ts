@@ -40,11 +40,21 @@ export function isVideoKind(value: unknown): value is VideoKind {
   return value === "long" || value === "shorts";
 }
 
+export type PublicVideoDetailResult =
+  | { status: "found"; video: PublicVideo; related: PublicVideo[] }
+  | { status: "not_found" }
+  | { status: "unavailable" };
+
 /** The article a video retells, or null when the API could not vouch for it. */
 export function videoArticleHref(video: PublicVideo): string | null {
   return video.source_guide && video.source_guide_kind && GUIDE_KINDS.has(video.source_guide_kind)
     ? guideHref(video.source_guide_kind, video.source_guide)
     : null;
+}
+
+/** Canonical watch-page path for one published video (locale-less, for next-intl Link). */
+export function videoHref(slug: string): string {
+  return `/videos/${encodeURIComponent(slug)}`;
 }
 
 /** A listing address. Every `/videos` link comes from here so the filters compose one way. */
