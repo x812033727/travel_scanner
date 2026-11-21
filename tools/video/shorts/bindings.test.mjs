@@ -379,8 +379,10 @@ test('an input edited during final uploads prevents submitting the final review'
 test('an input edited during package uploads prevents submitting the publish review', async (t) => {
   const { directory } = await passingBuild(t);
   const metadataHash = sha256(readFileSync(path.join(directory, 'upload/metadata.json')));
+  // metadata.json goes up twice: on the final review (for a hand upload) and in the package.
+  let seen = 0;
   const client = site({ onPart: async ({ hash }) => {
-    if (hash === metadataHash) edit(directory, 'verify.json', (verify) => { verify.ok = false; });
+    if (hash === metadataHash && ++seen === 2) edit(directory, 'verify.json', (verify) => { verify.ok = false; });
   } });
   const result = await push({ directory, client });
   assert.match(result.waits, /QA inputs changed during push/);

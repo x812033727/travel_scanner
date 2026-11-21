@@ -681,7 +681,7 @@ test('a Short whose cut is approved goes on to its upload package', async (t) =>
   assert.ok(!('source_slug' in reported));
   const [final, publish] = calls.filter(([kind]) => kind === 'submit').map(([, , review]) => review);
   assert.deepEqual([final.gate, final.content_sha256], ['final', finalSha]);
-  assert.deepEqual(final.files.map((file) => [file.role, file.content_type]), [['preview', 'video/mp4'], ['thumbnail', 'image/png'], ['contact_sheet', 'image/png'], ['evidence_evidence_result', 'application/json']]);
+  assert.deepEqual(final.files.map((file) => [file.role, file.content_type]), [['preview', 'video/mp4'], ['thumbnail', 'image/png'], ['contact_sheet', 'image/png'], ['evidence_evidence_result', 'application/json'], ['metadata', 'application/json']]);
   assert.deepEqual([final.payload.qa.kind, final.payload.qa.final_sha256, final.payload.qa.items.length], ['shorts', finalSha, 13]);
   assert.ok(!('checked_at' in final.payload.qa) && !('script' in final.payload.qa), 'the report goes as the site reads it');
   assert.deepEqual(final.payload.usage.narration, { seconds: 33, characters: 96, calls: 11, provider: 'gemini' });

@@ -158,7 +158,8 @@ test('a silent drama goes through check-audio, qa, package and push with nothing
   const body = calls.find(([kind]) => kind === 'report')[2];
   assert.deepEqual([body.format, body.shorts_line, body.shorts_series, 'source_slug' in body], ['drama', 'drama', 'shechu-hell', false]);
   const [final, publish] = calls.filter(([kind]) => kind === 'submit').map(([, , review]) => review);
-  assert.deepEqual(final.files.map((file) => file.role), ['preview', 'thumbnail']);
+  assert.deepEqual(final.files.map((file) => file.role), ['preview', 'thumbnail', 'metadata'], 'the package rides on the final review, for a hand upload');
+  assert.equal(final.files[2].sha256, sha256(readFileSync(path.join(directory, 'upload', 'metadata.json'))));
   assert.equal(final.payload.hand_pushed, true);
   assert.deepEqual(publish.files.map((file) => file.role), ['metadata', 'final', 'description_zh-TW'], 'no caption track goes');
   assert.deepEqual(publish.payload.locales, []);
