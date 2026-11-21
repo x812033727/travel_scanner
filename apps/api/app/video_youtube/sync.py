@@ -59,6 +59,7 @@ from app.video_youtube.requests import (
     as_dict,
     caption_languages,
     captioned,
+    has_captions,
     insert_body,
     language_key,
     locale_of_role,
@@ -340,7 +341,13 @@ async def request_sync(
     )
     # Checked as YouTube will get it: with the captions tag the request bodies add.
     problem = text_problem(
-        captioned(title, narration_language(package.metadata), story=package.story), description
+        captioned(
+            title,
+            narration_language(package.metadata),
+            story=package.story,
+            captions=has_captions(package.metadata),
+        ),
+        description,
     )
     if problem:
         raise Refused(422, "video_youtube_text_invalid", problem)
