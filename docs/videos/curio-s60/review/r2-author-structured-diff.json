@@ -1,0 +1,1352 @@
+{
+  "baseline_commit": "806f4493d",
+  "purpose": "S60 R1 HOLD author repair; fields are exact before/after values, not an independent PASS",
+  "files": {
+    "brief.md": {
+      "before_sha256": "357f2c2706bd1fca6c77e9ccad45771a745ddadc91ba41da4d73f656ab2c5acc",
+      "after_sha256": "357f2c2706bd1fca6c77e9ccad45771a745ddadc91ba41da4d73f656ab2c5acc",
+      "changed": false
+    },
+    "research.md": {
+      "before_sha256": "d518e956f5bc3ed87d67429c4eabe82c0fda1ff0e8fabd852acfa7fe7049d92b",
+      "after_sha256": "e4ec4ac5abb2628d8c3efcabcf3a5beb8f33c5d2ce3ab92113e473a6bebd7689",
+      "changed": true
+    },
+    "claims.md": {
+      "before_sha256": "b2bee88a40c01f115a3913ac4a0badf2f725fffe1a2aa386f88a380ea6e89556",
+      "after_sha256": "4d7bd1388b9382219623bb9ce454677edd2eca6415c05ec4ccb0bbbf59421909",
+      "changed": true
+    },
+    "script.md": {
+      "before_sha256": "a6577011a6b1132abf1dd04375dab18f05db7537b51c2f46ea131a747d2740c2",
+      "after_sha256": "1ac4ee6548edae5a61f507c4e99edd75f5a81668d9acfa418b0ec22de8ea8b91",
+      "changed": true
+    },
+    "video.json": {
+      "before_sha256": "e4e79c80b67fb811ca32245c6bef5c6ddaa3cf20c260f4a6f0a409c2d3493e23",
+      "after_sha256": "bf8d95565857f0a8b976ef6f2d89e730fd88fabcab44201e75a05bd67dabba9c",
+      "changed": true
+    }
+  },
+  "video_json_changes": {
+    "s60001": {
+      "data.prompt": {
+        "before": "Wide shot, one frost-covered traveler walks toward a tiny tent on a blank snowy plain, soft overcast light",
+        "after": "Wide shot, a bundled British traveler walks toward a small tent alone on an empty polar plain, overcast light"
+      }
+    },
+    "s60003": {
+      "data.prompt": {
+        "before": "Close shot, one gloved traveler holds an unmarked folded note inside a small tent, diffused daylight",
+        "after": "Close shot, one gloved British traveler unfolds a blank short note inside a small canvas canvas shelter, diffuse light"
+      }
+    },
+    "s60004": {
+      "data.prompt": {
+        "before": "Medium shot, one traveler studies a blank paper beside a tent pole, soft winter light",
+        "after": "Medium shot, one bundled Norwegian explorer considers a blank letter beside a tent pole, soft polar light"
+      }
+    },
+    "s60005": {
+      "data.prompt": {
+        "before": "Wide shot, one traveler bends to inspect a dark marker flag in a snowy field, muted daylight",
+        "after": "Wide shot, one skier bends toward a dark marker flag stuck in the snow, muted daylight"
+      }
+    },
+    "s60006": {
+      "data.prompt": {
+        "before": "Close shot, one skier steadies a small flagpole in the snow, grey light",
+        "after": "Close shot, one polar traveler looks from a raised flag to a handheld sextant, overcast light"
+      }
+    },
+    "s60007": {
+      "data.prompt": {
+        "before": "Medium shot, one bundled explorer raises a plain sextant toward the low sun, soft cloud light",
+        "after": "Medium shot, one bundled explorer measures the low sun with a sextant beside a flag, pale light"
+      }
+    },
+    "s60008": {
+      "data.prompt": {
+        "before": "Close shot, one traveler places an unmarked envelope into a plain canvas pouch, soft light",
+        "after": "Close shot, one traveler tucks an unmarked envelope into a small cloth bag in a canvas tent, soft light"
+      }
+    },
+    "s60010": {
+      "data.prompt": {
+        "before": "Medium shot, one sled driver checks harness on a team of dogs beside a loaded sledge, overcast light",
+        "after": "Medium shot, one sled driver checks dogs harnessed to a loaded sledge outside a low winter base, cloud light"
+      }
+    },
+    "s60011": {
+      "data.prompt": {
+        "before": "Close shot, one gloved hand closes a plain supply case on a sledge, soft winter light",
+        "after": "Close shot, one gloved explorer secures a supply case at a marked southern depot, grey light"
+      }
+    },
+    "s60012": {
+      "data.prompt": {
+        "before": "Wide shot, one traveler plants a small marker flag in a white snowfield, overcast sky",
+        "after": "Wide shot, one skier plants a return-route flag along a line of distant snow markers, muted daylight"
+      }
+    },
+    "s60013": {
+      "data.prompt": {
+        "before": "Medium shot, one skier leans away from a narrow snow crevasse, diffuse pale daylight",
+        "after": "Medium shot, one traveler follows several existing flags toward a white horizon in blowing powder, cloud light"
+      }
+    },
+    "s60014": {
+      "data.prompt": {
+        "before": "Close shot, one explorer studies a break in a snow crust beside a sled runner, grey light",
+        "after": "Close shot, one driver stops a sled runner beside a newly opened snow crevasse, diffuse light"
+      }
+    },
+    "s60015": {
+      "data.prompt": {
+        "before": "Medium shot, one driver turns a sledge toward firmer white ground beside a crevasse, soft winter light",
+        "after": "Medium shot, one bundled skier braces beside a sled runner inches from a dark ice gap, pale light"
+      }
+    },
+    "s60016": {
+      "data.prompt": {
+        "before": "Wide shot, one skier follows a line of small flags across white snow, soft overcast sky",
+        "after": "Wide shot, one driver guides a sledge westward toward firmer ground and an existing marker flag, grey light"
+      }
+    },
+    "s60017": {
+      "data.prompt": {
+        "before": "Medium shot, one explorer catches a taut dog trace as a sledge tips into a crevasse, diffuse daylight",
+        "after": "Medium shot, one traveler inspects a route flag standing dangerously close to a narrow crevasse, overcast light"
+      }
+    },
+    "s60018": {
+      "data.prompt": {
+        "before": "Close shot, one gloved traveler ties an alpine rope to a sledge trace, pale light",
+        "after": "Wide shot, one dog sledge tips nose-first into a snow crevasse while a driver reaches for its trace, muted light"
+      }
+    },
+    "s60019": {
+      "data.prompt": {
+        "before": "Medium shot, one explorer braces a spare sledge across a narrow snow gap, muted light",
+        "after": "Medium shot, one bundled explorer grips a taut trace as a dog team braces beside a tilting sledge, cloud light"
+      }
+    },
+    "s60020": {
+      "data.prompt": {
+        "before": "Wide shot, one roped explorer climbs out of a white ground crevasse beside a saved sledge, soft grey light",
+        "after": "Close shot, one explorer strains backward on a trace while the cargo sledge hangs lower in an ice gap, diffuse light"
+      }
+    },
+    "s60021": {
+      "data.prompt": {
+        "before": "Wide shot, one bundled skier guides a dog sledge away from a low winter hut, soft grey daylight",
+        "after": "Medium shot, one rescuer ties an alpine rope to the sledge trace at the lip of a crevasse, grey daylight"
+      }
+    },
+    "s60022": {
+      "data.prompt": {
+        "before": "Medium shot, one sled driver checks harness on a team of dogs beside a loaded sledge, overcast light",
+        "after": "Wide shot, one explorer pulls a dog to safety beside a spare sledge laid across a narrow crevasse, pale light"
+      }
+    },
+    "s60023": {
+      "data.prompt": {
+        "before": "Close shot, one gloved hand closes a plain supply case on a sledge, soft winter light",
+        "after": "Medium shot, one roped explorer descends toward a loose supply case on a suspended sledge, overcast light"
+      }
+    },
+    "s60024": {
+      "data.prompt": {
+        "before": "Wide shot, one traveler plants a small marker flag in a white snowfield, overcast sky",
+        "after": "Wide shot, one traveler steadies the recovered sledge and its cases on firm snow beside the crevasse, grey light"
+      }
+    },
+    "s60025": {
+      "data.prompt": {
+        "before": "Medium shot, one skier leans away from a narrow white ground crevasse, diffuse pale daylight",
+        "after": "Medium shot, one skier peers toward a line of return beacons climbing into distant white mountains, cloud light"
+      }
+    },
+    "s60026": {
+      "data.prompt": {
+        "before": "Wide shot, one skier climbs a snowy slope beside distant mountains, soft overcast light",
+        "after": "Wide shot, one skier begins ascending a snowy glacier between mountain walls, overcast daylight"
+      }
+    },
+    "s60027": {
+      "data.prompt": {
+        "before": "Medium shot, one skier lays an unmarked note in a plain supply cache, pale daylight",
+        "after": "Medium shot, one explorer leaves an unmarked route note inside a supply depot at the mountain foot, pale light"
+      }
+    },
+    "s60028": {
+      "data.prompt": {
+        "before": "Close shot, one gloved traveler sets a small snow beacon beside a wide ice crack, diffused light",
+        "after": "Close shot, one gloved traveler builds a snow beacon beside a wide ice crack on the glacier, diffuse light"
+      }
+    },
+    "s60029": {
+      "data.prompt": {
+        "before": "Medium shot, one sledge driver steadies a harnessed dog on a steep snow rise, soft cloud light",
+        "after": "Medium shot, one skier sights along two beacons that bracket a safe passage between rounded crevasses, grey light"
+      }
+    },
+    "s60030": {
+      "data.prompt": {
+        "before": "Wide shot, one skier crosses a rough high white ground plateau, grey light",
+        "after": "Wide shot, one sled driver guides two harnessed dog teams pulling a single heavy sledge uphill, pale daylight"
+      }
+    },
+    "s60031": {
+      "data.prompt": {
+        "before": "Medium shot, one explorer braces against ridges of hard snow in drifting powder, soft light",
+        "after": "Wide shot, one skier searches a high featureless plateau with no mountain edge visible, muted light"
+      }
+    },
+    "s60032": {
+      "data.prompt": {
+        "before": "Close shot, one gloved driver shields a compass while snow blows across the sledge, muted light",
+        "after": "Medium shot, one skier stumbles over a tall hard sastrugi ridge on the plateau, overcast light"
+      }
+    },
+    "s60033": {
+      "data.prompt": {
+        "before": "Medium shot, one driver pauses a sledge to read a compass in overcast daylight",
+        "after": "Close shot, one bundled traveler shields their eyes as drifting powder hides the ground ahead, grey light"
+      }
+    },
+    "s60034": {
+      "data.prompt": {
+        "before": "Wide shot, one explorer looks for the low sun over a featureless white plateau, soft light",
+        "after": "Medium shot, one dog driver steadies a jolting sledge while checking a compass, cloud light"
+      }
+    },
+    "s60035": {
+      "data.prompt": {
+        "before": "Close shot, one gloved traveler checks a plain sledge meter beside a runner, diffused light",
+        "after": "Close shot, one gloved driver waits for a compass needle to settle atop a bouncing sledge, muted light"
+      }
+    },
+    "s60036": {
+      "data.prompt": {
+        "before": "Wide shot, one skier climbs a snowy slope beside distant mountains, soft overcast light",
+        "after": "Medium shot, one explorer compares a sextant reading with an unmarked sledge-meter case, diffuse daylight"
+      }
+    },
+    "s60037": {
+      "data.prompt": {
+        "before": "Medium shot, one explorer lays an unmarked note in a plain supply cache, pale daylight",
+        "after": "Wide shot, one traveler checks a compass against an empty southern horizon with no landmark, overcast sky"
+      }
+    },
+    "s60038": {
+      "data.prompt": {
+        "before": "Close shot, one gloved traveler sets a small snow beacon beside a wide ice crack, diffused light",
+        "after": "Medium shot, one bundled observer lifts a sextant toward the low circling sun, soft polar light"
+      }
+    },
+    "s60039": {
+      "data.prompt": {
+        "before": "Medium shot, one sledge driver steadies a harnessed dog on a steep snow rise, soft cloud light",
+        "after": "Close shot, one traveler reads a plain sledge meter while clouds hide the sun, muted daylight"
+      }
+    },
+    "s60040": {
+      "data.prompt": {
+        "before": "Wide shot, one skier crosses a rough high white ground plateau, grey light",
+        "after": "Wide shot, one tiny skier pauses on an unmarked white plateau without a visible destination, grey light"
+      }
+    },
+    "s60041": {
+      "data.prompt": {
+        "before": "Medium shot, one explorer braces against ridges of hard snow in drifting powder, soft light",
+        "after": "Close shot, one gloved driver stops a sledge and checks its distance meter on the polar plain, pale light"
+      }
+    },
+    "s60042": {
+      "data.prompt": {
+        "before": "Close shot, one gloved driver shields a compass while snow blows across the sledge, muted light",
+        "after": "Wide shot from a low angle, one skier's boots stand beside an unmarked sledge meter on featureless snow with no survey marker, grey light"
+      }
+    },
+    "s60044": {
+      "data.prompt": {
+        "before": "Close shot, one gloved traveler checks a plain distance meter beside a sled runner, overcast light",
+        "after": "Close shot, one driver checks the sledge meter before stepping onto a flat white field, muted daylight"
+      }
+    },
+    "s60045": {
+      "data.prompt": {
+        "before": "Wide shot, one polar skier raises a small flag against a wide blank white ground horizon, muted daylight",
+        "after": "Medium shot, one expedition leader invites four bundled companions toward a shared flagpole, overcast light"
+      }
+    },
+    "s60046": {
+      "data.prompt": {
+        "before": "Medium shot, one explorer holds a flagpole upright in crusted snow, soft grey light",
+        "after": "Wide shot, five bundled expeditioners jointly lift one flagpole with a small unfurled flag into level polar snow, diffuse light"
+      }
+    },
+    "s60047": {
+      "data.prompt": {
+        "before": "Close shot, one traveler compares an unmarked notebook with a blank snow horizon, pale daylight",
+        "after": "Close shot, one explorer checks a sextant after the shared flag raising, grey light"
+      }
+    },
+    "s60048": {
+      "data.prompt": {
+        "before": "Wide shot, one skier studies a featureless snowy field under low cloud, diffused light",
+        "after": "Wide shot, one traveler scans a white field without stones or marker for an exact point, pale light"
+      }
+    },
+    "s60049": {
+      "data.prompt": {
+        "before": "Medium shot, one explorer lifts a sextant toward a low sun beside a canvas tent, winter daylight",
+        "after": "Medium shot, one expedition leader points three scouts toward different bearings from the tent, cloud light"
+      }
+    },
+    "s60050": {
+      "data.prompt": {
+        "before": "Close shot, one gloved traveler adjusts a sextant on a white ground pedestal, muted light",
+        "after": "Close shot, one bundled observer raises a sextant toward the low midnight sun, muted daylight"
+      }
+    },
+    "s60051": {
+      "data.prompt": {
+        "before": "Wide shot, one skier carries a small dark marker flag away from a lonely tent, pale daylight",
+        "after": "Medium shot, one traveler studies a sextant as the low sun barely shifts above a white horizon, diffuse light"
+      }
+    },
+    "s60052": {
+      "lines[0].text": {
+        "before": "當晚算出的數字，讓隊伍認為還要再確認。",
+        "after": "當晚初算約南緯八十九度五十六分，隊員們對結果很滿意。"
+      },
+      "data.prompt": {
+        "before": "Medium shot, one explorer shades his eyes while watching a dark dot return across the snow, grey light",
+        "after": "Close shot, one observer writes an unmarked first calculation beside the sextant in a tent, soft light"
+      }
+    },
+    "s60053": {
+      "lines[0].text": {
+        "before": "於是三名隊員分別從營地往三個方向出發。",
+        "after": "三名隊員依原先安排，分別從營地往三個方向出發。"
+      },
+      "data.prompt": {
+        "before": "Medium shot, one driver stops a dog sledge on an empty high snow plain, soft daylight",
+        "after": "Wide shot, three bundled skiers separate along three outward routes from a tiny pole camp, pale light"
+      }
+    },
+    "s60054": {
+      "data.prompt": {
+        "before": "Close shot, one gloved traveler checks a plain distance meter beside a sled runner, overcast light",
+        "after": "Medium shot, one scout carries a dark flag and a small folded location slip across white snow, overcast light"
+      }
+    },
+    "s60055": {
+      "data.prompt": {
+        "before": "Wide shot, one polar explorer raises a small flag against a wide blank white ground horizon, muted daylight",
+        "after": "Wide shot, one isolated scout looks back at footprints beginning to blow over behind them, grey light"
+      }
+    },
+    "s60056": {
+      "data.prompt": {
+        "before": "Medium shot, one explorer holds a flagpole upright in crusted snow, soft grey light",
+        "after": "Medium shot, one explorer measures the low sun at camp while another figure waits by the tent, cloud light"
+      }
+    },
+    "s60057": {
+      "data.prompt": {
+        "before": "Close shot, one traveler compares an unmarked notebook with a blank snow horizon, pale daylight",
+        "after": "Wide shot, one camp observer watches the first distant scout reappear as a dark dot on white snow, muted light"
+      }
+    },
+    "s60058": {
+      "data.prompt": {
+        "before": "Wide shot, one skier studies a featureless snowy field under low cloud, diffused light",
+        "after": "Medium shot, one traveler studies distant dark flags set on different bearings beyond the tent, pale light"
+      }
+    },
+    "s60059": {
+      "data.prompt": {
+        "before": "Medium shot, one explorer lifts a sextant toward a low sun beside a canvas tent, winter daylight",
+        "after": "Wide shot, one leader points a southbound sledge along an empty ten-kilometer stretch, overcast sky"
+      }
+    },
+    "s60060": {
+      "data.prompt": {
+        "before": "Close shot, one gloved traveler adjusts a sextant on a white ground pedestal, muted light",
+        "after": "Medium shot, one explorer clears a level spot for a new observation camp on the plateau, diffused light"
+      }
+    },
+    "s60061": {
+      "data.prompt": {
+        "before": "Wide shot, one skier leads a dog sledge across a flat white plain, soft daylight",
+        "after": "Wide shot, one skier leads the advance while dog sledges follow across a flat white field, soft daylight"
+      }
+    },
+    "s60062": {
+      "data.prompt": {
+        "before": "Medium shot, one explorer checks the direction of a distant sledge behind another skier, overcast sky",
+        "after": "Medium shot, one trailing explorer checks the leading skier's line against a distant upright sledge, pale light"
+      }
+    },
+    "s60063": {
+      "data.prompt": {
+        "before": "Close shot, one gloved traveler packs snow into a low platform beside a tent, muted light",
+        "after": "Close shot, one gloved traveler packs a solid snow pedestal beside an observation tent, muted light"
+      }
+    },
+    "s60064": {
+      "data.prompt": {
+        "before": "Medium shot, one bundled explorer uses a sextant on a snow platform, soft winter light",
+        "after": "Medium shot, one observer uses a sextant while the other shift rests inside the tent, soft cloud light"
+      }
+    },
+    "s60066": {
+      "data.prompt": {
+        "before": "Close shot, one gloved hand records marks in a blank-looking notebook beside a sextant, muted light",
+        "after": "Wide shot, one observer watches a low midnight sun hover over a motionless-looking horizon, pale light"
+      }
+    },
+    "s60067": {
+      "data.prompt": {
+        "before": "Medium shot, one skier walks south from a small observation tent, soft grey daylight",
+        "after": "Close shot, one gloved hand compares several blank tick marks in a notebook beside a sextant, soft tent light"
+      }
+    },
+    "s60068": {
+      "data.prompt": {
+        "before": "Wide shot, one traveler raises a tiny spare canvas tent against a white horizon, overcast light",
+        "after": "Medium shot, one observer lowers a sextant and studies the uncertain mark in an unlettered notebook, grey light"
+      }
+    },
+    "s60069": {
+      "data.prompt": {
+        "before": "Close shot, one gloved traveler fastens a small plain flag to a thin tent pole, diffused light",
+        "after": "Close shot, one traveler finishes a long series of sextant readings beside a low tent, overcast light"
+      }
+    },
+    "s60070": {
+      "data.prompt": {
+        "before": "Medium shot, one traveler places unmarked supplies inside a small tent, pale winter light",
+        "after": "Wide shot, two skiers walk beyond the observation tent along the predicted southern bearing, muted daylight"
+      }
+    },
+    "s60071": {
+      "data.prompt": {
+        "before": "Wide shot, one skier leads a dog sledge across a flat white plain, soft daylight",
+        "after": "Medium shot, one explorer unloads a folded spare canvas tent from a sledge on the white plateau, pale light"
+      }
+    },
+    "s60072": {
+      "data.prompt": {
+        "before": "Medium shot, one skier checks the direction of a distant sledge behind another skier, overcast sky",
+        "after": "Wide shot, one traveler fastens a small plain flag high above a separate spare tent, diffused light"
+      }
+    },
+    "s60073": {
+      "data.prompt": {
+        "before": "Close shot, one gloved traveler packs snow into a low platform beside a tent, muted light",
+        "after": "Close shot, one gloved traveler lays a sextant beside winter foot bags inside the small spare tent, soft light"
+      }
+    },
+    "s60074": {
+      "data.prompt": {
+        "before": "Medium shot, one bundled explorer uses a sextant on a snow platform, soft winter light",
+        "after": "Medium shot, one explorer folds a blank report letter beside a cloth bag inside the spare tent, muted light"
+      }
+    },
+    "s60075": {
+      "data.prompt": {
+        "before": "Wide shot, one observer stands outside a tent under a low midnight sun, pale diffuse light",
+        "after": "Wide shot, one traveler leaves a small bag inside the spare canvas shelter and looks along the long route home, pale light"
+      }
+    },
+    "s60076": {
+      "data.prompt": {
+        "before": "Close shot, one explorer writes on an unmarked folded sheet inside a canvas tent, soft light",
+        "after": "Medium shot, one reader opens a plain bound account of the voyage beside an unmarked map, soft desk light"
+      }
+    },
+    "s60077": {
+      "data.prompt": {
+        "before": "Medium shot, one gloved traveler places an unmarked envelope in a small fabric bag, muted light",
+        "after": "Close shot, one gloved hand places the report envelope inside a little pouch in the tent, diffuse light"
+      }
+    },
+    "s60078": {
+      "data.prompt": {
+        "before": "Wide shot, one traveler looks back toward a tiny tent across a flat snowfield, overcast light",
+        "after": "Wide shot, one polar traveler leaves a letter pouch in the tent before facing the distant return line, overcast sky"
+      }
+    },
+    "s60079": {
+      "data.prompt": {
+        "before": "Close shot, one gloved explorer folds a second unmarked note, soft grey light",
+        "after": "Medium shot, one explorer writes a separate short blank note for a later visitor inside the tent, pale light"
+      }
+    },
+    "s60081": {
+      "data.prompt": {
+        "before": "Close shot, one gloved traveler touches a plain wooden tablet attached to a tent pole, pale light",
+        "after": "Wide shot, one traveler tightens a guy rope on the dark spare tent beneath its high small flag, muted daylight"
+      }
+    },
+    "s60082": {
+      "data.prompt": {
+        "before": "Medium shot, one explorer tightens the flap of a small canvas tent, soft cloud light",
+        "after": "Close shot, one bundled explorer signs a plain tablet attached to the spare tent's bamboo pole, soft light"
+      }
+    },
+    "s60083": {
+      "data.prompt": {
+        "before": "Wide shot, one skier turns north from a tiny flag tent toward distant route beacons, muted daylight",
+        "after": "Medium shot, one traveler laces the spare tent door shut before leaving the site, pale daylight"
+      }
+    },
+    "s60084": {
+      "data.prompt": {
+        "before": "Medium shot, one traveler checks a small snow beacon along a returning sledge route, pale light",
+        "after": "Wide shot, one explorer takes a final look at the small flagged canvas shelter before turning north, soft cloud light"
+      }
+    },
+    "s60085": {
+      "data.prompt": {
+        "before": "Close shot, one exhausted explorer reaches a low winter hut doorway, soft grey daylight",
+        "after": "Medium shot, one returning skier finds an earlier snow beacon as old tracks fade, overcast light"
+      }
+    },
+    "s60086": {
+      "data.prompt": {
+        "before": "Close shot, one explorer writes on an unmarked folded sheet inside a canvas tent, soft light",
+        "after": "Close shot, one gloved traveler reloads supplies from a marked depot into a homebound sledge, grey light"
+      }
+    },
+    "s60087": {
+      "data.prompt": {
+        "before": "Medium shot, one gloved traveler places an unmarked envelope in a small fabric bag, muted light",
+        "after": "Wide shot, one skier travels north with the low sun behind and a route beacon ahead, muted polar light"
+      }
+    },
+    "s60088": {
+      "data.prompt": {
+        "before": "Wide shot, one traveler looks back toward a tiny tent across a flat snowfield, overcast light",
+        "after": "Medium shot, one traveler follows a beacon while glancing back toward an empty southern horizon, soft light"
+      }
+    },
+    "s60089": {
+      "data.prompt": {
+        "before": "Close shot, one gloved explorer folds a second unmarked note, soft grey light",
+        "after": "Wide shot, one British skier continues south on a separate sledge route across featureless snow, grey daylight"
+      }
+    },
+    "s60090": {
+      "data.prompt": {
+        "before": "Close shot, one bundled skier opens a worn journal inside a canvas tent, soft pale light",
+        "after": "Medium shot, one British explorer walks south beside a laden sledge, with no small pole tent visible, pale light"
+      }
+    },
+    "s60091": {
+      "data.prompt": {
+        "before": "Medium shot, one explorer looks ahead across a plain white horizon, overcast daylight",
+        "after": "Close shot, one bundled British traveler writes in a plain journal inside a journey tent, soft light"
+      }
+    },
+    "s60092": {
+      "data.prompt": {
+        "before": "Wide shot, one skier approaches a tiny dark marker on a snowfield, muted winter light",
+        "after": "Wide shot, one skier squints at a tiny dark speck far ahead on the snow horizon, overcast light"
+      }
+    },
+    "s60094": {
+      "data.prompt": {
+        "before": "Medium shot, one explorer inspects dog paw prints crossing old sled tracks in snow, grey light",
+        "after": "Medium shot, one traveler studies old sled grooves crossed by numerous dog paw prints near the marker, pale light"
+      }
+    },
+    "s60095": {
+      "data.prompt": {
+        "before": "Wide shot, one traveler pauses beside a dark flag while sled tracks continue south, diffuse light",
+        "after": "Wide shot, one explorer pauses beside the black flag while returning tracks lead away, grey daylight"
+      }
+    },
+    "s60096": {
+      "data.prompt": {
+        "before": "Medium shot, one skier holds an unmarked journal near a low canvas tent, soft light",
+        "after": "Close shot, one gloved British traveler writes a short journal entry beside the found marker, soft light"
+      }
+    },
+    "s60097": {
+      "data.prompt": {
+        "before": "Wide shot, one skier follows fading sledge tracks across the white plateau, muted daylight",
+        "after": "Medium shot, one traveler leaves fading Norwegian sledge tracks to follow a compass bearing, muted daylight"
+      }
+    },
+    "s60098": {
+      "data.prompt": {
+        "before": "Medium shot, one explorer searches the horizon for a small tent through thin cloud, soft light",
+        "after": "Wide shot, one explorer scans a completely blank white horizon with no tent or marker visible, overcast sky"
+      }
+    },
+    "s60099": {
+      "data.prompt": {
+        "before": "Close shot, one gloved traveler lifts a canvas tent flap, pale daylight",
+        "after": "Wide shot, one explorer points toward a faraway tent-shaped speck just emerging on the white horizon, grey light"
+      }
+    },
+    "s60100": {
+      "data.prompt": {
+        "before": "Medium shot, one explorer studies a plain wooden tablet fixed to a tent pole, diffuse light",
+        "after": "Medium shot, one traveler examines a signed tablet fixed to the single bamboo support inside a small tent, soft light"
+      }
+    },
+    "s60101": {
+      "data.prompt": {
+        "before": "Close shot, one traveler folds an unmarked note into a journal, soft winter light",
+        "after": "Close shot, one gloved explorer tucks the found blank short note into a worn journal, pale tent light"
+      }
+    },
+    "s60102": {
+      "lines[0].text": {
+        "before": "史考特留下自己到訪的記錄，再與隊員拍照、立旗。",
+        "after": "史考特也在那頂小帳裡，留下一張自己與隊友到訪的字條。"
+      },
+      "data.prompt": {
+        "before": "Medium shot, one skier places a plain note beside a tent pole, pale light",
+        "after": "Medium shot, one British traveler leaves an unmarked visit note inside the Norwegian spare canvas shelter, diffused light"
+      }
+    },
+    "s60103": {
+      "data.prompt": {
+        "before": "Wide shot, one traveler stands beside a small lonely tent on a snowy horizon, muted light",
+        "after": "Wide shot, one expedition leader approaches the low Framheim hut with two sledges and dogs outside, grey morning light"
+      }
+    },
+    "s60104": {
+      "data.prompt": {
+        "before": "Close shot, one bundled explorer opens a worn journal inside a canvas tent, soft pale light",
+        "after": "Close shot, one traveler packs a journal before the long return from the pole camp, soft tent light"
+      }
+    },
+    "s60105": {
+      "lines[0].text": {
+        "before": "史考特的日記最後停在三月二十九日，隊伍沒有活著返回。",
+        "after": "史考特三月二十九日寫下最後一篇日記；他沒有活著返回。"
+      },
+      "data.prompt": {
+        "before": "Medium shot, one skier looks ahead across a plain white horizon, overcast daylight",
+        "after": "Medium shot of a small abandoned canvas tent partly buried by drift, with a closed journal visible inside, dim grey light"
+      }
+    },
+    "s60106": {
+      "data.prompt": {
+        "before": "Wide shot, one skier approaches a tiny dark marker on a snowfield, muted winter light",
+        "after": "Close shot, one later searcher lifts a closed journal from the abandoned canvas tent, muted light"
+      }
+    },
+    "s60107": {
+      "data.prompt": {
+        "before": "Close shot, one gloved traveler grasps a dark flag tied to a plain sled runner, pale daylight",
+        "after": "Medium shot, one later reader compares two plain expedition books at a wooden desk, soft window light"
+      }
+    },
+    "s60108": {
+      "data.prompt": {
+        "before": "Medium shot, one skier inspects dog paw prints crossing old sled tracks in snow, grey light",
+        "after": "Close shot, one viewer opens two plain source volumes beside a simple video player, gentle indoor light"
+      }
+    },
+    "s60109": {
+      "data.prompt": {
+        "before": "Wide shot, one traveler pauses beside a dark flag while sled tracks continue south, diffuse light",
+        "after": "Medium shot, one traveler leaves a second unmarked message in a cloth pouch inside a tent, pale light"
+      }
+    },
+    "s60110": {
+      "data.prompt": {
+        "before": "Medium shot, one explorer holds an unmarked journal near a low canvas tent, soft light",
+        "after": "Close shot, one viewer reaches toward a blank subscribe tile beside two miniature historical video frames, soft light"
+      }
+    }
+  },
+  "claims_row_changes": {
+    "s60001": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60003": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60004": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60005": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60006": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60007": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60008": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60010": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60011": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60012": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60013": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60014": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60015": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60016": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60017": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60018": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60019": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60020": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60021": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60022": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60023": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60024": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60025": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60026": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60027": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60028": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60029": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60030": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60031": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60032": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60033": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60034": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60035": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60036": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60037": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60038": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60039": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60040": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60041": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60042": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60044": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60045": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60046": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "五人共同扶旗的唯一群體畫面；數量與來源一致，原創插圖不冒充照片。"
+      }
+    },
+    "s60047": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60048": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60049": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60050": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60051": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60052": {
+      "spoken": {
+        "before": "當晚算出的數字，讓隊伍認為還要再確認。",
+        "after": "當晚初算約南緯八十九度五十六分，隊員們對結果很滿意。"
+      },
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60053": {
+      "spoken": {
+        "before": "於是三名隊員分別從營地往三個方向出發。",
+        "after": "三名隊員依原先安排，分別從營地往三個方向出發。"
+      },
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60054": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60055": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60056": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60057": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60058": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60059": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60060": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60061": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60062": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60063": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60064": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60066": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60067": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60068": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60069": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60070": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60071": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60072": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60073": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60074": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60075": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60076": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60077": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60078": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60079": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60081": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60082": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60083": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60084": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60085": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60086": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60087": {
+      "evidence": {
+        "before": "[P09](https://github.com/GITenberg/The-South-Pole--an-account-of-the-Norwegian-Antarctic-expedition-in-the--Fram---1910-12---Volu__4229/blob/242036c254a5ff483c59e5dc4c66a97f4486f70c/4229.txt#L13097-L13121)；待逐句獨立覆核",
+        "after": "[P09](https://github.com/GITenberg/The-South-Pole--an-account-of-the-Norwegian-Antarctic-expedition-in-the--Fram---1910-12---Volu__4229/blob/242036c254a5ff483c59e5dc4c66a97f4486f70c/4229.txt#L13184-L13189)、[P09 日光方向](https://github.com/GITenberg/The-South-Pole--an-account-of-the-Norwegian-Antarctic-expedition-in-the--Fram---1910-12---Volu__4229/blob/242036c254a5ff483c59e5dc4c66a97f4486f70c/4229.txt#L13097-L13118)；待逐句獨立覆核"
+      },
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60088": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60089": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60090": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60091": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60092": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60094": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60095": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60096": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60097": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60098": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60099": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60100": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60101": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60102": {
+      "spoken": {
+        "before": "史考特留下自己到訪的記錄，再與隊員拍照、立旗。",
+        "after": "史考特也在那頂小帳裡，留下一張自己與隊友到訪的字條。"
+      },
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60103": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60104": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60105": {
+      "spoken": {
+        "before": "史考特的日記最後停在三月二十九日，隊伍沒有活著返回。",
+        "after": "史考特三月二十九日寫下最後一篇日記；他沒有活著返回。"
+      },
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "無人物的雪埋帳篷與合上日記，避免把已逝者畫成活著返程。"
+      }
+    },
+    "s60106": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60107": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60108": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60109": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    },
+    "s60110": {
+      "visual_boundary": {
+        "before": "一人一動作原創示意，非史實照片或精密儀器重建。",
+        "after": "原創卡通示意，與旁白同一時序；非史實照片或精密儀器重建。"
+      }
+    }
+  },
+  "research_unified_diff": "--- 806f4493d/research.md\n+++ R2/research.md\n@@ -23,5 +23,5 @@\n | P07 | 12 月 16 日進抵第二營，分班連續一日觀測太陽高度；17 日中午完成，漢森及布亞蘭德另向預估南方走約四地理英里。 | [A12991–13061](https://github.com/GITenberg/The-South-Pole--an-account-of-the-Norwegian-Antarctic-expedition-in-the--Fram---1910-12---Volu__4229/blob/242036c254a5ff483c59e5dc4c66a97f4486f70c/4229.txt#L12991-L13061)。附錄只給測量誤差範圍，不能說兩人確實踏過幾何點。 |\n | P08 | 阿蒙森架另一頂小帳、掛國旗，把成就說明信封給哈康七世，因返程還長，怕自己無法帶回報告；另寫短箋給他預期會先找到帳篷的史考特。 | [A13062–13091](https://github.com/GITenberg/The-South-Pole--an-account-of-the-Norwegian-Antarctic-expedition-in-the--Fram---1910-12---Volu__4229/blob/242036c254a5ff483c59e5dc4c66a97f4486f70c/4229.txt#L13062-L13091)。兩封信不同收件人；**原文未錄兩封信全文**，不編逐字內容。 |\n-| P09 | 返程靠雪標、路痕及倉庫；阿蒙森 1912-01-25 回到弗拉姆之家，五人、兩橇與十一犬平安抵達。 | [A13097–13121](https://github.com/GITenberg/The-South-Pole--an-account-of-the-Norwegian-Antarctic-expedition-in-the--Fram---1910-12---Volu__4229/blob/242036c254a5ff483c59e5dc4c66a97f4486f70c/4229.txt#L13097-L13121)、[A13983–14006](https://github.com/GITenberg/The-South-Pole--an-account-of-the-Norwegian-Antarctic-expedition-in-the--Fram---1910-12---Volu__4229/blob/242036c254a5ff483c59e5dc4c66a97f4486f70c/4229.txt#L13983-L14006)。不說全程無犬死亡。 |\n+| P09 | 返程把太陽留在身後以減少眩光，實際約 20 時出發；靠雪標、路痕及倉庫辨路；阿蒙森 1912-01-25 回到弗拉姆之家，五人、兩橇與十一犬平安抵達。 | [A13097–13121](https://github.com/GITenberg/The-South-Pole--an-account-of-the-Norwegian-Antarctic-expedition-in-the--Fram---1910-12---Volu__4229/blob/242036c254a5ff483c59e5dc4c66a97f4486f70c/4229.txt#L13097-L13121)、[A13184–13189](https://github.com/GITenberg/The-South-Pole--an-account-of-the-Norwegian-Antarctic-expedition-in-the--Fram---1910-12---Volu__4229/blob/242036c254a5ff483c59e5dc4c66a97f4486f70c/4229.txt#L13184-L13189)、[A13983–14006](https://github.com/GITenberg/The-South-Pole--an-account-of-the-Norwegian-Antarctic-expedition-in-the--Fram---1910-12---Volu__4229/blob/242036c254a5ff483c59e5dc4c66a97f4486f70c/4229.txt#L13983-L14006)。不說全程無犬死亡。 |\n | P10 | 史考特 1 月 15 日日記怕先見挪威旗；16 日真的見黑旗、營址、雪橇與狗腳印，寫挪威人已先到。 | [S15947–15978](https://github.com/GITenberg/Scott-s-Last-Expedition-Volume-I--13-Being-the-journals-of-Captain-R.-F.-Scott_11579/blob/06ff155e7ebf76842906286ae8aa85487ac6a87d/11579.txt#L15947-L15978)。16 日是黑旗，18 日才是帳篷；不挪成同一天。 |\n | P11 | 史考特 1 月 17 日到自己計算的南極點附近，18 日找到阿蒙森帳篷、五人名單與託轉寄國王之信；他說自己保管那張短箋，又留下自己的到訪記錄。 | [S15981–16052](https://github.com/GITenberg/Scott-s-Last-Expedition-Volume-I--13-Being-the-journals-of-Captain-R.-F.-Scott_11579/blob/06ff155e7ebf76842906286ae8aa85487ac6a87d/11579.txt#L15981-L16052)。史考特的「I keep」只證當時收下，**不能單憑此說信最終交到國王手裡**。 |\n",
+  "script_unified_diff": "--- 806f4493d/script.md\n+++ R2/script.md\n@@ -217,9 +217,9 @@\n #### 52. s60052\n \n-旁白（自然說書；只說當事人文本能支持的事，不替人物演逐字對白）：當晚算出的數字，讓隊伍認為還要再確認。\n+旁白（自然說書；只說當事人文本能支持的事，不替人物演逐字對白）：當晚初算約南緯八十九度五十六分，隊員們對結果很滿意。\n \n #### 53. s60053\n \n-旁白（自然說書；只說當事人文本能支持的事，不替人物演逐字對白）：於是三名隊員分別從營地往三個方向出發。\n+旁白（自然說書；只說當事人文本能支持的事，不替人物演逐字對白）：三名隊員依原先安排，分別從營地往三個方向出發。\n \n #### 54. s60054\n@@ -423,5 +423,5 @@\n #### 102. s60102\n \n-旁白（自然說書；只說當事人文本能支持的事，不替人物演逐字對白）：史考特留下自己到訪的記錄，再與隊員拍照、立旗。\n+旁白（自然說書；只說當事人文本能支持的事，不替人物演逐字對白）：史考特也在那頂小帳裡，留下一張自己與隊友到訪的字條。\n \n #### 103. s60103\n@@ -435,5 +435,5 @@\n #### 105. s60105\n \n-旁白（自然說書；只說當事人文本能支持的事，不替人物演逐字對白）：史考特的日記最後停在三月二十九日，隊伍沒有活著返回。\n+旁白（自然說書；只說當事人文本能支持的事，不替人物演逐字對白）：史考特三月二十九日寫下最後一篇日記；他沒有活著返回。\n \n #### 106. s60106\n@@ -457,4 +457,4 @@\n 旁白（自然說書；只說當事人文本能支持的事，不替人物演逐字對白）：喜歡有出處的歷史謎題，訂閱奇聞檔案局。\n \n-narrative a36f65670bc8c191\n-speech 9f7b28db45cc94b4\n+narrative 3d2d798dab2ccbf4\n+speech 24475091fc0e507a\n",
+  "unchanged_video_top_level_fields": [
+    "schema_version",
+    "format",
+    "category",
+    "narration_locale",
+    "target_minutes",
+    "voice",
+    "subtitles",
+    "look",
+    "characters",
+    "music",
+    "slug",
+    "sources",
+    "assets",
+    "loops",
+    "thumbnail",
+    "youtube"
+  ],
+  "counts": {
+    "changed_video_scenes": 104,
+    "changed_video_fields": {
+      "data.prompt": 104,
+      "lines[0].text": 4
+    },
+    "changed_claim_rows": 104,
+    "changed_claim_fields": {
+      "visual_boundary": 104,
+      "spoken": 4,
+      "evidence": 1
+    }
+  }
+}

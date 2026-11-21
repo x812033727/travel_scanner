@@ -1,0 +1,40 @@
+{
+  "review": "curio-s60-r2-isolated-blind-a",
+  "role": "first-time narrative reader",
+  "question_source_command": "node tools/video/cli.mjs narrative --slug curio-s60 --json",
+  "input_sha256": {
+    "docs/videos/curio-s60/brief.md": "357f2c2706bd1fca6c77e9ccad45771a745ddadc91ba41da4d73f656ab2c5acc",
+    "docs/videos/curio-s60/script.md": "1ac4ee6548edae5a61f507c4e99edd75f5a81668d9acfa418b0ec22de8ea8b91",
+    "docs/videos/curio-s60/video.json": "bf8d95565857f0a8b976ef6f2d89e730fd88fabcab44201e75a05bd67dabba9c"
+  },
+  "ballot_file": "docs/videos/curio-s60/review/r2-isolated-blind-a.md",
+  "ballot_sha256": "74c896ca774bfd29b5f843a171575480a8034203e8647bf475bdb8e2846e3009",
+  "answers_file": "docs/videos/curio-s60/review/r2-isolated-blind-a.answers.json",
+  "answers_sha256": "d42f76b26e615d28ec2db936cf8176bc37ea32f7e8abe1715e4c918203d6bd9e",
+  "official_command": "node tools/video/cli.mjs narrative --slug curio-s60 --answers /workspace/travel_scanner/docs/videos/curio-s60/review/r2-isolated-blind-a.answers.json --workdir /tmp/s60-r2-blind-a-official --json",
+  "official_exit_code": 1,
+  "official_stdout_file": "docs/videos/curio-s60/review/r2-isolated-blind-a.cli-stdout.json",
+  "official_stdout_sha256": "dfdd81910fab2e265b3f0efb0ff07ea4145dfcc9e532ab85db943eca5c11cbce",
+  "official_stderr_file": "docs/videos/curio-s60/review/r2-isolated-blind-a.cli-stderr.txt",
+  "official_stderr_bytes": 0,
+  "official_narrative_file": "docs/videos/curio-s60/review/r2-isolated-blind-a.official-narrative.json",
+  "official_narrative_sha256": "4a327580365ea72eb48ec0a12a9c63d9a9691085a0455545ef0a4ee578011ddc",
+  "official_failed_ids": ["no_spoiler", "chapters_link", "payoffs", "no_recap"],
+  "votes": {
+    "scene_first": true,
+    "no_spoiler": false,
+    "one_line": true,
+    "no_toc": true,
+    "chapters_link": false,
+    "open_loops": true,
+    "payoffs": false,
+    "no_recap": false,
+    "chapters_are_events": true,
+    "outro_no_next": true,
+    "opening_hooks": true,
+    "one_thread": true,
+    "no_detour": true
+  },
+  "yes_count": 9,
+  "no_count": 4
+}

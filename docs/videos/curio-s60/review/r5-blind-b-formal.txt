@@ -1,0 +1,18 @@
+S60 R5 blind reader B formal binding
+
+Sealed read version: /tmp/s60-r5-before-script-regeneration.md
+Sealed read file SHA-256: 9451741cbe25505cea127c0c4c6ec7b3fa3a65185af15e7aa7bbfb40ca11fb8c
+Current regenerated script.md file SHA-256: 47d0dacbfbdb09a72007feba838eaa3ecdaa87248258932ecc3c9dbf4f5ca75a
+Root producer reports that regeneration changed only two non-spoken footer hash lines; all 109 spoken lines are unchanged. I did not reread the episode or alter the 13 sealed judgments.
+
+Answers: /tmp/s60-r5-blind-b.answers.json
+Official CLI: node tools/video/cli.mjs narrative --slug curio-s60 --answers /tmp/s60-r5-blind-b.answers.json --workdir /tmp/s60-r5-blind-b-official --json
+Official exit: 0 (saved in /tmp/s60-r5-blind-b-official.exit)
+Official stdout: /tmp/s60-r5-blind-b-official.stdout.json
+Official stderr: /tmp/s60-r5-blind-b-official.stderr.log
+Official narrative: /tmp/s60-r5-blind-b-official/curio-s60/review/narrative.json
+Formal result: passed true, 13/13 yes, failed [], advisory [], round 2
+Official script_hash: 52ffdcb787a923a44ce258a33a16c9fb880d58a7a50251498b51eea8211ade83
+Official panel_narration_sha256: 05954562cee2f3b867c7ffbfbed227ef608c9ee4f2440e8c39d0a05b7f84810e
+
+Initial importer attempt used backtick IDs, which do not meet the generic panel's [line id] citation syntax. Its exact stdout/exit and original answer JSON are preserved at /tmp/s60-r5-blind-b-official.attempt1.* and /tmp/s60-r5-blind-b.answers.attempt1.json. The retry changed evidence serialization only; yes/no judgments are the sealed original ones.

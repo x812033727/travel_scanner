@@ -1,0 +1,1868 @@
+{
+  "schema_version": 1,
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    15
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，像跟朋友講有出處的歷史故事；節奏自然，不替人物演逐字對白。",
+    "performance": "阿蒙森的 1912 出版回憶與史考特的 1913 編訂日記分開；12/14 升旗、12/17 留信、1/16 黑旗、1/18 帳篷不得混日。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "slug": "curio-s60",
+  "sources": [
+    {
+      "title": "Roald Amundsen, The South Pole, 1912 English translation, fixed full text",
+      "url": "https://github.com/GITenberg/The-South-Pole--an-account-of-the-Norwegian-Antarctic-expedition-in-the--Fram---1910-12---Volu__4229/blob/242036c254a5ff483c59e5dc4c66a97f4486f70c/4229.txt",
+      "checked_on": "2026-10-22"
+    },
+    {
+      "title": "Robert F. Scott, Scott's Last Expedition vol. I, 1913 edited journal, fixed full text",
+      "url": "https://github.com/GITenberg/Scott-s-Last-Expedition-Volume-I--13-Being-the-journals-of-Captain-R.-F.-Scott_11579/blob/06ff155e7ebf76842906286ae8aa85487ac6a87d/11579.txt",
+      "checked_on": "2026-10-22"
+    }
+  ],
+  "assets": [],
+  "loops": [
+    {
+      "setup": "s60005",
+      "payoff": "s60093",
+      "what": "黑旗的意思"
+    },
+    {
+      "setup": "s60004",
+      "payoff": "s60076",
+      "what": "為何留下國王信"
+    },
+    {
+      "setup": "s60007",
+      "payoff": "s60065",
+      "what": "如何證明位置"
+    },
+    {
+      "setup": "s60008",
+      "payoff": "s60106",
+      "what": "信件證據終點"
+    },
+    {
+      "setup": "s60017",
+      "payoff": "s60022",
+      "what": "裂縫中怎樣救橇"
+    },
+    {
+      "setup": "s60025",
+      "payoff": "s60029",
+      "what": "山區返程標記"
+    },
+    {
+      "setup": "s60042",
+      "payoff": "s60047",
+      "what": "里程與幾何點"
+    },
+    {
+      "setup": "s60060",
+      "payoff": "s60061",
+      "what": "新路由誰領直"
+    },
+    {
+      "setup": "s60075",
+      "payoff": "s60076",
+      "what": "留國王信的原因"
+    },
+    {
+      "setup": "s60088",
+      "payoff": "s60100",
+      "what": "史考特找到帳篷"
+    },
+    {
+      "setup": "s60098",
+      "payoff": "s60100",
+      "what": "史考特何時見帳篷"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s60001",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60001",
+          "text": "一九一二年一月十八日，史考特的隊伍在雪原上，遠遠看見一個像雪堆的形狀。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one bundled adult traveler fully centered points toward a tiny indistinct snow mound far away, clear austral summer daylight.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "chapter": "史考特走向雪地裡的小帳"
+    },
+    {
+      "id": "s60002",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s60002",
+          "text": "他們走近，那個形狀慢慢顯出一頂小帳的輪廓。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "雪地小帳",
+        "sub": "史考特・1912-01-18"
+      }
+    },
+    {
+      "id": "s60003",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s60003",
+          "text": "帳門還沒掀開，裡面究竟留下了什麼？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "「帳門牢牢繫合」",
+        "sub": "阿蒙森《南極》・離開小帳時"
+      }
+    },
+    {
+      "id": "s60004",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60004",
+          "text": "先到的阿蒙森，為什麼把給國王的信留在這裡？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close view of two gloved adult hands holding a small blank folded letter. A simple canvas tent stands behind the hands on the flat white Antarctic snowplain, under clear austral summer daylight.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60005",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60005",
+          "text": "兩天前，史考特已在雪上看見一面黑旗；它告訴他什麼？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one adult skier examines a jet-black cloth flag lashed to an upright wooden sledge runner in the snow, clear austral summer daylight.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60006",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60006",
+          "text": "阿蒙森升起國旗時，腳下真是精確的南極點嗎？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one adult observer holds an open curved brass sextant frame beside a planted red Norwegian flag, its blue Nordic cross edged in white, clear austral summer daylight.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60007",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s60007",
+          "text": "他後來做了什麼，才敢留下那頂帳篷和那封信？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "90°S",
+        "sub": "位置如何確認？"
+      }
+    },
+    {
+      "id": "s60008",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s60008",
+          "text": "而這封託付，最後能證明送到了誰的手上？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "帳內的小袋",
+        "sub": "給挪威國王的信"
+      }
+    },
+    {
+      "id": "s60009",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s60009",
+          "text": "還記得那頂小帳嗎？阿蒙森這趟南行，是在前一年十月十九日，從弗拉姆之家出發。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "1911-10-19",
+        "sub": "五人・四橇"
+      },
+      "chapter": "十月出發，回程線索也跟著出發"
+    },
+    {
+      "id": "s60010",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60010",
+          "text": "隊伍只有五個人，卻帶著四架雪橇；每架起初由十三隻狗拉。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot beside the low plank wall of Framheim on Antarctica’s Ross Ice Shelf, one adult dog driver checks the harness traces beside a loaded wooden sledge; the hut wall and flat white snow fill the background, soft daylight.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60011",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60011",
+          "text": "雪橇此時較輕，因為南緯八十度的補給已先存好。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on Antarctica’s white Ross Ice Shelf during the outward journey: one gloved adult secures a light supply case beside a depot snow mound and a plain marker pole, diffuse Antarctic spring daylight.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60012",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60012",
+          "text": "這趟路不是只要走到終點，還得靠標記找到回家的路。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on Antarctica’s white Ross Ice Shelf during the outward journey: one adult skier plants a small route flag, earlier snow beacons receding across the white surface, diffuse Antarctic spring daylight.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60013",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60013",
+          "text": "沿途早先插的旗，能在天氣變差時指出已走過的方向。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on Antarctica’s white Ross Ice Shelf during the outward journey: one bundled adult follows an existing line of small route flags through windblown powder, diffuse Antarctic spring daylight.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60014",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60014",
+          "text": "可是出發當天，雪橇旁邊的雪面突然開成深裂縫；這條路還能走嗎？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on Antarctica’s white Ross Ice Shelf during the outward journey: one adult driver holds a wooden sledge still beside a freshly broken snow edge and a deep blue-white ice gap, diffuse Antarctic spring daylight.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60015",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60015",
+          "text": "他們只差一小段距離，就可能連人帶雪橇一起掉下去。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on Antarctica’s white Ross Ice Shelf during the outward journey: one bundled adult braces beside a wooden sledge runner very near a deep ice crack, diffuse Antarctic spring daylight.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60016",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60016",
+          "text": "隊伍改往較西側的安全路面，繼續追下一面旗。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot over smooth white snow on the Ross Ice Shelf: one adult driver guides a wooden sledge along firm tracks toward a small route flag. The sledge, level snow and flag fill the view beneath a thin strip of clear spring sky.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60017",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60017",
+          "text": "如果整片白雪都長得一樣，一面旗真能保證安全嗎？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on Antarctica’s white Ross Ice Shelf during the outward journey: one bundled adult examines a route flag standing beside a narrow crevasse in the snow, diffuse Antarctic spring daylight.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60018",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60018",
+          "text": "幾天後，另一架雪橇突然翻落裂縫邊緣。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on Antarctica’s white Ross Ice Shelf during the outward journey: one adult driver reaches for a taut trace as a wooden sledge tilts over the edge of a snow-covered crevasse, diffuse Antarctic spring daylight.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60019",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60019",
+          "text": "布亞蘭德抓住牽繩，狗把腳爪深深抵在雪裡。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on Antarctica’s white Ross Ice Shelf during the outward journey: one bundled adult grips a taut sledge trace while harnessed dogs dig their paws into the snow, diffuse Antarctic spring daylight.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60020",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60020",
+          "text": "雪橇仍往下滑，他說自己快撐不住了。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on Antarctica’s white Ross Ice Shelf during the outward journey: one gloved adult leans backward on a taut trace as a laden wooden sledge hangs inside a deep ice gap, diffuse Antarctic spring daylight.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60021",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60021",
+          "text": "另外兩名隊員趕回來，用山地繩把牽繩固定住。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on Antarctica’s white Ross Ice Shelf during the outward journey: one adult rescuer fastens a thick climbing rope to a taut sledge trace beside a crevasse, diffuse Antarctic spring daylight.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60022",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60022",
+          "text": "他們先拉回狗，再用另一架橇橫擔裂縫，吊起貨物。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on Antarctica’s white Ross Ice Shelf during the outward journey: one adult pulls a harnessed dog onto firm snow beside a spare wooden sledge spanning the narrow ice gap, diffuse Antarctic spring daylight.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60023",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60023",
+          "text": "維斯汀甚至繫繩下去，把快鬆開的箱子重新綁住。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on Antarctica’s white Ross Ice Shelf during the outward journey: one adult secured by a thick rope reaches toward a loose supply case on a sledge suspended inside the ice gap, diffuse Antarctic spring daylight.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60024",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60024",
+          "text": "所有人和橇都回到雪面，但路上還有更長的空白。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on Antarctica’s white Ross Ice Shelf during the outward journey: one bundled adult steadies recovered supply cases on a wooden sledge standing on firm snow beside the crevasse, diffuse Antarctic spring daylight.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60025",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60025",
+          "text": "過了預存物資的路段，返程要靠什麼辨認山上的路？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on an Antarctic mountain glacier between snow-covered rocky ridges: one adult skier looks toward a line of snow beacons ascending the glacier ahead, soft Antarctic spring daylight.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60026",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60026",
+          "text": "十一月十七日，五人開始往山上爬。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on an Antarctic mountain glacier between snow-covered rocky ridges: one bundled adult skier starts up the snowy incline beside a harnessed dog sledge, soft Antarctic spring daylight.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "chapter": "雪標穿過山，太陽卻躲進風雪"
+    },
+    {
+      "id": "s60027",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60027",
+          "text": "阿蒙森在補給點留紙條，記下打算穿山的路線。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on an Antarctic mountain glacier between snow-covered rocky ridges: one gloved adult places a folded blank route note among supply cases at a snow depot below the ridge, soft Antarctic spring daylight.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60028",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60028",
+          "text": "這片老冰川上有寬大的裂縫，隊員沿著能走的路堆起雪標。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on an Antarctic mountain glacier between snow-covered rocky ridges: one gloved adult stacks compact snow blocks into a beacon beside an old rounded crevasse partly filled with snow, soft Antarctic spring daylight.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60029",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60029",
+          "text": "那些雪標不是裝飾，返程能用它們繞開裂縫。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on an Antarctic mountain glacier between snow-covered rocky ridges: one adult skier sights along two snow beacons marking a clear passage between rounded ice cracks, soft Antarctic spring daylight.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60030",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60030",
+          "text": "犬隊帶著雪橇爬坡，有些陡坡得兩隊狗合力拖一架。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on an Antarctic mountain glacier between snow-covered rocky ridges: one adult driver guides two harnessed dog teams drawing a single loaded wooden sledge up a steep snowy slope, soft Antarctic spring daylight.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60031",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60031",
+          "text": "到了高原，前方連山形也不見了；他們還能朝哪裡走？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one bundled adult skier searches the level white horizon while holding a plain ski pole, clear austral summer daylight.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60032",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60032",
+          "text": "十二月初的雪脊又硬又高，滑雪的人常踩空跌倒。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one bundled adult skier stumbles against a high hard ridge of wind-carved snow, diffuse austral summer daylight.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60033",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60033",
+          "text": "風雪把天空和地面揉成一片，前方幾乎看不見。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one bundled adult shields their eyes while blowing white powder merges the snow surface with a clouded sky, diffuse austral summer daylight.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60034",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60034",
+          "text": "漢森讓自己的狗走在前頭，一手扶著雪橇，一面看指南針。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one adult dog driver steadies a wooden sledge while looking at a small handheld compass, windblown powder in diffuse austral summer daylight.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60035",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60035",
+          "text": "雪橇一撞過雪脊，針就亂晃，仍得等它穩住再校方向。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one gloved adult holds a compass above a wooden sledge beside hard snow ridges, waiting for its needle to settle, windblown powder in diffuse austral summer daylight.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60036",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60036",
+          "text": "之後的觀測與他們推算的里程大致接近。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one bundled adult compares a plain notebook with a brass arc-frame sextant and an unlettered sledge-meter case, clear austral summer daylight.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60037",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60037",
+          "text": "指南針只能給方向；看不到南極點，要拿什麼判定抵達？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one adult traveler checks a small compass while looking across the featureless snow ahead, clear austral summer daylight.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60038",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60038",
+          "text": "越往南，太陽在天空移動的高度差越小。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one bundled adult lifts a handheld brass arc-frame sextant toward the low summer sun, clear austral summer daylight.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60039",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60039",
+          "text": "長時間看不見太陽，緯度就只能先靠里程推估。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one gloved adult reads a plain sledge-meter case beneath a thick cloud layer, diffuse austral summer daylight.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60040",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60040",
+          "text": "他們要抵達的不是一座山頭，而是一個肉眼看不出的點。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one fully visible adult skier pauses on a vast level field of untouched white snow, clear austral summer daylight.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60041",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60041",
+          "text": "到了十二月十四日，雪橇上的里程表顯示目標到了。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one gloved adult driver stops beside a wooden sledge and inspects its small distance-meter case, clear austral summer daylight.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60042",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60042",
+          "text": "那個數字，能證明雪靴正踩在九十度嗎？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one adult traveler’s snow boots stand beside a plain sledge-meter case, with smooth white snow filling the view, clear austral summer daylight.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60043",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s60043",
+          "text": "就在那天下午三點，駕著雪橇的人同時喊停。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "1911-12-14",
+        "sub": "首次升旗"
+      },
+      "chapter": "十四日插旗，五個人還沒有停筆"
+    },
+    {
+      "id": "s60044",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60044",
+          "text": "他們檢查各自的里程，認為已抵達估算的南極點。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot beside a wooden sledge on flat white Antarctic snow in summer daylight: one gloved adult inspects an open wooden instrument case containing visible brass gears, a mechanical wheel and a plain round dial with an unmarked face.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60045",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60045",
+          "text": "阿蒙森沒有把那一刻寫成自己一人的勝利。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one bundled adult leader gestures toward four adult companions gathered beside a shared flagpole, clear austral summer daylight.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60046",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60046",
+          "text": "五個人一起扶起挪威旗；但他們怎麼知道旗沒插偏？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: five bundled adults hold one flagpole together, raising a red Norwegian flag with a blue Nordic cross edged in white, clear austral summer daylight.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60047",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60047",
+          "text": "可是他隨即承認，這些工具無法證明站在精確的點上。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one bundled adult studies the open curved brass frame of a handheld sextant near the planted expedition flag, clear austral summer daylight.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60048",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60048",
+          "text": "南極點沒有石碑；走錯幾公里，周圍依然是一模一樣的白。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one adult skier scans the same level white snow stretching in every direction, clear austral summer daylight.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60049",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60049",
+          "text": "他們原想在營地外多走幾條線，把目標圍在裡面。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one adult leader gestures toward three skiers preparing to leave the small camp along different bearings, clear austral summer daylight.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60050",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60050",
+          "text": "第一夜，他們等到午夜，舉起六分儀去量太陽。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one bundled adult measures the visible low midnight sun with an open brass arc-frame sextant, clear austral summer daylight.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60051",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60051",
+          "text": "第一次午夜觀測，就能確定營地的位置嗎？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one gloved adult checks a brass sextant beside a notebook of plain pencil marks and a packed wooden sledge, clear austral summer daylight.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60052",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60052",
+          "text": "當晚初算約南緯八十九度五十六分，隊員們對結果很滿意。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a small Antarctic canvas tent standing on white polar ice: one bundled adult puts a pencil to a blank calculation page beside a handheld brass arc-frame sextant, summer daylight filtering through canvas.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60053",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60053",
+          "text": "三名隊員依原先安排，分別從營地往三個方向出發。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: three bundled adult skiers leave a small canvas camp along three different outward directions, clear austral summer daylight.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60054",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60054",
+          "text": "每人帶上一面深色標旗和寫有營地位置的小紙片。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one adult skier carries a dark cloth marker flag and a small visible folded blank paper slip, clear austral summer daylight.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60055",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60055",
+          "text": "沒有能隨身帶的指南針，三人走遠後還能找回小帳嗎？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one fully visible adult skier follows a long ski trail away from a tiny distant camp beneath the low sun, clear austral summer daylight.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60056",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60056",
+          "text": "阿蒙森與漢森留在營地，繼續每隔一段時間量太陽。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one bundled adult measures the low sun with a brass arc-frame sextant while another adult waits beside the small tent, clear austral summer daylight.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60057",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60057",
+          "text": "第一個黑點回來了，接著另外兩人也回到帳篷旁。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one adult at the canvas camp watches a single tiny dark traveler reappear far across the white snow, clear austral summer daylight.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60058",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60058",
+          "text": "這些外走路線替他們圈住一片區域，卻仍想靠得更近。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one bundled adult looks toward dark marker flags set on different bearings beyond the camp, clear austral summer daylight.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60059",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60059",
+          "text": "量測後，隊伍決定再朝推定的南方走大約十公里。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one adult leader points a wooden sledge toward the open white route ahead, clear austral summer daylight.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60060",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60060",
+          "text": "這條新路，誰能把隊伍帶得夠直？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one bundled adult considers the straight white route ahead while standing beside a packed sledge, clear austral summer daylight.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60061",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60061",
+          "text": "十二月十六日，布亞蘭德走在隊伍最前頭帶路。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one adult skier leads in the foreground as dog sledges follow along the same straight snow trail, clear austral summer daylight.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "chapter": "再走一段，連續觀測一整天"
+    },
+    {
+      "id": "s60062",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60062",
+          "text": "阿蒙森跟在後方，檢查隊伍有沒有偏離預定方向。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one trailing adult checks the leading skier’s straight trail against a distant upright wooden sledge, clear austral summer daylight.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60063",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60063",
+          "text": "上午到達新的位置後，他們搭起帳篷，也用雪堆出觀測平台。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one gloved adult packs snow into a solid low observation pedestal beside a canvas tent, clear austral summer daylight.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60064",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60064",
+          "text": "一組量太陽，另一組睡覺；兩組每六小時交換。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one bundled adult uses an open brass arc-frame sextant beside a tent where resting companions lie in sleeping bags, clear austral summer daylight.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60065",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s60065",
+          "text": "六分儀幾乎每小時都舉起；二十四小時的讀數能定出位置嗎？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "1911-12-16～17",
+        "sub": "連續觀測"
+      }
+    },
+    {
+      "id": "s60066",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60066",
+          "text": "薄雲一掠過，太陽明明還看得見，高度卻像停住後突然一跳。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one adult aims an open brass arc-frame sextant at the sun visible through a thin pale veil of cloud, clear austral summer daylight.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60067",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60067",
+          "text": "只有把一串讀數放在一起，才看得出細小變化。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a small Antarctic canvas tent standing on white polar ice: one gloved adult compares short unlettered pencil marks in a notebook beside a brass arc-frame sextant, summer daylight filtering through canvas.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60068",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60068",
+          "text": "結果顯示他們很接近，但還不能宣稱腳下正是幾何點。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one bundled adult lowers a brass arc-frame sextant and studies a plain calculation page, clear austral summer daylight.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60069",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60069",
+          "text": "十七日中午，這輪測量完成。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one gloved adult records the last observation beside an open brass arc-frame sextant and a low canvas tent, clear austral summer daylight.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60070",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60070",
+          "text": "漢森和布亞蘭德又朝推定的南方走去；他們還得留下什麼？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: two bundled adult skiers walk together away from the observation tent along a straight white bearing, clear austral summer daylight.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60071",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60071",
+          "text": "阿蒙森帶來一頂小帳，原本備作隊伍分開時使用。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one adult explorer lifts a folded spare canvas tent from a packed wooden sledge, clear austral summer daylight.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60072",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60072",
+          "text": "這次他把小帳另外架起，帳頂綁一面挪威小旗。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one gloved adult lashes a red Norwegian flag with a blue Nordic cross edged in white high above a separate small canvas tent, clear austral summer daylight.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60073",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60073",
+          "text": "帳內留著六分儀與防寒用品，還有一只小袋子。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a small Antarctic canvas tent standing on white polar ice: one gloved adult sets an open brass arc-frame sextant beside winter foot bags and a small cloth pouch, summer daylight filtering through canvas.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60074",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60074",
+          "text": "最特別的，是一封寫給哈康七世的信。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot inside a small Antarctic canvas tent standing on white polar ice: one adult explorer folds a clearly visible blank letter beside an open cloth pouch, summer daylight filtering through canvas.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60075",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60075",
+          "text": "既然阿蒙森自己已經抵達，為什麼不把它帶回國？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one bundled adult holds a blank letter beside a travel pack and the small canvas tent, clear austral summer daylight.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60076",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60076",
+          "text": "阿蒙森後來在書裡解釋：返程還長，自己可能沒法親自報告。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one bundled adult looks from the small canvas tent toward the long empty return route, clear austral summer daylight.",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "chapter": "留給國王的信，託給尚未到來的人"
+    },
+    {
+      "id": "s60077",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60077",
+          "text": "他把完成遠征的消息寫進信裡，再把信放進小帳篷裡的袋子。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a small Antarctic canvas tent standing on white polar ice: one gloved adult slides a clearly visible blank envelope into an open cloth pouch beside the tent pole, summer daylight filtering through canvas.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60078",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60078",
+          "text": "一封信要離開這片雪原，先得有人發現那頂小帳。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot inside a small Antarctic canvas tent standing on white polar ice: one adult leaves a cloth pouch containing the visible edge of a blank envelope beside the tent pole, summer daylight filtering through canvas.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60079",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60079",
+          "text": "他另外寫一張短箋給史考特，猜對方會先找到帳篷。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot inside a small Antarctic canvas tent standing on white polar ice: one bundled adult puts a pencil to a separate small blank note beside a larger folded blank letter, summer daylight filtering through canvas.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60080",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s60080",
+          "text": "國王是報告的收件人；給史考特的短箋，才是託付的說明。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "給國王／給史考特",
+        "sub": "兩封不同收件人的信"
+      }
+    },
+    {
+      "id": "s60081",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60081",
+          "text": "小帳布顏色較深，在白地上容易看見；旗子也綁得很高。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one adult tightens a guy rope on a dark canvas tent beneath its high red Norwegian flag with a blue white-edged cross, clear austral summer daylight.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60082",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60082",
+          "text": "隊員輪流在帳篷支柱的牌子簽名；誰會讀到這些名字？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a small Antarctic canvas tent standing on white polar ice: one gloved adult touches a pencil to a small blank tablet attached to the tent’s bamboo support pole, summer daylight filtering through canvas.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60083",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60083",
+          "text": "門簾綁好後，五人卸下行進帳篷，轉身沿來路回去。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one bundled adult ties the small canvas tent’s door flap fully closed, its cords visibly fastened, clear austral summer daylight.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60084",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60084",
+          "text": "這封信不是預告自己會失敗，而是替尚未走完的路留後手。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one departing adult looks back toward the dark canvas tent and its high Norwegian flag, clear austral summer daylight.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60085",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60085",
+          "text": "回程的痕跡漸漸模糊，先前插的雪標反而更好認。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one returning adult skier reaches an earlier snow beacon beside faint old sledge tracks, clear austral summer daylight.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60086",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60086",
+          "text": "他們用雪標、補給點和已走過的路，一站一站往北。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on Antarctica’s white Ross Ice Shelf on the return journey: one gloved adult moves a supply case from a snow depot onto a homebound wooden sledge, diffuse Antarctic summer daylight.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60087",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60087",
+          "text": "返程改在較暗的時段滑行，太陽落在身後，眼睛比較舒服。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one adult skier follows a route beacon with the low summer sun above the horizon behind their back, low austral summer sunlight.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60088",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60088",
+          "text": "阿蒙森沿路看見舊雪標，小帳何時會有人開門？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one returning adult follows an old snow beacon and glances back along the empty southern horizon, clear austral summer daylight.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60089",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60089",
+          "text": "雪上的另一隊，正朝那頂小帳走去。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one bundled British adult skier travels south beside a laden sledge across the level snowfield, clear austral summer daylight.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60090",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60090",
+          "text": "一月十五日，史考特仍在向南走，尚未見過那頂小帳。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one bundled British adult walks south beside a laden wooden sledge on an empty white trail, clear austral summer daylight.",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "chapter": "黑旗先出現，史考特後來才找到帳篷"
+    },
+    {
+      "id": "s60091",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60091",
+          "text": "他寫下最擔心的畫面：先看見挪威國旗。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a small Antarctic canvas tent standing on white polar ice: one bundled British adult writes short unlettered pencil marks in a plain travel journal, summer daylight filtering through canvas.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60092",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60092",
+          "text": "隔天下午，隊員先看見地平線上一個黑點。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one fully centered adult skier points toward a single tiny dark speck far ahead on the level horizon, clear austral summer daylight.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60093",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s60093",
+          "text": "走近後，那是綁在雪橇木條上的黑旗；旁邊還有什麼？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "text": "1912-01-16",
+        "sub": "先看見黑旗"
+      }
+    },
+    {
+      "id": "s60094",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60094",
+          "text": "附近還有舊營址、橇痕、滑雪痕，和許多狗爪印。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one bundled adult bends to inspect sledge grooves, ski tracks and many dog pawprints pressed into white snow, clear austral summer daylight.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60095",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60095",
+          "text": "那一刻他已明白，挪威隊比自己先到了。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one bundled British adult pauses beside a jet-black cloth flag lashed to an upright wooden sledge runner, clear austral summer daylight.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60096",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60096",
+          "text": "他寫下失望，也寫隔天仍必須走到終點。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one gloved British adult puts a pencil to a blank journal page near the found black marker flag, clear austral summer daylight.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60097",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60097",
+          "text": "隔天，他們沿部分橇痕前進，後來改按自己的計算走。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one bundled British adult leaves fading sledge grooves and follows a small compass across the white snow, clear austral summer daylight.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60098",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60098",
+          "text": "那晚史考特認為已到南極點附近，卻還沒看到小帳；它在哪裡？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one fully visible bundled British adult searches the empty level horizon beneath the low summer sun, clear austral summer daylight.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60099",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60099",
+          "text": "十八日上午，遠處終於露出一個堆雪或帳篷的形狀。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot on the flat Antarctic polar plateau, white snow meeting an unbroken horizon: one centered bundled adult points toward a tiny indistinct mound far away on the snow horizon, clear austral summer daylight.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60100",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60100",
+          "text": "還記得那頂小帳嗎？它由一根竹竿撐起，裡面列著五人名字。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot inside a small Antarctic canvas tent standing on white polar ice: one bundled adult examines a plain name tablet fixed to the single bamboo support pole, summer daylight filtering through canvas.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60101",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60101",
+          "text": "史考特在日記寫明，自己收下了阿蒙森的短箋。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a small Antarctic canvas tent standing on white polar ice: one gloved British adult places a found blank short note between the pages of a worn journal, summer daylight filtering through canvas.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60102",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60102",
+          "text": "史考特也在那頂小帳裡，留下一張自己與隊友到訪的字條。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot inside a small Antarctic canvas tent standing on white polar ice: one bundled British adult leaves a separate blank visit note beside the pole and cloth pouch, summer daylight filtering through canvas.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60103",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60103",
+          "text": "七天後，阿蒙森帶五人、兩橇、十一犬回到弗拉姆之家。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot outside the low wooden Framheim hut on Antarctica’s white Ross Ice Shelf: five bundled adults arrive beside two wooden sledges and eleven harnessed dogs, with one adult leading toward the hut, Antarctic summer daylight.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60104",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60104",
+          "text": "但「史考特收下」和「國王收到」中間隔著回程；他能走回去嗎？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot inside a small Antarctic canvas tent standing on white polar ice: one bundled British adult packs a closed journal into a travel bag beside the tent doorway, summer daylight filtering through canvas.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60105",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60105",
+          "text": "史考特三月二十九日寫下最後一篇日記；他沒有活著返回。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot at a small expedition tent half buried in Antarctic drift snow: a closed worn journal lies inside the partly visible doorway, canvas weighed down by deep snow, dim Antarctic autumn daylight.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60106",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60106",
+          "text": "他的日記後來被找到；這兩份文本沒有追到國王信的最終送達。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a snowbound expedition tent on the Antarctic ice sheet: one gloved adult searcher lifts a closed worn journal from inside the drift-covered canvas shelter, pale Antarctic spring daylight.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60108",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60108",
+          "text": "如果你也想看當事人的原文，兩份全文的連結都在說明欄。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a present-day wooden reading desk: one adult reader opens two plain source books beside a small paused video screen, gentle indoor daylight.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60109",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60109",
+          "text": "你會把重要消息只帶在身上，還是也留一份給後來者？",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot inside a small Antarctic canvas tent standing on white polar ice: one gloved adult leaves a visible folded blank message inside an open cloth pouch, summer daylight filtering through canvas.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s60110",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s60110",
+          "text": "喜歡有出處的歷史謎題，訂閱奇聞檔案局。",
+          "emotion": "自然說書；只說當事人文本能支持的事，不替人物演逐字對白"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot at a present-day wooden reading desk: one adult viewer reaches toward a blank rectangular subscribe tile beside two small historical video stills, gentle indoor daylight.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "國王的信？",
+      "tag": "南極・1911",
+      "sub": "留給競爭者的請求",
+      "shot": "s60001"
+    }
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "阿蒙森在南極留下信，為何請對手史考特轉交？｜奇聞檔案局",
+    "description": "1911 年阿蒙森在南極的小帳留下給國王的信，也寫了給史考特的短箋。史考特於 1912 年 1 月 16 日先看到黑旗，18 日才發現帳篷與轉寄請求。本集跟著兩位當事人的文本追問：為何把消息交給後來者？\n\n當事人文本可證留信、找到和收下；不能單憑它們證明國王最終收到。原創卡通是歷史示意，不是原件照片。查核作者候選：2026-10-22。\n\n阿蒙森固定全文：https://github.com/GITenberg/The-South-Pole--an-account-of-the-Norwegian-Antarctic-expedition-in-the--Fram---1910-12---Volu__4229/blob/242036c254a5ff483c59e5dc4c66a97f4486f70c/4229.txt\n史考特固定全文：https://github.com/GITenberg/Scott-s-Last-Expedition-Volume-I--13-Being-the-journals-of-Captain-R.-F.-Scott_11579/blob/06ff155e7ebf76842906286ae8aa85487ac6a87d/11579.txt\n奇聞檔案局：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q",
+    "tags": [
+      "阿蒙森",
+      "史考特",
+      "南極點",
+      "南極探險",
+      "歷史謎題",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  }
+}

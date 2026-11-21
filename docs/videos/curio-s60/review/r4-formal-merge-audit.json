@@ -1,0 +1,32 @@
+{
+  "round": 4,
+  "method": "mergePanelVerdicts OR of two isolated official R4 ballots on identical creative and panel hashes",
+  "binding": {
+    "narrative_hash": "032be339d354541d",
+    "script_hash": "b85cd0067a67d6022a0656b823f7a9990dbd65ca0142ac772171a053a8aecf7c",
+    "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+    "panel_narration_sha256": "59beb764708d5a57ab073a9f5448185bb80214ec3fc3ab65118e76fbaecb8c1a"
+  },
+  "readers": [
+    {
+      "reader": "a",
+      "answers_sha256": "425cf09a65cde4ab2e1a55ea991fb12db319da1518f73b06ecbdab7b8f3734f7",
+      "official_receipt_sha256": "58e60310d6262ffdb113ebfce292816c2a7a00f71ca0aa8f2334646fa8f8f583",
+      "yes": 13,
+      "failed": []
+    },
+    {
+      "reader": "b",
+      "answers_sha256": "613c567b2e6451c169c16a1242971d7c6f91f0fcbb58dff8b14207e7804c46e7",
+      "official_receipt_sha256": "ed1eb5628b1ce0f2e1b780800799162f3bc7074cf23c18413cdf7e6d18faf96c",
+      "yes": 11,
+      "failed": [
+        "no_spoiler",
+        "chapters_link"
+      ]
+    }
+  ],
+  "merged_yes": 13,
+  "failed": [],
+  "passed": true
+}

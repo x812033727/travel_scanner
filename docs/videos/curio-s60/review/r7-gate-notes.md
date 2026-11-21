@@ -1,0 +1,3 @@
+# S60 R7 chapter bridge gate
+
+R6 fresh readers both rejected chapters_link at s60009. Preserve failures; root added a namedcallback totheopeninglittle tent, no later outcome ornewdate. R7 fresh readersboth13/13 and officialCLIpass. s60061 final listenerrewrite(round2/2)unchanged; narrativebridge repair is not a budgetreset. Independent bridge verification qualifiedPASS: detailedChapterX supportsOctober19 while earlier shortFirstAccount saysOctober20; the detailed datedjourney is the citedP01 choice, and sourceconflict is explicitlyrecordedinreview. No claimallsourceaccountsagree. Date-monthrepetitionlintwarning concernsdifferentDecemberdays; no factualdatechangedforheuristic. Proxy scriptchoice peruserdelegation, not ownerlistening.
