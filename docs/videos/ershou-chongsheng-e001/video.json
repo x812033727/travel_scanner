@@ -1,0 +1,977 @@
+{
+  "schema_version": 1,
+  "slug": "ershou-chongsheng-e001",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "3D Chinese donghua CG animation in the style of high-end domestic 3D animated series and game cinematics, Unreal Engine 5 cinematic render: semi-realistic stylised characters with refined features and slightly enlarged expressive eyes, detailed skin with texture but not photographic, individually rendered hair strands, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field, glamorous flattering beauty lighting on faces; not a photograph, not live action",
+    "negative": "photograph, live action, real person, flat 2D anime, sketch, text, subtitles, watermark, logo, UI panel, phone screen text, readable signage, extra fingers, deformed hands, blood, gore, wounds, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "zhouye32",
+      "name": "周野（三十二歲）",
+      "appearance": "East Asian man of thirty-two, the same lean sharp-jawed face as the young Zhou Ye aged ten years: deeper lines under tired eyes, dark stubble, the same small old scar through the left brow, short black hair flattened by a scuffed black delivery helmet, a dark rain hood pulled over the helmet, a cheap black delivery raincoat, the same cracked steel wristwatch on his left wrist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十二歲、淋了一夜雨的男人，聲音比年輕時更低更啞，只有一句台詞"
+      }
+    },
+    {
+      "id": "zhaoqiang",
+      "name": "趙強",
+      "appearance": "East Asian man of thirty-five, thickset with a round belly, small eyes, a loud mouth, a red delivery-station cap worn backwards, a tight red station polo shirt with a lanyard and badge, grey track pants, a phone always in his right hand",
+      "voice": {
+        "provider": "gemini",
+        "name": "Zubenelgenubi",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十五歲的站長，大嗓門、拖長音、愛罰人"
+      }
+    },
+    {
+      "id": "zhouye",
+      "name": "周野",
+      "appearance": "East Asian young man of twenty-two, lean and sharp-jawed with tired eyes that turn hard and bright when he thinks, straight brows, a small old scar through the left brow, short black hair with a stubborn cowlick at the crown, a faded navy work jacket with the sleeves pushed up over a grey t-shirt, worn dark jeans, a steel wristwatch with cracked glass on his left wrist, black canvas sneakers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；外表二十二歲、心裡三十二歲的男人，聲音低、句子短、不急，看穿事情的時候會笑一下"
+      }
+    },
+    {
+      "id": "zhouan",
+      "name": "周岸",
+      "appearance": "East Asian young man of twenty, handsome and polished: clean bright eyes, a quick easy smile that shows even teeth, neat black hair side-parted and swept back, a crisp white shirt open at the collar under a light grey blazer, slim black trousers, a small silver stud in the left ear, white leather sneakers, a slim laptop bag over one shoulder",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achird",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的弟弟，聲音亮、說話快、永遠在笑，叫「哥」的時候特別親"
+      }
+    },
+    {
+      "id": "mianban",
+      "name": "面板",
+      "appearance": "no on-screen body; only a voice and a faded teal panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚；平穩、略帶雜訊的電子合成聲，像一支舊手機的語音助理，一字一頓，每句最後半個字有一點卡"
+      }
+    },
+    {
+      "id": "laoke",
+      "name": "老柯",
+      "appearance": "East Asian man of fifty-five, broad and heavy-shouldered, grey stubble, deep-set tired eyes, a receding hairline, a grease-dark grey work apron over a faded checked shirt with rolled sleeves, thick forearms, a wrench always in one back pocket",
+      "voice": {
+        "provider": "gemini",
+        "name": "Rasalgethi",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十五歲的修車行老闆，聲音粗、慢、話少，罵人的時候反而小聲"
+      }
+    },
+    {
+      "id": "wangjingli",
+      "name": "王經理",
+      "appearance": "East Asian man of thirty-five, slick and thin, a shiny ill-fitting navy suit, hair gelled flat, a wide practised smile, a thin leather folder held against his chest, pointed brown shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十五歲的地產仲介，聲音油、快、笑聲假"
+      }
+    },
+    {
+      "id": "linwanqiu",
+      "name": "林晚秋",
+      "appearance": "East Asian young woman of twenty-three, clear-eyed practical beauty: straight brows, large bright double-lidded eyes, a small straight nose, a mouth that smiles with one corner first, fair skin with a smudge of grease on one cheekbone, black hair in a high ponytail tied with a blue elastic, a fitted dark-blue mechanic's jumpsuit with the top half tied around her waist over a fitted black crew-neck t-shirt, a red shop rag hanging from the hip pocket, work boots",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十三歲的修車行女兒，聲音直、俐落、不客氣，笑起來很脆"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "cold urban night: rain on asphalt, a low synth pad and a distant siren, a muffled phone voice; a sudden white-out silence, then thin morning strings and a ticking alarm clock in a small room; a glitchy teal digital shimmer with a soft eight-bit blip when the panel appears; a dry acoustic guitar pulse and a woodblock tick in the repair shop as the contract is stopped; a warm single piano note when she takes the folder; the digital shimmer again, colder, and a held low string sting cut to silence at the very end; modern Chinese urban rebirth drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "外送員重生回十年前，系統卻是二手的｜重生系統是二手的 第1集",
+    "description": "三十二歲的外送員周野在雨夜被卡車的燈吞掉，再睜眼是十年前的出租屋，弟弟周岸在門外喊「圖紙帶了沒」——他記得就是今天把設計圖交出去的。腦中亮起一個褪色的青綠色面板，第一條備忘要他去看樓下修車行的租約第三頁；他攔下一份會讓老柯失去碼頭倉的合約，修車行的女兒林晚秋把合約抽走看了他一眼。面板解鎖「複寫」，他卻看見右下角一行褪色的小字：使用者：2／2。還有一行不是他字跡的筆記。《我的重生系統是二手的》第 1 集。",
+    "tags": [
+      "我的重生系統是二手的",
+      "AI短劇",
+      "都市",
+      "重生",
+      "系統",
+      "商戰"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "二手\n系統？",
+      "tag": "重生系統是二手的",
+      "shot": "s36"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "template": "shot",
+      "chapter": "雨夜",
+      "lines": [
+        {
+          "id": "ec101a",
+          "speaker": "zhaoqiang",
+          "text": "周野，你的帳號停了。",
+          "emotion": "手機裡的語音，不耐煩"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "On a rain-lashed city street at night in Linjiang: a wide wet asphalt road reflecting orange sodium lamps and a red neon sign across the street, a blue delivery scooter fallen on its side at the curb on screen left, an insulated delivery box overturned beside it with foil food boxes spilling into a puddle, heavy rain and sheets of spray: wide shot, the older Zhou Ye in a dark rain hood and scuffed delivery helmet kneeling in the middle of the road beside the overturned box, his back half turned to camera, a phone lying face up on the asphalt beside his knee with its screen glowing, Zhao Qiang's voice coming from the phone off screen",
+        "motion": "Zhou Ye reaches out and sets one fallen foil box upright inside the delivery box while rain hammers the road around him",
+        "characters": [
+          "zhouye32"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec102a",
+          "speaker": "zhaoqiang",
+          "text": "年紀不小了，換個吧。",
+          "emotion": "手機裡的語音，敷衍"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On a rain-lashed city street at night in Linjiang: a wide wet asphalt road reflecting orange sodium lamps and a red neon sign across the street, a blue delivery scooter fallen on its side at the curb on screen left, an insulated delivery box overturned beside it with foil food boxes spilling into a puddle, heavy rain and sheets of spray: close-up of the older Zhou Ye's face under the dripping rain hood on screen left, stubble and tired eyes, the cold glow of the phone lighting his jaw from below, his eyes on the phone off screen right, Zhao Qiang still speaking from the phone off screen",
+        "motion": "Rain streams down his face and he blinks slowly once without looking away from the phone",
+        "characters": [
+          "zhouye32"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the phone in the puddle, locked",
+        "prompt": "On a rain-lashed city street at night in Linjiang: a wide wet asphalt road reflecting orange sodium lamps and a red neon sign across the street, a blue delivery scooter fallen on its side at the curb on screen left, an insulated delivery box overturned beside it with foil food boxes spilling into a puddle, heavy rain and sheets of spray: insert of the phone lying face up in a shallow puddle on the asphalt, its screen a blank cold glow with no readable text, rain drops striking the glass and the water around it, the orange street lamp reflected beside it",
+        "motion": "Rain drops strike the glowing screen and the puddle ripples around the phone",
+        "characters": []
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec104a",
+          "speaker": "zhouye32",
+          "text": "……再跑一單。",
+          "emotion": "很小聲，對自己說"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "On a rain-lashed city street at night in Linjiang: a wide wet asphalt road reflecting orange sodium lamps and a red neon sign across the street, a blue delivery scooter fallen on its side at the curb on screen left, an insulated delivery box overturned beside it with foil food boxes spilling into a puddle, heavy rain and sheets of spray: medium shot of the older Zhou Ye kneeling on screen left, lifting the lid of the overturned delivery box with his right hand, his face turned down toward it, the empty wet road stretching away on screen right",
+        "motion": "Zhou Ye speaks a short Mandarin line, 「……再跑一單。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and pushes the lid of the box shut with his palm",
+        "characters": [
+          "zhouye32"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "On a rain-lashed city street at night in Linjiang: a wide wet asphalt road reflecting orange sodium lamps and a red neon sign across the street, a blue delivery scooter fallen on its side at the curb on screen left, an insulated delivery box overturned beside it with foil food boxes spilling into a puddle, heavy rain and sheets of spray: wide shot, the older Zhou Ye kneeling beside the box in the middle of the road on screen left, a pair of truck headlights just appearing far down the road on screen right as two small bright points in the rain",
+        "motion": "The headlights grow fast and flood the whole road white as Zhou Ye turns his head toward them",
+        "characters": [
+          "zhouye32"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec106a",
+          "speaker": "zhaoqiang",
+          "text": "喂？周野？",
+          "emotion": "手機裡的語音，忽然小了"
+        }
+      ],
+      "data": {
+        "camera": "Extreme close-up, locked",
+        "prompt": "On a rain-lashed city street at night in Linjiang: a wide wet asphalt road reflecting orange sodium lamps and a red neon sign across the street, a blue delivery scooter fallen on its side at the curb on screen left, an insulated delivery box overturned beside it with foil food boxes spilling into a puddle, heavy rain and sheets of spray: extreme close-up of the older Zhou Ye's eyes under the rain hood, white headlight glare filling the right side of the frame, rain on his lashes, Zhao Qiang still speaking from the phone off screen",
+        "motion": "His eyes close slowly as the white glare fills the whole frame",
+        "characters": [
+          "zhouye32"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "chapter": "醒來",
+      "lines": [
+        {
+          "id": "ec107a",
+          "speaker": "zhouan",
+          "text": "哥！起來了沒？",
+          "emotion": "畫外，隔著門喊"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Inside Zhou Ye's rented room above the repair shop at dawn: a narrow room with a single bed under a window on screen left, pale morning light through thin curtains, a scratched wooden desk on screen right with a bundle of rolled blueprints bound by a rubber band and a cheap alarm clock, a cracked plaster wall, the door in the back wall on screen right: close-up of the young Zhou Ye lying on the pillow on screen left, face turned up, eyes shut, soft morning light on his face, a cheap alarm clock ringing on the desk at the right edge of frame, Zhou An calling through the door off screen right",
+        "motion": "His eyes snap open and his chest rises with one sharp breath",
+        "characters": [
+          "zhouye"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec108a",
+          "speaker": "zhouye",
+          "text": "……手？",
+          "emotion": "氣音，不敢相信"
+        }
+      ],
+      "data": {
+        "camera": "Insert of his raised hand, locked",
+        "prompt": "Inside Zhou Ye's rented room above the repair shop at dawn: a narrow room with a single bed under a window on screen left, pale morning light through thin curtains, a scratched wooden desk on screen right with a bundle of rolled blueprints bound by a rubber band and a cheap alarm clock, a cracked plaster wall, the door in the back wall on screen right: insert of a young man's right hand raised in front of the camera against the ceiling, fingers spread, smooth skin with no calluses, the sleeve of a grey t-shirt, Zhou Ye's face out of frame below, Zhou Ye speaks off screen",
+        "motion": "The fingers close slowly into a fist and open again",
+        "characters": []
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec109a",
+          "speaker": "zhouye",
+          "text": "十年前？",
+          "emotion": "低聲，像在確認"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Inside Zhou Ye's rented room above the repair shop at dawn: a narrow room with a single bed under a window on screen left, pale morning light through thin curtains, a scratched wooden desk on screen right with a bundle of rolled blueprints bound by a rubber band and a cheap alarm clock, a cracked plaster wall, the door in the back wall on screen right: wide shot of the whole room, the young Zhou Ye sitting up on the bed on screen left in a grey t-shirt with the blanket fallen to his waist, the desk with the rolled blueprints on screen right, dust in the morning light",
+        "motion": "Zhou Ye speaks a short Mandarin line, 「十年前？」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and looks slowly around the room",
+        "characters": [
+          "zhouye"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec110a",
+          "speaker": "zhouan",
+          "text": "哥，圖紙帶了沒？",
+          "emotion": "亮、快、興奮"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside Zhou Ye's rented room above the repair shop at dawn: a narrow room with a single bed under a window on screen left, pale morning light through thin curtains, a scratched wooden desk on screen right with a bundle of rolled blueprints bound by a rubber band and a cheap alarm clock, a cracked plaster wall, the door in the back wall on screen right: medium close-up of Zhou An leaning in through the half-open door on screen right, one hand on the door frame, bright grin, white shirt and light grey blazer, looking toward the bed off screen left",
+        "motion": "Zhou An speaks a short Mandarin line, 「哥，圖紙帶了沒？」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and raps the door frame twice with his knuckles",
+        "characters": [
+          "zhouan"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec111a",
+          "speaker": "zhouan",
+          "text": "今天見梁總。",
+          "emotion": "畫外，開心"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside Zhou Ye's rented room above the repair shop at dawn: a narrow room with a single bed under a window on screen left, pale morning light through thin curtains, a scratched wooden desk on screen right with a bundle of rolled blueprints bound by a rubber band and a cheap alarm clock, a cracked plaster wall, the door in the back wall on screen right: close-up of the young Zhou Ye sitting on the bed on screen left, his eyes fixed on the rolled blueprints on the desk off screen right, morning light on half his face, Zhou An speaks off screen",
+        "motion": "His eyes stay on the blueprints and his jaw slowly tightens",
+        "characters": [
+          "zhouye"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec112a",
+          "speaker": "zhouye",
+          "text": "今天……",
+          "emotion": "畫外，很輕"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the rolled blueprints, slow push in",
+        "prompt": "Inside Zhou Ye's rented room above the repair shop at dawn: a narrow room with a single bed under a window on screen left, pale morning light through thin curtains, a scratched wooden desk on screen right with a bundle of rolled blueprints bound by a rubber band and a cheap alarm clock, a cracked plaster wall, the door in the back wall on screen right: insert of the bundle of rolled blueprints bound by a red rubber band lying on the scratched desk, their outer sheet blank cream paper with no visible drawing, morning light across them, Zhou Ye speaks off screen",
+        "motion": "Dust drifts through the light above the rolled blueprints",
+        "characters": [],
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec113a",
+          "speaker": "zhouye",
+          "text": "就是今天。",
+          "emotion": "低，咬著字"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Inside Zhou Ye's rented room above the repair shop at dawn: a narrow room with a single bed under a window on screen left, pale morning light through thin curtains, a scratched wooden desk on screen right with a bundle of rolled blueprints bound by a rubber band and a cheap alarm clock, a cracked plaster wall, the door in the back wall on screen right: medium shot of the young Zhou Ye standing beside the desk on screen right, his right hand resting flat on top of the rolled blueprints without lifting them, his face turned toward Zhou An off screen right",
+        "motion": "Zhou Ye speaks a short Mandarin line, 「就是今天。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and presses his hand down harder on the roll",
+        "characters": [
+          "zhouye"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec114a",
+          "speaker": "mianban",
+          "text": "重啟面板，載入中。",
+          "emotion": "電子合成聲，一字一頓"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Inside Zhou Ye's rented room above the repair shop at dawn: a narrow room with a single bed under a window on screen left, pale morning light through thin curtains, a scratched wooden desk on screen right with a bundle of rolled blueprints bound by a rubber band and a cheap alarm clock, a cracked plaster wall, the door in the back wall on screen right: close-up of the young Zhou Ye's face on screen right looking straight ahead at nothing, a faint flickering teal glow appearing on his face as if from a screen in front of him, the room soft behind him, Mianban speaks off screen",
+        "motion": "The teal flicker on his face steadies into a constant glow and his pupils widen",
+        "characters": [
+          "zhouye"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec115a",
+          "speaker": "mianban",
+          "text": "備忘。",
+          "emotion": "電子合成聲"
+        },
+        {
+          "id": "ec115b",
+          "speaker": "mianban",
+          "text": "樓下車行，租約第三頁。",
+          "emotion": "電子合成聲，一字一頓"
+        }
+      ],
+      "data": {
+        "camera": "Extreme close-up, locked",
+        "prompt": "Inside Zhou Ye's rented room above the repair shop at dawn: a narrow room with a single bed under a window on screen left, pale morning light through thin curtains, a scratched wooden desk on screen right with a bundle of rolled blueprints bound by a rubber band and a cheap alarm clock, a cracked plaster wall, the door in the back wall on screen right: extreme close-up of the young Zhou Ye's eyes, teal light reflected in both pupils and flickering on his brows, Mianban speaks off screen",
+        "motion": "The teal reflection in his eyes brightens once and his eyes move left to right as if reading",
+        "characters": [
+          "zhouye"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec116a",
+          "speaker": "zhouan",
+          "text": "哥？你發什麼呆？",
+          "emotion": "好奇，帶笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside Zhou Ye's rented room above the repair shop at dawn: a narrow room with a single bed under a window on screen left, pale morning light through thin curtains, a scratched wooden desk on screen right with a bundle of rolled blueprints bound by a rubber band and a cheap alarm clock, a cracked plaster wall, the door in the back wall on screen right: medium close-up of Zhou An in the doorway on screen right, head tilted, grin fading into puzzlement as he looks toward his brother off screen left",
+        "motion": "Zhou An speaks a short Mandarin line, 「哥？你發什麼呆？」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and waves one hand in front of him",
+        "characters": [
+          "zhouan"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec117a",
+          "speaker": "zhouye",
+          "text": "等我五分鐘。",
+          "emotion": "快、不解釋"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Inside Zhou Ye's rented room above the repair shop at dawn: a narrow room with a single bed under a window on screen left, pale morning light through thin curtains, a scratched wooden desk on screen right with a bundle of rolled blueprints bound by a rubber band and a cheap alarm clock, a cracked plaster wall, the door in the back wall on screen right: medium shot, the young Zhou Ye on screen left pulling his navy work jacket off the back of the chair with one hand, Zhou An standing in the doorway on screen right watching him",
+        "motion": "Zhou Ye speaks a short Mandarin line, 「等我五分鐘。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and shrugs the jacket on over one shoulder as he heads for the door",
+        "characters": [
+          "zhouye",
+          "zhouan"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec118a",
+          "speaker": "zhouan",
+          "text": "梁總九點到！",
+          "emotion": "畫外，從樓上喊"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, high angle, slow push in",
+        "prompt": "In the narrow stairwell between the rented room and the repair shop: steep concrete steps with a rusted rail, a bare bulb, daylight spilling up from the shop below: high-angle wide shot down the stairwell, the young Zhou Ye in his navy jacket halfway down the steps with one hand on the rusted rail, the bright shop doorway below, Zhou An speaks off screen from above",
+        "motion": "Zhou Ye takes the last steps down toward the light",
+        "characters": [
+          "zhouye"
+        ],
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "chapter": "車行",
+      "lines": [
+        {
+          "id": "ec119a",
+          "speaker": "wangjingli",
+          "text": "柯老闆，簽這裡就好。",
+          "emotion": "油滑，笑著"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Inside Wanqiu Auto Repair in the morning, a brick-walled garage open to the street on screen left: a long steel-topped counter across the right half of the frame, a back doorway to the stairwell behind the counter at the far right, shelves of parts, a jacked-up blue hatchback on the left with its hood up, cool daylight from the street mixed with warm work lamps: wide shot, Lao Ke in his grease-dark apron standing behind the counter on screen right, Manager Wang in a shiny navy suit standing in front of the counter at centre-left facing right with an open leather folder on the counter between them, a pair of work boots sticking out from under the hatchback on the far left",
+        "motion": "Manager Wang speaks a short Mandarin line, 「柯老闆，簽這裡就好。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and taps the open folder with two fingers",
+        "characters": [
+          "laoke",
+          "wangjingli"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec120a",
+          "speaker": "wangjingli",
+          "text": "碼頭倉放著也是放著。",
+          "emotion": "勸、拖長音"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside Wanqiu Auto Repair in the morning, a brick-walled garage open to the street on screen left: a long steel-topped counter across the right half of the frame, a back doorway to the stairwell behind the counter at the far right, shelves of parts, a jacked-up blue hatchback on the left with its hood up, cool daylight from the street mixed with warm work lamps: medium close-up of Manager Wang on screen left facing right toward Lao Ke off screen right, his practised wide smile, gelled hair shining under the work lamp, one hand holding the folder open",
+        "motion": "Manager Wang speaks a short Mandarin line, 「碼頭倉放著也是放著。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and nods encouragingly toward Lao Ke",
+        "characters": [
+          "wangjingli"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec121a",
+          "speaker": "laoke",
+          "text": "嗯。",
+          "emotion": "低、慢，不情願"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Inside Wanqiu Auto Repair in the morning, a brick-walled garage open to the street on screen left: a long steel-topped counter across the right half of the frame, a back doorway to the stairwell behind the counter at the far right, shelves of parts, a jacked-up blue hatchback on the left with its hood up, cool daylight from the street mixed with warm work lamps: close-up of Lao Ke's face on screen right, eyes down toward the counter below the frame edge, grey stubble, deep-set tired eyes; a ballpoint pen hovers at the bottom edge of frame",
+        "motion": "Lao Ke speaks a short Mandarin line, 「嗯。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and his pen hand lowers a finger's width toward the page",
+        "characters": [
+          "laoke"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec122a",
+          "speaker": "zhouye",
+          "text": "等一下。",
+          "emotion": "不大聲，但全場停住"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Inside Wanqiu Auto Repair in the morning, a brick-walled garage open to the street on screen left: a long steel-topped counter across the right half of the frame, a back doorway to the stairwell behind the counter at the far right, shelves of parts, a jacked-up blue hatchback on the left with its hood up, cool daylight from the street mixed with warm work lamps: medium shot of the young Zhou Ye standing in the back doorway behind the counter on screen right, navy jacket, one hand on the door frame, Lao Ke's broad shoulder at the right edge of frame, his eyes on the folder on the counter",
+        "motion": "Zhou Ye speaks a short Mandarin line, 「等一下。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and steps forward to the counter beside Lao Ke",
+        "characters": [
+          "zhouye"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec123a",
+          "speaker": "zhouye",
+          "text": "第三頁。",
+          "emotion": "畫外，平靜"
+        }
+      ],
+      "data": {
+        "camera": "Overhead insert of the hands on the counter, locked",
+        "prompt": "Inside Wanqiu Auto Repair in the morning, a brick-walled garage open to the street on screen left: a long steel-topped counter across the right half of the frame, a back doorway to the stairwell behind the counter at the far right, shelves of parts, a jacked-up blue hatchback on the left with its hood up, cool daylight from the street mixed with warm work lamps: overhead insert of the steel counter top, a young man's hand with a cracked steel watch on the wrist pressed flat on the open contract page at centre, the pages blank cream paper with no readable text, an older man's thick hand holding a pen frozen beside it on the right, Zhou Ye speaks off screen",
+        "motion": "The young hand presses flat on the page and the pen hand beside it does not move",
+        "characters": []
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec124a",
+          "speaker": "wangjingli",
+          "text": "你誰啊？",
+          "emotion": "笑僵了"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside Wanqiu Auto Repair in the morning, a brick-walled garage open to the street on screen left: a long steel-topped counter across the right half of the frame, a back doorway to the stairwell behind the counter at the far right, shelves of parts, a jacked-up blue hatchback on the left with its hood up, cool daylight from the street mixed with warm work lamps: medium close-up of Manager Wang on screen left, his smile frozen, eyes turned toward Zhou Ye off screen right, a bead of sweat at his gelled hairline",
+        "motion": "Manager Wang speaks a short Mandarin line, 「你誰啊？」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and his smile twitches at one corner",
+        "characters": [
+          "wangjingli"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec125a",
+          "speaker": "zhouye",
+          "text": "這一條。",
+          "emotion": "畫外"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the contract page, slow push in",
+        "prompt": "Inside Wanqiu Auto Repair in the morning, a brick-walled garage open to the street on screen left: a long steel-topped counter across the right half of the frame, a back doorway to the stairwell behind the counter at the far right, shelves of parts, a jacked-up blue hatchback on the left with its hood up, cool daylight from the street mixed with warm work lamps: insert of the contract folder on the counter already turned to its third page, blank cream paper with faint blurred print and no readable text, a young man's forefinger resting on one clause near the bottom, Zhou Ye speaks off screen",
+        "motion": "The forefinger rests on the clause in the warm lamp light",
+        "characters": [],
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec126a",
+          "speaker": "zhouye",
+          "text": "簽了，倉庫就不是你的。",
+          "emotion": "平、慢，每個字都清楚"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside Wanqiu Auto Repair in the morning, a brick-walled garage open to the street on screen left: a long steel-topped counter across the right half of the frame, a back doorway to the stairwell behind the counter at the far right, shelves of parts, a jacked-up blue hatchback on the left with its hood up, cool daylight from the street mixed with warm work lamps: medium close-up of the young Zhou Ye behind the counter on screen right, looking across at Manager Wang off screen left, calm, the stubborn cowlick at his crown, Lao Ke's shoulder soft at the right edge",
+        "motion": "Zhou Ye speaks a short Mandarin line, 「簽了，倉庫就不是你的。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and raises his gaze to Manager Wang",
+        "characters": [
+          "zhouye"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec127a",
+          "speaker": "laoke",
+          "text": "……什麼？",
+          "emotion": "低，開始懂了"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside Wanqiu Auto Repair in the morning, a brick-walled garage open to the street on screen left: a long steel-topped counter across the right half of the frame, a back doorway to the stairwell behind the counter at the far right, shelves of parts, a jacked-up blue hatchback on the left with its hood up, cool daylight from the street mixed with warm work lamps: close-up of Lao Ke's face on screen right, eyes down toward the page below the frame edge, his jaw set; the pen tip at the bottom edge of frame",
+        "motion": "Lao Ke speaks a short Mandarin line, 「……什麼？」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and his jaw works once",
+        "characters": [
+          "laoke"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec128a",
+          "speaker": "wangjingli",
+          "text": "小兄弟，別亂講。",
+          "emotion": "乾笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside Wanqiu Auto Repair in the morning, a brick-walled garage open to the street on screen left: a long steel-topped counter across the right half of the frame, a back doorway to the stairwell behind the counter at the far right, shelves of parts, a jacked-up blue hatchback on the left with its hood up, cool daylight from the street mixed with warm work lamps: medium close-up of Manager Wang on screen left, laughing too hard, sweat on his temple, one hand raised palm out toward the counter",
+        "motion": "Manager Wang speaks a short Mandarin line, 「小兄弟，別亂講。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and laughs with his hand waving",
+        "characters": [
+          "wangjingli"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec129a",
+          "speaker": "linwanqiu",
+          "text": "爸。",
+          "emotion": "清脆，一個字"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Inside Wanqiu Auto Repair in the morning, a brick-walled garage open to the street on screen left: a long steel-topped counter across the right half of the frame, a back doorway to the stairwell behind the counter at the far right, shelves of parts, a jacked-up blue hatchback on the left with its hood up, cool daylight from the street mixed with warm work lamps: wide shot, Lin Wanqiu lying on a wheeled creeper board under the hatchback on screen left with only her legs and work boots showing, Manager Wang standing at the counter at centre-left, Lao Ke and the young Zhou Ye behind the counter on screen right",
+        "motion": "Lin Wanqiu rolls out from under the car on the creeper board and sits up",
+        "characters": [
+          "linwanqiu",
+          "wangjingli",
+          "laoke"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec130a",
+          "speaker": "linwanqiu",
+          "text": "這合約，我留著。",
+          "emotion": "直、不客氣"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Inside Wanqiu Auto Repair in the morning, a brick-walled garage open to the street on screen left: a long steel-topped counter across the right half of the frame, a back doorway to the stairwell behind the counter at the far right, shelves of parts, a jacked-up blue hatchback on the left with its hood up, cool daylight from the street mixed with warm work lamps: medium shot of Lin Wanqiu standing at the left end of the counter, ponytail swinging, a grease smudge on her cheekbone, the jumpsuit top tied at her waist, her flat right hand resting on the edge of the contract folder on the counter",
+        "motion": "Lin Wanqiu speaks a short Mandarin line, 「這合約，我留著。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and slides the folder off the counter toward herself with one flat hand",
+        "characters": [
+          "linwanqiu"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec131a",
+          "speaker": "wangjingli",
+          "text": "我……改天再來。",
+          "emotion": "畫外，結巴"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside Wanqiu Auto Repair in the morning, a brick-walled garage open to the street on screen left: a long steel-topped counter across the right half of the frame, a back doorway to the stairwell behind the counter at the far right, shelves of parts, a jacked-up blue hatchback on the left with its hood up, cool daylight from the street mixed with warm work lamps: close-up of Lin Wanqiu's face on screen left, her large bright eyes lifted toward Zhou Ye off screen right, one corner of her mouth starting to smile, the grease smudge on her cheekbone; the closed folder pressed to her chest at the bottom of frame, Manager Wang speaks off screen",
+        "motion": "She looks at Zhou Ye and the corner of her mouth lifts a little more",
+        "characters": [
+          "linwanqiu"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec132a",
+          "speaker": "laoke",
+          "text": "小子。",
+          "emotion": "低聲叫他"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Inside Wanqiu Auto Repair in the morning, a brick-walled garage open to the street on screen left: a long steel-topped counter across the right half of the frame, a back doorway to the stairwell behind the counter at the far right, shelves of parts, a jacked-up blue hatchback on the left with its hood up, cool daylight from the street mixed with warm work lamps: wide shot, Manager Wang hurrying out through the open garage door toward the street on screen left clutching his thin folder, Lin Wanqiu standing by the hatchback at centre-left, Lao Ke and the young Zhou Ye behind the counter on screen right",
+        "motion": "Lao Ke speaks a short Mandarin line, 「小子。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and turns his head toward Zhou Ye",
+        "characters": [
+          "wangjingli",
+          "linwanqiu",
+          "laoke"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec133a",
+          "speaker": "laoke",
+          "text": "你怎麼看出來的？",
+          "emotion": "慢、懷疑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside Wanqiu Auto Repair in the morning, a brick-walled garage open to the street on screen left: a long steel-topped counter across the right half of the frame, a back doorway to the stairwell behind the counter at the far right, shelves of parts, a jacked-up blue hatchback on the left with its hood up, cool daylight from the street mixed with warm work lamps: medium close-up of Lao Ke on screen right turned toward Zhou Ye off screen left, the pen now set down, his thick arms folded on the counter",
+        "motion": "Lao Ke speaks a short Mandarin line, 「你怎麼看出來的？」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and his brows draw together",
+        "characters": [
+          "laoke"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec134a",
+          "speaker": "zhouye",
+          "text": "隨便看的。",
+          "emotion": "輕、帶笑，不想解釋"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder from behind Lao Ke on Zhou Ye, locked",
+        "prompt": "Inside Wanqiu Auto Repair in the morning, a brick-walled garage open to the street on screen left: a long steel-topped counter across the right half of the frame, a back doorway to the stairwell behind the counter at the far right, shelves of parts, a jacked-up blue hatchback on the left with its hood up, cool daylight from the street mixed with warm work lamps: over-the-shoulder shot from behind Lao Ke's broad grey-aproned shoulder at the left edge of frame onto the young Zhou Ye behind the counter on screen right, a small tired smile, the work lamp warm on one side of his face",
+        "motion": "Zhou Ye speaks a short Mandarin line, 「隨便看的。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and gives a small shrug",
+        "characters": [
+          "zhouye"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec135a",
+          "speaker": "mianban",
+          "text": "複寫，一次，解鎖。",
+          "emotion": "電子合成聲，一字一頓"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside Wanqiu Auto Repair in the morning, a brick-walled garage open to the street on screen left: a long steel-topped counter across the right half of the frame, a back doorway to the stairwell behind the counter at the far right, shelves of parts, a jacked-up blue hatchback on the left with its hood up, cool daylight from the street mixed with warm work lamps: close-up of the young Zhou Ye's face on screen right, his gaze dropping to the empty air in front of him, a teal glow flickering onto his face from nowhere, Mianban speaks off screen",
+        "motion": "The teal glow blooms on his face and his eyes go still as if reading",
+        "characters": [
+          "zhouye"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec136a",
+          "speaker": "zhouye",
+          "text": "二……之二？",
+          "emotion": "氣音，唸出來"
+        }
+      ],
+      "data": {
+        "camera": "Extreme close-up, locked",
+        "prompt": "Inside Wanqiu Auto Repair in the morning, a brick-walled garage open to the street on screen left: a long steel-topped counter across the right half of the frame, a back doorway to the stairwell behind the counter at the far right, shelves of parts, a jacked-up blue hatchback on the left with its hood up, cool daylight from the street mixed with warm work lamps: extreme close-up of the young Zhou Ye's eyes, teal light in both pupils, his gaze sliding down toward the bottom right as if to a line of small faded text, Mianban speaks off screen",
+        "motion": "His eyes narrow and slide down to the lower right corner",
+        "characters": [
+          "zhouye"
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "chapter": "二手",
+      "lines": [
+        {
+          "id": "ec137a",
+          "speaker": "zhouan",
+          "text": "哥！梁總的車到了！",
+          "emotion": "畫外，從樓上喊，開心"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Inside Wanqiu Auto Repair in the morning, a brick-walled garage open to the street on screen left: a long steel-topped counter across the right half of the frame, a back doorway to the stairwell behind the counter at the far right, shelves of parts, a jacked-up blue hatchback on the left with its hood up, cool daylight from the street mixed with warm work lamps: wide shot, the young Zhou Ye standing at the foot of the back stairwell doorway on screen right with his face lit faintly teal, Lao Ke behind the counter at centre-right watching him, Lin Wanqiu by the hatchback on the left holding the folder, Zhou An calling from upstairs off screen",
+        "motion": "Lin Wanqiu and Lao Ke both turn their heads toward Zhou Ye while he stands motionless",
+        "characters": [
+          "zhouye",
+          "laoke",
+          "linwanqiu"
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec138a",
+          "speaker": "zhouye",
+          "text": "筆記？",
+          "emotion": "低聲，疑惑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Inside Wanqiu Auto Repair in the morning, a brick-walled garage open to the street on screen left: a long steel-topped counter across the right half of the frame, a back doorway to the stairwell behind the counter at the far right, shelves of parts, a jacked-up blue hatchback on the left with its hood up, cool daylight from the street mixed with warm work lamps: close-up of the young Zhou Ye's face on screen right lit by the teal glow, his eyes fixed low in front of him, the stairwell door frame dark behind him",
+        "motion": "Zhou Ye speaks a short Mandarin line, 「筆記？」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and his brows draw together",
+        "characters": [
+          "zhouye"
+        ]
+      }
+    },
+    {
+      "id": "s39",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec139a",
+          "speaker": "mianban",
+          "text": "筆記，一。",
+          "emotion": "電子合成聲，最後半個字卡了一下"
+        }
+      ],
+      "data": {
+        "camera": "Extreme close-up, locked",
+        "prompt": "Inside Wanqiu Auto Repair in the morning, a brick-walled garage open to the street on screen left: a long steel-topped counter across the right half of the frame, a back doorway to the stairwell behind the counter at the far right, shelves of parts, a jacked-up blue hatchback on the left with its hood up, cool daylight from the street mixed with warm work lamps: extreme close-up of the young Zhou Ye's eyes, the teal light in his pupils with a smear of brighter light drifting across them like a faint line seen through fogged glass, Mianban speaks off screen",
+        "motion": "The smear of light drifts slowly across his pupils and his eyes track it",
+        "characters": [
+          "zhouye"
+        ]
+      }
+    },
+    {
+      "id": "s40",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec140a",
+          "speaker": "zhouan",
+          "text": "哥？",
+          "emotion": "親、拖一點"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, high angle, locked",
+        "prompt": "In the narrow stairwell between the rented room and the repair shop: steep concrete steps with a rusted rail, a bare bulb, daylight spilling up from the shop below: medium close-up of Zhou An standing at the top of the stairs on screen right, one hand on the rail, smiling down toward the camera, the bare bulb above him, his laptop bag over one shoulder",
+        "motion": "Zhou An speaks a short Mandarin line, 「哥？」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and tilts his head",
+        "characters": [
+          "zhouan"
+        ]
+      }
+    },
+    {
+      "id": "s41",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec141a",
+          "speaker": "zhouye",
+          "text": "來了。",
+          "emotion": "平，聽不出情緒"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, low angle, slow push in",
+        "prompt": "Inside Wanqiu Auto Repair in the morning, a brick-walled garage open to the street on screen left: a long steel-topped counter across the right half of the frame, a back doorway to the stairwell behind the counter at the far right, shelves of parts, a jacked-up blue hatchback on the left with its hood up, cool daylight from the street mixed with warm work lamps: low-angle close-up of the young Zhou Ye at the foot of the stairs on screen right looking up toward Zhou An off screen above, the teal glow fading from his face, his expression giving nothing away",
+        "motion": "Zhou Ye speaks a short Mandarin line, 「來了。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and the last of the teal light leaves his face",
+        "characters": [
+          "zhouye"
+        ]
+      }
+    },
+    {
+      "id": "s42",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "ec142a",
+          "speaker": "mianban",
+          "text": "字跡，無法辨識。",
+          "emotion": "電子合成聲，最後一個字卡住"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Inside Wanqiu Auto Repair in the morning, a brick-walled garage open to the street on screen left: a long steel-topped counter across the right half of the frame, a back doorway to the stairwell behind the counter at the far right, shelves of parts, a jacked-up blue hatchback on the left with its hood up, cool daylight from the street mixed with warm work lamps: close-up of the young Zhou Ye's face on screen right half lit by a last faint teal glow, his eyes dropped again to the lower right, the dark stairwell behind him, Mianban speaks off screen",
+        "motion": "His jaw sets and his eyes stay on the lower right corner as the teal glow holds",
+        "characters": [
+          "zhouye"
+        ]
+      }
+    }
+  ]
+}
