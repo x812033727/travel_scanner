@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "status": "verified_actual_listener_round1_asr_not_audio_approval",
+  "at": "2026-10-27T09:29:56.767Z",
+  "source_video_sha256": "6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86",
+  "source_speech_hash": "fa2912daff4bd218",
+  "locale": "zh-TW",
+  "clips": 5,
+  "native_exit": 0,
+  "elapsed_seconds": 42.56291715602856,
+  "timed_out": false,
+  "cohort_manifest_sha256": "4d729c2d1c6d96c3ebcd6c60e0b007f978893598ef23e2e9707581d290124edb",
+  "raw_stdout_sha256": "b005fc127a2696dff9be227fa29e1e54921331fb7d45d513d982779029373a1a",
+  "verified_receipt_sha256": "2541e0972de960bd35f59b21703e9bb09d09b501f369e6276311c8169c92cd7f",
+  "independent_review_sha256": "ba156bf09f61c5b1657d133cf469967ca5dd4d0b03d5e81a979ce7490b867c9c",
+  "reader_sha256": "114981084b5293db2d16115c63df5d7df2a073dbdeee754db2fe164ab4c8bce2",
+  "whole_actual_selection": {
+    "listener_new5": 5,
+    "r2_unchanged1": 1,
+    "r1_unchanged8": 8,
+    "unchanged_context": 2,
+    "unchanged_original": 16,
+    "total": 32
+  },
+  "timing": {
+    "prepared_at": "2026-10-27T09:23:09.247Z",
+    "completed_at": "2026-10-27T09:26:35.168230+00:00",
+    "completed_local_at": "2026-10-27T09:26:34.844Z",
+    "verified_at": "2026-10-27T09:26:57.374Z",
+    "timestamp_clock_domains": {
+      "prepared_at": "local_utc",
+      "completed_at": "vps_utc",
+      "completed_local_at": "local_utc",
+      "verified_at": "local_utc",
+      "at": "local_utc"
+    },
+    "at_equals_verified_at": true,
+    "local_only_chronology_validated": true,
+    "no_cross_host_subsecond_order_claim": true,
+    "finalize_sha256": "d9b9a9792426ee31544c47e6757c235b6a096ea812cf290224cfb606c36a1f71"
+  },
+  "resource_readback": {
+    "available_kib": 28861864,
+    "load1": 0.37,
+    "worker_cpu_percent": 0.01,
+    "worker_memory_percent": 0.12,
+    "affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "nice": 19,
+    "offline": true,
+    "cached_medium_snapshot": true,
+    "stock_helper_sha256": "4b5f7918d8b2ba970bb547a66c9d25d69c969a772227ccb0b3f928740c3e5338",
+    "inner_deadline_seconds": 1190,
+    "outer_timeout_seconds": 1195,
+    "outer_kill_after_seconds": 5
+  },
+  "rows": [
+    {
+      "id": "lz318",
+      "wav_sha256": "107823367f2bea7bbf877c5cd069e7c67cb513d0e6716150aa944e2dbfe125e7",
+      "old_wav_sha256": "8327773aa1d2aec198402a53d1ee817217c4f0ff899c79658c15f92cc1fa5f58",
+      "actual_whisper_text": "這份檔案查過的史書裡,只有這一條寫明嶺南。"
+    },
+    {
+      "id": "v2a0471",
+      "wav_sha256": "cabbc3a733cf278ce0a4267185dcf24ec10810494801fed8371e38568e8344ea",
+      "old_wav_sha256": "c29c1b5b5053d0123b2521c89964a369a9304b1b5ba1027bf740733975cecd98",
+      "actual_whisper_text": "不能說明鮮果怎麼送,那福州的說法有什麼依據?"
+    },
+    {
+      "id": "v2a0491",
+      "wav_sha256": "07546d441d65a5d7b7999fb6a8882a25ad1b0a11fc37490713f2154b8edf3255",
+      "old_wav_sha256": "9c43e7c513f0ef3c42f118e2e86008395cc358307c207d5342835ab2d71c03e3",
+      "actual_whisper_text": "學者無憎留下的文字,讓我們看到答案是怎麼形成的。"
+    },
+    {
+      "id": "lz424",
+      "wav_sha256": "c417c691a85757b7a451086af239d492013d6f1f377d8639c6cdad923cfe923d",
+      "old_wav_sha256": "d019abc42e479ff26811bd89e093fd29a3c6218d52add5c1ac78898a0dbe3be7",
+      "actual_whisper_text": "七天七夜,送到京城。"
+    },
+    {
+      "id": "v2a0722",
+      "wav_sha256": "10c12f976d0ce98e48fb6020dc2e5d3cb258c9a4e23ebc9d902cd50d00d060c9",
+      "old_wav_sha256": "f68035d50ae57d533d502addd46fd218ce16025277f4edeaeeea4784dddf8885",
+      "actual_whisper_text": "能證明立志當天也到了嗎?"
+    }
+  ],
+  "scope": {
+    "one_ssh": true,
+    "paid_provider_calls": 0,
+    "expected_text_sent": false,
+    "prior_asr_sent": false,
+    "content_hints_sent": false,
+    "model_download": false,
+    "canonical_mutated_by_asr": false,
+    "old_evidence_preserved": true,
+    "audio_approved": false,
+    "official_current_take_check_pending": true
+  },
+  "raw_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_bytes": 0
+}

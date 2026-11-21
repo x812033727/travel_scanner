@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "status": "offline_review_passed_not_used_on_live_transport",
+  "private_module": "curio-s31-v2-preflight/curio-tts-transport-diagnostic.mjs",
+  "module_sha256": "df217e9f22be3f52220d94f7fbab84ac301d022643fa31a2f1c8238f143aace9",
+  "independent_review": {
+    "at": "2026-10-27T04:11:21.030Z",
+    "receipt": "curio-tts-transport-diagnostic-independent-review-bbdf3381-b707-42b0-87c5-1def6b2e8784.json",
+    "receipt_sha256": "48d673ddda5d1724c08dff3f8b7988b8ae1c52dc3e703b50a7841ace00af171f",
+    "verdict": "offline_mocked_pass",
+    "isolated_cases": 4,
+    "mock_original_fetch_calls": 165,
+    "real_network_requests": 0
+  },
+  "observation_scope": {
+    "method": "POST",
+    "origin": "https://mokaair.com",
+    "pathname": "/api/video/speech",
+    "only_non_2xx_responses": true,
+    "fields": ["timestamp", "http_status", "problem_code", "retry_after_seconds"],
+    "finite_problem_code_allowlist": true,
+    "unknown_or_unreadable_problem_code": "unknown",
+    "problem_read_max_bytes": 8192,
+    "problem_read_max_chunks": 64,
+    "problem_read_timeout_ms": 250,
+    "maximum_records": 128,
+    "maximum_row_bytes": 256,
+    "maximum_file_bytes": 32768,
+    "records_request_body_headers_token_query_detail_or_audio": false
+  },
+  "transport_contract_verified": {
+    "one_original_fetch_per_wrapper_call": true,
+    "original_arguments_this_promise_response_and_errors_preserved": true,
+    "successful_or_unrelated_response_body_unread": true,
+    "observer_read_or_write_failure_does_not_change_client": true,
+    "new_network_request_retry_or_controller": false,
+    "existing_output_or_invalid_basename_leaves_original_fetch_uninstrumented": true,
+    "output_open_mode": "wx"
+  },
+  "next_use": {
+    "only_with_next_normal_authorized_tts_resume": true,
+    "not_before_utc": "2026-10-27T08:00:00Z",
+    "not_before_taipei": "2026-10-27 16:00",
+    "preload": "node --import <private_module> tools/video/cli.mjs tts <normal current flags arguments>",
+    "output_env": "CURIO_TTS_TRANSPORT_DIAGNOSTIC_FILE",
+    "output_value": "fresh unique JSONL basename within the private module directory; omitted value generates a unique basename",
+    "additional_probe_authorized_or_performed": false,
+    "recheck_module_sha_source_journal_lease_process_before_use": true,
+    "capture_and_propagate_native_exit_after_cli": true
+  },
+  "limitations": [
+    "No actual transport problem.code was obtained by these offline tests.",
+    "The observer cannot recover upstream quota bodies discarded by the server or infer a reset time.",
+    "The P2 server diagnostic task remains unimplemented; production retry policy and budgets are unchanged.",
+    "No WAV changed and no audio or final approval follows from this diagnostic review."
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "ja",
+  "at": "2026-10-28T16:05:52.195Z",
+  "status": "NORMAL_RESUME4_DISPATCHED_THEN_STOPPED_THIRD_PROVIDER_BUSY_NO_NEW_COMPLETED_TAKES",
+  "anchors": {
+    "actual_readback": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume4-stop-audit-20261028/actual-readback.json",
+      "bytes": 15414,
+      "sha256": "6b82722fdc349307d09436c1888a9a93f1bd163ac4cd7a58028a64547f11cb31"
+    },
+    "baseline_manifest": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume2-stop-audit-20261028/manifest.json",
+      "bytes": 79745,
+      "sha256": "411a9d335508fc56597235549613a3478a9c48c4d79dfd130520afde5e113e65"
+    },
+    "baseline_comparison": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume2-stop-audit-20261028/actual-comparison.json",
+      "bytes": 93047,
+      "sha256": "3c46b46c5ef94f2312bb3768befa167ff2b4930c1759c8020e6c4aff73528aec"
+    },
+    "dispatch": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume4-stop-audit-20261028/dispatch.json",
+      "bytes": 1029,
+      "sha256": "0d9d91672dea3333cdd08ef7670a3ed61447102db4c1deb0eebf26c69b781bce"
+    },
+    "native": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume4-stop-audit-20261028/native.json",
+      "bytes": 270,
+      "sha256": "90454a95da1b878e6da92b3d35a4d6455f97c679783ece6b1b0c9f329db379ce"
+    },
+    "production_log": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume4-stop-audit-20261028/production.log",
+      "bytes": 705,
+      "sha256": "07703fc4f22b76cdcdc671692c5bd65ea1459ad804ae9a573a96732e13e33b2f"
+    },
+    "quota": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume4-stop-audit-20261028/quota.json",
+      "bytes": 919,
+      "sha256": "5a60544a333f9f21afbee0725eb6fc206840d152691b20f4fc411b87e091065d"
+    },
+    "observer": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume4-stop-audit-20261028/observer.jsonl",
+      "bytes": 640,
+      "sha256": "1412e3829813dd8a10affdf21a5a1f9a9a43daff45a4687e34b445ad83d6c367"
+    },
+    "recipe": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume3-stop-audit-20261028/resume4-root-recipe.mjs",
+      "bytes": 6803,
+      "sha256": "32540a38ebcb5703d379d190eea769e58b930949fe8533287cad206cb046b927"
+    },
+    "recipe_static_review": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume3-stop-audit-20261028/resume4-root-recipe-static-review.json",
+      "bytes": 2163,
+      "sha256": "f6c5d49e91413fd8bdde71c552d684bb7baa2aba541b1f3e5529a028a262fc93"
+    },
+    "Root_backoff": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume3-stop-audit-20261028/resume4-root-backoff.json",
+      "bytes": 1435,
+      "sha256": "25770a3349c9a037f5b88d5f48f704f9a5817b286f8a17b0cc82dca63ac550e0"
+    },
+    "historical_resume4_preparation": {
+      "file": "C:/Users/x8120/.codex/worktrees/f29b/travel_scanㄐ/docs/videos/curio-s31-v2/dub-ja-resume4-preparation.json",
+      "bytes": 4569,
+      "sha256": "a0a209d3e1b95dc31609b0e54bbf5ca2e3ae4838736b052e5d2f42705e7f2512"
+    }
+  },
+  "dispatch": {
+    "session": 12528,
+    "official_pid": 54452,
+    "at": "2026-10-28T15:59:25.795Z",
+    "lease_observed_at": "2026-10-28T15:59:26.945Z",
+    "frozen_originals_checked": 226,
+    "pinned_refs_checked": 205,
+    "normalized_guard_zero": true,
+    "passed_prior_not_before": "2026-10-28T15:40:00.000Z",
+    "planned_existing_reuse": 79,
+    "planned_new_requests": 133,
+    "planned_new_billable_characters": 2811,
+    "planned_saved_answer_reuse": 0,
+    "planned_counts_are_not_completion_or_invoice": true,
+    "once_only_slot_used_never_replay": true
+  },
+  "dryrun": {
+    "native_exit": 0,
+    "at": "2026-10-28T15:56:09.883Z",
+    "gemini_ready": true,
+    "remaining_characters_snapshot": 4604093,
+    "quota_is_snapshot_not_reservation": true,
+    "Root_read_original_log": true,
+    "grouped_dryrun_estimate_not_actual_pending_line_or_invoice_count": true
+  },
+  "actual_stop": {
+    "native_exit": 4,
+    "at": "2026-10-28T16:00:12.813Z",
+    "signal": null,
+    "captured_after_child_close": true,
+    "observed_responses": [
+      {
+        "timestamp": "2026-10-28T15:59:28.365Z",
+        "http_status": 429,
+        "problem_code": "video_speech_upstream_busy",
+        "retry_after_seconds": 10
+      },
+      {
+        "timestamp": "2026-10-28T15:59:39.581Z",
+        "http_status": 429,
+        "problem_code": "video_speech_upstream_busy",
+        "retry_after_seconds": 10
+      },
+      {
+        "timestamp": "2026-10-28T15:59:50.404Z",
+        "http_status": 429,
+        "problem_code": "video_speech_upstream_busy",
+        "retry_after_seconds": 10
+      },
+      {
+        "timestamp": "2026-10-28T16:00:01.632Z",
+        "http_status": 429,
+        "problem_code": "video_speech_upstream_busy",
+        "retry_after_seconds": 10
+      },
+      {
+        "timestamp": "2026-10-28T16:00:12.770Z",
+        "http_status": 429,
+        "problem_code": "video_speech_upstream_busy",
+        "retry_after_seconds": 10
+      }
+    ],
+    "no_success_line_in_log": true,
+    "new_completed_takes": 0,
+    "not_EPERM": true,
+    "provider_charges_unknown": true,
+    "provider_quota_reset_unknown": true,
+    "ASR_started": false,
+    "audio_approved": false
+  },
+  "actual_readback": {
+    "verdict": "PASS_JA_RESUME4_BUSY_STOP_EXACT_UNCHANGED_READBACK",
+    "existing_226_copies_and_current_pairs_unchanged": true,
+    "raw_and_cache_membership_and_fullSHA_unchanged": true,
+    "current_valid_raw_and_cache": 79,
+    "remaining_new_requests": 133,
+    "remaining_new_billable_characters": 2811,
+    "unconsumed_saved_answers": 0,
+    "journal_files": 134,
+    "journal_active_requests": 0,
+    "journal_unknown_or_held": 0,
+    "EN_media_master_source_flags_state2_run15_binding_preserved": true,
+    "four_completed_EN_histories_full_readback_preserved": true,
+    "no_duplicate_audio_freeze": true,
+    "producer_pid_probe": "ESRCH",
+    "lease_absent": true,
+    "STOP_absent": true,
+    "normalized_CIM_count": 0,
+    "quiet_observed_at": "2026-10-28T16:02:08.6611380+00:00"
+  },
+  "backoff": {
+    "not_before": "2026-10-28T18:05:00.000Z",
+    "Taipei_not_before": "2026-10-29T02:05:00+08:00",
+    "consecutive_JA_busy_stops": 3,
+    "minimum_minutes": 120,
+    "Root_decision_not_provider_reset": true,
+    "next": "After this boundary, Root must freshly verify source/cache/all journals/lease/process, then prepare and independently review a distinct new slot and read a fresh official dryrun quota before deciding paid continuation. No resume5 template is created in this checkpoint; never replay resume4 or old slots."
+  },
+  "preservation": {
+    "no_force": true,
+    "no_redo": true,
+    "no_automatic_retry": true,
+    "no_manual_journal_clear_or_promote": true,
+    "no_provider_voice_global_budget_or_limit_changes": true,
+    "original_IO_extra_wait_ms": 30000,
+    "EN_completed_ASR_and_four_archives_preserved": true,
+    "historical_resume4_preparation_unchanged": true,
+    "H5_still_source_only_nonexecutable": true
+  },
+  "validation": {
+    "check_tasks": {
+      "command": "node tools/tasks.mjs check",
+      "cwd": "C:/Users/x8120/.codex/worktrees/f29b/travel_scanㄐ",
+      "native_exit": 0,
+      "validated_task_files": 2193,
+      "warning_lines": 144,
+      "result": "PASS_WITH_EXISTING_QUEUE_WARNINGS",
+      "at": "2026-10-28T16:05:17.649Z"
+    }
+  },
+  "fit_unknown": true,
+  "quality_unknown": true,
+  "successful_JA_quality_retake_rounds": 0,
+  "accepted_dubs": 0,
+  "EN_unchecked_attempts_resolved": 1,
+  "other6_not_started": true,
+  "image_budget_unchanged": true,
+  "package_and_s15_pending": true,
+  "no_provider_CLI_SSH_or_canonical_actions_by_public_checkpoint": true
+}

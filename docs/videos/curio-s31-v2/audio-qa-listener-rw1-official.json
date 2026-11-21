@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "at": "2026-10-27T09:44:23.369Z",
+  "official_check_session": 8572,
+  "native_exit": 1,
+  "native_exit_reason": "two_quality_flags",
+  "checked": 212,
+  "exact": 155,
+  "same_sound_or_filler": 30,
+  "jev_pass": 4,
+  "second_transcript_cleared": 21,
+  "flag_count": 2,
+  "flags": [
+    "v2a0491",
+    "v2a0722"
+  ],
+  "flag_notes": {
+    "v2a0491": "Jev 0.05: heard 「學者吳政留下的文字，讓我們看到答案是怎麼形成的。」",
+    "v2a0722": "Jev 0.11: heard 「能證明麗芝當天也到了嗎？」"
+  },
+  "flag_raw_entries": {
+    "v2a0491": {
+      "scene": "v2-add-049",
+      "clip": "07546d441d65a5d7",
+      "terms": [],
+      "heard": "學者吳政留下的文字，讓我們看到答案是怎麼形成的。",
+      "noul": 0.05,
+      "intended": "學者吳曾留下的文字，讓我們看到答案是怎麼形成的。",
+      "spoken_form": "學者吳曾留下的文字，讓我們看到答案是怎麼形成的。",
+      "match_kind": null,
+      "match": false,
+      "second": {
+        "by": "whisper-listener-rw1-verified-reader.mjs",
+        "terms": [],
+        "heard": "學者無憎留下的文字,讓我們看到答案是怎麼形成的。",
+        "match_kind": null,
+        "noul": 0.08
+      }
+    },
+    "v2a0722": {
+      "scene": "v2-add-072",
+      "clip": "10c12f976d0ce98e",
+      "terms": [],
+      "heard": "能證明麗芝當天也到了嗎？",
+      "noul": 0.11,
+      "intended": "能證明荔枝當天也到了嗎？",
+      "spoken_form": "能證明荔枝當天也到了嗎？",
+      "match_kind": null,
+      "match": false,
+      "second": {
+        "by": "whisper-listener-rw1-verified-reader.mjs",
+        "terms": [],
+        "heard": "能證明立志當天也到了嗎?",
+        "match_kind": null,
+        "noul": 0.08
+      }
+    }
+  },
+  "new_primary_transcriptions": 5,
+  "jev_calls": 2,
+  "check_sha256": "f90e68fb66eb44013726e4e7dabeda42a8272dbe0957672164139222ed83bb8d",
+  "flags_sha256": "c1ca984d8e5374d69710356f026efed775738a82e4248e8472afe58a16344ea0",
+  "reader_sha256": "114981084b5293db2d16115c63df5d7df2a073dbdeee754db2fe164ab4c8bce2",
+  "source_video_sha256": "6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86",
+  "source_speech_hash": "fa2912daff4bd218",
+  "timeline_sha256": "461844fdcf9a29ecf581397c9c546637ce85262bc7ef2b8854e683fdf64d8f31",
+  "narration_sha256": "2a80e13415cb2c90ae5887f2c97e0604120c9716ccffda68d1d682458ae268be",
+  "cohort_sha256": "4d729c2d1c6d96c3ebcd6c60e0b007f978893598ef23e2e9707581d290124edb",
+  "frozen_official_manifest_sha256": "7387cf915a808aaafb459bfeac87b52ee9138bb8a84344f130d6d40d0b3cae0b",
+  "audio_evidence_problems": [],
+  "journal_active_entries": 0,
+  "retained_recovery_evidence_preserved": true,
+  "successful_plain_retake_rounds": 2,
+  "successful_listener_synthesis_rounds": 1,
+  "audio_approved": false,
+  "final_preview_current": false,
+  "next_action": "Independent pronunciation review of two residual flags, preserving real ASR and Jev values. No further synthesis or approval dispatched at this snapshot."
+}

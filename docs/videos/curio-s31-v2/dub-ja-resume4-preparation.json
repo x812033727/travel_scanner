@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "ja",
+  "at": "2026-10-28T14:45:34.070Z",
+  "status": "RESUME4_PREPARED_ONLY_EXACT_SOURCE_REVIEWED_BOTH_SLOTS_UNUSED",
+  "refs": {
+    "recipe": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume3-stop-audit-20261028/resume4-root-recipe.mjs",
+      "bytes": 6803,
+      "sha256": "32540a38ebcb5703d379d190eea769e58b930949fe8533287cad206cb046b927"
+    },
+    "Root_static_review": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume3-stop-audit-20261028/resume4-root-recipe-static-review.json",
+      "bytes": 2163,
+      "sha256": "f6c5d49e91413fd8bdde71c552d684bb7baa2aba541b1f3e5529a028a262fc93"
+    },
+    "actual_stop_readback": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume3-stop-audit-20261028/actual-readback.json",
+      "bytes": 15137,
+      "sha256": "68e881ae66e59a3ef4ab5c0e0bec528b5cfc9bdbf7dc765dd067f074729db583"
+    },
+    "Root_backoff": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume2-stop-audit-20261028/resume3-root-backoff.json",
+      "bytes": 1436,
+      "sha256": "0a60d71dd8ca8cfaf555ec4ce3ea65f94060fe1a288405e05922b28adc33eff3"
+    },
+    "normalized_guard": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-first-recovery-prep-20261028/process-guard-normalized.ps1",
+      "bytes": 2687,
+      "sha256": "9003fb5c610111409b8c91284f6f721168b5d3fcef137bf770a357be09950216"
+    },
+    "immutable_resume3_stop": {
+      "file": "C:/Users/x8120/.codex/worktrees/f29b/travel_scanㄐ/docs/videos/curio-s31-v2/dub-ja-first-resume3.json",
+      "bytes": 6897,
+      "sha256": "773044af0241d1f9325f734c5850384bff35897063413c93dd166d1c331601fc"
+    }
+  },
+  "current_snapshot": {
+    "valid_raw_cache_lines": 79,
+    "remaining_new_requests": 133,
+    "remaining_new_billable_characters": 2811,
+    "unconsumed_saved_answers": 0,
+    "existing_frozen_files": 226,
+    "journal_files": 134,
+    "source": "Independent actual stop readback; no new canonical scan by this public preparation.",
+    "fit_or_quality_known": false
+  },
+  "execution": {
+    "recipe_directory": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume3-stop-audit-20261028",
+    "not_before": "2026-10-28T15:40:00.000Z",
+    "both_dryrun_and_paid_hard_blocked_before_boundary": true,
+    "dryrun_executed": false,
+    "paid_executed": false,
+    "once_only_slots_unused": true,
+    "resume4_quota_exists": false,
+    "absence_checked_filenames": [
+      "resume4-dryrun-dispatch.json",
+      "resume4-dryrun.log",
+      "resume4-dryrun-native.json",
+      "resume4-paid-dispatch.json",
+      "resume4-paid.log",
+      "resume4-paid-native.json",
+      "resume4-quota.json"
+    ],
+    "automatic_retry": false,
+    "old_slots_never_replay": true,
+    "steps": [
+      "After the boundary, Root freshly verifies current source, exact226 originals/copies,79 raw/cache,133 pending bodies/2811,134 journal,lease/STOP/priorPID and normalized process guard.",
+      "Root may invoke only the new resume4 dryrun in ROOT_REVIEWED mode; capture native0 and actually read original ready/quota log.",
+      "Root then creates R4/resume4-quota.json bound by fullSHA to exact actual-readback68e881, raw dryrun log/native, ready/live remaining and timestamp. Require remaining>=4504 conservatively and finite nonnegative age<=1200000ms; quota is a snapshot, not reservation.",
+      "Only after that readback/review, Root may invoke the distinct once-only normal paid slot in ROOT_REVIEWED mode with the fullSHA of that actual quota receipt. Any refusal or drift holds; no automatic reattempt."
+    ],
+    "dryrun_argv_after_fresh_Root_review": [
+      "node",
+      "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume3-stop-audit-20261028/resume4-root-recipe.mjs",
+      "dryrun",
+      "ROOT_REVIEWED"
+    ],
+    "paid_quota_fullSHA_not_available_yet": true
+  },
+  "preservation": {
+    "source_voice_provider_global_budgets_limits_unchanged": true,
+    "no_force_or_redo": true,
+    "IO_extra_wait_ms": 30000,
+    "EN_completed_state_and_four_closures_preserved": true,
+    "H5_source_template_still_nonexecutable": true,
+    "future_JA_ASR_process_guard_separately_pending": true
+  },
+  "no_CLI_API_SSH_model_producer_or_canonical_writes_by_this_preparation": true,
+  "audio_quality_or_listening_approval": false,
+  "EN_unchecked_attempts_resolved": 1,
+  "accepted_dubs": 0,
+  "other6_pending": true,
+  "image_budget_unchanged": true,
+  "package_and_s15_pending": true
+}
