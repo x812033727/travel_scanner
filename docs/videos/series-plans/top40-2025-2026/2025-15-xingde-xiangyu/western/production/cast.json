@@ -1,0 +1,3133 @@
+{
+  "schema_version": 1,
+  "series": "2025-15-xingde-xiangyu-western",
+  "purpose": "Till the Verdict Do Us Part, season one (episodes 1–60): the shared look, character appearances (English prompts for image and video models), voices, extras, sets and props. Every episode's video.json copies the characters it uses from here (id, name, appearance, voice; costume changes through shot_looks) and never rewrites them, so faces do not drift. Story facts come from ../season-01.json and ../GLOSSARY.md.",
+  "owner_notes": [
+    "Owner 2026-11-09/10: 9:16 vertical (changed from 16:9 on 2026-11-10); season one only, 60 episodes; English written natively, not dubbed from Mandarin.",
+    "plan.json: episodes 90–180 seconds, chapter finales at least 120; 3–5 hooks an episode; production on MiniMax Hailuo image-to-video, photoreal live-action, diverse Western cast.",
+    "setting.json advertiser_safety and glamour: no blood, no medical procedure, no violence toward people, no bed scenes, no bare backs or low necklines; glass is smashed only when it is a fake, in gloves and goggles, into a steel drum; beauty is in faces, hands and furnace light.",
+    "No readable text is ever generated in an image or clip: documents, signs, receipts, ledgers and the bubble name are blank or illegible in generation; any words the viewer must read are added in post.",
+    "Owner 2026-11-10: dialogue follows the built-in route of 種田 and 恁祖媽: silent H3 clips, voices from the site's Gemini TTS, no lip-sync model; the on-screen speaker is written 'mouth talking', lines often sit on reaction shots marked off-screen.",
+    "Owner 2026-11-10 ('照內建的'): voices are the cast.json defaults (Nora Despina, Elias Charon, Grant Algieba, Peg Gacrux); portraits are the screen-test default picks in assets/refs/ (Nora b, Elias a, Grant a, Peg a). Other characters get portraits when first drawn."
+  ],
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action modern American drama, film still, natural cinematic light, realistic skin and fabric texture, soft flattering light on faces, shallow depth of field; Pacific Northwest overcast grey-blue daylight and rain in season one; the Glass House cold blue and reflective; the Ashford house grey concrete with warm pools of lamplight; Remelt Studio warm orange furnace glow against cold window light",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, letters, words, readable signs, subtitles, watermark, logo, brand names, license plates, extra fingers, deformed hands, blood, gore, injury, medical procedure, ultrasound screen, nudity, cleavage, low neckline, bare back, see-through clothing, wet clothes, bed scene, fantasy glow effects, sparkles",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces, clothes, scars and props stay the same; glass and molten glass move with real weight and heat shimmer; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "nora",
+      "setting_id": "nora-quinn",
+      "name": "Nora Quinn",
+      "appearance": "a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face with natural light makeup, long dark chestnut hair loose past her shoulders, a cream cable-knit sweater, soft grey trousers, flat shoes",
+      "shot_looks": [
+        {
+          "id": "pregnant",
+          "appearance": "a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face with natural light makeup, five months pregnant with a visible rounded belly, long dark chestnut hair loose past her shoulders, a loose cream cable-knit sweater dress, soft cream fluffy slippers"
+        },
+        {
+          "id": "hospital",
+          "appearance": "a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face, pale and tired, long dark chestnut hair loose and slightly tangled, a faded white hospital patient gown with a small pale blue diamond print, a round snap neckline and short sleeves, under a cream cardigan, no makeup"
+        },
+        {
+          "id": "night-coat",
+          "appearance": "a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face with natural light makeup, five months pregnant, long dark chestnut hair loose and wet from rain, a loose cream cable-knit sweater dress under an open camel wool coat, soft cream fluffy slippers, her clothes clean and dry under the coat, pain only in her face and posture"
+        },
+        {
+          "id": "discharge",
+          "appearance": "a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face, pale and tired, no makeup, long dark chestnut hair loose and slightly tangled, a loose cream cable-knit sweater dress hanging straight to below the knee, grey soft slippers"
+        },
+        {
+          "id": "motel",
+          "appearance": "a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face with natural light makeup, long dark chestnut hair in a loose low knot, a cream knit sweater, blue jeans, flat tan ankle boots"
+        },
+        {
+          "id": "motel-down",
+          "appearance": "a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face with natural light makeup, long dark chestnut hair loose past her shoulders, a cream knit sweater, blue jeans, flat tan ankle boots"
+        },
+        {
+          "id": "shoulder",
+          "appearance": "a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face with natural light makeup, dark chestnut hair cut to a clean shoulder-length bob, a cream knit sweater, dark trousers, flat tan ankle boots"
+        },
+        {
+          "id": "decree",
+          "appearance": "a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face with natural light makeup, dark chestnut hair cut to a clean shoulder-length bob, an ivory fine-knit sweater with a modest round neckline, pale grey tailored trousers, low nude flat shoes"
+        },
+        {
+          "id": "gown",
+          "appearance": "a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face with natural light makeup, dark chestnut shoulder-length hair smoothed back behind her ears, a misty-grey floor-length gown with a modest high boat neckline and long sleeves"
+        },
+        {
+          "id": "work",
+          "appearance": "a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face with natural light makeup, dark chestnut shoulder-length hair tied in a low ponytail, clear safety goggles pushed up on her head, a dark canvas work apron over a grey henley with long sleeves, dark work trousers, sturdy boots"
+        },
+        {
+          "id": "nineteen",
+          "appearance": "a 19-year-old white Irish-American girl, slender, fair skin with faint freckles, soft grey-green eyes, long dark chestnut hair in a high ponytail, a faded misty-grey T-shirt and a too-big leather apron, clear safety goggles worn over her eyes, twelve years ago)"
+        },
+        {
+          "id": "henley",
+          "appearance": "a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face with natural light makeup, dark chestnut shoulder-length hair tied in a low ponytail, a grey henley with long sleeves, dark work trousers, sturdy boots"
+        },
+        {
+          "id": "henley-down",
+          "appearance": "a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face with natural light makeup, dark chestnut hair cut to a clean shoulder-length bob, worn loose, a grey henley with long sleeves, dark work trousers, sturdy boots"
+        },
+        {
+          "id": "home",
+          "appearance": "a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face with natural light makeup, dark chestnut shoulder-length hair tied in a low ponytail, a soft heather-grey long-sleeve cotton top, loose charcoal lounge trousers, grey wool socks"
+        },
+        {
+          "id": "blazer",
+          "appearance": "a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face with natural light makeup, dark chestnut hair cut to a clean shoulder-length bob, a dark navy linen blazer over a cream knit top, dark trousers, flat tan ankle boots"
+        }
+      ],
+      "voice": {
+        "provider": "gemini",
+        "name": "Despina",
+        "style": "General American accent, natural conversational pace, clear diction; 31-year-old woman, soft, steady and unhurried; in season one she apologizes too often and her sentences trail down; when she states a fact in public her voice goes quiet and very clear, never shrill"
+      },
+      "portrait": "assets/refs/nora-portrait.jpg",
+      "s1_episodes": "1–60",
+      "notes": "Hair: long until episode 18; cut to shoulder length in episode 19 and stays there. Season one look changes with the story: pregnant (1), hospital (2–5), discharge (6–10, see s1-bible-e004-e010.md), motel coat (11–20). Glamour: furnace light on her goggles, the side of her face as she turns the blowpipe. Episode 2 night exit: `night-coat`. No wrist burn marks anywhere (review 2026-11-10). Episodes 11–20 (s1-bible-e011-e020.md): motel (11 to the haircut in 19), shoulder (19 after the cut, 20 montage), decree (20, courthouse); the camel coat is a prop sentence, not part of a look. Episodes 21–60 (s1-bible-e021-e030 … e051-e060.md, reconciled 2026-11-12): decree (21, day 99), shoulder (21 end–25, 31–32, 42, 49), gown (24 at the mirror, 25 first shot, 26–30), nineteen (28, 31, 34 flashbacks), henley (out of the studio from 33; 40 at the terminal, sleeves rolled), work (inside Remelt, 33–60), home (44–45, the Ashford house at night), blazer (53), henley-down (57, hair loose). Her olive work jacket is a prop sentence (nora-jacket), never part of a look. Elias's band (elias-band) is on her left ring finger in every shot from 20; under gloves write only the gloves."
+    },
+    {
+      "id": "elias",
+      "setting_id": "elias-ashford",
+      "name": "Elias Ashford",
+      "appearance": "a 34-year-old Italian-American man, handsome, about 188 cm tall, lean with straight shoulders, olive skin, dark brown hair combed straight back from the forehead, short at the sides, dark brown eyes, a defined jaw, thin silver wire-framed glasses, a charcoal three-piece suit with a faint windowpane check, a white shirt open at the collar, no tie, a white pocket square",
+      "shot_looks": [
+        {
+          "id": "turtleneck",
+          "appearance": "a 34-year-old Italian-American man, handsome, about 188 cm tall, lean with straight shoulders, olive skin, dark brown hair combed straight back from the forehead, short at the sides, dark brown eyes, a defined jaw, thin silver wire-framed glasses, a black merino turtleneck and charcoal trousers"
+        },
+        {
+          "id": "furnace",
+          "appearance": "a 34-year-old Italian-American man, handsome, about 188 cm tall, lean with straight shoulders, olive skin, dark brown hair combed straight back from the forehead, short at the sides, dark brown eyes, a defined jaw, thin silver wire-framed glasses, a plain black short-sleeved T-shirt, a brown leather work apron, dark work trousers, sturdy boots"
+        },
+        {
+          "id": "soot",
+          "appearance": "a lean 22-year-old Italian-American young man at a glass furnace, face smudged with soot so his features are hard to read, a sleeveless undershirt and a leather apron, a fresh bandage across the back of his left hand (flashback 'Soot', twelve years ago; never a clear face in season one)"
+        }
+      ],
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "General American accent, natural conversational pace, clear diction; 34-year-old man, low, sparse and exact; every sentence sounds like a contract clause; he never raises his voice; with Nora he slows down by half a beat"
+      },
+      "portrait": "assets/refs/elias-portrait.jpg",
+      "s1_episodes": "2, 10, 15–22, 24–27, 29–32, 35, 37, 44, 49, 55–56, 58–60",
+      "notes": "The scar on the back of his LEFT hand is hidden until episode 60 (gloves or hand in pocket; thread s01-t15). In episode 2 only his gloved left hand dialing 911 and his coat cuff are shown (dark brown leather glove, never the scar), never his face; his lines there are off-screen. 2026-11-12: hair matches elias-portrait.jpg (combed back, not close-cropped); posture and the left hand are written in each shot, not in the look: the left hand is in a pocket or out of frame in every shot until episode 60. Reconciled 2026-11-12: the overcoat is a prop (elias-overcoat), not part of `turtleneck`; at the furnace (55–60) the gloves are a prop (heat-gloves) and the scar exists only in its own insert (elias-scar-insert, episode 60)."
+    },
+    {
+      "id": "grant",
+      "setting_id": "grant-whitlock",
+      "name": "Grant Whitlock",
+      "appearance": "a 37-year-old white American man, good-looking in a polished way, sandy-blond hair neatly side-parted, clean-shaven, thin round metal-rim glasses, a light grey finely checked tailored suit, a pale blue open-collar shirt, clear glass cufflinks",
+      "shot_looks": [
+        {
+          "id": "rain",
+          "appearance": "a 37-year-old white American man, good-looking in a polished way, sandy-blond hair side-parted and damp, clean-shaven, thin round metal-rim glasses with drops on the lenses, a light grey finely checked suit with a wet collar"
+        },
+        {
+          "id": "young",
+          "appearance": "a 25-year-old white American man, sandy-blond side-parted hair, clean-shaven, a cheap grey suit and a lanyard, thin round metal-rim glasses (flashback, Pell Glassworks sales manager twelve years ago)"
+        }
+      ],
+      "voice": {
+        "provider": "gemini",
+        "name": "Algieba",
+        "style": "General American accent, natural conversational pace, clear diction; 37-year-old man, level and low, unhurried, calls her 'Nor'; when cornered his sentences get short and clipped but he never shouts"
+      },
+      "portrait": "assets/refs/grant-portrait.jpg",
+      "s1_episodes": "1, 3–5, 8–9, 11–12, 18–20, 22, 26–31, 35, 39, 42, 45, 50, 57, 59–60",
+      "notes": "Model-husband image: soft lighting on him in public, colder light when he is alone."
+    },
+    {
+      "id": "sienna",
+      "setting_id": "sienna-vale",
+      "name": "Sienna Vale",
+      "appearance": "a 27-year-old Indian-American woman, striking, warm brown skin, a sharp jet-black chin-length bob, bold red lipstick, a slim gold watch on her LEFT wrist, a bright red tailored pantsuit with a modest neckline, pointed heels",
+      "shot_looks": [
+        {
+          "id": "yellow",
+          "appearance": "a 27-year-old Indian-American woman, striking, warm brown skin, a sharp jet-black chin-length bob, bold red lipstick, a slim gold watch on her LEFT wrist, a canary-yellow tailored blazer and matching trousers with a modest neckline"
+        }
+      ],
+      "voice": {
+        "provider": "gemini",
+        "name": "Zephyr",
+        "style": "General American accent, natural conversational pace, clear diction; 27-year-old woman, fast, bright and a little barbed, laughs before she says the cruel part"
+      },
+      "portrait": "assets/refs/sienna-portrait.jpg",
+      "s1_episodes": "6–8, 19–20, 22, 26, 28, 50",
+      "notes": "She is left-handed: always write, sign and turn pages with her LEFT hand on screen (the payoff in episode 50)."
+    },
+    {
+      "id": "peg",
+      "setting_id": "peg-whitlock",
+      "name": "Margaret \"Peg\" Whitlock",
+      "appearance": "a 62-year-old white American woman, short straight grey hair swept to one side, a sharp lined face, tortoiseshell reading glasses on her face, a long brown wooden-bead necklace, a washed-out oatmeal cardigan over a plain blouse, dark slacks, sensible shoes",
+      "shot_looks": [
+        {
+          "id": "coat",
+          "appearance": "a 62-year-old white American woman, short straight grey hair swept to one side, a sharp lined face, tortoiseshell reading glasses on her face, a long brown wooden-bead necklace, a long brown quilted coat over her cardigan"
+        },
+        {
+          "id": "visit",
+          "appearance": "a 62-year-old white American woman, short straight grey hair swept to one side, a sharp lined face, tortoiseshell reading glasses on her face, a long brown wooden-bead necklace, a washed-out oatmeal cardigan over a plain blouse, dark slacks, sensible shoes"
+        }
+      ],
+      "voice": {
+        "provider": "gemini",
+        "name": "Gacrux",
+        "style": "General American accent, natural conversational pace, clear diction; 62-year-old woman from a small Washington town, quick, blunt and dry; every kind thing comes out as a complaint; when she finally speaks about the hallway her voice drops and slows"
+      },
+      "portrait": "assets/refs/peg-portrait.jpg",
+      "s1_episodes": "1, 5, 8–25, 30, 34–35, 37, 39–40, 42, 44–45, 48, 50–53, 57–58",
+      "notes": "Her thin worn gold wedding band with one tiny old diamond (prop `peg-ring`) is on her left hand until episode 15, when she pawns it; from then until episode 56 write `a faint pale band of skin on her left ring finger where a ring used to be`; Nora redeems it in episode 57 and it is back on her finger from then on (thread s01-t13). Her ledger lines are read aloud by her, never shown as readable text. 2026-11-12: hair matches peg-portrait.jpg (short, straight, swept to one side; not a perm)."
+    },
+    {
+      "id": "dana",
+      "setting_id": "dana-okafor",
+      "name": "Dana Okafor",
+      "appearance": "a 35-year-old Black Nigerian-American woman, deep brown skin, dark brown eyes, hair in a neat high bun, a fitted black blazer over a white T-shirt, black trousers, white sneakers",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Kore",
+        "style": "General American accent, natural conversational pace, clear diction; 35-year-old woman attorney, fast, cool and funny, finishes other people's sentences"
+      },
+      "portrait": null,
+      "s1_episodes": "17, 19–20, 25, 29, 34, 36, 41–43, 48–51, 58",
+      "notes": "She wrote clause two."
+    },
+    {
+      "id": "theo",
+      "setting_id": "theo-park",
+      "name": "Theo Park",
+      "appearance": "a 29-year-old Korean-American man, neat black hair, round tortoiseshell glasses, a light blue button-down shirt under a grey knit sweater vest, khakis",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Iapetus",
+        "style": "General American accent, natural conversational pace, clear diction; 29-year-old man, flat, slow and earnestly literal, reads his observation log in a deadpan voice"
+      },
+      "portrait": null,
+      "s1_episodes": "16–17, 20–22, 24–26, 29–30, 34–35, 38, 45, 55, 58–59",
+      "notes": "Comic relief. His 'Mrs. Ashford Observation Log' is read aloud, not shown."
+    },
+    {
+      "id": "rosa",
+      "setting_id": "rosa-pell",
+      "name": "Rosa Pell",
+      "appearance": "a 63-year-old Italian-American woman, sturdy and broad-shouldered, olive skin, very short cropped salt-and-pepper hair, more black than grey, close to her head, thick dark eyebrows, dark brown eyes, deep lines at the corners of her eyes, no glasses, a deep wine-red cotton shirt with the sleeves rolled up under a stained white apron, an old silver bangle on her right wrist",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Pulcherrima",
+        "style": "General American accent, natural conversational pace, clear diction; 63-year-old woman, hearty and loud, scolds like she is feeding you"
+      },
+      "portrait": null,
+      "s1_episodes": "46–47, 49, 59",
+      "notes": "In season one she looks at Nora a beat too long and says nothing about who she is. Her ladle is a prop (soup-ladle), written per shot. Never shares a shot with Peg."
+    },
+    {
+      "id": "walter",
+      "setting_id": "walter-pell",
+      "name": "Walter Pell",
+      "appearance": "a 55-year-old Italian-American man, thick rough hands, grey stubble, fine lines around his eyes from furnace heat, a heavy leather apron over a work shirt (flashback only)",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Rasalgethi",
+        "style": "General American accent, natural conversational pace, clear diction; 55-year-old man, gravelly, slow and kind; flashback lines only"
+      },
+      "portrait": null,
+      "s1_episodes": "28",
+      "notes": "Flashback only (episode 28)."
+    },
+    {
+      "id": "claire",
+      "setting_id": "claire-quinn",
+      "name": "Claire Quinn",
+      "appearance": "a 52-year-old white Irish-American woman, long grey-streaked chestnut hair pinned up, Nora's grey-green eyes, a loose natural linen shirt (flashback only)",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Vindemiatrix",
+        "style": "General American accent, natural conversational pace, clear diction; 52-year-old woman, gentle, low and unhurried; flashback lines only"
+      },
+      "portrait": null,
+      "s1_episodes": "40",
+      "notes": "Flashback only. Episode 40: not on screen unless the owner overrules (s1-decisions-e021-e060.md); Nora says her mother's line herself."
+    },
+    {
+      "id": "gus",
+      "setting_id": "gus-moretti",
+      "name": "Gus Moretti",
+      "appearance": "a 70-year-old Italian-American man, stooped, a bald crown with white hair at the sides, small steel reading glasses low on his nose, a sleeveless white undershirt and old work trousers, weathered sun-spotted forearms and thick-knuckled hands",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "General American accent, natural conversational pace, clear diction; 70-year-old man, slow and gravelly, old-timer plain talk, short sentences"
+      },
+      "portrait": null,
+      "s1_episodes": "31–34, 36–37, 39–40, 54–56",
+      "notes": "Throws his back out in episode 54. At the furnace add the props gus-apron, gus-gloves and gus-face-shield. No scars written anywhere (fine scars render as red marks)."
+    },
+    {
+      "id": "sparks",
+      "setting_id": "rocco-moretti",
+      "name": "Rocco \"Sparks\" Moretti",
+      "appearance": "a 20-year-old Italian-American young man, buzz cut, a small silver stud earring, a black T-shirt, grey work pants, tan heat-protective sleeves on his forearms",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "General American accent, natural conversational pace, clear diction; 20-year-old man, loud, eager and always in a hurry"
+      },
+      "portrait": null,
+      "s1_episodes": "33–41, 43, 46–48, 51, 54–57, 59–60",
+      "notes": "His crooked glass pieces become straight in episode 56 (thread s01-t26)."
+    },
+    {
+      "id": "dr-brandt",
+      "setting_id": "helen-brandt",
+      "name": "Dr. Helen Brandt",
+      "appearance": "a 48-year-old white German-American woman, short silver-blond bob, rectangular glasses, a white doctor's coat over navy scrubs",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Erinome",
+        "style": "General American accent, natural conversational pace, clear diction; 48-year-old woman doctor, even, precise and warm; pauses one beat before she speaks"
+      },
+      "portrait": "assets/refs/dr-brandt-portrait.jpg",
+      "s1_episodes": "2, 11–12, 33",
+      "notes": "'I'm so sorry.' (episode 2). Her six-month furnace ban is set in episode 33."
+    },
+    {
+      "id": "reyes",
+      "setting_id": "marcus-reyes",
+      "name": "Marcus Reyes",
+      "appearance": "a 45-year-old Mexican-American man, close-cropped black hair greying at the temples, a dark navy suit, white shirt",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "General American accent, natural conversational pace, clear diction; 45-year-old male prosecutor, hard, short and fair; 'Bring me evidence, not a story.'"
+      },
+      "portrait": null,
+      "s1_episodes": "14, 53",
+      "notes": ""
+    },
+    {
+      "id": "fisk",
+      "setting_id": "leonard-fisk",
+      "name": "Leonard Fisk",
+      "appearance": "a 52-year-old white American man, slicked-back grey-brown hair, a sharp plain mid-grey suit over a white shirt with an open collar, no tie, gold-rimmed glasses",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "General American accent, natural conversational pace, clear diction; 52-year-old male attorney, slow, smooth and formal, polite in a way that is a threat"
+      },
+      "portrait": "assets/refs/fisk-portrait.jpg",
+      "s1_episodes": "6–8, 20, 25, 42–43, 50",
+      "notes": ""
+    },
+    {
+      "id": "crane",
+      "setting_id": "victor-crane",
+      "name": "Victor Crane",
+      "appearance": "a 61-year-old white American man, short and stocky, a ruddy face, a dark band-collar jacket",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Fenrir",
+        "style": "General American accent, natural conversational pace, clear diction; 61-year-old man, loud, laughs while he threatens"
+      },
+      "portrait": null,
+      "s1_episodes": "26, 28–29",
+      "notes": "Launch front row (26, 28–29). The poker chip is a prop (poker-chip)."
+    },
+    {
+      "id": "hale",
+      "setting_id": "judith-hale",
+      "name": "Judith Hale",
+      "appearance": "a 58-year-old Black American woman, short silver-white natural hair, a long black tunic, a single glass brooch at her collar, an appraising gaze",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Callirrhoe",
+        "style": "General American accent, natural conversational pace, clear diction; 58-year-old woman, cool and slow, every word deliberate"
+      },
+      "portrait": null,
+      "s1_episodes": "—",
+      "notes": "Not in season one (season two Harbor Lights); defined here so the face is locked."
+    },
+    {
+      "id": "penrose",
+      "setting_id": "douglas-penrose",
+      "name": "Douglas Penrose",
+      "appearance": "a 56-year-old white American man, neatly combed grey hair, a navy suit, a pale blue tie, a kindly smile",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "General American accent, natural conversational pace, clear diction; 56-year-old man, mild, courteous and easygoing"
+      },
+      "portrait": null,
+      "s1_episodes": "—",
+      "notes": "Not in season one; defined so the face is locked for later seasons."
+    },
+    {
+      "id": "nurse-kim",
+      "setting_id": "s01-nurse-kim",
+      "name": "Nurse Joanne Kim",
+      "appearance": "a Korean-American woman around 30, pale blue scrubs, black hair parted in the middle and pulled back into a low knot, a round kind face, gentle eyes",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "General American accent, natural conversational pace, clear diction; 30-year-old nurse, very soft and gentle"
+      },
+      "portrait": "assets/refs/nurse-kim-portrait.jpg",
+      "s1_episodes": "2–3",
+      "notes": "Episode 2: reaches for the half-knitted hat; Nora pushes her away and keeps it. Episodes 2-3 speak on screen (model voice)."
+    },
+    {
+      "id": "cole",
+      "setting_id": "s01-driver-cole",
+      "name": "Cole",
+      "appearance": "a Black American man around 40, close-cropped hair, a black suit over a black open-collar shirt, white gloves",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Zubenelgenubi",
+        "style": "General American accent, natural conversational pace, clear diction; 30-year-old driver, polite, few words, never meets your eye"
+      },
+      "portrait": "assets/refs/cole-portrait.jpg",
+      "s1_episodes": "1, 5, 8–9, 29, 36, 40, 43, 57",
+      "notes": "Grant's driver. From episode 36 he watches Kiln Row from Grant's pearl-white sedan (grant-car); 36, 43 and 57 only his white-gloved hand. Write his eyeline in each shot."
+    },
+    {
+      "id": "dale",
+      "setting_id": "s01-pharmacist-dale",
+      "name": "Dale Hutchins",
+      "appearance": "a 40-year-old white American man, thick black-framed glasses, a white pharmacist's coat with two pens clipped in the breast pocket",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadaltager",
+        "style": "General American accent, natural conversational pace, clear diction; 40-year-old pharmacist, by-the-book, reads records in a level monotone"
+      },
+      "portrait": null,
+      "s1_episodes": "11–13",
+      "notes": ""
+    },
+    {
+      "id": "bev",
+      "setting_id": "s01-bev",
+      "name": "Bev",
+      "appearance": "a 55-year-old white American woman, a round soft face with rosy cheeks, short curly auburn-grey hair, a bright floral blouse, reading glasses hanging on a beaded chain against her chest",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "General American accent, natural conversational pace, clear diction; 55-year-old motel owner, chatty, nosy and soft-hearted"
+      },
+      "portrait": "assets/refs/bev-portrait.jpg",
+      "s1_episodes": "9, 12, 14–16, 19–20",
+      "notes": "Second witness at the courthouse (episode 20)."
+    },
+    {
+      "id": "ray",
+      "setting_id": "s01-lighting-ray",
+      "name": "Ray",
+      "appearance": "a 30-year-old Filipino-American man, a black T-shirt and black cargo pants, a headset microphone, black gaffer tape around one wrist",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Achird",
+        "style": "General American accent, natural conversational pace, clear diction; 30-year-old lighting tech, quick and friendly"
+      },
+      "portrait": null,
+      "s1_episodes": "27–28",
+      "notes": ""
+    },
+    {
+      "id": "lyle",
+      "setting_id": "s01-reporter-lyle",
+      "name": "Lyle Becker",
+      "appearance": "a 30-year-old white American man, a plaid shirt, a backwards plain baseball cap",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "General American accent, natural conversational pace, clear diction; 30-year-old blogger, fast and pushy, talks in headlines"
+      },
+      "portrait": null,
+      "s1_episodes": "26, 28–30, 46–47, 57",
+      "notes": "Camera and phone are props (lyle-camera, lyle-phone); chewing gum, if any, goes in the action column."
+    },
+    {
+      "id": "hank",
+      "setting_id": "s01-supplier-hank",
+      "name": "Hank Doyle",
+      "appearance": "a 50-year-old white American man, buzz cut, a grey work jacket, white sand in the creases of his fingers",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Enceladus",
+        "style": "General American accent, natural conversational pace, clear diction; 50-year-old supplier, mumbling, uncomfortable"
+      },
+      "portrait": null,
+      "s1_episodes": "38–39",
+      "notes": "He never meets Nora's eyes: write it in each shot."
+    },
+    {
+      "id": "fiona",
+      "setting_id": "s01-ferry-fiona",
+      "name": "Fiona Marsh",
+      "appearance": "a 40-year-old Chinese-American woman, sleek black hair in a low ponytail, a white shirt under a navy blazer, dark trousers",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Aoede",
+        "style": "General American accent, natural conversational pace, clear diction; 40-year-old project officer, crisp and businesslike"
+      },
+      "portrait": null,
+      "s1_episodes": "38, 40, 46, 54, 56–57",
+      "notes": "Badge, binder and watch are props (fiona-badge, fiona-binder, fiona-watch)."
+    },
+    {
+      "id": "wexler",
+      "setting_id": "s01-examiner-wexler",
+      "name": "Arthur Wexler",
+      "appearance": "a 58-year-old Black American man, close-cropped grey hair, a neat short grey moustache, thin black half-rim reading glasses, a brown herringbone tweed waistcoat over a white shirt with a dark green knit tie, charcoal trousers",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Alnilam",
+        "style": "General American accent, natural conversational pace, clear diction; 58-year-old document examiner, slow, exact, slightly fussy"
+      },
+      "portrait": null,
+      "s1_episodes": "43",
+      "notes": "On screen only in episode 43; in episode 50 his report is read by Nora (owner decision pending, s1-decisions-e021-e060.md). Sleeve protectors, loupe, ruler, file and notebook are props."
+    }
+  ],
+  "extras": [
+    {
+      "id": "installers",
+      "name": "Curtain installers",
+      "appearance": "two men in plain grey work overalls with no lettering, seen from behind or soft in the background",
+      "voice": null,
+      "episodes": "6–9, 50",
+      "note": "No dialogue; backs or hands only."
+    },
+    {
+      "id": "judge",
+      "name": "Superior Court judge",
+      "appearance": "a 64-year-old white American man, short white hair, a trimmed white beard, no glasses, a black judicial robe over a white shirt and dark tie",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadaltager",
+        "style": "General American accent, natural conversational pace, clear diction; judge, dry and procedural"
+      },
+      "episodes": "20, 42",
+      "note": "One or two lines entering the decree."
+    },
+    {
+      "id": "clerk",
+      "name": "County Clerk",
+      "appearance": "a 45-year-old white American woman, short sandy-brown hair, small silver earrings, a navy cardigan over a pale blue blouse",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "General American accent, natural conversational pace, clear diction; clerk, cheerful and quick"
+      },
+      "episodes": "19",
+      "note": "Off-center, shoulders and hands."
+    },
+    {
+      "id": "pawnbroker",
+      "name": "Pawnbroker",
+      "appearance": "a 60-year-old Vietnamese-American man, thinning grey hair combed back, a lined face, a grey cardigan over a checked flannel shirt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Enceladus",
+        "style": "General American accent, natural conversational pace, clear diction; pawnbroker, bored and transactional"
+      },
+      "episodes": "15",
+      "note": ""
+    },
+    {
+      "id": "bank-teller",
+      "name": "Bank teller",
+      "appearance": "a 26-year-old Black American woman, natural hair in a short rounded puff, small gold stud earrings, a plain navy blazer over a white blouse",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "General American accent, natural conversational pace, clear diction; teller, polite and apologetic"
+      },
+      "episodes": "15",
+      "note": ""
+    },
+    {
+      "id": "police-officer",
+      "name": "Desk officer",
+      "appearance": "a uniformed police desk officer with a plain uniform and no readable badge text",
+      "voice": {
+        "provider": "gemini",
+        "name": "Fenrir",
+        "style": "General American accent, natural conversational pace, clear diction; officer, tired and procedural"
+      },
+      "episodes": "14",
+      "note": ""
+    },
+    {
+      "id": "launch-guests",
+      "name": "Launch guests",
+      "appearance": "well-dressed guests in muted evening wear seated in rows at a product launch, soft in the background, no clear faces",
+      "voice": null,
+      "episodes": "26–29",
+      "note": "Phones are written per shot (guest-phones: two or three glows only)."
+    },
+    {
+      "id": "reporters",
+      "name": "Reporters",
+      "appearance": "two or three reporters at the edge of frame holding black microphones and cameras with no logos, faces soft or cut by the frame",
+      "voice": null,
+      "episodes": "28–29",
+      "note": "At most three named faces per shot. Episodes 46–47 use press-pack."
+    },
+    {
+      "id": "ferry-crowd",
+      "name": "Maiden-voyage crowd",
+      "appearance": "a crowd in rain jackets under a new ferry terminal's glass roof, looking up",
+      "voice": null,
+      "episodes": "57",
+      "note": "Seen from behind and in silhouette under the chandelier's blue light; never more than three faces in one shot, and only in the two turning-heads shots of episode 57."
+    },
+    {
+      "id": "installer-lead",
+      "name": "Lead curtain installer",
+      "appearance": "a white American man in his forties, a short red beard, a grey knit cap, plain grey work overalls with no lettering",
+      "voice": null,
+      "episodes": "6–9, 50",
+      "note": "The one installer whose face is seen: looks from Sienna to Nora at the nursery window (7), bites back a laugh on the drive (9). No dialogue."
+    },
+    {
+      "id": "on-call-doctor",
+      "name": "On-call doctor, seventh floor",
+      "appearance": "a 45-year-old Black American man, a shaved head, a short greying beard, no glasses, a white doctor's coat over light grey scrubs",
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "General American accent, natural conversational pace, clear diction; 45-year-old doctor, brisk, polite, already decided"
+      },
+      "episodes": "4",
+      "note": "Speaks on screen (model voice); the Gemini voice is only a fallback and a tone reference. Needs a portrait before episode 4."
+    },
+    {
+      "id": "deputy",
+      "name": "Merrow County sheriff's deputy",
+      "appearance": "a 40-year-old Latina woman, dark hair in a tight low bun, a tan shirt and dark green trousers of a plain sheriff's deputy uniform, a plain star-shaped badge and shoulder patches with no readable text",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "General American accent, natural conversational pace, clear diction; 40-year-old deputy, flat, tired and procedural"
+      },
+      "episodes": "6",
+      "note": "Speaks on screen (model voice); needs a portrait before episode 6. Framed from the waist up; no weapon in frame."
+    },
+    {
+      "id": "dispatcher",
+      "name": "Sheriff's dispatcher (phone)",
+      "appearance": "voice only, heard through Nora's phone",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "General American accent, natural conversational pace, clear diction; dispatcher on a phone line, even and quick"
+      },
+      "episodes": "6",
+      "note": "Phone voice, filtered; never on screen."
+    },
+    {
+      "id": "phone-recording",
+      "name": "Out-of-service recording (phone)",
+      "appearance": "voice only, heard through a phone",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "General American accent, clear diction; a recorded phone-company announcement, flat and pleasant"
+      },
+      "episodes": "4, 45",
+      "note": "Phone voice, filtered; never on screen. Episode 45: Peg's call to Grant goes to voicemail ('The person you are calling is not available.')."
+    },
+    {
+      "id": "detective",
+      "name": "Port Merrow Police detective",
+      "appearance": "a 50-year-old Samoan-American man, broad build, a shaved head, a neat black goatee, a grey sport coat over a navy polo shirt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Fenrir",
+        "style": "General American accent, natural conversational pace, clear diction; 50-year-old detective, patient, tired and straight"
+      },
+      "episodes": "14",
+      "note": "Takes Nora's report and phones the prosecutor from his desk (episode 14). Speaks on screen (model voice); needs a portrait. No badge text, no holster or weapon in frame."
+    },
+    {
+      "id": "wedding-judge",
+      "name": "Judge who marries them",
+      "appearance": "a 52-year-old Filipino-American woman, black hair in a low chignon, small pearl earrings, a black judicial robe",
+      "voice": {
+        "provider": "gemini",
+        "name": "Aoede",
+        "style": "General American accent, natural conversational pace, clear diction; judge, warm, brisk and practiced"
+      },
+      "episodes": "20",
+      "note": "A different judge from the one who enters the decree. Speaks on screen (model voice); needs a portrait."
+    },
+    {
+      "id": "court-gallery",
+      "name": "Family-law calendar gallery",
+      "appearance": "a few ordinary people in plain everyday clothes waiting on courtroom benches for their own hearings, soft in the background",
+      "voice": null,
+      "episodes": "20",
+      "note": "The murmur when Nora says 'That is not my signature.' Never a clear face beside a named character."
+    },
+    {
+      "id": "clinic-assistant",
+      "name": "Dr. Brandt's medical assistant",
+      "appearance": "a young woman in navy scrubs with a dark ponytail, seen only from behind or from the shoulder down",
+      "voice": null,
+      "episodes": "11",
+      "note": "Takes Grant's flowers and gift box in the lobby; no face, no line."
+    },
+    {
+      "id": "gift-shop-owner",
+      "name": "Harbor gift shop owner",
+      "appearance": "an older man's hands and cardigan cuffs at a wooden shop counter, no face",
+      "voice": null,
+      "episodes": "20",
+      "note": "Montage: buys Nora's harbor drawings. Never show who he is (m12)."
+    },
+    {
+      "id": "store-clerk",
+      "name": "Whitlock Home flagship clerk",
+      "appearance": "a 23-year-old white American woman, platinum-blonde hair in a sleek low ponytail, light grey eyes, a fitted black shirt and black trousers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "General American accent, natural conversational pace, clear diction; 23-year-old store clerk, bright, rehearsed and polite"
+      },
+      "episodes": "23",
+      "note": "Speaks on screen (model voice); needs a portrait. A polite closed-mouth smile before she speaks, lips level while talking. No name badge text."
+    },
+    {
+      "id": "shoppers",
+      "name": "Two shoppers",
+      "appearance": "two shoppers in plain summer clothes, soft in the background, turning to look",
+      "voice": null,
+      "episodes": "23",
+      "note": "No lines; faces soft."
+    },
+    {
+      "id": "launch-guard",
+      "name": "Launch security guard",
+      "appearance": "a 45-year-old Native American man, broad-shouldered, long black hair tied low at the nape, a plain black suit and white shirt, a clear coiled earpiece",
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "General American accent, natural conversational pace, clear diction; 45-year-old security guard, low and quick"
+      },
+      "episodes": "27",
+      "note": "'Mr. Ashford.' Speaks on screen (model voice); needs a portrait. Reaches for Nora's arm and stops a palm's width short; never touches her. No badge text, no weapon."
+    },
+    {
+      "id": "launch-host",
+      "name": "Launch host",
+      "appearance": "a host in a black dinner jacket, seen from the shoulders down or soft in the background",
+      "voice": null,
+      "episodes": "26–29",
+      "note": "Never a clear face, no lines; his microphone is the prop handheld-mic; Nora takes it in episode 29."
+    },
+    {
+      "id": "launch-usher",
+      "name": "Check-in usher",
+      "appearance": "an usher's hands in black sleeves at a draped check-in table, no face",
+      "voice": null,
+      "episodes": "26",
+      "note": "Hands two seat cards to Theo."
+    },
+    {
+      "id": "stagehands",
+      "name": "Stagehands",
+      "appearance": "two stagehands in plain black clothes, seen from behind or soft in the background",
+      "voice": null,
+      "episodes": "29–30",
+      "note": "Carry the dome off (29); stop in the corridor (30)."
+    },
+    {
+      "id": "ashford-tech",
+      "name": "Ashford Construction gas technician",
+      "appearance": "a 38-year-old Mexican-American man, short black hair, a neatly trimmed moustache, a plain navy work jacket with no lettering, a tool belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Iapetus",
+        "style": "General American accent, natural conversational pace, clear diction; 38-year-old gas technician, matter-of-fact and brief"
+      },
+      "episodes": "37",
+      "note": "'Landlord's crew. Lease says so.' Speaks on screen (model voice); needs a portrait."
+    },
+    {
+      "id": "waiting-mother",
+      "name": "Pregnant woman in the clinic waiting area",
+      "appearance": "a woman about 30, heavily pregnant, dark curly hair, a loose sage-green dress, seen in soft focus or from the side",
+      "voice": null,
+      "episodes": "33",
+      "note": "No lines, no portrait. The shot is her hands and the tiny pale yellow hat (waiting-hat)."
+    },
+    {
+      "id": "supplier-phone",
+      "name": "Other sand suppliers (phone)",
+      "appearance": "voice only, heard through Nora's phone",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "General American accent, natural conversational pace, clear diction; a tired small-business owner on a phone line, apologetic and flat"
+      },
+      "episodes": "39",
+      "note": "Phone voice, filtered; never on screen. Algenib is otherwise only Gus's unused backup (Gus speaks with the model voice)."
+    },
+    {
+      "id": "talk-host",
+      "name": "Daytime talk-show host",
+      "appearance": "a 46-year-old white American woman, glossy honey-blonde shoulder-length blowout, a cobalt-blue sleeveless sheath dress with a modest neckline, small gold hoop earrings",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "General American accent, natural conversational pace, clear diction; 46-year-old daytime TV host, bright and leading"
+      },
+      "episodes": "45",
+      "note": "Speaks on screen (model voice, TV filter in post); needs a portrait. Only if the owner keeps option A for the TV scene."
+    },
+    {
+      "id": "process-server",
+      "name": "Process server",
+      "appearance": "a 38-year-old Middle Eastern-American man, short dark hair, a neatly trimmed dark beard, a plain navy windbreaker over a grey polo shirt, khaki trousers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "General American accent, natural conversational pace, clear diction; 38-year-old process server, flat and quick"
+      },
+      "episodes": "50",
+      "note": "One line on screen: 'Grant Whitlock? You've been served.' Needs a portrait."
+    },
+    {
+      "id": "press-pack",
+      "name": "Press at the door",
+      "appearance": "two reporters seen only as hands holding up black cameras with no logos, their faces hidden behind the cameras",
+      "voice": null,
+      "episodes": "46–47",
+      "note": "Lyle is the only face; replaces `reporters` in these two episodes."
+    },
+    {
+      "id": "emt",
+      "name": "Paramedic",
+      "appearance": "a 35-year-old Latino man, close-cropped black hair, a short trimmed beard, a plain navy blue EMT uniform shirt and trousers with shoulder patches that carry no readable text",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "General American accent, natural conversational pace, clear diction; 35-year-old paramedic, calm, quick and matter-of-fact"
+      },
+      "episodes": "54",
+      "note": "'Back spasm. Rest.' Needs a portrait. Only feels Gus's lower back through his undershirt and asks questions: no equipment, no procedure."
+    },
+    {
+      "id": "emt-partner",
+      "name": "Paramedic's partner",
+      "appearance": "a woman in the same plain navy blue EMT uniform with a dark low ponytail, seen from behind or from the shoulder down",
+      "voice": null,
+      "episodes": "54",
+      "note": "No lines; wheels the stretcher, holds the clipboard."
+    },
+    {
+      "id": "pr-man",
+      "name": "Whitlock Home PR man",
+      "appearance": "a 40-year-old white American man, close-cropped brown hair, a plain navy suit, a clear coiled earpiece wire at his right ear, seen from behind or from the shoulder down",
+      "voice": null,
+      "episodes": "57",
+      "note": "Only cups Grant's elbow and walks him off; never pushes or pulls."
+    }
+  ],
+  "sets": [
+    {
+      "id": "glass-house-ext",
+      "name": "The Glass House, exterior",
+      "prompt": "a modern single-story house made almost entirely of floor-to-ceiling glass on a grassy bluff above grey Puget Sound water, a slim black steel frame, a gravel drive with one tall black lamppost by the front door, overcast Pacific Northwest light, no text"
+    },
+    {
+      "id": "glass-house-living",
+      "name": "The Glass House, living room and dining table",
+      "prompt": "inside a glass-walled modern house: pale oak floor, a long pale wood dining table, a low grey sofa, grey sea and sky through every wall, cool blue daylight, minimal decor, a row of low pale oak cabinets under the sea-side glass with a cream vase on them, no text; no solid wall: a slim flat TV stands on the low cabinet facing the sofa"
+    },
+    {
+      "id": "glass-house-nursery",
+      "name": "The Glass House, nursery",
+      "prompt": "a small half-finished nursery in a modern glass house: a flat white ceiling with one plain round white ceiling light, solid white side walls, a plain white flat-panel door, a white crib, a wooden rocking chair with a small empty knitting basket, the whole far wall one floor-to-ceiling window in a slim black steel frame onto the grey sea, no glass roof, soft cold light, no text"
+    },
+    {
+      "id": "glass-house-bedroom",
+      "name": "The Glass House, bedroom",
+      "prompt": "a minimal bedroom with glass walls onto the sea at night, a low bed, a bare nightstand, no text"
+    },
+    {
+      "id": "hallway",
+      "name": "Merrow General, seventh-floor hallway",
+      "prompt": "a long empty hospital corridor at night, pale green-grey walls, a row of closed doors with no signs beside them, linoleum floor, a nurses' station halfway along on the right, and at the far end a blank pale green-grey wall with no door, one ceiling light just above it that pulses slowly: on for two beats, off for one, a long bench against the left wall right under that light, no readable signs; the elevator at the near end stays out of frame"
+    },
+    {
+      "id": "hospital-room",
+      "name": "Merrow General, seventh-floor room",
+      "prompt": "a quiet single hospital room: the bed head against the LEFT wall, an adjustable hospital bed with low silver side rails and its back raised reaching out into the room toward the right, plain white sheets, a nightstand beside the bed at mattress height with a plastic water cup, a window with blinds and a plain chair under it on the RIGHT wall, an empty IV stand with nothing hanging from it against the left wall behind the bed head, the door in the right wall at the foot end of the bed opening onto the hallway, plain pale grey walls, no readable text"
+    },
+    {
+      "id": "exam-room",
+      "name": "Merrow General, OB-GYN exam room",
+      "prompt": "a clean bright exam room, a desk with a small lamp, two chairs, a white wall, no medical procedure visible, no readable text"
+    },
+    {
+      "id": "pharmacy",
+      "name": "Merrow General, outpatient pharmacy",
+      "prompt": "a hospital outpatient pharmacy counter with a glass partition, plain white shelving of unlabeled boxes behind, fluorescent light, no readable labels"
+    },
+    {
+      "id": "motel-room",
+      "name": "Harborview Motor Inn, room with two beds",
+      "prompt": "a modest old roadside motel room: two twin beds with faded quilts, a small table by the window, a lamp, seen from the foot of the beds: the headboards against the far wall with a nightstand and a pale-yellow-shaded lamp between them; on the left wall the entry door near the foot end and a window with heavy curtains and one narrow gap, a small table and two chairs under it; the bathroom door at the far end of the right wall; a red neon glow through the curtain gap with no readable letters",
+      "note": "Episode 20 morning (c03–c04): drop the curtain gap and the red neon clause; write '…, the heavy curtains drawn open, low gold morning sunlight through the window, the bedside lamp off'."
+    },
+    {
+      "id": "motel-front",
+      "name": "Harborview Motor Inn, front desk and lot",
+      "prompt": "a small 1970s harbor motel: a wood-paneled front office with a desk and a bowl of peppermints, a two-story row of doors along an open walkway, a parking lot, a quiet street beyond it, a neon sign with no readable letters"
+    },
+    {
+      "id": "police-desk",
+      "name": "Port Merrow Police, front desk",
+      "prompt": "a small police station lobby with a front counter behind glass, plastic chairs, notice boards with no readable text"
+    },
+    {
+      "id": "prosecutor",
+      "name": "Merrow County Prosecutor's Office",
+      "prompt": "a government office: a cluttered desk stacked with case files, blinds over a window onto a grey civic plaza, a corridor of frosted-glass doors with no readable text"
+    },
+    {
+      "id": "pawnshop",
+      "name": "Harbor pawnshop",
+      "prompt": "a narrow pawnshop with glass display cases of rings and watches, warm yellow light, no readable signs"
+    },
+    {
+      "id": "courtroom",
+      "name": "Merrow County Superior Court, courtroom",
+      "prompt": "a wood-paneled courtroom: the judge's bench, two counsel tables, a gallery of benches, tall windows with grey light, no readable text or seals",
+      "note": "Episode 20: replace 'tall windows with grey light' with 'tall windows on the courtroom's right side with bright white summer daylight'."
+    },
+    {
+      "id": "clerk-office",
+      "name": "County Clerk's office",
+      "prompt": "a county clerk's office across a courthouse hallway: a service window, a counter with forms, a bench, soft fluorescent light, no readable signs"
+    },
+    {
+      "id": "courthouse-steps",
+      "name": "Courthouse front steps",
+      "prompt": "the wide stone steps of a classical civic courthouse under an overcast sky, columns, wet pavement, no readable inscription",
+      "note": "Episode 20 (sunny, dry version): 'the wide stone steps of a classical civic courthouse in bright late-morning summer sun, columns, dry pavement, no readable inscription'."
+    },
+    {
+      "id": "ashford-house-ext",
+      "name": "The Ashford house on the hill, exterior",
+      "prompt": "a stark modern house of grey board-formed concrete set into a wooded hillside above a harbor town, one long blank concrete wall with only two small windows, a long flat roof, dark firs around it, no text",
+      "note": "Weather and time go in the shot (episode 21: June sunshine; at night only the two small windows lit warm). The two windows are the kitchen (lower) and Nora's room (upper)."
+    },
+    {
+      "id": "ashford-dining",
+      "name": "The Ashford house, long dining table and kitchen",
+      "prompt": "inside a grey board-formed concrete house: a tall dining hall with a very long dark walnut table under one low pendant lamp, an open professional steel kitchen along the right wall with a tall double-door steel fridge and a small window over the range, floating concrete stairs with a black steel banister rising along the left wall to an open upper gallery, warm pools of lamplight against cold concrete, no text",
+      "note": "Episodes 21–25, 44–45 (kitchen side), 58. Morning sun comes through the small window over the range and falls on the counter beside it (45)."
+    },
+    {
+      "id": "ashford-study",
+      "name": "The Ashford house, study door and hallway",
+      "prompt": "a dim concrete hallway ending at a closed dark wood study door with a strip of light under it, a small table beside it, no text"
+    },
+    {
+      "id": "ashford-guest",
+      "name": "The Ashford house, guest room",
+      "prompt": "a plain guest room in a grey board-formed concrete house: a neat single bed with white linen against the right wall, a small concrete nightstand with a drawer and a lamp, one narrow vertical window with a deep concrete sill, a built-in dark wood wardrobe, a navy suitcase on the floor, no text",
+      "note": "The floor-length mirror is at the end of the upper hallway (ashford-upper-hall) and never in frame."
+    },
+    {
+      "id": "launch-stage",
+      "name": "Whitlock Home flagship store, launch stage",
+      "prompt": "a windowless event hall set up for a product launch: a low black stage across the far wall, a wide dark screen above the back of the stage, a waist-high white plinth at center stage whose top is a glowing light box, a clear glass display dome on it holding a cream-white vase, a slim lectern at stage left, short steps at both ends of the stage, a plain side door at stage right, rows of white chairs in front, warm house lights, blank panels where logos would be, no readable text",
+      "note": "Guests and the follow spot are written per shot; the lighting booth is launch-booth."
+    },
+    {
+      "id": "backstage",
+      "name": "Whitlock Home, backstage corridor",
+      "prompt": "a narrow white service corridor behind a stage: black cables taped along the floor, a grey steel fire door in the left wall with a small dim green light box above it, blank, a bare bulb in a black wire cage on the wall beside the door, folded chairs stacked further down, one ceiling light at the far end over a closed loading door, harsh light and shadow, no readable signs"
+    },
+    {
+      "id": "pell-ext",
+      "name": "Kiln Row and Pell Glassworks, exterior",
+      "prompt": "vertical view of a narrow waterfront street of old red-brick glassworks with rusted dark red steel doors; in the center a two-story brick glassworks with tall rusted double steel doors and a long faded painted sign above them whose letters are worn illegible, a row of high windows with a few broken panes, a grimy street-level window to the left of the doors; right next door a small one-story brick shop with a dusty display window and a narrow wooden door with a rusted padlock, a faded painted name above the window worn illegible; far down the street on the left corner a tiny chowder shack; no readable text, no logos",
+      "note": "Kiln Row, episodes 31–60. The camera stands on the harbor side (a low sea wall and the water, east, behind it) looking at the fronts; Doyle's is round the right-hand corner, Rosa's on the left corner about forty steps away. Time and weather go in the shot: dawn with low sun from behind the camera and mist lifting (31), overcast morning (46–47), drizzle at night (49), dusk with one cold streetlight just lit and the shack's window warm (59)."
+    },
+    {
+      "id": "remelt",
+      "name": "Remelt Studio (Pell Glassworks main floor)",
+      "prompt": "vertical view inside an old red-brick glassworks: at the back a huge round furnace of dark red firebrick bound with rusted steel bands, about twice as tall as a man, a round mouth at chest height behind a hinged steel door, a black steel plate on the floor before it and a worn yellow safety line painted across the concrete floor, a rack of steel blowpipes against the back wall to its left, a chest-high steel annealing oven and a row of waist-high steel bins to its right; on the left brick wall near the doors a long clear glass tube mounted level with small brass bands and below it an old steel rack with a long row of upright slots; a small practice furnace under a row of high windows on the right wall; a long heavy wooden workbench down the middle; no readable text, no lettering on anything",
+      "note": "Remelt Studio, episodes 36–60, one layout for all three chapters (s1-bible-e031-e040.md 〈場景格局〉). Standard view from the doors (east) toward the furnace (west). Written per shot, not in the set: what stands in the rack (empty until 50, two engraved panels from 51), the light box on the workbench's furnace end (41 on), the hanging work lamp (41 on), the wooden rack of blue panels along the right wall (48 on), the cot (54–56), and the light: day, night, dawn (55–56), dusk with the doors open (59–60). set-remelt.jpg is a colour reference only (landscape, readable 'Number Three', a framed text)."
+    },
+    {
+      "id": "remelt-cold",
+      "name": "Pell Glassworks before relighting",
+      "prompt": "the same old brick glassworks cold and abandoned: at the back a huge round furnace of dark red firebrick bound with rusted steel bands under a huge dusty grey canvas tarp, cobwebs, dust in thin daylight from high windows, no text",
+      "note": "Episodes 31–35. The old batch sacks are in the storeroom (pell-storeroom), not on the floor."
+    },
+    {
+      "id": "pell-flashback",
+      "name": "Pell Glassworks twelve years ago",
+      "prompt": "the same brick glassworks alive and busy twelve years ago: several glowing furnaces, Furnace No. 3 with its round glowing mouth, a wooden gaffer's bench with steel rails, steel blowpipes on a rack, warm hazy golden light, no text",
+      "note": "No sooty young man (Soot, m08/m12) in season one; other workers only soft in the background."
+    },
+    {
+      "id": "rosas",
+      "name": "Rosa's chowder shack",
+      "prompt": "a tiny corner chowder shack, vertical view: a wooden counter with four stools, two burners and a big dented steel stockpot behind it, a bare bulb hanging over the counter, a plain weathered wooden board on the wall, a shelf of bowls on the back wall, a string of small bells on the door, a window onto the street corner, warm yellow light, no readable writing",
+      "note": "Episodes 47, 49, 59. Weather in the shot: overcast morning (47), drizzle at night (49), a dry street at dusk (59). Seen from behind the counter, stools 1–4 left to right; Nora sits on 2, Elias on 3."
+    },
+    {
+      "id": "ferry-terminal",
+      "name": "New ferry terminal, main hall",
+      "prompt": "vertical view from below inside a new ferry terminal hall at night: a soaring three-story glass roof and a glass wall onto dark harbor water with fine drizzle on the glass, a long chandelier of flat panels of clear deep blue glass like the harbor at dawn hanging in a single long row high overhead and glowing blue, the hall lights off, a crowd below in dark silhouettes looking up, a plain white lectern with a microphone to one side under a single spotlight, a plain pale backdrop with no lettering behind it, no signs, no logos",
+      "note": "Episode 57, the maiden-voyage night. The empty hall before the chandelier is ferry-lobby."
+    },
+    {
+      "id": "ashford-boardroom",
+      "name": "Ashford Construction, top-floor boardroom",
+      "prompt": "a minimal top-floor boardroom with a long table and a wall of glass over the grey harbor, no logos, no text"
+    },
+    {
+      "id": "sand-supply",
+      "name": "Doyle Sand & Batch",
+      "prompt": "vertical view of a small industrial sand and batch supplier: a gravel yard with pallets stacked with plain unlabeled sand sacks and a forklift; at the back a corrugated-steel office with a long dusty counter and, behind the counter, an open door into a small back office; white dust in the air, no readable signs",
+      "note": "Doyle Sand & Batch, round the corner from Pell's (three minutes on foot). Episodes 38–39; day and late-afternoon light in the shot."
+    },
+    {
+      "id": "ambulance",
+      "name": "Ambulance interior",
+      "prompt": "inside an ambulance at night, cold white ceiling light, a stretcher seen from her head end, a dark padded wall, no visible medical equipment close up, no screens, no text"
+    },
+    {
+      "id": "tv-ad-studio",
+      "name": "TV ad: white studio",
+      "prompt": "a seamless white photo studio, one tall cream-white hand-blown glass vase on a white plinth under soft light, a man in a light suit beside it, shown only on a living-room TV screen, slightly soft, no text"
+    },
+    {
+      "id": "glass-house-door",
+      "name": "The Glass House, front door and steps (day, vertical)",
+      "prompt": "vertical view of the front of a single-story glass house: a black steel-framed glass front door that opens inward, an ordinary black lever handle, a plain doormat, two wide grey stone steps down to a gravel forecourt, one tall slim modern black lamppost standing on the grass just right of the steps, glass walls on both sides of the door, the gravel drive curving away down the bluff to the lower left of the frame, grey sea and sky beyond, no text",
+      "note": "Seen from outside (the forecourt): the slim modern lamppost stands on the grass just right of the steps (both picked outside pictures; review 2026-11-12-ref-audit), drive to the lower left. Seen from inside the pale oak entry looking out, the same door is mirrored: lamppost on the grass just left of the steps, drive to the lower right of the frame (art-plan-sets.md 〈要先定的〉 1). From episode 6 (6–8, 50) swap the handle for new-lock: 'a brand-new brushed-steel deadbolt and lever handle on the black steel door frame, bright and unscratched'. Wet steps, rain and light go in the shot."
+    },
+    {
+      "id": "glass-house-study",
+      "name": "The Glass House, study",
+      "prompt": "a small study in a glass house: a pale oak desk facing a floor-to-ceiling window onto the grey sea, tall built-in pale oak shelves from floor to ceiling along the one solid wall with plain grey folders on the bottom shelf, pale oak floor, no text"
+    },
+    {
+      "id": "coastal-drive",
+      "name": "The drive down the bluff",
+      "prompt": "a narrow asphalt drive curving down a grassy bluff above grey Puget Sound water, a low wooden guardrail on the sea side, wind-bent grass and dark firs on the land side, the glass house small at the top of the bluff, no text"
+    },
+    {
+      "id": "bus-stop",
+      "name": "Bus stop on the harbor road",
+      "prompt": "a plain glass bus shelter with a metal bench on a harbor road at dusk, a blank route panel, a dry sidewalk, across the dark water a row of container cranes with small red lights, no text, no logos"
+    },
+    {
+      "id": "grant-car-interior",
+      "name": "Grant's car, back seat",
+      "prompt": "the back seat of a pearl-white full-size four-door luxury sedan (not a limousine) seen from the dashboard looking back: one single row of cream leather rear seats, the rear window right behind their headrests, a wide centre console with a plain closed lid between them, no sunroof, tinted side windows, grey sea outside the right window and dark firs outside the left, the driver's white-gloved hand on the top of the steering wheel at the lower right corner, no screens, no badges or logos"
+    },
+    {
+      "id": "motel-window-view",
+      "name": "Harborview Motor Inn, the street through the curtains",
+      "prompt": "night view through a narrow gap between heavy motel curtains: a quiet dry street under a dim streetlight, a red neon glow from the motel sign out of frame, no readable letters"
+    },
+    {
+      "id": "hospital-lobby",
+      "name": "Merrow General, main lobby",
+      "prompt": "a hospital main lobby by day: a pale stone floor, a bank of steel elevator doors on one side, a broad square pillar clad in pale wood beside the elevators, rows of grey waiting chairs, glass entrance doors with grey daylight, an outpatient pharmacy window in the far wall, no readable signs"
+    },
+    {
+      "id": "clinic-waiting",
+      "name": "Merrow General, OB-GYN clinic waiting area",
+      "prompt": "a small hospital clinic waiting area: a row of upholstered grey chairs against a pale wall, a low table, a closed pale wood exam-room door, soft daylight from one window, no readable signs or posters"
+    },
+    {
+      "id": "police-hallway",
+      "name": "Port Merrow Police, hallway and detectives' desks",
+      "prompt": "inside a small city police station: a long hallway of fluorescent ceiling tubes running into the distance, pale institutional walls, a few cluttered desks with desk phones in an open office off the hallway, no readable signs, no weapons"
+    },
+    {
+      "id": "bank-branch",
+      "name": "Port Merrow bank branch",
+      "prompt": "a small bank branch: a pale teller counter with a computer monitor turned toward the customer, a glass front onto a grey street, cold white overhead light, no logos, no readable signs"
+    },
+    {
+      "id": "motel-street",
+      "name": "Harborview Motor Inn, the street at night",
+      "prompt": "night outside a small two-story harbor motel: a narrow wet two-lane street, the motel's parking lot and lit front office on one side, an open upper walkway of doors and an outside staircase, a tall pole sign glowing red neon with no readable letters, on the far curb one dim streetlight, no text"
+    },
+    {
+      "id": "motel-bathroom",
+      "name": "Harborview Motor Inn, bathroom",
+      "prompt": "a small old motel bathroom: a white porcelain sink with a plain mirror above it, pale green tile, a plastic shower curtain, one bulb fixture over the mirror, no text"
+    },
+    {
+      "id": "elias-car",
+      "name": "The black car, inside",
+      "prompt": "inside a black luxury sedan: black leather seats, a dark dashboard with its screens off, side windows, no logos, no readable screens",
+      "note": "Time and weather go in the shot (21 sunny noon; 49 drizzle at night)."
+    },
+    {
+      "id": "courthouse-hallway",
+      "name": "Merrow County Superior Court, hallway",
+      "prompt": "a wide courthouse hallway with a polished stone floor, two pairs of tall wooden doors facing each other across it, wooden benches along the walls, tall windows of summer daylight at one end, no readable signs or seals"
+    },
+    {
+      "id": "small-courtroom",
+      "name": "Small courtroom across the hall",
+      "prompt": "a small wood-paneled courtroom used for weddings: a low judge's bench, a small wooden table and two chairs in front of it, a few benches, one tall window of summer daylight, no readable seals or text"
+    },
+    {
+      "id": "gift-shop",
+      "name": "Harbor gift shop",
+      "prompt": "a small harbor gift shop: a wooden counter, shelves of glass fishing floats and driftwood carvings, rain on the front window onto the harbor, warm light, no readable signs, no price tags"
+    },
+    {
+      "id": "seawall-stairs",
+      "name": "Seawall stairs",
+      "prompt": "concrete stairs climbing a harbor seawall in bright early-summer sunshine, a steel handrail along one side, blue water and moored boats below, no text"
+    },
+    {
+      "id": "police-steps",
+      "name": "Port Merrow police station front steps",
+      "prompt": "the front steps of a plain small-city police station in a harbor town: wide concrete steps, a steel handrail, glass double doors, a blank sign panel above the doors, overcast daylight, no readable letters"
+    },
+    {
+      "id": "harbor-sidewalk",
+      "name": "Harbor sidewalk outside the pawn shop",
+      "prompt": "a narrow sidewalk on a working harbor street: an old brick storefront with a barred window and a plain awning, a parking meter, a low sea wall across the road with grey water and moored fishing boats beyond, overcast light, no readable letters, no logos"
+    },
+    {
+      "id": "remelt-door",
+      "name": "Remelt, the steel doors from inside",
+      "prompt": "vertical view from inside an old red-brick glassworks toward one leaf of its tall rusted double steel doors pulled open one foot, a grey street beyond with a low sea wall and the harbor, the orange glow of a glass furnace on the brick wall inside, cold daylight in the gap, no readable text",
+      "note": "Episodes 43, 46; 59–60 with the doors open at dusk and a cold white streetlight across the threshold."
+    },
+    {
+      "id": "pell-door-flashback",
+      "name": "Pell Glassworks doors, twelve years ago",
+      "prompt": "vertical view of the same tall double steel doors of a brick glassworks twelve years ago, freshly painted dark red and standing open onto the orange glow of furnaces inside, a clean painted sign above them out of frame, warm hazy golden summer afternoon light, no readable text",
+      "note": "Episode 31 flashback."
+    },
+    {
+      "id": "pell-storeroom",
+      "name": "Pell Glassworks storeroom",
+      "prompt": "a small windowless storeroom in an old glassworks lit by one bare bulb: wooden shelves of dusty old glass jars with no labels, a row of old burlap sacks tied with twine against the back wall, faded and blank, a small old steel beam balance with a brass pan on an upturned wooden crate, an old dusty drafting light box leaning against a shelf, a half-open wooden door with orange furnace glow beyond it, no readable text",
+      "note": "Episode 40; the light box comes out onto the workbench in episode 41. Theo steps in here in episode 59."
+    },
+    {
+      "id": "clinic-hallway",
+      "name": "Merrow General, clinic hallway",
+      "prompt": "a short, quiet hospital clinic hallway by day: pale beige walls, a wooden handrail along one wall, a window of soft white daylight at the far end, a plain floor, no medical equipment, no screens, no signs, no readable text",
+      "note": "Episode 33; not the seventh-floor corridor."
+    },
+    {
+      "id": "whitlock-office",
+      "name": "Whitlock Home, Grant's office",
+      "prompt": "a bright white corner office above a home-goods flagship store: two glass walls onto a pale harbor sky, a large white desk, a low white cabinet behind it with one tall cream-white glass vase, cool clean light, no logos, no readable text",
+      "note": "Episode 35."
+    },
+    {
+      "id": "ferry-lobby",
+      "name": "New ferry terminal hall, before the chandelier",
+      "prompt": "vertical view of a brand-new, empty ferry terminal hall three storeys tall: a pale stone floor, a wall of glass onto the harbor and the ferry dock, a large skylight in the roof, and at the center of the ceiling one bare steel hanging point with a short steel cable and nothing hanging from it, no signs, no readable text",
+      "note": "Episodes 38, 40, 56 (Fiona's call). People are written per shot."
+    },
+    {
+      "id": "ferry-office",
+      "name": "Ferry terminal project office",
+      "prompt": "a small project office off a new ferry terminal hall: a meeting table, architectural line drawings pinned to the wall soft and out of focus, a glass door onto the empty hall, plain daylight, no readable text",
+      "note": "Episodes 38, 46 (Fiona at the meeting table with a desk phone on speaker)."
+    },
+    {
+      "id": "ashford-entry",
+      "name": "The Ashford house, entry",
+      "prompt": "the entry of a grey board-formed concrete house: a heavy dark wood front door, a row of black steel coat pegs on the left concrete wall above a low bench, a polished concrete floor, and straight ahead a wide opening into a tall dim dining hall, warm lamplight against cold concrete, no text"
+    },
+    {
+      "id": "ashford-upper-hall",
+      "name": "The Ashford house, upper gallery and hallway",
+      "prompt": "an upper hallway in a grey board-formed concrete house: an open gallery with a black steel banister looking down into a dim dining hall, plain dark wood bedroom doors along the concrete wall, one warm wall lamp, no text",
+      "note": "The end wall is a floor-length mirror: the camera sits there and looks back down the hallway; never shoot toward it (episode 24)."
+    },
+    {
+      "id": "ashford-living",
+      "name": "The Ashford house, sitting area",
+      "prompt": "a sitting area at the far end of a tall dining hall in a grey board-formed concrete house: a long low grey sofa with plain grey cushions facing a bare concrete wall with a large flat TV seen from the side, a brass floor lamp with a warm glow beside the sofa, floating concrete stairs with a black steel banister rising along the wall above, a polished concrete floor, almost no windows, no text",
+      "note": "Episodes 44–45: under the stairs at the far end of the hall from the entry; the study steps are to its left. The TV is only ever seen from the side."
+    },
+    {
+      "id": "glass-house-living-night",
+      "name": "The Glass House living room at night, curtains drawn",
+      "prompt": "inside a glass-walled modern house at night: heavy charcoal-grey curtains drawn across every glass wall from ceiling to floor, a low grey sofa, a long pale wood dining table behind it, warm lamplight, pale oak floor, no text",
+      "note": "Episode 22: Sienna's end of the call."
+    },
+    {
+      "id": "flagship-store",
+      "name": "Whitlock Home flagship store, sales floor",
+      "prompt": "inside a bright modern home-goods flagship store: a pale stone floor, a long white sales counter on the left, and on the right a wall of lit white shelves from floor to ceiling holding rows of identical tall cream-white glass vases, a glass storefront onto a grey waterfront street, a small blank brass plaque by the door, no logos, no readable signs, no price tags"
+    },
+    {
+      "id": "launch-entrance",
+      "name": "Launch hall entrance",
+      "prompt": "the entrance of a store event hall in the evening: a small draped check-in table, a plain blank backdrop wall, warm light, guests in muted evening wear soft in the background, no logos, no readable text"
+    },
+    {
+      "id": "launch-booth",
+      "name": "Launch lighting booth",
+      "prompt": "a small raised lighting balcony high on the side wall of a dark event hall near the stage: a lighting console of plain unlabeled faders, a tall follow-spot lamp on a stand beside it, a low wall looking down on a stage and the front row, no readable labels"
+    },
+    {
+      "id": "dana-office",
+      "name": "Dana Okafor's office",
+      "prompt": "a small attorney's office in the evening: a wooden desk stacked with plain buff case files, a green-shaded desk lamp, a laptop turned away from the camera, a window behind onto dark harbor water with a few lights, no readable text",
+      "note": "Episodes 25, 29, 49, 51. Her phone (dana-phone) or a desk phone on speaker is written per shot."
+    },
+    {
+      "id": "talk-show",
+      "name": "Daytime talk-show set",
+      "prompt": "a bright daytime television talk-show set: two pale upholstered armchairs and a low pale couch on a small round stage, a plain pale-blue backdrop, warm white studio lights",
+      "note": "Episode 45 (owner decision pending)."
+    },
+    {
+      "id": "prosecutor-corridor",
+      "name": "Prosecutor's office corridor",
+      "prompt": "a long government office corridor with grey carpet, a row of fluorescent ceiling lights running into the distance, frosted-glass office doors on both sides with no readable text, daylight from one window at the far end",
+      "note": "Episode 53."
+    },
+    {
+      "id": "cab-back-seat",
+      "name": "Back seat of a cab",
+      "prompt": "the back seat of a plain dark grey sedan, grey fabric seats, the driver out of frame, no logos, no screens",
+      "note": "Episode 57: the cab home after the maiden voyage (outside: rideshare-car). Night and passing harbor streetlights go in the shot."
+    },
+    {
+      "id": "backstage-alley",
+      "name": "Alley behind the launch venue",
+      "prompt": "a narrow brick back alley behind an event venue in the early evening: a plain grey steel stage door with a push bar, brick walls, one caged bulb over the door, dry asphalt, a dumpster pushed against the wall, the alley in shade, low orange sunlight at the far alley mouth, a strip of bright sky above, no readable letters, no logos",
+      "note": "Episodes 26, 30 (early evening, sunset 21:10, dry). The steel door is the outside of the backstage corridor door; Elias's black car parked to one side of it is written in the shot."
+    },
+    {
+      "id": "remelt-cold-open",
+      "name": "Pell Glassworks, cold, tarp pulled off",
+      "prompt": "vertical view inside an old red-brick glassworks, cold and abandoned: at the centre of the back wall a huge round furnace of dark red firebrick bound with rusted steel bands, about twice as tall as a man, a steel flue rising from its dome, a round mouth at chest height behind a hinged steel door, no lettering, cold and grey with dust, a black steel plate on the floor before it and a worn yellow safety line painted across the concrete floor, the worn yellow safety line turns along the back wall, leaving a narrow walkway to the storeroom door, a rack of steel blowpipes against the back wall to its left; along the right wall a small practice furnace on steel legs under a row of dusty high windows letting in cold grey light; a long heavy wooden workbench down the middle; the long red-brick wall on the left bare; no tarp, no people, nothing written anywhere",
+      "note": "Episodes 32 (after the tarp comes off) to 35. Same layout as remelt (s1-bible-e031-e040.md 〈場景格局〉): Furnace No. 3 at the centre of the back wall, the practice corner on the right wall; the tube and rack are not up until 36. Whether the furnace door is shut or half open, and whether the practice furnace is lit, go in the shot."
+    }
+  ],
+  "props": [
+    {
+      "id": "half-pill",
+      "name": "The half pill",
+      "prompt": "a tiny half of a white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device)",
+      "note": "Never write \"tablet\" in a prompt: the vertical pilot (2026-11-10) drew a tablet computer. Always \"pill\" with its size. Never a real drug name or packaging. The sentence stops at '(a medicine pill, not a device)'; where it lies follows it: in the tissue (1–10) '…, resting in a crumpled white tissue'; sealed in the zip-top bag from 10; on the black desk mat beside real-pill in 11 (half on the left, whole on the right). Whole, before she bites it (1): drop 'half of'."
+    },
+    {
+      "id": "knit-hat",
+      "name": "The half-knitted baby hat",
+      "prompt": "a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm",
+      "note": "Episodes 1–23 half-knitted (hospital belongings bag 5–10; Peg's tote 10–20; Nora's pillow and nightstand 21–23); Peg takes it back to finish it (44, under a sofa cushion: '…, half hidden under a grey sofa cushion'); finished from 48: knit-hat-finished. Always cream, never pale yellow (the clinic hat is waiting-hat)."
+    },
+    {
+      "id": "glass-bird",
+      "name": "The crooked glass bird",
+      "prompt": "a clear hand-blown glass bird about the size of a fist, one wing lower than the other",
+      "note": "Appears in the dream; the real one is Elias's keepsake (later seasons)."
+    },
+    {
+      "id": "keepsake",
+      "name": "The Keepsake block",
+      "prompt": "a heavy block of thick clear cast glass the size of a brick, about as long as her hand, faintly green, with a faint shadow of something folded inside",
+      "note": "Never show what is inside in season one. Nora's glass block: wrapped in a sweater on her suitcase (20), on the deep concrete sill of her room in the Ashford house from 21 ('…, on the deep concrete windowsill')."
+    },
+    {
+      "id": "forever-vase",
+      "name": "The Forever vase",
+      "prompt": "a tall cream-white hand-blown glass vase about as tall as a forearm, its body gently swelling",
+      "note": "Factory Forevers (lip level, bases blank: vase-base-blank). No. 1 is forever-no1. Its bubbles are glowing points only; never a date; 'N.Q.' only in post on one locked still in episode 28 (owner decision pending)."
+    },
+    {
+      "id": "clauses",
+      "name": "The three clauses",
+      "prompt": "a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it",
+      "note": "Episodes 16–19 (s1-bible-e011-e020.md); the second copy uses the same sentence; dropped: '…, lying on wet black asphalt'. The clauses are read aloud; nothing is added in post."
+    },
+    {
+      "id": "ledger",
+      "name": "Peg's ledger",
+      "prompt": "a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine",
+      "note": "Peg's. The receipt is in the cover lining from episode 9, the pawn ticket between the pages. Episode 51: '…, the lining of its brown cover slit open along one edge'. Her writing is never shown."
+    },
+    {
+      "id": "peg-ring",
+      "name": "Peg's wedding ring",
+      "prompt": "a thin worn gold wedding band with one tiny old diamond, on her left ring finger",
+      "note": "Pawned in episode 15; from then until 56 write the pale band (see peg notes). Nora redeems it on day 162 and presses it into Peg's palm (57): '…, in her open right palm'; back on her finger from then on. On the pawn counter (15): 'a thin worn gold wedding band with one tiny old diamond, lying on the glass counter'."
+    },
+    {
+      "id": "case-tracker",
+      "name": "The case tracker",
+      "prompt": "a long clear glass tube about as long as her outstretched arms and as thick as her wrist, mounted level on the red brick wall on two plain steel brackets, a row of small plain brass bands clamped around it at even spacing, no letters",
+      "note": "Hung in episode 36 above head height on Remelt's left wall near the doors, open at the door end. The bead is tracker-bead: Report (first band) 36–50, Charges (second band) from 50. Stage names are spoken (Nora, episode 36), never added in post."
+    },
+    {
+      "id": "light-box",
+      "name": "The light box",
+      "prompt": "a flat white drafting light box about the size of a large serving tray, its glass top glowing evenly from below, on the long wooden workbench",
+      "note": "Pell's old drafting light box from the storeroom, on the furnace end of Remelt's workbench from episode 41. Papers on it: light-box-papers; never 'signature', 'name' or 'letters'. On a face: 'cold white light from below on her chin and cheekbones'."
+    },
+    {
+      "id": "blowpipe",
+      "name": "Blowpipe with a glowing gather",
+      "prompt": "a long steel glassblowing pipe about as long as a person is tall",
+      "note": "One sentence for every chapter. Hot: '…, a glowing orange gather of molten glass at the far end'. Cold and empty (55, 59–60): '…, cold and empty, nothing at its tip'. Never pointed at a person; hot glass is always glowing orange, blue only once cold."
+    },
+    {
+      "id": "receipt",
+      "name": "Confectionery receipt",
+      "prompt": "a small thermal receipt about as long as her finger, faded print not readable, folded small",
+      "note": "Peg's evidence ('Prop tablets, qty 100', never readable, never said as 'tablets': Peg reads 'Prop pills.'). In the ledger's cover lining from episode 9; flattened on the light box (52): 'a small thermal receipt about as long as her finger, its faded print far too faint to make out, pressed flat on the glowing light box, the paper shining white'. Original to Reyes in 53; Peg keeps receipt-copy."
+    },
+    {
+      "id": "marriage-application",
+      "name": "Sienna's marriage application",
+      "prompt": "a single white form, held so only its back shows",
+      "note": "Episode 20, Sienna's. Folded: '…, folded twice'; then ', sliding into his inside breast pocket'."
+    },
+    {
+      "id": "poker-chip",
+      "name": "Crane's poker chip",
+      "prompt": "a plain solid red poker chip with a thin white edge stripe, about as wide as his thumb is long",
+      "note": "Crane's right hand, episodes 26, 28–29; '…, stopped between his fingers' (28)."
+    },
+    {
+      "id": "chandelier",
+      "name": "Ferry terminal chandelier",
+      "prompt": "a long chandelier of flat panels of clear deep blue glass like the harbor at dawn, hanging in a single long row high overhead, lit from within, washing the hall in soft blue light",
+      "note": "Episode 57. Never a number in the sentence; the panels are blue-panel."
+    },
+    {
+      "id": "nora-phone",
+      "name": "Nora's old phone",
+      "prompt": "a phone in a pale pink case, about the size of her palm",
+      "note": "Screen from the back or the side; lit: '…, its screen a soft white glow, seen from the side'. Nothing readable, nothing added in post."
+    },
+    {
+      "id": "grant-phone",
+      "name": "Grant's phone",
+      "prompt": "a black phone with no logo, about the size of his palm",
+      "note": "Screen always from the back, the side or out of focus; lit: '…, its screen a soft white glow, seen from the side'. Nothing readable on the screen; a message's words are added in post as a floating bubble beside the phone, never on the screen (episode 3)."
+    },
+    {
+      "id": "elias-glove",
+      "name": "Elias's glove",
+      "prompt": "a man's dark brown leather glove on a left hand, a dark wool coat cuff",
+      "note": "Episode 2 only; never the scar, never his face."
+    },
+    {
+      "id": "camel-coat",
+      "name": "Nora's camel coat",
+      "prompt": "a camel wool coat with deep pockets",
+      "note": "The half pill in the tissue lives in its right pocket (eps 1–10)."
+    },
+    {
+      "id": "plastic-cup",
+      "name": "Hospital water cup",
+      "prompt": "a clear plastic hospital cup about the size of her fist, half full of clear water",
+      "note": "Episode 3: thrown; from then empty: 'a clear plastic hospital cup about the size of her fist, empty' (on its side: '…, empty, lying on its side at the edge of the nightstand', 3–4; set upright and empty in 5)."
+    },
+    {
+      "id": "umbrella",
+      "name": "Grant's umbrella",
+      "prompt": "a long black umbrella about as tall as a man's hip, closed, dripping, propped against the door frame",
+      "note": ""
+    },
+    {
+      "id": "paper-bag",
+      "name": "Grant's paper bag",
+      "prompt": "a plain brown paper shopping bag about the size of a hardcover book, flat bottom, folded top, no logo",
+      "note": "Episode 3: in his left hand as he comes in ('…, in his left hand'), then set on the chair seat ('…, on a chair') beside the raincoat; episode 4: the new phone box comes out of it."
+    },
+    {
+      "id": "navy-raincoat",
+      "name": "Grant's raincoat",
+      "prompt": "a navy raincoat folded in half",
+      "note": "Episode 3: over his left forearm, then on the chair seat beside the paper bag."
+    },
+    {
+      "id": "elias-phone",
+      "name": "Elias's phone (episode 2)",
+      "prompt": "a black phone with no logo, about the size of his palm",
+      "note": "Episode 2: only in his gloved left hand, screen never readable. From episode 15 on he holds it in his RIGHT hand (the left stays in a pocket or a heat glove until episode 60)."
+    },
+    {
+      "id": "white-handkerchief",
+      "name": "Grant's handkerchief",
+      "prompt": "a folded white cotton handkerchief about the size of his palm",
+      "note": "Episode 3: from his breast pocket, back in it when he returns."
+    },
+    {
+      "id": "hospital-blanket",
+      "name": "Folded hospital blanket",
+      "prompt": "a thin folded white cotton blanket",
+      "note": "Episode 3: Kim lays it over Nora's legs."
+    },
+    {
+      "id": "canvas-tote",
+      "name": "Peg's canvas tote",
+      "prompt": "a plain beige canvas tote bag with no print, hanging from her left shoulder",
+      "note": "Episode 1: the soup pot stays inside it. Looks carry no props; write the tote in each shot. Set down in the motel (10): 'a plain beige canvas tote bag with no print, at the foot of her bed'."
+    },
+    {
+      "id": "drinking-glass",
+      "name": "Bedside water glass",
+      "prompt": "a clear drinking glass about the size of her fist, half full of clear water",
+      "note": "Episode 1: when she is not drinking, write where the glass is and that the water stays clear; the rim never touches her lips."
+    },
+    {
+      "id": "soup-pot",
+      "name": "Peg's soup pot",
+      "prompt": "a white enamel soup pot with a lid, about the size of a mixing bowl",
+      "note": "Episode 1: stays inside the canvas tote."
+    },
+    {
+      "id": "new-phone",
+      "name": "Nora's new phone (from Grant)",
+      "prompt": "a new white phone with no logo, about the size of her palm",
+      "note": "Episodes 4–12: on Grant's family plan. Screen only from the side, the back, or as a soft white glow; never readable."
+    },
+    {
+      "id": "phone-box",
+      "name": "New phone box",
+      "prompt": "a plain white phone box with no logo or print, about the size of her hand",
+      "note": "Episode 4: comes out of Grant's paper bag."
+    },
+    {
+      "id": "belongings-bag",
+      "name": "Hospital belongings bag",
+      "prompt": "a plain white plastic drawstring bag with no print, about the size of a bed pillow, soft and half full",
+      "note": "Episodes 5–10: holds the baby hat and the cream cardigan."
+    },
+    {
+      "id": "nurse-call",
+      "name": "Nurse call button",
+      "prompt": "a small grey plastic call-button remote on a cord, about the size of her palm, clipped to the bed rail",
+      "note": "Episode 4."
+    },
+    {
+      "id": "doctor-clipboard",
+      "name": "On-call doctor's clipboard",
+      "prompt": "a plain brown clipboard about the size of a hardcover book, papers facing away, a white ballpoint pen clipped to it",
+      "note": "Episode 4."
+    },
+    {
+      "id": "ballpoint",
+      "name": "White ballpoint pen",
+      "prompt": "a plain white ballpoint pen as long as her hand",
+      "note": "Episode 4: she writes on her LEFT palm, palm turned away from the camera, then closes her fist."
+    },
+    {
+      "id": "house-key",
+      "name": "Nora's house key",
+      "prompt": "a single brass house key on a plain steel ring, about as long as her finger",
+      "note": "Episode 6: will not turn in the new lock."
+    },
+    {
+      "id": "property-agreement",
+      "name": "The separate property agreement",
+      "prompt": "a thick stapled legal document about the size of a hardcover book, bound in a navy-blue paper backing, held so only the backs or edges of the pages show",
+      "note": "Episodes 6–7. Never readable, not even the signature: Fisk reads it aloud."
+    },
+    {
+      "id": "divorce-papers",
+      "name": "Divorce papers",
+      "prompt": "a thin stack of white papers held by a black binder clip, a small yellow tab sticking out of one edge, held so only the backs or edges of the pages show",
+      "note": "Episodes 6–8, unsigned."
+    },
+    {
+      "id": "fisk-pen",
+      "name": "Fisk's fountain pen",
+      "prompt": "a black fountain pen with a gold clip, as long as his hand",
+      "note": "Moved out of Fisk's appearance (2026-11-12): write it in each shot and say which hand."
+    },
+    {
+      "id": "curtain-panel",
+      "name": "Heavy grey curtain",
+      "prompt": "a heavy charcoal-grey curtain panel, thick matte fabric, hanging from ceiling to floor",
+      "note": "Episodes 6–8: going up over the Glass House windows."
+    },
+    {
+      "id": "curtain-rod",
+      "name": "Curtain rod",
+      "prompt": "a long black steel curtain rod, longer than a man is tall",
+      "note": "Episode 7, nursery."
+    },
+    {
+      "id": "delivery-slip",
+      "name": "Curtain delivery slip",
+      "prompt": "a small pale yellow delivery slip on a grey clipboard about the size of her hand, the slip far out of focus, the focus on the pen tip",
+      "note": "Episode 7: Sienna signs with her LEFT hand, watch on her left wrist. The insert must also say 'her LEFT hand holds the pen, a slim gold watch on her LEFT wrist'."
+    },
+    {
+      "id": "sketch-folder",
+      "name": "Nora's pre-marriage sketches",
+      "prompt": "a thin grey card folder about the size of a magazine, a few sheets of drawing paper inside, only their edges showing",
+      "note": "Episode 7 on; in Nora's suitcase (7–40), never opened. From episode 41 at Remelt on the shelf under the workbench; holds the two crumpled photocopies and the folded 'Salty.' note from 45."
+    },
+    {
+      "id": "nora-suitcase",
+      "name": "Nora's suitcase",
+      "prompt": "a mid-size navy soft-sided rolling suitcase, reaching just above her knee, no logo",
+      "note": "Packed by someone else (episode 7)."
+    },
+    {
+      "id": "peg-suitcase",
+      "name": "Peg's suitcase",
+      "prompt": "a large old tan hard-shell rolling suitcase, reaching her hip, scuffed corners, no logo",
+      "note": "Episode 5 on."
+    },
+    {
+      "id": "peg-thermos",
+      "name": "Peg's thermos",
+      "prompt": "a dented steel thermos about as long as her forearm, with a cup for a lid",
+      "note": "Episode 5: her soup."
+    },
+    {
+      "id": "grant-check",
+      "name": "Grant's check",
+      "prompt": "a pale blue personal check about the size of his hand, held so only the back shows",
+      "note": "Episode 8: torn in two and tucked back through the car window."
+    },
+    {
+      "id": "card-wallet",
+      "name": "Nora's card wallet",
+      "prompt": "a slim tan leather card wallet about the size of her palm",
+      "note": "In the camel coat's left pocket (11–20), then in her suitcase or nightstand drawer. Holds her two dead cards, her own cash and Grant's ring until episode 35."
+    },
+    {
+      "id": "bank-cards",
+      "name": "Nora's bank cards",
+      "prompt": "two plain bank cards, one dark blue and one silver, blank faces, no logos or numbers",
+      "note": "Episode 9: both declined."
+    },
+    {
+      "id": "cash",
+      "name": "Peg's cash",
+      "prompt": "a small fold of worn green banknotes, faces not readable",
+      "note": "Episode 9: 'Room, eighty-nine.'"
+    },
+    {
+      "id": "motel-key",
+      "name": "Motel room key",
+      "prompt": "an old brass room key on a green plastic diamond-shaped fob about the size of her palm, no readable number",
+      "note": "Episodes 9–20."
+    },
+    {
+      "id": "peppermint-bowl",
+      "name": "Bev's peppermints",
+      "prompt": "a small glass bowl of red-and-white striped peppermints in clear wrappers, about as wide as two cupped hands",
+      "note": "On the motel front desk; moved out of Bev's appearance (2026-11-12). Episode 9 on the left end of the counter; 16 on the office windowsill. The one that falls: 'one peppermint in a clear wrapper'."
+    },
+    {
+      "id": "card-reader",
+      "name": "Motel card reader",
+      "prompt": "a small grey card reader on the desk, its screen turned away",
+      "note": "Episode 9: a flat beep for 'Declined'."
+    },
+    {
+      "id": "zip-bag",
+      "name": "Zip-top bag",
+      "prompt": "a small clear zip-top plastic bag about the size of her palm",
+      "note": "Episode 10: from Peg's tote; the half pill is sealed in it."
+    },
+    {
+      "id": "grant-car",
+      "name": "Grant's car",
+      "prompt": "a pearl-white full-size four-door luxury sedan (not a limousine) with tinted rear windows, no badge, number plate out of frame",
+      "note": "Episodes 5, 7–9, 18 (Grant drives), 36 and 43 (Cole watching Kiln Row: '…, idling at the far curb across the street, a white-gloved hand on the wheel'), 57 (Cole drives, Grant in back), 59 (Grant drives himself). Kept white so it never reads as Elias's black car."
+    },
+    {
+      "id": "rideshare-car",
+      "name": "The car Grant booked",
+      "prompt": "a plain dark grey sedan with no markings, number plate out of frame",
+      "note": "Episode 6 only; the driver is never shown."
+    },
+    {
+      "id": "watching-car",
+      "name": "The black car across the street",
+      "prompt": "a black sedan parked across the street under a dim streetlight, headlights off, a still dark figure in the driver's seat, no face visible, number plate out of frame",
+      "note": "Episode 10 on (thread s01-t14); Elias, never identifiable before episode 15. Once he steps out it is black-car."
+    },
+    {
+      "id": "real-pill",
+      "name": "The real pill (reference)",
+      "prompt": "a tiny whole round white pill, smaller than a fingernail, plain white with one clean line across it, no colour, no markings (a medicine pill, not a device)",
+      "note": "Episode 11: Dale brings it from the pharmacy; on the black desk mat (desk-mat) to the right of the half pill, both sentences copied. The imprint difference is spoken, never shown. Replaces the old two-pills entry (two whole pills, which the bible never had)."
+    },
+    {
+      "id": "lab-pouch",
+      "name": "Outside lab's specimen pouch",
+      "prompt": "a clear plastic pouch about the size of her hand, a red seal strip across the top, plain and unprinted",
+      "note": "Episode 11: the zip-top bag with the half pill goes inside it; it stays at the lab."
+    },
+    {
+      "id": "custody-copy",
+      "name": "Chain-of-custody copy",
+      "prompt": "a pale pink carbon-copy form about the size of her hand, folded so only its blank back shows",
+      "note": "Episodes 11–14: Nora's copy; one of the three papers."
+    },
+    {
+      "id": "lab-report",
+      "name": "Lab report",
+      "prompt": "a single white printed page, held so only its back shows",
+      "note": "Episodes 12–14; crushed and smoothed flat in 13. 'It's sugar.' is spoken; nothing added in post."
+    },
+    {
+      "id": "pickup-log",
+      "name": "Pharmacy pickup log",
+      "prompt": "three stapled white printed pages, held so only the backs or edges show",
+      "note": "Episodes 12–14. Dale reads the name aloud; the signature column is never on screen. Before Dale staples them (13, c01–c05): 'three loose white printed pages, held so only the backs or edges show' (stapler); fresh from the printer: ', still warm from the printer'."
+    },
+    {
+      "id": "manila-envelope",
+      "name": "Manila envelope",
+      "prompt": "a plain manila envelope about the size of a magazine, no writing",
+      "note": "Episodes 13–14: from Peg's tote; holds the three papers."
+    },
+    {
+      "id": "peg-knitting",
+      "name": "Peg's new knitting",
+      "prompt": "a long narrow strip of slate-blue knitting on two wooden knitting needles as long as her forearm",
+      "note": "Episodes 11–19: grows each day (the clock between time jumps); finished and folded in the episode 20 montage. Never cream, never baby-sized. Length after the sentence: ', about as long as her hand' (11), ', about as long as her forearm' (12–14), ', about as long as her arm' (15–19); finished (20): 'a long slate-blue knitted scarf, folded'."
+    },
+    {
+      "id": "peg-wallet",
+      "name": "Peg's wallet",
+      "prompt": "a worn brown leather wallet about the size of her palm",
+      "note": "Episode 14: 'Twenty-five.'"
+    },
+    {
+      "id": "pawn-ticket",
+      "name": "Pawn ticket",
+      "prompt": "a small pale green pawn ticket about the size of her palm, folded so only its blank back shows",
+      "note": "Episode 15 on: kept inside Peg's ledger; renewed every thirty days ($40: days 38, 68, 98, 128, 158). On day 158 Peg gives it to Nora to renew; Nora keeps it and redeems the ring on day 162 (57)."
+    },
+    {
+      "id": "nora-ring",
+      "name": "Nora's wedding ring from Grant",
+      "prompt": "a polished platinum wedding ring set with one round diamond as wide as a pencil",
+      "note": "Never worn after episode 1; kept in the card wallet. Episode 15: Peg pushes it back ('Keep it.'). Sold, not pawned, in episode 35 ('Eleven-eight.'): '…, lying on the glass counter'."
+    },
+    {
+      "id": "elias-overcoat",
+      "name": "Elias's overcoat",
+      "prompt": "a dark charcoal wool overcoat",
+      "note": "Episodes 15–19 worn: '…, worn open' (his left hand in its left pocket); episode 21: '…, hanging on a black steel peg'. Never part of a look. Not worn in July–August (31–60)."
+    },
+    {
+      "id": "theo-tablet",
+      "name": "Theo's tablet",
+      "prompt": "a slim tablet in a plain grey case, its screen turned away",
+      "note": "Moved out of Theo's appearance (2026-11-12); write it in each shot and say which hand."
+    },
+    {
+      "id": "dana-files",
+      "name": "Dana's case files",
+      "prompt": "three thick plain buff case files held against her chest",
+      "note": "Moved out of Dana's appearance (2026-11-12). Episodes 17, 19, 20, 51–60; slapped down (58): 'a thick plain buff case file, slapped down flat on the table'. Seated (episode 20): 'three thick plain buff case files, stacked on the table'."
+    },
+    {
+      "id": "ashford-card",
+      "name": "Elias's direct-line card",
+      "prompt": "a plain white business card, held so only its blank back shows",
+      "note": "Episode 17: Theo hands it to Nora; episode 19: in her left hand, she calls it from the motel desk phone (write 'the card Theo gave her'). Not the detective's card (detective-card)."
+    },
+    {
+      "id": "desk-phone",
+      "name": "Motel desk phone",
+      "prompt": "an old beige corded desk phone",
+      "note": "Harborview front desk; episode 19."
+    },
+    {
+      "id": "scissors",
+      "name": "Household scissors",
+      "prompt": "a pair of plain steel household scissors about as long as her hand",
+      "note": "Episode 19: blades only at the lock of hair at shoulder height, pointing away from her neck; never a blade close-up."
+    },
+    {
+      "id": "elias-band",
+      "name": "Elias's ring for Nora",
+      "prompt": "a plain narrow white-gold band with no stone",
+      "note": "Episode 20: the date engraved inside is spoken, never shown. On Nora's left ring finger in every shot to 60 ('…, on her left ring finger'); under cotton or nitrile gloves write only the gloves. Elias wears none."
+    },
+    {
+      "id": "ring-box",
+      "name": "Ring box",
+      "prompt": "a small dark blue velvet ring box about the size of a walnut",
+      "note": "Episode 20: in Theo's shaking hands."
+    },
+    {
+      "id": "peg-phone",
+      "name": "Peg's phone",
+      "prompt": "an older black phone in a worn brown case, about the size of her palm",
+      "note": "Episode 19: Sienna's post; the screen only as a soft white glow from the side."
+    },
+    {
+      "id": "harbor-drawing",
+      "name": "Nora's harbor drawing",
+      "prompt": "a pencil drawing of the harbor on heavy white paper about the size of a magazine, no writing",
+      "note": "Episode 20 montage: sold to the harbor gift shop."
+    },
+    {
+      "id": "black-car",
+      "name": "Elias's black car",
+      "prompt": "a black full-size four-door luxury sedan (not a limousine) with no badge, number plate out of frame",
+      "note": "From episode 15 (s1-bible-e011-e020.md). Elias drives it himself. 21: '…, climbing a wooded hill road in sunshine'; 26–30: '…, parked in a narrow alley behind the store'; 31–32: '…, parked at the curb in front of the steel doors'; 49: '…, parked at the wet curb outside a lit corner shack'."
+    },
+    {
+      "id": "forever-no1",
+      "name": "Forever No. 1",
+      "prompt": "a tall cream-white hand-blown glass vase about as tall as a forearm, its body gently swelling, its lip tilted very slightly to one side",
+      "note": "The one she blew; on the Glass House cabinet for six years; Whitlock Home holds it from episode 29. Under the dome: '…, under a clear glass display dome on a glowing white light box'; upside down: '…, standing upside down on a glowing white light box'."
+    },
+    {
+      "id": "forever-wall",
+      "name": "Wall of factory Forevers",
+      "prompt": "rows of identical tall cream-white glass vases about as tall as a forearm on lit white shelves from floor to ceiling",
+      "note": "Episode 23."
+    },
+    {
+      "id": "vase-base-blank",
+      "name": "Factory vase base",
+      "prompt": "the thick round glass base of a cream-white vase seen from below, solid clear glass all the way through, smooth and plain",
+      "note": "Episode 23."
+    },
+    {
+      "id": "vase-base-lit",
+      "name": "No. 1's base on the light box",
+      "prompt": "the thick round glass base of a cream-white vase seen from above, light rising through it from below, a short curved line of tiny air bubbles inside the glass glowing like pinpoints, nothing readable",
+      "note": "Episode 28. The bubbles never move or form letters in generation."
+    },
+    {
+      "id": "launch-screen",
+      "name": "Launch screen",
+      "prompt": "a wide dark screen above the back of the stage showing only a short curved row of glowing points, nothing readable",
+      "note": "Episodes 28–29; lit in 26: 'a wide screen above the back of the stage showing a soft image of a cream-white vase, nothing readable'."
+    },
+    {
+      "id": "glass-dome",
+      "name": "Display dome",
+      "prompt": "a clear glass display dome a hand taller than the vase, as wide as her two hands spread side by side",
+      "note": "Episodes 26–29; set down: '…, set down on the black stage floor'."
+    },
+    {
+      "id": "light-box-plinth",
+      "name": "Plinth with light box",
+      "prompt": "a waist-high white plinth whose flat top is a glowing white light box",
+      "note": "Episodes 26–29. Not the studio light-box."
+    },
+    {
+      "id": "cotton-gloves",
+      "name": "White handling gloves",
+      "prompt": "a pair of white cotton handling gloves",
+      "note": "Episodes 27–29; worn: 'white cotton handling gloves on both her hands'."
+    },
+    {
+      "id": "house-rules-card",
+      "name": "House rules card",
+      "prompt": "a small plain white card about the size of her palm, held so only its blank back shows",
+      "note": "Episode 21: Elias recites the three rules (separate rooms, stay out of the study, don't wait on dinner); slapped down: '…, slapped face down on the dark walnut table'."
+    },
+    {
+      "id": "ashford-key",
+      "name": "Ashford house key",
+      "prompt": "a single plain steel house key on a thin black leather loop, about as long as her finger",
+      "note": "Episode 21: one for Nora, one for Peg."
+    },
+    {
+      "id": "ashford-fridge",
+      "name": "The empty fridge",
+      "prompt": "a tall double-door steel fridge standing open, its glass shelves holding only rows of plain bottled water with no labels and one plain brown bag of coffee beans",
+      "note": "Episode 21."
+    },
+    {
+      "id": "peg-dinner",
+      "name": "Peg's dinner",
+      "prompt": "a home-cooked dinner on the long dark walnut table: a pot roast in a black cast-iron pot, four side dishes in plain white bowls, three place settings of white plates and plain steel cutlery",
+      "note": "Episodes 21–22; '…, steam rising'; never food going into a mouth."
+    },
+    {
+      "id": "clean-plate",
+      "name": "Elias's empty plate",
+      "prompt": "a white dinner plate wiped clean, the knife and fork laid together across it",
+      "note": "Episode 22."
+    },
+    {
+      "id": "peg-apron",
+      "name": "Peg's apron",
+      "prompt": "a plain navy cotton apron tied over her cardigan",
+      "note": "Episodes 21–22, 25."
+    },
+    {
+      "id": "gold-envelope",
+      "name": "Launch invitation envelope",
+      "prompt": "a stiff gold-foil envelope about as long as her hand, its face blank, catching the light",
+      "note": "Episode 22: Theo reads 'For Mr. and Mrs. Ashford.'"
+    },
+    {
+      "id": "invitation-card",
+      "name": "Launch invitation card",
+      "prompt": "a heavy cream invitation card with a gold edge, about as long as her hand, held so only its blank side faces the camera",
+      "note": "Episodes 22–25; lying flat: 'a heavy cream invitation card with a gold edge, about as long as her hand, lying flat on the dark walnut table, seen edge-on at table height'. Replaces the old invitation entry (same sentence); nothing in post: Theo and Nora read it aloud."
+    },
+    {
+      "id": "seat-card",
+      "name": "Seat card",
+      "prompt": "a small folded cream seat card with a gold edge, about the size of a playing card, seen edge-on, only its gold edge catching the light",
+      "note": "Episodes 22, 26."
+    },
+    {
+      "id": "paper-clip",
+      "name": "Straightened paper clip",
+      "prompt": "a straightened silver paper clip as long as her finger",
+      "note": "Episode 23; before straightening: 'a silver paper clip about as long as her thumb'."
+    },
+    {
+      "id": "sim-card",
+      "name": "SIM card",
+      "prompt": "a tiny SIM card smaller than her fingernail",
+      "note": "Episode 23: '…, on a thin metal tray sliding out of the side of the phone'; '…, lying face down in an empty nightstand drawer'. Peg's old SIM stays in Nora's nightstand drawer."
+    },
+    {
+      "id": "sim-packet",
+      "name": "New SIM packet",
+      "prompt": "a small plain white card packet about the size of her palm, no print",
+      "note": "Episode 23: Peg's new number, paid by Nora ('Phone line. Thirty.')."
+    },
+    {
+      "id": "sienna-phone",
+      "name": "Sienna's phone",
+      "prompt": "a slim phone in a plain red case, about the size of her palm",
+      "note": "Episode 22: in her LEFT hand at her LEFT ear."
+    },
+    {
+      "id": "window-poster",
+      "name": "Flagship window photograph",
+      "prompt": "a tall photograph of Grant in his light grey checked suit cradling a cream-white vase, printed edge to edge on the inside of the shop window",
+      "note": "Episode 23; grant-portrait.jpg is the face reference. Written as a photograph, never a 'poster' (a poster draws a slogan)."
+    },
+    {
+      "id": "builder-plaque",
+      "name": "Builder's plaque",
+      "prompt": "a small smooth brass plate beside the door, about the size of her hand, seen at a steep angle, only a bright reflection on its face",
+      "note": "Episode 23: 'Ashford built this place.'"
+    },
+    {
+      "id": "gown-box",
+      "name": "Gown box",
+      "prompt": "a long flat pale grey box tied with a grey satin ribbon, about as long as her arm",
+      "note": "Episodes 24–25; opened: '…, its lid lifted, misty-grey fabric folded inside'."
+    },
+    {
+      "id": "grey-clutch",
+      "name": "Grey clutch",
+      "prompt": "a small misty-grey satin clutch about the size of her hand",
+      "note": "Came in the gown box; episodes 26–30, holds Fisk's letter; afterwards in her wardrobe with the gown."
+    },
+    {
+      "id": "certified-envelope",
+      "name": "Certified-mail envelope",
+      "prompt": "a long white envelope with a small plain green sticker in one corner",
+      "note": "Episode 25."
+    },
+    {
+      "id": "cease-and-desist",
+      "name": "Fisk's cease-and-desist letter",
+      "prompt": "two stapled white pages folded in thirds, held so only the backs show",
+      "note": "Episodes 25, 27, 30. Page two is a photocopy of the property agreement's signature page (torn off in 30: photocopy). Nora reads only 'Disrupt the event.' 'Damage any exhibit.'"
+    },
+    {
+      "id": "photocopy",
+      "name": "Signature-page copy / rights-transfer copy",
+      "prompt": "a single photocopied white page, held so only its back shows",
+      "note": "The two copies from episode 30 (one torn: '…, torn from a staple at one corner'). Theo takes them to Dana on day 109; Dana brings them to Remelt in 41: crumpled '…, crumpled into a ball', smoothed '…, smoothed flat but still creased'; then in the sketch folder."
+    },
+    {
+      "id": "copies-to-light",
+      "name": "Two copies held to the bulb",
+      "prompt": "two thin photocopied white pages held flat together up to a bare bulb, the light shining through both, one small soft dark smudge of ink showing through where two marks sit exactly on top of each other, nothing readable",
+      "note": "Episode 30. The signature never takes a readable shape (no post either)."
+    },
+    {
+      "id": "caged-bulb",
+      "name": "Corridor bulb",
+      "prompt": "a bare bulb in a black wire cage on the white corridor wall",
+      "note": "Episodes 29–30; 29: '…, dimming once, slowly, and coming back'."
+    },
+    {
+      "id": "cue-cards",
+      "name": "Sienna's cue cards",
+      "prompt": "a small stack of plain white cue cards about the size of her palm, blank on both sides",
+      "note": "Episodes 26, 28, in her LEFT hand (a left-hand insert is required in 26: m05, used again in 50); dropped: '…, scattered on the black stage floor'."
+    },
+    {
+      "id": "handheld-mic",
+      "name": "Handheld microphone",
+      "prompt": "a black handheld microphone with no logo",
+      "note": "Two: Grant's (his right hand, from 26) and the host's (Nora takes it in 29)."
+    },
+    {
+      "id": "lyle-camera",
+      "name": "Lyle's camera",
+      "prompt": "a black DSLR camera with no logo on a plain strap",
+      "note": "Episodes 26, 46–47, 57; flash: camera-flash; splashed (47): '…, its lens splashed with thick pale chowder'."
+    },
+    {
+      "id": "lyle-phone",
+      "name": "Lyle's livestream phone",
+      "prompt": "a black phone held up sideways, seen from the back, its screen a soft white glow",
+      "note": "Episodes 28–30."
+    },
+    {
+      "id": "guest-phones",
+      "name": "Front-row phones",
+      "prompt": "two or three phones held up in the dark, seen from the back or the side, only their soft white glows",
+      "note": "Episode 28; never 'every phone in the room'. Lit, after the house lights come up (28–30): 'two or three phones held up, seen from the back or the side, only their soft white glows'."
+    },
+    {
+      "id": "camera-flash",
+      "name": "Camera flashes",
+      "prompt": "a single soft white camera flash, then another two beats later",
+      "note": "Episodes 26, 46; never a row of flashes at once, never a strobe; a face that must read is not lit by the flash."
+    },
+    {
+      "id": "follow-spot",
+      "name": "Follow spot",
+      "prompt": "a hard white follow-spot beam slanting down from high on the right, a sharp-edged circle of light on her face and shoulders",
+      "note": "Episodes 26–27; from the lighting balcony (launch-booth)."
+    },
+    {
+      "id": "green-light-box",
+      "name": "Light box over the fire door",
+      "prompt": "a small dim green light box above the door, blank",
+      "note": "Episodes 29–30; never write 'exit sign'."
+    },
+    {
+      "id": "guest-lamp",
+      "name": "Guest-room lamp",
+      "prompt": "a small concrete bedside lamp with a white shade, warm light",
+      "note": "Episodes 21–23."
+    },
+    {
+      "id": "furnace-no3",
+      "name": "Furnace No. 3",
+      "prompt": "a huge round furnace of dark red firebrick bound with rusted steel bands, about twice as tall as a man, a steel flue rising from its dome, a round mouth at chest height behind a hinged steel door, no lettering",
+      "note": "Cold: '…, cold and grey with dust'; covered: '…, under a huge dusty grey canvas tarp'; lit (37 on): '…, an orange glow pouring from the gap of its half-open door'."
+    },
+    {
+      "id": "furnace-tarp",
+      "name": "Furnace tarp",
+      "prompt": "a huge dusty grey canvas tarp",
+      "note": "Episodes 31–32; pulled off: '…, heaped at the foot of the furnace'. A frayed rope on one corner: 'a frayed rope tied to one corner of the tarp'; from 33 stored in the storeroom, out of frame."
+    },
+    {
+      "id": "safety-line",
+      "name": "Yellow safety line",
+      "prompt": "a worn yellow safety line painted across the concrete floor",
+      "note": "From 33 whenever anyone is near the furnace; always say which side each person is on. Nora never crosses it after episode 34."
+    },
+    {
+      "id": "steel-plate",
+      "name": "Steel plate",
+      "prompt": "a black steel plate on the floor in front of the furnace mouth",
+      "note": "Also before the practice furnace (33–34)."
+    },
+    {
+      "id": "practice-furnace",
+      "name": "Practice furnace",
+      "prompt": "a small round practice furnace on steel legs, about waist high, its mouth the size of a dinner plate glowing orange",
+      "note": "Episodes 33–34, on the right wall."
+    },
+    {
+      "id": "hot-glob",
+      "name": "The falling gather",
+      "prompt": "a glob of glowing orange molten glass the size of an egg",
+      "note": "33 in mid-air; 34: '…, hissing on the black steel plate in a puff of white steam, fading from orange to dark red', an arm's length from her boots."
+    },
+    {
+      "id": "crooked-cup",
+      "name": "Sparks's crooked cup",
+      "prompt": "a small clear hand-blown cup about the size of her fist, leaning to one side, its rim lopsided",
+      "note": "A row: 'a row of small clear lopsided hand-blown cups on a steel shelf'; 40: '…, piled in a steel bucket'."
+    },
+    {
+      "id": "chalk-tally",
+      "name": "Sparks's chalk tally",
+      "prompt": "short white chalk strokes on the red brick, soft focus",
+      "note": "On the brick pillar by the steel shelf (right wall), episodes 33–60; never a number or a word. Episode 56: '…, and one fresh chalk stroke set apart at the end'. The first stroke (33): 'a single short white chalk stroke…'."
+    },
+    {
+      "id": "gus-flashlight",
+      "name": "Gus's flashlight",
+      "prompt": "a heavy old black flashlight as long as his forearm",
+      "note": "Episodes 31–32, his right hand."
+    },
+    {
+      "id": "claire-padlock",
+      "name": "Padlock on Claire Quinn Glass",
+      "prompt": "a rusted padlock on a rusted hasp, about the size of her palm",
+      "note": "Episode 31."
+    },
+    {
+      "id": "young-grant-card",
+      "name": "Young Grant's business card",
+      "prompt": "a plain white business card, held so only its blank back shows",
+      "note": "Episode 31 flashback, young Grant's right hand."
+    },
+    {
+      "id": "nora-jacket",
+      "name": "Nora's work jacket",
+      "prompt": "a dark olive waxed-cotton work jacket, worn open",
+      "note": "Her own jacket from before the marriage, packed in her suitcase in episode 7; first worn on day 109 (31). Outdoors in 31–40 and 57; at Remelt it hangs on a nail above Peg's bench."
+    },
+    {
+      "id": "nora-own-phone",
+      "name": "Nora's own phone",
+      "prompt": "a plain black phone in a clear case, no logo, about the size of her palm",
+      "note": "A cheap prepaid phone Peg buys her on day 111 (written in Nora's column of the ledger). Episodes 34–60. Lit: '…, its screen a soft white glow, seen from the side'. Episode 39: '…, its screen cracked, lying at the bottom of an empty steel bin'; she fishes it out after the deadline and it still works (never shown)."
+    },
+    {
+      "id": "sparks-glasses",
+      "name": "Sparks's safety glasses",
+      "prompt": "clear wraparound safety glasses",
+      "note": "Always on his eyes inside the safety line: '…, over his eyes'; outside: '…, pushed up on his forehead' or '…, hanging from the collar of his T-shirt'; 56: '…, pulled off in his right hand'."
+    },
+    {
+      "id": "gus-apron",
+      "name": "Gus's leather apron",
+      "prompt": "a scuffed brown leather apron",
+      "note": "At the furnace with gus-gloves and gus-face-shield."
+    },
+    {
+      "id": "gus-gloves",
+      "name": "Gus's furnace gloves",
+      "prompt": "long tan heat-resistant gloves reaching his elbows",
+      "note": ""
+    },
+    {
+      "id": "gus-face-shield",
+      "name": "Gus's face shield",
+      "prompt": "a clear face shield on a headband",
+      "note": "'…, flipped up' or '…, pulled down over his face'."
+    },
+    {
+      "id": "sparks-helmet",
+      "name": "Sparks's helmet",
+      "prompt": "a scuffed black open-face motorbike helmet",
+      "note": "Episode 33; on until the bike is parked."
+    },
+    {
+      "id": "sparks-motorbike",
+      "name": "Sparks's motorbike",
+      "prompt": "an old black motorbike with no badge, number plate out of frame",
+      "note": "From 33 parked inside the doors on the right."
+    },
+    {
+      "id": "dust-respirator",
+      "name": "Dust respirator",
+      "prompt": "a grey half-face dust respirator over her nose and mouth",
+      "note": "Episode 40; '…, pulled down under her chin'."
+    },
+    {
+      "id": "pell-batch-sacks",
+      "name": "Pell's old batch sacks",
+      "prompt": "old burlap sacks about the size of a pillow, tied at the neck with twine, faded and blank",
+      "note": "Storeroom; episode 40, open: 'pale grey sand'. Two left from 41."
+    },
+    {
+      "id": "beam-balance",
+      "name": "Beam balance",
+      "prompt": "a small old steel beam balance with a brass pan and sliding weights, its scale a soft pale blur",
+      "note": "Episode 40."
+    },
+    {
+      "id": "cobalt-jar",
+      "name": "Cobalt powder",
+      "prompt": "a small glass jar of fine deep-blue powder",
+      "note": "Episode 40; never white powder, never a close-up of powder."
+    },
+    {
+      "id": "measuring-spoon",
+      "name": "Measuring spoon",
+      "prompt": "a small steel measuring spoon",
+      "note": "Episode 40."
+    },
+    {
+      "id": "steel-bucket",
+      "name": "Steel bucket",
+      "prompt": "a steel bucket",
+      "note": "Episode 40."
+    },
+    {
+      "id": "charging-shovel",
+      "name": "Charging shovel",
+      "prompt": "a long-handled steel charging shovel",
+      "note": "Only Sparks or Gus hold it. Loaded: '…, heaped with pale cullet' (55)."
+    },
+    {
+      "id": "casting-mould",
+      "name": "Casting mould",
+      "prompt": "a shallow square steel frame mould on a flat steel table",
+      "note": "Episode 40; 'molten deep blue glass'."
+    },
+    {
+      "id": "annealer",
+      "name": "Annealing oven",
+      "prompt": "a steel annealing oven on legs, about chest high, its door shut",
+      "note": "Open: '…, its door swung open, warm air shimmering'."
+    },
+    {
+      "id": "blue-panel",
+      "name": "Harbor-dawn blue panel",
+      "prompt": "a flat panel of clear deep blue glass like the harbor at dawn, about the size of a large hardcover book, as thick as her little finger, a few tiny seed bubbles inside",
+      "note": "The sample (40) and every chandelier panel (48–57). Held up: '…, held up in both hands to the low morning sun'; its light: 'a patch of deep blue light sliding across the red brick'. Hot glass on a pipe is orange; blue only once cold."
+    },
+    {
+      "id": "blue-panel-row",
+      "name": "Row of blue panels",
+      "prompt": "a long row of flat panels of clear deep blue glass like the harbor at dawn, each about the size of a large hardcover book, standing upright on a plain wooden rack",
+      "note": "Along Remelt's right wall from 48 (the chandelier contract is signed on day 142; the first panels come out on day 144, episode 48). Never a count: '…, a short row' (48–53), '…, the row half full' (54–55), '…, the row nearly full', '…, one empty peg at the end of the row' (55), '…, glowing blue where the first daylight comes through them' (56). Six-night montage middle frame: '…, the row two-thirds full'."
+    },
+    {
+      "id": "moving-blanket",
+      "name": "Moving blanket",
+      "prompt": "a grey quilted moving blanket",
+      "note": "Episode 40."
+    },
+    {
+      "id": "drawing-tube",
+      "name": "Drawing tube",
+      "prompt": "a plain grey cardboard drawing tube as long as her arm",
+      "note": "Episode 40, under her left arm."
+    },
+    {
+      "id": "sand-bins",
+      "name": "Empty sand bins",
+      "prompt": "a row of waist-high empty steel bins",
+      "note": "Right of the annealer from 37; '…, one tipped on its side' (39–40)."
+    },
+    {
+      "id": "wall-clock",
+      "name": "Remelt wall clock",
+      "prompt": "an old round wall clock with a white face and plain black bar markers, no numerals, about as wide as a man's shoulders",
+      "note": "Above the doors. 39: 'both hands pointing straight up'; it strikes the hour (54: ten strokes)."
+    },
+    {
+      "id": "blackboard",
+      "name": "Blackboard",
+      "prompt": "an old wooden-framed blackboard about as wide as her outstretched arms, leaning on the workbench, seen edge-on",
+      "note": "Episode 37 ('Remelt.' is spoken); later against the left wall."
+    },
+    {
+      "id": "chalk-stub",
+      "name": "Chalk",
+      "prompt": "a stub of white chalk",
+      "note": ""
+    },
+    {
+      "id": "long-bench",
+      "name": "Peg's bench",
+      "prompt": "a long worn wooden bench against the brick wall",
+      "note": "Front-left corner under the street window; 40: Peg asleep on it."
+    },
+    {
+      "id": "sparks-jacket",
+      "name": "Sparks's jacket",
+      "prompt": "a worn black zip-up work jacket",
+      "note": "On his motorbike handlebar; 40: '…, laid over her like a blanket'."
+    },
+    {
+      "id": "tracker-bead",
+      "name": "Tracker bead",
+      "prompt": "one small amber glass bead about the size of a fingertip",
+      "note": "'…, resting inside the tube against the first brass band' (Report, 36–50); '…, resting inside the tube against the second brass band' (Charges, from 50)."
+    },
+    {
+      "id": "evidence-rack",
+      "name": "Evidence rack",
+      "prompt": "an old steel sample rack bolted to the red brick wall below the tube, a long row of empty upright slots, each slot about the size of a hardcover book, no labels",
+      "note": "Hung in 36, empty until 50 (never write 'twelve'). From 51: 'an old steel sample rack bolted to the red brick wall below the tube, a long row of upright slots, each slot about the size of a hardcover book, no labels, two clear engraved glass panels standing in the first two slots on the left, the other slots empty'. The finished hat (knit-hat-finished) is set on its bottom ledge at the end of episode 48 and stays there 49–60."
+    },
+    {
+      "id": "stepladder",
+      "name": "Stepladder",
+      "prompt": "a paint-spattered wooden stepladder taller than she is",
+      "note": "Episode 36."
+    },
+    {
+      "id": "gas-valve",
+      "name": "Gas valve and gauge",
+      "prompt": "a gas valve with a red lever handle and a round dial gauge on a black pipe at knee height beside the furnace, the dial a pale blur",
+      "note": "Right of the furnace. 36: Gus pulls the lever shut; 55–60: Elias, gloved, eases the lever."
+    },
+    {
+      "id": "gas-fitting",
+      "name": "New gas fitting",
+      "prompt": "a new brass gas fitting on a black pipe",
+      "note": "Episode 37."
+    },
+    {
+      "id": "pipe-wrench",
+      "name": "Pipe wrench",
+      "prompt": "a heavy steel pipe wrench as long as his forearm",
+      "note": "Episode 37."
+    },
+    {
+      "id": "tech-toolbox",
+      "name": "Technician's toolbox",
+      "prompt": "a red steel toolbox",
+      "note": "Episodes 36–37."
+    },
+    {
+      "id": "tripod-work-light",
+      "name": "Tripod work light",
+      "prompt": "a portable work light on a short tripod, cold white light",
+      "note": "Episodes 36–37 (the technician's)."
+    },
+    {
+      "id": "smoke",
+      "name": "Smoke under the roof",
+      "prompt": "thin grey-black smoke drifting under the high roof",
+      "note": "Episode 36."
+    },
+    {
+      "id": "fire-extinguisher",
+      "name": "Fire extinguisher",
+      "prompt": "a red fire extinguisher on a wall bracket",
+      "note": "Beside the furnace."
+    },
+    {
+      "id": "cashiers-check",
+      "name": "Cashier's check",
+      "prompt": "a pale green cashier's check about the size of his hand, held so only the back shows",
+      "note": "Episode 35; flat: '…, lying face down on the table'."
+    },
+    {
+      "id": "lease",
+      "name": "Remelt lease",
+      "prompt": "a stapled lease of several white pages about the size of a magazine, held so only the backs or edges show",
+      "note": "Episodes 35–36."
+    },
+    {
+      "id": "burner-estimate",
+      "name": "Burner repair estimate",
+      "prompt": "a single pale yellow estimate sheet about the size of a magazine page, held so only its back shows",
+      "note": "Episodes 35–36."
+    },
+    {
+      "id": "grant-coffee",
+      "name": "Grant's coffee",
+      "prompt": "a white paper coffee cup with a lid, no logo",
+      "note": "Episode 39, his right hand."
+    },
+    {
+      "id": "lyle-photo",
+      "name": "Lyle's pawnshop photo",
+      "prompt": "a slightly grainy long-lens photo taken from across a harbor street: Nora in a grey henley and an open dark olive jacket stepping out of a narrow pawnshop door onto the sidewalk, head down",
+      "note": "Episode 35, a full-frame insert (no phone)."
+    },
+    {
+      "id": "ferry-notice",
+      "name": "Competition notice",
+      "prompt": "a single printed notice sheet held so only its back shows",
+      "note": "Episode 38; '…, lying face down on the workbench under a fist-sized lump of rough green glass'."
+    },
+    {
+      "id": "chandelier-sketch",
+      "name": "Chandelier drawing",
+      "prompt": "a large watercolor drawing on heavy white paper about the size of a newspaper page, many deep blue glass panels hanging in overlapping rows like falling waves, no writing",
+      "note": "Episode 38; may be shown face on."
+    },
+    {
+      "id": "fiona-binder",
+      "name": "Fiona's spec binder",
+      "prompt": "a thick black spec binder about the size of a hardcover book, held against her chest, nothing on its spine",
+      "note": "Episodes 38, 54."
+    },
+    {
+      "id": "fiona-badge",
+      "name": "Fiona's badge",
+      "prompt": "an ID badge on a lanyard, turned toward her chest",
+      "note": "Episodes 38, 40, 54, 57."
+    },
+    {
+      "id": "fiona-watch",
+      "name": "Fiona's watch",
+      "prompt": "a plain steel wristwatch on her left wrist, its face turned toward her",
+      "note": "Episodes 38, 40."
+    },
+    {
+      "id": "entry-form",
+      "name": "Entry form",
+      "prompt": "a single white form lying on the table, far out of focus",
+      "note": "Episode 40."
+    },
+    {
+      "id": "date-stamp",
+      "name": "Date stamp",
+      "prompt": "a rubber date stamp coming down on the top page, the page far out of focus",
+      "note": "Episodes 19, 40."
+    },
+    {
+      "id": "hank-receipt",
+      "name": "Hank's receipt",
+      "prompt": "a small pale pink carbon receipt about the size of her palm, folded so only its blank back shows",
+      "note": "Episodes 38–39; left on his counter in 39."
+    },
+    {
+      "id": "hank-phone",
+      "name": "Hank's phone",
+      "prompt": "a scratched black phone with no logo, about the size of his palm",
+      "note": "Episodes 38–39."
+    },
+    {
+      "id": "sand-pallets",
+      "name": "Sand pallets",
+      "prompt": "pallets stacked with plain unlabeled sand sacks",
+      "note": "Doyle's yard, 38–39."
+    },
+    {
+      "id": "waiting-hat",
+      "name": "The clinic hat",
+      "prompt": "a tiny pale yellow baby hat, half-knitted on two wooden knitting needles as long as her forearm",
+      "note": "Episode 33, the pregnant woman's; pale yellow so it is never mistaken for Nora's cream hat."
+    },
+    {
+      "id": "gus-pickup",
+      "name": "Gus's pickup",
+      "prompt": "an old faded red pickup truck with no badge, number plate out of frame",
+      "note": "Episode 40."
+    },
+    {
+      "id": "light-box-papers",
+      "name": "Papers on the light box",
+      "prompt": "two sheets of white paper laid one over the other on the glowing light box, only two soft overlapping grey shapes far out of focus",
+      "note": "41, 43 ('two narrow strips of white paper'), 48 ('three sheets of white paper laid in a column down the glowing light box, only soft grey shapes far out of focus'). Camera low at the workbench edge; never from above."
+    },
+    {
+      "id": "blank-sheet",
+      "name": "Blank sheet",
+      "prompt": "a single blank sheet of plain white paper on the glowing light box",
+      "note": "Episode 41."
+    },
+    {
+      "id": "sketch-sheets",
+      "name": "Pre-marriage sketches, spread out",
+      "prompt": "loose sheets of heavy white drawing paper about the size of a magazine page, soft grey pencil drawings of vases and glass bowls, spread across the concrete floor, their lower corners far out of focus",
+      "note": "Episode 41; the corners are always out of focus."
+    },
+    {
+      "id": "court-papers",
+      "name": "Motion, ruling, freeze order",
+      "prompt": "a few stapled white pages, held so only the backs or edges show",
+      "note": "Same sentence as the episode-20 decree. On the light box: '…, lying face down on the glowing light box'; scattered: '…, scattered face down across the pale oak floor' (50)."
+    },
+    {
+      "id": "grant-pen",
+      "name": "Grant's pen",
+      "prompt": "a slim brushed-steel pen as long as his hand",
+      "note": "Episode 42."
+    },
+    {
+      "id": "fisk-folder",
+      "name": "Fisk's document folder",
+      "prompt": "a slim black leather document folder about the size of a magazine",
+      "note": "Episodes 42–43."
+    },
+    {
+      "id": "ten-sheets",
+      "name": "Ten sample sheets",
+      "prompt": "ten sheets of plain white paper about the size of a magazine page, laid in two columns of five down the long wooden workbench, far out of focus, only soft pale blur",
+      "note": "Episode 43; only from a low angle at the workbench edge."
+    },
+    {
+      "id": "examiner-pen",
+      "name": "Examiner's pen",
+      "prompt": "a plain black ballpoint pen as long as her hand",
+      "note": "Episode 43, Nora's right hand."
+    },
+    {
+      "id": "signature-strips",
+      "name": "Fisk's two strips",
+      "prompt": "two narrow strips of plain white paper about as long as his hand",
+      "note": "Episode 43."
+    },
+    {
+      "id": "sleeve-protectors",
+      "name": "Wexler's sleeve protectors",
+      "prompt": "black cotton sleeve protectors from wrist to elbow",
+      "note": "Episode 43."
+    },
+    {
+      "id": "examiner-loupe",
+      "name": "Wexler's loupe",
+      "prompt": "a small brass-rimmed magnifying loupe about the size of his thumb",
+      "note": "Episode 43."
+    },
+    {
+      "id": "examiner-ruler",
+      "name": "Wexler's ruler",
+      "prompt": "a clear plastic ruler as long as his forearm",
+      "note": "Episode 43; '…, folded in half in his right hand'."
+    },
+    {
+      "id": "examiner-file",
+      "name": "Wexler's file",
+      "prompt": "a buff expanding file folder with an elastic band, about the size of a magazine",
+      "note": "Episode 43."
+    },
+    {
+      "id": "examiner-notebook",
+      "name": "Wexler's notebook",
+      "prompt": "a small black hardcover notebook about the size of his palm, its pages turned away",
+      "note": "Episode 43: he logs the cup."
+    },
+    {
+      "id": "blue-cup",
+      "name": "Sparks's crooked blue cup",
+      "prompt": "a small deep blue hand-blown cup about the size of her fist, leaning to one side, its rim lopsided",
+      "note": "Two: one to Wexler (43: '…, held against his chest in his left arm'), one to Rosa (49, then on her shelf)."
+    },
+    {
+      "id": "cole-hand",
+      "name": "Cole's hand in the car",
+      "prompt": "a white-gloved hand raising a black phone behind the side window of a pearl-white sedan parked across the street, far away and soft",
+      "note": "Episode 43."
+    },
+    {
+      "id": "pasta-bowl",
+      "name": "Pasta bowl",
+      "prompt": "a wide white ceramic pasta bowl about as wide as two cupped hands, heaped with spaghetti in red tomato sauce, steam rising, a steel fork laid across its rim",
+      "note": "44 ('…, on the bare concrete floor beside a closed wooden door') and 58 (on a steel stool)."
+    },
+    {
+      "id": "pasta-bowl-washed",
+      "name": "Washed bowl",
+      "prompt": "a wide white ceramic pasta bowl about as wide as two cupped hands, empty and washed spotless",
+      "note": "Episode 45."
+    },
+    {
+      "id": "pasta-pot",
+      "name": "Pasta pot",
+      "prompt": "a tall steel pasta pot about the size of a mixing bowl, steam rising",
+      "note": "Episode 44."
+    },
+    {
+      "id": "sticky-note",
+      "name": "'Salty.' note",
+      "prompt": "a small square yellow sticky note about as wide as three of her fingers, its written side turned away",
+      "note": "Episode 45; '…, tucked under the bowl's rim, only its yellow edge showing'; '…, folded in half'. Never readable."
+    },
+    {
+      "id": "knit-hat-finished",
+      "name": "The finished hat",
+      "prompt": "a cream baby hat about the size of her palm, finished, off the needles",
+      "note": "From 48: '…, lying on the glowing light box'; '…, resting on the bottom ledge of a steel rack' (49–60)."
+    },
+    {
+      "id": "ashford-tv",
+      "name": "Ashford TV",
+      "prompt": "a large flat TV on the bare concrete wall, seen from the side, its screen a soft cold blue glow",
+      "note": "Episode 45."
+    },
+    {
+      "id": "tv-remote",
+      "name": "TV remote",
+      "prompt": "a black TV remote about as long as her hand",
+      "note": "Episode 45; '…, lying on a grey sofa cushion'."
+    },
+    {
+      "id": "press-cameras",
+      "name": "Press cameras",
+      "prompt": "two black cameras with no logos held up by hands, the reporters' faces hidden behind them",
+      "note": "Episodes 46–47."
+    },
+    {
+      "id": "steel-doors",
+      "name": "Remelt's steel doors",
+      "prompt": "one leaf of a pair of tall rusted double steel doors",
+      "note": "'…, pulled open one foot' (43, 46); they open inward."
+    },
+    {
+      "id": "blowpipe-rack",
+      "name": "Blowpipe rack",
+      "prompt": "a rack of long steel blowpipes hanging against the brick wall",
+      "note": "Back wall, left of the furnace."
+    },
+    {
+      "id": "soup-ladle",
+      "name": "Rosa's ladle",
+      "prompt": "a long steel soup ladle about as long as her forearm",
+      "note": "Episodes 46–47, 49, her right hand."
+    },
+    {
+      "id": "stockpot",
+      "name": "Rosa's stockpot",
+      "prompt": "a big dented steel stockpot about as wide as her shoulders, steam rising",
+      "note": "Episodes 47, 49."
+    },
+    {
+      "id": "chowder-bowl",
+      "name": "Bowl of chowder",
+      "prompt": "a thick white diner bowl about as wide as two cupped hands, full of creamy clam chowder with a few oyster crackers on top, steam rising",
+      "note": "Episodes 47, 49."
+    },
+    {
+      "id": "chowder-splash",
+      "name": "Thrown chowder",
+      "prompt": "a splash of cold thick pale chowder, no steam",
+      "note": "Episode 47; only on the lens and the shoes."
+    },
+    {
+      "id": "oyster-crackers",
+      "name": "Oyster crackers",
+      "prompt": "a small plastic basket of oyster crackers",
+      "note": "Episode 47."
+    },
+    {
+      "id": "bank-card-copy",
+      "name": "Bank signature card copy",
+      "prompt": "a small white photocopy about the size of her hand, a thin gold foil seal sticker in one corner, held so only its back shows",
+      "note": "Episode 48."
+    },
+    {
+      "id": "certificate-copy",
+      "name": "Marriage certificate copy",
+      "prompt": "a single white photocopied page with a thin gold foil seal sticker in one corner, held so only its back shows",
+      "note": "Episode 48; '…, held up in front of the glowing light box'."
+    },
+    {
+      "id": "examiner-report",
+      "name": "Examiner's report",
+      "prompt": "a thick stapled report about the size of a magazine page with a plain pale grey card cover, held so only the back or the blank cover shows",
+      "note": "Episode 50; '…, lying open face down on the concrete floor'; on the workbench from 51."
+    },
+    {
+      "id": "charge-letter",
+      "name": "Prosecutor's filing notice",
+      "prompt": "a single white letter page, unfolded from three, held so only its back shows",
+      "note": "Episode 50 (Dana leaves a copy by the light box); 51: 'a single white letter page, unfolded from three, laid on the glowing light box, seen from a low side angle so only a soft white glow shows through it'."
+    },
+    {
+      "id": "glass-rod",
+      "name": "Glass rod",
+      "prompt": "a thin clear glass rod as long as her forearm",
+      "note": "Episode 50: pushes the bead to Charges."
+    },
+    {
+      "id": "peg-glasses-folded",
+      "name": "Peg's glasses, off",
+      "prompt": "her tortoiseshell reading glasses folded in her right hand",
+      "note": "Only in episode 48, one beat."
+    },
+    {
+      "id": "red-curtain",
+      "name": "New curtains",
+      "prompt": "a heavy deep wine-red velvet curtain panel, hanging from ceiling to floor",
+      "note": "Episode 50; '…, folded in a heap on a low oak cabinet'."
+    },
+    {
+      "id": "ladder",
+      "name": "Installers' ladder",
+      "prompt": "a two-step aluminum ladder",
+      "note": "Episode 50."
+    },
+    {
+      "id": "left-hand-sketch",
+      "name": "Left-hand outline",
+      "prompt": "a sheet of white drawing paper about the size of a magazine with a plain pencil outline of a left hand traced around spread fingers, no writing, taped to the red brick by one strip of masking tape",
+      "note": "From 51, right of the evidence rack; drawing it: '…, lying on the workbench under her own spread left hand'."
+    },
+    {
+      "id": "engraving-pen",
+      "name": "Engraving pen",
+      "prompt": "a slim silver diamond-tip glass engraving pen about as long as her hand, no cord",
+      "note": "Episode 51; '…, dropping onto the wooden workbench', in the middle of the shot."
+    },
+    {
+      "id": "blank-panel",
+      "name": "Blank panel",
+      "prompt": "a blank clear glass panel about the size of a hardcover book, lying flat on the workbench",
+      "note": "Two cut by episode 50; engraved in 51."
+    },
+    {
+      "id": "engraved-panel",
+      "name": "Engraved panel",
+      "prompt": "a clear glass panel about the size of a hardcover book, carrying a few soft frosted engraved strokes too small and blurred to read",
+      "note": "From 51; '…, standing in the first slot of the steel rack' / '…, the second slot'. Never 'text'."
+    },
+    {
+      "id": "firelight-strokes",
+      "name": "Engraving thrown on the brick",
+      "prompt": "soft blurred strokes of orange firelight thrown through the engraved glass onto the red brick",
+      "note": "Episodes 51, 55, 58."
+    },
+    {
+      "id": "evidence-bag",
+      "name": "Evidence bag",
+      "prompt": "a clear plastic bag about the size of his hand, a red seal strip across the top, a small plain white sticker",
+      "note": "Episode 53."
+    },
+    {
+      "id": "receipt-copy",
+      "name": "Copy of the receipt",
+      "prompt": "a white photocopy about the size of her palm, folded so only its blank back shows",
+      "note": "From 53 in Peg's ledger cover."
+    },
+    {
+      "id": "reyes-lamp",
+      "name": "Reyes's desk lamp",
+      "prompt": "a black metal desk lamp casting a small warm circle of light on the desk",
+      "note": "Episode 53."
+    },
+    {
+      "id": "photocopier",
+      "name": "Photocopier",
+      "prompt": "a grey desktop photocopier on a low cabinet behind the desk",
+      "note": "Episode 53."
+    },
+    {
+      "id": "crates",
+      "name": "Crates",
+      "prompt": "plain unmarked pale wooden crates about the size of a suitcase, packed with pale wood wool",
+      "note": "Episode 56; '…, lids nailed shut, standing in a row'."
+    },
+    {
+      "id": "cullet-sack",
+      "name": "Sack of cullet",
+      "prompt": "a heavy plain burlap sack of cullet about as big as a bed pillow",
+      "note": "Episode 54."
+    },
+    {
+      "id": "cullet-spill",
+      "name": "Spilled cullet",
+      "prompt": "rounded, blunt pebbles of clear and pale blue glass, each about the size of a thumbnail, spilled across the concrete floor",
+      "note": "Episode 54; add 'no cuts, no redness on his hands'."
+    },
+    {
+      "id": "heat-gloves",
+      "name": "Elias's heat gloves",
+      "prompt": "a pair of thick grey heat-resistant work gloves reaching halfway up his forearms",
+      "note": "55–60: '…, on both his hands'; '…, lying on a round steel stool'. 58: only the right glove comes off; 60: the left comes off."
+    },
+    {
+      "id": "elias-scar-insert",
+      "name": "The scar (episode 60 insert)",
+      "prompt": "a man's bare left hand resting on the cold steel rim of a stool, small in the lower third of the frame, on the back of the hand a pale, flat, smooth silvery patch of old burn scar, healed decades ago, only slightly paler than the skin around it, no redness, no stitches, no open wound, lit by cold white streetlight from the open door, the furnace glow kept off the hand",
+      "note": "Episode 60 only, its own small insert; behind it 'far out of focus, two clear engraved glass panels on a steel rack against red brick'. The refine pass repeats 'no redness'. Test as a still first."
+    },
+    {
+      "id": "steel-stool",
+      "name": "Steel stool",
+      "prompt": "a round steel shop stool about knee height",
+      "note": "Two by the furnace mouth (55–60)."
+    },
+    {
+      "id": "work-lamp",
+      "name": "Hanging work lamp",
+      "prompt": "a single work lamp hanging over the workbench, steady warm light",
+      "note": "From 41; every Remelt night scene. Talking faces take this light; the furnace only along a cheek."
+    },
+    {
+      "id": "army-cot",
+      "name": "Army cot",
+      "prompt": "a narrow old canvas army cot with a grey wool blanket, set against the brick wall well back from the furnace",
+      "note": "54–56 by the left wall outside the safety line; 58–60: 'a folded canvas army cot leaning against the brick wall'."
+    },
+    {
+      "id": "gus-phone",
+      "name": "Gus's phone",
+      "prompt": "an old black flip phone about the size of his palm",
+      "note": "Episode 54."
+    },
+    {
+      "id": "stretcher",
+      "name": "Stretcher",
+      "prompt": "a folded wheeled stretcher with a grey mattress, standing by the open steel door",
+      "note": "Episode 54."
+    },
+    {
+      "id": "emt-clipboard",
+      "name": "Refusal clipboard",
+      "prompt": "a plain grey clipboard about the size of a hardcover book, the form facing away, a ballpoint pen clipped to it",
+      "note": "Episode 54."
+    },
+    {
+      "id": "takeout-boxes",
+      "name": "Takeout boxes",
+      "prompt": "plain white paper takeout boxes with no logo, stacked on the corner of the workbench",
+      "note": "Episode 55: '…, a short stack' → '…, a taller stack' → '…, a tall leaning stack'."
+    },
+    {
+      "id": "dana-phone",
+      "name": "Dana's phone",
+      "prompt": "a black phone with no logo, about the size of her palm",
+      "note": "Episodes 25, 29, 34, 51, 58."
+    },
+    {
+      "id": "rosa-phone",
+      "name": "Rosa's phone",
+      "prompt": "a small old silver flip phone",
+      "note": "Episode 59."
+    },
+    {
+      "id": "fiona-phone",
+      "name": "Fiona's phone",
+      "prompt": "a black phone with no logo, about the size of her palm",
+      "note": "Episode 56."
+    },
+    {
+      "id": "lectern",
+      "name": "Lectern",
+      "prompt": "a plain white lectern with no logo and a slim black microphone on a short stand",
+      "note": "Episode 57."
+    },
+    {
+      "id": "sponsor-backdrop",
+      "name": "Sponsor backdrop",
+      "prompt": "a plain pale backdrop with no lettering",
+      "note": "Episode 57."
+    },
+    {
+      "id": "spotlight",
+      "name": "Terminal spotlight",
+      "prompt": "a single hard white spotlight beam",
+      "note": "Episode 57."
+    },
+    {
+      "id": "competition-envelope",
+      "name": "Blind-review envelope",
+      "prompt": "a plain cream envelope about the size of her hand",
+      "note": "Episode 57; the card inside: 'a single white card, held so only its back shows'."
+    },
+    {
+      "id": "ferry",
+      "name": "Ferry",
+      "prompt": "a large white car ferry with its deck lights on, docking beyond the glass wall, seen far off, its plain white hull soft in the evening haze",
+      "note": "Episode 57."
+    },
+    {
+      "id": "peg-yarn",
+      "name": "Peg's new yarn",
+      "prompt": "a ball of plain oatmeal yarn with two wooden knitting needles as long as her forearm",
+      "note": "Episode 58 (a new project, not baby-sized); '…, the needles driven down into the ball'."
+    },
+    {
+      "id": "stew-pot",
+      "name": "Stew pot",
+      "prompt": "a heavy dark blue enamel stew pot with its lid on",
+      "note": "Episode 58."
+    },
+    {
+      "id": "grant-cufflink",
+      "name": "Grant's cufflink",
+      "prompt": "a clear glass cufflink on his right shirt cuff",
+      "note": "Episodes 59–60 inserts."
+    },
+    {
+      "id": "grant-shoes",
+      "name": "Grant's shoes",
+      "prompt": "polished tan leather dress shoes",
+      "note": "Episode 59, on gravel."
+    },
+    {
+      "id": "knitting-needle",
+      "name": "Knitting needle",
+      "prompt": "a wooden knitting needle as long as her forearm",
+      "note": "Episode 51: Peg picks open the ledger lining with its tip (no knife)."
+    },
+    {
+      "id": "sparks-gloves",
+      "name": "Sparks's heat gloves",
+      "prompt": "a pair of long grey heat-resistant gloves reaching to the elbow",
+      "note": "Whenever Sparks works at a furnace (from episode 34)."
+    },
+    {
+      "id": "glove-tray",
+      "name": "Launch-stage glove tray",
+      "prompt": "a small plain white tray on a slim stand beside the plinth",
+      "note": "Episode 27: the white gloves wait here."
+    },
+    {
+      "id": "wooden-spoon",
+      "name": "Peg's wooden spoon",
+      "prompt": "a plain wooden spoon as long as her forearm",
+      "note": "Ashford kitchen, episodes 21-25."
+    },
+    {
+      "id": "cast-iron-pot",
+      "name": "Cast-iron pot on the Ashford stove",
+      "prompt": "a heavy black cast-iron pot with a lid on the stove",
+      "note": "Episodes 21-25."
+    },
+    {
+      "id": "gown-folded",
+      "name": "The gown carried folded",
+      "prompt": "the misty-grey gown folded over her forearms against her chest",
+      "note": "Episodes 24–25; same colour as Nora's gown look, gown-box and grey-clutch (misty-grey)."
+    },
+    {
+      "id": "new-lock",
+      "name": "The new lock on the Glass House door",
+      "prompt": "a brand-new brushed-steel deadbolt and lever handle on the black steel door frame, bright and unscratched",
+      "note": "Episodes 6–8 (and 50) whenever the front door is in frame; before episode 6 the door has an ordinary black lever handle (glass-house-door)."
+    },
+    {
+      "id": "motel-lamp",
+      "name": "Motel bedside lamp",
+      "prompt": "a small motel bedside lamp with a pale yellow shade, warm light",
+      "note": "Harborview room, episodes 9–20, on the nightstand between the two beds."
+    },
+    {
+      "id": "nitrile-gloves",
+      "name": "Blue nitrile gloves",
+      "prompt": "blue nitrile gloves",
+      "note": "Episode 11 (Brandt, worn the whole scene, signing too); episode 40 (Nora weighing the batch). Write whose hands."
+    },
+    {
+      "id": "tweezers",
+      "name": "Plastic tweezers",
+      "prompt": "flat white plastic tweezers as long as her finger",
+      "note": "Episode 11, Brandt."
+    },
+    {
+      "id": "brandt-lamp",
+      "name": "Exam-room desk lamp",
+      "prompt": "a small black desk lamp casting hard white light",
+      "note": "Episodes 11–12, on Brandt's desk."
+    },
+    {
+      "id": "desk-mat",
+      "name": "Black desk mat",
+      "prompt": "a black desk mat",
+      "note": "Episode 11: the two pills lie on it."
+    },
+    {
+      "id": "pocket-magnifier",
+      "name": "Pocket magnifier",
+      "prompt": "a small black pocket magnifier about the size of his thumb",
+      "note": "Episode 11 (Dale, right hand); the pawnbroker uses the same sentence (15, 35)."
+    },
+    {
+      "id": "brandt-pen",
+      "name": "Brandt's pen",
+      "prompt": "a plain silver ballpoint pen as long as her hand",
+      "note": "Episode 11: tip held above the two pills; she signs the custody form."
+    },
+    {
+      "id": "grant-roses",
+      "name": "Grant's roses",
+      "prompt": "a bouquet of pale pink roses wrapped in plain brown paper, as long as his forearm",
+      "note": "Episode 11, his right hand; after he hands them over, in an assistant's hands (back only)."
+    },
+    {
+      "id": "gift-box",
+      "name": "Grant's gift box",
+      "prompt": "a flat white gift box tied with a pale ribbon, about the size of a hardcover book",
+      "note": "Episode 11, his left hand."
+    },
+    {
+      "id": "paper-cups",
+      "name": "Two paper cups",
+      "prompt": "two plain white paper cups with lids, no logo",
+      "note": "Episode 11, on the empty chair beside Peg."
+    },
+    {
+      "id": "desk-drawer",
+      "name": "Motel desk drawer",
+      "prompt": "a small wooden desk drawer with a brass keyhole",
+      "note": "Episode 12: Bev locks it."
+    },
+    {
+      "id": "pale-blue-shirt",
+      "name": "Shirt Peg is folding",
+      "prompt": "a pale blue cotton shirt, half folded",
+      "note": "Episodes 13–14, Peg folding it; dropped: '…, dropped on the carpet'."
+    },
+    {
+      "id": "detective-card",
+      "name": "Detective Reyes's card",
+      "prompt": "a white business card with a small blue police badge printed in one corner, print not readable",
+      "note": "Episode 14 (script sentence); the case number is written on the back, never in frame. Not the same card or pocket as Elias's direct-line card (ashford-card), audit e011–e020."
+    },
+    {
+      "id": "reyes-desk-phone",
+      "name": "Reyes's desk phone",
+      "prompt": "a grey office desk phone on speaker",
+      "note": "Episode 14."
+    },
+    {
+      "id": "reyes-file",
+      "name": "Reyes's case file",
+      "prompt": "a thick plain buff case file",
+      "note": "Episodes 14, 53, on his desk; moved out of Reyes's appearance."
+    },
+    {
+      "id": "pawn-counter",
+      "name": "Pawnshop display counter",
+      "prompt": "a long glass display counter of old wristwatches, silver lockets and rings under warm light",
+      "note": "Episodes 15, 35."
+    },
+    {
+      "id": "bank-monitor",
+      "name": "Bank counter monitor",
+      "prompt": "a computer monitor on the counter, its screen turned toward Nora and away from the camera",
+      "note": "Episode 15; shot from the back or side."
+    },
+    {
+      "id": "rollerball-pen",
+      "name": "Black rollerball pen",
+      "prompt": "a plain black rollerball pen as long as her hand",
+      "note": "Dana's (17); Nora's, the same model (35–36; 41, right hand, tip above the paper). Say whose hand."
+    },
+    {
+      "id": "peg-slippers",
+      "name": "Peg's house slippers",
+      "prompt": "worn beige house slippers",
+      "note": "Episode 14 night, 15 night to the parking lot in 19; after her appearance sentence write 'her feet in worn beige house slippers instead of shoes'."
+    },
+    {
+      "id": "motel-pen",
+      "name": "Bev's pen",
+      "prompt": "a plain blue motel ballpoint pen",
+      "note": "Episode 19."
+    },
+    {
+      "id": "cut-hair",
+      "name": "Cut hair in the sink",
+      "prompt": "long dark chestnut locks of hair lying in a white porcelain sink",
+      "note": "Episode 19."
+    },
+    {
+      "id": "sienna-post-photo",
+      "name": "Sienna's post (photo insert)",
+      "prompt": "Sienna's LEFT hand, a slim gold watch on her LEFT wrist, holding a pen above a blank white form far out of focus, on a white marble tabletop",
+      "note": "Episode 19: one full-frame insert, as the photo in the post (no phone in frame); her face is never in it."
+    },
+    {
+      "id": "divorce-petition",
+      "name": "Divorce petition (filed)",
+      "prompt": "a thin stack of white papers, held so only the backs or edges show",
+      "note": "Episode 19; stamped: 'a rubber date stamp coming down on the top page, the page far out of focus' (date-stamp)."
+    },
+    {
+      "id": "gavel",
+      "name": "Gavel",
+      "prompt": "a dark wooden gavel",
+      "note": "Episode 20 (the judge's right hand); 42, only at his right hand, need not strike."
+    },
+    {
+      "id": "marriage-certificate",
+      "name": "Marriage certificate",
+      "prompt": "a single sheet of heavy cream paper lying flat on a small wooden table, seen edge-on, print not readable",
+      "note": "Episode 20. Not the episode-48 copy (certificate-copy)."
+    },
+    {
+      "id": "courtroom-pen",
+      "name": "Small-courtroom pen",
+      "prompt": "a plain black ballpoint pen about as long as a hand",
+      "note": "Episode 20 (script sentence): on the small wooden table; all four sign the certificate with it."
+    },
+    {
+      "id": "sienna-pen",
+      "name": "Sienna's gold pen",
+      "prompt": "a slim gold pen",
+      "note": "Episode 20, her LEFT hand."
+    },
+    {
+      "id": "fisk-watch",
+      "name": "Fisk's watch",
+      "prompt": "a plain silver wristwatch on his left wrist, its face turned toward him",
+      "note": "Episodes 6–7, 20, 42–43: write it whenever his left wrist is in frame."
+    },
+    {
+      "id": "pharmacy-form",
+      "name": "Pharmacy request form",
+      "prompt": "a single white form lying flat on the counter, seen edge-on, print not readable",
+      "note": "Episode 12 (script sentence); Nora fills it in with the counter's ballpoint."
+    },
+    {
+      "id": "stapler",
+      "name": "Office stapler",
+      "prompt": "a small grey office stapler",
+      "note": "Episode 13 (script sentence): Dale staples the loose pickup-log pages (c05); from c08 the stapled sentence."
+    },
+    {
+      "id": "peg-pencil",
+      "name": "Peg's pencil",
+      "prompt": "a short yellow pencil as long as her finger",
+      "note": "Episode 34; dropped: '…, lying on the concrete floor'."
+    },
+    {
+      "id": "peg-ring-mark",
+      "name": "Peg's bare ring finger",
+      "prompt": "a faint pale band of skin on her left ring finger where a ring used to be",
+      "note": "From the pawning (15) until 56, whenever her left hand is in frame; peg-ring again from 57."
+    },
+    {
+      "id": "black-velvet",
+      "name": "Pawnbroker's velvet square",
+      "prompt": "a small square of black velvet on the glass counter",
+      "note": "Episode 15: the pawnbroker sets Peg's ring on it. Episode 35 (script sentence): he wraps Nora's ring in it and draws it behind the counter."
+    },
+    {
+      "id": "screwdriver",
+      "name": "Screwdriver",
+      "prompt": "a plain wooden-handled screwdriver as long as her hand",
+      "note": "Episode 36 (hanging the tube; then on the workbench)."
+    },
+    {
+      "id": "ignition-button",
+      "name": "Furnace ignition button",
+      "prompt": "a round red push button on a small black steel box on the side of the furnace, just above the valve",
+      "note": "Episodes 36–37: Gus presses it to light the furnace."
+    },
+    {
+      "id": "shop-stool",
+      "name": "Wooden shop stool",
+      "prompt": "a plain wooden shop stool about as high as her hip",
+      "note": "Episodes 41–43: one at the light box, one for Dana. Not the round steel stools by the furnace (steel-stool)."
+    },
+    {
+      "id": "kitchen-tongs",
+      "name": "Kitchen tongs",
+      "prompt": "a pair of plain steel kitchen tongs about as long as her forearm",
+      "note": "Episode 44 (script sentence), c01–c04."
+    },
+    {
+      "id": "salt-cellar",
+      "name": "Salt cellar",
+      "prompt": "a small white ceramic salt cellar about the size of her palm, coarse white salt inside",
+      "note": "Episode 44 (script sentence): two pinches on the second bowl, set up for 'Salty.' (45)."
+    },
+    {
+      "id": "coffee-carafe",
+      "name": "Coffee carafe",
+      "prompt": "a plain glass coffee carafe about as tall as her forearm, half full of black coffee",
+      "note": "Episode 45 (script sentence), c16–c18."
+    },
+    {
+      "id": "coffee-mug",
+      "name": "Coffee mug",
+      "prompt": "a plain white ceramic coffee mug about the size of her fist, steam rising",
+      "note": "Episode 45 (script sentence), c16–c18; Peg clears it off screen."
+    },
+    {
+      "id": "wooden-pencil",
+      "name": "Drawing pencil",
+      "prompt": "a plain wooden pencil as long as her hand",
+      "note": "Episode 46 (script sentence): Nora drawing at the light box; at the end lying across the blank sheet."
+    },
+    {
+      "id": "fiona-desk-phone",
+      "name": "Fiona's office phone",
+      "prompt": "a black office desk phone with its speaker on",
+      "note": "Episode 46 (script sentence)."
+    },
+    {
+      "id": "soup-spoon",
+      "name": "Soup spoon",
+      "prompt": "a plain steel soup spoon",
+      "note": "Episodes 47 (Nora eating), 49 (Rosa rests one on the rim of each bowl; Nora's stops in mid-air)."
+    },
+    {
+      "id": "dana-desk-phone",
+      "name": "Dana's office phone",
+      "prompt": "a plain black office desk phone on speaker, one small green light lit on it",
+      "note": "Episode 49 (script sentence)."
+    },
+    {
+      "id": "photo-print",
+      "name": "Photo print",
+      "prompt": "a single glossy photo print about the size of her hand, held so only its white back shows",
+      "note": "Episode 49 (script sentence): Dana draws it from the top case file: 'There's a photo.'"
+    },
+    {
+      "id": "sparks-phone",
+      "name": "Sparks's phone",
+      "prompt": "a black phone with no logo, about the size of his palm",
+      "note": "Episode 54 (c14, at his right ear; then into his right back work-trouser pocket). Same sentence as Grant's, Dana's and Fiona's phones."
+    },
+    {
+      "id": "claw-hammer",
+      "name": "Claw hammer",
+      "prompt": "a plain steel claw hammer with a wooden handle",
+      "note": "Episode 56 (script sentence), Sparks's right hand, nailing the crate lids."
+    },
+    {
+      "id": "elias-pen",
+      "name": "Elias's pen",
+      "prompt": "a plain black ballpoint pen as long as his hand",
+      "note": "Episode 58 (script sentence), his right hand."
+    },
+    {
+      "id": "loose-pages",
+      "name": "Loose pages on the table",
+      "prompt": "a few loose white pages lying flat on the table, seen edge-on at table height, far out of focus",
+      "note": "Episode 58 (script sentence): what Elias writes on."
+    },
+    {
+      "id": "flashback-van",
+      "name": "White van (twelve years ago)",
+      "prompt": "a plain old white van with no lettering",
+      "note": "Episode 31 flashback (pell-door-flashback), parked on the sidewalk outside the open steel doors."
+    },
+    {
+      "id": "push-broom",
+      "name": "Remelt push broom",
+      "prompt": "a plain wooden push broom",
+      "note": "Episode 54 c16b."
+    }
+  ]
+}

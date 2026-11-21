@@ -1,0 +1,113 @@
+{
+  "task": "batch",
+  "status": "completed",
+  "session": "ttv-st1",
+  "gpu": "G4",
+  "jobs": [
+    {
+      "id": "e001-sweet",
+      "title": "till-the-verdict screen test e001-sweet ref2va",
+      "status": "completed",
+      "output": "<W>/st1/out/e001-sweet.mp4",
+      "started_at": "2026-11-10T13:36:09Z",
+      "seed": 713000,
+      "duration_seconds": 6.0,
+      "finished_at": "2026-11-10T13:41:17Z",
+      "bytes": 554964
+    },
+    {
+      "id": "e001-grant",
+      "title": "till-the-verdict screen test e001-grant ref2va",
+      "status": "completed",
+      "output": "<W>/st1/out/e001-grant.mp4",
+      "started_at": "2026-11-10T13:41:17Z",
+      "seed": 713001,
+      "duration_seconds": 6.0,
+      "finished_at": "2026-11-10T13:43:17Z",
+      "bytes": 786785
+    },
+    {
+      "id": "e008-peg",
+      "title": "till-the-verdict screen test e008-peg ref2va",
+      "status": "completed",
+      "output": "<W>/st1/out/e008-peg.mp4",
+      "started_at": "2026-11-10T13:43:17Z",
+      "seed": 713002,
+      "duration_seconds": 6.0,
+      "finished_at": "2026-11-10T13:45:36Z",
+      "bytes": 870263
+    },
+    {
+      "id": "e060-scar",
+      "title": "till-the-verdict screen test e060-scar ref2va",
+      "status": "completed",
+      "output": "<W>/st1/out/e060-scar.mp4",
+      "started_at": "2026-11-10T13:45:36Z",
+      "seed": 713003,
+      "duration_seconds": 6.0,
+      "finished_at": "2026-11-10T13:47:44Z",
+      "bytes": 1195373
+    }
+  ],
+  "log_tail": [
+    "Free disk GiB: 194.5",
+    "重用本次 Colab session 已安裝的 ComfyUI 環境",
+    "ComfyUI: /content/ComfyUI",
+    "[colab] Executing cell 2/8 - c893c6a8...",
+    "Ref2VA variant: int8_convrot (CUDA 13.0 ; GPU capability (12, 0) )",
+    "diffusion_models minimax_h3_ref2va_pruned_int8_convrot.safetensors 19.53 GiB",
+    "text_encoders qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors 14.61 GiB",
+    "vae minimax_h3_video_vae_int8_convrot.safetensors 2.62 GiB",
+    "vae minimax_h3_audio_vae_fp32.safetensors 0.56 GiB",
+    "loras minimax_h3_ref2v_turbo_8step_v1.0_768p_comfyui_bf16.safetensors 1.82 GiB",
+    "[colab] Executing cell 3/8 - 13e969c4...",
+    "模式：reference；要求長度：6.000 秒；排程：158 幀 / 6.583 秒（24 fps）",
+    "[colab] Executing cell 4/8 - 6f6c81bf...",
+    "使用 CLI 上傳的完整 prompt： /content/h3_e060-scar_prompt.txt",
+    "模型收到的完整 prompt：",
+    "overall_soundscape: N/A",
+    "non_diegetic_music: N/A",
+    "[colab] Executing cell 5/8 - ea3760a4...",
+    "[colab] Executing cell 6/8 - 2500d861...",
+    "使用已啟動的 ComfyUI",
+    "節點檢查通過，ComfyUI 已啟動",
+    "[colab] Executing cell 7/8 - 6b198000...",
+    "已提交推論： 139f1c0b-83a0-47a6-a22c-aff5e916047c",
+    "[colab] Executing cell 8/8 - f3216c60...",
+    "仍在生成影片…",
+    "仍在生成影片…",
+    "完成： /content/ComfyUI/output/MiniMax_H3_e060-scar_00001-audio.mp4 (1.1 MiB，含影片與音訊)",
+    "COLAB_CLI_OUTPUT_PATH: /content/h3_e060-scar_output.mp4",
+    "[colab] Saving notebook with outputs to '<W>/st1/work_d143790a/e060-scar/MiniMax_H3_Turbo_Colab_output.ipynb'...",
+    "[colab] Downloaded '/content/h3_e060-scar_output.mp4' to '<W>/st1/out/e060-scar.mp4'"
+  ],
+  "updated_at": "2026-11-10T13:47:44Z",
+  "current_job": "e060-scar",
+  "session_status": "active",
+  "completed_count": 4,
+  "failed_count": 0,
+  "cancelled_count": 0,
+  "error": null,
+  "results": [
+    {
+      "id": "e001-sweet",
+      "output": "<W>/st1/out/e001-sweet.mp4",
+      "status": "completed"
+    },
+    {
+      "id": "e001-grant",
+      "output": "<W>/st1/out/e001-grant.mp4",
+      "status": "completed"
+    },
+    {
+      "id": "e008-peg",
+      "output": "<W>/st1/out/e008-peg.mp4",
+      "status": "completed"
+    },
+    {
+      "id": "e060-scar",
+      "output": "<W>/st1/out/e060-scar.mp4",
+      "status": "completed"
+    }
+  ]
+}
