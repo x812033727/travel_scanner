@@ -1,0 +1,1602 @@
+{
+  "schema_version": 1,
+  "slug": "sothatswhy-g653-honey-crystallization",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    10,
+    12
+  ],
+  "pauses": {
+    "line_ms": 0,
+    "scene_ms": 150
+  },
+  "still_motion": "beat",
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；溫暖清楚的解說主持人，像在跟一個好奇的朋友講道理，語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音",
+    "model": "gemini-3.8-flash-lite-tts"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "theme": "paper",
+  "look": {
+    "preset": "cute-cartoon"
+  },
+  "series": {
+    "slug": "sothatswhy",
+    "episode": 653,
+    "chapter": 1
+  },
+  "music": {
+    "track": "sothatswhy-bed-r2.m4a",
+    "sha256": "9bb4ba6fd16feb4a7f352144b2d89e9648acbbbbaa2173c27a7eefbdb70f28c6",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "characters": [
+    {
+      "id": "chief",
+      "name": "所長",
+      "appearance": "a friendly 2.5-head chibi woman, the chief of a small question office, with round black-rimmed glasses, bare ears with nothing behind her ears, dark hair with one silver-grey streak tied in a low right ponytail, a warm gentle smile, a mustard-yellow knit cardigan over a white collared shirt, dark navy trousers, and brown loafers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；溫暖清楚的解說主持人，像在跟一個好奇的朋友講道理，語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音",
+        "model": "gemini-3.8-flash-lite-tts",
+        "tempo": 1.08
+      },
+      "sheet_prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
+    },
+    {
+      "id": "kid",
+      "name": "小問",
+      "appearance": "a curious 2.5-head chibi eight-year-old girl with a glossy short black bob haircut with straight bangs and one small cowlick sticking up on top, large expressive dark round eyes, wearing a dark navy toggle raincoat with a bright yellow hood folded down behind her neck, dark navy trousers, white sneakers, and empty five-fingered hands",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "tempo": 1.12,
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；好奇愛發問的年輕女生，像觀眾的嘴替，語氣輕快自然，語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音",
+        "model": "gemini-3.8-flash-lite-tts"
+      },
+      "sheet_prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
+    }
+  ],
+  "loops": [
+    {
+      "setup": "h001",
+      "payoff": "h020",
+      "what": "蜂蜜變白結硬是不是摻了假糖漿"
+    },
+    {
+      "setup": "h004",
+      "payoff": "h014",
+      "what": "純蜂蜜靜置九個月結塊後為何硬度暴增到起初三倍以上"
+    },
+    {
+      "setup": "h005",
+      "payoff": "h020",
+      "what": "純蜜與摻糖漿蜜封存兩年比對，開罐畫面如何顛倒直覺"
+    },
+    {
+      "setup": "h005",
+      "payoff": "h028",
+      "what": "把硬蜜拿去泡熱水化開會對花香與品質造成什麼代價"
+    },
+    {
+      "setup": "h007",
+      "payoff": "h009",
+      "what": "金黃透明的純蜂蜜鎖緊蓋子為何會自己析出白色糖晶變白結硬"
+    },
+    {
+      "setup": "h010",
+      "payoff": "h013",
+      "what": "為何有的純蜜放好久還在流、有的硬成石頭"
+    },
+    {
+      "setup": "h016",
+      "payoff": "h020",
+      "what": "混入外來糖漿放兩年在對照實驗裡會整罐結硬還是分兩層"
+    },
+    {
+      "setup": "h022",
+      "payoff": "h023",
+      "what": "看到蜂蜜分上下兩層能否直接斷定是假蜜"
+    },
+    {
+      "setup": "h024",
+      "payoff": "h026",
+      "what": "隔水泡溫水慢慢化開結晶蜜要等多久，拉高水溫又付出什麼代價"
+    },
+    {
+      "setup": "h030",
+      "payoff": "h034",
+      "what": "改用微波爐或低溫超音波槽能否避免微量成分減少"
+    },
+    {
+      "setup": "h037",
+      "payoff": "h041",
+      "what": "改用四十度低溫慢慢溫過再放涼是否不留受熱差異"
+    },
+    {
+      "setup": "h048",
+      "payoff": "h050",
+      "what": "顯微鏡下硬蜜的糖晶到底長多大顆"
+    },
+    {
+      "setup": "h052",
+      "payoff": "h055",
+      "what": "未結塊液態純蜜裡是否早就藏著肉眼看不見的小糖團"
+    },
+    {
+      "setup": "h047",
+      "payoff": "h059",
+      "what": "不靠加熱硬融怎麼把糖晶控細做成絲滑好抹的奶油蜜"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "蜂蜜放久變白結塊，竟然不是摻了假糖？｜原來如此事務所",
+    "description": "家裡的蜂蜜放沒幾個月突然變白結成硬塊，連湯匙都挖不動，難道是買到摻糖漿的假蜜嗎？\n這支影片獻給每次看到蜂蜜變白結霜就猶豫要不要丟掉，或習慣拿熱水把結晶泡回透明的你。\n我們跟著斯圖加特大學雷射原子探針奈米掃描、波蘭二十四個月摻糖對照、約旦與捷克融晶實測，以及西班牙紅外線光譜與德國奶油蜜控溫研究，拆解純蜂蜜過飽和結晶、花源葡萄糖比例與受熱變化的科學真相。\n\n本集插圖由 AI 生成。\n資料截至 2026-11-14。",
+    "tags": [
+      "蜂蜜",
+      "蜂蜜結晶",
+      "真假蜂蜜",
+      "奶油蜜",
+      "葡萄糖",
+      "食品科學",
+      "廚房科學",
+      "原來如此事務所"
+    ]
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "layout": "heimao",
+      "headline": "蜂蜜變白**是假蜜**？",
+      "sub": "摻糖漿實驗反而結不滿整罐",
+      "shot": "kid-two-honey-jars-spoon"
+    }
+  },
+  "sources": [
+    {
+      "title": "Nanoscale analysis of frozen honey by atom probe tomography, Scientific Reports 12:17786 (2022)",
+      "url": "https://doi.org/10.1038/s41598-022-22717-9",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "Analysis of sugar crystal size in honey, MethodsX 9:101823 (2022)",
+      "url": "https://doi.org/10.1016/j.mex.2022.101823",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "The Use of Ultrasound for Preventing Honey Crystallization, Foods 10(4):773 (2021)",
+      "url": "https://doi.org/10.3390/foods10040773",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "Tracking of Thermal, Physicochemical, and Biological Parameters of a Long-Term Stored Honey Artificially Adulterated with Sugar Syrups, Molecules 28(4):1736 (2023)",
+      "url": "https://doi.org/10.3390/molecules28041736",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "Effect of Temperature and Time on the Physicochemical and Sensory Properties of Crystallized Honey, ACS Omega 9(18):20243 (2024)",
+      "url": "https://doi.org/10.1021/acsomega.4c00570",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "Effect of Liquefaction of Honey on the Content of Phenolic Compounds, Molecules 28(2):714 (2023)",
+      "url": "https://doi.org/10.3390/molecules28020714",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "Bioactive compounds and antibacterial activities in crystallized honey liquefied with ultrasound, Ultrasonics Sonochemistry 76:105619 (2021)",
+      "url": "https://doi.org/10.1016/j.ultsonch.2021.105619",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "Rapid Detection of Thermal Treatment of Honey by Chemometrics-Assisted FTIR Spectroscopy, Foods 10(11):2892 (2021)",
+      "url": "https://doi.org/10.3390/foods10112892",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "The High Pressure Preservation of Honey: A Comparative Study on Quality Changes during Storage, Foods 13(7):989 (2024)",
+      "url": "https://doi.org/10.3390/foods13070989",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "Influence of Stirring Parameters on Creaminess of Spring Blossom Honey Measured by Crystal Size, Whiteness Index and Mouthfeel, Foods 12(1):48 (2022)",
+      "url": "https://doi.org/10.3390/foods12010048",
+      "checked_on": "2026-11-14"
+    },
+    {
+      "title": "Influence of seed concentration and storage time on the rheological, textural, and microscopic crystallization attributes of Apis mellifera honey, Food Chemistry: X 28:102634 (2025)",
+      "url": "https://doi.org/10.1016/j.fochx.2025.102634",
+      "checked_on": "2026-11-14"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "kid-two-honey-jars-spoon",
+      "chapter": "蜂蜜變白硬成石頭，真假直覺竟然顛倒",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle shot beneath a vast bright sky-blue morning sky filling the upper third, on a sunny garden terrace where an eight-year-old youngster in a hooded toggle raincoat holds two clear pots—one flowing translucent gold nectar and one rock-solid snowy-ivory pot with a bent silver spoon stuck upright—eyes wide in shock",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h001",
+          "speaker": "kid",
+          "emotion": "舉著變白結成硬塊的蜜罐驚呼懷疑買到假糖漿",
+          "text": "所長！這罐蜂蜜剛買時金黃透亮，放幾個月竟變白硬成石頭，湯匙都挖不動，難道摻糖漿買到假蜜？"
+        }
+      ]
+    },
+    {
+      "id": "chief-stop-dont-throw-away",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot by a studio window with crisp azure sky outside, the bespectacled presenter with round frames, bare ears, and a knit cardigan raising one open palm at chest height with a warm smile",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h002",
+          "speaker": "chief",
+          "emotion": "攔住別當假貨丟掉點破變白結塊不代表摻假糖漿純蜂蜜本來就會長出天然白色糖晶",
+          "text": "先別急著丟！變白結塊不代表你買到假貨——純蜜和假蜜為什麼結硬或分層，關鍵藏在水糖比例！"
+        }
+      ]
+    },
+    {
+      "id": "chief-fake-syrup-wont-harden",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in morning daylight of the round-glasses host pointing at chest height toward the snowy-ivory pot on a tidy oak desk",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h003",
+          "speaker": "chief",
+          "emotion": "鋪出波蘭實驗室把平價糖漿摻進純蜜封存兩年開罐軟硬和分層與直覺顛倒",
+          "text": "波蘭團隊真把平價糖漿摻進純蜜封存兩年，結果誰整罐結硬、誰浮出稀液，竟跟直覺完全顛倒；"
+        }
+      ]
+    },
+    {
+      "id": "clear-gold-to-bent-spoon",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a sunlit wooden counter comparing a freshly poured translucent gold jar beside a snowy-ivory solidified pot gripping a bent metal spoon",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h004",
+          "speaker": "chief",
+          "emotion": "鋪出同樣百分百純蜂蜜擺在陰涼處九個月有的順順流有的硬到挖彎湯匙的反差",
+          "text": "就算同樣是百分百純蜂蜜，放滿九個月，有的照樣順順流、有的卻結成挖彎湯匙的硬石塊；"
+        }
+      ]
+    },
+    {
+      "id": "hot-bath-transparent-scar",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a kitchen counter of a crystallized glass pot sitting in steaming hot water turning clear gold while a coral warning wave glows inside",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h005",
+          "speaker": "chief",
+          "emotion": "拋出學者實測拿硬蜜泡熱水或進微波爐求快化開連香氣試吃排名跟新鮮度指標都付出代價",
+          "text": "偏偏很多人拿硬蜜泡進熱水想趕快救回來，整罐蜜雖然變回透明，裡頭的品質卻悄悄變了調！"
+        }
+      ]
+    },
+    {
+      "id": "chief-opening-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at the oak desk, the cardigan-clad speaker gesturing open-palmed at chest height toward the viewer",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h006",
+          "speaker": "chief",
+          "emotion": "溫暖堅定說出純蜂蜜為何自己結成硬塊及怎麼不傷風味留住最好口感的單句承諾",
+          "text": "今天我們就來聊聊，純蜜為什麼自己析出白色糖晶結成硬塊，又怎麼留住最好的香氣和口感！"
+        }
+      ]
+    },
+    {
+      "id": "kid-where-white-comes-from",
+      "chapter": "過飽和糖水析出白糖晶，花種決定九個月軟硬",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a sunlit room with potted mint plants, the bob-haired girl in her toggle raincoat peering through a clear golden jar with puzzled eyes",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h007",
+          "speaker": "kid",
+          "emotion": "承接白色糖晶追問不是要水蒸發乾掉才長糖晶為何蓋子鎖緊沒少水仍冒出白色糖晶",
+          "text": "等等，糖水不是要蒸發乾掉才會析出糖晶嗎？平常蓋子鎖緊、半滴水都沒少，白色糖晶從哪冒出來的？"
+        }
+      ]
+    },
+    {
+      "id": "supersaturated-crowded-cup",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a pale sunlit studio tabletop of a clear glass jar packed densely with glowing topaz sugar spheres crowding scarce sky-blue water droplets",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h008",
+          "speaker": "chief",
+          "emotion": "白話說明純蜜水不到兩成糖卻占約八成遠超這點水能溶掉的上限",
+          "text": "不必等水蒸發，純蜜本就水少糖多！水不到兩成、糖卻占約八成，遠超這點水能溶掉的上限；"
+        }
+      ]
+    },
+    {
+      "id": "white-light-scattering-facets",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up side-by-side on a pale ivory tabletop comparing a clear golden glass jar transmitting a warm sunbeam against a dense snowy-white crystallized honey jar glowing bright ivory",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h009",
+          "speaker": "chief",
+          "emotion": "白話定義過飽和糖水析出白色固態糖晶讓金黃或琥珀色的純蜜變乳白",
+          "text": "超擠的「過飽和糖水」會析出白色固態糖晶；白晶塞滿蜜罐，金黃或琥珀色的純蜜就變乳白了！"
+        }
+      ]
+    },
+    {
+      "id": "kid-why-some-flow-some-rock",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a dining table, the raincoat-clad eight-year-old comparing a runny golden jar on the left with a solid snowy pot on the right",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h010",
+          "speaker": "kid",
+          "emotion": "點名回呼剛才說的軟硬反差追問同屬過飽和糖水的純蜜為何有的不結塊有的結得死硬",
+          "text": "既然純蜜都是過飽和糖水，為什麼開頭說同樣放滿九個月，有的純蜜順順流、有的卻結得死硬？"
+        }
+      ]
+    },
+    {
+      "id": "fructose-vs-glucose-twins",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot on a pale slate board comparing nimble sky-blue rings swimming freely in water against boxy ivory hexagons locking into neat chains",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h011",
+          "speaker": "chief",
+          "emotion": "說明果糖好溶葡萄糖難溶並搭橋難溶的葡萄糖占水分幾倍決定結硬快慢",
+          "text": "純蜜裡的果糖好溶、葡萄糖難溶；難溶的葡萄糖占到水分幾倍，決定它多快結硬："
+        }
+      ]
+    },
+    {
+      "id": "seven-honeys-nine-month-shelf",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a cool shaded wooden cabinet holding seven clear glass jars of floral honey beside a tall unmarked brass sandglass",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h012",
+          "speaker": "chief",
+          "emotion": "引出羅馬尼亞學者把七種花源純蜜封存九個月前後都用儀器探頭往下壓比對變硬程度",
+          "text": "羅馬尼亞學者把七種花源純蜜封存九個月，前後都用儀器探頭往下壓，比對變硬多少——"
+        }
+      ]
+    },
+    {
+      "id": "acacia-liquid-nine-months",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a wooden counter of an unmarked jar flanked by white locust blossoms pouring a smooth translucent golden ribbon",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h013",
+          "speaker": "chief",
+          "emotion": "說明果糖偏多的洋槐蜜難溶葡萄糖約為水分1.5倍不算太擠開罐照樣順流",
+          "text": "果糖偏多的洋槐蜜，難溶的葡萄糖約為水分的一點五倍，還不算太擠，開罐照樣順順流；"
+        }
+      ]
+    },
+    {
+      "id": "rapeseed-brick-threefold-hard",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up beside bright yellow rapeseed blossoms of a solid snowy block resisting a stainless texture probe pressing onto its firm surface",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h014",
+          "speaker": "chief",
+          "emotion": "對比油菜蜜的葡萄糖達水分近2.8倍水抓不住結滿大晶體下壓阻力變封存前的三倍多",
+          "text": "反觀油菜蜜的葡萄糖達水分近兩點八倍，水溶不下、整罐結滿大晶體，下壓阻力變封存前的三倍多！"
+        }
+      ]
+    },
+    {
+      "id": "chief-flower-decides-fate",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in warm sunlight of the cardigan-clad host holding a white locust blossom in one palm and a golden rapeseed flower in the other at chest height",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h015",
+          "speaker": "chief",
+          "emotion": "收束七款純蜜軟硬看花源並拋出把平價糖漿直接摻進純蜜裡會怎樣的懸念",
+          "text": "可見這七款純蜜軟硬全看花源——但問題來了，要是有人把平價糖漿直接摻進純蜜裡會怎樣？"
+        }
+      ]
+    },
+    {
+      "id": "kid-adulteration-why-not-harden",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up against a sky-blue studio wall, the curious youngster tilting her head and pointing back with one clean finger",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h016",
+          "speaker": "kid",
+          "emotion": "追問糖漿滿滿是糖摻進純蜜放久難道不會結成更硬大石塊",
+          "text": "糖漿裡滿滿都是糖，摻進純蜂蜜裡放久了，難道不會結成更硬的大石塊嗎？"
+        }
+      ],
+      "chapter": "實驗摻糖漿封存反而分兩層，單看外觀難斷真假"
+    },
+    {
+      "id": "chief-catch-ghost-experiment",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in warm sunlit studio light, the bespectacled presenter holding up a clear glass bottle of pale watery syrup beside a glass jar with bare ears and clean five-fingered hands",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h017",
+          "speaker": "chief",
+          "emotion": "點名回呼開頭波蘭兩年對決說明學者買來常被拿去混充假蜜的市售平價糖漿實測",
+          "text": "恰恰相反！那支波蘭團隊買來兩款常被混充假蜜的市售平價糖漿，直接摻進純百花蜜實測："
+        }
+      ]
+    },
+    {
+      "id": "syrup-adulteration-setup-jars",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a bright laboratory of clean unmarked sample jars—one pure blossom control alongside rows blended with clear sugar syrups",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h018",
+          "speaker": "chief",
+          "emotion": "說明把摻5%至30%糖漿的假蜜與純百花蜜一起放在約18度室溫靜置",
+          "text": "他們調出摻百分之五到三十糖漿的多罐假蜜，跟純百花蜜一起在約十八度室溫封存兩年——"
+        }
+      ]
+    },
+    {
+      "id": "pure-honey-uniform-white-paste",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a cool bench of the pure blossom jar solidified evenly from bottom to top into a firm ivory block beside a mint checkmark badge",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h019",
+          "speaker": "chief",
+          "emotion": "揭曉開罐結果顛倒未摻糖漿純百花蜜從底到頂結成整罐扎實白色固體",
+          "text": "期滿開罐一看：沒摻糖漿的那罐純百花蜜，從罐底到罐頂結成整罐扎實均勻的白色固體；"
+        }
+      ]
+    },
+    {
+      "id": "adulterated-blocked-two-layers",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up beside it of syrup-blended jars split into coarse pale sediment at the bottom and a thick runny golden liquid layer floating on top beside a coral cross badge",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h020",
+          "speaker": "chief",
+          "emotion": "揭曉假蜜全分成下硬上稀兩層因糖漿含水近三成高過純蜜一成八使糖晶沉底稀液浮上層",
+          "text": "反觀假蜜因糖漿含水近三成、比純蜜的一成八高，全都只部分結晶，分成下硬上稀兩層；"
+        }
+      ]
+    },
+    {
+      "id": "fructose-syrup-blocks-lattice",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro shot on a pale slate board showing extra water droplets and fructose rings gathering in a thick top liquid layer above settled ivory glucose crystals",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h021",
+          "speaker": "chief",
+          "emotion": "說明摻到30%時上層液體重量達下層固體近三到三倍半",
+          "text": "但這還不是全部！摻到最高三成時，沒結晶的上層稀液，竟重達下層固體約二點七到三點五倍！"
+        }
+      ]
+    },
+    {
+      "id": "kid-two-layers-always-fake",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot by a sunny window, the bob-haired girl pointing in alarm at a half-crystallized jar on the table",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h022",
+          "speaker": "kid",
+          "emotion": "追問看到家裡蜂蜜分上下兩層是否代表假蜜",
+          "text": "那平常看到家裡蜂蜜分成上下兩層，是不是就代表買到摻糖漿的假蜜？"
+        }
+      ]
+    },
+    {
+      "id": "chief-single-trial-caveat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot by a bright window, the cardigan-clad host gently raising one open five-fingered palm at chest height with bare ears and a calm clarifying expression",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h023",
+          "speaker": "chief",
+          "emotion": "收束純蜜結晶過程中也會下硬上稀且換花源或糖漿長相不同故單憑外表分不出真假",
+          "text": "別這樣斷定！純蜜沒結完也會下硬上稀；換花源或換糖漿，模樣又變，真假得靠檢驗、看外表分不出！"
+        }
+      ]
+    },
+    {
+      "id": "kid-hot-water-rescue-idea",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in kitchen sunlight, the raincoat-clad eight-year-old holding a stainless kettle with a bright hopeful grin",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h024",
+          "speaker": "kid",
+          "emotion": "收束真假看檢驗報告並追問合格純蜜結得太硬挖不起來時泡溫水化開要等多久",
+          "text": "原來光看外表分不出真假！那確定是純蜜卻硬到挖不動，泡熱水怕變調，改泡溫水要等多久？"
+        }
+      ],
+      "chapter": "泡九十度熱水二十三分鐘化開，超音波久震也傷成分"
+    },
+    {
+      "id": "chief-hot-water-price-warn",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a steaming laboratory water bath, the bespectacled presenter raising one finger at chest height with an earnest warning expression",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h025",
+          "speaker": "chief",
+          "emotion": "正面點出溫水極慢並引出約旦科技大學拿未加熱結晶油菜蜜隔水泡到全溶光實測",
+          "text": "問題就在溫水超級慢！約旦科技大學拿沒加熱過的結晶油菜蜜隔水實測，一路泡到結晶全溶光："
+        }
+      ]
+    },
+    {
+      "id": "water-bath-45-vs-60-sandglass",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a slate lab bench showing crystallized rapeseed jars in gentle warm water baths beside tall brass sandglasses",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h026",
+          "speaker": "chief",
+          "emotion": "說明泡45度溫水需等16小時就算拉高到60度仍得泡逾6小時才化開",
+          "text": "泡四十五度溫水得苦等十六小時；就算拉高到六十度，整罐硬蜜還是得泡六個多小時才化得開；"
+        }
+      ]
+    },
+    {
+      "id": "ninety-degree-twenty-three-min",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a steaming hot water bath melting a solid snowy jar completely clear beside a small brass sandglass",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h027",
+          "speaker": "chief",
+          "emotion": "說明若沒耐心等溫水團隊同場實測泡90度熱水只要23分鐘硬蜜就化得清澈透亮",
+          "text": "你若沒耐心等溫水，團隊同場實測九十度熱水，只要二十三分鐘就化得透亮——但代價有多慘？"
+        }
+      ]
+    },
+    {
+      "id": "ninety-degree-browning-aroma-loss",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up side by side comparing an unheated pale-gold jar surrounded by fresh floral wisps against a darkened brown heated jar with wilted petals",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h028",
+          "speaker": "chief",
+          "emotion": "說明這種高溫雖快但蜜色變深花香變淡且50人試吃評價跌至墊底",
+          "text": "蜜色不但明顯變深、花香跟著變淡，連五十人試吃的整體評價都直接跌到墊底；"
+        }
+      ]
+    },
+    {
+      "id": "hmf-spike-55-comparison",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot on a studio board comparing a short mint-green column before heating against an eight-times-taller coral-red column crossing a horizontal red boundary line",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h029",
+          "speaker": "chief",
+          "emotion": "白話說明驗新鮮度的糖受熱老化物質每公斤蜜從不到7毫克飆破55毫克越過40毫克品質界線",
+          "text": "糖受熱產生的變質裂解物，更從每公斤不到七毫克飆破五十五毫克，越過國際四十毫克品質界線！"
+        }
+      ]
+    },
+    {
+      "id": "kid-microwave-ultrasound-guess",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a warm oak kitchen counter, the bob-haired youngster pointing hopefully toward a sleek unmarked countertop microwave oven next to a crystallized white honey jar",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h030",
+          "speaker": "kid",
+          "emotion": "承接隔水泡熱水代價拋出改用微波爐快轉幾十秒化開的直覺",
+          "text": "隔水泡熱水傷成這樣，那放進微波爐快轉幾十秒化開，總不會傷到裡頭的成分吧？"
+        }
+      ]
+    },
+    {
+      "id": "seven-liquefaction-methods-bench",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a bright lab, the bespectacled presenter standing beside warm water baths, an unmarked microwave unit, and a stainless ultrasonic tank",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h031",
+          "speaker": "chief",
+          "emotion": "說明微波照樣拉高蜜溫並引出捷克學者追蹤六種怕熱的花香與天然成分",
+          "text": "別小看幾十秒！微波照樣拉高蜜溫——捷克學者實測，追蹤六種怕熱的香氣分子與天然微量好成分："
+        }
+      ]
+    },
+    {
+      "id": "microwave-uneven-hotspots",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro shot in cutaway view of a small glass jar inside a microwave chamber where glowing coral heat waves rise as crystals melt",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h032",
+          "speaker": "chief",
+          "emotion": "揭曉中高火微波不到一分鐘化開但蜜溫飆上七八十度使這六種好成分平均少掉三成多",
+          "text": "結果，中高火微波雖不到一分鐘就化開，蜜溫卻飆上七八十度，這六種好成分平均少掉三成多！"
+        }
+      ]
+    },
+    {
+      "id": "water-bath-phenol-loss-bars",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot on a light-grey board comparing four golden aromatic droplets shrinking step by step across water-bath, ultrasonic, and low-microwave dishes",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h033",
+          "speaker": "kid",
+          "emotion": "扣緊溫水要泡十幾小時與高溫傷蜜兩難追問有無壓在低溫又能快點化開硬蜜的辦法",
+          "text": "溫水一泡要十幾個小時，高溫求快又傷蜜——難道沒有壓在低溫、又能快點把硬蜜化開的辦法嗎？"
+        }
+      ]
+    },
+    {
+      "id": "ultrasound-ninety-min-loss",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up inside a stainless ultrasonic bath where prolonged sound ripples agitate thick golden nectar inside a sealed vial",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h034",
+          "speaker": "chief",
+          "emotion": "接住提問揭曉同批學者靠超音波震動壓45度內90分鐘化開好成分竟也少近五成並追問原因",
+          "text": "同批捷克學者試過超音波！壓在四十五度內震九十分鐘化開，這六種成分竟也少近五成——為什麼？"
+        }
+      ]
+    },
+    {
+      "id": "low-microwave-duration-cause",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a dim slow-turning microwave dish beside a dwindling golden aromatic droplet",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h035",
+          "speaker": "chief",
+          "emotion": "接住懸念揭曉關鍵很可能在處理時間拖太久並補上低火微波11分鐘也少約五成",
+          "text": "原來關鍵很可能在「時間」！連最低火轉十一分鐘的微波也少約五成，就算火力弱，拖太久照樣傷成分。"
+        }
+      ]
+    },
+    {
+      "id": "short-ultrasound-42khz-remnants",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro shot under a microscope lens showing coarse crystals chipped smaller by brief sound waves while many intact crystal grains remain",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h036",
+          "speaker": "chief",
+          "emotion": "補充墨西哥團隊將五款結晶蜜短震5至15分鐘頂多縮小部分結晶無一全化開",
+          "text": "那超音波改短震五到十五分鐘呢？墨西哥團隊實測五款硬蜜，頂多震小部分結晶，沒一款全化開！"
+        }
+      ]
+    },
+    {
+      "id": "kid-gentle-warm-still-safe-doubt",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in window light, the eight-year-old holding up a clear golden jar to the sun with hopeful eyes",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h037",
+          "speaker": "kid",
+          "emotion": "承接短震化不開追問若只用40度低溫慢慢溫過再放涼是否不留受熱痕跡",
+          "text": "短震化不開，那如果只用四十度低溫慢慢溫過、再放涼回室溫，總不會留下任何受熱痕跡吧？"
+        }
+      ],
+      "chapter": "紅外線光譜認出溫熱差異，存放一兩年越過品質界線"
+    },
+    {
+      "id": "ftir-infrared-beam-jar",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a cool sunlit lab where a glowing prism infrared beam passes through a drop of clear golden nectar on an optical crystal stage",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h038",
+          "speaker": "chief",
+          "emotion": "點明逃不過紅外線光譜並引出西班牙團隊把生蜜以40度溫3.5至24小時放涼",
+          "text": "肉眼看不出，卻逃不過紅外線光譜！西班牙團隊把生蜜以四十度溫三個半到二十四小時再放涼："
+        }
+      ]
+    },
+    {
+      "id": "ftir-fingerprint-wave-band",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro shot on a crisp optical display showing two smooth molecular absorption peaks shifting in height ratio between mint-green raw samples and coral-red warmed samples",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h039",
+          "speaker": "chief",
+          "emotion": "白話解釋每種糖有專屬吸收波段且受熱樣品果糖與葡萄糖波段強弱比改變",
+          "text": "每種糖都有專屬吸收波段；結果，受過熱的樣品裡，果糖與葡萄糖相關波段的強弱比例已悄悄改變；"
+        }
+      ]
+    },
+    {
+      "id": "sugar-interconversion-rings",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro shot on a dark optical stage showing subtle shifts between golden fructose and ivory glucose molecular rings after gentle warming",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h040",
+          "speaker": "chief",
+          "emotion": "解釋梅納反應或糖分子互變差異放涼回室溫不退回",
+          "text": "學者認為這是受熱褐變的「梅納反應」或糖結構互變留下的差異，就算放涼回室溫也不會退回原狀。"
+        }
+      ]
+    },
+    {
+      "id": "ftir-hundred-percent-raw-recall",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at the studio desk, the round-glasses presenter holding up two identical clear vials at chest height with a serious expression",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h041",
+          "speaker": "chief",
+          "emotion": "交代拿另一小批樣本讓統計模型辨識溫過那組正確率近九成未加熱生蜜100%零誤認",
+          "text": "再拿另一小批樣本讓統計模型辨識，溫過那組正確率近九成，未加熱生蜜更是百分百零誤認！"
+        }
+      ]
+    },
+    {
+      "id": "chief-time-bomb-hmf-intro",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a row of sealed glass jars on a cool storage shelf, the cardigan-clad host raising one finger at chest height",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h042",
+          "speaker": "chief",
+          "emotion": "引出葡萄牙阿威羅大學發現短暫受熱留下的變化會在存放期間持續累積",
+          "text": "但這還不是最意外的！葡萄牙阿威羅大學發現，短暫受熱留下的變化還會在存放期間持續累積。"
+        }
+      ]
+    },
+    {
+      "id": "brief-78-degree-six-min-flash",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a clean lab of sealed pouches briefly warmed in a controlled water bath then placed into glass jars on a cool shelf",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h043",
+          "speaker": "chief",
+          "emotion": "點名回呼剛提的受熱老化物質說明每公斤6.69毫克生蜜分78度6分鐘與55度15分鐘",
+          "text": "剛提那種變質裂解物每公斤六點六九毫克的生蜜，分七十八度熱六分鐘與五十五度熱十五分鐘："
+        }
+      ]
+    },
+    {
+      "id": "twelve-month-storage-climb",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot on a cool-grey board showing two coral curves climbing steadily across storage jars past a horizontal quality boundary line",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h044",
+          "speaker": "chief",
+          "emotion": "揭曉高溫短熱組12個月達46.37毫克、溫熱組24個月達57.16毫克",
+          "text": "結果短熱六分鐘那組放一年就升到四十六點三七毫克，溫熱組放兩年也衝上五十七點一六毫克！"
+        }
+      ]
+    },
+    {
+      "id": "codex-forty-redline-breach",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a pale cool-grey shelf of three clear glass honey jars crossed by a thin coral-red horizontal hair-line: dark topaz droplets in the two warmed jars climb past the coral line with coral cross icons, while the untouched raw jar stays calmly below with a mint checkmark",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h045",
+          "speaker": "chief",
+          "emotion": "說明兩組全越過剛才提的40毫克品質界線且高溫組衡量新鮮度的天然澱粉酶失守",
+          "text": "結果，兩組全越過剛才提的四十毫克品質界線，高溫組連衡量新鮮度的天然澱粉酶也失守；"
+        }
+      ]
+    },
+    {
+      "id": "raw-honey-two-years-safe",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a cool dry pantry shelf of an unheated raw jar glowing softly beside a bright mint checkmark emblem",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h046",
+          "speaker": "chief",
+          "emotion": "對照未加熱生蜜放滿兩年仍在品質界線內",
+          "text": "反觀從頭到尾沒加熱的生蜂蜜，就算在攝氏二十度放滿兩年，數值依然穩穩留在品質界線內！"
+        }
+      ]
+    },
+    {
+      "id": "kid-helpless-rock-jar",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up against a pale mint wall, the raincoat-clad girl puffing her cheeks in frustration beside the rock-hard snowy pot",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h047",
+          "speaker": "kid",
+          "emotion": "承接不加熱最留品質追問市面雪白好挖不結硬石頭的抹醬蜜是否也沒加熱",
+          "text": "既然不加熱最能留住品質，那市面上那種雪白好挖、不結硬石頭的抹醬蜜，難道也沒加熱嗎？"
+        }
+      ],
+      "chapter": "十四度控溫攪出細糖晶，拌入晶種做出雪白奶油蜜"
+    },
+    {
+      "id": "chief-callback-opening-spoon",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a sunlit oak desk holding the snowy-white crystallized glass jar, the bespectacled presenter smiling warmly with bare ears and clean five-fingered hands",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h048",
+          "speaker": "chief",
+          "emotion": "回呼開頭硬石頭點明先看顯微鏡下硬蜜糖晶有多大顆",
+          "text": "那正是學界不加熱的破局法！想懂怎麼避開開頭那種硬石頭，先看顯微鏡下硬蜜的糖晶有多大顆："
+        }
+      ]
+    },
+    {
+      "id": "anhalt-spin-spread-prep",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a pale cool-grey lab bench where a tiny square glass coverslip spins swiftly on a compact rotor, spreading a viscous honey drop into an even thin layer of intact white crystals",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h049",
+          "speaker": "chief",
+          "emotion": "說明德國安哈特大學改把結晶春花蜜稀釋離心甩成薄層連量四天",
+          "text": "德國安哈特大學發現玻片硬壓會壓碎結晶春花蜜，改把蜂蜜稀釋離心甩成薄層連量四天；"
+        }
+      ]
+    },
+    {
+      "id": "anhalt-polarized-one-third-mm",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro circular microscope view in crisp light highlighting ten elongated faceted translucent sugar prisms spread cleanly across a glass slide",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h050",
+          "speaker": "chief",
+          "emotion": "說明250倍顯微鏡下最大十顆糖晶平均約300微米單顆像細沙",
+          "text": "兩百五十倍顯微鏡下，裡頭最大十顆糖晶平均約三百微米，也就是零點三公釐，單顆就像細沙！"
+        }
+      ]
+    },
+    {
+      "id": "water-trapped-around-prisms",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro cutaway view inside a clear glass jar filled with thick golden-ivory honey packed with large angular faceted translucent sugar prisms around a silver spoon tip on a pale cool-grey studio table, bathed in warm golden window rim light with shallow depth-of-field bokeh and clean unmarked surfaces.",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h051",
+          "speaker": "chief",
+          "emotion": "說明粗大稜柱緊卡導致難挖扎口並拋出大晶體長出前液態蜜模樣的疑問",
+          "text": "無數粗大稜柱緊緊卡死，才會硬到難挖又扎口！但這些大晶體長出來之前，液態蜜裡是什麼模樣？"
+        }
+      ]
+    },
+    {
+      "id": "kid-clear-crystal-why-white",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in bright studio sunlight, the bob-haired eight-year-old holding a single clear rock-candy chunk in one five-fingered hand with wide curious eyes",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h052",
+          "speaker": "kid",
+          "emotion": "追問未結塊液態純蜜看起來透明均勻是否早已藏著肉眼看不見的小糖團",
+          "text": "對耶！還沒結塊的液態純蜜看起來透明均勻，難道裡頭早就偷偷藏著肉眼看不見的小糖團嗎？"
+        }
+      ]
+    },
+    {
+      "id": "stuttgart-apt-lab",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a cool sunlit materials lab of a tiny golden honey droplet suspended on the tip of a slender tungsten wire descending toward a frosty liquid-nitrogen vessel",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h053",
+          "speaker": "chief",
+          "emotion": "接住猜測引出德國斯圖加特大學把市售天然蜂蜜急凍拍下未結塊時分子排列",
+          "text": "真被你猜中！德國斯圖加特大學把一滴市售天然蜂蜜急凍，從奈米尺度拍下未結塊時的分子排列："
+        }
+      ]
+    },
+    {
+      "id": "cryo-needle-under-100nm",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro shot in cool sapphire rim light comparing a thick golden strand of hair beside an ultra-fine sculpted frozen honey needle tip hundreds of times thinner",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h054",
+          "speaker": "chief",
+          "emotion": "說明削成不到百奈米針尖以雷射原子探針重建三維分子分布",
+          "text": "研究者把凍蜜削成半徑不到百奈米的細針尖，用雷射原子探針拍出三維分子地圖，結果大出意料："
+        }
+      ]
+    },
+    {
+      "id": "six-sugar-nanoclusters-prism",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro shot of a glowing rectangular translucent nanoscale prism box where warm topaz sugar spheres huddle tightly into six distinct tiny clusters amid sky-blue water beads",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h055",
+          "speaker": "chief",
+          "emotion": "白話解釋糖聚成堆的富糖團簇並揭曉12乘12乘35奈米微空間有六團",
+          "text": "沒想到糖跟水根本沒混勻！長寬各十二、高三十五奈米微空間，就擠著六小團糖聚成堆的「富糖團簇」；"
+        }
+      ]
+    },
+    {
+      "id": "cluster-seed-crystal-bond",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of six dense topaz sugar clusters glowing warmer and denser than the surrounding looser blue-and-gold liquid matrix",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h056",
+          "speaker": "chief",
+          "emotion": "說明每團長4至16奈米學者解讀天然蜂蜜奈米尺度早有糖聚集析出準備長晶體",
+          "text": "每團長約四到十六奈米——學者解讀，天然蜂蜜在奈米尺度早就有糖聚集析出，隨時準備長成晶體！"
+        }
+      ]
+    },
+    {
+      "id": "chief-cold-vs-crystal-bridge",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in warm studio sunlight, the friendly bespectacled office presenter in a chunky knit cardigan over a white collared shirt with a low side ponytail and clean bare ears gesturing at chest height with five clean fingers toward a coarse sugary jar on the left and a smooth pearly jar of velvety creamed honey on a pale cool-grey studio table, shallow depth-of-field bokeh and clean unmarked surfaces.",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h057",
+          "speaker": "chief",
+          "emotion": "承接糖早晚結晶引出安哈特團隊先拌入磨細結晶蜜當晶種引子讓糖分同時長成無數細晶",
+          "text": "既然早晚結晶，安哈特團隊乾脆先拌入磨細結晶蜜當「晶種」引子，讓糖分同時長成無數細晶：",
+          "say": "既然早晚結晶，安哈特團隊乾脆先拌入磨細結晶蜜當晶腫引子，讓糖分同時長成無數細晶：",
+          "say_for": "240d130dc97a"
+        }
+      ]
+    },
+    {
+      "id": "pretrial-146-micron-coarse",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro circular microscope view on a pale cool-grey stage showing large, jagged, coarse angular sugar crystals scattered sparsely in unseeded stirred honey",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h058",
+          "speaker": "chief",
+          "emotion": "交代約17.5度預試驗單靠攪拌沒加晶種時最大十顆結晶平均146微米",
+          "text": "先看約十七點五度預試驗：單靠攪拌、沒加晶種時，攪完最大十顆結晶平均長一百四十六微米；",
+          "say": "先看約十七點五度預試驗：單靠攪拌、沒加晶腫時，攪完最大十顆結晶平均長一百四十六微米；",
+          "say_for": "d397ca6afb2c"
+        }
+      ]
+    },
+    {
+      "id": "mixer-seed-59-micron-fine",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro circular microscope view on a pale cool-grey stage showing an even carpet of tiny, uniform, velvety micro-crystals after stirring in finely milled seed honey",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h059",
+          "speaker": "chief",
+          "emotion": "揭曉邊控溫攪拌邊加晶種做成奶油蜜攪完當下最大結晶縮至59微米",
+          "text": "但這還不是極限！邊控溫攪拌邊加晶種做成「奶油蜜」，攪完當下最大結晶竟縮到五十九微米！",
+          "say": "但這還不是極限！邊控溫攪拌邊加晶腫做成「奶油蜜」，攪完當下最大結晶竟縮到五十九微米！",
+          "say_for": "a4fa09a0dcfd"
+        }
+      ]
+    },
+    {
+      "id": "anhalt-25kg-14c-stirring-vat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a cool clean honey room of a stainless-steel paddle gently stirring pearly-white spring blossom honey inside a sleek cylindrical vat",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h060",
+          "speaker": "chief",
+          "emotion": "說明每組25公斤分三種溫度攪稠同溫放28天以14度結晶最細且加晶種最白",
+          "text": "再把每組二十五公斤分十四、十八度或室溫攪稠同溫放二十八天，十四度結晶最細、加晶種最白！",
+          "say": "再把每組二十五公斤分十四、十八度或室溫攪稠同溫放二十八天，十四度結晶最細、加晶腫最白！",
+          "say_for": "38e2cf573c06"
+        }
+      ]
+    },
+    {
+      "id": "seed-crystal-inoculation-2025",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a cool pale bench of three clear glass jars of golden honey as a silver spoon swirls a small scoop of snowy seed crystals cleanly into the liquid",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h061",
+          "speaker": "chief",
+          "emotion": "追問加晶種要等多久並引出土耳其團隊在14度拌入5%至15%結晶蜜每三天量測",
+          "text": "問題來了：加晶種要等多久？土耳其團隊在十四度拌入百分之五到十五結晶蜜，每三天量一次：",
+          "say": "問題來了：加晶腫要等多久？土耳其團隊在十四度拌入百分之五到十五結晶蜜，每三天量一次：",
+          "say_for": "37a85e12d53a"
+        }
+      ]
+    },
+    {
+      "id": "nine-day-velvet-spread-vat",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a silver spoon lifting a thick, glossy, pearly-white ribbon of soft creamed honey smoothly out of a glass jar in crisp morning sunlight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h062",
+          "speaker": "chief",
+          "emotion": "說明加晶種組第9與12天黏度到頂無顯著差且15%組白度明顯上升轉為柔和乳白",
+          "text": "加晶種組第九與十二天黏度到頂無顯著差，百分之十五那組白度更明顯上升，整罐轉為柔和乳白！",
+          "say": "加晶腫組第九與十二天黏度到頂無顯著差，百分之十五那組白度更明顯上升，整罐轉為柔和乳白！",
+          "say_for": "3ef56a9b69d0"
+        }
+      ]
+    },
+    {
+      "id": "unseeded-control-twelve-days",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot comparing the silky ivory seeded pot on the left against an unseeded golden control pot on the right",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h063",
+          "speaker": "chief",
+          "emotion": "對比未拌晶種對照組在同溫放滿12天顯微鏡下仍無結晶",
+          "text": "更鮮明的是沒拌晶種對照組：在同樣低溫放滿十二天，顯微鏡下連一顆糖晶都還沒長出來！",
+          "say": "更鮮明的是沒拌晶腫對照組：在同樣低溫放滿十二天，顯微鏡下連一顆糖晶都還沒長出來！",
+          "say_for": "9e61f13830a6"
+        }
+      ]
+    },
+    {
+      "id": "kid-taste-silky-toast-aha",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in cheerful morning sun, the bob-haired youngster spreading smooth ivory paste onto warm crispy toast with sparkling eyes",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h064",
+          "speaker": "kid",
+          "emotion": "恍然大悟奶油蜜抹在吐司上絲絨般滑順來自極細天然糖晶",
+          "text": "原來如此！難怪奶油蜜抹在吐司上像絲絨一樣滑順，每一口吃到的其實都是極細的天然糖晶！"
+        }
+      ]
+    },
+    {
+      "id": "floral-choice-by-use",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a sunlit pale-ivory kitchen counter pairing a clear golden acacia honey jar beside a cup of tea and a pearly-white creamed honey jar beside a butter knife",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h065",
+          "speaker": "chief",
+          "emotion": "區分奶油蜜靠結塊前控晶與硬蜜無法不加熱變抹醬並追問家裡已結硬純蜜怎麼吃最好",
+          "text": "沒錯！奶油蜜靠結塊前控晶，硬蜜沒法不加熱變抹醬——問題來了，你家已結硬的純蜜怎麼吃最好？"
+        }
+      ]
+    },
+    {
+      "id": "cool-shade-over-boiling-pot",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a calm sunlit kitchen pantry showing a tightly lidded clear glass jar of snowy-white crystallized honey resting safely inside a cool shaded wooden cabinet shelf beside a clean dry silver spoon on a ceramic saucer, with a glowing mint-green checkmark floating gently beside the sealed jar, warm golden window rim light and clean unmarked surfaces.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h066",
+          "speaker": "chief",
+          "emotion": "直接接住提問回呼約旦50人試吃未加熱結晶蜜奪冠及照剛說的不加熱放兩年最穩",
+          "text": "答案藏在約旦那場五十人試吃裡！未加熱結晶蜜香氣與總評奪冠，照剛說的不加熱放兩年也最穩；"
+        }
+      ]
+    },
+    {
+      "id": "scoop-paste-enjoy-directly",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in warm golden morning sunlight of a clean silver spoon scooping a fragrant snowy-gold dollop of unheated crystallized honey surrounded by delicate floating blossom petals",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h067",
+          "speaker": "chief",
+          "emotion": "收束不急著化開時直接品嚐天然白晶最能留住產地原貌花香",
+          "text": "你不急著化開時，直接挖這層天然白晶品嚐，反而最能留住產地原貌的濃郁花香！"
+        }
+      ]
+    },
+    {
+      "id": "chief-closing-truth-summary",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at the oak desk beside both the clear golden jar and the snowy pot, the round-glasses presenter smiling warmly with open palms at chest height",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h068",
+          "speaker": "chief",
+          "emotion": "以家裡那罐純蜜結出的雪白糖晶是高濃度花蜜糖分室溫物理印記收束全片",
+          "text": "所以家裡那罐純蜜結出的雪白糖晶，其實是高濃度花蜜糖分在室溫下最誠實的物理印記！"
+        }
+      ]
+    },
+    {
+      "id": "chief-comment-prompt",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in morning light of the cardigan-clad host tilting her head with a friendly curious smile",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h069",
+          "speaker": "chief",
+          "emotion": "輕鬆二選一留言題",
+          "text": "留言告訴我們，你平常比較愛淋飲料的金黃液態蜜，還是挖起來抹吐司的白色結晶蜜呢？"
+        }
+      ]
+    },
+    {
+      "id": "kid-subscribe-wave-bye",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in bright sunlight, the raincoat-clad eight-year-old waving one open five-fingered hand beside a sunny garden window",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h070",
+          "speaker": "kid",
+          "emotion": "邀請訂閱道別",
+          "text": "喜歡拆解廚房裡反直覺的科學真相，記得訂閱原來如此事務所，我們下次見！"
+        }
+      ]
+    }
+  ]
+}

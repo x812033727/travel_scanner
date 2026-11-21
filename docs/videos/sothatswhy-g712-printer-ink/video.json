@@ -1,0 +1,1690 @@
+{
+  "schema_version": 1,
+  "slug": "sothatswhy-g712-printer-ink",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    10,
+    12
+  ],
+  "pauses": {
+    "line_ms": 0,
+    "scene_ms": 150
+  },
+  "still_motion": "beat",
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；溫暖清楚的解說主持人，像在跟一個好奇的朋友講道理，語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音",
+    "model": "gemini-3.8-flash-lite-tts"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "theme": "paper",
+  "look": {
+    "preset": "cute-cartoon"
+  },
+  "series": {
+    "slug": "sothatswhy",
+    "episode": 712,
+    "chapter": 1
+  },
+  "music": {
+    "track": "sothatswhy-bed-r2.m4a",
+    "sha256": "9bb4ba6fd16feb4a7f352144b2d89e9648acbbbbaa2173c27a7eefbdb70f28c6",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "characters": [
+    {
+      "id": "chief",
+      "name": "所長",
+      "appearance": "a friendly 2.5-head chibi woman, the chief of a small question office, with round black-rimmed glasses, bare ears with nothing behind her ears, dark hair with one silver-grey streak tied in a low right ponytail, a warm gentle smile, a mustard-yellow knit cardigan over a white collared shirt, dark navy trousers, and brown loafers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；溫暖清楚的解說主持人，像在跟一個好奇的朋友講道理，語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音",
+        "model": "gemini-3.8-flash-lite-tts",
+        "tempo": 1.08
+      },
+      "sheet_prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
+    },
+    {
+      "id": "kid",
+      "name": "小問",
+      "appearance": "a curious 2.5-head chibi eight-year-old girl with a glossy short black bob haircut with straight bangs and one small cowlick sticking up on top, large expressive dark round eyes, wearing a dark navy toggle raincoat with a bright yellow hood folded down behind her neck, dark navy trousers, white sneakers, and empty five-fingered hands",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "tempo": 1.12,
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；好奇愛發問的年輕女生，像觀眾的嘴替，語氣輕快自然，語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音",
+        "model": "gemini-3.8-flash-lite-tts"
+      },
+      "sheet_prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
+    }
+  ],
+  "loops": [
+    {
+      "setup": "g001",
+      "payoff": "g064",
+      "what": "為什麼買一組原廠墨水匣比整台新印表機還貴，廠商靠哪邊賺錢"
+    },
+    {
+      "setup": "g003",
+      "payoff": "g059",
+      "what": "為什麼關鍵不在機器標價，而在買機當下看不清後續耗材總帳與轉換門檻"
+    },
+    {
+      "setup": "g005",
+      "payoff": "g040",
+      "what": "約二十二萬台印表機裝了什麼防堵機關，澳洲主管機關怎麼處理"
+    },
+    {
+      "setup": "g005",
+      "payoff": "g047",
+      "what": "為什麼原廠與耗材翻新商在美日最高法院判出相反結果"
+    },
+    {
+      "setup": "g007",
+      "payoff": "g009",
+      "what": "刮鬍刀始祖真是從第一天就賠本賣刀架起家的嗎"
+    },
+    {
+      "setup": "g014",
+      "payoff": "g018",
+      "what": "1985 年工程師怎麼把噴頭做成拋棄式，壓低機價並綁住專屬墨匣"
+    },
+    {
+      "setup": "g020",
+      "payoff": "g023",
+      "what": "墨水匣裡的墨水為什麼難在同時不堵微細噴孔又在紙上快乾"
+    },
+    {
+      "setup": "g024",
+      "payoff": "g029",
+      "what": "翻新商收購原廠空匣重填轉賣後，原廠靠什麼晶片機制防堵"
+    },
+    {
+      "setup": "g032",
+      "payoff": "g036",
+      "what": "鑽孔洗淨原廠空墨水匣重灌，為什麼在日本最高法院被判新製造侵權"
+    },
+    {
+      "setup": "g037",
+      "payoff": "g038",
+      "what": "消費者改買全新副廠墨匣後，原廠韌體認證引發了什麼爭議"
+    },
+    {
+      "setup": "g044",
+      "payoff": "g045",
+      "what": "美國最高法院對單次使用合約與晶片碳粉匣官司怎麼判"
+    },
+    {
+      "setup": "g050",
+      "payoff": "g051",
+      "what": "在美國法律下，原廠能規定用副廠墨水就取消整台印表機保固嗎"
+    },
+    {
+      "setup": "g056",
+      "payoff": "g059",
+      "what": "為何澳義監管機關緊盯購買與更新前的非原廠限制告知"
+    },
+    {
+      "setup": "g061",
+      "payoff": "g070",
+      "what": "在大墨水槽與月費訂閱時代，印表機大廠怎麼調整收錢時間點"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "印表機賣得比墨水還便宜，廠商到底靠什麼賺回來？｜原來如此事務所",
+    "description": "走進賣場買一台特價家用彩色噴墨印表機看似超划算，結果墨水用完上網一查，買齊一組原廠墨水匣竟然比當初買整台新機器還要貴！難道印表機廠商是在做慈善嗎？\n\n給曾經想過「墨水用完乾脆買新機」、好奇副廠墨水為什麼會跳出損壞訊息，以及想搞懂傳統墨匣機、大墨水槽機與月費訂閱制差別的你。\n\n本集從 1904 年安全刮鬍刀商業史的兩大迷思與 1985 年拋棄式熱噴墨噴頭突破出發，一路拆開售後市場鎖定、微晶片與韌體認證、美日最高法院相反專利判決，以及耗材佔印表機部門營收近三分之二的商業結構。\n\n本集插圖由 AI 生成。\n\n資料截至 2026-11-18",
+    "tags": [
+      "印表機",
+      "墨水匣",
+      "噴墨印表機",
+      "連續供墨",
+      "刮鬍刀商業模式",
+      "專利權耗盡",
+      "商業模式",
+      "原來如此事務所"
+    ]
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "layout": "heimao",
+      "headline": "買新機竟比**換墨便宜**？",
+      "sub": "印表機賤賣不賠錢的商業暗鎖",
+      "shot": "kid-cartridge-vs-printer-scale"
+    }
+  },
+  "sources": [
+    {
+      "title": "HP Inc. Form 10-K (Fiscal Year ended October 31, 2025)",
+      "url": "https://www.sec.gov/Archives/edgar/data/47217/000004721725000071/hpq-20251031.htm",
+      "checked_on": "2026-11-18"
+    },
+    {
+      "title": "The Razors-and-Blades Myth(s), University of Chicago Law Review 78:225 (2011)",
+      "url": "https://lawreview.uchicago.edu/sites/default/files/78-1-Razors-and-Blades%20Myth%28s%29-Picker.pdf",
+      "checked_on": "2026-11-18"
+    },
+    {
+      "title": "History of ThinkJet Printhead Development, Hewlett-Packard Journal 36(5):6-7 (May 1985)",
+      "url": "https://docs.ampnuts.ru/eevblog.docs/HP_Agilent_Keysight/journals/1985-05.pdf",
+      "checked_on": "2026-11-18"
+    },
+    {
+      "title": "Impression Products, Inc. v. Lexmark International, Inc., No. 15-1189, 581 U.S. ___ (2017) (Slip Opinion)",
+      "url": "https://www.supremecourt.gov/opinions/16pdf/15-1189_ebfj.pdf",
+      "checked_on": "2026-11-18"
+    },
+    {
+      "title": "Supreme Court of Japan First Petty Bench, Heisei 18 (Ju) No. 826 (8 November 2007)",
+      "url": "https://www.courts.go.jp/hanrei/35371/detail2/index.html",
+      "checked_on": "2026-11-18"
+    },
+    {
+      "title": "ACCC Media Release: HP to compensate printer customers (3 May 2018)",
+      "url": "https://www.accc.gov.au/media-release/hp-to-compensate-printer-customers",
+      "checked_on": "2026-11-18"
+    },
+    {
+      "title": "AGCM Press Release PS12007-PS11600: Moral suasion on Epson and Lexmark regarding non-original printer cartridges (19 January 2023)",
+      "url": "https://en.agcm.it/en/media/press-releases/2023/1/PS12007-PS11600",
+      "checked_on": "2026-11-18"
+    },
+    {
+      "title": "FTC Report to Congress: Nixing the Fix (May 2021)",
+      "url": "https://www.ftc.gov/system/files/documents/reports/nixing-fix-ftc-report-congress-repair-restrictions/nixing_the_fix_report_final_5521_630pm-508_002.pdf",
+      "checked_on": "2026-11-18"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "kid-cartridge-vs-printer-scale",
+      "chapter": "買新機竟比換墨水便宜，廠商難道在做慈善",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle shot beneath a vast bright azure sky filling the upper third, on a sunlit outdoor terrace where an eight-year-old youngster in a hooded toggle raincoat stands beside a giant brass balance scale weighing four tiny color ink cassettes heavier than a sleek white desktop inkjet unit, eyes wide in disbelief",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g001",
+          "speaker": "kid",
+          "emotion": "指著墨水匣與新印表機驚呼",
+          "text": "所長！我家印表機沒墨水了，怎麼買一組原廠墨水匣，竟然比整台新印表機還貴？"
+        }
+      ]
+    },
+    {
+      "id": "chief-not-charity-hook",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot by a sunlit studio window with crisp blue sky outside, the bespectacled presenter with round frames, bare ears, and a knit cardigan raising one finger at chest height with a knowing smile",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g002",
+          "speaker": "chief",
+          "emotion": "點破廠商故意壓低新機標價",
+          "text": "你是不是差點把舊機丟掉、直接抱台特價新機回家？別懷疑，廠商就是故意把新機標得這麼便宜！"
+        }
+      ]
+    },
+    {
+      "id": "chief-lock-not-liquid",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in warm morning sunlight of the round-glasses host holding up at chest height a tiny plastic cassette gleaming with golden copper contact pads",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g003",
+          "speaker": "chief",
+          "emotion": "一句話點出關鍵在買回家後的耗材",
+          "text": "因為這門生意真正的戰場根本不在賣機器那天，而在你搬回家之後的每一次補貨。"
+        }
+      ]
+    },
+    {
+      "id": "bulky-early-to-cheap-home",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a sunlit counter comparing a bulky vintage eighties inkjet machine beside a tall stack of silver coins against a compact white home unit beside a mountain of refill cartridges",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g004",
+          "speaker": "chief",
+          "emotion": "鋪出早年印表機超貴與平價新機普及後一家美國大廠靠耗材年收逾百億美元的反差",
+          "text": "早年印表機原本超貴；等平價新機普及後，光一家美國大廠靠墨水、碳粉等耗材就年收逾百億美元！"
+        }
+      ]
+    },
+    {
+      "id": "firmware-and-court-tease",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a bright studio desk pairing a home desktop unit flashing a coral padlock symbol beside a polished wooden courthouse gavel",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g005",
+          "speaker": "chief",
+          "emotion": "點出各家原廠為守財路有的沒事先告知用程式拒印副廠墨匣有的把重填墨匣商告上最高法院",
+          "text": "各家原廠為守財路，有的沒事先告知就用程式拒印副廠墨匣，有的更把重填墨匣商告上最高法院！"
+        }
+      ]
+    },
+    {
+      "id": "chief-opening-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a tidy oak desk in warm sunlight, the cardigan-clad speaker gesturing open-palmed at chest height toward the viewer",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g006",
+          "speaker": "chief",
+          "emotion": "溫暖堅定說出扣緊壓機價與鎖耗材的單句承諾",
+          "text": "今天我們就來聊聊，「壓低新機價、靠後續補貨賺回來」這招怎麼誕生，廠商又怎麼鎖住耗材！"
+        }
+      ]
+    },
+    {
+      "id": "kid-gillette-textbook-guess",
+      "chapter": "刮鬍刀始祖最初不賤賣刀架，印表機廠更不想替副廠做嫁衣",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a bright room with potted mint plants, the bob-haired girl in her toggle raincoat counting on clean five-fingered hands confidently",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g007",
+          "speaker": "kid",
+          "emotion": "提出課本刮鬍刀商業模式直覺",
+          "text": "這招我聽過！不就是課本常講的刮鬍刀模式，刀架賠本送你、再靠刀片賺回來嗎？"
+        }
+      ]
+    },
+    {
+      "id": "chicago-law-razor-study",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a bright sunlit window, the round-glasses presenter shaking her head gently with a wry smile while holding one finger at chest height",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g008",
+          "speaker": "chief",
+          "emotion": "直接點破課本只講對一半引出芝加哥大學學者考證可換刀片的安全刮鬍刀剛問世沒便宜賣",
+          "text": "課本只講對一半！芝加哥大學學者考證，可換刀片的安全刮鬍刀剛問世根本沒便宜賣："
+        }
+      ]
+    },
+    {
+      "id": "razor-1904-five-dollar-case",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a warm oak counter of an ornate vintage velvet safety-razor case displaying five gleaming silver coins beside three linen pay envelopes",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g009",
+          "speaker": "chief",
+          "emotion": "說明發明它的創始廠1904年獲專利後十七年間刀架組都賣五美元約美國平均週薪三分之一",
+          "text": "發明它的創始廠一九〇四年獲專利後十七年間，刀架組都賣五美元，約美國平均週薪三分之一；"
+        }
+      ]
+    },
+    {
+      "id": "strict-no-discount-shop",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in crisp morning sun outside a vintage hardware shop display where gleaming brass razors sit on tall velvet stands beside locked brass blade cases",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g010",
+          "speaker": "chief",
+          "emotion": "說明專利期嚴禁打折兩頭賺",
+          "text": "靠專利鎖死刀片規格，原廠連一毛錢都不准經銷商打折，刀架跟刀片兩頭賺，哪來的賠本送？"
+        }
+      ]
+    },
+    {
+      "id": "patent-expiry-1921-flood",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a bright pale tabletop where dozens of compatible silver replacement blades pour out alongside a deluxe brass razor case and a simple everyday razor",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g011",
+          "speaker": "chief",
+          "emotion": "說明1921年專利到期後原廠推五美元新款守高價同時把舊款刀架大降價",
+          "text": "一九二一年專利到期、副廠刀片進場，原廠推五美元新款守高價，同時把舊款刀架大降價；"
+        }
+      ]
+    },
+    {
+      "id": "razor-sales-double-crates",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot on a cool grey board comparing two brass razor crates on the left against four overflowing crates gleaming in mint light on the right",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g012",
+          "speaker": "chief",
+          "emotion": "說明全公司刀架年銷翻倍破四百萬組且隔年對手殺價賣刀架原廠聯手口香糖商買口香糖就送刀架",
+          "text": "全公司刀架年銷翻倍破四百萬組；隔年對手殺價賣刀架，原廠更聯手口香糖商，買口香糖就送刀架！"
+        }
+      ]
+    },
+    {
+      "id": "unlocked-funnel-leak",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro shot on a cool pale board contrasting an open brass blade holder against a tightly keyed plastic carriage locked with a golden emblem",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g013",
+          "speaker": "chief",
+          "emotion": "說明擴大客群雖拉高獲利但便宜放出的舊刀架沒專利幫副廠養客故後來印表機廠更得鎖緊耗材",
+          "text": "擴大客群雖拉高獲利，但便宜放出的舊刀架沒專利、照樣幫副廠養客；後來印表機廠更得鎖緊耗材！"
+        }
+      ]
+    },
+    {
+      "id": "kid-how-lock-liquid-ink",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up against a sunlit sky-blue wall, the curious eight-year-old tilting her head with wide puzzled eyes",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g014",
+          "speaker": "kid",
+          "emotion": "拋出章尾液體墨水如何與機器綁定的懸念",
+          "text": "既想壓低新機價格、又不想讓客人隨便灌別牌墨水，可是液體墨水要怎麼跟機器綁在一起？"
+        }
+      ]
+    },
+    {
+      "id": "early-1980s-plumbing-inkjet",
+      "chapter": "熱噴墨噴頭做成拋棄式，連同微米墨滴配方綁成一顆",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a cool daylight-grey workbench showing a bulky early eighties unit cutaway tangled with clear feed tubes, brass pumps, and metal valves",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g015",
+          "speaker": "chief",
+          "emotion": "接住問題說明1980年代初噴墨機多把噴頭固定在機身內接輸墨細管與閥門",
+          "text": "關鍵就在管路與噴頭！一九八〇年代初的噴墨機，原本多把噴頭固定在機身內，接輸墨細管與閥門；"
+        }
+      ]
+    },
+    {
+      "id": "clogged-tube-nozzle-mess",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro shot of a crusted clear ink tube and leaky brass valve oozing a dark cyan blotch onto white paper beside a small steel wrench",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g016",
+          "speaker": "chief",
+          "emotion": "說明舊管路昂貴易漏堵擋住家用市場",
+          "text": "那套管路又貴又常出毛病，害噴墨機遲遲打不進便宜好顧的個人家用市場。"
+        }
+      ]
+    },
+    {
+      "id": "disposable-1985-journal-idea",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in warm studio light, the cardigan-clad host holding up at chest height a small integrated plastic ink cassette with a bright smile",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g017",
+          "speaker": "chief",
+          "emotion": "揭曉1985年一家電子公司發表首款可拋式噴頭設計打開平價噴墨機市場",
+          "text": "問題來了：怎麼省管路？一九八五年一家電子公司發表首款可拋式噴頭，打開平價噴墨機市場："
+        }
+      ]
+    },
+    {
+      "id": "glass-substrate-heater-bench",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up cutaway illustration on a pale cool-grey studio workbench showing a compact one-piece disposable inkjet cartridge housing golden ink above an integrated precision micro-nozzle printhead plate at the bottom, snapping cleanly out of a sleek compact desktop printer carriage as a single unit, bathed in warm golden window rim light with shallow depth-of-field bokeh and clean unmarked surfaces.",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g018",
+          "speaker": "chief",
+          "emotion": "說明做出可低成本量產靠微小加熱片噴墨的噴頭與儲墨空間合成拋棄式墨匣",
+          "text": "工程師做出能低成本量產、靠微小加熱片噴墨的噴頭，跟儲墨空間合成「拋棄式墨匣」，用完整顆換新；"
+        }
+      ]
+    },
+    {
+      "id": "disposable-head-lowers-printer",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot on a bright studio desk comparing a complex tangle of pumps and tubes crossed out in coral against one compact snap-in disposable printhead cassette",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g019",
+          "speaker": "chief",
+          "emotion": "說明噴墨機構成本降至舊式約百分之一省管路壓低機價並鎖進專屬墨匣",
+          "text": "這讓噴墨機構成本降到舊式系統約百分之一，省管路壓低機價，更把墨水鎖進這類專屬墨匣！"
+        }
+      ]
+    },
+    {
+      "id": "kid-ink-just-colored-water",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot by a sunny window, the raincoat-clad youngster holding up a clear watercolor rinse cup with a skeptical grin",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g020",
+          "speaker": "kid",
+          "emotion": "承接拋棄式墨匣追問裡頭墨水是否只是有顏色的水外人難道不能自己調",
+          "text": "把噴頭跟墨匣綁成一顆我懂了，但裡頭的墨水說穿了不就是有顏色的水，外人難道不能自己調嗎？"
+        }
+      ]
+    },
+    {
+      "id": "one-cubic-inch-millions-drops",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro shot on a sunlit bench of a thumb-sized transparent one-cubic-inch reservoir releasing a shimmering mist of millions of microscopic cyan droplets",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g021",
+          "speaker": "chief",
+          "emotion": "正面接住一般染色水沒法用並說明一顆小墨匣用完前須從極細噴孔加熱噴出逾850萬滴微細墨滴",
+          "text": "一般染色水根本沒法用！一顆小墨匣用完前，得從極細噴孔加熱噴出逾八百五十萬滴微細墨滴；"
+        }
+      ]
+    },
+    {
+      "id": "tiny-drop-quarter-mm-dot",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up macro illustration on a pale ivory studio surface comparing a tiny glistening microscopic golden ink droplet hovering weightlessly beside the eye of a sewing needle on the left, and a clogged dry micro-nozzle crusted shut by a tiny evaporated pigment ring marked with a coral cross on the right, warm golden rim light and clean unmarked surfaces.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g022",
+          "speaker": "chief",
+          "emotion": "說明噴孔太細染色水碰空氣易乾堵死且首款搭這種墨匣的小機身連防乾噴頭蓋都塞不下",
+          "text": "但噴孔太細，染色水碰空氣一乾就堵死；尤其首款搭這種墨匣的小機身，連防乾噴頭蓋都塞不下！"
+        }
+      ]
+    },
+    {
+      "id": "glycol-vs-paper-smear",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up split on a crisp pale board: left side moist nozzle pores kept open by clear humectant liquid, right side slow-drying droplets smudging across plain copy paper versus crisp dots on coated paper",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g023",
+          "speaker": "chief",
+          "emotion": "點出在噴孔不能乾與上紙要快乾兩難以及早年印一般紙十分鐘內一碰會糊須配專用紙",
+          "text": "加保濕劑防乾，印一般紙十分鐘內一碰卻會糊、早年得配專用紙；在噴孔不能乾、上紙要快乾，超難調！"
+        }
+      ]
+    },
+    {
+      "id": "kid-refill-empty-shell-idea",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in bright studio light, the bob-haired girl miming a dropper refill into an empty cup with bright clever eyes",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g024",
+          "speaker": "kid",
+          "emotion": "承接墨水配方門檻拋出收購原廠空墨匣洗淨重灌便宜賣的點子",
+          "text": "原來墨水這麼難調！那要是有人調出墨水，直接收購用完的原廠空墨匣，洗乾淨重灌便宜賣呢？"
+        }
+      ]
+    },
+    {
+      "id": "remanufacturer-refill-wave",
+      "chapter": "洗空墨匣在日本算新製造，折扣碳粉匣裝晶片擋重用",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bright sunlit workshop conveyor where rows of empty black cartridges are cleaned and refilled by precision steel funnels",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g025",
+          "speaker": "chief",
+          "emotion": "接住空墨匣重灌點子引出翻新商搶市與日本一家印表機原廠拿墨匣專利提告",
+          "text": "還真有一批「耗材翻新商」靠這招搶市！沒想到生意一做大，日本一家印表機原廠竟拿墨匣專利提告。"
+        }
+      ]
+    },
+    {
+      "id": "kid-wash-own-box-legal-guess",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a sunny window, the raincoat-clad eight-year-old spreading both open five-fingered hands in innocent bewilderment",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g032",
+          "speaker": "kid",
+          "emotion": "拋出顧客買斷空墨匣轉手重灌應算修理舊物的直覺",
+          "text": "等等，空墨匣是顧客自己花錢買斷的耶！轉手重灌再賣，在法律上難道不算修理舊物嗎？"
+        }
+      ]
+    },
+    {
+      "id": "japan-supreme-court-gavel-2007",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle shot in crisp daylight of a grand stone courthouse facade paired with a dual-chamber clear liquid ink cartridge model",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g033",
+          "speaker": "chief",
+          "emotion": "直揭2007年日本最高法院全員一致判翻新商敗訴認定該案屬重新製造侵權",
+          "text": "結果二〇〇七年日本最高法院全員一致判翻新商敗訴——在這起案子不算修理，而是「重新製造」侵權！"
+        }
+      ]
+    },
+    {
+      "id": "capillary-air-barrier-seal",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro shot in cutaway view of a dual-chamber clear ink cassette where two pressed white porous fiber blocks hold cyan ink continuously along their interface as a tight liquid barrier blocking air bubbles",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g034",
+          "speaker": "chief",
+          "emotion": "白話解釋案中墨匣沒留注墨孔專利關鍵在壓緊兩塊吸墨纖維靠接縫保住墨水擋氣防漏",
+          "text": "為何不算修理？案中墨匣沒留注墨孔，專利關鍵在壓緊兩塊吸墨纖維，靠接縫保住墨水擋氣防漏；"
+        }
+      ]
+    },
+    {
+      "id": "dried-fiber-interface-lost",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of dried crusted cyan ink and trapped air pockets inside white porous fibers of a portless empty chamber",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g035",
+          "speaker": "chief",
+          "emotion": "說明用完拆下一週至十天殘墨在交界處乾硬結塊令新墨吸不進去擋不住空氣光鑽孔補墨照樣漏",
+          "text": "偏偏用完拆下一週到十天，殘墨在交界處乾硬結塊，新墨吸不進去、擋不住空氣，光鑽孔補墨照樣漏！"
+        }
+      ]
+    },
+    {
+      "id": "wash-restores-patent-essence",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at the oak desk, the round-glasses host holding two clear interlocking blocks at chest height to show how drilling and washing restores the liquid interface",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g036",
+          "speaker": "chief",
+          "emotion": "說明在匣頂鑽孔洗淨乾墨重建防漏結構等於把失去作用的專利構造重做一遍越過修理界線",
+          "text": "翻新商在匣頂鑽孔、洗淨乾墨重建防漏結構，等於把失去作用的專利構造重做一遍，越過修理界線！"
+        }
+      ]
+    },
+    {
+      "id": "laser-toner-return-box",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a pale studio counter comparing two unmarked black laser toner cartridges—one beside five silver coins and one beside four silver coins with a curved green return-arrow emblem",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g026",
+          "speaker": "chief",
+          "emotion": "點明換成裝乾粉的雷射碳粉匣用完結構沒乾壞原廠難靠這招告贏並推進至美國一家大廠改推兩種賣法",
+          "text": "但換成裝乾粉的雷射碳粉匣，用完結構沒乾壞，原廠難靠這招告贏；美國一家大廠改推兩種賣法："
+        }
+      ]
+    },
+    {
+      "id": "single-use-contract-ribbon",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on an unmarked black laser toner cartridge sealed across its top clasp by a crimson wax padlock ribbon",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g027",
+          "speaker": "chief",
+          "emotion": "對比原價匣用完空殼自由處置與約八折回收折扣匣條款約定單次使用交回空殼",
+          "text": "買原價匣，用完空殼隨你處置；買約八折的回收折扣匣，條款就約定只准用一次、空殼須交回原廠！"
+        }
+      ]
+    },
+    {
+      "id": "chief-how-enforce-plastic-rule",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in cool window light of the cardigan-clad presenter tapping a tiny golden circuit pad at chest height with an intrigued smile",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g028",
+          "speaker": "chief",
+          "emotion": "提問塑膠碳粉匣賣出後如何執行單次使用約定",
+          "text": "問題來了：折扣碳粉匣一旦賣出門，一顆不會說話的塑膠匣，原廠怎麼確保買家真的只用一次？"
+        }
+      ]
+    },
+    {
+      "id": "toner-microchip-lock",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro shot of a green-and-gold microchip mounted on a black laser toner cartridge flashing a coral stop symbol once the dark powder chamber empties",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g029",
+          "speaker": "chief",
+          "emotion": "揭曉折扣碳粉匣微晶片在用完後阻止再用",
+          "text": "這家大廠直接在每個折扣碳粉匣裝上微晶片，只要碳粉一用完，晶片就阻止這顆碳粉匣再次使用！"
+        }
+      ]
+    },
+    {
+      "id": "remanufacturer-chip-bypass",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a bright studio world map showing empty black toner cartridges gathered from domestic and overseas bins into a refurbishment bench fitting replacement green circuit pads",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g030",
+          "speaker": "chief",
+          "emotion": "說明翻新商向境內外收購空碳粉匣抵銷晶片重填轉售",
+          "text": "沒想到翻新商照樣向美國境內與海外收購空碳粉匣，研發出抵銷晶片限制的方法，重填碳粉轉賣；"
+        }
+      ]
+    },
+    {
+      "id": "patent-lawsuit-escalation",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a sunlit oak table pairing a refilled black toner cartridge beside a heavy courthouse gavel",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g031",
+          "speaker": "chief",
+          "emotion": "交代2010年起這家雷射印表機原廠提起美國專利侵權訴訟",
+          "text": "技術防線被繞開，這家雷射機原廠自二〇一〇年起改祭專利侵權訴訟，把翻新商告進美國法院！"
+        }
+      ]
+    },
+    {
+      "id": "kid-what-if-brand-new-clone",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up against a pale mint wall, the bob-haired youngster leaning forward with sharp curious eyes",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g037",
+          "speaker": "kid",
+          "emotion": "承接空匣訴訟風險拋出章尾買全新副廠墨匣懸念",
+          "text": "原廠連回收空匣灌墨都告上法院，那如果客人直接買全新副廠墨匣呢？原廠還能怎麼擋？"
+        }
+      ]
+    },
+    {
+      "id": "sept-2016-firmware-strike",
+      "chapter": "二十二萬台防堵未告知承諾補償，美國最高法院判專利耗盡",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in cool morning light of a home study where a white desktop inkjet unit receives glowing blue wireless waves and halts mid-page",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g038",
+          "speaker": "chief",
+          "emotion": "接住問題講2016年9月澳洲副廠墨匣突遭拒印",
+          "text": "原廠還有韌體與晶片認證！二〇一六年九月起，澳洲大批用戶裝上副廠墨匣，竟突然被機器拒印！"
+        }
+      ]
+    },
+    {
+      "id": "error-screen-cartridge-blocked",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in bright daylight of a small indicator panel glowing coral-red with a crossed-out droplet symbol beside four intact third-party ink cassettes",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g039",
+          "speaker": "chief",
+          "emotion": "描述未損壞副廠墨匣跳出墨匣損壞錯誤",
+          "text": "明明是沒壞的副廠墨匣，螢幕卻跳出「墨匣損壞」錯誤訊息，讓人誤以為買到瑕疵品！"
+        }
+      ]
+    },
+    {
+      "id": "accc-australia-probe-start",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a pale sculpted relief silhouette of Australia, the round-glasses presenter holding a brass magnifying glass at chest height",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g040",
+          "speaker": "chief",
+          "emotion": "介紹澳洲官方查出一家大型印表機公司約二十二萬台機器裝有阻擋副廠的動態安全鎖",
+          "text": "更怪的是澳洲官方一查，一家大型印表機公司約二十二萬台機器，竟裝有阻擋副廠的「動態安全」鎖；"
+        }
+      ]
+    },
+    {
+      "id": "factory-or-update-undisclosed",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a cool grey board showing two paths into home units—one factory assembly gear and one wireless download arrow—both flipping tiny red chip gates shut",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g041",
+          "speaker": "chief",
+          "emotion": "精準交代出廠內建或韌體更新安裝且事前未告知",
+          "text": "有的出廠就有，有的經後續韌體更新裝上，但買機器跟下載更新時都沒事先向買家講清楚！"
+        }
+      ]
+    },
+    {
+      "id": "chief-accc-fifty-aud-remedy",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot by a bright sunny window, the cardigan-clad presenter holding up a golden coin token at chest height",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g042",
+          "speaker": "chief",
+          "emotion": "說明2018年5月承認未告知恐誤導",
+          "text": "二〇一八年五月澳洲官方公告，業者承認未告知恐構成誤導，並補上標示與移除更新；"
+        }
+      ]
+    },
+    {
+      "id": "accc-two-thousand-payout",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot on a bright pale studio tabletop where neat rows of unmarked polished gold medallions fan out toward crisp white consumer envelopes",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g043",
+          "speaker": "chief",
+          "emotion": "補上補償逾兩千名受影響用戶每人五十澳元",
+          "text": "業者同時承諾補償超過兩千名受影響用戶，每人發給五十澳元！"
+        }
+      ]
+    },
+    {
+      "id": "kid-thought-manufacturers-invincible",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in warm studio light, the eight-year-old raising both eyebrows with empty five-fingered hands on her hips",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g044",
+          "speaker": "kid",
+          "emotion": "承接澳洲未事先告知案例追問2010年美國折扣碳粉匣專利訴訟最終判決",
+          "text": "澳洲抓的是沒事先講清楚；那前面二〇一〇年打進美國法院的折扣碳粉匣專利官司，最後怎麼判？"
+        }
+      ]
+    },
+    {
+      "id": "us-supreme-court-2017-reversal",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle shot under bright blue sky of gleaming white marble courthouse columns as a heavy brass padlock snaps cleanly open",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g045",
+          "speaker": "chief",
+          "emotion": "最大反轉：2017年美國最高法院碳粉匣案大逆轉",
+          "text": "大逆轉就在美國登場！二〇一七年美國最高法院以多數意見審結這樁碳粉匣案，判出截然不同結果！"
+        }
+      ]
+    },
+    {
+      "id": "chief-patent-exhaustion-car",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at the sunlit oak desk, the round-glasses host pushing a miniature red wooden sedan from a tiny wooden showroom arch to a tiny wooden repair garage arch",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g046",
+          "speaker": "chief",
+          "emotion": "用判決書二手車行比喻專利權耗盡",
+          "text": "多數意見拿二手車行比喻：車廠把車賣出那一刻專利權就用盡了，不能用專利法禁人修車轉賣；"
+        }
+      ]
+    },
+    {
+      "id": "exhaustion-severed-chain",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot on a crisp off-white board showing a severed brass chain between an original toner box on the left and a refilled cartridge marked with a mint checkmark",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g047",
+          "speaker": "chief",
+          "emotion": "說明美國境內與海外合法售出皆耗盡專利權",
+          "text": "最高法院裁定，不管碳粉匣在美國境內或海外合法授權賣出，賣出當下專利權就徹底耗盡！"
+        }
+      ]
+    },
+    {
+      "id": "no-patent-suit-third-party",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in crisp daylight of a green refurbishment workshop door standing wide open beside a balanced brass courtroom scale",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g048",
+          "speaker": "chief",
+          "emotion": "點明僅能依契約法找原買家不得告第三方專利侵權",
+          "text": "但這還不是全部！原廠頂多依契約法找原買家，絕不能拿專利侵權去告後手的翻新商；"
+        }
+      ]
+    },
+    {
+      "id": "us-vs-japan-standard-contrast",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot on a pale studio table contrasting two legal lenses: an open padlock gavel on the left versus a reconstructed dual-fiber ink block on the right",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g049",
+          "speaker": "chief",
+          "emotion": "精準回呼前面日本個案並對比美日兩國標準差異",
+          "text": "兩國雖都認賣出即耗盡，但美國擋下合約綁專利，跟前面日本個案認定洗匣算重做，標準大不同！"
+        }
+      ]
+    },
+    {
+      "id": "kid-void-warranty-scare",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in bright daylight, the bob-haired youngster pointing hesitantly at a crossed-out wrench shield symbol on a wooden prop tile",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g050",
+          "speaker": "kid",
+          "emotion": "提出用副廠墨水喪失保固的常見恐懼",
+          "text": "可是很多人不敢用副廠墨水，是怕機器壞掉送修時，原廠說用非原廠耗材就整台不保固耶？"
+        }
+      ]
+    },
+    {
+      "id": "ftc-magnuson-moss-law",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a bright oak desk, the bespectacled speaker holding up a sturdy mint-green consumer shield prop at chest height",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g051",
+          "speaker": "chief",
+          "emotion": "引用美國FTC 2021報告說明1975保固法反搭售",
+          "text": "在美國法律上原則不行！聯邦貿易委員會二〇二一年報告指出，保固法明文禁止綁死自家品牌；"
+        }
+      ]
+    },
+    {
+      "id": "ftc-printer-example-and-test",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a sunlit oak table pairing an ink droplet shield beside a high brass balance hurdle",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g052",
+          "speaker": "chief",
+          "emotion": "說明報告直接舉例印表機墨水與豁免嚴格門檻",
+          "text": "報告直接點名印表機廠不能綁死原廠墨水保固——想申請豁免，得證明非原廠不可且合乎公益；"
+        }
+      ]
+    },
+    {
+      "id": "three-total-waivers-all-denied",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a pale cool-grey desk of three plain manila petition folders across different industries, each stamped with a bold coral-red cross mark",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g053",
+          "speaker": "chief",
+          "emotion": "給出1975至2021報告出爐46年間全美僅三件豁免全數駁回",
+          "text": "結果從一九七五年立法到報告出爐的四十六年間，全美各業總共只有三件豁免申請，全數被駁回！"
+        }
+      ]
+    },
+    {
+      "id": "italy-agcm-2023-probe",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in warm window light, the cardigan-clad host gesturing at chest height toward two sleek unmarked desktop units on a side counter",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g054",
+          "speaker": "chief",
+          "emotion": "追問晶片認證是否違法並引出2023年1月義大利競爭與市場管理局對兩家大廠出手",
+          "text": "問題來了：保固不能綁定原廠，那晶片認證違法嗎？二〇二三年一月義大利官方對兩家大廠出手："
+        }
+      ]
+    },
+    {
+      "id": "italy-agcm-box-transparency",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a crisp counter of an unmarked carton displaying a bold magnifying-glass notice symbol beside a gold microchip icon",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g055",
+          "speaker": "chief",
+          "emotion": "說明義大利官方採不處分道德勸說要求購買與每次韌體更新提示講明非原廠限制",
+          "text": "官方採不處分的「道德勸說」：沒禁韌體與晶片互認，但買機與每次更新提示都得把非原廠限制講明！"
+        }
+      ]
+    },
+    {
+      "id": "dutch-2024-appeal-note",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a cool studio table pairing a gold cartridge microchip beside a balanced European courthouse scale with an upward appeal arrow",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g060",
+          "speaker": "chief",
+          "emotion": "補充荷蘭副廠提告及挨告大廠年報自述荷蘭上訴法院2024年11月判不違法對手隔年再上訴",
+          "text": "荷蘭更有副廠提告！挨告大廠年報自述，荷蘭上訴法院二四年十一月判不違法，對手隔年再上訴！"
+        }
+      ]
+    },
+    {
+      "id": "kid-aftermarket-total-bill",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a sunlit oak desk, the bob-haired eight-year-old in her hooded toggle raincoat pointing at one small silver coin in front of a white desktop unit while tall stacks of gold coins stand behind frosted glass, puzzled expression",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g056",
+          "speaker": "kid",
+          "emotion": "承接荷蘭判決與澳義監管追問為何官方都緊盯買機與更新前透明告知",
+          "text": "既然法院沒直接禁晶片認證，為什麼澳洲到義大利的官方，全都緊盯買機與更新前要先講清楚？"
+        }
+      ]
+    },
+    {
+      "id": "copier-information-cost-fog",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a cool grey tabletop showing a vintage office copier beside one silver coin in front while tall towers of replacement parts and cartridges loom behind frosted glass",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g057",
+          "speaker": "chief",
+          "emotion": "直接回答結帳盲點並引出美國FTC報告整理的1992年最高法院影印機零件案",
+          "text": "因為結帳當下常有盲點！美國聯邦貿易委員會報告整理一九九二年最高法院影印機零件案指出："
+        }
+      ]
+    },
+    {
+      "id": "ftc-upfront-transparency-note",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot on a bright studio surface where a clear magnifying lens illuminates both the machine coin stack and the tall refill coin stack side by side",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g058",
+          "speaker": "chief",
+          "emotion": "說明買前算不清總開銷且買後有轉換成本導致新機競爭壓不低售後價",
+          "text": "若買前算不清幾年零件總開銷、買後換牌又有轉換成本，就算前端新機搶再兇，也壓不低售後價格；"
+        }
+      ]
+    },
+    {
+      "id": "switching-cost-anchor",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro shot in cutaway profile of a uniquely keyed white carriage locking onto a matching cartridge beside a heavy iron anchor",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g059",
+          "speaker": "chief",
+          "emotion": "明確類比到印表機說明事前攤開限制才能算清整台壽命總帳",
+          "text": "這道理類比到印表機也一樣：唯有買機與更新前攤開副廠限制，買家才能算清整台壽命總帳！"
+        }
+      ]
+    },
+    {
+      "id": "kid-where-money-goes-now",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up by a sunny window, the raincoat-clad girl leaning forward with sparkling curious eyes",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g061",
+          "speaker": "kid",
+          "emotion": "承接整台壽命總帳拋出章尾真實財報獲利結構懸念",
+          "text": "說到整台壽命總帳，那現在印表機大廠的真實財報上，到底靠哪一塊把錢賺回來？"
+        }
+      ]
+    },
+    {
+      "id": "chief-callback-opening-printer",
+      "chapter": "耗材扛起三分之二營收，看清收錢時間點再結帳",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in warm studio sunlight, the cardigan-clad presenter gesturing toward the brass balance scale on the oak desk",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g062",
+          "speaker": "chief",
+          "emotion": "全片唯一一次還記得回呼開場低價新機並引出美國上市印表機大廠2025財年年報",
+          "text": "還記得開頭比墨水還便宜的新機嗎？答案全寫在美國一家上市印表機大廠二〇二五財年年報裡："
+        }
+      ]
+    },
+    {
+      "id": "maker-2025-total-revenue",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot on a pale cool-grey studio surface showing a large golden coin circle divided into a two-thirds supplies slice and a one-third hardware slice",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g063",
+          "speaker": "chief",
+          "emotion": "給出該公司2025財年167億與墨水碳粉等耗材109億美元數據",
+          "text": "像開頭說的百億規模——該年印表機營收約一百六十七億美元，墨水與碳粉等耗材占約一百零九億！"
+        }
+      ]
+    },
+    {
+      "id": "installed-base-cash-river",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a bright studio table where dozens of miniature white home units feed steady golden coin streams into one central vault",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g064",
+          "speaker": "chief",
+          "emotion": "點明硬體約五十八億占三成五、近三分之二靠裝機量補貨",
+          "text": "商用加家用硬體約五十八億美元只占三成五，近三分之二營收全靠龐大裝機量後續不斷補貨。"
+        }
+      ]
+    },
+    {
+      "id": "printing-margin-vs-pc",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a sunlit studio board comparing a low sky-blue column beside a laptop silhouette against a more-than-triple-height golden column beside a desktop unit silhouette",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g065",
+          "speaker": "chief",
+          "emotion": "對比同年個人電腦5.3%與印表機部門18.7%營業利益率",
+          "text": "更怪的是同年該公司電腦部門營業利益率僅百分之五點三，印表機部門卻高達百分之十八點七！"
+        }
+      ]
+    },
+    {
+      "id": "kid-big-ink-tank-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in bright daylight, the bob-haired youngster pointing at four large clear refillable ink bottles with curious eyes",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g066",
+          "speaker": "kid",
+          "emotion": "追問大墨水槽機種是否讓廠商少賺",
+          "text": "咦？那現在賣場很多直接倒墨水瓶的大墨水槽機種，不用一直買小墨匣，廠商不就少賺了？"
+        }
+      ]
+    },
+    {
+      "id": "ciss-upfront-price-shift",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a sunlit counter comparing a low-coin cassette unit on the left against a big-tank unit stacked tall with gold coins upfront on the right",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g067",
+          "speaker": "chief",
+          "emotion": "依年報說明大墨水槽機拉高買機當天初始毛利",
+          "text": "收錢時間點換了！這家大廠分析自家業務指出，大墨水槽機通常直接拉高買機當天的初始毛利；"
+        }
+      ]
+    },
+    {
+      "id": "ciss-lifetime-profit-tradeoff",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a pale cool-grey board comparing two timeline bars—a tall staircase of repeated cartridge refills versus a single upfront block for a big-tank unit",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g068",
+          "speaker": "chief",
+          "emotion": "說明少了後續高毛利墨匣整台壽命總獲利可能較低",
+          "text": "但少了後續高毛利小墨匣一買再買，整台大墨水槽機用下來，總獲利反而可能比較低！"
+        }
+      ]
+    },
+    {
+      "id": "subscription-recurring-shift",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a crisp sunlit desk of an hourglass beside small doorstep parcel boxes delivering fresh cartridges along a steady golden coin stream",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g069",
+          "speaker": "chief",
+          "emotion": "依年報說明月費訂閱放棄前期營收換穩定現金流",
+          "text": "問題來了：怎麼鎖住長期現金流？廠商又推月費訂閱，寧可少賺前期營收，也要換每月固定進帳。"
+        }
+      ]
+    },
+    {
+      "id": "three-timings-one-logic",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot on a warm wooden board displaying three neat icons side by side: repeated refill droplets, an upfront big-tank bottle stack, and a steady monthly parcel stream",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g070",
+          "speaker": "chief",
+          "emotion": "以整台壽命總帳與收錢時機全新視角收束",
+          "text": "說穿了，不管機器怎麼改款，廠商算的永遠是整台壽命總帳，差別只在選哪個時間點向你收錢！"
+        }
+      ]
+    },
+    {
+      "id": "kid-aha-service-bill",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in cheerful morning sun, the raincoat-clad eight-year-old snapping her fingers with a bright realization smile",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g071",
+          "speaker": "kid",
+          "emotion": "恍然大悟喊出原來如此",
+          "text": "原來如此！難怪開頭那台特價墨匣機敢標那麼便宜，廠商只是把收錢重心挪到了後面補貨！"
+        }
+      ]
+    },
+    {
+      "id": "system-cost-inside-droplet",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro shot on a sunlit glass plate of one gleaming cyan ink droplet reflecting a miniature silhouette of an entire desktop inkjet mechanism inside",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g072",
+          "speaker": "chief",
+          "emotion": "全新視角收束精密耗材壓低買機門檻與穩定補貨邏輯",
+          "text": "沒錯！當年拋棄式噴頭幫大家省下買新機的門檻，卻也拉開原廠與副廠四十年的技術與法律攻防。"
+        }
+      ]
+    },
+    {
+      "id": "two-user-profiles-choice",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot on a bright studio surface pairing an occasional single-sheet desk on the left with a busy family desk printing thick stacks beside refill bottles on the right",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "g073",
+          "speaker": "chief",
+          "emotion": "給觀眾結帳前實用判準提問",
+          "text": "下次你在賣場看到超便宜的特價印表機，結帳前知道該怎麼挑才不會買貴了嗎？"
+        }
+      ]
+    },
+    {
+      "id": "chief-final-takeaway",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at the oak desk, the cardigan-clad presenter smiling warmly toward the viewer with open palms at chest height",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g074",
+          "speaker": "chief",
+          "emotion": "以全新收束語提醒確認耗材規則透明與估算多年補貨花費",
+          "text": "別只盯著機身特價籤——先確認耗材規則是否透明、再估算自己幾年的補貨花費，結帳才不會吃悶虧！"
+        }
+      ]
+    },
+    {
+      "id": "chief-comment-prompt",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in warm morning light of the bespectacled speaker tilting her head with a friendly curious smile",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g075",
+          "speaker": "chief",
+          "emotion": "輕鬆留言互動題",
+          "text": "留言告訴我們，你家書桌上的印表機，現在是傳統墨匣機、大墨水槽機，還是早就變成置物架呢？"
+        }
+      ]
+    },
+    {
+      "id": "kid-subscribe-wave-bye",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in cheerful bright sunlight, the raincoat-clad eight-year-old waving one open five-fingered hand beside a tidy studio desk",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g076",
+          "speaker": "kid",
+          "emotion": "邀請訂閱道別",
+          "text": "喜歡拆解日常消費背後的商業與科技真相，記得訂閱原來如此事務所，我們下次見！"
+        }
+      ]
+    }
+  ]
+}
