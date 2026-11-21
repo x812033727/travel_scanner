@@ -1,13 +1,13 @@
 ---
 id: 2026-11-20-complete-curio-s14-36-keyframe-redraws
 title: Complete curio-s14 36 keyframe redraws, final cut, audience review, and publish
-status: open
+status: done
 priority: P1
 area: docs
 owner:
 claimed_at:
 created_at: 2026-11-20T13:29:19Z
-completed_at:
+completed_at: 2026-11-21T12:46:46Z
 branch: antigravity/curio-s13-v2-s14-remake
 depends_on: []
 scope:
@@ -28,13 +28,13 @@ During keyframe redrawing, `gemini-3.1-flash-image` entered quota cooldown (expe
 - [x] Pass 2x-zoom 4-quadrant independent subagent visual audit across all 71 images (`00-hero` + `01`–`70`, checking right-over-left kimono wrap `右衽`, flat center-stitched `wahon` books, guardless `suburito` wooden oar sword with no `tsuba` or scabbard, 5 fingers, full-bleed zero white borders, zero text/garbled marks), import all 70 shots into `keyframes/manifest.json` (`[x] keyframes drawn`), run `render` (`[x] frames rendered`), and submit `review-push --slug curio-s14 --gate storyboard` on `/admin/videos`.
 - [x] Once the owner approves `storyboard` on `/admin/videos`, run `review-pull --slug curio-s14` -> `clips` -> `assemble` (`final.mp4` `sha256: 06530d2067da`, `16,835` frames, `-14.0 LUFS`) -> `dub` remix -> `captions` -> `qa` (`11/11` checks passed).
 - [x] Run an independent post-assembly audience review subagent (`review/audience-review.md`, scores `8.2–8.9`, overall average `8.60/10 >= 8.0`, `0` blocking defects, 100% promise-payoff alignment `PASS`), sync workdir + `final.mp4` to Google Drive (`1trNpPEUq_Cg3b1I1bQW6vyf5sj2Yemme` & `14UMzKO6kx3o6L9_MIifFd0Mbkql-G-gN`, `0 differences`), and submit `review-push --slug curio-s14 --gate final` (`pending` on `/admin/videos`).
-- [ ] Once the owner approves `final` on `/admin/videos`: run `review-pull --slug curio-s14` -> `package --slug curio-s14` (`4/4`) -> `review-push --slug curio-s14 --gate publish` (and once `publish` is approved, `review-push --slug curio-s14 --gate languages`) -> sync `upload/` & `review/` to Google Drive (`0 differences`).
+- [x] Once the owner approves `final` on `/admin/videos`: run `review-pull --slug curio-s14` -> `package --slug curio-s14` (`4/4`, `metadata.json sha256: 3eaaab4e3753`) -> `review-push --slug curio-s14 --gate publish` (`approved`) -> `review-pull` -> `review-push --slug curio-s14 --gate languages` (`pending`) -> sync `upload/` & `review/` to Google Drive (`1,378/1,378` & `149/149`, `0 differences`).
 
 ## Steps
 
-- [x] Pull `curio-s14` workdir and run `review-pull --slug curio-s14` (`script`, `audio`, and `storyboard` approvals recorded).
+- [x] Pull `curio-s14` workdir and run `review-pull --slug curio-s14` (`script`, `audio`, `storyboard`, `final`, and `publish` approvals recorded).
 - [x] Generate the 4 character sheets + 36 keyframe redraws via `gemini-3.1-flash-image` 2K API, pass independent 2x quadrant audit (`71/71` PASS), import all 70 shots into `keyframes/manifest.json`, run `render`, `clips`, `assemble --adopt-branding`, `dub` remix, `captions`, `qa` (`11/11`), independent `audience-review.md` (`8.60/10` PASS), Google Drive sync (`0 differences`), and `review-push --gate final`.
-- [ ] After owner approves `final` on `/admin/videos`: run `review-pull`, `package` (`4/4`), `review-push --gate publish` (then `--gate languages` after `publish` approval), and final Google Drive sync (`0 differences`).
+- [x] After owner approved `final` on `/admin/videos`: ran `review-pull`, `package` (`4/4`), `review-push --gate publish` (auto-approved), `review-push --gate languages` (pending owner approval on `/admin/videos`), and final Google Drive zero-diff sync (`1,378/1,378` & `149/149`, `0 differences`).
 
 ## How to verify
 
@@ -46,5 +46,5 @@ npm run test:tools && npm run test:docs-videos && npm run check:tasks
 
 ## Notes
 
-- `final.mp4` (`sha256: 06530d2067da`, `9m21.21s`), `review/qa.json` (`11/11`), `review/audience-review.md` (`8.60/10` PASS), and all 8 remixed MiniMax dubs (`en,ja,ko,es,pt,id,vi,th`) + 9 captions/thumbnails are backed up on Google Drive (`1trNpPEUq_Cg3b1I1bQW6vyf5sj2Yemme` & `14UMzKO6kx3o6L9_MIifFd0Mbkql-G-gN`, `0 differences`), and `final` is pending owner approval on `/admin/videos` (`package` requires `final` approval first).
+- `final.mp4` (`sha256: 06530d2067da`, `9m21.21s`), `upload/` (`package 4/4`), `review/qa.json` (`11/11`), `review/audience-review.md` (`8.60/10` PASS), and all 8 remixed MiniMax dubs (`en,ja,ko,es,pt,id,vi,th`) + 9 captions/thumbnails are backed up on Google Drive (`1trNpPEUq_Cg3b1I1bQW6vyf5sj2Yemme` `1,378/1,378` & `14UMzKO6kx3o6L9_MIifFd0Mbkql-G-gN` `149/149`, `0 differences`). `final` and `publish` are approved on `/admin/videos`, and `languages` is submitted (`pending`) for owner approval before YouTube sync.
 - Yoshikawa Eiji died in 1962 (<70 years ago) and is depicted in zero frames.
