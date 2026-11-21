@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif">
+  <title id="title">서울 3박 4일 권역별 동선 안내도 / Seoul four-day itinerary by area</title>
+  <desc id="desc">실제 축척이 아닌 서울 주요 권역 동선 약도예요. 왼쪽 인천국제공항(ICN)에서 공항철도 AREX 직통열차로 43–51분이면 서울역에 닿고, 일반열차는 홍대입구역까지 바로 이어져요. Day 1은 명동과 남산(N서울타워 야경, 남산순환버스 01A/01B, 충무로역), Day 2는 서쪽에서 동쪽으로 걷는 동선으로 경복궁·북촌한옥마을(10:00–17:00)·인사동·광장시장(지하철 3호선 안국역·1호선 종로5가역)을 묶었어요. Day 3는 경춘선(상봉·청량리)·ITX-청춘(용산역)으로 가평 당일치기 코스를 다녀오거나(김유정역 레일바이크 → 가평나루 → 남이섬), 선택 B로 지하철 1호선 수원역에서 수원화성으로 이동해요. Day 4는 선택 A로 홍대·연남동(홍대입구역 AREX 일반열차) 또는 선택 B로 성수·한강공원(2호선 성수역)을 둘러본 뒤 공항으로 향해요. 한강 이남의 강남은 이번 일정에 포함하지 않았어요.</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="60" y="66" font-size="34" font-weight="700" fill="#102A2B">서울 3박 4일: 하루 한 권역씩, 시내 이동 최소화</text>
+  <text x="60" y="100" font-size="19" fill="#5C6B6B">Seoul in 4 days · 권역 약도 (실제 축척 아님)</text>
+
+  <!-- Han river -->
+  <path d="M 0 640 C 300 600, 600 690, 900 650 C 1150 620, 1350 680, 1600 660 L 1600 700 C 1350 720, 1150 660, 900 690 C 600 730, 300 640, 0 680 Z" fill="#BFD9E3" opacity="0.8"/>
+  <text x="1560" y="728" font-size="19" fill="#3F6C7A" font-weight="700" text-anchor="end">한강 Han River</text>
+
+  <!-- airport arrow -->
+  <path d="M 70 560 L 674 560" fill="none" stroke="#5C6B6B" stroke-width="6" stroke-dasharray="14 12" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#B8442D"/></marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2E7D5B"/></marker>
+  </defs>
+  <text x="70" y="540" font-size="20" font-weight="700" fill="#5C6B6B">인천국제공항 ICN →</text>
+  <text x="70" y="596" font-size="16" fill="#5C6B6B">AREX 직통 43–51분 → 서울역 · 일반열차 → 홍대입구역</text>
+
+  <!-- Day 4 A: Hongdae -->
+  <rect x="180" y="375" width="320" height="118" rx="22" fill="#FFFFFF" stroke="#D97A2B" stroke-width="6"/>
+  <circle cx="180" cy="375" r="28" fill="#D97A2B"/><text x="180" y="380" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 4</text>
+  <text x="340" y="422" font-size="23" font-weight="700" fill="#102A2B" text-anchor="middle">홍대 · 연남동</text>
+  <text x="340" y="450" font-size="16" fill="#5C6B6B" text-anchor="middle">Hongdae · Yeonnam · 선택 A</text>
+  <circle cx="248" cy="474" r="6" fill="#102A2B"/><text x="262" y="480" font-size="15" fill="#5C6B6B">홍대입구역 AREX 일반열차</text>
+
+  <!-- Day 2 row -->
+  <g font-weight="700" fill="#102A2B" text-anchor="middle">
+    <rect x="560" y="200" width="200" height="94" rx="20" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+    <text x="660" y="240" font-size="22">경복궁</text><text x="660" y="268" font-size="15" font-weight="400" fill="#5C6B6B">Gyeongbokgung</text>
+    <rect x="800" y="200" width="200" height="94" rx="20" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+    <text x="900" y="240" font-size="22">북촌한옥마을</text><text x="900" y="268" font-size="15" font-weight="400" fill="#5C6B6B">Bukchon · 10:00–17:00</text>
+    <rect x="1040" y="200" width="185" height="94" rx="20" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+    <text x="1132" y="240" font-size="22">인사동</text><text x="1132" y="268" font-size="15" font-weight="400" fill="#5C6B6B">Insadong</text>
+    <rect x="1265" y="200" width="195" height="94" rx="20" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+    <text x="1362" y="240" font-size="22">광장시장</text><text x="1362" y="268" font-size="15" font-weight="400" fill="#5C6B6B">Gwangjang Market</text>
+  </g>
+  <path d="M 768 247 L 791 247" stroke="#B8442D" stroke-width="4" marker-end="url(#arrowRed)"/>
+  <path d="M 1008 247 L 1031 247" stroke="#B8442D" stroke-width="4" marker-end="url(#arrowRed)"/>
+  <path d="M 1233 247 L 1256 247" stroke="#B8442D" stroke-width="4" marker-end="url(#arrowRed)"/>
+  <circle cx="560" cy="200" r="28" fill="#B8442D"/><text x="560" y="205" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 2</text>
+  <text x="1010" y="324" font-size="16" font-weight="700" fill="#B8442D" text-anchor="middle">서→동 도보 동선 · 지하철 3호선 안국역, 1호선 종로5가역</text>
+
+  <!-- Day 1: Myeongdong / Namsan -->
+  <rect x="690" y="398" width="390" height="122" rx="22" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <circle cx="690" cy="398" r="28" fill="#2F6F9F"/><text x="690" y="403" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 1</text>
+  <text x="885" y="442" font-size="23" font-weight="700" fill="#102A2B" text-anchor="middle">명동 · 남산</text>
+  <text x="885" y="470" font-size="16" fill="#5C6B6B" text-anchor="middle">Myeongdong · Namsan</text>
+  <text x="885" y="498" font-size="15" fill="#5C6B6B" text-anchor="middle">N서울타워 야경 · 순환버스 01A/01B · 충무로역</text>
+  <!-- tower icon -->
+  <path d="M 1004 372 L 1012 342 L 1020 372 Z" fill="#2F6F9F"/><rect x="1008" y="372" width="8" height="24" fill="#2F6F9F"/>
+
+  <!-- Seoul station -->
+  <circle cx="700" cy="560" r="12" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/>
+  <text x="722" y="566" font-size="18" font-weight="700" fill="#102A2B">서울역 Seoul Stn.</text>
+
+  <!-- Day 4 B: Seongsu -->
+  <rect x="1165" y="468" width="295" height="118" rx="22" fill="#FFFFFF" stroke="#D97A2B" stroke-width="6"/>
+  <circle cx="1165" cy="468" r="28" fill="#D97A2B"/><text x="1165" y="473" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 4</text>
+  <text x="1312" y="514" font-size="23" font-weight="700" fill="#102A2B" text-anchor="middle">성수 · 한강공원</text>
+  <text x="1312" y="542" font-size="16" fill="#5C6B6B" text-anchor="middle">Seongsu · Han River · 선택 B</text>
+  <circle cx="1256" cy="566" r="6" fill="#102A2B"/><text x="1270" y="572" font-size="15" fill="#5C6B6B">성수역 (2호선)</text>
+
+  <!-- Gangnam -->
+  <rect x="820" y="742" width="320" height="92" rx="22" fill="#FFFFFF" stroke="#B9B2A8" stroke-width="4" stroke-dasharray="10 8"/>
+  <text x="980" y="780" font-size="22" font-weight="700" fill="#8A8F8F" text-anchor="middle">강남 Gangnam</text>
+  <text x="980" y="809" font-size="15" fill="#8A8F8F" text-anchor="middle">이번 일정 미포함 (한강 이남)</text>
+
+  <!-- Day 3 boxes -->
+  <rect x="1095" y="38" width="465" height="122" rx="20" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="6"/>
+  <circle cx="1095" cy="38" r="28" fill="#2E7D5B"/><text x="1095" y="43" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 3</text>
+  <text x="1327" y="78" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">가평 당일치기: 남이섬 Nami Island</text>
+  <text x="1327" y="108" font-size="15" fill="#5C6B6B" text-anchor="middle">김유정역 레일바이크 → 가평나루 → 남이섬</text>
+  <text x="1327" y="136" font-size="15" fill="#5C6B6B" text-anchor="middle">경춘선(상봉·청량리) · ITX-청춘(용산역)</text>
+  <path d="M 1468 220 C 1506 208, 1528 194, 1544 174" fill="none" stroke="#2E7D5B" stroke-width="5" stroke-dasharray="10 8" marker-end="url(#arrowGreen)"/>
+
+  <rect x="1175" y="762" width="385" height="96" rx="20" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="5"/>
+  <text x="1367" y="802" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">Day 3 선택 B: 수원화성 Hwaseong</text>
+  <text x="1367" y="834" font-size="15" fill="#5C6B6B" text-anchor="middle">지하철 1호선 수원역 하차 후 버스 · 택시</text>
+
+  <!-- legend -->
+  <g font-size="16" fill="#102A2B">
+    <circle cx="70" cy="856" r="9" fill="#2F6F9F"/><text x="88" y="862" font-size="16">Day 1</text>
+    <circle cx="160" cy="856" r="9" fill="#B8442D"/><text x="178" y="862" font-size="16">Day 2</text>
+    <circle cx="250" cy="856" r="9" fill="#2E7D5B"/><text x="268" y="862" font-size="16">Day 3</text>
+    <circle cx="340" cy="856" r="9" fill="#D97A2B"/><text x="358" y="862" font-size="16">Day 4</text>
+    <text x="440" y="862" font-size="16" fill="#5C6B6B">© Mokaair 제작 2026</text>
+  </g>
+</svg>
