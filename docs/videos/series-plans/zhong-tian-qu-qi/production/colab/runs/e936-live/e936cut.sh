@@ -8,7 +8,8 @@ E=/root/mokaair-work/videos/_live-e936/zhong-tian-qu-qi-e936-dh; VJ=$R/docs/vide
 mkdir -p $E/cut; [ -f $E/cut/e936-live.mp4 ] && { mkdir -p $E/cut/old-$(date +%H%M); mv $E/cut/e936-live.* $E/cut/final.log $E/cut/old-$(date +%H%M)/ 2>/dev/null; }
 rm -rf $E/segments-v4
 # 精修片由 live-action/stage.py 36 放好（精修畫面＋草稿原聲＋剪點 -> clips/sNN-t1.mp4）。picks.json 是 refine-prep 照
-# picks-merged.tsv → fix1 → fix2 → fix3/review-picks.tsv 寫的（s01 s04 s11b s12b s18 s20 s26 s28 s31 是 fix1、s02 是 fix3 開門版 9361231）；
+# picks-merged.tsv → fix1 → fix2 → fix3 → fix4/review-picks.tsv 寫的（s01 s04 s11b s12b s18 s20 s26 s28 s31 是 fix1、s02 是 fix3 開門版 9361231、
+# s22 是 fix4 三雙新鞋 9361242；fix4 s23 KEEP）；
 # 第一版的 cut-trims.tsv 由 scratchpad e936c/applytrims.py 套上（原檔 e936c/bak/picks.json）；REVIEW 3 的 review3-trims.tsv（八鏡：s01 剪頭、
 # s04 s05 s08 s18 s28 s31 s35 剪尾）同樣套上（改前 e936c/bak-r3/picks.json）。缺片或 picks.json 比片新就重跑。
 stale=$(python3 -c "import json,os;e='$E';p=json.load(open(e+'/picks.json'));t=os.path.getmtime(e+'/picks.json');print(' '.join(s for s in p if not os.path.exists(f'{e}/clips/{s}-t1.mp4') or os.path.getmtime(f'{e}/clips/{s}-t1.mp4')<t))")
@@ -31,7 +32,7 @@ mk drum-near war-drum-take1 0.7 3 "lowpass=f=2500,afade=t=out:st=2.4:d=0.6"
 python3 -c "
 import json;p=json.load(open('$E/picks.json'))
 want={'s01':(1.55,6.583),'s02':(0.5,6.583),'s03':(1.25,7.25),'s04':(0.25,5.75),'s05':(0.5,5.45),'s06':(0.75,6.583),'s07':(0.5,6.583),'s08':(0.25,3.75),'s09':(2.75,8.0),'s10':(1.5,8.0),'s11':(0.0,8.25),'s11b':(1.75,6.583),'s12':(1.25,6.583),'s12b':(1.5,6.583),'s13':(2.75,6.583),'s14':(0.0,5.5),'s15':(0.0,2.0),'s16':(0.5,5.5),'s17':(0.0,2.0),'s18':(0.0,5.5),'s19':(1.75,6.583),'s20':(1.5,6.583),'s21':(1.75,6.583),'s22':(0.0,5.5),'s23':(0.5,6.583),'s24':(2.75,8.0),'s25':(1.5,6.583),'s26':(1.25,10.125),'s27':(1.0,5.0),'s28':(0.0,5.75),'s29':(0.0,5.0),'s30':(1.25,8.0),'s31':(1.0,4.75),'s32':(2.25,6.583),'s33':(1.25,4.583),'s34':(0.75,6.0),'s35':(1.25,7.5),'s36':(2.5,4.5),'s37':(1.0,3.0),'s38':(0.25,5.0)}
-seed={'s01':9361212,'s02':9361231,'s04':9361211,'s11':9361102,'s11b':9361212,'s12':9361102,'s12b':9361212,'s14':9361102,'s18':9361211,'s20':9361212,'s21':9361102,'s23':9361102,'s26':9361211,'s28':9361212,'s31':9361212,'s32':9361102,'s33':9361102,'s34':9361102,'s35':9361102,'s36':9361102}
+seed={'s01':9361212,'s02':9361231,'s04':9361211,'s11':9361102,'s11b':9361212,'s12':9361102,'s12b':9361212,'s14':9361102,'s18':9361211,'s20':9361212,'s21':9361102,'s22':9361242,'s23':9361102,'s26':9361211,'s28':9361212,'s31':9361212,'s32':9361102,'s33':9361102,'s34':9361102,'s35':9361102,'s36':9361102}
 bad=[f'{s} start {p[s][\"trim\"].get(\"start\",0)} end-before {p[s][\"trim\"].get(\"end-before\",0)} (want {a} {b})' for s,(a,b) in want.items()
      if s in p and (abs(p[s]['trim'].get('start',0)-a)>0.001 or abs(p[s]['trim'].get('end-before',0)-b)>0.001)]
 bad+=[f'{s} seed {p[s][\"seed\"]} (want {v})' for s,v in seed.items() if s in p and p[s]['seed']!=v]

@@ -48,4 +48,9 @@ scar／callous／tattoo／cross、笑字、會長字或掛著的東西、blood�
     比 d1 的兩雙好；第三雙半遮在後排，要細看。9361241 新鞋又只有兩雙、腳下多一張草蓆。
   - **s23 → 9361241（要人眼決定換不換）**：沒有 5–6 格換握、沒有十字紋、五指正常，c0–1.0 手心朝鏡頭、c0.5–1.5 慢慢握住；但掌心那塊「繭」像沾了一塊黃粉、手比 d1 嫩。
     9361242 掌心一塊像貼上去的方形砂紙、c2.0–2.5 拇指翻轉怪，不用。
-- **還沒做**：精修（`e936refine.sh`，s22＋s23 約 1–2 CU）與換進成片——等協調者決定；s23 換的話記得拿掉剪接表 vf 的凍格。
+- **協調者定案（2026-11-21）**：s22 換 9361242；**s23 保留 d1 原片＋凍格**（9361241 的手太嫩、像小孩的手，對不上「一雙幹粗活的手」）→ `review-picks.tsv` s23 寫 KEEP。
+- **精修 s22**：`SESSION=zt-live3 PREP=1 PRECHECK_ONLY=1 ONLY=s22 bash <scratchpad>/e936refine.sh`（refine-prep 重跑：40 picks 等於七個 tsv 疊起來，只有 s22 變；openings、precheck、refine.py --check 0 錯），
+  送前 sessions 空、沒有別的 driver；`SESSION=zt-live3 ONLY=s22 bash <scratchpad>/e936refine.sh` 一輪完成（舊精修 9361101 移到 `refined/old/`），`.seed` 由 progress 檔補成 9361242，1312×736、158 格＝草稿 158 格，
+  與草稿並排每秒一格看過（scratchpad `e936r3/look/s22ref.jpg`）。跑完 sessions 空、assignments 0、rate 0，沒有留下未記名 VM。**220.57 → 220.11 CU（0.46）；fix4 合計 2.14 CU。**
+- **換進成片**：`e936cut.sh`（seed 表加 s22 9361242）run11：200.92 秒、−14.0 LUFS、峰值 −3.6；cut-qa motion FAIL 5.5／23%、jitter FAIL s23（凍格）、cut-jumps s23 兩處、audio-qa 0；
+  s21–s23 帶上一句聽寫字全對、盲聽只有同音（曲尾、鹼、握罐）。
