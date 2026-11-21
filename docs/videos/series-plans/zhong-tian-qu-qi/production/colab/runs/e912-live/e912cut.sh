@@ -2,7 +2,8 @@
 set -u
 R=/home/user/zt-work; P=$R/docs/videos/series-plans/zhong-tian-qu-qi/production; Q=$P/colab/runs/_scripts
 E=/root/mokaair-work/videos/_live-e912/zhong-tian-qu-qi-e912-dh; VJ=$R/docs/videos/zhong-tian-qu-qi-e012-r2/video.json
-V=${V:-v1}; mkdir -p $E/cut; [ -f $E/cut/e912-live.mp4 ] && { mkdir -p $E/cut/old-$(date +%H%M); mv $E/cut/e912-live.* $E/cut/final.log $E/cut/old-$(date +%H%M)/ 2>/dev/null; }
+# POLISH 2026-11-21: at most one old cut is kept (the disk is short): an older cut/old-* goes before this one moves there
+V=${V:-v1}; mkdir -p $E/cut; [ -f $E/cut/e912-live.mp4 ] && { rm -rf $E/cut/old-*; mkdir -p $E/cut/old-$(date +%H%M); mv $E/cut/e912-live.* $E/cut/final.log $E/cut/old-$(date +%H%M)/ 2>/dev/null; }
 rm -rf $E/segments-v4
 # the refined shots must be staged first (live-action/stage.py 12: refined picture + draft voice + trim/crop -> clips/sNN-t1.mp4)
 miss=$(python3 -c "import json,os;p=json.load(open('$E/picks.json'));print(' '.join(s for s in p if not os.path.exists('$E/clips/'+s+'-t1.mp4')))")
@@ -26,6 +27,18 @@ bad=[f'{s} start {p[s][\"trim\"].get(\"start\",0)} end-before {p[s][\"trim\"].ge
      if abs(p[s]['trim'].get('start',0)-a)>0.001 or abs(p[s]['trim'].get('end-before',0)-b)>0.001]
 bad+=[f'{s} seed {p[s][\"seed\"]} (want {v})' for s,v in seed.items() if p[s]['seed']!=v]
 print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
+# POLISH 2026-11-21 (review-zt free fixes; edit table _note POLISH): the episode sfx dir (third sfx_dirs entry):
+# murmur12.wav (crowd-murmur.py 12 30, the owner's reversed-recordings crowd, -19 LUFS) under s08-s13 for the constables
+# round the yard; thud912.wav = zhongtian-sfx-staff-thud-01 from 1.03 s, 0.4 s (e906's hoe906 cut) for Qin's stick block in
+# s13. The recordings a13 (rubberband 0.75) and a29 (0.72) are re-made from audio/orig/ (the 11-15 versions in audio/pre-polish/).
+X=/root/mokaair-work/videos/_sfx/zhongtian-real-20261121; S=/root/mokaair-work/videos/zhong-tian-qu-qi-e912-dh/sfx; mkdir -p $S
+[ -f $S/murmur12.wav ] || python3 -I $Q/crowd-murmur.py 12 30
+[ -f $S/thud912.wav ] || ffmpeg -v error -y -ss 1.03 -t 0.4 -i $X/zhongtian-sfx-staff-thud-01.wav -af "afade=t=out:st=0.25:d=0.15,aresample=48000,aformat=channel_layouts=stereo" $S/thud912.wav
+# gong912 / bell912 = gong_01 / impactBell_heavy_001 0-0.55 s, linear fade-out 0.15-0.5 s: s23's releasing hit after
+# 不查了 no longer rings over 今晚的事 (review e012 item 2: the long ring at -11..-15 dBFS buried it)
+D=/root/mokaair-work/videos/_series/zhong-tian-qu-qi/sfx
+[ -f $S/gong912.wav ] || ffmpeg -v error -y -t 0.55 -i $D/gong_01.wav -af "afade=t=out:st=0.15:d=0.35,aresample=48000,aformat=channel_layouts=stereo,apad=whole_dur=0.55" $S/gong912.wav
+[ -f $S/bell912.wav ] || ffmpeg -v error -y -t 0.55 -i $D/impactBell_heavy_001.wav -af "afade=t=out:st=0.15:d=0.35,aresample=48000,aformat=channel_layouts=stereo,apad=whole_dur=0.55" $S/bell912.wav
 cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VJ $R/docs/videos/zhong-tian-qu-qi-e012-r2/overlays.json $P/hailuo/edit-dh-e912-live.json $E $E/cut/e912-live.mp4 > $E/cut/final.log 2>&1; tail -3 $E/cut/final.log
 [ -f $E/cut/e912-live.mp4 ] || exit 1
 # a sample-peak limiter before loudnorm2 keeps it linear (the e908 cut review found a click from its dynamic fallback;
@@ -38,8 +51,22 @@ cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VJ
 # on silence instead of a cut (the fade is before loudnorm2, whose gain is linear)
 D=$(ffprobe -v error -show_entries format=duration -of csv=p=0 $E/cut/e912-live.mp4); FS=$(python3 -c "print(f'{$D-1.0:.3f}')")
 ffmpeg -v error -y -i $E/cut/e912-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af "alimiter=limit=0.6:attack=5:release=60:level=false,aresample=48000,afade=t=out:st=$FS:d=1.0" $E/cut/e912-live.lim.mp4 && mv $E/cut/e912-live.lim.mp4 $E/cut/e912-live.mp4
+ffmpeg -hide_banner -i $E/cut/e912-live.mp4 -map 0:a -af loudnorm=I=-14:TP=-2.2:LRA=11:print_format=json -f null - 2>&1 | sed -n '/^{/,/^}/p' \
+ | python3 -c "import json,sys;j=json.load(sys.stdin);i,tp=float(j['input_i']),float(j['input_tp']);print(f'pre-loudnorm2 {i} LUFS {tp} dBTP: {tp-14-i:+.2f} after the gain ->', 'linear' if tp-14-i<=-2.2 else 'DYNAMIC (lower the limiter or its attack)')"
 bash $Q/loudnorm2.sh $E/cut/e912-live.mp4
+# POLISH 2026-11-21 (e904/e908 lesson): loudnorm's first pass can miss an early transient, so the true peak is measured
+# after loudnorm2 and, only if it is above -1.5 dBTP, a second sample-peak limiter at 0.7 (-3.1 dBFS) touches just those peaks
+TP=$(ffmpeg -hide_banner -i $E/cut/e912-live.mp4 -map 0:a -af ebur128=peak=true -f null - 2>&1 | grep -A1 'True peak:' | grep -oE -- '-?[0-9.]+ dBFS' | tail -1 | cut -d' ' -f1)
+echo "after loudnorm2: true peak $TP dBTP"
+if python3 -c "import sys;sys.exit(0 if float('$TP')>-1.5 else 1)"; then
+ ffmpeg -v error -y -i $E/cut/e912-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af "alimiter=limit=0.7:attack=8:release=60:level=false,aresample=48000" $E/cut/e912-live.lim.mp4 && mv $E/cut/e912-live.lim.mp4 $E/cut/e912-live.mp4
+ echo "second limiter applied"
+fi
+ffmpeg -hide_banner -i $E/cut/e912-live.mp4 -map 0:a -af ebur128=peak=true -f null - 2>&1 | grep -E '^\s+(I|Peak):' | tail -2
 echo "== cut-qa";   python3 $Q/cut-qa.py $E/cut --stem e912-live 2>&1 | tail -20
 echo "== cut-jumps"; python3 $Q/cut-jumps.py $E/cut 2>&1 | tail -12
 echo "== audio-qa"; python3 $Q/audio-qa.py $E/cut $VJ 2>&1 | tail -15
 echo "== sheets";   python3 $Q/continuity-sheets.py $E/cut $VJ $E/review/continuity-v1 2>&1 | tail -4
+# the segments are 1-2 GB and only the assembler reads them: gone after the checks (KEEP_SEG=1 keeps them for a look)
+[ "${KEEP_SEG:-0}" = 1 ] || rm -rf $E/segments-v4
+[ "${KEEP_PRE:-0}" = 1 ] || rm -rf $E/cut/pre

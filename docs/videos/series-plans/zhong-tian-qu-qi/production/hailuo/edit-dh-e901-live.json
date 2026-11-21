@@ -1,9 +1,13 @@
 {
  "tempo": 1.0,
  "grades": {
-  "s01": "office",
-  "s02": "office",
-  "s03": "night"
+  "office": [
+   "s01",
+   "s02"
+  ],
+  "night": [
+   "s03"
+  ]
  },
  "default_grade": "dh",
  "finish": "vignette=angle=PI/5,format=yuv420p",
@@ -20,7 +24,7 @@
    "許小禾",
    "許硯的妹妹"
   ],
-  "s20": [
+  "s21": [
    "趙捕頭",
    "縣衙捕頭"
   ],
@@ -40,10 +44,12 @@
  "punch": false,
  "slow_max": 1.1,
  "interpolate": false,
- "duck_ratio": 3.5,
- "duck_release_ms": 900,
+ "duck_ratio": 2.5,
+ "duck_release_ms": 350,
  "sfx_dirs": [
-  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx"
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx",
+  "<VIDEO_WORKDIR>/_sfx/zhongtian-real-20261121",
+  "<VIDEO_WORKDIR>/zhong-tian-qu-qi-e901-dh/sfx"
  ],
  "name_whoosh": "swish-9",
  "music": [
@@ -52,7 +58,7 @@
    "from": "s01",
    "to": "s03",
    "offset": 0,
-   "gain": -16,
+   "gain": -10,
    "fade_out": 0.6
   },
   {
@@ -60,15 +66,15 @@
    "from": "s04",
    "to": "s11",
    "offset": 0,
-   "gain": -17,
+   "gain": -14,
    "fade_out": 0.8
   },
   {
    "cue": "warm",
    "from": "s12",
    "to": "s19",
-   "offset": 0,
-   "gain": -17,
+   "offset": 0.9,
+   "gain": -11,
    "fade_out": 0.8
   },
   {
@@ -76,7 +82,7 @@
    "from": "s20",
    "to": "s35",
    "offset": 0,
-   "gain": -16,
+   "gain": -10,
    "fade_out": 0.4
   },
   {
@@ -84,7 +90,7 @@
    "from": "s36",
    "to": "s38",
    "offset": 0,
-   "gain": -14,
+   "gain": -10,
    "fade_out": 1.6
   }
  ],
@@ -102,16 +108,10 @@
    "gain": -8
   },
   {
-   "file": "splash_02",
-   "at": "s04",
-   "off": 0.2,
-   "gain": -20
-  },
-  {
    "file": "splash_01",
    "at": "s05",
    "off": 0.0,
-   "gain": -18
+   "gain": -23
   },
   {
    "file": "splash_02",
@@ -129,19 +129,13 @@
    "file": "door_open",
    "at": "s12",
    "off": 0.2,
-   "gain": -20
+   "gain": -12
   },
   {
    "file": "wooden_01",
    "at": "s12",
    "off": 0.8,
-   "gain": -18
-  },
-  {
-   "file": "footstep_wood_000",
-   "at": "s13",
-   "off": 0.1,
-   "gain": -24
+   "gain": -12
   },
   {
    "file": "impactPlate_light_000",
@@ -153,19 +147,19 @@
    "file": "dishes_01",
    "at": "s18",
    "off": 1.0,
-   "gain": -22
+   "gain": -27
   },
   {
    "file": "dishes_02",
    "at": "s19",
    "off": 0.8,
-   "gain": -22
+   "gain": -7
   },
   {
    "file": "slam_01",
    "at": "s20",
    "off": 0.88,
-   "gain": -10
+   "gain": -7
   },
   {
    "file": "footstep_concrete_000",
@@ -174,28 +168,34 @@
    "gain": -22
   },
   {
-   "file": "paper_02",
+   "file": "zhongtian-sfx-paper-unfold-08",
    "at": "s21",
-   "off": 0.3,
-   "gain": -18
+   "off": 1.05,
+   "gain": -10
   },
   {
-   "file": "metalLatch",
+   "file": "chain901",
    "at": "s26",
-   "off": 0.8,
-   "gain": -24
+   "off": 0.6,
+   "gain": -6
+  },
+  {
+   "file": "chain901",
+   "at": "s26",
+   "off": 3.75,
+   "gain": -9
   },
   {
    "file": "paper_04",
    "at": "s31",
    "off": 1.5,
-   "gain": -18
+   "gain": -23
   },
   {
    "file": "rustle03",
    "at": "s32",
    "off": 0.2,
-   "gain": -22
+   "gain": -14
   },
   {
    "file": "footstep_grass_000",
@@ -226,6 +226,108 @@
    "at": "s38",
    "to": "s38",
    "gain": -18
+  },
+  {
+   "file": "rain901",
+   "at": "s03",
+   "to": "s03",
+   "gain": -8
+  },
+  {
+   "file": "paper_03",
+   "at": "s01",
+   "off": 2.7,
+   "gain": -16
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s16",
+   "off": 1.0,
+   "gain": -18
+  },
+  {
+   "file": "impactPlank_medium_000",
+   "at": "s20",
+   "off": 1.1,
+   "gain": -14
+  },
+  {
+   "file": "birds",
+   "at": "s20",
+   "to": "s35",
+   "gain": -36
+  },
+  {
+   "synth": "underwater",
+   "at": "s04",
+   "to": "s04",
+   "gain": -22
+  },
+  {
+   "file": "bubble901",
+   "at": "s04",
+   "off": 0.78,
+   "gain": -12
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s13",
+   "off": 0.45,
+   "gain": -24
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s13",
+   "off": 0.7,
+   "gain": -24
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s13",
+   "off": 0.95,
+   "gain": -24
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s13",
+   "off": 1.15,
+   "gain": -24
+  },
+  {
+   "file": "cloth1",
+   "at": "s13",
+   "off": 1.2,
+   "gain": -22
+  },
+  {
+   "file": "drawKnife2",
+   "at": "s28",
+   "off": 0.45,
+   "gain": -24
+  },
+  {
+   "file": "metalLatch",
+   "at": "s28",
+   "off": 1.2,
+   "gain": -16
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s32",
+   "off": 0.45,
+   "gain": -24
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s32",
+   "off": 1.15,
+   "gain": -24
+  },
+  {
+   "file": "cloth2",
+   "at": "s32",
+   "off": 1.45,
+   "gain": -20
   }
  ],
  "frame_round": true,
@@ -237,15 +339,16 @@
   "s12",
   "s14"
  ],
- "_note": "live action (owner 2026-11-07): the model's own voice for on-screen lines (clip_voice), recorded audio for system, off-screen, inner and nospeak lines; s12 and s14 speak on screen although marked nospeak (voice_on).",
+ "_note": "live action (owner 2026-11-07): the model's own voice for on-screen lines (clip_voice), recorded audio for system, off-screen, inner and nospeak lines; s12 and s14 speak on screen although marked nospeak (voice_on). POLISH 2026-11-21 (pre-release, the owner's 「該修改就修改」; /root/mokaair-work/review-zt/EDIT-BRIEF.md with consolidated/free_fixes.json e001 and reports/e001.md; no paid service, no new clip, recordings untouched; cut by the new colab/runs/e901-live/e901cut.sh, whose unchanged first run matched ep/e001/final.mp4: 268.19 s, -13.7 LUFS, TP -1.2, same srt). Re-shoots pending (retakes.json tier B: s04, s08b, s13, s14, s23, s28, s32) are NOT touched: their trims and effect times stay, so the review's s04 panel (c0.1-2.9 or lower), s23 end-before 5.2, s13 footsteps, s28 sword back to the hip, s04 underwater bubbles and s32 sedan creak wait for the new clips (only rustle03's gain in s32 moved, the must item). MIX (must): music +6 dB (tension -10, warm -11, comedy -10) with duck_ratio 3.5 -> 2.5 and duck_release_ms 900 -> 350; warm starts at offset 0.9 (cue-warm.mp3 opens with 0.84 s of silence, so s12 had no music at c0); river and suspense only +3/+4 (-14, -10): at +6 audio-qa failed 'quiet' on zq901a11 (the river bed before it -16.6 LUFS against the line's -14.2) and zq901a42 (suspense plus the ding -19.3 before the line). door_open -20 -> -12, wooden_01 -18 -> -12, rustle03 -22 -> -14. Gaps (400 ms RMS, median/min, before -> after; times after s27 are 1.5 s earlier now): 12.0 -45/-51 -> -32/-34; 31.4 -44/-50 -> -39/-42 (inside zq901a05's own pause, the river bed is ducked there; half fixed); 63.8 -41/-43 -> -25/-27; 79.4-83.9 -32/-45 -> -22/-29; 125.9 -33/-51 -> -26/-34; 212.3 -33/-39 -> -26/-30; 243.8 -38/-58 -> -29/-37. The finish now has the e908-e930 limiter (0.55, attack 8 ms) and loudnorm2.sh (linear): with the louder music the assembler's own loudnorm let TP reach -0.9. PANELS: panel_y s08 870 (an eye close-up: the panel sat on the brows, now on the nose below the eyes), s36 900 (the push-in brought the brows under the panel; now over the chest/chin, the mouth is shut, the system speaks). NAME: Zhao's card moves from s20 (only a boot and the gate) to s21 at 0.3 s (his face); the whoosh follows it. CUT: s27 starts 1.5 s later (clips/s27-t2.mp4, made by e901cut.sh), voice_skip s27 0.5 (the re-encode's first 0.17 s read as speech and pulled zq901a29's CC to c0); s38 holds its last frame 1.25 s more (min 10.5 with slow_shot 1.15625, its old slow-down, so the picture plays as before and then holds; cut-qa's 'held' on s38 is this, on purpose). CC (line_at): zq901a12 0.96 (68.0), zq901a34 7.17 (206.3, was 206.97 before the s27 trim), zq901a40 7.82 (243.2). SFX: splash_01 s05 -18 -> -23, dishes_01 s18 -22 -> -27, paper_04 s31 (the chest slap) -18 -> -23, slam_01 s20 -10 -> -7, dishes_02 s19 (the pour) -22 -> -7 (50 ms peak -26.4 -> -15.5 dBFS, the review asked about -14; the series has no pour, the new set none either). New, from the 2026-11-21 set (sfx_dirs 2) and the episode dir (sfx_dirs 3, made by e901cut.sh): rain901 (rain-thunder-01 11.0-17.4, the rain only) under s03 at -8; chain901 (iron-chain-01 0.1-1.1) at s26 c0.6 and c3.75 in place of metalLatch (the sheath taps at c0.8 and lifts at c4.0); zhongtian-sfx-paper-unfold-08 at s21 c1.05 in place of paper_02 at c0.3 (the roll opens at c1.0-1.3); paper_03 s01 c2.7 (the resume slides c2.5-4.5); impactWood_light_000 s16 c1.0 (the lid comes off); impactPlank_medium_000 s20 c1.1 (the gate hits the fence); birds s20-s35 at -36 (village by day). Not done: s06 cough and s11 drip (nothing in either library), the cue-face-slap / cue-cliffhanger / cue-system swaps and bed-village-comedy (optional; unheard against the existing cues). Polished cut: 267.92 s, -14.0 LUFS, TP -2.2; cut-qa only s38 held (on purpose), cut-jumps only s03's white flash, audio-qa 0 problems. POLISH 2026-11-21 (coordinator): grades was written {shot: grade}; assemble-v4 reads {grade: [shots]}, so s01-s03's office/night grades were never applied. Rewritten as {\"office\": [\"s01\", \"s02\"], \"night\": [\"s03\"]}; applied from the next cut. SWAP 2026-11-21 (/root/mokaair-work/review-zt/SWAP-BRIEF.md): the re-shot clips are clips/sNN-t5.mp4 (runpod/polish/picks.json; fix-polish review-picks round1-3), pick() takes them over t1. s04 = round-3 9019302 (end-before 4.458, eye close-up: closed to c0.75, snaps open c0.83), so the old 'use only 0-3.25 s' plan is void; the shot is 2.1 s shorter than the old 6.58 and every music cue/effect is placed per shot, so nothing absolute moved. s04: zq901a04 line_at 0.92 (its ding at c0.70, just before the eyes snap) and panel_from 0.9; the panel stays at the top (y 120-254, forehead and hair; the brows sit at about y 380 once the eyes are open). splash_02 c0.2 (the old surface splash) out; synth underwater bed -22 for the shot and bubble901 (splash_02 low-passed, made by e901cut.sh) at c0.78 -12: the review's 'underwater muffle/bubbles'. s08b 9019101 (8 s, both lines recorded, clip voice muted as before): nothing else changed. s13 9019101 (6.56 s; the model's chatter is muted since Xiaohe is nospeak): zq901a15 line_at 0.9 (it is 5.39 s; from 0.12 it ended 1 s before the clip, from 0.9 it ends at c6.29 inside the clip, no hold); footstep_wood_000 c0.1 out, her run c0.45/0.7/0.95 footstep_grass, the hug at c1.15 impactSoft_heavy_000 -24 + cloth1 c1.2 -22 (the review's s13 footsteps). s14 9019101 (10.11 s, voice_on as before): the clip speaks 5.42-9.66, a16 (inner, recorded) plays 0.12-3.63 at its own speed while his lips are shut. s23 9019202 (start 0.708, 5.85 s): speech 0.80-5.40, played whole (the review's end-before 5.2 was for the old take). s28 9019102 (start 0.625): voice_skip 1.95 still right (speech 2.22-5.64; a model blip at c0.52 stays under the sword); sword back to the hip: drawKnife2 c0.45 -24 (the slide) and metalLatch c1.2 -16 (the hilt seats at c1.25). s32 9019202 (start 0.708, 5.85 s): voice_skip 1.85 -> 1.2 (speech now starts c1.55, 1.85 would have started the CC late); clip_af rubberband pitch 0.5612 (-10 semitones, formant preserved) + 5.5 dB + limiter 0.89: YIN median 471 -> 267 Hz on c1.55-4.25 (s34 242 Hz, p75 291), clip -9.1 LUFS -> -11.3 (s34's clip -10.1); the pitch shift alone cost 6.6 dB. The line ends at c5.74 and the shot (140 frames, 5.833 s) cuts at c5.83, after the decay (-53 dB by c5.74), so the tail is not clipped; no hold added. rustle03 stays at c0.2 -14 (now her silk skirt as she walks, the must gain kept); her steps footstep_grass_001 c0.45/c1.15 with grass_000 c0.8, cloth2 c1.45 -20 on the wave. No sedan creak: the new take has no curtain or stepping out (she walks past an empty sedan). Thumbnail (three brides, not from a swapped shot) unchanged.",
  "voice_skip": {
   "s12": 4.5,
+  "s27": 0.5,
   "s28": 1.95,
   "s31": 0.4,
-  "s32": 1.85
+  "s32": 1.2
  },
  "name_at": {
-  "s20": 1.2
+  "s21": 0.3
  },
  "subtitle_lines": [
   "zq901a44"
@@ -255,6 +358,29 @@
   "zq901a44": "s38"
  },
  "slow_shot": {
-  "s38": 1.17
+  "s38": 1.15625
+ },
+ "panel_y": {
+  "s08": 870,
+  "s36": 900
+ },
+ "line_at": {
+  "zq901a12": 0.96,
+  "zq901a34": 7.17,
+  "zq901a40": 7.82,
+  "zq901a04": 0.92,
+  "zq901a15": 0.9
+ },
+ "min": {
+  "s38": 10.5
+ },
+ "panel_from": {
+  "s04": 0.9
+ },
+ "clip_af": {
+  "s32": {
+   "from": 0,
+   "af": "rubberband=pitch=0.5612:formant=preserved:pitchq=quality,volume=5.5dB,alimiter=limit=0.89:attack=1:release=50:level=false"
+  }
  }
 }

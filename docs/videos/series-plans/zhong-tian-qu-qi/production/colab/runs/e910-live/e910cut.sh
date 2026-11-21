@@ -10,12 +10,13 @@ miss=$(python3 -c "import json,os;p=json.load(open('$E/picks.json'));print(' '.j
 # e910 dry run: the old trims cut the end of a spoken line (s05 7.4, s21 7.3, s26 7.2) or end on a part frame that holds one
 # frame (s10 5.4); s17 is review2-trims.tsv's 5.6. REVIEW 3 (review3-trims.tsv): static heads/tails cut on whole frames
 # (s18 start 0.8 -> 0.75 because 0.8 is not on a frame and the take came out two frames short), s18 longer to 4.417.
+# POLISH 2026-11-21: s34 end-before 6.0 -> 4.75 (the purse is never taken; staged clip re-cut from clips/orig/s34-t1.end6.0.mp4).
 # edit-dh-e910-live.json's _note has the values -- warn (not stop) if picks.json does not have them (start, end-before; 0 = none)
 python3 -c "
 import json;p=json.load(open('$E/picks.json'))
 want={'s01':(0.75,0),'s04':(1.0,0),'s05':(1.25,7.75),'s08':(0.75,0),'s10':(0,5.417),'s11':(1.25,0),'s12':(1.25,0),'s13':(0.75,0),
  's17':(0,5.6),'s18':(0.75,4.417),'s19':(0,6.5),'s20':(1.0,0),'s21':(1.25,7.75),'s22':(0,7.375),'s24':(1.0,0),'s25':(1.0,0),'s26':(0,7.375),
- 's28':(0.75,0),'s29':(0,7.0),'s30':(0,7.708),'s31':(0,6.625),'s32':(2.0,0),'s38':(0.75,0),'s39':(0.875,0),'s40':(0.75,0)}
+ 's28':(0.75,0),'s29':(0,7.0),'s30':(0,7.708),'s31':(0,6.625),'s32':(2.0,0),'s34':(0,4.75),'s38':(0.75,0),'s39':(0.875,0),'s40':(0.75,0)}
 bad=[f'{s} start {p[s][\"trim\"].get(\"start\",0)} end-before {p[s][\"trim\"].get(\"end-before\",0)} (want {a} {b})' for s,(a,b) in want.items()
      if abs(p[s]['trim'].get('start',0)-a)>0.02 or abs(p[s]['trim'].get('end-before',0)-b)>0.02]
 print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
