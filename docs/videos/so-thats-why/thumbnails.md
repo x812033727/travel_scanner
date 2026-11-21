@@ -1,10 +1,46 @@
 # 原來如此事務所：縮圖規格
 
-**2026-11-01 新製作採 [目前規格](CURRENT.md) 與 [新版縮圖方向](refresh-20261101/SPEC.md)：單一物件／表情、主標最多 6 字、副標最多 12 字、亮底高對比，保留原系列色盤。** 以下格線為歷史版型資料，不要把新版標題直接沿用舊五語核准。
+## 2026-11-18 現行定案：正宗黑猫研究院（`@qiqiqushi0`）滿版置頂版型（`layout: "heimao"`／`"heimao-left"`）
 
-**2026-11-11 程式已改成亮底**（站主看過樣張後定，票 `2026-11-11-bright-explainer-and-drama-thumbnails`）：有關鍵影格時字那側鋪奶油色遮罩，沒有時是天藍到夕陽橘的漸層底；大字墨藍加白色描邊、`**…**` 那個詞芥末黃加墨藍描邊、字級 150px；副標是墨藍底白字的色塊；印章與系列字樣保留，位置不變。下面「色盤」「文字規則」裡寫奶油色大字、墨藍遮罩的地方是舊版，以 `tools/video/templates/templates.mjs` 的 `THUMB_SERIES_CSS` 為準。關鍵影格的主體在中間時字會壓到人，用 `data.subject: "right"` 讓圖縮到右側 38%。
+站主 2026-11-18 審閱黑猫研究院（`@qiqiqushi0`）原廠縮圖拆解與兩系列實測樣張後拍板：**《原來如此事務所》（`sothatswhy-*`）與《奇聞檔案局》（`curio-*`）的新集與重製集，全面改採滿版置頂雙行粗黑邊＋「巨型代表物×戲劇衝突／表情反應」公式（`thumbnail.data.layout: "heimao"` 或 `"heimao-left"`）**，解決先前 `subject: "right"` 右側窄框每集都是小問半身像、列表縮圖千篇一律的問題。
 
-2026-09-28 起草。縮圖跟著 [`look.md`](look.md) 走：同一個畫風與色盤，沒有吉祥物、沒有真實人臉或 logo。這份定版面、字、印章、各主軸的強調色與 A/B 測試，並逐欄對到現有的 `thumb` 版型（`tools/video/templates/templates.mjs` 的 `thumbnailHtml`、`tools/video/templates/theme.css` 的 `.thumb`）。版型做不到的列在最後的「缺口」，**這份不改程式**；缺口補上前照「現在能做的」一欄出圖。
+1. **版型設定（`templates.mjs` `THUMB_HEIMAO_LAYOUT`）**：
+   - `thumbnail.data.layout` 明寫 **`"heimao"`**（預設，雙行文字置頂置中）或 **`"heimao-left"`**（當巨型代表物衝入右上角天空時改置頂靠左）。
+   - **嚴禁同時設定 `"subject"`**（`ownThumbnailProblems` 會直接報錯攔截 `"subject"` 窄窗裁切）；不畫「原來如此」印章、主軸膠囊、左側奶油遮罩與底部黑漸層，把 `1280×720` 全畫面完整留給高明度主視覺。
+2. **置頂雙行粗黑邊文字（零破梗）**：
+   - **`headline`（第一行單行不換行，硬上限 ≤ 10 個單位，英數單詞算 1 單位；禁寫 `\n`）**：純亮黃 `#FFE600`＋超粗圓角純黑外框（`22px`，預設 `120px`／靠左 `110px`），寫最具反常識張力的衝突問句或對比（如 `"方框怎麼吹出圓泡泡？"`、`"都是碳，差距十萬倍？"`、`"GPS慢38微秒會怎樣？"`）。外語 `i18n/<locale>.json` 的 `headline` 濃縮在約 **≤ 18–20 個拉丁字元**內，確保手機 `320×180` 列表字高 `≥ 24 px`（`lint` 與 `qa` 自動把關）。
+   - **`sub`（第二行單行，≤ 14 字）**：純白 `#FFFFFF`＋粗圓角純黑外框（`15px`），補一句不破梗的硬事實或雙重反差（如 `"鉛筆一畫就斷 vs 鑽石切開玻璃"`、`"透明肥皂水，為什麼變出整道彩虹"`）；外語渲染後逐張目視確認零孤字換行。
+   - **嚴禁破梗答案**：`headline` 與 `sub` 只拉高反常識懸念，絕不直接寫出片中才揭曉的物理／化學因果答案。
+3. **滿版主視覺構圖（`shot` 三大規則）**：
+   - **上 30%（`y = 0–220px`）乾淨高明度亮底**：晴空藍、明亮淺色背景或清爽光線留給置頂雙行字，**絕不壓暗黑底**，讓黑框亮黃白字在手機淺色與深色模式都一秒跳出。
+   - **下 70% 第一優先畫「巨型題目代表物／機制反差 ＋ 戲劇衝突或 2.5 頭身小問／所長誇張反應」**（避開右下角 `x: 1060–1280, y: 620–720` 時間戳記）：優先放大題目最具辨識度的代表物、圖形或雙物強烈物理反差（如左邊鉛筆芯斷裂 vs 右邊鑽石切開玻璃板、巨型方框吹出七彩圓泡泡配小問驚呼、巨型掛鎖被駭客撬棍卡住），讓每集縮圖一眼認出主題且絕不撞臉。
+   - **無代表物時才退回純角色表情**：**只有當題目確實沒有具體代表性物品、標誌或物理圖形時，才退回單純 2.5 頭身小問／所長誇張表情特寫**；嚴禁每集預設只放小問大頭照，亦禁止選闔上的空白書本或空房間。
+4. **九語渲染目視檢查、已核准成片無損換縮圖與後台同步**：
+   - 修改 `video.json` 的 `thumbnail.data` 後必跑完整 `render --slug <SLUG>`（不能只跑 `--thumbnails-only`，因 `visualHash` 已隨新縮圖更新，需一併重繪 `thumbnail.jpg`、各語系 `thumbnails/{en,ja,ko,es,pt,id,vi,th}.jpg` 並更新 `frames/manifest.json`）；僅修改 `i18n/<locale>.json` 外語縮圖字而未改 `video.json` 時才可用 `--thumbnails-only`。
+   - 若集數的 `keyframes/manifest.json`、`clips/manifest.json` 與 `final.mp4` 已經站主核准、僅升級縮圖（例如補專繪滿版底圖 `thumbnail.data.asset: "docs/videos/<slug>/thumbnail-bg.jpg"` 並在 `assets[]` 標註 `{ path, source: "Mokaair 原來如此事務所", license: "Mokaair" }`），可在 `thumbnail.replaces` 保留原 `{ template, data }`：此時 `frames/manifest.json` 仍強制重跑 `render`，但未改動的分鏡與已核准的 `final.mp4` 雜湊維持有效、不需重組重審成片。
+   - 渲染後逐張打開九語縮圖目視確認無擋臉與裁切，再執行 `package` 並同步更新至後台 `/admin/videos` 的上架包（`publish`）與多語包（`languages`）。
+
+```json
+"thumbnail": {
+  "template": "thumb",
+  "data": {
+    "layout": "heimao",
+    "headline": "方框怎麼吹出圓泡泡？",
+    "sub": "透明肥皂水，為什麼變出整道彩虹",
+    "shot": "square-wand-round-bubble"
+  }
+}
+```
+
+---
+
+> **歷史版型紀錄（2026-11-18 以前已交付集數相容保留）**：下方 `THUMB_SERIES`（左字右圖奶油遮罩、印章、`"subject": "right"`）僅供未指定 `layout: "heimao"` 的舊集相容查閱，新集與重製集一律照上方 2026-11-18 黑猫滿版置頂定案製作。
+
+**2026-11-01 早期製作曾採 [目前規格](CURRENT.md) 與 [新版縮圖方向](refresh-20261101/SPEC.md)：單一物件／表情、主標最多 6 字、副標最多 12 字、亮底高對比，保留原系列色盤。** 以下格線為歷史版型資料，不要把新版標題直接沿用舊五語核准。
+
+**2026-11-11 程式曾改成亮底**（站主看過樣張後定，票 `2026-11-11-bright-explainer-and-drama-thumbnails`）：有關鍵影格時字那側鋪奶油色遮罩，沒有時是天藍到夕陽橘的漸層底；大字墨藍加白色描邊、`**…**` 那個詞芥末黃加墨藍描邊、字級 150px；副標是墨藍底白字的色塊；印章與系列字樣保留，位置不變。下面「色盤」「文字規則」裡寫奶油色大字、墨藍遮罩的地方是更舊版，以 `tools/video/templates/templates.mjs` 的 `THUMB_SERIES_CSS` 為準。舊版關鍵影格的主體在中間時字會壓到人，曾用 `data.subject: "right"` 讓圖縮到右側 38%。
+
+2026-09-28 起草。縮圖跟著 [`look.md`](look.md) 走：同一個畫風與色盤，沒有吉祥物、沒有真實人臉或 logo。這份定版面、字、印章、各主軸的強調色與 A/B 測試，並逐欄對到現有的 `thumb` 版型（`tools/video/templates/templates.mjs` 的 `thumbnailHtml`、`tools/video/templates/theme.css` 的 `.thumb`）。
 
 ## 色盤
 

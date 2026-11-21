@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { siteUrl } from "@/lib/seo";
 import {
   definedTerm, faqPage, breadcrumbs, foodEstablishment, foodEstablishments, guideArticle, itemList, organization,
-  touristDestination, webSite, type MerchantCard,
+  parseSameAs, touristDestination, videoObject, webSite, type MerchantCard,
 } from "@/lib/structured-data";
 
 const parse = (value: object | null) => JSON.parse(JSON.stringify(value));
@@ -15,6 +15,16 @@ describe("organization", () => {
     expect(data.name).toBe("Mokaair");
     expect(data.url).toBe(siteUrl);
     expect(data.logo.startsWith(`${siteUrl}/`)).toBe(true);
+    expect(data).not.toHaveProperty("sameAs");
+  });
+
+  it("attaches verified HTTPS sameAs entity links and ignores non-HTTPS or malformed values", () => {
+    const links = parseSameAs(
+      " https://www.youtube.com/@mokaair , http://insecure.example, javascript:alert(1), not-a-url, https://www.youtube.com/@mokaair, https://www.threads.net/@mokaair ",
+    );
+    expect(links).toEqual(["https://www.youtube.com/@mokaair", "https://www.threads.net/@mokaair"]);
+    const data = parse(organization(links)) as { sameAs?: string[] };
+    expect(data.sameAs).toEqual(links);
   });
 });
 
@@ -402,5 +412,31 @@ describe("foodEstablishments", () => {
     expect(foodEstablishments("en", { countries: [] }, awards)).toEqual([]);
     expect(foodEstablishments("en", { items: [] }, awards)).toEqual([]);
     expect(foodEstablishments("en", "not a list", awards)).toEqual([]);
+  });
+});
+
+describe("videoObject", () => {
+  it("emits a VideoObject matching VideoCard's thumbnail, nocookie embed, and watch URL", () => {
+    const data = parse(videoObject("zh-TW", {
+      slug: "claude-code-demo",
+      title: "Claude Code Demo",
+      youtubeVideoId: "abcdefghijk",
+      publishedAt: "2026-11-18T00:00:00Z",
+      articlePath: "/life/claude-code-demo",
+    }));
+    expect(data).toMatchObject({
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "@id": `${siteUrl}/zh-TW/videos#video-claude-code-demo`,
+      name: "Claude Code Demo",
+      description: "Claude Code Demo",
+      thumbnailUrl: "https://i.ytimg.com/vi/abcdefghijk/hqdefault.jpg",
+      uploadDate: "2026-11-18T00:00:00Z",
+      contentUrl: "https://www.youtube.com/watch?v=abcdefghijk",
+      embedUrl: "https://www.youtube-nocookie.com/embed/abcdefghijk",
+      inLanguage: "zh-TW",
+      mainEntityOfPage: `${siteUrl}/zh-TW/life/claude-code-demo`,
+      publisher: { "@type": "Organization", name: "Mokaair", url: siteUrl },
+    });
   });
 });

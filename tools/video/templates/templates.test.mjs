@@ -298,7 +298,7 @@ test("the channel's layout and tone rotate by slug, a variant one step on, and d
   assert.notEqual(thumbnailRotation("facebook-code-scam", 2).layout, next.layout);
   assert.match(thumbnailHtml({ ...thumb, data: { ...thumb.data, layout: "c", tone: "plum" } }, { slug: "facebook-code-scam" }), /<div class="thumb-subject layout-c tone-plum"><\/div><div class="thumb column layout-c tone-plum">/);
   assert.match(thumbnailHtml(thumb), /layout-[abc] tone-(teal|plum|navy|forest)/, "no slug: still a layout and a tone");
-  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "left", tone: "red" } }), ["thumbnail.data.layout must be one of a, b, c, d, e, f, ai", "thumbnail.data.tone must be one of teal, plum, navy, forest"]);
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "left", tone: "red" } }), ["thumbnail.data.layout must be one of a, b, c, d, e, f, ai, heimao, heimao-left", "thumbnail.data.tone must be one of teal, plum, navy, forest"]);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "b", tone: "navy", capture: "find-guides#2", shot: "hall" } }), []);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", capture: "Find Guides", shot: 3 } }), ['thumbnail.data.capture must name a screencast scene, "<scene id>" or "<scene id>#<n>" for its n-th capture', "thumbnail.data.shot must be a shot's id"]);
   assert.deepEqual(captureRef("find-guides"), { scene: "find-guides", index: 0 });
@@ -373,8 +373,8 @@ test("So That's Why wears its own thumbnail: palette, name, stamp, pillar tag, a
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "一二三四五六七八九十十一" } }), [], "the channel's thumbnails keep their length");
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "一二三四五六七八九十十一" } }, { series: "sothatswhy" }), ["thumbnail.data.headline has a line of 12 characters; this series takes at most 10 a line, readable at phone size"]);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "一\n二\n三" } }, { series: "sothatswhy" }), ["thumbnail.data.headline has 3 lines; this series takes at most 2"]);
-  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "top", pillar: "sports" } }, { series: "sothatswhy" }), ["thumbnail.data.layout must be one of left, right", "thumbnail.data.pillar must be one of business, science, travel, tech"]);
-  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "right" } }), ["thumbnail.data.layout must be one of a, b, c, d, e, f, ai"], "the channel's layouts are its own");
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "top", pillar: "sports" } }, { series: "sothatswhy" }), ["thumbnail.data.layout must be one of left, right, heimao, heimao-left", "thumbnail.data.pillar must be one of business, science, travel, tech"]);
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "right" } }), ["thumbnail.data.layout must be one of a, b, c, d, e, f, ai, heimao, heimao-left"], "the channel's layouts are its own");
 });
 
 test("a thumbnail's B and C variants for YouTube's test are laid over A and linted like it", () => {
@@ -387,8 +387,8 @@ test("a thumbnail's B and C variants for YouTube's test are laid over A and lint
   assert.deepEqual(thumbnailProblems(thumb, { series: "sothatswhy" }), []);
   const long = { ...thumb, variants: [{ data: { headline: "一二三四五六七八九十十一" } }] };
   assert.deepEqual(thumbnailProblems(long, { series: "sothatswhy" }), ["variant b: thumbnail.data.headline has a line of 12 characters; this series takes at most 10 a line, readable at phone size"]);
-  assert.deepEqual(thumbnailProblems({ ...thumb, variants: [{ data: { layout: "top" } }] }, { series: "sothatswhy" }), ["variant b: thumbnail.data.layout must be one of left, right"]);
-  assert.deepEqual(thumbnailProblems({ ...thumb, variants: [{ data: { layout: "top" } }] }), ["variant b: thumbnail.data.layout must be one of a, b, c, d, e, f, ai"]);
+  assert.deepEqual(thumbnailProblems({ ...thumb, variants: [{ data: { layout: "top" } }] }, { series: "sothatswhy" }), ["variant b: thumbnail.data.layout must be one of left, right, heimao, heimao-left"]);
+  assert.deepEqual(thumbnailProblems({ ...thumb, variants: [{ data: { layout: "top" } }] }), ["variant b: thumbnail.data.layout must be one of a, b, c, d, e, f, ai, heimao, heimao-left"]);
   const shape = "thumbnail.variants must be 1 to 2 of { data: {...} } (A is the thumbnail itself; YouTube tests up to three)";
   for (const variants of [[], [{}], "b", [{ data: {} }, { data: {} }, { data: {} }]]) assert.deepEqual(thumbnailProblems({ ...thumb, variants }), [shape], JSON.stringify(variants));
 });
@@ -761,4 +761,33 @@ test("the AI look: the picture over the frame, the series' name and colour from 
   assert.deepEqual(problems({ template: "thumb", data: { layout: "ai", headline: "Gemini 4\n**你找不到**" } }), ["thumbnail.data.headline takes one line in the AI look: the subject, then the **hook**; remove the line break"]);
   // Another layout draws exactly as before.
   assert.doesNotMatch(draw({ template: "thumb", data: { headline: "x", layout: "a" } }, { slug: "daily-ai-20261028", aiSeries: "brief" }), /ai-label/);
+});
+
+test("the Heimao full-bleed explainer layouts ('heimao' and 'heimao-left') work on both Curio and So That's Why without stamp, pill or bottom scrim", async () => {
+  const { THUMB_HEIMAO_LAYOUT, THUMB_HEIMAO_LEFT_LAYOUT, thumbnailHtml: draw, thumbnailProblems: problems } = await import("./templates.mjs");
+  assert.equal(THUMB_HEIMAO_LAYOUT, "heimao");
+  assert.equal(THUMB_HEIMAO_LEFT_LAYOUT, "heimao-left");
+
+  const stw = draw(
+    { template: "thumb", data: { layout: "heimao", headline: "方框吹出圓泡泡？", sub: "透明的水卻有彩虹顏色", tag: "科學", pillar: "science", shot: "bubble" } },
+    { background: "https://video.local/work/keyframes/bubble.png", series: "sothatswhy", slug: "sothatswhy-p06-bubble-film" },
+  );
+  assert.match(stw, /<div class="heimao-pic from-picture"><img src="https:\/\/video\.local\/work\/keyframes\/bubble\.png" alt=""><\/div>/);
+  assert.match(stw, /<div class="heimao-text"><h1 class="heimao-h fit">方框吹出圓泡泡？<\/h1><div class="heimao-sub fit">透明的水卻有彩虹顏色<\/div><\/div>/);
+  assert.match(stw, /-webkit-text-stroke:22px #000/);
+  assert.match(stw, /-webkit-text-stroke:15px #000/);
+  assert.doesNotMatch(stw, /!important/, "no !important on font-size so fitText shrinks long foreign headlines");
+  assert.doesNotMatch(stw, /原來如此事務所|MOKAAIR|thumb-stamp|thumb-scrim|科學/);
+
+  const curioLeft = draw(
+    { template: "thumb", data: { layout: "heimao-left", headline: "哈里森為何**被刁難？**", sub: "誤差只有門檻三分之一", shot: "h4" } },
+    { background: "https://video.local/work/keyframes/h4.png", slug: "curio-s23-v2" },
+  );
+  assert.match(curioLeft, /<div class="heimao-text heimao-left"><h1 class="heimao-h fit">哈里森為何<em>被刁難？<\/em><\/h1>/);
+  assert.match(curioLeft, /\.heimao-h em\{color:#ffe600;font-style:normal;white-space:nowrap\}/);
+
+  assert.deepEqual(problems({ template: "thumb", data: { layout: "heimao", headline: "鉛筆跟鑽石都是碳？", sub: "為何一個一畫就斷、一個切玻璃" } }, { series: "sothatswhy" }), []);
+  assert.deepEqual(problems({ template: "thumb", data: { layout: "heimao-left", headline: "杜比憑什麼躺著賺？", sub: "93%營收都是授權費" } }), []);
+  assert.deepEqual(problems({ template: "thumb", data: { layout: "heimao", headline: "兩行\n標題" } }, { series: "sothatswhy" }), ["thumbnail.data.headline takes one top line in the heimao look (put the second line in data.sub); remove the line break"]);
+  assert.deepEqual(problems({ template: "thumb", data: { layout: "heimao", headline: "方框吹出圓泡泡？", subject: "right" } }, { series: "sothatswhy" }), ["thumbnail.data.subject cannot narrow a full-bleed heimao thumbnail; remove subject"]);
 });

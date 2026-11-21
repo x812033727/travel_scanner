@@ -1,0 +1,382 @@
+{
+  "batch": "batches/wave74-20261117.json",
+  "reviewed_on": "2026-11-17",
+  "method": "四位沒有參與研究的獨立覆核代理（R741–R744 依序覆核 ZS1–ZS4）逐題對照研究代理的請求紀錄與快取檔，至少重新請求一個關鍵一手／機構來源，逐句核對年份、數字與引文，查每個來源網址在快取頁面裡有沒有出處，重做全池與跨系列去重，對照不收清單、1956 真人規範與 8 分鐘門檻；修改直接寫進批次的題目與來源欄位，覆核補讀的來源編入該研究代理的來源序號，沒被收下的題引用的來源移除。",
+  "counts": {
+    "NEEDS_CHECK": 6,
+    "ADOPT_WITH_CHANGES": 12,
+    "REJECT": 1
+  },
+  "source_renames": {
+    "R741-S001": "ZS1-S017"
+  },
+  "verdicts": [
+    {
+      "id": "N7301",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R741",
+      "author": "ZS1",
+      "key_source_reopened": "https://knowledge.wharton.upenn.edu/wp-content/uploads/2022/03/warnock_camelot1991.pdf（R741 seq 1，200，15690 bytes）：與作者 cache/001.bin 的 sha256 前綴相同（1eb9779f77d999f6）。全文 6 頁重讀：問題定義、FAX 一句、『capture documents from any application…view and print these documents on any machines』、rebinding、只包實際用到的字元、viewer/browser、(more to come) 都在；全文沒有 edit／modify 的目標，也沒有日期與 PDF 一詞。相符。；https://askleo.com/tip-of-the-day-pdf-was-never-intended-to-be-editable/（R741 seq 2，200，209730 bytes）：覆核者另找的樣本（網址來自搜尋結果）：2024-12-31 的短文，標題『PDF Was Never Intended to Be Editable』，內文把 PDF 比作一張紙。顯示通行解釋與構想書同方向，翻轉偏弱；收為 R741-S001。",
+      "changes": [
+        "question 改寫：拿掉『常被說成是故意鎖起來不讓人動』（沒有讀到這種樣本），改用讀得到的 Adobe 說明頁講法（改不了歸給密碼與唯讀）",
+        "answer_target 第一段改成三種實際讀到的樣本並寫明沒有一篇說『故意做成不能改』；『上鎖是後來加的』改成不帶時間先後的寫法（來源沒有寫年份）",
+        "payoff 同步拿掉『後來』",
+        "新增來源 R741-S001（Ask Leo 短文），作為通行解釋的樣本",
+        "premise_status 改 needs_check；ZS1-S001 limitations 補上網址出處未能重現"
+      ],
+      "unverified": [
+        "『PDF 是故意鎖起來』這個流傳版本沒有實際讀到的樣本（docfly.com、www.pdfpro.co 被擋）",
+        "構想書副本的網址出處（不在作者快取頁，覆核者搜尋也沒重現）；文件本身沒有日期，1991 年只靠 Adobe 行銷頁",
+        "密碼／唯讀功能是哪一年加進格式的"
+      ],
+      "note": "紀錄一半（構想書全文、Adobe 官方頁）逐句相符，但流傳版本缺樣本，而且讀得到的通行解釋本來就和構想書同方向，翻轉偏弱；維持 chapter、降待查。"
+    },
+    {
+      "id": "N7302",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R741",
+      "author": "ZS1",
+      "key_source_reopened": "https://wWw.nkom.no/aktuelt/fra-i-ar-vil-du-bare-trenge-en-lader/_/attachment/download/d25a6cd3-d40d-4ebf-ae15-77fa10ab7dff:4a62f39095dfa2db6b69841002773f9ec48cb54f/2022_2380_EU.pdf（R741 seq 3，200，818317 bytes）：與作者 cache/010.bin 相同（f67a41302af513e4）。PDF 屬性：Publications Office、2022-12-06；頁首 L 315/30–43、7.12.2022，14 頁全文。前言 (2)、第 3a 條、第 2 條第 1 款的三個日期（2023-12-28、2024-12-28、2026-04-28）、附件 Ia 第一部分 1.1–1.13 與第 2、3 點逐句相符；全文無任何公司或產品名。搜尋結果裡有這個網址，也有 EUR-Lex 的 ELI 網址。；https://ec.europa.eu/docsroom/documents/2417/attachments/1/translations/en/renditions/native（R741 seq 4，200，35216 bytes）：與作者 cache/011.bin 相同（d644a3435069e989）。封面 June 5th, 2009；2.3–2.5、4.2.1（轉接器即符合）、『an Adaptor can also be a cable』、4.6、5.3、6.1、6.2（31/12/2012 終止）相符；簽署欄空白。",
+      "changes": [
+        "question 改寫：拿掉『和十幾家廠商』（家數對不上）與『大家都說歐盟是為了逼 iPhone 才立法』（樣本寫的是 iPhone 被迫，不是立法動機），改成『新聞標題寫的是 iPhone 被迫換充電孔』",
+        "answer_target：簽署名單標明出自公會後來的問答而非簽署原件；補一句樣本報導自己也寫了適用範圍的限制；不附充電器一條標明是第 3a 條",
+        "ZS1-S005、ZS1-S006 的 rights 由 PUBLIC_DOMAIN 改為 LINK_AND_ORIGINAL_SUMMARY_ONLY，limitations 補上覆核結果",
+        "ZS1-S007 summary 註明名單照逗號只有十三個名字"
+      ],
+      "unverified": [
+        "2009 年簽署者名單與家數（只有產業公會的問答，寫十四家、列出的名字對不上；沒有簽署原件或執委會新聞稿）",
+        "指令公布後是否有授權立法改過附件",
+        "EUR-Lex 原址沒讀到（回 202 空白），條文以公報 PDF 副本核對"
+      ],
+      "note": "指令 PDF 確為公報全文，條號、三個日期與十三類設備逐句相符，全文沒有點名任何公司；備忘錄 4.2.1 的轉接器條款相符。可收。"
+    },
+    {
+      "id": "N7303",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R741",
+      "author": "ZS1",
+      "key_source_reopened": "https://www.evs.ee/en/iec-60906-1-2009（R741 seq 5，200，99662 bytes）：位元組數相同（頁面動態內容使雜湊不同）。標題 16 A 250 V a.c.、Valid from 07.04.2009、『This second edition cancels and replaces the first edition published in 1986』相符。",
+      "changes": [
+        "question 改寫：『最早把它收進國家標準的南非』改成『想搶先採用的南非』，『大家都說…從來沒人出面統一』改成不歸給任何人的寫法",
+        "hook 拿掉『1956 年開始討論、做了三十年』（只有一位受訪者口述），改用標準目錄撐得住的 1986 與 2009",
+        "payoff 重寫：1956、1990 年代初、想當第一個都標明是受訪者的說法，並陳『巴西 2007 年第一個』",
+        "answer_target：紀錄三標明全是口述；『標準組織只能公布不能強迫』改成來源的說法；答案段加上『誰是第一個，兩個來源不同，不下結論』",
+        "scope（2）加嚴：不說南非最早或第一個"
+      ],
+      "unverified": [
+        "1956 年成立工作小組、南非 1990 年代初採用為國家標準（只有 2014 年一位受訪者口述）",
+        "誰是第一個採用的國家（南非受訪者與資料站說法不一致）",
+        "南非 2015 年後實際推行情形、巴西 NBR 14136 官方文件",
+        "IEC 自己的說明頁（www.iec.ch 被擋）"
+      ],
+      "note": "1986 第一版、2009 第二版由標準目錄撐住，翻轉成立；口述部分已並陳標明。機構來源強度中等。LEG-T18 確認不同題。"
+    },
+    {
+      "id": "N7305",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R741",
+      "author": "ZS1",
+      "key_source_reopened": "https://www.riaa.com/wp-content/uploads/2023/03/2022-Year-End-Music-Industry-Revenue-Report.pdf（R741 seq 6，200，3362033 bytes）：與作者 cache/025.bin 相同（e17b3058fa8685a9）。『For the first time since 1987, vinyl albums outsold CDs in units (41 million vs 33 million)』、表上 CD 46.7→33.4（−28.4%）、LP/EP 40.0→41.3（+3.2%）、71%、第十六年相符；另讀到『After a 2021 rebound versus the Covid impacted 2020』一句，題卡原本沒交代。；https://www.riaa.com/reports/2020-year-end-music-industry-revenue-report/（R741 seq 7，200，57420 bytes）：想確認 2020 年報告 PDF 的連結出處；這個報告頁現在回的是站內搜尋頁（標題『You searched for』），沒有 PDF 連結。對不上，出處未能確認。；https://www.riaa.com/riaa-releases-2020-year-end-music-industry-revenue-report/（R741 seq 8，200，57420 bytes）：同上，新聞稿頁也回站內搜尋頁，沒有 PDF 連結；之後不再請求 riaa.com。",
+      "changes": [
+        "answer_target 新增紀錄四：把 2020、2021、2022 三年的張數接起來（黑膠 2021 年從 2,290 萬跳到 4,000 萬張、CD 同年反彈到 4,670 萬張），結論改成不能說『全是 CD 輸掉的』",
+        "payoff 同步改平；scope（1）加上不只挑 2022 一年講",
+        "ZS1-S014 summary 補上『After a 2021 rebound…』一句與 2021 年欄；ZS1-S013 limitations 補上網址出處未能確認"
+      ],
+      "unverified": [
+        "ZS1-S013（2020 年報告 PDF）的網址出處：不在作者快取頁，riaa.com 的報告頁與新聞稿頁現在都導到站內搜尋頁，覆核者搜尋只找到別站副本",
+        "1986、1987 年當年的實際數字（報告沒有列）",
+        "2021 年的數字取自 2022 年報告的前一年欄，沒有讀 2021 年報告本身"
+      ],
+      "note": "RIAA 三份報告的數字逐一相符。原題卡只挑 2022 一年講成 CD 輸掉，會誤導，已補 2021 年；翻轉仍偏口徑，維持 chapter。"
+    },
+    {
+      "id": "N7321",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R742",
+      "author": "ZS2",
+      "key_source_reopened": "https://www.upi.com/Archives/1991/06/03/Nintendo-and-Philips-vs-Sony-in-new-video-game-war/7318675921600/（R742 seq 1，200，265912 bytes）：日期 June 3, 1991、CHICAGO；『The new Sony 'Play Station,' hastily announced Friday on the eve of the trade show's opening, will have two slots』；分析師『believed it had a licensing agreement』；『not yet completedly excluded』；社長引句『have had discussions on this subject and these discussions are continuing』——全部相符（位元組數與作者相同，雜湊不同只因頁面周邊的動態內容）；https://sonyinteractive.com/en/our-company/business-data-sales/（R742 seq 2，200，95810 bytes）：PSP『More than 76.4 million（As of March 31, 2012）』、PSP 軟體『More than 331.0 million』、PlayStation『More than 102.4 million（As of March 31, 2012）』、『Sales data on PlayStation Vita are not disclosed』——相符",
+      "changes": [
+        "risk 欄刪掉兩位社長憑印象的卒年，改成所有人只稱身分",
+        "問句改掉『毀約』『一怒之下』（樣本用詞是背叛、羞辱、復仇）",
+        "『隔了三年多』改『大約三年』：官方沿革只寫 1994 年",
+        "『專做遊戲的合資公司』改照沿革原文",
+        "補分析師『搶先宣布』的推測並標明是推測；合約內容與 1992 年放棄合作都標明沒有一手文件、不當定論",
+        "ZS2-S016 標題照頁面改正",
+        "role 由 episode_core 改 chapter、minutes 6–8：一手素材是一篇電訊加兩句雜誌"
+      ],
+      "unverified": [
+        "兩家合約內容",
+        "1992 年夏天放棄合作（只有二手專題）",
+        "1994 年推出的月份（官方沿革只寫年份）",
+        "作者的搜尋結果沒有留檔，upi.com、atarimagazines.com、videogameschronicle.com 這幾個網址的出處無法對到快取頁面，只能確認網頁真的存在且內容相符"
+      ],
+      "note": "1991 年兩份當期報導都是真的、引句逐句相符；翻轉成立（名字先公布、當下兩家都說還在談），但只夠一章。"
+    },
+    {
+      "id": "N7322",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R742",
+      "author": "ZS2",
+      "key_source_reopened": "https://sonyinteractive.com/en/our-company/business-data-sales/（R742 seq 2，200，95810 bytes）：PSP『More than 76.4 million（As of March 31, 2012）』、PSP 軟體『More than 331.0 million』、PlayStation『More than 102.4 million（As of March 31, 2012）』、『Sales data on PlayStation Vita are not disclosed』——相符；https://www.nintendo.co.jp/ir/en/finance/hard_soft/index.html（R742 seq 3，200，10306 bytes）：Game Boy alt『Hardware 118.69 million units / Software 501.11 million units』、GBA 81.51、Nintendo DS 154.02、3DS 75.94、頁尾『worldwide consolidated sales in units life-to-date』——相符（雜湊與作者 seq 10 相同）；表上沒有說明 Game Boy 一列是否含彩色後繼機",
+      "changes": [
+        "premise_status 改 needs_check",
+        "對手數字改用任天堂官方表的 Nintendo DS 154.02 million（重抓確認），『大約兩倍』可由兩張官方表計算，並標明『幾乎兩倍』一語出自報導",
+        "『又賣了兩年多』改『大約兩年』",
+        "補通訊社寫的 Vita 與 PSP 合併計算",
+        "答案最後一句標明是整理後的看法",
+        "minutes 改 4–6"
+      ],
+      "unverified": [
+        "沒有一篇實際主張『PSP 失敗』的樣本文章（唯一樣本是反駁方的報導）",
+        "2014 年停止出貨的公司公告原件"
+      ],
+      "note": "數字全部對得上，但『失敗』是評價、翻轉屬口徑類，流傳版本只有間接樣本，降待查。"
+    },
+    {
+      "id": "N7323",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R742",
+      "author": "ZS2",
+      "key_source_reopened": "https://www.nintendo.co.jp/ir/en/finance/hard_soft/index.html（R742 seq 3，200，10306 bytes）：Game Boy alt『Hardware 118.69 million units / Software 501.11 million units』、GBA 81.51、Nintendo DS 154.02、3DS 75.94、頁尾『worldwide consolidated sales in units life-to-date』——相符（雜湊與作者 seq 10 相同）；表上沒有說明 Game Boy 一列是否含彩色後繼機；https://archive.org/download/computer-entertainer-8-3/ComputerEntertainer_8-3_djvu.txt（R742 seq 6，200，116815 bytes）：第 1487–1532 行：MSR $109.95、monochrome LCD dot-matrix display (black against a yellow-green background)、four “AA”、TETRIS 與 Video-Link Cable；MSR $149.95、more sophisticated、3.5-inch、16 colors／4,096、six “AA”；第 112 行『This year's Summer CES…in Chicago』——相符（與作者 cache 逐位元相同），OCR 在這些句子讀得清楚",
+      "changes": [
+        "問句拿掉來源沒有的『隔壁攤位』『在美國亮相』，也不再問題卡答不出來的『怎麼賣到一億多台』",
+        "hook 與 payoff 的『便宜四十美元』標明是當期報導的建議售價；scope 註明不是實際上市售價",
+        "累計數字照官方表寫『Game Boy 一列』，含後繼機種只說是報導的說法",
+        "risk 欄卒年改註明出處（任天堂訪談頁註解 1941–1997），仍不點名",
+        "ZS2-S007、S009、S010 的摘要與侷限改寫"
+      ],
+      "unverified": [
+        "流傳版本的樣本只有一個無署名解說頁，另搜一次沒有找到署名樣本",
+        "官方表那一列是否含彩色後繼機（表上沒寫）",
+        "更早那台可換卡帶掌機的一手資料",
+        "勝負原因沒有開發者本人的文件"
+      ],
+      "note": "1989 年雜誌的 OCR 在關鍵句讀得清楚、數字相符；維持 chapter。樣本偏弱是這題唯一的軟肋，若要從嚴可降待查。"
+    },
+    {
+      "id": "N7324",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R742",
+      "author": "ZS2",
+      "key_source_reopened": "https://nintendo.com/en-gb/Iwata-Asks/Iwata-Asks-New-Super-Mario-Bros-Wii/Volume-1/2-The-Reason-Mario-Wears-Overalls/2-The-Reason-Mario-Wears-Overalls-210759.html（R742 seq 4，200，92016 bytes）：16 X 16、鬍子省嘴、帽子省頭髮、吊帶褲、『no other option but to make him a carpenter』、白手套、『I called him “Mr. Video”』、『Someone at Nintendo of America actually came up with the name Mario』——相符（雜湊與作者 seq 4 相同）",
+      "changes": [
+        "risk 欄刪掉憑印象的社長卒年，所有人只稱身分",
+        "hook 的『問十個人有九個』沒有出處，改掉",
+        "水管工的時間點（1983 年、因為地下場景）在答案與 payoff 標明是報導轉引、原件沒讀到",
+        "三個官方訪談來源的發行者欄改成『歐洲官網英國版、頁面未標日期』，侷限欄記明原站沒讀到"
+      ],
+      "unverified": [
+        "2010 年那篇美國報紙訪談原件",
+        "官方角色簡介 2017／2018 年的改動原件",
+        "取名自房東的說法（題卡不講）",
+        "歐洲官網版本與原站版本是否逐字相同"
+      ],
+      "note": "官方訪談三頁逐句相符；題卡沒有寫『救了遊戲世界』，和 N7141、N7261 不重複。"
+    },
+    {
+      "id": "N7325",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R742",
+      "author": "ZS2",
+      "key_source_reopened": "https://sec.gov/Archives/edgar/data/47217/000104746912011417/a2211959z10-k.htm（R742 seq 5，200，2694591 bytes）：Item 1 三個 Compaq 系列；Note 7『On May 23, 2012, HP approved a change to its branding strategy…』、indefinite-lived 改 finite-lived、約五年、第三季 $1.2 billion；Note 9『(61)%…from fiscal year 2013 to fiscal year 2014』——相符（雜湊與作者 seq 27 相同）",
+      "changes": [
+        "premise_status 改 needs_check：『被併購後就消失』沒有直接樣本，唯一樣本內文寫的是逐步淡出",
+        "問句與答案不再把『消失』寫成有樣本的流傳說法",
+        "『在帳上一直是無限期資產』的『一直』拿掉（2002–2011 的年報沒讀）",
+        "ZS2-S021、S023 的摘要與侷限改寫"
+      ],
+      "unverified": [
+        "主張『一併購就消失』的樣本文章",
+        "品牌實際停用年份",
+        "商標 2002 年入帳金額與減損前帳面值",
+        "『全球最大個人電腦廠』的一手市占資料"
+      ],
+      "note": "8-K、10-K、財報新聞稿的日期與金額逐句相符，紀錄那一半很紮實；缺的是可被修正的流傳說法，從嚴降待查。"
+    },
+    {
+      "id": "N7341",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R743",
+      "author": "ZS3",
+      "key_source_reopened": "https://www.apple.com/newsroom/2012/06/11Apple-Previews-iOS-6-With-All-New-Maps-Siri-Features-Facebook-Integration-Shared-Photo-Streams-New-Passbook-App/（R743 seq 1，200，133084 bytes）：『an all new Maps app with Apple-designed cartography, turn-by-turn navigation…Flyover』『over 100 million businesses』、日期 June 11, 2012：都在；https://www.theregister.com/2012/12/10/apple_maps_ghost_mildura（R743 seq 2，200，175710 bytes）：兩筆 Mildura、座標 -34.79724 141.76108、authorised 在原文；『中心點』是文末 Update 轉述讀者留言——題卡已照改。雜湊與作者 cache 相同",
+      "changes": [
+        "hook 改寫：拿掉來源沒有的『一輛車開到路的盡頭』畫面，改成警方示警（46 度是『可達』）",
+        "answer_target／payoff／scope：『行政區中心點』改標為該文文末轉述讀者留言，記者本人寫不知道那一筆代表什麼",
+        "notes 寫明升級條件"
+      ],
+      "unverified": [
+        "澳洲地名錄『Mildura Rural City』那一筆紀錄本身（services.ga.gov.au 已被擋、舊連結連不上）",
+        "警方聲明原文（網域已失效）",
+        "執行長公開信原文（原頁轉回首頁）",
+        "受困人數與時數"
+      ],
+      "note": "事實逐句對得上報導，但翻轉只靠同一家媒體的兩篇報導，一手來源只撐得住產品宣傳那一半；維持待查、chapter。"
+    },
+    {
+      "id": "N7342",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R743",
+      "author": "ZS3",
+      "key_source_reopened": "https://googleblog.blogspot.com/2008/09/fresh-take-on-browser.html（R743 seq 3，200，116201 bytes）：『hit \"send\" a bit early on a comic book』、mailroom、隔天一百多國、Update @ 3:30 PM、WebKit 與 Firefox 元件：都在。雜湊相同",
+      "changes": [
+        "只改 notes：ZS3-S011 的網址出處補記為「作者快取的 seq 16、17、19 三頁都有這個超連結」，出處成立；補記重抓結果與時區提醒"
+      ],
+      "unverified": [
+        "原訂發表日與寄送名單",
+        "漫畫本體沒有請求，38 頁只依收件部落客的紀錄"
+      ],
+      "note": "官方部落格原句與當事人紀錄都對得上；小故事，chapter 5–7 分鐘照實。"
+    },
+    {
+      "id": "N7343",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R743",
+      "author": "ZS3",
+      "key_source_reopened": "https://assets.mozilla.net/annualreport/2024/mozilla-fdn-2023-fs-final-short-1209.pdf（R743 seq 4，200，708280 bytes）：Royalties 494,874／510,389、Contributions 12,888、Total 653,012、85%／81% one customer、權利金定義：都在；全文沒有任何搜尋引擎公司名。雜湊相同；https://www.justice.gov/atr/us-v-microsoft-courts-findings-fact（R743 seq 5，200，517006 bytes）：¶372 七成以上到五成左右、¶378 1,500 萬到 3,300 萬（AOL 採信的估計，1996 到 1998 年 12 月）、¶379 forced to follow suit、日期 1999-11-05：都在。雜湊相同",
+      "changes": [
+        "hook：拿掉『每搜一次就有人付錢』（財報寫的是照夥伴搜尋收入抽成）",
+        "answer_target：安裝數改成『法院採信的估計、1996 年到 1998 年 12 月』並補段號；答案不再暗示『一個客戶』是搜尋夥伴，5.1 億對上的是 2022 年全部權利金（510,389 千美元）",
+        "scope：媒體說法由『普遍報導』改成『有媒體報導（一篇）』，寫明 85% 的分母",
+        "risk：刪掉憑印象的法官卒年，改為生卒未查、不點名",
+        "notes：刪掉『判決書可能有』的推測"
+      ],
+      "unverified": [
+        "『一個客戶』是誰（財報全文沒有任何搜尋引擎公司名）",
+        "『非營利該靠捐款』這個印象沒有樣本文章",
+        "Netscape 新聞稿原網頁（只有 1998-01-23 郵件論壇轉貼）",
+        "1999 年之後的法律結論"
+      ],
+      "note": "數字全部對得上查核財報與法院認定；翻轉偏弱（修正的是歸屬與口徑），當成『錢從哪裡來』的題可收。"
+    },
+    {
+      "id": "N7344",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R743",
+      "author": "ZS3",
+      "key_source_reopened": "https://developer.android.com/reference/android/os/Build.VERSION_CODES（R743 seq 6，200，2303362 bytes）：BASE、BASE_1_1、Q、R、S、TIRAMISU(33)、UPSIDE_DOWN_CAKE(34)、VANILLA_ICE_CREAM(35)、BAKLAVA(36)、CINNAMON_BUN(37) 都在；另發現 M、N、O、P 也是單字母；https://source.android.com/docs/setup/reference/build-numbers（R743 seq 7，200，343109 bytes）：1.0／1.1 (no codename)、Cupcake 1.5、Android10…Android17 與 API level 對應：都在（比作者多 4 bytes，表格內容相同）；https://blog.google/products-and-platforms/platforms/android/evolving-android-brand/（R743 seq 10，200，346692 bytes）：internal code names、L 與 R、pies／marshmallows、many tempting “Q” desserts、Aug 22, 2019：都在。雜湊相同",
+      "changes": [
+        "answer_target／scope／ZS3-S003 summary：補上常數從 6.0 的 M 到 12 的 S 都只有單一字母，單字母不是 2019 年改名才開始"
+      ],
+      "unverified": [
+        "Android 10–12 的完整甜點名只有媒體報導",
+        "1.0／1.1 當年是否有非正式代號（官方現行文件寫沒有）"
+      ],
+      "note": "官方常數名與對照表逐條核對無誤；翻轉清楚、主角是手邊的東西。"
+    },
+    {
+      "id": "N7345",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R743",
+      "author": "ZS3",
+      "key_source_reopened": "https://news.microsoft.com/apac/2020/03/30/microsoft-introduces-new-microsoft-365-personal-and-family-subscriptions/（R743 seq 8，200，144493 bytes）：40 million daily、up 70% month over month、220%、Teams 個人生活功能、March 30, 2020：都在；https://sec.gov/Archives/edgar/data/1498209/000119312511056174/ds1a.htm（R743 seq 9，200，3941018 bytes）：註冊 474→663 百萬、每月連線 105→145 百萬、付費 7.3→8.8 百萬、14 億美元減損、註冊數高估的風險因素、申報日 2011-03-04：都在。雜湊相同",
+      "changes": [
+        "question：『早就沒人用了』改成樣本的說法（去哪了、淡出）",
+        "hook：拿掉沒有來源的擬聲鈴聲與『沒人再聽到』",
+        "answer_target：『六億是註冊數』改成『對得上申報的註冊數 6.63 億』的寫法",
+        "scope／notes：寫明不說成沒人用、與 N7242 主軸不同"
+      ],
+      "unverified": [
+        "2020-03-30 稿的美國版原文（讀的是官方亞太版頁面）",
+        "2020–2025 年間的官方使用者數與退役時人數",
+        "eBay 2005 年收購金額（只有媒體說法，不報）"
+      ],
+      "note": "申報文件與官方稿數字逐句對得上；三種口徑不相除的限制保留。"
+    },
+    {
+      "id": "N7361",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R744",
+      "author": "ZS4",
+      "key_source_reopened": "https://newsroom.porsche.com/es/2021/historia/PLA-es-porsche-motor-tipo-2623-christophorus-399-25239.html（R744 seq 5，200，131330 bytes）：雜湊與作者相同；1981 年委託 Porsche、1984–1987 年 25 場、1985 年 TAG 買下 Heuer 三句都在",
+      "changes": [
+        "hook 拿掉來源沒有的車身配色（紅白相間），「三十年後」改「三十多年後」",
+        "notes 補覆核紀錄"
+      ],
+      "unverified": [
+        "沒有一篇把 1980 年代那顆引擎說成錶廠引擎的流傳樣本",
+        "TAG 出資金額、2016 年命名權價碼",
+        "作者的搜尋結果沒有存檔，網址出處只能對到 cache 內的連結（item 連結、FH 連結、EDGAR 索引都對得到；其餘無從對）"
+      ],
+      "note": "事實面五個來源都對得上，翻轉本身清楚；只差流傳版本的樣本，維持待查、章節題。"
+    },
+    {
+      "id": "N7362",
+      "verdict": "REJECT",
+      "reviewer": "R744",
+      "author": "ZS4",
+      "key_source_reopened": "https://hls-dhs-dss.ch/de/articles/041994/2012-05-23/（R744 seq 6，200，51509 bytes）：雜湊與作者相同；1905 倫敦、1915 遷瑞士、2004 併購都在，全條目沒有提基金會（Stiftung／Fondation 零次）",
+      "changes": [],
+      "unverified": [
+        "基金會持有、成立年份、「非營利」的澄清都沒有一手或機構來源"
+      ],
+      "note": "只是品牌傳記：唯一的機構來源（瑞士歷史辭典）只撐得住 1905 倫敦起家到 2004 併購的沿革，全條目沒有提基金會；「歸誰」這一半只有一篇財經雜誌與一篇賣錶商家的網誌，流傳版本的樣本也只是商家網誌轉述「多數人會猜」。官網被擋。題目方向（為什麼貴）本來就不能做。"
+    },
+    {
+      "id": "N7363",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R744",
+      "author": "ZS4",
+      "key_source_reopened": "https://www.swatchgroup.com/en/swatch-group/swatch-group-history（R744 seq 4，200，107490 bytes）：比作者少 7 bytes、雜湊不同（動態頁），「second watch – the Swatch」「51 components」「initial spark」「brink of insolvency」都在；頁面沒有交代名字由來",
+      "changes": [
+        "hook、answer_target 的答案、scope、payoff：沿革頁只是用 second watch 形容這只錶、沒有交代字源，原稿寫成「公司自己的講法是第二只錶」過頭，改掉",
+        "notes 補去重與要補的三件事"
+      ],
+      "unverified": [
+        "命名當時的一手文件",
+        "1980 年代出口數字（「救了整個產業」沒有紀錄可對）",
+        "Europa Star 的產量與銷量數字沒有出處"
+      ],
+      "note": "來源都是真的，但翻轉只到「公司用另一個詞形容它」，樣本與紀錄二又是同一篇；與 legacy W05（Seiko）限縮後不同題。維持待查。"
+    },
+    {
+      "id": "N7364",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R744",
+      "author": "ZS4",
+      "key_source_reopened": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=89V211000（R744 seq 1，200，679 bytes）：與作者 cache 007.bin 位元組完全相同；編號 89V211000、ReportReceivedDate 04/12/1989、8301 輛、Summary／Consequence／Remedy 與題卡相符，並與轉載頁（作者 seq 4）逐欄一致；https://www.toyota-global.com/company/history_of_toyota/75years/text/leaping_forward_as_a_global_corporation/chapter2/section3/item5_a.html（R744 seq 3，200，62038 bytes）：雜湊與作者相同；標語、1989 年 9 月開賣、1990 年品質調查第一都在，正文沒有 recall；側欄目錄另有召回章節標題（未讀）",
+      "changes": [
+        "question、hook：拿掉 ZS4-S006 沒寫的「引擎轉到高速、一滴不灑／動也不動」，標語改「不懈追求完美」",
+        "answer_target、scope、payoff：「到府、洗車、加滿油／到府取車」改成 ZS4-S005 實際寫的「逐一聯絡、代步車、修完洗車、空運技師」",
+        "「官方沿革選擇不寫這一段」改成「讀到的那兩頁沒有提（其他章節沒讀）」",
+        "visual：第三煞車燈改煞車燈座、杯塔不寫一滴沒灑",
+        "NHTSA 核對結果寫進 notes 與 ZS4-S004"
+      ],
+      "unverified": [
+        "1989 年香檳杯塔廣告的當年紀錄（只有一句中文轉述）",
+        "煞車燈座那一筆的官方紀錄",
+        "召回服務細節的當年報導",
+        "召回編號在作者搜尋結果中的出處（沒有存檔；轉載頁 cache 有）"
+      ],
+      "note": "UPI 當期電訊加主管機關紀錄撐得住翻轉，chapter 5–7 分鐘照實。"
+    },
+    {
+      "id": "N7365",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R744",
+      "author": "ZS4",
+      "key_source_reopened": "https://www.sec.gov/news/press-release/2018-71（R744 seq 2，200，66222 bytes）：雜湊與作者相同；「within days of the December 2014 intrusion」「more than two years later」「$35 million penalty」「neither admitted nor denied」四句都在",
+      "changes": [
+        "question、hook：「十億」改「超過十億」，「史上最大」標成當時報導的說法",
+        "answer_target：三個數字各自標明揭露日、事件年份與出處；30 億標明是通訊社轉述；SEC 一段照新聞稿原文並寫明和解、不承認不否認",
+        "payoff：拿掉「主管機關認定…罰了」「賣價也因此少了」的因果與定論寫法",
+        "1997 年收購：「因為這次收購」改「配合這次收購」（10-K 原文 In connection with）",
+        "ZS4-S011、ZS4-S012 summary 小修"
+      ],
+      "unverified": [
+        "2017 年 10 月公司公告原文（30 億只有美聯社轉述）",
+        "SEC 命令全文（只讀新聞稿）",
+        "1997 年收購的美元總價與被收購產品名稱（10-K 沒有，正片不講）"
+      ],
+      "note": "兩份 10-K 與 SEC 新聞稿逐句對得上，數字與日期無誤；在世主管全未點名。episode_core 8–10 分鐘可以。"
+    }
+  ],
+  "process_notes": [
+    "N7304（Visa 與 Mastercard）研究代理查重時即未開題：原來如此池 LEG-B48 的答案就是「Visa 不發卡、不授信」，R741 確認撞題判斷正確。",
+    "N7362（Rolex）覆核退回：唯一的機構來源只撐得住沿革，「今天歸誰」只有一篇財經雜誌與一篇商家網誌，是品牌傳記。",
+    "這一批有 6 題因為流傳版本沒有實際讀到的樣本文章（或樣本與紀錄同向）降為待查：N7301 PDF、N7322 PSP、N7325 Compaq、N7341 手機地圖、N7361 TAG Heuer、N7363 Swatch。",
+    "研究代理的搜尋結果沒有存檔，所以新聞與官網網址的出處只能對到「快取頁面裡有沒有這個連結」；R741 有三個來源（ZS1-S001、S006、S013）對不到、自己搜尋也沒重現，內容都重抓或以快取核對過，不是代編號的端點，主編接受並保留在各來源的 limitations。N7364 的召回紀錄走該主管機關公開文件記載的召回 API，與轉載頁逐欄一致。",
+    "一次只發一個請求的規定有兩次沒守住：ZS4 與 R744 各有一次把兩個不同網域的請求寫在同一道指令裡，都沒有碰到被擋的網域。ZS3 自己寫的 f.sh 經 R743 讀過，只是呼叫指定的抓取工具。",
+    "沒有發現編造的來源：四位覆核共發 30 次請求，位元組或正文與研究代理的快取相符；riaa.com 兩個舊報告頁現在回站內搜尋頁，改以快取與另一年的報告核對。",
+    "主編另抽查三題各一個來源，各發一次請求，都是 200：N7302 指令公報的「28 December 2024」「28 April 2026」與 N7365 主管機關新聞稿的 3,500 萬美元和解、「neither admitted nor denied」原句都在；N7324 的官方訪談第一頁存在，題卡引的木匠與取名在另外兩頁，由覆核逐句核對。"
+  ]
+}

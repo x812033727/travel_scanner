@@ -2267,6 +2267,12 @@ class VideoProject(Timestamped, Base):
     # One of VIDEO_CATEGORIES, or None while nobody filed it. A report fills it only while it
     # is empty; the owner's choice on the page sticks (admin_service.set_category).
     category: Mapped[str | None] = mapped_column(String(16), nullable=True)
+    # The show or drama the catalog files it under, and an explainer show's topic: ``curio`` and
+    # ``H-歷史懸案``, ``tai-nainai`` and None (migration 0147). Worked out from the slug, the
+    # category and series_slug by app/video_reviews/shelf.py on every write of those, by the same
+    # rules Google Drive backup files it by; None for a Short or a video of no series.
+    series_key: Mapped[str | None] = mapped_column(String(40), nullable=True, index=True)
+    topic: Mapped[str | None] = mapped_column(String(40), nullable=True)
     # The owner stopped this video on /admin/videos; the pipeline leaves it, its topic stays taken.
     dropped_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     dropped_note: Mapped[str | None] = mapped_column(Text, nullable=True)

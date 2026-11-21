@@ -21,7 +21,7 @@ from app.admin.schemas import AdminAuditView
 from app.affiliates.content_links import affiliate_marker, partner_link_problem
 from app.db import escape_like
 from app.destinations.catalog import destination_for_id
-from app.guides import links, search
+from app.guides import indexnow, links, search
 from app.guides.alias_store import editor_aliases
 from app.guides.models import (
     GuideArticle,
@@ -405,6 +405,8 @@ async def _write_revision(
     except Exception:
         await session.rollback()
         raise
+    if action in {"published", "unpublished"}:
+        await indexnow.notify_guide_change(cast(Kind, article.kind), article.slug, [row.locale])
     return await article_detail(session, article.id, cast(Locale, row.locale))
 
 
@@ -802,6 +804,10 @@ async def publish_bundle(
     except Exception:
         await session.rollback()
         raise
+    if published_versions:
+        await indexnow.notify_guide_change(
+            cast(Kind, article.kind), article.slug, list(published_versions.keys())
+        )
     return published_versions
 
 

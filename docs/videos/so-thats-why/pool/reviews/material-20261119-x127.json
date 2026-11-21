@@ -1,0 +1,616 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-19",
+  "reviewer": "check127",
+  "baselines": {
+    "so_thats_why": {
+      "candidates": 7810,
+      "selected": 7506,
+      "themes": 768
+    },
+    "curio": {
+      "candidates": 2722,
+      "selected": 1850,
+      "themes": 155
+    }
+  },
+  "method": "日常16份原件核運動條文、兩份技術PDF表、營養標示與栽培指南。織品9份館藏或館方說明，另核實物圖、V&A新舊技術記錄。長題重開17份航空規則與產品規格，另從股東公告判斷來源網獨立性。雙池檢索納入原題、原始、退案及長片章節。",
+  "segment_reviews": [
+    {
+      "id": "K127-0001",
+      "source_ids": [
+        "X127E-S01"
+      ],
+      "decision": "screened",
+      "checked": "Pickleball England基本規則把發球方和接球方都接到一次落地球後才准截擊，亦即發球先在接發場區落地、回發又須在發球場落地。",
+      "dedup_and_scope": "限該回合開局的兩次落地，之後仍要遵守非截擊區等規定。"
+    },
+    {
+      "id": "K127-0002",
+      "source_ids": [
+        "X127E-S02"
+      ],
+      "decision": "screened",
+      "checked": "MLB的Strikeout釋義寫明捕手未接妥第三好球時，一壘空著或已有兩出局，打者可嘗試跑一壘。成功上壘也仍記三振。",
+      "dedup_and_scope": "只講有資格嘗試，沒有自動安全上壘。"
+    },
+    {
+      "id": "K127-0003",
+      "source_ids": [
+        "X127E-S03"
+      ],
+      "decision": "screened",
+      "checked": "Kent State的Cutter Line段要求字母後數字逐位當小數排列；.A19的數值小於.A2，所以同前綴下先A19。",
+      "dedup_and_scope": "必須先比相同分類號與字母；不將十進整數般的分類數字或日期按此排序。"
+    },
+    {
+      "id": "K127-0004",
+      "source_ids": [
+        "X127E-S04",
+        "X127E-S05"
+      ],
+      "decision": "screened",
+      "checked": "Orton原文說錐的末態受最後100°C的升溫速率和終溫影響；見證錐反映累積熱作用，同終溫也未保證同彎度。另核白表攝氏面6號自立錐，在末段60、150°C/小時兩欄依序為1222、1243°C。",
+      "dedup_and_scope": "限同類型錐與適當擺放，不用彎度倒推唯一的峰值或配方。"
+    },
+    {
+      "id": "K127-0005",
+      "source_ids": [
+        "X127E-S06"
+      ],
+      "decision": "screened",
+      "checked": "Gamblin提供兩種分層例：調整媒介內的油分，或逐層增加油性媒介相對顏料的用量。上層較fat指配方組成。",
+      "dedup_and_scope": "油畫分層與媒介條件；未從筆觸厚薄推出相同油分。"
+    },
+    {
+      "id": "K127-0006",
+      "source_ids": [
+        "X127E-S07",
+        "X127E-S08"
+      ],
+      "decision": "screened",
+      "checked": "CLIR/NIST的讀取面刮痕和清潔段分辨循軌與放射方向，前者可能持續遮蔽一段資料；建議由中心向邊緣直擦。",
+      "dedup_and_scope": "K105-0515研究CIRC碼如何分散連續錯誤。本題核清潔布的方向及跨軌、循軌刮痕的差別，不另收編碼原理。"
+    },
+    {
+      "id": "K127-0007",
+      "source_ids": [
+        "X127E-S09",
+        "X127E-S10"
+      ],
+      "decision": "screened",
+      "checked": "Fluke的D:S段解釋12:1機型距離12英吋量約直徑1英吋；雷射供瞄準，感測區涵蓋其周遭表面。",
+      "dedup_and_scope": "限具名比值示例。目標過小會把背景納入，不能靠光點大小推出讀值範圍。"
+    },
+    {
+      "id": "K127-0008",
+      "source_ids": [
+        "X127E-S11"
+      ],
+      "decision": "screened",
+      "checked": "明尼蘇達大學保存辣根插穗的指引要在頂面平切、朝底端處斜切；再次種植時可辨認哪端向上。該頁允許直栽或45度斜栽，與切面的辨向記號無關。",
+      "dedup_and_scope": "切面是操作者預先做的方向記號，不保證根必然成活。"
+    },
+    {
+      "id": "K127-0009",
+      "source_ids": [
+        "X127E-S12",
+        "X127E-S13"
+      ],
+      "decision": "screened",
+      "checked": "FDA的美國營養標示把Added Sugars列在Total Sugars內；Includes表示已計入，從總糖減添加糖才是其餘糖。兩篇FDA原件同例15克總糖，包含7克添加及8克天然糖。",
+      "dedup_and_scope": "限同一份量比較克數，不與每日參考值百分比相加。"
+    },
+    {
+      "id": "K127-0010",
+      "source_ids": [
+        "X127E-S14"
+      ],
+      "decision": "screened",
+      "checked": "歐盟委員會食品GI解釋PDO產品的生產、加工、製備均在該地區；PGI多數產品至少一階段。Westfälischer Knochenschinken的肉可來自其他地區。",
+      "dedup_and_scope": "比較食品名稱與製程，不把肉品示例移作葡萄酒或烈酒的比例標準。"
+    },
+    {
+      "id": "K127-0011",
+      "source_ids": [
+        "X127E-S15"
+      ],
+      "decision": "screened",
+      "checked": "WCA A4d1+、A4d2+明列恰15.00秒罰加2秒，恰17.00秒該次DNF。",
+      "dedup_and_scope": "限解題開始前觀察計時。K122-0005是停表時層面錯位角度。"
+    },
+    {
+      "id": "K127-0012",
+      "source_ids": [
+        "X127E-S16"
+      ],
+      "decision": "screened",
+      "checked": "明尼蘇達大學說成熟植株要留後期蘆筍筍芽發展成羽狀枝葉，保留後續生長及累積儲備的時間。該頁How asparagus grows明指儲存在地下部供翌年新筍使用。",
+      "dedup_and_scope": "留用嫩莖的採收管理與LEG-S64的尿液氣味不同；不把明州日曆當成各地同一日期。"
+    },
+    {
+      "id": "K127-0401",
+      "source_ids": [
+        "X127T-S01"
+      ],
+      "decision": "screened",
+      "checked": "CMA 1950.353的火焰先在縱經上反覆綁紮、防染、換色，阿拉伯字另用金箔、黑色輪廓。重看館藏圖可辨中央金色字帶和其上下火焰。",
+      "dedup_and_scope": "限此葉門館藏，不能由它推論所有ikat都只染經線或帶金字。"
+    },
+    {
+      "id": "K127-0402",
+      "source_ids": [
+        "X127T-S02",
+        "X127T-S03"
+      ],
+      "decision": "screened",
+      "checked": "CMA 2005.14明記兩面圖案同而顏色相反；另件1968.246說雙層依圖案交換上下位置，可用兩色示意同一輪廓的反配色。",
+      "dedup_and_scope": "技術說明援引的是另一件伊朗藏品。沒有聲稱後者是秘魯殘片，亦未從正面照片臆斷背面色數。"
+    },
+    {
+      "id": "K127-0403",
+      "source_ids": [
+        "X127T-S04"
+      ],
+      "decision": "screened",
+      "checked": "CMA 1948.205記殘存絲絨已褪色，織工在織造中替換絨經，可有多至12色。館圖可見花枝及人物藍粉衣。",
+      "dedup_and_scope": "最多12是館方技術描述，不用照片數現在色階。與K119-0004牛仔布的斜紋不同。"
+    },
+    {
+      "id": "K127-0404",
+      "source_ids": [
+        "X127T-S05"
+      ],
+      "decision": "screened",
+      "checked": "核CMA 2009.282的兩端瓣飾、長榻墊套用途；獨立開館圖可數每排六瓣。正中縱痕在Did You Know被解讀為曾長期折放。",
+      "dedup_and_scope": "依兩端判用途，中央只見收存痕。沒有從摺痕推論坐墊專用功能或推回存放年份。"
+    },
+    {
+      "id": "K127-0405",
+      "source_ids": [
+        "X127T-S06"
+      ],
+      "decision": "screened",
+      "checked": "CMA 1983.140.c在小菱形中央以金箔繞絲芯成線，再以綴織形成中央紋樣；外圈另用亞麻補緯。館圖與材料分析分別核。",
+      "dedup_and_scope": "限該埃及紫色碎片的金色區域，不把其他鍍金線或所有淺色都指為金箔。"
+    },
+    {
+      "id": "K127-0406",
+      "source_ids": [
+        "X127T-S07"
+      ],
+      "decision": "screened",
+      "checked": "V&A圖例862-1894左右並列正反，說明只往返一段經線的不連續緯使圖像兩面可見；背面較少曝曬，較常保留濃色。",
+      "dedup_and_scope": "圖案兩面可見與年久兩面色差各有原因。本批0402是雙層布正反換色；奇聞N3523查掛毯圖像的飛彈解讀。"
+    },
+    {
+      "id": "K127-0407",
+      "source_ids": [
+        "X127T-S08",
+        "X127T-S09"
+      ],
+      "decision": "screened",
+      "checked": "V&A O98183的2007修護觀察第7、8項與附記指絕大多數輪廓針穿過兩層、人物皆填絮，作者認為邊縫邊填、再封輪廓較可能。",
+      "dedup_and_scope": "藏品公開頁另有從背面鬆開織線填塞的舊敘述，卡片有以新觀察和推測措辭限定順序。"
+    }
+  ],
+  "rejected_suggestions_checked": {
+    "X127E-NA001": "已核舊題 K126-0402〈借來的高音直笛吹 Do、Re、Mi 都對，一吹 Fa 卻要換指法。看管身哪兩個孔就能先猜出原因？〉。上一批已用巴洛克式與德式高音直笛比較相對孔徑和 F 指法，本輪不換個牌子再出。",
+    "X127E-NA002": "已核舊題 K118-0402〈出版社把賣完的書再印一批，哪種情況會讓書店非得多開一個 ISBN？〉。既有題已從再印與版本更動判斷是否需要新書號；本輪閱讀題改為實際上架的 Cutter 號排序。",
+    "X127T-NA01": "已核舊題 K126-0004〈兩片拼布都買四分之一碼，怎麼一片裁得出 12 英吋見方的正方形，另一片把方向轉來轉去都裁不出？〉。K126-0004 已經用沿全幅切細條與半碼布再對半切兩種裁法，示範同面積、不同短邊能否容納十二吋正方形。",
+    "X127T-NA02": "已核舊題 K125-0010〈拿機器縫針織布，原廠偏偏把 Jersey 針的尖端做圓。針變鈍一點，怎麼反而比較不會把線圈縫破？〉。K125-0010 已用 Jersey 針圓頭將針織線圈撥開、降低刺斷線圈機會解答。",
+    "X127T-NA03": "已核舊題 K108-0201〈洗標上那一排小圖，基本只有哪幾種形狀，打叉、底線和點各代表什麼？〉。K108-0201 及已退提案 X117L-NA001 已區分水溫和溫和洗程，重講橫線沒有新增可查的機制。",
+    "X127D-NA01": "已核舊題 K119-0208〈從台灣分開買了長榮和下一家航空公司的票，在長榮櫃檯該查哪一條？〉、G762〈行李牌明明印著札幌，為什麼在東京轉機還得先領箱？〉。既有 K119-0208 與 G762 處理分開開票的直掛及轉機領箱條件。本案只比較手提行李的客艙限額。",
+    "X127D-NA02": "已核舊題 K113-0402〈安檢人員手上那把萬用鑰匙，是誰給的、怎麼給的？〉、G752〈行李箱上那個紅色菱形的鎖，鑰匙在誰手上？〉。無印同一本說明書有鎖具章節，但 K113-0402 及 G752 已完整處理安檢開鎖與標誌制度，故退。"
+  },
+  "scope": "12張日常、7張織品、18張航空行李研究卡。",
+  "themes": {
+    "G770": {
+      "title": "無印36L箱的三邊加起來115公分，搭台灣虎航時，為什麼還是厚了1公分？",
+      "researcher": "deep127",
+      "reviewer": "check127",
+      "verdict": "ready",
+      "fact_count": 12.25,
+      "author_fact_count": 15.75,
+      "est_minutes": 9.2,
+      "method": "按實際機構分組、每網上限兩條。JAL與Qantas共同公告JAL持有Jetstar Japan的50%表決權；2026年8月簽署的交易預計2027年6月完成，因此將JAL及GK共六卡保守併網。ANA與Peach本為同網；IBEX僅計實際營運機型及其客艙規則。不同機構作相似加總或換袋比較時折扣。",
+      "networks": {
+        "良品計画": [
+          "X127D-S01"
+        ],
+        "台灣虎航": [
+          "X127D-S02"
+        ],
+        "日本航空集團與捷星日本": [
+          "X127D-S03",
+          "X127D-S04",
+          "X127D-S07",
+          "X127D-S14"
+        ],
+        "Samsonite": [
+          "X127D-S05"
+        ],
+        "長榮航空": [
+          "X127D-S06"
+        ],
+        "ANA 集團（含樂桃）": [
+          "X127D-S08",
+          "X127D-S15"
+        ],
+        "IBEX": [
+          "X127D-S09",
+          "X127D-S10",
+          "X127D-S11"
+        ],
+        "ACE": [
+          "X127D-S12"
+        ],
+        "Fjällräven": [
+          "X127D-S13"
+        ],
+        "IATA": [
+          "X127D-S16",
+          "X127D-S17"
+        ]
+      },
+      "network_weights": {
+        "良品計画": 1.5,
+        "台灣虎航": 1.75,
+        "日本航空集團與捷星日本": 2.0,
+        "Samsonite": 1.0,
+        "長榮航空": 0.75,
+        "IBEX": 1.0,
+        "ACE": 1.0,
+        "Fjällräven": 0.75,
+        "ANA 集團（含樂桃）": 0.75,
+        "IATA": 1.75
+      },
+      "network_evidence": [
+        "https://news.qantas.com/media-releases/2026/announcement-of-intent-for-strategic-shareholder-change-in-jetstar-japan",
+        "https://news.qantas.com/media-releases/2026/update-on-new-jetstar-japan-shareholder-structure-binding-agreement-signed"
+      ],
+      "card_verdicts": [
+        {
+          "id": "K127-0201",
+          "source_ids": [
+            "X127D-S01"
+          ],
+          "network": "良品計画",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "原廠PDF印刷頁10的36L欄依次有全體54×37×24、本體50×37×24、內部49×35.5×23；只有全體和115。本例均為標稱約數。"
+        },
+        {
+          "id": "K127-0202",
+          "source_ids": [
+            "X127D-S02",
+            "X127D-S01"
+          ],
+          "network": "台灣虎航",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "以Chromium重開台灣虎航繁中行李頁，實讀長54、寬38、高23，輪把手等外部突出物在內。虎航未另列115，兩組尺寸等和、但最短邊24超23。"
+        },
+        {
+          "id": "K127-0203",
+          "source_ids": [
+            "X127D-S03",
+            "X127D-S04",
+            "X127D-S01"
+          ],
+          "network": "日本航空集團與捷星日本",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.5,
+          "checked": "JAL兩份國內線說明互核座席100以上逐邊55×40×25、和115，取滿得120超5。與大量同網航空規則共用封頂額。"
+        },
+        {
+          "id": "K127-0204",
+          "source_ids": [
+            "X127D-S05",
+            "X127D-S04"
+          ],
+          "network": "Samsonite",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "Samsonite台灣灰款KK8*08002產品規格列55×35×23、38L，擴充26、44L；外尺寸各邊不變的前二邊沿用時總和116。"
+        },
+        {
+          "id": "K127-0205",
+          "source_ids": [
+            "X127D-S06"
+          ],
+          "network": "長榮航空",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "EVA寫23×36×56或總和115，特別提醒厚箱可能放不進客艙，測量器在劃位櫃檯與候機室。個案無法保證准入。"
+        },
+        {
+          "id": "K127-0206",
+          "source_ids": [
+            "X127D-S03",
+            "X127D-S04",
+            "X127D-S07"
+          ],
+          "network": "日本航空集團與捷星日本",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.25,
+          "checked": "JAL 機型表把73H等同738，M11座位圖明列95。分類依配置客位；國內線手提頁另指實際機型可能變動。"
+        },
+        {
+          "id": "K127-0207",
+          "source_ids": [
+            "X127D-S03",
+            "X127D-S04"
+          ],
+          "network": "日本航空集團與捷星日本",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 0.25,
+          "checked": "JAL 手提頁 Notes 逐字指從100席以上接未滿100席，所有航段以小機框核。核對二稿答案已分開以上／未滿。"
+        },
+        {
+          "id": "K127-0208",
+          "source_ids": [
+            "X127D-S08",
+            "X127D-S09",
+            "X127D-S10",
+            "X127D-S11"
+          ],
+          "network": "IBEX",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "ANA共掛讀實際營運方規則；IBEX證實與ANA共同運航，CRJ700原廠營運資料70席，IBEX客艙頁sizer 45×35×20，和100。此卡只計IBEX，不把同次共掛另算ANA。"
+        },
+        {
+          "id": "K127-0209",
+          "source_ids": [
+            "X127D-S01",
+            "X127D-S04"
+          ],
+          "network": "良品計画",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "同一本MUJI手冊20L的全體47×32×20.5，總和99.5；對小機框兩邊各超2、0.5。這是同系列另一個尺寸例。"
+        },
+        {
+          "id": "K127-0210",
+          "source_ids": [
+            "X127D-S12",
+            "X127D-S01",
+            "X127D-S04"
+          ],
+          "network": "ACE",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "ACE自家商城PROTECA 360G4型號02420-07，45×34×20明列含輪、手把，容量24L、質量2.5公斤；名義外框與容量方向可相反。"
+        },
+        {
+          "id": "K127-0211",
+          "source_ids": [
+            "X127D-S13",
+            "X127D-S12",
+            "X127D-S04"
+          ],
+          "network": "Fjällräven",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "美國站普通Kånken 36×27.5×12、16L、空重300克；長寬厚和75.5，單就容器相對2.5公斤箱少2.2公斤。裝入多少仍待實物。"
+        },
+        {
+          "id": "K127-0212",
+          "source_ids": [
+            "X127D-S02",
+            "X127D-S12"
+          ],
+          "network": "台灣虎航",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "虎航公告主件、個人物品兩件合計10公斤。6.2+0.9=7.1為算例；本卡及厚度卡同品牌保守合計1.75。"
+        },
+        {
+          "id": "K127-0213",
+          "source_ids": [
+            "X127D-S14"
+          ],
+          "network": "日本航空集團與捷星日本",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.5,
+          "checked": "GK Starter規則為2件合計7公斤，主件56×36×23；挪100克重量和不變。此為獨立重開的Jetstar日本英文官方頁。"
+        },
+        {
+          "id": "K127-0214",
+          "source_ids": [
+            "X127D-S14"
+          ],
+          "network": "日本航空集團與捷星日本",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.25,
+          "checked": "同頁指出指定航線、視可用額度可增購或選含14公斤的配套，主件不得超10；11與2的組合就算和13也不合。和上一卡共享票規及配重問題。"
+        },
+        {
+          "id": "K127-0215",
+          "source_ids": [
+            "X127D-S15"
+          ],
+          "network": "ANA 集團（含樂桃）",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "Peach頁的客艙件數明列主件加個人物品共二，重量七公斤，含通過安檢後購買的免稅品及土產。題設把物品合袋只改件數。"
+        },
+        {
+          "id": "K127-0216",
+          "source_ids": [
+            "X127D-S17",
+            "X127D-S16",
+            "X127D-S02"
+          ],
+          "network": "IATA",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "IATA圖示依序輪先進、能側放則側放、不行就背面、關櫃門。IATA和虎航原文明載空間不足時得交運。沒有實際班機交運紀錄。"
+        },
+        {
+          "id": "K127-0217",
+          "source_ids": [
+            "X127D-S07",
+            "X127D-S03",
+            "X127D-S16"
+          ],
+          "network": "日本航空集團與捷星日本",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 0.25,
+          "checked": "JAL E90/M11配置明列出口排20ACHK；JAL官網禁止出口排行李放腳邊或膝上。適用該配置20A；普通無前座的艙壁限制另述。"
+        },
+        {
+          "id": "K127-0218",
+          "source_ids": [
+            "X127D-S16",
+            "X127D-S11",
+            "X127D-S06"
+          ],
+          "network": "IATA",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 0.75,
+          "checked": "IATA警語貴重與難取代品不宜托運。IBEX列現金、相機，長榮列可放護照、錢包的重要物品小肩包；沒有推論一律能放在別人腳下或所有機場在相同地點交還。"
+        }
+      ],
+      "chapter_budgets": [
+        {
+          "chapter": 1,
+          "title": "箱子寬少了1公分，能借給厚度嗎？",
+          "candidate_ids": [
+            "K127-0201",
+            "K127-0202",
+            "K127-0203"
+          ],
+          "target_seconds": 84,
+          "evidence_seconds": [
+            72,
+            117
+          ],
+          "checked": "MUJI說明書印刷頁10、EEE02A2A三組尺寸對讀。虎航動態繁中原件只列54×38×23且含輪、把手；115是加法，厚24比23多1。JAL另有115總和及55×40×25各邊限制，不能全取滿120。未把同一和當成兩家相同規則。"
+        },
+        {
+          "chapter": 2,
+          "title": "同一條擴充拉鍊，去程拉上、回程打開會差在哪？",
+          "candidate_ids": [
+            "K127-0204",
+            "K127-0205"
+          ],
+          "target_seconds": 77,
+          "evidence_seconds": [
+            48,
+            78
+          ],
+          "checked": "新秀麗台灣灰款KK8*08002未擴充55×35×23、38L，擴充後26、44L，總和113和116。JAL的深度25與總和115均超出；未擴充55也超虎航54。長榮繁中頁確以「或」並列兩種尺寸條件，同段另指過深可能放不進，保留櫃檯與候機室測量器。"
+        },
+        {
+          "chapter": 3,
+          "title": "機票上的三個字，為什麼比第一段的大飛機更早決定行李？",
+          "candidate_ids": [
+            "K127-0206",
+            "K127-0207",
+            "K127-0208"
+          ],
+          "target_seconds": 81,
+          "evidence_seconds": [
+            72,
+            117
+          ],
+          "checked": "JAL空位查詢的機種碼與M11配置圖：73H對應738，E90 M11共95席。百席以上轉未滿百席的國內線，JAL明文各段都查小機規則。另一選項ANA共掛查實際營運人，IBEX與ANA合作，CRJ700為70席、IBEX客艙規定45×35×20及合計100。假設班次、未確定旅行日。"
+        },
+        {
+          "chapter": 4,
+          "title": "20L 和 24L 硬箱押一只，哪只反而能放進小框？",
+          "candidate_ids": [
+            "K127-0209",
+            "K127-0210",
+            "K127-0211"
+          ],
+          "target_seconds": 88,
+          "evidence_seconds": [
+            72,
+            117
+          ],
+          "checked": "MUJI 20L整體47×32×20.5=99.5，超長2、超厚0.5；箱殼43並非全高。PROTECA 360G4 02420-07含輪把手45×34×20=99、24L、2.5公斤；比容積小的20L更符合小機尺寸。Kånken Classic空包16L、300克，對空箱差2.2公斤；裝滿後仍須重量尺寸都重查。"
+        },
+        {
+          "chapter": 5,
+          "title": "搬100克到另一個包，能讓7.1變成7嗎？",
+          "candidate_ids": [
+            "K127-0212",
+            "K127-0213",
+            "K127-0214",
+            "K127-0215"
+          ],
+          "target_seconds": 96,
+          "evidence_seconds": [
+            96,
+            156
+          ],
+          "checked": "虎航一主一小合計10；Jetstar Japan GK Starter兩件合計7。6.2+0.9=7.1，挪100克不動總和，移除200克得6.9。指定航線和剩餘供應量限制增購14公斤、主件限10及兩件數。Peach列安檢後所購亦計件、計重；塞回箱子不扣重量。"
+        },
+        {
+          "chapter": 6,
+          "title": "24L 通過尺和秤，登機口為什麼還可能只留下小肩包？",
+          "candidate_ids": [
+            "K127-0216",
+            "K127-0217",
+            "K127-0218"
+          ],
+          "target_seconds": 84,
+          "evidence_seconds": [
+            72,
+            117
+          ],
+          "checked": "重看IATA輪箱收納圖用輪子先進、可側放則側放。客艙空間不足實可移往貨艙；虎航寫無法妥善放置時須交運。JAL E90 M11出口排20ACHK含20A，該排不得把包放在腳邊或膝上。IATA、IBEX與長榮對貴重物品的例子足以支撐將護照錢包預留小包，沒有保證現場交還安排。"
+        }
+      ],
+      "turns": [
+        "台灣虎航三邊相加雖同為115，卻被最短邊擋下；對JAL小機，20L箱超兩邊，容量更大的24L反而在規格內。",
+        "兩包挪重量不改合計，即使件數、重量及大小都在規則內，現場還要查頭頂空間與出口排存放位置。"
+      ],
+      "nearby": [
+        "G762/K119-0208談不同機票託運能否直掛、G752/K113-0402談安檢人員與行李鎖，均非客艙標稱外寸、機型與票價限額。",
+        "奇聞池查機場、登機箱、手提行李及行李箱等關鍵字、原始與退案；未找見無印兩款與ACE換算、JAL小型機及GK限額這個核心。",
+        "本輪日常和典藏未含航空行李額；日常換下的直笛與上輪正式題重複，另外驗證退案。"
+      ],
+      "changes": [
+        "將「兩邊都寫115」改為箱三邊之和115。虎航三個數需自行相加，JAL則明列總和115另有各邊上限。",
+        "把大小飛機的分界統一為100席以上與未滿100席；複核章節卡的可用秒數後重分第2、5章。",
+        "合併JAL與GK網並對重疊的單位換算、規格交叉例折權，15.75條下修為12.25條。"
+      ],
+      "unverified": [
+        "沒有量過具體箱包、到機場過秤或進行訂位。各產品是標稱尺寸，例中重量及訂票選項為假設。",
+        "實際班機、座位配置、票種與剩餘加購額度、置物櫃空間、是否交運均須依當次狀況。",
+        "尚未以錄音或剪輯成片實測時間。"
+      ],
+      "note": "18卡、17份原件、10個保守來源網，獨立加權12.25條，約9.2分鐘。6章預算8分30秒。",
+      "reviewed_source_files_sha256": {
+        "theme": "46e8c6ff4c2fdc2ea63976eea28c4e526994a70a0d9e2031f1e48356322148a7",
+        "batch": "338d6dd511e0d0a0ac184c6abede734e521678815892fcd1ce7422bc021243a6"
+      }
+    }
+  },
+  "reviewed_segment_files_sha256": {
+    "daily": "d4d33505fea10b2a6b49dcc0266022eec0829e7dc017480c61fdd7996124595b",
+    "textile": "06a805878bfc85d6bfa7ad5f6d03229b0877ee6aeb51eed180c07e9553f511d8"
+  }
+}

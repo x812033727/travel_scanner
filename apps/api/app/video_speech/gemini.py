@@ -25,6 +25,7 @@ from typing import Any
 
 import httpx
 
+from app.ai.gemini_pool import error_message, note_response
 from app.video_speech.azure import USER_AGENT, SpeechUpstreamError, transport_failure
 from app.video_speech.ssml import Segment
 
@@ -159,12 +160,18 @@ class GeminiSpeech:
             if owned:
                 await http.aclose()
         if response.status_code != 200:
+            verdict = note_response(response)
+            reason = error_message(response)
+            # Out of credit or over the project's spending cap: answer as busy, so the call is
+            # refunded and sent again, and the next try goes out with the pool's next key.
+            status = 429 if verdict == "exhausted" else response.status_code
             raise SpeechUpstreamError(
-                response.status_code,
-                f"Gemini answered HTTP {response.status_code}",
-                response.headers.get("Retry-After"),
+                status,
+                f"Gemini answered HTTP {response.status_code} {reason}".strip(),
+                response.headers.get("Retry-After") or ("30" if verdict == "exhausted" else None),
             )
         payload = response.json()
+        note_response(response, payload)
         audio = audio_from(payload)
         metadata = payload.get("usageMetadata") if isinstance(payload, dict) else None
         return audio, metadata if isinstance(metadata, dict) else {}

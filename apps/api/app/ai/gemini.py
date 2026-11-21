@@ -15,6 +15,7 @@ from typing import Any, TypeVar
 import httpx
 from pydantic import BaseModel, ValidationError
 
+from app.ai.gemini_pool import note_response
 from app.ai.structured_output import (
     extract_json_document,
     gemini_output_text,
@@ -67,8 +68,9 @@ class GeminiStructuredProvider:
                 },
             },
         )
+        body = response.json() if response.status_code == 200 else None
+        note_response(response, body)
         response.raise_for_status()
-        body = response.json()
         return body if isinstance(body, dict) else {}
 
     async def structured(

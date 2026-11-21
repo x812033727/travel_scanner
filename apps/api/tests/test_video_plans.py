@@ -64,7 +64,7 @@ def test_packaged_catalog_preserves_all_source_plans_and_provenance() -> None:
     plans_path = REPO_ROOT / "docs/videos/long-form/plans.json"
     source = json.loads(plans_path.read_text(encoding="utf-8"))
     assert bundle.plans_sha256 == hashlib.sha256(plans_path.read_bytes()).hexdigest()
-    assert len(bundle.entries) == 473
+    assert len(bundle.entries) == 373
     assert bundle.catalog_counts == CATALOG_COUNTS
     originals = {(entry["catalog"], entry["id"]): entry for entry in source["entries"]}
     hashes: dict[str, str] = {}
@@ -115,18 +115,17 @@ async def test_listing_has_typed_details_paging_and_global_counts() -> None:
     async with AsyncClient(transport=ASGITransport(app=_app()), base_url="http://test") as client:
         response = await client.get(URL)
         second = await client.get(URL, params={"page": 2})
-        final = await client.get(URL, params={"page": 5, "page_size": 100})
-        beyond = await client.get(URL, params={"page": 6, "page_size": 100})
+        final = await client.get(URL, params={"page": 4, "page_size": 100})
+        beyond = await client.get(URL, params={"page": 5, "page_size": 100})
     assert response.status_code == 200
     page = PlanPage.model_validate_json(response.content)
-    assert (page.total, page.catalog_total, page.page, page.page_size) == (473, 473, 1, 25)
+    assert (page.total, page.catalog_total, page.page, page.page_size) == (373, 373, 1, 25)
     assert len(page.items) == 25
     assert all(item.title and item.details for item in page.items)
     assert {count.catalog: count.count for count in page.catalogs} == CATALOG_COUNTS
     assert {count.stage: count.count for count in page.stages} == {
         "REVIEWED_OUTLINE_NOT_MEDIA": 192,
         "CHECKED_CANDIDATE_REQUIRES_OUTLINE": 100,
-        "REVIEWED_STORY_PLAN_NOT_MEDIA": 100,
         "TERM_PLAN_NOT_MEDIA": 80,
         "COVERED_DO_NOT_REMAKE": 1,
     }
@@ -134,12 +133,12 @@ async def test_listing_has_typed_details_paging_and_global_counts() -> None:
     assert first_ids.isdisjoint(item["video_slug"] for item in second.json()["items"])
     assert len(final.json()["items"]) == 73
     assert beyond.json()["items"] == []
-    assert beyond.json()["total"] == 473
+    assert beyond.json()["total"] == 373
 
 
 async def test_catalog_stage_and_search_filters_keep_global_facets() -> None:
     async with AsyncClient(transport=ASGITransport(app=_app()), base_url="http://test") as client:
-        brands = await client.get(URL, params={"catalog": "brand-stories", "page_size": 100})
+        first_season = await client.get(URL, params={"catalog": "season1", "page_size": 100})
         covered = await client.get(URL, params={"stage": "COVERED_DO_NOT_REMAKE"})
         combined = await client.get(
             URL, params={"catalog": "season2", "stage": "REVIEWED_OUTLINE_NOT_MEDIA"}
@@ -150,17 +149,17 @@ async def test_catalog_stage_and_search_filters_keep_global_facets() -> None:
         searched = await client.get(URL, params={"q": "  SOTHATSWHY-B01  "})
         blank = await client.get(URL, params={"q": "   "})
         absent = await client.get(URL, params={"q": "no-such-plan-fixture-12345"})
-    assert brands.json()["total"] == 100
-    assert all(item["target_duration_seconds"] == 780 for item in brands.json()["items"])
+    assert first_season.json()["total"] == 100
+    assert all(item["target_duration_seconds"] == 600 for item in first_season.json()["items"])
     assert covered.json()["total"] == 1
     assert covered.json()["items"][0]["catalog"] == "ai-terms"
     assert combined.json()["total"] == 92
     assert incompatible.json()["total"] == 0
-    assert incompatible.json()["catalog_total"] == 473
-    assert incompatible.json()["catalogs"] == brands.json()["catalogs"]
+    assert incompatible.json()["catalog_total"] == 373
+    assert incompatible.json()["catalogs"] == first_season.json()["catalogs"]
     assert searched.json()["total"] == 1
     assert searched.json()["items"][0]["id"] == "B01"
-    assert blank.json()["total"] == 473
+    assert blank.json()["total"] == 373
     assert absent.json()["items"] == []
 
 
@@ -188,6 +187,7 @@ async def test_search_does_not_match_cross_references_in_source_details(
         {"page_size": 101},
         {"page_size": "invalid"},
         {"catalog": "shorts"},
+        {"catalog": "brand-stories"},
         {"stage": "PUBLISHED"},
         {"q": "x" * 201},
     ],

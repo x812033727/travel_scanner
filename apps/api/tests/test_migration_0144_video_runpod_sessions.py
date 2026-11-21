@@ -78,11 +78,16 @@ async def test_upgrade_and_downgrade_are_idempotent() -> None:
         with Operations.context(MigrationContext.configure(connection)):
             getattr(migration, direction)()
 
-    async with engine.begin() as connection:
-        await connection.run_sync(run, "upgrade")
-        await connection.run_sync(run, "upgrade")
-        tables = await connection.run_sync(lambda sync: sa.inspect(sync).get_table_names())
-        assert "video_runpod_sessions" in tables
-        await connection.run_sync(run, "downgrade")
-        await connection.run_sync(run, "downgrade")
-        await connection.run_sync(run, "upgrade")
+    try:
+        async with engine.begin() as connection:
+            await connection.run_sync(run, "upgrade")
+            await connection.run_sync(run, "upgrade")
+            tables = await connection.run_sync(lambda sync: sa.inspect(sync).get_table_names())
+            assert "video_runpod_sessions" in tables
+            await connection.run_sync(run, "downgrade")
+            await connection.run_sync(run, "downgrade")
+            await connection.run_sync(run, "upgrade")
+    finally:
+        # pytest gives the next integration test another event loop; pooled asyncpg
+        # connections must not cross it (test_video_pilot_budget failed after this file).
+        await engine.dispose()

@@ -20,6 +20,7 @@ import httpx
 from pydantic import BaseModel, ValidationError
 
 from app.ai.gemini import GeminiStructuredProvider
+from app.ai.gemini_pool import note_response
 from app.ai.structured_output import (
     extract_json_document,
     gemini_output_text,
@@ -624,8 +625,9 @@ class CatalogGeminiProvider:
                     },
                     json=payload,
                 )
+                body = response.json() if response.status_code == 200 else None
+                note_response(response, body)
                 response.raise_for_status()
-                body = response.json()
         except (TimeoutError, httpx.TimeoutException):
             raise CatalogAssessmentError("catalog_provider_timeout", retryable=True) from None
         except httpx.HTTPStatusError as exc:

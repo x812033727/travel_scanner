@@ -8,6 +8,9 @@ export type ArticleShareLabels = {
   copyLink: string;
   linkCopied: string;
   shareLine: string;
+  shareThreads?: string;
+  shareFacebook?: string;
+  shareX?: string;
   shareSystem: string;
   sharePrompt?: string;
 };
@@ -20,7 +23,7 @@ const getServerCanShareSnapshot = () => false;
  * Zero-external-script share toolbar for editorial articles.
  *
  * Uses no third-party SDKs so CSP stays locked down and zero network requests fire on render;
- * LINE sharing opens as a plain outbound anchor only when clicked.
+ * every social target opens as a plain outbound anchor only when clicked.
  */
 export function ArticleShareBar({
   url,
@@ -63,7 +66,11 @@ export function ArticleShareBar({
   }
 
   const lineShareHref = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}`;
+  const threadsShareHref = `https://www.threads.net/intent/post?text=${encodeURIComponent(`${title} ${url}`)}`;
+  const facebookShareHref = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+  const xShareHref = `https://x.com/intent/post?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`;
   const pillBase = "inline-flex min-h-11 items-center gap-1.5 rounded-full border px-4 py-1.5 text-[length:var(--text-xs)] font-semibold transition-colors";
+  const socialLinkClass = `${pillBase} border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]/60 hover:text-[var(--teal-dark)]`;
 
   const controls = (
     <div className="flex flex-wrap items-center gap-2">
@@ -89,16 +96,49 @@ export function ArticleShareBar({
         href={lineShareHref}
         target="_blank"
         rel="noopener noreferrer"
-        className={`${pillBase} border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]/60 hover:text-[var(--teal-dark)]`}
+        className={socialLinkClass}
       >
         <span>{labels.shareLine}</span>
       </a>
+
+      {labels.shareThreads ? (
+        <a
+          href={threadsShareHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={socialLinkClass}
+        >
+          <span>{labels.shareThreads}</span>
+        </a>
+      ) : null}
+
+      {labels.shareFacebook ? (
+        <a
+          href={facebookShareHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={socialLinkClass}
+        >
+          <span>{labels.shareFacebook}</span>
+        </a>
+      ) : null}
+
+      {labels.shareX ? (
+        <a
+          href={xShareHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={socialLinkClass}
+        >
+          <span>{labels.shareX}</span>
+        </a>
+      ) : null}
 
       {canShare ? (
         <button
           type="button"
           onClick={handleWebShare}
-          className={`${pillBase} border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]/60 hover:text-[var(--teal-dark)]`}
+          className={socialLinkClass}
         >
           <Share2 className="h-3.5 w-3.5 text-[var(--muted)]" aria-hidden="true" />
           <span>{labels.shareSystem}</span>

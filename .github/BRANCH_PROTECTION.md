@@ -11,11 +11,23 @@ Configured on 2026-09-06 through the REST API
 
 | Setting | Value | Why |
 | --- | --- | --- |
-| Required status checks | `api`, `web`, `containers`, `full-stack-smoke` | Four jobs of `.github/workflows/ci.yml`. A pull request with any of them failing cannot be merged. `api` and `web` are gates: they run no tests themselves and pass only when their jobs passed (`api-checks` and every `api-tests (n/4)`; `web-checks`, `video-tests`, every `web-unit (n/3)` and every `web-e2e (n/3)`), so adding or removing a shard or a job behind a gate needs no change here. |
-| Require branches to be up to date (`strict`) | on | A pull request opened against a base that later turned red is re-checked on the merged result, and a branch that is behind must rebase before it can merge. This is what would have shown #170 and #164 that their base was already red. |
+| Required status checks | `api`, `web`, `containers`, `full-stack-smoke` | Four jobs of `.github/workflows/ci.yml`. A pull request with any of them failing cannot be merged. `api` and `web` are gates: they run no tests themselves and pass only when their jobs passed (`api-checks` and every `api-tests (n/2)`; `web-checks`, `video-tests`, and every `web-e2e (n/2)`), or when `changes` intentionally skipped an untouched area (`skipped` counts as passing for branch protection). |
+| Require branches to be up to date (`strict`) | off | GitHub's `pull_request` workflow already tests the merge commit (`refs/pull/<n>/merge`) against `main`, and `tasks/` enforces disjoint `scope` paths across active tasks. Keeping `strict` off avoids invalidating every in-flight pull request whenever an unrelated topic-pool or documentation pull request merges, saving ~8,000 Actions minutes/month on a private repository. |
 | Enforce for administrators | on | The one account that merges here is an administrator; without this the rule would apply to nobody. `gh pr merge --admin` is therefore not a way around a red check. |
 | Required reviews | none | One person works on this repository; a review requirement would only ever be self-approved. |
 | Force pushes / deletions | off | Default. |
+
+## Private repository quota budget (GitHub Pro 3,000 minutes/month)
+
+To fit ~150 pull requests/month inside GitHub Pro's 3,000 included Actions minutes without running CI on the production VPS:
+
+1. **No duplicate full suite on `main` push**: merging a green pull request triggers `push` on `main` so `ops/autodeploy` sees a green `CI` workflow run for the new `main` SHA. `changes` completes in one 1-minute job on `push` (unless the commit message includes `[full-ci]`), leaving the heavy suites skipped.
+2. **Path filtering in `ci.yml`**: pull requests that only touch `tasks/**`, `docs/videos/**/pool/**`, `apps/api/app/video_pools/data/**`, `apps/api/app/video_backup/target.py` or documentation skip the heavy `api-tests` Postgres shards, `web-e2e`, `containers` and `full-stack-smoke` while still running `check:tasks`, `test:tools` and `pytest tests/test_video_pools.py tests/test_video_backup.py`.
+3. **Consolidated shards and manual companion suites**: `web-unit` runs inside `web-checks` (sharing one `npm ci`), `api-tests` and `web-e2e` run in 2 shards each, and `seo-audit.yml`, `food-map-reservations.yml`, `planner-premium.yml` and `travel-discovery.yml` run on `workflow_dispatch`.
+4. **Private transition checklist on the VPS**:
+   - GitHub Pro is required on the personal account `x812033727` so branch protection stays active after switching the repository visibility to Private.
+   - `/root/travel_scanner` on the production host (`deploy-travel-scanner.sh`, `ops/autodeploy` and `docs/videos/rules-sync/sync.mjs`) must fetch over an SSH deploy key (`git@github.com:x812033727/travel_scanner.git`) or authenticated remote.
+   - `AUTODEPLOY_GITHUB_TOKEN` in `/etc/travel-scanner/autodeploy.env` needs `Actions: Read` and `Contents: Read` on the private repository.
 
 ## Why
 
@@ -38,7 +50,7 @@ gh api "repos/x812033727/travel_scanner/commits/$SHA/check-runs" \
   -q '.check_runs[] | "\(.name)\t\(.status)\t\(.conclusion)"'
 ```
 
-Every row should read `completed  success` before merging. Never pipe
+Every required row should read `completed  success` or `completed  skipped` before merging. Never pipe
 `gh pr checks --watch` into `tail` or `head`.
 
 ## Dependency audits are advisory inside CI
@@ -46,7 +58,7 @@ Every row should read `completed  success` before merging. Never pipe
 `npm audit` and `pip-audit` both need a registry at request time. Either one failing
 on a network hiccup would now block a merge whose code was never run, so inside `ci.yml`
 both are `continue-on-error: true`. The enforcing runs are `npm-audit.yml` and
-`pip-audit.yml`, daily and retryable from the Actions tab.
+`pip-audit.yml`, weekly on Mondays and retryable from the Actions tab.
 
 ## When main itself goes red
 
@@ -57,23 +69,19 @@ on the open one if there already is one.
 
 ## Automatic updates and merges
 
-`strict` means a green pull request stops being mergeable whenever `main` moves: it has to be
-updated from `main` and pass CI again. On a busy day that is most pull requests, many times.
-GitHub's merge queue exists for this, but it is offered only to repositories owned by an
-organization (or on Enterprise Cloud); this repository belongs to a user account, so it is not
-available here (checked 2026-09-26).
-
 `.github/workflows/auto-update-branches.yml` runs `tools/ci/auto-update-branches.mjs` on every
-push to `main`, on every finished `CI` run, every ten minutes and on demand. Each pass:
+push to `main`, on every finished `CI` run and on demand (`workflow_dispatch`). Its 10-minute
+cron was removed and `MAX_INFLIGHT` lowered to `1` to avoid burning 4,320 idle minutes/month
+and cascade-rebasing multiple branches at once. Each pass:
 
-- merges the one pull request that is up to date with all four required checks green, with
+- merges the one pull request that is ready with all four required checks green, with
   `--match-head-commit`, so a commit pushed meanwhile is refused instead of merged untested;
 - turns on auto-merge (squash, pinned to the current head) for every other eligible pull request
-  that cannot merge yet, so GitHub merges it as soon as its checks pass on an up-to-date head.
+  that cannot merge yet, so GitHub merges it as soon as its checks pass.
   It uses the GraphQL mutation, never `gh pr merge --auto`, which merges a pull request that
   happens to be mergeable at that moment;
 - runs "update branch" on BEHIND pull requests, green ones first, then by number, while at most
-  three up-to-date pull requests have required checks running. A BEHIND pull request's own run
+  one up-to-date pull request has required checks running (`MAX_INFLIGHT: "1"`). A BEHIND pull request's own run
   cannot lead to a merge, so it holds no slot, and neither does a red one;
 - re-reads the list for a few seconds while mergeability is still UNKNOWN, which is normal right
   after `main` moved.
@@ -85,8 +93,7 @@ cancelled or never started gets a note in the run summary and no slot.
 Eligible means all of these:
 
 - the base is `main` (stacked pull requests into a feature branch are never touched);
-- a branch of this repository, never a fork: this repository is public, and a stranger's pull
-  request must not merge because its CI passed;
+- a branch of this repository, never a fork;
 - opened by the repository owner, and not by a bot (Dependabot upgrades need a person:
   `.agents/skills/dev-and-ci/references/dependabot.md`);
 - not a draft, and no `no-auto-merge` label;
@@ -132,7 +139,7 @@ To stop it: disable the workflow in the Actions tab, or delete the secret.
 gh api -X PUT repos/x812033727/travel_scanner/branches/main/protection --input - <<'JSON'
 {
   "required_status_checks": {
-    "strict": true,
+    "strict": false,
     "contexts": ["api", "web", "containers", "full-stack-smoke"]
   },
   "enforce_admins": true,

@@ -34,6 +34,28 @@ describe("RelatedGrid", () => {
     render(<RelatedGrid heading="同主題延伸閱讀" items={[item("a", "甲")]} kindLabels={kindLabels} exclude={["a"]} />);
     expect(screen.queryByRole("heading")).toBeNull();
   });
+
+  it("shows the first remaining news recommendation with its description and keeps each row a single named link", () => {
+    render(
+      <RelatedGrid heading="同主題延伸閱讀" kindLabels={kindLabels} layout="news" exclude={["old"]} items={[
+        item("old", "已列文章"), item("lead", "完整的新聞標題", "life", "第一篇的摘要"),
+        item("guide", "延伸指南", "howto", "指南摘要"), item("follow", "後續報導", "life", null),
+      ]} />,
+    );
+    const list = screen.getByRole("list");
+    const rows = within(list).getAllByRole("listitem");
+    expect(rows.map((row) => within(row).getByRole("heading", { level: 3 }).textContent)).toEqual([
+      "完整的新聞標題", "延伸指南", "後續報導",
+    ]);
+    expect(rows.map((row) => within(row).getByRole("link").getAttribute("href"))).toEqual([
+      "/life/lead", "/guides/howto/guide", "/life/follow",
+    ]);
+    const lead = within(rows[0]).getByRole("link", { name: "完整的新聞標題" });
+    expect(within(lead).getByText("第一篇的摘要")).toBeTruthy();
+    expect(within(rows[1]).getByText("攻略")).toBeTruthy();
+    expect(within(list).queryByText("指南摘要")).toBeNull();
+    expect(within(list).queryByText("生活分享")).toBeNull();
+  });
 });
 
 describe("Backlinks", () => {

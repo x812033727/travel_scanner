@@ -27,7 +27,7 @@ from app.providers.usage_meter import GEMINI_SPEECH_PROVIDER, reserve_azure_spee
 from app.video_automation.judge import QA_AUTO_APPROVED_NOTE, QA_ITEMS, final_qa_passed
 from app.video_automation.models import VideoDramaEpisode, VideoDramaRequest, VideoDramaSeries
 from app.video_automation.settings import AUTO_APPROVED_STORYBOARD_NOTE
-from app.video_reviews import admin_api, admin_service, dub_retry
+from app.video_reviews import admin_api, admin_service, dub_retry, shelf
 from app.video_reviews.schemas import (
     VIDEO_CATEGORY_CODES,
     CategoryIn,
@@ -1426,6 +1426,15 @@ def test_a_review_payload_is_capped() -> None:
         ReviewIn.model_validate({**body, "payload": {"text": "字" * 100_000}})
 
 
+@pytest.fixture(autouse=True)
+def _no_shelf_healing(monkeypatch: pytest.MonkeyPatch) -> AsyncMock:
+    """The catalog files old rows before it lists (shelf.heal, against a real database in
+    test_video_shelf.py); these route tests hand it a mock session, so it does nothing here."""
+    healing = AsyncMock(return_value=0)
+    monkeypatch.setattr(shelf, "heal", healing)
+    return healing
+
+
 def _app(user: User | None = None) -> FastAPI:
     app = FastAPI()
     app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
@@ -2096,7 +2105,7 @@ async def test_a_compilation_s_cut_is_downloaded_with_byte_ranges_and_only_by_a_
 
 @pytest.mark.asyncio
 async def test_the_catalog_takes_a_category_a_state_a_search_and_a_page(
-    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path, _no_shelf_healing: AsyncMock
 ) -> None:
     owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
     owner._admin_roles_cache = frozenset({"owner"})  # type: ignore[attr-defined]
@@ -2127,6 +2136,9 @@ async def test_the_catalog_takes_a_category_a_state_a_search_and_a_page(
             url,
             params={"category": "none", "state": "published", "q": "模型", "page": 3, "limit": 10},
         )
+        shelved = await client.get(
+            url, params={"shelf": "curio", "series": "curio", "topic": "H-歷史懸案"}
+        )
         refused = [
             await client.get(url, params=params)
             for params in (
@@ -2135,13 +2147,18 @@ async def test_the_catalog_takes_a_category_a_state_a_search_and_a_page(
                 {"page": 0},
                 {"limit": 101},
                 {"q": "x" * 81},
+                {"shelf": "bogus"},
+                {"series": "x" * 41},
+                {"topic": ""},
             )
         ]
         set_ok = await client.put("/api/v1/admin/videos/v/category", json={"category": "tutorial"})
         set_bad = await client.put("/api/v1/admin/videos/v/category", json={"category": "news"})
         set_none = await client.put("/api/v1/admin/videos/v/category", json={})
     assert plain.status_code == narrowed.status_code == 200
-    assert plain.json()["facets"] == {"category": [], "state": []}
+    assert plain.json()["facets"] == {
+        "category": [], "state": [], "shelf": [], "series": [], "topic": [],
+    }
     calls = [call.kwargs for call in browsed.await_args_list]
     keys = ("category", "state", "q", "page", "limit")
     assert {k: calls[0][k] for k in keys} == {
@@ -2152,8 +2169,14 @@ async def test_the_catalog_takes_a_category_a_state_a_search_and_a_page(
         "category": "none", "state": "published", "q": "模型", "page": 3, "limit": 10,
     }
     assert calls[1]["work_dir"] == str(tmp_path)
-    assert [response.status_code for response in refused] == [422] * 5
-    assert len(calls) == 2, "a refused request never reaches the service"
+    assert _no_shelf_healing.await_count == len(calls), "every listing files old rows first"
+    assert shelved.status_code == 200
+    assert {k: calls[2][k] for k in ("category", "shelf_code", "series", "topic")} == {
+        "category": None, "shelf_code": "curio", "series": "curio", "topic": "H-歷史懸案",
+    }
+    assert calls[0]["shelf_code"] is None and calls[0]["series"] is None
+    assert [response.status_code for response in refused] == [422] * 8
+    assert len(calls) == 3, "a refused request never reaches the service"
     assert set_ok.status_code == 200 and set_ok.json()["category"] == "tutorial"
     assert filed.await_args.args[1] == "v"
     assert filed.await_args.args[3].category == "tutorial"

@@ -61,7 +61,7 @@ export function SiteFooter({ year }: { year: number }) {
                 once the switch has resolved, so on a first paint this is the only entry. */}
             <li><Link className={footerLink} href="/guides">{t("guides")}</Link></li>
             <li><Link className={footerLink} href="/life">{t("life")}</Link></li>
-            <li><Link className={footerLink} href="/videos">{t("videos")}</Link></li>
+            {featureVisible(visibility, "videos") && <li><Link className={footerLink} href="/videos">{t("videos")}</Link></li>}
             {/* /hotspots, /foods and /explore are in the sitemap but were linked from nowhere:
                 the header renders its nav only after the discovery switch resolves on the
                 client, so no response body carried them and a crawler never reached the 593

@@ -1,0 +1,607 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-19",
+  "reviewer": "check130",
+  "baselines": {
+    "so_thats_why": {
+      "candidates": 7921,
+      "selected": 7617,
+      "themes": 771
+    },
+    "curio": {
+      "candidates": 2737,
+      "selected": 1865,
+      "themes": 155
+    }
+  },
+  "method": "獨立打開13份日常機構原件、9份金屬工藝與館藏、17份黑膠發行及製造與播放原件。另讀館方照片、逐案比對候選與退案、核算指定版本速比、錄音長度與章節秒數。",
+  "segment_reviews": [
+    {
+      "id": "K130-0001",
+      "source_ids": [
+        "X130E-S01",
+        "X130E-S02"
+      ],
+      "decision": "screened",
+      "checked": "日本郵便問答明載禮券本身不能單獨走現金書留，與現金同封可以；掛號服務頁另核現金寄遞要求。",
+      "dedup_and_scope": "僅就日本國內郵件與日本郵便此項服務。"
+    },
+    {
+      "id": "K130-0002",
+      "source_ids": [
+        "X130E-S03"
+      ],
+      "decision": "screened",
+      "checked": "World Athletics 技規26.8.1先比最後成功高度的跳數，26.8.2才累計至該高度的失敗。按題設在第一關即可分出順位。",
+      "dedup_and_scope": "同最高成功高度，無須引入冠軍加跳例外。"
+    },
+    {
+      "id": "K130-0003",
+      "source_ids": [
+        "X130E-S04"
+      ],
+      "decision": "screened",
+      "checked": "阿肯色推廣資料在播種段說明甜菜的聚生果實可出數株；若要養根須間苗。",
+      "dedup_and_scope": "常見多胚芽種球；不把個案推到單胚品種。"
+    },
+    {
+      "id": "K130-0004",
+      "source_ids": [
+        "X130E-S05"
+      ],
+      "decision": "screened",
+      "checked": "明尼蘇達推廣資料區分sh與其他甜玉米，授粉可使本季穗上籽粒starchy and tough。",
+      "dedup_and_scope": "文章建議隔離與錯開開花，未把此效果推到所有雜交組合。"
+    },
+    {
+      "id": "K130-0005",
+      "source_ids": [
+        "X130E-S06"
+      ],
+      "decision": "screened",
+      "checked": "King Arthur 五派殼同配方、冷藏刺孔並留一個無重物對照；米、陶珠等支住側壁，鋼珠鏈則是作者解說而非第五個有砝碼組。",
+      "dedup_and_scope": "這次實作的下滑和水平縮離盤沿有區別。"
+    },
+    {
+      "id": "K130-0006",
+      "source_ids": [
+        "X130E-S07"
+      ],
+      "decision": "screened",
+      "checked": "GS1 FAQ明載人讀行括號不編進GS1-128符號，解析靠應用識別碼及規範格式。",
+      "dedup_and_scope": "用原始掃讀資料解釋，掃碼軟體之後仍可自行格式化。"
+    },
+    {
+      "id": "K130-0007",
+      "source_ids": [
+        "X130E-S08"
+      ],
+      "decision": "screened",
+      "checked": "SINGER型號表平面15直徑21、高12；透明15J兩端略彎、直徑20、高11毫米。明列不可互代。",
+      "dedup_and_scope": "K118-0004的鎖縫成形不回答這兩種底梭的適配。"
+    },
+    {
+      "id": "K130-0008",
+      "source_ids": [
+        "X130E-S09"
+      ],
+      "decision": "screened",
+      "checked": "ICEB 2024 UEB第6節定義數字模式、a–j格形與連續數字；12只需在首格前加一個數字符。",
+      "dedup_and_scope": "只談UEB的連寫整數，未涵蓋所有語言點字。"
+    },
+    {
+      "id": "K130-0009",
+      "source_ids": [
+        "X130E-S10"
+      ],
+      "decision": "screened",
+      "checked": "FIDE 4.2.1與4.3.1核到輪到行棋者先聲明j’adoube方可扶正；有意為走棋觸子時，第一枚可合法走的己子須走。",
+      "dedup_and_scope": "扶正與意外接觸、可走與不可走的例外有區別。"
+    },
+    {
+      "id": "K130-0010",
+      "source_ids": [
+        "X130E-S11"
+      ],
+      "decision": "screened",
+      "checked": "NWS 原始手冊SPECI_KARA_061345Z真的同列SCT025及BKN070，雲幕為最低BKN或OVC，此筆7,000英尺。",
+      "dedup_and_scope": "有遮蔽報垂直能見度等其他情形，不適用這筆實報。"
+    },
+    {
+      "id": "K130-0011",
+      "source_ids": [
+        "X130E-S12"
+      ],
+      "decision": "screened",
+      "checked": "Python 3.13 date.isocalendar()官方範例可重算2003-12-29為(year=2004,week=1,weekday=1)。",
+      "dedup_and_scope": "此處的年是ISO週年，不變更收據的公曆日期。"
+    },
+    {
+      "id": "K130-0012",
+      "source_ids": [
+        "X130E-S13"
+      ],
+      "decision": "screened",
+      "checked": "Brother指定Windows機型的雙面選單，直式Long Edge (Left)、橫式Short Edge (Left)，兩者都在左側裝訂。",
+      "dedup_and_scope": "用同一款驅動和翻頁方向比較。"
+    },
+    {
+      "id": "K130-0401",
+      "source_ids": [
+        "X130C-S01",
+        "X130C-S02"
+      ],
+      "decision": "screened",
+      "checked": "Mérode Cup實物敘述指出杯身銀片開孔，尖窗下方三條綠、藍、綠透光長格；工法指引說燒成後去背。",
+      "dedup_and_scope": "此件的穿孔和琺瑯面板讓光線穿過。"
+    },
+    {
+      "id": "K130-0402",
+      "source_ids": [
+        "X130C-S01",
+        "X130C-S03"
+      ],
+      "decision": "screened",
+      "checked": "Rolls Plaques館錄指出Samson五官、頭髮刻槽填藍，獅鬃刻線填不透明紅；館錄同時列掐絲與內填。",
+      "dedup_and_scope": "該回答限這幾處刻槽。K119-0001的掐絲分色是另一構造。"
+    },
+    {
+      "id": "K130-0403",
+      "source_ids": [
+        "X130C-S04",
+        "X130C-S05"
+      ],
+      "decision": "screened",
+      "checked": "Walters 44.500說蛋殼為機刻黃金覆多層半透明琺瑯，V&A玫瑰車床說明含等深切紋、燒色及拋光。",
+      "dedup_and_scope": "N107主要追查1887年另一顆彩蛋的來源，非本件蛋殼紋路。"
+    },
+    {
+      "id": "K130-0404",
+      "source_ids": [
+        "X130C-S01",
+        "X130C-S06"
+      ],
+      "decision": "screened",
+      "checked": "V&A謝菲爾德銀包銅的接受熱合軋片、飛壓機沖孔時銀層包入孔壁；原件有藍玻璃罐與沖孔支架。",
+      "dedup_and_scope": "確認孔壁是用作此件的展示工法，未類推所有鍍銀件。"
+    },
+    {
+      "id": "K130-0405",
+      "source_ids": [
+        "X130C-S01",
+        "X130C-S07"
+      ],
+      "decision": "screened",
+      "checked": "館錄說佩鏈有切面鋼釘和珠，工法指引說鋼釘能以螺紋卸下清潔，以免生鏽。",
+      "dedup_and_scope": "區分原物上的可見切面與館方對該類配件的製作說明。"
+    },
+    {
+      "id": "K130-0406",
+      "source_ids": [
+        "X130C-S01",
+        "X130C-S08"
+      ],
+      "decision": "screened",
+      "checked": "Ever Flowing館藏說明先用鎚與支鐵成形，並以keum-boo的熱與壓力將24K箔貼銀；原物圖片可見細金帶。",
+      "dedup_and_scope": "收錄的是另貼的金箔，並未用同色鑄成整體。"
+    },
+    {
+      "id": "K130-0407",
+      "source_ids": [
+        "X130C-S01",
+        "X130C-S09"
+      ],
+      "decision": "screened",
+      "checked": "V&A列玫瑰堡複製獅98×170×64公分，銀鍍層包電鑄銅；對過電鑄沉積、脫模及表面處理的順序。",
+      "dedup_and_scope": "原作銀獅、複本銅殼、表面鍍銀各自有別。"
+    }
+  ],
+  "rejected_suggestions_checked": {
+    "X130E-NA001": "K119-0401。界外球直接入兩方球門的重新開球規則。",
+    "X130E-NA002": "K121-0008。同級楓糖漿按透光分色。",
+    "X130E-NA003": "K120-0404。MLLW為基面可有負潮高。",
+    "X130E-NA004": "K121-0005。8×42出瞳尺寸是物鏡口徑除倍率。",
+    "X130C-NA01": "K119-0001。同是掐絲先隔格再填色。",
+    "X130C-NA02": "D2136。失蠟留下陰模鑄金屬。",
+    "X130D-NA01": "P28001、P28002。以老盤影像接溝取聲。",
+    "X130D-NA02": "N7305。美國黑膠與CD銷量、銷售單位及營收之別。"
+  },
+  "scope": "12張日常、7張金屬工藝及18張黑膠唱片播放研究卡。",
+  "themes": {
+    "G773": {
+      "title": "同一張大瀧詠一的專輯，為什麼換播朋友的十二吋黑膠，一分鐘就被拖成 81 秒？",
+      "researcher": "long130",
+      "reviewer": "check130",
+      "verdict": "ready",
+      "fact_count": 15.5,
+      "author_fact_count": 17.75,
+      "est_minutes": 11.6,
+      "method": "依實際出版機構合併計12網，每網上限兩條。Sony Music及Sony器材同一網；比較兩個播放效果的算例與其逆運算、重用唱放訊號路徑和多型號的重疊按鍵減權。",
+      "networks": {
+        "Sony Group": [
+          "X130D-S01",
+          "X130D-S14",
+          "X130D-S17"
+        ],
+        "Audio-Technica": [
+          "X130D-S02",
+          "X130D-S09"
+        ],
+        "Audacity": [
+          "X130D-S03",
+          "X130D-S16"
+        ],
+        "Panasonic": [
+          "X130D-S04"
+        ],
+        "東洋化成": [
+          "X130D-S05"
+        ],
+        "Abbey Road Studios": [
+          "X130D-S06"
+        ],
+        "Denon": [
+          "X130D-S07",
+          "X130D-S15"
+        ],
+        "Third Man Records": [
+          "X130D-S08"
+        ],
+        "Ortofon": [
+          "X130D-S10"
+        ],
+        "CLIR / Library of Congress": [
+          "X130D-S11"
+        ],
+        "Rega Research": [
+          "X130D-S12"
+        ],
+        "Yamaha": [
+          "X130D-S13"
+        ]
+      },
+      "network_weights": {
+        "Sony Group": 2.0,
+        "Audacity": 1.25,
+        "Panasonic": 1.0,
+        "東洋化成": 1.75,
+        "Abbey Road Studios": 0.75,
+        "Audio-Technica": 1.5,
+        "Denon": 2.0,
+        "Third Man Records": 1.0,
+        "Ortofon": 0.75,
+        "CLIR / Library of Congress": 1.0,
+        "Rega Research": 1.75,
+        "Yamaha": 0.75
+      },
+      "card_verdicts": [
+        {
+          "id": "K130-0201",
+          "source_ids": [
+            "X130D-S01",
+            "X130D-S02"
+          ],
+          "network": "Sony Group",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "Sony Music日本發行公告末兩段寫單售1片12吋33轉、VOX為2片12吋45轉；鐵三角按鍵圖例對應33⅓。"
+        },
+        {
+          "id": "K130-0202",
+          "source_ids": [
+            "X130D-S05",
+            "X130D-S03"
+          ],
+          "network": "Audacity",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.5,
+          "checked": "Change Speed and Pitch記載速度影響時長和音高；依聲軌均速和額定45轉推算，60×45÷(100/3)=81秒。此處和末卡互為逆運算。"
+        },
+        {
+          "id": "K130-0203",
+          "source_ids": [
+            "X130D-S04",
+            "X130D-S01"
+          ],
+          "network": "Panasonic",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "SL-1200GR印刷頁24的四排頻閃點可檢選定檔位的相對轉速，歸零微調仍是這一檔，不能識別放了哪一版。"
+        },
+        {
+          "id": "K130-0204",
+          "source_ids": [
+            "X130D-S05",
+            "X130D-S01"
+          ],
+          "network": "東洋化成",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "日本工場FAQ的12吋33⅓與45轉建議單面分別到20分及11分；原文是工廠建議值。"
+        },
+        {
+          "id": "K130-0205",
+          "source_ids": [
+            "X130D-S06",
+            "X130D-S01"
+          ],
+          "network": "Abbey Road Studios",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "工程師Miles Showell示例音源與刻片盤皆半速、家裡正常速度播放；發行公告指出真正替該單售版刻片的是另一工作室的Tim Young。"
+        },
+        {
+          "id": "K130-0206",
+          "source_ids": [
+            "X130D-S05"
+          ],
+          "network": "東洋化成",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "FAQ說明轉一圈耗時相同但內圈行走距離較短，尤其高頻易減衰，過去曾將動態較大的曲放靠外。"
+        },
+        {
+          "id": "K130-0207",
+          "source_ids": [
+            "X130D-S02",
+            "X130D-S01"
+          ],
+          "network": "Audio-Technica",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "AT-LP70X兩個選擇器，直徑30公分用12吋，17公分用7吋，須停盤改尺寸；另按速度。與第一張卡重疊的按鍵圖折權。"
+        },
+        {
+          "id": "K130-0208",
+          "source_ids": [
+            "X130D-S07",
+            "X130D-S02"
+          ],
+          "network": "Denon",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "DP-400手冊把甜甜圈盤轉接器裝在spindle、依唱片選速分列為不同動作。"
+        },
+        {
+          "id": "K130-0209",
+          "source_ids": [
+            "X130D-S08"
+          ],
+          "network": "Third Man Records",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "ULTRA LP的〈Just One Drink〉原廠列electric/acoustic兩條起始溝，接入共同歌曲主體。未獨斷兩首序曲的樂器。"
+        },
+        {
+          "id": "K130-0210",
+          "source_ids": [
+            "X130D-S09",
+            "X130D-S14"
+          ],
+          "network": "Audio-Technica",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "AT-LP120XBT-USB同按33與45，兩顆選擇燈紅亮表示78；Sony PS-LX310BT FAQ明列只能33與45。"
+        },
+        {
+          "id": "K130-0211",
+          "source_ids": [
+            "X130D-S10",
+            "X130D-S09"
+          ],
+          "network": "Ortofon",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "2M 78技術表以球形針尖、R 65 µm配老式78轉蟲膠盤；LP120原廠另建議播放SP使用適當針或唱頭。"
+        },
+        {
+          "id": "K130-0212",
+          "source_ids": [
+            "X130D-S11"
+          ],
+          "network": "CLIR / Library of Congress",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "圓桌報告區分早年圓盤速度差異，實務建議用可變速唱盤，將選的速度及變動記錄下來。"
+        },
+        {
+          "id": "K130-0213",
+          "source_ids": [
+            "X130D-S12",
+            "X130D-S17"
+          ],
+          "network": "Rega Research",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "Fono Mini A2D原廠圖說MM唱頭入前級、RCA輸出到擴大機line輸入。另以Sony說明核內建唱放開關須配對下游輸入口。"
+        },
+        {
+          "id": "K130-0214",
+          "source_ids": [
+            "X130D-S13"
+          ],
+          "network": "Yamaha",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "RX-A6A說明PHONO支援MM，而低輸出MC接入前要用升壓變壓器。"
+        },
+        {
+          "id": "K130-0215",
+          "source_ids": [
+            "X130D-S14"
+          ],
+          "network": "Sony Group",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "PS-LX310BT FAQ列可發到藍牙耳機或喇叭，明確列不支援電視、電腦及手機作其配對播放端。"
+        },
+        {
+          "id": "K130-0216",
+          "source_ids": [
+            "X130D-S12"
+          ],
+          "network": "Rega Research",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 0.75,
+          "checked": "A2D說明USB可進PC編輯器、前面板Level配軟體表頭調整；重用同一唱放示範，與聽得到的RCA線路區別。"
+        },
+        {
+          "id": "K130-0217",
+          "source_ids": [
+            "X130D-S15"
+          ],
+          "network": "Denon",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "DP-450USB每次選WAV或MP3開始到按停存一檔；原廠特別標記唱片播完後錄音不會自停。"
+        },
+        {
+          "id": "K130-0218",
+          "source_ids": [
+            "X130D-S03",
+            "X130D-S16"
+          ],
+          "network": "Audacity",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "Change Tempo保持音高，Change Speed and Pitch用from實播速度、to應播速度，乘1.35後再算81÷1.35=60。只有題設均速錯播可用這一常數。"
+        }
+      ],
+      "chapter_budgets": [
+        {
+          "chapter": 1,
+          "title": "朋友才換了一張盤，熟悉的歌手為什麼就像換了嗓子？",
+          "candidate_ids": [
+            "K130-0201",
+            "K130-0202",
+            "K130-0203"
+          ],
+          "target_seconds": 83,
+          "evidence_seconds": [
+            69,
+            120
+          ],
+          "checked": "兩個具名發行版本的直徑、數量及每分鐘轉數均在公告；60→81秒為定速算例，頻閃指選檔。"
+        },
+        {
+          "chapter": 2,
+          "title": "明明是同一張專輯，怎麼從翻一次面變成得顧四面？",
+          "candidate_ids": [
+            "K130-0204",
+            "K130-0205",
+            "K130-0206"
+          ],
+          "target_seconds": 87,
+          "evidence_seconds": [
+            69,
+            120
+          ],
+          "checked": "東洋化成的20/11是其建議值。Abbey Road示範一般半速工作原理，並未被描述為大瀧詠一錄音的刻片場地。"
+        },
+        {
+          "chapter": 3,
+          "title": "家人把「45 轉圓環」遞過來，朋友那張十二吋要套上它嗎？",
+          "candidate_ids": [
+            "K130-0207",
+            "K130-0208",
+            "K130-0209"
+          ],
+          "target_seconds": 84,
+          "evidence_seconds": [
+            69,
+            120
+          ],
+          "checked": "AT盤徑、Denon大孔及Third Man雙溝分開。最後資料限原聲、電聲兩版開場和其匯合。"
+        },
+        {
+          "chapter": 4,
+          "title": "祖父也從同一張桌下拿出一張老盤，調到 78 就能替他播嗎？",
+          "candidate_ids": [
+            "K130-0210",
+            "K130-0211",
+            "K130-0212"
+          ],
+          "target_seconds": 88,
+          "evidence_seconds": [
+            69,
+            120
+          ],
+          "checked": "兩家唱盤的78功能、另購針與Ortofon型號的幾何規格各有限定；歷史舊盤的實際速度未擅定。"
+        },
+        {
+          "chapter": 5,
+          "title": "轉回 45 後，人聲不再拖，怎麼接上音響卻還像從隔壁傳來？",
+          "candidate_ids": [
+            "K130-0213",
+            "K130-0214",
+            "K130-0215"
+          ],
+          "target_seconds": 84,
+          "evidence_seconds": [
+            69,
+            120
+          ],
+          "checked": "MM唱放輸出接線路級、Yamaha PHONO接MM或經升壓的低輸出MC；PS-LX310BT不能配手機為其播放端。"
+        },
+        {
+          "chapter": 6,
+          "title": "要把那段慢掉的示範錄給家人，一分鐘如何從 81 秒變回來？",
+          "candidate_ids": [
+            "K130-0216",
+            "K130-0217",
+            "K130-0218"
+          ],
+          "target_seconds": 84,
+          "evidence_seconds": [
+            69,
+            120
+          ],
+          "checked": "Rega的USB錄音表頭、Denon手動停錄與Audacity兩種效果各有用法，81秒與60秒及1.35核算。"
+        }
+      ],
+      "turns": [
+        "兩盤同名12吋，刻片和播放檔位不同。盤緣靜止的頻閃點可與讀錯唱片版本同時發生。",
+        "光選對轉速無法替老盤匹配唱針，當兩條起始溝只改變前奏，又和整段聽起來變慢不同。",
+        "音量過小可沿PHONO與LINE查，等速錯錄變慢則以音高與時長的聯動還原。"
+      ],
+      "nearby": [
+        "P28001、P28002、G284及G598是以非接觸影像讀老式唱片，N7305問黑膠與CD銷量。有唱片作為共同物件，答案與本題各機型設定不同。"
+      ],
+      "changes": [
+        "不採會重轉首頁、無單面時長表的商業網站，以東洋化成現行FAQ為準。依Third Man原件，去除對原聲版前奏樂器的推斷。"
+      ],
+      "unverified": [
+        "尚未將兩版實物放上唱盤、進行錄音或測試原機。81秒是同段原應播放60秒以固定錯速播放的運算值。",
+        "類比設備選項、訊號與錄音格式各按指定型號。沒有宣稱33與45版單憑轉速即能有普遍音質高下。",
+        "六章估時未錄製驗時。"
+      ],
+      "note": "18張研究卡、17份原件、12網；獨立折算15.5條、約11.6分鐘。",
+      "reviewed_source_files_sha256": {
+        "batch": "18bca898a71691004c1e4a98cface1ef069152c750aba411e84e0b9162f25571",
+        "theme": "77641e23d35bf40c17ffc17bc181801ef73044f4cbcf5475b23bb9eb531e82f9"
+      }
+    }
+  },
+  "reviewed_segment_files_sha256": {
+    "daily": "96072b8adfc3cf22b11bbee57b3883742b8fb188355892b6c6a0410460c7906b",
+    "craft": "c2479f314845a64afbe9b598feab66df3ae7c8410dd369d7adf5b4d424083f8e"
+  }
+}

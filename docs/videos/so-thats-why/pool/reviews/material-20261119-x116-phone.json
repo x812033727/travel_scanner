@@ -1,0 +1,344 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-19",
+  "baseline": "2026-11-19-pool-7102",
+  "method": "非作者獨立開啟原刊、法規、標準和管理機構及產品頁，逐張核對版本、適用範圍、兩池主問題、既有退件及章節預算。古版 NCC 與 Telecom Italia 使用公開索引的原版 PDF 全文。",
+  "scope": "G759 的十六張卡與研究網。",
+  "segment_reviews": [],
+  "rejected_suggestions_checked": [],
+  "themes": {
+    "G759": {
+      "title": "台灣手機寫成 +886 要少一個 0，為什麼羅馬旅館寫 +39 卻得把 0 留著？",
+      "researcher": "phone116",
+      "reviewer": "curio_inventory",
+      "verdict": "ready",
+      "fact_count": 14.0,
+      "author_fact_count": 15.25,
+      "est_minutes": 10.5,
+      "source_count": 15,
+      "source_networks": 10,
+      "method": "按各卡所主張的新增內容分配一個主責證據網；驗證同一前提的旁證不再加算。每一研究網至多 2.0 條，以每條約 0.75 分鐘換算素材長度。",
+      "networks": {
+        "NET_TW_Number_Regulation": [
+          "TEL116-S01",
+          "TEL116-S14",
+          "TEL116-S15"
+        ],
+        "NET_TaiwanMobile": [
+          "TEL116-S02"
+        ],
+        "NET_ITU_Number_Standards": [
+          "TEL116-S03",
+          "TEL116-S13"
+        ],
+        "NET_KDDI": [
+          "TEL116-S04"
+        ],
+        "NET_NANPA": [
+          "TEL116-S05"
+        ],
+        "NET_AGCOM_ItalyPlan": [
+          "TEL116-S06",
+          "TEL116-S07"
+        ],
+        "NET_TelecomItalia_Engineering": [
+          "TEL116-S08"
+        ],
+        "NET_Google_libphonenumber": [
+          "TEL116-S09",
+          "TEL116-S10"
+        ],
+        "NET_IETF_RFC3966": [
+          "TEL116-S11"
+        ],
+        "NET_GSMA_Roaming": [
+          "TEL116-S12"
+        ]
+      },
+      "network_weights": {
+        "NET_TW_Number_Regulation": 1.75,
+        "NET_TaiwanMobile": 0.5,
+        "NET_ITU_Number_Standards": 2.0,
+        "NET_KDDI": 0.75,
+        "NET_NANPA": 1.0,
+        "NET_AGCOM_ItalyPlan": 1.0,
+        "NET_TelecomItalia_Engineering": 2.0,
+        "NET_Google_libphonenumber": 1.75,
+        "NET_IETF_RFC3966": 1.5,
+        "NET_GSMA_Roaming": 1.75
+      },
+      "card_verdicts": [
+        {
+          "id": "K116-0301",
+          "source_ids": [
+            "TEL116-S01",
+            "TEL116-S15",
+            "TEL116-S02"
+          ],
+          "decision": "screened",
+          "network": "NET_TW_Number_Regulation",
+          "author_weight": 1.0,
+          "review_weight": 1,
+          "checked": "2024 年 5 月 17 日數位部、NCC 會銜命令附件一把 0 ＋ 9BC ＋ DE ＋ FGHI 逐欄標示。NCC 舊說明書肆之四另列國內及國際格式，台灣大哥大日本回撥舉例明記省首零。三頁合算一項。"
+        },
+        {
+          "id": "K116-0302",
+          "source_ids": [
+            "TEL116-S02"
+          ],
+          "decision": "screened",
+          "network": "NET_TaiwanMobile",
+          "author_weight": 0.5,
+          "review_weight": 0.5,
+          "checked": "台灣大哥大漫遊指引的輸入加號提示明列長按 0。是同一鍵的操作示例，給半項。"
+        },
+        {
+          "id": "K116-0303",
+          "source_ids": [
+            "TEL116-S03",
+            "TEL116-S01"
+          ],
+          "decision": "screened",
+          "network": "NET_ITU_Number_Standards",
+          "author_weight": 1.0,
+          "review_weight": 1,
+          "checked": "ITU-T E.164（02/2026）§6.1、§6.2.2、圖 1 與 §7.3.2，15 是建議最大十進位數字數，地理號碼由國碼與國內有效號碼組成。12 碼由該台灣例自行相加。"
+        },
+        {
+          "id": "K116-0304",
+          "source_ids": [
+            "TEL116-S04",
+            "TEL116-S13"
+          ],
+          "decision": "screened",
+          "network": "NET_KDDI",
+          "author_weight": 1.0,
+          "review_weight": 0.75,
+          "checked": "KDDI-IP Phone 的 International calls 一節明列 010 在國碼之前。此例為特定日本 IP 電話服務，和上一張的冠碼界線有部分重疊。"
+        },
+        {
+          "id": "K116-0305",
+          "source_ids": [
+            "TEL116-S05"
+          ],
+          "decision": "screened",
+          "network": "NET_NANPA",
+          "author_weight": 1.0,
+          "review_weight": 1,
+          "checked": "NANPA 的 About the NANP 段確認共用編號計畫的參與國家與地區、美加共用 1 和 3＋7 位架構。此處僅從 +1 判斷共用計畫。"
+        },
+        {
+          "id": "K116-0306",
+          "source_ids": [
+            "TEL116-S07",
+            "TEL116-S06"
+          ],
+          "decision": "screened",
+          "network": "NET_AGCOM_ItalyPlan",
+          "author_weight": 1.0,
+          "review_weight": 1,
+          "checked": "AGCOM 服務首碼官網及由 AGCOM 2012 年 6 月 25 日送交 ITU 的通知，第一頁將 0 與 3 分列，明細 06 對 Roma。轉載站與監管機關同算一網。"
+        },
+        {
+          "id": "K116-0307",
+          "source_ids": [
+            "TEL116-S08"
+          ],
+          "decision": "screened",
+          "network": "NET_TelecomItalia_Engineering",
+          "author_weight": 1.0,
+          "review_weight": 1,
+          "checked": "2000 年 4 月 Telecom Italia 技術原刊 Bondi 等人 §4.1，6 月 19 日與 12 月 18 日分屬引進、全面採用兩個節點。表 2 國際例由 +39 6… 變 +39 06…。"
+        },
+        {
+          "id": "K116-0308",
+          "source_ids": [
+            "TEL116-S08"
+          ],
+          "decision": "screened",
+          "network": "NET_TelecomItalia_Engineering",
+          "author_weight": 1.0,
+          "review_weight": 1,
+          "checked": "同刊 §4.1 緊接說明區內用戶碼重啟 0、1 後，區內編號可回收約兩成。這是編號容量估計，與拿到門號的客戶數不同。"
+        },
+        {
+          "id": "K116-0309",
+          "source_ids": [
+            "TEL116-S14"
+          ],
+          "decision": "screened",
+          "network": "NET_TW_Number_Regulation",
+          "author_weight": 1.0,
+          "review_weight": 0.75,
+          "checked": "數位部「平等接取監督管理」第二節說明換業者用同類服務可保留原號，並設集中式資料庫處理攜碼。與漫遊的差異可用於銜接，距首零核心較遠。"
+        },
+        {
+          "id": "K116-0310",
+          "source_ids": [
+            "TEL116-S10",
+            "TEL116-S09"
+          ],
+          "decision": "screened",
+          "network": "NET_Google_libphonenumber",
+          "author_weight": 1.0,
+          "review_weight": 1,
+          "checked": "libphonenumber 的 phonenumber.proto 把 national_number 定成 uint64，註解說明額外欄位保存有效的首零與其個數。僅證明這套軟體的資料模型。"
+        },
+        {
+          "id": "K116-0311",
+          "source_ids": [
+            "TEL116-S09"
+          ],
+          "decision": "screened",
+          "network": "NET_Google_libphonenumber",
+          "author_weight": 1.0,
+          "review_weight": 0.75,
+          "checked": "同專案 FAQ，德國 49、印尼 62 的例子及它們可形成當地有效號碼的歧義；有地區提示時按文中規則解析。是同一套工具對輸入的另一層處理。"
+        },
+        {
+          "id": "K116-0312",
+          "source_ids": [
+            "TEL116-S11"
+          ],
+          "decision": "screened",
+          "network": "NET_IETF_RFC3966",
+          "author_weight": 1.0,
+          "review_weight": 0.75,
+          "checked": "RFC 3966（2004-12）§1 與 §5.1.5 分開可識別的號碼與撥出環境額外要求的取外線動作。旅館為示意，與前文 KDDI 的撥出端差異有部分重疊。"
+        },
+        {
+          "id": "K116-0313",
+          "source_ids": [
+            "TEL116-S11"
+          ],
+          "decision": "screened",
+          "network": "NET_IETF_RFC3966",
+          "author_weight": 0.75,
+          "review_weight": 0.75,
+          "checked": "RFC 3966 §5.3 將私人交換機內的分機寫在分機參數，見 §3 語法 ext。限 tel URI 的表達用途。"
+        },
+        {
+          "id": "K116-0314",
+          "source_ids": [
+            "TEL116-S12"
+          ],
+          "decision": "screened",
+          "network": "NET_GSMA_Roaming",
+          "author_weight": 1.0,
+          "review_weight": 1,
+          "checked": "GSMA〈How Roaming Works〉第二問說明合作網路向原業者驗證漫遊許可。適用保留原號且具語音漫遊服務的旅客。"
+        },
+        {
+          "id": "K116-0315",
+          "source_ids": [
+            "TEL116-S12"
+          ],
+          "decision": "screened",
+          "network": "NET_GSMA_Roaming",
+          "author_weight": 1.0,
+          "review_weight": 0.75,
+          "checked": "同一問答第四問說通常由原屬業者再轉往受訪網路。該頁主要以 GSM 說明，不能由此斷言所有當代語音承載都經同一條實體路徑。"
+        },
+        {
+          "id": "K116-0316",
+          "source_ids": [
+            "TEL116-S13",
+            "TEL116-S01",
+            "TEL116-S07"
+          ],
+          "decision": "screened",
+          "network": "NET_ITU_Number_Standards",
+          "author_weight": 1.0,
+          "review_weight": 1,
+          "checked": "ITU-T E.123（02/2001）§§2.1、7.1–2 規範名片等印刷品的國內外兩行、加號與括號；重排台灣及羅馬兩個例子是前文的回扣。"
+        }
+      ],
+      "chapter_budgets": [
+        {
+          "title": "兩張名片放在一起，哪個 0 是多寫的？",
+          "seconds": 45,
+          "min_seconds": 30,
+          "max_seconds": 65,
+          "candidate_ids": [
+            "K116-0301",
+            "K116-0302"
+          ]
+        },
+        {
+          "title": "從哪裡撥出去，和要撥給誰，各寫在哪裡？",
+          "seconds": 78,
+          "min_seconds": 58,
+          "max_seconds": 115,
+          "candidate_ids": [
+            "K116-0303",
+            "K116-0304",
+            "K116-0305"
+          ]
+        },
+        {
+          "title": "1998 年，羅馬人連打給隔壁都得多按幾碼",
+          "seconds": 117,
+          "min_seconds": 75,
+          "max_seconds": 155,
+          "candidate_ids": [
+            "K116-0307",
+            "K116-0308",
+            "K116-0306"
+          ]
+        },
+        {
+          "title": "同一張旅館名片存進通訊錄，誰會替它看住那顆 0？",
+          "seconds": 75,
+          "min_seconds": 43,
+          "max_seconds": 93,
+          "candidate_ids": [
+            "K116-0310",
+            "K116-0311"
+          ]
+        },
+        {
+          "title": "房內電話要先取外線，該把這顆鍵寫進名片嗎？",
+          "seconds": 95,
+          "min_seconds": 56,
+          "max_seconds": 116,
+          "candidate_ids": [
+            "K116-0312",
+            "K116-0313",
+            "K116-0309"
+          ]
+        },
+        {
+          "title": "人到了羅馬，再排一次櫃台上的兩張名片",
+          "seconds": 85,
+          "min_seconds": 65,
+          "max_seconds": 137,
+          "candidate_ids": [
+            "K116-0314",
+            "K116-0315",
+            "K116-0316"
+          ]
+        }
+      ],
+      "chapter_total_seconds": 495,
+      "turns": [
+        "同一個首字在台灣行動門號是國內冠碼，在羅馬地理號碼卻屬有效號碼；1998 年的表 2 把羅馬新舊兩種寫法排在一起。",
+        "同區撥號變長後，用戶碼可用 0、1 起首，按當年估計反而多出約兩成區內編號空間。",
+        "手上的國際名片容得下有效的首零，但整數欄位會丟失字面首零；libphonenumber 有額外欄位可復原。"
+      ],
+      "nearby": [
+        "G724／K106-0805 討論 SIM 的身分驗證及相容性，G737／K110-0404 討論 112 與有限服務；此案驗證的是可漫遊用戶如何沿用自己的普通聯絡號碼。",
+        "K105-0703 的 ITU-T E.161 是電話鍵盤排列與標準效力。此案從地理號碼 E.164 的結構和 E.123 的印刷書寫解釋 0 的作用。",
+        "T59-001 以通訊錄作配對與隱私議題；K116-0310 只處理一個號碼序列化時如何保留首零。兩池未收紀錄未出現台灣 09 與羅馬 06 此組核心答案。"
+      ],
+      "changes": [
+        "台灣舊說明書用於核對歷史格式，2024 年附件與業者實際對外指引可分別核實門號結構與撥法。",
+        "將 S06／S07 併回 AGCOM，S03／S13 併回 ITU，S09／S10 併回 Google，S01／S14／S15 同列台灣編號制度。地區業者當年的義大利工程原刊另計。",
+        "0304、0309、0311、0312、0315 的適用範圍、與核心距離或前後卡內容重疊，獨立估重下修。"
+      ],
+      "unverified": [
+        "1998 年後實際增加多少已配發用戶，與今天每一家旅館交換機、手機及漫遊服務的實際撥號或語音路徑，均未逐一實測。"
+      ],
+      "note": "16 張各入一章，依卡面工時範圍核過六章。分章預算合計 495 秒（8 分 15 秒）；加權素材 14 條，超過 11.4 條門檻。"
+    }
+  }
+}

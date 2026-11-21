@@ -287,7 +287,7 @@ test("the backup round fetches an imported video's package first and the full ti
     }
     return { code: 0, stdout: "", stderr: "" };
   };
-  const ctx = { env: { VIDEO_WORKDIR: work, VIDEO_BACKUP_RCLONE_CONFIG: path.join(box, "rclone.conf"), VIDEO_BACKUP_LOCK_PATH: "AI/備份", TMPDIR: box }, now: () => NOW, root: path.join(box, "repo") };
+  const ctx = { env: { VIDEO_WORKDIR: work, VIDEO_BACKUP_RCLONE_CONFIG: path.join(box, "rclone.conf"), VIDEO_BACKUP_LOCK_PATH: "AI/備份", TMPDIR: box, VIDEO_BACKUP_INDEX_HOURS: "0" }, now: () => NOW, root: path.join(box, "repo") };
   const { lines } = await backupRound(ctx, { client, rclone });
   assert.ok(lines.some((line) => /fetched its upload package from the site \(8 file\(s\), 2 clip\(s\)\)/.test(line)), lines.join("\n"));
   const episode = path.join(drive, "zhong-tian-qu-qi", "033-zhong-tian-qu-qi-e033");
@@ -326,7 +326,7 @@ test("a package the store let go entirely is told to the site once, not retried,
     },
   };
   const rclone = async (args) => (args[0] === "about" ? { code: 0, stdout: JSON.stringify({ total: 5 * 1024 ** 4, free: 4 * 1024 ** 4 }), stderr: "" } : { code: 0, stdout: "", stderr: "" });
-  const ctx = { env: { VIDEO_WORKDIR: work, VIDEO_BACKUP_RCLONE_CONFIG: path.join(box, "rclone.conf"), VIDEO_BACKUP_LOCK_PATH: "AI/備份", TMPDIR: box }, now: () => NOW, root: path.join(box, "repo") };
+  const ctx = { env: { VIDEO_WORKDIR: work, VIDEO_BACKUP_RCLONE_CONFIG: path.join(box, "rclone.conf"), VIDEO_BACKUP_LOCK_PATH: "AI/備份", TMPDIR: box, VIDEO_BACKUP_INDEX_HOURS: "0" }, now: () => NOW, root: path.join(box, "repo") };
 
   const first = await backupRound(ctx, { client, rclone });
   assert.ok(!first.lines.some((line) => /\bfailed\b/.test(line)), first.lines.join("\n"));

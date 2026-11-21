@@ -8,6 +8,9 @@ const visibility = {
   flight_status_enabled: true,
   airline_fares_enabled: true,
   pricing_enabled: true,
+  flight_search_enabled: true,
+  videos_enabled: true,
+  member_features_enabled: true,
 };
 
 const operationCosts = Object.fromEntries([

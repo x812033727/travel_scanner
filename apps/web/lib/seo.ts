@@ -26,6 +26,9 @@ export const FEED_PATH = "/feed.xml";
 /** Google News sitemap covering dated news and alerts published in the last 48 hours. */
 export const NEWS_SITEMAP_PATH = "/sitemap-news.xml";
 
+/** Google Video sitemap covering published video watch pages. */
+export const VIDEO_SITEMAP_PATH = "/sitemap-videos.xml";
+
 /** Explicit large-image preview directives for Google Discover on editorial articles and the home
  *  portal. Kept off section/topic hubs where `e2e/seo.spec.ts` asserts default indexability emits
  *  no `<meta name="robots">` tag. */

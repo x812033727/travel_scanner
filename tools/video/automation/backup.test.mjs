@@ -1,12 +1,12 @@
 // The backup round (backup.mjs) against a fake rclone that copies between real folders, and a
 // fake site: what is copied, when it is copied again, and when the tidy may clear a video.
 import assert from "node:assert/strict";
-import { cpSync, existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 
-import { backupRound, contentsOf, drivePath, MANIFEST_FILE, planFiles, prefixUnder, STATE_FILE, verdictOf, videoDir } from "./backup.mjs";
+import { backupRound, contentsOf, DRIVE_LOOKUPS_PER_ROUND, drivePath, MANIFEST_FILE, planFiles, prefixUnder, STATE_FILE, verdictOf, videoDir } from "./backup.mjs";
 import { clearedLine, roundLines, tidyRound } from "./tidy.mjs";
 
 const NOW = new Date("2026-10-20T03:00:00Z");
@@ -124,6 +124,22 @@ function fakeRclone(drive, { free = 100 * 1024 ** 3, fail = {}, corrupt = false 
       rmSync(local(from), { recursive: true, force: true });
       return { code: 0, stdout: "", stderr: "" };
     }
+    if (command === "lsjson") {
+      // Drive's id of a file or folder: a stable stand-in made from its path. Like rclone 1.74,
+      // `--stat` on a folder answers as the root of its own listing, with no ID; a folder's id
+      // only shows in its parent's listing.
+      const remotePath = args.at(-1);
+      const where = local(remotePath);
+      if (!existsSync(where)) return { code: 3, stdout: "", stderr: "ERROR : directory not found" };
+      const idFor = (each) => `id_${Buffer.from(each).toString("hex").slice(-24)}`;
+      if (args[1] === "--dirs-only") {
+        const base = remotePath.endsWith(":") ? remotePath : `${remotePath}/`;
+        const dirs = readdirSync(where, { withFileTypes: true }).filter((entry) => entry.isDirectory());
+        return { code: 0, stdout: JSON.stringify(dirs.map((entry) => ({ Path: entry.name, Name: entry.name, IsDir: true, ID: idFor(`${base}${entry.name}`) }))), stderr: "" };
+      }
+      if (statSync(where).isDirectory()) return { code: 0, stdout: JSON.stringify({ Path: "", Name: "", Size: -1, IsDir: true }), stderr: "" };
+      return { code: 0, stdout: JSON.stringify({ Path: path.basename(where), Name: path.basename(where), IsDir: false, ID: idFor(remotePath) }), stderr: "" };
+    }
     if (command === "deletefile") {
       rmSync(local(args[1]), { force: true });
       return { code: 0, stdout: "", stderr: "" };
@@ -141,7 +157,7 @@ const target = (slug, extra = {}) => ({
 
 /** The site's backup routes: the config the worker reads, and every report it sends. */
 function fakeSite({ videos = [], enabled = true, lock = "AI/備份", prefix = "", answer = () => "done", test: probe = null } = {}) {
-  const site = { reports: [], locks: [], answers: [], lock, test: probe };
+  const site = { reports: [], locks: [], answers: [], drive: [], lock, test: probe };
   site.client = {
     config: async () => ({ enabled, path: "AI/備份", lock_path: site.lock, remote_prefix: enabled && site.lock ? prefix : null, problem: enabled ? (site.lock ? null : "no lock") : "備份尚未開啟", test: site.test, videos }),
     lock: async (body) => {
@@ -154,6 +170,10 @@ function fakeSite({ videos = [], enabled = true, lock = "AI/備份", prefix = ""
       site.test = null;
       return {};
     },
+    drive: async (slug, body) => {
+      site.drive.push({ slug, ...body });
+      return {};
+    },
     report: async (slug, body) => {
       site.reports.push({ slug, ...body });
       const state = body.state === "done" ? answer(slug, body) : body.state;
@@ -164,7 +184,8 @@ function fakeSite({ videos = [], enabled = true, lock = "AI/備份", prefix = ""
 }
 
 function ctxFor(box, { now = NOW, env = {} } = {}) {
-  return { env: { VIDEO_WORKDIR: box.work, VIDEO_BACKUP_RCLONE_CONFIG: box.conf, VIDEO_BACKUP_LOCK_PATH: "AI/備份", TMPDIR: box.box, ...env }, now: () => now, root: path.join(box.box, "repo") };
+  // The daily Drive index has tests of its own (drive-index.test.mjs); these rounds leave it off.
+  return { env: { VIDEO_WORKDIR: box.work, VIDEO_BACKUP_RCLONE_CONFIG: box.conf, VIDEO_BACKUP_LOCK_PATH: "AI/備份", TMPDIR: box.box, VIDEO_BACKUP_INDEX_HOURS: "0", ...env }, now: () => now, root: path.join(box.box, "repo") };
 }
 
 const stateOf = (dir) => JSON.parse(readFileSync(path.join(dir, STATE_FILE), "utf8"));
@@ -681,4 +702,38 @@ test("a video the owner deleted on /admin/videos leaves the host whole, its work
   assert.ok(lines.some((line) => /^tidy: curio-gone was deleted on \/admin\/videos: removed _shorts\/curio-gone\/ whole/.test(line)));
   assert.ok(lines.some((line) => /curio-link\/ is kept: .* not a real folder/.test(line)));
   assert.deepEqual(tidyRound({ base: box.work, repos, site: [], backup: gate, now: NOW, days: 7 }).deleted.map((outcome) => outcome.slug), ["curio-link"], "nothing is left of it the next round");
+});
+
+test("a backed-up video the site has no Drive ids for gets its folder's and final cut's, even once the host cleared it", async () => {
+  const box = sandbox();
+  // Backed up earlier and cleared from the host since: only Drive holds it.
+  const episode = path.join(box.drive, "奇聞檔案局", "curio-h01");
+  mkdirSync(episode, { recursive: true });
+  writeFileSync(path.join(episode, "final.mp4"), "cut");
+  const noCut = path.join(box.drive, "奇聞檔案局", "curio-h02");
+  mkdirSync(noCut, { recursive: true });
+  const asked = { needs_drive_ids: true, backup: { state: "done" } };
+  const site = fakeSite({ videos: [
+    target("curio-h01", asked), target("curio-h02", asked), target("curio-gone", asked),
+    target("curio-known", { backup: { state: "done" } }), target("Bad_Slug", asked),
+  ] });
+  const rclone = fakeRclone(box.drive);
+  const { lines } = await backupRound(ctxFor(box), { client: site.client, rclone: rclone.run });
+  assert.deepEqual(site.drive.map((each) => [each.slug, each.folder, Boolean(each.folder_id), Boolean(each.final_file_id)]), [
+    ["curio-h01", "奇聞檔案局/curio-h01", true, true],
+    ["curio-h02", "奇聞檔案局/curio-h02", true, false],
+  ]);
+  assert.match(site.drive[0].folder_id, /^[A-Za-z0-9_-]{10,200}$/);
+  assert.notEqual(site.drive[0].folder_id, site.drive[0].final_file_id);
+  assert.ok(lines.some((line) => /curio-gone: the id of its Drive folder could not be read/.test(line)));
+  const looked = rclone.calls.filter(([command]) => command === "lsjson");
+  assert.ok(looked.every((args) => ["--stat", "--dirs-only"].includes(args[1])), "a lookup only reads");
+  assert.ok(looked.some((args) => args[1] === "--dirs-only" && args.at(-1).endsWith(":奇聞檔案局")), "a folder's id comes from its parent's listing");
+  assert.ok(!looked.some((args) => args.at(-1).includes("curio-known")), "a video the site has ids for is not read");
+
+  // A round reads at most DRIVE_LOOKUPS_PER_ROUND.
+  const many = fakeSite({ videos: Array.from({ length: DRIVE_LOOKUPS_PER_ROUND + 5 }, (_, i) => target(`curio-m${i}`, asked)) });
+  for (let i = 0; i < DRIVE_LOOKUPS_PER_ROUND + 5; i += 1) mkdirSync(path.join(box.drive, "奇聞檔案局", `curio-m${i}`), { recursive: true });
+  await backupRound(ctxFor(box), { client: many.client, rclone: fakeRclone(box.drive).run });
+  assert.equal(many.drive.length, DRIVE_LOOKUPS_PER_ROUND);
 });

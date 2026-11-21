@@ -32,9 +32,10 @@ export async function loadAiHubRails(locale: Locale, topics: readonly GuideTopic
     Promise.all(wanted.map((topic) => getGuideList(locale, { kind: "life", topic: topic.slug, sort: "curated" }, PER_RAIL))),
     news ? getGuideList(locale, { kind: "life", topic: news.slug, sort: "news" }, NEWS_ROWS) : Promise.resolve(null),
   ]);
+  const stories = newsList?.articles.filter((article) => article.news_date) ?? [];
   return {
     rails: wanted.map((topic, index) => ({ topic, articles: lists[index].articles })).filter((rail) => rail.articles.length),
-    news: news && newsList?.articles.length ? { topic: news, articles: newsList.articles } : null,
+    news: news && stories.length ? { topic: news, articles: stories } : null,
   };
 }
 
@@ -60,7 +61,7 @@ export function AiHubRails({ rails, news, labels }: {
       </nav>
       {news ? (
         <Rail rail={news} seeAll={labels.seeAll}>
-          <NewsList articles={news.articles} className="mt-4" />
+          <NewsList articles={news.articles} className="mt-4" leadHeading="h4" />
         </Rail>
       ) : null}
       {rails.map((rail) => (

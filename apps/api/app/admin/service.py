@@ -93,6 +93,9 @@ SITE_VISIBILITY_FIELDS = (
     "flight_status_enabled",
     "airline_fares_enabled",
     "pricing_enabled",
+    "flight_search_enabled",
+    "videos_enabled",
+    "member_features_enabled",
 )
 
 # Settings that put the owner's personal subscription accounts to work for the site.
@@ -105,7 +108,7 @@ OWNER_ONLY_CONFIG_FIELDS: dict[str, tuple[str, ...]] = {
 
 # Rows that are never disabled: a disabled row nulls its secrets, and these hold
 # settings every feature shares rather than one provider that can be switched off.
-ALWAYS_ENABLED_PROVIDERS = frozenset({"runtime", "layout", "ai_vendors"})
+ALWAYS_ENABLED_PROVIDERS = frozenset({"runtime", "layout", "ai_vendors", "video_reviews"})
 # The city the AI planner connection test plans for. It must be a name
 # ``match_destination`` resolves, or the test would load zero candidates and quietly
 # stop exercising the path it exists to cover.
@@ -206,6 +209,7 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
             "anthropic_api_base_url",
             "minimax_api_base_url",
             "hotspot_guide_gemini_base_url",
+            "hotspot_guide_gemini_key_budgets_usd",
             "jev_api_base_url",
             "jev_daily_call_budget",
         ),
@@ -215,6 +219,7 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
             "minimax_api_key",
             "minimax_api_keys_extra",
             "hotspot_guide_gemini_api_key",
+            "hotspot_guide_gemini_api_keys_extra",
             "jev_api_key",
         ),
     ),
@@ -244,6 +249,16 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         "規則在 docs/videos/ILLUSTRATED.md。",
         ("pexels_api_base_url", "pixabay_api_base_url"),
         ("pexels_api_key", "pixabay_api_key"),
+    ),
+    # The owner sets how much the preview store may hold from /admin/videos → 設定 (owner,
+    # 2026-11-19), instead of editing VIDEO_REVIEW_MAX_TOTAL_BYTES in the host's .env and
+    # rebuilding the API. The .env value is the default; a saved one wins. Edited on its own
+    # card (apps/web/components/admin-video-review-store.tsx), not the generic settings page.
+    "video_reviews": ProviderDefinition(
+        "審片空間",
+        "後台審片用的預覽與成片檔案區，總量上限滿了就不能再送新的預覽（507）。",
+        ("video_review_max_total_bytes",),
+        (),
     ),
     "runpod": ProviderDefinition(
         "RunPod GPU（MiniMax H3 片段）",
@@ -654,15 +669,25 @@ def apply_runtime_overrides(base: Settings, rows: list[ProviderConfig]) -> Setti
 
 async def load_runtime_settings(session: AsyncSession) -> Settings:
     settings = apply_runtime_overrides(get_settings(), await provider_rows(session))
-    if not settings.minimax_api_keys_extra:
+    if not settings.minimax_api_keys_extra and not settings.hotspot_guide_gemini_api_keys_extra:
         return settings
-    # Several M Plan keys: every text call made with these settings (planner, trip parser,
-    # guide search and review, intros, news, video stages) uses the key the pool picks now.
-    # Video media and speech pick their own per call (app.ai.minimax_pool).
-    from app.ai.minimax_pool import settings_with_key
     from app.infra import get_redis
 
-    return await settings_with_key(get_redis(), settings)
+    redis = get_redis()
+    if settings.minimax_api_keys_extra:
+        # Several M Plan keys: every text call made with these settings (planner, trip parser,
+        # guide search and review, intros, news, video stages) uses the key the pool picks now.
+        # Video media and speech pick their own per call (app.ai.minimax_pool).
+        from app.ai.minimax_pool import settings_with_key
+
+        settings = await settings_with_key(redis, settings)
+    if settings.hotspot_guide_gemini_api_keys_extra:
+        # Several Gemini keys: every Gemini call made with these settings uses the first key
+        # that is neither resting nor over its budget (app.ai.gemini_pool).
+        from app.ai import gemini_pool
+
+        settings = await gemini_pool.settings_with_key(redis, settings)
+    return settings
 
 
 async def effective_registration_enabled(session: AsyncSession) -> bool:
@@ -1137,7 +1162,9 @@ CONNECTION_TESTED_PROVIDERS = frozenset({
 })
 # The rest hold settings with no upstream to call, or read other cards' keys, so testing
 # them proves nothing and their green light already means what it says.
-LOCAL_ONLY_PROVIDERS = frozenset({"adsense", "analytics", "hotspot_guides", "layout", "runtime"})
+LOCAL_ONLY_PROVIDERS = frozenset(
+    {"adsense", "analytics", "hotspot_guides", "layout", "runtime", "video_reviews"}
+)
 
 
 def _production_test_required(provider: str, settings: Settings) -> bool:
@@ -1435,6 +1462,13 @@ def _validate_provider_values(
                 "provider_setting_invalid",
                 f"{field} 必須是布林值",
             )
+    if (
+        "video_review_max_total_bytes" in merged
+        and type(merged["video_review_max_total_bytes"]) is not int
+    ):
+        raise AppError(
+            422, "provider_setting_invalid", "video_review_max_total_bytes 必須是整數（位元組）"
+        )
     if "catalog_review_max_calls" in merged and type(merged["catalog_review_max_calls"]) is not int:
         raise AppError(422, "provider_setting_invalid", "catalog_review_max_calls 必須是整數")
     if "ga4_measurement_id" in merged:

@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { PoolEpisodePage, PoolExpansions, PoolOverview, PoolTheme, PoolThemeDetail, PoolThemePage } from "./admin-video-pools";
+import type { PoolCore, PoolCorePage, PoolEpisodePage, PoolExpansions, PoolOverview, PoolTheme, PoolThemeDetail, PoolThemePage } from "./admin-video-pools";
 import { AdminOperationsProvider } from "./admin-operations-provider";
 import { AdminVideoReviews } from "./admin-video-reviews";
 import { api } from "@/lib/api";
@@ -9,15 +9,18 @@ import { videoPoolsCopy } from "@/lib/video-pools-copy";
 vi.mock("@/lib/api", () => ({ api: vi.fn() }));
 vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user: null, sessionIdentity: null, status: undefined }) }));
 const copy = videoPoolsCopy("zh-TW");
-const counts = { raw_records: 1868, selected: 1512, themes: 155, long_themes: 155, producible: 77, long_reserve: 78, scored: 155, improved: 114 };
+const counts = { raw_records: 1868, selected: 1512, themes: 155, long_themes: 155, producible: 77, long_reserve: 78, scored: 155, improved: 114, cores: 1300, cores_passing: 298 };
 const overview: PoolOverview = { series: [
   { key: "curio", name: "奇聞檔案局", revision: "2026-11-13-curio-pool-1512", audience_min: 6.5, themes_sha256: "a".repeat(64), counts },
   { key: "so-thats-why", name: "原來如此事務所", revision: "2026-11-13-pool-5125", audience_min: 6.5, themes_sha256: "b".repeat(64), counts: { ...counts, producible: 95 } },
 ] };
-const audience = { score: 7.08, rank: 3, of: 155, click: 7, hook: 7.5, surprise: 7, payoff: 7, share: 7, comment: "鬼故事對史書很過癮", reviewed_on: "2026-11-14", rounds: [{ score: 4.51, comment: "太冷門", changes: "片名改成問句", reviewed_on: "2026-11-14" }] };
+const audience = { score: 7.08, rank: 3, of: 155, click: 7, hook: 7.5, surprise: 7, payoff: 7, share: 7, demand: 7.75, base: 6.95, comment: "鬼故事對史書很過癮", reviewed_on: "2026-11-14", rounds: [{ score: 4.51, comment: "太冷門", changes: "片名改成問句", reviewed_on: "2026-11-14" }] };
 const theme = (fields: Partial<PoolTheme> = {}): PoolTheme => ({ id: "T78", title: "鬼故事裡的人名都是真的？", category: "G-靈異與超自然公案", core_question: "筆記裡的鬼拿實錄一對會怎樣？", target_minutes: 10, long: true, producible: true, material: { verdict: "ready", missing: null }, candidates: 3, audience, ...fields });
 const detail: PoolThemeDetail = { ...theme(), chapters: [{ title: "開場：一本筆記", seconds: 60, new_information: "筆記裡的鬼有名有姓" }], boredom_risk: "三段結構重複", drop_if: "來源對不上就刪章", evidence_gaps: "實錄卷數待補" };
 const themes = (items = [theme()]): PoolThemePage => ({ items, total: items.length, page: 1, page_size: 25, categories: [{ category: "G-靈異與超自然公案", count: 1 }] });
+const BRAND = "W-商業與品牌奇聞";
+const core = (fields: Partial<PoolCore> = {}): PoolCore => ({ id: "N5803", category: BRAND, question: "為什麼只有黑桃 A 畫得特別華麗？", hook: "翻開手邊任何一副撲克牌。", payoff: "印花稅局把黑桃 A 的印版鎖進金庫。", minutes: [10, 12], audience: { ...audience, score: 8.25, rank: 1, of: 856, rounds: [] }, demand: 7.75, produced: false, ...fields });
+const cores = (items = [core()]): PoolCorePage => ({ items, total: items.length, page: 1, page_size: 25, categories: [{ category: BRAND, count: 26 }, { category: "G-靈異與超自然公案", count: 53 }] });
 const expansions: PoolExpansions = { expansions: [{ batch_id: "wave52-20261113", created_on: "2026-11-13", scope: "第五十二批新題", candidates: 20, selected: 20, not_added: 38, sources: 183 }], checkpoints: [] };
 const episodes: PoolEpisodePage = { total: 2, published: 1, unpublished: 1, items: [
   { key: "sothatswhy-p14-sky-colors", code: "P14", title: "天空為什麼是藍的", category: "地球天氣與太空", slugs: ["sothatswhy-p14-sky-colors"], candidate_ids: ["LEG-S02"], published: true, youtube_id: "5xf1VoDNXWo", youtube_url: "https://www.youtube.com/watch?v=5xf1VoDNXWo", youtube_source: "site", site_slug: "sothatswhy-p14-sky-colors", publish_at: "2026-11-20T10:00:00Z", stage: "published", dropped: false, privacy: null },
@@ -34,11 +37,12 @@ afterEach(() => {
   window.history.replaceState(null, "", "/");
 });
 
-function respond(themePage = themes()) {
+function respond(themePage = themes(), corePage = cores()) {
   vi.mocked(api).mockImplementation(async (path) => {
     const value = String(path);
     if (value === "/admin/video-pools") return overview;
     if (value.includes("/expansions")) return expansions;
+    if (value.includes("/cores?")) return corePage;
     if (value.includes("/episodes?")) return value.includes("status=unpublished") ? { ...episodes, items: [episodes.items[1]], total: 1 } : episodes;
     if (/\/themes\/[^?]+$/.test(value)) return detail;
     if (value.includes("/themes?")) return themePage;
@@ -71,6 +75,38 @@ describe("topic pools in video admin", () => {
     fireEvent.change(screen.getByRole("combobox", { name: copy.viewLabel }), { target: { value: "expansions" } });
     await waitFor(() => expect(new URL(window.location.href).searchParams.get("pool_view")).toBe("expansions"));
     expect(await screen.findByText("新增 20 題，入選 20，未收 38，來源 183 筆")).toBeTruthy();
+  });
+
+  it("lists single-episode topics, where the business and brand category lives", async () => {
+    respond();
+    renderAt("/zh-TW/admin/videos?tab=pools&pool_view=cores");
+    expect(await screen.findByRole("heading", { name: core().question })).toBeTruthy();
+    expect(calls().some(([path]) => String(path) === "/admin/video-pools/curio/cores?status=passing&page=1&page_size=25")).toBe(true);
+    expect(screen.getByText("8.25")).toBeTruthy();
+    expect(screen.getByText("第 1／856 名")).toBeTruthy();
+    expect(screen.getByText("約 10–12 分鐘")).toBeTruthy();
+    expect(await screen.findByText("298")).toBeTruthy();
+    expect(screen.getByRole("option", { name: `${BRAND} (26)` })).toBeTruthy();
+    fireEvent.click(screen.getByText(copy.coreDetails));
+    expect(screen.getByText(core().payoff)).toBeTruthy();
+    fireEvent.change(screen.getByRole("combobox", { name: copy.category }), { target: { value: BRAND } });
+    await waitFor(() => expect(new URL(window.location.href).searchParams.get("pool_category")).toBe(BRAND));
+    await waitFor(() => expect(calls().some(([path]) => String(path).includes("/curio/cores?") && String(path).includes(`category=${encodeURIComponent(BRAND)}`))).toBe(true));
+    fireEvent.change(screen.getByRole("combobox", { name: copy.statusLabel }), { target: { value: "unscored" } });
+    await waitFor(() => expect(new URL(window.location.href).searchParams.get("pool_core_status")).toBe("unscored"));
+    expect(new URL(window.location.href).searchParams.get("pool_category")).toBeNull();
+  });
+
+  it("shows an unscored topic with its demand, and an empty series as empty", async () => {
+    respond(themes(), cores([core({ id: "N6063", audience: null, demand: 1, produced: true })]));
+    renderAt("/zh-TW/admin/videos?tab=pools&pool_view=cores&pool_core_status=unscored");
+    expect(await screen.findByText(copy.notScored)).toBeTruthy();
+    expect(screen.getByText(`${copy.dims.demand} 1`)).toBeTruthy();
+    expect(screen.getByText(copy.produced)).toBeTruthy();
+    respond(themes(), cores([]));
+    fireEvent.change(screen.getByRole("combobox", { name: copy.seriesLabel }), { target: { value: "so-thats-why" } });
+    expect(await screen.findByText(copy.coreEmpty)).toBeTruthy();
+    expect(new URL(window.location.href).searchParams.get("pool_core_status")).toBeNull();
   });
 
   it("says so when nothing matches", async () => {

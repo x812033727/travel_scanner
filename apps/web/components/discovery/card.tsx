@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { MapPin, ArrowUpRight, Bookmark } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useCommunity } from "@/components/community/provider";
+import { useSiteVisibility } from "@/components/site-visibility-provider";
 import { ItineraryPreview } from "@/components/community/post";
 import { Button, CommunityImage } from "@/components/community/ui";
 import { TravelPlanAction } from "@/components/travel-card-actions";
@@ -15,6 +16,7 @@ import { getDiscoveryCopy, getDiscoveryFeedback, getRecommendationReason } from 
 import { getFrontendFlowCopy } from "@/lib/frontend-flow-copy";
 import { useDiscoveryResource, type DiscoveryItem, type DiscoveryPlace } from "@/lib/discovery";
 import { safeExternalHref, safeNextPath } from "@/lib/navigation";
+import { featureVisible } from "@/lib/site-features";
 import { DiscoveryVideoPlayer } from "./video";
 import { SavedContentAction } from "./saved-content-action";
 import { useDiscoveryDetailNavigation } from "./detail-drawer";
@@ -55,6 +57,8 @@ function SavedCount({ item }: { item: Pick<DiscoveryItem, "saved_count"> }) {
 export function DiscoveryCard({ item, onDismiss }: { item: DiscoveryItem; onDismiss?: (item: DiscoveryItem) => void }) {
   const locale = useLocale(); const c = getDiscoveryCopy(locale);
   const { flags } = useCommunity();
+  const visibility = useSiteVisibility();
+  const memberFeaturesVisible = featureVisible(visibility, "member_features");
   const pathname = usePathname(); const params = useSearchParams();
   const navigation = useDiscoveryDetailNavigation();
   const returnTo = `${pathname}${params.size ? `?${params}` : ""}`;
@@ -78,7 +82,7 @@ export function DiscoveryCard({ item, onDismiss }: { item: DiscoveryItem; onDism
       {item.summary?.trim() && <p className={styles.cardSummary}>{item.summary}</p>}
       <p className={styles.cardMeta}>{c.sourceKinds[item.source.kind]} · {item.author?.display_name || item.source.label}{item.published_at && <> · <time dateTime={item.published_at}>{new Date(item.published_at).toLocaleDateString(locale)}</time></>}{language && <span className="inline-flex items-center self-center whitespace-nowrap rounded-full border border-[var(--line)] px-2 text-[11px] leading-4"><span className="sr-only">{c.language}: </span><span>{language}</span></span>}</p>
       {item.recommendation_reason && <p className={styles.reason}><span className="sr-only">{c.reason}: </span>{getRecommendationReason(locale, item.recommendation_reason)}</p>}
-      <div className={styles.cardFooter}><SavedContentAction item={item} returnTo={returnTo} compact resumeEnabled={!params.has("content")} /><TravelPlanAction item={item} returnTo={returnTo} compact resumeEnabled={!params.has("content")} /><SavedCount item={item} /></div>
+      {memberFeaturesVisible && <div className={styles.cardFooter}><SavedContentAction item={item} returnTo={returnTo} compact resumeEnabled={!params.has("content")} /><TravelPlanAction item={item} returnTo={returnTo} compact resumeEnabled={!params.has("content")} /><SavedCount item={item} /></div>}
       {onDismiss && <button type="button" onClick={() => onDismiss(item)} className="min-h-11 self-start rounded-lg text-xs text-[var(--muted)] underline underline-offset-4 focus-visible:outline focus-visible:outline-2">{c.dismiss}</button>}
     </div>
   </article>;
@@ -102,6 +106,8 @@ function CardMetadata({ item }: { item: DiscoveryItem }) {
 export function DiscoveryDetails({ kind, id, returnTo = "/explore" }: { kind: string; id: string; returnTo?: string }) {
   const locale = useLocale(); const c = getDiscoveryCopy(locale); const f = getFrontendFlowCopy(locale);
   const reading = useTranslations("admin.sitePages");
+  const visibility = useSiteVisibility();
+  const memberFeaturesVisible = featureVisible(visibility, "member_features");
   const navigation = useDiscoveryDetailNavigation();
   const result = useDiscoveryResource<DiscoveryItem>(`/discovery/content/${encodeURIComponent(kind)}/${encodeURIComponent(id)}`);
   if (result.error) return <div role="alert" className={styles.detailBody}><p>{c.unavailable}</p><Button secondary onClick={result.reload}>{c.retry}</Button></div>;
@@ -147,7 +153,7 @@ export function DiscoveryDetails({ kind, id, returnTo = "/explore" }: { kind: st
         {source && <ExternalLink href={source}>{c.source}</ExternalLink>}
         {item.href && !item.href.includes("/explore?content=") && <Link href={safeNextPath(item.href, "/explore").replace(/^\/(?:zh-TW|zh-CN|en|ja|ko)(?=\/)/, "")} className="flex min-h-11 items-center text-[var(--teal)] underline">{c.details}</Link>}
       </section>
-    </div><footer className={styles.detailFooter}><SavedContentAction item={item} returnTo={returnTo} /><TravelPlanAction item={item} returnTo={returnTo} /><SavedCount item={item} /></footer></>;
+    </div>{memberFeaturesVisible && <footer className={styles.detailFooter}><SavedContentAction item={item} returnTo={returnTo} /><TravelPlanAction item={item} returnTo={returnTo} /><SavedCount item={item} /></footer>}</>;
 }
 function HotelDetails({ product }: { product: Product }) {
   const t = useTranslations("travelServices"); const [open, setOpen] = useState(false);

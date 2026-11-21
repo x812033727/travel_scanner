@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-19",
+  "method": "兩位未參與研究和素材覆核的評審各讀四題，只有兩人皆答是的指標計分。",
+  "controls": {
+    "G750": {
+      "previous": {
+        "have": true,
+        "local": false,
+        "standard": true,
+        "lose_or_jp": false
+      },
+      "current": {
+        "have": true,
+        "local": false,
+        "standard": true,
+        "lose_or_jp": false
+      },
+      "reviews": {
+        "a": [
+          "1010",
+          "手機上的保護貼即可查看，核心是 9H 鉛筆刮痕試驗的評級。東京抽測支撐說明，換市場仍可解釋這項試驗。"
+        ],
+        "b": [
+          "1010",
+          "觀眾能拿起手機看自己的保護貼。問題直接問鉛筆硬度檢測規格，東京抽測是例證，換地區仍適用同一試驗解釋。"
+        ]
+      }
+    },
+    "G751": {
+      "previous": {
+        "have": true,
+        "local": false,
+        "standard": true,
+        "lose_or_jp": false
+      },
+      "current": {
+        "have": true,
+        "local": false,
+        "standard": true,
+        "lose_or_jp": false
+      },
+      "reviews": {
+        "a": [
+          "1010",
+          "翻衣櫃就能比兩件 M 號，核心是字母尺碼與人體尺寸標準。拿掉日韓臺案例，美國和歐洲仍足以解釋為何同號不同大。"
+        ],
+        "b": [
+          "1010",
+          "衣櫃裡的衣服就能對照尺碼標準。拿掉日韓與臺灣例子，美歐的規格與廠商放鬆份仍能解釋同標不同大。"
+        ]
+      }
+    },
+    "G756": {
+      "previous": {
+        "have": false,
+        "local": true,
+        "standard": true,
+        "lose_or_jp": false
+      },
+      "current": {
+        "have": false,
+        "local": true,
+        "standard": true,
+        "lose_or_jp": false
+      },
+      "reviews": {
+        "a": [
+          "0110",
+          "主角是跨行 ATM 手續費，家裡有提款卡也沒有這套設備。答案依臺灣財金公司、設備行與發卡行的拆帳數字判定誰拿最多。"
+        ],
+        "b": [
+          "0110",
+          "主角是跨行費用及銀行網路，通常家中沒有提款機。最大份給誰採臺灣轉帳拆帳數字作答，各國分配不同。"
+        ]
+      }
+    }
+  },
+  "themes": [
+    {
+      "id": "G771",
+      "answers": {
+        "have": true,
+        "local": false,
+        "standard": false,
+        "lose_or_jp": true
+      },
+      "demand": 5.5,
+      "reason": "借的是家中遊戲卡，日本品牌任天堂的主機與啟動授權是故事中心。辨別卡片、序號和邀請是為了知道誰能開玩；日版與記憶卡標準都只是部分情境。／玩家手上的盒裝遊戲和任天堂主機就是主角。是否可借取決於卡、帳號與授權規格，日版語音及區碼改變個別情境，借出鑰匙卡後原主無卡開不了在各地相同。",
+      "reviewers": {
+        "a": [
+          "1001",
+          "借的是家中遊戲卡，日本品牌任天堂的主機與啟動授權是故事中心。辨別卡片、序號和邀請是為了知道誰能開玩；日版與記憶卡標準都只是部分情境。"
+        ],
+        "b": [
+          "1011",
+          "玩家手上的盒裝遊戲和任天堂主機就是主角。是否可借取決於卡、帳號與授權規格，日版語音及區碼改變個別情境，借出鑰匙卡後原主無卡開不了在各地相同。"
+        ]
+      }
+    }
+  ],
+  "control_note": "三個對照題保留原判與本輪判讀。新分數只套用本批長題。",
+  "panel_manifest": {
+    "stage": "demand",
+    "theme_id": "G771",
+    "theme_sha256": "e630f132ffc14e16e98b19f7360b4aa5ca9fded97213930a7b7441b95fbfb03e",
+    "card_sha256": "e90700338bb4f0656b125584c20f754c06fdd4d32fa7bb0da97c6fe57eead623",
+    "panel_sha256": "dab891ab70119b4547401ddd6085adcdf1a3ad8c783ae3640b51ccf1054aa85e",
+    "panel_row_count": 4
+  },
+  "ratings_sha256": {
+    "a": "b007c279a23a609a2e043180645c5d8cf38bef4ba4669fe2f49958261be05bcd",
+    "b": "d8099b77da45ff2e6ae27320c79617e3ac7e4104f8ce82fae9b1c7c04ae9e6f5"
+  }
+}

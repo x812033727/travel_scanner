@@ -1,0 +1,1097 @@
+{
+  "batch": "batches/wave75-20261117.json",
+  "reviewed_on": "2026-11-17",
+  "method": "十位沒有參與研究的獨立覆核代理（R750–R759 依序覆核 ZT0–ZT9）逐題對照研究代理的請求紀錄與快取檔，至少重新請求一個關鍵一手／機構來源，逐句核對年份、數字與引文，查題卡有沒有殘留舊假卡的說法，重做全池與跨系列去重，對照不收清單、1956 真人規範、傷亡不描寫的規定與 8 分鐘門檻，並把派工時照舊卡填的軸別改成合適的類別；修改直接寫進批次的題目與來源欄位，覆核補讀的來源編入該研究代理的來源序號，沒被收下的題引用的來源移除。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 37,
+    "NEEDS_CHECK": 6,
+    "REJECT": 2
+  },
+  "source_renames": {
+    "R752-S001": "ZT2-S018",
+    "R752-S002": "ZT2-S019"
+  },
+  "verdicts": [
+    {
+      "id": "N7401",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R750",
+      "author": "ZT0",
+      "key_source_reopened": "https://arxiv.org/pdf/1504.02165（R750 seq 1，200，2575642 bytes）：與作者 seq 1 位元組、雜湊相同。摘要第一句 terrestrial origin、§1 的 25 個／上班時間、2014-12 干擾監測器、1 月 19／22／23 日、§3.4 3 月 17 日測試（Woolshed 三個、訪客中心六個、約 50%、裝水陶瓷杯、100 m）、§3.5 46 個中 16 個在 1998-06-23 七分鐘內、§4 兩台都超過 27 年：都對得上。全文無 alien。；http://www.theguardian.com/science/2015/may/05/microwave-oven-caused-mystery-signal-plaguing-radio-telescope-for-17-years（R750 seq 2，403，24 bytes）：網址取自 ZT0-S003 文內「baffled scientists」連結；403，第一次就停，內文沒讀到。；http://metro.co.uk/2015/04/13/alien-signals-from-space-actually-came-from-scientists-microwaves-5147355/（R750 seq 3，403，24 bytes）：網址取自 ZT0-S003 文內「alien signals from space」連結；403，第一次就停，內文沒讀到。；https://arxiv.org/abs/1504.02165（R750 seq 7，200，45305 bytes）：作者承認只讀 v1：摘要頁顯示只有 v1（2015-04-09）、註記 submitted to MNRAS、Related DOI 10.1093/mnras/stv1242。期刊定稿沒讀。",
+      "changes": [
+        "S001 補 arXiv 摘要頁的確認（只有 v1、Related DOI 指向 MNRAS），scope 改成可以說「後來刊在皇家天文學會月刊」但不引期刊字句",
+        "answer_target 補一句：2011 年論文當時還猜過閃電等自然來源，「人為」是後來才傾向的（ZT0-S003），避免把「一開始就知道是人造」講過頭",
+        "「外星／17 年」樣本補上 ZT0-S003 文內兩個報導連結的網址字面，scope 寫明內文沒讀到、不轉述",
+        "payoff 的「望遠鏡指向廚房」改成「轉到接收艙看得見廚房的角度」，照論文的視線條件"
+      ],
+      "unverified": [
+        "沒有一篇讀到內文、把它寫成外星訊號的當年報導（兩個連結都 403）；樣本是第一作者的轉述、連結網址字面與維基引的雜誌句子",
+        "期刊定稿與 v1 有無差異",
+        "維基條目無法重抓（網域在封鎖名單），以作者 cache 核對"
+      ],
+      "note": "來源都在、數字逐句對得上；舊方向的「熱便當／肉餡餅」沒有殘留，軸別 U 合適。"
+    },
+    {
+      "id": "N7402",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R750",
+      "author": "ZT0",
+      "key_source_reopened": "https://archive.org/download/s25id13212080/s25id13212080_djvu.txt（R750 seq 6，200，2849826 bytes）：與作者 seq 32 相同。Chronicle 十月 17 日條逐句核對：約六點、3,500 barrels、兩棟房子全毀、「In the first floor…a mother and daughter were at tea」（英式樓上，作者寫成一樓）、wade up to their middle、名單字面九具另兩人失蹤、紳士要人群安靜一段：都在。全書 Meux 只出現在這一條與產量表，沒有驗屍審訊。",
+      "changes": [
+        "axis P→H：災難事故，沒有預言末日成分",
+        "hook 與 answer_target 的「一樓」改「樓上」：年鑑原文 first floor 是英式的地面層上一層",
+        "「八人」沒有一手來源：改成「後來通行的數字是八人（二手）」，並寫明年鑑初步名單字面更多、兩邊對不上、不背書",
+        "answer_target 的「死的人不是喝死的，是被…害死的」改成不描寫的說法",
+        "scope 寫明正片不用「天災」一詞與陪審團結論（只在三手短訊）；risk 補啤酒史作者在世不點名"
+      ],
+      "unverified": [
+        "遇難人數的一手依據（驗屍審訊或當年倫敦報紙）",
+        "「倫敦報紙沒寫狂飲、只有一份外地報紙寫舀酒」只有二手轉述，那位作者的原文沒讀到",
+        "陪審團結論與「act of God」"
+      ],
+      "note": "年鑑那一條是真的、逐句對得上，「要人群安靜」對「全街狂飲」的翻轉成立；人數與判定已降成有保留的寫法。"
+    },
+    {
+      "id": "N7403",
+      "verdict": "REJECT",
+      "reviewer": "R750",
+      "author": "ZT0",
+      "key_source_reopened": "",
+      "changes": [],
+      "unverified": [],
+      "note": "確認撞 H01：pool.json 的 legacy.h01 與 explainer-series/CATALOG.md 都是瑪麗賽勒斯特號，已上架，docs/videos/curio-h01、-v2、-v3 都在。作者不收是對的。"
+    },
+    {
+      "id": "N7404",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R750",
+      "author": "ZT0",
+      "key_source_reopened": "https://archive.org/download/wreckofsteamerva00unit/wreckofsteamerva00unit_djvu.txt（R750 seq 4，200，145499 bytes）：與作者 seq 14 相同。6 艘救生艇加 1 艘工作艇、173 人中 136 人遇難、婦孺無人生還、「except No. 5, which was not swung out at all that night」、第三艘「her fate is unknown」（未寫編號）、No. 5 由水手長帶隊在 Pachena 灣口西岸上岸「without losing any life」、路標「Three miles to Cape Beale」：都對得上。報告沒有 1933 年的事。",
+      "changes": [
+        "premise_status 改 needs_check：1933 年的發現只有 HistoryLink 一句沒附出處的二手敘述，而這正是問句要回答的那一半",
+        "axis U→H",
+        "hook 的「漆還在」刪掉（舊方向「油漆如新」的殘留，來源只寫 good condition）",
+        "「沒有編號的艇」改成「報告沒寫編號」",
+        "刪掉「被留在岸邊二十七年後在附近被找到」與「傳說把兩艘艇疊在一起」當結論的寫法，改成明講缺哪一半"
+      ],
+      "unverified": [
+        "1933 年是誰、在哪裡、怎麼找到五號艇（搜尋結果另有「在 Alberni 水道農地找到」的說法，來源網域 403 沒讀到）",
+        "卑詩海事博物館是否藏有船名板",
+        "五號艇 1906 年上岸後的去向"
+      ],
+      "note": "1906 年報告這一半紮實；缺 1933 年的一手或機構來源，補到就能收。",
+      "recheck": {
+        "verdict": "NEEDS_CHECK",
+        "reviewer": "R760",
+        "author": "ZU0",
+        "key_source_reopened": "https://mmbc.bc.ca/exhibits/ss-valencia-a-theatre-of-horror/（R760 seq 3，200，180500 bytes）：ZU0-S005 博物館特展頁：「objects recovered from the Valencia wreck including some of mysterious circumstances」在，全文無救生艇／1933／船名板，雜湊同補查 seq 20；http://talesofriverside.blogspot.com/2007/12/ss-valencia.html（R760 seq 4，200，84426 bytes）：ZU0-S004 部落格：1933、original paint、sea cave 兩句都在，雜湊同補查 seq 24；https://archive.org/metadata/dailycolonist1055uvic_14（R760 seq 5，200，14129 bytes）：覆核加試：The Daily Colonist 1955-10-20 的 metadata，確認文字檔檔名；https://archive.org/download/dailycolonist1055uvic_14/dailycolonist1055uvic_14_djvu.txt（R760 seq 6，200，231938 bytes）：覆核加試：1955-10-20 全文 OCR 搜尋 Valencia／MacFarlane／lifeboat／Maritime Museum，無任何一則；1933 年那一半仍沒有來源",
+        "changes": [
+          "維持 needs_check：新增的兩個來源（2007 年部落格轉貼、博物館特展頁一句話）都不是 1933 年那件事的一手或機構來源，上一輪缺的三項一項都沒補到。",
+          "answer_target「『油漆如新』『海蝕洞』就是從這裡來的」改成「對得上、是否源頭無法確認」。",
+          "notes 註明：人名、1955 年捐贈、1934 年展覽、農田說全部出自沒有快取的搜尋摘要，只能當線索；覆核加試 The Daily Colonist 1955-10-20 全文，沒有相關報導；補查 seq 26 其實讀到 Nauticapedia 已捐給卑詩海事博物館，可當下一輪的路。",
+          "notes 註明 role（episode_core，上一輪留下）以補到 1933 年那一半為前提，補不到應降 chapter。"
+        ],
+        "unverified": [
+          "1933 年是誰、在哪裡、怎麼找到五號艇（含「農田而非漂在海上」的說法）",
+          "卑詩海事博物館是否藏有船名板、何時由誰捐贈",
+          "五號艇 1906 年上岸後的去向",
+          "ZU0-S004、ZU0-S005 的網址出處（搜尋結果不在快取）"
+        ],
+        "note": "1906 年報告那一半仍然紮實，1933 年那一半這輪還是零；待查。"
+      }
+    },
+    {
+      "id": "N7405",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R750",
+      "author": "ZT0",
+      "key_source_reopened": "https://archive.org/download/recollectionsofn00wallrich/recollectionsofn00wallrich_djvu.txt（R750 seq 5，200，1430917 bytes）：與作者 seq 33 相同。第 XVII 章全章讀過：thirty months、Nov. 7, 1878 警報、$25,000 懸賞、約 100 磅、$250,000→$200,000→$20,000、「The authentic story…for the first time it is given here」、Westchester 凌晨三點、Garden City：都對得上。對不上的一處：信裡附的是與絲絨缺口同形的「紙」，不是絲絨本身；章內年份自相矛盾。全章無 Pinkerton、無 gold。",
+      "changes": [
+        "hook 改正：勒索信附的是與絲絨缺口同形的紙（加一小條絲絨），不是三角形絲絨本身",
+        "answer_target 與 payoff 刪掉把「幾週後／數千磅鉛棺／平克頓贖回／二十萬黃金」當流行細節糾正的段落：這些只來自被隔離的舊題卡，沒有任何讀到的樣本",
+        "「沒有人被捕」改成「回憶錄這一章沒有寫到任何人被捕」",
+        "補一句回憶錄對年份自相矛盾，正片不替交換定年份；1879 年 1 月依博物館",
+        "risk 補：執行人、警察首長、律師依事件年代可點名，但建議仍稱身分"
+      ],
+      "unverified": [
+        "1878–79 年報紙原文",
+        "教堂司事（1881 年找回、1884 年入葬）說法的出處",
+        "交換發生的年份",
+        "Hilton、Walling、Jones 的卒年（cache 裡沒有）"
+      ],
+      "note": "偷竊與勒索有警察首長的第一手記述，「贖回」只有單一轉述、博物館也說沒有定論；翻轉成立但不算強，素材夠 8 分鐘。"
+    },
+    {
+      "id": "N7406",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R751",
+      "author": "ZT1",
+      "key_source_reopened": "https://api.parliament.uk/historic-hansard/commons/1819/feb/09/trial-by-battle-abolition-bill（R751 seq 1，200，17699 bytes）：去標籤後文字與作者 cache/005.bin 完全相同（位元組數相同，雜湊不同只因頁面動態標記）。核對『when a party had been once tried and acquitted, he never should undergo the ordeal of a second trial』『the appeal itself should be abolished, and the barbarous mode of going through it would necessarily fall with the appeal』、附議者『from a jury that decided without prejudice to one which must of necessity be prejudiced』與 500 鎊撤告，都在。；https://archive.org/download/b22465923/b22465923_djvu.txt（R751 seq 6，200，129840 bytes）：與 cache/004.bin 逐位元組相同。擲手套一段、『struck the head of the appellor』『Saxon Writ of Appeal』、1817-10-09 再度被捕、『Court of King’s Bench, Westminster, Monday, Nov. 17』都在；全文沒有 white（唯一一次是別的字）、沒有 Norman／six hundred。",
+      "changes": [
+        "axis G→S：沒有靈異成分，是法庭名場面與修法辯論。",
+        "question『皮手套』→『大手套』：『皮』只見於維基百科（引 Thornbury 1879，未讀），庭審小冊只寫 large gauntlets, or gloves。",
+        "hook 保留西敏：作者以為『西敏廳』只見於維基百科，其實 ZT1-S001 有『Court of King’s Bench, Westminster』與『nearly filled Westminster Hall』；改寫成『西敏的王座法院』，『原告』改『提告人』，末句改成來源撐得住的『議場上被點名最該廢的不是決鬥』。",
+        "answer_target、payoff 的『國會隔年』改成『1819 年』（從 1817 年算會被聽成 1818）；補上 1817-11-17 與西敏的出處。",
+        "visual 拿掉只見於維基百科的兩人身材對比與自加的火把。",
+        "risk 依本批規則改寫：點名依據是事件年代，卒年沒有讀到來源。",
+        "scope 增列只在維基百科讀到、正片不用的細節（皮、身材、募款）。"
+      ],
+      "unverified": [
+        "官方判決報告 1 B. & Ald. 405 沒有讀到；首席法官的話只有 1867 年雜誌的引述（ZT1-S005）。",
+        "判決與釋放的確切日期（ZT1-S005：4 月 10 日、21 日；維基百科：4 月 16 日、20 日），正片只說 1818 年 4 月。",
+        "『打到提告人的頭』只有這一本商業小冊。",
+        "Hansard、法條、雜誌頁的網址來自作者的搜尋結果，快取裡沒有留下搜尋結果頁，無法對出處；網址本身重抓可得、內容對題。"
+      ],
+      "note": "兩場國會辯論與法條是一手紀錄，重抓相符；翻轉（不是漏洞，國會要廢的是二度受審的上訴）成立。"
+    },
+    {
+      "id": "N7407",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R751",
+      "author": "ZT1",
+      "key_source_reopened": "https://api.parliament.uk/historic-hansard/commons/1865/may/09/question-2（R751 seq 2，200，9569 bytes）：去標籤後文字與 cache/018.bin 完全相同。『under the seal of confession』『They received sufficient evidence to justify the committal of the prisoner for trial』都在。；https://archive.org/download/b28404701/b28404701_djvu.txt（R751 seq 5，200，432149 bytes）：與 cache/015.bin 逐位元組相同。核對『A nightgown was missing…not a particle more』『could be no other than Mr. Kent』『sole fact is the suspicion of Mr. Witcher』『recognisances in £200』『I wrote to Mr. Whicher, in London』『twice arrested and twice discharged』，都在；另查到逮捕當天是還押『until Friday next』，釋放在一週後。",
+      "changes": [
+        "answer_target：逮捕當天是還押、約一週後再訊才釋放（ZT1-S007『remanded until Friday next…Devizes』），原稿『當晚宣布釋放』接在逮捕之後會被聽成同一天，已改。",
+        "question『只憑一件不見的睡袍』→『手上只有一件不見的睡袍』（ZT1-S009 說還有其他間接證據，小冊則記另有兩名同學作證）。",
+        "hook『五年後證明他沒抓錯人』→『五年後她自己出面認了罪』，不替自白的真實性背書（scope 第 5 點本來就說不評斷）；『門一開』是自加畫面，改成來源寫的走來。",
+        "scope『家裡最小的男孩』→『不到四歲的男孩』：小冊另提到家裡有兩歲半的女兒，『最小』沒有來源。",
+        "risk 補卒年：ZT1-S010 圖說寫 Constance Kent (1844-1944)，作者漏看；註明只出自通俗文章。",
+        "探長結局在 answer_target 與 scope 都標明出自二手網站，刪去『搜尋摘要轉述維基百科說 1864 年』這句沒有讀到原文的話。"
+      ],
+      "unverified": [
+        "探長離職的年份與原因沒有一手紀錄，只有 ZT1-S009（未列出處的民間警史網站）說『因健康不佳退休』。",
+        "1860 年的小冊是匿名編者的選錄，不能代表所有報紙；題卡已限定說法。",
+        "1865 年自白與判決的當年報導沒有讀到；『認罪、死刑獲減刑』只依 ZT1-S009。",
+        "Constance Kent 卒年只有通俗文章為據。"
+      ],
+      "note": "1860 年小冊與 1865 年 Hansard 是一手紀錄，重抓相符；翻轉（被罵的是證據太薄、放人不是無罪判決、沒有『被逼辭職』）成立。"
+    },
+    {
+      "id": "N7408",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R751",
+      "author": "ZT1",
+      "key_source_reopened": "https://laviedesidees.fr/Quand-le-pain-empoisonne.html（R751 seq 3，200，72257 bytes）：與 cache/029.bin 逐位元組相同。核對 8 月 16 日、24–25 日夜、cinq décès、巴塞爾專家否定麥角說、Panogen『la justice retient cette conclusion officielle』、1965 年藥學論文、『aucune trace…complot』、1975 年 3 月最高法院，全部在。頁面裡找不到『Collège de France』，來源的 publisher 欄已改。",
+      "changes": [
+        "維持作者的 needs_check：沒有任何一手文件讀到正文（BMJ 1951 只有書目、專書只有書評）。",
+        "axis M→H：結論是『原因沒有被證明』，屬歷史懸案。",
+        "刪去來源沒有的『鎮上吃的是小麥麵包』。",
+        "question『法院最後採用的原因』→『司法採用的官方結論』：書評只說 la justice retient cette conclusion officielle，沒說是哪一級法院，更不是 1975 年民事定案的內容。",
+        "hook『報紙說』→『醫師說』、『被請來鑑定』→『被請教』，照書評原意。",
+        "risk 改寫：不點名任何人；ZT1-S011 publisher 欄的『法蘭西公學院旗下』在頁面裡找不到，已拿掉。"
+      ],
+      "unverified": [
+        "BMJ 1951-09-15 正文（PMC 的 PDF 是驗證頁，europepmc.org、doi.org 已在封鎖名單，沒有再請求）。",
+        "專書本身；司法採汞說的法院層級與年份；病人總數。",
+        "BBC 原文只讀到轉載的開頭數段。"
+      ],
+      "note": "題成立、翻轉好，但全靠一篇書評；要升 screened 需讀到 BMJ 正文、專書章節或當年法國報紙。只夠一章。",
+      "recheck": {
+        "verdict": "ADOPT_WITH_CHANGES",
+        "reviewer": "R761",
+        "author": "ZU1",
+        "key_source_reopened": "https://numerabilis.u-paris.fr/ressources/pdf/sfhm/hsm/HSMx1972x006x003/HSMx1972x006x003x0130.pdf（R761 seq 1，200，1474535 bytes）：雜湊前綴 2923396433203899 與作者 seq 4 相同。頁 130–131 講稿摘要 a) 至 e) 全文逐句對過：300 多人、7 人死亡、麵包裡驗出相當量麥角、三位死者臟器極微量汞而第四位陰性、兩個有污漬的袋子驗汞陰性、該殺菌劑未運到羅亞爾河以南、司法無法指出責任人、附條件的第二次判決、上訴維持、五年無進展、結語，都在。；https://time.com/archive/6617670/medicine-st-anthonys-fire（R761 seq 3，200，209430 bytes）：位元組數與作者 seq 1 差 129（動態頁面），正文相同：警方化驗室那句引文、『the toll of illness passed 200; four had died, 28 were still on the critical list』、70 戶、8 家麵包店、近 300 英里、起訴磨坊主與賣穀物者，都在。",
+        "changes": [
+          "同意升 screened：新增兩個來源都讀到全文、內容與題卡相符；1972 年講稿摘要直接寫了兩輪檢驗與司法結果，與 2008 年專書的書評各自獨立指向『原因沒有被證明』。",
+          "hook『法院打了二十多年官司，也沒能指出該由誰負責』把兩件事併成一件：『無法指出責任人』是 ZU1-S002 寫的較早司法程序，二十多年是民事官司，而書評（作者快取 ZT1 seq 29）寫 1975 年定案『對磨坊業有利』。改成以親歷者二十年後仍稱之為謎收尾。",
+          "answer_target『這個證明始終沒有出現』超出來源，改成只到 1972 年講者所說；補上書評的 1958 一審、1960 上訴、1975 定案各自的結果，並寫明兩個來源對上訴結果說法不一、判決本身沒讀到。",
+          "補回書評的『磨坊主與一名麵包師關兩個月後獲釋』，並標明 TIME 寫的被起訴者是磨坊主與賣穀物的人，兩者不同。",
+          "『混進送到那家店的一袋麵粉』改成 TIME 原意（受污染的穀物似乎都進了那一袋）。",
+          "payoff 的司法一句標明出處是親歷者的講稿摘要；scope 加一條不許把兩段司法程序併講。",
+          "minutes [8,10]→[8,9]：role 維持 episode_core，約十個段落、估得到 8 分鐘但沒有餘裕。",
+          "來源 ZU1-S002 的『300 個麵粉袋裡有兩個』改成原文的『兩個，另有 300 個』；ZT1-S011 補各審結果與原文定位。",
+          "case_key 作者已由 …ergot_contested_panogen_ruling 改為 …ergot_announced_never_proven（舊名的『汞是司法結論』已不成立），我保留新名；池裡現有的 N7408 用的是舊名，合併時請一併換掉。"
+        ],
+        "unverified": [
+          "BMJ 1951-09-15 正文、2008 年專書本身、醫師們提交國家醫學院的報告、當年法國報紙：都仍沒讀到。",
+          "各審法院的名稱與年份、判決原文；ZU1-S002 的『上訴維持』與書評的『1960 年上訴磨坊業勝訴』是不是同一件事。",
+          "病人總數與死亡數（4、5、7 三個數字並列，沒有定數）。",
+          "ZU1-S002 的確切網址在我自己的兩次搜尋裡沒有重現（同館藏、同刊物的其他頁有出現），作者的搜尋結果沒有留存可對；文件本身重抓得到、內容相符。",
+          "講者與麵包店主的卒年沒有在抓到的來源裡讀到，維持不點名、不入畫。"
+        ],
+        "note": "夠升 screened，但只是剛好：靠的是當年美國新聞週刊與一頁親歷者講稿摘要，司法細節不能講得比摘要更細；8 分鐘撐得到、沒有餘裕。"
+      }
+    },
+    {
+      "id": "N7409",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R751",
+      "author": "ZT1",
+      "key_source_reopened": "https://catholictranslator.substack.com/p/an-unbiased-account-of-the-miracle（R751 seq 7，200，216343 bytes）：去標籤後文字與 cache/031.bin 完全相同。『some fifty thousand people』『a frosted silver disc』『I don’t want to know now…The rest is up to Science and the Church』都在；沒有衣服變乾或太陽墜落的句子。",
+      "changes": [
+        "維持作者的 needs_check：兩個來源都帶立場，沒有任何一篇自然解釋的原文，也沒有葡文原報。",
+        "risk 刪去沒有來源的『其中一位 2005 年過世』。",
+        "answer_target 的『色覺漂白』『平流層』改成來源正文的用語（retinal persistence、cloud of fine dust）；『被圍攻』改『被許多其他目擊者批評』；『沒找到的流行細節』補列舊方向的『大氣物理勘查證實』『光受體漂白』。",
+        "hook『兩天後』→『之後』（譯文是 10 月 15 日日報還是 29 日週刊未確認）；『下了一整夜的雨』→來源有的『路成泥』。",
+        "payoff『沒有哪一種成為定論』是沒有來源的總評，改成照實寫只讀到反駁方；『被自己人圍攻』改『被其他教友批評』。"
+      ],
+      "unverified": [
+        "各自然解釋的原文（1989、2005/2006、2012、2019）都沒有讀到，只有反對者的轉述。",
+        "A Ordem 10 月 16 日那篇、天文學家的『群眾暗示』說，只有 ZT1-S014 的轉述。",
+        "ZT1-S015 譯文的原刊日期；葡文原件。",
+        "『七萬』這個數字的出處沒有查到（來源給的是五萬與三萬到十萬）。"
+      ],
+      "note": "沒有下真假判斷，寫法合規；但『雙方都由自己的文字代表』的條件還不夠，只夠一章。",
+      "recheck": {
+        "verdict": "ADOPT_WITH_CHANGES",
+        "reviewer": "R761",
+        "author": "ZU1",
+        "key_source_reopened": "http://www.fatima.pt/files/upload/fontes/F001_DCF_selecao.pdf（R761 seq 2，200，4758348 bytes）：雜湊前綴 3096132c8bb20f01 與作者 seq 11 相同。Doc. 13、21、27、28、29、72、120 的引文與記者、律師、天文學家、攝影者的腳註生卒年都對得上；另查出『七萬』在 Doc. 120 出現多次、Doc. 25 提到 A. de F. 的文章、Doc. 28 腳註有數學教授卒年，題卡原本沒寫或寫錯。",
+        "changes": [
+          "同意升 screened、episode_core：上一輪要的兩塊（一篇自然解釋的原文、葡文原報或聖地文獻彙編）都實際讀到，素材遠超過 8 分鐘。",
+          "『七萬』寫錯：題卡說它在讀到的來源裡只是 1993 年一本書的估計，但 ZU1-S003 Doc. 120（1930 年教區委員會報告）自己通篇寫『約七萬人』。已改成『教會文件後來用的數字，沒交代怎麼算』。",
+          "題卡說 1989 年論文把長篇證詞『歸給了教授本人』：掃描頁 334 只寫『Dr Almeida Garret, a professor at Coimbra University』，而兒子依 ZT1-S014 也當過該校教授，不能說它歸錯。已改。",
+          "question『最早公開提出眼睛說的人是誰』：來源只說 10 月 16 日提出，沒有說最早。改成『事發第三天就在報上提出眼睛說的人是誰』；『當年報紙上吵的又是什麼』改成『當年為這件事吵起來的又是哪些人』，仍是一個問號。answer_target 的『吵得最兇的是教友之間』改成『教友之間自己先吵了起來，反教權團體另外印傳單攻擊』。",
+          "補上 ZU1-S003 裡作者沒用到的三處當年文字：Doc. 25（1917-11-13，一位目擊者抱怨 A. de F. 那篇文章惹出風波）、Doc. 21 開頭（天主教徒意見不一）、Doc. 28（數學教授自己說是大氣現象但仍視為神蹟，又說事後人人都看到多半是想像）。前者讓『教內提出、教內反彈』不再只靠 2021 年論文一家轉述。",
+          "risk：數學教授卒年在 Doc. 28 腳註（1842–1925），原寫『沒讀到』，已補，可點名。",
+          "visual：刪去沒有來源的『年輕』；加註圓盤只畫成靜止的霧銀色，不畫旋轉、移動、逼近地面，也不畫顯現的人物。",
+          "乾衣『最早見於 1922 年』改成『這份選輯以關鍵詞檢索到的最早一處』（選輯沒有逐頁讀完）；懷疑論專欄的『數千人什麼都沒看到』加註沒有出處；讀者來信的說法照原文改寫。",
+          "payoff 的『事發第三天就有一位天主教律師提出』加上『依後來的論文整理』；source_locator 補 Doc. 25、Doc. 72 與 Doc. 120 的正確頁碼（律師文章一事在頁 449）。"
+        ],
+        "unverified": [
+          "題目問的『眼睛說』本身仍沒有原文：1917 年 10 月 16 日那篇文章的內容只有 ZT1-S014 的轉述（ZU1-S003 只印證它存在、署名縮寫、惹出風波）；2003／2006 年視網膜殘像論文沒讀到（該網域回機器人驗證頁）。",
+          "天文學家受訪的原報；ZT1-S014 說他提的是『群眾暗示』，1930 年報告轉引的那句話本身沒有這個詞。",
+          "幻日、沙塵、2012／2019 振動模型的原文。",
+          "ZU1-S004 文章第一頁（頁 333）不在掃描裡。",
+          "記者是否寫了 13 日早上那篇文章、內容如何，只有 ZT1-S014 的描述。",
+          "教授兒子的卒年。"
+        ],
+        "note": "每一欄都沒有下真假判斷，兩邊各有自己的文字；但題目的主角『眼睛說』恰好是兩邊都只有轉述的那一塊，正片要照 scope 說成『後來的論文說』。"
+      }
+    },
+    {
+      "id": "N7410",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R751",
+      "author": "ZT1",
+      "key_source_reopened": "https://archive.org/download/b32181991/b32181991_djvu.txt（R751 seq 4，200，206559 bytes）：與 cache/039.bin 逐位元組相同。核對第 5–7、10–11、15–19 段（Bostock／Nicholson、700 噸、14 噸、certainly 6000、70 fatal cases、gas coke、alcoholic heart），全部在；另讀第 68、139 段。",
+      "changes": [
+        "axis P→H：沒有預言或末日成分，是有皇家委員會報告的公衛事故。",
+        "payoff『一批便宜硫酸』→『一批高砷硫酸』：『便宜』沒有來源，最後報告第 68 段說價差很小。",
+        "risk 刪去憑記憶寫的委員會主席卒年，改成不點名任何人、依據寫事件年代；『濟貧院醫院的醫師』改『曼徹斯特的一位醫師』（濟貧院一說只在通俗樣本）。",
+        "補讀最後報告第 139 段，把『是不是黃鐵礦酸』從『沒讀到』改成報告實際怎麼寫（有以『硫磺酸』名義賣黃鐵礦酸的例子、化學廠以行話鬆散為解釋之一），仍不說死；ZT1-S016 的 locator、summary 同步補上。"
+      ],
+      "unverified": [
+        "兩家公司官司的結果沒有讀到（最後報告全文搜尋不到判決結果），scope 已排除。",
+        "最後報告第 20 段以後除第 67–68、139 段外沒有細讀；正片不講含量標準與立法。",
+        "樣本說的『供應 200 家啤酒廠』在兩份報告讀到的段落裡沒有。",
+        "證詞卷與當年醫學期刊沒有讀。"
+      ],
+      "note": "兩份皇家委員會報告是一手紀錄，重抓與快取逐位元組相同；翻轉（『酒精性神經炎』本身有一部分就是砷）在第 16–19 段寫得很清楚，是這批最紮實的一題。"
+    },
+    {
+      "id": "N7411",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R752",
+      "author": "ZT2",
+      "key_source_reopened": "https://digital.la84.org/digital/api/collection/p17103coll8/id/8216/download（R752 seq 1，200，3233645 bytes）：與作者 cache/010.bin 逐位元組相同（sha256 前綴 e3463dd2d35ecc79）。pdftotext 後核對：Lorz『riding a number of miles in an automobile…ran the last five miles』、九英里抽筋上車、『automobile…had broken down』；兩次 one-sixtieth grain strychnine、蛋白、白蘭地、鍋爐溫水、幻覺、四位醫師、八磅；『drugs are of much benefit to athletes along the road』；華氏 90 度、十二英里處一口井；AAU 終身停權（書頁 108–109）。全文沒有 eleven miles、Roosevelt 合照、joke、poison。全部對上。；https://www.olympedia.org/athletes/78551（R752 seq 6，200，12631 bytes）：新抓（網址來自作者 cache/012.bin 成績表的連結）：Tom Hicks 1876-01-11 生、1952-01-28 卒；小傳重複了合照與惡作劇的流傳版本。用來補卒年。；https://www.olympedia.org/athletes/78716（R752 seq 7，200，11703 bytes）：新抓（同上來源的連結）：Fred Lorz 1884-06-05 生、1914-02-04 卒；停權『quickly commuted』、1905 年贏波士頓馬拉松。用來補卒年。",
+      "changes": [
+        "LA84 下載網址的出處：成立。LA84 自己的轉址頁（作者 cache/008.bin）內嵌資料有完整路徑 downloadParentUri『/digital/api/collection/p17103coll8/id/8216/download』，不是代編號猜的；已寫進 ZT2-S001 的 limitations 與 notes",
+        "補卒年：新抓 Olympedia 兩個人物頁（R752-S001、R752-S002，連結來自作者快取的成績表）——Hicks 1952 年卒、Lorz 1914 年卒，兩人可點名；報告作者的卒年仍無來源，risk 改成正片只稱『報告的作者』、不念姓名不入畫",
+        "hook『一個生蛋白』刪『生』（報告只寫 the white of one egg）",
+        "answer_target 註明『官方報告』是 LA84 館藏的稱呼（Type: Official Report），書本身是個人署名著作；補上 Olympedia 小傳也是流傳版本的樣本；『十一英里』註明所有讀到的來源都沒有",
+        "ZT2-S001 停權一段的頁碼改 108–109（跨頁）"
+      ],
+      "unverified": [
+        "報告作者的卒年",
+        "停權減免的日期與 AAU 文件（只有資料庫與維基樣本寫）",
+        "和總統女兒合照、被架著過線的當年報紙出處",
+        "『當時沒有相關規則』是讀報告的觀察，不是來源的宣告（scope 已註明）"
+      ],
+      "note": "一手來源紮實、逐句對上；賣點是『餵藥的人自己寫進報告當成果』，舊方向的十一英里、合照、被架過線都已標成紀錄裡沒有。"
+    },
+    {
+      "id": "N7412",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R752",
+      "author": "ZT2",
+      "key_source_reopened": "https://haagshistorischmuseum.nl/en/?p=3851（R752 seq 2，200，76373 bytes）：同樣 76,373 bytes，sha 不同（頁面內嵌動態字串），正文與作者 cache/030.bin 一致：former Grand Pensionary、Hague shooters、Bystanders bought the limbs、ended up with supporters…kept them as relics、鉛盒與文件、Witsen 1672–1717、1889 年 Cockuyt 捐贈、1893-10-23 禁展、2011 年 NFI。館方沒有寫『吃』，也沒有寫支持者是『買』來的——題卡這一句已改。",
+      "changes": [
+        "question、hook、payoff 原本直接寫出部位（手指、舌頭、食指），照血腥規則改成『遺體的一部分／兩件遺物／其中一件』；payoff 的『被吃掉』改成『最聳動的那個說法』；answer_target 裡『肢體被取走』改成『遭毀損』",
+        "『最忠實的支持者』改『熱烈支持者』（來源：fel aanhanger）",
+        "館方只寫遺物『ended up with supporters』，原稿說『支持者買下來』沒有來源，answer_target 與 payoff 都改成『落到支持者手裡』，並註明花錢買的是日記裡的另一件",
+        "『1889 年捐給博物館』原句讀起來像 Witsen 捐的，改成『萊登的一位捐贈者』",
+        "『先被槍殺』改成註明出自教學網站的轉述；『吃』一段改得更精確（網站是在概括日記時寫的，只是引出的幾句沒有）；ZT2-S006 的 limitations 同步",
+        "visual『幾代人的手往下傳』沒有來源（館方只記 Witsen 與 1889 年捐贈者），改成一雙較新的手把鉛盒交給博物館",
+        "risk：Oudaan、Witsen 的點名依據寫明是事件年代"
+      ],
+      "unverified": [
+        "『吃』的一手出處（作者自認沒讀到；正片不下真假判斷）",
+        "Oudaan 日記原件或 Van Stipriaan 選集——目前只有教學網站的現代拼寫轉引",
+        "Oudaan 的卒年",
+        "Johan 辭職日期"
+      ],
+      "note": "機構來源（海牙歷史博物館）讀到正文、翻轉（遺物是支持者當聖物保存的）成立；題材是私刑，全片只能停在『遺體遭毀損、有人買走一部分』的層級，維持 chapter 6–8 分鐘。若頻道不想碰這個題材，降待查也合理。"
+    },
+    {
+      "id": "N7413",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R752",
+      "author": "ZT2",
+      "key_source_reopened": "https://archive.org/download/rescueofgreely00schl/rescueofgreely00schl_djvu.txt（R752 seq 3，200，592398 bytes）：與作者 cache/022.bin 逐位元組相同。核對書頁 235（六個姓名）、236（Private Henry『executed on the 6th of June』）、269 電報（十七人餓死、一人落水、Elison 於 Godhavn 過世、十二具尋回、五具沖走、『urgently suggest…metallic cases…for safer and better transportation in a sea-way』）、273（金屬箱完成）、276–277（Governor's Island 移交、『all but two were delivered to the friends of the deceased』）。全部對上。",
+      "changes": [
+        "axis G→H（沒有靈異成分，是歷史調查）",
+        "補卒年：作者快取的 PBS 頁（cache/026.bin）內嵌逐字稿有旁白『Adolphus Greely died in 1935』，Greely 可點名；ZT2-S011 的 reading_scope／locator／summary 與 risk 同步",
+        "question、hook、payoff 的『自己出版的書』改成『掛名出版／掛名的書』——那本書是 Schley 與 Soley 合著",
+        "answer_target 註明『副隊長』的依據（圖書館刊物寫 second in command）"
+      ],
+      "unverified": [
+        "『不得開棺』電文的原件、發文者與原文——只有 1997 年圖書館刊物一句、沒有註腳",
+        "Greely 1886 年的書與陸軍官方報告沒讀",
+        "補給船兩年沒到的原因",
+        "當年報紙原文"
+      ],
+      "note": "救援指揮官 1885 年的書逐句對上，『軍方封棺掩蓋』被降成推論；遺體相關內容停在『不完整』且有來源（原書寫得更直白，題卡沒有照抄），極端求生沒有描寫。"
+    },
+    {
+      "id": "N7414",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R752",
+      "author": "ZT2",
+      "key_source_reopened": "https://archive.org/download/lossofsultanarem00berr/lossofsultanarem00berr_djvu.txt（R752 seq 4，200，793523 bytes）：與作者 cache/016.bin 逐位元組相同。核對書頁 14–24：Hoffman 1865-05-19 報告的 1,866／765／1,101／70／85／1,238、『unnecessary, unjustifiable, and a great outrage』、Hatch 與 Speed『most censurable』、『conviction that bribery had been attempted…Pauline Carroll…resisted an attempt at fraud』、Tillinghast、『does not enable me to form a positive opinion』、『nothing to show…careening』、『nothing…attributable to the imperfect patching』；Dana 說明的兩個 per capita 傳聞、約 1,300 不超過 1,400、隔天聽說 1,900。全部對上；報告內沒有 376。",
+      "changes": [
+        "axis P→H（災難調查，沒有預言末日成分）",
+        "hook 與 visual 的另外兩艘船『幾乎空著』是樣本文章的說法（practically empty），報告只說另有兩艘船可分擔，已改；answer_target 的『沒找到的流行細節』加上這一項"
+      ],
+      "unverified": [
+        "『核定 376 人』的一手出處（作者自認沒讀到；題卡只當『今天的文章常寫』）",
+        "《官方紀錄》原卷、兩個調查庭的證詞、軍法審判結果",
+        "用的是 1892 年書中由陸軍部紀錄與撫卹司具名轉載的報告，不是原卷"
+      ],
+      "note": "報告全文逐句對上，翻轉清楚（賄款是替另一艘船拉人、爆炸原因沒有定論）；1892 年轉載本是公版書裡的陸軍部文件，可算一手紀錄的轉載。傷亡只到人數層級。"
+    },
+    {
+      "id": "N7415",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R752",
+      "author": "ZT2",
+      "key_source_reopened": "https://www.ojp.gov/pdffiles1/nij/225321.pdf（R752 seq 5，200，2221467 bytes）：與作者 cache/027.bin 逐位元組相同。核對頁 1-13 至 1-14（Vucetich 為統計員、1891 年起試驗；Rojas 案：Velasquez 被毆打逼供、Alvarez 取下門板自行比對、認罪、『first homicide solved by fingerprint evidence』）與頁 1-15（『A criminal case in Bengal in 1898…first case in which fingerprint evidence was used to secure a conviction』）。全部對上。",
+      "changes": [
+        "premise_status 改 needs_check：『常被說成世界第一宗指紋定罪案』沒有讀到樣本——作者的通俗樣本標題是『第一個因指紋落網』，內文也寫『第一樁靠指紋偵破』，翻轉目前只打到舊題卡的說法",
+        "question 把『常被說成世界第一宗指紋定罪案』改成『常被冠上指紋史的第一』",
+        "hook『鋸下來』改『取下來』、刪『在幾天內』（機構來源沒有寫）；visual 的『小鋸子』改『工具』",
+        "risk：Vucetich、Alvarez 卒年無來源，改成補上前只稱身分、不入畫",
+        "notes 寫明缺什麼"
+      ],
+      "unverified": [
+        "把此案稱為『第一宗指紋定罪』的流傳樣本",
+        "阿根廷一方的案卷或機構來源；三個來源對『誰比對的、孩子性別、日期』互相矛盾",
+        "定罪與終身監禁（只有通俗文章寫）",
+        "Vucetich、Alvarez 的卒年"
+      ],
+      "note": "兩個美國政府機構頁面讀到正文、引句對上，但都是二手敘述；翻轉屬口徑之爭且流傳版本缺樣本，素材只夠 5–7 分鐘，降待查。",
+      "recheck": {
+        "verdict": "ADOPT_WITH_CHANGES",
+        "reviewer": "R762",
+        "author": "ZU2",
+        "key_source_reopened": "https://archive.org/download/BRes060846/BRes060846_djvu.txt（R762 seq 1，200，262975 bytes）：與 ZU2 cache/010.bin 逐位元組相同（sha256 0ff5a1aa…）。p.102 的 1901 年演講與 Rossi 受派、p.106 的 Necochea 一段（varias impresiones digitales、cortó los trozos de puerta、lo remitió todo á la Oficina Central、她認罪）、p.107 的『no tiene personería todavía…prueba legal…orientar las investigaciones』全部對上；全文只有一處 Necochea，沒有 Rojas／Alvarez／Velazquez。；https://normas.gba.gob.ar/documentos/B17oet60.html（R762 seq 2，200，3725 bytes）：與 ZU2 cache/001.bin 逐位元組相同。『esclarecimiento…gracias a dos huellas dactilares』『Necochea en 1892』『identificó a 23 procesados』對上；全文沒有定罪、判決或刑期的字眼。",
+        "changes": [
+          "editorial.role 由 episode_core 改回 chapter、minutes 由 [8,9] 改 [6,8]：正片不能講案情細節、分類法與孟加拉案，判決書沒讀到，新增可講的只有 1901 年報告一節，撐不到 8 分鐘",
+          "question：『阿根廷警官自己寫的報告』容易聽成辦案警官本人（寫報告的是首都警局派去聽演講的人），改成『一份阿根廷警方報告講完這件案子，怎麼接著寫…』；去掉引號（原文是 no tiene personería todavía，中文是意譯不是引文）",
+          "payoff 與 answer_target：『定罪』不只在標題，也在 ZU2-S004 的導言與問答欄，改成『這次只在通俗文章裡讀到』；payoff 原寫各機構『寫的都是靠指紋查明、偵破』，Rossi 報告並沒有用這兩個詞，改成『寫的都是查明、偵破與認罪，沒有一份寫靠指紋定罪』",
+          "answer_target：補一句 Rossi 是首都警局的人、那句話是對指紋一般地位的判斷而非本案判決；ZU2-S004 對『誰比對的』自己前後不一，照實寫；『頸部受傷』改『受傷』（scope 已規定不寫母親的傷）",
+          "risk：Vucetich 可點名的依據補上事件年代（卒年 1925 只有一個通俗來源）",
+          "ZU2-S004 的 summary 照上述更正；notes 補覆核紀錄"
+        ],
+        "unverified": [
+          "案卷與判決書；1894 年判無期只見 ZU2-S005、ZT2-S017 兩篇通俗文章",
+          "確切日期、指印數量（一枚／兩枚／好幾枚）、誰比對的，各來源互相矛盾，無法裁定",
+          "Alvarez、Rossi 的卒年（不點名）；Vucetich 卒年只有一個通俗來源",
+          "ZU2 的搜尋結果沒有存檔，新來源網址的出處無法從快取核對（archive.org 條目除外）"
+        ],
+        "note": "上一輪缺的流傳樣本與阿根廷一方的來源確實補到、引句逐句對上，可收；但翻轉仍是『定罪／偵破』的口徑之別，素材只夠一章。"
+      }
+    },
+    {
+      "id": "N7416",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R753",
+      "author": "ZT3",
+      "key_source_reopened": "https://www.upi.com/Archives/1983/07/07/Settlement-reached-in-Jeff-Island-accident/4485426398400/（R753 seq 1，200，264826 bytes）：位元組數與作者 seq 9 相同（雜湊不同，因頁面側欄的即時新聞不同）；『accepted $32 million … out-of-court settlement』『6.25 percent』『did not drill into the salt mine』『$12.8 million』『Diamond Crystal 25 percent』『$260 million』都在，與題卡相符；https://usminedisasters.miningquiz.com/saxsewell/1980_jefferson_island.pdf（R753 seq 9，000，0 bytes）：聯邦調查報告，再試一次仍是連線失敗（代理回 502），沒有讀到；https://libcat.library.tamu.edu/Record/in00000818947（R753 seq 10，403，5570 bytes）：搜尋結果給的館藏目錄頁，回驗證頁，停止；該網域已進共用封鎖名單",
+      "changes": [
+        "軸別 M 改 H：這是一起原因沒有定論的工業事故，不是自然奇異現象",
+        "question：拿掉沒有來源的『幾小時內』（電訊只寫週四流光、週五回填），包商律師的話改成『有專家認為沒鑽進礦坑』（原文是轉述專家結論）",
+        "hook：拿掉『鑽井台慢慢歪掉』（四則電訊與樣本都沒寫）；『從來沒有走到法官宣判』改成『鹽礦公司告它的那場官司還沒開庭就和解』，因為員工的集體訴訟另有後續（作者只讀到 1984 年上訴判決的一句摘要）",
+        "answer_target：補上樣本條目自己的延伸閱讀就列著『以 3,200 萬美元和解』的 1983 年標題；註明聯邦報告與集體訴訟的結局都沒讀到",
+        "scope：加一條不說『從來沒有任何判決』",
+        "visual：拿掉沒有來源的歪斜鑽井台、升降機、溫室；煙囪改成『多年後』（出自樣本條目的現況照片說明）；法官椅改成關著的法庭門",
+        "ZT3-S005 limitations 補寫哪些數字只見於該條目"
+      ],
+      "unverified": [
+        "聯邦礦場安全衛生署調查報告的內容（主機連不上）",
+        "4,500 萬美元的出處",
+        "礦工與員工集體訴訟的結局",
+        "UPI 存檔是文字轉錄，沒有對照當年版面"
+      ],
+      "note": "經過與和解金額在四則當年電訊裡逐句找得到，題卡把每個論點都限定成『當年電訊寫』，翻轉（沒有判決、只有和解）成立；作者擔心的一手來源只有電訊，我判可收，但調查報告是日後該補的一塊。"
+    },
+    {
+      "id": "N7417",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R753",
+      "author": "ZT3",
+      "key_source_reopened": "https://www.gda.bayern.de/mam/aktuelles/ausstellungskatalog_hinterkaifeck.pdf（R753 seq 2，200，2662416 bytes）：雜湊 3bfeac89886d2feb 與作者 seq 22 相同；pdftotext 後核對 3 月 30 日腳印與註 9（8091b S. 1034）、五金行的話、路人 4 月 1 日看到烤爐門與煙囪、1952-06-10 與 1952-01-10 兩份陳述（註 17、18 引的是軍事博物館 PolDok，不是警察局卷宗）、01:30 抵達、圍觀者、警犬、刀上無可用指紋、2000-07-21 案件分析，都相符",
+      "changes": [
+        "question：原本問『為什麼是三十年後才錄下來』，答案裡沒有回答這個為什麼，改成問『在檔案裡到底有多少根據』",
+        "hook／answer_target／scope：1952 年兩份陳述圖錄引的是軍事博物館收藏的警方文件，不是慕尼黑警察局卷宗，『卷宗裡』改成『檔案裡』『展覽引用的警方文件』",
+        "answer_target：補上圖錄導論的背景（法院卷宗 1932 年移奧格斯堡後下落不明，留下抄本與 1950 年代重新彙整的文件）；補上圖錄自己判斷兇手事後必定還待過；流行細節清單加上鑰匙與工具間門鎖",
+        "payoff：『破不了是因為圍觀者早到好幾個小時』改成來源撐得住的『圍觀的人比警探早到，痕跡在偵查開始前就毀了』",
+        "risk：點名依據寫明是事件年代；註明樣本文章的傷勢描寫不引用；拿掉沒有來源的『其後人仍在當地』",
+        "ZT3-S011 的 publisher、summary、limitations 改寫（展覽是培訓班作品、原卷宗已佚、註 17–18 的出處）；ZT3-S013 補上刊出日期 2015-08-28 與原出處"
+      ],
+      "unverified": [
+        "卷宗原件沒有讀到，只有檔案館的整理",
+        "兩個紀錄來源出自同一機構同一展覽",
+        "2007 年警察學院報告",
+        "證人與鄰居的卒年"
+      ],
+      "note": "機構來源讀到正文而且逐條附卷宗頁碼，流傳版本有樣本，翻轉（細節有根據但比傳說薄、關鍵陳述是三十年後的）成立；題卡沒有行兇與傷勢描寫。可收，正片要守住『這是檔案館的整理』。"
+    },
+    {
+      "id": "N7418",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R753",
+      "author": "ZT3",
+      "key_source_reopened": "https://www.nps.gov/jofl/learn/historyculture/the-south-fork-dam.htm（R753 seq 3，200，50732 bytes）：雜湊 81de60c6f7d92db5 與作者 seq 20 相同；時間表 1875（前業主拆五根排水管）、1879（『These screens clogged on May 31, 1889』）、1889（2,000 萬噸、2,209 人）與圖說『To widen the road across the dam, it was lowered』相符；https://archive.org/advancedsearch.php?q=title%3A%28%22South+Fork+dam%22%29+OR+%28title%3A%28Transactions+American+Society+of+Civil+Engineers%29+AND+year%3A1891%29&fl%5B%5D=identifier&fl%5B%5D=title&fl%5B%5D=year&rows=30&output=json（R753 seq 5，200，3876 bytes）：找 1891 年 ASCE 報告的掃描；列出 Transactions 第 24 卷各月份條目；https://archive.org/metadata/sim_american-society-of-civil-engineers-transactions_1891_24_contents（R753 seq 6，200，14882 bytes）：第 24 卷目次條目的檔案清單（沒有再下載，改直接讀 6 月號）；https://archive.org/metadata/sim_american-society-of-civil-engineers-transactions_1891-06_24（R753 seq 7，200，65887 bytes）：1891 年 6 月號條目的檔案清單，取得 _djvu.txt 檔名；https://archive.org/download/sim_american-society-of-civil-engineers-transactions_1891-06_24/sim_american-society-of-civil-engineers-transactions_1891-06_24_djvu.txt（R753 seq 8，200，267473 bytes）：1891 年報告原件的 OCR 文字：頁 456 結論段與論文引文相符（OCR 漏短字）；另核對到『溢洪道排洪能力不足』、降壩頂是為了壩上的路、在場工程師的信。新增為 ZT3-S014",
+      "changes": [
+        "軸別 P 改 H：沒有預言或末日成分",
+        "補讀一手來源：從 Internet Archive 找到 1891 年 ASCE 報告的期刊掃描，新增 ZT3-S014，結論段、降壩頂的理由、在場工程師的信都核對到，不再只靠論文引文",
+        "question／answer_target／payoff：舊方向的『官方工程調查揭發俱樂部』沒有任何讀到的樣本這樣寫，拿掉；流傳版本改用園區頁實際寫的『柵欄堵住了』",
+        "hook：『兇手』改成『原因』",
+        "answer_target：『一位在場者估少四到五成』改成『事後到場量測的工程師』（論文寫他是一年後去量的）；『報告完全沒提第二溢洪道』改成論文的說法『委員會漏掉了』；補上三組遇難人數各自的出處",
+        "payoff：拿掉沒有來源的『美國史上最慘重的潰壩之一』",
+        "visual：拿掉沒有來源的小帆船；『拿鏟子挖淺溝』改成報告信裡寫的馬拉犁翻土埂；其餘照來源微調",
+        "ZT3-S010 summary 註明同頁兩個潰壩時刻（3:10 與 3:15）；ZT3-S009 limitations 更新"
+      ],
+      "unverified": [
+        "園區頁『柵欄堵住』的出處",
+        "2,000 萬噸與 2,209 人只見於園區頁",
+        "ZT3-S014 的 OCR 漏短字，『沒有雜物堵住』一句缺否定詞，只能靠論文轉述",
+        "訴訟結果"
+      ],
+      "note": "補讀原件後來源條件完整：通俗講法（機構頁）、1891 年報告原件、2016 年開放取用論文三層都讀到，翻轉清楚。"
+    },
+    {
+      "id": "N7420",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R753",
+      "author": "ZT3",
+      "key_source_reopened": "https://www.nobelprize.org/uploads/2018/06/wilson-lecture-1.pdf（R753 seq 4，200，499558 bytes）：雜湊 25fa7b8d2b403459 與作者 seq 12 相同；頁 474–476『about 7.5 K…expected value of 3.3K』、a–d 四項、『A pair of pigeons…only a small reduction』、『In the spring of 1965…only a minor reduction』、『careful to exclude any discussion of the cosmological theory』都相符",
+      "changes": [
+        "question：『清了好久的鴿糞』是舊方向『清了幾星期』的殘留，樣本文章與演講都沒寫清了多久，改成樣本實際寫的『趕走一群鴿子、清光鴿糞』",
+        "answer_target：『隔年春天』改成演講原文的『1965 年春天』；『一通電話』改成演講寫的經過（閒談、再打電話、來訪）；答案裡的評語改成來源撐得住的敘述；註明 1965 年短信原文沒讀到",
+        "scope／risk：『一位 2024 年過世、一位在世』沒有來源，改成『1978 年領獎，必然在 1956 年後仍在世，卒年沒讀到』，仍一律不點名不入畫",
+        "payoff：『從標題到內文都沒有提宇宙的起源』改成『照當事人的說法刻意不談宇宙論』（短信原文沒讀到）",
+        "ZT3-S006 summary 同步修正"
+      ],
+      "unverified": [
+        "1965 年短信原文（標題靠回顧論文轉引）",
+        "兩位發現者的卒年",
+        "鴿子後來怎麼處理",
+        "博物館的捕鴿籠（只見於通俗文章）"
+      ],
+      "note": "當事人的諾貝爾演講是一手來源、官方 PDF 逐句相符；翻轉不大但清楚（一對而不是一群、清了有降、是清單之一、不是十年是十三年、短信不談宇宙論），可收。"
+    },
+    {
+      "id": "N7421",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R754",
+      "author": "ZT4",
+      "key_source_reopened": "https://psi-encyclopedia.spr.ac.uk/articles/philip-psychokinesis-experiments/（R754 seq 3，200，222353 bytes）：雜湊與作者 seq 12 相同；「never held in full darkness」「A year passed without significant results」、尾註 1「All information in this article is drawn from this source」都在。另有一句作者沒用到：電視節目「includes a full levitation of the table」，與題卡原寫的「沒有拍到」相牴，已改。",
+      "changes": [
+        "premise_status 改 needs_check：兩個來源實為同一本當事人的書（SPR 條目尾註自承），沒有獨立檢驗、同時期報導或懷疑論分析；ZT4-S006 又是個人上傳的 1976 年著作掃描，應視為仍有著作權",
+        "question 的「從來沒關過燈」改成「從不在黑暗中進行」：書寫的是彩色燈、有時只點燭光，撐不住「沒關過燈」",
+        "「兩位外來見證人」改掉：書中兩人之一是一直旁觀的精神科醫師，不是外部檢驗者",
+        "「沒有拍到」改成「當下沒能拍好」並註明 SPR 條目說有電視節目拍到整張浮起（影像未看），正片兩邊都不斷言",
+        "補上書中自相出入處：正文「約半吋」「只有一次」，附錄三寫「約一吋、滑了四呎多」",
+        "「物理學家被甩下桌」在書末附錄三核到原段；「鬼說對真實歷史」在書中找不到支持，寫明",
+        "visual 拿掉沒有來源的「缺了一隻腳的牌桌」"
+      ],
+      "unverified": [
+        "任何獨立於當事人的檢驗、報導或影片",
+        "參與者與學會創辦人的卒年（維持不點名、不入畫）",
+        "Psi Encyclopedia 所稱電視節目裡的整張浮起畫面"
+      ],
+      "note": "題目吸引人、書中事實逐句核對得到，但整件事只有當事人一本書；翻轉（調暗燈光 vs 不在黑暗中）偏弱。補到一個獨立來源再收。",
+      "recheck": {
+        "verdict": "NEEDS_CHECK",
+        "reviewer": "R762",
+        "author": "ZU2",
+        "key_source_reopened": "https://survivalresearch.ca/Colombo_John_Robert_Conjuring_Up_the_Owens_1999.pdf（R762 seq 3，200，3001948 bytes）：與 ZU2 cache/016.bin 逐位元組相同。p.24（Branden：did not take part in the original…involved in the follow-ups）、p.25（Jake the Rake、some small raps）、p.54（more than five years、film、television appearances）、p.76（seven years）對上；確認是致敬文集，不是獨立檢驗。",
+        "changes": [
+          "題卡正文不動，只在 notes 補覆核紀錄；ZU2 新增的 answer_target 末段（致敬文集的說法）與來源相符"
+        ],
+        "unverified": [
+          "任何獨立於當事人的檢驗、同時期報導或影片——這次仍沒有補到",
+          "參與者與創辦人夫婦的卒年",
+          "Preternature 2023 年那篇論文只見書目，正文沒讀"
+        ],
+        "note": "新增的 ZU2-S006 是朋友同道的致敬文集，不是獨立來源；維持待查。"
+      }
+    },
+    {
+      "id": "N7422",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R754",
+      "author": "ZT4",
+      "key_source_reopened": "https://archive.org/download/maneatinglionsof07patt/maneatinglionsof07patt_djvu.txt（R754 seq 1，200，89957 bytes）：雜湊前 16 碼 4da80b4217c8213c 與作者 seq 10 相同；正文第一段有「one hundred and thirty-five Indian and African artisans and laborers」，內頁印 Chicago 1926，註腳寫 1924 年演講後由館長買下獅皮。相符。",
+      "changes": [
+        "hook 的「就在賣出去的那一年…變成 135」改成「之後館方印的小冊裡」：小冊註腳寫 1924 年演講後由館長買下、內頁印 1926，部落格寫 1925，年份對不齊",
+        "hook 的「英國軍官家裡」沒有來源，改成「被獵人當了二十多年地毯」",
+        "answer_target 與 payoff 把「135 是那時才出現的」一律改成「這次讀到最早的出處」，因為沒查 1907–1925 年間",
+        "註明論文所謂「鐵路有紀錄的 28」引的就是獵人自己的書",
+        "question、hook、流傳說法裡的「吃了／吃掉幾人」改成遇難人數的說法；scope 加上不描寫進食",
+        "ZT4-S003 的 summary 補註腳內容並去掉食人字眼"
+      ],
+      "unverified": [
+        "1907–1925 年間有無更早出現 135 的文字",
+        "鐵路公司自己的傷亡紀錄原件"
+      ],
+      "note": "來源紮實（獵人兩份原文＋兩篇開放論文＋館方頁），翻轉清楚，可收。"
+    },
+    {
+      "id": "N7423",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R754",
+      "author": "ZT4",
+      "key_source_reopened": "https://geodynamicsprogram.whoi.edu/wp-content/uploads/sites/14/2018/10/Thordarson_and_Self_2003_49078.pdf（R754 seq 4，200，1129824 bytes）：雜湊與作者 seq 21 相同；[8]「Mourgue de Montredon is credited for being the first…7 August 1783」、[21]「By 26 June almost all Europe」、[26] 9 月中到 10 月底、[49]「no condensation of watery dew」都在。相符。",
+      "changes": [
+        "axis 由 P 改 M：沒有預言或末日預測，是自然現象題",
+        "question 的「當年八月就有一位法國博物學家在演講裡說中了」改成「研究者把功勞記給…」：演講原文沒讀，回顧論文用的是 is credited",
+        "hook 的「他猜是義大利的地震」補上原信同時提到的挪威外海火山",
+        "answer_target 補 ZT4-S011 自己寫的「當年報刊就懷疑 Hekla」，讓「當年就有人指向冰島」不只靠那場演講；答案與 payoff 加上「照後來研究者的整理」",
+        "拿掉「另見被隔離舊卡的方向」這句（題卡不該引舊假卡）",
+        "risk 改寫：Franklin 與法國博物學家的點名依據寫明是事件年代",
+        "ZT4-S011 的 publisher 補刊出日期（頁面標 2017-10-02）"
+      ],
+      "unverified": [
+        "1783 年 8 月 7 日演講原文",
+        "Franklin 文章原文",
+        "歐洲各地死亡數字（題卡沒有用）",
+        "ZT4-S009 的 archive.org 條目代號 naturalhistantiq00whitrich 在作者快取裡沒有搜尋結果可對（seq 19 直接請求 /metadata）；條目本身存在、檔名與 metadata 相符"
+      ],
+      "note": "有當時人親筆與回顧論文，通俗細節逐項對過，可收；翻轉屬「有人說 vs 大家信」，中等強度。"
+    },
+    {
+      "id": "N7424",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R754",
+      "author": "ZT4",
+      "key_source_reopened": "https://www.lancaster.ac.uk/sci-tech/research/space-weather/news/mystery-of-one-of-the-earliest-recorded-space-weather-impacts-solved（R754 seq 2，200，66590 bytes）：比作者 seq 28 多 4 bytes（動態頁面）；「did not open until 1846」「most likely took place on 18 October 1848」「typographical error」「Midland Railway in March 1847」四句都在。相符。；https://jimclifford.ca/philosophical-transactions-ocr-1665-1869/articles/jstor-108470/（R754 seq 5，200，38943 bytes）：雜湊與作者 seq 24 相同；1847 年 3 月 19 日極光、絕緣線與單端接地不偏、兩端接地才偏、Postscript「twice this winter foretold an aurora」都在。另核到作者漏掉的一句：「I do not consider that this fact in itself proves that the currents are generated in the earth」，題卡把機制說成這篇論文的結論，已改。",
+      "changes": [
+        "answer_target 的機制一句改寫：1849 年論文作者自己寫明接地實驗還不足以證明電流生於地中，現代解釋改掛在 ZT4-S016",
+        "hook 的「卻沒有人去查那一年那條線存不存在」沒有來源，改成「直到有人回頭查」；「站長」改「車站主管」（原文 superintendent）",
+        "answer_target 補一句：樣本文章的作者就是後來主持更正研究的人（不點名）",
+        "scope 註明 ZT4-S012 是第三方 OCR、頁碼未核對",
+        "ZT4-S012、ZT4-S016 的 summary 各補一句"
+      ],
+      "unverified": [
+        "2026 年論文全文（doi.org 在封鎖名單）",
+        "1871 年《Nature》原文",
+        "時刻表區間的確切日期",
+        "ZT4-S012 未對期刊掃描頁"
+      ],
+      "note": "題目換了方向是對的（舊方向找不到任何來源）；主持學校的新聞頁與 1849 年論文原文都重抓核對過，題卡的說法都停在這兩者寫得到的地方，可收。"
+    },
+    {
+      "id": "N7425",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R754",
+      "author": "ZT4",
+      "key_source_reopened": "https://archive.org/download/historyevidenceo00pinker/historyevidenceo00pinker_djvu.txt（R754 seq 6，200，73562 bytes）：雜湊與作者 seq 31 相同；Judd、Franciscus、Dunn、Curtin 四封信的衣著段落都在，但四人說法不一致（披肩與大衣），題卡原寫「描述一致」，已改；州長信日期 OCR 作 23d、動詞殘缺。",
+      "changes": [
+        "answer_target 與 ZT4-S017 summary 的「幾位在場者描述一致」不成立：四封信對披肩與大衣各說各的，只有軟氈帽一致，已改寫",
+        "州長信的「沒有提議任何偽裝」因 OCR 殘缺只留「沒有做任何偽裝」，並註明以掃描頁為準",
+        "補上保鑣自己寫的「披肩拉高遮臉」，避免說成全無遮掩",
+        "為了兩說並陳，補 ZT4-S020 寫的三件事：另一路經參議員之子送來的警告、保鑣拒絕寫證言且其說法也受質疑、總統本人說當時不相信有陰謀",
+        "question 的「逃兵」、hook 的「幾天後才」、payoff 的「好幾年」都沒有來源，已拿掉",
+        "visual 拿掉沒有來源的「伸出舖位的腳」",
+        "risk 補 Lincoln 卒年來源與 Kate Warne 的點名依據"
+      ],
+      "unverified": [
+        "《紐約時報》1861 年原報導",
+        "偵探當年的工作報告原件",
+        "總統口述的原件",
+        "州長信的確切字句與日期（OCR）"
+      ],
+      "note": "陰謀存在與否原卡已並陳，補強後更平衡；一手證言集重抓核對過，可收。"
+    },
+    {
+      "id": "N7426",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R755",
+      "author": "ZT5",
+      "key_source_reopened": "https://shiphistory.org/wp-content/uploads/2019/07/Eastland-Article.pdf（R755 seq 2，200，2503870 bytes）：與作者 seq 3 相同（bd802d3577d370dc）。核對 p.34 無傾斜試驗、1904 年 3,300 人後險些翻覆；p.35「signed into law in March 1915 … not scheduled to go into effect until November 1915」；水泥 30 到近 60 噸鋪在 ’tween and main decks；七月初 3 艘艇 6 具筏、10–14 噸、2,570；844 人；8 月 5 日初步報告、最終報告未完成、no one was held accountable。相符。；https://oregonnews.uoregon.edu/lccn/sn83045782/1915-07-25/ed-1/seq-6/ocr/（R755 seq 6，200，41612 bytes）：與作者 seq 12 相同（128ccd6654c87c51）。核對「admittedly tender」、水艙據報是空的、電訊「cause … had not been determined tonight」、top-heavy／ballast／warping 三種猜測、圖說 LOSS OF 1000 LIVES；原因段落沒有提新加的救生艇或 Seamen’s Act。相符；電訊寫「ropes were ordered cast off」，題卡「纜繩還沒解」已改。；https://www.govinfo.gov/link/statute/38/1184（R755 seq 8，200，5159736 bytes）：新增的一手來源（ZT5-S018）：Seamen’s Act 全文 38 Stat. 1164–1185。p.1164 March 4, 1915；p.1185「Sec. 18. That this Act shall take effect, as to all vessels of the United States, eight months after its passage」——證實作者只有轉述的「11 月才生效」。p.1180–1181 大湖客輪夏季艇筏五成的條文。",
+      "changes": [
+        "axis 由 P 改 H：沒有預言或末日成分，是事故與調查。",
+        "作者承認的弱點「法條生效日只有會刊轉述」：覆核者補讀 Statutes at Large 原文（38 Stat. 1185 第 18 條，對美國船舶通過後八個月生效；3 月 4 日核准），新增來源 ZT5-S018，answer_target、scope、source_ids、source_locator、payoff、notes 跟著改；另補上法條對大湖客輪夏季只要求艇筏容納五成（樣本說的「補齊整套」與條文不合）。",
+        "question 把「根本還沒生效」改成有法條撐住的「要到十一月才生效…七月就搶著先裝」，並把「還綁在碼頭上」改成「還靠在碼頭邊」；hook 的「纜繩還沒解」改成「還沒離開碼頭」、visual 同步：ZT5-S005 寫的是已下令解纜、ZT5-S006 寫水手開始解纜，來源沒有說纜繩全程繫著。",
+        "answer_target「更重的是那幾十噸水泥」改成「論重量…更重」並寫明鋪在主甲板與中層甲板（ZT5-S004 p.35）：來源沒有比較兩者對穩度的影響大小。",
+        "舊方向的「參議院聽證」：補一句來源裡參議院唯一出現的地方（1913 年 12 月業者向參議院商務委員會的事前警告，ZT5-S004 p.35），避免正片誤寫成事後聽證。",
+        "加艇 3 艘、筏 6 具、10–14 噸與水泥 30–60 噸仍只有 ZT5-S004 轉述，scope 已限定要說成「會刊上的整理」，維持。"
+      ],
+      "unverified": [
+        "汽船檢查署調查委員會 1915 年 8 月 5 日初步報告本身（只有 ZT5-S004 轉述）",
+        "加艇 3 艘、筏 6 具、10–14 噸與水泥 30–60 噸的原始出處（ZT5-S004 引 Hilton 1997 年專書，沒讀到）",
+        "Seamen’s Act 夏季五成的條文是否適用這艘船當天的航線",
+        "刑事程序的結果（只有「no one was held accountable」一句轉述）"
+      ],
+      "note": "翻轉成立且現在有法條原文撐住：法律三月簽、八個月後才生效，船東是為了增載提前加艇；噸數仍是會刊轉述，正片要照 scope 的說法講。"
+    },
+    {
+      "id": "N7427",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R755",
+      "author": "ZT5",
+      "key_source_reopened": "https://pubs.usgs.gov/pp/0354c/report.pdf（R755 seq 1，200，8232806 bytes）：與作者 seq 1 位元組數與 sha256 前綴相同（dfde7058b5464889）。逐句核對摘要的 1,720／490／395 呎、4,000 萬立方碼、1,740 呎、97–130 哩、兩人遇難；p.57 Ulrich「The wave did not go up 1,800 feet, the water splashed there」「possibly 100 feet high」「50 to 75 feet」；p.59 Swanson「2 boat lengths (more than 80 feet)」；trimline 段 1,720 呎與平均約 110 呎、約 4 平方哩。全部相符；另查到事發在當地晚上 10:16–10:19、約日落，題卡的「半夜」不合，已改。",
+      "changes": [
+        "hook 的「半夜」改成「晚上十點多，天才剛暗」、visual 的「夜色將盡」改成「日落餘光」：ZT5-S001 p.57 寫浪在當地晚上 10:16–10:19 之間出現、「about sunset」；answer_target 補上這個時間。",
+        "「約 3,000 萬立方公尺，換算見 ZT5-S002」對不上：ZT5-S002（EARTH 雜誌）全文沒有體積數字，換算出現在 ZT5-S003（30.6 million cubic meters）。改引 ZT5-S003，並把 ZT5-S002 summary 裡的「落石約 3,000 萬立方公尺」刪掉、ZT5-S003 的 summary 與 locator 補上。",
+        "payoff「至少留下過三四道同樣的樹線」改成「至少三道比較低的舊樹線」：摘要列的是 1936 年 490 呎、約 1874 年 80 呎、1853–54 年 395 呎，另一道 1899 年存疑，都遠低於 1958 年。",
+        "作者承認的弱點「地震規模來源不一」：題卡各欄都沒有規模數字（舊方向的 8.3 沒有殘留），維持不講；舊方向的「一百萬棵」「垂直崩塌」「改寫流體力學史」也都沒有殘留。"
+      ],
+      "unverified": [
+        "地震規模（題卡不講）",
+        "灣外其他地點的傷亡（題卡不提）",
+        "報告作者與三艘船上的人的卒年（維持不點名、不入畫）"
+      ],
+      "note": "最扎實的一題：USGS 1960 年報告全文讀到，524 公尺是樹線與溯上高度、當事船長自己說「是水濺到那裡」；只修了時間與一處換算的出處。"
+    },
+    {
+      "id": "N7428",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R755",
+      "author": "ZT5",
+      "key_source_reopened": "https://rmg.co.uk/stories/blog/library-archive/henry-kendalls-extra-masters-certificate-capture-dr-crippen（R755 seq 9，200，95125 bytes）：與作者 seq 14 相同（97a278dc6ff33cc3）：回來的是 Stories 總覽頁，內文不含 Kendall 或 Crippen，沒有讀到館藏文章正文，不能算來源。；https://archive.spectator.co.uk/article/29th-october-1910/3/after-a-trial-at-the-old-bailey-which-lasted-for（R755 seq 10，202，0 bytes）：搜尋結果給的 1910 年 10 月 29 日 The Spectator 檔案頁，回 202、0 bytes，沒有內容；沒有重試。",
+      "changes": [
+        "維持作者自己交的 NEEDS_CHECK：唯一的當年材料是 ZT5-S017 一行，撐住翻轉的距離、時刻與轉遞路徑全部只出自個人網頁 ZT5-S014。覆核者再試三條路（RMG 同網址、Spectator 1910 年檔案頁、搜尋 Old Bailey）都沒有讀到正文。",
+        "notes 補上覆核者的請求結果，並點明 hook 的引語與 question 的「之後十天」也只有 ZT5-S014 一個出處。其餘欄位未改。",
+        "scope 的「住處發現遺骸」改成「警方搜索住處後對他發出通緝」，照本批傷亡與血腥規則不描寫遺骸；risk 同步。"
+      ],
+      "unverified": [
+        "電報的時刻、位置（130 哩）、射程（150 哩）、五小時轉遞、船速差四節：全部只有個人網頁 ZT5-S014",
+        "「稱讚無線電是了不起的發明」這句引語的出處",
+        "審判日期與伏法日期的一手紀錄（兩個二手來源一致，事件在 1910 年）",
+        "ZT5-S015、S016、S017 的網址出處：作者的搜尋結果沒有留在 cache 裡，無法對"
+      ],
+      "note": "題成立、翻轉也有意思，但沒有任何一手或機構來源讀到正文；維持待查，缺 Old Bailey 審判紀錄或電報原件頁加一份 1910 年 7 月底的報紙。",
+      "recheck": {
+        "verdict": "ADOPT_WITH_CHANGES",
+        "reviewer": "R760",
+        "author": "ZU0",
+        "key_source_reopened": "https://archive.org/download/trialofhawleyhar00cripiala/trialofhawleyhar00cripiala_djvu.txt（R760 seq 1，200，894532 bytes）：ZU0-S001 審判紀錄全文：年表、探長「8.30…Father Point」、「dressed as a pilot」、法官「this new invention, wireless telegraphy」、附錄 A 全文都在，位元組與雜湊同補查 seq 4；另讀到補查沒寫的舵工證詞與法官「hesitate to believe」；https://archive.org/download/dailycolonist53203uvic/dailycolonist53203uvic_djvu.txt（R760 seq 2，200，957954 bytes）：ZU0-S002 The Daily Colonist 1910-07-31：倫敦 7/30 電與 Father Point 7/30 電都在（OCR 很破），雜湊同補查 seq 17；補查摘要漏了「appears terror-stricken」",
+        "changes": [
+          "翻轉改寫：補查的「為什麼全船只有他不知道」被同一份審判紀錄打折——被告作證說 7 月 30 日有舵工告訴他船長知情、警察要在魁北克抓他（舵工未出庭，法官要陪審團別輕信），船長 30 日早上的電報也說他「看起來嚇壞了」。question、hook、answer_target（新增紀錄八）、scope、payoff、risk、case_key 改成「他是不是到被捕那一刻都被蒙在鼓裡」，答案是：航程大半不知情（船長說法），最後一天存疑，雙方說法一致的是他沒料到在引水站、由探長本人扮引水人上船。",
+          "「只告訴大副一人」改「隔天早上告訴大副」；「把船上的報紙全收走」改「提到這件案子的英國報紙」；刪「每天陪他們說笑」的「每天」——附錄 A 原文沒有這麼寫。",
+          "「從電報到逮捕隔九天，不是立刻」改寫：年表顯示收到電報隔天探長就出發，流傳版本錯的是年份與船公司，不是「反應快」。",
+          "「船在海上本來就收不到報紙、對外管道握在船長手裡」標成推論（來源沒寫）。",
+          "附錄 A 書中標的刊出日（7 月 31 日，星期日）與報紙的倫敦 7 月 30 日電對不上，scope 加「不講哪一天刊出」。",
+          "scope／risk 加：舵工一事只能說成被告在庭上的說法；他身上卡片的輕生字句不引不畫。visual 把「報紙收進抽屜上鎖」（來源沒有）改成「收走報紙」。",
+          "ZU0-S001、ZU0-S002 的 summary／locator／reading_scope／limitations 補上覆核讀到的段落與兩處不一致。"
+        ],
+        "unverified": [
+          "舵工是否真的向他透露（只有被告自己的證詞）",
+          "22 日電報的原文、位置、射程、轉遞路徑與時間、兩船速度差（只有個人網頁 ZT5-S014，正片不講）",
+          "附錄 A 實際刊出日與刊出長文的倫敦報紙（OCR 讀不出報名）",
+          "Old Bailey Online 原始頁面沒讀到（用的是 1920 年 Notable Trials 版）",
+          "ZT5-S015～S017 的網址出處（上一輪起就無法對）"
+        ],
+        "note": "缺的那一塊（審判紀錄＋1910 年 7 月底報紙）確實補到、重抓雜湊相同；但補查改的答案方向說過頭，覆核照同一份紀錄改回撐得住的版本。維持 chapter（6–8 分鐘）。"
+      }
+    },
+    {
+      "id": "N7429",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R755",
+      "author": "ZT5",
+      "key_source_reopened": "https://rltz.blogspot.com/2007/05（R755 seq 4，200，40529 bytes）：與作者 seq 6 相同（bef7f558fb9cc1a9）。核對抄錄本：1 月 30 日、3 月 18 日、95／159、57 人、laughing and crying、最長 16 天、最多四次、No fatal cases、217／10,000、48／154、兩所男校、17 例腰椎穿刺、We are at a loss to explain。相符。；https://argia.eus/fitxategiak/ckfinder/files/Hempelmann2007.pdf（R755 seq 5，200，179783 bytes）：與作者 seq 34 相同（3ed6af076b35100d）。核對 p.51–52 引的三種流行版本、「more than 14 schools … about 1,000 people … June 1964」出自 2000 年科普書；p.53–55 對原報告的逐字引用與頁碼（1963: 167、170）與抄錄本一致；p.62–63「can no longer be clearly decided」。相符。",
+      "changes": [
+        "作者承認的弱點「一手來源是部落格抄錄本」：接受為可用。覆核者逐項比對 ZT5-S009（Humor 20(1)）第 3.1 節對原報告的逐字引用（1 月 30 日、3 月 18 日、95／159、57 人、Summary 句，附頁碼 167、170）與列表（217／10,000、48／154、最長 16 天、兩所男校停課），與抄錄本一致。ZT5-S008 的 locator、limitations 與題卡 scope、notes 補上這個依據，並標出只有抄錄本才有的三處細節。",
+        "「14 所學校、約 1,000 人」：題卡已寫成「後來的故事說／後來的科普書加上的總結」，出處是 ZT5-S009 p.52 引的 2000 年科普書，原始後續報告沒讀到；question 與 answer_target 的寫法撐得住，未改。",
+        "舊方向的「馬克雷雷大學醫學院調查證實源自獨立過渡與嚴苛校規」「數千人」沒有殘留；軸別 M 合適，未改。"
+      ],
+      "unverified": [
+        "期刊原件的逐頁對照（journals.co.za 在封鎖名單）",
+        "只見於抄錄本的三處細節：17 例腰椎穿刺、原子彈試爆傳言、「We are at a loss to explain」",
+        "「14 所學校、約 1,000 人、到 1964 年 6 月」的原始後續報告"
+      ],
+      "note": "抄錄本有同行評審論文的逐字引用與頁碼佐證，接受為一手來源的可用副本；題卡對流行數字的處理本來就保守。"
+    },
+    {
+      "id": "N7430",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R755",
+      "author": "ZT5",
+      "key_source_reopened": "https://www.govinfo.gov/content/pkg/USREPORTS-265/text/USREPORTS-265.txt（R755 seq 3，200，1323060 bytes）：與作者 seq 19 相同（7880be41291885e2）。核對 265 U.S. 1 p.7–9：150 美元、false tale、90 天 150 對 100、45 天兌付、$9,582,000 與 $14,374,000、一成佣金、He made no investments of any kind、7 月 26 日停賣、8 月 2 日報紙與 recent employees、8 月 9 日透支 $331,000。相符；判決沒有「署名」二字，題卡已改。；https://www.archives.gov/publications/prologue/2010/summer/ponzi-inmate-case-file（R755 seq 7，200，37857 bytes）：與作者 seq 16 相同（745a304dca98040a）。核對 90 天五成、roughly $15 million、郵政部調查、Boston Post 揭露 1908–1912 兩度入獄、編輯致典獄長電報。相符；文中沒有卒年，也沒有揭露前科的日期。；https://www.deseret.com/1990/9/21/18882239/scam-netted-ponzi-15-million（R755 seq 11，200，160281 bytes）：新增來源（ZT5-S019）：1990 年報紙短訊「He died in 1949 in a Rio de Janeiro charity ward」，補上主角卒年（早於 1956）。",
+      "changes": [
+        "axis 由 H 改 W：沒有懸而未決的謎，是一樁金融騙局的文件對照，屬商業奇聞；W 類的兩處去重（legacy/w-axis.json、brand-stories-100）重查無撞題。",
+        "作者承認的弱點「主角卒年三個來源都沒有」：作者的 cache 裡確實找不到（全部快取檔搜過 1949／died）。覆核者補讀一則 1990 年報紙短訊（ZT5-S019，R755 seq 11）：1949 年死於里約。risk 改成可點名並寫明依據；這是二手報紙，但卒年早於 1956 且事件在 1920 年，足以過紅線。",
+        "question 的「四十五天能賺五成」改成判決的寫法「九十天變一倍半，而且四十五天就兌現」（265 U.S. 1, p.7–8：書面承諾是 90 天，45 天是他實際兌付的做法）。",
+        "answer_target「先是前雇員署名的內情，再是前科」：判決只寫「written by one of his recent employees」，沒有說署名；前科的揭露日期 ZT5-S012 沒寫，先後順序沒有來源。改成分述兩個來源各寫了什麼；payoff 的「垮掉的順序…再揭出前科」同步改掉。",
+        "作者承認的弱點「1.6 億張／27,000 張出處沒找到」：題卡已寫成只在通俗樣本讀到、正片要用須另找當年報紙，維持；補上樣本說這是「報紙調查」算的。舊方向的「會計師算草紙」「數億張／數萬張」「法庭審計記錄」「歐元」「數萬市民」沒有殘留為事實。"
+      ],
+      "unverified": [
+        "1.6 億張／27,000 張的原始出處（當年報紙或郵政部）",
+        "報紙揭露前科的日期與它和 8 月 2 日那篇的先後",
+        "刑事案 Ponzi v. Fessenden, 258 U.S. 254 沒有讀",
+        "1899 年前例的一手來源"
+      ],
+      "note": "最高法院判決原文逐句對上；補了卒年來源後可點名，軸別改 W。"
+    },
+    {
+      "id": "N7431",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R756",
+      "author": "ZT6",
+      "key_source_reopened": "https://hallapproved.com/us/cases/ca2/1908/8782777（R756 seq 1，200，34443 bytes）：與作者 seq 11 雜湊相同（d09b510290e94972）；逐句對到 licensed to carry 2,500、between 1,000 and 1,100、over 1,000 persons lost their lives、beaching『not in question here』、main deck『hardly more than scorched』、hose burst 45–50 pounds、13 years 未通水、『alone sufficient to sustain the verdict』、life-preservers 9 to 13 years、『not so convincing』；全文無 iron；https://americanheritage.com/node/53997（R756 seq 13，200，113893 bytes）：二手：鐵條出自對軟木廠三名員工的起訴（委員會報告 1904 年 10 月），未說在本船救生衣裡；核定載客 2,500；十年、1911 假釋、1912 赦免",
+      "changes": [
+        "開場『法官花最多筆墨』『一場其實燒得很淺的火』改成判決撐得住的寫法（說得最重的是水管；起火艙裡燒痕很淺）",
+        "『不是超載』改成『照判決的數字沒有超過核准人數』",
+        "鐵條：補讀一個二手來源 ZT6-S016，改寫成『指向一家軟木廠員工被起訴，沒有紀錄說在這艘船的救生衣裡』；仍不說有、不說沒有、不點名廠商",
+        "刑期與赦免：兩個二手來源年份互相矛盾（1908 對 1911／1912），維持不說，寫進來源 limitations 與 notes",
+        "ZT6-S001 摘要的『麻質水管』改『亞麻水管』、補『定罪的是第三項』；新增來源 ZT6-S016"
+      ],
+      "unverified": [
+        "聯邦調查委員會 1904 年報告原文（www.dco.uscg.mil 在封鎖名單，未請求）——鐵條的一手出處仍未讀到",
+        "法院官方版本的判決（只讀到 hallapproved.com 轉載 CourtListener 資料的版本；重抓與作者 cache 相同）",
+        "船長刑期、假釋與赦免的一手來源",
+        "地院 134 F. 592 意見、當年報紙"
+      ],
+      "note": "翻轉（定罪核心是十三年沒試的水管與沒演習的船員、航向不在爭點、沒超載）全在判決全文裡逐句對到，不靠鐵條；殘留的舊方向說法（腐敗黑箱、鐵鉛、一千三百餘名路德教派）題卡裡沒有。"
+    },
+    {
+      "id": "N7432",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R756",
+      "author": "ZT6",
+      "key_source_reopened": "https://www.stadt-muenster.de/kriegerdenkmale/fruehe-erinnerungsmale/taeufer-koerbe（R756 seq 2，200，44237 bytes）：與作者 seq 32 雜湊相同；對到 1536 打造、187／179 公分、22. Januar 1536 處決、1881 取下、1898 掛回、複製品與宣稱原件、二戰兩個墜落、1987 燈、2017 討論、『bis heute umstritten』",
+      "changes": [
+        "開場刪掉沒有機構來源的『導遊愛講』『鐘面上方』，『掛了快五百年』改成『將近五百年前打的』（題卡自己說中途取下過）",
+        "answer_target 補一句：多妻與自立為王機構來源有寫（ZT6-S013、S014），沒寫的是裁縫、二十五歲、十六個妻子、遺骸留多久、財產共有的做法",
+        "ZT6-S013 的 limitations 寫『沒有寫國王稱號、多妻』與原文不符（原文有 Mehrehe 與 Selbstkrönung），已更正並補進 summary",
+        "risk 改為：三名領袖與主教是十六世紀人物，可點名，依據寫明是事件年代與 1536 年處決日期；複製品買主與歷史學者仍不點名",
+        "payoff 補一句『只說找不到，不說是假的』"
+      ],
+      "unverified": [
+        "十六世紀原始史料（目擊記述、審訊紀錄）未讀；『裁縫、二十五歲、十六個妻子、財產共有』無法核對，正片不說",
+        "城陷日期 6 月 24／25 日兩來源差一天（正片說 6 月下旬）",
+        "遺骸在籠中留到何時"
+      ],
+      "note": "市檔案館與大學研究所兩個機構來源讀到正文，選舉奪權與鐵籠經歷都對得上；素材只夠一章，維持 chapter；涉及現存教派，題卡沒有下判斷。"
+    },
+    {
+      "id": "N7433",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R756",
+      "author": "ZT6",
+      "key_source_reopened": "https://api.parliament.uk/historic-hansard/sittings/1858/jul/24（R756 seq 4，200，8215 bytes）：7 月 24 日議程索引，有 METROPOLIS LOCAL MANAGEMENT Bill 條目與前後日連結；https://api.parliament.uk/historic-hansard/sittings/1858/jul/26（R756 seq 5，200，19220 bytes）：索引頁，無本法案條目；https://api.parliament.uk/historic-hansard/sittings/1858/jul/27（R756 seq 6，200，19073 bytes）：上議院議程列有 METROPOLIS LOCAL MANAGEMENT ACT AMENDMENT BILL；https://api.parliament.uk/historic-hansard/sittings/1858/jul/28（R756 seq 7，200，7321 bytes）：索引頁，無本法案條目；https://api.parliament.uk/historic-hansard/sittings/1858/jul/29（R756 seq 8，200，16001 bytes）：索引頁，無本法案條目；https://api.parliament.uk/historic-hansard/sittings/1858/jul/30（R756 seq 9，200，20056 bytes）：索引頁，下一個議事日連到 8 月 2 日；https://api.parliament.uk/historic-hansard/lords/1858/jul/27/metropolis-local-management-act（R756 seq 10，200，6256 bytes）：上議院 7 月 27 日，SECOND READING cc2154–61（只有索引，辯論在子頁，未讀）；https://api.parliament.uk/historic-hansard/sittings/1858/aug/2（R756 seq 11，200，12150 bytes）：8 月 2 日議程：兩院皆有 PROROGATION OF THE PARLIAMENT；https://api.parliament.uk/historic-hansard/lords/1858/aug/02/minutes（R756 seq 12，200，7465 bytes）：c2369 ROYAL ASSENT 清單列有 Metropolis Local Management Act Amendment → 一讀 7/15 到御准 8/2 為十八天，作者寫『對不上』有誤，已改",
+      "changes": [
+        "axis P → S（沒有預言成分，是歷史名場面）",
+        "補讀 Hansard 8 月 2 日上議院議事摘要（ZT6-S017）：御准在 8 月 2 日，一讀到御准正好十八天——作者寫『十八天對不上／無法核對』改成『對得上』，payoff、answer_target、scope 同步改",
+        "問句與開場不再把十八天說成只是流傳的說法；開場的法官提問改成紀錄原樣（先問在場有沒有醫生）",
+        "『政府想趁恐慌還沒散』是推論，改成議事錄裡有的『會期快結束』（c1702）加休會日期",
+        "risk 的人物段補上依據"
+      ],
+      "unverified": [
+        "浸氯化石灰的窗簾、遷出國會、氣溫度數的一手出處（六月上旬與七月初的問答未讀）",
+        "上議院各階段的辯論內容",
+        "二讀辯論未逐字讀完（引用的各句已在 cache 逐句對到）",
+        "工程本身的一手資料（題卡不講）"
+      ],
+      "note": "惡臭、雙頭政府、三百萬與否決權都在議事錄逐句對到；翻轉從『十八天不可靠』修正為『十八天是真的，但通過的是借錢與作主的權力』，仍成立。"
+    },
+    {
+      "id": "N7434",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R756",
+      "author": "ZT6",
+      "key_source_reopened": "https://burkeandwills.net.au/Commission_of_Enquiry/Report.htm（R756 seq 3，200，19970 bytes）：與作者 seq 22 雜湊相同；全文無 nardoo、無醫學死因；對到 ample and liberal、zeal than prudence、Wright reprehensible、four months and five days、twenty-four hours further perseverance；末段提到倖存的 Mr King；https://burkeandwills.net.au/Journals/King/Kings_Narrative.htm（R756 seq 14，200，38165 bytes）：倖存者口述：原住民帶他回營地、固定給魚和 nardoo，約一個月後救援隊抵達——『第三人被原住民照顧而活下來』有一手紀錄",
+      "changes": [
+        "axis U → H（死因之謎的歷史懸案，沒有太空或未知訊號成分）",
+        "問句的流傳版本『死因調查查出種子有毒』只出現在被隔離的舊題卡、樣本 ZT6-S008 沒有這樣寫，屬舊方向殘留；改成『現在常直接說他們是被這種種子害死的』，answer_target 裡引用舊題卡的那句刪掉",
+        "『維生素還沒有被發現』沒有來源，改成 1994 年摘要自己的說法（當時沒有人想到）",
+        "補讀倖存者口述（ZT6-S018）：第三人由原住民供給魚和 nardoo 活到救援隊抵達，改用這個一手來源，不再靠部落格；scope、payoff 同步改"
+      ],
+      "unverified": [
+        "1994 年 Nature 評論正文（付費牆，只有摘要）——酵素含量與原住民處理法為何有效，正片不講",
+        "聽證逐日紀錄未讀",
+        "族名的機構來源",
+        "報告頁面把刊出日期寫成 1861 年（應為 1862），依文號判斷"
+      ],
+      "note": "日記、1862 年報告全文與 1994 年摘要三者的關係逐句對得上；報告全文確實沒有 nardoo，翻轉成立。"
+    },
+    {
+      "id": "N7435",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R757",
+      "author": "ZT7",
+      "key_source_reopened": "https://www.mja.com.au/journal/2005/183/11/mawson-and-mertz-re-evaluation-their-ill-fated-mapping-journey-during-1911-1914（R757 seq 1，200，527943 bytes）：位元組與 sha256 前綴（20a8fe5f38d09b41）與作者 seq 2 相同。對到：1912-12-14、1913-01-08、1913-02-08 與數月後完全康復；1969 年 Cleland & Southcott『a possible explanation』、1978 年 Shearman（BMJ）；『no more than three husky livers』；1912 年出現 vitamins 一詞、1915 年發現維生素 A；記述中沒有急性中毒症狀；『near vegetarian』與照顧了 18 個月的狗。全部相符",
+      "changes": [
+        "axis U→H：沒有太空或未知訊號成分，是探險生還與病因的歷史懸案",
+        "1956 紅線補上來源：作者 cache/004.bin（archive.org metadata 的 creator 欄）寫 Mawson, Douglas, Sir, 1882-1958；1958 > 1956，確定不點名、不入畫，risk、scope、notes、ZT7-S002 的 limitations 同步改寫",
+        "確認 question、hook、payoff、visual 都沒有點名隊長（只稱『探險隊長』）；visual 原有『裹得看不見臉的身影坐在雪橇上』是讓本人入畫，改成只畫襪子、繃帶、羊毛脂與單人腳印",
+        "傷勢不描寫：question、hook、payoff 的『腳底的皮整層脫落／整片掉了下來／把皮綁回去』改成『嚴重脫皮、纏上繃帶繼續走』；原文細節只留在 answer_target",
+        "hook『他出發那一年』改『他踏上這趟路的那一年』：遠征 1911 年出發，這趟測繪行 1912 年 11 月出發，ZT7-S001 寫的是 1912 年出現 vitamin 一詞",
+        "answer_target『沒有任何化驗可以支持』來源沒這樣寫，改成『依文字記述回推、S001 說含量難以估計且多半偏低』",
+        "visual 拿掉來源沒讀到的『罐頭鐵皮折成的杯子』"
+      ],
+      "unverified": [
+        "1969（Cleland & Southcott）與 1978（Shearman）兩篇原論文仍沒讀，只經 ZT7-S001 轉述與書目；題卡只說『誰在哪一年提出／支持』，沒有引它們的數字，可接受",
+        "隊長日記裡關於肝的原句沒有一手來源",
+        "archive.org 條目代號在作者請求紀錄的快取頁裡找不到出處（搜尋工具沒有留紀錄）",
+        "各通俗與機構網頁的網址同樣來自未留紀錄的搜尋"
+      ],
+      "note": "事實逐句對得上，翻轉成立（腳底的事是當事人自己寫的；維生素 A 說是 1969 年的假說、2005 年被同刊反駁）。主角不能點名也不能入畫，整集的可做性請編輯評估。"
+    },
+    {
+      "id": "N7436",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R757",
+      "author": "ZT7",
+      "key_source_reopened": "https://archive.org/download/trialofmadeleine00smituoft/trialofmadeleine00smituoft_hocr_searchtext.txt.gz（R757 seq 2，200，375303 bytes）：作者的 _djvu.txt 逾時只收到 42%，覆核改抓同條目 metadata（作者 seq 9）列出的搜尋文字檔，完整。對到：導言的三項裁決、13 to 2、作證六天／第九天宣判、退席半小時、『no direct or reliable proof that the parties had actually met』；正文頁 279 的裁決原文；Penny 教授 82 7-10ths 喱與『four or six grains』『two and four grains』；登記簿 2 月 21 日（garden and country house）、3 月 6 日（kill rats）；同學證詞『I'll sign anything』；被告聲明『I used it all as a cosmetic』；物證 77 件；Stevenson『250 to 300…in all handwritings』。全部相符；導言的『16th March』與證詞的 3 月 6 日不符，以證詞為準",
+      "changes": [
+        "作者只讀到整理本前 42%；覆核改抓同條目 metadata 列出的 _hocr_searchtext.txt.gz（完整，375,303 bytes），在正文頁 279 讀到裁決原文，answer_target、scope、notes、ZT7-S005 的 read_via／reading_scope／locator／limitations 補上",
+        "hook『幾個星期後』改『兩個多星期後』：同學作證的簽名在 3 月 6 日，死者 3 月 23 日過世",
+        "risk 的紅線依據改成事件年代（1857 年受審時 21 歲），卒年仍不講；archive.org 編目的 1893 與一般記載不同，不採用",
+        "『16 日／6 日』確認：登記簿條目與兩位證人都是 3 月 6 日，導言的 16 日是誤植"
+      ],
+      "unverified": [
+        "陪審團 13 比 2 的票數與『缺的是那次見面』的總結只見於 1905 年編者導言",
+        "辯方證人後段、結辯全文與信件附錄沒有逐段讀",
+        "掃描圖沒對，數字依 OCR",
+        "National Records of Scotland 的原始卷宗沒讀"
+      ],
+      "note": "四題裡來源最扎實的一題；三項罪名、第一項其實是無罪、77 件對 300 封、登記用途不是美容，都在整理本裡對到。"
+    },
+    {
+      "id": "N7437",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R757",
+      "author": "ZT7",
+      "key_source_reopened": "https://eapoe.org/geninfo/poedeath.htm（R757 seq 3，200，61069 bytes）：位元組與 sha256 前綴（df5e0f677c722581）與作者 seq 14 相同。對到：Walker 便條全文、Gunner's Hall、『no foundation…gutter』（同句後半說可能先在街上遇到）、衣著、10 月 7 日、congestion of the brain、沒有死亡證明與 1960 年代的搜尋、The Cooping Theory 一節（cannot be proven、early 1870s、匿名來源、twaddle）、1874 年信『general belief』與『election for sheriff took place on Oct. 4th』、half a glass。對不上的：題卡說便條描述他『醉了』（便條沒說）；手杖一事頁面自己有兩種說法",
+      "changes": [
+        "axis G→H：沒有靈異成分，是死因懸案（作者也這樣建議）",
+        "question 原句把『死後二十多年才有人公開講』當成確定事實；學會只說『appears to have been first offered publicly…in the early 1870s』，又說這位編輯約 1860 年起演講、『某個時候』才提灌票。改成『查得到的最早公開出處』，answer_target、scope、payoff 同步加上這層保留",
+        "hook『1849 年選舉日』改『選舉期間』：ZT7-S008 正文說是選舉日，但它引的 1874 年信說警長選舉在 10 月 4 日，作者自己的 notes 也說只講選舉期間",
+        "answer_target『便條與醫師的回憶說的都只是醉了』不對：便條只寫 rather the worse for wear、in great distress，沒說醉；說醉的是醫師 1867 年的回憶，學會附註還指出他把便條轉述成 beastly intoxication。已更正",
+        "answer_target 補上學會的另一半：印刷工有可能先在街上遇到他再扶進酒館，所以『倒在酒館外』不能說全錯，只能說沒有紀錄",
+        "visual 拿掉手杖（ZT7-S008 書目附註說最合理的讀法是手杖留在里奇蒙）與來源沒寫的『山坡上的』醫院；ZT7-S008 summary 的手杖一句同步改",
+        "risk 改寫：十九世紀當事人可點名的依據是事件年代，仍建議只稱身分；寫明題材碰到 BRIEF 不收清單的『選舉』，只當 1849 年的歷史背景"
+      ],
+      "unverified": [
+        "灌票說首次公開的確切年份（學會也不知道）",
+        "便條原件、1849 年報紙、1996 年醫學文章都沒讀，全經學會頁面轉述",
+        "Snodgrass 的文章讀的是學會轉錄，不是雜誌掃描",
+        "一手來源其實只有 ZT7-S009 一篇十八年後的回憶；ZT7-S008 是學會的二手考證（機構來源）"
+      ],
+      "note": "題成立，翻轉是『灌票說沒有任何 1849 年的文件，最早的公開出處在二十多年後』。題材涉及十九世紀選舉舞弊，是否觸及『選舉』不收項請編輯定。"
+    },
+    {
+      "id": "N7438",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R757",
+      "author": "ZT7",
+      "key_source_reopened": "https://archive.org/download/sim_american-journal-of-science_1834-01_25/sim_american-journal-of-science_1834-01_25_hocr_searchtext.txt.gz（R757 seq 4，200，406404 bytes）：位元組與 sha256 前綴（16c0801739055266）與作者 seq 19 相同。對到：Boston 來函（推開客廳窗板、5 點 45 分流星轉少、十分之一或更少的天空、650、三分之二、8660）；『3. Number』（cannot be accurately estimated、34,640 an hour、103,920、207,840、considerably too low）；『ten thousand to a single hour』；獅子座鐮刀彎內、γ 星略西、一小時西移近 15 度；結論第 6 點；Annapolis 校長來函『shower of fire…dwellings were in flames』。報告裡沒有每小時 150,000；題卡原本的『數到六百五十就數不下去』『站在屋外』對不上",
+      "changes": [
+        "axis P→U：拿掉末日那一半後是天文觀測史",
+        "撞題判斷：與 N5401 不是同一題（N5401 問 1799 年誰看見、誰預期 1833 年再來；本題問 1833 年的數字怎麼算），但共用 Olmsted 報告，Annapolis『以為下火』與『輻射點在獅子座』N5401 都已用到；維持 chapter，minutes 6–8 降為 5–7，notes 寫明最適合併進 N5401 那一集",
+        "池內前例：DEDUP.md 有三筆『1833 年審判日』不收紀錄（wave40、wave47 的 R477 退回、ZE2），R477 明寫 Douglass『人子降臨』那句不引用，N5401 的 scope 也寫明不引。所以把 Douglass 與末日聯想整段從 answer_target、scope、hook、payoff、visual、risk 拿掉，ZT7-S012 不再引用",
+        "question 原本問『每小時十五萬到底怎麼來的』，但作者自己承認這個數字的出處沒查到；answer_target 還寫『那些大數字全是從 650 這個數推上去的』，對 150,000 沒有根據。問句改成問報告裡的二十萬怎麼算，答案寫明十五萬不在讀到的報告裡、出處未查到",
+        "hook『站在波士頓屋外、數到六百五十就數不下去』與來函不符：他是推開客廳窗板觀察，十五分鐘數了 650 顆、自估只數到三分之二。已改，visual 同步",
+        "『以為下火、房子著火』補上出處是 Annapolis 一位大學校長的來函；『各地來信一致說獅子座』收窄成『把位置對到恆星上的觀察者都說在獅子座』（結論第 6 點的原意）"
+      ],
+      "unverified": [
+        "報告第二部分（第 26 卷）沒讀",
+        "『每小時 150,000』最早的出處",
+        "數字依 OCR，掃描圖沒對（算式自洽）",
+        "樣本只有一篇通俗文章"
+      ],
+      "note": "可收但偏弱：翻轉屬於『糾正數字口徑』，而且這個方向在池內被退過三次，只有『數字來源』這個角度是新的。建議當 N5401 的一章，不單獨成集。"
+    },
+    {
+      "id": "N7439",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R758",
+      "author": "ZT8",
+      "key_source_reopened": "https://www.bousai.go.jp/kyoiku/kyokun/kyoukunnokeishou/rep/1923_kanto_daishinsai_2/pdf/4_chap1-1.pdf（R758 seq 2，200，4514791 bytes）：sha256 前綴 e9a8296942ccf3c4 與作者 seq 36 相同。第 7 頁 (b) 被服廠跡地：10.3ha、近三角形、樹木がない、4 萬人與大量家財、14 時已滿、16 時三方向來火、火災旋風；表 1-3 被服廠一列 10.3／40,000／40,000；「周囲からの熱により内部の家財が燃え上がり」：都在。",
+      "changes": [
+        "軸別 W→M：題材是火災旋風這個自然現象的成因公案，沒有商業成分。",
+        "問句結尾原問「旋風裡為什麼沒有火」，但 answer_target 的答案是「沒有定論」，等於承諾了沒有的答案；改問「真正要命的到底是什麼」，答案（三面來火＋家當成了燃料）在 answer_target 裡。",
+        "hook 的「比十個足球場還大」來源沒有，且面積有 6／7／10.3 公頃三種寫法；改成「約十公頃」並在 answer_target、scope 寫明三種寫法與各自來源。",
+        "傷亡層級：answer_target 與 ZT8-S015 摘要裡「把人捲上天」「燒死」「火化」改成不描寫的說法；遇難人數保留 3 萬 8 千與 4 萬兩種並各帶來源，補上 ZT8-S015 自己對兩個數字的交代（現場約 3 萬 8 千、連同周邊約 4 萬）。",
+        "payoff 的「今天的避難守則叫人空手走」來源沒有，改成報告原意（對今天開車避難的警訊）。",
+        "補記 ZT8-S017 提到場內樹木，與「沒有樹」不完全一致；「沒有樹」標明是內閣府報告的寫法。",
+        "1925 年報告只能說成論文轉述，寫進 answer_target 與 scope。"
+      ],
+      "unverified": [
+        "1925 年震災預防調查會報告原件沒有人讀到；「15 分鐘」「鋒面龍捲說」都只有 2023 年論文的轉述。",
+        "38,000 最初出處、三種面積何者為準。",
+        "各來源網址（bousai.go.jp、frontiersin.org、weathernews.jp）出自作者的搜尋結果，搜尋沒有留紀錄，無法從 cache 反查出處；頁面本身都對。"
+      ],
+      "note": "兩份內閣府報告與一篇開放取用論文都讀到正文，舊方向的「帝大航空所報告」「集體窒息」「氧氣耗盡」沒有殘留在可念的欄位裡，可收。"
+    },
+    {
+      "id": "N7440",
+      "verdict": "REJECT",
+      "reviewer": "R758",
+      "author": "ZT8",
+      "key_source_reopened": "https://tile.loc.gov/text-services/word-coordinates-service?segment=/service/ndnp/dlc/batch_dlc_brown_ver02/data/sn83030214/0020653235A/1919011601/0368.xml&format=alto_xml&full_text=1（R758 seq 3，200，39296 bytes）：sha256 前綴 2c375c0db47875b8 與作者 seq 17 相同。標題「9 Die, 30 Hurt In Explosion Of Molasses」、內文 9 死約 50 傷、州警爆裂物專家的發酵氣體說、槽壁裂成兩片、「very slowly drained」、站一分鐘被黏住：都在。來源沒問題，題因撞 legacy S36 不收。",
+      "changes": [
+        "撞題：legacy S36「1919 年，波士頓被糖漿淹沒？」已在池內（pool.json，pool_status selected、production 為 branch_research，工作目錄 curio-s36）。作者查重時只看到隔離區的舊卡，漏了這一筆。",
+        "若把這張卡的材料交給 S36 當研究，需先改兩處：answer_target 把「錳含量低、59°F 以下變脆、當天約 40°F、沒先灌水測試」都掛在「一位結構與冶金工程師 2014 年的分析」名下，但 ZT8-S006 原文這幾句出自另一位土木工程教授；問句的「英文用慢得像糖蜜形容慢」來源沒有（ZT8-S006 只說糖蜜出名地難倒）。"
+      ],
+      "unverified": [
+        "法院稽核官報告與 2014 年工程分析原文都沒讀到，答案後半只有兩篇報導轉述；即使不撞題也只能是 needs_check。"
+      ],
+      "note": "來源真實（1919-01-16 New-York Tribune 第 16 頁重抓相符），但題已有人規劃，不重做；軸別不必再改。"
+    },
+    {
+      "id": "N7441",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R758",
+      "author": "ZT8",
+      "key_source_reopened": "https://digicoll.library.wisc.edu/WIReader/WER2002-9.html（R758 seq 4，200，14166 bytes）：sha256 前綴 4ffe209a3442cf00 與作者 seq 31 相同。「A number of these persons assert…a large black object, resembling a balloon…burst with a loud report, like that of a bombshell」：是轉述，與題卡相符。；https://www.weather.gov/grb/peshtigofire2（R758 seq 5，200，66289 bytes）：sha256 前綴 154c21114e6b74cc 與作者 seq 23 相同。1,200–2,400、鎮上約 800、成因清單：都在；全文無 comet。；https://digicoll.library.wisc.edu/WIReader/WER2002-1.html（R758 seq 6，200，12167 bytes）：補讀回憶錄第 1 章（作者沒抓）：無 comet、meteor、balloon。；https://digicoll.library.wisc.edu/WIReader/WER2002-2.html（R758 seq 7，200，23616 bytes）：補讀第 2 章：無 comet、meteor、balloon。；https://digicoll.library.wisc.edu/WIReader/WER2002-10.html（R758 seq 8，200，9266 bytes）：補讀後記：無 comet、meteor；有遺體描寫，正片不用。；https://www.fox6now.com/news/peshtigo-wisconsin-fire-deadliest-us-history（R758 seq 10，200，172601 bytes）：新增來源 ZT8-S018：2026 年報導仍列彗星說、答「大概不是」；反駁只有一句且無出處。",
+      "changes": [
+        "刪掉「1883 年」：ZT8-S012 只給那本舊書的書名與作者，沒寫年份，三處（answer_target、risk、ZT8-S012 摘要）都改掉。",
+        "補讀回憶錄第 1、2 章與後記（作者沒抓），確認全書線上版沒有彗星、流星字樣，「氣球」只在第 9 章；answer_target 與 ZT8-S008 的 reading_scope 照實更新。",
+        "補一筆 2026 年的流傳樣本 ZT8-S018，證明彗星說至今仍被提起；它對彗星說的一句反駁沒有出處，scope 寫明不能當否證依據。",
+        "hook 的「濕毯子」改成來源的寫法（撈起漂來的布蓋在旁人頭上）；「兩岸的」刪掉（原文是四面望去房子、樹與空氣都在燒）。",
+        "risk 寫明點名 Pernin 的依據是事件年代與出生年；ZT8-S012 摘要裡關於遺體的說法刪掉，後記的遺體描寫列入不用。",
+        "軸別 M 不改（自然現象解釋，合適）。"
+      ],
+      "unverified": [
+        "仍沒有讀到天文或隕石研究者直接檢驗彗星說的文章，正片只能說「火旋風就能解釋」。",
+        "回憶錄各章是關鍵詞讀法，不是逐字讀完。",
+        "fs.usda.gov、upi.com 的網址出自作者的搜尋結果，無紀錄可反查；頁面本身對得上。"
+      ],
+      "note": "翻轉成立且有一手紀錄：火球是神父轉述別人的話、鐵軌是扭曲不是熔化、氣象局與林務署不需要彗星就能解釋。"
+    },
+    {
+      "id": "N7442",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R758",
+      "author": "ZT8",
+      "key_source_reopened": "https://archive.org/download/19071908v42i18p154_0540/19071908v42i18p154_0540_djvu.txt（R758 seq 1，200，709952 bytes）：sha256 前綴 e4e84811e3beb286 與作者 seq 4 相同。對過 findings (a)–(o)、「approaching seventy…infirm health」、12.16 p.m. 電報全文與收件地 Phoenixville、1.15 p.m. 收到、約 3 p.m. 才看到、「almost at the minute that the bridge fell」、「Out of eighty-six men…only eleven escaped」、改跨距三個理由：都在。對不上的兩處：問句「沒能救到八十六個人」（來源是 86 人中 11 人生還）；「領班前一晚想停、早上又繼續」是 8 月 28 日信的說法，寫信人 9 月 2 日自己更正過。「連夜趕往紐約」的出發時間沒找到。；https://uwaterloo.ca/engineering/news/dean-wells-pays-tribute-iron-rings-legacy（R758 seq 9，200，210055 bytes）：新增來源 ZT8-S019：寫魁北克大橋倒塌奪走 75 條人命，與報告的 86−11 相符；沒提殘骸打戒指。",
+      "changes": [
+        "軸別 P→S：工程事故與調查，沒有預言成分。",
+        "問句原寫「沒能救到橋上那八十六個人」，與報告不合（86 人在工地、11 人生還）；改成「八十六人最後只有十一人生還」。",
+        "answer_target 的「領班前一晚想停，早上又決定繼續」引的是 8 月 28 日信裡的說法，寫信人 9 月 2 日自己去信更正過（報告第 89–90 頁）；改成兩封信的先後說法。",
+        "「檢查員連夜趕往紐約」的出發時間報告裡沒找到，刪「連夜」，visual 的「夜車」改「火車」。",
+        "hook 與 payoff 的「戒指的傳說是假的」改成「工程師團體自己說那是迷思」：主辦法人的沿革沒有明白否認，否認的是省級公會的歷史頁與一篇通俗文章。",
+        "75／76：補一筆寫 75 人的機構來源 ZT8-S019，answer_target 列出三處寫法；可念的欄位仍只說「八十六人裡十一人生還」。",
+        "ZT8-S004 的日期補上（2022-05-31，頁面有）；記下 OCR 把電報日期印成 27 日。",
+        "risk 寫明點名顧問工程師的依據是報告記載的年紀。"
+      ],
+      "unverified": [
+        "沒有把「殘骸打戒指」當事實講的樣本，只有兩頁說它是常見誤解。",
+        "主辦法人沒有明文否認；戒指實際材料來源沒有文件。",
+        "倒塌時刻、75 與 76 的差異原因。"
+      ],
+      "note": "皇家調查委員會報告是原件 OCR，關鍵句逐句對上；主線（電報發到賓州、桌上躺到三點、決定明天再說）站得住。"
+    },
+    {
+      "id": "N7443",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R759",
+      "author": "ZT9",
+      "key_source_reopened": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0182244（R759 seq 1，200，234812 bytes）：與作者 cache/002.bin 位元組數、雜湊相同。核對 135 磅（61.2 kg）、不到 5 公尺、16 英尺桿、骨骸在崗位上無骨骼外傷無逃生跡象、指揮塔關閉、抽水泵未設排水、壓載未拋、1/6 縮尺 16 號鋼板、283 克至 1 公斤藥包、淡水池塘、存活機率低於 16%、海軍實測約 7,600 kPa（unpublished data）、限制段、『Eyewitness reports… blue light… pre-arranged symbol for victory』：全部在原文。；https://web.archive.org/web/20190601043136/https://www.history.navy.mil/research/underwater-archaeology/sites-and-projects/ship-wrecksites/hl-hunley/black-powder-blast-effects-hunley.html（R759 seq 5，0，0 bytes）：網址取自作者 cache/003.bin（維基條目原始碼的 archive-url）。連線被重設（curl 35），沒有讀到內容，沒有重試。海軍異議仍只有百科一句轉述，已從 payoff 與 scope 拿掉。",
+      "changes": [
+        "axis P→H：沒有預言或末日成分，是戰史懸案。",
+        "payoff 與 scope 拿掉『海軍方面的考古人員也不同意』：只有維基條目一句轉述，海軍原頁作者兩次、覆核者循存檔連結一次都沒讀到；answer_target 改寫成『只有百科轉述，正片不採用』。",
+        "payoff 與 answer_target 刪『不是傳說的千磅』：『千磅』只出現在被隔離的舊題卡，沒有任何讀到的樣本。",
+        "hook 的遺骸描寫改成『調查發現艇員都還在各自的崗位上，沒有逃生的跡象』（出處 ZT9-S001），並刪掉報告沒寫的『那一晚』。",
+        "answer_target 補：砲台報告沒寫信號是幾點、爆炸前還是後看到的；論文把藍光寫成『攻擊後的報捷信號』並註明出自調查庭紀錄（原件未讀）；作者認為藥包限制只會低估衝擊。",
+        "risk 改寫：四位 1864 年軍官的卒年在 cache 裡找不到，可點名的依據寫明是事件年代。",
+        "minutes 9–11 → 8–10（拿掉海軍一段後素材略少）；visual 的『燭光』改『微光』。"
+      ],
+      "unverified": [
+        "海軍歷史與遺產司令部對爆震說的異議內容（原頁未讀到）",
+        "藍光的原始出處：Housatonic 調查庭證詞（NARA M273 reel 169）與 1866 年回憶錄，都只有書目",
+        "艇員八人之數只在維基條目",
+        "四位軍官的卒年"
+      ],
+      "note": "兩個實讀來源（2017 年論文、1864 年官方公文彙編）撐得住『爆震說是推算、砲台報告寫看到信號』這個對照；翻轉成立，但結論是『對不起來』而不是推翻。"
+    },
+    {
+      "id": "N7444",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R759",
+      "author": "ZT9",
+      "key_source_reopened": "https://archive.org/download/throughfirstan00cook/throughfirstan00cook_djvu.txt（R759 seq 2，200，923504 bytes）：與作者 cache/011.bin 位元組數、雜湊相同。核對序言『thirteen long months』『seventy days of continued darkness』『Lieutenant Danco died』、p.301–302 罐頭與『polar anaemia』、p.331–333『baking treatment』全段（牛奶、蔓越莓醬、企鵝或海豹排『fried in oleomargarine』、Danco『would rather die』、『In a week he was about』）：都在。全文 scurvy 只有一處（1578 年）、沒有 raw／uncooked 的生肉義：屬實。另發現作者漏讀的 p.315–316（明火是太陽的替代），已補。；https://polarresearch.net/index.php/polar/article/view/2680（R759 seq 6，200，40604 bytes）：網址取自作者 cache/016.bin 頁面上的引用格式（doi.org 已在共用封鎖名單上，不再請求）。與作者 cache/016.bin 位元組數、雜湊相同；摘要第一句『the first to spend 13 months continuously in Antarctic waters』、Published 2018-06-06 都在。；https://polarresearch.net/index.php/polar/article/view/2680/6112（R759 seq 7，200，22794 bytes）：上一頁列出的全文版連結；回來的是期刊外殼頁，沒有正文，沒有再往下找。ZT9-S005 維持『只讀到摘要』。",
+      "changes": [
+        "axis U→S：沒有太空或未知訊號成分。",
+        "question 重寫：原句的『生吞企鵝肉』來自舊題卡，兩篇樣本都沒有寫生吃（Time 寫不要煮過頭、Hektoen 寫稍微煮過）；改成樣本確實寫的『治好壞血病＋最早的光照療法』對照書裡的『不叫壞血病、脫衣烤火加煎企鵝排』。",
+        "answer_target 的流傳版本改成樣本實際的寫法，刪『罐頭害全船得壞血病』『強迫』『生的』『全員奇蹟生還』（樣本沒寫，後者樣本還寫了相反的事）。",
+        "補作者漏讀的 p.315–316：醫師寫明火的熱是『太陽最好的替代品』——所以『光照療法』不是憑空，但他講的是熱；payoff 與答案改成這個較準確的說法，並刪『他做對了事』這種回溯判斷。",
+        "hook『船長寫好了遺囑』改『交代了後事』（原文 last instructions）。",
+        "船長卒年在 cache 找不到，1898 年的當事人不能憑事件年代推定，改成不點名；risk、scope 同步。"
+      ],
+      "unverified": [
+        "Polar Research 那篇只讀到摘要（全文連結回外殼頁）",
+        "『沒寫壞血病、沒寫生吃』是對 OCR 全文的檢索加覆核者重讀相關頁，OCR 可能漏字；醫師別的著作與其他隊員的日記未讀",
+        "船長的卒年",
+        "Hektoen 的『第一個在南極圈內過冬』沒有一手來源，題卡沒有用"
+      ],
+      "note": "一手來源（醫師 1900 年的書）讀到正文、兩篇樣本都在；確認 seq 15 的猜網址沒有被引用。翻轉清楚：病名、做法、解釋都和流傳版不同。"
+    },
+    {
+      "id": "N7445",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R759",
+      "author": "ZT9",
+      "key_source_reopened": "https://link.springer.com/article/10.1007/s10354-024-01042-y（R759 seq 3，200，313683 bytes）：比作者 cache 多 18 bytes（動態頁）。核對『Maybe my watch?』、汽船鳴鐘與趕上船、甲板上昏倒、『pronounced dead at 2:10 p. m.』、兩份報告存奧地利國家檔案館、署名 Gosse／Reverdin／Mégevand、『absolute proof』、『The answer is definitely no!』、否定『懂解剖』、報告沒有提刺青：都在。對不上的一處：三位署名者是兩位教授加一位 Privat Docent，不是三位教授，已改。",
+      "changes": [
+        "axis M→S（作者也這樣建議）。",
+        "『三位教授』改成來源寫的『三位日內瓦醫師（兩位教授、一位講師）』，hook、payoff、scope、answer_target 同步。",
+        "hook 刪來源沒有的『拍拍衣服』；『報告寫的卻是另一回事』改成『把報告譯出來的病理學者說的是另一回事』——否定胸衣的是 2024 年的判讀，不是 1898 年的報告。",
+        "payoff 的『被血積滿』改成不描寫的『被填滿』；answer_target 的『胸衣只讓旁人更晚看見血跡』是作者的推論，改回論文原意。",
+        "risk 補行兇者卒年 1910（ZT9-S009），仍照 scope 不點名不入畫。"
+      ],
+      "unverified": [
+        "奧地利國家檔案館的報告原件（法文）沒讀，只有論文的英譯",
+        "女官與三位醫師的卒年",
+        "『胸衣止血』的樣本只有一篇通俗網站加論文自己一句『常有人討論』"
+      ],
+      "note": "維持 chapter、5–7 分鐘；一手材料只有一篇開放取用論文裡的報告英譯，加一個機構網站，翻轉清楚但單點。"
+    },
+    {
+      "id": "N7446",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R759",
+      "author": "ZT9",
+      "key_source_reopened": "https://www.biographi.ca/en/bio/hall_charles_francis_10E.html（R759 seq 4，200，88971 bytes）：與作者 cache/017.bin 位元組數、雜湊相同。核對咖啡後發病、病兩週、調查庭結論中風、1968 年 8 月開棺、多倫多 Centre of Forensic Sciences 中子活化、『76.7 ppm at the base of his fingernail』、『cannot be conclusively proved』『Nor can it be proved that he was murdered』『must remain a mystery forever』：都在。",
+      "changes": [
+        "axis U→H。",
+        "ZT9-S014 的作者署名找到了（PDF 文末），就是帶隊開棺的傳記作者；來源欄與 answer_target 補上，『是不是謀殺仍沒有答案』因此是他本人的話。",
+        "hook 改寫：原句『寫報告的那個人在結論裡留了一句』會讓人以為引文出自 1970 年醫學報告，其實出自他合撰的辭典條目；『永凍土把他保存了』『高得嚇人』改成不描寫遺體、來源撐得住的『在墓裡躺了九十七年』『明顯偏高』。question 的『親手開棺』改『帶隊開棺』。",
+        "visual 刪來源沒有的『小飛機』『發著藍光的儀器』。",
+        "risk 寫明隨船醫師與船長可稱名的依據是事件年代（1871）。",
+        "answer_target 的舊題卡殘留清單補『永久凍土』『抽搐』。"
+      ],
+      "unverified": [
+        "1970 年 NEJM 報告全文（只讀到 EPA HERO 的摘要）；76.7 ppm 只有辭典條目一個出處",
+        "1873 年調查庭逐字證詞；『醫師沒向調查庭說用過砷』只依 ZT9-S014",
+        "隨船醫師與船長的卒年",
+        "ZT9-S014 的刊期與年份"
+      ],
+      "note": "1876 年海軍部官方敘事讀到正文，開棺者本人兩處都寫『無法證明是謀殺』，對照通俗標題的『謀殺懸案』，翻轉成立。"
+    }
+  ],
+  "process_notes": [
+    "撞題比對先用關鍵字做，漏了三題：N7403（瑪麗賽勒斯特號，撞已上架的 H01，研究代理發現）、N7419（福克斯姊妹，撞 G01，研究代理發現）、N7440（波士頓糖蜜，撞 legacy S36，覆核 R758 發現）。三題都在 not_added。",
+    "6 題降為待查：N7404（1933 年那次發現只有一句沒附出處的二手敘述，另有一說與之牴觸）、N7408 與 N7409（沒有任何一手文件讀到正文）、N7415（「第一宗指紋定罪」的流傳說法沒有樣本）、N7421（兩個來源同出當事人的一本書）、N7428（沒有一手或機構來源）。",
+    "4 題素材只夠一章：N7412、N7432、N7438（R757 建議併進 N5401）、N7445。",
+    "N7424 換了方向：舊卡的「1844 年格林威治感光紙與自己打字的電報機」在任何來源都找不到，改做讀得到的 1847／1848 年鐵路電報紀錄。",
+    "N7435 的主角卒於 1958 年（研究代理快取的 archive.org 著者欄），正片不點名、不入畫；N7437 碰到十九世紀選舉舞弊，只當 1849 年的歷史背景。",
+    "en.wikipedia.org 在第一輪回了 429，進了共用封鎖名單，之後所有代理都沒有再請求，流傳版本的樣本多半改用通俗文章。doi.org 是因為轉址後的期刊站回 403 而被工具記進名單。",
+    "一次只發一個請求的規定有三次沒守住：R752 連續對 Olympedia 發了兩個請求、R756 用迴圈對 api.parliament.uk 連發五個（各間隔 1.2 秒，全部 200）、ZT9 有一筆把文章編號自己拼出來的請求（拿到不相干的文章，沒有採用，R759 確認沒有任何欄位引用）。",
+    "研究代理的搜尋結果沒有存檔，多數通俗文章與機構頁的網址出處只能對到「頁面存在、內容相符」；archive.org 條目與下載端點都能在快取的搜尋結果或 metadata 裡找到。",
+    "沒有發現編造的來源：十位覆核共發 83 次重抓與補讀，位元組或正文與研究代理的快取相符。",
+    "補查（站主 2026-11-17「6 題待查再補來源」）：ZU0–ZU2 補查、R760–R762 覆核，共 12 次重抓與加試，新增來源的位元組或正文與補查代理的快取相符。補到 4 題：N7408 與 N7409 升為可單獨成集並入選，N7415 與 N7428 可收但只夠一章（N7415 被覆核從 episode_core 降回 chapter）；N7404（1933 年那次發現仍無一手或機構來源）與 N7421（仍無獨立於當事人的來源）維持待查。N7428 的答案方向兩度改寫：補查代理改成「全船只有他不知道」，覆核依同一份審判紀錄裡被告自己的證詞改成「他是不是到最後都被蒙在鼓裡」。ZU1-S002（1972 年會刊那一頁）的確切網址在覆核的搜尋裡沒有重現，同館藏同刊的其他頁有，主編接受並留在來源的 limitations。"
+  ],
+  "counts_after_recheck": {
+    "ADOPT_WITH_CHANGES": 41,
+    "NEEDS_CHECK": 2,
+    "REJECT": 2
+  }
+}

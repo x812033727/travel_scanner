@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-19",
+  "method": {
+    "questions": {
+      "have": "觀眾手上或家裡就有",
+      "local": "台灣或東亞觀眾自己生活裡的事",
+      "standard": "規格、標準或誰在收錢",
+      "lose_or_jp": "大公司輸掉或日本品牌"
+    },
+    "reviewers": "兩位獨立評審各答一次，不讀 repo、不上網，拿不準答否；兩人都答是才算是。",
+    "formula": "demand = 1 + 2.25 × 答「是」的題數"
+  },
+  "themes": [
+    {
+      "id": "G746",
+      "proposal_key": "G746",
+      "answers": {
+        "have": true,
+        "local": true,
+        "standard": true,
+        "lose_or_jp": false
+      },
+      "demand": 7.75,
+      "reviewer_a": {
+        "have": true,
+        "local": true,
+        "standard": true,
+        "lose_or_jp": false
+      },
+      "reviewer_b": {
+        "have": true,
+        "local": true,
+        "standard": true,
+        "lose_or_jp": false
+      },
+      "reason": "主角是車上與手機裡常見的記憶卡與行車紀錄器，台灣行車紀錄器普及，核心是 C10/U3/V30 的最低寫入速度規格；日本測試只是佐證，不是講日本品牌或大公司輸掉。"
+    }
+  ]
+}

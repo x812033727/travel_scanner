@@ -27,6 +27,8 @@ function audience(value) {
   const { score, rank, of, click, hook, surprise, payoff, share, comment, reviewed_on: reviewedOn } = value;
   return {
     score, rank, of, click, hook, surprise, payoff, share, comment, reviewed_on: reviewedOn,
+    // 需求（2026-11-17）：四個是非題換算的第六項與併分前的五項平均；還沒評的題案兩個都是 null。
+    demand: value.demand ?? null, base: value.base ?? null,
     rounds: (value.rounds ?? []).map((round) => ({ score: round.score, comment: round.comment, changes: round.changes, reviewed_on: round.reviewed_on })),
   };
 }
@@ -124,6 +126,21 @@ function seriesBundle(root, series) {
     : [];
   const long = rows.filter((row) => row.long);
   const producible = rows.filter((row) => row.producible);
+  // 單集題：入選、可單獨成一集的題（editorial.role 為 episode_core）。它們不進題案，後台另有一個檢視列出來；
+  // 商業與品牌奇聞整類都在這裡。原來如此池沒有這個角色，陣列是空的。
+  const cores = pool.candidates
+    .filter((row) => row.selected && row.editorial?.role === 'episode_core')
+    .map((row) => ({
+      id: row.id,
+      category: row.category ?? null,
+      question: row.question,
+      hook: row.hook ?? '',
+      payoff: row.editorial.payoff ?? '',
+      minutes: row.editorial.minutes,
+      audience: audience(row.audience),
+      demand: row.demand?.demand ?? null,
+      produced: Boolean(row.production?.locators?.length),
+    }));
   return {
     key: series.key,
     name: series.name,
@@ -137,9 +154,13 @@ function seriesBundle(root, series) {
       long_reserve: long.filter((row) => !row.producible).length,
       scored: rows.filter((row) => row.audience).length,
       improved: rows.filter((row) => row.audience?.rounds.length).length,
+      cores: cores.length,
+      cores_scored: cores.filter((row) => row.audience).length,
+      cores_passing: cores.filter((row) => row.audience && row.audience.score >= AUDIENCE_MIN).length,
     },
     audience_min: AUDIENCE_MIN,
     themes: rows,
+    cores,
     episodes: episodesFor(root, series, pool),
     expansions,
     checkpoints,

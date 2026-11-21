@@ -13,11 +13,10 @@ from pydantic import (
     model_validator,
 )
 
-PlanCatalog = Literal["season1", "season2", "season3", "brand-stories", "ai-terms"]
+PlanCatalog = Literal["season1", "season2", "season3", "ai-terms"]
 PlanStage = Literal[
     "REVIEWED_OUTLINE_NOT_MEDIA",
     "CHECKED_CANDIDATE_REQUIRES_OUTLINE",
-    "REVIEWED_STORY_PLAN_NOT_MEDIA",
     "TERM_PLAN_NOT_MEDIA",
     "COVERED_DO_NOT_REMAKE",
 ]
@@ -29,13 +28,11 @@ CATALOG_COUNTS: dict[PlanCatalog, int] = {
     "season1": 100,
     "season2": 92,
     "season3": 100,
-    "brand-stories": 100,
     "ai-terms": 81,
 }
 STAGES: tuple[PlanStage, ...] = (
     "REVIEWED_OUTLINE_NOT_MEDIA",
     "CHECKED_CANDIDATE_REQUIRES_OUTLINE",
-    "REVIEWED_STORY_PLAN_NOT_MEDIA",
     "TERM_PLAN_NOT_MEDIA",
     "COVERED_DO_NOT_REMAKE",
 )
@@ -43,7 +40,6 @@ CATALOG_STAGES: dict[PlanCatalog, tuple[PlanStage, ...]] = {
     "season1": ("REVIEWED_OUTLINE_NOT_MEDIA",),
     "season2": ("REVIEWED_OUTLINE_NOT_MEDIA",),
     "season3": ("CHECKED_CANDIDATE_REQUIRES_OUTLINE",),
-    "brand-stories": ("REVIEWED_STORY_PLAN_NOT_MEDIA",),
     "ai-terms": ("TERM_PLAN_NOT_MEDIA", "COVERED_DO_NOT_REMAKE"),
 }
 
@@ -64,7 +60,7 @@ class PlanEntry(CatalogModel):
     title: NonEmptyText
     source_status: NonEmptyText
     stage: PlanStage
-    target_duration_seconds: Literal[600, 780]
+    target_duration_seconds: Literal[600]
     min_duration_seconds: Literal[480]
     source_path: NonEmptyText
     source_sha256: Sha256
@@ -83,9 +79,6 @@ class PlanEntry(CatalogModel):
 
     @model_validator(mode="after")
     def validate_source_plan(self) -> Self:
-        expected_target = 780 if self.catalog == "brand-stories" else 600
-        if self.target_duration_seconds != expected_target:
-            raise ValueError("target duration does not match the catalog's reviewed plan")
         if self.stage not in CATALOG_STAGES[self.catalog]:
             raise ValueError("stage does not match the source catalog")
         if self.catalog == "ai-terms" and (
@@ -135,7 +128,7 @@ class CatalogBundle(CatalogModel):
     def validate_complete_catalog(self) -> Self:
         actual_counts = Counter(entry.catalog for entry in self.entries)
         if self.catalog_counts != CATALOG_COUNTS or actual_counts != CATALOG_COUNTS:
-            raise ValueError("catalog must contain all 473 source plans with exact catalog counts")
+            raise ValueError("catalog must contain all 373 source plans with exact catalog counts")
         covered = [entry for entry in self.entries if entry.stage == "COVERED_DO_NOT_REMAKE"]
         if len(covered) != 1 or covered[0].id != "ai-agent":
             raise ValueError(

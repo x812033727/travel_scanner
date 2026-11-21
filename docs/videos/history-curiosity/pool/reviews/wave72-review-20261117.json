@@ -1,0 +1,390 @@
+{
+  "batch": "batches/wave72-20261117.json",
+  "reviewed_on": "2026-11-17",
+  "method": "四位沒有參與研究的獨立覆核代理（R721–R724 依序覆核 ZQ1–ZQ4）逐題對照研究代理的請求紀錄（序號、狀態碼、位元組數、雜湊）與快取檔，至少重新請求一個關鍵一手／機構來源，逐句核對年份、數字與引文，重做全池與跨系列去重，對照不收清單、1956 真人規範與 8 分鐘門檻；修改直接寫進批次的題目與來源欄位，沒被收下的題引用的來源移除。研究代理被擋（403／429）的網域覆核不再請求，改用快取核對。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 13,
+    "REJECT": 2,
+    "NEEDS_CHECK": 4
+  },
+  "verdicts": [
+    {
+      "id": "N7101",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R721",
+      "author": "ZQ1",
+      "key_source_reopened": "https://www.sec.gov/Archives/edgar/data/0001003214/000100321415000017/simg-20141231x10k.htm（R721 seq 1，200，2523577 bytes）：ZQ1-S001。雜湊與作者 cache 相同。『We receive all the adopter fees』、2007 年約 62%、2010 年再降、2013 年 35%–39%、2014 年 30%–31%、每三年檢討、2014 年超過 85% 營收，全部找到。；https://www.sec.gov/Archives/edgar/data/855658/000085565818000027/lscc201710-k.htm（R721 seq 2，200，2590521 bytes）：ZQ1-S004。雜湊相同。代理到 2016-12-31、2016 年 9 月修約、2017-01-01 新的獨立實體、2015 年 24%–25%、2016 年 20%、約 1,100 萬美元、2015 年 3 月收購、『has never pursued such claim』，全部找到。",
+      "changes": [
+        "每台 0.15／0.05／0.04 美元全卡改稱『流傳的數字』（樣本只有一篇 2017 年個人部落格、未註出處、一手文件沒有），question、answer_target、scope、payoff、risk 都改。",
+        "問句『代理人從 2002 年起』改成『2003 年度的文件就寫明』：申報沒有給簽約或指定代理人的日期，只寫 1.0 規格 2002 年 12 月發布。",
+        "『頭十四年』改成『到 2016 年底為止』；『和其他六家分』改成『和其他創始成員分』（原文是 among the various founders）。",
+        "answer_target 補上 2010 年再降、1,100 萬美元是 Item 7 授權與服務營收段落的數字、『另一位成員』一句照原文（曾表示、從未追索）。",
+        "2025 年底的地院判決只有勝訴方公告（ZQ1-S007），改為正片不提；ZQ1-S007 只留『創始公司指定代理人』一句的用途。",
+        "SEC 各百分比與年份逐一對原文：100%（起初）、約 62%（2007）、2010 再降、35–39%（2013）、30–31%（2014）、24–25%（2015）、20%（2016）皆相符。"
+      ],
+      "unverified": [
+        "每台權利金費率的一手出處（官方文件要填表索取）",
+        "創始成員協議原文與指定代理人的確切日期",
+        "其他創始成員各分多少",
+        "新代理人與創始成員的關係",
+        "『像中立公會』是對流傳說法的概括，樣本只支撐費率表與『由 HDMI Licensing 管』"
+      ],
+      "note": "來源真實、紀錄半邊由四份 SEC 申報撐住且逐句相符；流傳樣本偏薄（一篇部落格），費率已降為流傳數字，可收。"
+    },
+    {
+      "id": "N7102",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R721",
+      "author": "ZQ1",
+      "key_source_reopened": "https://ykkamericas.com/wp-content/uploads/2022/12/This_is_YKK_2022_all_en.pdf（R721 seq 3，200，9479612 bytes）：ZQ1-S011。雜湊相同；PDF 56 頁（作者寫 57）。年表 1934／1939／1950（Four zipper chain machines imported from the U.S.）／1952／1953／1964 與『stock is not listed』找到；銷量圖有 FY 標籤，另在 p. 53 找到表列 10.07／9.55／7.79／10.29（十億條）可互證；全文無全球市占率。",
+      "changes": [
+        "『1964 年才用上完全自製的機器／十多年後才自己造』與 ZQ1-S013 不合（該頁寫幾年後即從頭開發、1959 年 CM3），改成『1959 年才有從頭自行開發的機型，1964 年是 CM6』。",
+        "進口機數量：報告寫四台、美洲站是單數的 a U.S.-made chain machine；問句、鉤子、payoff 改成『從美國進口的鏈機（公司報告寫四台）』，畫面的『四個大木箱』改成『幾個』。",
+        "銷量改以報告 p. 53 的表（FY2018–2021：10.07／9.55／7.79／10.29 十億條）為準，問句寫『約七十八億到一百零三億條』；FY2017 的 95.3 只見於圖，列為可不用。",
+        "ZQ1-S011 的頁數（56 頁）、locator、summary、limitations 與 ZQ1-S013 的 summary 依原文改寫。",
+        "流傳樣本『從一開始就堅持』改成樣本原意『堅持所有零件自己做』。"
+      ],
+      "unverified": [
+        "『全球一半』的最早出處與任何可核對的市占統計",
+        "1950 年進口機的確切台數、廠牌、金額",
+        "最新一期報告是否仍寫未上市（本輪是 2022 年版）",
+        "創辦人卒年"
+      ],
+      "note": "來源真實；翻轉成立但中等強度（自製說 vs 1950 年進口機），數字已保守處理，可收。"
+    },
+    {
+      "id": "N7103",
+      "verdict": "REJECT",
+      "reviewer": "R721",
+      "author": "ZQ1",
+      "key_source_reopened": "https://www.7-zip.org/（R721 seq 4，200，7137 bytes）：ZQ1-S018。雜湊相同。首頁〈License〉三句找到；首頁連結含 license.txt、/history.txt、faq.html、support.html、sdk.html、links.html（作者先請求後確認的幾個網址確為站內公開連結）；沒有 donate.html 的連結（作者猜的網址 404，未被題卡引用）。；https://www.7-zip.org/license.txt（R721 seq 5，200，6031 bytes）：ZQ1-S016。雜湊相同。四種授權並列與 unRAR 限制條文找到。題仍判 REJECT（理由見 verdict）。",
+      "changes": [],
+      "unverified": [
+        "流傳版本沒有任何樣本來源",
+        "『靠什麼維持二十多年』一手來源沒有答案"
+      ],
+      "note": "來源全部真實（官方站各頁確為首頁連結、授權檔與版本紀錄逐句相符），但不成題：沒有流傳版本樣本；所謂翻轉只是授權檔的一條註腳，而且官方首頁自己就寫『free software with open source』加 unRAR 限制，稱不上被紀錄修正；借來的方向（靠什麼活）沒有紀錄可答；作者自估只有 3–5 分鐘；主角是在世個人的專案、不能點名。改列 not_added。"
+    },
+    {
+      "id": "N7104",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R721",
+      "author": "ZQ1",
+      "key_source_reopened": "https://prnewswire.com/news-releases/casio-announces-shipment-of-100-millionth-g-shock-watch-300514167.html（R721 seq 6，200，196051 bytes）：ZQ1-S025。位元組相同、雜湊不同（頁面有動態內容），正文相同：1981、over 200 prototypes、1984 冰球廣告與 TV series 驗證、日本 1990 年約 10,000→1995 年約 700,000、1997 年 600 萬（日本 240 萬）、2017 年 8 月過 1 億，全部找到。發布者是美國子公司，已改 publisher。",
+      "changes": [
+        "主線改成只講『一推出就大賣』對照出貨紀錄；戒指式吸菸夾具從問句、鉤子、payoff、畫面全部拿掉，只在 answer_target／scope 留一句沿革事實並註明可整句刪除（菸的不收線）。",
+        "ZQ1-S024（標題即該夾具、與 S023 同源）自本題來源移除；case_key 改為 case.gshock_slow_start_japan_1983_1995_us_ad_reimport。",
+        "role 由 episode_core 改 chapter、minutes 由 [8,11] 改 [6,8]（拿掉夾具段後素材不足 8 分鐘下限）。",
+        "『觀眾打電話指控不實、新聞節目測試』只有報導（S026）寫，改為標明出處；新聞稿（S025）寫的是 1984 年、TV series 重現驗證。",
+        "ZQ1-S025 的 publisher 改為美國子公司經 PR Newswire 發布。",
+        "問句由 302 字縮到 300 字內。"
+      ],
+      "unverified": [
+        "『一推出就大賣』『賣煙斗起家』兩個流傳說法都沒有樣本",
+        "官方開發故事頁（casio 網域被擋）",
+        "開發起始年與試作數的兩種寫法何者為準",
+        "美國電視節目名稱與日期",
+        "創業者卒年"
+      ],
+      "note": "紀錄半邊真實且逐句相符（1990 年日本約一萬支→1995 年約七十萬支），但流傳版本無樣本、一手來源只有一份新聞稿，維持 needs_check；菸具已降為一句沿革。"
+    },
+    {
+      "id": "N7105",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R721",
+      "author": "ZQ1",
+      "key_source_reopened": "https://lawreview.uchicago.edu/sites/default/files/78-1-Razors-and-Blades%20Myth(s)-Picker.pdf（R721 seq 7，200，3326612 bytes）：ZQ1-S029。雜湊相同。31 頁、頁碼 225–255，題名 The Razors-and-Blades Myth(s)、作者 Randal C. Picker，是論文全文。5 美元、約三分之一週薪（p. 227）、1904-11-15 與 1921 年 11 月（p. 244）、1921-05-17 廣告、舊款 1 美元與型錄 85 美分（p. 245）、Time 1927 與 2009 年暢銷書引文（p. 225）全部找到。；https://www.sec.gov/Archives/edgar/data/47217/000004721725000071/hpq-20251031.htm（R721 seq 8，200，3530506 bytes）：ZQ1-S030。雜湊相同。Supplies 10,916／Total Printing 16,702、Printing 營業利益率 18.7%、Personal Systems 5.3%、Supplies 定義、big tank 一句（high margin traditional ink cartridges）找到；65% 是相除所得。",
+      "changes": [
+        "notes 寫明兩處撞題（so-thats-why 的 LEG-B20／week12/B20.md；brand-stories-100/reserve.json 的『吉列』）與站主已決定例外照做。",
+        "notes 與 ZQ1-S029 的 read_via／limitations 如實記下：典藏站 chicagounbound 全文連結 403 後，改從期刊官方站 lawreview.uchicago.edu（正本發行處、非鏡像）下載；覆核重抓確認為 31 頁全文、價格與年份都在。",
+        "問句補明兩個流傳版本是經論文引述、『專利快到期』改成『專利到期前半年』、『印表機公司』改成『一家印表機公司』、『墨水匣』改成『傳統墨水匣』。",
+        "包裝警告一句註明是論文註 5 轉引 1978 年傳記；85 美分補上是郵購型錄的舊款整組；65% 註明為相除所得。",
+        "進行中的耗材驗證訴訟改為正片不講（刪掉『各地法院看法不一』這句概括）。",
+        "payoff 的『不是那位刮鬍刀大王的發明』收斂為『不是他在專利期間的作法』，並標明是一位法學教授查到的。"
+      ],
+      "unverified": [
+        "1927 年雜誌與 2009 年暢銷書原文（只經論文轉引）",
+        "創辦人卒年（讀到的段落沒有）",
+        "專利原件"
+      ],
+      "note": "撞題但站主已決定例外收；論文全文與 10-K 都重抓且逐句相符，可收。"
+    },
+    {
+      "id": "N7122",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R722",
+      "author": "ZQ2",
+      "key_source_reopened": "https://www.sdcard.org/wp-content/uploads/2020/11/SD_Association_Introduces_App_Performance_Class.pdf（R722 seq 5，200，132039 bytes）：與作者 cache/031.bin 位元組相同（cmp）。2016-11-21、SD 5.1、A1（1500／500 IOPS、10MB/s）、『may not pass the test because they were developed for optimal image and video capture, not application-running』、『mobile device manufacturers raised the need』：都在；新聞稿寫 Android Marshmallow，沒有寫 6.0。",
+      "changes": [
+        "『2015 年』『隔年』不在來源裡（TechRadar 只有報導日期 2016-02-29），改成以報導日期敘述",
+        "SD 協會新聞稿寫的是 Android Marshmallow，不是 6.0，分開寫",
+        "答案裡把三份文件串成『落差真實存在、後來才補』的因果改成並列並註明不是文件寫的",
+        "hook『等於承認』改成直述新聞稿原意"
+      ],
+      "unverified": [
+        "流傳版本只有記者轉述的『many commenters』",
+        "廠商說法只有一篇訪談、一個機種，沒有任何手機廠的書面文件",
+        "題目方向的『陸續拿掉』沒有任何來源",
+        "是否落在不收清單（今天還在爭、機型比較）要站主判斷"
+      ],
+      "note": "來源都真的存在且引文相符，但流傳版本樣本與廠商說法都太薄，維持作者自己判的 needs_check，chapter 5–7 分鐘。"
+    },
+    {
+      "id": "N7123",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R722",
+      "author": "ZQ2",
+      "key_source_reopened": "https://blog.adobe.com/en/publish/2017/07/25/adobe-flash-update（R722 seq 3，200，9603 bytes）：雜湊前綴與作者 seq 2 相同。『is planning to end-of-life Flash』『stop updating and distributing the Flash Player at the end of 2020』、五家合作夥伴、HTML5／WebGL／WebAssembly、gaming, education and video、CardDate 2017-07-25：都在。",
+      "changes": [
+        "流傳版本樣本的轉述『一封信改變了整個網路』不在樣本裡，改成引 Cult of Mac 原句『made the internet a better place for everyone』",
+        "answer_target 與 ZQ2-S001 補註：公開信另有 ZQ2-S005 所附全文可互對，兩份只差一個題卡沒用到的數字（200,000／250,000 apps）"
+      ],
+      "unverified": [
+        "Apple 原頁仍沒有讀到（apple.com 404、web.archive.org 被擋，未再請求）；公開信只有兩份轉載互證",
+        "2011 年 11 月 Adobe 的新聞稿與給合作夥伴的信只有 InfoQ 轉引（它又轉引 ZDNet）",
+        "『2010 年 4 月 29 日』這個發表日來自轉載站的貼文日期與回顧文，信本身只落款 April, 2010"
+      ],
+      "note": "33 筆請求紀錄的位元組與雜湊全部對得上；年份、日期、引文逐句都在來源裡，翻轉成立（信講行動裝置，終止是 Adobe 2017 年自己的公告），不點名任何人。"
+    },
+    {
+      "id": "N7124",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R722",
+      "author": "ZQ2",
+      "key_source_reopened": "https://www.documents.philips.com/assets/20230307/aab9fe2ea03d42f984b2afbe008d5e04.pdf（R722 seq 4，200，678422 bytes）：與作者 cache/027.bin 位元組相同（cmp）。『perfectly match the original movie format used by directors with a 21:9 (2.39:1) aspect ratio』『without the black bars』『Aspect ratio: 2.39:1, 21:9』『Panel resolution: 2560 x 1080p』『56 inch』『Issue date 2019-06-25』：都在。",
+      "changes": [
+        "刪掉『21:9 是為了和 16:9 擺在一起比而取的名字』這個來源沒寫的推測，改成來源寫的『不是電影業幾比一的寫法、換算 2.33』",
+        "『剪紙片疊起來』改成提案人原話的『換成等面積的長方形、疊在同一個中心』，visual 拿掉剪刀",
+        "『公司只說了一句』改成『報導轉述公司發言人』（兩篇報導同一上游）"
+      ],
+      "unverified": [
+        "Philips 2009 年的原始發表新聞稿與停產的書面公告；FlatpanelsHD 原文",
+        "SMPTE 關於 2.39:1 的標準文件、16:9 提案的年份",
+        "型錄是 2019 年重發版；產品頁只讀到 meta 描述",
+        "highdefdigest.com 被擋，未再請求"
+      ],
+      "note": "型錄與各報導逐句相符；流傳版本就是公司自己的行銷說法，翻轉靠算術與一篇評論，維持 chapter（6–8 分鐘）。"
+    },
+    {
+      "id": "N7125",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R722",
+      "author": "ZQ2",
+      "key_source_reopened": "https://mb.cision.com/Main/15448/2246617/662592.pdf（R722 seq 1，200，111257 bytes）：ZQ2-S010 新聞稿頁所連的 PDF（作者沒抓）。首頁摘要表在 PDF 裡一樣錯位；改對第 3–4 頁全年損益表：出貨 103.4／74.8 百萬支、Net sales 12,916／10,959、Operating income 1,544、Income after financial items 1,574、Net income 1,114／997；第四季 30.8 百萬支、淨利 373。與作者依欄序對回的數字全部相符。；https://www.sec.gov/Archives/edgar/data/717826/000119312511283294/d248421d6k.htm（R722 seq 2，200，27807 bytes）：與作者 cache/018.bin 位元組相同（cmp）。『it combined the unprofitable handset operations from Ericsson and Sony』、EUR 1.05 billion、『approximately EUR 1.5 billion of profit and paid dividends totalling approximately EUR 1.9 billion』、綜效下降、預計 2012 年 1 月完成：都在。",
+      "changes": [
+        "2007 年數字對過新聞稿 PDF 的全年損益表，全部相符，保留；ZQ2-S010 的 locator／limitations 改成以損益表為準、不引錯位的摘要表",
+        "TechRadar 引文原文是『is a strong as it ever has been』，題卡寫成『as strong as…』，改為轉述",
+        "『2012 年 2 月改了名字』改成『完成並宣布改名』（公告寫 will rename、planned）",
+        "hook『死於兩個老闆不和』收斂成樣本撐得住的『不和、鬧到要拆夥』，scope 與 answer_target 註明樣本只是 2009 年的拆夥傳言",
+        "question 微調後 299 字"
+      ],
+      "unverified": [
+        "沒有事後把公司結束歸因於內鬥的流傳版本樣本，只有 2009 年一則被否認的傳言",
+        "2011 年年報數字讀的是 MarketScreener 轉載的 Sony 公告，不是公司自己的網域（ericsson.com 被擋，未再請求）",
+        "合資前兩邊各虧多少、合資契約內容"
+      ],
+      "note": "一手文件（SEC 6-K、Cision 上的 Ericsson 新聞稿、Sony 公告）都真的存在且逐句相符；翻轉偏弱但成立（紀錄撐不到內鬥說、十年總帳是賺的）。"
+    },
+    {
+      "id": "N7141",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R723",
+      "author": "ZQ3",
+      "key_source_reopened": "https://www.nintendo.co.uk/Iwata-Asks/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/1-Just-Making-The-Last-Train/1-Just-Making-The-Last-Train-225842.html（R723 seq 1，200，88259 bytes）：sha256 前綴 67957255ae830da7 與作者 seq 6 相同。逐句核對：企劃 1990、1996-02-27 發售（編註 4）、前一年 10 月完成、『最糟的時間』、末班車、首批出貨比社長預期少、前十名邊緣、quiet start、300 bytes、『看起來像計畫好的其實不是』、4 月號抽 20 名約 78,000 人（編註 8）、一年半後第一名、演歌比喻——全部在原文。頁面沒有訪談日期，『2009–2010 年間』無據，已刪。；https://time.com/archive/6951818/the-ultimate-game-freak（R723 seq 8，200，274448 bytes）：位元組數與作者 seq 26（274,319）略異，去標籤後文字逐行相同。1990 年構想、將近六年、swept Japan、昆蟲與郊區開發、『Everything I did as a kid is kind of rolled into one』、連線線、『Yes, this was done on purpose』、『Not at first』——都在。『something clicked』接的是抓蟲的概念，不是連線線，題卡已改。",
+      "changes": [
+        "刪掉憑印象的訪談年份（來源 publisher 的『2009–2010 年間』、answer_target 的『2010 年前後』、question 的『十多年後』）：頁面沒有日期",
+        "question／answer_target：『點子喀一聲接上的是連線線』與原文不符，改成原文的意思",
+        "hook：登上第一名不只歸因隱藏角色，補上製作人列的口耳相傳與兒童漫畫月刊",
+        "answer_target：1998 年成立的是 Pokémon Center 公司，照年表寫；並列編註 1 的『2000 年成立』",
+        "payoff：『兩位當事人到今天都不一樣』改成『兩份訪談的說法不一致』（沒有今天的來源）"
+      ],
+      "unverified": [
+        "沒有逐字寫『一推出就爆紅』的流傳樣本，只有 1999 年導言的『swept Japan』",
+        "訪談日期、首批出貨量與銷量數字",
+        "日文原版訪談與 1999 年紙本"
+      ],
+      "note": "兩份訪談都真實存在、引文逐句對得上；翻轉（六年難產、安靜上市、一年半後才第一）成立。"
+    },
+    {
+      "id": "N7142",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R723",
+      "author": "ZQ3",
+      "key_source_reopened": "https://news.mit.edu/2011/bose-gift（R723 seq 2，200，93973 bytes）：雜湊與作者 seq 14 相同。『majority of the stock…in the form of non-voting shares』『cannot sell…will not participate in the management or governance』、2011-04-29、1956 任教原打算兩年、教到 2001、1964 創立——都在原文。；https://www.law.cornell.edu/supremecourt/text/466/485（R723 seq 3，200，138242 bytes）：雜湊與作者 seq 40 相同。1970 年 5 月號、七頁、引文、19-day bench trial、508 F.Supp. 1249 (1981)、along the wall／about the room、692 F.2d 189 (1982) 改判、1984-04-30 維持——都在。另讀到作者沒讀的註 7（損害 106,296 美元＋9,000 美元）與註 8（公眾人物問題兩級上訴審都沒審）；作者寫『最高法院維持：公司是公眾人物』對不上，已改。起訴年份原文沒有，『告了十四年』已刪。",
+      "changes": [
+        "risk 原寫正片點名創辦人（2013 年卒），違反 1956 紅線，改成不點名、只稱身分",
+        "『最大股東』改『過半數股東』（原文 majority owner）",
+        "原寫最高法院認定公司是公眾人物；判決書註 8 說兩級上訴審都沒審，改成地方法院的認定",
+        "刪『告了十四年』（判決書沒有起訴年份）",
+        "補上損害金額（註 7：106,296 美元＋9,000 美元），並把頁碼改成 Syllabus 自標的範圍與 LII 段碼",
+        "ZQ3-S006 的『轉載地方大報』改成頁面看得到的寫法（頁面未寫原刊媒體）",
+        "question 改成只有一個問號"
+      ],
+      "unverified": [
+        "官方 U.S. Reports 的內文頁碼（justia 被擋，未對掃描本）",
+        "起訴年份",
+        "『紙巾』等起源軼事的出處",
+        "ZQ3-S006 原刊媒體"
+      ],
+      "note": "公告與判決書都重抓核對過；兩個翻轉都成立，作者的一處判決誤述與一處紅線違規已改。"
+    },
+    {
+      "id": "N7143",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R723",
+      "author": "ZQ3",
+      "key_source_reopened": "https://global.yamaha-motor.com/about/history/stories/0001.html（R723 seq 4，200，63998 bytes）：位元組數與作者 seq 17（64,132）略異，去標籤後文字逐行相同。1953-11-07 機密指示、204 家、木材、DKW RT125『被仿得最多』、茶壺、1955-02-11、80 人、八個月、11–12 萬對 13.8 萬、初期賣得不好、1955-07-01 分家——都在。原文說汽缸『looked like lumps of steel』、鑄面不如原廠，沒有說『失敗』。",
+      "changes": [
+        "premise_status 改 needs_check；role 改 chapter、minutes 改 [6,8]",
+        "『鑄汽缸是失敗的』改成社史原話；『貴兩成』改『貴一兩成』；『順手就做了』的講法拿掉"
+      ],
+      "unverified": [
+        "沒有任何獨立來源：四個來源都是機車公司一方",
+        "流傳版本沒有公司以外的樣本",
+        "樂器公司自己的標誌沿革（www.yamaha.com 被擋）與 1898／1916／1967 等年份",
+        "社長談話與 1950 年代嘲諷語的原始出處"
+      ],
+      "note": "事實都在公司頁面裡，但來源單一、翻轉只是公司文件補充公司文件；補到一個獨立來源與外部流傳樣本再收。"
+    },
+    {
+      "id": "N7144",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R723",
+      "author": "ZQ3",
+      "key_source_reopened": "https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/GOOG-10-K-2025.pdf（R723 seq 5，200，940068 bytes）：雜湊與作者 seq 35 相同。pdftotext 後『Google Maps』5 處（年報頁碼 4、29、30、53、86），沒有單獨營收；Google Search & other 224,532、Total revenues 402,836（百萬美元，頁碼 33）；全文沒有『Maps Platform』。",
+      "changes": [
+        "10-K 的近似頁碼換成年報頁尾頁碼（4、29、30、53、86；營收表 33）",
+        "question 的『那是對 2023 年的預測』改成照兩篇轉述各自的寫法（2023 只出現在第二篇）",
+        "『寫過價錢』改『寫過收費規則』（公告沒有單價）"
+      ],
+      "unverified": [
+        "分析師報告原文與第一篇報導付費牆後的內文",
+        "2023 年實際的地圖營收（公司沒有公布）"
+      ],
+      "note": "年報重抓後 5 處逐一找到；維持 chapter、5–7 分鐘。"
+    },
+    {
+      "id": "N7145",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R723",
+      "author": "ZQ3",
+      "key_source_reopened": "https://global.canon/en/c-museum/history/story01.html（R723 seq 6，200，23993 bytes）：雜湊與作者 seq 28 相同。三種 Kwanon 只是插圖或木模、never actually put on the market、十台無人見過、大阪 Model D 是仿製品且製造者不明、1934 年秋離開、Nippon Kogaku 負責鏡頭等、1936 年 2 月（一說 1935 年 10 月）、Hansa 是代理商商標、『Leica imitation made in Japan』275 日圓——都在。420 日圓是 Leica 的價錢，不是兩大品牌。；https://global.canon/en/ir/finance/business-unit.html（R723 seq 7，200，77679 bytes）：雜湊與作者 seq 37 相同。2025：Printing 2,494.4（54%）、Medical 580.6（13%）、Imaging 1,054.9（23%）、Industrial 361.1（8%）、Others & Corporate 237.1（5%）、Eliminations −103.4、Total 4,624.7（十億日圓）——與題卡相符。",
+      "changes": [
+        "『賣相機只是偽裝』沒有出處，從 question、hook、answer_target、payoff 全部拿掉",
+        "question 從 317 字縮到 300 字以內",
+        "『420 日圓』改成只指 Leica",
+        "『後來的頭號對手』改成『今天另一家相機大廠的前身』（來源沒有說對手）"
+      ],
+      "unverified": [
+        "五個來源全是公司自己的網頁，沒有第三方來源",
+        "Kwanon 廣告與 1935 年雜誌介紹的原刊",
+        "各事業部的產品定義"
+      ],
+      "note": "博物館頁與營收表重抓後逐句相符；翻轉（觀音從未上市、第一台上市機的鏡頭是別家做的）成立，但屬公司頁面互相修正。"
+    },
+    {
+      "id": "N7161",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R724",
+      "author": "ZQ4",
+      "key_source_reopened": "https://www.court.gov.cn/shenpan/xiangqing/14245.html（R724 seq 1，200，28334 bytes）：與作者 seq 20 位元組數、sha256 前綴相同。核對「1984 年 2 月…寄售方式…免税店和机场商店…延续到 1993 年前」「1990 年 6 月和 1993 年在我国台湾和香港地区注册“金莎”商标」「1990 年 4 月 23 日申请…1991 年 4 月…核准注册」、一審 2005-02-07、二審 2006-01-09 賠 700000 元、再審 2008-03-24 改 500000 元、裁判理由二「不能被独占使用」：全部在原文。題卡的「只在免稅店」原文是「主要在…等」，已改。",
+      "changes": [
+        "「只在免稅店和機場商店賣」改為原文的「主要在免稅店和機場商店等」",
+        "question、hook 改稱「最高法院公布的指導案例（2008 年再審判決的摘要）」：實際讀到的是 2015-04-23 發布的指導案例 47 號，不是判決書全文",
+        "「官網 1994 與法院 1984 差在寄售算不算上市」標為推測（公司沒有說明 Launch 的定義）",
+        "刪掉來源裡沒有的「超市買得起的高級禮物」；「金莎在中國境內屬於別人」改成判決查明的 1991 註冊、2004 核准轉讓，並註明今天的歸屬沒查",
+        "「金箔含真金…沒有任何紀錄支持」改為「本輪沒有讀到」",
+        "minutes [8,10] 改 [8,9]；S002、S003 補發布日期與 canonical 網址"
+      ],
+      "unverified": [
+        "判決書全文（只有最高法院自己發布的指導案例摘要）",
+        "香港上市年份與送禮習俗的一手來源",
+        "公司年表「1994 Launch in China」的定義",
+        "ZQ4-S003 的 ?p= 短網址是否來自搜尋結果（無法從紀錄確認；頁面內容與 canonical 相符）"
+      ],
+      "note": "一手來源是最高法院官網的指導案例，重抓後逐句相符；摘要雖非判決全文，但年份、日期、金額與理由都在其中，可收。"
+    },
+    {
+      "id": "N7162",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R724",
+      "author": "ZQ4",
+      "key_source_reopened": "https://patents.google.com/patent/US2046839A/en（R724 seq 2，200，80673 bytes）：與作者 seq 1 位元組數、sha256 前綴相同。「there will be no tendency of the driver to cam out of the recess」「Heretofore, the manufacture of screws with a cruciform…」「simple punching operation」、1935-01-15 申請、1936-07-07 核准、Serial 670,118（1933-05-09）：都在；全文搜不到 aircraft／aluminum。；https://patents.google.com/patent/US2474994A/en（R724 seq 3，200，184685 bytes）：位元組數與作者 seq 18 相同（雜湊不同，動態頁）。「has now become almost standard, particularly for use on assembly lines」「usually referred to as throw-out」「Most power screw-drivers are provided with a slipping clutch…」「The small amount of throw-out retained…」「This throw-out is reduced…to the lowest factor」、1942-12-30 申請、1949-07-05 核准、American Screw Company：都在。「零垂直角…結果一向不好」的後半句在轉錄裡殘缺，題卡已改成只引前半。；https://patents.google.com/patent/US2046837A/en（R724 seq 8，503，1103 bytes）：503 錯誤頁，沒有內容。；https://patents.google.com/patent/US2046837A/en（R724 seq 9，503，1103 bytes）：約 90 秒後重試一次仍 503，停止。改用作者 cache 015（seq 15，200，192,922 bytes）核對 camming action、家具、兩種起子配 5–16 號等句，都在。",
+      "changes": [
+        "question 由 310 字縮到 300 字以內：拿掉 1971 年六瓣專利與結尾第二個問句（仍留在 answer_target）",
+        "hook 的「六年後」改成明寫「1942 年另一家公司申請的專利」",
+        "「零垂直角…在裝配線上結果一向不好」後半句在 OCR 轉錄裡殘缺，改成只引前半句",
+        "「兩份專利都沒有提飛機與鋁」改成可重現的寫法（轉錄全文搜不到 aircraft／aluminum）",
+        "S008 的日期改為不確定；minutes [8,11] 改 [8,10]"
+      ],
+      "unverified": [
+        "專利文字仍是 Google Patents 的 OCR 轉錄，沒有對原始掃描頁",
+        "US2046837 本次重抓兩次 503，只能用作者 cache 核對",
+        "「飛機鋁」版本的最早出處"
+      ],
+      "note": "三份專利的關鍵引文重抓或在 cache 裡逐字找到；翻轉清楚（原專利寫不會滑出，保留少量 throw-out 是 1942 年另一家公司的改良專利）。"
+    },
+    {
+      "id": "N7163",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R724",
+      "author": "ZQ4",
+      "key_source_reopened": "https://www.logitech.com/assets/41043/logitechs-top-30-moments-july-2011.pdf（R724 seq 4，200，391826 bytes）：與作者 seq 13 位元組數、sha256 前綴相同。1981 Apples／Ricoh、1982 P4 原型／Comdex、1984 HP 約 25,000 隻／年、1985 C7 首隻零售滑鼠 under $100、1986 新竹、1987 Apple OEM、1989 IBM、1992 Compaq、2003 第 5 億隻、2008 第 10 億隻：都在。文件沒有寫 Apples 是「小村」、沒有寫十億隻含代工、也沒寫起算年，題卡已改。",
+      "changes": [
+        "premise_status 改 needs_check：流傳樣本 S015 自己就寫了設計出自 EPFL、原創者另有其人，原題卡「發明和第一隻都不是它的」是在反駁樣本沒說的話，已刪；剩下的翻轉只有「1985 是零售滑鼠年份」",
+        "question 由 320 字縮到 300 字以內並改寫；拿掉 1970 年專利（留在 answer_target）",
+        "「Apples 小村」改 Apples；「全是替別人的電腦代工」「十億含代工」是推論，刪",
+        "博物館的 Depraz Mouse 與 P4 不再畫等號（來源沒明說）",
+        "視覺拿掉來源沒有的細節；minutes [6,8] 改 [5,7]；S015、S012 的 summary／limitations 補寫"
+      ],
+      "unverified": [
+        "「第一家賣現代滑鼠」沒有一手紀錄可證實或否定",
+        "十億隻的起算年與口徑（2008 年新聞稿在被擋的 news.logitech.com）",
+        "Depraz Mouse 是否就是 P4、製造者是誰（只有流傳樣本的二手說法）"
+      ],
+      "note": "來源都真實、數字都對得上，但翻轉偏弱、接近品牌沿革；補到 2008 年新聞稿或年報口徑，以及能檢驗「第一家」的紀錄後再定。"
+    },
+    {
+      "id": "N7164",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R724",
+      "author": "ZQ4",
+      "key_source_reopened": "https://www.post.japanpost.jp/notification/pressrelease/2009/document/3001_00_04_9120302.pdf（R724 seq 5，200，66630 bytes）：與作者 seq 6 位元組數、sha256 前綴相同。「九州を中心に受験生の間で自然に生まれ、2002 年頃から…口コミで広まり始めました」「2004 年の『受験生応援パック』」「1937 年にイギリスで発売」「簡易郵便局を除く約 20,000 局」「12 月 8 日、太宰府天満宮」「約 2 ヶ月」：都在。；https://www.post.japanpost.jp/notification/pressrelease/2008/document/3001_00_04_8121606.pdf（R724 seq 6，200，158445 bytes）：與作者 seq 9 位元組數、sha256 前綴相同。2008-12-16 發布、2009-01-08 起、140 円切手、約 20,000 局、本郷郵便局、九州方言與 2002／2004 的參考欄、1937：都在。",
+      "changes": [
+        "拿掉來源 ZQ4-S018（nestle.co.jp）：作者在同公司三個網域連續 403 之後才改請求它，保守起見不用；主軸靠 S016、S017，拿掉後仍成立",
+        "連帶：1937 對 1935 改成「新聞稿 1937、2018 年業界報導（二手）1935」並降為旁註；只出自 S018 的口號與「甜點師傅」刪掉",
+        "口味數 300 對 350 並不矛盾，不再當翻轉，從 question、payoff 拿掉",
+        "question 由 323 字縮到 300 字以內，並在題目裡點明「自然產生」只有當事公司新聞稿這個出處",
+        "視覺拿掉來源沒有的神社合十與口味排開的場景"
+      ],
+      "unverified": [
+        "「自然產生」沒有獨立於當事公司的紀錄",
+        "英國上市年份的一手來源（1935 或 1937）",
+        "1973 年引進日本的一手來源"
+      ],
+      "note": "兩份日本郵政網站上的共同新聞稿重抓後位元組與雜湊都相同，引文都在；翻轉成立但要一直標明是公司自己的說法。"
+    },
+    {
+      "id": "N7165",
+      "verdict": "REJECT",
+      "reviewer": "R724",
+      "author": "ZQ4",
+      "key_source_reopened": "https://miyotamovement.com/lp/2035_40th/（R724 seq 7，200，60549 bytes）：與作者 seq 7 位元組數、sha256 前綴相同。「more than 5 billion Caliber 2035 Series pieces have been produced」、年表「2010s onward／Total production reached 5 billion units／1.5 workers per line」、1981 年登場：都在。來源沒問題，判 REJECT 是因為翻轉不足。",
+      "changes": [
+        "移到 not_added"
+      ],
+      "unverified": [
+        "金氏紀錄 1999 年原始條目",
+        "50 億的達標年份與第三方查核"
+      ],
+      "note": "來源真實、數字對得上，但沒有被紀錄修正的流傳版本，只是品牌數字的口徑說明，素材 4–6 分鐘；作者也自認翻轉小。"
+    }
+  ],
+  "process_notes": [
+    "N7121（1TB 顯示 931GB）研究代理查重時即未開題：原來如此池 LEG-A35 已有同題，R722 確認撞題判斷正確。",
+    "N7105（印表機墨水與刮鬍刀）撞原來如此池 LEG-B20 與品牌故事備選「吉列」；站主 2026-11-17 決定這題例外照收。Picker 論文在典藏站 403 後改從期刊官方站下載全文，主編與 R721 判定官方發行處不算鏡像，已記在來源的 read_via 與 limitations。",
+    "N7164 原引用的 nestle.co.jp 新聞稿（研究代理在同公司三個網域 403 之後才請求）由 R724 保守拿掉，題卡改以兩份日本郵政共同新聞稿為主軸。",
+    "兩個研究代理的迴圈在看到 403／429 之前已送出同網域的下一筆請求（ZQ1 的 www.casio.com seq 29、ZQ3 的 sec.gov seq 34）；ZQ1 那一筆沒有列為來源。ZQ1 另猜過一個網址（7-zip.org/donate.html，404），未當成證據。下一批的工具要改成同網域被擋後直接拒發。",
+    "沒有發現編造的來源：四位覆核共發 30 次請求（29 個網址），除 patents.google.com 一頁兩次回 503 外全部 200，位元組或正文與研究代理的快取相符。主編另抽查三題（N7101 的 2014 年度 10-K、N7145 的公司博物館沿革頁、N7161 的指導案例頁），各發一次請求並核對一個數字（35%–39% 與 30%–31% 的分成、觀音試作機與日本光學工業、1984 年 2 月寄售），都相符；法院頁第一次連線中斷，重試一次成功。"
+  ]
+}

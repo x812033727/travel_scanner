@@ -311,9 +311,10 @@ describe("rendering the rich blocks", () => {
   });
 
   it("draws a diagram wide enough to read, inside a box that scrolls and takes keyboard focus", () => {
-    const { container } = render(<ContentBlocks labels={labels} blocks={[{
+    const { container } = render(<ContentBlocks labels={{ ...labels, viewOriginalImage: "查看原圖" }} blocks={[{
       type: "image", src: "/guides/narita-to-tokyo/route-map.svg", alt: "路線圖", width: 1600, height: 900,
     }]} />);
+    expect(screen.queryByRole("link")).toBeNull();
     const image = screen.getByRole("img", { name: "路線圖" });
     // 15px, the floor pack_ingest enforces, lands at 11.1 CSS px here; fitted to the 728px
     // column it would be 6.8, and 3.1 on a phone.
@@ -346,6 +347,32 @@ describe("rendering the rich blocks", () => {
     expect(photo.style.width).toBe("");
     expect(photo.className).toContain("w-full");
     expect(photo.parentElement!.tagName).toBe("FIGURE");
+    expect(photo.closest("figure")!.querySelector("a[href^='/guides/']")).toBeNull();
+  });
+
+  it.each(["png", "jpg", "webp"])("offers the full-size %s in the same tab when requested", (extension) => {
+    const src = `/guides/new-display/rear-ports.${extension}`;
+    render(<ContentBlocks labels={{ ...labels, viewOriginalImage: "查看原圖" }} blocks={[{
+      type: "image", src, width: 1600, height: 900, alt: "HDMI 與 USB 接孔排列",
+      caption: "連接埠的位置", credit: { author: "Mokaair", license: "CC BY 4.0", source_url: null },
+    }]} />);
+    const figure = screen.getByRole("figure");
+    const link = within(figure).getByRole("link", { name: "查看原圖 · HDMI 與 USB 接孔排列" });
+    expect(link.getAttribute("href")).toBe(src);
+    expect(link.getAttribute("target")).toBeNull();
+    expect(link.textContent).toBe("查看原圖");
+    expect(within(figure).getByRole("img", { name: "HDMI 與 USB 接孔排列" })).toBeTruthy();
+    expect(figure.querySelector("figcaption")!.textContent).toContain("連接埠的位置 · 圖片：Mokaair (CC BY 4.0)");
+  });
+
+  it("omits the original action for column-sized figures and untrusted sources", () => {
+    const photo = { type: "image" as const, alt: "螢幕", width: 728, height: 410 };
+    render(<ContentBlocks labels={{ ...labels, viewOriginalImage: "查看原圖" }} blocks={[
+      { ...photo, src: "/guides/new-display/screen.jpg" },
+      { ...photo, width: 1600, src: "https://example.test/remote.jpg" },
+    ]} />);
+    expect(screen.getAllByRole("figure")).toHaveLength(1);
+    expect(screen.queryByRole("link")).toBeNull();
   });
 
   it("never draws a diagram larger than it was authored", () => {
@@ -363,6 +390,29 @@ describe("rendering the rich blocks", () => {
     expect(container.querySelector("table")!.parentElement!.className).toContain("overflow-x-auto");
   });
 
+  it("fits a two-column news table without adding a keyboard stop", () => {
+    render(<ContentBlocks newsReading blocks={blocks} labels={labels} />);
+    const table = screen.getByRole("table", { name: "2026 年 9 月查證" });
+    expect(table.parentElement?.getAttribute("data-news-table")).toBe("2");
+    expect(table.parentElement?.hasAttribute("tabindex")).toBe(false);
+    expect(within(table).getAllByRole("columnheader")).toHaveLength(2);
+  });
+
+  it.each([
+    ["比較兩種部署方式", "比較兩種部署方式"],
+    [undefined, "項目 · DGD · IEC"],
+  ])("names a keyboard-scrollable news table from its caption or localized headers", (caption, name) => {
+    render(<ContentBlocks newsReading blocks={[{
+      type: "table", header: ["項目", "DGD", "IEC"], rows: [["適合對象", "團隊", "管理員"]], caption,
+    }]} />);
+    const region = screen.getByRole("region", { name });
+    expect(region.tabIndex).toBe(0);
+    expect(region.dataset.newsTable).toBe("3");
+    const table = within(region).getByRole("table");
+    expect(table.querySelector("caption")?.textContent).toBe(caption);
+    expect(within(table).getAllByRole("columnheader").map((cell) => cell.getAttribute("scope"))).toEqual(["col", "col", "col"]);
+  });
+
   it("draws a callout as a note headed by its tone and title", () => {
     render(<ContentBlocks blocks={blocks} labels={labels} />);
     const note = screen.getByRole("note");
@@ -378,6 +428,8 @@ describe("rendering the rich blocks", () => {
     const table = screen.getByRole("table");
     expect(table.className).toContain("[overflow-wrap:normal]");
     expect(table.parentElement!.className).toContain("overflow-x-auto");
+    expect(table.parentElement?.hasAttribute("data-news-table")).toBe(false);
+    expect(table.parentElement?.hasAttribute("tabindex")).toBe(false);
     for (const cell of [...screen.getAllByRole("columnheader"), ...screen.getAllByRole("cell")]) {
       expect(cell.className).toContain("min-w-28");
     }

@@ -5,9 +5,10 @@ Three sources feed one table (``guide_article_links``). ``inline`` rows are writ
 translation is published, from the ``article`` inlines of its published text, and deleted
 when it is withdrawn -- the same transaction that moves the published pointer, so the
 graph can never say what the pointer does not. ``related`` rows are the editor's picks on
-the identity, replaced whole like topics. The reading list at the end of an article is
-those picks first, then the articles that share a sub-topic, a parent topic, a destination
-or a series group; the "cited by" list is the inline rows pointing here.
+the identity, replaced whole like topics. The reading list starts with those picks, then
+nearby coverage of the same subject for dated AI and tech news. It fills remaining slots
+from the sub-topic, parent topic, destination and series group in that order. The "cited by"
+list is the inline rows pointing here.
 
 Whether a target may be *shown* is decided at read time by ``published_filters``, never by
 the table: a row records that the link exists, and a withdrawn or hidden target leaves
@@ -18,10 +19,13 @@ Everything raised from here is a sentence a reader can be shown (``app/i18n.py``
 
 from __future__ import annotations
 
+from collections.abc import Iterable, Sequence
+from datetime import date
+from difflib import SequenceMatcher
 from typing import Any, cast
 from uuid import UUID
 
-from sqlalchemy import and_, delete, func, select
+from sqlalchemy import ColumnElement, Row, Select, and_, delete, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.guides.models import (
@@ -46,6 +50,7 @@ from app.problems import AppError
 
 RELATED_LIMIT = 4
 BACKLINK_LIMIT = 8
+NEWS_WINDOW_DAYS = 5
 
 
 # --- the document's own links ----------------------------------------------------
@@ -181,18 +186,18 @@ async def related_slugs(session: AsyncSession, article_ids: list[UUID]) -> dict[
 # --- reading them back ------------------------------------------------------------
 
 
-async def references_for(
-    session: AsyncSession, locale: Locale, article_ids: list[UUID]
-) -> dict[UUID, ArticleReference]:
-    """References for the articles published in ``locale``, titled and described from
-    their published revision. An article that is hidden, expired, unpublished here or
-    whose pointer is damaged is simply absent: a reading list degrades, it never 503s."""
-    if not article_ids:
-        return {}
-    rows = await session.execute(
-        select(GuideArticle, GuideArticleRevision.document_json)
+def _published_references(locale: Locale) -> Select[UUID, str, str, Any, Any]:
+    """Select just the card fields from the visible translation's published revision."""
+    return (
+        select(
+            GuideArticle.id,
+            GuideArticle.kind,
+            GuideArticle.slug,
+            GuideArticleRevision.document_json["title"],
+            GuideArticleRevision.document_json["description"],
+        )
         .join(GuideArticleLocale, GuideArticleLocale.article_id == GuideArticle.id)
-        .outerjoin(
+        .join(
             GuideArticleRevision,
             and_(
                 GuideArticleRevision.article_locale_id == GuideArticleLocale.id,
@@ -200,52 +205,42 @@ async def references_for(
                 GuideArticleRevision.action == "published",
             ),
         )
-        .where(
-            GuideArticle.id.in_(article_ids),
-            GuideArticleLocale.locale == locale,
-            *published_filters(),
-        )
+        .where(GuideArticleLocale.locale == locale, *published_filters())
     )
+
+
+def _read_references(
+    rows: Iterable[Row[UUID, str, str, Any, Any]],
+) -> dict[UUID, ArticleReference]:
     found: dict[UUID, ArticleReference] = {}
-    for article, document_json in rows:
-        title = document_json.get("title") if isinstance(document_json, dict) else None
+    for article_id, kind, slug, title, description in rows:
         if not isinstance(title, str) or not title:
             continue
-        description = document_json.get("description")
-        found[article.id] = ArticleReference(
-            kind=cast(Kind, article.kind),
-            slug=article.slug,
+        found[article_id] = ArticleReference(
+            kind=cast(Kind, kind),
+            slug=slug,
             title=title,
             description=description if isinstance(description, str) and description else None,
         )
     return found
 
 
-def _published_ids(locale: Locale) -> Any:
-    """Article ids published in ``locale``, newest first, as a select to narrow further."""
-    return (
-        select(GuideArticle.id, func.max(GuideArticleLocale.published_at).label("published_at"))
-        .join(GuideArticleLocale, GuideArticleLocale.article_id == GuideArticle.id)
-        .where(GuideArticleLocale.locale == locale, *published_filters())
-        .group_by(GuideArticle.id)
-        .order_by(func.max(GuideArticleLocale.published_at).desc(), GuideArticle.slug)
+async def references_for(
+    session: AsyncSession, locale: Locale, article_ids: list[UUID]
+) -> dict[UUID, ArticleReference]:
+    """Absent, damaged or withdrawn translations have no card."""
+    if not article_ids:
+        return {}
+    rows = await session.execute(
+        _published_references(locale).where(GuideArticle.id.in_(article_ids))
     )
+    return _read_references(rows)
 
 
-async def _by_topics(session: AsyncSession, locale: Locale, topic_ids: list[UUID]) -> list[UUID]:
-    if not topic_ids:
-        return []
-    query = _published_ids(locale).where(
-        GuideArticle.id.in_(
-            select(GuideArticleTopic.article_id).where(GuideArticleTopic.topic_id.in_(topic_ids))
-        )
+def _has_topics(topic_ids: Sequence[UUID] | Select[UUID]) -> ColumnElement[bool]:
+    return GuideArticle.id.in_(
+        select(GuideArticleTopic.article_id).where(GuideArticleTopic.topic_id.in_(topic_ids))
     )
-    return [article_id for article_id, _ in await session.execute(query)]
-
-
-async def _by_destination(session: AsyncSession, locale: Locale, destination_id: str) -> list[UUID]:
-    query = _published_ids(locale).where(GuideArticle.destination_id == destination_id)
-    return [article_id for article_id, _ in await session.execute(query)]
 
 
 async def _by_slugs(session: AsyncSession, locale: Locale, slugs: list[str]) -> list[UUID]:
@@ -262,52 +257,93 @@ async def _by_slugs(session: AsyncSession, locale: Locale, slugs: list[str]) -> 
     return [by_slug[slug] for slug in slugs if slug in by_slug]
 
 
-async def _topic_family(session: AsyncSession, article_id: UUID) -> tuple[list[UUID], list[UUID]]:
-    """The article's sub-topics, and the whole family of its parents (the parents
-    themselves and every sub-topic under them)."""
-    topics = list(
-        await session.scalars(
-            select(GuideTopic)
-            .join(GuideArticleTopic, GuideArticleTopic.topic_id == GuideTopic.id)
-            .where(GuideArticleTopic.article_id == article_id)
+def _news_terms(slug: str, topic: str) -> list[str]:
+    prefix = f"{topic}-"
+    stem, _, stamp = slug.removeprefix(prefix).rpartition("-")
+    if not slug.startswith(prefix) or len(stamp) != 8 or not stamp.isdigit():
+        return []
+    return stem.split("-")
+
+
+def _subject_overlap(terms: list[str], other: list[str]) -> int:
+    """A shared subject phrase starts at the beginning of at least one headline slug."""
+    a, b, size = SequenceMatcher(None, terms, other, autojunk=False).find_longest_match()
+    if size < 3 or (a and b) or sum(word.isalpha() for word in terms[a : a + size]) < 2:
+        return 0
+    # Two releases of e.g. claude-code-2-1 with different patch numbers are distinct.
+    if a + size < len(terms) and b + size < len(other):
+        if all(any(c.isdigit() for c in word) for word in (terms[a + size], other[b + size])):
+            return 0
+    return size
+
+
+async def _news_followups(
+    session: AsyncSession, article: GuideArticle, locale: Locale, topic: str, topic_id: UUID
+) -> list[UUID]:
+    day = article.news_date
+    terms = _news_terms(article.slug, topic)
+    if day is None or len(terms) < 3:
+        return []
+    earliest = date.fromordinal(max(1, day.toordinal() - NEWS_WINDOW_DAYS))
+    latest = date.fromordinal(min(date.max.toordinal(), day.toordinal() + NEWS_WINDOW_DAYS))
+    rows = await session.execute(
+        select(GuideArticle.id, GuideArticle.slug, GuideArticle.news_date)
+        .join(GuideArticleLocale, GuideArticleLocale.article_id == GuideArticle.id)
+        .where(
+            GuideArticle.id != article.id,
+            GuideArticle.kind == "life",
+            GuideArticle.news_date.between(earliest, latest),
+            _has_topics([topic_id]),
+            GuideArticleLocale.locale == locale,
+            *published_filters(),
         )
+        .order_by(GuideArticleLocale.published_at.desc(), GuideArticle.slug)
     )
-    children = [topic.id for topic in topics if topic.parent_id is not None]
-    parents = list(
-        dict.fromkeys(
-            [topic.parent_id for topic in topics if topic.parent_id is not None]
-            + [topic.id for topic in topics if topic.parent_id is None]
-        )
-    )
-    if not parents:
-        return children, []
-    family = list(
-        await session.scalars(
-            select(GuideTopic.id).where(
-                (GuideTopic.id.in_(parents)) | (GuideTopic.parent_id.in_(parents))
-            )
-        )
-    )
-    return children, family
+    matches = []
+    for article_id, slug, other_day in rows:
+        score = _subject_overlap(terms, _news_terms(slug, topic))
+        if score and other_day is not None:
+            matches.append((-score, abs((day - other_day).days), article_id))
+    # Stable for equal strength and distance: publication order, then slug as above.
+    matches.sort(key=lambda match: match[:2])
+    return [article_id for _, _, article_id in matches]
 
 
 async def related_articles(
     session: AsyncSession, article: GuideArticle, locale: Locale, *, limit: int = RELATED_LIMIT
 ) -> list[ArticleReference]:
-    """What to read next: the editor's picks, then the nearest published neighbours.
+    """Editor's picks, close news follow-ups, sub-topic, parent, destination, then series."""
+    if limit <= 0:
+        return []
+    picked: list[ArticleReference] = []
+    seen = {article.id}
 
-    Tiers, each newest first, each skipping what an earlier tier already chose and the
-    article itself: curated ``related`` rows; articles sharing a sub-topic; articles under
-    the same parent topic; articles about the same destination; the other lessons of the
-    same series group. Only visible articles count, so an editor's pick that is withdrawn
-    makes room for a neighbour rather than leaving a gap.
-    """
-    chosen: list[UUID] = []
+    async def take_ranked(candidates: Sequence[UUID]) -> None:
+        pending = [key for key in dict.fromkeys(candidates) if key not in seen]
+        offset = 0
+        while offset < len(pending) and len(picked) < limit:
+            batch = pending[offset : offset + limit - len(picked)]
+            found = await references_for(session, locale, batch)
+            picked.extend(found[key] for key in batch if key in found)
+            seen.update(batch)
+            offset += len(batch)
 
-    def take(candidates: list[UUID]) -> None:
-        for candidate in candidates:
-            if candidate != article.id and candidate not in chosen:
-                chosen.append(candidate)
+    async def take_newest(condition: ColumnElement[bool]) -> None:
+        # One published locale per article. A later tier runs only if earlier ones left room.
+        query = (
+            _published_references(locale)
+            .where(condition)
+            .order_by(GuideArticleLocale.published_at.desc(), GuideArticle.slug)
+        )
+        while len(picked) < limit:
+            size = limit - len(picked)
+            page = (
+                await session.execute(query.where(GuideArticle.id.not_in(seen)).limit(size))
+            ).all()
+            picked.extend(_read_references(page).values())
+            seen.update(row[0] for row in page)
+            if len(page) < size:
+                break
 
     curated = await session.scalars(
         select(GuideArticleLink.target_article_id)
@@ -317,42 +353,45 @@ async def related_articles(
         )
         .order_by(GuideArticleLink.position)
     )
-    take(list(curated))
-    references = await references_for(session, locale, chosen)
-    picked = [article_id for article_id in chosen if article_id in references]
-    if len(picked) < limit:
-        children, family = await _topic_family(session, article.id)
-        tiers: list[list[UUID]] = [
-            await _by_topics(session, locale, children),
-            await _by_topics(session, locale, family),
-            await _by_destination(session, locale, article.destination_id)
-            if article.destination_id
-            else [],
-        ]
-        if article.kind == "life":
-            catalogue = catalogue_for_article(article.slug, locale)
-            lesson = (
-                next((entry for entry in catalogue.entries if entry.slug == article.slug), None)
-                if catalogue is not None
-                else None
-            )
-            if catalogue is not None and lesson is not None:
-                tiers.append(
-                    await _by_slugs(
-                        session,
-                        locale,
-                        [
-                            entry.slug
-                            for entry in catalogue.entries
-                            if entry.group == lesson.group and entry.slug != article.slug
-                        ],
-                    )
+    await take_ranked(curated.all())
+    if len(picked) == limit:
+        return picked
+
+    topics = (
+        await session.execute(
+            select(GuideTopic.id, GuideTopic.slug, GuideTopic.parent_id)
+            .join(GuideArticleTopic, GuideArticleTopic.topic_id == GuideTopic.id)
+            .where(GuideArticleTopic.article_id == article.id)
+        )
+    ).all()
+    children = {slug: key for key, slug, parent in topics if parent is not None}
+    if article.kind == "life" and article.news_date:
+        for topic in ("ai-news", "tech-news"):
+            if topic in children and article.slug.startswith(f"{topic}-"):
+                await take_ranked(
+                    await _news_followups(session, article, locale, topic, children[topic])
                 )
-        for tier in tiers:
-            take(tier)
-        references = await references_for(session, locale, chosen)
-        picked = [article_id for article_id in chosen if article_id in references]
-    return [references[article_id] for article_id in picked[:limit]]
+                break
+    if len(picked) < limit and children:
+        await take_newest(_has_topics(list(children.values())))
+    if len(picked) < limit and topics:
+        parents = {parent or key for key, _, parent in topics}
+        family = select(GuideTopic.id).where(
+            GuideTopic.id.in_(parents) | GuideTopic.parent_id.in_(parents)
+        )
+        await take_newest(_has_topics(family))
+    if len(picked) < limit and article.destination_id:
+        await take_newest(GuideArticle.destination_id == article.destination_id)
+    if len(picked) < limit and article.kind == "life":
+        catalogue = catalogue_for_article(article.slug, locale)
+        if catalogue is not None:
+            lesson = next(
+                (entry for entry in catalogue.entries if entry.slug == article.slug), None
+            )
+            if lesson is not None:
+                group = [entry.slug for entry in catalogue.entries if entry.group == lesson.group]
+                await take_ranked(await _by_slugs(session, locale, group))
+    return picked
 
 
 async def backlinks(

@@ -837,6 +837,18 @@
       "pricing_enabled": {
         "label": "方案與次數包",
         "help": "控制方案導覽、查看次數包操作與 /pricing 頁面。"
+      },
+      "flight_search_enabled": {
+        "label": "搜尋機票與住宿",
+        "help": "控制前台搜尋機票與住宿按鈕及首頁搜尋工具的顯示。"
+      },
+      "videos_enabled": {
+        "label": "影音專區與影片",
+        "help": "控制導覽列、首頁影音專區捷徑與頁尾的影片連結顯示。"
+      },
+      "member_features_enabled": {
+        "label": "會員功能與登入入口",
+        "help": "控制前台登入按鈕、收藏、我的、我的旅程導覽與卡片收藏／加入旅程操作。站主仍可直接前往 /login 登入後台。"
       }
     }
   },
@@ -2203,6 +2215,21 @@
     "uncategorized": "未分類",
     "categoryFilter": "分類",
     "categoryAll": "全部分類",
+    "shelfFilter": "節目",
+    "shelfAll": "全部節目",
+    "shelves": {
+      "curio": "奇聞檔案局",
+      "sothatswhy": "原來如此事務所",
+      "explainer": "觀念解說（其他）"
+    },
+    "seriesFilter": "系列",
+    "seriesAll": "全部系列",
+    "seriesNone": "不屬於系列",
+    "topicFilter": "分類",
+    "topicAll": "全部分類",
+    "topicNone": "未歸類",
+    "driveFolder": "雲端資料夾",
+    "driveFinal": "成片",
     "stateFilter": "狀態",
     "stateAll": "全部",
     "search": "搜尋",
@@ -2235,10 +2262,10 @@
     "loadError": "讀不到影片資料",
     "retry": "重試",
     "retryVideoTitle": "影片卡住了",
-        "retryVideoHelp": "確認原因已修好後，可請工人在下一輪重試這支影片一次。",
-        "retryVideoPending": "已提出重試，工人下一輪會接手。",
-        "retryVideoButton": "重試這支影片",
-        "retryVideoError": "無法提出重試：{message}",
+    "retryVideoHelp": "確認原因已修好後，可請工人在下一輪重試這支影片一次。",
+    "retryVideoPending": "已提出重試，工人下一輪會接手。",
+    "retryVideoButton": "重試這支影片",
+    "retryVideoError": "無法提出重試：{message}",
     "pending": "{count} 項待決定",
     "noPendingShort": "沒有待決定",
     "progress": "進度 {done}／{total}",

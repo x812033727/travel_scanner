@@ -86,6 +86,8 @@ OFFICIAL_PROVIDER_HOSTS: dict[str, frozenset[str]] = {
     # balance and GPU stock that REST does not report.
     "runpod_api_base_url": frozenset({"rest.runpod.io"}),
     "runpod_graphql_url": frozenset({"api.runpod.io"}),
+    # IndexNow instant indexing notifications (Bing, Yahoo TW, Naver, DuckDuckGo, ChatGPT).
+    "indexnow_endpoint": frozenset({"api.indexnow.org"}),
 }
 
 
@@ -219,6 +221,9 @@ class Settings(BaseSettings):
     flight_status_enabled: bool = True
     airline_fares_enabled: bool = True
     pricing_enabled: bool = True
+    flight_search_enabled: bool = False
+    videos_enabled: bool = False
+    member_features_enabled: bool = False
     trust_proxy_client_ip: bool = False
     # Proof that a forwarded address came from our own BFF rather than from something else
     # that can reach this API. Nothing at the network layer can tell those apart: neither
@@ -420,6 +425,8 @@ class Settings(BaseSettings):
     # The free Basic tier allows 30 calls/day; keep five calls for connection checks.
     odsay_daily_request_limit: int = Field(default=25, ge=0, le=10_000_000)
     next_public_site_url: str = "http://localhost:3000"
+    indexnow_key: str | None = None
+    indexnow_endpoint: str = "https://api.indexnow.org/indexnow"
     airline_crawler_user_agent: str = (
         "TravelScannerBot/0.1 (+https://github.com/x812033727/travel_scanner)"
     )
@@ -464,6 +471,14 @@ class Settings(BaseSettings):
     # never from model text; scoring stays with the existing structured assessment step.
     hotspot_guide_gemini_enabled: bool = False
     hotspot_guide_gemini_api_key: str | None = None
+    # More Gemini keys (Google AI Ultra accounts with monthly Cloud credit), separated by commas
+    # or white space. They are used up in order before hotspot_guide_gemini_api_key, which comes
+    # last (app.ai.gemini_pool).
+    hotspot_guide_gemini_api_keys_extra: str | None = None
+    # Optional monthly USD budget per key in the same order (extras, then the site key); blank
+    # or 0 is no budget. Google's own refusal (prepay balance out, or a spending cap) is what
+    # switches keys.
+    hotspot_guide_gemini_key_budgets_usd: str | None = None
     hotspot_guide_gemini_base_url: str = "https://generativelanguage.googleapis.com"
     # Flash-tier models refuse "list these sources" prompts on the grounded path, but
     # handle the schema-bound candidate list fine, and gemini-2.5-pro is closed to new

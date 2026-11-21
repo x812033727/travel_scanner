@@ -128,6 +128,7 @@ export async function GET(): Promise<Response> {
   for (const [path, title, note] of [
     ["/guides", "guidesTitle", "guidesDescription"],
     ["/life", "lifeTitle", "lifeDescription"],
+    ["/videos", "videosTitle", "videosDescription"],
   ] as const) {
     if (open.has(path)) lines.push(entry(plain(t(title)), url(path), plain(t(note))));
   }
@@ -182,6 +183,9 @@ export async function GET(): Promise<Response> {
     entry("Sitemap", `${siteUrl}/sitemap.xml`, "every indexable URL, with hreflang and article lastmod"),
     entry("Google News sitemap", `${siteUrl}${NEWS_SITEMAP_PATH}`, "news and travel alerts published in the last 48 hours"),
     entry("Atom feed", `${siteUrl}${FEED_PATH}`, "newest Traditional Chinese articles and news"),
+    entry("News desk Atom feed", localeUrl(HREFLANG_DEFAULT, "/life/feed.xml"), "dated AI, tech, and crypto news in English"),
+    entry("AI news Atom feed", localeUrl(HREFLANG_DEFAULT, "/life/topics/ai-news/feed.xml"), "daily AI news updates"),
+    entry("Tech news Atom feed", localeUrl(HREFLANG_DEFAULT, "/life/topics/tech-news/feed.xml"), "daily software and tech updates"),
     entry("robots.txt", `${siteUrl}/robots.txt`, "which agents may fetch what, and why"),
     "",
   );

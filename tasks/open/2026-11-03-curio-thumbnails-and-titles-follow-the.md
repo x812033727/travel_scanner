@@ -76,3 +76,7 @@ out this way without hand fixes.
   adult_english, elementary) are in untouched files.
 - The SKILL.md body hit the 300-line limit after main grew it; the 2026-11-03 thumbnail rules now live in
   `.agents/skills/curio-episode/references/thumbnail-2026-11-03.md` (references exist only under `.agents`).
+- Main moved the curio thumbnail to the heimao look on 2026-11-18 (#2164: one top-line headline <= 10, sub <= 14,
+  no line break). The qa curio warning now asks a heimao headline for one question (name + stake) and keeps the
+  two-line shape for layouts d/e, which the host worker still draws (its thumbnailGuide writes no layout). The
+  reference file says heimao rules win for new episodes.

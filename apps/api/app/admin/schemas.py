@@ -148,3 +148,6 @@ class SiteVisibility(BaseModel):
     flight_status_enabled: bool = True
     airline_fares_enabled: bool = True
     pricing_enabled: bool = True
+    flight_search_enabled: bool = False
+    videos_enabled: bool = False
+    member_features_enabled: bool = False

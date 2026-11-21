@@ -29,6 +29,7 @@ from typing import Any
 import httpx
 from redis.asyncio import Redis
 
+from app.ai.gemini_pool import note_response
 from app.ai.jev import JevClient, NoulCriteria, NoulQuestion, consume_jev_call, jev_client
 from app.ai.structured_output import gemini_output_text
 from app.config import Settings
@@ -251,6 +252,7 @@ async def transcribe(
     # was dropped here. Gemini's error status ("UNAVAILABLE", "INVALID_ARGUMENT") names the cause
     # without echoing the request, so it goes in the log and in the message.
     if response.status_code != 200:
+        note_response(response)
         reason = _error_status(response)
         logger.warning(
             "Gemini transcription answered HTTP %s %s", response.status_code, reason or "-"
@@ -261,6 +263,7 @@ async def transcribe(
             response.headers.get("Retry-After"),
         )
     payload = response.json()
+    note_response(response, payload)
     if usage_out is not None and isinstance(payload, dict):
         metadata = payload.get("usageMetadata")
         if isinstance(metadata, dict):

@@ -14,12 +14,15 @@
     "producible": "제작 가능 기획",
     "long_reserve": "보류 중인 장편 기획",
     "scored": "평가된 기획",
-    "improved": "개선된 기획"
+    "improved": "개선된 기획",
+    "cores": "단독 회차 주제",
+    "cores_passing": "기준점 이상의 단독 회차 주제"
   },
   "minimum": "채택 기준: 독립 시청자 평가 {min}점 이상. 새 기획은 평가, 개선, 재평가를 거쳐 채택됩니다.",
   "viewLabel": "보기",
   "views": {
     "themes": "기획 목록",
+    "cores": "단독 회차 주제",
     "published": "게시 상태",
     "expansions": "확장 기록"
   },
@@ -29,6 +32,12 @@
     "reserve": "장편 보류",
     "short": "단편",
     "all": "전체 기획"
+  },
+  "coreStatuses": {
+    "passing": "기준점 이상",
+    "scored": "채점 완료",
+    "unscored": "미채점",
+    "all": "모든 단독 회차 주제"
   },
   "category": "분류",
   "allCategories": "전체 분류",
@@ -52,7 +61,8 @@
     "hook": "도입",
     "surprise": "놀라움",
     "payoff": "만족도",
-    "share": "공유"
+    "share": "공유",
+    "demand": "수요"
   },
   "minutes": "약 {minutes}분",
   "candidates": "소재 {count}개",
@@ -102,5 +112,13 @@
   },
   "privacy": "공개 상태: {privacy}",
   "publishAt": "공개 예정: {date}",
-  "stage": "제작 단계: {stage}"
+  "stage": "제작 단계: {stage}",
+  "coreResults": "조건에 맞는 단독 회차 주제: {count}개",
+  "coreEmpty": "조건에 맞는 단독 회차 주제가 없습니다",
+  "coreEmptyDetail": "이 시리즈에는 단독으로 한 회가 되는 주제가 없거나, 분류·상태·검색어를 바꿔 보세요.",
+  "coreDetails": "오프닝과 공개 내용 보기",
+  "hook": "오프닝",
+  "payoff": "이 회차에서 밝히는 것",
+  "minutesRange": "약 {from}–{to}분",
+  "produced": "제작 완료"
 }

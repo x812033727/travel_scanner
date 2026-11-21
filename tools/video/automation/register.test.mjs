@@ -3,7 +3,7 @@ import test from "node:test";
 
 import { illustratedFixture } from "../core/fixtures/load.mjs";
 import { MAX_PAUSE_MS } from "../core/schema.mjs";
-import { HOOK_SECONDS, PAUSE_BEATS, REGISTER_RULES, registerLine, registerSummary, setPauseBeats, STORY_VOICE_STYLE, TWIST_MARKER } from "./register.mjs";
+import { HOOK_SECONDS, PAUSE_BEATS, REGISTER_RULES, registerLine, registerSummary, setPauseBeats, STORY_SERIES_SCREEN_RULE, STORY_VOICE_STYLE, TOLD_TO_ONE_VIEWER, TWIST_MARKER } from "./register.mjs";
 
 test("the register's rules carry the hook, the turn, the closing questions and the pause beats, and the voice style fits the settings field", () => {
   assert.match(REGISTER_RULES, new RegExp(`within ${HOOK_SECONDS} seconds`));
@@ -20,6 +20,10 @@ test("the register's rules carry the hook, the turn, the closing questions and t
   assert.ok(STORY_VOICE_STYLE.length <= 400, "the settings tab takes at most 400 characters of style");
   assert.match(STORY_VOICE_STYLE, /說書人/);
   assert.equal(TWIST_MARKER, "你以為");
+  assert.match(STORY_SERIES_SCREEN_RULE, /physical object, cross-section or contrast from this story first/);
+  assert.match(STORY_SERIES_SCREEN_RULE, /at most two shots across an episode \(lint warns\s+at three or more\)/);
+  assert.match(TOLD_TO_ONE_VIEWER, /Human dilemmas and moves, never a legal filing or a collation note read aloud/);
+  assert.match(TOLD_TO_ONE_VIEWER, /claims\.md and youtube\.description/);
 });
 
 test("registerSummary counts the turns, the chapters closing on a question and the beats from the text alone", () => {

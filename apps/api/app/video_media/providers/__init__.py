@@ -19,6 +19,8 @@ from urllib.parse import urlsplit
 
 import httpx
 
+from app.ai.gemini_pool import note_response
+
 USER_AGENT = "Mokaair-video/1.0 (https://mokaair.com; support@mokaair.com)"
 ErrorKind = Literal["blocked", "busy", "key", "expired", "failed", "invalid"]
 
@@ -155,7 +157,11 @@ def _rejection_diagnostic(response: httpx.Response) -> str | None:
     ):
         return None
     for parameter in (
-        "negativePrompt", "generateAudio", "referenceImages", "resolution", "durationSeconds"
+        "negativePrompt",
+        "generateAudio",
+        "referenceImages",
+        "resolution",
+        "durationSeconds",
     ):
         if re.match(
             rf"(?:the )?(?:(?:parameter|field) )?[`\"']?{parameter}[`\"']?"
@@ -180,6 +186,12 @@ def raise_for_status(response: httpx.Response, vendor: str) -> None:
     if 200 <= status < 300:
         return
     retry = response.headers.get("Retry-After")
+    if status in (402, 429) and note_response(response) == "exhausted":
+        # Out of credit or over the project's spending cap: the pool rests this key, and the
+        # job's next try goes out with the next one (app.ai.gemini_pool).
+        raise MediaUpstreamError(
+            429, f"{vendor} key is out of credit or over its spending cap", "busy", retry or "30"
+        )
     if status == 429:
         raise MediaUpstreamError(429, f"{vendor} is busy or over quota", "busy", retry)
     if status in (401, 403):

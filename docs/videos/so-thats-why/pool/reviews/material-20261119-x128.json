@@ -1,0 +1,608 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-19",
+  "reviewer": "check128",
+  "baselines": {
+    "so_thats_why": {
+      "candidates": 7847,
+      "selected": 7543,
+      "themes": 769
+    },
+    "curio": {
+      "candidates": 2727,
+      "selected": 1855,
+      "themes": 155
+    }
+  },
+  "method": "重開日常18份規則、表格和操作手冊，工藝11份原件編目及示範，另看實物圖。長片19份遊戲發行商、規格制定者、平台與通路的原始資料，以具名版本及機構身份逐卡檢查。",
+  "segment_reviews": [
+    {
+      "id": "K128-0001",
+      "source_ids": [
+        "X128E-S01",
+        "X128E-S02"
+      ],
+      "decision": "screened",
+      "checked": "中華郵政兩頁對照，國內函件及包裹候領次日起15日、快捷5日；FAQ列書面申請延至1個月，收件人要能證明身分。",
+      "dedup_and_scope": "限國內存局候領；資格期限與免費存放期限為兩個欄目。"
+    },
+    {
+      "id": "K128-0002",
+      "source_ids": [
+        "X128E-S03"
+      ],
+      "decision": "screened",
+      "checked": "澳洲網協說明第二次彈跳可落在場外，場地與其他基本回球原則相同。",
+      "dedup_and_scope": "同一球在第一次必須有效，接球者須在第三次彈地之前擊回。"
+    },
+    {
+      "id": "K128-0003",
+      "source_ids": [
+        "X128E-S04",
+        "X128E-S05"
+      ],
+      "decision": "screened",
+      "checked": "R&A規則13.1f將球所在處、預定站位與揮動區的實際干涉列入，規則書並列明顯不合理站位的例外。",
+      "dedup_and_scope": "一般區個案中要找完整脫離干涉的最近點，不是單把球移離果嶺。"
+    },
+    {
+      "id": "K128-0004",
+      "source_ids": [
+        "X128E-S06",
+        "X128E-S07"
+      ],
+      "decision": "screened",
+      "checked": "伊利諾州農業廳表與USDA §56.218表I對出Medium每打21、Large每打24盎司淨重。檢視外殼與照蛋的品質欄另外判。",
+      "dedup_and_scope": "同規格表列每單顆按每打折算的下限，同節有容許量，未將每打平均當單顆的恰好重量。"
+    },
+    {
+      "id": "K128-0005",
+      "source_ids": [
+        "X128E-S08",
+        "X128E-S09"
+      ],
+      "decision": "screened",
+      "checked": "明尼蘇達大學推廣和威斯康辛推廣原文區分溝植回填與平地培土，食用白段包含層疊的葉基。",
+      "dedup_and_scope": "只把土逐步帶到葉基周圍，綠葉仍露地上；不以白色判斷整株品種。"
+    },
+    {
+      "id": "K128-0006",
+      "source_ids": [
+        "X128E-S10",
+        "X128E-S11"
+      ],
+      "decision": "screened",
+      "checked": "Project FeederWatch用上午1、下午4及隔天3說明兩日最高是4；即使雄雌可認也不分時段相加。",
+      "dedup_and_scope": "同時在場、同一物種、同一兩天調查；沒有推算個體總數。"
+    },
+    {
+      "id": "K128-0007",
+      "source_ids": [
+        "X128E-S12"
+      ],
+      "decision": "screened",
+      "checked": "CoCoRaHS四吋塑膠量雨器教材說明內筒1英吋、外筒接溢水、內筒精度0.01；先記滿筒再量溢水，因此例算1+0.37=1.37。",
+      "dedup_and_scope": "O3026比雷達與地面採樣，與兩筒讀值相加不同。"
+    },
+    {
+      "id": "K128-0008",
+      "source_ids": [
+        "X128E-S13"
+      ],
+      "decision": "screened",
+      "checked": "FIDE現行條文4.2.1限定輪到走棋且先表示扶正，4.2.2排除明顯失手，4.3處理打算走棋時先摸到的可走棋。",
+      "dedup_and_scope": "污染或桌面碰撞等個案仍須裁判判斷，只就題面意圖與時間。"
+    },
+    {
+      "id": "K128-0009",
+      "source_ids": [
+        "X128E-S14"
+      ],
+      "decision": "screened",
+      "checked": "英國Met Office解碼頁逐條列0000<50m、9999≥10km、3200=3200m及1200SW為另報的最低能見度。",
+      "dedup_and_scope": "英國例報的主導能見度達門檻，四個9不能回算精確距離。"
+    },
+    {
+      "id": "K128-0010",
+      "source_ids": [
+        "X128E-S15"
+      ],
+      "decision": "screened",
+      "checked": "Yamaha使用手冊「Adjusting the Tuning Indicator」依先調最低音、移音名牌，再逐音對指針的順序操作。",
+      "dedup_and_scope": "同廠牌該系列機械指示；K120-0004重點在踏板與鼓皮回扯平衡。"
+    },
+    {
+      "id": "K128-0011",
+      "source_ids": [
+        "X128E-S16",
+        "X128E-S17"
+      ],
+      "decision": "screened",
+      "checked": "WHATWG建構表單資料時會略過未選取checkbox，MDN解釋indeterminate是外觀，與checked分開。",
+      "dedup_and_scope": "限有name且可用的欄位；不把畫面橫線當作是否送出的條件。"
+    },
+    {
+      "id": "K128-0012",
+      "source_ids": [
+        "X128E-S18"
+      ],
+      "decision": "screened",
+      "checked": "賓州州立推廣圖文對比橡木的寬木射線與刨平後紋理；徑切板寬面可成大片斑，平鋸板多在邊緣露出此切面。",
+      "dedup_and_scope": "以有顯著射線的橡木示意，樹種差異、板取向都影響外觀。"
+    },
+    {
+      "id": "K128-0401",
+      "source_ids": [
+        "X128C-S01",
+        "X128C-S02"
+      ],
+      "decision": "screened",
+      "checked": "重開Met兩種版畫示範與圖，Big Rocks的凸版與印件相對，Memory Sticks從網上刮下印墨、紙在網下，成像沿網面方向。",
+      "dedup_and_scope": "方向比較已限定從刮板一側看，不套到所有轉印步驟。"
+    },
+    {
+      "id": "K128-0402",
+      "source_ids": [
+        "X128C-S03",
+        "X128C-S04"
+      ],
+      "decision": "screened",
+      "checked": "CMA 2016.297載紙28.4×19.3cm、版痕27.7×18.5cm；Met印件與銅版示範顯示濕紙經壓印被版緣壓出一圈。",
+      "dedup_and_scope": "列出同件紙的兩種量法。K120-0002的乾刻毛刺題只講線條和耐印。"
+    },
+    {
+      "id": "K128-0403",
+      "source_ids": [
+        "X128C-S05"
+      ],
+      "decision": "screened",
+      "checked": "Met《Lunch》並置平版及印件，原頁分列油性畫材、潤石、著墨及滾壓，非圖像區的水使油墨留在圖像區。",
+      "dedup_and_scope": "特指示範的石灰岩平版，在同一平面選擇著墨。"
+    },
+    {
+      "id": "K128-0404",
+      "source_ids": [
+        "X128C-S06",
+        "X128C-S07",
+        "X128C-S08"
+      ],
+      "decision": "screened",
+      "checked": "CMA 2009.137.a標正面石墨，b標背面的transferred soft (etching) ground。Georgetown技法說明有紙面落筆、襯紙黏走軟地的次序。",
+      "dedup_and_scope": "實讀同張紙雙面編目並看圖；未由網圖推定銅版配方。"
+    },
+    {
+      "id": "K128-0405",
+      "source_ids": [
+        "X128C-S09"
+      ],
+      "decision": "screened",
+      "checked": "Tikotin展圖第四為廣重品川採貝的uchiwa-e，展說明刻圖用木板上下緣削圓，以合連柄竹骨，圖片中可見畫面底缺。",
+      "dedup_and_scope": "用團扇面之造型判讀；沒有證明該館藏紙張曾實際裱到哪件扇骨。"
+    },
+    {
+      "id": "K128-0406",
+      "source_ids": [
+        "X128C-S10"
+      ],
+      "decision": "screened",
+      "checked": "CMA 2009.553記Guérard用burnishing磨掉蝕線，燈及水面反射處失去可儲墨的凹處，印時不著墨；實物圖亮點沿水面延伸。",
+      "dedup_and_scope": "此件亮處來源另有原文佐證，不據別張夜景推斷。"
+    },
+    {
+      "id": "K128-0407",
+      "source_ids": [
+        "X128C-S11"
+      ],
+      "decision": "screened",
+      "checked": "CMA 1968.38將英國花卉版畫技法記作à la poupée，同一張版分區用小布團上不同色，一次壓印，實物圖可見花色區分。",
+      "dedup_and_scope": "依館方對Anne Allen這一張的解釋，不推到任意彩色凹版。"
+    }
+  ],
+  "rejected_suggestions_checked": {
+    "X128E-NA001": "K122-0003。舊卡已用同重方形信封的非機器處理費解答價差。",
+    "X128E-NA002": "K123-0010。舊卡已用秋果型先在枝梢、隔年再於低處結果的同枝兩季機制。",
+    "X128C-NA01": "K120-0002。既有乾刻題已追回印數增加使毛刺磨損，不能改用另一作品再收。",
+    "X128C-NA02": "K121-0002。單刷作品第二次壓印的較淡輪廓來自版上殘墨，舊卡已完整回答。",
+    "X128D-NA01": "LEG-A49。舊題以重插改善接點解釋吹卡帶的錯覺，沒有納入新批。",
+    "X128D-NA02": "G756,K112-0672。舊卡與題組核記憶卡空間、持續寫入及錄影中斷，與本輪Switch 2的Express支援和具名遊戲大小已分清。"
+  },
+  "scope": "12張日常、7張版畫、18張遊戲卡研究卡。",
+  "themes": {
+    "G771": {
+      "title": "把 Switch 2 的《星際大戰：亡命之徒》借給朋友，遊戲明明還在你家主機裡，為什麼反而是你開不了？",
+      "researcher": "long128",
+      "reviewer": "check128",
+      "verdict": "ready",
+      "fact_count": 13.0,
+      "author_fact_count": 15.25,
+      "est_minutes": 9.8,
+      "method": "依機構合併來源，任天堂跨地區所有支援視為同網。Ubisoft同頁兩個問答、同款容量與已知數字的再運算、零售商自行列品、同款相容與進度均降低權重。每個網最多計兩條；SanDisk產品資料支持具體容量與估算註腳，SD協會的規格頁只支持介面。",
+      "networks": {
+        "Ubisoft": [
+          "X128D-S01"
+        ],
+        "任天堂": [
+          "X128D-S02",
+          "X128D-S03",
+          "X128D-S11",
+          "X128D-S13",
+          "X128D-S14",
+          "X128D-S15",
+          "X128D-S19"
+        ],
+        "CD PROJEKT RED": [
+          "X128D-S04",
+          "X128D-S05"
+        ],
+        "SEGA": [
+          "X128D-S06",
+          "X128D-S07"
+        ],
+        "SD Association": [
+          "X128D-S09"
+        ],
+        "Sandisk": [
+          "X128D-S10"
+        ],
+        "momo 購物網商品頁": [
+          "X128D-S12"
+        ],
+        "CAPCOM": [
+          "X128D-S08"
+        ],
+        "SQUARE ENIX": [
+          "X128D-S16"
+        ],
+        "Hello Games": [
+          "X128D-S17"
+        ],
+        "Electronic Arts": [
+          "X128D-S18"
+        ]
+      },
+      "network_weights": {
+        "Ubisoft": 1.25,
+        "任天堂": 2.0,
+        "CD PROJEKT RED": 1.75,
+        "SEGA": 1.0,
+        "SD Association": 0.75,
+        "Sandisk": 0.75,
+        "momo 購物網商品頁": 0.5,
+        "CAPCOM": 1.0,
+        "SQUARE ENIX": 1.5,
+        "Hello Games": 1.0,
+        "Electronic Arts": 1.5
+      },
+      "card_verdicts": [
+        {
+          "id": "K128-0201",
+          "source_ids": [
+            "X128D-S01",
+            "X128D-S02"
+          ],
+          "network": "Ubisoft",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "Ubisoft官方FAQ內嵌原文指定Switch 2盒裝採Nintendo Game-Key Card，插卡可下載安裝，遊玩須把卡留在機內；臺任對照空卡不存本篇。"
+        },
+        {
+          "id": "K128-0202",
+          "source_ids": [
+            "X128D-S02",
+            "X128D-S03"
+          ],
+          "network": "任天堂",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "美任FAQ明載下載鑰匙卡的本篇資料不必有Nintendo Account。新主機仍需網路和空間，後續單機遊玩仍需插卡。"
+        },
+        {
+          "id": "K128-0203",
+          "source_ids": [
+            "X128D-S01"
+          ],
+          "network": "Ubisoft",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 0.5,
+          "checked": "Ubisoft同頁確認Gold Edition含Wild Card、A Pirate’s Fortune，以相同標題不同問答分清內容清單和卡內資料。"
+        },
+        {
+          "id": "K128-0204",
+          "source_ids": [
+            "X128D-S04",
+            "X128D-S01"
+          ],
+          "network": "CD PROJEKT RED",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "CDPR發行公告列實體64GB遊戲卡及本篇、Phantom Liberty。不能把64GB當必須連網下載量。"
+        },
+        {
+          "id": "K128-0205",
+          "source_ids": [
+            "X128D-S05"
+          ],
+          "network": "CD PROJEKT RED",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "CDPR語音表分全球卡預載英配與日本卡預載日配。指定語音包最多各2.9GB，不是一律下載2.9GB。"
+        },
+        {
+          "id": "K128-0206",
+          "source_ids": [
+            "X128D-S06",
+            "X128D-S07",
+            "X128D-S08"
+          ],
+          "network": "SEGA",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "SEGA FAQ列該日本版約45.3GB、鑰匙卡，CAPCOM商店列至少50GB；48−45.3約2.7，48與50差至少2。"
+        },
+        {
+          "id": "K128-0207",
+          "source_ids": [
+            "X128D-S09",
+            "X128D-S02"
+          ],
+          "network": "SD Association",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "SDA規格歷史提microSD Express始於7.1、連接PCIe/NVMe；臺灣任天堂明列下載遊戲時可另用的卡型。"
+        },
+        {
+          "id": "K128-0208",
+          "source_ids": [
+            "X128D-S10",
+            "X128D-S07",
+            "X128D-S08"
+          ],
+          "network": "Sandisk",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "SanDisk PDF第1頁及估算註腳將256GB款約9套與每套平均25GB相連。兩個實例均大於該平均。"
+        },
+        {
+          "id": "K128-0209",
+          "source_ids": [
+            "X128D-S11"
+          ],
+          "network": "任天堂",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.25,
+          "checked": "Nintendo Switch 2 Data Management FAQ明載刪下載軟體不影響進度，刪除用戶則另有後果。"
+        },
+        {
+          "id": "K128-0210",
+          "source_ids": [
+            "X128D-S12",
+            "X128D-S14"
+          ],
+          "network": "momo 購物網商品頁",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 0.5,
+          "checked": "momo品號TP00020140000198的臺灣商品標題明寫盒裝序號，任天堂澳洲支援已使用序號不能再兌換。"
+        },
+        {
+          "id": "K128-0211",
+          "source_ids": [
+            "X128D-S08",
+            "X128D-S14"
+          ],
+          "network": "CAPCOM",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "日本e-CAPCOM商品C00008954明列鑰匙卡與DLC號碼、兩個年度角色通行證、場地／顏色、2027年6月5日兌換期限。"
+        },
+        {
+          "id": "K128-0212",
+          "source_ids": [
+            "X128D-S13",
+            "X128D-S15"
+          ],
+          "network": "任天堂",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.5,
+          "checked": "任天堂美洲下載碼說明將可兌換區域繫於帳號的eShop國家，日語國內專用硬體另限可綁日本帳號；地點本身不更改號碼。"
+        },
+        {
+          "id": "K128-0213",
+          "source_ids": [
+            "X128D-S16"
+          ],
+          "network": "SQUARE ENIX",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "SQUARE ENIX DQ I&II FAQ明載兩版內容與故事相同，初代遊戲向上相容時仍是舊版規格，NS2版無法在初代啟動。"
+        },
+        {
+          "id": "K128-0214",
+          "source_ids": [
+            "X128D-S16",
+            "X128D-S11"
+          ],
+          "network": "SQUARE ENIX",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "同一作者FAQ明說沒有升級路徑、兩版存檔不能交換。遊戲時數與獎勵附帶的其他規則須和本篇進度分清。"
+        },
+        {
+          "id": "K128-0215",
+          "source_ids": [
+            "X128D-S17",
+            "X128D-S16"
+          ],
+          "network": "Hello Games",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "Hello Games Beacon公告提供給原版玩家免費的Switch 2 Edition升級，可在eShop領；不可套到DQ。"
+        },
+        {
+          "id": "K128-0216",
+          "source_ids": [
+            "X128D-S19"
+          ],
+          "network": "任天堂",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.5,
+          "checked": "臺任虛擬遊戲卡規則有家庭群組、14日、出借當時鄰近通訊與網路；不是任意下載版或任意陌生人互借。"
+        },
+        {
+          "id": "K128-0217",
+          "source_ids": [
+            "X128D-S18"
+          ],
+          "network": "Electronic Arts",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "EA NS2 Friend’s Pass FAQ允許與一位擁有完整版者同場線上玩完整篇；兩名都只有Pass只能試玩。"
+        },
+        {
+          "id": "K128-0218",
+          "source_ids": [
+            "X128D-S18"
+          ],
+          "network": "Electronic Arts",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 0.75,
+          "checked": "EA問答特別說明好友通行證所獲進度於買完整版後可延續，不能單靠Pass獨立開全程。"
+        }
+      ],
+      "chapter_budgets": [
+        {
+          "chapter": 1,
+          "title": "把卡交到朋友手裡，哪一家的主機還認得它？",
+          "candidate_ids": [
+            "K128-0201",
+            "K128-0202",
+            "K128-0203"
+          ],
+          "target_seconds": 82,
+          "evidence_seconds": [
+            66,
+            114
+          ],
+          "checked": "從Ubisoft發行規格確認盒裝形式與兩個附加故事。臺任與美任協助區分新的主機須下載、資料留本機、當下可否啟動仍看手中卡，不把平台登入當下載資格。"
+        },
+        {
+          "chapter": 2,
+          "title": "借他那張 64GB 卡，日版的英配也一併帶走了嗎？",
+          "candidate_ids": [
+            "K128-0204",
+            "K128-0205"
+          ],
+          "target_seconds": 65,
+          "evidence_seconds": [
+            52,
+            86
+          ],
+          "checked": "由CDPR首發公告及語音支援逐款拆清64GB卡、兩段內容、日版與全球版語音差異、額外每包上限。"
+        },
+        {
+          "chapter": 3,
+          "title": "剩48GB，哪一盒還沒下載就得先騰出空間？",
+          "candidate_ids": [
+            "K128-0206",
+            "K128-0207",
+            "K128-0208",
+            "K128-0209"
+          ],
+          "target_seconds": 103,
+          "evidence_seconds": [
+            88,
+            152
+          ],
+          "checked": "用SEGA與CAPCOM兩個數值覆算48GB假設。SDA資料和臺任規定各說明介面與適用卡，SanDisk容量估算引用其原廠註腳；刪軟體與刪帳號分清。"
+        },
+        {
+          "chapter": 4,
+          "title": "打開借來的《快打旋風》，怎麼本篇有了，兩年角色卻沒跟過來？",
+          "candidate_ids": [
+            "K128-0210",
+            "K128-0211",
+            "K128-0212"
+          ],
+          "target_seconds": 95,
+          "evidence_seconds": [
+            66,
+            114
+          ],
+          "checked": "momo的品號只是此一零售盒實例。CAPCOM日本同梱DLC的2027/6/5期限不是本篇到期；帳號區域條件及日本語專用款分別有平台規則。"
+        },
+        {
+          "chapter": 5,
+          "title": "朋友家的第二台是初代 Switch，架上哪一版真的能借？",
+          "candidate_ids": [
+            "K128-0213",
+            "K128-0214",
+            "K128-0215"
+          ],
+          "target_seconds": 86,
+          "evidence_seconds": [
+            66,
+            114
+          ],
+          "checked": "同款DQ跨代相容、升級與存檔是不同問題，發行商三個答案互相核驗。用Hello Games另款免費升級對照；只講取得升級的資格。"
+        },
+        {
+          "chapter": 6,
+          "title": "一人一台想同時玩，今晚該交出卡，還是送出邀請？",
+          "candidate_ids": [
+            "K128-0216",
+            "K128-0217",
+            "K128-0218"
+          ],
+          "target_seconds": 79,
+          "evidence_seconds": [
+            66,
+            114
+          ],
+          "checked": "任天堂家庭出借需近距離及網路14天，EA的共同遊玩則由一人持完整版在線上帶另一人，客人日後買完整版可接續進度。"
+        }
+      ],
+      "turns": [
+        "正常的卡已借走時，即使整個遊戲留在自己主機，自家那份盒裝也不能啟動。反過來，完整卡亦可能要為語音包連網。",
+        "一盒可同時有鑰匙卡與只用一次的DLC號碼，借卡未轉移已兌身分。最後以虛擬卡輪流玩與EA通行證兩個人同時玩區分。"
+      ],
+      "nearby": [
+        "LEG-A49的卡帶讀取是接點與重插，與正常工作的Switch 2鑰匙卡由誰持有不同。G756及K112-0672追攝影機持續記錄和卡片容量狀態，本案只問Express介面、遊戲所需空間與授權。",
+        "兩池原始、入選、未收及題案以遊戲卡匣、金鑰／鑰匙卡、Switch 2、Cyberpunk與具名作品比對。另查同輪工藝、日常及奇聞各卡，未見相同問題。"
+      ],
+      "changes": [
+        "用最低所需空間與實例相減，列為示範而不作更新後保證。各地任天堂支援合併計權，自家作品設定另據遊戲發行商資料。"
+      ],
+      "unverified": [
+        "未操作實機借還、兌換或跨區登入。數位下載空間、版本及地區依發行商所列，48GB與十小時進度均為例子。",
+        "momo商品標題只確認該品號的通路標法，未現場拆封；不由此推所有地區的同名品項。",
+        "六章時間按證據量推估，未錄音實測。"
+      ],
+      "note": "18卡、19份原件、11來源網。獨立加權13.0條，按每條約0.75分鐘估約9.8分鐘；六章目標510秒。",
+      "reviewed_source_files_sha256": {
+        "theme": "e630f132ffc14e16e98b19f7360b4aa5ca9fded97213930a7b7441b95fbfb03e",
+        "batch": "e5d5ea18ed99f7af3302626e4d85f2ec5650555f4e6ebe8cad8ba508ed753965"
+      }
+    }
+  },
+  "reviewed_segment_files_sha256": {
+    "daily": "fffe7aab59ce9aafe63d73d0de1a0ea54be07b2620c017208a75fadbd62dfde8",
+    "craft": "c4d12a934d6615feef5bde83361ede58139f7e9e1a85444b4e35a6154251ecf3"
+  }
+}

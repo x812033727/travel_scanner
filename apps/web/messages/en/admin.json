@@ -837,6 +837,18 @@
       "pricing_enabled": {
         "label": "Plans & usage packs",
         "help": "Controls pricing navigation, usage-pack actions, and the /pricing page."
+      },
+      "flight_search_enabled": {
+        "label": "Flights & stays search",
+        "help": "Controls flights & stays search links and home search workbench entry points."
+      },
+      "videos_enabled": {
+        "label": "Videos hub",
+        "help": "Controls video navigation links, the home videos shortcut, and the footer link."
+      },
+      "member_features_enabled": {
+        "label": "Member features & sign-in",
+        "help": "Controls sign-in buttons, saved items, My space, My trips navigation, and card save/trip actions. Direct /login access remains available for admins."
       }
     }
   },
@@ -2203,6 +2215,21 @@
     "uncategorized": "Uncategorized",
     "categoryFilter": "Category",
     "categoryAll": "All categories",
+    "shelfFilter": "Show",
+    "shelfAll": "All shows",
+    "shelves": {
+      "curio": "Curio Files",
+      "sothatswhy": "So That's Why",
+      "explainer": "Explainer (other)"
+    },
+    "seriesFilter": "Series",
+    "seriesAll": "All series",
+    "seriesNone": "Not in a series",
+    "topicFilter": "Topic",
+    "topicAll": "All topics",
+    "topicNone": "No topic",
+    "driveFolder": "Drive folder",
+    "driveFinal": "Final cut",
     "stateFilter": "State",
     "stateAll": "All",
     "search": "Search",
@@ -2235,10 +2262,10 @@
     "loadError": "Could not load the videos",
     "retry": "Retry",
     "retryVideoTitle": "Video needs attention",
-        "retryVideoHelp": "After fixing the cause, ask the worker to try this video once more.",
-        "retryVideoPending": "Retry requested. The worker will pick it up on its next run.",
-        "retryVideoButton": "Try this video again",
-        "retryVideoError": "Could not request a retry: {message}",
+    "retryVideoHelp": "After fixing the cause, ask the worker to try this video once more.",
+    "retryVideoPending": "Retry requested. The worker will pick it up on its next run.",
+    "retryVideoButton": "Try this video again",
+    "retryVideoError": "Could not request a retry: {message}",
     "pending": "{count} to decide",
     "noPendingShort": "Nothing to decide",
     "progress": "Progress {done}/{total}",

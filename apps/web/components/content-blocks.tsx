@@ -21,6 +21,8 @@ export type ContentBlockLabels = {
   /** The toggle over an image's folded long description. Without it the disclosure is named
    *  after the picture (its alt) rather than drawn blank. */
   imageDescription?: string;
+  /** Dated news articles offer the locally hosted original for large raster figures. */
+  viewOriginalImage?: string;
   tip: string;
   warning: string;
   info: string;
@@ -35,6 +37,7 @@ export type ContentBlockLabels = {
  *  `pack_ingest.MIN_LABEL_PX` is 15, and 15 * 1180/1600 = 11.1 CSS px; below about 11 a
  *  Han or Hangul glyph stops resolving. A diagram authored narrower keeps its own width. */
 const DIAGRAM_READABLE_WIDTH = 1180;
+const ARTICLE_COLUMN_WIDTH = 728;
 
 const TONE_CLASSES: Record<CalloutTone, string> = {
   tip: "border-[var(--teal)] bg-[color-mix(in_srgb,var(--teal-soft)_52%,var(--surface))]",
@@ -73,13 +76,26 @@ export function ImageCreditLine({ credit, prefix }: { credit: ImageCredit; prefi
 
 /** The article's answer, as a card: the two to five sentences a reader takes away. `id` is
  *  the article page's, so its speakable selector points here; the preview passes none. */
-export function SummaryCard({ items, heading, id }: { items: readonly string[]; heading?: string; id?: string }) {
+export function SummaryCard({ items, heading, id, moreLabel }: {
+  items: readonly string[]; heading?: string; id?: string; moreLabel?: string;
+}) {
+  const hasMore = Boolean(moreLabel && items.length > 1);
   return (
     <aside id={id} aria-label={heading} className="app-summary-card rounded-2xl p-4 md:p-5">
       {heading ? <p className="text-[length:var(--text-xs)] font-extrabold uppercase tracking-wider text-[var(--teal-dark)]">{heading}</p> : null}
       <ul className="mt-2.5 list-disc space-y-2 pl-5 marker:text-[var(--teal)]">
-        {items.map((item, index) => <li key={index}>{item}</li>)}
+        {(hasMore ? items.slice(0, 1) : items).map((item, index) => <li key={index}>{item}</li>)}
       </ul>
+      {hasMore ? (
+        <details className="mt-1">
+          <summary className="min-h-11 w-fit cursor-pointer content-center rounded-sm pr-2 text-sm font-semibold text-[var(--teal-dark)] underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2">
+            {moreLabel}
+          </summary>
+          <ul className="list-disc space-y-2 pl-5 marker:text-[var(--teal)]">
+            {items.slice(1).map((item, index) => <li key={index}>{item}</li>)}
+          </ul>
+        </details>
+      ) : null}
     </aside>
   );
 }
@@ -115,7 +131,7 @@ export function FaqSection({ items, heading, id }: { items: readonly { question:
  * legal pages want.
  */
 export function ContentBlocks({
-  blocks, labels, headingStart, subsectionStart = 0, articleLinks = [], locale = "en", termLabels, renderFaq, constrainDiagrams = false,
+  blocks, labels, headingStart, subsectionStart = 0, articleLinks = [], locale = "en", termLabels, renderFaq, constrainDiagrams = false, newsReading = false,
 }: {
   blocks: readonly RichContentBlock[];
   labels?: ContentBlockLabels;
@@ -131,6 +147,7 @@ export function ContentBlocks({
   /** Keeps wide SVG diagrams inside their own horizontal scroller when an article sits in an
    *  elevated reading sheet or beside a desktop sticky navigation rail. */
   constrainDiagrams?: boolean;
+  newsReading?: boolean;
 }) {
   // Heading ids are decided in one pass before rendering: level-2 headings continue the
   // sequence the caller started, and level-3 headings count within their section
@@ -205,6 +222,7 @@ export function ContentBlocks({
       // decorative. Give it its own scroller and a width where that floor clears 11px; a
       // photograph keeps fitting the column, because its detail does not live in 15px text.
       const diagram = src.endsWith(".svg");
+      const originalLabel = !diagram && block.width > ARTICLE_COLUMN_WIDTH ? labels?.viewOriginalImage : undefined;
       const image = (
         <GuideImage
           src={src} alt={block.alt} width={block.width} height={block.height}
@@ -256,11 +274,20 @@ export function ContentBlocks({
               {image}
             </div>
           ) : image}
-          {caption || block.credit ? (
+          {caption || block.credit || originalLabel ? (
             <figcaption className="mt-2 text-sm leading-6 text-[var(--muted)]">
               {caption}
               {caption && block.credit ? " · " : null}
               {block.credit ? <ImageCreditLine credit={block.credit} prefix={labels?.imageCredit ?? ""} /> : null}
+              {originalLabel ? (
+                <a
+                  href={src}
+                  aria-label={block.alt ? `${originalLabel} · ${block.alt}` : undefined}
+                  className="flex min-h-11 w-fit items-center rounded-sm font-semibold text-[var(--teal-dark)] underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2"
+                >
+                  {originalLabel}
+                </a>
+              ) : null}
             </figcaption>
           ) : null}
           {description ? (
@@ -274,11 +301,23 @@ export function ContentBlocks({
     }
     if (block.type === "table") {
       const caption = block.caption?.trim() ?? "";
-      // A wide table scrolls inside its own box; the page must never scroll sideways for it.
+      const wideNewsTable = newsReading && block.header.length >= 3;
+      const scrollLabel = wideNewsTable ? caption || block.header.filter(Boolean).join(" · ") : undefined;
       return (
-        <div key={index} className="overflow-x-auto rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow-sm)]">
+        <div
+          key={index}
+          data-news-table={newsReading ? block.header.length : undefined}
+          tabIndex={wideNewsTable ? 0 : undefined}
+          role={scrollLabel ? "region" : undefined}
+          aria-label={scrollLabel}
+          className="overflow-x-auto rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow-sm)]"
+        >
           <table className="w-full border-collapse text-sm [overflow-wrap:normal]">
-            {caption ? <caption className="caption-bottom border-t border-[var(--line)] px-4 py-2.5 text-left text-[length:var(--text-xs)] text-[var(--muted)]">{caption}</caption> : null}
+            {caption ? (
+              <caption className="caption-bottom border-t border-[var(--line)] px-4 py-2.5 text-left text-[length:var(--text-xs)] text-[var(--muted)]">
+                {newsReading ? <span>{caption}</span> : caption}
+              </caption>
+            ) : null}
             <thead className="bg-[var(--surface-tint)]">
               <tr>{block.header.map((cell, i) => <th key={i} scope="col" className="min-w-28 border-b-2 border-[var(--line)] px-4 py-3 text-left font-bold text-[var(--ink)]">{cell}</th>)}</tr>
             </thead>

@@ -24,13 +24,26 @@ beforeEach(() => {
 });
 
 describe("/videos", () => {
-  it("lists each video with its article and plays it in place only when asked", async () => {
-    await open();
+  it("lists each video with its article, emits VideoObject JSON-LD, and plays in place only when asked", async () => {
+    const { container } = await open();
     const card = screen.getByRole("listitem");
     expect(within(card).getByRole("heading", { name: "影片 a" })).toBeTruthy();
+    expect(within(card).getByRole("link", { name: "影片 a" }).getAttribute("href")).toBe("/videos/a");
     expect(within(card).getByText("教學")).toBeTruthy();
     expect(within(card).getByRole("link", { name: "看文章版" }).getAttribute("href")).toBe("/life/cursor-editor-guide");
     expect(card.querySelector("iframe")).toBeNull();
+    const graphs = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap((script) => JSON.parse(script.textContent ?? "[]"));
+    const videoGraph = graphs.find((graph: Record<string, unknown>) => graph["@type"] === "VideoObject");
+    expect(videoGraph).toMatchObject({
+      "@type": "VideoObject",
+      name: "影片 a",
+      thumbnailUrl: "https://i.ytimg.com/vi/abcdefghijk/hqdefault.jpg",
+      uploadDate: "2026-10-01T00:00:00Z",
+      contentUrl: "https://www.youtube.com/watch?v=abcdefghijk",
+      embedUrl: "https://www.youtube-nocookie.com/embed/abcdefghijk",
+      inLanguage: "zh-TW",
+    });
+    expect(videoGraph.mainEntityOfPage).toContain("/zh-TW/life/cursor-editor-guide");
     fireEvent.click(within(card).getByRole("button", { name: "播放「影片 a」" }));
     expect(card.querySelector("iframe")?.getAttribute("src")).toBe("https://www.youtube-nocookie.com/embed/abcdefghijk?autoplay=1&rel=0");
   });

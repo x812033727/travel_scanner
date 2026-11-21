@@ -8,16 +8,16 @@ import { craftProblems } from "./craft.mjs";
 import { curioProblems, curioWarnings, isCurio, pacingWarnings } from "./curio.mjs";
 import { cohostProblems, cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainer, isExplainerPreset, isNarratedExplainer, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
-import { DEFAULT_CADENCE, isNarrated, isStorySeries, MANGA_HOOK_GAP_SECONDS, narrativeProblems, shotHookProblems, TIGHT_CADENCE } from "./narrative.mjs";
+import { DEFAULT_CADENCE, isNarrated, isStorySeries, MANGA_HOOK_GAP_SECONDS, narrativeProblems, readsTenStepPanel, shotHookProblems, TIGHT_CADENCE } from "./narrative.mjs";
 import { isA01CompactStory, isC08ApprovedShortStory, isC20ApprovedShortStory } from "./duration.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription, youtubeWarnings } from "./metadata.mjs";
 import { DEFAULT_TARGET_MINUTES, TARGET_LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
 import { isEverydayStory, isStory, storyCuteVisualProblems, storyProblems } from "./story.mjs";
 import { DEFAULT_CPM, FPS, chapterList, checkChapters, estimateTimeline, formatClock, frameToSeconds, spokenUnits } from "./timeline.mjs";
 import { metadataStatus, namedWith } from "./translations.mjs";
-import { headlineCount, TEMPLATE_SPECS, THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX, thumbnailVariants } from "../templates/templates.mjs";
+import { headlineCount, TEMPLATE_SPECS, THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX, THUMB_HEIMAO_LAYOUTS, thumbnailVariants } from "../templates/templates.mjs";
 import { isScreencast, screencastSceneProblems } from "../screencast/steps.mjs";
-import { atPhoneWidth, CHANNEL_RULES_LOCALE, headlineSizeEstimate, headlineSplitWords, MIN_HEADLINE_PX_AT_PHONE, PHONE_WIDTH, TITLE_HEAD_CHARS, TITLE_OVERLAP_MAX, titleOverlap } from "../qa/thumbnail.mjs";
+import { atPhoneWidth, CHANNEL_RULES_LOCALE, HEADLINE, HEIMAO_HEADLINE_MAX, headlineRule, headlineSizeEstimate, headlineSplitWords, isHeimaoRule, MIN_HEADLINE_PX_AT_PHONE, PHONE_WIDTH, TITLE_HEAD_CHARS, TITLE_OVERLAP_MAX, titleOverlap } from "../qa/thumbnail.mjs";
 import { thumbnailSeries } from "../render/plan.mjs";
 import { ANIME_BODY_TOLERANCE_SECONDS, hasAnimePolicy, isLongAnime, runtimePolicyHash, validateAnimePolicy } from "./anime-policy.mjs";
 import { isCompilation } from "./compilation.mjs";
@@ -402,19 +402,29 @@ export function mangaShotLengthProblems(doc, timeline) {
  */
 export function thumbnailHeadlineProblems(doc) {
   const problems = [];
-  if (!doc.thumbnail || thumbnailSeries(doc) !== null || narrationLocale(doc) !== CHANNEL_RULES_LOCALE) return problems;
+  if (!doc.thumbnail || narrationLocale(doc) !== CHANNEL_RULES_LOCALE) return problems;
+  const series = thumbnailSeries(doc);
   const title = isCompilation(doc) ? null : doc.youtube?.title ?? null;
   const own = [{ path: "thumbnail", thumbnail: doc.thumbnail }, ...thumbnailVariants(doc.thumbnail).map(({ id, thumbnail }) => ({ path: `thumbnail.variants (${id})`, thumbnail }))];
   for (const { path, thumbnail } of own) {
+    const layout = thumbnail.data?.layout ?? null;
+    if (series !== null && !THUMB_HEIMAO_LAYOUTS.includes(layout)) continue;
     const headline = thumbnail.data?.headline;
     if (typeof headline !== "string" || !headline.trim()) continue;
     const warn = (message) => problems.push({ path, message });
-    const { count, words } = headlineCount(headline);
-    if (count > THUMB_HEADLINE_MAX) warn(`the headline counts ${count} characters (a Latin word or a number counts one); at most ${THUMB_HEADLINE_MAX} read at a glance, so say one thing in six (qa fails it)`);
-    if (words.length > THUMB_HEADLINE_WORDS_MAX) warn(`the headline has ${words.length} Latin words or numbers (${words.join(", ")}); at most ${THUMB_HEADLINE_WORDS_MAX} fit the column (qa fails it)`);
-    const split = headlineSplitWords(headline);
-    if (split.length) warn(`a line break falls inside the word ${split.map(({ word }) => `「${word}」`).join(", ")}; put \\n where a word ends (qa fails it)`);
-    const px = atPhoneWidth(headlineSizeEstimate(headline));
+    const rule = headlineRule(series, layout);
+    if (rule === HEADLINE) {
+      const { count, words } = headlineCount(headline);
+      if (count > THUMB_HEADLINE_MAX) warn(`the headline counts ${count} characters (a Latin word or a number counts one); at most ${THUMB_HEADLINE_MAX} read at a glance, so say one thing in six (qa fails it)`);
+      if (words.length > THUMB_HEADLINE_WORDS_MAX) warn(`the headline has ${words.length} Latin words or numbers (${words.join(", ")}); at most ${THUMB_HEADLINE_WORDS_MAX} fit the column (qa fails it)`);
+      const split = headlineSplitWords(headline);
+      if (split.length) warn(`a line break falls inside the word ${split.map(({ word }) => `「${word}」`).join(", ")}; put \\n where a word ends (qa fails it)`);
+    } else if (isHeimaoRule(rule)) {
+      const { count } = headlineCount(headline);
+      if (headline.includes("\n")) warn("the heimao look takes the headline on one top line (put the second line in sub); remove the line break (qa fails it)");
+      if (count > HEIMAO_HEADLINE_MAX) warn(`the headline counts ${count} characters (a Latin word or a number counts one); the heimao look reads at most ${HEIMAO_HEADLINE_MAX} on one top line, so shorten it (qa fails it)`);
+    }
+    const px = atPhoneWidth(headlineSizeEstimate(headline, rule));
     if (px < MIN_HEADLINE_PX_AT_PHONE) warn(`the headline shrinks to about ${px} px at ${PHONE_WIDTH} px wide; at least ${MIN_HEADLINE_PX_AT_PHONE} px reads on a phone, so shorten it (qa fails it)`);
     if (typeof title === "string" && title.trim()) {
       const { shared, ratio } = titleOverlap(headline, title);
@@ -519,11 +529,13 @@ export function lintVideo(doc, context = {}) {
   const opening = chapters[0]?.seconds;
   // A brand story, a 奇聞檔案局 episode and a narrator's explainer are narrated and open on their
   // hook and promise even when their pictures have a cast (such as the series' silent researcher).
-  if (opening !== undefined && hasCast(doc) && !isStory(context.series) && !isStorySeries(doc) && !isNarratedExplainer(doc)) {
+  // 原來如此's dialogue episodes have a cast but open on the ten steps' hook and promise (2026-11-19).
+  if (opening !== undefined && hasCast(doc) && !isStory(context.series) && !isStorySeries(doc) && !readsTenStepPanel(doc) && !isNarratedExplainer(doc)) {
     if (opening > DRAMA_HOOK_SECONDS) warn("scenes[0]", `the opening chapter runs about ${Math.round(opening)} s; the hook should land within ${DRAMA_HOOK_SECONDS} s`);
   } else if (opening !== undefined && !isCompilation(doc) && episodeLengthForNarrative) {
     // Read on an episode only, as episodeScriptProblems is: the examples run seconds.
-    if (isStorySeries(doc) || isStory(context.series)) {
+    // 原來如此 reads the same ten-step opening since 2026-11-19 (narrative.mjs readsTenStepPanel).
+    if (isStorySeries(doc) || isStory(context.series) || readsTenStepPanel(doc)) {
       const [shortest, longest] = STORY_OPENING_CHAPTER_SECONDS;
       if (opening < shortest || opening > longest) warn("scenes[0]", `the opening chapter runs about ${Math.round(opening)} s; in this series it is the hook and the promise, ${shortest} to ${longest} s: a question or a situation the viewer knows, how big it ended up against how small it started, at most two climaxes named and never the plot, then 「今天我們就來聊聊…」 and the question the episode answers (script-writing.md §奇聞檔案局與品牌故事的架構)`);
     } else {
@@ -554,7 +566,8 @@ export function lintVideo(doc, context = {}) {
     for (const problem of episodeScriptProblems(doc, timeline, { outroCount: !isExplainer(doc) })) warn(problem.path, problem.message);
     // A brand story and a 奇聞檔案局 episode are held by the narration alone, so they keep a hook
     // inside every 45 s and plant eight loops for ten minutes (narrative.mjs TIGHT_CADENCE).
-    const cadence = isStory(context.series) || isCurio(doc) ? TIGHT_CADENCE : DEFAULT_CADENCE;
+    // 原來如此事務所 keeps the same cadence since its episodes follow the ten steps (owner, 2026-11-19).
+    const cadence = isStory(context.series) || isCurio(doc) || /^sothatswhy-/.test(doc.slug ?? "") ? TIGHT_CADENCE : DEFAULT_CADENCE;
     const story = narrativeProblems(doc, timeline, { minutes, cadence });
     for (const problem of story.errors) error(problem.path, problem.message, problem.kind);
     for (const problem of story.warnings) warn(problem.path, problem.message, problem.kind);

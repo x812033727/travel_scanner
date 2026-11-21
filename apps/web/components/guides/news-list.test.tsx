@@ -1,5 +1,7 @@
 import { render, screen, within } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import * as intl from "next-intl";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { locales } from "@/i18n/routing";
 import type { GuideSummary } from "@/lib/guides";
 import { NewsList } from "./news-list";
 
@@ -9,6 +11,23 @@ const story = (slug: string, title: string, news_date: string | null, published_
 });
 
 describe("the news list", () => {
+  afterEach(() => vi.restoreAllMocks());
+
+  it.each(locales)("links channel, lead and compact rows to the %s article documents", (locale) => {
+    vi.spyOn(intl, "useLocale").mockReturnValue(locale);
+    const articles: GuideSummary[] = [
+      story("story", "Story", "2026-11-18"),
+      { ...story("report", "Report", "2026-11-17"), kind: "intel" },
+      { ...story("explainer", "Explainer", null), kind: "howto" },
+    ];
+    const hrefs = () => screen.getAllByRole("link").map((link) => link.getAttribute("href"));
+    const expected = [`/${locale}/life/story`, `/${locale}/guides/intel/report`, `/${locale}/guides/howto/explainer`];
+    const { rerender } = render(<NewsList articles={articles} channelFront />);
+    expect(hrefs()).toEqual(expected);
+    rerender(<NewsList articles={articles} leadHeading="h3" />);
+    expect(hrefs()).toEqual(expected);
+  });
+
   it("draws one line per story: the day the news happened, then the title as a link, in the order given", () => {
     render(
       <NewsList
@@ -22,7 +41,7 @@ describe("the news list", () => {
     expect(rows).toHaveLength(2);
     expect(rows.map((row) => row.querySelector("time")?.getAttribute("dateTime"))).toEqual(["2026-09-14", "2026-09-12"]);
     expect(rows[0].querySelector("time")?.textContent).toBe("2026-09-14");
-    expect(within(rows[0]).getByRole("link", { name: "Siri AI 隨 iOS 27 推出" }).getAttribute("href")).toBe("/life/ai-news-siri-20260914");
+    expect(within(rows[0]).getByRole("link", { name: "Siri AI 隨 iOS 27 推出" }).getAttribute("href")).toBe("/zh-TW/life/ai-news-siri-20260914");
   });
 
   it("shows the news day, never the publication time, and no description or position", () => {
@@ -45,5 +64,75 @@ describe("the news list", () => {
   it("draws nothing without a story", () => {
     const { container } = render(<NewsList articles={[]} />);
     expect(container.innerHTML).toBe("");
+  });
+
+  it("previews the first story and only shows artwork suitable for readers", () => {
+    const first = story("first", "First story", "2026-11-18");
+    const second = story("second", "Second story", "2026-11-17");
+    const hero = { src: "/guides/first/hero.jpg", width: 640, height: 360, alt: "Editorial diagram", credit: null };
+    const { rerender } = render(<NewsList articles={[{ ...first, hero }, second]} leadHeading="h3" />);
+    const link = screen.getByRole("link", { name: first.title });
+    expect(within(link).getByRole("heading", { level: 3 }).textContent).toBe(first.title);
+    expect(within(link).getByText(first.description)).toBeTruthy();
+    expect(link.querySelector("img")?.getAttribute("src")).toBe(hero.src);
+    expect(screen.queryByText(second.description)).toBeNull();
+
+    rerender(<NewsList articles={[{ ...first, hero: { ...hero, src: "/guides/news-assets/placeholder.jpg" } }]} leadHeading="h3" />);
+    expect(screen.getByRole("link", { name: first.title }).querySelector("img")).toBeNull();
+    rerender(<NewsList articles={[{ ...first, news_date: null }]} leadHeading="h3" />);
+    expect(screen.queryByRole("heading")).toBeNull();
+  });
+
+  it("gives a photo-free channel a lead and two supporting headlines while keeping its full chronological wire", () => {
+    const stories = [
+      story("lead", "頭條", "2026-11-18"),
+      story("second", "第二則", "2026-11-17"),
+      story("third", "第三則", "2026-11-17"),
+      story("fourth", "第四則", "2026-11-16"),
+      story("sources", "資料來源", null),
+    ];
+    const { rerender } = render(<NewsList articles={stories} channelFront showDescription />);
+    const list = within(screen.getByRole("list"));
+    expect(list.getAllByRole("heading").map((heading) => [heading.tagName, heading.textContent])).toEqual([
+      ["H2", "頭條"], ["H3", "第二則"], ["H3", "第三則"],
+    ]);
+    expect(list.getAllByRole("link").map((link) => link.textContent)).toEqual(stories.map((item) => item.title));
+    expect(list.queryByRole("img")).toBeNull();
+    for (const item of stories) expect(list.getByText(item.description)).toBeTruthy();
+
+    rerender(<NewsList articles={stories} channelFront />);
+    expect(screen.queryByText(stories[3].description)).toBeNull();
+    expect(screen.getByText(stories[1].description)).toBeTruthy();
+  });
+
+  it("uses each headline's own editorial image with its dimensions and suppresses synthetic covers", () => {
+    const lead = story("lead", "Lead", "2026-11-18");
+    const second = story("second", "Second", "2026-11-17");
+    const third = story("third", "Third", "2026-11-16");
+    const cover = { src: "/guides/lead/chart.jpg", alt: "Weekly price chart", width: 1600, height: 900, credit: null };
+    const otherCover = { ...cover, src: "/guides/second/camera.png", alt: "Camera module", width: 1280, height: 720 };
+    render(<NewsList channelFront articles={[
+      { ...lead, hero: cover },
+      { ...second, hero: otherCover },
+      { ...third, hero: { ...cover, src: "/guides/news-assets/third-hero.webp" } },
+    ]} />);
+    const images = screen.getAllByRole("img");
+    expect(images.map((image) => [image.getAttribute("src"), image.getAttribute("alt"),
+      image.getAttribute("width"), image.getAttribute("height"), image.getAttribute("loading")])).toEqual([
+      [cover.src, cover.alt, "1600", "900", "eager"],
+      [otherCover.src, otherCover.alt, "1280", "720", "lazy"],
+    ]);
+    expect(screen.getAllByRole("link")).toHaveLength(3);
+  });
+
+  it("keeps undated rows intact and promotes only dated headlines for a mixed or older list", () => {
+    const reference = story("sources", "資料來源", null);
+    const later = story("story", "最新消息", "2026-11-18");
+    const { rerender } = render(<NewsList articles={[reference, later]} channelFront />);
+    expect(screen.getByRole("heading", { level: 2 }).textContent).toBe(later.title);
+    expect(screen.getAllByRole("link").map((link) => link.textContent)).toEqual([reference.title, later.title]);
+    rerender(<NewsList articles={[reference, { ...later, news_date: undefined }]} channelFront />);
+    expect(screen.queryByRole("heading")).toBeNull();
+    expect(screen.queryByText(reference.description)).toBeNull();
   });
 });

@@ -11,9 +11,11 @@ import { SavedItemsProvider } from "@/components/saved-items-provider";
 import { SiteFooter } from "@/components/site-footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteVisibilityProvider } from "@/components/site-visibility-provider";
+import { DiscoveryStatusProvider } from "@/components/discovery-status-provider";
 import { UsageCatalogProvider } from "@/components/usage-catalog-provider";
 import { CommunityProvider } from "@/components/community/provider";
 import { getCommunityState } from "@/lib/community/server";
+import { getDiscoveryStatus } from "@/lib/discovery-status.server";
 import { AnalyticsProvider } from "@/components/analytics-provider";
 import { PrivateRouteIsolation } from "@/components/private-route-isolation";
 import { ThirdPartyAudience } from "@/components/third-party-audience";
@@ -111,13 +113,14 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
 export default async function LocaleLayout({ children, params, ads }: Props) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
-  const [messages, siteVisibility, usageCatalog, requestHeaders, jar, community] = await Promise.all([
+  const [messages, siteVisibility, usageCatalog, requestHeaders, jar, community, discovery] = await Promise.all([
     getMessages(),
     getSiteVisibility(),
     getUsageCatalog(locale),
     headers(),
     cookies(),
     getCommunityState(),
+    getDiscoveryStatus(),
   ]);
   // Nobody carrying a session cookie means nobody to ask about. Both providers below
   // used to find that out by sending a request that could only come back 401, on every
@@ -146,6 +149,7 @@ export default async function LocaleLayout({ children, params, ads }: Props) {
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
           <SiteVisibilityProvider state={siteVisibility}>
+          <DiscoveryStatusProvider initialEnabled={discovery.enabled}>
             <UsageCatalogProvider state={usageCatalog}>
               <AnalyticsProvider>
                 <TravelpayoutsDrive enabled={travelpayoutsDriveEnabled} />
@@ -179,6 +183,7 @@ export default async function LocaleLayout({ children, params, ads }: Props) {
                 </HeaderSessionProvider>
               </AnalyticsProvider>
             </UsageCatalogProvider>
+          </DiscoveryStatusProvider>
           </SiteVisibilityProvider>
           </ThemeProvider>
         </NextIntlClientProvider>

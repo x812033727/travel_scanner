@@ -1,0 +1,274 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-17",
+  "status": "TOPIC_APPEAL_REFERENCE_NOT_FINAL_CUT_REVIEW",
+  "owner_request": "站主 2026-11-17 問「還有繼續有效率的擴充嗎」，選「先評 444 題，再改包裝」：這 444 題評分後總分 6.0–6.5 的單集題改包裝。",
+  "candidates_method": {
+    "scope": "總分 6.0–6.5 的入選單集題改包裝後的複評，第 10 輪 19 題：question、hook、payoff 由未參與研究與評分的改寫編輯重寫（問句 40–110 字、一個問號），事實與來源不動，新文字的數字與專名都在原題卡裡。複評的五項平均比原分高 0.5 以上（第 1–3 輪是「較高即採用」）的 10 題採用新包裝並以這份分數為準；其餘維持原文與原分。",
+    "persona": "台灣 25–45 歲、喜歡歷史懸案／奇聞／都市傳說長片的一般觀眾",
+    "card_fields": "題目、完整問題、開場鉤子、這集會揭曉（前 260 字）、畫面",
+    "reviewers": "兩位新評審各評一次，並放進同六題錨點；不讀 repo、不上網。各自用錨點平均與基準錨點平均的差扣掉鬆緊，再取兩人平均。五項欄位是兩人的原始平均，score 是校正後的五項平均；併入需求的總分由 build 計算。",
+    "sample_anchors": {
+      "P09": [
+        8.1,
+        8.3
+      ],
+      "N384": [
+        6.9,
+        7.5
+      ],
+      "N2843": [
+        5.4,
+        5.7
+      ],
+      "N2181": [
+        7.0,
+        7.3
+      ],
+      "N3266": [
+        5.2,
+        5.0
+      ],
+      "N142": [
+        7.2,
+        7.2
+      ]
+    },
+    "baseline_anchor_mean": 6.858,
+    "sample_offsets": {
+      "zr10-a": -0.32,
+      "zr10-b": -0.14
+    },
+    "caveat": "第 10–13 輪的題都是 reviews/audience-20261117-unscored.json 第一次評分落在 6.0–6.5 的題，第一次改包裝，規則同第 8、9 輪（REWRITE2.md：可沿用原問句裡的主題名稱、地名與身分稱呼，逐題記在批次檔的 notes；數字、最高級與情節仍只能用查核內容裡有的）。每批除了六題錨點，另放 8 題沒改動的對照題一起校正。改寫交稿後主編刪去兩處查核內容沒有的時間（N303 的年份與日期、N2983 的「20 世紀初」）。H36 是舊題庫的題、不在批次檔裡，沒有送改。",
+    "not_adopted": {
+      "N2663": {
+        "previous": 7.58,
+        "rescored": 7.43
+      },
+      "N2623": {
+        "previous": 7.11,
+        "rescored": 7.13
+      },
+      "N5545": {
+        "previous": 7.3,
+        "rescored": 7.38
+      },
+      "N2582": {
+        "previous": 7.33,
+        "rescored": 7.38
+      },
+      "N5181": {
+        "previous": 7.41,
+        "rescored": 7.28
+      },
+      "N105": {
+        "previous": 7.08,
+        "rescored": 7.28
+      },
+      "N4403": {
+        "previous": 7.47,
+        "rescored": 7.78
+      },
+      "N6005": {
+        "previous": 7.26,
+        "rescored": 7.48
+      },
+      "N1844": {
+        "previous": 7.35,
+        "rescored": 6.88
+      }
+    }
+  },
+  "candidates": [
+    {
+      "id": "N5501",
+      "rank": 1,
+      "of": 400,
+      "score": 8.68,
+      "raw": 8.45,
+      "click": 8.25,
+      "hook": 8.5,
+      "surprise": 8.75,
+      "payoff": 8.25,
+      "share": 8.5,
+      "comment": "撞傷要賠撞死免賠還起訴火車頭，荒謬到想轉",
+      "previous": {
+        "score": 7.51,
+        "comment": "沒收火車頭、撞死免賠太荒謬，題目太長。",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "把判例名與年份串拿掉，只留『撞傷要賠、撞死免賠＋沒收火車頭』這組反常當題目。"
+      }
+    },
+    {
+      "id": "N5424",
+      "rank": 2,
+      "of": 400,
+      "score": 8.58,
+      "raw": 8.35,
+      "click": 8.25,
+      "hook": 8.25,
+      "surprise": 8.75,
+      "payoff": 8.25,
+      "share": 8.25,
+      "comment": "假住戶抓抄襲卻輸官司，反轉漂亮想分享",
+      "previous": {
+        "score": 7.52,
+        "comment": "假人名抓到抄襲反而輸掉版權，反轉漂亮，可惜標題太長",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "刪掉三個案子串成的長句，只留『抓到抄襲卻輸了』這一個反轉當題目，其餘兩案放進 payoff。"
+      }
+    },
+    {
+      "id": "N5765",
+      "rank": 3,
+      "of": 400,
+      "score": 8.38,
+      "raw": 8.15,
+      "click": 8.0,
+      "hook": 8.5,
+      "surprise": 8.0,
+      "payoff": 8.25,
+      "share": 8.0,
+      "comment": "麥田選出兩名議員五百年，腐敗選區荒謬又好懂",
+      "previous": {
+        "score": 7.2,
+        "comment": "沒人住的麥田選出國會議員還出首相，荒謬到想轉",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "刪掉搬遷理由與首相、法案的長串，題目只問『空城怎麼還在選議員』，麥田帳篷當 hook。"
+      }
+    },
+    {
+      "id": "N3863",
+      "rank": 4,
+      "of": 400,
+      "score": 7.83,
+      "raw": 7.6,
+      "click": 7.75,
+      "hook": 7.5,
+      "surprise": 7.75,
+      "payoff": 7.75,
+      "share": 7.25,
+      "comment": "冒牌男爵連母親都認，刺青定案很有戲劇性",
+      "previous": {
+        "score": 7.15,
+        "comment": "屠夫冒充男爵很戲劇，刺青定案的收尾滿意。",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "刪掉地名、船名與判決引文，題目只留『母親認了，卻輸給一個不存在的刺青』。"
+      }
+    },
+    {
+      "id": "N5762",
+      "rank": 5,
+      "of": 400,
+      "score": 7.73,
+      "raw": 7.5,
+      "click": 7.5,
+      "hook": 7.5,
+      "surprise": 7.75,
+      "payoff": 7.75,
+      "share": 7.0,
+      "comment": "吹牛男爵名場面英文版沒有，作者還是越獄賊",
+      "previous": {
+        "score": 7.23,
+        "comment": "經典名場面不是原版，作者還是通緝犯，夠狗血",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "把作者身世與揭密史從題目移走，題目只留兩個名場面『不在英文版』這個反常。"
+      }
+    },
+    {
+      "id": "N2524",
+      "rank": 6,
+      "of": 400,
+      "score": 7.68,
+      "raw": 7.45,
+      "click": 7.25,
+      "hook": 7.25,
+      "surprise": 7.75,
+      "payoff": 7.75,
+      "share": 7.25,
+      "comment": "惡作劇整教授的假銅牌，人性尷尬很好看",
+      "previous": {
+        "score": 7.18,
+        "comment": "惡作劇騙倒教授還留螢光暗號，像推理片",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "把切入點從『成分年代』換成『是朋友的惡作劇』，螢光暗號提到 hook，hook 刪掉查核內容沒有的『多數加州史家接受』。"
+      }
+    },
+    {
+      "id": "N129",
+      "rank": 7,
+      "of": 400,
+      "score": 7.58,
+      "raw": 7.35,
+      "click": 7.0,
+      "hook": 7.25,
+      "surprise": 7.25,
+      "payoff": 8.0,
+      "share": 7.25,
+      "comment": "聰明漢斯連破案者都中招，反轉漂亮又有啟發",
+      "previous": {
+        "score": 7.05,
+        "comment": "聰明漢斯故事完整好看，但很多人早就聽過",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "把『連破解者自己也會提示』往前放，刪掉查核內容沒有的 13 人與 98%／8%。"
+      }
+    },
+    {
+      "id": "N4181",
+      "rank": 8,
+      "of": 400,
+      "score": 7.58,
+      "raw": 7.35,
+      "click": 7.5,
+      "hook": 7.5,
+      "surprise": 7.5,
+      "payoff": 7.25,
+      "share": 7.0,
+      "comment": "曼德拉草尖叫人人知道，原來根本不是它很新鮮",
+      "previous": {
+        "score": 7.02,
+        "comment": "哈利波特曼德拉草找源頭，綁狗原來是別的根很有趣",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "把四段文獻比對收成『綁狗原本是別的根』一個反轉，叫聲與 Gerard 留在 payoff。"
+      }
+    },
+    {
+      "id": "N2983",
+      "rank": 9,
+      "of": 400,
+      "score": 7.58,
+      "raw": 7.35,
+      "click": 7.5,
+      "hook": 8.0,
+      "surprise": 7.0,
+      "payoff": 7.25,
+      "share": 7.0,
+      "comment": "火腿骨打中牧師帽太有畫面，鬧鬼判毀損好笑",
+      "previous": {
+        "score": 6.62,
+        "comment": "鬧鬼變少年毀損案，後來上台拆招魂很有梗",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "刪掉判決刑期與上訴細節，題目只留『飛馬鈴薯變成毀損案』這一個反差，旁聽券當 hook。（主編刪去查核內容沒有的「20 世紀初」）"
+      }
+    },
+    {
+      "id": "N5602",
+      "rank": 10,
+      "of": 400,
+      "score": 7.53,
+      "raw": 7.3,
+      "click": 7.0,
+      "hook": 7.5,
+      "surprise": 7.5,
+      "payoff": 7.75,
+      "share": 6.75,
+      "comment": "逃犯每天走進海裡喊話很怪，城鎮踢皮球好笑",
+      "previous": {
+        "score": 7,
+        "comment": "重罪犯合法出國和踢皮球超荒謬，但題目太長",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "刪掉四十天、門環、法令編號等細節，題目只留『合法出國→突然禁止→城鎮踢皮球』，長弓手理由留給答案。"
+      }
+    }
+  ]
+}

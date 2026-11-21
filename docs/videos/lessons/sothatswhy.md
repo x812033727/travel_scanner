@@ -7,6 +7,21 @@
 
 這份會自動同步到雲端硬碟 `AI劇/原來如此事務所/_規則與教訓/教訓/教訓.md`（docs/videos/rules-sync）。
 
+## 2026-11-19 · 站主定：開場鉤子禁疊「問題菜單」、開頭不放片頭
+- **標題照黑貓公式，工具會檢查**：大家認得的名字放前面、一個利害或意外的字、數字（原來如此有用才加）、一個問號、後綴前 30 字內、重點在前 18 字（手機截斷處）、不跟縮圖大字重複（`narrative.mjs` `titleProblems`）。舊集改標題的交付表在 `docs/videos/packaging-refresh-20261111/`，由站主在 Studio 或主機指令換。
+- **前 300 秒觀眾審查（硬性關卡）**：警告擋不住，所以配音前加一關：三位獨立讀者用三種觀眾身分（路人、滑手機的人、挑剔的老觀眾）讀前 300 秒，三位都 ≥ 8.5、不滑走、沒有任何問題才可以 `tts`。預設由製作中的 AI 自己派三個全新子代理（`--record`，不花站台額度，作者不能當讀者）；要多一層保險就用 `--ask` 讓站台的模型跑。多人比一人好：每個身分抓的問題不一樣。
+- **盲評改用黑貓十步的題目**：原來如此原本的說故事盲評還是舊的「開場濃縮」版，要求開場丟出至少三個後面才揭曉的時刻，等於鼓勵問題菜單。現在三個系列共用同一套題目（`narrative.mjs` `readsTenStepPanel`），開場那題寫明只用一個問句或情境。舊集已經通過的盲評會顯示為過期，只在重做時重評。
+- **開頭 15 秒接上縮圖**：觀眾是看了縮圖和標題才點進來的，開頭 15 秒沒聽到那件事，就會以為點錯（原來如此 QR Code 那集前 15 秒流失約四成）。lint：`narrative.mjs` `thumbnailEchoProblems`。現有 91 集裡有 38 集被抓到，例如 curio-s27 縮圖寫「維京盔沒有角」，開頭卻在講挪威農家挖地。
+- **開場只問一個問題**：開場連丟「為什麼…？為什麼…？那…呢？」三個以上問題，聽起來是在念這集的菜單，不是鉤子。照黑猫研究院，開場只拋一個觀眾熟悉的問題或情境（小問最多追問一句）→ 反差 → 承諾句；其他問題留給各章小問的錯誤直覺打開。lint：`narrative.mjs` `questionMenuProblems`，開場（第一章、最多 90 秒）扣掉承諾句的問句超過 2 句即警告。
+- **開頭不放片頭，第一句直接開始**：新集 `0:00` 就是第一句對白，片尾照舊；工具已預設 `intro_at: "none"`（`core/branding.mjs` `noIntroSeries`）。範本已改：`docs/videos/so-thats-why/dialogue-pilot-20261103/README.md`。
+
+## 2026-11-18 · sothatswhy-g05 · 對標黑猫研究院（`@qiqiqushi0`）補強對白去法條但書化、禁用萬用道具與 `beat-motion-v5` 停頓快推運鏡
+對比黑猫研究院日常標準／收費機制高點閱長片與本系列稿件（如 G05），同步落地三項完播率與視覺重音規則：
+- **對白不唸法條但書與「查不到／沒有公布」，改演人的兩難與工程取捨**：像「現行電業法規寫著…」「翻遍年報也找不到…」「沒有公布…費」這類防禦性保留語一進對白就會把推理變成法規簡報。精準法條適用範圍、年報附註與未公開細目一律收進 `claims.md` 與 `youtube.description`；所長與小問的對白只聚焦「工程師或店家當年卡在哪個物理／成本兩難、出了哪一招解決、觀眾手上那件東西因此長成什麼樣」（`narrative.mjs` `caveatRecitationProblems` 全集超過 1 句即警告）。
+- **無字機制鏡禁用萬用「鼓扁錢包／空白厚書」充數，同類上限 2 鏡**：`45%–65%` 的 `"nobody": true` 機制鏡必須畫該題真正的無字實體結構、剖面或幾何對照（如晶片天線線圈、雙金屬片跳脫、墨水匣晶片觸點、條碼寬窄條垂直投影），`purse`／`wallet` 與 `thick/plain-covered book` 全集同類最多 **2 鏡**（`curio.mjs` `genericPropWarnings` 達 3 鏡即警告）。
+- **合成運鏡 `still_motion: "beat"` 升級為 `beat-motion-v5`（停 0.8 秒＋快推 2.2 秒）**：`tools/video/assemble/drama.mjs` 將靜圖運鏡從全程勻速滑行（`slow_share` `0.580`）改為先停 24 格（0.8 秒）看清圖解構圖、再用 66 格（2.2 秒）完成 `zoom: 0.22`／`panZoom: 1.2` 快推或橫移到關鍵零件並停住接 15 格淡化；1080p 實測 `slow_share` 降至 **`0.059`**（≤ 0.30 達標）、`mean_difference` **`5.78`**，讓無字機制圖在關鍵句落點有明確的視覺重拍。
+- 已升為規則：`tools/video/core/narrative.mjs`、`tools/video/core/curio.mjs`、`tools/video/assemble/drama.mjs`、`.agents/skills/youtube-video/references/script-writing.md`、`.agents/skills/producer/references/pace-targets.md`。
+
 ## 2026-11-14 · sothatswhy-p12-qr-code · 鎖死所長與小問 V2 2.5 頭身標準設定圖、移除耳後鉛筆與 45%–65% 無人機制鏡配比
 站主反映「別的對話畫得怪怪的，原來如此系列幫我確定人的造型；也不一定每一個畫面都要有人；奇聞是另外一個造型的人，兩系列不同」：
 - **為什麼別的對話會畫怪**：`docs/videos/so-thats-why/series-sheets/characters/` 裡原本只有 P14 時期的兩張舊 MiniMax 設定圖（`judge.passed: false`：所長耳後黃鉛筆畫成耳垂吊飾、小問是半閉豆豆眼與無指圓手），且改用「劇場級動畫光影 × 厚塗水粉」Prompt 後，若沒傳高品質 V2 設定圖或漏寫 `2.5-head chibi`，模型會自動把角色拉成 6–7 頭身寫實青年，甚至與《奇聞檔案局》撞臉。

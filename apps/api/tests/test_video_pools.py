@@ -21,7 +21,14 @@ from app.models import User
 from app.problems import AppError, app_error_handler
 from app.video_pools import catalog
 from app.video_pools.router import router
-from app.video_pools.schemas import EpisodePage, ExpansionPage, PoolOverview, ThemeDetail, ThemePage
+from app.video_pools.schemas import (
+    CorePage,
+    EpisodePage,
+    ExpansionPage,
+    PoolOverview,
+    ThemeDetail,
+    ThemePage,
+)
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 URL = "/api/v1/admin/video-pools"
@@ -159,6 +166,92 @@ async def test_missing_or_invalid_bundle_fails_closed(
         response = await client.get(URL)
     assert response.status_code == 503
     assert response.json()["code"] == "video_pools_unavailable"
+
+
+BRAND = "W-商業與品牌奇聞"
+
+
+def test_packaged_cores_match_the_committed_pool() -> None:
+    bundle = catalog.load_bundle()
+    for series in bundle.series:
+        pool = json.loads((REPO_ROOT / POOL_DIRS[series.key] / "pool.json").read_text())
+        source = {
+            row["id"]: row
+            for row in pool["candidates"]
+            if row.get("selected") and (row.get("editorial") or {}).get("role") == "episode_core"
+        }
+        assert {core.id for core in series.cores} == set(source)
+        for core in series.cores:
+            assert core.question == source[core.id]["question"]
+            if core.audience is not None:
+                assert core.audience.score == source[core.id]["audience"]["score"]
+    curio = next(series for series in bundle.series if series.key == "curio")
+    assert curio.counts.cores_passing > 0
+    assert any(core.category == BRAND for core in curio.cores)
+
+
+async def test_cores_default_to_the_ones_over_the_gate_in_rank_order() -> None:
+    async with _client(_app()) as client:
+        response = await client.get(f"{URL}/curio/cores", params={"page_size": 100})
+        second = await client.get(f"{URL}/curio/cores", params={"page_size": 100, "page": 2})
+    page = CorePage.model_validate_json(response.content)
+    minimum = next(s for s in catalog.load_bundle().series if s.key == "curio").audience_min
+    assert page.items and all(i.audience and i.audience.score >= minimum for i in page.items)
+    ranks = [item.audience.rank for item in page.items if item.audience]
+    assert ranks == sorted(ranks)
+    later = CorePage.model_validate_json(second.content)
+    assert page.total == later.total > 100
+    assert not {item.id for item in page.items} & {item.id for item in later.items}
+    # 商業與品牌奇聞沒有長題案，只在這裡出現；分類選單要列得出它。
+    assert BRAND in {facet.category for facet in page.categories}
+
+
+async def test_cores_need_the_read_capability() -> None:
+    async with _client(_app("support")) as client:
+        refused = await client.get(f"{URL}/curio/cores")
+    async with _client(_app(None, authenticated=False)) as client:
+        anonymous = await client.get(f"{URL}/curio/cores")
+    assert (refused.status_code, anonymous.status_code) == (403, 401)
+
+
+async def test_cores_filter_by_category_status_score_and_text() -> None:
+    async with _client(_app()) as client:
+        brand = await client.get(f"{URL}/curio/cores", params={"category": BRAND})
+        unscored = await client.get(f"{URL}/curio/cores", params={"status": "unscored"})
+        everything = await client.get(f"{URL}/curio/cores", params={"status": "all"})
+        scored = await client.get(f"{URL}/curio/cores", params={"status": "scored"})
+        strong = await client.get(f"{URL}/curio/cores", params={"min_score": 7.5})
+        found = await client.get(
+            f"{URL}/curio/cores", params={"status": "all", "q": "n5803", "sort": "id"}
+        )
+        empty = await client.get(f"{URL}/so-thats-why/cores", params={"status": "all"})
+        wrong_series = await client.get(f"{URL}/brand/cores")
+        wrong_status = await client.get(f"{URL}/curio/cores", params={"status": "producible"})
+    branded = CorePage.model_validate_json(brand.content)
+    assert branded.items and all(item.category == BRAND for item in branded.items)
+    waiting = CorePage.model_validate_json(unscored.content)
+    # Every curio core has been scored since 2026-11-17, so the unscored page may be empty.
+    assert all(item.audience is None for item in waiting.items)
+    total = CorePage.model_validate_json(everything.content).total
+    assert total == waiting.total + CorePage.model_validate_json(scored.content).total
+    high = CorePage.model_validate_json(strong.content)
+    assert high.items and all(i.audience and i.audience.score >= 7.5 for i in high.items)
+    assert [item.id for item in CorePage.model_validate_json(found.content).items] == ["N5803"]
+    assert CorePage.model_validate_json(empty.content).total == 0
+    assert wrong_series.status_code == 422
+    assert wrong_status.status_code == 422
+
+
+def test_bundle_counts_must_match_its_cores(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    raw: dict[str, Any] = json.loads(catalog.BUNDLE_PATH.read_text(encoding="utf-8"))
+    raw["series"][0]["counts"]["cores_passing"] += 1
+    path = tmp_path / "pools.json"
+    path.write_text(json.dumps(raw, ensure_ascii=False), encoding="utf-8")
+    monkeypatch.setattr(catalog, "BUNDLE_PATH", path)
+    with pytest.raises(AppError):
+        catalog.load_bundle()
 
 
 def test_bundle_counts_must_match_its_themes(

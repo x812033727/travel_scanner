@@ -32,6 +32,8 @@ export type NavGroup = {
   items: NavGroupItem[];
   /** Shown only in the plain header; discovery and community modes carry their own tools. */
   travelToolsOnly?: boolean;
+  /** Optional site-visibility switch that hides the entire group when turned off. */
+  feature?: SiteFeature;
 };
 
 /**
@@ -76,7 +78,7 @@ export const navGroups: readonly NavGroup[] = [
       { key: "foods", href: "/foods" },
     ],
   },
-  { key: "videos", href: "/videos", items: [] },
+  { key: "videos", href: "/videos", items: [], feature: "videos" },
   {
     key: "tools", href: null, travelToolsOnly: true, items: [
       { key: "trips", href: "/trips", feature: "trips" },

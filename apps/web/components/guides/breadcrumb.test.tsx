@@ -5,6 +5,14 @@ import { Breadcrumb } from "./breadcrumb";
 afterEach(cleanup);
 
 describe("Breadcrumb", () => {
+  it("keeps the news headline in the accessible trail and ends the visible trail with the channel link", () => {
+    render(<Breadcrumb compact label="Path" current="Current article" trail={[{ name: "News", path: "/life" }]} />);
+    const trail = screen.getByRole("navigation", { name: "Path" });
+    expect(trail.querySelector('[aria-current="page"]')?.textContent).toBe("Current article");
+    expect(within(trail).getByRole("link", { name: "News" }).getAttribute("href")).toBe("/life");
+    expect(within(trail).queryByText("›")).toBeNull();
+  });
+
   it("shows the trail without the home crumb, links every step and leaves the current page as text", () => {
     render(
       <Breadcrumb

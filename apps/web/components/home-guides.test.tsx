@@ -36,7 +36,7 @@ describe("the home page's portal and guide sections", () => {
       [article("claude-code-intro", "life", "Claude Code 入門")],
       [article("credit-card-basics", "life", "信用卡入門")],
     )} />);
-    expect(screen.getByRole("heading", { level: 2, name: "AI 科技快訊、軟體教學與旅遊生活攻略" })).toBeTruthy();
+    expect(screen.getByRole("heading", { level: 1, name: "AI 科技快訊、軟體教學與旅遊生活攻略" })).toBeTruthy();
     const directIntro = container.querySelectorAll('section[aria-labelledby="home-guides-title"] > p');
     expect(directIntro).toHaveLength(1);
     expect(directIntro[0]?.textContent).toContain("Mokaair");
@@ -52,6 +52,20 @@ describe("the home page's portal and guide sections", () => {
 
     expect(within(screen.getByTestId("home-guides-tech")).getByRole("link", { name: "看全部" }).getAttribute("href")).toBe("/life/topics/ai");
     expect(within(screen.getByTestId("home-guides-money")).getByRole("link", { name: /信用卡入門/ }).getAttribute("href")).toBe("/life/credit-card-basics");
+  });
+
+  it("hides flights & stays search CTA and videos shortcut when those switches are off", () => {
+    render(
+      <HomeGuides
+        blocks={blocks([article("tokyo-first-trip", "howto", "東京第一次自由行")], [], [])}
+        flightSearchEnabled={false}
+        videosEnabled={false}
+      />,
+    );
+    expect(screen.queryByRole("link", { name: "搜尋機票與住宿" })).toBeNull();
+    expect(screen.queryByRole("link", { name: "影音專區" })).toBeNull();
+    expect(screen.getByRole("search").getAttribute("action")).toBe("/zh-TW/search/articles");
+    expect(screen.getByRole("link", { name: "城市美食" }).getAttribute("href")).toBe("/foods");
   });
 
   it("renders the hero lead story, chronological daily news desk, trending rail, and interactive category filter tabs", () => {
@@ -112,7 +126,36 @@ describe("the home page's portal and guide sections", () => {
     expect(screen.getByTestId("home-guides-travel")).toBeTruthy();
     expect(screen.queryByTestId("home-guides-tech")).toBeNull();
     expect(screen.queryByTestId("home-guides-money")).toBeNull();
+    expect(screen.queryByTestId("portal-news-desk")).toBeNull();
+    expect(screen.getByRole("link", { name: "RSS 訂閱" }).getAttribute("href")).toBe("/zh-TW/life/feed.xml");
     expect(screen.getByText(/個人站長經營/)).toBeTruthy();
+  });
+
+  it("reserves each overview story once while keeping the full AI and software selections on their tabs", () => {
+    const lead = article("lead", "life", "最新頭條", { news_date: "2026-11-18" });
+    const shared = article("shared", "life", "跨分類精選");
+    const softwareOnly = article("software-only", "life", "軟體指南");
+    const trendingOnly = article("trending-only", "life", "熱門教學");
+    render(<HomeGuides
+      blocks={blocks([], [lead, shared], [shared])}
+      news={[lead]}
+      software={[lead, shared, softwareOnly]}
+      trending={[lead, shared, softwareOnly, trendingOnly]}
+    />);
+
+    for (const item of [lead, shared, softwareOnly, trendingOnly]) {
+      expect(document.querySelectorAll(`a[href="/life/${item.slug}"]`)).toHaveLength(1);
+    }
+    expect(within(screen.getByTestId("portal-hero")).getByRole("link", { name: lead.title })).toBeTruthy();
+    expect(screen.queryByTestId("home-guides-money")).toBeNull();
+
+    const tabs = within(screen.getByTestId("portal-tabs"));
+    fireEvent.click(tabs.getByRole("button", { name: "AI 應用" }));
+    const ai = within(screen.getByTestId("home-guides-tech"));
+    expect(ai.getAllByRole("listitem")).toHaveLength(2);
+    expect(ai.getByRole("link", { name: lead.title })).toBeTruthy();
+    fireEvent.click(tabs.getByRole("button", { name: "科技與軟體" }));
+    expect(within(screen.getByTestId("portal-software")).getAllByRole("listitem")).toHaveLength(3);
   });
 
   it("renders secondary editorial sub-lead cards alongside the chronological wire when 4+ news stories exist", () => {
