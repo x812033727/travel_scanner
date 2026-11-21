@@ -1,0 +1,3 @@
+# R11 相同音檔核准沿用證據
+
+來源卡替換後TTS0新請求、127全快取。新舊timeline所有lines完整物件與total_frames相同，narration WAV SHA仍16cc46865808f15c7dd0a86e3353824ec82a399d09745956fea648b5b213375f；只更新來源卡的scene kind。沿用主辨識126／127、0flags和已獨立稽核的SenseVoice第28句，共127句跨供應商機器證據，不把原供應商拒絕改綠或宣稱站主親聽。

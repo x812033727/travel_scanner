@@ -1,0 +1,30 @@
+{
+  "reader": "r3-isolated-blind-a",
+  "slug": "curio-s63",
+  "raw_ballot_frozen_before_repository_inspection": true,
+  "source_pr": 1665,
+  "pr_head_sha": "bf54573a48ce107afb18f10a57d751c95cac8f0a",
+  "script_path": "docs/videos/curio-s63/script.md",
+  "script_sha256": "557427e904b22b40e8f326f9acd7947950c507c089ee6cee5dd4ea5be68dc37d",
+  "video_json_path": "docs/videos/curio-s63/video.json",
+  "video_json_sha256": "00cb544ad03d325f8eb666c3d037bf8a0aa3df1026c5c528ae54749a7d8e5090",
+  "blind_packet_sha256": "0be386d8fed3650d925f81017b7c46429e52f093432c3685d90d6a0b87ffa331",
+  "raw_ballot_sha256": "9a52d55e9a3ecb785643a0d0760675019b945768a9d815bca7f17ca865251952",
+  "official_cli_packet_sha256": "bd8d9cdbddd641ed2a7ef70177da95b2ad5c54a0925e665e7eaf62a45b60abea",
+  "official_cli_verdict_sha256": "ea7adc7447690234736758869ae23de6dfca17003bb96e965f0f2aefd9a196b6",
+  "official_receipt_sha256": "5c2558ff2674fefa5fa0df267fad1716aac1a7648e52793831ae3ae8e2041df0",
+  "packet_narration_matches_official_cli": true,
+  "packet_question_id_and_wording_matches_official_cli": true,
+  "packet_instructions_and_required_flags_match_official_panel": true,
+  "official_cli_command": "node tools/video/cli.mjs narrative --slug curio-s63 --answers /tmp/s63-r3-blind-a.raw.json --workdir /tmp/s63-r3-blind-a --json",
+  "official_cli_exit_code": 1,
+  "official_cli_required_failed": [
+    "no_spoiler",
+    "no_recap"
+  ],
+  "official_receipt_script_hash": "4b8e3ccff19e369d5d4117c0054d0567cc0ddb9cb625ac0da4390e64e70e9a4f",
+  "official_receipt_narrative_hash": "3e0e3799a051d546",
+  "official_receipt_panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "official_receipt_panel_narration_sha256": "1dadc85e9a86fd59c538b5df1c8e8e9ec93797bc4e865288dca5dd0230f6623b",
+  "isolated_workdir": "/tmp/s63-r3-blind-a"
+}
