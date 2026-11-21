@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s57",
+  "round": "R8",
+  "command": "node tools/video/cli.mjs narrative --slug curio-s57 --answers docs/videos/curio-s57/review/r8-merge/merged-answers.json --workdir /tmp/curio-s57-r8-formal-merge --json",
+  "exit_code": 1,
+  "passed": false,
+  "failed": ["no_recap"],
+  "advisory_failed": [],
+  "policy": "NOT_RUN_NARRATIVE_HOLD",
+  "five_file_sha256_before_and_after": {
+    "research.md": "9663d4a0ea66b1fef3c6e3a0550b8b08cf169a68b1736ad6005d6408ac2cd667",
+    "brief.md": "5eadc760e95287cebc97c61007333007348939c18ec505d38ddd9acc5cb88abd",
+    "claims.md": "cff4abfd700e501ecdc32700138fda27d143320f0f666f233d2792266e0cc861",
+    "video.json": "bb0cf8d70f565a0c34d0923c08678665b26e24c6637d208d96f474dafb5841d4",
+    "script.md": "d9605ab9b06528780454cdecd6af3604e34e1be3e09a379ac14e4b46a3fa674d"
+  },
+  "merged_answers_sha256": "1a54d00037e1c95b9d27cda53ab4d1fa42e9db917aa7c11c17b679838c3aa989",
+  "official_narrative_record_sha256": "7cca5179a334d9382b3e5172d64a859f0b3d5d3563e6d64c2b9b1877c09dacac"
+}

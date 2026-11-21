@@ -1,0 +1,309 @@
+{
+  "slug": "curio-s57",
+  "round": "R7",
+  "rule": "fixed OR across two independent blind readers",
+  "creative_sha256": {
+    "research.md": "9663d4a0ea66b1fef3c6e3a0550b8b08cf169a68b1736ad6005d6408ac2cd667",
+    "brief.md": "0474bc0e793cbda07021da98b3ea972a50b60fe87eacb708baf85457bdf554f6",
+    "claims.md": "d4b8958f6f9c7b7fd62ec172ae39279d096086f22f4bdcc1fb2c07ef79401d38",
+    "video.json": "f3befaaeb100cb0d9c275be56851691b174ef423777f1955375e520119bb71e7",
+    "script.md": "185558e4d0e0ca51794126d8289ffb0d54065191d00cc010a2a6b72ff4d0245f"
+  },
+  "rule_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "ballots": [
+    {
+      "reader": "a",
+      "source": "r7-blind-a.md",
+      "source_sha256": "0896e27eeb013bfaca4c5255f005f3d424755f6e53742bc5176bf2ec7368d6a8",
+      "raw_copy_sha256": "0896e27eeb013bfaca4c5255f005f3d424755f6e53742bc5176bf2ec7368d6a8",
+      "answers_sha256": "e37f53ecc715b7fe117d9de57ddcc237a5e795d5d05e417c856e8a5f7ce8646a",
+      "yes": 11,
+      "no": [
+        "no_recap",
+        "no_detour"
+      ]
+    },
+    {
+      "reader": "b",
+      "source": "r7-blind-b.md",
+      "source_sha256": "7cd69b0665b4391ae86b39d849f1a02a2f49e16609ad6e5f794600ba57aeb0a5",
+      "raw_copy_sha256": "7cd69b0665b4391ae86b39d849f1a02a2f49e16609ad6e5f794600ba57aeb0a5",
+      "answers_sha256": "7c0c5f403f310a774d3079d3fb4c7447db3e4671acc21a9844ee3a8db7be3168",
+      "yes": 11,
+      "no": [
+        "no_recap",
+        "no_detour"
+      ]
+    }
+  ],
+  "citations": [
+    {
+      "reader": "a",
+      "panel": "scene_first",
+      "vote": "YES",
+      "raw_reason": "The first four spoken lines place a sealed diary in March 1872, identify its owner and recipient, and set Stanley's party toward the coast (lines 9–21).",
+      "script_line_number": 9,
+      "scene_id": "s57001",
+      "exact_spoken_line": "一八七二年三月，一本日記被壓上五道封印。",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "a",
+      "panel": "no_spoiler",
+      "vote": "YES",
+      "raw_reason": "The opening leaves the owner's destination and the reason for the split unanswered (lines 21, 37–45); the later stay and death are withheld until lines 655–663.",
+      "script_line_number": 21,
+      "scene_id": "s57004",
+      "exact_spoken_line": "日記已要出發，主人又會往哪裡去？",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "a",
+      "panel": "one_line",
+      "vote": "YES",
+      "raw_reason": "After the opening preview, the account moves from Livingston's shortage (lines 51–115), to the meeting (153–201), his decision and continued research (251–357), the supply journey (389–525), and the departure (587–655). These serve the same split.",
+      "script_line_number": 51,
+      "scene_id": "s57011",
+      "exact_spoken_line": "一八七一年晚秋，李文斯頓帶病回到烏吉吉，要找繼續考察的補給。",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "a",
+      "panel": "no_toc",
+      "vote": "YES",
+      "raw_reason": "The forward phrases refer to actions or unknowns inside the story, such as where the two go (line 319) and what must arrive for the next leg (line 529); no spoken line announces a chapter plan.",
+      "script_line_number": 319,
+      "scene_id": "s57083",
+      "exact_spoken_line": "不過兩人接著同路；他們先往哪裡去？",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "a",
+      "panel": "chapters_link",
+      "vote": "YES",
+      "raw_reason": "Each chapter opens on the prior chapter's pending object or question: missing supplies (45→51), the runner (147→153), return home (245→251), where they go (319→325), the eastward route (413→419), what arrives first (499→505), and what was finished before the diary handoff (581→587).",
+      "script_line_number": 153,
+      "scene_id": "s57036",
+      "exact_spoken_line": "蘇西跑回來，說他看見一個英國人。",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "a",
+      "panel": "open_loops",
+      "vote": "YES",
+      "raw_reason": "Questions or turns recur throughout the body, including lines 99, 147, 205, 275, 345, 435, 499, 581, and 627; there is no apparent 90-second stretch without one.",
+      "script_line_number": 99,
+      "scene_id": "s57023",
+      "exact_spoken_line": "這時，他等得到從海岸來的援手嗎？",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "a",
+      "panel": "payoffs",
+      "vote": "YES",
+      "raw_reason": "The runner is Susie (147→153), the diary's account answers the advice question (275→279), the conflicting lake claim is disclosed (345→349), the separated party reunites (435→443), the missing cloth appears later (483→521), and the final home question is answered (659→663).",
+      "script_line_number": 153,
+      "scene_id": "s57036",
+      "exact_spoken_line": "蘇西跑回來，說他看見一個英國人。",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "a",
+      "panel": "no_recap",
+      "vote": "NO",
+      "raw_reason": "The same return to Ujiji is stated twice in adjacent beats: “十二月中旬，兩人回到烏吉吉” (line 373), then “十二月十三日回村時” (line 377). The added date does not make the repeated return a new event.",
+      "script_line_number": 377,
+      "scene_id": "s57101",
+      "exact_spoken_line": "十二月十三日回村時，史丹利收到美國領事從海岸寄來的信。",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "a",
+      "panel": "chapters_are_events",
+      "vote": "YES",
+      "raw_reason": "Titles name the sealing, lost boxes, Susie's report, a split, travel north and east, Stanley's handoff, and the diary's departure (lines 5, 47, 149, 247, 321, 415, 501, 583).",
+      "script_line_number": 153,
+      "scene_id": "s57036",
+      "exact_spoken_line": "蘇西跑回來，說他看見一個英國人。",
+      "reason_mentions_line_number": false
+    },
+    {
+      "reader": "a",
+      "panel": "outro_no_next",
+      "vote": "YES",
+      "raw_reason": "The ending closes with Livingston's death and the diary's later publication (lines 659–671), without mentioning another video or file.",
+      "script_line_number": 663,
+      "scene_id": "s57187",
+      "exact_spoken_line": "一八七三年五月初，他在內陸去世。",
+      "reason_mentions_line_number": false
+    },
+    {
+      "reader": "a",
+      "panel": "opening_hooks",
+      "vote": "YES",
+      "raw_reason": "Beyond the sealed diary scene, the opening asks what happens to its owner, whether restored supplies change his mind, how he answers Stanley, and why the two take different paths (lines 21, 37, 41, 45).",
+      "script_line_number": 37,
+      "scene_id": "s57008",
+      "exact_spoken_line": "如果物資回來，他就會改變主意嗎？",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "a",
+      "panel": "one_thread",
+      "vote": "YES",
+      "raw_reason": "Livingston's choice between returning and finishing his research runs from the opening questions (lines 21–45) through the first advice (251–315), renewed plans and needs (533–565), and the final separation (631–655).",
+      "script_line_number": 533,
+      "scene_id": "s57149",
+      "exact_spoken_line": "李文斯頓在日記裡寫：要起行，仍得等同行人手到齊。",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "a",
+      "panel": "no_detour",
+      "vote": "NO",
+      "raw_reason": "The three-beat account of Stanley receiving a consular letter and an Aden telegram while Livingston has no corresponding letter (lines 377–385) does not change the stated return decision, the supply quest, or the final split.",
+      "script_line_number": 381,
+      "scene_id": "s57104",
+      "exact_spoken_line": "同時還有從亞丁來的電報，消息停在那年四月。",
+      "reason_mentions_line_number": false
+    },
+    {
+      "reader": "b",
+      "panel": "scene_first",
+      "vote": "YES",
+      "raw_reason": "The first four spoken lines locate the action in March 1872: a diary is sealed, Livingston entrusts it to Stanley, and Stanley's party prepares for the coast (`script.md:9–21`).",
+      "script_line_number": 9,
+      "scene_id": "s57001",
+      "exact_spoken_line": "一八七二年三月，一本日記被壓上五道封印。",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "b",
+      "panel": "no_spoiler",
+      "vote": "YES",
+      "raw_reason": "The opening reveals the diary's handoff but stops before Livingston's decision or fate; it asks where he will go (`script.md:9–21`) and why their paths split (`script.md:45`).",
+      "script_line_number": 21,
+      "scene_id": "s57004",
+      "exact_spoken_line": "日記已要出發，主人又會往哪裡去？",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "b",
+      "panel": "one_line",
+      "vote": "YES",
+      "raw_reason": "After the dated opening, the account follows Livingston's shortage and Stanley's arrival, their shared travel, the eastward supply trip, and their parting (`script.md:51`, `script.md:153–201`, `script.md:325–337`, `script.md:409–419`, `script.md:655`). The opening's later moment is picked up at the end (`script.md:595–599`).",
+      "script_line_number": 51,
+      "scene_id": "s57011",
+      "exact_spoken_line": "一八七一年晚秋，李文斯頓帶病回到烏吉吉，要找繼續考察的補給。",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "b",
+      "panel": "no_toc",
+      "vote": "YES",
+      "raw_reason": "Forward questions ask what happens within the journey, such as where the goods are and where the pair goes next (`script.md:75`, `script.md:319`); no spoken line announces a section plan.",
+      "script_line_number": 75,
+      "scene_id": "s57017",
+      "exact_spoken_line": "市場就在眼前，下一段路的貨在哪裡？",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "b",
+      "panel": "chapters_link",
+      "vote": "YES",
+      "raw_reason": "The chapter handoffs answer a concrete preceding question or action: why the paths split leads into Livingston's search for supplies (`script.md:45,51`); the visitor question to Susi's report (`script.md:147,153`); Stanley's harder question to his return proposal (`script.md:245,251`); the next destination to the lake (`script.md:319,325`); the eastward road to its river crossing (`script.md:413,419`); the missing cloth to new aid (`script.md:499,505`); and the pre-diary task to the completed letters (`script.md:581,587–591`).",
+      "script_line_number": 153,
+      "scene_id": "s57036",
+      "exact_spoken_line": "蘇西跑回來，說他看見一個英國人。",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "b",
+      "panel": "open_loops",
+      "vote": "YES",
+      "raw_reason": "Questions recur throughout the body, including the visitor's identity (`script.md:147`), whether he will go home (`script.md:241`), whether the old boxes remain intact (`script.md:393`), how long the journey takes (`script.md:451`), and whether he changes his mind at parting (`script.md:627`).",
+      "script_line_number": 147,
+      "scene_id": "s57035",
+      "exact_spoken_line": "第一個把消息帶到屋前的，會是誰？",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "b",
+      "panel": "payoffs",
+      "vote": "YES",
+      "raw_reason": "The long-running supply question receives a dated answer when Stanley gives aid and Livingston treats it as means to continue (`script.md:37,505–525`); the return question gets Livingston's diary account and a later reaffirmation (`script.md:41,279–287,631–639`); the old-box question gets a shortage finding (`script.md:393,487–491`); and the final homecoming question is answered by his death inland (`script.md:659–663`).",
+      "script_line_number": 505,
+      "scene_id": "s57139",
+      "exact_spoken_line": "就在抵達當天，史丹利的新援助已經先交到李文斯頓手上。",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "b",
+      "panel": "no_recap",
+      "vote": "NO",
+      "raw_reason": "The recovery is reported on the twentieth and then repeated in a subsequent line with the same date and recovered cloth (`script.md:521,525`). The eighteenth and its aid handoff are likewise restated after being established (`script.md:471,505,525`). These repetitions add context but are not marked as the rubric's explicit callback.",
+      "script_line_number": 525,
+      "scene_id": "s57144",
+      "exact_spoken_line": "二十日布包雖追回，帳上仍缺四百多碼；他在十八日已把新援助視為續行本錢。",
+      "reason_mentions_line_number": true
+    },
+    {
+      "reader": "b",
+      "panel": "chapters_are_events",
+      "vote": "YES",
+      "raw_reason": "The titles name actions or reveals: Susi runs with news, Stanley hands over goods, and the diary leaves while Livingston stays (`script.md:149,501,583`). The remaining titles name the sealed diary, empty boxes, a split, a lake trip, and an eastward journey (`script.md:5,47,247,321,415`).",
+      "script_line_number": 505,
+      "scene_id": "s57139",
+      "exact_spoken_line": "就在抵達當天，史丹利的新援助已經先交到李文斯頓手上。",
+      "reason_mentions_line_number": false
+    },
+    {
+      "reader": "b",
+      "panel": "outro_no_next",
+      "vote": "YES",
+      "raw_reason": "The close describes Livingston's death and the diary's later publication, with no next-video or next-file tease (`script.md:659–671`).",
+      "script_line_number": 663,
+      "scene_id": "s57187",
+      "exact_spoken_line": "一八七三年五月初，他在內陸去世。",
+      "reason_mentions_line_number": false
+    },
+    {
+      "reader": "b",
+      "panel": "opening_hooks",
+      "vote": "YES",
+      "raw_reason": "After the sealed-diary moment, the opening leaves at least three later questions unresolved: his illness and lost supplies, whether returned supplies would change his mind, how he would answer a return proposal, and why they part (`script.md:25–45`).",
+      "script_line_number": 37,
+      "scene_id": "s57008",
+      "exact_spoken_line": "如果物資回來，他就會改變主意嗎？",
+      "reason_mentions_line_number": false
+    },
+    {
+      "reader": "b",
+      "panel": "one_thread",
+      "vote": "YES",
+      "raw_reason": "Livingston's choice to continue the water-source work links the supply loss, Stanley's return offer, the lake survey, new aid, and their parting (`script.md:83–95,251–287,325–357,505–553,631–655`).",
+      "script_line_number": 533,
+      "scene_id": "s57149",
+      "exact_spoken_line": "李文斯頓在日記裡寫：要起行，仍得等同行人手到齊。",
+      "reason_mentions_line_number": false
+    },
+    {
+      "reader": "b",
+      "panel": "no_detour",
+      "vote": "NO",
+      "raw_reason": "The account pauses for Stanley's consular letter, an Aden telegram, and Livingston's lack of similar letters (`script.md:377–385`), then moves to the stored goods (`script.md:389–393`). The mail details are not tied to the opening question about why he stayed.",
+      "script_line_number": 381,
+      "scene_id": "s57104",
+      "exact_spoken_line": "同時還有從亞丁來的電報，消息停在那年四月。",
+      "reason_mentions_line_number": false
+    }
+  ],
+  "merged_answers_sha256": "da40df698e61865330a8bc35febae4de757a5747d4222c7e0f2996714bb53417",
+  "merged_yes": 11,
+  "merged_failed": [
+    "no_recap",
+    "no_detour"
+  ],
+  "source_receipt": "r7-source-independent.md",
+  "source_receipt_sha256": "68e18b5a100ea0e5aae681e4cd523bacd248245897e5eec036da0049b6f7d1d9"
+}

@@ -1,0 +1,21 @@
+# Curio S59 R5 — blind reader A, frozen narrative ballot
+
+Input scope before voting: `docs/videos/curio-s59/script.md` (SHA-256 `5b18eb40b5c3434599abbd939d3231fc30837e360bfaff0ea00d23cdca89cf48`), `docs/videos/curio-s59/video.json` (SHA-256 `77a9ab9de42dd36f9af3b94a6c28312e18e6f846418e38ee2fe0d9ace30b06f7`), and the 13 fixed questions printed by `node tools/video/cli.mjs narrative --slug curio-s59 --workdir /tmp/s59-r5-blind-a --json`. Votes below were set before reading any prior round notes, other reader ballots, verdicts, or narrative answer implementation.
+
+| Fixed question | Vote | Exact evidence from frozen script |
+| --- | --- | --- |
+| `scene_first` | yes | s59001 puts 普斯卡斯 in 巴黎科學院 on 1878-03-11, preparing to turn a cylinder; s59002 has him turn the handle and a voice emerge; s59003 gives the audience reaction; s59004 gives the ventriloquism suspicion. |
+| `no_spoiler` | yes | s59005-06 stops at 杜蒙塞爾 facing the mouthpiece and asks whether a novice can make the device speak. The failure is withheld until s59080, and the secretary office result until s59090-91. |
+| `one_line` | yes | The first chapter previews a trial; s59010 returns to the machine's telegraph origin, s59033 makes the cylinder, s59067 moves to outside listeners, s59070 explicitly names “開場那天” to rejoin the preview, and s59080/s59090 advance the trials. |
+| `no_toc` | yes | s59006-09 pose concrete unresolved moments (the novice, the sketch, the secretary office), while s59010 begins with the telegraph disk as an event. There is no narration sentence listing a planned section order. |
+| `chapters_link` | yes | s59009 asks how the voice could be proved to come from the machine; chapter two starts s59010 with the telegraph impression and asks its relation to the speaking cylinder. s59032→33 passes the sketch to 克呂西; s59066→67 passes the machine into the editor's office; s59079→80 answers 杜蒙塞爾's trial; s59089→90 answers the secretary office question. |
+| `open_loops` | yes | Examples across the body: s59018 asks how a human voice leaves a mark, answered in s59019-46; s59048 asks whether the marks speak back, answered in s59051-52; s59063 asks whether stable drive helps, answered in s59064; s59083 asks how the academy retries, answered in s59085; s59097 asks whether 杜蒙塞爾 now gets playback, answered in s59099. |
+| `payoffs` | yes | The long opening hooks are paid off with named objects and new facts: s59007's eighteen-dollar sketch reaches s59030-33 and 克呂西's build; s59006's novice trial reaches s59080, then s59095-99 explains his later success; s59008's secretary office reaches s59085 and s59090-91. Nearby questions get direct new answers, such as s59103→104 on reverse playback. |
+| `no_recap` | no | s59039 says the pre-cut spiral groove gives the needle a path (“針才找到一路可走的位置”); immediately s59040 repeats the same fact (“圓筒上的螺旋槽替針帶路”) without a named callback. The second sentence adds a new question but restates the groove's guiding role. |
+| `chapters_are_events` | yes | Six chapter headings name the demonstrated voice/suspicion, the telegraph impression becoming a sketch, 克呂西's speaking cylinder, the editor's crowd, 杜蒙塞爾's failed try, and the secretary office retry (script headings before s59001, 10, 33, 67, 80, 90). |
+| `outro_no_next` | yes | s59109 asks whether the viewer would turn and hear the machine; s59110 gives source/channel links and a subscription prompt. Neither names a future video or file. |
+| `opening_hooks` | yes | After s59001-04's academy scene, s59006 asks whether the novice succeeds; s59007 asks what the eighteen-dollar sketch made; s59008 asks what happened in the secretary office. All stop before those results. |
+| `one_thread` | yes | The question is whether a machine recorded and replayed the voice rather than an operator supplying it (s59009, s59055, s59077). The recording mechanism s59038-52, repeat trials s59078-99, and remote-listener proposal s59105-07 each test that problem. |
+| `no_detour` | yes | The Edison construction s59010-66 explains how a mark could preserve and replay speech; the editor's reaction s59067-69 sets up outside listeners; s59101-07 tests what a playback trace can and cannot show. Each returns to the machine-versus-mouth question in s59108. |
+
+Independent vote: **12 yes / 1 no (`no_recap`)**. This ballot is fixed before CLI scoring.

@@ -1,0 +1,46 @@
+{
+  "slug": "curio-s58",
+  "round": "R7",
+  "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node /workspace/travel_scanner/tools/video/cli.mjs narrative --slug curio-s58 --answers /workspace/travel_scanner/docs/videos/curio-s58/review/r7-merge/merged-answers.json --workdir /tmp/curio-s58-r7-merge-formal-jpcIvP --json",
+  "workdir": "/tmp/curio-s58-r7-merge-formal-jpcIvP",
+  "official_record_path": "/tmp/curio-s58-r7-merge-formal-jpcIvP/curio-s58/review/narrative.json",
+  "creative_sha256_before": {
+    "research.md": "b26201dd469744fe10c8d259beb93ebcda23609fdb6bc989a6f1d784d9f9779e",
+    "brief.md": "5afefc8547bc4fb4a597bcfc99e4e93bcec7631ad237085af78b596aa269a21f",
+    "claims.md": "fbb902e05bede6a4a88b108aae725667b41058c979ff7a69dea339a188c19e87",
+    "video.json": "ad330abbe8f0919987c01de2c3227e025af8d1d93cc7f2e3557875d5d7b629ec",
+    "script.md": "d32bea9d5cc33125cf9b41f1288a8faf78765d96dcd3ed2002abe4ad97f20957"
+  },
+  "creative_sha256_after": {
+    "research.md": "b26201dd469744fe10c8d259beb93ebcda23609fdb6bc989a6f1d784d9f9779e",
+    "brief.md": "5afefc8547bc4fb4a597bcfc99e4e93bcec7631ad237085af78b596aa269a21f",
+    "claims.md": "fbb902e05bede6a4a88b108aae725667b41058c979ff7a69dea339a188c19e87",
+    "video.json": "ad330abbe8f0919987c01de2c3227e025af8d1d93cc7f2e3557875d5d7b629ec",
+    "script.md": "d32bea9d5cc33125cf9b41f1288a8faf78765d96dcd3ed2002abe4ad97f20957"
+  },
+  "creative_unchanged": true,
+  "ballot_sha256": {
+    "a": "ec1a47dda76f6606c0fce4fc2b49861ed9254a6015587f84b15633f562c015cc",
+    "b": "37a697113f8e29558498e4b6e41e5019254668b7f05eb739f697db9d618cb610"
+  },
+  "merged_answers_sha256": "49afc66390948ef91d446d6277f6aa2493a24058040f18bd7bc1fd507ce53f31",
+  "stdout_sha256": "da9d25d4c8e540a3b39561931ce80ce8664c02aff405f28ca3ad769ff8fb2ed2",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "official_record_sha256": "a0221c8dd0fdf586815f68a28cedf5b2542dad6e881586baf46fc41ad0b9f8bc",
+  "exit_code": 1,
+  "cli_passed": false,
+  "cli_failed": [
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[s58034] [s58034, L145] names 達蓋爾號 and [s58035, L149] names 尼埃普斯號, then [s58037, L157] repeats 「達格隆那球叫尼埃普斯號，另一球叫達蓋爾號。」 There is no marked callback, and no new fact in the repeated naming.；讀者二：[s58"
+    }
+  ],
+  "cli_advisory": [],
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "panel_narration_sha256": "ba1e79e679cb71a936ec3cafc6c5087d8af265503a4b4fb6697a824713372542",
+  "narrative_hash": "e0747ac38933f476",
+  "official_round": 1
+}

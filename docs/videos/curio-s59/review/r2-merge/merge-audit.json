@@ -1,0 +1,313 @@
+{
+  "slug": "curio-s59",
+  "round": "R2",
+  "rule": "official fixed OR: a cited YES from either reader passes a criterion",
+  "creative_sha256": {
+    "research.md": "ad5baec33ae786da9d103eecadca9f16c9f23f00d4041bde158e1e2697958efb",
+    "brief.md": "90024cd567cb540e92fe9d58815cb36a0d05ade7a6739ec6851a54d6d5d10b80",
+    "claims.md": "b84f891c58a937cd9fd2cfffc2aab0f14c0c652fee838f6a79bfca2b40e99bc5",
+    "video.json": "26844c8610bd399077be2f349b3c548168c5021d6c143a88610ca8138d16a435",
+    "script.md": "c74ea14ea53d7442b59d2232fd867b1ce7794aae4b2878337b693fe25a3e78a3"
+  },
+  "creative_matches_at_transcription": true,
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "ballots": [
+    {
+      "reader": "a",
+      "original_path": "../r2-blind-a.md",
+      "original_sha256": "5dcb6fc982e4658d52f0105dd2c1230c6f6ea0c291d0075be843b2521c1e5e02",
+      "raw_copy_sha256": "5dcb6fc982e4658d52f0105dd2c1230c6f6ea0c291d0075be843b2521c1e5e02",
+      "answer_sha256": "94fb04a326591077d072f1f467dec3e11cd3235d710beca1183c3020ff063147",
+      "yes": 12,
+      "no": [
+        "no_recap"
+      ],
+      "citations": [
+        {
+          "id": "scene_first",
+          "vote": "YES",
+          "quoted_id": "s59001",
+          "quoted_line": "一八七八年三月十一日，巴黎科學院裡，普斯卡斯準備轉動一台圓筒機。",
+          "original_reason": "前四句把日期、巴黎科學院、普斯卡斯轉動機器、人聲與現場反應放入同一場景（`script.md:9,13,17,21`）。"
+        },
+        {
+          "id": "no_spoiler",
+          "vote": "YES",
+          "quoted_id": "s59006",
+          "quoted_line": "一個沒有練過的人，真能讓這台機器說話嗎？",
+          "original_reason": "開場提出杜蒙塞爾試機與秘書室重試，均停在結果前（`script.md:25,29,37,41`）；結果到正文才揭曉（`script.md:321,371,375`）。"
+        },
+        {
+          "id": "one_line",
+          "vote": "YES",
+          "quoted_id": "s59067",
+          "quoted_line": "開場那天，杜蒙塞爾代表愛迪生將這台機器呈給科學院。",
+          "original_reason": "開場先預告巴黎疑案（`script.md:9-41`），再沿著電報壓痕、草圖、錫箔圓筒、編輯室、科學院試驗推進（`script.md:47,131,145,267,279,321,371`）；回到巴黎時增補來信與試驗結果（`script.md:287,299,321,371`）。"
+        },
+        {
+          "id": "no_toc",
+          "vote": "YES",
+          "quoted_id": "s59010",
+          "quoted_line": "電報紙盤轉過壓針，留下細小的訊號痕跡；這跟會說話的圓筒有什麼關係？",
+          "original_reason": "轉場由當下疑問引出下一個動作或物件，沒有宣告講述順序或列後續內容（`script.md:41,47,139,145,261,267,315,321`）。"
+        },
+        {
+          "id": "chapters_link",
+          "vote": "YES",
+          "quoted_id": "s59034",
+          "quoted_line": "開場那張草圖在克呂西手裡，做成了那台手搖圓筒機的前身。",
+          "original_reason": "各章首接住前章留下的圓筒、草圖、編輯室、杜蒙塞爾試機、秘書室重試（`script.md:41,47,139,145,261,267,315,321,365,371`）。"
+        },
+        {
+          "id": "open_loops",
+          "vote": "YES",
+          "quoted_id": "s59018",
+          "quoted_line": "可那個接點只會重送電報訊號；人聲要怎樣留下自己的痕跡？",
+          "original_reason": "正文持續留下具體待答問題，例如人聲如何留痕、針如何讀回、換手是否奏效、倒讀會聽到什麼（`script.md:79,119,201,261,337,365,423`）。"
+        },
+        {
+          "id": "payoffs",
+          "vote": "YES",
+          "quoted_id": "s59054",
+          "quoted_line": "他寫這聲音略顯細弱，卻能傳到房間各處；同一張錫箔再播幾次，痕跡會怎樣？",
+          "original_reason": "長線問題有新答案：電報壓痕轉成人聲凹凸（`script.md:47,115,185,193`）；草圖製成圓筒（`script.md:33,131,145`）；換手失敗、秘書室成功及失敗原因（`script.md:29,37,321,371,375,395,407`）；倒讀與遠端隔聲問題也接續回答（`script.md:423,427,431,435,439`）。"
+        },
+        {
+          "id": "no_recap",
+          "vote": "NO",
+          "quoted_id": "s59079",
+          "quoted_line": "但「他試失敗」只說明這一次沒成功，還不能推翻普斯卡斯先前的示範。",
+          "original_reason": "杜蒙塞爾第一次沒成功已在 `script.md:321` 說明，隨即又在 `script.md:329,333` 重述；`script.md:341` 再把兩次相反示範總結一次。這些是正文內的重複，並非開場預告的回收。"
+        },
+        {
+          "id": "chapters_are_events",
+          "vote": "YES",
+          "quoted_id": "s59077",
+          "quoted_line": "開場輪到杜蒙塞爾的那一刻，他真的沒有做出剛才的效果。",
+          "original_reason": "六個章名都是發生的事或揭曉：會場出聲、壓痕成草圖、圓筒回話、編輯室圍觀、試機失敗、秘書室重試（`script.md:5,43,141,263,317,367`）。"
+        },
+        {
+          "id": "outro_no_next",
+          "vote": "YES",
+          "quoted_id": "s59109",
+          "quoted_line": "原始資料和頻道連結都在說明欄；喜歡歷史謎題，訂閱奇聞檔案局。",
+          "original_reason": "結尾只邀觀眾判斷並指向資料、訂閱，沒有提下一集（`script.md:447,451`）。"
+        },
+        {
+          "id": "opening_hooks",
+          "vote": "YES",
+          "quoted_id": "s59007",
+          "quoted_line": "愛迪生後來提到一張十八美元的草圖；它究竟做出了什麼？",
+          "original_reason": "首場之後至少四個待揭曉時刻：杜蒙塞爾能否成功、十八美元草圖做出什麼、秘書室重試如何、怎樣排除腹語（`script.md:29,33,37,41`）。"
+        },
+        {
+          "id": "one_thread",
+          "vote": "YES",
+          "quoted_id": "s59009",
+          "quoted_line": "這隻手轉出的人聲，要怎麼證明不是那張嘴偷偷發出來的？",
+          "original_reason": "從圓筒能否真正重播人聲，到其機理、外部聽證與科學院複驗，始終追同一台留聲機及腹語疑問（`script.md:21,47,115,217,271,307,371,443`）。"
+        },
+        {
+          "id": "no_detour",
+          "vote": "YES",
+          "quoted_id": "s59065",
+          "quoted_line": "他說回放聲傳遍編輯室，圍觀的人也愈來愈多；陌生聽眾確實聽到了聲音。",
+          "original_reason": "電報壓痕、聲音推動薄片、錫箔錄放與倒讀／遠端隔聲，均用來解釋或檢驗聲音是否由機器重播（`script.md:75,83,95,115,185,217,423,435,443`）。"
+        }
+      ]
+    },
+    {
+      "reader": "b",
+      "original_path": "../r2-blind-b.md",
+      "original_sha256": "e9d86cef82821b11e8a1830614efabc7428eedf562190cc627800b2dd9212bd1",
+      "raw_copy_sha256": "e9d86cef82821b11e8a1830614efabc7428eedf562190cc627800b2dd9212bd1",
+      "answer_sha256": "f09a7efbfaa8c716dc56ca4db4176eb2c14bd6f074e0a0aa875f8293d2fd3aa9",
+      "yes": 12,
+      "no": [
+        "no_recap"
+      ],
+      "citations": [
+        {
+          "id": "scene_first",
+          "vote": "YES",
+          "quoted_id": "s59001",
+          "quoted_line": "一八七八年三月十一日，巴黎科學院裡，普斯卡斯準備轉動一台圓筒機。",
+          "original_reason": "前四句已給出 1878 年巴黎科學院、普斯卡斯搖柄、人聲與席間反應（9、13、17、21）。"
+        },
+        {
+          "id": "no_spoiler",
+          "vote": "YES",
+          "quoted_id": "s59006",
+          "quoted_line": "一個沒有練過的人，真能讓這台機器說話嗎？",
+          "original_reason": "開場提出杜蒙塞爾試機、草圖與秘書室重試，停在結果之前（25–41）；失敗與重試結果到 321、371–375 才揭曉。"
+        },
+        {
+          "id": "one_line",
+          "vote": "YES",
+          "quoted_id": "s59067",
+          "quoted_line": "開場那天，杜蒙塞爾代表愛迪生將這台機器呈給科學院。",
+          "original_reason": "巴黎現場作預告，回溯同一台機器的來路，再接回「開場那天」（9–41、47–51、279）；正文沿製作、示範、查驗推進。"
+        },
+        {
+          "id": "no_toc",
+          "vote": "YES",
+          "quoted_id": "s59010",
+          "quoted_line": "電報紙盤轉過壓針，留下細小的訊號痕跡；這跟會說話的圓筒有什麼關係？",
+          "original_reason": "轉場用具體物件或待答事件接續，如電報壓痕、草圖和編輯室包裹（47、145、267），沒有宣告影片章節或內容清單。"
+        },
+        {
+          "id": "chapters_link",
+          "vote": "YES",
+          "quoted_id": "s59034",
+          "quoted_line": "開場那張草圖在克呂西手裡，做成了那台手搖圓筒機的前身。",
+          "original_reason": "各章首接住前章的疑問或物件：圓筒與壓痕（41→47）、草圖交工匠（139→145）、走進編輯室（261→267）、杜蒙塞爾試機（315→321）、秘書室重試（365→371）。"
+        },
+        {
+          "id": "open_loops",
+          "vote": "YES",
+          "quoted_id": "s59018",
+          "quoted_line": "可那個接點只會重送電報訊號；人聲要怎樣留下自己的痕跡？",
+          "original_reason": "正文持續掛問：電報痕跡怎樣變人聲（79、83）、用什麼承接針（127）、箔上痕跡能否說話（201）、手搖速度變化（245）、兩次示範如何分辨（337）、倒讀結果（423）。"
+        },
+        {
+          "id": "payoffs",
+          "vote": "YES",
+          "quoted_id": "s59054",
+          "quoted_line": "他寫這聲音略顯細弱，卻能傳到房間各處；同一張錫箔再播幾次，痕跡會怎樣？",
+          "original_reason": "主要疑問均有新結果：草圖做成錫箔圓筒（33→131、145–169），杜蒙塞爾初試失敗後找到嘴離話筒太遠的原因（29→321、395–407），秘書室重試讓要求查驗的院士滿意，另有人親試才接受（37、41→371–387）。"
+        },
+        {
+          "id": "no_recap",
+          "vote": "NO",
+          "quoted_id": "s59014",
+          "quoted_line": "紙盤留下的是點和劃；另一台機器能把這些痕跡讀回電線嗎？",
+          "original_reason": "電報紙盤留下點劃這一事實先在 59 說出，63 又以「紙盤留下的是點和劃」重述；後一句沒有點名回呼，才轉入讀回電線的新問題。"
+        },
+        {
+          "id": "chapters_are_events",
+          "vote": "YES",
+          "quoted_id": "s59077",
+          "quoted_line": "開場輪到杜蒙塞爾的那一刻，他真的沒有做出剛才的效果。",
+          "original_reason": "六個章名均寫出動作或結果，如圓筒回話、杜蒙塞爾試說卻無回聲、秘書室重試（5、43、141、263、317、367）。"
+        },
+        {
+          "id": "outro_no_next",
+          "vote": "YES",
+          "quoted_id": "s59109",
+          "quoted_line": "原始資料和頻道連結都在說明欄；喜歡歷史謎題，訂閱奇聞檔案局。",
+          "original_reason": "片尾只問觀眾會怎樣驗證，並提示資料與訂閱；未提下一片或下一集（447–451）。"
+        },
+        {
+          "id": "opening_hooks",
+          "vote": "YES",
+          "quoted_id": "s59007",
+          "quoted_line": "愛迪生後來提到一張十八美元的草圖；它究竟做出了什麼？",
+          "original_reason": "第一場之後至少留下三個待揭曉時刻：杜蒙塞爾能否試成、十八美元草圖做出什麼、秘書室重試結果（25–37）；嘴與機器聲音的疑問再加一層（41）。"
+        },
+        {
+          "id": "one_thread",
+          "vote": "YES",
+          "quoted_id": "s59009",
+          "quoted_line": "這隻手轉出的人聲，要怎麼證明不是那張嘴偷偷發出來的？",
+          "original_reason": "同一個難題從「聲音是否來自操作員」走到壓痕如何放聲、現場重試和親自操作（21、229、307、371–387、443）。"
+        },
+        {
+          "id": "no_detour",
+          "vote": "YES",
+          "quoted_id": "s59065",
+          "quoted_line": "他說回放聲傳遍編輯室，圍觀的人也愈來愈多；陌生聽眾確實聽到了聲音。",
+          "original_reason": "電報壓痕與玩具薄片都接回「如何留下並重放聲音」（75–83、87–119）；編輯室聽眾的反應接向巴黎的更尖銳懷疑（267–275）。"
+        }
+      ]
+    }
+  ],
+  "merged_answer_sha256": "8f742184d9f2d49f0d98b224fc55ef5f502867980360f76fd5f2c093cc63100d",
+  "merged": {
+    "passed": false,
+    "yes": 12,
+    "failed": [
+      "no_recap"
+    ],
+    "advisory": [],
+    "answers": [
+      {
+        "id": "scene_first",
+        "yes": true,
+        "evidence": "[s59001] 一八七八年三月十一日，巴黎科學院裡，普斯卡斯準備轉動一台圓筒機。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_spoiler",
+        "yes": true,
+        "evidence": "[s59006] 一個沒有練過的人，真能讓這台機器說話嗎？",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_line",
+        "yes": true,
+        "evidence": "[s59067] 開場那天，杜蒙塞爾代表愛迪生將這台機器呈給科學院。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_toc",
+        "yes": true,
+        "evidence": "[s59010] 電報紙盤轉過壓針，留下細小的訊號痕跡；這跟會說話的圓筒有什麼關係？",
+        "yes_readers": 2
+      },
+      {
+        "id": "chapters_link",
+        "yes": true,
+        "evidence": "[s59034] 開場那張草圖在克呂西手裡，做成了那台手搖圓筒機的前身。",
+        "yes_readers": 2
+      },
+      {
+        "id": "open_loops",
+        "yes": true,
+        "evidence": "[s59018] 可那個接點只會重送電報訊號；人聲要怎樣留下自己的痕跡？",
+        "yes_readers": 2
+      },
+      {
+        "id": "payoffs",
+        "yes": true,
+        "evidence": "[s59054] 他寫這聲音略顯細弱，卻能傳到房間各處；同一張錫箔再播幾次，痕跡會怎樣？",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_recap",
+        "yes": false,
+        "evidence": "讀者一：[s59079] 但「他試失敗」只說明這一次沒成功，還不能推翻普斯卡斯先前的示範。；讀者二：[s59014] 紙盤留下的是點和劃；另一台機器能把這些痕跡讀回電線嗎？",
+        "yes_readers": 0
+      },
+      {
+        "id": "chapters_are_events",
+        "yes": true,
+        "evidence": "[s59077] 開場輪到杜蒙塞爾的那一刻，他真的沒有做出剛才的效果。",
+        "yes_readers": 2
+      },
+      {
+        "id": "outro_no_next",
+        "yes": true,
+        "evidence": "[s59109] 原始資料和頻道連結都在說明欄；喜歡歷史謎題，訂閱奇聞檔案局。",
+        "yes_readers": 2
+      },
+      {
+        "id": "opening_hooks",
+        "yes": true,
+        "evidence": "[s59007] 愛迪生後來提到一張十八美元的草圖；它究竟做出了什麼？",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_thread",
+        "yes": true,
+        "evidence": "[s59009] 這隻手轉出的人聲，要怎麼證明不是那張嘴偷偷發出來的？",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_detour",
+        "yes": true,
+        "evidence": "[s59065] 他說回放聲傳遍編輯室，圍觀的人也愈來愈多；陌生聽眾確實聽到了聲音。",
+        "yes_readers": 2
+      }
+    ]
+  }
+}

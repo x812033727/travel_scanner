@@ -1,0 +1,140 @@
+{
+  "slug": "curio-s59",
+  "round": "R9",
+  "rule": "fixed OR: a cited yes from either independent reader passes a question",
+  "creative_sha256": {
+    "research.md": "39a48f08ca01dfa18009e9c1819684d03b92c52656952affd3266a574d88067d",
+    "brief.md": "9d68d7b4dad27f56b6dbc53f7890bc0db84590de3e445302f8f4836c286ac1e3",
+    "claims.md": "54e6c2f1d8fb533161ed48980ef1043faf6716c70999576507de9d6a735da747",
+    "video.json": "a0f986b5f1f578f6170b62ad24e17775b87ef4d3eb463104de9975a84928e4e6",
+    "script.md": "6c28555d04104c676f76414479f038f426893f940a183e2518e3e9abac22cc09"
+  },
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "panel_narration_sha256": "428a36c2ce3ae0c73105bf6da86a0f3af0e36eb0a605dc713f16ee756c131a45",
+  "readers": [
+    {
+      "label": "A",
+      "answers_sha256": "e5e5165beba5c59d59216df86229f7ebb2f732432ba9aa5f6cb8d7becad9820f",
+      "review_sha256": "80b2bd1bad903c83e0a8d2094c1f5b80ec6374e4c5329709d09f80df3b8df1da",
+      "official_sha256": "0db961c6d83f02438f86b83c212bf345f2633b763f5742538907749b204dff2f",
+      "stdout_sha256": "df815bfaae780a68359e283516fbc369d6802ae265f98fb9cd7b1c87a64fefda",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "yes": 12,
+      "failed": [
+        "no_detour"
+      ]
+    },
+    {
+      "label": "B",
+      "answers_sha256": "28b92dedaa860ae02490298fa9a345afd6091d004d2649c8b899e378cfba3b92",
+      "review_sha256": "f7014f462ef7de0ec874d1ffe8dbfbac6b1baa6c1067b48221c8f4dcf0f4d011",
+      "official_sha256": "b905636301b9e8ba6c8738bf1938e96436c26cc36c1dd5776872f34186f468fe",
+      "stdout_sha256": "ceaa5aa31fcb854d0a5714f1dab8706f5fc5e354f5902f45595c55bca5d61a46",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "yes": 13,
+      "failed": []
+    }
+  ],
+  "merged_answers_sha256": "a8577272209698c03380a27e2713772addf5cbc45f40cbc0dea55c9351e82053",
+  "result": {
+    "passed": true,
+    "yes": 13,
+    "failed": [],
+    "advisory": [],
+    "answers": [
+      {
+        "id": "scene_first",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59001] 一八七八年三月十一日，巴黎科學院裡，普斯卡斯準備轉動一台圓筒機。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_spoiler",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59007] 愛迪生後來提到一張十八美元的草圖；它究竟做出了什麼？",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_line",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59026] 開頭那張電報紙盤留下點劃；愛迪生現在要讓薄片推針，留下人聲的起伏。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_toc",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59008] 幾位院士走進秘書室，請普斯卡斯重試；在那裡又會怎樣？",
+        "yes_readers": 2
+      },
+      {
+        "id": "chapters_link",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59080] 他真的試了，卻沒做出剛才那個效果。",
+        "yes_readers": 2
+      },
+      {
+        "id": "open_loops",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59054] 他寫這聲音略顯細弱，卻能傳到房間各處；同一張錫箔再播幾次，痕跡會怎樣？",
+        "yes_readers": 2
+      },
+      {
+        "id": "payoffs",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59099] 練習幾次後，他說自己也能讓機器把話還回來。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_recap",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59071] 普斯卡斯負責操作；那陣掌聲後，旁人又盯上了什麼？",
+        "yes_readers": 2
+      },
+      {
+        "id": "chapters_are_events",
+        "required": false,
+        "yes": true,
+        "evidence": "[s59090] 秘書室裡，普斯卡斯照要求重新讓機器發聲。",
+        "yes_readers": 2
+      },
+      {
+        "id": "outro_no_next",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59110] 原始資料和頻道連結都在說明欄；喜歡歷史謎題，訂閱奇聞檔案局。",
+        "yes_readers": 2
+      },
+      {
+        "id": "opening_hooks",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59008] 幾位院士走進秘書室，請普斯卡斯重試；在那裡又會怎樣？",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_thread",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59108] 還記得箔上的壓痕嗎？它讓針與薄片在回放時再振動；喇叭不用借操作者的嘴說話。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_detour",
+        "required": true,
+        "yes": true,
+        "evidence": "[s59064] 杜蒙塞爾另記，規律的鐘錶機構讓二重唱重播得較好；可巴黎院士要查的，仍是那台手搖機。",
+        "yes_readers": 1
+      }
+    ]
+  }
+}

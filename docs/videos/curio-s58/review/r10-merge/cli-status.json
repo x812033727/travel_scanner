@@ -1,0 +1,46 @@
+{
+  "slug": "curio-s58",
+  "round": "R10",
+  "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node /workspace/travel_scanner/tools/video/cli.mjs narrative --slug curio-s58 --answers /workspace/travel_scanner/docs/videos/curio-s58/review/r10-merge/merged-answers.json --workdir /tmp/curio-s58-r10-merge-formal-A6MZVG --json",
+  "workdir": "/tmp/curio-s58-r10-merge-formal-A6MZVG",
+  "official_record_path": "/tmp/curio-s58-r10-merge-formal-A6MZVG/curio-s58/review/narrative.json",
+  "creative_sha256_before": {
+    "research.md": "b26201dd469744fe10c8d259beb93ebcda23609fdb6bc989a6f1d784d9f9779e",
+    "brief.md": "5afefc8547bc4fb4a597bcfc99e4e93bcec7631ad237085af78b596aa269a21f",
+    "claims.md": "4dc0fdf5c0ee1ce70d78e77e125a83afaf2b3f52fb5d474bb5e3594aa887b503",
+    "video.json": "f5ffe0868a570ab86b993cbdbe69014922b7447f078626e2c7294d531c21bbef",
+    "script.md": "37dbc104268814e5cc9db7ac72f13a537b2007e9e71c4c219c1252c4a2d7d3f0"
+  },
+  "creative_sha256_after": {
+    "research.md": "b26201dd469744fe10c8d259beb93ebcda23609fdb6bc989a6f1d784d9f9779e",
+    "brief.md": "5afefc8547bc4fb4a597bcfc99e4e93bcec7631ad237085af78b596aa269a21f",
+    "claims.md": "4dc0fdf5c0ee1ce70d78e77e125a83afaf2b3f52fb5d474bb5e3594aa887b503",
+    "video.json": "f5ffe0868a570ab86b993cbdbe69014922b7447f078626e2c7294d531c21bbef",
+    "script.md": "37dbc104268814e5cc9db7ac72f13a537b2007e9e71c4c219c1252c4a2d7d3f0"
+  },
+  "creative_unchanged": true,
+  "ballot_sha256": {
+    "a": "f1468b81333b1605a0b37f53f13936ab6f0a12863f4eba95ff88730393d3754f",
+    "b": "fe89c2808e611069e6d7ea5adcc039a7f964964234c76b471daffa1b52cd4592"
+  },
+  "merged_answers_sha256": "1f036c6e23a5522d1a9354560f6a375da7cae68dd51a369b0b10cfb36459de53",
+  "stdout_sha256": "703a1bf1f50e17ce02712f4cce05b8e485ca4f4f974f9be9da78e58997c1e198",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "official_record_sha256": "c50035be4f3f3e0939231a05c55fbc3c2bace311d6c89f8562ad0aa59c546400",
+  "exit_code": 1,
+  "cli_passed": false,
+  "cli_failed": [
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[s58053] 球終於停住了，卻已破爛得不能再乘。；[s58055] 氣球不能再飛；倖存器材要經過佔領區，第一步怎麼避開搜查？；讀者二：[s58053] 球終於停住了，卻已破爛得不能再乘。；[s58055] 氣球不能再飛；倖存器材要經過佔領區，第一步怎麼避開搜查？"
+    }
+  ],
+  "cli_advisory": [],
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "panel_narration_sha256": "ea89e479f7bab502cfb57f7b229ea568a4c93d8060b68dd3bc7bc695bac569ac",
+  "narrative_hash": "0aa141b925283407",
+  "official_round": 1
+}

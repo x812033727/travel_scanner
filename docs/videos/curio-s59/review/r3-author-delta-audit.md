@@ -1,0 +1,15 @@
+# S59 R3｜作者窄修逐景來源與書面畫面稽核
+
+2026-10-21 UTC。對照 [R2 正式敘事 HOLD](r2-merge/summary.md)及 [R2 獨立史料／畫面覆核](r2-source-independent.md)。D 固定原文 SHA-256 `c48361e94523ebacc000172ebab34895bb20c0b7e458ac3e122f90a3cc9e717c`；E 固定原文 SHA-256 `9818547c6dd15e488c1923bad5cc09cb4fa3f447641daaaf77b2f539b4d49d34`。這是作者差分稽核，R3 仍須獨立審稿。
+
+| R3 景 | 修正與真正覆蓋的原文行段／畫面界線 |
+| --- | --- |
+| s59014 | R2「紙盤留下點劃」重述刪掉，改直接問另一台機器能否沿壓痕重送電報。[E5195–5207](https://github.com/GITenberg/Edison--His-Life-and-Inventions_820/blob/b100fab326616897d87d7e296672f5f916624d32/820.txt#L5195-L5207) 的 `contact point`、`signals to be repeated` 支持；s59016 即答。 |
+| s59043–s59044 | R2 原先單句說螺絲及支架，R3 改成兩個**不同**操作：支架轉開以便更換錫箔，接著螺絲調針壓。[D6899–6909](https://github.com/GITenberg/Le-T-l-phone-le-Microphone-et-le-Phonographe_27574/blob/825f6fa891c8a23d957829a717c37a6af1dea2ae/27574-8.txt#L6899-L6909) 逐步記 `dégager le cylindre quand on doit placer ou retirer la feuille d'étain` 和 `régler la pression`。各景只畫一位工匠做一動作，不冒充精密原件剖面。這些新增有據細節讓刪掉重述後正文仍 >8 分鐘。 |
+| s59078–s59081 | R2 失敗結果後連述「又失敗／兩次相反」；R3 s59078 只報結果，s59079 報**來信所述懷疑者的反應** [D7013–7017](https://github.com/GITenberg/Le-T-l-phone-le-Microphone-et-le-Phonographe_27574/blob/825f6fa891c8a23d957829a717c37a6af1dea2ae/27574-8.txt#L7013-L7017)，s59080 新問嘴離話筒距離，s59081 新問院士要怎樣重試。[D7035–7041](https://github.com/GITenberg/Le-T-l-phone-le-Microphone-et-le-Phonographe_27574/blob/825f6fa891c8a23d957829a717c37a6af1dea2ae/27574-8.txt#L7035-L7041) 後來才給出唇未碰話筒邊的答案；[D7017–7021](https://github.com/GITenberg/Le-T-l-phone-le-Microphone-et-le-Phonographe_27574/blob/825f6fa891c8a23d957829a717c37a6af1dea2ae/27574-8.txt#L7017-L7021) 給出指定條件重試。s59080 插圖只畫一位學者看素面話筒，沒有虛構他當場量測距離。 |
+| s59004、s59009 | R2 兩張圖都讓懷疑者同框看操作員的臉或側影。R3 只見一位懷疑者與手柄／圓筒機，操作員在畫框之外或畫面不見第二人；旁白承擔腹語懷疑。[D6999–7013](https://github.com/GITenberg/Le-T-l-phone-le-Microphone-et-le-Phonographe_27574/blob/825f6fa891c8a23d957829a717c37a6af1dea2ae/27574-8.txt#L6999-L7013) 是引自未具名來信，不畫可讀假信。 |
+| s59017 | R2 圖畫了彎曲的**紙帶**；R3 改為一位發明者看有螺旋壓痕的**圓紙盤**。[E5195–5205](https://github.com/GITenberg/Edison--His-Life-and-Inventions_820/blob/b100fab326616897d87d7e296672f5f916624d32/820.txt#L5195-L5205) 明指 disk of paper／spiral groove，不能混進傳記編者另一段快速紙帶。 |
+| s59071–s59072 | R2 來源報告所稱 s59070／s59071 因前段新增一景而在 R3 位移一號。兩張改為一位懷疑者對著圓筒機表情變化或指向無人操作的手柄；沒有第二位可見的操作員。[D7002–7013](https://github.com/GITenberg/Le-T-l-phone-le-Microphone-et-le-Phonographe_27574/blob/825f6fa891c8a23d957829a717c37a6af1dea2ae/27574-8.txt#L7002-L7013) 支持口播的臉部／腹語疑慮，但插圖不是現場肖像證物。 |
+| s59097 | R2 圖要求一人同時檢查針及對話筒說話；R3 只畫一位學者嘴唇靠話筒**說話**，靜止的錫箔圓筒為背景。[D6915–6923](https://github.com/GITenberg/Le-T-l-phone-le-Microphone-et-le-Phonographe_27574/blob/825f6fa891c8a23d957829a717c37a6af1dea2ae/27574-8.txt#L6915-L6923) 與 [D7035–7040](https://github.com/GITenberg/Le-T-l-phone-le-Microphone-et-le-Phonographe_27574/blob/825f6fa891c8a23d957829a717c37a6af1dea2ae/27574-8.txt#L7035-L7040) 分別支持聲音傳入與本人距離說明。 |
+
+`brief.md` 刪去與 2026-10-20 新額度矛盾的「本月額度已滿」，改要求製作當日核台帳；`video.json` 的縮圖標題改純文字「腹語？」而無字面星號。R3 口播及畫面仍用原創示意，不宣稱上述插圖是可讀原物或當日逐格實錄。109／109 句 ID／主張組與固定行號的作者校核見 [R3 來源稽核](r3-source-citation-audit.md)。
