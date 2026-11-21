@@ -1,0 +1,1497 @@
+{
+  "schema_version": 1,
+  "slug": "curio-w08-claw-machine",
+  "theme": "paper",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。絕不平、絕不像在念稿。",
+    "performance": "像跟朋友拆解一場橫跨百年的法規博弈：開場首句直球破題帶驚訝；1920年代挖斗機輕快生動；1951年強森法與FBI砸機壓低緊湊有畫面感；1962年拆投幣口帶荒謬笑意；1985年粉紅櫥窗亮起來；日本千元上限與4177億日圓數字放慢唸清；台灣990元保夾與場主台主語氣客觀銳利；收尾商業鐵律鏗鏘落地。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -18,
+    "duck_db": -8
+  },
+  "pauses": {
+    "line_ms": 0,
+    "scene_ms": 150
+  },
+  "still_motion": "beat",
+  "scenes": [
+    {
+      "id": "open-night-arcade",
+      "chapter": "街角那台曾被砸爛的鐵爪",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a glowing Taiwanese night street corner lined with pink glass-front prize displays as two casual passersby pause admiring plain unbranded plush toys, warm street lamps reflecting on wet asphalt",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "w001",
+          "text": "你家巷口那台夾娃娃機，曾被美國當賭博機查扣。",
+          "emotion": "首句直球破題，立刻扣住縮圖反差"
+        },
+        {
+          "id": "w002",
+          "text": "最嚴時據當年老業者口述，FBI 拿鐵鎚砸毀機台。",
+          "emotion": "壓低緊湊，補齊口述限定語"
+        }
+      ]
+    },
+    {
+      "id": "open-hammer-smash",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle shot of a heavy steel sledgehammer swinging down above an antique wooden digger case inside a shadowy brick warehouse, dramatic warm rim light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w003",
+          "text": "一九五一年後，它幾乎被聯邦法令逼進絕境。",
+          "emotion": "收低一拍"
+        },
+        {
+          "id": "w004",
+          "text": "照常理看，它早就該被禁令徹底掃進歷史灰燼。",
+          "emotion": "拉大對比張力"
+        }
+      ]
+    },
+    {
+      "id": "open-japan-billions",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bright Japanese shopping center entrance packed with gleaming pink and white upright showcases as cheerful families browse plain unbranded plush bears and solid-color gift boxes",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "w005",
+          "text": "結果幾十年後，它在日本一年吸走四千多億日圓。",
+          "emotion": "亮起來，補齊幣別"
+        },
+        {
+          "id": "w006",
+          "text": "一口氣吃下全日本街機將近七成的總營收。",
+          "emotion": "驚嘆"
+        }
+      ]
+    },
+    {
+      "id": "open-taiwan-glow",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a brightly lit unmanned Taiwanese storefront along a midnight scooter-lined sidewalk with rows of colorful prize units shining warmly onto the street",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w007",
+          "text": "傳進台灣後，更長出滿街二十四小時無人店。",
+          "emotion": "輕快帶驚奇"
+        },
+        {
+          "id": "w008",
+          "text": "還演化出場主分租給台主的奇特二房東生意。",
+          "emotion": "拋出懸念"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a shiny metallic three-prong mechanical gripper hovering above three distinct symbols on a sunlit oak table: antique silver coins, a plain plush bear, and a brass shop padlock",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w009",
+          "text": "今天我們就來聊聊，它怎麼在法規夾擊間翻身？",
+          "emotion": "承諾句，唯一開場問句"
+        }
+      ]
+    },
+    {
+      "id": "us-origin-brooklyn",
+      "chapter": "1918 年布魯克林的迷你挖土機",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an early twentieth-century Brooklyn workshop bench with brass gears, small curved iron scoops, and hand-cranked levers bathed in dusty golden window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w010",
+          "text": "你以為夾娃娃機天生就是抓絨毛娃娃的嗎？",
+          "emotion": "放慢放輕，問句上揚"
+        },
+        {
+          "id": "w011",
+          "text": "其實它最早沒有爪子，而是一把迷你挖土機鐵斗。",
+          "emotion": "其實亮起來"
+        }
+      ]
+    },
+    {
+      "id": "us-canal-1918",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a vintage 1910s harbor workshop view with massive iron steam excavators digging a canal trench in the sunlit distance and small brass gears on a bench",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w012",
+          "text": "當時巴拿馬運河靠挖土機挖通，重機具紅遍全美。",
+          "emotion": "時間因果完全順暢"
+        },
+        {
+          "id": "w013",
+          "text": "約一九一八年，布魯克林技師做出抓斗雛形。",
+          "emotion": "俐落交代 1918 原型"
+        }
+      ]
+    },
+    {
+      "id": "us-steam-shovel-1926",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a curious 1920s fairgoer in a tweed cap peering into an upright four-sided glass and mahogany display where a miniature brass steam-shovel bucket scoops glossy wrapped candies, warm exhibition hall glow",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "w014",
+          "text": "八年後改良成玻璃木櫃機台，在芝加哥投幣機展登場。",
+          "emotion": "畫面精準，無透明木箱矛盾"
+        },
+        {
+          "id": "w015",
+          "text": "投一美分轉手輪挖糖，簡直像開重機具。",
+          "emotion": "一次講透玩法魅力"
+        }
+      ]
+    },
+    {
+      "id": "us-boom-1930s",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a cheerful 1930s American boardwalk arcade row lined with polished oak glass digger units and smiling strollers in period hats, warm evening light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "w016",
+          "text": "這股手搖挖斗風潮延燒，很快橫掃三〇年代美國街頭。",
+          "emotion": "零重複，俐落拉遠"
+        },
+        {
+          "id": "w017",
+          "text": "但這還不是高潮，一場電動升級替它埋下災難。",
+          "emotion": "語氣急轉，種下鉤子"
+        }
+      ]
+    },
+    {
+      "id": "us-electric-1932",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a 1930s American mechanical inventor in rolled white shirtsleeves and a dark vest leaning over a drafting table with a small electric motor and dual-cable bucket prototype, sunlit workshop",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "w018",
+          "text": "一九三二年，有人拿到專利，替它裝上電動馬達。",
+          "emotion": "俐落交代轉折"
+        },
+        {
+          "id": "w019",
+          "text": "這款電動挖斗機叫 Miami Digger，徹底改寫節奏。",
+          "emotion": "清楚初次介紹機名"
+        }
+      ]
+    },
+    {
+      "id": "us-electric-mechanism",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a five-cent nickel dropping down a brass coin chute to bridge two copper contacts, powering a compact 1930s electric motor with twin steel cables lifting a brass scoop",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w020",
+          "text": "投進五美分硬幣通電後，玩家只剩短短幾秒對準。",
+          "emotion": "節奏加快"
+        },
+        {
+          "id": "w021",
+          "text": "時間一到馬達就自動下斗，玩法漸漸變拚手氣。",
+          "emotion": "臨場感強"
+        }
+      ]
+    },
+    {
+      "id": "us-corn-coins-watches",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of a bright bed of dried golden corn kernels inside a clear showcase half-burying gleaming silver coins, pocket watches, and brass lighters beneath an open iron scoop",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w022",
+          "text": "這還不夠，業者連機台裡裝的獎品都開始變質。",
+          "emotion": "壓低語氣"
+        },
+        {
+          "id": "w023",
+          "text": "糖果換成厚厚一層玉米粒，底下埋滿銀幣名錶。",
+          "emotion": "驚訝挑眉"
+        }
+      ]
+    },
+    {
+      "id": "us-crowd-temptation",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of three 1930s men in fedoras and trench coats crowding around a glowing digger booth in a smoky storefront, eyes fixed on a shiny pocket watch inside",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "w024",
+          "text": "花五美分就能賭名錶銀幣，換作你忍得住嗎？",
+          "emotion": "對觀眾發問"
+        },
+        {
+          "id": "w025",
+          "text": "生意是一路爆紅了，但華盛頓政府已經盯上它。",
+          "emotion": "章末懸念停頓"
+        }
+      ]
+    },
+    {
+      "id": "law-johnson-act-1951",
+      "chapter": "1951 年《強森法》與鐵鎚砸機",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a solemn neoclassical limestone courthouse facade under stormy dusk clouds with warm light glowing from tall arched chamber windows",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w026",
+          "text": "投硬幣靠運氣撈銀幣名錶，國會看它就是老虎機。",
+          "emotion": "銳利一針見血"
+        },
+        {
+          "id": "w027",
+          "text": "一九五一年一月二日，美國正式通過《強森法》。",
+          "emotion": "沉穩有力"
+        }
+      ]
+    },
+    {
+      "id": "law-penalties-confiscation",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a heavy wooden gavel resting beside a brass vintage slot-machine lever and a miniature iron digger bucket on a dark walnut desk, cool window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w028",
+          "text": "只要投硬幣又靠運氣換財物，一律嚴禁跨州運送。",
+          "emotion": "口語一次說透"
+        },
+        {
+          "id": "w029",
+          "text": "違者最高罰五千美元、關兩年，機台全數沒收。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "law-sledgehammer-fire",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle dramatic shot of 1950s federal agents swinging heavy steel sledgehammers into a pile of mahogany glass digger boxes beside a roaring bonfire in a brick courtyard at night",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "w030",
+          "text": "法令一上路就來真的，正是開頭 FBI 砸機台那一幕。",
+          "emotion": "零拖沓直奔縮圖高潮"
+        },
+        {
+          "id": "w031",
+          "text": "查扣機台敲碎後，跟老虎機一起丟進火堆焚燒。",
+          "emotion": "低沉震撼"
+        }
+      ]
+    },
+    {
+      "id": "law-shattered-glass",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of shattered window panes, splintered mahogany panels, and a bent brass scoop lying among glowing orange embers in a dark yard, dramatic fire rim light",
+        "camera": "pull back",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w032",
+          "text": "風光近二十年的挖斗機，一夜成了火堆違禁品。",
+          "emotion": "帶點嘆息"
+        },
+        {
+          "id": "w033",
+          "text": "全美廠商瞬間急瘋了，他們怎麼想招硬撐活下來？",
+          "emotion": "拋出中段疑問"
+        }
+      ]
+    },
+    {
+      "id": "law-chicago-coin-1956",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a mid-1950s retro chrome-trimmed arcade frame with a mechanical scoop inside and an empty prize chute beneath a glowing dial gauge, moody workshop light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w034",
+          "text": "一九五六年，老牌街機廠 Chicago Coin 索性封死獎口。",
+          "emotion": "帶無奈笑意"
+        },
+        {
+          "id": "w035",
+          "text": "改成只算分數不掉獎，但連顆糖都拿不到誰要玩？",
+          "emotion": "對觀眾吐嘈"
+        }
+      ]
+    },
+    {
+      "id": "law-1962-loophole",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an open wooden arcade chassis with a detached brass coin chute resting beside an electric wire relay on a shadowy workbench, dramatic side light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w036",
+          "text": "也有別家拆掉投幣口，靠人工通電硬鑽漏洞。",
+          "emotion": "清楚銜接漏洞由來"
+        },
+        {
+          "id": "w037",
+          "text": "一九六二年國會修法補網，把免投幣電動機也封死。",
+          "emotion": "果斷收緊"
+        }
+      ]
+    },
+    {
+      "id": "law-1962-three-rules",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a solid brass hand crank bolted beside a riveted metal plate covering an old coin slot on a wooden fairground unit, crisp side light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w038",
+          "text": "但新法角落仍留一道極窄後門給挖斗機。",
+          "emotion": "口語講清"
+        },
+        {
+          "id": "w039",
+          "text": "只要不裝投幣口、純靠手搖桿，且限嘉年華就合法。",
+          "emotion": "三要件講白，統一用語"
+        }
+      ]
+    },
+    {
+      "id": "law-carnival-string",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a 1960s carnival booth attendant in a striped vest smiling as he takes a shiny dime and pulls a thin taut cord unlocking a wooden hand-crank digger unit under warm fairground bulbs",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "w040",
+          "text": "問題來了：拆掉投幣口，嘉年華攤商要怎麼收錢？",
+          "emotion": "拋出荒謬小問"
+        },
+        {
+          "id": "w041",
+          "text": "老攤商回憶，當時改由店員當面收十美分。",
+          "emotion": "嚴格區分口述實務"
+        }
+      ]
+    },
+    {
+      "id": "law-string-unlock",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a taut cotton cord pulling back a brass latch inside a wooden crank box so the exterior hand lever clicks free to rotate, warm carnival lantern light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w042",
+          "text": "店員一拉細繩解鎖手搖桿，獎品也壓在一美元內避嫌。",
+          "emotion": "機制講透，統一用語"
+        },
+        {
+          "id": "w043",
+          "text": "靠這招超土繞道法，才勉強保住一條命。",
+          "emotion": "輕嘆"
+        }
+      ]
+    },
+    {
+      "id": "law-fading-fairground",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet dusk county fairground with striped carnival tents packing up and a lone hand-crank digger unit sitting beside a wooden wagon under deep twilight sky",
+        "camera": "pull back",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w044",
+          "text": "被困在流動博覽會裡的手搖機，註定做不大。",
+          "emotion": "平穩收束美國章"
+        },
+        {
+          "id": "w045",
+          "text": "它怎麼會在二十多年後換上粉紅外衣，占領東亞？",
+          "emotion": "章末鉤子，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "jp-gantry-1970s",
+      "chapter": "1985 年搬到大門口的粉紅櫥窗",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an overhead twin-rail metal gantry crane carrying shiny three-prong silver claws gliding smoothly inside a bright display box packed with soft unbranded plush toys, crisp lighting",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w046",
+          "text": "美國被鎖死後，七〇年代末這類機台跨海傳進日本。",
+          "emotion": "補齊跨海轉場"
+        },
+        {
+          "id": "w047",
+          "text": "原本笨重的挖土鐵斗改成上方滑軌吊爪，專夾玩偶。",
+          "emotion": "清楚交代挖斗變吊爪"
+        }
+      ]
+    },
+    {
+      "id": "jp-dim-arcade-1980s",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a dimly lit early 1980s Japanese game center interior packed with dark rows of boxy CRT video arcade units and glowing blue screens, moody indoor shadows",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w048",
+          "text": "但當時日本街機廳一片昏暗，女生小孩不敢進。",
+          "emotion": "描繪反差"
+        },
+        {
+          "id": "w049",
+          "text": "要怎麼把路人拉進來？一九八五年出現大轉折。",
+          "emotion": "中段小問拉住節奏"
+        }
+      ]
+    },
+    {
+      "id": "jp-sega-pink-cabinet",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle shot of a gleaming bright pink upright showcase unit standing right at a sunlit modern arcade entrance, large clear display window filled with cute plain unbranded plush bears at eye level",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w050",
+          "text": "日本遊戲大廠 Sega 這一年推出初代 UFO Catcher。",
+          "emotion": "亮起來"
+        },
+        {
+          "id": "w051",
+          "text": "他們反其道而行，把目標直接鎖定女生跟小孩。",
+          "emotion": "重點清楚"
+        }
+      ]
+    },
+    {
+      "id": "jp-window-entrance",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two young Japanese women in 1980s casual spring jackets smiling and pointing eagerly through the sparkling window of a pink display unit right beside a wide sunlit doorway",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "w052",
+          "text": "機身漆粉紅、做成百貨櫥窗直接擺大門口。",
+          "emotion": "畫面生動"
+        },
+        {
+          "id": "w053",
+          "text": "但這還不是最聰明的，它還設計了極簡兩步驟。",
+          "emotion": "給出操作對照組"
+        }
+      ]
+    },
+    {
+      "id": "jp-two-buttons",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a player's hand hovering over two simple round bright colored controls on a clean pink panel while a metal gripper glides sideways then deeper inside the showcase",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "w054",
+          "text": "先橫移、再往深處下爪，路人看三秒就敢投幣。",
+          "emotion": "嚴守原文兩步驟，俐落輕快"
+        },
+        {
+          "id": "w055",
+          "text": "這招徹底翻轉街機廳昏暗形象，掀起布偶收藏潮。",
+          "emotion": "對觀眾說話"
+        }
+      ]
+    },
+    {
+      "id": "jp-1991-boom",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of cheerful early 1990s Japanese young fans hugging plain unbranded fluffy plush bears and cute horse plushies beside a bright pink arcade showcase",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "w056",
+          "text": "九〇年代它搭上日本賽馬熱，名馬布偶超搶手。",
+          "emotion": "自然帶出收藏潮，不用未解釋專詞"
+        },
+        {
+          "id": "w057",
+          "text": "玩家為夾到限定玩偶大排長龍，街機廳塞滿人潮。",
+          "emotion": "直連日本千億商業轉折"
+        }
+      ]
+    },
+    {
+      "id": "jp-fueiho-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a shiny metal three-prong gripper suspended above a ribboned plain plush bear inside an illuminated pink showcase, dramatic suspenseful spotlight",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w058",
+          "text": "但奇怪了：日本對賭博的禁令一樣嚴格到不行。",
+          "emotion": "語氣急轉"
+        },
+        {
+          "id": "w059",
+          "text": "這座粉紅櫥窗怎麼沒被抄店，還反靠禁令養成帝國？",
+          "emotion": "章末強鉤子，直通下章揭曉"
+        }
+      ]
+    },
+    {
+      "id": "jp-fueiho-law",
+      "chapter": "1000 日圓紅線逼出的非市售帝國",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a neatly bound dark-blue Japanese legal code resting next to a single gleaming silver coin and a small plain plush bear on a sunlit wooden table",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w060",
+          "text": "答案藏在日本管娛樂場所的《風營法》標準裡。",
+          "emotion": "立刻接住禁令揭曉"
+        },
+        {
+          "id": "w061",
+          "text": "它嚴禁獎品換現金，只准玩家直接抓取低價小物。",
+          "emotion": "嚴謹交代紅線"
+        }
+      ]
+    },
+    {
+      "id": "jp-800-cap",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an antique brass balance scale on a warm oak desk, with a neat stack of silver coins on the left pan balancing a small plain plush bear on the right pan, soft golden window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w062",
+          "text": "單件市價原限約八百日圓，二〇二二年才調到一千。",
+          "emotion": "語氣亮起"
+        },
+        {
+          "id": "w063",
+          "text": "卡在這道低價天花板內，獎品怎麼吸引人投幣？",
+          "emotion": "年份數字自然"
+        }
+      ]
+    },
+    {
+      "id": "jp-non-retail-spark",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a shopper standing between an ordinary bright store shelf and an illuminated arcade showcase window, squinting curiously at a neat ribboned prize box inside",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "w064",
+          "text": "日本廠商這時出了絕招，把紅線玩成最強護城河。",
+          "emotion": "神祕上揚"
+        },
+        {
+          "id": "w065",
+          "text": "市售商品有標價、超線不能放，他們乾脆不零售。",
+          "emotion": "揭曉關鍵解法"
+        }
+      ]
+    },
+    {
+      "id": "jp-non-retail-factory",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bright tidy Japanese toy workshop assembly line where plain unbranded plush creatures move along a belt while an anonymous factory inspector checks neatly stacked solid-color gift boxes, sunlit factory windows",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "w066",
+          "text": "大廠專門開模，做只供機台的「遊樂設施專用景品」。",
+          "emotion": "首次正式定義景品"
+        },
+        {
+          "id": "w067",
+          "text": "賣給機台商的批發價，全數嚴格壓在上限之內。",
+          "emotion": "點出合規結構"
+        }
+      ]
+    },
+    {
+      "id": "jp-no-cash-exchange",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a shiny metal three-prong gripper gently dropping a ribboned plain plush toy into a clean exit chute beneath bright arcade spotlights",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w068",
+          "text": "玩家夾到手直接帶回家，合規又把稀缺拉滿。",
+          "emotion": "零重複，點出合法與稀缺"
+        },
+        {
+          "id": "w069",
+          "text": "百貨跟電商買不到同款，誰還會去比價？",
+          "emotion": "拆解消費心理"
+        }
+      ]
+    },
+    {
+      "id": "jp-supply-moat",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of delicate stitched seams and soft plush fur on a neat row of exclusive ribboned plain plush bears sitting on a sunlit display shelf, crisp studio detail",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w112",
+          "text": "在合法成本框裡，大廠把設計力全砸進獨家造型。",
+          "emotion": "點出日本景品護城河"
+        },
+        {
+          "id": "w113",
+          "text": "這套非市售限定，把過路客全練成了忠實收藏客。",
+          "emotion": "流暢推進"
+        }
+      ]
+    },
+    {
+      "id": "jp-2001-white-hall",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bright clean early twenty-first-century white-bodied row of glass claw machines inside a sunny Japanese family shopping mall as parents and children smile beside plain plush displays",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "w114",
+          "text": "為襯托限定景品，第七代 UFO Catcher 換純白機身。",
+          "emotion": "流暢承接限定景品，緊貼 WH12-S018"
+        },
+        {
+          "id": "w115",
+          "text": "明亮店面加收藏潮，究竟滾出多大的生意？",
+          "emotion": "畫面明亮開闊，拋出鉤子"
+        }
+      ]
+    },
+    {
+      "id": "jp-jaia-scale",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bustling multi-story bright Japanese arcade floor glowing with neat rows of colorful upright prize units and happy everyday families browsing, cheerful warm light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "w070",
+          "text": "還記得開頭提過的四千多億日圓嗎？答案就在這。",
+          "emotion": "明確回呼開場數據"
+        },
+        {
+          "id": "w071",
+          "text": "日本遊樂產業協會 JAIA 公布了驚人的實戰數字。",
+          "emotion": "清楚介紹 JAIA"
+        }
+      ]
+    },
+    {
+      "id": "jp-jaia-total",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of ten neat stacks of gleaming golden coins arranged on a bright wooden table, seven tall glowing stacks grouped beside a miniature metal gripper and three smaller stacks beside an arcade joystick",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w072",
+          "text": "二〇二四年度，街機總收六千一百四十八億日圓。",
+          "emotion": "數字與幣別放慢唸清"
+        },
+        {
+          "id": "w073",
+          "text": "景品獨吞四千一百七十七億日圓，精準占六成八。",
+          "emotion": "震撼揭曉，幣別精準"
+        }
+      ]
+    },
+    {
+      "id": "jp-258k-machines",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a sunlit modern Japanese shopping avenue arcade wall stretching across gleaming white and pink prize machines with everyday shoppers smiling beside plush displays",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "w074",
+          "text": "全日本擺設的機台突破二十五萬八千九百台。",
+          "emotion": "語氣有力"
+        },
+        {
+          "id": "w075",
+          "text": "當手遊把傳統電玩打得節節敗退，是它救活街機業。",
+          "emotion": "收束日本篇"
+        }
+      ]
+    },
+    {
+      "id": "jp-taiwan-transition",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a brightly lit unmanned Taiwanese storefront along a quiet night arcade corridor as an evening scooter rider pauses outside the glowing rows of colorful glass cases",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "w076",
+          "text": "但你想過嗎？台灣並沒有日本那種專用景品大廠。",
+          "emotion": "對觀眾丟出轉折"
+        },
+        {
+          "id": "w077",
+          "text": "為何台灣街頭仍滿街無人店，還冒出滿街台主？",
+          "emotion": "章末鉤子"
+        }
+      ]
+    },
+    {
+      "id": "tw-arcade-barrier",
+      "chapter": "990 元「保證取物」如何催生台灣無人店",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a locked heavy iron shop shutter secured with a thick brass padlock on a city street corner beside a glowing neon glass storefront next door",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w078",
+          "text": "你猜對了，台灣走出的第三條路同樣藏在法規裡。",
+          "emotion": "完美承接美日法規線，零孤立詞"
+        },
+        {
+          "id": "w079",
+          "text": "在台灣想開合法電玩場，依法須領極高門檻執照。",
+          "emotion": "交代高門檻"
+        }
+      ]
+    },
+    {
+      "id": "tw-moea-rule",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an official bound document folder resting on an oak desk beside a brass stamp and a neat line of silver coins leading toward a glowing metallic three-prong claw",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w080",
+          "text": "但經濟部《自助選物販賣事業管理規範》開了新門。",
+          "emotion": "語氣亮起"
+        },
+        {
+          "id": "w081",
+          "text": "只要具保證取物與對價原則，經評鑑就非屬電玩機。",
+          "emotion": "清楚交代經濟部評鑑來源"
+        }
+      ]
+    },
+    {
+      "id": "tw-guaranteed-claw",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a neat shiny stack of silver coins accumulating beside a display box while the metallic three-prong gripper inside glows golden and clamps firmly onto a plain solid-color gift box",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w082",
+          "text": "也就是你熟悉的保夾：投滿必出貨，累投絕不歸零。",
+          "emotion": "連結日常經驗"
+        },
+        {
+          "id": "w083",
+          "text": "現行規範明定，保證取物上限為新台幣九百九十元。",
+          "emotion": "嚴守一手來源，補齊新台幣"
+        }
+      ]
+    },
+    {
+      "id": "tw-license-bypass",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a lively Taiwanese city corner at dusk where a bright open glass-walled unmanned shop sits beside a tea stand as ordinary pedestrians stroll past",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "w084",
+          "text": "拿到經濟部評鑑後，它就變自助販賣機，免電玩牌照。",
+          "emotion": "點出突破口"
+        },
+        {
+          "id": "w085",
+          "text": "可就算能開進巷口，房租這麼硬，為何會大爆發？",
+          "emotion": "中段再拋鉤子"
+        }
+      ]
+    },
+    {
+      "id": "tw-landlord-sublease",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bright Taiwanese unmanned shop interior with twenty neatly lined colorful cases fitted with distinct colored brass padlocks as two casual friends browse down the aisle",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "w086",
+          "text": "台灣順著這套規範，長出極具特色的雙層分租。",
+          "emotion": "亮出台灣特色"
+        },
+        {
+          "id": "w087",
+          "text": "經濟部規範更正式定義了兩種角色：場主與台主。",
+          "emotion": "對照法規原文"
+        }
+      ]
+    },
+    {
+      "id": "tw-coin-changer",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a glowing silver bill-to-coin changer unit mounted beside a neat row of brightly lit unmanned display boxes, gleaming stacks of silver coins in the metal tray",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w088",
+          "text": "牆邊裝台兌幣機加監視器，整間店免請半個店員。",
+          "emotion": "具體畫面感"
+        },
+        {
+          "id": "w089",
+          "text": "白天上班族沒空顧店，下班也能順路補貨收錢。",
+          "emotion": "貼近台灣日常"
+        }
+      ]
+    },
+    {
+      "id": "tw-cctv-rules",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a neat security camera mounted above bright glass prize displays beside a smooth unadorned color-coded wall plaque",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w090",
+          "text": "經濟部規範甚至明訂，店裡要貼場主台主資訊。",
+          "emotion": "緊貼 WH12-S020 第十點"
+        },
+        {
+          "id": "w091",
+          "text": "連監視錄影告示跟聯絡方式，都寫進管理規則。",
+          "emotion": "細節真實有感"
+        }
+      ]
+    },
+    {
+      "id": "tw-taizhu-restock",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an ordinary young office worker in a casual polo shirt unlocking a single display case after work to carefully arrange plain unbranded plush toys and solid-color snack boxes inside",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "w092",
+          "text": "開頭提過的二房東模式就這樣誕生：場主買整排分租。",
+          "emotion": "明確回呼開場，零重複感"
+        },
+        {
+          "id": "w093",
+          "text": "台主自批貨收錢，場主按月收租把風險拆散。",
+          "emotion": "客觀中立"
+        }
+      ]
+    },
+    {
+      "id": "tw-risks-warning",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a loose metallic prong inside a dimly lit cluttered unit with a sealed mystery wrapped parcel, cool stark warning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w094",
+          "text": "但先等一下，你千萬別以為當台主就能躺著賺。",
+          "emotion": "急剎提醒，拋出懸念"
+        },
+        {
+          "id": "w095",
+          "text": "滿街飽和後亂象四起，有人違規改裝機台踩線。",
+          "emotion": "嚴守來源"
+        }
+      ]
+    },
+    {
+      "id": "tw-illegal-mods",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of small wooden barrier boards, elastic bounce cords, and tiny magnets laid out as confiscated tampering parts on a cool grey inspection table beside a brass magnifying glass",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w116",
+          "text": "有人加隔板、彈跳網，甚至改裝磁吸與骰子玩法。",
+          "emotion": "呈現具體改裝手法，緊貼 WH12-S020 第七點"
+        },
+        {
+          "id": "w117",
+          "text": "更誇張的是偷塞違禁獎品，規範究竟封死哪些項目？",
+          "emotion": "精準引出 w096 禁放品項清單"
+        }
+      ]
+    },
+    {
+      "id": "tw-ban-rules",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a red official warning seal pressed beside a small stack of forbidden banknotes and unmarked mystery grab bags on a cold grey inspection table",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w096",
+          "text": "規範嚴禁放現金、福袋與戳戳樂，更禁金錢買回。",
+          "emotion": "條文嚴明"
+        },
+        {
+          "id": "w097",
+          "text": "只要敢任意歸零或踩線，就視同非法電玩開罰。",
+          "emotion": "交代法律後果"
+        }
+      ]
+    },
+    {
+      "id": "tw-enforcement-shakeout",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet late-night city street where one unmanned shop has dark powered-off machines behind windows while a bright bustling snack-filled shop glows warmly down the block",
+        "camera": "pull back",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w098",
+          "text": "幾波泡沫與稽查後，盲目進場的台主退了一大票。",
+          "emotion": "冷靜客觀"
+        },
+        {
+          "id": "w099",
+          "text": "留下的早非躺賺神話，而是拚選品的零售戰場。",
+          "emotion": "務實收束"
+        }
+      ]
+    },
+    {
+      "id": "tw-retail-shift",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tidy bright Taiwanese unmanned display cabinet filled with neatly arranged plain solid-color snack boxes and cute unbranded plush toys under clean warm ceiling lights",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w118",
+          "text": "活下來的台主精挑零食雜貨，守住合理定價。",
+          "emotion": "緊接零售轉型，零重複法條"
+        },
+        {
+          "id": "w119",
+          "text": "不靠花招硬坑玩家，而是讓人甘願買單才撐過退潮。",
+          "emotion": "客觀中立收束"
+        }
+      ]
+    },
+    {
+      "id": "tw-bridge-synthesis",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of three symbolic objects placed in a neat line on a sunlit oak archive desk: an antique brass hand crank, a small ribboned plush bear, and a gleaming brass padlock",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w100",
+          "text": "把美、日、台三國的轉彎並排來看，規律很清楚。",
+          "emotion": "準備總結"
+        },
+        {
+          "id": "w101",
+          "text": "這三場百年突變，到底藏著什麼共同底層邏輯？",
+          "emotion": "拋出收尾問句"
+        }
+      ]
+    },
+    {
+      "id": "end-three-mutations",
+      "chapter": "三道反賭博紅線，改寫了同一把鐵爪的命運",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of three miniature illuminated stages side by side on a warm archive desk: an antique hand-cranked wooden fairground digger on the left, a bright pink Japanese showcase in the center, and a neon-lit Taiwanese unmanned shop row on the right",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w102",
+          "text": "答案是一條商業鐵律：法規不只會殺死一門生意。",
+          "emotion": "直接回答上一句底層邏輯問題"
+        },
+        {
+          "id": "w103",
+          "text": "它更常常決定這門生意，最後會突變成什麼物種。",
+          "emotion": "金句落地"
+        }
+      ]
+    },
+    {
+      "id": "end-lens-repackage",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a sleek silver mechanical gripper smoothly rotating beneath warm directional studio light as soft colored reflections dance across its polished joints",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w104",
+          "text": "每次被反賭紅線逼到牆角，業界改的都不是好玩。",
+          "emotion": "全新商業拆解"
+        },
+        {
+          "id": "w105",
+          "text": "而是把「碰運氣博弈」重新包裝成合法交易。",
+          "emotion": "一語道破"
+        }
+      ]
+    },
+    {
+      "id": "end-three-engines",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of three distinct stylized miniature icons lit warmly on a wooden table: a carnival brass crank gear, a velvet-lined exclusive gift dome, and a tidy color-coded row of brass shopfront keys",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w106",
+          "text": "堵死自動就變人工，鎖死單價呢？",
+          "emotion": "抽象提煉，帶問句"
+        },
+        {
+          "id": "w107",
+          "text": "它做起獨家景品；要求保夾就成零售租賃。",
+          "emotion": "俐落收束"
+        }
+      ]
+    },
+    {
+      "id": "end-living-fossil",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a cheerful passerby smiling outside a warmly lit street-corner prize showcase window at dusk while golden light spills across the sidewalk",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "w108",
+          "text": "下次你握著十元硬幣經過街角時，多看一眼保夾。",
+          "emotion": "回到觀眾日常"
+        },
+        {
+          "id": "w109",
+          "text": "眼前這把無害鐵爪，其實是百年法規博弈活化石。",
+          "emotion": "餘韻落地"
+        }
+      ]
+    },
+    {
+      "id": "end-close",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a warm sunlit wooden archive desk where a brass-clasped dossier folder lies neatly closed beside a miniature plain plush bear and a steaming ceramic teacup",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "w110",
+          "text": "你夾娃娃花過最誇張是多少？留言聊聊！",
+          "emotion": "親切邀請觀眾留言"
+        },
+        {
+          "id": "w111",
+          "text": "喜歡日常背後的規則，訂閱奇聞檔案局。",
+          "emotion": "溫暖乾脆落地"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "w001",
+      "payoff": "w030",
+      "what": "夾娃娃機為何被美國當成賭博機查扣甚至據口述遭 FBI 拿鐵鎚砸毀"
+    },
+    {
+      "setup": "w005",
+      "payoff": "w073",
+      "what": "它怎麼在日本翻身一年吸走四千多億日圓、吞下近七成街機營收"
+    },
+    {
+      "setup": "w008",
+      "payoff": "w092",
+      "what": "台灣滿街場主分租給台主的二房東無人店到底怎麼冒出來的"
+    },
+    {
+      "setup": "w010",
+      "payoff": "w015",
+      "what": "夾娃娃機最早根本不抓娃娃，它原本是什麼機器"
+    },
+    {
+      "setup": "w017",
+      "payoff": "w023",
+      "what": "哪一場電動升級替風光的挖斗機埋下滅頂之災"
+    },
+    {
+      "setup": "w025",
+      "payoff": "w029",
+      "what": "投幣挖現金與名錶引來美國聯邦政府什麼嚴厲處罰"
+    },
+    {
+      "setup": "w033",
+      "payoff": "w039",
+      "what": "全美挖斗機遭查禁砸毀後，廠商靠什麼辦法硬撐活下來"
+    },
+    {
+      "setup": "w040",
+      "payoff": "w042",
+      "what": "拆掉投幣口後，嘉年華攤商怎麼收錢解鎖手搖桿"
+    },
+    {
+      "setup": "w045",
+      "payoff": "w052",
+      "what": "被困在嘉年華的手搖機怎麼在二十多年後換上粉紅外衣占領東亞"
+    },
+    {
+      "setup": "w049",
+      "payoff": "w054",
+      "what": "日本街機廳那麼昏暗，Sega 怎麼把女生跟小孩拉進來"
+    },
+    {
+      "setup": "w059",
+      "payoff": "w066",
+      "what": "日本反賭博禁令這麼嚴，粉紅櫥窗怎麼沒被抄店反倒靠它養成帝國"
+    },
+    {
+      "setup": "w063",
+      "payoff": "w069",
+      "what": "卡在價格天花板內的小獎品，憑什麼讓玩家願意一投再投"
+    },
+    {
+      "setup": "w077",
+      "payoff": "w084",
+      "what": "台灣沒有日本專用景品大廠，靠哪條法規評鑑長出滿街無人店"
+    },
+    {
+      "setup": "w085",
+      "payoff": "w093",
+      "what": "能開進巷口後，房租這麼硬為何台灣街頭會突然大爆發"
+    },
+    {
+      "setup": "w094",
+      "payoff": "w099",
+      "what": "為什麼不能以為當台主就能躺著賺，面臨什麼紅線與泡沫"
+    },
+    {
+      "setup": "w101",
+      "payoff": "w105",
+      "what": "美日台三場橫跨百年的突變背後藏著什麼共同底層邏輯"
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "layout": "heimao-left",
+      "headline": "夾娃娃機被 FBI 砸毀？",
+      "sub": "靠三條法規變千億帝國",
+      "asset": "stock/4aa2d41c3a584dc2324acbbd4c39f174e90bad995a2e5778eafbd4482a04e1e3.png"
+    }
+  },
+  "youtube": {
+    "title": "夾娃娃機竟然被 FBI 砸毀，為何反而變千億帝國與台灣無人店？｜奇聞檔案局",
+    "description": "夜市巷口一整排亮著燈的夾娃娃機，在 1951 年的美國竟被聯邦法律視同賭博機查扣，據古董修復師口述甚至曾遭 FBI 拿大鐵鎚砸毀——它到底怎麼在三國法規夾擊間完成三場商業突變？\n給每次經過娃娃機店都忍不住多看兩眼、好奇日常街頭生意背後制度邏輯的人。\n\n這一集從 1918 年紐約布魯克林最早的迷你挖斗機雛形翻起：1926 年抓糖果的 Miniature Steam Shovel 與 Erie Digger、1928 年 Panama Digger、1932 年讓玉米粒裡埋進銀幣與名錶的電動專利 Miami Digger；接著直擊 1951 年《強森法》查扣砸機與 1962 年「非投幣、手搖曲柄、嘉年華專用」的狹窄豁免。鏡頭再跨過太平洋，看 1985 年日本 Sega 如何把粉紅櫥窗 UFO Catcher 推上遊戲中心大門口、又怎麼順著《風營法》800 到 1,000 日圓上限催生出 2024 年度高達 4,177 億日圓（占街機總營收 68%）的非市售專用景品帝國；最後回到台灣，拆解經濟部現行上限新台幣 990 元的「保證取物」評鑑，如何讓夾娃娃機免領電子遊戲場執照，演化出「場主」分租給「台主」的 24 小時無人店，以及違規改裝、禁放品項與泡沫退潮後的真實市場。\n\n本頻道與片中提及之企業與機構無合作或贊助關係。所有法規與數據皆出自下方公開一手與機構參考資料。\n\n本集插圖由 AI 生成。\n\n資料截至 2026-11-21",
+    "tags": [
+      "夾娃娃機",
+      "UFO Catcher",
+      "Sega",
+      "強森法",
+      "風營法",
+      "保證取物",
+      "台主",
+      "場主",
+      "商業奇聞",
+      "奇聞檔案局"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "sources": [
+    {
+      "title": "Arcade 1: Illustrated Historical Guide to Arcade Machines, Volume 1 (Richard M. Bueschel, 1993 / Internet Archive)",
+      "url": "https://archive.org/details/arcade-1-1993-book-scans",
+      "checked_on": "2026-11-21"
+    },
+    {
+      "title": "美國專利 US1882563A — Coin controlled vending machine (William D. Bartlett, 1932)",
+      "url": "https://patents.google.com/patent/US1882563A/en",
+      "checked_on": "2026-11-21"
+    },
+    {
+      "title": "Mental Floss〈Dime After Dime: A Gripping History of Claw Machines〉",
+      "url": "https://www.mentalfloss.com/fun/dime-after-dime-gripping-history-claw-machines",
+      "checked_on": "2026-11-21"
+    },
+    {
+      "title": "美國聯邦法典 15 U.S.C. Ch. 24 — Transportation of Gambling Devices (§§ 1171–1178)",
+      "url": "https://www.govinfo.gov/content/pkg/USCODE-2020-title15/pdf/USCODE-2020-title15-chap24.pdf",
+      "checked_on": "2026-11-21"
+    },
+    {
+      "title": "美國司法部刑事司：Information Regarding the Gambling Devices Act of 1962",
+      "url": "https://www.justice.gov/sites/default/files/criminal-oeo/legacy/2014/06/06/gamblingdvc-1962.pdf",
+      "checked_on": "2026-11-21"
+    },
+    {
+      "title": "4Gamer.net：Sega「UFO Catcher」35 週年官方發表文全文（2020-06-23）",
+      "url": "https://www.4gamer.net/games/999/G999905/20200623101/",
+      "checked_on": "2026-11-21"
+    },
+    {
+      "title": "日本遊樂產業協會（JAIA）：日本國內景品遊戲法規說明與 2024 年度營收統計",
+      "url": "https://jaia.jp/%E3%83%A1%E3%83%87%E3%82%A3%E3%82%A2%E3%81%AE%E3%81%BF%E3%81%AA%E3%81%95%E3%81%BE%E3%81%B8/",
+      "checked_on": "2026-11-21"
+    },
+    {
+      "title": "中華民國經濟部：《自助選物販賣事業管理規範》",
+      "url": "https://gcis.nat.gov.tw/elawAp/api/lawAttachment/243",
+      "checked_on": "2026-11-21"
+    }
+  ],
+  "assets": [
+    {
+      "path": "stock/4aa2d41c3a584dc2324acbbd4c39f174e90bad995a2e5778eafbd4482a04e1e3.png",
+      "source": "Mokaair 奇聞檔案局",
+      "license": "Mokaair"
+    }
+  ]
+}
