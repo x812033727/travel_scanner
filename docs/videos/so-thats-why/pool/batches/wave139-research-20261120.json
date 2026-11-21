@@ -1,0 +1,634 @@
+{
+  "batch_id": "wave139-research-20261120",
+  "created_on": "2026-11-20",
+  "scope": "從台灣常見的車頭燈與標線進入材料截面，沿著回程光追到駕駛看見線頭的地點，再用使用後的儀器追蹤檢驗乾、濕差別。區分模擬雨與自然雨、珠粒與整條路面、人因公尺與儀器係數。參考 #2182 的桌面／口袋30公分掃描，從出門看到的白線追到一顆嵌入珠。",
+  "sources": [
+    {
+      "id": "R139-S01",
+      "url": "https://mtl.thb.gov.tw/cp.aspx?n=12514",
+      "canonical_url": "https://mtl.thb.gov.tw/cp.aspx?n=12514",
+      "title": "標線反光強度量測",
+      "publisher": "交通部公路局工程材料技術所",
+      "network": "台灣公路局工程材料技術所",
+      "version": "網頁標示更新 2024-03-13",
+      "accessed_on": "2026-11-20",
+      "read_via": "以網頁閱讀工具直接開啟官網正文第 358–361 行。命令列收到的攔截畫面未作證。",
+      "reading_scope": "「標線反光強度量測」正文第1、2段與「相關試驗規範」條列。",
+      "locator": "「標線反光強度量測」正文第1、2段與「相關試驗規範」條列。",
+      "summary": "手提儀量擴散照明輝度係數 Qd 與回歸反射輝度係數 RL。夜間這裡關心頭燈的光經珠子返回駕駛眼睛；規範另列水桶法濕回復。",
+      "limitations": "方法說明，沒有台灣駕駛的實車視距數據。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R139-S02",
+      "url": "https://store.astm.org/e1710-18r25.html",
+      "canonical_url": "https://store.astm.org/e1710-18r25.html",
+      "title": "ASTM E1710-18(2025)，portable retroreflectometer geometry",
+      "publisher": "ASTM International",
+      "network": "ASTM International",
+      "version": "E1710-18（2025 再確認）",
+      "accessed_on": "2026-11-20",
+      "read_via": "讀標準制定組織公開的 Significance and Use 及 Scope。",
+      "reading_scope": "§5.5（30 m、0.65 m、1.2 m）；§1 entrance／observation angles。",
+      "locator": "§5.5（30 m、0.65 m、1.2 m）；§1 entrance／observation angles。",
+      "summary": "量測光路取用三十公尺觀察距離、一點二公尺眼高及零點六五公尺頭燈高的幾何，讓不同儀器依同一視角比較。",
+      "limitations": "幾何參考距離不是駕駛保證可見距離。只用公開條目。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R139-S03",
+      "url": "https://store.astm.org/e2177-20.html",
+      "canonical_url": "https://store.astm.org/e2177-20.html",
+      "title": "ASTM E2177-20，bucket method in wet recovery",
+      "publisher": "ASTM International",
+      "network": "ASTM International",
+      "version": "E2177-20",
+      "accessed_on": "2026-11-20",
+      "read_via": "讀公開的 Significance and Use、Scope 及對持續模擬降雨另法的說明。",
+      "reading_scope": "§1 Scope 的 wet recovery、simulated rain 交叉引用，以及 §4 Significance and Use 的 non-wetting、beading 注意事項。",
+      "locator": "§1 Scope 的 wet recovery、simulated rain 交叉引用，以及 §4 Significance and Use 的 non-wetting、beading 注意事項。",
+      "summary": "本法把標線弄濕再量其濕回復狀態。持續模擬雨另有方法；一些新面會讓水結珠，這種未均勻潤濕可能量得偏高。",
+      "limitations": "不將水桶測量當作正在下雨；不把表面結珠當成所有新線共同現象。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R139-S04",
+      "url": "https://www.txdot.gov/content/dam/txdotoms/trf/pmh/pmh.pdf",
+      "canonical_url": "https://www.txdot.gov/content/dam/txdotoms/trf/pmh/pmh.pdf",
+      "title": "Pavement Marking Handbook",
+      "publisher": "Texas Department of Transportation",
+      "network": "德州交通部",
+      "version": "2004 年手冊",
+      "accessed_on": "2026-11-20",
+      "read_via": "直接開啟手冊全文 PDF 並核對圖與相鄰的施工文字。",
+      "reading_scope": "第2章 §3「Bead Size」，圖2-18；第3章 §4「Bead Embedment Depth」，圖3-4、印刷頁3-14 至3-15。",
+      "locator": "第2章 §3「Bead Size」，圖2-18；第3章 §4「Bead Embedment Depth」，圖3-4、印刷頁3-14 至3-15。",
+      "summary": "淺埋容易失珠、反光分散；太深也減少有效回光。手冊對此類施作建議約六成直徑埋入。大珠在薄水膜尚能突出，水層厚到蓋過也會失去優勢。",
+      "limitations": "針對手冊內的一般標線施工，不能說所有立體複合材料都依同一深度施工。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R139-S05",
+      "url": "https://cdn-contenu.quebec.ca/cdn-contenu/adm/min/transports/transports/Signalisation/Marques-chaussee/Pavement_Marking_Technical_Manual.pdf",
+      "canonical_url": "https://cdn-contenu.quebec.ca/cdn-contenu/adm/min/transports/transports/Signalisation/Marques-chaussee/Pavement_Marking_Technical_Manual.pdf",
+      "title": "Pavement Marking Technical Manual",
+      "publisher": "Transports Québec",
+      "network": "魁北克交通部",
+      "version": "2019 edition",
+      "accessed_on": "2026-11-20",
+      "read_via": "開啟政府手冊 PDF，對照珠粒、陽光、觀察者影子位置以及目測限制。",
+      "reading_scope": "第6章 Supervision of marking work，圖45–49，印刷頁65–67。",
+      "locator": "第6章 Supervision of marking work，圖45–49，印刷頁65–67。",
+      "summary": "用斜照低陽光，在觀察者影子正上方找是否有均勻亮點，可快速找施作問題。手冊說光靠目視無法給定精確反光值，較高數值尤其難區分。",
+      "limitations": "這是定性篩檢，不能把日光小測當夜間儀器驗收或當作駕駛視距。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R139-S06",
+      "url": "https://oak.go.kr/central/journallist/journaldetail.do?article_seq=22328",
+      "canonical_url": "https://oak.go.kr/central/journallist/journaldetail.do?article_seq=22328",
+      "title": "Correlations between Refractive Index and Retroreflectance of Glass Beads for Use in Road-marking Applications under Wet Conditions",
+      "publisher": "Shin、Lee、Chung、Choi；Current Optics and Photonics",
+      "network": "韓國航空大學與公州大學光學團隊",
+      "version": "2019，3(5)，423–428",
+      "accessed_on": "2026-11-20",
+      "read_via": "經網頁工具開啟韓國 OAK 正文，對照保存的完整全文中實驗與圖表，也開出版者的摘要。",
+      "reading_scope": "Experimental procedure 表1、圖1；Results and Discussion 圖4、6、7，尤其 wet conditions 與批次 G 的段落。",
+      "locator": "Experimental procedure 表1、圖1；Results and Discussion 圖4、6、7，尤其 wet conditions 與批次 G 的段落。",
+      "summary": "團隊把不同折射率的珠粒批次在空氣與水中比較。乾測模型在約 1.9 出峰，試驗涵蓋的濕狀態模型走勢不同；形狀欠圓、有表面或內部缺陷的批次偏離預期。",
+      "limitations": "這是珠粒的回光量測與模型，沒有道路公尺數，不將入水描述為改變玻璃材本身折射率。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R139-S07",
+      "url": "https://www.fhwa.dot.gov/hfl/partnerships/all_weather_pavement/hif13004/chap01.cfm",
+      "canonical_url": "https://www.fhwa.dot.gov/hfl/partnerships/all_weather_pavement/hif13004/chap01.cfm",
+      "title": "All-Weather Pavement Marking for Work Zones: Field Evaluation in North Carolina and Ohio",
+      "publisher": "美國聯邦公路總署示範研究",
+      "network": "美國聯邦公路總署示範專案",
+      "version": "FHWA-HIF-13-004，chapter 1",
+      "accessed_on": "2026-11-20",
+      "read_via": "開 FHWA 原始試作報告，讀 Prototype 與圖4前後配方。",
+      "reading_scope": "Chapter 1，Prototype technology，Figure 4 前段「Each 3M element」與材料清單。",
+      "locator": "Chapter 1，Prototype technology，Figure 4 前段「Each 3M element」與材料清單。",
+      "summary": "該施工區試件把折射率 1.9 與 2.4 的微晶陶瓷珠置於核心外，分別對應乾、濕條件，配方還含一般玻璃珠。",
+      "limitations": "只證這個原型的結構與設計目的；不能用本章宣稱任何路面、任何駕駛都多看多少公尺。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R139-S08",
+      "url": "https://vtrc.virginia.gov/media/vtrc/vtrc-pdf/vtrc-pdf/07-cr7.pdf",
+      "canonical_url": "https://vtrc.virginia.gov/media/vtrc/vtrc-pdf/vtrc-pdf/07-cr7.pdf",
+      "title": "Pavement Marking Visibility Requirements During Wet Night Conditions",
+      "publisher": "Ronald B. Gibbons，Virginia Transportation Research Council／Virginia Tech",
+      "network": "維州道路能見度團隊",
+      "version": "VTRC 07-CR7，2006",
+      "accessed_on": "2026-11-20",
+      "read_via": "實開 VTRC PDF；讀 Smart Road 的人工雨、人因任務，以及圖中讀距和統計字母。",
+      "reading_scope": "Methods — Dynamic Experiment，Smart Road；Results 圖8，印刷頁19，圖題 for all Stations。",
+      "locator": "Methods — Dynamic Experiment，Smart Road；Results 圖8，印刷頁19，圖題 for all Stations。",
+      "summary": "駕駛在封閉場人工雨中辨認邊線的起點或終點。圖8各站合併，普通珠塗料、大珠塗料、立體熱塑、濕態反光帶分別平均 82、120、116、207 呎；中間兩組同列 B。",
+      "limitations": "非自然雨；混合站點、車型與照明的觀測。不得把 120 比 116 高寫成顯著勝出，也不可解為個人煞車距離。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R139-S09",
+      "url": "https://journals.sagepub.com/doi/10.3141/1877-05",
+      "canonical_url": "https://journals.sagepub.com/doi/10.3141/1877-05",
+      "title": "Performance Evaluation of Pavement Markings Under Dry, Wet, and Rainy Conditions in the Field",
+      "publisher": "Fuat Aktan、Thomas Schnell；Transportation Research Record",
+      "network": "愛荷華大學人因研究團隊",
+      "version": "2004，1877(1)，DOI 10.3141/1877-05",
+      "accessed_on": "2026-11-20",
+      "read_via": "從期刊網站開起作者公開摘要逐段閱讀。全文須訂閱，僅用摘要明載結果。",
+      "reading_scope": "Abstract 第1–3段：Cottage Grove 測場、18 人 55–75歲、end-detection、三種 ASTM 狀態。",
+      "locator": "Abstract 第1–3段：Cottage Grove 測場、18 人 55–75歲、end-detection、三種 ASTM 狀態。",
+      "summary": "愛荷華團隊在明尼蘇達試道比較三種材料。十八位駕駛辨認右邊線末端，分乾、雨後路濕、每小時一吋人工雨；讀值與距離的強相關出現在量測方法對應當時天候時。",
+      "limitations": "只引用公開摘要。人因試驗限定特定年齡、材料與場地，未推台灣駕駛或所有商品。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R139-S10",
+      "url": "https://static.tti.tamu.edu/tti.tamu.edu/documents/0-5008-1.pdf",
+      "canonical_url": "https://static.tti.tamu.edu/tti.tamu.edu/documents/0-5008-1.pdf",
+      "title": "Evaluation of Wet-Weather Pavement Markings: First Year Report",
+      "publisher": "Carlson、Miles、Pratt 等，Texas Transportation Institute",
+      "network": "德州農工大學運輸研究所",
+      "version": "FHWA/TX-06/0-5008-1，2005 first year report",
+      "accessed_on": "2026-11-20",
+      "read_via": "下載正式報告 PDF，讀試道任務及線寬對照的樣本限制。",
+      "reading_scope": "第4章 Test procedure（駕駛與灑水）；第5章「Marking Width」樣本17／24、6-inch 與 4-inch，同一款 380WR tape 的有限比較。",
+      "locator": "第4章 Test procedure（駕駛與灑水）；第5章「Marking Width」樣本17／24、6-inch 與 4-inch，同一款 380WR tape 的有限比較。",
+      "summary": "受試者真的駕車穿過人工雨，初步子試驗把同款帶由四吋改六吋；兩組平均察覺距離約 226 與 294 呎。只有一種六吋樣品可作這個比較。",
+      "limitations": "不能由此聲稱加寬必定提高三成、或用它代替維州邊線起／止距離；雨室測的是看見樣品。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R139-S11",
+      "url": "https://vtrc.virginia.gov/media/vtrc/vtrc-pdf/vtrc-pdf/12-r13.pdf",
+      "canonical_url": "https://vtrc.virginia.gov/media/vtrc/vtrc-pdf/vtrc-pdf/12-r13.pdf",
+      "title": "Assessment of the Durability of Wet Night Visible Pavement Markings: Wet Visibility Project Phase IV",
+      "publisher": "Gibbons、Williams；Virginia Tech／VCTIR",
+      "network": "維州道路能見度團隊",
+      "version": "VCTIR 12-R13，2012",
+      "accessed_on": "2026-11-20",
+      "read_via": "下載報告全文，分讀自然降雨駕駛、停車數虛線、儀器長期追蹤各自的方法與結果。",
+      "reading_scope": "正文頁3–7，Figure 1、Participants、Detection Distance、Number of Lane Lines；頁9–10 兩晚日期及雨率；摘要與結論之 23 個月磨耗。",
+      "locator": "正文頁3–7，Figure 1、Participants、Detection Distance、Number of Lane Lines；頁9–10 兩晚日期及雨率；摘要與結論之 23 個月磨耗。",
+      "summary": "在 Route 460 以黑材蓋住邊線，23 位實到者辨認起止點；兩次自然雨夜、每圈量雨，均非人工豪雨。另有停車數可見虛線、評喜好及使用後的材料追蹤。",
+      "limitations": "和 VTRC 07-CR7 屬同一研究網絡；自然雨並非恆定雨率。長期儀器結果不能當成當晚駕駛的反應。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R139-S12",
+      "url": "https://rosap.ntl.bts.gov/view/dot/56417/dot_56417_DS1.pdf",
+      "canonical_url": "https://rosap.ntl.bts.gov/view/dot/56417/dot_56417_DS1.pdf",
+      "title": "Comparison of Wet Reflective Elements With Tape – A Pavement Marking Study Based on Field Measurements",
+      "publisher": "Juan C. Medina，University of Utah／Utah DOT",
+      "network": "猶他大學與州交通部",
+      "version": "UT-21.06，2021",
+      "accessed_on": "2026-11-20",
+      "read_via": "下載研究 PDF，比對 I-215 的不同讀取狀態、服役日數及摘要。",
+      "reading_scope": "Technical Report Abstract，第16欄；Executive Summary 與第5章 Summary of Findings，460 days／all-weather tape。",
+      "locator": "Technical Report Abstract，第16欄；Executive Summary 與第5章 Summary of Findings，460 days／all-weather tape。",
+      "summary": "I-215 實際服役後的讀值經乾、連續濕潤及濕回復等狀態。第 460 天各處理乾測都超過研究用來比較的 100，濕回復僅全天候標線帶仍超過。",
+      "limitations": "100 是報告的係數比較值，不是普遍安全線。本報告沒有量駕駛看見白線的公尺數。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R139-S13",
+      "url": "https://ts.cpu.edu.tw/var/file/20/1020/attach/79/pta_21283_2347466_68775.pdf",
+      "canonical_url": "https://ts.cpu.edu.tw/var/file/20/1020/attach/79/pta_21283_2347466_68775.pdf",
+      "title": "高抗滑標線反光與抗滑性能長期趨勢分析",
+      "publisher": "陳艾懃、周家蓓、李耀瑄；110 年道路交通安全與執法研討會",
+      "network": "台灣高抗滑標線實測團隊",
+      "version": "2021 年 10 月 20 日原始研究",
+      "accessed_on": "2026-11-20",
+      "read_via": "實讀論文 PDF，對照試區、手提式儀器及結論 5.1。",
+      "reading_scope": "第3節研究方法、圖3 ZRM 6013+、校內試段與每月檢測；第5.1節乾與濕表現。",
+      "locator": "第3節研究方法、圖3 ZRM 6013+、校內試段與每月檢測；第5.1節乾與濕表現。",
+      "summary": "團隊在台灣選車輛磨耗甚少的校內道路劃線並月測 33 個月，量包含 Qd 與乾、濕 RL。乾測在部分月分可到 R1，濕態表現仍差；材料在同一時點可有不同乾濕結果。",
+      "limitations": "特定試段與材料，作者強調現地數值無法充分解釋全部變化成因；沒有實車駕駛辨線距離。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "K139-0201",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "白天兩條線看來差不多亮，台灣公路局為什麼還要用另一個讀值檢查夜間反光？",
+      "mechanism_key": "x139.wet_roadline.day_vs_return",
+      "answer_target": "白天周圍光線從許多方向照來，Qd 量擴散照明下的表現。黑夜裡要看的是頭燈射出後，沿著靠近來時的方向回到駕駛眼睛的光；公路局用 RL 表示這一項。日照下看起來白，尚無法回答車燈旁的眼睛能收到多少光。",
+      "scope": "兩者都是特定幾何的輝度係數，不是替駕駛量視力或直接量出公尺。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "白天周圍光線從許多方向照來，Qd 量擴散照明下的表現。黑夜裡要看的是頭燈射出後，沿著靠近來時的方向回到駕駛眼睛的光；公路局用 RL 表示這一項。日照下看起來白，尚無法回答車燈旁的眼睛能收到多少光。",
+        "visual": "同一條白紙線分兩格，上格畫天空漫射，下格在同一端放車燈與駕駛眼睛。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_ids": [
+        "R139-S01"
+      ],
+      "source_locator": "R139-S01 「標線反光強度量測」正文第1、2段與「相關試驗規範」條列。",
+      "notes": "兩者都是特定幾何的輝度係數，不是替駕駛量視力或直接量出公尺。"
+    },
+    {
+      "id": "K139-0202",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "反光儀沒有離開地面，說明書裡的「三十公尺」究竟是哪一段距離？",
+      "mechanism_key": "x139.wet_roadline.meter_geometry",
+      "answer_target": "依 ASTM 所列的測量幾何，把車燈設在高 0.65 公尺、眼睛高 1.2 公尺，往三十公尺外同一處看，形成規定的入射與觀察角度。儀器在小空間內重現這套角度，才能讓不同處量到的係數互相比；三十公尺不是替每個駕駛測出的察覺距離。",
+      "scope": "用標準的觀察幾何，不換算為任何實際車型可見多遠。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "依 ASTM 所列的測量幾何，把車燈設在高 0.65 公尺、眼睛高 1.2 公尺，往三十公尺外同一處看，形成規定的入射與觀察角度。儀器在小空間內重現這套角度，才能讓不同處量到的係數互相比；三十公尺不是替每個駕駛測出的察覺距離。",
+        "visual": "畫一條三十公尺水平線，再把相同角度的兩道細線摺進手持儀器。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_ids": [
+        "R139-S02"
+      ],
+      "source_locator": "R139-S02 §5.5（30 m、0.65 m、1.2 m）；§1 entrance／observation angles。",
+      "notes": "用標準的觀察幾何，不換算為任何實際車型可見多遠。"
+    },
+    {
+      "id": "K139-0203",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "同樣寫著濕路，把水倒完再量，跟水一直落在標線上，會得到同一種成績嗎？",
+      "mechanism_key": "x139.wet_roadline.bucket_recovery",
+      "answer_target": "ASTM E2177 的水桶法把標線先弄濕，在表面水分開始退去時量回光；持續模擬降雨另有試驗。測哪一個要先註明。新面若讓水聚成珠而沒能均勻潤濕，水桶法的結果還可能偏高。",
+      "scope": "不設定脫離標準版本的等待秒數；不把濕回復讀值冒充穩定降雨中的讀值。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "ASTM E2177 的水桶法把標線先弄濕，在表面水分開始退去時量回光；持續模擬降雨另有試驗。測哪一個要先註明。新面若讓水聚成珠而沒能均勻潤濕，水桶法的結果還可能偏高。",
+        "visual": "近看持續灑水與停水後排水兩個畫面，各放不同的儀器記錄欄。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_ids": [
+        "R139-S03"
+      ],
+      "source_locator": "R139-S03 §1 Scope 的 wet recovery、simulated rain 交叉引用，以及 §4 Significance and Use 的 non-wetting、beading 注意事項。",
+      "notes": "不設定脫離標準版本的等待秒數；不把濕回復讀值冒充穩定降雨中的讀值。"
+    },
+    {
+      "id": "K139-0204",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "玻璃珠是透明的，為什麼把它半埋進白漆，夜裡反而能把頭燈的光送回車子？",
+      "mechanism_key": "x139.wet_roadline.glass_and_backing",
+      "answer_target": "玻璃珠讓打進來的光折彎，背後有白色標線材料反射一部分光，回程再經珠子折射，使一部分光能往頭燈附近返回。單有白色塗料也會散射光；駕駛夜裡要找的是回到車子這一側的那一部分。",
+      "scope": "一般珠與標線塗層示意。珠子不發光，也不能畫成把所有光都送回同一點。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "玻璃珠讓打進來的光折彎，背後有白色標線材料反射一部分光，回程再經珠子折射，使一部分光能往頭燈附近返回。單有白色塗料也會散射光；駕駛夜裡要找的是回到車子這一側的那一部分。",
+        "visual": "沿著兩條光線畫出入珠、遇白漆、再出珠；在車頭標出燈和眼睛兩個不同位置。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_ids": [
+        "R139-S04",
+        "R139-S01"
+      ],
+      "source_locator": "R139-S04 第2章 §3「Bead Size」，圖2-18；第3章 §4「Bead Embedment Depth」，圖3-4、印刷頁3-14 至3-15。；R139-S01 「標線反光強度量測」正文第1、2段與「相關試驗規範」條列。",
+      "notes": "一般珠與標線塗層示意。珠子不發光，也不能畫成把所有光都送回同一點。"
+    },
+    {
+      "id": "K139-0205",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "要在晚上看清白線，工人該讓玻璃珠多露一點，還是把它整顆壓進漆裡？",
+      "mechanism_key": "x139.wet_roadline.embedment",
+      "answer_target": "德州施工手冊對這類表面撒珠的標線建議約六成珠徑嵌入。太淺，返回的光分向不同方向，珠也較容易讓車流磨掉；太深，珠還能反光，能有效接到光的部分卻小了。夠牢與夠亮都要靠珠子坐對位置。",
+      "scope": "限手冊的施工建議，不說所有材料的埋入深度都相同。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "德州施工手冊對這類表面撒珠的標線建議約六成珠徑嵌入。太淺，返回的光分向不同方向，珠也較容易讓車流磨掉；太深，珠還能反光，能有效接到光的部分卻小了。夠牢與夠亮都要靠珠子坐對位置。",
+        "visual": "自繪相同直徑的三顆珠，分別淺、中、深埋；把回程光和磨耗方向放一起。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_ids": [
+        "R139-S04"
+      ],
+      "source_locator": "R139-S04 第2章 §3「Bead Size」，圖2-18；第3章 §4「Bead Embedment Depth」，圖3-4、印刷頁3-14 至3-15。",
+      "notes": "限手冊的施工建議，不說所有材料的埋入深度都相同。"
+    },
+    {
+      "id": "K139-0206",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "魁北克查新劃的標線，為什麼可以趁太陽低時找自己的影子，還要看影子上方那一小段？",
+      "mechanism_key": "x139.wet_roadline.shadow_check",
+      "answer_target": "魁北克手冊用低角度陽光作光源。珠子嵌入、分布合適時，在自己影子正上方的線上能看到均勻亮光，施工人員能很快找出亮暗不勻處；但兩段都已很亮時，人眼難分準確高低，精確係數仍靠儀器。",
+      "scope": "定性目檢，沒有把日照亮斑當成雨夜實車行駛結果。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "魁北克手冊用低角度陽光作光源。珠子嵌入、分布合適時，在自己影子正上方的線上能看到均勻亮光，施工人員能很快找出亮暗不勻處；但兩段都已很亮時，人眼難分準確高低，精確係數仍靠儀器。",
+        "visual": "讓夕陽、人的頭和影子共線，逐步找出影子頂端外側的迴光位置。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_ids": [
+        "R139-S05"
+      ],
+      "source_locator": "R139-S05 第6章 Supervision of marking work，圖45–49，印刷頁65–67。",
+      "notes": "定性目檢，沒有把日照亮斑當成雨夜實車行駛結果。"
+    },
+    {
+      "id": "K139-0207",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "下毛毛雨時大顆玻璃珠還露著頭，積水再高一點，同一排大珠還有原本的好處嗎？",
+      "mechanism_key": "x139.wet_roadline.bead_protrusion",
+      "answer_target": "德州手冊比較兩種水膜厚度。較大的珠凸出漆面多一些，薄水膜未蓋住整顆時，露在空氣中的部分仍能收發光。水更深、整個露出部位都浸水後，大珠原本靠高度換來的優勢會減弱。",
+      "scope": "只談大珠高出薄水膜的條件，沒有一個適用各路面的確切雨量分界。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "德州手冊比較兩種水膜厚度。較大的珠凸出漆面多一些，薄水膜未蓋住整顆時，露在空氣中的部分仍能收發光。水更深、整個露出部位都浸水後，大珠原本靠高度換來的優勢會減弱。",
+        "visual": "保持珠徑不動，從側面逐格提高水位，標記玻璃上哪一段仍接觸空氣。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_ids": [
+        "R139-S04"
+      ],
+      "source_locator": "R139-S04 第2章 §3「Bead Size」，圖2-18；第3章 §4「Bead Embedment Depth」，圖3-4、印刷頁3-14 至3-15。",
+      "notes": "只談大珠高出薄水膜的條件，沒有一個適用各路面的確切雨量分界。"
+    },
+    {
+      "id": "K139-0208",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "就算水把珠子完全蓋住，玻璃還是原來那批，為什麼乾時回光最好的折射率到水裡不一定佔優？",
+      "mechanism_key": "x139.wet_roadline.index_in_water",
+      "answer_target": "光從空氣進玻璃與從水進玻璃，兩側介質的折射率差不同。韓國團隊把不同珠料批次在空氣、水中測試，並用模型對照；乾態曲線在約 1.9 附近出峰，濕態在所測範圍走勢不同。珠子本身沒換材，回來的光卻會改變。",
+      "scope": "材料試驗；量的是珠粒回光，不是公路上駕駛的可視距離。批次圓度與缺陷也會影響。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "光從空氣進玻璃與從水進玻璃，兩側介質的折射率差不同。韓國團隊把不同珠料批次在空氣、水中測試，並用模型對照；乾態曲線在約 1.9 附近出峰，濕態在所測範圍走勢不同。珠子本身沒換材，回來的光卻會改變。",
+        "visual": "同一組珠樣放到空氣與水中，給兩個簡化的趨勢圖分別加標題，避免上下重疊誤讀。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_ids": [
+        "R139-S06"
+      ],
+      "source_locator": "R139-S06 Experimental procedure 表1、圖1；Results and Discussion 圖4、6、7，尤其 wet conditions 與批次 G 的段落。",
+      "notes": "材料試驗；量的是珠粒回光，不是公路上駕駛的可視距離。批次圓度與缺陷也會影響。"
+    },
+    {
+      "id": "K139-0209",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "一條施工區白線既要應付乾夜也要應付雨夜，為什麼原型的同一顆核心上放了兩種折射率的小珠？",
+      "mechanism_key": "x139.wet_roadline.mixed_optics",
+      "answer_target": "美國示範專案的複合元件，核心表面有折射率約 1.9 與 2.4 的微晶陶瓷珠，前者顧乾、後者顧濕，另搭配一般玻璃珠。這條路不是單靠把所有珠做得更高，而是讓不同材料各自有合適的光學條件。",
+      "scope": "只指該原型配方及設計目的，不聲稱每輛車在任何雨勢都多看固定距離。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "美國示範專案的複合元件，核心表面有折射率約 1.9 與 2.4 的微晶陶瓷珠，前者顧乾、後者顧濕，另搭配一般玻璃珠。這條路不是單靠把所有珠做得更高，而是讓不同材料各自有合適的光學條件。",
+        "visual": "在同一顆核心外以兩色圓點區別微珠，另畫普通珠；交替遮掉乾路與濕路那一半。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_ids": [
+        "R139-S07",
+        "R139-S06"
+      ],
+      "source_locator": "R139-S07 Chapter 1，Prototype technology，Figure 4 前段「Each 3M element」與材料清單。；R139-S06 Experimental procedure 表1、圖1；Results and Discussion 圖4、6、7，尤其 wet conditions 與批次 G 的段落。",
+      "notes": "只指該原型配方及設計目的，不聲稱每輛車在任何雨勢都多看固定距離。"
+    },
+    {
+      "id": "K139-0210",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "人工雨裡哪種白色邊線能先被發現？圖上的 120 呎和 116 呎又夠不夠判輸贏？",
+      "mechanism_key": "x139.wet_roadline.test_track_start_end",
+      "answer_target": "維州 Smart Road 封閉場的圖8合併各站的邊線起點或終點辨認距離。普通珠塗料 82 呎、大珠塗料 120 呎、立體熱塑 116 呎、濕態反光帶 207 呎，四捨五入約 25、37、35、63 公尺。中間兩組統計標記同為 B，不能用它們兩公尺左右的表面差距斷定誰勝出。",
+      "scope": "人工雨，含這批車種、照明與站點；不拿來算煞停距離或自然雨中的固定公尺數。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "維州 Smart Road 封閉場的圖8合併各站的邊線起點或終點辨認距離。普通珠塗料 82 呎、大珠塗料 120 呎、立體熱塑 116 呎、濕態反光帶 207 呎，四捨五入約 25、37、35、63 公尺。中間兩組統計標記同為 B，不能用它們兩公尺左右的表面差距斷定誰勝出。",
+        "visual": "用四支尺重畫數字，先把兩支中間尺的統計字母蓋住，最後翻開同一個 B。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_ids": [
+        "R139-S08"
+      ],
+      "source_locator": "R139-S08 Methods — Dynamic Experiment，Smart Road；Results 圖8，印刷頁19，圖題 for all Stations。",
+      "notes": "人工雨，含這批車種、照明與站點；不拿來算煞停距離或自然雨中的固定公尺數。"
+    },
+    {
+      "id": "K139-0211",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "十八位駕駛在明尼蘇達找的是右邊線末端，為什麼要請儀器把雨中和雨後各量一次？",
+      "mechanism_key": "x139.wet_roadline.condition_match",
+      "answer_target": "Aktan 與 Schnell 讓 55 至 75 歲的十八位駕駛分別在乾路、雨後濕路與每小時一吋的人工雨找右側標線末端。儀器也各按對應條件量三種標線；作者報告，當讀值和駕駛實際所遇的天候對得上，兩者才顯出強的相關。",
+      "scope": "限該試道和材料；採原作者公開摘要，不把「相關」改成能對任何人逐一預報。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "Aktan 與 Schnell 讓 55 至 75 歲的十八位駕駛分別在乾路、雨後濕路與每小時一吋的人工雨找右側標線末端。儀器也各按對應條件量三種標線；作者報告，當讀值和駕駛實際所遇的天候對得上，兩者才顯出強的相關。",
+        "visual": "在三張天候牌下各配一張人眼距離、一張回光讀值，打亂再配對。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_ids": [
+        "R139-S09"
+      ],
+      "source_locator": "R139-S09 Abstract 第1–3段：Cottage Grove 測場、18 人 55–75歲、end-detection、三種 ASTM 狀態。",
+      "notes": "限該試道和材料；採原作者公開摘要，不把「相關」改成能對任何人逐一預報。"
+    },
+    {
+      "id": "K139-0212",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "同款濕態標線帶只從四吋加寬到六吋，德州灑水試道上的駕駛會提早發現它嗎？",
+      "mechanism_key": "x139.wet_roadline.width_trial",
+      "answer_target": "在 Texas Transportation Institute 的人工雨試道，同款帶的四吋與六吋樣品平均察覺距離約 226 與 294 呎。研究者把它列為初步線寬比較，因為只有一種六吋試樣，而且這種帶本來就屬表現較好的材料；不能把差距直接推給所有漆線。",
+      "scope": "駕駛穿過灑水區尋找標線試樣，任務與維州找連續邊線起訖不同。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在 Texas Transportation Institute 的人工雨試道，同款帶的四吋與六吋樣品平均察覺距離約 226 與 294 呎。研究者把它列為初步線寬比較，因為只有一種六吋試樣，而且這種帶本來就屬表現較好的材料；不能把差距直接推給所有漆線。",
+        "visual": "等比例放寬同款帶的剪影，保持材質牌不動，在比較下方註記只有一款寬樣品。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_ids": [
+        "R139-S10"
+      ],
+      "source_locator": "R139-S10 第4章 Test procedure（駕駛與灑水）；第5章「Marking Width」樣本17／24、6-inch 與 4-inch，同一款 380WR tape 的有限比較。",
+      "notes": "駕駛穿過灑水區尋找標線試樣，任務與維州找連續邊線起訖不同。"
+    },
+    {
+      "id": "K139-0213",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "真的下雨時，坐在研究車上的人怎麼知道駕駛剛喊「看到了」，車輪還離白線的斷點多遠？",
+      "mechanism_key": "x139.wet_roadline.natural_rain_two_flags",
+      "answer_target": "維州 460 號路把一段邊線用黑材遮住，製造線條看來中斷再出現的位置。23 位到場參與者駕車，看見開始或結束時出聲，同行研究員記第一點，車實際抵達該處再記第二點，用兩點間行進距離算出察覺距離。兩場自然雨的平均各為每小時 0.06、0.10 吋，沒有把天空當成恆定灑水器。",
+      "scope": "限 2009 年 10 月 27 日與 11 月 11 日兩個自然降雨夜，不能將別場人工雨的四個平均距離移植來此。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "維州 460 號路把一段邊線用黑材遮住，製造線條看來中斷再出現的位置。23 位到場參與者駕車，看見開始或結束時出聲，同行研究員記第一點，車實際抵達該處再記第二點，用兩點間行進距離算出察覺距離。兩場自然雨的平均各為每小時 0.06、0.10 吋，沒有把天空當成恆定灑水器。",
+        "visual": "用兩支不同顏色的小旗標出第一次喊話及真正抵達，把同一段車輪軌跡展開成尺。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_ids": [
+        "R139-S11"
+      ],
+      "source_locator": "R139-S11 正文頁3–7，Figure 1、Participants、Detection Distance、Number of Lane Lines；頁9–10 兩晚日期及雨率；摘要與結論之 23 個月磨耗。",
+      "notes": "限 2009 年 10 月 27 日與 11 月 11 日兩個自然降雨夜，不能將別場人工雨的四個平均距離移植來此。"
+    },
+    {
+      "id": "K139-0214",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "同一批駕駛在同一段濕路停下來數虛線，能把「看見幾條」直接填進剛才的公尺欄嗎？",
+      "mechanism_key": "x139.wet_roadline.dash_count",
+      "answer_target": "自然雨研究另讓參與者把車停在右車道，數可以看見幾條分道虛線；開過各段後還請他們選最喜歡哪一種邊線。虛線條數、偏好選擇與行進中從喊話到目標的兩點距離是三項不同任務，原表也分欄記錄。",
+      "scope": "不是行車建議；只描述研究人員安排的受控作業。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "自然雨研究另讓參與者把車停在右車道，數可以看見幾條分道虛線；開過各段後還請他們選最喜歡哪一種邊線。虛線條數、偏好選擇與行進中從喊話到目標的兩點距離是三項不同任務，原表也分欄記錄。",
+        "visual": "把公尺、虛線條數、主觀選擇分成三張答題紙，各配對行進或停車的畫面。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_ids": [
+        "R139-S11"
+      ],
+      "source_locator": "R139-S11 正文頁3–7，Figure 1、Participants、Detection Distance、Number of Lane Lines；頁9–10 兩晚日期及雨率；摘要與結論之 23 個月磨耗。",
+      "notes": "不是行車建議；只描述研究人員安排的受控作業。"
+    },
+    {
+      "id": "K139-0215",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "猶他同一批服役 460 天的標線，乾測全都超過比較值，為什麼雨停後再量就只剩一種過線？",
+      "mechanism_key": "x139.wet_roadline.utah_service_day460",
+      "answer_target": "I-215 實際鋪設的材料先乾測，再連續濕潤到飽和，再量濕回復。第 460 天各種處理的乾測仍高於研究所用的 100 比較值；濕回復時只有全天候標線帶超過。乾時仍有回光，沒有保證服役同樣久的濕線也把足夠的光送回儀器。",
+      "scope": "係數單位 mcd/m²/lx，100 是該研究的比較值。這些是儀器資料，不是人能看清一百公尺。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "I-215 實際鋪設的材料先乾測，再連續濕潤到飽和，再量濕回復。第 460 天各種處理的乾測仍高於研究所用的 100 比較值；濕回復時只有全天候標線帶超過。乾時仍有回光，沒有保證服役同樣久的濕線也把足夠的光送回儀器。",
+        "visual": "同一天開兩只抽屜，分放乾與濕回復的量測卡；把 100 的單位寫全，旁邊的公尺欄留白。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_ids": [
+        "R139-S12"
+      ],
+      "source_locator": "R139-S12 Technical Report Abstract，第16欄；Executive Summary 與第5章 Summary of Findings，460 days／all-weather tape。",
+      "notes": "係數單位 mcd/m²/lx，100 是該研究的比較值。這些是儀器資料，不是人能看清一百公尺。"
+    },
+    {
+      "id": "K139-0216",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "台灣校園一條高抗滑黃線每月量了一次，白天看來夠亮，能不能據此保證雨夜也看得清楚？",
+      "mechanism_key": "x139.wet_roadline.tw_yellow_33_months",
+      "answer_target": "台灣團隊在車輛磨耗甚少的校內道路追蹤 33 個月。擴散照明的 Qd 多數時候仍高於作者拿來比較的黃線 Q3，乾態回光在第十至二十六月可達 R1；作者對雨天反光的判斷仍不理想。相同試段，日間、乾夜和濕態得分不同。",
+      "scope": "這是台灣黃線的儀器追蹤；不當成台灣白線普查、正下雨時的真人駕駛視距或人眼黑白照片。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "台灣團隊在車輛磨耗甚少的校內道路追蹤 33 個月。擴散照明的 Qd 多數時候仍高於作者拿來比較的黃線 Q3，乾態回光在第十至二十六月可達 R1；作者對雨天反光的判斷仍不理想。相同試段，日間、乾夜和濕態得分不同。",
+        "visual": "改上黃色試段標籤，拉出三十三個月份與三欄係數，將未量的駕駛公尺保留空白。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_ids": [
+        "R139-S13"
+      ],
+      "source_locator": "R139-S13 第3節研究方法、圖3 ZRM 6013+、校內試段與每月檢測；第5.1節乾與濕表現。",
+      "notes": "這是台灣黃線的儀器追蹤；不當成台灣白線普查、正下雨時的真人駕駛視距或人眼黑白照片。"
+    }
+  ],
+  "not_added": [
+    {
+      "id": "R139-NA01",
+      "question": "雨夜白線不亮，是不是所有玻璃珠都像三面鏡般把整束光原路彈回？",
+      "reason": "O7018 是三面直角鏡。新案是折射、塗層反光與水膜，不能拿三次反射取代。",
+      "existing_ids": [
+        "O7018"
+      ]
+    },
+    {
+      "id": "R139-NA02",
+      "question": "標線儀寫 30 m，是不是驗收合格就保證所有人雨夜至少看得到三十公尺？",
+      "reason": "ASTM E1710 §5.5 的 30 m 是照明觀察幾何，不是人因承諾。拿它直接換成視距會讓題目失真。",
+      "existing_ids": []
+    },
+    {
+      "id": "R139-NA03",
+      "question": "濕態反光帶能讓台灣所有道路的雨夜車禍都少百分之十三點九嗎？",
+      "reason": "另開 FHWA Safety Evaluation of Wet-Reflective Pavement Markings 的 Executive Summary，0.861 是該研究特定高速路段的濕路事故修正估計；鄉間雙車道樣本也不足以釘死效果。不能套成任何道路、夜間與台灣。",
+      "existing_ids": []
+    },
+    {
+      "id": "R139-NA04",
+      "question": "道路旁藍色反射器真的會讓鹿避開經過的汽車嗎？",
+      "reason": "T87-015 已討論路側藍反光器和鹿移動，G663 則是車流與路殺。把雨夜白線換成藍色反射器會回到另一個舊題。",
+      "existing_ids": [
+        "T87-015",
+        "G663"
+      ]
+    }
+  ]
+}

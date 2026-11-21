@@ -18,7 +18,7 @@ from datetime import UTC, datetime
 from typing import Annotated, Literal
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, Query, Response
+from fastapi import APIRouter, Depends, HTTPException, Path, Query, Response
 from pydantic import BaseModel
 from sqlalchemy import ColumnElement, and_, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -31,6 +31,7 @@ Session = Annotated[AsyncSession, Depends(get_session)]
 public_router = APIRouter(prefix="/videos", tags=["public videos"])
 
 PAGE_SIZE = 24
+RELATED_LIMIT = 6
 VideoKind = Literal["long", "shorts"]
 
 
@@ -53,6 +54,11 @@ class PublicVideoPage(BaseModel):
     categories: list[str]
 
 
+class PublicVideoDetail(BaseModel):
+    video: PublicVideo
+    related: list[PublicVideo]
+
+
 def _cursor(project: VideoProject) -> str:
     assert project.youtube_publish_at is not None
     raw = f"{project.youtube_publish_at.isoformat()}|{project.id}"
@@ -73,6 +79,35 @@ def _published(now: datetime) -> ColumnElement[bool]:
         VideoProject.youtube_publish_at.is_not(None),
         VideoProject.youtube_publish_at <= now,
         VideoProject.dropped_at.is_(None),
+    )
+
+
+async def _resolve_guide_kinds(
+    session: AsyncSession, rows: list[VideoProject]
+) -> dict[str, str]:
+    slugs = {row.source_guide for row in rows if row.source_guide}
+    if not slugs:
+        return {}
+    found = await session.execute(
+        select(GuideArticle.slug, GuideArticle.kind).where(
+            GuideArticle.slug.in_(slugs), GuideArticle.is_active.is_(True)
+        )
+    )
+    return {slug: kind for slug, kind in found.all()}
+
+
+def _to_public_video(
+    row: VideoProject, kinds: dict[str, str], now: datetime
+) -> PublicVideo:
+    return PublicVideo(
+        slug=row.slug,
+        title=row.title,
+        youtube_video_id=row.youtube_video_id or "",
+        category=row.category,
+        kind="shorts" if row.shorts_line else "long",
+        source_guide=row.source_guide if row.source_guide in kinds else None,
+        source_guide_kind=kinds.get(row.source_guide or ""),
+        published_at=row.youtube_publish_at or now,
     )
 
 
@@ -118,30 +153,59 @@ async def list_videos(
         .distinct()
     )
     present = set(used.all())
-    slugs = {row.source_guide for row in page if row.source_guide}
-    kinds: dict[str, str] = {}
-    if slugs:
-        found = await session.execute(
-            select(GuideArticle.slug, GuideArticle.kind).where(
-                GuideArticle.slug.in_(slugs), GuideArticle.is_active.is_(True)
-            )
-        )
-        kinds = {slug: kind for slug, kind in found.all()}
+    kinds = await _resolve_guide_kinds(session, page)
     return PublicVideoPage(
-        videos=[
-            PublicVideo(
-                slug=row.slug,
-                title=row.title,
-                youtube_video_id=row.youtube_video_id or "",
-                category=row.category,
-                kind="shorts" if row.shorts_line else "long",
-                source_guide=row.source_guide if row.source_guide in kinds else None,
-                source_guide_kind=kinds.get(row.source_guide or ""),
-                published_at=row.youtube_publish_at or now,
-            )
-            for row in page
-        ],
+        videos=[_to_public_video(row, kinds, now) for row in page],
         next_cursor=_cursor(page[-1]) if len(rows) > limit else None,
         # In the vocabulary's order, only the ones with something published.
         categories=[code for code in VIDEO_CATEGORIES if code in present],
+    )
+
+
+@public_router.get("/{slug}", response_model=PublicVideoDetail)
+async def get_video(
+    slug: Annotated[str, Path(min_length=1, max_length=120)],
+    response: Response,
+    session: Session,
+) -> PublicVideoDetail:
+    """One published video for its dedicated watch page, plus up to six related picks."""
+    response.headers["Cache-Control"] = "public, max-age=300"
+    now = datetime.now(UTC)
+    row = await session.scalar(
+        select(VideoProject).where(VideoProject.slug == slug, _published(now))
+    )
+    if row is None:
+        raise HTTPException(status_code=404, detail="video not found")
+
+    related_rows: list[VideoProject] = []
+    seen_ids: set[UUID] = {row.id}
+    if row.category:
+        same_category = await session.scalars(
+            select(VideoProject)
+            .where(
+                _published(now),
+                VideoProject.category == row.category,
+                VideoProject.id != row.id,
+            )
+            .order_by(VideoProject.youtube_publish_at.desc(), VideoProject.id.desc())
+            .limit(RELATED_LIMIT)
+        )
+        for item in same_category.all():
+            related_rows.append(item)
+            seen_ids.add(item.id)
+
+    remaining = RELATED_LIMIT - len(related_rows)
+    if remaining > 0:
+        fallback = await session.scalars(
+            select(VideoProject)
+            .where(_published(now), VideoProject.id.notin_(seen_ids))
+            .order_by(VideoProject.youtube_publish_at.desc(), VideoProject.id.desc())
+            .limit(remaining)
+        )
+        related_rows.extend(fallback.all())
+
+    kinds = await _resolve_guide_kinds(session, [row, *related_rows])
+    return PublicVideoDetail(
+        video=_to_public_video(row, kinds, now),
+        related=[_to_public_video(item, kinds, now) for item in related_rows],
     )

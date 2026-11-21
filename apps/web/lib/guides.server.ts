@@ -410,7 +410,13 @@ export async function guideSitemapEntries(filters: GuideSitemapFilters = {}): Pr
 }
 
 /** Published rows per kind and locale, from `GET /guides/sitemap/summary`. */
-export type GuideSitemapCount = { kind: GuideKind; locale: Locale; count: number };
+export type GuideSitemapCount = {
+  kind: GuideKind;
+  locale: Locale;
+  count: number;
+  /** Most recent published revision timestamp in this bucket, when the API reports it. */
+  latest_modified_at?: string | null;
+};
 export type GuideSitemapSummary = { counts: GuideSitemapCount[]; available: boolean };
 
 /**
@@ -423,11 +429,15 @@ export async function guideSitemapSummary(): Promise<GuideSitemapSummary> {
   const row = await fetchJson("/guides/sitemap/summary", defaultLocale);
   const body = row as Record<string, unknown> | null;
   if (!body || !Array.isArray(body.counts)) return { counts: [], available: false };
-  const counts = body.counts.filter((value): value is GuideSitemapCount => {
+  const counts: GuideSitemapCount[] = [];
+  for (const value of body.counts) {
     const entry = value as Record<string, unknown> | null;
-    return !!entry && isGuideKind(entry.kind) && locales.includes(entry.locale as Locale)
-      && Number.isInteger(entry.count) && Number(entry.count) >= 0;
-  });
+    if (!entry || !isGuideKind(entry.kind) || !locales.includes(entry.locale as Locale)
+      || !Number.isInteger(entry.count) || Number(entry.count) < 0) continue;
+    const latest = typeof entry.latest_modified_at === "string" && Number.isFinite(Date.parse(entry.latest_modified_at))
+      ? { latest_modified_at: entry.latest_modified_at } : {};
+    counts.push({ kind: entry.kind, locale: entry.locale as Locale, count: Number(entry.count), ...latest });
+  }
   return { counts, available: true };
 }
 

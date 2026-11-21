@@ -216,6 +216,13 @@ server {
         proxy_pass http://mokaair_web;
     }
 
+    location = /indexnow-key.txt {
+        include /etc/nginx/snippets/mokaair-proxy-headers.conf;
+        limit_req zone=mokaair_crawl_files burst=30 nodelay;
+        limit_req zone=mokaair_crawlers burst=60 nodelay;
+        proxy_pass http://mokaair_web;
+    }
+
     # The eleven children the sitemap index points at. ^~ so it wins over the catch-all.
     location ^~ /sitemaps/ {
         include /etc/nginx/snippets/mokaair-proxy-headers.conf;

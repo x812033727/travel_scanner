@@ -131,7 +131,7 @@ export function FaqSection({ items, heading, id }: { items: readonly { question:
  * legal pages want.
  */
 export function ContentBlocks({
-  blocks, labels, headingStart, subsectionStart = 0, articleLinks = [], locale = "en", termLabels, renderFaq, constrainDiagrams = false,
+  blocks, labels, headingStart, subsectionStart = 0, articleLinks = [], locale = "en", termLabels, renderFaq, constrainDiagrams = false, newsReading = false,
 }: {
   blocks: readonly RichContentBlock[];
   labels?: ContentBlockLabels;
@@ -147,6 +147,7 @@ export function ContentBlocks({
   /** Keeps wide SVG diagrams inside their own horizontal scroller when an article sits in an
    *  elevated reading sheet or beside a desktop sticky navigation rail. */
   constrainDiagrams?: boolean;
+  newsReading?: boolean;
 }) {
   // Heading ids are decided in one pass before rendering: level-2 headings continue the
   // sequence the caller started, and level-3 headings count within their section
@@ -300,11 +301,23 @@ export function ContentBlocks({
     }
     if (block.type === "table") {
       const caption = block.caption?.trim() ?? "";
-      // A wide table scrolls inside its own box; the page must never scroll sideways for it.
+      const wideNewsTable = newsReading && block.header.length >= 3;
+      const scrollLabel = wideNewsTable ? caption || block.header.filter(Boolean).join(" · ") : undefined;
       return (
-        <div key={index} className="overflow-x-auto rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow-sm)]">
+        <div
+          key={index}
+          data-news-table={newsReading ? block.header.length : undefined}
+          tabIndex={wideNewsTable ? 0 : undefined}
+          role={scrollLabel ? "region" : undefined}
+          aria-label={scrollLabel}
+          className="overflow-x-auto rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow-sm)]"
+        >
           <table className="w-full border-collapse text-sm [overflow-wrap:normal]">
-            {caption ? <caption className="caption-bottom border-t border-[var(--line)] px-4 py-2.5 text-left text-[length:var(--text-xs)] text-[var(--muted)]">{caption}</caption> : null}
+            {caption ? (
+              <caption className="caption-bottom border-t border-[var(--line)] px-4 py-2.5 text-left text-[length:var(--text-xs)] text-[var(--muted)]">
+                {newsReading ? <span>{caption}</span> : caption}
+              </caption>
+            ) : null}
             <thead className="bg-[var(--surface-tint)]">
               <tr>{block.header.map((cell, i) => <th key={i} scope="col" className="min-w-28 border-b-2 border-[var(--line)] px-4 py-3 text-left font-bold text-[var(--ink)]">{cell}</th>)}</tr>
             </thead>

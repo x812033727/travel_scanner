@@ -2,32 +2,45 @@
   "fields": {
     "hotspot_guide_gemini_key_budgets_usd": {
       "label": "Gemini 各金鑰月預算（USD）",
-      "help": "可留空。依序對應「其他 Gemini 金鑰」再到上面那把，用逗號分隔，例如 95,95,0；0 或留空表示不設預算。真正換金鑰的依據是 Google 的拒絕：預付制儲值用完時回 402，有設月花費上限時回 429。"
+      "help": "可留空。直接在上方「Gemini 金鑰池」依帳號 A、B、C、D… 個別設定與儲存；0 或留空表示不設預算。真正換金鑰的依據是 Google 的拒絕：預付制儲值用完時回 402，有設月花費上限時回 429。"
     }
   },
   "secrets": {
     "hotspot_guide_gemini_api_keys_extra": {
       "label": "其他 Gemini 金鑰（Google AI Ultra 帳號）",
-      "help": "可填多把，用逗號或換行分隔。系統會依序先用完這些金鑰（Ultra 帳號每月的 Google Cloud 抵用額度），全部被 Google 拒絕後才改用上面那把。"
+      "help": "請在上方「Gemini 金鑰池」按 A、B、C、D… 分槽單獨輸入與儲存。系統會依 A → B → C → … → A 循環輪替使用（Ultra 帳號每月的 Google Cloud 抵用額度），全部額度用完後才改用網站金鑰。"
     }
   },
   "panel": {
-    "title": "Gemini 金鑰池",
-    "intro": "依序使用；被 Google 以「額度或花費上限」拒絕的金鑰會休息，最長 12 小時後再試。本月花費是系統依用量估算，實際餘額以 AI Studio 帳單頁為準。",
+    "title": "Gemini 金鑰池（Google AI Ultra 分槽管理）",
+    "intro": "可按 A、B、C、D… 分槽單獨輸入與儲存金鑰，並隨時按「＋ 新增帳號槽」擴充。當目前帳號額度不足或達花費上限時，系統自動換下一槽（A → B → C → … 到底再繞回 A），也可隨時指定要從哪一個帳號開始跑。",
     "key": "金鑰",
-    "order": "順序",
+    "order": "帳號槽",
     "spent": "本月估計",
-    "budget": "預算",
+    "budget": "月預算 (USD)",
     "state": "狀態",
+    "actions": "操作",
     "active": "使用中",
     "ready": "待命",
     "exhausted": "額度用完，休息到",
     "busy": "忙碌，休息到",
     "over": "已達預算",
     "none": "未設",
+    "unconfigured": "未設定",
     "billing": "開啟 AI Studio 帳單頁",
     "error": "讀不到金鑰池狀態",
-    "single": "目前只有一把 Gemini 金鑰；在上方「其他 Gemini 金鑰」填入 Ultra 帳號的金鑰後，這裡會列出每一把。",
-    "siteKey": "網站金鑰"
+    "single": "目前只有一把 Gemini 金鑰；在下方各槽（A、B、C…）單獨填入 Ultra 帳號的金鑰並按儲存即可啟用輪替。",
+    "siteKey": "網站金鑰",
+    "slotLabel": "帳號",
+    "currentTurn": "目前輪到",
+    "startHere": "從此開始",
+    "saveSlot": "儲存",
+    "clearSlot": "清除",
+    "addSlot": "＋ 新增帳號槽",
+    "keyPlaceholder": "輸入此槽的 Gemini API Key",
+    "keyConfiguredPlaceholder": "已儲存，輸入新金鑰可更新",
+    "budgetPlaceholder": "不限",
+    "savedNotice": "已更新帳號槽",
+    "turnNotice": "已指定從此帳號開始："
   }
 }

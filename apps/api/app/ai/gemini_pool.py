@@ -32,6 +32,7 @@ from __future__ import annotations
 
 import asyncio
 import hashlib
+import json
 import logging
 import re
 from collections.abc import Callable
@@ -82,22 +83,122 @@ DEFAULT_TOKEN_PRICE = (2.00, 12.00)
 Verdict = Literal["exhausted", "busy"]
 _BACKGROUND: set[asyncio.Task[None]] = set()
 
+SLOT_LETTERS: tuple[str, ...] = tuple("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+SITE_SLOT = "SITE"
+DEFAULT_VISIBLE_SLOTS = 4
+
 
 def fingerprint(key: str) -> str:
     return hashlib.sha256(key.encode("utf-8")).hexdigest()[:12]
 
 
+def parse_extra_slots(raw: str | None) -> dict[str, str]:
+    """Parse ``hotspot_guide_gemini_api_keys_extra`` into ordered ``{slot_letter: api_key}``.
+
+    Accepts either a JSON object ``{"A": "key1", "B": "key2"}`` written by the per-slot admin
+    endpoint or a legacy comma/whitespace-separated string ``"key1, key2"`` mapped to A, B, C...
+    """
+    text = (raw or "").strip()
+    if not text:
+        return {}
+    slots: dict[str, str] = {}
+    seen: set[str] = set()
+    if text.startswith("{"):
+        try:
+            parsed = json.loads(text)
+        except ValueError:
+            parsed = None
+        if isinstance(parsed, dict):
+            for letter in SLOT_LETTERS:
+                val = parsed.get(letter)
+                if isinstance(val, str):
+                    key = val.strip()
+                    if key and key not in seen:
+                        slots[letter] = key
+                        seen.add(key)
+            return slots
+    idx = 0
+    for token in _SPLIT.split(text):
+        key = token.strip()
+        if not key or key in seen:
+            continue
+        if idx >= len(SLOT_LETTERS):
+            break
+        slots[SLOT_LETTERS[idx]] = key
+        seen.add(key)
+        idx += 1
+    return slots
+
+
+def serialize_extra_slots(slots: dict[str, str]) -> str | None:
+    """Serialize ``{slot_letter: api_key}`` in A..Z order, or ``None`` when empty."""
+    cleaned: dict[str, str] = {}
+    seen: set[str] = set()
+    for letter in SLOT_LETTERS:
+        key = (slots.get(letter) or "").strip()
+        if key and key not in seen:
+            cleaned[letter] = key
+            seen.add(key)
+    return json.dumps(cleaned) if cleaned else None
+
+
+def parse_slot_budgets(
+    raw: str | None, extra_slot_letters: list[str] | tuple[str, ...]
+) -> dict[str, float | None]:
+    """Parse ``hotspot_guide_gemini_key_budgets_usd`` into ``{slot: budget_usd_or_none}``."""
+    text = (raw or "").strip()
+    order = [*extra_slot_letters, SITE_SLOT]
+    result: dict[str, float | None] = {slot: None for slot in order}
+    if not text:
+        return result
+    if text.startswith("{"):
+        try:
+            parsed = json.loads(text)
+        except ValueError:
+            parsed = None
+        if isinstance(parsed, dict):
+            for slot, raw_val in parsed.items():
+                slot_key = str(slot).strip().upper()
+                try:
+                    val = float(raw_val) if raw_val is not None and str(raw_val).strip() else 0.0
+                except (TypeError, ValueError):
+                    val = 0.0
+                result[slot_key] = val if val > 0 else None
+            return result
+    written = _SPLIT.split(text)
+    for index, slot in enumerate(order):
+        try:
+            value = float(written[index]) if index < len(written) and written[index] else 0.0
+        except ValueError:
+            value = 0.0
+        result[slot] = value if value > 0 else None
+    return result
+
+
+def serialize_slot_budgets(budgets_by_slot: dict[str, float | None]) -> str | None:
+    """Serialize ``{slot: budget_usd}`` in A..Z, SITE order, or ``None`` when none are positive."""
+    cleaned: dict[str, float] = {}
+    for slot in (*SLOT_LETTERS, SITE_SLOT):
+        val = budgets_by_slot.get(slot)
+        if val is not None and val > 0:
+            cleaned[slot] = round(float(val), 2)
+    return json.dumps(cleaned) if cleaned else None
+
+
+def pool_slots(settings: Settings) -> list[tuple[str, str]]:
+    """``(slot_label, api_key)`` pairs in pool order: Ultra slots A, B, C... then ``SITE``."""
+    extra = parse_extra_slots(settings.hotspot_guide_gemini_api_keys_extra)
+    pairs: list[tuple[str, str]] = list(extra.items())
+    seen = {key for _, key in pairs}
+    site = (settings.hotspot_guide_gemini_api_key or "").strip()
+    if site and site not in seen:
+        pairs.append((SITE_SLOT, site))
+    return pairs
+
+
 def pool_keys(settings: Settings) -> list[str]:
-    """The extra keys in the order written, then the site's own key, each once."""
-    keys: list[str] = []
-    for key in [
-        *_SPLIT.split(settings.hotspot_guide_gemini_api_keys_extra or ""),
-        settings.hotspot_guide_gemini_api_key or "",
-    ]:
-        key = key.strip()
-        if key and key not in keys:
-            keys.append(key)
-    return keys
+    """The extra keys in slot order (A, B, C...), then the site's own key, each once."""
+    return [key for _, key in pool_slots(settings)]
 
 
 def key_by_fingerprint(settings: Settings, fp: str) -> str | None:
@@ -106,15 +207,10 @@ def key_by_fingerprint(settings: Settings, fp: str) -> str | None:
 
 def budgets(settings: Settings) -> list[float | None]:
     """Each key's monthly USD budget in pool order; None (blank, 0 or unreadable) means none."""
-    written = _SPLIT.split((settings.hotspot_guide_gemini_key_budgets_usd or "").strip())
-    found: list[float | None] = []
-    for index in range(len(pool_keys(settings))):
-        try:
-            value = float(written[index]) if index < len(written) and written[index] else 0.0
-        except ValueError:
-            value = 0.0
-        found.append(value if value > 0 else None)
-    return found
+    pairs = pool_slots(settings)
+    extra_letters = [slot for slot, _ in pairs if slot != SITE_SLOT]
+    by_slot = parse_slot_budgets(settings.hotspot_guide_gemini_key_budgets_usd, extra_letters)
+    return [by_slot.get(slot) for slot, _ in pairs]
 
 
 def month_of(moment: datetime) -> str:
@@ -130,6 +226,10 @@ def seconds_to_next_month(moment: datetime) -> int:
 
 def _names(fp: str, month: str) -> dict[str, str]:
     return {"rest": f"{PREFIX}:rest:{fp}", "spend": f"{PREFIX}:spend:{fp}:{month}"}
+
+
+def _turn_key(month: str) -> str:
+    return f"{PREFIX}:turn:{month}"
 
 
 def classify(status: int, body: str) -> Verdict | None:
@@ -284,6 +384,7 @@ class KeyState:
     rest_seconds: int
     month_usd: float
     budget_usd: float | None
+    slot: str = "A"
 
     @property
     def usable(self) -> bool:
@@ -297,8 +398,8 @@ async def states(
     """Every key's state in pool order; raises RedisError for the caller to decide."""
     month = month_of((now or _utcnow)())
     found: list[KeyState] = []
-    for position, (key, budget) in enumerate(
-        zip(pool_keys(settings), budgets(settings), strict=True)
+    for position, ((slot, key), budget) in enumerate(
+        zip(pool_slots(settings), budgets(settings), strict=True)
     ):
         fp = fingerprint(key)
         names = _names(fp, month)
@@ -311,14 +412,64 @@ async def states(
                 resting = raw.decode() if isinstance(raw, bytes) else str(raw)
                 ttl = max(0, int(await redis.ttl(names["rest"])))
             spent = float(await redis.get(names["spend"]) or 0)
-        found.append(KeyState(fp, position, resting, ttl, round(spent, 4), budget))
+        found.append(KeyState(fp, position, resting, ttl, round(spent, 4), budget, slot=slot))
     return found
+
+
+async def current_turn(
+    redis: Redis | None, settings: Settings, *, now: Callable[[], datetime] | None = None
+) -> str | None:
+    """The Ultra slot letter ('A', 'B', 'C'...) whose turn it currently is."""
+    pairs = pool_slots(settings)
+    ultra_slots = [slot for slot, _ in pairs if slot != SITE_SLOT]
+    if not ultra_slots:
+        return SITE_SLOT if pairs else None
+    if redis is not None:
+        month = month_of((now or _utcnow)())
+        raw = await redis.get(_turn_key(month))
+        if raw:
+            saved = raw.decode() if isinstance(raw, bytes) else str(raw)
+            if saved in ultra_slots:
+                return saved
+    return ultra_slots[0]
+
+
+async def set_turn(
+    redis: Redis | None,
+    settings: Settings,
+    slot: str,
+    *,
+    now: Callable[[], datetime] | None = None,
+) -> str:
+    """Point the circular rotation at ``slot`` ('A', 'B', 'C'...) and clear its temporary rest."""
+    normalized = slot.strip().upper()
+    extra = parse_extra_slots(settings.hotspot_guide_gemini_api_keys_extra)
+    if normalized not in extra:
+        raise ValueError(f"Slot {normalized} is not configured")
+    if redis is not None:
+        month = month_of((now or _utcnow)())
+        await redis.set(_turn_key(month), normalized, ex=SPEND_KEEP_SECONDS)
+        await redis.delete(_names(fingerprint(extra[normalized]), "")["rest"])
+    return normalized
+
+
+async def _save_turn(
+    redis: Redis | None, slot: str, *, now: Callable[[], datetime] | None = None
+) -> None:
+    if redis is None or slot == SITE_SLOT:
+        return
+    try:
+        month = month_of((now or _utcnow)())
+        await redis.set(_turn_key(month), slot, ex=SPEND_KEEP_SECONDS)
+    except RedisError:
+        pass
 
 
 async def choose(
     redis: Redis | None, settings: Settings, *, now: Callable[[], datetime] | None = None
 ) -> str | None:
-    """The key to call Gemini with now: the first usable one in order, else the last."""
+    """The key to call Gemini with now: circular rotation starting from the current turn slot
+    (A -> B -> C -> ... -> A), falling back to the site key only when every Ultra slot is out."""
     keys = pool_keys(settings)
     if not keys:
         return None
@@ -326,24 +477,34 @@ async def choose(
         return keys[0]
     try:
         current = await states(redis, settings, now=now)
+        turn_slot = await current_turn(redis, settings, now=now)
     except RedisError as error:
         logger.warning("gemini pool: Redis failed (%s); using the first key", type(error).__name__)
         return keys[0]
-    site = settings.hotspot_guide_gemini_api_key
-    extras = [state for state in current if keys[state.position] != site]
-    usable = next((state for state in extras if state.usable), None)
-    if usable:
-        return keys[usable.position]
-    # Every Ultra key is resting. One that is only busy still beats the paid key: take the one
-    # free soonest; Google's refusal costs nothing and the caller retries after Retry-After.
-    busy = [
-        state
-        for state in extras
-        if state.resting == "busy"
-        and not (state.budget_usd is not None and state.month_usd >= state.budget_usd)
-    ]
-    if busy:
-        return keys[min(busy, key=lambda state: state.rest_seconds).position]
+    extras = [state for state in current if state.slot != SITE_SLOT]
+    if extras:
+        start_idx = next(
+            (idx for idx, state in enumerate(extras) if state.slot == turn_slot), 0
+        )
+        ordered_extras = extras[start_idx:] + extras[:start_idx]
+        usable = next((state for state in ordered_extras if state.usable), None)
+        if usable:
+            if usable.slot != turn_slot:
+                await _save_turn(redis, usable.slot, now=now)
+            return keys[usable.position]
+        # Every Ultra key is resting. One that is only busy still beats the paid key: take the one
+        # free soonest in circular order; Google's refusal costs nothing and the caller retries.
+        busy = [
+            state
+            for state in ordered_extras
+            if state.resting == "busy"
+            and not (state.budget_usd is not None and state.month_usd >= state.budget_usd)
+        ]
+        if busy:
+            chosen_busy = min(busy, key=lambda state: state.rest_seconds)
+            if chosen_busy.slot != turn_slot:
+                await _save_turn(redis, chosen_busy.slot, now=now)
+            return keys[chosen_busy.position]
     # Every Ultra key is out of money: the site's own key (or, without one, the last key) takes the
     # call and its error goes up as before.
     return keys[-1]

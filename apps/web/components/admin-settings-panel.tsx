@@ -180,6 +180,9 @@ const fieldMeta: Record<string, FieldMeta> = {
   flight_status_enabled: { label: "", type: "boolean" },
   airline_fares_enabled: { label: "", type: "boolean" },
   pricing_enabled: { label: "", type: "boolean" },
+  flight_search_enabled: { label: "", type: "boolean" },
+  videos_enabled: { label: "", type: "boolean" },
+  member_features_enabled: { label: "", type: "boolean" },
   ai_planner_mode: { localized: true, options: [{ value: "auto" }, { value: "openai" }, { value: "anthropic", label: "Claude" }, { value: "minimax", label: "MiniMax" }, { value: "gemini", label: "Gemini" }, { value: "fallback" }, { value: "disabled" }] },
   ai_planner_priority: { localized: true },
   ai_planner_timeout_seconds: { localized: true, type: "number" },
@@ -1149,7 +1152,7 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
         {provider.provider === "azure_speech" && usage && <AzureSpeechUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
         {provider.provider === "azure_speech" && <VideoToolTokens canManage={manage.allowed} />}
         {provider.provider === "runpod" && <AdminRunpodPanel canManage={manage.allowed} />}
-        {provider.provider === "ai_vendors" && provider.secrets.hotspot_guide_gemini_api_keys_extra?.configured && <AdminGeminiPool />}
+        {provider.provider === "ai_vendors" && "hotspot_guide_gemini_api_keys_extra" in provider.secrets && <AdminGeminiPool canManage={manage.allowed} />}
         {provider.provider === "youtube_guides" && usage && <YouTubeUsagePanel usage={usage} automaticSearchBudget={Number(provider.config.hotspot_guide_youtube_daily_search_budget || 80)} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
 
         <fieldset disabled={busy || !manage.allowed} title={!manage.allowed ? manage.disabledReason : undefined} className="min-w-0 disabled:opacity-70">

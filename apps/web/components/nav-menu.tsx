@@ -13,15 +13,16 @@ const linkClass = "-mx-2 inline-flex min-h-11 items-center rounded-lg px-2 trans
 /** The items of a group the owner has not switched off, in the list's order. */
 export function useVisibleItems(group: NavGroup) {
   const visibility = useSiteVisibility();
-  return group.items.filter((item) => !item.feature || featureVisible(visibility, item.feature));
+  const memberFeaturesVisible = featureVisible(visibility, "member_features");
+  return group.items.filter((item) => (!item.feature || featureVisible(visibility, item.feature)) && (item.feature !== "trips" || memberFeaturesVisible));
 }
 
 /**
  * One group of the desktop header: the group's label links to its hub, and the chevron beside
  * it opens the group's pages.
  *
- * The panel's links are always in the document and only CSS hides them, so a crawler reaches
- * every page the menu names, and pointing at the group opens it with no script at all. The
+ * The links stay in the document. A closed panel takes no space, so Next's viewport observer
+ * starts prefetching its links when it opens. CSS hover also works without script. The
  * button opens it for touch and the keyboard; Escape and a click elsewhere close it. Escape
  * also holds the hover off until the pointer leaves, or a menu under a resting pointer would
  * refuse to close.
@@ -34,6 +35,7 @@ export function NavMenu({ group }: { group: NavGroup }) {
   const [dismissed, setDismissed] = useState(false);
   const open = openPath === pathname;
   const root = useRef<HTMLDivElement>(null);
+  const toggle = useRef<HTMLButtonElement>(null);
   const panelId = useId();
   const label = t(group.key);
   const current = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
@@ -48,9 +50,10 @@ export function NavMenu({ group }: { group: NavGroup }) {
   }, [open]);
 
   const onKeyDown = (event: ReactKeyboardEvent) => {
-    if (event.key !== "Escape") return;
+    if (event.key !== "Escape" || (!open && !root.current?.matches(":hover"))) return;
     setOpenPath(null);
     setDismissed(true);
+    toggle.current?.focus();
   };
 
   if (!items.length) {
@@ -71,18 +74,19 @@ export function NavMenu({ group }: { group: NavGroup }) {
         <span className="inline-flex min-h-11 items-center">{label}</span>
       )}
       <button
+        ref={toggle}
         type="button"
         aria-expanded={open}
         aria-controls={panelId}
         aria-label={t("groupMenu", { group: label })}
-        onClick={() => { setDismissed(false); setOpenPath(open ? null : pathname); }}
+        onClick={() => { setDismissed(open); setOpenPath(open ? null : pathname); }}
         className="grid h-11 w-7 place-items-center rounded-lg hover:text-[var(--ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--teal)]"
       >
         <ChevronDown size={15} aria-hidden className="transition group-data-[open]:rotate-180" />
       </button>
       <div
         id={panelId}
-        className={`invisible absolute left-0 top-full z-50 min-w-56 pt-1 opacity-0 transition group-data-[open]:visible group-data-[open]:opacity-100 ${dismissed ? "" : "group-hover:visible group-hover:opacity-100"}`}
+        className={`absolute left-0 top-full z-50 hidden min-w-56 pt-1 group-data-[open]:block ${dismissed ? "" : "group-hover:block"}`}
       >
         <ul className="grid gap-0.5 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-2 shadow-xl">
           {items.map((item) => (

@@ -202,3 +202,69 @@ async def test_a_video_the_owner_published_from_studio_is_listed_once_youtube_sa
     scheduled = rows["studio-scheduled"]
     assert scheduled is not None and scheduled.replace(tzinfo=UTC) > NOW
     assert rows["studio-private"] is None and rows["studio-unlisted"] is None
+
+
+async def test_get_video_detail_returns_published_video_and_related(
+    client: tuple[AsyncClient, async_sessionmaker[AsyncSession]],
+) -> None:
+    http, factory = client
+    await seed(
+        factory,
+        GuideArticle(slug="cursor-editor-guide", kind="life"),
+        video(
+            "focus",
+            youtube_publish_at=NOW - timedelta(hours=3),
+            category="tutorial",
+            source_guide="cursor-editor-guide",
+        ),
+        video(
+            "same-cat-new",
+            youtube_publish_at=NOW - timedelta(hours=1),
+            category="tutorial",
+        ),
+        video(
+            "same-cat-old",
+            youtube_publish_at=NOW - timedelta(days=2),
+            category="tutorial",
+        ),
+        video(
+            "other-cat",
+            youtube_publish_at=NOW - timedelta(minutes=30),
+            category="explainer",
+        ),
+        video(
+            "scheduled-same-cat",
+            youtube_publish_at=NOW + timedelta(days=1),
+            category="tutorial",
+        ),
+    )
+
+    response = await http.get("/api/v1/videos/focus")
+    assert response.status_code == 200
+    body = response.json()
+    assert body["video"]["slug"] == "focus"
+    assert body["video"]["source_guide"] == "cursor-editor-guide"
+    assert body["video"]["source_guide_kind"] == "life"
+    # Same-category videos come first (newest first), followed by fallback published videos.
+    assert [item["slug"] for item in body["related"]] == [
+        "same-cat-new",
+        "same-cat-old",
+        "other-cat",
+    ]
+
+
+async def test_get_video_detail_returns_404_for_missing_or_unpublished(
+    client: tuple[AsyncClient, async_sessionmaker[AsyncSession]],
+) -> None:
+    http, factory = client
+    await seed(
+        factory,
+        video("future", youtube_publish_at=NOW + timedelta(days=1)),
+        video("private", youtube_publish_at=None),
+        video("unuploaded", youtube_video_id=None),
+        video("dropped", dropped_at=NOW - timedelta(hours=1), dropped_note="removed"),
+    )
+
+    for slug in ("does-not-exist", "future", "private", "unuploaded", "dropped"):
+        response = await http.get(f"/api/v1/videos/{slug}")
+        assert response.status_code == 404, slug

@@ -5,6 +5,9 @@ export const siteFeatureKeys = [
   "flight_status",
   "airline_fares",
   "pricing",
+  "flight_search",
+  "videos",
+  "member_features",
 ] as const;
 
 export type SiteFeature = (typeof siteFeatureKeys)[number];
@@ -17,6 +20,13 @@ export type SiteVisibilityState = {
   features: SiteVisibility;
 };
 
+/** Surfaces that default off in information-only mode and must stay hidden when settings cannot be read. */
+const defaultClosedNavFeatures: ReadonlySet<SiteFeature> = new Set([
+  "flight_search",
+  "videos",
+  "member_features",
+]);
+
 export const openSiteVisibility: SiteVisibility = {
   hotspots_enabled: true,
   trips_enabled: true,
@@ -24,6 +34,9 @@ export const openSiteVisibility: SiteVisibility = {
   flight_status_enabled: true,
   airline_fares_enabled: true,
   pricing_enabled: true,
+  flight_search_enabled: true,
+  videos_enabled: true,
+  member_features_enabled: true,
 };
 
 export const closedSiteVisibility: SiteVisibility = {
@@ -33,6 +46,9 @@ export const closedSiteVisibility: SiteVisibility = {
   flight_status_enabled: false,
   airline_fares_enabled: false,
   pricing_enabled: false,
+  flight_search_enabled: false,
+  videos_enabled: false,
+  member_features_enabled: false,
 };
 
 // A closed feature must not be indexed, but a settings read that timed out is not a closed
@@ -49,6 +65,6 @@ export function featureEnabled(state: SiteVisibilityState, feature: SiteFeature)
 // failed settings fetch silently emptied the desktop header and, on a phone,
 // the bottom tab bar.
 export function featureVisible(state: SiteVisibilityState, feature: SiteFeature) {
-  if (state.status === "unavailable") return true;
+  if (state.status === "unavailable") return !defaultClosedNavFeatures.has(feature);
   return state.features[`${feature}_enabled`];
 }

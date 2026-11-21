@@ -36,8 +36,9 @@ import { splitArticleExtras, guideTopicHref, guideSection,
 import { getAdsenseSlot } from "@/lib/adsense.server";
 import * as guidesServer from "@/lib/guides.server";
 import { getGuideTopics, getGuideArticle, getGuideList, getGuideSeries } from "@/lib/guides.server";
+import { ARTICLE_OG_HEIGHT, ARTICLE_OG_WIDTH, articleOgImagePath } from "@/lib/article-og";
 import { DISCOVER_ROBOTS, localeUrl } from "@/lib/seo";
-import { faqPage, definedTerm, breadcrumbs, guideArticle, type Crumb } from "@/lib/structured-data";
+import { faqPage, definedTerm, breadcrumbs, guideArticle, videoObject, type Crumb } from "@/lib/structured-data";
 
 /**
  * The one article page, shared by `/guides/[kind]/[slug]` and `/life/[slug]`.
@@ -136,11 +137,13 @@ export async function guideArticleMetadata(
   const { document } = state;
   const { title, description } = document;
   const image = articlePreviewImage(document, state.news_date);
-  // Next replaces the entire social object. Carry forward the layout's brand artwork
-  // whenever this article has no editorial image that can appear on a reader surface.
+  // Next replaces the entire social object. Articles without bespoke editorial photography
+  // receive a dedicated 1200x630 card carrying their own headline and topic badge for Google
+  // Discover and social sharing instead of repeating the site-wide /og.png logo.
   const inherited = (await parent)?.openGraph;
-  const fallbackImages = inherited?.images?.length ? inherited.images : [{ url: "/og.png", width: 1200, height: 630 }];
-  const images = image ? [{ url: image.src, width: image.width, height: image.height, alt: image.alt }] : fallbackImages;
+  const images = image
+    ? [{ url: image.src, width: image.width, height: image.height, alt: image.alt }]
+    : [{ url: articleOgImagePath(locale, kind, slug), width: ARTICLE_OG_WIDTH, height: ARTICLE_OG_HEIGHT, alt: title }];
   const tags = state.topics.map((topic) => topic.label).filter(Boolean);
   return {
     title,
@@ -534,6 +537,8 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
     >
       {hasDesktopToc ? (
         <ArticleTocRail
+          key={canonicalUrl}
+          newsReading={isNewsReading}
           headings={headings}
           contentsLabel={labels.contents}
           backToTopLabel={t("guides.backToTop")}
@@ -551,6 +556,8 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
       <SiteHeader />
       {!isHub ? (
         <ArticleMobileProgress
+          key={canonicalUrl}
+          newsReading={isNewsReading}
           backToTopLabel={t("guides.backToTop")}
           headings={headings.length >= CONTENTS_MIN_HEADINGS ? headings : undefined}
           contentsLabel={labels.contents}
@@ -582,7 +589,7 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
             publishedAt: state.document.published_at,
             modifiedAt: state.document.modified_at,
             newsDate: state.news_date,
-            hero: image,
+            hero: image ?? { src: articleOgImagePath(locale, kind, slug), width: ARTICLE_OG_WIDTH, height: ARTICLE_OG_HEIGHT },
             section: articleSection(state, listing.name),
             keywords: state.topics.map((topic) => topic.label),
             // Only an id with a destination page behind it. Every id in the corpus has one
@@ -605,6 +612,15 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
               ? { name: state.series.hub.title, path: guideHref(state.series.hub.kind, state.series.hub.slug) }
               : null,
           }),
+          ...videos.map((video) => videoObject(locale, {
+            slug: video.slug,
+            title: video.title,
+            youtubeVideoId: video.youtube_video_id,
+            publishedAt: video.published_at,
+            description: state.document!.description,
+            articlePath: guideHref(kind, slug),
+            pagePath: guideHref(kind, slug),
+          })),
         ]}
       />
       <main data-news-rail={isNewsReading && hasDesktopRail || undefined} className={isNewsReading ? readingStyles.reading : `mx-auto px-5 py-6 sm:py-8 md:py-12 ${isHub || state.series || hasDesktopRail ? "max-w-6xl" : "max-w-3xl"}`}>
@@ -634,6 +650,9 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
                   copyLink: t("guides.copyLink"),
                   linkCopied: t("guides.linkCopied"),
                   shareLine: t("guides.shareLine"),
+                  shareThreads: t("guides.shareThreads"),
+                  shareFacebook: t("guides.shareFacebook"),
+                  shareX: t("guides.shareX"),
                   shareSystem: t("guides.shareSystem"),
                   sharePrompt: t("guides.sharePrompt"),
                 },

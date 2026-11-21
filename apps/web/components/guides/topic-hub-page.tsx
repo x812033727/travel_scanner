@@ -12,6 +12,7 @@ import { SiteHeader } from "@/components/site-header";
 import { StructuredData } from "@/components/structured-data";
 import { Link } from "@/i18n/navigation";
 import { locales, type Locale } from "@/i18n/routing";
+import { ARTICLE_OG_HEIGHT, ARTICLE_OG_WIDTH, topicOgImagePath } from "@/lib/article-og";
 import {
   guideHref, guideTopicHref, isGuideListSort, isNewsTopic, sectionHubHref, topicLocales, visibleGuideHero,
   type GuideListSort, type GuideSection, type GuideTopic,
@@ -103,7 +104,16 @@ export async function topicHubMetadata(route: TopicHubRoute): Promise<Metadata> 
   const description = topic?.description || (news
     ? t(`newsTopic-${route.topic}-description`)
     : t("topicHubDescription", { topic: label }));
-  const images = leadImage ? [{ url: leadImage.src, width: leadImage.width, height: leadImage.height, alt: leadImage.alt }] : null;
+  const images = leadImage
+    ? [{ url: leadImage.src, width: leadImage.width, height: leadImage.height, alt: leadImage.alt }]
+    : !noindex
+      ? [{
+          url: topicOgImagePath(route.locale, route.section, route.topic),
+          width: ARTICLE_OG_WIDTH,
+          height: ARTICLE_OG_HEIGHT,
+          alt: title,
+        }]
+      : null;
   return {
     title,
     description,

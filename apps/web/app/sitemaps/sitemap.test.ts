@@ -34,6 +34,11 @@ vi.mock("@/lib/guides.server", async (original) => ({
   ...await original<typeof import("@/lib/guides.server")>(),
   guideSitemapEntries: vi.fn(), guideSitemapSummary: vi.fn(), guideTopicSitemapEntries: vi.fn(),
 }));
+// Default to unavailable so /videos stays listed in all five locales across baseline static-route
+// tests, matching `unavailableSummary` above. Dedicated cases below opt in to per-locale results.
+vi.mock("@/lib/videos.server", () => ({
+  getVideos: vi.fn(async () => ({ videos: [], next_cursor: null, categories: [], available: false })),
+}));
 
 /** One child of the index, as Next calls it: the id arrives as a promise. */
 const child = (id: string) => sitemap({ id: Promise.resolve(id) });
@@ -731,5 +736,36 @@ describe("pet-friendly place pages in the static child", () => {
     const sections = (await Promise.all(SITEMAP_CHILDREN.filter((id) => id !== "static").map(child))).flat();
     expect(placeEntries(sections)).toEqual([]);
     expect(petPlaceSitemapEntries).not.toHaveBeenCalled();
+  });
+});
+
+describe("the videos library in the static child", () => {
+  it("lists /videos only in locales that publish videos, with matching reciprocal alternates", async () => {
+    const { getVideos } = await import("@/lib/videos.server");
+    vi.mocked(getSiteVisibility).mockReset().mockResolvedValue({ status: "ready", features: openSiteVisibility });
+    vi.mocked(getDiscoveryStatus).mockReset().mockResolvedValue({ enabled: false });
+    vi.mocked(getCommunityState).mockReset().mockResolvedValue(closedCommunity);
+    vi.mocked(guideSitemapSummary).mockReset().mockResolvedValue(unavailableSummary);
+    vi.mocked(getVideos).mockReset().mockImplementation(async (locale) => ({
+      videos: locale === "zh-TW" || locale === "en"
+        ? [{
+            slug: "demo-video", title: "Demo", youtube_video_id: "abcdefghijk", category: "tutorial",
+            kind: "long", source_guide: null, source_guide_kind: null, published_at: "2026-11-18T00:00:00Z",
+          }]
+        : [],
+      next_cursor: null,
+      categories: [],
+      available: true,
+    }));
+
+    const rows = (await child("static")).filter((entry) => entry.url.endsWith("/videos"));
+    expect(rows.map((entry) => entry.url)).toEqual([`${siteUrl}/en/videos`, `${siteUrl}/zh-TW/videos`]);
+    expect(rows[0].alternates?.languages).toEqual({
+      en: `${siteUrl}/en/videos`,
+      "zh-TW": `${siteUrl}/zh-TW/videos`,
+      "x-default": `${siteUrl}/en/videos`,
+    });
+    // Reset to baseline unavailable mock so later tests if added keep default behavior.
+    vi.mocked(getVideos).mockReset().mockResolvedValue({ videos: [], next_cursor: null, categories: [], available: false });
   });
 });

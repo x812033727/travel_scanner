@@ -1,0 +1,602 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-19",
+  "reviewer": "check131",
+  "baselines": {
+    "curio": {
+      "candidates": 2742,
+      "selected": 1870,
+      "themes": 155
+    },
+    "so_thats_why": {
+      "candidates": 7958,
+      "selected": 7654,
+      "themes": 772
+    }
+  },
+  "method": "以101／130輪遠端基線對兩庫的原始記錄、收錄題、退案及長題查找繁簡用字、專名、工具、核心答案。獨立開讀本批39份機關教材、製造商說明與博物館原件，並核對6筆退案所指的舊卡。逐一比較研究卡和原稿的字句、章節秒數與材料權重。",
+  "segment_reviews": [
+    {
+      "id": "K131-0001",
+      "source_ids": [
+        "X131E-S01",
+        "X131E-S02"
+      ],
+      "decision": "screened",
+      "checked": "台高鐵旅客運送契約及票價表各載身高、年齡、證件、座位與陪同人數條件。120公分五歲、有實體證件不佔位免票，另佔位購兒童票。",
+      "dedup_and_scope": "限一名成人陪這一名免票兒童。"
+    },
+    {
+      "id": "K131-0002",
+      "source_ids": [
+        "X131E-S03"
+      ],
+      "decision": "screened",
+      "checked": "公路局編號表597至601行列東西向由北而南雙號、南北向由西而東奇數；支線一端接主線，以原號加天干或數字。",
+      "dedup_and_scope": "限臺灣公路局所列編號原則。"
+    },
+    {
+      "id": "K131-0003",
+      "source_ids": [
+        "X131E-S04"
+      ],
+      "decision": "screened",
+      "checked": "日本消費者廳精米問答列日本國產精米混合取最早精白時期，1至10日為上旬，8和18日例算落在上旬。",
+      "dedup_and_scope": "材料為國產白米，排除進口時期、封袋日等不同欄位。"
+    },
+    {
+      "id": "K131-0004",
+      "source_ids": [
+        "X131E-S05"
+      ],
+      "decision": "screened",
+      "checked": "日本氣象廳日降水量問答舉午夜前30、午夜後20的例子。從零時起算的總量和回溯一小時的最大值可出現20及50。",
+      "dedup_and_scope": "跨日統計窗，和觀測缺值不同。"
+    },
+    {
+      "id": "K131-0005",
+      "source_ids": [
+        "X131E-S06"
+      ],
+      "decision": "screened",
+      "checked": "氣象署新震度說明第36行記PGA與PGV及5、6細分，分級表以生活影響呈現；另核示意圖和舊制問題。",
+      "dedup_and_scope": "沒有用單一測站某個加速度替代新版分級。"
+    },
+    {
+      "id": "K131-0006",
+      "source_ids": [
+        "X131E-S07"
+      ],
+      "decision": "screened",
+      "checked": "日本郵便第四種郵件指引要求監督廳認可或認定的函授學校／法人、學員與教學用途，並列申報和開封要求。",
+      "dedup_and_scope": "不將普通社團等同已獲認可學校。"
+    },
+    {
+      "id": "K131-0007",
+      "source_ids": [
+        "X131E-S08"
+      ],
+      "decision": "screened",
+      "checked": "R&A規則13.1d(2)明分球已在果嶺拿起並放回、未曾拿起放回兩種，自然力移球後原點不詳可估。",
+      "dedup_and_scope": "有別於K128-0003在錯誤果嶺受干擾的救濟。"
+    },
+    {
+      "id": "K131-0008",
+      "source_ids": [
+        "X131E-S09"
+      ],
+      "decision": "screened",
+      "checked": "明尼蘇達大學推廣指引說hardneck抽花梗，softneck通常可編辮；換氣候也可改變抽梗表現。",
+      "dedup_and_scope": "由外形推測類別，不能判確定品種。"
+    },
+    {
+      "id": "K131-0009",
+      "source_ids": [
+        "X131E-S10"
+      ],
+      "decision": "screened",
+      "checked": "AVMA微晶片說明寫掃讀器以低功率無線電喚醒無電池晶片，晶片只給識別碼，更新實際聯絡資料須向登記服務辦理。",
+      "dedup_and_scope": "不把聯絡電話當成晶片廣播內容。"
+    },
+    {
+      "id": "K131-0010",
+      "source_ids": [
+        "X131E-S11"
+      ],
+      "decision": "screened",
+      "checked": "JUKI MO-114D／104D手冊差動送布圖分針前後兩齒與不同送料行程；對照彈性布波浪與緊密布起皺的反向調整。",
+      "dedup_and_scope": "以具名機型的操作表為準。"
+    },
+    {
+      "id": "K131-0011",
+      "source_ids": [
+        "X131E-S12"
+      ],
+      "decision": "screened",
+      "checked": "Adobe的2-up Saddle Stitch說明由列印時拼版，總頁數需四的倍數，不足在末張補空白。10頁變12為具體算例。",
+      "dedup_and_scope": "和自動增刪原排版檔或較多頁的膠裝書帖不同。"
+    },
+    {
+      "id": "K131-0012",
+      "source_ids": [
+        "X131E-S13"
+      ],
+      "decision": "screened",
+      "checked": "密西西比州立大學快麵包手冊在馬芬章記乾濕料拌至濕潤、有細塊屬正常；過攪會使組織不均，出現孔隧及尖頂。",
+      "dedup_and_scope": "限定教材這種馬芬拌和法。"
+    },
+    {
+      "id": "K131-0401",
+      "source_ids": [
+        "X131C-S01"
+      ],
+      "decision": "screened",
+      "checked": "故宮轉心瓶藏品明載外腹四鏤空、湖綠內瓶、粉彩金魚水草與落花，握頸轉動於窗口見不同圖案。",
+      "dedup_and_scope": "僅就兩層套瓶與可轉的頸部，不推論砂盤或齒輪。"
+    },
+    {
+      "id": "K131-0402",
+      "source_ids": [
+        "X131C-S02",
+        "X131C-S03"
+      ],
+      "decision": "screened",
+      "checked": "故宮雙雁盤藏錄列覆燒、口沿無釉、足滿釉，銅釦斷缺數處；Met定窯蓮紋盆另示倒燒時承托口沿，所以不施釉。",
+      "dedup_and_scope": "雙雁盤的口沿與足據故宮本件；倒燒減少變形的說明取同窯系另件。"
+    },
+    {
+      "id": "K131-0403",
+      "source_ids": [
+        "X131C-S04"
+      ],
+      "decision": "screened",
+      "checked": "故宮番蓮碗藏品顯示針具逐次剔去淺粉色底釉成錦地，再於其上彩畫纏枝番蓮。",
+      "dedup_and_scope": "和K119-0003的異色泥填縫不同。"
+    },
+    {
+      "id": "K131-0404",
+      "source_ids": [
+        "X131C-S05",
+        "X131C-S06"
+      ],
+      "decision": "screened",
+      "checked": "V&A C.10-2005記34件彩繪盤置防護匣入窯，匣坍塌使盤子熔黏；三角支具碎片和兩片匣仍附著，另看實物圖。",
+      "dedup_and_scope": "將窯具及事故限定此一坍塌盤堆。"
+    },
+    {
+      "id": "K131-0405",
+      "source_ids": [
+        "X131C-S05",
+        "X131C-S07"
+      ],
+      "decision": "screened",
+      "checked": "V&A C.42-1944記海神騎海豚像的壓模、另加模製及手塑配件；再查repairers為裝配、修模縫、整細部的工人。",
+      "dedup_and_scope": "無法判定每片細飾各誰親手完成。"
+    },
+    {
+      "id": "K131-0406",
+      "source_ids": [
+        "X131C-S08",
+        "X131C-S05"
+      ],
+      "decision": "screened",
+      "checked": "V&A卡尚壺記白衣人像留白、背景及輪廓有光澤，在已燒釉面畫金屬化合物，再缺氧燒、擦亮薄層。",
+      "dedup_and_scope": "原理含銅或銀可能性，未指這件每塊不同色都已驗出特定元素。"
+    },
+    {
+      "id": "K131-0407",
+      "source_ids": [
+        "X131C-S09",
+        "X131C-S05"
+      ],
+      "decision": "screened",
+      "checked": "V&A C.258-1951記獸耳手把、有孔中空座、油碗及浮芯，上層用於床邊溫飲或半流質食物；另看器形照片。",
+      "dedup_and_scope": "本件的加熱結構有據，未推測具體某位使用者及油溫。"
+    }
+  ],
+  "rejected_suggestions_checked": {
+    "X131E-NA001": "K108-0201。舊件已逐項解釋洗標的底線及溫度欄。",
+    "X131E-NA002": "K122-0006。FIDE 3.7.3.3–.4允許還有后時將兵升成另一個后，與舊題同答。",
+    "X131C-NA01": "D2149。石膏模吸水、泥層附壁、倒掉餘漿的中空杯重題。",
+    "X131C-NA02": "K119-0003。地磚壓槽再填異色泥已完整收錄。",
+    "R131-NA01": "X5012。鐵膽墨損及紙纖維沿字裂開，與既有答案相同。",
+    "R131-NA02": "X42-006。相同水量、表面分布不同造成分枝色痕，舊件已有。"
+  },
+  "scope": "日常十二題、工藝七題各有獨立查核與邊界，作短素材。本次只有G774具備完整六章研究，真人現場演示仍待製片。",
+  "themes": {
+    "G774": {
+      "title": "妹妹的百樂 Plumix 和你的同名，她的備用墨囊怎麼只夠救一支筆？",
+      "researcher": "long131",
+      "reviewer": "check131",
+      "verdict": "ready",
+      "fact_count": 14.0,
+      "author_fact_count": 16.0,
+      "est_minutes": 10.5,
+      "method": "同一廠牌的型錄、FAQ、新舊型號合網；同一裝填比較、蘸水後換色／收筆、重複用到同一瓶墨均減權，一網最多兩條。以Lindéngruppen品牌頁核對W&N歸Colart。",
+      "networks": {
+        "Pilot": [
+          "R131-S01",
+          "R131-S04"
+        ],
+        "Newell Brands": [
+          "R131-S02"
+        ],
+        "Platinum Pen": [
+          "R131-S03",
+          "R131-S10"
+        ],
+        "Faber-Castell": [
+          "R131-S05"
+        ],
+        "Pelikan": [
+          "R131-S06"
+        ],
+        "Kaweco": [
+          "R131-S07",
+          "R131-S08"
+        ],
+        "Mitsubishi Pencil／LAMY": [
+          "R131-S09"
+        ],
+        "Colart／Winsor & Newton": [
+          "R131-S11"
+        ],
+        "Rohrer & Klingner": [
+          "R131-S12"
+        ],
+        "PLUS／Sailor": [
+          "R131-S13",
+          "R131-S14"
+        ],
+        "Kuretake": [
+          "R131-S15"
+        ],
+        "Kakimori": [
+          "R131-S16"
+        ],
+        "Hahnemühle": [
+          "R131-S17"
+        ]
+      },
+      "network_weights": {
+        "Pilot": 1.5,
+        "Newell Brands": 0.75,
+        "Faber-Castell": 1.0,
+        "Pelikan": 1.5,
+        "Kaweco": 1.5,
+        "Mitsubishi Pencil／LAMY": 0.75,
+        "Platinum Pen": 0.75,
+        "Colart／Winsor & Newton": 1.0,
+        "Rohrer & Klingner": 1.0,
+        "PLUS／Sailor": 1.5,
+        "Kuretake": 0.5,
+        "Kakimori": 1.5,
+        "Hahnemühle": 0.75
+      },
+      "card_verdicts": [
+        {
+          "id": "K131-0201",
+          "source_ids": [
+            "R131-S01"
+          ],
+          "network": "Pilot",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "百樂歐洲FAQ第13答同名兩筆型、歐洲銷售國際規格、其他市場百樂墨囊，並說平輸流入及筆舌不同。這決定卡片日期由哪支筆寫。"
+        },
+        {
+          "id": "K131-0202",
+          "source_ids": [
+            "R131-S02",
+            "R131-S03"
+          ],
+          "network": "Newell Brands",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "重開Waterman的握位插管到發出喀聲步驟與白金手冊首面，白金指定的管口鋼珠須在筆尖朝上、緩轉插入時落入管內。只把兩個封口的對照算一次。"
+        },
+        {
+          "id": "K131-0203",
+          "source_ids": [
+            "R131-S04"
+          ],
+          "network": "Pilot",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 0.5,
+          "checked": "Kakuno說明指插直不扭，待墨色出，等過仍無墨才輕壓。與前兩張均圍繞初次裝填，減權。"
+        },
+        {
+          "id": "K131-0204",
+          "source_ids": [
+            "R131-S05"
+          ],
+          "network": "Faber-Castell",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "輝柏FAQ說置在筆桿的後備管穩定使用中的前管、免其鬆脫。備管未接握位，不能在前管耗盡時自動供墨。"
+        },
+        {
+          "id": "K131-0205",
+          "source_ids": [
+            "R131-S06"
+          ],
+          "network": "Pelikan",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "百利金4001規格表的GTP/5約1.4 mL，TP/6約0.8 mL；依標稱值兩短較一長多約0.2 mL，不由此推接頭。"
+        },
+        {
+          "id": "K131-0206",
+          "source_ids": [
+            "R131-S07"
+          ],
+          "network": "Kaweco",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "Kaweco折疊Mini說明伸縮長度減近兩成、容量相同，明列Sport及Liliput。只列該吸墨器所指機型。"
+        },
+        {
+          "id": "K131-0207",
+          "source_ids": [
+            "R131-S08",
+            "R131-S07"
+          ],
+          "network": "Kaweco",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "同廠PISTON SPORT AL是內建活塞，可從窗看墨量。與上一張的可另裝小吸墨器比較，產品對比部分重合，折減。"
+        },
+        {
+          "id": "K131-0208",
+          "source_ids": [
+            "R131-S09"
+          ],
+          "network": "Mitsubishi Pencil／LAMY",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 0.75,
+          "checked": "LAMY T 52明列底部集墨凹槽、塑膠底座與吸墨紙捲，將近瓶底的填充和擦拭兩個用途拆清。"
+        },
+        {
+          "id": "K131-0209",
+          "source_ids": [
+            "R131-S10",
+            "R131-S03"
+          ],
+          "network": "Platinum Pen",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 0.75,
+          "checked": "PROCYON的Last Drop與白金說明書小圖，將吸入口設在筆舌較前，可在較淺墨面上吸，未推成其他型號。"
+        },
+        {
+          "id": "K131-0210",
+          "source_ids": [
+            "R131-S11"
+          ],
+          "network": "Colart／Winsor & Newton",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "Winsor & Newton指Calligraphy系列耐光／永久等級AA或A，遇水會再活動。正文只說這瓶墨的耐光和遇水行為。"
+        },
+        {
+          "id": "K131-0211",
+          "source_ids": [
+            "R131-S06",
+            "R131-S11"
+          ],
+          "network": "Pelikan",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 0.5,
+          "checked": "W&N特指Black Indian Ink含蟲膠，可在乾後薄刷水彩；Pelikan列含碳的Fount India可用活塞或帶吸墨器的卡式筆，須防在筆中乾掉。與前後卡遇水選墨部分共用。"
+        },
+        {
+          "id": "K131-0212",
+          "source_ids": [
+            "R131-S12"
+          ],
+          "network": "Rohrer & Klingner",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "Rohrer & Klingner對sketchINK明列防水細輪廓、乾後可再上色，另警告防水墨在鋼筆中可能凝結。未用單指含碳就推導防水。"
+        },
+        {
+          "id": "K131-0213",
+          "source_ids": [
+            "R131-S13"
+          ],
+          "network": "PLUS／Sailor",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "寫樂hocoro第一篇比對原本的鋼筆和移除筆舌的蘸水款，指示墨沾到心孔、在瓶緣帶走尖背多餘墨、再蘸。"
+        },
+        {
+          "id": "K131-0214",
+          "source_ids": [
+            "R131-S14",
+            "R131-S13"
+          ],
+          "network": "PLUS／Sailor",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 0.5,
+          "checked": "寫樂第二篇把2.0 mm及筆文字尖的儲墨配件與可加在既有細尖／1.0 mm尖的配件並列。和基本款的儲墨差異共享一部分素材。"
+        },
+        {
+          "id": "K131-0215",
+          "source_ids": [
+            "R131-S15"
+          ],
+          "network": "Kuretake",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 0.5,
+          "checked": "吳竹Drop of Shimmer僅列玻璃筆、蘸水筆與畫筆的用法，另碟混少量是示範安排。與前兩卡換墨場景重疊。"
+        },
+        {
+          "id": "K131-0216",
+          "source_ids": [
+            "R131-S16"
+          ],
+          "network": "Kakimori",
+          "decision": "screened",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "Kakimori金屬尖章明列約45度、壓力適中、降低角度加寬，色淡時轉動讓另一溝出墨。未保證固定可寫字數。"
+        },
+        {
+          "id": "K131-0217",
+          "source_ids": [
+            "R131-S17",
+            "R131-S11"
+          ],
+          "network": "Hahnemühle",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 0.75,
+          "checked": "Hahnemühle原廠比較rough織紋與matt冷壓輕紋、筆較滑，兩者可乾／濕畫。是否暈仍取決於同張試線。"
+        },
+        {
+          "id": "K131-0218",
+          "source_ids": [
+            "R131-S13",
+            "R131-S16"
+          ],
+          "network": "Kakimori",
+          "decision": "screened",
+          "author_weight": 0.75,
+          "review_weight": 0.5,
+          "checked": "獨立比對寫樂洗擦後把尖收回筆身、Kakimori拔尖以紙巾吸掉朝下座孔的水。重用兩個先前已介紹的工具，僅給部分權重。"
+        }
+      ],
+      "chapter_budgets": [
+        {
+          "chapter": 1,
+          "title": "妹妹把最後一管墨遞過來，兩支同名筆怎麼只有一支接得上？",
+          "candidate_ids": [
+            "K131-0201",
+            "K131-0202",
+            "K131-0203"
+          ],
+          "target_seconds": 83,
+          "evidence_seconds": [
+            66,
+            117
+          ],
+          "checked": "兩種筆舌與空管口徑辨版、Waterman和白金的不同啟封方法，再用Kakuno手冊交代等待時機；未從購買地認定版本。"
+        },
+        {
+          "chapter": 2,
+          "title": "筆袋裡明明又多翻到一管墨，它原來正在做什麼？",
+          "candidate_ids": [
+            "K131-0204",
+            "K131-0205",
+            "K131-0206"
+          ],
+          "target_seconds": 85,
+          "evidence_seconds": [
+            66,
+            117
+          ],
+          "checked": "輝柏備管固定、兩短一長容量算例、折疊吸墨器三個鏡頭各有廠規。形狀和容量沒有混為同一種相容條件。"
+        },
+        {
+          "chapter": 3,
+          "title": "要借瓶底那點墨，應該轉筆尾、動瓶子，還是找吸墨口？",
+          "candidate_ids": [
+            "K131-0207",
+            "K131-0208",
+            "K131-0209"
+          ],
+          "target_seconds": 87,
+          "evidence_seconds": [
+            66,
+            117
+          ],
+          "checked": "內建活塞的可視墨量、瓶底凹槽集墨與白金前置吸口分別解決不同問題。有據的是特定產品構造。"
+        },
+        {
+          "chapter": 4,
+          "title": "瓶身標的永久性明明有 AA，刷過一道清水後，字還會糊嗎？",
+          "candidate_ids": [
+            "K131-0210",
+            "K131-0211",
+            "K131-0212"
+          ],
+          "target_seconds": 85,
+          "evidence_seconds": [
+            66,
+            117
+          ],
+          "checked": "查W&N書法墨可再濕，蟲膠Black Indian Ink容許乾後薄罩水彩，Pelikan含碳墨限指定供墨方式；比較乾後可罩色的sketchINK作收束。"
+        },
+        {
+          "chapter": 5,
+          "title": "細字寫到一半想改畫亮色的大花，還需要洗整支鋼筆嗎？",
+          "candidate_ids": [
+            "K131-0213",
+            "K131-0214",
+            "K131-0215"
+          ],
+          "target_seconds": 85,
+          "evidence_seconds": [
+            66,
+            117
+          ],
+          "checked": "寫樂從標準蘸水尖到寬尖下的局部儲墨件可對照官方兩篇；吳竹亮粉只採廠方列出的蘸水／畫筆等工具。"
+        },
+        {
+          "chapter": 6,
+          "title": "最後一筆突然變淡，怎麼把名字寫好、罩色，再把卡交給爸爸？",
+          "candidate_ids": [
+            "K131-0216",
+            "K131-0217",
+            "K131-0218"
+          ],
+          "target_seconds": 85,
+          "evidence_seconds": [
+            66,
+            117
+          ],
+          "checked": "Kakimori轉尖與放低角度、Hahnemühle毛紋和霧面紙的觸感差異，及寫樂與Kakimori不同收納順序均有手冊；最後回到試卡。"
+        }
+      ],
+      "turns": [
+        "先分辨兩支同名筆的墨管接頭，才知道哪個人能從現成墨囊起筆。",
+        "另一支改用桌主工具，將容量、低水位吸墨與原廠適用墨種逐層拆開。",
+        "耐光和能上水彩有不同成立條件；蘸水工具另能換色，最後回到同紙試線及收筆。"
+      ],
+      "nearby": [
+        "兩池比對「鋼筆／墨膽／吸墨器／筆尖／筆舌／蘸水／墨水／防水／水彩」等的舊件與長題。K122-0001的POSCA靠閥門讓新筆尖吸漆；K115-0006原子筆倒寫有其特定供墨機制。",
+        "X5012的鐵膽墨破壞紙纖維、X42-006的濕紙水分分布出枝紋已各退一案。"
+      ],
+      "changes": [
+        "將Black Indian Ink原稿「能承受水洗」限縮為廠方明確說明的「乾後可在字跡上薄刷水彩」。",
+        "將Winsor & Newton資料網絡的錯誤母公司，依母公司品牌頁更正為Colart。"
+      ],
+      "unverified": [
+        "手邊未實測兩支Plumix、紙、瓶墨及乾燥秒數。人物與生日卡是示範；不保證未列品牌的墨囊可跨筆使用，也未作所有墨水的防水評測。"
+      ],
+      "note": "18張研究卡，17份資料，覆核折為14條獨立事實、約10.5分鐘。",
+      "reviewed_source_files_sha256": {
+        "batch": "885769a2def6799123b70478725de650cbccb6af71ca34b3fc538f042e657a91",
+        "theme": "e253cd9d93cca16c2c5bae3751612cbb94eca8f7489fca749f92cae9734114dc"
+      }
+    }
+  },
+  "reviewed_segment_files_sha256": {
+    "daily": "eeebd6b54b7a3002d5b90e389135d9308bd17e3b4a3ef6a5668f4246ca3da4a7",
+    "craft": "06144448ccfbe38e21fc4b481a59a55a717b84ac62f4aa53508cd9de2ebc4c9b"
+  }
+}

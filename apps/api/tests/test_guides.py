@@ -1014,13 +1014,21 @@ async def test_the_sitemap_summary_counts_published_rows_per_kind_and_locale(
         response = await api.get("/guides/sitemap/summary")
         assert response.status_code == 200, response.text
         assert response.headers["Cache-Control"] == "no-store"
-        assert response.json()["counts"] == [
+        body_counts = response.json()["counts"]
+        assert [
+            {"kind": row["kind"], "locale": row["locale"], "count": row["count"]}
+            for row in body_counts
+        ] == [
             {"kind": "intel", "locale": "zh-TW", "count": 1},
             {"kind": "howto", "locale": "ja", "count": 1},
             {"kind": "howto", "locale": "zh-TW", "count": 1},
             {"kind": "life", "locale": "en", "count": 1},
             {"kind": "life", "locale": "zh-TW", "count": 1},
         ]
+        assert all(
+            isinstance(row.get("latest_modified_at"), str) and row["latest_modified_at"]
+            for row in body_counts
+        )
         # Hiding leaves the counts the moment it leaves the site.
         life = articles["life"]
         hidden = await set_hidden(api, life["id"], life["version"])

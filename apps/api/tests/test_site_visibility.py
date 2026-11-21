@@ -40,4 +40,7 @@ async def test_site_visibility_is_public_and_not_cached(
         "flight_status_enabled": True,
         "airline_fares_enabled": True,
         "pricing_enabled": False,
+        "flight_search_enabled": False,
+        "videos_enabled": False,
+        "member_features_enabled": False,
     }

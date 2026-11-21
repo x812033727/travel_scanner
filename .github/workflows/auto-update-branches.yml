@@ -14,8 +14,6 @@ on:
   workflow_run:
     workflows: [CI]
     types: [completed]
-  schedule:
-    - cron: "*/10 * * * *"
   workflow_dispatch:
 
 # One pass at a time; a newer trigger replaces a waiting one, never a running one.
@@ -47,5 +45,5 @@ jobs:
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
           # Only pull requests these accounts opened are merged; bots never are.
           AUTO_MERGE_AUTHORS: ${{ github.repository_owner }}
-          MAX_INFLIGHT: "3"
+          MAX_INFLIGHT: "1"
         run: node tools/ci/auto-update-branches.mjs

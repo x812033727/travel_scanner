@@ -155,15 +155,25 @@ async def entries(
 async def summary(session: AsyncSession) -> SitemapSummary:
     """Count exactly the translations that the paged enumeration can serve."""
     rows = await session.execute(
-        select(GuideArticle.kind, GuideArticleLocale.locale, func.count())
+        select(
+            GuideArticle.kind,
+            GuideArticleLocale.locale,
+            func.count(),
+            func.max(GuideArticleRevision.created_at),
+        )
         .join(GuideArticleLocale, GuideArticleLocale.article_id == GuideArticle.id)
         .join(GuideArticleRevision, _published_revision_join())
         .where(GuideArticleLocale.published_at.is_not(None), *published_filters())
         .group_by(GuideArticle.kind, GuideArticleLocale.locale)
     )
     counts = [
-        SitemapCount(kind=cast(Kind, kind), locale=cast(Locale, locale), count=count)
-        for kind, locale, count in rows
+        SitemapCount(
+            kind=cast(Kind, kind),
+            locale=cast(Locale, locale),
+            count=count,
+            latest_modified_at=latest_modified_at,
+        )
+        for kind, locale, count, latest_modified_at in rows
     ]
     order = {kind: index for index, kind in enumerate(KINDS)}
     counts.sort(key=lambda item: (order[item.kind], LOCALES.index(item.locale)))

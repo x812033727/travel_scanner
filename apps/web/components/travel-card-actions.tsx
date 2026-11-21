@@ -11,11 +11,13 @@ import { useModalSheet } from "@/lib/modal-sheet";
 import { loginPath } from "@/lib/navigation";
 import { useSavedItems, type SavedType } from "@/components/saved-items-provider";
 import { useHeaderSession } from "@/components/header-session";
+import { useSiteVisibility } from "@/components/site-visibility-provider";
 import { Button, Dialog, fieldClass } from "@/components/community/ui";
 import { SavedContentAction } from "@/components/discovery/saved-content-action";
 import { useDiscoveryStatus, type DiscoveryItem } from "@/lib/discovery";
 import { frontendCopy } from "@/lib/frontend-navigation";
 import { planningResumeUrl, rememberPlanningIntent, tripDayOptions } from "@/lib/frontend-flow";
+import { featureVisible } from "@/lib/site-features";
 
 type TripOption = {
   trip_id: string;
@@ -172,10 +174,13 @@ function TravelPlanSession({ item, returnTo, compact, resumeEnabled }: { item: D
 }
 export function TravelCardActions(props: Parameters<typeof LegacyTravelCardActions>[0]) {
   const discovery = useDiscoveryStatus();
+  const visibility = useSiteVisibility();
+  const memberFeaturesVisible = featureVisible(visibility, "member_features");
   const pathname = usePathname();
   const params = useSearchParams();
   const returnTo = `${pathname}${params?.size ? `?${params}` : ""}`;
   if (!discovery.enabled || !["hotspot", "food", "merchant"].includes(props.type)) return <LegacyTravelCardActions {...props} />;
+  if (!memberFeaturesVisible) return null;
   const item: DiscoveryItem = { id: `${props.type}:${props.id}`, kind: props.type as "hotspot" | "food" | "merchant", title: props.title, summary: "", locale: "", href: returnTo, destination: null, source: { label: "", url: null, kind: "editorial" }, published_at: null, updated_at: null, thumbnail_url: null };
   return <div className="mt-4 flex flex-wrap gap-2"><SavedContentAction item={{ type: props.type, id: props.id, title: props.title }} returnTo={returnTo} /><TravelPlanAction item={item} returnTo={returnTo} compact /></div>;
 }
@@ -199,6 +204,8 @@ function LegacyTravelCardActions({
 }) {
   const common = useTranslations("common");
   const savedItems = useSavedItems();
+  const visibility = useSiteVisibility();
+  const memberFeaturesVisible = featureVisible(visibility, "member_features");
   const pathname = usePathname();
   const saved = savedItems.isSaved(type, id);
   const [sheet, setSheet] = useState<"login" | "trip" | "save" | null>(null);
@@ -359,29 +366,31 @@ function LegacyTravelCardActions({
   return (
     <>
       <div className="travel-card-actions" aria-label={`${title} actions`}>
-        <button
-          type="button"
-          aria-pressed={saved}
-          disabled={saving}
-          onClick={() => requireAuth(() => void toggleSaved(), "save")}
-          className={
-            saved
-              ? "travel-card-action travel-card-action-active"
-              : "travel-card-action"
-          }
-        >
-          {saving ? <LoaderCircle className="animate-spin" size={18} /> : <Heart size={18} fill={saved ? "currentColor" : "none"} />}
-          <span>{saved ? common("cardActions.saved") : common("cardActions.save")}</span>
-        </button>
-        <button
-          type="button"
-          disabled={(type === "food" || type === "merchant") && !merchantId}
-          onClick={() => requireAuth(() => void openTrip(), "trip")}
-          className="travel-card-action disabled:cursor-not-allowed disabled:opacity-35"
-        >
-          <CalendarPlus size={18} />
-          <span>{common("cardActions.add")}</span>
-        </button>
+        {memberFeaturesVisible && <>
+          <button
+            type="button"
+            aria-pressed={saved}
+            disabled={saving}
+            onClick={() => requireAuth(() => void toggleSaved(), "save")}
+            className={
+              saved
+                ? "travel-card-action travel-card-action-active"
+                : "travel-card-action"
+            }
+          >
+            {saving ? <LoaderCircle className="animate-spin" size={18} /> : <Heart size={18} fill={saved ? "currentColor" : "none"} />}
+            <span>{saved ? common("cardActions.saved") : common("cardActions.save")}</span>
+          </button>
+          <button
+            type="button"
+            disabled={(type === "food" || type === "merchant") && !merchantId}
+            onClick={() => requireAuth(() => void openTrip(), "trip")}
+            className="travel-card-action disabled:cursor-not-allowed disabled:opacity-35"
+          >
+            <CalendarPlus size={18} />
+            <span>{common("cardActions.add")}</span>
+          </button>
+        </>}
         <button
           type="button"
           disabled={shareRequiresAuth && savedItems.status === "loading"}

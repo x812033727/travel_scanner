@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans','Inter','Noto Sans KR','Segoe UI',system-ui,sans-serif">
+  <title id="title">Busan 3-Day Itinerary by Area</title>
+  <desc id="desc">Simplified schematic map of Busan, not to scale. On the left is Gimhae International Airport (PUS): Busan-Gimhae Light Rail takes 6 min to Sasang, then Metro Line 2 runs 8 stops to Seomyeon and 16 stops onward to Haeundae (via Gwangan and Centum City); the Haeundae Airport Limousine costs KRW 9,500 and takes about 1 hr direct to Haeundae (07:10–21:40 from airport). Day 1 covers Haeundae and Gwangalli (Gwangan Bridge night views, 6 stops from Haeundae on Line 2); Day 2 covers Gamcheon Culture Village (Toseong Station Exit 6 to village bus Saha 1-1, Seogu 2, or Seogu 2-2; 09:00–18:00 Mar–Oct, free) and Nampo-dong (Jagalchi Market, BIFF Square, Yongdusan, 8 stops from Seomyeon on Line 1); Day 3 pairs a morning at Songdo Marine Cable Car (from KRW 19,000 round-trip) or Haedong Yonggungsa Temple in Gijang (04:30–19:20, free) with an afternoon at Blueline Park (Sky Capsule ~30 min from Mipo to Cheongsapo, Beach Train onward to Songjeong).</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <path d="M 0 840 C 250 810, 450 830, 700 750 C 900 680, 1020 630, 1150 590 C 1300 540, 1450 420, 1600 300 L 1600 900 L 0 900 Z" fill="#BFD9E3" opacity="0.8"/>
+  <text x="1475" y="670" font-size="18" font-weight="700" fill="#3F6C7A">바다 Sea</text>
+  <text x="60" y="64" font-size="34" font-weight="700" fill="#102A2B">Busan in 3 Days: One Direction a Day, Coastline Morning &amp; Night</text>
+  <text x="60" y="98" font-size="19" fill="#5C6B6B">Schematic area map, not to scale · Fares and hours verified on official sites in Sep 2026</text>
+  <defs>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#B8442D"/></marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2E7D5B"/></marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2F6F9F"/></marker>
+  </defs>
+
+  <!-- airport limousine to Haeundae -->
+  <path d="M 155 250 C 155 125, 865 105, 1140 398" fill="none" stroke="#B8442D" stroke-width="6" stroke-dasharray="16 12" stroke-linecap="round" marker-end="url(#arrowRed)"/>
+  <text x="370" y="144" font-size="17" font-weight="700" fill="#B8442D">Haeundae Airport Limousine · KRW 9,500 · ~1 hr · 07:10–21:40 from airport</text>
+
+  <!-- airport, light rail, line 2 -->
+  <rect x="35" y="250" width="230" height="90" rx="22" fill="#0D6B68"/>
+  <text x="150" y="288" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">김해공항 Gimhae</text>
+  <text x="150" y="318" font-size="16" fill="#E6F2F1" text-anchor="middle">Gimhae Int'l Airport · PUS</text>
+  <line x1="265" y1="295" x2="410" y2="295" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+  <text x="336" y="274" font-size="15" font-weight="700" fill="#0D6B68" text-anchor="middle">Light Rail 6 min</text>
+  <line x1="410" y1="295" x2="555" y2="295" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
+  <text x="484" y="274" font-size="15" font-weight="700" fill="#6B4A3A" text-anchor="middle">Line 2 · 8 stops</text>
+  <circle cx="410" cy="295" r="13" fill="#FFFFFF" stroke="#0D6B68" stroke-width="6"/>
+  <text x="410" y="334" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">사상 Sasang</text>
+
+  <!-- Seomyeon -->
+  <rect x="555" y="250" width="275" height="90" rx="22" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="5"/>
+  <text x="692" y="288" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">서면 Seomyeon</text>
+  <text x="692" y="318" font-size="15" fill="#5C6B6B" text-anchor="middle">Base &amp; Transit Hub · Lines 1 &amp; 2</text>
+
+  <!-- line 2 to Haeundae -->
+  <path d="M 830 295 C 940 295, 985 420, 1045 445" fill="none" stroke="#6B4A3A" stroke-width="8" stroke-linecap="round"/>
+  <text x="772" y="402" font-size="16" font-weight="700" fill="#6B4A3A">Line 2 · 16 stops</text>
+  <text x="772" y="424" font-size="15" fill="#6B4A3A">(via Gwangan, Centum City)</text>
+
+  <!-- line 1 to Nampo -->
+  <line x1="685" y1="340" x2="640" y2="468" stroke="#D97A2B" stroke-width="8" stroke-linecap="round"/>
+  <text x="646" y="410" font-size="16" font-weight="700" fill="#D97A2B" text-anchor="end">Line 1 · 8 stops</text>
+
+  <!-- Haeundae: Day 1 evening, Day 3 afternoon -->
+  <rect x="1045" y="400" width="305" height="114" rx="22" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <circle cx="1045" cy="400" r="30" fill="#2F6F9F"/><text x="1045" y="405" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 1</text>
+  <circle cx="1350" cy="400" r="30" fill="#2E7D5B"/><text x="1350" y="405" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 3</text>
+  <text x="1197" y="444" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">해운대 Haeundae</text>
+  <text x="1197" y="471" font-size="15" fill="#5C6B6B" text-anchor="middle">Day 1 PM: Beach &amp; Dongbaekseom</text>
+  <text x="1197" y="495" font-size="15" fill="#5C6B6B" text-anchor="middle">Day 3 PM: Blueline Park</text>
+
+  <!-- Blueline Park -->
+  <path d="M 1350 470 L 1392 458 L 1460 402 L 1538 338" fill="none" stroke="#0D6B68" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="1392" cy="458" r="9" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5"/>
+  <circle cx="1460" cy="402" r="9" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5"/>
+  <circle cx="1538" cy="338" r="9" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5"/>
+  <text x="1398" y="486" font-size="15" font-weight="700" fill="#102A2B">미포 Mipo</text>
+  <text x="1576" y="440" font-size="15" font-weight="700" fill="#102A2B" text-anchor="end">청사포 Cheongsapo</text>
+  <text x="1526" y="324" font-size="15" font-weight="700" fill="#102A2B" text-anchor="end">송정 Songjeong</text>
+  <text x="1578" y="544" font-size="15" font-weight="700" fill="#0D6B68" text-anchor="end">Sky Capsule: Mipo↔Cheongsapo (~30 min)</text>
+  <text x="1578" y="566" font-size="15" font-weight="700" fill="#0D6B68" text-anchor="end">Beach Train: Mipo–Songjeong</text>
+
+  <!-- Gijang / Yonggungsa: Day 3 option B -->
+  <rect x="1250" y="150" width="320" height="106" rx="20" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="6"/>
+  <circle cx="1250" cy="150" r="30" fill="#2E7D5B"/><text x="1250" y="155" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 3</text>
+  <text x="1410" y="192" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">기장 Gijang · Yonggungsa</text>
+  <text x="1410" y="218" font-size="15" fill="#5C6B6B" text-anchor="middle">04:30–19:20 · Free Admission</text>
+  <text x="1410" y="241" font-size="15" fill="#5C6B6B" text-anchor="middle">Option B · Bus from Haeundae</text>
+  <path d="M 1205 398 C 1235 330, 1268 300, 1300 258" fill="none" stroke="#2E7D5B" stroke-width="5" stroke-dasharray="10 8" marker-end="url(#arrowGreen)"/>
+  <text x="1272" y="325" font-size="15" font-weight="700" fill="#2E7D5B">Bus</text>
+
+  <!-- Gwangalli: Day 1 night -->
+  <rect x="830" y="605" width="280" height="102" rx="22" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <circle cx="830" cy="605" r="30" fill="#2F6F9F"/><text x="830" y="610" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 1</text>
+  <text x="970" y="645" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">광안리 Gwangalli</text>
+  <text x="970" y="672" font-size="15" fill="#5C6B6B" text-anchor="middle">Gwangan Bridge Night Views</text>
+  <text x="970" y="694" font-size="15" fill="#5C6B6B" text-anchor="middle">Line 2 · Gwangan Station</text>
+  <path d="M 1165 516 C 1152 566, 1134 596, 1114 624" fill="none" stroke="#2F6F9F" stroke-width="5" stroke-dasharray="10 8" marker-end="url(#arrowBlue)"/>
+  <text x="1172" y="592" font-size="15" font-weight="700" fill="#2F6F9F">Line 2 · 6 stops</text>
+
+  <!-- Nampo: Day 2 -->
+  <rect x="460" y="470" width="320" height="112" rx="22" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+  <circle cx="460" cy="470" r="30" fill="#B8442D"/><text x="460" y="475" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 2</text>
+  <text x="620" y="512" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">남포동 Nampo-dong</text>
+  <text x="620" y="539" font-size="15" fill="#5C6B6B" text-anchor="middle">Jagalchi Market · BIFF Sq. · Yongdusan</text>
+  <text x="620" y="563" font-size="15" fill="#5C6B6B" text-anchor="middle">Line 1 · Jagalchi / Nampo Stn.</text>
+
+  <!-- Gamcheon: Day 2 -->
+  <rect x="65" y="560" width="335" height="104" rx="22" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+  <circle cx="65" cy="560" r="30" fill="#B8442D"/><text x="65" y="565" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 2</text>
+  <text x="232" y="600" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">감천문화마을 Gamcheon</text>
+  <text x="232" y="626" font-size="15" fill="#5C6B6B" text-anchor="middle">09:00–18:00 (Mar–Oct) · Free</text>
+  <text x="232" y="649" font-size="15" fill="#5C6B6B" text-anchor="middle">Toseong Stn. Exit 6 → Village Bus</text>
+  <path d="M 458 544 C 440 562, 424 576, 404 590" fill="none" stroke="#B8442D" stroke-width="5" stroke-dasharray="10 8" marker-end="url(#arrowRed)"/>
+  <text x="430" y="528" font-size="15" font-weight="700" fill="#B8442D" text-anchor="end">Village Bus Saha 1-1 / Seogu 2, 2-2</text>
+
+  <!-- Songdo: Day 3 option A -->
+  <rect x="70" y="715" width="340" height="104" rx="22" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="6"/>
+  <circle cx="70" cy="715" r="30" fill="#2E7D5B"/><text x="70" y="720" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 3</text>
+  <text x="240" y="755" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">송도 Songdo</text>
+  <text x="240" y="781" font-size="15" fill="#5C6B6B" text-anchor="middle">Cable Car from KRW 19,000 round-trip</text>
+  <text x="240" y="804" font-size="15" fill="#5C6B6B" text-anchor="middle">Option A · Bus or Taxi from Nampo</text>
+  <path d="M 555 584 C 500 648, 435 688, 375 714" fill="none" stroke="#2E7D5B" stroke-width="5" stroke-dasharray="10 8" marker-end="url(#arrowGreen)"/>
+  <text x="506" y="668" font-size="15" font-weight="700" fill="#2E7D5B">Bus or Taxi</text>
+
+  <!-- legend -->
+  <g font-size="16" fill="#102A2B">
+    <circle cx="68" cy="860" r="9" fill="#2F6F9F"/><text x="86" y="866" font-size="16">Day 1</text>
+    <circle cx="155" cy="860" r="9" fill="#B8442D"/><text x="173" y="866" font-size="16">Day 2</text>
+    <circle cx="242" cy="860" r="9" fill="#2E7D5B"/><text x="260" y="866" font-size="16">Day 3</text>
+    <line x1="330" y1="860" x2="375" y2="860" stroke="#0D6B68" stroke-width="8" stroke-linecap="round"/><text x="385" y="866" font-size="16">Light Rail · Blueline Park</text>
+    <line x1="600" y1="860" x2="645" y2="860" stroke="#6B4A3A" stroke-width="8" stroke-linecap="round"/><text x="655" y="866" font-size="16">Metro Line 2</text>
+    <line x1="790" y1="860" x2="835" y2="860" stroke="#D97A2B" stroke-width="8" stroke-linecap="round"/><text x="845" y="866" font-size="16">Metro Line 1</text>
+    <line x1="980" y1="860" x2="1025" y2="860" stroke="#B8442D" stroke-width="6" stroke-dasharray="14 10" stroke-linecap="round"/><text x="1035" y="866" font-size="16">Bus · Taxi</text>
+    <text x="1540" y="866" font-size="16" fill="#5C6B6B" text-anchor="end">© Mokaair 2026</text>
+  </g>
+</svg>
