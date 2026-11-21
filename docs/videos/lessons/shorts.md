@@ -23,6 +23,13 @@
 - **成片審片抓到的、剪接救得回來的**：面紙盒上的藍色圓標、托盤鏤空裡像多一隻爪的圖案 → 局部模糊；「看不懂阿金為什麼濕」→ 在推水桶和濕透之間插 0.7 秒放大 2.2 倍的水花鏡；結尾左緣露出斷掉的狗尾巴 → 裁切兩難時就回 Flow 重畫一張（免費），再生 1 支片段（12 點）。
 - 已升為規則：`docs/videos/shorts-drama/PRODUCTION-ROUTES.md` 路線 B、`docs/videos/shorts-drama/series/shechu-hell.md` §三、§四。
 
+## 2026-11-21 · shechu-hell e01–e06 匯入後台（第一次用 #2200 的零台詞匯入）· Claude
+六集都推上 `/admin/videos` 等站主核准成片。卡住的三件事：
+- **兩種響度量法差到 1.4 dB**：`qa_check.py` 用 `ebur128` 量，e02、e05 是 -14.0／-13.9；站上的 `shorts qa` 用 `loudnorm` 量，同一個檔是 -12.9／-12.5，超出 -14 ± 1。音樂停掉、只剩短音效的段落越多，差距越大。成片交出前兩種都量一次：`ffmpeg -i final.mp4 -af loudnorm=I=-14:TP=-1:LRA=11:print_format=json -f null -`，兩種都要在 -15 到 -13 之間（e02 降 0.7 dB、e05 降 1.0 dB 後都過）。
+- **policy 第一次一定不過**：Jev 依站上專案那一列的 `format` 決定問不問「有示範」，還沒推過的 slug 沒有那一列，就被當教學片評，「有示範 0.04」不過。照 `qa → package → push` 推一次，讓站上以 `format: drama` 建檔，再跑一次 `qa → package → push`，policy 就變成「有示範：不適用」通過，送審卡也跟著更新。
+- **八語標題有 100 字上限**：e02 的西班牙文、葡萄牙文標題 103／105 字，`import` 直接拒絕。寫 `youtube-meta.json` 時每一語都要算長度，拉丁語系通常最長。`meta.json` 的 `titles` 要兩個，第二個是不破梗的備用標題。
+- `layout` 在匯入的片一定不過（站上沒有安全區量測），要站主在後台開安全區看一次。
+
 ## 2026-11-20 · 全系列（前檢自動化、9:16 安全區、重播迴圈與 Google Flow／Veo 3.1 路線）· 站主／規則升級
 光靠文字規則與人工自檢，仍容易在寫 20 集規格檔時漏掉某鏡的 `magazine cover`、收尾音效時間超界或開頭過長（實測拿 2026-11-04 的 `influencer-piglet-e02.json` 與 `raccoon-mischief-e02.json` 跑新版前檢，立刻抓出開頭 2.6 秒過長、`magazine cover` 亂碼詞與 2.2 秒鑰匙聲反應鏡）：
 - **花錢前必先跑機械前檢**：新增零外部依賴的 `docs/videos/shorts-drama/preflight.mjs`（納入 `npm run test:docs-videos` 單元測試），在送獨立審稿代理與 Colab／Google Flow 前，先用程式硬擋片長、單鏡動態 > 3.5s、SFX 超界、雙人框、人手／畫外伸手／`magazine cover`、系列禁忌與 9:16 安全區 `anchor` 超界；同時提供 `score-blind` 自動核對盲評八軸加總與抓滑走陷阱，以及 `export-flow` 一鍵產出 Google Flow（Veo 3.1）提示詞單。
