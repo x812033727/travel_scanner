@@ -15,6 +15,12 @@ C=$E/clips
 S=/root/mokaair-work/videos/zhong-tian-qu-qi-e905-dh/sfx; mkdir -p $S
 [ -f $S/lather905.wav ] || ffmpeg -v error -y -ss 2.0 -t 2.7 -i /root/mokaair-work/videos/_sfx/zhongtian-real-20261121/zhongtian-sfx-soap-lather-01.wav -af "afade=t=in:d=0.15,afade=t=out:st=2.3:d=0.4,aresample=48000,aformat=channel_layouts=stereo" $S/lather905.wav
 [ -f $S/rooster905.wav ] || ffmpeg -v error -y -ss 1.9 -t 2.7 -i /root/mokaair-work/videos/_sfx/zhongtian-real-20261121/zhongtian-sfx-rooster-village-loop.wav -af "afade=t=in:d=0.1,afade=t=out:st=2.2:d=0.5,aresample=48000,aformat=channel_layouts=stereo" $S/rooster905.wav
+# SWAP 2026-11-21: the retakes are clips/sNN-t5.mp4 (fix-polish picks, runpod/polish/picks.json). s38-t5 runs 5.75 s
+# (end-before 5.75); clips/s38-t6.mp4 = s38-t5 to 4.5 s (he has the bar up at his chest by 3.5; the old cut was 4.2), so
+# the silent s36-s39 stretch does not grow by 1.5 s. abacus905.wav = zhongtian-sfx-abacus-drop-01 0.2-0.8 s (one bead
+# rattle for the s39 abacus landing on the board, fades 0.01/0.25).
+[ -f $C/s38-t6.mp4 ] || ffmpeg -v error -y -i $C/s38-t5.mp4 -t 4.5 -c:v libx264 -preset slow -crf 12 -pix_fmt yuv420p -r 24 -c:a aac -b:a 192k -ar 32000 $C/s38-t6.mp4
+[ -f $S/abacus905.wav ] || ffmpeg -v error -y -ss 0.2 -t 0.6 -i /root/mokaair-work/videos/_sfx/zhongtian-real-20261121/zhongtian-sfx-abacus-drop-01.wav -af "afade=t=in:d=0.01,afade=t=out:st=0.35:d=0.25,aresample=48000,aformat=channel_layouts=stereo" $S/abacus905.wav
 # $VL = video.json with the CC text of zq905a31 (s32) cut to what the take says: whisper and the review hear
 # 三錢？一斗米才幾十文，妳這價…… and nothing of 會不會太高 (the recording is not laid; the take's own voice plays)
 VL=$E/video-live.json

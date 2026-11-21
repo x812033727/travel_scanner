@@ -18,8 +18,20 @@ rm -rf $E/segments-v4
 # takes the highest -tN, so s30-t1 stays as it was. Made again if missing.
 C=$E/clips
 [ -f $C/s30-t2.mp4 ] || ffmpeg -v error -y -i $C/s30-t1.mp4 -ss 2.5 -c:v libx264 -preset slow -crf 12 -pix_fmt yuv420p -r 24 -c:a aac -b:a 192k -ar 32000 $C/s30-t2.mp4
+# SWAP 2026-11-21 (review-zt SWAP-BRIEF; runpod/polish/picks.json, fix-polish/review-picks.tsv): s14/s16/s23 are the fixp
+# retakes clips/sNN-t5.mp4 (s19 and s40 KEEP). s14 drops the first 0.5 s of its t5 (her lips part at 0-0.5; the inner
+# line a16 still fits before her line at 4.20 without speeding up): clips/s14-t6.mp4, made again if missing.
+[ -f $C/s14-t6.mp4 ] || ffmpeg -v error -y -i $C/s14-t5.mp4 -ss 0.5 -c:v libx264 -preset slow -crf 12 -pix_fmt yuv420p -r 24 -c:a aac -b:a 192k -ar 32000 $C/s14-t6.mp4
 VL=$E/video-live.json; DROP=""
-python3 -c "import json,sys;v=json.load(open('$VJ'));d='$DROP'.split();v['scenes']=[s for s in v['scenes'] if s.get('id') not in d];json.dump(v,open('$VL','w'),ensure_ascii=False,indent=1)"
+# $VL = video.json (DROP empty) with s14 Tang Xiaotang on screen: the t5 retake shows her in the doorway saying a17 with
+# her lips, so she joins s14's characters and a17 loses 畫外 (the clip's voice plays; s16 does the same via voice_on).
+python3 -c "import json,sys;v=json.load(open('$VJ'));d='$DROP'.split();v['scenes']=[s for s in v['scenes'] if s.get('id') not in d]
+for s in v['scenes']:
+  if s['id']=='s14':
+    s['data']['characters']=['xuyan','tangxiaotang']
+    for l in s['lines']:
+      if l['id']=='zq904a17': l['emotion']='說話快'
+json.dump(v,open('$VL','w'),ensure_ascii=False,indent=1)"
 cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VL $R/docs/videos/zhong-tian-qu-qi-e004-r2/overlays.json $P/hailuo/edit-dh-e904-live.json $E $E/cut/e904-live.mp4 > $E/cut/final.log 2>&1; tail -3 $E/cut/final.log
 [ -f $E/cut/e904-live.mp4 ] || exit 1
 # the e901 / e908-e930 finish: a sample-peak limiter (attack 8 ms, limit 0.55), then loudnorm2.sh (linear, -14 LUFS,

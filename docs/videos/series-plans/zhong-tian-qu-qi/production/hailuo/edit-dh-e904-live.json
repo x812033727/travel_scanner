@@ -11,7 +11,8 @@
  "duck_release_ms": 400,
  "sfx_dirs": [
   "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx",
-  "<VIDEO_WORKDIR>/_sfx/zhongtian-real-20261121"
+  "<VIDEO_WORKDIR>/_sfx/zhongtian-real-20261121",
+  "<VIDEO_WORKDIR>/zhong-tian-qu-qi-e904-dh/sfx"
  ],
  "name_whoosh": "swish-9",
  "music": [
@@ -55,10 +56,20 @@
   {
    "cue": "tension",
    "from": "s36",
-   "to": "s40",
+   "to": "s39",
    "offset": 0,
    "gain": -11,
-   "fade_out": 1.2
+   "fade_out": 1.0,
+   "tail": 0.5
+  },
+  {
+   "cue": "z-cue-cliffhanger",
+   "from": "s40",
+   "to": "s40",
+   "offset": 49.4,
+   "gain": -8,
+   "fade_in": 0.2,
+   "fade_out": 0.5
   }
  ],
  "sfx": [
@@ -123,24 +134,6 @@
    "gain": -24
   },
   {
-   "file": "impactWood_light_000",
-   "at": "s14",
-   "off": 0.28,
-   "gain": -28
-  },
-  {
-   "file": "footstep_grass_001",
-   "at": "s14",
-   "off": 9.0,
-   "gain": -22
-  },
-  {
-   "file": "footstep_grass_001",
-   "at": "s14",
-   "off": 9.3,
-   "gain": -24
-  },
-  {
    "file": "footstep_grass_001",
    "at": "s15",
    "off": 0.25,
@@ -151,12 +144,6 @@
    "at": "s15",
    "off": 0.5,
    "gain": -24
-  },
-  {
-   "file": "impactWood_light_000",
-   "at": "s16",
-   "off": 0.65,
-   "gain": -22
   },
   {
    "file": "metalLatch",
@@ -333,9 +320,15 @@
    "gain": -20
   },
   {
+   "file": "bucket-slosh",
+   "at": "s40",
+   "off": 0.45,
+   "gain": 4
+  },
+  {
    "file": "splash_01",
    "at": "s40",
-   "off": 0.5,
+   "off": 1.2,
    "gain": -10
   },
   {
@@ -387,7 +380,9 @@
   "s09": 0.8,
   "s15": 2.0,
   "s29": 2.0,
-  "s34": 1.0
+  "s34": 1.0,
+  "s14": 4.0,
+  "s16": 1.2
  },
  "voice_until": {
   "s25": 5.0,
@@ -402,7 +397,7 @@
  "line_at": {
   "zq904a03": 2.3,
   "zq904a19": 6.28,
-  "zq904a20": 0.8,
+  "zq904a20": 1.32,
   "zq904a31": 0.75,
   "zq904a30": 0.3
  },
@@ -417,5 +412,14 @@
  },
  "voice_off": [
   "s27"
- ]
+ ],
+ "voice_on": [
+  "s16"
+ ],
+ "clip_af": {
+  "s14": {
+   "from": 0,
+   "af": "volume=enable='lt(t,4.05)':volume=0"
+  }
+ }
 }
