@@ -1,0 +1,673 @@
+{
+  "schema_version": 1,
+  "started_at": "2026-10-20T00:39:40.327Z",
+  "completed_at": "2026-10-20T00:39:47.813Z",
+  "site": "https://mokaair.com",
+  "observation_only": true,
+  "paired_authentication_verified": true,
+  "catalog_scope": {
+    "returned_rows": 200,
+    "server_cap": 200,
+    "exhaustive": false,
+    "exact_slugs_probed": [
+      "story-adapt-dolby-licensing",
+      "story-adapt-doraemon-after-fujiko",
+      "story-rolling-suitcase-v2",
+      "story-adapt-a4-paper-size",
+      "story-adapt-michelin-guide-stars",
+      "story-adapt-seiko-quartz-astron",
+      "story-conveyor-belt-sushi-v2",
+      "story-five-lego-legoland",
+      "story-five-costco-hot-dog",
+      "story-five-adidas-puma-brothers",
+      "story-five-ajinomoto-chip-film",
+      "story-five-pringles-vat-case"
+    ],
+    "unregistered_exact_slugs": [
+      "story-conveyor-belt-sushi-v2",
+      "story-five-lego-legoland",
+      "story-five-costco-hot-dog",
+      "story-five-adidas-puma-brothers",
+      "story-five-ajinomoto-chip-film",
+      "story-five-pringles-vat-case"
+    ],
+    "note": "The list endpoint caps its results; known pilot and five-series slugs are also queried exactly. A 404 means no project row, not no host files."
+  },
+  "observed_routes": [
+    "GET automation/settings",
+    "GET media/status",
+    "GET automation/videos?shorts=exclude",
+    "GET reviews/story-adapt-dolby-licensing",
+    "GET reviews/story-adapt-doraemon-after-fujiko",
+    "GET reviews/story-rolling-suitcase-v2",
+    "GET reviews/story-adapt-a4-paper-size",
+    "GET reviews/story-adapt-michelin-guide-stars",
+    "GET reviews/story-adapt-seiko-quartz-astron",
+    "GET reviews/story-conveyor-belt-sushi-v2",
+    "GET reviews/story-five-lego-legoland",
+    "GET reviews/story-five-costco-hot-dog",
+    "GET reviews/story-five-adidas-puma-brothers",
+    "GET reviews/story-five-ajinomoto-chip-film",
+    "GET reviews/story-five-pringles-vat-case"
+  ],
+  "settings": {
+    "automation_enabled": true,
+    "drama_enabled": true,
+    "series_max_in_flight": 2,
+    "auto_approve_final": false,
+    "generic_media_cap_usd": 200,
+    "image": {
+      "provider": "minimax",
+      "model": "image-01",
+      "configured": true
+    }
+  },
+  "pilot_budgets": {
+    "story-conveyor-belt-sushi-v2": {
+      "limit_usd": "5.000000",
+      "reserved_usd": "0",
+      "settled_usd": "0",
+      "remaining_usd": "5.000000",
+      "uncertain_operations": 0,
+      "settled_operations": 0,
+      "released_operations": 0,
+      "overrun_operations": 0,
+      "total_over_limit": false,
+      "over_limit_usd": "0.000000"
+    },
+    "story-rolling-suitcase-v2": {
+      "limit_usd": "25.000000",
+      "reserved_usd": "0",
+      "settled_usd": "0",
+      "remaining_usd": "25.000000",
+      "uncertain_operations": 0,
+      "settled_operations": 0,
+      "released_operations": 0,
+      "overrun_operations": 0,
+      "total_over_limit": false,
+      "over_limit_usd": "0.000000"
+    }
+  },
+  "provider_cash_balance": null,
+  "provider_cash_balance_note": "Configured provider and quota do not disclose actual vendor credit balance.",
+  "projects": [
+    {
+      "slug": "story-adapt-dolby-licensing",
+      "stage": "languages",
+      "series_slug": "brand-stories-adapt",
+      "ready_to_upload": false,
+      "last_synced_at": "2026-10-19T23:50:50.228383Z",
+      "worker_state": "unavailable",
+      "download_available": false,
+      "media_usd": 1.102,
+      "media_usd_scope": "Media subtotal only; not an all-in production ledger.",
+      "youtube_video_id": null,
+      "languages": {
+        "en": {
+          "metadata": {
+            "state": "working",
+            "reason": null
+          },
+          "captions": {
+            "state": "working",
+            "reason": null
+          },
+          "dub": {
+            "state": "working",
+            "reason": null
+          }
+        },
+        "ja": {
+          "metadata": {
+            "state": "working",
+            "reason": null
+          },
+          "captions": {
+            "state": "working",
+            "reason": null
+          },
+          "dub": {
+            "state": "working",
+            "reason": null
+          }
+        },
+        "ko": {
+          "metadata": {
+            "state": "working",
+            "reason": null
+          },
+          "captions": {
+            "state": "working",
+            "reason": null
+          },
+          "dub": {
+            "state": "working",
+            "reason": null
+          }
+        }
+      },
+      "latest_approved_final": {
+        "content_sha256": "c3b30006261e0be48cfdcc805edd51572fdbb215973f8ff150c7f3d1e9909c13",
+        "created_at": "2026-10-19T17:48:09.111044Z",
+        "decided_at": "2026-10-19T17:49:21.521583Z",
+        "submitted_duration_seconds": 649.4,
+        "duration_scope": "Stored submitted final duration; not a new ffprobe or body-only measurement.",
+        "qa_ok_at_submission": false,
+        "failed_qa_items_at_submission": [
+          {
+            "id": "policy",
+            "detail": "Jev（故事）：符合立場 0.55、留下觀察 0.62、建議 0.02、業配 0.07、貶損 0.03；沒過（符合立場低於 0.6）"
+          }
+        ],
+        "caveat": "An approved record can retain QA exceptions. This observation does not revoke an owner decision or claim a fresh media review."
+      },
+      "reviews": [
+        {
+          "gate": "publish",
+          "status": "pending",
+          "created_at": "2026-10-19T17:52:33.087424Z"
+        },
+        {
+          "gate": "final",
+          "status": "approved",
+          "created_at": "2026-10-19T17:48:09.111044Z"
+        },
+        {
+          "gate": "storyboard",
+          "status": "approved",
+          "created_at": "2026-10-19T16:28:41.520999Z"
+        },
+        {
+          "gate": "audio",
+          "status": "approved",
+          "created_at": "2026-10-19T07:57:01.167242Z"
+        },
+        {
+          "gate": "audio",
+          "status": "superseded",
+          "created_at": "2026-10-19T07:28:11.720582Z"
+        },
+        {
+          "gate": "look",
+          "status": "approved",
+          "created_at": "2026-10-19T04:42:43.245660Z"
+        }
+      ]
+    },
+    {
+      "slug": "story-adapt-doraemon-after-fujiko",
+      "stage": "narration approved",
+      "series_slug": "brand-stories-adapt",
+      "ready_to_upload": false,
+      "last_synced_at": "2026-10-19T23:24:25.625568Z",
+      "worker_state": "unavailable",
+      "download_available": false,
+      "media_usd": 0.287,
+      "media_usd_scope": "Media subtotal only; not an all-in production ledger.",
+      "youtube_video_id": null,
+      "languages": {
+        "en": {
+          "metadata": {
+            "state": "working",
+            "reason": null
+          },
+          "captions": {
+            "state": "working",
+            "reason": null
+          },
+          "dub": {
+            "state": "working",
+            "reason": null
+          }
+        },
+        "ja": {
+          "metadata": {
+            "state": "working",
+            "reason": null
+          },
+          "captions": {
+            "state": "working",
+            "reason": null
+          },
+          "dub": {
+            "state": "working",
+            "reason": null
+          }
+        },
+        "ko": {
+          "metadata": {
+            "state": "working",
+            "reason": null
+          },
+          "captions": {
+            "state": "working",
+            "reason": null
+          },
+          "dub": {
+            "state": "working",
+            "reason": null
+          }
+        }
+      },
+      "latest_approved_final": null,
+      "reviews": [
+        {
+          "gate": "audio",
+          "status": "approved",
+          "created_at": "2026-10-19T23:24:25.625568Z"
+        },
+        {
+          "gate": "look",
+          "status": "approved",
+          "created_at": "2026-10-19T17:50:29.358056Z"
+        },
+        {
+          "gate": "look",
+          "status": "approved",
+          "created_at": "2026-10-19T14:02:57.400861Z"
+        }
+      ]
+    },
+    {
+      "slug": "story-rolling-suitcase-v2",
+      "stage": "retrying",
+      "series_slug": "brand-stories-curio-pilot-v2",
+      "ready_to_upload": false,
+      "last_synced_at": "2026-10-19T23:05:23.318251Z",
+      "worker_state": "unavailable",
+      "download_available": false,
+      "media_usd": 0,
+      "media_usd_scope": "Media subtotal only; not an all-in production ledger.",
+      "youtube_video_id": null,
+      "languages": {
+        "en": {
+          "metadata": {
+            "state": "working",
+            "reason": null
+          },
+          "captions": {
+            "state": "working",
+            "reason": null
+          },
+          "dub": {
+            "state": "working",
+            "reason": null
+          }
+        },
+        "ja": {
+          "metadata": {
+            "state": "working",
+            "reason": null
+          },
+          "captions": {
+            "state": "working",
+            "reason": null
+          },
+          "dub": {
+            "state": "working",
+            "reason": null
+          }
+        },
+        "ko": {
+          "metadata": {
+            "state": "working",
+            "reason": null
+          },
+          "captions": {
+            "state": "working",
+            "reason": null
+          },
+          "dub": {
+            "state": "working",
+            "reason": null
+          }
+        }
+      },
+      "latest_approved_final": null,
+      "reviews": []
+    },
+    {
+      "slug": "story-adapt-a4-paper-size",
+      "stage": "languages sent",
+      "series_slug": "brand-stories-adapt",
+      "ready_to_upload": true,
+      "last_synced_at": "2026-10-19T17:25:36.865440Z",
+      "worker_state": "unavailable",
+      "download_available": false,
+      "media_usd": 0.6715,
+      "media_usd_scope": "Media subtotal only; not an all-in production ledger.",
+      "youtube_video_id": null,
+      "languages": {
+        "en": {
+          "metadata": {
+            "state": "ready",
+            "reason": null
+          },
+          "captions": {
+            "state": "ready",
+            "reason": null
+          },
+          "dub": {
+            "state": "skipped",
+            "reason": "Jev still hears 4unj wrong after 2 retakes and 2 rewording rounds"
+          }
+        },
+        "ja": {
+          "metadata": {
+            "state": "ready",
+            "reason": null
+          },
+          "captions": {
+            "state": "ready",
+            "reason": null
+          },
+          "dub": {
+            "state": "skipped",
+            "reason": "bs3k does not fit its window even at 1.15x after 2 shortening rounds"
+          }
+        },
+        "ko": {
+          "metadata": {
+            "state": "ready",
+            "reason": null
+          },
+          "captions": {
+            "state": "ready",
+            "reason": null
+          },
+          "dub": {
+            "state": "skipped",
+            "reason": "6h4n, hcau do not fit their windows even at 1.15x after 2 shortening rounds"
+          }
+        }
+      },
+      "latest_approved_final": {
+        "content_sha256": "5af282e264803d5ba3f5c564fb395c18eaab98fd7db1289d8b792099f6ed0c4b",
+        "created_at": "2026-10-19T03:32:12.654959Z",
+        "decided_at": "2026-10-19T03:35:32.372112Z",
+        "submitted_duration_seconds": 591.9666666666667,
+        "duration_scope": "Stored submitted final duration; not a new ffprobe or body-only measurement.",
+        "qa_ok_at_submission": false,
+        "failed_qa_items_at_submission": [
+          {
+            "id": "policy",
+            "detail": "Jev（故事）：符合立場 0.60、留下觀察 0.38、建議 0.01、業配 0.11、貶損 0.02；沒過（留下觀察低於 0.6）"
+          }
+        ],
+        "caveat": "An approved record can retain QA exceptions. This observation does not revoke an owner decision or claim a fresh media review."
+      },
+      "reviews": [
+        {
+          "gate": "languages",
+          "status": "approved",
+          "created_at": "2026-10-19T17:25:35.533032Z"
+        },
+        {
+          "gate": "publish",
+          "status": "approved",
+          "created_at": "2026-10-19T03:36:27.055904Z"
+        },
+        {
+          "gate": "final",
+          "status": "approved",
+          "created_at": "2026-10-19T03:32:12.654959Z"
+        },
+        {
+          "gate": "storyboard",
+          "status": "approved",
+          "created_at": "2026-10-19T01:54:57.462424Z"
+        },
+        {
+          "gate": "audio",
+          "status": "approved",
+          "created_at": "2026-10-18T16:56:30.186969Z"
+        },
+        {
+          "gate": "audio",
+          "status": "superseded",
+          "created_at": "2026-10-18T15:31:15.730813Z"
+        }
+      ]
+    },
+    {
+      "slug": "story-adapt-michelin-guide-stars",
+      "stage": "languages sent",
+      "series_slug": "brand-stories-adapt",
+      "ready_to_upload": true,
+      "last_synced_at": "2026-10-19T12:28:53.519786Z",
+      "worker_state": "unavailable",
+      "download_available": false,
+      "media_usd": 0.9235,
+      "media_usd_scope": "Media subtotal only; not an all-in production ledger.",
+      "youtube_video_id": null,
+      "languages": {
+        "en": {
+          "metadata": {
+            "state": "ready",
+            "reason": null
+          },
+          "captions": {
+            "state": "ready",
+            "reason": null
+          },
+          "dub": {
+            "state": "skipped",
+            "reason": "Jev still hears 8krm wrong after 2 retakes and 2 rewording rounds"
+          }
+        },
+        "ja": {
+          "metadata": {
+            "state": "ready",
+            "reason": null
+          },
+          "captions": {
+            "state": "ready",
+            "reason": null
+          },
+          "dub": {
+            "state": "skipped",
+            "reason": "Jev still hears 2429, 2nr5, 8krm, vxhx wrong after 2 retakes and 2 rewording rounds"
+          }
+        },
+        "ko": {
+          "metadata": {
+            "state": "ready",
+            "reason": null
+          },
+          "captions": {
+            "state": "ready",
+            "reason": null
+          },
+          "dub": {
+            "state": "skipped",
+            "reason": "Jev still hears 2amc, 2nr5, 5a3u, axc3, efwm wrong after 2 retakes and 2 rewording rounds"
+          }
+        }
+      },
+      "latest_approved_final": {
+        "content_sha256": "2a0cf69c5048e221c367af61faba71291e733c0b3338948028ec3f0ae34cc09a",
+        "created_at": "2026-10-18T12:23:34.152971Z",
+        "decided_at": "2026-10-18T12:56:12.730877Z",
+        "submitted_duration_seconds": 658.4666666666667,
+        "duration_scope": "Stored submitted final duration; not a new ffprobe or body-only measurement.",
+        "qa_ok_at_submission": false,
+        "failed_qa_items_at_submission": [
+          {
+            "id": "pace",
+            "detail": "1 of 82 slide states stay over 15 s: now-outro state 0 (17.6 s)"
+          }
+        ],
+        "caveat": "An approved record can retain QA exceptions. This observation does not revoke an owner decision or claim a fresh media review."
+      },
+      "reviews": [
+        {
+          "gate": "languages",
+          "status": "approved",
+          "created_at": "2026-10-19T12:28:52.090118Z"
+        },
+        {
+          "gate": "publish",
+          "status": "approved",
+          "created_at": "2026-10-18T12:59:21.788906Z"
+        },
+        {
+          "gate": "final",
+          "status": "approved",
+          "created_at": "2026-10-18T12:23:34.152971Z"
+        },
+        {
+          "gate": "storyboard",
+          "status": "approved",
+          "created_at": "2026-10-18T11:49:33.789316Z"
+        },
+        {
+          "gate": "audio",
+          "status": "approved",
+          "created_at": "2026-10-18T09:01:57.182663Z"
+        },
+        {
+          "gate": "audio",
+          "status": "approved",
+          "created_at": "2026-10-18T06:57:45.692919Z"
+        },
+        {
+          "gate": "look",
+          "status": "approved",
+          "created_at": "2026-10-18T05:00:13.127696Z"
+        },
+        {
+          "gate": "look",
+          "status": "superseded",
+          "created_at": "2026-10-18T04:52:00.378506Z"
+        }
+      ]
+    },
+    {
+      "slug": "story-adapt-seiko-quartz-astron",
+      "stage": "languages sent",
+      "series_slug": "brand-stories-adapt",
+      "ready_to_upload": true,
+      "last_synced_at": "2026-10-19T08:29:24.032930Z",
+      "worker_state": "unavailable",
+      "download_available": false,
+      "media_usd": 1.5955,
+      "media_usd_scope": "Media subtotal only; not an all-in production ledger.",
+      "youtube_video_id": null,
+      "languages": {
+        "en": {
+          "metadata": {
+            "state": "ready",
+            "reason": null
+          },
+          "captions": {
+            "state": "ready",
+            "reason": null
+          },
+          "dub": {
+            "state": "skipped",
+            "reason": "Jev still hears avxn, qi6y, wxm4 wrong after 2 retakes and 2 rewording rounds"
+          }
+        },
+        "ja": {
+          "metadata": {
+            "state": "ready",
+            "reason": null
+          },
+          "captions": {
+            "state": "ready",
+            "reason": null
+          },
+          "dub": {
+            "state": "skipped",
+            "reason": "xz94, qdvf do not fit their windows even at 1.15x after 2 shortening rounds"
+          }
+        },
+        "ko": {
+          "metadata": {
+            "state": "ready",
+            "reason": null
+          },
+          "captions": {
+            "state": "ready",
+            "reason": null
+          },
+          "dub": {
+            "state": "skipped",
+            "reason": "Jev still hears 2wdh, 5ugt, 77qc, 9vhu, qdvf, qi6y, ysss wrong after 2 retakes and 2 rewording rounds"
+          }
+        }
+      },
+      "latest_approved_final": {
+        "content_sha256": "4ad4875d5f8044b87420bda3922442839c7bcf792cc7b885faba25baa33683e5",
+        "created_at": "2026-10-18T06:51:52.059451Z",
+        "decided_at": "2026-10-18T06:56:38.226947Z",
+        "submitted_duration_seconds": 650.2666666666667,
+        "duration_scope": "Stored submitted final duration; not a new ffprobe or body-only measurement.",
+        "qa_ok_at_submission": false,
+        "failed_qa_items_at_submission": [
+          {
+            "id": "pace",
+            "detail": "1 of 81 slide states stay over 15 s: now-outro state 0 (22.2 s)"
+          },
+          {
+            "id": "captions",
+            "detail": "en: no caption file; ja: no caption file; ko: no caption file"
+          },
+          {
+            "id": "policy",
+            "detail": "Jev（故事）：符合立場 0.69、留下觀察 0.56、建議 0.01、業配 0.10、貶損 0.10；沒過（留下觀察低於 0.6）"
+          }
+        ],
+        "caveat": "An approved record can retain QA exceptions. This observation does not revoke an owner decision or claim a fresh media review."
+      },
+      "reviews": [
+        {
+          "gate": "languages",
+          "status": "approved",
+          "created_at": "2026-10-19T08:29:22.527763Z"
+        },
+        {
+          "gate": "publish",
+          "status": "approved",
+          "created_at": "2026-10-18T06:58:06.685569Z"
+        },
+        {
+          "gate": "final",
+          "status": "approved",
+          "created_at": "2026-10-18T06:51:52.059451Z"
+        },
+        {
+          "gate": "storyboard",
+          "status": "approved",
+          "created_at": "2026-10-18T05:00:11.370374Z"
+        },
+        {
+          "gate": "audio",
+          "status": "approved",
+          "created_at": "2026-10-17T15:33:06.231166Z"
+        },
+        {
+          "gate": "audio",
+          "status": "approved",
+          "created_at": "2026-10-17T12:04:21.344399Z"
+        },
+        {
+          "gate": "look",
+          "status": "approved",
+          "created_at": "2026-10-17T11:23:18.625551Z"
+        },
+        {
+          "gate": "look",
+          "status": "approved",
+          "created_at": "2026-10-17T10:37:34.722812Z"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "No host workspace, release SHA, locks or producer liveness readback is available through these responses.",
+    "worker_state unavailable means the API cannot read producer state; it is not proof the worker stopped.",
+    "Review-file descriptors are not the host chapter files, timeline, speech journal or complete original media.",
+    "No import, retry, setting change, model call, asset generation or upload was performed."
+  ]
+}
