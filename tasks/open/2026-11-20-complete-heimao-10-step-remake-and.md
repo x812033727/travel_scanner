@@ -37,9 +37,9 @@ Following the 2026-11-19 / 2026-11-20 `原來如此事務所` rule updates (no i
 
 - [x] Restore workdirs and 231 audited rich-gouache keyframes (`85` P25 + `76` G712 + `70` G653) and lock Heimao 10-step scripts (`P25`, `G712`, `G653`) with zero `lint` errors.
 - [x] Complete `opening-review` (`G653`), 8-locale `i18n/*.json` sync (`G653`), and blind `narrative` panels (`P25`, `G712`, `G653`).
-- [ ] Complete `zh-TW` Gemini `tts` + `check-audio` (`P25`, `G712`, `G653`) — `G712` 100% complete (`76/76` passed, `0` flagged, `4.66 chars/s`); `P25` & `G653` paused on Google AI Ultra Gemini TTS daily quota (RPD).
-- [ ] Run `render`, `assemble`, `captions`, 8-locale MiniMax `dub`, and `qa` (`11/11`) for all three episodes — `G712` `render` + `assemble` + 9-locale `captions` + 7 MiniMax dubs (`en,ja,ko,es,pt,id,th`) + `qa` (`11/11`) complete; `P25` & `G653` 9-locale `heimao` thumbnails rendered.
-- [ ] Run independent post-assembly `audience-review.md` on all three episodes, fix any issues, package, sync Google Drive (`0 differences`), push to `/admin/videos`, and mark task `done` — `G712` complete (`9.12/10`, packaged, backed up at `0 differences`, pushed); `P25` & `G653` pre-TTS workdirs backed up at `0 differences` and `outline`/`script` pushed.
+- [ ] Complete `zh-TW` Gemini `tts` + `check-audio` (`P25`, `G712`, `G653`) — `G712` 100% complete (`76/76` passed, `0` flagged, `4.66 chars/s`); `P25` (`27` Gemini lines left) & `G653` (`69` Gemini lines left) paused on Google AI Ultra Gemini TTS daily quota (RPD resets at `00:00 PT` / `16:00 TW`).
+- [ ] Run `render`, `assemble`, `captions`, 8-locale MiniMax `dub`, and `qa` (`11/11`) for all three episodes — `G712` 100% complete (`render` + `assemble` + 9-locale `captions` + **all 8 MiniMax/Gemini dubs `en,ja,ko,es,pt,id,vi,th`** + `qa` `11/11`); `P25` & `G653` 9-locale `heimao` thumbnails rendered and wide comparison shots proactively set to `"pull out"`.
+- [ ] Run independent post-assembly `audience-review.md` on all three episodes, fix any issues, package, sync Google Drive (`0 differences`), push to `/admin/videos`, and mark task `done` — `G712` 100% complete (`9.12/10`, packaged with 8 dubs, backed up at `1786 files, 0 differences`, pushed); `P25` & `G653` pre-TTS workdirs backed up at `0 differences` and `outline`/`script` pushed.
 
 ## How to verify
 
@@ -53,19 +53,18 @@ npm run test:tools && npm run test:docs-videos && npm run check:tasks
 ## Notes
 
 - **2026-11-20 Handoff Summary (`antigravity`, branch `antigravity/sothatswhy-p25-g653-g712`)**:
-  1. **`sothatswhy-g712-printer-ink` (COMPLETE & PACKAGED — `final.mp4` sha256 `398669167fa5`, `qa` `11/11`, `audience-review.md` `9.12/10`)**:
+  1. **`sothatswhy-g712-printer-ink` (100% COMPLETE END-TO-END — `final.mp4` sha256 `398669167fa5`, ALL 8 DUBS, `qa` `11/11`, `audience-review.md` `9.12/10`)**:
      - `zh-TW` Gemini `Sulafat` (`tempo: 1.08`) + `Leda` (`tempo: 1.12`): `76/76` lines passed dual-transcriber `check-audio` (`0` flagged) at `4.66 chars/s`.
-     - Independent post-assembly `audience-review.md` caught 6 wide side-by-side comparison shots (`#04, #31, #56, #58, #65, #67`) cropped by `pan left`/`pan right` (`panZoom: 1.2`); all 6 were switched to `"pull out"` (and `#66` to `"drift"`), re-assembled, visually verified via `build/last-*.png`, and re-passed `qa` `11/11` + `package` `4/4` (`metadata.json` sha256 `87ca600be807`).
-     - 7 of 8 MiniMax dub tracks (`en, ja, ko, es, pt, id, th`) are mastered with music bed in `dubs/*.m4a` and `upload/dubs/`; only `vi` (`DUB_MINIMAX_VOICES.vi` has 1 voice, so `kid`'s 19 lines fall back to Gemini `Leda`) waits on Gemini TTS RPD reset.
-     - Google Drive backup (`1PI1d5-3xNz-ZxhYmBONibeBGhAC0s8Np` / `sothatswhy-g712-printer-ink` `1lyP9SkklYSOzsNOQSRmVH_-gChR3EHr_`): **`1699 files, 0 differences`**.
-     - Copy-paste follow-up commands are in `docs/videos/sothatswhy-g712-printer-ink/NOTES.md`.
-  2. **`sothatswhy-p25-train-tunnel` (PRE-TTS 100% COMPLETE + 80/85 CACHED WAVS, WAITING ON GEMINI TTS RPD RESET)**:
-     - `lint` `0` errors / `0` narrative-title-i18n warnings, `verify-1..4.md` PASS, blind `narrative.json` `14/14` YES, `opening-review.json` `9.2 / 9.2 / 9.2` (`712d95759390...`), 85 audited rich-gouache keyframes + 9-locale `heimao` thumbnails complete, `outline` & `script` pushed to `/admin/videos`.
-     - Google Drive backup (`1D463NdLjfoKXSxv8Nls1K7gNwefvJiwT` / `sothatswhy-p25-train-tunnel` `1llYIMZ5x9S9xcoa0aAXlx9_9WcpCWBnd`): **`401 files, 0 differences`**.
+     - Independent post-assembly `audience-review.md` caught 6 wide side-by-side comparison shots (`#04, #31, #56, #58, #65, #67`) cropped by `pan left`/`pan right` (`panZoom: 1.2`); all 6 were switched to `"pull out"` (and `#66` to `"drift"`), re-assembled, visually verified via `build/last-*.png`, and re-passed `qa` `11/11` + `package` `4/4` (`metadata.json` sha256 `b61face6559f`).
+     - **All 8 dub tracks (`en, ja, ko, es, pt, id, vi, th`)** are 100% synthesized and mastered with music bed in `dubs/*.m4a` and `upload/dubs/`.
+     - Google Drive backup (`1PI1d5-3xNz-ZxhYmBONibeBGhAC0s8Np` / `sothatswhy-g712-printer-ink` `1lyP9SkklYSOzsNOQSRmVH_-gChR3EHr_`): **`1786 files, 0 differences`**, and `outline`, `script`, `final`, `publish` pushed to `/admin/videos`.
+  2. **`sothatswhy-p25-train-tunnel` (PRE-TTS 100% COMPLETE + 85 KEYFRAMES + 27 GEMINI LINES LEFT, WAITING ON `00:00 PT` RPD RESET)**:
+     - `lint` `0` errors / `0` narrative-title-i18n warnings (fixed 4 stale `source_hash` fields in `i18n/*.json` and switched wide comparison shots `#18, #72` to `"pull out"`), `verify-1..4.md` PASS, blind `narrative.json` `14/14` YES, `opening-review.json` `9.2 / 9.2 / 9.2` (`712d95759390...`), 85 audited rich-gouache keyframes (`manifest.json` sha256 `951b0e1b2506`) + 9-locale `heimao` thumbnails complete, `outline` & `script` pushed to `/admin/videos`.
+     - Google Drive backup (`1D463NdLjfoKXSxv8Nls1K7gNwefvJiwT` / `sothatswhy-p25-train-tunnel` `1llYIMZ5x9S9xcoa0aAXlx9_9WcpCWBnd`): **`0 differences`**.
      - Copy-paste resume commands after Gemini TTS RPD reset are in `docs/videos/sothatswhy-p25-train-tunnel/NOTES.md`.
-  3. **`sothatswhy-g653-honey-crystallization` (PRE-TTS 100% COMPLETE, WAITING ON GEMINI TTS RPD RESET)**:
-     - R44 `video.json` & `script.md` (`2f064afd571b...`), `lint` `0` errors / `0` narrative-title-i18n warnings across all 8 locales, `verify-1.md` PASS (`V184` boundaries strictly honored), blind `narrative.json` `14/14` YES, `opening-review.json` `9.2 / 9.2 / 9.2` (`872109256fe3...`), 70 audited rich-gouache keyframes + 9-locale `heimao` thumbnails complete, `outline` & `script` pushed to `/admin/videos`.
-     - Google Drive backup (`1c4tgB6xOEiOoBctYieK9feTDgtyjFQIT` / `sothatswhy-g653-honey-crystallization` `1xAfL9Ejlz8zjevh8p5TsGiDHbAiWuEgI`): **`202 files, 0 differences`**.
+  3. **`sothatswhy-g653-honey-crystallization` (PRE-TTS 100% COMPLETE + 70 KEYFRAMES + 69 GEMINI LINES LEFT, WAITING ON `00:00 PT` RPD RESET)**:
+     - R44 `video.json` & `script.md` (with wide comparison shots `#04, #10, #15, #65, #68` switched to `"pull out"`), `lint` `0` errors / `0` narrative-title-i18n warnings across all 8 locales, `verify-1.md` PASS (`V184` boundaries strictly honored), blind `narrative.json` `14/14` YES, `opening-review.json` `9.2 / 9.2 / 9.2` (`872109256fe3...`), 70 audited rich-gouache keyframes (`manifest.json` sha256 `3e4d7560aa39`) + 9-locale `heimao` thumbnails complete, `outline` & `script` pushed to `/admin/videos`.
+     - Google Drive backup (`1c4tgB6xOEiOoBctYieK9feTDgtyjFQIT` / `sothatswhy-g653-honey-crystallization` `1xAfL9Ejlz8zjevh8p5TsGiDHbAiWuEgI`): **`0 differences`**.
      - Copy-paste resume commands after Gemini TTS RPD reset are in `docs/videos/sothatswhy-g653-honey-crystallization/NOTES.md`.
   4. **Note on Open PR `#2154` (`docs/sothatswhy-g653-honey-crystallization`)**:
      - `#2154` contains the pre-Heimao 2026-11-18 v1 draft of `G653` alongside already-relevant `tools/video/*` changes; this branch (`antigravity/sothatswhy-p25-g653-g712`) holds the 2026-11-20 Heimao 10-step R44 remake of `docs/videos/sothatswhy-g653-honey-crystallization/` without touching `tools/video/*`.

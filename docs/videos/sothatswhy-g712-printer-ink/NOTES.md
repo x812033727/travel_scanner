@@ -26,9 +26,8 @@
    - `final.mp4`（`sha256: 398669167fa5`，`19567` frames，`-14 LUFS`，true peak `-2 dBFS`，music bed `-32.9 LUFS`）與 9 語 `.srt` 字幕（`zh-TW, en, ja, ko, es, pt, id, vi, th`）通過 **`qa` `11 of 11 checks passed`**。
    - `review/audience-review.md`：獨立審查子代理抓出 `#04, #31, #56, #58, #65, #67` 共 6 張左右對照鏡在 `pan left/right`（`panZoom: 1.2`）下裁切左右 `16.7%` 邊緣，已全數改為 `"pull out"` 重組並複驗 `build/last-*.png` 結尾定格 100% 完整在框，六維度評分全數 `≥ 8.9`、總平均 **`9.12 / 10`** 正式放行。
    - `upload/` 上架包已透過 `package` 產出並通過全項核對，`outline`、`script`、`final`、`publish` 已推送 `/admin/videos` 待審。
-4. **多語 MiniMax 配音進度**：
-   - `dubs/{en,ja,ko,es,pt,id,th}.m4a`（**7 語純 MiniMax 雙聲道配音含背景配樂混音**）已全數合成通過並收入 `upload/dubs/` 與 Google Drive。
-   - 僅剩 **`vi`（越南語）**：因 `tools/video/dubs/plan.mjs` 中 `DUB_MINIMAX_VOICES.vi` 僅設 1 組女聲（`Vietnamese_kindhearted_girl`），雙人對話的第二角色（小問 19 句）自動回退至 Gemini `Leda`，受 2026-11-20 當日 Google AI Ultra Gemini TTS RPD 配額限制暫待重置。
+4. **8 語多語配音（全數 8/8 完成）**：
+   - `dubs/{en,ja,ko,es,pt,id,vi,th}.m4a`（**全數 8 語含背景配樂混音**，`vi` 小問亦已完成 Gemini `Leda` 合成，`max 1.07x` 零超限視窗）已全數合成通過，收入 `upload/dubs/`（`metadata.json` SHA-256 `b61face6559f`），並完成 Google Drive 完整備份核驗（**`1786 files, 0 differences`**）與 `/admin/videos` `final`、`publish` 推送。
 
 ---
 
@@ -39,18 +38,12 @@
 
 ---
 
-## 3. 站主核准 `final`/`publish` 並待 Gemini TTS RPD 重置後補齊 `vi` 配音與 `languages` 關卡指令
+## 3. 站主核准 `final`/`publish` 後推送 `languages` 關卡指令
 
 ```bash
 export VIDEO_WORKDIR=/home/antigravity/mokaair-work/videos
 
-# 1. Gemini TTS 每日配額重置後補齊 vi 配音並重新打包：
-node tools/video/cli.mjs dub --slug sothatswhy-g712-printer-ink --provider minimax --locale vi --workdir "$VIDEO_WORKDIR"
-node tools/video/cli.mjs captions --slug sothatswhy-g712-printer-ink --workdir "$VIDEO_WORKDIR"
-node tools/video/cli.mjs qa --slug sothatswhy-g712-printer-ink --workdir "$VIDEO_WORKDIR"
-node tools/video/cli.mjs package --slug sothatswhy-g712-printer-ink --workdir "$VIDEO_WORKDIR"
-
-# 2. 站主於 /admin/videos 核准 final 與 publish 後，同步拉回核准狀態、推送 8 語 languages 批次並同步雲端 0 differences：
+# 站主於 /admin/videos 核准 final 與 publish 後，拉回核准狀態並推送 8 語 languages 批次：
 node tools/video/cli.mjs review-pull --slug sothatswhy-g712-printer-ink --workdir "$VIDEO_WORKDIR"
 node tools/video/cli.mjs review-push --slug sothatswhy-g712-printer-ink --gate languages --workdir "$VIDEO_WORKDIR"
 ```
