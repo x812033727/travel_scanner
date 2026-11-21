@@ -1,0 +1,34 @@
+{
+  "round": "R8v",
+  "basis": "R8u frozen video.json in clean PR #1641 worktree",
+  "before_sha256": "2d04002c0c4642d7cbac9cf541d03fdfb09a0c39e2dacca1b1be21371ebe23e9",
+  "after_sha256": "fd506ba278ffbcbb2b17908b957eb9a2163a2d26cd3b2b78556bab365212b7f4",
+  "changed_paths": [
+    "scenes[14].data.prompt",
+    "scenes[15].data.prompt",
+    "scenes[16].data.prompt"
+  ],
+  "changes": [
+    {
+      "path": "scenes[14].data.prompt",
+      "scene": "pf015",
+      "before": "Close shot inside a high stone lookout of the Tower on 2 September 1666, one English diarist in his thirties with a mature adult face, dark wool doublet and plain white neckcloth grips a thick stone parapet, a small plume of smoke above low tiled roofs visible through the narrow opening, soft overcast light. Tight frame on his face, stonework, roof tiles and smoke",
+      "after": "Medium shot on an open stone platform of the Tower on the morning of 2 September 1666, one fully grown English man in his thirties with mature facial features, dark hair, a plain dark wool doublet and white neckcloth grips a waist-high stone parapet with both hands while looking at a short row of old gabled house roofs with smoke rising behind them, soft grey morning light across the open sky"
+    },
+    {
+      "path": "scenes[15].data.prompt",
+      "scene": "pf016",
+      "before": "Medium shot inside a stone chamber of the Tower in 1666, one mature English tower official in a plain dark doublet and white falling band speaking aloud to a listener outside the frame with one open hand, a bare wooden table and arched stone window behind him, soft grey daylight",
+      "after": "Medium shot inside a bare stone room of the Tower on the morning of 2 September 1666, one fully grown English man in his fifties with a grey beard and mature facial features wears a plain dark wool doublet and white shirt collar, speaking urgently with one empty hand raised beside a small stone window, soft grey daylight across his face and the wall"
+    },
+    {
+      "path": "scenes[16].data.prompt",
+      "scene": "pf017",
+      "before": "Close shot inside the Tower on 2 September 1666, one English diarist in his thirties with a mature adult face, short dark hair, dark wool doublet and high white shirt collar leans forward to listen with a furrowed brow, a rough stone wall and narrow window behind him, soft grey daylight",
+      "after": "Medium shot inside a plain stone room of the Tower on the morning of 2 September 1666, one fully grown English man in his thirties with mature facial features, dark hair, plain dark wool doublet and white shirt collar stands with one empty hand cupped beside his ear, listening with a startled face, soft grey daylight evenly lighting his face and the stone wall"
+    }
+  ],
+  "forward_replay_matches_new_bytes": true,
+  "reverse_replay_matches_baseline_bytes": true,
+  "unified_diff": "--- R8u/video.json\n+++ R8v/video.json\n@@ -355,7 +355,7 @@\n       \"id\": \"pf015\",\n       \"template\": \"shot\",\n       \"data\": {\n-        \"prompt\": \"Close shot inside a high stone lookout of the Tower on 2 September 1666, one English diarist in his thirties with a mature adult face, dark wool doublet and plain white neckcloth grips a thick stone parapet, a small plume of smoke above low tiled roofs visible through the narrow opening, soft overcast light. Tight frame on his face, stonework, roof tiles and smoke\",\n+        \"prompt\": \"Medium shot on an open stone platform of the Tower on the morning of 2 September 1666, one fully grown English man in his thirties with mature facial features, dark hair, a plain dark wool doublet and white neckcloth grips a waist-high stone parapet with both hands while looking at a short row of old gabled house roofs with smoke rising behind them, soft grey morning light across the open sky\",\n         \"camera\": \"push in\",\n         \"visual\": \"still\"\n       },\n@@ -371,7 +371,7 @@\n       \"id\": \"pf016\",\n       \"template\": \"shot\",\n       \"data\": {\n-        \"prompt\": \"Medium shot inside a stone chamber of the Tower in 1666, one mature English tower official in a plain dark doublet and white falling band speaking aloud to a listener outside the frame with one open hand, a bare wooden table and arched stone window behind him, soft grey daylight\",\n+        \"prompt\": \"Medium shot inside a bare stone room of the Tower on the morning of 2 September 1666, one fully grown English man in his fifties with a grey beard and mature facial features wears a plain dark wool doublet and white shirt collar, speaking urgently with one empty hand raised beside a small stone window, soft grey daylight across his face and the wall\",\n         \"camera\": \"drift left\",\n         \"visual\": \"still\"\n       },\n@@ -387,7 +387,7 @@\n       \"id\": \"pf017\",\n       \"template\": \"shot\",\n       \"data\": {\n-        \"prompt\": \"Close shot inside the Tower on 2 September 1666, one English diarist in his thirties with a mature adult face, short dark hair, dark wool doublet and high white shirt collar leans forward to listen with a furrowed brow, a rough stone wall and narrow window behind him, soft grey daylight\",\n+        \"prompt\": \"Medium shot inside a plain stone room of the Tower on the morning of 2 September 1666, one fully grown English man in his thirties with mature facial features, dark hair, plain dark wool doublet and white shirt collar stands with one empty hand cupped beside his ear, listening with a startled face, soft grey daylight evenly lighting his face and the stone wall\",\n         \"camera\": \"pull back\",\n         \"visual\": \"still\"\n       },\n"
+}

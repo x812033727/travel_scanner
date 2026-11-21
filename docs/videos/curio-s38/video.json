@@ -1,0 +1,1928 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s38",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    10
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，說故事時清楚區分日記親見、聽來的消息與編輯推論。",
+    "performance": "順著佩皮斯五天撤物與守屋的動作前進；起司是情節線索，所查五日條目未記結局就留白。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "pf003",
+      "payoff": "pf066",
+      "what": "挖坑時火逼到哪裡"
+    },
+    {
+      "setup": "pf004",
+      "payoff": "pf090",
+      "what": "佩皮斯房屋的結果"
+    },
+    {
+      "setup": "pf005",
+      "payoff": "pf110",
+      "what": "起司去向有無記載"
+    },
+    {
+      "setup": "pf022",
+      "payoff": "pf081",
+      "what": "如何擋火"
+    },
+    {
+      "setup": "pf039",
+      "payoff": "pf040",
+      "what": "飯後河上火勢"
+    },
+    {
+      "setup": "pf051",
+      "payoff": "pf053",
+      "what": "先送哪些財物"
+    },
+    {
+      "setup": "pf057",
+      "payoff": "pf060",
+      "what": "誰的貨能上船"
+    },
+    {
+      "setup": "pf064",
+      "payoff": "pf067",
+      "what": "難搬的酒"
+    },
+    {
+      "setup": "pf077",
+      "payoff": "pf080",
+      "what": "未收到回音時是否仍有人拆屋"
+    },
+    {
+      "setup": "pf082",
+      "payoff": "pf092",
+      "what": "巷口能否守住"
+    },
+    {
+      "setup": "pf074",
+      "payoff": "pf091",
+      "what": "辦公室能否躲過火"
+    },
+    {
+      "setup": "pf102",
+      "payoff": "pf103",
+      "what": "城中是否再起火"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "倫敦大火時，他為何把起司埋進土裡？｜奇聞檔案局",
+    "description": "1666 年倫敦大火最初幾天，Samuel Pepys 從睡回去、向國王傳話，到穿睡袍搬財物、把酒與起司放進院子裡的坑。本集沿著他 9 月 2–6 日的日記走；起火地點是他聽來的，起司重量、價錢與後來有否挖回，這幾日條目未交代。畫面為卡通插圖，不是歷史現場影像。資料核對於 2026-10-19。",
+    "tags": [
+      "倫敦大火",
+      "Samuel Pepys",
+      "佩皮斯",
+      "起司",
+      "1666",
+      "日記",
+      "倫敦歷史",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "起司埋地下？",
+      "tag": "1666 倫敦大火",
+      "sub": "日記究竟寫了什麼",
+      "shot": "pf002"
+    }
+  },
+  "sources": [
+    {
+      "title": "Samuel Pepys, Diary, 1666-09-02 to 1666-09-06",
+      "url": "https://github.com/GITenberg/The-Diary-of-Samuel-Pepys---Complete_4200/blob/68fcf49f70ee793b989a6fd0464264d55beb4451/4200.txt#L65784-L66175",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "pf001",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-down medium shot of two adult English men in 1660s wool doublets, knee breeches and linen cuffs digging an open pit in loose soil of a walled English garden. Their full-size adult torsos and hands grip two complete wooden-handled iron spades; faces are outside the frame. Evening in 1666, distant brick garden wall.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf001",
+          "text": "一六六六年九月四日傍晚，倫敦一座院子裡，佩皮斯正在和潘爵士挖當天的第二個土坑。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "九月四日晚，佩皮斯把起司放進第二個土坑"
+    },
+    {
+      "id": "pf002",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of grown English hands in 1660s linen cuffs lowering one compact intact round wheel of hard aged Parmesan into an open earth pit in an English garden in 1666. The cheese shows only a continuous uncut golden-brown exterior rind; its interior is entirely hidden. Sealed wine vessels are already beside it in the pit. Crumbly soil walls and evening light, faces outside frame, no writing.",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf002",
+          "text": "兩人把酒放進去；他又把自己那塊起司也放進坑裡。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf003",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-down medium shot of two adult English men in 1660s wool doublets, knee breeches and linen cuffs digging an open pit in loose soil of a walled English garden. Their full-size adult torsos and hands grip two complete wooden-handled iron spades; faces are outside the frame. Evening in 1666, distant brick garden wall.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf003",
+          "text": "火追到什麼程度，才讓他選擇院子裡的泥土？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf004",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide establishing view from a walled London garden in 1666, one adult English householder in his thirties with mature facial features and a plain knee-length coat appears head to toe as a small figure on the left, pointing over the wall toward a distant orange fire glow beyond narrow gabled rooftops; an intact brick house stands beside the garden under a soft overcast sky",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf004",
+          "text": "火最後有沒有燒到他的房子？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf005",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close shot at a plain oak table, one middle-aged English man with a short beard and a 1660s linen neckband reads an open page whose visible surface is blank, his other hand resting on the empty tabletop, soft candlelight against a brick wall",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf005",
+          "text": "而他事後寫下的日記，有沒有交代那塊起司的下落？",
+          "emotion": "自然說故事",
+          "pause_after_ms": 1600
+        }
+      ]
+    },
+    {
+      "id": "pf006",
+      "template": "big",
+      "data": {
+        "text": "1666．09．02",
+        "kicker": "女僕珍妮",
+        "sub": "凌晨，倫敦城裡有火"
+      },
+      "lines": [
+        {
+          "id": "pf006",
+          "text": "先回到兩天前。九月二日凌晨，女僕珍妮發現城裡有火。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "九月二日凌晨，佩皮斯看過火又睡回去"
+    },
+    {
+      "id": "pf007",
+      "template": "big",
+      "data": {
+        "kicker": "佩皮斯日記・中文譯文",
+        "text": "「我穿上睡袍，走到她的窗邊」",
+        "sub": "1666．09．02，佩皮斯日記"
+      },
+      "lines": [
+        {
+          "id": "pf007",
+          "text": "她叫醒佩皮斯。他套上睡袍，走到窗邊。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf008",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a London house before dawn on 2 September 1666, one fully grown English man in his thirties with mature facial features, wearing a plain loose 1660s English nightgown, leans toward a small wooden casement upper window to judge a distant red glow beyond dark rooftops, soft predawn light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf008",
+          "text": "他覺得火在馬克巷後面，離住處還遠。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf009",
+      "template": "big",
+      "data": {
+        "kicker": "佩皮斯日記・中文譯文",
+        "text": "「我又回到床上睡了」",
+        "sub": "1666．09．02"
+      },
+      "lines": [
+        {
+          "id": "pf009",
+          "text": "於是他真的回到床上，又睡了一覺。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf010",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a London house around seven in the morning on 2 September 1666, one adult English man in his thirties with mature facial features, dark hair, a wool doublet and linen collar leans from a small wooden casement window to inspect a faint distant fire glow behind gabled rooftops, soft grey daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf010",
+          "text": "早上再看，他甚至覺得那團火比剛才小；城裡真的平安了嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf011",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a modest London room on the morning of 2 September 1666, one adult English housemaid with mature facial features, a plain linen coif, dark wool bodice and apron speaks urgently with one empty hand raised beside a wooden doorway, soft grey morning light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf011",
+          "text": "珍妮卻帶來一個消息：她聽說三百多間房燒了。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf012",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up cropped above the waist inside a plain London room on the morning of 2 September 1666: one adult English man in his thirties with a mature face and dark hair actively lifts a plain unfastened dark wool cloak over both shoulders, both hands drawing its loose front edges toward his chest. He wears a loose off-white linen shirt with an open plain collar. Bare plaster wall and simple wooden doorway only, soft grey daylight; no bottles, jars, necktie, striped shirt, belt, or modern objects",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf012",
+          "text": "珍妮這個消息也是聽來的；佩皮斯得自己去看。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf013",
+      "template": "big",
+      "data": {
+        "kicker": "佩皮斯日記・中文譯文",
+        "text": "「我看見橋那端的房屋全在火中」",
+        "sub": "1666．09．02"
+      },
+      "lines": [
+        {
+          "id": "pf013",
+          "text": "他登上塔樓的高處，終於看見橋邊房屋著火。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf014",
+      "template": "big",
+      "data": {
+        "kicker": "佩皮斯日記・中文譯文",
+        "text": "「我為橋上的米切爾和莎拉擔心」",
+        "sub": "1666．09．02"
+      },
+      "lines": [
+        {
+          "id": "pf014",
+          "text": "橋上的火，讓他掛念那裡一戶熟人的家。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf015",
+      "template": "big",
+      "data": {
+        "kicker": "佩皮斯日記・中文譯文",
+        "text": "「心裡滿是憂慮」",
+        "sub": "他走下塔樓去找官員・1666．09．02"
+      },
+      "lines": [
+        {
+          "id": "pf015",
+          "text": "剛才的遠處紅光，現在有了街道和人家；他們要往哪裡退？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf016",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a bare stone room of the Tower on the morning of 2 September 1666, one fully grown English man in his fifties with a grey beard and mature facial features wears a plain dark wool doublet and white shirt collar, speaking urgently with one empty hand raised beside a small stone window, soft grey daylight across his face and the wall",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf016",
+          "text": "塔樓官員說，火從布丁巷一名國王烘焙師的屋子起。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf017",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a plain stone room of the Tower on the morning of 2 September 1666, one fully grown English man in his thirties with mature facial features, dark hair, plain dark wool doublet and white shirt collar stands with one empty hand cupped beside his ear, listening with a startled face, soft grey daylight evenly lighting his face and the stone wall",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf017",
+          "text": "佩皮斯聽到這個說法；他沒有目擊起火那一刻。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf018",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close shot aboard a flat wooden cargo lighter on the Thames in 1666: one grey-haired middle-aged resident with a lined adult face, broad shoulders, a dark wool doublet and a white linen collar bends to lower a single wooden household chest over the low side rail onto the bare deck; both hands hold the chest, while river water and pale overcast sky fill the background, full frame without black bars",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf018",
+          "text": "他搭船沿河看，人們正把家當搬上平底貨船。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf019",
+      "template": "big",
+      "data": {
+        "kicker": "佩皮斯日記・中文譯文",
+        "text": "「米切爾家的房子，已經燒了」",
+        "sub": "他乘船過橋後看見・1666．09．02"
+      },
+      "lines": [
+        {
+          "id": "pf019",
+          "text": "到了船上，他才看見那位熟人的房子已經燒了。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf020",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at the Thames bank in 1666: one grey-haired adult London resident in a dark wool doublet and white linen collar leans forward and releases a tied linen household bundle with both hands over the stone river edge; the bundle is airborne above the open water, with small ripples below and pale overcast sky behind",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf020",
+          "text": "還有人把搬不及的東西直接丟進河裡。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf021",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a Thames landing in 1666, one grey-haired adult resident in a plain dark wool doublet and knee breeches climbs into a low wooden rowboat; one boot is inside the hull and both hands grip the near boat side, a smoking plain brick wall behind him, pale cloudy daylight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf021",
+          "text": "佩皮斯見有些住戶等火貼近門口，才往船上跑。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf022",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on the Thames in 1666, one grey-haired adult in a plain wool doublet sits in a low wooden rowboat watching smoke drift strongly to the right across two small timber-framed house roofs behind him, pale overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf022",
+          "text": "風又把火往城裡推；誰能讓它停下來？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf023",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot a London householder hurrying toward a plain Whitehall palace entrance, midday light. Restoration London: mature locals in broad collars, doublets and breeches; hand-built stone or timber if present, no peaked caps",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf023",
+          "text": "佩皮斯沒有繼續待在船上，而是趕往懷特霍爾。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "九月二日，佩皮斯向國王提拆屋"
+    },
+    {
+      "id": "pf024",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a Whitehall chamber in 1666, an adult clerk in a wool doublet reports earnestly to a seated English ruler and a standing noble; plain wooden chairs and a plaster wall, soft window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf024",
+          "text": "他在國王與約克公爵面前，報告自己從河上所見。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf025",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a London chamber in 1666, a grown clerk with a white collar points to a gap between small house blocks on a blank plan on a wooden table, lamplight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf025",
+          "text": "他說要拆掉火前面的屋子，才可能擋住火。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf026",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at Whitehall in 1666, a seated mature ruler speaks firmly to a listening clerk in a cloth doublet; plain wood panelling and a linen collar, mild window light",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf026",
+          "text": "國王要他轉告市長，拆屋不要猶豫。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf027",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a palace hall in England in 1666, a middle-aged noble in a long coat gestures toward a blank city plan on a wooden table while speaking, mild hall light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf027",
+          "text": "約克公爵還說，需要士兵時可以支援。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf028",
+      "template": "big",
+      "data": {
+        "kicker": "佩皮斯日記・中文譯文",
+        "text": "「我已精疲力竭」",
+        "sub": "市長對佩皮斯說・1666．09．02"
+      },
+      "lines": [
+        {
+          "id": "pf028",
+          "text": "等他找到市長，對方已疲憊得像撐不住，還能帶人拆屋嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf029",
+      "template": "big",
+      "data": {
+        "kicker": "佩皮斯日記・中文譯文",
+        "text": "「人不聽命令，火又追得太快」",
+        "sub": "市長對佩皮斯說・1666．09．02"
+      },
+      "lines": [
+        {
+          "id": "pf029",
+          "text": "日記記下市長的抱怨：人不服從，火又追得太快。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf030",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot by a brick doorway in England in 1666, a weary mature mayor in a plain long coat rests his shoulder against the door frame, grey daylight",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf030",
+          "text": "市長說自己熬了一夜，得先找地方休息。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf031",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium side view in London in 1666, an exhausted mayor in a long wool cloak and white linen neckcloth walks away past a rough oak doorway while a clerk watches; cobbled ground, grey daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf031",
+          "text": "市長說不需要更多士兵，轉身就離開了。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf032",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a London parish church in 1666, an adult resident in a cloth coat sets a household chest among many stored bundles and wooden boxes, muted window light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf032",
+          "text": "教堂裡也塞滿居民搬去暫放的家當。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf033",
+      "template": "big",
+      "data": {
+        "kicker": "佩皮斯日記・中文譯文",
+        "text": "「家當裝上車，也背在人身上」",
+        "sub": "街上的搬運人潮・1666．09．02"
+      },
+      "lines": [
+        {
+          "id": "pf033",
+          "text": "沿街有人背著包，車上也堆滿要搬的家當。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf034",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a Thames Street warehouse in 1666, a mature clerk in a linen collar studies sealed wooden barrels by the brick wall, soft grey daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf034",
+          "text": "佩皮斯特別記下，泰晤士街有焦油，倉庫還有油、酒；自家的酒呢？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf035",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an English home in 1666, a middle-aged host in a wool doublet smiles a welcome toward one middle-aged guest at a rough oak doorway; a plain sunlit plaster wall behind them, soft midday light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf035",
+          "text": "可到了中午，他仍回家招待原先約好的客人。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf036",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a London dining room in 1666, a worried adult diarist sits before a plentiful meal on a wooden table; smoke is visible through a small window, soft midday light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf036",
+          "text": "那頓飯依然豐盛，只是大家都惦記著火。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf037",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a dining-room doorway in England in 1666, a concerned grown woman in a plain gown speaks to someone at the table, muted midday light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf037",
+          "text": "席間，巴特利爾太太來問兩位親人的下落；佩皮斯記下他們的房子已燒。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf038",
+      "template": "big",
+      "data": {
+        "kicker": "佩皮斯日記・中文譯文",
+        "text": "「早上收進的家當，又往更遠處搬」",
+        "sub": "坎寧街往倫巴底街及更遠處・1666．09．02"
+      },
+      "lines": [
+        {
+          "id": "pf038",
+          "text": "飯後再走上街，早上收進的家當，現在又往更遠處搬。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf039",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot near a Thames landing in 1666, a middle-aged clerk in a dark doublet looks from a smoky brick street toward the river, rough uneven cobblestones underfoot, soft afternoon light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf039",
+          "text": "他接著上船，再看那道火線推到了哪裡？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf040",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from a Thames rowboat in 1666, an adult diarist watches fire spread along the waterfront both upstream and downstream of a low stone bridge, smoky afternoon light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf040",
+          "text": "他再從船上看，橋的上游、下游，火都燒得更遠了。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "九月二日夜，火光逼佩皮斯裝箱"
+    },
+    {
+      "id": "pf041",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on the Thames in 1666, a grown diarist in a cloth doublet looks across many low wooden boats loaded with household chests and bundles, afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf041",
+          "text": "河面擠滿搬運家當的小船。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf042",
+      "template": "big",
+      "data": {
+        "kicker": "佩皮斯日記・物件",
+        "text": "Virginals",
+        "sub": "家用的小型鍵盤琴"
+      },
+      "lines": [
+        {
+          "id": "pf042",
+          "text": "佩皮斯還看到，不少船裡連家用的小型鍵盤琴也載著。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf043",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot aboard a Thames rowboat in 1666, a middle-aged householder in a wool doublet shields his face from wind-blown sparks, dusk light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf043",
+          "text": "迎風靠近時，飛來的火星讓他難以久留。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf044",
+      "template": "big",
+      "data": {
+        "kicker": "佩皮斯日記・中文譯文",
+        "text": "「相隔三四間，甚至五六間」",
+        "sub": "飛散的火星，點燃另一處房屋"
+      },
+      "lines": [
+        {
+          "id": "pf044",
+          "text": "那些火星甚至讓相隔好幾間的房屋接連著火。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf045",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from the far bank of the Thames in 1666, a grown writer in a wool coat watches a long distant arc of fire above low brick and timber roofs, dusk light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf045",
+          "text": "黃昏從對岸看，火光像一道拉長的弧。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf046",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside the Thames in 1666, a mature diarist with tears on his cheeks looks across the water toward distant firelight; plain linen collar, muted dusk light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf046",
+          "text": "他寫，這幅景象讓自己哭了。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf047",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a London home in 1666, a displaced middle-aged guest in a worn cloth coat arrives with only a few household bundles; plain brick doorway, night candlelight",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf047",
+          "text": "回家時，房子已燒毀的熟人湯姆帶著僅存的東西來投宿。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf048",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a home in England in 1666, an adult householder in a linen shirt packs his belongings into a plain wooden chest, candlelight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf048",
+          "text": "火勢消息不斷傳來，他們只得打包自家的東西；先搬到哪裡？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf049",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an English walled garden in 1666, a grown resident in a wool doublet carries household bundles through the garden doorway, moonlight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf049",
+          "text": "借著月光，家當先搬進花園；但花園能放下所有東西嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf050",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a London cellar stair in 1666, a tired mature guest and a mature householder lower one iron chest down the steps together; stone walls, night candlelight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf050",
+          "text": "湯姆幫忙把金錢和鐵箱搬入地窖；整夜忙亂，他也沒睡好。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf051",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot by a garden door in England in 1666, a middle-aged diarist in a white collar looks between a locked chest and a plain wooden box, lamplight",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf051",
+          "text": "如果天亮還要搬，他先送走哪一批財物？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf052",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot outside an English brick home in 1666, an adult householder in a loose dressing gown meets a horse cart before dawn, cool grey light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf052",
+          "text": "九月三日天未亮，鄰居替他送來一輛車。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "九月三日，佩皮斯穿睡袍送走財物"
+    },
+    {
+      "id": "pf053",
+      "template": "big",
+      "data": {
+        "text": "金錢與銀器",
+        "sub": "佩皮斯親自押送"
+      },
+      "lines": [
+        {
+          "id": "pf053",
+          "text": "佩皮斯穿著睡袍，親自押送金錢與銀器。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf054",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at Bednall Green in 1666, a mature clerk in a loose dressing gown carries a closed chest into a friend's plain timber doorway, morning light",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf054",
+          "text": "他把財物送到貝德納爾綠地一位朋友家。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf055",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a receiving room in England in 1666, a middle-aged writer in a linen collar stands among tightly packed household chests and bundles, soft morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf055",
+          "text": "那座房子也塞滿其他人送來的物品。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf056",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an English home in 1666, an adult diarist in a wool doublet carries a household bundle out toward the river landing, grey daylight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf056",
+          "text": "回家後，他和妻子繼續搬走剩下的東西。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf057",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a Thames landing in 1666, a grown secretary in a cloth doublet inspects a low flat wooden cargo boat moored at the bank, cloudy daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf057",
+          "text": "有人替他找來一艘搬貨用的平底船；他還讓誰的東西上船？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf058",
+      "template": "big",
+      "data": {
+        "text": "塔丘 → 碼頭",
+        "sub": "箱子由人扛送"
+      },
+      "lines": [
+        {
+          "id": "pf058",
+          "text": "箱子被扛過塔丘，送往碼頭。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf059",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a narrow London city postern in 1666, a middle-aged clerk holding a box is blocked by a dense crowd in the gate opening; stone gateway, rough uneven cobblestones underfoot, overcast light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf059",
+          "text": "人多到連穿過小門都很困難。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf060",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a Thames landing in 1666, an adult mother in a plain gown places a small cloth bundle aboard a flat wooden cargo boat, soft daylight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf060",
+          "text": "一位帶孩子的鄰居，也把少量東西放上他的船。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf061",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an English wooden landing in 1666, one adult diarist in a wool doublet carries a small wooden household crate toward a low wooden cargo rowing boat; rippling water and wooden hull fill the background, soft daylight.",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf061",
+          "text": "佩皮斯自己也扛過一些物品，沒有只坐著指揮。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf062",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an office in England in 1666, a tired mature secretary in a loose linen shirt spreads a simple quilt on the wooden floor, lamplight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf062",
+          "text": "到夜裡，夫妻倆只能在辦公室鋪被暫睡。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf063",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an English office in 1666, a middle-aged householder eats a plain cold meal beside packed wooden boxes, soft lamplight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf063",
+          "text": "廚具不在手邊，兩人吃的是前一天的剩菜。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf064",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a London walled garden in 1666, an adult clerk in a cloth coat studies large wine vessels beside a path crowded with household bundles, soft night light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf064",
+          "text": "車、船和花園都用上了；還有什麼難以搬走？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf065",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a river landing in England in 1666, a grown writer in a linen shirt carries a final wooden box toward a flat cargo boat, overcast morning light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf065",
+          "text": "九月四日一早，能搬的還在往船上送；院裡卻有酒沒有搬走。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "九月四日，兩個土坑先後挖開"
+    },
+    {
+      "id": "pf066",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in Tower Street in 1666, a mature diarist in a wool coat watches smoke approach low brick and timber houses along the narrow street, rough uneven cobblestones underfoot, muted afternoon light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf066",
+          "text": "到了下午，塔街的火已逼近幾戶房子。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf067",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an English walled garden in 1666, an older middle-aged official in a plain doublet studies heavy wine vessels beside the soil, soft afternoon light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf067",
+          "text": "鄰居巴頓爵士的酒太難搬走，便想了另一個辦法。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf068",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a London garden in 1666, an older adult official in a linen shirt lowers a wine vessel into the first open earth pit, afternoon light",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf068",
+          "text": "巴頓在院子挖第一個坑，把酒放了進去。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf069",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a garden in England in 1666, grown hands with linen cuffs place tied blank office papers beside a wine vessel in the first earth pit, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf069",
+          "text": "佩皮斯趁機，把辦公文件也放進這個土坑。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf070",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an English garden in 1666, a worried mature writer in a cloth doublet looks at tied blank papers beside the first earth pit, soft afternoon light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf070",
+          "text": "這才是第一個坑；剛才問的佩皮斯自己的酒呢？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf071",
+      "template": "shot",
+      "data": {
+        "prompt": "Waist-down medium shot in a London walled garden in 1666, two middle-aged men in wool doublets and knee breeches dig a second open earth pit apart from the first; complete wooden-handled iron spades and wine vessels, evening light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf071",
+          "text": "到了傍晚，他與潘爵士為自己的酒另挖第二個坑。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf072",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a garden in England in 1666, adult hands with linen cuffs lower a compact intact Parmesan wheel into the second earth pit beside sealed wine vessels; continuous uncut rind, loose soil, evening light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf072",
+          "text": "兩人把酒放進去；他把開場那塊起司也放進同一個坑。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf073",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an English wooden desk in 1666, a grown reader in a white collar studies an unlettered diary page beside an empty patch of desk, soft lamplight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf073",
+          "text": "這一天的日記，沒有說起司有多大、有多貴。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf074",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a London garden in 1666, a worried mature clerk in a cloth doublet watches his still-standing brick office across the garden path, evening light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf074",
+          "text": "起司暫時藏好了，辦公室卻能躲過這場火嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf075",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a walled garden in England in 1666, a middle-aged official in a long wool coat walks out toward a dark brick street, rough uneven cobblestones underfoot, smoky early night light",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf075",
+          "text": "到了夜裡，潘爵士去安排船廠工人，準備明早趕來救辦公室。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf076",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an English office in 1666, an adult diarist in a linen collar holds a quill over an entirely blank letter sheet on a plain wooden desk, lamplight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf076",
+          "text": "佩皮斯同時寫信給考文垂爵士，請求准許拆屋。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf077",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a London office in 1666, a worried grown writer in a cloth doublet looks toward a closed wooden doorway beside his empty desk, lamplight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf077",
+          "text": "但他沒有等到答覆；街上會有人先動手嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf078",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an office in England in 1666, a mature householder in a linen collar eats a plain mutton supper at a bare wooden table beside packed boxes, night lamplight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf078",
+          "text": "他與妻子、客人吃羊肩肉，桌上連餐巾都沒有。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf079",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an English garden in 1666, a middle-aged householder steps out from the supper room and looks up at the fire-lit sky; wooden table inside the doorway, night light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf079",
+          "text": "吃晚飯時，他還不時走進花園，抬頭看燃燒的天空。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf080",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in Tower Street in 1666, an adult writer in a wool coat watches a distant timber house deliberately blasted apart into a gap ahead of nearby fire, drifting smoke, rough uneven cobblestones underfoot, night light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf080",
+          "text": "夜裡，他看見塔街有人炸開火前面的屋子。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf081",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a London street corner in 1666, a grown diarist in a plain cloth coat observes a cleared gap separating nearby houses from the fire, rough uneven cobblestones underfoot, night light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf081",
+          "text": "他記下，炸屋的地方，火在那一帶停住了。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf082",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a narrow lane in England in 1666, a worried mature secretary in a linen collar watches smoke beyond the low roofs, rough uneven cobblestones underfoot, muted night light",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf082",
+          "text": "但他自己那條巷子，隔天能不能守住？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf083",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an English office in 1666, a middle-aged woman in a plain gown wakes a middle-aged householder resting on a floor quilt, predawn light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf083",
+          "text": "九月五日凌晨約兩點，妻子又把他叫醒。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "九月五日，火追到佩皮斯的巷口"
+    },
+    {
+      "id": "pf084",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a London lane in 1666, an adult clerk in a wool coat looks toward smoke beside a stone church at the foot of the lane, rough uneven cobblestones underfoot, predawn light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf084",
+          "text": "巷口教堂附近，傳來新一輪火警。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf085",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on the Thames in 1666, a grown diarist in a cloth coat sits aboard a small wooden boat with his grown wife beside him and their money bundle aboard, moonlit predawn",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf085",
+          "text": "這一次，他立刻帶著妻子和金錢，乘船沿河往下游走。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf086",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from a Thames rowboat in 1666, a mature diarist looks back toward a broad fire glow above low brick and timber roofs, moonlit predawn",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf086",
+          "text": "月光下回望，倫敦幾乎像整片都在燃燒；他還會回去嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf087",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a Woolwich home in 1666, a middle-aged secretary in a wool doublet locks a plain treasure chest in a small room with timber walls, soft morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf087",
+          "text": "他把金錢鎖在朋友家，叮囑妻子與同行者輪流看守。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf088",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on the Thames in 1666, an adult householder in a plain cloth coat sits in a small wooden boat heading back toward the smoky low city waterfront, morning light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf088",
+          "text": "然後他自己又乘船返回。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf089",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from a Deptford rowboat in 1666, a grown clerk views his household cargo still aboard a flat wooden boat with one grown watcher beside the crates, morning light",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf089",
+          "text": "返程經過德普特福德，他已看見自己的貨物在船上有人看守。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf090",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a brick street in England in 1666, a relieved mature writer in a wool doublet approaches his intact plain brick home beside drifting smoke, rough uneven cobblestones underfoot, grey daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf090",
+          "text": "他原以為房子已燒，卻看見它還站著。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf091",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an English office in 1666, a middle-aged diarist in a linen collar rests one hand on its intact wooden door, soft grey daylight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf091",
+          "text": "辦公室也沒有燒；他走近了才敢確認。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf092",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a London stone church in 1666, an adult diarist in a cloth coat studies a scorched entrance near the intact lane, grey daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf092",
+          "text": "巷口教堂的鐘面與門廊卻受了火，火才在那裡停下。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf093",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a street in England in 1666, a grown workman in a linen shirt clears fallen timber to leave an open gap ahead of distant flames, rough uneven cobblestones underfoot, daylight",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf093",
+          "text": "日記把這條街的轉機，歸於炸屋和趕來的工人。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf094",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an English lane in 1666, a mature clerk in a wool doublet looks up at the nearby stone church tower above the smoky street, rough uneven cobblestones underfoot, grey daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf094",
+          "text": "他走向巷口教堂，塔上會看見怎樣的倫敦？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf095",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from a London church tower in 1666, a middle-aged writer in a plain cloth coat looks over broad stretches of burned low buildings, soft grey daylight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf095",
+          "text": "他登上教堂塔樓，眼前是大片毀壞。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf096",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a church tower in England in 1666, a wary adult diarist descends stone stairs while distant smoke shows through a narrow window, soft daylight",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf096",
+          "text": "遠處仍在燒，他不敢在塔上久留。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf097",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on an English street in 1666, a grown diarist in knee breeches carefully steps past glowing coals scattered on the ground, rough uneven cobblestones underfoot, muted daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf097",
+          "text": "餘燼燙著腳，他們穿過街道繼續往前走。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf098",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in Moorfields in 1666, a mature resident in a wool coat guards household bundles in the foreground; a dense crowd of families and goods fills the open field behind, grey daylight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf098",
+          "text": "路上，摩爾菲爾德擠滿守著家當的逃難者。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf099",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a London street in 1666, a middle-aged diarist in a linen collar holds a small heat-warped piece of old window glass, rough uneven cobblestones underfoot, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf099",
+          "text": "佩皮斯還拾起一塊被熱烤得彎曲的玻璃。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf100",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an office doorway in England in 1666, an adult writer in a cloth doublet instructs one adult watchman beside the plain wooden door, night lamplight",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf100",
+          "text": "夜裡回到辦公室，他安排工人守夜。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf101",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside an English office in 1666, an exhausted grown diarist in a loose linen shirt sleeps on a simple floor quilt, muted night light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf101",
+          "text": "直到午夜他才躺下，終於睡得安穩一些。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf102",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a London office in 1666, a mature secretary sleeps beside a small window facing low dark timber roofs, predawn light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf102",
+          "text": "天亮以後，城裡的火真的平息了嗎？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf103",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a street in England in 1666, a middle-aged householder in a wool coat notices smoke from a fresh fire among low brick buildings, rough uneven cobblestones underfoot, daylight",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf103",
+          "text": "九月六日早上，城裡另一處又起了火。",
+          "emotion": "自然說故事"
+        }
+      ],
+      "chapter": "九月六日，佩皮斯帶人救火並卸下貨物"
+    },
+    {
+      "id": "pf104",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on an English street in 1666, an adult diarist and one adult workman in linen shirts put out a small fire as the flames subside beside timber debris, rough uneven cobblestones underfoot, morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf104",
+          "text": "佩皮斯與工人趕去，很快便把火撲滅。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf105",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from a Thames rowboat in 1666, a grown writer in a cloth coat looks over a ruined waterfront of low walls and damaged churches, overcast daylight",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf105",
+          "text": "河岸的房屋和教堂，已經大片消失。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf106",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from a Deptford rowboat in 1666, a mature diarist views cargo crates still aboard a flat wooden boat with one mature watcher standing beside them, daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf106",
+          "text": "前一天船上有人看守，可他還沒把貨物卸上岸。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf107",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a Deptford landing in 1666, a middle-aged secretary in a wool doublet directs one middle-aged porter unloading a wooden chest from the boat onto the bank, soft daylight",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf107",
+          "text": "到德普特福德，他把那些貨物卸到卡特雷特爵士那裡。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf108",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a London river landing in 1666, a relieved adult householder in a linen collar checks an unbroken wooden chest after unloading, daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf108",
+          "text": "卸貨後，他說自己沒看到缺少或損壞的東西。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf109",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a wooden desk in England in 1666, an unlettered diary page lies open beside a plain quill, soft neutral light",
+        "camera": "drift right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf109",
+          "text": "九月六日的日記裡，他寫：我們的恐懼過了。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf110",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an English wooden desk in 1666, a grown reader in a linen collar pauses over an unlettered diary page beside an empty area of desk, soft light",
+        "camera": "track left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf110",
+          "text": "那塊起司後來有沒有挖出？這幾日的條目沒有交代。",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf111",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a London walled garden in 1666, a mature householder in a cloth doublet looks into an empty second earth pit, soft evening light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pf111",
+          "text": "你若在那座院子裡，會把什麼放進第二個坑？",
+          "emotion": "自然說故事"
+        }
+      ]
+    },
+    {
+      "id": "pf112",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "一份日記，五天裡的火與選擇"
+        ]
+      },
+      "lines": [
+        {
+          "id": "pf112",
+          "text": "想聽更多從原始記錄走出的故事，訂閱奇聞檔案局。"
+        }
+      ]
+    }
+  ]
+}

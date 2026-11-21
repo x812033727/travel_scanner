@@ -1,0 +1,107 @@
+{
+  "narrative_hash": "58f61b4344022d74",
+  "script_hash": "e3cede97ec67cca83f2bbfec1de90ded2c3da48fd849540b25a50272c27d120d",
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "panel_narration_sha256": "1c6605100621c36c4132b7861c0cdeac50bb40aee6b3b997fe9f92ab876f33a8",
+  "round": 1,
+  "passed": false,
+  "answers": [
+    {
+      "id": "scene_first",
+      "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+      "required": true,
+      "yes": true,
+      "evidence": "[pf001] 一六六六年九月四日傍晚，倫敦一座院子裡，佩皮斯正在和潘爵士挖當天的第二個土坑。 pf001–pf002 place Pepys and Penn in a London yard on 4 September 1666, actively digging and depositing wine and cheese."
+    },
+    {
+      "id": "no_spoiler",
+      "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[pf005] 而他事後寫下的日記，有沒有交代那塊起司的下落？ pf003–pf005 leave the fire's reach, Pepys's house, and the cheese's fate unresolved; burial is the opening incident, not the later outcome."
+    },
+    {
+      "id": "one_line",
+      "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+      "required": true,
+      "yes": true,
+      "evidence": "[pf006] 先回到兩天前。九月二日凌晨，女僕珍妮發現城裡有火。 After the opening preview, pf006–pf100 follow Pepys and his possessions from 2 through 6 September in date order, returning once to the opening pit at pf067–pf068."
+    },
+    {
+      "id": "no_toc",
+      "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[pf006] 先回到兩天前。九月二日凌晨，女僕珍妮發現城裡有火。 pf006's '先回到兩天前' is a dated transition out of the preview; no line outlines a list of upcoming topics or chapters."
+    },
+    {
+      "id": "chapters_link",
+      "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+      "required": true,
+      "yes": false,
+      "evidence": "[pf093] 九月六日早上，城裡另一處又起了火。 pf087 asks whether the shipped boxes are safe, but the next chapter starts at pf093 with a different morning fire; the boxes are not picked up until pf097. The first sentence"
+    },
+    {
+      "id": "open_loops",
+      "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+      "required": true,
+      "yes": true,
+      "evidence": "[pf087] 他只說自家附近守住，遠處仍在燃燒；送走的箱子安全嗎？ The narration renews concrete questions or turns every 30–45 seconds, including pf010, pf015, pf021, pf027, pf037, pf046, pf054, pf061, pf070, pf076, pf080 and pf087"
+    },
+    {
+      "id": "payoffs",
+      "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+      "required": true,
+      "yes": false,
+      "evidence": "[pf033] 佩皮斯特別記下，泰晤士街有焦油，倉庫還有油、酒；自家的酒呢？ pf033 asks what happens to Pepys's own wine, but pf064–pf068 identify Barton's and Penn's pits without clearly stating whose wine enters the second pit. pf054 as"
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": true,
+      "evidence": "[pf068] 開場那塊起司，就和酒一道進了第二個坑。 The second account of the cheese's burial at pf067–pf068 explicitly calls back to the opening. Other repeated fire references mark changes over time."
+    },
+    {
+      "id": "chapters_are_events",
+      "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+      "required": false,
+      "yes": true,
+      "evidence": "[pf001] 一六六六年九月四日傍晚，倫敦一座院子裡，佩皮斯正在和潘爵士挖當天的第二個土坑。 All eight chapter titles name dated acts or findings: seeing the fire, proposing demolition, moving property, digging pits, fire reaching the lane, and "
+    },
+    {
+      "id": "outro_no_next",
+      "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+      "required": true,
+      "yes": true,
+      "evidence": "[pf102] 想聽更多從原始記錄走出的故事，訂閱奇聞檔案局。 pf102 only invites viewers to subscribe and names no next episode or subject."
+    },
+    {
+      "id": "opening_hooks",
+      "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[pf003] 火追到什麼程度，才讓他選擇院子裡的泥土？ After the burial scene, pf003, pf004 and pf005 ask three separate future questions about fire proximity, Pepys's home, and the cheese's fate."
+    },
+    {
+      "id": "one_thread",
+      "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+      "required": true,
+      "yes": true,
+      "evidence": "[pf097] 再到德普特福德，他找到先前用船送出的家當。 Pepys's response to the spreading fire and preservation of his home and possessions stays the continuous thread from pf001 through pf100."
+    },
+    {
+      "id": "no_detour",
+      "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+      "required": true,
+      "yes": false,
+      "evidence": "[pf095] 日記說，有婦人把街溝裡的水掃向火邊。 pf093–pf096 spend four beats on a separate fire, a woman sweeping gutter water, and general city ruins before returning at pf097 to the outstanding question about Pepys's sh"
+    }
+  ],
+  "failed": [
+    "chapters_link",
+    "payoffs",
+    "no_detour"
+  ],
+  "advisory": []
+}

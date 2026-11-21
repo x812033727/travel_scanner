@@ -1,0 +1,23 @@
+{
+  "base_sha256": "087ae9c4cdbb8dea3430cd505d42624e06deca0a94b77e71c49164fbbcc2f4db",
+  "new_sha256": "f02fdd2bd769e746b2e76206152492593f66cec1ea48e40a07cd7bf236aaf015",
+  "only_changed_fields": [
+    "scenes[8].data.prompt",
+    "scenes[12].data.prompt"
+  ],
+  "reversal": "Replace the two new prompt strings at the listed paths with their old strings to restore base_sha256 byte-for-byte.",
+  "changes": [
+    {
+      "path": "scenes[8].data.prompt",
+      "id": "pf009",
+      "old": "Medium shot inside a plain English bedroom before dawn on 2 September 1666, one fully grown English man in his thirties with mature facial features and dark hair lies in a narrow wooden bed under a plain blanket, wearing a loose 1660s sleeping gown, a small distant fire glow beyond the window, dim soft light",
+      "new": "Medium shot in a modest English bedroom before dawn on 2 September 1666, one adult English man in his thirties with mature facial features and a loose 1660s sleeping gown pulls a plain pale blanket over his chest while lying in a narrow wooden bed, mild indoor light on his face"
+    },
+    {
+      "path": "scenes[12].data.prompt",
+      "id": "pf013",
+      "old": "Medium-wide shot from a high stone platform of the Tower of London on the morning of 2 September 1666, one fully grown English man in his thirties with mature facial features, dark hair, a dark wool doublet and linen collar watches houses burning at the far end of the old stone-arched London Bridge, soft overcast daylight",
+      "new": "Medium-wide shot on a high stone platform at the Tower of London on the morning of 2 September 1666, one adult English man in his thirties with mature facial features, dark hair, a dark wool doublet and linen collar watches flames among distant riverside house roofs, soft grey daylight"
+    }
+  ]
+}
