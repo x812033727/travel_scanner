@@ -1,0 +1,159 @@
+{
+  "source_video_sha256": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+  "reviewer": "dyson-r5-independent-vi-th",
+  "independent": true,
+  "review_type": "TARGETED_RECHECK",
+  "role_disclosure": "本 agent 為初版 vi/th 獨立校對員，未參與翻譯或修稿。本次只對初版唯一必修項 th chapters.jyqr 的中文源文及修後泰文作 targeted 語意重讀，沒有重新宣稱全讀 140 句。使用完整 saved-before worksheet/native 與 current JSON 做遞迴結構比對，核對全部其餘欄位不變、17 個 description URL 同文同序，以及 vi/source/config/immutable blank sheets 的原 SHA；不讀 author 自校或其他 review 結論。不修改初版 FIXES_REQUIRED、saved-before 或任何 source/translation。未作時間軸、SRT、配音或影片 QA。",
+  "prior_full_review": {
+    "path": "/workspace/work/brand-story-20261025/dyson-audit/text-r5/review-vi-th.json",
+    "sha256": "b330d176beede9599149a350bbbb7a5d8c0bdb735cb12c2dd20c2a6fd2eda1cb",
+    "preserved_unchanged": true,
+    "initial_statuses": {
+      "vi": "TEXT_PASS",
+      "th": "FIXES_REQUIRED"
+    },
+    "initial_checked_lines_per_locale": 140,
+    "initial_checked_chapters_per_locale": 7
+  },
+  "locales": [
+    {
+      "locale": "vi",
+      "worksheet_sha256": "520a41cac553dec5a027454d16e3ec3f17539b2e31eccabb681d3520f74819db",
+      "translation_sha256": "7e80f6ced6b25af71ba492244dce73a9efa873c1915699c81445e82bcd42838f",
+      "status": "TEXT_PASS",
+      "checked_lines": 0,
+      "checked_chapters": 0,
+      "targeted_scope": "本次沒有重讀 vi 句文；以 worksheet/native SHA 與初版全同，承接初版完整語意 TEXT_PASS。",
+      "current_hashes_match_prior_full_review": true,
+      "description_url_count": 17,
+      "description_urls_exact_order": true,
+      "findings": [],
+      "advisory": []
+    },
+    {
+      "locale": "th",
+      "worksheet_sha256": "1f8cc8e019a252fae18a263157d7ffb1eeeb60bcbdc93a040edf1cb18afbeeb3",
+      "translation_sha256": "a61be6c805df189bb06e8d65939b4189b6d8ff0cb8cea541921a37a33c417cb4",
+      "status": "TEXT_PASS",
+      "checked_lines": 0,
+      "checked_chapters": 1,
+      "checked_chapter_ids": [
+        "jyqr"
+      ],
+      "targeted_scope": "重讀 chapters.jyqr 之源文與修後泰文；其他 140 句、6 章及全 metadata 透過完整 JSON 比對確認未變，承接初版其餘文字語意審讀。",
+      "resolved_findings": [
+        {
+          "target": "chapters.jyqr",
+          "source": "圖面之外，還缺資金和組裝的人",
+          "before": "นอกเหนือจากแบบ ยังขาดทุนและคนประกอบ",
+          "current": "นอกเหนือจากแบบ ยังขาดเงินทุนและคนประกอบ",
+          "original_proposal_applied_exactly": true,
+          "result": "RESOLVED",
+          "reason": "「ขาดเงินทุน」準確表達還缺資金；刪除「ขาดทุน」所帶來的虧損誤義。",
+          "required": false
+        }
+      ],
+      "worksheet_json_differences": [
+        {
+          "path": ".chapters[5].text",
+          "before": "นอกเหนือจากแบบ ยังขาดทุนและคนประกอบ",
+          "after": "นอกเหนือจากแบบ ยังขาดเงินทุนและคนประกอบ"
+        }
+      ],
+      "native_json_differences": [
+        {
+          "path": ".chapters.jyqr",
+          "before": "นอกเหนือจากแบบ ยังขาดทุนและคนประกอบ",
+          "after": "นอกเหนือจากแบบ ยังขาดเงินทุนและคนประกอบ"
+        }
+      ],
+      "only_expected_chapter_text_changed": true,
+      "all_other_json_equal_saved_before": true,
+      "native_text_matches_current_worksheet": true,
+      "description_url_count": 17,
+      "description_urls_exact_order": true,
+      "description_urls": [
+        "https://mastersofscale.com/tinker-your-way-to-scale/",
+        "https://fortune.com/2017/09/09/james-dyson-vacuum/",
+        "https://www.gizmodo.jp/article/dyson_g-force_vs_digital_slim/",
+        "https://www.davidsenra.com/episode/james-dyson",
+        "https://www.dyson.co.uk/james-dyson",
+        "https://designmattersmedia.com/podcast/best-of-design-matters-james-dyson/",
+        "https://oro.open.ac.uk/28441/1/CaseStudiesOfCreativity2.pdf",
+        "https://www.dyson.co.uk/james-dyson/invention-a-life/05",
+        "https://www.ipo.gov.uk/t-challenge-decision-results/o29502.pdf",
+        "https://collection.sciencemuseumgroup.org.uk/objects/co482354/cyclon-vacuum-cleaner-model-1000",
+        "https://ottimo-d.com/en/about",
+        "https://api.vam.ac.uk/v2/museumobject/O146046",
+        "https://www.dyson.co.uk/james-dyson/invention-a-life/06",
+        "https://collection.sciencemuseumgroup.org.uk/objects/co8654823/g-force-cyclonic-vacuum-cleaner",
+        "https://www.mplus.org.hk/en/collection/objects/alco-g-force-vacuum-cleaner-2016537/",
+        "https://patentimages.storage.googleapis.com/d6/ec/c9/673897e0dd98f3/US4373228.pdf",
+        "https://patentimages.storage.googleapis.com/07/a3/98/019e5db00f9c1c/US4593429.pdf"
+      ],
+      "saved_before": {
+        "worksheet_path": "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-review-history/th/worksheet-before.json",
+        "worksheet_sha256": "a4bb02fba0ca499f8a357cd59d2b1a850e8b53043f6b2e402421145aad5609db",
+        "translation_path": "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-review-history/th/translation-before.json",
+        "translation_sha256": "95176dfd0b8e2d5beff58f98057ec7a189f3082426665b8242f3b7176a7c2a26",
+        "matches_initial_review_sha256": true,
+        "preserved_unchanged": true
+      },
+      "findings": [],
+      "advisory": []
+    }
+  ],
+  "source_binding": {
+    "source_unchanged_from_initial_full_review": true,
+    "runtime_and_repo_source_video_sha256_match_config": true,
+    "canonical_runtime_script_matches_config": true,
+    "worksheet_source_unchanged": true,
+    "immutable_blank_source_sheets_unchanged": true
+  },
+  "protected_inputs": {
+    "before": {
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/video.json": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/video.json": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/script.md": "c38843d68985ead0fcb7699fab05cd7cf6d721f28e77f5f22b5f2706a30fadda",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/claims.md": "9ed03fdd748dcec3833aad4f1dc97fae9a86c1e0d0cfd9824cf273de06e6cfe6",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/series.json": "4d8e4a15609ebab41ae1fa40f2d80fb58b8e76748e2bd7afdcc1e4acee0a5f7a",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/script.md": "9b12496ce23ab1e862391a44cad9fb05eaf99e3cd8ca948fa273c676e6f72b85",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/claims.md": "9ed03fdd748dcec3833aad4f1dc97fae9a86c1e0d0cfd9824cf273de06e6cfe6",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/series.json": "4d8e4a15609ebab41ae1fa40f2d80fb58b8e76748e2bd7afdcc1e4acee0a5f7a",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/text-current.json": "f72a7532e946f9de404f21d8761aa4b723bff5723dc3964f725946e5129da85d",
+      "/workspace/work/brand-story-20261025/media/story-dyson-japan-first-20261021-remake-20261025/i18n/vi.todo.json": "520a41cac553dec5a027454d16e3ec3f17539b2e31eccabb681d3520f74819db",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/i18n/vi.json": "7e80f6ced6b25af71ba492244dce73a9efa873c1915699c81445e82bcd42838f",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-source-sheets/vi.json": "3e4ee5037045726aef6c99ed2ba22051453283af00a1f664002b746dabb41dd4",
+      "/workspace/work/brand-story-20261025/media/story-dyson-japan-first-20261021-remake-20261025/i18n/th.todo.json": "1f8cc8e019a252fae18a263157d7ffb1eeeb60bcbdc93a040edf1cb18afbeeb3",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/i18n/th.json": "a61be6c805df189bb06e8d65939b4189b6d8ff0cb8cea541921a37a33c417cb4",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-source-sheets/th.json": "06371f6cf8d9b6b4f1ba131d3582e1f2da11f411a0d7caaeb24d03558d0a6350",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/review-vi-th.json": "b330d176beede9599149a350bbbb7a5d8c0bdb735cb12c2dd20c2a6fd2eda1cb",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-review-history/th/worksheet-before.json": "a4bb02fba0ca499f8a357cd59d2b1a850e8b53043f6b2e402421145aad5609db",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-review-history/th/translation-before.json": "95176dfd0b8e2d5beff58f98057ec7a189f3082426665b8242f3b7176a7c2a26"
+    },
+    "after": {
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/video.json": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/video.json": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/script.md": "c38843d68985ead0fcb7699fab05cd7cf6d721f28e77f5f22b5f2706a30fadda",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/claims.md": "9ed03fdd748dcec3833aad4f1dc97fae9a86c1e0d0cfd9824cf273de06e6cfe6",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/series.json": "4d8e4a15609ebab41ae1fa40f2d80fb58b8e76748e2bd7afdcc1e4acee0a5f7a",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/script.md": "9b12496ce23ab1e862391a44cad9fb05eaf99e3cd8ca948fa273c676e6f72b85",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/claims.md": "9ed03fdd748dcec3833aad4f1dc97fae9a86c1e0d0cfd9824cf273de06e6cfe6",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/series.json": "4d8e4a15609ebab41ae1fa40f2d80fb58b8e76748e2bd7afdcc1e4acee0a5f7a",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/text-current.json": "f72a7532e946f9de404f21d8761aa4b723bff5723dc3964f725946e5129da85d",
+      "/workspace/work/brand-story-20261025/media/story-dyson-japan-first-20261021-remake-20261025/i18n/vi.todo.json": "520a41cac553dec5a027454d16e3ec3f17539b2e31eccabb681d3520f74819db",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/i18n/vi.json": "7e80f6ced6b25af71ba492244dce73a9efa873c1915699c81445e82bcd42838f",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-source-sheets/vi.json": "3e4ee5037045726aef6c99ed2ba22051453283af00a1f664002b746dabb41dd4",
+      "/workspace/work/brand-story-20261025/media/story-dyson-japan-first-20261021-remake-20261025/i18n/th.todo.json": "1f8cc8e019a252fae18a263157d7ffb1eeeb60bcbdc93a040edf1cb18afbeeb3",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/i18n/th.json": "a61be6c805df189bb06e8d65939b4189b6d8ff0cb8cea541921a37a33c417cb4",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-source-sheets/th.json": "06371f6cf8d9b6b4f1ba131d3582e1f2da11f411a0d7caaeb24d03558d0a6350",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/review-vi-th.json": "b330d176beede9599149a350bbbb7a5d8c0bdb735cb12c2dd20c2a6fd2eda1cb",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-review-history/th/worksheet-before.json": "a4bb02fba0ca499f8a357cd59d2b1a850e8b53043f6b2e402421145aad5609db",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-review-history/th/translation-before.json": "95176dfd0b8e2d5beff58f98057ec7a189f3082426665b8242f3b7176a7c2a26"
+    },
+    "all_unchanged_during_targeted_recheck": true,
+    "note": "TH current worksheet/native 相對初版僅有上列單一章名 text 修正；本次 targeted recheck 期間 18 個 protected 檔案仍同 SHA。初版報告及 saved-before 均納入防護。"
+  },
+  "remaining_required_fix_count": 0,
+  "semantic_scope": "本次是 targeted 語意重核；以修正項通過及其餘 JSON/SHA 未變，承接初版完整審讀結果。TEXT_PASS 不涵蓋時間軸、SRT、配音或影片 QA。"
+}

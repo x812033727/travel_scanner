@@ -1,0 +1,520 @@
+{
+  "schema_version": "c08-original-material-expansion-research-v1",
+  "prepared_at_utc": "2026-10-25T21:39:42.998681+00:00",
+  "researcher": "/root/c05_r3_source_delta",
+  "status": "RESEARCH_ONLY_SCOPE_LIMITED_NOT_SCRIPT_OR_SOURCE_APPROVAL",
+  "baseline": {
+    "revision": "frozen R4 only",
+    "input_sha256": {
+      "video.json": "1ffd0235458af16c85bd2e62e8e4d55cb4b96abf89e5c0240b0ee7ef2462de6f",
+      "script.md": "2222d15b789379c1742890a881d63c1b2aeb2822b269d46dce82213da8a1308f",
+      "narration-only.json": "a55cf360762f776658082e4dc079f44273fd8172287360e2f673d253a0e9ee04",
+      "claims.json": "b647932b55eaa1465ccbefd90dd202e7c16a489781a190b14f57c283b1e1a809"
+    },
+    "source_report_sha256": "ef3a89dfa7dec6042f17703c412de1076af93b5e856d8e6bc2e1052976abd4ec",
+    "current_R5_Chinese_read": false,
+    "blind_or_narrative_files_read": false
+  },
+  "promise": "從一滴的出液到放手、下一次再倒及末段保存；不把數個世代拼成同一瓶。",
+  "capacity": {
+    "status": "HOLD_FOR_700_1000_UNITS_ON_STRICT_PRODUCT_MAPPED_ROUTE",
+    "direct_route_estimate": {
+      "min": 270,
+      "max": 375
+    },
+    "conditional_distinct_prototype_case_estimate": {
+      "min": 450,
+      "max": 600
+    },
+    "conditional_combined_estimate": {
+      "min": 720,
+      "max": 975
+    },
+    "conditional_requirement": "Only if the author explicitly adopts a distinct applicant-reported 500mL film-container prototype case. Do not insert it as the actual 2010/2011 marketed-product development chain.",
+    "not_actual_units": true,
+    "not_runtime_evidence": true,
+    "not_ready_for_narrative_or_media_admission": true,
+    "rule": "Only distinct new action/result blocks count; report length, citation text, repeated valve recaps, height lists, corporate chronology and recycling do not count."
+  },
+  "claims": [
+    {
+      "id": "C08X01",
+      "status": "SOURCE_SUPPORTED_RESEARCH_ONLY_NOT_NARRATION_PASS",
+      "claim": "2025 年公司訪談回述：1966 年曾販售生醬油，保鮮難，後來未普及而停售；受訪者另以不確定語氣提到當年口味偏好差異。",
+      "new_scene_action": "用原訪談頁或匿名早期生醬油容器示意，呈現「曾供應→保鮮難題仍在→停售」的一次先前嘗試；不指定未取得的原包裝。",
+      "answers_previous_question": "只改好倒的嘴尖後，為何還需要另一種密封容器？",
+      "new_result": "早一次生醬油商品化並未自然解決存放鮮度，為後來容器問題提供具體前例。",
+      "suggested_insertion": "R4 c8r10321 轉入 c8r10401 前後；不得稱 1961 玻璃瓶導致該次停售。",
+      "product_and_time_scope": "1966 事件由 2025 具名公司受訪者回顧，非 1966 同期實驗。",
+      "not_supported": [
+        "沒有 1966 原包裝、銷售帳或停售日期。",
+        "不能說保鮮是唯一停售原因、1966 所有使用者不喜歡生醬油，或某款具名瓶體失效。",
+        "不能把恩田友貴寫成 1966 或 2010/2011 原開發負責人。"
+      ],
+      "evidence": [
+        {
+          "source_id": "K7",
+          "url": "https://www.kikkoman.com/jp/info/assets/250527_story.pdf",
+          "status": 200,
+          "raw_path": "/workspace/work/brand-story-20261025/c08-audit/length-research/K7-fetched.pdf",
+          "raw_sha256": "497d551c90b9365800877d8d606bfd9958945b91594657535b19bce7797b9c6e",
+          "locator": "PDF p3, 1966 paragraph",
+          "pdf_page": 3,
+          "exact_short_quote": "実は1966年、キッコーマンで生しょうゆを販売したことがあり",
+          "quote_sha256": "009a627623930d72599c5fffb3bb1ef4e2712111eddbf5da1406d17d7f2b9e65",
+          "extracted_page_sha256": "d2b91cd078796467c35a9f53d267c8f65213b27d8e3c6252926710d49bf5ce58",
+          "quote_normalized_whitespace_only_match": true
+        },
+        {
+          "source_id": "K7",
+          "url": "https://www.kikkoman.com/jp/info/assets/250527_story.pdf",
+          "status": 200,
+          "raw_path": "/workspace/work/brand-story-20261025/c08-audit/length-research/K7-fetched.pdf",
+          "raw_sha256": "497d551c90b9365800877d8d606bfd9958945b91594657535b19bce7797b9c6e",
+          "locator": "PDF p3, same paragraph",
+          "pdf_page": 3,
+          "exact_short_quote": "どうしても鮮度を保つのが難しくて",
+          "quote_sha256": "966085478e190feee0483e2bd8e9b17e2e00172a609f98fe757accaf1abcff2a",
+          "extracted_page_sha256": "d2b91cd078796467c35a9f53d267c8f65213b27d8e3c6252926710d49bf5ce58",
+          "quote_normalized_whitespace_only_match": true
+        }
+      ],
+      "estimated_additional_effective_units": {
+        "min": 70,
+        "max": 100,
+        "method": "Editorial capacity estimate for a compact nonrepetitive event block, not drafted Chinese, measured spoken units or TTS duration."
+      },
+      "route": "direct_current_or_historical_route",
+      "r4_novelty": "Action/result absent from frozen R4 narration; existing source source is not counted as new merely for being reread."
+    },
+    {
+      "id": "C08X02",
+      "status": "SOURCE_SUPPORTED_RESEARCH_ONLY_NOT_NARRATION_PASS",
+      "claim": "公司 2025 訪談說主流 450mL 款的設計考慮握持貼合，以及放桌上時不擋小孩視線；受訪者說從當時開發者聽說，控出量曾反覆試作。",
+      "new_scene_action": "匿名當代開發者把普通 450mL 尺度模型交到手中，再放回有座位視線的餐桌；只表達設計目標。",
+      "answers_previous_question": "容器變大後，除了密封，如何在手裡及桌上接續使用？",
+      "new_result": "握持和桌面視線形成新限制，讓量的增加不只剩容量數字。",
+      "suggested_insertion": "R4 c8r10527 的 2018 PET 交代之後、c8r10601 現行 450mL FAQ 之前，另明示 2025 訪談回述。",
+      "product_and_time_scope": "2025 訪談所述主流 450mL 類型，非 1961 150mL 玻璃或 2011 首款 200mL；未確定其每項設計目標始於 2018。",
+      "not_supported": [
+        "沒有尺寸、公差、兒童身高、實測成功率或人體測試名冊。",
+        "誰都好握是公司設計目標，不是保證所有人的實證結果。",
+        "不可把本人聽聞的試作說成他親手做、某項固定模型數或現行每款共用。"
+      ],
+      "evidence": [
+        {
+          "source_id": "K7",
+          "url": "https://www.kikkoman.com/jp/info/assets/250527_story.pdf",
+          "status": 200,
+          "raw_path": "/workspace/work/brand-story-20261025/c08-audit/length-research/K7-fetched.pdf",
+          "raw_sha256": "497d551c90b9365800877d8d606bfd9958945b91594657535b19bce7797b9c6e",
+          "locator": "PDF p3, 200ml/450ml paragraph",
+          "pdf_page": 3,
+          "exact_short_quote": "容器を持ったときのフィット感",
+          "quote_sha256": "9d636632c27560bce58f4e1992684681839382d37885db66bcaa5290ef6eb55e",
+          "extracted_page_sha256": "d2b91cd078796467c35a9f53d267c8f65213b27d8e3c6252926710d49bf5ce58",
+          "quote_normalized_whitespace_only_match": true
+        },
+        {
+          "source_id": "K7",
+          "url": "https://www.kikkoman.com/jp/info/assets/250527_story.pdf",
+          "status": 200,
+          "raw_path": "/workspace/work/brand-story-20261025/c08-audit/length-research/K7-fetched.pdf",
+          "raw_sha256": "497d551c90b9365800877d8d606bfd9958945b91594657535b19bce7797b9c6e",
+          "locator": "PDF p3, same paragraph",
+          "pdf_page": 3,
+          "exact_short_quote": "テーブルの上に置いたときにお子さんの視界を邪魔しない大きさ",
+          "quote_sha256": "5c69dc79768e249ae9d8eeb5aaf6ba1ee5a48eaa659536d5f1e3c71b17922ae3",
+          "extracted_page_sha256": "d2b91cd078796467c35a9f53d267c8f65213b27d8e3c6252926710d49bf5ce58",
+          "quote_normalized_whitespace_only_match": true
+        }
+      ],
+      "estimated_additional_effective_units": {
+        "min": 65,
+        "max": 90,
+        "method": "Editorial capacity estimate for a compact nonrepetitive event block, not drafted Chinese, measured spoken units or TTS duration."
+      },
+      "route": "direct_current_or_historical_route",
+      "r4_novelty": "Action/result absent from frozen R4 narration; existing source source is not counted as new merely for being reread."
+    },
+    {
+      "id": "C08X03",
+      "status": "SOURCE_SUPPORTED_RESEARCH_ONLY_NOT_NARRATION_PASS",
+      "claim": "另一份原專利記載，試作小型一體成形逆止閥時，衝擊可能把鉸接小閥蓋擠入筒內，影響逆止與出液；方案在小蓋側面加入與開口邊緣相接的凸部，抑制陷入。",
+      "new_scene_action": "原公報圖8比較件和圖1/2的凸部並列；匿名放大閥模型展示小蓋陷入與凸部擋住的不同位置。",
+      "answers_previous_question": "有閥擋空氣，是否就一定能繼續倒？",
+      "new_result": "讓小蓋關上之外，還要避免它在衝擊時整個掉入流道；出液與密封是同時要守的兩件事。",
+      "suggested_insertion": "僅在明確採用「另一份軟膜原型試驗」材料段時，放在軟袋問題後。標出 2012 B2 文獻身分；不得假稱 2010→2011 的實際開發下一步。",
+      "product_and_time_scope": "JP5053463B2 中的軟膜容器／橡膠鉸接逆止閥原型；持有人龜甲萬、旭化成パックス、三笠産業。原件有申請人記載的實施例與比較例，不等同已證實某上市款或工廠量產。",
+      "not_supported": [
+        "尚無可信原件把此方案或測試樣品直接對應 2010 500mL 上市軟袋；不可補上該商品名、上市年、包裝或成功量產結論。",
+        "不是後期 JP5727888 的軸向滑動閥，也不是 1961 玻璃嘴尖、2011 200mL 擠壓瓶或現行 450mL PET 的通用剖面。",
+        "原文效能與試驗均歸申請人記載；不是本片重做試驗或獨立驗證。",
+        "凸部不是瓶口外蓋、螺牙或現行 PET 內袋接點。",
+        "不得把優選幾何當全球通用尺寸，或由一個設計差別推斷所有強度改善均只由它造成。"
+      ],
+      "evidence": [
+        {
+          "source_id": "P505",
+          "url": "https://patentimages.storage.googleapis.com/a6/55/2c/482700e814f5a7/JP5053463B2.pdf",
+          "status": 200,
+          "raw_path": "/workspace/work/brand-story-20261025/c08-audit/length-research/P505-fetched.pdf",
+          "raw_sha256": "35a25cc4e607b5aac47abea5659369288d716a7b72b216a215e79957f64ee89f",
+          "locator": "PDF p2 [0005–0006]",
+          "pdf_page": 2,
+          "exact_short_quote": "蓋部５３が筒状の本体部５１の内部に入り込んでしまい",
+          "quote_sha256": "99b0b7ca8b1eb21e09c7ccd6d745ce0a89d76a58736b5b390a8c3b3101aba785",
+          "extracted_page_sha256": "64d1dad1d1d6191b3cb7c7c8993bb767daa7e81d057d6cc4abb648a76b058077",
+          "quote_normalized_whitespace_only_match": true
+        },
+        {
+          "source_id": "P505",
+          "url": "https://patentimages.storage.googleapis.com/a6/55/2c/482700e814f5a7/JP5053463B2.pdf",
+          "status": 200,
+          "raw_path": "/workspace/work/brand-story-20261025/c08-audit/length-research/P505-fetched.pdf",
+          "raw_sha256": "35a25cc4e607b5aac47abea5659369288d716a7b72b216a215e79957f64ee89f",
+          "locator": "PDF p5 [0028]",
+          "pdf_page": 5,
+          "exact_short_quote": "蓋部３の側面３ｂに突出部３ａを設けたことで",
+          "quote_sha256": "0be7432939efa931d2958c7543ccbe96aacffdaef57cf0f11fa9c94d356aa7df",
+          "extracted_page_sha256": "1304154a2f1d47b0a1ecae599ad7c89b470afa9b713dc54f457bf328f00e9b38",
+          "quote_normalized_whitespace_only_match": true
+        }
+      ],
+      "estimated_additional_effective_units": {
+        "min": 110,
+        "max": 150,
+        "method": "Editorial capacity estimate for a compact nonrepetitive event block, not drafted Chinese, measured spoken units or TTS duration."
+      },
+      "route": "conditional_distinct_prototype_case",
+      "r4_novelty": "Action/result absent from frozen R4 narration; existing source source is not counted as new merely for being reread."
+    },
+    {
+      "id": "C08X04",
+      "status": "SOURCE_SUPPORTED_RESEARCH_ONLY_NOT_NARRATION_PASS",
+      "claim": "公報記載一體成形後，用內部加壓切開圓弧部分、保留直線鉸接區，使小蓋能翻動；實施例 1–5 及比較例 1 的逆止閥依此製作。",
+      "new_scene_action": "匿名試製台依公報圖形展示成形件，向內供氣，使圓弧連接部分分開、直線鉸接區保留；可改用公報原圖避免偽造歷史設備。",
+      "answers_previous_question": "要做會開又會關的小蓋，是把蓋子另外裝上去嗎？",
+      "new_result": "原文件記載的製作動作是保留一小段相連，並非只談抽象單向閥功能。",
+      "suggested_insertion": "接 C08X03 的幾何問題後、試驗前；全段維持同一 P505 原型標識。",
+      "product_and_time_scope": "JP5053463B2 中的軟膜容器／橡膠鉸接逆止閥原型；持有人龜甲萬、旭化成パックス、三笠産業。原件有申請人記載的實施例與比較例，不等同已證實某上市款或工廠量產。",
+      "not_supported": [
+        "尚無可信原件把此方案或測試樣品直接對應 2010 500mL 上市軟袋；不可補上該商品名、上市年、包裝或成功量產結論。",
+        "不是後期 JP5727888 的軸向滑動閥，也不是 1961 玻璃嘴尖、2011 200mL 擠壓瓶或現行 450mL PET 的通用剖面。",
+        "原文效能與試驗均歸申請人記載；不是本片重做試驗或獨立驗證。",
+        "不提供空氣壓力值、切割設備規格或當年工廠產速；不可自補刀具或確稱所有量產閥採此法。",
+        "原件也記載離型／材性取捨，但不再堆硬度、伸長率、加熱溫度或多模穴數來湊時長。"
+      ],
+      "evidence": [
+        {
+          "source_id": "P505",
+          "url": "https://patentimages.storage.googleapis.com/a6/55/2c/482700e814f5a7/JP5053463B2.pdf",
+          "status": 200,
+          "raw_path": "/workspace/work/brand-story-20261025/c08-audit/length-research/P505-fetched.pdf",
+          "raw_sha256": "35a25cc4e607b5aac47abea5659369288d716a7b72b216a215e79957f64ee89f",
+          "locator": "PDF p7, continuation of [0038] cutting process",
+          "pdf_page": 7,
+          "exact_short_quote": "円弧状部分Ｒのみを切断することができる",
+          "quote_sha256": "0e9e42d1e7a164ae81f0c2448aec003732fbdd7fc555454805e425dccbf00b8a",
+          "extracted_page_sha256": "8f8b00f42857b93279999bcc10a9662a50f440170f18f04d3c05a15e5b9ebcbf",
+          "quote_normalized_whitespace_only_match": true
+        },
+        {
+          "source_id": "P505",
+          "url": "https://patentimages.storage.googleapis.com/a6/55/2c/482700e814f5a7/JP5053463B2.pdf",
+          "status": 200,
+          "raw_path": "/workspace/work/brand-story-20261025/c08-audit/length-research/P505-fetched.pdf",
+          "raw_sha256": "35a25cc4e607b5aac47abea5659369288d716a7b72b216a215e79957f64ee89f",
+          "locator": "PDF p9 [0056], actual example preparation",
+          "pdf_page": 9,
+          "exact_short_quote": "ヒンジ部となる直線状部分以外の部分を円弧状に切断し",
+          "quote_sha256": "a846f58de531d7370a0a237067b42938d8606619341890c2667880f43ee9e6dc",
+          "extracted_page_sha256": "afc2155f619cf1d71e2392339d96cb2560a7e441353109aa681df183dfe8c220",
+          "quote_normalized_whitespace_only_match": true
+        }
+      ],
+      "estimated_additional_effective_units": {
+        "min": 70,
+        "max": 90,
+        "method": "Editorial capacity estimate for a compact nonrepetitive event block, not drafted Chinese, measured spoken units or TTS duration."
+      },
+      "route": "conditional_distinct_prototype_case",
+      "r4_novelty": "Action/result absent from frozen R4 narration; existing source source is not counted as new merely for being reread."
+    },
+    {
+      "id": "C08X05",
+      "status": "SOURCE_SUPPORTED_RESEARCH_ONLY_NOT_NARRATION_PASS",
+      "claim": "公報把 500mL 醬油裝入實施例 1 原型後做靜置試驗，每條件五個樣品。12、24、36、48 小時的觀察點未見空氣混入且出液良好；120 小時後仍未見空氣混入，卻因閥蓋與開口接觸處少量醬油固化，傾斜時不自然出液。",
+      "new_scene_action": "原公報表3配匿名五個軟膜樣品；時間前後重點只放「未見空氣」與「能否自然倒出」兩欄的分歧。",
+      "answers_previous_question": "擋住空氣，是否就等於隔幾天再拿也能倒？",
+      "new_result": "同一個試驗中密封觀察與出液結果分開了：五天仍未見空氣，卻已倒不出，增加真正的新阻力。",
+      "suggested_insertion": "接 C08X04 後；若只取一組原型結果，優先保留這組而非重講已用的殘液回吸構造。",
+      "product_and_time_scope": "JP5053463B2 中的軟膜容器／橡膠鉸接逆止閥原型；持有人龜甲萬、旭化成パックス、三笠産業。原件有申請人記載的實施例與比較例，不等同已證實某上市款或工廠量產。",
+      "not_supported": [
+        "尚無可信原件把此方案或測試樣品直接對應 2010 500mL 上市軟袋；不可補上該商品名、上市年、包裝或成功量產結論。",
+        "不是後期 JP5727888 的軸向滑動閥，也不是 1961 玻璃嘴尖、2011 200mL 擠壓瓶或現行 450mL PET 的通用剖面。",
+        "原文效能與試驗均歸申請人記載；不是本片重做試驗或獨立驗證。",
+        "空氣混入是目視判斷，不是測到零氧；未做微生物、食品安全、90/120 天保存或現行產品耐久認證。",
+        "120 小時是這組試驗結果，不可寫為所有生醬油五天必堵、冷藏造成、或實際市售軟袋普遍故障。",
+        "45° 是原件出液評價方法，非 1961 嘴尖的角度。"
+      ],
+      "evidence": [
+        {
+          "source_id": "P505",
+          "url": "https://patentimages.storage.googleapis.com/a6/55/2c/482700e814f5a7/JP5053463B2.pdf",
+          "status": 200,
+          "raw_path": "/workspace/work/brand-story-20261025/c08-audit/length-research/P505-fetched.pdf",
+          "raw_sha256": "35a25cc4e607b5aac47abea5659369288d716a7b72b216a215e79957f64ee89f",
+          "locator": "PDF p9 [0058], evaluation method",
+          "pdf_page": 9,
+          "exact_short_quote": "空気の混入の有無は目視により判断し",
+          "quote_sha256": "54b36a36619bf0a955bacb722ac6e05f3073d6dd882b5f2857e8dee79445e795",
+          "extracted_page_sha256": "afc2155f619cf1d71e2392339d96cb2560a7e441353109aa681df183dfe8c220",
+          "quote_normalized_whitespace_only_match": true
+        },
+        {
+          "source_id": "P505",
+          "url": "https://patentimages.storage.googleapis.com/a6/55/2c/482700e814f5a7/JP5053463B2.pdf",
+          "status": 200,
+          "raw_path": "/workspace/work/brand-story-20261025/c08-audit/length-research/P505-fetched.pdf",
+          "raw_sha256": "35a25cc4e607b5aac47abea5659369288d716a7b72b216a215e79957f64ee89f",
+          "locator": "PDF p10 [0061–0062], 500mL/conditions/n",
+          "pdf_page": 10,
+          "exact_short_quote": "５つの検体について、それぞれの条件下で試験を行った",
+          "quote_sha256": "d43e2c710947071e5448bbabb2568ad62587d5d5cb2277c7371793868538e886",
+          "extracted_page_sha256": "fa7b7083c055dde7d776bd656ec61b296e9242c4d88628349270109faf1b652a",
+          "quote_normalized_whitespace_only_match": true
+        },
+        {
+          "source_id": "P505",
+          "url": "https://patentimages.storage.googleapis.com/a6/55/2c/482700e814f5a7/JP5053463B2.pdf",
+          "status": 200,
+          "raw_path": "/workspace/work/brand-story-20261025/c08-audit/length-research/P505-fetched.pdf",
+          "raw_sha256": "35a25cc4e607b5aac47abea5659369288d716a7b72b216a215e79957f64ee89f",
+          "locator": "PDF p11 [0064] and Table3",
+          "pdf_page": 11,
+          "exact_short_quote": "１２０時間（５日）経過後、空気の混入は見られなかったが",
+          "quote_sha256": "d19156d3c1e4608cca6af66e518d3c1ffd49748bb43da6a06f3265e018d151ba",
+          "extracted_page_sha256": "8b980da79911925d4e6d398784abd24627e8a327acc158a24d63805e69902fac",
+          "quote_normalized_whitespace_only_match": true
+        }
+      ],
+      "estimated_additional_effective_units": {
+        "min": 130,
+        "max": 170,
+        "method": "Editorial capacity estimate for a compact nonrepetitive event block, not drafted Chinese, measured spoken units or TTS duration."
+      },
+      "route": "conditional_distinct_prototype_case",
+      "r4_novelty": "Action/result absent from frozen R4 narration; existing source source is not counted as new merely for being reread."
+    },
+    {
+      "id": "C08X06",
+      "status": "SOURCE_SUPPORTED_RESEARCH_ONLY_NOT_NARRATION_PASS",
+      "claim": "同一實施例 1 原型的另組落下試驗，每條件五個樣品；不裝外蓋時底部向下一次、裝外蓋時先底部一次再側面一次。表列 80、120、140cm 的試驗皆未見空氣且出液良好；160cm 小閥蓋陷入、出現空氣且無法自然倒出，但直到160cm 的各試驗未見內容物漏出。",
+      "new_scene_action": "公報表4/5與相應軟膜原型圖；畫面分清外蓋、小逆止閥蓋與樣品方向，呈現「外面沒漏、內部功能已失效」的結果。",
+      "answers_previous_question": "瓶袋外面沒有醬油漏出，能否判定裡面仍正常？",
+      "new_result": "目視外部漏液不能代替密封和出液兩項檢查；這是試驗明記的結果，不是作者加的可靠度口號。",
+      "suggested_insertion": "可接 C08X05，兩項獨立測試各只交代一個新結果；若節奏不足宜二選一，不將高度列表逐級口播。",
+      "product_and_time_scope": "JP5053463B2 中的軟膜容器／橡膠鉸接逆止閥原型；持有人龜甲萬、旭化成パックス、三笠産業。原件有申請人記載的實施例與比較例，不等同已證實某上市款或工廠量產。",
+      "not_supported": [
+        "尚無可信原件把此方案或測試樣品直接對應 2010 500mL 上市軟袋；不可補上該商品名、上市年、包裝或成功量產結論。",
+        "不是後期 JP5727888 的軸向滑動閥，也不是 1961 玻璃嘴尖、2011 200mL 擠壓瓶或現行 450mL PET 的通用剖面。",
+        "原文效能與試驗均歸申請人記載；不是本片重做試驗或獨立驗證。",
+        "不是現行款 140cm 耐摔保證；沒有試驗地板材質、落姿控制誤差或統計外推依據。",
+        "兩種有蓋／無蓋程序不同，不能說只改外蓋做完全相同的一次落下。",
+        "120cm 連續5/10次另有兩樣品結果，但同屬衝擊失效，不另算新增容量。",
+        "高度結果只限表列測試點，不推成全部低於140cm姿勢、地面或跌落條件的連續保證。"
+      ],
+      "evidence": [
+        {
+          "source_id": "P505",
+          "url": "https://patentimages.storage.googleapis.com/a6/55/2c/482700e814f5a7/JP5053463B2.pdf",
+          "status": 200,
+          "raw_path": "/workspace/work/brand-story-20261025/c08-audit/length-research/P505-fetched.pdf",
+          "raw_sha256": "35a25cc4e607b5aac47abea5659369288d716a7b72b216a215e79957f64ee89f",
+          "locator": "PDF p11 [0065–0068] and Tables4/5",
+          "pdf_page": 11,
+          "exact_short_quote": "落下高さ１４０ｃｍまでは、全ての検体において空気の混入はなかった",
+          "quote_sha256": "190c172eb523e784f4ea92985011b5885d963b234b474a79576179ee53a3ab3d",
+          "extracted_page_sha256": "8b980da79911925d4e6d398784abd24627e8a327acc158a24d63805e69902fac",
+          "quote_normalized_whitespace_only_match": true
+        },
+        {
+          "source_id": "P505",
+          "url": "https://patentimages.storage.googleapis.com/a6/55/2c/482700e814f5a7/JP5053463B2.pdf",
+          "status": 200,
+          "raw_path": "/workspace/work/brand-story-20261025/c08-audit/length-research/P505-fetched.pdf",
+          "raw_sha256": "35a25cc4e607b5aac47abea5659369288d716a7b72b216a215e79957f64ee89f",
+          "locator": "PDF p12 continuation [0068]",
+          "pdf_page": 12,
+          "exact_short_quote": "内容物の漏れは、落下高さ１６０ｃｍまでの各試験において観察されなかった",
+          "quote_sha256": "84d933d121274d78fdb80acb8dc27a901cecdebb691b59832e0cebc4595a4a9b",
+          "extracted_page_sha256": "83398f25913844bb5aa222888126b22adbd70495df6cc79d69f0e19ece603b1d",
+          "quote_normalized_whitespace_only_match": true
+        }
+      ],
+      "estimated_additional_effective_units": {
+        "min": 140,
+        "max": 190,
+        "method": "Editorial capacity estimate for a compact nonrepetitive event block, not drafted Chinese, measured spoken units or TTS duration."
+      },
+      "route": "conditional_distinct_prototype_case",
+      "r4_novelty": "Action/result absent from frozen R4 narration; existing source source is not counted as new merely for being reread."
+    },
+    {
+      "id": "C08X07",
+      "status": "SOURCE_SUPPORTED_RESEARCH_ONLY_NOT_NARRATION_PASS",
+      "claim": "現行官方 FAQ 請密封正常的「いつでも新鮮」醬油／高湯醬油常溫保存；列出冷藏時可能開蓋噴出、起泡溢出，以及嘴邊醬油固化堵空氣閥、瓶身凹著不回復等情況。FAQ 明說其他因素亦可能造成，冷藏可能提高風險。",
+      "new_scene_action": "匿名當代密封瓶的可能使用困難示意：放鬆後瓶仍凹著，再看嘴邊固化物；清楚作為 FAQ 所列可能情況，不冒充實拍驗證。",
+      "answers_previous_question": "空氣已有指定路徑後，為何瓶身有時仍回不來？",
+      "new_result": "公司使用指引把嘴邊固化、空氣閥堵住和瓶身不回復具體連起來；之後拆整蓋破壞密封改冷藏，改變的是使用條件。",
+      "suggested_insertion": "c8r10616 嘴邊汙損減少之後、現行保存目安與 c8r10620–23 的末滴拆蓋之前。F6 拆蓋後冷藏仍要完整保留。",
+      "product_and_time_scope": "現行系列 FAQ，包含醬油與高湯醬油；沒有把症狀限定為 450mL PET，也沒有提供最早發生年份。",
+      "not_supported": [
+        "不可說冷藏一定導致故障、產品不得冷藏到食品不安全，或反過來說拆蓋後仍要常溫。",
+        "沒有溫差／熱脹冷縮／氣體壓力機理或冷藏實驗數據；不得自行補因果。",
+        "不能倒套 1961 可補充玻璃瓶或當年 2011 型號；也不擴為所有品牌。"
+      ],
+      "evidence": [
+        {
+          "source_id": "F10_coldstorage",
+          "url": "https://customer.kikkoman.co.jp/api/v2/help_center/ja/articles/12735369413913.json",
+          "status": 200,
+          "raw_path": "/workspace/work/brand-story-20261025/c08-audit/length-research/F10_coldstorage.json",
+          "raw_sha256": "5e1a973583dbfda7e8b5e1267e0373743db208a7beaa83b60c41afb32968b60d",
+          "locator": "complete official FAQ body p3–p5; p4 examples",
+          "pdf_page": null,
+          "exact_short_quote": "空気弁がふさがれ、ボトルが凹んだまま戻らないことが",
+          "quote_sha256": "3ef743182f5ac2ace90966203390845eb2e838d95f34220ba33a8de72140752e",
+          "extracted_page_sha256": "e7df761c3b4637440f5fdbf2373b1188b4e4e9463bc4d304e217ce9b5c49a976",
+          "quote_normalized_whitespace_only_match": true
+        },
+        {
+          "source_id": "F10_coldstorage",
+          "url": "https://customer.kikkoman.co.jp/api/v2/help_center/ja/articles/12735369413913.json",
+          "status": 200,
+          "raw_path": "/workspace/work/brand-story-20261025/c08-audit/length-research/F10_coldstorage.json",
+          "raw_sha256": "5e1a973583dbfda7e8b5e1267e0373743db208a7beaa83b60c41afb32968b60d",
+          "locator": "body p5 caveat",
+          "pdf_page": null,
+          "exact_short_quote": "冷蔵庫保存は発生リスクを高める可能性があります。",
+          "quote_sha256": "8770e396ab553e1e7f5c3cdfa34881e6e6465920f08019e2fad845aae5abdd15",
+          "extracted_page_sha256": "e7df761c3b4637440f5fdbf2373b1188b4e4e9463bc4d304e217ce9b5c49a976",
+          "quote_normalized_whitespace_only_match": true
+        }
+      ],
+      "estimated_additional_effective_units": {
+        "min": 110,
+        "max": 150,
+        "method": "Editorial capacity estimate for a compact nonrepetitive event block, not drafted Chinese, measured spoken units or TTS duration."
+      },
+      "route": "direct_current_or_historical_route",
+      "r4_novelty": "Action/result absent from frozen R4 narration; existing source source is not counted as new merely for being reread."
+    },
+    {
+      "id": "C08X08",
+      "status": "SOURCE_SUPPORTED_RESEARCH_ONLY_NOT_NARRATION_PASS",
+      "claim": "同一官方嘴邊汙損 FAQ 還有尚未口播的具體清潔動作：柔軟布沾水後擰乾，擦拭嘴邊。",
+      "new_scene_action": "匿名使用者用已擰乾的柔軟濕布擦瓶嘴外緣；不往閥裡灌水、不拿針戳、不拆內閥。",
+      "answers_previous_question": "嘴邊已經弄髒後，使用者下一次可以做什麼？",
+      "new_result": "給出原廠明示的維護動作，僅作前項的短收束，不重演開場擦桌子整段。",
+      "suggested_insertion": "C08X07 可能故障情況之後或既有 c8r10616 後，最多一次短動作。",
+      "product_and_time_scope": "現行官方系列使用 FAQ；不是原始 1961 保養說明。",
+      "not_supported": [
+        "原文只說擦嘴邊，不證明此法能解堵內部空氣閥、恢復任意失效或滅菌。",
+        "不能把沾水擰乾改成沖洗、煮沸、整瓶浸泡或現行密封瓶可補充。"
+      ],
+      "evidence": [
+        {
+          "source_id": "F7",
+          "url": "https://customer.kikkoman.co.jp/api/v2/help_center/ja/articles/17233526522009.json",
+          "status": 200,
+          "raw_path": "/workspace/work/brand-story-20261025/c08-audit/length-research/F7-cleaning.json",
+          "raw_sha256": "8aaa7f839fd439d0102ca7bc4cc5ecd93b310be57d19bd67ec3be46c89f4f38d",
+          "locator": "complete official FAQ body final note",
+          "pdf_page": null,
+          "exact_short_quote": "やわらかい布などを水で湿らせた後、固く絞って拭いてください。",
+          "quote_sha256": "2a4dc8b950c3a3161f82e56b4aa69d086639018120c5312a19ccedeca7bbaec9",
+          "extracted_page_sha256": "621564453be63a11f82df4c3566bdf88a9447061885f6e22fcf61078c9e7865b",
+          "quote_normalized_whitespace_only_match": true
+        }
+      ],
+      "estimated_additional_effective_units": {
+        "min": 25,
+        "max": 35,
+        "method": "Editorial capacity estimate for a compact nonrepetitive event block, not drafted Chinese, measured spoken units or TTS duration."
+      },
+      "route": "direct_current_or_historical_route",
+      "r4_novelty": "Action/result absent from frozen R4 narration; existing source source is not counted as new merely for being reread."
+    }
+  ],
+  "not_counted_or_rejected": [
+    {
+      "id": "R1_grip",
+      "source": "R1 pp23–24, original scan read",
+      "reason": "三指握持、小指上揚、左手支右肘是後代作者對姿態的詮釋，不是使用者實測；與已用細頸／握持設計重疊，只能替換某個現有動作，不計新增容量。"
+    },
+    {
+      "id": "R1_101_60",
+      "source": "R1 p23",
+      "reason": "101st model 是文章所述 hearsay，與已用 MoMA 近百模型重複；60度仍是同一嘴尖改法，且原文物理解釋不足以擴工程因果。不納增補。"
+    },
+    {
+      "id": "P505_suckback",
+      "source": "P505 pp8–9 [0047–0051]",
+      "reason": "雖有另一種回吸構造，但已用 P1 軸向閥回吸主線會被重講，且容易混機構；不計容量。"
+    },
+    {
+      "id": "P505_repeat_drop",
+      "source": "P505 p12 [0069–0071]",
+      "reason": "120cm 連續5/10次結果支持同一衝擊失效，不另分成新增事件。"
+    },
+    {
+      "id": "EU_dishwasher",
+      "source": "https://www.kikkoman.eu/faq",
+      "raw_sha256": "d40f0e595902d826a643cfade7c2cda061ca8591fd0ba62e7ed362c3e05d2b91",
+      "reason": "官方確說當前 designer bottle refillable/dishwasher safe，但未查具體區域 SKU/零件條件，且補充已用；不把此保養說明倒寫1961或套到日本密封瓶，不計容量。"
+    },
+    {
+      "id": "K7_business_and_flavour",
+      "source": "K7 pp3–5",
+      "reason": "製造體系建置、告知通路、銷售和味型支線不推進本片瓶內／使用動作，不納入。"
+    },
+    {
+      "id": "recycling",
+      "reason": "不重放任何已刪剝標、回收或垃圾分流枝節。"
+    }
+  ],
+  "priority_recommendation": [
+    "優先新增 X07＋X08，使嘴邊、進氣、放手和末滴後冷藏形成具體使用條件變化。",
+    "X01 只作一次較早嘗試的背景，X02 只作 450mL 現行握持／桌面限制，不能散成新品牌史章。",
+    "如果不接受另案原型比較，直接保留不足長度判定。若接受，X03→X04→X05→X06 是可查證的試製／試驗鏈，必須明標 P505、500mL 軟膜原型及申請人試驗；不能當上市款履歷。"
+  ],
+  "source_pass_issued": false,
+  "narrative_pass_issued": false,
+  "runtime_pass_issued": false,
+  "actual_audio_measured": false,
+  "media_qa": false,
+  "owner_approval": false,
+  "paid_calls": 0,
+  "backend_writes": 0,
+  "protected_original_research_sha256": {
+    "research-original.claims.json": "098d17da9a77136bfe3e3d2dafe5aa19d11c087c7203686ecd7f4e87906e7795",
+    "research-original-patents.json": "2ed544c6ed699724c8b6cc26099433a8f6df38f8acc884e82861eca61e18951c",
+    "research-preservation.json": "86beb0a5259ee374092a1e3295187f8a6bbf7d43d271abb19e04edad9b50cd73",
+    "research-original-patents.md": "fa8aca895af38633b1d007cec176319ca1257c236abbce322b6d85b13912753e",
+    "research-original.md": "632c82616fa87591482902731c7079288625160b5dd693a5c21893e9b5531ae3",
+    "README.md": "59b955d5b0e06c73a1ee03e1832a50cc62fc64b25f4abb926b54695ef51fd145"
+  },
+  "lexical_novelty_spot_checks_not_full_semantic_proof": {
+    "一九六六": false,
+    "1966": false,
+    "五天": false,
+    "一百四十": false,
+    "一百六十": false,
+    "視界": false,
+    "視線": false,
+    "擰乾": false,
+    "冷藏庫": false
+  }
+}

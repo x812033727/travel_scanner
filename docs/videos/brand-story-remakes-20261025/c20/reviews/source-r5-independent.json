@@ -1,0 +1,257 @@
+{
+  "schema_version": 1,
+  "episode": "C20",
+  "revision": "c20-r5",
+  "reviewer": "codex-c20-r1-source-independent",
+  "reviewed_at_utc": "2026-10-26T05:35:38.662114+00:00",
+  "independent": true,
+  "scope": "EXACT_R4_FULL_QA_PLUS_ALL_R5_DELTAS",
+  "verdict": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS",
+  "must_fix": [],
+  "independence": {
+    "research_or_writing_participation": false,
+    "native_blind_author_narrative_results_read": false,
+    "sensitive_archive_files": "SHA_AND_SIZE_ONLY",
+    "author_contact_spawn_paid_git_backend_owner_actions": false
+  },
+  "binding": {
+    "core_four_sha256": {
+      "video.json": "c1c99df03c20b8fe945fcc8c29c2bf8a3392a3580067b6de62c5e560c3392cff",
+      "script.md": "8c008116ce69499bbd5842117ae1762c9b3d24fea2f079ec71baaab383e530fb",
+      "narration-only.json": "07380bcb72d6e8ad1d47443bb385484d54b2ee7b193316024343dac5d60a790f",
+      "claims.json": "186c324490ae83f508b079228d618bfa84e4c846971b8587382f0c05950b2786"
+    },
+    "claims_md_sha256": "dd092d39900ec8353429998a33aabcbd6ab90a1506856b80f9f8debf23fc9979",
+    "image_reuse_plan_sha256": "401012dfce4a7a2a6978fbe8141b5e96b39cf0370e49c87ae1f0fe032bfd73b1",
+    "freeze_sha256": "13105eaa9a782fe82bcc0844db40cb8ea03071d549d7d04c54447213db4bd7a0",
+    "protected_inputs_sha256": "d07f46f3109617222b75d79f09b1c8c78e3419dce3a087bd44415d9d6a15dd7f",
+    "runtime_video_exact": true,
+    "runtime_canonical_script_sha256": "247df967f1b005571d90caecccd3090c82d9aa413aed24cf914f3167ae688d0e"
+  },
+  "baseline_chain": [
+    {
+      "revision": "r1",
+      "source_receipt": "history/r1/reviews/source-r1-independent.json",
+      "sha256": "7fddccb74b818e363a0195921162d7af6a189c7f082dcad6101544833d7e643e",
+      "verify_sha256": "79c94587fa147d4c6a78083d0e609a851566deff5948ad5e621ee90ca5962ce1"
+    },
+    {
+      "revision": "r2",
+      "source_receipt": "history/r2/reviews/source-r2-independent.json",
+      "sha256": "00e5569b45a84fa9d8685d0e30ba7fdab9f95f78ab483ec38077d3a7ed21a81e",
+      "verify_sha256": null
+    },
+    {
+      "revision": "r3",
+      "source_receipt": "history/r3/reviews/source-r3-independent.json",
+      "sha256": "1adc1fa4246bb3d925234e3c0bfb28be25b04e702efdf7461530979f75de79cf",
+      "verify_sha256": "dccf7eb21c42e201ccf77975d44292d6e9ecf6860e40ec371464c70cf39f7c2f"
+    },
+    {
+      "revision": "r4",
+      "source_receipt": "history/r4/reviews/source-r4-independent.json",
+      "sha256": "88c7b57de0ffa7405f30bf4182779fa2f4042cbf2e91f46121b0a8e6297afb56",
+      "verify_sha256": "5ed83b0dd6e61288f56f6582b7aea4679fbdf9f1043b6899f75081bda78a58f0"
+    }
+  ],
+  "baseline_inheritance": {
+    "base": "R4 SOURCE/WRITTEN VISUAL PASS88c7b57de0ffa7405f30bf4182779fa2f4042cbf2e91f46121b0a8e6297afb56",
+    "base_core_four_sha256": {
+      "video.json": "89b259599f127197332b9528c58552c8781b322c6b6dde36d5a9e1ae21183ee3",
+      "script.md": "c6fef4108da560b7c5f45c066ef463bea48a5a98e910070f5dd57bd17c01834e",
+      "narration-only.json": "2c688690439239067eaedfc6ec910579581348da54e11d06c2ad093d279f30e4",
+      "claims.json": "f2e2547145cd01d0d0705d514eb385324e721b1a60541e4f35fd4842eba22296"
+    },
+    "exact_test": "Video equals R4 after6 scene deletions, one loop removed with t25,3 narration string replacements, and omission of unused JP_BEFORE/JP_TRACKING source entries and matching description blocks. No remaining field/order/prompt/camera changes.108 claim rows fully exact; t14/t27 change only claim string; t15 additionally narrows evidence to E22. Source/anchor registries exact.",
+    "unchanged_claim_rows": 108,
+    "unchanged_claim_payload_sha256": "25189d485e3165f0e465af65e5ff402f30e44320d932252d42ccbf6d206ec52e",
+    "all_retained_shot_data_exact": 108,
+    "original_M01_M02_repairs_retained": true
+  },
+  "delta_checks": [
+    {
+      "id": "c20r3t14",
+      "before": "要修的是裡面裂掉的彈簧，交出去的，會只有那一個小零件嗎？",
+      "after": "他當時交出去的，會只有那個小零件嗎？",
+      "verdict": "PASS",
+      "anchors": [
+        "J03-Q1",
+        "J11-Q1"
+      ],
+      "finding_zh": "t04–t06已交代凸輪彈簧裂，小零件指代仍清楚；問當時交出的範圍，不增拆解工序或現行規則。"
+    },
+    {
+      "id": "c20r3t15",
+      "before": "他在備忘錄列的送修內容，是外殼、內膽與修理表；不是只有那片彈簧。",
+      "after": "他在備忘錄列的送修內容，是外殼、內膽與修理表。",
+      "verdict": "PASS",
+      "anchors": [
+        "E22-Q1"
+      ],
+      "finding_zh": "親讀JP原文line61「本体-インサイド・ユニット-修理シートをレターパックに入れたら封をして送る」。外殼/內膽/表有據；不再提彈簧，claims相應移除J03依據並保留E22及歷史備忘錄限制，不增已填表/退舊要求，非UK current整機寄法。"
+    },
+    {
+      "id": "c20r3t27",
+      "before": "真正拿到回件，是十月十八日早上；從投寄到手上，他記下四十七日。",
+      "after": "整趟往返四十七天後，他收到寄回的包裹。",
+      "verdict": "PASS",
+      "anchors": [
+        "J14-Q1",
+        "J15-Q1",
+        "J15-EXTRA"
+      ],
+      "finding_zh": "原文lines24–31明定「郵送してから手元に戻ってくるまで」、9/1投寄/10/18返還/47日；新句整趟往返仍是旅程，不是工時或現行時限。t17→t27→t30/t31→n01為等待、回件、作者預期與新舊同返，未增成功點火/廠方退舊因果。"
+    }
+  ],
+  "delete_and_metadata_checks": {
+    "deleted_ids": [
+      "c20r3t03",
+      "c20r3t24",
+      "c20r3t25",
+      "c20r3t26",
+      "c20r3t28",
+      "c20r3t29"
+    ],
+    "verdict": "PASS",
+    "removed_loop": {
+      "setup": "c20r3t25",
+      "payoff": "c20r3t27"
+    },
+    "removed_public_source_ids": [
+      "JP_BEFORE",
+      "JP_TRACKING"
+    ],
+    "findings_zh": [
+      "刪green對照t03與追蹤日期/年末/工時/快慢t24/t25/t26/t28/t29，不移除存留句唯一依據；粉紅身分仍由h06/t01及J09原文支持。",
+      "JP_BEFORE/JP_TRACKING已無存留claim使用，video.sources及description來源區同步移除兩連結，原raw/研究/registry均保護不動；保留來源已核足夠。",
+      "只去掉牽涉被刪t25的loop，剩27個setup/payoff存在且向後；兩事件預告pair、全部存留文字分鏡及M01/M02修正原樣。"
+    ]
+  },
+  "coverage": {
+    "true_narration_marker_rows": 111,
+    "shot_prompts": 108,
+    "outro_scenes": 1,
+    "full_unchanged_rows": 108,
+    "changed_rows": 3,
+    "deleted_rows": 6,
+    "all_projections_script_video_narration_claims_exact": true,
+    "loops_checked": 27,
+    "used_sources": 11,
+    "used_anchor_locations_sha_checked": 60,
+    "source_anchor_registries_exact": true
+  },
+  "image_reuse_plan": {
+    "verdict": "PASS_WRITTEN_ONLY",
+    "pairs": [
+      {
+        "source": "c20r3e01",
+        "reuse": "c20r3h05",
+        "full_input_equal": true,
+        "composed_sha256": "f6aa701ac9dd7c2edd06474c99b4ea9b00457e616c5a7995e106ecd10d61989c",
+        "composed_sha_matches": true,
+        "base_key": "14da6fdbee2275d6",
+        "source_native_key": "10628c6d991ddf8d",
+        "reuse_native_key": "10628c6d991ddf8d",
+        "expected_native_key": "10628c6d991ddf8d"
+      },
+      {
+        "source": "c20r3n01",
+        "reuse": "c20r3h06",
+        "full_input_equal": true,
+        "composed_sha256": "9d60b29c7012dd1ee180808278130ba215a099e2abdd860d2a6962cf6f5d12d3",
+        "composed_sha_matches": true,
+        "base_key": "382dc0d240a028e3",
+        "source_native_key": "8499e810e4c09fb5",
+        "reuse_native_key": "8499e810e4c09fb5",
+        "expected_native_key": "8499e810e4c09fb5"
+      }
+    ],
+    "pair_and_handoff_payloads_exact_R4": true,
+    "pure_native_full_input_functions_only": true,
+    "tuple": "MiniMax/image-01;version1;1920x1080/1K;seed1;refs[];negative empty;takes1;no fixes;limit1500;composed prompt/camera included, declared status only. No Stage constructor/image/provider call.",
+    "limits": "Live provider/model/version/size/ref/seed/fixes and intended runtime/media paths readback before normal admission; payoff first; readCache/existence/bytes SHA guard before teaser, miss/change stops without reroll/force/manifest edits; both normal endpoint judges; separately hash actual original and final trim bytes and require same selected file plus assembly input.",
+    "actual_same_asset_verified": false,
+    "actual_final_file_sha_verified": false
+  },
+  "fact_limits": [
+    "US two objects/parts/results remain distinct from JP later pink gift. US appears/no new weld is observer account, not factory process or original nonignition.",
+    "No JP successful ignition/completed form/old-part request/return reason;47days is journey not workshop time or deadline.",
+    "1933 company retrospective attributed, patent limited structural context;UK2026/UScurrent clauses not retrospectively/global applied."
+  ],
+  "validation": {
+    "native_lint": {
+      "errors": [],
+      "warnings": [
+        {
+          "path": "scenes",
+          "message": "\"case\" is in 70 of 108 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"adult\" is in 49 of 108 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"worn\" is in 39 of 108 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        }
+      ],
+      "summary": {
+        "minutes": 13.157222222222222,
+        "lines": 111,
+        "spoken_units": 2823,
+        "billable_characters": 9351,
+        "chapters": [
+          "00:00 帶繫繩環的舊盒，準備寄回去",
+          "00:51 想修鬆蓋，卻遲遲沒寄的舊盒",
+          "03:19 回信還沒來，包裹先出門",
+          "06:17 蓋子收緊，舊磨痕仍在",
+          "08:52 粉紅色禮物，輪子也停住了",
+          "11:01 原來的內膽，也一起回來"
+        ]
+      }
+    },
+    "native_facts_parser": {
+      "not_found_count": 0,
+      "result": {
+        "ok": true,
+        "detail": "verify-1.md marks no claim NOT FOUND"
+      }
+    },
+    "facts_parser_limit": "Only detects cited NOT FOUND, not source correctness/duration/image identity. PASS rests on exact prior full QA and primary delta checks.",
+    "protected_research_files": 3,
+    "legacy_originals": 68,
+    "readonly_snapshots": 68,
+    "raw_sha_size_checked": 159,
+    "immutable_lexicon_files": 3,
+    "archive_files_sha_only": {
+      "r1": 24,
+      "r2": 35,
+      "r3": 47,
+      "r4": 57
+    },
+    "external_snapshots_sha_only": {
+      "r3": 30,
+      "r4": 24
+    },
+    "all_protected_inputs_unchanged": true
+  },
+  "limitations": {
+    "readiness": "HOLD_FOR_REMAINING_EDITORIAL_AND_PRODUCTION_GATES",
+    "spoken_units": 2823,
+    "target_minutes": 13,
+    "material_capacity_risk": true,
+    "actual_audio_seconds": null,
+    "actual_final_seconds": null,
+    "duration_verdict": "UNMEASURED; estimate is planning, no durationPASS or actualspeechFAIL",
+    "actual_same_asset_verified": false,
+    "narrative_owner_approval_created": false,
+    "paid_calls": 0,
+    "backend_git_owner_mutations": 0
+  },
+  "outputs": [
+    "reviews/source-r5-independent.json",
+    "verify-1.md"
+  ]
+}

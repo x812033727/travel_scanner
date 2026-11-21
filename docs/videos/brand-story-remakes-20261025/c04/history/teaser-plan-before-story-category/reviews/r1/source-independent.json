@@ -1,0 +1,1538 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/find_rules",
+  "independent": true,
+  "date": "2026-10-25",
+  "review_kind": "exact-hash narration source and written visual direction; no blind-reader answers seen",
+  "slug": "story-everyday-bubble-wrap-c04-remake-20261025",
+  "input_sha256": {
+    "video.json": "0f880bdbd56fa370bffe0e230f79e5195aa4f24671523e713808e659bbb7243f",
+    "narration-only.json": "b46d78e2c1dcb2267a71a4619054631b12c9dd2e12210e455972eb1aeae85366",
+    "script.md": "c013e699e637a34d130e9d147024d6c4f3110e9fb5736a8d40751e81d3f3fbd1",
+    "claims.json": "d8c1730a1a4ecf0aa61b0d6c9c58e956fca9cd07790f408efa361ea77884f34e",
+    "pronunciation-proposal.json": "be9544fcc76fe5fcbb3cbd77de0017651cd5451b2c5938015f428406d08381d1"
+  },
+  "baseline": {
+    "source_commit": "2b20c30d359fe5d93a4ea66f013a52fa20a35c05",
+    "source_matrix": "docs/videos/story-everyday-bubble-wrap-c04/source-matrix.md",
+    "prior_source_review": "docs/videos/story-everyday-bubble-wrap-c04/reviews/script-source-review.md",
+    "old_pass_not_reused_as_current_pass": true
+  },
+  "verdict": "HOLD",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "HOLD",
+  "counts": {
+    "narration_lines": 114,
+    "source_pass": 114,
+    "source_hold": 0,
+    "scenes": 103,
+    "written_visual_scene_pass": 102,
+    "written_visual_scene_hold": 1,
+    "paired_visual_line_hold": 2
+  },
+  "findings": [
+    {
+      "id": "V01",
+      "severity": "P2",
+      "verdict": "HOLD",
+      "scene_id": "c04r-t01",
+      "line_ids": [
+        "c04rt011",
+        "c04rt012"
+      ],
+      "issue": "1960／公司成立年份卡與兩膜升溫設備旁白錯配。卡本身的年份有SEC支持，卻不是當句機制證據。",
+      "required_fix": "換為匿名設備示意，或重新配對1960卡到成立年那句；不可把SEC標籤當作P60設備來源。",
+      "evidence": [
+        "P60 Description649–658",
+        "SEC12 Item1 Business"
+      ],
+      "requires": "修後固定新video SHA；若旁白不變可做定點書面畫面差分覆核"
+    }
+  ],
+  "advisories": [
+    {
+      "line_id": "c04rn121",
+      "note": "2017手冊另列3.6英吋款。現句只說手冊列12英吋，不判硬錯；圖像/後製不可暗示所有款式通用12英吋。"
+    },
+    {
+      "line_id": "c04reb1",
+      "note": "第一人稱閱讀反應只作編輯旁白；不要在後製包裝為站主實訪/親驗經歷。"
+    }
+  ],
+  "boundaries": {
+    "patent_filing_vs_grant": "保留，未把核發全文逐字倒當原始申請稿；E16問題由E17/18的標示申請日限定",
+    "company_retrospective": "溫室、裝潢失敗、研發與IBM包材關聯均有公司歸屬；無同期訂單/首客戶/銷售推論",
+    "concept_visuals": "讀過全部103景書面方向；寫實歷史重建未獲通過，匿名設備/人物僅cute-mystery示意；未看生成圖",
+    "later_product": "2017產品與早年創業分開；性能為原廠宣稱",
+    "duration_audio_images_cost": "均未審核、未生成或核准",
+    "backend_operations": 0,
+    "paid_calls": 0
+  },
+  "sources_reopened_on": "2026-10-25",
+  "sources": {
+    "P57": {
+      "url": "https://patents.google.com/patent/US3026231A/en",
+      "locations": "metadata; Description 175–218; claims",
+      "scope": "核發文本與設計主張；不是原始申請稿、上市或工廠實採證據"
+    },
+    "P59": {
+      "url": "https://patents.google.com/patent/US3142599A/en",
+      "locations": "metadata; Description 225–231, 425–439, 460–485",
+      "scope": "核發文本、製程及材料受力主張；不證明1959年上市或所有市售氣泡形狀"
+    },
+    "P60": {
+      "url": "https://patents.google.com/patent/US3208898A/en",
+      "locations": "metadata; Description 416–424, 649–662",
+      "scope": "連續加熱、展膜、貼合、冷卻設備之專利示範；不證明實廠落地或產能"
+    },
+    "SA13": {
+      "url": "https://www.sealedair.com/company/media-center/press-releases/sealed-air-announces-finalists-bubble-wrap-appreciation-day-hall-of-fame",
+      "locations": "dated January 6, 2013; paragraphs More On Bubble Wrap, web lines 901–904",
+      "scope": "公司多年後回顧；不是獨立見證或同期訂單"
+    },
+    "SAH": {
+      "url": "https://www.sealedair.com/products/brand/bubble-wrap",
+      "locations": "About BUBBLE WRAP, web line 892",
+      "scope": "公司回顧1957牆面方向、1960創立及之後IBM 1401包裝關聯"
+    },
+    "SA17": {
+      "url": "https://www.sealedair.com/content/dam/protective-materials/inflatables/newair-ib/NewAir%20I.B.%20Extreme%20H160%20Brochure.pdf",
+      "locations": "PDF page 2, date10/17; web lines7–12,26–38,49–54 and specifications table",
+      "scope": "2017年後期另一產品的廠商說明；沒有獨立性能試驗；12英吋屬所列XLIB規格，手冊另列3.6英吋款"
+    },
+    "SEC12": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1012100/000119312513087879/d452256d10k.htm",
+      "locations": "Item1 Business, web line174",
+      "scope": "成立年1960，未給成立月份"
+    },
+    "IBM": {
+      "url": "https://www.ibm.com/support/pages/zvm/history/360rev.pdf",
+      "locations": "PDF page17, lines613–616",
+      "scope": "IBM1401於1960開始出貨，不支持其包材供應商"
+    },
+    "IBM_H": {
+      "url": "https://www.ibm.com/history/1401",
+      "locations": "opening history, introduced1959",
+      "scope": "1959發表；未提氣泡片供應商"
+    },
+    "EDITORIAL": {
+      "scope": "觀眾假想、問題、標明的旁白反應或CTA；不是特定歷史事件、客戶或性能實驗"
+    }
+  },
+  "line_results": [
+    {
+      "line_id": "c04rh011",
+      "scene_id": "c04r-h01",
+      "line_text_sha256": "9be7e5748d800e59143fe90b328d6710ef12897a1e8bc7d895ff3325f9928e70",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "EDITORIAL"
+      ],
+      "source_note": "明問觀眾恐懼；碎片示意不稱實際事故",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rh021",
+      "scene_id": "c04r-h02",
+      "line_text_sha256": "8328466724c7c3c2f25635a66e5718a931baa3d042eb02782df8b444a1f65845",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "EDITORIAL"
+      ],
+      "source_note": "想像明示假想包裝桌",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rh022",
+      "scene_id": "c04r-h02",
+      "line_text_sha256": "20e42a480555fe354e705cfae37a7d317728a85436799d9d7ba9b8c8a0913fa9",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "SAH"
+      ],
+      "source_note": "1957方向與後文核發/申請界線相符，未稱上市",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rh031",
+      "scene_id": "c04r-h03",
+      "line_text_sha256": "29ce354107306a47f8519149ee3a3b215f786c1899d10f5397a2587391b1f360",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "EDITORIAL"
+      ],
+      "source_note": "明示我覺得及全片問題",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rh041",
+      "scene_id": "c04r-h04",
+      "line_text_sha256": "39ba830cda2ef26fd9ec1c72bae1cec1ae9bc4a5a4f3b53082b3d4f1a10ea1c2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA13"
+      ],
+      "source_note": "具名公司回顧歸屬",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rh042",
+      "scene_id": "c04r-h04",
+      "line_text_sha256": "6036462847ce9fcd54df55bd94be0e5752e606c61c9d749af685c23a90d07c00",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA13"
+      ],
+      "source_note": "回顧中的溫室用途，無訂單或試驗聲稱",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rh051",
+      "scene_id": "c04r-h05",
+      "line_text_sha256": "c223df48217c86feb7609ecb013dcb0a577ffc95750b4b7b71a5062f4be380e9",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "P59"
+      ],
+      "source_note": "兩設計接合方法的編輯對照，非銷售年表",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rh061",
+      "scene_id": "c04r-h06",
+      "line_text_sha256": "a3a60ddd5516ab0def65974749e96c34b92a7c501761eeabd5dd6b3880904afb",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "P59",
+        "SAH"
+      ],
+      "source_note": "敘事承諾，圖紙與包裝用途有據",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rh071",
+      "scene_id": "c04r-h07",
+      "line_text_sha256": "5837e4e8499a6bc26fadf6b46eb7e49ef320f8a354ceb592e4d18790a9fa12f9",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "P59"
+      ],
+      "source_note": "問題未提前宣稱性能驗證",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ro011",
+      "scene_id": "c04r-o01",
+      "line_text_sha256": "7afb415b6e22c676da59cf00f31bd1240da998d6fb4bb6fa2c2c811c7fca90a5",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "175–203用途與材料構成",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ro021",
+      "scene_id": "c04r-o02",
+      "line_text_sha256": "a14cf53a21dbf7b7cbf3ec24364fb91d548ee9f2384f97f4f4c8a2e384c1743f",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "metadata核發日/單列發明人",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "後製卡僅列可核對的名字/日期/出處。"
+    },
+    {
+      "line_id": "c04ro031",
+      "scene_id": "c04r-o03",
+      "line_text_sha256": "2eecb037b11c752f37dec5e5f35999c04524057c07ceff509c14020df35c857e",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "175–203牆面家具與氣室",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ro041",
+      "scene_id": "c04r-o04",
+      "line_text_sha256": "3a13680caa4842c921dbbaf78a329b2c3ca7228187bf1c0229ba705d79e3dac2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "176–182專利對既有厚重壓紋覆材的陳述；上下文是設計對照",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04roa1",
+      "scene_id": "c04r-oa",
+      "line_text_sha256": "2b1f3b072ffd300a6ad09713d34531d4d26607d0361ebce9e3a89b9a8f04aa51",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "EDITORIAL"
+      ],
+      "source_note": "設計目標的觀眾假想，不是實驗記錄",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ro051",
+      "scene_id": "c04r-o05",
+      "line_text_sha256": "fb09be2ccc104577b9c0703883aa545b0925456da09a749f984a680b08e813fd",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "206–214谷部接合的提問",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ro061",
+      "scene_id": "c04r-o06",
+      "line_text_sha256": "a681fd237fd1391ab4364285de5f90b7968822fd9e4d30ffe5209062fa6789a9",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "204–206加熱與連續進料",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ro071",
+      "scene_id": "c04r-o07",
+      "line_text_sha256": "868de1b437dcf51788ff469f8bff6fe28c88fb9b60f9a4e8f2e25baf80df2d62",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "204–206真空凹槽",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ro081",
+      "scene_id": "c04r-o08",
+      "line_text_sha256": "66c21ef3d8d5614a0f74391ba4ca6da475959465c21ef05fb0b4c9f8ee0359d1",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "207–208谷部上膠",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ro091",
+      "scene_id": "c04r-o09",
+      "line_text_sha256": "cf23c0aa171590a0a84c3928cffdb288218f6f9841db21b0c0a19b5f8926011d",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "209–214背層封氣",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ro101",
+      "scene_id": "c04r-o10",
+      "line_text_sha256": "fefda8a803d7076b4ba90bab27a1737303ab6d6b3947751d87256231d4626294",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "202及214的設計效果",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rob1",
+      "scene_id": "c04r-ob",
+      "line_text_sha256": "a0459e75c77c91c780e4f05af7534c598e88761a189cf4c1edcc17f2fa7de9f0",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "SAH",
+        "EDITORIAL"
+      ],
+      "source_note": "反應與需求問題不等於客戶拒買記錄",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ro111",
+      "scene_id": "c04r-o11",
+      "line_text_sha256": "540422d164eafcf21da6045b54b10dace02c379bd033300e519d3192c0886972",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "200–203及218柔軟家具覆層",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ro121",
+      "scene_id": "c04r-o12",
+      "line_text_sha256": "9a9a53fe2b60e4d5d101dce84b786151f1f04132d77731ff98c88e9e20010f02",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "202可捲運與曲面提問",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ro131",
+      "scene_id": "c04r-o13",
+      "line_text_sha256": "00ff4db69a586bdcc37d734b6008e3d490fa02887ff67298757604e2c2e9cc7b",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "202–203背層支承與隨形",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ro141",
+      "scene_id": "c04r-o14",
+      "line_text_sha256": "885b16d3797a443e489ebb0dcd010b1d82724670a9a0894b4c3c85ebbe8873b9",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SAH",
+        "SA13"
+      ],
+      "source_note": "未流行歸屬公司回顧，無完全沒人要斷言",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ro151",
+      "scene_id": "c04r-o15",
+      "line_text_sha256": "de4680a21792f7e91c4effb0ad7e74c6e066bec5147697b929177097d4a87b7c",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "SAH"
+      ],
+      "source_note": "209–213材料選擇，失敗歸屬承接前句",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ro161",
+      "scene_id": "c04r-o16",
+      "line_text_sha256": "2a25e099c83da60b3c1f37d091947e3ddb234479ed452443d52e765dc5015f9d",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "EDITORIAL"
+      ],
+      "source_note": "可能性推論，不說某年已售其他用途",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ro171",
+      "scene_id": "c04r-o17",
+      "line_text_sha256": "2f1c76a857ccff2b53c3c22f4f512dbcc7f35e2796783a0c4d17755175c36188",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "EDITORIAL",
+        "SA13"
+      ],
+      "source_note": "前向問題，非具體交易",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ri011",
+      "scene_id": "c04r-i01",
+      "line_text_sha256": "e7a4400d2ca9b3af8c1272bd2dff5f5f7e0a5c62f3946c272e23e8d37f8b7e93",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA13"
+      ],
+      "source_note": "2013回顧的次序，歸屬明示",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "後製卡僅列可核對的名字/日期/出處。"
+    },
+    {
+      "line_id": "c04ri021",
+      "scene_id": "c04r-i02",
+      "line_text_sha256": "edc06ddfecc838c20622c975e02ee5a42d3051bdd7de9677e35d5ee7843e2cc5",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA13"
+      ],
+      "source_note": "行銷有些成果保留公司說法",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ri031",
+      "scene_id": "c04r-i03",
+      "line_text_sha256": "f3f7c7ea4dcb2f849d9909018e9aeb61d3325ed6bb7c7e33344b789911bc522a",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA13",
+        "EDITORIAL"
+      ],
+      "source_note": "再明示來源層級並提問",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ri041",
+      "scene_id": "c04r-i04",
+      "line_text_sha256": "6e490d975798b592c70e94eaba6a2f18011da5667a6c55726ea549521553c014",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA13"
+      ],
+      "source_note": "公司回顧中的工程師想到緩衝",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ri051",
+      "scene_id": "c04r-i05",
+      "line_text_sha256": "27a4a4548f5fd50361e14aaac52cc3d545d5be3cff25f1ef948b34134bdd704a",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA13"
+      ],
+      "source_note": "紙/舊報紙比較歸屬公司",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ria1",
+      "scene_id": "c04r-ia",
+      "line_text_sha256": "44cb2e5ffd47b915acabfde56dbfa5faa6127828463c10269bff3095c63f4d95",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "EDITORIAL"
+      ],
+      "source_note": "如果換成你，非性能測試",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ri061",
+      "scene_id": "c04r-i06",
+      "line_text_sha256": "b2970d65ae75509439592bb6f2b39073aebaf6010eab21d135b70976ae4ca137",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "EDITORIAL",
+        "P59"
+      ],
+      "source_note": "一般搬運情境與受力問題，不說專利逐字提震動",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ri071",
+      "scene_id": "c04r-i07",
+      "line_text_sha256": "c8e240a83ceb8e30a9490d2e17e639eabf33a900725f78425091c39ed1d7ac73",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "225–231包裝/吸震目的",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "後製卡僅列可核對的名字/日期/出處。"
+    },
+    {
+      "line_id": "c04ri081",
+      "scene_id": "c04r-i08",
+      "line_text_sha256": "067a23e443a07ed128a9d0e74d75853b0cc06e1cfe37f36a06b392afd86bc9ea",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "231及465–472的氣壓與機械緩衝說明",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rib1",
+      "scene_id": "c04r-ib",
+      "line_text_sha256": "6cecf676111fc81a9be60d0ef8b33e3e279801f9694a4353f718b4f247a8cca1",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "EDITORIAL",
+        "P59"
+      ],
+      "source_note": "明示反應與可能受壓，不報告特定貨損",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ri091",
+      "scene_id": "c04r-i09",
+      "line_text_sha256": "633582c01df6097e9da22d726ac93345a8396fb9e6932f15e8b65490dcf0bdc8",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "EDITORIAL",
+        "P59"
+      ],
+      "source_note": "假設接層分離問題",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ri101",
+      "scene_id": "c04r-i10",
+      "line_text_sha256": "2e420480355bc7229d8b253fe52bb935780cb82567f5c444aefe872eec43a4c6",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "427–428獨立密封氣室",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ri111",
+      "scene_id": "c04r-i11",
+      "line_text_sha256": "b3396ee224d359c1a5201aeb2222a5bbcfc598bf29ce118f1086b89261741ef0",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "465–472氣體與側壁作用，後文保留專利主張界線",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ri121",
+      "scene_id": "c04r-i12",
+      "line_text_sha256": "707f2c8700db3efffb69095ff341c40eaac996fd44ddabcd6446d227e2a59047",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA13"
+      ],
+      "source_note": "製程研發仍歸屬公司回顧",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ri131",
+      "scene_id": "c04r-i13",
+      "line_text_sha256": "64bdb66677fa624476b3d1bcd311ce890b9110726d8eb60a1d3510f3a68c2d12",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "460–463條件性冷卻縮扁，不稱量產事故",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04ri141",
+      "scene_id": "c04r-i14",
+      "line_text_sha256": "1f74a316095e5585a6768dc2d0b59601a7e9a1a8dff672bc1dcaef49f8b89594",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "同段工程問題",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04re011",
+      "scene_id": "c04r-e01",
+      "line_text_sha256": "b5b1878abcc1cb995ced81cffe2793010bbad958d28c49876484b79a73eab758",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "460–463冷卻/壓力機制白話解讀",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04re021",
+      "scene_id": "c04r-e02",
+      "line_text_sha256": "ea67a6011a9cb15e5ebac93db8356403000b546ba4c9dadd328a42763f89b392",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "462較高壓封合方案",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04re031",
+      "scene_id": "c04r-e03",
+      "line_text_sha256": "74fc1cb7ef9d9a7d851c2204971e3a72bfbf42597260e7d17e79ed7ff3ca3fc4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "463再熱修形替代方案",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rea1",
+      "scene_id": "c04r-ea",
+      "line_text_sha256": "f3784002f3c79789eba98033d38ffd2eb9f503ad050cf5967a9b181c31ac030b",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_note": "明示可以想成的小袋示意",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04re041",
+      "scene_id": "c04r-e04",
+      "line_text_sha256": "483365809de6b8aff464a58edff550332f3204df461222dbcbe037bd0e5b0200",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "P59"
+      ],
+      "source_note": "谷部膠接與包裝受壓對照",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04re051",
+      "scene_id": "c04r-e05",
+      "line_text_sha256": "ffb3f5645ad29bfb074fd86740b4836f6965943015bd7027fe7a967903efb276",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "225–229乾燥問題的提問",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04re061",
+      "scene_id": "c04r-e06",
+      "line_text_sha256": "54244c54103bd96dd05df124ad2ce3eefebb202b2ba24e91f91bccf11f114c07",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "227–229膠接與乾燥論述",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04re071",
+      "scene_id": "c04r-e07",
+      "line_text_sha256": "80757c958a15209eab89a5785f3e4850b488f84a2eb61bb104b5c3e36c32dcae",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "425–428加熱接面/施壓",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04re081",
+      "scene_id": "c04r-e08",
+      "line_text_sha256": "a3914e75050eedc34a8c03d1a8b928fa413c2e265f4d7ccf9f715c8c8f163b9c",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "427–428單格熱封",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04reb1",
+      "scene_id": "c04r-eb",
+      "line_text_sha256": "b00b92a4d24aeb42edb3b48069a4d4f608748e34a163747cb2e98c0ca3cfb4a0",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_note": "閱讀反應不是歷史來源或性能佐證；不移入第三人經歷",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04reb2",
+      "scene_id": "c04r-eb",
+      "line_text_sha256": "31e81738c6d24b133d2a1b23e9510c2c0c09fcc83ede2118b81faa195b732744",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_note": "設計對照的反應，不稱某廠改線實錄",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04re091",
+      "scene_id": "c04r-e09",
+      "line_text_sha256": "d6583f79ffb9602adcac0c5450d75b0b07435d71e9e3aaadf301c1e28b5969ef",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "435–438接面保溫/成形部分冷卻",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04re101",
+      "scene_id": "c04r-e10",
+      "line_text_sha256": "4dc7e03ca12611e7a1bde3f63371bbb1800a88255fd7b14db6698089abc0aa5d",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "同段形狀/溫度機制",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04re111",
+      "scene_id": "c04r-e11",
+      "line_text_sha256": "e00d3cd5b39e9545fb30b35be38672b5f1b120cfdfe48d12838e2f69415f0caa",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59",
+        "P60"
+      ],
+      "source_note": "436與649–658；未宣稱1959才首次連續貼合",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04re121",
+      "scene_id": "c04r-e12",
+      "line_text_sha256": "d125d23f6f7aba1caa0ae98252fdf5670bc322c1b888e5d42f0fb9e8252663e3",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "465–472受壓設計的提問",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04re131",
+      "scene_id": "c04r-e13",
+      "line_text_sha256": "26cb0548f15e46631f52120ecaa38ae355fd66db0eece72e56bc0d37b6968528",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "465–468六角側壁方案",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04re141",
+      "scene_id": "c04r-e14",
+      "line_text_sha256": "da96f0750644ae6b771fc7f4181f4ed280d4578ccb43638b37a375b4215c534e",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "468受損後側壁支承明歸發明人",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04re151",
+      "scene_id": "c04r-e15",
+      "line_text_sha256": "141733c21f242f61a6035c6b81669e1fe154cc7e7364f85cf229510d61052d28",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "明標技術主張/不普遍化所有泡泡",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rec1",
+      "scene_id": "c04r-ec",
+      "line_text_sha256": "8d16de97f3de8b024c026a6a88b3585bd9cde5b5aeca9e8afc417fecc74c8c45",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_note": "承接被限定的技術作用，不是獨立實測",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04re161",
+      "scene_id": "c04r-e16",
+      "line_text_sha256": "176590424b26e80133f9f4606c792bb431f0247e3725d9136c753af58d11bdac",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59",
+        "SEC12"
+      ],
+      "source_note": "問題中的寫進專利，由後兩句限定成標示申請日比較",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04re171",
+      "scene_id": "c04r-e17",
+      "line_text_sha256": "d1a4f5fca7885b6e2a8f57392de5576f10a27af1e75237875375343868292b39",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "metadata1959申請與1964核發均正確",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "後製卡僅列可核對的名字/日期/出處。"
+    },
+    {
+      "line_id": "c04re181",
+      "scene_id": "c04r-e18",
+      "line_text_sha256": "f7e22f4c02dc81a29d0a98b4628e9fa9757c29de9ba3f6646f3a268c4ac584a1",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59",
+        "SEC12"
+      ],
+      "source_note": "申請日早於成立年；明排除上市推定",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04re191",
+      "scene_id": "c04r-e19",
+      "line_text_sha256": "76266325ac72b719fc38db1574badb1af34e54948de64bc14d4e2a8758dba226",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "416–424設備協調目標",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04re201",
+      "scene_id": "c04r-e20",
+      "line_text_sha256": "6472aff9d913abca411ab1fb827dd2b570eae51c7358563cfc39dddae7eff111",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "649–658兩膜進料問題",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rt011",
+      "scene_id": "c04r-t01",
+      "line_text_sha256": "316f290383641900567eb8585ac9fee0edd5a0c9d8b447c47af0be81fd920ae3",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "649–658兩路加熱與貼合；不冒稱工廠記錄",
+      "paired_visual_verdict": "HOLD",
+      "paired_visual_note": "配對卡是1960公司成立年，旁白卻在講兩膜升溫設備；須換成對應機制畫面或調整配對。"
+    },
+    {
+      "line_id": "c04rt012",
+      "scene_id": "c04r-t01",
+      "line_text_sha256": "22bd670e96330fb5d3f9df29561e068b68247f194f4066a3eae2056073e0a56c",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "明示核發專利設備設計",
+      "paired_visual_verdict": "HOLD",
+      "paired_visual_note": "配對卡是1960公司成立年，旁白卻在講兩膜升溫設備；須換成對應機制畫面或調整配對。"
+    },
+    {
+      "line_id": "c04rt021",
+      "scene_id": "c04r-t02",
+      "line_text_sha256": "a3e7efb7e036d4cf84ae9c8098943e00cba344e53f0e33597fbc218c3012f02c",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SEC12",
+        "P60"
+      ],
+      "source_note": "1960成立/3月申請；未推公司成立月",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rt022",
+      "scene_id": "c04r-t02",
+      "line_text_sha256": "1c3bf8d47030e07ea9d944d4f48b07ec307e33ef7a29a18f4034ffe2c0ceaa53",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "設備流程概括",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rt031",
+      "scene_id": "c04r-t03",
+      "line_text_sha256": "7acacb36433c845bdc4ac7341c42e4e04f5430ab3edd78fd2b9f6faed6616f96",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "兩發明人/416–424目的",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "後製卡僅列可核對的名字/日期/出處。"
+    },
+    {
+      "line_id": "c04rta1",
+      "scene_id": "c04r-ta",
+      "line_text_sha256": "5fd0c44e6e853792092337974f1fd4d4f0b6f076b3f722d4fe5b9ac478724fdf",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60",
+        "EDITORIAL"
+      ],
+      "source_note": "你站在/可以想成接力，假想不稱實地目擊",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rta2",
+      "scene_id": "c04r-ta",
+      "line_text_sha256": "084b36e28b2c2f2728d82142f0a9d02c23e81f1a6fc2005a325d01f7a00be8ef",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60",
+        "EDITORIAL"
+      ],
+      "source_note": "接力比喻延續，無產能數字",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rt041",
+      "scene_id": "c04r-t04",
+      "line_text_sha256": "214f29d51baf0ccb583e98aeb9cac10fd50000874a4f48d0a6fa1a4024820337",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "416–424及649–655走樣問題",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rt051",
+      "scene_id": "c04r-t05",
+      "line_text_sha256": "a0183b1df862d9594255e03316aac6d5a471696bfe8b2dff8fa509b1e3c9631e",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "同段熱膜展平的機械意義",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rt061",
+      "scene_id": "c04r-t06",
+      "line_text_sha256": "dd1ecc2be7d66ad0d730fb3a477d0e8085392bedcf9c259b05e0293ec1d3337d",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "650–651側展滾輪",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rt071",
+      "scene_id": "c04r-t07",
+      "line_text_sha256": "324a49be55d0b583aa96563ad641c57ab433e34aaeb6b7d4dfaa51090d30c560",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "651接觸展開/離開收回",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rt081",
+      "scene_id": "c04r-t08",
+      "line_text_sha256": "fb2ec6ac343f12fd5d9e02b090f554fc37f14b0fe8be9640d467342971d85661",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "652–660真空、貼合、冷卻",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rt091",
+      "scene_id": "c04r-t09",
+      "line_text_sha256": "b884af5ff7cb5b27e051127e1dd75af8d265303668642d0359ea4afa0cb5f688",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "659–660圖2水冷方案，仍稱提出",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rt101",
+      "scene_id": "c04r-t10",
+      "line_text_sha256": "d5601aeefc8c0f8ede6b97efdd5d1d531ddccebd76db68e7db95f76656661d9a",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "661–662集水/乾燥；專利機制非實廠證據",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rtb1",
+      "scene_id": "c04r-tb",
+      "line_text_sha256": "771e4b06a8b45894e41186581e56daa347719fef1d415a9c9a1bb9db032ea736",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60",
+        "EDITORIAL"
+      ],
+      "source_note": "明示反應",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rtb2",
+      "scene_id": "c04r-tb",
+      "line_text_sha256": "d61c768e94481403ac8e361fcfee4b56631117ca5d97bf2fcb2d35d605e0a2d9",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60",
+        "EDITORIAL"
+      ],
+      "source_note": "加熱/定形設計的白話概括",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rt111",
+      "scene_id": "c04r-t11",
+      "line_text_sha256": "1bbbd5c1a66d64774e8e23493a9423bd794d9a2e7870b64ead475beba9bdb119",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59",
+        "SAH"
+      ],
+      "source_note": "439可成卷；以公司回顧案例接下句",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rt121",
+      "scene_id": "c04r-t12",
+      "line_text_sha256": "f13ef242189c44266b40c92a824152632fd9ede196b922121797f93adc4c96f8",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SAH"
+      ],
+      "source_note": "IBM1401包材關聯明歸公司回顧",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "後製卡僅列可核對的名字/日期/出處。"
+    },
+    {
+      "line_id": "c04rt131",
+      "scene_id": "c04r-t13",
+      "line_text_sha256": "21615ef0a61db0f772beefb7a7c27951909e7376ad32434e703a3461f247bb6b",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "IBM",
+        "SAH"
+      ],
+      "source_note": "IBM PDF17頁支持1960出貨；不稱其證實供應商",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rtc1",
+      "scene_id": "c04r-tc",
+      "line_text_sha256": "e8275f7865d9de3adba0d8d499b1c876ac0e4742d403a52725fafa456ba0b038",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "EDITORIAL",
+        "SAH"
+      ],
+      "source_note": "觀眾用途解讀",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rtc2",
+      "scene_id": "c04r-tc",
+      "line_text_sha256": "6c1299a109005042a49ccb8dc7fd005ec97de55c9a85a8ab9271292a0029c21a",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "EDITORIAL"
+      ],
+      "source_note": "一般運輸保護需求，非某筆採購",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rt141",
+      "scene_id": "c04r-t14",
+      "line_text_sha256": "50b4019bf441ae2c6e23536058f8aad811b79d6b5df75a005bb0588216171c38",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "P59",
+        "SAH"
+      ],
+      "source_note": "用途對照，不定量保證安全",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rt151",
+      "scene_id": "c04r-t15",
+      "line_text_sha256": "c51087c76f2f69dfc532d829de9ab0cb4b36762877ac9664755774d86ef9208b",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_note": "留氣問題，未稱特定貨損",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rt161",
+      "scene_id": "c04r-t16",
+      "line_text_sha256": "a183c7da6ca95efa575d8944e91123454036a66daec730345e3a0b6342c18c9f",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_note": "失氣後幾何/可壓距離的條件性解讀",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rt171",
+      "scene_id": "c04r-t17",
+      "line_text_sha256": "f3777dc5d3259cf830bd5cd866dbab29de1b52ab25d8f23e9bbbb7b96608e927",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA13",
+        "SA17"
+      ],
+      "source_note": "廠商仍討論留氣，無阻隔首用日期",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rt181",
+      "scene_id": "c04r-t18",
+      "line_text_sha256": "3136d28578ed3d94750680fd43d5e5a273b39b097d811a86afa04d53e695f0cd",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "485圖20整片外包層",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rn011",
+      "scene_id": "c04r-n01",
+      "line_text_sha256": "07eca30e783fe9a1fbc9617adc77aea636026c679554a9611adc87bb468286e6",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "485圖20氣/水氣阻隔外層",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "後製卡僅列可核對的名字/日期/出處。"
+    },
+    {
+      "line_id": "c04rn021",
+      "scene_id": "c04r-n02",
+      "line_text_sha256": "cdacfad3332bd6512e44b91c3230e3e21d6d4bc6c7eff7d38d0cc3b62b2a6f3e",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "485周緣封合；不說每顆鍍膜",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rn031",
+      "scene_id": "c04r-n03",
+      "line_text_sha256": "f88b22e3fc19d74a00c8f2087877d3d2634741222d9b3e6086f7d21fb7f5791c",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA13"
+      ],
+      "source_note": "904公司回顧研發；不另排發明年代",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rn041",
+      "scene_id": "c04r-n04",
+      "line_text_sha256": "2fa6234f3d02ae4f15d2a50ee2192d2b44cd7b76e24a8c28a24cb859a7626ccd",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "未由圖20推定商用日期",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rn051",
+      "scene_id": "c04r-n05",
+      "line_text_sha256": "25ccb0831f2e0e7f35b02088504c7e46fa57760562c4d6b3e73ab39f645db703",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17"
+      ],
+      "source_note": "49–54廠商留氣宣稱，非獨立性能結論",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rn061",
+      "scene_id": "c04r-n06",
+      "line_text_sha256": "97d75ddfe6de190f18706ddee6fe0653c2d0c9ef4bc7d5bed83585cdd6d680ef",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17",
+        "EDITORIAL"
+      ],
+      "source_note": "10–12平放儲運相對體積的解讀，無節省倍數",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rn071",
+      "scene_id": "c04r-n07",
+      "line_text_sha256": "b8eeb0e3eed57c22ec3e4d8fd5205c72e00c57a124bd2fcc8d265a8f2f13faf4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17",
+        "EDITORIAL"
+      ],
+      "source_note": "工作站充氣問題",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "後製卡僅列可核對的名字/日期/出處。"
+    },
+    {
+      "line_id": "c04rn081",
+      "scene_id": "c04r-n08",
+      "line_text_sha256": "cc6d7b40d3acc13f12a2f852ca59fed4f3de91776835c24e9e46e4719271e6c1",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17"
+      ],
+      "source_note": "10–12及34–38按需充氣",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rn091",
+      "scene_id": "c04r-n09",
+      "line_text_sha256": "9bca29828e1920aa12b00801d4978ca4aa96407b00edbd63487eab9b40389006",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17"
+      ],
+      "source_note": "日期/產品範圍限制明確",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rna1",
+      "scene_id": "c04r-na",
+      "line_text_sha256": "a0d8405dca774afc4501f184c56698f4106ec440854c62308939ab7dcff27604",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17",
+        "EDITORIAL"
+      ],
+      "source_note": "流程觀眾假想，不是特定員工事件",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rn101",
+      "scene_id": "c04r-n10",
+      "line_text_sha256": "27535f3be1ebb5b7cd77dbd6e6e3096ba03a630131e3e7fb0205d14799403c34",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17"
+      ],
+      "source_note": "34–38配套設備及合理流程差別",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rn111",
+      "scene_id": "c04r-n11",
+      "line_text_sha256": "8d620dbacdd1595bc236e3ca763dabe8338549a1dc1078eb90fee43b4b98f571",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17"
+      ],
+      "source_note": "少占空間歸廠商，非自家實驗",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rn121",
+      "scene_id": "c04r-n12",
+      "line_text_sha256": "a9279cfa8fbe3987d30df21e38ca58dc30bb32905c99c55ee2521a752147292a",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17"
+      ],
+      "source_note": "spec表每12英吋所列XLIB款；未聲稱所有款同規格",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rn131",
+      "scene_id": "c04r-n13",
+      "line_text_sha256": "86ac1086532e3f660e3b26a5978ed3a0094c8cf024a866e45dfc06deddbb1fe4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17"
+      ],
+      "source_note": "49–54重貨/多接點定位歸廠商",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rn141",
+      "scene_id": "c04r-n14",
+      "line_text_sha256": "e345e4349cee5e4027b0252592b27591fa7aad8f83741aae744c18ec7247acae",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17"
+      ],
+      "source_note": "26–28放氣壓平",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rnb1",
+      "scene_id": "c04r-nb",
+      "line_text_sha256": "ee6b85b77992f566932676409c6f19cb78a2899183afe9d1b90ba4ba94e07238",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17",
+        "EDITORIAL"
+      ],
+      "source_note": "明示喜歡的反應",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rnb2",
+      "scene_id": "c04r-nb",
+      "line_text_sha256": "0e7315f19b0706897debf1b57d181f568a61f5331706e6f41e7466d689b8afa7",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17",
+        "EDITORIAL"
+      ],
+      "source_note": "充放氣流程意義，不添史實",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "匿名、無商標的概念插畫；未指稱可考的歷史人物、設備或交易現場。"
+    },
+    {
+      "line_id": "c04rn151",
+      "scene_id": "c04r-outro",
+      "line_text_sha256": "8f7aa91d85fba7863c123818372cd58044c6d83de3839fd742a017a51c4b9162",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "P59",
+        "P60"
+      ],
+      "source_note": "工程主線收束，未加實測或銷量",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "後製卡僅列可核對的名字/日期/出處。"
+    },
+    {
+      "line_id": "c04rn161",
+      "scene_id": "c04r-outro",
+      "line_text_sha256": "add4aa721968ec1743708f2aeb1edb968e50aa96bb3a94ab8c95515bf779ae3d",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "EDITORIAL"
+      ],
+      "source_note": "留言問題",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "後製卡僅列可核對的名字/日期/出處。"
+    },
+    {
+      "line_id": "c04rn171",
+      "scene_id": "c04r-outro",
+      "line_text_sha256": "1ff999f16f7e3031acf201d75e89247c001e25ec94c9b99aca40c4082ee92779",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "EDITORIAL"
+      ],
+      "source_note": "訂閱邀請",
+      "paired_visual_verdict": "PASS",
+      "paired_visual_note": "後製卡僅列可核對的名字/日期/出處。"
+    }
+  ]
+}

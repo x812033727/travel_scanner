@@ -1,0 +1,3989 @@
+{
+  "schema_version": 1,
+  "revision": "C09 length-extension r7",
+  "reviewer": "/root/c04_readiness",
+  "independent": true,
+  "role_disclosure": "Previously translated baseline PT/ID, not Chinese baseline or any rewrite. No subagent spawned.",
+  "reviewed_at_utc": "2026-10-25T20:03:04.131628+00:00",
+  "scope": "Independent exact R6-to-R7 source/written-visual delta; no blind/narrative vote files read or judged.",
+  "verdict": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS",
+  "input_sha256": {
+    "video.json": "aed9598125cfe5fa754c53bfd62ed4672e95a30d347527b2778870111daffcd6",
+    "script.md": "9c0f1ea143b4b750b378d97ee8d27b555ab50255fc621f393c2549344e2f2e59",
+    "narration-only.json": "18c5843875be1525341d3b0f24992baafc227f7b975487a8369e2517a6383d25",
+    "claims.json": "b5fdafc2dcae6e3093acf69be622de9ef4de98fe7f60b2165e6e1e62e038faee"
+  },
+  "supporting_input_sha256": {
+    "brief.md": "55475b788d21d3d51429a9567f0ea660e47a6ecb4c1c373e87fa590082820efb",
+    "series.json": "5f9e789d2acb26c7c97e117292b83897c53eb60f0e4bfde9a3645f6b4e813abb",
+    "claims.md": "e6767a6da2716c531552a8566964ebbf6d67c6a87e61838b866277ed8ab32f86",
+    "author-notes.json": "7a4bf747d2182fa689525db7e82ee585bd989c050ef3e5e9041d3f81a78e84f3",
+    "author-delta-r7.json": "00792df8790e4e3637db8ea9f7a1462292309a0b76eb97661ed09e7103c1d69f"
+  },
+  "r6_binding": {
+    "receipt_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/candidates/length-extension/history/r6/reviews/source-r6-independent.json",
+    "receipt_sha256": "ecdeb89df51dc64d6fbad1b4eaeda889f824fd5ec94043beb296b548d5def11b",
+    "verify_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/candidates/length-extension/history/r6/verify-1.md",
+    "verify_sha256": "c7e6476b4900b42f665da7173cd5c170090429b6bf5bba9c229ea58883eb451f",
+    "all_primary_and_all_supporting_input_hashes_match": true,
+    "historical_PASS_preserved": true,
+    "inheritance_limit": "Only98 exact unchanged text/source objects and95 complete scene objects inherit R6 proof after complete input/raw/cache/PDF/page hash binding. Five modified lines and seven changed scene contexts are rechecked."
+  },
+  "base_binding": {
+    "video_sha256": "875eaca7ba51de28a9e2a198dfd8070325aabec91b58bb7cb903731415fb233a",
+    "script_sha256": "5b18c540cc84442bcfb8eec101dcdea9b4860e6caf36d5e638b8a6ecfb2a3727",
+    "narration_only_sha256": "ed42b56f1d106bb7d5328b7badafe82ec845f806fe9874cbcafefb00ee17e5f4",
+    "claims_json_sha256": "c2ca154b01beaed2f16808506303503eadfebc2c4177f564edd0cea63767ad67",
+    "independent_readiness_report": "/workspace/work/brand-story-20261025/c09-audit/readiness-review.json",
+    "independent_readiness_report_sha256": "cb2832f0e8d40d6ea627ca2f84628a528e935a607032f52ebd8ea80951fdb991",
+    "source_and_written_visual_receipt": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r12-delta.json",
+    "source_and_written_visual_receipt_sha256": "6cdbad01e2b958ce36a40068ffc45d3a76ac32efec23bce6fa026c7531dfa019",
+    "prior_length_readiness_not_inherited": true,
+    "actual_base_inputs_and_receipts_hashes_match": true,
+    "actual_baseline_inputs_and_receipts_hashes_match": true
+  },
+  "base_source_chain": [
+    {
+      "revision": "r1",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-visual-independent.json",
+      "sha256": "d1ec66d48c57d7fc5c7c342bc9104a8f78ae1fbfca382497c7ccedbea3f61200",
+      "actual_bytes_match": true,
+      "historical_verdict_preserved": "hold"
+    },
+    {
+      "revision": "r2",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-visual-r2-delta.json",
+      "sha256": "1a419cfddfd29bdedbae9c99acb29a1c0e8ac3b34d41a34526277c79810b8251",
+      "actual_bytes_match": true,
+      "historical_verdict_preserved": "pass"
+    },
+    {
+      "revision": "r4",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r4-delta.json",
+      "sha256": "e9c56b0399cf294871c4454e63552ca371e3a6672bbdc6b9a351b326301431e4",
+      "actual_bytes_match": true,
+      "historical_verdict_preserved": "PASS"
+    },
+    {
+      "revision": "r5",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r5-delta.json",
+      "sha256": "e2da7fa745a5abb716a4377e383fb28b80e7fba6b60860e38b59eff83f27bdec",
+      "actual_bytes_match": true,
+      "historical_verdict_preserved": "PASS"
+    },
+    {
+      "revision": "r6",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r6-delta.json",
+      "sha256": "0a890d72fc4259dd825db9d9718be98b931b044f11ba3590c90b59e57cc26d26",
+      "actual_bytes_match": true,
+      "historical_verdict_preserved": "PASS"
+    },
+    {
+      "revision": "r7",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r7-delta.json",
+      "sha256": "33dac8226dd7dd58287f2fdf4815b5a44badc7a0ce795b92906d58964062a22d",
+      "actual_bytes_match": true,
+      "historical_verdict_preserved": "HOLD"
+    },
+    {
+      "revision": "r7a",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r7a-delta.json",
+      "sha256": "170341e301ecbda03af49af12d8b0ab371b76f940f94bbf2a2142673a3a2a89d",
+      "actual_bytes_match": true,
+      "historical_verdict_preserved": "PASS"
+    },
+    {
+      "revision": "r8",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r8-delta.json",
+      "sha256": "2d116f80c8b09744089b1759d4fe3b60d4e49d444657745bd5b766a7e8d3033b",
+      "actual_bytes_match": true,
+      "historical_verdict_preserved": "PASS"
+    },
+    {
+      "revision": "r9",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r9-delta.json",
+      "sha256": "365253e92c1e58d7333f4efeed70723fecde7d8aedf5663c37628c5f5af31dc7",
+      "actual_bytes_match": true,
+      "historical_verdict_preserved": "PASS"
+    },
+    {
+      "revision": "r10",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r10-delta.json",
+      "sha256": "8d36352e0002f832ee787289ddd01e87b7133eed061aafb45f274a32abc2b0c2",
+      "actual_bytes_match": true,
+      "historical_verdict_preserved": "PASS"
+    },
+    {
+      "revision": "r11",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r11-delta.json",
+      "sha256": "54478732ffd2b2f702ec3450893fdf48c7f4e16a98ce4dac19f4d8e071317af4",
+      "actual_bytes_match": true,
+      "historical_verdict_preserved": "HOLD"
+    },
+    {
+      "revision": "r12",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r12-delta.json",
+      "sha256": "6cdbad01e2b958ce36a40068ffc45d3a76ac32efec23bce6fa026c7531dfa019",
+      "actual_bytes_match": true,
+      "historical_verdict_preserved": "PASS"
+    }
+  ],
+  "source_documents": [
+    {
+      "source_id": "S1",
+      "url": "https://publications.americanalpineclub.org/articles/12196733400/On-New-Rock-Climbing-Equipment-and-Its-Use",
+      "raw_cache_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S1.html",
+      "raw_bytes": 32948,
+      "raw_sha256": "daabafd3b986b268219b00812e84fedb7a1dd4d6078a4aeb4798a17c27fed19d",
+      "paragraph_cache_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S1.paragraphs.txt",
+      "paragraph_cache_sha256": "f1c68d850f653f19cfd350c76c61a22bb3afe7d4c716b4931d3d2411514e3536",
+      "all_used_paragraphs_reread_and_independently_matched_to_original_html": true,
+      "used_paragraphs": [
+        "002",
+        "004",
+        "005",
+        "009",
+        "010",
+        "018",
+        "019",
+        "021"
+      ]
+    },
+    {
+      "source_id": "S2",
+      "url": "https://www.patagonia.com/stories/sports/climbing/a-word/story-116598.html",
+      "raw_cache_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S2.html",
+      "raw_bytes": 258609,
+      "raw_sha256": "21e79cd2c458e5c11fbd965da5a5df8bc5ff3f9ef3c740dc6a49d8648edf992c",
+      "paragraph_cache_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S2.paragraphs.txt",
+      "paragraph_cache_sha256": "50c2e079d5f8c4416c95ce12368081bf758d449084352f6e2c8a17cd7603d83a",
+      "all_used_paragraphs_reread_and_independently_matched_to_original_html": true,
+      "used_paragraphs": [
+        "025",
+        "027",
+        "029",
+        "030",
+        "034",
+        "035",
+        "036",
+        "043"
+      ]
+    },
+    {
+      "source_id": "S3",
+      "url": "https://publications.americanalpineclub.org/articles/12197352200/Chouinard-Equipment",
+      "raw_cache_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S3.html",
+      "raw_bytes": 17730,
+      "raw_sha256": "5e650b687a3c1d2d22905fe453b72b7fd059e3f02a7eb149e2f349553b2fd498",
+      "paragraph_cache_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S3.paragraphs.txt",
+      "paragraph_cache_sha256": "436ee77e5956f640034df4c4e85497e63b413792e0c5b6a24ad2e28b60d49af7",
+      "all_used_paragraphs_reread_and_independently_matched_to_original_html": true,
+      "used_paragraphs": [
+        "001",
+        "003",
+        "004",
+        "005",
+        "006",
+        "007"
+      ]
+    },
+    {
+      "source_id": "S8",
+      "url": "https://publications.americanalpineclub.org/articles/12197405800/Some-Clean-Wall-Climbs-in-Yosemite",
+      "raw_cache_path": "/workspace/work/brand-story-20261025/c09-audit/r5-source/S8.html",
+      "raw_bytes": 22209,
+      "raw_sha256": "d250cd07512be13f66ae7f8219f5b1024574846f20d555dfec9e0f2ea9aa2b28",
+      "paragraph_cache_path": "/workspace/work/brand-story-20261025/c09-audit/r5-source/S8.paragraphs.txt",
+      "paragraph_cache_sha256": "f5fc4349ca8cd548dd4077164eca37cc88d3952ccc826dba62ee6fe5d92c3c88",
+      "all_used_paragraphs_reread_and_independently_matched_to_original_html": true,
+      "used_paragraphs": [
+        "002",
+        "005",
+        "006",
+        "007",
+        "008",
+        "010",
+        "011",
+        "012",
+        "014",
+        "015",
+        "016",
+        "017",
+        "018",
+        "019",
+        "020",
+        "021"
+      ]
+    },
+    {
+      "source_id": "S4",
+      "url": "https://www.newyorker.com/magazine/1977/01/31/ascending",
+      "raw_cache_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S4.html",
+      "raw_bytes": 1007785,
+      "raw_sha256": "b015781324c18dac48796a12f023d4ac056ae91f6acca478b672b4550abaf562",
+      "paragraph_cache_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S4.paragraphs.txt",
+      "paragraph_cache_sha256": "0e8f818fbdf989ab7d94549c8ada0d562e3f7dc94f9fc9f9fa3ccb36afde9b48",
+      "all_used_paragraphs_reread_and_independently_matched_to_original_html": true,
+      "used_paragraphs": [
+        "006",
+        "007",
+        "008",
+        "009",
+        "010",
+        "028",
+        "031",
+        "033",
+        "035",
+        "045"
+      ]
+    }
+  ],
+  "S8_original_pdf": {
+    "url": "https://aac-publications.s3.amazonaws.com/documents/aaj/1974/PDF/AAJ_1974_19_1_058.pdf",
+    "raw_cache_path": "/workspace/work/brand-story-20261025/c09-audit/r5-source/S8.pdf",
+    "raw_bytes": 5003057,
+    "raw_sha256": "8cbc2bba3bf9a39035dc9167bb9a303acce4ac9bdb45b5810d8380648ad2bfdc",
+    "directly_linked_by_original_html": true,
+    "publication_year": 1974,
+    "narrated_event_year": 1973,
+    "printed_pages": [
+      58,
+      59,
+      60,
+      61
+    ],
+    "independent_method": "Opened actual PDF with PyMuPDF, extracted all four pages and visually read each rendered page; full HTML/PDF normalized transcription exactly matches.",
+    "html_pdf_normalization": "NFKD lowercase alphanumeric, ignore spaces/punctuation and line-break hyphens",
+    "normalized_character_count": 6273,
+    "html_pdf_normalized_exact_match": true,
+    "page_readings": [
+      {
+        "pdf_page": 1,
+        "printed_page": 58,
+        "text_sha256": "7605789209e1977718ec13b142c4afdec355f270fab8077b30191b3bc69d7c0e",
+        "rendered_cache_path": "/workspace/work/brand-story-20261025/c09-audit/r5-source/independent-page-1.png",
+        "rendered_cache_sha256": "e095585dd47cb66e0d78eb88b0dd8058e23a4ee7773501683b70cef021bee3c7",
+        "visually_inspected": true
+      },
+      {
+        "pdf_page": 2,
+        "printed_page": 59,
+        "text_sha256": "2714a8bfbddba6ac6943db1a4a6e652b50559a24c62cac78bd8fcf91223dfcef",
+        "rendered_cache_path": "/workspace/work/brand-story-20261025/c09-audit/r5-source/independent-page-2.png",
+        "rendered_cache_sha256": "696cc52057a9079f1f2e0515af55fee1f24cbd7b08204b946945b9ed0e642a34",
+        "visually_inspected": true
+      },
+      {
+        "pdf_page": 3,
+        "printed_page": 60,
+        "text_sha256": "1c5c92e21a19bcdc67a6e91ddb6b8d54f21bc770d2648715f2c30aa823716a47",
+        "rendered_cache_path": "/workspace/work/brand-story-20261025/c09-audit/r5-source/independent-page-3.png",
+        "rendered_cache_sha256": "f1e687c03489a6ad3513123ceb76a64b77519cbb23520352eba19bf3189e79d0",
+        "visually_inspected": true
+      },
+      {
+        "pdf_page": 4,
+        "printed_page": 61,
+        "text_sha256": "a91cd2bda03d87142bb2670f942198404bc8fbecb8769c11bc47ead689393024",
+        "rendered_cache_path": "/workspace/work/brand-story-20261025/c09-audit/r5-source/independent-page-4.png",
+        "rendered_cache_sha256": "5027e4bd952cf04a32789e5ed79d110f4c66171d8ac8ab2c3bb0c2a86fb865ca",
+        "visually_inspected": true
+      }
+    ],
+    "r6_method_note": "R5 four-page original text/image proof bytes revalidated. This turn reopened actual original PDF text on printed59–60 for the revised question/completion scope, without claiming four new visual rereads.",
+    "r7_method_note": "Protected original PDF and all four R5 page proof hashes match. This delta rereads relevant original HTML paragraphs; no new four-page visual reread or new network retrieval claimed."
+  },
+  "counts": {
+    "narration_lines": 103,
+    "unchanged_retained_text_source_objects": 98,
+    "direct_modified_line_rechecks": 5,
+    "deleted_lines": 4,
+    "deleted_shot_scenes": 3,
+    "source_pass": 103,
+    "source_hold": 0,
+    "scenes": 102,
+    "anonymous_shots": 101,
+    "outro": 1,
+    "unchanged_retained_complete_scene_objects": 95,
+    "changed_context_scene_objects": 7,
+    "all_retained_written_scene_data_unchanged": 102,
+    "written_visual_pass": 102,
+    "written_visual_hold": 0,
+    "anchor_instances_rehashed": 142,
+    "unique_current_anchor_hashes_bound": 47,
+    "chapters": 6,
+    "loops": 28
+  },
+  "exact_delta": {
+    "whole_video_equals_r6_after_only_declared_operations": true,
+    "deleted_line_ids": [
+      "c09r5037",
+      "c09r5048",
+      "c09r5096",
+      "c09r5110"
+    ],
+    "deleted_scene_ids": [
+      "c09r5-shot-037",
+      "c09r5-shot-048",
+      "c09r5-shot-096"
+    ],
+    "modified_line_ids": [
+      "c09r5038",
+      "c09r5045",
+      "c09r5060",
+      "c09r5087",
+      "c09r5097"
+    ],
+    "new_ids": [],
+    "all_retained_visual_data_source_anchors_camera_emotion_speaker_unchanged": true,
+    "top_video_fields_unchanged_except_declared_loop": true,
+    "retained_relative_order_unchanged": true,
+    "opening_8_lines_unchanged": true,
+    "narration_and_claim_arrays_equal_declared_projection": true,
+    "script_claims_md_video_narration_id_text_order_source_anchors_match": true,
+    "author_delta_sha256": "00792df8790e4e3637db8ea9f7a1462292309a0b76eb97661ed09e7103c1d69f",
+    "actual_changes_match_author_delta": true
+  },
+  "direct_line_reviews": [
+    {
+      "line_id": "c09r5037",
+      "operation": "delete",
+      "previous_text_sha256": "cb18c63c11f6dc8e78ba3e39136cc27e81e015c1696e15624f1a406b886abcc8",
+      "previous_source_PASS_preserved": true,
+      "basis": "Editorial deletion, not a new source failure."
+    },
+    {
+      "line_id": "c09r5048",
+      "operation": "delete",
+      "previous_text_sha256": "762cb45aa6bef440f4892f59e85c7c89cde548665ab676f7f1fb075b5ccdd99f",
+      "previous_source_PASS_preserved": true,
+      "basis": "Editorial deletion, not a new source failure."
+    },
+    {
+      "line_id": "c09r5096",
+      "operation": "delete",
+      "previous_text_sha256": "7f61d63a477fd70267912bb5cfcb29c354a06a39c7ba01732c1752a8b46cf4cb",
+      "previous_source_PASS_preserved": true,
+      "basis": "Editorial deletion, not a new source failure."
+    },
+    {
+      "line_id": "c09r5110",
+      "operation": "delete",
+      "previous_text_sha256": "c791d2df11e6d954992f6cf06b9d954b934b13f64d9bab7ad16ff6767f13e0f8",
+      "previous_source_PASS_preserved": true,
+      "basis": "Editorial deletion, not a new source failure."
+    },
+    {
+      "line_id": "c09r5038",
+      "operation": "replace",
+      "before": "那麼，最熟悉這些動作的賣家自己，當時願意換嗎？",
+      "after": "我更想知道，最熟悉這些動作的賣家自己，當時願意換嗎？",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "只將原問題轉為我更想知道的旁白反應；不是1970Chouinard心理的新增第一人稱，後句仍以回信作答。"
+    },
+    {
+      "line_id": "c09r5045",
+      "operation": "replace",
+      "before": "報導寫，有些原本能用小釘子的裂縫，後來得換大釘子；工具的尺寸，也跟著傷痕走。",
+      "after": "報導寫，有些原本能用小釘子的裂縫，後來得換大釘子。",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "保留S4:008原有小裂縫改需較大釘的報導歸屬，僅撤同義歸納；沒有擴成所有裂縫或新的尺寸規格。"
+    },
+    {
+      "line_id": "c09r5060",
+      "operation": "replace",
+      "before": "還要把位置記進當地攀登指南。工具留在岩壁，資訊也得讓下一個人接得到。",
+      "after": "還要把位置記進當地攀登指南。",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "保留S2:030地方指南記錄，仍緊承5059必要固定釘的條件；不把登記要求變成普遍留釘。"
+    },
+    {
+      "line_id": "c09r5087",
+      "operation": "replace",
+      "before": "目標是酋長岩的鼻子路線。他們把這件事，從冊子上的要求，帶到了一次真正的大岩壁攀登。",
+      "after": "目標是酋長岩的鼻子路線。",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "保留S8:011目標Nose on El Capitan；緊承5086兩人晚8月約定，未更換主體/日期/路線。"
+    },
+    {
+      "line_id": "c09r5097",
+      "operation": "replace",
+      "before": "那麼，卡森最後真的得丟下搭檔，照自己盤算的獨攀計畫走嗎？",
+      "after": "我想知道，卡森最後真的得丟下搭檔，照自己盤算的獨攀計畫走嗎？",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "我想知道為旁白反應；Carson仍是原文條件性獨攀念的當事人，5098以原記錄答未分手，不變成真獨攀或free solo。"
+    }
+  ],
+  "chapter_checks": {
+    "move": [
+      {
+        "chapter": "十四頁，要改掉一個動作",
+        "from_scene": "c09r5-shot-048",
+        "to_scene": "c09r5-shot-049"
+      }
+    ],
+    "six_chapter_titles_and_order_preserved": true,
+    "chapter_head_now_resolves_to_retained_049": true,
+    "original_question_answer_attribution_bridges_preserved": true,
+    "narrative_merit_not_judged": true
+  },
+  "loop_checks": {
+    "single_rebind_matches_exact_object": true,
+    "change": [
+      {
+        "operation": "rebind",
+        "before": {
+          "setup": "c09r5008",
+          "payoff": "c09r5110",
+          "what": "賣家怎樣讓少敲的勸告承受真實重量"
+        },
+        "after": {
+          "setup": "c09r5008",
+          "payoff": "c09r5091",
+          "what": "賣家自己把重量交給楔塊時，第一次實際承重的結果"
+        },
+        "reason": "刪除末尾歸納後，指向5091首次實際承重的直接動作，不以新標籤冒充額外結果。"
+      }
+    ],
+    "all_56_endpoints_resolve": true,
+    "all_active_shot_source_thumbnail_refs_resolve": true,
+    "no_deleted_id_in_active_video": true,
+    "new_opening_payoff": [
+      "c09r5008",
+      "c09r5091"
+    ],
+    "source_scope_of_first": "First nut taking weight in the documented1973 Nose start / first delivery in this story, not lifetime first standing on or using nuts. S4:008 already documents1959/1960 chock use.",
+    "self_practice_payoff_5068_5106_unchanged": true,
+    "completion_not_profit_motive_morality_or_all_route_proof": true,
+    "narrative_merit_not_judged": true
+  },
+  "direct_original_paragraphs_reread": [
+    {
+      "anchor_id": "S2:030",
+      "paragraph_sha256": "bbfa4347226d188595acc7aa57bcbf19a9642b54d2103d7871ba3314e5e27d79",
+      "raw_html_sha256": "21e79cd2c458e5c11fbd965da5a5df8bc5ff3f9ef3c740dc6a49d8648edf992c",
+      "paragraph_cache_sha256": "50c2e079d5f8c4416c95ce12368081bf758d449084352f6e2c8a17cd7603d83a",
+      "original_html_p_reextracted_and_reread": true
+    },
+    {
+      "anchor_id": "S4:008",
+      "paragraph_sha256": "36dbc0632ac094a5c99d32d385b1a7c686d687881890c0c4af66615db20b7895",
+      "raw_html_sha256": "b015781324c18dac48796a12f023d4ac056ae91f6acca478b672b4550abaf562",
+      "paragraph_cache_sha256": "0e8f818fbdf989ab7d94549c8ada0d562e3f7dc94f9fc9f9fa3ccb36afde9b48",
+      "original_html_p_reextracted_and_reread": true
+    },
+    {
+      "anchor_id": "S8:011",
+      "paragraph_sha256": "5f44b8c171dfb335733fd2f29f07a9e70e2f09c54d0eacdc9ddaffea9007d6ce",
+      "raw_html_sha256": "d250cd07512be13f66ae7f8219f5b1024574846f20d555dfec9e0f2ea9aa2b28",
+      "paragraph_cache_sha256": "f5fc4349ca8cd548dd4077164eca37cc88d3952ccc826dba62ee6fe5d92c3c88",
+      "original_html_p_reextracted_and_reread": true
+    },
+    {
+      "anchor_id": "S8:014",
+      "paragraph_sha256": "922c3302265f65b331300e1cbc1fe3eed26ad47d7bf102194375bb26193615d4",
+      "raw_html_sha256": "d250cd07512be13f66ae7f8219f5b1024574846f20d555dfec9e0f2ea9aa2b28",
+      "paragraph_cache_sha256": "f5fc4349ca8cd548dd4077164eca37cc88d3952ccc826dba62ee6fe5d92c3c88",
+      "original_html_p_reextracted_and_reread": true
+    },
+    {
+      "anchor_id": "S8:015",
+      "paragraph_sha256": "e83d700eeb25f485ddc34c4a84fdb679191afc6f1d8d227a76f402eed88949a2",
+      "raw_html_sha256": "d250cd07512be13f66ae7f8219f5b1024574846f20d555dfec9e0f2ea9aa2b28",
+      "paragraph_cache_sha256": "f5fc4349ca8cd548dd4077164eca37cc88d3952ccc826dba62ee6fe5d92c3c88",
+      "original_html_p_reextracted_and_reread": true
+    },
+    {
+      "anchor_id": "S8:018",
+      "paragraph_sha256": "5b0790cf391ea7cccbe14ef9ce4490379babbde9768df799b28b14e6eded5bb3",
+      "raw_html_sha256": "d250cd07512be13f66ae7f8219f5b1024574846f20d555dfec9e0f2ea9aa2b28",
+      "paragraph_cache_sha256": "f5fc4349ca8cd548dd4077164eca37cc88d3952ccc826dba62ee6fe5d92c3c88",
+      "original_html_p_reextracted_and_reread": true
+    }
+  ],
+  "candidate_anchor_hash_checks": [
+    {
+      "line_id": "c09r5001",
+      "anchor_id": "S1:004",
+      "paragraph_sha256": "d6f40450b9a8e396b5d59fd443fd8510baf3f0b878641c22ab30fff0ef7aab65"
+    },
+    {
+      "line_id": "c09r5001",
+      "anchor_id": "S2:029",
+      "paragraph_sha256": "a3eba184744364fc099dc1f9a063b2fe663bb22e7b731c72b8e369f75e060794"
+    },
+    {
+      "line_id": "c09r5002",
+      "anchor_id": "S2:029",
+      "paragraph_sha256": "a3eba184744364fc099dc1f9a063b2fe663bb22e7b731c72b8e369f75e060794"
+    },
+    {
+      "line_id": "c09r5003",
+      "anchor_id": "S2:025",
+      "paragraph_sha256": "1f05c0b72f99dce42c744750439c3e59711c258ba6d057b4558c6d3d0adcee1b"
+    },
+    {
+      "line_id": "c09r5003",
+      "anchor_id": "S3:001",
+      "paragraph_sha256": "6d1f80abf5f8556829ca2aa330a87d33e2c02a2ed88a05289a6eec0351a7b2e5"
+    },
+    {
+      "line_id": "c09r5004",
+      "anchor_id": "S2:036",
+      "paragraph_sha256": "7c6b98bb8176203685b93308d13767b31157ed1df32324c93552a6c8dbd27b14"
+    },
+    {
+      "line_id": "c09r5004",
+      "anchor_id": "S2:043",
+      "paragraph_sha256": "dc8a72bc5ac672e4ad9cac6012dd6571902b827ee4e5f17d9bae78da93477c9e"
+    },
+    {
+      "line_id": "c09r5005",
+      "anchor_id": "S2:035",
+      "paragraph_sha256": "39c7bda599f9ef83ab7791682a4d7d661f6e93e9491203e0af180120875aecd6"
+    },
+    {
+      "line_id": "c09r5005",
+      "anchor_id": "S2:036",
+      "paragraph_sha256": "7c6b98bb8176203685b93308d13767b31157ed1df32324c93552a6c8dbd27b14"
+    },
+    {
+      "line_id": "c09r5006",
+      "anchor_id": "S8:011",
+      "paragraph_sha256": "5f44b8c171dfb335733fd2f29f07a9e70e2f09c54d0eacdc9ddaffea9007d6ce"
+    },
+    {
+      "line_id": "c09r5006",
+      "anchor_id": "S8:012",
+      "paragraph_sha256": "dc687349b9ad3b3247f3b7496abd0cfd09028f9b877defb4005325ef16540712"
+    },
+    {
+      "line_id": "c09r5007",
+      "anchor_id": "S2:043",
+      "paragraph_sha256": "dc8a72bc5ac672e4ad9cac6012dd6571902b827ee4e5f17d9bae78da93477c9e"
+    },
+    {
+      "line_id": "c09r5007",
+      "anchor_id": "S8:011",
+      "paragraph_sha256": "5f44b8c171dfb335733fd2f29f07a9e70e2f09c54d0eacdc9ddaffea9007d6ce"
+    },
+    {
+      "line_id": "c09r5007",
+      "anchor_id": "S8:019",
+      "paragraph_sha256": "ef606dfdd06432b00b2378fa5828d9be2814b01de59866d1eb78ce8d173054f7"
+    },
+    {
+      "line_id": "c09r5008",
+      "anchor_id": "S2:030",
+      "paragraph_sha256": "bbfa4347226d188595acc7aa57bcbf19a9642b54d2103d7871ba3314e5e27d79"
+    },
+    {
+      "line_id": "c09r5008",
+      "anchor_id": "S8:021",
+      "paragraph_sha256": "813ee8da6dfcc258464c5bfed4974c3a2d0bcc8b9ce794bc06ca8c49c92c5f6b"
+    },
+    {
+      "line_id": "c09r5009",
+      "anchor_id": "S4:033",
+      "paragraph_sha256": "1da3fcad66da18fd9e8c17932d76ecef436342d3327832e14fbfe4cbf8dd8f2f"
+    },
+    {
+      "line_id": "c09r5010",
+      "anchor_id": "S4:033",
+      "paragraph_sha256": "1da3fcad66da18fd9e8c17932d76ecef436342d3327832e14fbfe4cbf8dd8f2f"
+    },
+    {
+      "line_id": "c09r5011",
+      "anchor_id": "S4:028",
+      "paragraph_sha256": "52002b69b170694db32d0792816351e42c9278830f3f50786ec4e11be764cbda"
+    },
+    {
+      "line_id": "c09r5012",
+      "anchor_id": "S4:031",
+      "paragraph_sha256": "767503a7981d35398b97d8f898a43e8a432ed04d91d937e1f962053d32e9900c"
+    },
+    {
+      "line_id": "c09r5013",
+      "anchor_id": "S4:031",
+      "paragraph_sha256": "767503a7981d35398b97d8f898a43e8a432ed04d91d937e1f962053d32e9900c"
+    },
+    {
+      "line_id": "c09r5014",
+      "anchor_id": "S4:033",
+      "paragraph_sha256": "1da3fcad66da18fd9e8c17932d76ecef436342d3327832e14fbfe4cbf8dd8f2f"
+    },
+    {
+      "line_id": "c09r5015",
+      "anchor_id": "S4:033",
+      "paragraph_sha256": "1da3fcad66da18fd9e8c17932d76ecef436342d3327832e14fbfe4cbf8dd8f2f"
+    },
+    {
+      "line_id": "c09r5016",
+      "anchor_id": "S4:033",
+      "paragraph_sha256": "1da3fcad66da18fd9e8c17932d76ecef436342d3327832e14fbfe4cbf8dd8f2f"
+    },
+    {
+      "line_id": "c09r5017",
+      "anchor_id": "S4:035",
+      "paragraph_sha256": "2971cbed6ade34f7c1ce38b56a56e0e8eedd3fd231ac16e1f20a3ebca00ed62f"
+    },
+    {
+      "line_id": "c09r5018",
+      "anchor_id": "S4:035",
+      "paragraph_sha256": "2971cbed6ade34f7c1ce38b56a56e0e8eedd3fd231ac16e1f20a3ebca00ed62f"
+    },
+    {
+      "line_id": "c09r5019",
+      "anchor_id": "S4:035",
+      "paragraph_sha256": "2971cbed6ade34f7c1ce38b56a56e0e8eedd3fd231ac16e1f20a3ebca00ed62f"
+    },
+    {
+      "line_id": "c09r5020",
+      "anchor_id": "S4:035",
+      "paragraph_sha256": "2971cbed6ade34f7c1ce38b56a56e0e8eedd3fd231ac16e1f20a3ebca00ed62f"
+    },
+    {
+      "line_id": "c09r5021",
+      "anchor_id": "S4:035",
+      "paragraph_sha256": "2971cbed6ade34f7c1ce38b56a56e0e8eedd3fd231ac16e1f20a3ebca00ed62f"
+    },
+    {
+      "line_id": "c09r5022",
+      "anchor_id": "S4:035",
+      "paragraph_sha256": "2971cbed6ade34f7c1ce38b56a56e0e8eedd3fd231ac16e1f20a3ebca00ed62f"
+    },
+    {
+      "line_id": "c09r5023",
+      "anchor_id": "S4:045",
+      "paragraph_sha256": "b89c6d4344c460b8e5a36db2099dcb95a0741ac73100ff52f774ae8b6e7ad524"
+    },
+    {
+      "line_id": "c09r5024",
+      "anchor_id": "S4:045",
+      "paragraph_sha256": "b89c6d4344c460b8e5a36db2099dcb95a0741ac73100ff52f774ae8b6e7ad524"
+    },
+    {
+      "line_id": "c09r5025",
+      "anchor_id": "S4:045",
+      "paragraph_sha256": "b89c6d4344c460b8e5a36db2099dcb95a0741ac73100ff52f774ae8b6e7ad524"
+    },
+    {
+      "line_id": "c09r5026",
+      "anchor_id": "S4:045",
+      "paragraph_sha256": "b89c6d4344c460b8e5a36db2099dcb95a0741ac73100ff52f774ae8b6e7ad524"
+    },
+    {
+      "line_id": "c09r5027",
+      "anchor_id": "S1:004",
+      "paragraph_sha256": "d6f40450b9a8e396b5d59fd443fd8510baf3f0b878641c22ab30fff0ef7aab65"
+    },
+    {
+      "line_id": "c09r5027",
+      "anchor_id": "S1:005",
+      "paragraph_sha256": "c08f414b0dfd72f2ccfe25954bae0410d31e41e01c594e9e519f0c30f27c43f8"
+    },
+    {
+      "line_id": "c09r5027",
+      "anchor_id": "S2:027",
+      "paragraph_sha256": "5120caf056a13c5cdeadad21577c5ad61c2a5d40c1b16462287d55f2c08cc034"
+    },
+    {
+      "line_id": "c09r5028",
+      "anchor_id": "S1:002",
+      "paragraph_sha256": "63b04f4e9a3302b736d45d0266f0ecc76304340c872380ed98c5b97498a64eb1"
+    },
+    {
+      "line_id": "c09r5028",
+      "anchor_id": "S1:009",
+      "paragraph_sha256": "c6103ce5f132159389400ab375b0e0919492e941f2e7a0c2df2ae5d2a4a02f09"
+    },
+    {
+      "line_id": "c09r5029",
+      "anchor_id": "S1:009",
+      "paragraph_sha256": "c6103ce5f132159389400ab375b0e0919492e941f2e7a0c2df2ae5d2a4a02f09"
+    },
+    {
+      "line_id": "c09r5030",
+      "anchor_id": "S1:010",
+      "paragraph_sha256": "4f9fbc5e44fea0fe3bcc242dd88642faadc0049d63bda0fbc62b1c12391b955b"
+    },
+    {
+      "line_id": "c09r5031",
+      "anchor_id": "S1:004",
+      "paragraph_sha256": "d6f40450b9a8e396b5d59fd443fd8510baf3f0b878641c22ab30fff0ef7aab65"
+    },
+    {
+      "line_id": "c09r5032",
+      "anchor_id": "S1:018",
+      "paragraph_sha256": "2b0c04fd760b69f17322c35c74beab9f8465ceb4e71d5817763f8150abf6d5bd"
+    },
+    {
+      "line_id": "c09r5033",
+      "anchor_id": "S1:018",
+      "paragraph_sha256": "2b0c04fd760b69f17322c35c74beab9f8465ceb4e71d5817763f8150abf6d5bd"
+    },
+    {
+      "line_id": "c09r5034",
+      "anchor_id": "S1:018",
+      "paragraph_sha256": "2b0c04fd760b69f17322c35c74beab9f8465ceb4e71d5817763f8150abf6d5bd"
+    },
+    {
+      "line_id": "c09r5035",
+      "anchor_id": "S1:019",
+      "paragraph_sha256": "f2e31ad20925be5a3391507fcd00868e613b55dab292c90a85572fb649cd3ce2"
+    },
+    {
+      "line_id": "c09r5035",
+      "anchor_id": "S1:021",
+      "paragraph_sha256": "ce324f786e32352f838cbb5558afabc65bd244ca8313a9f680c92718545d3329"
+    },
+    {
+      "line_id": "c09r5036",
+      "anchor_id": "S1:019",
+      "paragraph_sha256": "f2e31ad20925be5a3391507fcd00868e613b55dab292c90a85572fb649cd3ce2"
+    },
+    {
+      "line_id": "c09r5036",
+      "anchor_id": "S1:021",
+      "paragraph_sha256": "ce324f786e32352f838cbb5558afabc65bd244ca8313a9f680c92718545d3329"
+    },
+    {
+      "line_id": "c09r5038",
+      "anchor_id": "S4:008",
+      "paragraph_sha256": "36dbc0632ac094a5c99d32d385b1a7c686d687881890c0c4af66615db20b7895"
+    },
+    {
+      "line_id": "c09r5039",
+      "anchor_id": "S4:008",
+      "paragraph_sha256": "36dbc0632ac094a5c99d32d385b1a7c686d687881890c0c4af66615db20b7895"
+    },
+    {
+      "line_id": "c09r5040",
+      "anchor_id": "S4:008",
+      "paragraph_sha256": "36dbc0632ac094a5c99d32d385b1a7c686d687881890c0c4af66615db20b7895"
+    },
+    {
+      "line_id": "c09r5041",
+      "anchor_id": "S2:029",
+      "paragraph_sha256": "a3eba184744364fc099dc1f9a063b2fe663bb22e7b731c72b8e369f75e060794"
+    },
+    {
+      "line_id": "c09r5041",
+      "anchor_id": "S4:008",
+      "paragraph_sha256": "36dbc0632ac094a5c99d32d385b1a7c686d687881890c0c4af66615db20b7895"
+    },
+    {
+      "line_id": "c09r5043",
+      "anchor_id": "S2:029",
+      "paragraph_sha256": "a3eba184744364fc099dc1f9a063b2fe663bb22e7b731c72b8e369f75e060794"
+    },
+    {
+      "line_id": "c09r5044",
+      "anchor_id": "S4:008",
+      "paragraph_sha256": "36dbc0632ac094a5c99d32d385b1a7c686d687881890c0c4af66615db20b7895"
+    },
+    {
+      "line_id": "c09r5045",
+      "anchor_id": "S4:008",
+      "paragraph_sha256": "36dbc0632ac094a5c99d32d385b1a7c686d687881890c0c4af66615db20b7895"
+    },
+    {
+      "line_id": "c09r5046",
+      "anchor_id": "S4:008",
+      "paragraph_sha256": "36dbc0632ac094a5c99d32d385b1a7c686d687881890c0c4af66615db20b7895"
+    },
+    {
+      "line_id": "c09r5047",
+      "anchor_id": "S2:030",
+      "paragraph_sha256": "bbfa4347226d188595acc7aa57bcbf19a9642b54d2103d7871ba3314e5e27d79"
+    },
+    {
+      "line_id": "c09r5047",
+      "anchor_id": "S2:036",
+      "paragraph_sha256": "7c6b98bb8176203685b93308d13767b31157ed1df32324c93552a6c8dbd27b14"
+    },
+    {
+      "line_id": "c09r5047",
+      "anchor_id": "S4:010",
+      "paragraph_sha256": "bbf233246fdc7743318c823cd35facb662c281ca36e769fcd8aa61a832e3cf03"
+    },
+    {
+      "line_id": "c09r5049",
+      "anchor_id": "S4:007",
+      "paragraph_sha256": "e9fcee2d0fba38678fd79157ee41154398bf4b8b0beff9f9df634c8817443f05"
+    },
+    {
+      "line_id": "c09r5050",
+      "anchor_id": "S4:007",
+      "paragraph_sha256": "e9fcee2d0fba38678fd79157ee41154398bf4b8b0beff9f9df634c8817443f05"
+    },
+    {
+      "line_id": "c09r5051",
+      "anchor_id": "S4:006",
+      "paragraph_sha256": "435b9b5b5db78bcb967b2e7939d261f474fabf320cffe9bdc4dd59e449e8e35c"
+    },
+    {
+      "line_id": "c09r5052",
+      "anchor_id": "S4:010",
+      "paragraph_sha256": "bbf233246fdc7743318c823cd35facb662c281ca36e769fcd8aa61a832e3cf03"
+    },
+    {
+      "line_id": "c09r5053",
+      "anchor_id": "S2:030",
+      "paragraph_sha256": "bbfa4347226d188595acc7aa57bcbf19a9642b54d2103d7871ba3314e5e27d79"
+    },
+    {
+      "line_id": "c09r5053",
+      "anchor_id": "S4:010",
+      "paragraph_sha256": "bbf233246fdc7743318c823cd35facb662c281ca36e769fcd8aa61a832e3cf03"
+    },
+    {
+      "line_id": "c09r5054",
+      "anchor_id": "S4:010",
+      "paragraph_sha256": "bbf233246fdc7743318c823cd35facb662c281ca36e769fcd8aa61a832e3cf03"
+    },
+    {
+      "line_id": "c09r5055",
+      "anchor_id": "S4:010",
+      "paragraph_sha256": "bbf233246fdc7743318c823cd35facb662c281ca36e769fcd8aa61a832e3cf03"
+    },
+    {
+      "line_id": "c09r5056",
+      "anchor_id": "S4:010",
+      "paragraph_sha256": "bbf233246fdc7743318c823cd35facb662c281ca36e769fcd8aa61a832e3cf03"
+    },
+    {
+      "line_id": "c09r5057",
+      "anchor_id": "S2:030",
+      "paragraph_sha256": "bbfa4347226d188595acc7aa57bcbf19a9642b54d2103d7871ba3314e5e27d79"
+    },
+    {
+      "line_id": "c09r5058",
+      "anchor_id": "S2:030",
+      "paragraph_sha256": "bbfa4347226d188595acc7aa57bcbf19a9642b54d2103d7871ba3314e5e27d79"
+    },
+    {
+      "line_id": "c09r5059",
+      "anchor_id": "S2:030",
+      "paragraph_sha256": "bbfa4347226d188595acc7aa57bcbf19a9642b54d2103d7871ba3314e5e27d79"
+    },
+    {
+      "line_id": "c09r5060",
+      "anchor_id": "S2:030",
+      "paragraph_sha256": "bbfa4347226d188595acc7aa57bcbf19a9642b54d2103d7871ba3314e5e27d79"
+    },
+    {
+      "line_id": "c09r5061",
+      "anchor_id": "S2:030",
+      "paragraph_sha256": "bbfa4347226d188595acc7aa57bcbf19a9642b54d2103d7871ba3314e5e27d79"
+    },
+    {
+      "line_id": "c09r5062",
+      "anchor_id": "S2:030",
+      "paragraph_sha256": "bbfa4347226d188595acc7aa57bcbf19a9642b54d2103d7871ba3314e5e27d79"
+    },
+    {
+      "line_id": "c09r5063",
+      "anchor_id": "S2:034",
+      "paragraph_sha256": "9c192cf2d81130b40b352725768abe3fc77af87db4c1c3bc22b63ce58a00c118"
+    },
+    {
+      "line_id": "c09r5064",
+      "anchor_id": "S3:005",
+      "paragraph_sha256": "904ef91951eaa168edeb8e3c56a4519d2ea86e8f0ccc7e44956dd6366cf5055b"
+    },
+    {
+      "line_id": "c09r5064",
+      "anchor_id": "S3:006",
+      "paragraph_sha256": "7a96e09751984d408bd5f070ace9c43365c89b989e6a267b356e518273e0ef44"
+    },
+    {
+      "line_id": "c09r5064",
+      "anchor_id": "S3:007",
+      "paragraph_sha256": "238447e2201fedb0eac6a89092885304e824904642fc47cbea27246139f3fb65"
+    },
+    {
+      "line_id": "c09r5065",
+      "anchor_id": "S3:001",
+      "paragraph_sha256": "6d1f80abf5f8556829ca2aa330a87d33e2c02a2ed88a05289a6eec0351a7b2e5"
+    },
+    {
+      "line_id": "c09r5065",
+      "anchor_id": "S3:005",
+      "paragraph_sha256": "904ef91951eaa168edeb8e3c56a4519d2ea86e8f0ccc7e44956dd6366cf5055b"
+    },
+    {
+      "line_id": "c09r5066",
+      "anchor_id": "S3:005",
+      "paragraph_sha256": "904ef91951eaa168edeb8e3c56a4519d2ea86e8f0ccc7e44956dd6366cf5055b"
+    },
+    {
+      "line_id": "c09r5067",
+      "anchor_id": "S3:005",
+      "paragraph_sha256": "904ef91951eaa168edeb8e3c56a4519d2ea86e8f0ccc7e44956dd6366cf5055b"
+    },
+    {
+      "line_id": "c09r5068",
+      "anchor_id": "S3:005",
+      "paragraph_sha256": "904ef91951eaa168edeb8e3c56a4519d2ea86e8f0ccc7e44956dd6366cf5055b"
+    },
+    {
+      "line_id": "c09r5068",
+      "anchor_id": "S4:009",
+      "paragraph_sha256": "e283bd886c9500a653c84742a5b9b2d443c47e0e83ef82a0ca3030cec9a2364a"
+    },
+    {
+      "line_id": "c09r5068",
+      "anchor_id": "S8:011",
+      "paragraph_sha256": "5f44b8c171dfb335733fd2f29f07a9e70e2f09c54d0eacdc9ddaffea9007d6ce"
+    },
+    {
+      "line_id": "c09r5068",
+      "anchor_id": "S8:019",
+      "paragraph_sha256": "ef606dfdd06432b00b2378fa5828d9be2814b01de59866d1eb78ce8d173054f7"
+    },
+    {
+      "line_id": "c09r5069",
+      "anchor_id": "S3:007",
+      "paragraph_sha256": "238447e2201fedb0eac6a89092885304e824904642fc47cbea27246139f3fb65"
+    },
+    {
+      "line_id": "c09r5070",
+      "anchor_id": "S3:007",
+      "paragraph_sha256": "238447e2201fedb0eac6a89092885304e824904642fc47cbea27246139f3fb65"
+    },
+    {
+      "line_id": "c09r5074",
+      "anchor_id": "S3:004",
+      "paragraph_sha256": "5a1fb138408986437356538a441f4a38b22c78ee4f31a05fe13303c741afd98e"
+    },
+    {
+      "line_id": "c09r5075",
+      "anchor_id": "S3:005",
+      "paragraph_sha256": "904ef91951eaa168edeb8e3c56a4519d2ea86e8f0ccc7e44956dd6366cf5055b"
+    },
+    {
+      "line_id": "c09r5075",
+      "anchor_id": "S8:011",
+      "paragraph_sha256": "5f44b8c171dfb335733fd2f29f07a9e70e2f09c54d0eacdc9ddaffea9007d6ce"
+    },
+    {
+      "line_id": "c09r5076",
+      "anchor_id": "S8:002",
+      "paragraph_sha256": "15158181ac65bbbbb487c31d9a31d5b24e105b3d796f39314506f153644c88b6"
+    },
+    {
+      "line_id": "c09r5076",
+      "anchor_id": "S8:005",
+      "paragraph_sha256": "b4084d20fe2b3fc7c29d0ae4c32ce4b42003fc5cbec5bcedd9a11fc8dac73617"
+    },
+    {
+      "line_id": "c09r5076",
+      "anchor_id": "S8:011",
+      "paragraph_sha256": "5f44b8c171dfb335733fd2f29f07a9e70e2f09c54d0eacdc9ddaffea9007d6ce"
+    },
+    {
+      "line_id": "c09r5077",
+      "anchor_id": "S8:005",
+      "paragraph_sha256": "b4084d20fe2b3fc7c29d0ae4c32ce4b42003fc5cbec5bcedd9a11fc8dac73617"
+    },
+    {
+      "line_id": "c09r5078",
+      "anchor_id": "S8:005",
+      "paragraph_sha256": "b4084d20fe2b3fc7c29d0ae4c32ce4b42003fc5cbec5bcedd9a11fc8dac73617"
+    },
+    {
+      "line_id": "c09r5078",
+      "anchor_id": "S8:007",
+      "paragraph_sha256": "842b9c23da9d4dccf20d340981994c88f44591044c0452dd96c1cc19145e286f"
+    },
+    {
+      "line_id": "c09r5079",
+      "anchor_id": "S8:005",
+      "paragraph_sha256": "b4084d20fe2b3fc7c29d0ae4c32ce4b42003fc5cbec5bcedd9a11fc8dac73617"
+    },
+    {
+      "line_id": "c09r5079",
+      "anchor_id": "S8:006",
+      "paragraph_sha256": "38e698d67dcfcb545848497ecb4ca20637f64b1c314845d17b017ed9dea4b47d"
+    },
+    {
+      "line_id": "c09r5080",
+      "anchor_id": "S8:007",
+      "paragraph_sha256": "842b9c23da9d4dccf20d340981994c88f44591044c0452dd96c1cc19145e286f"
+    },
+    {
+      "line_id": "c09r5081",
+      "anchor_id": "S8:008",
+      "paragraph_sha256": "82f48d9c212896b08a859d60ceb5ce23d0b87d4ee40b90ff2ce2cc0df7bab829"
+    },
+    {
+      "line_id": "c09r5082",
+      "anchor_id": "S4:010",
+      "paragraph_sha256": "bbf233246fdc7743318c823cd35facb662c281ca36e769fcd8aa61a832e3cf03"
+    },
+    {
+      "line_id": "c09r5082",
+      "anchor_id": "S8:008",
+      "paragraph_sha256": "82f48d9c212896b08a859d60ceb5ce23d0b87d4ee40b90ff2ce2cc0df7bab829"
+    },
+    {
+      "line_id": "c09r5083",
+      "anchor_id": "S8:008",
+      "paragraph_sha256": "82f48d9c212896b08a859d60ceb5ce23d0b87d4ee40b90ff2ce2cc0df7bab829"
+    },
+    {
+      "line_id": "c09r5084",
+      "anchor_id": "S8:010",
+      "paragraph_sha256": "262815548b7954a36a28f0a4b224f0f5d6f34c023514c4bcaf94151ccd0c2eb2"
+    },
+    {
+      "line_id": "c09r5086",
+      "anchor_id": "S4:009",
+      "paragraph_sha256": "e283bd886c9500a653c84742a5b9b2d443c47e0e83ef82a0ca3030cec9a2364a"
+    },
+    {
+      "line_id": "c09r5086",
+      "anchor_id": "S8:011",
+      "paragraph_sha256": "5f44b8c171dfb335733fd2f29f07a9e70e2f09c54d0eacdc9ddaffea9007d6ce"
+    },
+    {
+      "line_id": "c09r5087",
+      "anchor_id": "S8:011",
+      "paragraph_sha256": "5f44b8c171dfb335733fd2f29f07a9e70e2f09c54d0eacdc9ddaffea9007d6ce"
+    },
+    {
+      "line_id": "c09r5088",
+      "anchor_id": "S4:009",
+      "paragraph_sha256": "e283bd886c9500a653c84742a5b9b2d443c47e0e83ef82a0ca3030cec9a2364a"
+    },
+    {
+      "line_id": "c09r5088",
+      "anchor_id": "S8:017",
+      "paragraph_sha256": "b892b9d5d4f53882caea72cd20fb4771625d16c50506a57c42a73c1d38cf795b"
+    },
+    {
+      "line_id": "c09r5088",
+      "anchor_id": "S8:018",
+      "paragraph_sha256": "5b0790cf391ea7cccbe14ef9ce4490379babbde9768df799b28b14e6eded5bb3"
+    },
+    {
+      "line_id": "c09r5089",
+      "anchor_id": "S8:012",
+      "paragraph_sha256": "dc687349b9ad3b3247f3b7496abd0cfd09028f9b877defb4005325ef16540712"
+    },
+    {
+      "line_id": "c09r5090",
+      "anchor_id": "S8:012",
+      "paragraph_sha256": "dc687349b9ad3b3247f3b7496abd0cfd09028f9b877defb4005325ef16540712"
+    },
+    {
+      "line_id": "c09r5090",
+      "anchor_id": "S8:014",
+      "paragraph_sha256": "922c3302265f65b331300e1cbc1fe3eed26ad47d7bf102194375bb26193615d4"
+    },
+    {
+      "line_id": "c09r5091",
+      "anchor_id": "S8:014",
+      "paragraph_sha256": "922c3302265f65b331300e1cbc1fe3eed26ad47d7bf102194375bb26193615d4"
+    },
+    {
+      "line_id": "c09r5092",
+      "anchor_id": "S8:015",
+      "paragraph_sha256": "e83d700eeb25f485ddc34c4a84fdb679191afc6f1d8d227a76f402eed88949a2"
+    },
+    {
+      "line_id": "c09r5093",
+      "anchor_id": "S8:014",
+      "paragraph_sha256": "922c3302265f65b331300e1cbc1fe3eed26ad47d7bf102194375bb26193615d4"
+    },
+    {
+      "line_id": "c09r5093",
+      "anchor_id": "S8:015",
+      "paragraph_sha256": "e83d700eeb25f485ddc34c4a84fdb679191afc6f1d8d227a76f402eed88949a2"
+    },
+    {
+      "line_id": "c09r5094",
+      "anchor_id": "S8:014",
+      "paragraph_sha256": "922c3302265f65b331300e1cbc1fe3eed26ad47d7bf102194375bb26193615d4"
+    },
+    {
+      "line_id": "c09r5094",
+      "anchor_id": "S8:015",
+      "paragraph_sha256": "e83d700eeb25f485ddc34c4a84fdb679191afc6f1d8d227a76f402eed88949a2"
+    },
+    {
+      "line_id": "c09r5095",
+      "anchor_id": "S8:016",
+      "paragraph_sha256": "521539347cc72a4c814606a2a388b202de4846003bf6c63fafda9674495f7b9b"
+    },
+    {
+      "line_id": "c09r5095",
+      "anchor_id": "S8:018",
+      "paragraph_sha256": "5b0790cf391ea7cccbe14ef9ce4490379babbde9768df799b28b14e6eded5bb3"
+    },
+    {
+      "line_id": "c09r5097",
+      "anchor_id": "S8:015",
+      "paragraph_sha256": "e83d700eeb25f485ddc34c4a84fdb679191afc6f1d8d227a76f402eed88949a2"
+    },
+    {
+      "line_id": "c09r5097",
+      "anchor_id": "S8:018",
+      "paragraph_sha256": "5b0790cf391ea7cccbe14ef9ce4490379babbde9768df799b28b14e6eded5bb3"
+    },
+    {
+      "line_id": "c09r5098",
+      "anchor_id": "S8:018",
+      "paragraph_sha256": "5b0790cf391ea7cccbe14ef9ce4490379babbde9768df799b28b14e6eded5bb3"
+    },
+    {
+      "line_id": "c09r5099",
+      "anchor_id": "S8:018",
+      "paragraph_sha256": "5b0790cf391ea7cccbe14ef9ce4490379babbde9768df799b28b14e6eded5bb3"
+    },
+    {
+      "line_id": "c09r5099",
+      "anchor_id": "S8:019",
+      "paragraph_sha256": "ef606dfdd06432b00b2378fa5828d9be2814b01de59866d1eb78ce8d173054f7"
+    },
+    {
+      "line_id": "c09r5100",
+      "anchor_id": "S8:019",
+      "paragraph_sha256": "ef606dfdd06432b00b2378fa5828d9be2814b01de59866d1eb78ce8d173054f7"
+    },
+    {
+      "line_id": "c09r5101",
+      "anchor_id": "S8:019",
+      "paragraph_sha256": "ef606dfdd06432b00b2378fa5828d9be2814b01de59866d1eb78ce8d173054f7"
+    },
+    {
+      "line_id": "c09r5102",
+      "anchor_id": "S8:019",
+      "paragraph_sha256": "ef606dfdd06432b00b2378fa5828d9be2814b01de59866d1eb78ce8d173054f7"
+    },
+    {
+      "line_id": "c09r5103",
+      "anchor_id": "S8:019",
+      "paragraph_sha256": "ef606dfdd06432b00b2378fa5828d9be2814b01de59866d1eb78ce8d173054f7"
+    },
+    {
+      "line_id": "c09r5104",
+      "anchor_id": "S8:019",
+      "paragraph_sha256": "ef606dfdd06432b00b2378fa5828d9be2814b01de59866d1eb78ce8d173054f7"
+    },
+    {
+      "line_id": "c09r5105",
+      "anchor_id": "S8:019",
+      "paragraph_sha256": "ef606dfdd06432b00b2378fa5828d9be2814b01de59866d1eb78ce8d173054f7"
+    },
+    {
+      "line_id": "c09r5106",
+      "anchor_id": "S8:019",
+      "paragraph_sha256": "ef606dfdd06432b00b2378fa5828d9be2814b01de59866d1eb78ce8d173054f7"
+    },
+    {
+      "line_id": "c09r5107",
+      "anchor_id": "S8:020",
+      "paragraph_sha256": "7fd8ab5b019b35df50f9b0714420582b5172477e17f2e7ec38d437049d954669"
+    },
+    {
+      "line_id": "c09r5108",
+      "anchor_id": "S8:020",
+      "paragraph_sha256": "7fd8ab5b019b35df50f9b0714420582b5172477e17f2e7ec38d437049d954669"
+    },
+    {
+      "line_id": "c09r5109",
+      "anchor_id": "S8:021",
+      "paragraph_sha256": "813ee8da6dfcc258464c5bfed4974c3a2d0bcc8b9ce794bc06ca8c49c92c5f6b"
+    },
+    {
+      "line_id": "c09r5111",
+      "anchor_id": "S8:014",
+      "paragraph_sha256": "922c3302265f65b331300e1cbc1fe3eed26ad47d7bf102194375bb26193615d4"
+    },
+    {
+      "line_id": "c09r5111",
+      "anchor_id": "S8:015",
+      "paragraph_sha256": "e83d700eeb25f485ddc34c4a84fdb679191afc6f1d8d227a76f402eed88949a2"
+    },
+    {
+      "line_id": "c09r5112",
+      "anchor_id": "S8:019",
+      "paragraph_sha256": "ef606dfdd06432b00b2378fa5828d9be2814b01de59866d1eb78ce8d173054f7"
+    }
+  ],
+  "scope_notes": [
+    {
+      "target": "lines.c09r5030",
+      "required": false,
+      "note": "按希望建立反覆流程的概述審讀；S1:010另有外傾段落調整次序的例外，不能作無例外操作規則。"
+    },
+    {
+      "target": "lines.c09r5111 / c09r5-outro.data.cta",
+      "required": false,
+      "note": "按如果是你的假設性信任問題審讀。原刊作者Carson；沒有證明Chouinard本人出版、授權或披露意願，不能改作這類史實斷言。"
+    }
+  ],
+  "scope_notes_retained_in_current_claims_md": true,
+  "line_results": [
+    {
+      "line_id": "c09r5001",
+      "scene_id": "c09r5-shot-001",
+      "line_text": "一組攀岩熟手，一天能放入、取回一百枚岩釘；下一個爬那道裂縫的人，可能就是你。",
+      "line_text_sha256": "a867198897dcb820a978af3fa102f58ddb43ef37496accac0b2d4458b49edba5",
+      "source_mapping": "S1、S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "CONFIRMED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S1:004",
+        "S2:029"
+      ],
+      "basis": "1967器材文章的結繩人工攀登熟手100枚/日例示，非平均產能或同孔敲100次；下一個觀眾為可能情境。"
+    },
+    {
+      "line_id": "c09r5002",
+      "scene_id": "c09r5-shot-002",
+      "line_text": "釘子拿走了，敲過的釘孔，卻可能留在你面前。",
+      "line_text_sha256": "a0152d309a08906c63139c7d3122cd5cfe2dd932c982c06427712514bc1245c5",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S2:029"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5003",
+      "scene_id": "c09r5-shot-003",
+      "line_text": "把一九七二年的器材型錄攤開，旁邊放一枚鋼釘。",
+      "line_text_sha256": "ee788324ddb58369bc1f1710457e60408595cb65e13241dbcf753b127a388fd0",
+      "source_mapping": "S2、S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S2:025",
+        "S3:001"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5004",
+      "scene_id": "c09r5-shot-004",
+      "line_text": "後來創辦Patagonia的修納德，在自家冊子裡，勸顧客克制使用器材。",
+      "line_text_sha256": "09feecef4e76e5a28252021a272ca332ec1e7b6f3b0c8304ba8cad1b49a1bb3d",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S2:036",
+        "S2:043"
+      ],
+      "basis": "原1972前言與現代作者bio分用：後來創辦Patagonia，不把1972器材公司改叫Patagonia。"
+    },
+    {
+      "line_id": "c09r5005",
+      "scene_id": "c09r5-shot-005",
+      "line_text": "這就奇怪了：貨還要賣，原來的習慣卻得改。",
+      "line_text_sha256": "b08f784ff0fec07a193644cf4dafbe7f6698d7c74724e08420b10e8ee1e59c86",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S2:035",
+        "S2:036"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5006",
+      "scene_id": "c09r5-shot-006",
+      "line_text": "我最想看的是，他自己站到大岩壁下，會帶什麼。",
+      "line_text_sha256": "3f9853726f51c69ac1a157f5a7e4e959da29b119a0d53438db974b4b001f0a08",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:011",
+        "S8:012"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5007",
+      "scene_id": "c09r5-shot-007",
+      "line_text": "這回，跟著Patagonia創辦人的勸告，走到它真正承受重量的一次攀登。",
+      "line_text_sha256": "189b3ed85cb8d35d7305d97051c92c946bc29a93535b601c84b498621ddca952",
+      "source_mapping": "S2、S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S2:043",
+        "S8:011",
+        "S8:019"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5008",
+      "scene_id": "c09r5-shot-008",
+      "line_text": "賣岩釘的人，做什麼才能讓你相信，這一錘可以少敲？",
+      "line_text_sha256": "7559abe24221735a32c0eaac45d2acde5691f9e17652af44988aecf32445f54c",
+      "source_mapping": "S2、S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S2:030",
+        "S8:021"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5009",
+      "scene_id": "c09r5-shot-009",
+      "line_text": "這個勸告，先得穿過修納德自己賣出去的釘子。把時間往前撥到一九五七年。",
+      "line_text_sha256": "74cd128b6db3aff2d55c4b01a89ecea928d8c579e44d5ccb54945036184acf6b",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:033"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5010",
+      "scene_id": "c09r5-shot-010",
+      "line_text": "他後來對記者說，那時幾乎沒人在美國做岩釘，前輩鐵匠的貨也買不到了。",
+      "line_text_sha256": "da7c91d5b0122108b430c0bcc1555f52257131b080a7aa82478d11a981909ddb",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:033"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5011",
+      "scene_id": "c09r5-shot-011",
+      "line_text": "早年的軟鐵釘會順著裂縫變形，原本就不打算反覆使用；長路線得背上幾十枚。",
+      "line_text_sha256": "dec9007d5e0997b9208d00ef756818b073f5546c0a74590b38bcfc45f23009dc",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:028"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5012",
+      "scene_id": "c09r5-shot-012",
+      "line_text": "前輩用過汽車前軸的鋼；這種剛硬材料，讓釘子走上了和軟鐵不同的路。",
+      "line_text_sha256": "7da81370626819e609b68ecdb2113f3cbdaaf17b37819baaa46c97be40579d21",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:031"
+      ],
+      "basis": "前輩汽車前軸硬鋼與Chouinard鉻鉬鋼分清。"
+    },
+    {
+      "line_id": "c09r5013",
+      "scene_id": "c09r5-shot-013",
+      "line_text": "前輩做出的硬鋼釘卻能拔回來再用，一段路爬完，器材還能跟著人繼續走。",
+      "line_text_sha256": "e6de0ed62c8abb7c4f42d0ce8b6a95a187c1a13a8954ddd763190511fc040f53",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:031"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5014",
+      "scene_id": "c09r5-shot-014",
+      "line_text": "換成你，買不到合用的東西，會等別人補貨，還是自己做？",
+      "line_text_sha256": "628a9240f825762f5a89d8e36aaabac7f09e82b88f789a891443760d6b0b23fb",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:033"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5015",
+      "scene_id": "c09r5-shot-015",
+      "line_text": "修納德買了小煤爐、鐵砧和鉗子，翻書學鍛造，開始用鉻鉬鋼做岩釘。",
+      "line_text_sha256": "5010d4d3dc440bd980b0b26dd5a42b360974cb08665cfb954bc976ddb0a951be",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:033"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5016",
+      "scene_id": "c09r5-shot-016",
+      "line_text": "他把工具裝上車，沿加州海岸移動，停一兩天，就生火做一批，帶到攀岩區賣。",
+      "line_text_sha256": "40c5c448efc9be020e907cafc399e640dbf1aedaea8c231ce778b8fa78ed722c",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:033"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5017",
+      "scene_id": "c09r5-shot-017",
+      "line_text": "這種跟著車子走的工坊，一個鐘頭，能交出幾枚？",
+      "line_text_sha256": "4d19b6ecef59f1c0e3d2c3188f23941f9b6cdd7f65e81ec112010df8cefb9f4b",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:035"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5018",
+      "scene_id": "c09r5-shot-018",
+      "line_text": "照他的回憶，只有兩枚；有時他一天得守在爐前八個小時。",
+      "line_text_sha256": "3698413588fc7afe89c96d461894ca2309a67f47fc91cae28681b455fe3a7c61",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:035"
+      ],
+      "basis": "兩枚/小時、有時八小時/日均為其回憶，非獨立實測。"
+    },
+    {
+      "line_id": "c09r5019",
+      "scene_id": "c09r5-shot-019",
+      "line_text": "我覺得有意思的是，這麼慢做出來的東西，還得先過買家掏錢那一關。賣多少？",
+      "line_text_sha256": "062a92e173ca496dcf7b72b854da0e0ec7cde02c084e6592b3db3fa32d954145",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:035"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5020",
+      "scene_id": "c09r5-shot-020",
+      "line_text": "他說，當時歐洲岩釘約三十美分，自己的一枚要一美元半，起初不少人嫌貴。",
+      "line_text_sha256": "cb89f5c42e5dc09a66841f99d5c6b62e0a874dfc09d4b3a1a19fdd1c1afa8ae8",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:035"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5021",
+      "scene_id": "c09r5-shot-021",
+      "line_text": "他也回憶，過了好幾年，顧客才逐漸接受，覺得這種釘子值得那個價。",
+      "line_text_sha256": "d8f035ecf456d28bb4da7705720942e99d7a923bbc0c54331f05d077b5229514",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:035"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5022",
+      "scene_id": "c09r5-shot-022",
+      "line_text": "夏天，他在攀岩區賣貨；冬天，先把下一個夏天的存貨做起來。",
+      "line_text_sha256": "2eea34a7d932c42841201a5ba93dcd54f0a31ff286c6e4dfb86861cbbd84f53d",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:035"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5023",
+      "scene_id": "c09r5-shot-023",
+      "line_text": "顧客不在眼前了，改用郵購，交貨還能跟著這個節拍走嗎？",
+      "line_text_sha256": "0742981130eabdcdb9093abbd3059f98b62eb7f8b79dcff07242ba1141c8ace4",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:045"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5024",
+      "scene_id": "c09r5-shot-024",
+      "line_text": "一九六四年，第一份郵購型錄只是一張油印價目表，還提醒五月到九月別期待迅速交貨。",
+      "line_text_sha256": "877cbb78348625674dc4ba6c211c4a4d7fa7aaad8f8577757ee9b6c6a536d660",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:045"
+      ],
+      "basis": "S4:045的that fall連讀044明定1964；一頁油印及5–9月非快速交貨正確。"
+    },
+    {
+      "line_id": "c09r5025",
+      "scene_id": "c09r5-shot-025",
+      "line_text": "可是訂單變多了，一枚枚靠手打，還趕得上嗎？",
+      "line_text_sha256": "7135f3cc4ca5d33cb59b58d542fa0e6708bad96444a9a460d8d284a376faeeb1",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:045"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5026",
+      "scene_id": "c09r5-shot-026",
+      "line_text": "後來生產用上機器與模具，學過航空工程的夥伴，也幫忙設計製造工具。",
+      "line_text_sha256": "227e2173ae1f4640b6280e33378255b6ee4d9d000d6ce433a2f2052c381eefda",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:045"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5027",
+      "scene_id": "c09r5-shot-027",
+      "line_text": "能買到，也開始有更多人用；但讓顧客放下它，難處還不只是把另一件貨送進器材袋。",
+      "line_text_sha256": "bede696ecb89e64fec2dd8ed960884aa7aa4361bdabe7c8b630717de20d90da1",
+      "source_mapping": "S1、S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S1:004",
+        "S1:005",
+        "S2:027"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5028",
+      "scene_id": "c09r5-shot-028",
+      "line_text": "一九六七年，修納德和夥伴寫下的器材文章，已把岩釘連成一整套動作。",
+      "line_text_sha256": "a3bfe1571b3bc57819d7b1870a50ed45073a1b48b47762b4105a9fd15090b510",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "CONFIRMED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S1:002",
+        "S1:009"
+      ],
+      "basis": "原HTML Publication Year1967及具名作者，與009動作序列交核。"
+    },
+    {
+      "line_id": "c09r5029",
+      "scene_id": "c09r5-shot-029",
+      "line_text": "先放釘子、接扣環和腳梯，試著承重，再往上移動；釘子不只是在後面保護你。",
+      "line_text_sha256": "c781b6a411d8c8c31465cc0d68730cbfd24bc68cca8e12c10cdc54b6183a46b8",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "CONFIRMED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S1:009"
+      ],
+      "basis": "人工攀登釘/扣環/腳梯/試承重與移動，非只防墜或free solo。"
+    },
+    {
+      "line_id": "c09r5030",
+      "scene_id": "c09r5-shot-030",
+      "line_text": "文章希望每枚釘子都遵循固定次序，少拉多餘的繩索，把挪動身體的時間和力氣省下來。",
+      "line_text_sha256": "3891463c0be29239bf4ab43930026fe08080a2eaf03a965530aaa883bbecca39",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "CONFIRMED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S1:010"
+      ],
+      "basis": "希望建立反覆使用的固定流程，節省鬆繩/動作/時間；不是無視S1:010費力外傾例外的操作規則。"
+    },
+    {
+      "line_id": "c09r5031",
+      "scene_id": "c09r5-shot-031",
+      "line_text": "在這種人工攀登裡，人的重量會交給器材，甚至連過夜的吊床，也能掛在釘子上。",
+      "line_text_sha256": "a7c114ed668105fb6a1a437c37a314d60dbbfaf2f501f3e5c11191a752aa9141",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "CONFIRMED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S1:004"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5032",
+      "scene_id": "c09r5-shot-032",
+      "line_text": "如果你把身體交給一枚小金屬，會不會直覺以為，敲得越深越放心？",
+      "line_text_sha256": "0c25c06e89d7254092834ef9dd3a9222fdadae94f331c0957b2bb752e834710b",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S1:018"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5033",
+      "scene_id": "c09r5-shot-033",
+      "line_text": "文章卻說，最常見的錯誤就是敲得太深；在垂直裂縫裡，還得讓釘子抵抗轉動。",
+      "line_text_sha256": "81e6cc8798a6c27047c6babcc43e9d4705058c0aae6b69952862738c4884c422",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "CONFIRMED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S1:018"
+      ],
+      "basis": "過度敲入與垂直縫抵抗旋轉，保留文章有限主張。"
+    },
+    {
+      "line_id": "c09r5034",
+      "scene_id": "c09r5-shot-034",
+      "line_text": "它要攀登者先找合適的裂縫，讓釘子受到自然的夾持，不是一味對著釘頭猛敲。",
+      "line_text_sha256": "f39ed7d5a1346663470c55ae12bee5543ef6fe7de5a1fb1b29d1aba8b1e41d3e",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "CONFIRMED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S1:018"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5035",
+      "scene_id": "c09r5-shot-035",
+      "line_text": "而且，往裡敲的那一下，還會把麻煩留給誰？",
+      "line_text_sha256": "b86e3cc33c6aeb798a5fcc9215d6543afe5e8b54d48a45e7a5bbc940859a7a19",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S1:019",
+        "S1:021"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5036",
+      "scene_id": "c09r5-shot-036",
+      "line_text": "留給稍後取釘子的人。文章提醒，總時間要把放入和取出一起算，多補一錘可能更難回收。",
+      "line_text_sha256": "bb8e59b8e0800c2fd1dec5ad6e26d2838dc8b737753554a24215ed47e1cc6812",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "CONFIRMED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S1:019",
+        "S1:021"
+      ],
+      "basis": "總時間含放入和取出，額外一錘可能增加回收困難，不是完全禁止敲。"
+    },
+    {
+      "line_id": "c09r5038",
+      "scene_id": "c09r5-shot-038",
+      "line_text": "我更想知道，最熟悉這些動作的賣家自己，當時願意換嗎？",
+      "line_text_sha256": "a0b12bea5b220313d83974beaca76c6475ddeb523b3b2cfa96ac758be385de5d",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "direct_r7_source_scope_delta_recheck",
+      "evidence_anchor_ids": [
+        "S4:008"
+      ],
+      "basis": "只將原問題轉為我更想知道的旁白反應；不是1970Chouinard心理的新增第一人稱，後句仍以回信作答。"
+    },
+    {
+      "line_id": "c09r5039",
+      "scene_id": "c09r5-shot-039",
+      "line_text": "一九七〇年的回信被後來的採訪引出：修納德說楔塊有用，平常卻不會拿它取代岩釘。",
+      "line_text_sha256": "933592d800906d0a0be88cfbe90c27c2de9b6e32f5284f4ca0a45b47ee60e771",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:008"
+      ],
+      "basis": "1970回信由後來採訪轉引，普通情況不替代的立場保留時層。"
+    },
+    {
+      "line_id": "c09r5040",
+      "scene_id": "c09r5-shot-040",
+      "line_text": "他還嫌一位堅持用楔塊的夥伴，放置器材花的時間，比直接敲釘子慢得多。",
+      "line_text_sha256": "93815287d79d92c9d4005dd4beceb4bf08b979ac7e890da8f5c4e8e02acbbc0d",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:008"
+      ],
+      "basis": "嫌夥伴較慢是被引信的主觀比較，不作獨立效率測試。"
+    },
+    {
+      "line_id": "c09r5041",
+      "scene_id": "c09r5-shot-041",
+      "line_text": "但他的手越來越習慣錘子，眼前的岩縫，就能一直承受下去嗎？",
+      "line_text_sha256": "44ce15626c7588e6831923fd66fd57ea63cb33c6ad2e50f666b1b54b6a61728a",
+      "source_mapping": "S2、S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S2:029",
+        "S4:008"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5043",
+      "scene_id": "c09r5-shot-043",
+      "line_text": "回到開場的釘孔，型錄把原因寫得很直接：花崗岩比合金鋼釘軟，敲拔會使薄岩片鬆落。",
+      "line_text_sha256": "1be1a71d5df5395c6bc95cdca6125e9e8aff1cee36fb8b71b44f37e91cf060ae",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S2:029"
+      ],
+      "basis": "S2:029直接支持花崗岩較合金鋼軟及反覆敲拔使薄片鬆脫；回到開場為既有釘孔回收，不添量測或新機制。"
+    },
+    {
+      "line_id": "c09r5044",
+      "scene_id": "c09r5-shot-044",
+      "line_text": "你背包裡那枚釘子還能帶回家，岩縫已經變寬，下一個人拿什麼放進去？",
+      "line_text_sha256": "f097b31d012972b59185a0d0eb1f00392db000b69510ac10760d2e9d1788bc56",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:008"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5045",
+      "scene_id": "c09r5-shot-045",
+      "line_text": "報導寫，有些原本能用小釘子的裂縫，後來得換大釘子。",
+      "line_text_sha256": "6799ef3375b037adab6234fff74b51e44f7db4a3458faff7b0428747b80e8983",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "direct_r7_source_scope_delta_recheck",
+      "evidence_anchor_ids": [
+        "S4:008"
+      ],
+      "basis": "保留S4:008原有小裂縫改需較大釘的報導歸屬，僅撤同義歸納；沒有擴成所有裂縫或新的尺寸規格。"
+    },
+    {
+      "line_id": "c09r5046",
+      "scene_id": "c09r5-shot-046",
+      "line_text": "修納德原先以為攀岩不傷害岩石，後來才承認，它可能造成很大的破壞。",
+      "line_text_sha256": "1b44b0595b9aa22bf3e4e5a7c0aeddfbb97e72bc86b0c0fcf4c195dcaa136231",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:008"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5047",
+      "scene_id": "c09r5-shot-047",
+      "line_text": "他如果想讓人改掉這個動作，能只在旁邊多賣一種器材嗎？",
+      "line_text_sha256": "fd090ff8d0a37dea8cb4c30750c96658e6847965eb5782779193f9ae9e1bc8a9",
+      "source_mapping": "S2、S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S2:030",
+        "S2:036",
+        "S4:010"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5049",
+      "scene_id": "c09r5-shot-049",
+      "line_text": "他提出的楔塊並不是當年才出現的新發明，英國攀岩者早就把物件卡進岩縫裡。",
+      "line_text_sha256": "ba7913a0bfe49c7823509e92c3a3fe1b8f67d948b1aaf5fc81a68bff1d30b18e",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:007"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5050",
+      "scene_id": "c09r5-shot-050",
+      "line_text": "從小石塊到有孔的金屬螺帽，繩子可以套住、穿過，接到攀登者這一邊。",
+      "line_text_sha256": "3f5c4282e1a80a4e349ea73efb1f4c6b7121482d407bb82c9ae8d8c6d3578eae",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:007"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5051",
+      "scene_id": "c09r5-shot-051",
+      "line_text": "楔塊靠形狀卡在裂縫，之後通常能取回；少掉的，是用錘子敲入，再敲拔出來的過程。",
+      "line_text_sha256": "386a0ae64edae276c3f08893d088988eca2f1192bdde9a7be75d6702d0250f71",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:006"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5052",
+      "scene_id": "c09r5-shot-052",
+      "line_text": "你可能會問，知道少敲有好處，手上這件新東西，究竟怎樣才放得住？",
+      "line_text_sha256": "52348a10c9d0b1dc4411ae9c24cca7d738c07afa15ae0779606885f1e41972d7",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:010"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5053",
+      "scene_id": "c09r5-shot-053",
+      "line_text": "型錄請攀岩作者寫了一篇專文，後來的採訪記下，那段使用教學有十四頁。",
+      "line_text_sha256": "3d9cb54df9a5c3af42f8180b38a101b5909ed055e429e8391382c274b13bdbcd",
+      "source_mapping": "S2、S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S2:030",
+        "S4:010"
+      ],
+      "basis": "Doug Robinson受請為型錄寫文；十四頁是1977報導記述，不是Carson原刊頁數。"
+    },
+    {
+      "line_id": "c09r5054",
+      "scene_id": "c09r5-shot-054",
+      "line_text": "有時，一個楔塊不夠，要兩個以上搭配；可幾個支點，又能怎樣連成一套？",
+      "line_text_sha256": "4e33b319a38b605314410d992d8f979bb0e10a8f9d2a3258dc4f5c548197ffba",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:010"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5055",
+      "scene_id": "c09r5-shot-055",
+      "line_text": "採訪把這些相連的支點，比成橋樑的桁架：幾個位置共同組合，才能把整套連接加強。",
+      "line_text_sha256": "b4b9a697f73afd7462fc140e3a704ac770785f7c3134a424d34bba5b9ff7303f",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:010"
+      ],
+      "basis": "橋樑桁架是採訪原用比喻，未新增工學驗證。"
+    },
+    {
+      "line_id": "c09r5056",
+      "scene_id": "c09r5-shot-056",
+      "line_text": "原文形容，這種做法需要和岩石更親近的關係；我覺得，讀懂眼前的裂縫才是難處。",
+      "line_text_sha256": "8aa31c621a4ebf350f2d8bbb01b21e89d3c1b3a65b7b42791a5fcbdef0b1682b",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:010"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5057",
+      "scene_id": "c09r5-shot-057",
+      "line_text": "可是，翻完這段，就能要求你在每一道裂縫，都做同一種選擇嗎？",
+      "line_text_sha256": "8bb3a3a68ac1a246e5c184436258603e3919b45ed76e53f8d4cf3fd773b383c6",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S2:030"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5058",
+      "scene_id": "c09r5-shot-058",
+      "line_text": "前言先說，原本已經不用岩釘的路線，就不要再敲；其他合適路線，優先考慮可拆楔塊。",
+      "line_text_sha256": "be4ddc6df555d9f501e1105870bfe28efeb55a1dd585cc431cb91001af33d137",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S2:030"
+      ],
+      "basis": "既有clean路線不用釘、其他合適路線先楔塊，非全面停售。"
+    },
+    {
+      "line_id": "c09r5059",
+      "scene_id": "c09r5-shot-059",
+      "line_text": "真有必要用岩釘，前言提出固定留下來，減少反覆敲拔；那後來的人怎麼知道？",
+      "line_text_sha256": "35be770282b908853cddd4ace42c60768b8ed31ac1bcca54bcada2f88762c1e7",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S2:030"
+      ],
+      "basis": "必要時才考慮固定釘，非所有路線都預設固定保護。"
+    },
+    {
+      "line_id": "c09r5060",
+      "scene_id": "c09r5-shot-060",
+      "line_text": "還要把位置記進當地攀登指南。",
+      "line_text_sha256": "e1cd8142d4fc6af360c51ab45890dc529cb8f3089cf5327fcf031e6b73fe2a3b",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "direct_r7_source_scope_delta_recheck",
+      "evidence_anchor_ids": [
+        "S2:030"
+      ],
+      "basis": "保留S2:030地方指南記錄，仍緊承5059必要固定釘的條件；不把登記要求變成普遍留釘。"
+    },
+    {
+      "line_id": "c09r5061",
+      "scene_id": "c09r5-shot-061",
+      "line_text": "這些選擇真能讓岩壁有差別，還是只在紙上聽起來漂亮？",
+      "line_text_sha256": "f00d4ad8fc1445c44118eaa44cff4763b0af7a68b7bd379933287e9154336143",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S2:030"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5062",
+      "scene_id": "c09r5-shot-062",
+      "line_text": "前言拿英國舊路線作對照：腳踩的地方早已磨亮，沒有敲岩釘的保護裂縫，卻仍完整。",
+      "line_text_sha256": "585a1532ff67ded03ff62e3697b3a852478afe16038399afb87271e6bea44693",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S2:030"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5063",
+      "scene_id": "c09r5-shot-063",
+      "line_text": "冊子把成功的尺度也改了，不只看有沒有登頂，還看人用什麼方式到達。",
+      "line_text_sha256": "7cba5417114d6d65314713225a1fdc303c2dfad852a1e59f7aa2ff72fdbfc4d1",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S2:034"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5064",
+      "scene_id": "c09r5-shot-064",
+      "line_text": "但你翻到商品和價錢，會不會反問：這位賣家，憑什麼替我決定怎麼爬？",
+      "line_text_sha256": "14f56aa424ef967e7d2431f498b1d7c6e28a788389fd225d1dd3c015b5024b6e",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S3:005",
+        "S3:006",
+        "S3:007"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5065",
+      "scene_id": "c09r5-shot-065",
+      "line_text": "一九七三年的書評，竟把七十二頁的商品型錄當書來談；有人認為，自己的登山自由被押上了。",
+      "line_text_sha256": "c8b560e0f9ce70ccd28d3b03e00f178c9b4b24ffc8458310b6b0d666bc57f31a",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S3:001",
+        "S3:005"
+      ],
+      "basis": "1973書評評1972/72頁型錄；少數反對者的自由疑慮不歸公司。"
+    },
+    {
+      "line_id": "c09r5066",
+      "scene_id": "c09r5-shot-066",
+      "line_text": "他們說，最堅持大家換楔塊的人，早已用岩釘爬完那些大岩壁；現在，才要求後來者改方法。",
+      "line_text_sha256": "fb099e94b1cd48b56724dd753d0aa0f2dbeffa9efc3875595786355d2d1d1759",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S3:005"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5067",
+      "scene_id": "c09r5-shot-067",
+      "line_text": "這些人懷疑，那些長路線根本不可能不用岩釘完成；如果接受這套倫理，自己就失去機會。",
+      "line_text_sha256": "aa332dad09057bd9c38d0b2085b1105a1fc53efe1fbf625fd06a588e150d6df6",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S3:005"
+      ],
+      "basis": "對不用釘完成的懷疑歸反對者，非技術上永不可能的定論。"
+    },
+    {
+      "line_id": "c09r5068",
+      "scene_id": "c09r5-shot-068",
+      "line_text": "我更想問，提出這個要求的修納德，自己能不能帶著楔塊完成一條大岩壁路線？",
+      "line_text_sha256": "5ed578c8262885e79c262c90c9202af601e042ab6f5fa078c0f43a8bfd064b97",
+      "source_mapping": "S3、S4、S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S3:005",
+        "S4:009",
+        "S8:011",
+        "S8:019"
+      ],
+      "basis": "我更想問是有限自我實踐問題；S4:009及S8:011/019明載1973 Nose完成。不能證明口袋/利潤/道德/首次用nuts，也不是free climbing/free solo。"
+    },
+    {
+      "line_id": "c09r5069",
+      "scene_id": "c09r5-shot-069",
+      "line_text": "反彈也不只是年輕人。一份由年長攀岩者寫的文字，在東岸廣為流傳。",
+      "line_text_sha256": "a737d1be68ca3f26b43332baa2f3d4915a99bb7279f6ff528bca6fb926b0f2a8",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S3:007"
+      ],
+      "basis": "東岸是文字流傳地，年長是作者年齡，不添作者住處。"
+    },
+    {
+      "line_id": "c09r5070",
+      "scene_id": "c09r5-shot-070",
+      "line_text": "那位作者挖苦，付錢買型錄，讀到的卻是買不起的器材，和自己不需要的說教。",
+      "line_text_sha256": "09731dd2a3bb8d0d2223cd6f2d5e56c56f11f893e8214a828933a9ea809e9906",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S3:007"
+      ],
+      "basis": "挖苦明示歸屬，未恢復盡是量詞，也不稱作者真的購買了型錄。"
+    },
+    {
+      "line_id": "c09r5074",
+      "scene_id": "c09r5-shot-074",
+      "line_text": "同一位書評作者也觀察到，在優勝美地，他遇到更多堅持不帶錘子和岩釘攀登的人。",
+      "line_text_sha256": "74f9bdb128a25556cfafa1529d8ab1639a161903d1cbc9f2ac997baebe799b54",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S3:004"
+      ],
+      "basis": "更多無錘/無釘者是Rowell的Yosemite觀察，非全國統計。"
+    },
+    {
+      "line_id": "c09r5075",
+      "scene_id": "c09r5-shot-075",
+      "line_text": "有人已經願意試，那位賣家會跟誰，一起走進更長的路線？",
+      "line_text_sha256": "45585fd1db12366d14317aad2839469ca26dc02d65a73fb6a5ad02cbd2e9cc7f",
+      "source_mapping": "S3、S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S3:005",
+        "S8:011"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5076",
+      "scene_id": "c09r5-shot-076",
+      "line_text": "後來和他搭檔的卡森，當年五月，已經在信裡寫下一次不帶錘子的嘗試。",
+      "line_text_sha256": "3de9aa93acae22cb3acab6644b414959e33582d33cccedf608f9a68205fa18e9",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:002",
+        "S8:005",
+        "S8:011"
+      ],
+      "basis": "1973-05-25信見原刊58頁；早期搭檔Dave Anderson與後來Chouinard分清。"
+    },
+    {
+      "line_id": "c09r5077",
+      "scene_id": "c09r5-shot-077",
+      "line_text": "那條路線得先沿繩下降到起點；前五段爬不回來，就得過河才能離開。",
+      "line_text_sha256": "5c6f45a333b18098179ad70bc52ac02ff0608008e3a822f093857fbff970dc96",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:005"
+      ],
+      "basis": "Rostrum先繩降、未上前五段需過Merced河離開。"
+    },
+    {
+      "line_id": "c09r5078",
+      "scene_id": "c09r5-shot-078",
+      "line_text": "如果你已經到了下面，少帶一把錘子，還會只是背包裡的一點差別嗎？",
+      "line_text_sha256": "c797b4cfaa72a17324343e188995052e1ef0ec21518f23eba992ba1e3c83c3a7",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:005",
+        "S8:007"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5079",
+      "scene_id": "c09r5-shot-079",
+      "line_text": "他說服另一位搭檔去試，從早上攀到日落；避開固定岩釘，卻仍用上現成螺栓。",
+      "line_text_sha256": "1900812476b8a3ee62b808757838f1d03d364a53d68c5f4d6ffe9e568cff6491",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:005",
+        "S8:006"
+      ],
+      "basis": "春季試行避固定釘但使用既有bolts，非全無固定保護。"
+    },
+    {
+      "line_id": "c09r5080",
+      "scene_id": "c09r5-shot-080",
+      "line_text": "卡森在信裡說，沒了錘帶擋路，也少了順手敲一敲、把楔塊硬塞進去的誘惑。",
+      "line_text_sha256": "36ad368cf9fe59da21553f8846b3e37ea76c2e2d85f6b7474da1f2136ae8c7ee",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:007"
+      ],
+      "basis": "不帶錘消除敲塞誘惑是Carson感受，不是實際砸塞事故。"
+    },
+    {
+      "line_id": "c09r5081",
+      "scene_id": "c09r5-shot-081",
+      "line_text": "第二天，另一段橫向裂縫，卻讓他遇到楔塊只能朝一個方向放的難題。",
+      "line_text_sha256": "bb47d443fc1339db8c0fdfca94c13917ce59a19516b55c8c4a8fb620be9be999",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:008"
+      ],
+      "basis": "翌日Far West橫向段單向放置難題，非Nose發生。"
+    },
+    {
+      "line_id": "c09r5082",
+      "scene_id": "c09r5-shot-082",
+      "line_text": "還記得型錄裡，幾個支點組合起來的教學嗎？這回，卡森實際用了什麼辦法？",
+      "line_text_sha256": "b1169b6ae75db0aaef88d961dfe392fa449255ff2494513027716e5d7b9d2a70",
+      "source_mapping": "S4、S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:010",
+        "S8:008"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5083",
+      "scene_id": "c09r5-shot-083",
+      "line_text": "他先把兩件器材對向搭配，之後的支點，再一路連回最初那個位置。",
+      "line_text_sha256": "3d5a0403effaafe4213bba20dbc25cf8533374cb4a9310ecd377731ff715268e",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:008"
+      ],
+      "basis": "兩件器材對向搭配並把後續接回原點，沒有改成現代貼頭或spring cam。"
+    },
+    {
+      "line_id": "c09r5084",
+      "scene_id": "c09r5-shot-084",
+      "line_text": "之後幾個月，他接連完成其他乾淨攀登，累積起來，才覺得可以再試更長的路線。",
+      "line_text_sha256": "103715627f30cf7068e492938379d71c4e1b37872ae6b2b6f48145e6cceef3a1",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:010"
+      ],
+      "basis": "春末夏季其他clean climbs後才試更長，非宣稱首次clean climbing。"
+    },
+    {
+      "line_id": "c09r5086",
+      "scene_id": "c09r5-shot-086",
+      "line_text": "一九七三年八月底，卡森和修納德談起用楔塊人工攀登，約好一起去優勝美地。",
+      "line_text_sha256": "9b2f5ebd205489ca2f9a66f7b37580ee031ff9d71c7131c474648481d7290200",
+      "source_mapping": "S4、S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:009",
+        "S8:011"
+      ],
+      "basis": "1973晚8月由原刊連續同年時序與S4:009交核；nuts用於aid。"
+    },
+    {
+      "line_id": "c09r5087",
+      "scene_id": "c09r5-shot-087",
+      "line_text": "目標是酋長岩的鼻子路線。",
+      "line_text_sha256": "2076a3ae30e61310ed3fb4108975f2ee59f29a7463cbc5e61824af7940d734a6",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "direct_r7_source_scope_delta_recheck",
+      "evidence_anchor_ids": [
+        "S8:011"
+      ],
+      "basis": "保留S8:011目標Nose on El Capitan；緊承5086兩人晚8月約定，未更換主體/日期/路線。"
+    },
+    {
+      "line_id": "c09r5088",
+      "scene_id": "c09r5-shot-088",
+      "line_text": "開場那個器材袋，這回沒有岩釘，換成楔塊；繩索和其他攀登裝備，仍跟著人上岩壁。",
+      "line_text_sha256": "8ed44d80f0309c13ea1637581ed465c16feb6ac4c8a6113f8e5a2867bca53af6",
+      "source_mapping": "S4、S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S4:009",
+        "S8:017",
+        "S8:018"
+      ],
+      "basis": "只排除攜帶pitons；繩/其他裝備保留，沒有主張全程只用nuts或排除所有既有保護。"
+    },
+    {
+      "line_id": "c09r5089",
+      "scene_id": "c09r5-shot-089",
+      "line_text": "過程刊在隔年的高山年刊，作者正是卡森；兩人約定後過了兩週，修納德先往上爬。",
+      "line_text_sha256": "f65ba740a1f697001e5443f88dd98996733fa0b8867beee4378e26846d868cde",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:012"
+      ],
+      "basis": "原HTML Publication Year1974、PDF直鏈與內文1973交核；約定兩週後開始。"
+    },
+    {
+      "line_id": "c09r5090",
+      "scene_id": "c09r5-shot-090",
+      "line_text": "你想，他親手推薦的東西，一受重量，就會穩穩待在原地嗎？",
+      "line_text_sha256": "2ca19844fe227568d0ac0518954ded8fab58043c59ad3751f090cf917ab06f34",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:012",
+        "S8:014"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5091",
+      "scene_id": "c09r5-shot-091",
+      "line_text": "卡森寫，修納德一把重量交上去，第一個楔塊就往下沉了約四分之一英吋，差不多六公釐。",
+      "line_text_sha256": "07d31338cc8fd02cffb1aae79df0d8d84c8cdb735182fc2545f5b0e17d59f1b7",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:014"
+      ],
+      "basis": "首nut約1/4英吋=6.35mm，約6mm合理；未改成墜落。"
+    },
+    {
+      "line_id": "c09r5092",
+      "scene_id": "c09r5-shot-092",
+      "line_text": "接著，第二個楔塊一承受重量，也移動了。",
+      "line_text_sha256": "98787309eab548d75f662df73ec43d9c7fc7191980fecc914c5df267cbf60ce0",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:015"
+      ],
+      "basis": "第二個stopper也移動，非同一楔塊再移或斷裂。"
+    },
+    {
+      "line_id": "c09r5093",
+      "scene_id": "c09r5-shot-093",
+      "line_text": "兩個人以前沒一起攀登過。看見這兩步，卡森心裡怎麼想？",
+      "line_text_sha256": "8ba06a9da60a51136a2efd74ade1a1b6f603daa10caadc72e6f9cd53cbbae1f6",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:014",
+        "S8:015"
+      ],
+      "basis": "未共同攀登是Carson明文，非Chouinard沒用過楔塊。"
+    },
+    {
+      "line_id": "c09r5094",
+      "scene_id": "c09r5-shot-094",
+      "line_text": "他在文章裡說，自己的心沉了下去，甚至開始盤算：要是今天白費，明早就拿獨攀裝備出發。",
+      "line_text_sha256": "1a3a10f3e0ef4523323c0e2e97e32f8ca0763bc927414f63105e5b8f484bcf10",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:014",
+        "S8:015"
+      ],
+      "basis": "Carson內心條件性獨攀備案，非真的分手或無繩solo。"
+    },
+    {
+      "line_id": "c09r5095",
+      "scene_id": "c09r5-shot-095",
+      "line_text": "修納德繼續處理細裂縫，第一段也用上了幾個小型器材，卡森跟著回收，才看出那些放置的難處。",
+      "line_text_sha256": "5148c9fcc701b981a63989daf717eef5df3c5d6f0cec75f91d4d6cd24e7d0009",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:016",
+        "S8:018"
+      ],
+      "basis": "首段Crack-N-Ups與細縫難處由Carson跟攀清理後理解，不是現代cam。"
+    },
+    {
+      "line_id": "c09r5097",
+      "scene_id": "c09r5-shot-097",
+      "line_text": "我想知道，卡森最後真的得丟下搭檔，照自己盤算的獨攀計畫走嗎？",
+      "line_text_sha256": "c5ae70bfe6098b76c844933a008bfbe0e21b5cb329a867a7bf904fe552b0d755",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "direct_r7_source_scope_delta_recheck",
+      "evidence_anchor_ids": [
+        "S8:015",
+        "S8:018"
+      ],
+      "basis": "我想知道為旁白反應；Carson仍是原文條件性獨攀念的當事人，5098以原記錄答未分手，不變成真獨攀或free solo。"
+    },
+    {
+      "line_id": "c09r5098",
+      "scene_id": "c09r5-shot-098",
+      "line_text": "沒有。再過三段，他寫，兩人配合得順暢有效率，獨攀的念頭也消失了。",
+      "line_text_sha256": "c0fc5ab3f479d9d10adcb8ae217df152103bc4e3b3551cb258b5f140fded0c2f",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:018"
+      ],
+      "basis": "第一段後再三段共四段；效率和獨攀念消失歸Carson。"
+    },
+    {
+      "line_id": "c09r5099",
+      "scene_id": "c09r5-shot-099",
+      "line_text": "最初四段，楔塊放置費了不少功夫；到了那處平台，日落時他們先沿繩下降。",
+      "line_text_sha256": "f553ab0cc6a539ffd894030939bfacddb141f46532266ca0dd53fc87dbbb750c",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:018",
+        "S8:019"
+      ],
+      "basis": "四段至Sickle Ledge，日落從該處繩降；匿名練習壁不重建真路線地形。"
+    },
+    {
+      "line_id": "c09r5100",
+      "scene_id": "c09r5-shot-100",
+      "line_text": "更高處還等著他們。放下錘子，會不會一路都得這麼慢慢磨？",
+      "line_text_sha256": "2d929b10bf8885a9e30e9f43e938f0b5de10fe9e5146346f58a41d6e58bd46e5",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:019"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5101",
+      "scene_id": "c09r5-shot-101",
+      "line_text": "卡森記下，繼續向上時，楔塊反而更容易放，兩個人也走得更快。",
+      "line_text_sha256": "148d368c06c2f3d40a37211c1e9224ab0a9bfcfcdd2b5460c962ac1986c1ce59",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:019"
+      ],
+      "basis": "後續nutting較易而加快，非立刻全程無難處。"
+    },
+    {
+      "line_id": "c09r5102",
+      "scene_id": "c09r5-shot-102",
+      "line_text": "器材攀登和攀自然裂縫交錯進行；他們帶得輕，拖拉補給也沒遇到問題。",
+      "line_text_sha256": "086837711284d8c626251b71d1d66e5f44e7845f59e2eba7e26b7ff9a4bae439",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:019"
+      ],
+      "basis": "器材攀登和自然裂縫攀登交錯，非全程free climbing；拖拉無問題是當事人記述。"
+    },
+    {
+      "line_id": "c09r5103",
+      "scene_id": "c09r5-shot-103",
+      "line_text": "上方仍有兩段讓他們放慢腳步，其中一處難段由修納德帶頭，另一處也得小心處理。",
+      "line_text_sha256": "23f8f20ab2740983ae73d98dd26477a5e8e46cfbaa61313c3fca8665d74be651",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:019"
+      ],
+      "basis": "兩處上方慢段中一處由Chouinard帶頭，另一處需care，主體不互換。"
+    },
+    {
+      "line_id": "c09r5104",
+      "scene_id": "c09r5-shot-104",
+      "line_text": "開頭那幾步這麼不順，最後連補給都會被拖垮嗎？",
+      "line_text_sha256": "7855d2cc7cd7f6f493ff01a1090e8859a26ba70989d50ca0640913d5a8039c35",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:019"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5105",
+      "scene_id": "c09r5-shot-105",
+      "line_text": "他們比原先計畫走得快，水還很充足；兩次過夜也都有合適岩台，能及早停下看夕陽。",
+      "line_text_sha256": "50c46460c3e0fb31eb374a61060749e4dd2a9ae16ed8e3b569774239a7c165f0",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:019"
+      ],
+      "basis": "比計畫快所以水足，兩次bivouac好岩台及及時停看夕陽，未補新天數。"
+    },
+    {
+      "line_id": "c09r5106",
+      "scene_id": "c09r5-shot-106",
+      "line_text": "他們完成了這趟多日攀登。卡森把它形容為自己最滿意的多日岩壁攀登之一。",
+      "line_text_sha256": "f4422f907216c12d1e888713d9ecd358d7a90dccc836bf9472cc14a2e445b7cd",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:019"
+      ],
+      "basis": "滿意之一是Carson自評，非公認排名或第一攀。"
+    },
+    {
+      "line_id": "c09r5107",
+      "scene_id": "c09r5-shot-107",
+      "line_text": "但一次搭檔順利，會不會只是剛好碰上他們兩個？",
+      "line_text_sha256": "490a2d1c4f6c04c4af82d7884c5657003807791035b35ac7f29c4395b6c27e9f",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:020"
+      ],
+      "basis": "本句及相鄰語境已直接和所列原件段落核對；數字、日期、主體、歸屬、條件與問句/敘事語氣一致，不承接舊ID判定。"
+    },
+    {
+      "line_id": "c09r5108",
+      "scene_id": "c09r5-shot-108",
+      "line_text": "同年秋天，另一支三人隊也完成了鼻子路線的乾淨攀登，回報沒有特別困難的楔塊放置。",
+      "line_text_sha256": "18b05f32266e166f4de7f022c0d3abab0104d875be779c9cf0762a3bcfe04a01",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:020"
+      ],
+      "basis": "同年秋另一三人隊Nose clean ascent及其回報，非普遍路線保證。"
+    },
+    {
+      "line_id": "c09r5109",
+      "scene_id": "c09r5-shot-109",
+      "line_text": "對卡森來說，把錘子留在家裡，還讓熟悉大岩壁的人，重新面對攀登裡的未知。",
+      "line_text_sha256": "72106d73e4a63cceed06d406fbdcc1fb2921e053ada26834e5cd70883a45742d",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "ATTRIBUTED",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:021"
+      ],
+      "basis": "錘留家帶回冒險感是Carson價值判斷，非徒手無輔助。"
+    },
+    {
+      "line_id": "c09r5111",
+      "scene_id": "c09r5-outro",
+      "line_text": "如果是你，賣家願意公開使用時的不順利，會讓你更相信他嗎？留言告訴我。",
+      "line_text_sha256": "f34a0a5cbd96c94edd32e30d0b7ee824414ebf1ff8f7e2c9c04181c06efeb4a1",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:014",
+        "S8:015"
+      ],
+      "basis": "如果是你的假設性信任問題，不當Chouinard本人出版/授權/願意披露Carson文章的史實。"
+    },
+    {
+      "line_id": "c09r5112",
+      "scene_id": "c09r5-outro",
+      "line_text": "想看熟悉品牌的主張，怎麼經得起實際使用，歡迎訂閱這個頻道。",
+      "line_text_sha256": "369dd053a145b4df2afc15aaec7dd8fc9864bd389d20c07797322981aca3f1bd",
+      "source_mapping": "S8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "claim_classification": "PLAN",
+      "review_type": "inherited_exact_r6_text_source_objects_after_full_hash_binding",
+      "evidence_anchor_ids": [
+        "S8:019"
+      ],
+      "basis": "訂閱邀請，無額外歷史主張。"
+    }
+  ],
+  "written_visual_results": [
+    {
+      "scene_id": "c09r5-shot-001",
+      "line_ids": [
+        "c09r5001"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "b4eec65953594da4ce38ea9d25b14abb3d76212ed2af0abf671de6e91f16a741",
+      "written_data_sha256": "b6e301b04ed880e43a43dc80b264983252a756405ff93d6966920db99bded3a2",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-002",
+      "line_ids": [
+        "c09r5002"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "b7e3984c654fd30e95302688fe2bdaf64f10bffaf1b3797baad7ea08c5c41c9f",
+      "written_data_sha256": "2ac767a0cdef9d59d05563523acb7a71819a99d1ec810ffe105d444da5e71b7b",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-003",
+      "line_ids": [
+        "c09r5003"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "7d01ef046170521a66dd2da187b488402e31bdb5c29403148b97984d373049e1",
+      "written_data_sha256": "5dde8c0b4f462fbd1dd38bd321f36be5bec6eabec46c9d6f28799bcf06804428",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-004",
+      "line_ids": [
+        "c09r5004"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "c5a29d3b1f12b287cb7f555a31f9d7a21c1a5609d8dd6108746ac8ff5fee5784",
+      "written_data_sha256": "c7258c7e17954d17a28b87259fdcd626dbd38759fb7ee2c51e6620d7ce338d68",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-005",
+      "line_ids": [
+        "c09r5005"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "ec6b17d19c293bc4bbd5ff021ec20b6c3851f52e43b8221af0e708552736146f",
+      "written_data_sha256": "c8fad4f83c62cc936d09d70bad2ce7c8569d2fd8e3428d7cd34f8cb713c4bcdb",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-006",
+      "line_ids": [
+        "c09r5006"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "c90ce101ec454243a057d3f74b51455185b6cf0dc2ad2757c23098e424f6bf73",
+      "written_data_sha256": "2b6dc32166255a96803efd52cd7a5b46a9da008e6d87263c07e0ede4a41a3c12",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-007",
+      "line_ids": [
+        "c09r5007"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "e7c0df0ba0842fec50319cfbe2ee6b057ec02a9b19395a123406d2333c2e2a3c",
+      "written_data_sha256": "567f49200880dab4ec45e0b5b9da9c3768ea41d186ff6ca4129b321efb206b43",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-008",
+      "line_ids": [
+        "c09r5008"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "1aa743a5b389c9e9031bd5cdd07434b28b64c4bcd95c8a39b18e8aab290ba037",
+      "written_data_sha256": "cc32d0db841813c3fd7c1a54307d274621f702e76ab02761ae25550e8fd8cfb1",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-009",
+      "line_ids": [
+        "c09r5009"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "3a9ad361303e0dd9b63941a2758a7a83ec35281fd1a44e2110fbcb6d99abbda8",
+      "written_data_sha256": "ba89d9c385910e42f344c01a236e7386630606f079c3e92ca867d7a83248092e",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-010",
+      "line_ids": [
+        "c09r5010"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "f53545ab5b693c9cb9665eb66349fdb75e344ab3d5ff012be604ffd89be9bdcd",
+      "written_data_sha256": "ebd95c4968424dc48a2e88741b862eb46536419381114b00cf14cc7e8c809c37",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-011",
+      "line_ids": [
+        "c09r5011"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "4136c81e5da33aece4f367ad0af2e0efd3ba1e85e53912ae9f3a7ec66f74a98c",
+      "written_data_sha256": "68d481f4382391e15a61ac1e8a167454d65a1581171b1960e3a564b2ebd3b063",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-012",
+      "line_ids": [
+        "c09r5012"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "e62159dcae89697d098e1eb55cd5c3be708d3d91c75bfd66e3ca60f63fc1fc89",
+      "written_data_sha256": "84a0a5f82a38b32a01888be1fdab7e910580e8fbd1630f8893f1228d9461d0bb",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-013",
+      "line_ids": [
+        "c09r5013"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "250b6a560488fe8c4f600cf709ff66c087bab945164b70761a6ebc4065e941a5",
+      "written_data_sha256": "8f6742739ed4978e0332c568c25401771ebba0f31be01f91a0891b5046365929",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-014",
+      "line_ids": [
+        "c09r5014"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "65ef53ca0b7fa2857905f99040f4169450edbcc8325ae3b17d9a30d9ebd9176b",
+      "written_data_sha256": "44367ab02690fc88a1f32d5f33e07d92c2becb716ac4c20103ab0fb00c812e23",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-015",
+      "line_ids": [
+        "c09r5015"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "8beaca59a4366be38488cf6306fa99e85883dff4b21d4b8c9664686bc4206901",
+      "written_data_sha256": "9fa73b80bd313f21c2eff864966d2ced529b9944ab8fad7e61b6756d3a280080",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-016",
+      "line_ids": [
+        "c09r5016"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "55caa6b5bb3bd367c76f311883a1c596ff5555e3713f025c6e52a2d78c459628",
+      "written_data_sha256": "ffad3a123d0ac9afa0c86d737ffbb83af89a3bd4aed8f47adc26f898722b8ba9",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-017",
+      "line_ids": [
+        "c09r5017"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "04e2fc4e4281c176cc103921c96d699c7100d8e9a6bad3dbab14150e479c3b92",
+      "written_data_sha256": "dd9e201265da59dc6951c61dde2f9c2ba0fcbf074e809685629be073fd54f0b4",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-018",
+      "line_ids": [
+        "c09r5018"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "80fbcb8dfaace69cfcbd9345621c9b8a7d5fffc7953d8e15aeb12c4635d2b3fc",
+      "written_data_sha256": "caa04d27682b93f0983640804412f4be8d529b47c01ce5365625905115e4707f",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-019",
+      "line_ids": [
+        "c09r5019"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "c3a16947fc6850ac571017bae1fc33fef88761de1703adc40f2952219833a9ee",
+      "written_data_sha256": "49ea5cf10f604a6e000278219c1479578cb0d716ffa7887d44cfb6626d2f2869",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-020",
+      "line_ids": [
+        "c09r5020"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "4db28fc5ca0be58b5d4351218efe48d4d1991675c9c3fa16773604f44f018b4f",
+      "written_data_sha256": "2d60a81ca3af4bc768ccace0a674618d2e53e32e9799767395aba8719faf91b2",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-021",
+      "line_ids": [
+        "c09r5021"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "220fa2f876ed470d65d2f10642cfe72587f2833d86b4a09bf87dcff0a8e62ab2",
+      "written_data_sha256": "3f9a551701c3728ebfa4a097fddac499d8dc3f24a61fe1e07df009d3f87ffcfa",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-022",
+      "line_ids": [
+        "c09r5022"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "9ee14825cb88af9543d476e80b57129371a1d05c09f604258cb9cb76dbb7985b",
+      "written_data_sha256": "b81f53dece3e0870bd78d560b743bdd16fe47b38f7d9078b175f77af6003223b",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-023",
+      "line_ids": [
+        "c09r5023"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "95d630e02231d0dba988a5967262ab71c4cfc238e45ff5beb102eef81cb24e57",
+      "written_data_sha256": "5524dadb01d4203595580aae42931c2c169763ded84672f588b5d186651603e5",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-024",
+      "line_ids": [
+        "c09r5024"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "9daa86dd3a7bbfad9d797064c2fa2db32a9b15bfbf116d1192a264f9dab741dd",
+      "written_data_sha256": "fcfd0c20c16081957d614876e58cd94d6b3e76e14bab8e6519d4035c02ad4b2a",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-025",
+      "line_ids": [
+        "c09r5025"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "bdd010dfe1ad65e420fca9cafa3e9593028081b67186a0ba1fcb0d6b926a755d",
+      "written_data_sha256": "071764d557d45efb4c8df8035d8dc48ff49e0d10f520ce4637631e02b4045a9c",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-026",
+      "line_ids": [
+        "c09r5026"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "485c46eb5e683166cabcfe6fe265555eb3e469c8a75de63bccada9364c87d8ee",
+      "written_data_sha256": "7dafd6dd358942d6df8e8ece2f85189c8d2aa303875eabaff0ef052be79c20c5",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-027",
+      "line_ids": [
+        "c09r5027"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "6244c809b877be0bc650051229a7b09d4d6e91d02808dc75dafb924a0e88ffbb",
+      "written_data_sha256": "dcd9d3a85ec41f83846dc8a7af8eee9003fe068ec91f03d62a9ee3f862e382f3",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-028",
+      "line_ids": [
+        "c09r5028"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "7c7bbb9dd402d83c5deccedda3c3b42ae1e5d95dd461057ff30d33f99969d41f",
+      "written_data_sha256": "b6f21256410be1916b85a568739aaeb73401859b6cd2c1fb9187a4bdd61fc08e",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-029",
+      "line_ids": [
+        "c09r5029"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "7f82138bbd07cd116f3f1651b399819bd3ec3e9936961ab03c7e23879946814a",
+      "written_data_sha256": "d35c6ec558c06183e554c5908d3b74f110df2fc013a0b56dafaa09bc561139e8",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-030",
+      "line_ids": [
+        "c09r5030"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "3ac1e0107c68593b2893b0cd116c364134e7b24be3796422a3a74ce8ce27ef8a",
+      "written_data_sha256": "a5b0ec63742ed1dbc51af29e58cf78d54abb1fbcbbca76b393ee97f242012f3a",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-031",
+      "line_ids": [
+        "c09r5031"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "d7a2fed1ad187a43324c5e0857e20877de23878e94754a31dc14632ac46d4b78",
+      "written_data_sha256": "430673848a4693d213d0a13dad7fcaa4164e693bdfb954d70cc906c2ae794367",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-032",
+      "line_ids": [
+        "c09r5032"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "451b6b1db0546e5f83d83fac8e4b3bdc3961871810931c21ee8173321e0423d0",
+      "written_data_sha256": "e2ebb77e3ccccf108d10332d42096aa4765ea13f320f85a11e277519d90437ea",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-033",
+      "line_ids": [
+        "c09r5033"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "0fa800518dd838d9f84f26eb20e2a558a7f4a261dedd5a302e906c50711ec7b2",
+      "written_data_sha256": "d11120077d573df88db7ebf6e3d4a87e53def16406e2127469bc1a5154900b77",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-034",
+      "line_ids": [
+        "c09r5034"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "df4c5fdb94e46aec0e0013ca6a5014f49e2fb85faafd5f9bdaa5bc021b3a514b",
+      "written_data_sha256": "363b51af789b11c16eee8fa253e818278a8411a390d6125014bcf9ade4c9be12",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-035",
+      "line_ids": [
+        "c09r5035"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "441e090957a965f1e44ecbe2b2393a3195536b43819c8d609271fdd70e489089",
+      "written_data_sha256": "4b2216280a3ad394bb23f30f3bb3d9c4bc1014ca90f48ec169c019b9b9e54f8b",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-036",
+      "line_ids": [
+        "c09r5036"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "b2aec3bbd11151ce78824aa30e44e8a1f785535c63adf9246a1810a72cc9f280",
+      "written_data_sha256": "77952188b7bd2933af1c953199a96b4ead0217c1b05ec29389112842d2aa1e37",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-038",
+      "line_ids": [
+        "c09r5038"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "changed_text_or_chapter_or_outro_context_recheck",
+      "prompt_sha256": "e1ebb5065c13dbae49cd6ce8073f4bd09e1504ca0f0a7c537fbacdbd020a804e",
+      "written_data_sha256": "f4dbfb158e58fb8f44a1f8588fd87bd553cd93efe3aacca21500bd18b91358c9",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-039",
+      "line_ids": [
+        "c09r5039"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "73c0348154bd3d790db0731a4a14a9bb2692ff63ea7a0911941fc770132df0f7",
+      "written_data_sha256": "0ee40cfa73081fe9372239bc7cf2beb916886db51dcc62ed58b5fc9af93f7017",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-040",
+      "line_ids": [
+        "c09r5040"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "ba2b428bab85e85b49c24ded36a7d06e857b4a49b735f1f8d911395a30c30dc2",
+      "written_data_sha256": "a6958e349f599a4099d2ef1e1bd0663589d7fbe293c3ffec040191cc03912f59",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-041",
+      "line_ids": [
+        "c09r5041"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "0fb316b762e9488fefbca822c6ed4bb75d024ea275eb081d5b994a1c07e973d6",
+      "written_data_sha256": "790d34186956efccd933a74aa223df58d843ed2569e674bbe550c6853b573f53",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-043",
+      "line_ids": [
+        "c09r5043"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "4a8d128a3a75d43498b7e4f6b20f5c9554fe8c012082a572c61bd420f69872cf",
+      "written_data_sha256": "0ef64685f85630a3082630fbfcb21018d9245964edd850b4261f83e79c8e2126",
+      "basis": "原薄石片/鋼釘prompt與全部data未改，與新句花崗岩及鬆脫主張一致。"
+    },
+    {
+      "scene_id": "c09r5-shot-044",
+      "line_ids": [
+        "c09r5044"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "a40d72bd6fe758139da25fc65f5cc8f547f38d250c5f0d9e29893c375576aa1d",
+      "written_data_sha256": "9dc1ac2795d968d04d56028c519d2289048546ba970a4a97ada912f594be2840",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-045",
+      "line_ids": [
+        "c09r5045"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "changed_text_or_chapter_or_outro_context_recheck",
+      "prompt_sha256": "99e3ee3219dcd9b61729171526f3a0dc25e882b54d2b700dbf0fc36db9d00128",
+      "written_data_sha256": "21eda90a16c64f606a8e90bb72a0edcd852cf33effb32f8cd5a7f9bbbd03e490",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-046",
+      "line_ids": [
+        "c09r5046"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "5bae02432cc27a219e6e080cd679f5a396808ac090dc54b2e346a3c8286c697c",
+      "written_data_sha256": "c5fffaca050ecedb6634d63f1e160196f3c79fe9de1d466da76c0c3e691f1c42",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-047",
+      "line_ids": [
+        "c09r5047"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "8b7785c4c7af770aeff8d67de6846ea974857535fd7e75d427179d3965279cbb",
+      "written_data_sha256": "ca7f7dd51b0fccc3c859de039dbaf41f7723b5d06dbbf8b81ee5aa1701e5c3b0",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-049",
+      "line_ids": [
+        "c09r5049"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "changed_text_or_chapter_or_outro_context_recheck",
+      "prompt_sha256": "d2ff9d3ddb95675029c3f1c1d50b7a70ba0c6887d1c2916113dc5afcafc5ffdc",
+      "written_data_sha256": "f73984714715b3d7375adf27d80a00f54696ac78bdd9993d83a316b9c4fab1fa",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-050",
+      "line_ids": [
+        "c09r5050"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "cf737ec033b358419eb2426e8f56738918c843ea32218ba502f61281cab8fae5",
+      "written_data_sha256": "16d79bc6910ad5f4ce57e7d57e8df7654ac219ec0a521ee042a8b32417581175",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-051",
+      "line_ids": [
+        "c09r5051"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "edcafbdcda20c570d314073a738c7edc2d106df800c8c93e76a8e7fe5a7fbefd",
+      "written_data_sha256": "8c37139580f2b08fcf1137544ddb5ac93ba04e2323317e7b5b08d28348ec3a8a",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-052",
+      "line_ids": [
+        "c09r5052"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "b1c4ab0e00b15ccc4fbcd73d90743691a9f345dacf6b49c5121e0cb29df3a6a2",
+      "written_data_sha256": "63a09ed2f815d7ba28b6aa6f0d1e8fccb9624acfe810c025ec2c4f5a0cf13f36",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-053",
+      "line_ids": [
+        "c09r5053"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "6b77d2b3b820b19ed9256b40b9f36ed53cfe173899914611f784605364775dfa",
+      "written_data_sha256": "5aa5d46b401932917f87167d3acb88ea6edbff03a60a61a8dd3e325c5c47f045",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-054",
+      "line_ids": [
+        "c09r5054"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "e01f4c3d7b637fc2fc278c057ea5fbc179d61f84ba804f3d63153d1b2a8d432c",
+      "written_data_sha256": "0cd905f9729ab172b4bac8986dd337aa995375127ccab7fd27c7dee3c89843c3",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-055",
+      "line_ids": [
+        "c09r5055"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "b18634f1b57b9a8a916b77fefab2d1e69ef1bcbc52754079a19744f2bcbab9fa",
+      "written_data_sha256": "f27a57f453ca62cdca299c27ff6b162602c02e448d184be1d620704a8e8f5ecf",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-056",
+      "line_ids": [
+        "c09r5056"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "9f68b9fbac9a8cb4dd613d725a581857823db6cd90282f49f581365ce6ca31e0",
+      "written_data_sha256": "ae6c069531dffaac997b40166a2fdc110d93d39436d83a418d912e4df1bba78a",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-057",
+      "line_ids": [
+        "c09r5057"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "cdc73d46197b4643e047aae47dc649535256f3ee4808382f0802ec2e8caa7ac0",
+      "written_data_sha256": "7d72b4eb18f4ddb130eb9cb7b49b277862614805eabaec8354449ed5ae979679",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-058",
+      "line_ids": [
+        "c09r5058"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "990c89120220a05963343e7ff425484c308f64458d169e96ac9aeab19566101d",
+      "written_data_sha256": "e1ab1d188bfcb1924109d5935ac4359c98ac3cccbb295821630591fe466a39d6",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-059",
+      "line_ids": [
+        "c09r5059"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "cd64fdf27c325704bd3990516b2e740dc9ab8e6a4976bd915d915c7cc39dea13",
+      "written_data_sha256": "778e234da0f73fef3e8bb6fdc4f074c8bc687628dadf4f2b05d7cba192821315",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-060",
+      "line_ids": [
+        "c09r5060"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "changed_text_or_chapter_or_outro_context_recheck",
+      "prompt_sha256": "ec488aa6cb3a90fab37b8661629e41d2881ff9f44e863aaf64b44ce8dd228720",
+      "written_data_sha256": "8b63e260acdf908f6ae9ada91e1b4734fedf1c3e354aa5ea25bd318d416801b0",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-061",
+      "line_ids": [
+        "c09r5061"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "964813d7e91c5149047778c20e8575efc0422ff7a2a27151d73e24b68ce0fb93",
+      "written_data_sha256": "e891be83249501f9429dc87034c683af5196789f137f32bcf7211414535c411a",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-062",
+      "line_ids": [
+        "c09r5062"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "91b97927c2c030e4deb225e42d5f758a079ca342cddbdb9e2920746f98b61c31",
+      "written_data_sha256": "50433267949e81a8a07f8f4cd47517bfe2db558e7a9b0c61c2d92a8ab1cdbbec",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-063",
+      "line_ids": [
+        "c09r5063"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "6055f852d7f6a3434cb85e2c5639f0462ee0142318a88cc81a227e5ecc1cd62d",
+      "written_data_sha256": "1ad981271f758fa60caa1ea0a93d11d72228ff73264f98ef59fcbad9ffe6dae3",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-064",
+      "line_ids": [
+        "c09r5064"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "bdc75c62bcf51d6bace2848edf8866375cd2b2581a8dc91fe76cd606c5e73cda",
+      "written_data_sha256": "1b1f8c4071e96cf4a4c31bbc33670336ba743937a60027ff8f43b40331724052",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-065",
+      "line_ids": [
+        "c09r5065"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "f1e0238b1db74e18c28a90a64865070dee20da8e497714419d03d9b72ef9ba8e",
+      "written_data_sha256": "0cd9bc371bf3d143ae862ad1fed411eba8ff3e66d5f45a3772cb2e5d4596c0c9",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-066",
+      "line_ids": [
+        "c09r5066"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "60451430849143e5ce5fa5484f339609b5a04b4f5a920d926e0a08baa9a1f535",
+      "written_data_sha256": "a042f43392e1a31ef975d35bb2a2720a02eebf5aec0d9c285eb64e51c697ac2e",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-067",
+      "line_ids": [
+        "c09r5067"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "3f7639ca83704a00ef0d3cef87ba46622a9fdcdfef14c7c331053f1455e5bcce",
+      "written_data_sha256": "89edeabdcee4fb863ae501c581132bc0e8e90e88775ab18d7273ca70bf1a9473",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-068",
+      "line_ids": [
+        "c09r5068"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "1b0ef0c3a3e0e837c6e1e3180a01ce2797a6eb6afc2a2a292cde769938451c66",
+      "written_data_sha256": "c7f5a6ee768fda6f7ca39623c316bcefe622c76707d2290866ecedd721673e4e",
+      "basis": "匿名人物於普通練習區檢查無標記楔塊，對應自我實踐提問；無真路線/真人/品牌/modern cams/無繩/首次使用主張。"
+    },
+    {
+      "scene_id": "c09r5-shot-069",
+      "line_ids": [
+        "c09r5069"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "9d31c0154e4a13f9a4911f553eaf4c3136d01302f5a741c0340eff1e6b35bc18",
+      "written_data_sha256": "558bb2ab68615deabb76f97d9439bfe55c69e79974c6716fcefe7359b72f2406",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-070",
+      "line_ids": [
+        "c09r5070"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "2c497383b60940a50c0cf1b89a713438d954db34de940c4e2fc6d31df5b3abe8",
+      "written_data_sha256": "f3a18b319be86defc2ddc34041d44bce9d88876d46a0b90341582e7faff6424e",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-074",
+      "line_ids": [
+        "c09r5074"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "3e609323cd49ac540f13d0a538d50b366ce79b29f44919c4a3e63da0bf8d830c",
+      "written_data_sha256": "d66c8ac422abf33b92ff6e64baedb8aa27c1a0eee0a0b34d6b007d2cc104cd40",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-075",
+      "line_ids": [
+        "c09r5075"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "db9a40668b340d519eaea88f5416d06474ba3c20918031dffc2a13cd683cb581",
+      "written_data_sha256": "7acd472abf94f9ce126541c145ad25fca40ab270f0389a697e2ab8fe8aa3dab1",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-076",
+      "line_ids": [
+        "c09r5076"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "b944252f52ce489fbef7dad9a8ee730869ab841818dbb43e4506850782c308e6",
+      "written_data_sha256": "660125ba7336ce197d861e45963931b484665fc27ac49fd20fc9ff107e1ff3a6",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-077",
+      "line_ids": [
+        "c09r5077"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "e073f5a8702f9de9179a5811156a5c85d91dc656f7dc090d519332b87569fd74",
+      "written_data_sha256": "ca5afffd601bacb5a53532e8bdd83030d627f20ad314cff22474a304fcf39317",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-078",
+      "line_ids": [
+        "c09r5078"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "8881af7b50f0efd7c32afb22880e17e8d60afd8032cae836070b5a1ca5046846",
+      "written_data_sha256": "93c1da320f1d09940b00caa3b67284cbc746d0269e032b8037d9ed6af17b0eaa",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-079",
+      "line_ids": [
+        "c09r5079"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "b3f17ee25b329f61ceb674fddd56ac8aebabe8aba2204aa4fd478a46704a56ac",
+      "written_data_sha256": "894f8b20a288a6ac6bcefd6986454740eb7f9319c828c2bf556f7e866469d7d3",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-080",
+      "line_ids": [
+        "c09r5080"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "e45ef24d60e742cedba3e246cfe79c51080707af5354323bc688c748eff6366b",
+      "written_data_sha256": "c60ac5294d1b70208b156bc7a6899d9c68c49dd48d10bd980554da780062a52b",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-081",
+      "line_ids": [
+        "c09r5081"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "66d7554c611cfe26cc1e436621a2733249e869f8475cc982be94f70961346204",
+      "written_data_sha256": "dcb67fe0a405fffa7bf8409825563af5ec8dc5853bba57c2139e0d2c1772d895",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-082",
+      "line_ids": [
+        "c09r5082"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "11555e45126d6855953c44f9db3359572649aef9a0910d8271afa938dede5d10",
+      "written_data_sha256": "d21a043dad08b59e618617e30daa063ccffd1bb12ababd59f4e282519d705741",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-083",
+      "line_ids": [
+        "c09r5083"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "1cf699e1b913b0762300671fc0277d435e6a080808a9e0400d66d88e587d3925",
+      "written_data_sha256": "65faaf0bc4ff85aa38d2776da8130bbb4f31d98108b947dec9987b7b7ac8d375",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-084",
+      "line_ids": [
+        "c09r5084"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "4f85daf24a78f8d8733ab50989544f879133d5441d54fccd66fa92e04d1ba2b6",
+      "written_data_sha256": "c7614231361b8cc7dcfefb38a3a20cf4d84ef8c241f21e9a8d8a572d2eb2ec08",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-086",
+      "line_ids": [
+        "c09r5086"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "c849741dd722713cc5136538e3b6bb53e6c806590f5fc6079cb295c83fb81a95",
+      "written_data_sha256": "35dde6e7f3d5ea7c707c50d63c5c015b5dc3a7b39286046971c8cae3a23a80b5",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-087",
+      "line_ids": [
+        "c09r5087"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "changed_text_or_chapter_or_outro_context_recheck",
+      "prompt_sha256": "921e9e27e758f47fcf477b25faae7407cbe3e208d366b328ed3123287fef3cc8",
+      "written_data_sha256": "85131670cbd60659b430c11165e9654446c1c2aa11a939079bcd7820a002f4f7",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-088",
+      "line_ids": [
+        "c09r5088"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "2197146de2bb9e0f80060e925b3ace7a736a5f60fe246a8d60d21b8f6243c90a",
+      "written_data_sha256": "a8347dbc54ba322d1cd8ee9d06b39c3f44396645408b08d7694537724cd54647",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-089",
+      "line_ids": [
+        "c09r5089"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "7a74af7577119645b79b4236ab5bd7e1aef661bf0df767a875ce6104f5c551de",
+      "written_data_sha256": "2347364bf71352d271d49100edbdf4acf683e2792c055805ea14095d2f52c020",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-090",
+      "line_ids": [
+        "c09r5090"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "9f84e318054751487100a0f50ef60cf38e71deb56cb28ed4a95a917dc9368565",
+      "written_data_sha256": "03ec2ab62d61fb48897d97c966ffbdecd1d1c18f95ea55928c14f6d03fae6258",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-091",
+      "line_ids": [
+        "c09r5091"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "02c841969f0e2d4b4c7c8ad0dbb323f1132ae1166de1d1350002803a8ab8ae13",
+      "written_data_sha256": "ee48dbcaa2139f14d4a9111e746b10d179ea065f02fa0d14b2bbcf4c1dd7207b",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-092",
+      "line_ids": [
+        "c09r5092"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "ac583dac7e48540879119fb97dcd1479eede4a4882605efd183fa24ff34b7cbe",
+      "written_data_sha256": "c87c8d2956e45a5497026b3eb4fba3b0f2789b22a3ffdd5a303ef2f79b092002",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-093",
+      "line_ids": [
+        "c09r5093"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "5671c7192fe2ba37f5446f63071df557fec08938e0b98494082968929aa3b3f6",
+      "written_data_sha256": "16c9ccfbba677339aa1cc2a2300ec66621a585993b72f12c2760a1b4223e2a5a",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-094",
+      "line_ids": [
+        "c09r5094"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "e3b8ac3b44ab96cef85f474b9044f35ca21ecc3c824e86e50dc3cfffafe3c054",
+      "written_data_sha256": "4ce0a2a87ae06bd885b47785448aa36123e85ff0c086f574bd9b3e161c171840",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-095",
+      "line_ids": [
+        "c09r5095"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "4f5d7b649af24a93b746af1f002e4d9ad883885acff0ee389ddafb9b23823e3b",
+      "written_data_sha256": "21baa7027dda58fc0db15354a489a4e8541c26f3c34cfa4ff00dfb258e70aaea",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-097",
+      "line_ids": [
+        "c09r5097"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "changed_text_or_chapter_or_outro_context_recheck",
+      "prompt_sha256": "1a1ee8410e21f8b989c39571f2b89eac38543da6dbbdb16770565904e4b8c4d5",
+      "written_data_sha256": "616b021c05375caa5d428acd58340d15dbe59ae982167865c0cb5434f525210e",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-098",
+      "line_ids": [
+        "c09r5098"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "a0a6bbe2cef3def38e1f0349f8e79199c14b67342def519df11910fea3c4732b",
+      "written_data_sha256": "ab1639ba8f015e3f5d6682295d49b09aeab4234a1cc9bad3f41ec341ef1e8309",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-099",
+      "line_ids": [
+        "c09r5099"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "efdb0588558e2f65496a635674e9c9c2ceff63856f089e8ccbc73efc9d7ec6dc",
+      "written_data_sha256": "58d392549359e19d8ee7294fa361bcad0f7c2efe2b3fecdb279d58b789be3ae4",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-100",
+      "line_ids": [
+        "c09r5100"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "d955e665c522c4777ab746b27551f806d61e0f9a5c8718df2d3e4e3cc23f93b8",
+      "written_data_sha256": "848db352bc7340e1bd43ec401cf6aac7ad05ceb07d361a017dd36f808bc2861d",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-101",
+      "line_ids": [
+        "c09r5101"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "58377698cb0c98cbc9706518bcb4092f82b1be1bf86bf18510a6045523c5b996",
+      "written_data_sha256": "68436a0d3aaefbf3c1b2f7f0a0b729d87824891318f58d260ad50381177c158b",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-102",
+      "line_ids": [
+        "c09r5102"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "3591b98cbd2a27d10842959c59220fef940d43f63bf0ffe49c30897f0b1c680c",
+      "written_data_sha256": "ff92adfbcff89c2f54388155ae0717faf2ecbb586cca80af6c918fbaf7ac6bba",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-103",
+      "line_ids": [
+        "c09r5103"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "0684bbc6f514c5a8ae109a5a84b827326b68b14386111ecc8930d065b7ad3dfb",
+      "written_data_sha256": "8cc3e87aab6878da9615b9526e25bbac38f45680b627845e1f5ce1687fc3060d",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-104",
+      "line_ids": [
+        "c09r5104"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "4d3ebf980f3fafd0a4cabcc577a832fabe9cd6761ee9fbcb1449f72375a1165b",
+      "written_data_sha256": "8c64d91886e0bc06e86a416d3edcef87f393dda303e98e55ead7a55fe0b5ced7",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-105",
+      "line_ids": [
+        "c09r5105"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "306deb0e428d35fec8b14be152de284612ac00f165dd8bfe1a466f30265cb3f9",
+      "written_data_sha256": "408a4a3f17cfa004a16ae8068e1715febb8b8a6c85cdc05cf42bc214165ec6a4",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-106",
+      "line_ids": [
+        "c09r5106"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "ead1ac099c367b4c683ad9490f48470aaddc7f3bbeba7448b74cb7564707afbe",
+      "written_data_sha256": "417c571ab0d7cb09bedfde4517b0626809a7315a58d256ebff7d0ea5574b8355",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-107",
+      "line_ids": [
+        "c09r5107"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "2d14fa16a27f5ca0e21047e49ef50c328d3d5d666d2ecfbe9a6a1d94e9c4055b",
+      "written_data_sha256": "2fe96add4c7e9c88a907e9e236ab848be198ab920cede90f92bb9285369ff81c",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-108",
+      "line_ids": [
+        "c09r5108"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "0ba64e8aea998b82da20937b3ba4ce504c64bdeb07931729a1c1ac0c785e43b4",
+      "written_data_sha256": "00330e0da6719cdf68457433e19db452d8880038b157427b4fb17dd1636a8de9",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-shot-109",
+      "line_ids": [
+        "c09r5109"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "inherited_exact_r6_complete_scene_PASS",
+      "prompt_sha256": "4220b70a21a5691181b5fc60cbc8767b00e791bb074dbedc196b155f2151807d",
+      "written_data_sha256": "e28f474adbe2e33ad044037decadaccbe3878de432e84cf69fd090fd385772e1",
+      "basis": "匿名概念插圖；材料、工具、受力/移動不與旁白衝突，無現代spring cams/真人/商標/可讀假史料/真路線重建。"
+    },
+    {
+      "scene_id": "c09r5-outro",
+      "line_ids": [
+        "c09r5111",
+        "c09r5112"
+      ],
+      "written_visual_verdict": "PASS",
+      "review_type": "changed_text_or_chapter_or_outro_context_recheck",
+      "prompt_sha256": null,
+      "written_data_sha256": "12f670ac72ce0741406b1085ffb3446591812c5a4f3fd9b0abda1786fb8296a8",
+      "basis": "只撤5110旁白，title/CTA/data完全不變；留存信任問句仍按既有假設性限定審讀。"
+    }
+  ],
+  "native_mechanical_context": {
+    "independent_full_initialized_context_read_only_rerun": true,
+    "root_receipt_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/candidates/length-extension/reviews/canonical-lint-r7.json",
+    "root_receipt_sha256": "9f61d7c9f8f04e56a2b0c7a8c5a72d10e0def7dbd5c2b0cdbb68110293edbfcf",
+    "errors": 0,
+    "warnings": 39,
+    "root_input_and_counts_match": true,
+    "canonical_video_sha256": "875eaca7ba51de28a9e2a198dfd8070325aabec91b58bb7cb903731415fb233a",
+    "canonical_script_sha256": "0547060346e7d6194d9bd096bcc19bb4e0166dde28fd292543ff3f047cf216d1",
+    "initialized_lexicon_sha256": "c45d0c9b68792f6bab39819a0a91de4e6123649b7fd7f15b732d8b855cab228a"
+  },
+  "native_screenplay_projection": {
+    "method": "sha256(UTF8(screenplay(JSON.parse(candidate video.json))))",
+    "sha256": "02f091cae8f4e6179364155ef489b8ae59839efd969b695d21971d7b1ab5e3de",
+    "bytes": 16933,
+    "canonical_written": false
+  },
+  "protected_baseline_before_after_sha256": {
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/video.json": "875eaca7ba51de28a9e2a198dfd8070325aabec91b58bb7cb903731415fb233a",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/script.md": "5b18c540cc84442bcfb8eec101dcdea9b4860e6caf36d5e638b8a6ecfb2a3727",
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-patagonia-c09-remake-20261025/video.json": "875eaca7ba51de28a9e2a198dfd8070325aabec91b58bb7cb903731415fb233a",
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-patagonia-c09-remake-20261025/script.md": "0547060346e7d6194d9bd096bcc19bb4e0166dde28fd292543ff3f047cf216d1"
+  },
+  "findings": [],
+  "source_cache_method": "All R6 inputs, source raw/paragraph caches, original PDF and four-page proof hashes revalidated.142 anchors rehashed and matched prior proof. Directly re-extracted/reread S2:030/S4:008/S8:011/014/015/018. Unchanged text/source/visual proof inherited only after exact equality.",
+  "scope_limits": {
+    "blind_files_read": false,
+    "narrative_vote_files_read_or_judged": false,
+    "narrative_verdict": null,
+    "actual_timing_verified": false,
+    "body2737_planning_with_length_risk_only": true,
+    "runtime_verdict": null,
+    "video_generated_images_audio_reviewed": false,
+    "dictionary_pronunciation_approved": false,
+    "owner_approval": false,
+    "budget_approval": false,
+    "baseline_canonical_author_history_languages_other_reviews_mutated": false,
+    "paid_calls": 0,
+    "provider_calls": 0,
+    "backend_writes": 0,
+    "spawned_agents": 0
+  }
+}

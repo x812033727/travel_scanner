@@ -1,0 +1,544 @@
+{
+  "status": "UNAPPROVED_LENGTH_EXTENSION_CANDIDATE",
+  "candidate_revision": "length-r2",
+  "author": "/root/c03_review_pt_id",
+  "parent_source_video_sha256": "7fbc22336a476a32f684b463154b420a07ba5fa6377e7454b3d4b1e8edbf720a",
+  "parent_candidate_video_sha256": "1bde566aa141080d3eafdfaf68a611034380a3f2f5bb47282f701cb53667a157",
+  "history_directory": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1",
+  "review_inputs": {
+    "blind_a": "/workspace/work/brand-story-20261025/c05-audit/length-extension-r1/blind-a.raw.json",
+    "blind_b": "/workspace/work/brand-story-20261025/c05-audit/length-extension-r1/blind-b.raw.json",
+    "source": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/reviews/source-r1-independent.json"
+  },
+  "response_to_required_feedback": [
+    {
+      "id": "no_recap",
+      "action": "刪rx006、rx008、le011；現代材料與打型前移至第五章，一次完成製程。",
+      "author_claim": "已改稿，是否解決留給兩位全新隔離讀者。"
+    },
+    {
+      "id": "no_detour",
+      "action": "整刪le016–le021及le024，包含灰、香皿摩擦、重力與金屬上蓋。",
+      "author_claim": "支線已移除，是否保持單線留給兩位全新隔離讀者。"
+    },
+    {
+      "id": "S01",
+      "action": "le007精確採用來源審查replacement；只說商品登錄記下木片作芯的做法。",
+      "author_claim": "待另一位來源讀者核差分。"
+    },
+    {
+      "id": "V01",
+      "action": "le020整場刪除，旁白與不完整接觸配鏡皆不在r2。",
+      "author_claim": "刪除差分待來源／書面配鏡重查。"
+    }
+  ],
+  "delta_from_r1": {
+    "added_lines": [],
+    "changed_lines": [
+      {
+        "id": "c05le007",
+        "before": "另一筆商品登錄還留下中心那塊小木片。兩根合在一起之後，手又該先往哪裡繞？",
+        "after": "另一筆商品登錄還記下以小木片作芯的做法。兩根合在一起之後，手又該先往哪裡繞？",
+        "old_spoken_units": 33,
+        "new_spoken_units": 35,
+        "unit_delta": 2,
+        "reason": "精確採用S01建議，將製法記錄與留存木芯現物分開。",
+        "source_ids": [
+          "NM_COIL"
+        ],
+        "source_locator": "910191180006 特徵：木片の芯を中心に2本ずつ手作業で巻く；只用製法段，不用錯配日期。"
+      },
+      {
+        "id": "c05r090",
+        "before": "材料也沒有停在早年的花粉：原廠說明所述產品，使用合成擬除蟲菊酯有效成分。",
+        "after": "原廠描述的現行產品，使用合成擬除蟲菊酯有效成分。你猜，換了成分，植物粉料是不是就可以一起退場？",
+        "old_spoken_units": 33,
+        "new_spoken_units": 42,
+        "unit_delta": 9,
+        "reason": "隨現代材料段前移，明示現行產品範圍，將有效成分與植物材料是否同時更換的問題留給下一句；保留材料轉折的真問題。",
+        "source_ids": [
+          "K_F"
+        ],
+        "source_locator": "家庭用殺蟲劑略歷、なぜ緑色をしている：現行產品有效成分與植物粉／黏結材料。"
+      },
+      {
+        "id": "c05r091",
+        "before": "植物性粉末、木粉與黏結材料仍參與混合；有效成分換了，不等於植物材料都不見。",
+        "after": "原料表裡仍有植物性粉末和木粉。換了有效成分，不等於把香體的植物材料也抽走。",
+        "old_spoken_units": 33,
+        "new_spoken_units": 34,
+        "unit_delta": 1,
+        "reason": "回答r090有效成分與植物材料是否同時更換；刪提前重說黏結材料的部分，下一句再給取走成分後粉料的具體例子。",
+        "source_ids": [
+          "K_F"
+        ],
+        "source_locator": "なぜ緑色をしている：粕粉、木粉等植物性粉末；不是指所有現代香體或歷史初代配方。"
+      },
+      {
+        "id": "c05r092",
+        "before": "把混合料加工成片，再打出螺旋並乾燥，這是工廠頁描述的另一種製法。",
+        "after": "原廠描述的工序，先用混和機揉合，再由押出機做成板狀，接著打出螺旋並乾燥。",
+        "old_spoken_units": 29,
+        "new_spoken_units": 32,
+        "unit_delta": 3,
+        "reason": "把r1的r092與le011合成唯一一次完整製程，保留混和機／板狀／打型／乾燥動作與原廠歸屬。",
+        "source_ids": [
+          "K_F"
+        ],
+        "source_locator": "家庭用殺蟲劑略歷：混和機で練り、押出機にかけて板状、渦巻型に打抜き、乾燥。"
+      },
+      {
+        "id": "c05le010",
+        "before": "你可以把那把刀想成餅乾模，科博館也是這樣比喻。刀型已備好輪廓，可送到刀下的，為何是一片料？",
+        "after": "科博館把現在的打型比作餅乾模。料片交到巴形的渦卷刃型下，這回還需要工人一圈圈盤嗎？",
+        "old_spoken_units": 40,
+        "new_spoken_units": 38,
+        "unit_delta": -2,
+        "reason": "不再問已由板材製程回答的「為何是一片料」，改問盤卷工作是否仍由手完成；r093以工法交接回收。",
+        "source_ids": [
+          "NM_MACHINE"
+        ],
+        "source_locator": "910191180004 特徵：現在以クッキー形抜き類比，巴形渦巻刃型打抜；早期兩條手卷。"
+      },
+      {
+        "id": "c05r093",
+        "before": "你剛才看過的手盤動作，在這裡換成打型；圓留下來了，做出圓的動作卻變了。",
+        "after": "不用。你剛才看過的手盤動作，在這裡換成打型；圓留下來了，做出圓的動作卻變了。",
+        "old_spoken_units": 31,
+        "new_spoken_units": 33,
+        "unit_delta": 2,
+        "reason": "前移至現代製程後，直接回答刀型取代手盤的問題，完成製造段後才把成品交到觀眾手上。",
+        "source_ids": [
+          "K_F",
+          "NM_MACHINE",
+          "EDITORIAL"
+        ],
+        "source_locator": "K_F 現行打型製程；NM_MACHINE兩條手卷與現行渦卷刃型對照；末句是旁白解讀。"
+      },
+      {
+        "id": "c05r080",
+        "before": "時間拉回你今天拿到的雙卷，兩卷相連著出貨，使用前該從哪裡分開？",
+        "after": "這樣交到你手裡的雙卷，兩卷還相連著；使用前該從哪裡分開？",
+        "old_spoken_units": 28,
+        "new_spoken_units": 25,
+        "unit_delta": -3,
+        "reason": "現代工序已在前文，刪第二次時間拉回的轉場，讓製造完成直接進入雙卷分離。",
+        "source_ids": [
+          "K_Q"
+        ],
+        "source_locator": "現行問答：兩卷相連，使用前拆成各自一卷。"
+      },
+      {
+        "id": "c05r089",
+        "before": "原廠還列短時與長時尺寸，環境也會影響時數；可香體裡面，還是當年的花粉嗎？",
+        "after": "原廠還列短時與長時尺寸，燃燒時數也會隨使用環境變動。",
+        "old_spoken_units": 32,
+        "new_spoken_units": 24,
+        "unit_delta": -8,
+        "reason": "現代有效成分已移至製造段解答，刪原來再問花粉的逆向提問；保留各款與環境限定。",
+        "source_ids": [
+          "K_Q"
+        ],
+        "source_locator": "現行尺寸與時數問答：大型／一般／迷你；燃燒時間因使用環境而異。"
+      },
+      {
+        "id": "c05rx009",
+        "before": "你以為把粉料黏成圓就結束了？燃燒時，它還要把什麼交到空氣裡？",
+        "after": "不過，燒得慢只說明時間。燃燒往前走時，有效成分怎麼離開香體，交到空氣裡？",
+        "old_spoken_units": 27,
+        "new_spoken_units": 31,
+        "unit_delta": 4,
+        "reason": "不再從「把粉料黏成圓」開同一個問題，沿剛解答的慢燃直接問釋出位置。",
+        "source_ids": [
+          "K_F",
+          "EDITORIAL"
+        ],
+        "source_locator": "なぜ蚊取線香で蚊が死ぬ：燃燒釋出有效成分；首句為旁白對時數與釋出的區分。"
+      },
+      {
+        "id": "c05le013",
+        "before": "燃燒端大約七百度到八百度；香體上離前端六到八毫米的位置，約二百五十度，有效成分在那裡揮散。",
+        "after": "原廠說，燃燒端約攝氏七百度到八百度；離前端六到八毫米的香體，約攝氏二百五十度，成分在那裡揮散。",
+        "old_spoken_units": 41,
+        "new_spoken_units": 42,
+        "unit_delta": 1,
+        "reason": "落實r1來源A02的單位限定，明講攝氏與原廠歸屬；不改距離、兩處溫度或揮散位置。",
+        "source_ids": [
+          "K_F"
+        ],
+        "source_locator": "なぜ蚊取線香で蚊が死ぬ：燃燒部700–800℃；先端6–8mm部分約250℃揮散。"
+      }
+    ],
+    "deleted_lines": [
+      {
+        "id": "c05rx006",
+        "text": "但粉末一倒就散；這樣的材料，要靠什麼留住可以拿在手裡的螺旋？",
+        "spoken_units": 27,
+        "reason": "刪第二次「散粉靠什麼留住螺旋」提問；手卷入口的加水、糊粉及塊料已在le004–le005解答，不再重開同一問題。"
+      },
+      {
+        "id": "c05rx008",
+        "text": "所以形狀背後還有材料的配合：你拿的是一個圓，工廠得先處理怎麼把粉料做成形。",
+        "spoken_units": 34,
+        "reason": "刪泛稱粉料成形的重述；現代原料後直接進唯一一次板材／打型工序。"
+      },
+      {
+        "id": "c05le011",
+        "text": "原廠先用混和機揉合，再擠成板狀，讓刀型從平面取出螺旋。",
+        "spoken_units": 24,
+        "reason": "刪第二次混和→板狀→刀型流程；將混和機、押出成板、打型、乾燥合入r092，只敘述一次。"
+      },
+      {
+        "id": "c05le016",
+        "text": "說到灰，還記得開場桌邊那一截嗎？香燒過一段，灰為什麼也常斷成一段，沒有一直連著還沒燒完的香？",
+        "spoken_units": 41,
+        "reason": "刪斷灰支線的提問，結尾回到商品製造、運送與香體慢燃。"
+      },
+      {
+        "id": "c05le017",
+        "text": "原廠以香皿的墊面解釋：一股力讓灰和香體相連，另一股摩擦力，卻要把灰留在墊面原來的位置。",
+        "spoken_units": 39,
+        "reason": "刪香皿摩擦支線，不以來源足夠當成保留理由。"
+      },
+      {
+        "id": "c05le018",
+        "text": "灰累積到一定長度，摩擦力超過相連的力，灰就斷開；接著再燃燒、再累積，這個過程反覆發生。",
+        "spoken_units": 37,
+        "reason": "刪灰累積與反覆斷開的支線機制。"
+      },
+      {
+        "id": "c05le024",
+        "text": "如果改由線香立支撐，原廠又用哪一股力，解釋灰為什麼往下落？",
+        "spoken_units": 26,
+        "reason": "刪線香立重力支線的提問。"
+      },
+      {
+        "id": "c05le019",
+        "text": "原廠把另一邊換成灰的重量：重力超過相連的力，灰便往下落，依然是一段段交接。",
+        "spoken_units": 33,
+        "reason": "刪線香立灰重力支線。"
+      },
+      {
+        "id": "c05le020",
+        "text": "原廠在罐裝香皿的問答裡說，燃著的部分若直接碰到上蓋金屬，就會被帶走熱，可能中途熄掉。",
+        "spoken_units": 38,
+        "reason": "整場刪除上蓋金屬接觸支線；r1來源／配鏡V01所指物件與直接接觸缺口隨場景一併移除。"
+      },
+      {
+        "id": "c05le021",
+        "text": "原來承放也有取捨：要接住香和灰，又可能從接觸處帶走熱。我覺得這讓能燒多久，從香體一路連到它放在哪裡。",
+        "spoken_units": 45,
+        "reason": "刪支撐與熱接觸的總結，避免把主線另轉到使用器皿。"
+      }
+    ],
+    "deleted_spoken_units": 344,
+    "changed_spoken_unit_delta": 9,
+    "net_spoken_unit_delta": -335,
+    "moved_scene_ids": [
+      "c05r090",
+      "c05r091",
+      "c05rx005",
+      "c05rx007",
+      "c05le010",
+      "c05r092",
+      "c05le023",
+      "c05r093"
+    ],
+    "move_after_scene": "c05r076",
+    "move_reason": "現代原料及打型一次說完，再由出貨雙卷接到使用前分離。",
+    "changed_scene_object_ids": [
+      "c05le007",
+      "c05r090",
+      "c05r091",
+      "c05le010",
+      "c05r092",
+      "c05r093",
+      "c05r080",
+      "c05r089",
+      "c05rx009",
+      "c05le013"
+    ],
+    "unchanged_scene_objects_exact": 99,
+    "metadata_changes": []
+  },
+  "delta_from_r6": {
+    "original_lines": 97,
+    "retained_original_ids": 95,
+    "retained_original_texts_exact": 88,
+    "changed_original_ids": [
+      "c05r090",
+      "c05r091",
+      "c05r092",
+      "c05r093",
+      "c05r080",
+      "c05r089",
+      "c05rx009"
+    ],
+    "deleted_original_ids": [
+      "c05rx006",
+      "c05rx008"
+    ],
+    "r1_additions_retained": 16
+  },
+  "native_units": {
+    "counter": "tools/video/core/timeline.mjs spokenUnits + core/schema.mjs eachLine",
+    "r1_total": 3614,
+    "candidate_total": 3279,
+    "candidate_hook": 183,
+    "candidate_body_excluding_hook": 3096,
+    "candidate_body_excluding_hook_and_outro": 3000,
+    "candidate_outro": 96,
+    "body_target": [
+      3300,
+      3550
+    ],
+    "body_target_met": false,
+    "shortfall_to_3300": 204,
+    "length_decision": "刪支線與重述後如實報較低正文，不為目標灌入來源警語、清單或同義重講；可作約3500規劃的未核准候選，不作篇幅或時長PASS。",
+    "actual_tts_seconds": null,
+    "target_tts_minutes": [
+      12,
+      14
+    ],
+    "actual_duration_verified": false,
+    "may_require_adjustment_after_actual_voice": true
+  },
+  "planned_visuals": {
+    "scenes": 109,
+    "lines": 111,
+    "illustration_scenes": 108,
+    "cards": 1,
+    "planned_illustration_unit_share": 0.970722781335773,
+    "planning_basis": "spoken-unit share only; actual screen-time share unverified",
+    "look_exact": true,
+    "voice_exact": true,
+    "burn_in": true,
+    "all_changed_prompts_anonymous_english": true,
+    "all_shots_static_stills": true,
+    "actual_generated_media_reviewed": false
+  },
+  "loop_audit": {
+    "total_declared_loops": 33,
+    "concrete_pairs_for_fresh_blind_review": [
+      {
+        "setup": "c05r003",
+        "payoff": "c05r036",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      },
+      {
+        "setup": "c05r005",
+        "payoff": "c05r052",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      },
+      {
+        "setup": "c05r025",
+        "payoff": "c05r055",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      },
+      {
+        "setup": "c05r043",
+        "payoff": "c05r045",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      },
+      {
+        "setup": "c05r067",
+        "payoff": "c05r069",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      },
+      {
+        "setup": "c05r080",
+        "payoff": "c05r081",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      },
+      {
+        "setup": "c05r084",
+        "payoff": "c05r085",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      },
+      {
+        "setup": "c05r090",
+        "payoff": "c05r091",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      },
+      {
+        "setup": "c05le001",
+        "payoff": "c05le002",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      },
+      {
+        "setup": "c05le004",
+        "payoff": "c05le005",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      },
+      {
+        "setup": "c05le007",
+        "payoff": "c05le008",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      },
+      {
+        "setup": "c05le010",
+        "payoff": "c05r093",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      },
+      {
+        "setup": "c05le012",
+        "payoff": "c05le013",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      }
+    ],
+    "opening_previews": 2,
+    "actual_30_to_45_second_cadence_verified": false
+  },
+  "source_caveats": [
+    "NM_COIL只用製法，不用錯配西元日期或產能。",
+    "木片作芯是記錄的製法，非本集核實的留存木芯現物。",
+    "乾花磨粉不等於pollen；植物成分與現代配方各保留原廠歸屬。",
+    "溫度與釋出位置是原廠說明，明說攝氏；不是本集實測、殺蚊能力倍數或安全保證。"
+  ],
+  "independent_source_delta_review": "PENDING_OTHER_REVIEWER",
+  "narrative_review": "PENDING_TWO_FRESH_ISOLATED_READERS",
+  "native_verify_file_written": false,
+  "native_factchecked_marker_created": false,
+  "owner_approval": false,
+  "lint": {
+    "errors": [],
+    "warnings": [
+      {
+        "path": "scenes[56].lines[0] (c05le008)",
+        "message": "41 spoken units; split sentences longer than 40"
+      },
+      {
+        "path": "scenes[80].lines[0] (c05r090)",
+        "message": "42 spoken units; split sentences longer than 40"
+      },
+      {
+        "path": "scenes[104].lines[0] (c05le013)",
+        "message": "42 spoken units; split sentences longer than 40"
+      },
+      {
+        "path": "scenes[16] (c05le003)",
+        "message": "about 10.1 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[56] (c05le008)",
+        "message": "about 10.9 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[80] (c05r090)",
+        "message": "about 11.1 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[84] (c05le010)",
+        "message": "about 10.1 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[104] (c05le013)",
+        "message": "about 11.1 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[105] (c05le014)",
+        "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[106] (c05le015)",
+        "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+      }
+    ],
+    "summary": {
+      "minutes": 14.981111111111112,
+      "lines": 111,
+      "spoken_units": 3279,
+      "billable_characters": 10274,
+      "chapters": [
+        "00:00 一根香燒完了，夜還很長",
+        "00:51 先有花種，卻還沒有能賣的形狀",
+        "03:46 長條盤進圓，木模卻停住了",
+        "05:34 上市後，工人把兩條合在一起",
+        "09:18 新機器完成，舊手卷沒有立刻消失",
+        "12:23 路徑在外面，速度藏在香體裡"
+      ]
+    },
+    "scope": "local text/structure only; estimates are not actual TTS/media acceptance"
+  },
+  "file_sha256": {
+    "video.json": "efbe5021a8dac732a71376f307903a5cf8220409a405130f59f742ddc96a57de",
+    "script.md": "9603cbf1ed2cd1073b72800baab85fba232576d8b8052a7729994297cb17f79a",
+    "narration-only.json": "a90d02f4440d54dbeca5fe5c2f19457907961c11ebf925dac408477acf58c5e5",
+    "claims.json": "330441dde916d3f7e7baebf264084eafa947f2cefd7a004d159da487fc362fd8",
+    "claims.md": "64607f8d153a19c61bf06bf952895c19288524e4e65f3ac53b764212035f634d",
+    "brief.md": "c55afa679e17547e7fbadec5cce365d2e27046d60dd58d6d780f57e1153e5b62",
+    "series.json": "27ecf521bc6530375cc4bc7fb0e1c8e1ff0582d4dcbf2657b5ac9f696ba8db0c",
+    "build-candidate.mjs": "ccda0747d1f831fada0269579238ee1be6fcd970624c29749c55eed4f7d17d83"
+  },
+  "protected_parent_history_and_review_files_unchanged": {
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/README.md": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/author-notes.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/backend-language-choice.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/backend-outline-receipt.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/backend-script-receipt.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/backend-script.md": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/backend-status.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/brief.md": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/build-candidate.py": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/claims.md": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/keyframes-dry-run.txt": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/lint-final.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/lint.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/music-preflight-hold.txt": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/narration-only.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/narrative-payload-r4.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/narrative-payload-r5.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/narrative-payload-r6.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/preflight-inputs.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/revision-r3.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/revision-r4.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/revision-r5.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/revision-r6.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/script.md": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/series-context.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/series.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/tts-dry-run.txt": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/video.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/brief.md": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/claims.md": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/en.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/es.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/id.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/ja.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/ko.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/pt.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/th.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/vi.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/script.md": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/series.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/story-lexicon/current.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/story-lexicon/events/e1e8278f2992b3525b33fa5eed19374a793905896dae49aa2c0bb33221848fe7.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/story-lexicon/versions/1b7ab06d93193c145da374d4f0d1ae686f4e6ff948730ddb1532522f32ec21c3.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/video.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/author-notes.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/brief.md": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/build-candidate.mjs": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/claims.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/claims.md": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/narration-only.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/reviews/narrative-r1-a.raw.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/reviews/narrative-r1-b.raw.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/reviews/narrative-r1-binding.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/reviews/narrative-r1-input.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/reviews/narrative-r1.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/reviews/source-r1-independent.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/script.md": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/series.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/video.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r1-a.raw.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r1-b.raw.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r1-binding.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r1-input.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r1.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/source-r1-independent.json": true
+  },
+  "paid_calls": 0,
+  "backend_writes": 0,
+  "git_commands": 0,
+  "canonical_written": false
+}

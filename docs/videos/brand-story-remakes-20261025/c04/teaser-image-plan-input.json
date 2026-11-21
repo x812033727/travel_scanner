@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "project": "c04",
+  "author": "/root/approved_teaser_visual_plan",
+  "revision": "teaser-image-plan-v1",
+  "source_before_sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+  "source_after_sha256": "8549eb766873b65cb3453d03edfb5c2d151a3a9209578f3383cdc321c9620a75",
+  "pairs": [
+    {
+      "pair_id": "two-film-seam",
+      "setup": "c04r-h05",
+      "payoff": "c04r-e07",
+      "setup_lines": [
+        "c04rh051"
+      ],
+      "payoff_lines": [
+        "c04re071"
+      ],
+      "answer_lines": [
+        "c04re071"
+      ],
+      "prompt": "Close-up at a workbench, one anonymous technician holding the overlapping edges of two plain translucent films together beside a raised-cell sample, soft side light.",
+      "camera": "tilt up",
+      "no_spoiler": "Two overlapping films and a raised-cell sample show the joint being handled, without drawing heat, a melted seam, machinery settings or the later solution."
+    }
+  ],
+  "changed_visual_fields": [
+    {
+      "scene_id": "c04r-h05",
+      "before": {
+        "prompt": "Close-up at a workbench, one technician tracing the narrow sealed edge of a raised plastic cell with a fingertip, soft side light.",
+        "visual": "still",
+        "camera": "tilt up"
+      },
+      "after": {
+        "prompt": "Close-up at a workbench, one anonymous technician holding the overlapping edges of two plain translucent films together beside a raised-cell sample, soft side light.",
+        "visual": "still",
+        "camera": "tilt up"
+      }
+    },
+    {
+      "scene_id": "c04r-e07",
+      "before": {
+        "prompt": "Wide shot beside a generic laminating press, one anonymous technician guiding an embossed plastic web between heated rollers, muted workshop light.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "after": {
+        "prompt": "Close-up at a workbench, one anonymous technician holding the overlapping edges of two plain translucent films together beside a raised-cell sample, soft side light.",
+        "camera": "tilt up",
+        "visual": "still"
+      }
+    }
+  ],
+  "source_facts_unchanged": true,
+  "new_independent_source_and_written_visual_review": "REQUIRED",
+  "native_asset_manifest_created": false,
+  "actual_same_asset_verified": false
+}

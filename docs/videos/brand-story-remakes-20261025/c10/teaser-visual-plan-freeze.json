@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "revision": "c10-r7-teaser-image-plan-v1",
+  "author": "/root/c09_c10_c08_visual_plan",
+  "status": "VISUAL_ONLY_AUTHOR_FREEZE_PENDING_INDEPENDENT_SOURCE_AND_RUNTIME_ADOPTION",
+  "baseline_video_sha256": "bc1a619974666659e134e976db7aee0b68dbc744dc391070590d9f85a0acc176",
+  "current_core_four_sha256": {
+    "video.json": "637c8cce6426341d8612b2443089556cbfc2b67d415d1d726bc559999a2d307f",
+    "script.md": "91719c5b7d3915393a97d5681256973927cc312e4e1b961d6247b9c68ca76c48",
+    "narration-only.json": "c1e723ca73cd7c3a8c883feb491745f7f498cc384a1bc76493236f3b7524a77c",
+    "claims.json": "e76dd9ef35d4eacbf79b8c7b5a81ccd1f2cafae595da064fa0b7230f64c364b3"
+  },
+  "image_reuse_plan_sha256": "6fc61e8c4b91fe6152eeb3c8ee427de5e695c2e6fcb08998de86ec67c7a87c68",
+  "baseline_snapshot_manifest_sha256": "ae2ccc6e7b1b78899b19481db8f1f899479c8b36d6c7b721077aba6dd1823a4b",
+  "changed_scene_ids": [
+    "c10r1-h06",
+    "c10r1-o06",
+    "c10r1-h07",
+    "c10r5-s04"
+  ],
+  "only_scene_prompt_camera_changed": true,
+  "all_narration_scene_ids_scene_order_chapters_emotions_and_loops_unchanged": true,
+  "all_claim_narration_source_evidence_material_refs_limits_and_order_unchanged": true,
+  "retained_whole_claim_objects": 114,
+  "author_script_and_claims_md_original_prefix_bytes_unchanged": true,
+  "deterministic_builder_sha256": "fcdd098650fc86a41895ed3f41ebf7402c915740ef80ac75c5d21f76abd46485",
+  "visual_spec_sha256": "b6b15248693ad2639b69c54934b9f7a4bd99f2c48533e27b188793c1536dd0be",
+  "official_canonical_script_sha256": "1fa2d25a0161b8ed0e4638fbaf8d982cc1dbf5717e9300cd2d121e43b0a29082",
+  "official_canonical_script_bytes_identical": true,
+  "narrative_hash_identical": true,
+  "native_narrative_receipts_retain_exact_binding": [
+    {
+      "path": "history/before-teaser-image-plan/reviews/narrative-r6.json",
+      "sha256": "ade38a1b35362b8189ffae1a78ac42d4dd979fda35b9723538065aaec1de27e9",
+      "passed": true,
+      "exact_native_hash_binding_unchanged": true
+    }
+  ],
+  "hashes": {
+    "narrativeHash": {
+      "before": "f1c1a609840063ff",
+      "after": "f1c1a609840063ff",
+      "equal": true
+    },
+    "speechHash": {
+      "before": "3899ca6484b93ccf",
+      "after": "3899ca6484b93ccf",
+      "equal": true
+    },
+    "picturesHash": {
+      "before": "169ad66b4b1bfcab",
+      "after": "642c2e38f5e1a565",
+      "equal": false
+    },
+    "lookHash": {
+      "before": "98a370ae40badbaf",
+      "after": "98a370ae40badbaf",
+      "equal": true
+    },
+    "mixHash": {
+      "before": "71ecdd098c551254",
+      "after": "71ecdd098c551254",
+      "equal": true
+    },
+    "subtitlesHash": {
+      "before": "4b23ded6e41b1e87",
+      "after": "4b23ded6e41b1e87",
+      "equal": true
+    }
+  },
+  "narration_only_bytes_unchanged": true,
+  "all_localized_files_unchanged": 2,
+  "protected_files_sha256": {
+    "README.md": "76ef3b532bc38d7f2e4ac2834a30c05e4e657b9d693dbbed0e190e9066e5d19a",
+    "backend-language-choice.json": "d5e37a3a24d6fe449bc0c3cca0447bf5e74669a40d5a42113dd77a24e170a633",
+    "backend-script-receipt.json": "348390038369d430ab68f8e9d32d80231741f57405c9f1c20b72d543c3890fff",
+    "backend-script.md": "1fa2d25a0161b8ed0e4638fbaf8d982cc1dbf5717e9300cd2d121e43b0a29082",
+    "backend-status.json": "21232a4ced87f974cb58d17986e68f789de4a53561dc5b0fbcc1df7c65078e2c",
+    "brief.md": "990aa6a3ec25c705dd67e7eb0902f5df5ec24af53f1f98543b6f61888fe73511",
+    "i18n/README.md": "4760748b34a1d93a28bb14317dfd996bdc4c65b5e192680eece9204d1f13b36d",
+    "i18n/preparation-status.json": "6ff5a27a5a7b3669ab687a4bc16ffe37b71bac88f296b34cc74de944dd4998b1",
+    "keyframes-dry-run.txt": "c55555611caa601937a78b163f56d76e032da678561bbb8cbf4f67de4650828e",
+    "narration-only.json": "c1e723ca73cd7c3a8c883feb491745f7f498cc384a1bc76493236f3b7524a77c",
+    "narration-r1.tsv": "470acb201347bf63ede3189e9be4ac7b12c449b1e00d1b8fec3bef93eb79aecc",
+    "native-author-lint-r1.json": "fda240c7cb11182fbbdcb60f17e5d7cd6d726306713fbe3ba0b7c9a0bd519b21",
+    "native-author-lint-r2.json": "7796bde777f52797068d853135a35c20ec28994a9153ee38fee949ca83d7933a",
+    "native-author-lint-r3.json": "7b24fd80fb9bb07d95bd43ad04e7db15bda6ca35ed3cad11f9c7cff29d5fc50b",
+    "native-author-lint-r4.json": "590787e47935cf654760cb65edf6d111c1a8b145fcdd2c9677e57422a4b2abaf",
+    "native-author-lint-r5.json": "ae45e324236c701cf36c9ad414253a7ae8900f005a3f8d6af4cba4715b513c29",
+    "native-author-lint-r6.json": "b9780ce52fd7d914545b9967a66fc070eb518c1fabf732d46d4ef4b468a9dbba",
+    "native-author-lint-r7.json": "e3971a4ce955a9aaa5a5d9da580b533dda5aed55df515898d26118ff99abc8a9",
+    "original-preservation.json": "c0f04d1fb512db863b5bcf4a85cfb5843b4760a5998815c3b00c0cbbca1e3ee3",
+    "outline-push-r7.txt": "acbd934f8e3bebee378cd3d1bc24a1c42453ad16f079f2d0c1a4118a70478f8e",
+    "preflight-inputs.json": "fdaad0a700a8db6c17f404a7ee4144c307151cba1c5d0a243b7b80292a8f003e",
+    "production-entry.md": "e33e12613bb458deb6f9b08cc9c35d75ed016294c6edf2c825407aa7ea0221f0",
+    "prompts-r1.tsv": "fb07dbd5f7f3cdf6d2e273795c57a6ee6227c5a2e50654b6eb9ded81faec5935",
+    "protected-admin-settings.json": "dec23f70e0a0a123ffd4b7019e7e0cef10427fcda5e381d0d4d8fe011b8521f1",
+    "research-expansion/claims.json": "4ab34028b8c2df8e5d74c4fcc575aa9165fd8cb644eb14bba386595ad0f2727a",
+    "research-expansion/research.md": "126ea290e5132f6a0a807847f84f1ed02af6f1ca25ca41cd475dcd8e93889683",
+    "research-expansion/source-receipts.json": "dca58a2487e055e750fc8d8ef7319f0ecc61841828d5d091d019e91001691d13",
+    "research-original.claims.json": "972924aa2bef4e3283130c8f4abaaf4446814a0c850699c774538e7113978c5e",
+    "research-original.md": "103534b03aa83d10d2d9c2b4c61ac8d0a45bad27384fff79418b44ea5eab4dc7",
+    "reviews/canonical-lint-r7.json": "797719999d387e6d22573d490c6aed9d85df908091e57c43e61e6ef8c03d3410",
+    "reviews/narrative-r1-a.raw.json": "e1f969eb6fa589467642742cd9272dfb7c3a18534e55b6f187a3bb0b928b9709",
+    "reviews/narrative-r1-b.raw.json": "4171f3b25e38bca141ce530532fa71aff2e0d731ac967c921a3876277a5e12dc",
+    "reviews/narrative-r1-binding.json": "20f5fe72e55b270c837a38d406c3cfa44b28e07920a502faffaf51f2b0d6cfae",
+    "reviews/narrative-r1-input.json": "5110869973ac244781e7ba89cb01a90d820f3bb95d11858bf4fd0e5cc789914b",
+    "reviews/narrative-r1.json": "a12e47fbfd86f441dbf8bae4203c7b55a41cc048f611c066945ca731e73ee762",
+    "reviews/narrative-r2-a.raw.json": "b0827a43936fe68b87cad0edba6ddc03f984c5adaee9f539df8db553f6383f02",
+    "reviews/narrative-r2-b.raw.json": "5eed238cd2db384e9a3a1ef6c913d9fe46186052e9c8d7a9d72807bc7c1cfb68",
+    "reviews/narrative-r2-binding.json": "c113c9b24c366f17e469d899d8ab094018257ff93d456ca77c95969e8fcaab38",
+    "reviews/narrative-r2-input.json": "25bc84968fc2d54c26273cf105eb416755eb4470f1faab4dee7d6e7d8f26fca7",
+    "reviews/narrative-r2.json": "a06f368caae18b7419216fe486095330db4e04765901031aaa04140524a2084d",
+    "reviews/narrative-r3-a.raw.json": "ef29080e2b9c1ab19b07dd7e67e5862b59e8e2835ee5c81e13c6dd86d8f58127",
+    "reviews/narrative-r3-b.raw.json": "cbfc563fa9ccc0ad7eb83c4c92b933b41fd598535b9cbe9d1c516ffeb9046237",
+    "reviews/narrative-r3-binding.json": "475d20ba37cd110ffa79c17b351389acccf07c9b210b299be85efe06d63eebd9",
+    "reviews/narrative-r3-input.json": "a65b6a10a21791c797dee12f5f5346d5d3db7ee3e3c39f96c0855a5ee1cd1016",
+    "reviews/narrative-r3.json": "8696cbbf64f9c8eadc41beaf35f7c0ff1d14d3519fe21a79331f42fdd5ca076e",
+    "reviews/narrative-r4-a.raw.json": "62488b5a9197b23c79474a9ba5cdacd7cdfc92af47860fba62a4d7a73adc2f0f",
+    "reviews/narrative-r4-b.raw.json": "32c4a9f2cbacab8e6c146bcd560a9e63b0f8dd575f96c88edc8073e8c4526afd",
+    "reviews/narrative-r4-binding.json": "eb042061c643fe1549e6e6a5f267d4e97e12c06cc203d00398baf7528dac666c",
+    "reviews/narrative-r4-input.json": "5fc692acc962203b719d4b49509f1f7015faf809403bd192fd2e5235cd79ef2c",
+    "reviews/narrative-r4.json": "6fbb4630eb536d0de09216fa8ca399a9c48cb9b1735a206c3424edac036c22f5",
+    "reviews/narrative-r5-a.raw.json": "000b0d696a6fc6f53baf83d6bfae225ec23dfc13ce6dde77890537e11eb1ff88",
+    "reviews/narrative-r5-b.raw.json": "64c98682306e5d948f2de9e61d57d1610c7dda4184914440e393abda9574797b",
+    "reviews/narrative-r5-binding.json": "a3ba269266157091025ca699211c4d5709f569f775775d664e311e078489b834",
+    "reviews/narrative-r5-input.json": "d812c47e93fbb9dab62caddc27c83c8fd50c37af8bab6ecdf669a5952ec84a7e",
+    "reviews/narrative-r5.json": "ad5b9a3e75407d21a6a7171cfaf83884a00f69ba307c94d83905f8b918e3980a",
+    "reviews/narrative-r6-a.raw.json": "acfede1254577e4a97fcf1e7329e8002bd997271b988f612384680d3dbe407a3",
+    "reviews/narrative-r6-b.raw.json": "7a3827aadd4e0724967d16f79676858bfb38f7370aeade8e2f12ffee4e31fcc2",
+    "reviews/narrative-r6-binding.json": "f7d145e5ad0772d7d0a8f7c137988f145b026511e73179412da3cecae8f95a1e",
+    "reviews/narrative-r6-input.json": "45ce6d53dca1da9da3b26f58355081ed386297e3a3ab0306d9ad27b7b3b2b47e",
+    "reviews/narrative-r6.json": "ade38a1b35362b8189ffae1a78ac42d4dd979fda35b9723538065aaec1de27e9",
+    "reviews/source-r1-independent.json": "e5da16e3da4d282203893c82188610d1c03590c502caf1279dc4e9a95efb6784",
+    "reviews/source-r2-independent.json": "47dbbf69261861b7ad9b84099eff0ceda19199f2f26b2ebe32e97a0057600932",
+    "reviews/source-r3-independent.json": "c6f6a4d41bbea0502cadfbf641cb70616ba5739d293a43f1b9d3dc4a26b57ea4",
+    "reviews/source-r5-independent.json": "2343a13b9474432035f79eefc03500bba233fae1015b302f45aab7ff8529c99e",
+    "reviews/source-r6-independent.json": "fa98b7984b03e1fbc61b95affd952c7932ba81d519bbbe2e5c2a3c4e60022434",
+    "reviews/source-r7-independent.json": "3ddf8ae9f2afcf5d2fd5bffe1ea378cf57f0ddae4f21d7074ec5ac1b8db7d64f",
+    "runtime-lint-r2.json": "885da2700a67130984e0083ad2f56f6a6a9090ebf6fa431cc1df934acad20bb3",
+    "script-push-r7.txt": "fb0ed355b595ee375cb47937a51aab68740c49989cf2cd8b9de368eb3996305a",
+    "series.json": "f18da6d7eb2b70718ff0c2fd0d9fed6ecd015f7b41921041b167832c4118f41a",
+    "tts-dry-run.txt": "a3eac643fb713dcede6d704c1ab7b9493970ca037290f40ef6269e8ce96d0c21",
+    "variants/clean-master/README.md": "60e0573f7280dbc80ab88450b3f98da89487bd2518db4216acd02567ff95a2ee",
+    "variants/clean-master/derivation.json": "5b384330e9c8c53120b4ac0ab23e133551a76b938d93c24e95521edd7d190262",
+    "variants/clean-master/lint.json": "d90a8a0e554c6de8ff2c0bb61e8fd2eb8e6ebe1212abe2a9feb098fe1f87384d",
+    "variants/clean-master/review.json": "0f4bd9ca6520bfb010859d24c17741ac825c68a08f9a3e585f316d481b945abc",
+    "variants/clean-master/video.json": "7c30b9f8ad331a9408405026b368ab66c293a3c53c4978688d8181af46b2cf2c"
+  },
+  "protected_file_count": 75,
+  "lint": {
+    "errors": [],
+    "warnings": [
+      {
+        "path": "scenes",
+        "message": "\"handle\" is in 46 of 115 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"peeler\" is in 45 of 115 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      }
+    ],
+    "summary": {
+      "minutes": 12.662222222222223,
+      "lines": 118,
+      "spoken_units": 2670,
+      "billable_characters": 9230,
+      "chapters": [
+        "00:00 開場：先握住這支刀",
+        "00:48 一塊黏土接上手",
+        "03:30 手指繞回來，方向留下來",
+        "05:29 指腹壓下，鰭片跟著變形",
+        "07:17 接上刀片，交出樣品",
+        "10:11 拿去試，再交到下一雙手"
+      ]
+    }
+  },
+  "lint_scope": "Pure in-memory new document with the existing actual immutable runtime dictionary/context; no runtime file was changed.",
+  "runtime_doc_stays_on_baseline": true,
+  "current_source_verify_removed_and_archived": true,
+  "independent_source_review": "PENDING",
+  "independent_visual_review": "PENDING",
+  "owner_approval_created": false,
+  "actual_audio_seconds": null,
+  "actual_same_asset_verified": false,
+  "provider_calls": 0,
+  "backend_calls": 0,
+  "runtime_mutations": 0,
+  "media_mutations": 0,
+  "git_actions": 0
+}

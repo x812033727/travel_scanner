@@ -1,0 +1,214 @@
+{
+  "source_video_sha256": "268d89aa563929543938fe9dd825b4729e91cd2003852e43ab870b29b032aa0e",
+  "reviewer": "/root/c19_r2_source",
+  "independent": true,
+  "role_disclosure": "I did not author or apply these translations. This is a targeted independent recheck after the root applied my exact two Spanish proposals. I freshly read only those two source/target leaves and deep-compared all worksheet/native JSON leaves. Korean113-line review and Spanish111 unchanged lines/all6 chapter titles/metadata inherit the original frozen full review; I do not claim a second full reading. No translator self-review or root outcome assertion substitutes for the independent comparisons.",
+  "review_type": "TARGETED_RECHECK",
+  "created_at_utc": "2026-10-26T05:12:55.311257+00:00",
+  "baseline_review": "review-ko-es.json",
+  "baseline_review_sha256": "410d7cf9da908bc485ef1172f22b583b2b4d5f92273c58ee56916e4895916d2e",
+  "original_review_preserved": true,
+  "locales": [
+    {
+      "locale": "ko",
+      "worksheet_sha256": "d225e53d52db84c2adfdac605708258582c05991b86da74200df734e31028ed6",
+      "translation_sha256": "a9ceed7240867f41cbe289c9a73a855ce198244a1f331534c0e4669b62f99448",
+      "status": "TEXT_PASS",
+      "review_mode": "FULL113_LINE_BASELINE_INHERITANCE_ONLY",
+      "checked_lines": 0,
+      "checked_chapters": 0,
+      "fresh_read_line_ids": [],
+      "inherited_lines": 113,
+      "covered_lines": 113,
+      "covered_chapters": 6,
+      "baseline_review_sha256": "410d7cf9da908bc485ef1172f22b583b2b4d5f92273c58ee56916e4895916d2e",
+      "baseline_status": "TEXT_PASS",
+      "all_inputs_exact_baseline_sha": true,
+      "findings": [],
+      "advisory": []
+    },
+    {
+      "locale": "es",
+      "worksheet_sha256": "cb0febb92dccad4a3b994795fac644ab99ccf46dd765328d01d7058d580bfd87",
+      "translation_sha256": "54bf1fc4e547dae377675c6dc1640519e74c0802bc40926ca4abf6f31a867729",
+      "status": "TEXT_PASS",
+      "review_mode": "ORIGINAL_FULL113_LINE_REVIEW_PLUS_EXACT_TWO_LEAF_TARGETED_RECHECK",
+      "checked_lines": 2,
+      "checked_chapters": 0,
+      "fresh_read_line_ids": [
+        "c19r1o10",
+        "c19r1e16"
+      ],
+      "inherited_lines": 111,
+      "covered_lines": 113,
+      "covered_chapters": 6,
+      "baseline_review_sha256": "410d7cf9da908bc485ef1172f22b583b2b4d5f92273c58ee56916e4895916d2e",
+      "baseline_status": "FIXES_REQUIRED",
+      "baseline_worksheet_sha256": "31d0640ee49673bd64ccbbfe1197fdda0721fc05e0053d99f82a8fb676f57f98",
+      "baseline_translation_sha256": "a5e22031757e7338f982e70f2b95d983736d94a1fc0d0c0ff6bbf792772ef80e",
+      "original_FIXES_REQUIRED_preserved": true,
+      "worksheet_leaf_diffs": [
+        {
+          "path": "lines.17.text",
+          "old": "Pero otras tiendas de conveniencia ya colaboraban con bancos en 1999. Este grupo no inventó sus cajeros automáticos.",
+          "new": "Pero otras tiendas de conveniencia ya colaboraban con bancos en 1999. Este grupo no fue el primero en ofrecer cajeros automáticos en tiendas de conveniencia."
+        },
+        {
+          "path": "lines.64.text",
+          "old": "La tarjeta podía estar conectada, pero su dueño se detenía delante sin siquiera pensar en sacarla.",
+          "new": "La tarjeta podía estar conectada, pero su dueño podía quedarse delante sin siquiera tener intención de sacarla."
+        }
+      ],
+      "native_leaf_diffs": [
+        {
+          "path": "lines.c19r1o10.text",
+          "old": "Pero otras tiendas de conveniencia ya colaboraban con bancos en 1999. Este grupo no inventó sus cajeros automáticos.",
+          "new": "Pero otras tiendas de conveniencia ya colaboraban con bancos en 1999. Este grupo no fue el primero en ofrecer cajeros automáticos en tiendas de conveniencia."
+        },
+        {
+          "path": "lines.c19r1e16.text",
+          "old": "La tarjeta podía estar conectada, pero su dueño se detenía delante sin siquiera pensar en sacarla.",
+          "new": "La tarjeta podía estar conectada, pero su dueño podía quedarse delante sin siquiera tener intención de sacarla."
+        }
+      ],
+      "all_other_lines_metadata_chapters_source_hashes_exact": true,
+      "resolution_checks": [
+        {
+          "target": "lines.c19r1o10",
+          "current": "Pero otras tiendas de conveniencia ya colaboraban con bancos en 1999. Este grupo no fue el primero en ofrecer cajeros automáticos en tiendas de conveniencia.",
+          "result": "PASS",
+          "reason": "現在明說不是首先在超商提供ATM者，恢復服務先例範圍，未聲稱沒有發明自家硬體；1999與其他超商合作前提保留。"
+        },
+        {
+          "target": "lines.c19r1e16",
+          "current": "La tarjeta podía estar conectada, pero su dueño podía quedarse delante sin siquiera tener intención de sacarla.",
+          "result": "PASS",
+          "reason": "第二個podía明示持卡人停步/不拿卡也是可能情境，沒有寫成已觀察個案；卡已接通與人的可能行為兩層保留。"
+        }
+      ],
+      "worksheet_native_exact": true,
+      "description_urls_exact_same_order": true,
+      "findings": [],
+      "advisory": []
+    }
+  ],
+  "protected_inputs_before_after": [
+    {
+      "path": "/workspace/work/brand-story-20261025/media/story-everyday-seven-bank-c19-remake-20261025/i18n/ko.todo.json",
+      "before_sha256": "d225e53d52db84c2adfdac605708258582c05991b86da74200df734e31028ed6",
+      "after_sha256": "d225e53d52db84c2adfdac605708258582c05991b86da74200df734e31028ed6",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c19-submission-root/docs/videos/story-everyday-seven-bank-c19-remake-20261025/i18n/ko.json",
+      "before_sha256": "a9ceed7240867f41cbe289c9a73a855ce198244a1f331534c0e4669b62f99448",
+      "after_sha256": "a9ceed7240867f41cbe289c9a73a855ce198244a1f331534c0e4669b62f99448",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/media/story-everyday-seven-bank-c19-remake-20261025/i18n/es.todo.json",
+      "before_sha256": "cb0febb92dccad4a3b994795fac644ab99ccf46dd765328d01d7058d580bfd87",
+      "after_sha256": "cb0febb92dccad4a3b994795fac644ab99ccf46dd765328d01d7058d580bfd87",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c19-submission-root/docs/videos/story-everyday-seven-bank-c19-remake-20261025/i18n/es.json",
+      "before_sha256": "54bf1fc4e547dae377675c6dc1640519e74c0802bc40926ca4abf6f31a867729",
+      "after_sha256": "54bf1fc4e547dae377675c6dc1640519e74c0802bc40926ca4abf6f31a867729",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c19-audit/text-r8/review-ko-es.json",
+      "before_sha256": "410d7cf9da908bc485ef1172f22b583b2b4d5f92273c58ee56916e4895916d2e",
+      "after_sha256": "410d7cf9da908bc485ef1172f22b583b2b4d5f92273c58ee56916e4895916d2e",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c19-audit/text-r8/translation-review-history/es/worksheet-before.json",
+      "before_sha256": "31d0640ee49673bd64ccbbfe1197fdda0721fc05e0053d99f82a8fb676f57f98",
+      "after_sha256": "31d0640ee49673bd64ccbbfe1197fdda0721fc05e0053d99f82a8fb676f57f98",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c19-audit/text-r8/translation-review-history/es/translation-before.json",
+      "before_sha256": "a5e22031757e7338f982e70f2b95d983736d94a1fc0d0c0ff6bbf792772ef80e",
+      "after_sha256": "a5e22031757e7338f982e70f2b95d983736d94a1fc0d0c0ff6bbf792772ef80e",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c19-audit/text-r8/text-current.json",
+      "before_sha256": "859bde8a2bdf05a0fd063e931b544efe4c111dadc870677e5e16f1a779300e89",
+      "after_sha256": "859bde8a2bdf05a0fd063e931b544efe4c111dadc870677e5e16f1a779300e89",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c19-submission-root/docs/videos/story-everyday-seven-bank-c19-remake-20261025/video.json",
+      "before_sha256": "268d89aa563929543938fe9dd825b4729e91cd2003852e43ab870b29b032aa0e",
+      "after_sha256": "268d89aa563929543938fe9dd825b4729e91cd2003852e43ab870b29b032aa0e",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/eight-language-independent-review.txt",
+      "before_sha256": "07a244edf33f518e2527d97827278d3b3e20c0bbbe76c510a38ddd15958fe62c",
+      "after_sha256": "07a244edf33f518e2527d97827278d3b3e20c0bbbe76c510a38ddd15958fe62c",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c19/video.json",
+      "before_sha256": "268d89aa563929543938fe9dd825b4729e91cd2003852e43ab870b29b032aa0e",
+      "after_sha256": "268d89aa563929543938fe9dd825b4729e91cd2003852e43ab870b29b032aa0e",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c19/script.md",
+      "before_sha256": "7d13d1fe0bd7a4700c0d07347f6050ee85718a4bb989947450efac2e634e37cb",
+      "after_sha256": "7d13d1fe0bd7a4700c0d07347f6050ee85718a4bb989947450efac2e634e37cb",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c19/claims.json",
+      "before_sha256": "f44ebc213e76cfffe07b5d8badea7913d217155a4ea0cb870092aba791b867d4",
+      "after_sha256": "f44ebc213e76cfffe07b5d8badea7913d217155a4ea0cb870092aba791b867d4",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c19/series.json",
+      "before_sha256": "2d14d09e3797e69629f066d01bc9ddf7707341f4d29bd5211a9829c5d8b37ceb",
+      "after_sha256": "2d14d09e3797e69629f066d01bc9ddf7707341f4d29bd5211a9829c5d8b37ceb",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c19/research-original.md",
+      "before_sha256": "2f75f4bb90a470616f461ea17aac864a8f1e58ce46f3d15808be98ac8b01d8d3",
+      "after_sha256": "2f75f4bb90a470616f461ea17aac864a8f1e58ce46f3d15808be98ac8b01d8d3",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c19/research-original.claims.json",
+      "before_sha256": "5864de9d0780140a4c3378ce07fe1185ad2ff7befb646892df24f0c699f7b2cc",
+      "after_sha256": "5864de9d0780140a4c3378ce07fe1185ad2ff7befb646892df24f0c699f7b2cc",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c19/original-preservation.json",
+      "before_sha256": "2624d569571d9430774dcec55a67e24018dbf9d7b57c5d7219a8539cb599b4ad",
+      "after_sha256": "2624d569571d9430774dcec55a67e24018dbf9d7b57c5d7219a8539cb599b4ad",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c19/author-freeze-r8.json",
+      "before_sha256": "bcb2457a53e62f26a1d2bda91c0baf448d0a10e8ec12a9a2b511cd088b9bf6cb",
+      "after_sha256": "bcb2457a53e62f26a1d2bda91c0baf448d0a10e8ec12a9a2b511cd088b9bf6cb",
+      "unchanged_during_recheck": true
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c19/reviews/source-r8-independent.json",
+      "before_sha256": "c785d871c2357c7ab64b69f0cfb75c0a45bc65993760debc63f7e2fabbbd9e1e",
+      "after_sha256": "c785d871c2357c7ab64b69f0cfb75c0a45bc65993760debc63f7e2fabbbd9e1e",
+      "unchanged_during_recheck": true
+    }
+  ],
+  "source_research_and_recheck_inputs_unchanged": true,
+  "actual_audio_or_video_review": false,
+  "scope": "Only recheck-ko-es.json is written. No translation/source/repository/Git/backend/owner/paid mutation."
+}

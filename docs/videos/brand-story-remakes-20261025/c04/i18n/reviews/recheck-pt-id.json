@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "source_video_sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+  "reviewer": "/root/c04_readiness",
+  "review_type": "independent_targeted_text_recheck",
+  "reviewed_at": "2026-10-25T15:59:04.230615+00:00",
+  "scope": "text_only",
+  "original_review": {
+    "path": "review-pt-id.json",
+    "sha256": "9eb4d050e49f674dcf3f39464452ee673a387eac0f39934c676175cf2e07712e",
+    "preserved": true
+  },
+  "applied_fixes": {
+    "path": "applied-fixes-pt-id.json",
+    "sha256": "cd838b104dfa5a13ffe5a420b909f9200444e604be4dc893b55c172c518d675d"
+  },
+  "historical_PT_inputs_match_original_review_and_fix_receipt": true,
+  "locales": [
+    {
+      "locale": "pt",
+      "verdict": "TEXT_PASS",
+      "worksheet_sha256": "e078a327dbeca03b291d9cc879c5bee66c017f57b07908c174058c7eeb64b3bb",
+      "translation_sha256": "fc2b5edc362455d196710b93ccdcc39d7317e6442261370eee5537562a4f207f",
+      "previous_worksheet_sha256": "d116af2c5154f0c901038a885589628cb608f8391281299af0bd8f67b87b9a3b",
+      "previous_translation_sha256": "ca225a8fe541a919118c5bd7c4f003fed2b7703cddeef52904ce7417d62285b5",
+      "expected_only_changed_target": "lines.c04rt181",
+      "actual_only_changed_target": "lines.c04rt181",
+      "exact_replacement_applied": true,
+      "all_other_fields_unchanged": true,
+      "semantic_resolution": "A patente de embalagem daquela época指回前述早期文件，移除primeira的未限定首份主張；também mostra outra linha de defesa保留另一防線，單顆接縫與整張片材外圍對照完整，巴葡自然無新語意錯。",
+      "native_merge_receipt": {
+        "path": "native-merge-pt.json",
+        "sha256": "80fe80af105f0f7444041f41b6bfd6161f4aad031650d95f84f50b5f1f211901",
+        "exit": 0
+      },
+      "full_review_coverage_inherited": [
+        "110 lines",
+        "6 chapters",
+        "all metadata",
+        "57 cue boundaries"
+      ],
+      "targeted_recheck_only": true
+    },
+    {
+      "locale": "id",
+      "verdict": "TEXT_PASS",
+      "worksheet_sha256": "b917c9e86888b2a1b8819c09e0de8d506c5c5494661636262665478fe879dfbd",
+      "translation_sha256": "817c9fe2bd04fd8f4d79b86e76c058df464acd2e7f02fef8f1cbebb6c521a0c1",
+      "unchanged_from_original_TEXT_PASS": true,
+      "native_merge_receipt": {
+        "path": "native-merge-id.json",
+        "sha256": "0b9815f2b90c16308923dc8539706270a4add83329daed30e9deb497d09dee7d",
+        "exit": 0
+      },
+      "repeated_full_review": false
+    }
+  ],
+  "findings": [],
+  "actual_timing_verified": false,
+  "media_QA": false,
+  "paid_calls": 0,
+  "backend_actions": 0
+}

@@ -1,0 +1,62 @@
+{
+  "state": "CONCRETE_LANGUAGE_SETTINGS_PREPARED_NOT_APPLIED",
+  "slug": "story-dyson-japan-first-20261021-remake-20261025",
+  "authorization": "Default eight additional languages authorized by user; payload prepared only, no management identity or settings write used in this free operator task.",
+  "observed_at": "2026-10-26T09:01:33.367Z",
+  "observed_backend_category": "story",
+  "observed_locales": {},
+  "observed_locales_decided_at": null,
+  "language_change": {
+    "method": "PUT",
+    "backend_route": "/admin/videos/story-dyson-japan-first-20261021-remake-20261025/languages",
+    "json": {
+      "locales": {
+        "en": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "ja": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "ko": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "es": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "pt": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "id": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "vi": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "th": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        }
+      }
+    }
+  },
+  "required_identity": "Authenticated content.manage administrator.",
+  "next_verification": "GET real locales/locales_decided_at after legitimate management update. Do not invent timestamps, languages.json, language round or dub eligibility.",
+  "requests_sent": 0,
+  "budget_activation_included": false,
+  "media_operations_included": false
+}

@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "revision": "rolling-suitcase-r2",
+  "role": "AUTHOR_LOCAL_CHECKS_NOT_SOURCE_OR_NATIVE_APPROVAL",
+  "checked_at_utc": "2026-10-26T05:48:50.253Z",
+  "core_four_sha256": {
+    "video.json": "cb9202be19ab91ddde8613c8a8d9f63c81b67a92d3c614ca18ff54782fc1a170",
+    "script.md": "9b89e347ee88b724155f60a47cba8b0fbb6eb076fde96f388314c68ac22af077",
+    "narration-only.json": "4b0d22724aa603516a6fff247724483259311d8b6b99116d0d44613f79fea30c",
+    "claims.json": "e7b35a5ab5b0eeeddec462645cec3821eb9f2a96ba2b68489f41f0ade22e3b4c"
+  },
+  "exact_content_diff": {
+    "path": "/scenes/20/data/prompt",
+    "scene_id": "rs0021",
+    "before": "Medium shot at a passenger waiting area, an anonymous traveler loosening a plain elastic cord from luggage on a separate cart, soft overhead light.",
+    "after": "Medium shot at a passenger waiting area, an anonymous traveler retying a plain elastic cord around luggage stacked on a separate cart, soft overhead light."
+  },
+  "all_other_video_values_unchanged": true,
+  "projections_exact": true,
+  "narration_file_and_script_bytes_unchanged": true,
+  "normal_lint": {
+    "observed_exit_code": 0,
+    "errors": [],
+    "soft_warnings": [
+      {
+        "path": "scenes",
+        "message": "\"luggage\" is in 54 of 109 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"suitcase\" is in 42 of 109 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      }
+    ],
+    "hook_cadence_gaps": 0,
+    "near_identical_adjacent_shots": 0,
+    "output_sha256": "ffc1dce0a32052762cf207eb55d01790374679ab4f1a3bba7d5237f72762860f"
+  },
+  "free_planner": {
+    "ordinary_cli": "tts --dry-run",
+    "observed_exit_code": 0,
+    "credential_context": "empty same-task home and empty env; no credentials read",
+    "network_attempts": 0,
+    "requests": 110,
+    "ordinary_output_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r2/ordinary-free-planner-r2.txt",
+    "ordinary_output_sha256": "d182cf18c50f6c9b5e474f3ef2257f3dee685d12ae0a15f88de499fd22b172bf",
+    "request_objects_identical_to_r1": true,
+    "speech_hash_unchanged": true,
+    "speech_hash": "8bd161556ca5fcca"
+  },
+  "stage_imageKey_rehearsal": {
+    "pure_local_only": true,
+    "pairs": [
+      {
+        "teaser": "rs0005",
+        "payoff": "rs0066",
+        "native_stage_key": "e8d589542750b9e4",
+        "composed_prompt_sha256": "a284bc1420604858438ad893d3ff6f0c6350db2f292eecd60ab895c657b6d973",
+        "complete_tuple_equal": true,
+        "actual_same_asset_verified": false
+      },
+      {
+        "teaser": "rs0006",
+        "payoff": "rs0082",
+        "native_stage_key": "ab8eb6c1780fa08b",
+        "composed_prompt_sha256": "6d1a2d8a9cf400df283a46bf55ae69e162f8fc92ffd0dcae7b4b0c04aa772beb",
+        "complete_tuple_equal": true,
+        "actual_same_asset_verified": false
+      }
+    ]
+  },
+  "normal_lexicon": {
+    "sequence": 1,
+    "lexicon_sha256": "5a770dcde527377743c4b6e4efbfee41a69241a939cafe2e1f33360e97816e7a",
+    "files": [
+      {
+        "relative_path": "current.json",
+        "sha256": "29516c8a1aba3ae0a4d226747bd172be4db3c832feeca27f9c3aeb190edcece1",
+        "bytes": 287
+      },
+      {
+        "relative_path": "events/93516d24a1b2c6e45a21d1f14d357fed3bb0ac7facbdba330d65343ef7050a32.json",
+        "sha256": "93516d24a1b2c6e45a21d1f14d357fed3bb0ac7facbdba330d65343ef7050a32",
+        "bytes": 298
+      },
+      {
+        "relative_path": "versions/5a770dcde527377743c4b6e4efbfee41a69241a939cafe2e1f33360e97816e7a.json",
+        "sha256": "5a770dcde527377743c4b6e4efbfee41a69241a939cafe2e1f33360e97816e7a",
+        "bytes": 6778
+      }
+    ],
+    "original_and_r2_copied_bytes_equal": true,
+    "initialize_returned_existing_snapshot": true,
+    "reinitialized_or_rebuilt": false
+  },
+  "runtime_manifest_sha256": "53b9df949218649c0457d0df8fafafbe1339ff926b6b8ef2f37b4b76fdd4c5e6",
+  "runtime_script_sha256": "392fff54dbe32ab1ff82055fe893bba099e9e50eb39108679835efaa5150a8b5",
+  "protected_readback": {
+    "research_files": 3,
+    "original_related_files": 192,
+    "source_cache_files": 611,
+    "backend_snapshot_copies": 2,
+    "unique_original_files_checked": 851,
+    "archived_r1_files_checked": 20,
+    "all_sha_and_bytes_match": true,
+    "history_manifest_sha256": "2e363135ec1ce109e74cbea3998415279cc62ab732d600203458e17f546738e5"
+  },
+  "facts": {
+    "ok": false,
+    "detail": "no verify-*.md beside video.json: the script has not been fact-checked"
+  },
+  "current_verify_present": false,
+  "capacity": {
+    "whole_raw_spoken_units": 2687,
+    "coldopen": 166,
+    "voiced_CTA": 58,
+    "planning_target": 3500,
+    "planning_units_gap": 813,
+    "planning_arithmetic_at_4_to_5_units_per_second": [
+      537.4,
+      671.75
+    ],
+    "planning_at_4_5": 597.1111111111111,
+    "actual_body_seconds": null,
+    "actual_audio_tested": false,
+    "actual_duration_verdict": "PENDING_NO_TTS",
+    "planning_warning": "Natural de-duplicated single-story text remains short. Arithmetic does not establish synthesized duration or TTS FAIL. No silence, slowdown, recaps, warnings or invention anecdotes fill the gap.",
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "scope": "Whole unwrapped spoken narration, including coldopen and voiced CTA, excluding added5secondintro+21secondoutro."
+  },
+  "actual_native_round_count": 0,
+  "native_input_prepared": false,
+  "native_reader_calls": 0,
+  "source_review": "PENDING_R2_DELTA_QA",
+  "written_visual_review": "PENDING_R2_DELTA_QA",
+  "next_gate": "INDEPENDENT_R2_SOURCE_DELTA_QA_BEFORE_FIRST_NATIVE_1",
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "actual_audio_seconds": null,
+  "actual_duration_verified": false,
+  "actual_same_asset_verified": false,
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "git_mutations": 0,
+  "owner_approvals_created": 0
+}

@@ -1,0 +1,281 @@
+{
+  "narrative_hash": "6804ae192745b923",
+  "script_hash": "cf1143b3bc496050dc84f2a165303f3ab115ba2894cc622d2f9bdcb8acb9e850",
+  "panel_rules_sha256": "f46a3e7ed0366033e199204e20b2dc5199b873654a0a4cccc1d8bcdde300a628",
+  "panel_narration_sha256": "ecccb3edac46c6fe3bff888349aa0821ff6def04e83a65e9050cf01d031fb204",
+  "round": 1,
+  "passed": false,
+  "answers": [
+    {
+      "id": "scene_first",
+      "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[gr1h06] 到了二零零六年，另一支裝置，得先面對你不停擺動的手臂。；讀者二：[gr1h06] 到了二零零六年，另一支裝置，得先面對你不停擺動的手臂。",
+      "yes_readers": 0
+    },
+    {
+      "id": "no_spoiler",
+      "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[gr1h05] 等你跑起來，螢幕裡的兩個小人，還會帶來另一個問題。",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_line",
+      "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+      "required": true,
+      "yes": true,
+      "evidence": "[gr1r22] 可是只要手臂一直擺動，接收器還能好好看著天空嗎？",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_toc",
+      "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[gr1h08] 把GPS戴到手腕上，還差什麼，才能成為你用得上的跑步工具？",
+      "yes_readers": 1
+    },
+    {
+      "id": "chapters_link",
+      "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[gr1r01] 這支裝置把正在記錄的活動，稱作目前這一跑。；讀者二：[gr1v01] 二零零九年六月，評測者DC Rainmaker更新了自己的長期評測。",
+      "yes_readers": 0
+    },
+    {
+      "id": "open_loops",
+      "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+      "required": true,
+      "yes": true,
+      "evidence": "[gr1a27] 每一秒都留下，還是只留重要的變化？",
+      "yes_readers": 2
+    },
+    {
+      "id": "payoffs",
+      "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[gr1f08] 如果要在更細的記錄和更長的保存之間選，你會留哪一邊？；讀者二：[gr1a23] 要是看起來配到了別人的感測器，就得重新掃描。",
+      "yes_readers": 0
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[gr1d23] 前一次真的跑過的記錄，成了下一次可比較的對象。；讀者二：[gr1d05] 三點五小時到了，是電池就一定沒電了嗎？",
+      "yes_readers": 0
+    },
+    {
+      "id": "chapters_are_events",
+      "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+      "required": false,
+      "yes": true,
+      "evidence": "[gr1d04] 但手冊接著寫，這樣最多只能記下三點五小時的詳細資料。",
+      "yes_readers": 2
+    },
+    {
+      "id": "outro_no_next",
+      "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+      "required": true,
+      "yes": true,
+      "evidence": "[gr1f09] 留言告訴我，也訂閱我，讓這些平常只看見結果的設計，繼續被講清楚。",
+      "yes_readers": 2
+    },
+    {
+      "id": "opening_hooks",
+      "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[gr1h01] 如果你第一次用這支跑錶，起跑前可能得先等十五到三十分鐘。",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_thread",
+      "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+      "required": true,
+      "yes": true,
+      "evidence": "[gr1f07] 我想，GPS成為跑步工具，得讓位置變成你看得懂、留得下的活動。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_detour",
+      "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[gr1f03] 二零一三年，車用與行動分部，占全年營收百分之四十九。；讀者二：[gr1f03] 二零一三年，車用與行動分部，占全年營收百分之四十九。",
+      "yes_readers": 0
+    }
+  ],
+  "failed": [
+    "scene_first",
+    "chapters_link",
+    "payoffs",
+    "no_recap",
+    "no_detour"
+  ],
+  "advisory": [],
+  "readers": [
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": false,
+          "evidence": "[gr1h06] 到了二零零六年，另一支裝置，得先面對你不停擺動的手臂。"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[gr1h05] 等你跑起來，螢幕裡的兩個小人，還會帶來另一個問題。"
+        },
+        {
+          "id": "one_line",
+          "yes": true,
+          "evidence": "[gr1r22] 可是只要手臂一直擺動，接收器還能好好看著天空嗎？"
+        },
+        {
+          "id": "no_toc",
+          "yes": false,
+          "evidence": "[gr1h07] 我們沿著Garmin從定位到留下記錄的改動，追這段腕上GPS的路。"
+        },
+        {
+          "id": "chapters_link",
+          "yes": false,
+          "evidence": "[gr1r01] 這支裝置把正在記錄的活動，稱作目前這一跑。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[gr1a27] 每一秒都留下，還是只留重要的變化？"
+        },
+        {
+          "id": "payoffs",
+          "yes": false,
+          "evidence": "[gr1f08] 如果要在更細的記錄和更長的保存之間選，你會留哪一邊？"
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[gr1d23] 前一次真的跑過的記錄，成了下一次可比較的對象。"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[gr1d04] 但手冊接著寫，這樣最多只能記下三點五小時的詳細資料。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[gr1f09] 留言告訴我，也訂閱我，讓這些平常只看見結果的設計，繼續被講清楚。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[gr1h01] 如果你第一次用這支跑錶，起跑前可能得先等十五到三十分鐘。"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[gr1f07] 我想，GPS成為跑步工具，得讓位置變成你看得懂、留得下的活動。"
+        },
+        {
+          "id": "no_detour",
+          "yes": false,
+          "evidence": "[gr1f03] 二零一三年，車用與行動分部，占全年營收百分之四十九。"
+        }
+      ],
+      "failed": [
+        "scene_first",
+        "no_toc",
+        "chapters_link",
+        "payoffs",
+        "no_recap",
+        "no_detour"
+      ],
+      "advisory": []
+    },
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": false,
+          "evidence": "[gr1h06] 到了二零零六年，另一支裝置，得先面對你不停擺動的手臂。"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[gr1h05] 等你跑起來，螢幕裡的兩個小人，還會帶來另一個問題。"
+        },
+        {
+          "id": "one_line",
+          "yes": true,
+          "evidence": "[gr1d23] 前一次真的跑過的記錄，成了下一次可比較的對象。"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[gr1h08] 把GPS戴到手腕上，還差什麼，才能成為你用得上的跑步工具？"
+        },
+        {
+          "id": "chapters_link",
+          "yes": false,
+          "evidence": "[gr1v01] 二零零九年六月，評測者DC Rainmaker更新了自己的長期評測。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[gr1r09] 如果你想保住最細的資料，要趕在哪個動作之前傳出去？"
+        },
+        {
+          "id": "payoffs",
+          "yes": false,
+          "evidence": "[gr1a23] 要是看起來配到了別人的感測器，就得重新掃描。"
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[gr1d05] 三點五小時到了，是電池就一定沒電了嗎？"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[gr1d04] 但手冊接著寫，這樣最多只能記下三點五小時的詳細資料。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[gr1f09] 留言告訴我，也訂閱我，讓這些平常只看見結果的設計，繼續被講清楚。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[gr1h01] 如果你第一次用這支跑錶，起跑前可能得先等十五到三十分鐘。"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[gr1f07] 我想，GPS成為跑步工具，得讓位置變成你看得懂、留得下的活動。"
+        },
+        {
+          "id": "no_detour",
+          "yes": false,
+          "evidence": "[gr1f03] 二零一三年，車用與行動分部，占全年營收百分之四十九。"
+        }
+      ],
+      "failed": [
+        "scene_first",
+        "chapters_link",
+        "payoffs",
+        "no_recap",
+        "no_detour"
+      ],
+      "advisory": []
+    }
+  ]
+}

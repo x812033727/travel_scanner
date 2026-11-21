@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "role": "AUTHOR_LOCAL_NATIVE_LINT_AND_PLANNER_NOT_INDEPENDENT_REVIEW",
+  "revision": "c20-r7",
+  "checked_at_utc": "2026-10-26T06:17:06.342774+00:00",
+  "runtime_root": "/workspace/work/brand-story-20261025/c20-audit/author-r7/runtime",
+  "original_r6_runtime_read_only": "/workspace/work/brand-story-20261025/c20-audit/author-r6/runtime",
+  "ordinary_cli_command": [
+    "node",
+    "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+    "/workspace/work/brand-story-20261025/c20-audit/author-r7/runtime",
+    "lint",
+    "--slug",
+    "story-everyday-zippo-c20-remake-20261025",
+    "--json"
+  ],
+  "ordinary_cli_observed_exit_code": 0,
+  "raw_native_lint_path": "/workspace/work/brand-story-20261025/c20-audit/author-r7/native-lint.raw.json",
+  "raw_native_lint_sha256": "61f6f94e2440bc9b697c11bacbc654b44b7f1325d60bd9bea58b244a34470db2",
+  "native_lint_errors": [],
+  "native_lint_warnings": [
+    {
+      "path": "scenes",
+      "message": "\"case\" is in 69 of 105 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"adult\" is in 47 of 105 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"closed\" is in 38 of 105 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    }
+  ],
+  "whole_narration_spoken_units": 2750,
+  "native_estimate_seconds": 768.9,
+  "estimated_time_is_not_actual": true,
+  "normal_native_planner_path": "/workspace/work/brand-story-20261025/c20-audit/author-r7/native-planner-estimated.json",
+  "normal_native_planner_sha256": "ca4147d568db75f66a636f8e33f9581b9dad23f9e95cc0cbf07c8f0f83397e05",
+  "normal_planner_function": "tools/video/core/timeline.mjs estimateTimeline(doc), unchanged defaults",
+  "natural_4_to_5_units_per_second_arithmetic_seconds": [
+    550.0,
+    687.5
+  ],
+  "target_whole_seconds": [
+    720,
+    840
+  ],
+  "hook_cadence_45s_warnings": [],
+  "video_script_narration_claims_projections_exact": true,
+  "visual_prompt_projections_exact": true,
+  "used_quote_anchors_raw_text_and_sha_checked": 60,
+  "question_loop_endpoints_valid_and_forward": 26,
+  "scene_count": 106,
+  "shot_count": 105,
+  "illustration_share_body": 1,
+  "maximum_consecutive_cards": 0,
+  "voice_exact_c06": true,
+  "source_delta": {
+    "removed_scene_and_lines": [
+      {
+        "id": "c20r3e06",
+        "text": "他說，這只換上的鉸鏈接得很乾淨，先前擔心的粗糙感，這回沒有出現。"
+      },
+      {
+        "id": "c20r3e07",
+        "text": "他又怎麼判斷，這個換上的鉸鏈，接得整不整齊？"
+      }
+    ],
+    "one_changed_line": {
+      "id": "c20r3e08",
+      "before": "他的比較很具體：接點看起來，跟自己近期見過的新打火機一樣整齊。",
+      "after": "喬瑟夫說，這只換上的鉸鏈，接點看起來，像他近期見過的新打火機一樣整齊。"
+    },
+    "remaining_spoken_text_changes": 0,
+    "other_video_changes_only_loops": {
+      "rebind": {
+        "setup": "c20r3e05",
+        "old_payoff": "c20r3e06",
+        "new_payoff": "c20r3e08"
+      },
+      "removed": {
+        "setup": "c20r3e07",
+        "payoff": "c20r3e08"
+      }
+    },
+    "new_sources": 0,
+    "new_quote_anchors": 0,
+    "new_raw_downloads": 0,
+    "primary_rechecked": {
+      "source_id": "DF_CASE",
+      "text_line": 42,
+      "raw_sha256": "6f623a6bbcb0c94cafa9fac32c7992cd5224ae78fd9885b3403e4ea57a18ebac",
+      "allowed_scope": "Joseph personally reported observation of the separate plain chrome companion replacement hinge; comparison with recent new-lighter weld dimples is an appearance comparison, not a record of factory welding or strength testing."
+    }
+  },
+  "all_retained_visual_fields_exact_r6": true,
+  "both_full_image_pairs_inputs_keys_exact_r6": true,
+  "handoff_only_path_change": "isolated author-r7 runtime/media for scope; same provider requests, guard, takes1 and actualfalse",
+  "runtime_manifest_sha256": "339101f561394dfb11b7178a8ca0202918cfc3b6dd025fce53241b85287f91d6",
+  "runtime_canonical_script_sha256": "bcc2033c5b4fb35bf3ab0bae982434bcb72f06b0dea44cc12ff023fcefc00485",
+  "runtime_video_sha256": "3f2b1513769e3d253a2e7ce067a4890a7903865333381ff05eedb861ea939179",
+  "immutable_lexicon_sha256": "1dc8a42f7c9a3fb3f603c55a7e8d930661c358e2d55579d03d32aa28be161420",
+  "immutable_lexicon_rebuilt": false,
+  "old_protection_file_count": 68,
+  "old_and_snapshot_all_match": true,
+  "research_three_unchanged": true,
+  "raw_file_count": 159,
+  "raw_all_match": true,
+  "historical_archive_counts": {
+    "r1": 24,
+    "r2": 35,
+    "r3": 47,
+    "r4": 57,
+    "r5": 68,
+    "r6": 79
+  },
+  "historical_archives_all_match": true,
+  "original_r6_runtime_unchanged": true,
+  "original_round6_raw_unchanged": true,
+  "previous_source_verdicts_not_inherited": true,
+  "previous_actual_native_round_count": 6,
+  "actual_audio_seconds": null,
+  "actual_duration_verified": false,
+  "capacity_status": "MATERIAL_CAPACITY_RISK_550_BELOW3300_750_BELOW3500_AND_BELOW720S_AT_UNPADDED4_TO5_UNITS_PER_SECOND",
+  "source_review": "PENDING_OTHER_REVIEWER",
+  "native7_readers": "PENDING_FRESH_READERS",
+  "native7_blind_input_prepared": false,
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "approvals_created": 0
+}

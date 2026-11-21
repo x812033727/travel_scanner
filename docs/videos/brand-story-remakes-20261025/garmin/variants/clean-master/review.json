@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "review_type": "independent_clean_master_metadata_derivation",
+  "status": "METADATA_DERIVATION_PASS",
+  "checked_at": "2026-10-26T07:16:24.993Z",
+  "reviewer": "/root",
+  "independent": true,
+  "independence_basis": "Coordinator did not author the garmin R4 current independently source-verified/native-merged narration and teaser plan source (owner reviews pending) or its clean variant/derivation. Reproduced native checks from actual frozen bytes and native snapshot dictionary.",
+  "slug": "story-garmin-smartphone-pivot-worker-2026-remake-20261025",
+  "scope": {
+    "source_fact_qa": false,
+    "written_visual_qa": false,
+    "media_qa": false,
+    "owner_approval": false,
+    "backend_calls": 0,
+    "provider_calls": 0,
+    "paid_requests": 0
+  },
+  "input_files_sha256": {
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/garmin/video.json": "96b1e2a519c739dcf4b9bf9f26949370e3ea911ad2f368602cc29c1a1fda4043",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/garmin/variants/clean-master/video.json": "e2f78916084054ab395553c5b672b631ae749ea278a8dd2c5c72740aca3241a6",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/garmin/variants/clean-master/derivation.json": "11781fafc77cb4c59ddc748e0a0c272d52fd42004170a2452cede0fe7ddc3a03",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/garmin/variants/clean-master/lint.json": "075b1016b666739799be6518e2651c3a8092d5006e4e946e5206fa22b94ad5fb",
+    "/workspace/work/brand-story-20261025/garmin-submission-root/docs/videos/story-garmin-smartphone-pivot-worker-2026-remake-20261025/script.md": "a03581537a7e13028cb9b937498dec44e275e33a0479d867d9e2d7261f030bbb",
+    "/workspace/work/brand-story-20261025/garmin-submission-root/docs/videos/story-garmin-smartphone-pivot-worker-2026-remake-20261025/story-lexicon/current.json": "686549909313e144e44f718c5b66cb654ef8a022f266d004ca553bf0ce2ebb37"
+  },
+  "immutable_lexicon": {
+    "mode": "snapshot",
+    "lexicon_sha256": "9dbdd09719650d92e22a6ffb5ef6f1e662260c29e483734b5e419d87c0371bed",
+    "head_event_sha256": "e9f98cce36cc044d6e82e3c00e8bc39027cca9863addb4765d6f223de77fca7a",
+    "sequence": 1,
+    "actual_snapshot_read_by_native_reader": true
+  },
+  "deep_diff": [
+    {
+      "path": "subtitles.burn_in",
+      "source": true,
+      "variant": false
+    }
+  ],
+  "native_input_hashes": {
+    "narrativeHash": {
+      "source": "6f079983da4bc90f",
+      "variant": "6f079983da4bc90f",
+      "equal": true
+    },
+    "speechHash": {
+      "source": "7dffdb9981e64c14",
+      "variant": "7dffdb9981e64c14",
+      "equal": true
+    },
+    "picturesHash": {
+      "source": "e3d23b86210150b9",
+      "variant": "e3d23b86210150b9",
+      "equal": true
+    },
+    "lookHash": {
+      "source": "98a370ae40badbaf",
+      "variant": "98a370ae40badbaf",
+      "equal": true
+    },
+    "mixHash": {
+      "source": "71ecdd098c551254",
+      "variant": "71ecdd098c551254",
+      "equal": true
+    },
+    "subtitlesHash": {
+      "source": "4b23ded6e41b1e87",
+      "variant": "ec58a1493220a1da",
+      "equal": false
+    }
+  },
+  "canonical_script_sha256": "a03581537a7e13028cb9b937498dec44e275e33a0479d867d9e2d7261f030bbb",
+  "screenplay_bytes_identical": true,
+  "lint": {
+    "reproduced_from_actual_dictionary": true,
+    "errors": 0,
+    "warnings": 4,
+    "saved_lint_exactly_matches": true
+  },
+  "same_new_remake_budget_identity": true,
+  "old_activated_slug_used": false,
+  "artifacts_absent": [
+    "timeline.json",
+    "narration.wav",
+    "final.mp4",
+    "qa.json",
+    "languages.json"
+  ],
+  "actual_clean_master_exists": false,
+  "media_qa": false,
+  "final_approval": false,
+  "actual_dub_eligibility": false,
+  "limitations": [
+    "Written recipe metadata only; no actual media was decoded or generated.",
+    "Each actual clean output requires full matching QA and current owner final approval.",
+    "Paper estimates do not establish actual narration duration or dubbing eligibility."
+  ]
+}

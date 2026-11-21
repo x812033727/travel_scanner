@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "role": "AUTHOR_LOCAL_NATIVE_LINT_NOT_INDEPENDENT_REVIEW",
+  "revision": "dyson-r1",
+  "checked_at_utc": "2026-10-26T04:15:55.173Z",
+  "runtime_root": "/workspace/work/brand-story-20261025/dyson-submission-root",
+  "ordinary_cli_command": [
+    "node",
+    "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+    "/workspace/work/brand-story-20261025/dyson-submission-root",
+    "lint",
+    "--slug",
+    "story-dyson-japan-first-20261021-remake-20261025",
+    "--json"
+  ],
+  "ordinary_cli_observed_exit_code": 0,
+  "ordinary_cli_output_path": "/workspace/work/brand-story-20261025/dyson-audit/author-r1/native-lint-r1-ordinary-cli.json",
+  "ordinary_cli_output_sha256": "9f5c60b8dfd258761c499ee63a1ba0f97071177efb446cef282d2362a7b9be06",
+  "native_lint_errors": [],
+  "native_lint_warnings": [
+    {
+      "path": "scenes",
+      "message": "about 15.6 minutes; the target is 12-14"
+    },
+    {
+      "path": "scenes",
+      "message": "「一九九三年」 is said in 4 lines (suy4, jyqr, 3ag8, 3z49): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    },
+    {
+      "path": "scenes",
+      "message": "「一九八三年」 is said in 3 lines (jnux, nbq7, uxpi): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    },
+    {
+      "path": "scenes",
+      "message": "「一九八六年」 is said in 4 lines (qfdn, swdr, p8mt, m5dg): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    }
+  ],
+  "whole_narration_spoken_units": 3300,
+  "native_estimate_seconds": 934.2666666666667,
+  "native_estimate_is_not_actual_audio": true,
+  "planning_at_4_to_5_units_per_second": [
+    660,
+    825
+  ],
+  "planning_at_4_5_units_per_second": 733.3333333333334,
+  "rough_target_units": 3500,
+  "planning_units_gap": 200,
+  "capacity_risk": "Below rough3500 target; measured natural delivery may be short. No slower playback, artificial pauses, repeated facts or invented fixes introduced for duration.",
+  "actual_audio_seconds": null,
+  "actual_duration_verified": false,
+  "required_actual_body_seconds": [
+    720,
+    840
+  ],
+  "body_includes_coldopen_and_voiced_CTA": true,
+  "extra_bookends_seconds": 26,
+  "hook_cadence_45s_warnings": [],
+  "visual_variety_warnings": [],
+  "chapter_viewer_and_narrator_counts": [
+    {
+      "chapter": "開場：樣品還沒完成",
+      "you": 2,
+      "I": 1
+    },
+    {
+      "chapter": "照片帶來一筆新工作",
+      "you": 6,
+      "I": 3
+    },
+    {
+      "chapter": "裝得進去，還推得動嗎",
+      "you": 2,
+      "I": 2
+    },
+    {
+      "chapter": "細灰之外，還有大雜物",
+      "you": 3,
+      "I": 2
+    },
+    {
+      "chapter": "圖紙得跨過海",
+      "you": 2,
+      "I": 2
+    },
+    {
+      "chapter": "上了櫃台，也還是小眾",
+      "you": 2,
+      "I": 1
+    },
+    {
+      "chapter": "模具之後，還有櫃台",
+      "you": 3,
+      "I": 4
+    }
+  ],
+  "shared_year_warnings": [
+    {
+      "path": "scenes",
+      "message": "「一九九三年」 is said in 4 lines (suy4, jyqr, 3ag8, 3z49): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    },
+    {
+      "path": "scenes",
+      "message": "「一九八三年」 is said in 3 lines (jnux, nbq7, uxpi): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    },
+    {
+      "path": "scenes",
+      "message": "「一九八六年」 is said in 4 lines (qfdn, swdr, p8mt, m5dg): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    }
+  ],
+  "shared_years_author_explanation": {
+    "1983": "Cyclon prototype, US patent grant and M+ object date are distinct records; M+ not used as launch date.",
+    "1986": "Later patent grant, Apex licensing recollection, Japanese release account and V&A object date differ in event and evidence scope. Their dates remain explicit.",
+    "1993": "Opening scale promise, tooling-loan recollection, first-line photo caption, and retailers recollection are different events; no date conflict collapsed."
+  },
+  "shared_year_explanation_is_not_independent_pass": true,
+  "projections": {
+    "source_video_to_narration_only_exact": true,
+    "claims_text_to_narration_exact": true,
+    "author_script_contains_each_id_and_exact_text": true,
+    "runtime_video_exact_source_bytes": true,
+    "runtime_script_exact_native_screenplay": true,
+    "runtime_script_sha256": "447a05fe41ce1b4002a71284d42515c6cc9764d5ed5bdc9d0e7aedba0afffe0c"
+  },
+  "normal_lexicon": {
+    "mode": "ordinary immutable initializeStoryLexicon lifecycle",
+    "sequence": 1,
+    "lexicon_sha256": "502241d1d9f8de6c7fbd53c8229638f6e35128b438e44df354c79579993e4b8d",
+    "current_file_sha256": "7793b04bf4ffe93d4a3f2ae19ddb947a7ddb254a53034f63ef53faf917d88ed6",
+    "files": [
+      {
+        "path": "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/story-lexicon/current.json",
+        "sha256": "7793b04bf4ffe93d4a3f2ae19ddb947a7ddb254a53034f63ef53faf917d88ed6"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/story-lexicon/events/9406584efa77e67ee52721011ad2893f40f947f59ab04c8a8d869885bfc13339.json",
+        "sha256": "9406584efa77e67ee52721011ad2893f40f947f59ab04c8a8d869885bfc13339"
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/story-lexicon/versions/502241d1d9f8de6c7fbd53c8229638f6e35128b438e44df354c79579993e4b8d.json",
+        "sha256": "502241d1d9f8de6c7fbd53c8229638f6e35128b438e44df354c79579993e4b8d"
+      }
+    ],
+    "revision_review_created": false,
+    "reinitialized_or_reset": false,
+    "other_episode_dictionary_copied": false
+  },
+  "source_review": "PENDING_OTHER_REVIEWER",
+  "written_visual": "PENDING_OTHER_REVIEWER",
+  "fresh_native": "PENDING_FRESH_READERS",
+  "actual_native_round_count": 0,
+  "actual_same_asset_verified": false,
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "owner_approvals_created": 0,
+  "provider_calls": 0,
+  "paid_calls": 0
+}

@@ -1,0 +1,2303 @@
+{
+  "schema_version": 1,
+  "candidate_revision": "c11-r2",
+  "status": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS",
+  "reviewer": "/root/c11_r1_source",
+  "independent": true,
+  "reviewed_at_utc": "2026-10-25T22:47:11.780172+00:00",
+  "scope": "R2獨立來源／書面配鏡差分審查；R1來源證據完整驗綁後承接87句，h01改句與d12新關係直接核原件；不讀native或blind投票。",
+  "independence": {
+    "wrote_candidate_or_research": false,
+    "read_native_or_blind_votes": false,
+    "reviewed_r1_source_proof_authored_by_self": true,
+    "r1_proof_was_independent_of_candidate_author": true,
+    "provider_calls": 0,
+    "paid_calls": 0,
+    "backend_mutations": 0,
+    "git_commands": 0,
+    "subagents_spawned": 0
+  },
+  "core_four_sha256": {
+    "video.json": "b3890b62bee517866a037249d9d5a853f39c5b52f7be0ac7e988fe053daa0156",
+    "script.md": "78deb0291c93938e8e92760bfb46c509e3348a2ffe7efbbcfd8b10b70974ba7e",
+    "narration-only.json": "1fe15fda9f959f32581e20748c5ee51fe9e9c518817aed4c48a4c7d98d3c30ad",
+    "claims.json": "bfdc52d4ee66a39061d85a5955109edae2c31b499fdd2682e010c6dab695ba78"
+  },
+  "frozen_research_sha256": {
+    "research-original.md": "2c3e2f0a2ad4bf41b50a3c2484831eeda5861d32ecf4d11f409ebb7bc0bfed1b",
+    "research-original.claims.json": "14103ff5df3c9871d942021bda9e1c581bcf68c013047d9fbcd79512613a90fa",
+    "original-preservation.json": "40a0726eeb5937b9d6573c733b3432dc11c21c88762a1731cd46d80d46e9501b"
+  },
+  "r1_baseline": {
+    "directory": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/history/r1",
+    "core_four_sha256": {
+      "video.json": "08a9c4e28411909bc4a2b95c47d7bb8f4832c37bba9333f5b009bf645819b08d",
+      "script.md": "d4497864572a1fe4bb9fc5fadb9acc07744b26e8f10b9f7310b5a525508d3279",
+      "narration-only.json": "0495cf0e6664aefaed5de83c3df526ad2b7176f0e2f0276a72da3aded5f0aef7",
+      "claims.json": "138f5ac1c87e7019c5d503331cfa6e0e7582769b86a40dcdc2cfb7486dda8f1a"
+    },
+    "source_review_path": "history/r1/reviews/source-r1-independent.json",
+    "source_review_sha256": "1b079f5056f4537f3b7c40795cb9d5ff8e0a07fb4108e7a803140151a2074a76",
+    "verify_path": "history/r1/verify-1.md",
+    "verify_sha256": "07e71456a58210030c4f990d78c0d8877c350338b0a69b0c6ef8b03b20eccb3c",
+    "status": "SOURCE_PASS_WRITTEN_VISUAL_PASS_REVALIDATED_AS_DELTA_BASELINE"
+  },
+  "exact_delta": {
+    "spoken_line_count_before": 89,
+    "spoken_line_count_after": 88,
+    "changed_spoken_line_ids": [
+      "c11r1h01"
+    ],
+    "removed_line_and_scene_ids": [
+      "c11r1t03"
+    ],
+    "new_line_ids": [],
+    "unchanged_spoken_lines": 87,
+    "retained_complete_scene_objects_unchanged": 85,
+    "retained_scene_objects_with_only_text_change": [
+      "c11r1h01"
+    ],
+    "all_85_retained_shot_data_prompt_camera_visual_fields_unchanged": true,
+    "claims_complete_rows_unchanged": 86,
+    "claims_row_changes": {
+      "c11r1h01": [
+        "claim",
+        "claim_kind",
+        "author_context"
+      ],
+      "c11r1d12": [
+        "author_context"
+      ]
+    },
+    "claims_top_only_changed": [
+      "candidate_revision"
+    ],
+    "source_registry_and_21_anchor_registry_objects_unchanged": true,
+    "video_non_scene_only_changed": [
+      "loops"
+    ],
+    "first_loop_before": {
+      "setup": "c11r1h03",
+      "payoff": "c11r1d12",
+      "what": "初代飲料交到手裡仍需工具，入口各有用途"
+    },
+    "first_loop_after": {
+      "setup": "c11r1h01",
+      "payoff": "c11r1d12",
+      "what": "初代罐只開一孔是否足夠的條件問句，由原廠列出的飲口與空氣孔用途回答"
+    },
+    "remaining_23_loop_objects_unchanged": true,
+    "voice_style_sources_assets_metadata_thumbnail_unchanged": true
+  },
+  "cross_file_projection": {
+    "video_script_narration_claims_chapter_id_text_order_match": true,
+    "line_count": 88,
+    "unique_ids": 88,
+    "scene_count": 86,
+    "shot_count": 85,
+    "outro_scene_count": 1,
+    "outro_line_count": 3,
+    "all_retained_prompts_match_current_claims": true,
+    "ordered_chapter_id_text_projection_sha256": "06e2e28b57662eb1d2e52d9fb098daeea2c7b38752f237f15a2e8cf5736f350b",
+    "script_normalization": "只移除文件末端換行，不改字或標點。",
+    "thumbnail_reference_current": true,
+    "deleted_t03_has_no_live_loop_or_thumbnail_reference": true
+  },
+  "original_reopened": {
+    "source_id": "UCC2025",
+    "url": "https://www.ucc.co.jp/company/pressroom/pickup/20250716.html",
+    "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/UCC2025.html",
+    "raw_sha256": "49619fe308ca3eb54f5585f5de4a788020d4cecfcc3f00ba291a8af6c5505656",
+    "raw_original_html_reparsed_independently": true,
+    "text_cache_sha256": "19c5ee6ec5426a1bdc0da8c9a00e3f0097e5da9a6ba8bafe7327efd452d342e4",
+    "paragraphs_cache_sha256": "0e7c67946637ac0c67ab7a038ba4b593e57eeb54723f6eeacb3965564aae9a1a",
+    "full_passages_contained_in_original_visible_html": true,
+    "passages": [
+      {
+        "paragraph": 189,
+        "text": "・初代（1969年発売）",
+        "sha256": "b2042a42356c4a530890fd9a3e0ea57dcf6428cb4fa098c31a6b95803df3348d"
+      },
+      {
+        "paragraph": 190,
+        "text": "専用の穴開け用オープナーによって、飲み口（注ぎ口）の穴と空気穴の2カ所を開けて飲用",
+        "sha256": "7e478b862411cf012f6f97ed1e2404a89fcf8c1ecf221af2bd4fc88cf05d9b1c"
+      },
+      {
+        "paragraph": 191,
+        "text": "※初代缶はUCC神戸本社にて保管",
+        "sha256": "480dd31d5977cee044cbd2d8e645adb28e45d31c4e7888b5257b8ff4f65ccb8c"
+      }
+    ],
+    "object_photo_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/UCC1969_TOP.jpg",
+    "object_photo_sha256": "0fb0fe7780141e9489b55e89272e289605e4572ce4cb1bf033de8e31aad01452",
+    "object_photo_visually_reopened": true,
+    "limited_finding": "初代標為1969、保存在神戶本社；用獨立專用開孔器開飲口與空氣孔兩處飲用。原文沒有單孔流量／失敗實驗，也未記今天曾開保存罐。"
+  },
+  "new_context_review": [
+    {
+      "id": "c11r1h01",
+      "current": "你想買一罐帶走就喝的奶咖；早期UCC的罐頂，只開一個孔就夠了嗎？",
+      "status": "PASS",
+      "classification": "PLAN",
+      "finding": "用一孔作條件疑問，由來源列出的兩處用途作答；沒有把史實未證的單孔失敗當觀眾已見事件。既有匿名持罐與另置開孔器畫面不要求穿孔或流量實驗。"
+    },
+    {
+      "id": "c11r1d12",
+      "current": "一邊是飲口，另一邊是空氣孔；喝的人要用它，還得有能把這些入口打開的工具。",
+      "status": "PASS",
+      "classification": "CONFIRMED",
+      "finding": "一邊飲口、另一邊空氣孔，直接對應p190；有專用工具的說明保留。沒有添加少一孔必不能喝、壓力測試或物理量。"
+    },
+    {
+      "id": "c11r1t03",
+      "current": null,
+      "status": "DELETED",
+      "finding": "刪除上浮難題的重述；t01原採訪歸屬、t02觀眾利害、t04提問、t05均質化處置仍完整。沒有刪去唯一證據或必要限定。"
+    }
+  ],
+  "evidence_revalidation": {
+    "all_35_r1_raw_receipts_bytes_and_sha256_match": true,
+    "all_research_source_text_and_paragraph_cache_sha256_match": true,
+    "all_31_research_plus_2_added_anchor_raw_and_paragraph_sha256_match": true,
+    "r1_23_limited_research_claim_assessments_carried_without_new_priority_right": true,
+    "all_protected_old_28_hashes_match": true,
+    "readonly_snapshot_sha256_match": true,
+    "all_three_frozen_research_sha256_match": true,
+    "old_reviews_hashed_only_no_vote_contents_read": true,
+    "historical_r1_files_not_modified": true
+  },
+  "line_reviews": [
+    {
+      "id": "c11r1h01",
+      "chapter": "罐子帶走了，工具卻還得跟上",
+      "text_sha256": "7fca0e0cbb78f94ea45e3eefc1f815bb8cf8e48203f0ca015d2b373b8ff8fd82",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R11"
+      ],
+      "anchor_ids": [
+        "A_INITIAL_HOLES"
+      ],
+      "source_ids": [
+        "UCC2025"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "5a463a54301fc1484a8cd47d448a99fc539ff2b8efee1e4bac62b38a4c49bd46",
+      "note": "來源支持的條件問句。原廠規定用工具開飲口與空氣孔兩處；此句沒有聲稱史上有人單孔失敗、單孔必然無法流出，或今天打開神戶保存古罐。與後段d12兩種入口用途相接。",
+      "scope": "R2改句，已直接重讀原HTML p189–191及初代物件照。"
+    },
+    {
+      "id": "c11r1h02",
+      "chapter": "罐子帶走了，工具卻還得跟上",
+      "text_sha256": "b0e70a41b8855eaf919a881650282860333698d2e444bbe2abd0218ccedc493d",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R11"
+      ],
+      "anchor_ids": [
+        "A_INITIAL_HOLES"
+      ],
+      "source_ids": [
+        "UCC2025"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "9c20fc349487cc1fcba8d129007d57e0625d19d0afa59f34c3bcdd9743d0a33f",
+      "note": "UCC2025 p189–191明列1969初代及神戶本社保管；已親看初代罐頂照片，獨立開孔器確置其上。不宣稱親訪或今天開保存罐。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1h03",
+      "chapter": "罐子帶走了，工具卻還得跟上",
+      "text_sha256": "f974f4dda165f9c349cd4f8383cc2561ecc832711e31514a98a6664b66ddf65a",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R11"
+      ],
+      "anchor_ids": [
+        "A_INITIAL_HOLES"
+      ],
+      "source_ids": [
+        "UCC2025"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "4fa4895b699a45ed011aa757b5533cf59b0f542f7fcfaf8e92c49ae7fde894fe",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1h04",
+      "chapter": "罐子帶走了，工具卻還得跟上",
+      "text_sha256": "99ccf8205fe531cc5f3346cbc6570ce14236bd6140adf12a39aa36fc9bcabde7",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R07",
+        "R15"
+      ],
+      "anchor_ids": [
+        "A_THREE_OBSTACLES",
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "UCC2026",
+        "UCC2025",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "8af8cff52c9f4a9a10be97009abf871f05655b8eb5890381bc848eaf5c959df2",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1h05",
+      "chapter": "罐子帶走了，工具卻還得跟上",
+      "text_sha256": "500da5324f06059337ee69847b7d65fa6390f73ecf921dcde7f43ba4cf22997a",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R06",
+        "R15"
+      ],
+      "anchor_ids": [
+        "A_PROJECT_YEAR",
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "JNET2023",
+        "UCC2025"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "c2a5174c0814668088e8ce5bce1926ee2924d81311d532d5cb53443f9ceb1815",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1h06",
+      "chapter": "罐子帶走了，工具卻還得跟上",
+      "text_sha256": "2f0b91d43804cf74c663852c794dd439a7e36da404077fbb483178def0da617b",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R01",
+        "R11"
+      ],
+      "anchor_ids": [
+        "A_BOTTLE",
+        "A_INITIAL_HOLES"
+      ],
+      "source_ids": [
+        "UCC2026",
+        "UCC2025"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "0160dcbac297a51e28df53fa93529f2eddfd5b45c574273dc9386f018f2bcf34",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1o01",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "d165ca19f904fcf6e8e2786f9f6268e23aea8a87f7ff68f8b78efc28de3abd28",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R01"
+      ],
+      "anchor_ids": [
+        "A_BOTTLE"
+      ],
+      "source_ids": [
+        "UCC2026"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "4acd34d582a8edbfc7100fa8f98a83401e7cde22c4baa2ba4608412f5f670112",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1o02",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "5fbc15ec59dd2dcd6f398201538b6271c32b0dcb8c4d9195dc43f87749ef813d",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R01"
+      ],
+      "anchor_ids": [
+        "A_BOTTLE"
+      ],
+      "source_ids": [
+        "UCC2026"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "ec4bd9ec6484ad75acce27070915cb08a35b493e577575c2d39c453b9e4926d9",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1o03",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "3f827a18820efc547f9536561f8483c98b621d43dcc15d78c6ca0693c9a9ddd8",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R01"
+      ],
+      "anchor_ids": [
+        "A_BOTTLE"
+      ],
+      "source_ids": [
+        "UCC2026"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "f2d00ac9dbde37bb3f4b0f1fa6ef4fbfea448d152afe6d01ac6d079fd2527398",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1o04",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "f76685820aa875600a92877556028e3a946c2ff5b85a52d51359fe18d1ca2528",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [],
+      "anchor_ids": [
+        "A_BOTTLE_MATERIAL"
+      ],
+      "source_ids": [
+        "GUINNESS2019"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "f0b2749bba290cf9bfc606e4cbbb81d8eb937b2e125d1ec7ea596135d463ea8b",
+      "note": "Guinness p52–58整體為上島達司訪談與記者敘述；瓶重與破碎危險見p57，旁白沒有偽作逐字引言。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1o05",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "90fd857c7400744b144c0ecb92d4c982f80e1bb2d14c8b13f40930c972ee5370",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R01"
+      ],
+      "anchor_ids": [
+        "A_BOTTLE"
+      ],
+      "source_ids": [
+        "UCC2026"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "94d072e0bdb7ed1f38bc937ba21c4b5dff789abd60416432941fe36be583e5b5",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1o06",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "eb30fe2d4f965173a00564b630729b303268c8e021117a7607446d8edc03e44f",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R01",
+        "R03"
+      ],
+      "anchor_ids": [
+        "A_BOTTLE",
+        "A_MIRA_DATE",
+        "A_MIRA_MONTH"
+      ],
+      "source_ids": [
+        "UCC2026",
+        "HAMADA2021",
+        "SHIMANE_FIRST"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "f15f96b4bd03710f6721364858a6a54aeee85d8258ee50d6c3530880c050a026",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1o07",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "7fe6ec7c055fdc550cc649fe56c6f431b0f90035562dcd246339dbb8cc4319ac",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R03"
+      ],
+      "anchor_ids": [
+        "A_MIRA_DATE",
+        "A_MIRA_MONTH"
+      ],
+      "source_ids": [
+        "HAMADA2021",
+        "SHIMANE_FIRST"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "c1812f1f6a1be6c2c5b72dd4a934caa787e55eaae43b49a43acd886f593007ff",
+      "note": "濱田市p161明列1965-09-14、日本橋三越本店；縣府只補月份，不證全球最早。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1o08",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "4ffd76d7be3a3c762a8014aabbfc5bad05333ec1a98721bd5c6c5b9c33628b4b",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R04",
+        "R07"
+      ],
+      "anchor_ids": [
+        "A_MIRA_PRODUCT",
+        "A_THREE_OBSTACLES"
+      ],
+      "source_ids": [
+        "CAN_INTERVIEW",
+        "UCC2026"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "34c327483ded139b0f91ee001db286a1f6f15468417ff10c7d475890618d7824",
+      "note": "產協p96明文砂糖が入ったミルクなし200g；主句保留後來產業訪談歸屬，不把牛乳樽當配方。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1o09",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "37922f01f72ce7a8d784cdc9e091dabfc9e172aeebfdbdb771f577fc8adfae60",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R05"
+      ],
+      "anchor_ids": [
+        "A_MUSEUM_MILK"
+      ],
+      "source_ids": [
+        "UCC_MUSEUM"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "8f024e9ce6b804c2aa7e46d52576ce3556a8e95fef11cef3dad25831f8f62c05",
+      "note": "博物館p6含ミルク入り限定；此句明確是館方自家商品主張，未獨立授予世界優先權。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1o10",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "0fa8d554afd6e250059b33793dc53775e4feb921553638925d745cb5f4b8cfba",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R07"
+      ],
+      "anchor_ids": [
+        "A_THREE_OBSTACLES"
+      ],
+      "source_ids": [
+        "UCC2026"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "24a92bbb733ecde3f0874e96a33c11aad09b49b0174046b0c75181bc7506ca9c",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1o11",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "903eb95e7c9617206b2bc5c40dc9c38af623c81c59675adb2b22a6dfd0afb93c",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R06"
+      ],
+      "anchor_ids": [
+        "A_PROJECT_YEAR"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "d618bb1818767303c19d6cae7fc669d64ab92befac78eae6ca77832c682b53de",
+      "note": "J-Net2023 p1113介紹栄秀文兼任館長，p1119約1968、p1125約一年；不是2023才開發或同期啟案原件。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1o12",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "cad6744952dcbe688dc4331e4f3e023d78ee19495a4e9660166594cc50cc51f2",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R07"
+      ],
+      "anchor_ids": [
+        "A_THREE_OBSTACLES"
+      ],
+      "source_ids": [
+        "UCC2026"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "c5a4b96971f86643cf83e020273dce8000cf10c4c462c6f948b34b1d804ab18c",
+      "note": "你若站在明示想像位置；原創匿名概念，未添當事人證詞。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1o13",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "2ba33a54f3db63167a49096886de6d9ddec875eb9453ccb3767dae18dbe31b82",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R07"
+      ],
+      "anchor_ids": [
+        "A_THREE_OBSTACLES"
+      ],
+      "source_ids": [
+        "UCC2026"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "32ee0a30af73520d3b6a6f8aeb867faaa8f1775a54b74594baf00dd5726a8693",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1o14",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "1ea8de851064e45d77fd312ad68a42f34534bb190ca874b29abb5724ad64a4d2",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R08"
+      ],
+      "anchor_ids": [
+        "A_HOMOGENIZE"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "6ee1fd99855a38afee2993dc4559a0045174397959ef95c605a4bd3cde3fa2db",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1t01",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "8f7258d60b4cbbfde9738be84b4a31b8cdcf40a0931e9105c3ca81e8cf24b7a9",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R08"
+      ],
+      "anchor_ids": [
+        "A_HOMOGENIZE"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "9f64bd847644a8d26c45e2bc891a0c363161e2e28bf9493807aeff90fe21dd06",
+      "note": "J-Net2011 p1121原文為混合封罐後分離、上浮；非推測熱殺菌造成此現象。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1t02",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "0b7ed8d2024892117a857b4fa81abb10255ccfd3f34402b68a477917a08dfa0c",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R08"
+      ],
+      "anchor_ids": [
+        "A_HOMOGENIZE"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "48b3402dfff031e9ecbc4eed65239aad7d9bf7861b5199fc0aac4cc2da0a9d03",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1t04",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "24ebff573b6bac940c10e94e13eadc5c1d4e6565afd55fab7a070d6667d31983",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R08"
+      ],
+      "anchor_ids": [
+        "A_HOMOGENIZE"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "4449f40fed23c38a67e9245adbe4fa75a2ceb27c92ceb95d178ef3920bef75d2",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1t05",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "df6aade0dff32e97da78fe7d23c0e04cfb94f7245776313989f9c87d83e491bf",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R08"
+      ],
+      "anchor_ids": [
+        "A_HOMOGENIZE"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "f059d10cfbd1796ec5a5ed6d8149ffbf58225ae1c0e2b4541572f881ad6015a6",
+      "note": "原文均質化以抑制分離；沒有補壓力、粒徑、設備型號或首用權。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1t06",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "a66b5ebc0d5d8aba1627cdc2c38e39358064c46fa41858533d29ab42dc968419",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R08"
+      ],
+      "anchor_ids": [
+        "A_HOMOGENIZE"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "448dfb51ce33747acb46a47d18d354ece81fbf99b12df98210380365578373c1",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1t07",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "f6776549eb2c7c7c1e0ea632c38ead747c0465db8a4258ba0c39414efd2ad4b0",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R08"
+      ],
+      "anchor_ids": [
+        "A_HOMOGENIZE"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "0b12d9c7d363b407e4adeeb9682776306e634766ade69394033e4a42f314a42c",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1t08",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "bfffd686970c1a0fd3555e2cd18c5fd69deef81bf097e9e4104377a959722edd",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R08",
+        "R09"
+      ],
+      "anchor_ids": [
+        "A_HOMOGENIZE",
+        "A_HEAT_RATIO"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "a2585b595a143a2a42682e1bfbe54d20410ada3e65ddfb4a81c999246be3310b",
+      "note": "承接t05抑制分離的設問；不是獨立的零分離測定或保證。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1t09",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "55434bf5421fa54cf9b08e77d81049a781520e8fc0cdd9bb326244e2af913fa6",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R07",
+        "R09"
+      ],
+      "anchor_ids": [
+        "A_THREE_OBSTACLES",
+        "A_HEAT_RATIO"
+      ],
+      "source_ids": [
+        "UCC2026",
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "cec6d7ca88e904ba15e4489b59df084a907e5315144622c907c989331193e6c5",
+      "note": "原廠有高熱殺菌走味，J-Net2011 p1122補加熱臭；熱與氣味因果只限來源有寫部分。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1t10",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "434049173d4a5793ed308c45792de6fb2bd9efb7d624c24ec5e7b7e29427899f",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R09"
+      ],
+      "anchor_ids": [
+        "A_HEAT_RATIO"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "ba25fde138286cddb200927b8b9fe51741b6a5172f1a029a9122e8830b036936",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1t11",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "634b94d6dd988675d8fe76a60923be262b29a129c370497daf78d057e0398e25",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R09"
+      ],
+      "anchor_ids": [
+        "A_HEAT_RATIO"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "6b56cd8cb911fe084b36df0c610dc5613089a8509fa70d35632effc9fbeaf147",
+      "note": "桌邊加奶是明顯日常類比，未冒作原廠試喝程序。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1t12",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "1112a8948084fb9a4194a3e7048db9bb5f6ae52d888ff0cf77ca7af3c233980c",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R09"
+      ],
+      "anchor_ids": [
+        "A_HEAT_RATIO"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "57daf79316fc6fab6f7869b4102917cbd31830382d357781888663abc0e248bc",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1t13",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "0083d7a5928c88f71aecc85f0b056a06a26a768c3e242b19d267081fe109c6b3",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R09"
+      ],
+      "anchor_ids": [
+        "A_HEAT_RATIO"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "92b85e095cb9b4fc09729676d4984788662044281c597bbaa0e051f0e77cf0ad",
+      "note": "J-Net2011 p1122持續試喝並尋找咖啡、奶、糖比率；沒有捏造比例、原試喝人數、溫度或測定標準。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1t14",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "737f2d1b44c81e0bf3c87928a3f8ab4d631a983c980ae5a1a3e41fb02d28d51d",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R09"
+      ],
+      "anchor_ids": [
+        "A_HEAT_RATIO"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "54cd6b7890a63cefd359838f2db38efac3addebe1d48798167d8da23f061ba74",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1t16",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "2155a519185f6bf42c57282e2eab225089e02eced8b1205e815d7fab87bc0e67",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R10"
+      ],
+      "anchor_ids": [
+        "A_COATING"
+      ],
+      "source_ids": [
+        "UCC2025_REPRO"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "678ee341c2fa9c8723d32925a3bbc7ba939ce83bb38f7956e24a8c9477996344",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1w01",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "30b44ee558beaf60dca2b935dae3b486fe1adf6ffe88f7790f69d7666edfaf21",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R10"
+      ],
+      "anchor_ids": [
+        "A_COATING"
+      ],
+      "source_ids": [
+        "UCC2025_REPRO"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "080b98ef13658d1f906fd8695ac640749f91c3c9a5863aec2f5c2a7ea1b19f56",
+      "note": "鐵離子與咖啡成分反應保留UCC後來說歸屬。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1w02",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "b9b1b4e7e5f24daf96b038fe95700ac7c93ceba4d8ca91b5528a8a0244599e36",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R10"
+      ],
+      "anchor_ids": [
+        "A_COATING"
+      ],
+      "source_ids": [
+        "UCC2025_REPRO"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "3e867175404ebc6d2297b5b92ede86a5376e4728bb3c17c6426724386154dbbf",
+      "note": "單寧為原廠的用語；以原廠把成分寫作表明來源，沒有獨立化學定性。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1w03",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "e62025584e5269002ac82bb892d694e095a79d59551230d9934b96401d24130c",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R10"
+      ],
+      "anchor_ids": [
+        "A_COATING"
+      ],
+      "source_ids": [
+        "UCC2025_REPRO"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "bcea256feeec123a156607e6a29c2f5483db543defd1580dcb8291b6b6b88208",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1w04",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "181ec4236b6f2dc2e27bff92d3540f63f2d204a78c415af9e3c15181c7235d1d",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R10"
+      ],
+      "anchor_ids": [
+        "A_COATING"
+      ],
+      "source_ids": [
+        "UCC2025_REPRO"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "c62dc6fe7482e3d2df1159dfbb74412bdf3a46e7e24046c7f401289daf2576da",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1w05",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "a9eea7a2b2128775dc205c5079d5270135124ded5922e5ab6d38f8b0e3b39ef4",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R10"
+      ],
+      "anchor_ids": [
+        "A_COATING"
+      ],
+      "source_ids": [
+        "UCC2025_REPRO"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "c0e76d4333b4d8bd6a11fb36d9762f218cc73a77aa2242ead55c4004a6e829c6",
+      "note": "原廠明說與製罐公司開發內部特殊塗層；沒有命名大和、專利或首次技術。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1w06",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "17d0f676e55b56b1c4a84e56a9218648d7a80c015315dac15f365cc235be0fb6",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R10"
+      ],
+      "anchor_ids": [
+        "A_COATING"
+      ],
+      "source_ids": [
+        "UCC2025_REPRO"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "dd0199af3c69ab0088d18c34eacc63232ece4e7cf7358cec17dc6595e29011d0",
+      "note": "塗層作為罐壁隔離的有限說明；未宣稱內塗層同時解決分離與加熱臭。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1w07",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "bc052964c5562ff6adf6621ae9418d09141e00ff647026c1ded3dc33ba3d4311",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R10"
+      ],
+      "anchor_ids": [
+        "A_COATING"
+      ],
+      "source_ids": [
+        "UCC2025_REPRO"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "d16862de11c4a53b876b6d73bee19eb8f2f7f990491a5fa4ad060f17255e0d68",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1w08",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "f8ac79cbbe10f4451a1f8818e3f1a46cb7c7ac254964f9d34d5bd339546eba69",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R02",
+        "R06"
+      ],
+      "anchor_ids": [
+        "A_UCC_MONTH",
+        "A_PROJECT_YEAR"
+      ],
+      "source_ids": [
+        "UCC2025_REPRO",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "4eb79251743cd11885edf2f679e9c01dc47bf0c178138b16a03b75475cdf7385",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1w09",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "99bc371f7c8c95360a6fad70aac97c56e6dc633ae3078a1c639c0f7bc8dc7ac6",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R02",
+        "R06"
+      ],
+      "anchor_ids": [
+        "A_UCC_MONTH",
+        "A_PROJECT_YEAR"
+      ],
+      "source_ids": [
+        "UCC2025_REPRO",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "1b4cb174598bb10394e93d62afc749e8119643f790faafa5ae2f2ea82dd853a8",
+      "note": "1969四月上市與約一年研發各有原文；前後順序是敘事安排，沒有虛構三障礙發現日誌。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1w10",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "c36e59f4e8f449639c690de9690302b7294299d225df9d25d67d2b0224ff92e0",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R13"
+      ],
+      "anchor_ids": [
+        "A_CASES"
+      ],
+      "source_ids": [
+        "GUINNESS2019"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "dbe0ef69026595185dedfb3402d82d5cc4585df21dad61db1fd17003981508d3",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1w11",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "606ffc7c35612f542173f7816f35cc37301adb5e414ef7e5540aceba678ec3d9",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R13"
+      ],
+      "anchor_ids": [
+        "A_CASES"
+      ],
+      "source_ids": [
+        "GUINNESS2019"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "44ee1757cc7be38c107d164e92affe716cc26d91b511507b0b8756f25567fc49",
+      "note": "Guinness訪談p66有業界邪道回憶；沒有把匿名批評者配成具名台詞。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1w12",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "8439502d508ce821b5a52f00bde060a97a0f6b388c37ab59b4534c8f8e7770d6",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R13"
+      ],
+      "anchor_ids": [
+        "A_CASES"
+      ],
+      "source_ids": [
+        "GUINNESS2019"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "0f2d4b9dc30846981f020df72f086b9ab27a2a783366c5463f2ff7562a41646a",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1w17",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "d7af3f108d97ba647e0530a239577a59ba76151967f5fba2b61f9928b3d1a765",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R13"
+      ],
+      "anchor_ids": [
+        "A_CASES"
+      ],
+      "source_ids": [
+        "GUINNESS2019"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "52d7ebc5cbc6fa5c4f173b1cfc962142025a379e59d23404dfd7380a0f23191c",
+      "note": "同一p66記述喝過後願意留下商品；保留受訪者說歸屬，不另造顧客原話。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1w13",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "199e9a75951170f803017a18df68e8ef589d380dc10126c7679112c29903a3d1",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R13"
+      ],
+      "anchor_ids": [
+        "A_CASES"
+      ],
+      "source_ids": [
+        "GUINNESS2019"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "383ad2b1e23d1b3a31591c51c24057b1b493955b6dd1c9777c0e884940ee9226",
+      "note": "p66明列食品店先試放3ケース；只限受訪者記憶，非全店統計。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1w14",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "197ca4cb76e37ed3b00ecffffe3840e8bec6c1a0b22363a3ae31ab394eaa2b33",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R13"
+      ],
+      "anchor_ids": [
+        "A_CASES"
+      ],
+      "source_ids": [
+        "GUINNESS2019"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "55623867ffa7277de03ceaa1e4cbf686bf96a1c91ac516947468ddb800634db4",
+      "note": "p66明列逐漸10ケース、30ケース；不推算增長率或公司總銷量。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1w15",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "9dddd74772068e41cc5f4f2fb41f9abec576f7a624ee1a483232757beb715a86",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R13"
+      ],
+      "anchor_ids": [
+        "A_CASES"
+      ],
+      "source_ids": [
+        "GUINNESS2019"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "051c1470d3c756a0322e2ca58cf885438419c891c8672263c74712f03dfddd77",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1w16",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "713f2de0b0a923892e3f780b4fff7cfa56aff56b74910780316dd9350f0d88dc",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R14"
+      ],
+      "anchor_ids": [
+        "A_TRAIN_DISPLAY"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "36a48c086dd3f10cd75812fd35654f6c903ffdca45a1408b44d39b22c4a64867",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1s01",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "1dcd6c66feddf8b285bd6bfe440adf5187fea521cc869c14ab122744a591b247",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R14"
+      ],
+      "anchor_ids": [
+        "A_TRAIN_DISPLAY"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "11ec28794843b678ed8b0871e1e019a7fe2235ad1aa9d65b505e1aa6fe75592e",
+      "note": "J-Net2011 p1126的公司營業做法，UCC2025 p164原廠回顧亦直接支持大聲指名購買與帶上列車。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1s02",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "c989b960004461dfe8a19eb4343332e8079258a8529adf97b8dc7e125abceffa",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R14"
+      ],
+      "anchor_ids": [
+        "A_TRAIN_DISPLAY"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "3922ac09c9080db73a1b8796d87d8f57e694518dfb36b4c44222b1487a308f04",
+      "note": "p1126罐排窗邊讓乘客看見；無編顧客對話、車次或反應結果。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1s03",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "82a1d7932be4327f1b385d41c21cb3182f4a3e8b83e95daf9847f914872ff214",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R14"
+      ],
+      "anchor_ids": [
+        "A_TRAIN_DISPLAY"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "e65fe803d90642935e449fc1a6531e357796981c2dd651d76eaa80bb65f433b5",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1s04",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "7afb6d24f93b644a9ea0dc0b88443fe8b0fa91a97f9f7a520b7341d92e6d00d3",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R14"
+      ],
+      "anchor_ids": [
+        "A_TRAIN_DISPLAY"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "bbed147e55e424db3937a1417f5f33edacc37898aa6459a9b7eac7ea639e6fc8",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1s05",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "6b81ea578d61f7a673ed3806fc4f933bc57bc78dd939c0c3a98ef2acdc4af32d",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R14",
+        "R15"
+      ],
+      "anchor_ids": [
+        "A_TRAIN_DISPLAY",
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "JNET2011",
+        "UCC2025",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "13f70bc26026075b8cf81cded3dd853082bab022bb3042d8986947b71d44f76b",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1s19",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "86de80e3f0d6ec4f4c12ce2ec665893a3df8f963a7d3701f8109ec5ceb841168",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [],
+      "anchor_ids": [
+        "A_EXPO_PREP"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "522fe97b5615f6db48c89062f8a31aa51f053121207cfb134c570a7cd15b0e33",
+      "note": "J-Net2023 p1130採訪報導所載事前認知限制。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1s20",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "fc8fd1b81fa67cbd9a54dbb820c5b3baaa9fda81a726b14d246f02f9509e613d",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [],
+      "anchor_ids": [
+        "A_EXPO_PREP"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "cdd7a025e40c83221889ea97de50f0900fb755c4b9e5b0dbe3dcc9051e2bf2b8",
+      "note": "十萬只是公司內部當時想像；並非實際參觀人數，未據此推導銷量。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1s21",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "bcadf4ddb5aa7b476ca84077e13f11366171e35d8de693cd2c70060ffe6851ee",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [],
+      "anchor_ids": [
+        "A_EXPO_PREP"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "09beb11c315160bf6af8760424dd2439da6012c72cdddf3d668fb1784bc0c0d5",
+      "note": "原文役員海外視察後將大阪萬博納入銷售策略；未補視察國家、展名、行程或當事人心理。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1s06",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "aca47737e0ef79395e6534f1621f276dcaa5bd18b2b0591be92695a184109cfd",
+      "result": "CONFIRMED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R15"
+      ],
+      "anchor_ids": [
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "UCC2025",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "3aefc5785022b7dabf726c3f63d9e6e7ee62faeee33ddb22daaa364f8d8eac80",
+      "note": "1970三月見UCC2025原HTML p165及UCC2025_REPRO p188；本輪直接補讀鄰近上下文，不只信列入的冷卻錨點。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1s07",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "939435c02284810e3eb1ba7b5da5dafc2ae0b871a3c44a2a52df6cf7247eb20f",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [],
+      "anchor_ids": [
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "ff89ecb63974ad29abfac6f9f014f8a17abf4a5fedbf9366fa8d15f1200b6c43",
+      "note": "p1131報導咖啡生產國聯繫及接觸參展國；不把ほぼすべて改成全部。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1s08",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "e3b7d927ae6eac6274571206b84b95978cb1109395ecc942092f48fc3afb42cb",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [],
+      "anchor_ids": [
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "b68cb9d4707d6070e00ae73e78695f5b99c89695287eb5dd3016d5af4176f523",
+      "note": "p1131展館附設餐飲與既有咖啡事業支援；未把常規咖啡供貨全算奶咖罐銷量。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1s09",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "edf5de351bbee5e280e44d27af988e8865e0d82c23bd7944804c71183b6ba21f",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R15"
+      ],
+      "anchor_ids": [
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "UCC2025",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "e70d25d0d66f5166e41964a1c0d43399d12b9890a96c9ed4862b9c134d2ff504",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1s10",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "6746449e9dc25ec58b1b16ed1f24bf85ad031559c90c49d7e4d7301e542b2582",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R15"
+      ],
+      "anchor_ids": [
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "UCC2025",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "0c4daadf5985df83b5ac27d067476a71b9b109c73ba540217193af2e5ebdde86",
+      "note": "原廠p167與採訪p1131一致：大阪製造工廠旁大阪北支店，稱萬博支店。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1s11",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "e33d75e23a68ad4fb893c78cc7660a1faa3095a7f64bcbdb045971b50da34cc2",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R15"
+      ],
+      "anchor_ids": [
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "UCC2025",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "d34ed3aa0f1c0e0ae24faf1ab7afc71b9d4c47e46df4a3d9344095aaefe36b4e",
+      "note": "原廠冷罐自支店輸送，採訪補中央冷卻與多台卡車；未稱冷藏車型、溫度、班次、路線或冰塊。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1s12",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "3a82b72ad6dc1005751ce74b0573d328a3e32c9abb1b6e82f15a3e6d14efcc6f",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R15"
+      ],
+      "anchor_ids": [
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "UCC2025",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "da7ef4c1bd0c7a92b6cfaf4697c9e616638d14050d9cfbdf3756b2d51ebadb39",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1s13",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "c5f0be5ed5e142a4c10abbffe2140792a8b270f9127b1d64ebbedf144850bcc2",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R15",
+        "R16"
+      ],
+      "anchor_ids": [
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS",
+        "A_TV"
+      ],
+      "source_ids": [
+        "UCC2025",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "72d6f7c1a5015a114f99a3cf336d3e1377801de13ecbb6209141e6736e98793f",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1s14",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "b66a6cdb5e7150832b7bbfe9ad6f04af111fc44163904d02cae6e7b6a8a27398",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R15"
+      ],
+      "anchor_ids": [
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "UCC2025",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "03b8d3aae577ab4cc90d34ac81c761116e182140a89db4e24f5cbff9d9eba1bb",
+      "note": "已親看原廠原始banpaku.jpg，確有來客持飲奶咖罐；原HTML明註画像は当時の様子。照片本身與現稿匿名概念圖分開，不將後來整理頁當1970即時實錄。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1s15",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "49a2c9b3a96d1e62cf17e6ae16080a9688415b3f5a503ec81590b6dad1fccfd2",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R15"
+      ],
+      "anchor_ids": [
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "UCC2025",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "34282b876c18e0490f3e02992e9876f4b57df2e3d9130d5535b1ae0bb81f2969",
+      "note": "UCC2025 p169有返鄉傳播飲用經驗；此段承接原廠回顧，無特定旅客證言。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1s16",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "f34b1a1fff4e74717aa7ad0ffd12138d3c7ea44882d4be1b2c0feec3ec67ce6f",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R16"
+      ],
+      "anchor_ids": [
+        "A_TV"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "d8ae1e3220d7ab65768f7a33234d29de3fc53bcd41ac7b96e927a4d6c52f45f9",
+      "note": "J-Net2023 p1132記電視傳播；只是報導歷史回顧，未假裝取得當年播出片段、台名或收視數據。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1s17",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "bfb9d174f17f66a1be1902e2016d9cab704ec5bff35e521646723abd8826b7af",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R16"
+      ],
+      "anchor_ids": [
+        "A_TV"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "cfee65c5c19d8f3a8752d94d115fbd8aab2f7afbe646866bb5ae8150654179ac",
+      "note": "p1134記詢問、訂單及原先忽視的通路；沒有量化獨立傳播因果。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1s18",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "5f1e47882d902a8eae371e47a731a9c8983dca6a5625c0ac7081a4af6a1c8305",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R17"
+      ],
+      "anchor_ids": [
+        "A_QUEUE_PARTNERS"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "3ee24bc0c40fecb8e5fc6df644a5667a2d66b23ddcc9e85b472dcd4951d31e80",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1d01",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "afdbbd8e4fc688847d9939cc52edca1f009fb789419f57107c7b912cde5f261d",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R15",
+        "R17"
+      ],
+      "anchor_ids": [
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS",
+        "A_QUEUE_PARTNERS"
+      ],
+      "source_ids": [
+        "UCC2025",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "306c3f9880a23acfd770abf7316263d1425a804fed216e9a1c98a6d597a12fd7",
+      "note": "原廠p168明說夏日全力仍追不上，採訪p1134補供應壓力；不是2019工廠產能。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1d02",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "e72e532e6f2fa322682b63f6b637b96608ec5a44a317d54bb5fc6bd5313e727b",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R17"
+      ],
+      "anchor_ids": [
+        "A_QUEUE_PARTNERS"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "c68d24c92254105c46cba78d25e8f389db0fea9c3ea5761d6d372c7371441b31",
+      "note": "採訪油谷主管回顧有等待出貨卡車；不造當年運單、車數、排隊順序。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1d03",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "69de1610a4a1cefd89a774bfa2ca7f6aa582b628e0ceca6b4ace6b74fc55d9ef",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R17"
+      ],
+      "anchor_ids": [
+        "A_QUEUE_PARTNERS"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "05eb4ae95078240ce527c589ddde8096b91d11ccf8784fc2e795205e790a3c4a",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1d04",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "b990ab8e593ed41bf1247b9ddf8574db634df9c7bc91b6752cf07a8343894163",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R17"
+      ],
+      "anchor_ids": [
+        "A_QUEUE_PARTNERS"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "99f2b8856c0097a513e4716d91de6cd86c35235bc31e2fb5f3dbd220161d100c",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1d05",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "d4d806342d26a17ca7719b5599bd4c28067b592ea9e9b5d50ca0bd4283b09871",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R17"
+      ],
+      "anchor_ids": [
+        "A_QUEUE_PARTNERS"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "4f93047409fd79933a6042f80b04a33d96bf3c69b0c34a0db1d1cfc79b1b7c22",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1d06",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "3450f3c893d139abd19fe6a60dd05c6ea5e63b4ddc2e9ae85b51708559c64377",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R17"
+      ],
+      "anchor_ids": [
+        "A_QUEUE_PARTNERS"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "2cfa196f7008c189fe8575ca8197ab234f504de8e59c1664d3b5a3abcef416cc",
+      "note": "p1134單廠不足後擴大全國協力工廠；沒有補精確產能或承諾瞬間解除缺貨。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1d07",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "31ff061926f73af60cc297f5c6bb61bcea7f39d8da91c19447ddf39d5e3357ed",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R18"
+      ],
+      "anchor_ids": [
+        "A_RAIL"
+      ],
+      "source_ids": [
+        "GUINNESS2019"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "b949e7ddad616201b58f9de3d2dea81998f3a7fade8ad5c52ae66e3c87f8d2ab",
+      "note": "Guinness p68上島達司列鐵道弘濟會與萬博為轉點；不寫全國每站或全球同時普及。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1d09",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "09f0342aa1dc0609abdcc732850bfc83b96e47d90b7596ac72daee4729703a61",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R11"
+      ],
+      "anchor_ids": [
+        "A_INITIAL_HOLES"
+      ],
+      "source_ids": [
+        "UCC2025"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "02a247999fe16886fdd16246d033dc32f1966d08a10efc371b4963fed4d83254",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1d10",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "7e1a73ab7fd75dc2469b36cf68a091dc6cbfff1e4bd3ab1777932c2566d26de7",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R11"
+      ],
+      "anchor_ids": [
+        "A_INITIAL_HOLES"
+      ],
+      "source_ids": [
+        "UCC2025"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "b875edc67b451464217ea3fd23cad2cf52ba7e3818639f36ff982f1d99e9441d",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1d11",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "e0af0ec6da71f024d5d6fd00c51173909d444e157b3cb66c695d5ac2d9cf20b8",
+      "result": "CONFIRMED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R11"
+      ],
+      "anchor_ids": [
+        "A_INITIAL_HOLES"
+      ],
+      "source_ids": [
+        "UCC2025"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "a048d56ec78a04497a1a366a1d2d16e24e8559d200245dca3f974b679f1aab0e",
+      "note": "UCC2025 p190專用開孔器作飲口；示意另罐，不是破壞保存原罐。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1d12",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "a6ce0f8edf9ffb65e8fac9cf363c576a380752fedf74e22406fb272152225a56",
+      "result": "CONFIRMED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R11"
+      ],
+      "anchor_ids": [
+        "A_INITIAL_HOLES"
+      ],
+      "source_ids": [
+        "UCC2025"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "046f7ce7c5564d8919755c591375620f2b177acfcbc5c2f9562d1a0ba1acbb28",
+      "note": "旁白與配鏡完全未改；author_context改為回應h01。原文飲口與空氣孔兩處可支持有限用途答案；不延伸成單孔失敗實驗。",
+      "scope": "R2新問答語境直接重核。"
+    },
+    {
+      "id": "c11r1d13",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "bcbb5045a12ca4a05d60434eb3c7f505a0d61f8fafcb955b9b6449f7128deca5",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R11"
+      ],
+      "anchor_ids": [
+        "A_INITIAL_HOLES"
+      ],
+      "source_ids": [
+        "UCC2025"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "5a205f9f10ea40f54d0d453f92811e77653184e3b39a41706127dbeeb169c6a2",
+      "note": "只限初代罐需另工具；未聲稱1981才有拉環，1978/1981衝突沒有被掩成定論。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1d14",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "f43ffaebf4d40cf84a481fc47204284714506707f183fb3794f6c2b4b1a8c196",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R11"
+      ],
+      "anchor_ids": [
+        "A_INITIAL_HOLES"
+      ],
+      "source_ids": [
+        "UCC2025"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "2a48db6fcacedfda2c7ada45d78bc0027a203f1df755eaf307465c60060759c5",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1ct1",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "4a3dc5f149f8a69f63454e91cd9416522ea89e37d3ffc237758bb76278835d93",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R08",
+        "R09",
+        "R10",
+        "R15",
+        "R11"
+      ],
+      "anchor_ids": [
+        "A_HOMOGENIZE",
+        "A_HEAT_RATIO",
+        "A_COATING",
+        "A_COLD_TRUCKS",
+        "A_INITIAL_HOLES"
+      ],
+      "source_ids": [
+        "JNET2011",
+        "UCC2025_REPRO",
+        "JNET2023",
+        "UCC2025"
+      ],
+      "written_visual_verdict": "OUTRO_CARD_REVIEWED",
+      "visual_prompt_sha256": null,
+      "note": "作者綜合來源中製造、配送、開孔的工作，不新增事件、數字或技術優先權。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1ct2",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "c7bc0ad68982ea6549bfbe66c580ff817f60acddd673a048951a7f52eb5dd3da",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [],
+      "anchor_ids": [],
+      "source_ids": [],
+      "written_visual_verdict": "OUTRO_CARD_REVIEWED",
+      "visual_prompt_sha256": null,
+      "note": "觀眾回憶提問，不是歷史斷言。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    },
+    {
+      "id": "c11r1ct3",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "b9fc9faba41801cbddfdebc470ce75c16a4b86f93da17992d1ef1ffd11fa4641",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [],
+      "anchor_ids": [],
+      "source_ids": [],
+      "written_visual_verdict": "OUTRO_CARD_REVIEWED",
+      "visual_prompt_sha256": null,
+      "note": "頻道訂閱理由，不是歷史斷言。",
+      "scope": "R1逐句結論精確驗綁後承接；現行語境已重核。"
+    }
+  ],
+  "loop_reviews": [
+    {
+      "setup": "c11r1h01",
+      "payoff": "c11r1d12",
+      "what": "初代罐只開一孔是否足夠的條件問句，由原廠列出的飲口與空氣孔用途回答",
+      "setup_index_1based": 1,
+      "payoff_index_1based": 83,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    },
+    {
+      "setup": "c11r1h04",
+      "payoff": "c11r1t05",
+      "what": "奶成分上浮由均質化抑制",
+      "setup_index_1based": 4,
+      "payoff_index_1based": 24,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    },
+    {
+      "setup": "c11r1h04",
+      "payoff": "c11r1s11",
+      "what": "冷罐如何接上萬博人潮：支店冷卻及卡車",
+      "setup_index_1based": 4,
+      "payoff_index_1based": 65,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    },
+    {
+      "setup": "c11r1h06",
+      "payoff": "c11r1ct1",
+      "what": "在別處完整喝到的中心答案",
+      "setup_index_1based": 6,
+      "payoff_index_1based": 86,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    },
+    {
+      "setup": "c11r1o06",
+      "payoff": "c11r1o07",
+      "what": "1965已有Mira罐裝實售早例",
+      "setup_index_1based": 12,
+      "payoff_index_1based": 13,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    },
+    {
+      "setup": "c11r1o10",
+      "payoff": "c11r1t05",
+      "what": "含奶混合物放進罐後如何保持狀態",
+      "setup_index_1based": 16,
+      "payoff_index_1based": 24,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    },
+    {
+      "setup": "c11r1o14",
+      "payoff": "c11r1t05",
+      "what": "上浮的具體處理方法",
+      "setup_index_1based": 20,
+      "payoff_index_1based": 24,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    },
+    {
+      "setup": "c11r1t04",
+      "payoff": "c11r1t05",
+      "what": "拌在一起到抑制分離",
+      "setup_index_1based": 23,
+      "payoff_index_1based": 24,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    },
+    {
+      "setup": "c11r1t08",
+      "payoff": "c11r1t09",
+      "what": "分離處理後仍有加熱走味",
+      "setup_index_1based": 27,
+      "payoff_index_1based": 28,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    },
+    {
+      "setup": "c11r1t12",
+      "payoff": "c11r1t13",
+      "what": "試喝樣品、調整成分比率",
+      "setup_index_1based": 31,
+      "payoff_index_1based": 32,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    },
+    {
+      "setup": "c11r1t16",
+      "payoff": "c11r1w02",
+      "what": "罐壁參與反應使奶咖變黑",
+      "setup_index_1based": 34,
+      "payoff_index_1based": 36,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    },
+    {
+      "setup": "c11r1w04",
+      "payoff": "c11r1w06",
+      "what": "與製罐公司合作內部塗層處理變色",
+      "setup_index_1based": 38,
+      "payoff_index_1based": 40,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    },
+    {
+      "setup": "c11r1w08",
+      "payoff": "c11r1w09",
+      "what": "商品開始上架的四月節點",
+      "setup_index_1based": 42,
+      "payoff_index_1based": 43,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    },
+    {
+      "setup": "c11r1w10",
+      "payoff": "c11r1w14",
+      "what": "店內三箱試賣及逐步訂貨回憶",
+      "setup_index_1based": 44,
+      "payoff_index_1based": 49,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    },
+    {
+      "setup": "c11r1w12",
+      "payoff": "c11r1w13",
+      "what": "食料店最初三箱試放的數量",
+      "setup_index_1based": 46,
+      "payoff_index_1based": 48,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    },
+    {
+      "setup": "c11r1w16",
+      "payoff": "c11r1s02",
+      "what": "把罐排到旅客可見的車窗",
+      "setup_index_1based": 51,
+      "payoff_index_1based": 53,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    },
+    {
+      "setup": "c11r1s05",
+      "payoff": "c11r1s06",
+      "what": "各地來客在大阪萬博接觸奶咖",
+      "setup_index_1based": 56,
+      "payoff_index_1based": 60,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    },
+    {
+      "setup": "c11r1s20",
+      "payoff": "c11r1s21",
+      "what": "事前規模判斷經海外視察後改變，公司將萬博納入策略",
+      "setup_index_1based": 58,
+      "payoff_index_1based": 59,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    },
+    {
+      "setup": "c11r1s09",
+      "payoff": "c11r1s11",
+      "what": "工廠旁支店與多台卡車完成冷罐配送",
+      "setup_index_1based": 63,
+      "payoff_index_1based": 65,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    },
+    {
+      "setup": "c11r1s13",
+      "payoff": "c11r1s16",
+      "what": "返鄉經驗與電視畫面把奶咖傳到會場外",
+      "setup_index_1based": 67,
+      "payoff_index_1based": 70,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    },
+    {
+      "setup": "c11r1s18",
+      "payoff": "c11r1d02",
+      "what": "要貨增加卻有卡車等出貨的場景",
+      "setup_index_1based": 72,
+      "payoff_index_1based": 74,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    },
+    {
+      "setup": "c11r1d05",
+      "payoff": "c11r1d06",
+      "what": "單一工廠不足後擴大協力工廠",
+      "setup_index_1based": 77,
+      "payoff_index_1based": 78,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    },
+    {
+      "setup": "c11r1d09",
+      "payoff": "c11r1d12",
+      "what": "交到手裡後用開孔器完成飲口與空氣孔",
+      "setup_index_1based": 80,
+      "payoff_index_1based": 83,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    },
+    {
+      "setup": "c11r1d10",
+      "payoff": "c11r1d11",
+      "what": "封著的金屬蓋靠專用工具打開",
+      "setup_index_1based": 81,
+      "payoff_index_1based": 82,
+      "all_endpoints_current": true,
+      "forward": true,
+      "source_supported_endpoint_relation": true,
+      "note": "只核端點、前後位置及有限來源關係，不作敘事或blind投票。"
+    }
+  ],
+  "loop_totals": {
+    "count": 24,
+    "endpoint_count": 48,
+    "all_current_and_forward": true,
+    "all_source_supported_finite_relations": true
+  },
+  "written_visual_review": {
+    "status": "PASS",
+    "retained_shot_count": 85,
+    "all_prompt_camera_visual_data_unchanged": true,
+    "outro_three_lines_unchanged": true,
+    "new_h01_context_checked_against_same_prompt": true,
+    "no_historical_one_hole_failed_test_requested": true,
+    "no_current_opening_of_preserved_1969_object_requested": true,
+    "concept_vs_archival_boundary_retained": true,
+    "generated_visual_acceptance": "UNKNOWN_NOT_REVIEWED",
+    "actual_generation_checks_carried": [
+      "初代罐不得生成拉環；另置開孔器及飲口／空氣孔用途須相容。",
+      "不能用生成畫面冒充今天打開神戶保管原罐、單孔必然不流出實驗或當年現場實錄。",
+      "不得生成商標、可讀史料文字或具名真人長相。"
+    ]
+  },
+  "preserved_source_limits": [
+    "Mira 1965-09-14三越本店為市府後設記錄；加糖無奶為產業訪談。",
+    "UCC含奶世界首只歸屬館方，沒有全球優先權核准。",
+    "1978／1981拉環導入來源矛盾仍未解；正文只限初代需工具，不宣稱1981才不用工具。",
+    "技術與物流是後來品牌／採訪回顧；不造當年對話、心理、配方、試喝人數、測定標準、熱因果、專利首用或車隊參數。"
+  ],
+  "length_scope": {
+    "official_whole_body_spoken_units": 2550,
+    "coldopen_units": 166,
+    "spoken_cta_units": 103,
+    "includes_coldopen_and_spoken_cta": true,
+    "excludes_only_separate_channel_bookends": true,
+    "native_estimate_frames": 21023,
+    "fps": 30,
+    "native_estimated_seconds": 700.7666666666667,
+    "actual_audio_duration_seconds": null,
+    "actual_duration_verdict": "UNKNOWN",
+    "assessment": "2550單位仍有規劃字量風險；原生估時不是actual narration timeline，不判13分鐘實聲PASS或FAIL，也不授予延長停頓或無來源補字。"
+  },
+  "blockers": [],
+  "precise_fixes_required": [],
+  "not_granted": [
+    "敘事或native／blind投票",
+    "owner／預算核准",
+    "canonical採用或provider啟用",
+    "讀音或TTS／實聲長度驗收",
+    "實際生成圖、素材沿用或媒體QA",
+    "字幕、音訊、clean配音、打包或發布"
+  ],
+  "allowed_outputs_written": [
+    "reviews/source-r2-independent.json",
+    "verify-1.md"
+  ],
+  "core_research_history_task_modified": false
+}

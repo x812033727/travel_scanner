@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "review_type": "METADATA_ONLY_CLEAN_MASTER_DERIVATION",
+  "reviewer": "/root/c04_readiness",
+  "independent": true,
+  "checked_at": "2026-10-25T15:52:53.795Z",
+  "slug": "story-everyday-bubble-wrap-c04-remake-20261025",
+  "verdict": "METADATA_DERIVATION_PASS",
+  "bindings": {
+    "source_video": {
+      "path": "../../video.json",
+      "sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e"
+    },
+    "variant_video": {
+      "path": "video.json",
+      "sha256": "6abac6b8f4c37ae62327efc04fa7aa95ba5e015e08d580a385f42f0bdca1e4c8"
+    },
+    "derivation": {
+      "path": "derivation.json",
+      "sha256": "1c4d83b591827e02f935d7a038eed3efb2be78d122c37ace88b7ed8d3e04f0a8"
+    },
+    "source_receipt": {
+      "path": "../../reviews/source-r2-delta.json",
+      "sha256": "307ac3802ecf49843183949b66864f58730aad11ed44ad2970f9827305970369"
+    }
+  },
+  "full_object_comparison": {
+    "only_difference": "subtitles.burn_in: true -> false",
+    "same_new_remake_slug": true,
+    "old_activated_slug_used": false,
+    "all_other_input_fields_identical": true
+  },
+  "native_pure_function_verification": {
+    "screenplay_bytes_identical": true,
+    "canonical_script_sha256": "d363a2d4486549ead4e444455df4af5f9e80d72693bf34fc91f028a851b2d884",
+    "hashes": {
+      "narrativeHash": {
+        "source": "99b7fa6451a86058",
+        "variant": "99b7fa6451a86058",
+        "equal": true
+      },
+      "speechHash": {
+        "source": "cbac582983bbb901",
+        "variant": "cbac582983bbb901",
+        "equal": true
+      },
+      "picturesHash": {
+        "source": "3dee2b3ea4f722e5",
+        "variant": "3dee2b3ea4f722e5",
+        "equal": true
+      },
+      "lookHash": {
+        "source": "98a370ae40badbaf",
+        "variant": "98a370ae40badbaf",
+        "equal": true
+      },
+      "mixHash": {
+        "source": "71ecdd098c551254",
+        "variant": "71ecdd098c551254",
+        "equal": true
+      },
+      "subtitlesHash": {
+        "source": "4b23ded6e41b1e87",
+        "variant": "ec58a1493220a1da",
+        "equal": false
+      }
+    },
+    "lint_errors": 0,
+    "real_immutable_project_lexicon_used": true
+  },
+  "render_plan_review": {
+    "verdict": "PASS_AS_UNRENDERED_PLAN",
+    "same_ledger": true,
+    "required_future_evidence": [
+      "Legal paid admission for this exact remake; actual verified narration/images/music and corresponding receipts.",
+      "Two actually rendered outputs and their distinct MP4 SHA values; real burned/clean subtitle evidence.",
+      "Each applicable bound QA, with the clean cut becoming the current approved final before native dub eligibility."
+    ],
+    "no_duplicate_provider_purchase": true,
+    "no_existing_MP4_final_approval_or_QA_inheritance": true
+  },
+  "not_claimed": {
+    "actual_clean_master_exists": false,
+    "actual_burned_export_exists": false,
+    "media_qa": false,
+    "final_owner_approval": false,
+    "actual_dub_eligibility": false,
+    "dubs_completed": false,
+    "source_reopened_for_c05_or_c09": false,
+    "budget_activation": false
+  },
+  "review_actions": {
+    "provider_calls": 0,
+    "paid_calls": 0,
+    "backend_actions": 0,
+    "source_or_recipe_edits": 0
+  },
+  "findings": [],
+  "scope_note": "PASS is limited to the complete-object metadata difference, source receipt/native input identity and an unrendered plan. Input identity is not verified media reuse, actual duration, sound/image QA, MP4 approval, dubbing eligibility or publication approval."
+}

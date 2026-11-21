@@ -1,0 +1,1019 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/find_rules",
+  "independent": true,
+  "date": "2026-10-25",
+  "revision": "r11",
+  "slug": "story-everyday-patagonia-c09-remake-20261025",
+  "verdict": "HOLD",
+  "source_verdict": "HOLD",
+  "written_visual_verdict": "PASS",
+  "input_sha256": {
+    "video.json": "fadf5da0d73e5f4d3f6b0faaa2f9a668cfb4ec0ca75bd2b48f78cbe3633c269b",
+    "narration-only.json": "d68a1c94ae42ff0f480b676f0aca0b0a6bc58a13e86eabda6e64f474c6fb71eb",
+    "claims.json": "52b5954aa957e73fb0f37b741b30a96f3874286a94a717b998b3765df798da90",
+    "script.md": "c6c5b117cf1442f5a37faff93c95b080f2bab800a1969205caeb7f59b1babf53"
+  },
+  "baseline": {
+    "path": "history-r10",
+    "video_sha256": "98fb3119aa800e7c8dcce06075601cedcfa108f3a3a42b880ebb80b23317a818",
+    "narration_sha256": "8c034e2f1e4d4b5d4ffa5a674179bd3ec1b60adca48b87ccf557a9d1d0f4c4fa",
+    "source_receipt": "history-r10/source-r10-delta.json",
+    "source_receipt_sha256": "8d36352e0002f832ee787289ddd01e87b7133eed061aafb45f274a32abc2b0c2",
+    "all_four_bound_inputs_match": true,
+    "verdict": "PASS:97行/95景；不自動覆蓋r11新增主張/來源標註。"
+  },
+  "counts": {
+    "narration_lines": 96,
+    "scenes": 94,
+    "deleted_lines": 1,
+    "added_lines": 0,
+    "changed_retained_lines": 3,
+    "same_complete_scene_objects": 91,
+    "text_only_changed_scene_objects": 3,
+    "source_pass": 95,
+    "source_hold": 1,
+    "written_visual_scene_pass": 94,
+    "written_visual_scene_hold": 0
+  },
+  "exact_delta": {
+    "deleted_line_ids": [
+      "c09r099"
+    ],
+    "deleted_scene_ids": [
+      "c09r-shot-099"
+    ],
+    "changed_line_ids": [
+      "c09r002",
+      "c09r079",
+      "c09r098"
+    ],
+    "changed_scene_ids": [
+      "c09r-shot-002",
+      "c09r-shot-079",
+      "c09r-shot-098"
+    ],
+    "all_other_retained_complete_scene_objects_exactly_equal": true,
+    "all_scene_data_prompts_camera_visual_cards_exactly_equal": true,
+    "all_non_scenes_top_level_fields_equal_except_loops": true,
+    "removed_loops": [
+      {
+        "setup": "c09r098",
+        "payoff": "c09r102",
+        "what": "勸少用而商品仍在，改變的是什麼"
+      }
+    ],
+    "all_other_27_loops_exactly_equal": true,
+    "no_deleted099_loop_endpoints": true,
+    "claims_only_filter_and_three_text_updates_sources_and_anchors_equal": true,
+    "narration_only_filter_and_three_text_updates": true,
+    "script_only_filter_and_three_text_updates": true
+  },
+  "findings": [
+    {
+      "id": "C09-R11-SOURCE-002",
+      "severity": "HOLD",
+      "line_id": "c09r002",
+      "issue": "新增「越敲越寬的釘孔」目前只綁S2；S2直述裂縫變成成排釘孔與反覆敲拔使岩片鬆落，擴寬的更精確明證屬S4。",
+      "evidence": [
+        {
+          "source": "S2 original 1972 foreword, not 2022 introduction",
+          "url": "https://www.patagonia.com/stories/sports/climbing/a-word/story-116598.html",
+          "primary_reread_http_status": 200,
+          "raw_html_sha256": "6a924e2f49519885b06bc5d56949bce6860a7906055b82b4295003d298284ead",
+          "quote": "On popular routes in Yosemite and elsewhere the cracks are degenerating into series of piton holes. Flakes and slabs are being pried loose and broken off as a result of repeated placement and removal of hard pitons."
+        },
+        {
+          "source": "S4:D, preserved historical independent review",
+          "receipt": "history-r1/source-visual-independent.json",
+          "rows": [
+            "c09r034",
+            "c09r036"
+          ],
+          "judgments": [
+            "相對硬度及薄片鬆落在S2；窄裂縫擴大需S4的small cracks now needed large pitons。現claims只列S2，漏標S4，須補。",
+            "裂縫變寬與原小釘不適用有S4支持；目前claims僅S2，須補S4，和37的同一來源界線一致。"
+          ]
+        }
+      ],
+      "required_change": "保留旁白時，將002 claims來源補S2、S4，anchor明記S2釘孔/反覆敲拔與S4窄裂縫擴大需較大釘子；或將旁白限縮成S2直接支持的岩釘傷痕。",
+      "scope_clarification": "此HOLD針對來源綁定，不是002假想利害或001百枚例示的範圍；不要求更改其餘未變段。"
+    }
+  ],
+  "changed_line_reviews": [
+    {
+      "line_id": "c09r002",
+      "source_verdict": "HOLD",
+      "written_visual_verdict": "PASS",
+      "hypothetical_scope_verdict": "PASS",
+      "note": "如果/可能明示觀眾假想；001仍明說一組結繩熟手單日多達100枚的例示，002未說同一裂縫/同孔敲100次、未新增事故或普遍後果。新增擴寬細節仍須補S4來源。原worn crack匿名概念圖不變且與假想利害相容。"
+    },
+    {
+      "line_id": "c09r079",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "callback_to": [
+        "c09r005"
+      ],
+      "local_ids": [
+        "c09r078",
+        "c09r079",
+        "c09r080",
+        "c09r082"
+      ],
+      "note": "005已預告一次不帶岩釘的攀登，079明示同次1973酋長岩路線，不添加首登/傳說/另一事件；080才揭完成並限定沒帶的是岩釘，082仍限單次路線。來源S4與提示詞/繩索均不變。"
+    },
+    {
+      "line_id": "c09r098",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "local_ids": [
+        "c09r095",
+        "c09r096",
+        "c09r097",
+        "c09r098",
+        "c09r100",
+        "c09r102"
+      ],
+      "note": "僅刪懸空你再看看工廠尾句及099整景，保留他的估算/非獨立財報。098接100原前言歸納、102回呼壓床，不新增服裝或倡議造成生產的財務因果。"
+    }
+  ],
+  "method": "比對r10四輸入與來源收據雜湊、全部video物件/claims/narration/script/loops；專項重開S2原前言及核既有S4範圍界線。第二審查者/root/find_rules/c09_delta亦判002來源標註HOLD，假想scope與079/080 PASS。未讀盲讀或作者敘事檔。",
+  "scope_limits": {
+    "blind_report_files_read": false,
+    "author_narrative_report_read": false,
+    "narrative_verdict": null,
+    "actual_audio_or_images_reviewed": false,
+    "measured_duration": false,
+    "paid_calls": 0,
+    "backend_writes": 0,
+    "owner_approval": false,
+    "note": "僅r11來源/書面配鏡delta；未變段由r10 PASS接鏈。HOLD須新精確輸入/來源收據解除，不回改本收據或歷史HOLD。"
+  },
+  "line_results": [
+    {
+      "line_id": "c09r001",
+      "scene_id": "c09r-shot-001",
+      "line_text_sha256": "f88e1fdca5f4694ce921562c87cf6d681eae01d6acdf8b46245d7472576b3342",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r002",
+      "scene_id": "c09r-shot-002",
+      "line_text_sha256": "ad7b71bdb2a61e6267f03e0d4577b2a1ade1933b6bf4f0e0bfd0d533c6fd63a6",
+      "source_mapping": "S2",
+      "source_verdict": "HOLD",
+      "written_visual_verdict": "PASS",
+      "basis": "假想與可能性範圍可PASS，未將001的100枚變成同孔敲100次；但新增越敲越寬目前只標S2，漏列直接支持擴寬的S4，須補來源標註或限縮文字。書面概念插圖仍相符。"
+    },
+    {
+      "line_id": "c09r003",
+      "scene_id": "c09r-shot-003",
+      "line_text_sha256": "a5d7c7f853caa257eddeb5304d45396f6d8957e7f9ecde23b7e231feeb32c9f5",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r004",
+      "scene_id": "c09r-shot-004",
+      "line_text_sha256": "24af273c3a74498e36827c04c8695ba704a7a596a6bd7025dac03b386ecc7651",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r005",
+      "scene_id": "c09r-shot-005",
+      "line_text_sha256": "b3737ed9912c2dcd033787a0a422d552c69431e26e0f8e9cd3ed2d5e8b42017b",
+      "source_mapping": "S3、S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r006",
+      "scene_id": "c09r-shot-006",
+      "line_text_sha256": "c570f666c890c19963187f94c21d8db79c7b16cad27032677a20c9df22d1f117",
+      "source_mapping": "S1–S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r007",
+      "scene_id": "c09r-shot-007",
+      "line_text_sha256": "b463cb2c18ce79c8f93cb72e24154eaeb423af7ebf57d15f59e4ed843d25f514",
+      "source_mapping": "S2、S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r008",
+      "scene_id": "c09r-shot-008",
+      "line_text_sha256": "131dc0e76be3dd3dc3eafc6890477c65ab4a0dbe2b67b835838e8baf040a1e5f",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r009",
+      "scene_id": "c09r-shot-009",
+      "line_text_sha256": "ee37d29b88897fcd6cb9b7f4ff5b780f97e0ec3aee13d7c66ff050f2b4228fb5",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r010",
+      "scene_id": "c09r-shot-010",
+      "line_text_sha256": "6749d4456ff0b1becc16739b80e6d23ced8af8518e3621be47dd4b99408cfd99",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r011",
+      "scene_id": "c09r-shot-011",
+      "line_text_sha256": "33d0cdfc2b6fb8bb101a161e52e0388430dd7e97644780e9c6378627dacb0715",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r012",
+      "scene_id": "c09r-shot-012",
+      "line_text_sha256": "cc6e812d92c85cb4fd2f5b913ac07c92232bcdded2e1dd0acbe9b3cb562e94a4",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r013",
+      "scene_id": "c09r-shot-013",
+      "line_text_sha256": "e055c0f1cfcd52bd9bfbd65fa22e36ad67f2610bdc578baa5ce88d8184239efd",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r014",
+      "scene_id": "c09r-shot-014",
+      "line_text_sha256": "eaf351973c391e06092dff8dca2efae2ad684580435b834c996132053f094eb7",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r015",
+      "scene_id": "c09r-shot-015",
+      "line_text_sha256": "aa8d0bebff0a3713250d801a89021ca986227371554877c2834327f6b57aa660",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r016",
+      "scene_id": "c09r-shot-016",
+      "line_text_sha256": "978e0be5e4b5b7d3057dd160e5e58f7f27fcbf6fef64db689ca72acdf17ade35",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r017",
+      "scene_id": "c09r-shot-017",
+      "line_text_sha256": "f10326748e07b39f75abcd6829b7e795057cf211b0cb4f87f335b80a0ea39288",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r018",
+      "scene_id": "c09r-shot-018",
+      "line_text_sha256": "54b57a4bd4ba6379676d4ade63e8299adc38acad2b44edc4341a739d734120da",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r040",
+      "scene_id": "c09r-shot-040",
+      "line_text_sha256": "ed7e6325f68deeb706b0f64e8a3246246f180d23847d6fd56e77045951cce9fb",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r041",
+      "scene_id": "c09r-shot-041",
+      "line_text_sha256": "3f4cc7922893e11abe6f8ddfc8eff51e5a8467d456420555e228281dd6b69e2f",
+      "source_mapping": "S2、S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r043",
+      "scene_id": "c09r-shot-043",
+      "line_text_sha256": "c13b8b765ae883097df523df9be2aa7978f2be380ff7bb5d7d88f17b85b3d6bc",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r019",
+      "scene_id": "c09r-shot-019",
+      "line_text_sha256": "2a89a24228599420f2fb840d1c4a8fc3c5cdfa436a7c2de5eae9a1d2034cc5d0",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r020",
+      "scene_id": "c09r-shot-020",
+      "line_text_sha256": "2a2ef7d8409f0f484207607fcc7debc8eca852f656ae4ec2b8375d9ee9292ad1",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r021",
+      "scene_id": "c09r-shot-021",
+      "line_text_sha256": "bd0a4153e15b581402cd0ee497bdd2025b3c815545637dc4213efbec88b400bd",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r022",
+      "scene_id": "c09r-shot-022",
+      "line_text_sha256": "ac520d29c423d657266f6d3e3a18cc66d964210e7bc7b46bc81ca98cd2002b8e",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r023",
+      "scene_id": "c09r-shot-023",
+      "line_text_sha256": "ca4dcddacec472db794dea3e5ad75ac6877e271fe0e8ee644f2d3be308e4af6b",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r024",
+      "scene_id": "c09r-shot-024",
+      "line_text_sha256": "dbc4072e60955f643c1364ebe44c45c8e0a8b152434227ff60915b1052b96dc5",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r025",
+      "scene_id": "c09r-shot-025",
+      "line_text_sha256": "d2247793d5d50ecf3ea745c5e5d2d3abcbdf132573715d7b8cfa015e9b3cac5f",
+      "source_mapping": "S1、S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r026",
+      "scene_id": "c09r-shot-026",
+      "line_text_sha256": "63fdab86cad3cbd0f2f74bb96d3020c0dd6ccc56809bcb5b9d2ed12774b0e7f0",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r027",
+      "scene_id": "c09r-shot-027",
+      "line_text_sha256": "96e157fcf4bcc6b5011f9750a56a5f99f1725c551a4d81a55e408e5a80691cc6",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r029",
+      "scene_id": "c09r-shot-029",
+      "line_text_sha256": "546878d592856c189f472cee9b36c13878ff8d869a404bbeb19002393dda61e6",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r030",
+      "scene_id": "c09r-shot-030",
+      "line_text_sha256": "eb383ef10806aae71568435e5f0486f4d9500c954c7d70b4d4b2cbd3c2e92e36",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r044",
+      "scene_id": "c09r-shot-044",
+      "line_text_sha256": "c94450440e21f1ffb2b25cd8f3404dfa70c9b71f0b6c67da44c6d31dcc1cd31f",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r045",
+      "scene_id": "c09r-shot-045",
+      "line_text_sha256": "ca5992815b7f6767bf8109b9ae4ba196a64b20e357e716448352e7441cebe6f2",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r031",
+      "scene_id": "c09r-shot-031",
+      "line_text_sha256": "9ff6b0c7c9d8e45e770388bae8c68ee3e712c200bbaa3e71e0581f1a2e39db3e",
+      "source_mapping": "S1、S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r032",
+      "scene_id": "c09r-shot-032",
+      "line_text_sha256": "655b44654451cd2a320d3e39911a5b9d89ea6f0f9a119261b968473d40178df2",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r033",
+      "scene_id": "c09r-shot-033",
+      "line_text_sha256": "3448bf98d08f382fc2a66eeed3858b9bdf1ae39b427f9570cbf853d31a0bd9da",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r034",
+      "scene_id": "c09r-shot-034",
+      "line_text_sha256": "5169b00856fc5c29e6a76a12896e5d956cfeef79f66464ac07e28c7ff03ebfb3",
+      "source_mapping": "S2、S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r035",
+      "scene_id": "c09r-shot-035",
+      "line_text_sha256": "939add8604ce1d78edb0dae07fef44fed9720e5d36603982da8628d87022ff8e",
+      "source_mapping": "S2、S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r036",
+      "scene_id": "c09r-shot-036",
+      "line_text_sha256": "29ff537d85d52d9030a30c0ae0aafaeb7d01249ca814716b37b06c08b05fe1bc",
+      "source_mapping": "S2、S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r037",
+      "scene_id": "c09r-shot-037",
+      "line_text_sha256": "50e8030780a2206eb7355efefb1b4eaa8f2096b651c6a6db5c908f1b1b769a08",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r038",
+      "scene_id": "c09r-shot-038",
+      "line_text_sha256": "16e4537d6c6892c82c83db5a6448cdc42eb7ca095ca904a1a7a2e307dd4799f6",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r039",
+      "scene_id": "c09r-shot-039",
+      "line_text_sha256": "f2a01523a55558dc6094ef726c9f849ff4d129bc9ec517e1a8f17cea26784b5c",
+      "source_mapping": "S2、S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r042",
+      "scene_id": "c09r-shot-042",
+      "line_text_sha256": "013144804d6b08f5b4d2a488f897a973dcd6e203cf60e0e8d88382f8dc7e60d1",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r046",
+      "scene_id": "c09r-shot-046",
+      "line_text_sha256": "578dc1484e6e67f6692f72049d903d021d456ff2e2547ba9ebeab59c654337e8",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r047",
+      "scene_id": "c09r-shot-047",
+      "line_text_sha256": "344295bef4b282694cf284414f3b57d20d8a0820db2b5bc0747846385331229b",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r048",
+      "scene_id": "c09r-shot-048",
+      "line_text_sha256": "44b3bbd083a3cdd8ff5d2ee65fca94fc5672b84a2697447ea30bb5245818fe63",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r049",
+      "scene_id": "c09r-shot-049",
+      "line_text_sha256": "e752d165706f216a10e11553e804f8cc24bb94b4e75e8af95dec213871404645",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r050",
+      "scene_id": "c09r-shot-050",
+      "line_text_sha256": "19c7cf9b34aa492dd4a47c55374f6f22e8e32509e45190081e87766a14cd9c9a",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r051",
+      "scene_id": "c09r-shot-051",
+      "line_text_sha256": "981da15eacddf33cd0280eb615e43f8dd56c3c90a6e12723158e8738eb9c8f7d",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r052",
+      "scene_id": "c09r-shot-052",
+      "line_text_sha256": "6f0fd236163751013107888f8ca993d48228da1b181c43fbc8c32237b3b331a5",
+      "source_mapping": "S2、S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r053",
+      "scene_id": "c09r-shot-053",
+      "line_text_sha256": "1236892bffb990b6a3754b60319f771ecd624f381a51199817c516a53a7cd2d9",
+      "source_mapping": "S2、S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r054",
+      "scene_id": "c09r-shot-054",
+      "line_text_sha256": "29760c95fcff880b3cc347b472a0a5f679b6c28bdacaa2d1a0efdb13a76bf799",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r055",
+      "scene_id": "c09r-shot-055",
+      "line_text_sha256": "35594012e9ebf92b05406cf88240c89f0de23c5be84195d251cd009a62c8d4c0",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r056",
+      "scene_id": "c09r-shot-056",
+      "line_text_sha256": "758006befec1cb4328fec9375a74aad147e8777bfd78d2789565a46e1440b922",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r057",
+      "scene_id": "c09r-shot-057",
+      "line_text_sha256": "4f63c63ae720402918a1ff5c117011f636b9baaf2d440a43ddacaff13da97401",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r058",
+      "scene_id": "c09r-shot-058",
+      "line_text_sha256": "9f73a71da70936f758343abe8a9e40474d9c8453af5c1a91cc75fea74bbd1504",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r059",
+      "scene_id": "c09r-shot-059",
+      "line_text_sha256": "8acea7bd708c9b74026452c7b1b16a014b02b8f395c41493648be6137fd3cf59",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r060",
+      "scene_id": "c09r-shot-060",
+      "line_text_sha256": "4ac6e5e418eba55243799b2635283d608327b3b6d992f4aac6987df1e0f16f99",
+      "source_mapping": "S2、S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r061",
+      "scene_id": "c09r-shot-061",
+      "line_text_sha256": "eb4662e6e5c4d0594461564f806e010f486a6a3132affc881f0e61180cdef2b7",
+      "source_mapping": "S2、S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r062",
+      "scene_id": "c09r-shot-062",
+      "line_text_sha256": "abc11d7ea309238ed5019de7f9f5a053a831765c40ad6a5d033b6965649f8800",
+      "source_mapping": "S3、S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r063",
+      "scene_id": "c09r-shot-063",
+      "line_text_sha256": "92e5b20910a096027f7132d9db324e244edf73266e77b774dc2adac9c511b8cc",
+      "source_mapping": "S3、S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r064",
+      "scene_id": "c09r-shot-064",
+      "line_text_sha256": "c903e2ce635b0cc00234b8e352e7f237de04afc6c7acc69f178004d0fe84006c",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r065",
+      "scene_id": "c09r-shot-065",
+      "line_text_sha256": "5fcdf98df707720fd1e4b0d91fdb474e74a76a54983fd50de9fbbd3937907a18",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r068",
+      "scene_id": "c09r-shot-068",
+      "line_text_sha256": "a90f8a46714e9289a40064ec9f12efdbb6b545f76dda40912eaa853c1f9cf62b",
+      "source_mapping": "S2、S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r069",
+      "scene_id": "c09r-shot-069",
+      "line_text_sha256": "90b8864a50b5a5f8de6da6220f7a3cb46bb5748d90653b2fa1e01f1a5a96cbf8",
+      "source_mapping": "S2、S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r070",
+      "scene_id": "c09r-shot-070",
+      "line_text_sha256": "ce6e71b0c0e3f8f9bc744c94de8da38e3dcb6ebe13d6e46e1b8afbf09baff7fe",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r071",
+      "scene_id": "c09r-shot-071",
+      "line_text_sha256": "e242ac4eb5b9fcaf119ca9395a89f18eb6ea4c9e0b5667cf975a2edd117faf11",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r072",
+      "scene_id": "c09r-shot-072",
+      "line_text_sha256": "5044162c4d5144c5a38d7018ba379837a9c7fc218275830459e846208e5f63a0",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r073",
+      "scene_id": "c09r-shot-073",
+      "line_text_sha256": "eb2647ff9fe1194340137c3e50d5af041003dba445d42bb925a07e6e766a4d28",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r074",
+      "scene_id": "c09r-shot-074",
+      "line_text_sha256": "098dba9555417c5eb8c21af94e403097eeacc1f6093db594d46e45d11744586e",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r075",
+      "scene_id": "c09r-shot-075",
+      "line_text_sha256": "37f856a35dca21b122690b6e5ae339b91de5cdbe713f3697d29e632af177de67",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r076",
+      "scene_id": "c09r-shot-076",
+      "line_text_sha256": "8cca69ad9b004060aa58b76a55936689838d502ac947e1db18574137861042ae",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r077",
+      "scene_id": "c09r-shot-077",
+      "line_text_sha256": "b3817cf01344bb4be7a56dced74426b3a787821b5317f802bbb95ec193578cc0",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r078",
+      "scene_id": "c09r-shot-078",
+      "line_text_sha256": "74684b596b99ad3153d5ffc50ebcfb040e2a513698176b57f7afaa23adc3c80e",
+      "source_mapping": "S3、S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r079",
+      "scene_id": "c09r-shot-079",
+      "line_text_sha256": "d21813161e9cf5e05cc5c927cfefbb30fdd7e9023ed81d312c12eea3ebfceae8",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "明確回呼005同次不帶岩釘攀登；1973/S4同一酋長岩路線內容未變，080才交代完成，082仍排除普遍保證。提示詞及繩索概念圖資料不變。"
+    },
+    {
+      "line_id": "c09r080",
+      "scene_id": "c09r-shot-080",
+      "line_text_sha256": "ac6f26080c0695e3f5d6790dcdbaadfb6d72b56f21d293b35fa459d754e824bf",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r082",
+      "scene_id": "c09r-shot-082",
+      "line_text_sha256": "55410655946489c505508d500a5b7ec203f20e03501c65e845b1df4fb6b72cc9",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r093",
+      "scene_id": "c09r-shot-093",
+      "line_text_sha256": "a8a7513a7c63c2e237d6bfd23e8a158ece80f4b02f9a826eeb252c4dc2be0c64",
+      "source_mapping": "S7",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r084",
+      "scene_id": "c09r-shot-084",
+      "line_text_sha256": "0f6e58aeaf3f8c47efbe84d4746435a1e3cc8e70e937c5ed320e9a3295756a4d",
+      "source_mapping": "S2、S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r085",
+      "scene_id": "c09r-shot-085",
+      "line_text_sha256": "3dc9f48fd982ad6860d7534ff26d76d77cabd87c28eae4f9b48f362b276b0072",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r086",
+      "scene_id": "c09r-shot-086",
+      "line_text_sha256": "7440e2b08580428460b284cf15c92a1e717ce32a3aabfd99ca7731c0f908f809",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r087",
+      "scene_id": "c09r-shot-087",
+      "line_text_sha256": "997e86fe3b805e74556da2a4759f51790a2098982d928c9dc750ce6322897399",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r088",
+      "scene_id": "c09r-shot-088",
+      "line_text_sha256": "9593ae68c8b4bbcc955e328b920470fbdb6f0c5e90864625018bd0ceadfb2b49",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r089",
+      "scene_id": "c09r-shot-089",
+      "line_text_sha256": "cac8bea5393462fb0736b5f49edd2627a63bee0672a42a0ff5ca5b6227dc3dfd",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r090",
+      "scene_id": "c09r-shot-090",
+      "line_text_sha256": "c47588e36377bc1fea1488ad70785704ee26cdff1e95c6776ffb71f160533fc4",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r091",
+      "scene_id": "c09r-shot-091",
+      "line_text_sha256": "02774fc4cb4b3ff2d9f54d3c8c53934e30a2e73a5963d02d1211184650acf928",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r092",
+      "scene_id": "c09r-shot-092",
+      "line_text_sha256": "fc965d0a778925af0b47ab4c2e7db3960b043c14bd38cd42675b5771a6a5ac29",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r095",
+      "scene_id": "c09r-shot-095",
+      "line_text_sha256": "cb258981f8332ab70d9363885c9dafd07982aa6f6bafc9c31f56d3b8d0a2256a",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r096",
+      "scene_id": "c09r-shot-096",
+      "line_text_sha256": "5d02739cecab377a89849d8f83d1cb0849b7938dff8877a41640382ce7139977",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r097",
+      "scene_id": "c09r-shot-097",
+      "line_text_sha256": "e69994993ed7237b8eb4dc80e388fbc1f341f908c6021c76ff7e2a12c69b1d34",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r098",
+      "scene_id": "c09r-shot-098",
+      "line_text_sha256": "0fb42d07503293712b8bb555f765d87f9c3db68e10d0ec2cb5cece3ffc1dc77a",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "只刪去懸空觀眾轉場，保留原當事人估算與非獨立財報限定；與100/102新鄰接不增加財務因果。"
+    },
+    {
+      "line_id": "c09r100",
+      "scene_id": "c09r-shot-100",
+      "line_text_sha256": "3db238f1f8ac29e833b59435770389950c0701e123722fddb64ecfe3252dbe27",
+      "source_mapping": "S2、S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r102",
+      "scene_id": "c09r-outro",
+      "line_text_sha256": "5faae215ac79f7ed9e72ab04d1a71af294c071966637319cfaeb8f7b957170c4",
+      "source_mapping": "S2、S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r103",
+      "scene_id": "c09r-outro",
+      "line_text_sha256": "1c0b0207c35b3041d5249de992d4ad7c45051a345015c7c999349de4ea5a482f",
+      "source_mapping": "S2、S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    },
+    {
+      "line_id": "c09r104",
+      "scene_id": "c09r-outro",
+      "line_text_sha256": "ebd74bb0a2e298a0af37fbc1c9f7e7136d7cfa82c957d761056f4a7d6ba11600",
+      "source_mapping": "編輯",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "basis": "與r10完整保留scene/文字相同；來源及書面配鏡由精確雜湊綁定r10 PASS接鏈，刪除後鄰接另核。"
+    }
+  ]
+}

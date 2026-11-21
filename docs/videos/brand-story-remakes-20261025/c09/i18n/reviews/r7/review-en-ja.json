@@ -1,0 +1,36 @@
+{
+  "source_video_sha256": "aed9598125cfe5fa754c53bfd62ed4672e95a30d347527b2778870111daffcd6",
+  "reviewer": "codex-independent-c09-r7-en-ja",
+  "independent": true,
+  "role_disclosure": "wrote PT/ID not EN/JA",
+  "locales": [
+    {
+      "locale": "en",
+      "worksheet_sha256": "5538d7277693d5d4508f47f4eaba8a6704ccc520d532332e146723e01cdb8741",
+      "translation_sha256": "c25a7d322fc7f04b7a068e57628d68edab483669a7bc33ff06f77fa39c5aa876",
+      "status": "TEXT_PASS",
+      "checked_lines": 103,
+      "checked_chapters": 6,
+      "findings": [],
+      "advisory": []
+    },
+    {
+      "locale": "ja",
+      "worksheet_sha256": "b1392eccaa0dc4bae19c657aa2b29b4abaf2bb3385bc83187ee44f4a2c2a67a4",
+      "translation_sha256": "d71c206e561f852727f02b0c2497bce92c3487f24485e46a6f7582c039d06f60",
+      "status": "TEXT_PASS",
+      "checked_lines": 103,
+      "checked_chapters": 6,
+      "findings": [],
+      "advisory": [
+        {
+          "target": "lines.c09r5014",
+          "required": false,
+          "current": "あなたなら、使える道具が買えないとき、誰かの入荷を待ちますか。それとも自分で作りますか。",
+          "proposed": "あなたなら、使える道具が買えないとき、誰かが補充してくれるのを待ちますか。それとも自分で作りますか。",
+          "reason": "「誰かの入荷を待つ」搭配稍不自然；改為等人補貨會更口語。原句在前後文中仍可清楚理解為等待補貨，沒有改變史實或條件，屬非必修語感建議。"
+        }
+      ]
+    }
+  ]
+}

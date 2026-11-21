@@ -1,0 +1,167 @@
+{
+  "source_video_sha256": "773836e4a9c63770afbd6900014cbd57e6b123df44a22dca5987afaf9488d546",
+  "reviewer": "/root/c08_r9_review_pt_id",
+  "independent": true,
+  "role_disclosure": "我未撰寫C05中文、八語原譯文或這16句split譯句，也未套用修正；未讀作者selfQA作結論。本輪獨立親讀本pair各2句新text，逐一對照R13中文與R12舊compound譯法，判斷採下／連雨、點火後／從哪裡離開的語意及未提前供熱、揮散部位、煙、燃盡等答案。其餘107句以按ID的完整native line物件、UTF-8文字及source_hash逐項一致證據，連同R12全量108句／6章審核承接；並實驗證107個完整source line與scene未變。六章及全部metadata只驗證與R12完全一致，本輪沒有假稱重新親讀109句或六章。PT／ID的R12原full report為FIXES_REQUIRED，依保留的原report＋既存獨立recheck及實際修前snapshot／修後oldnative的精確鏈承接；不改寫或假稱原full report直接通過修後native。其餘化學史與來源界線原full review原封保留，本報告是對新current文本的語意審核承接。53份input實SHA讀前後不變。只寫本輪四份review；未改input/Git/後台，未用paid或派子agent；不宣稱actual SRT、audio、dub fit、媒體QA或13分鐘實長。",
+  "baseline_source": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/before-teaser-r13/video.json",
+    "sha256": "1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87"
+  },
+  "unchanged_source_proof": {
+    "inherited_lines": 107,
+    "canonicalization": "UTF-8 JSON; ensure_ascii=false, sort_keys=true, separators=(comma,colon)",
+    "full_line_and_scene_before_sha256": "9247338aa109655b74be9e58f6fde83878d2f64fc2bb6edec7a187508b087bc6",
+    "full_line_and_scene_after_sha256": "9247338aa109655b74be9e58f6fde83878d2f64fc2bb6edec7a187508b087bc6",
+    "all_exact": true,
+    "youtube_thumbnail_metadata_exact": true,
+    "six_chapters_exact": true
+  },
+  "input_integrity": {
+    "verified_input_files": 53,
+    "sha256_before_after_all_unchanged": true,
+    "manifest_canonicalization": "path-to-actual-SHA256 mapping as UTF-8 JSON; ensure_ascii=false, sort_keys=true, separators=(comma,colon)",
+    "before_manifest_sha256": "f09bd80cc155fb0f207135d0f8590f90d984a3b7e02ff53eba26e60d62db04a4",
+    "after_manifest_sha256": "f09bd80cc155fb0f207135d0f8590f90d984a3b7e02ff53eba26e60d62db04a4"
+  },
+  "locales": [
+    {
+      "locale": "en",
+      "worksheet_sha256": "a4bb81af1b627dc97975aca8b707a9673f5fdbb62024d87c1a476e011b561354",
+      "translation_sha256": "46e75b2fb3f3ddcff22f6f81d7e241f3c25d550890d918e5efb40b44f1a0d86c",
+      "status": "TEXT_PASS",
+      "checked_lines": 2,
+      "inherited_unchanged_lines": 107,
+      "coverage_total_lines": 109,
+      "coverage_method": "R12全量review+exact unchanged proof+fresh 2 delta",
+      "checked_chapters": 0,
+      "inherited_chapters": 6,
+      "findings": [],
+      "advisory": [],
+      "baseline_review": {
+        "old_full_review_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/before-teaser-r13/i18n/reviews/r12/review-en-ja.json",
+        "old_full_review_sha256": "bdeeef5e59d60d9a42c969929c316ee6d1e94f1d25088f0c8e3f716ea71cd1fc",
+        "old_full_review_source_sha256": "1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87",
+        "old_full_review_translation_sha256": "16a8de2f3824862670fc17d77fbb7a3d5c1265b7ccce9c99dacf503da5eedf23",
+        "old_full_review_status": "TEXT_PASS",
+        "old_native_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/before-teaser-r13/i18n/en.json",
+        "old_native_sha256": "16a8de2f3824862670fc17d77fbb7a3d5c1265b7ccce9c99dacf503da5eedf23",
+        "old_source_sha256_matches_full_review": true,
+        "direct_full_review_native_sha_match": true
+      },
+      "exact_unchanged_proof": {
+        "canonicalization": "UTF-8 JSON; ensure_ascii=false, sort_keys=true, separators=(comma,colon); text strings also compared as UTF-8 bytes",
+        "inherited_full_native_line_objects_before_sha256": "8bdda222ffdcffb72598a834b98917e1352a9f808e64b8925d5ca64ce6d47e50",
+        "inherited_full_native_line_objects_after_sha256": "8bdda222ffdcffb72598a834b98917e1352a9f808e64b8925d5ca64ce6d47e50",
+        "inherited_107_full_native_line_text_source_hash_exact": true,
+        "inherited_107_full_source_line_scene_exact": true,
+        "metadata_equal_fields": [
+          "title",
+          "description",
+          "tags",
+          "thumbnail",
+          "chapters",
+          "source_hashes"
+        ],
+        "metadata_equal_to_r12": true,
+        "metadata_canonical_before_sha256": "9e8e4367ae1e5ddee0f5f66c13a9034ca97028e7e71095daecc7f7cd15fdfc2a",
+        "metadata_canonical_after_sha256": "9e8e4367ae1e5ddee0f5f66c13a9034ca97028e7e71095daecc7f7cd15fdfc2a",
+        "six_chapters_equal_to_r12": true,
+        "worksheet_pretranslation_path": "/workspace/work/brand-story-20261025/c05-audit/text-r13/translation-source-sheets/en.json",
+        "worksheet_pretranslation_sha256": "e7566c122674c6767736e9b5bacf0dfa6361132726b1f7dc7447f58845b10e39",
+        "worksheet_changed_paths": [
+          ".lines[3].text",
+          ".lines[4].text"
+        ],
+        "only_two_todo_text_changed": true,
+        "native_worksheet_109_text_exact": true,
+        "all_109_current_source_scene_hash_bindings_exact": true
+      },
+      "fresh_delta_review": [
+        {
+          "id": "c07o04",
+          "source": "採下的花遇上連雨怎麼辦？",
+          "current": "What do you do if days of rain follow the flower harvest?",
+          "old_compound": "What if days of rain follow the flower harvest? And once you light the incense, where does the ingredient escape?",
+          "semantic_result": "TEXT_PASS：保留採下後連雨的問題／點火後從哪裡離開的疑問，未提前加入供熱、揮散部位、煙或燃盡等答案。"
+        },
+        {
+          "id": "c05h04b1",
+          "source": "點火後成分又從哪裡離開？",
+          "current": "And once it's lit, where does the active ingredient escape from?",
+          "old_compound": "What if days of rain follow the flower harvest? And once you light the incense, where does the ingredient escape?",
+          "semantic_result": "TEXT_PASS：保留採下後連雨的問題／點火後從哪裡離開的疑問，未提前加入供熱、揮散部位、煙或燃盡等答案。"
+        }
+      ]
+    },
+    {
+      "locale": "ja",
+      "worksheet_sha256": "495f27fe1734821d1546da137107b90a0cbdf1b2b8cabe4ea66953ce1724d9b2",
+      "translation_sha256": "5ae0eada69c344e7e838418c8a5781ed016979420742e1a922f75889fbad5af7",
+      "status": "TEXT_PASS",
+      "checked_lines": 2,
+      "inherited_unchanged_lines": 107,
+      "coverage_total_lines": 109,
+      "coverage_method": "R12全量review+exact unchanged proof+fresh 2 delta",
+      "checked_chapters": 0,
+      "inherited_chapters": 6,
+      "findings": [],
+      "advisory": [],
+      "baseline_review": {
+        "old_full_review_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/before-teaser-r13/i18n/reviews/r12/review-en-ja.json",
+        "old_full_review_sha256": "bdeeef5e59d60d9a42c969929c316ee6d1e94f1d25088f0c8e3f716ea71cd1fc",
+        "old_full_review_source_sha256": "1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87",
+        "old_full_review_translation_sha256": "a842ed60c2660521820e717e41850d4919451327544884ef1f527c77c541d371",
+        "old_full_review_status": "TEXT_PASS",
+        "old_native_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/history/before-teaser-r13/i18n/ja.json",
+        "old_native_sha256": "a842ed60c2660521820e717e41850d4919451327544884ef1f527c77c541d371",
+        "old_source_sha256_matches_full_review": true,
+        "direct_full_review_native_sha_match": true
+      },
+      "exact_unchanged_proof": {
+        "canonicalization": "UTF-8 JSON; ensure_ascii=false, sort_keys=true, separators=(comma,colon); text strings also compared as UTF-8 bytes",
+        "inherited_full_native_line_objects_before_sha256": "64d543a35d3973f5c4a002dde93daf49e5b3d137ff1baee3d63bd784dcf19a5c",
+        "inherited_full_native_line_objects_after_sha256": "64d543a35d3973f5c4a002dde93daf49e5b3d137ff1baee3d63bd784dcf19a5c",
+        "inherited_107_full_native_line_text_source_hash_exact": true,
+        "inherited_107_full_source_line_scene_exact": true,
+        "metadata_equal_fields": [
+          "title",
+          "description",
+          "tags",
+          "thumbnail",
+          "chapters",
+          "source_hashes"
+        ],
+        "metadata_equal_to_r12": true,
+        "metadata_canonical_before_sha256": "6dac3dd74857dabdf326ee9fd9471d33654ee2d084147edd904799294b111a80",
+        "metadata_canonical_after_sha256": "6dac3dd74857dabdf326ee9fd9471d33654ee2d084147edd904799294b111a80",
+        "six_chapters_equal_to_r12": true,
+        "worksheet_pretranslation_path": "/workspace/work/brand-story-20261025/c05-audit/text-r13/translation-source-sheets/ja.json",
+        "worksheet_pretranslation_sha256": "071fd35cb4b4341e18e1d77a2af4b8715ecf2c3b085af3e7482e40600a476cac",
+        "worksheet_changed_paths": [
+          ".lines[3].text",
+          ".lines[4].text"
+        ],
+        "only_two_todo_text_changed": true,
+        "native_worksheet_109_text_exact": true,
+        "all_109_current_source_scene_hash_bindings_exact": true
+      },
+      "fresh_delta_review": [
+        {
+          "id": "c07o04",
+          "source": "採下的花遇上連雨怎麼辦？",
+          "current": "花を摘んだ後に長雨が続いたら、どうするのでしょうか。",
+          "old_compound": "摘んだ花に長雨が続いたらどうするのか。そして火を付けた後、成分はどこから出ていくのでしょうか。",
+          "semantic_result": "TEXT_PASS：保留採下後連雨的問題／點火後從哪裡離開的疑問，未提前加入供熱、揮散部位、煙或燃盡等答案。"
+        },
+        {
+          "id": "c05h04b1",
+          "source": "點火後成分又從哪裡離開？",
+          "current": "そして火を付けた後、有効成分はどこから出ていくのでしょうか。",
+          "old_compound": "摘んだ花に長雨が続いたらどうするのか。そして火を付けた後、成分はどこから出ていくのでしょうか。",
+          "semantic_result": "TEXT_PASS：保留採下後連雨的問題／點火後從哪裡離開的疑問，未提前加入供熱、揮散部位、煙或燃盡等答案。"
+        }
+      ]
+    }
+  ]
+}
+

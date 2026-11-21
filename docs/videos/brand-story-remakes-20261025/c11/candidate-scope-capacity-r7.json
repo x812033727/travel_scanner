@@ -1,0 +1,934 @@
+{
+  "schema_version": 1,
+  "status": "ORIGINAL_SCOPE_PROPOSAL_ONLY_CAPACITY_HOLD",
+  "created_at_utc": "2026-10-26T07:42:56.373918+00:00",
+  "candidate": "C11 possible R7; no R7 canonical script created",
+  "source_video_binding": {
+    "schema_version": 1,
+    "checked_at_utc": "2026-10-26T07:39:57.193Z",
+    "path": "docs/videos/brand-story-remakes-20261025/c11/video.json",
+    "sha256": "03817277b5c79f45c6064a082ac9a23279b9b11b289cd091cb2261a212d5d38b",
+    "scene_count": 78,
+    "line_count": 80,
+    "spoken_units": 2276,
+    "calculation": "native spokenUnits(spokenText(line)) over eachLine(video)",
+    "tts_generated": false,
+    "measured_tts_seconds": null,
+    "source_or_narrative_verdict_created": false
+  },
+  "prior_research_bindings": [
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/duration-capacity-research.md",
+      "sha256": "5b620e922cc6b730e1bbd6b17f4c907b5c60dddd78b2662a09727d0cde64c96a"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/duration-capacity-research.json",
+      "sha256": "e67a7a0cbdee0163cc1a7d00a10979bd7210e11c102cb7c13c9c21625a800172"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/research-original.md",
+      "sha256": "2c3e2f0a2ad4bf41b50a3c2484831eeda5861d32ecf4d11f409ebb7bc0bfed1b"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/research-original.claims.json",
+      "sha256": "14103ff5df3c9871d942021bda9e1c581bcf68c013047d9fbcd79512613a90fa"
+    }
+  ],
+  "single_causal_question": "同款UCC奶咖怎樣從必須在販售處喝完，變成能買走、能保存並反覆批量交付的商品？",
+  "scope_recommendation": "1968–1970的商品成立與通路，明確跳到2016報導資料的兵庫飲料工廠，再看2019配料決策與2022工廠供熱作業；只追同款奶咖及其已證同廠作業，不做公司全史。",
+  "old_opening_line_id": "c11r1h05",
+  "old_opening_promise": "跟著UCC這款奶咖，追上市前後兩年的工廠與會場，找出帶著走還需要什麼。",
+  "proposed_replacement_promise_for_author_review": "跟著UCC這一款奶咖，從一九六九年前後走進後來的工廠，追一杯咖啡怎樣變成能帶走、能保存、能一批批交到你手上的商品。",
+  "proposed_replacement_question_for_author_review": "咖啡離開杯子以後，怎樣才能把你買到的那一口，一路交到你手上？",
+  "opening_and_chapter_status": "Concept wording and editorial mapping only; not a new approved narration or native panel input. Original h05/h06/loops untouched.",
+  "chronology_and_identity_limits": [
+    "不是同一實體罐跨數十年，也不假稱資料追蹤同一批原料。",
+    "1969裝罐上市與後來廠房/設備/配方/產速嚴格分開；2016雜誌資料、2018網刊不是同一日期。",
+    "原件頁日期為記述日期，2022鍋爐安裝年與精確拍攝日期未知。",
+    "2019配方修改說明可重複生產是按當時設計，不是永不改味。",
+    "2022能源支路只到兵庫工廠層級；若作者要純SKU全程，應刪N2022並扣90–140 units，不能偷補其他廠或產品。"
+  ],
+  "chapters": [
+    {
+      "chapter": 1,
+      "proposed_title": "店裡先留三箱",
+      "period": "1969上市後的後年回憶",
+      "action_and_forward_link": "保留三箱試賣的具體入口，預告後來工廠封好的罐還要入釜；承諾改為跨年代追同款商品的保存與交付工作。",
+      "r6_line_groups": [
+        "c11r1h01–c11r1h06"
+      ],
+      "new_nodes": [],
+      "limits": "開場最多兩個有原件的時刻；不把後來釜或管線放在1969。"
+    },
+    {
+      "chapter": 2,
+      "proposed_title": "瓶子得還，奶卻得留下",
+      "period": "約1968–1969",
+      "action_and_forward_link": "退瓶的使用限制接均質化與試喝調比；H01補業者回收/清洗，H03只補當時目標口味。",
+      "r6_line_groups": [
+        "c11r1o01–c11r1o14",
+        "c11r1t01–c11r1t16"
+      ],
+      "new_nodes": [
+        "H01",
+        "H03"
+      ],
+      "limits": "Mira1965無奶先例保持短且清楚；不做世界第一裁決，均質化僅抑制分離。"
+    },
+    {
+      "chapter": 3,
+      "proposed_title": "罐壁改了，店門才打得開",
+      "period": "1969上市前後",
+      "action_and_forward_link": "內塗層處理變色，H02補失敗試罐處置；商品從三箱試賣到補訂、列車展示，接尚未大規模接觸的顧客。",
+      "r6_line_groups": [
+        "c11r1w01–c11r1w17",
+        "c11r1s01–c11r1s05"
+      ],
+      "new_nodes": [
+        "H02"
+      ],
+      "limits": "不重講3箱→10/30箱回憶；合作製罐廠不猜名，不擴張塗層功效。"
+    },
+    {
+      "chapter": 4,
+      "proposed_title": "冷罐進會場，卡車等出貨",
+      "period": "1970",
+      "action_and_forward_link": "冷卻據點/卡車/取罐/訂貨/協力廠接成一次交付；H04修春季未即熱賣，H05補新幹線賣店與回購，初代兩孔在此交付使用端落地。",
+      "r6_line_groups": [
+        "c11r1s19–c11r1s21",
+        "c11r1s06–c11r1s18",
+        "c11r1d01–c11r1d13"
+      ],
+      "new_nodes": [
+        "H04",
+        "H05"
+      ],
+      "limits": "初代開孔不延伸1978/1981爭議；不使用H06/H07弱證，不給虛構運單/回購率。"
+    },
+    {
+      "chapter": 5,
+      "proposed_title": "豆子沿管線走，封罐後還要入釜",
+      "period": "2016報導資料（2018網刊）→2019改版",
+      "action_and_forward_link": "明說已到後來的兵庫飲料工廠；管線輸豆→粉碎/抽出→調合/充填→高溫高壓短時殺菌→冷卻/內容量內壓檢查→裝箱。走完工序才用2019重新選豆/調乳的實例回答：每批穩定不等於五十年口味凍結。",
+      "r6_line_groups": [],
+      "new_nodes": [
+        "M01",
+        "M02",
+        "M03",
+        "M04",
+        "D2019"
+      ],
+      "limits": "各步僅一次；不靠三座槽切景重算。2019現場槽只作同廠同品確認，不再加工序字量；不把五回檢查講成每罐五次，也不給殺菌溫度/時間。"
+    },
+    {
+      "chapter": 6,
+      "proposed_title": "抽完的粉，又去燒下一輪熱水",
+      "period": "2022標示官方工廠記錄",
+      "action_and_forward_link": "從抽出後粉的去向進入具體燃燒/產汽/加熱作業，承接持續生產的物料與供熱；用一個答案句收束購買前完成的工作，保留三句有聲結尾。",
+      "r6_line_groups": [
+        "c11r1ct1–c11r1ct3（需重寫答案/留言題而非直接沿用舊結論）"
+      ],
+      "new_nodes": [
+        "N2022"
+      ],
+      "limits": "全廠支路而非每罐閉環；不擴到肥料、名片、衣服、其他產品或永續成果清單。最後章可以短，不用回顧各章撐到分鐘數。"
+    }
+  ],
+  "reused_historical_candidates": [
+    {
+      "id": "H01",
+      "label": "玻璃瓶還要回收與清洗",
+      "acquisition_class": "REUSED_PRIOR_HISTORY_CANDIDATE; already found, not R7 new discovery",
+      "connect_after_or_replace_lines": [
+        "c11r1o04",
+        "c11r1o06"
+      ],
+      "source_id": "walker2023",
+      "url": "https://www.walkerplus.com/article/1159320/",
+      "raw_sha256": "c3a843e1f363ea4a3384ac995fac68b0b2bf0e83a679de18460a73a8669e2594",
+      "text_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/walker2023.txt",
+      "text_sha256": "afb6cf26f668539278ca22ffca846f792dcfcdaa0d3e9925506c18a42c0e0b7c",
+      "original_locator": {
+        "kind": "HTML extracted text paragraph, not PDF page or contemporaneous record",
+        "paragraph": 46,
+        "paragraph_sha256": "3230943e068044154f37b52703f2935101284367f163098b50e65e0cde22e515"
+      },
+      "limits": [
+        "不補洗瓶機、回收車路線、人力、清洗溫度或頻率。",
+        "不說瓶裝一定不能長期保存，也不把常溫流通目標改成已取得1969保存期限測試。"
+      ],
+      "estimated_net_new_spoken_units": {
+        "min": 35,
+        "max": 55
+      }
+    },
+    {
+      "id": "H02",
+      "label": "失敗試驗後丟棄大量試罐",
+      "acquisition_class": "REUSED_PRIOR_HISTORY_CANDIDATE; already found, not R7 new discovery",
+      "connect_after_or_replace_lines": [
+        "c11r1w04",
+        "c11r1w05"
+      ],
+      "source_id": "jnet2011-recheck",
+      "url": "https://j-net21.smrj.go.jp/special/populardrinks/2011072701.html",
+      "raw_sha256": "d4f16296a7320f71dbc2d473608d9c464d86b05db1b929be33984a6a6f187c8a",
+      "text_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/jnet2011-recheck.txt",
+      "text_sha256": "47c91b7be8f453a640c224342d89ed908c749effad99c22425e7c4a3747f11d7",
+      "original_locator": {
+        "kind": "HTML extracted text paragraph, not PDF page or contemporaneous record",
+        "paragraph": 1123,
+        "paragraph_sha256": "9b43fb6bc1a35c727c57e27070ae28b09a494a97dfd409517c77c21a54335a29"
+      },
+      "limits": [
+        "不能說一整批工廠商品報廢或當成消費者客訴回收。",
+        "不能加數萬罐、日期、垃圾堆外觀、員工動作細節或把塗層功效擴及均質化與走味。"
+      ],
+      "estimated_net_new_spoken_units": {
+        "min": 45,
+        "max": 70
+      }
+    },
+    {
+      "id": "H03",
+      "label": "試喝調比的目標是當時咖啡館式奶與糖",
+      "acquisition_class": "REUSED_PRIOR_HISTORY_CANDIDATE; already found, not R7 new discovery",
+      "connect_after_or_replace_lines": [
+        "c11r1t12",
+        "c11r1t13"
+      ],
+      "source_id": "jnet2023-recheck",
+      "url": "https://j-net21.smrj.go.jp/special/expo1970/20231102.html",
+      "raw_sha256": "2e6950237d623148459a7ef38d270851f4b687bd564242a3aa7810ff0d9078fe",
+      "text_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/jnet2023-recheck.txt",
+      "text_sha256": "cfb62d14d47132923bdd3bfd74a7e291853ddc5910ff2e8779fd8e9712868af4",
+      "original_locator": {
+        "kind": "HTML extracted text paragraph, not PDF page or contemporaneous record",
+        "paragraph": 1126,
+        "paragraph_sha256": "4e7e0a2f811e3e94b387b1bd348b938ca30e75830de8a31e3f86d1cf3bba9e3e"
+      },
+      "limits": [
+        "不能自訂甜度或濃度、說所有咖啡館都如此、把主原料當完整成分表。",
+        "不要以長篇咖啡館文化史、今日健康警語或兒童市場補長。"
+      ],
+      "estimated_net_new_spoken_units": {
+        "min": 35,
+        "max": 55
+      }
+    },
+    {
+      "id": "H04",
+      "label": "萬博開幕春季反應遲緩，夏季才猛增",
+      "acquisition_class": "REUSED_PRIOR_HISTORY_CANDIDATE; already found, not R7 new discovery",
+      "connect_after_or_replace_lines": [
+        "c11r1s17",
+        "c11r1d01"
+      ],
+      "source_id": "jnet2011-recheck",
+      "url": "https://j-net21.smrj.go.jp/special/populardrinks/2011072701.html",
+      "raw_sha256": "d4f16296a7320f71dbc2d473608d9c464d86b05db1b929be33984a6a6f187c8a",
+      "text_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/jnet2011-recheck.txt",
+      "text_sha256": "47c91b7be8f453a640c224342d89ed908c749effad99c22425e7c4a3747f11d7",
+      "original_locator": {
+        "kind": "HTML extracted text paragraph, not PDF page or contemporaneous record",
+        "paragraph": 1129,
+        "paragraph_sha256": "b70efce439ae596e2b9d2bfed3980808a681ac77504b102f82d7cff42884583b"
+      },
+      "limits": [
+        "不能加開幕日銷量、氣溫、冷罐滯銷箱數、逐日曲線或斷言氣候是唯一原因。",
+        "不得把2023採訪的電視曝光解成已證明同一日即引發這個夏季轉折。"
+      ],
+      "estimated_net_new_spoken_units": {
+        "min": 20,
+        "max": 35
+      }
+    },
+    {
+      "id": "H05",
+      "label": "鐵道採用後，罐子出現在新幹線賣店並有人回購",
+      "acquisition_class": "REUSED_PRIOR_HISTORY_CANDIDATE; already found, not R7 new discovery",
+      "connect_after_or_replace_lines": [
+        "c11r1d07"
+      ],
+      "source_id": "guinness2019-recheck",
+      "url": "https://www.guinnessworldrecords.jp/news/features/ucc-milk-coffee",
+      "raw_sha256": "2ba3dfba2b13eacea46bd4104af05a611608804e5aa23c1f5fcb5aa3e9eeba20",
+      "text_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/guinness2019-recheck.txt",
+      "text_sha256": "ca6f52b10b47e5537c92cc47cbb6c38d705ad28c9e6fe361df69566cd9c77256",
+      "original_locator": {
+        "kind": "HTML extracted text paragraph, not PDF page or contemporaneous record",
+        "paragraph": 107,
+        "paragraph_sha256": "50e3d6eb0c126acc539ec37a6309223d0fb662d5acfed2294521ef33e432f2f3"
+      },
+      "limits": [
+        "不補車站名、鐵路班次、店名、同一旅客返程再買或回購率。",
+        "不得把上島達司改成創辦人上島忠雄；不再朗讀整段全國成長結論。"
+      ],
+      "estimated_net_new_spoken_units": {
+        "min": 40,
+        "max": 65
+      }
+    }
+  ],
+  "reused_modern_factory_candidates": [
+    {
+      "id": "M01",
+      "label": "豆從鄰廠管線送來，混豆粉碎後滴濾抽出",
+      "acquisition_class": "REUSED_PRIOR_MODERN_FACTORY_RESEARCH; newly eligible only if scope is rewritten",
+      "source_id": "walker2016",
+      "url": "https://www.walkerplus.com/trend/matome/article/142652/",
+      "raw_sha256": "ee6baebb367339d93835b0cca98d8784996a573997d44ccc6f7d8d1231727b65",
+      "text_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/walker2016.txt",
+      "text_sha256": "8d4d3847d53824d66da8b36511362f1f4f72f9e8a2238cedf94746759b9275df",
+      "original_locator": {
+        "kind": "HTML extracted text paragraph, not PDF page or contemporaneous record",
+        "paragraph": 45,
+        "paragraph_sha256": "d1d50f276e9f5915afd4bb1f594e3aafb18482a225c2e2802c511c780f817cd0"
+      },
+      "date_scope": "網頁2018-04-12發表，明說資料出自2016-09-06發售的關西Walker；照片實拍日期未另列。不是1969工廠。",
+      "limits": [
+        "不把管線、廠址、抽出機或作業配置倒填1969。",
+        "不把無香料延伸為無其他添加物，不把雜誌照片當已核准片中素材。"
+      ],
+      "estimated_net_new_spoken_units": {
+        "min": 90,
+        "max": 140,
+        "kind": "planning only, not measured TTS"
+      }
+    },
+    {
+      "id": "M02",
+      "label": "抽出液調合奶與糖，再充填入罐",
+      "acquisition_class": "REUSED_PRIOR_MODERN_FACTORY_RESEARCH; newly eligible only if scope is rewritten",
+      "source_id": "walker2016",
+      "url": "https://www.walkerplus.com/trend/matome/article/142652/",
+      "raw_sha256": "ee6baebb367339d93835b0cca98d8784996a573997d44ccc6f7d8d1231727b65",
+      "text_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/walker2016.txt",
+      "text_sha256": "8d4d3847d53824d66da8b36511362f1f4f72f9e8a2238cedf94746759b9275df",
+      "original_locator": {
+        "kind": "HTML extracted text paragraph, not PDF page or contemporaneous record",
+        "paragraph": 47,
+        "paragraph_sha256": "4fdfc9c0860abe012a6417a7131a20f889268a029f294fa1f36eb94e2e3f1a16"
+      },
+      "date_scope": "網頁2018-04-12發表，明說資料出自2016-09-06發售的關西Walker；照片實拍日期未另列。不是1969工廠。",
+      "limits": [
+        "不得推每條線、每型罐、每一日都達此速，不能換算全年產量。",
+        "不補完整配方、液溫、充填壓力或封罐細部未載的動作。"
+      ],
+      "estimated_net_new_spoken_units": {
+        "min": 75,
+        "max": 115,
+        "kind": "planning only, not measured TTS"
+      }
+    },
+    {
+      "id": "M03",
+      "label": "充填罐進入大釜，以高溫高壓短時殺菌",
+      "acquisition_class": "REUSED_PRIOR_MODERN_FACTORY_RESEARCH; newly eligible only if scope is rewritten",
+      "source_id": "walker2016",
+      "url": "https://www.walkerplus.com/trend/matome/article/142652/",
+      "raw_sha256": "ee6baebb367339d93835b0cca98d8784996a573997d44ccc6f7d8d1231727b65",
+      "text_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/walker2016.txt",
+      "text_sha256": "8d4d3847d53824d66da8b36511362f1f4f72f9e8a2238cedf94746759b9275df",
+      "original_locator": {
+        "kind": "HTML extracted text paragraph, not PDF page or contemporaneous record",
+        "paragraph": 49,
+        "paragraph_sha256": "4eada9ef1cc69f3b3027ea4069aa6777a601ba0e503fd638f0a4db46a11a5904"
+      },
+      "date_scope": "網頁2018-04-12發表，明說資料出自2016-09-06發售的關西Walker；照片實拍日期未另列。不是1969工廠。",
+      "limits": [
+        "不補溫度、分鐘、壓力、F值、釜型或冷熱交替程序。",
+        "保護風味是報導的機制描述，非本輪比較實驗；不說完全無風味損失。"
+      ],
+      "estimated_net_new_spoken_units": {
+        "min": 85,
+        "max": 135,
+        "kind": "planning only, not measured TTS"
+      }
+    },
+    {
+      "id": "M04",
+      "label": "殺菌後冷卻、檢查內容量與內壓，再箱詰出貨",
+      "acquisition_class": "REUSED_PRIOR_MODERN_FACTORY_RESEARCH; newly eligible only if scope is rewritten",
+      "source_id": "walker2016",
+      "url": "https://www.walkerplus.com/trend/matome/article/142652/",
+      "raw_sha256": "ee6baebb367339d93835b0cca98d8784996a573997d44ccc6f7d8d1231727b65",
+      "text_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/walker2016.txt",
+      "text_sha256": "8d4d3847d53824d66da8b36511362f1f4f72f9e8a2238cedf94746759b9275df",
+      "original_locator": {
+        "kind": "HTML extracted text paragraph, not PDF page or contemporaneous record",
+        "paragraph": 51,
+        "paragraph_sha256": "9cb286868fdc21fc38e461719fe1df5d98d7bade04bddd4e403d044fd591ee71"
+      },
+      "date_scope": "網頁2018-04-12發表，明說資料出自2016-09-06發售的關西Walker；照片實拍日期未另列。不是1969工廠。",
+      "limits": [
+        "不把冷卻成品罐等同1970萬博支店的售前冷飲冷卻；兩個不同作業。",
+        "不補不良品剔除機、封箱機、輸送帶形狀、抽樣比例或驗收上下限。"
+      ],
+      "estimated_net_new_spoken_units": {
+        "min": 90,
+        "max": 145,
+        "kind": "planning only, not measured TTS"
+      }
+    }
+  ],
+  "additional_eligible_nodes": [
+    {
+      "id": "D2019",
+      "label": "同款奶咖在2019年重新選擇適合奶的咖啡、調整乳原料配合",
+      "acquisition_class": "PREVIOUSLY_UNUSED_INFORMATION_IN_EXISTING_PRIMARY_INTERVIEW; new official release corroborates but does not create a second node",
+      "source_id": "guinness2019-recheck",
+      "locator": {
+        "text_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/guinness2019-recheck.txt",
+        "line_start": 121,
+        "line_end": 122
+      },
+      "corroborating_anchors": [
+        {
+          "source_id": "ucc-renewal2019",
+          "text_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-renewal2019.txt",
+          "text_sha256": "3ec2c8816ea021069069aaeba61ce6e813081a473d295839b2b5833d799000de",
+          "line_start": 162,
+          "line_end": 162,
+          "extracted_lines_sha256": "64008a3216fe289ce37fc976eada9c6b9c0470ba2b0d90ed4140bae1e48393a8",
+          "locator_kind": "line numbers in this external UTF-8 projection; not PDF page or source line numbers"
+        },
+        {
+          "source_id": "ucc-renewal2019",
+          "text_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-renewal2019.txt",
+          "text_sha256": "3ec2c8816ea021069069aaeba61ce6e813081a473d295839b2b5833d799000de",
+          "line_start": 175,
+          "line_end": 181,
+          "extracted_lines_sha256": "2a98d81e899215b9522f122739567c9038801fc7e0a57be7afe2a55a3daf05b1",
+          "locator_kind": "line numbers in this external UTF-8 projection; not PDF page or source line numbers"
+        }
+      ],
+      "physical_action": "2019版採阿拉比卡豆100%，重新調整咖啡與乳原料平衡，目標是更突出奶感。",
+      "causal_connection": "工廠能穩定重複生產，仍需先決定每批要重複哪個配方；可以用這次實際配料決策，接在後來工廠的調合工作。",
+      "result_kind": "Manufacturer-reported product revision and declared flavor goal; not independent sensory trial or verified sales response",
+      "estimated_net_new_spoken_units": {
+        "min": 85,
+        "max": 135
+      },
+      "limits": [
+        "不推1969豆種、乳配比或配方與2019相同。",
+        "不補試作品數、盲測樣本、甜度/脂肪/乳固形份數值或改版後銷售增幅。",
+        "Guinness受訪主管對市場較清爽偏好的觀察只能有歸屬；不是取得消費者調查。",
+        "UCC 2019稿與Guinness不算兩組獨立試驗；豆圖案、商標、紙盒咖啡因版本不計容量。"
+      ]
+    },
+    {
+      "id": "N2022",
+      "label": "兵庫飲料工廠把抽出後咖啡粉作燃料，產汽回供咖啡抽出熱水",
+      "acquisition_class": "NEWLY_ACQUIRED_NEW_FACTORY_OPERATION_NOT_IN_R6_OR_PRIOR_RESEARCH",
+      "anchors": [
+        {
+          "source_id": "ucc-biomass2022",
+          "text_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-biomass2022.txt",
+          "text_sha256": "dc6a9260e6a30ec8a7b793309a04b4b9a4612eef051a5324eb489dbd1e2a64a2",
+          "line_start": 161,
+          "line_end": 165,
+          "extracted_lines_sha256": "b4ac49c21520d149037389d99b2379f6110afb398dcfc173f7ac91bfb9545ecf",
+          "locator_kind": "line numbers in this external UTF-8 projection; not PDF page or source line numbers"
+        }
+      ],
+      "physical_action": "咖啡飲料生產留下抽出後的粉；官方記錄兵庫飲料工廠與滋賀工廠將它燃燒，產生蒸氣，蒸氣大部分用來加熱下一輪抽出用水。",
+      "causal_connection": "同一物料旅程從豆/粉分出飲料與抽出後粉；後者成為工廠持續取得抽出熱水的一條供熱支路。",
+      "result_kind": "2022-labelled manufacturer account of factory operation; no measured milk-coffee-only energy balance",
+      "estimated_net_new_spoken_units": {
+        "min": 90,
+        "max": 140
+      },
+      "limits": [
+        "只說到2022官方頁已記錄兵庫飲料工廠的作業；不稱2022開始導入。",
+        "2019現場原報導證該廠製造這款奶咖；2022頁是全廠作業，沒有證明每一罐奶咖的渣都回到自己的下一罐或專線。",
+        "蒸氣的ほとんど是所產蒸氣的去向，不是整廠熱水或能耗幾乎全部由咖啡渣供應。",
+        "不畫咖啡渣或鍋爐水混進飲料；蒸氣用來燒抽出用水。",
+        "不補乾燥/含水率/運送/投料細節、鍋爐型號/溫度、能源自給率、已實量減碳、成本或解決1970缺貨。",
+        "不得搬用2026 Homer鍋爐674t或滋賀設備2800kg/h數字到兵庫。"
+      ]
+    }
+  ],
+  "new_acquisitions": [
+    {
+      "id": "ucc-renewal2019",
+      "requested_url": "https://www.ucc.co.jp/company/news/2019/rel190215e.html",
+      "final_url": "https://www.ucc.co.jp/company/news/2019/rel190215e.html",
+      "http_status": 200,
+      "fetched_utc": "2026-10-26T07:37:03.506874+00:00",
+      "content_type": "text/html; charset=UTF-8",
+      "decoded_charset": "utf-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-renewal2019.html",
+      "raw_bytes": 95745,
+      "raw_sha256": "55268b8bb6d441dae6996ab77743d50d36f052ba5baa33ce559d964ac1f2ec97",
+      "text_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-renewal2019.txt",
+      "text_sha256": "3ec2c8816ea021069069aaeba61ce6e813081a473d295839b2b5833d799000de",
+      "line_count": 369,
+      "numbered_text_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-renewal2019.numbered.txt",
+      "strict_decode": true,
+      "media_kind": "HTML text; no original video acquired",
+      "original_video_timestamps": null,
+      "publication_date": "2019-02-08",
+      "publication_date_evidence": {
+        "source_id": "ucc-renewal2019",
+        "text_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-renewal2019.txt",
+        "text_sha256": "3ec2c8816ea021069069aaeba61ce6e813081a473d295839b2b5833d799000de",
+        "line_start": 145,
+        "line_end": 145,
+        "extracted_lines_sha256": "657c60edfd2fefa08b3bb63b3909a11c7c13745e0a1c75736b44f17a4d6b3ee1",
+        "locator_kind": "line numbers in this external UTF-8 projection; not PDF page or source line numbers"
+      },
+      "product_launch_date": "2019-04-01",
+      "publication_date_note": "Visible page date controls; rel190215e filename is not the publication date.",
+      "use": "CORROBORATION_OF_ALREADY_ACQUIRED_GUINNESS2019_RECIPE_CHANGE; no additive capacity for duplicate claim"
+    },
+    {
+      "id": "ucc-biomass2022",
+      "requested_url": "https://www.ucc.co.jp/company/sustainability/challenge/20220531e.html/",
+      "final_url": "https://www.ucc.co.jp/company/sustainability/challenge/20220531e.html/",
+      "http_status": 200,
+      "fetched_utc": "2026-10-26T07:37:04.294280+00:00",
+      "content_type": "text/html; charset=UTF-8",
+      "decoded_charset": "utf-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-biomass2022.html",
+      "raw_bytes": 91444,
+      "raw_sha256": "6100e6c7220a09f4ca0a0269d891d7bb0cf9aff23a4a657e8eea6f32e8828f2f",
+      "text_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-biomass2022.txt",
+      "text_sha256": "dc6a9260e6a30ec8a7b793309a04b4b9a4612eef051a5324eb489dbd1e2a64a2",
+      "line_count": 326,
+      "numbered_text_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-biomass2022.numbered.txt",
+      "strict_decode": true,
+      "media_kind": "HTML text; no original video acquired",
+      "original_video_timestamps": null,
+      "publication_date": "2022-05-31",
+      "publication_date_evidence": {
+        "source_id": "ucc-biomass2022",
+        "text_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-biomass2022.txt",
+        "text_sha256": "dc6a9260e6a30ec8a7b793309a04b4b9a4612eef051a5324eb489dbd1e2a64a2",
+        "line_start": 148,
+        "line_end": 148,
+        "extracted_lines_sha256": "0de2bcbda36f2b304651c1aed9c0dbe5e23495d8a733eb87f3545ff4dc90726d",
+        "locator_kind": "line numbers in this external UTF-8 projection; not PDF page or source line numbers"
+      },
+      "publication_date_note": "Current page labels 2022-05-31 and includes a later 2022-11-07 addition elsewhere. Exact boiler installation date and exact section edit date are unconfirmed.",
+      "use": "NEW_FACTORY_LEVEL_OPERATION_CANDIDATE; not SKU-specific per-can heat trace"
+    },
+    {
+      "id": "ucc-production-interviews",
+      "requested_url": "https://www.ucc.co.jp/company/recruit/interview/production/",
+      "final_url": "https://www.ucc.co.jp/company/recruit/interview/production/",
+      "http_status": 200,
+      "fetched_utc": "2026-10-26T07:37:05.016363+00:00",
+      "content_type": "text/html; charset=UTF-8",
+      "decoded_charset": "utf-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-production-interviews.html",
+      "raw_bytes": 102638,
+      "raw_sha256": "fc85f625437cca32241ac0e7f6500200bd33a41e634dbe851b11f1e15964dfd9",
+      "text_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-production-interviews.txt",
+      "text_sha256": "524a31852736e3f237271977e46ecd921411f69ebdb8cb1533892072ef6f7b87",
+      "line_count": 354,
+      "numbered_text_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-production-interviews.numbered.txt",
+      "strict_decode": true,
+      "media_kind": "HTML text; no original video acquired",
+      "original_video_timestamps": null,
+      "publication_date": null,
+      "publication_date_note": "No exact publication date established in inspected page; current content captured 2026-10-26.",
+      "use": "EXCLUDED_FROM_CAPACITY"
+    },
+    {
+      "id": "ucc-quality-system",
+      "requested_url": "https://www.ucc.co.jp/uccquality/",
+      "final_url": "https://www.ucc.co.jp/uccquality/",
+      "http_status": 200,
+      "fetched_utc": "2026-10-26T07:37:05.572183+00:00",
+      "content_type": "text/html; charset=UTF-8",
+      "decoded_charset": "utf-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-quality-system.html",
+      "raw_bytes": 92309,
+      "raw_sha256": "886a03d1b4ff3b784d173941d85277f4c08265ed57665902d8a6ba4c648dd87e",
+      "text_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-quality-system.txt",
+      "text_sha256": "cc7e47976f680bb90f0c89341fbf4a64c9f90aa95ef75586b1de4140c23b105f",
+      "line_count": 302,
+      "numbered_text_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-quality-system.numbered.txt",
+      "strict_decode": true,
+      "media_kind": "HTML text; no original video acquired",
+      "original_video_timestamps": null,
+      "publication_date": null,
+      "publication_date_note": "No exact publication date established in inspected page; current content captured 2026-10-26.",
+      "use": "EXCLUDED_FROM_CAPACITY"
+    },
+    {
+      "id": "ucc-quality-procurement",
+      "requested_url": "https://www.ucc.co.jp/company/coffeebusiness/quality.html",
+      "final_url": "https://www.ucc.co.jp/company/coffeebusiness/quality.html",
+      "http_status": 200,
+      "fetched_utc": "2026-10-26T07:37:06.175483+00:00",
+      "content_type": "text/html; charset=UTF-8",
+      "decoded_charset": "utf-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-quality-procurement.html",
+      "raw_bytes": 92027,
+      "raw_sha256": "9d1a66245063358e6bac64dda5ec59275c16eb313036f5465c62f33ac362accb",
+      "text_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-quality-procurement.txt",
+      "text_sha256": "110e499af00d6168e4f9794d09605d42b7819d9d6bedb4ab9805033adda609d9",
+      "line_count": 340,
+      "numbered_text_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-quality-procurement.numbered.txt",
+      "strict_decode": true,
+      "media_kind": "HTML text; no original video acquired",
+      "original_video_timestamps": null,
+      "publication_date": null,
+      "publication_date_note": "No exact publication date established in inspected page; current content captured 2026-10-26.",
+      "use": "EXCLUDED_FROM_CAPACITY"
+    }
+  ],
+  "reused_sources": [
+    {
+      "id": "walker2016",
+      "requested_url": "https://www.walkerplus.com/trend/matome/article/142652/",
+      "final_url": "https://www.walkerplus.com/trend/matome/article/142652/",
+      "status_code": 200,
+      "fetched_at_utc": "2026-10-26T03:02:12.240728+00:00",
+      "content_type": "text/html; charset=utf-8",
+      "decoded_charset": "utf-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/walker2016.html",
+      "raw_bytes": 111082,
+      "raw_sha256": "ee6baebb367339d93835b0cca98d8784996a573997d44ccc6f7d8d1231727b65",
+      "text_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/walker2016.txt",
+      "text_sha256": "8d4d3847d53824d66da8b36511362f1f4f72f9e8a2238cedf94746759b9275df",
+      "paragraphs_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/walker2016.paragraphs.json",
+      "paragraphs_sha256": "c7ecf67cc2e8a1da453a205766c4baf72a9bf9ee009b62bd6acc34d7df94247c",
+      "acquisition_class": "REUSED_EXISTING_RAW_AND_TEXT; not redownloaded, not newly acquired",
+      "web_publication_date": "2018-04-12",
+      "original_magazine_issue_release_date": "2016-09-06",
+      "photo_capture_date": null,
+      "video_acquired": false,
+      "original_video_timestamps": null,
+      "date_note": "Issue information is 2016; HTML publication is 2018; actual photograph dates unspecified. This is an original editorial report with UCC-supplied factory photos, not a source film."
+    },
+    {
+      "id": "guinness2019-recheck",
+      "requested_url": "https://www.guinnessworldrecords.jp/news/features/ucc-milk-coffee",
+      "final_url": "https://www.guinnessworldrecords.jp/news/features/ucc-milk-coffee",
+      "status_code": 200,
+      "fetched_at_utc": "2026-10-26T03:04:52.364599+00:00",
+      "content_type": "text/html; charset=UTF-8",
+      "decoded_charset": "utf-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/guinness2019-recheck.html",
+      "raw_bytes": 51705,
+      "raw_sha256": "2ba3dfba2b13eacea46bd4104af05a611608804e5aa23c1f5fcb5aa3e9eeba20",
+      "text_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/guinness2019-recheck.txt",
+      "text_sha256": "ca6f52b10b47e5537c92cc47cbb6c38d705ad28c9e6fe361df69566cd9c77256",
+      "paragraphs_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/guinness2019-recheck.paragraphs.json",
+      "paragraphs_sha256": "6e32382b426c48606568bda60d39285cd882706f3f2adf9e6b488b16eb849712",
+      "acquisition_class": "REUSED_EXISTING_RAW_AND_TEXT; not redownloaded, not newly acquired",
+      "web_publication_date": null,
+      "reported_period": "2019; text says April 1 revision has just occurred",
+      "date_note": "Exact article publication/interview day unverified; not inferred from a search crawl date.",
+      "video_acquired": false,
+      "original_video_timestamps": null
+    },
+    {
+      "id": "walker2023",
+      "requested_url": "https://www.walkerplus.com/article/1159320/",
+      "final_url": "https://www.walkerplus.com/article/1159320/",
+      "status_code": 200,
+      "fetched_at_utc": "2026-10-26T03:03:11.599779+00:00",
+      "content_type": "text/html; charset=utf-8",
+      "decoded_charset": "utf-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/walker2023.html",
+      "raw_bytes": 118862,
+      "raw_sha256": "c3a843e1f363ea4a3384ac995fac68b0b2bf0e83a679de18460a73a8669e2594",
+      "text_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/walker2023.txt",
+      "text_sha256": "afb6cf26f668539278ca22ffca846f792dcfcdaa0d3e9925506c18a42c0e0b7c",
+      "paragraphs_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/walker2023.paragraphs.json",
+      "paragraphs_sha256": "8c36e3137e0f2a8070ace2109b04394a06ce50317263ee1a97fa905daf16ad73",
+      "acquisition_class": "REUSED_EXISTING_RAW_AND_TEXT; not redownloaded, not newly acquired"
+    },
+    {
+      "id": "jnet2011-recheck",
+      "requested_url": "https://j-net21.smrj.go.jp/special/populardrinks/2011072701.html",
+      "final_url": "https://j-net21.smrj.go.jp/special/populardrinks/2011072701.html",
+      "status_code": 200,
+      "fetched_at_utc": "2026-10-26T03:04:52.363573+00:00",
+      "content_type": "text/html; charset=UTF-8",
+      "decoded_charset": "utf-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/jnet2011-recheck.html",
+      "raw_bytes": 406532,
+      "raw_sha256": "d4f16296a7320f71dbc2d473608d9c464d86b05db1b929be33984a6a6f187c8a",
+      "text_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/jnet2011-recheck.txt",
+      "text_sha256": "47c91b7be8f453a640c224342d89ed908c749effad99c22425e7c4a3747f11d7",
+      "paragraphs_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/jnet2011-recheck.paragraphs.json",
+      "paragraphs_sha256": "57dea1f817c610147b0f740f2e0ac5cc5e0880ab55a18653eb55a1960e90d3b4",
+      "acquisition_class": "REUSED_EXISTING_RAW_AND_TEXT; not redownloaded, not newly acquired"
+    },
+    {
+      "id": "jnet2023-recheck",
+      "requested_url": "https://j-net21.smrj.go.jp/special/expo1970/20231102.html",
+      "final_url": "https://j-net21.smrj.go.jp/special/expo1970/20231102.html",
+      "status_code": 200,
+      "fetched_at_utc": "2026-10-26T03:04:52.364199+00:00",
+      "content_type": "text/html; charset=UTF-8",
+      "decoded_charset": "utf-8",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/jnet2023-recheck.html",
+      "raw_bytes": 396419,
+      "raw_sha256": "2e6950237d623148459a7ef38d270851f4b687bd564242a3aa7810ff0d9078fe",
+      "text_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/jnet2023-recheck.txt",
+      "text_sha256": "cfb62d14d47132923bdd3bfd74a7e291853ddc5910ff2e8779fd8e9712868af4",
+      "paragraphs_path": "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache/jnet2023-recheck.paragraphs.json",
+      "paragraphs_sha256": "a9167161e380124b33a0aca5dcba86f4e6a0c07962db0b00820f521637ed3e42",
+      "acquisition_class": "REUSED_EXISTING_RAW_AND_TEXT; not redownloaded, not newly acquired"
+    }
+  ],
+  "source_dependency_note": "Manufacturer pages share a corporate interested source; Walker uses UCC-supplied factory photos; Guinness is original factory/interview reporting but its company recollections and flavor goals remain attributed. Extra URLs are not independent replications.",
+  "capacity_assessment": {
+    "planning_only": true,
+    "whole_current_r6_units": 2276,
+    "components": [
+      {
+        "category": "此前已找到的1968–1970差額H01–H05",
+        "min": 175,
+        "max": 280,
+        "newly_acquired_information": false
+      },
+      {
+        "category": "此前已找到的當代工序M01–M04，僅改範圍後可用",
+        "min": 340,
+        "max": 535,
+        "newly_acquired_information": false
+      },
+      {
+        "category": "舊Guinness已取而R6未用的2019配料決策D2019；新官方稿只佐證",
+        "min": 85,
+        "max": 135,
+        "newly_acquired_information": false
+      },
+      {
+        "category": "本輪新取得的新作業N2022",
+        "min": 90,
+        "max": 140,
+        "newly_acquired_information": true
+      }
+    ],
+    "gross_potential_addition_units": [
+      690,
+      1090
+    ],
+    "gross_total_units": [
+      2966,
+      3366
+    ],
+    "editorial_restructure_deduction_units": [
+      60,
+      120
+    ],
+    "deduction_note": "Reserve for replacing old opening promise, moving chapter joins, and removing old ending/duplicate mix explanation. This is a planning reserve, not an actual counted script delta. Max deduction applies to low total; min applies to high total. No connective filler added as capacity.",
+    "conservative_net_addition_units": [
+      570,
+      1030
+    ],
+    "conservative_total_units": [
+      2846,
+      3306
+    ],
+    "estimated_body_seconds_at_4_5_units_per_second": [
+      632.44,
+      734.67
+    ],
+    "full_4_to_5_units_per_second_envelope_seconds": [
+      569.2,
+      826.5
+    ],
+    "real_body_gate_seconds": [
+      720,
+      840
+    ],
+    "units_at_780_seconds_4_5_rate": 3510,
+    "remaining_gap_to_3510_units": [
+      204,
+      664
+    ],
+    "interpretation": "The high end at 4.5 units/s can just cross the 720-second lower boundary; mid/low estimates remain shorter and all totals stay below the nominal 3510-unit 780-second plan. At 5 units/s even the high estimate is below 720 seconds. Do not choose slower delivery merely to fit. This evidence does not establish adequate 13-minute capacity.",
+    "verdict": "HOLD_RESEARCH_CANDIDATE_CAPACITY_RISK; no actual TTS duration verdict",
+    "actual_tts_seconds": null,
+    "tts_generated": false,
+    "branding_excluded_seconds": 26,
+    "body_scope": "cold opening plus all voiced narration/CTA, with separately added 5s intro/21s outro excluded"
+  },
+  "excluded_sources_or_nodes": [
+    {
+      "source_id": "ucc-production-interviews",
+      "locators": [
+        {
+          "source_id": "ucc-production-interviews",
+          "text_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-production-interviews.txt",
+          "text_sha256": "524a31852736e3f237271977e46ecd921411f69ebdb8cb1533892072ef6f7b87",
+          "line_start": 165,
+          "line_end": 165,
+          "extracted_lines_sha256": "3ed8a3d6af7cd089db1b8db56f4b1d656ad40670bce4c311d4d3c08c218b86cf",
+          "locator_kind": "line numbers in this external UTF-8 projection; not PDF page or source line numbers"
+        },
+        {
+          "source_id": "ucc-production-interviews",
+          "text_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-production-interviews.txt",
+          "text_sha256": "524a31852736e3f237271977e46ecd921411f69ebdb8cb1533892072ef6f7b87",
+          "line_start": 180,
+          "line_end": 180,
+          "extracted_lines_sha256": "eef65173ff313b42cddfdd79279098804dd7e75fb583a09cd0cec5768de19b6e",
+          "locator_kind": "line numbers in this external UTF-8 projection; not PDF page or source line numbers"
+        },
+        {
+          "source_id": "ucc-production-interviews",
+          "text_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-production-interviews.txt",
+          "text_sha256": "524a31852736e3f237271977e46ecd921411f69ebdb8cb1533892072ef6f7b87",
+          "line_start": 193,
+          "line_end": 195,
+          "extracted_lines_sha256": "12865880bfa874036f70d84bc6df66cf1cd6070a7fac9f3f57136e7f04142e03",
+          "locator_kind": "line numbers in this external UTF-8 projection; not PDF page or source line numbers"
+        },
+        {
+          "source_id": "ucc-production-interviews",
+          "text_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-production-interviews.txt",
+          "text_sha256": "524a31852736e3f237271977e46ecd921411f69ebdb8cb1533892072ef6f7b87",
+          "line_start": 206,
+          "line_end": 208,
+          "extracted_lines_sha256": "e062ec4ec790532de21379af435cb3374f19fc6d0a1acbebf73fa1b80cd681a5",
+          "locator_kind": "line numbers in this external UTF-8 projection; not PDF page or source line numbers"
+        }
+      ],
+      "reason": "六甲一杯抽出、滋賀PET、富士品管；可證本人工作，但不能替換為本款奶咖/兵庫線的殺菌、維護或官能檢查。",
+      "capacity": 0
+    },
+    {
+      "source_id": "ucc-quality-system",
+      "locators": [
+        {
+          "source_id": "ucc-quality-system",
+          "text_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-quality-system.txt",
+          "text_sha256": "cc7e47976f680bb90f0c89341fbf4a64c9f90aa95ef75586b1de4140c23b105f",
+          "line_start": 159,
+          "line_end": 163,
+          "extracted_lines_sha256": "da51e7a8c525ce84fbd229d934d6e818601b3d3031721bcd923635c916bfcd9a",
+          "locator_kind": "line numbers in this external UTF-8 projection; not PDF page or source line numbers"
+        }
+      ],
+      "reason": "跨公司/產品現行四階段與巴西越南腳註，不能與2016同款報導五回檢查拼成每罐九次或補作新節點。",
+      "capacity": 0
+    },
+    {
+      "source_id": "ucc-quality-procurement",
+      "locators": [
+        {
+          "source_id": "ucc-quality-procurement",
+          "text_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/ucc-quality-procurement.txt",
+          "text_sha256": "110e499af00d6168e4f9794d09605d42b7819d9d6bedb4ab9805033adda609d9",
+          "line_start": 207,
+          "line_end": 210,
+          "extracted_lines_sha256": "4dd85269a14dae38b18f933af39a3b6c51366c7eef8a02ded071df9d23ab3cba",
+          "locator_kind": "line numbers in this external UTF-8 projection; not PDF page or source line numbers"
+        }
+      ],
+      "reason": "全公司生豆品質通則，沒有此罐新具體測試/結果；不擴到一般鑑定生豆旅程。",
+      "capacity": 0
+    },
+    {
+      "source_id": "JUSE2024_END_FEEDER_DISCOVERY_ONLY",
+      "url": "https://juse-qcch.juse.or.jp/DownloadDocument/2024_03/第6560回京都大会 開催要領_240815.pdf",
+      "reason": "搜尋定位到2024兵庫飲料工廠降低end-feeder異常停機的報告題名；未取實際報告/方法/測試/結果，搜尋摘要不採證。",
+      "capacity": 0
+    },
+    {
+      "source_id": "SII_SHIGA_BOILER_DISCOVERY_ONLY",
+      "url": "https://sii.or.jp/re_energy29/file/all_2.pdf",
+      "reason": "搜尋指向滋賀鍋爐，不能搬其2800kg/h至兵庫同罐；未採摘要。",
+      "capacity": 0
+    },
+    {
+      "source_id": "UCC2026_HOMER_BOILER_DISCOVERY_ONLY",
+      "url": "https://www.ucc.co.jp/company/news/2026/rel260408.html",
+      "reason": "另一集團公司與2026設備/減量，超出本同款同廠，不採。",
+      "capacity": 0
+    },
+    {
+      "source_id": "prior-H06-H07",
+      "reason": "專用開孔器附法弱圖說、母親萬博回憶仍不採容量；舊研究保留。",
+      "capacity": 0
+    },
+    {
+      "source_id": "general_patents_technology_or_competitors",
+      "reason": "未取得可證此款實施的UCC工程原件；不拿競品無菌PET/黑咖TTND、後來專利實施例或一般製罐理論嫁接。",
+      "capacity": 0
+    }
+  ],
+  "search_record": {
+    "method": "Public web search for discovery; accepted evidence only from fetched original pages or preserved prior source bytes. No reference-channel transcripts accessed.",
+    "queries": [
+      "site.ucc.co.jp 缶コーヒー 工場 殺菌 品質 製造",
+      "UCC 缶コーヒー 研究 酸化 殺菌 特許 製造 工場",
+      "site.ucc.co.jp ミルクコーヒー 2019 配合",
+      "UCC ミルクコーヒー 兵庫飲料工場 動画 工程 検査",
+      "site.ucc.co.jp ミルクコーヒー 開発 試作",
+      "UCC 兵庫飲料工場 品質 検査 缶 工場 見学",
+      "site.ucc.co.jp/company/news/2019 ミルクコーヒー 4月1日",
+      "UCC 兵庫飲料工場 動画",
+      "UCCミルクコーヒー リニューアル 調査 2019",
+      "UCC ミルクコーヒー 製造工程 youtube",
+      "UCC 兵庫飲料工場 バイオマス",
+      "UCC 兵庫飲料工場 殺菌 検査",
+      "UCC ミルクコーヒー 2019 売上 リニューアル",
+      "UCC 兵庫飲料工場 YouTube",
+      "site.youtube.com UCC ミルクコーヒー 工場",
+      "site.ucc.co.jp バイオマスボイラー 兵庫",
+      "site.ucc.co.jp ミルクコーヒー 検査",
+      "site.ucc.co.jp ミルクコーヒー アラビカ 2019",
+      "UCC 兵庫飲料 ボイラ",
+      "UCC コーヒーかす ボイラ 水分",
+      "UCC 兵庫飲料工場 改善",
+      "UCC コーヒー ボイラー 乾燥",
+      "上島珈琲 抽出残渣 ボイラ",
+      "兵庫飲料工場 エンドフィーダー"
+    ],
+    "video_result": "No original factory film or transcript acquired/admitted; all accepted modern process locators are text lines. Video timestamps and camera dates unavailable, never fabricated.",
+    "external_tool_result_files": [
+      "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/search-engineering-discovery.json",
+      "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/search-engineering-followup.json"
+    ],
+    "limitations": "No newly acquired contemporaneous 1969 test log/advertisement/patent proven used by this SKU; no original 1970 delivery records; no product-specific modern sensory/sterilization test table or full end-feeder engineering report."
+  },
+  "adoption_gates": [
+    "保持R6、當前已審字典、作者原稿/claims/既有SOURCE/native、owner與八語譯文完全不改，本候選不得自動升版。",
+    "主批次/作者若採用，先凍結R7獨立新稿與video/brief/claims/loops/日期標示/圖像及共圖計畫SHA，保留R6與回退鏈。",
+    "以精確新稿重新由另一位代理逐來源/書面配鏡審查；廠層級支路與SKU之間若有缺口就刪減/重研究，不由本研究員自判SOURCE PASS。",
+    "送真正新的原生兩位讀者敘事審查並保留全raw/個人投票；重新檢查一條主線、現代日期切換、每個事實僅講一次、鉤子間距與無重述。",
+    "原640句八語TEXT_PASS只適用R6，不覆寫；新稿採用後重新生成相應八語內容並獨立QA，完整metadata與精確source SHA綁定。",
+    "依既有授權與保護流程完成新稿實際批准/合法採用；本包不能代owner批准或寫後台。",
+    "重新依精確新稿預檢、報價與受保護預算；只有合法授權的真TTS才可量完整正文720–840秒（含冷開場/有聲CTA，另加26秒branding）；自然語速，不慢播/空白/重述補長。",
+    "若正文容量/來源或實聲仍不足，維持HOLD並繼續找同問題真工作原件；不降低時長標準、不借其他SKU/廠數據、不宣稱本研究已達13分鐘。"
+  ],
+  "preservation": {
+    "protected_file_count": 507,
+    "protected_roots": [
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11",
+      "/workspace/work/brand-story-20261025/c11-audit/source-cache",
+      "/workspace/work/brand-story-20261025/c11-audit/duration-source-cache"
+    ],
+    "before_manifest_path": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7/protected-start.json",
+    "before_manifest_sha256": "594532d7e1ae64bdc864a41b9136116d03aae455214c9ecba30574ffca254ecb",
+    "all_existing_protected_files_same_sha256": true,
+    "changed_or_missing_files": [],
+    "candidate_files_are_only_repo_writes": true,
+    "original_source_raw_text_hash_claims_research_author_native_owner_lexicon_translations_untouched": true
+  },
+  "authorized_repo_outputs": [
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/candidate-scope-capacity-r7.md",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/candidate-scope-capacity-r7.json"
+  ],
+  "external_audit_directory": "/workspace/work/brand-story-20261025/c11-audit/capacity-r7",
+  "r7_canonical_script_written": false,
+  "current_video_or_claims_or_i18n_modified": false,
+  "source_native_media_or_duration_pass_created": false,
+  "owner_approval_created": false,
+  "backend_mutations": 0,
+  "paid_requests": 0,
+  "provider_requests": 0,
+  "git_commands": 0,
+  "subagents_spawned": 0
+}

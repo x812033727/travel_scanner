@@ -1,0 +1,36 @@
+{
+  "type": "author_narrative_delta",
+  "independent": false,
+  "basis": "Both r4 readers flagged the factory production answer being revealed at r085 before the stock/production question at r087",
+  "old_video_sha256": "f55dcfc955fe46fd12a9bd928b41b5bc14faaf07d7e5c448b3ed084a76e56339",
+  "new_video_sha256": "a751f2fb01be75e701efcca640c9e4a8538b92af885ab907adcfce53abcbeff4",
+  "new_panel_payload_sha256": "dc2019055174f9ad583e404a3c57ecb932f2b574a0f53232c1a4cfd0c60049a7",
+  "changes": [
+    {
+      "id": "c09r085",
+      "before": "還在做岩釘。一篇一九七七年刊出的報導，帶我們跟記者走進文圖拉的店面與後方工廠。",
+      "after": "一九七七年刊出的報導裡，記者走進文圖拉的店面，看見一個展示舊岩釘的小區域。",
+      "source": "S4"
+    },
+    {
+      "id": "c09r086",
+      "before": "店裡有個展示舊岩釘的小區域，前輩鐵匠與修納德早年親手做的釘子，都已成為展品。",
+      "after": "前輩鐵匠與修納德早年親手做的釘子，都成了這裡的展品。",
+      "source": "S4"
+    }
+  ],
+  "visual_delta": {
+    "scene": "c09r-shot-085",
+    "before": "Close-up at a modest metal workshop, an anonymous adult inspecting a newly pressed plain piton beside an enclosed press, mild window light from the right.",
+    "after": "Wide shot at a simple equipment shop, an anonymous adult pausing before a small display of old plain metal pitons, mild window light from the right.",
+    "reason": "Show the shop/exhibit without revealing new production before r089"
+  },
+  "facts_added": false,
+  "loop_payoffs_unchanged": true,
+  "loop_note": "Factory payoffs already point at parent75 last part c09r089; none pointed at c09r085. They remain unchanged.",
+  "retained_failed_readers": [
+    "history-r4/reader-a.json",
+    "history-r4/reader-b.json"
+  ],
+  "note": "Only r085/r086 narration and r085 prompt change. All other lines and metadata retained. Fresh independent readers are required."
+}

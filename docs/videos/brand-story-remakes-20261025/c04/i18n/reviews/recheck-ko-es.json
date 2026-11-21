@@ -1,0 +1,135 @@
+{
+  "source_video_sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+  "reviewer": "/root/c03_review_vi_th; independent KO/ES reviewer, not their translator",
+  "scope": "text_only_targeted_post_fix_recheck",
+  "original_review": {
+    "path": "/workspace/work/brand-story-20261025/c04-audit/review-ko-es.json",
+    "sha256": "7ae6555afea8c50642ad7c450276da944ab7520a0526edb0b690136d8fde1605",
+    "unchanged_from_applied_fixes_receipt": true
+  },
+  "applied_fixes": {
+    "path": "/workspace/work/brand-story-20261025/c04-audit/applied-fixes-ko-es.json",
+    "sha256": "66ee49fdba4651772ac9f009f61b2169a22d292c8d9f1f039580594f5d49c5b9"
+  },
+  "reviewed_on_utc": "2026-10-25T15:54:24.923166+00:00",
+  "locales": [
+    {
+      "locale": "ko",
+      "verdict": "TEXT_PASS",
+      "worksheet_sha256": "d780d43b1e29a70bf1eea77d0aacf46df923f7307c6bfc602684fbd7a8f7bf2b",
+      "translation_sha256": "c3041b17ef775208840db4ef09bccfeefd5af1859be63090a5d49e9d24bd3925",
+      "worksheet_path": "/workspace/work/brand-story-20261025/media/story-everyday-bubble-wrap-c04-remake-20261025/i18n/ko.todo.json",
+      "translation_path": "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-bubble-wrap-c04-remake-20261025/i18n/ko.json",
+      "baseline_worksheet_sha256": "97f607fb4104089e69fba4274c4e2f5b4f74ba1bb40a935c37b983551c63e5af",
+      "baseline_translation_sha256": "609ecab037fb92d7d2828959fc2054574ae60aa7e36696dfd6b2542f757e3600",
+      "native_merge_receipt": {
+        "path": "/workspace/work/brand-story-20261025/c04-audit/native-merge-ko.json",
+        "sha256": "2cb27b8c2feeee5345a1f77112868671a67e8362c8ba26a6a180b4c50faf7a7e"
+      },
+      "checks": {
+        "baseline_translation_hash_matches_original_review": true,
+        "baseline_worksheet_hash_matches_original_review": true,
+        "only_requested_translation_text_targets_changed": true,
+        "only_requested_worksheet_text_targets_changed": true,
+        "all_non_target_and_protected_fields_unchanged": true,
+        "all_exact_replacements_accepted": true,
+        "source_video_unchanged": true,
+        "original_review_unchanged": true,
+        "current_worksheet_matches_applied_receipt": true,
+        "native_merge_exit_zero": true,
+        "native_merge_hashes_match_current_inputs": true,
+        "native_protected_source_invariants_pass": true
+      },
+      "targets_checked": 1,
+      "translation_changed_text_fields": [
+        "lines.c04re121.text"
+      ],
+      "worksheet_changed_text_fields": [
+        "lines[54].text"
+      ],
+      "accepted_fixes": [
+        {
+          "target": "lines.c04re121",
+          "before": "하지만 충격이 커서 공기실이 거의 납작해지면, 가둔 공기 외에 무엇이 화물을 한 번 더 막아 줄까요?",
+          "after": "하지만 충격이 커서 공기실이 거의 납작해지면, 가둔 공기 외에 무엇이 화물을 충격으로부터 한 번 더 보호해 줄까요?",
+          "source": "可是撞擊一旦大到氣室快壓扁，封住的空氣之外，還有什麼能替貨物再擋一下？",
+          "exact_requested_replacement": true,
+          "faithful_and_natural": true,
+          "introduced_meaning_error": false,
+          "note": "Near-flattening condition, sealed-air contrast and source clause order are retained. The Korean now naturally protects the goods from impact instead of making the goods the object being blocked.",
+          "verdict": "TEXT_PASS"
+        }
+      ],
+      "remaining_required": []
+    },
+    {
+      "locale": "es",
+      "verdict": "TEXT_PASS",
+      "worksheet_sha256": "0f13728c668fcaf64316c5bd07d12293875409c20d15e34e8b48b250f95a41c8",
+      "translation_sha256": "2e959e9d6a62c31b98fd7fd6558ead310fd49cb98e4e1af81ed10d98da8a2c32",
+      "worksheet_path": "/workspace/work/brand-story-20261025/media/story-everyday-bubble-wrap-c04-remake-20261025/i18n/es.todo.json",
+      "translation_path": "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-bubble-wrap-c04-remake-20261025/i18n/es.json",
+      "baseline_worksheet_sha256": "bf15040f904098897126bee6a06376cb39a6cc8146900569051ca7985fd609ea",
+      "baseline_translation_sha256": "e60f60278ec8d87571792f6a4df4df8a8eacc805e77051f65b540023b1d9d745",
+      "native_merge_receipt": {
+        "path": "/workspace/work/brand-story-20261025/c04-audit/native-merge-es.json",
+        "sha256": "bd055c0720e5f83680ba71b9517e8a57aec2eb53558ab57c746d9740ae9bb8f2"
+      },
+      "checks": {
+        "baseline_translation_hash_matches_original_review": true,
+        "baseline_worksheet_hash_matches_original_review": true,
+        "only_requested_translation_text_targets_changed": true,
+        "only_requested_worksheet_text_targets_changed": true,
+        "all_non_target_and_protected_fields_unchanged": true,
+        "all_exact_replacements_accepted": true,
+        "source_video_unchanged": true,
+        "original_review_unchanged": true,
+        "current_worksheet_matches_applied_receipt": true,
+        "native_merge_exit_zero": true,
+        "native_merge_hashes_match_current_inputs": true,
+        "native_protected_source_invariants_pass": true
+      },
+      "targets_checked": 2,
+      "translation_changed_text_fields": [
+        "lines.c04re161.text",
+        "lines.c04rna1.text"
+      ],
+      "worksheet_changed_text_fields": [
+        "lines[59].text",
+        "lines[99].text"
+      ],
+      "accepted_fixes": [
+        {
+          "target": "lines.c04re161",
+          "before": "El relieve de pared empieza a recibir fuerzas por la carga; cuando la patente recogió este giro, ¿ya existía la empresa?",
+          "after": "El relieve de pared empieza a absorber los golpes para proteger la carga; cuando la patente recogió este giro, ¿ya existía la empresa?",
+          "source": "牆面的花紋開始替貨物承力；可這個轉向寫進專利時，那家公司已經成立了嗎？",
+          "exact_requested_replacement": true,
+          "faithful_and_natural": true,
+          "introduced_meaning_error": false,
+          "note": "The Spanish now states that the relief takes impact to protect the goods. The patent/company-founding question remains second; no date or additional historical claim is introduced.",
+          "verdict": "TEXT_PASS"
+        },
+        {
+          "target": "lines.c04rna1",
+          "before": "Si llevas la mesa de embalaje, recibes más que un rollo: sumas un paso de inflado que debe seguir el ritmo de los envíos.",
+          "after": "Si estás a cargo de la mesa de embalaje, recibes más que un rollo: sumas un paso de inflado que debe seguir el ritmo de los envíos.",
+          "source": "你若負責包裝台，拿到的便不只是卷材，還多了一個得和出貨節奏配合的充氣步驟。",
+          "exact_requested_replacement": true,
+          "faithful_and_natural": true,
+          "introduced_meaning_error": false,
+          "note": "The Spanish naturally assigns responsibility for the packing station. The roll, extra inflation step and coordination with shipment pace remain intact, with the Latin American tu register retained.",
+          "verdict": "TEXT_PASS"
+        }
+      ],
+      "remaining_required": []
+    }
+  ],
+  "actual_timing_verified": false,
+  "paid_calls": 0,
+  "limitations": [
+    "Targeted recheck of the original required 1 Korean and 2 Spanish fixes, plus complete structural diffs against their hash-matched pre-fix files; the full translation review was not repeated.",
+    "No actual timeline or timed SRT is available. Reading speed, synchronization, rendering, dub and media QA remain unverified.",
+    "The original FIXES_REQUIRED report is preserved. No owner or primary-source approval is implied."
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "revision": "doraemon-r1",
+  "frozen_at_utc": "2026-10-26T04:37:46.884773+00:00",
+  "role": "AUTHOR_SUBMISSION_FREEZE_NOT_INDEPENDENT_VERDICT",
+  "slug": "story-adapt-doraemon-after-fujiko-remake-20261025",
+  "core_four_sha256": {
+    "video.json": "302df1b46756e91cc3a41162771be3df69d386f83acf4281df93ca1427f27c83",
+    "script.md": "8f59f5c761eb9bdb0a049a1e14cdafa5c492bfafb26a26d7746aabe52c2af3fc",
+    "narration-only.json": "01920c1aad6cb1356d3df186609311eeb6aaaf74ab16c7f2a2099820c7394739",
+    "claims.json": "fb5e1efb75059f3da6596447005bef5ffd50b77dd5be0f69594e876f2b271288"
+  },
+  "file_sha256": {
+    "video.json": "302df1b46756e91cc3a41162771be3df69d386f83acf4281df93ca1427f27c83",
+    "script.md": "8f59f5c761eb9bdb0a049a1e14cdafa5c492bfafb26a26d7746aabe52c2af3fc",
+    "narration-only.json": "01920c1aad6cb1356d3df186609311eeb6aaaf74ab16c7f2a2099820c7394739",
+    "claims.json": "fb5e1efb75059f3da6596447005bef5ffd50b77dd5be0f69594e876f2b271288",
+    "claims.md": "15ad7d5bd9a73c10a8bbbbc833c539cb3251ab3b756b2b09466f343c29fe5580",
+    "brief.md": "356d8a713df24e3287297b65de628e52cd96db1635dbb69e2d3b933bc53961ae",
+    "series.json": "90640e2789fc496933e2b306443c9bcf2b5aca3a3d480ccfae0a0229c881cd79",
+    "rows-r1.json": "53feaa84b13fd899ac151db416791a52c1b8fcd179531a8525d7ec52344f172d",
+    "build-candidate.py": "86e70a08f81d53604dcc97b7a646fca4bf53878371e3d6ff54c8ccf0af737fcf",
+    "build-image-reuse-plan.mjs": "d99b2a7c504aab2120e6b39a177f741b192f0a7bef46f7fe7ad4bca38f04df37",
+    "image-reuse-plan.json": "58307cd1229b655377ec01f4d5c977bdf3ffb2200bb219ca5dfd007ff0e2b522",
+    "source-anchors-r1.json": "0ee7d09b71bf38e61435f28f991e01dd0f78b1ebb5cfce5e994c8c46a155a29f",
+    "row-index-r1.json": "adeb6c154e60cecf366f60679e0dbb65302a22be8df617e288607f4470c4f2ff",
+    "producer-notes.json": "f950690fdb8cda3833c98a5e9c2bfe9a9240bd8929428f1b4e9ef7f70ca85216",
+    "protected-inputs.json": "621a7c90de24047b97569e2ca5a8de6b14ddc4caf2119419c6bc4e8196183e37",
+    "native-author-lint-r1.json": "1552379aad2e6edb8a924ebe02e4246d137fd088ff37e8c2cb67115c8f485756",
+    "README.md": "a22ebb99e4cd2b92ca084ed28fc6f850a216e2ab686fc40935c1b14cbc38bb8a",
+    "freeze-author.py": "1659eb103f15391d9737e65ff61df8f25ce016da5532b79e0ace9151c5103902",
+    "research-original.md": "79728c6932d9b6305899a0ffafdcf7f21094b9f4b994101382932bcf3bf2e218",
+    "research-original.claims.json": "47b0eb3803241e3ec057eed11a62dd02a1a1d04bf45c0a62575198f294f5c39c",
+    "original-preservation.json": "ec235af1f086d9bc3fb1e49e67d6c93a335725aaba8d46e3141207d1ba4ca730"
+  },
+  "counts": {
+    "method": "native spokenUnits-compatible author count; exact native count follows in lint receipt",
+    "spoken_units_total": 3368,
+    "spoken_units_cold_open": 200,
+    "spoken_units_voiced_cta": 56,
+    "chapters": {
+      "開場濃縮": 200,
+      "另取一張紙，留下原件": 485,
+      "一封郵件，把作者帶到月球前": 459,
+      "舊設定接上新朋友": 619,
+      "把說話交給畫面，再重新寫成書": 922,
+      "找到這一版真正做工作的人": 683
+    },
+    "lines": 149,
+    "scenes": 124,
+    "shots": 124,
+    "cards": 0,
+    "loops": 23,
+    "speech_body_includes_cold_open_and_voiced_cta": 3368,
+    "estimated_speech_seconds_at_4_5": 748.44
+  },
+  "native_author_lint": {
+    "errors": 0,
+    "warnings": 19,
+    "narrative_warnings": 0,
+    "summary": {
+      "minutes": 15.710555555555555,
+      "lines": 149,
+      "spoken_units": 3368,
+      "billable_characters": 11541,
+      "chapters": [
+        "00:00 開場濃縮",
+        "00:55 另取一張紙，留下原件",
+        "03:11 一封郵件，把作者帶到月球前",
+        "05:19 舊設定接上新朋友",
+        "08:14 把說話交給畫面，再重新寫成書",
+        "12:31 找到這一版真正做工作的人"
+      ]
+    },
+    "receipt": "native-author-lint-r1.json",
+    "command": [
+      "node",
+      "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+      "/workspace/work/brand-story-20261025/doraemon-submission-root",
+      "lint",
+      "--slug",
+      "story-adapt-doraemon-after-fujiko-remake-20261025",
+      "--json"
+    ],
+    "schema_preflight_failures_external_only": [
+      "free-lint-attempt-01.json",
+      "free-lint-attempt-02.json"
+    ],
+    "author_cadence_working_receipts_external": [
+      "free-lint-attempt-03.json",
+      "free-lint-attempt-04.json",
+      "free-lint-attempt-05.json",
+      "free-lint-attempt-06.json"
+    ],
+    "fresh_native_reader_rounds_run": 0,
+    "warning_policy": "Complete native warnings preserved; no suppression. Repetitive blank-surface concepts, intentional same-asset adjacent payoff, long-shot estimates and overall length still need production assessment."
+  },
+  "replay": {
+    "generated_files": [
+      "video.json",
+      "script.md",
+      "narration-only.json",
+      "claims.json",
+      "claims.md",
+      "series.json",
+      "source-anchors-r1.json",
+      "row-index-r1.json",
+      "producer-notes.json",
+      "image-reuse-plan.json"
+    ],
+    "all_exactly_reproduced": true
+  },
+  "protection": {
+    "protected_files": 213,
+    "changed": [],
+    "research3_unchanged": true,
+    "raw_index_and_all_old_cache_unchanged": true,
+    "old_backend_and9_related_originals_unchanged": true,
+    "old_paid_media_locally_readable": false,
+    "old_paid_media_preserved_claim": false
+  },
+  "runtime": {
+    "root": "/workspace/work/brand-story-20261025/doraemon-submission-root",
+    "media_base": "/workspace/work/brand-story-20261025/doraemon-audit/media",
+    "runtime_outside_repo": true,
+    "media_outside_runtime_and_repo": true,
+    "manifest_sha256": "c5174bacfb1d0163925d5064ea0e64f23585d3ad386980c536d7fe8e6e91af96",
+    "canonical_runtime_script_sha256": "225339880a621b480e63d5666431810b8e3c018ab80fa69642a39c1f72db5dcb",
+    "author_script_is_not_canonical_runtime_script": true,
+    "immutable_dictionary_version_count": 1,
+    "immutable_dictionary_sha256": "90384a53ee2116ed4fc28a3bbc886c560721bd528f0104c373c8de9105deb184"
+  },
+  "duration": {
+    "target_minutes": 13,
+    "required_actual_speech_body_seconds": [
+      720,
+      840
+    ],
+    "speech_body_includes_cold_open_and_voiced_cta": true,
+    "new_bookends_excluded_seconds": 26,
+    "native_estimated_cut_minutes": 15.710555555555555,
+    "speech_only_arithmetic_seconds_at_4_5": 748.44,
+    "actual_speech_body_seconds": null,
+    "risk": "3370-ish units is below the approximate3500 capacity target. Native estimate includes normal pauses/scene gaps and remains about15.7min; the4.5units/s speech-only arithmetic is not actual duration. Measure real voice/cut before any duration decision; do not lower13, slow delivery, pad silence or repeat facts."
+  },
+  "image_reuse": {
+    "declared_complete_native_key_equal": true,
+    "endpoints": 3,
+    "actual_same_asset_verified": false,
+    "real_selected_file_sha256": null,
+    "actual_generated_media": 0
+  },
+  "budget": {
+    "usd_cap": 25,
+    "exact_new_slug_account_created": false,
+    "all_film_quote": null,
+    "protected_admission": "PENDING",
+    "original_account_or_approval_reused": false,
+    "paid_calls": 0,
+    "policy": "This nonC remake needs its own exact-slug US$25 account, current all-film quote and protected admission before any paid step."
+  },
+  "pending": [
+    "independent source and written visual review",
+    "two fresh native narrative readers",
+    "independent pronunciation review",
+    "owner outline and script approval",
+    "exact-account all-film quote/protected admission",
+    "real TTS and sentence listening",
+    "measured speech body720–840s",
+    "images and both-end judge / same-file SHA",
+    "music and bookends",
+    "captions and eight language media",
+    "assemble/final QA",
+    "owner final approval"
+  ],
+  "source_review": "PENDING_OTHER_REVIEWER",
+  "fresh_native_readers": "PENDING_TWO_FRESH_READERS",
+  "pronunciation": "PENDING_OTHER_REVIEWER",
+  "audio_and_visuals": "PENDING",
+  "owner": "ALL_PENDING",
+  "paid_calls": 0,
+  "backend_calls": 0,
+  "approvals_created": 0,
+  "git_mutations": 0
+}

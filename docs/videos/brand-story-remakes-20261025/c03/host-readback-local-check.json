@@ -1,0 +1,27 @@
+{
+  "checked_at": "2026-10-25T15:34:08.996Z",
+  "scope": "Local Node readback fragment only; production host and Docker commands were not run.",
+  "independent_review": "PASS: /root/c03_admission_current",
+  "checks": [
+    {
+      "case": "candidate",
+      "native_registry_validation": "PASS",
+      "formal_v4_identity_verified": false,
+      "exit": 3
+    },
+    {
+      "case": "disabled",
+      "native_registry_validation": "MISSING_OR_DISABLED",
+      "formal_v4_identity_verified": false,
+      "exit": 3
+    },
+    {
+      "case": "invalid-hash",
+      "native_registry_validation": "INVALID",
+      "formal_v4_identity_verified": false,
+      "exit": 3
+    }
+  ],
+  "paid_calls": 0,
+  "production_host_executed": false
+}

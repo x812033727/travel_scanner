@@ -1,0 +1,1275 @@
+{
+  "schema_version": 1,
+  "episode": "C07 Dr. Martens",
+  "candidate_revision": "R11 scope and capacity research proposal only",
+  "researcher": "/root/c07_scope_capacity_r11",
+  "prepared_at_utc": "2026-10-26T07:53:16.624779+00:00",
+  "status": "HOLD_13_MINUTE_CAPACITY_NOT_ESTABLISHED",
+  "source_video_sha256": "d2c90c26f028b01c3b03ee8c02368f1c35b8e31390643b7d5a71fb6fbc8a2805",
+  "baseline": {
+    "revision": "R10",
+    "native_line_count_recomputed": 84,
+    "whole_spoken_units_recomputed": 2123,
+    "unit_method": "schema.eachLine + schema.spokenText + timeline.spokenUnits, read-only Node calculation",
+    "includes": [
+      "cold opening",
+      "voiced CTA"
+    ],
+    "excludes": [
+      "additional 5-second intro",
+      "additional 21-second outro"
+    ],
+    "target_body_seconds": [
+      720,
+      840
+    ],
+    "actual_tts_seconds": null,
+    "actual_audio_verdict": "NOT_MEASURED",
+    "existing_source_native_i18n_status": "Existing R10 SOURCE/native9 PASS and eight-language 672 TEXT_PASS belong to the frozen R10; no new judgment issued."
+  },
+  "prior_research_bindings": [
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/duration-capacity-research.md",
+      "sha256": "6f8b11631a16eeaceb0188435802a3dc6903bbdf9bcc62521405992af0f9c30c"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/duration-capacity-research.json",
+      "sha256": "54643e0d3fa2b32b7be46632cb0404b5d7831d2d84e0e913c541d636b62125fe"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/research-expansion/research.md",
+      "sha256": "23ce0fe15844eb538f841777f1178b3bc6792c2362f7fc8bdb7e1728062e9154"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/research-expansion/claims.json",
+      "sha256": "a1cb2a5fcad36b9baa9c485043d314289df9758fda7123e2e9c50ac2381c1104"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/research-expansion/source-receipts.json",
+      "sha256": "f4f5564d0c6b8b496eea6ea8793e5f53f88ccabca8927a6690f4d86b152f8afb"
+    }
+  ],
+  "source_inventory": [
+    {
+      "id": "AWL",
+      "request_url": "https://awltogetherleather.ca/doc-marten-resole/",
+      "status": 200,
+      "final_url": "https://awltogetherleather.ca/doc-marten-resole/",
+      "content_type": "text/html; charset=UTF-8",
+      "retrieved_at": "2026-10-26T07:46:36.704717+00:00",
+      "bytes": 214028,
+      "sha256": "68345a4b4505ef773b8b925a6a024a6b7d339647b48eac944669b6b023ec5f4d",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/AWL.html",
+      "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/AWL.txt",
+      "text_sha256": "5dd14682eecb795a2ececa674650831c23e8a87a829715add44a855057a0f7ce",
+      "disposition": "NEW_PRIMARY_GUIDE_CANDIDATE",
+      "region": "Vancouver, British Columbia, Canada",
+      "model": "guide covers several Dr. Martens boots; no exact model bound to guide prose",
+      "publication_date": "2026-02-19T04:01:11+00:00",
+      "page_modified_date": "2026-06-02T18:14:38+00:00",
+      "work_date": null,
+      "photo_capture_date": null,
+      "limits": [
+        "Independent repair shop statement; not Dr. Martens factory or authorised-service instruction.",
+        "Guide describes conditional methods, not a single identifiable pair or a comparative durability test.",
+        "Two downloaded photos show finished examples with separate seam lines; no installation motion, exact cure time or client follow-up.",
+        "Only intact-original-welt branch and its second seam are in proposed capacity; cupsole, platform, sole style and sidewall-conversion menus excluded."
+      ],
+      "anchors": [
+        {
+          "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/AWL.txt",
+          "text_sha256": "5dd14682eecb795a2ececa674650831c23e8a87a829715add44a855057a0f7ce",
+          "lines": [
+            16,
+            18
+          ],
+          "anchor_sha256": "a24b5824a9ff8cdca4b136b8d4be12e6380d2e7825b4da4807dc5a0ff5163d38"
+        },
+        {
+          "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/AWL.txt",
+          "text_sha256": "5dd14682eecb795a2ececa674650831c23e8a87a829715add44a855057a0f7ce",
+          "lines": [
+            20,
+            20
+          ],
+          "anchor_sha256": "b9fcd60055d688812b7ebe154aad056e75700496e9dccd8d403564e34ef1a4dd"
+        }
+      ]
+    },
+    {
+      "id": "AWL_ABOUT",
+      "request_url": "https://awltogetherleather.ca/contact/",
+      "status": 200,
+      "final_url": "https://awltogetherleather.ca/contact-us/",
+      "content_type": "text/html; charset=UTF-8",
+      "retrieved_at": "2026-10-26T07:47:05.220182+00:00",
+      "bytes": 176362,
+      "sha256": "9421514bcf29401a6a64ea246b7bc3133b39f0792f95e2d9975a771d17397ffa",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/AWL_ABOUT.html",
+      "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/AWL_ABOUT.txt",
+      "text_sha256": "130557fb163bc187ba8a45c74baf9dfbdbc3e1cb76fbb89589f176a4654ed7c4",
+      "disposition": "REGION_ONLY_SUPPORT",
+      "region": "Vancouver, British Columbia, Canada",
+      "model": null,
+      "publication_date": "2021-06-09T18:54:38+00:00",
+      "page_modified_date": "2026-10-22T20:28:29+00:00",
+      "work_date": null,
+      "photo_capture_date": null,
+      "limits": [
+        "Address establishes the repair shop location, not the shooting location of any particular photo or the UK demo."
+      ],
+      "anchors": [
+        {
+          "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/AWL_ABOUT.txt",
+          "text_sha256": "130557fb163bc187ba8a45c74baf9dfbdbc3e1cb76fbb89589f176a4654ed7c4",
+          "lines": [
+            8,
+            9
+          ],
+          "anchor_sha256": "aab76799a6d581279a69c1b8780accf47cb9b0b4260f5025274fce27a3c7cef4"
+        }
+      ]
+    },
+    {
+      "id": "CREA",
+      "request_url": "https://note.com/creates_crea18/n/nbb7394bff138",
+      "status": 200,
+      "final_url": "https://note.com/creates_crea18/n/nbb7394bff138",
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at": "2026-10-26T07:47:31.751865+00:00",
+      "bytes": 307325,
+      "sha256": "78cfa658f21540d33fdedb06f802f124268e58b6952eacdfd616fb74ac7101eb",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA.html",
+      "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA.txt",
+      "text_sha256": "d6886734cddcf9454bd155f5f410e82ffba45d6ae0a613251b3347632194a034",
+      "disposition": "NEW_PRIMARY_SAME_PAIR_RECORD_PART_1",
+      "region": "Fukaya, Saitama, Japan (publisher profile)",
+      "model": "Dr. Martens eight-eyelet boots; exact model, manufacturing year and original wear cause not stated",
+      "publication_date": "2024-10-02T12:02:15.000+09:00",
+      "page_modified_date": "2024-10-02T14:26:59.000+09:00",
+      "work_date": null,
+      "photo_capture_date": null,
+      "limits": [
+        "A resole request is documented; do not invent that this pair had a worn-through sole, four years of wear or the UK commenter as owner.",
+        "Detached/twisted rib and insufficient bonding allowance are the repairer’s diagnosis, not measured test results.",
+        "The source calls this pair’s original welt Norwegian; do not extend that label to every Dr. Martens construction.",
+        "Photo shows exposed fabric rib and separation; does not prove original rib adhesive, failure cause or when damage occurred."
+      ],
+      "anchors": [
+        {
+          "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA.txt",
+          "text_sha256": "d6886734cddcf9454bd155f5f410e82ffba45d6ae0a613251b3347632194a034",
+          "lines": [
+            6,
+            15
+          ],
+          "anchor_sha256": "1becc09b81bcaea6952e4d3a40b8cab809d90c152469f97230780d6793229fbd"
+        }
+      ]
+    },
+    {
+      "id": "CREA2",
+      "request_url": "https://note.com/creates_crea18/n/ndc8a07c2bbe6",
+      "status": 200,
+      "final_url": "https://note.com/creates_crea18/n/ndc8a07c2bbe6",
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at": "2026-10-26T07:48:39.719191+00:00",
+      "bytes": 304907,
+      "sha256": "b2ddc81699096853275112c76d8ab7a2a70b72e9452b62d6681b533ce98c7fa5",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA2.html",
+      "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA2.txt",
+      "text_sha256": "d38e84a0080b7c304f5d0a73a3b3caef3d08ae1755d2936046e5a57121a7bb18",
+      "disposition": "NEW_PRIMARY_SAME_PAIR_RECORD_PART_2",
+      "region": "Fukaya, Saitama, Japan (publisher profile)",
+      "model": "same eight-eyelet pair as part 1; article explicitly says continuation",
+      "publication_date": "2024-10-02T15:50:08.000+09:00",
+      "page_modified_date": "2024-10-02T15:55:26.000+09:00",
+      "work_date": null,
+      "photo_capture_date": null,
+      "limits": [
+        "Completed repair record and photos, not independent wear, waterproofness, comfort or bond-strength tests.",
+        "Private modification uses a brown Dr. Sole Cork Full Sole and Trooper’s Cork Heel; not original PVC air-cushion replacement or factory heat weld.",
+        "The two posts being published on one day does not establish that the work took three hours or one day."
+      ],
+      "anchors": [
+        {
+          "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA2.txt",
+          "text_sha256": "d38e84a0080b7c304f5d0a73a3b3caef3d08ae1755d2936046e5a57121a7bb18",
+          "lines": [
+            5,
+            12
+          ],
+          "anchor_sha256": "48b582f0853be024da42247906611250b7923866cfc7011a9fb7e114a1ea4d22"
+        }
+      ]
+    },
+    {
+      "id": "SH_MIDSOLE",
+      "request_url": "https://soleheeled.com.au/case-studies/dr-martens-boot-resole-midsole-repair",
+      "status": 200,
+      "final_url": "https://soleheeled.com.au/case-studies/dr-martens-boot-resole-midsole-repair",
+      "content_type": "text/html;charset=utf-8",
+      "retrieved_at": "2026-10-26T07:46:37.129211+00:00",
+      "bytes": 153495,
+      "sha256": "60e97ecde09815ab11380141b670bd0605f22925e06efe3c6620d424931ed311",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/SH_MIDSOLE.html",
+      "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/SH_MIDSOLE.txt",
+      "text_sha256": "f6bf37408457166406ec3bb901e180ceae5193809e61013028dab8a53d6be23b",
+      "disposition": "DUPLICATE_PRIOR_R4_RESEARCH_REFRESH_NOT_NEW",
+      "region": "customer: Coburg, Melbourne, Victoria, Australia",
+      "model": "unnamed Dr. Martens boot model",
+      "publication_date": "2024-02-20T20:24:19+1100",
+      "page_modified_date": "2025-01-02T17:45:30+1100",
+      "work_date": null,
+      "photo_capture_date": null,
+      "limits": [
+        "Already present in research-expansion/research.md section B and claims.json; this new fetch is a refreshed original only, research-new capacity is zero.",
+        "Publisher terms midsole and cosmetic stitching must not be mapped to factory welt/inseam conclusions; no global inability to reproduce yellow stitching.",
+        "Admitted non-seamless finish is useful but this alternate case is not stacked into the preferred proposal."
+      ],
+      "anchors": [
+        {
+          "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/SH_MIDSOLE.txt",
+          "text_sha256": "f6bf37408457166406ec3bb901e180ceae5193809e61013028dab8a53d6be23b",
+          "lines": [
+            9,
+            15
+          ],
+          "anchor_sha256": "b6f267af9cb86debf9780f7776df59cc15bb471a3878525a0a654a794874bfe8"
+        },
+        {
+          "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/SH_MIDSOLE.txt",
+          "text_sha256": "f6bf37408457166406ec3bb901e180ceae5193809e61013028dab8a53d6be23b",
+          "lines": [
+            20,
+            22
+          ],
+          "anchor_sha256": "b62e2bd4fa307f7df10f4b4eccc07cae9ccd468154129909925fe764ed869872"
+        }
+      ]
+    },
+    {
+      "id": "KW",
+      "request_url": "https://www.kwshoerepair.com/products/basic-resole",
+      "status": 200,
+      "final_url": "https://www.kwshoerepair.com/products/basic-resole",
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at": "2026-10-26T07:46:37.608648+00:00",
+      "bytes": 292797,
+      "sha256": "0b6652e5276d933e00dc9e7bc6de16b211504d40a8d1fa6adf1cf2ddb59557ad",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/KW.html",
+      "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/KW.txt",
+      "text_sha256": "6de4873d29445678bced7693c08cc02f3fceff67e664bec5d2f95dd49c330595",
+      "disposition": "NEW_PRIMARY_MENU_LEAD_ONLY_NO_CAPACITY",
+      "region": "Canada; precise shop location not used",
+      "model": null,
+      "publication_date": null,
+      "page_modified_date": null,
+      "work_date": null,
+      "photo_capture_date": null,
+      "limits": [
+        "Product/service menu is not a documented specific repair job; linked full-process YouTube video not obtained."
+      ],
+      "anchors": [
+        {
+          "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/KW.txt",
+          "text_sha256": "6de4873d29445678bced7693c08cc02f3fceff67e664bec5d2f95dd49c330595",
+          "lines": [
+            51,
+            63
+          ],
+          "anchor_sha256": "27aa0ecbfef27ab505054a0d7c74dcec1eb9cad4a004486507efdc0782f62a1b"
+        }
+      ]
+    },
+    {
+      "id": "BRC_QUAD",
+      "request_url": "https://bootrepaircompany.co.uk/blogs/brc-blog/dr-martens-sandal-quad-resoles-are-here",
+      "status": 200,
+      "final_url": "https://bootrepaircompany.co.uk/blogs/brc-blog/dr-martens-sandal-quad-resoles-are-here",
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at": "2026-10-26T07:46:38.259225+00:00",
+      "bytes": 195078,
+      "sha256": "49afa16da921a040c4cc10c8915bf22abaa00a6f051851fccec766e832cd4f87",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/BRC_QUAD.html",
+      "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/BRC_QUAD.txt",
+      "text_sha256": "f1ad0612cadb8543918ee01f7f06962240616a71ec5e6c0a98448a044d868dd4",
+      "disposition": "NEW_PRIMARY_EXCLUDED_SCOPE_DRIFT",
+      "region": "UK authorised repair service",
+      "model": "Quad platform and welted sandals",
+      "publication_date": "2025-07-18 (JSON-LD; visible page says July 29 2025)",
+      "page_modified_date": "2025-07-29 (JSON-LD)",
+      "work_date": null,
+      "photo_capture_date": null,
+      "limits": [
+        "Dates conflict in display versus structured metadata; neither is work date.",
+        "Additional platform midsole concerns a different shoe construction; excluded from classic worn-boot line."
+      ],
+      "anchors": [
+        {
+          "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/BRC_QUAD.txt",
+          "text_sha256": "f1ad0612cadb8543918ee01f7f06962240616a71ec5e6c0a98448a044d868dd4",
+          "lines": [
+            43,
+            56
+          ],
+          "anchor_sha256": "df61e4080a3bf2a806413ce0e7caf65a946c87c10e5468ec2ab446b88d13a306"
+        }
+      ]
+    },
+    {
+      "id": "DIY1",
+      "request_url": "https://kmskelton.wordpress.com/2018/09/03/repairing-doc-martens-soles-pt-1/",
+      "status": 200,
+      "final_url": "https://kmskelton.wordpress.com/2018/09/03/repairing-doc-martens-soles-pt-1/",
+      "content_type": "text/html; charset=UTF-8",
+      "retrieved_at": "2026-10-26T07:47:04.716658+00:00",
+      "bytes": 101449,
+      "sha256": "4edaa3c9c83b269f75b61e2f9c71d2a8785cb75d50ead3d8c8b2586a7e3f8290",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/DIY1.html",
+      "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/DIY1.txt",
+      "text_sha256": "51d80a3df2219b5b9179c3abdd0162743d75c68cb234cc55fd606c179042e8f0",
+      "disposition": "NEW_PRIMARY_EXCLUDED_DIFFERENT_PROBLEM",
+      "region": "Seattle purchase, Washington, US; repair location not established",
+      "model": "1461 Smooth shoes",
+      "publication_date": "2018-09-03 (visible)",
+      "page_modified_date": "2018-10-14 (visible adjacent date; not asserted repair date)",
+      "work_date": null,
+      "photo_capture_date": null,
+      "limits": [
+        "First-person amateur seam-leak experiment, not worn-through boots or a cobbler resole.",
+        "No before photos or completed wear/rain follow-up in fetched post; no process advice or strength claim adopted."
+      ],
+      "anchors": [
+        {
+          "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/DIY1.txt",
+          "text_sha256": "51d80a3df2219b5b9179c3abdd0162743d75c68cb234cc55fd606c179042e8f0",
+          "lines": [
+            1,
+            1
+          ],
+          "anchor_sha256": "5d43e3e512c4053eb46282449d0daf2bd79979847726c0c94231aff7dfc16ea0"
+        }
+      ]
+    },
+    {
+      "id": "NAMELESS",
+      "request_url": "https://nameless-repair.com/ddr-martens-2976-ds-welt-repair/",
+      "status": 200,
+      "final_url": "https://nameless-repair.com/ddr-martens-2976-ds-welt-repair/",
+      "content_type": "text/html; charset=UTF-8",
+      "retrieved_at": "2026-10-26T07:47:32.645359+00:00",
+      "bytes": 108488,
+      "sha256": "8db3b031745c7ffcfcbb39d41cfd8039415717ec3e00f1feb252c51c7815eced",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/NAMELESS.html",
+      "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/NAMELESS.txt",
+      "text_sha256": "b5a2b3d0613d1061761d056c539c141f5687844ae9704799a1eaef2c7922ccb7",
+      "disposition": "NEW_PRIMARY_EXCLUDED_DIFFERENT_FAILURE",
+      "region": "Okinawa, Japan (article service-region statement)",
+      "model": "2976 DS",
+      "publication_date": "2026-10-08T12:10:05+0900",
+      "page_modified_date": "2026-10-08T12:23:23+0900",
+      "work_date": null,
+      "photo_capture_date": null,
+      "limits": [
+        "Low sole wear and cut heel welt; original outsole reused. Not a worn-sole replacement case; do not add for duration."
+      ],
+      "anchors": [
+        {
+          "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/NAMELESS.txt",
+          "text_sha256": "b5a2b3d0613d1061761d056c539c141f5687844ae9704799a1eaef2c7922ccb7",
+          "lines": [
+            1,
+            1
+          ],
+          "anchor_sha256": "5535214a581003fbe549c5b497917f5e53e47117df980dc6ab439bea0603967a"
+        }
+      ]
+    },
+    {
+      "id": "MOGA",
+      "request_url": "https://ameblo.jp/moga-moga-moga/entry-11136471414.html",
+      "status": 200,
+      "final_url": "https://ameblo.jp/moga-moga-moga/entry-11136471414.html",
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at": "2026-10-26T07:47:33.861327+00:00",
+      "bytes": 99449,
+      "sha256": "601a449a3e56be94e8c210bc7026d562e31dd15300c1ba1a03d67541e6cbe250",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/MOGA.html",
+      "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/MOGA.txt",
+      "text_sha256": "22000ce7f8a85da6e39044f25eedce5bb76ebfd2decc0523e311cfc5da95a341",
+      "disposition": "NEW_PRIMARY_EXCLUDED_UNFINISHED_EXPERIMENT",
+      "region": "Japan; exact workshop location not established",
+      "model": "1490",
+      "publication_date": "2012-01-20T10:57:48.000+09:00",
+      "page_modified_date": "2012-01-20T10:57:48.000+09:00",
+      "work_date": null,
+      "photo_capture_date": null,
+      "limits": [
+        "Exploratory teardown with temporary shark-sole experiment and intended further disassembly; no completed final job or wear outcome obtained.",
+        "2012 no-manufacturer-repair wording cannot be used as 2026 service availability."
+      ],
+      "anchors": [
+        {
+          "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/MOGA.txt",
+          "text_sha256": "22000ce7f8a85da6e39044f25eedce5bb76ebfd2decc0523e311cfc5da95a341",
+          "lines": [
+            1,
+            1
+          ],
+          "anchor_sha256": "2b8134ac815214616d08a09140fccf7eddeb57b4047cde68387341ed41a16621"
+        }
+      ]
+    }
+  ],
+  "photo_receipts": [
+    {
+      "source": "AWL",
+      "source_index": 2,
+      "request_url": "https://awltogetherleather.ca/wp-content/uploads/2026/02/77e36ae0-fa96-4513-a591-f07d63f47062-1024x1024.jpg",
+      "final_url": "https://awltogetherleather.ca/wp-content/uploads/2026/02/77e36ae0-fa96-4513-a591-f07d63f47062-1024x1024.jpg",
+      "status": 200,
+      "content_type": "image/jpeg",
+      "retrieved_at": "2026-10-26T07:49:00.315889+00:00",
+      "bytes": 125033,
+      "sha256": "3dce7f4082a7f031645477bae6441cf9634a231f5aa0cc9c7c3e1bfe51a41cf2",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/AWL-photo-0.jpg",
+      "visually_inspected": true,
+      "evidence_kind": "publisher still photo; no motion/timestamp or performance test"
+    },
+    {
+      "source": "AWL",
+      "source_index": 3,
+      "request_url": "https://awltogetherleather.ca/wp-content/uploads/2026/02/b5ac15f3-7bf5-48d3-860f-44edeba6cbd9-1024x1024.jpg",
+      "final_url": "https://awltogetherleather.ca/wp-content/uploads/2026/02/b5ac15f3-7bf5-48d3-860f-44edeba6cbd9-1024x1024.jpg",
+      "status": 200,
+      "content_type": "image/jpeg",
+      "retrieved_at": "2026-10-26T07:49:00.667429+00:00",
+      "bytes": 153229,
+      "sha256": "0494ad75d5ab6df2d88893cd6ae385587d386784d317bd616cf9a592bdceafca",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/AWL-photo-1.jpg",
+      "visually_inspected": true,
+      "evidence_kind": "publisher still photo; no motion/timestamp or performance test"
+    },
+    {
+      "source": "CREA",
+      "source_index": 0,
+      "request_url": "https://assets.st-note.com/img/1727836583-ykMNLlmo5hC6zWBDTptRqsA2.jpg?width=1200",
+      "final_url": "https://assets.st-note.com/img/1727836583-ykMNLlmo5hC6zWBDTptRqsA2.jpg?width=1200",
+      "status": 200,
+      "content_type": "image/jpg",
+      "retrieved_at": "2026-10-26T07:48:56.828409+00:00",
+      "bytes": 194109,
+      "sha256": "190952cdd7fe2267a7a692bfe45e98504e095c4868e48ba90b928c1368324c5d",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA-photo-0.jpg",
+      "visually_inspected": true,
+      "evidence_kind": "publisher still photo; no motion/timestamp or performance test"
+    },
+    {
+      "source": "CREA",
+      "source_index": 1,
+      "request_url": "https://assets.st-note.com/img/1727836647-Xzr5BkJSnQLIha1obWfdK9jt.jpg?width=1200",
+      "final_url": "https://assets.st-note.com/img/1727836647-Xzr5BkJSnQLIha1obWfdK9jt.jpg?width=1200",
+      "status": 200,
+      "content_type": "image/jpg",
+      "retrieved_at": "2026-10-26T07:48:57.358146+00:00",
+      "bytes": 284678,
+      "sha256": "c00b13dad9204c2c5890e6321c983c4996613813960957e7dd3b91302fa69233",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA-photo-1.jpg",
+      "visually_inspected": true,
+      "evidence_kind": "publisher still photo; no motion/timestamp or performance test"
+    },
+    {
+      "source": "CREA",
+      "source_index": 2,
+      "request_url": "https://assets.st-note.com/img/1727836975-L8EwmeRpCoHW1njkzlqZhduS.jpg?width=1200",
+      "final_url": "https://assets.st-note.com/img/1727836975-L8EwmeRpCoHW1njkzlqZhduS.jpg?width=1200",
+      "status": 200,
+      "content_type": "image/jpg",
+      "retrieved_at": "2026-10-26T07:48:57.880566+00:00",
+      "bytes": 204381,
+      "sha256": "247ec3fa76a99bf48d772595db91af08b261af6ad010e0482a67f61acc9fc5ee",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA-photo-2.jpg",
+      "visually_inspected": true,
+      "evidence_kind": "publisher still photo; no motion/timestamp or performance test"
+    },
+    {
+      "source": "CREA2",
+      "source_index": 0,
+      "request_url": "https://assets.st-note.com/img/1727837307-c36FSTwZRa9pHdgNlhVXM7bx.jpg?width=1200",
+      "final_url": "https://assets.st-note.com/img/1727837307-c36FSTwZRa9pHdgNlhVXM7bx.jpg?width=1200",
+      "status": 200,
+      "content_type": "image/jpg",
+      "retrieved_at": "2026-10-26T07:48:58.433698+00:00",
+      "bytes": 200359,
+      "sha256": "5a7b06764ab67f7f6a54c1ee921df2c06de66de7e0bfd57072b5e6a0c3a0655d",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA2-photo-0.jpg",
+      "visually_inspected": true,
+      "evidence_kind": "publisher still photo; no motion/timestamp or performance test"
+    },
+    {
+      "source": "CREA2",
+      "source_index": 1,
+      "request_url": "https://assets.st-note.com/img/1727837339-9EYlCuDKWkVXMzUoABjgnL7v.jpg?width=1200",
+      "final_url": "https://assets.st-note.com/img/1727837339-9EYlCuDKWkVXMzUoABjgnL7v.jpg?width=1200",
+      "status": 200,
+      "content_type": "image/jpg",
+      "retrieved_at": "2026-10-26T07:48:58.911023+00:00",
+      "bytes": 200863,
+      "sha256": "fcd1d9c4ea0e579b845094cbdc96b9c9e4809fb549d46675b94f81535a405ea5",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA2-photo-1.jpg",
+      "visually_inspected": true,
+      "evidence_kind": "publisher still photo; no motion/timestamp or performance test"
+    },
+    {
+      "source": "CREA2",
+      "source_index": 2,
+      "request_url": "https://assets.st-note.com/img/1727837488-RJsLHySOmbwPDpZaWNVKM7Ae.jpg?width=1200",
+      "final_url": "https://assets.st-note.com/img/1727837488-RJsLHySOmbwPDpZaWNVKM7Ae.jpg?width=1200",
+      "status": 200,
+      "content_type": "image/jpg",
+      "retrieved_at": "2026-10-26T07:48:59.358751+00:00",
+      "bytes": 160819,
+      "sha256": "5d9e65cfc8ffb5a6d34990457987c51a855bb9bb753b879083a50906a274fac3",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA2-photo-2.jpg",
+      "visually_inspected": true,
+      "evidence_kind": "publisher still photo; no motion/timestamp or performance test"
+    },
+    {
+      "source": "CREA2",
+      "source_index": 3,
+      "request_url": "https://assets.st-note.com/img/1727837577-UPOqfsQzyMCKHITjud4NaGhx.jpg?width=1200",
+      "final_url": "https://assets.st-note.com/img/1727837577-UPOqfsQzyMCKHITjud4NaGhx.jpg?width=1200",
+      "status": 200,
+      "content_type": "image/jpg",
+      "retrieved_at": "2026-10-26T07:48:59.809750+00:00",
+      "bytes": 225817,
+      "sha256": "71f1ca8b1aefa9a19fdba16fb573e908bd88a3c07a26c39bdc7f4578b2332c61",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA2-photo-3.jpg",
+      "visually_inspected": true,
+      "evidence_kind": "publisher still photo; no motion/timestamp or performance test"
+    },
+    {
+      "source": "SH_MIDSOLE",
+      "source_index": 2,
+      "request_url": "https://images.squarespace-cdn.com/content/v1/57654f722e69cf4416d26829/1703668814102-UC0EM673KPEMI7XKDME7/dr-martens-boot-resole-midsole-repair-before-1.jpg",
+      "final_url": "https://images.squarespace-cdn.com/content/v1/57654f722e69cf4416d26829/1703668814102-UC0EM673KPEMI7XKDME7/dr-martens-boot-resole-midsole-repair-before-1.jpg",
+      "status": 200,
+      "content_type": "image/jpeg",
+      "retrieved_at": "2026-10-26T07:49:00.918253+00:00",
+      "bytes": 53410,
+      "sha256": "2f26a637887910252d5e51094684f94ea664501f1f0acd101017cd58f17dd617",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/SH_MIDSOLE-photo-0.jpg",
+      "visually_inspected": true,
+      "evidence_kind": "publisher still photo; no motion/timestamp or performance test"
+    },
+    {
+      "source": "SH_MIDSOLE",
+      "source_index": 4,
+      "request_url": "https://images.squarespace-cdn.com/content/v1/57654f722e69cf4416d26829/1703668816012-TO4DSW4ZSCZ9295ID4NA/dr-martens-boot-resole-midsole-repair-after-1.jpg",
+      "final_url": "https://images.squarespace-cdn.com/content/v1/57654f722e69cf4416d26829/1703668816012-TO4DSW4ZSCZ9295ID4NA/dr-martens-boot-resole-midsole-repair-after-1.jpg",
+      "status": 200,
+      "content_type": "image/jpeg",
+      "retrieved_at": "2026-10-26T07:49:01.387849+00:00",
+      "bytes": 70865,
+      "sha256": "23a460a7f9c556df67d6c336ea005598c1aa1877d5ee8a022d9c8247b3634721",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/SH_MIDSOLE-photo-1.jpg",
+      "visually_inspected": true,
+      "evidence_kind": "publisher still photo; no motion/timestamp or performance test"
+    },
+    {
+      "source": "SH_MIDSOLE",
+      "source_index": 6,
+      "request_url": "https://images.squarespace-cdn.com/content/v1/57654f722e69cf4416d26829/1703668849397-XAAJ2OHB68EASTDZRPO1/dr-martens-boot-resole-midsole-repair-before-2.jpg",
+      "final_url": "https://images.squarespace-cdn.com/content/v1/57654f722e69cf4416d26829/1703668849397-XAAJ2OHB68EASTDZRPO1/dr-martens-boot-resole-midsole-repair-before-2.jpg",
+      "status": 200,
+      "content_type": "image/jpeg",
+      "retrieved_at": "2026-10-26T07:49:01.808432+00:00",
+      "bytes": 65418,
+      "sha256": "8eb3a60e5bf160a31cf1b600ccef24a2923395e28bbeeb173dab6f15888bfeb9",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/SH_MIDSOLE-photo-2.jpg",
+      "visually_inspected": true,
+      "evidence_kind": "publisher still photo; no motion/timestamp or performance test"
+    },
+    {
+      "source": "SH_MIDSOLE",
+      "source_index": 8,
+      "request_url": "https://images.squarespace-cdn.com/content/v1/57654f722e69cf4416d26829/1703668850987-P9ID307KDUNTLRTG8W0W/dr-martens-boot-resole-midsole-repair-after-2.jpg",
+      "final_url": "https://images.squarespace-cdn.com/content/v1/57654f722e69cf4416d26829/1703668850987-P9ID307KDUNTLRTG8W0W/dr-martens-boot-resole-midsole-repair-after-2.jpg",
+      "status": 200,
+      "content_type": "image/jpeg",
+      "retrieved_at": "2026-10-26T07:49:02.071631+00:00",
+      "bytes": 62446,
+      "sha256": "d5908cca329db97768026db8ea36322e6a8b984845e323be69cf89f868b3c870",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/SH_MIDSOLE-photo-3.jpg",
+      "visually_inspected": true,
+      "evidence_kind": "publisher still photo; no motion/timestamp or performance test"
+    }
+  ],
+  "new_claim_candidates": [
+    {
+      "id": "N11",
+      "source_ids": [
+        "AWL",
+        "AWL_ABOUT"
+      ],
+      "topic": "Intact welt gives a conditional alternative joining method",
+      "original_summary": "修方以舊沿條完整為前提，另縫中底作黏外底的基座；原黃線接鞋面與沿條，新線接沿條與中底，兩條線分工不同。",
+      "anchors": [
+        {
+          "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/AWL.txt",
+          "text_sha256": "5dd14682eecb795a2ececa674650831c23e8a87a829715add44a855057a0f7ce",
+          "lines": [
+            16,
+            18
+          ],
+          "anchor_sha256": "a24b5824a9ff8cdca4b136b8d4be12e6380d2e7825b4da4807dc5a0ff5163d38"
+        }
+      ],
+      "new_vs_R10": "R10只有拆掉舊沿條再重做熱接，沒有保留完整沿條／另縫中底的決策分支。",
+      "new_vs_prior_research": "Prior Mono/Stafford material mentions retained midsoles or added midsoles but not this intact-welt condition plus explicitly separate two-seam functions; do not recount those shared movements.",
+      "new_natural_spoken_units_planning": [
+        200,
+        300
+      ],
+      "adoption": "CANDIDATE_ONLY",
+      "cannot_claim": [
+        "This was done to the UK commenter’s boots.",
+        "All Dr. Martens can be repaired this way.",
+        "Second seam is the factory outsole heat weld.",
+        "Measured longer life, cheaper future repair or waterproofing."
+      ]
+    },
+    {
+      "id": "N12",
+      "source_ids": [
+        "CREA",
+        "CREA2"
+      ],
+      "topic": "One documented resole job exposes a detached twisted rib and extends to rebuild",
+      "original_summary": "八孔靴拆修時遇到脫落扭曲的rib，修方認為餘量不足以重黏，遂換rib並做皮沿條；續篇明示同雙完工，外底與跟換為另廠部件。",
+      "anchors": [
+        {
+          "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA.txt",
+          "text_sha256": "d6886734cddcf9454bd155f5f410e82ffba45d6ae0a613251b3347632194a034",
+          "lines": [
+            6,
+            15
+          ],
+          "anchor_sha256": "1becc09b81bcaea6952e4d3a40b8cab809d90c152469f97230780d6793229fbd"
+        },
+        {
+          "text_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA2.txt",
+          "text_sha256": "d38e84a0080b7c304f5d0a73a3b3caef3d08ae1755d2936046e5a57121a7bb18",
+          "lines": [
+            5,
+            12
+          ],
+          "anchor_sha256": "48b582f0853be024da42247906611250b7923866cfc7011a9fb7e114a1ea4d22"
+        }
+      ],
+      "new_vs_R10": "R10未見rib檢查／失效判斷，也沒有由內底接合部延伸到皮沿條及非原廠外底的完整另案。",
+      "new_vs_prior_research": "No matching URL or rib-replacement case in protected C07 research/history. Orson liner and Mono upper patch are different repairs.",
+      "new_natural_spoken_units_planning": [
+        220,
+        320
+      ],
+      "adoption": "CANDIDATE_ONLY",
+      "cannot_claim": [
+        "Exact model is 1460.",
+        "This pair was worn four years or had a worn-through sole.",
+        "Rib failed from factory defect, heat, water or owner misuse.",
+        "The complete work took the three hours between publication timestamps.",
+        "Factory procedure, globally available repair or independently tested durability."
+      ]
+    }
+  ],
+  "deduplication": {
+    "new_research": [
+      "AWL intact-welt conditional + two seam functions",
+      "CREA part 1/2 same-pair detached-rib diagnosis + modified finish"
+    ],
+    "prior_not_recounted": [
+      "FAQ 39.936-second yellow-line/non-welted diagnostic, D01-D04: 160-260 units",
+      "Optional authorised-service price/repair-warranty conditions D05-D06: 120-180 units",
+      "Orson liner/colour case D07-D08",
+      "Mono glue-on sole/tear case D09-D10",
+      "R4 Coburg and Stafford cases",
+      "All already-used UK 38.144-second demonstration actions"
+    ],
+    "old_research_case_refresh": [
+      "SH_MIDSOLE"
+    ],
+    "excluded_scope_candidates": [
+      "BRC_QUAD",
+      "NAMELESS",
+      "DIY1",
+      "MOGA",
+      "KW (menu without obtained work video)"
+    ]
+  },
+  "proposed_scope": {
+    "mode": "one concrete worn-boot user problem, with explicitly separate source objects",
+    "central_question": "磨掉的是鞋底，為何換底不是拆掉一圈線就好；為留住鞋面，接合處完整與否會讓實際修方選擇什麼？",
+    "opening_promise_change_required": [
+      "c7r20104: focus question on why removing stitches alone does not remove the heat-welded sole.",
+      "c7r20105: replace promise to follow this one pair with promise about this specific worn-boot repair problem.",
+      "c7r20106: ask which joining parts must remain sound or be rebuilt, without assuming every case has identical construction."
+    ],
+    "case_binding": "UK public commenter, UK authorised demonstration, Vancouver service explanation and Japanese same-pair repair record remain separate; no fabricated shared trip or owner.",
+    "chapter_scope_proposal": [
+      "Keep UK wearer problem and source attribution.",
+      "Add old FAQ discrimination before service selection.",
+      "Explain existing factory inseam/welt versus heat weld once.",
+      "Ask if intact welt can remain: one brief AWL conditional branch.",
+      "Turn to one separate Japanese pair: rib obstacle, rebuild decision, documented modified finish.",
+      "Return explicitly to UK customer outcome and limits; no new claimed wear test."
+    ],
+    "anonymous_original_illustration_intents": [
+      {
+        "case": "AWL guide",
+        "intent": "匿名修鞋師托著概念靴，一張無品牌剖面示意以兩條不同位置的線區分鞋面／沿條與沿條／中底；不畫成UK顧客靴，不照搬原照或真人面貌。",
+        "no_claim": "No asserted specific customer, model, year of physical work or observed installation motion."
+      },
+      {
+        "case": "CREA part 1/2",
+        "intent": "另設匿名修鞋師及酒紅八孔靴輪廓；拆開狀態只畫已見脫落布rib，完工另畫保留折痕的舊鞋面配改件底；不畫未拍到的裁皮、針距、黏合測試或顧客試穿。",
+        "no_claim": "Not the UK wearer, factory repair, exact 1460 or a verbatim recreation of original photographs."
+      },
+      {
+        "case": "SH_MIDSOLE alternative excluded",
+        "intent": "若未來改選此案，另設匿名角色與黑色鬆緊側靴，先顯示後跟裂口，修後仍留接縫；不能畫成完全無痕或與CREA／UK混成一雙。",
+        "no_claim": "Not included in current planning total; model and work date unknown."
+      }
+    ]
+  },
+  "capacity_planning": {
+    "only_truly_new_research_units": [
+      420,
+      620
+    ],
+    "old_FAQ_D01_D04_once": [
+      160,
+      260
+    ],
+    "old_optional_terms_D05_D06_once": [
+      120,
+      180
+    ],
+    "gross_added_without_optional_terms": [
+      580,
+      880
+    ],
+    "gross_added_with_optional_terms": [
+      700,
+      1060
+    ],
+    "suggested_deduction_for_replaced_R10_repeated_motion_or_join_explanation": [
+      80,
+      150
+    ],
+    "deduction_is_editing_reserve_not_counted_deletion": true,
+    "projected_whole_units_without_optional_terms": [
+      2553,
+      2923
+    ],
+    "projected_whole_units_with_optional_terms": [
+      2673,
+      3103
+    ],
+    "shortfall_from_3500_units_with_optional_terms": [
+      397,
+      827
+    ],
+    "projected_seconds_at_4_to_5_units_per_second_with_optional_terms": [
+      534.6,
+      775.75
+    ],
+    "projected_seconds_at_4_5_units_per_second_with_optional_terms": [
+      594,
+      689.56
+    ],
+    "whole_seconds_values_are_planning_only": true,
+    "not_actual_audio_PASS_or_FAIL": true,
+    "conclusion": "Real new decision and obstacle nodes found, but none obtains the missing long primary video or proves a natural 720-840-second body. Do not commission R11 as a guaranteed +1000-1400-unit fill. Hold duration claim; any author adoption requires fresh independent source/native and all eight language QA.",
+    "strict_same_original_UK_pair_new_work_evidence_units": 0,
+    "if_each_new_case_requires_explicit_worn_through_cause_exclude_N12_new_units": [
+      200,
+      300
+    ],
+    "strict_case_limit": "CREA confirms a resole request but not its wear cause; broader same-repair-problem scope must be explicit before counting N12."
+  },
+  "access_limitations": [
+    {
+      "id": "ROSE_YT",
+      "request_url": "https://www.youtube.com/watch?v=BO6z55bFMU0",
+      "retrieved_at": "2026-10-26T07:46:17.594714+00:00",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "id": "KEY_YT",
+      "request_url": "https://www.youtube.com/watch?v=f0x9-aHiW-0",
+      "retrieved_at": "2026-10-26T07:46:17.609341+00:00",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "id": "STRIDE_LEAD",
+      "request_url": "https://stridewise.com/can-you-resole-doc-martens/",
+      "status": 403,
+      "final_url": "https://stridewise.com/can-you-resole-doc-martens/",
+      "content_type": "text/plain; charset=UTF-8",
+      "retrieved_at": "2026-10-26T07:46:17.612205+00:00",
+      "bytes": 17,
+      "sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+      "raw_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/STRIDE_LEAD.html"
+    }
+  ],
+  "unobtained_video_candidates": [
+    {
+      "url": "https://www.youtube.com/watch?v=BO6z55bFMU0",
+      "publisher": "Rose Anvil",
+      "discovery_published": "2020-03-14 (search metadata only, not independently checked original)",
+      "status": "Original watch page unavailable: web open failed and executor CONNECT 403. No stream, timestamps or process adopted."
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=f0x9-aHiW-0",
+      "publisher": "The Key Cobbler",
+      "discovery_published": "2021-12-27 (search metadata only)",
+      "status": "Already a prior research lead; original unavailable. No capacity."
+    },
+    {
+      "url": "https://youtu.be/2SNqE0_oLtg",
+      "publisher": "KW Shoe Repair linked full-process video",
+      "status": "Public service page link obtained; original video not fetched after known YouTube policy denial. No timestamps or capacity."
+    }
+  ],
+  "protected_files_check": {
+    "before_manifest": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/protected-before.json",
+    "before_manifest_sha256": "4d56707128d01e5390e835c6ba9eb3d48c053820851d208e1b4856c8d2568752",
+    "initial_file_count": 568,
+    "final_check_pending": false,
+    "permitted_repo_writes": [
+      "candidate-scope-capacity-r11.md",
+      "candidate-scope-capacity-r11.json"
+    ],
+    "external_raw_root": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11",
+    "after_manifest": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/protected-after.json",
+    "after_manifest_sha256": "4d56707128d01e5390e835c6ba9eb3d48c053820851d208e1b4856c8d2568752",
+    "all_preexisting_files_unchanged": true,
+    "preexisting_modified_or_missing": [],
+    "concurrent_new_files": [],
+    "core_source_author_native_claims_approvals_dictionary_research_and_i18n_unchanged": true
+  },
+  "lifecycle": {
+    "R10_adopted_or_modified": false,
+    "translations_modified": false,
+    "new_video_written": false,
+    "source_pass_issued": false,
+    "native_pass_issued": false,
+    "media_pass_issued": false,
+    "owner_approval_issued": false,
+    "paid_provider_requests": 0,
+    "backend_mutations": 0,
+    "episode_media_generated": 0,
+    "git_operations": false
+  },
+  "metadata_anchors": [
+    {
+      "id": "AWL",
+      "metadata_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/AWL.metadata.json",
+      "metadata_sha256": "e1eb6577381580b00b227c1c4315baf1f16255c67af177897fdfe45485322aba"
+    },
+    {
+      "id": "CREA",
+      "metadata_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA.metadata.json",
+      "metadata_sha256": "b619e1f829d69435fd3bf0c49b53c8da6ccae0a75a985d6ff421e768fef712f0"
+    },
+    {
+      "id": "CREA2",
+      "metadata_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA2.metadata.json",
+      "metadata_sha256": "b1bd1228324c913ec46b5d4349b1e0a93466f27b5395a842eae875a8a2d97ca7"
+    },
+    {
+      "id": "BRC_QUAD",
+      "metadata_path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/BRC_QUAD.metadata.json",
+      "metadata_sha256": "bf5a29743c00385b70bad55b2b34bcc38c441ca0c4fafc3de9399f95a6298b3a"
+    }
+  ],
+  "external_asset_inventory": [
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/AWL-photo-0.jpg",
+      "bytes": 125033,
+      "sha256": "3dce7f4082a7f031645477bae6441cf9634a231f5aa0cc9c7c3e1bfe51a41cf2"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/AWL-photo-0.receipt.json",
+      "bytes": 592,
+      "sha256": "7dbcc84124c061a4de07ea54b4cbd93b2037edaf962674dd6c9a0b7fa44b9594"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/AWL-photo-1.jpg",
+      "bytes": 153229,
+      "sha256": "0494ad75d5ab6df2d88893cd6ae385587d386784d317bd616cf9a592bdceafca"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/AWL-photo-1.receipt.json",
+      "bytes": 592,
+      "sha256": "b2a6bff452b205bcd86787f38c8919ded6cff37b0ebb96a112ab18388f90d44f"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/AWL.html",
+      "bytes": 214028,
+      "sha256": "68345a4b4505ef773b8b925a6a024a6b7d339647b48eac944669b6b023ec5f4d"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/AWL.images.json",
+      "bytes": 11100,
+      "sha256": "ccec8d91dae4cca77b27b0456b8002dd925880454756588f26ea41d3aa9ed3f0"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/AWL.metadata.json",
+      "bytes": 630,
+      "sha256": "e1eb6577381580b00b227c1c4315baf1f16255c67af177897fdfe45485322aba"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/AWL.receipt.json",
+      "bytes": 627,
+      "sha256": "9a536c592519f6382df2365fad9c3b6d0142ccbd51d4f220df352efafec9c60a"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/AWL.txt",
+      "bytes": 11672,
+      "sha256": "5dd14682eecb795a2ececa674650831c23e8a87a829715add44a855057a0f7ce"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/AWL_ABOUT.html",
+      "bytes": 176362,
+      "sha256": "9421514bcf29401a6a64ea246b7bc3133b39f0792f95e2d9975a771d17397ffa"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/AWL_ABOUT.receipt.json",
+      "bytes": 628,
+      "sha256": "abf3ae89c442f3e884cb45820180a635ff001df63b344f0dc49d58e32f73e5a4"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/AWL_ABOUT.txt",
+      "bytes": 1158,
+      "sha256": "130557fb163bc187ba8a45c74baf9dfbdbc3e1cb76fbb89589f176a4654ed7c4"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/BRC_QUAD.html",
+      "bytes": 195078,
+      "sha256": "49afa16da921a040c4cc10c8915bf22abaa00a6f051851fccec766e832cd4f87"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/BRC_QUAD.metadata.json",
+      "bytes": 605,
+      "sha256": "bf5a29743c00385b70bad55b2b34bcc38c441ca0c4fafc3de9399f95a6298b3a"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/BRC_QUAD.receipt.json",
+      "bytes": 718,
+      "sha256": "df27114202dfd752ff8643a55361448cbc4193a3a4e62dfcfda2d375500f3edb"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/BRC_QUAD.txt",
+      "bytes": 3429,
+      "sha256": "f1ad0612cadb8543918ee01f7f06962240616a71ec5e6c0a98448a044d868dd4"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA-photo-0.jpg",
+      "bytes": 194109,
+      "sha256": "190952cdd7fe2267a7a692bfe45e98504e095c4868e48ba90b928c1368324c5d"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA-photo-0.receipt.json",
+      "bytes": 541,
+      "sha256": "4bd35c6420708561d477da2d4abf7b7d019ac4f9dd29ea0e1b7557c178702049"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA-photo-1.jpg",
+      "bytes": 284678,
+      "sha256": "c00b13dad9204c2c5890e6321c983c4996613813960957e7dd3b91302fa69233"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA-photo-1.receipt.json",
+      "bytes": 541,
+      "sha256": "af0c1dc6fb65b18ea613a5add0fd59ff8b515e759c40bd51459def34c423c7ae"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA-photo-2.jpg",
+      "bytes": 204381,
+      "sha256": "247ec3fa76a99bf48d772595db91af08b261af6ad010e0482a67f61acc9fc5ee"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA-photo-2.receipt.json",
+      "bytes": 541,
+      "sha256": "e2ca415758e33c45b3419ea05886598b807fe677a18e72c7e77090751c22f04d"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA.html",
+      "bytes": 307325,
+      "sha256": "78cfa658f21540d33fdedb06f802f124268e58b6952eacdfd616fb74ac7101eb"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA.images.json",
+      "bytes": 891,
+      "sha256": "330b2bc313462d3ae99aa8798f6faa6ad715e7403496d919cb33171f014c8d6e"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA.metadata.json",
+      "bytes": 858,
+      "sha256": "b619e1f829d69435fd3bf0c49b53c8da6ccae0a75a985d6ff421e768fef712f0"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA.receipt.json",
+      "bytes": 628,
+      "sha256": "55a96b2a45c5eea9b7087969bb5986e2cbd7ee9c2a36636022f2dfb99dbffc4f"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA.txt",
+      "bytes": 2542,
+      "sha256": "d6886734cddcf9454bd155f5f410e82ffba45d6ae0a613251b3347632194a034"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA2-photo-0.jpg",
+      "bytes": 200359,
+      "sha256": "5a7b06764ab67f7f6a54c1ee921df2c06de66de7e0bfd57072b5e6a0c3a0655d"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA2-photo-0.receipt.json",
+      "bytes": 543,
+      "sha256": "ba254c841578a520fcf0da05f86c2c4c097b6eae1e1cf54a4f36743f3e0b9890"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA2-photo-1.jpg",
+      "bytes": 200863,
+      "sha256": "fcd1d9c4ea0e579b845094cbdc96b9c9e4809fb549d46675b94f81535a405ea5"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA2-photo-1.receipt.json",
+      "bytes": 543,
+      "sha256": "3164d78fbbc3f195fe860667adbb9ef27f8d519b6c3589794ba2145f043b02e7"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA2-photo-2.jpg",
+      "bytes": 160819,
+      "sha256": "5d9e65cfc8ffb5a6d34990457987c51a855bb9bb753b879083a50906a274fac3"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA2-photo-2.receipt.json",
+      "bytes": 543,
+      "sha256": "01966aaaae684b0179197206913b149aae52eb9cf863794127fe686e0e6c34c0"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA2-photo-3.jpg",
+      "bytes": 225817,
+      "sha256": "71f1ca8b1aefa9a19fdba16fb573e908bd88a3c07a26c39bdc7f4578b2332c61"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA2-photo-3.receipt.json",
+      "bytes": 543,
+      "sha256": "33fc99616fb0b7b0cbbb0725e20446caffec34fedcd4baaf2fb434aa44842106"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA2.html",
+      "bytes": 304907,
+      "sha256": "b2ddc81699096853275112c76d8ab7a2a70b72e9452b62d6681b533ce98c7fa5"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA2.images.json",
+      "bytes": 1187,
+      "sha256": "5f933fd1b69be70eb38028f9ffe36fee5dabb9237302babe3bfee1f7c1a74c44"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA2.metadata.json",
+      "bytes": 859,
+      "sha256": "b1bd1228324c913ec46b5d4349b1e0a93466f27b5395a842eae875a8a2d97ca7"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA2.receipt.json",
+      "bytes": 631,
+      "sha256": "579db79fb17b81e793120eb051354146ee4298b67d400a52a88e220e96f3abf3"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA2.txt",
+      "bytes": 2268,
+      "sha256": "d38e84a0080b7c304f5d0a73a3b3caef3d08ae1755d2936046e5a57121a7bb18"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA_INDEX.html",
+      "bytes": 989938,
+      "sha256": "c7e546bcc5e090926e85c40f347885cf5208bccd6cceb2d143443da2893e333e"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA_INDEX.receipt.json",
+      "bytes": 692,
+      "sha256": "422cb535a03d38cfbf11102ac409cd1b517f2000f5d99a166bb3d9d06e9dabce"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/CREA_INDEX.txt",
+      "bytes": 8616,
+      "sha256": "d0d628e7c5588ce6f76d74bcc387e3b06fd675a1ba306bf1fef4902dcd782b90"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/DIY1.html",
+      "bytes": 101449,
+      "sha256": "4edaa3c9c83b269f75b61e2f9c71d2a8785cb75d50ead3d8c8b2586a7e3f8290"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/DIY1.receipt.json",
+      "bytes": 686,
+      "sha256": "ae98abdf646a54ff260e6b429028f265a77d5465274923c5b7136755bf2237c6"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/DIY1.txt",
+      "bytes": 4730,
+      "sha256": "51d80a3df2219b5b9179c3abdd0162743d75c68cb234cc55fd606c179042e8f0"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/KEY_YT.receipt.json",
+      "bytes": 209,
+      "sha256": "601d4695bfaafd8221776c30291f77bf7dc4872339c9c298f190325bb4178b47"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/KW.html",
+      "bytes": 292797,
+      "sha256": "0b6652e5276d933e00dc9e7bc6de16b211504d40a8d1fa6adf1cf2ddb59557ad"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/KW.receipt.json",
+      "bytes": 628,
+      "sha256": "cf67f24ceab14ce9ad5bb406b6438d91e0779961accb7c133cb12695e1098a96"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/KW.txt",
+      "bytes": 2932,
+      "sha256": "6de4873d29445678bced7693c08cc02f3fceff67e664bec5d2f95dd49c330595"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/MOGA.html",
+      "bytes": 99449,
+      "sha256": "601a449a3e56be94e8c210bc7026d562e31dd15300c1ba1a03d67541e6cbe250"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/MOGA.receipt.json",
+      "bytes": 643,
+      "sha256": "950f03690024c0f2d1b9323f16a7114ee61841e81495e3b8ced8ec7031d0656a"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/MOGA.txt",
+      "bytes": 1845,
+      "sha256": "22000ce7f8a85da6e39044f25eedce5bb76ebfd2decc0523e311cfc5da95a341"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/NAMELESS.html",
+      "bytes": 108488,
+      "sha256": "8db3b031745c7ffcfcbb39d41cfd8039415717ec3e00f1feb252c51c7815eced"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/NAMELESS.receipt.json",
+      "bytes": 666,
+      "sha256": "40e3e0ff7e8d853279bc8281689bdc16bf51de31fd14d2eaf40deae14524136d"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/NAMELESS.txt",
+      "bytes": 4460,
+      "sha256": "b5a2b3d0613d1061761d056c539c141f5687844ae9704799a1eaef2c7922ccb7"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/ROSE_YT.receipt.json",
+      "bytes": 210,
+      "sha256": "e80020b510dba653283a0c340b8fea9468657881d1bf56ad6525380204a4859f"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/SH_MIDSOLE-photo-0.jpg",
+      "bytes": 53410,
+      "sha256": "2f26a637887910252d5e51094684f94ea664501f1f0acd101017cd58f17dd617"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/SH_MIDSOLE-photo-0.receipt.json",
+      "bytes": 703,
+      "sha256": "e185f81a8371232940d57fed551daa081f97c096ae6abc883386ac9500e27e40"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/SH_MIDSOLE-photo-1.jpg",
+      "bytes": 70865,
+      "sha256": "23a460a7f9c556df67d6c336ea005598c1aa1877d5ee8a022d9c8247b3634721"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/SH_MIDSOLE-photo-1.receipt.json",
+      "bytes": 701,
+      "sha256": "9136dfce41ed984db98a8223c881d78d9d373ff50e8c7f430b13baf9f3b4af35"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/SH_MIDSOLE-photo-2.jpg",
+      "bytes": 65418,
+      "sha256": "8eb3a60e5bf160a31cf1b600ccef24a2923395e28bbeeb173dab6f15888bfeb9"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/SH_MIDSOLE-photo-2.receipt.json",
+      "bytes": 703,
+      "sha256": "9b0babfc1244280105266c7b152acbd90eaf9f05b449a471375981b6fe0f0373"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/SH_MIDSOLE-photo-3.jpg",
+      "bytes": 62446,
+      "sha256": "d5908cca329db97768026db8ea36322e6a8b984845e323be69cf89f868b3c870"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/SH_MIDSOLE-photo-3.receipt.json",
+      "bytes": 701,
+      "sha256": "a081bf754b9cc94bd8e3504f676638d73623eaf4f4d7a72e79490809f24a11c7"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/SH_MIDSOLE.html",
+      "bytes": 153495,
+      "sha256": "60e97ecde09815ab11380141b670bd0605f22925e06efe3c6620d424931ed311"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/SH_MIDSOLE.images.json",
+      "bytes": 7644,
+      "sha256": "518a0b03c11beca265f32f4cb56542c7ba585ea5f9d7e30ce3537f64d5ae0b9d"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/SH_MIDSOLE.receipt.json",
+      "bytes": 703,
+      "sha256": "4abf69479e6382dcc001360e99a4933b5c4bd8086d63f9d864603545d380ab0c"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/SH_MIDSOLE.txt",
+      "bytes": 4793,
+      "sha256": "f6bf37408457166406ec3bb901e180ceae5193809e61013028dab8a53d6be23b"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/STRIDE_LEAD.html",
+      "bytes": 17,
+      "sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/STRIDE_LEAD.receipt.json",
+      "bytes": 473,
+      "sha256": "6d11896859770c0bdbed338f10651e1352f6bc997e4692054fde675e23a62234"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/build_proposal.py",
+      "bytes": 15287,
+      "sha256": "dcd969d5b00ec5a4283b4513149b98bd9e8640f20cf93c2370588ba24aaa2fd3"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/fetch_sources.py",
+      "bytes": 1785,
+      "sha256": "7e3c4a88f33a83dea8c80db7239531263f1a750a2898a511e80f8ecc3285f5bc"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/protected-after.json",
+      "bytes": 61672,
+      "sha256": "4d56707128d01e5390e835c6ba9eb3d48c053820851d208e1b4856c8d2568752"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c07-audit/capacity-r11/protected-before.json",
+      "bytes": 61672,
+      "sha256": "4d56707128d01e5390e835c6ba9eb3d48c053820851d208e1b4856c8d2568752"
+    }
+  ]
+}

@@ -1,0 +1,417 @@
+{
+  "schema_version": 1,
+  "kind": "brand-story-remake-readiness",
+  "observed_at": "2026-10-25T10:36:08.705Z",
+  "timezone": "Asia/Taipei",
+  "source_commit": "2b20c30d359fe5d93a4ea66f013a52fa20a35c05",
+  "status": "preproduction_only_paid_entry_held",
+  "not_a_media_qa": true,
+  "task_authorization": {
+    "user_request": "繼續完成後台的品牌故事未完成的影片，並且用新規則重製",
+    "standing_scope": "Continue source, editorial, review and production preparation under the existing request. Missing technical access or accounting setup does not require re-approval of the entire task.",
+    "does_not_claim": "owner viewed or approved newly generated media"
+  },
+  "inventory": {
+    "enumeration": "Official automation/videos read-only format=drama&shorts=exclude&limit=200; first page returned 104, so no next page was required.",
+    "backend_drama_count": 104,
+    "backend_story_count": 22,
+    "unfinished_project_count": 19,
+    "unique_subject_count": 18,
+    "unfinished_definition": "youtube_video_id is null and dropped_at is null",
+    "duplicate": {
+      "preserve": "story-everyday-kikkoman-c08",
+      "prefer_existing_revision": "story-everyday-kikkoman-c08-short-v8",
+      "action": "preserve_both_original_records_until_explicit_version_reconciliation"
+    },
+    "originals_preserved": {
+      "checked_files": 53,
+      "hash_matches": 53,
+      "mismatches": [],
+      "result": "all_referenced_local_original_files_unchanged",
+      "backend_mutation_by_this_check": false
+    },
+    "unfinished": [
+      {
+        "slug": "story-everyday-zippo-c20-short-v8",
+        "stage": "script review",
+        "last_synced_at": "2026-10-24T10:36:57.762721Z",
+        "youtube_video_id": null,
+        "series_slug": "brand-stories-everyday-reversals",
+        "review_snapshot": "/workspace/work/brand-story-20261025/story-everyday-zippo-c20-short-v8.json"
+      },
+      {
+        "slug": "story-everyday-kikkoman-c08-short-v8",
+        "stage": "script review",
+        "last_synced_at": "2026-10-24T10:36:52.262231Z",
+        "youtube_video_id": null,
+        "series_slug": "brand-stories-everyday-reversals",
+        "review_snapshot": "/workspace/work/brand-story-20261025/story-everyday-kikkoman-c08-short-v8.json"
+      },
+      {
+        "slug": "story-everyday-patagonia-c09",
+        "stage": "script review",
+        "last_synced_at": "2026-10-24T09:53:34.579054Z",
+        "youtube_video_id": null,
+        "series_slug": "brand-stories-everyday-reversals",
+        "review_snapshot": "/workspace/work/brand-story-20261025/story-everyday-patagonia-c09.json"
+      },
+      {
+        "slug": "story-everyday-seven-bank-c19",
+        "stage": "script review",
+        "last_synced_at": "2026-10-23T18:16:37.539176Z",
+        "youtube_video_id": null,
+        "series_slug": "brand-stories-everyday-reversals",
+        "review_snapshot": "/workspace/work/brand-story-20261025/story-everyday-seven-bank-c19.json"
+      },
+      {
+        "slug": "story-adapt-doraemon-after-fujiko",
+        "stage": "blocked",
+        "last_synced_at": "2026-10-23T15:28:50.818115Z",
+        "youtube_video_id": null,
+        "series_slug": "brand-stories-adapt",
+        "review_snapshot": "/workspace/work/brand-story-20261025/story-adapt-doraemon-after-fujiko.json"
+      },
+      {
+        "slug": "story-everyday-frixion-c15",
+        "stage": "script review",
+        "last_synced_at": "2026-10-23T11:08:57.479716Z",
+        "youtube_video_id": null,
+        "series_slug": "brand-stories-everyday-reversals",
+        "review_snapshot": "/workspace/work/brand-story-20261025/story-everyday-frixion-c15.json"
+      },
+      {
+        "slug": "story-everyday-camelbak-c14",
+        "stage": "script review",
+        "last_synced_at": "2026-10-23T11:08:56.960518Z",
+        "youtube_video_id": null,
+        "series_slug": "brand-stories-everyday-reversals",
+        "review_snapshot": "/workspace/work/brand-story-20261025/story-everyday-camelbak-c14.json"
+      },
+      {
+        "slug": "story-everyday-ucc-c11",
+        "stage": "script review",
+        "last_synced_at": "2026-10-23T11:08:56.452638Z",
+        "youtube_video_id": null,
+        "series_slug": "brand-stories-everyday-reversals",
+        "review_snapshot": "/workspace/work/brand-story-20261025/story-everyday-ucc-c11.json"
+      },
+      {
+        "slug": "story-everyday-oxo-c10",
+        "stage": "script review",
+        "last_synced_at": "2026-10-23T11:08:55.934129Z",
+        "youtube_video_id": null,
+        "series_slug": "brand-stories-everyday-reversals",
+        "review_snapshot": "/workspace/work/brand-story-20261025/story-everyday-oxo-c10.json"
+      },
+      {
+        "slug": "story-everyday-kikkoman-c08",
+        "stage": "script review",
+        "last_synced_at": "2026-10-23T11:08:55.103038Z",
+        "youtube_video_id": null,
+        "series_slug": "brand-stories-everyday-reversals",
+        "review_snapshot": "/workspace/work/brand-story-20261025/story-everyday-kikkoman-c08.json"
+      },
+      {
+        "slug": "story-everyday-dr-martens-c07",
+        "stage": "script review",
+        "last_synced_at": "2026-10-23T11:08:53.898507Z",
+        "youtube_video_id": null,
+        "series_slug": "brand-stories-everyday-reversals",
+        "review_snapshot": "/workspace/work/brand-story-20261025/story-everyday-dr-martens-c07.json"
+      },
+      {
+        "slug": "story-everyday-play-doh-c06",
+        "stage": "script review",
+        "last_synced_at": "2026-10-23T11:08:52.987363Z",
+        "youtube_video_id": null,
+        "series_slug": "brand-stories-everyday-reversals",
+        "review_snapshot": "/workspace/work/brand-story-20261025/story-everyday-play-doh-c06.json"
+      },
+      {
+        "slug": "story-everyday-kincho-c05",
+        "stage": "script review",
+        "last_synced_at": "2026-10-23T11:08:52.131135Z",
+        "youtube_video_id": null,
+        "series_slug": "brand-stories-everyday-reversals",
+        "review_snapshot": "/workspace/work/brand-story-20261025/story-everyday-kincho-c05.json"
+      },
+      {
+        "slug": "story-everyday-bubble-wrap-c04",
+        "stage": "script review",
+        "last_synced_at": "2026-10-23T11:08:50.835739Z",
+        "youtube_video_id": null,
+        "series_slug": "brand-stories-everyday-reversals",
+        "review_snapshot": "/workspace/work/brand-story-20261025/story-everyday-bubble-wrap-c04.json"
+      },
+      {
+        "slug": "story-everyday-moleskine-c03",
+        "stage": "outline approved",
+        "last_synced_at": "2026-10-22T02:00:14.230682Z",
+        "youtube_video_id": null,
+        "series_slug": "brand-stories-everyday-reversals",
+        "review_snapshot": "/workspace/work/brand-story-20261025/story-everyday-moleskine-c03.json"
+      },
+      {
+        "slug": "story-adapt-seiko-quartz-astron",
+        "stage": "blocked",
+        "last_synced_at": "2026-10-21T23:59:28.245002Z",
+        "youtube_video_id": null,
+        "series_slug": "brand-stories-adapt",
+        "review_snapshot": "/workspace/work/brand-story-20261025/story-adapt-seiko-quartz-astron.json"
+      },
+      {
+        "slug": "story-garmin-smartphone-pivot-worker-2026",
+        "stage": "blocked",
+        "last_synced_at": "2026-10-21T05:41:28.710599Z",
+        "youtube_video_id": null,
+        "series_slug": "brand-stories-garmin-worker-20261021",
+        "review_snapshot": "/workspace/work/brand-story-20261025/story-garmin-smartphone-pivot-worker-2026.json"
+      },
+      {
+        "slug": "story-dyson-japan-first-20261021",
+        "stage": "final video approved",
+        "last_synced_at": "2026-10-21T04:27:50.203509Z",
+        "youtube_video_id": null,
+        "series_slug": null,
+        "review_snapshot": "/workspace/work/brand-story-20261025/story-dyson-japan-first-20261021.json"
+      },
+      {
+        "slug": "story-rolling-suitcase-v2",
+        "stage": "blocked",
+        "last_synced_at": "2026-10-21T03:54:25.639327Z",
+        "youtube_video_id": null,
+        "series_slug": "brand-stories-curio-pilot-v2",
+        "review_snapshot": "/workspace/work/brand-story-20261025/story-rolling-suitcase-v2.json"
+      }
+    ]
+  },
+  "paid_entry": {
+    "ready": false,
+    "hold_checks": [
+      {
+        "id": "C04",
+        "slug": "story-everyday-bubble-wrap-c04-remake-20261025",
+        "is_preproduction_held": true,
+        "actual_function": "tools/video/core/pending-pilot-budget.mjs:isPreproductionHeld",
+        "paid_dispatch": "held_before_request",
+        "account_registration": "not_registered_in_current_reviewed_account_limit_maps",
+        "live_account_row": "not_queried",
+        "history_reconciliation": "original_preledger_exposure_requires_reconciliation_or_retained_full_usd_25_hold",
+        "activation_status": "not_activated_in_current_code"
+      },
+      {
+        "id": "C05",
+        "slug": "story-everyday-kincho-c05-remake-20261025",
+        "is_preproduction_held": true,
+        "actual_function": "tools/video/core/pending-pilot-budget.mjs:isPreproductionHeld",
+        "paid_dispatch": "held_before_request",
+        "account_registration": "not_registered_in_current_reviewed_account_limit_maps",
+        "live_account_row": "not_queried",
+        "history_reconciliation": "original_preledger_exposure_requires_reconciliation_or_retained_full_usd_25_hold",
+        "activation_status": "not_activated_in_current_code"
+      },
+      {
+        "id": "C09",
+        "slug": "story-everyday-patagonia-c09-remake-20261025",
+        "is_preproduction_held": true,
+        "actual_function": "tools/video/core/pending-pilot-budget.mjs:isPreproductionHeld",
+        "paid_dispatch": "held_before_request",
+        "account_registration": "not_registered_in_current_reviewed_account_limit_maps",
+        "live_account_row": "not_queried",
+        "history_reconciliation": "confirm_no_prior_unrecorded_charge_and_bind_original_to_remake_ledger",
+        "activation_status": "not_activated_in_current_code"
+      }
+    ],
+    "remake_slug_escape_prohibited": true,
+    "requirements": [
+      "Use an exact reviewed remake slug and a matching per-film account accepted by the current account-limit validator; account creation alone cannot lift the admission hold.",
+      "Bind prior originals, provider billing, stable operation IDs, uncertain reservations and settled charges to the remake accounting record; retain unresolved historical exposure instead of erasing it.",
+      "Read back the actual narration voice, model, supplier account, region, billable units, prices, retake allowance and remaining provider balance before paid entry.",
+      "A reviewed code/configuration activation and applicable live ledger setup must make the exact new slug dispatchable; do not rename outside story-everyday- or omit video_slug/operation_id.",
+      "Retain original source files, approved reviews, paid media, ledger rows and receipts; new candidates and pending reviews must not overwrite the original record."
+    ],
+    "live_account_and_supplier_balance_verification": "not_performed_by_this_check",
+    "new_paid_requests_sent": 0,
+    "new_backend_writes": 0
+  },
+  "provider_settings": {
+    "observation_source": "Root agent observed official media-status at 2026-10-25T10:32:00Z; raw response was not retained. This report did not repeat the request.",
+    "independently_verified_by_this_check": false,
+    "image": {
+      "model": "image-01",
+      "configured": true,
+      "usd_per_image": 0.0035
+    },
+    "music": {
+      "model": "lyria-3.5",
+      "configured": true,
+      "usd_per_unit": 0.08,
+      "unit": "not_reverified_in_this_report",
+      "monthly_remaining_tracks": 8
+    },
+    "meaning": "Configured providers and listed prices do not establish a remake account, settled history, supplier balance, spending reservation or paid admission."
+  },
+  "branding": {
+    "registry": "/workspace/.video-work/_branding/current.json",
+    "id": "curio-archive-original-candidate-20261020-v1",
+    "registry_validated": true,
+    "registry_sha256": "be12f184de3f397aedcf3e1c626133661e452cd98bc2e3f27e3434f8d82bfc31",
+    "hash": "1ffcf193d68dfface2d561c3362f69b8bfe8590a90b5d8fa257a8b783984a801",
+    "approval_state": "candidate_not_owner_approved_v4",
+    "media": {
+      "intro": {
+        "file": "/workspace/.video-work/_branding/1ffcf193d68dfface2d561c3362f69b8bfe8590a90b5d8fa257a8b783984a801/intro.mp4",
+        "frames": 150,
+        "seconds_at_30fps": 5,
+        "expected_sha256": "a5ae205fcf6fa7c92998ac4991225e54206fff482cf03493a60cfb2519e8fcef",
+        "actual_sha256": "a5ae205fcf6fa7c92998ac4991225e54206fff482cf03493a60cfb2519e8fcef",
+        "hash_matches": true
+      },
+      "outro": {
+        "file": "/workspace/.video-work/_branding/1ffcf193d68dfface2d561c3362f69b8bfe8590a90b5d8fa257a8b783984a801/outro.mp4",
+        "frames": 630,
+        "seconds_at_30fps": 21,
+        "expected_sha256": "275475470f1b7b5d93a2948f561d6e300d0406f9a5b2ab17cfb0dfe4bb3f34ee",
+        "actual_sha256": "275475470f1b7b5d93a2948f561d6e300d0406f9a5b2ab17cfb0dfe4bb3f34ee",
+        "hash_matches": true
+      }
+    },
+    "scope_note": "Registry validation and file hash matching do not establish visual/audio acceptance or ownership approval."
+  },
+  "backend_access": {
+    "existing_video_tool_token": {
+      "can_read_project_reviews": true,
+      "can_report_new_project": true,
+      "can_submit_new_pending_script_review": true,
+      "can_call_admin_retry_or_final_renewal": false
+    },
+    "admin_actions": {
+      "retry": "POST /admin/videos/{slug}/retry requires an authenticated user with content.manage",
+      "final_renewal": "POST /admin/videos/{slug}/final-renewal requires an authenticated user with content.manage"
+    },
+    "new_pending_script_path": {
+      "official_function": "tools/video/review/sync.mjs:reviewPush",
+      "arguments": [
+        "--slug",
+        "<new-remake-slug>",
+        "--gate",
+        "script"
+      ],
+      "requests": [
+        "PUT /api/video/reviews/<new-remake-slug>",
+        "POST /api/video/reviews/<new-remake-slug>/reviews"
+      ],
+      "requires_admin_session": false,
+      "paid_model_call_in_explicit_script_branch": false,
+      "preconditions": [
+        "Use a new valid slug and read back whether that record already exists before reporting; preserve all existing original project IDs and approvals.",
+        "Provide an isolated ctx.root with docs/videos/<newslug>/video.json plus brief.md, series.json and lexicon inputs appropriate to the candidate; video.json.slug must identify the new remake.",
+        "Use a separate generated-work base outside ctx.root and no auto.json in the new work directory so the official tool marks hand_pushed=true.",
+        "Freeze candidate video.json and source evidence. reviewPush regenerates script.md from video.json via writeScreenplay; use a real isolated source copy, not a symlink to an authored/reviewed candidate script.",
+        "Pass --gate script explicitly; an implicit/outline gate may invoke Jev. This check did not call reviewPush.",
+        "The command PUTs the project before it prepares/posts the script review; a later failure can leave a reported project, so read back before another attempt.",
+        "Read back the new review ID/content hash and actual pending status. Pending intake does not approve a script, lift paid holds, or certify media quality."
+      ],
+      "status": "code_path_verified_only_no_backend_write"
+    }
+  },
+  "media_acceptance": {
+    "status": "not_performed",
+    "actual_narration_duration": "not_measured",
+    "tts_asr_jev": "not_run",
+    "illustration_quality": "not_run",
+    "music_duration_and_license": "not_run",
+    "burned_subtitle_render": "not_run",
+    "final_full_decode": "not_run",
+    "native_playback": "not_run",
+    "owner_approval": "not_claimed",
+    "publication": "not_performed"
+  },
+  "evidence": [
+    {
+      "kind": "local_current_code",
+      "path": "/workspace/work/brand-remakes-source/tools/video/core/pending-pilot-budget.mjs",
+      "sha256": "58273eb487f49bf94ca917a541e8df570a403056f744fdb8437e430f955eae93"
+    },
+    {
+      "kind": "local_current_code",
+      "path": "/workspace/work/brand-remakes-source/tools/video/tts/client.mjs",
+      "sha256": "e4e2ae5c6b74af27e43eecf8e7ad8153a476a5440df7617d151e1096ca0b4a04"
+    },
+    {
+      "kind": "local_current_code",
+      "path": "/workspace/work/brand-remakes-source/tools/video/media/client.mjs",
+      "sha256": "dd25b93fd93c145b79c86c46c9f9170ecde47a12a93da75b13e6e541ce6fb6ab"
+    },
+    {
+      "kind": "local_current_code",
+      "path": "/workspace/work/brand-remakes-source/tools/video/automation/client.mjs",
+      "sha256": "a79d0d9ad460cb75f850372a6f49470df8b470c23029218541ea4f1a9e351201"
+    },
+    {
+      "kind": "local_current_code",
+      "path": "/workspace/work/brand-remakes-source/tools/video/review/sync.mjs",
+      "sha256": "8a25b2ce9e6eac14e32d789461f35d758504e5b4547ab3600f0c8e9985d3b4c9"
+    },
+    {
+      "kind": "local_current_code",
+      "path": "/workspace/work/brand-remakes-source/tools/video/core/screenplay.mjs",
+      "sha256": "1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389"
+    },
+    {
+      "kind": "local_current_code",
+      "path": "/workspace/work/brand-remakes-source/tools/video/core/state.mjs",
+      "sha256": "00b7d17e1977805f859ce1df3aea6c566715bc4ad40192c057cb5fca081b7fcc"
+    },
+    {
+      "kind": "local_current_code",
+      "path": "/workspace/work/brand-remakes-source/tools/video/core/branding.mjs",
+      "sha256": "24bab8ccfd587132dedc3bc1a5750e4e39cf4a64415ff68a30e326be47501f5d"
+    },
+    {
+      "kind": "api_source_code",
+      "path": "/workspace/work/brand-remakes-source/apps/api/app/video_budget/models.py",
+      "sha256": "8eaad7c3c125ee206d2896f4fa31e8e05e4e4af6d7b038801566b2646485d98e"
+    },
+    {
+      "kind": "api_source_code",
+      "path": "/workspace/work/brand-remakes-source/apps/api/app/video_budget/service.py",
+      "sha256": "1b3043b58f2811e8a2176bb210c34cb7b0ef26928c79f7c7bf51fcb4aaf4cecf"
+    },
+    {
+      "kind": "api_source_code",
+      "path": "/workspace/travel_scanner_ai_news/apps/api/app/video_reviews/admin_api.py",
+      "sha256": "8f575bc9122f1c365acfd75f105423091fa5398ed2fbe27c23fc4690e21cf980"
+    },
+    {
+      "kind": "api_source_code",
+      "path": "/workspace/travel_scanner_ai_news/apps/api/app/video_reviews/admin_service.py",
+      "sha256": "4ba7c84bf025238cd72ae3a89d6be26514b18ba5db94b1b29e794e11065d1c3c"
+    },
+    {
+      "kind": "production_readonly_snapshot",
+      "path": "/workspace/work/brand-story-20261025/drama-page-1.json",
+      "sha256": "1a21b11d86d60e7b35b6f726c181511159e6f2b638f9365f6d46b3d1a3603b77"
+    },
+    {
+      "kind": "production_readonly_snapshot",
+      "path": "/workspace/work/brand-story-20261025/stories-all.json",
+      "sha256": "0a8ae89bce5ad45c2e86b8cdc6ffe8e19952b53e8392757e4f97317fb6d56e4b"
+    },
+    {
+      "kind": "production_readonly_snapshot",
+      "path": "/workspace/work/brand-story-20261025/unfinished-stories.json",
+      "sha256": "e287fde48fde58e5ebfb1fe6ddc7e7d77f24169f9fd10c83329d05cadd9f519e"
+    },
+    {
+      "kind": "production_readonly_snapshot",
+      "path": "/workspace/work/brand-story-20261025/inventory.json",
+      "sha256": "6be4a36ef71e21aab279b6ef7c892488717d8b01da4b734d708bbfdeeaec6a6b"
+    },
+    {
+      "kind": "local_original_preservation_baseline",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/batch.json",
+      "sha256": "b67345022e4f9f57b16ab280eb7a722438a65cf3740d770926f3e7563f5c2b3e"
+    }
+  ]
+}

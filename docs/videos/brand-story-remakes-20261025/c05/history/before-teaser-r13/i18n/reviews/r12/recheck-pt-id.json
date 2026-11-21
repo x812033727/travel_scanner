@@ -1,0 +1,121 @@
+{
+  "source_video_sha256": "1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87",
+  "reviewer": "/root/c05_r12_review_pt_id",
+  "independent": true,
+  "role_disclosure": "原獨立PT／ID全文review agent，未撰寫中文原稿或兩語譯稿，也未套用這次修正。本輪僅 targeted recheck 初次報告兩項必要 c07a07 修正，核對實際修前 snapshots、applied-fixes、current worksheet 與 native；不另做一輪全文審查。初次 FIXES_REQUIRED 報告與 ID optional advisory 保留原狀。本輪僅文字驗證，沒有實際 timeline，未驗證 SRT 對時或 dub fit。",
+  "initial_review": {
+    "path": "/workspace/work/brand-story-20261025/c05-audit/text-r12/review-pt-id.json",
+    "sha256": "1ae95cd9b4ad64dfd2f2a6c2c3d019cfc4bf38a8d925bd93ae7bc25db7e71094",
+    "unchanged": true
+  },
+  "applied_fixes": {
+    "path": "/workspace/work/brand-story-20261025/c05-audit/text-r12/applied-fixes-pt-id.json",
+    "sha256": "4dae554db88413ab7f22db082751182861025d9a14e5fbc92dfe23f2af66992e"
+  },
+  "locales": [
+    {
+      "locale": "pt",
+      "worksheet_sha256": "b4cf4bccf7bf81a98c711dc8dda33973f3077249d081e5d22c402bc379e2db27",
+      "translation_sha256": "42f2c639beb0ae34a4713c3f83159e84fdb2b104745305eaf6ac50089adbec0c",
+      "status": "TEXT_PASS",
+      "checked_fix_targets": [
+        "lines.c07a07"
+      ],
+      "before_after": [
+        {
+          "target": "lines.c07a07",
+          "before": "Em 1958, Yoshio Katsuda e outros pesquisadores fizeram transformações químicas no material, ligando-o a compostos de identidade conhecida.",
+          "after": "Em 1958, Yoshio Katsuda e outros pesquisadores transformaram quimicamente o material em compostos cuja identidade já era conhecida.",
+          "matches_initial_required_proposal": true,
+          "matches_native": true,
+          "result": "RESOLVED",
+          "reason": "明確以 transformaram ... em／mengubah ... menjadi 表達轉換成已知化合物；未再寫成把材料與已知物連接。1958、Yoshio Katsuda 及相鄰立體身分判定脈絡均保留。"
+        }
+      ],
+      "unchanged_proof": {
+        "worksheet_before": {
+          "path": "/workspace/work/brand-story-20261025/c05-audit/text-r12/translation-review-history/pt/worksheet-before.json",
+          "sha256": "f964598f362bb3f9fd31c39e50d1106b46bdeb8f3329bfec2d96d065a391f645",
+          "matches_initial_review_sha256": true
+        },
+        "translation_before": {
+          "path": "/workspace/work/brand-story-20261025/c05-audit/text-r12/translation-review-history/pt/translation-before.json",
+          "sha256": "fde887f5a9686dc3f49b19d21a99b8ab859f3b237caa8513f65cf837c55a2439",
+          "matches_initial_review_sha256": true
+        },
+        "recursive_worksheet_changed_paths": [
+          ".lines[66].text"
+        ],
+        "recursive_translation_changed_paths": [
+          ".lines.c07a07.text"
+        ],
+        "canonicalization": "UTF-8 JSON, ensure_ascii=false, sort_keys=true, separators=(comma,colon); only checked target text replaced by <CHECKED_FIX_TARGET>",
+        "worksheet_without_fix_target_before_sha256": "419e95aaf8cd99e69db9bd4625401b92d12dfdfda8d36bf4be1d23fcb8c40e43",
+        "worksheet_without_fix_target_after_sha256": "419e95aaf8cd99e69db9bd4625401b92d12dfdfda8d36bf4be1d23fcb8c40e43",
+        "translation_without_fix_target_before_sha256": "a236df64051c5205a40c2a0d8dfbdf2f6480b6de70e9d06380208d1056412dbf",
+        "translation_without_fix_target_after_sha256": "a236df64051c5205a40c2a0d8dfbdf2f6480b6de70e9d06380208d1056412dbf",
+        "all_other_text_and_structure_unchanged": true,
+        "other_107_lines_unchanged": true,
+        "six_chapters_and_all_metadata_unchanged": true,
+        "ids_scenes_sources_todo_boundaries_glossary_and_source_hashes_unchanged": true,
+        "worksheet_native_all_text_equal": true,
+        "initial_review_status_preserved": "FIXES_REQUIRED",
+        "optional_advisory_text_preserved": true,
+        "optional_advisory_applied": false,
+        "initial_optional_advisory_count": 0
+      }
+    },
+    {
+      "locale": "id",
+      "worksheet_sha256": "fffc259cc6c9336bdb33083afea1539b51acacdb3a872db8124b4342ddb69e3b",
+      "translation_sha256": "303b1f1e02fab6a6f389946e759500bc23f450dedfb79b5d5056301e861953d0",
+      "status": "TEXT_PASS",
+      "checked_fix_targets": [
+        "lines.c07a07"
+      ],
+      "before_after": [
+        {
+          "target": "lines.c07a07",
+          "before": "Pada 1958, Yoshio Katsuda dan rekan-rekannya mengubah bahan itu secara kimia, menghubungkannya dengan senyawa yang identitasnya sudah diketahui.",
+          "after": "Pada 1958, Yoshio Katsuda dan rekan-rekannya mengubah bahan itu secara kimia menjadi senyawa yang identitasnya sudah diketahui.",
+          "matches_initial_required_proposal": true,
+          "matches_native": true,
+          "result": "RESOLVED",
+          "reason": "明確以 transformaram ... em／mengubah ... menjadi 表達轉換成已知化合物；未再寫成把材料與已知物連接。1958、Yoshio Katsuda 及相鄰立體身分判定脈絡均保留。"
+        }
+      ],
+      "unchanged_proof": {
+        "worksheet_before": {
+          "path": "/workspace/work/brand-story-20261025/c05-audit/text-r12/translation-review-history/id/worksheet-before.json",
+          "sha256": "a5a1c1d78747d123e8ce6276655952082c7207c57b7ccce7ad644d16da349008",
+          "matches_initial_review_sha256": true
+        },
+        "translation_before": {
+          "path": "/workspace/work/brand-story-20261025/c05-audit/text-r12/translation-review-history/id/translation-before.json",
+          "sha256": "b2023a0a86a25f8cc65f42726dc014eab55911719a43552e739ff5808a3873b6",
+          "matches_initial_review_sha256": true
+        },
+        "recursive_worksheet_changed_paths": [
+          ".lines[66].text"
+        ],
+        "recursive_translation_changed_paths": [
+          ".lines.c07a07.text"
+        ],
+        "canonicalization": "UTF-8 JSON, ensure_ascii=false, sort_keys=true, separators=(comma,colon); only checked target text replaced by <CHECKED_FIX_TARGET>",
+        "worksheet_without_fix_target_before_sha256": "0e15d7c80934880eb1403c5f9e13aafe260febc14929bb4333246dfed31d7a80",
+        "worksheet_without_fix_target_after_sha256": "0e15d7c80934880eb1403c5f9e13aafe260febc14929bb4333246dfed31d7a80",
+        "translation_without_fix_target_before_sha256": "620c4435c2bdd142141068204448fcc8a479cfc19ebfb088c29e7f2e7d497157",
+        "translation_without_fix_target_after_sha256": "620c4435c2bdd142141068204448fcc8a479cfc19ebfb088c29e7f2e7d497157",
+        "all_other_text_and_structure_unchanged": true,
+        "other_107_lines_unchanged": true,
+        "six_chapters_and_all_metadata_unchanged": true,
+        "ids_scenes_sources_todo_boundaries_glossary_and_source_hashes_unchanged": true,
+        "worksheet_native_all_text_equal": true,
+        "initial_review_status_preserved": "FIXES_REQUIRED",
+        "optional_advisory_text_preserved": true,
+        "optional_advisory_applied": false,
+        "initial_optional_advisory_count": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "revision": "doraemon-r6",
+  "role": "AUTHOR_DELTA_NOT_INDEPENDENT_REVIEW",
+  "historical_r5_core_four_sha256": {
+    "video.json": "8e840c68384dbba8d69a45b2b10f0d931de4a0d4ed25b47a5c7ec5c8ca4bf290",
+    "script.md": "618188d5779de3b9fcbab5dc8f6ea4a3b5ca57884e133b5c828f1761f7d70810",
+    "narration-only.json": "d4303e6053abed638e9820c476f1bbc779910e931e67aad6e2fbd92d4ee1de59",
+    "claims.json": "0161fb0cb12a2e70d99d41c3397977c8dd3830027ca3d61547824c2b57a19a97"
+  },
+  "current_core_four_sha256": {
+    "video.json": "b18f40f7e33cdf75a13fb1f3eafc4fc542522fd893d8aa7e1cc86289d197fc05",
+    "script.md": "71679cc8284fbb97d176d69df18a4ce362e620c15bf0a59a7979f53f39c3e09f",
+    "narration-only.json": "8740addc7a644f7a7287fc2b1a9ca0eb0f31d131494dabecb9b8dfd927b54874",
+    "claims.json": "d73bd50ab1e0aa3bf1e7253b900f3a110b8cf1b78ab70ef5a2f1db9f2f027fe2"
+  },
+  "line_changes": [
+    {
+      "id": "d1a041",
+      "old": "「第三回起」是他回顧時說的接手範圍，不能替每一頁的線條簽名。",
+      "new": "這次查到的是他的事後回憶，還不能憑它確定每一頁的作畫分工。"
+    },
+    {
+      "id": "d1c02b1",
+      "old": "但舊設定拿來就能用嗎？",
+      "new": "但你把舊設定拿來，就能用嗎？"
+    }
+  ],
+  "removed_lines": [
+    {
+      "id": "d1c042",
+      "text": "作者的位置不能直接繼承，但你可以從作品裡讀到角色的習慣，再拿這些理解，",
+      "chapter": "舊設定接上新朋友"
+    },
+    {
+      "id": "d1c043",
+      "text": "檢查新情節走得通不通。",
+      "chapter": "舊設定接上新朋友"
+    }
+  ],
+  "other_surviving_spoken_lines_exact": 129,
+  "line_count_before": 133,
+  "line_count_after": 131,
+  "scene_count_before": 113,
+  "scene_count_after": 111,
+  "removed_scene_ids": [
+    "dr1-c04-p2",
+    "dr1-c04-p3"
+  ],
+  "all111_surviving_scene_non_line_fields_exact": true,
+  "new_line_or_scene_ids": [],
+  "no_recap_fix": "a033 states the third-installment self-account once; a041 now states the local evidence limit without repeating that number or claiming no page table exists worldwide. c031/c032 preserve the attributed reader position and character-writing method; redundant c042/c043 commentary is removed. The surviving c041 reaction directly precedes the existing director-work question and sourced response.",
+  "viewer_address_adjustment": "c02b1 adds only the viewer subject to its existing setting-use question, preserving a real viewer address in this chapter after deleting c042. Its existing sourced explanation answer and loop remain exact; no new open question.",
+  "planning_only_release_year_clarification": "brief opening-chain sentence now unambiguously modifies the 2019 released film rather than implying the encouragement email was sent in 2019; spoken b011 remains byte exact.",
+  "loop_integrity": {
+    "all23_entries_and_endpoints_exact": true,
+    "all_endpoints_survive": true,
+    "a023_actual_payoff_a033_self_account_preserved": true,
+    "c02d_actual_payoff_c032_character_method_preserved": true,
+    "c05_actual_payoff_c061_work_requirement_preserved": true,
+    "false_callbacks_added": 0
+  },
+  "b082_work_result_and_D14_D15_evidence_exact": true,
+  "r2_movie_release_year_fix_exact": true,
+  "full_three_end_stage_requests_exact": true,
+  "actual_same_asset_verified": false,
+  "not_chased": [
+    "chapter-name advisory"
+  ],
+  "historical_r5_source_pass_sha256": "103852547443871c2596988794f9651b1f5a226b65e8f692ae7de825b174a64f",
+  "historical_r5_verify_sha256": "5e805143e19d414ce8af55b4e4586309055d20645c677ca0bd560ea2f2fd2732",
+  "last_true_native_round": 4,
+  "last_true_native_shared_hold": [
+    "no_recap"
+  ],
+  "all_old_review_tickets_unchanged": true,
+  "source_r6_delta": "PENDING_OTHER_REVIEWER",
+  "fresh_native5": "PENDING_ROOT_NOT_PREPARED_BY_AUTHOR",
+  "actual_native_rounds_total": 4,
+  "capacity": {
+    "before_units": 3041,
+    "after_units": 3002,
+    "target_minutes": 13,
+    "required_measured_body_seconds": [
+      720,
+      840
+    ],
+    "pure_arithmetic_seconds_at_4_5": 667.11,
+    "actual_measured_seconds": null,
+    "actual_duration_fail_claimed": false,
+    "risk": "Thin-script capacity is reduced by genuine deduplication. No lowering13, slowing, padding, repetition or sliced pictures."
+  }
+}

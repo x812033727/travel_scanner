@@ -1,0 +1,44 @@
+{
+  "source_video_sha256": "7c20dffd9c6be7082b36c9190188dfe70304901cf2fafbb4021e4a074f26a1e9",
+  "reviewer": "seiko_eight_text_independent_r4",
+  "independent": true,
+  "role_disclosure": "I did not translate this episode. I independently read the source and every translated line (145 per locale), all 7 chapter titles, title, full description including each source link, tags and thumbnail tag/headline/sub for ko and es. I did not read author receipts, author self-review conclusions or other reviewers’ findings. Only text semantics and the actual local withStoryTag title output were reviewed; no timeline, SRT, audio or media QA was performed. Line IDs and exact source/worksheet/native checks are recorded in eight-language-independent-verification.json. TEXT_PASS refers only to text.",
+  "locales": [
+    {
+      "locale": "ko",
+      "worksheet_sha256": "d6e2c376cf94cea52d6f489a0719b7ae0eb82df4bf5bcdd47243634b62147c64",
+      "translation_sha256": "e0d6ba8de9aae73ea9025c7909f842d1f8e1d3263c6bd8ba7d2c9f6113c52028",
+      "status": "FIXES_REQUIRED",
+      "checked_lines": 145,
+      "checked_chapters": 7,
+      "findings": [
+        {
+          "target": "lines.skr1f07",
+          "current": "여기까지 들으면 저는 당시 남긴 데이터를 찾아보고 싶습니다. 매번 설정을 누가 기록했을까요?",
+          "proposed": "여기까지 들으면 저는 당시 남긴 데이터를 찾아보고 싶습니다. 매번 어떻게 설정했는지 기록해 둔 사람이 있었을까요?",
+          "reason": "Source asks whether anyone recorded each setting (有人記下每次怎麼設嗎？), leaving the existence of records open. 누가 기록했을까요? asks who recorded them and shifts the question toward an existing recorder; the next source line specifically says no temperature data were recorded. Restore the yes/no uncertainty and what was set each time.",
+          "required": true
+        }
+      ],
+      "advisory": []
+    },
+    {
+      "locale": "es",
+      "worksheet_sha256": "ab3007182102981fb1832ed57a523e29ff6fd3120f70b2b85f7da2ed15cf5e9b",
+      "translation_sha256": "a4dfbaa0b8cc0be9fb20888e4485f7eb9070bfa70ac27b9603ddaf9ca9dfbe52",
+      "status": "FIXES_REQUIRED",
+      "checked_lines": 145,
+      "checked_chapters": 7,
+      "findings": [
+        {
+          "target": "chapters.skr1f01",
+          "current": "Junto al horno aparece un registro que faltaba",
+          "proposed": "Junto al horno se descubre la falta de un registro",
+          "reason": "Source chapter describes discovering an omission in recording, and skr1f08 says the settings had not been recorded. aparece un registro que faltaba instead says the missing record appears, suggesting a recovered record. State that the absence of a record is discovered.",
+          "required": true
+        }
+      ],
+      "advisory": []
+    }
+  ]
+}

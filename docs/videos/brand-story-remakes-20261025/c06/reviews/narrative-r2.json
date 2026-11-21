@@ -1,0 +1,268 @@
+{
+  "narrative_hash": "2e46012a3ca0e359",
+  "script_hash": "b878914d0b2626f4060559bec56c1d140bad11174858957f882d94622b10f101",
+  "panel_rules_sha256": "f46a3e7ed0366033e199204e20b2dc5199b873654a0a4cccc1d8bcdde300a628",
+  "panel_narration_sha256": "47cb0dcba317948eaa7d34cddd1c2a40fe86d920cd41775e4020496b4ab98d19",
+  "round": 2,
+  "passed": false,
+  "answers": [
+    {
+      "id": "scene_first",
+      "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c6sh011] 想像你在一九五〇年代的辛辛那提，正打開一罐壁紙清潔材料。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_spoiler",
+      "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[c6sh061] 另一張桌上，一束剛做完的花，還得過最後一關。",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_line",
+      "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c6st071] 還記得開場你手一放，形狀就垮的問題嗎？",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_toc",
+      "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[c6sh071] 今天跟著Play-Doh，追一團材料怎麼在不同人的手上留下來。",
+      "yes_readers": 2
+    },
+    {
+      "id": "chapters_link",
+      "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+      "required": true,
+      "yes": true,
+      "evidence": "[c6sk011] 這雙不想擦牆的手，來自幼稚園。Kutol的公司史裡，老師凱・祖法爾是約瑟夫的姻親。",
+      "yes_readers": 2
+    },
+    {
+      "id": "open_loops",
+      "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c6sk141] 可是，如果你想再替作品加一排細長條，每根都慢慢搓，要怎麼讓它們長得像你要的樣子？",
+      "yes_readers": 2
+    },
+    {
+      "id": "payoffs",
+      "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+      "required": true,
+      "yes": true,
+      "evidence": "[c6sn071] 孩之寶說，套件裡特製的最後處理噴霧，能幫花維持結構數月；",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[c6sb17a1] 你若等作品乾硬後再上色，顏色落到的是已經定下來的外形；你可以改表面，；讀者二：[c6so121] \"我覺得，這比做壞一批貨更難想：材料還在，原本要處理的麻煩卻變少了，\"",
+      "yes_readers": 0
+    },
+    {
+      "id": "chapters_are_events",
+      "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+      "required": false,
+      "yes": true,
+      "evidence": "[c6sb011] 這兩個要求，在一九六五年一月核發的文本裡被放在一起：材料要可塑，",
+      "yes_readers": 2
+    },
+    {
+      "id": "outro_no_next",
+      "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c6snct2] 想繼續看熟悉的日用品，如何被使用者推著換工作，歡迎訂閱這個頻道。",
+      "yes_readers": 2
+    },
+    {
+      "id": "opening_hooks",
+      "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[c6sh051] 有一雙更小的手，正被另一團材料難住。",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_thread",
+      "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+      "required": true,
+      "yes": true,
+      "evidence": "[c6sn101] 回到開場那罐等待被打開的材料，我的答案是：它得先接住眼前這雙手，真正要完成的事，",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_detour",
+      "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c6sb10d1] 我覺得，從攪拌機到你的手，這裡接得很清楚：前面得讓材料一致，後面你才不用每捏一處，",
+      "yes_readers": 2
+    }
+  ],
+  "failed": [
+    "no_recap"
+  ],
+  "advisory": [],
+  "readers": [
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[c6sh011] 想像你在一九五〇年代的辛辛那提，正打開一罐壁紙清潔材料。"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[c6sh061] 另一張桌上，一束剛做完的花，還得過最後一關。"
+        },
+        {
+          "id": "one_line",
+          "yes": true,
+          "evidence": "[c6st071] 還記得開場你手一放，形狀就垮的問題嗎？"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[c6sh071] 今天跟著Play-Doh，追一團材料怎麼在不同人的手上留下來。"
+        },
+        {
+          "id": "chapters_link",
+          "yes": true,
+          "evidence": "[c6sk011] 這雙不想擦牆的手，來自幼稚園。Kutol的公司史裡，老師凱・祖法爾是約瑟夫的姻親。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[c6sk141] 可是，如果你想再替作品加一排細長條，每根都慢慢搓，要怎麼讓它們長得像你要的樣子？"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[c6sn071] 孩之寶說，套件裡特製的最後處理噴霧，能幫花維持結構數月；"
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[c6sb17a1] 你若等作品乾硬後再上色，顏色落到的是已經定下來的外形；你可以改表面，"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[c6sb011] 這兩個要求，在一九六五年一月核發的文本裡被放在一起：材料要可塑，"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[c6snct2] 想繼續看熟悉的日用品，如何被使用者推著換工作，歡迎訂閱這個頻道。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[c6sh051] 有一雙更小的手，正被另一團材料難住。"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[c6sn101] 回到開場那罐等待被打開的材料，我的答案是：它得先接住眼前這雙手，真正要完成的事，"
+        },
+        {
+          "id": "no_detour",
+          "yes": true,
+          "evidence": "[c6sb10d1] 我覺得，從攪拌機到你的手，這裡接得很清楚：前面得讓材料一致，後面你才不用每捏一處，"
+        }
+      ],
+      "failed": [
+        "no_recap"
+      ],
+      "advisory": []
+    },
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[c6sh021] \"孩之寶二〇二四年說，Play-Doh年出貨逾五億罐。\""
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[c6sh061] \"另一張桌上，一束剛做完的花，還得過最後一關。\""
+        },
+        {
+          "id": "one_line",
+          "yes": true,
+          "evidence": "[c6so101] \"回到開場那面煤灰變少的牆：館方說，二戰後家庭改用燃油或天然氣，到了五〇年代初，\""
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[c6sh071] \"今天跟著Play-Doh，追一團材料怎麼在不同人的手上留下來。\""
+        },
+        {
+          "id": "chapters_link",
+          "yes": true,
+          "evidence": "[c6st011] \"剛才要你慢慢搓的長條，可以改從一個出口擠出來；博物館把Fun Factory這件工具的推出，\""
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[c6st111] \"但若材料硬得推不動，又回到那雙小手的困境；這件申請，究竟只顧你動手，\""
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[c6sn071] \"孩之寶說，套件裡特製的最後處理噴霧，能幫花維持結構數月；\""
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[c6so121] \"我覺得，這比做壞一批貨更難想：材料還在，原本要處理的麻煩卻變少了，\""
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[c6sb151] \"文件寫到，玩過後也能放回密閉容器。你蓋上的，不只是今天剩下的一團，\""
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[c6snct2] \"想繼續看熟悉的日用品，如何被使用者推著換工作，歡迎訂閱這個頻道。\""
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[c6sh051] \"有一雙更小的手，正被另一團材料難住。\""
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[c6sn081] \"我喜歡它和剛才那個蓋子的對照：前面收起材料，是替下一回留餘地；這裡，\""
+        },
+        {
+          "id": "no_detour",
+          "yes": true,
+          "evidence": "[c6sb10d1] \"我覺得，從攪拌機到你的手，這裡接得很清楚：前面得讓材料一致，後面你才不用每捏一處，\""
+        }
+      ],
+      "failed": [
+        "no_recap"
+      ],
+      "advisory": []
+    }
+  ]
+}

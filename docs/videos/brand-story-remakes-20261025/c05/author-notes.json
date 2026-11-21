@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "status": "CANDIDATE_NOT_ADOPTED_PENDING_NEW_SOURCE_WRITTEN_VISUAL_AND_FRESH_NATIVE12",
+  "candidate_revision": "teaser-r13",
+  "author": "/root/c05_teaser_candidate",
+  "baseline_adopted_r12": "1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87",
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "verify_written": false,
+  "owner_approval_claimed": false,
+  "old_r12_pending_review_or_base_approval_reused": false,
+  "next_actual_native_panel_round": 12,
+  "counts": {
+    "lines": 109,
+    "scenes": 107,
+    "chapters": 6,
+    "illustrations": 106,
+    "cards": 1,
+    "loops": 36
+  },
+  "whole_narration_spoken_units": 3041,
+  "cold_open_spoken_units": 155,
+  "actual_tts_seconds": null,
+  "duration_pass": false,
+  "planning_target_minutes": 13,
+  "padding_added": false,
+  "native_initialized_context_lint": {
+    "errors": 0,
+    "warnings": 23,
+    "i18n_warnings": 16,
+    "cadence_warnings": 0,
+    "maximum_estimated_shot_seconds": 10.6
+  },
+  "protected_files": {
+    "count": 1023,
+    "all_exact": true,
+    "before_manifest": "/workspace/work/brand-story-20261025/c05-audit/teaser-image-plan/protected-initial.json",
+    "before_manifest_sha256": "cc86e8c04225b4a7fa6625fd272ad7e0a91eba3dfdf002c05e6d7069099a6125",
+    "after_manifest": "/workspace/work/brand-story-20261025/c05-audit/teaser-image-plan/protected-after.json",
+    "after_manifest_sha256": "cc86e8c04225b4a7fa6625fd272ad7e0a91eba3dfdf002c05e6d7069099a6125"
+  },
+  "parent_current_i18n_entries": 864,
+  "parent_i18n_untouched": true,
+  "candidate_i18n_approved": false,
+  "candidate_lines_requiring_new_translation_binding": [
+    "c07o04",
+    "c05h04b1"
+  ],
+  "media_generated": 0,
+  "paid_requests": 0,
+  "backend_writes": 0,
+  "approvals_created": 0,
+  "files_sha256": {
+    "video.json": "773836e4a9c63770afbd6900014cbd57e6b123df44a22dca5987afaf9488d546",
+    "script.md": "b1b675ba987c2f98bd6fa65ac7bd17bd5315feaa6422778140a50f4c042a8f33",
+    "narration-only.json": "b27cf9dc86de6b6deea9af9b25a606dd1d821c74f9b223e76035e4ed85271468",
+    "claims.json": "31d46a9707edb27f2ecbbe5c24a7686e7fae35be30bb7f7de8db2da518f2530f",
+    "claims.md": "1fb5513e8a83f3e08b4676995d33ef4e8e5033939f680098bb994d25ae16e062",
+    "brief.md": "1f528e3cfef213a3231b6d743830073a1491266a5ed919d8ca98e8a8896851bb",
+    "series.json": "946b1391734d8e04de261fe9890c25a769f1d513dd8b6e394d3b5b0d08fab8fa",
+    "image-reuse-plan.json": "f4ab4038223e3b7cc4dac2792ed8d5c90eb50c6419d98ef500b83a837ec4a3e2",
+    "build-candidate.mjs": "b271ccfeec017dd262effddb990daf68e91a733e7ba78aa3593c7b371480de99",
+    "revision-edits.json": "2142946b6fc80348d72e1f326046aa2920f36332c66709aa20c87c84f5478600",
+    "native-author-lint-r13.json": "d8d3bdf8fa508d5a0ace25c3e7d0c198f254d9ad69e1ce03fbbbe0bc7f9227f4"
+  },
+  "delta": {
+    "revision": "teaser-r13",
+    "baseline": "adopted-r12",
+    "baseline_source_video_sha256": "1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87",
+    "candidate_source_video_sha256": "773836e4a9c63770afbd6900014cbd57e6b123df44a22dca5987afaf9488d546",
+    "narration_changed": [
+      "c07o04"
+    ],
+    "narration_added": [
+      "c05h04b1"
+    ],
+    "narration_deleted": [],
+    "remaining_107_complete_line_objects_identical": true,
+    "remaining_107_narration_rows_same_order": true,
+    "old_scene_order_preserved": true,
+    "existing_complete_scenes_unchanged": 103,
+    "prompt_changed": [
+      "c07o04",
+      "c07d08",
+      "c07u04"
+    ],
+    "camera_changed": [
+      "c07o04"
+    ],
+    "new_scenes": [
+      "c05h04b1"
+    ],
+    "loop_change": {
+      "old": {
+        "setup": "c07o04",
+        "payoff": "c05le013"
+      },
+      "current": {
+        "setup": "c05h04b1",
+        "payoff": "c07u04"
+      },
+      "reason": "The first true location answer is c07u04; c05le013 supplies the following 6–8mm/~250°C detail."
+    },
+    "all_other_video_fields_identical": true,
+    "all_other_claim_rows_identical": 107,
+    "source_anchors_for_existing_payoff_rows_unchanged": true,
+    "r12_chronology_preserved": true,
+    "no_new_source_fact": true,
+    "canonical_script_sha256": {
+      "baseline": "67bd2b41ef681d77f32d6fec1bf7074215811b5d6cd6cb0d6a673227246c3321",
+      "candidate": "3f2f19c4989a33f0887331997e29ae505839726fb8079ceb0607511593835c80",
+      "same": false
+    },
+    "narrative_hash": {
+      "baseline": "fb763c6179192a65",
+      "candidate": "5359d4bf17f13094"
+    },
+    "old_native_review_applies": false,
+    "next_actual_native_panel_round": 12,
+    "adopted": false,
+    "actual_duration_measured": false
+  }
+}

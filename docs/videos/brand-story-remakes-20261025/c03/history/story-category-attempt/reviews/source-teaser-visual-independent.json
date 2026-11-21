@@ -1,0 +1,3636 @@
+{
+  "schema_version": 1,
+  "review_type": "INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_TEASER_DELTA",
+  "reviewer": "/root/approved_visual_source_delta",
+  "independent": true,
+  "date": "2026-10-26",
+  "revision": "c03-teaser-image-plan-v1",
+  "slug": "story-everyday-moleskine-c03-remake-20261025",
+  "verdict": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS",
+  "actualasset_verified": false,
+  "actual_same_asset_verified": false,
+  "input_sha256": {
+    "video.json": "9639d356ca5bdcb18e85c3631ea754a0f69888949358111f452541654ac7fdd9",
+    "script.md": "1698aa0a955713ae5f0eaf9234ad307e32332aa7a02aaa966b8e34bd01736709",
+    "narration-only.json": "3d5461032a626e9c3246b5b2214af504e3fffee81c1a83cdda38dc2ba532c235",
+    "claims.json": "c8eaf8b7d01704417b147ff7af3080e5a6041d964b9cc6830d5b0153f6eb4328"
+  },
+  "plan_sha256": "ff55c22c39680a0eb46505e56cd2aea7102ed811cddc591bad3d27ef7683fed3",
+  "teaser_input_sha256": "70bad8dc52b1a0999d3e289b2a0473f36d1d37eef32f960dc2023923c30f88fd",
+  "claims_md_sha256": "8ff55ec06c753b92260d326c85372c6f6d5225b55bfdec193cbfa3f2b56683a0",
+  "source_verified_baseline_sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+  "immutable_baseline": {
+    "directory": "history/before-teaser-image-plan",
+    "core_four_sha256": {
+      "video.json": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+      "narration-only.json": "3d5461032a626e9c3246b5b2214af504e3fffee81c1a83cdda38dc2ba532c235",
+      "claims.json": "c8eaf8b7d01704417b147ff7af3080e5a6041d964b9cc6830d5b0153f6eb4328",
+      "script.md": "1698aa0a955713ae5f0eaf9234ad307e32332aa7a02aaa966b8e34bd01736709"
+    },
+    "source_receipt_path": "history/before-teaser-image-plan/reviews/source-r3-delta.json",
+    "source_receipt_sha256": "b4b15def639f0addb280c3cd238de2fdd51d005697fe16a96e22d7ca7725f390",
+    "verify_sha256": "1dc587379c910d1a02fb3c35f8206eaca49b01a32c4fcee76e291d84857e74da",
+    "snapshot_manifest_sha256": "5354f5e8af03b93d6d9b681dd2a5075cb6b0550af1256781e782d6f6f56fcbe8",
+    "all_archived_files_sha_verified": true,
+    "archived_file_count": 64,
+    "all_auxiliary_files_sha_verified": true,
+    "auxiliary_file_count": 55,
+    "unchanged_sources_inherited_by_exact_line_scene_and_four_input_binding": true
+  },
+  "counts": {
+    "narration_lines": 143,
+    "source_pass": 143,
+    "source_hold": 0,
+    "scenes": 110,
+    "shots": 100,
+    "stats_cards": 9,
+    "outro": 1,
+    "written_visual_scene_pass": 110,
+    "written_visual_scene_hold": 0,
+    "changed_shot_scenes": 2,
+    "changed_leaf_fields": 4,
+    "unchanged_complete_scene_objects": 108
+  },
+  "method": "直接比較完整video物件、原四輸入及immutable archive；所有143句的ID/scene/text SHA逐句等於原r3獨立PASS收據，未變來源由該精確基線繼承。本輪直接重讀原招股書PDF139–140、FY2025 PDF42及官方Code of Ethics §1，只重新裁定兩個改圖的來源與書面畫面相容，不重判敘事。",
+  "exact_delta": {
+    "all_object_differences": [
+      {
+        "path": "/scenes/3/data/prompt",
+        "before": "Medium shot in a quiet reading room, one anonymous adult studying a plain black notebook beside a closed blank archive folder, soft window light.",
+        "after": "Medium shot, one anonymous reader browsing anonymous art history volumes in a public library, soft window light."
+      },
+      {
+        "path": "/scenes/3/data/camera",
+        "before": "pan right",
+        "after": "push in"
+      },
+      {
+        "path": "/scenes/4/data/prompt",
+        "before": "Close-up at an office desk, one anonymous adult turning a blank report page with a thoughtful face, soft window light.",
+        "after": "Medium shot at an office desk, one anonymous adult comparing a blank forecast folder and a plain ledger, soft window light."
+      },
+      {
+        "path": "/scenes/4/data/camera",
+        "before": "tilt up",
+        "after": "pan right"
+      }
+    ],
+    "all_other_video_fields_identical": true,
+    "all_scene_ids_order_chapters_lines_emotions_loops_metadata_voice_subtitles_look_identical": true,
+    "script_narration_claims_json_brief_series_bytes_identical": true,
+    "all_numeric_cards_complete_objects_identical": true,
+    "claims_md_original_prefix_bytes_preserved": true,
+    "claims_md_only_written_visual_appendix_added": true,
+    "producer_memory_only_replay_core_four_and_claims_md_exact": true,
+    "producer_voice_style_alignment": "build-candidate.py另加一個與原已核video.voice.style逐字相同的常值，修正既有producer漂移；本輪source與runtime的voice bytes完全未變。memory-only攔截全部write_text，5個核對輸出逐bytes等於凍結檔，未執行落地producer。"
+  },
+  "source_table": {
+    "S1a": {
+      "source": "S1",
+      "locator": "PDF 123／印刷121；PDF139／印刷137，舊式型制、1995重新生產",
+      "scope": "發行人回顧，不證法國原工坊直接傳承",
+      "title": "Moleskine 2013 年義大利上市招股書",
+      "url": "https://www.borsaitaliana.it/prospetti-informativi/1513pros_1_it.pdf",
+      "reviewer_only": true
+    },
+    "S1b": {
+      "source": "S1",
+      "locator": "§11.2，PDF260／印刷258，Il primo deposito…26 novembre 1997",
+      "scope": "首次商標申請，不能寫當日完成核准",
+      "title": "Moleskine 2013 年義大利上市招股書",
+      "url": "https://www.borsaitaliana.it/prospetti-informativi/1513pros_1_it.pdf",
+      "reviewer_only": true
+    },
+    "S1c": {
+      "source": "S1",
+      "locator": "PDF139–140／印刷137–138，libro ancora da scrivere；prioritariamente…librerie",
+      "scope": "公司定位、目標客群與書店策略，非全體買家動機",
+      "title": "Moleskine 2013 年義大利上市招股書",
+      "url": "https://www.borsaitaliana.it/prospetti-informativi/1513pros_1_it.pdf",
+      "reviewer_only": true
+    },
+    "S1d": {
+      "source": "S1",
+      "locator": "PDF140／印刷138，新管理層投入communication/brand management/merchandising",
+      "scope": "2006收購後策略，非獨立效果測試",
+      "title": "Moleskine 2013 年義大利上市招股書",
+      "url": "https://www.borsaitaliana.it/prospetti-informativi/1513pros_1_it.pdf",
+      "reviewer_only": true
+    },
+    "S1e": {
+      "source": "S1",
+      "locator": "PDF159–160／印刷157–158，Sviluppo e controllo dei fornitori",
+      "scope": "2013招股書所述委外、流程品質與滾動12月需求規劃，不推現在製造地",
+      "title": "Moleskine 2013 年義大利上市招股書",
+      "url": "https://www.borsaitaliana.it/prospetti-informativi/1513pros_1_it.pdf",
+      "reviewer_only": true
+    },
+    "S1i": {
+      "source": "S1",
+      "locator": "PDF160／印刷158，Pianificazione fabbisogni：新產品銷售預測；tra la produzione ed il lancio…3 e i 6 mesi",
+      "scope": "2013招股書當時安排；生產與上市之間平均間隔，不是純製造工期、下單至出貨或今日固定交期",
+      "title": "Moleskine 2013 年義大利上市招股書",
+      "url": "https://www.borsaitaliana.it/prospetti-informativi/1513pros_1_it.pdf",
+      "reviewer_only": true
+    },
+    "S1f": {
+      "source": "S1",
+      "locator": "§6.1.3.5，PDF165／印刷163，直間接通路synergy",
+      "scope": "發行人策略與自述效益，非已證唯一成長原因",
+      "title": "Moleskine 2013 年義大利上市招股書",
+      "url": "https://www.borsaitaliana.it/prospetti-informativi/1513pros_1_it.pdf",
+      "reviewer_only": true
+    },
+    "S1g": {
+      "source": "S1",
+      "locator": "PDF166／印刷164，consignment/non-consignment貨權與風險；向零售商售出後提貨",
+      "scope": "2013招股書當時一般契約，非消費者結帳，非2025特定客戶合約",
+      "title": "Moleskine 2013 年義大利上市招股書",
+      "url": "https://www.borsaitaliana.it/prospetti-informativi/1513pros_1_it.pdf",
+      "reviewer_only": true
+    },
+    "S1h": {
+      "source": "S1",
+      "locator": "PDF167／印刷165，non-consignment出貨或交付；月度向零售商銷售資料與庫存",
+      "scope": "2013當時契約，配送商到零售商的Sell-In，非終端消費者Sell-Out",
+      "title": "Moleskine 2013 年義大利上市招股書",
+      "url": "https://www.borsaitaliana.it/prospetti-informativi/1513pros_1_it.pdf",
+      "reviewer_only": true
+    },
+    "S2": {
+      "source": "S2",
+      "locator": "Our Heritage，A Creative History",
+      "scope": "品牌轉述查特文及1986停產故事；非同期工廠檔案",
+      "title": "Moleskine, Our Heritage",
+      "url": "https://www.moleskine.com/en-hk/the-world-of-moleskine/our-heritage/",
+      "reviewer_only": false
+    },
+    "S3": {
+      "source": "S3",
+      "locator": "Code of Ethics §1 Purpose and Scope",
+      "scope": "歷史人物使用舊類型；2007-01-01公司名稱，不能說使用現代品牌",
+      "title": "Moleskine, Code of Ethics",
+      "url": "https://www.moleskine.com/en-no/code-of-ethics.html",
+      "reviewer_only": false
+    },
+    "S5": {
+      "source": "S1",
+      "locator": "PDF123–124／印刷121–122，2006收購及法人重整",
+      "scope": "非1997品牌初創，非2016交易",
+      "title": "Moleskine 2013 年義大利上市招股書",
+      "url": "https://www.borsaitaliana.it/prospetti-informativi/1513pros_1_it.pdf",
+      "reviewer_only": true
+    },
+    "S6a": {
+      "source": "S6",
+      "locator": "2017投資人日投影片11、15–16，批發doors",
+      "scope": "約1.2萬/2萬是批發據點，非自營店、非全書店",
+      "title": "D’Ieteren 2017 年投資人簡報",
+      "url": "https://dieterengroup.imgix.net/documents/presentations/moleskine_lorenzo_viglione.pdf",
+      "reviewer_only": true
+    },
+    "S6b": {
+      "source": "S6B",
+      "locator": "2016 Activity Report印刷35、37；2017 Annual Report財務印刷7／PDF65",
+      "scope": "2016年底79直營店；保留投資簡報78衝突",
+      "title": "D’Ieteren2016 ActivityReport及2017年報",
+      "url": "https://dieterengroup.imgix.net/annual-reports/3_moleskine.pdf",
+      "additional_url": "https://dieterengroup.imgix.net/annual-reports/annualreport2017_en_0-1.pdf",
+      "reviewer_only": true
+    },
+    "S7": {
+      "source": "S7",
+      "locator": "2013-04-03上市新聞稿，STAR；market capitalisation €487.6m",
+      "scope": "上市時整家公司市值，不是銷售收入或募入現金",
+      "title": "義大利交易所 2013 年上市公告",
+      "url": "https://www.borsaitaliana.it/borsaitaliana/ufficio-stampa/comunicati-stampa/2013/moleskine.en.htm",
+      "reviewer_only": false
+    },
+    "S8a": {
+      "source": "S8",
+      "locator": "2016-09-22公告PDF1，41%/€2.40/€506m equity value",
+      "scope": "簽約及計畫，不是已全數收購；估值不是公司現金收入",
+      "title": "D’Ieteren 2016 年收購公告",
+      "url": "https://dieterengroup.imgix.net/press-releases/DIeteren-Moleskine_-ENG_FINAL.pdf",
+      "reviewer_only": true
+    },
+    "S8b": {
+      "source": "S8",
+      "locator": "2016-09-22公告PDF1–2，2015營收€128m及premium/outsourcing/cost management",
+      "scope": "買方當時獲利解釋，未來目標不能當已完成",
+      "title": "D’Ieteren 2016 年收購公告",
+      "url": "https://dieterengroup.imgix.net/press-releases/DIeteren-Moleskine_-ENG_FINAL.pdf",
+      "reviewer_only": true
+    },
+    "S9": {
+      "source": "S9",
+      "locator": "2017-01-24 Holds 100% of the Shares公告",
+      "scope": "完成餘股強制收購、連庫藏股達全部、同日撤牌",
+      "title": "D’Ieteren 2017 年完成收購公告",
+      "url": "https://dieterengroup.imgix.net/press-releases/2017_01_24_Moleskine_squeeze_out_EN.pdf",
+      "reviewer_only": true
+    },
+    "S10a": {
+      "source": "S10",
+      "locator": "2017 Activity Report分冊PDF6／印刷44–45，81%/19%及Smart Writing",
+      "scope": "2017銷售比重與當年產品，非現在產品組合或數位轉型成功",
+      "title": "D’Ieteren 2017 Activity Report — Moleskine",
+      "url": "https://dieterengroup.imgix.net/annual-reports/3_moleskine_en.pdf",
+      "reviewer_only": true
+    },
+    "S10b": {
+      "source": "S10",
+      "locator": "2017 Activity Report分冊PDF5–6／印刷44–45，直營+16.6%、網店-3.7%、平台遷移及人員/IT",
+      "scope": "當年銷售、營運及投資，不等於利潤",
+      "title": "D’Ieteren 2017 Activity Report — Moleskine",
+      "url": "https://dieterengroup.imgix.net/annual-reports/3_moleskine_en.pdf",
+      "reviewer_only": true
+    },
+    "S10c": {
+      "source": "S10B",
+      "locator": "2017 Annual Report財務印刷7／PDF65，loss-making Retail channel",
+      "scope": "當年零售通路虧損，不可說每一家店虧損或造成2025減損",
+      "title": "D’Ieteren 2017 Annual Report",
+      "url": "https://dieterengroup.imgix.net/annual-reports/annualreport2017_en_0-1.pdf",
+      "reviewer_only": true
+    },
+    "S11": {
+      "source": "S11",
+      "locator": "2025 Full-Year Results PDF10，Moleskine Results；數表PDF23–25",
+      "scope": "2025同比、部分美國大客戶控庫存，不是全體消費者拒買",
+      "title": "D’Ieteren 2025 Full-Year Results",
+      "url": "https://dieterengroup.imgix.net/press-releases/20260310_FY-2025-Results_EN_FV.pdf",
+      "reviewer_only": true
+    },
+    "S12": {
+      "source": "S11",
+      "locator": "2025 Full-Year Results PDF10、42，品牌無形資產減損與2026–2030現金流",
+      "scope": "€107.4m稅前品牌減損，非現金支出、退貨或稅後€77.4m",
+      "title": "D’Ieteren 2025 Full-Year Results",
+      "url": "https://dieterengroup.imgix.net/press-releases/20260310_FY-2025-Results_EN_FV.pdf",
+      "reviewer_only": true
+    },
+    "S13a": {
+      "source": "S13",
+      "locator": "2026 Half-Year Results PDF9、11，銷售52.2m/2.2%、有機定義；PDF16營業比較",
+      "scope": "只比同半年；有機排除匯率及合併範圍變動；非全年",
+      "title": "D’Ieteren 2026 Half-Year Results",
+      "url": "https://dieterengroup.imgix.net/press-releases/20260909_Press-release_H1-2026-results_EN_FV-with-appendix.pdf",
+      "reviewer_only": true
+    },
+    "S13b": {
+      "source": "S13",
+      "locator": "2026 Half-Year Results PDF9、21，€76.4m waiver、186.8m intersegment financing",
+      "scope": "減免部分本金降低財務費用，非全數免債或營業利潤回升",
+      "title": "D’Ieteren 2026 Half-Year Results",
+      "url": "https://dieterengroup.imgix.net/press-releases/20260909_Press-release_H1-2026-results_EN_FV-with-appendix.pdf",
+      "reviewer_only": true
+    }
+  },
+  "source_catalog": {
+    "S1": {
+      "title": "Moleskine 2013 年義大利上市招股書",
+      "url": "https://www.borsaitaliana.it/prospetti-informativi/1513pros_1_it.pdf",
+      "checked_on": "2026-10-21",
+      "reviewer_only": true
+    },
+    "S2": {
+      "title": "Moleskine, Our Heritage",
+      "url": "https://www.moleskine.com/en-hk/the-world-of-moleskine/our-heritage/",
+      "checked_on": "2026-10-21",
+      "reviewer_only": false
+    },
+    "S3": {
+      "title": "Moleskine, Code of Ethics",
+      "url": "https://www.moleskine.com/en-no/code-of-ethics.html",
+      "checked_on": "2026-10-21",
+      "reviewer_only": false
+    },
+    "S6": {
+      "title": "D’Ieteren 2017 年投資人簡報",
+      "url": "https://dieterengroup.imgix.net/documents/presentations/moleskine_lorenzo_viglione.pdf",
+      "checked_on": "2026-10-21",
+      "reviewer_only": true
+    },
+    "S7": {
+      "title": "義大利交易所 2013 年上市公告",
+      "url": "https://www.borsaitaliana.it/borsaitaliana/ufficio-stampa/comunicati-stampa/2013/moleskine.en.htm",
+      "checked_on": "2026-10-21",
+      "reviewer_only": false
+    },
+    "S8": {
+      "title": "D’Ieteren 2016 年收購公告",
+      "url": "https://dieterengroup.imgix.net/press-releases/DIeteren-Moleskine_-ENG_FINAL.pdf",
+      "checked_on": "2026-10-21",
+      "reviewer_only": true
+    },
+    "S9": {
+      "title": "D’Ieteren 2017 年完成收購公告",
+      "url": "https://dieterengroup.imgix.net/press-releases/2017_01_24_Moleskine_squeeze_out_EN.pdf",
+      "checked_on": "2026-10-21",
+      "reviewer_only": true
+    },
+    "S10": {
+      "title": "D’Ieteren 2017 Activity Report — Moleskine",
+      "url": "https://dieterengroup.imgix.net/annual-reports/3_moleskine_en.pdf",
+      "checked_on": "2026-10-21",
+      "reviewer_only": true
+    },
+    "S10B": {
+      "title": "D’Ieteren 2017 Annual Report",
+      "url": "https://dieterengroup.imgix.net/annual-reports/annualreport2017_en_0-1.pdf",
+      "checked_on": "2026-10-21",
+      "reviewer_only": true
+    },
+    "S11": {
+      "title": "D’Ieteren 2025 Full-Year Results",
+      "url": "https://dieterengroup.imgix.net/press-releases/20260310_FY-2025-Results_EN_FV.pdf",
+      "checked_on": "2026-10-21",
+      "reviewer_only": true
+    },
+    "S13": {
+      "title": "D’Ieteren 2026 Half-Year Results",
+      "url": "https://dieterengroup.imgix.net/press-releases/20260909_Press-release_H1-2026-results_EN_FV-with-appendix.pdf",
+      "checked_on": "2026-10-21",
+      "reviewer_only": true
+    },
+    "S6B": {
+      "title": "D’Ieteren2016 ActivityReport及2017年報",
+      "url": "https://dieterengroup.imgix.net/annual-reports/3_moleskine.pdf",
+      "additional_url": "https://dieterengroup.imgix.net/annual-reports/annualreport2017_en_0-1.pdf",
+      "reviewer_only": true,
+      "checked_on": "2026-10-22"
+    }
+  },
+  "primary_cache_checks": [
+    {
+      "path": "/workspace/work/c03-audit/prospectus.pdf",
+      "sha256": "bf33730ab8fae0290e95c65ac1e70e734fdeb5061f99e96154f8071772e774fe",
+      "manifest_match": true,
+      "bytes": 4571857
+    },
+    {
+      "path": "/workspace/work/c03-audit/acquisition.pdf",
+      "sha256": "adcbc223dd1828becc4106c0629390d0056c2b78659b57901a76e03b37921c75",
+      "manifest_match": true,
+      "bytes": 92649
+    },
+    {
+      "path": "/workspace/work/c03-audit/fy2025.pdf",
+      "sha256": "52fdbd6260f2093d264d51ba9e15fe6621e65639b04e64c4d1096a35844827a9",
+      "manifest_match": true,
+      "bytes": 2383872
+    },
+    {
+      "path": "/workspace/work/c03-audit/h12026.pdf",
+      "sha256": "86c7bcbdfec64e15404b97d97d494c25cd22efee7a10379d2a8e6f89bd01594d",
+      "manifest_match": true,
+      "bytes": 5511707
+    },
+    {
+      "path": "/workspace/work/c03-audit/activity2017.pdf",
+      "sha256": "c8c7fe11ff5d5a31c6ba16b37d00adbc47e1d4c8d373c4befd6e04d4fbd8dd44",
+      "manifest_match": true,
+      "bytes": 1840337
+    }
+  ],
+  "fresh_delta_primary_reads": [
+    {
+      "source": "S1a/S1c",
+      "path": "/workspace/work/c03-audit/prospectus.pdf",
+      "sha256": "bf33730ab8fae0290e95c65ac1e70e734fdeb5061f99e96154f8071772e774fe",
+      "locator": "PDF139–140／印刷137–138",
+      "read_via": "pdftotext原PDF頁面stdout",
+      "finding": "原件明分歷史無名型制、1995再製及後來商標；匿名圖書館讀者閱讀藝術史書，只是文化脈絡示意，沒有把歷史作家畫成現代品牌使用者或真人背書。"
+    },
+    {
+      "source": "S3",
+      "url": "https://www.moleskine.com/en-no/code-of-ethics.html",
+      "status": 200,
+      "bytes": 222033,
+      "sha256": "cea751b2482c7e28fd2ac351986c8175534fa5097aae54ab4b6186de4ae4a385",
+      "locator": "§1 PURPOSE AND SCOPE OF APPLICATION",
+      "quote": "The brand was founded in 1997, reproducing the type of legendary notebooks used by artists and intellectuals over the past two centuries",
+      "finding": "type of notebooks的限定與r304021/031一致，新prompt不描繪任何特定真人、現代商品或歷史實景。"
+    },
+    {
+      "source": "S12",
+      "path": "/workspace/work/c03-audit/fy2025.pdf",
+      "sha256": "52fdbd6260f2093d264d51ba9e15fe6621e65639b04e64c4d1096a35844827a9",
+      "locator": "PDF42/58，Moleskine段",
+      "quote": "latest five-year financial projections (over the period 2026 to 2030)",
+      "finding": "空白forecast folder及plain ledger相容財務估算場景；沒有107.4m、百分比、減損結果或向下圖表，c03r-p18s04數字卡完整未變，開場不早揭答案。"
+    }
+  ],
+  "written_visual_delta": [
+    {
+      "scene_id": "c03r-h04",
+      "pair": "authors-old-notebook-context",
+      "verdict": "PASS",
+      "reason": "匿名讀者＋無品牌藝術史書是概念插圖，與S1a/S3及回收章r304021/031相容，未暗示史實照片、名人肖像或現代商品曾被舊作家使用。"
+    },
+    {
+      "scene_id": "c03r-h05",
+      "pair": "financial-remeasurement-context",
+      "verdict": "PASS",
+      "reason": "空白預測資料夾/帳本只提供財報重估情境；不畫數字或減損結論，保持原卡片與S12限定。"
+    }
+  ],
+  "native_read_only": {
+    "runtime_source_sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+    "runtime_source_equals_baseline": true,
+    "canonical_new_sha256": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f",
+    "canonical_old_sha256": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f",
+    "runtime_canonical_sha256": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f",
+    "canonical_bytes_same": true,
+    "hashes": {
+      "narrative": {
+        "before": "5cb14d4ecf0bdc3a",
+        "after": "5cb14d4ecf0bdc3a",
+        "equal": true
+      },
+      "speech": {
+        "before": "37aab4572320064b",
+        "after": "37aab4572320064b",
+        "equal": true
+      },
+      "look": {
+        "before": "98a370ae40badbaf",
+        "after": "98a370ae40badbaf",
+        "equal": true
+      },
+      "pictures": {
+        "before": "5905cc7dcd62b707",
+        "after": "057e50e3a5d588d4",
+        "equal": false
+      },
+      "mix": {
+        "before": "71ecdd098c551254",
+        "after": "71ecdd098c551254",
+        "equal": true
+      }
+    },
+    "lexicon_sha256": "30b814bbdb103aa143cac8b9cfd483f0e379100dcaf3638d18b8866f7fb636fe",
+    "lexicon_mode": "snapshot",
+    "record_file": "docs/videos/brand-story-remakes-20261025/c03/reviews/narrative-final.json",
+    "record_sha256": "beb511213bccacffddaa8e933c5ca361e5ed9b9e0d059bc794b647f7195f7c25",
+    "record_matches_before": true,
+    "record_matches_after": true,
+    "approval_file_sha256": "709b5d261469595ffc55358b9f4585e2754403ec167924b4054625fb2febe5da",
+    "lint_before_errors": [],
+    "lint_after_errors": [],
+    "lint_before_warning_count": 31,
+    "lint_after_warning_count": 31
+  },
+  "native_pairs": [
+    {
+      "pair_id": "authors-old-notebook-context",
+      "ends": [
+        {
+          "scene_id": "c03r-p04s02",
+          "data": {
+            "prompt": "Medium shot, one anonymous reader browsing anonymous art history volumes in a public library, soft window light.",
+            "visual": "still",
+            "camera": "push in"
+          },
+          "cast": [],
+          "composed": {
+            "prompt": "Medium shot, one anonymous reader browsing anonymous art history volumes in a public library, soft window light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: push in",
+            "droppedFixes": 0,
+            "cutChars": 0
+          },
+          "composed_sha256": "294fd034c8940154fa4e85f9da4d91673048b486a0bc3bb79f9eba256fd150a0",
+          "keys": {
+            "1K": "d412156e47533c92",
+            "2K": "ec476f9db34ff556"
+          },
+          "live": {
+            "1K": {
+              "key": "d412156e47533c92",
+              "entry_exists": false,
+              "file": null,
+              "file_exists": false,
+              "file_sha256": null,
+              "entry_sha256": null,
+              "matching_bytes": false
+            },
+            "2K": {
+              "key": "ec476f9db34ff556",
+              "entry_exists": false,
+              "file": null,
+              "file_exists": false,
+              "file_sha256": null,
+              "entry_sha256": null,
+              "matching_bytes": false
+            }
+          }
+        },
+        {
+          "scene_id": "c03r-h04",
+          "data": {
+            "prompt": "Medium shot, one anonymous reader browsing anonymous art history volumes in a public library, soft window light.",
+            "visual": "still",
+            "camera": "push in"
+          },
+          "cast": [],
+          "composed": {
+            "prompt": "Medium shot, one anonymous reader browsing anonymous art history volumes in a public library, soft window light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: push in",
+            "droppedFixes": 0,
+            "cutChars": 0
+          },
+          "composed_sha256": "294fd034c8940154fa4e85f9da4d91673048b486a0bc3bb79f9eba256fd150a0",
+          "keys": {
+            "1K": "d412156e47533c92",
+            "2K": "ec476f9db34ff556"
+          },
+          "live": {
+            "1K": {
+              "key": "d412156e47533c92",
+              "entry_exists": false,
+              "file": null,
+              "file_exists": false,
+              "file_sha256": null,
+              "entry_sha256": null,
+              "matching_bytes": false
+            },
+            "2K": {
+              "key": "ec476f9db34ff556",
+              "entry_exists": false,
+              "file": null,
+              "file_exists": false,
+              "file_sha256": null,
+              "entry_sha256": null,
+              "matching_bytes": false
+            }
+          }
+        }
+      ],
+      "full_composed_camera_cast_keys_equal": true,
+      "author_key_values_match": true,
+      "actualasset_verified": false
+    },
+    {
+      "pair_id": "financial-remeasurement-context",
+      "ends": [
+        {
+          "scene_id": "c03r-n04",
+          "data": {
+            "prompt": "Medium shot at an office desk, one anonymous adult comparing a blank forecast folder and a plain ledger, soft window light.",
+            "visual": "still",
+            "camera": "pan right"
+          },
+          "cast": [],
+          "composed": {
+            "prompt": "Medium shot at an office desk, one anonymous adult comparing a blank forecast folder and a plain ledger, soft window light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan right",
+            "droppedFixes": 0,
+            "cutChars": 0
+          },
+          "composed_sha256": "d780f4974c16a74fe8eab85dd18c6ea166d3fdca2571941c77259584e499d2e1",
+          "keys": {
+            "1K": "be22fa92ca5132e1",
+            "2K": "d66150a0b42363b4"
+          },
+          "live": {
+            "1K": {
+              "key": "be22fa92ca5132e1",
+              "entry_exists": false,
+              "file": null,
+              "file_exists": false,
+              "file_sha256": null,
+              "entry_sha256": null,
+              "matching_bytes": false
+            },
+            "2K": {
+              "key": "d66150a0b42363b4",
+              "entry_exists": false,
+              "file": null,
+              "file_exists": false,
+              "file_sha256": null,
+              "entry_sha256": null,
+              "matching_bytes": false
+            }
+          }
+        },
+        {
+          "scene_id": "c03r-h05",
+          "data": {
+            "prompt": "Medium shot at an office desk, one anonymous adult comparing a blank forecast folder and a plain ledger, soft window light.",
+            "visual": "still",
+            "camera": "pan right"
+          },
+          "cast": [],
+          "composed": {
+            "prompt": "Medium shot at an office desk, one anonymous adult comparing a blank forecast folder and a plain ledger, soft window light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan right",
+            "droppedFixes": 0,
+            "cutChars": 0
+          },
+          "composed_sha256": "d780f4974c16a74fe8eab85dd18c6ea166d3fdca2571941c77259584e499d2e1",
+          "keys": {
+            "1K": "be22fa92ca5132e1",
+            "2K": "d66150a0b42363b4"
+          },
+          "live": {
+            "1K": {
+              "key": "be22fa92ca5132e1",
+              "entry_exists": false,
+              "file": null,
+              "file_exists": false,
+              "file_sha256": null,
+              "entry_sha256": null,
+              "matching_bytes": false
+            },
+            "2K": {
+              "key": "d66150a0b42363b4",
+              "entry_exists": false,
+              "file": null,
+              "file_exists": false,
+              "file_sha256": null,
+              "entry_sha256": null,
+              "matching_bytes": false
+            }
+          }
+        }
+      ],
+      "full_composed_camera_cast_keys_equal": true,
+      "author_key_values_match": true,
+      "actualasset_verified": false
+    }
+  ],
+  "same_image_plan_review": {
+    "verdict": "PASS_AS_WRITTEN_PLAN_ONLY",
+    "native_methods": [
+      "resolveLook",
+      "shotCast/shotAppearancePrompt",
+      "composeShotPrompt(fixes=[],limit=1500)",
+      "Stage.imageKey"
+    ],
+    "declared_provider": "minimax",
+    "declared_model": "image-01",
+    "image_selection_version": 1,
+    "seed": 1,
+    "references": [],
+    "negative": "",
+    "sizes_checked": [
+      "1K default 1920x1080",
+      "2K 2048x1152"
+    ],
+    "all_pairs_exact_complete_request_equal": true,
+    "live_cache_file": "/workspace/work/brand-story-20261025/media/story-everyday-moleskine-c03-remake-20261025/media/cache.json",
+    "cache_file_exists": false,
+    "current_pair_keys_all_missing": true,
+    "second_command_currently_permitted": false,
+    "missing_cache_action": "STOP_PAIR; no second command dispatch and no substitute/new purchase",
+    "production_requirements": [
+      "正式製片先重讀當前provider/model/size/seed/references/look/corrections；本地兩尺寸key不是後台設定證據。",
+      "payoff先正常單take生成並通過官方judge；teaser第二命令前直接readCache及實檔SHA核對accepted payoff。cached()會在無效entry時寫cache，本審沒有呼叫它。",
+      "任何judge失敗/retake/seed/prompt/trim/selection差異先停pair，兩端各自官方judge，不能另買相似圖或手改manifest。",
+      "兩端最終官方manifest/file SHA一致；如有trim必須比較selected derived bytes；render/assembly最終選圖及實檔SHA亦須一致，再可改actualasset_verified。"
+    ],
+    "actualasset_verified": false,
+    "actual_generated_images": 0,
+    "actual_verified_shared_images": 0
+  },
+  "preservation": {
+    "snapshot_archived": [
+      {
+        "path": "host-readback-local-check.json",
+        "expected": "05b58c937be364eb604705e39978348ee08ebadeb455792b1e5d7015390c035b",
+        "actual": "05b58c937be364eb604705e39978348ee08ebadeb455792b1e5d7015390c035b",
+        "match": true
+      },
+      {
+        "path": "backend-language-choice.json",
+        "expected": "f1170a6347369d45800a9d5c3542bb3439a92e556431d9293ff3791460d9a77b",
+        "actual": "f1170a6347369d45800a9d5c3542bb3439a92e556431d9293ff3791460d9a77b",
+        "match": true
+      },
+      {
+        "path": "backend-status.json",
+        "expected": "e05731fa21a4aa7db34443d5251d11558aeadab6f2f5fddcc6ceb04f289d0d7e",
+        "actual": "e05731fa21a4aa7db34443d5251d11558aeadab6f2f5fddcc6ceb04f289d0d7e",
+        "match": true
+      },
+      {
+        "path": "pricing-and-entry.json",
+        "expected": "974b5176d8b6241c03baca47078a397017be208c002632b8b6506887f050991e",
+        "actual": "974b5176d8b6241c03baca47078a397017be208c002632b8b6506887f050991e",
+        "match": true
+      },
+      {
+        "path": "author-delta-r2.json",
+        "expected": "eb23cb495c2bdd2b849c1185d27872134ab0f3a15231d2e4e248bc878ab07e61",
+        "actual": "eb23cb495c2bdd2b849c1185d27872134ab0f3a15231d2e4e248bc878ab07e61",
+        "match": true
+      },
+      {
+        "path": "tts-dry-run.txt",
+        "expected": "4edb9c5099c598ae85f50c473d10081ee35f4a7124dc413f56add461124ab1b4",
+        "actual": "4edb9c5099c598ae85f50c473d10081ee35f4a7124dc413f56add461124ab1b4",
+        "match": true
+      },
+      {
+        "path": "author-notes.json",
+        "expected": "0b7b4b984b40fb302f1b22d6c75a77103fc75a9d8664a23ca58619050f54ea25",
+        "actual": "0b7b4b984b40fb302f1b22d6c75a77103fc75a9d8664a23ca58619050f54ea25",
+        "match": true
+      },
+      {
+        "path": "narration-only.json",
+        "expected": "3d5461032a626e9c3246b5b2214af504e3fffee81c1a83cdda38dc2ba532c235",
+        "actual": "3d5461032a626e9c3246b5b2214af504e3fffee81c1a83cdda38dc2ba532c235",
+        "match": true
+      },
+      {
+        "path": "current-environment-readback.json",
+        "expected": "fac224eb6bb49c9e8a9d8ae73d59408f06dd7e8cdfb27966c28e813ec7706642",
+        "actual": "fac224eb6bb49c9e8a9d8ae73d59408f06dd7e8cdfb27966c28e813ec7706642",
+        "match": true
+      },
+      {
+        "path": "lint-r2-author.json",
+        "expected": "63a39a9a9c61afddb885d6d4b0b946530dbf28a1d020cd7c503c7a1551296926",
+        "actual": "63a39a9a9c61afddb885d6d4b0b946530dbf28a1d020cd7c503c7a1551296926",
+        "match": true
+      },
+      {
+        "path": "video.json",
+        "expected": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+        "actual": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+        "match": true
+      },
+      {
+        "path": "provider-preflight.json",
+        "expected": "2c997495367a729edd13ef49996443c1d594fdc6d4cb01f0ed2ea2825b58f231",
+        "actual": "2c997495367a729edd13ef49996443c1d594fdc6d4cb01f0ed2ea2825b58f231",
+        "match": true
+      },
+      {
+        "path": "backend-outline-receipt.json",
+        "expected": "34a52086df191762b84217c7310afa1930650f566fc8a8326cab3bcb21dce217",
+        "actual": "34a52086df191762b84217c7310afa1930650f566fc8a8326cab3bcb21dce217",
+        "match": true
+      },
+      {
+        "path": "source-anchors.json",
+        "expected": "73f1dec20f8168043544f4683c1d00bfd2580ae4f2c67a88ab2cd1ddf4898ff9",
+        "actual": "73f1dec20f8168043544f4683c1d00bfd2580ae4f2c67a88ab2cd1ddf4898ff9",
+        "match": true
+      },
+      {
+        "path": "source-snapshot-manifest.json",
+        "expected": "6ef1846b57bd70e9085081c96b34cd5666914384431f36276245152b36988da8",
+        "actual": "6ef1846b57bd70e9085081c96b34cd5666914384431f36276245152b36988da8",
+        "match": true
+      },
+      {
+        "path": "candidate-freeze.json",
+        "expected": "b5ff7816044e6b74c0651ba43d73664ef125f4b90ab6c88de6034fb760557d4c",
+        "actual": "b5ff7816044e6b74c0651ba43d73664ef125f4b90ab6c88de6034fb760557d4c",
+        "match": true
+      },
+      {
+        "path": "build-candidate.py",
+        "expected": "996394bfcc522be0ed9c6809aabfedef78045a2c933b628515cb3ed1b9794899",
+        "actual": "996394bfcc522be0ed9c6809aabfedef78045a2c933b628515cb3ed1b9794899",
+        "match": true
+      },
+      {
+        "path": "script.md",
+        "expected": "1698aa0a955713ae5f0eaf9234ad307e32332aa7a02aaa966b8e34bd01736709",
+        "actual": "1698aa0a955713ae5f0eaf9234ad307e32332aa7a02aaa966b8e34bd01736709",
+        "match": true
+      },
+      {
+        "path": "panel-contract.json",
+        "expected": "2a4e35434b48c030800cfe4aea234b87b87a8b31b75654dd89a82f9dfff45afe",
+        "actual": "2a4e35434b48c030800cfe4aea234b87b87a8b31b75654dd89a82f9dfff45afe",
+        "match": true
+      },
+      {
+        "path": "production-entry.md",
+        "expected": "64b0642d09c8f5fdd82cdfbff27ba9d9cc35477605343b50a2a791b7981900ed",
+        "actual": "64b0642d09c8f5fdd82cdfbff27ba9d9cc35477605343b50a2a791b7981900ed",
+        "match": true
+      },
+      {
+        "path": "panel-payload.json",
+        "expected": "9a94c63bbe7ba7f5165fa812900158affb868cf5dda4d381ce469fceb062fa8a",
+        "actual": "9a94c63bbe7ba7f5165fa812900158affb868cf5dda4d381ce469fceb062fa8a",
+        "match": true
+      },
+      {
+        "path": "backend-brief.md",
+        "expected": "56becc4f375bc3e9c2a1600eb4f6061803be39c34f0e70d1ff7ce7dd70931b2e",
+        "actual": "56becc4f375bc3e9c2a1600eb4f6061803be39c34f0e70d1ff7ce7dd70931b2e",
+        "match": true
+      },
+      {
+        "path": "lint-r3-author.json",
+        "expected": "2a1f60b54a80638b09fb63b0f8492f11485143e2c8666907eadd24bb70cca068",
+        "actual": "2a1f60b54a80638b09fb63b0f8492f11485143e2c8666907eadd24bb70cca068",
+        "match": true
+      },
+      {
+        "path": "series.json",
+        "expected": "6de1e3222d3e679e4bd740864e1c564c1b4708f936558a7a80ab9ff0d800e40b",
+        "actual": "6de1e3222d3e679e4bd740864e1c564c1b4708f936558a7a80ab9ff0d800e40b",
+        "match": true
+      },
+      {
+        "path": "lint-final.json",
+        "expected": "2a1f60b54a80638b09fb63b0f8492f11485143e2c8666907eadd24bb70cca068",
+        "actual": "2a1f60b54a80638b09fb63b0f8492f11485143e2c8666907eadd24bb70cca068",
+        "match": true
+      },
+      {
+        "path": "brief.md",
+        "expected": "56becc4f375bc3e9c2a1600eb4f6061803be39c34f0e70d1ff7ce7dd70931b2e",
+        "actual": "56becc4f375bc3e9c2a1600eb4f6061803be39c34f0e70d1ff7ce7dd70931b2e",
+        "match": true
+      },
+      {
+        "path": "keyframes-dry-run.txt",
+        "expected": "b2f98bad99db1501abb288d14b8acb22c814124eb19626fe857efdb75d3f1885",
+        "actual": "b2f98bad99db1501abb288d14b8acb22c814124eb19626fe857efdb75d3f1885",
+        "match": true
+      },
+      {
+        "path": "backend-script.md",
+        "expected": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f",
+        "actual": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f",
+        "match": true
+      },
+      {
+        "path": "music-preflight-hold.txt",
+        "expected": "8da0452f87c98e1b9b529df1565e2fe097ee61780f108ef811f0ab178ee6d017",
+        "actual": "8da0452f87c98e1b9b529df1565e2fe097ee61780f108ef811f0ab178ee6d017",
+        "match": true
+      },
+      {
+        "path": "claims.json",
+        "expected": "c8eaf8b7d01704417b147ff7af3080e5a6041d964b9cc6830d5b0153f6eb4328",
+        "actual": "c8eaf8b7d01704417b147ff7af3080e5a6041d964b9cc6830d5b0153f6eb4328",
+        "match": true
+      },
+      {
+        "path": "reuse-eligibility.json",
+        "expected": "adf653c6044b8ce3a047437729162cea45820a8595fab702e9fbc39f5822a3db",
+        "actual": "adf653c6044b8ce3a047437729162cea45820a8595fab702e9fbc39f5822a3db",
+        "match": true
+      },
+      {
+        "path": "language-selection-request.json",
+        "expected": "e3be544cde015e9a7608efb0958cbf316182ef14f01897591926a1ae3e8c71a3",
+        "actual": "e3be544cde015e9a7608efb0958cbf316182ef14f01897591926a1ae3e8c71a3",
+        "match": true
+      },
+      {
+        "path": "build-panel.mjs",
+        "expected": "dc4a9d6b63e2c9ca39c5bfa0b242acf3cf4b44df0daf397b57606dc3066ec116",
+        "actual": "dc4a9d6b63e2c9ca39c5bfa0b242acf3cf4b44df0daf397b57606dc3066ec116",
+        "match": true
+      },
+      {
+        "path": "source-catalog.json",
+        "expected": "4a19aa192202855302a49556d818d3f760b12361c2fd03683690fc24abfee41b",
+        "actual": "4a19aa192202855302a49556d818d3f760b12361c2fd03683690fc24abfee41b",
+        "match": true
+      },
+      {
+        "path": "author-delta-r3.json",
+        "expected": "214b5853f7dd39534bfce4d688bd0e2e180698179263666c019aca9e0a525b50",
+        "actual": "214b5853f7dd39534bfce4d688bd0e2e180698179263666c019aca9e0a525b50",
+        "match": true
+      },
+      {
+        "path": "README.md",
+        "expected": "e44a1e0b4d4c444aece70d26e9a306c6ed450be2720acf2df4437f5b696d3a18",
+        "actual": "e44a1e0b4d4c444aece70d26e9a306c6ed450be2720acf2df4437f5b696d3a18",
+        "match": true
+      },
+      {
+        "path": "host-admission-readback.sh",
+        "expected": "f372a2677cffe2a1e9226834657eb8c9aa3aaa9af581d4cac4bf17cd18df54a2",
+        "actual": "f372a2677cffe2a1e9226834657eb8c9aa3aaa9af581d4cac4bf17cd18df54a2",
+        "match": true
+      },
+      {
+        "path": "verify-1.md",
+        "expected": "1dc587379c910d1a02fb3c35f8206eaca49b01a32c4fcee76e291d84857e74da",
+        "actual": "1dc587379c910d1a02fb3c35f8206eaca49b01a32c4fcee76e291d84857e74da",
+        "match": true
+      },
+      {
+        "path": "tts-admission-hold.txt",
+        "expected": "828652d02a5cb31b820952616f467000169df147373aa59bbdd9a1af0f3bf787",
+        "actual": "828652d02a5cb31b820952616f467000169df147373aa59bbdd9a1af0f3bf787",
+        "match": true
+      },
+      {
+        "path": "preflight-inputs.json",
+        "expected": "6ff19dcf6b0d01629ed44174d1fae62adb59c9e6b8b5b00de82457beca21dd44",
+        "actual": "6ff19dcf6b0d01629ed44174d1fae62adb59c9e6b8b5b00de82457beca21dd44",
+        "match": true
+      },
+      {
+        "path": "backend-script-receipt.json",
+        "expected": "cfd02fe51415a5d3ad855edf889be2a70fc71d5f061400fbb3c5c7e35eb9cecc",
+        "actual": "cfd02fe51415a5d3ad855edf889be2a70fc71d5f061400fbb3c5c7e35eb9cecc",
+        "match": true
+      },
+      {
+        "path": "production-after-approval.json",
+        "expected": "8c3748ba2d345a934372185b10cd871483787c8ef37cd868b4afd8a7ea06b5fb",
+        "actual": "8c3748ba2d345a934372185b10cd871483787c8ef37cd868b4afd8a7ea06b5fb",
+        "match": true
+      },
+      {
+        "path": "claims.md",
+        "expected": "eabe20e67a544eff53d10ed97fe3bdc1c9737a00041bba2f5d951943d73a57fb",
+        "actual": "eabe20e67a544eff53d10ed97fe3bdc1c9737a00041bba2f5d951943d73a57fb",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-final.json",
+        "expected": "beb511213bccacffddaa8e933c5ca361e5ed9b9e0d059bc794b647f7195f7c25",
+        "actual": "beb511213bccacffddaa8e933c5ca361e5ed9b9e0d059bc794b647f7195f7c25",
+        "match": true
+      },
+      {
+        "path": "reviews/source-r2-delta.json",
+        "expected": "f40e8afb3f4e82d216ccae60b1ef2b6d92a801a9aa21861672e8827b69ad2a53",
+        "actual": "f40e8afb3f4e82d216ccae60b1ef2b6d92a801a9aa21861672e8827b69ad2a53",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r1.json",
+        "expected": "20ad0e296e0d6b4999520e08db917224699c8d7226d550ec59ebb836fa7e9d7e",
+        "actual": "20ad0e296e0d6b4999520e08db917224699c8d7226d550ec59ebb836fa7e9d7e",
+        "match": true
+      },
+      {
+        "path": "reviews/source-r3-delta.json",
+        "expected": "b4b15def639f0addb280c3cd238de2fdd51d005697fe16a96e22d7ca7725f390",
+        "actual": "b4b15def639f0addb280c3cd238de2fdd51d005697fe16a96e22d7ca7725f390",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r2.json",
+        "expected": "3a2a069561038a7e072be5b908688037fc3394ed028f07617511707cdb5b43a8",
+        "actual": "3a2a069561038a7e072be5b908688037fc3394ed028f07617511707cdb5b43a8",
+        "match": true
+      },
+      {
+        "path": "reviews/source-and-visual-independent.json",
+        "expected": "74b85f25368a1126fa09218cdafc4470a6a77bb30fff7abdb43756fbde76707a",
+        "actual": "74b85f25368a1126fa09218cdafc4470a6a77bb30fff7abdb43756fbde76707a",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r1/reader-b.json",
+        "expected": "d1e6a9a589c3a912ff8415c4b09b6b3cfcf8a7fabd169726e363620ad60aa60c",
+        "actual": "d1e6a9a589c3a912ff8415c4b09b6b3cfcf8a7fabd169726e363620ad60aa60c",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r1/payload.json",
+        "expected": "35ab109f724e81296ae3d0fb7e2abf8781d6d44b549f20414176e8f1c71223c5",
+        "actual": "35ab109f724e81296ae3d0fb7e2abf8781d6d44b549f20414176e8f1c71223c5",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r1/reader-a-notes.txt",
+        "expected": "d93792f55bb50410c400ea982bce65346d10d13b7713fd951d08f3044a8dff12",
+        "actual": "d93792f55bb50410c400ea982bce65346d10d13b7713fd951d08f3044a8dff12",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r1/reader-b-notes.txt",
+        "expected": "137047fd5435c72ee0c0e988de36a0e148625cbe5afdc944c471bd63392305f7",
+        "actual": "137047fd5435c72ee0c0e988de36a0e148625cbe5afdc944c471bd63392305f7",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r1/reader-a.json",
+        "expected": "1e1b11a882a24a9bb2e81eeb0bdb72ca81794df2d49bfda5624d01ff5870f15a",
+        "actual": "1e1b11a882a24a9bb2e81eeb0bdb72ca81794df2d49bfda5624d01ff5870f15a",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-final/reader-b.json",
+        "expected": "5f792e491374051dd110cf266a127ab19177d0fd0d799344280f586c781fc3df",
+        "actual": "5f792e491374051dd110cf266a127ab19177d0fd0d799344280f586c781fc3df",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-final/payload.json",
+        "expected": "9a94c63bbe7ba7f5165fa812900158affb868cf5dda4d381ce469fceb062fa8a",
+        "actual": "9a94c63bbe7ba7f5165fa812900158affb868cf5dda4d381ce469fceb062fa8a",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-final/reader-a-notes.txt",
+        "expected": "6fc067aa7f2857220b4237bff2b2bd574b68b4f9832c71a8fddb0174480eed2a",
+        "actual": "6fc067aa7f2857220b4237bff2b2bd574b68b4f9832c71a8fddb0174480eed2a",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-final/reader-b-notes.txt",
+        "expected": "34bc7727ed85d5b658962e2702182ec7b355466bdbee0e1faee737d35622843e",
+        "actual": "34bc7727ed85d5b658962e2702182ec7b355466bdbee0e1faee737d35622843e",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-final/reader-a.json",
+        "expected": "df013b6ac7f88f5517100c8dbc40e8579c3fc0a1d488fa37eda9ccd924aa52aa",
+        "actual": "df013b6ac7f88f5517100c8dbc40e8579c3fc0a1d488fa37eda9ccd924aa52aa",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r2/reader-b.json",
+        "expected": "d988d6bd76966478cd609727ac61e27dc7afa10231d4dd935c6412caf0585f7a",
+        "actual": "d988d6bd76966478cd609727ac61e27dc7afa10231d4dd935c6412caf0585f7a",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r2/payload.json",
+        "expected": "be09213cdadcb1b18999aa0e1046a31c151023ece8c1a64a35d8c82e67c78ac7",
+        "actual": "be09213cdadcb1b18999aa0e1046a31c151023ece8c1a64a35d8c82e67c78ac7",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r2/reader-a-notes.txt",
+        "expected": "b076c2a99ffaffd95a3de359eeb5fde7c79b330706e5c6499e845e8354d93561",
+        "actual": "b076c2a99ffaffd95a3de359eeb5fde7c79b330706e5c6499e845e8354d93561",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r2/reader-b-notes.txt",
+        "expected": "3251af7dc239914bd787d44f1082da85a67b8599afb20d094299b037f2fcedd6",
+        "actual": "3251af7dc239914bd787d44f1082da85a67b8599afb20d094299b037f2fcedd6",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-r2/reader-a.json",
+        "expected": "816e221534f3adbdfcbe792c66f48798b5a3285308fd2d107d1287209375f738",
+        "actual": "816e221534f3adbdfcbe792c66f48798b5a3285308fd2d107d1287209375f738",
+        "match": true
+      }
+    ],
+    "auxiliary": [
+      {
+        "path": "i18n/vi.json",
+        "expected": "79ac336669b46aef8968883dcbd7d0aae6a3ee50e420e27f1c96ce7ca6b247bb",
+        "actual": "79ac336669b46aef8968883dcbd7d0aae6a3ee50e420e27f1c96ce7ca6b247bb",
+        "match": true
+      },
+      {
+        "path": "i18n/es.json",
+        "expected": "a31a4a8fbee744f184183727125e6844ca6a0a724f0d2d0016d93353c9a6b0a4",
+        "actual": "a31a4a8fbee744f184183727125e6844ca6a0a724f0d2d0016d93353c9a6b0a4",
+        "match": true
+      },
+      {
+        "path": "i18n/ko.json",
+        "expected": "324f3142584229d1cabece1102691e49fb4a35b5fddf45d24c8a0b3f45ff7584",
+        "actual": "324f3142584229d1cabece1102691e49fb4a35b5fddf45d24c8a0b3f45ff7584",
+        "match": true
+      },
+      {
+        "path": "i18n/id.json",
+        "expected": "b35e991d2b94a5a886bb01b51e281fce8bb3c28fb351270b65050ec362d2fde7",
+        "actual": "b35e991d2b94a5a886bb01b51e281fce8bb3c28fb351270b65050ec362d2fde7",
+        "match": true
+      },
+      {
+        "path": "i18n/en.json",
+        "expected": "2039b013395772b9fa26111dfda73a1fc0f8f8bba928ba2af484a192d341c863",
+        "actual": "2039b013395772b9fa26111dfda73a1fc0f8f8bba928ba2af484a192d341c863",
+        "match": true
+      },
+      {
+        "path": "i18n/th.json",
+        "expected": "e6c48afe876073c1e88b8d7fd7225155fd2803441664973d8ec7274d0a052706",
+        "actual": "e6c48afe876073c1e88b8d7fd7225155fd2803441664973d8ec7274d0a052706",
+        "match": true
+      },
+      {
+        "path": "i18n/ja.json",
+        "expected": "038fb15c08dea06bcedb70785c416a3da1a186d52b8cd33092cbc5c4351a2fe9",
+        "actual": "038fb15c08dea06bcedb70785c416a3da1a186d52b8cd33092cbc5c4351a2fe9",
+        "match": true
+      },
+      {
+        "path": "i18n/pt.json",
+        "expected": "47bff7a793c641aae85a847e241027ca814ef81ed8261a93a233b2187ab36199",
+        "actual": "47bff7a793c641aae85a847e241027ca814ef81ed8261a93a233b2187ab36199",
+        "match": true
+      },
+      {
+        "path": "i18n/preparation-status.json",
+        "expected": "11d712e4331d3014ce43d32e1de9f86c852cf80af0cd5b56f98b47b58bf7b94f",
+        "actual": "11d712e4331d3014ce43d32e1de9f86c852cf80af0cd5b56f98b47b58bf7b94f",
+        "match": true
+      },
+      {
+        "path": "i18n/README.md",
+        "expected": "8374bb98be4d63d5f2777b4a73036cb5516ad93657633d59b2aff5bad44a0d3d",
+        "actual": "8374bb98be4d63d5f2777b4a73036cb5516ad93657633d59b2aff5bad44a0d3d",
+        "match": true
+      },
+      {
+        "path": "i18n/runtime-rehearsal.json",
+        "expected": "ccb2d55c51d8f77fa66ca791690b784b7f2ac18984f9a693be458041f0aaf296",
+        "actual": "ccb2d55c51d8f77fa66ca791690b784b7f2ac18984f9a693be458041f0aaf296",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/recheck-vi-th.json",
+        "expected": "198c27464a2441b9c381206f7c5814a9b42e31d0646c178bb34591e9ef4f5bb0",
+        "actual": "198c27464a2441b9c381206f7c5814a9b42e31d0646c178bb34591e9ef4f5bb0",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-vi.json",
+        "expected": "3e72d7e2a0dca3588a81cbc594c129f48544ed43e22cfdc4a548006e5836be7b",
+        "actual": "3e72d7e2a0dca3588a81cbc594c129f48544ed43e22cfdc4a548006e5836be7b",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-pt.json",
+        "expected": "0c27fc13784ba8f7e49d667544ae8b52be16c3c02d17681bd5d1a9febb986c99",
+        "actual": "0c27fc13784ba8f7e49d667544ae8b52be16c3c02d17681bd5d1a9febb986c99",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/en.review.md",
+        "expected": "1cd52ed6369a3766045b1f7701d353a48716c5964b583c4b18e086d2a79c2ac1",
+        "actual": "1cd52ed6369a3766045b1f7701d353a48716c5964b583c4b18e086d2a79c2ac1",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/recheck-pt-id.json",
+        "expected": "878b09f32c9f0eeea5682ad7cb8950943061142a65a847393f4def4388b9cdab",
+        "actual": "878b09f32c9f0eeea5682ad7cb8950943061142a65a847393f4def4388b9cdab",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/recheck-ko-es.json",
+        "expected": "7f84e09aa98a1e552dfdbb7060537a355a2275f23cadb55ffeff457c96a1f210",
+        "actual": "7f84e09aa98a1e552dfdbb7060537a355a2275f23cadb55ffeff457c96a1f210",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/review-ko-es.json",
+        "expected": "721182cb9afe735bfb29a03c263b3720c137969074dac15291ea636a9af27ec8",
+        "actual": "721182cb9afe735bfb29a03c263b3720c137969074dac15291ea636a9af27ec8",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/ja.review.md",
+        "expected": "2e014821eb60d9345802b3bd35891c2178a1419cea7ddec8028d8acc1e920d12",
+        "actual": "2e014821eb60d9345802b3bd35891c2178a1419cea7ddec8028d8acc1e920d12",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/th.review.md",
+        "expected": "7852bf972b65b510e6a3461b53c7aa2d3199dcb9d023553835c56191c6f70890",
+        "actual": "7852bf972b65b510e6a3461b53c7aa2d3199dcb9d023553835c56191c6f70890",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-ko.json",
+        "expected": "68d5fe494aa90ec452016831b2a7f8ed98b270843bccab4bace7b7752a7c1224",
+        "actual": "68d5fe494aa90ec452016831b2a7f8ed98b270843bccab4bace7b7752a7c1224",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-th.json",
+        "expected": "5c66d61f68e46b0c9da074bdb3f0a1977909555de1702a8a47a0b00d05005dff",
+        "actual": "5c66d61f68e46b0c9da074bdb3f0a1977909555de1702a8a47a0b00d05005dff",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-es.json",
+        "expected": "390dc7b9796986619af58394c8e609712ebe138e0dfb6ae63e1c35c613a8c90b",
+        "actual": "390dc7b9796986619af58394c8e609712ebe138e0dfb6ae63e1c35c613a8c90b",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/recheck-en-ja.json",
+        "expected": "22443de6baf59dd43adc344fb5b320d2ccfef0fd32886bbd5931b9c5f454ea09",
+        "actual": "22443de6baf59dd43adc344fb5b320d2ccfef0fd32886bbd5931b9c5f454ea09",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/id.review.md",
+        "expected": "30fecde6d1f1a10f5873b248bcb57558ff49e60266e724d86ae2583eb4b653bc",
+        "actual": "30fecde6d1f1a10f5873b248bcb57558ff49e60266e724d86ae2583eb4b653bc",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/pt.review.md",
+        "expected": "41fcfb1091bd22eed2c6c5ff5ff79f9705528b695af9988309fc2ddc8d515ab9",
+        "actual": "41fcfb1091bd22eed2c6c5ff5ff79f9705528b695af9988309fc2ddc8d515ab9",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/vi.review.md",
+        "expected": "aa36d314ca1b512fb3ef93a4619cb7a4344282f6bd0f9f4538eacb230f6e2bae",
+        "actual": "aa36d314ca1b512fb3ef93a4619cb7a4344282f6bd0f9f4538eacb230f6e2bae",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-en.json",
+        "expected": "9da4f38079e9b5c5ba9a461a7cd45996ed07abc39dd2f46e74cd94fc4c6e7b96",
+        "actual": "9da4f38079e9b5c5ba9a461a7cd45996ed07abc39dd2f46e74cd94fc4c6e7b96",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/review-en-ja.json",
+        "expected": "c2d99bf078885a2c355bf24778a237fa3c976aeb621adbee17f279f57477d7e5",
+        "actual": "c2d99bf078885a2c355bf24778a237fa3c976aeb621adbee17f279f57477d7e5",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-id.json",
+        "expected": "89efa4502e4d464119133ef173f7073911fe11310dcc34b6de646a226dfa23af",
+        "actual": "89efa4502e4d464119133ef173f7073911fe11310dcc34b6de646a226dfa23af",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-ja.json",
+        "expected": "bc00dd35061b7140f3add816c69f0c2e95155b0b5303995417d64121986419f9",
+        "actual": "bc00dd35061b7140f3add816c69f0c2e95155b0b5303995417d64121986419f9",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/es.review.md",
+        "expected": "59498f7200c409ba8cda2a849af7d42e1aed00dde7524d5c9606fbd0515fead8",
+        "actual": "59498f7200c409ba8cda2a849af7d42e1aed00dde7524d5c9606fbd0515fead8",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/ko.review.md",
+        "expected": "f7c86905cd6d0510bf717ef1d7e18e5b1139aba5065cd7fde7ccbe9f602adde0",
+        "actual": "f7c86905cd6d0510bf717ef1d7e18e5b1139aba5065cd7fde7ccbe9f602adde0",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/review-vi-th.json",
+        "expected": "64aa1f459732761ad0b23868d45ab74589d4ec6d425f1a63993aac50acb24235",
+        "actual": "64aa1f459732761ad0b23868d45ab74589d4ec6d425f1a63993aac50acb24235",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/review-pt-id.json",
+        "expected": "8d03f17c5ed1f15b40f6d9d820700f3b260529037e7f94a4976f43354d48291f",
+        "actual": "8d03f17c5ed1f15b40f6d9d820700f3b260529037e7f94a4976f43354d48291f",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/vi.json",
+        "expected": "a4bb7773c71246f67260d062609bc67152a1c08130f6e0c076cc688cec10910b",
+        "actual": "a4bb7773c71246f67260d062609bc67152a1c08130f6e0c076cc688cec10910b",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/es.json",
+        "expected": "97ea1a57e434a0de9cdf7224b4d30d5c15c931c42ab75e42e03b259de36edeac",
+        "actual": "97ea1a57e434a0de9cdf7224b4d30d5c15c931c42ab75e42e03b259de36edeac",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/ko.json",
+        "expected": "2bf3d36cb1ec35872c5b81cc336534df315687564b92cad4dd958d191276f97d",
+        "actual": "2bf3d36cb1ec35872c5b81cc336534df315687564b92cad4dd958d191276f97d",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/id.json",
+        "expected": "fb10c31070403ab68d17b449feefb9e3cce5c21f4983aa04a9309b60c624382b",
+        "actual": "fb10c31070403ab68d17b449feefb9e3cce5c21f4983aa04a9309b60c624382b",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/en.json",
+        "expected": "2cdfecd5943d0dd3e891cfdf5610164f5eae36dc91940d6f729fab1e444f8bba",
+        "actual": "2cdfecd5943d0dd3e891cfdf5610164f5eae36dc91940d6f729fab1e444f8bba",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/th.json",
+        "expected": "d99af24e4a2d20307c253fe5c87472de75a3b5d0ded14ef5b032dd721047f961",
+        "actual": "d99af24e4a2d20307c253fe5c87472de75a3b5d0ded14ef5b032dd721047f961",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/ja.json",
+        "expected": "070f882dd21254518bc6e37dfe478932b4465e9622276df0fe90cc3ef9e6d957",
+        "actual": "070f882dd21254518bc6e37dfe478932b4465e9622276df0fe90cc3ef9e6d957",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/pt.json",
+        "expected": "438538a3fb18a09650abf9e6c1cd429a4649b2bb0f52144b0022b10d2fcb321e",
+        "actual": "438538a3fb18a09650abf9e6c1cd429a4649b2bb0f52144b0022b10d2fcb321e",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/translator-reports/pt-id.md",
+        "expected": "c2b91f7a4685953b9070218eefe84c8fc6ea629bb2bc320680019eeeee66a14f",
+        "actual": "c2b91f7a4685953b9070218eefe84c8fc6ea629bb2bc320680019eeeee66a14f",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/translator-reports/vi-th.md",
+        "expected": "f75d389b1866969999dfa877352f29ba08385c0303767cbb1c750a8e1981c670",
+        "actual": "f75d389b1866969999dfa877352f29ba08385c0303767cbb1c750a8e1981c670",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/translator-reports/ko-es.md",
+        "expected": "a44180445df28b406b2d32ee93523f4da8b60d6b07b429e995a11b77a678f7d7",
+        "actual": "a44180445df28b406b2d32ee93523f4da8b60d6b07b429e995a11b77a678f7d7",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/translator-reports/en-ja.md",
+        "expected": "b75bce8ec9add528d9449cb023cfa5d06d4d980013ddd9ff0c00cc8730a1e82e",
+        "actual": "b75bce8ec9add528d9449cb023cfa5d06d4d980013ddd9ff0c00cc8730a1e82e",
+        "match": true
+      },
+      {
+        "path": "runtime-lexicon/current.json",
+        "expected": "b73c0395dbd2e00e85cffc57ca67ce521999afaa6fab1a98faa7c784c785177f",
+        "actual": "b73c0395dbd2e00e85cffc57ca67ce521999afaa6fab1a98faa7c784c785177f",
+        "match": true
+      },
+      {
+        "path": "runtime-lexicon/versions/30b814bbdb103aa143cac8b9cfd483f0e379100dcaf3638d18b8866f7fb636fe.json",
+        "expected": "30b814bbdb103aa143cac8b9cfd483f0e379100dcaf3638d18b8866f7fb636fe",
+        "actual": "30b814bbdb103aa143cac8b9cfd483f0e379100dcaf3638d18b8866f7fb636fe",
+        "match": true
+      },
+      {
+        "path": "runtime-lexicon/events/ffd171ab39647448bb3c3bcb546e19f3569b22c0c904645a40e57d7bf8c53f76.json",
+        "expected": "ffd171ab39647448bb3c3bcb546e19f3569b22c0c904645a40e57d7bf8c53f76",
+        "actual": "ffd171ab39647448bb3c3bcb546e19f3569b22c0c904645a40e57d7bf8c53f76",
+        "match": true
+      },
+      {
+        "path": "variants/clean-master/derivation.json",
+        "expected": "e787a59553acbee7e4b135d6f487aa16f5d6c2b9053b6e970fb44669c869fa6e",
+        "actual": "e787a59553acbee7e4b135d6f487aa16f5d6c2b9053b6e970fb44669c869fa6e",
+        "match": true
+      },
+      {
+        "path": "variants/clean-master/video.json",
+        "expected": "814a229d33801a8a5be37ff9a8d074e54d851b636338e2ce9aac5871f827089e",
+        "actual": "814a229d33801a8a5be37ff9a8d074e54d851b636338e2ce9aac5871f827089e",
+        "match": true
+      },
+      {
+        "path": "variants/clean-master/review.json",
+        "expected": "265b5cb7e012c41542239dceec02e600124b207944a9c6c8a5d54c3739a22146",
+        "actual": "265b5cb7e012c41542239dceec02e600124b207944a9c6c8a5d54c3739a22146",
+        "match": true
+      },
+      {
+        "path": "variants/clean-master/README.md",
+        "expected": "e267bec296efe2b54868a1e6bffc75f14c607af94b580558196db1e0009aadda",
+        "actual": "e267bec296efe2b54868a1e6bffc75f14c607af94b580558196db1e0009aadda",
+        "match": true
+      },
+      {
+        "path": "variants/clean-master/lint.json",
+        "expected": "ff6829f83128c5fc0bc791557c3bd18ae275e527a1224d507d6c9bce25cab5f4",
+        "actual": "ff6829f83128c5fc0bc791557c3bd18ae275e527a1224d507d6c9bce25cab5f4",
+        "match": true
+      }
+    ],
+    "original53_all_match": true,
+    "original_checks": [
+      {
+        "path": "docs/videos/story-everyday-zippo-c20-short-v8/script.md",
+        "expected": "f02b94989765eadff8661f73b2c59a0ba8c3950b4bddd2cdfc0a1a2ad9fffa65",
+        "actual": "f02b94989765eadff8661f73b2c59a0ba8c3950b4bddd2cdfc0a1a2ad9fffa65",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-zippo-c20-short-v8/video.json",
+        "expected": "b97a36bf3247804e579ec00595a210b3e077cfecc0691b70e16eac7a115e5b62",
+        "actual": "b97a36bf3247804e579ec00595a210b3e077cfecc0691b70e16eac7a115e5b62",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-zippo-c20-short-v8/series.json",
+        "expected": "8980492a3fa54206252362a5e561971af1f080716403de7fa91aebd8fc4202cb",
+        "actual": "8980492a3fa54206252362a5e561971af1f080716403de7fa91aebd8fc4202cb",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kikkoman-c08-short-v8/script.md",
+        "expected": "07cc18d1d90e6eba679a699f0243d977717f896b924158ab251fb390a308c0b9",
+        "actual": "07cc18d1d90e6eba679a699f0243d977717f896b924158ab251fb390a308c0b9",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kikkoman-c08-short-v8/video.json",
+        "expected": "1d33c0a4e9c58a58aa65a097aa59c93bf6c259947acd33b75f04008e23d378bb",
+        "actual": "1d33c0a4e9c58a58aa65a097aa59c93bf6c259947acd33b75f04008e23d378bb",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kikkoman-c08-short-v8/series.json",
+        "expected": "07af8fda0e8beaf3d0f4a0ea90acd94b2ae88f79b34ca509016339b223c875db",
+        "actual": "07af8fda0e8beaf3d0f4a0ea90acd94b2ae88f79b34ca509016339b223c875db",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-patagonia-c09/script.md",
+        "expected": "4445ad74bcafbac1dfca65392199fec89700c17ab8c01e665ac79dfffc1aa3f7",
+        "actual": "4445ad74bcafbac1dfca65392199fec89700c17ab8c01e665ac79dfffc1aa3f7",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-patagonia-c09/video.json",
+        "expected": "4abebbf0936cd77269a55f197b7051534ee5140785929c9287a13cae122ad460",
+        "actual": "4abebbf0936cd77269a55f197b7051534ee5140785929c9287a13cae122ad460",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-patagonia-c09/series.json",
+        "expected": "9b7fa1753f3e411191ef3c780ed7d3c910975451efe1656243880258565b6a5f",
+        "actual": "9b7fa1753f3e411191ef3c780ed7d3c910975451efe1656243880258565b6a5f",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-patagonia-c09/source-matrix.md",
+        "expected": "ec8e598c9099ebe0ffd51cbf89807c96962c62618a41be8ba3a66a48986eea2c",
+        "actual": "ec8e598c9099ebe0ffd51cbf89807c96962c62618a41be8ba3a66a48986eea2c",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-seven-bank-c19/script.md",
+        "expected": "b4af0f8a47d57e57d35a86a6092851f0282d52b5b5ca95dd62dfe036d0588e8f",
+        "actual": "b4af0f8a47d57e57d35a86a6092851f0282d52b5b5ca95dd62dfe036d0588e8f",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-seven-bank-c19/video.json",
+        "expected": "117676de8dbd02a8053e51ee6fed634d10c92e8e0564c7fb41e9387f757b0ce9",
+        "actual": "117676de8dbd02a8053e51ee6fed634d10c92e8e0564c7fb41e9387f757b0ce9",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-seven-bank-c19/series.json",
+        "expected": "b60e76efa511cf904d2dab1300bc2bc049869c0d39021fe477929d752a5b3420",
+        "actual": "b60e76efa511cf904d2dab1300bc2bc049869c0d39021fe477929d752a5b3420",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-seven-bank-c19/source-matrix.md",
+        "expected": "8f0996ccd52894f97754d5060c44c85310c9073971d365ef353c238760633afe",
+        "actual": "8f0996ccd52894f97754d5060c44c85310c9073971d365ef353c238760633afe",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-frixion-c15/script.md",
+        "expected": "c75e85c881f51942c8cad0bdd0185615f2cbdb6a2ccf2f6eed846724a6ecebd4",
+        "actual": "c75e85c881f51942c8cad0bdd0185615f2cbdb6a2ccf2f6eed846724a6ecebd4",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-frixion-c15/video.json",
+        "expected": "fb222cac8fd95fc773f9aeed5f0cac028c83260c42f604fe9a2568f2fbfcc2f8",
+        "actual": "fb222cac8fd95fc773f9aeed5f0cac028c83260c42f604fe9a2568f2fbfcc2f8",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-frixion-c15/series.json",
+        "expected": "2cdb882a5037e00b7e2c92beb8b727edd3786cc7b14d3f6b2a00d5a619568191",
+        "actual": "2cdb882a5037e00b7e2c92beb8b727edd3786cc7b14d3f6b2a00d5a619568191",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-frixion-c15/source-matrix.md",
+        "expected": "6e030f4399f6fd2ae99550de89b5b46658d708cf870910199804069a784c4c09",
+        "actual": "6e030f4399f6fd2ae99550de89b5b46658d708cf870910199804069a784c4c09",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-camelbak-c14/script.md",
+        "expected": "167db38f368484951c56972b86a9838bb92b3b0b874952a87fbbad26b8429312",
+        "actual": "167db38f368484951c56972b86a9838bb92b3b0b874952a87fbbad26b8429312",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-camelbak-c14/video.json",
+        "expected": "f7d31176c626293cafb719df4960eba0a0cc2ad04231d312a22855bbf97d1d54",
+        "actual": "f7d31176c626293cafb719df4960eba0a0cc2ad04231d312a22855bbf97d1d54",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-camelbak-c14/series.json",
+        "expected": "15f8eecfddc44300af3eca3bc609270928c8a9729bef2bb9d9fe8eb6146e4a0b",
+        "actual": "15f8eecfddc44300af3eca3bc609270928c8a9729bef2bb9d9fe8eb6146e4a0b",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-camelbak-c14/source-matrix.md",
+        "expected": "f8cf68aa36264df18cdbe6ecd698d4af1f22e405deaada8ed275b7685050587e",
+        "actual": "f8cf68aa36264df18cdbe6ecd698d4af1f22e405deaada8ed275b7685050587e",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-ucc-c11/script.md",
+        "expected": "c55d77133e1508bfeace8b7423e5cf7579ecb768ca33f60bd13380480f589cd3",
+        "actual": "c55d77133e1508bfeace8b7423e5cf7579ecb768ca33f60bd13380480f589cd3",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-ucc-c11/video.json",
+        "expected": "667f0478c53e5aa8934e68300146c57442017f35cd91e074fd414fcad3264843",
+        "actual": "667f0478c53e5aa8934e68300146c57442017f35cd91e074fd414fcad3264843",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-ucc-c11/series.json",
+        "expected": "a3c268861ccf165e8274d1d424b38372357c6d60a93930476b68502f89af1d57",
+        "actual": "a3c268861ccf165e8274d1d424b38372357c6d60a93930476b68502f89af1d57",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-ucc-c11/source-matrix.md",
+        "expected": "931f3b19791740cdffefd665c284c4af0f7b1e2228c2911687b16d68f1483e8b",
+        "actual": "931f3b19791740cdffefd665c284c4af0f7b1e2228c2911687b16d68f1483e8b",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-oxo-c10/script.md",
+        "expected": "04a5945ddf219868cdc8e52936447a6d7329544976f6a2dc72a7f3b6841175a1",
+        "actual": "04a5945ddf219868cdc8e52936447a6d7329544976f6a2dc72a7f3b6841175a1",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-oxo-c10/video.json",
+        "expected": "81c2170c32cdddfdb6d9f1f43079f7643361885811fb49be579af1ea0a4122f2",
+        "actual": "81c2170c32cdddfdb6d9f1f43079f7643361885811fb49be579af1ea0a4122f2",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-oxo-c10/series.json",
+        "expected": "7a7e659421beb33bd6d7a155913780174648adbef296904c7e6c557879ec5d0a",
+        "actual": "7a7e659421beb33bd6d7a155913780174648adbef296904c7e6c557879ec5d0a",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-oxo-c10/source-matrix.md",
+        "expected": "4deeb89a2028184e73f681fcfd3c9b7fb44463b364bf0d26ac9941f557f156a6",
+        "actual": "4deeb89a2028184e73f681fcfd3c9b7fb44463b364bf0d26ac9941f557f156a6",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kikkoman-c08/script.md",
+        "expected": "b9e4c547ffa190609b433d48ff7e27a94b9c9df4322aeb48104a3163694b3376",
+        "actual": "b9e4c547ffa190609b433d48ff7e27a94b9c9df4322aeb48104a3163694b3376",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kikkoman-c08/video.json",
+        "expected": "57371891a62b0b8f4e6ddbd9e5ffea196dade2ef3d92b5f4bc17c319dd0805b2",
+        "actual": "57371891a62b0b8f4e6ddbd9e5ffea196dade2ef3d92b5f4bc17c319dd0805b2",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kikkoman-c08/series.json",
+        "expected": "45595a5ed0d415fc9269e04c617a65b0287ccaa885935d86b5bd6dbb85535e20",
+        "actual": "45595a5ed0d415fc9269e04c617a65b0287ccaa885935d86b5bd6dbb85535e20",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kikkoman-c08/source-matrix.md",
+        "expected": "0f755dff2b4f58d9401d1649be6c7535721c99afa4d6c88ceda310f691c57b32",
+        "actual": "0f755dff2b4f58d9401d1649be6c7535721c99afa4d6c88ceda310f691c57b32",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-dr-martens-c07/script.md",
+        "expected": "624af568ec2f85c2df2536a307433a4eadf301eeaa095d8cd676a5418c2ab47b",
+        "actual": "624af568ec2f85c2df2536a307433a4eadf301eeaa095d8cd676a5418c2ab47b",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-dr-martens-c07/video.json",
+        "expected": "ddcf3cb5bfe8fb2124afdc27d6e422fe53012aa05a13892728596d3d543712e0",
+        "actual": "ddcf3cb5bfe8fb2124afdc27d6e422fe53012aa05a13892728596d3d543712e0",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-dr-martens-c07/series.json",
+        "expected": "0ef1ec1d41c5689aac60da1f1325b65d6f38aa42eaccd8cabff03505194ad70d",
+        "actual": "0ef1ec1d41c5689aac60da1f1325b65d6f38aa42eaccd8cabff03505194ad70d",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-dr-martens-c07/source-matrix.md",
+        "expected": "7eecf40d1683da46f73b0722d63f3d7e4fc729ebbb10233caae469e33aa0993a",
+        "actual": "7eecf40d1683da46f73b0722d63f3d7e4fc729ebbb10233caae469e33aa0993a",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-play-doh-c06/script.md",
+        "expected": "80671fce0cc1d03e46b68361173fb547b156c255f1af10468e3011389e08232f",
+        "actual": "80671fce0cc1d03e46b68361173fb547b156c255f1af10468e3011389e08232f",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-play-doh-c06/video.json",
+        "expected": "666cd45a5e126d7f17dd95cce1cace213b07eaa2597340d3661d5cc3c3c4cbfa",
+        "actual": "666cd45a5e126d7f17dd95cce1cace213b07eaa2597340d3661d5cc3c3c4cbfa",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-play-doh-c06/series.json",
+        "expected": "f4aa88f8d85af014802b7768614488d8a57812071b4325b469cec82772214c39",
+        "actual": "f4aa88f8d85af014802b7768614488d8a57812071b4325b469cec82772214c39",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-play-doh-c06/source-matrix.md",
+        "expected": "d18f1bbc58e6a141b957ead9ac42a7a4375e2004a7736d0d6c57b59044d58fd2",
+        "actual": "d18f1bbc58e6a141b957ead9ac42a7a4375e2004a7736d0d6c57b59044d58fd2",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kincho-c05/script.md",
+        "expected": "d49fe268109ddce4bf6e44a3e75831467735dec23e58d11bcc92065ee533288d",
+        "actual": "d49fe268109ddce4bf6e44a3e75831467735dec23e58d11bcc92065ee533288d",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kincho-c05/video.json",
+        "expected": "49e1787fae4e2b7e8358321496f01c0c73bb21f7376b49dfe1e2e1b0f84f5452",
+        "actual": "49e1787fae4e2b7e8358321496f01c0c73bb21f7376b49dfe1e2e1b0f84f5452",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kincho-c05/source-matrix.md",
+        "expected": "a7eb8401abcc5715c46352187c0efe100fa3aa47e22a020a1fc16ffd55504516",
+        "actual": "a7eb8401abcc5715c46352187c0efe100fa3aa47e22a020a1fc16ffd55504516",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-bubble-wrap-c04/script.md",
+        "expected": "09d85a588bbf557ea0f58e3ae2243878fecb8d0793398774983c4fb634d15987",
+        "actual": "09d85a588bbf557ea0f58e3ae2243878fecb8d0793398774983c4fb634d15987",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-bubble-wrap-c04/video.json",
+        "expected": "1bb9fd7355e6bfa5fcfa8d9a4bcfb0f89f2a5f01451131bdc3754b12243b330b",
+        "actual": "1bb9fd7355e6bfa5fcfa8d9a4bcfb0f89f2a5f01451131bdc3754b12243b330b",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-bubble-wrap-c04/series.json",
+        "expected": "4f4ee515e08dc33712bd155c4236b3f7aabf4bb98ba85f85e65e655a21533b18",
+        "actual": "4f4ee515e08dc33712bd155c4236b3f7aabf4bb98ba85f85e65e655a21533b18",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-bubble-wrap-c04/source-matrix.md",
+        "expected": "05fc2ab1c1e4ef64dc71e27de54343a9d765fa2b320ad6ab72a5ffa769db9756",
+        "actual": "05fc2ab1c1e4ef64dc71e27de54343a9d765fa2b320ad6ab72a5ffa769db9756",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-moleskine-c03/script.md",
+        "expected": "5f148061a2fa4bb89a42b1d91adfa67a6bad4796ee5a44b82f1eea473722cb46",
+        "actual": "5f148061a2fa4bb89a42b1d91adfa67a6bad4796ee5a44b82f1eea473722cb46",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-moleskine-c03/video.json",
+        "expected": "3b12bff0ab09a5827330c25121048912fefee014ec9134df582cff511a755109",
+        "actual": "3b12bff0ab09a5827330c25121048912fefee014ec9134df582cff511a755109",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-moleskine-c03/series.json",
+        "expected": "208e2d9761b0159eed174b210dd0e867329b9f8193d6244deb9ffdac22617f0e",
+        "actual": "208e2d9761b0159eed174b210dd0e867329b9f8193d6244deb9ffdac22617f0e",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-moleskine-c03/source-matrix.md",
+        "expected": "7d6f3147f73f861e80eb3b56a6d09999866c9067d1e6839e0ef3cc80f140eabb",
+        "actual": "7d6f3147f73f861e80eb3b56a6d09999866c9067d1e6839e0ef3cc80f140eabb",
+        "match": true
+      }
+    ],
+    "related_original_hashes_preserved": true
+  },
+  "line_results": [
+    {
+      "line_id": "r3h011",
+      "scene_id": "c03r-h01",
+      "line_text_sha256": "034724ee7d6bffa1ab519ad50d4f7d1aa12368b39f712c408388385ca343e5e0",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 1,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3h021",
+      "scene_id": "c03r-h02",
+      "line_text_sha256": "771242ac2f56c7994e8ae0a23f994f80601ad10620ef6320c85887b6931d1f91",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 2,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3h031",
+      "scene_id": "c03r-h03",
+      "line_text_sha256": "61850809572cde33809c350664bb2609c211b6dbb0117f844d9cf32b2ef76588",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 3,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3h041",
+      "scene_id": "c03r-h04",
+      "line_text_sha256": "821711c39df62dc5cb9e76e43adf46ec67afe1350ab84dbaae187c35e8ff9445",
+      "source_anchor_ids": [
+        "S1a",
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 4,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3h051",
+      "scene_id": "c03r-h05",
+      "line_text_sha256": "b3b465c875a9567ab8c18dba2a9c7b314cb36a1abb9636f3180c5f5f05740c4a",
+      "source_anchor_ids": [
+        "S12"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 5,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3h061",
+      "scene_id": "c03r-h06",
+      "line_text_sha256": "d1842584c23b8e9a442442a0fb4a1225fba2c7c5c84b4c5a5f35d4c12067866a",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 6,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3h062",
+      "scene_id": "c03r-h06",
+      "line_text_sha256": "3980fb35cf128dcf1a426410b0a644e769eb5092dfc56f06878de517212136a2",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 7,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3h071",
+      "scene_id": "c03r-h07",
+      "line_text_sha256": "0db00f5c28346d62c7d7a9720057f12195a78bc297fd088b0c1621bba6aae180",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 8,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r302011",
+      "scene_id": "c03r-p02s01",
+      "line_text_sha256": "04f38bab419ba2a25e898f157c48604dd55b953b5ca3e55fd0ae4f8ae1fc75b0",
+      "source_anchor_ids": [
+        "S2"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 9,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r302021",
+      "scene_id": "c03r-p02s02",
+      "line_text_sha256": "438d28e9b068e42583faed112e82011548476d73c139dd44ecabf7230a47357d",
+      "source_anchor_ids": [
+        "S2"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 10,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r302022",
+      "scene_id": "c03r-p02s02",
+      "line_text_sha256": "cb2949546ef0b85a473675fd6b28d735cedc25f6672de82ebc181277a7e1df0f",
+      "source_anchor_ids": [
+        "S2"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 11,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r302031",
+      "scene_id": "c03r-p02s03",
+      "line_text_sha256": "8bc1d00e11493a9acbcc47744fef4a091e9f337fd29712e474da452516da6bf2",
+      "source_anchor_ids": [
+        "S2"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 12,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r302041",
+      "scene_id": "c03r-p02s04",
+      "line_text_sha256": "8915451cd1b1363b75a98015a09422011947279fe163beffe57838408fe694fe",
+      "source_anchor_ids": [
+        "S1a",
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 13,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r303011",
+      "scene_id": "c03r-p03s01",
+      "line_text_sha256": "cf5fef2bcebf55ab916b1925b6cde1d128de6b7fd47e031420c51fc9b97cc02d",
+      "source_anchor_ids": [
+        "S1a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 14,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r303021",
+      "scene_id": "c03r-p03s02",
+      "line_text_sha256": "662bfd375391607e25a5ce9eb5fc89d418a0417a69cfc2af1eb41d558b7d47c9",
+      "source_anchor_ids": [
+        "S1a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 15,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r303022",
+      "scene_id": "c03r-p03s02",
+      "line_text_sha256": "472b5347123732957e087fbeb4945febaa10cbb404fac067ef8ab1e50269d0fe",
+      "source_anchor_ids": [
+        "S1a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 16,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3o021",
+      "scene_id": "c03r-o02",
+      "line_text_sha256": "1513460a4b4fd014c246935a1cd10175654c576b3538dee3e5fe21ba7bbb5772",
+      "source_anchor_ids": [
+        "S1a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 17,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3o022",
+      "scene_id": "c03r-o02",
+      "line_text_sha256": "c6b37f481f33f5d0ebd6e56bae25e58b4feb04bede9d480fbd67cb26766b0304",
+      "source_anchor_ids": [
+        "S1a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 18,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r303041",
+      "scene_id": "c03r-p03s04",
+      "line_text_sha256": "0025178bbb8e930b8eea6d6c66a4ccc9a40b139423f14ccda3acdfec599b3a84",
+      "source_anchor_ids": [
+        "S1a",
+        "S1b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 19,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r304011",
+      "scene_id": "c03r-p04s01",
+      "line_text_sha256": "5855bf5aa0fc65434805e23a6195dd1377efba7f3662e60897ec109768e7468c",
+      "source_anchor_ids": [
+        "S1b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 20,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r304021",
+      "scene_id": "c03r-p04s02",
+      "line_text_sha256": "d60b951165a3ab76fd944593308500c3d19144defa281fec72f0e46bf48c1ae1",
+      "source_anchor_ids": [
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 21,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r304031",
+      "scene_id": "c03r-p04s03",
+      "line_text_sha256": "fddc731cea44b1b740ef619fcbf3b737e56a74897d320c51e0e83dd126632d0c",
+      "source_anchor_ids": [
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 22,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r304041",
+      "scene_id": "c03r-p04s04",
+      "line_text_sha256": "4997880ba6b28dcfe7b773ecb29c5d43b6b81ff1972d2e31409620a0f74fa2bd",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 23,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r305011",
+      "scene_id": "c03r-p05s01",
+      "line_text_sha256": "988676d75cb58a2df35d11925427759104db9cbdd96662b4d1f143f04f202d2c",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 24,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r305021",
+      "scene_id": "c03r-p05s02",
+      "line_text_sha256": "e2923c5a8c3893628bd308562ef5a0e4329faf040afb1b0cf351769cd912af8e",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 25,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r305031",
+      "scene_id": "c03r-p05s03",
+      "line_text_sha256": "02a16b8e4ce384065201fca64ffe0b8506df086c658bb855a303863384d0b1cf",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 26,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3i011",
+      "scene_id": "c03r-i01",
+      "line_text_sha256": "79ac39cd66d6841623e22accff4e90f4412cfba3f4380e4abf8714f43d1915a3",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 27,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3i021",
+      "scene_id": "c03r-i02",
+      "line_text_sha256": "95a7ca8e933ce4284c3e18387e1a05280a946905f7d2e6294550962b78cf509c",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 28,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3i022",
+      "scene_id": "c03r-i02",
+      "line_text_sha256": "eef8582a71ea196092207e0a77698709846e5ef99e8f63255efde4e3c69a961d",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 29,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r305051",
+      "scene_id": "c03r-p05s05",
+      "line_text_sha256": "08ed8df7590ea2f1e6e94fd7c454de697101e6b420844efc4d52cfbe9c6ffe2b",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 30,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r306011",
+      "scene_id": "c03r-p06s01",
+      "line_text_sha256": "fda6cfa251040a01da37fdc831bd8bbbd10b660990f3e02f2546bdd8100fc082",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 31,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r306021",
+      "scene_id": "c03r-p06s02",
+      "line_text_sha256": "d3f24ab7dc6a72a5b3f3787e070354105c95b69160cfc2a9363ef1425c3d11d2",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 32,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3i031",
+      "scene_id": "c03r-i03",
+      "line_text_sha256": "2205e364f7954a222f523951e30a947f381ba3bf7f460415f1c53583c5fb71fa",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 33,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3i032",
+      "scene_id": "c03r-i03",
+      "line_text_sha256": "10f1afac4976e4ad90b7176be0b774921ab09f76a1af6c33f9dc8d1b2120b3e3",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 34,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r306041",
+      "scene_id": "c03r-p06s04",
+      "line_text_sha256": "a5a620b03aa6f9596b6d13f3687ab0b04b4524764a9b59f7d90553bf7f6da1bc",
+      "source_anchor_ids": [
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 35,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r306051",
+      "scene_id": "c03r-p06s05",
+      "line_text_sha256": "324d4c822ac4a59fde185d38f1b6026ac43a48128e95b5f632f57b4329125111",
+      "source_anchor_ids": [
+        "S1c",
+        "S6a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 36,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r307011",
+      "scene_id": "c03r-p07s01",
+      "line_text_sha256": "504256ff666c7c1876765b29addddc5e96b1acb346523a6c2d343bc29ea03765",
+      "source_anchor_ids": [
+        "S1g",
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 37,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r307021",
+      "scene_id": "c03r-p07s02",
+      "line_text_sha256": "35a2902f300596c831139763f293948e8d5008f816ede9157161f9e64d3d4978",
+      "source_anchor_ids": [
+        "S6a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 38,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r307031",
+      "scene_id": "c03r-p07s03",
+      "line_text_sha256": "ce41183e7c486a245f9e7c9aa72a20c2ecfc079a4a8118dd8ba9c8035a28ff80",
+      "source_anchor_ids": [
+        "S6a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 39,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r307061",
+      "scene_id": "c03r-p07s06",
+      "line_text_sha256": "f130bd76849b99506260bf76a28a75057c7e8ad2226ec14b9817b9a884df7609",
+      "source_anchor_ids": [
+        "S5"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 40,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r308011",
+      "scene_id": "c03r-p08s01",
+      "line_text_sha256": "dff0cd5fafada9611d51129ebc6a1bdaaaf032c2bbd39a1432c8d5e70aafa1ab",
+      "source_anchor_ids": [
+        "S5"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 41,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r308021",
+      "scene_id": "c03r-p08s02",
+      "line_text_sha256": "0c7f794fb116e5bfc17d9e01a3b66094707ecd708ffe9de148355c8330849187",
+      "source_anchor_ids": [
+        "S5"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 42,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3i041",
+      "scene_id": "c03r-i04",
+      "line_text_sha256": "b06976185840975eaa9a93093d494a8ca4ba02b1762cee93ac28953a30272a93",
+      "source_anchor_ids": [
+        "S1d"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 43,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3i051",
+      "scene_id": "c03r-i05",
+      "line_text_sha256": "5b57482d682c12087580a0c2c44d05fa96cdcc97b08c378d7f0669e25af44869",
+      "source_anchor_ids": [
+        "S1d"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 44,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r308041",
+      "scene_id": "c03r-p08s04",
+      "line_text_sha256": "584c7b6289eb86a530e875b3f7db5bcf7174e49c22c8c6cd800df6f5122b6ecd",
+      "source_anchor_ids": [
+        "S3",
+        "S5"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 45,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r309011",
+      "scene_id": "c03r-p09s01",
+      "line_text_sha256": "ad59074290f50853e81dbc51d032edce70560a886af2a7267c22bd3e0366ce19",
+      "source_anchor_ids": [
+        "S3"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 46,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r309021",
+      "scene_id": "c03r-p09s02",
+      "line_text_sha256": "ba9acd9f9c33ff0a7c05d5a8ef9b933a3071c23164af47a2dc2124619d868b24",
+      "source_anchor_ids": [
+        "S1c",
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 47,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3i061",
+      "scene_id": "c03r-i06",
+      "line_text_sha256": "2ee570f971bd18282fbcbfb0942a4fb32c697a7da841b2727f66bcaf97443ea6",
+      "source_anchor_ids": [
+        "S6a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 48,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r310011",
+      "scene_id": "c03r-p10s01",
+      "line_text_sha256": "6ea06880f10c519c36cef132a7e31716fda9beaaccb6d99c6e597719b56c28f4",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 49,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r310021",
+      "scene_id": "c03r-p10s02",
+      "line_text_sha256": "ce239105e99e8fff4cd2d1ff0cd25f57295cc25bdd1b790ff77489ba877ee4b4",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 50,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r310051",
+      "scene_id": "c03r-p10s05",
+      "line_text_sha256": "4528937624a44c8547d61c3b49842626f9723e9b4d9ff820155a4e3dc2e7c428",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 51,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r311011",
+      "scene_id": "c03r-p11s01",
+      "line_text_sha256": "4ead17e124a1cd6477aaf5ed4fa62596d853cf8faaf70073b06da1cc71704714",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 52,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r311012",
+      "scene_id": "c03r-p11s01",
+      "line_text_sha256": "e05550a9b6d25a6048c98c87116020fc282f77ee04e1a8c7018ccca6284e634e",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 53,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r311021",
+      "scene_id": "c03r-p11s02",
+      "line_text_sha256": "df8b74ff8501ed6b14264c5c8d43cfd88cf22134f41a9c4ee93dd8c99ecebea8",
+      "source_anchor_ids": [
+        "S7"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 54,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r311041",
+      "scene_id": "c03r-p11s04",
+      "line_text_sha256": "679ee4923788aeb8133b60f28398e0a227457f64a07cff8ddd810fa77646169b",
+      "source_anchor_ids": [
+        "S1e",
+        "S1g",
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 55,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e011",
+      "scene_id": "c03r-e01",
+      "line_text_sha256": "a1d897bf2f2bd28480d87c450ee646b5bf67352ff34dd111cfe0e9cb111ef6b8",
+      "source_anchor_ids": [
+        "S1e"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 56,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e012",
+      "scene_id": "c03r-e01",
+      "line_text_sha256": "6955d5e900eb071e7fcd51fcc9ee8912405f9eb459604142b14d26cf550700ca",
+      "source_anchor_ids": [
+        "S1e"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 57,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e021",
+      "scene_id": "c03r-e02",
+      "line_text_sha256": "74936f33548cb27b210010d1f1f2dbe632aec2dda45e2e0a104c274f4fa0f9a6",
+      "source_anchor_ids": [
+        "S1e"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 58,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e022",
+      "scene_id": "c03r-e02-b",
+      "line_text_sha256": "87de9c9ab774c67088bfd9f81cc84c12843151cafefb233ebb25e72ef47357e9",
+      "source_anchor_ids": [
+        "S1e"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 59,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e02n11",
+      "scene_id": "c03r-e02n1",
+      "line_text_sha256": "5099246c16dfd6a471c3763f8e08060d1d31e1f2f85c53910a9f2e39183b3f33",
+      "source_anchor_ids": [
+        "S1e",
+        "S1i"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 60,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e02n21",
+      "scene_id": "c03r-e02n2",
+      "line_text_sha256": "701eb3fb5ea347f8e7a2a7db7d8d7b4f939d6b6a6c9134a0a0060661e3878f65",
+      "source_anchor_ids": [
+        "S1i"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 61,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e02n22",
+      "scene_id": "c03r-e02n2",
+      "line_text_sha256": "77d70095b0c65c92260d90f641226f747bc501703b4a5df61fb0b0d2195ca0f8",
+      "source_anchor_ids": [
+        "S1i"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 62,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e031",
+      "scene_id": "c03r-e03",
+      "line_text_sha256": "de67654981ca321962abd6886575e3d3b7794108e089c860e81059729c4e766a",
+      "source_anchor_ids": [
+        "S1e"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 63,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e032",
+      "scene_id": "c03r-e03",
+      "line_text_sha256": "71b2e94212cf47a046e755b84a3e1d3493bc03b543ea57973ed9ca2d26661b15",
+      "source_anchor_ids": [
+        "S1e"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 64,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e041",
+      "scene_id": "c03r-e04",
+      "line_text_sha256": "7c141ce14b17dfc3d34cd57790a31bcef7ac01cee7667cd94fb33512090f3cc2",
+      "source_anchor_ids": [
+        "S1g",
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 65,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e051",
+      "scene_id": "c03r-e05",
+      "line_text_sha256": "0ae4082e7b893e4ec2a669325ad5009cf7b700d9f4aea30476ed70b90b1bc495",
+      "source_anchor_ids": [
+        "S1g"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 66,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e061",
+      "scene_id": "c03r-e06",
+      "line_text_sha256": "9293924ff624a1375520803f363386e5a9492e98dc95342a1b4c36341ef8cf68",
+      "source_anchor_ids": [
+        "S1g"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 67,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e062",
+      "scene_id": "c03r-e06",
+      "line_text_sha256": "d6fc1f8dcd7b6f87a3dc491bd7360b9a6ed3a2a3d03dda383a9db5691e22affd",
+      "source_anchor_ids": [
+        "S1g"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 68,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e071",
+      "scene_id": "c03r-e07",
+      "line_text_sha256": "10c14efec574a6b20128679e2075611313dce74746dfeef6578870031bcb245f",
+      "source_anchor_ids": [
+        "S1g"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 69,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e081",
+      "scene_id": "c03r-e08",
+      "line_text_sha256": "a2357dc9da6141de824a6fd9489b7de35df35f305a686ad084e2619ea85e87d7",
+      "source_anchor_ids": [
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 70,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e082",
+      "scene_id": "c03r-e08",
+      "line_text_sha256": "29af9319c3a4d5a7d0d08126f02cfe132d9d529c8b6d2a84619a202ab257940f",
+      "source_anchor_ids": [
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 71,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e091",
+      "scene_id": "c03r-e09",
+      "line_text_sha256": "9d7c7b827ed064458dc24242c5eeea22307012bb876fbf510cf60c486ffa3ef8",
+      "source_anchor_ids": [
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 72,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e092",
+      "scene_id": "c03r-e09",
+      "line_text_sha256": "35ce2f4c057ddcbf561054b9a8fd2ed5f807fa8de686fe95672c489cce2685b9",
+      "source_anchor_ids": [
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 73,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e101",
+      "scene_id": "c03r-e10",
+      "line_text_sha256": "dcd1638050422b1d0db62daaeb3f182e2aa50a962413f9da023bf0a56a93a811",
+      "source_anchor_ids": [
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 74,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e102",
+      "scene_id": "c03r-e10",
+      "line_text_sha256": "b9f27a094fb54331580c8461da77a0130b65bae2cdb321307279b5572cc52a1f",
+      "source_anchor_ids": [
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 75,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e111",
+      "scene_id": "c03r-e11",
+      "line_text_sha256": "0e5da6d043249e49fa00a883b5c20b9adbd6046cd6a6f6d20fc3ab99b3041edf",
+      "source_anchor_ids": [
+        "S1g",
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 76,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e112",
+      "scene_id": "c03r-e11-b",
+      "line_text_sha256": "17703adfbd9672b599a88f96cc15a2c3daaea9e6a6d151d104f0ec9ca7b575b1",
+      "source_anchor_ids": [
+        "S1g",
+        "S1h"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 77,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e121",
+      "scene_id": "c03r-e12",
+      "line_text_sha256": "cd901018080894f82e4967d102c48eba54b9d69423f5cb3a05d88dbc5623a835",
+      "source_anchor_ids": [
+        "S1f"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 78,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e122",
+      "scene_id": "c03r-e12",
+      "line_text_sha256": "307cf6eeea8556f25f9df97073df01b7d3bd88524f803c98108f4f2de96db27e",
+      "source_anchor_ids": [
+        "S1f"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 79,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r312011",
+      "scene_id": "c03r-p12s01",
+      "line_text_sha256": "a8ae145066ee43285fdc2d0d32c897549a211c075d746b49cebbb285c1abd75c",
+      "source_anchor_ids": [
+        "S1f"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 80,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e131",
+      "scene_id": "c03r-e13",
+      "line_text_sha256": "58d4016d0d262b786cc3580341cb7db7fcd45f2b9f01fa327f81197ac070e11e",
+      "source_anchor_ids": [
+        "S1f"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 81,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e132",
+      "scene_id": "c03r-e13",
+      "line_text_sha256": "fc8f6769751ea239db9a624730595df77d6f7846cf03c33f81c3cbaceae7f29f",
+      "source_anchor_ids": [
+        "S1f"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 82,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r312021",
+      "scene_id": "c03r-p12s02",
+      "line_text_sha256": "5f07e10b4064aa5aebc63c74d3ae94a0a49d6ead8b747606d825032f6bad4b91",
+      "source_anchor_ids": [
+        "S6b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 83,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r312031",
+      "scene_id": "c03r-p12s03",
+      "line_text_sha256": "b08f1c78c5776cbe7e7d61691633a56bfb99d36cebf81810ccd4f038171f4f60",
+      "source_anchor_ids": [
+        "S1f",
+        "S10b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 84,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3e141",
+      "scene_id": "c03r-e14",
+      "line_text_sha256": "9d9a0d40d2ff970002912ff58852063225bf95b5e87b07674765a6098519be03",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 85,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r312051",
+      "scene_id": "c03r-p12s05",
+      "line_text_sha256": "357a9b3ba4acda736467929cf4c0686ad01936acdf6e7a00669de8bf98507026",
+      "source_anchor_ids": [
+        "S8a",
+        "S8b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 86,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r313011",
+      "scene_id": "c03r-p13s01",
+      "line_text_sha256": "ffc01df87b3dd9b2fa42c552e88762390de5ec146736e0342b80e8ffb06348bc",
+      "source_anchor_ids": [
+        "S8a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 87,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r313012",
+      "scene_id": "c03r-p13s01",
+      "line_text_sha256": "802c47153003cb07d09278cfd6438cd9423023e941f1e1537646e57cb78e0d39",
+      "source_anchor_ids": [
+        "S8a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 88,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r313021",
+      "scene_id": "c03r-p13s02",
+      "line_text_sha256": "2e7bb6542747f1438d3ed3abddbb761c90939e0c25d47a6f3906f979b2ec0a0b",
+      "source_anchor_ids": [
+        "S8a",
+        "S8b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 89,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r313031",
+      "scene_id": "c03r-p13s03",
+      "line_text_sha256": "631e45144c7e07cdb98a5d153f34dd599ecc2315bdb3511395fb682d8d67afa4",
+      "source_anchor_ids": [
+        "S8b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 90,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3t011",
+      "scene_id": "c03r-t01",
+      "line_text_sha256": "2e7c9618a62acfb21bd785613419138e3c52f4c071140f638c8efefbce1e9b29",
+      "source_anchor_ids": [
+        "S8b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 91,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3t012",
+      "scene_id": "c03r-t01",
+      "line_text_sha256": "d3679f3ae42132531a55cdb5d2f243bc3d0278902caf5dd8df05802f6cc8d594",
+      "source_anchor_ids": [
+        "S8b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 92,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3t021",
+      "scene_id": "c03r-t02",
+      "line_text_sha256": "b551fc7733312df5792def8f67e3d72ee81345bbda2a807f1ef73e42d2848bb1",
+      "source_anchor_ids": [
+        "S8a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 93,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3t031",
+      "scene_id": "c03r-t03",
+      "line_text_sha256": "82c802660eac0d57d968c5d4179d65592b0c1d87e6d85145b0711fe20696b8c2",
+      "source_anchor_ids": [
+        "S8a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 94,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3t032",
+      "scene_id": "c03r-t03",
+      "line_text_sha256": "093cfb9daf2d7a4014706228604c91d9599b776f22731a750feeb0f54b9b1653",
+      "source_anchor_ids": [
+        "S8a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 95,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r313051",
+      "scene_id": "c03r-p13s05",
+      "line_text_sha256": "a2ebfdf8d22eed2789e4babbe7c43318679fd966030c107b0aa726606fee3f5c",
+      "source_anchor_ids": [
+        "S8a",
+        "S9"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 96,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r314011",
+      "scene_id": "c03r-p14s01",
+      "line_text_sha256": "847f9017e3f8c42ba22c6ceebd9cc436bfd878134c98614ced85ad8ab287ea33",
+      "source_anchor_ids": [
+        "S9"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 97,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r314021",
+      "scene_id": "c03r-p14s02",
+      "line_text_sha256": "3e7ea97b881b4a9df8a832aa1a441c53f6995ce3b610a38b09ebb8938432ef4d",
+      "source_anchor_ids": [
+        "S9"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 98,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r314041",
+      "scene_id": "c03r-p14s04",
+      "line_text_sha256": "2f911d4d32d8c795876ac4e50e4d2bb7bbbab16b4da4ed70f728b0cf06bddfad",
+      "source_anchor_ids": [
+        "S10a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 99,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r315011",
+      "scene_id": "c03r-p15s01",
+      "line_text_sha256": "e8137ca6f3eb8a42ac5fce2db3f1d043b68715336c7dd522fe62d928d3bfc34a",
+      "source_anchor_ids": [
+        "S10a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 100,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r315021",
+      "scene_id": "c03r-p15s02",
+      "line_text_sha256": "4be4b1ab4ad22b2c20cd30b694d144e74873888d6f322d413c9c7d06e559588c",
+      "source_anchor_ids": [
+        "S10a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 101,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3t041",
+      "scene_id": "c03r-t04",
+      "line_text_sha256": "70c1dac4cf1613665a3fb255d8048459050dc683a78db03d589e171309b38d7a",
+      "source_anchor_ids": [
+        "S10a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 102,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3t042",
+      "scene_id": "c03r-t04",
+      "line_text_sha256": "14ac3d54f839225e86eaedd966fb1a355a93e3974453a63ad7aa62a562603213",
+      "source_anchor_ids": [
+        "S10a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 103,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r315051",
+      "scene_id": "c03r-p15s05",
+      "line_text_sha256": "a78a5592f3d50baf88f1c1e6a403a56b48e590dcd395299ce94ff6738fac632a",
+      "source_anchor_ids": [
+        "S10b",
+        "S10c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 104,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3t051",
+      "scene_id": "c03r-t05",
+      "line_text_sha256": "dadb84e2e502879c998a438cc7744a6a10362f4f21d8d4c9d1c99f359d767daf",
+      "source_anchor_ids": [
+        "S10b",
+        "S10c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 105,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3t052",
+      "scene_id": "c03r-t05",
+      "line_text_sha256": "1adf94aed66d05c05ff337ac3d3d4e7a4f2c1224a58105d03a26a34c76a60cb7",
+      "source_anchor_ids": [
+        "S10b",
+        "S10c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 106,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r316011",
+      "scene_id": "c03r-p16s01",
+      "line_text_sha256": "ebdc865c44397f300bb82cc02eb53a038b67d909c4388b75e6fa329909ba1a79",
+      "source_anchor_ids": [
+        "S10b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 107,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3t061",
+      "scene_id": "c03r-t06",
+      "line_text_sha256": "e963c31b79cba45067f225a2b91b0020e286d5c9ab13a7eaaeb6a2b2c48d23e8",
+      "source_anchor_ids": [
+        "S10b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 108,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3t062",
+      "scene_id": "c03r-t06-b",
+      "line_text_sha256": "282d30a6b4b013624ce497edcc2cf09c065373b7516df0567fb76032a476ee9b",
+      "source_anchor_ids": [
+        "S10b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 109,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r316041",
+      "scene_id": "c03r-p16s04",
+      "line_text_sha256": "c47ff0ef7df1a81866521cbb4af5f9e12228b684a6c687fe9777f2a5708d8549",
+      "source_anchor_ids": [
+        "S10b",
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 110,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r316042",
+      "scene_id": "c03r-p16s04",
+      "line_text_sha256": "57a812cdf5901f79c7c3ffe276780e958f3a52f82699ca4dc57be2c1fde3e400",
+      "source_anchor_ids": [
+        "S10b",
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 111,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r317011",
+      "scene_id": "c03r-p17s01",
+      "line_text_sha256": "83c46be97d190c8c1921e7522bf8ca8d1c2e45abad8ef4a175c98e25b46ee3a1",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 112,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r317012",
+      "scene_id": "c03r-p17s01",
+      "line_text_sha256": "ed0d06b334c3025e4850e655f8c638dd2c93e1491534b0e9c657855ded0f8a5a",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 113,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r317021",
+      "scene_id": "c03r-p17s02",
+      "line_text_sha256": "a76c9796ff2ee0e5968216cade7a2ac178a0ffa5444bdebd714dfd65e8669b32",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 114,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3n011",
+      "scene_id": "c03r-n01",
+      "line_text_sha256": "c7d8a27f7f7956ed63f0920b338290203749cd2cd8ff5884f31a6133d0557d2a",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 115,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3n012",
+      "scene_id": "c03r-n01",
+      "line_text_sha256": "2421738cd9a12fe09953b874333a3786a1f1196fec0066a77f6d891f18f39e60",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 116,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r318021",
+      "scene_id": "c03r-p18s02",
+      "line_text_sha256": "b9ff511026a1faba7bb120cf2fd9328b46e327e27571891c247607382c037c11",
+      "source_anchor_ids": [
+        "S1g",
+        "S1h",
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 117,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r318022",
+      "scene_id": "c03r-p18s02",
+      "line_text_sha256": "24fc52feccd14af14c0ac259f02699aef80cc633b4663a8ce161c4ebbdd02d79",
+      "source_anchor_ids": [
+        "S1g",
+        "S1h",
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 118,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r318031",
+      "scene_id": "c03r-p18s03",
+      "line_text_sha256": "395a11415e217c425cca1b57216fadd5dda065f26a27efc505ae8eef2184ca20",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 119,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r318032",
+      "scene_id": "c03r-p18s03",
+      "line_text_sha256": "f29e4daf085604c77ec0f02b5d4735148ee65e7cce696e0b9c504df8f1542619",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 120,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3n021",
+      "scene_id": "c03r-n02",
+      "line_text_sha256": "31670a1c51f57bb28cb4a0307dff9f87b64f67b20d49e17b949a844df951248d",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 121,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3n022",
+      "scene_id": "c03r-n02-b",
+      "line_text_sha256": "b1e049d80935537f337db7e5ce95992d96a96bb57b6d4df6e76a90b417718eb2",
+      "source_anchor_ids": [
+        "S11"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 122,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3n031",
+      "scene_id": "c03r-n03",
+      "line_text_sha256": "08e889301295f997473c03941f8525ffb9cd23f4e40d7797fadfa6e86089101b",
+      "source_anchor_ids": [
+        "S12"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 123,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r318041",
+      "scene_id": "c03r-p18s04",
+      "line_text_sha256": "9a92202811674993666241dc918f66d5f498a5c5f8b5ad1cc5a45773c54404ca",
+      "source_anchor_ids": [
+        "S12"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 124,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r318042",
+      "scene_id": "c03r-p18s04",
+      "line_text_sha256": "834e71f4d3bd1603cc1af7f8aa93db960e5ef8229c29ff8295800a38437fecd2",
+      "source_anchor_ids": [
+        "S12"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 125,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3n041",
+      "scene_id": "c03r-n04",
+      "line_text_sha256": "63cb1c42eaf6096fb5752a5a1e6b3b476056b9757efccef9f7a8335010cd46c3",
+      "source_anchor_ids": [
+        "S12"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 126,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r318051",
+      "scene_id": "c03r-p18s05",
+      "line_text_sha256": "9542f3241fb9fb83cb0ef1890339cb4c183fa4964016c5855cee3740c616a572",
+      "source_anchor_ids": [
+        "S12"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 127,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3n051",
+      "scene_id": "c03r-n05",
+      "line_text_sha256": "2c14fdd2fb16561d2adf50231e1b5a837f059eeab39dd74d6c36620804a4eb9c",
+      "source_anchor_ids": [
+        "S12",
+        "S13a",
+        "S1c"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 128,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3n052",
+      "scene_id": "c03r-n05-b",
+      "line_text_sha256": "ddd7e3dc381e5a8e0de951b51bf8098d033b05a4b0fe3abe7c11764473277704",
+      "source_anchor_ids": [
+        "S12",
+        "S13a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 129,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r319011",
+      "scene_id": "c03r-p19s01",
+      "line_text_sha256": "9fbf922071e8132a6a4eb7e5414195f5b30bf5e50d218788f9192a52be65f27f",
+      "source_anchor_ids": [
+        "S13a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 130,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r319021",
+      "scene_id": "c03r-p19s02",
+      "line_text_sha256": "e64d102d30e46b13358e23a923e73d87c472ef62693aae1910aac1bad1e78afb",
+      "source_anchor_ids": [
+        "S13a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 131,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3n061",
+      "scene_id": "c03r-n06",
+      "line_text_sha256": "f05267fe357a0ef335397908250d5b9ab2f77fc0a75049f3a5b06e0c85396970",
+      "source_anchor_ids": [
+        "S13a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 132,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r319041",
+      "scene_id": "c03r-p19s04",
+      "line_text_sha256": "6ed799424e316106de1e92a59006f8685e0dd45629cc84b568637db4b2baa09c",
+      "source_anchor_ids": [
+        "S13a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 133,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r319031",
+      "scene_id": "c03r-p19s03",
+      "line_text_sha256": "8b050a18ebd4c82b1530b96565b141200d15a35dbc2785398cc854c73e42aaa4",
+      "source_anchor_ids": [
+        "S13b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 134,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3n071",
+      "scene_id": "c03r-n07",
+      "line_text_sha256": "67a790e844ef45e1349b1663f3547e703d4aeff28d14810f98bca3d8e2ac48cb",
+      "source_anchor_ids": [
+        "S13a",
+        "S13b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 135,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r3n072",
+      "scene_id": "c03r-n07",
+      "line_text_sha256": "077f898a596d3b15023210a68a0971bcca6dc39e8bf043ec556b2284522e960b",
+      "source_anchor_ids": [
+        "S13a",
+        "S13b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 136,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r319051",
+      "scene_id": "c03r-p19s05",
+      "line_text_sha256": "8a8a1ae5d4f282d493452e071acba42e7fdf02007db85e6b7a53689d1f2c7d65",
+      "source_anchor_ids": [
+        "S11",
+        "S13a",
+        "S13b"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 137,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r320011",
+      "scene_id": "c03r-outro",
+      "line_text_sha256": "75901802b6ff631bce4a5b8b53592baa800c8015c1e94979a4df2b230a6f0a97",
+      "source_anchor_ids": [
+        "S1c",
+        "S13a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 138,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r320012",
+      "scene_id": "c03r-outro",
+      "line_text_sha256": "5bbf9993f79fe383eeb30d6274f02aa4eaeecf8861f7361c908dd116b15e8b88",
+      "source_anchor_ids": [
+        "S1c",
+        "S13a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 139,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r320013",
+      "scene_id": "c03r-outro",
+      "line_text_sha256": "3875a6853a330fb7768bed77620c9881408bc71790cd7209b0bc799f27022109",
+      "source_anchor_ids": [
+        "S1c",
+        "S13a"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 140,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r320031",
+      "scene_id": "c03r-outro",
+      "line_text_sha256": "ebd9734cbc76043b6b2840c29e4c7564138bc09ddb16056253d1127062762d53",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 141,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r320032",
+      "scene_id": "c03r-outro",
+      "line_text_sha256": "5d05af678eb675e4ed17e7af9bdc6da99dfed99213816af4d49fef922d50030a",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 142,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    },
+    {
+      "line_id": "r320041",
+      "scene_id": "c03r-outro",
+      "line_text_sha256": "1811b44570130b229b2e5f0cc298074a650b31c7a15a5f89b4e5ed7214f012b8",
+      "source_anchor_ids": [],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_row": 143,
+      "baseline_exact": true,
+      "basis": "逐句ID/scene/text SHA與immutable r3來源PASS收據相同；書面原畫面未變者沿用原PASS，h04/h05依本輪原件差分重新PASS。"
+    }
+  ],
+  "findings": [],
+  "scope_limits": {
+    "new_blind_reader_answers_read": false,
+    "existing_native_record_used_only_for_narrativeReviewMatches_hash_binding": true,
+    "new_narrative_verdict_issued": false,
+    "author_plan_treated_as_independent_evidence": false,
+    "actual_images_reviewed": false,
+    "actual_reuse_proved": false,
+    "actual_tts_or_duration_verified": false,
+    "measured_12_14_minute_claimed": false,
+    "paid_calls": 0,
+    "backend_calls": 0,
+    "runtime_approval_or_media_writes": 0,
+    "git_actions": 0,
+    "owner_approval_created": false
+  }
+}

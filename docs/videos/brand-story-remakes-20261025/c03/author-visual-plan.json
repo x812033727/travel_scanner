@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "revision": "c03-teaser-image-plan-v1",
+  "author": "/root/approved_teaser_visual_plan",
+  "created_at": "2026-10-26T00:27:18.933Z",
+  "status": "AUTHOR_VISUAL_ONLY_REVISION_FROZEN_AWAITING_INDEPENDENT_SOURCE_REVIEW",
+  "scope": "Only specified shot data.prompt/data.camera values, synchronized author producer and claims.md written-plan appendix changed; narration, IDs, scene order, chapters, loops, metadata, voice, subtitles, look, dictionaries and existing approval bytes were not edited.",
+  "baseline_archive": "history/before-teaser-image-plan",
+  "source_before_sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+  "source_after_sha256": "9639d356ca5bdcb18e85c3631ea754a0f69888949358111f452541654ac7fdd9",
+  "source_four_sha256": {
+    "video.json": "9639d356ca5bdcb18e85c3631ea754a0f69888949358111f452541654ac7fdd9",
+    "script.md": "1698aa0a955713ae5f0eaf9234ad307e32332aa7a02aaa966b8e34bd01736709",
+    "narration-only.json": "3d5461032a626e9c3246b5b2214af504e3fffee81c1a83cdda38dc2ba532c235",
+    "claims.json": "c8eaf8b7d01704417b147ff7af3080e5a6041d964b9cc6830d5b0153f6eb4328"
+  },
+  "claims_md_sha256": "8ff55ec06c753b92260d326c85372c6f6d5225b55bfdec193cbfa3f2b56683a0",
+  "plan_sha256": "ff55c22c39680a0eb46505e56cd2aea7102ed811cddc591bad3d27ef7683fed3",
+  "author_input_sha256": "70bad8dc52b1a0999d3e289b2a0473f36d1d37eef32f960dc2023923c30f88fd",
+  "changed_scenes": [
+    {
+      "scene_id": "c03r-h04",
+      "before": {
+        "prompt": "Medium shot in a quiet reading room, one anonymous adult studying a plain black notebook beside a closed blank archive folder, soft window light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "after": {
+        "prompt": "Medium shot, one anonymous reader browsing anonymous art history volumes in a public library, soft window light.",
+        "visual": "still",
+        "camera": "push in"
+      }
+    },
+    {
+      "scene_id": "c03r-h05",
+      "before": {
+        "prompt": "Close-up at an office desk, one anonymous adult turning a blank report page with a thoughtful face, soft window light.",
+        "visual": "still",
+        "camera": "tilt up"
+      },
+      "after": {
+        "prompt": "Medium shot at an office desk, one anonymous adult comparing a blank forecast folder and a plain ledger, soft window light.",
+        "visual": "still",
+        "camera": "pan right"
+      }
+    }
+  ],
+  "native_hash_comparison": {
+    "narrativeHash": {
+      "before": "5cb14d4ecf0bdc3a",
+      "after": "5cb14d4ecf0bdc3a",
+      "equal": true
+    },
+    "speechHash": {
+      "before": "37aab4572320064b",
+      "after": "37aab4572320064b",
+      "equal": true
+    },
+    "picturesHash": {
+      "before": "5905cc7dcd62b707",
+      "after": "057e50e3a5d588d4",
+      "equal": false
+    },
+    "lookHash": {
+      "before": "98a370ae40badbaf",
+      "after": "98a370ae40badbaf",
+      "equal": true
+    },
+    "mixHash": {
+      "before": "71ecdd098c551254",
+      "after": "71ecdd098c551254",
+      "equal": true
+    }
+  },
+  "canonical_script_sha256": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f",
+  "canonical_script_bytes_identical": true,
+  "author_script_bytes_identical": true,
+  "narration_projection_bytes_identical": true,
+  "claims_json_fact_bytes_identical": true,
+  "native_final_review_file_sha256": "beb511213bccacffddaa8e933c5ca361e5ed9b9e0d059bc794b647f7195f7c25",
+  "native_final_review_matches_before_and_after": true,
+  "reader_count_in_preserved_record": 2,
+  "source_marker_removed_from_current_and_archived": true,
+  "runtime": {
+    "root": "/workspace/work/brand-story-20261025/c03-submission-root",
+    "source_video_sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+    "still_equals_archived_prechange_source": true,
+    "official_script_sha256": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f",
+    "approval_file_sha256_read_only": "709b5d261469595ffc55358b9f4585e2754403ec167924b4054625fb2febe5da",
+    "any_runtime_or_media_write_by_this_task": false
+  },
+  "lint": {
+    "native_actual_immutable_dictionary_context": true,
+    "errors": 0,
+    "soft_warnings_before": 32,
+    "soft_warnings_after": 32,
+    "result": {
+      "errors": [],
+      "warnings": [
+        {
+          "path": "scenes",
+          "message": "\"window\" is in 61 of 100 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"adult\" is in 49 of 100 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"notebook\" is in 49 of 100 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes[8] (c03r-p02s02)",
+          "message": "about 11.2 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[9] (c03r-p02s03)",
+          "message": "its prompt is nearly the same as c03r-p02s02's; two near-identical shots read as a stall"
+        },
+        {
+          "path": "scenes[12] (c03r-p03s02)",
+          "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[13] (c03r-o02)",
+          "message": "about 11.2 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[23] (c03r-i02)",
+          "message": "about 10.7 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[27] (c03r-i03)",
+          "message": "about 10.9 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[37] (c03r-i05)",
+          "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[48] (c03r-e01)",
+          "message": "about 11.2 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[52] (c03r-e02n2)",
+          "message": "about 10.7 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[53] (c03r-e03)",
+          "message": "about 11.2 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[56] (c03r-e06)",
+          "message": "about 11.9 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[57] (c03r-e07)",
+          "message": "about 10.1 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[58] (c03r-e08)",
+          "message": "about 10.7 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[60] (c03r-e10)",
+          "message": "about 10.9 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[63] (c03r-e12)",
+          "message": "about 10.9 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[64] (c03r-p12s01)",
+          "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[65] (c03r-e13)",
+          "message": "about 10.9 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[73] (c03r-t01)",
+          "message": "about 10.7 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[75] (c03r-t03)",
+          "message": "about 11.4 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[82] (c03r-t04)",
+          "message": "about 11.4 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[84] (c03r-t05)",
+          "message": "about 11.9 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[88] (c03r-p16s04)",
+          "message": "about 10.7 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[89] (c03r-p17s01)",
+          "message": "about 10.9 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[91] (c03r-n01)",
+          "message": "about 11.4 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[92] (c03r-p18s02)",
+          "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[93] (c03r-p18s03)",
+          "message": "about 11.2 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[104] (c03r-n06)",
+          "message": "about 10.1 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[107] (c03r-n07)",
+          "message": "about 10.9 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "youtube/es",
+          "message": "es.title: 37.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+        }
+      ],
+      "summary": {
+        "minutes": 15.67,
+        "lines": 143,
+        "spoken_units": 3406,
+        "billable_characters": 11536,
+        "chapters": [
+          "00:00 一本空白本被股市標價",
+          "00:51 舊式本子被出版社重新生產",
+          "02:31 空白頁走進書店與股市",
+          "06:10 貨架背後多了一箱要安排的貨",
+          "09:30 新主人接下門市與產品的考驗",
+          "12:11 補貨回來了，名字仍要接受檢驗"
+        ]
+      }
+    }
+  },
+  "producer_build": {
+    "path": "build-candidate.py",
+    "sha256": "839924e63090b22422f2d04fe4d3801f065f9239dce88a8631cd0838345bca73",
+    "memory_only_replay_core_four_and_claims_md_exact": true,
+    "c03_preexisting_producer_voice_style_drift_aligned_to_existing_approved_source": true,
+    "actual_source_voice_changed": false
+  },
+  "preservation": {
+    "archive_manifest_sha256": "5354f5e8af03b93d6d9b681dd2a5075cb6b0550af1256781e782d6f6f56fcbe8",
+    "archived_source_and_reviews_hashes_verified": true,
+    "unchanged_current_auxiliary_files_verified": 55
+  },
+  "source_or_written_visual_PASS_issued": false,
+  "owner_approval_created": false,
+  "actual_images_verified": false,
+  "actual_duration_measured": false,
+  "paid_provider_requests": 0,
+  "backend_calls": 0,
+  "git_actions": 0
+}

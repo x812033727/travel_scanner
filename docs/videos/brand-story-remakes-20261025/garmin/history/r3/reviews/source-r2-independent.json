@@ -1,0 +1,1702 @@
+{
+  "schema_version": 1,
+  "reviewer": "codex-garmin-r2-independent-source",
+  "review_role": "Independent source and written visual delta review; same independent reviewer as R1",
+  "reviewed_at_utc": "2026-10-26T04:55:45.516890+00:00",
+  "revision": "garmin-r2",
+  "slug": "story-garmin-smartphone-pivot-worker-2026-remake-20261025",
+  "verdict": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS_WRITTEN_PLAN_ONLY",
+  "input_sha256": {
+    "video.json": "04431e072927ff0741086673c3390bb74515445a52f7e8b5c984a976d729ac6d",
+    "script.md": "687b238a56315af7098b98b85d6a80aca5316f1c71a633d912807204e6811ae1",
+    "narration-only.json": "d772b7d75def3c633955fb2e7f4a80f2a1895db2480f444b45537de59dfec007",
+    "claims.json": "8b7457fe5910ef17dc171d5dd14b8cef7529ae2652bfe2f68570d9f8d06e1ced",
+    "author-freeze-r2.json": "c96c2a987c1dc27956791404e7f996c1f18a70f57660ed9f9168124ab84d72c1"
+  },
+  "prior_independent_review": {
+    "path": "../history/r1/reviews/source-r1-independent.json",
+    "sha256": "ccd537166653fb53c908288bd17b24c4226f14b0dfd3da37387fb5c781613b99",
+    "verdict": "HOLD",
+    "inheritance": "R1 exact source readings, 38 used anchor groups and151 written image prompts are inherited only after raw/protected SHA and exact delta checks. Unchanged gr1s15 was re-evaluated in its corrected preceding context."
+  },
+  "coverage": {
+    "narration_rows": 158,
+    "changed_text_rows": 5,
+    "unchanged_text_rows": 153,
+    "changed_text_ids": [
+      "gr1s13",
+      "gr1s14",
+      "gr1a12",
+      "gr1a15",
+      "gr1a16"
+    ],
+    "context_rechecked_unchanged_ids": [
+      "gr1s15"
+    ],
+    "other_video_leaf_changes": [],
+    "all_151_prompts_and_cameras_unchanged": true,
+    "all_non_scene_video_fields_unchanged": true,
+    "opening_and_18_loops_unchanged": true,
+    "source_registry_unchanged": true,
+    "used_anchor_groups": 38,
+    "anchor_ids": [
+      "G07",
+      "G08",
+      "G05",
+      "G11",
+      "G16",
+      "G17",
+      "G01",
+      "G14",
+      "G06",
+      "G09",
+      "G02",
+      "G04",
+      "G03",
+      "A09",
+      "A01",
+      "G10",
+      "G12",
+      "G13",
+      "A02",
+      "G15",
+      "A03",
+      "G18",
+      "G19",
+      "A06",
+      "A07",
+      "A04",
+      "G21",
+      "G20",
+      "A08",
+      "A05",
+      "A10",
+      "A11",
+      "A12",
+      "A13",
+      "A14",
+      "G34",
+      "G35",
+      "G33"
+    ],
+    "A09_change": "Existing initial-charge quote retained; added exact existing-raw LF269–271 conditional quote. No source or old anchor reference removed.",
+    "all_quotes_lf_locators_pdf_pages_rechecked": true,
+    "script_narration_claims_json_claims_md_id_text_order_equal": true,
+    "unreviewed_rows": []
+  },
+  "resolved_findings": [
+    {
+      "prior_issue": "S1",
+      "ids": [
+        "gr1s13",
+        "gr1s14",
+        "gr1s15"
+      ],
+      "verdict": "RESOLVED",
+      "reason": "gr1s13 now states long storage until the battery is fully discharged; gr1s14 preserves possible charging up to30minutes before power-on and/or charge indication. gr1s15 inherits that immediate condition. Neither a fixed delay for every charge nor a required30-minute wait is asserted.",
+      "primary_locator": {
+        "source": "MAN201",
+        "raw_sha256": "1ee4ac4e923d1a5356d533e6660ffacd9b5b86e134f0d498cd458350c9d23389",
+        "pdf_page_1based": 12,
+        "printed_page": "xii",
+        "lf_lines": [
+          269,
+          271
+        ],
+        "quote_read": "If the unit has been stored for a long period of time (battery fully discharged), it may require up to 30 minutes of charging before it powers on and/or indicates charging.",
+        "read_method": "Fresh pdftotext of originalPDF page12 plus whole-text LF locator. The extracted layout interleaves the other-column words When external power is; these are not part of the conditional sentence."
+      }
+    },
+    {
+      "prior_issue": "S2",
+      "ids": [
+        "gr1a12",
+        "gr1a15",
+        "gr1a16"
+      ],
+      "verdict": "RESOLVED",
+      "reason": "The narration now names305 for the chest-strap heart-rate data and explicitly states205 does not support the strap in this manual. The two-model feature scopes are no longer left as this model/other model.",
+      "primary_locator": {
+        "source": "MAN305",
+        "raw_sha256": "d19627b7e86f6957a3be1bc47ade209bfe04afb4729d10aab9f1082d37d0d0c1",
+        "pdf_page_1based": 7,
+        "printed_page": "3",
+        "lf_lines": [
+          155,
+          159
+        ],
+        "quote_read": "The heart rate monitor works with the Forerunner 305 only.",
+        "read_method": "Fresh pdftotext of originalPDF page7; shared205/305 manual scope read."
+      }
+    }
+  ],
+  "must_fix": [],
+  "rows": [
+    {
+      "id": "gr1h01",
+      "anchors": [
+        "G07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1h02",
+      "anchors": [
+        "G08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1h03",
+      "anchors": [
+        "G08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1h04",
+      "anchors": [
+        "G05",
+        "G08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1h05",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1h06",
+      "anchors": [
+        "G16",
+        "G17"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1h07",
+      "anchors": [
+        "G01",
+        "G14",
+        "G16"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1h08",
+      "anchors": [
+        "G06",
+        "G09",
+        "G14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s01",
+      "anchors": [
+        "G01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s02",
+      "anchors": [
+        "G02"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s03",
+      "anchors": [
+        "G04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s04",
+      "anchors": [
+        "G04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s05",
+      "anchors": [
+        "G04",
+        "G09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s06",
+      "anchors": [
+        "G03"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s07",
+      "anchors": [
+        "G05"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s08",
+      "anchors": [
+        "G05",
+        "G04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s09",
+      "anchors": [
+        "G05"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s10",
+      "anchors": [
+        "G14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s11",
+      "anchors": [
+        "A09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s12",
+      "anchors": [
+        "A09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s13",
+      "anchors": [
+        "A09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_TEXT_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s14",
+      "anchors": [
+        "A09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_TEXT_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s15",
+      "anchors": [
+        "A09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_CORRECTED_CONTEXT_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s16",
+      "anchors": [
+        "G06",
+        "G08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s17",
+      "anchors": [
+        "G08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s18",
+      "anchors": [
+        "G07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s19",
+      "anchors": [
+        "G07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s20",
+      "anchors": [
+        "G07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s21",
+      "anchors": [
+        "G07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s22",
+      "anchors": [
+        "G07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s23",
+      "anchors": [
+        "G06"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s24",
+      "anchors": [
+        "G06"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s25",
+      "anchors": [
+        "G08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s26",
+      "anchors": [
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s27",
+      "anchors": [
+        "G08",
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1s28",
+      "anchors": [
+        "G09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p01",
+      "anchors": [
+        "G09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p02",
+      "anchors": [
+        "G09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p03",
+      "anchors": [
+        "G09"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p04",
+      "anchors": [
+        "G10"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p05",
+      "anchors": [
+        "G10"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p06",
+      "anchors": [
+        "G10"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p07",
+      "anchors": [
+        "G10"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p08",
+      "anchors": [
+        "G10"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p09",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p10",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p11",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p12",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p13",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p14",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p15",
+      "anchors": [
+        "G11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p16",
+      "anchors": [
+        "G12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p17",
+      "anchors": [
+        "G12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p18",
+      "anchors": [
+        "G12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p19",
+      "anchors": [
+        "G12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p20",
+      "anchors": [
+        "G12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p21",
+      "anchors": [
+        "G12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p22",
+      "anchors": [
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p23",
+      "anchors": [
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p24",
+      "anchors": [
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1p25",
+      "anchors": [
+        "G13",
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r01",
+      "anchors": [
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r02",
+      "anchors": [
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r03",
+      "anchors": [
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r04",
+      "anchors": [
+        "A01"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r05",
+      "anchors": [
+        "G13"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r06",
+      "anchors": [
+        "G13"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r07",
+      "anchors": [
+        "G13"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r08",
+      "anchors": [
+        "G13"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r09",
+      "anchors": [
+        "G13",
+        "G14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r10",
+      "anchors": [
+        "G14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r11",
+      "anchors": [
+        "G14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r12",
+      "anchors": [
+        "G14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r13",
+      "anchors": [
+        "G14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r14",
+      "anchors": [
+        "A02"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r15",
+      "anchors": [
+        "A02"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r16",
+      "anchors": [
+        "G15",
+        "A03"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r17",
+      "anchors": [
+        "A03"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r18",
+      "anchors": [
+        "A03"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r19",
+      "anchors": [
+        "G15"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r20",
+      "anchors": [
+        "G15"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r21",
+      "anchors": [
+        "G09",
+        "G13",
+        "A03"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1r22",
+      "anchors": [
+        "G06",
+        "G16"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a01",
+      "anchors": [
+        "G16"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a02",
+      "anchors": [
+        "G16"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a03",
+      "anchors": [
+        "G17"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a04",
+      "anchors": [
+        "G17"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a05",
+      "anchors": [
+        "G16"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a06",
+      "anchors": [
+        "G16",
+        "G17"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a07",
+      "anchors": [
+        "G16",
+        "G18"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a08",
+      "anchors": [
+        "G18"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a09",
+      "anchors": [
+        "G18"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a10",
+      "anchors": [
+        "G18"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a11",
+      "anchors": [
+        "G19"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a12",
+      "anchors": [
+        "G19"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_TEXT_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a13",
+      "anchors": [
+        "G19"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a14",
+      "anchors": [
+        "G19"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a15",
+      "anchors": [
+        "G19"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_TEXT_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a16",
+      "anchors": [
+        "G19"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R2_TEXT_RECHECK",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a17",
+      "anchors": [
+        "A06"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a18",
+      "anchors": [
+        "A06"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a19",
+      "anchors": [
+        "A06"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a20",
+      "anchors": [
+        "A06"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a21",
+      "anchors": [
+        "A07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a22",
+      "anchors": [
+        "A07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a23",
+      "anchors": [
+        "A07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a24",
+      "anchors": [
+        "A06",
+        "A07"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a25",
+      "anchors": [
+        "G19"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a26",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1a27",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d01",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d02",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d03",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d04",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d05",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d06",
+      "anchors": [
+        "A04",
+        "G21"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d07",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d08",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d09",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d10",
+      "anchors": [
+        "G20"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d11",
+      "anchors": [
+        "G20"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d12",
+      "anchors": [
+        "G20"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d13",
+      "anchors": [
+        "A08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d14",
+      "anchors": [
+        "A08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d15",
+      "anchors": [
+        "A08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d16",
+      "anchors": [
+        "A08",
+        "A05"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d17",
+      "anchors": [
+        "A08"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d18",
+      "anchors": [
+        "A05"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d19",
+      "anchors": [
+        "A05"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d20",
+      "anchors": [
+        "A05"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d21",
+      "anchors": [
+        "A05"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d22",
+      "anchors": [
+        "G11",
+        "G20"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d23",
+      "anchors": [
+        "G20",
+        "A05"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1d24",
+      "anchors": [
+        "G20"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v01",
+      "anchors": [
+        "A10"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v02",
+      "anchors": [
+        "A10"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v03",
+      "anchors": [
+        "A10",
+        "A11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v04",
+      "anchors": [
+        "A11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v05",
+      "anchors": [
+        "A11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v06",
+      "anchors": [
+        "G17",
+        "A11"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v07",
+      "anchors": [
+        "A12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v08",
+      "anchors": [
+        "A12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v09",
+      "anchors": [
+        "A12"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v10",
+      "anchors": [
+        "A13"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v11",
+      "anchors": [
+        "A13"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v12",
+      "anchors": [
+        "A13"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v13",
+      "anchors": [
+        "A14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v14",
+      "anchors": [
+        "A14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1v15",
+      "anchors": [
+        "A13",
+        "A14"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1f01",
+      "anchors": [
+        "G03"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1f02",
+      "anchors": [
+        "G34",
+        "G35"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1f03",
+      "anchors": [
+        "G34"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1f04",
+      "anchors": [
+        "G34"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1f05",
+      "anchors": [
+        "G34",
+        "G35"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1f06",
+      "anchors": [
+        "G33"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "PASS_WRITTEN_ONLY"
+    },
+    {
+      "id": "gr1f07",
+      "anchors": [
+        "G06",
+        "G09",
+        "G13",
+        "G16",
+        "G20"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "NATIVE_OUTRO_NO_IMAGE_PROMPT"
+    },
+    {
+      "id": "gr1f08",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "NATIVE_OUTRO_NO_IMAGE_PROMPT"
+    },
+    {
+      "id": "gr1f09",
+      "anchors": [
+        "A04"
+      ],
+      "source": "SUPPORTED",
+      "basis": "R1_EXACT_INHERITANCE",
+      "visual": "NATIVE_OUTRO_NO_IMAGE_PROMPT"
+    }
+  ],
+  "reuse_plan": {
+    "plan_sha256": "8766d4ea384201925ba9e8c2068cfc857a1f239fc54c4069a6bd7d803811f43e",
+    "complete_pairs_deep_equal_R1": true,
+    "full_Stage_imageKey_recomputed_with_camera_cast_look_model_version_size_negative_refs_seed": true,
+    "pairs": [
+      {
+        "payoff": "gr1p12",
+        "teaser": "gr1h05",
+        "key": "6a8adb8315a70678",
+        "composed_prompt_sha256": "3298c402b00e905c067ccc828258c921f83571ef8c0dfa70d468e97c606c4de7",
+        "both_endpoints_equal": true
+      },
+      {
+        "payoff": "gr1a03",
+        "teaser": "gr1h06",
+        "key": "6ece2406bc7cd130",
+        "composed_prompt_sha256": "597e908835ecee71d0d71939a919fd64594dde461496e9ff168c1ef1ab0f1847",
+        "both_endpoints_equal": true
+      }
+    ],
+    "code_readback_hashes_rechecked": {
+      "tools/video/media/keyframes.mjs": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
+      "tools/video/media/stages.mjs": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+      "tools/video/media/cache.mjs": "df1eb83a26e4cbe756047a4f9d920cfac048ad9b93e6729d657bdd45da6c288d",
+      "tools/video/core/drama.mjs": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1"
+    },
+    "production_conditions_retained": [
+      "After normal admission, re-read actual backend model/version/size/etc and recalculate livekeys.",
+      "Payofffirst takes1; read-only readCache/selected-manifest/finalbytesSHA guard before teaser; cachemiss,missingfile,changedrequest or mismatch stops before a second command.",
+      "Both endpoints need their own judge; after trim/crop require identical finalselected file and SHA, and assembly must consume it."
+    ],
+    "actual_same_asset_verified": false,
+    "real_media_not_reviewed": true
+  },
+  "preservation": {
+    "r2_freeze_and_source_comparison_set": 161,
+    "comparison_mismatches": [],
+    "protected_before_manifest_path": "/workspace/work/brand-story-20261025/garmin-audit/author-r2/protected-before.json",
+    "protected_before_manifest_sha256": "492113b2d15b82901d6714059421f441815945aec08a31c9798caae4f2283c32",
+    "all_328_baseline_files_rehashed_unchanged": true,
+    "original_research_files": 3,
+    "related_originals_and_snapshots": 9,
+    "original_raw_items": 57,
+    "r1_added_source_inventory_items": 3,
+    "r1_original_archived_source_files": 23,
+    "r1_full_history_including_state_manifest_runtime_files": 31,
+    "r1_archive_all_file_hashes_rechecked": true,
+    "dictionary_files": 3,
+    "dictionary_sequence": 1,
+    "lexicon_sha256": "9dbdd09719650d92e22a6ffb5ef6f1e662260c29e483734b5e419d87c0371bed",
+    "dictionary_rebuilt_or_republished": false,
+    "legacy_paid_media_available": false,
+    "old_owner_approval_or_budget_inherited": false
+  },
+  "runtime_binding": {
+    "source_video_equals_runtime_video": true,
+    "canonical_runtime_script_sha256": "bb5fdca4347f4dff95a580a1a8830ef18dce62062dd19fd1214e510a4ce7bc4f",
+    "lexicon_sha256": "9dbdd09719650d92e22a6ffb5ef6f1e662260c29e483734b5e419d87c0371bed",
+    "voice_and_every_other_nontext_video_leaf_unchanged": true
+  },
+  "normal_checks": {
+    "lint": {
+      "command": "node docs/videos/brand-story-remakes-20261025/runtime-cli.mjs /workspace/work/brand-story-20261025/garmin-submission-root lint --slug story-garmin-smartphone-pivot-worker-2026-remake-20261025 --json",
+      "exit_code": 0,
+      "errors": 0,
+      "soft_warnings": 9,
+      "spoken_units": 3348,
+      "estimated_minutes": 16.000555555555554,
+      "extra_soft_warning_assessment": "The four occurrences of 三零五 identify generation, supported heart-rate model, compatibility scope and namedreviewer device. Keep necessary model attribution; this soft warning does not negate source correctness.",
+      "other_soft_warning_scope": "Repeated subject terms, four estimated10–12second stills and legacy16minute duration estimate remain soft risks; real timing unknown."
+    },
+    "facts": {
+      "ok": true,
+      "detail": "verify-1.md marks no claim NOT FOUND"
+    },
+    "marker": {
+      "path": "../verify-1.md",
+      "sha256": "52ae045e585701631b739bd706e99e7d985c9bea39ea7c951ac89bcd3c9a3db3",
+      "rows": 158,
+      "native_facts_parser_passed": true
+    }
+  },
+  "native_reader_boundary": {
+    "native_or_blind_inputs_read": false,
+    "native_or_blind_results_read": false,
+    "actual_native_round_count": 0,
+    "native_status": "NOT_PREPARED_NOT_READ",
+    "native_pass_or_hold_claimed": false,
+    "native_reader_preparation_created": false
+  },
+  "independence_and_actions": {
+    "author_review_conclusions_used": false,
+    "author_native_review_files_hashed_only": true,
+    "author_contact_or_subagents": false,
+    "writes": [
+      "reviews/source-r2-independent.json",
+      "verify-1.md"
+    ],
+    "core_edits": 0,
+    "git_mutations": 0,
+    "backend_calls": 0,
+    "owner_writes": 0,
+    "paid_calls": 0
+  },
+  "remaining_limits": [
+    "This SOURCE PASS applies only to the frozen R2 input SHA set. A later content change needs renewed binding and review.",
+    "SOURCE/WRITTEN PLAN PASS does not establish native storytelling/pronunciation, owner approval, exact new US$25 account, whole-film all-inquote or protected admission. No paid operation authorized.",
+    "Actual body/final seconds unknown. Required body720–840seconds includes coldopen/voicedCTA and excludes5+21second bookends. At4–5units/s,3348units gives669.6–837.0seconds arithmetic only; no actualTTS or durationPASS.",
+    "No real image, selectedfile reuse, audio, music, translation, caption,dub,render,branding timeline or final-filmQA accepted. Existing source-scope limits remain: later manuals are not launchfirmware, DCR2009 is an individual363-run account,2013 figures are annual multi-segment mix, engineering repost is excluded."
+  ]
+}

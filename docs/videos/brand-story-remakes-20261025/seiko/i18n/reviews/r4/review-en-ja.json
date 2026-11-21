@@ -1,0 +1,36 @@
+{
+  "source_video_sha256": "7c20dffd9c6be7082b36c9190188dfe70304901cf2fafbb4021e4a074f26a1e9",
+  "reviewer": "seiko_eight_text_independent_r4",
+  "independent": true,
+  "role_disclosure": "I did not translate this episode. I independently read the source and every translated line (145 per locale), all 7 chapter titles, title, full description including each source link, tags and thumbnail tag/headline/sub for en and ja. I did not read author receipts, author self-review conclusions or other reviewers’ findings. Only text semantics and the actual local withStoryTag title output were reviewed; no timeline, SRT, audio or media QA was performed. Line IDs and exact source/worksheet/native checks are recorded in eight-language-independent-verification.json. TEXT_PASS refers only to text.",
+  "locales": [
+    {
+      "locale": "en",
+      "worksheet_sha256": "075be5388bee91b0ec410987bcd3aa9d92e02f31a488fb14600002b08409b054",
+      "translation_sha256": "5b24ef3cbd6c7c52e4ece2a0f08fd74fd7590898e140f76b3379a0e2ab4820f8",
+      "status": "FIXES_REQUIRED",
+      "checked_lines": 145,
+      "checked_chapters": 7,
+      "findings": [
+        {
+          "target": "metadata.title",
+          "current": "Seiko: Why did a ¥450,000 watch still need factory adjustment? | Brand Stories",
+          "proposed": "Seiko: Why did a ¥450,000 watch still need factory adjustment?｜Brand Story",
+          "reason": "Normal local execution of tools/video/core/metadata.mjs withStoryTag(title,\"en\") produces \"Seiko: Why did a ¥450,000 watch still need factory adjustment? | Brand Stories｜Brand Story\". The plural existing suffix is not recognized by STORY_TAIL, so the displayed title repeats the series name. Use the exact STORY_TAGS.en single suffix; this preserves the title meaning.",
+          "required": true
+        }
+      ],
+      "advisory": []
+    },
+    {
+      "locale": "ja",
+      "worksheet_sha256": "dc61e64cacc02f041201bbff8118b07249534e9dc32f7883819f665d85018c27",
+      "translation_sha256": "5ed511533af888bab782a8f0c17e5f9cfebb20b6bdc4b7b99dce4ab463f67e45",
+      "status": "TEXT_PASS",
+      "checked_lines": 145,
+      "checked_chapters": 7,
+      "findings": [],
+      "advisory": []
+    }
+  ]
+}

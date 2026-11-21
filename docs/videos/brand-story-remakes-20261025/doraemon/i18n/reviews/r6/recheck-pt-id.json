@@ -1,0 +1,162 @@
+{
+  "source_video_sha256": "b18f40f7e33cdf75a13fb1f3eafc4fc542522fd893d8aa7e1cc86289d197fc05",
+  "reviewer": "independent-pt-id-text-reviewer",
+  "independent": true,
+  "role_disclosure": "I did not author these translations. This is an independent targeted recheck of the single required Indonesian correction from my full review, with two adjacent lines reread for context. I compared the saved-before worksheet/native and the current worksheet/native structurally, and verified that Portuguese remains byte-identical to the previously reviewed version. I did not reread all 131 lines or all six chapters in this targeted recheck. No timeline, SRT, voice, or video QA was performed.",
+  "review_type": "targeted_recheck",
+  "initial_full_review": {
+    "path": "/workspace/work/brand-story-20261025/doraemon-audit/text-r6/review-pt-id.json",
+    "sha256": "67c6d47d7f1c40443ca4a2e7d23ef4514a314f723d282b5bc1bb0c71f46751bf",
+    "preserved": true,
+    "id_initial_status": "FIXES_REQUIRED"
+  },
+  "locales": [
+    {
+      "locale": "pt",
+      "worksheet_sha256": "becab425850bd90dd0e832ed7350f36433b942f799ca4a0fad3170399fb84b8a",
+      "translation_sha256": "1cc6b675e260818fd78e43a13e8e9898a7d4c3680f62a88fd4308bc40a1231a2",
+      "status": "TEXT_PASS",
+      "checked_lines": 0,
+      "checked_chapters": 0,
+      "checked_line_ids": [],
+      "targeted_fix_line_ids": [],
+      "scope": "No prose reread in this recheck; current worksheet/native SHA values are identical to the initial full TEXT_PASS review, carrying forward its full coverage.",
+      "prior_full_review_coverage": {
+        "checked_lines": 131,
+        "checked_chapters": 6,
+        "description_url_count": 21,
+        "all_metadata": true
+      },
+      "findings": [],
+      "advisory": [],
+      "verification": {
+        "source_sha_matches_config_and_initial_report": true,
+        "worksheet_native_exact": true,
+        "worksheet_unchanged_from_full_review": true,
+        "native_unchanged_from_full_review": true
+      }
+    },
+    {
+      "locale": "id",
+      "worksheet_sha256": "95f7f656d404f2617c90673bb86d7c2bb83bf030c8f4949b06160794aae6bf90",
+      "translation_sha256": "ce2de48e94505b0e1170ab4b129e5a1b81448a844c896776884f53358d9ff35d",
+      "status": "TEXT_PASS",
+      "checked_lines": 3,
+      "checked_chapters": 0,
+      "checked_line_ids": [
+        "d1d12c1",
+        "d1d12c2",
+        "d1d12c3"
+      ],
+      "targeted_fix_line_ids": [
+        "d1d12c2"
+      ],
+      "scope": "One corrected line semantically rechecked with two adjacent context lines; complete saved-before/current structural comparison confirms all other worksheet/native values, chapters, metadata and description URLs unchanged.",
+      "prior_full_review_coverage": {
+        "checked_lines": 131,
+        "checked_chapters": 6,
+        "description_url_count": 21,
+        "all_metadata": true
+      },
+      "findings": [],
+      "advisory": [],
+      "verification": {
+        "source_sha_matches_config_and_initial_report": true,
+        "worksheet_native_exact": true,
+        "saved_worksheet_matches_initial_review": true,
+        "saved_native_matches_initial_review": true,
+        "source_line_exact": true,
+        "source_line_hash_exact": true,
+        "current_exact_proposed": true,
+        "saved_before_exact_initial_finding": true,
+        "only_one_worksheet_text_delta": true,
+        "only_one_native_text_delta": true,
+        "description_urls_unchanged": true
+      },
+      "saved_worksheet_sha256": "f64e4754b17e8e054f170d41600df97c3faed420b0bd63abace4f1626cbbe5a2",
+      "saved_translation_sha256": "a790facde1a3f8778dc505ee3148365c88499b76d7233839700827337dd43fa6",
+      "rechecked_fix": {
+        "target": "lines.d1d12c2",
+        "source": "兒童文庫版會為漢字加上讀音，她也就不刻意大量改用平假名；不懂的詞，",
+        "before": "Edisi buku anak memberi panduan baca pada kanji, sehingga ia tidak sengaja banyak menggantinya dengan hiragana. Kata yang belum dikenal",
+        "current": "Edisi buku anak memberi panduan baca pada kanji, sehingga ia tidak berusaha mengganti banyak kanji dengan hiragana. Kata yang belum dikenal",
+        "result": "RESOLVED",
+        "reason": "「tidak berusaha mengganti banyak kanji」明確表示未刻意大量替換漢字為平假名；保留兒童版有漢字讀音的原因，並與下一句由上下文推測生詞的意思正確銜接。"
+      },
+      "worksheet_deltas": [
+        [
+          ".lines.93.text",
+          "Edisi buku anak memberi panduan baca pada kanji, sehingga ia tidak sengaja banyak menggantinya dengan hiragana. Kata yang belum dikenal",
+          "Edisi buku anak memberi panduan baca pada kanji, sehingga ia tidak berusaha mengganti banyak kanji dengan hiragana. Kata yang belum dikenal"
+        ]
+      ],
+      "native_deltas": [
+        [
+          ".lines.d1d12c2.text",
+          "Edisi buku anak memberi panduan baca pada kanji, sehingga ia tidak sengaja banyak menggantinya dengan hiragana. Kata yang belum dikenal",
+          "Edisi buku anak memberi panduan baca pada kanji, sehingga ia tidak berusaha mengganti banyak kanji dengan hiragana. Kata yang belum dikenal"
+        ]
+      ]
+    }
+  ],
+  "protection": {
+    "unchanged": true,
+    "files": [
+      {
+        "path": "/workspace/work/brand-story-20261025/doraemon-audit/text-r6/text-current.json",
+        "before_sha256": "a5dcd98e990c8f44fc9d0c2d693bf4470efc6282ecf6a39548e9595940fb89b1",
+        "after_sha256": "a5dcd98e990c8f44fc9d0c2d693bf4470efc6282ecf6a39548e9595940fb89b1",
+        "unchanged": true
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/doraemon-audit/text-r6/review-pt-id.json",
+        "before_sha256": "67c6d47d7f1c40443ca4a2e7d23ef4514a314f723d282b5bc1bb0c71f46751bf",
+        "after_sha256": "67c6d47d7f1c40443ca4a2e7d23ef4514a314f723d282b5bc1bb0c71f46751bf",
+        "unchanged": true
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/doraemon-audit/text-r6/translation-review-history/id/worksheet-before.json",
+        "before_sha256": "f64e4754b17e8e054f170d41600df97c3faed420b0bd63abace4f1626cbbe5a2",
+        "after_sha256": "f64e4754b17e8e054f170d41600df97c3faed420b0bd63abace4f1626cbbe5a2",
+        "unchanged": true
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/doraemon-audit/text-r6/translation-review-history/id/translation-before.json",
+        "before_sha256": "a790facde1a3f8778dc505ee3148365c88499b76d7233839700827337dd43fa6",
+        "after_sha256": "a790facde1a3f8778dc505ee3148365c88499b76d7233839700827337dd43fa6",
+        "unchanged": true
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/doraemon-submission-root/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/video.json",
+        "before_sha256": "b18f40f7e33cdf75a13fb1f3eafc4fc542522fd893d8aa7e1cc86289d197fc05",
+        "after_sha256": "b18f40f7e33cdf75a13fb1f3eafc4fc542522fd893d8aa7e1cc86289d197fc05",
+        "unchanged": true
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/media/story-adapt-doraemon-after-fujiko-remake-20261025/i18n/pt.todo.json",
+        "before_sha256": "becab425850bd90dd0e832ed7350f36433b942f799ca4a0fad3170399fb84b8a",
+        "after_sha256": "becab425850bd90dd0e832ed7350f36433b942f799ca4a0fad3170399fb84b8a",
+        "unchanged": true
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/doraemon-submission-root/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/i18n/pt.json",
+        "before_sha256": "1cc6b675e260818fd78e43a13e8e9898a7d4c3680f62a88fd4308bc40a1231a2",
+        "after_sha256": "1cc6b675e260818fd78e43a13e8e9898a7d4c3680f62a88fd4308bc40a1231a2",
+        "unchanged": true
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/media/story-adapt-doraemon-after-fujiko-remake-20261025/i18n/id.todo.json",
+        "before_sha256": "95f7f656d404f2617c90673bb86d7c2bb83bf030c8f4949b06160794aae6bf90",
+        "after_sha256": "95f7f656d404f2617c90673bb86d7c2bb83bf030c8f4949b06160794aae6bf90",
+        "unchanged": true
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/doraemon-submission-root/docs/videos/story-adapt-doraemon-after-fujiko-remake-20261025/i18n/id.json",
+        "before_sha256": "ce2de48e94505b0e1170ab4b129e5a1b81448a844c896776884f53358d9ff35d",
+        "after_sha256": "ce2de48e94505b0e1170ab4b129e5a1b81448a844c896776884f53358d9ff35d",
+        "unchanged": true
+      }
+    ],
+    "note": "Only this targeted recheck JSON was written. The initial FIXES_REQUIRED review and saved-before files are preserved; no translation, source or metadata was edited."
+  }
+}

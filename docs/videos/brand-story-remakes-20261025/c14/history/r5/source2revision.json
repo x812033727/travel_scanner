@@ -1,0 +1,564 @@
+{
+  "schema_version": 1,
+  "status": "AUTHOR_R2_TWO_REQUIRED_SOURCE_WORDING_CORRECTIONS_COMPLETED_PENDING_INDEPENDENT_DELTA_REVIEW",
+  "author": "/root/c05_r10_author",
+  "candidate_revision": "c14-r2",
+  "previous_revision": "c14-r1",
+  "review_four_sha256_before": {
+    "video.json": "9884700d8e252d20669902c93563ab4caef87cc8e132c220ea1c8bb0533b0e7a",
+    "script.md": "b23f9fbefa3323ca9f72dcef1b05b3458e16745fb31c15fe19a470bfec114038",
+    "narration-only.json": "8452fa46ae7b47a23be75b2ec77139a3130125571ab38c865c9f2b9c98306d6b",
+    "claims.json": "6272854f0fa5ca0fcfe887731307e2d34a848d14b891e0833cf51ca0652eee70"
+  },
+  "native_round_accounting": {
+    "r1_actual_native_panel_executed": false,
+    "r2_next_actual_native_panel": 1,
+    "author_has_not_self_reviewed": true
+  },
+  "protected_before": [
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/research-original.md",
+      "bytes": 32047,
+      "sha256": "e8d6ec0f77680c32c3f7de08723d2f44a5e8960b2f86024ac4bc742180acda65"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/research-original.claims.json",
+      "bytes": 112922,
+      "sha256": "2303aa7b73dd2a9dbba94f6b09793b77bb183620125f971a553d08aa31d52609"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/original-preservation.json",
+      "bytes": 21398,
+      "sha256": "2e0f4c93c05f455d732880b2591f771b1bcaccf21d0c741228798e70a588e009"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/brief.md",
+      "bytes": 1908,
+      "sha256": "c07da12a06e2141b6b3f6ae72b64073cb517bb29b70f21f06133899e50826620"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/brief.md",
+      "bytes": 1908,
+      "sha256": "c07da12a06e2141b6b3f6ae72b64073cb517bb29b70f21f06133899e50826620"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/build-canonical.mjs",
+      "bytes": 13007,
+      "sha256": "476ed78fe748b8901ebe62f4dcbd178abf32da10ec46dd52a68a39484230c68b"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/build-canonical.mjs",
+      "bytes": 13007,
+      "sha256": "476ed78fe748b8901ebe62f4dcbd178abf32da10ec46dd52a68a39484230c68b"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/claims.md",
+      "bytes": 8435,
+      "sha256": "5f2b9aeab0e2af489a2ee5d254368db41f8ec0670caa567021f809592658c254"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/claims.md",
+      "bytes": 8435,
+      "sha256": "5f2b9aeab0e2af489a2ee5d254368db41f8ec0670caa567021f809592658c254"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/preflight.mjs",
+      "bytes": 4251,
+      "sha256": "6be34597f988282d81c47385124d0583eabc0a5a5392cfa45c06f1e53a33b4e2"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/preflight.mjs",
+      "bytes": 4251,
+      "sha256": "6be34597f988282d81c47385124d0583eabc0a5a5392cfa45c06f1e53a33b4e2"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/production-quote.md",
+      "bytes": 4305,
+      "sha256": "dd939a9d5e836c33e749390da22e74303c8a32439fdb87ec7c4283b155bd7a5d"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/production-quote.md",
+      "bytes": 4305,
+      "sha256": "dd939a9d5e836c33e749390da22e74303c8a32439fdb87ec7c4283b155bd7a5d"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/2026-10-23-author-script-receipt.md",
+      "bytes": 3206,
+      "sha256": "5a70a2bc1c007cd24a603887bc8c518c4a268028611c853a313d081b419b06b5"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/2026-10-23-author-script-receipt.md",
+      "bytes": 3206,
+      "sha256": "5a70a2bc1c007cd24a603887bc8c518c4a268028611c853a313d081b419b06b5"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/2026-10-23-author-v7-script-receipt.md",
+      "bytes": 4505,
+      "sha256": "3c434caaf4ca00f38f47617b3600c224c18d75b3c4220d42a7c8048fc749e55c"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/2026-10-23-author-v7-script-receipt.md",
+      "bytes": 4505,
+      "sha256": "3c434caaf4ca00f38f47617b3600c224c18d75b3c4220d42a7c8048fc749e55c"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/2026-10-23-author-v8-n10-delta-receipt.md",
+      "bytes": 3845,
+      "sha256": "e2248e39866f598cf070da4ec3d10b66892f0ba3795894d5d213be6da2756092"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/2026-10-23-author-v8-n10-delta-receipt.md",
+      "bytes": 3845,
+      "sha256": "e2248e39866f598cf070da4ec3d10b66892f0ba3795894d5d213be6da2756092"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/2026-10-23-independent-delta-review.md",
+      "bytes": 5010,
+      "sha256": "c07906ae41e7ad3ebd760b535da16cb8e773a7a58878b7b8063ae59472e89da9"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/2026-10-23-independent-delta-review.md",
+      "bytes": 5010,
+      "sha256": "c07906ae41e7ad3ebd760b535da16cb8e773a7a58878b7b8063ae59472e89da9"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/2026-10-23-independent-source-review.md",
+      "bytes": 6899,
+      "sha256": "4f7a4144bfeacb5cbec495174a2f6b0c260e4e3e2912a1927103769813d0853d"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/2026-10-23-independent-source-review.md",
+      "bytes": 6899,
+      "sha256": "4f7a4144bfeacb5cbec495174a2f6b0c260e4e3e2912a1927103769813d0853d"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/blind-narration-v1-coordinator.md",
+      "bytes": 2591,
+      "sha256": "8ff2da330d98c8b3d5c6aee56590e92f4b554a799920392147c5277cbd620812"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/blind-narration-v1-coordinator.md",
+      "bytes": 2591,
+      "sha256": "8ff2da330d98c8b3d5c6aee56590e92f4b554a799920392147c5277cbd620812"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/blind-narration-v2-coordinator.md",
+      "bytes": 2796,
+      "sha256": "a1cb1bd69045c906f5214a3265318c27eeb8479cd7e3437c202e01ac55918b84"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/blind-narration-v2-coordinator.md",
+      "bytes": 2796,
+      "sha256": "a1cb1bd69045c906f5214a3265318c27eeb8479cd7e3437c202e01ac55918b84"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/blind-narration-v6-coordinator.md",
+      "bytes": 2513,
+      "sha256": "a1001d75c566f6d9aa60d7b037d631538736d9d2791006f542439cafb249ff1b"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/blind-narration-v6-coordinator.md",
+      "bytes": 2513,
+      "sha256": "a1001d75c566f6d9aa60d7b037d631538736d9d2791006f542439cafb249ff1b"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/blind-narration-v8-coordinator.md",
+      "bytes": 3160,
+      "sha256": "2a91b3ab7cd89183387597ba12a06c384f37d7b608ade5f3ec5bc1e4200636c2"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/blind-narration-v8-coordinator.md",
+      "bytes": 3160,
+      "sha256": "2a91b3ab7cd89183387597ba12a06c384f37d7b608ade5f3ec5bc1e4200636c2"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/canonical-video-preflight-20261024.md",
+      "bytes": 5069,
+      "sha256": "f8d98c4e7dd5f36dec3bb51f58d573a52f2b69f1c4362a4f75b9dab8206a368b"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/canonical-video-preflight-20261024.md",
+      "bytes": 5069,
+      "sha256": "f8d98c4e7dd5f36dec3bb51f58d573a52f2b69f1c4362a4f75b9dab8206a368b"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/independent-script-visual-review.md",
+      "bytes": 4607,
+      "sha256": "517676d59f2017205c8ff82ea802796bacbba1b1355e98ec2f049f56e456c697"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/independent-script-visual-review.md",
+      "bytes": 4607,
+      "sha256": "517676d59f2017205c8ff82ea802796bacbba1b1355e98ec2f049f56e456c697"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/independent-v2-source-visual-delta-review.md",
+      "bytes": 9025,
+      "sha256": "affd1a82e5ccd3dbe050d02e9f6d2095fb7715fe58634f8601311698e0f927fa"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/independent-v2-source-visual-delta-review.md",
+      "bytes": 9025,
+      "sha256": "affd1a82e5ccd3dbe050d02e9f6d2095fb7715fe58634f8601311698e0f927fa"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/independent-v3-i01-visual-recheck.md",
+      "bytes": 3940,
+      "sha256": "30aebb323870d73ac1c9b7619317f23d0875da05cbc5a9e668f423d832238072"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/independent-v3-i01-visual-recheck.md",
+      "bytes": 3940,
+      "sha256": "30aebb323870d73ac1c9b7619317f23d0875da05cbc5a9e668f423d832238072"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/independent-v4-source-visual-review.md",
+      "bytes": 9217,
+      "sha256": "2f2adc35a011abad48e6e113ad2b2a39c2f2a798f8a7751e5107b05f5ae99951"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/independent-v4-source-visual-review.md",
+      "bytes": 9217,
+      "sha256": "2f2adc35a011abad48e6e113ad2b2a39c2f2a798f8a7751e5107b05f5ae99951"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/independent-v5-source-visual-review.md",
+      "bytes": 8908,
+      "sha256": "8abade5c7363af2e5e5ed5ac2aea8ea013c55cbe46f8ee2838da97afce59a3d4"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/independent-v5-source-visual-review.md",
+      "bytes": 8908,
+      "sha256": "8abade5c7363af2e5e5ed5ac2aea8ea013c55cbe46f8ee2838da97afce59a3d4"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/independent-v6-o02-delta-review.md",
+      "bytes": 4321,
+      "sha256": "7eee06ff020bee2e6395b01942ed18bafd122840f2483b53e58d7c5d648f7302"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/independent-v6-o02-delta-review.md",
+      "bytes": 4321,
+      "sha256": "7eee06ff020bee2e6395b01942ed18bafd122840f2483b53e58d7c5d648f7302"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/independent-v7-source-visual-review.md",
+      "bytes": 7545,
+      "sha256": "8f5f57a094b6582974b14c97d451057303ff6516df7f5f374f423164ca2c688c"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/independent-v7-source-visual-review.md",
+      "bytes": 7545,
+      "sha256": "8f5f57a094b6582974b14c97d451057303ff6516df7f5f374f423164ca2c688c"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/independent-v8-n10-delta-review.md",
+      "bytes": 4362,
+      "sha256": "016d2d9eadc91a5b71fd9e9271faa0a965aed988b337f58545f11c1efe832265"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/independent-v8-n10-delta-review.md",
+      "bytes": 4362,
+      "sha256": "016d2d9eadc91a5b71fd9e9271faa0a965aed988b337f58545f11c1efe832265"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/owner-script-approval.md",
+      "bytes": 1474,
+      "sha256": "8d93d9977e859c5493e63122108fd8eb63f3641828c3e4ee98fa7f456c9eaba7"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/owner-script-approval.md",
+      "bytes": 1474,
+      "sha256": "8d93d9977e859c5493e63122108fd8eb63f3641828c3e4ee98fa7f456c9eaba7"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/reviews/owner-treatment-adoption.md",
+      "bytes": 1121,
+      "sha256": "f2bebd8de93add185b5d8e439ac54495d61961b3efacd1e1b4eccd83489f1233"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/reviews/owner-treatment-adoption.md",
+      "bytes": 1121,
+      "sha256": "f2bebd8de93add185b5d8e439ac54495d61961b3efacd1e1b4eccd83489f1233"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/script-source-notes.md",
+      "bytes": 12858,
+      "sha256": "ef3aa1c79ab5eb19f0c52e9b024468ad6af7a3edc26af17894d8c97d81be538c"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/script-source-notes.md",
+      "bytes": 12858,
+      "sha256": "ef3aa1c79ab5eb19f0c52e9b024468ad6af7a3edc26af17894d8c97d81be538c"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/script.md",
+      "bytes": 11336,
+      "sha256": "167db38f368484951c56972b86a9838bb92b3b0b874952a87fbbad26b8429312"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/script.md",
+      "bytes": 11336,
+      "sha256": "167db38f368484951c56972b86a9838bb92b3b0b874952a87fbbad26b8429312"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/series.json",
+      "bytes": 570,
+      "sha256": "15f8eecfddc44300af3eca3bc609270928c8a9729bef2bb9d9fe8eb6146e4a0b"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/series.json",
+      "bytes": 570,
+      "sha256": "15f8eecfddc44300af3eca3bc609270928c8a9729bef2bb9d9fe8eb6146e4a0b"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/source-matrix.md",
+      "bytes": 8090,
+      "sha256": "f8cf68aa36264df18cdbe6ecd698d4af1f22e405deaada8ed275b7685050587e"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/source-matrix.md",
+      "bytes": 8090,
+      "sha256": "f8cf68aa36264df18cdbe6ecd698d4af1f22e405deaada8ed275b7685050587e"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/treatment.md",
+      "bytes": 9489,
+      "sha256": "078dc1d77c46eb49bb6f27f60535f22775781e5963783bda7c1f7625b1a8700e"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/treatment.md",
+      "bytes": 9489,
+      "sha256": "078dc1d77c46eb49bb6f27f60535f22775781e5963783bda7c1f7625b1a8700e"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/verify-1.md",
+      "bytes": 3599,
+      "sha256": "1fc3e61c4c46f3e43bfc7fef2f3ef3bfdc65803607436afac45a22697e6dc2a2"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/verify-1.md",
+      "bytes": 3599,
+      "sha256": "1fc3e61c4c46f3e43bfc7fef2f3ef3bfdc65803607436afac45a22697e6dc2a2"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/video.json",
+      "bytes": 47850,
+      "sha256": "f7d31176c626293cafb719df4960eba0a0cc2ad04231d312a22855bbf97d1d54"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/video.json",
+      "bytes": 47850,
+      "sha256": "f7d31176c626293cafb719df4960eba0a0cc2ad04231d312a22855bbf97d1d54"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/visual-plan.json",
+      "bytes": 18516,
+      "sha256": "b211410713f271459af267cc2f8db4e8938a7edb9938b6048a552a1076d4c063"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/visual-plan.json",
+      "bytes": 18516,
+      "sha256": "b211410713f271459af267cc2f8db4e8938a7edb9938b6048a552a1076d4c063"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-camelbak-c14/visual-plan.md",
+      "bytes": 5161,
+      "sha256": "75e6ad2973078b72a28e17c5b2b9b58aca5a1a247319ce5ab298d85e6f45dc2c"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/visual-plan.md",
+      "bytes": 5161,
+      "sha256": "75e6ad2973078b72a28e17c5b2b9b58aca5a1a247319ce5ab298d85e6f45dc2c"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/story-everyday-camelbak-c14.json",
+      "bytes": 50762,
+      "sha256": "d083b74fdea968983f5cf8481105caeb5dbe8ed653e83f6037bf82b95bd47071"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot/work-input.json",
+      "bytes": 50762,
+      "sha256": "d083b74fdea968983f5cf8481105caeb5dbe8ed653e83f6037bf82b95bd47071"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/old-snapshot-manifest.json",
+      "bytes": 19567,
+      "sha256": "ad8072984ce6060434baf3ec9745ead5620dcc4748a85ee0ecacb94aad59589a"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/author-materials.json",
+      "bytes": 30412,
+      "sha256": "5aa3f9d3f75f9b3217c601f9aacb078052c9df3490d9cdd16116368ed49f7c4f"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/prepare-runtime.mjs",
+      "bytes": 468,
+      "sha256": "7723eaf7fd19b763ca47cf99ac3ae289cbe4b80d2e2dcdf5bfc163a6d36844a1"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/author-notes.json",
+      "bytes": 28853,
+      "sha256": "03e624d83d4dac35491d88e5390e111a82793519598cf0b7675b4fd7299a113c"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/narration-only.json",
+      "bytes": 18289,
+      "sha256": "8452fa46ae7b47a23be75b2ec77139a3130125571ab38c865c9f2b9c98306d6b"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/review-state.json",
+      "bytes": 135,
+      "sha256": "f17d6d47183458891ed30a9712629b65383d71b58f7a277d06168abcd677cd34"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/video.json",
+      "bytes": 61759,
+      "sha256": "9884700d8e252d20669902c93563ab4caef87cc8e132c220ea1c8bb0533b0e7a"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/build-candidate.mjs",
+      "bytes": 27506,
+      "sha256": "023fb367e1c31b0ef8050d12283c4c9be7c2eb671a1b0fc8c507273fb28035e1"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/script.md",
+      "bytes": 11031,
+      "sha256": "b23f9fbefa3323ca9f72dcef1b05b3458e16745fb31c15fe19a470bfec114038"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/research-original.claims.json",
+      "bytes": 112922,
+      "sha256": "2303aa7b73dd2a9dbba94f6b09793b77bb183620125f971a553d08aa31d52609"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/original-preservation.json",
+      "bytes": 21398,
+      "sha256": "2e0f4c93c05f455d732880b2591f771b1bcaccf21d0c741228798e70a588e009"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/series.json",
+      "bytes": 664,
+      "sha256": "42ca7f33ed3db60da731fe967f117a6d8ccaee14b23c06df1da243112edb2036"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/brief.md",
+      "bytes": 3725,
+      "sha256": "34f4e189bd47abb821a54c46020481671571f8fec8389ad9ee3f96be5657b690"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/claims.json",
+      "bytes": 319353,
+      "sha256": "6272854f0fa5ca0fcfe887731307e2d34a848d14b891e0833cf51ca0652eee70"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/research-original.md",
+      "bytes": 32047,
+      "sha256": "e8d6ec0f77680c32c3f7de08723d2f44a5e8960b2f86024ac4bc742180acda65"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/claims.md",
+      "bytes": 53568,
+      "sha256": "1eb3df5d6f95986065638c72caed8ee786be797ad40fdb9749beb75a3e0387e1"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/reviews/source-r1-independent.json",
+      "bytes": 96034,
+      "sha256": "7e628ae44610f1be9bb9c387321748730c047e87b85890381767805ebcad4d94"
+    },
+    {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/reviews/source-r1-independent.json",
+      "bytes": 96034,
+      "sha256": "7e628ae44610f1be9bb9c387321748730c047e87b85890381767805ebcad4d94"
+    }
+  ],
+  "started_at_utc": "2026-10-25T22:49:57.465872+00:00",
+  "source_review_pass_issued": false,
+  "verify_written": false,
+  "required_corrections": [
+    {
+      "line_id": "c14r1v15",
+      "before": "報出的流量是每秒約三十五到四十五毫升；數字裡，也包含人在吸的動作。",
+      "after": "專利申請人自報的流量，是每秒約三十五到四十五毫升；數字裡，也包含人在吸的動作。",
+      "spoken_units_delta": 5,
+      "source_anchor_ids": [
+        "A_MOUTH_P8"
+      ],
+      "all_evidence_and_limits_unchanged": true
+    },
+    {
+      "line_id": "c14r1d08",
+      "before": "飲水管若緊緊盤起來，原廠說水會積在低處；怎麼讓管內也有乾燥的路？",
+      "after": "飲水管若緊緊盤起來，原廠說水可能積在低處；怎麼讓管內也有乾燥的路？",
+      "spoken_units_delta": 1,
+      "source_anchor_ids": [
+        "A_CLEAN_TUBE"
+      ],
+      "all_evidence_and_limits_unchanged": true
+    }
+  ],
+  "review_four_sha256_after": {
+    "video.json": "1579d80818eb563709335efc3599711795e491e1b13419ab762d1b34ed6338e7",
+    "script.md": "b2b74ba0924eafa45b73b6c28bf3ca69a12bc440b58470a81b4c146f0720bfb6",
+    "narration-only.json": "eb492690878ad9a97d0f4420d4d40252aa8dabcef6dd9d242070bd81974a027d",
+    "claims.json": "e36e33ce4fcd215195c30d7d449ea65713b7f3213842e51874fee0f35c533c40"
+  },
+  "exact_delta": {
+    "changed_line_texts": 2,
+    "unchanged_complete_line_objects": 89,
+    "same_line_order": true,
+    "unchanged_scene_visual_objects": 89,
+    "same_88_prompts": true,
+    "same_27_loops": true,
+    "same_all_non_scene_video_fields": true,
+    "same_all_151_evidence_bindings_and_32_anchors": true,
+    "only_claim_texts_changed": true,
+    "narration_projection_has_only_same_two_text_changes": true,
+    "script_other_spoken_wording_unchanged": true,
+    "metadata_revision_and_unit_counters_updated_to_r2": true
+  },
+  "native_units": {
+    "before": 2690,
+    "after": 2696,
+    "delta": 6,
+    "coldopen": 163,
+    "CTA": 106,
+    "after_opening": 2533,
+    "after_opening_and_CTA": 2427,
+    "actual_seconds": null,
+    "length_HOLD": true
+  },
+  "native_proper_context": {
+    "root": "/workspace/work/brand-story-20261025/c14-submission-root",
+    "slug": "story-everyday-camelbak-c14-remake-20261025",
+    "errors": 0,
+    "cadence_warnings": 0,
+    "maximum_question_or_chapter_gap_seconds": 42.23333333333332,
+    "maximum_estimated_shot_seconds": 9.9,
+    "lexicon_sha256": "5da8ab42711b4d489d026db42915554e300acf174c395a051da9b30ae024cbce",
+    "dictionary_unchanged": true,
+    "scope": "Mechanical loadProject/lintProject only, not native blind-panel self-review."
+  },
+  "protection_recheck": {
+    "all_91_protected_files_bytes_sha_unchanged": true,
+    "research": 3,
+    "old": 35,
+    "read_only_snapshots": 35,
+    "history_and_reviews_unchanged": true,
+    "source_r1_reports": [
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/history/r1/reviews/source-r1-independent.json",
+        "sha256": "7e628ae44610f1be9bb9c387321748730c047e87b85890381767805ebcad4d94"
+      },
+      {
+        "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/reviews/source-r1-independent.json",
+        "sha256": "7e628ae44610f1be9bb9c387321748730c047e87b85890381767805ebcad4d94"
+      }
+    ]
+  },
+  "completed_at_utc": "2026-10-25T22:50:51.620819+00:00",
+  "provider_calls": 0,
+  "backend_mutations": 0,
+  "git_commands": 0,
+  "subagents_spawned": 0
+}

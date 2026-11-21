@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/seiko_r1_source",
+  "review_type": "INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_R4_TWO_LINE_DELTA",
+  "reviewed_at_utc": "2026-10-26T05:34:04.491655+00:00",
+  "candidate_revision": "seiko-r4",
+  "video_slug": "story-adapt-seiko-quartz-astron-remake-20261025",
+  "independent": true,
+  "reviewer_authored_or_researched_candidate": false,
+  "verdict": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS_WRITTEN_PLAN_ONLY",
+  "must_fix": [],
+  "input_isolation": {
+    "native_or_blind_review_content_read": false,
+    "author_narrative_conclusion_content_read": false,
+    "author_or_researcher_consulted": false,
+    "subagents_spawned": 0,
+    "preserved_native_and_author_conclusion_files": "hash only"
+  },
+  "binding": {
+    "core_four_sha256": {
+      "video.json": "7c20dffd9c6be7082b36c9190188dfe70304901cf2fafbb4021e4a074f26a1e9",
+      "script.md": "5e1da3a3adfb0121e8e11cb4c4f573340b5e60da9e1681c1eb7fb224673c912a",
+      "narration-only.json": "f7f5e94c5b98f0892d007ed171478f7b55fcc9ed997c3b2eed85d3f942c3e4c2",
+      "claims.json": "11a2682835efc9ccf28f4a8a09541df81c45f2dc11520a2a6b702b0c9238a32b"
+    },
+    "author_freeze_r4_sha256": "7fdc3571eccb0cfbb3652831a92b0d77a19e80dded788beb9e8b3bee436f86b5",
+    "image_reuse_plan_sha256": "f41f4244f91e199804c2a468d99a4904adf795154c1743668578f9d8ee8b185d",
+    "author_source_additions_sha256": "6751d73432f92c6375c0e770fdb88ee1e65d1e0e3000014d6422749bc19e722c",
+    "protected_inputs_r4_sha256": "adc1f3ca315d83b214c2b5608a70f33fab3674c652c6ebee77182044f0f6d97b",
+    "all_author_frozen_file_sha_match": true
+  },
+  "baseline": {
+    "r3_report_path": "history/r3/reviews/source-r3-independent.json",
+    "r3_report_sha256": "c0dd1ad4c76c3afc370742954b2b6a64834f338107dbbfd20071e2e6c8369774",
+    "r3_verify_sha256": "a60090d511dc74d22802eaccdccac98aadcc038f378d7aa4ca63c7fff7fc9b89",
+    "r3_video_sha256": "ed04567394bcf0c34af72f07ae7e01ecc6e065f0175c598f4d5a5eeb63c0e392",
+    "r3_claims_sha256": "aa9182f66137bc38ca7cdc209c31eaccebea8baafa05f93aefaae166f6d17dd7",
+    "r3_freeze_sha256": "cc5e9086d836531e13daa1cc6251e4230d0741cae166a743ceeec6b094eb5e96",
+    "r3_preservation_receipt_sha256": "e331bd5b7da59cfa6db3e1a2a24b6c9277f5dd01adf743fc6d7137efb5a8be74",
+    "prior_chain": [
+      {
+        "revision": "r2",
+        "source_report_sha256": "b2456108c0b32ebd647e5edc71fced4e8156f4f80bf35dfa0bed224fae160aa9",
+        "preservation_receipt_sha256": "a70673164e7ad6aefc1555d217590d37463d838fe037a13b6c6e0f18e5de3911"
+      },
+      {
+        "revision": "r1",
+        "source_report_sha256": "6dce40dd0dacf9f9169df308b7ee95fe26bd86d651255a191eb8753069f3e996",
+        "preservation_receipt_sha256": "43b7a79545760899a37f1f01d40046949315a61f0c345389ff90024e06fa42de"
+      }
+    ],
+    "inherited_scope": "R3 source/written-plan PASS and its full R2/R1 evidence chain, with exact current-input identity checks; prior native judgments are not read or inherited. R1 HOLD and subsequent records remain unchanged.",
+    "unchanged_143_narration_projection_sha256": "ddbe491f6f7f2d26fe317e7f302b552d5860fe2a98eb7a41b6d3992caadecd55",
+    "unchanged_143_full_claim_rows_sha256": "a732bd347903f86fdbc9f80abfe1e06e182149f92a074ca745d9be56cf45bed8",
+    "canonical_hash_encoding": "ensure_ascii=false, sort_keys=true, compact JSON separators; current order"
+  },
+  "coverage": {
+    "current_lines": 145,
+    "current_claim_rows": 145,
+    "changed_lines": 2,
+    "unchanged_narration_and_full_claim_rows": 143,
+    "shot_prompts": 142,
+    "outro_scenes": 1,
+    "chapters": 7,
+    "loops": 34,
+    "same_image_pairs": 2,
+    "line_ids_order_chapters_unchanged": true
+  },
+  "delta_source": {
+    "source_id": "S1_EPS35SQ",
+    "url": "https://corporate.epson/ja/about/history/milestone-products/1969-12-35sq.html",
+    "source_type": "manufacturer retrospective product history, specifically 35SQ",
+    "raw_sha256": "e482cc8cb2f4c3607090d2585404af0336bb3534105ed00a615118c8df56a465",
+    "text_sha256": "61929ac9ca9a137da9415e62de2046d599155619e8248245bd49addba37294b0",
+    "quote_sha256": "4e7ead4e142929bd6a6cea927cde778dfa99f345a0494f88c679557dffe33330",
+    "locator": "product features paragraph, preserved text line153; product identity at lines133/151",
+    "short_quote": "トランジスタ76個、コンデンサ29個",
+    "original_raw_HTML_read_with_standard_library_HTMLParser_this_review": true,
+    "raw_text_quote_hashes_match": true,
+    "functions_also_present_in_raw_HTML": [
+      "発振回路",
+      "分周回路",
+      "駆動回路",
+      "ハイブリッドICとして構成"
+    ]
+  },
+  "delta_line_checks": [
+    {
+      "line_id": "skr1e14",
+      "before": "精工的產品史記下，七十六個電晶體、二十九個電容等零件，得靠手工連接。",
+      "after": "精工的產品史記下，電路包含七十六個電晶體、二十九個電容等零件。",
+      "before_text_sha256": "b64d7986de75942bc1d73e2e2fbdf24a61d18152c57c80c9b503e42774bde53f",
+      "after_text_sha256": "dcc8dff7611a2006c09984c9c13909c8a97820c937f8ab0f6ba07a4cb4ae4456",
+      "anchors": [
+        "C06"
+      ],
+      "verdict": "ATTRIBUTED",
+      "finding": "保留「產品史記下」、76電晶體、29電容與「等零件」；只刪已述手連，不把兩個數字當全部電子元件/整錶BOM，也不擴至所有型號。",
+      "visual_change": false
+    },
+    {
+      "line_id": "skr1e15",
+      "before": "發振、分頻與驅動電路，在陶瓷板上組成了混合電路。",
+      "after": "發振、分頻與驅動電路，組成了混合電路。",
+      "before_text_sha256": "20168c2fee351de8741d86f373a145c87379b2600373842a043cceb39c9bb3b6",
+      "after_text_sha256": "f580aab91abc9500d3b08236c92b3631c0b26188695f5969ce5229b32686ec34",
+      "anchors": [
+        "C06"
+      ],
+      "verdict": "CONFIRMED",
+      "finding": "原文直接並列發振、分頻、驅動回路構成hybrid；刪去已述陶瓷板位置不減功能條件。段落仍指初代35SQ，不是後期全CMOS。",
+      "visual_change": false
+    }
+  ],
+  "exact_inheritance_checks": {
+    "only_e14_e15_narration_text_changed": true,
+    "all_143_other_narration_and_full_claim_rows_equal_r3": true,
+    "two_changed_claim_rows_only_claim_text_changed": true,
+    "all_video_leaves_except_e14_e15_text_equal_r3": true,
+    "source_registry_source_bindings_and_source_additions_equal_r3": true,
+    "all_142_prompt_camera_scene_data_equal_r3": true,
+    "all_34_loops_equal_and_forward_valid": true,
+    "opening_and_two_full_image_pairs_handoff_and_code_readback_equal_r3": true,
+    "full_current_video_script_narration_claims_145_projection_equal": true,
+    "runtime_video_and_generated_script_spoken_projection_equal_current_source": true
+  },
+  "written_visual": {
+    "look_exact": {
+      "preset": "cute-mystery"
+    },
+    "image_model": "image-01",
+    "anonymous_English_concept_prompts_without_brand_or_person_names_logo_readable_text_or_likeness": "unchanged from independently approved R3 plan",
+    "current_full_native_Stage_imageKey_recomputed_this_review": true,
+    "stage_keys": [
+      "45e228dce955e7cb",
+      "8b0772b83b240cfc"
+    ],
+    "key_scope": "Current composed prompt/camera/look, model/provider, dimensions/size, negative, seed, empty refs and series image version; local declared plan only.",
+    "teaser_pairs": [
+      "skr1h05→skr1p14",
+      "skr1h06→skr1f08"
+    ],
+    "production_guard_inherited_and_checked": [
+      "normal admission first",
+      "payoff takes1 first",
+      "readonly live cache+actual selected file/SHA guard before teaser; cache miss or mismatch stops pair",
+      "both endpoints independently pass ordinary judge",
+      "after trim/crop verify same actual final selected file and SHA; no fake alias/custom manifest/cache edit or paid lookalike reroll"
+    ],
+    "actual_same_asset_verified": false,
+    "actual_images_or_judge_or_selected_bytes_reviewed": false
+  },
+  "protection": {
+    "history_r3_files_sha_checked": 66,
+    "history_r2_files_sha_checked": 56,
+    "history_r1_files_sha_checked": 45,
+    "existing_source_cache_files_sha_checked": 100,
+    "all_preserved": true,
+    "three_research_files_sha256": {
+      "research-original.md": "a41609ac4465275a629db67fd3ffa225907753d7f7681d50cd2dd4741d4eaacc",
+      "research-original.claims.json": "4195ab5af88173c59ca4a3eff3b40386764a70c0e65420bec4446ac943095231",
+      "original-preservation.json": "de1800877f4406ac0ef01c9c3558ebb2965779bb7b3f1c63d29fd82bcba909bc"
+    },
+    "old_three_B25_files_and_readonly_snapshots_sha_verified": true,
+    "all_four_immutable_lexicon_related_files_equal_r3_snapshot": true,
+    "immutable_lexicon_sha256": "4ce7a255c5ba40e62246b602cf2ce17a91d1ea431b2b02827a51f589d14aa57e",
+    "dictionary_reinitialized_or_edited": false
+  },
+  "normal_checks": {
+    "native_facts": {
+      "executed_by_reviewer": true,
+      "entrypoint": "tools/video/qa/facts.mjs factsChecks + lastVerifyReport + notFoundClaims",
+      "ok": true,
+      "detail": "verify-1.md marks no claim NOT FOUND",
+      "exact_unique_current_ids_in_order": 145,
+      "coverage_counts": {
+        "PLAN": 66,
+        "ATTRIBUTED": 71,
+        "CONFIRMED": 8
+      },
+      "marker_path": "docs/videos/brand-story-remakes-20261025/seiko/verify-1.md",
+      "marker_sha256": "39b05fc18fdb573e9daa154cd90697ae69b6a73ac63855a7a22d27e00823bcd5",
+      "scope": "Native NOT FOUND citation gate plus independent exact-current145 coverage and the source review above."
+    },
+    "native_lint": {
+      "executed_by_reviewer": true,
+      "argv": [
+        "node",
+        "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+        "/workspace/work/brand-story-20261025/seiko-submission-root",
+        "lint",
+        "--slug",
+        "story-adapt-seiko-quartz-astron-remake-20261025",
+        "--json"
+      ],
+      "exit_code": 0,
+      "errors": [],
+      "warnings": [
+        {
+          "path": "scenes",
+          "message": "about 16.1 minutes; the target is 12-14"
+        }
+      ],
+      "summary": {
+        "minutes": 16.110555555555557,
+        "lines": 145,
+        "spoken_units": 3418,
+        "billable_characters": 11619
+      },
+      "actual_audio": false
+    }
+  },
+  "limits": [
+    "Source/written visual PASS does not assert native narrative/blind PASS. No native/blind content consulted.",
+    "No actual voice/audio duration, images, pronunciation, timed subtitles, eight-language media or final-film QA. Actual same-asset stays false.",
+    "3418units/native16.1minute estimate is not the720–840second actual-body gate; body includes coldopen/voicedCTA and excludes added5secondintro/21secondoutro.",
+    "No owner approval, new US$25 account, protected admission, all-in quote or production pin is created or authorized by this free review."
+  ],
+  "side_effects": {
+    "candidate_research_or_original_edits": 0,
+    "runtime_or_lexicon_edits": 0,
+    "git_mutations": 0,
+    "backend_writes": 0,
+    "owner_decisions": 0,
+    "provider_calls": 0,
+    "paid_calls": 0,
+    "output_files": [
+      "docs/videos/brand-story-remakes-20261025/seiko/reviews/source-r4-independent.json",
+      "docs/videos/brand-story-remakes-20261025/seiko/verify-1.md"
+    ]
+  }
+}

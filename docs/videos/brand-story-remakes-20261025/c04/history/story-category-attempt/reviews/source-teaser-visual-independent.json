@@ -1,0 +1,2768 @@
+{
+  "schema_version": 1,
+  "review_type": "INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_TEASER_DELTA",
+  "reviewer": "/root/approved_visual_source_delta",
+  "independent": true,
+  "date": "2026-10-26",
+  "revision": "c04-teaser-image-plan-v1",
+  "slug": "story-everyday-bubble-wrap-c04-remake-20261025",
+  "verdict": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS",
+  "actualasset_verified": false,
+  "actual_same_asset_verified": false,
+  "input_sha256": {
+    "video.json": "8549eb766873b65cb3453d03edfb5c2d151a3a9209578f3383cdc321c9620a75",
+    "script.md": "6aac163b264501ae0ea87bb2a49b874bd288632c33bacc313d5a4a3c4dda9228",
+    "narration-only.json": "b6897d452d1a2b051bcce76184a02100f8e50e4fa61a9f5fd8e3a756e8d5a8b2",
+    "claims.json": "ecac34dc628e6be94b207baab5103438ede4d42002146e8850d413e2e193f38a"
+  },
+  "plan_sha256": "666ce7c8ac4f41efa1c65c7d57ac0cf5a638a170558bca3b216abbe37240def2",
+  "teaser_input_sha256": "a659b001280ae3bbdb1fe45a02147e28003a341b077d8586a6955088587247e5",
+  "claims_md_sha256": "e34e067ce56b2ca41485b57d42c44af75ece300befc2ab5899e4a6449c249d96",
+  "source_verified_baseline_sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+  "immutable_baseline": {
+    "directory": "history/before-teaser-image-plan",
+    "core_four_sha256": {
+      "video.json": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+      "narration-only.json": "b6897d452d1a2b051bcce76184a02100f8e50e4fa61a9f5fd8e3a756e8d5a8b2",
+      "script.md": "6aac163b264501ae0ea87bb2a49b874bd288632c33bacc313d5a4a3c4dda9228",
+      "claims.json": "ecac34dc628e6be94b207baab5103438ede4d42002146e8850d413e2e193f38a"
+    },
+    "source_receipt_path": "history/before-teaser-image-plan/reviews/source-r2-delta.json",
+    "source_receipt_sha256": "307ac3802ecf49843183949b66864f58730aad11ed44ad2970f9827305970369",
+    "verify_sha256": "193cb84f12e2cb518923c882d73fdd606b8802d1f07d72d02606ba2b14d916b1",
+    "snapshot_manifest_sha256": "7fac99522b29bab9eb8324e5436fb98525d33911892907c3b792f6bb8436e3ce",
+    "all_archived_files_sha_verified": true,
+    "archived_file_count": 60,
+    "all_auxiliary_files_sha_verified": true,
+    "auxiliary_file_count": 51
+  },
+  "counts": {
+    "narration_lines": 110,
+    "source_pass": 110,
+    "source_hold": 0,
+    "scenes": 101,
+    "shots": 92,
+    "stats_cards": 8,
+    "outro": 1,
+    "written_visual_scene_pass": 101,
+    "written_visual_scene_hold": 0,
+    "changed_shot_scenes": 2,
+    "changed_leaf_fields": 3,
+    "unchanged_complete_scene_objects": 99
+  },
+  "method": "直接比較全部video物件與immutable archive四輸入；所有句ID/scene/text SHA逐句等於既存完整獨立PASS收據。未變來源逐句接鏈，本輪親讀原件只重審實際picture delta，不重判敘事。",
+  "exact_delta": {
+    "all_object_differences": [
+      {
+        "path": "/scenes/4/data/prompt",
+        "before": "Close-up at a workbench, one technician tracing the narrow sealed edge of a raised plastic cell with a fingertip, soft side light.",
+        "after": "Close-up at a workbench, one anonymous technician holding the overlapping edges of two plain translucent films together beside a raised-cell sample, soft side light."
+      },
+      {
+        "path": "/scenes/47/data/prompt",
+        "before": "Wide shot beside a generic laminating press, one anonymous technician guiding an embossed plastic web between heated rollers, muted workshop light.",
+        "after": "Close-up at a workbench, one anonymous technician holding the overlapping edges of two plain translucent films together beside a raised-cell sample, soft side light."
+      },
+      {
+        "path": "/scenes/47/data/camera",
+        "before": "pull out",
+        "after": "tilt up"
+      }
+    ],
+    "all_other_video_fields_identical": true,
+    "all_scene_ids_order_chapters_lines_emotions_loops_metadata_voice_subtitles_look_identical": true,
+    "script_narration_claims_json_brief_series_bytes_identical": true,
+    "all_cards_complete_objects_identical": true,
+    "claims_md_original_prefix_bytes_preserved": true,
+    "claims_md_only_written_visual_appendix_added": true,
+    "producer_memory_only_replay_core_four_and_claims_md_exact": true,
+    "producer_diff_review": "獨立逐行diff只新增共圖prompt/camera override及claims.md書面規劃附錄；memory-only攔截全部Path.write_text，四核心輸入和claims.md精確重現，沒有落地producer。"
+  },
+  "source_table": {
+    "P57": {
+      "url": "https://patents.google.com/patent/US3026231A/en",
+      "locations": "metadata; Description 175–218; claims",
+      "scope": "核發文本與設計主張；不是原始申請稿、上市或工廠實採證據"
+    },
+    "P59": {
+      "url": "https://patents.google.com/patent/US3142599A/en",
+      "locations": "metadata; Description 225–231, 425–439, 460–485",
+      "scope": "核發文本、製程及材料受力主張；不證明1959年上市或所有市售氣泡形狀"
+    },
+    "P60": {
+      "url": "https://patents.google.com/patent/US3208898A/en",
+      "locations": "metadata; Description 416–424, 649–662",
+      "scope": "連續加熱、展膜、貼合、冷卻設備之專利示範；不證明實廠落地或產能"
+    },
+    "SA13": {
+      "url": "https://www.sealedair.com/company/media-center/press-releases/sealed-air-announces-finalists-bubble-wrap-appreciation-day-hall-of-fame",
+      "locations": "dated January 6, 2013; paragraphs More On Bubble Wrap, web lines 901–904",
+      "scope": "公司多年後回顧；不是獨立見證或同期訂單"
+    },
+    "SAH": {
+      "url": "https://www.sealedair.com/products/brand/bubble-wrap",
+      "locations": "About BUBBLE WRAP, web line 892",
+      "scope": "公司回顧1957牆面方向、1960創立及之後IBM 1401包裝關聯"
+    },
+    "SA17": {
+      "url": "https://www.sealedair.com/content/dam/protective-materials/inflatables/newair-ib/NewAir%20I.B.%20Extreme%20H160%20Brochure.pdf",
+      "locations": "PDF page 2, date10/17; web lines7–12,26–38,49–54 and specifications table",
+      "scope": "2017年後期另一產品的廠商說明；沒有獨立性能試驗；12英吋屬所列XLIB規格，手冊另列3.6英吋款"
+    },
+    "SEC12": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1012100/000119312513087879/d452256d10k.htm",
+      "locations": "Item1 Business, web line174",
+      "scope": "成立年1960，未給成立月份"
+    },
+    "IBM": {
+      "url": "https://www.ibm.com/support/pages/zvm/history/360rev.pdf",
+      "locations": "PDF page17, lines613–616",
+      "scope": "IBM1401於1960開始出貨，不支持其包材供應商"
+    },
+    "IBM_H": {
+      "url": "https://www.ibm.com/history/1401",
+      "locations": "opening history, introduced1959",
+      "scope": "1959發表；未提氣泡片供應商"
+    },
+    "EDITORIAL": {
+      "scope": "觀眾假想、問題、標明的旁白反應或CTA；不是特定歷史事件、客戶或性能實驗"
+    }
+  },
+  "source_catalog": [
+    {
+      "title": "US 3,026,231，牆面用途專利核發文本",
+      "url": "https://patents.google.com/patent/US3026231A/en",
+      "checked_on": "2026-10-22"
+    },
+    {
+      "title": "US 3,142,599，緩衝材料專利核發文本",
+      "url": "https://patents.google.com/patent/US3142599A/en",
+      "checked_on": "2026-10-22"
+    },
+    {
+      "title": "US 3,208,898，壓紋貼合設備專利核發文本",
+      "url": "https://patents.google.com/patent/US3208898A/en",
+      "checked_on": "2026-10-22"
+    },
+    {
+      "title": "Sealed Air 公司史",
+      "url": "https://www.sealedair.com/company/our-company/who-we-are",
+      "checked_on": "2026-10-22"
+    },
+    {
+      "title": "Sealed Air Bubble Wrap 產品史",
+      "url": "https://www.sealedair.com/products/brand/bubble-wrap",
+      "checked_on": "2026-10-22"
+    },
+    {
+      "title": "Sealed Air 2013 年溫室用途回顧",
+      "url": "https://www.sealedair.com/company/media-center/press-releases/sealed-air-announces-finalists-bubble-wrap-appreciation-day-hall-of-fame",
+      "checked_on": "2026-10-22"
+    },
+    {
+      "title": "IBM 1401 官方史",
+      "url": "https://www.ibm.com/history/1401",
+      "checked_on": "2026-10-22"
+    },
+    {
+      "title": "IBM 歷史研究：1401 於 1960 年開始出貨",
+      "url": "https://www.ibm.com/support/pages/zvm/history/360rev.pdf",
+      "checked_on": "2026-10-22"
+    },
+    {
+      "title": "Sealed Air NewAir I.B. 2017 年手冊",
+      "url": "https://www.sealedair.com/content/dam/protective-materials/inflatables/newair-ib/NewAir%20I.B.%20Extreme%20H160%20Brochure.pdf",
+      "checked_on": "2026-10-22"
+    },
+    {
+      "title": "Sealed Air 2012 Form 10-K：1960 年成立",
+      "url": "https://www.sec.gov/Archives/edgar/data/1012100/000119312513087879/d452256d10k.htm",
+      "checked_on": "2026-10-22"
+    }
+  ],
+  "fresh_delta_primary_reads": [
+    {
+      "source": "P57",
+      "url": "https://patents.google.com/patent/US3026231A/en",
+      "status": 200,
+      "bytes": 277116,
+      "sha256": "15a6818c7ad6faa8b522aa8fafbd5c310a275fd8f8b11af059fecb4082ef3599",
+      "locator": "核發Description，embossed surface/backing及adhesive applying roller段",
+      "quote": "This material upon being embossed, is cemented to a backing material that is preferably impervious to air.",
+      "finding": "兩層材料搭接及凸起樣本可作專利構造示意，不冒認實廠或已知歷史事件。"
+    },
+    {
+      "source": "P59",
+      "url": "https://patents.google.com/patent/US3142599A/en",
+      "status": 200,
+      "bytes": 560485,
+      "sha256": "f4b926bc4661eb185e27fb73273a44e3ed6e7743b739092788737451927c4281",
+      "locator": "核發Description，Broadly, the process…fusion of plastic sheet materials段",
+      "quote": "continuous sheets of plastic can be fused one to the other and form a good hermetic seal by heating at least the surfaces of the layers to a fusing temperature and then urging the heated surfaces into contact",
+      "finding": "正文熱融合答案有原文；新prompt只holding overlapping edges，沒有熱源、熔融接縫、機械設定或完成熱封示意，因此未在開場畫掉答案。"
+    }
+  ],
+  "written_visual_delta": [
+    {
+      "scene_id": "c04r-h05",
+      "verdict": "PASS",
+      "basis": "兩張無標透明薄膜搭接、旁置凸起樣本，是未揭熱接機制的中性概念情境；不畫黏膠失敗/熱融合答案或真實歷史廠景。"
+    },
+    {
+      "scene_id": "c04r-e07",
+      "verdict": "PASS",
+      "basis": "同一個薄膜接觸面情境與P59熱融合說明相容；此圖不聲稱獨立展示加熱實驗結果，正文與相鄰e08仍負責揭曉熱封機制。"
+    }
+  ],
+  "native_read_only": {
+    "runtime_source_sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+    "runtime_source_equals_baseline": true,
+    "canonical_new_sha256": "d363a2d4486549ead4e444455df4af5f9e80d72693bf34fc91f028a851b2d884",
+    "canonical_old_sha256": "d363a2d4486549ead4e444455df4af5f9e80d72693bf34fc91f028a851b2d884",
+    "runtime_canonical_sha256": "d363a2d4486549ead4e444455df4af5f9e80d72693bf34fc91f028a851b2d884",
+    "canonical_bytes_same": true,
+    "hashes": {
+      "narrative": {
+        "before": "99b7fa6451a86058",
+        "after": "99b7fa6451a86058",
+        "equal": true
+      },
+      "speech": {
+        "before": "cbac582983bbb901",
+        "after": "cbac582983bbb901",
+        "equal": true
+      },
+      "look": {
+        "before": "98a370ae40badbaf",
+        "after": "98a370ae40badbaf",
+        "equal": true
+      },
+      "pictures": {
+        "before": "3dee2b3ea4f722e5",
+        "after": "34c8e122b8db8835",
+        "equal": false
+      },
+      "mix": {
+        "before": "71ecdd098c551254",
+        "after": "71ecdd098c551254",
+        "equal": true
+      }
+    },
+    "lexicon_sha256": "da52e497e0721531dfa8e8043ec8ad1b0b39992472c4bfbba1c8b654685e8580",
+    "lexicon_mode": "snapshot",
+    "record_file": "docs/videos/brand-story-remakes-20261025/c04/reviews/narrative-final.json",
+    "record_sha256": "05cdf7649684ff4b129fb0d91b61ee1ae3f07d05c6195787bb73d4f817d9d06e",
+    "record_matches_before": true,
+    "record_matches_after": true,
+    "approval_file_sha256": "01c224bb2bbb0af52b5ef4cf8b46ffe4289aa6d74384a034f0629354c55d984c",
+    "lint_before_errors": [],
+    "lint_after_errors": [],
+    "lint_before_warning_count": 6,
+    "lint_after_warning_count": 6
+  },
+  "native_pairs": [
+    {
+      "pair_id": "two-film-seam",
+      "ends": [
+        {
+          "scene_id": "c04r-e07",
+          "data": {
+            "prompt": "Close-up at a workbench, one anonymous technician holding the overlapping edges of two plain translucent films together beside a raised-cell sample, soft side light.",
+            "camera": "tilt up",
+            "visual": "still"
+          },
+          "cast": [],
+          "composed": {
+            "prompt": "Close-up at a workbench, one anonymous technician holding the overlapping edges of two plain translucent films together beside a raised-cell sample, soft side light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: tilt up",
+            "droppedFixes": 0,
+            "cutChars": 0
+          },
+          "composed_sha256": "f976f4c1b86586c811ec57c02494272fa7c81a197e24a00d78ba49c623d646d1",
+          "keys": {
+            "1K": "a1ef14ae5ad920ab",
+            "2K": "dde95d8ba1ab71e6"
+          },
+          "live": {
+            "1K": {
+              "key": "a1ef14ae5ad920ab",
+              "entry_exists": false,
+              "file": null,
+              "file_exists": false,
+              "file_sha256": null,
+              "entry_sha256": null,
+              "matching_bytes": false
+            },
+            "2K": {
+              "key": "dde95d8ba1ab71e6",
+              "entry_exists": false,
+              "file": null,
+              "file_exists": false,
+              "file_sha256": null,
+              "entry_sha256": null,
+              "matching_bytes": false
+            }
+          }
+        },
+        {
+          "scene_id": "c04r-h05",
+          "data": {
+            "prompt": "Close-up at a workbench, one anonymous technician holding the overlapping edges of two plain translucent films together beside a raised-cell sample, soft side light.",
+            "visual": "still",
+            "camera": "tilt up"
+          },
+          "cast": [],
+          "composed": {
+            "prompt": "Close-up at a workbench, one anonymous technician holding the overlapping edges of two plain translucent films together beside a raised-cell sample, soft side light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: tilt up",
+            "droppedFixes": 0,
+            "cutChars": 0
+          },
+          "composed_sha256": "f976f4c1b86586c811ec57c02494272fa7c81a197e24a00d78ba49c623d646d1",
+          "keys": {
+            "1K": "a1ef14ae5ad920ab",
+            "2K": "dde95d8ba1ab71e6"
+          },
+          "live": {
+            "1K": {
+              "key": "a1ef14ae5ad920ab",
+              "entry_exists": false,
+              "file": null,
+              "file_exists": false,
+              "file_sha256": null,
+              "entry_sha256": null,
+              "matching_bytes": false
+            },
+            "2K": {
+              "key": "dde95d8ba1ab71e6",
+              "entry_exists": false,
+              "file": null,
+              "file_exists": false,
+              "file_sha256": null,
+              "entry_sha256": null,
+              "matching_bytes": false
+            }
+          }
+        }
+      ],
+      "full_composed_camera_cast_keys_equal": true,
+      "author_key_values_match": true,
+      "actualasset_verified": false
+    }
+  ],
+  "same_image_plan_review": {
+    "verdict": "PASS_AS_WRITTEN_PLAN_ONLY",
+    "native_methods": [
+      "resolveLook",
+      "shotCast/shotAppearancePrompt",
+      "composeShotPrompt(fixes=[],limit=1500)",
+      "Stage.imageKey"
+    ],
+    "declared_provider": "minimax",
+    "declared_model": "image-01",
+    "image_selection_version": 1,
+    "seed": 1,
+    "references": [],
+    "negative": "",
+    "sizes_checked": [
+      "1K default 1920x1080",
+      "2K 2048x1152"
+    ],
+    "all_pairs_exact_complete_request_equal": true,
+    "live_cache_file": "/workspace/work/brand-story-20261025/media/story-everyday-bubble-wrap-c04-remake-20261025/media/cache.json",
+    "cache_file_exists": false,
+    "current_pair_keys_all_missing": true,
+    "second_command_currently_permitted": false,
+    "missing_cache_action": "STOP_PAIR; no second command dispatch and no substitute/new purchase",
+    "production_requirements": [
+      "正式製片前重讀真實provider/model/size/seed/references/look/corrections；本地planned keys不是當前後台設定證據。",
+      "payoff先正常單take生成並通過官方judge；第二teaser命令前readCache與accepted實檔SHA必須相符；miss/changed立即停，不派送另購。",
+      "兩端各有有效官方judge，任一失敗/retake/seed/prompt/trim/selection差異先停pair，不另買相似圖、不手改manifest。",
+      "最終官方manifest兩端file/SHA全同；trim後selected衍生實檔SHA全同；render及assembly最終引用與實檔SHA相同才可記實際共圖。"
+    ],
+    "actualasset_verified": false,
+    "actual_generated_images": 0,
+    "actual_verified_shared_images": 0
+  },
+  "preservation": {
+    "snapshot_archived": [
+      {
+        "path": "backend-language-choice.json",
+        "expected": "9b236df2966949fd0ccf7d5439cb24c63f6254d19bf5f22c6b5f4f8ca6f84484",
+        "actual": "9b236df2966949fd0ccf7d5439cb24c63f6254d19bf5f22c6b5f4f8ca6f84484",
+        "match": true
+      },
+      {
+        "path": "pronunciation-proposal.json",
+        "expected": "c44429a63681bfdaf69a704348ddd68c26fa795f539ccbdd30f585fadaeac5f8",
+        "actual": "c44429a63681bfdaf69a704348ddd68c26fa795f539ccbdd30f585fadaeac5f8",
+        "match": true
+      },
+      {
+        "path": "backend-status.json",
+        "expected": "b7a647248e0c994ef6e2c7cb69eaa2af9c092a6a3f4532b60d39be961915f4ad",
+        "actual": "b7a647248e0c994ef6e2c7cb69eaa2af9c092a6a3f4532b60d39be961915f4ad",
+        "match": true
+      },
+      {
+        "path": "tts-dry-run.txt",
+        "expected": "65a6d24962ca4fc62d0b2b711e08e40a8af04ca917373f41ef0b72434471cbf2",
+        "actual": "65a6d24962ca4fc62d0b2b711e08e40a8af04ca917373f41ef0b72434471cbf2",
+        "match": true
+      },
+      {
+        "path": "author-notes.json",
+        "expected": "90aa3c88a24980c63d31a66fd3c089ab4ed240181d51e0851f87ccb9ac6d256b",
+        "actual": "90aa3c88a24980c63d31a66fd3c089ab4ed240181d51e0851f87ccb9ac6d256b",
+        "match": true
+      },
+      {
+        "path": "narration-only.json",
+        "expected": "b6897d452d1a2b051bcce76184a02100f8e50e4fa61a9f5fd8e3a756e8d5a8b2",
+        "actual": "b6897d452d1a2b051bcce76184a02100f8e50e4fa61a9f5fd8e3a756e8d5a8b2",
+        "match": true
+      },
+      {
+        "path": "build-remake.py",
+        "expected": "d712de9eadddbbfb59c1c729daae9d3836f9b66a47b8742d9068eb99e9ddee59",
+        "actual": "d712de9eadddbbfb59c1c729daae9d3836f9b66a47b8742d9068eb99e9ddee59",
+        "match": true
+      },
+      {
+        "path": "video.json",
+        "expected": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+        "actual": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+        "match": true
+      },
+      {
+        "path": "original-series-context.json",
+        "expected": "4f4ee515e08dc33712bd155c4236b3f7aabf4bb98ba85f85e65e655a21533b18",
+        "actual": "4f4ee515e08dc33712bd155c4236b3f7aabf4bb98ba85f85e65e655a21533b18",
+        "match": true
+      },
+      {
+        "path": "backend-outline-receipt.json",
+        "expected": "4d40ea16c0fce6135958e35c98e4c07e86dee64ab942f8b442e4a7099c3914b4",
+        "actual": "4d40ea16c0fce6135958e35c98e4c07e86dee64ab942f8b442e4a7099c3914b4",
+        "match": true
+      },
+      {
+        "path": "script.md",
+        "expected": "6aac163b264501ae0ea87bb2a49b874bd288632c33bacc313d5a4a3c4dda9228",
+        "actual": "6aac163b264501ae0ea87bb2a49b874bd288632c33bacc313d5a4a3c4dda9228",
+        "match": true
+      },
+      {
+        "path": "production-entry.md",
+        "expected": "4479ca6bd6bc53a64ea27c3d019ee5bdc7619dd724840f2b71e086cd60ce623c",
+        "actual": "4479ca6bd6bc53a64ea27c3d019ee5bdc7619dd724840f2b71e086cd60ce623c",
+        "match": true
+      },
+      {
+        "path": "lint-initial.txt",
+        "expected": "8fde30a1dd8fd338dc165b0f33371f35eee1ff9be66d5593753c62a5972cfbea",
+        "actual": "8fde30a1dd8fd338dc165b0f33371f35eee1ff9be66d5593753c62a5972cfbea",
+        "match": true
+      },
+      {
+        "path": "series.json",
+        "expected": "0745c10d1cb0dac55d786a2f278b2e0823f42bdb671daba55d1dfb8dc9bb9f9f",
+        "actual": "0745c10d1cb0dac55d786a2f278b2e0823f42bdb671daba55d1dfb8dc9bb9f9f",
+        "match": true
+      },
+      {
+        "path": "lint-final.json",
+        "expected": "ebfb428a2562105555895c60cdf428d61c30dfdb067a5554214411eda485f0e4",
+        "actual": "ebfb428a2562105555895c60cdf428d61c30dfdb067a5554214411eda485f0e4",
+        "match": true
+      },
+      {
+        "path": "brief.md",
+        "expected": "c3eb5e30f27880ddbeb890ea9983b8c0c3d2189ccc3861ebd2f7c75dc022613c",
+        "actual": "c3eb5e30f27880ddbeb890ea9983b8c0c3d2189ccc3861ebd2f7c75dc022613c",
+        "match": true
+      },
+      {
+        "path": "keyframes-dry-run.txt",
+        "expected": "8cfcae67cc434f5d5b6494c9b146e113cc14a32a2f90248ad5849e518dfe5224",
+        "actual": "8cfcae67cc434f5d5b6494c9b146e113cc14a32a2f90248ad5849e518dfe5224",
+        "match": true
+      },
+      {
+        "path": "backend-script.md",
+        "expected": "d363a2d4486549ead4e444455df4af5f9e80d72693bf34fc91f028a851b2d884",
+        "actual": "d363a2d4486549ead4e444455df4af5f9e80d72693bf34fc91f028a851b2d884",
+        "match": true
+      },
+      {
+        "path": "music-preflight-hold.txt",
+        "expected": "8da0452f87c98e1b9b529df1565e2fe097ee61780f108ef811f0ab178ee6d017",
+        "actual": "8da0452f87c98e1b9b529df1565e2fe097ee61780f108ef811f0ab178ee6d017",
+        "match": true
+      },
+      {
+        "path": "claims.json",
+        "expected": "ecac34dc628e6be94b207baab5103438ede4d42002146e8850d413e2e193f38a",
+        "actual": "ecac34dc628e6be94b207baab5103438ede4d42002146e8850d413e2e193f38a",
+        "match": true
+      },
+      {
+        "path": "lint.txt",
+        "expected": "1a9590e04249c2a210a3e22726d3f6e48d4b9ab490ca28f50ce5b2b8c2e61182",
+        "actual": "1a9590e04249c2a210a3e22726d3f6e48d4b9ab490ca28f50ce5b2b8c2e61182",
+        "match": true
+      },
+      {
+        "path": "README.md",
+        "expected": "21ed48bb2dd6a645ce6ac5dd390281462483ef9e641424931c93bae2c00eea5d",
+        "actual": "21ed48bb2dd6a645ce6ac5dd390281462483ef9e641424931c93bae2c00eea5d",
+        "match": true
+      },
+      {
+        "path": "verify-1.md",
+        "expected": "193cb84f12e2cb518923c882d73fdd606b8802d1f07d72d02606ba2b14d916b1",
+        "actual": "193cb84f12e2cb518923c882d73fdd606b8802d1f07d72d02606ba2b14d916b1",
+        "match": true
+      },
+      {
+        "path": "preflight-inputs.json",
+        "expected": "310a01903538706dd611ab68306ed84f7b85f75d916b89d11ec2b330264ed268",
+        "actual": "310a01903538706dd611ab68306ed84f7b85f75d916b89d11ec2b330264ed268",
+        "match": true
+      },
+      {
+        "path": "backend-script-receipt.json",
+        "expected": "8ee85a7309a0a3f8cd0c19cf7689cb6f9521e90600f4bf1d83e07c9e08cbf3df",
+        "actual": "8ee85a7309a0a3f8cd0c19cf7689cb6f9521e90600f4bf1d83e07c9e08cbf3df",
+        "match": true
+      },
+      {
+        "path": "claims.md",
+        "expected": "08455c68eda7a3cb994b1d8ee493f955e70f1f487cd83f854aec733f0e8551ea",
+        "actual": "08455c68eda7a3cb994b1d8ee493f955e70f1f487cd83f854aec733f0e8551ea",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-final.json",
+        "expected": "05cdf7649684ff4b129fb0d91b61ee1ae3f07d05c6195787bb73d4f817d9d06e",
+        "actual": "05cdf7649684ff4b129fb0d91b61ee1ae3f07d05c6195787bb73d4f817d9d06e",
+        "match": true
+      },
+      {
+        "path": "reviews/source-r2-delta.json",
+        "expected": "307ac3802ecf49843183949b66864f58730aad11ed44ad2970f9827305970369",
+        "actual": "307ac3802ecf49843183949b66864f58730aad11ed44ad2970f9827305970369",
+        "match": true
+      },
+      {
+        "path": "reviews/pronunciation-independent.json",
+        "expected": "f9c41335bc15e6def8a5980749b9ac546ac96aee93da0ebe752422d659402582",
+        "actual": "f9c41335bc15e6def8a5980749b9ac546ac96aee93da0ebe752422d659402582",
+        "match": true
+      },
+      {
+        "path": "reviews/publisher-delta.json",
+        "expected": "4ae97e40e37dd6d0d84f466ebefefefcc7a7ef11fd96ea2206ce77d15626cd17",
+        "actual": "4ae97e40e37dd6d0d84f466ebefefefcc7a7ef11fd96ea2206ce77d15626cd17",
+        "match": true
+      },
+      {
+        "path": "reviews/readiness-current.json",
+        "expected": "93e61ffcd55c872739e12e6f2cb668326c3d603ae074a08f31857b2848779324",
+        "actual": "93e61ffcd55c872739e12e6f2cb668326c3d603ae074a08f31857b2848779324",
+        "match": true
+      },
+      {
+        "path": "reviews/source-independent.json",
+        "expected": "6a09ec18bf5edd039badce2c8399a123d880c10279ae6754e8ec806a64542efd",
+        "actual": "6a09ec18bf5edd039badce2c8399a123d880c10279ae6754e8ec806a64542efd",
+        "match": true
+      },
+      {
+        "path": "reviews/r2-before-publisher-delta/author-notes.json",
+        "expected": "d320f12019ab399bf9254848a3857b4dfc5c3411d2e1be853a6c353d2d701ab3",
+        "actual": "d320f12019ab399bf9254848a3857b4dfc5c3411d2e1be853a6c353d2d701ab3",
+        "match": true
+      },
+      {
+        "path": "reviews/r2-before-publisher-delta/narration-only.json",
+        "expected": "85ee5f6d0922e6c2199a2baaa33adf4ab50a70c96333142401e770b97d833c16",
+        "actual": "85ee5f6d0922e6c2199a2baaa33adf4ab50a70c96333142401e770b97d833c16",
+        "match": true
+      },
+      {
+        "path": "reviews/r2-before-publisher-delta/build-remake.py",
+        "expected": "62ae29af9fce6e6e108bef393819ed7bc7256392f0b72410357653f882060c5f",
+        "actual": "62ae29af9fce6e6e108bef393819ed7bc7256392f0b72410357653f882060c5f",
+        "match": true
+      },
+      {
+        "path": "reviews/r2-before-publisher-delta/video.json",
+        "expected": "b41790b0833ac50fa8fb3aca5e1394e80ea877cac69c950c33772dd14a857346",
+        "actual": "b41790b0833ac50fa8fb3aca5e1394e80ea877cac69c950c33772dd14a857346",
+        "match": true
+      },
+      {
+        "path": "reviews/r2-before-publisher-delta/script.md",
+        "expected": "7b0a973594fde389ead6318d85648dd297e62044c147a50d7fe76c9cc222a649",
+        "actual": "7b0a973594fde389ead6318d85648dd297e62044c147a50d7fe76c9cc222a649",
+        "match": true
+      },
+      {
+        "path": "reviews/r2-before-publisher-delta/claims.json",
+        "expected": "3d83d3ecfc23624bea37a8796fde494395b926d363b0f55ae52f772b752a8e52",
+        "actual": "3d83d3ecfc23624bea37a8796fde494395b926d363b0f55ae52f772b752a8e52",
+        "match": true
+      },
+      {
+        "path": "reviews/r2-before-publisher-delta/claims.md",
+        "expected": "762d3652da74f9d9706ef7089b49c16d175c5462a03c1d6b161ac6f718219449",
+        "actual": "762d3652da74f9d9706ef7089b49c16d175c5462a03c1d6b161ac6f718219449",
+        "match": true
+      },
+      {
+        "path": "reviews/r1/pronunciation-proposal.json",
+        "expected": "be9544fcc76fe5fcbb3cbd77de0017651cd5451b2c5938015f428406d08381d1",
+        "actual": "be9544fcc76fe5fcbb3cbd77de0017651cd5451b2c5938015f428406d08381d1",
+        "match": true
+      },
+      {
+        "path": "reviews/r1/author-notes.json",
+        "expected": "67d3f2f922bd96d5c32cfb17f24ba71a035f33809d217cd2d673300adebf7659",
+        "actual": "67d3f2f922bd96d5c32cfb17f24ba71a035f33809d217cd2d673300adebf7659",
+        "match": true
+      },
+      {
+        "path": "reviews/r1/narration-only.json",
+        "expected": "b46d78e2c1dcb2267a71a4619054631b12c9dd2e12210e455972eb1aeae85366",
+        "actual": "b46d78e2c1dcb2267a71a4619054631b12c9dd2e12210e455972eb1aeae85366",
+        "match": true
+      },
+      {
+        "path": "reviews/r1/build-remake.py",
+        "expected": "c9955cd0d64485a97b87a1b39b21c5aec52d744450acdee0a729ed445ed280f2",
+        "actual": "c9955cd0d64485a97b87a1b39b21c5aec52d744450acdee0a729ed445ed280f2",
+        "match": true
+      },
+      {
+        "path": "reviews/r1/video.json",
+        "expected": "0f880bdbd56fa370bffe0e230f79e5195aa4f24671523e713808e659bbb7243f",
+        "actual": "0f880bdbd56fa370bffe0e230f79e5195aa4f24671523e713808e659bbb7243f",
+        "match": true
+      },
+      {
+        "path": "reviews/r1/pronunciation-independent.json",
+        "expected": "f9c41335bc15e6def8a5980749b9ac546ac96aee93da0ebe752422d659402582",
+        "actual": "f9c41335bc15e6def8a5980749b9ac546ac96aee93da0ebe752422d659402582",
+        "match": true
+      },
+      {
+        "path": "reviews/r1/reader-b.json",
+        "expected": "0d6199edb5b22847fe4493396404cd321a0960de9eb77b1b1fcaf7134f543184",
+        "actual": "0d6199edb5b22847fe4493396404cd321a0960de9eb77b1b1fcaf7134f543184",
+        "match": true
+      },
+      {
+        "path": "reviews/r1/script.md",
+        "expected": "c013e699e637a34d130e9d147024d6c4f3110e9fb5736a8d40751e81d3f3fbd1",
+        "actual": "c013e699e637a34d130e9d147024d6c4f3110e9fb5736a8d40751e81d3f3fbd1",
+        "match": true
+      },
+      {
+        "path": "reviews/r1/manifest.json",
+        "expected": "b9dd5aff9668a730034b3a0d61d6d9fb3fb3859a6c6be388c5146ca46258531e",
+        "actual": "b9dd5aff9668a730034b3a0d61d6d9fb3fb3859a6c6be388c5146ca46258531e",
+        "match": true
+      },
+      {
+        "path": "reviews/r1/reader-a-notes.txt",
+        "expected": "72bf89b9d52ac81e67bdb87108b6ed03e4f143b34832e0020344a30e204ee8f9",
+        "actual": "72bf89b9d52ac81e67bdb87108b6ed03e4f143b34832e0020344a30e204ee8f9",
+        "match": true
+      },
+      {
+        "path": "reviews/r1/series.json",
+        "expected": "0745c10d1cb0dac55d786a2f278b2e0823f42bdb671daba55d1dfb8dc9bb9f9f",
+        "actual": "0745c10d1cb0dac55d786a2f278b2e0823f42bdb671daba55d1dfb8dc9bb9f9f",
+        "match": true
+      },
+      {
+        "path": "reviews/r1/reader-b-notes.txt",
+        "expected": "5ecd454c2a88341d3531bc9a17da439b3f058ec7a3d3fabc9acfd52bac765701",
+        "actual": "5ecd454c2a88341d3531bc9a17da439b3f058ec7a3d3fabc9acfd52bac765701",
+        "match": true
+      },
+      {
+        "path": "reviews/r1/brief.md",
+        "expected": "11f87d8a0ea938a3189e0751f777aaade7b4b7f7f1f50e3000af626f8cc916ce",
+        "actual": "11f87d8a0ea938a3189e0751f777aaade7b4b7f7f1f50e3000af626f8cc916ce",
+        "match": true
+      },
+      {
+        "path": "reviews/r1/claims.json",
+        "expected": "d8c1730a1a4ecf0aa61b0d6c9c58e956fca9cd07790f408efa361ea77884f34e",
+        "actual": "d8c1730a1a4ecf0aa61b0d6c9c58e956fca9cd07790f408efa361ea77884f34e",
+        "match": true
+      },
+      {
+        "path": "reviews/r1/lint.txt",
+        "expected": "732f9e18a2afb70fef7b14853476444a19a30b01d93efc008e09a3c2c1787bf4",
+        "actual": "732f9e18a2afb70fef7b14853476444a19a30b01d93efc008e09a3c2c1787bf4",
+        "match": true
+      },
+      {
+        "path": "reviews/r1/source-independent.json",
+        "expected": "6a09ec18bf5edd039badce2c8399a123d880c10279ae6754e8ec806a64542efd",
+        "actual": "6a09ec18bf5edd039badce2c8399a123d880c10279ae6754e8ec806a64542efd",
+        "match": true
+      },
+      {
+        "path": "reviews/r1/claims.md",
+        "expected": "a99c4015bf5c8999227b63c3cd7dbdeb974d224dcfa309e72052408027004889",
+        "actual": "a99c4015bf5c8999227b63c3cd7dbdeb974d224dcfa309e72052408027004889",
+        "match": true
+      },
+      {
+        "path": "reviews/r1/reader-a.json",
+        "expected": "c61cd1ef936c6980e02817e2f4993e511626bc62d9c5adb7ec3bcec3b4672e3a",
+        "actual": "c61cd1ef936c6980e02817e2f4993e511626bc62d9c5adb7ec3bcec3b4672e3a",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-final/reader-b.json",
+        "expected": "e8873802e61cbe0f87e89e471afc6faf9f89c8500a0a6e5e45d4203f369c526a",
+        "actual": "e8873802e61cbe0f87e89e471afc6faf9f89c8500a0a6e5e45d4203f369c526a",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-final/payload.json",
+        "expected": "63d31ada911b1e939a5de8dd847919d993c3d2bb6a32f2dc874bc0d8ceae3040",
+        "actual": "63d31ada911b1e939a5de8dd847919d993c3d2bb6a32f2dc874bc0d8ceae3040",
+        "match": true
+      },
+      {
+        "path": "reviews/narrative-final/reader-a.json",
+        "expected": "acc49e2484410a51d81288a60ab8809f05b0c997cf5b6764afaaed76d4cdba35",
+        "actual": "acc49e2484410a51d81288a60ab8809f05b0c997cf5b6764afaaed76d4cdba35",
+        "match": true
+      }
+    ],
+    "auxiliary": [
+      {
+        "path": "i18n/vi.json",
+        "expected": "3f9052ad55334fa769e873ba98b74628e9da74fe40993cbc9eeae20e59e23a91",
+        "actual": "3f9052ad55334fa769e873ba98b74628e9da74fe40993cbc9eeae20e59e23a91",
+        "match": true
+      },
+      {
+        "path": "i18n/es.json",
+        "expected": "2e959e9d6a62c31b98fd7fd6558ead310fd49cb98e4e1af81ed10d98da8a2c32",
+        "actual": "2e959e9d6a62c31b98fd7fd6558ead310fd49cb98e4e1af81ed10d98da8a2c32",
+        "match": true
+      },
+      {
+        "path": "i18n/ko.json",
+        "expected": "c3041b17ef775208840db4ef09bccfeefd5af1859be63090a5d49e9d24bd3925",
+        "actual": "c3041b17ef775208840db4ef09bccfeefd5af1859be63090a5d49e9d24bd3925",
+        "match": true
+      },
+      {
+        "path": "i18n/id.json",
+        "expected": "817c9fe2bd04fd8f4d79b86e76c058df464acd2e7f02fef8f1cbebb6c521a0c1",
+        "actual": "817c9fe2bd04fd8f4d79b86e76c058df464acd2e7f02fef8f1cbebb6c521a0c1",
+        "match": true
+      },
+      {
+        "path": "i18n/en.json",
+        "expected": "2f4ed3cb1ed5b8d835e8b8b853bf3614433357b752459223054f4bdc58992eea",
+        "actual": "2f4ed3cb1ed5b8d835e8b8b853bf3614433357b752459223054f4bdc58992eea",
+        "match": true
+      },
+      {
+        "path": "i18n/th.json",
+        "expected": "46d144e2fd146f734a2a9170a43073f8c4445e099c918cd863e6cd63642e4c12",
+        "actual": "46d144e2fd146f734a2a9170a43073f8c4445e099c918cd863e6cd63642e4c12",
+        "match": true
+      },
+      {
+        "path": "i18n/ja.json",
+        "expected": "2d5d9be77cc0bb2383e8cefd840f0157cfe48183322c039de9346b13c8769b18",
+        "actual": "2d5d9be77cc0bb2383e8cefd840f0157cfe48183322c039de9346b13c8769b18",
+        "match": true
+      },
+      {
+        "path": "i18n/pt.json",
+        "expected": "fc2b5edc362455d196710b93ccdcc39d7317e6442261370eee5537562a4f207f",
+        "actual": "fc2b5edc362455d196710b93ccdcc39d7317e6442261370eee5537562a4f207f",
+        "match": true
+      },
+      {
+        "path": "i18n/preparation-status.json",
+        "expected": "c3447ce3cec1eb6910600eac4a562d9421dff8aac02c612f971af435838dfc16",
+        "actual": "c3447ce3cec1eb6910600eac4a562d9421dff8aac02c612f971af435838dfc16",
+        "match": true
+      },
+      {
+        "path": "i18n/README.md",
+        "expected": "4cb01edfbe7a6d5ef07e022c3a85bb013a94be8ef9272512c0953189f4006b90",
+        "actual": "4cb01edfbe7a6d5ef07e022c3a85bb013a94be8ef9272512c0953189f4006b90",
+        "match": true
+      },
+      {
+        "path": "i18n/runtime-rehearsal.json",
+        "expected": "cd99a099622775547e6c1aeac01eef68197bad9e853c238e2f876ce4ad73d9c4",
+        "actual": "cd99a099622775547e6c1aeac01eef68197bad9e853c238e2f876ce4ad73d9c4",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/recheck-vi-th.json",
+        "expected": "77a240f5238e6ccebcd3cb064cef6128d8b2934ea0851760ad20fb608c0cc8f7",
+        "actual": "77a240f5238e6ccebcd3cb064cef6128d8b2934ea0851760ad20fb608c0cc8f7",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-vi.json",
+        "expected": "647d0cabe140f45a4865786cb78faee1a07ba1077948ce8c57f0578ec6a09825",
+        "actual": "647d0cabe140f45a4865786cb78faee1a07ba1077948ce8c57f0578ec6a09825",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-pt.json",
+        "expected": "80fe80af105f0f7444041f41b6bfd6161f4aad031650d95f84f50b5f1f211901",
+        "actual": "80fe80af105f0f7444041f41b6bfd6161f4aad031650d95f84f50b5f1f211901",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/recheck-pt-id.json",
+        "expected": "9e3309e70b2b03bc718411696c7bef2f79cf9f695b346f61ef08c544d8ef177b",
+        "actual": "9e3309e70b2b03bc718411696c7bef2f79cf9f695b346f61ef08c544d8ef177b",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/recheck-ko-es.json",
+        "expected": "fa230a7f09a0990e5f89523aa6c4e5e727bb2b8966a9d626023e474618407ed6",
+        "actual": "fa230a7f09a0990e5f89523aa6c4e5e727bb2b8966a9d626023e474618407ed6",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/review-ko-es.json",
+        "expected": "7ae6555afea8c50642ad7c450276da944ab7520a0526edb0b690136d8fde1605",
+        "actual": "7ae6555afea8c50642ad7c450276da944ab7520a0526edb0b690136d8fde1605",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-ko.json",
+        "expected": "2cb27b8c2feeee5345a1f77112868671a67e8362c8ba26a6a180b4c50faf7a7e",
+        "actual": "2cb27b8c2feeee5345a1f77112868671a67e8362c8ba26a6a180b4c50faf7a7e",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-th.json",
+        "expected": "c0c43288e3eff9dc84a92aa5e3b830877ba5abc1e4bcf81e23e16eee161ae5a2",
+        "actual": "c0c43288e3eff9dc84a92aa5e3b830877ba5abc1e4bcf81e23e16eee161ae5a2",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-es.json",
+        "expected": "bd055c0720e5f83680ba71b9517e8a57aec2eb53558ab57c746d9740ae9bb8f2",
+        "actual": "bd055c0720e5f83680ba71b9517e8a57aec2eb53558ab57c746d9740ae9bb8f2",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/applied-fixes-pt-id.json",
+        "expected": "cd838b104dfa5a13ffe5a420b909f9200444e604be4dc893b55c172c518d675d",
+        "actual": "cd838b104dfa5a13ffe5a420b909f9200444e604be4dc893b55c172c518d675d",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/recheck-en-ja.json",
+        "expected": "da4660ab6cee144bab20f43514f2806eda83dad219aae298b74761afa8d55227",
+        "actual": "da4660ab6cee144bab20f43514f2806eda83dad219aae298b74761afa8d55227",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-en.json",
+        "expected": "bdd5881ffab0ab7ec0719157671169c88a5fa1c696c8dbdb1087226b1b481307",
+        "actual": "bdd5881ffab0ab7ec0719157671169c88a5fa1c696c8dbdb1087226b1b481307",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/review-en-ja.json",
+        "expected": "ec2fb1928557614a0eb02fb630bd3ec1bc5a336f0dbd23e3e3b2d306b59f9068",
+        "actual": "ec2fb1928557614a0eb02fb630bd3ec1bc5a336f0dbd23e3e3b2d306b59f9068",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-id.json",
+        "expected": "0b9815f2b90c16308923dc8539706270a4add83329daed30e9deb497d09dee7d",
+        "actual": "0b9815f2b90c16308923dc8539706270a4add83329daed30e9deb497d09dee7d",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/applied-fixes-ko-es.json",
+        "expected": "66ee49fdba4651772ac9f009f61b2169a22d292c8d9f1f039580594f5d49c5b9",
+        "actual": "66ee49fdba4651772ac9f009f61b2169a22d292c8d9f1f039580594f5d49c5b9",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/native-merge-ja.json",
+        "expected": "47b77d34929af492dbcca4e37ee1a08c77455c9f7c55f583f4fb612ec19141f3",
+        "actual": "47b77d34929af492dbcca4e37ee1a08c77455c9f7c55f583f4fb612ec19141f3",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/applied-fixes-en-ja.json",
+        "expected": "2d1b578e04ae0024a5cd7550e99c80c9622f1317bf024b8f207faa0f85a91422",
+        "actual": "2d1b578e04ae0024a5cd7550e99c80c9622f1317bf024b8f207faa0f85a91422",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/review-vi-th.json",
+        "expected": "8726826fc6364c74c7f21e1a804758e1452498b35a17ce47d34651cd2025fe5a",
+        "actual": "8726826fc6364c74c7f21e1a804758e1452498b35a17ce47d34651cd2025fe5a",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/review-pt-id.json",
+        "expected": "9eb4d050e49f674dcf3f39464452ee673a387eac0f39934c676175cf2e07712e",
+        "actual": "9eb4d050e49f674dcf3f39464452ee673a387eac0f39934c676175cf2e07712e",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/applied-fixes-vi-th.json",
+        "expected": "516fc2700bf30bd99f92a34b048aff9e6c3a837adf8958a79b973a6570c1e156",
+        "actual": "516fc2700bf30bd99f92a34b048aff9e6c3a837adf8958a79b973a6570c1e156",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/vi.json",
+        "expected": "a1dbc111b38d8d29a3b6965916c5c83d3be5deadcff86eb3f3e369ac51d9e472",
+        "actual": "a1dbc111b38d8d29a3b6965916c5c83d3be5deadcff86eb3f3e369ac51d9e472",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/es.json",
+        "expected": "e60f60278ec8d87571792f6a4df4df8a8eacc805e77051f65b540023b1d9d745",
+        "actual": "e60f60278ec8d87571792f6a4df4df8a8eacc805e77051f65b540023b1d9d745",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/ko.json",
+        "expected": "609ecab037fb92d7d2828959fc2054574ae60aa7e36696dfd6b2542f757e3600",
+        "actual": "609ecab037fb92d7d2828959fc2054574ae60aa7e36696dfd6b2542f757e3600",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/id.json",
+        "expected": "817c9fe2bd04fd8f4d79b86e76c058df464acd2e7f02fef8f1cbebb6c521a0c1",
+        "actual": "817c9fe2bd04fd8f4d79b86e76c058df464acd2e7f02fef8f1cbebb6c521a0c1",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/en.json",
+        "expected": "5efec8b37807696cdf3d22142cbc2ec06f9a30020fc0da446d2f8b17f4565a40",
+        "actual": "5efec8b37807696cdf3d22142cbc2ec06f9a30020fc0da446d2f8b17f4565a40",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/th.json",
+        "expected": "b6bc0e7710e4010bd4bd798fccdb9ed7a7a11b0a81ee85a95001194d59fdc1ca",
+        "actual": "b6bc0e7710e4010bd4bd798fccdb9ed7a7a11b0a81ee85a95001194d59fdc1ca",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/ja.json",
+        "expected": "f202513d7adec1508b428cdbcc5e8986c24a6df43c50502b41d00bbf9f3b90d1",
+        "actual": "f202513d7adec1508b428cdbcc5e8986c24a6df43c50502b41d00bbf9f3b90d1",
+        "match": true
+      },
+      {
+        "path": "i18n/history/round-1/pt.json",
+        "expected": "ca225a8fe541a919118c5bd7c4f003fed2b7703cddeef52904ce7417d62285b5",
+        "actual": "ca225a8fe541a919118c5bd7c4f003fed2b7703cddeef52904ce7417d62285b5",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/translator-reports/pt-id.md",
+        "expected": "8fdf1490893db5f402f38867f9f7ff86d70700eee38b8b9a489d628b3d0b90b4",
+        "actual": "8fdf1490893db5f402f38867f9f7ff86d70700eee38b8b9a489d628b3d0b90b4",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/translator-reports/vi-th.md",
+        "expected": "161237058d7984a7e0acca21705d81731136b3b859094354529992ecff70b361",
+        "actual": "161237058d7984a7e0acca21705d81731136b3b859094354529992ecff70b361",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/translator-reports/ko-es.md",
+        "expected": "1373a758a3b8ee80455cb57a25c4b739623b525cae5251fdc2d3998c3eeff8b6",
+        "actual": "1373a758a3b8ee80455cb57a25c4b739623b525cae5251fdc2d3998c3eeff8b6",
+        "match": true
+      },
+      {
+        "path": "i18n/reviews/translator-reports/en-ja.md",
+        "expected": "03d8ce904c6cd0c5fe34a4bef4fe78c7f6d839a18054b380d94fd94bdaea2abb",
+        "actual": "03d8ce904c6cd0c5fe34a4bef4fe78c7f6d839a18054b380d94fd94bdaea2abb",
+        "match": true
+      },
+      {
+        "path": "runtime-lexicon/current.json",
+        "expected": "61447bd40667c28511b1be72e49f9658fa4ad994d42faa09c2443806a2c52dc0",
+        "actual": "61447bd40667c28511b1be72e49f9658fa4ad994d42faa09c2443806a2c52dc0",
+        "match": true
+      },
+      {
+        "path": "runtime-lexicon/versions/da52e497e0721531dfa8e8043ec8ad1b0b39992472c4bfbba1c8b654685e8580.json",
+        "expected": "da52e497e0721531dfa8e8043ec8ad1b0b39992472c4bfbba1c8b654685e8580",
+        "actual": "da52e497e0721531dfa8e8043ec8ad1b0b39992472c4bfbba1c8b654685e8580",
+        "match": true
+      },
+      {
+        "path": "runtime-lexicon/events/dce1cb13f4e12aba6f832880791b10bd372a7d70c3853eeb2e91a6649ddfb353.json",
+        "expected": "dce1cb13f4e12aba6f832880791b10bd372a7d70c3853eeb2e91a6649ddfb353",
+        "actual": "dce1cb13f4e12aba6f832880791b10bd372a7d70c3853eeb2e91a6649ddfb353",
+        "match": true
+      },
+      {
+        "path": "variants/clean-master/derivation.json",
+        "expected": "1c4d83b591827e02f935d7a038eed3efb2be78d122c37ace88b7ed8d3e04f0a8",
+        "actual": "1c4d83b591827e02f935d7a038eed3efb2be78d122c37ace88b7ed8d3e04f0a8",
+        "match": true
+      },
+      {
+        "path": "variants/clean-master/video.json",
+        "expected": "6abac6b8f4c37ae62327efc04fa7aa95ba5e015e08d580a385f42f0bdca1e4c8",
+        "actual": "6abac6b8f4c37ae62327efc04fa7aa95ba5e015e08d580a385f42f0bdca1e4c8",
+        "match": true
+      },
+      {
+        "path": "variants/clean-master/review.json",
+        "expected": "fb4fc995691f1dae9548760dd4c3fc076e27ed4cc9d2aa8f41c6b8c615c2c885",
+        "actual": "fb4fc995691f1dae9548760dd4c3fc076e27ed4cc9d2aa8f41c6b8c615c2c885",
+        "match": true
+      },
+      {
+        "path": "variants/clean-master/README.md",
+        "expected": "d3078c99071aa009e4e944dd41230e59a973b9b760f4faaec1b3fbaa05ba47e6",
+        "actual": "d3078c99071aa009e4e944dd41230e59a973b9b760f4faaec1b3fbaa05ba47e6",
+        "match": true
+      },
+      {
+        "path": "variants/clean-master/lint.json",
+        "expected": "4e219d7b4a1f6dc4eb73c75ca76e2f7ae0e2930a04c7a1a1008f09b4f0c8c70c",
+        "actual": "4e219d7b4a1f6dc4eb73c75ca76e2f7ae0e2930a04c7a1a1008f09b4f0c8c70c",
+        "match": true
+      }
+    ],
+    "original53_all_match": true,
+    "original_checks": [
+      {
+        "path": "docs/videos/story-everyday-zippo-c20-short-v8/script.md",
+        "expected": "f02b94989765eadff8661f73b2c59a0ba8c3950b4bddd2cdfc0a1a2ad9fffa65",
+        "actual": "f02b94989765eadff8661f73b2c59a0ba8c3950b4bddd2cdfc0a1a2ad9fffa65",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-zippo-c20-short-v8/video.json",
+        "expected": "b97a36bf3247804e579ec00595a210b3e077cfecc0691b70e16eac7a115e5b62",
+        "actual": "b97a36bf3247804e579ec00595a210b3e077cfecc0691b70e16eac7a115e5b62",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-zippo-c20-short-v8/series.json",
+        "expected": "8980492a3fa54206252362a5e561971af1f080716403de7fa91aebd8fc4202cb",
+        "actual": "8980492a3fa54206252362a5e561971af1f080716403de7fa91aebd8fc4202cb",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kikkoman-c08-short-v8/script.md",
+        "expected": "07cc18d1d90e6eba679a699f0243d977717f896b924158ab251fb390a308c0b9",
+        "actual": "07cc18d1d90e6eba679a699f0243d977717f896b924158ab251fb390a308c0b9",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kikkoman-c08-short-v8/video.json",
+        "expected": "1d33c0a4e9c58a58aa65a097aa59c93bf6c259947acd33b75f04008e23d378bb",
+        "actual": "1d33c0a4e9c58a58aa65a097aa59c93bf6c259947acd33b75f04008e23d378bb",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kikkoman-c08-short-v8/series.json",
+        "expected": "07af8fda0e8beaf3d0f4a0ea90acd94b2ae88f79b34ca509016339b223c875db",
+        "actual": "07af8fda0e8beaf3d0f4a0ea90acd94b2ae88f79b34ca509016339b223c875db",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-patagonia-c09/script.md",
+        "expected": "4445ad74bcafbac1dfca65392199fec89700c17ab8c01e665ac79dfffc1aa3f7",
+        "actual": "4445ad74bcafbac1dfca65392199fec89700c17ab8c01e665ac79dfffc1aa3f7",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-patagonia-c09/video.json",
+        "expected": "4abebbf0936cd77269a55f197b7051534ee5140785929c9287a13cae122ad460",
+        "actual": "4abebbf0936cd77269a55f197b7051534ee5140785929c9287a13cae122ad460",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-patagonia-c09/series.json",
+        "expected": "9b7fa1753f3e411191ef3c780ed7d3c910975451efe1656243880258565b6a5f",
+        "actual": "9b7fa1753f3e411191ef3c780ed7d3c910975451efe1656243880258565b6a5f",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-patagonia-c09/source-matrix.md",
+        "expected": "ec8e598c9099ebe0ffd51cbf89807c96962c62618a41be8ba3a66a48986eea2c",
+        "actual": "ec8e598c9099ebe0ffd51cbf89807c96962c62618a41be8ba3a66a48986eea2c",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-seven-bank-c19/script.md",
+        "expected": "b4af0f8a47d57e57d35a86a6092851f0282d52b5b5ca95dd62dfe036d0588e8f",
+        "actual": "b4af0f8a47d57e57d35a86a6092851f0282d52b5b5ca95dd62dfe036d0588e8f",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-seven-bank-c19/video.json",
+        "expected": "117676de8dbd02a8053e51ee6fed634d10c92e8e0564c7fb41e9387f757b0ce9",
+        "actual": "117676de8dbd02a8053e51ee6fed634d10c92e8e0564c7fb41e9387f757b0ce9",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-seven-bank-c19/series.json",
+        "expected": "b60e76efa511cf904d2dab1300bc2bc049869c0d39021fe477929d752a5b3420",
+        "actual": "b60e76efa511cf904d2dab1300bc2bc049869c0d39021fe477929d752a5b3420",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-seven-bank-c19/source-matrix.md",
+        "expected": "8f0996ccd52894f97754d5060c44c85310c9073971d365ef353c238760633afe",
+        "actual": "8f0996ccd52894f97754d5060c44c85310c9073971d365ef353c238760633afe",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-frixion-c15/script.md",
+        "expected": "c75e85c881f51942c8cad0bdd0185615f2cbdb6a2ccf2f6eed846724a6ecebd4",
+        "actual": "c75e85c881f51942c8cad0bdd0185615f2cbdb6a2ccf2f6eed846724a6ecebd4",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-frixion-c15/video.json",
+        "expected": "fb222cac8fd95fc773f9aeed5f0cac028c83260c42f604fe9a2568f2fbfcc2f8",
+        "actual": "fb222cac8fd95fc773f9aeed5f0cac028c83260c42f604fe9a2568f2fbfcc2f8",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-frixion-c15/series.json",
+        "expected": "2cdb882a5037e00b7e2c92beb8b727edd3786cc7b14d3f6b2a00d5a619568191",
+        "actual": "2cdb882a5037e00b7e2c92beb8b727edd3786cc7b14d3f6b2a00d5a619568191",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-frixion-c15/source-matrix.md",
+        "expected": "6e030f4399f6fd2ae99550de89b5b46658d708cf870910199804069a784c4c09",
+        "actual": "6e030f4399f6fd2ae99550de89b5b46658d708cf870910199804069a784c4c09",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-camelbak-c14/script.md",
+        "expected": "167db38f368484951c56972b86a9838bb92b3b0b874952a87fbbad26b8429312",
+        "actual": "167db38f368484951c56972b86a9838bb92b3b0b874952a87fbbad26b8429312",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-camelbak-c14/video.json",
+        "expected": "f7d31176c626293cafb719df4960eba0a0cc2ad04231d312a22855bbf97d1d54",
+        "actual": "f7d31176c626293cafb719df4960eba0a0cc2ad04231d312a22855bbf97d1d54",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-camelbak-c14/series.json",
+        "expected": "15f8eecfddc44300af3eca3bc609270928c8a9729bef2bb9d9fe8eb6146e4a0b",
+        "actual": "15f8eecfddc44300af3eca3bc609270928c8a9729bef2bb9d9fe8eb6146e4a0b",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-camelbak-c14/source-matrix.md",
+        "expected": "f8cf68aa36264df18cdbe6ecd698d4af1f22e405deaada8ed275b7685050587e",
+        "actual": "f8cf68aa36264df18cdbe6ecd698d4af1f22e405deaada8ed275b7685050587e",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-ucc-c11/script.md",
+        "expected": "c55d77133e1508bfeace8b7423e5cf7579ecb768ca33f60bd13380480f589cd3",
+        "actual": "c55d77133e1508bfeace8b7423e5cf7579ecb768ca33f60bd13380480f589cd3",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-ucc-c11/video.json",
+        "expected": "667f0478c53e5aa8934e68300146c57442017f35cd91e074fd414fcad3264843",
+        "actual": "667f0478c53e5aa8934e68300146c57442017f35cd91e074fd414fcad3264843",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-ucc-c11/series.json",
+        "expected": "a3c268861ccf165e8274d1d424b38372357c6d60a93930476b68502f89af1d57",
+        "actual": "a3c268861ccf165e8274d1d424b38372357c6d60a93930476b68502f89af1d57",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-ucc-c11/source-matrix.md",
+        "expected": "931f3b19791740cdffefd665c284c4af0f7b1e2228c2911687b16d68f1483e8b",
+        "actual": "931f3b19791740cdffefd665c284c4af0f7b1e2228c2911687b16d68f1483e8b",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-oxo-c10/script.md",
+        "expected": "04a5945ddf219868cdc8e52936447a6d7329544976f6a2dc72a7f3b6841175a1",
+        "actual": "04a5945ddf219868cdc8e52936447a6d7329544976f6a2dc72a7f3b6841175a1",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-oxo-c10/video.json",
+        "expected": "81c2170c32cdddfdb6d9f1f43079f7643361885811fb49be579af1ea0a4122f2",
+        "actual": "81c2170c32cdddfdb6d9f1f43079f7643361885811fb49be579af1ea0a4122f2",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-oxo-c10/series.json",
+        "expected": "7a7e659421beb33bd6d7a155913780174648adbef296904c7e6c557879ec5d0a",
+        "actual": "7a7e659421beb33bd6d7a155913780174648adbef296904c7e6c557879ec5d0a",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-oxo-c10/source-matrix.md",
+        "expected": "4deeb89a2028184e73f681fcfd3c9b7fb44463b364bf0d26ac9941f557f156a6",
+        "actual": "4deeb89a2028184e73f681fcfd3c9b7fb44463b364bf0d26ac9941f557f156a6",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kikkoman-c08/script.md",
+        "expected": "b9e4c547ffa190609b433d48ff7e27a94b9c9df4322aeb48104a3163694b3376",
+        "actual": "b9e4c547ffa190609b433d48ff7e27a94b9c9df4322aeb48104a3163694b3376",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kikkoman-c08/video.json",
+        "expected": "57371891a62b0b8f4e6ddbd9e5ffea196dade2ef3d92b5f4bc17c319dd0805b2",
+        "actual": "57371891a62b0b8f4e6ddbd9e5ffea196dade2ef3d92b5f4bc17c319dd0805b2",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kikkoman-c08/series.json",
+        "expected": "45595a5ed0d415fc9269e04c617a65b0287ccaa885935d86b5bd6dbb85535e20",
+        "actual": "45595a5ed0d415fc9269e04c617a65b0287ccaa885935d86b5bd6dbb85535e20",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kikkoman-c08/source-matrix.md",
+        "expected": "0f755dff2b4f58d9401d1649be6c7535721c99afa4d6c88ceda310f691c57b32",
+        "actual": "0f755dff2b4f58d9401d1649be6c7535721c99afa4d6c88ceda310f691c57b32",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-dr-martens-c07/script.md",
+        "expected": "624af568ec2f85c2df2536a307433a4eadf301eeaa095d8cd676a5418c2ab47b",
+        "actual": "624af568ec2f85c2df2536a307433a4eadf301eeaa095d8cd676a5418c2ab47b",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-dr-martens-c07/video.json",
+        "expected": "ddcf3cb5bfe8fb2124afdc27d6e422fe53012aa05a13892728596d3d543712e0",
+        "actual": "ddcf3cb5bfe8fb2124afdc27d6e422fe53012aa05a13892728596d3d543712e0",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-dr-martens-c07/series.json",
+        "expected": "0ef1ec1d41c5689aac60da1f1325b65d6f38aa42eaccd8cabff03505194ad70d",
+        "actual": "0ef1ec1d41c5689aac60da1f1325b65d6f38aa42eaccd8cabff03505194ad70d",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-dr-martens-c07/source-matrix.md",
+        "expected": "7eecf40d1683da46f73b0722d63f3d7e4fc729ebbb10233caae469e33aa0993a",
+        "actual": "7eecf40d1683da46f73b0722d63f3d7e4fc729ebbb10233caae469e33aa0993a",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-play-doh-c06/script.md",
+        "expected": "80671fce0cc1d03e46b68361173fb547b156c255f1af10468e3011389e08232f",
+        "actual": "80671fce0cc1d03e46b68361173fb547b156c255f1af10468e3011389e08232f",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-play-doh-c06/video.json",
+        "expected": "666cd45a5e126d7f17dd95cce1cace213b07eaa2597340d3661d5cc3c3c4cbfa",
+        "actual": "666cd45a5e126d7f17dd95cce1cace213b07eaa2597340d3661d5cc3c3c4cbfa",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-play-doh-c06/series.json",
+        "expected": "f4aa88f8d85af014802b7768614488d8a57812071b4325b469cec82772214c39",
+        "actual": "f4aa88f8d85af014802b7768614488d8a57812071b4325b469cec82772214c39",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-play-doh-c06/source-matrix.md",
+        "expected": "d18f1bbc58e6a141b957ead9ac42a7a4375e2004a7736d0d6c57b59044d58fd2",
+        "actual": "d18f1bbc58e6a141b957ead9ac42a7a4375e2004a7736d0d6c57b59044d58fd2",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kincho-c05/script.md",
+        "expected": "d49fe268109ddce4bf6e44a3e75831467735dec23e58d11bcc92065ee533288d",
+        "actual": "d49fe268109ddce4bf6e44a3e75831467735dec23e58d11bcc92065ee533288d",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kincho-c05/video.json",
+        "expected": "49e1787fae4e2b7e8358321496f01c0c73bb21f7376b49dfe1e2e1b0f84f5452",
+        "actual": "49e1787fae4e2b7e8358321496f01c0c73bb21f7376b49dfe1e2e1b0f84f5452",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-kincho-c05/source-matrix.md",
+        "expected": "a7eb8401abcc5715c46352187c0efe100fa3aa47e22a020a1fc16ffd55504516",
+        "actual": "a7eb8401abcc5715c46352187c0efe100fa3aa47e22a020a1fc16ffd55504516",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-bubble-wrap-c04/script.md",
+        "expected": "09d85a588bbf557ea0f58e3ae2243878fecb8d0793398774983c4fb634d15987",
+        "actual": "09d85a588bbf557ea0f58e3ae2243878fecb8d0793398774983c4fb634d15987",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-bubble-wrap-c04/video.json",
+        "expected": "1bb9fd7355e6bfa5fcfa8d9a4bcfb0f89f2a5f01451131bdc3754b12243b330b",
+        "actual": "1bb9fd7355e6bfa5fcfa8d9a4bcfb0f89f2a5f01451131bdc3754b12243b330b",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-bubble-wrap-c04/series.json",
+        "expected": "4f4ee515e08dc33712bd155c4236b3f7aabf4bb98ba85f85e65e655a21533b18",
+        "actual": "4f4ee515e08dc33712bd155c4236b3f7aabf4bb98ba85f85e65e655a21533b18",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-bubble-wrap-c04/source-matrix.md",
+        "expected": "05fc2ab1c1e4ef64dc71e27de54343a9d765fa2b320ad6ab72a5ffa769db9756",
+        "actual": "05fc2ab1c1e4ef64dc71e27de54343a9d765fa2b320ad6ab72a5ffa769db9756",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-moleskine-c03/script.md",
+        "expected": "5f148061a2fa4bb89a42b1d91adfa67a6bad4796ee5a44b82f1eea473722cb46",
+        "actual": "5f148061a2fa4bb89a42b1d91adfa67a6bad4796ee5a44b82f1eea473722cb46",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-moleskine-c03/video.json",
+        "expected": "3b12bff0ab09a5827330c25121048912fefee014ec9134df582cff511a755109",
+        "actual": "3b12bff0ab09a5827330c25121048912fefee014ec9134df582cff511a755109",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-moleskine-c03/series.json",
+        "expected": "208e2d9761b0159eed174b210dd0e867329b9f8193d6244deb9ffdac22617f0e",
+        "actual": "208e2d9761b0159eed174b210dd0e867329b9f8193d6244deb9ffdac22617f0e",
+        "match": true
+      },
+      {
+        "path": "docs/videos/story-everyday-moleskine-c03/source-matrix.md",
+        "expected": "7d6f3147f73f861e80eb3b56a6d09999866c9067d1e6839e0ef3cc80f140eabb",
+        "actual": "7d6f3147f73f861e80eb3b56a6d09999866c9067d1e6839e0ef3cc80f140eabb",
+        "match": true
+      }
+    ],
+    "related_original_hashes_preserved": true
+  },
+  "line_results": [
+    {
+      "line_id": "c04rh011",
+      "scene_id": "c04r-h01",
+      "line_text_sha256": "4240760f97b7b7c71103cd1311185310ca76260120fb088ae1916b3193a7adeb",
+      "source_anchor_ids": [
+        "P57",
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rh021",
+      "scene_id": "c04r-h02",
+      "line_text_sha256": "460e223f08b08c98eb3900fa6a64d02b32044f4936166dc37c0b14e0a6b8c919",
+      "source_anchor_ids": [
+        "P57",
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rh031",
+      "scene_id": "c04r-h03",
+      "line_text_sha256": "03b849fcfc5287b88897f7221440fe92a3a2694fe189b3e7a94fd16bd9266df5",
+      "source_anchor_ids": [
+        "P57"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rh041",
+      "scene_id": "c04r-h04",
+      "line_text_sha256": "ffcb6079e23431fabe0192f54d0e40a66c3d5f7ee74764c1eab5283c19d9938c",
+      "source_anchor_ids": [
+        "SAH"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rh051",
+      "scene_id": "c04r-h05",
+      "line_text_sha256": "63111f703c61413e3250bf3a4b1cae3e787f47e13b6d4615e45d0a0f0114b754",
+      "source_anchor_ids": [
+        "P57",
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rh061",
+      "scene_id": "c04r-h06",
+      "line_text_sha256": "ddd190aaaa01efc8972e4f5f603f1487029b08792826831d3c0cdcad684cc97a",
+      "source_anchor_ids": [
+        "P57",
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rh071",
+      "scene_id": "c04r-h07",
+      "line_text_sha256": "ffcc324a66c6f5fdfa08c070805a4604365b36708e010715a8d8f55dde885fb2",
+      "source_anchor_ids": [
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ro011",
+      "scene_id": "c04r-o01",
+      "line_text_sha256": "7afb415b6e22c676da59cf00f31bd1240da998d6fb4bb6fa2c2c811c7fca90a5",
+      "source_anchor_ids": [
+        "P57"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ro021",
+      "scene_id": "c04r-o02",
+      "line_text_sha256": "a14cf53a21dbf7b7cbf3ec24364fb91d548ee9f2384f97f4f4c8a2e384c1743f",
+      "source_anchor_ids": [
+        "P57"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ro031",
+      "scene_id": "c04r-o03",
+      "line_text_sha256": "2eecb037b11c752f37dec5e5f35999c04524057c07ceff509c14020df35c857e",
+      "source_anchor_ids": [
+        "P57"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ro041",
+      "scene_id": "c04r-o04",
+      "line_text_sha256": "3a13680caa4842c921dbbaf78a329b2c3ca7228187bf1c0229ba705d79e3dac2",
+      "source_anchor_ids": [
+        "P57"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04roa1",
+      "scene_id": "c04r-oa",
+      "line_text_sha256": "2b1f3b072ffd300a6ad09713d34531d4d26607d0361ebce9e3a89b9a8f04aa51",
+      "source_anchor_ids": [
+        "P57",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ro051",
+      "scene_id": "c04r-o05",
+      "line_text_sha256": "fb09be2ccc104577b9c0703883aa545b0925456da09a749f984a680b08e813fd",
+      "source_anchor_ids": [
+        "P57"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ro061",
+      "scene_id": "c04r-o06",
+      "line_text_sha256": "a681fd237fd1391ab4364285de5f90b7968822fd9e4d30ffe5209062fa6789a9",
+      "source_anchor_ids": [
+        "P57"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ro071",
+      "scene_id": "c04r-o07",
+      "line_text_sha256": "868de1b437dcf51788ff469f8bff6fe28c88fb9b60f9a4e8f2e25baf80df2d62",
+      "source_anchor_ids": [
+        "P57"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ro081",
+      "scene_id": "c04r-o08",
+      "line_text_sha256": "66c21ef3d8d5614a0f74391ba4ca6da475959465c21ef05fb0b4c9f8ee0359d1",
+      "source_anchor_ids": [
+        "P57"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ro091",
+      "scene_id": "c04r-o09",
+      "line_text_sha256": "cf23c0aa171590a0a84c3928cffdb288218f6f9841db21b0c0a19b5f8926011d",
+      "source_anchor_ids": [
+        "P57"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rob1",
+      "scene_id": "c04r-ob",
+      "line_text_sha256": "a0459e75c77c91c780e4f05af7534c598e88761a189cf4c1edcc17f2fa7de9f0",
+      "source_anchor_ids": [
+        "P57",
+        "SAH",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ro111",
+      "scene_id": "c04r-o11",
+      "line_text_sha256": "540422d164eafcf21da6045b54b10dace02c379bd033300e519d3192c0886972",
+      "source_anchor_ids": [
+        "P57"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ro121",
+      "scene_id": "c04r-o12",
+      "line_text_sha256": "9a9a53fe2b60e4d5d101dce84b786151f1f04132d77731ff98c88e9e20010f02",
+      "source_anchor_ids": [
+        "P57"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ro131",
+      "scene_id": "c04r-o13",
+      "line_text_sha256": "00ff4db69a586bdcc37d734b6008e3d490fa02887ff67298757604e2c2e9cc7b",
+      "source_anchor_ids": [
+        "P57"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ro141",
+      "scene_id": "c04r-o14",
+      "line_text_sha256": "885b16d3797a443e489ebb0dcd010b1d82724670a9a0894b4c3c85ebbe8873b9",
+      "source_anchor_ids": [
+        "SAH",
+        "SA13"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ro151",
+      "scene_id": "c04r-o15",
+      "line_text_sha256": "de4680a21792f7e91c4effb0ad7e74c6e066bec5147697b929177097d4a87b7c",
+      "source_anchor_ids": [
+        "P57",
+        "SAH"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ro161",
+      "scene_id": "c04r-o16",
+      "line_text_sha256": "2a25e099c83da60b3c1f37d091947e3ddb234479ed452443d52e765dc5015f9d",
+      "source_anchor_ids": [
+        "P57",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ro171",
+      "scene_id": "c04r-o17",
+      "line_text_sha256": "2f1c76a857ccff2b53c3c22f4f512dbcc7f35e2796783a0c4d17755175c36188",
+      "source_anchor_ids": [
+        "EDITORIAL",
+        "SA13"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ri011",
+      "scene_id": "c04r-i01",
+      "line_text_sha256": "e7a4400d2ca9b3af8c1272bd2dff5f5f7e0a5c62f3946c272e23e8d37f8b7e93",
+      "source_anchor_ids": [
+        "SA13"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ri021",
+      "scene_id": "c04r-i02",
+      "line_text_sha256": "edc06ddfecc838c20622c975e02ee5a42d3051bdd7de9677e35d5ee7843e2cc5",
+      "source_anchor_ids": [
+        "SA13"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ri031",
+      "scene_id": "c04r-i03",
+      "line_text_sha256": "f3f7c7ea4dcb2f849d9909018e9aeb61d3325ed6bb7c7e33344b789911bc522a",
+      "source_anchor_ids": [
+        "SA13",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ri041",
+      "scene_id": "c04r-i04",
+      "line_text_sha256": "6e490d975798b592c70e94eaba6a2f18011da5667a6c55726ea549521553c014",
+      "source_anchor_ids": [
+        "SA13"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ri051",
+      "scene_id": "c04r-i05",
+      "line_text_sha256": "27a4a4548f5fd50361e14aaac52cc3d545d5be3cff25f1ef948b34134bdd704a",
+      "source_anchor_ids": [
+        "SA13"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ria1",
+      "scene_id": "c04r-ia",
+      "line_text_sha256": "44cb2e5ffd47b915acabfde56dbfa5faa6127828463c10269bff3095c63f4d95",
+      "source_anchor_ids": [
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ri061",
+      "scene_id": "c04r-i06",
+      "line_text_sha256": "b2970d65ae75509439592bb6f2b39073aebaf6010eab21d135b70976ae4ca137",
+      "source_anchor_ids": [
+        "EDITORIAL",
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ri071",
+      "scene_id": "c04r-i07",
+      "line_text_sha256": "c8e240a83ceb8e30a9490d2e17e639eabf33a900725f78425091c39ed1d7ac73",
+      "source_anchor_ids": [
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ri081",
+      "scene_id": "c04r-i08",
+      "line_text_sha256": "067a23e443a07ed128a9d0e74d75853b0cc06e1cfe37f36a06b392afd86bc9ea",
+      "source_anchor_ids": [
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rib1",
+      "scene_id": "c04r-ib",
+      "line_text_sha256": "6cecf676111fc81a9be60d0ef8b33e3e279801f9694a4353f718b4f247a8cca1",
+      "source_anchor_ids": [
+        "EDITORIAL",
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ri091",
+      "scene_id": "c04r-i09",
+      "line_text_sha256": "633582c01df6097e9da22d726ac93345a8396fb9e6932f15e8b65490dcf0bdc8",
+      "source_anchor_ids": [
+        "EDITORIAL",
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ri101",
+      "scene_id": "c04r-i10",
+      "line_text_sha256": "2e420480355bc7229d8b253fe52bb935780cb82567f5c444aefe872eec43a4c6",
+      "source_anchor_ids": [
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ri121",
+      "scene_id": "c04r-i12",
+      "line_text_sha256": "707f2c8700db3efffb69095ff341c40eaac996fd44ddabcd6446d227e2a59047",
+      "source_anchor_ids": [
+        "SA13"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ri131",
+      "scene_id": "c04r-i13",
+      "line_text_sha256": "64bdb66677fa624476b3d1bcd311ce890b9110726d8eb60a1d3510f3a68c2d12",
+      "source_anchor_ids": [
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04ri141",
+      "scene_id": "c04r-i14",
+      "line_text_sha256": "1f74a316095e5585a6768dc2d0b59601a7e9a1a8dff672bc1dcaef49f8b89594",
+      "source_anchor_ids": [
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04re011",
+      "scene_id": "c04r-e01",
+      "line_text_sha256": "b5b1878abcc1cb995ced81cffe2793010bbad958d28c49876484b79a73eab758",
+      "source_anchor_ids": [
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04re021",
+      "scene_id": "c04r-e02",
+      "line_text_sha256": "ea67a6011a9cb15e5ebac93db8356403000b546ba4c9dadd328a42763f89b392",
+      "source_anchor_ids": [
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04re031",
+      "scene_id": "c04r-e03",
+      "line_text_sha256": "74fc1cb7ef9d9a7d851c2204971e3a72bfbf42597260e7d17e79ed7ff3ca3fc4",
+      "source_anchor_ids": [
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rea1",
+      "scene_id": "c04r-ea",
+      "line_text_sha256": "f3784002f3c79789eba98033d38ffd2eb9f503ad050cf5967a9b181c31ac030b",
+      "source_anchor_ids": [
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04re041",
+      "scene_id": "c04r-e04",
+      "line_text_sha256": "483365809de6b8aff464a58edff550332f3204df461222dbcbe037bd0e5b0200",
+      "source_anchor_ids": [
+        "P57",
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04re051",
+      "scene_id": "c04r-e05",
+      "line_text_sha256": "ffb3f5645ad29bfb074fd86740b4836f6965943015bd7027fe7a967903efb276",
+      "source_anchor_ids": [
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04re061",
+      "scene_id": "c04r-e06",
+      "line_text_sha256": "54244c54103bd96dd05df124ad2ce3eefebb202b2ba24e91f91bccf11f114c07",
+      "source_anchor_ids": [
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04re071",
+      "scene_id": "c04r-e07",
+      "line_text_sha256": "80757c958a15209eab89a5785f3e4850b488f84a2eb61bb104b5c3e36c32dcae",
+      "source_anchor_ids": [
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04re081",
+      "scene_id": "c04r-e08",
+      "line_text_sha256": "a3914e75050eedc34a8c03d1a8b928fa413c2e265f4d7ccf9f715c8c8f163b9c",
+      "source_anchor_ids": [
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04reb1",
+      "scene_id": "c04r-eb",
+      "line_text_sha256": "b00b92a4d24aeb42edb3b48069a4d4f608748e34a163747cb2e98c0ca3cfb4a0",
+      "source_anchor_ids": [
+        "P57",
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04reb2",
+      "scene_id": "c04r-eb",
+      "line_text_sha256": "31e81738c6d24b133d2a1b23e9510c2c0c09fcc83ede2118b81faa195b732744",
+      "source_anchor_ids": [
+        "P57",
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04re091",
+      "scene_id": "c04r-e09",
+      "line_text_sha256": "d6583f79ffb9602adcac0c5450d75b0b07435d71e9e3aaadf301c1e28b5969ef",
+      "source_anchor_ids": [
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04re101",
+      "scene_id": "c04r-e10",
+      "line_text_sha256": "4dc7e03ca12611e7a1bde3f63371bbb1800a88255fd7b14db6698089abc0aa5d",
+      "source_anchor_ids": [
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04re111",
+      "scene_id": "c04r-e11",
+      "line_text_sha256": "e00d3cd5b39e9545fb30b35be38672b5f1b120cfdfe48d12838e2f69415f0caa",
+      "source_anchor_ids": [
+        "P59",
+        "P60"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04re121",
+      "scene_id": "c04r-e12",
+      "line_text_sha256": "d125d23f6f7aba1caa0ae98252fdf5670bc322c1b888e5d42f0fb9e8252663e3",
+      "source_anchor_ids": [
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04re131",
+      "scene_id": "c04r-e13",
+      "line_text_sha256": "26cb0548f15e46631f52120ecaa38ae355fd66db0eece72e56bc0d37b6968528",
+      "source_anchor_ids": [
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04re141",
+      "scene_id": "c04r-e14",
+      "line_text_sha256": "da96f0750644ae6b771fc7f4181f4ed280d4578ccb43638b37a375b4215c534e",
+      "source_anchor_ids": [
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04re151",
+      "scene_id": "c04r-e15",
+      "line_text_sha256": "141733c21f242f61a6035c6b81669e1fe154cc7e7364f85cf229510d61052d28",
+      "source_anchor_ids": [
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rec1",
+      "scene_id": "c04r-ec",
+      "line_text_sha256": "8d16de97f3de8b024c026a6a88b3585bd9cde5b5aeca9e8afc417fecc74c8c45",
+      "source_anchor_ids": [
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04re161",
+      "scene_id": "c04r-e16",
+      "line_text_sha256": "176590424b26e80133f9f4606c792bb431f0247e3725d9136c753af58d11bdac",
+      "source_anchor_ids": [
+        "P59",
+        "SEC12"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04re171",
+      "scene_id": "c04r-e17",
+      "line_text_sha256": "d1a4f5fca7885b6e2a8f57392de5576f10a27af1e75237875375343868292b39",
+      "source_anchor_ids": [
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04re181",
+      "scene_id": "c04r-e18",
+      "line_text_sha256": "f7e22f4c02dc81a29d0a98b4628e9fa9757c29de9ba3f6646f3a268c4ac584a1",
+      "source_anchor_ids": [
+        "P59",
+        "SEC12"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04re191",
+      "scene_id": "c04r-e19",
+      "line_text_sha256": "76266325ac72b719fc38db1574badb1af34e54948de64bc14d4e2a8758dba226",
+      "source_anchor_ids": [
+        "P60"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04re201",
+      "scene_id": "c04r-e20",
+      "line_text_sha256": "6472aff9d913abca411ab1fb827dd2b570eae51c7358563cfc39dddae7eff111",
+      "source_anchor_ids": [
+        "P60"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rt011",
+      "scene_id": "c04r-t01",
+      "line_text_sha256": "316f290383641900567eb8585ac9fee0edd5a0c9d8b447c47af0be81fd920ae3",
+      "source_anchor_ids": [
+        "P60"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rt012",
+      "scene_id": "c04r-t01",
+      "line_text_sha256": "22bd670e96330fb5d3f9df29561e068b68247f194f4066a3eae2056073e0a56c",
+      "source_anchor_ids": [
+        "P60"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rt021",
+      "scene_id": "c04r-t02",
+      "line_text_sha256": "a3e7efb7e036d4cf84ae9c8098943e00cba344e53f0e33597fbc218c3012f02c",
+      "source_anchor_ids": [
+        "SEC12",
+        "P60"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rt022",
+      "scene_id": "c04r-t02",
+      "line_text_sha256": "1c3bf8d47030e07ea9d944d4f48b07ec307e33ef7a29a18f4034ffe2c0ceaa53",
+      "source_anchor_ids": [
+        "P60"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rt031",
+      "scene_id": "c04r-t03",
+      "line_text_sha256": "7acacb36433c845bdc4ac7341c42e4e04f5430ab3edd78fd2b9f6faed6616f96",
+      "source_anchor_ids": [
+        "P60"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rta1",
+      "scene_id": "c04r-ta",
+      "line_text_sha256": "5fd0c44e6e853792092337974f1fd4d4f0b6f076b3f722d4fe5b9ac478724fdf",
+      "source_anchor_ids": [
+        "P60",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rta2",
+      "scene_id": "c04r-ta",
+      "line_text_sha256": "084b36e28b2c2f2728d82142f0a9d02c23e81f1a6fc2005a325d01f7a00be8ef",
+      "source_anchor_ids": [
+        "P60",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rt041",
+      "scene_id": "c04r-t04",
+      "line_text_sha256": "214f29d51baf0ccb583e98aeb9cac10fd50000874a4f48d0a6fa1a4024820337",
+      "source_anchor_ids": [
+        "P60"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rt051",
+      "scene_id": "c04r-t05",
+      "line_text_sha256": "a0183b1df862d9594255e03316aac6d5a471696bfe8b2dff8fa509b1e3c9631e",
+      "source_anchor_ids": [
+        "P60"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rt061",
+      "scene_id": "c04r-t06",
+      "line_text_sha256": "dd1ecc2be7d66ad0d730fb3a477d0e8085392bedcf9c259b05e0293ec1d3337d",
+      "source_anchor_ids": [
+        "P60"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rt071",
+      "scene_id": "c04r-t07",
+      "line_text_sha256": "324a49be55d0b583aa96563ad641c57ab433e34aaeb6b7d4dfaa51090d30c560",
+      "source_anchor_ids": [
+        "P60"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rt081",
+      "scene_id": "c04r-t08",
+      "line_text_sha256": "fb2ec6ac343f12fd5d9e02b090f554fc37f14b0fe8be9640d467342971d85661",
+      "source_anchor_ids": [
+        "P60"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rt091",
+      "scene_id": "c04r-t09",
+      "line_text_sha256": "b884af5ff7cb5b27e051127e1dd75af8d265303668642d0359ea4afa0cb5f688",
+      "source_anchor_ids": [
+        "P60"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rt101",
+      "scene_id": "c04r-t10",
+      "line_text_sha256": "d5601aeefc8c0f8ede6b97efdd5d1d531ddccebd76db68e7db95f76656661d9a",
+      "source_anchor_ids": [
+        "P60"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rtb1",
+      "scene_id": "c04r-tb",
+      "line_text_sha256": "771e4b06a8b45894e41186581e56daa347719fef1d415a9c9a1bb9db032ea736",
+      "source_anchor_ids": [
+        "P60",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rtb2",
+      "scene_id": "c04r-tb",
+      "line_text_sha256": "d61c768e94481403ac8e361fcfee4b56631117ca5d97bf2fcb2d35d605e0a2d9",
+      "source_anchor_ids": [
+        "P60",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rt111",
+      "scene_id": "c04r-t11",
+      "line_text_sha256": "1bbbd5c1a66d64774e8e23493a9423bd794d9a2e7870b64ead475beba9bdb119",
+      "source_anchor_ids": [
+        "P59",
+        "SAH"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rt121",
+      "scene_id": "c04r-t12",
+      "line_text_sha256": "f13ef242189c44266b40c92a824152632fd9ede196b922121797f93adc4c96f8",
+      "source_anchor_ids": [
+        "SAH"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rt131",
+      "scene_id": "c04r-t13",
+      "line_text_sha256": "21615ef0a61db0f772beefb7a7c27951909e7376ad32434e703a3461f247bb6b",
+      "source_anchor_ids": [
+        "IBM",
+        "SAH"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rtc1",
+      "scene_id": "c04r-tc",
+      "line_text_sha256": "e8275f7865d9de3adba0d8d499b1c876ac0e4742d403a52725fafa456ba0b038",
+      "source_anchor_ids": [
+        "EDITORIAL",
+        "SAH"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rtc2",
+      "scene_id": "c04r-tc",
+      "line_text_sha256": "6c1299a109005042a49ccb8dc7fd005ec97de55c9a85a8ab9271292a0029c21a",
+      "source_anchor_ids": [
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rt141",
+      "scene_id": "c04r-t14",
+      "line_text_sha256": "50b4019bf441ae2c6e23536058f8aad811b79d6b5df75a005bb0588216171c38",
+      "source_anchor_ids": [
+        "P57",
+        "P59",
+        "SAH"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rt151",
+      "scene_id": "c04r-t15",
+      "line_text_sha256": "c51087c76f2f69dfc532d829de9ab0cb4b36762877ac9664755774d86ef9208b",
+      "source_anchor_ids": [
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rt161",
+      "scene_id": "c04r-t16",
+      "line_text_sha256": "a183c7da6ca95efa575d8944e91123454036a66daec730345e3a0b6342c18c9f",
+      "source_anchor_ids": [
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rt171",
+      "scene_id": "c04r-t17",
+      "line_text_sha256": "f3777dc5d3259cf830bd5cd866dbab29de1b52ab25d8f23e9bbbb7b96608e927",
+      "source_anchor_ids": [
+        "SA13",
+        "SA17"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rt181",
+      "scene_id": "c04r-t18",
+      "line_text_sha256": "3136d28578ed3d94750680fd43d5e5a273b39b097d811a86afa04d53e695f0cd",
+      "source_anchor_ids": [
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rn011",
+      "scene_id": "c04r-n01",
+      "line_text_sha256": "07eca30e783fe9a1fbc9617adc77aea636026c679554a9611adc87bb468286e6",
+      "source_anchor_ids": [
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rn021",
+      "scene_id": "c04r-n02",
+      "line_text_sha256": "cdacfad3332bd6512e44b91c3230e3e21d6d4bc6c7eff7d38d0cc3b62b2a6f3e",
+      "source_anchor_ids": [
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rn031",
+      "scene_id": "c04r-n03",
+      "line_text_sha256": "f88b22e3fc19d74a00c8f2087877d3d2634741222d9b3e6086f7d21fb7f5791c",
+      "source_anchor_ids": [
+        "SA13"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rn041",
+      "scene_id": "c04r-n04",
+      "line_text_sha256": "2fa6234f3d02ae4f15d2a50ee2192d2b44cd7b76e24a8c28a24cb859a7626ccd",
+      "source_anchor_ids": [
+        "P59"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rn051",
+      "scene_id": "c04r-n05",
+      "line_text_sha256": "25ccb0831f2e0e7f35b02088504c7e46fa57760562c4d6b3e73ab39f645db703",
+      "source_anchor_ids": [
+        "SA17"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rn061",
+      "scene_id": "c04r-n06",
+      "line_text_sha256": "97d75ddfe6de190f18706ddee6fe0653c2d0c9ef4bc7d5bed83585cdd6d680ef",
+      "source_anchor_ids": [
+        "SA17",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rn071",
+      "scene_id": "c04r-n07",
+      "line_text_sha256": "b8eeb0e3eed57c22ec3e4d8fd5205c72e00c57a124bd2fcc8d265a8f2f13faf4",
+      "source_anchor_ids": [
+        "SA17",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rn081",
+      "scene_id": "c04r-n08",
+      "line_text_sha256": "cc6d7b40d3acc13f12a2f852ca59fed4f3de91776835c24e9e46e4719271e6c1",
+      "source_anchor_ids": [
+        "SA17"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rn091",
+      "scene_id": "c04r-n09",
+      "line_text_sha256": "9bca29828e1920aa12b00801d4978ca4aa96407b00edbd63487eab9b40389006",
+      "source_anchor_ids": [
+        "SA17"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rna1",
+      "scene_id": "c04r-na",
+      "line_text_sha256": "a0d8405dca774afc4501f184c56698f4106ec440854c62308939ab7dcff27604",
+      "source_anchor_ids": [
+        "SA17",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rn101",
+      "scene_id": "c04r-n10",
+      "line_text_sha256": "27535f3be1ebb5b7cd77dbd6e6e3096ba03a630131e3e7fb0205d14799403c34",
+      "source_anchor_ids": [
+        "SA17"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rn111",
+      "scene_id": "c04r-n11",
+      "line_text_sha256": "8d620dbacdd1595bc236e3ca763dabe8338549a1dc1078eb90fee43b4b98f571",
+      "source_anchor_ids": [
+        "SA17"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rn121",
+      "scene_id": "c04r-n12",
+      "line_text_sha256": "e84d3e2a499b475ef616c394349ab4cb3266fd71dbf36bc2fc17900f741d6abf",
+      "source_anchor_ids": [
+        "SA17"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rn131",
+      "scene_id": "c04r-n13",
+      "line_text_sha256": "86ac1086532e3f660e3b26a5978ed3a0094c8cf024a866e45dfc06deddbb1fe4",
+      "source_anchor_ids": [
+        "SA17"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rn141",
+      "scene_id": "c04r-n14",
+      "line_text_sha256": "e345e4349cee5e4027b0252592b27591fa7aad8f83741aae744c18ec7247acae",
+      "source_anchor_ids": [
+        "SA17"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rnb1",
+      "scene_id": "c04r-nb",
+      "line_text_sha256": "ee6b85b77992f566932676409c6f19cb78a2899183afe9d1b90ba4ba94e07238",
+      "source_anchor_ids": [
+        "SA17",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rnb2",
+      "scene_id": "c04r-nb",
+      "line_text_sha256": "0e7315f19b0706897debf1b57d181f568a61f5331706e6f41e7466d689b8afa7",
+      "source_anchor_ids": [
+        "SA17",
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rn151",
+      "scene_id": "c04r-outro",
+      "line_text_sha256": "8f7aa91d85fba7863c123818372cd58044c6d83de3839fd742a017a51c4b9162",
+      "source_anchor_ids": [
+        "P57",
+        "P59",
+        "P60"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rn161",
+      "scene_id": "c04r-outro",
+      "line_text_sha256": "add4aa721968ec1743708f2aeb1edb968e50aa96bb3a94ab8c95515bf779ae3d",
+      "source_anchor_ids": [
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    },
+    {
+      "line_id": "c04rn171",
+      "scene_id": "c04r-outro",
+      "line_text_sha256": "9455dfceaecea969ad2d598573db93487c2d08c6aef1f2a4e0191ca965014636",
+      "source_anchor_ids": [
+        "EDITORIAL"
+      ],
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "baseline_exact": true,
+      "basis": "ID/scene/text SHA逐句等於immutable來源PASS基線；未變書面畫面沿用精確原PASS，改圖依本輪原件差分重新裁定。"
+    }
+  ],
+  "findings": [],
+  "scope_limits": {
+    "new_blind_reader_answers_read": false,
+    "existing_native_record_used_only_for_narrativeReviewMatches_hash_binding": true,
+    "new_narrative_verdict_issued": false,
+    "author_plan_treated_as_independent_evidence": false,
+    "actual_images_reviewed": false,
+    "actual_reuse_proved": false,
+    "actual_tts_or_duration_verified": false,
+    "measured_12_14_minute_claimed": false,
+    "paid_calls": 0,
+    "backend_calls": 0,
+    "runtime_approval_or_media_writes": 0,
+    "git_actions": 0,
+    "owner_approval_created": false
+  }
+}

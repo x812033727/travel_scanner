@@ -1,0 +1,638 @@
+{
+  "reviewed_at": "2026-10-26T03:19:41.741Z",
+  "status": "PASS",
+  "reviewer": "independent pr1860_branding_pull; root authored assembly wrapper",
+  "reviewed_sha256": {
+    "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs": "2106a2be30a89a67fb81aa4149f93e07e35be7c30c1206f5d919540f868ea80e",
+    "docs/videos/brand-story-remakes-20261025/branding-pr1860/required-assembly.mjs": "1dccccc1f8189d9f9474a0849e8c51f1b306e8dbb4391b23aa486253d5cfb6d1",
+    "docs/videos/brand-story-remakes-20261025/branding-pr1860/assembly-guard-check.json": "1ba040482e661389297486173309dab93dfe7de1adc27ff4314262a581f472cd",
+    "docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs": "3e014976d12b29d9d135b320e43847f38c7495809ed5bb3d400961dcc83e7fbb",
+    "docs/videos/brand-story-remakes-20261025/branding-pr1860/required-branding.json": "b327ff11f96a475eecb7413e176d5b287a5d51d6db28da16fbf4a09433bc9aa5"
+  },
+  "original_review": {
+    "file": "docs/videos/brand-story-remakes-20261025/branding-pr1860/assembly-guard-independent.json",
+    "sha256": "9fb1d1a78d75c7ebad8ecf53511cc91e20282b35e720a392637e7452e14a3704",
+    "preserved_unchanged": true,
+    "original_status": "MUST_FIX"
+  },
+  "resolved": [
+    {
+      "id": "MF1",
+      "resolved": true,
+      "evidence": "--file rejected by strict parser before child invocation; actual negative wrapper CLI replay also rejects before child/network. --set, unknown, positional operation and malformed boolean also reject."
+    },
+    {
+      "id": "MF2",
+      "resolved": true,
+      "evidence": "18 independent success-proof field mutations plus the old minimal success stub are rejected. Bindings include canonical root/source/series SHA, exact package/asset identity, placement and explicit adoption.",
+      "threat_scope": "Injected success-proof tests verify a defensive subprocess contract; they are not evidence of an external injection attack."
+    }
+  ],
+  "actual_readonly_bridge": {
+    "exit_code": 0,
+    "proof": {
+      "observed_at": "2026-10-26T03:19:38.723Z",
+      "passed": true,
+      "paid_requests": 0,
+      "story_media_generated": 0,
+      "pins_written": 0,
+      "rendered": false,
+      "requests": [
+        {
+          "method": "GET",
+          "url": "https://mokaair.com/api/video/media/branding",
+          "status": 200
+        }
+      ],
+      "package": {
+        "id": "mokaair-brand-package-v4-endscreen",
+        "hash": "416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88",
+        "media_base": "/workspace/work/brand-story-20261025/media",
+        "intro": {
+          "sha256": "50a53efa54fe5158a166390c7f46518c052be1af005f99a5f3c57e530b0bb67d",
+          "frames": 150,
+          "size": 2708408
+        },
+        "outro": {
+          "sha256": "00eb9ccc8449fa8b47de0aab290b8aa7d55b09962c12a127e0f0c9c5f7834396",
+          "frames": 630,
+          "size": 2054558
+        }
+      },
+      "project": {
+        "root": "/workspace/work/brand-story-20261025/c03-submission-root",
+        "slug": "story-everyday-moleskine-c03-remake-20261025",
+        "selector": null,
+        "selected_hash": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64",
+        "intro_at": "after_first_chapter",
+        "adopt_current": false,
+        "existing_pin": false,
+        "source_sha256": "9639d356ca5bdcb18e85c3631ea754a0f69888949358111f452541654ac7fdd9",
+        "series_sha256": "6de1e3222d3e679e4bd740864e1c564c1b4708f936558a7a80ab9ff0d800e40b",
+        "timeline_created": false
+      },
+      "finished_at": "2026-10-26T03:19:40.301Z"
+    },
+    "returned_assembly_argv": [
+      "--slug",
+      "story-everyday-moleskine-c03-remake-20261025",
+      "--workdir",
+      "/workspace/work/brand-story-20261025/media",
+      "--intro-after-condensation"
+    ],
+    "actual_main_called": false
+  },
+  "injected_cases": [
+    {
+      "name": "valid_default",
+      "passed": true,
+      "accepted": true,
+      "expected_rejection": false,
+      "preflight_calls": 1,
+      "output": [
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025",
+        "--workdir",
+        "/workspace/work/brand-story-20261025/media",
+        "--intro-after-condensation"
+      ],
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "explicit_force_adoption_placement",
+      "passed": true,
+      "accepted": true,
+      "expected_rejection": false,
+      "preflight_calls": 1,
+      "output": [
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025",
+        "--workdir",
+        "/workspace/work/brand-story-20261025/media",
+        "--force",
+        "--adopt-branding",
+        "--intro-after-condensation"
+      ],
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025",
+        "--adopt-branding"
+      ]
+    },
+    {
+      "name": "MF1_file_override",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 0,
+      "error": "Unknown option '--file'"
+    },
+    {
+      "name": "set_option",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 0,
+      "error": "Unknown option '--set'"
+    },
+    {
+      "name": "positional_operation",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 0,
+      "error": "Unexpected argument 'sfx-measure'. This command does not take positional arguments"
+    },
+    {
+      "name": "unknown_option",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 0,
+      "error": "Unknown option '--unknown-option'"
+    },
+    {
+      "name": "wrong_workdir",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 0,
+      "error": "Assembly workdir must match the verified branding media base."
+    },
+    {
+      "name": "missing_slug",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 0,
+      "error": "Assembly requires this batch's exact remake slug."
+    },
+    {
+      "name": "false_boolean_value",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 0,
+      "error": "Option '--intro-after-condensation' does not take an argument"
+    },
+    {
+      "name": "child_nonzero",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 1,
+      "error": "Required branding preflight failed; assembly was not invoked. site unavailable",
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "child_spawn_error",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 1,
+      "error": "Required branding preflight failed; assembly was not invoked. spawn test error",
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "child_signal",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 1,
+      "error": "Required branding preflight failed; assembly was not invoked. ",
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "child_invalid_json",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 1,
+      "error": "Unexpected token 'o', \"not JSON\" is not valid JSON",
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "MF2_mismatch_passed",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 1,
+      "error": "Required branding preflight proof mismatch: passed",
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "MF2_mismatch_project.root",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 1,
+      "error": "Required branding preflight proof mismatch: project.root",
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "MF2_mismatch_project.slug",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 1,
+      "error": "Required branding preflight proof mismatch: project.slug",
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "MF2_mismatch_project.selector",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 1,
+      "error": "Required branding preflight proof mismatch: project.selector",
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "MF2_mismatch_project.selected_hash",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 1,
+      "error": "Required branding preflight proof mismatch: project.selected_hash",
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "MF2_mismatch_project.intro_at",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 1,
+      "error": "Required branding preflight proof mismatch: project.intro_at",
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "MF2_mismatch_project.adopt_current",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 1,
+      "error": "Required branding preflight proof mismatch: project.adopt_current",
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "MF2_mismatch_project.source_sha256",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 1,
+      "error": "Required branding preflight proof mismatch: project.source_sha256",
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "MF2_mismatch_project.series_sha256",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 1,
+      "error": "Required branding preflight proof mismatch: project.series_sha256",
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "MF2_mismatch_package.id",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 1,
+      "error": "Required branding preflight proof mismatch: package.id",
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "MF2_mismatch_package.hash",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 1,
+      "error": "Required branding preflight proof mismatch: package.hash",
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "MF2_mismatch_package.media_base",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 1,
+      "error": "Required branding preflight proof mismatch: package.media_base",
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "MF2_mismatch_package.intro.sha256",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 1,
+      "error": "Required branding preflight proof mismatch: package.intro.sha256",
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "MF2_mismatch_package.intro.frames",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 1,
+      "error": "Required branding preflight proof mismatch: package.intro.frames",
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "MF2_mismatch_package.intro.size",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 1,
+      "error": "Required branding preflight proof mismatch: package.intro.size",
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "MF2_mismatch_package.outro.sha256",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 1,
+      "error": "Required branding preflight proof mismatch: package.outro.sha256",
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "MF2_mismatch_package.outro.frames",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 1,
+      "error": "Required branding preflight proof mismatch: package.outro.frames",
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "MF2_mismatch_package.outro.size",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 1,
+      "error": "Required branding preflight proof mismatch: package.outro.size",
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "old_minimal_success_stub_rejected",
+      "passed": true,
+      "accepted": false,
+      "expected_rejection": true,
+      "preflight_calls": 1,
+      "error": "Required branding preflight proof mismatch: project.root",
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    },
+    {
+      "name": "trailing_sentinel_control_flow",
+      "passed": true,
+      "accepted": true,
+      "expected_rejection": false,
+      "preflight_calls": 1,
+      "output": [
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025",
+        "--",
+        "--workdir",
+        "/workspace/work/brand-story-20261025/media",
+        "--intro-after-condensation"
+      ],
+      "preflight_argv": [
+        "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/preflight.mjs",
+        "--project-root",
+        "/workspace/work/brand-story-20261025/c03-submission-root",
+        "--slug",
+        "story-everyday-moleskine-c03-remake-20261025"
+      ]
+    }
+  ],
+  "actual_negative_wrapper_cli": [
+    {
+      "name": "MF1_file_override",
+      "exit_code": 1,
+      "preflight_subprocess_reached": false,
+      "network_reached": false,
+      "stderr": "node:internal/util/parse_args/parse_args:102\n      throw new ERR_PARSE_ARGS_UNKNOWN_OPTION(\n            ^\n\nTypeError [ERR_PARSE_ARGS_UNKNOWN_OPTION]: Unknown option '--file'\n    at checkOptionUsage (node:internal/util/parse_args/parse_args:102:13)\n    at node:internal/util/parse_args/parse_args:377:9\n    at Array.forEach (<anonymous>)\n    at parseArgs (node:internal/util/parse_args/parse_args:374:3)\n    at requiredAssemblyArguments (file:///workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/required-assembly.mjs:13:22)\n    at file:///workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/runtime-cli.mjs:12:46\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  code: 'ERR_PARSE_ARGS_UNKNOWN_OPTION'\n}\n\nNode.js v24.19.0\n",
+      "assembly_called": false
+    },
+    {
+      "name": "set_option",
+      "exit_code": 1,
+      "preflight_subprocess_reached": false,
+      "network_reached": false,
+      "stderr": "node:internal/util/parse_args/parse_args:102\n      throw new ERR_PARSE_ARGS_UNKNOWN_OPTION(\n            ^\n\nTypeError [ERR_PARSE_ARGS_UNKNOWN_OPTION]: Unknown option '--set'\n    at checkOptionUsage (node:internal/util/parse_args/parse_args:102:13)\n    at node:internal/util/parse_args/parse_args:377:9\n    at Array.forEach (<anonymous>)\n    at parseArgs (node:internal/util/parse_args/parse_args:374:3)\n    at requiredAssemblyArguments (file:///workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/required-assembly.mjs:13:22)\n    at file:///workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/runtime-cli.mjs:12:46\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  code: 'ERR_PARSE_ARGS_UNKNOWN_OPTION'\n}\n\nNode.js v24.19.0\n",
+      "assembly_called": false
+    },
+    {
+      "name": "positional_operation",
+      "exit_code": 1,
+      "preflight_subprocess_reached": false,
+      "network_reached": false,
+      "stderr": "node:internal/util/parse_args/parse_args:383\n        throw new ERR_PARSE_ARGS_UNEXPECTED_POSITIONAL(token.value);\n              ^\n\nTypeError [ERR_PARSE_ARGS_UNEXPECTED_POSITIONAL]: Unexpected argument 'sfx-measure'. This command does not take positional arguments\n    at node:internal/util/parse_args/parse_args:383:15\n    at Array.forEach (<anonymous>)\n    at parseArgs (node:internal/util/parse_args/parse_args:374:3)\n    at requiredAssemblyArguments (file:///workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/required-assembly.mjs:13:22)\n    at file:///workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/runtime-cli.mjs:12:46\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  code: 'ERR_PARSE_ARGS_UNEXPECTED_POSITIONAL'\n}\n\nNode.js v24.19.0\n",
+      "assembly_called": false
+    },
+    {
+      "name": "unknown_option",
+      "exit_code": 1,
+      "preflight_subprocess_reached": false,
+      "network_reached": false,
+      "stderr": "node:internal/util/parse_args/parse_args:102\n      throw new ERR_PARSE_ARGS_UNKNOWN_OPTION(\n            ^\n\nTypeError [ERR_PARSE_ARGS_UNKNOWN_OPTION]: Unknown option '--unknown-option'\n    at checkOptionUsage (node:internal/util/parse_args/parse_args:102:13)\n    at node:internal/util/parse_args/parse_args:377:9\n    at Array.forEach (<anonymous>)\n    at parseArgs (node:internal/util/parse_args/parse_args:374:3)\n    at requiredAssemblyArguments (file:///workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/required-assembly.mjs:13:22)\n    at file:///workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/runtime-cli.mjs:12:46\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  code: 'ERR_PARSE_ARGS_UNKNOWN_OPTION'\n}\n\nNode.js v24.19.0\n",
+      "assembly_called": false
+    },
+    {
+      "name": "wrong_workdir",
+      "exit_code": 1,
+      "preflight_subprocess_reached": false,
+      "network_reached": false,
+      "stderr": "file:///workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/required-assembly.mjs:25\n    throw new Error(\"Assembly workdir must match the verified branding media base.\");\n          ^\n\nError: Assembly workdir must match the verified branding media base.\n    at requiredAssemblyArguments (file:///workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/required-assembly.mjs:25:11)\n    at file:///workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/runtime-cli.mjs:12:46\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n\nNode.js v24.19.0\n",
+      "assembly_called": false
+    },
+    {
+      "name": "missing_slug",
+      "exit_code": 1,
+      "preflight_subprocess_reached": false,
+      "network_reached": false,
+      "stderr": "file:///workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/required-assembly.mjs:22\n    throw new Error(\"Assembly requires this batch's exact remake slug.\");\n          ^\n\nError: Assembly requires this batch's exact remake slug.\n    at requiredAssemblyArguments (file:///workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/required-assembly.mjs:22:11)\n    at file:///workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/runtime-cli.mjs:12:46\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n\nNode.js v24.19.0\n",
+      "assembly_called": false
+    },
+    {
+      "name": "false_boolean_value",
+      "exit_code": 1,
+      "preflight_subprocess_reached": false,
+      "network_reached": false,
+      "stderr": "node:internal/util/parse_args/parse_args:115\n    throw new ERR_PARSE_ARGS_INVALID_OPTION_VALUE(`Option '${shortAndLong}' does not take an argument`);\n          ^\n\nTypeError [ERR_PARSE_ARGS_INVALID_OPTION_VALUE]: Option '--intro-after-condensation' does not take an argument\n    at checkOptionUsage (node:internal/util/parse_args/parse_args:115:11)\n    at node:internal/util/parse_args/parse_args:377:9\n    at Array.forEach (<anonymous>)\n    at parseArgs (node:internal/util/parse_args/parse_args:374:3)\n    at requiredAssemblyArguments (file:///workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/branding-pr1860/required-assembly.mjs:13:22)\n    at file:///workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/runtime-cli.mjs:12:46\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  code: 'ERR_PARSE_ARGS_INVALID_OPTION_VALUE'\n}\n\nNode.js v24.19.0\n",
+      "assembly_called": false
+    }
+  ],
+  "non_assemble_readonly_lint": {
+    "exit_code": 0,
+    "stdout_sha256": "f75cc25157ffa49964aa7a186aa9e80a7b665a89011edbfa7ef673d39a4d537f",
+    "stderr": ""
+  },
+  "nonblocking_observations": [
+    {
+      "case": "trailing standalone --",
+      "observation": "Wrapper accepts a trailing option terminator, then appends defaults after it. Native parser treats appended options as positionals and refuses actual assembly.",
+      "native_would_refuse": true,
+      "safety_bypass": false,
+      "suggestion": "Optionally reject standalone -- at wrapper boundary for a clearer immediate usage error."
+    }
+  ],
+  "limits": [
+    "Exactly one real readonly preflight subprocess checked fresh site and both installed assets; its returned argv was never passed to main.",
+    "Positive/adoption control-flow cases otherwise use injected proofs and do not claim media assembly or approval.",
+    "SFX measurement is deliberately outside this actual-film wrapper and uses the native dedicated operation.",
+    "Only assembly-guard-recheck.json was written; root code and original independent review were not edited."
+  ],
+  "paid_requests": 0,
+  "provider_calls": 0,
+  "actual_assembly_calls": 0,
+  "pins_written": 0,
+  "rendered": false
+}

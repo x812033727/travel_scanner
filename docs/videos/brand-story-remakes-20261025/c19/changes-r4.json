@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "revision": "c19-r4",
+  "status": "AUTHOR_DEDUPLICATION_PENDING_DELTA_SOURCE_AND_NATIVE4",
+  "baseline_revision": "c19-r3",
+  "baseline_core_four_sha256": {
+    "video.json": "8b94b763dfb25451665e1d1655cc930ddbde5acb9b43673432c38e677e75388a",
+    "script.md": "e1e8b1da35fbaf3c5082a1d4f7e7f9bc79a21560f63e5c91c60b8c008df4c112",
+    "narration-only.json": "83a16755737f6c9951eea25312ae8028ee20e184eae34f1c3f115d8a51788730",
+    "claims.json": "28c92a65ba0638811bf95210e50896c206f59bc25a8159cf54303405233e193c"
+  },
+  "baseline_source_result": "PASS_R3_ONLY",
+  "baseline_source_receipt_sha256": "b4c8cd089f5cc6deefda89cf3ea58a545e381011be8cb9da7b2875e51b163c79",
+  "baseline_verify_sha256": "d634f66d2bf3d19260b2cc5bde712d768a0ec2ecc94c06ef4f06646ab2fe1f57",
+  "baseline_native_round": 3,
+  "baseline_native_result": "HOLD",
+  "baseline_native_shared_failure": [
+    "no_recap"
+  ],
+  "native3_evidence_addressed": {
+    "reader_a": "t02 repeats t01 consumer-fee setter",
+    "reader_b": "t10 repeats t08 maintenance/funding relief"
+  },
+  "changed_rows": [
+    {
+      "id": "c19r1t10",
+      "before": "你在店裡多一個入口，合作銀行則少做一部分維運；這樣的合作，接進了多少機構？",
+      "after": "這樣的合作，當時接進了多少家金融機構？",
+      "reason": "Keep only the unanswered institution-count question, answered by unchanged t11. No repeated access/maintenance benefit.",
+      "source_review_required": true
+    }
+  ],
+  "removed_rows": [
+    {
+      "id": "c19r1o13",
+      "text": "一邊替自己開戶的人辦事，另一邊，則要讓別家金融機構的客戶也能用機器。",
+      "reason": "Adjacent o12 already lists own-account financial services and the partner-institution ATM business. o14 retains viewer/card application without repeating both branches."
+    },
+    {
+      "id": "c19r1e10",
+      "text": "這不是多放幾個按鍵，而是機器每天要接住多少現鈔、如何處理的改動。",
+      "reason": "Adjacent e09 already gives greater cash capacity and faster banknote handling. e10 restates the same design purpose with an unsupported alternative about adding buttons."
+    },
+    {
+      "id": "c19r1t02",
+      "text": "也就是說，你若用合作銀行的卡，向你定價的，是替你保管帳戶的那家機構。",
+      "reason": "Native3 reader A: adjacent t01 already assigns the consumer fee to the account-holding bank. The conditional restatement adds no new outcome."
+    },
+    {
+      "id": "c19r1t09",
+      "text": "這是七銀行描述的效益；維護機器和準備現鈔，借用入口才有機會減輕這些負擔。",
+      "reason": "Adjacent t08 already gives Seven Bank’s stated maintenance/funding benefit. t07 retains the report attribution, so deleting t09 loses neither scope nor a new fact."
+    }
+  ],
+  "added_rows": [],
+  "unchanged_remaining_narration_rows": 115,
+  "opening_scenes_and_narration_unchanged": true,
+  "remaining_prompts_and_cameras_exactly_r3": true,
+  "new_historical_claims": false,
+  "source_quotes_changed": false,
+  "all_conditions_and_data_preserved_at_ids": [
+    "c19r1a12",
+    "c19r1a14",
+    "c19r1n03",
+    "c19r1n04",
+    "c19r1n18",
+    "c19r1n19",
+    "c19r1n20",
+    "c19r1n23",
+    "c19r1n24",
+    "c19r1t03",
+    "c19r1t04",
+    "c19r1t05",
+    "c19r1t14",
+    "c19r1t15",
+    "c19r1t16",
+    "c19r1o02",
+    "c19r1o05",
+    "c19r1a25",
+    "c19r1a26"
+  ],
+  "chapter_viewer_address": [
+    {
+      "chapter": "金融廳裡，先拿到一份文件",
+      "you": 2,
+      "I": 1
+    },
+    {
+      "chapter": "預備牌照之後，機器才開門",
+      "you": 2,
+      "I": 1
+    },
+    {
+      "chapter": "別家銀行的客人走進店裡",
+      "you": 1,
+      "I": 1
+    },
+    {
+      "chapter": "入口變多，仍有人沒有用",
+      "you": 2,
+      "I": 2
+    },
+    {
+      "chapter": "螢幕上的免費，沒有結清網路的帳",
+      "you": 1,
+      "I": 1
+    },
+    {
+      "chapter": "訊息接回銀行，現鈔留在機器裡",
+      "you": 5,
+      "I": 4
+    }
+  ],
+  "whole_narration_spoken_units": 3295,
+  "previous_units": 3434,
+  "delta_units": -139,
+  "relative_reduction_percent": 4.0477577169481656,
+  "removed_restatement_not_replaced_by_padding": true,
+  "native_actual_round_count": 3,
+  "next_native_round": 4,
+  "native2_format_correction_not_extra_draw": true,
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "verify_1_created": false,
+  "owner_approval_created": false,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "git_mutations": 0
+}

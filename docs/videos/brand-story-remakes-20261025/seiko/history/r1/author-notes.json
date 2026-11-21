@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "status": "HOLD_PENDING_INDEPENDENT_SOURCE_VISUAL_AND_FRESH_READERS",
+  "candidate_revision": "seiko-r1",
+  "author": "/root/c10_eight_text",
+  "counts": {
+    "lines": 146,
+    "scenes": 144,
+    "shots": 143,
+    "cards": 0,
+    "outro": 1,
+    "chapters": 7,
+    "loops": 34
+  },
+  "native_units": {
+    "whole_narration_spoken_units": 3438,
+    "coldopen": 186,
+    "voiced_CTA": 56,
+    "rough_planning_target": 3500,
+    "actual_narration_seconds": null,
+    "actual_final_seconds": null,
+    "actual_duration_verified": false,
+    "planning_arithmetic_at_4_to_5_units_per_second": [
+      687.6,
+      859.5
+    ],
+    "planning_is_not_actual_time": true,
+    "official_duration_scope": "Whole unwrapped narration including coldopen and voiced CTA; excludes added5secondintro+21secondoutro."
+  },
+  "voice_source": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c06/video.json",
+    "file_sha256": "aac065fb5663fd1a75dbac064470ceaefea43eac08a162ba3be96d9130724d11",
+    "voice_object_sha256": "cdda79f645ce8a01d03ec8248bbebb27de27e55cff3c68ef713b50626230f30a",
+    "exact_copy": true,
+    "other_episode_dictionary_copied": false
+  },
+  "source_research_sha256": {
+    "research-original.md": "a41609ac4465275a629db67fd3ffa225907753d7f7681d50cd2dd4741d4eaacc",
+    "research-original.claims.json": "4195ab5af88173c59ca4a3eff3b40386764a70c0e65420bec4446ac943095231",
+    "original-preservation.json": "de1800877f4406ac0ef01c9c3558ebb2965779bb7b3f1c63d29fd82bcba909bc"
+  },
+  "additional_author_anchors": 7,
+  "related_old_files_unchanged": true,
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "owner_approval_created": false,
+  "actual_media_generated": false,
+  "actual_same_image_verified": false,
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "git_mutations": 0,
+  "runtime_root": "/workspace/work/brand-story-20261025/seiko-submission-root",
+  "media_base": "/workspace/work/brand-story-20261025/media",
+  "image_reuse_plan_sha256": "05f5574cdd4d57b9027a014a487d3858a11da134551668e55045bba582c0450b",
+  "independent_source_review": "PENDING_OTHER_REVIEWER",
+  "independent_narrative_review": "PENDING_FRESH_READERS",
+  "actual_native_round_count": 0,
+  "native_initialized_lint": {
+    "errors": [],
+    "warnings": [
+      {
+        "path": "scenes",
+        "message": "about 16.2 minutes; the target is 12-14"
+      }
+    ],
+    "receipt": "native-author-lint-r1.json",
+    "receipt_sha256": "11a2cd62a17e6e5d8216206cc19468c0540e02dc57db66acc6ad462ecdf5592c",
+    "runtime_manifest_sha256": "4ead1cd694e6486f52472f7edc6c4ab0397f7085747b50deeaa7e06dc7c3569b",
+    "lexicon_sha256": "4ce7a255c5ba40e62246b602cf2ce17a91d1ea431b2b02827a51f589d14aa57e"
+  },
+  "spoken_names": {
+    "Astron": "original source spelling; normal per-project dictionary snapshot; no author phonetic override",
+    "Intersil": "original source spelling; normal per-project dictionary snapshot; no author phonetic override",
+    "independent_reading_review": "PENDING_BEFORE_PAID_TTS"
+  },
+  "warning_disposition": [
+    "Only one soft warning remains: legacy native estimated16.2minutes. Actual body duration remains unknown; target13 and measured720–840seconds are retained. No slowing, padding or false durationPASS."
+  ],
+  "frozen_at_utc": "2026-10-26T03:56:31.440Z"
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/find_rules",
+  "independent": true,
+  "date": "2026-10-25",
+  "slug": "story-everyday-bubble-wrap-c04-remake-20261025",
+  "video_sha256": "0f880bdbd56fa370bffe0e230f79e5195aa4f24671523e713808e659bbb7243f",
+  "narration_sha256": "b46d78e2c1dcb2267a71a4619054631b12c9dd2e12210e455972eb1aeae85366",
+  "proposal_sha256": "be9544fcc76fe5fcbb3cbd77de0017651cd5451b2c5938015f428406d08381d1",
+  "historical_lexicon_sha256": "ab4ed5d515d659392a0e9424578990c1f75347274b15e43234517eacfe61484f",
+  "verdict": "PASS_TEXT_ONLY",
+  "terms": {
+    "Sealed": {
+      "proposed": null,
+      "accepted": null,
+      "decision": "保留英語原詞",
+      "guidance": "念英語單音節 sealed，約/siːld/，不逐字母拼讀，也不拆成兩音節。"
+    },
+    "Air": {
+      "proposed": null,
+      "accepted": null,
+      "decision": "保留英語原詞",
+      "guidance": "念英語 air，約/ɛr/；與前詞連讀公司名 Sealed Air，不念A I R。"
+    }
+  },
+  "reason": "台灣一般口播可直接讀這個英文公司名；null只保留原詞，沒有另造中文音譯或聲稱已試聽。舊快照相同兩值是比對證據，不是這次聲音通過理由。",
+  "scope": "僅文字念法提案獨立覆核；未apply字典、未產正式lexicon event、未合成/聽驗音檔。",
+  "audio_acceptance": "HOLD_NOT_GENERATED",
+  "required_next": "主對話在新slug建立正式快照時引用此獨立判定；合成後逐句聽Sealed Air，若分詞破壞連讀或漏尾音，再限句改法並重審。",
+  "paid_calls": 0,
+  "backend_writes": 0
+}

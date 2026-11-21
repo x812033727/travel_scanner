@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "revision": "doraemon-r1",
+  "role": "AUTHOR_PRODUCTION_PLAN_NOT_ADMISSION_OR_APPROVAL",
+  "slug": "story-adapt-doraemon-after-fujiko-remake-20261025",
+  "original_slug": "story-adapt-doraemon-after-fujiko",
+  "fresh_production": true,
+  "counts": {
+    "method": "native spokenUnits-compatible author count; exact native count follows in lint receipt",
+    "spoken_units_total": 3368,
+    "spoken_units_cold_open": 200,
+    "spoken_units_voiced_cta": 56,
+    "chapters": {
+      "開場濃縮": 200,
+      "另取一張紙，留下原件": 485,
+      "一封郵件，把作者帶到月球前": 459,
+      "舊設定接上新朋友": 619,
+      "把說話交給畫面，再重新寫成書": 922,
+      "找到這一版真正做工作的人": 683
+    },
+    "lines": 149,
+    "scenes": 124,
+    "shots": 124,
+    "cards": 0,
+    "loops": 23,
+    "speech_body_includes_cold_open_and_voiced_cta": 3368,
+    "estimated_speech_seconds_at_4_5": 748.44
+  },
+  "runtime": {
+    "target_minutes": 13,
+    "speech_body_seconds_required": [
+      720,
+      840
+    ],
+    "body_includes": [
+      "cold open",
+      "all spoken narration",
+      "voiced CTA"
+    ],
+    "body_excludes": [
+      "new 5-second intro after cold open",
+      "new 21-second v4 outro"
+    ],
+    "new_bookends_seconds": 26,
+    "actual_speech_seconds": null,
+    "actual_bookend_assets_verified": false,
+    "capacity_risk": "About3500 units at4.5/s is a planning calculation only. No measured voice; do not lower13minutes, slow delivery, insert pauses, repeat facts or count bookends to make duration."
+  },
+  "media": {
+    "provider": "minimax",
+    "model": "image-01",
+    "look": {
+      "preset": "cute-mystery"
+    },
+    "shot_share_by_scene_count": 1,
+    "shot_share_by_spoken_units": 1,
+    "max_consecutive_cards": 0,
+    "runtime_root": "/workspace/work/brand-story-20261025/doraemon-submission-root",
+    "media_base": "/workspace/work/brand-story-20261025/doraemon-audit/media",
+    "media_outside_runtime_and_repository": true,
+    "actual_generated_media": 0,
+    "actual_same_asset_verified": false
+  },
+  "delivery": {
+    "primary_locale": "zh-TW",
+    "burn_in": true,
+    "cc": true,
+    "default_later_locales": [
+      "en",
+      "ja",
+      "ko",
+      "es",
+      "pt",
+      "id",
+      "vi",
+      "th"
+    ],
+    "language_media_status": "PENDING_AFTER_CHINESE_FINAL",
+    "retain": [
+      "clean master without burned captions",
+      "original image sources",
+      "dry voices",
+      "music/effects stems",
+      "source-bound text and CC"
+    ]
+  },
+  "budget": {
+    "usd_cap": 25,
+    "exact_new_slug_account_created": false,
+    "all_film_quote": null,
+    "protected_admission": "PENDING",
+    "original_account_or_approval_reused": false,
+    "paid_calls": 0,
+    "policy": "This nonC remake needs its own exact-slug US$25 account, current all-film quote and protected admission before any paid step."
+  },
+  "pending": [
+    "independent source and written visual review",
+    "two fresh native narrative readers",
+    "independent pronunciation review",
+    "owner outline and script approval",
+    "exact-account all-film quote/protected admission",
+    "real TTS and sentence listening",
+    "measured speech body720–840s",
+    "images and both-end judge / same-file SHA",
+    "music and bookends",
+    "captions and eight language media",
+    "assemble/final QA",
+    "owner final approval"
+  ],
+  "backend_calls": 0,
+  "approvals_created": 0,
+  "git_mutations": 0
+}

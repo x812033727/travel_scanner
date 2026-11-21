@@ -1,0 +1,42 @@
+{
+  "observed_at": "2026-10-25T13:26:34.583Z",
+  "source": "ordinary tool-token GET speech/status and media/status",
+  "paid_calls": 0,
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "configured": true,
+    "allowed": true,
+    "available_models": [
+      "gemini-3.8-flash-tts",
+      "gemini-3.8-flash-lite-tts"
+    ],
+    "monthly_characters_remaining": 6559135,
+    "supplier_billing_identity": "not_exposed"
+  },
+  "image": {
+    "provider": "minimax",
+    "model": "image-01",
+    "configured": true,
+    "resolution": null,
+    "seconds": null,
+    "usd_per_image_2k": null,
+    "catalog_usd_per_image": 0.0035
+  },
+  "music": {
+    "provider": "gemini",
+    "model": "lyria-3.5",
+    "configured": true,
+    "resolution": null,
+    "seconds": null,
+    "usd_per_image_2k": null,
+    "catalog_usd_per_track": 0.08
+  },
+  "global_max_retakes_per_shot": 2,
+  "generic_site_cap_usd": 200,
+  "generic_cap_is_authorization": false,
+  "c03_budget_summary_exposed": false,
+  "remake_budget_summary_exposed": false,
+  "summary_scope": "The ordinary status currently lists legacy pilot accounts only. Neither C03 original nor its remake is exposed; absence here does not establish absence of the original account.",
+  "protected_operation_level_ledger": "not_available"
+}

@@ -1,0 +1,277 @@
+{
+  "narrative_hash": "e660b81d6f844ef4",
+  "script_hash": "856a29ee484b7a719f5fad887b27d135e4e9260b4e67349f18b8692bb8333bfd",
+  "panel_rules_sha256": "f46a3e7ed0366033e199204e20b2dc5199b873654a0a4cccc1d8bcdde300a628",
+  "panel_narration_sha256": "f684ad77f7798187ea624eb140050d79cbaf1cce498d3c334f93d8ce782b3104",
+  "round": 1,
+  "passed": false,
+  "answers": [
+    {
+      "id": "scene_first",
+      "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c7r10102] 原廠現在的說明裡，接底熱刀的溫度超過六百五十度。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_spoiler",
+      "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[c7r10108] 它怎麼從撐住鞋面的地方，變成你不甘心連鞋一起丟掉的理由？",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_line",
+      "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c7r10238] 當一種鞋底交給另一家鞋廠，它會被做成什麼樣的靴子？",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_toc",
+      "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[c7r10107] 今天跟著馬汀靴的一道接縫，走過一九六〇年以來的六十多年。",
+      "yes_readers": 2
+    },
+    {
+      "id": "chapters_link",
+      "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[c7r10201] 照品牌後來的回顧，一九四五年，馬汀斯傷了腳。；讀者二：[c7r10201] 照品牌後來的回顧，一九四五年，馬汀斯傷了腳。",
+      "yes_readers": 0
+    },
+    {
+      "id": "open_loops",
+      "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c7r10225] 可是把外緣顧好了，接縫就不會再從別處裂開嗎？",
+      "yes_readers": 2
+    },
+    {
+      "id": "payoffs",
+      "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[c7r10516] 沿著鞋面往下看，外底還沒接上，為什麼要先縫一條沿條？；讀者二：[c7r10505] 如果你拿到的是熟悉外形、接縫卻完全不同的鞋，還會覺得是同一種嗎？",
+      "yes_readers": 0
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[c7r10603] 二十年是她描述的舊靴案例，不是一張保證每雙都能穿這麼久的保單。；讀者二：[c7r10404] 吊帶拉住褲子，腳上那雙靴子的鞋面，還被仔細擦亮。",
+      "yes_readers": 0
+    },
+    {
+      "id": "chapters_are_events",
+      "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+      "required": false,
+      "yes": true,
+      "evidence": "[c7r10619] 舊鞋底、沿條和縫線都移走，再用新的部件重新組回來。",
+      "yes_readers": 2
+    },
+    {
+      "id": "outro_no_next",
+      "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c7r10632] 訂閱品牌故事，我們繼續追那些天天碰到、卻很少拆開看的東西。",
+      "yes_readers": 2
+    },
+    {
+      "id": "opening_hooks",
+      "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[c7r10103] 想像你在英國的維修檯前，把一隻靴子翻過來。",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_thread",
+      "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+      "required": true,
+      "yes": true,
+      "evidence": "[c7r10630] 開場那雙舊靴，最終能留下多少，得看這次拆開後，哪些部分還接得回去。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_detour",
+      "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[c7r10233] 文件還提出另一個難題：若在高溫環境工作，這種塑膠底受得了嗎？；讀者二：[c7r10508] 當時的黃線、底紋和刻槽等外觀權利，與品牌名稱的授權分開處理。",
+      "yes_readers": 0
+    }
+  ],
+  "failed": [
+    "chapters_link",
+    "payoffs",
+    "no_recap",
+    "no_detour"
+  ],
+  "advisory": [],
+  "readers": [
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[c7r10102] 原廠現在的說明裡，接底熱刀的溫度超過六百五十度。"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[c7r10108] 它怎麼從撐住鞋面的地方，變成你不甘心連鞋一起丟掉的理由？"
+        },
+        {
+          "id": "one_line",
+          "yes": true,
+          "evidence": "[c7r10238] 當一種鞋底交給另一家鞋廠，它會被做成什麼樣的靴子？"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[c7r10107] 今天跟著馬汀靴的一道接縫，走過一九六〇年以來的六十多年。"
+        },
+        {
+          "id": "chapters_link",
+          "yes": false,
+          "evidence": "[c7r10201] 照品牌後來的回顧，一九四五年，馬汀斯傷了腳。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[c7r10225] 可是把外緣顧好了，接縫就不會再從別處裂開嗎？"
+        },
+        {
+          "id": "payoffs",
+          "yes": false,
+          "evidence": "[c7r10516] 沿著鞋面往下看，外底還沒接上，為什麼要先縫一條沿條？"
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[c7r10603] 二十年是她描述的舊靴案例，不是一張保證每雙都能穿這麼久的保單。"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[c7r10619] 舊鞋底、沿條和縫線都移走，再用新的部件重新組回來。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[c7r10632] 訂閱品牌故事，我們繼續追那些天天碰到、卻很少拆開看的東西。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[c7r10103] 想像你在英國的維修檯前，把一隻靴子翻過來。"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[c7r10630] 開場那雙舊靴，最終能留下多少，得看這次拆開後，哪些部分還接得回去。"
+        },
+        {
+          "id": "no_detour",
+          "yes": false,
+          "evidence": "[c7r10233] 文件還提出另一個難題：若在高溫環境工作，這種塑膠底受得了嗎？"
+        }
+      ],
+      "failed": [
+        "chapters_link",
+        "payoffs",
+        "no_recap",
+        "no_detour"
+      ],
+      "advisory": []
+    },
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[c7r10102] 原廠現在的說明裡，接底熱刀的溫度超過六百五十度。"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[c7r10108] 它怎麼從撐住鞋面的地方，變成你不甘心連鞋一起丟掉的理由？"
+        },
+        {
+          "id": "one_line",
+          "yes": true,
+          "evidence": "[c7r10527] 底先磨掉、鞋面還好時，那道接縫又會把什麼難題交回來？"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[c7r10107] 今天跟著馬汀靴的一道接縫，走過一九六〇年以來的六十多年。"
+        },
+        {
+          "id": "chapters_link",
+          "yes": false,
+          "evidence": "[c7r10201] 照品牌後來的回顧，一九四五年，馬汀斯傷了腳。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[c7r10225] 可是把外緣顧好了，接縫就不會再從別處裂開嗎？"
+        },
+        {
+          "id": "payoffs",
+          "yes": false,
+          "evidence": "[c7r10505] 如果你拿到的是熟悉外形、接縫卻完全不同的鞋，還會覺得是同一種嗎？"
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[c7r10404] 吊帶拉住褲子，腳上那雙靴子的鞋面，還被仔細擦亮。"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[c7r10619] 舊鞋底、沿條和縫線都移走，再用新的部件重新組回來。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[c7r10632] 訂閱品牌故事，我們繼續追那些天天碰到、卻很少拆開看的東西。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[c7r10107] 今天跟著馬汀靴的一道接縫，走過一九六〇年以來的六十多年。"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[c7r10630] 開場那雙舊靴，最終能留下多少，得看這次拆開後，哪些部分還接得回去。"
+        },
+        {
+          "id": "no_detour",
+          "yes": false,
+          "evidence": "[c7r10508] 當時的黃線、底紋和刻槽等外觀權利，與品牌名稱的授權分開處理。"
+        }
+      ],
+      "failed": [
+        "chapters_link",
+        "payoffs",
+        "no_recap",
+        "no_detour"
+      ],
+      "advisory": []
+    }
+  ]
+}

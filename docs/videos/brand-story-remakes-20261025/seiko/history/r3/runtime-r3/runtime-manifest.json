@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "source_base_commit": "2b20c30d359fe5d93a4ea66f013a52fa20a35c05",
+  "projects": [
+    {
+      "id": "seiko",
+      "slug": "story-adapt-seiko-quartz-astron-remake-20261025",
+      "source_files_sha256": {
+        "video.json": "ed04567394bcf0c34af72f07ae7e01ecc6e065f0175c598f4d5a5eeb63c0e392",
+        "brief.md": "f313f24c5e8970c0fde5021d059d547f0eb6ad8f1aea83003c69b6d670a08820",
+        "series.json": "5672f9d249280267c740a49fa3aefdab973ca8efab5bc67e45d58c0aada6bcbe",
+        "claims.md": "190bdde51c9c840b64e284feee31d1c77c7bdcb0eb59094944a066ba4bcecb5e"
+      },
+      "author_script_sha256": "d8a2c718d12c4145948a0c3e9495b4fc7f35bc1fbd1100f4b3962aab08ceee99",
+      "runtime_script_sha256": "66d8646f96abefa56212a031c2732897b23da63cfd8db211204e7eb7a017866e",
+      "lexicon_sha256": "4ce7a255c5ba40e62246b602cf2ce17a91d1ea431b2b02827a51f589d14aa57e"
+    }
+  ],
+  "paid_calls": 0,
+  "backend_writes": 0,
+  "approvals_created": 0,
+  "source_format_correction": {
+    "only": "shorten overlong native line IDs seikor1→skr1; no narration text/chapter/order/prompt/camera changes",
+    "previous_manifest_sha256": "06bdac6f6d2bf8b85ece23405cfacf8e7114dd6f08d6f73b3f991bd73d41a78f",
+    "immutable_lexicon_unchanged": true,
+    "not_a_native_review_round": true
+  },
+  "author_prefreeze_refinement": {
+    "previous_manifest_sha256": "a802c20bb99529994943c1d4a89fce8f8afd0ded0f5173d94b663b830bdcbcf5",
+    "ordinary_immutable_dictionary_unchanged": true,
+    "source_or_native_reviews_created": 0,
+    "paid_calls": 0
+  },
+  "author_r2_revision": {
+    "previous_manifest_sha256": "16cf95c69401f30c575fa7007199c068a31eeb0b054fa9073970c6b37c16c580",
+    "history_r1_receipt_sha256": "43b7a79545760899a37f1f01d40046949315a61f0c345389ff90024e06fa42de",
+    "ordinary_immutable_dictionary_unchanged": true,
+    "actual_native_round_count": 1,
+    "source_r1": "HOLD",
+    "native_r1": "HOLD",
+    "source_r2": "PENDING",
+    "native_r2": "PENDING",
+    "paid_calls": 0
+  },
+  "author_r3_revision": {
+    "previous_manifest_sha256": "2b60fef09db13c92c90386813f91eed7a701f7331bb887edc7fa9dea3545091f",
+    "history_r2_receipt_sha256": "a70673164e7ad6aefc1555d217590d37463d838fe037a13b6c6e0f18e5de3911",
+    "ordinary_immutable_dictionary_unchanged": true,
+    "actual_native_round_count": 2,
+    "source_r2": "PASS",
+    "native_r2": "HOLD_SHARED_no_recap",
+    "source_r3": "PENDING",
+    "native_r3": "PENDING",
+    "paid_calls": 0
+  }
+}

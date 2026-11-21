@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "project": "c03",
+  "status": "RENDERER_CLASSIFICATION_RESTORED_TO_INDEPENDENTLY_VERIFIED_VISUAL_SOURCE",
+  "written_at": "2026-10-26T00:51:23.417958+00:00",
+  "source_video_sha256": "9639d356ca5bdcb18e85c3631ea754a0f69888949358111f452541654ac7fdd9",
+  "source_renderer_category": "explainer",
+  "series_kind": "story",
+  "backend_classification_required": "story",
+  "backend_receipt": {
+    "path": "backend-status.json",
+    "category_in_existing_local_receipt": "story",
+    "checked_at": "2026-10-25T14:50:17.509Z",
+    "new_backend_readback_performed_by_this_task": false
+  },
+  "semantic_scope": "The source category explainer preserves compatibility for existing data-card templates in this cute-mystery renderer. It does not change this project from a brand story, relax brand-story content rules, or redefine the actual backend taxonomy.",
+  "failed_attempt": {
+    "archive": "history/story-category-attempt",
+    "manifest_sha256": "935b9044f2dfe58ec76c184a3642130838bd799ce9c8e3a518e8a5635bd77eaa",
+    "source_sha256": "4ab6d10574d46a80bf3c189cba820f75dab752d32b832fd8731ea5c3446743ea",
+    "delta_path": "history/story-category-attempt/story-category-delta.json",
+    "native_errors": 9,
+    "not_adopted": true
+  },
+  "exact_restoration": {
+    "from_archive": "history/teaser-plan-before-story-category",
+    "files_sha256": {
+      "video.json": "9639d356ca5bdcb18e85c3631ea754a0f69888949358111f452541654ac7fdd9",
+      "image-reuse-plan.json": "ff55c22c39680a0eb46505e56cd2aea7102ed811cddc591bad3d27ef7683fed3",
+      "teaser-image-plan-input.json": "70bad8dc52b1a0999d3e289b2a0473f36d1d37eef32f960dc2023923c30f88fd",
+      "author-visual-plan.json": "10b7bcb7a11079dd26f60bb51589201f23a864b28b7c778fb7f86a678f11790a",
+      "build-candidate.py": "839924e63090b22422f2d04fe4d3801f065f9239dce88a8631cd0838345bca73",
+      "verify-1.md": "79777a56ec99fb1cd23eb65e9673ef63162ed0d025c807e6cae97e43bffd673c",
+      "reviews/source-teaser-visual-independent.json": "a5d79ad4c17823d414e03a3e421f8d9c5ecb4bdcfe6b42aa6707f080a0ecbfb6"
+    },
+    "verification_copy_is_original_independent_receipt": true,
+    "new_source_PASS_generated": false,
+    "new_verify_text_authored": false
+  },
+  "unchanged_source_four_sha256": {
+    "video.json": "9639d356ca5bdcb18e85c3631ea754a0f69888949358111f452541654ac7fdd9",
+    "script.md": "1698aa0a955713ae5f0eaf9234ad307e32332aa7a02aaa966b8e34bd01736709",
+    "narration-only.json": "3d5461032a626e9c3246b5b2214af504e3fffee81c1a83cdda38dc2ba532c235",
+    "claims.json": "c8eaf8b7d01704417b147ff7af3080e5a6041d964b9cc6830d5b0153f6eb4328"
+  },
+  "renderer_code_evidence": {
+    "path": "tools/video/core/drama.mjs",
+    "sha256": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1",
+    "fact": "isExplainer requires a drama with category other than story and an explainer preset. Setting category story removes the legacy data-card allowance."
+  },
+  "reporting_code_evidence": [
+    {
+      "path": "tools/video/review/sync.mjs",
+      "sha256": "8a25b2ce9e6eac14e32d789461f35d758504e5b4547ab3600f0c8e9985d3b4c9",
+      "fact": "Current normal report sends project.doc.category when supported."
+    },
+    {
+      "path": "tools/video/review/script-intake.mjs",
+      "sha256": "bf41afb2e08880ea291465e069f704295e8e6a0da44ff556d9011fa00611e585",
+      "fact": "Story script intake independently uses category story for the backend report."
+    }
+  ],
+  "report_handoff": {
+    "owner": "root_runtime_agent",
+    "action": "Use normal official review-push --report-only after reading actual existing backend category story. The ordinary API upsert changes category only for an unfiled project; it preserves this existing story classification. Read back and assert category/locale choice/reviews unchanged.",
+    "normal_report_contract_verified": true,
+    "optional_category_omission_required": false,
+    "normal_report_api_only": true,
+    "admin_or_protected_settings_called": false,
+    "actual_readback_receipt": "report-only-teaser-plan-readback.json"
+  },
+  "mandatory_brand_story_gates_unchanged": [
+    "Current exact narrative owner approvals and independent source/visual checks.",
+    "Real TTS timing, source-appropriate image acceptance, formal branding and all production budget guards.",
+    "The actual clean international master needs its own complete bound QA and current final approval before a language dub can start.",
+    "Backend language flags or renderer category explainer are never proof of clean-master final approval, dub eligibility or upload readiness."
+  ],
+  "not_a_dub_eligibility_override": true,
+  "actual_clean_master_verified": false,
+  "actual_same_asset_verified": false,
+  "actual_dub_eligibility": false,
+  "runtime_writes": 0,
+  "media_writes": 0,
+  "approval_writes": 0,
+  "backend_calls": 0,
+  "provider_calls": 0,
+  "git_actions": 0,
+  "post_restore_local_verification": {
+    "checked_at": "2026-10-26T00:52:00.903Z",
+    "source_four_sha256": {
+      "video.json": "9639d356ca5bdcb18e85c3631ea754a0f69888949358111f452541654ac7fdd9",
+      "script.md": "1698aa0a955713ae5f0eaf9234ad307e32332aa7a02aaa966b8e34bd01736709",
+      "narration-only.json": "3d5461032a626e9c3246b5b2214af504e3fffee81c1a83cdda38dc2ba532c235",
+      "claims.json": "c8eaf8b7d01704417b147ff7af3080e5a6041d964b9cc6830d5b0153f6eb4328"
+    },
+    "plan_sha256": "ff55c22c39680a0eb46505e56cd2aea7102ed811cddc591bad3d27ef7683fed3",
+    "canonical_script_sha256": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f",
+    "narrative_hash": "5cb14d4ecf0bdc3a",
+    "preserved_native_review_matches": true,
+    "native_lint_errors": 0,
+    "native_lint_soft_warnings": 32,
+    "all_i18n_and_auxiliary_source_bytes_unchanged": true,
+    "original_verify_sha256": "79777a56ec99fb1cd23eb65e9673ef63162ed0d025c807e6cae97e43bffd673c",
+    "restored_verify_sha256": "79777a56ec99fb1cd23eb65e9673ef63162ed0d025c807e6cae97e43bffd673c",
+    "original_source_review_sha256": "a5d79ad4c17823d414e03a3e421f8d9c5ecb4bdcfe6b42aa6707f080a0ecbfb6",
+    "restored_source_review_sha256": "a5d79ad4c17823d414e03a3e421f8d9c5ecb4bdcfe6b42aa6707f080a0ecbfb6",
+    "new_independent_verdict_created": false
+  },
+  "subsequent_controlled_runtime_adoption": {
+    "receipt": "visual-only-runtime-adoption.json",
+    "report_only_receipt": "report-only-teaser-plan-readback.json",
+    "backend_category_before": "story",
+    "backend_category_after": "story",
+    "normal_official_report_only": true,
+    "eight_language_choice_and_decision_time_unchanged": true,
+    "new_reviews_submitted": 0,
+    "approval_bytes_unchanged": true,
+    "actual_same_asset_verified": false,
+    "actual_media": 0,
+    "paid_calls": 0
+  },
+  "normal_report_code_contract_evidence": [
+    {
+      "ref": "HEAD",
+      "commit": "26090b0c2c58829e7c965d3565b41b6c2f2df9fc",
+      "path": "tools/video/review/sync.mjs",
+      "sha256": "8a25b2ce9e6eac14e32d789461f35d758504e5b4547ab3600f0c8e9985d3b4c9",
+      "verified_contract": "Normal report includes supported renderer category; API assigns it only when existing project.category is None. Existing owner story classification is preserved."
+    },
+    {
+      "ref": "HEAD",
+      "commit": "26090b0c2c58829e7c965d3565b41b6c2f2df9fc",
+      "path": "apps/api/app/video_reviews/admin_service.py",
+      "sha256": "4ba7c84bf025238cd72ae3a89d6be26514b18ba5db94b1b29e794e11065d1c3c",
+      "verified_contract": "Normal report includes supported renderer category; API assigns it only when existing project.category is None. Existing owner story classification is preserved."
+    },
+    {
+      "ref": "origin/main",
+      "commit": "444835b3da80f8e5356c497f7ea4e000a2969410",
+      "path": "tools/video/review/sync.mjs",
+      "sha256": "8a25b2ce9e6eac14e32d789461f35d758504e5b4547ab3600f0c8e9985d3b4c9",
+      "verified_contract": "Normal report includes supported renderer category; API assigns it only when existing project.category is None. Existing owner story classification is preserved."
+    },
+    {
+      "ref": "origin/main",
+      "commit": "444835b3da80f8e5356c497f7ea4e000a2969410",
+      "path": "apps/api/app/video_reviews/admin_service.py",
+      "sha256": "d5ae4b273efdb679fa51a3086479f6d68d0a8182acf86051e11c3c441cc56053",
+      "verified_contract": "Normal report includes supported renderer category; API assigns it only when existing project.category is None. Existing owner story classification is preserved."
+    }
+  ]
+}
