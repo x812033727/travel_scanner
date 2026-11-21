@@ -1,0 +1,250 @@
+{
+  "title": "1 Microsecond Off, 300m Wrong? Why GPS Jumps | So That's Why",
+  "description": "Walking between skyscrapers, your map's blue GPS dot suddenly leaps across the street—and reopening the map stalls forever! Yet GPS satellites have no idea where you are: your phone finds its spot purely by measuring time, where a single microsecond shifts light by ~300 meters! Through a park whistle game, learn one-way satellite broadcasts, the 38 µs/day relativistic clock drift, why you need a fourth satellite just to set your phone's watch, multipath wall bounces vs. ionosphere, and why Assisted GPS needs five satellites.\n\n#SoThatsWhyOffice #GPS #Satellites #Relativity #Multipath #TechExplained",
+  "tags": [
+    "So Thats Why Office",
+    "GPS",
+    "Satellite Navigation",
+    "Atomic Clock",
+    "Relativity",
+    "Multipath",
+    "Assisted GPS",
+    "Tech Explained"
+  ],
+  "thumbnail": {
+    "headline": "GPS Dot **Jumps Streets**?",
+    "sub": "One microsecond off throws it 300 meters"
+  },
+  "chapters": {
+    "kid-blue-dot-street-jump": "GPS jumps streets—all over 1 microsecond?",
+    "kid-phone-asks-satellite-guess": "Satellites only shout the time like lighthouses",
+    "kid-why-fourth-satellite-q": "Why satellite #4 sets your watch & wall bounce",
+    "sky-strip-between-towers": "Sky squeezed to a slit—the second urban hit",
+    "kid-why-map-waits-so-long": "Why maps stall & the 5-satellite A-GPS shortcut",
+    "kid-aha-bounced-signal-payoff": "Every GPS fix quietly sets your phone's clock"
+  },
+  "source_hashes": {
+    "chapters": {
+      "kid-blue-dot-street-jump": "dfca54c8e464",
+      "kid-phone-asks-satellite-guess": "11cee822eac9",
+      "kid-why-fourth-satellite-q": "5412e696dbf4",
+      "sky-strip-between-towers": "c7c35e4cec04",
+      "kid-why-map-waits-so-long": "d96db186dd63",
+      "kid-aha-bounced-signal-payoff": "3df54d43c0ea"
+    },
+    "title": "f5564a35bb54",
+    "description": "8a59fb9e59d2",
+    "tags": "90227c48688b",
+    "thumbnail": "2738a3f4079a"
+  },
+  "lines": {
+    "t001": {
+      "source_hash": "d7626ebfc615",
+      "text": "Chief! Walking between tall buildings, my phone's GPS blue dot jumped straight across the street—and reopening the map stalled forever! Why?"
+    },
+    "t002": {
+      "source_hash": "757b6e6f838b",
+      "text": "It all comes down to GPS measuring distance with time! Signals fly at light speed—off by one microsecond, one millionth of a second, and you drift three hundred meters!"
+    },
+    "t003": {
+      "source_hash": "33f6413e019c",
+      "text": "Orbiting satellites are even wilder: their clocks run thirty-eight microseconds fast every day, and you need at least four—the fourth does something unexpected!"
+    },
+    "t004": {
+      "source_hash": "f12b314d7fff",
+      "text": "Today, let's unpack how GPS locates you by time—and why the culprit tossing your dot across the street and stalling your map stands right beside you!"
+    },
+    "t005": {
+      "source_hash": "4f956ff55fee",
+      "text": "Wait—doesn't my phone beam a message up to a satellite asking 'Where am I?', and the satellite calculates my spot and sends it back?"
+    },
+    "t006": {
+      "source_hash": "49926d356145",
+      "text": "Exact opposite! Satellites have no idea where you are. Like coastal lighthouses, they just broadcast downward while your phone listens silently and does the math."
+    },
+    "t007": {
+      "source_hash": "d9f242445c14",
+      "text": "Like counting seconds between lightning and thunder! Imagine a park whistle game: friends with exact watches blow on the hour—count the delay to tell their distance."
+    },
+    "t008": {
+      "source_hash": "716fe4c760cc",
+      "text": "GPS satellites are those whistling friends! Orbiting twenty thousand kilometers up, each carries a hyper-accurate atomic clock and stamps the exact send time in its signal."
+    },
+    "t009": {
+      "source_hash": "a33c80d8432e",
+      "text": "That light-speed whistle takes just sixty to ninety milliseconds to reach Earth—less than a tenth of a second—demanding outrageous timing precision!"
+    },
+    "t011": {
+      "source_hash": "8d0c8d22c136",
+      "text": "Under a tenth of a second! Wait—you said satellite atomic clocks drift fast every day. How could clocks that accurate drift on their own?"
+    },
+    "t012": {
+      "source_hash": "98bf7047c49f",
+      "text": "They really do! By relativity, weaker gravity up high speeds clocks up, while rapid orbital speed slows them down—and the net effect runs fast."
+    },
+    "t013": {
+      "source_hash": "cfe4910437b5",
+      "text": "About thirty-eight microseconds fast per day—enough for light to travel over eleven kilometers! So engineers slow them before launch and broadcast fine corrections."
+    },
+    "t014": {
+      "source_hash": "059aec031ba3",
+      "text": "Once clocks match, how do you find a spot? In the park, one whistle only places you on a circle; overlap three friends, and it narrows to one point!"
+    },
+    "t014b": {
+      "source_hash": "2db8342f340c",
+      "text": "In 3D space, distances to three satellites draw three spheres meeting at two points—one on Earth, one in outer space. Toss out space, and you're pinned!"
+    },
+    "t015": {
+      "source_hash": "87ffb36798dd",
+      "text": "Hold on—if three satellites already pinpoint one spot, why did you say at least four? What's that fourth satellite even for?"
+    },
+    "t016": {
+      "source_hash": "1ebca4c7dcef",
+      "text": "Three satellites have one fatal catch: your phone would need an atomic clock perfectly synced with space! No ordinary phone carries an atomic clock."
+    },
+    "t017": {
+      "source_hash": "b108a54a68b5",
+      "text": "Back to the park game: imagine three friends blowing from different sides. If your watch runs one second slow, every whistle seems one second shorter!"
+    },
+    "t018": {
+      "source_hash": "e4ccc5dae8fd",
+      "text": "Sound travels over three hundred meters per second, so all three friends seem three hundred meters closer—your three circles shrink and fail to meet at all!"
+    },
+    "t019": {
+      "source_hash": "b2c73244caa3",
+      "text": "The fix is genius: back in space, your phone treats east-west, north-south, altitude, plus its own clock error as four unknowns—solving them with a fourth satellite!"
+    },
+    "t020": {
+      "source_hash": "40fc1565579c",
+      "text": "Your phone doesn't literally draw spheres—it solves all four unknowns at once. To keep at least four visible worldwide, twenty-four orbital slots circle Earth!"
+    },
+    "t021": {
+      "source_hash": "db64121563e2",
+      "text": "Whoa, the fourth satellite sets my phone's watch! With ultra-accurate clocks and four satellites overhead, who's tossing my blue dot across the street between towers?"
+    },
+    "t023": {
+      "source_hash": "cf118afe85ee",
+      "text": "Signals leaving space are accurate within sixty-five centimeters! The culprit is multipath: signals bounce off walls onto longer routes, and when direct rays are blocked, phones rely on echoes!"
+    },
+    "t024": {
+      "source_hash": "f3904b5b1d3a",
+      "text": "Like a whistle echoing off a wall making a friend seem farther, detoured signals shove your dot across the street—especially hugging walls under low-angle satellites!"
+    },
+    "t025": {
+      "source_hash": "fc2e6d5ff5e0",
+      "text": "Worse yet, skyscrapers block satellites outright! When only a thin strip of sky stays open, fewer visible satellites magnify every tiny error."
+    },
+    "t026": {
+      "source_hash": "9960e6dc437e",
+      "text": "Wait—even if towers block a few satellites, as long as four remain visible for the four unknowns, shouldn't the fix stay just as accurate?"
+    },
+    "t027": {
+      "source_hash": "bcdba9bb3310",
+      "text": "Not at all! When all satellites crowd into one narrow overhead strip—like friends shouting from one side—any tiny distance error slides the intersection wide open, or fails completely!"
+    },
+    "t028": {
+      "source_hash": "3845668caebb",
+      "text": "By contrast, open sky with five or more widely spaced satellites anchors the fix from every angle—far steadier than four squeezed into a slit!"
+    },
+    "t029": {
+      "source_hash": "88b138a098f3",
+      "text": "Even under open sky, atmosphere and phone errors add up: Stanford tests across thousands of phones showed roughly five-meter errors outside, soaring higher among tall towers!"
+    },
+    "t030": {
+      "source_hash": "b76d22f7316b",
+      "text": "Speaking of signals passing through the atmosphere—could the upper sky be another accomplice throwing my blue dot across the street?"
+    },
+    "t031": {
+      "source_hash": "0627feaa1356",
+      "text": "The charged ionosphere high above really does slow signals! Single-frequency phones can't measure that delay directly, and intense bursts can push errors to tens of meters."
+    },
+    "t032": {
+      "source_hash": "1c6eb9b46aeb",
+      "text": "Yet satellite broadcasts include ionosphere corrections that trim roughly half—and listening on two frequencies, like high and low whistles, cancels over ninety-nine percent!"
+    },
+    "t033": {
+      "source_hash": "505fb481e2e9",
+      "text": "More importantly, the ionosphere shifts smoothly across the whole sky—it won't jump wildly between two towers. What flings your dot is usually right by the wall, not way up high!"
+    },
+    "t034": {
+      "source_hash": "75d8e404e8c0",
+      "text": "Blocked skies and wall bounces make total sense! Now what about reopening my map on the corner and watching it freeze forever before locking on?"
+    },
+    "t035": {
+      "source_hash": "af5745f62f09",
+      "text": "Measuring flight time isn't enough—your phone first needs to know exactly where each satellite is right now and its tiny clock offset, tucked inside the satellite broadcast."
+    },
+    "t036": {
+      "source_hash": "9d86275e7652",
+      "text": "That broadcast speaks painfully slow: just fifty bits—fifty tiny data slots—per second, repeating every thirty seconds, with orbit and clock data in the first three chunks!"
+    },
+    "t037": {
+      "source_hash": "1735e702429f",
+      "text": "A standalone phone takes up to thirty-six seconds to catch all three; during a cold start after days unused, broken urban signals stall it even longer!"
+    },
+    "t038": {
+      "source_hash": "949f958ed6af",
+      "text": "Huh? Usually when I unlock my phone outside and open maps, the blue dot pops up in one or two seconds—never thirty-plus seconds!"
+    },
+    "t039": {
+      "source_hash": "1aed2f17c067",
+      "text": "If you located recently, cached orbits let it snap open; otherwise Assisted GPS cheats by downloading satellite orbits ahead of time over mobile data!"
+    },
+    "t040": {
+      "source_hash": "355e7d77b52d",
+      "text": "Like getting a text telling you where every friend stands—instead of waiting word by word for their addresses, you only need milliseconds of satellite signal!"
+    },
+    "t041": {
+      "source_hash": "1d3d7e2a05fa",
+      "text": "Sounds like total cheating! Downloading orbits over the network to skip that slow broadcast—is there really zero catch?"
+    },
+    "t042": {
+      "source_hash": "ff7b592a7af7",
+      "text": "The catch loops right back to time! Skipping the broadcast leaves you without exact time—and navigation journals note fast-moving satellites shift range by eight hundred meters per second of clock error!"
+    },
+    "t043": {
+      "source_hash": "a29b4c9b79af",
+      "text": "Luckily, phones know how fast satellites fly, so they simply treat exact time as a fifth unknown—at the price of needing at least five satellites!"
+    },
+    "t044": {
+      "source_hash": "55dcda6eeb01",
+      "text": "That instant blue dot popping up when you open maps on a street corner? Chances are it solved all five unknowns in one shot!"
+    },
+    "t045": {
+      "source_hash": "7be9c3150bc0",
+      "text": "Hey, while chatting we walked right out of the skyscraper canyon into this open park—look Chief, my blue dot snapped rock-steady instantly!"
+    },
+    "t046": {
+      "source_hash": "4e680525098f",
+      "text": "Night and day between the glass canyon and this lawn—notice what changed wasn't the satellites overhead, only the space around you?"
+    },
+    "t047": {
+      "source_hash": "3781822d1c82",
+      "text": "So that's why! Satellites broadcast on time up above all along—what makes my blue dot sharp is how much clean sky my phone can actually see!"
+    },
+    "t048": {
+      "source_hash": "c8694793c755",
+      "text": "I won't blame my phone map for being broken anymore—it was just stuck between two glass cliffs getting tricked by its surroundings!"
+    },
+    "t049": {
+      "source_hash": "33b01ac9b7e7",
+      "text": "Well said! Remember that one-second-slow watch in our park game? Best of all, every GPS fix quietly syncs your phone's clock too."
+    },
+    "t050": {
+      "source_hash": "0505ec4eaad5",
+      "text": "Through orbiting atomic clocks and light-speed math, every coordinate lock clicks sky time and pocket time together."
+    },
+    "t051": {
+      "source_hash": "e714e6a45491",
+      "text": "Next time you hail a ride among towers and the blue dot hops across the street, take a few steps toward an open intersection—you'll know how to clear its sky!"
+    },
+    "t052": {
+      "source_hash": "f166a922f924",
+      "text": "Tell us below: where did a jumping blue dot ever send your taxi or delivery to the wrong side of the road? Share your story!"
+    },
+    "t053": {
+      "source_hash": "b05c2cf3fc3b",
+      "text": "Love unpacking everyday tech we use without thinking? Subscribe to So That's Why Office, and we'll see you next time!"
+    }
+  }
+}

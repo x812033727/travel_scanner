@@ -1,0 +1,294 @@
+{
+  "title": "Ổ khóa HTTPS lừa bạn? Web lừa đảo cũng có | Ra Là Thế",
+  "description": "Nhiều người tưởng ổ khóa và HTTPS là an toàn tuyệt đối—nhưng chỉ 11% hiểu đúng ý nghĩa, còn gần như mọi trang lừa đảo đều dùng HTTPS! Theo chân mật khẩu qua Wi-Fi quán cà phê, mã hóa TLS, chứng chỉ & sổ minh bạch công khai, cách pha sơn trao đổi khóa, bí mật chuyển tiếp, số thứ tự chống phát lại, lưu ý 0-RTT và giới hạn của SNI/ECH.\n\n#RaLaThe #HTTPS #TLS #AnToanMang #LuaDao #KhoaHoc",
+  "tags": [
+    "Ra La The",
+    "HTTPS",
+    "TLS",
+    "O Khoa",
+    "Lua Dao",
+    "Ma Hoa",
+    "An Toan Mang",
+    "Cong Nghe"
+  ],
+  "thumbnail": {
+    "headline": "Ổ khóa **HTTPS lừa bạn**?",
+    "sub": "Chữ S bảo vệ gì & sao Chrome bỏ khóa"
+  },
+  "chapters": {
+    "kid-cafe-lock-opening": "Ổ khóa HTTPS cũng đánh lừa bạn?",
+    "kid-cafe-direct-guess": "Mật khẩu không bay thẳng tới máy chủ",
+    "kid-sealed-enough-guess": "Hầu hết web lừa đảo đều có ổ khóa",
+    "kid-how-to-seal-q": "Pha khóa bí mật ngay trước mặt mọi người",
+    "kid-nothing-visible-guess": "Dấu vết vẫn lộ dù đã bật HTTPS",
+    "kid-spots-extra-letter": "Chữ S chỉ bảo vệ đến trước cửa"
+  },
+  "source_hashes": {
+    "chapters": {
+      "kid-cafe-lock-opening": "8d91390a90bc",
+      "kid-cafe-direct-guess": "4a26b305067f",
+      "kid-sealed-enough-guess": "2a08b5df2840",
+      "kid-how-to-seal-q": "207ab2a4a6ad",
+      "kid-nothing-visible-guess": "938e2fb71acc",
+      "kid-spots-extra-letter": "c5ef961a90b1"
+    },
+    "title": "ac6af2a66785",
+    "description": "4cb072deb095",
+    "tags": "6f5a33c86ff6",
+    "thumbnail": "22432e7f256d"
+  },
+  "lines": {
+    "h001": {
+      "source_hash": "289597dedea6",
+      "text": "Sếp ơi! Có ổ khóa với HTTPS là yên tâm gõ mật khẩu mà, sao Chrome lại tuyên bố bỏ biểu tượng ổ khóa đi?"
+    },
+    "h002": {
+      "source_hash": "434a6226d042",
+      "text": "Vì nghiên cứu của họ cho thấy chỉ vỏn vẹn mười một phần trăm người dùng hiểu đúng ý nghĩa thật của ổ khóa đó."
+    },
+    "h003": {
+      "source_hash": "ddd4a4ca6436",
+      "text": "Tệ hơn nữa, gần như mọi trang lừa đảo đánh cắp mật khẩu cũng đều gắn ổ khóa này và chạy bằng HTTPS!"
+    },
+    "h004": {
+      "source_hash": "fedecf045158",
+      "text": "Thêm chữ S vào HTTP giúp chặn nhiều họa lớn trên đường truyền, nhưng có mảng chí mạng nó hoàn toàn không quản."
+    },
+    "h005": {
+      "source_hash": "e77b0d888f03",
+      "text": "Hôm nay ta cùng mổ xẻ chữ S này thực sự khóa chặt điều gì, và vì sao ngay cả ổ khóa cũng dễ khiến bạn nhìn nhầm."
+    },
+    "h006": {
+      "source_hash": "0fb5507ba852",
+      "text": "Khoan, em đang đăng nhập game bằng Wi-Fi quán cà phê—chẳng lẽ mật khẩu không bay thẳng tới công ty game sao?"
+    },
+    "h007": {
+      "source_hash": "6953be5b5792",
+      "text": "Không hề! Mật khẩu phải đi qua bộ phát Wi-Fi quán, rồi nhà mạng, chuyền hết trạm này sang trạm khác mới tới nơi."
+    },
+    "h008": {
+      "source_hash": "3e696305fd69",
+      "text": "Giống như chuyền giấy trong lớp cho bạn thân ở cuối phòng—tờ giấy phải qua tay bao nhiêu người lạ dọc đường."
+    },
+    "h009": {
+      "source_hash": "b2d540cb0352",
+      "text": "Nếu gửi không mã hóa, bất kỳ máy nào dọc đường cũng có thể xem trộm mật khẩu, thậm chí sửa lén chữ bên trong!"
+    },
+    "h010": {
+      "source_hash": "2f162f0c2864",
+      "text": "Nhưng đa số máy chuyển tiếp chắc đều tốt bụng mà, đâu phải trạm nào cũng mở mật khẩu em ra đọc đâu?"
+    },
+    "h011": {
+      "source_hash": "215165e4b129",
+      "text": "Vấn đề là bạn không chọn được ai chuyển giúp! Nên chuẩn bảo mật từ đầu luôn giả định có kẻ kiểm soát cả đường đi."
+    },
+    "h012": {
+      "source_hash": "a54b1cf62ecb",
+      "text": "Chữ S nghĩa là an toàn: mã hóa TLS niêm phong tờ giấy vào phong bì chỉ bạn và trang đích mới đọc được."
+    },
+    "h013": {
+      "source_hash": "398cdcfadc79",
+      "text": "Ra thế! Vậy chỉ cần niêm phong vào phong bì không ai dọc đường mở được là mật khẩu an toàn tuyệt đối đúng không?"
+    },
+    "h014": {
+      "source_hash": "b376de64f7c5",
+      "text": "Niêm phong thôi chưa đủ! Gõ địa chỉ xong, máy phải hỏi đường như tra danh bạ—nhỡ kẻ xấu chỉ sai sang địa chỉ giả thì sao?"
+    },
+    "h015": {
+      "source_hash": "557e5a200c1d",
+      "text": "Phong bì kín mấy mà tự tay giao cho kẻ mạo danh cũng hỏng bét! Nên trước khi gửi, bên kia phải xuất trình chứng chỉ."
+    },
+    "h016": {
+      "source_hash": "4e50da490631",
+      "text": "Chứng chỉ giống thẻ căn cước chính thức: ghi tên miền và mẫu dấu công khai, chỉ chính chủ giữ dấu riêng thật mới khớp."
+    },
+    "h017": {
+      "source_hash": "d982881c0a44",
+      "text": "Thế người ta không tự vẽ thẻ giả ra giấy để lừa được à? Trình duyệt sao biết dấu của ai mới hợp lệ?"
+    },
+    "h018": {
+      "source_hash": "ac90176db13f",
+      "text": "Thẻ tự vẽ trình duyệt không nhận! Phải xin tổ chức cấp chứng chỉ đáng tin, họ yêu cầu đặt mã hẹn trên trang web."
+    },
+    "h019": {
+      "source_hash": "5ac874edf268",
+      "text": "Tổ chức kiểm tra từ nhiều điểm mạng xem bạn quản lý tên miền đó không—nhưng mấu chốt là họ không xét đối phương tốt hay xấu!"
+    },
+    "h020": {
+      "source_hash": "d4124fe21bf0",
+      "text": "Khoan đã! Bạn vừa gửi link tặng đá quý miễn phí, thanh địa chỉ cũng có HTTPS với ổ khóa hẳn hoi đấy!"
+    },
+    "h021": {
+      "source_hash": "1a642131f1ee",
+      "text": "Cẩn thận, link tặng đá quý rất dễ là trang lừa đảo! Kẻ gian đăng ký tên miền na ná vẫn xin được chứng chỉ hợp lệ."
+    },
+    "h022": {
+      "source_hash": "e2fffdddaa1f",
+      "text": "Ổ khóa chỉ báo đường truyền mã hóa chứ không đảm bảo uy tín, nên Chrome đổi từ năm 2023. Nhưng còn rủi ro đáng sợ hơn!"
+    },
+    "h023": {
+      "source_hash": "54abf89ef0e6",
+      "text": "Đáng sợ hơn cả trang lừa đảo? Tổ chức chỉ xét tên miền, kẻ gian đâu quản được tên miền ngân hàng thật!"
+    },
+    "h024": {
+      "source_hash": "05575dc5d56a",
+      "text": "Nhỡ chính tổ chức đáng tin gặp sự cố cấp nhầm, ngay cả ngân hàng thật cũng bị mạo danh—đúng tên miền, vẫn sáng ổ khóa!"
+    },
+    "h025": {
+      "source_hash": "75ce706dfcdc",
+      "text": "Bởi vậy Chrome và Safari bắt mọi chứng chỉ ghi vào sổ minh bạch công khai để ai cũng soi được, cấp sai là lộ ngay!"
+    },
+    "h026": {
+      "source_hash": "a8870fe57163",
+      "text": "Nếu chứng chỉ lệch tên miền hay thiếu trên sổ, trình duyệt chặn đỏ cả trang—nhưng thẻ thật hết vẫn còn bài toán hóc búa!"
+    },
+    "h027": {
+      "source_hash": "1f18ef9b93ca",
+      "text": "Bài toán gì ạ? Chứng chỉ lo danh tính rồi, nhưng niêm phong cần chìa khóa; ai cũng nhìn, hai bên hẹn khóa kiểu gì khỏi bị học lỏm?"
+    },
+    "h028": {
+      "source_hash": "b56be02f0b99",
+      "text": "Nhờ phép màu toán học cực ngầu! Hãy tưởng tượng trò pha sơn để xem hai bên tạo chung một chìa bí mật ngay giữa đám đông."
+    },
+    "h029": {
+      "source_hash": "f22f2941f5df",
+      "text": "Hai bên công khai chọn chung một cốc sơn nền vàng, rồi mỗi bên lén nhỏ thêm màu bí mật của riêng mình: đỏ và xanh dương."
+    },
+    "h030": {
+      "source_hash": "ea343507b956",
+      "text": "Sau đó chuyền cốc cam và xanh lá đã pha công khai—sơn trộn rồi không tách lại được, nhìn trộm cũng chịu không đoán ra bí quyết!"
+    },
+    "h031": {
+      "source_hash": "2bc9f1ecd363",
+      "text": "Nhận cốc của nhau rồi nhỏ thêm màu bí mật của mình, cả hai ra đúng một màu nâu đậm y hệt, còn người dọc đường tay trắng!"
+    },
+    "h032": {
+      "source_hash": "4680af11f091",
+      "text": "Pha sơn chỉ là ẩn dụ, thực tế dùng toán học; tính xong chìa khóa tạm này mới khóa mật khẩu vào phong bì gửi đi!"
+    },
+    "h033": {
+      "source_hash": "bfdc097e6c5c",
+      "text": "Khoan, lúc nãy nói web luôn giữ con dấu riêng—nếu kẻ xấu ghi âm hết hôm nay rồi sau này trộm được dấu, nó mở hết được không?"
+    },
+    "h034": {
+      "source_hash": "62663b6d5a86",
+      "text": "Không mở được! Dấu riêng chỉ xác minh danh tính; chìa tạm khóa thư dùng xong hủy ngay, gọi là bí mật chuyển tiếp."
+    },
+    "h035": {
+      "source_hash": "945af4634fd7",
+      "text": "Miễn bí mật tạm lúc đó đã xóa, dù nhiều năm sau dấu riêng bị trộm, dữ liệu ghi âm cũ vẫn chỉ là mớ ký tự vô nghĩa."
+    },
+    "h036": {
+      "source_hash": "eaeddfc3e0f3",
+      "text": "Chờ chút! Chứng chỉ nằm trên sổ công khai—kẻ xấu photo chứng chỉ công ty game rồi ra pha sơn với em thì sao?"
+    },
+    "h037": {
+      "source_hash": "18105855312c",
+      "text": "Kẻ photo đâu có con dấu riêng thật! Trang web phải đóng dấu thật ngay tại chỗ lên toàn bộ biên bản mở màn gồm cả phần pha màu."
+    },
+    "h038": {
+      "source_hash": "dd976ce5b3a0",
+      "text": "Màn kiểm tra mở đầu này gọi là bắt tay: cuối cùng hai bên đối chiếu cả biên bản, lệch nửa ly là ngắt kết nối ngay."
+    },
+    "h039": {
+      "source_hash": "555da9e3c043",
+      "text": "Mỗi lá thư đều khóa bằng chìa này, gộp cả độ dài ghi ngoài phong bì; sửa một ký tự dọc đường là hỏng giải mã và ngắt mạng."
+    },
+    "h040": {
+      "source_hash": "37e3baf05815",
+      "text": "Không sửa được chữ, thế kẻ xấu chép nguyên phong bì mã hóa rồi lén gửi lặp hai lần hoặc đảo thứ tự trước sau thì sao?"
+    },
+    "h041": {
+      "source_hash": "865605e264f4",
+      "text": "Mỗi chiều tự đánh số thư từ không và giấu số vào trong niêm phong—gửi lặp hay tráo thứ tự đều giải mã thất bại!"
+    },
+    "h042": {
+      "source_hash": "c2d2d8682aa6",
+      "text": "Nhưng chuẩn có mục lưu ý quan trọng: nếu từng kết nối trước đó, để tiết kiệm một vòng đi về, lá thư đầu có thể phóng trước."
+    },
+    "h043": {
+      "source_hash": "484ee7639f63",
+      "text": "Dữ liệu phóng trước này không chống lặp xuyên kết nối, dễ gây mua trùng đơn hàng, nên máy chủ phải tự đặt giới hạn riêng."
+    },
+    "h044": {
+      "source_hash": "e623b718c07a",
+      "text": "Ngay cả lúc kết thúc cũng nghiêm ngặt: gửi xong phải báo chính thức đã hết, để còn biết nếu bị cắt ngang đường dây."
+    },
+    "h045": {
+      "source_hash": "7621d03a2bab",
+      "text": "Cả số thứ tự lẫn kết thúc đều khóa cứng! Vậy bật HTTPS lên là người dọc đường chẳng thấy gì nữa đúng không?"
+    },
+    "h046": {
+      "source_hash": "ebdf395b7a34",
+      "text": "Vẫn lộ manh mối quan trọng! Nhớ độ dài ghi ngoài phong bì không? Thư dày cỡ nào, bao lâu gửi một lần vẫn nhìn thấy hết."
+    },
+    "h047": {
+      "source_hash": "cec20861b6c4",
+      "text": "Chuẩn cảnh báo phân tích kích thước và thời gian đôi khi đoán được nội dung, nhất là trang video có kho phim cố định."
+    },
+    "h048": {
+      "source_hash": "7d1a88488f0a",
+      "text": "Hai bên có thể độn thêm khoảng trống cho phong bì dày đều để gây nhiễu, nhưng chuẩn không quy định bắt buộc độn bao nhiêu."
+    },
+    "h049": {
+      "source_hash": "cddf23078e58",
+      "text": "Manh mối lộ rõ hơn nữa là tên trang web bạn tìm—ngay đầu kết nối, nó thường hiện rành rành ngay ngoài mặt phong bì!"
+    },
+    "h050": {
+      "source_hash": "1cd7eaa278ed",
+      "text": "Tên trang em đang vào cũng lộ ra ngoài luôn ạ? Không nhét luôn tên người nhận vào phong bì bên trong được sao?"
+    },
+    "h051": {
+      "source_hash": "ffe57f18edbd",
+      "text": "Chuẩn mã hóa internet mới công bố tháng ba năm 2026 đang hướng tới việc nhét tên trang web vào lớp phong bì trong để khóa kín."
+    },
+    "h052": {
+      "source_hash": "7dc03e730c14",
+      "text": "Nhưng chính chuẩn mới đó cũng thừa nhận thế vẫn chưa đủ: thư cuối cùng gửi tới máy chủ nào thì dọc đường vẫn thấy."
+    },
+    "h053": {
+      "source_hash": "4a0ee344e7fa",
+      "text": "Dù nhiều trang dùng chung một máy chủ giúp điểm đến mờ nhòa hơn, còn một kẽ hở thì vẫn chưa thể tàng hình hoàn toàn."
+    },
+    "h054": {
+      "source_hash": "c3a30fa61eba",
+      "text": "Và đừng quên câu hỏi đường trước lúc xuất phát—nếu bước hỏi địa chỉ đó không mã hóa thì tên trang web vẫn lộ như thường!"
+    },
+    "h055": {
+      "source_hash": "57cddc488702",
+      "text": "Hỏi đường cũng lộ tên luôn! Vậy quay lại link đá quý miễn phí có HTTPS lúc nãy, em phòng kẻ lừa đảo thế nào?"
+    },
+    "h056": {
+      "source_hash": "8b2dccfd2943",
+      "text": "Nhớ ranh giới sống còn này: mã hóa chỉ bảo vệ trên đường vận chuyển, dữ liệu vừa tới tay đối phương là họ đọc sạch."
+    },
+    "h057": {
+      "source_hash": "10f2f2019c66",
+      "text": "Nếu đầu bên kia vốn là kẻ lừa đảo, HTTPS vẫn ngoan ngoãn giao mật khẩu không sót chữ nào tận tay kẻ gian!"
+    },
+    "h058": {
+      "source_hash": "0315f6f8cf2a",
+      "text": "Á! Em căng mắt soi lại thanh địa chỉ, link đá quý miễn phí này lén chèn thêm một chữ cái ngay giữa tên game!"
+    },
+    "h059": {
+      "source_hash": "88a99f867857",
+      "text": "Chuẩn luôn, niêm phong không chặn được tên giả na ná đâu, nên trước khi nhập mật khẩu nhất định phải tự mắt soi kỹ địa chỉ."
+    },
+    "h060": {
+      "source_hash": "c716729a1ad1",
+      "text": "Ra là thế! Như ổ khóa lúc đầu, thêm chữ S chỉ giữ an toàn dọc đường, còn người nhận tốt xấu phải tự mình kiểm tra!"
+    },
+    "h061": {
+      "source_hash": "19b00a02b256",
+      "text": "Xuất sắc. Điều thú vị nhất là ta dùng lớp niêm phong này mỗi ngày, hôm nay mới thấy rõ ranh giới thật sự của nó."
+    },
+    "h062": {
+      "source_hash": "f974c36cd9a5",
+      "text": "Hỏi nhỏ bạn nhé: bạn từng nhận link giả tên giống y chang suýt bị lừa chưa? Bình luận chia sẻ cho mọi người tránh nhé!"
+    },
+    "h063": {
+      "source_hash": "e27557dfdca6",
+      "text": "Thích bóc tách công nghệ hằng ngày cho thật dễ hiểu thì đừng quên đăng ký Ra Là Thế, hẹn gặp lại các bạn lần sau!"
+    }
+  }
+}

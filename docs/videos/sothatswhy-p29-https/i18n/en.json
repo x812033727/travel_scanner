@@ -1,0 +1,294 @@
+{
+  "title": "The HTTPS Padlock Tricks You? Phishing Has It | So That's Why",
+  "description": "Most people think the browser padlock and HTTPS mean a site is safe for passwords—yet Chrome replaced the padlock because only 11% knew what it truly meant, and nearly all phishing sites use HTTPS too! Follow a café login note from router hops, TLS encryption, and Certificate Transparency logs to paint-mixing Diffie-Hellman key exchange, forward secrecy, AEAD sequence numbers, 0-RTT caveats, SNI/ECH limits, and the real boundary of that extra S.\n\n#SoThatsWhyOffice #HTTPS #TLS #Cybersecurity #Phishing #TechExplained",
+  "tags": [
+    "So Thats Why Office",
+    "HTTPS",
+    "TLS",
+    "Padlock Icon",
+    "Phishing",
+    "Encryption",
+    "Cybersecurity",
+    "Tech Explained"
+  ],
+  "thumbnail": {
+    "headline": "HTTPS Lock **Fools You**?",
+    "sub": "What that S guards—and why Chrome cut it"
+  },
+  "chapters": {
+    "kid-cafe-lock-opening": "Can the HTTPS padlock fool you?",
+    "kid-cafe-direct-guess": "Your password doesn't fly straight there",
+    "kid-sealed-enough-guess": "Almost every phishing site has a lock",
+    "kid-how-to-seal-q": "Mixing a secret key in plain sight",
+    "kid-nothing-visible-guess": "What stays visible even with HTTPS?",
+    "kid-spots-extra-letter": "That extra S only guards the road"
+  },
+  "source_hashes": {
+    "chapters": {
+      "kid-cafe-lock-opening": "8d91390a90bc",
+      "kid-cafe-direct-guess": "4a26b305067f",
+      "kid-sealed-enough-guess": "2a08b5df2840",
+      "kid-how-to-seal-q": "207ab2a4a6ad",
+      "kid-nothing-visible-guess": "938e2fb71acc",
+      "kid-spots-extra-letter": "c5ef961a90b1"
+    },
+    "title": "ac6af2a66785",
+    "description": "4cb072deb095",
+    "tags": "6f5a33c86ff6",
+    "thumbnail": "22432e7f256d"
+  },
+  "lines": {
+    "h001": {
+      "source_hash": "289597dedea6",
+      "text": "Chief! I thought HTTPS and the padlock meant safe passwords—so why did Chrome decide to remove the padlock?"
+    },
+    "h002": {
+      "source_hash": "434a6226d042",
+      "text": "Because their own study found that only eleven percent of people actually understood what that little padlock meant."
+    },
+    "h003": {
+      "source_hash": "ddd4a4ca6436",
+      "text": "Worse yet, nearly every phishing site trying to steal your password also displays that padlock and runs over HTTPS!"
+    },
+    "h004": {
+      "source_hash": "fedecf045158",
+      "text": "Adding that S to HTTP stops major dangers on the road, yet leaves a huge critical piece completely uncovered."
+    },
+    "h005": {
+      "source_hash": "e77b0d888f03",
+      "text": "Today, let's unpack what that extra S truly locks down—and why even the padlock icon can mislead you."
+    },
+    "h006": {
+      "source_hash": "0fb5507ba852",
+      "text": "Wait, I'm logging into a game on café Wi-Fi right now—doesn't my password fly straight to the game server?"
+    },
+    "h007": {
+      "source_hash": "6953be5b5792",
+      "text": "Not at all! Your password hops through the café router, then internet providers, passing station to station across the web."
+    },
+    "h008": {
+      "source_hash": "3e696305fd69",
+      "text": "It's like passing a folded note across a classroom—several strangers in between have to handle it along the way."
+    },
+    "h009": {
+      "source_hash": "b2d540cb0352",
+      "text": "Sent unencrypted, any machine along that path can silently peek at your password—or even alter the words inside!"
+    },
+    "h010": {
+      "source_hash": "2f162f0c2864",
+      "text": "Sure, but aren't most relay machines helpful? Surely not every stop opens up my password to read it!"
+    },
+    "h011": {
+      "source_hash": "215165e4b129",
+      "text": "The catch is you can't pick who relays it—so security standards assume an attacker controls the entire path from day one."
+    },
+    "h012": {
+      "source_hash": "a54b1cf62ecb",
+      "text": "The extra S stands for secure: TLS encryption seals your note inside an envelope only you and the server can read."
+    },
+    "h013": {
+      "source_hash": "398cdcfadc79",
+      "text": "Aha! So once my note is sealed inside an envelope that classmates can't open, my password is completely safe, right?"
+    },
+    "h014": {
+      "source_hash": "b376de64f7c5",
+      "text": "Sealing alone isn't enough! After typing a URL, your device asks a directory for directions—what if a crook gives a fake address?"
+    },
+    "h015": {
+      "source_hash": "557e5a200c1d",
+      "text": "Even the tightest envelope fails if you hand it straight to an imposter! So first, the server must show a certificate."
+    },
+    "h016": {
+      "source_hash": "4e50da490631",
+      "text": "A certificate works like an official ID: it lists the domain name and public stamp sample—only the true private stamp matches."
+    },
+    "h017": {
+      "source_hash": "d982881c0a44",
+      "text": "Couldn't someone just draw a fake ID card on paper? How does my browser know whose stamp actually counts?"
+    },
+    "h018": {
+      "source_hash": "ac90176db13f",
+      "text": "Browsers reject self-made IDs! Sites apply to a trusted Certificate Authority, which asks them to place a secret token online."
+    },
+    "h019": {
+      "source_hash": "5ac874edf268",
+      "text": "The authority checks from multiple vantage points that you control the domain—yet here's the twist: it never checks if you're honest!"
+    },
+    "h020": {
+      "source_hash": "d4124fe21bf0",
+      "text": "Hold on! A friend just sent a 'free gems' link—and the address bar shows HTTPS with the padlock too!"
+    },
+    "h021": {
+      "source_hash": "1a642131f1ee",
+      "text": "Careful—that free-gems link is likely phishing! Scammers can register a look-alike domain and get a totally valid certificate."
+    },
+    "h022": {
+      "source_hash": "e2fffdddaa1f",
+      "text": "The padlock only proves an encrypted pipe, not trustworthiness—so Chrome swapped it out in 2023. Yet an even scarier risk lurks!"
+    },
+    "h023": {
+      "source_hash": "54abf89ef0e6",
+      "text": "Scarier than phishing? Wait—if authorities only verify domain control, scammers can't control a real bank's domain!"
+    },
+    "h024": {
+      "source_hash": "05575dc5d56a",
+      "text": "If a trusted authority itself slips up and misissues a cert, even a real bank can be spoofed—exact URL, valid padlock!"
+    },
+    "h025": {
+      "source_hash": "75ce706dfcdc",
+      "text": "That's why Chrome and Safari require every cert in public Certificate Transparency logs—any rogue issuance gets caught fast!"
+    },
+    "h026": {
+      "source_hash": "a8870fe57163",
+      "text": "If a cert mismatches the domain or misses the public log, browsers throw a full red warning—yet one puzzle still looks impossible!"
+    },
+    "h027": {
+      "source_hash": "1f18ef9b93ca",
+      "text": "What puzzle? Wait—certs check identity, but sealing takes a key! With everyone watching, how do two sides agree on a secret key?"
+    },
+    "h028": {
+      "source_hash": "b56be02f0b99",
+      "text": "Through brilliant math magic! Imagine mixing paint to see how two sides craft one shared secret key in plain sight."
+    },
+    "h029": {
+      "source_hash": "f22f2941f5df",
+      "text": "Both agree openly on a yellow base paint, then each secretly mixes in a private color—say red on one side, blue on the other."
+    },
+    "h030": {
+      "source_hash": "ea343507b956",
+      "text": "Next they pass their mixed orange and green cups in the open—mixed paint can't be unmixed, so eavesdroppers can't guess the secret!"
+    },
+    "h031": {
+      "source_hash": "2bc9f1ecd363",
+      "text": "Each adds their own secret color to the cup they received—both end up with the exact same dark brown, while onlookers have nothing!"
+    },
+    "h032": {
+      "source_hash": "4680af11f091",
+      "text": "Paint is just a metaphor—real browsers use math. Once that temporary key is ready, your password finally locks inside the envelope!"
+    },
+    "h033": {
+      "source_hash": "bfdc097e6c5c",
+      "text": "Wait—earlier you said the server keeps a private stamp. If someone records today's traffic and steals that stamp later, can they unlock it all?"
+    },
+    "h034": {
+      "source_hash": "62663b6d5a86",
+      "text": "No! The private stamp only proves identity; today's temporary session key is destroyed right after—that's called forward secrecy."
+    },
+    "h035": {
+      "source_hash": "945af4634fd7",
+      "text": "As long as those temporary secrets are erased, even stealing the server's private stamp years later leaves old recordings as gibberish."
+    },
+    "h036": {
+      "source_hash": "eaeddfc3e0f3",
+      "text": "Hold on! Since certs sit in public logs, what stops a crook from copying the game company's cert and mixing paint with me?"
+    },
+    "h037": {
+      "source_hash": "18105855312c",
+      "text": "A copier lacks the real private stamp! The server must sign the live opening transcript—including the paint exchange—on the spot."
+    },
+    "h038": {
+      "source_hash": "dd976ce5b3a0",
+      "text": "That opening check is the handshake: both sides verify the full transcript at the end—one mismatch drops the line before sending data."
+    },
+    "h039": {
+      "source_hash": "555da9e3c043",
+      "text": "Every message gets sealed with that key, covering even the outer envelope length—tamper one character and it rejects and disconnects."
+    },
+    "h040": {
+      "source_hash": "37e3baf05815",
+      "text": "If they can't edit the message, what if an attacker copies a whole encrypted envelope and replays it twice or swaps the order?"
+    },
+    "h041": {
+      "source_hash": "865605e264f4",
+      "text": "Each direction counts messages from zero and binds that hidden sequence number inside the seal—replays or swaps instantly fail decryption!"
+    },
+    "h042": {
+      "source_hash": "c2d2d8682aa6",
+      "text": "Yet the spec flags one important caveat: on repeat visits, to save a round trip, your very first message can jump ahead early."
+    },
+    "h043": {
+      "source_hash": "484ee7639f63",
+      "text": "That early data isn't replay-proof across connections and could duplicate a purchase, so the spec requires servers to guard it separately."
+    },
+    "h044": {
+      "source_hash": "e623b718c07a",
+      "text": "Even closing is strict: senders must transmit a formal 'I'm done' signal so a cut line isn't mistaken for a finished message."
+    },
+    "h045": {
+      "source_hash": "7621d03a2bab",
+      "text": "Sequence numbers and endings are locked down too! So with HTTPS on, eavesdroppers on the path see nothing at all, right?"
+    },
+    "h046": {
+      "source_hash": "ebdf395b7a34",
+      "text": "Key clues still leak! Remember envelope lengths sit outside? How thick each envelope is and how often you send remain visible."
+    },
+    "h047": {
+      "source_hash": "cec20861b6c4",
+      "text": "The spec warns that traffic analysis on size and timing can sometimes guess content—especially on video sites with fixed libraries."
+    },
+    "h048": {
+      "source_hash": "7d1a88488f0a",
+      "text": "Sides can pad envelopes with blank bytes to hide lengths, yet the standard sets no mandatory rule on how much padding to add."
+    },
+    "h049": {
+      "source_hash": "cddf23078e58",
+      "text": "An even bigger clue is the website's own name—right at the start of the connection, it often rides plainly on the outside!"
+    },
+    "h050": {
+      "source_hash": "1cd7eaa278ed",
+      "text": "Even which website I'm visiting rides on the outside? Can't we tuck the destination name inside an inner envelope too?"
+    },
+    "h051": {
+      "source_hash": "ffe57f18edbd",
+      "text": "A brand-new internet standard published in March 2026 aims to do just that—sealing the site name inside an encrypted inner hello."
+    },
+    "h052": {
+      "source_hash": "7dc03e730c14",
+      "text": "Yet that very spec admits it isn't enough alone: which server machine receives the envelope still stays visible along the road."
+    },
+    "h053": {
+      "source_hash": "4a0ee344e7fa",
+      "text": "Even when many sites share one server machine to blur destinations, another leak point keeps full invisibility out of reach."
+    },
+    "h054": {
+      "source_hash": "c3a30fa61eba",
+      "text": "And don't forget asking 'where does this site live' before connecting—if that directory lookup runs unencrypted, the name leaks anyway!"
+    },
+    "h055": {
+      "source_hash": "57cddc488702",
+      "text": "Even asking for directions leaks names! Then back to that free-gems link with HTTPS—how do I actually spot a scammer?"
+    },
+    "h056": {
+      "source_hash": "8b2dccfd2943",
+      "text": "Remember this hard line: encryption only guards the road in transit; once data reaches the destination, the recipient reads everything."
+    },
+    "h057": {
+      "source_hash": "10f2f2019c66",
+      "text": "If the site on the other end is a scammer to begin with, HTTPS faithfully delivers your password straight into their hands!"
+    },
+    "h058": {
+      "source_hash": "0315f6f8cf2a",
+      "text": "Whoa! Looking closely at the address bar, this free-gems link sneaks an extra letter right inside the game's name!"
+    },
+    "h059": {
+      "source_hash": "88a99f867857",
+      "text": "Bingo! The seal can't catch a clever look-alike name, so always inspect the address bar with your own eyes before typing passwords."
+    },
+    "h060": {
+      "source_hash": "c716729a1ad1",
+      "text": "So that's why! Remember the padlock at the start? That extra S guards the road, while judging the recipient is still up to you!"
+    },
+    "h061": {
+      "source_hash": "19b00a02b256",
+      "text": "Spot on. What I love most is how we rely on this seal every single day, yet only now see where its true boundary lies."
+    },
+    "h062": {
+      "source_hash": "f974c36cd9a5",
+      "text": "Quick question: have you ever gotten a look-alike fake URL that almost fooled you? Share it in the comments to warn others!"
+    },
+    "h063": {
+      "source_hash": "e27557dfdca6",
+      "text": "Love breaking down everyday tech until it clicks? Subscribe to So That's Why Office, and see you next time!"
+    }
+  }
+}

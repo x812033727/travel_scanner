@@ -1,0 +1,1189 @@
+{
+  "schema_version": 1,
+  "slug": "sothatswhy-p13-gps-timing",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "pauses": {
+    "line_ms": 0,
+    "scene_ms": 150
+  },
+  "still_motion": "beat",
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；溫暖清楚的解說主持人，像在跟一個好奇的朋友講道理，語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音",
+    "tempo": 1.08
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "theme": "paper",
+  "look": {
+    "preset": "cute-cartoon"
+  },
+  "series": {
+    "slug": "sothatswhy",
+    "episode": 13,
+    "chapter": 1
+  },
+  "music": {
+    "track": "sothatswhy-p02-bed.m4a",
+    "sha256": "54169439df49a00bc3ad993a148690be9f79d1dff8a4ea5143e64e583001b20c",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "assets": [
+    {
+      "path": "stock/75f8c86e546220b4b786786d758080a6c14be37311829189ecfeebffc2f0bd00.jpg",
+      "source": "Mokaair 原來如此事務所",
+      "license": "Mokaair"
+    }
+  ],
+  "characters": [
+    {
+      "id": "chief",
+      "name": "所長",
+      "appearance": "2.5-head chibi Taiwanese office chief woman with generous headroom, dark brown-black low side ponytail with silver-grey streak, round black glasses, warm brown aligned eyes, bare clean ears, mustard-yellow knitted cardigan over white shirt, dark navy trousers, five clean fingers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；溫暖清楚的解說主持人，像在跟一個好奇的朋友講道理，語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音",
+        "tempo": 1.08
+      }
+    },
+    {
+      "id": "kid",
+      "name": "小問",
+      "appearance": "2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；好奇愛發問的年輕女生，像觀眾的嘴替，語氣輕快自然，語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音",
+        "tempo": 1.12
+      }
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "GPS差百萬分之一秒就偏三百公尺？藍點跳對街的真相｜原來如此事務所",
+    "description": "走在大樓中間，手機地圖上的 GPS 藍點突然跳到對街、叫車司機停在對面，重開地圖還等超久！其實 GPS 衛星根本不知道你在哪，手機算位置靠的竟然全是「時間」——只差百萬分之一秒，光就跑掉約 300 公尺！\n用一場「公園哨子遊戲」一次看懂：衛星像燈塔單向廣播、高空原子鐘一天快約 38 微秒的相對論修正、為什麼一定要第四顆衛星幫手機對錶、衛星本身精準到 65 公分卻被高樓玻璃牆多路徑反彈甩飛、電離層雙頻修正，以及輔助 GPS 用網路偷吃步為何得把時間當成第五個未知數！\n\n📚 參考研究與官方出處：\n- GPS.gov (GPS Accuracy & Space Segment & FAQ)：https://www.gps.gov/node/70\n- FAA (Satellite Navigation - GPS - How It Works)：https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gnss/gps/howitworks\n- U.S. DoD GPS SPS Performance Standard (5th ed., 2020)：https://www.gps.gov/node/205\n- ESA Navipedia (Code Based Positioning, Multipath, Ionospheric Delay, TTFF)：https://gssc.esa.int/navipedia/index.php/Code_Based_Positioning_(SPS)\n- Ashby N. (2003) Relativity in the Global Positioning System：https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5253894/fullTextXML\n- Blay R., Wang B. & Akos D. M. (2021) Assisted GNSS, NAVIGATION：https://navi.ion.org/content/68/1/217\n- van Diggelen F. & Enge P. (2015) World's first GPS MOOC (4.9 m mean)：https://www.ion.org/publications/abstract.cfm?articleID=13079\n\n#原來如此事務所 #GPS #衛星定位 #相對論 #多路徑 #生活科學 #科技原理",
+    "tags": [
+      "原來如此事務所",
+      "GPS",
+      "衛星定位",
+      "地圖藍點",
+      "原子鐘",
+      "相對論",
+      "多路徑",
+      "科普"
+    ]
+  },
+  "sources": [
+    {
+      "title": "GPS.gov: GPS Accuracy",
+      "url": "https://www.gps.gov/node/70",
+      "checked_on": "2026-11-11"
+    },
+    {
+      "title": "GPS.gov: Frequently Asked Questions",
+      "url": "https://www.gps.gov/faq",
+      "checked_on": "2026-11-11"
+    },
+    {
+      "title": "GPS.gov: Space Segment",
+      "url": "https://www.gps.gov/space-segment",
+      "checked_on": "2026-11-11"
+    },
+    {
+      "title": "U.S. DoD: GPS SPS Performance Standard (2020)",
+      "url": "https://www.gps.gov/node/205",
+      "checked_on": "2026-11-11"
+    },
+    {
+      "title": "FAA: Satellite Navigation - GPS How It Works",
+      "url": "https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gnss/gps/howitworks",
+      "checked_on": "2026-11-11"
+    },
+    {
+      "title": "van Diggelen & Enge (2015) ION GNSS+",
+      "url": "https://www.ion.org/publications/abstract.cfm?articleID=13079",
+      "checked_on": "2026-11-11"
+    },
+    {
+      "title": "ESA Navipedia: Code Based Positioning (SPS)",
+      "url": "https://gssc.esa.int/navipedia/index.php/Code_Based_Positioning_(SPS)",
+      "checked_on": "2026-11-11"
+    },
+    {
+      "title": "ESA Navipedia: Multipath",
+      "url": "https://gssc.esa.int/navipedia/index.php/Multipath",
+      "checked_on": "2026-11-11"
+    },
+    {
+      "title": "ESA Navipedia: Ionospheric Delay",
+      "url": "https://gssc.esa.int/navipedia/index.php/Ionospheric_Delay",
+      "checked_on": "2026-11-11"
+    },
+    {
+      "title": "ESA Navipedia: TTFF",
+      "url": "https://gssc.esa.int/navipedia/index.php/TTFF",
+      "checked_on": "2026-11-11"
+    },
+    {
+      "title": "Blay, Wang & Akos (2021) NAVIGATION",
+      "url": "https://navi.ion.org/content/68/1/217",
+      "checked_on": "2026-11-11"
+    },
+    {
+      "title": "Ashby (2003) Living Reviews in Relativity",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5253894/fullTextXML",
+      "checked_on": "2026-11-11"
+    },
+    {
+      "title": "NOAA NWS: Understanding Lightning & Thunder",
+      "url": "https://www.weather.gov/safety/lightning-science-thunder",
+      "checked_on": "2026-11-11"
+    },
+    {
+      "title": "NIST CODATA: Speed of light in vacuum",
+      "url": "https://physics.nist.gov/cgi-bin/cuu/Value?c",
+      "checked_on": "2026-11-11"
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "layout": "heimao-left",
+      "headline": "GPS藍點**狂跳對街？**",
+      "sub": "差百萬分之一秒，竟飄走三百公尺",
+      "asset": "stock/75f8c86e546220b4b786786d758080a6c14be37311829189ecfeebffc2f0bd00.jpg"
+    }
+  },
+  "loops": [
+    {
+      "setup": "t001",
+      "payoff": "t023",
+      "what": "為何走在大樓中間手機 GPS 藍點會跳到對街"
+    },
+    {
+      "setup": "t003",
+      "payoff": "t019",
+      "what": "定位為何至少要四顆衛星、多出第四顆的用途"
+    },
+    {
+      "setup": "t005",
+      "payoff": "t006",
+      "what": "到底是手機問衛星還是衛星單向廣播"
+    },
+    {
+      "setup": "t011",
+      "payoff": "t013",
+      "what": "高空衛星上的原子鐘會不會因相對論走偏"
+    },
+    {
+      "setup": "t026",
+      "payoff": "t028",
+      "what": "衛星被大樓擋掉幾顆為何會出現誤差放大倍數"
+    },
+    {
+      "setup": "t030",
+      "payoff": "t033",
+      "what": "高空電離層是不是把藍點甩去對街的元兇"
+    },
+    {
+      "setup": "t034",
+      "payoff": "t037",
+      "what": "為何重開地圖時藍點會等很久才出來"
+    },
+    {
+      "setup": "t038",
+      "payoff": "t039",
+      "what": "為何平常剛打開地圖藍點一兩秒就出現"
+    },
+    {
+      "setup": "t041",
+      "payoff": "t043",
+      "what": "輔助 GPS 跳過慢速廣播有沒有代價"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "kid-blue-dot-street-jump",
+      "chapter": "GPS藍點跳到對街，只差百萬分之一秒？",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a bright city sidewalk framed by tall smooth glass towers with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, holding a small phone showing only pale-green and grey map blocks with one glowing blue dot, looking up puzzled.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t001",
+          "speaker": "kid",
+          "text": "所長！我走在大樓中間，手機 GPS 藍點竟直接跳到對街，害我重開地圖還卡半天——為什麼會這樣？",
+          "say": "所長！我走在大樓中間，手機 G P S 藍點竟直接跳到對街，害我重開地圖還卡半天——為什麼會這樣？",
+          "say_for": "d7626ebfc615"
+        }
+      ]
+    },
+    {
+      "id": "ride-car-wrong-side-street",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot sunny Taiwanese city boulevard lined with smooth glass office buildings: a cute yellow taxi waiting patiently on the far side of the wide crosswalk while a single glowing blue pin pulses on the opposite sidewalk, zero signs or text.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t002",
+          "speaker": "chief",
+          "text": "藍點亂跳，關鍵在 GPS 靠算時間定距離！訊號如光速，差百萬分之一秒、即一微秒，距離就偏約三百公尺！",
+          "say": "藍點亂跳，關鍵在 G P S 靠算時間定距離！訊號如光速，差百萬分之一秒、即一微秒，距離就偏約三百公尺！",
+          "say_for": "757b6e6f838b"
+        }
+      ]
+    },
+    {
+      "id": "lighthouse-satellite-four-hint",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up storybook sky diorama: a cute golden-winged cartoon satellite floating high in bright azure sky sending soft golden concentric radio rings downward like a shining lighthouse beam.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t003",
+          "speaker": "chief",
+          "text": "靠天上衛星定位更反直覺：衛星鐘每天快約三十八微秒，而且至少要聽四顆，多那第四顆竟是為了別的事！"
+        }
+      ]
+    },
+    {
+      "id": "chief-culprit-beside-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the sunlit wooden office with generous headroom, 2.5-head chibi Taiwanese office chief woman with generous headroom, dark brown-black low side ponytail with silver-grey streak, round black glasses, warm brown aligned eyes, bare clean ears, mustard-yellow knitted cardigan over white shirt, dark navy trousers, five clean fingers, smiling intriguingly behind her oak counter holding a shiny silver referee whistle and a tiny golden pocket watch.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t004",
+          "speaker": "chief",
+          "text": "今天我們就來聊聊，GPS 怎麼靠時間定位——以及把藍點甩去對街、害地圖卡半天的兇手為什麼就在身邊！",
+          "say": "今天我們就來聊聊，G P S 怎麼靠時間定位——以及把藍點甩去對街、害地圖卡半天的兇手為什麼就在身邊！",
+          "say_for": "f12b314d7fff"
+        }
+      ]
+    },
+    {
+      "id": "kid-phone-asks-satellite-guess",
+      "chapter": "衛星根本不知道你在哪，它只像燈塔一直喊時間",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on the sunlit sidewalk with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, tilting her head upward toward the bright sky while holding up her small phone in one five-fingered hand.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t005",
+          "speaker": "kid",
+          "text": "等等，難道不是我的手機發訊號去問天上衛星「我現在在哪裡」，衛星再算完傳回來給我嗎？"
+        }
+      ]
+    },
+    {
+      "id": "satellite-lighthouse-broadcast",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot vibrant daylight coastal cliff metaphor blended with sky: a miniature luminous satellite beaming one-way golden light pulses downward like a classic striped lighthouse toward a quiet tiny phone resting on green grass below.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t006",
+          "speaker": "chief",
+          "text": "剛好相反！衛星根本不知道你在哪，它像海邊燈塔只管一直往下廣播，手機只聽不說話，自己算出位置。"
+        }
+      ]
+    },
+    {
+      "id": "park-whistle-game-setup",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot sunny neighborhood park lawn: a shiny silver whistle resting on a sunlit wooden park bench sending visible rippling pearlescent sound rings across bright green grass toward a plain two-hand wristwatch on a blanket.",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t007",
+          "speaker": "chief",
+          "text": "就像看到閃電數打雷！用「公園哨子遊戲」想：朋友戴準錶整點吹哨，你盯自己手錶算晚幾秒，就能推他多遠。"
+        }
+      ]
+    },
+    {
+      "id": "satellite-atomic-clock-orbit",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up luminous cartoon satellite floating gently above Earth's curved bright blue horizon: a radiant crystalline golden precision clockwork core glowing warmly inside its transparent body, zero digits.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t008",
+          "speaker": "chief",
+          "text": "天上的 GPS 衛星就是那個吹哨的朋友！它飛在兩萬公里高空，身上帶著非常準的「原子鐘」，訊號裡寫著發射時刻。",
+          "say": "天上的 G P S 衛星就是那個吹哨的朋友！它飛在兩萬公里高空，身上帶著非常準的「原子鐘」，訊號裡寫著發射時刻。",
+          "say_for": "716fe4c760cc"
+        }
+      ]
+    },
+    {
+      "id": "signal-travel-60-90ms",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot vertical cutaway from starry bright upper atmosphere down to a sunlit city park: a brilliant golden beam streaking smoothly downward from a cute golden-winged satellite straight to a tiny phone on the ground.",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t009",
+          "speaker": "chief",
+          "text": "這道光速哨聲從高空飛下來，只要六十到九十毫秒——連十分之一秒都不到，對時間精準度的要求誇張到極點！"
+        }
+      ]
+    },
+    {
+      "id": "kid-satellite-clock-accurate-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the sunlit office with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, leaning forward with raised skeptical eyebrows pointing playfully toward a cartoon satellite figurine on the table.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t011",
+          "speaker": "kid",
+          "text": "連十分之一秒都不到！那開頭說衛星上的原子鐘每天會變快，這麼準的鐘怎麼可能自己走偏？"
+        }
+      ]
+    },
+    {
+      "id": "relativity-gravity-speed-clock",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up storybook Earth-and-orbit tabletop scene: a glowing golden pocket watch orbiting high above Earth's curved blue rim ticking slightly brisker with warm amber aura than an identical pocket watch resting on the green ground below.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t012",
+          "speaker": "chief",
+          "text": "還真的會偏！照相對論，高空地球拉得沒那麼用力讓鐘走快，衛星飛很快又讓它走慢，兩邊一抵消還是走快了。"
+        }
+      ]
+    },
+    {
+      "id": "thirty-eight-microseconds-11km",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up bright laboratory workbench: a sleek golden-winged satellite resting on a sunlit oak stand while delicate brass calibration screwdrivers gently tune its glowing crystal clock core before launch.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t013",
+          "speaker": "chief",
+          "text": "每天快約三十八微秒，光夠跑十一公里多！好在衛星上天前會先調慢，上太空也會廣播修正值。"
+        }
+      ]
+    },
+    {
+      "id": "rope-ring-and-three-hoops",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot sunny green park grass viewed from high angle: three colorful overlapping hula hoops—red, amber, and sky-blue—lying cleanly on the lawn so their rims meet at one sparkling golden intersection spot.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t014",
+          "speaker": "chief",
+          "text": "鐘校準後怎麼找位置？回到公園，只聽一人吹哨不知方向、你會落在一整圈，疊三人才縮成一個點！"
+        }
+      ]
+    },
+    {
+      "id": "three-spheres-earth-space-two-pts",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up luminous orbital globe cutaway: three translucent glowing golden spheres radiating from three satellites intersecting cleanly at two bright dots—one glowing emerald on Earth's surface, the other fading dim out in deep space.",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t014b",
+          "speaker": "chief",
+          "text": "換到立體太空，三顆衛星的距離畫出三個球面，交會出地球上跟外太空兩個點——排除掉外太空那點就鎖定你！"
+        }
+      ]
+    },
+    {
+      "id": "kid-why-fourth-satellite-q",
+      "chapter": "第四顆衛星竟是來對錶？兇手就站在玻璃牆邊！",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the sunlit office with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, counting four clean fingers up in puzzlement while peering at the three overlapping colored rings on the wooden counter.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t015",
+          "speaker": "kid",
+          "text": "等等，剛說聽三顆衛星就能縮出一個點了，那開頭為什麼說至少要四顆？多那第四顆要幹嘛？"
+        }
+      ]
+    },
+    {
+      "id": "phone-no-atomic-clock",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up sunlit studio comparison: left shows a dazzling jewel-like golden atomic clock glowing inside a glass dome; right shows an everyday sleek phone beside a simple tiny slightly tilted two-hand wristwatch.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t016",
+          "speaker": "chief",
+          "text": "只聽三顆有個致命前提：你手機裡得塞一顆跟衛星完全同步的原子鐘！但一般手機根本不可能裝原子鐘。"
+        }
+      ]
+    },
+    {
+      "id": "slow-watch-shrinking-rings",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot sunny park lawn overhead diorama: three colorful hula hoops all shrunk evenly inward so their rims fail to touch, leaving an awkward glowing coral triangle gap right in the middle.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t017",
+          "speaker": "chief",
+          "text": "回到哨子遊戲，想像三位朋友在不同方向吹哨：要是你手錶慢了一秒，你會誤以為每個哨聲都少跑一秒！"
+        }
+      ]
+    },
+    {
+      "id": "three-rings-fail-to-meet",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up sunny park grass macro: three bright colored hula hoop rims pulled evenly apart around an empty grassy gap, glowing soft coral where they refuse to intersect.",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t018",
+          "speaker": "chief",
+          "text": "聲音每秒約走三百多公尺，三位朋友聽起來全變近三百多公尺，三個圈圈一起縮太小，當場完全交不到一起！"
+        }
+      ]
+    },
+    {
+      "id": "fourth-satellite-four-unknowns",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up sunlit oak surface: four glowing miniature golden compasses pointing toward a single crystal prism at center—three representing space axes and the fourth displaying a tiny luminous clock dial clicking perfectly into alignment.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t019",
+          "speaker": "chief",
+          "text": "解法超聰明：換回太空的衛星，手機把「東西、南北、高低」加上「自己錶差多少」當四個未知數，多聽第四顆一起算！"
+        }
+      ]
+    },
+    {
+      "id": "least-squares-best-fit",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up glowing editorial visual on daylight grey: six luminous golden satellite beams converging cleanly toward a small phone, gently balancing around one crisp emerald glow point representing their best compromise fit.",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t020",
+          "speaker": "chief",
+          "text": "手機其實不是真的在畫球面，而是同時解這四個答案；為了讓全球到處能收至少四顆，天上排了二十四個衛星位置！"
+        }
+      ]
+    },
+    {
+      "id": "kid-satellite-accurate-then-why-jump",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on the sunlit sidewalk between smooth glass towers with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, holding up her small phone with raised eyebrows looking eagerly at Chief.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t021",
+          "speaker": "kid",
+          "text": "哇，第四顆竟是幫手機對錶的！那衛星鐘這麼準、天上又隨時有四顆，我走在大樓間藍點跳到對街，到底是誰搗的鬼？"
+        }
+      ]
+    },
+    {
+      "id": "glass-wall-signal-bounce",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot sunny city street cutaway between sleek reflective glass towers: a direct golden satellite beam blocked by a roof, while a second beam hits the gleaming glass wall opposite, bounces at an angle, and arrives late at the phone on the sidewalk.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t023",
+          "speaker": "chief",
+          "text": "衛星在太空發出的訊號原本誤差不到六十五公分；兇手叫「多路徑」：訊號撞牆繞遠，直達訊號被擋就全靠反彈算！"
+        }
+      ]
+    },
+    {
+      "id": "whistle-echo-wall-analogy",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot sunlit park brick pavilion corner: shimmering silver sound rings from a park whistle bouncing visibly off a tall warm brick wall before reaching a child's phone on the path.",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t024",
+          "speaker": "chief",
+          "text": "像哨聲撞牆晚到會誤認朋友更遠，訊號一繞路就把藍點推去對街——尤其貼牆走、接低空衛星時最容易反彈！"
+        }
+      ]
+    },
+    {
+      "id": "sky-strip-between-towers",
+      "chapter": "不只反彈，大樓把天空夾成一條縫還有第二擊",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide low-angle upward shot standing between two towering smooth modern glass skyscrapers in Taipei sunlight: the bright blue sky above is squeezed into one narrow vertical ribbon with only a couple tiny golden satellites visible.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t025",
+          "speaker": "chief",
+          "text": "更雪上加霜的是大樓還會直接擋掉衛星！抬頭看天空只剩一條細縫，能用的衛星一變少，原本小誤差就更容易被放大。"
+        }
+      ]
+    },
+    {
+      "id": "kid-what-is-multiplier-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the sunlit office with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, tilting her head curiously while holding up a small brass magnifying glass.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t026",
+          "speaker": "kid",
+          "text": "等等，被高樓擋掉幾顆衛星，只要天空還留著四顆湊齊四個未知數，難道算出來的結果不會一樣準嗎？"
+        }
+      ]
+    },
+    {
+      "id": "geometry-multiplier-balance",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up clean tabletop visual: a tiny glowing golden magnifying lens sitting between a small satellite error ruler on left and a much wider glowing blue location circle on right, illustrating error magnification.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t027",
+          "speaker": "chief",
+          "text": "不一樣！衛星全被逼在頭頂同一條窄縫裡，就像朋友全擠同側吹哨，測距偏一點交點就整片滑開，甚至算不出座標！"
+        }
+      ]
+    },
+    {
+      "id": "five-plus-satellites-better",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up sunny sky courtyard view: five gleaming golden satellites spread cleanly across the upper sky beaming crisp mint lines downward, shrinking the target circle around a small phone nicely.",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t028",
+          "speaker": "chief",
+          "text": "反過來天空開闊、收到五顆以上分散四周的衛星，彼此從不同方向拉住交點，定位會比擠在窄縫的四顆穩得多！"
+        }
+      ]
+    },
+    {
+      "id": "open-sky-5m-vs-tall-buildings",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up side-by-side miniature city diorama: left open sunny park lawn shows a tight calm blue ring around a phone; right dense cluster of tall glass towers shows the blue ring stretching wildly across the street.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t029",
+          "speaker": "chief",
+          "text": "就算空曠無樓，訊號穿過大氣加手機誤差仍會放大：史丹佛實測上千支手機，開闊處約差五公尺，進高樓更隨樓高飆升！"
+        }
+      ]
+    },
+    {
+      "id": "kid-upper-sky-layer-guess",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the sunlit office with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, tapping her chin curiously and pointing upward toward a soft violet sky-haze band painted on a globe.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t030",
+          "speaker": "kid",
+          "text": "那剛剛說訊號得穿過大氣層，高空大氣會不會其實也是把我的藍點甩去對街的幫兇之一？"
+        }
+      ]
+    },
+    {
+      "id": "ionosphere-haze-band-sky",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot atmospheric daylight-to-space cutaway: a smooth broad pastel-violet shimmering mist ribbon hovering uniformly high above the entire city skyline as golden satellite beams bend softly passing through it.",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t031",
+          "speaker": "chief",
+          "text": "高空帶電的「電離層」確實會拖慢訊號！只收單一頻率的手機沒法自己比對延遲，遇劇烈波動誤差就能飆到幾十公尺。"
+        }
+      ]
+    },
+    {
+      "id": "dual-whistles-high-low-pitch",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up warm oak studio desk: two gleaming metal whistles side by side—one larger silver low-tone whistle and one smaller golden high-tone whistle—each trailing distinct smooth luminous turquoise and amber wave ribbons.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t032",
+          "speaker": "chief",
+          "text": "但衛星廣播附了電離層修正參數，估計修掉約一半；像聽高低兩支哨子般收雙頻，更能清掉九成九以上！"
+        }
+      ]
+    },
+    {
+      "id": "chief-sky-smooth-not-street-jump",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the bright office with generous headroom, 2.5-head chibi Taiwanese office chief woman with generous headroom, dark brown-black low side ponytail with silver-grey streak, round black glasses, warm brown aligned eyes, bare clean ears, mustard-yellow knitted cardigan over white shirt, dark navy trousers, five clean fingers, smiling reassuringly while gesturing cleanly between a smooth sky model and two miniature tall glass buildings.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t033",
+          "speaker": "chief",
+          "text": "更重要的是，高空電離層是整片天空慢慢變，不會在兩棟大樓間突然跳動——所以甩飛藍點的，多半不是天上，而是牆邊！"
+        }
+      ]
+    },
+    {
+      "id": "kid-why-map-waits-so-long",
+      "chapter": "重開地圖為何卡半天？靠網路偷吃步竟要多一顆衛星！",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on the sunlit sidewalk corner with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, staring impatiently at her small phone screen showing a pulsing grey search ring over pale-green blocks.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t034",
+          "speaker": "kid",
+          "text": "大樓擋住又反彈我懂了！對了，我開頭說在街角把地圖關掉重開，它怎麼突然卡在原地等了老半天才跳出來？"
+        }
+      ]
+    },
+    {
+      "id": "whistle-friend-where-standing",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot sunny park meadow: a miniature satellite figurine holding a glowing folded star map, tapping out slow steady rhythmic golden Morse-like light dots across the grass.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t035",
+          "speaker": "chief",
+          "text": "因為光聽訊號飛多久還不夠，手機得先知道每顆衛星「現在飛在哪裡」跟它的微小鐘差——這份資料就藏在衛星廣播裡。"
+        }
+      ]
+    },
+    {
+      "id": "slow-50-bits-thirty-sec-frame",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up sunlit studio turntable metaphor: a vintage brass ticker tape unspooling tiny glowing amber beads slowly one by one along a neat three-segment circular brass track, zero text or numerals.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t036",
+          "speaker": "chief",
+          "text": "衛星廣播講超慢，每秒僅五十位元、也就是五十小格資料，每三十秒重念一整輪；鐘差跟位置就放在最前三段！"
+        }
+      ]
+    },
+    {
+      "id": "urban-canyon-cold-start-break",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot towering city glass-canyon street: a dashed trail of tiny golden broadcast beads getting clipped halfway by a skyscraper corner before reaching a tiny phone below.",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t037",
+          "speaker": "chief",
+          "text": "傳統手機想收齊這前三段，最久得等約三十六秒；如果久沒定位進入「冷開機」，在大樓間訊號斷續自然等更久！"
+        }
+      ]
+    },
+    {
+      "id": "kid-instant-blue-dot-surprise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on the sunny street corner with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, blinking in surprise as the glowing blue dot snaps cleanly onto her small phone screen.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t038",
+          "speaker": "kid",
+          "text": "咦？可是我平常出門剛解鎖手機、一打開地圖，藍點常常一兩秒就出現了，根本沒等三十幾秒呀！"
+        }
+      ]
+    },
+    {
+      "id": "cell-tower-assisted-gps",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot sunlit hillside overlooking a bright city: a sleek red-and-white cellular tower beaming crisp turquoise data ribbons swiftly straight to a tiny phone, delivering miniature golden satellite location cards in a flash.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t039",
+          "speaker": "chief",
+          "text": "平常若剛定位過，手機還留著先前存好的衛星位置能秒開；不然就是靠「輔助 GPS」，直接用行動網路搶先下載！",
+          "say": "平常若剛定位過，手機還留著先前存好的衛星位置能秒開；不然就是靠「輔助 G P S」，直接用行動網路搶先下載！",
+          "say_for": "1aed2f17c067"
+        }
+      ]
+    },
+    {
+      "id": "park-text-message-friends",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up warm sunlit park bench: a small phone popping up a crisp glowing golden park map sketch showing tiny pins for each friend, while just one brief sparkling whistle chime flashes from afar.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t040",
+          "speaker": "chief",
+          "text": "就像有人先傳訊息告訴你每位朋友站在哪，你不用傻傻等他們一個字一個字報地址，只要聽幾毫秒衛星訊號就能算！"
+        }
+      ]
+    },
+    {
+      "id": "kid-any-catch-assisted-gps-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the sunlit office with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, narrowing her eyes like a sharp little detective pointing one clean finger upward.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t041",
+          "speaker": "kid",
+          "text": "聽起來超作弊耶！直接用網路先拿衛星位置、跳過那段慢慢念的廣播，難道完全沒有代價嗎？"
+        }
+      ]
+    },
+    {
+      "id": "moving-satellite-800m-per-sec",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up dramatic orbital studio scene: a golden-winged satellite zooming swiftly forward along a glowing cyan arc while a slightly delayed ghost silhouette trails noticeably behind it, stretching a red distance ribbon.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t042",
+          "speaker": "chief",
+          "text": "代價又繞回時間！沒讀廣播就少了精確時刻，導航期刊論文回顧指出：衛星飛超快，時間每差一秒距離就錯約八百公尺！"
+        }
+      ]
+    },
+    {
+      "id": "five-satellites-fifth-unknown",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot glowing daylight-blue sky dome: five gleaming golden satellites shining down five crisp luminous emerald rays onto one small phone, lighting up a radiant five-point balance star around it.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t043",
+          "speaker": "chief",
+          "text": "好在手機知道衛星飛多快，於是乾脆把「精確時間」變成第五個未知數一起解——代價就是至少要收到五顆衛星！"
+        }
+      ]
+    },
+    {
+      "id": "chief-street-corner-fast-dot",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the sunlit wooden office with generous headroom, 2.5-head chibi Taiwanese office chief woman with generous headroom, dark brown-black low side ponytail with silver-grey streak, round black glasses, warm brown aligned eyes, bare clean ears, mustard-yellow knitted cardigan over white shirt, dark navy trousers, five clean fingers, smiling knowingly while holding up five clean fingers beside her brass pocket watch.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t044",
+          "speaker": "chief",
+          "text": "你平常在街角一打開地圖就秒跳出來的藍點，很可能就是靠這招，把五個答案一口氣算出來。"
+        }
+      ]
+    },
+    {
+      "id": "kid-five-satellites-amazement",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on the sunlit park path entering bright green trees with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, gasping delightedly with wide sparkling eyes looking down at her phone.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t045",
+          "speaker": "kid",
+          "text": "一邊聊著，我們不知不覺走出大樓峽谷、踏進開闊公園了——所長你看，我的藍點竟然瞬間穩下來了！"
+        }
+      ]
+    },
+    {
+      "id": "chief-back-to-sidewalk-test",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the sunlit wooden office with generous headroom, 2.5-head chibi Taiwanese office chief woman with generous headroom, dark brown-black low side ponytail with silver-grey streak, round black glasses, warm brown aligned eyes, bare clean ears, mustard-yellow knitted cardigan over white shirt, dark navy trousers, five clean fingers, resting her chin warmly on one hand with a playful encouraging smile.",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t046",
+          "speaker": "chief",
+          "text": "從高樓峽谷走到這片草地，藍點表現判若兩人——你有沒有發現，改變的其實不是天上衛星，而是你周圍的環境？"
+        }
+      ]
+    },
+    {
+      "id": "kid-aha-bounced-signal-payoff",
+      "chapter": "走到公園想通了：手機每次定位都在幫自己對錶",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in the bright sunny green park with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, beaming with a huge joyful eureka grin while holding up her small phone whose blue dot sits rock-steady on the green lawn.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t047",
+          "speaker": "kid",
+          "text": "原來如此！衛星從頭到尾都在高空準時廣播，決定藍點準不準的，全是手機看得到多少片乾淨天空！"
+        }
+      ]
+    },
+    {
+      "id": "park-open-sky-steady-dot",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot vibrant golden-hour neighborhood park lawn beneath a wide crystal-blue open sky: four gleaming golden satellites shining clean unbroken rays down onto a calm steady blue dot on a park bench phone.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t048",
+          "speaker": "kid",
+          "text": "以後我再也不冤枉手機地圖壞掉了——它只是站在兩面玻璃高牆夾縫裡，被周圍環境考倒了而已！"
+        }
+      ]
+    },
+    {
+      "id": "chief-setting-watch-reflection",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the warm golden-hour wooden office with generous headroom, 2.5-head chibi Taiwanese office chief woman with generous headroom, dark brown-black low side ponytail with silver-grey streak, round black glasses, warm brown aligned eyes, bare clean ears, mustard-yellow knitted cardigan over white shirt, dark navy trousers, five clean fingers, smiling warmly behind her oak desk holding up the gleaming silver whistle and golden pocket watch.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t049",
+          "speaker": "chief",
+          "text": "說得太棒了！還記得公園遊戲裡那支慢一秒的錶嗎？我覺得最神奇的是：手機每次定位，其實都在順手幫自己對錶。"
+        }
+      ]
+    },
+    {
+      "id": "watch-and-phone-golden-sync",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up cozy golden-hour oak tabletop: a small phone showing a steady glowing blue dot resting peacefully beside a finely crafted brass pocket watch catching warm amber afternoon sunbeams.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t050",
+          "speaker": "chief",
+          "text": "靠著高空裡的原子鐘和光速算術，每一次抓座標，都是把天上跟掌心的時間精準扣在一起。"
+        }
+      ]
+    },
+    {
+      "id": "taxi-pickup-open-corner",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot warm sunny Taipei street corner just outside an open plaza: a cheerful yellow taxi pulling up smoothly right next to a glowing blue pin on the bright open sidewalk.",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t051",
+          "speaker": "chief",
+          "text": "下次在高樓林立的街口叫車，要是藍點又突然跳去對面，多往開闊路口走幾步，你馬上就知道怎麼幫它看清天空！"
+        }
+      ]
+    },
+    {
+      "id": "chief-comment-prompt-p13",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the sunlit wooden office with generous headroom, 2.5-head chibi Taiwanese office chief woman with generous headroom, dark brown-black low side ponytail with silver-grey streak, round black glasses, warm brown aligned eyes, bare clean ears, mustard-yellow knitted cardigan over white shirt, dark navy trousers, five clean fingers, facing the viewer with a warm approachable smile and one open welcoming hand (five clean fingers), clean plain wooden wall behind.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t052",
+          "speaker": "chief",
+          "text": "最後問問你：你在哪裡遇過地圖藍點亂跳、害外送或計程車停錯邊的糗事？留言分享給大家聽！"
+        }
+      ]
+    },
+    {
+      "id": "kid-subscribe-goodbye-p13",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the sunny wooden studio with floating golden dust motes and generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, smiling joyfully and waving goodbye with one raised clean five-fingered hand.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t053",
+          "speaker": "kid",
+          "text": "喜歡把天天用卻沒細想過的科技原理拆個徹底，別忘了訂閱原來如此事務所，我們下次見！"
+        }
+      ]
+    }
+  ]
+}

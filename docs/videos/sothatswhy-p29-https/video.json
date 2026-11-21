@@ -1,0 +1,1398 @@
+{
+  "schema_version": 1,
+  "slug": "sothatswhy-p29-https",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "pauses": {
+    "line_ms": 0,
+    "scene_ms": 150
+  },
+  "still_motion": "beat",
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；溫暖清楚的解說主持人，像在跟一個好奇的朋友講道理，語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音",
+    "tempo": 1.08
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "theme": "paper",
+  "look": {
+    "preset": "cute-cartoon"
+  },
+  "series": {
+    "slug": "sothatswhy",
+    "episode": 29,
+    "chapter": 1
+  },
+  "music": {
+    "track": "sothatswhy-p02-bed.m4a",
+    "sha256": "54169439df49a00bc3ad993a148690be9f79d1dff8a4ea5143e64e583001b20c",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "assets": [
+    {
+      "path": "stock/6f983c8279821ca7838cc66a9f32535cc4500b4bcb9dd8949b17fc1dc9173ce8.jpg",
+      "source": "Mokaair 原來如此事務所",
+      "license": "Mokaair"
+    }
+  ],
+  "characters": [
+    {
+      "id": "chief",
+      "name": "所長",
+      "appearance": "2.5-head chibi Taiwanese office chief woman with generous headroom, dark brown-black low side ponytail with silver-grey streak, round black glasses, warm brown aligned eyes, bare clean ears, mustard-yellow knitted cardigan over white shirt, dark navy trousers, five clean fingers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；溫暖清楚的解說主持人，像在跟一個好奇的朋友講道理，語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音",
+        "tempo": 1.08
+      }
+    },
+    {
+      "id": "kid",
+      "name": "小問",
+      "appearance": "2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；好奇愛發問的年輕女生，像觀眾的嘴替，語氣輕快自然，語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音",
+        "tempo": 1.12
+      }
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "網址小鎖頭竟然會騙人？幾乎所有釣魚站都有 HTTPS｜原來如此事務所",
+    "description": "網址旁有小鎖頭跟 HTTPS 就能放心打密碼？其實只有 11% 的受試者真正懂小鎖頭的意思，幾乎所有釣魚網站也都掛著 HTTPS，連 Chrome 都在 2023 年宣布把鎖頭換成中性圖示！\n用「上課傳紙條」一次看懂網址多一個 S（HTTPS / TLS 1.3）在路上替你的密碼做了什麼：憑證鏈與內建根憑證、公開透明帳本（CT）、眾目睽睽下調顏料交換金鑰與前向保密、防篡改封條與隱藏序號、0-RTT 搶先送出例外，以及信封厚度、網站名稱（SNI / 2026 ECH）與釣魚網站的邊界——為什麼打密碼前一定要自己看清楚網址列！\n\n📚 參考規格與官方出處：\n- IETF RFC 8446（TLS 1.3）：https://www.rfc-editor.org/rfc/rfc8446\n- IETF RFC 9849（TLS Encrypted Client Hello, 2026-03）：https://www.rfc-editor.org/rfc/rfc9849\n- IETF RFC 5280（X.509 PKI Certificate）：https://www.rfc-editor.org/rfc/rfc5280\n- IETF RFC 9110（HTTP Semantics）：https://www.rfc-editor.org/rfc/rfc9110\n- Let's Encrypt How It Works & Chains of Trust：https://letsencrypt.org/how-it-works/\n- Certificate Transparency：https://certificate.transparency.dev/howctworks/\n- Chromium Blog (2023-05-02) An Update on the Lock Icon：https://blog.chromium.org/2023/05/an-update-on-lock-icon.html\n- Google Chrome Support (Check if a site's connection is secure)：https://support.google.com/chrome/answer/95617?hl=en\n- MDN Web Docs (HTTPS & How the Internet works)：https://developer.mozilla.org/en-US/docs/Glossary/HTTPS\n\n#原來如此事務所 #HTTPS #小鎖頭 #釣魚網站 #網路安全 #TLS #資安科普",
+    "tags": [
+      "原來如此事務所",
+      "HTTPS",
+      "TLS",
+      "小鎖頭",
+      "釣魚網站",
+      "網路安全",
+      "加密",
+      "資安",
+      "科普"
+    ]
+  },
+  "sources": [
+    {
+      "title": "IETF RFC 8446 (TLS 1.3)",
+      "url": "https://www.rfc-editor.org/rfc/rfc8446",
+      "checked_on": "2026-11-12"
+    },
+    {
+      "title": "IETF RFC 9849 (TLS ECH)",
+      "url": "https://www.rfc-editor.org/rfc/rfc9849",
+      "checked_on": "2026-11-12"
+    },
+    {
+      "title": "IETF RFC 5280 (X.509)",
+      "url": "https://www.rfc-editor.org/rfc/rfc5280",
+      "checked_on": "2026-11-12"
+    },
+    {
+      "title": "IETF RFC 9110 (HTTP Semantics)",
+      "url": "https://www.rfc-editor.org/rfc/rfc9110",
+      "checked_on": "2026-11-12"
+    },
+    {
+      "title": "Let's Encrypt How It Works",
+      "url": "https://letsencrypt.org/how-it-works/",
+      "checked_on": "2026-11-12"
+    },
+    {
+      "title": "Let's Encrypt Chains of Trust",
+      "url": "https://letsencrypt.org/certificates/",
+      "checked_on": "2026-11-12"
+    },
+    {
+      "title": "Certificate Transparency How CT Works",
+      "url": "https://certificate.transparency.dev/howctworks/",
+      "checked_on": "2026-11-12"
+    },
+    {
+      "title": "Chromium Blog: An Update on the Lock Icon (2023)",
+      "url": "https://blog.chromium.org/2023/05/an-update-on-lock-icon.html",
+      "checked_on": "2026-11-12"
+    },
+    {
+      "title": "Google Chrome: Check if a site's connection is secure",
+      "url": "https://support.google.com/chrome/answer/95617?hl=en",
+      "checked_on": "2026-11-12"
+    },
+    {
+      "title": "MDN Web Docs: HTTPS",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/HTTPS",
+      "checked_on": "2026-11-12"
+    },
+    {
+      "title": "MDN Web Docs: How does the Internet work?",
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/How_does_the_Internet_work",
+      "checked_on": "2026-11-12"
+    },
+    {
+      "title": "Google Chrome: Manage warnings about unsafe sites",
+      "url": "https://support.google.com/chrome/answer/99020?hl=en",
+      "checked_on": "2026-11-12"
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "layout": "heimao-left",
+      "headline": "HTTPS小鎖頭**會騙人？**",
+      "sub": "多一個S到底防了誰，為何Chrome撤掉它",
+      "asset": "stock/6f983c8279821ca7838cc66a9f32535cc4500b4bcb9dd8949b17fc1dc9173ce8.jpg"
+    }
+  },
+  "loops": [
+    {
+      "setup": "h001",
+      "payoff": "h022",
+      "what": "為何 Chrome 宣布撤掉網址旁的 HTTPS 小鎖頭"
+    },
+    {
+      "setup": "h004",
+      "payoff": "h057",
+      "what": "網址多一個 S 替密碼防了什麼、又哪裡根本不管"
+    },
+    {
+      "setup": "h006",
+      "payoff": "h012",
+      "what": "在咖啡店輸入密碼是不是直接飛到遊戲公司"
+    },
+    {
+      "setup": "h013",
+      "payoff": "h019",
+      "what": "把信封起來是不是就夠、怎麼防冒充與假證件"
+    },
+    {
+      "setup": "h020",
+      "payoff": "h059",
+      "what": "免費寶石連結也掛著 HTTPS 小鎖頭怎麼分辨真假"
+    },
+    {
+      "setup": "h023",
+      "payoff": "h026",
+      "what": "發證機構出包亂發證時瀏覽器怎麼防與警告"
+    },
+    {
+      "setup": "h027",
+      "payoff": "h032",
+      "what": "大家都在看怎麼先約好同一把加密鑰匙不被偷學"
+    },
+    {
+      "setup": "h033",
+      "payoff": "h035",
+      "what": "把今天加密信全錄下來等以後偷真私章解得開嗎"
+    },
+    {
+      "setup": "h036",
+      "payoff": "h038",
+      "what": "壞人影印公開憑證並偷換顏色怎麼被抓包"
+    },
+    {
+      "setup": "h040",
+      "payoff": "h043",
+      "what": "把整封加密信抄下來重送或調換順序會怎樣"
+    },
+    {
+      "setup": "h045",
+      "payoff": "h054",
+      "what": "用了 HTTPS 後路上的人是不是真的什麼都看不到"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "kid-cafe-lock-opening",
+      "chapter": "網址小鎖頭竟然會騙人？",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a bright sunlit Taiwanese cafe with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, holding a plain pale-grey tablet showing only a glowing green padlock icon on a clean top bar, looking up puzzled.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h001",
+          "speaker": "kid",
+          "text": "所長！有小鎖頭跟 HTTPS 就能安心打密碼，結果 Chrome 卻宣布把鎖頭撤掉，怎麼回事？",
+          "say": "所長！有小鎖頭跟 H T T P S 就能安心打密碼，結果 Chrome 卻宣布把鎖頭撤掉，怎麼回事？",
+          "say_for": "289597dedea6"
+        }
+      ]
+    },
+    {
+      "id": "eleven-percent-lock-stat",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up wordless editorial diagram on a daylight-grey desk: ten glossy miniature enamel padlocks lined up cleanly, only one glowing bright emerald while nine glow dim frosted grey with subtle question-mark shadows.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h002",
+          "speaker": "chief",
+          "text": "因為他們的研究發現，受試者裡竟然只有百分之十一真正懂這顆小鎖頭的準確意思。"
+        }
+      ]
+    },
+    {
+      "id": "phishing-bandit-padlock",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up dramatic illustration of a gleaming metallic emerald padlock hovering on a warm wooden desk while a stylized shadowy paper-cut bandit wearing a dark domino mask peeks slyly from right behind it.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h003",
+          "speaker": "chief",
+          "text": "更離譜的是，幾乎所有騙密碼的釣魚網站也都掛著這顆鎖頭，照樣用 HTTPS 運作！",
+          "say": "更離譜的是，幾乎所有騙密碼的釣魚網站也都掛著這顆鎖頭，照樣用 H T T P S 運作！",
+          "say_for": "ddd4a4ca6436"
+        }
+      ]
+    },
+    {
+      "id": "chief-opening-boundary",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the sunny wooden office with generous headroom, 2.5-head chibi Taiwanese office chief woman with generous headroom, dark brown-black low side ponytail with silver-grey streak, round black glasses, warm brown aligned eyes, bare clean ears, mustard-yellow knitted cardigan over white shirt, dark navy trousers, five clean fingers, smiling intriguingly behind her oak desk holding a red-wax-sealed cream envelope in one five-fingered hand.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h004",
+          "speaker": "chief",
+          "text": "從 HTTP 多個 S 變 HTTPS，路上能防大禍，但有一大塊要命的事它根本不管。",
+          "say": "從 H T T P 多個 S 變 H T T P S，路上能防大禍，但有一大塊要命的事它根本不管。",
+          "say_for": "fedecf045158"
+        }
+      ]
+    },
+    {
+      "id": "envelope-vs-padlock-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up sunlit wooden tabletop showcasing a glowing red-wax-sealed cream envelope beside a translucent crystal padlock glowing golden rim light, clean empty background.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h005",
+          "speaker": "chief",
+          "text": "今天我們就來聊聊，多這一個 S 到底鎖住了什麼，又為什麼連小鎖頭都會讓你看錯。"
+        }
+      ]
+    },
+    {
+      "id": "kid-cafe-direct-guess",
+      "chapter": "你的密碼根本不是直接飛到網站",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot by the sunny cafe window with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, tapping a plain pale-grey tablet on the wooden table with a curious confident expression.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h006",
+          "speaker": "kid",
+          "text": "等等，我現在就在咖啡店用免費網路登入遊戲——密碼不是按下送出就直接飛到遊戲公司嗎？"
+        }
+      ]
+    },
+    {
+      "id": "cafe-router-isp-hops",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot atmospheric cutaway diorama of a bright cafe shelf with a sleek white Wi-Fi router beaming a glowing golden folded paper note along blue relay cables across three distant internet router towers.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h007",
+          "speaker": "chief",
+          "text": "完全不是！你的密碼得先經過咖啡店的無線網路機器、再進網路公司，一站轉一站送去對面。"
+        }
+      ]
+    },
+    {
+      "id": "classroom-note-passing",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot sunlit wooden classroom rows of empty desks with a tiny unfolded cream paper note drifting smoothly across four wooden desks from back row toward the sunlit front desk, zero people.",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h008",
+          "speaker": "chief",
+          "text": "就像上課傳紙條給教室另一頭的好朋友，一路上得經過好幾排不認識的同學接手傳過去。"
+        }
+      ]
+    },
+    {
+      "id": "open-postcard-tamper",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up dramatic still life on a wooden desk: an unsealed open cream postcard glowing faintly with abstract geometric key symbols while a dark magnifying glass hovers above and a coral pencil tip hovers nearby.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h009",
+          "speaker": "chief",
+          "text": "要是沒加密直接傳，路上任何經手的機器不只可能偷看你的密碼，甚至還能偷改裡面的字！"
+        }
+      ]
+    },
+    {
+      "id": "kid-nice-classmates-doubt",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in the bright cafe with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, tilting her head innocently with both five-fingered hands raised in a light shrug.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h010",
+          "speaker": "kid",
+          "text": "可是大部分幫忙轉送的機器應該都很好心吧，哪會每一站都把我的密碼拆開來看？"
+        }
+      ]
+    },
+    {
+      "id": "chief-attacker-assumption",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the sunlit wooden office with generous headroom, 2.5-head chibi Taiwanese office chief woman with generous headroom, dark brown-black low side ponytail with silver-grey streak, round black glasses, warm brown aligned eyes, bare clean ears, mustard-yellow knitted cardigan over white shirt, dark navy trousers, five clean fingers, leaning forward seriously behind her desk with one five-fingered hand gesturing toward a chess-like relay map.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h011",
+          "speaker": "chief",
+          "text": "問題是你沒辦法挑誰幫你傳！所以網路安全規格從一開始，就假設路上有人完全控制網路。"
+        }
+      ]
+    },
+    {
+      "id": "tls-wax-seal-close",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up macro on a warm oak tabletop: a crisp cream envelope sealed tightly with a gleaming crimson wax stamp glowing soft golden aura, opaque luminous protective shell wrapping the envelope.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h012",
+          "speaker": "chief",
+          "text": "多出的 S 代表安全，瀏覽器用叫 TLS 的加密規則把紙條鎖進信封，只有你跟對方網站看得懂。",
+          "say": "多出的 S 代表安全，瀏覽器用叫 T L S 的加密規則把紙條鎖進信封，只有你跟對方網站看得懂。",
+          "say_for": "a54b1cf62ecb"
+        }
+      ]
+    },
+    {
+      "id": "kid-sealed-enough-guess",
+      "chapter": "封起來就安全？幾乎所有釣魚站都有鎖頭",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the bright office with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, grinning proudly while holding a neatly red-wax-sealed cream envelope in both five-fingered hands.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h013",
+          "speaker": "kid",
+          "text": "原來如此！那只要把紙條封進信封裡不讓同學拆看，我的密碼就徹底安全了吧？"
+        }
+      ]
+    },
+    {
+      "id": "dns-crossroad-spoof",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot atmospheric miniature street crossroad at dusk: a small cream signpost splitting toward a sunlit blue game castle on left and a shadowy decoy cardboard facade on right, a mischievous masked hand rotating the wooden arrow.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h014",
+          "speaker": "chief",
+          "text": "只封信還不夠！打完網址，電腦得先像查電話簿般問路「這站住哪」——萬一壞人報假地址冒充呢？"
+        }
+      ]
+    },
+    {
+      "id": "imposter-gets-sealed-letter",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up dramatic tabletop scene: a perfectly sealed red-wax cream envelope sliding smoothly straight into a shadowy dark-gloved decoy mailbox with a grinning paper mask taped on front.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h015",
+          "speaker": "chief",
+          "text": "信封封得再緊，親手寄給冒牌貨照樣完蛋！所以寄信之前，對方必須先亮出一張「憑證」。"
+        }
+      ]
+    },
+    {
+      "id": "certificate-student-card",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up editorial illustration on a warm oak tabletop: a crisp cream laminated ID card displaying only a tiny minimalist golden castle emblem and an embossed circular golden wax seal pattern beside a gleaming brass stamp, strictly zero text.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h016",
+          "speaker": "chief",
+          "text": "憑證就像官方證件：寫著網址名字，並留有公開印章樣本，只有握有真私章的本尊才對得上。"
+        }
+      ]
+    },
+    {
+      "id": "kid-self-made-card-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the sunlit office with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, squinting playfully while holding up a hand-drawn crayon doodle card with five clean fingers.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h017",
+          "speaker": "kid",
+          "text": "那這張證件不能自己拿紙畫一張來騙人嗎？瀏覽器怎麼知道誰發的才算數？"
+        }
+      ]
+    },
+    {
+      "id": "ca-multi-vantage-check",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot miniature world globe tabletop diorama: a tiny cream website kiosk sitting in the center with an open golden drawer holding a glowing verification token, while four luminous emerald beams check it simultaneously from different sides of the globe.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h018",
+          "speaker": "chief",
+          "text": "自己畫的憑證瀏覽器不收！得向瀏覽器信任的發證機構申請，它會叫你在網站放指定暗號。"
+        }
+      ]
+    },
+    {
+      "id": "ca-domain-only-stamp",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up macro on a clean lab desk: a gleaming brass certification stamper pressing a crisp emerald seal onto a blank card beside a tiny toy house roof, ignoring a dark shadow mask sitting untouched off to the side.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h019",
+          "speaker": "chief",
+          "text": "機構從多處網路同時確認你管得了這網址就發證——但重點來了，它完全不查對方是不是好人！"
+        }
+      ]
+    },
+    {
+      "id": "kid-free-gems-link-shock",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up in the cafe with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, staring down wide-eyed in sudden alarm at a plain pale-grey tablet glowing with a sparkling purple gem icon and tiny green padlock.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h020",
+          "speaker": "kid",
+          "text": "等等！同學剛傳來「送免費寶石」的連結，網址開頭竟也掛著 HTTPS 跟小鎖頭耶！",
+          "say": "等等！同學剛傳來「送免費寶石」的連結，網址開頭竟也掛著 H T T P S 跟小鎖頭耶！",
+          "say_for": "d4124fe21bf0"
+        }
+      ]
+    },
+    {
+      "id": "phishing-legit-cert",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up side-by-side comparison on a daylight-grey desk: left gleaming sapphire game castle holding a green-sealed badge; right nearly identical crooked cardboard castle with one extra turret holding the exact same green-sealed badge.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h021",
+          "speaker": "chief",
+          "text": "小心，這種免費寶石連結很可能就是釣魚網站！騙子替相似假網址一樣領得到合法憑證。"
+        }
+      ]
+    },
+    {
+      "id": "chrome-lock-to-tune-icon",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up wordless UI metaphor on a warm desk: a glowing emerald miniature padlock on the left softly dissolving along golden light particles into two clean neutral horizontal slider-dot toggles on the right.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h022",
+          "speaker": "chief",
+          "text": "鎖頭只代表連線加密，不代表可信，Chrome 二零二三年才換掉它——但更致命的風險還在後頭！"
+        }
+      ]
+    },
+    {
+      "id": "kid-trust-ca-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in the bright office with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, resting one chin on her five-fingered palm with raised skeptical eyebrows.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h023",
+          "speaker": "kid",
+          "text": "比釣魚站還致命？可發證機構不是只認網址嗎，真銀行的網址騙子又管不到！"
+        }
+      ]
+    },
+    {
+      "id": "cert-chain-stairs",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up sculptural diorama on a sunny wooden desk: three translucent frosted glass cards arranged like ascending steps—bottom website card stamped by middle intermediate card, stamped by a radiant solid-gold top root card locked inside a tiny glass vault.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h024",
+          "speaker": "chief",
+          "text": "萬一被信任的發證機構自己出包亂發，連真銀行都能被冒充——網址全對，還照樣亮合法鎖頭！"
+        }
+      ]
+    },
+    {
+      "id": "ct-public-glass-ledger",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot sunlit corridor inside a crystal glass archive hall: rows of glowing cream certificate cards sealed forever inside transparent glass display cases where floating golden telescopes inspect them openly.",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h025",
+          "speaker": "chief",
+          "text": "所以像 Chrome 跟 Safari 要求每張憑證都登進公開透明帳本，誰都能查，機構一亂發立刻抓包！"
+        }
+      ]
+    },
+    {
+      "id": "chrome-not-private-shield",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up dramatic tabletop scene: a plain sleek glass screen flashing a bold crimson warning triangle icon with a broken silver chain emblem above three tiny silhouettes—a server box, a router, and a tablet, strictly zero text.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h026",
+          "speaker": "chief",
+          "text": "一旦憑證跟網址不符、或沒進公開帳本，瀏覽器立刻整頁亮紅燈擋下——可就算證件全真，還有個看似無解的難題！"
+        }
+      ]
+    },
+    {
+      "id": "kid-how-to-seal-q",
+      "chapter": "大家都在看，怎麼調出只有彼此懂的密碼？",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the sunlit office with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, leaning forward eagerly over the oak desk with both five-fingered palms open in curiosity.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h027",
+          "speaker": "kid",
+          "text": "什麼難題？等等——身分是靠憑證把關了，可鎖信封總得有把鑰匙吧，大家一路都在看，兩邊怎麼約好鑰匙不被偷學？"
+        }
+      ]
+    },
+    {
+      "id": "chief-paint-analogy-intro",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in the bright wooden office with generous headroom, 2.5-head chibi Taiwanese office chief woman with generous headroom, dark brown-black low side ponytail with silver-grey streak, round black glasses, warm brown aligned eyes, bare clean ears, mustard-yellow knitted cardigan over white shirt, dark navy trousers, five clean fingers, smiling warmly behind her desk where three clean glass paint jars of bright yellow, crimson, and cobalt sit ready.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h028",
+          "speaker": "chief",
+          "text": "這靠的是超酷的數學魔術！我們用「調顏料」來想像，兩邊怎麼在眾目睽睽下湊出同一把秘密鑰匙。"
+        }
+      ]
+    },
+    {
+      "id": "paint-public-yellow-base",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up sunlit studio table: two clear glass beakers on opposite ends both filled with luminous sunny yellow paint, while a tiny crimson dropper hovers privately on the left and a cobalt dropper hovers privately on the right.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h029",
+          "speaker": "chief",
+          "text": "兩人先公開講好同一杯黃色底漆，再各自偷偷滴進只有自己知道的紅顏料跟藍顏料。"
+        }
+      ]
+    },
+    {
+      "id": "paint-swap-middle-mix",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up dynamic tabletop composition: a beaker of vibrant tangerine-orange paint gliding right and a beaker of lush emerald-green paint gliding left across a wooden desk while magnifying glasses watch from above.",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h030",
+          "speaker": "chief",
+          "text": "接著把混好的橘跟綠交給同學傳——關鍵在顏料一混勻就拆不回原色，偷看也推不出秘方！"
+        }
+      ]
+    },
+    {
+      "id": "paint-matching-secret-brown",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up radiant tabletop reveal: both left and right glass beakers now swirl with the exact same rich luminous espresso-gold secret color glowing warmly, while the watchful glass lens in the middle stays empty and puzzled.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h031",
+          "speaker": "chief",
+          "text": "收到對方那杯再補上自己的秘密顏色，兩邊竟調出同一杯深棕色，路上同學卻完全湊不出來！"
+        }
+      ]
+    },
+    {
+      "id": "math-encrypted-cert-note",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up luminous artistic cutaway: swirling abstract golden geometric polyhedra locking tightly around a cream sealed envelope inside a shimmering opaque crystal cocoon.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h032",
+          "speaker": "chief",
+          "text": "調顏料只是比喻，實際靠的是數學；這把臨時鑰匙一算好，才把你的紙條跟密碼鎖進信封送出！"
+        }
+      ]
+    },
+    {
+      "id": "kid-record-now-decrypt-later",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the office with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, squinting sharply like a tiny detective holding an old wooden cassette recorder prop with five clean fingers.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h033",
+          "speaker": "kid",
+          "text": "等等，前面說網站一直握著真私章——要是壞人把今天鎖進信封的內容全錄下來，以後偷走私章，能一口氣全解開嗎？"
+        }
+      ]
+    },
+    {
+      "id": "forward-secrecy-pour-out",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up dramatic studio macro: a glass beaker of glowing espresso-gold secret paint evaporating cleanly into sparkling golden mist over a sink right as a fresh crystal timer resets, leaving zero drops behind.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h034",
+          "speaker": "chief",
+          "text": "解不開！真私章只驗身分，這回調出來鎖信的臨時鑰匙用完就銷毀、下次重調，這叫「前向保密」。"
+        }
+      ]
+    },
+    {
+      "id": "stolen-stamp-cant-unlock",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up atmospheric night tabletop: a shadowy hand holding a stolen golden brass stamp trying in vain against a row of tightly sealed glowing crystal vaults from earlier days that remain completely shut.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h035",
+          "speaker": "chief",
+          "text": "只要當初的臨時秘密已刪除，就算多年後網站私章被盜，以前被錄下的密文依然只是亂碼。"
+        }
+      ]
+    },
+    {
+      "id": "kid-photocopy-cert-trap",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the sunlit office with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, eyes lighting up with a clever catch, pointing one clean finger upward.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h036",
+          "speaker": "kid",
+          "text": "等一下！剛說每張憑證都登在公開帳本上——壞人影印遊戲公司憑證、再跟我調顏色怎麼辦？"
+        }
+      ]
+    },
+    {
+      "id": "server-live-stamp-transcript",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up dramatic tabletop scene: a heavy ornate golden brass seal pressing directly onto a continuous cream ribbon binding together paint drops, handshake notes, and the glowing badge in one unbroken crimson wax crest.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h037",
+          "speaker": "chief",
+          "text": "影印的人沒有那顆真私章！網站必須當場把真私章蓋在整段開場對暗號、連同顏色的紀錄上。"
+        }
+      ]
+    },
+    {
+      "id": "finished-check-abort",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up split visual on a daylight-grey desk: two matching golden wax-stamped checksum rings clicking together with a bright mint spark on left, while a single mismatched tooth snaps a glowing wire shut on right.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h038",
+          "speaker": "chief",
+          "text": "這段開場驗證叫「握手」；雙方最後再對一次整段握手的帳，差半點就斷線，全對上才寄信。"
+        }
+      ]
+    },
+    {
+      "id": "aead-seal-header-length",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up macro on a warm oak tabletop: a thick cream envelope wrapped in a shimmering golden tamper-proof band extending right across a tiny brass ruler gauge on the front, sparking red where a dark needle tries to poke.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h039",
+          "speaker": "chief",
+          "text": "每封信都用這秘密封好，連信封外的長度都算進封條；半路改一字就打不開、直接斷線。"
+        }
+      ]
+    },
+    {
+      "id": "kid-replay-copy-attack",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in the sunlit office with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, tapping her cheek mischievously holding two identical red-wax-sealed envelopes side by side with five clean fingers.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h040",
+          "speaker": "kid",
+          "text": "改不掉內容的話，壞人把整封加密信原封不動抄下來，偷偷多寄一次或調換前後順序呢？"
+        }
+      ]
+    },
+    {
+      "id": "hidden-sequence-gears",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up intricate cutaway diorama on a light lab desk: a gleaming row of wax-sealed cream envelopes gliding smoothly along two parallel brass gear tracks, glowing hidden gear teeth meshing inside each wax seal while exterior stays blank.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h041",
+          "speaker": "chief",
+          "text": "兩個方向都各自從零幫每封信編號，還把編號藏進封條不寫外面——重送或換順序全都會解密失敗！"
+        }
+      ]
+    },
+    {
+      "id": "zero-rtt-early-envelope",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up dramatic kinetic shot on a sunlit wooden desk: one impatient cream envelope darting forward ahead of a glowing handshake gate, casting a faint double-echo coral ghost trail behind it.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h042",
+          "speaker": "chief",
+          "text": "但有個規格用「重要提醒」標出的例外：以前連過時，為了省一次來回，第一封信能搶先送出。"
+        }
+      ]
+    },
+    {
+      "id": "zero-rtt-double-purchase-guard",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up editorial metaphor on a warm tabletop: two identical tiny golden shopping-bag tokens sliding toward a gleaming brass vault gate where a glowing sapphire mechanical stopper arm blocks the duplicate.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h043",
+          "speaker": "chief",
+          "text": "這種搶先資料不保證跨連線不被重送，可能害購買重複，規格另寫方法由伺服器自限。"
+        }
+      ]
+    },
+    {
+      "id": "close-notify-goodbye-seal",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up warm sunlit wooden desk: a final cream envelope stamped with a neat glowing turquoise period-dot wax seal sitting calmly beside a clean pair of brass scissors halted mid-air.",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h044",
+          "speaker": "chief",
+          "text": "就連收尾也很講究：寄完得正式發一聲「我講完了」，萬一半路被人剪斷連線才分得出來沒寄完。"
+        }
+      ]
+    },
+    {
+      "id": "kid-nothing-visible-guess",
+      "chapter": "封得這麼死，路上竟然還看得到這些線索？",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the sunlit office with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, smiling triumphantly with both five-fingered palms open as if the mystery is totally solved.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h045",
+          "speaker": "kid",
+          "text": "連編號跟收尾都鎖死了！那用了 HTTPS 後，路上的人不就什麼都看不到了吧？",
+          "say": "連編號跟收尾都鎖死了！那用了 H T T P S 後，路上的人不就什麼都看不到了吧？",
+          "say_for": "7621d03a2bab"
+        }
+      ]
+    },
+    {
+      "id": "envelope-thickness-timing",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up side-by-side comparison on a daylight-grey desk: a row of opaque red-wax-sealed envelopes passing under a rhythmic brass metronome—one wafer-thin, one bulging thick, one medium—still revealing their exact silhouettes.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h046",
+          "speaker": "chief",
+          "text": "還看得到關鍵線索！還記得剛提過信封外標著長度嗎？信有多厚、隔多久寄一封，路上依然看得見。"
+        }
+      ]
+    },
+    {
+      "id": "video-corpus-traffic-analysis",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up dark-studio forensic desk: three distinct glowing waveform profiles of stacked sealed envelopes corresponding to three tiny colorful movie reels resting in a fixed wooden film rack.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h047",
+          "speaker": "chief",
+          "text": "規格直接提醒：看長度和時間的流量分析有時能猜出資訊，尤其像片庫固定的影片網站特別容易。"
+        }
+      ]
+    },
+    {
+      "id": "padded-envelopes-uniform",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up neat studio tabletop: three sealed cream envelopes puffed to the exact same uniform thickness using fluffy white cotton filler tucked inside, beside a questioning tilted balance scale.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h048",
+          "speaker": "chief",
+          "text": "雖然兩邊能塞進空白把信封撐成一樣厚來干擾分析，但到底該塞多少，規格並沒有硬性規定。"
+        }
+      ]
+    },
+    {
+      "id": "envelope-outside-recipient-house",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up warm wooden tabletop: a tightly wax-sealed opaque cream envelope whose outside front clearly carries a crisp painted tiny crimson house emblem shining under a spotlight, zero text.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h049",
+          "speaker": "chief",
+          "text": "更明顯的線索是要找哪個網站的名字——在連線最開頭，它常常明晃晃寫在信封外頭！"
+        }
+      ]
+    },
+    {
+      "id": "kid-hide-recipient-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up inside the bright office with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, blinking in disbelief and pointing toward an envelope on the wooden desk.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h050",
+          "speaker": "kid",
+          "text": "連我正在連哪個網站的名字都露在外面？那不能把收件人名字也一起封進信封裡嗎？"
+        }
+      ]
+    },
+    {
+      "id": "ech-nested-envelope",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up sunlit studio cutaway: a gleaming translucent sapphire outer envelope gently opening to reveal a smaller red-wax-sealed inner cream envelope safely hiding the crimson house emblem inside.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h051",
+          "speaker": "chief",
+          "text": "二零二六年三月發布的網際網路新加密規格，正是想把網站名字裝進裡面一層信封一起封住。"
+        }
+      ]
+    },
+    {
+      "id": "shared-server-cabinet",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot bright server-room cutaway diorama: a sleek cream server cabinet holding stacks of glowing grey server blades, while colorful glowing mail tubes from five different miniature shops converge into the exact same cabinet.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h052",
+          "speaker": "chief",
+          "text": "但這份新規格自己就坦白說光這樣還不夠：信最後送到哪一台網站的機器，路上依然看得到。"
+        }
+      ]
+    },
+    {
+      "id": "chief-same-machine-clue",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the sunlit wooden office with generous headroom, 2.5-head chibi Taiwanese office chief woman with generous headroom, dark brown-black low side ponytail with silver-grey streak, round black glasses, warm brown aligned eyes, bare clean ears, mustard-yellow knitted cardigan over white shirt, dark navy trousers, five clean fingers, gently cradling a sleek miniature matte-grey server box in both five-fingered hands with a knowing expression.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h053",
+          "speaker": "chief",
+          "text": "就算許多網站常常共用同一台機器、讓目的地變得模糊，多一個外洩點終究沒辦法完全隱身。"
+        }
+      ]
+    },
+    {
+      "id": "dns-query-callback-leak",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up atmospheric street corner miniature: a tiny unsealed slip of paper floating up from a tablet toward a luminous blue directory kiosk at dusk, glowing clearly in plain view.",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h054",
+          "speaker": "chief",
+          "text": "而且別忘了出發前問路「這站住哪」那一問——要是那一問沒加密，照樣會把網站名字露出來！"
+        }
+      ]
+    },
+    {
+      "id": "kid-how-to-spot-fake-gems",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in the bright cafe with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, looking earnestly at camera while holding up the plain tablet displaying the shimmering purple gem icon.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h055",
+          "speaker": "kid",
+          "text": "連問路都漏名字！那回到剛才的免費寶石連結，它有 HTTPS 我該怎麼防騙子？",
+          "say": "連問路都漏名字！那回到剛才的免費寶石連結，它有 H T T P S 我該怎麼防騙子？",
+          "say_for": "57cddc488702"
+        }
+      ]
+    },
+    {
+      "id": "encryption-stops-at-endpoint",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot luminous cutaway tabletop diagram: a golden protective glass tunnel shielding a sealed envelope safely across dark city routers, stopping abruptly at the front door of a grinning masked bandit's desk.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h056",
+          "speaker": "chief",
+          "text": "記住這條死線：加密只保護傳輸路上，資料一抵達對方手上，對方就能把內容讀得一清二楚。"
+        }
+      ]
+    },
+    {
+      "id": "bandit-opens-https-envelope",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up dramatic illustration: a shadowy gloved hand of a masked bandit calmly breaking open a pristine emerald-and-red wax-sealed envelope under a desk lamp, revealing a glowing golden key inside.",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h057",
+          "speaker": "chief",
+          "text": "如果對面本來就是騙子，HTTPS 照樣會把密碼一字不漏地親手交給騙子！",
+          "say": "如果對面本來就是騙子，H T T P S 照樣會把密碼一字不漏地親手交給騙子！",
+          "say_for": "10f2f2019c66"
+        }
+      ]
+    },
+    {
+      "id": "kid-spots-extra-letter",
+      "chapter": "多一個 S，其實只保護你到門口",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up in the sunlit cafe with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, gasping with wide enlightened eyes while holding a round brass magnifying glass near the top bar of her plain tablet.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h058",
+          "speaker": "kid",
+          "text": "啊！我把網址列睜大眼重看一遍，這個免費寶石連結的遊戲名字中間竟然多偷塞了一個字母！"
+        }
+      ]
+    },
+    {
+      "id": "chief-check-address-bar",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the bright office with generous headroom, 2.5-head chibi Taiwanese office chief woman with generous headroom, dark brown-black low side ponytail with silver-grey streak, round black glasses, warm brown aligned eyes, bare clean ears, mustard-yellow knitted cardigan over white shirt, dark navy trousers, five clean fingers, nodding warmly and pointing gently with one clean five-fingered hand toward a clean magnifier resting on her desk.",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h059",
+          "speaker": "chief",
+          "text": "沒錯，長得很像的假名字封條根本管不到，所以輸入密碼前一定要親眼核對網址列。"
+        }
+      ]
+    },
+    {
+      "id": "kid-aha-s-payoff",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the sunny golden-hour office with generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, beaming with a huge triumphant eureka smile giving a cheerful five-fingered thumbs-up.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h060",
+          "speaker": "kid",
+          "text": "原來如此！還記得開頭的小鎖頭嗎？多一個 S 只守住送信路上，收件人是好是壞得靠自己認！"
+        }
+      ]
+    },
+    {
+      "id": "chief-everyday-seal-reflection",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the warm golden-hour wooden office with generous headroom, 2.5-head chibi Taiwanese office chief woman with generous headroom, dark brown-black low side ponytail with silver-grey streak, round black glasses, warm brown aligned eyes, bare clean ears, mustard-yellow knitted cardigan over white shirt, dark navy trousers, five clean fingers, smiling reflectively behind her desk holding a softly glowing crimson-sealed envelope.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h061",
+          "speaker": "chief",
+          "text": "說得太棒了。我覺得最妙的是，這道封條你每天都在用，今天才真正看清它的邊界在哪裡。"
+        }
+      ]
+    },
+    {
+      "id": "cafe-table-calm-takeaway",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up cozy golden-hour Taiwanese cafe table: a sleek closed tablet resting calmly beside a warm ceramic latte cup, a gleaming red-wax-sealed envelope, and a small brass magnifying glass bathed in sunlight.",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [],
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "h062",
+          "speaker": "chief",
+          "text": "最後問問你：你收過名字長超像、差點騙過你的假網址連結嗎？留言分享給大家避雷！"
+        }
+      ]
+    },
+    {
+      "id": "kid-subscribe-goodbye",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside the sunlit wooden studio with floating golden dust motes and generous headroom, 2.5-head chibi 8-year-old girl with generous headroom, glossy black bob with straight bangs and top cowlick, wide bright dark-brown aligned eyes, rosy cheeks, ink-navy toggle raincoat with bright mustard hood, five clean fingers, smiling joyfully and waving goodbye with one raised clean five-fingered hand.",
+        "camera": "static camera",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h063",
+          "speaker": "kid",
+          "text": "喜歡把每天在用的科技拆解到一聽就懂，別忘了訂閱原來如此事務所，我們下次見！"
+        }
+      ]
+    }
+  ]
+}

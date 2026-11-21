@@ -1,0 +1,294 @@
+{
+  "title": "Gembok HTTPS Menipu? Situs Phishing Pakai Juga | Oh Begitu",
+  "description": "Banyak orang mengira gembok dan HTTPS berarti situs pasti aman—padahal cuma 11% yang paham artinya, dan hampir semua situs phishing memakai HTTPS! Ikuti perjalanan sandi lewat Wi-Fi kafe, enkripsi TLS, sertifikat & buku transparansi publik, pertukaran kunci ala mencampur cat, forward secrecy, nomor urut anti-ulang, catatan 0-RTT, hingga batas SNI/ECH.\n\n#KantorOhBegitu #HTTPS #TLS #KeamananSiber #Phishing #Sains",
+  "tags": [
+    "Kantor Oh Begitu",
+    "HTTPS",
+    "TLS",
+    "Ikon Gembok",
+    "Phishing",
+    "Enkripsi",
+    "Keamanan Siber",
+    "Teknologi"
+  ],
+  "thumbnail": {
+    "headline": "Gembok **HTTPS Menipu**?",
+    "sub": "Apa yang dijaga S & alasan Chrome hapus"
+  },
+  "chapters": {
+    "kid-cafe-lock-opening": "Gembok HTTPS bisa menipu?",
+    "kid-cafe-direct-guess": "Sandimu tidak terbang langsung ke situs",
+    "kid-sealed-enough-guess": "Hampir semua situs phishing bergembok",
+    "kid-how-to-seal-q": "Mencampur kunci rahasia di depan umum",
+    "kid-nothing-visible-guess": "Petunjuk yang tetap tampak di HTTPS",
+    "kid-spots-extra-letter": "Huruf S hanya menjaga sampai pintu"
+  },
+  "source_hashes": {
+    "chapters": {
+      "kid-cafe-lock-opening": "8d91390a90bc",
+      "kid-cafe-direct-guess": "4a26b305067f",
+      "kid-sealed-enough-guess": "2a08b5df2840",
+      "kid-how-to-seal-q": "207ab2a4a6ad",
+      "kid-nothing-visible-guess": "938e2fb71acc",
+      "kid-spots-extra-letter": "c5ef961a90b1"
+    },
+    "title": "ac6af2a66785",
+    "description": "4cb072deb095",
+    "tags": "6f5a33c86ff6",
+    "thumbnail": "22432e7f256d"
+  },
+  "lines": {
+    "h001": {
+      "source_hash": "289597dedea6",
+      "text": "Kepala! Kupikir ada gembok dan HTTPS berarti aman ketik sandi—kok Chrome malah mencopot ikon gemboknya?"
+    },
+    "h002": {
+      "source_hash": "434a6226d042",
+      "text": "Karena riset mereka menemukan hanya sebelas persen peserta yang benar-benar paham arti tepat gembok kecil itu."
+    },
+    "h003": {
+      "source_hash": "ddd4a4ca6436",
+      "text": "Lebih parah lagi, hampir semua situs phishing pencuri sandi juga memasang gembok yang sama dan memakai HTTPS!"
+    },
+    "h004": {
+      "source_hash": "fedecf045158",
+      "text": "Tambahan huruf S pada HTTP mencegah bahaya besar di jalan, tapi ada bagian penting yang sama sekali tak dijaganya."
+    },
+    "h005": {
+      "source_hash": "e77b0d888f03",
+      "text": "Hari ini kita bahas apa saja yang dikunci huruf S ini—dan kenapa gemboknya pun bisa membuatmu salah paham."
+    },
+    "h006": {
+      "source_hash": "0fb5507ba852",
+      "text": "Tunggu, aku baru login game pakai Wi-Fi kafe—bukannya sandiku langsung meluncur ke perusahaan game?"
+    },
+    "h007": {
+      "source_hash": "6953be5b5792",
+      "text": "Sama sekali tidak! Sandimu melewati router kafe, lalu jaringan penyedia internet, estafet dari satu pos ke pos lain."
+    },
+    "h008": {
+      "source_hash": "3e696305fd69",
+      "text": "Persis seperti mengoper catatan di kelas ke teman di ujung—kertasnya melewati tangan beberapa teman tak dikenal."
+    },
+    "h009": {
+      "source_hash": "b2d540cb0352",
+      "text": "Jika dikirim tanpa enkripsi, mesin mana pun di jalur itu bisa mengintip sandimu atau bahkan mengubah isinya!"
+    },
+    "h010": {
+      "source_hash": "2f162f0c2864",
+      "text": "Tapi sebagian besar mesin perantara pasti baik kan? Masa iya setiap pos membuka dan membaca sandiku?"
+    },
+    "h011": {
+      "source_hash": "215165e4b129",
+      "text": "Masalahnya kamu tak bisa memilih siapa perantaranya! Jadi standar keamanan sejak awal menganggap jalur dikuasai penyusup."
+    },
+    "h012": {
+      "source_hash": "a54b1cf62ecb",
+      "text": "Huruf S berarti aman: enkripsi TLS menyegel catatan dalam amplop yang hanya bisa dibaca kamu dan situs tujuan."
+    },
+    "h013": {
+      "source_hash": "398cdcfadc79",
+      "text": "Oh begitu! Berarti asal catatanku disegel amplop supaya tak dibuka di jalan, sandiku sudah aman seratus persen?"
+    },
+    "h014": {
+      "source_hash": "b376de64f7c5",
+      "text": "Menyegel saja belum cukup! Saat mengetik alamat, perangkatmu bertanya arah—bagaimana jika penjahat memberi alamat palsu?"
+    },
+    "h015": {
+      "source_hash": "557e5a200c1d",
+      "text": "Amplop sekuat apa pun percuma jika kamu serahkan langsung ke penipu! Jadi sebelumnya, situs wajib menunjukkan sertifikat."
+    },
+    "h016": {
+      "source_hash": "4e50da490631",
+      "text": "Sertifikat seperti kartu identitas resmi: memuat nama situs dan contoh cap publik; hanya pemegang cap rahasia asli yang cocok."
+    },
+    "h017": {
+      "source_hash": "d982881c0a44",
+      "text": "Memangnya orang tak bisa menggambar kartu palsu sendiri? Bagaimana browser tahu cap siapa yang sah?"
+    },
+    "h018": {
+      "source_hash": "ac90176db13f",
+      "text": "Kartu buatan sendiri ditolak browser! Situs harus mendaftar ke lembaga tepercaya yang meminta menaruh sandi di situsnya."
+    },
+    "h019": {
+      "source_hash": "5ac874edf268",
+      "text": "Lembaga mengecek dari berbagai jaringan bahwa kamu menguasai domain itu—tapi ingat, mereka tak mengecek niat baik pemiliknya!"
+    },
+    "h020": {
+      "source_hash": "d4124fe21bf0",
+      "text": "Sebentar! Temanku baru kirim tautan permata gratis—dan di alamatnya juga ada HTTPS serta ikon gembok lho!"
+    },
+    "h021": {
+      "source_hash": "1a642131f1ee",
+      "text": "Hati-hati, tautan permata gratis sering kali phishing! Penipu mendaftarkan alamat mirip dan tetap mendapat sertifikat resmi."
+    },
+    "h022": {
+      "source_hash": "e2fffdddaa1f",
+      "text": "Gembok cuma tanda jalur terenkripsi, bukan jaminan tepercaya—itu sebabnya Chrome menggantinya tahun 2023. Masih ada risiko lebih ngeri!"
+    },
+    "h023": {
+      "source_hash": "54abf89ef0e6",
+      "text": "Lebih ngeri dari phishing? Kalau lembaga hanya cek kepemilikan alamat, penipu tak bisa menguasai alamat bank asli kan?"
+    },
+    "h024": {
+      "source_hash": "05575dc5d56a",
+      "text": "Jika lembaga tepercaya sendiri salah menerbitkan sertifikat, bank asli pun bisa ditiru—alamat tepat, gembok sah pula!"
+    },
+    "h025": {
+      "source_hash": "75ce706dfcdc",
+      "text": "Maka Chrome dan Safari mewajibkan tiap sertifikat dicatat di buku transparansi publik agar salah terbit langsung ketahuan!"
+    },
+    "h026": {
+      "source_hash": "a8870fe57163",
+      "text": "Jika sertifikat tak cocok atau tak tercatat, browser langsung memblokir dengan layar merah—tapi masih ada teka-teki pelik!"
+    },
+    "h027": {
+      "source_hash": "1f18ef9b93ca",
+      "text": "Teka-teki apa? Identitas sudah dicek, tapi menyegel butuh kunci! Di depan semua orang, bagaimana sepakat kunci tanpa dicontek?"
+    },
+    "h028": {
+      "source_hash": "b56be02f0b99",
+      "text": "Pakai sulap matematika keren! Bayangkan mencampur cat untuk melihat cara membuat kunci rahasia bersama di depan umum."
+    },
+    "h029": {
+      "source_hash": "f22f2941f5df",
+      "text": "Keduanya sepakat memakai cat dasar kuning secara terbuka, lalu diam-diam meneteskan warna rahasia sendiri: merah dan biru."
+    },
+    "h030": {
+      "source_hash": "ea343507b956",
+      "text": "Lalu campuran oranye dan hijau itu dioper terbuka—cat yang sudah tercampur tak bisa dipisah, jadi pengintip tak tahu resepnya!"
+    },
+    "h031": {
+      "source_hash": "2bc9f1ecd363",
+      "text": "Tiap pihak menambah warna rahasianya ke gelas kiriman—keduanya mendapat cokelat tua yang sama persis, sementara pengintip nihil!"
+    },
+    "h032": {
+      "source_hash": "4680af11f091",
+      "text": "Cat cuma perumpamaan, aslinya matematika; begitu kunci sementara ini jadi, barulah sandimu dikunci di dalam amplop!"
+    },
+    "h033": {
+      "source_hash": "bfdc097e6c5c",
+      "text": "Tunggu, tadi kan situs menyimpan cap rahasia—kalau penjahat merekam data hari ini lalu mencuri capnya nanti, semuanya terbongkar?"
+    },
+    "h034": {
+      "source_hash": "62663b6d5a86",
+      "text": "Tidak bisa! Cap rahasia hanya untuk cek identitas; kunci sementara hari ini langsung dimusnahkan—itulah forward secrecy."
+    },
+    "h035": {
+      "source_hash": "945af4634fd7",
+      "text": "Selama rahasia sementara itu sudah dihapus, meski cap situs dicuri bertahun-tahun kemudian, rekaman lama tetap acak tak terbaca."
+    },
+    "h036": {
+      "source_hash": "eaeddfc3e0f3",
+      "text": "Sebentar! Kalau sertifikat tercatat di buku publik, bagaimana jika penjahat menyalin sertifikat game lalu mencampur cat denganku?"
+    },
+    "h037": {
+      "source_hash": "18105855312c",
+      "text": "Peniru tak punya cap rahasia asli! Situs wajib membubuhkan cap aslinya langsung pada catatan pembuka termasuk tukar warna tadi."
+    },
+    "h038": {
+      "source_hash": "dd976ce5b3a0",
+      "text": "Pengecekan awal ini disebut handshake: di akhir keduanya mencocokkan seluruh catatan, selisih sedikit langsung putus."
+    },
+    "h039": {
+      "source_hash": "555da9e3c043",
+      "text": "Tiap pesan disegel kunci itu, mencakup panjang amplop luarnya; diubah satu huruf saja langsung gagal buka dan terputus."
+    },
+    "h040": {
+      "source_hash": "37e3baf05815",
+      "text": "Kalau isi tak bisa diubah, bagaimana jika penjahat menyalin amplop terenkripsi utuh lalu mengirim ulang atau menukar urutannya?"
+    },
+    "h041": {
+      "source_hash": "865605e264f4",
+      "text": "Kedua arah menomori pesan dari nol dan menyembunyikan nomornya di dalam segel—kirim ulang atau tukar urutan pasti gagal!"
+    },
+    "h042": {
+      "source_hash": "c2d2d8682aa6",
+      "text": "Tapi standar memberi catatan penting: saat kunjungan ulang, demi hemat waktu, pesan pertama boleh meluncur duluan."
+    },
+    "h043": {
+      "source_hash": "484ee7639f63",
+      "text": "Data cepat ini tak menjamin bebas kirim ulang antar koneksi dan bisa menggandakan pembelian, jadi server wajib membatasinya."
+    },
+    "h044": {
+      "source_hash": "e623b718c07a",
+      "text": "Penutupan pun ketat: pengirim wajib mengirim sinyal selesai resmi agar kabel yang dipotong di tengah jalan bisa dikenali."
+    },
+    "h045": {
+      "source_hash": "7621d03a2bab",
+      "text": "Nomor dan penutup pun dikunci mati! Berarti dengan HTTPS, orang di jalur sama sekali tak melihat apa-apa ya?"
+    },
+    "h046": {
+      "source_hash": "ebdf395b7a34",
+      "text": "Petunjuk penting masih terlihat! Ingat panjang amplop ada di luar? Tebal tiap amplop dan jeda waktunya tetap tampak di jalan."
+    },
+    "h047": {
+      "source_hash": "cec20861b6c4",
+      "text": "Standar mengingatkan analisis ukuran dan waktu kadang bisa menebak isi, apalagi di situs video dengan daftar tayangan tetap."
+    },
+    "h048": {
+      "source_hash": "7d1a88488f0a",
+      "text": "Kedua pihak boleh menambah ruang kosong agar amplop sama tebal, tapi standar tak mewajibkan seberapa banyak tambahannya."
+    },
+    "h049": {
+      "source_hash": "cddf23078e58",
+      "text": "Petunjuk yang lebih jelas lagi adalah nama situs tujuan—di awal koneksi, nama itu sering tertulis terang-terangan di luar amplop!"
+    },
+    "h050": {
+      "source_hash": "1cd7eaa278ed",
+      "text": "Nama situs yang kukunjungi pun kelihatan di luar? Tak bisakah nama penerima ikut dimasukkan ke amplop dalam?"
+    },
+    "h051": {
+      "source_hash": "ffe57f18edbd",
+      "text": "Standar enkripsi internet baru terbitan Maret 2026 memang bertujuan memasukkan nama situs ke amplop dalam yang terenkripsi."
+    },
+    "h052": {
+      "source_hash": "7dc03e730c14",
+      "text": "Namun standar baru itu mengakui cara ini belum cukup: mesin server mana yang menerima amplop tetap terlihat di jalur."
+    },
+    "h053": {
+      "source_hash": "4a0ee344e7fa",
+      "text": "Meski banyak situs berbagi satu mesin server supaya tujuan agak samar, satu celah tersisa tetap mencegah penyamaran penuh."
+    },
+    "h054": {
+      "source_hash": "c3a30fa61eba",
+      "text": "Dan jangan lupa saat bertanya alamat situs sebelum berangkat—jika pencarian itu belum terenkripsi, nama situs tetap bocor!"
+    },
+    "h055": {
+      "source_hash": "57cddc488702",
+      "text": "Bertanya arah pun membocorkan nama! Lalu untuk tautan permata gratis ber-HTTPS tadi, bagaimana cara menghadang penipu?"
+    },
+    "h056": {
+      "source_hash": "8b2dccfd2943",
+      "text": "Ingat garis tegas ini: enkripsi hanya menjaga di perjalanan; begitu data tiba di tujuan, penerimanya membaca semuanya utuh."
+    },
+    "h057": {
+      "source_hash": "10f2f2019c66",
+      "text": "Kalau di ujung sana memang penipu sejak awal, HTTPS justru mengantar sandimu utuh langsung ke tangannya!"
+    },
+    "h058": {
+      "source_hash": "0315f6f8cf2a",
+      "text": "Aha! Setelah kuamati baik-baik kolom alamatnya, tautan permata gratis ini menyelipkan satu huruf tambahan di nama gamenya!"
+    },
+    "h059": {
+      "source_hash": "88a99f867857",
+      "text": "Tepat sekali, segel tak mengenali nama mirip; jadi sebelum mengetik sandi, selalu periksa kolom alamat dengan matamu sendiri."
+    },
+    "h060": {
+      "source_hash": "c716729a1ad1",
+      "text": "Oh begitu! Seperti gembok di awal, huruf S hanya menjaga jalan pengiriman, menilai siapa penerimanya tetap tugas kita!"
+    },
+    "h061": {
+      "source_hash": "19b00a02b256",
+      "text": "Hebat sekali. Yang paling menarik, segel yang kita pakai tiap hari ini akhirnya terlihat jelas batas kemampuannya."
+    },
+    "h062": {
+      "source_hash": "f974c36cd9a5",
+      "text": "Pertanyaan terakhir: pernahkah kamu menerima tautan palsu yang namanya mirip sekali? Bagikan di komentar agar semua waspada!"
+    },
+    "h063": {
+      "source_hash": "e27557dfdca6",
+      "text": "Suka membongkar teknologi harian sampai jelas? Jangan lupa subscribe Kantor Oh Begitu, sampai jumpa di episode berikutnya!"
+    }
+  }
+}
