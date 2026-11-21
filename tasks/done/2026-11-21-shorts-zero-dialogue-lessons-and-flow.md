@@ -44,5 +44,5 @@ scope:
 
 ## Notes
 
-- 製作檔不在 repo：`C:\Users\x8120\mokaair-work\shorts-flow\`（本機）與雲端硬碟 `AI/備份/Shorts/社畜地獄/workdir/shechu-hell-e0N/`。
+- 製作檔不在 repo：`<home>\mokaair-work\shorts-flow\`（本機）與雲端硬碟 `AI/備份/Shorts/社畜地獄/workdir/shechu-hell-e0N/`。
 - 規則改動只寫在 repo，雲端由 `docs/videos/rules-sync` 同步。
