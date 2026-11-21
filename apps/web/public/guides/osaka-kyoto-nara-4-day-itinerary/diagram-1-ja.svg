@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" lang="ja" xml:lang="ja" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans CJK JP','Noto Sans JP','Hiragino Sans','Yu Gothic',system-ui,sans-serif">
+  <title id="title">大阪・京都・奈良 三角エリア移動マップ</title>
+  <desc id="desc">大阪と京都の間はJR新快速で約30分、阪急で約45分。大阪難波から奈良は近鉄で約40分。京都から奈良は近鉄で約35〜50分、JRで約45分。関西空港から難波は南海で約40分。ユニバーサル・スタジオ・ジャパン（USJ）は大阪西側の西九条付近にあります。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="60" y="84" font-size="38" font-weight="700" fill="#102A2B">大阪・京都・奈良　三角エリアの所要時間</text>
+  <text x="60" y="122" font-size="20" fill="#5C6B6B">Osaka / Kyoto / Nara・所要時間は目安（最新時刻は各社公式サイトを確認）</text>
+
+  <!-- triangle edges -->
+  <line x1="530" y1="636" x2="1080" y2="246" stroke="#6B4A3A" stroke-width="12" stroke-linecap="round"/>
+  <line x1="530" y1="636" x2="1250" y2="700" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <line x1="1080" y1="246" x2="1250" y2="700" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <!-- airport -->
+  <path d="M 370 742 C 415 724, 444 676, 480 648" fill="none" stroke="#0D6B68" stroke-width="10" stroke-dasharray="4 14" stroke-linecap="round"/>
+  <!-- USJ -->
+  <line x1="530" y1="636" x2="310" y2="526" stroke="#6B4A3A" stroke-width="8" stroke-dasharray="4 14" stroke-linecap="round"/>
+
+  <!-- nodes -->
+  <g font-weight="700" fill="#102A2B">
+    <circle cx="530" cy="636" r="46" fill="#FFFFFF" stroke="#102A2B" stroke-width="10"/>
+    <text x="530" y="646" font-size="30" text-anchor="middle">大阪</text>
+    <text x="548" y="724" font-size="22" text-anchor="middle">難波・梅田</text>
+
+    <circle cx="1080" cy="246" r="46" fill="#FFFFFF" stroke="#102A2B" stroke-width="10"/>
+    <text x="1080" y="256" font-size="30" text-anchor="middle">京都</text>
+    <text x="1080" y="182" font-size="22" text-anchor="middle">京都駅・河原町</text>
+
+    <circle cx="1250" cy="700" r="46" fill="#FFFFFF" stroke="#102A2B" stroke-width="10"/>
+    <text x="1250" y="710" font-size="30" text-anchor="middle">奈良</text>
+    <text x="1250" y="784" font-size="22" text-anchor="middle">近鉄奈良・JR奈良</text>
+
+    <circle cx="310" cy="526" r="30" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+    <text x="310" y="446" font-size="20" text-anchor="middle">ユニバーサル・スタジオ・ジャパン（USJ）</text>
+    <text x="310" y="474" font-size="16" font-weight="400" fill="#5C6B6B" text-anchor="middle">JR大阪駅から環状線・ゆめ咲線</text>
+
+    <rect x="60" y="732" width="310" height="84" rx="20" fill="#0D6B68"/>
+    <text x="215" y="766" font-size="24" fill="#FFFFFF" text-anchor="middle">関西空港</text>
+    <text x="215" y="798" font-size="18" font-weight="400" fill="#E6F2F1" text-anchor="middle">KIX・南海→難波 34〜45分</text>
+  </g>
+
+  <!-- edge labels -->
+  <g font-weight="700">
+    <rect x="555" y="374" width="470" height="94" rx="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="3"/>
+    <text x="790" y="412" font-size="21" fill="#6B4A3A" text-anchor="middle">JR新快速 約30分</text>
+    <text x="790" y="446" font-size="20" fill="#6B4A3A" text-anchor="middle">阪急京都線 約45分（梅田 ⇄ 河原町）</text>
+
+    <rect x="690" y="704" width="390" height="94" rx="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+    <text x="885" y="742" font-size="21" fill="#0D6B68" text-anchor="middle">近鉄 快速急行・急行 約35分</text>
+    <text x="885" y="776" font-size="20" fill="#0D6B68" text-anchor="middle">大阪難波 ⇄ 近鉄奈良</text>
+
+    <rect x="1198" y="408" width="348" height="94" rx="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+    <text x="1372" y="446" font-size="21" fill="#0D6B68" text-anchor="middle">近鉄特急 約35分</text>
+    <text x="1372" y="480" font-size="20" fill="#0D6B68" text-anchor="middle">JRみやこ路快速 約47分</text>
+  </g>
+
+  <g font-size="20" fill="#102A2B">
+    <line x1="60" y1="862" x2="120" y2="862" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
+    <text x="134" y="869">JR西日本・阪急</text>
+    <line x1="330" y1="862" x2="390" y2="862" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+    <text x="404" y="869">近鉄・南海</text>
+    <text x="1540" y="869" fill="#5C6B6B" text-anchor="end">© Mokaair 制作 2026</text>
+  </g>
+</svg>
