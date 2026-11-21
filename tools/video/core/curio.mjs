@@ -63,18 +63,37 @@ export function genericPropWarnings(doc) {
 }
 
 /**
- * What a paced series' drama is missing of SERIES_PACING (plus generic-prop overuse across the
- * illustrated series), as lint warnings. A local video is never changed behind its back: tightening
- * the pauses moves the timeline an owner may already have approved, so the warning names the fields
- * and the re-approval they cost.
+ * Nameless demonstrative/pronoun openings that hide the episode's subject on a Heimao thumbnail
+ * (owner, 2026-11-20: curio-s10-v2 dropped to 1.8% CTR when "本能寺" was hidden behind "這句話根本沒寫？").
+ */
+export const NAMELESS_HEIMAO_HEADLINE = /^(?:這句話|這個人|這兩(?:個)?字|這件事|這本書|這張紙|這顆(?![A-Za-z0-9\u4e00-\u9fff]*錶)|這台|這支|這個|它(?![A-Za-z0-9])|他(?![A-Za-z0-9])|她(?![A-Za-z0-9])|誰喊的)/u;
+
+/** Warn when a curio-, sothatswhy- or story- Heimao thumbnail opens with a nameless pronoun instead of naming the subject. */
+export function heimaoSubjectWarnings(doc) {
+  if (!isGenericPropSeries(doc) || doc?.format !== "drama") return [];
+  const data = doc.thumbnail?.data;
+  if (!data || !["heimao", "heimao-left"].includes(data.layout) || typeof data.headline !== "string") return [];
+  const plain = data.headline.replace(/\*\*/g, "").replace(/^[\s「『"“¿¡]+/u, "");
+  if (!NAMELESS_HEIMAO_HEADLINE.test(plain)) return [];
+  return [{
+    path: "thumbnail.data.headline",
+    message: `heimao headline "${data.headline}" opens with a nameless demonstrative/pronoun instead of naming the recognizable person, event, brand or signature object up front (owner, 2026-11-20); put the subject name in line 1`,
+  }];
+}
+
+/**
+ * What a paced series' drama is missing of SERIES_PACING (plus generic-prop overuse and nameless
+ * Heimao headlines across the illustrated series), as lint warnings. A local video is never changed
+ * behind its back: tightening the pauses moves the timeline an owner may already have approved, so
+ * the warning names the fields and the re-approval they cost.
  */
 export function pacingWarnings(doc) {
   if (doc?.format !== "drama") return [];
-  if (!isPacedSeries(doc)) return genericPropWarnings(doc);
+  if (!isPacedSeries(doc)) return [...genericPropWarnings(doc), ...heimaoSubjectWarnings(doc)];
   const warnings = [];
   if (doc.pauses === undefined) warnings.push({ path: "pauses", message: `this series closes the gaps between sentences (owner, 2026-11-05): add "pauses": ${JSON.stringify(SERIES_PACING.pauses)}; the timeline moves, so the narration and storyboard go back to the owner (the voice is not re-recorded)` });
   if (doc.still_motion === undefined) warnings.push({ path: "still_motion", message: `this series' stills hold and then move instead of gliding (owner, 2026-11-05): add "still_motion": "${SERIES_PACING.still_motion}" (only the cut changes; no picture is redrawn)` });
-  warnings.push(...genericPropWarnings(doc));
+  warnings.push(...genericPropWarnings(doc), ...heimaoSubjectWarnings(doc));
   return warnings;
 }
 
