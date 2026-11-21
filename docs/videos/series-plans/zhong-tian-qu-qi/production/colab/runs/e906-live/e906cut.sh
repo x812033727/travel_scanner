@@ -18,6 +18,8 @@ AF="aresample=48000,aformat=channel_layouts=stereo"
 [ -f $S/stamp906.wav ] || ffmpeg -v error -y -ss 0.12 -t 0.43 -i $X/zhongtian-sfx-thumbprint-01.wav -af "afade=t=out:st=0.28:d=0.15,$AF" $S/stamp906.wav
 [ -f $S/drum906.wav ] || ffmpeg -v error -y -ss 0.015 -t 1.2 -i $X/zhongtian-sfx-war-drum-01.wav -af "afade=t=out:st=0.6:d=0.6,$AF" $S/drum906.wav
 [ -f $S/hoe906.wav ] || ffmpeg -v error -y -ss 1.03 -t 0.4 -i $X/zhongtian-sfx-staff-thud-01.wav -af "afade=t=out:st=0.25:d=0.15,$AF" $S/hoe906.wav
+# SWAP 2026-11-21: basket906 = sedan-01's first 0.3 s (a bamboo creak) for the s39 retake's basket set on the flagstones
+[ -f $S/basket906.wav ] || ffmpeg -v error -y -t 0.3 -i $X/zhongtian-sfx-sedan-01.wav -af "afade=t=in:d=0.02,afade=t=out:st=0.15:d=0.15,$AF" $S/basket906.wav
 [ -f $S/abacus906.wav ] || ffmpeg -v error -y -ss 0.19 -t 0.9 -i $X/zhongtian-sfx-abacus-drop-01.wav -af "afade=t=out:st=0.5:d=0.4,$AF" $S/abacus906.wav
 # $VL = video.json with the CC text of zq906a37 (s37) cut to what the take says: its speech is two phrases, 2.05-3.12 and
 # 3.34-4.60 (5 and 7 syllables at the take's own rate), and neither whisper nor the review hears 就是錢員外 (owner to listen)

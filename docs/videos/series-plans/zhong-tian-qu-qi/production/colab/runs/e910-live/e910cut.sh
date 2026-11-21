@@ -11,6 +11,12 @@ miss=$(python3 -c "import json,os;p=json.load(open('$E/picks.json'));print(' '.j
 # frame (s10 5.4); s17 is review2-trims.tsv's 5.6. REVIEW 3 (review3-trims.tsv): static heads/tails cut on whole frames
 # (s18 start 0.8 -> 0.75 because 0.8 is not on a frame and the take came out two frames short), s18 longer to 4.417.
 # POLISH 2026-11-21: s34 end-before 6.0 -> 4.75 (the purse is never taken; staged clip re-cut from clips/orig/s34-t1.end6.0.mp4).
+# SWAP 2026-11-21: polish retakes s13 s29 s30 s33 s36 are clips/sNN-t5.mp4 (polish-stage.py, runpod/polish/picks.json);
+# s36 is cut from start 1.5 (not the pick's 2.125: the arm spread is kept, cut on its start) as clips/s36-t6.mp4, remade
+# here from the refined picture + the fixp2 draft's voice when it is missing (t5 kept; delete t6 to go back to 2.125).
+[ -f $E/clips/s36-t6.mp4 ] || ffmpeg -v error -y -ss 1.500 -to 8.000 -i /root/mokaair-work/review-zt/colab/refined/e910-s36.mp4 \
+  -ss 1.500 -to 8.000 -i /root/mokaair-work/videos/zhong-tian-qu-qi-e910-dh/runpod/live/fixp2/out/s36-9109201.mp4 \
+  -map 0:v -map 1:a? -c:v libx264 -crf 16 -preset fast -pix_fmt yuv420p -c:a aac -b:a 192k -shortest $E/clips/s36-t6.mp4
 # edit-dh-e910-live.json's _note has the values -- warn (not stop) if picks.json does not have them (start, end-before; 0 = none)
 python3 -c "
 import json;p=json.load(open('$E/picks.json'))
