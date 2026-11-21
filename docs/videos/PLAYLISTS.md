@@ -13,7 +13,7 @@
 | `PLa-mCBTn-dSw` | 奇聞檔案局 | 公開 |  |
 | `PLXNxidbAJ8cY` | 品牌故事 | 私人 | 私人；三支裡一支（A4 紙）沒有品牌故事後綴 |
 | `PLEGyTVvrsIag` | 種田娶妻打天下 | 公開 | 存說明時 Studio 把預設語言自動設成日文，已改回中文（台灣） |
-| `PLQMXuxTH5Pkc` | 歷史系列 | 私人 | 私人、0 支影片；站主 10-19 建立，用途未定 |
+| `PLQMXuxTH5Pkc` | 原來如此事務所 | 私人 | 原「歷史系列」（站主 10-19 建立）；後來改名為原來如此事務所、設成 Podcast，2026-11-06 換掉沿用的歷史系列說明與八語翻譯 |
 | `PLMSBVkAy71z0` | Tech Signal｜科技訊號 | 公開 | 每日 AI／科技 Podcast（原 AI 科技快報）；2026-10-29 加，2026-11-02 改名並設為 Podcast |
 
 ## AI 名詞十分鐘（`PLTcDQ82htNKM`）
@@ -86,19 +86,21 @@
 | 越南文 | Làm Ruộng Cưới Vợ Đoạt Thiên Hạ | Hứa Nghiên, thạc sĩ nông học, trượt phỏng vấn rồi tỉnh dậy trong đêm mưa bão, hóa thành thư sinh nghèo ở thôn Liễu Khê: nợ hai mươi lượng, trong đầu có «Hệ thống Lương Duyên», còn quan sai gõ cửa mang theo lệnh phối hôn và ba cô dâu. Phim ngắn xuyên không làm ruộng, mỗi tập 2–4 phút. Xem theo thứ tự.<br>Tiếng Trung, có lồng tiếng và phụ đề tiếng Việt. |
 | 泰文 | ทะลุมิติไปทำนา ได้เมีย ครองแผ่นดิน | สวี่เยี่ยน มหาบัณฑิตเกษตร สัมภาษณ์งานตก แล้วตื่นขึ้นในคืนพายุฝนกลายเป็นบัณฑิตยากจนแห่งหมู่บ้านหลิ่วซี: ติดหนี้ยี่สิบตำลึง มี «ระบบคู่บุญ» อยู่ในหัว และนายอำเภอมาเคาะประตูพร้อมคำสั่งแต่งงานกับเจ้าสาวสามคน ละครสั้นทะลุมิติทำนา ตอนละ 2–4 นาที ดูตามลำดับตอน<br>เสียงจีนกลาง มีพากย์ไทยและซับไทย |
 
-## 歷史系列（`PLQMXuxTH5Pkc`）
+## 原來如此事務所（`PLQMXuxTH5Pkc`，原「歷史系列」）
+
+2026-11-06 改。這份清單原本是「歷史系列」，改名後說明與八語翻譯還是歷史系列的文案，這次全部換掉（舊文案在 git 歷史）。系列名照 [`so-thats-why/README.md`](so-thats-why/README.md) §各語系名稱（en／ja／ko 用定案名），其他語言是意譯。
 
 | 語言 | 標題 | 說明 |
 | --- | --- | --- |
-| 中文（台灣） | 歷史系列 | 歷史人物與名場面：一集一份檔案，照可查的來源講清楚當時發生了什麼、留下了哪些證據、後人又加了哪些說法。每集約 10 分鐘，參考資料列在說明欄。<br>繁中旁白、可關閉的 CC 字幕。 |
-| 英文 | History Series | Historical figures and famous moments: one case file per episode, told from verifiable sources — what happened, what evidence survives, and what later retellings added. About 10 minutes per episode; sources are listed in the description.<br>Mandarin narration with English CC subtitles. |
-| 日文 | 歴史シリーズ | 歴史上の人物と名場面。1話につき1件のファイルを、確認できる資料に沿って語ります。何が起きたのか、どんな証拠が残っているのか、後世に何が付け加えられたのか。1話約10分、参考資料は概要欄に。<br>中国語ナレーション、日本語字幕付き。 |
-| 韓文 | 역사 시리즈 | 역사 속 인물과 명장면: 한 편에 파일 하나, 확인 가능한 자료를 따라 당시 무슨 일이 있었고 어떤 증거가 남았으며 후대에 무엇이 덧붙여졌는지 이야기합니다. 한 편 약 10분, 참고 자료는 설명란에 있습니다.<br>중국어 내레이션, 한국어 CC 자막 제공. |
-| 西班牙文（拉丁美洲） | Serie de historia | Personajes y escenas célebres de la historia: un expediente por episodio, contado a partir de fuentes verificables: qué pasó, qué pruebas quedan y qué añadieron los relatos posteriores. Unos 10 minutos por episodio; las fuentes están en la descripción.<br>Narración en mandarín con subtítulos en español. |
-| 葡萄牙文（巴西） | Série de história | Personagens e cenas famosas da história: um dossiê por episódio, contado a partir de fontes verificáveis: o que aconteceu, que provas restaram e o que os relatos posteriores acrescentaram. Cerca de 10 minutos por episódio; as fontes estão na descrição.<br>Narração em mandarim com legendas em português. |
-| 印尼文 | Seri Sejarah | Tokoh dan momen terkenal dalam sejarah: satu berkas per episode, diceritakan dari sumber yang bisa diperiksa: apa yang terjadi, bukti apa yang tersisa, dan apa yang ditambahkan oleh cerita-cerita kemudian. Sekitar 10 menit per episode; sumber ada di deskripsi.<br>Narasi Mandarin dengan subtitle Indonesia. |
-| 越南文 | Loạt phim lịch sử | Nhân vật và khoảnh khắc nổi tiếng trong lịch sử: mỗi tập một hồ sơ, kể theo những nguồn có thể kiểm chứng: chuyện gì đã xảy ra, bằng chứng nào còn lại, và đời sau đã thêm thắt những gì. Mỗi tập khoảng 10 phút; nguồn tham khảo nằm trong phần mô tả.<br>Thuyết minh tiếng Trung, có phụ đề tiếng Việt. |
-| 泰文 | ซีรีส์ประวัติศาสตร์ | บุคคลและฉากสำคัญในประวัติศาสตร์: ตอนละหนึ่งแฟ้ม เล่าตามแหล่งข้อมูลที่ตรวจสอบได้ว่าเกิดอะไรขึ้น เหลือหลักฐานอะไร และคนรุ่นหลังเติมอะไรเข้าไป ตอนละประมาณ 10 นาที แหล่งอ้างอิงอยู่ในคำอธิบาย<br>บรรยายภาษาจีนกลาง มีซับไทย |
+| 中文（台灣） | 原來如此事務所 | 一集回答一個「為什麼」：商業與品牌、生活與科學、旅遊與各國文化、科技與 AI，那些天天碰到卻沒想過的問題，從一個故事一路講到答案。每集約 10 分鐘，從哪一集開始看都可以；數字與事實的出處列在說明欄，每集另有 Shorts。<br>繁中旁白、可關閉的 CC 字幕。 |
+| 英文 | So That's Why: Everyday Questions, Explained | One "why" per episode: business and brands, everyday science, travel and cultures around the world, tech and AI — questions you run into every day but never stop to ask, told as a story all the way to the answer. About 10 minutes each, start anywhere; sources for every figure and fact are in the description, and each episode has Shorts too.<br>Mandarin narration with English CC subtitles. |
+| 日文 | なるほど事務所：身近な「なぜ」を解き明かす | 1話にひとつの「なぜ」。ビジネスとブランド、暮らしと科学、旅と世界の文化、テクノロジーとAI。毎日出会うのに考えたことのない疑問を、ひとつの物語として答えまで語ります。1話約10分、どの回からでも見られます。数字と事実の出典は概要欄に、各話にショート動画もあります。<br>中国語ナレーション、日本語字幕付き。 |
+| 韓文 | 그래서그랬구나 사무소: 일상 속 '왜'를 풀다 | 한 편에 '왜' 하나: 비즈니스와 브랜드, 생활과 과학, 여행과 세계 문화, 기술과 AI. 매일 마주치지만 생각해 본 적 없는 질문을 하나의 이야기로 답까지 풀어 드립니다. 한 편 약 10분, 어디서든 시작할 수 있습니다. 숫자와 사실의 출처는 설명란에 있고, 편마다 Shorts도 있습니다.<br>중국어 내레이션, 한국어 CC 자막 제공. |
+| 西班牙文（拉丁美洲） | Así que por eso: los porqués de todos los días | Un «por qué» por episodio: negocios y marcas, ciencia cotidiana, viajes y culturas del mundo, tecnología e IA. Preguntas con las que te topas a diario pero nunca te detienes a pensar, contadas como una historia hasta llegar a la respuesta. Unos 10 minutos cada uno, empieza por donde quieras; las fuentes de cada cifra y dato están en la descripción, y cada episodio tiene también Shorts.<br>Narración en mandarín con subtítulos en español. |
+| 葡萄牙文（巴西） | Então é por isso: os porquês do dia a dia | Um «por quê» por episódio: negócios e marcas, ciência do cotidiano, viagens e culturas do mundo, tecnologia e IA. Perguntas que você encontra todo dia mas nunca para pra pensar, contadas como uma história até chegar à resposta. Cerca de 10 minutos cada, comece por onde quiser; as fontes de cada número e fato estão na descrição, e cada episódio também tem Shorts.<br>Narração em mandarim com legendas em português. |
+| 印尼文 | Oh, Begitu Rupanya: Jawaban untuk "Kenapa" Sehari-hari | Satu "kenapa" per episode: bisnis dan merek, sains sehari-hari, perjalanan dan budaya dunia, teknologi dan AI. Pertanyaan yang kamu temui tiap hari tapi tak pernah dipikirkan, diceritakan sebagai satu kisah sampai ke jawabannya. Sekitar 10 menit per episode, mulai dari mana saja; sumber setiap angka dan fakta ada di deskripsi, dan setiap episode juga punya Shorts.<br>Narasi Mandarin dengan subtitle Indonesia. |
+| 越南文 | Thì ra là vậy: Giải đáp những câu hỏi "tại sao" | Mỗi tập một câu "tại sao": kinh doanh và thương hiệu, khoa học đời thường, du lịch và văn hóa các nước, công nghệ và AI. Những câu hỏi ngày nào cũng gặp mà chưa từng nghĩ tới, kể thành một câu chuyện cho đến khi ra lời giải. Mỗi tập khoảng 10 phút, xem từ đâu cũng được; nguồn của mọi con số và dữ kiện nằm trong phần mô tả, mỗi tập còn có Shorts.<br>Thuyết minh tiếng Trung, có phụ đề tiếng Việt. |
+| 泰文 | อ๋อ อย่างนี้นี่เอง: ไขคำถาม "ทำไม" ใกล้ตัว | ตอนละหนึ่งคำถาม "ทำไม": ธุรกิจและแบรนด์ วิทยาศาสตร์ในชีวิตประจำวัน การเดินทางและวัฒนธรรมทั่วโลก เทคโนโลยีและ AI คำถามที่เจอทุกวันแต่ไม่เคยหยุดคิด เล่าเป็นเรื่องเดียวไปจนถึงคำตอบ ตอนละประมาณ 10 นาที เริ่มดูจากตอนไหนก็ได้ แหล่งที่มาของตัวเลขและข้อเท็จจริงทุกข้ออยู่ในคำอธิบาย และทุกตอนมี Shorts ด้วย<br>บรรยายภาษาจีนกลาง มีซับไทย |
 
 ## Tech Signal｜科技訊號（`PLMSBVkAy71z0`，原「AI 科技快報」）
 
