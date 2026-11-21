@@ -54,4 +54,4 @@
 | **3. 角色定妝照與首格** | 沿用系列鎖定的定妝照（平靜、閉嘴、無道具）當參考圖，畫每一鏡首格（`colab/ff/` 或 `flow-inputs/`） | 各系列 [`series/<slug>.md`](series/)、[`REVIEW.md` §2](REVIEW.md) | 首格過五項（結果造型、毛爪、無路人無字、9:16 安全區、同機位連戲）；不對當場重畫 |
 | **4. 片段生成與剪接** | 依 [`PRODUCTION-ROUTES.md`](PRODUCTION-ROUTES.md) 走 Colab H3、Google Flow（`preflight.mjs export-flow`）或後端 Veo API，用 `edit.py`／`recut.py` 剪取精華段、加音效、`hold` 與 `music_off` | [`PRODUCTION-ROUTES.md`](PRODUCTION-ROUTES.md)、[`WRITING.md` §三](WRITING.md) | 避開後半硬切與變臉；Veo 原片靜音重混；收尾音效落在鏡內 |
 | **5. 成片四道品管與笑點審核** | 跑 `qa_check.py`（疊安全區紅框）→ 獨立審片人查畫面破綻 → **兩位不同觀眾角色盲審笑點** → 沒過走五級修法並送原審片人複審 | [`REVIEW.md` §3～§5](REVIEW.md) | 規格全過、無高／必修改中度畫面瑕疵、兩位審片人都判「笑點有畫出來」且好笑平均 `≥ 3/5` |
-| **6. 雲端備份、匯入與覆盤** | 完整製作檔備份到雲端硬碟 `AI/備份/Shorts/<系列名>/`，再用 `node tools/video/shorts/cli.mjs import` 送後台；上架 7／28 天做數據覆盤與三點評分校準 | [`REVIEW.md` §6](REVIEW.md) | 雲端備份完整；後台匯入成功；7／28 天對比系列中位數與三點校準 |
+| **6. 雲端備份、匯入與覆盤** | 完整製作檔備份到雲端硬碟 `AI/備份/Shorts/<系列名>/`，再用 `node tools/video/shorts/cli.mjs import`（`meta.json` 寫 `"line": "drama"`、`"silent": true`，不放字幕檔）送後台；上架 7／28 天做數據覆盤與三點評分校準 | [`REVIEW.md` §6](REVIEW.md) | 雲端備份完整；後台匯入成功；7／28 天對比系列中位數與三點校準 |

@@ -246,7 +246,22 @@ python3 production/qa_check.py <slug> --work <VIDEO_WORKDIR>
    - 說明欄標明 AI 生成，後台匯入設 `synthetic_media: true`。
 3. **雲端硬碟備份與後台匯入**：
    - 先將完整製作檔（`workdir/<集>/edit/`、`colab/` 或 `flow-inputs/`＋`flow-clips/`、`qa/`、`production/`、`repo-docs/`）備份至雲端硬碟 `AI/備份/Shorts/<系列名>/`；
-   - 再用 `node tools/video/shorts/cli.mjs import --from <DIR> --workdir <VIDEO_WORKDIR>` 送上後台（確認後台 `/admin/videos?tab=shorts` 的 `seconds_min` 已調至 9–10 秒以收錄 11–18 秒短劇）。
+   - 再匯入後台。`<DIR>` 放三個檔：`final.mp4`、`cover.png`（選好的封面）與 `meta.json`，**不放 `zh-TW.srt`**：
+     ```json
+     { "slug": "<集的 slug>", "line": "drama", "silent": true, "series": "<系列 slug>",
+       "titles": ["<繁中標題>", "<備用標題>"], "description": "<繁中說明>",
+       "hashtags": ["#<系列>"], "tags": ["..."], "synthetic_media": true,
+       "localizations": { "en": { "title": "...", "description": "..." }, "ja": { ... }, "...": {} } }
+     ```
+     `localizations` 直接抄 `youtube-meta.json` 的八語標題與說明（en、ja、ko、es、pt、id、vi、th）；`titles` 要兩個（第二個是備用，同樣不破梗）。然後依序：
+     ```bash
+     node tools/video/shorts/cli.mjs import --from <DIR> --workdir <VIDEO_WORKDIR>   # 印出 build 目錄
+     node tools/video/shorts/cli.mjs check-audio --dir <BUILD_DIR>                  # 零台詞：0 句，不連站
+     node tools/video/shorts/cli.mjs qa --dir <BUILD_DIR>
+     node tools/video/shorts/cli.mjs package --dir <BUILD_DIR>
+     node tools/video/shorts/cli.mjs push --dir <BUILD_DIR>                         # 站主說可以才推
+     ```
+     `qa` 的片長用短劇自己的 9–20 秒，不看後台 Shorts 設定的「最短」；`layout` 一定不過（匯入的片沒有安全區量測），交站主在後台看一次。手動 `push` 的兩關都由站主核准。
 
 ### B. 上架後 7 天／28 天數據覆盤評分表與三點校準
 公開滿 7 天與 28 天時，用 `node tools/video/youtube-reports/cli.mjs videos --window 7 --shorts` 讀取實際表現（扣除非自然廣告流量），每項與**同系列中位數**比對（高於中位數記 `+1`、接近記 `0`、低於記 `-1`）：

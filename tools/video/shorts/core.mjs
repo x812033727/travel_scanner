@@ -10,6 +10,17 @@ export const PROFILE = Object.freeze({ width: 1080, height: 1920, fps: 30, minSe
 // from a tutorial, a vertical short of a drama. The card pipeline here makes the first two; a
 // drama short is made by the drama pipeline and only passes through `import`.
 export const LINES = Object.freeze(['lab', 'cut', 'drama']);
+// A silent drama (docs/videos/shorts-drama/README.md): a vertical comedy with no dialogue, no
+// narration and no caption cards, only music and sound effects, made whole by its own pipeline
+// and cut from no video. It is a drama-line Short with `silent: true`; its length is the drama's
+// own hard range, 9 to 20 seconds (golden 11 to 16), not the narrated Shorts' 25 to 55.
+export const SILENT_RANGE = Object.freeze({ minSeconds: 9, maxSeconds: 20 });
+/** Whether a script is a silent drama: no narration, no captions, no cards. */
+export const isSilent = (doc) => doc?.schema_version === 2 && doc?.line === 'drama' && doc?.silent === true;
+// The languages a Short's own translated title and description may come in (YouTube
+// localizations): the eight beside zh-TW the site uploads (apps/api/app/video_youtube).
+export const LOCALIZATION_LOCALES = Object.freeze(['en', 'ja', 'ko', 'es', 'pt', 'id', 'vi', 'th']);
+export const DESCRIPTION_MAX_BYTES = 5000;
 export const LAB_SERIES = Object.freeze(['daily', 'blind', 'prompts']);
 export const SLUG = /^[a-z][a-z0-9-]{2,79}$/;
 // The slug of any video on the site (apps/api/app/video_reviews/storage.py), which a source is.
@@ -66,7 +77,8 @@ export const saveJson = (file, data) => atomicWrite(file, `${JSON.stringify(data
 
 /** The content line of a script: version 1 knew only experiments. */
 export const lineOf = (doc) => (doc?.schema_version === 1 ? 'lab' : doc?.line);
-export const phrasesOf = (doc) => doc.scenes.flatMap((scene) => scene.narration);
+// A silent drama has no scenes and so no phrases.
+export const phrasesOf = (doc) => (doc.scenes ?? []).flatMap((scene) => scene.narration);
 
 function sceneErrors(doc, errors) {
   if (!Array.isArray(doc?.scenes) || doc.scenes.length < 3 || doc.scenes.length > 12) errors.push('3–12 scenes required');
@@ -147,6 +159,8 @@ function validateV2(doc) {
   if (doc?.line === 'lab' ? !LAB_SERIES.includes(doc?.series) : !SERIES.test(doc?.series ?? '')) errors.push(doc?.line === 'lab' ? 'invalid series' : 'series must be the slug of the source');
   if (!Array.isArray(doc?.titles) || doc.titles.length !== 2 || doc.titles.some(t => typeof t !== 'string' || !t.trim() || t.length > 100 || /[<>]/.test(t))) errors.push('two titles of 1–100 characters without angle brackets required');
   if (!text(doc?.description)) errors.push('description required');
+  if (doc?.silent !== undefined && !(doc.silent === true && doc?.line === 'drama')) errors.push('silent is true or left out, and only on the drama line');
+  const silent = isSilent(doc);
   if (doc?.line === 'lab') {
     // An experiment says what was tested and what the test cannot tell, and shows its evidence.
     for (const field of ['experiment_summary', 'limitations']) if (!text(doc?.[field])) errors.push(`${field} required`);
@@ -154,8 +168,9 @@ function validateV2(doc) {
   } else {
     // A highlight or a vertical short leads back to the video it was cut from. Its address may
     // be left out: `package` reads it from the site, which knows the video once it is public.
+    // A silent drama is a story of its own, cut from no video; when it names one, it is checked.
     const source = doc?.source;
-    if (!VIDEO_SLUG.test(source?.slug ?? '')) errors.push('source.slug required');
+    if (!(silent && source === undefined) && !VIDEO_SLUG.test(source?.slug ?? '')) errors.push('source.slug required');
     if (source?.url !== undefined && !YOUTUBE_URL.test(source.url)) errors.push('source.url must be the YouTube address of the full video');
     for (const field of ['start_seconds', 'end_seconds']) if (source?.[field] !== undefined && !(Number.isFinite(source[field]) && source[field] >= 0)) errors.push(`source.${field} must be a number of seconds`);
     if (Number.isFinite(source?.start_seconds) && Number.isFinite(source?.end_seconds) && source.end_seconds <= source.start_seconds) errors.push('source.end_seconds must come after start_seconds');
@@ -166,9 +181,30 @@ function validateV2(doc) {
   if (doc?.links !== undefined && (!Array.isArray(doc.links) || doc.links.length > MAX_LINKS || doc.links.some(l => !text(l?.label) || !/^https:\/\/[^\s<>]+$/.test(l?.url ?? '')))) errors.push(`up to ${MAX_LINKS} links, each { label, url } with an https address`);
   if (doc?.tags !== undefined && (!Array.isArray(doc.tags) || doc.tags.length > MAX_TAGS || doc.tags.some(t => typeof t !== 'string' || !t.trim() || [...t].length > 30 || /[<>,]/.test(t)))) errors.push(`up to ${MAX_TAGS} tags of 1–30 characters`);
   if (doc?.synthetic_media !== undefined && typeof doc.synthetic_media !== 'boolean') errors.push('synthetic_media must be true or false');
+  if (doc?.localizations !== undefined) localizationErrors(doc.localizations, errors);
   soundErrors(doc, errors);
-  sceneErrors(doc, errors);
+  if (silent) {
+    // Nothing is said and nothing is written on the picture: no scenes of narration, no cards.
+    if (doc.scenes !== undefined && !(Array.isArray(doc.scenes) && !doc.scenes.length)) errors.push('a silent drama has no scenes: it says nothing and shows no cards');
+    if (doc.music !== undefined || doc.sfx !== undefined) errors.push('a silent drama is mixed by its own pipeline: no music or sfx to add');
+  } else sceneErrors(doc, errors);
   return errors;
+}
+
+/**
+ * A Short's own translations of its title and description, { <locale>: { title, description } },
+ * which the site sends to YouTube as the video's localizations.
+ */
+function localizationErrors(localizations, errors) {
+  if (!localizations || typeof localizations !== 'object' || Array.isArray(localizations)) {
+    errors.push('localizations must be an object of { title, description } by locale');
+    return;
+  }
+  for (const [locale, entry] of Object.entries(localizations)) {
+    if (!LOCALIZATION_LOCALES.includes(locale)) errors.push(`localizations.${locale}: the locale is not one of ${LOCALIZATION_LOCALES.join(', ')}`);
+    else if (!entry || typeof entry.title !== 'string' || !entry.title.trim() || [...entry.title].length > 100 || /[<>]/.test(entry.title)) errors.push(`localizations.${locale}: a title of 1–100 characters without angle brackets`);
+    else if (!text(entry.description) || Buffer.byteLength(entry.description, 'utf8') > DESCRIPTION_MAX_BYTES || /[<>]/.test(entry.description)) errors.push(`localizations.${locale}: a description of at most ${DESCRIPTION_MAX_BYTES} bytes without angle brackets`);
+  }
 }
 
 export function validate(doc) {
