@@ -21,7 +21,7 @@ import { DEFAULT_THRESHOLD, MAX_HEARD_CHARACTERS, MAX_INTENDED_CHARACTERS, MAX_J
 import { judgeLines, transcribeClip } from '../tts/client.mjs';
 import { JOURNAL_DIR, openSpeechJournal } from '../tts/speech-journal.mjs';
 import { downsample, encodeWav, parseWav, requireNarrationFormat } from '../tts/wav.mjs';
-import { SCRIPT_FILE, phrasesOf, saveJson, sha256 } from './core.mjs';
+import { SCRIPT_FILE, isSilent, phrasesOf, saveJson, sha256 } from './core.mjs';
 
 export const CHECK_FILE = 'check.json';
 // What the transcriber takes; a build's clips are 48 kHz.
@@ -111,6 +111,12 @@ export async function checkAudio({ directory, client, lexicon = null, threshold,
   const doc = readJson(path.join(directory, SCRIPT_FILE), null);
   if (!doc) throw new Error(`${directory} holds no ${SCRIPT_FILE}: it is not a build of this tool`);
   const phrases = phrasesOf(doc);
+  // A silent drama says nothing: there is nothing to hear, nothing is sent and nothing is paid.
+  if (isSilent(doc)) {
+    const result = { ...(await checkPhrases({ phrases: [], clips: [], transcribe: null, judge: null })), silent: true };
+    saveJson(path.join(directory, CHECK_FILE), { ...result, checked_at: new Date().toISOString() });
+    return result;
+  }
   const calls = { site: client.site, token: client.token, fetchImpl: client.fetch, sleep: client.sleep };
   // Released once check.json is written: until then a restart takes what was bought from here.
   const journal = openSpeechJournal(path.join(directory, JOURNAL_DIR));

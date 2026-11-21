@@ -11,7 +11,9 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
 import { readJson } from '../core/paths.mjs';
-import { MAX_HASHTAGS, SCRIPT_FILE, lineOf, parseSrt, saveJson, sha256 } from './core.mjs';
+import { DESCRIPTION_MAX_BYTES, MAX_HASHTAGS, SCRIPT_FILE, isSilent, lineOf, parseSrt, saveJson, sha256 } from './core.mjs';
+
+export { DESCRIPTION_MAX_BYTES };
 
 export const PACKAGE_ITEM_IDS = Object.freeze(['files', 'descriptions', 'captions', 'disclosure']);
 export const METADATA_FILE = 'metadata.json';
@@ -22,12 +24,14 @@ export const CAPTIONS_FILE = 'zh-TW.srt';
 // (Shorts in the other TARGET_LOCALES are phase three of the 2026-10-19 worker-languages task).
 export const EXTRA_LOCALES = Object.freeze(['en', 'ja', 'ko']);
 const selectedLocales = (settings) => EXTRA_LOCALES.filter((locale) => Array.isArray(settings?.locales) && settings.locales.includes(locale));
-export const captionLocales = (metadata) => ['zh-TW', ...selectedLocales(metadata)];
+// A silent drama (metadata.json `silent`) says nothing, so it carries no caption track at all.
+export const captionLocales = (metadata) => (metadata?.silent === true ? [] : ['zh-TW', ...selectedLocales(metadata)]);
+/** The caption files a package holds: zh-TW and the ticked languages, none for a silent drama. */
+const captionFiles = (metadata) => captionLocales(metadata).map((locale) => `${locale}.srt`);
 // YouTube's categories: Science & Technology, and Entertainment for a drama.
 export const CATEGORY = Object.freeze({ lab: '28', cut: '28', drama: '24' });
 const DEFAULT_HASHTAGS = Object.freeze({ lab: ['#AI', '#實測'], cut: ['#AI'], drama: ['#AI漫劇'] });
 export const TITLE_MAX = 100;
-export const DESCRIPTION_MAX_BYTES = 5000;
 export const TAGS_MAX = 500;
 
 export const item = (id, ok, detail) => ({ id, ok: Boolean(ok), detail: String(detail) });
@@ -40,6 +44,7 @@ const bytesOf = (text) => Buffer.byteLength(text, 'utf8');
  */
 export function disclosureOf(doc) {
   const line = lineOf(doc);
+  if (isSilent(doc)) return { synthetic: true, reason: '畫面與配樂是 AI 生成的零台詞短劇' };
   if (line === 'drama') return { synthetic: true, reason: '畫面是 AI 生成的漫劇' };
   if (doc.synthetic_media === true) return { synthetic: true, reason: '畫面裡有擬真的生成圖' };
   return { synthetic: false, reason: line === 'cut' ? '重寫的字卡與合成旁白，沒有擬真的生成或變造內容' : '字卡、實測紀錄與合成旁白，沒有擬真的生成或變造內容' };
@@ -75,18 +80,24 @@ export function composeDescription(doc, { sourceUrl = null } = {}) {
 export function composeMetadata({ doc, finalSha256, seconds, settings = {}, sourceUrl = null }) {
   const line = lineOf(doc);
   const disclosure = disclosureOf(doc);
+  const silent = isSilent(doc);
   return {
     schema_version: 1,
     kind: 'shorts',
     slug: doc.slug,
     line,
+    // A silent drama says so, and so has no caption languages whatever the settings tick: the
+    // site reads it to leave the captions tag off its titles.
+    ...(silent ? { silent: true } : {}),
     series: doc.series,
     source: doc.source ? { ...doc.source, ...(sourceUrl ? { url: sourceUrl } : {}) } : null,
     default_language: 'zh-TW',
-    locales: selectedLocales(settings),
+    locales: silent ? [] : selectedLocales(settings),
     title: doc.titles[0],
     titles: [...doc.titles],
     description: composeDescription(doc, { sourceUrl }),
+    // The script's own translations go to YouTube as they are (the site's localizations).
+    ...(doc.localizations ? { localizations: Object.fromEntries(Object.entries(doc.localizations).map(([locale, entry]) => [locale, { title: entry.title, description: entry.description }])) } : {}),
     tags: tagsOf(doc),
     hashtags: hashtagsOf(doc),
     category_id: CATEGORY[line],
@@ -111,6 +122,11 @@ export function metadataProblems(metadata) {
   // YouTube counts a tag with a space as quoted, and the commas between tags.
   const tags = (metadata.tags ?? []).map((tag) => (/\s/.test(tag) ? `"${tag}"` : tag)).join(',');
   if (tags.length > TAGS_MAX) problems.push(`the tags are ${tags.length} characters together (at most ${TAGS_MAX})`);
+  for (const [locale, entry] of Object.entries(metadata.localizations ?? {})) {
+    const title = String(entry?.title ?? '');
+    if (![...title].length || [...title].length > TITLE_MAX || /[<>]/.test(title)) problems.push(`the ${locale} title is ${[...title].length} characters or has an angle bracket (1 to ${TITLE_MAX}, none)`);
+    if (bytesOf(String(entry?.description ?? '')) > DESCRIPTION_MAX_BYTES || /[<>]/.test(String(entry?.description ?? ''))) problems.push(`the ${locale} description is over ${DESCRIPTION_MAX_BYTES} bytes or has an angle bracket`);
+  }
   if ((metadata.hashtags ?? []).length > MAX_HASHTAGS) problems.push(`${metadata.hashtags.length} hashtags (at most ${MAX_HASHTAGS})`);
   if (metadata.source && !metadata.source.url) problems.push('the full video has no address yet, so the description cannot lead back to it');
   return problems;
@@ -136,7 +152,8 @@ export function captionProblems(source, timeline, { checkText = true } = {}) {
 
 /** The four items of the package check, from what upload/ holds. `files` maps a name to its bytes. */
 export function packageItems({ files, metadata, timeline, qa }) {
-  const names = ['final.mp4', CAPTIONS_FILE, 'cover.png', METADATA_FILE, ...selectedLocales(metadata).map((locale) => `${locale}.srt`)];
+  const [zh, ...extra] = captionFiles(metadata);
+  const names = ['final.mp4', ...(zh ? [zh] : []), 'cover.png', METADATA_FILE, ...extra];
   const missing = names.filter((name) => !files.has(name));
   const finalSha = files.has('final.mp4') ? sha256(files.get('final.mp4')) : null;
   const fileProblems = missing.map((name) => `${name} is missing`);
@@ -151,16 +168,19 @@ export function packageItems({ files, metadata, timeline, qa }) {
   if (description === null) descriptionProblems.push(`${DESCRIPTION_FILE} is missing`);
   else if (metadata && description !== metadata.description) descriptionProblems.push(`${DESCRIPTION_FILE} differs from metadata.json`);
   if (metadata) descriptionProblems.push(...metadataProblems(metadata));
-  const captions = captionLocales(metadata).flatMap((locale) => {
+  // A silent drama's package holds no caption file, and its timeline no cue.
+  const stray = metadata?.silent === true ? [CAPTIONS_FILE, ...EXTRA_LOCALES.map((locale) => `${locale}.srt`)].filter((name) => files.has(name)).map((name) => `${name} is in the package of a silent drama`) : [];
+  if (metadata?.silent === true && timeline?.cues?.length) stray.push(`the timeline of a silent drama has ${timeline.cues.length} cues`);
+  const captions = [...stray, ...captionLocales(metadata).flatMap((locale) => {
     const name = `${locale}.srt`;
     if (!files.has(name)) return [`${name} is missing`];
     return captionProblems(files.get(name).toString('utf8'), timeline, { checkText: locale === 'zh-TW' }).map((problem) => `${locale}: ${problem}`);
-  });
+  })];
   const disclosed = typeof metadata?.contains_synthetic_media === 'boolean' && typeof metadata.disclosure_reason === 'string' && metadata.disclosure_reason.trim().length > 0;
   return [
     item('files', !fileProblems.length, fileProblems.length ? fileProblems.join('; ') : `${names.join(', ')}; final.mp4 is the checked cut (${finalSha.slice(0, 12)})`),
     item('descriptions', !descriptionProblems.length, descriptionProblems.length ? descriptionProblems.join('; ') : `zh-TW, ${bytesOf(description)} bytes`),
-    item('captions', !captions.length, captions.length ? captions.join('; ') : `${captionLocales(metadata).join(", ")}: ${timeline.cues.length} captions on the timeline`),
+    item('captions', !captions.length, captions.length ? captions.join('; ') : metadata?.silent === true ? 'a silent drama: no captions, nothing is said' : `${captionLocales(metadata).join(", ")}: ${timeline.cues.length} captions on the timeline`),
     item('disclosure', disclosed, disclosed ? `${metadata.contains_synthetic_media ? 'disclosed as synthetic' : 'not synthetic'}: ${metadata.disclosure_reason}` : 'metadata.json does not answer the synthetic content question'),
   ];
 }
@@ -175,7 +195,9 @@ export function packageReport(items, metadataSha256) {
 /** The files of upload/ the package is made of, by name; a missing one is left out. */
 export function uploadFiles(directory, metadata = {}) {
   const files = new Map();
-  for (const name of ['final.mp4', CAPTIONS_FILE, 'cover.png', METADATA_FILE, DESCRIPTION_FILE, ...selectedLocales(metadata).map((locale) => `${locale}.srt`)]) {
+  // A silent drama's caption files are read too, so a stray one is named, not ignored.
+  const [zh = null, ...extra] = metadata?.silent === true ? [CAPTIONS_FILE, ...EXTRA_LOCALES.map((locale) => `${locale}.srt`)] : captionFiles(metadata);
+  for (const name of ['final.mp4', ...(zh ? [zh] : []), 'cover.png', METADATA_FILE, DESCRIPTION_FILE, ...extra]) {
     const file = path.join(directory, 'upload', name);
     if (existsSync(file)) files.set(name, readFileSync(file));
   }
