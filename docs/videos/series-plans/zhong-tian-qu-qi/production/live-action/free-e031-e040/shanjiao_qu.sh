@@ -40,3 +40,13 @@ c "$J" set-shanjiao-qu-zhuo2-l1 640:360:0:200
 c "$J" set-shanjiao-qu-tian2-l1 560:315:752:330
 ffmpeg -v error -y -i "$J" -vf "format=rgb24,geq=r='min(255,r(X,Y)+80*max(0,1-Y/(H*0.48)))':g='min(255,g(X,Y)+22*max(0,1-Y/(H*0.48)))':b='max(0,b(X,Y)-30*max(0,1-Y/(H*0.48)))',eq=brightness=-0.07:saturation=1.1:contrast=1.05:gamma=0.9,colorbalance=rs=0.14:gs=0.00:bs=-0.18:rm=0.16:gm=0.00:bm=-0.24:rh=0.22:gh=0.00:bh=-0.36,vignette=PI/6" -frames:v 1 -flags +bitexact -fflags +bitexact "$O/set-shanjiao-qu-xi2-l1.png"
 c "$O/set-shanjiao-qu-xi2-l1.png" set-shanjiao-qu-xi2-zhuo-l1 640:360:0:200
+# After the e936 cut review 2 (2026-11-21, 中等 1: the model grew the small square bump on the far skyline into modern tower
+# blocks in s21 and s29), new ids again from a second cleaned copy (the -jing / -tian2 / -xi2 ones stay, already sent):
+#   shanjiao_qu_clean2.py paints the bump, a thin spike and the faint blocky shapes in the haze out of -jing into tree line,
+#   sky and haze; -jing2 the result, -tian3 / -xi3 the same crop and dusk grade as -tian2 / -xi2 (-xi2-zhuo is untouched by
+#   the cleaning, its crop lies left of it: bit-identical, so it stays as it is).
+#   Send these for any later retake or e037 shot of the channel instead of -jing / -tian2 / -xi2.
+J2="$O/set-shanjiao-qu-jing2-l1.png"
+python3 -I "$(dirname "$0")/shanjiao_qu_clean2.py" "$J" "$J2"
+c "$J2" set-shanjiao-qu-tian3-l1 560:315:752:330
+ffmpeg -v error -y -i "$J2" -vf "format=rgb24,geq=r='min(255,r(X,Y)+80*max(0,1-Y/(H*0.48)))':g='min(255,g(X,Y)+22*max(0,1-Y/(H*0.48)))':b='max(0,b(X,Y)-30*max(0,1-Y/(H*0.48)))',eq=brightness=-0.07:saturation=1.1:contrast=1.05:gamma=0.9,colorbalance=rs=0.14:gs=0.00:bs=-0.18:rm=0.16:gm=0.00:bm=-0.24:rh=0.22:gh=0.00:bh=-0.36,vignette=PI/6" -frames:v 1 -flags +bitexact -fflags +bitexact "$O/set-shanjiao-qu-xi3-l1.png"

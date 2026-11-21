@@ -9,7 +9,8 @@ mkdir -p $E/cut; [ -f $E/cut/e936-live.mp4 ] && { mkdir -p $E/cut/old-$(date +%H
 rm -rf $E/segments-v4
 # 精修片由 live-action/stage.py 36 放好（精修畫面＋草稿原聲＋剪點 -> clips/sNN-t1.mp4）。picks.json 是 refine-prep 照
 # picks-merged.tsv → fix1 → fix2 → fix3/review-picks.tsv 寫的（s01 s04 s11b s12b s18 s20 s26 s28 s31 是 fix1、s02 是 fix3 開門版 9361231）；
-# 第一版的 cut-trims.tsv 由 scratchpad e936c/applytrims.py 套上（原檔 e936c/bak/picks.json）。缺片或 picks.json 比片新就重跑。
+# 第一版的 cut-trims.tsv 由 scratchpad e936c/applytrims.py 套上（原檔 e936c/bak/picks.json）；REVIEW 3 的 review3-trims.tsv（八鏡：s01 剪頭、
+# s04 s05 s08 s18 s28 s31 s35 剪尾）同樣套上（改前 e936c/bak-r3/picks.json）。缺片或 picks.json 比片新就重跑。
 stale=$(python3 -c "import json,os;e='$E';p=json.load(open(e+'/picks.json'));t=os.path.getmtime(e+'/picks.json');print(' '.join(s for s in p if not os.path.exists(f'{e}/clips/{s}-t1.mp4') or os.path.getmtime(f'{e}/clips/{s}-t1.mp4')<t))")
 [ -z "$stale" ] || { echo "staging (stale: $stale)"; python3 $P/live-action/stage.py 36 || exit 1; }
 # music/ 是手做的目錄：zhong-tian-qu-qi-e935-dh/music 的連結整個複製（cp -a）。
@@ -29,7 +30,7 @@ mk drum-near war-drum-take1 0.7 3 "lowpass=f=2500,afade=t=out:st=2.4:d=0.6"
 # 剪接表假設的剪點與種子（picks.json）。整格：容差 0.001；只警告不停。
 python3 -c "
 import json;p=json.load(open('$E/picks.json'))
-want={'s01':(0.75,6.583),'s02':(0.5,6.583),'s03':(1.25,7.25),'s04':(0.25,6.25),'s05':(0.5,6.0),'s06':(0.75,6.583),'s07':(0.5,6.583),'s08':(0.25,4.583),'s09':(2.75,8.0),'s10':(1.5,8.0),'s11':(0.0,8.25),'s11b':(1.75,6.583),'s12':(1.25,6.583),'s12b':(1.5,6.583),'s13':(2.75,6.583),'s14':(0.0,5.5),'s15':(0.0,2.0),'s16':(0.5,5.5),'s17':(0.0,2.0),'s18':(0.0,6.583),'s19':(1.75,6.583),'s20':(1.5,6.583),'s21':(1.75,6.583),'s22':(0.0,5.5),'s23':(0.5,6.583),'s24':(2.75,8.0),'s25':(1.5,6.583),'s26':(1.25,10.125),'s27':(1.0,5.0),'s28':(0.0,6.5),'s29':(0.0,5.0),'s30':(1.25,8.0),'s31':(1.0,6.583),'s32':(2.25,6.583),'s33':(1.25,4.583),'s34':(0.75,6.0),'s35':(1.25,8.0),'s36':(2.5,4.5),'s37':(1.0,3.0),'s38':(0.25,5.0)}
+want={'s01':(1.55,6.583),'s02':(0.5,6.583),'s03':(1.25,7.25),'s04':(0.25,5.75),'s05':(0.5,5.45),'s06':(0.75,6.583),'s07':(0.5,6.583),'s08':(0.25,3.75),'s09':(2.75,8.0),'s10':(1.5,8.0),'s11':(0.0,8.25),'s11b':(1.75,6.583),'s12':(1.25,6.583),'s12b':(1.5,6.583),'s13':(2.75,6.583),'s14':(0.0,5.5),'s15':(0.0,2.0),'s16':(0.5,5.5),'s17':(0.0,2.0),'s18':(0.0,5.5),'s19':(1.75,6.583),'s20':(1.5,6.583),'s21':(1.75,6.583),'s22':(0.0,5.5),'s23':(0.5,6.583),'s24':(2.75,8.0),'s25':(1.5,6.583),'s26':(1.25,10.125),'s27':(1.0,5.0),'s28':(0.0,5.75),'s29':(0.0,5.0),'s30':(1.25,8.0),'s31':(1.0,4.75),'s32':(2.25,6.583),'s33':(1.25,4.583),'s34':(0.75,6.0),'s35':(1.25,7.5),'s36':(2.5,4.5),'s37':(1.0,3.0),'s38':(0.25,5.0)}
 seed={'s01':9361212,'s02':9361231,'s04':9361211,'s11':9361102,'s11b':9361212,'s12':9361102,'s12b':9361212,'s14':9361102,'s18':9361211,'s20':9361212,'s21':9361102,'s23':9361102,'s26':9361211,'s28':9361212,'s31':9361212,'s32':9361102,'s33':9361102,'s34':9361102,'s35':9361102,'s36':9361102}
 bad=[f'{s} start {p[s][\"trim\"].get(\"start\",0)} end-before {p[s][\"trim\"].get(\"end-before\",0)} (want {a} {b})' for s,(a,b) in want.items()
      if s in p and (abs(p[s]['trim'].get('start',0)-a)>0.001 or abs(p[s]['trim'].get('end-before',0)-b)>0.001)]
@@ -39,8 +40,9 @@ bad+=[f'{s} not in picks.json' for s in want if s not in p]
 bad+=[f'{s} in picks.json, not in the want table' for s in p if s not in want]
 bad+=[f'{s} has crop {p[s].get(\"crop\")} (none may)' for s in p if p[s].get('crop')]
 print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
+# REVIEW 3：a03 改用第一次錄音不變調（asetrate 1.0）、a15 asetrate 0.70、a18 rubberband 0.71（約 205 Hz）。
 # 剪接表鋪的錄音在 audio/ 改寫過（原檔 audio/orig/；scratchpad e936c/levall.sh → lev936.py，_note〈錄音〉）：整平到 −13.5 LUFS 的
-# a01 a06 a07 a10 a12 a16 a17 a18、a03（來源 a03-p77）、a28（來源重錄 a28-p118）、a35（來源 a35-p88）、a04 a22 a23 a27 a31 a32 a15（PRE 變調），
+# a01 a06 a07 a10 a12 a16 a17 a18、a03（來源 a03-p77）、a28（來源重錄 a28-p118）、a35（REVIEW 3：來源 a35-lo92＝第一次錄音 asetrate 0.92，四種音量／雜訊盲聽 7–8/8）、a04 a22 a23 a27 a31 a32 a15（PRE 變調），
 # 系統 a11 a29（PRE rubberband 1.20）到 −14.0。少了改寫就停。
 A=/root/mokaair-work/videos/zhong-tian-qu-qi-e936-dh/audio
 for n in 01 03 04 06 07 10 11 12 15 16 17 18 22 23 27 28 29 31 32 35; do [ -f $A/orig/zq936a$n.wav ] || { echo "audio/zq936a$n.wav is not the leveled file (no orig/ copy)"; exit 1; }; done
