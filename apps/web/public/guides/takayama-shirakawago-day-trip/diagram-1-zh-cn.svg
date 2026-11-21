@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" lang="zh-CN" xml:lang="zh-CN" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans CJK SC','Noto Sans SC','Noto Sans CJK JP','PingFang SC','Microsoft YaHei',system-ui,sans-serif">
+  <title id="title">名古屋 → 高山 → 白川乡 → 金泽 交通路线图 / Nagoya, Takayama, Shirakawa-go and Kanazawa by JR and bus</title>
+  <desc id="desc">名古屋到高山有两种方式：JR 特急ひだ（实线，约 140 分钟，普通车指定席特急券 2,730 日元另加乘车券）与高速巴士（虚线，约 2 小时 45 分钟，3,600 日元、网上预约 3,300 日元，每天 12 班，全席预约）。名古屋另有岐阜巴士直达白川乡（虚线，约 2 小时 42 分钟，按出发日期 3,600 至 4,700 日元，预约优先）。高山到白川乡只有浓飞等公司的白川乡线巴士（虚线，约 50 分钟，2,800 日元，全班预约制，高山发首班 7:20，白川乡回高山末班 17:30），同一条线路续行金泽，白川乡到金泽约 1 小时 15 分钟、2,800 日元。白川乡巴士总站附近有展望台接驳巴士，单程 300 日元。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="80" y="84" font-size="40" font-weight="700" fill="#102A2B">名古屋 → 高山 → 白川乡 → 金泽　交通路线图</text>
+  <text x="80" y="124" font-size="22" fill="#5C6B6B">Nagoya → Takayama → Shirakawa-go → Kanazawa · 2026 年 9 月核实，车程为大致时间，以官网时刻表为准</text>
+
+  <!-- Gifu Bus direct: Nagoya -> Shirakawa-go (highway bus, dashed coral) -->
+  <path d="M 220 540 C 220 260, 700 210, 1160 346" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+  <!-- JR Hida: Nagoya -> Takayama (solid teal) -->
+  <line x1="370" y1="600" x2="800" y2="600" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <!-- Highway bus: Nagoya -> Takayama (dashed coral) -->
+  <path d="M 370 628 C 500 745, 680 745, 806 618" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+  <!-- Shirakawa-go line bus: Takayama -> Shirakawa-go -> Kanazawa (dashed mocha) -->
+  <line x1="836" y1="586" x2="1164" y2="362" stroke="#6B4A3A" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+  <line x1="1196" y1="338" x2="1454" y2="176" stroke="#6B4A3A" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+
+  <!-- Nagoya -->
+  <rect x="70" y="540" width="300" height="120" rx="24" fill="#0D6B68"/>
+  <text x="220" y="592" font-size="30" font-weight="700" fill="#FFFFFF" text-anchor="middle">名古屋 Nagoya</text>
+  <text x="220" y="630" font-size="17" fill="#E6F2F1" text-anchor="middle">名铁巴士中心 · JR 名古屋站</text>
+
+  <!-- Takayama -->
+  <circle cx="820" cy="600" r="18" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+  <text x="852" y="650" font-size="28" font-weight="700" fill="#102A2B">高山 Takayama</text>
+  <text x="852" y="680" font-size="18" fill="#5C6B6B">高山浓飞巴士中心 · JR 高山站</text>
+
+  <!-- Shirakawa-go -->
+  <circle cx="1180" cy="350" r="18" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+  <text x="1196" y="400" font-size="28" font-weight="700" fill="#102A2B">白川乡 Shirakawa-go</text>
+  <text x="1196" y="430" font-size="18" fill="#5C6B6B">白川乡巴士总站 · 展望台接驳 300 日元</text>
+
+  <!-- Kanazawa -->
+  <circle cx="1470" cy="166" r="18" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+  <text x="1470" y="124" font-size="28" font-weight="700" fill="#102A2B" text-anchor="middle">金泽 Kanazawa</text>
+
+  <!-- Route labels -->
+  <text x="410" y="546" font-size="24" font-weight="700" fill="#0D6B68">JR 特急ひだ Hida · 约 140 分钟</text>
+  <text x="410" y="576" font-size="18" fill="#5C6B6B">普通车指定席特急券 2,730 日元＋乘车券</text>
+
+  <text x="420" y="772" font-size="24" font-weight="700" fill="#B8442D">高速巴士 Highway Bus · 约 2 小时 45 分钟</text>
+  <text x="420" y="802" font-size="18" fill="#5C6B6B">3,600 日元（网上预约 3,300）· 每天 12 班 · 全席预约</text>
+
+  <text x="440" y="204" font-size="22" font-weight="700" fill="#B8442D">岐阜巴士 名古屋–白川乡直达 · 约 2 小时 42 分钟</text>
+  <text x="440" y="234" font-size="18" fill="#5C6B6B">3,600 至 4,700 日元（按出发日期）· 预约优先</text>
+
+  <text x="990" y="562" font-size="22" font-weight="700" fill="#6B4A3A">浓飞巴士 Nohi Bus · 约 50 分钟 · 2,800 日元</text>
+  <text x="990" y="592" font-size="18" fill="#5C6B6B">全班预约制 · 高山发首班 7:20 · 白川乡发末班 17:30</text>
+
+  <text x="1300" y="308" font-size="18" font-weight="700" fill="#6B4A3A">巴士 约 1 小时 15 分钟</text>
+  <text x="1300" y="334" font-size="18" fill="#5C6B6B">2,800 日元 · 预约制</text>
+
+  <!-- Legend -->
+  <line x1="80" y1="852" x2="140" y2="852" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+  <text x="152" y="859" font-size="20" fill="#102A2B">JR 特急 JR Limited Express</text>
+  <line x1="500" y1="852" x2="560" y2="852" stroke="#B8442D" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+  <text x="572" y="859" font-size="20" fill="#102A2B">高速巴士 Highway Bus（名古屋发）</text>
+  <line x1="940" y1="852" x2="1000" y2="852" stroke="#6B4A3A" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+  <text x="1012" y="859" font-size="20" fill="#102A2B">白川乡线巴士 Shirakawa-go Line</text>
+  <text x="1560" y="886" font-size="16" fill="#5C6B6B" text-anchor="end">© Mokaair 制图 2026</text>
+</svg>
