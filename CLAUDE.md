@@ -97,9 +97,13 @@ checks, CI failures, Dependabot), `web-i18n-e2e` (messages and Playwright),
 rich-gouache keyframes via built-in `generate_image` + `keyframes import --provider external --usd 0`,
 never MiniMax images; distinct 3.5-head slender `Ada` sheet at
 `docs/videos/history-curiosity/series-sheets/characters/ada/ada-canon-v2.png` and ~45%-65%
-`nobody: true` object/scene shots; full-bleed `黑猫研究院` (`@qiqiqushi0`) thumbnails via
-`thumbnail.data.layout: "heimao"` / `"heimao-left"` with top yellow/white bold black-stroked lines over
-clean bright sky and lower-70% giant iconic object/symbol + dramatic conflict or reaction; `zh-TW`
+`nobody: true` object/scene shots; full-bleed `黑猫研究院` (`@qiqiqushi0`) emblem thumbnails defaulting to
+`thumbnail.data.layout: "heimao-left"` with subject-named top-left yellow/white bold black-stroked lines across
+all 9 locales — never nameless pronouns — over clean bright sky, lower-left character reaction, and right-half
+signature emblem/object via the 4-tier funnel: public-domain crests/monuments, everyday icons or wordless
+cartoonized/abstract brand shapes & trade-dress colors strictly excluding copyrighted IP mascots/characters, or
+signature props + `✕` stamp, compositing exact heraldry/QR via vector SVG onto `<workdir>/stock/<sha256>.jpg`
+with `thumbnail.replaces`; `zh-TW`
 Gemini `Sulafat` >= 4.4 chars/s; 8-locale dubs via MiniMax; 2x-zoom independent audit, post-assembly
 independent audience review fixed before Drive backup and `review-push`, and the lint gate that keeps them),
 `brand-story` (any 品牌故事, a `story-` slug: the owner's fixed choices, how a batch is planned,
@@ -116,13 +120,14 @@ read `docs/videos/so-thats-why/look.md`,
 `docs/videos/so-thats-why/thumbnails.md`,
 `docs/videos/so-thats-why/series-sheets/README.md`,
 `docs/videos/so-thats-why/dialogue-pilot-20261103/README.md` and
-`docs/videos/lessons/sothatswhy.md` alongside `youtube-video` (owner 2026-11-14 / 2026-11-18:
+`docs/videos/lessons/sothatswhy.md` alongside `youtube-video` (owner 2026-11-14 / 2026-11-18 / 2026-11-20:
 theatrical-light rich-gouache keyframes via built-in image generation +
 `keyframes import --provider external --usd 0`, never MiniMax images; 2.5-head chibi canonical
 sheets `chief-canon-v2.png` + `kid-canon-v2.png` strictly distinct from Curio, and ~45%-65%
-`nobody: true` mechanism/object shots; full-bleed `黑猫研究院` thumbnails via
-`thumbnail.data.layout: "heimao"` / `"heimao-left"` with giant iconic object/mechanism contrast +
-reaction; `zh-TW` Gemini `Sulafat` + `Leda`; 8-locale dubs via MiniMax;
+`nobody: true` mechanism/object shots; full-bleed `黑猫研究院` emblem thumbnails defaulting to
+`thumbnail.data.layout: "heimao-left"` with subject-named headlines across all 9 locales + right-half
+signature emblem/wordless abstract icon/mechanism contrast — zero brand letters and zero copyrighted IP
+mascots — + lower-left reaction; `zh-TW` Gemini `Sulafat` + `Leda`; 8-locale dubs via MiniMax;
 independent post-assembly audience review in `review/audience-review.md` with all findings fixed
 and `qa` re-passed before Google Drive backup and `review-push --gate final`). Read the matching
 skill before re-deriving a workflow from the docs.

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { CURIO_MAX_CARD_RUN, CURIO_MIN_SHOT_SHARE, CURIO_MUSIC, CURIO_PRESET, curioProblems, curioWarnings, GENERIC_PROP_MAX, genericPropWarnings, isCurio, isPacedSeries, pacingWarnings, SERIES_PACING } from "./curio.mjs";
+import { CURIO_MAX_CARD_RUN, CURIO_MIN_SHOT_SHARE, CURIO_MUSIC, CURIO_PRESET, curioProblems, curioWarnings, GENERIC_PROP_MAX, genericPropWarnings, heimaoSubjectWarnings, isCurio, isPacedSeries, pacingWarnings, SERIES_PACING } from "./curio.mjs";
 import { resolveLook } from "./drama.mjs";
 import { fixture, fixtureBrief, fixtureLexicon } from "./fixtures/load.mjs";
 import { lintVideo } from "./lint.mjs";
@@ -102,4 +102,22 @@ test("repeating generic purse/wallet or plain-covered book stand-ins across 3+ s
     assert.match(bookWarn.message, /3 shots draw the generic thick\/plain-covered book \(空白厚書\) stand-in \(b1, b2, b3\)/, slug);
   }
   assert.deepEqual(genericPropWarnings({ slug: "daily-ai-20261118", format: "drama", scenes: purses }), [], "other formats are untouched");
+});
+
+test("heimao thumbnails warn when line 1 hides the subject behind a nameless demonstrative or pronoun", () => {
+  const thumb = (headline, layout = "heimao-left") => ({ template: "thumb", data: { layout, headline, sub: "3 份紀錄" } });
+  for (const [slug, bad] of [
+    ["curio-s10-v2", "這句話**根本沒寫？**"],
+    ["curio-s13-v2", "這兩字**沒簽過？**"],
+    ["sothatswhy-p12-qr-code", "它髒了**照樣能掃？**"],
+    ["story-dolby", "他**憑什麼躺賺？**"],
+  ]) {
+    const [warn] = pacingWarnings({ slug, format: "drama", ...SERIES_PACING, thumbnail: thumb(bad) });
+    assert.equal(warn.path, "thumbnail.data.headline", slug);
+    assert.match(warn.message, /nameless demonstrative\/pronoun/, slug);
+  }
+  for (const good of ["本能寺**誰喊的？**", "真田幸村**叫錯了？**", "QR 髒了**照樣能掃？**", "杜比**憑什麼躺賺？**", "宮本武藏**沒遲到？**"]) {
+    assert.deepEqual(heimaoSubjectWarnings({ slug: "curio-s14", format: "drama", thumbnail: thumb(good) }), [], good);
+  }
+  assert.deepEqual(heimaoSubjectWarnings({ slug: "daily-ai-20261120", format: "drama", thumbnail: thumb("這句話**根本沒寫？**") }), [], "other series are untouched");
 });
