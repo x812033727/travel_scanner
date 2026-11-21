@@ -84,7 +84,7 @@ test("every destination is inside a folder the sync owns", () => {
 });
 
 test("each drama has a lessons file, and every AI-drama skill is watched", () => {
-  for (const name of ["shared", "explainer", "curio", "sothatswhy", "zhong-tian-qu-qi", "zhong-tian-qu-qi-r2", "tai-nainai"]) {
+  for (const name of ["shared", "explainer", "shorts", "curio", "sothatswhy", "zhong-tian-qu-qi", "zhong-tian-qu-qi-r2", "tai-nainai"]) {
     assert.ok(files.includes(`docs/videos/lessons/${name}.md`), name);
   }
   const skills = fs.readdirSync(path.join(ROOT, ".agents/skills"))
