@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans','Noto Sans KR',system-ui,sans-serif">
+  <title id="title">Seoul 4-Day Itinerary by Area</title>
+  <desc id="desc">Simplified schematic map of Seoul, not to scale. From Incheon Airport (ICN), the AREX Express Train takes 43–51 min to Seoul Station, while the All-Stop Train stops at Hongik Univ. Station. Day 1 covers Myeongdong and Namsan (N Seoul Tower night views, Namsan Bus 01A/01B from Chungmuro Station). Day 2 walks west to east through Gyeongbokgung Palace (closed Tuesdays), Bukchon Hanok Village (10:00–17:00 tourist hours), Insadong, and Gwangjang Market, served by Subway Line 3 Anguk Station and Line 1 Jongno 5-ga Station. Day 3 heads out to Gapyeong for the 8.5 km Gimyujeong Rail Bike and Nami Island via the Gyeongchun Line or ITX-Cheongchun from Yongsan, or takes Metro Line 1 to Suwon Station (plus local bus or taxi) for Suwon Hwaseong Fortress. Day 4 chooses between Option A in Hongdae and Yeonnam-dong (AREX from Hongik Univ. Station) or Option B in Seongsu and Han River Park (Line 2 Seongsu Station) before heading to the airport. Gangnam lies south of the Han River and is not scheduled in this 4-day itinerary.</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="60" y="64" font-size="34" font-weight="700" fill="#102A2B">Seoul 4-Day Itinerary: One Area a Day</text>
+  <text x="60" y="98" font-size="18" fill="#5C6B6B">Schematic area map, not to scale · Less cross-city backtracking</text>
+
+  <!-- Han River -->
+  <path d="M 0 640 C 300 600, 600 690, 900 650 C 1150 620, 1350 680, 1600 660 L 1600 700 C 1350 720, 1150 660, 900 690 C 600 730, 300 640, 0 680 Z" fill="#BFD9E3" opacity="0.8"/>
+  <text x="1555" y="726" font-size="18" fill="#3F6C7A" font-weight="700" text-anchor="end">한강 Han River</text>
+
+  <!-- Airport arrow -->
+  <path d="M 60 560 L 660 560" fill="none" stroke="#5C6B6B" stroke-width="5" stroke-dasharray="14 12" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#B8442D"/></marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2E7D5B"/></marker>
+  </defs>
+  <text x="60" y="540" font-size="19" font-weight="700" fill="#5C6B6B">Incheon Airport (ICN · 인천공항) →</text>
+  <text x="60" y="592" font-size="15" fill="#5C6B6B">AREX Express: 43–51 min → Seoul Stn.</text>
+  <text x="60" y="614" font-size="15" fill="#5C6B6B">All-Stop Train → Hongik Univ. Stn.</text>
+
+  <!-- Day 4 A: Hongdae & Yeonnam-dong -->
+  <rect x="108" y="365" width="374" height="122" rx="22" fill="#FFFFFF" stroke="#D97A2B" stroke-width="6"/>
+  <circle cx="108" cy="365" r="28" fill="#D97A2B"/><text x="108" y="370" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 4</text>
+  <text x="295" y="406" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">Hongdae &amp; Yeonnam-dong</text>
+  <text x="295" y="435" font-size="15" fill="#5C6B6B" text-anchor="middle">홍대 · 연남동 · Option A</text>
+  <circle cx="195" cy="460" r="7" fill="#102A2B"/><text x="210" y="465" font-size="15" fill="#5C6B6B">Hongik Univ. Stn. (AREX)</text>
+
+  <!-- Day 2 row -->
+  <g font-weight="700" fill="#102A2B" text-anchor="middle">
+    <rect x="485" y="206" width="235" height="94" rx="20" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+    <text x="612" y="244" font-size="20">Gyeongbokgung</text>
+    <text x="612" y="272" font-size="15" font-weight="400" fill="#5C6B6B">경복궁 · Closed Tue</text>
+
+    <rect x="760" y="206" width="220" height="94" rx="20" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+    <text x="870" y="244" font-size="20">Bukchon Village</text>
+    <text x="870" y="272" font-size="15" font-weight="400" fill="#5C6B6B">북촌 · 10:00–17:00</text>
+
+    <rect x="1020" y="206" width="190" height="94" rx="20" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+    <text x="1115" y="244" font-size="20">Insadong</text>
+    <text x="1115" y="272" font-size="15" font-weight="400" fill="#5C6B6B">인사동 · Shops &amp; Tea</text>
+
+    <rect x="1250" y="206" width="245" height="94" rx="20" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+    <text x="1372" y="244" font-size="20">Gwangjang Market</text>
+    <text x="1372" y="272" font-size="15" font-weight="400" fill="#5C6B6B">광장시장 · Food Stalls</text>
+  </g>
+  <path d="M 725 253 L 753 253" stroke="#B8442D" stroke-width="4" marker-end="url(#arrowRed)"/>
+  <path d="M 985 253 L 1013 253" stroke="#B8442D" stroke-width="4" marker-end="url(#arrowRed)"/>
+  <path d="M 1215 253 L 1243 253" stroke="#B8442D" stroke-width="4" marker-end="url(#arrowRed)"/>
+  <circle cx="485" cy="206" r="28" fill="#B8442D"/><text x="485" y="211" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 2</text>
+  <text x="995" y="328" font-size="16" fill="#B8442D" text-anchor="middle">Walk West to East · Line 3 Anguk Stn. &amp; Line 1 Jongno 5-ga Stn.</text>
+
+  <!-- Day 1: Myeongdong & Namsan -->
+  <rect x="635" y="395" width="420" height="124" rx="22" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <circle cx="635" cy="395" r="28" fill="#2F6F9F"/><text x="635" y="400" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 1</text>
+  <text x="845" y="438" font-size="23" font-weight="700" fill="#102A2B" text-anchor="middle">Myeongdong &amp; Namsan</text>
+  <text x="845" y="466" font-size="15" fill="#5C6B6B" text-anchor="middle">명동 · 남산 · N Seoul Tower Night Views</text>
+  <text x="845" y="494" font-size="15" fill="#5C6B6B" text-anchor="middle">Namsan Bus 01A/01B · Chungmuro Stn.</text>
+  <!-- N Seoul Tower silhouette -->
+  <rect x="986" y="340" width="4" height="20" fill="#2F6F9F"/>
+  <rect x="977" y="359" width="22" height="10" rx="3" fill="#2F6F9F"/>
+  <rect x="984" y="369" width="8" height="26" fill="#2F6F9F"/>
+
+  <!-- Seoul Station -->
+  <circle cx="680" cy="560" r="12" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/>
+  <text x="702" y="566" font-size="18" font-weight="700" fill="#102A2B">Seoul Station (서울역)</text>
+
+  <!-- Day 4 B: Seongsu & Han River -->
+  <rect x="1145" y="458" width="385" height="122" rx="22" fill="#FFFFFF" stroke="#D97A2B" stroke-width="6"/>
+  <circle cx="1145" cy="458" r="28" fill="#D97A2B"/><text x="1145" y="463" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 4</text>
+  <text x="1337" y="498" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">Seongsu &amp; Han River Park</text>
+  <text x="1337" y="526" font-size="15" fill="#5C6B6B" text-anchor="middle">성수 · 한강 · Option B</text>
+  <circle cx="1248" cy="551" r="7" fill="#102A2B"/><text x="1263" y="556" font-size="15" fill="#5C6B6B">Seongsu Stn. (Line 2)</text>
+
+  <!-- Gangnam -->
+  <rect x="660" y="738" width="370" height="94" rx="22" fill="#FFFFFF" stroke="#B9B2A8" stroke-width="4" stroke-dasharray="10 8"/>
+  <text x="845" y="776" font-size="21" font-weight="700" fill="#8A8F8F" text-anchor="middle">Gangnam (강남)</text>
+  <text x="845" y="806" font-size="15" fill="#8A8F8F" text-anchor="middle">Not scheduled in this 4-day itinerary</text>
+
+  <!-- Day 3 Option A: Gapyeong / Nami Island -->
+  <rect x="1055" y="40" width="495" height="124" rx="20" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="6"/>
+  <circle cx="1055" cy="40" r="28" fill="#2E7D5B"/><text x="1055" y="45" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 3</text>
+  <text x="1302" y="80" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">Gapyeong Day Trip: Nami Island (남이섬)</text>
+  <text x="1302" y="110" font-size="15" fill="#5C6B6B" text-anchor="middle">Gimyujeong Rail Bike (8.5 km) → Gapyeong Ferry → Nami</text>
+  <text x="1302" y="138" font-size="15" fill="#5C6B6B" text-anchor="middle">Gyeongchun Line / ITX-Cheongchun (from Yongsan)</text>
+  <path d="M 1498 242 C 1544 235, 1554 202, 1538 168" fill="none" stroke="#2E7D5B" stroke-width="4.5" stroke-dasharray="10 7" marker-end="url(#arrowGreen)"/>
+
+  <!-- Day 3 Option B: Suwon Hwaseong Fortress -->
+  <rect x="1080" y="756" width="470" height="102" rx="20" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="5"/>
+  <text x="1315" y="795" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">Day 3 Alt: Suwon Hwaseong (수원화성)</text>
+  <text x="1315" y="826" font-size="15" fill="#5C6B6B" text-anchor="middle">Metro Line 1 to Suwon Stn. → local bus or taxi</text>
+
+  <!-- Legend -->
+  <g font-size="16" fill="#102A2B">
+    <circle cx="70" cy="860" r="9" fill="#2F6F9F"/><text x="88" y="866" font-size="16">Day 1</text>
+    <circle cx="160" cy="860" r="9" fill="#B8442D"/><text x="178" y="866" font-size="16">Day 2</text>
+    <circle cx="250" cy="860" r="9" fill="#2E7D5B"/><text x="268" y="866" font-size="16">Day 3</text>
+    <circle cx="340" cy="860" r="9" fill="#D97A2B"/><text x="358" y="866" font-size="16">Day 4</text>
+    <text x="440" y="866" font-size="16" fill="#5C6B6B">© Mokaair 2026</text>
+  </g>
+</svg>

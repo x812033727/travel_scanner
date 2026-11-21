@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans JP','Noto Sans KR','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">ソウル3泊4日モデルコース エリア別ルート図 / Seoul four-day itinerary by area</title>
+  <desc id="desc">簡略化したソウルのエリア模式図（非縮尺）。仁川空港からはAREX直通列車（43〜51分）でソウル駅へ、普通列車で弘大入口駅へ結ばれています。Day 1は明洞と南山（Nソウルタワー夜景・南山循環バス01A／01B・忠武路駅）。Day 2は西から東へ徒歩で景福宮、北村韓屋村（10:00〜17:00）、仁寺洞、広蔵市場を巡ります（地下鉄3号線安国駅・1号線鐘路5街駅）。Day 3は郊外の加平へ日帰りし、金裕貞駅の江村レールバイクから加平船着場を経て南怡島へ（京春線／龍山駅発着ITX-青春）、または代替プランとして地下鉄1号線水原駅からバス・タクシーで水原華城へ向かいます。Day 4はプランA（弘大・延南洞、弘大入口駅からAREX普通列車）またはプランB（聖水・漢江公園、地下鉄2号線聖水駅）を楽しんでから空港へ移動します。江南は漢江の南側に位置するため、今回のモデルコースには組み込んでいません。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="60" y="66" font-size="36" font-weight="700" fill="#102A2B">ソウル3泊4日　1日1エリア、市内の往復を最小限に</text>
+  <text x="60" y="102" font-size="20" fill="#5C6B6B">Seoul in four days · イメージ図（非縮尺）</text>
+
+  <!-- Han river -->
+  <path d="M 0 640 C 300 600, 600 690, 900 650 C 1150 620, 1350 680, 1600 660 L 1600 700 C 1350 720, 1150 660, 900 690 C 600 730, 300 640, 0 680 Z" fill="#BFD9E3" opacity="0.8"/>
+  <text x="1560" y="726" font-size="20" fill="#3F6C7A" font-weight="700" text-anchor="end">漢江 한강 Han River</text>
+
+  <!-- airport arrow -->
+  <path d="M 70 560 L 676 560" fill="none" stroke="#5C6B6B" stroke-width="6" stroke-dasharray="14 12" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#B8442D"/></marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2E7D5B"/></marker>
+  </defs>
+  <text x="70" y="540" font-size="20" font-weight="700" fill="#5C6B6B">仁川空港 인천공항 ICN →</text>
+  <text x="70" y="596" font-size="16" fill="#5C6B6B">AREX直通 43〜51分 → ソウル駅　普通列車 → 弘大入口</text>
+
+  <!-- Day 4 A: Hongdae -->
+  <rect x="160" y="370" width="350" height="116" rx="22" fill="#FFFFFF" stroke="#D97A2B" stroke-width="6"/>
+  <circle cx="160" cy="370" r="30" fill="#D97A2B"/>
+  <text x="160" y="376" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 4</text>
+  <text x="335" y="414" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">弘大・延南洞</text>
+  <text x="335" y="443" font-size="16" fill="#5C6B6B" text-anchor="middle">홍대・연남동 (Hongdae) · プランA</text>
+  <circle cx="246" cy="469" r="6" fill="#102A2B"/>
+  <text x="260" y="474" font-size="15" fill="#5C6B6B">弘大入口駅（AREX普通）</text>
+
+  <!-- Day 2 row -->
+  <g font-weight="700" fill="#102A2B" text-anchor="middle">
+    <rect x="550" y="206" width="215" height="94" rx="20" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+    <text x="657" y="246" font-size="22">景福宮</text>
+    <text x="657" y="274" font-size="15" font-weight="400" fill="#5C6B6B">경복궁 Gyeongbokgung</text>
+
+    <rect x="805" y="206" width="205" height="94" rx="20" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+    <text x="907" y="246" font-size="22">北村韓屋村</text>
+    <text x="907" y="274" font-size="15" font-weight="400" fill="#5C6B6B">북촌 · 10:00〜17:00</text>
+
+    <rect x="1050" y="206" width="195" height="94" rx="20" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+    <text x="1147" y="246" font-size="22">仁寺洞</text>
+    <text x="1147" y="274" font-size="15" font-weight="400" fill="#5C6B6B">인사동 Insadong</text>
+
+    <rect x="1285" y="206" width="215" height="94" rx="20" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+    <text x="1392" y="246" font-size="22">広蔵市場</text>
+    <text x="1392" y="274" font-size="15" font-weight="400" fill="#5C6B6B">광장시장 Gwangjang</text>
+  </g>
+  <path d="M 770 253 L 798 253" stroke="#B8442D" stroke-width="4" marker-end="url(#arrowRed)"/>
+  <path d="M 1015 253 L 1043 253" stroke="#B8442D" stroke-width="4" marker-end="url(#arrowRed)"/>
+  <path d="M 1250 253 L 1278 253" stroke="#B8442D" stroke-width="4" marker-end="url(#arrowRed)"/>
+  <circle cx="550" cy="206" r="30" fill="#B8442D"/>
+  <text x="550" y="212" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 2</text>
+  <text x="1025" y="328" font-size="16" fill="#B8442D" text-anchor="middle">西から東へ徒歩移動 · 地下鉄3号線 安国駅・1号線 鐘路5街駅</text>
+
+  <!-- Day 1: Myeongdong / Namsan -->
+  <rect x="660" y="396" width="420" height="122" rx="22" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <circle cx="660" cy="396" r="30" fill="#2F6F9F"/>
+  <text x="660" y="402" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 1</text>
+  <text x="870" y="442" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">明洞・南山</text>
+  <text x="870" y="471" font-size="16" fill="#5C6B6B" text-anchor="middle">명동・남산 (Myeongdong / Namsan)</text>
+  <text x="870" y="499" font-size="15" fill="#5C6B6B" text-anchor="middle">Nソウルタワー夜景 · 循環バス01A／01B · 忠武路駅</text>
+  <!-- tower icon -->
+  <path d="M 1034 374 L 1042 346 L 1050 374 Z" fill="#2F6F9F"/>
+  <rect x="1038" y="374" width="8" height="22" fill="#2F6F9F"/>
+
+  <!-- Seoul station -->
+  <circle cx="700" cy="560" r="12" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/>
+  <text x="722" y="567" font-size="18" font-weight="700" fill="#102A2B">ソウル駅 서울역</text>
+
+  <!-- Day 4 B: Seongsu -->
+  <rect x="1165" y="458" width="355" height="118" rx="22" fill="#FFFFFF" stroke="#D97A2B" stroke-width="6"/>
+  <circle cx="1165" cy="458" r="30" fill="#D97A2B"/>
+  <text x="1165" y="464" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 4</text>
+  <text x="1342" y="502" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">聖水・漢江公園</text>
+  <text x="1342" y="531" font-size="16" fill="#5C6B6B" text-anchor="middle">성수・한강 (Seongsu) · プランB</text>
+  <circle cx="1272" cy="557" r="6" fill="#102A2B"/>
+  <text x="1286" y="562" font-size="15" fill="#5C6B6B">聖水駅（2号線）</text>
+
+  <!-- Gangnam -->
+  <rect x="760" y="746" width="350" height="92" rx="22" fill="#FFFFFF" stroke="#B9B2A8" stroke-width="4" stroke-dasharray="10 8"/>
+  <text x="935" y="784" font-size="22" font-weight="700" fill="#8A8F8F" text-anchor="middle">江南 강남 Gangnam</text>
+  <text x="935" y="814" font-size="15" fill="#8A8F8F" text-anchor="middle">本コース対象外（漢江の南側エリア）</text>
+
+  <!-- Day 3 boxes -->
+  <rect x="1080" y="42" width="480" height="124" rx="20" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="6"/>
+  <circle cx="1080" cy="42" r="30" fill="#2E7D5B"/>
+  <text x="1080" y="48" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 3</text>
+  <text x="1320" y="82" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">加平日帰り：南怡島 남이섬</text>
+  <text x="1320" y="114" font-size="15" fill="#5C6B6B" text-anchor="middle">金裕貞駅レールバイク → 加平船着場 → 南怡島</text>
+  <text x="1320" y="142" font-size="15" fill="#5C6B6B" text-anchor="middle">京春線／ITX-青春（龍山駅発着）</text>
+  <path d="M 1504 226 C 1536 218, 1546 200, 1546 174" fill="none" stroke="#2E7D5B" stroke-width="5" stroke-dasharray="10 8" marker-end="url(#arrowGreen)"/>
+
+  <rect x="1150" y="746" width="410" height="96" rx="20" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="5"/>
+  <text x="1355" y="786" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">Day 3 代替：水原華城 수원화성</text>
+  <text x="1355" y="816" font-size="15" fill="#5C6B6B" text-anchor="middle">地下鉄1号線 水原駅 → バスまたはタクシー</text>
+
+  <!-- legend -->
+  <g font-size="16" fill="#102A2B">
+    <circle cx="70" cy="860" r="9" fill="#2F6F9F"/><text x="88" y="866" font-size="16">Day 1</text>
+    <circle cx="160" cy="860" r="9" fill="#B8442D"/><text x="178" y="866" font-size="16">Day 2</text>
+    <circle cx="250" cy="860" r="9" fill="#2E7D5B"/><text x="268" y="866" font-size="16">Day 3</text>
+    <circle cx="340" cy="860" r="9" fill="#D97A2B"/><text x="358" y="866" font-size="16">Day 4</text>
+    <text x="450" y="866" font-size="16" fill="#5C6B6B">© Mokaair 制作 2026</text>
+  </g>
+</svg>
