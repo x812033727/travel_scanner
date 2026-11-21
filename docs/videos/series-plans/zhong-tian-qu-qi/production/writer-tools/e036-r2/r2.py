@@ -269,7 +269,7 @@ GATE_BACK = ("behind him, soft, the corner of the gate's small tiled roof at the
 
 # s02 (review 必改 1, 2; 建議 2): KAI = True once the paid open-gate picture set-cunkou-zha2-kai-l1 is picked (PREP.md §7); until
 # then the free crop -wai2 (no gate leaves in it) and the gateway just beyond the left edge.
-KAI = False
+KAI = True  # set-cunkou-zha2-kai-l1 picked 2026-11-21 (seed 9361202; the coordinator ran it)
 S02_WAI2 = (f"wide shot at standing eye height just inside the gateway, like the picture: the gateway itself just beyond the left edge of "
             f"the frame, the corner of its small tiled roof at the top left and the thick crossbar leaning upright at the left edge; "
             f"coming in from the left edge one after another along the dirt road past the willow and over the plank bridge, {REF8}, "
@@ -277,8 +277,8 @@ S02_WAI2 = (f"wide shot at standing eye height just inside the gateway, like the
             f"each holding up one burning pine torch in his outer hand; standing at the right by the short log fence, {XU_EVE}, framed "
             f"full figure, side-on to the people, his face in profile to screen left toward them, never the lens; {HANDS}; exactly eleven people")
 S02_KAI = (f"wide shot at standing eye height toward the gateway, like the picture: the two gate leaves of upright logs under the small "
-           f"tiled roof swung wide open inward, each standing at a right angle to the fence, the thick crossbar leaning upright against "
-           f"the left gate post; through the open gateway, on the dirt road coming toward us, {REF8}, faces gaunt and tired, not "
+           f"tiled roof swung wide back inward, each standing at a right angle to the fence, the thick crossbar leaning upright against "
+           f"the left gate post; through the clear gateway, on the dirt road coming toward us, {REF8}, faces gaunt and tired, not "
            f"smiling; {TORCHES4}; one beside each swung-back leaf, {GUARDS}, each holding up one burning pine torch in his outer hand, "
            f"grave, not smiling, their lips closed; standing beside the gateway at the right, {XU_EVE}, framed full figure, side-on to "
            f"the people, his face in profile to screen left toward them, never the lens; {HANDS}; exactly eleven people")
@@ -293,7 +293,7 @@ SHOTS = [
     dict(loc="kk_g", cam="Wide shot, slow push in", chars=["xuyan"], night="dusk", act=3,
          comp=S02_KAI if KAI else S02_WAI2,
          motion=f"The people walk in one after another at walking pace, and the old man in front stops before Xu Yan and bows low with his two hands clasped before him; {quiet('Xu Yan')}",
-         zh="全景、慢推（人眼高）：**獨立審稿必改 1、建議 2**：原本送 `-men`（門扇關著）、文字寫已推開，圖文打架。協調者定做付費開門圖 `set-cunkou-zha2-kai-l1`（Qwen 從 `set-cunkou-zha2-l1` 只改門扇推開；本代理的 Colab 呼叫被自動權限擋下，**還沒跑**，`e936kai.sh` 備好）；**挑定前送免費裁切 `set-cunkou-zha2-wai2-l1`**（沒有門扇：左上一角瓦簷、左緣斜靠的圓木＝靠在門柱邊的門閂、垂柳、木板橋、右邊兩間屋），寫成門口就在畫左外、人一個接一個從左緣沿土路走進來；開門圖挑定後 `KAI = True`，構圖換成 `S02_KAI`（從門裡看推開的兩扇門與門口）。八個流民（每人衣色年紀不同；稿子『約一百個』照拍法 34），**四支火把點名拿在炭灰、橄欖綠、赭黃、芥黃四人手上**（必改 2：要作揖的老人兩手空著、牽孩子的婦人另一手拉包袱帶），守門兩人在左緣前景背對各拿一支＝六支（拍法 37）；許硯在右邊短籬笆旁側身，前排老人走到他面前彎腰拱手。不笑、嘴閉著。無台詞"),
+         zh="全景、慢推（人眼高）：**獨立審稿必改 1、建議 2**：原本送 `-men`（門扇關著）、文字寫已推開，圖文打架。協調者定做付費開門圖 `set-cunkou-zha2-kai-l1`（Qwen 從 `set-cunkou-zha2-l1` 只改門扇推開；2026-11-21 協調者跑、選 9361202：兩扇往內推開、門閂靠左柱），**`KAI = True` 送它**；挑定前用的是免費裁切 `set-cunkou-zha2-wai2-l1`（沒有門扇：左上一角瓦簷、左緣斜靠的圓木＝靠在門柱邊的門閂、垂柳、木板橋、右邊兩間屋），寫成門口就在畫左外、人一個接一個從左緣沿土路走進來；開門圖挑定後 `KAI = True`，構圖換成 `S02_KAI`（從門裡看推開的兩扇門與門口）。八個流民（每人衣色年紀不同；稿子『約一百個』照拍法 34），**四支火把點名拿在炭灰、橄欖綠、赭黃、芥黃四人手上**（必改 2：要作揖的老人兩手空著、牽孩子的婦人另一手拉包袱帶），守門兩人在左緣前景背對各拿一支＝六支（拍法 37）；許硯在右邊短籬笆旁側身，前排老人走到他面前彎腰拱手。不笑、嘴閉著。無台詞"),
     dict(loc="kk_g", cam="Low-angle medium shot, slow push in", chars=["qianyuanwai"], night="dusk",
          comp=f"low-angle medium shot of {QIAN}, seen from below, framed from the waist up, already standing up on a low earthen mound beside the gate from the first frame, high against the sky, his face three-quarter to screen right, looking down toward someone out of sight beyond the lower right edge of the frame, never the lens; that side of the frame is only {SIDE_SKY} all the way to the edge, and he is the only person in the frame; furious and shrill, {NOSMILE_QIAN}, lips moving hard between shouted words; behind him, soft, the small tiled roof of the gate against the orange-red evening sky; {HANDS}",
          lines=[("qianyuanwai", "許硯，你瘋了！這是一百多張嘴！", "尖聲")],

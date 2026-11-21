@@ -184,3 +184,12 @@ log `tools/rec936.log`；檔在 `~/mokaair-work/videos/zhong-tian-qu-qi-e936-dh/
 | 建議 10：s26 錢員外正面 | 先照寫跑 d1；**備案**（d1 兩支都笑或張嘴亂說時直接用）：`wide shot from behind`、不送圖不點名、`QIAN_BACK` 服裝句，第一格已背對鏡頭站在桌前，平掌往桌上一拍、竹筐裡的竹籌跳起，臉不入鏡，台詞放錄音 `zq936a26`（第 34、35 集 fix4 的做法）。a26 錄完照 a02 a03 量音高、偏高就降調 |
 | 建議 11：錄音後重核 BUY | 等明天 08:10 UTC 的錄音重試；先核 s23、s12、s14、s10、s11、s38（審稿估的最緊六鏡）與 s30、s26 |
 | 建議 12：第 37 集院門本來就半開 | 記進聖經〈接點〉36→37（本集不改） |
+
+## 8. 開門圖挑定後（2026-11-21）
+
+- 協調者跑了開門圖（站主同意）：4 支選 **9361202** → `assets/refs-live/set-cunkou-zha2-kai-l1.png`（b74c66a；約 1.3 CU，餘額 223.00）。refs-live README、聖經〈道具〉柵門列已改成已做。
+- `r2.py` 設 **`KAI = True`**（s02 構圖 `S02_KAI`；`open` 是掃描擋的字，寫成 `swung wide back inward`、`the clear gateway`）。`build936.sh` 0 陷阱（8 個刻意）；
+  `prep936.sh` 用 `W936=<scratchpad>/e936kaiprep/zhong-tian-qu-qi-e936-dh/runpod` 在**隔離的工作資料夾**跑（不動已送出的 d1 清單與提示詞，fix1 的 sha256 核對靠它們），rc=0：80 支 520 秒、26 張免費圖逐位元、所有掃描 0，
+  s02 送 `-kai`；其他 39 鏡的提示詞跟送出的 d1 逐位元相同。`e936d1.sh DRY=1` 0 錯（真正的 d1 清單沒變）。
+- d1、fix1、fix2、精修 40/40 已由別的代理做完，所以 s02 用 **fix3** 重拍（`fix3/{mkjobs.py,plan.md}`，種子 9361231／9361232，12 秒，掃描與 preflight 0）。
+  **送出的呼叫被自動權限擋下，沒跑**；跑法 scratchpad `e936f3.sh`，挑片與只精修 s02 的步驟在 `fix3/plan.md`。
