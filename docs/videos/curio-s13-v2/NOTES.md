@@ -76,3 +76,16 @@
   - sister：「五十多歲的女人」被畫成小孩 → 寫成圓潤的祖母型、髮有灰絲、眼角笑紋，信放在膝上，只做「對我們微笑」一個動作。
   - kohaku-pay：「short」讓中年武士變幼童 → 拿掉 short，照 father 過關的寫法加「facial stubble and mature features」。
   - editor-note：手部特寫被畫成正統動畫風、握筆僵硬 → 改成戴圓眼鏡的大正歷史學者坐在書桌前寫眉批的中景。
+
+## 2026-11-19／11-20 現行新規則重製紀錄
+
+- **重製規格（全數對齊 2026-11-14～2026-11-19 `curio-episode` 新規則）**：
+  - 全 76 景、82 句旁白（`target_minutes: [9, 12]`，成片正片 `09:42`＋21 秒 `v4-endscreen` 共 `10:03`）、**零卡片**（`0` cards）、`"subtitles": { "burn_in": false }`、`pauses: { line_ms: 0, scene_ms: 150 }`、`still_motion: "beat"`。
+  - **畫面**：停用 MiniMax 生圖，全 76 鏡改用內建 `generate_image`「劇場級動畫光影 × 厚塗水粉質感」1920×1080 無字插圖＋`keyframes import --provider external --usd 0`；`nobody: true` 物件與空景 43／76 鏡（`56.6%`，落在 45%–65%），檔案局研究員 `Ada` 全數綁定 `ada-canon-v2.png` 設定圖，並經四格 2x 放大人工與獨立審圖通過。
+  - **縮圖**：改為黑貓研究院滿版 `layout: "heimao-left"`（置頂亮黃白字粗黑框 `幸村叫錯了？ / 4 封生前書信沒這兩個字`，下七成天守閣＋赤備紅漆兜＋`Ada` 捧臉驚訝，零黑底漸層、零膠囊、不破梗「信繁」），繁中與八語（`en, ja, ko, es, pt, id, vi, th`）共 9 張縮圖逐張目視檢查無壓字超框。
+  - **開拍前關卡**：`lint --slug curio-s13-v2` **0 errors, 0 warnings**；獨立三視角 `opening-review` 通過（`9.2 / 9.1 / 9.2`）；兩位獨立盲讀 `narrative` 雙雙 **14/14 YES**。
+  - **中文旁白與八語配音**：
+    - `zh-TW`：Gemini `Sulafat`（`gemini-3.8-flash-lite-tts`, `tempo: 1.24`），實測語速 **4.59 字／秒**（`≥ 4.4` 字／秒），經 `check-audio` 逐句核對並以 `say` 修正「大坂→大阪」「姊夫→姐夫」等讀音。
+    - 八語 MiniMax 配音（`en, ja, ko, es, pt, id, vi, th`）：依雲端 `languages.json` 全數勾選合成並經 `check-audio` 檢查（含日文漢字訓讀「信仍→のぶより」「桃源遺事→とうげんいじ」「初名→最初の名」與韓文同音詞「가보→족보」「차남→둘째 아들」「이 1928년→1928년 판본」修正），於 `assemble --adopt-branding` 後綁定品牌雜湊與總影格數（`18,095` frames）。
+  - **成片一般觀眾視角獨立審查（`review/audience-review.md`）**：六大維度 `8.8 / 9.0 / 9.2 / 8.6 / 8.5 / 9.1`（總平均 **8.87／10**，零阻斷瑕疵，縮圖與標題承諾 100% 對齊片尾 `sv803–sv807` 結案）。
+
