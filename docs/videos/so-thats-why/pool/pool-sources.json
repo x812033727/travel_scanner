@@ -1,5 +1,5 @@
 {
-  "revision": "2026-11-20-pool-8137",
+  "revision": "2026-11-21-pool-8207",
   "sources": [
     {
       "id": "SRC-0015c20f41eb2d55",
@@ -2537,6 +2537,27 @@
       ]
     },
     {
+      "id": "SRC-039dd7ad7408bce1",
+      "url": "https://www.hko.gov.hk/en/wxinfo/currwx/fnd.htm",
+      "readings": [
+        {
+          "canonical_url": "https://www.hko.gov.hk/en/wxinfo/currwx/fnd.htm",
+          "title": "9-day Weather Forecast for Hong Kong (Probability of Significant Rain notes)",
+          "publisher": "香港天文台（Hong Kong Observatory, HKO）",
+          "network": "香港天文台 HKO 顯著降雨概率系統",
+          "accessed_on": "2026-11-21",
+          "read_via": "檢索並核對香港天文台九天天氣預報註腳、官方純文字九天預報頁（nday_v2.htm）、發布公告（Whats-New 105939/106021）及官方教育問答頁（https://www.hko.gov.hk/en/education/weather/rain/00568-Q-&-A-for-Probability-of-Significant-Rain.html）。",
+          "reading_scope": "Probability of Significant Rain（PSR）門檻定義、五級百分比對應與第 1–9 天誤差說明。",
+          "locator": "9-day Weather Forecast 頁尾註腳（tablenote）與五級確率表",
+          "summary": "說明香港天文台 2021 年起推出的「顯著降雨概率（PSR）」以香港廣泛地區單日累積雨量達 10 毫米（約香港四至九月雨季日均雨量）以上為門檻，分五級：高（≥70%）、中高（55–69%）、中（45–54%）、中低（30–44%）、低（<30%）。同時公開誤差參考：第 1 至 6 天 PSR 誤差約在 10% 以內，第 7 至 9 天約在 20% 以內；官方教育問答頁明載其設計目的是以簡潔方式傳達九天降雨趨勢與不確定性（避免過早報精確雨量造成狼來了效應），並兼顧純文字發布與色覺障礙者辨識。",
+          "limitations": "網頁主版導覽列過長導致單頁抓取截斷，已併同 API 說明書 PDF、純文字預報頁、新聞稿與官方教育問答頁（https://www.hko.gov.hk/en/education/weather/rain/00568-Q-&-A-for-Probability-of-Significant-Rain.html）核對設計目的、等級、門檻與誤差數字；PSR 反映香港廣泛地區趨勢，非單一街區 0.1 毫米微雨機率。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.hko.gov.hk/en/wxinfo/currwx/fnd.htm"
+        }
+      ]
+    },
+    {
       "id": "SRC-03a172d536090c53",
       "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=K0090047",
       "readings": [
@@ -4070,6 +4091,27 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave144-craft-20261120",
           "original_url": "https://www.wimbledon.com/pdf/7.%20Media%20Fact%20Sheet%20-%20Trophies%202023.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-059955e1c28df221",
+      "url": "https://www.consumer.org.hk/en/press-release/p-556-dehumidifiers",
+      "readings": [
+        {
+          "canonical_url": "https://www.consumer.org.hk/en/press-release/p-556-dehumidifiers",
+          "title": "2 Dehumidifiers Failed to Meet Grade 1 Energy Efficiency Claims with HEPA Filters Installed; Promotions Utilising Results Under Manufacturers' Test Environment Potentially Misleading（CHOICE #556）",
+          "publisher": "香港消費者委員會（Consumer Council, Hong Kong）",
+          "network": "NET_HK_CC",
+          "accessed_on": "2026-11-21",
+          "read_via": "google:browse 完整讀取官方新聞稿全文",
+          "reading_scope": "全篇新聞稿（2023-02-15 發布），包含 14 款壓縮機除濕機（含 4 款二合一空氣清淨除濕機）於 26.7°C/60% 與 30°C/80% 下連續 6 小時秤重測試與 HEPA 濾網影響。",
+          "locator": "Dehumidifying Performance of 2 Models Dropped Significantly After Installing HEPA Filters 段（14 款樣本在標準環境測 6 小時推算日除濕量 8.5–17.8 L；2 款安裝 HEPA 濾網後，標準環境實測除濕量較宣稱掉 13.2% 與 23.1%，廠商環境更掉 14.7% 與 41.0%）；2 Models Did Not Comply with MEELS's Requirement 段（裝濾網後 2 款標示 1 級機種的 EF 實測下降 20.2% 與 33.2%，能效等級滑落至 2 級與 4 級）；Manufacturers' Own Test Environment Potentially Misleading 段（14 款在 30°C/80% 測得 15.0–30.1 L/日，比標準 26.7°C/60% 高出 49% 至 83.9%、平均高 70.3%；並說明真實關窗房間初期濕度高、抽水較快，隨著室內空氣變乾，除濕速度會同步變慢）。",
+          "summary": "香港消委會 2023 年實測 14 款壓縮機除濕機，再次驗證廠商 30°C/80% 標示平均比 26.7°C/60% 標準膨脹 70.3%（49%–83.9%），並揭露安裝 HEPA 濾網會大幅降低進氣與除濕能力（最高掉 23.1% 標準除濕量、33.2% 能源因數，令 1 級能效跌至 4 級），同時指出真實關窗房間隨空氣變乾而抽水減速的現象。",
+          "limitations": "2023 年樣本全為壓縮機式，不含除濕輪或混合式。與 X146R2-S05 併計為 NET_HK_CC。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.consumer.org.hk/en/press-release/p-556-dehumidifiers"
         }
       ]
     },
@@ -8038,6 +8080,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.1371/journal.pone.0091773"
+        }
+      ]
+    },
+    {
+      "id": "SRC-0ab11133f314b9a3",
+      "url": "https://www.mhlw.go.jp/content/12201000/001475658.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.mhlw.go.jp/content/12201000/001475658.pdf",
+          "title": "第８回 難聴への対応に関する連絡会議 資料２〈医療機器の分類と規制〉（令和7年3月25日，日本厚生勞動省）",
+          "publisher": "日本厚生労働省（MHLW）",
+          "network": "日本厚生勞動省（MHLW）與 PMDA 醫療器材法規體系",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟厚生勞動省官方 PDF 閱讀第 8 頁別表第一與第 10 頁（slide 9/42）四級風險對照表。",
+          "reading_scope": "PDF 第 8 頁（政令別表第一第七十二、七十二の二列示隱形眼鏡品項）與第 10 頁（slide 9/42 日本醫療器材 Class I–IV 與三類法規名稱對照例示）。",
+          "locator": "PDF 第 8 頁（別表第一第七十二、七十二の二列示隱形眼鏡品項）與第 10 頁 slide 9/42（Class III 高度管理医療機器例示透析器、人工骨、人工呼吸器；Class IV 例示心臟節律器、人工心瓣）",
+          "summary": "PDF 第 8 頁政令別表第一第七十二、七十二の二列示隱形眼鏡品項，第 10 頁（slide 9/42〈医療機器の分類と規制〉）呈現日本四級醫療器材分類：Class III 與 Class IV 同歸「高度管理医療機器」，其中 Class III（發生異常時對人體風險相對較高）例示「透析器、人工骨、人工呼吸器」，Class IV 例示「心臟節律器、人工心瓣」。該投影片 Class III 格內未直接印出隱形眼鏡字樣，隱形眼鏡屬 Class III 高度管理医療機器係由 MHLW 彩片納管專頁（X146R4-S18）、PMDA Q1（X146R4-S20）與 JCLA 廣告自主基準（X146R4-S24）證實。",
+          "limitations": "屬法規分類總覽簡報，未詳述單一鏡片技術標準。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.mhlw.go.jp/content/12201000/001475658.pdf"
         }
       ]
     },
@@ -12714,6 +12777,27 @@
       ]
     },
     {
+      "id": "SRC-106be3b9020029ed",
+      "url": "https://jp.sharp/joshitsu/products/cvp180/spec/",
+      "readings": [
+        {
+          "canonical_url": "https://jp.sharp/joshitsu/products/cvp180/spec/",
+          "title": "除湿機 CV-P180 仕様 / 寸法",
+          "publisher": "シャープ株式会社（Sharp Corporation）",
+          "network": "NET_CORP_SHARP",
+          "accessed_on": "2026-11-21",
+          "read_via": "google:browse 完整讀取官方規格表與全部腳註",
+          "reading_scope": "CV-P180 完整基本規格表與 ※1–※9 技術腳註。",
+          "locator": "定格除湿能力列與 ※1（室溫 27°C、相對濕度 60% 維持下，同一台機器 50Hz 為 16 L/日、60Hz 為 18 L/日）；消費電力列與 ※7–※8（除濕強模式 50Hz 325W／60Hz 370W；室溫升至 30°C 時衣類乾燥耗電由 345W/385W 增至 365W/415W）；除湿可能面積列與 ※2（依 JEM 1411，木造～混凝土住宅 50Hz 為 20–40 疊［33–67 m²］、60Hz 為 23–45 疊［38–75 m²］）；使用可能温度（4–38°C）；表下警語（「除湿機はお部屋を冷やす機能はありません。むしろ運転中は熱を発生しますので温度が上がります」）。",
+          "summary": "夏普官方規格表以同一台定頻壓縮機型 CV-P180 直接展示：在 27°C/60% RH 相同環境下，僅因電源頻率 50Hz 與 60Hz 不同，日除濕量就從 16 公升變 18 公升、除濕耗電從 325W 變 370W；依 JEM 1411 換算的木造與混凝土住宅適用面積差將近一倍；且明文提醒除濕機不具冷房效果，運轉反而發熱使室溫升高。",
+          "limitations": "為單一日本國內壓縮機型規格表，50Hz/60Hz 差異主要適用於交流定頻壓縮機，變頻壓縮機受電網頻率影響不同。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://jp.sharp/joshitsu/products/cvp180/spec/"
+        }
+      ]
+    },
+    {
       "id": "SRC-106ed02df215034f",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12519447/fullTextXML",
       "readings": [
@@ -13582,6 +13666,27 @@
       ]
     },
     {
+      "id": "SRC-1199301cabc54da9",
+      "url": "https://www.jcla.gr.jp/file/cl_koukokujishukijun_ippan202106.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.jcla.gr.jp/file/cl_koukokujishukijun_ippan202106.pdf",
+          "title": "コンタクトレンズの広告自主基準（2021 年 5 月 13 日修訂）",
+          "publisher": "一般社團法人日本コンタクトレンズ協会（JCLA）",
+          "network": "日本業界技術文獻與廣告自主規範（Menicon／JCLA，僅作交叉佐證不單獨計分）",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟 JCLA 官方自主基準 PDF 閱讀禁用語與警語規範。",
+          "reading_scope": "全份基準之醫療器材分級聲明、彩色鏡片與過夜配戴禁用語例、影音廣告警語版面規定。",
+          "locator": "基準本文與第 14 條（高度管理医療機器クラスⅢ明示、禁止「無害な色素」「副作用のない着色」「着けっぱなしOK」「処方箋不要」、第 14 條要求影音靜止明確文字顯示 ≥1 秒，＜解説＞建議文字區塊占畫面二分之一）",
+          "summary": "明示隱形眼鏡屬「高度管理医療機器（Class III）」，業界自主禁止在廣告中宣稱「無害色素」「無副作用著色」「戴著睡覺沒問題」「不需處方箋」，並於第 14 條要求影音廣告以靜止明確文字顯示高度管理醫療器材與遵醫囑警語至少 1 秒（基準解說並建議文字區塊占畫面二分之一）。",
+          "limitations": "屬日本業界自律規範，反映合規宣傳紅線，不等同於全面市場違規稽查率。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.jcla.gr.jp/file/cl_koukokujishukijun_ippan202106.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-11a0d29858f3b2b3",
       "url": "https://doi.org/10.1103/PhysRevLett.112.244301",
       "readings": [
@@ -13656,6 +13761,27 @@
           "limitations": "託管站不是原出版者，來源屬「原件掃描、第三方保存」；掃描頁腳的版權標記與目錄頁和官方歷史中心的目錄相符，但未逐位元比對官方檔。這是 1985 年單一機種的工程設計，不能代表今日所有墨匣（不少機種噴頭固定在機器上）；文中不談售價與利潤。文中點名的工程師一律不入稿，品牌與機種名不入稿。與 S001 同一公司但作者群與年代無重疊，覆核 SVX3 判定與 S001/S002 合併為同一機構研究網 NET_HPCO（同一法人自辦的出版品，非外部審查），封頂 2.0。 覆核另注意：檔案為第三方鏡像站上的掃描件，出處只能以頁腳版權標記與內容一致性佐證，未與原出版者檔案比對。",
           "origin": "wave105-x105-20261118",
           "original_url": "https://docs.ampnuts.ru/eevblog.docs/HP_Agilent_Keysight/journals/1985-05.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-11ac802f6c47ed8a",
+      "url": "https://glossary.ametsoc.org/wiki/probability-of-precipitation/",
+      "readings": [
+        {
+          "canonical_url": "https://glossary.ametsoc.org/wiki/probability-of-precipitation/",
+          "title": "Probability of precipitation — Glossary of Meteorology",
+          "publisher": "美國氣象學會（American Meteorological Society, AMS）",
+          "network": "美國氣象學會 AMS 術語辭典",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟並完整閱讀 AMS 氣象學辭典 Probability of precipitation 與 Brier score 兩則詞條。",
+          "reading_scope": "Probability of precipitation（2020-06-22 修訂版）與 Brier score 詞條全文。",
+          "locator": "AMS Glossary：Probability of precipitation（Term edited 22 June 2020）與 Brier score",
+          "summary": "定義 Probability of precipitation 為在特定時間內、特定「點」測得至少 0.0254 公分（0.01 英吋）液態當量降水的預報，源於 1966 年美國氣象局全國推行降雨機率預報計畫。條文嚴格警告不可與「部分面積降雨機率」或「全區降雨機率」混淆：若對一個郡發布 x% 的 PoP，意思是郡內「每一個點」都適用 x% 機率。另在 Brier score 條目界定現代二元布萊爾分數值域為 0.0（完美）至 1.0（最差）。",
+          "limitations": "以美國氣象局傳統 0.01 英吋點定義為基準，並明言若改採其他門檻（如 ≥1 公分）必須清楚標示事件定義。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://glossary.ametsoc.org/wiki/probability-of-precipitation/"
         }
       ]
     },
@@ -14328,6 +14454,27 @@
       ]
     },
     {
+      "id": "SRC-12ad470b93773ad2",
+      "url": "https://www.foodsafetykorea.go.kr/portal/board/boardDetail.do?menu_no=3862&bbs_no=bbs091601&ntctxt_no=1093859&menu_grp=MENU_NEW01",
+      "readings": [
+        {
+          "canonical_url": "https://www.foodsafetykorea.go.kr/portal/board/boardDetail.do?menu_no=3862&bbs_no=bbs091601&ntctxt_no=1093859&menu_grp=MENU_NEW01",
+          "title": "식품 통계 이야기 '소비기한'（食品統計故事：消費期限）",
+          "publisher": "韓國食品醫藥品安全處 食品安全國（Ministry of Food and Drug Safety, Republic of Korea / Food Safety Korea）",
+          "network": "韓國食藥處與其資助研究體系（MFDS／KFRI）",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過 google:browse 直接抓取並核對官方頁面全文與統計對照表",
+          "reading_scope": "全篇官方數據圖文說明，核對流通期限 vs 消費期限安全係數與六大品項天數延長實測值",
+          "locator": "2023.03.31 公告全文（安全係數對照與 MFDS 2023 參考值表）",
+          "summary": "韓國食藥處官方說明：2023年推動「유통기한（流通期限）」改制為「소비기한（消費期限）」，核心數學變化在於把「品質安全限界期間」乘上的安全係數從舊制 0.6–0.7 提高到新制 0.8–0.9。列出官方實測參考值對照：加工乳 15–17天→23–26天、果菜飲料 3–20天→3–35天、豆腐 5–31天→5–35天、麵包類 3–40天→3–54天、發酵乳 14–31天→18–55天、火腿 10–45天→11–61天。",
+          "limitations": "各品項參考值區間涵蓋不同殺菌與包裝工藝，實際單品消費期限仍視廠商實測與保存條件而定。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.foodsafetykorea.go.kr/portal/board/boardDetail.do?menu_no=3862&bbs_no=bbs091601&ntctxt_no=1093859&menu_grp=MENU_NEW01"
+        }
+      ]
+    },
+    {
       "id": "SRC-12b802a65f727f97",
       "url": "https://www.car.chula.ac.th/blog_detail.php?id=43",
       "readings": [
@@ -14783,6 +14930,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://link.springer.com/content/pdf/10.3758/BF03210736.pdf\\nhttps://pubmed.ncbi.nlm.nih.gov/10780032/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-136d52ad24ac8b47",
+      "url": "https://openknowledge.fao.org/bitstreams/0044961e-fb40-4e0d-9f25-0fcc88d90886/download",
+      "readings": [
+        {
+          "canonical_url": "https://openknowledge.fao.org/handle/20.500.14283/ce0073en",
+          "title": "General Standard for the Labelling of Pre-packaged Foods（CXS 1-1985，2018修訂／2026修正版）",
+          "publisher": "聯合國糧農組織／世界衛生組織 國際食品法典委員會（FAO/WHO Codex Alimentarius Commission）",
+          "network": "聯合國國際食品法典體系（UN FAO/WHO Codex Alimentarius）",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過 google:browse 直接核讀 FAO OpenKnowledge 2026 年修正版 CXS 1-1985 PDF 全文（Section 2、Section 4.6 與 Section 4.7）",
+          "reading_scope": "Section 2（Date marking 定義修訂比較）與 Section 4.7（Date Marking and Storage Instructions 免標清單與保存條件）",
+          "locator": "CXS 1-1985 (Amended 2026) pp. 1–3 Section 2；pp. 10–12 Section 4.7.1(iii)、4.7.1(vi)、4.7.1(viii) & 4.7.2",
+          "summary": "作為 189 個會員國與 WTO 國際貿易參考基準，CXS 1-1985 Section 2 明確劃分兩類日期：'Best-before date / best quality-before date' 指未開封依指示保存下維持宣稱品質之終點，但過後仍可能可接受食用；'Use-by date / expiration date' 指過後因安全與品質理由不應販售或食用之日。對照早年版本與 2018 修訂後現行版可見，Codex 已刪除易生混淆的 'Sell-by-Date'，並明文強調製造日與包裝日並非耐久度指標。現行 2026 年修正版中，Section 4.7.1(iii) 規定 3 個月分級標示格式（逾 3 個月可標月年）、4.7.1(vi) 規範日期數字格式、Section 4.7.1(viii)（pp. 11–12）列出國際共通免標最低耐久日品項（未切新鮮蔬果、葡萄酒與 ≥10% 酒精飲料、24小時內烘焙品、醋、未加碘食品級食鹽 non-iodized food grade salt、未營養強化固態糖 non-fortified solid sugars、純糖糖果、口香糖），Section 4.7.2 要求若日期效力依賴特定保存條件須一併標示。",
+          "limitations": "屬國際建議基準，各國轉化為國內法時可依在地冷鏈與監管需求收緊（例如台灣未全面採納免標清單與雙軌用語）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://openknowledge.fao.org/bitstreams/0044961e-fb40-4e0d-9f25-0fcc88d90886/download"
         }
       ]
     },
@@ -19689,6 +19857,27 @@
       ]
     },
     {
+      "id": "SRC-18e56067e17f56f3",
+      "url": "https://www.weather.gov/media/pah/WeatherEducation/pop.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.weather.gov/media/pah/WeatherEducation/pop.pdf",
+          "title": "Precipitation Probability",
+          "publisher": "美國國家氣象局帕迪尤卡氣象站（NWS Paducah, KY / NOAA）",
+          "network": "美國國家氣象局與前身美國氣象局（US NWS / NOAA / U.S. Weather Bureau）",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟並完整閱讀單頁官方衛教 PDF 全文。",
+          "reading_scope": "全頁（定義條列、40% 常見誤解澄清與 C × A 計算雙例）。",
+          "locator": "Page 1 全文，含 40% 誤解澄清段與兩組乘法範例 (1)(2)",
+          "summary": "定義可測量降水為 0.01 英吋以上液態降水（或固態降水的液態當量），強調 40% 降雨機率既非覆蓋 40% 面積、亦非持續 40% 時間，而是指預報區內任一指定點在該時段有 40% 機率測得至少 0.01 英吋降水。同時列出預報員實務上將「形成或移入把握度（C）」乘以「預期涵蓋面積比例（A）」的算法：80% 把握 × 50% 面積＝40%，與 40% 把握 × 100% 面積＝40%，兩種截然不同的天氣情境會產出完全相同的 40%。",
+          "limitations": "為地方預報辦公室衛教簡頁，將 PoP = C × A 寫作預報員估算方式，未討論現代高解析度格點數值系集的後處理演算法。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.weather.gov/media/pah/WeatherEducation/pop.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-18e6d63d7ce168fb",
       "url": "https://www.rootlaw.com.tw/Attach/L-Doc/A040070050041400-1131212-1000-001.pdf",
       "readings": [
@@ -22875,6 +23064,27 @@
       ]
     },
     {
+      "id": "SRC-1c8a3392f2303d52",
+      "url": "https://journals.ametsoc.org/view/journals/bams/90/2/2008bams2509_1.xml",
+      "readings": [
+        {
+          "canonical_url": "https://journals.ametsoc.org/view/journals/bams/90/2/2008bams2509_1.xml",
+          "title": "Probability of Precipitation: Assessment and Enhancement of End-User Understanding",
+          "publisher": "Bulletin of the American Meteorological Society (BAMS), Vol. 90, No. 2, pp. 185–194（Susan Joslyn, Limor Nadav-Greenberg & Rebecca M. Nichols，華盛頓大學心理系）",
+          "network": "華盛頓大學心理系 PoP 理解實驗（BAMS 2009）",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟 AMS BAMS 期刊頁閱讀完整摘要與發表資訊。",
+          "reading_scope": "期刊頁面完整摘要與書目資料（三項心理實驗結論）。",
+          "locator": "Abstract（DOI: 10.1175/2008BAMS2509.1，pp. 185–194）",
+          "summary": "對長期接觸降雨預報的美國太平洋西北地區（華盛頓大學）大學生進行三項心理實驗，發現仍有許多受試者誤把 PoP 百分比當作「會下雨的面積或時間比例」。誤解成「超過一半面積或時間會下雨」的人，比沒誤解的人更傾向帶傘或穿連帽外套，顯示他們把機率預報腦補成了「一定會下」的確定預報；且唯有在 PoP 旁明確加上「不下雨的機率」措辭時，理解表現才顯著改善。",
+          "limitations": "此處僅取得公開摘要而非全文數據表，故只引用摘要明確陳述的三項實驗方向、帶傘／連帽外套行為差異與「加註不下雨機率」顯著改善結論，不補寫未讀到的子實驗樣本數。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://journals.ametsoc.org/view/journals/bams/90/2/2008bams2509_1.xml"
+        }
+      ]
+    },
+    {
       "id": "SRC-1c8d2ddfcfcb3e6d",
       "url": "https://toyooka-tourism.com/recommend/onsen/kinosaki_sotoyu/",
       "readings": [
@@ -24817,6 +25027,27 @@
           },
           "origin": "wave29-tracks-20261102",
           "original_url": "https://s3.amazonaws.com/publicationslist.org/data/jesper.milan/ref-13/2006%20-%20Mil%C3%A0n%20_%20Bromley%20-%20PALAEO3.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-1f003bad5d933672",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12861112/",
+      "readings": [
+        {
+          "canonical_url": "https://pubmed.ncbi.nlm.nih.gov/12861112/",
+          "title": "In vivo dehydration of silicone hydrogel contact lenses (Morgan PB, Efron N, Eye Contact Lens. 2003;29(3):173-6)",
+          "publisher": "Eye & Contact Lens（英國曼徹斯特理工大學 UMIST 研究群）",
+          "network": "英澳美加軟式鏡片水膠與淚膜研究群（Efron–Morgan／CORE／TFOS／CLADES 與 J&J 研發，依共同作者與機構從嚴合併）",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過 PubMed 官方頁面讀取實戴對照試驗摘要與失水後 Dk 逆轉數值。",
+          "reading_scope": "PubMed 官方摘要全文（13 名受試者進行 2 週／4 週連續過夜延長配戴［extended wear］試驗，比較 balafilcon A 與 etafilcon A 的含水量、沉積物與 Dk 變化）。",
+          "locator": "PMID 12861112 Abstract（13 人連續過夜延長配戴 2 週／4 週；etafilcon A 掉 6.0%／-3.6 barrer 與 balafilcon A 掉 2.8%／+6.0 barrer）",
+          "summary": "13 人連續過夜延長配戴（extended wear）2 週／4 週試驗顯示：58.1% 傳統高含水 etafilcon A 連續配戴 2 週後含水量降至 52.1%（掉 6.0% ± 1.3%）、表面沉積 1,660 ± 499 μg，且透氧係數 Dk 下降 3.6 barrer；反觀 38.3% 矽水膠 balafilcon A 連續配戴 2 週後降至 35.2%（掉 2.8% ± 1.8%）、沉積 568 ± 457 μg，連續配戴 4 週後因失水使矽相比例相對提高，透氧係數 Dk 反而逆向增加 6.0 barrer。",
+          "limitations": "僅讀 PubMed 官方摘要；屬 13 人連續過夜延長配戴（extended wear）2 週／4 週試驗（非一般日間半天配戴），僅比較早期第一代矽水膠與高含水離子型水膠兩種代表材質。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://pubmed.ncbi.nlm.nih.gov/12861112/"
         }
       ]
     },
@@ -27502,6 +27733,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.science.org/doi/10.1126/science.118.3062.273"
+        }
+      ]
+    },
+    {
+      "id": "SRC-222a98cec2a30932",
+      "url": "https://www.philips-da.com.tw/blogs/product-tips/128837",
+      "readings": [
+        {
+          "canonical_url": "https://www.philips-da.com.tw/blogs/product-tips/128837",
+          "title": "除濕機原理是什麼？壓縮機式 vs. 除濕輪式運作原理大評比",
+          "publisher": "台灣飛利浦家電（台灣飛軒理股份有限公司）",
+          "network": "NET_CORP_PHILIPS_TW",
+          "accessed_on": "2026-11-21",
+          "read_via": "google:browse 完整讀取官方技術衛教文章與比較表",
+          "reading_scope": "全篇原理說明與壓縮機式（B式）vs 除濕輪式對照表（2023-06-19 發布）。",
+          "locator": "壓縮機式 vs. 除濕輪式原理大評比段與對照表（壓縮機式依適用環境溫度分為 A 式［15°C 以上］與 B 式［5°C–35°C］，台灣市售以 B 式為主；除濕輪式採沸石或陶瓷吸濕後加熱蒸發，耗電量約為壓縮機式 3 倍、使用時發熱會造成室內溫度上升 3°C–5°C）。",
+          "summary": "台灣飛利浦家電官方說明釐清台灣消費者常見的壓縮機式 A 式（15°C 以上）與 B 式（5°C–35°C）適用溫度分界，並比較 B 式壓縮機與沸石除濕輪的能耗（約 3 倍差距）與室溫上升（除濕輪可令室溫上升 3–5°C）等特性。",
+          "limitations": "為家電品牌行銷與衛教部落格，A/B 式溫度界線與除濕輪 3–5°C 溫升屬業界通行概數，未附實驗室原始量測曲線，應與同儕審查研究（X146R2-S15、X146R2-S17）交叉印證。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.philips-da.com.tw/blogs/product-tips/128837"
         }
       ]
     },
@@ -31133,6 +31385,27 @@
       ]
     },
     {
+      "id": "SRC-270f7bf0e1f7b109",
+      "url": "https://journals.ametsoc.org/downloadpdf/view/journals/mwre/78/1/1520-0493_1950_078_0001_vofeit_2_0_co_2.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://journals.ametsoc.org/view/journals/mwre/78/1/1520-0493_1950_078_0001_vofeit_2_0_co_2.xml",
+          "title": "Verification of Forecasts Expressed in Terms of Probability",
+          "publisher": "Monthly Weather Review, Vol. 78, No. 1, pp. 1–3（Glenn W. Brier，美國氣象局）",
+          "network": "美國國家氣象局與前身美國氣象局（US NWS / NOAA / U.S. Weather Bureau）",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟並完整閱讀 1950 年原始論文 PDF 第 1–3 頁。",
+          "reading_scope": "全文（引言、驗證公式 P、10 次預報範例與防避險證明、85 次預報實測表）。",
+          "locator": "第 1–2 頁，Verification Formula (2)(4) 與 10 次預報（3 次下雨）範例",
+          "summary": "針對過去任意評分制會誘使預報員為拿高分而「押寶避險（hedging / playing the system）」的弊病，提出以機率與實際結果（1 或 0）差的平方平均計分。以 10 次預報、3 次下雨為例證明：若預報員無法區分各天差異，每次照實填 0.3 下雨／0.7 不下雨可得最佳常數分數 0.42（優於填 0.2 的 0.44）；若硬押 0 或 1 假裝把握十足，在平方懲罰下反而只會自食惡果。",
+          "limitations": "Brier 原文將「下雨」與「不下雨」兩類誤差相加，故原式值域為 0 至 2；現代文獻多簡化為單一事件二元形式，值域減半為 0 至 1，引用數字時須留意差異。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://journals.ametsoc.org/downloadpdf/view/journals/mwre/78/1/1520-0493_1950_078_0001_vofeit_2_0_co_2.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-271f321a18641e30",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7518861/fullTextXML",
       "readings": [
@@ -33586,6 +33859,27 @@
       ]
     },
     {
+      "id": "SRC-29a9eacc060b733c",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16303517/",
+      "readings": [
+        {
+          "canonical_url": "https://pubmed.ncbi.nlm.nih.gov/16303517/",
+          "title": "Local oxygen transmissibility of disposable contact lenses (Bruce AS, Cont Lens Anterior Eye. 2003;26(4):189-96)",
+          "publisher": "Contact Lens & Anterior Eye（澳洲墨爾本臨床視覺研究中心）",
+          "network": "澳洲墨爾本臨床視覺研究（Bruce 2003 局部厚度實測）",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過 PubMed 官方頁面讀取 20 款球面與 8 款散光拋棄式鏡片局部厚度與 Dk/t 實測摘要。",
+          "reading_scope": "PubMed 官方摘要全文（球面 -15.00 至 +8.00 D 與散光 -8.00 至 +4.00 D 實測、水膠指數公式、散光片最厚區 Dk/t 結果）。",
+          "locator": "PMID 16303517 Abstract（Dk = 1.67 e^(0.0397W)、8 款散光片皆未達局部 Dk/t ≥ 12）",
+          "summary": "量測 20 款球面（-15.00 至 +8.00 D）與 8 款散光（-8.00 至 +4.00 D）拋棄式鏡片多點厚度，並套用傳統水膠透氧指數式 Dk = 1.67 e^(0.0397 × W) 換算局部透氧率。結果 8 款市售拋棄式散光片在最厚區（穩定配重帶）竟無一達到局部 Dk/t ≥ 12（×10^-9 單位），反觀兩款矽水膠在全度數範圍皆高於 50；作者呼籲標準機構不應只標示中央 Dk/t。",
+          "limitations": "僅讀 PubMed 官方摘要；受測市售款式屬 2003 年世代，新一代矽水膠散光片透氧水準已提升，但「稜鏡配重區較厚壓低局部 Dk/t」的幾何機制不變。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://pubmed.ncbi.nlm.nih.gov/16303517/"
+        }
+      ]
+    },
+    {
       "id": "SRC-29af13cc5e42f279",
       "url": "https://www.qrcode.com/en/codes/model12.html",
       "readings": [
@@ -34567,6 +34861,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://collections.si.edu/search/detail/edanmdm:nmah_334663"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2ade8899047f6927",
+      "url": "https://www.menicon.co.jp/whats/history/pdf/CLhistory16.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.menicon.co.jp/whats/history/pdf/CLhistory16.pdf",
+          "title": "コンタクトレンズ博物誌 その16（田中英成，日本コンタクトレンズ学会誌 2010;52(3):225-228，Menicon 轉載）",
+          "publisher": "メニコン（Menicon，原載日本コンタクトレンズ学会誌）",
+          "network": "日本業界技術文獻與廣告自主規範（Menicon／JCLA，僅作交叉佐證不單獨計分）",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟 Menicon 公開歷史技術文章 PDF 全文閱讀。",
+          "reading_scope": "全文 4 頁（純水 Dk 上限、三代矽水膠含水量／Dk／Dk/t／彈性模數演進表、疏水性電漿處理、蛋白與脂質沉積差異）。",
+          "locator": "pp. 225–228（純水上限 Dk ≈ 94 × 10^-11、第一代 lotrafilcon A 24%/Dk 140/1.5 MPa 與 balafilcon A 36%/Dk 99/1.5 MPa、第二與第三代模數與 Dk 演進）",
+          "summary": "整理水膠與三代矽水膠材料演進：即使做成理論上 100% 純水的水膠，Dk 天花板僅約 94 × 10^-11；矽水膠導入矽氧烷大幅拉高透氧，第一代 lotrafilcon A（含水 24%、Dk 140、Dk/t 175）與 balafilcon A（36%、Dk 99、Dk/t 110）因彈性模數高達 1.5 MPa 偏硬且表面疏水，易引發機械性角膜上皮弓狀病變（SEAL）且須做電漿親水處理；第二代調高含水降模數（如 0.43–0.72 MPa），第三代（如 40%/Dk 129、48%/Dk 128）才逐漸跳脫高含水必低 Dk 的舊曲線；並指出矽水膠比傳統水膠少附著蛋白質、卻較易附著脂質，且對部分保養液成分敏感。",
+          "limitations": "作者為日本大型隱形眼鏡製造商代表，引用各代產品規格屬業界文獻整理，解讀時須與獨立實驗室盲測（如 X146R4-S05）交叉比對。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.menicon.co.jp/whats/history/pdf/CLhistory16.pdf"
         }
       ]
     },
@@ -36561,6 +36876,27 @@
       ]
     },
     {
+      "id": "SRC-2da8a1bc564c4ff2",
+      "url": "https://www.fda.gov.tw/tc/newsContent.aspx?cid=5049&id=19563",
+      "readings": [
+        {
+          "canonical_url": "https://www.fda.gov.tw/tc/newsContent.aspx?cid=5049&id=19563",
+          "title": "食藥闢謠專區〈標榜「高含水量」的隱形眼鏡，戴起來不會乾澀超舒服，這是真的嗎？〉",
+          "publisher": "台灣衛生福利部食品藥物管理署（TFDA）",
+          "network": "台灣衛生福利部食品藥物管理署（TFDA）",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟食藥署官方網頁閱讀全文。",
+          "reading_scope": "食藥闢謠專區完整內文（2016-02-01 發布、2018-02-07 更新）。",
+          "locator": "內文第一至三段（角膜無血管靠淚液溶氧、25%–85% 含水範圍、高含水吸水性強與吸附蛋白脂質說明）",
+          "summary": "說明角膜沒有血管，須靠淚液溶解空氣中的氧氣；市售軟式鏡片含水量約 25% 至 85%。含水量越高不代表越保濕，反而因材質吸水性高，在淚液分泌不足或乾眼者身上更容易出現乾澀不適，且親水性表面會吸附淚液中的蛋白質、脂質與礦物質沉積而刺激眼睛。",
+          "limitations": "為公眾衛教闢謠文，未細分傳統水膠與矽水膠的相反透氧曲線，亦未提供單一實測數據。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.fda.gov.tw/tc/newsContent.aspx?cid=5049&id=19563"
+        }
+      ]
+    },
+    {
       "id": "SRC-2daa3be9882780fe",
       "url": "https://arxiv.org/pdf/2303.09456",
       "readings": [
@@ -37609,6 +37945,27 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave124-everyday-20261119",
           "original_url": "https://rummikub.com/wp-content/uploads/2019/12/2600-English-1.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2ef7bf401b44bbb9",
+      "url": "https://www.cawcr.gov.au/projects/verification/",
+      "readings": [
+        {
+          "canonical_url": "https://www.cawcr.gov.au/projects/verification/",
+          "title": "Forecast verification - methods, issues and FAQ",
+          "publisher": "WMO/WWRP-WCRP 聯合預報驗證研究組（JWGFVR；澳洲 CAWCR 託管）",
+          "network": "世界氣象組織 WMO 與聯合預報驗證研究組",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟並閱讀 JWGFVR 預報驗證指南前半部核心章節。",
+          "reading_scope": "What makes a forecast good?、Forecast quality vs. forecast value、What is truth? 與二元列聯表驗證段落。",
+          "locator": "「What makes a forecast good?」與「Forecast quality vs. forecast value」",
+          "summary": "引述預報驗證先驅 Allan Murphy（1993）區分好預報的三個面向：一致性（consistency）、品質（quality）與價值（value）。指出高「品質」不等於高「價值」——例如在撒哈拉沙漠旱季天天報晴天，準確度極高卻對決策毫無價值；反之，機場濃霧等漏報代價極高的罕見事件，即使刻意提高預警造成較多誤報、在二次誤差分數上吃虧，對使用者仍可能更有價值。",
+          "limitations": "該站為國際驗證技術教學綜覽，後半頁因篇幅長截斷，本案僅採用已完整閱讀的 Murphy 三維架構與品質／價值對照段落。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.cawcr.gov.au/projects/verification/"
         }
       ]
     },
@@ -45468,6 +45825,27 @@
       ]
     },
     {
+      "id": "SRC-384aef14ecc232e7",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10444050/",
+      "readings": [
+        {
+          "canonical_url": "https://pubmed.ncbi.nlm.nih.gov/10444050/",
+          "title": "Hydrogel contact lens dehydration and oxygen transmissibility (Efron N, Morgan PB, CLAO J. 1999;25(3):148-51)",
+          "publisher": "CLAO Journal（英國曼徹斯特理工大學 UMIST 眼科與視覺科學研究群）",
+          "network": "英澳美加軟式鏡片水膠與淚膜研究群（Efron–Morgan／CORE／TFOS／CLADES 與 J&J 研發，依共同作者與機構從嚴合併）",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過 PubMed 官方頁面讀取雙盲試驗摘要與 35°C 失水及 Dk/t 變化。",
+          "reading_scope": "PubMed 官方摘要全文（僅 2 名受試者各輪測 17 對水膠鏡片之 4 小時雙盲試驗前後 35°C 含水量與 Dk/t 結果）。",
+          "locator": "PMID 10444050 Abstract（n=2 各輪測 17 對鏡片 4 小時、+0.5% 至 -5.3% 含水變化與 FDA Group IV 結論）",
+          "summary": "僅 2 名受試者各輪測 17 對水膠鏡片之 4 小時雙盲試驗，在 35°C 下量測配戴前後含水量變化，絕對含水量變動介於 +0.5% 至 -5.3%，其中脫水幅度最大、且造成具臨床意義透氧率下降的類別為 FDA 第四類（高含水、離子型）水膠鏡片。",
+          "limitations": "僅讀 PubMed 官方摘要；屬極小樣本試驗（僅 2 名受試者各輪測 17 對水膠鏡片之 4 小時雙盲試驗），觀察時間為 4 小時且僅聚焦傳統水膠不含矽水膠。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://pubmed.ncbi.nlm.nih.gov/10444050/"
+        }
+      ]
+    },
+    {
       "id": "SRC-384e45eaf5cbcdfa",
       "url": "https://faq.whatsapp.com/759301289012856/?cms_platform=android",
       "readings": [
@@ -51934,6 +52312,27 @@
       ]
     },
     {
+      "id": "SRC-3fa49506f539f253",
+      "url": "https://iovs.arvojournals.org/article.aspx?articleid=2203206",
+      "readings": [
+        {
+          "canonical_url": "https://iovs.arvojournals.org/article.aspx?articleid=2203206",
+          "title": "The TFOS International Workshop on Contact Lens Discomfort: Report of the Contact Lens Materials, Design, and Care Subcommittee (Jones L, Brennan NA, Nichols JJ et al., IOVS 2013;54(11):TFOS37-TFOS70)",
+          "publisher": "Tear Film & Ocular Surface Society（TFOS 國際淚膜與眼表學會，刊於 IOVS）",
+          "network": "英澳美加軟式鏡片水膠與淚膜研究群（Efron–Morgan／CORE／TFOS／CLADES 與 J&J 研發，依共同作者與機構從嚴合併）",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟 ARVO IOVS 開放全文閱讀材質分類、脫水與舒適度實證章節。",
+          "reading_scope": "TFOS CLD 2013 材質分組報告全文重點章節（polyHEMA 38% 基準、高含水與乾眼勝算比、整體脫水與主觀乾澀相關性檢討、表面摩擦係數）。",
+          "locator": "IOVS 2013;54(11):TFOS37-TFOS70（Water Content / Dehydration 與 Coefficient of Friction 段落：傍晚舒適度 r^2 = 0.79 及 >0.83、2 小時平均舒適度 r^2 = 0.91，且提醒尚無一級因果證據）",
+          "summary": "全球約 90% 配戴者使用軟式鏡片，傳統 polyHEMA 均聚物基準平衡含水量為 38%。回顧研究指出高含水鏡片與隱形眼鏡乾眼的勝算比達 2.25（FDA 第二、四類為第一類的 2 至 3 倍），但 TFOS 關鍵結論強調：鏡片整體在眼脫水量並不穩定等同於主觀乾澀感（如 omafilcon A 脫水少於 etafilcon A，有症狀者的關鍵差異反而是鏡前淚膜破裂時間縮短）；蒸發脫水會在鏡片內形成水分梯度，且表面摩擦係數與傍晚舒適度（r^2 = 0.79 及 >0.83）及 2 小時平均舒適度（r^2 = 0.91）高度相關，但 TFOS 亦提醒仍屬觀察相關、尚無一級因果證據且可能混雜廠商邊緣設計。",
+          "limitations": "為 2013 年國際共識回顧，部分收錄研究來自 1990 至 2000 年代舊世代材質；報告本身有多位學者曾任業界顧問（文末已揭露）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://iovs.arvojournals.org/article.aspx?articleid=2203206"
+        }
+      ]
+    },
+    {
       "id": "SRC-3fb49c019bc3d3e7",
       "url": "https://pergatory.mit.edu/2.007/resources/FUNdaMENTALs%20Book%20pdf/FUNdaMENTALs%20Topic%209.PDF",
       "readings": [
@@ -53562,6 +53961,27 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-electricity-20261101",
           "original_url": "https://www.analog.com/media/en/training-seminars/tutorials/MT-101.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-417413c790d23e9a",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean",
+      "readings": [
+        {
+          "canonical_url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean",
+          "title": "What does this forecast mean?",
+          "publisher": "英國氣象局（UK Met Office）",
+          "network": "英國氣象局 Met Office 預報指南",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟並閱讀英國氣象局官方預報表格解讀指南。",
+          "reading_scope": "Date and time、Weather symbols、Chance of precipitation、Temperature 等主要章節。",
+          "locator": "「Date and time」與「Chance of precipitation」段落",
+          "summary": "明確區分預報表格的時間語義：氣溫等項目代表標示整點「那一瞬間」的數值，但天氣圖示、降水機率與陣風代表「該時刻起到下一時段」的整段期間。逐時預報顯示 1 小時內至少降下 0.1 毫米的機率，逐 3 小時預報則顯示 3 小時內至少降下 0.3 毫米的機率；雨量可能貫穿整段期間，也可能在短時間內急降。",
+          "limitations": "為英國氣象局網站與 App 預報表公眾指南，未公開後端 MOGREPS 系集成員與統計校準公式。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
         }
       ]
     },
@@ -59927,6 +60347,27 @@
       ]
     },
     {
+      "id": "SRC-49cb7dd067f8ce38",
+      "url": "https://www.ecmwf.int/en/about/media-centre/focus/2017/fact-sheet-ensemble-weather-forecasting",
+      "readings": [
+        {
+          "canonical_url": "https://www.ecmwf.int/en/about/media-centre/focus/2017/fact-sheet-ensemble-weather-forecasting",
+          "title": "Fact sheet: Ensemble weather forecasting",
+          "publisher": "歐洲中期天氣預報中心（ECMWF）",
+          "network": "歐洲中期天氣預報中心 ECMWF 系集預報",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟並完整閱讀 ECMWF 官方系集預報事實表全文。",
+          "reading_scope": "全頁（大氣混沌、1992 年作業化起源、51 組預報架構、銳度與可靠度定義）。",
+          "locator": "「What are the advantages of ensemble prediction?」「How does ECMWF produce an ensemble forecast?」",
+          "summary": "說明大氣屬對初始條件高度敏感的混沌系統，單一決定性預報會遺漏不確定度。ECMWF 自 1992 年起作業化發布系集預報，每次產製 51 組預報：1 組採最佳可用資料且未擾動的控制預報（control forecast），搭配 50 組微調初始條件與模式的擾動預報；並強調優質系集須兼顧「銳度（sharpness，結果範圍夠集中）」與「可靠度（reliability，報 70% 時實際有 70% 發生）」。",
+          "limitations": "屬科普事實表，未列出後續系統升級至更高解析度時的微調細節；成員計權方式另見 ECMWF 24 小時降水機率圖說明。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.ecmwf.int/en/about/media-centre/focus/2017/fact-sheet-ensemble-weather-forecasting"
+        }
+      ]
+    },
+    {
       "id": "SRC-49ce99a29aa428de",
       "url": "https://www.chipstone.org/article.php/9/Ceramics-in-America-2001/Slip-Decoration-in-the-Age-of-Industrialization",
       "readings": [
@@ -64128,6 +64569,27 @@
           "limitations": "2011 年的文章、2010 年資料、美國東南部一個電力系統的四座機組，是示意，不代表台灣。原文點名的電廠與公司一律不寫。研究網 NET_US_DOE（與 S006 同屬美國能源部體系，S007 為能源部國家實驗室，從嚴併網，合計封頂 2.0）。",
           "origin": "wave110-x110-20261118",
           "original_url": "https://www.eia.gov/todayinenergy/detail.php?id=1710"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4ec9688adb3b02a8",
+      "url": "https://charts.ecmwf.int/catalogue/packages/frontpage/products/frontpage-medium-tp-probability",
+      "readings": [
+        {
+          "canonical_url": "https://charts.ecmwf.int/catalogue/packages/frontpage/products/frontpage-medium-tp-probability",
+          "title": "Probabilities: 24hr total precipitation (ENS)",
+          "publisher": "歐洲中期天氣預報中心（ECMWF）",
+          "network": "歐洲中期天氣預報中心 ECMWF 系集預報",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟並閱讀 ECMWF Charts 產品說明欄。",
+          "reading_scope": "全頁產品參數與「Probabilities: 24h precipitation」技術說明段。",
+          "locator": "「Probabilities: 24h precipitation」說明段",
+          "summary": "說明 ECMWF 系集 24 小時累積總降水（含雨與雪）超過 1 毫米的機率圖，係統計達標成員數而得，其中每個擾動預報成員均賦予相等權重 1/50（即單一成員對應 2%）。",
+          "limitations": "僅針對 24 小時 >1 毫米的未校準系集比例圖，各國落地服務通常還會依地形與觀測再校準。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://charts.ecmwf.int/catalogue/packages/frontpage/products/frontpage-medium-tp-probability"
         }
       ]
     },
@@ -74356,6 +74818,48 @@
       ]
     },
     {
+      "id": "SRC-5ac4edb6028c37ac",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12153035/",
+      "readings": [
+        {
+          "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12153035/",
+          "title": "A new three-dimensional model to describe human corneal oxygenation during contact lenses wear (Gozálvez-Zafrilla JM, Aguilella-Arzo M, Compañ V, Ophthalmic Physiol Opt. 2025;45(5):1126-1141)",
+          "publisher": "Ophthalmic and Physiological Optics（西班牙瓦倫西亞理工大學 UPV）",
+          "network": "西班牙瓦倫西亞理工大學三維角膜氧合模型（UPV 2025）",
+          "accessed_on": "2026-11-21",
+          "read_via": "於 PMC 開放取用全文讀取三維有限元素模型參數、±3.00 D 與 ±6.00 D 氧通量結果。",
+          "reading_scope": "PMC12153035 開放全文（眼表睜閉眼氧分壓、角膜 532 μm 三層厚度、純水 Dk 93 barrer、近視與遠視鏡片氧通量差異）。",
+          "locator": "PMC12153035 Methods & Results（155 vs 61.5 mmHg、-3.00 D 換 +3.00 D 中央氧通量降 26%、+6.00 D 軸周差異 54%）",
+          "summary": "以三維有限元素模型模擬 532 μm 角膜（上皮 50 μm、基質 480 μm、內皮 2 μm）在睜眼（155 mmHg）與閉眼（61.5 mmHg）配戴 ±3.00 D 與 ±6.00 D 軟式鏡片的氧氣分布（模型採用 25°C 純水／淚液 Dk = 93 barrer）。負度數（近視）鏡片周邊變厚使周邊氧通量下降；正度數（遠視）鏡片中央變厚，同一材質 galyfilcon A 從 -3.00 D 改為 +3.00 D 時中央睜眼氧通量由 12.9 降至 9.5 μL·cm^-2·h^-1（降幅約 26%），+6.00 D 時光軸與周邊耗氧相對差異達 54%。",
+          "limitations": "屬數值模擬研究，採標準化對稱角膜與穩態條件，實際配戴還受眨眼淚液幫浦與鏡片滑動影響。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12153035/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-5ad1700ae5f12a46",
+      "url": "https://www.menicon.co.jp/whats/research/pdf/research08.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.menicon.co.jp/whats/research/pdf/research08.pdf",
+          "title": "Academic Corner：-6.00 D 近視軟式隱形眼鏡全鏡面 Dk/t 分佈圖解（2010 年 4 月）",
+          "publisher": "メニコン（Menicon 學術專欄）",
+          "network": "日本業界技術文獻與廣告自主規範（Menicon／JCLA，僅作交叉佐證不單獨計分）",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟 Menicon 學術專欄 PDF 閱讀圖說與文字。",
+          "reading_scope": "全頁說明（中央厚度標示慣例與 -6.00 D 全鏡面透氧率色階差異）。",
+          "locator": "research08.pdf 全文（-6.00 D 鏡片中央薄、周邊厚導致周邊 Dk/t 明顯低於標稱中心值）",
+          "summary": "以 -6.00 D 近視軟式鏡片的全鏡面透氧率色階圖說明：包裝與型錄慣例以鏡片「中心厚度」計算單一 Dk/t 值，但負度數鏡片外圍較厚，使周邊區域的實際透氧率顯著低於中心標稱數字。",
+          "limitations": "為廠商學術衛教單頁，採示意圖示呈現概念，定量比較應搭配獨立論文（X146R4-S09、X146R4-S10）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.menicon.co.jp/whats/research/pdf/research08.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-5ada5c8a11497c48",
       "url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2009GL039618",
       "readings": [
@@ -78229,6 +78733,27 @@
       ]
     },
     {
+      "id": "SRC-5f571263a0f3ae32",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17435503/",
+      "readings": [
+        {
+          "canonical_url": "https://pubmed.ncbi.nlm.nih.gov/17435503/",
+          "title": "Oxygen permeability and water content of silicone hydrogel contact lens materials (Efron N, Morgan PB, Cameron ID, Brennan NA, Goodwin M, Optom Vis Sci. 2007;84(4):328-37)",
+          "publisher": "Optometry and Vision Science（澳洲昆士蘭理工大學 QUT 與英國曼徹斯特大學合作群）",
+          "network": "英澳美加軟式鏡片水膠與淚膜研究群（Efron–Morgan／CORE／TFOS／CLADES 與 J&J 研發，依共同作者與機構從嚴合併）",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過 PubMed 官方頁面讀取盲測極譜法實測 Dk 與含水量對照摘要。",
+          "reading_scope": "PubMed 官方摘要全文（5 種矽水膠與 2 種傳統水膠之實測含水量、實測 Dk、廠商宣稱值與 95% 信賴區間比對）。",
+          "locator": "PMID 17435503 Abstract（23.0%→162.0、36.9%→107.4、46.5%→75.2 矽水膠反比數列）",
+          "summary": "以盲測改良 ISO 9913-1 極譜疊片法量測 5 種矽水膠與 2 種傳統水膠：矽水膠呈現明顯「含水量越低、透氧係數越高」的反比關係——含水 23.0% 的 lotrafilcon A 實測 Dk 達 162.0 ± 9.8（宣稱 140）、36.9% senofilcon A 為 107.4 ± 7.4（宣稱 103）、35.8% balafilcon A 為 75.9 ± 6.6（宣稱 91）、46.5% galyfilcon A 為 75.2 ± 9.8（宣稱 60）；對照傳統水膠 58% etafilcon A 僅 21.0 ± 1.0、36.6% polymacon 僅 8.2 ± 0.7。五款矽水膠中有四款的廠商宣稱值落在獨立實測 95% 信賴區間之外。",
+          "limitations": "僅讀 PubMed 官方摘要；量測採當時市售的一、二代矽水膠，不含後來第三代突破反比曲線的新型矽水膠。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://pubmed.ncbi.nlm.nih.gov/17435503/"
+        }
+      ]
+    },
+    {
       "id": "SRC-5f592f636e8c83ea",
       "url": "https://assets.publishing.service.gov.uk/media/5a7e20b740f0b62305b80fb8/elliot-review-final-report-july2014.pdf",
       "readings": [
@@ -81471,6 +81996,27 @@
       ]
     },
     {
+      "id": "SRC-6338fc326e839744",
+      "url": "https://www.caa.go.jp/policies/policy/food_labeling/food_sanitation/expiration_date/assets/food_labeling_cms201_250328_01.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.caa.go.jp/policies/policy/food_labeling/food_sanitation/expiration_date/assets/food_labeling_cms201_250328_01.pdf",
+          "title": "食品期限表示の設定のためのガイドラインの見直し検討会 取りまとめ（令和7年3月）",
+          "publisher": "日本消費者庁（Consumer Affairs Agency, Japan）",
+          "network": "日本政府食品標示法規體系（CAA／MAFF／東京都）",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過 google:browse 直接抓取並通讀官方 PDF 全文（pp. 1–4）",
+          "reading_scope": "全份檢討會總結報告，重點核對安全係數實態調查數據、5日區分誤用比率、李斯特菌低溫增殖與冷藏溫度對期限的影響",
+          "locator": "pp. 1–4（2.(1)①定義、②指標、③安全係数、④目安開示；2.(2)①消費者理解；2.(4)②保存温度）",
+          "summary": "日本消費者廳時隔20年檢討期限設定指南的官方總結。實態調查揭露：約40%食品品項將安全係數壓在0.8未滿，甚至連加壓加熱殺菌的調理包與罐頭也照套安全係數，檢討會因此建議重新審視「0.8」數字提示、讓係數盡量逼近1甚至對安全性充分擔保者不設係數；約18%品項仍單純以「5日」切分消費／賞味期限，報告澄清1995年的5日線已不再承繼；令和5年度調查僅約53%消費者正確理解賞味期限；並指出李斯特菌在特定pH與水活性下於10°C以下仍能增殖，實態調查並記載個案：有業者將包含流通在內的冷藏控溫於7°C（低於日本慣行10°C門檻）後，成功讓特定產品期限延長為2倍。",
+          "limitations": "為政策修訂總結報告，非個別食品之微生物實驗原始數據集。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.caa.go.jp/policies/policy/food_labeling/food_sanitation/expiration_date/assets/food_labeling_cms201_250328_01.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-634628940a410c5a",
       "url": "https://www.wi-fi.org/news-events/newsroom/wi-fi-alliance-introduces-wi-fi-6",
       "readings": [
@@ -81949,6 +82495,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.1016/j.tree.2008.10.006"
+        }
+      ]
+    },
+    {
+      "id": "SRC-642c698406529b25",
+      "url": "https://www.pmda.go.jp/safety/consultation-for-patients/on-devices/qa/0015.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.pmda.go.jp/safety/consultation-for-patients/on-devices/qa/0015.html",
+          "title": "醫療機器安全問答〈Q1 コンタクトレンズについて教えてください〉",
+          "publisher": "日本獨立行政法人醫藥品醫療機器綜合機構（PMDA）",
+          "network": "日本厚生勞動省（MHLW）與 PMDA 醫療器材法規體系",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟 PMDA 官方問答頁面閱讀全文。",
+          "reading_scope": "Q1 全文（高度管理醫療機器定位、角膜直接向大氣呼吸、睡眠淚液減少須取下鏡片）。",
+          "locator": "PMDA Q1 本文（高度管理医療機器定義、角膜吸氧與睡眠淚液下降警示）",
+          "summary": "指出隱形眼鏡是直接接觸角膜的「高度管理医療機器」；角膜直接從大氣吸收氧氣，睡眠時淚液分泌量減少、鏡片易緊貼角膜，未核准連續配戴的鏡片一律必須在睡前取下。",
+          "limitations": "為公眾安全衛教問答，不含定量氧分壓或臨床統計數字。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.pmda.go.jp/safety/consultation-for-patients/on-devices/qa/0015.html"
         }
       ]
     },
@@ -83585,6 +84152,27 @@
       ]
     },
     {
+      "id": "SRC-65d382e866d889f1",
+      "url": "https://www.gov.uk/understanding-food-labelling/best-before-and-use-by-dates",
+      "readings": [
+        {
+          "canonical_url": "https://www.gov.uk/understanding-food-labelling/best-before-and-use-by-dates",
+          "title": "Understanding food labelling: Best before and use-by dates",
+          "publisher": "英國政府／英國食品標準局（UK Government / Food Standards Agency, FSA）",
+          "network": "英國政府與食品標準局體系（UK GOV.UK／FSA）",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過 google:browse 直接抓取並通讀官方消費者指南全文",
+          "reading_scope": "Use-by dates、When you can eat food after the use-by date、Best before dates",
+          "locator": "全文三節（≤5°C冷藏、-18°C冷凍暫停鍵、解凍後24小時、烹煮後48小時規則）",
+          "summary": "英國官方清楚劃分 'use-by'（安全）與 'best before'（品質），並提出具體可執行的「延長安全線」作法：只要在 'use-by' 當日或之前以 -18°C 冷凍，細菌於冷凍下無法生長，即可於原 'use-by' 後安全食用，惟解凍後須於 24 小時內用畢；若於 'use-by' 前烹煮並冷卻冷藏，須於 48 小時內吃完或轉冷凍。對於 'best before' 食品（含冷凍食品、乾燥麵米、罐頭、起司），過期後可依看（發霉）、聞（酸敗）、嚐（軟掉）等感官檢查自行判斷。",
+          "limitations": "操作時限（24小時解凍、48小時熟食冷藏）以冰箱維持 5°C 以下、冷凍維持 -18°C 為前提。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.gov.uk/understanding-food-labelling/best-before-and-use-by-dates"
+        }
+      ]
+    },
+    {
       "id": "SRC-65d759d42eb31b95",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12519636/fullTextXML",
       "readings": [
@@ -84344,6 +84932,27 @@
           },
           "origin": "wave81-human-20261113",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2795181/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-66a23d859777bb04",
+      "url": "https://www.weather.gov/bgm/forecast_terms",
+      "readings": [
+        {
+          "canonical_url": "https://www.weather.gov/bgm/forecast_terms",
+          "title": "Forecast Terms",
+          "publisher": "美國國家氣象局賓厄姆頓氣象站（NWS Binghamton, NY / NOAA）",
+          "network": "美國國家氣象局與前身美國氣象局（US NWS / NOAA / U.S. Weather Bureau）",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟並完整閱讀 NWS Forecast Terms 全頁與對照表。",
+          "reading_scope": "全頁，特別核對 Precipitation Probability 定義、文字對照表與 TIME PERIODS 定義表。",
+          "locator": "Precipitation Probability 段落、POP Percent 對照表與 TIME PERIODS 表",
+          "summary": "明列 NWS 降雨機率通常以 12 小時為時段（如 Today 6am–6pm、Tonight 6pm–6am）、預報區通常相當於一個郡（county），可測門檻為 0.01 英吋。表列百分比與文字語氣及空間形容詞的官方對應：10% 對應 Isolated/Few、20% 對應 Slight Chance／Widely Scattered、30–50% 對應 Chance／Scattered、60–70% 對應 Likely／Numerous、80–100% 則用於間歇性高機率雨勢的 Occasional／Periods of。",
+          "limitations": "屬於美國文字分區預報的術語對照標準，部分氣象站依季節或對流型態在語詞選用上略有調整。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.weather.gov/bgm/forecast_terms"
         }
       ]
     },
@@ -91718,6 +92327,27 @@
       ]
     },
     {
+      "id": "SRC-6f69dad1c91ed978",
+      "url": "https://www.clgakkai.jp/pdf/color_cl_mondai.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.clgakkai.jp/pdf/color_cl_mondai.pdf",
+          "title": "カラーコンタクトレンズが抱える諸問題（日本隱形眼鏡學會 2013 年 3 月 7 日專題講演資料）",
+          "publisher": "日本コンタクトレンズ学会（JCLS，常任理事 植田喜一）",
+          "network": "日本隱形眼鏡學會（JCLS 2013 講演與 NITE／國民生活中心彙整）",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟日本隱形眼鏡學會公開講演 PDF 閱讀各項調查表與實測引用。",
+          "reading_scope": "簡報可驗證段落（繃帶效應說明、國民生活中心 2006 年實測結果、NITE 2008 年納管前未核准無度數彩片 167 件眼傷與物性表、2007–2009 住院感染 350 例與 2012 年 395 例調查）。",
+          "locator": "簡報可驗證各節（p.1 繃帶效應、2006-02-03 國民生活中心細胞毒性與色素溶出、2008-07 NITE 納管前未核准無度數彩片 167 件／重症 21 件／83/84 即 99% 未受眼科診斷／厚度達透明視力矯正片約 2 倍、2007–09 年 350 例住院感染、2012 年 395 例）",
+          "summary": "系統彙整日本官方與學會調查：說明軟式鏡片具「繃帶效應（バンデージ効果）」，覆蓋角膜神經末梢而掩蓋表皮受傷疼痛；引述國民生活中心 2006 年實測（檢出細胞毒性、色素溶出、未開封異物及夜間視力下降）與 NITE 2008 年針對「2009 年納管前未核准無度數彩片」調查（167 件眼傷含重症 21 件，83/84 即 99% 未先受眼科診斷，部分彩片厚度達透明視力矯正片約 2 倍且直徑、基弧、度數不符公差）；學會並統計 2007–2009 年全國 350 例住院角膜感染與 2012 年 395 例彩片眼傷。",
+          "limitations": "NITE 2008 與國民生活中心 2006 數據為 2009 年納管前未核准無度數彩片調查（屬二手轉引），僅作歷史促成修法與風險機制的佐證，不可直接等同現行全數合法核准產品之不良率；另該 PDF 後段頁面擷取時遭截斷，未經獨立驗證之「重症需治療 30 天以上」與「2011 年網購 71.9%／87.0%」子數據已移除。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.clgakkai.jp/pdf/color_cl_mondai.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-6f7271ed0cb216dc",
       "url": "https://www.etymonline.com/word/minute",
       "readings": [
@@ -92099,6 +92729,27 @@
           "limitations": "受控實驗室與野外原位觀測數據，無利益衝突。",
           "origin": "wave102-mat-20261116",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC125200020/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-7039616349add3f9",
+      "url": "https://www.caa.go.jp/policies/policy/food_labeling/meeting_materials/assets/food_labeling_cms201_240527_05.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.caa.go.jp/policies/policy/food_labeling/meeting_materials/assets/food_labeling_cms201_240527_05.pdf",
+          "title": "食品の期限表示制度の変遷等（資料4）",
+          "publisher": "日本消費者庁 食品表示課（Consumer Affairs Agency, Japan）",
+          "network": "日本政府食品標示法規體系（CAA／MAFF／東京都）",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過 google:browse 直接抓取並通讀官方 PDF 全文（pp. 1–24）",
+          "reading_scope": "全份簡報資料，重點核對食品表示基準第2條定義、第3條年月標示、1995年5日通知、2005年指南、加工-22安全係數0.8、各業界係數表與令和4年度消費者認知調查",
+          "locator": "pp. 2–3, 6–10, 15, 17, 20–22（食品表示基準第2條第1項第7・8號、第3條第1項、消食表第140號 加工-22・総則-24）",
+          "summary": "說明日本《食品表示基準》將期限法定二分：「消費期限」（第2條第1項第7號）針對易急速劣化、過期恐損及安全性者；「賞味期限」（第2條第1項第8號）針對可保持所有期待品質之日，並明文但書「超過期限仍可能保持品質」。整理1995年以「含製造日約5日內」區分的歷史沿革、2005年指南規定以理化／微生物／官能試驗期限乘以小於1之「安全係數」（Q&A 加工-22 建議變動少者以 0.8 以上為基準；實例包含泡麵 0.8–1、義大利麵 0.9 達37個月、冷凍食品 0.7–0.8、食肉製品 0.8 以下）、超過3個月得改標「年月」，以及令和4年度調查僅51.4%消費者正確理解賞味期限。",
+          "limitations": "業界期限設定實例表係轉引自一般財團法人食品產業中心資料，各企業實際係數仍因配方與包材而異。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.caa.go.jp/policies/policy/food_labeling/meeting_materials/assets/food_labeling_cms201_240527_05.pdf"
         }
       ]
     },
@@ -95469,6 +96120,27 @@
       ]
     },
     {
+      "id": "SRC-74763f9a54cfeaf5",
+      "url": "https://weather.gc.ca/ensemble/naefs/info_produits_e.html",
+      "readings": [
+        {
+          "canonical_url": "https://weather.gc.ca/ensemble/naefs/info_produits_e.html",
+          "title": "NAEFS - Ensemble Forecasts: Documentation on the Probabilistic Products",
+          "publisher": "加拿大環境及氣候變遷部（Environment and Climate Change Canada, ECCC）",
+          "network": "加拿大環境及氣候變遷部 ECCC 北美系集系統",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟並完整閱讀加拿大官方 NAEFS 機率產品說明頁。",
+          "reading_scope": "全頁（NAEFS 系統組成、成員數、機率計算公式與多門檻產品表）。",
+          "locator": "「Introduction and Description of Ensemble Forecast」「Display of charts」與產品門檻表",
+          "summary": "說明北美系集預報系統（NAEFS）結合加拿大 GEM 系集（20 個擾動成員＋1 個控制成員，採用不同物理參數化、同化循環或擾動觀測）與美國系集（20 個擾動成員＋1 個控制成員）。圖表上每一格點的發生機率，直接由「預報該期間達成門檻的成員數 ÷ 總成員數」算得，預設每日降水門檻為 >0.2 毫米，並分列 >2、>5、>10、>25、>50 毫米等多層門檻。",
+          "limitations": "為 NAEFS 原始數值系集機率圖說明，公眾城市文字預報仍會再經過統計後處理與人工編輯。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://weather.gc.ca/ensemble/naefs/info_produits_e.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-747884e36d5fa92c",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC125200044/fullTextXML",
       "readings": [
@@ -96895,6 +97567,27 @@
       ]
     },
     {
+      "id": "SRC-7628ac7f23389919",
+      "url": "https://www.mdpi.com/1996-1073/11/10/2642",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3390/en11102642",
+          "title": "Frosting Phenomenon and Frost-Free Technology of Outdoor Air Heat Exchanger for an Air-Source Heat Pump System in China: An Analysis and Review",
+          "publisher": "Energies 11(10):2642（2018）；山東大學能源與動力工程學院等（MDPI 開放取用同儕審查期刊）",
+          "network": "NET_ACAD_SDU",
+          "accessed_on": "2026-11-21",
+          "read_via": "google:browse 讀取開放取用全文 Abstract、Section 1–2.2",
+          "reading_scope": "Abstract、Section 1 Introduction（結霜造成換熱與 COP 下降之定量文獻整理）、Section 2.1 Frosting Pathway（水三相點與過冷液滴實驗）、Section 2.2 Frosting Map。",
+          "locator": "Section 1（冷排結霜兩大條件：表面溫度同時低於空氣露點與冰點 0°C；霜層增厚帶來兩大惡化——熱阻上升與風阻上升、風量下降；文獻實測緊湊式換熱器結霜使換熱量降約 50%–75%，傳統熱泵運轉時間由 25 分增至 100 分時 COP 下降約 53%）；Section 2.1（純水三相點 Ttp = 0.01°C、Ptp = 612 Pa；常見結霜路徑為氣→液→固，水滴可先過冷至 −8.19°C 維持 127 秒後才凍結成霜；降低水氣分壓可減小相變驅動力）；Section 2.2（環境溫度越低、相對濕度越高越容易結霜）。",
+          "summary": "山東大學團隊發表於同儕審查期刊《Energies》的熱交換器結霜綜論，從水的相圖與三相點（0.01°C、612 Pa）拆解冷排結霜的兩個必要條件（冷排表面同時低於露點與 0°C），並歸納霜層如何透過「絕熱層效應＋風道堵塞」令換熱率驟降 50%–75%、系統 COP 暴跌 53%，以及低溫高濕特別容易觸發重度結霜。",
+          "limitations": "論文主體針對空氣源熱泵之室外蒸發器，雖與壓縮機式除濕機的翅片管蒸發器共享相同結霜與熱質傳物理機制，但引述之 50%–75% 與 53% 係熱泵換熱器實測值，轉述至除濕機時應標明屬同類蒸發器結霜物理現象。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.mdpi.com/1996-1073/11/10/2642"
+        }
+      ]
+    },
+    {
       "id": "SRC-762a05db7140a2bc",
       "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-raspberries-in-the-home-garden",
       "readings": [
@@ -98115,6 +98808,48 @@
           "network": "NET_UFLIP",
           "origin": "wave114-g746-20261119",
           "original_url": "https://arxiv.org/pdf/0909.1780"
+        }
+      ]
+    },
+    {
+      "id": "SRC-77c3f656a53752b5",
+      "url": "https://www.data.jma.go.jp/yoho/kensho/explanation.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.data.jma.go.jp/yoho/kensho/explanation.html",
+          "title": "検証方法の説明",
+          "publisher": "日本氣象廳（Japan Meteorological Agency, JMA）",
+          "network": "日本氣象廳 JMA 預報用語與精度驗證",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟並完整閱讀日本氣象廳精度驗證方法說明頁。",
+          "reading_scope": "全頁（1. 降水の有無の検証、2. 気温の検証、3. 降水確率の検証）。",
+          "locator": "「１．降水の有無の検証」與「３．降水確率の検証」",
+          "summary": "說明日本氣象廳驗證每 6 小時降水確率時，按 10% 級距彙整 3 個月內各觀測地點是否出現 1 毫米以上降水（有計 100%、無計 0%）並於對象地區平均；若預報達最佳校準，預報值與實際出現率相等，在圖表上呈斜率為 1 的直線。在二元有無降水驗證中，雨量門檻為 1 毫米（降雪為 0.5 毫米），並舉例全區 10 處 AMeDAS 測站有 8 處下雨、2 處沒下時，該次有雨預報的適中率計為 80%、空振率 20%。",
+          "limitations": "屬驗證方法定義頁，未刊載特定年份或特定都道府縣的實際歷史分數表。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.data.jma.go.jp/yoho/kensho/explanation.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-77c71d38f7bdb036",
+      "url": "https://www.jema-net.or.jp/engineering/JEM_JEM-TR/JEM1411.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.jema-net.or.jp/engineering/JEM_JEM-TR/JEM1411.html",
+          "title": "JEM 1411：電気除湿機の除湿面積算出方法",
+          "publisher": "一般社団法人 日本電機工業会（JEMA）",
+          "network": "NET_JP_JEMA",
+          "accessed_on": "2026-11-21",
+          "read_via": "google:browse 完整讀取 JEMA 規格公開書目頁",
+          "reading_scope": "JEM 1411 公開規格簡介表（制定日、改正日、確認日、概要與主要項目）。",
+          "locator": "規格一覽表（規格編號 JEM 1411、1984 年 9 月 11 日制定、1998 年 7 月 24 日改正、2021 年 11 月 8 日確認；概要明載本規格規定依據 JIS C 9617 測得之電氣除濕機額定除濕能力，換算說明書與型錄上標示之室內除濕適用面積的方法）。",
+          "summary": "日本電機工業會（JEMA）規格書目確認，日本除濕機型錄與說明書上的「除濕可能面積（適用疊數）」並非廠商自由喊價，而是依據 JEM 1411（1984 年制定、2021 年確認）從 JIS C 9617 額定除濕能力統一換算而來。",
+          "limitations": "JEM 1411 全文 10 頁 PDF 為會員限定／付費標準，公開頁未披露木造與混凝土之換算公式細節，僅確認制度架構與 JIS C 9617 之連動關係。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.jema-net.or.jp/engineering/JEM_JEM-TR/JEM1411.html"
         }
       ]
     },
@@ -105832,6 +106567,27 @@
       ]
     },
     {
+      "id": "SRC-80a02a4076a487ca",
+      "url": "https://www.eol.ucar.edu/data-software/conventions-and-standards/water-vapor-pressure-formulations",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.26023/S2SX-K278",
+          "title": "Water Vapor Pressure Formulations（彙整 WMO CIMO Guide WMO-No. 8 等國際飽和水氣壓標準算式）",
+          "publisher": "NSF NCAR Earth Observing Laboratory（University Corporation for Atmospheric Research，UCAR）",
+          "network": "NET_ACAD_UCAR",
+          "accessed_on": "2026-11-21",
+          "read_via": "google:browse 完整讀取頁面所有算式、註釋與參考文獻",
+          "reading_scope": "Section 1（液態水面上飽和水氣壓 12 組公式含 WMO 2008 CIMO Guide、Goff-Gratch、IAPWS-95）、Section 2（冰面上飽和水氣壓公式含 WMO 2008）與技術註解。",
+          "locator": "Section 1 Eq. 2（WMO 2008 Guide to Meteorological Instruments and Methods of Observation, WMO-No. 8, Appendix 4B：液態水面飽和水氣壓 ew = 6.112 × exp[17.62 t / (243.12 + t)]，t 為 °C、ew 為 hPa）；Section 2 Eq. 15（冰面飽和水氣壓 ei = 6.112 × exp[22.46 t / (272.62 + t)]）；Eq. 12（IAPWS-95 有效範圍為三相點 273.16 K 以上）。",
+          "summary": "美國大氣研究大學聯盟（UCAR）地球觀測實驗室彙整世界氣象組織（WMO-No. 8）與國際水和水蒸氣性質協會（IAPWS）的飽和水氣壓標準方程式。【依 WMO 公式與 X146R2-S04 混合比算式推算，標準大氣壓 1013.25 hPa】，飽和水氣壓隨溫度呈指數遞減：30°C 為 42.34 hPa、27°C 為 35.57 hPa、15°C 驟降至 17.02 hPa、5°C 僅剩 8.72 hPa；因此 15°C/80% RH 的實際含水（8.47 g/kg）反而比 27°C/60% RH（13.38 g/kg）【換算】少 37%，且 15°C/60% RH 露點會掉到 7.3°C。",
+          "limitations": "頁面列出標準公式與誤差評比，各溫度點對應之 hPa、露點與 g/kg 數值係依頁面 WMO Eq. 2 與 10 CFR App X1 混合比算式於 1013.25 hPa 標準大氣壓下計算推得（須於卡面標明依公式計算）。UCAR 由大學聯盟管理、獲美國 NSF 補助，從嚴檢核時須注意與美聯邦網之區隔。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.eol.ucar.edu/data-software/conventions-and-standards/water-vapor-pressure-formulations"
+        }
+      ]
+    },
+    {
       "id": "SRC-80a39bbb898e46d8",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5390404/fullTextXML",
       "readings": [
@@ -107466,6 +108222,27 @@
           ],
           "origin": "wave42-physics-20261103",
           "original_url": "https://doi.org/10.1021/ac102963x"
+        }
+      ]
+    },
+    {
+      "id": "SRC-8230df5014238577",
+      "url": "https://www.kfn.or.kr/include/lib/download_journal_attachment.php?id=149384&idx=ZmlsZV9hdHRhY2htZW50",
+      "readings": [
+        {
+          "canonical_url": "https://www.kfn.or.kr/include/lib/download_journal_attachment.php?id=149384&idx=ZmlsZV9hdHRhY2htZW50",
+          "title": "식품의 소비기한: 현재 및 향후 전망（Use-by Date on Food: Current and Future Directions）",
+          "publisher": "韓國食品營養科學會《Food Industry and Nutrition》27(1), 6–11（作者所屬：韓國食品研究院 KFRI）",
+          "network": "韓國食藥處與其資助研究體系（MFDS／KFRI）",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過 google:browse 直接抓取並通讀期刊論文 PDF 全文（pp. 6–11）",
+          "reading_scope": "全文、表1（韓國期限制度與安全係數沿革）、表2（各國制度比較）、冷藏溫度標準與腐敗實證研究回顧",
+          "locator": "pp. 6–10（서론、표 1、표 2、소비기한 관련 연구 동향、향후 연구 방향성）",
+          "summary": "系統整理韓國1985年導入流通期限（安全係數 0.6–0.7）、2007年增設長期食品品質維持期限、2021年修法並自2023年全面改制消費期限（安全係數 0.8–0.9）的完整歷程。指出韓國過去因誤將流通期限當廢棄日，每年造成約6,500億韓元食品浪費損失；並揭露冷鏈關鍵瓶頸——韓國法定冷藏溫度為 0–10°C（實測賣場牛奶平均 5.8°C），高於歐美 ≤5°C 標準，因此冷藏牛乳類等須改善低溫流通之品項自2023年起獲得最長8年緩衝期（延至2031年適用）。另引實驗證明保存溫度失控的劇烈效應：包裝豆腐置於 23°C 僅1天即超標腐敗，牛奶置於 25°C 至流通期限到期當日（유통기한 만료일에）生菌數即暴增超標。",
+          "limitations": "2022年發表於制度正式上路前夕之特輯綜述（論文第11頁致謝欄明載受韓國食藥處 MFDS 計畫 22192식품위007 資助），引述之韓國消費者院低溫貯藏實驗係於 0–5°C 實驗室恆溫條件進行，無法直接等同所有家庭冰箱表現。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.kfn.or.kr/include/lib/download_journal_attachment.php?id=149384&idx=ZmlsZV9hdHRhY2htZW50"
         }
       ]
     },
@@ -110693,6 +111470,27 @@
       ]
     },
     {
+      "id": "SRC-867dcd621f09963e",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8287047/",
+      "readings": [
+        {
+          "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8287047/",
+          "title": "Effects of Temperature and Blinking on Contact Lens Dehydration of Contemporary Soft Lens Materials Using an In Vitro Blink Model (Chan VWY, Phan CM, Walther H, Ngo W, Jones L, Transl Vis Sci Technol. 2021;10(8):11)",
+          "publisher": "Translational Vision Science & Technology（加拿大滑鐵盧大學眼部研究與教育中心 CORE）",
+          "network": "英澳美加軟式鏡片水膠與淚膜研究群（Efron–Morgan／CORE／TFOS／CLADES 與 J&J 研發，依共同作者與機構從嚴合併）",
+          "accessed_on": "2026-11-21",
+          "read_via": "於 PMC 開放取用全文直接閱讀方法、結果與討論。",
+          "reading_scope": "PMC8287047 開放全文（5 種材質共 7 款市售鏡片由室溫 22°C 升溫至 35°C 效應、高濕 >90% 模擬眨眼 16 小時［n=4］各材質絕對含水百分點降幅表、自由水與結合水討論）。",
+          "locator": "PMC8287047 Table 1, Results & Discussion（5 種材質共 7 款市售鏡片升溫至 35°C 多數條件 P ≤ 0.0052［少數 1 小時或 comfilcon A 16 小時例外］；高濕 >90%、n=4 16 小時眨眼絕對含水降幅 etafilcon A 10.30% ± 7.46% 對比 omafilcon A 2.08% ± 1.18%）",
+          "summary": "以 35°C 體外眨眼模型（每分鐘眨眼 6 次、人工淚液流速 4.5 μL/min、相對高濕 >90%、每組 n=4）與靜置瓶測試 5 種材質（共 7 款市售鏡片：3 種矽水膠與 2 種傳統水膠，其中 senofilcon A 與 etafilcon A 各測日拋與長戴）。結果顯示整體隨室溫 22°C 升溫至眼表 35°C 呈含水量下降（多數條件 P ≤ 0.0052，少數如 omafilcon A 與 delefilcon A 於 1 小時人工淚液條件、comfilcon A 於 16 小時條件例外）；並說明水膠內部水分分為自由水、弱結合水與強結合水。16 小時高濕體外眨眼試驗中，58% etafilcon A 絕對含水百分點降幅最大（10.30% ± 7.46%），同為高含水但含磷醯膽鹼的 60% omafilcon A 降幅最小（2.08% ± 1.18%），顯示聚合物化學結構比單純含水百分比更關鍵。",
+          "limitations": "為體外人工淚液模擬眼模型（高濕度 >90%、每組 n=4），16 小時絕對含水百分點降幅之標準差較大，且未完整重現冷氣房低濕度與真實角膜脂質層變異。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8287047/"
+        }
+      ]
+    },
+    {
       "id": "SRC-86818b5b30033dd6",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11733674/fullTextXML",
       "readings": [
@@ -112200,6 +112998,27 @@
       ]
     },
     {
+      "id": "SRC-880a8b4b4f16c337",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10507745/",
+      "readings": [
+        {
+          "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10507745/",
+          "title": "Silicone hydrogel versus hydrogel soft contact lenses for differences in patient-reported comfort and safety (Haworth K, Travis D, Leslie L, Fuller D, Pucker AD, Cochrane Database Syst Rev. 2023;2023(9):CD014791)",
+          "publisher": "Cochrane Eyes and Vision Group（考科藍系統性文獻回顧資料庫）",
+          "network": "考科藍眼視系統性文獻回顧（Cochrane 2023）",
+          "accessed_on": "2026-11-21",
+          "read_via": "於 PMC 開放取用全文閱讀背景數據、主要結果表與證據確定性評等。",
+          "reading_scope": "摘要、背景（全球 1.4 億配戴者、2–5 μm 淚膜分裂、30% 停戴率）與 Summary of Findings（7 項 RCT、1,371 名成人、OSDI 舒適度與 52 週延長配戴不良事件 RR）。",
+          "locator": "PMC10507745 Background & Main Results（7 RCTs / 1,371 人、2–5 μm 淚膜、OSDI MD -1.20 [95% CI -10.49 to 8.09]、延長配戴不良事件 RR 2.03 [1.38–2.99]）",
+          "summary": "系統整合 7 項隨機對照試驗（共 1,371 名成人，涵蓋 8 款矽水膠與 3 款水膠）。背景指出全球約 1.4 億配戴者中 90% 戴軟式鏡片、2010 年後約 70% 為矽水膠，高達 30% 穩定配戴者因不適停戴；鏡片會將原本 2–5 μm 的淚膜劈成鏡前與鏡後兩層而加速蒸發。但實證檢討極為審慎：現有試驗對矽水膠是否比水膠更舒適的證據確定性「極低」（OSDI 平均差 -1.20，信賴區間橫跨零點），且兩項 52 週延長配戴試驗（815 人）中矽水膠不良事件相對風險反見 2.03（證據確定性極低），證實高透氧不等於零風險或保證更舒服。",
+          "limitations": "納入的 7 項隨機試驗多存在偏差風險或業界資助，使多數結局被評為「極低確定性證據」，不能據此宣稱任一材質絕對勝出。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10507745/"
+        }
+      ]
+    },
+    {
       "id": "SRC-880b1a1b403bc23c",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12516330/fullTextXML",
       "readings": [
@@ -113007,6 +113826,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://ftp.arl.army.mil/~mike/comphist/eniac-story.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-88ca35a57904216b",
+      "url": "https://www.bom.gov.au/catalogue/Bureau_of_Meteorology_text_forecasts_user_guide.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.bom.gov.au/catalogue/Bureau_of_Meteorology_text_forecasts_user_guide.pdf",
+          "title": "Text Forecasts User Guide (Version 2.1, updated 24 April 2026)",
+          "publisher": "澳洲氣象局（Australian Bureau of Meteorology, BoM）",
+          "network": "澳洲氣象局 BoM 雙欄降雨機率與雨量區間",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟並完整閱讀官方 PDF 第 1–13 頁。",
+          "reading_scope": "全份文件，特別核對第 7 頁「Chance of any rain and Possible rainfall amounts」。",
+          "locator": "第 7 頁，Additional Information：「'Chance of any rain' and 'Possible rainfall' amounts」",
+          "summary": "強調降雨機率與可能雨量是兩項獨立資訊：「Chance of any rain」指選定地點在午夜至午夜 24 小時內測得超過最小可測雨量（0.2 毫米）的機率；只要預報有可測降雨，另以兩值構成「Possible rainfall」區間，第一值代表有 75%（高）機率至少達到該雨量、第二值代表有 25%（低）機率至少達到該雨量；若當天降雨機率低於 25%，則不顯示雨量區間。",
+          "limitations": "2015 年澳洲氣象局官方部落格曾以 50%／25% 說明舊版區間，本條目以 2026 年 4 月更新的現行正式使用者手冊 v2.1（75%／25%）為準，撰稿時不可混用舊版百分位。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.bom.gov.au/catalogue/Bureau_of_Meteorology_text_forecasts_user_guide.pdf"
         }
       ]
     },
@@ -114208,6 +115048,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://support-en.wd.com/app/answers/detailweb/a_id/16656/~/available-capacity-of-the-drive-is-smaller-than-the-drive-label"
+        }
+      ]
+    },
+    {
+      "id": "SRC-8a95ac3afcbfa79c",
+      "url": "https://www.mdpi.com/2075-5309/14/5/1397",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3390/buildings14051397",
+          "title": "Performance Investigation and Optimization of Composite Materials in Household Dehumidifiers",
+          "publisher": "Buildings 14(5):1397（2024）；北京工業大學機械與能源工程學院（MDPI 開放取用同儕審查期刊）",
+          "network": "NET_ACAD_BJUT",
+          "accessed_on": "2026-11-21",
+          "read_via": "google:browse 讀取開放取用全文 Abstract、Introduction 與實驗段摘要",
+          "reading_scope": "Abstract、Section 1 Introduction（冷凝式與吸附式分類及露點 > 0°C 結冰限制、傳統矽膠與沸石再生溫度需求）、Section 4–5（120–150°C 再生溫度、DCPP 效率與出風溫升 ΔT 實驗結果）。",
+          "locator": "Section 1 Introduction（除濕分冷凝式［含壓縮機、致冷晶片、熱泵］與乾燥劑式；明載「Condensing dehumidification can only handle air with a dew point temperature above 0 °C due to freezing phenomena」；傳統家用除濕輪使用矽膠或沸石，在 37°C/65% RH 下矽膠需高於 100°C 再生，且再生溫度過高造成轉輪蓄熱與耗電上升）；Section 4.3.2（120–150°C 再生溫度、20°C/80% RH 下，未改裝商用轉輪 CM DW 之 DCPP 峰值在 130°C 為 0.54 kg/kWh，超過 130°C 後效率反降、約 140°C 時除濕速率 Dr 趨平）；Section 5.2.2（結構優化使進氣繞過冷凝器後，商用轉輪於 130°C 之 DCPP 峰值提升至 0.59 kg/kWh，且三種轉輪之進出口溫升 ΔT 可降低 3.34–4.52°C）。",
+          "summary": "北京工業大學發表於同儕審查期刊《Buildings》的家用除濕輪實驗研究指出，所有冷凝式除濕（含壓縮機與致冷晶片）在露點逼近 0°C 時皆受限於凍結現象；而傳統矽膠／沸石除濕輪須以 120–150°C 高溫再生，20°C/80% RH 下未改裝商用轉輪於 130°C 再生之 DCPP 峰值為 0.54 kg/kWh（結構優化進氣繞過冷凝器後峰值達 0.59 kg/kWh；超過 130°C 效率反降、約 140°C 除濕率趨平），且高溫再生與吸附熱會顯著推升處理後空氣的出口溫度。",
+          "limitations": "該實驗聚焦於 190–240 g/h 級小型家用除濕輪平台與新型 LiCl@Al-Fum 複合材料最佳化，並非市售所有大型機種之平均數。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.mdpi.com/2075-5309/14/5/1397"
         }
       ]
     },
@@ -117551,6 +118412,27 @@
           },
           "origin": "wave77-life-20261111",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4977282/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-8e0e52f039e61bb0",
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iyakuhin/colorcontact/index.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iyakuhin/colorcontact/index.html",
+          "title": "おしゃれ用カラーコンタクトレンズについて（時尚用彩色隱形眼鏡醫療器材納管專頁）",
+          "publisher": "日本厚生労働省（MHLW）",
+          "network": "日本厚生勞動省（MHLW）與 PMDA 醫療器材法規體系",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟日本厚生勞動省官方頁面閱讀納管日期與管理義務。",
+          "reading_scope": "全頁法規沿革與納管要件。",
+          "locator": "首段與法規要點（平成 21 年／2009 年 11 月 4 日起非視力矯正彩片納入高度管理医療機器）",
+          "summary": "明定自 2009 年 11 月 4 日（平成 21 年 11 月 4 日）起，即使不含近視度數的時尚用彩色隱形眼鏡也全面依《藥機法》納管為「高度管理医療機器」，製造與輸入須獲厚生勞動大臣核准，零售端須取得都道府縣知事許可並設置管理者。",
+          "limitations": "為法規宣導專頁，個別產品檢驗數據另見審查機構與學會報告。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iyakuhin/colorcontact/index.html"
         }
       ]
     },
@@ -121161,6 +122043,27 @@
       ]
     },
     {
+      "id": "SRC-924bfc1f37f06c6c",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/6592160/",
+      "readings": [
+        {
+          "canonical_url": "https://pubmed.ncbi.nlm.nih.gov/6592160/",
+          "title": "Critical oxygen levels to avoid corneal edema for daily and extended wear contact lenses (Holden BA, Mertz GW, Invest Ophthalmol Vis Sci. 1984;25(10):1161-7)",
+          "publisher": "Investigative Ophthalmology & Visual Science（UNSW 澳洲新南威爾斯大學驗光與視覺科學研究群）",
+          "network": "澳洲新南威爾斯大學角膜氧合研究（UNSW 1984）",
+          "accessed_on": "2026-11-21",
+          "read_via": "逐件透過 PubMed 官方頁面讀取論文摘要與定量臨界值。",
+          "reading_scope": "PubMed 官方摘要全文（實驗設計、日戴與過夜配戴臨界 Dk/t 及等效氧百分比 EOP、poly-HEMA 與高含水鏡片厚度推算）。",
+          "locator": "PMID 6592160 Abstract（日戴 24.1±2.7 與過夜 87.0±3.3 臨界值段落）",
+          "summary": "針對健康年輕成人進行 36 小時配戴角膜水腫試驗，得出日戴避免角膜水腫的臨界透氧率 Dk/t 為 24.1 ± 2.7 × 10^-9 (cm·mL O2)/(s·mL·mmHg)（EOP 9.9%），標準低含水 poly-HEMA 需平均厚度 ≤33 μm、高含水 Duragel 75 需 ≤166 μm 才可達成；若過夜配戴要將角膜水腫壓在不戴鏡睡眠的 4% 生理基準內，需 Dk/t 87.0 ± 3.3 × 10^-9（EOP 17.9%），當時傳統水膠材質皆無法達到。",
+          "limitations": "PubMed 僅提供完整摘要（非 PDF 付費全文）；36 小時試驗樣本為健康年輕成人，屬經驗回歸模型（誤差約 ±1.0% 水腫）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://pubmed.ncbi.nlm.nih.gov/6592160/"
+        }
+      ]
+    },
+    {
       "id": "SRC-924d4211371af4ec",
       "url": "https://www.govinfo.gov/link/cfr/16/423?link-type=pdf&year=mostrecent",
       "readings": [
@@ -122966,6 +123869,27 @@
           "limitations": "這是一套廣泛使用的開源讀碼程式的實作，不是國際標準本身；其他讀碼程式（含手機內建）不一定照同樣做法。只讀這一版移植的原始碼，未對照原 Java 版。程式作者姓名不寫。研究網：NET_ZXING（S004–S009 同網，封頂 2.0）。 覆核 SVX5：作者原寫「版本 1 以上」，程式原文是 above version 1，即版本 2 起，已改。",
           "origin": "wave105-x105-20261118",
           "original_url": "https://cdn.jsdelivr.net/npm/@zxing/core@0.3.0-dev.736e254/src/core/qrcode/detector/Detector.ts"
+        }
+      ]
+    },
+    {
+      "id": "SRC-94874937d1f85675",
+      "url": "https://pure.mpg.de/rest/items/item_2101059/component/file_2101058/content",
+      "readings": [
+        {
+          "canonical_url": "https://pubmed.ncbi.nlm.nih.gov/16022695/",
+          "title": "“A 30% Chance of Rain Tomorrow”: How Does the Public Understand Probabilistic Weather Forecasts?",
+          "publisher": "Risk Analysis, Vol. 25, No. 3, pp. 623–629（Gerd Gigerenzer 等，馬克斯普朗克人類發展研究所）",
+          "network": "馬克斯普朗克人類發展研究所與 Risk Analysis 期刊",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過馬克斯普朗克機構典藏直接閱讀 2005 年同行評審論文全文（第 1–8 頁）。",
+          "reading_scope": "論文全文（引言、參照類別分析、五城 750 人方法與結果、帶傘門檻、歐洲各國氣象局與媒體訪查）。",
+          "locator": "第 1–7 頁（期刊頁碼 623–629），Section 2–5 與 Fig. 1–2 討論",
+          "summary": "於紐約（n=103）、阿姆斯特丹（n=117）、柏林（n=219）、米蘭（n=203）、雅典（n=108）訪問共 750 名受訪民眾（公共場所隨機調查，柏林樣本另含大學生）「明天降雨機率 30%」的意義。僅紐約約三分之二選對氣象學「同條件日子中 3/10 會下雨」；歐洲四城僅約五分之一到三分之一選對，且全數把標準答案評為最不恰當，最偏愛「明天有 30% 的時間會下雨」，其次是「30% 地區」。誤選面積者平均在 50.6% 就帶傘、選時間者 53.5%，選對天數者則到 55.9% 才帶傘。作者指出關鍵是「單一事件機率」省略了「參照類別（reference class）」，並以百憂解 30–50% 性功能副作用被患者誤解為「自己每次親密行為有三到五成出問題」作對照。",
+          "limitations": "調查執行於 2002 年秋季且樣本集中於歐美五座大都市，反映當年媒體暴露度差異，不能直接套成今日台灣或日本民眾的精確比例。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://pure.mpg.de/rest/items/item_2101059/component/file_2101058/content"
         }
       ]
     },
@@ -126947,6 +127871,27 @@
       ]
     },
     {
+      "id": "SRC-997a285d6b6a15da",
+      "url": "https://www.cfs.gov.hk/tc_chi/multimedia/multimedia_pub/multimedia_pub_fsf_122_02.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.cfs.gov.hk/tc_chi/multimedia/multimedia_pub/multimedia_pub_fsf_122_02.html",
+          "title": "解讀食物標籤——「此日期前最佳」與「此日期或之前食用」的分別（食物安全焦點第122期）",
+          "publisher": "香港特別行政區食物環境衞生署 食物安全中心（Centre for Food Safety, Hong Kong）",
+          "network": "香港食物安全中心官方體系（HK CFS）",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過 google:browse 直接抓取並通讀官方繁體中文專文全文",
+          "reading_scope": "全文（常見謬誤三則、貯存指示、開封失效原則、給市民與業界之法律建議）",
+          "locator": "《食物安全焦點》第122期（2016年9月，2018年6月6日修訂）全文",
+          "summary": "呈現同屬繁體中文社會卻採雙軌制的香港規範：將 best before 譯為「此日期前最佳」、use by 譯為「此日期或之前食用」，明確建議業界切勿出售或送出逾「此日期或之前食用」食品，但允許在確保仍適宜供人食用前提下出售逾「此日期前最佳」食品。同時點出兩大關鍵事實：其一，兩種日期標示皆「只適用於未開封產品」，食物一旦開封原保質期即不能作準；其二，若貯存不當（例如將即食冷藏切片凍肉放室溫數小時），即使未過期，沙門氏菌與李斯特菌也可能已繁殖至致病量。",
+          "limitations": "為消費者與業界食安科普專文，具體香港罰則細則另載於《食物及藥物（成分組合及標籤）規例》。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.cfs.gov.hk/tc_chi/multimedia/multimedia_pub/multimedia_pub_fsf_122_02.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-997f79011482499b",
       "url": "https://www.cuny.edu/news/secrets-of-the-octopus/",
       "readings": [
@@ -130141,6 +131086,48 @@
       ]
     },
     {
+      "id": "SRC-9cf610141a6b5f49",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20444120/",
+      "readings": [
+        {
+          "canonical_url": "https://pubmed.ncbi.nlm.nih.gov/20444120/",
+          "title": "Contact lens material characteristics associated with hydrogel lens dehydration (Ramamoorthy P, Sinnott LT, Nichols JJ, Ophthalmic Physiol Opt. 2010;30(2):160-6)",
+          "publisher": "Ophthalmic and Physiological Optics（美國俄亥俄州立大學 CLADES 世代研究）",
+          "network": "英澳美加軟式鏡片水膠與淚膜研究群（Efron–Morgan／CORE／TFOS／CLADES 與 J&J 研發，依共同作者與機構從嚴合併）",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過 PubMed 官方頁面讀取 318 片實戴水膠脫水橫斷研究摘要。",
+          "reading_scope": "PubMed 官方摘要全文（318 片實戴水膠之標稱與實測含水量、高含水與離子性統計顯著性）。",
+          "locator": "PMID 20444120 Abstract（n=318、56.88% 降至 52.58%、p < 0.0001）",
+          "summary": "CLADES 大樣本臨床研究量測 318 片實際配戴後的水膠鏡片，整體標稱含水量平均 56.88% ± 7.81%，實戴後降至 52.58% ± 7.49%。在控制淚液滲透壓後，高含水量與離子型材質均與較高的鏡片脫水幅度顯著相關（p < 0.0001）。",
+          "limitations": "僅讀 PubMed 官方摘要；因作者群與 TFOS 2013 報告核心作者重疊，網路歸併於同一英澳美加軟式鏡片水膠與淚膜研究群以避免重複計數。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://pubmed.ncbi.nlm.nih.gov/20444120/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9cf9af9ad7629c08",
+      "url": "https://www.efsa.europa.eu/en/safe2eat/food-date-labelling",
+      "readings": [
+        {
+          "canonical_url": "https://www.efsa.europa.eu/en/safe2eat/food-date-labelling",
+          "title": "Food date labelling（Safe2Eat 2025）& EFSA advises food suppliers on information for consumers（2021）",
+          "publisher": "歐洲食品安全局（European Food Safety Authority, EFSA）",
+          "network": "歐盟食品安全與標示法規體系（EU Regulation 1169/2011／EFSA）",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過 google:browse 直接抓取並通讀 EFSA Safe2Eat（2025-04-03 審訂）與 EFSA 2021-04-22 科學意見摘要頁",
+          "reading_scope": "兩頁全文（歐盟食物浪費佔比、use by vs best before 感官判讀界線、開封污染與解凍微生菌復甦）",
+          "locator": "Safe2Eat Food date labelling（2025-04-03）；EFSA News 2021-04-22（https://www.efsa.europa.eu/en/news/efsa-advises-food-suppliers-information-consumers）",
+          "summary": "援引歐盟執委會估計：歐盟每年產生 8,800 萬公噸食物浪費，其中高達 10% 與食品日期標示混淆有關。強調標示 'use by' 的高風險食品（鮮肉、魚類、即食沙拉、部分乳品）過期後即使外觀與氣味完全正常仍不可食用，因為致病菌可能無色無味；但於到期前烹煮後冷藏可再放 48 小時或提前冷凍。並於 2021 年 BIOHAZ 專家工具指出：一旦開封，手部、器具與表面會將細菌移轉至食物，使實際安全食用時限短於原包裝印的 'use by' 或 'best before'；冷凍只抑制而不殺死細菌，解凍時休眠微生物會復甦繁殖，須於冰箱低溫解凍且不可重複冷凍。",
+          "limitations": "網頁版為 EFSA 2020／2021 年兩份 BIOHAZ 科學意見書之官方公開摘要，決策樹參數細節詳見 EFSA Journal 全文。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.efsa.europa.eu/en/safe2eat/food-date-labelling"
+        }
+      ]
+    },
+    {
       "id": "SRC-9d0420a21691acb8",
       "url": "https://www.usgs.gov/special-topics/water-science-school/science/rain-and-precipitation",
       "readings": [
@@ -132587,6 +133574,27 @@
       ]
     },
     {
+      "id": "SRC-9fd31ebb4ec91242",
+      "url": "https://panasonic.jp/joshitsu/select/hybrid.html",
+      "readings": [
+        {
+          "canonical_url": "https://panasonic.jp/joshitsu/select/hybrid.html",
+          "title": "除湿機の方式を解説（エコ・ハイブリッド方式、ハイブリッド方式、デシカント方式、コンプレッサー方式、ペルチェ式）",
+          "publisher": "パナソニック株式会社（Panasonic Corporation）",
+          "network": "NET_CORP_PANASONIC",
+          "accessed_on": "2026-11-21",
+          "read_via": "google:browse 完整讀取官方技術說明頁與比較表、腳註",
+          "reading_scope": "全頁五種除濕方式原理圖說、歷史年表（2005 混合式、2024 生態混合式）及文末 JIS／JEMA-HD090:2017 實測功耗腳註。",
+          "locator": "ハイブリッド方式 段（2005 年 5 月推出松下自稱全球首台家用混合式 F-YHA100，結合壓縮機放熱器廢熱與加熱器來烘乾除濕轉輪）；エコ・ハイブリッド方式 段（2024 年新構造改採壓縮機冷卻器＋空冷式熱交換器雙冷卻，重複利用除濕後的冷空氣預冷進氣，取消加熱器）；文末〈除湿性能〉JIS 基準比較腳註（12.5 L/日：F-YEX120B 225W vs F-YHVX120 715W，JIS 除濕消費電力降 68.5%、官方稱約省 69%；20.0 L/日：F-YEX200D 330W vs F-YHX200B 830W；8.5 L/日：F-YEX90D 185W vs F-YHX90B 555W）及 JEMA-HD090:2017 2 kg 乾衣實測腳註（312 Wh・約 90 分 vs 885 Wh・約 75 分，【換算】乾衣耗電量約省 65%）；コンプレッサー方式 段（冷卻器結露 → 放熱器加熱吹出之氣流結構）；ペルチェ式 段（以佩爾捷致冷晶片冷卻結露，定位於衣櫥、鞋櫃等收納空間與廁所等狹小空間除濕）。",
+          "summary": "松下日本官方技術頁完整比較五種家用除濕機運作原理，並提供同除濕量等級的 JIS 除濕功耗與 JEMA 乾衣實測：12.5 L/日下，傳統含電熱器混合式 JIS 除濕耗電 715W，改用冷空氣預冷雙冷卻的生態混合式僅 225W（約省 69%），JEMA 2 kg 乾衣耗電則由 885 Wh 降至 312 Wh（【換算】約省 65%，但時間由約 75 分鐘拉長至約 90 分鐘）；同時將佩爾捷式定位於衣櫥、鞋櫃等收納空間與廁所等狹小空間除濕。",
+          "limitations": "為品牌官方技術與產品說明頁；2005 年 F-YHA100「全球首台」屬松下自查說法（当社調べ）；約省 69% 係比較自家新舊兩代混合式之 JIS 除濕消費電力（715W→225W），JEMA-HD090:2017 2 kg 乾衣耗電量降幅為 885 Wh→312 Wh（【換算】約省 65%），且明註乾燥時間會拉長。與 X146R2-S09 同屬 NET_CORP_PANASONIC。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://panasonic.jp/joshitsu/select/hybrid.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-9fd38561cc51b4ae",
       "url": "https://openstax.org/books/university-physics-volume-2/pages/10-6-household-wiring-and-electrical-safety",
       "readings": [
@@ -132879,6 +133887,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.engadget.com/2017-08-08-nist-new-password-guidelines.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a040191e4ef44839",
+      "url": "https://www.maff.go.jp/j/shokusan/recycle/syoku_loss/161227_3.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.maff.go.jp/j/shokusan/recycle/syoku_loss/161227_3.html",
+          "title": "商慣習見直し（納品期限の緩和・賞味期限表示の大括り化）",
+          "publisher": "日本農林水産省（Ministry of Agriculture, Forestry and Fisheries, Japan）",
+          "network": "日本政府食品標示法規體系（CAA／MAFF／東京都）",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過 google:browse 直接抓取並核對全文與令和8年10月最新統計",
+          "reading_scope": "1.納品期限緩和（3分の1ルール）、2.賞味期限表示大括り化、3.賞味期限延長、4.食物銀行提供統計",
+          "locator": "本文第1–4節（令和8年10月時点統計）",
+          "summary": "說明日本食品供應鏈俗稱「三分之一規則（3分の1ルール）」的商慣習：製造商須在賞味期間前三分之一內交貨至零售通路，否則即使距離賞味期限仍剩三分之二時間，也常遭拒收而面臨廢棄；此外採「年月日」標示會讓比既有庫存日期早一天的批次無法交貨。農林水產省推動放寬交貨期限與「年月／旬日大括り化」標示，截至令和8年（2026年）10月已有393家零售業者放寬納品期限（含預定）、377家製造商採行大括り化、420家製造商延長賞味期限。",
+          "limitations": "三分之一規則屬於商慣習而非成文法規，各通路實際放寬比例（如改為1/2）依企業而異。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.maff.go.jp/j/shokusan/recycle/syoku_loss/161227_3.html"
         }
       ]
     },
@@ -135748,6 +136777,27 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave3-life-systems-20261101",
           "original_url": "https://openstax.org/books/biology-2e/pages/16-4-eukaryotic-transcription-gene-regulation"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a3bb17bf68f92cc6",
+      "url": "https://panasonic.jp/joshitsu/products/F-YZXJ60B.html",
+      "readings": [
+        {
+          "canonical_url": "https://panasonic.jp/joshitsu/products/F-YZXJ60B.html",
+          "title": "衣類乾燥除湿機 F-YZXJ60B（デシカント方式）概要與試驗條件",
+          "publisher": "パナソニック株式会社（Panasonic Corporation）",
+          "network": "NET_CORP_PANASONIC",
+          "accessed_on": "2026-11-21",
+          "read_via": "google:browse 完整讀取官方產品規格與腳註",
+          "reading_scope": "全頁除濕能力標註、乾衣時間數據及文末 JEMA-HD090:2017 梅雨（20°C）與冬季（10°C）比較腳註。",
+          "locator": "除湿能力標示腳註（定格 5.6 L/日［衣類乾燥・速乾模式］，明註「室温20℃、相対湿度60％を維持したときの1日あたりの除湿量」）；文末注意事項（明載「衣類乾燥除湿機にはお部屋を冷やす機能はありません。むしろ運転中は熱を発生しますので温度が上がります」）；※1 JEMA-HD090:2017 試驗結果（6 疊房、60Hz、濕度 70%、2 kg 衣物：20°C 梅雨時 F-YZXJ60B 約 108 分鐘，10°C 冬季延長至約 135 分鐘；同基準下 F-YEX120 約 75 分→97 分、F-YHX200B 約 58 分→76 分）。",
+          "summary": "松下除濕輪機種官方頁證實，日本除濕輪式除濕機的額定除濕量是在「室溫 20°C、60% RH」下標定（與壓縮機式常用的 27°C/60% RH 不同），同時揭露即便號稱耐低溫的除濕輪機，在 10°C 冬季條件下烘乾 2 kg 衣物仍比 20°C【換算】多花約 25% 時間（108 分→135 分），並明示除濕機運轉會令室溫上升。",
+          "limitations": "屬單一品牌產品頁，乾衣時間受風向擺葉與出風口配置影響。與 X146R2-S08 併計為 NET_CORP_PANASONIC。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://panasonic.jp/joshitsu/products/F-YZXJ60B.html"
         }
       ]
     },
@@ -140618,6 +141668,27 @@
       ]
     },
     {
+      "id": "SRC-a8aeb348cb54988c",
+      "url": "https://www.fda.gov/media/135629/download",
+      "readings": [
+        {
+          "canonical_url": "https://www.fda.gov/media/135629/download",
+          "title": "Soft (Hydrophilic) Daily Wear Contact Lenses – Performance Criteria for Safety and Performance Based Pathway (Guidance for Industry and FDA Staff, March 28, 2023)",
+          "publisher": "U.S. Food and Drug Administration（FDA 醫療器材與輻射健康中心 CDRH）",
+          "network": "美國聯邦食品藥物管理局 FDA 與聯邦法規 21 CFR",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接下載並閱讀 FDA 官方指引 PDF 全文表格。",
+          "reading_scope": "適用範圍排除條款與代表材質（polymacon、etafilcon A、hioxifilcon D）之含水量、Dk、彈性模數、折射率及包裝液規格表。",
+          "locator": "Section III Scope（排除保濕／緩解乾眼宣稱與變色鏡片）與 Performance Criteria Table（非強制建議 SPBP 簡化審查基準：polymacon 38%/Dk 10.76/0.62 MPa 對比 etafilcon A 58%/Dk 22.43/0.42 MPa；pH 7.2–7.4、滲透壓 280–320［生理尺度 mOsm/kg，原表誤印為 osmol/kg］）",
+          "summary": "美國 FDA 2023 年日戴水膠簡化審查指引（非強制建議，彙整既有核准 510(k) 規格）列出三種經典日戴水膠之基準數值：38 ± 2% polymacon 的 Dk 基準為 10.76 × 10^-11（±20%）、彈性模數 0.62 ± 0.25 MPa、折射率 1.437；58 ± 2% etafilcon A 的 Dk 基準翻倍至 22.43 × 10^-11（±20%），但彈性模數降為 0.42 ± 0.09 MPa、折射率降為 1.402；指引將包裝緩衝液基準定在 pH 7.2–7.4、滲透壓 280–320（生理尺度為 mOsm/kg；原文件表誤印為 osmol/kg），並明確排除「宣稱保濕／緩解乾眼」或「改變虹膜顏色」之鏡片走此簡化審查路徑。",
+          "limitations": "屬非強制建議（Contains Nonbinding Recommendations）之簡化 510(k) 審查指引（SPBP），僅涵蓋特定三種傳統水膠日戴鏡片，不含矽水膠與彩片之完整臨床要求。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.fda.gov/media/135629/download"
+        }
+      ]
+    },
+    {
       "id": "SRC-a8b885b88c3ea8cb",
       "url": "https://iscpc.org/documents/?id=1959",
       "readings": [
@@ -141353,6 +142424,27 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave122-research-20261119",
           "original_url": "https://www.hankyu.co.jp/en/station_guide/faq.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a95bdc419e5f0140",
+      "url": "https://www.jma.go.jp/jma/kishou/know/yougo_hp/yoho.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.jma.go.jp/jma/kishou/know/yougo_hp/yoho.html",
+          "title": "予報の名称に関する用語",
+          "publisher": "日本氣象廳（Japan Meteorological Agency, JMA）",
+          "network": "日本氣象廳 JMA 預報用語與精度驗證",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟並完整閱讀日本氣象廳官方用語表全文。",
+          "reading_scope": "全頁表格，特別核對「降水確率」「降水確率予報」「降水確率０％」條目。",
+          "locator": "予報の名称に関する用語表：「降水確率」「降水確率予報」「降水確率０％」",
+          "summary": "明定降水確率是予報區內一定時間內降水量達 1 毫米以上雨或雪的發生機率平均值，採 0、10、20…100% 十個百分點級距（中間值四捨五入）；短期預報對象為 6 小時、週間預報為 24 小時。並明確指出降水確率 30% 是指發布 100 次這類預報時約有 30 次出現 1 毫米以上降水，不預報降水量；降水確率 0% 代表未滿 5%，且預期降水未滿 1 毫米時亦可標示為 0%。",
+          "limitations": "僅規範日本氣象廳自家預報用語與門檻，不適用於民間氣象公司自訂的逐時微雨機率。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.jma.go.jp/jma/kishou/know/yougo_hp/yoho.html"
         }
       ]
     },
@@ -144594,6 +145686,27 @@
       ]
     },
     {
+      "id": "SRC-ad3ff3b59b2767f4",
+      "url": "https://www.fda.gov.tw/tc/includes/GetFile.ashx?id=f636694170231812942",
+      "readings": [
+        {
+          "canonical_url": "https://www.fda.gov.tw/tc/includes/GetFile.ashx?id=f636694170231812942",
+          "title": "市售彩色隱形眼鏡之色素溶出物試驗品質監測（食品藥物研究年報 8:124-129, 2017）",
+          "publisher": "台灣衛生福利部食品藥物管理署研究檢驗組（TFDA）",
+          "network": "台灣衛生福利部食品藥物管理署（TFDA）",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟食藥署研究年報 PDF 全文閱讀背景、抽驗結果與配戴時數建議。",
+          "reading_scope": "全文 6 頁（引述日本國民生活中心 2014 年測試背景、2016 年台灣 28 件抽驗方法與結果、標示稽核與建議配戴時間）。",
+          "locator": "第 124–129 頁（p.126 依原廠送審規格檢驗、未列者採食藥署 37°C 超音波萃取與 300–800 nm 光譜法；p.127 引述日本 2014 年 17 款／10 人 8 小時／16 款角結膜傷害，及官方公眾風險提示透明片 ≤8 小時／彩片 4–6 小時；台灣 28 件 0 溶出與 1 件許可證標示不符）",
+          "summary": "第 127 頁說明 2014 年日本國民生活中心測試 17 款彩色隱形眼鏡（10 名受試者配戴 8 小時後，16 款出現角膜或結膜傷害）引發關注；食藥署於 2016 年 1–6 月抽驗台灣市售 28 件拋棄式彩片（國產 22 件、輸入 6 件，涵蓋 17 家業者），依原廠送審規格（未列者採食藥署 37°C 超音波萃取與 300–800 nm 光譜法）檢驗均未檢出色素溶出（0/28），僅 1 件有許可證標示不符；第 127 頁並以台灣食藥署官方公眾風險提示提醒一般透明片每日不超過 8 小時、彩片以 4–6 小時為宜（非個人醫囑）。",
+          "limitations": "對日本國民生活中心 2014 年結果屬二手官方轉述（日本原網檔案無法直接連線）；28 件為 2016 年抽驗，未測該批彩片之局部透氧率或實戴角膜損傷。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.fda.gov.tw/tc/includes/GetFile.ashx?id=f636694170231812942"
+        }
+      ]
+    },
+    {
       "id": "SRC-ad43ef5e0654f6e3",
       "url": "https://www.mint.go.jp/faq-list/faq_coin",
       "readings": [
@@ -146954,6 +148067,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.samsung.com/sg/support/mobile-devices/galaxy-battery-protection-feature-in-one-ui-6-1/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b0919517a3aa678f",
+      "url": "https://foodlabel.fda.gov.tw/FdaFrontEndApp/Law/Edit?SystemId=aec0e175-c02b-4181-a019-a61e9958c6c1&clPublishStatus=1",
+      "readings": [
+        {
+          "canonical_url": "https://foodlabel.fda.gov.tw/FdaFrontEndApp/Law/Edit?SystemId=aec0e175-c02b-4181-a019-a61e9958c6c1&clPublishStatus=1",
+          "title": "食品安全衛生管理法（全文）",
+          "publisher": "台灣衛生福利部食品藥物管理署（TFDA）食品標示諮詢服務平台",
+          "network": "台灣衛生福利部與食藥署法規體系（MOHW／TFDA）",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過 google:browse 直接抓取並核對全文條文",
+          "reading_scope": "第15條、第22條、第44條、第47條、第52條",
+          "locator": "第15條第1項第8款、第22條第1項第7款、第44條第1項第2款、第52條第1項第1款",
+          "summary": "台灣《食品安全衛生管理法》第22條第1項第7款規定食品及食品原料之容器或外包裝應以中文及通用符號明顯標示單一「有效日期」；第15條第1項第8款規定食品「逾有效日期」即不得製造、加工、調配、包裝、運送、貯存、販賣、輸入、輸出、作為贈品或公開陳列；依第44條第1項第2款處新臺幣6萬元以上2億元以下罰鍰，並依第52條第1項第1款應予沒入銷毀。",
+          "limitations": "條文本身僅規定單一「有效日期」與逾期禁止流通販售，未如歐盟或日本於法條層次區分品質期與安全期。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://foodlabel.fda.gov.tw/FdaFrontEndApp/Law/Edit?SystemId=aec0e175-c02b-4181-a019-a61e9958c6c1&clPublishStatus=1"
         }
       ]
     },
@@ -149756,6 +150890,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.researchgate.net/publication/232484854_Incidence_of_Threat_in_Dreams_A_Response_to_Revonsuo's_Threat_Simulation_Theory"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b40208da02928c59",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35183644/",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.scitotenv.2022.153966",
+          "title": "Seasonal atmospheric water harvesting yield and water quality using electric-powered desiccant and compressor dehumidifiers",
+          "publisher": "Science of The Total Environment 825:153966（2022）；美國亞利桑那州立大學永續工程與建築環境學院等（PubMed 摘要收錄）",
+          "network": "NET_ACAD_ASU_TONGJI",
+          "accessed_on": "2026-11-21",
+          "read_via": "google:browse 完整讀取 PubMed 官方頁面全文摘要與書目",
+          "reading_scope": "PubMed 官方收錄之完整結構式摘要（實驗條件、壓縮機 vs 除濕輪產水量反轉門檻與水質差異）。",
+          "locator": "Abstract（於美國西南部戶外連續操作電動壓縮機與除濕輪除濕機逾一年，氣溫 3.1–43.7°C、相對濕度 6–85%：當運轉週期平均 RH > 30%、平均氣溫 > 20°C 且平均露點 > 5°C 時，壓縮機系統產水量高於除濕輪 2 倍以上；反之當平均 RH < 30%、平均氣溫 < 20°C 且平均露點 < 5°C 時，除濕輪系統表現較有利）。",
+          "summary": "亞利桑那州立大學團隊發表於《Science of The Total Environment》的美國西南部跨年度戶外對照研究，在 3.1–43.7°C、6–85% RH 實測環境下畫出壓縮機與除濕輪的效能黃金交叉線：平均氣溫高於 20°C、平均相對濕度高於 30% 且露點高於 5°C 時，壓縮機產水多出 2 倍以上；反之於乾冷低露點（平均氣溫 < 20°C、平均相對濕度 < 30%、露點 < 5°C）時，除濕輪才展現優勢。",
+          "limitations": "僅讀取 PubMed 完整摘要（期刊全文為 Elsevier 付費牆），未讀取逐月散點圖與兩機額定瓦數細節。與 X146R2-S17 共有通訊研究團隊（亞利桑那州立大學），併計為同一研究網 NET_ACAD_ASU_TONGJI。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://pubmed.ncbi.nlm.nih.gov/35183644/"
         }
       ]
     },
@@ -154898,6 +156053,27 @@
       ]
     },
     {
+      "id": "SRC-b991ac95d86a4b49",
+      "url": "https://opendata.cwa.gov.tw/opendatadoc/Forecast/F-C0032-001_002.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://opendata.cwa.gov.tw/opendatadoc/Forecast/F-C0032-001_002.pdf",
+          "title": "中央氣象署產品說明文件：預報-精緻化天氣預報-今明36小時天氣預報",
+          "publisher": "交通部中央氣象署氣象預報中心",
+          "network": "臺灣中央氣象署 CWA 預報與資料標準",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟並完整閱讀官方 PDF 第 1–5 頁。",
+          "reading_scope": "全份文件（產品簡介、技術說明、科學基礎與技術限制）。",
+          "locator": "第 1 頁 1.1 產品簡介、第 4 頁 2.2 科學基礎（技術限制）與 2.3 發布時機",
+          "summary": "說明全臺 22 縣市未來 36 小時逐 12 小時天氣預報於每日 05:00、11:00、17:00、23:00 發布（每 6 小時更新）；技術限制段明載該產品擷取自格點化預報，但各縣市幅員較大、地勢海拔差異亦大，其代表點（縣市政府）不一定能完整詮釋該縣市所有地點的天氣狀態。",
+          "limitations": "此份說明針對縣市級 36 小時預報，未直接列出全臺 368 鄉鎮逐 3 小時預報的驗證數據。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://opendata.cwa.gov.tw/opendatadoc/Forecast/F-C0032-001_002.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-b99350cf2a934748",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11584134/fullTextXML",
       "readings": [
@@ -155823,6 +156999,27 @@
       ]
     },
     {
+      "id": "SRC-ba85e4e4d2ced3e1",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10524787/",
+      "readings": [
+        {
+          "canonical_url": "https://pubmed.ncbi.nlm.nih.gov/10524787/",
+          "title": "Re-evaluation of the oxygen diffusion model for predicting minimum contact lens Dk/t values needed to avoid corneal anoxia (Harvitt DM, Bonanno JA, Optom Vis Sci. 1999;76(10):712-9)",
+          "publisher": "Optometry and Vision Science（美國柏克萊加州大學視光學院）",
+          "network": "美國柏克萊加州大學視光學院擴散模型（UC Berkeley 1999）",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過 PubMed 官方頁面讀取摘要與五層一維擴散模型修訂臨界值。",
+          "reading_scope": "PubMed 官方摘要全文（五層模型修訂條件、酸化耗氧變化、睜眼與閉眼兩組臨界 Dk/t）。",
+          "locator": "PMID 10524787 Abstract（23/89 與 35/125 兩組門檻數值）",
+          "summary": "更新經典五層一維氧氣擴散模型，納入鏡片引起角膜酸化後耗氧量（QO2）上升的生理效應。算出維持基底上皮細胞供氧的最低 Dk/t 為睜眼 23、閉眼 89（與 1984 年水腫試驗高度一致），但若要讓全層角膜（含基質層）完全不發生缺氧，臨界 Dk/t 需提高至睜眼 35、閉眼 125。",
+          "limitations": "為一維數學擴散模型且僅讀 PubMed 官方摘要，未涵蓋三維邊緣厚度梯度與個體淚膜更新差異。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://pubmed.ncbi.nlm.nih.gov/10524787/"
+        }
+      ]
+    },
+    {
       "id": "SRC-baa477f13c7ee329",
       "url": "https://www.philiplaven.com/p8e.html",
       "readings": [
@@ -155949,6 +157146,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://bendblockbuster.com/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-bae5abf1b490d4ec",
+      "url": "https://www.fda.gov.tw/tc/includes/GetFile.ashx?id=f637229733231141028",
+      "readings": [
+        {
+          "canonical_url": "https://www.fda.gov.tw/tc/includes/GetFile.ashx?id=f637229733231141028",
+          "title": "軟式隱形眼鏡臨床前測試基準（分類分級代碼 M.5925，2010 年公告、2020 年 4 月修訂）",
+          "publisher": "台灣衛生福利部食品藥物管理署（TFDA）",
+          "network": "台灣衛生福利部食品藥物管理署（TFDA）",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟食藥署基準 PDF 全文閱讀分類分級與各項臨床前試驗規定。",
+          "reading_scope": "適用範圍、風險等級切分（第二／第三等級）與物理化學、透氧、滅菌及色素溶出試驗條目。",
+          "locator": "第 1–3 頁（M.5925 日戴第二等級／長戴第三等級、Dk 邊界層與邊緣效應校正、含水量 >10%、SAL <10^-6、著色鏡片 ≥14 天色素溶出）",
+          "summary": "規定台灣軟式隱形眼鏡（M.5925）日戴型屬第二等級醫療器材、長戴型屬第三等級醫療器材；上市前須檢附含邊界層與邊緣效應校正之透氧係數 Dk、水膠（>10%）含水量、基弧／直徑／中心厚度／度數公差、無菌保證水準 SAL < 10^-6，以及含著色劑鏡片至少 14 天之色素溶出試驗。",
+          "limitations": "為台灣審查技術基準，列示法定檢驗項目與參照標準，不公布個別廠商送審測值。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.fda.gov.tw/tc/includes/GetFile.ashx?id=f637229733231141028"
         }
       ]
     },
@@ -156788,6 +158006,27 @@
       ]
     },
     {
+      "id": "SRC-bc2434dbae2cd8ef",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-H/part-886/subpart-F/section-886.5925",
+      "readings": [
+        {
+          "canonical_url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-H/part-886/subpart-F/section-886.5925",
+          "title": "21 CFR § 886.5925 Soft (hydrophilic) contact lens",
+          "publisher": "美國聯邦法規電子版 eCFR（美國聯邦食品藥物管理局 FDA）",
+          "network": "美國聯邦食品藥物管理局 FDA 與聯邦法規 21 CFR",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟 eCFR 官方條文頁面閱讀全文。",
+          "reading_scope": "21 CFR § 886.5925 (a)(b)(c) 完整條文。",
+          "locator": "21 CFR § 886.5925 (b)(1) Class II daily wear 與 (b)(2) Class III extended wear",
+          "summary": "美國聯邦法規依配戴型態將軟式親水性隱形眼鏡分為兩個風險等級：僅供日間配戴者屬 Class II（第二等級醫療器材，適用 510(k) 途徑）；可供延長／過夜配戴者直接升級為最高風險的 Class III（第三等級），須通過上市前核准（PMA）。",
+          "limitations": "為美國聯邦法定分級條文，不包含單一品牌之臨床試驗數據。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-H/part-886/subpart-F/section-886.5925"
+        }
+      ]
+    },
+    {
       "id": "SRC-bc2b63bbff964005",
       "url": "https://www.nature.com/articles/s41586-023-05960-6",
       "readings": [
@@ -156803,6 +158042,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.nature.com/articles/s41586-023-05960-6"
+        }
+      ]
+    },
+    {
+      "id": "SRC-bc2ed03524babfad",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12118538/",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.watres.2024.122227",
+          "title": "Sorption-Based Atmospheric Water Harvesting for Continuous Water Production in Built Environment: Assessment of Water Yield and Quality",
+          "publisher": "Water Research 265:122227（2024）；同濟大學環境科學與工程學院、美國亞利桑那州立大學永續工程與建築環境學院（PMC 開放取用作者定稿）",
+          "network": "NET_ACAD_ASU_TONGJI",
+          "accessed_on": "2026-11-21",
+          "read_via": "google:browse 完整讀取 PMC 全文（Abstract、Section 1–4）",
+          "reading_scope": "全篇正文：Section 1（冷凝式在 <20°C、RH <40% 極耗電 vs 吸附式 1–30°C 均有效）、Section 2.1（商用沸石除濕輪拆解構造與 460W 固定功耗）、Section 3.1–3.2（12 個月室內實測日產水量與 EF、改良式 Langmuir 模型 R²=0.80、密閉住宅與大型辦公樓差異）、Section 3.4（電熱器 180°C、轉輪出風 70°C 實測溫度）。",
+          "locator": "Section 1（冷凝系統在 >25°C、60% RH 效率佳，但在 RH < 40%、氣溫 < 20°C 時耗能極高；吸附式於 1 至 >30°C 皆可運作）；Section 2.1（拆解商用可攜式沸石轉輪機 Ivation IVADDH06，額定 5.7 L/日、轉輪直徑 19.8 cm 僅重 130 g，約 3/4 面積吸濕、1/4 面積電熱再生，固定耗電 0.46 kWh/h）；Section 3.1（12 個月住宅實測日產水 2.5–5.2 L/日［中位數 3.6 L/日］，對應 EF 僅 0.23–0.48 L/kWh［中位數 0.33 L/kWh］）；Section 3.2（日產水量可用「絕對濕度」作為單一變數以改良式 Langmuir 模型預測［R² = 0.80］，且以 105 m² 住宅資料擬合的模型驗證 >27,000 m² 通風辦公大樓時偏低估，作者推測係較小住宅空間中機器自排乾風拉低周圍進氣絕對濕度所致）；Section 3.4（熱電偶量測再生電熱器達 180°C、轉輪再生出風達 70°C）。",
+          "summary": "同濟大學與亞利桑那州立大學團隊對商用沸石轉輪除濕機進行長達 12 個月的室內實測與拆解，證實沸石轉輪將 1/4 圓盤送入高達 180°C 的電熱再生區（再生出風 70°C），耗電固定在 460W、實際能源因數僅 0.23–0.48 L/kWh；同時證明實際集水量由「絕對濕度」主導，並以住宅模型驗證 >27,000 m² 辦公大樓時偏低估，作者推測係較小空間中機器自排乾風壓低周圍進氣絕對濕度所致。",
+          "limitations": "住宅實測位於亞利桑那州半乾旱氣候（室內均溫 21.9–27.9°C、RH 21–55%），高濕區資料點較少。與 X146R2-S16 併計為 NET_ACAD_ASU_TONGJI。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12118538/"
         }
       ]
     },
@@ -159115,6 +160375,27 @@
       ]
     },
     {
+      "id": "SRC-bee8f33065504b71",
+      "url": "https://www.energylabel.org.tw/energylbapply/_upload/gen/news/780/file1/1120519%E9%99%A4%E6%BF%95%E6%A9%9F%E5%AE%B9%E8%A8%B1%E8%80%97%E7%94%A8%E8%83%BD%E6%BA%90%E5%9F%BA%E6%BA%96%E8%88%87%E8%83%BD%E6%BA%90%E6%95%88%E7%8E%87%E5%88%86%E7%B4%9A%E6%A8%99%E7%A4%BA%E4%BA%8B%E9%A0%85%E3%80%81%E6%96%B9%E6%B3%95%E5%8F%8A%E6%AA%A2%E6%9F%A5%E6%96%B9%E5%BC%8F%E4%BF%AE%E8%A8%82%20-%20%E5%BB%A0%E5%95%86%E5%BA%A7%E8%AB%87%E6%9C%83.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.energylabel.org.tw/energylbapply/_upload/gen/news/780/file1/1120519%E9%99%A4%E6%BF%95%E6%A9%9F%E5%AE%B9%E8%A8%B1%E8%80%97%E7%94%A8%E8%83%BD%E6%BA%90%E5%9F%BA%E6%BA%96%E8%88%87%E8%83%BD%E6%BA%90%E6%95%88%E7%8E%87%E5%88%86%E7%B4%9A%E6%A8%99%E7%A4%BA%E4%BA%8B%E9%A0%85%E3%80%81%E6%96%B9%E6%B3%95%E5%8F%8A%E6%AA%A2%E6%9F%A5%E6%96%B9%E5%BC%8F%E4%BF%AE%E8%A8%82%20-%20%E5%BB%A0%E5%95%86%E5%BA%A7%E8%AB%87%E6%9C%83.pdf",
+          "title": "「除濕機容許耗用能源基準與能源效率分級標示事項、方法及檢查方式」修正草案廠商座談會簡報（2023/05/19）",
+          "publisher": "工業技術研究院（受經濟部能源署委託辦理，刊於節能標章全球資訊網）",
+          "network": "NET_TW_GOV",
+          "accessed_on": "2026-11-21",
+          "read_via": "google:browse 完整讀取 43 頁官方 PDF 文字層",
+          "reading_scope": "全份簡報第 1–43 頁，涵蓋法源依據、110 年度市場銷售統計、第 16 頁國際能源效率基準比較表、第 18–22 頁現行與修正分級基準、第 25–30 頁條文與附表一／附表三公式。",
+          "locator": "Page 13–14（110 年申報銷售約 56.8 萬台，一級占 95.8%、一二級合計約 99%）；Page 16（國際測試標準比較表：我國 CNS 12492 為 27°C/60% RH 測 3 小時、美加 ANSI/AHAM DH-1:2017 與 CAN/CSA-C749 為 18.3°C/60% RH 測 6 小時、中國 GB/T 19411-2003 為 27°C/60% RH 測 1 小時、香港 ANSI/AHAM DH-1:2008 為 26.7°C/60% RH 測 6 小時）；Page 18（107 年現行分級表：高於 6 至 12 公升/日一級 EF ≥ 2.40 L/kWh）；Page 21 & 41（115 年新制草案 1 級 EF 提高至 ≥ 2.74 或新增級距 2.60/2.74 L/kWh）；Page 26（附表一註 1 與註 3：依 CNS 12492 標準條件平衡後測 3 小時以上水量與耗電相除得 EF，現階段限檢驗消耗電功率 1,000W 以下機種）；Page 30（附表三年耗電量公式：【額定除濕能力 ÷ 標示能源因數值】× 22.5 天）。",
+          "summary": "經濟部委託工研院於 2023 年 5 月召開的除濕機能效修訂廠商座談會官方簡報，完整交代台灣現行 CNS 12492 測試條件（27°C、60% RH、平衡後連續量測至少 3 小時）、EF 能源因數值與年耗電量（乘以 22.5 天）算法，並對照台灣、美國、加拿大、中國大陸與香港的測試溫度差異，以及因舊制一級市占高達 95.8% 而推動 2026 年（115 年 1 月 1 日）新分級基準的背景。",
+          "limitations": "此檔為 112 年 5 月廠商座談會修正草案簡報，最終正式公告日為 112 年 11 月 24 日、生效日為 115 年 1 月 1 日；草案頁所列新分級門檻僅能標明為「2023 年 5 月修訂草案值」，不可混同為最終公告終版數字。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.energylabel.org.tw/energylbapply/_upload/gen/news/780/file1/1120519%E9%99%A4%E6%BF%95%E6%A9%9F%E5%AE%B9%E8%A8%B1%E8%80%97%E7%94%A8%E8%83%BD%E6%BA%90%E5%9F%BA%E6%BA%96%E8%88%87%E8%83%BD%E6%BA%90%E6%95%88%E7%8E%87%E5%88%86%E7%B4%9A%E6%A8%99%E7%A4%BA%E4%BA%8B%E9%A0%85%E3%80%81%E6%96%B9%E6%B3%95%E5%8F%8A%E6%AA%A2%E6%9F%A5%E6%96%B9%E5%BC%8F%E4%BF%AE%E8%A8%82%20-%20%E5%BB%A0%E5%95%86%E5%BA%A7%E8%AB%87%E6%9C%83.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-bee95d6e9e40704a",
       "url": "https://doi.org/10.1145/2212877.2212896",
       "readings": [
@@ -160860,6 +162141,27 @@
       ]
     },
     {
+      "id": "SRC-c07b1315111f700e",
+      "url": "https://foodlabel.fda.gov.tw/FdaFrontEndApp/Law/Edit?SystemId=39148789-b32f-4e57-8406-6e7d9145f013",
+      "readings": [
+        {
+          "canonical_url": "https://foodlabel.fda.gov.tw/FdaFrontEndApp/Law/Edit?SystemId=39148789-b32f-4e57-8406-6e7d9145f013",
+          "title": "修正「市售包裝食品有效日期評估指引」（衛授食字第1111303025號）",
+          "publisher": "台灣衛生福利部食品藥物管理署（TFDA）",
+          "network": "台灣衛生福利部與食藥署法規體系（MOHW／TFDA）",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過 google:browse 直接抓取並通讀官方指引全文與自主查檢表",
+          "reading_scope": "第一至十點全文（特別核對第四點名詞定義、第五點進口食品賞味期限／best before 轉譯規則、第六點評估方法、第九點自主查檢表）",
+          "locator": "第四點、第五點、第六點(一)1–3與(二)、第七點實例、第九點自主查檢表（aw≧0.85／pH≧4.6）",
+          "summary": "明確界定「保存期限」（時間範圍）與「有效日期」（時間點），以及「產品價值」同時涵蓋衛生安全、營養品質與感官品質。第五點直接解釋台灣進口日本食品貼紙的制度成因：指出 `best before` 與「賞味期限」過期並不代表不安全或變質，但進口業者僅在能請原製造商提供足以佐證相等於我國「有效日期」定義之資料時，方可標示與原包裝不同的有效日期；若無法提供，原包裝的「賞味期限」或 `best before` 就必須直接視為我國「有效日期」。並規範微生物分析為首要指標、營養成分第二、理化與感官第三，建議直接試驗至少採起始點、終點及中間三點，且於查檢表以水活性 aw 0.85 與 pH 4.6 作為風險分界。",
+          "limitations": "屬行政指導性質之評估指引，未對所有食品強制訂定單一固定安全係數。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://foodlabel.fda.gov.tw/FdaFrontEndApp/Law/Edit?SystemId=39148789-b32f-4e57-8406-6e7d9145f013"
+        }
+      ]
+    },
+    {
       "id": "SRC-c08a625b63c9f47b",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13117040/fullTextXML",
       "readings": [
@@ -160968,6 +162270,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.modernretail.co/operations/scarcity-and-growth-are-oppositional-how-streetwear-legend-supreme-lost-its-luster/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c0bf485f845b2789",
+      "url": "https://cdn.standards.iteh.ai/samples/66338/457c138b9393471daffaddb71c9403d8/ISO-18369-1-2017.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://cdn.standards.iteh.ai/samples/66338/457c138b9393471daffaddb71c9403d8/ISO-18369-1-2017.pdf",
+          "title": "ISO 18369-1:2017 Ophthalmic optics — Contact lenses — Part 1: Vocabulary, classification system and recommendations for labelling specifications (Preview)",
+          "publisher": "International Organization for Standardization（ISO/TC 172/SC 7，經 iTeh 官方預覽本）",
+          "network": "國際標準化組織 ISO/TC 172/SC 7",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接讀取 iTeh 公開提供之 ISO 18369-1:2017 前段條文試閱 PDF。",
+          "reading_scope": "第 1–3.1.2 條試閱範圍（水膠與硬式鏡片含水門檻、雙凸／凹透鏡減厚光學區設計定義）。",
+          "locator": "Clause 3.1.1.4（lenticular design）、Clause 3.1.1.7（rigid <10%）、Clause 3.1.1.10（hydrogel ≥10% at 20°C）",
+          "summary": "國際標準將水膠隱形眼鏡定義為在 20°C 標準生理食鹽水中達平衡含水量 ≥10% 的吸水聚合物材質（低於 10% 歸類硬式鏡片），並定義以載體區削薄正度數中心或負度數邊緣的「雙弧減厚（lenticular）」結構，作為全球標示與材質分群（Group I–V）共同詞彙基準。",
+          "limitations": "ISO 原標準全文為付費文件，本批僅讀取官方公開試閱頁（Clauses 1–3.1.2），未讀附錄完整標示細則。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://cdn.standards.iteh.ai/samples/66338/457c138b9393471daffaddb71c9403d8/ISO-18369-1-2017.pdf"
         }
       ]
     },
@@ -169285,6 +170608,27 @@
       ]
     },
     {
+      "id": "SRC-cab5cd8ea8174b14",
+      "url": "https://www.hko.gov.hk/tc/weatherAPI/doc/files/HKO_Open_Data_API_Documentation_tc.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.hko.gov.hk/tc/weatherAPI/doc/files/HKO_Open_Data_API_Documentation_tc.pdf",
+          "title": "香港天文台開放數據應用程式介面說明書（版本 1.12）",
+          "publisher": "香港天文台（Hong Kong Observatory, HKO）",
+          "network": "香港天文台 HKO 顯著降雨概率系統",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟並閱讀官方 API 說明書 PDF 第 1–10 頁。",
+          "reading_scope": "第 6–8 頁「九天天氣預報（fnd）」回傳欄位 PSR 與傳回值說明連結。",
+          "locator": "第 7–8 頁（內文頁碼 5–6），九天天氣預報（fnd）PSR 欄位定義",
+          "summary": "正式定義九天天氣預報開放資料的 PSR（顯著降雨概率）欄位不輸出單一精確百分比數字，而是輸出「高、中高、中、中低、低」五個離散等級，並指向天文台九天天氣預報註腳頁查閱各等級對應機率區間。",
+          "limitations": "API 說明書僅列出五級代碼與對照頁網址，10 毫米門檻與誤差範圍須由天文台九天天氣預報官方說明頁補充。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.hko.gov.hk/tc/weatherAPI/doc/files/HKO_Open_Data_API_Documentation_tc.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-cab67324142bec66",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC125200056/fullTextXML",
       "readings": [
@@ -170558,6 +171902,27 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave143-research-20261120",
           "original_url": "https://www.aec.gov.au/About_AEC/Translated_information/practise-voting/practice-house-of-reps-chinese-traditional.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-cc36ce1e700c6920",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02011R1169-20250401",
+      "readings": [
+        {
+          "canonical_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02011R1169-20250401",
+          "title": "Regulation (EU) No 1169/2011 on the provision of food information to consumers — Articles 24, 25 and Annex X",
+          "publisher": "歐洲議會與歐盟理事會（OJ L 304, 25 Oct 2011；於 EUR-Lex 2025-04-01 彙編全文與 Legislation.gov.uk 交叉核讀）",
+          "network": "歐盟食品安全與標示法規體系（EU Regulation 1169/2011／EFSA）",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過 google:browse 逐條核讀 EUR-Lex 彙編全文及 legislation.gov.uk 之 Article 24、Article 25 與 Annex X",
+          "reading_scope": "Article 24（Minimum durability date / use by date）、Article 25（Storage conditions & time limit after opening）、Annex X（1(a)–(d), 2(a)–(d), 3）",
+          "locator": "EUR-Lex 彙編全文 Article 24(1)、Article 25(1)–(2)、Annex X point 1(c)–(d)、2(d)、3（另對照 legislation.gov.uk /eur/2011/1169/article/24、/article/25 與 /annex/X）",
+          "summary": "歐盟食品資訊法規（EU 1169/2011）建立具強制效力的雙軌日期制度：Article 24(1) 明定微生物學上極易腐敗、短時間內可能對人體健康構成立即危險之食品，須以 'use by' 取代最低耐久日，且逾 'use by' 日期即依法推定為不安全食品（援引 Regulation (EC) No 178/2002 Art. 14(2)–(5)）；Article 25(2) 規定必要時須標示開封後之保存條件與食用時限。Annex X 1(c) 依保存長度分級標示格式（≤3個月標日月、3–18個月標月年、>18個月可只標年）；Annex X 1(d) 明列免標最低耐久日清單：未切新鮮蔬果（不含芽菜）、葡萄酒與 ≥10% 酒精飲料、24小時內消費烘焙品、食用醋、烹調鹽、固態糖、幾乎純糖糖果與口香糖；Annex X 2(d) 要求 'use by' 須標在每個獨立預包裝上。",
+          "limitations": "EUR-Lex 彙編文本反映截至 2025-04-01 之現行歐盟條文；另核對之 Legislation.gov.uk 條文反映脫歐後英國承繼文字，兩者之核心日期定義、Article 24/25 與 Annex X 免標品項清單一致。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02011R1169-20250401"
         }
       ]
     },
@@ -174162,6 +175527,21 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave132-everyday-20261119",
           "original_url": "https://opendata.cwa.gov.tw/opendatadoc/insrtuction/CWA_Data_Standard.pdf"
+        },
+        {
+          "canonical_url": "https://opendata.cwa.gov.tw/opendatadoc/insrtuction/CWA_Data_Standard.pdf",
+          "title": "氣象領域資料標準 v1.0",
+          "publisher": "交通部中央氣象署（出版時為交通部中央氣象局）",
+          "network": "臺灣中央氣象署 CWA 預報與資料標準",
+          "accessed_on": "2026-11-21",
+          "read_via": "下載並逐頁閱讀官方 PDF 專有名詞表（表 5-1）。",
+          "reading_scope": "第 1–9 頁（目的、參考文件與表 5-1 專有名詞：降水量、降雨機率、大雨、豪雨、大豪雨、超大豪雨）。",
+          "locator": "第 9 頁（內文頁碼 -3-），表 5-1 專有名詞：Probability Of Precipitation、Heavy Rain、Extremely Heavy Rain",
+          "summary": "將「降雨機率（Probability Of Precipitation）」明定為「在預報時間內，發生 0.1 毫米（mm）以上降水事件的機率」；同時另行界定大雨為 24 小時累積雨量達 80 毫米以上或時雨量達 40 毫米以上、豪雨為 24 小時達 200 毫米以上或 3 小時達 100 毫米以上，區分降雨發生機率與雨量強弱分級。",
+          "limitations": "資料標準表僅列名詞與門檻定義，未展開縣市代表點限制或不同時段機率的換算方式，須搭配氣象署預報產品說明文件判讀。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://opendata.cwa.gov.tw/opendatadoc/insrtuction/CWA_Data_Standard.pdf"
         }
       ]
     },
@@ -175317,6 +176697,27 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave8-food-20261101",
           "original_url": "https://www.cdr.wisc.edu/assets/pipeline-pdfs/pipeline_2009_vol21_01.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-d1c8ad87a53f8d15",
+      "url": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/inspection-technical-guides/water-activity-aw-foods",
+      "readings": [
+        {
+          "canonical_url": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/inspection-technical-guides/water-activity-aw-foods",
+          "title": "Water Activity (aw) in Foods（Inspection Technical Guide No. 39）",
+          "publisher": "美國食品藥物管理局（U.S. Food and Drug Administration, FDA）",
+          "network": "美國聯邦農業部與食藥局體系（US USDA FSIS／FDA）",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過 google:browse 直接抓取並通讀技術指南全文",
+          "reading_scope": "DEFINITION、SORPTION BEHAVIOR、MEASUREMENT EQUIPMENT、REGULATIONS、WATER ACTIVITY OF SOME COMMON FOODS",
+          "locator": "ITG No. 39 全文（21 CFR Parts 108/113/114、aw 0.85 法規線、肉毒桿菌 aw 0.93、常見食品 aw 表）",
+          "summary": "定義水活性（aw）為食品平衡水蒸氣壓與同溫純水飽和水蒸氣壓之比（等於平衡相對濕度 ERH/100），解釋微生物只能利用「自由水」作為溶劑進出細胞壁，強鍵結於蛋白質與多醣上的「結合水」無法供菌生長。指出多數生鮮食品 aw 高於 0.95；aw = 0.85 為美國 21 CFR Parts 108/113/114 低酸罐頭與酸化食品之法規分界線；肉毒桿菌（Clostridium botulinum）最低生長 aw 約 0.93（依產品可高至 0.96）。列出常見食品實測 aw：肝腸 0.96、抹醬起司 0.95、紅豆餡 0.93、魚子醬 0.92、沙拉米 0.82、醬油 0.80、花生醬（總含水 15%）0.70、奶粉（總含水 8%）0.70，並說明樣品與上方空氣僅 1°C 溫差即可使 aw 讀值偏移 0.05。",
+          "limitations": "為 1984 年發布、2014 年檢視確認之經典稽查技術指南，常見食品 aw 數值隨現代低鈉／低糖配方改良可能略高。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/inspection-technical-guides/water-activity-aw-foods"
         }
       ]
     },
@@ -178426,6 +179827,27 @@
       ]
     },
     {
+      "id": "SRC-d5c22eff717be693",
+      "url": "https://www.cwa.gov.tw/V8/assets/pdf/know/typhoon/TY_NEWS_QA_ZHTW.pdf?v=20250110",
+      "readings": [
+        {
+          "canonical_url": "https://www.cwa.gov.tw/V8/assets/pdf/know/typhoon/TY_NEWS_QA_ZHTW.pdf?v=20250110",
+          "title": "中央氣象署颱風機率預報產品說明",
+          "publisher": "交通部中央氣象署",
+          "network": "臺灣中央氣象署 CWA 預報與資料標準",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟並完整閱讀官方 PDF 第 1–6 頁。",
+          "reading_scope": "全份文件，特別核對第 5 頁網頁 QA 簡易說明 Q5–Q7。",
+          "locator": "第 5 頁，Q7「每6小時機率值及120小時機率值之相關性說明」",
+          "summary": "在解釋不同時間窗機率不可直接加總時，官方以日常降雨機率作比喻：單獨短時段機率不會大於長時段機率，長時段機率也不是短時段直接相加；例如白天與晚上的降雨機率各為 60%，一整天發生降雨的機率會高於 60%，但不會是 120%（不會超過 100%）。",
+          "limitations": "文件主軸為颱風暴風圈侵襲機率，僅在 Q7 以白天與晚上 60% 降雨機率作為機率性質說明範例，未給出獨立性假設下的精確連乘公式。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.cwa.gov.tw/V8/assets/pdf/know/typhoon/TY_NEWS_QA_ZHTW.pdf?v=20250110"
+        }
+      ]
+    },
+    {
       "id": "SRC-d5cbad52df5704df",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8222264",
       "readings": [
@@ -179765,6 +181187,27 @@
           "network": "TW_marking",
           "origin": "wave117-research-20261119",
           "original_url": "https://law.moa.gov.tw/Download.ashx?FileID=45394&id=GL001387&type=LAW"
+        }
+      ]
+    },
+    {
+      "id": "SRC-d7869bb2ea26b0ef",
+      "url": "https://www.energystar.gov/products/dehumidifier_testing_and_capacity",
+      "readings": [
+        {
+          "canonical_url": "https://www.energystar.gov/products/dehumidifier_testing_and_capacity",
+          "title": "Dehumidifier Testing and Capacity",
+          "publisher": "U.S. Environmental Protection Agency (EPA) / ENERGY STAR（引述 U.S. DOE 標準）",
+          "network": "NET_US_FED",
+          "accessed_on": "2026-11-21",
+          "read_via": "google:browse 完整讀取官方網頁與附表",
+          "reading_scope": "全頁正文（Dehumidifier Performance and Testing、Capacity Changes in Portable and Whole-Home Dehumidifiers）與完整新舊容量對照表。",
+          "locator": "Dehumidifier Performance and Testing 段（2019 年 6 月 DOE 新標準以 IEF 取代 EF，納入停機循環耗電，並將可攜式除濕機測試溫度從 80°F 降為 65°F 以反映地下室實況，溫差 15°F 使同型機種標示容量明顯下降）；Capacity Changes 表（可攜式 2019 前舊標 vs 2020 後新標：30→20、40→25、50→30、55→30–35、60→35、70→40–45、90→55 品脫/日；全戶式：80→70、100→85、120→100、140→115、200→170 品脫/日）。",
+          "summary": "美國 ENERGY STAR 官方說明 2019 年 6 月美國能源部（DOE）改版除濕機測試標準後，可攜式除濕機的標準測試溫度從 80°F（26.7°C）下修 15°F 至 65°F（18.3°C），導致體積與硬體相近的同級機器標示日除濕量大幅縮水（例如 50 品脫/日降為約 30 品脫/日、70 品脫降為 40–45 品脫），並改以包含非運轉期耗電的綜合能源因數（IEF）評比效率。",
+          "limitations": "對照表標明為近似值，實際變化依各機型而異。與 X146R2-S04 同屬美國聯邦政府體系（NET_US_FED）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.energystar.gov/products/dehumidifier_testing_and_capacity"
         }
       ]
     },
@@ -182559,6 +184002,27 @@
       ]
     },
     {
+      "id": "SRC-dafea488e781a713",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12843929/",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3390/molecules31020389",
+          "title": "Lactic Acid Bacteria for Fungal Control and Shelf-Life Extension in Fresh Pasta: Mechanistic Insights and Clean-Label Strategies",
+          "publisher": "MDPI《Molecules》31(2):389（2026-01-22；義大利卡拉布里亞大學 University of Calabria；PubMed Central 開放取用）",
+          "network": "國際同儕審查食品微生物學期刊體系（MDPI Molecules／University of Calabria）",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過 google:browse 直接抓取並核讀 PMC 全文（Abstract、Section 1、Section 2.1–2.3、Table 1）",
+          "reading_scope": "Section 1（乾麵與生鮮麵水活性對比）、Section 2.1（aw 與 pH）、Section 2.2（青黴菌與麴菌低溫生長特性）、Section 2.3（黴菌毒素化學穩定性與耐熱性）、Table 1",
+          "locator": "Abstract; Section 1; Section 2.1.1–2.3; Table 1（PMCID: PMC12843929）",
+          "summary": "同儕審查綜述直接對照同成分小麥製品的保存鴻溝：乾燥義大利麵因極低水活性（aw < 0.60）達成微生物穩定，而生鮮冷藏義大利麵高水活性（aw > 0.85，典型 0.92–0.97）與近中性 pH（5.0–7.0），成為青黴菌（Penicillium，嗜冷特性使其可在 4–8°C 冰箱內持續生長）與麴菌（Aspergillus，部分菌株於 8–10°C 仍可生長）的絕佳基質。進一步警示：黴菌產生的黃麴毒素（aflatoxins）與赭麴毒素 A（ochratoxin A）化學性質高度穩定，即使切除可見發霉處或經過一般烹煮加熱後仍會殘留，不能把發霉部分削掉照吃。",
+          "limitations": "本文實驗綜述聚焦生鮮義大利麵之真菌腐敗與乳酸菌生物防腐，細菌性肉品食源病原體風險須搭配 FDA 與 EFSA 來源判讀。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12843929/"
+        }
+      ]
+    },
+    {
       "id": "SRC-db04414f0b3e61c3",
       "url": "https://openstax.org/books/organic-chemistry/pages/13-5-integration-of-1h-nmr-absorptions-proton-counting",
       "readings": [
@@ -183133,6 +184597,27 @@
           },
           "origin": "wave53-physics-20261111",
           "original_url": "https://arxiv.org/abs/0707.4550"
+        }
+      ]
+    },
+    {
+      "id": "SRC-dc1a50c1bca4722e",
+      "url": "https://www.law.cornell.edu/cfr/text/10/appendix-X1_to_subpart_B_of_part_430",
+      "readings": [
+        {
+          "canonical_url": "https://www.ecfr.gov/current/title-10/chapter-II/subchapter-D/part-430/subpart-B/appendix-Appendix%20X1%20to%20Subpart%20B%20of%20Part%20430",
+          "title": "10 CFR Appendix X1 to Subpart B of Part 430 — Uniform Test Method for Measuring the Energy Consumption of Dehumidifiers",
+          "publisher": "U.S. Department of Energy（經 Cornell Law School Legal Information Institute 公開刊載）",
+          "network": "NET_US_FED",
+          "accessed_on": "2026-11-21",
+          "read_via": "google:browse 讀取聯邦法規全文第 0–5.5 節與表 1–3",
+          "reading_scope": "Section 0–5.5（包含 Table 1 標準測試條件、Section 4.1 測試時長、Section 5.1–5.2 溫濕度修正方程式、Section 5.3–5.4 IEF 計算、Section 5.5 飽和水氣壓與混合比算式）。",
+          "locator": "Section 4.1.1 Table 1（可攜式：乾球 65 ± 2.0°F、濕球 56.6 ± 1.0°F、60 ± 2% RH；全戶式：乾球 73 ± 2.0°F、濕球 63.6 ± 1.0°F、60 ± 2% RH；2024 年 1 月 22 日後額定測試時段為 2 小時）；Section 5.2（修正公式 Cr,p = Ct + 0.0352 × Ct × (65 − Tt) + 0.0169 × Ct × (60 − HC,p)，顯示在 65°F/60% RH 附近每差 1°F 能力約差 3.52%、每差 1% RH 約差 1.69%）；Section 5.3–5.4（IEF 權重：除濕運轉 1,095 小時/年、待機或關機 1,840.5 小時/年、壓縮機休止循環（off-cycle）1,840.5 小時/年）；Section 5.5.4（混合比 HR = 0.62198 × Pw / (P − Pw)）。",
+          "summary": "美國聯邦法規 10 CFR Part 430 Subpart B Appendix X1 條文，精確規範可攜式（65°F/60% RH）與全戶式（73°F/60% RH）除濕機的測試室條件、修正公式靈敏度係數（每 1°F 約 3.52%、每 1% RH 約 1.69%）、綜合能源因數 IEF 的年運轉與待機時數權重，以及水氣混合比物理算式。",
+          "limitations": "Section 5.2 線性修正係數僅適用於額定點附近 ±2°F、±2% RH 的小範圍實驗室容差校正，不可直接線性外推至極端低溫結霜區。與 X146R2-S03 併計為 NET_US_FED。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.law.cornell.edu/cfr/text/10/appendix-X1_to_subpart_B_of_part_430"
         }
       ]
     },
@@ -184298,6 +185783,27 @@
       ]
     },
     {
+      "id": "SRC-dd4a343bbf3f159e",
+      "url": "https://www.fsis.usda.gov/sites/default/files/media_file/2020-08/Food-Product-Dating_0.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-product-dating",
+          "title": "Food Product Dating",
+          "publisher": "美國農業部食品安全檢驗局（USDA Food Safety and Inspection Service, FSIS）",
+          "network": "美國聯邦農業部與食藥局體系（US USDA FSIS／FDA）",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過 google:browse 直接抓取並通讀官方 PDF 全文（pp. 1–3）",
+          "reading_scope": "全篇事實單（聯邦法規要求、嬰兒配方奶粉例外、開放／密閉日期詞義、致病菌與腐敗菌、罐頭與危險溫區）",
+          "locator": "pp. 1–3（Does Federal Law Require Food Product Dating?, Footnote 1, Date-Labeling Phrases, Infant Formula, Can Codes, Proper Handling）",
+          "summary": "明確指出除受美國 FDA 監管之「嬰兒配方奶粉（infant formula）」聯邦強制標示 \"Use-By\" 日期（以確保營養素不低於標示量並能順利通過一般奶嘴孔）外，美國聯邦法規不強制食品標示安全或品質日期（USDA 僅對禽肉與商業滅菌罐頭要求批號追蹤用 \"pack date\"，9 CFR 381.126、431.2(e)）。拆解美國常見四種開放日期詞（Best if Used By/Before、Sell-By、Use-By、Freeze-By），指出在美國連非嬰兒配方食品上的 Use-By 亦屬品質建議而非安全日；USDA 估計全美零售與家庭端有 30% 食物供給遭損失或浪費，故推薦統一改用 \"Best if Used By\"。同時區分致病菌與腐敗菌、說明高酸罐頭（12–18個月）與低酸罐頭（2–5年）差異，以及超過 40°F（4.4°C）置放 2 小時（高於 90°F / 32.2°C 則為 1 小時）即應棄置。",
+          "limitations": "聚焦美國聯邦法規；美國部分州政府對乳品、貝類或蛋類另有州法日期規定，且 2024 年起聯邦仍在研議是否推動統一日期標示法規。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.fsis.usda.gov/sites/default/files/media_file/2020-08/Food-Product-Dating_0.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-dd4bc98239152110",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8740717/",
       "readings": [
@@ -184924,6 +186430,27 @@
           ],
           "origin": "wave39-physics-20261103",
           "original_url": "https://doi.org/10.1103/PhysRevLett.107.245502"
+        }
+      ]
+    },
+    {
+      "id": "SRC-ddf699611b5ddc30",
+      "url": "https://www.ntbt.gov.tw/singlehtml/41ae3594197f4f69b47753ce08188516?cntId=a0e292f69ed74f50a83648c2ee68da81",
+      "readings": [
+        {
+          "canonical_url": "https://www.ntbt.gov.tw/singlehtml/41ae3594197f4f69b47753ce08188516?cntId=a0e292f69ed74f50a83648c2ee68da81",
+          "title": "115年節能新標準上路，買對除濕機才能退還貨物稅",
+          "publisher": "財政部臺北國稅局",
+          "network": "NET_TW_GOV",
+          "accessed_on": "2026-11-21",
+          "read_via": "google:browse 完整讀取官方新聞稿頁面",
+          "reading_scope": "新聞稿全文（更新日期民國 115 年 1 月 29 日）。",
+          "locator": "正文第 1–3 段（確認經濟部自 115 年 1 月 1 日起實施除濕機新分級基準，部分舊基準第 1 級機種於新基準下調為第 3 級，因而影響節能電器退還減徵貨物稅之第 1、2 級資格；並引導至 ranking.energylabel.org.tw「除濕機(115年新基準)」查詢）。",
+          "summary": "財政部臺北國稅局官方新聞稿證實，經濟部修正之除濕機能源效率新分級基準已於 2026 年（民國 115 年）1 月 1 日正式上路，部分原本屬於舊制第 1 級的機種在新制下被降為第 3 級，不再符合退還貨物稅門檻。",
+          "limitations": "新聞稿僅說明制度生效與等級異動對貨物稅退稅之影響，未逐一列出附表五各級 EF 數值。屬台灣中央政府體系，與 X146R2-S01 併計為同一研究網 NET_TW_GOV。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.ntbt.gov.tw/singlehtml/41ae3594197f4f69b47753ce08188516?cntId=a0e292f69ed74f50a83648c2ee68da81"
         }
       ]
     },
@@ -185622,6 +187149,27 @@
           },
           "origin": "wave81-tech-20261113",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13567173/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-dee0086820fb834a",
+      "url": "https://wmo.int/resources/wmo-bulletin/wmo-bulletin-vol-73-2-2024/imo-prize-lecture-2024-ensemble-weather-and-climate-prediction-from-origins-ai",
+      "readings": [
+        {
+          "canonical_url": "https://wmo.int/resources/wmo-bulletin/wmo-bulletin-vol-73-2-2024/imo-prize-lecture-2024-ensemble-weather-and-climate-prediction-from-origins-ai",
+          "title": "IMO Prize Lecture 2024: Ensemble Weather and Climate Prediction – From Origins to AI",
+          "publisher": "世界氣象組織（WMO Bulletin Vol. 73(2), 2024；作者 Tim Palmer，牛津大學物理系）",
+          "network": "世界氣象組織 WMO 與聯合預報驗證研究組",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟並完整閱讀 WMO 公報全文。",
+          "reading_scope": "全篇演講稿（兩週可預報性極限、1987 年英國大風暴回溯系集、系集平均盲點、登山雨具與人道救援決策門檻）。",
+          "locator": "Figure 1–3 段落（1987 年 10 月風暴 50 成員模擬）與「As part of this transition to ensembles」決策段落",
+          "summary": "指出兩週「決定性可預報極限」只是平均值，實際可預報性隨大氣流場狀態劇烈變化。1987 年 10 月重創英格蘭南部的風暴前一天未被報出，但事後以 50 成員系集於 2.5 天前模擬，成員結果從平靜高壓脊到颶風級陣風全數出現，颶風級陣風機率約 30%；若只看系集平均反而會把極端風暴平滑抹掉。另闡述機率預報的本質是讓使用者自行權衡淋濕代價與攜帶雨具成本，這套門檻思維如今也支撐人道機構在極端災害發生前就啟動預警救援。",
+          "limitations": "為 WMO IMO 獎得主綜述與親歷回顧，其中 AI 混合系集預測部分屬前瞻觀點，本文僅採其已驗證的 1987 風暴系集案例與成本損益決策原理。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://wmo.int/resources/wmo-bulletin/wmo-bulletin-vol-73-2-2024/imo-prize-lecture-2024-ensemble-weather-and-climate-prediction-from-origins-ai"
         }
       ]
     },
@@ -188798,6 +190346,27 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave4-food-kitchen-20261101",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2606899/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-e2f10530897efe12",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5161396/",
+      "readings": [
+        {
+          "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5161396/",
+          "title": "Oxygen permeability of the pigmented material used in cosmetic daily disposable contact lenses (Galas S, Copper LL, Clin Ophthalmol. 2016;10:2469-2474)",
+          "publisher": "Clinical Ophthalmology（業界研發實驗室 J&J Vision Care 發表於同儕審查期刊）",
+          "network": "英澳美加軟式鏡片水膠與淚膜研究群（Efron–Morgan／CORE／TFOS／CLADES 與 J&J 研發，依共同作者與機構從嚴合併）",
+          "accessed_on": "2026-11-21",
+          "read_via": "於 PMC 開放取用全文閱讀極譜透氧實測與 -3.00 D 中心厚度換算示範。",
+          "reading_scope": "PMC5161396 全文（包覆色素 etafilcon A 實測 Dk 19.7 對 19.5、-1.00 D 彩片中周邊厚度壓低局部 Dk/t、-3.00 D 中心厚度 0.0084 cm 計算 Dk/t = 25）。",
+          "locator": "PMC5161396 Results & Discussion（19.7 vs 19.5、21.4 ÷ 0.0084 cm = 25、中周邊較厚區局部 Dk/t 較低）",
+          "summary": "以 ISO 18369-4 極譜法測試將色素包覆於鏡片基材內的改良 -0.50 D etafilcon A 鏡片，邊緣校正後 Dk 為 19.7，與未著色對照組 19.5 幾乎一致（落在 ISO 18369-2 的 ±20% 公差內）；但測繪市售 -1.00 D 彩片全區時，中周邊印色區因鏡片本身較厚，局部 Dk/t 仍低於中心。文內亦示範業界常用 -3.00 D 中心厚度換算公式（標稱 Dk 21.4 ÷ 0.0084 cm = Dk/t 25）。",
+          "limitations": "作者任職於隱形眼鏡製造商（已於論文揭露利益衝突），且測試僅針對單一包覆式顏料製程；論文亦自承其他高載量顏料或表面印刷製程仍可能影響透氧。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5161396/"
         }
       ]
     },
@@ -196983,6 +198552,27 @@
       ]
     },
     {
+      "id": "SRC-ed314f08cbcea7d9",
+      "url": "https://www.wrap.ngo/resources/report/citizen-insights-use-and-best-dates-dairy-products",
+      "readings": [
+        {
+          "canonical_url": "https://www.wrap.ngo/resources/report/citizen-insights-use-and-best-dates-dairy-products",
+          "title": "Citizen insights on 'Use By' and 'Best Before' dates on dairy products（2023）& Best Before dates shouldn't be a barrier to redistribution（2020）",
+          "publisher": "WRAP（The Waste and Resources Action Programme，英國註冊獨立慈善機構 No. 1159512）",
+          "network": "英國非營利循環經濟研究機構（WRAP Charity）",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過 google:browse 直接抓取並通讀兩份官方報告摘要與新聞稿全文",
+          "reading_scope": "英國家庭食物浪費比例、乳品標籤改字實驗數據、各類常溫食品 Best Before 後再分配參考寬限期",
+          "locator": "2023-02-20 Report（Findings: milk 47% vs 31%, yogurt 53% vs 34%）；2020-04-23 Release（https://www.wrap.ngo/media-centre/press-releases/best-dates-shouldnt-be-barrier-redistribution）",
+          "summary": "指出英國農場後端食物浪費有 70% 來自家庭，其中 41%（以重量計）因「未及時吃完」被丟棄；單是與 Best Before 相關的家庭丟棄每年即達 18 萬公噸（約值 5 億英鎊）。2023 年實證研究發現，當民眾了解兩類標籤差異時，過期僅 1 天的牛奶若標 Use-By 有 47% 的人會直接丟掉，改標 Best-Before 降至 31%；同款優格過期 1 天標 Use-By 有 53% 會丟棄，改標 Best-Before 降至 34%。另提供與 FSA 協商之 Best Before 後常見常溫品參考寬限期：洋芋片約 1 個月、餅乾穀片約 6 個月、罐頭肉湯與糖果約 12 個月、乾義大利麵最長 3 年、果醬 3–5 年。",
+          "limitations": "研究樣本為英國消費者與英國冷鏈零售環境；過了 Best Before 的參考寬限期係假設未開封且包裝完好並妥善保存。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.wrap.ngo/resources/report/citizen-insights-use-and-best-dates-dairy-products"
+        }
+      ]
+    },
+    {
       "id": "SRC-ed35acff6748f364",
       "url": "https://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/CapTIvate_Design_Center/1_83_00_08/exports/docs/users_guide/html/CapTIvate_Technology_Guide_html/markdown/ch_basics.html/nhttps://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSP430Ware/3_80_02_10/exports/msp430ware_3_80_02_10/captivate/docs/users_guide/html/CapTIvate_Technology_Guide_html/markdown/ch_design_guide.html/nhttps://www.samsung.com/ca/support/mobile-devices/activate-touch-sensitivity-on-your-samsung-galaxy/",
       "readings": [
@@ -200004,6 +201594,27 @@
       ]
     },
     {
+      "id": "SRC-f0a630dd25545e83",
+      "url": "https://www.mitsubishielectric.co.jp/club-me/appliances/qa/2512/index.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.mitsubishielectric.co.jp/club-me/appliances/qa/2512/index.html",
+          "title": "コンプレッサー式の除湿機が冬に除湿しにくくなるのはなぜですか？（家電 Q&A）",
+          "publisher": "三菱電機株式会社（Mitsubishi Electric Corporation）",
+          "network": "NET_CORP_MITSUBISHI",
+          "accessed_on": "2026-11-21",
+          "read_via": "google:browse 完整讀取官方家電 Q&A 頁面與腳註",
+          "reading_scope": "全頁正文（2025-12-01 刊載）與 ※1、※2 技術腳註。",
+          "locator": "正文第 1–3 段（歸納冬天壓縮機式難以除濕的兩大正常物理原因：一是低溫下空氣可容納的水氣量減少，即使濕度計數字高、實際含水仍少；二是冷卻器／蒸發器易結霜，為除霜必須暫停除濕，自動除霜期間切斷送風除濕、加熱融霜滴入水箱，約 30 分鐘後才恢復運轉）；※2 腳註（即便壓縮機型可支援 1–40°C 運轉，在 1°C、70% RH 時的除濕能力會降至 2.0 L/日以下）。",
+          "summary": "三菱電機官方技術問答清楚拆解壓縮機式除濕機在冬季集水變慢的雙重物理原因（低溫含水少＋冷排結霜停機約 30 分鐘融霜），並以腳註坦承就算標榜可於 1°C 運作的寬溫壓縮機型，在 1°C、70% RH 環境下日除濕量也會跌到 2.0 公升以下。",
+          "limitations": "為廠商面向消費者之官方 Q&A，未公布 10°C 或 15°C 等中間溫度的完整實測曲線，僅給出 1°C/70% RH 之上限值（≤ 2.0 L/日）與約 30 分鐘除霜停機時間。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.mitsubishielectric.co.jp/club-me/appliances/qa/2512/index.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-f0a829e78732a732",
       "url": "https://pubmed.ncbi.nlm.nih.gov/864008/",
       "readings": [
@@ -200108,6 +201719,27 @@
       ]
     },
     {
+      "id": "SRC-f0ca008791597e5e",
+      "url": "https://journals.ametsoc.org/downloadpdf/view/journals/wefo/31/1/waf-d-15-0058_1.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://journals.ametsoc.org/downloadpdf/view/journals/wefo/31/1/waf-d-15-0058_1.pdf",
+          "title": "Through the Eyes of the Experts: Meteorologists' Perceptions of the Probability of Precipitation",
+          "publisher": "Weather and Forecasting, Vol. 31, No. 1, pp. 5–16（Alan E. Stewart 等，喬治亞大學）",
+          "network": "喬治亞大學氣象人員 PoP 認知調查（WAF 2016）",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟並閱讀 Weather and Forecasting 論文 PDF 第 1–7 頁（Abstract、Method、Table 1–3 與 Results 3a–3e）。",
+          "reading_scope": "第 1–7 頁（188 位氣象人員背景、受訓比例、五大定義分類表、信心度與大眾理解度估計）。",
+          "locator": "第 1 頁 Abstract、第 4–7 頁 Results 3a–3e 與 Table 1–3",
+          "summary": "調查 188 位平均年齡 46.0 歲、平均資歷 23.2 年的美國公私部門與學界（10.6%）氣象員及氣象主播，發現 51.6%（97 人）未受過任何 PoP 專項訓練。他們的開放式定義（Table 3 有效編碼 183 份）分裂成五派：標準點定義含 0.01 英吋門檻 26.2%（48 人）、擴大面積派 26.2%（48 人）、時空模糊派 24.0%（44 人）、相似天氣歷史頻率派 12.0%（22 人）、C × A 乘積派 11.5%（21 人），但五派對自己定義的信心一樣高（平均 3.44／4 分，無顯著差異）。43% 認為學界對 PoP 定義幾乎無一致性、僅 8% 認為一致，且平均估計僅約 22.7%（中位數 16%）的大眾真正懂 PoP。",
+          "limitations": "樣本以美國 NWS 與 AMS 氣象人員及主播為主（回收率 38.1%），且 PDF 後段開放建議部分遭截斷，本案只採用完整讀到的第 1–7 頁統計與 Table 1–3。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://journals.ametsoc.org/downloadpdf/view/journals/wefo/31/1/waf-d-15-0058_1.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-f0cba9e30e8280cf",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8313846/fullTextXML",
       "readings": [
@@ -200198,6 +201830,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.ly.gov.tw/Pages/Detail.aspx?nodeid=6590&pid=228378"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f0e541045b2c0dab",
+      "url": "https://cdn.standards.iteh.ai/samples/66341/7668b310124e4bc4bfc4691c00d6100e/ISO-18369-4-2017.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://cdn.standards.iteh.ai/samples/66341/7668b310124e4bc4bfc4691c00d6100e/ISO-18369-4-2017.pdf",
+          "title": "ISO 18369-4:2017 Ophthalmic optics — Contact lenses — Part 4: Physicochemical properties of contact lens materials (Preview)",
+          "publisher": "International Organization for Standardization（ISO/TC 172/SC 7，經 iTeh 官方預覽本）",
+          "network": "國際標準化組織 ISO/TC 172/SC 7",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接讀取 iTeh 公開提供之 ISO 18369-4:2017 目錄、Table 1 與前段條文試閱 PDF。",
+          "reading_scope": "目次、Table 1 物理化學項目與量測方法總表、Clauses 4.1–4.3。",
+          "locator": "Table 1（Water content weight %／Clause 4.6.2 烘乾失重法重複性 2%；Oxygen permeability Dk units／Clause 4.4 極譜法重複性 10%；Annex C）",
+          "summary": "明訂隱形眼鏡「含水量（water content）」的單位是「重量百分比（weight % / mass %）」，標準檢驗法為烘箱乾燥失重法（Clause 4.6.2，絕對重複性 2%），代表鏡片在實驗室平衡狀態下含水的質量佔比，而非對眼球的補水能力；同時定義透氧係數 Dk 單位（barrer = 10^-11 (cm^2/s) mL O2/(mL·mmHg)）及極譜量測法（Clause 4.4，重複性 10%），附錄 C 另列以含水量推算傳統水膠 Dk 之方法。",
+          "limitations": "僅讀取官方公開試閱頁（含完整目錄與 Table 1），Clause 4.4 與 4.6.2 詳細操作步驟及 Annex C 公式全文屬付費頁未讀；-3.00 D 中心厚度換算慣例另由同儕審查論文與製造商技術文件交叉確認。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://cdn.standards.iteh.ai/samples/66341/7668b310124e4bc4bfc4691c00d6100e/ISO-18369-4-2017.pdf"
         }
       ]
     },
@@ -200336,6 +201989,27 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave6-mechanisms-20261101",
           "original_url": "https://www.hds.co.jp/english/products/hd_theory/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f13dd4b469b2d45c",
+      "url": "https://www.hokeniryo1.metro.tokyo.lg.jp/shokuhin/hyouji/shokuhyouhou_kakou_summary.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.hokeniryo1.metro.tokyo.lg.jp/shokuhin/hyouji/shokuhyouhou_kakou_summary.html",
+          "title": "加工食品（一般用加工食品の概要）｜食品衛生の窓",
+          "publisher": "東京都保健医療局 健康安全部 食品監視課（Bureau of Public Health, Tokyo Metropolitan Government）",
+          "network": "日本政府食品標示法規體系（CAA／MAFF／東京都）",
+          "accessed_on": "2026-11-21",
+          "read_via": "透過 google:browse 直接抓取並核對省略規定條文表全文",
+          "reading_scope": "一般用加工食品義務表示與省略規定（食品表示基準第3條第3項及第4條）",
+          "locator": "省略規定（食品表示基準第3条第3項及び第4条）表格「消費期限又は賞味期限」與「保存の方法」欄",
+          "summary": "完整列出日本《食品表示基準》第3條第3項允許省略「消費期限或賞味期限」與「保存方法」的法定品項：澱粉（でん粉）、口香糖（チューインガム）、冷菓、砂糖、冰淇淋類（アイスクリーム類）、食鹽及鮮味調味料（食塩及びうま味調味料）、酒類、玻璃瓶（不含紙栓）或聚乙烯容器裝飲用水及清涼飲料水、冰塊（氷）。",
+          "limitations": "東京都官方實務彙整頁面，引用國家層級《食品表示基準》（平成27年內閣府令第10號）；個別食品若添加其他易腐原料須另依基準判斷。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.hokeniryo1.metro.tokyo.lg.jp/shokuhin/hyouji/shokuhyouhou_kakou_summary.html"
         }
       ]
     },
@@ -201494,6 +203168,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.uspto.gov/web/offices/pac/mpep/s2701.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f2b38da51ee537c1",
+      "url": "https://www.aao.org/eyenet/article/treatment-of-corneal-neovascularization",
+      "readings": [
+        {
+          "canonical_url": "https://www.aao.org/eyenet/article/treatment-of-corneal-neovascularization",
+          "title": "Treatment of Corneal Neovascularization (EyeNet Magazine, October 2013)",
+          "publisher": "American Academy of Ophthalmology（美國眼科學會 AAO）",
+          "network": "美國眼科學會（AAO EyeNet）",
+          "accessed_on": "2026-11-21",
+          "read_via": "直接開啟 AAO EyeNet 官方文章閱讀缺氧病理機制章節。",
+          "reading_scope": "角膜新生血管病因與缺氧誘發 VEGF 機制段落。",
+          "locator": "Etiology / Pathophysiology 段落（多數缺氧型角膜新生血管源自隱形眼鏡配戴、缺氧上調 VEGF 驅動輪部血管侵入透明角膜）",
+          "summary": "指出臨床上多數缺氧引起的角膜新生血管源自隱形眼鏡配戴：原本透明無血管的角膜在長期缺氧下，上皮細胞會上調血管內皮生長因子（VEGF），促使角膜邊緣輪部血管往角膜內生長，可能引發脂質滲出、結疤，若侵入視軸更將威脅視力。",
+          "limitations": "臨床綜述文章重在病理與治療概覽，本題僅取缺氧誘發新生血管之生理機制，不涉及個人醫療處置。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.aao.org/eyenet/article/treatment-of-corneal-neovascularization"
         }
       ]
     },
@@ -205387,6 +207082,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nbsspecialpublication345.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f73321fdc2b5dbbe",
+      "url": "https://www.consumer.org.hk/en/press-release/472-dehumidifiers",
+      "readings": [
+        {
+          "canonical_url": "https://www.consumer.org.hk/en/press-release/472-dehumidifiers",
+          "title": "Dehumidifying Performance of 5 Dehumidifiers Lower than Claimed（CHOICE #472）",
+          "publisher": "香港消費者委員會（Consumer Council, Hong Kong）",
+          "network": "NET_HK_CC",
+          "accessed_on": "2026-11-21",
+          "read_via": "google:browse 讀取官方新聞稿全文",
+          "reading_scope": "全篇新聞稿（2016-02-15 發布），包含三種測試環境設計、12 款壓縮機式與 2 款熱石（除濕輪）式實測對比。",
+          "locator": "Three Test Environments 段（標準環境 26.7°C/60% RH、廠商自訂非標準環境 30°C/80% RH、低溫環境 20°C/60% RH）；Urge to Stop Using Dehumidifying Capacity under Manufacturers' Own Test Environment 段（壓縮機樣本在廠商 30°C/80% RH 下測得的除濕速度比 26.7°C/60% RH 標準高出 54% 至 90%、平均高 77%；反觀 2 款除濕輪樣本僅高出 7% 與 10%）；Low-Temperature Environment 段（1 款除濕輪於 20°C/60% 實測仍低於宣稱 10.5%）。",
+          "summary": "香港消委會以三種溫濕度環境實測 14 款家用除濕機（12 款壓縮機式、2 款除濕輪式），直接量化出壓縮機式在廠商自訂「30°C、80% RH」下的抽水量會比標準「26.7°C、60% RH」暴增 54% 至 90%（平均多 77%），而除濕輪式受溫濕度拉抬的幅度只有 7% 與 10%。",
+          "limitations": "新聞稿摘要未逐一列出 14 款機型在 20°C/60% 低溫環境下的壓縮機逐台降幅數據（完整表格刊於付費《選擇》月刊第 472 期）。與 X146R2-S06 同屬香港消委會（NET_HK_CC）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave146-x146-20261121",
+          "original_url": "https://www.consumer.org.hk/en/press-release/472-dehumidifiers"
         }
       ]
     },

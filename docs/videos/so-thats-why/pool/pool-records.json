@@ -1,5 +1,5 @@
 {
-  "revision": "2026-11-20-pool-8137",
+  "revision": "2026-11-21-pool-8207",
   "raw_records": [
     {
       "id": "LEG-B01",
@@ -133946,6 +133946,3024 @@
       "eligible": true,
       "local_references": [
         "docs/videos/so-thats-why/pool/batches/wave145-research-20261120.json"
+      ]
+    },
+    {
+      "id": "K146-0101",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "歐美五大城市 750 名受訪民眾被問「明天降雨機率 30% 是什麼意思」，為什麼只有紐約過半答對，歐洲四城反而把正確答案評為最離譜？",
+      "mechanism_key": "x146.rain.five_city_survey",
+      "answer_target": "馬克斯普朗克研究所團隊在紐約、阿姆斯特丹、柏林、米蘭與雅典訪問 750 名受訪民眾（公共場所隨機調查，柏林樣本另含大學生），只有早在 1965 年就在大眾媒體報降雨機率的紐約有約三分之二選對「同條件的日子裡十天有三天會下雨」。其餘四個歐洲城市只有五分之一到三分之一選對，而且全數把這個氣象學標準定義評為「最不恰當」，最偏愛的反而是「明天有 30% 的時間在下雨」，甚至有人回答「十位氣象員有三位覺得會下雨」或「一百朵雲裡有三十朵烏雲」。",
+      "scope": "僅限 Gigerenzer 等人 2002 年秋季於歐美五座都市的問卷結果；歐洲部分城市當時媒體尚未普及機率預報，不可直接推論為今日東亞民眾比例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "五座城市街景卡片並排翻牌：三張選項卡（30% 時間、30% 地區、30% 同類日子）的得票條一拉開，紐約高舉「日子」，阿姆斯特丹到雅典四城卻把「日子」貼上墊底標籤。",
+        "payoff": "馬克斯普朗克研究所團隊在紐約、阿姆斯特丹、柏林、米蘭與雅典訪問 750 名受訪民眾（公共場所隨機調查，柏林樣本另含大學生），只有早在 1965 年就在大眾媒體報降雨機率的紐約有約三分之二選對「同條件的日子裡十天有三天會下雨」。其餘四個歐洲城市只有五分之一到三分之一選對，而且全數把這個氣象學標準定義評為「最不恰當」，最偏愛的反而是「明天有 30% 的時間在下雨」，甚至有人回答「十位氣象員有三位覺得會下雨」或「一百朵雲裡有三十朵烏雲」。",
+        "seconds": [
+          32,
+          46
+        ]
+      },
+      "source_locator": "Gigerenzer et al. (2005), Risk Analysis 25(3):623–629, Section 3–5, Fig. 1–2",
+      "notes": "以 750 人跨城實測打開全片懸念：觀眾剛選完自己的直覺，立刻看見四座歐洲城市也踩中同一個坑。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪五城翻牌圖表與雲朵／時鐘／日曆圖示示意；論文原圖僅供查核。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-94874937d1f85675",
+          "origin": "wave146-x146-20261121",
+          "locator": "Gigerenzer et al. (2005), Risk Analysis 25(3):623–629, Section 3–5, Fig. 1–2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0102",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "為什麼只給一個「30%」，反而會讓以為是「三成地區或時間會下」的人，比懂定義的人更早乖乖帶傘出門？",
+      "mechanism_key": "x146.rain.reference_class_umbrella",
+      "answer_target": "因為單獨一個百分比省略了「參照類別」——到底是在算哪一群事件的三成？就像醫生只說「吃這顆藥有 30% 到 50% 機率出現副作用」，病人常誤以為是自己每次親密行為有三到五成會出事，而不是每十位服藥者中有三到五位。套到下雨也一樣：以為 30% 指地區或時間的人，心裡等於認定明天「一定會下雨」，差別只在下在哪裡、下多久；反觀懂「天數定義」的人知道可能整天一滴都不下。五城調查中，選地區定義的人平均在 50.6% 就帶傘，選對天數的人則等到 55.9% 才帶傘。",
+      "scope": "說明單一事件機率的參照類別模糊效應與五城 1 小時外出帶傘門檻差異（效果量 d=0.25, p=0.05），並與華盛頓大學實驗結果互相印證，不誇大成單一決定帶傘的因素。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把「30%」放大成空白分母卡片：依序塞進「十天」「一小時」「整張地圖」三種不同分母，右邊兩張立刻亮起「必下雨」紅燈，傘標記在 50.6% 就先亮起來。",
+        "payoff": "因為單獨一個百分比省略了「參照類別」——到底是在算哪一群事件的三成？就像醫生只說「吃這顆藥有 30% 到 50% 機率出現副作用」，病人常誤以為是自己每次親密行為有三到五成會出事，而不是每十位服藥者中有三到五位。套到下雨也一樣：以為 30% 指地區或時間的人，心裡等於認定明天「一定會下雨」，差別只在下在哪裡、下多久；反觀懂「天數定義」的人知道可能整天一滴都不下。五城調查中，選地區定義的人平均在 50.6% 就帶傘，選對天數的人則等到 55.9% 才帶傘。",
+        "seconds": [
+          32,
+          48
+        ]
+      },
+      "source_locator": "Gigerenzer et al. (2005) Section 2（Prozac 例）與 Section 4（帶傘門檻 55.9%/53.5%/50.6%）；Joslyn et al. (2009) Abstract",
+      "notes": "用百憂解醫病溝通類比瞬間打通「參照類別」抽象概念，並扣回帶傘行為差異。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪分母卡片、雨傘門檻滑桿與雙路徑圖解示意；不重製原期刊圖表。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-94874937d1f85675",
+          "origin": "wave146-x146-20261121",
+          "locator": "Gigerenzer et al. (2005) Section 2（Prozac 例）與 Section 4（帶傘門檻 55.9%/53.5%/50.6%）；Joslyn et al. (2009) Abstract",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-1c8a3392f2303d52",
+          "origin": "wave146-x146-20261121",
+          "locator": "Gigerenzer et al. (2005) Section 2（Prozac 例）與 Section 4（帶傘門檻 55.9%/53.5%/50.6%）；Joslyn et al. (2009) Abstract",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0103",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "連住在多雨西雅圖的大學生都常把降雨機率當成下雨時間或面積，心理實驗只多加哪一句話就讓理解明顯改善？",
+      "mechanism_key": "x146.rain.no_rain_phrasing",
+      "answer_target": "華盛頓大學團隊對長期看降雨預報的太平洋西北大學生做了三項實驗，結果把百分比誤解為「超過一半面積或時間會下」的受試者，明顯更常選擇帶傘或穿連帽外套——因為他們把機率當成了必下雨的確定預報。實驗嘗試多種改寫後，唯有在降雨機率旁明確補上一句「不下雨的機率是多少」（例如同時標出有七成機會完全不下雨），受試者的判讀表現才顯著提升，迫使大腦意識到「零降雨」本身就是可能結局。",
+      "scope": "限於 Joslyn 等人 2009 年 BAMS 摘要載明的三項心理實驗方向與行為結果，不補寫摘要未揭露的各組精確百分比。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "手機畫面原本只寫「降雨機率 30%」，大腦泡泡浮現雨下不停；當螢幕下方補上一行亮色小字「不下雨機率 70%」，泡泡才分裂成晴天與雨天兩條支線。",
+        "payoff": "華盛頓大學團隊對長期看降雨預報的太平洋西北大學生做了三項實驗，結果把百分比誤解為「超過一半面積或時間會下」的受試者，明顯更常選擇帶傘或穿連帽外套——因為他們把機率當成了必下雨的確定預報。實驗嘗試多種改寫後，唯有在降雨機率旁明確補上一句「不下雨的機率是多少」（例如同時標出有七成機會完全不下雨），受試者的判讀表現才顯著提升，迫使大腦意識到「零降雨」本身就是可能結局。",
+        "seconds": [
+          26,
+          40
+        ]
+      },
+      "source_locator": "Joslyn, Nadav-Greenberg & Nichols (2009), BAMS 90(2):185–194, Abstract",
+      "notes": "承接上一卡「誤解成確定事件」，給出實驗證實最有效的一句解方。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪手機預報介面與晴雨分支氣泡示意。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-1c8a3392f2303d52",
+          "origin": "wave146-x146-20261121",
+          "locator": "Joslyn, Nadav-Greenberg & Nichols (2009), BAMS 90(2):185–194, Abstract",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0104",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "氣象局對整個縣市發布「降雨機率 40%」，意思是全縣四成面積會下雨，還是你站的那一個點有四成機會淋雨？",
+      "mechanism_key": "x146.rain.point_vs_area_definition",
+      "answer_target": "依美國氣象學會辭典與美國國家氣象局定義，1966 年全國上路的降雨機率（PoP）本質上是「定點機率」：指指定時段內，特定「一個點」測得至少 0.01 英吋（0.0254 公分，約 0.254 毫米）液態當量降水的機會。辭典特別提醒，對一個郡發布 x% 的降雨機率，代表郡內「每一個點」都各自有 x% 機會淋到可測雨量，絕不可與「全郡某一部分面積會下雨的機率」或「整個郡一起下雨的機率」混為一談。",
+      "scope": "採美國氣象學會（AMS）與美國國家氣象局（NWS）的標準點機率定義；各國在雨量門檻與區域平均細節上的差異於第三章逐國展開。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "地圖上劃出一個郡，在裡面灑上幾十個紅點：先把「塗滿 40% 色塊」打叉，再放大到單一個紅點上方跳出「此點 ≥ 0.01 英吋：40%」。",
+        "payoff": "依美國氣象學會辭典與美國國家氣象局定義，1966 年全國上路的降雨機率（PoP）本質上是「定點機率」：指指定時段內，特定「一個點」測得至少 0.01 英吋（0.0254 公分，約 0.254 毫米）液態當量降水的機會。辭典特別提醒，對一個郡發布 x% 的降雨機率，代表郡內「每一個點」都各自有 x% 機會淋到可測雨量，絕不可與「全郡某一部分面積會下雨的機率」或「整個郡一起下雨的機率」混為一談。",
+        "seconds": [
+          28,
+          42
+        ]
+      },
+      "source_locator": "AMS Glossary「Probability of precipitation」（2020-06-22 修訂）；NWS Paducah pop.pdf Page 1",
+      "notes": "正式給出教科書標準答案，為下一卡「那面積說法是從哪來的？」埋伏筆。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪行政區網點與量雨筒 0.01 英吋刻度示意。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-11ac802f6c47ed8a",
+          "origin": "wave146-x146-20261121",
+          "locator": "AMS Glossary「Probability of precipitation」（2020-06-22 修訂）；NWS Paducah pop.pdf Page 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-18e56067e17f56f3",
+          "origin": "wave146-x146-20261121",
+          "locator": "AMS Glossary「Probability of precipitation」（2020-06-22 修訂）；NWS Paducah pop.pdf Page 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0105",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "既然官方說不是純面積，為什麼網路上一直流傳「信心度 × 面積比例」公式，還說兩種完全不同的雨會算出同一個 40%？",
+      "mechanism_key": "x146.rain.c_times_a_formula",
+      "answer_target": "因為這個公式真的出現在美國國家氣象局的地方衛教文件裡！NWS 帕迪尤卡站指出，預報員估算任一點降雨機率時，常把「預報區內會生成或移入降雨的把握度（C）」乘以「預期受降雨覆蓋的面積比例（A）」。於是兩種完全不同的天氣會得出同一個數字：一是預報員有 80% 把握雨區會在預報區內生成但估計只罩住 50% 面積（0.8 × 0.5 = 40%）；二是覆蓋 100% 面積的大範圍雨帶接近但僅 40% 把握移入預報區（0.4 × 1.0 = 40%）。兩種情境對站在隨機一點的你來說，淋雨機率都是 40%，但實際天空長相天差地別。",
+      "scope": "以 NWS Paducah 衛教文件與 NWS Binghamton 文字對照表為據，解釋 PoP = C × A 為定點機率的概念拆解與估算公式，而非把 PoP 簡化成純面積覆蓋率。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "左右分割兩塊地圖：左邊 80% 把握的局部生成雨區只占半區，右邊 40% 把握的大範圍移入雨帶蓋滿全區，兩條等式同時相乘，中間竟然匯成同一個「40%」大字。",
+        "payoff": "因為這個公式真的出現在美國國家氣象局的地方衛教文件裡！NWS 帕迪尤卡站指出，預報員估算任一點降雨機率時，常把「預報區內會生成或移入降雨的把握度（C）」乘以「預期受降雨覆蓋的面積比例（A）」。於是兩種完全不同的天氣會得出同一個數字：一是預報員有 80% 把握雨區會在預報區內生成但估計只罩住 50% 面積（0.8 × 0.5 = 40%）；二是覆蓋 100% 面積的大範圍雨帶接近但僅 40% 把握移入預報區（0.4 × 1.0 = 40%）。兩種情境對站在隨機一點的你來說，淋雨機率都是 40%，但實際天空長相天差地別。",
+        "seconds": [
+          34,
+          48
+        ]
+      },
+      "source_locator": "NWS Paducah pop.pdf Page 1（公式與雙例）；NWS Binghamton Forecast Terms（POP 與 Scattered／Chance 對照表）",
+      "notes": "這正是破題「三成機會還是三成面積」的最大反轉：兩者其實透過 C × A 絞在一起，所以只看 40% 無法反推是零星必下還是大片不確定。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪雙地圖分割動畫與乘式卡片示意。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-18e56067e17f56f3",
+          "origin": "wave146-x146-20261121",
+          "locator": "NWS Paducah pop.pdf Page 1（公式與雙例）；NWS Binghamton Forecast Terms（POP 與 Scattered／Chance 對照表）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-66a23d859777bb04",
+          "origin": "wave146-x146-20261121",
+          "locator": "NWS Paducah pop.pdf Page 1（公式與雙例）；NWS Binghamton Forecast Terms（POP 與 Scattered／Chance 對照表）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0106",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "大眾搞混就算了，連 188 位平均資歷 23 年的專業氣象員與主播，對降雨機率的定義竟也分裂成幾派？",
+      "mechanism_key": "x146.rain.meteorologists_five_camps",
+      "answer_target": "喬治亞大學團隊 2016 年發表於《Weather and Forecasting》的調查訪問了 188 位美國公私部門與學界氣象員及主播（平均年資 23.2 年），結果令人跌破眼鏡：超過一半（51.6%）從未受過降雨機率專項訓練；請他們用自己的話定義 PoP 時，回答竟裂成五大派——標準 0.01 英吋定點定義占 26.2%、擴大成區域或面積比例占 26.2%、沒提門檻的時空機率占 24.0%、一百次相似天氣下雨次數占 12.0%、C × A 乘積派占 11.5%。更妙的是，五派對自己定義的信心一樣高（平均 3.44／4 分），但有 43% 承認學界定義幾乎沒有一致性，僅 8% 認為一致，且平均估計大眾只有約 22.7% 真正看懂。",
+      "scope": "調查對象為 2013 年受訪的 188 位美國公私部門與學界（占 10.6%）氣象專業人員及主播（回收率 38.1%），五大派百分比依 Table 3 的 183 份有效開放定義計算，呈現的是美國氣象界的實證分歧。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "五位戴耳麥的氣象員各自舉起不同定義牌（26.2%、26.2%、24.0%、12.0%、11.5%），頭頂卻同時亮起幾乎一樣高的「我很確定！」信心條，下方滑出「僅 8% 認為學界一致」數字。",
+        "payoff": "喬治亞大學團隊 2016 年發表於《Weather and Forecasting》的調查訪問了 188 位美國公私部門與學界氣象員及主播（平均年資 23.2 年），結果令人跌破眼鏡：超過一半（51.6%）從未受過降雨機率專項訓練；請他們用自己的話定義 PoP 時，回答竟裂成五大派——標準 0.01 英吋定點定義占 26.2%、擴大成區域或面積比例占 26.2%、沒提門檻的時空機率占 24.0%、一百次相似天氣下雨次數占 12.0%、C × A 乘積派占 11.5%。更妙的是，五派對自己定義的信心一樣高（平均 3.44／4 分），但有 43% 承認學界定義幾乎沒有一致性，僅 8% 認為一致，且平均估計大眾只有約 22.7% 真正看懂。",
+        "seconds": [
+          32,
+          48
+        ]
+      },
+      "source_locator": "Stewart et al. (2016), Weather and Forecasting 31(1):5–16, Abstract, Results 3a–3e, Table 3",
+      "notes": "超強戲劇轉折點：連專業人士都有五種說法且各自堅信沒錯，自然引出下一章「跨國各氣象局連算下雨的尺都不一樣」。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪五派長條圖與信心儀表示意；不直接使用原論文表格截圖。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-f0ca008791597e5e",
+          "origin": "wave146-x146-20261121",
+          "locator": "Stewart et al. (2016), Weather and Forecasting 31(1):5–16, Abstract, Results 3a–3e, Table 3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0107",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "台灣中央氣象署的降雨機率只要降下幾毫米就算「有下雨」？為什麼報 90% 可能只飄微雨，報 30% 卻也可能下成大雨？",
+      "mechanism_key": "x146.rain.taiwan_cwa_threshold",
+      "answer_target": "依交通部中央氣象署《氣象領域資料標準》，降雨機率的門檻低到只有 0.1 毫米——只要在預報時間內出現 0.1 毫米以上降水就算達標，大約只夠把柏油路稍微打濕。因為門檻極低且只管「有沒有跨過 0.1 毫米」、不管最後累積多厚，所以東北季風迎風面整天飄細雨很容易開出 90% 高機率；反過來，夏天午後對流一旦長起來，就算原先只報 30%，落地也可能衝破氣象署另行訂定的大雨標準（時雨量達 40 毫米或 24 小時達 80 毫米）。機率高低和雨勢大小，從頭到尾就是兩把不同的尺。",
+      "scope": "以中央氣象署《氣象領域資料標準》表 5-1 的 0.1 毫米降雨機率定義與大雨／豪雨標準為準，點出機率與強度分離原則。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "量雨筒底部放大一條極細的「0.1 mm」亮線：旁邊並排兩張對照卡——「90% × 飄雨 0.2 mm」與「30% × 午後雷雨 45 mm／時」，一眼看穿兩把尺。",
+        "payoff": "依交通部中央氣象署《氣象領域資料標準》，降雨機率的門檻低到只有 0.1 毫米——只要在預報時間內出現 0.1 毫米以上降水就算達標，大約只夠把柏油路稍微打濕。因為門檻極低且只管「有沒有跨過 0.1 毫米」、不管最後累積多厚，所以東北季風迎風面整天飄細雨很容易開出 90% 高機率；反過來，夏天午後對流一旦長起來，就算原先只報 30%，落地也可能衝破氣象署另行訂定的大雨標準（時雨量達 40 毫米或 24 小時達 80 毫米）。機率高低和雨勢大小，從頭到尾就是兩把不同的尺。",
+        "seconds": [
+          30,
+          44
+        ]
+      },
+      "source_locator": "CWA_Data_Standard.pdf 第 9 頁表 5-1（Probability Of Precipitation 0.1 mm、Heavy Rain 80 mm/24h 或 40 mm/1h）；F-C0032-001_002.pdf 第 1 頁",
+      "notes": "拉回台灣觀眾每天滑手機看到的數字，以 0.1 mm 門檻為跨國比較設下起點。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪量雨筒 0.1 mm 放大鏡與兩張強弱對照卡示意。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-d06869aa12b7ebd4",
+          "origin": "wave146-x146-20261121",
+          "locator": "CWA_Data_Standard.pdf 第 9 頁表 5-1（Probability Of Precipitation 0.1 mm、Heavy Rain 80 mm/24h 或 40 mm/1h）；F-C0032-001_002.pdf 第 1 頁",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b991ac95d86a4b49",
+          "origin": "wave146-x146-20261121",
+          "locator": "CWA_Data_Standard.pdf 第 9 頁表 5-1（Probability Of Precipitation 0.1 mm、Heavy Rain 80 mm/24h 或 40 mm/1h）；F-C0032-001_002.pdf 第 1 頁",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0108",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "去日本玩看氣象廳寫「降水確率 0%」，為什麼走出車站還是有可能遇上飄雨？",
+      "mechanism_key": "x146.rain.jma_1mm_zero_percent",
+      "answer_target": "日本氣象廳設下兩道會讓 0% 依然滴雨的規則。第一，日本降水確率的門檻是 1 毫米以上（台灣的十倍），官方用語表白紙黑字寫明：就算預期會下起不到 1 毫米的毛毛雨，技術上仍可以報「降水確率 0%」。第二，日本以 0、10、20…100% 每十個百分點四捨五入發布，因此實際算出來未滿 5% 的機率（例如 4%）一律四捨五入捨去成 0%。所以東京顯示 0% 並不是保證一滴不落，而是指 6 小時（或週間 24 小時）內達 1 毫米以上降水的平均機率不到 5%。",
+      "scope": "僅限日本氣象廳官方短期（6 小時）與週間（24 小時）降水確率規則，且日本氣象廳另附註「降水確率 0%」實用上宜用於較不易降下雨水或雪的狀態；民間 App（如 Weathernews）自訂顯示規則不在此列。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把台灣 0.1 mm 刻度拉高十倍變成日本 1 mm 刻度：一顆 0.6 mm 的小雨滴從門檻線下方溜過去，旁邊 4.2% 的數字四捨五入掉進「0%」格子裡。",
+        "payoff": "日本氣象廳設下兩道會讓 0% 依然滴雨的規則。第一，日本降水確率的門檻是 1 毫米以上（台灣的十倍），官方用語表白紙黑字寫明：就算預期會下起不到 1 毫米的毛毛雨，技術上仍可以報「降水確率 0%」。第二，日本以 0、10、20…100% 每十個百分點四捨五入發布，因此實際算出來未滿 5% 的機率（例如 4%）一律四捨五入捨去成 0%。所以東京顯示 0% 並不是保證一滴不落，而是指 6 小時（或週間 24 小時）內達 1 毫米以上降水的平均機率不到 5%。",
+        "seconds": [
+          30,
+          44
+        ]
+      },
+      "source_locator": "日本氣象廳《予報の名称に関する用語》：「降水確率」「降水確率予報」「降水確率０％」",
+      "notes": "旅日觀眾極有共鳴的冷知識：「0% 也會下雨」兩大原因全出自 JMA 官方白紙黑字。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪台日量雨筒刻度對比與四捨五入階梯圖示意。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-a95bdc419e5f0140",
+          "origin": "wave146-x146-20261121",
+          "locator": "日本氣象廳《予報の名称に関する用語》：「降水確率」「降水確率予報」「降水確率０％」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0109",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "英國氣象局的預報表裡，為什麼切換成「逐時」和「逐三小時」，背後的雨量門檻會從 0.1 毫米跳成 0.3 毫米？",
+      "mechanism_key": "x146.rain.uk_met_window_threshold",
+      "answer_target": "英國氣象局把門檻跟時間窗綁在一起算：在逐時預報裡，百分比代表接下來 1 小時內至少降下 0.1 毫米的機率；切到逐 3 小時預報時，門檻就跟著拉高成 3 小時內至少 0.3 毫米。更常被忽略的是表格欄位的時間語義：同樣標在「上午 10:00」那一欄，氣溫指的是 10 點整那一瞬間的空氣溫度，但降雨機率、天氣圖示與陣風代表的卻是「10 點到下一個時段之間」整段時間，而這 0.1 或 0.3 毫米可能整段細細下完，也可能在短時間內一次急降。",
+      "scope": "依英國氣象局官方公眾指南說明網站與表格讀法，不推論至第三方商用天氣 App 的時間標示習慣。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "畫出英國預報時間軸：10:00 氣溫插著一根「整點針」，下方降雨機率卻拉成一條覆蓋 10:00–11:00（≥0.1 mm）或 10:00–13:00（≥0.3 mm）的色帶。",
+        "payoff": "英國氣象局把門檻跟時間窗綁在一起算：在逐時預報裡，百分比代表接下來 1 小時內至少降下 0.1 毫米的機率；切到逐 3 小時預報時，門檻就跟著拉高成 3 小時內至少 0.3 毫米。更常被忽略的是表格欄位的時間語義：同樣標在「上午 10:00」那一欄，氣溫指的是 10 點整那一瞬間的空氣溫度，但降雨機率、天氣圖示與陣風代表的卻是「10 點到下一個時段之間」整段時間，而這 0.1 或 0.3 毫米可能整段細細下完，也可能在短時間內一次急降。",
+        "seconds": [
+          28,
+          42
+        ]
+      },
+      "source_locator": "UK Met Office《What does this forecast mean?》：「Date and time」與「Chance of precipitation」",
+      "notes": "點破預報表最隱蔽的閱讀盲點：同一欄的溫度是「點」，降雨機率是「段」，且門檻會隨時間段長度伸縮。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪時間軸整點針與色帶對比示意。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-417413c790d23e9a",
+          "origin": "wave146-x146-20261121",
+          "locator": "UK Met Office《What does this forecast mean?》：「Date and time」與「Chance of precipitation」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0110",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "香港天文台九天天氣預報為什麼不報 0.1 毫米，反而把門檻拉高一百倍到「10 毫米」，還故意不寫精確百分比？",
+      "mechanism_key": "x146.rain.hko_10mm_significant_rain",
+      "answer_target": "香港天文台 2021 年推出的「顯著降雨概率（PSR）」刻意不走 0.1 毫米路線，而是以香港四至九月雨季的日均雨量——10 毫米——作為門檻，評估香港廣泛地區單日累積雨量達到 10 毫米以上的機會，幫市民抓出真正會影響行程的大一點的雨。同時為了以簡潔方式傳達九天降雨趨勢與不確定性（避免過早報精確雨量造成狼來了效應），並兼顧純文字發布與色覺障礙者辨識，介面與開放資料不報精確數字，改給「低（<30%）、中低（30–44%）、中（45–54%）、中高（55–69%）、高（≥70%）」五個雨傘等級，並坦白標出第 1 至 6 天誤差約在 10% 內、第 7 至 9 天擴大到約 20% 內。",
+      "scope": "僅針對香港天文台九天天氣預報的「顯著降雨概率（PSR）」，不包含其兩小時臨近降雨預報或自動分區格點產品。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "四座量雨筒排開比高度：台灣 0.1 mm、美澳加約 0.2–0.25 mm、日本 1 mm，最後香港一路拉高一百倍到 10 mm，旁邊亮出五把不同深淺的雨傘等級卡與誤差條。",
+        "payoff": "香港天文台 2021 年推出的「顯著降雨概率（PSR）」刻意不走 0.1 毫米路線，而是以香港四至九月雨季的日均雨量——10 毫米——作為門檻，評估香港廣泛地區單日累積雨量達到 10 毫米以上的機會，幫市民抓出真正會影響行程的大一點的雨。同時為了以簡潔方式傳達九天降雨趨勢與不確定性（避免過早報精確雨量造成狼來了效應），並兼顧純文字發布與色覺障礙者辨識，介面與開放資料不報精確數字，改給「低（<30%）、中低（30–44%）、中（45–54%）、中高（55–69%）、高（≥70%）」五個雨傘等級，並坦白標出第 1 至 6 天誤差約在 10% 內、第 7 至 9 天擴大到約 20% 內。",
+        "seconds": [
+          32,
+          46
+        ]
+      },
+      "source_locator": "HKO Open Data API Documentation v1.12 第 7–8 頁（PSR 五級）；HKO 9-day Weather Forecast 註腳及官方教育問答頁 00568（10 mm 門檻、五級區間、設計目的與 10%/20% 誤差）",
+      "notes": "0.1 mm → 1 mm → 10 mm 剛好形成 1 倍、10 倍、100 倍的視覺衝擊高潮！",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪台美日港四座量雨筒高度對比與五色雨傘圖標示意。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-cab5cd8ea8174b14",
+          "origin": "wave146-x146-20261121",
+          "locator": "HKO Open Data API Documentation v1.12 第 7–8 頁（PSR 五級）；HKO 9-day Weather Forecast 註腳及官方教育問答頁 00568（10 mm 門檻、五級區間、設計目的與 10%/20% 誤差）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-039dd7ad7408bce1",
+          "origin": "wave146-x146-20261121",
+          "locator": "HKO Open Data API Documentation v1.12 第 7–8 頁（PSR 五級）；HKO 9-day Weather Forecast 註腳及官方教育問答頁 00568（10 mm 門檻、五級區間、設計目的與 10%/20% 誤差）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0111",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "預報寫白天降雨機率 60%、晚上也是 60%，為什麼一整天會下雨的機率不會低於（實務上通常高於）60%，卻絕不是相加的 120%？",
+      "mechanism_key": "x146.rain.time_window_non_additive",
+      "answer_target": "中央氣象署在機率預報說明 Q7 裡直接拿這個例子破題：長時段包含短時段，所以全天下雨的機率不會低於（實務上通常高於）白天或晚上的 60%，卻絕不是相加的 120%，因為機率上限就是 100%，且「白天和晚上都下雨」的重疊情境不能重複算兩次。換言之，把手機從逐時切到全天時，時間窗拉長、容納下雨的機會變多，單一全天數字不會低於（實務上通常高於）每個短時段（若兩段獨立各 60%，整天至少下一段的機率是 1 − 0.4 × 0.4 = 84%），所以看數字前得先看它綁的是 1 小時、6 小時還是 24 小時。",
+      "scope": "以中央氣象署官方 Q7「白天 60%＋晚上 60% → 全天高於 60% 但非 120%」說明為主，數學嚴格下界為不會低於 60%；括號內的獨立事件算法（84%）明確標示為假設兩時段獨立的教學參考，實務上相鄰時段天氣具高度相關性。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "兩個 60% 色塊試圖首尾相接衝破 100% 紅線被彈回，接著改成文氏圖重疊「白天雨」與「晚上雨」，直觀展示為何全天不會低於（實務上通常高於）60% 卻不可能超過 100%。",
+        "payoff": "中央氣象署在機率預報說明 Q7 裡直接拿這個例子破題：長時段包含短時段，所以全天下雨的機率不會低於（實務上通常高於）白天或晚上的 60%，卻絕不是相加的 120%，因為機率上限就是 100%，且「白天和晚上都下雨」的重疊情境不能重複算兩次。換言之，把手機從逐時切到全天時，時間窗拉長、容納下雨的機會變多，單一全天數字不會低於（實務上通常高於）每個短時段（若兩段獨立各 60%，整天至少下一段的機率是 1 − 0.4 × 0.4 = 84%），所以看數字前得先看它綁的是 1 小時、6 小時還是 24 小時。",
+        "seconds": [
+          28,
+          42
+        ]
+      },
+      "source_locator": "CWA TY_NEWS_QA_ZHTW.pdf 第 5 頁 Q7；UK Met Office《What does this forecast mean?》時間窗說明",
+      "notes": "直接解答觀眾切逐時與全天預報時最常冒出的「為什麼數字變高了」疑問。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪時間窗方塊與文氏圖重疊示意。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-d5c22eff717be693",
+          "origin": "wave146-x146-20261121",
+          "locator": "CWA TY_NEWS_QA_ZHTW.pdf 第 5 頁 Q7；UK Met Office《What does this forecast mean?》時間窗說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-417413c790d23e9a",
+          "origin": "wave146-x146-20261121",
+          "locator": "CWA TY_NEWS_QA_ZHTW.pdf 第 5 頁 Q7；UK Met Office《What does this forecast mean?》時間窗說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0112",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "為什麼同樣寫著某個縣市「降雨機率 70%」，有人淋成落湯雞、十公里外卻出大太陽？氣象署文件裡早就藏了哪個空間限制？",
+      "mechanism_key": "x146.rain.county_point_vs_town",
+      "answer_target": "中央氣象署《今明 36 小時天氣預報》產品說明書在「技術限制」裡寫得很坦白：雖然底層來自格點化預報，但臺灣各縣市幅員廣、地勢與海拔落差大，22 縣市預報取的是「縣市政府」這類代表點，不一定能完整詮釋同縣市每個角落的天氣。美國國家氣象局分區預報同樣以「郡」為預設預報區。當一個數字同時要代表平地與山區、海邊與盆地時，站在同縣市不同鄉鎮的人體感就會徹底分歧，因此改看更細的鄉鎮預報或即時雷達，往往比死盯縣市總表更貼近頭頂上的雲。",
+      "scope": "說明空間尺度（縣市代表點 vs 鄉鎮／格點）造成的體感落差，依 CWA 36 小時預報產品說明與 NWS 分區說明，不把代表點限制誤說成預報失準。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "立體地形剖面圖：同一個縣市框裡，縣市政府標記下著雨，十公里外背風面或不同海拔鄉鎮卻頂著太陽，拉近鏡頭切換成鄉鎮小格子後機率立刻分流。",
+        "payoff": "中央氣象署《今明 36 小時天氣預報》產品說明書在「技術限制」裡寫得很坦白：雖然底層來自格點化預報，但臺灣各縣市幅員廣、地勢與海拔落差大，22 縣市預報取的是「縣市政府」這類代表點，不一定能完整詮釋同縣市每個角落的天氣。美國國家氣象局分區預報同樣以「郡」為預設預報區。當一個數字同時要代表平地與山區、海邊與盆地時，站在同縣市不同鄉鎮的人體感就會徹底分歧，因此改看更細的鄉鎮預報或即時雷達，往往比死盯縣市總表更貼近頭頂上的雲。",
+        "seconds": [
+          28,
+          42
+        ]
+      },
+      "source_locator": "CWA F-C0032-001_002.pdf 第 4 頁 2.2 技術限制；NWS Binghamton Forecast Terms（county zone）",
+      "notes": "用官方白紙黑字的「縣市政府代表點」技術限制，解釋台灣觀眾超有感的「同縣市不同天」。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪縣市海拔剖面圖與代表點切換鄉鎮格網示意。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-b991ac95d86a4b49",
+          "origin": "wave146-x146-20261121",
+          "locator": "CWA F-C0032-001_002.pdf 第 4 頁 2.2 技術限制；NWS Binghamton Forecast Terms（county zone）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-66a23d859777bb04",
+          "origin": "wave146-x146-20261121",
+          "locator": "CWA F-C0032-001_002.pdf 第 4 頁 2.2 技術限制；NWS Binghamton Forecast Terms（county zone）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0113",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "為了不讓大家把「高機率」誤當成「下大雨」，澳洲氣象局怎麼把降雨預報拆成兩欄，還規定低於 25% 就乾脆不顯示雨量？",
+      "mechanism_key": "x146.rain.bom_split_chance_amount",
+      "answer_target": "澳洲氣象局在 2026 年版正式文字預報手冊中，明確把「會不會下」和「會下多少」拆成兩欄獨立數字。第一欄「Chance of any rain」只告訴你午夜到午夜 24 小時內該地點超過 0.2 毫米的機率；第二欄「Possible rainfall」才給出兩個數字組成的雨量區間——前一個數字代表當地有 75%（高）機率至少拿到這個雨量，後一個數字代表有 25%（低）機率至少拿到那麼多。只要全天降雨機率低於 25%，系統就乾脆把雨量區間隱藏起來，避免低機率數字給人「一定會積水」的錯覺。",
+      "scope": "嚴格依據澳洲氣象局 2026 年 4 月更新版《Text Forecasts User Guide》v2.1 第 7 頁（75%／25% 雙值定義），不與 2015 年舊版 50%／25% 混談。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "兩張並排預報卡：左卡寫「降雨機會 80%｜可能雨量 1–3 mm（多半毛毛雨）」，右卡寫「降雨機會 30%｜可能雨量 0–15 mm（要不沒下、一下就猛）」，下方再切出「20% 時雨量欄自動消失」。",
+        "payoff": "澳洲氣象局在 2026 年版正式文字預報手冊中，明確把「會不會下」和「會下多少」拆成兩欄獨立數字。第一欄「Chance of any rain」只告訴你午夜到午夜 24 小時內該地點超過 0.2 毫米的機率；第二欄「Possible rainfall」才給出兩個數字組成的雨量區間——前一個數字代表當地有 75%（高）機率至少拿到這個雨量，後一個數字代表有 25%（低）機率至少拿到那麼多。只要全天降雨機率低於 25%，系統就乾脆把雨量區間隱藏起來，避免低機率數字給人「一定會積水」的錯覺。",
+        "seconds": [
+          30,
+          44
+        ]
+      },
+      "source_locator": "Australian BoM《Text Forecasts User Guide》v2.1 (2026-04-24), p. 7",
+      "notes": "制度設計上的極佳示範：用雙欄架構一次解決「機率不等於雨量」的結構性誤解。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪雙欄預報卡與 75%／25% 超越機率長條圖示意。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-88ca35a57904216b",
+          "origin": "wave146-x146-20261121",
+          "locator": "Australian BoM《Text Forecasts User Guide》v2.1 (2026-04-24), p. 7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0114",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "降雨機率背後的「30%」到底是誰算出來的？歐洲氣象中心為什麼每次預報都要一口氣跑出 51 個平行宇宙？",
+      "mechanism_key": "x146.rain.ensemble_51_members",
+      "answer_target": "大氣是對初始條件極度敏感的混沌流體，一點微小的觀測誤差或模式近似都可能讓幾天後的天氣分道揚鑣。歐洲中期天氣預報中心（ECMWF）自 1992 年起作業化採用「系集預報」：每次一口氣跑 51 組模擬——1 組用最佳觀測資料且不擾動的「控制預報」，加上 50 組對初始狀態與物理模式微幅擾動的「平行成員」。在 24 小時累積降水超過 1 毫米的機率圖裡，這 50 個擾動成員等權各占 1/50（2%）；北美系集系統（NAEFS）也用同樣原理，整合加拿大 20+1 組與美國 20+1 組模擬，把「達標成員數 ÷ 總成員數」直接轉成格點降雨機率。",
+      "scope": "以 ECMWF 51 成員（50 擾動＋1 控制）與 ECCC NAEFS 說明系集機率的原始生成原理；北美 NAEFS 成員數（加拿大 20+1、美國 20+1）依加拿大環境及氣候變遷部 NAEFS 官方產品說明頁刊載為準；實務公眾預報通常還會再經統計校準與預報員微調。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "50 格迷你地球模擬畫面同時起跑，初始數字只差小數點後微幅擾動，跑完後 15 格飄出雨滴、35 格放晴，格點上立刻集計成「15 ÷ 50 = 30%」。",
+        "payoff": "大氣是對初始條件極度敏感的混沌流體，一點微小的觀測誤差或模式近似都可能讓幾天後的天氣分道揚鑣。歐洲中期天氣預報中心（ECMWF）自 1992 年起作業化採用「系集預報」：每次一口氣跑 51 組模擬——1 組用最佳觀測資料且不擾動的「控制預報」，加上 50 組對初始狀態與物理模式微幅擾動的「平行成員」。在 24 小時累積降水超過 1 毫米的機率圖裡，這 50 個擾動成員等權各占 1/50（2%）；北美系集系統（NAEFS）也用同樣原理，整合加拿大 20+1 組與美國 20+1 組模擬，把「達標成員數 ÷ 總成員數」直接轉成格點降雨機率。",
+        "seconds": [
+          34,
+          48
+        ]
+      },
+      "source_locator": "ECMWF Fact Sheet (2017)；ECMWF Charts frontpage-medium-tp-probability；ECCC NAEFS info_produits_e.html",
+      "notes": "從「怎麼讀數字」進入「數字怎麼生出來」，50 個平行宇宙一人 2% 投票權超具畫面感！",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪 50 格平行模擬矩陣與計票動畫示意。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-49cb7dd067f8ce38",
+          "origin": "wave146-x146-20261121",
+          "locator": "ECMWF Fact Sheet (2017)；ECMWF Charts frontpage-medium-tp-probability；ECCC NAEFS info_produits_e.html",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-4ec9688adb3b02a8",
+          "origin": "wave146-x146-20261121",
+          "locator": "ECMWF Fact Sheet (2017)；ECMWF Charts frontpage-medium-tp-probability；ECCC NAEFS info_produits_e.html",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-74763f9a54cfeaf5",
+          "origin": "wave146-x146-20261121",
+          "locator": "ECMWF Fact Sheet (2017)；ECMWF Charts frontpage-medium-tp-probability；ECCC NAEFS info_produits_e.html",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0115",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "1987 年英國大風暴前一天漏報引發公憤，回頭跑 50 組模擬卻跳出約 30% 颶風級陣風機率——為什麼直接取「平均預報」反而最危險？",
+      "mechanism_key": "x146.rain.1987_storm_ensemble_mean",
+      "answer_target": "世界氣象組織 IMO 獎得主、牛津大學物理學家 Tim Palmer 回顧，1987 年 10 月重創英格蘭南部的大風暴前一天沒有被單一決定性預報抓到，媒體一度要求英國氣象局長下台。但團隊事後用 50 成員系集回溯 2.5 天前的預報，成員結果從平靜高壓脊一路橫跨到颶風級陣風，給出約 30% 的極端強風機率——在幾乎從不出現颶風級風速的英格蘭南部，30% 已經是極具警訊的紅燈。如果當年把這 50 組模擬硬取「系集平均」，正負極端彼此抵銷，只會把最致命的極端強風訊號平滑抹淡、失去預警作用，這也是氣象界改報機率而非只報平均值的原因。",
+      "scope": "依據 Tim Palmer 2024 年 WMO 公報 IMO 獎演講稿中的 1987 年 10 月 16 日回溯系集案例，呈現的是事後回溯驗證，並非當時已上線作業之預報。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "50 張小郵票天氣圖展開，其中約三成捲出紫色狂風漩渦、其餘平靜；一鍵按下「取平均」後，紫色漩渦瞬間被抹淡成無害淺灰，再切回「30% 極端機率」紅燈。",
+        "payoff": "世界氣象組織 IMO 獎得主、牛津大學物理學家 Tim Palmer 回顧，1987 年 10 月重創英格蘭南部的大風暴前一天沒有被單一決定性預報抓到，媒體一度要求英國氣象局長下台。但團隊事後用 50 成員系集回溯 2.5 天前的預報，成員結果從平靜高壓脊一路橫跨到颶風級陣風，給出約 30% 的極端強風機率——在幾乎從不出現颶風級風速的英格蘭南部，30% 已經是極具警訊的紅燈。如果當年把這 50 組模擬硬取「系集平均」，正負極端彼此抵銷，只會把最致命的極端強風訊號平滑抹淡、失去預警作用，這也是氣象界改報機率而非只報平均值的原因。",
+        "seconds": [
+          34,
+          48
+        ]
+      },
+      "source_locator": "Tim Palmer (2024), WMO Bulletin Vol. 73(2), 1987 年 10 月風暴段與 Figure 2–3",
+      "notes": "真實歷史災難＋數學直覺反轉：說明「只給 30% 不是氣象局在推卸責任，而是取平均會殺死極端預警」。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪郵票縮圖陣列與平均平滑對比圖示意；不重製原文地圖。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-dee0086820fb834a",
+          "origin": "wave146-x146-20261121",
+          "locator": "Tim Palmer (2024), WMO Bulletin Vol. 73(2), 1987 年 10 月風暴段與 Figure 2–3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0116",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "報 30% 結果沒下雨，到底算不算預報失準？1950 年氣象學家怎麼用一道平方公式，堵死預報員「永遠亂押 0% 或 100%」的偷吃步？",
+      "mechanism_key": "x146.rain.brier_score_anti_hedging",
+      "answer_target": "機率預報無法靠單一天定生死，必須累積大量場次核對：例如日本氣象廳每三個月按 10% 級距彙整所有報過 30% 的場次，若實際出現 1 毫米以上降水的比例也貼近 30%，在驗證圖上就會落成一條斜率為 1 的理想直線。至於評分，美國氣象局學者 Glenn Brier 在 1950 年設計了「布萊爾分數（Brier score）」，計算預報機率與實際結果（下雨記 1、沒下記 0）差的平方平均，越接近 0 越準。Brier 用 10 次裡下 3 次雨的例子證明：若想靠只填 0% 或 100% 來賭高分，一旦猜錯就會吃下 1 的平方重罰；唯有照實報出真實機率（如 0.3），長期平均扣分才最低。",
+      "scope": "結合 Brier (1950) 原文防避險證明、AMS Glossary 現代二元 Brier score（0.0 至 1.0）及日本氣象廳三個月 10% 分箱斜率 1 驗證機制，區分原式（0–2）與現代二元式（0–1）。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "畫出斜率 1 的可靠度對角線，讓 30% 累積 100 天裡亮起 30 顆雨滴；旁邊擺出 Brier 平方懲罰天平：亂押 100% 卻天晴時，誤差方塊瞬間脹大成 1×1 巨磚。",
+        "payoff": "機率預報無法靠單一天定生死，必須累積大量場次核對：例如日本氣象廳每三個月按 10% 級距彙整所有報過 30% 的場次，若實際出現 1 毫米以上降水的比例也貼近 30%，在驗證圖上就會落成一條斜率為 1 的理想直線。至於評分，美國氣象局學者 Glenn Brier 在 1950 年設計了「布萊爾分數（Brier score）」，計算預報機率與實際結果（下雨記 1、沒下記 0）差的平方平均，越接近 0 越準。Brier 用 10 次裡下 3 次雨的例子證明：若想靠只填 0% 或 100% 來賭高分，一旦猜錯就會吃下 1 的平方重罰；唯有照實報出真實機率（如 0.3），長期平均扣分才最低。",
+        "seconds": [
+          34,
+          48
+        ]
+      },
+      "source_locator": "Brier (1950), MWR 78(1):1–3（公式與 10 次範例）；JMA 検証方法の説明第 3 節（斜率 1 直線）；AMS Glossary「Brier score」",
+      "notes": "把觀眾最常罵的「報 30% 下雨或不準」轉化為嚴格的評分博弈設計，收束感極強。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪可靠度對角線圖與平方誤差方塊天平示意。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-270f7bf0e1f7b109",
+          "origin": "wave146-x146-20261121",
+          "locator": "Brier (1950), MWR 78(1):1–3（公式與 10 次範例）；JMA 検証方法の説明第 3 節（斜率 1 直線）；AMS Glossary「Brier score」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-77c3f656a53752b5",
+          "origin": "wave146-x146-20261121",
+          "locator": "Brier (1950), MWR 78(1):1–3（公式與 10 次範例）；JMA 検証方法の説明第 3 節（斜率 1 直線）；AMS Glossary「Brier score」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-11ac802f6c47ed8a",
+          "origin": "wave146-x146-20261121",
+          "locator": "Brier (1950), MWR 78(1):1–3（公式與 10 次範例）；JMA 検証方法の説明第 3 節（斜率 1 直線）；AMS Glossary「Brier score」",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0117",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "為什麼在撒哈拉沙漠旱季天天報晴天「準確度超高」卻幾乎沒價值，而 20% 到 30% 的低機率反而能左右登山客與救災行動？",
+      "mechanism_key": "x146.rain.quality_vs_value_cost_loss",
+      "answer_target": "WMO 聯合預報驗證研究組引述驗證先驅 Allan Murphy（1993）指出，預報的「品質（準不準）」和「價值（有沒有幫你做對決定）」是兩回事：在撒哈拉沙漠旱季天天喊晴天，幾乎百發百中卻毫無決策價值；反觀機場濃霧等漏報代價極高的罕見天氣，就算誤報多到拉低分數，預警仍有巨大價值。Tim Palmer 也用登山背雨衣作比喻：是否帶雨具取決於「淋濕的不便 × 降雨機率」有沒有大過「多背重量的麻煩」——短程買便當遇到 30% 或許不用帶，但戶外婚禮、登山或人道組織提前調度物資，只要機率跨過各自能承受的風險門檻，就值得先動起來。",
+      "scope": "整合 Murphy (1993) 品質與價值區分（JWGFVR 驗證指南）與 Palmer (2024) 登山雨衣及人道預警行動（anticipatory action）門檻原理，提供決策框架而非替觀眾訂死單一帶傘百分比。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "先切一張撒哈拉沙漠 100 分晴天獎狀卻無人理會，再切出兩座決策天平：左邊「巷口買咖啡」要 60% 才帶傘，右邊「高山縱走／救災物資」在 20%–30% 天平就已傾倒。",
+        "payoff": "WMO 聯合預報驗證研究組引述驗證先驅 Allan Murphy（1993）指出，預報的「品質（準不準）」和「價值（有沒有幫你做對決定）」是兩回事：在撒哈拉沙漠旱季天天喊晴天，幾乎百發百中卻毫無決策價值；反觀機場濃霧等漏報代價極高的罕見天氣，就算誤報多到拉低分數，預警仍有巨大價值。Tim Palmer 也用登山背雨衣作比喻：是否帶雨具取決於「淋濕的不便 × 降雨機率」有沒有大過「多背重量的麻煩」——短程買便當遇到 30% 或許不用帶，但戶外婚禮、登山或人道組織提前調度物資，只要機率跨過各自能承受的風險門檻，就值得先動起來。",
+        "seconds": [
+          32,
+          46
+        ]
+      },
+      "source_locator": "JWGFVR Forecast Verification FAQ「Forecast quality vs. forecast value」；Tim Palmer (2024) WMO Bulletin 登山雨具與人道救援決策段",
+      "notes": "漂亮收尾：把開頭「看到 30% 到底帶不帶傘」升華成每個人不同的成本損益決策門檻。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪撒哈拉獎狀與兩組風險成本天平示意。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-dee0086820fb834a",
+          "origin": "wave146-x146-20261121",
+          "locator": "JWGFVR Forecast Verification FAQ「Forecast quality vs. forecast value」；Tim Palmer (2024) WMO Bulletin 登山雨具與人道救援決策段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2ef7bf401b44bbb9",
+          "origin": "wave146-x146-20261121",
+          "locator": "JWGFVR Forecast Verification FAQ「Forecast quality vs. forecast value」；Tim Palmer (2024) WMO Bulletin 登山雨具與人道救援決策段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0201",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "除濕機外箱寫著「日除濕 12 公升」，這組數字是在什麼樣的「標準天氣」裡測出來的？",
+      "mechanism_key": "x146.dehumidifier.cns12492_27c_60rh_constant_chamber_rating",
+      "answer_target": "台灣國家標準 CNS 12492 規定，除濕機的額定除濕能力與能源因數值，必須在維持「室溫 27°C、相對濕度 60%」的恆溫恆濕實驗室裡運轉至平衡，連續測定 3 小時以上的除濕水量與耗電量，再換算成 24 小時的日除濕量（現階段能效規範適用 1,000W 以下機種）。這個 27°C、60% RH 的條件接近台灣初夏或夏末室內，與冬天十幾度的冷房間完全不同；同一份官方簡報也列出其他地區的標準測試點：中國大陸 GB/T 19411-2003 同樣用 27°C、60% RH（測 1 小時），香港引用 ANSI/AHAM DH-1:2008 用 26.7°C、60% RH（測 6 小時），而該 2023 年 5 月工研院對照表所列美加測 6 小時係依 2019 年版標準，而美國聯邦法規 10 CFR Appendix X1 自 2024 年 1 月起已將額定測試時段縮短為 2 小時（仍維持 18.3°C、60% RH）。",
+      "scope": "以經濟部委託工研院 2023 年 5 月廠商座談會簡報所載台灣 CNS 12492 與五地測試條件對照表，以及美國聯邦法規 10 CFR Part 430 Subpart B Appendix X1（2024 年 1 月 22 日起適用 2 小時額定測試時段）為準。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "剖面動畫對比兩個房間：左邊是發著暖黃光的恆溫恆濕實驗室，管線不斷把水霧補進空氣裡維持平衡，除濕機水箱飛快注滿；右邊是飄著冷雨的陰冷冬季臥室，同款除濕機水箱水位緩慢爬升。畫面不放文字、數字與廠牌標誌。",
+        "payoff": "標籤上寫的 12 公升，其實是機器在「27 度恆濕夏末實驗室」裡不眠不休跑 24 小時的滿分成績單。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "X146R2-S01，Page 16（國際能源效率基準概況表）與 Page 26（附表一註 1、註 3）；X146R2-S04，Section 4.1.1（2024 年 1 月 22 日起額定測試時段為 2 小時，Table 1 維持 65°F［約 18.3°C］、60% RH）。",
+      "notes": "研究網 NET_TW_GOV。第一章開場建立「標籤溫度 vs 冬天房間」核心反差。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製無廠牌標誌之實驗室與冬季房間剖面動畫。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-bee8f33065504b71",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S01，Page 16（國際能源效率基準概況表）與 Page 26（附表一註 1、註 3）；X146R2-S04，Section 4.1.1（2024 年 1 月 22 日起額定測試時段為 2 小時，Table 1 維持 65°F［約 18.3°C］、60% RH）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-dc1a50c1bca4722e",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S01，Page 16（國際能源效率基準概況表）與 Page 26（附表一註 1、註 3）；X146R2-S04，Section 4.1.1（2024 年 1 月 22 日起額定測試時段為 2 小時，Table 1 維持 65°F［約 18.3°C］、60% RH）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0202",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "把測試室溫度調低 8 度多，同一台除濕機在標籤上會瞬間「縮水」多少公升？",
+      "mechanism_key": "x146.dehumidifier.us_doe_80f_to_65f_capacity_drop_40pct",
+      "answer_target": "美國在 2019 年 6 月生效的新聯邦除濕機標準直接做了一次全國級實驗：能源部（DOE）為了更貼近民眾在涼爽地下室使用的實況，把可攜式除濕機的測試室溫從舊制的 80°F（【換算】約 26.7°C）一口氣下修 15°F 到 65°F（【換算】約 18.3°C），依聯邦法規 10 CFR Appendix X1 Table 1 相對濕度同樣維持 60%。結果硬體規模相當的機器，光換這把尺就大幅縮水——ENERGY STAR 官方公布的新舊對照表（官方註明屬近似值，實際依各機型而異）顯示，原本標示日除濕 50 品脫的機型，改在新標準下只剩約 30 品脫（【換算】直接少了四成）；原本標 70 品脫的縮到 40–45 品脫，90 品脫的也掉到 55 品脫。",
+      "scope": "美國 ENERGY STAR 官方 2019 舊制（80°F）與 2020 後新制（65°F）可攜式除濕機容量近似對照表，搭配 10 CFR Appendix X1 Table 1（60% RH）；攝氏溫度與「少了四成」為【換算】值，實際依各機型而異。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "可愛物理演示動畫：同一台無標誌除濕機站在升降溫度計旁，當背景色調從暖橘降為清涼淺藍時，水箱旁代表單日抽水量的五個透明水壺瞬間變成只裝滿三個，機器外殼卻完全沒變小。畫面不放字卡與文字。",
+        "payoff": "硬體螺絲一根都沒動，只把測試室從 80°F（【換算】約 26.7 度）降到 65°F（【換算】約 18.3 度），除濕機在美國官方近似對照表上就【換算】直接少了四成產水量。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "X146R2-S03，Dehumidifier Performance and Testing 段與 Capacity Changes in Portable and Whole-Home Dehumidifiers 表；X146R2-S04，Section 4.1.1 Table 1（可攜式 65°F、60% RH）。",
+      "notes": "研究網 NET_US_FED。極強視覺轉折：用美國官方改制前後對照直接證明測試溫度決定標示公升數。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製無廠牌除濕機與水壺比例動畫。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-d7869bb2ea26b0ef",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S03，Dehumidifier Performance and Testing 段與 Capacity Changes in Portable and Whole-Home Dehumidifiers 表；X146R2-S04，Section 4.1.1 Table 1（可攜式 65°F、60% RH）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-dc1a50c1bca4722e",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S03，Dehumidifier Performance and Testing 段與 Capacity Changes in Portable and Whole-Home Dehumidifiers 表；X146R2-S04，Section 4.1.1 Table 1（可攜式 65°F、60% RH）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0203",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "為什麼同一台除濕機，廣告 DM 上印的日除濕量常比能源標籤高出七成甚至將近一倍？",
+      "mechanism_key": "x146.dehumidifier.hk_cc_30c_80rh_vs_26_7c_60rh_inflation",
+      "answer_target": "因為不少廠商在型錄上習慣另外引用「室溫 30°C、相對濕度 80%」這組高溫高濕的非標準環境，而非能源標籤規定的標準環境（香港為 26.7°C、60% RH）。香港消費者委員會在 2016 年與 2023 年兩度分別實測 12 款與 14 款（合計 26 款次）市售壓縮機除濕機，結果 2016 年樣本在 30°C、80% RH 下測出的除濕速度比 26.7°C、60% RH 標準高出 54% 到 90%（平均高 77%），2023 年 14 款樣本也高出 49% 到 83.9%（平均高 70.3%）；反觀同次測試的 2 款除濕輪機型，在 30°C、80% RH 下只比標準多出 7% 與 10%。",
+      "scope": "香港消費者委員會 2016 年（CHOICE #472，12 款壓縮機＋2 款除濕輪）與 2023 年（CHOICE #556，14 款壓縮機）公開實測新聞稿數據。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "雙畫面對照：左邊是桑拿房般悶熱、水霧濃密的熱帶玻璃屋，除濕機水管嘩啦啦狂噴水；右邊是普通室內，同一台機器水流細了將近一半。強調環境條件差異而非特定品牌。不放文字與數字。",
+        "payoff": "把機器關進 30 度、濕度 80% 的蒸籠裡測，壓縮機的數字平均能膨脹七成以上，這就是 DM 跟能效貼紙對不起來的秘密。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "X146R2-S05，Urge to Stop Using Dehumidifying Capacity under Manufacturers' Own Test Environment 段；X146R2-S06，Manufacturers' Own Test Environment Potentially Misleading 段。",
+      "notes": "研究網 NET_HK_CC。點出台灣、香港消費者最常踩的「雙重標示」視覺落差，也順帶埋下壓縮機對溫濕度極敏感、除濕輪較不敏感的伏筆。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製無品牌標誌之高濕蒸籠與常溫室對比動畫。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-f73321fdc2b5dbbe",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S05，Urge to Stop Using Dehumidifying Capacity under Manufacturers' Own Test Environment 段；X146R2-S06，Manufacturers' Own Test Environment Potentially Misleading 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-059955e1c28df221",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S05，Urge to Stop Using Dehumidifying Capacity under Manufacturers' Own Test Environment 段；X146R2-S06，Manufacturers' Own Test Environment Potentially Misleading 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0204",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "冬天台北房間濕度計明明飆到 80%，為什麼空氣裡實際能榨出來的水，反而比夏天 60% 還少？",
+      "mechanism_key": "x146.dehumidifier.wmo_saturation_vapor_pressure_exponential_drop",
+      "answer_target": "因為「相對濕度」代表的是水氣占該溫度上限的百分比，而空氣能裝載水氣的上限——飽和水氣壓——會隨溫度呈指數級下降。【依 WMO 公式與混合比算式推算，標準大氣壓 1013.25 hPa】：30°C 時飽和水氣壓高達 42.34 hPa，27°C 為 35.57 hPa，掉到冬季常見的 15°C 時腰斬剩 17.02 hPa，寒流 5°C 更只剩 8.72 hPa。進一步【依 WMO 公式與混合比算式推算，標準大氣壓 1013.25 hPa】每公斤乾空氣的實際含水量：標準測試環境 27°C、60% RH 含有 13.38 克水氣（露點 18.6°C），而冬天 15°C 就算濕度計飆到 80% RH，每公斤也只含 8.47 克水氣（【換算】比 27°C/60% 少 37%）；一旦除濕到 15°C、60% RH，更只剩 6.33 克水氣（不到測試環境的一半），露點直接掉到 7.3°C。",
+      "scope": "依據 UCAR/NCAR EOL 所載 WMO CIMO Guide（WMO-No. 8, 2008）液態水面馬格努斯公式與 10 CFR App X1 Sec 5.5.4 混合比公式，於標準海平面氣壓 1013.25 hPa 下推算。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用大小不同的透明量杯比喻不同溫度的空氣：暖呼呼的大玻璃缸（代表 27 度）裝到六分滿，裡面的藍色水珠遠多於冷冰冰的小玻璃杯（代表 15 度）裝到八分滿；把小杯子倒進同一個水箱裡，水位立刻矮了一大截。畫面不放文字與數字。",
+        "payoff": "濕度計上的百分比只是「杯子裝了幾分滿」，冬天的冷空氣本身杯子就小了一半，裝到八分滿也比夏天的六分滿少水。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "source_locator": "X146R2-S13，Section 1 Eq. 2（WMO 2008 ew = 6.112 exp[17.62 t/(243.12+t)]）；X146R2-S04，Section 5.5.4（HR = 0.62198 × Pw / (P − Pw)）。",
+      "notes": "研究網 NET_ACAD_UCAR（搭配 X146R2-S04 混合比定義計算）。全片最核心的物理直覺翻轉，所有數值皆經 Node 精確驗算。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製大小水杯與藍水珠的空氣含水隱喻動畫。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-80a02a4076a487ca",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S13，Section 1 Eq. 2（WMO 2008 ew = 6.112 exp[17.62 t/(243.12+t)]）；X146R2-S04，Section 5.5.4（HR = 0.62198 × Pw / (P − Pw)）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-dc1a50c1bca4722e",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S13，Section 1 Eq. 2（WMO 2008 ew = 6.112 exp[17.62 t/(243.12+t)]）；X146R2-S04，Section 5.5.4（HR = 0.62198 × Pw / (P − Pw)）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0205",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "測試實驗室裡室溫只不小心歪了攝氏 1 度，除濕機的抽水量為什麼就需要動用聯邦公式修正超過 6%？",
+      "mechanism_key": "x146.dehumidifier.doe_10cfr_temp_rh_sensitivity_coefficients",
+      "answer_target": "因為壓縮機除濕量對進氣溫度極度敏感，連實驗室裡微小的溫差都會大幅扭曲結果。美國聯邦法規 10 CFR Part 430 Appendix X1 第 5.2 節白紙黑字規定了可攜式除濕機的標準化修正方程式：在 65°F、60% RH 測試點附近，測試室乾球溫度每低 1°F，實測除濕量就必須往上補回約 3.52%（【換算】每低 1°C 約差 6.3%，僅適用測試點 65°F ± 2°F 附近小幅容差修正），而相對濕度每低 1 個百分點則補回約 1.69%。同一部法規也在第 5.3 與 5.4 節把能源效率改為「綜合能源因數 IEF」，不再只算壓縮機全力抽水的 1,095 小時，而是把全年待機或關機 1,840.5 小時與壓縮機休止循環（off-cycle）1,840.5 小時的耗電一併納入分母。",
+      "scope": "美國 10 CFR Part 430 Subpart B Appendix X1（2024 年 1 月 22 日後全面強制適用版本）第 5.2、5.3 與 5.4 節；每 1°C 約 6.3% 係 3.52% × 1.8 之單位換算，適用範圍為測試點附近小幅溫差。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "精巧的實驗室天平動畫：溫度計指針只輕輕往下滑一小格，旁邊連動的水流計就猛然往下掉一大格，顯示溫度槓桿遠大於相對濕度微調；一旁另畫一個停下壓縮機但風扇仍在轉的小電表持續緩慢計數。不放文字與數字。",
+        "payoff": "在標準法規的公式裡，室溫的槓桿比相對濕度還猛——測試點 65°F ± 2°F 附近【換算】少 1 度 C 就足以讓除濕量差出超過 6%，而且壓縮機休止循環時電表也沒閒著。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "X146R2-S04，Section 5.2（Cr,p 係數 0.0352/°F 與 0.0169/%RH）、Section 5.3–5.4（1,095 / 1,840.5 / 1,840.5 年時數權重）。",
+      "notes": "研究網 NET_US_FED。讓觀眾從「體感猜測」升級到「聯邦法規精確量化靈敏度」。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製無廠牌之溫度槓桿與待機電表示意動畫。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-dc1a50c1bca4722e",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S04，Section 5.2（Cr,p 係數 0.0352/°F 與 0.0169/%RH）、Section 5.3–5.4（1,095 / 1,840.5 / 1,840.5 年時數權重）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0206",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "為什麼除濕機剛開機前兩小時水箱升很快，關窗繼續開一整天後半段卻幾乎沒動靜？",
+      "mechanism_key": "x146.dehumidifier.closed_room_self_drying_absolute_humidity_decay",
+      "answer_target": "實驗室為了測出額定能力，會持續往測試室補充水氣，讓進氣始終維持在固定的高溫與 60% 相對濕度；但在家裡把門窗關起來運轉時，空氣中的水分會隨除濕過程越來越少。香港消費者委員會在 2023 年壓縮機式除濕機實測中即明確說明，真實關窗房間初期濕度高、抽水較快，隨著室內空氣變乾，除濕機抽水速度就會同步遞減。同濟大學與亞利桑那州立大學團隊在 2024 年發表於《Water Research》的 12 個月室內實測（實測對象為商用沸石除濕輪）亦發現，每日集水量受進氣「絕對濕度」主導（改良式 Langmuir 模型 R² = 0.80），以 105 平方公尺住宅資料擬合的模型驗證 >27,000 平方公尺通風辦公大樓時偏低估，作者推測係較小空間中機器自排乾風拉低周圍進氣絕對濕度所致。",
+      "scope": "香港消委會 2023 年壓縮機式測試對關窗除濕減速之說明，以及同濟大學與亞利桑那州立大學 2024 年《Water Research》對商用沸石除濕輪之住宅（105 m²）與辦公大樓（>27,000 m²）對比實測（住宅自排乾風稀釋係作者推測）。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "俯視小套房剖面：剛開機時滿室濃藍水霧被吸進除濕機，水箱滴答聲急促；接著出風口吐出的淺黃乾空氣在密閉房間繞圈回流進氣口，水霧越來越淡，滴水聲拉長到偶爾一滴。不放文字與數字。",
+        "payoff": "實驗室邊抽邊幫你補濕，你家關窗除濕卻越抽越乾、進氣絕對濕度一路往下掉，後半段當然越榨不出水。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "X146R2-S17，Section 3.2（商用沸石除濕輪改良式 Langmuir 模型 R² = 0.80；105 m² 住宅模型驗證 >27,000 m² 大樓偏低估，作者推測係較小空間自排乾風拉低周圍進氣絕對濕度所致）；X146R2-S06，Manufacturers' Own Test Environment Potentially Misleading 段（壓縮機式關窗房間隨空氣變乾而除濕減速）。",
+      "notes": "研究網 NET_ACAD_ASU_TONGJI（與 NET_HK_CC 互證）。精準回答觀眾日常體感「前兩小時很猛、後來幾乎不動」。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製無品牌標誌密閉房間氣流回圈動畫。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-bc2ed03524babfad",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S17，Section 3.2（商用沸石除濕輪改良式 Langmuir 模型 R² = 0.80；105 m² 住宅模型驗證 >27,000 m² 大樓偏低估，作者推測係較小空間自排乾風拉低周圍進氣絕對濕度所致）；X146R2-S06，Manufacturers' Own Test Environment Potentially Misleading 段（壓縮機式關窗房間隨空氣變乾而除濕減速）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-059955e1c28df221",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S17，Section 3.2（商用沸石除濕輪改良式 Langmuir 模型 R² = 0.80；105 m² 住宅模型驗證 >27,000 m² 大樓偏低估，作者推測係較小空間自排乾風拉低周圍進氣絕對濕度所致）；X146R2-S06，Manufacturers' Own Test Environment Potentially Misleading 段（壓縮機式關窗房間隨空氣變乾而除濕減速）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0207",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "冬天開壓縮機除濕機，裡面的金屬冷排為什麼不是滴水，而是開始結霜甚至效能腰斬？",
+      "mechanism_key": "x146.dehumidifier.evaporator_frosting_dual_threshold_and_heat_transfer_loss",
+      "answer_target": "壓縮機式除濕機靠冷媒把蒸發器冷排降到「低於空氣露點」來凝結水氣。天冷時空氣露點跟著急降（【依 WMO 公式推算】，例如 15°C、60% RH 時露點僅 7.3°C；10°C、70% RH 時更降到 4.8°C），冷排必須更冰才拉得開溫差。山東大學團隊發表於《Energies》（2018）的蒸發器結霜綜論指出，只要冷排表面溫度同時低於空氣露點又低於純水冰點 0°C（三相點 0.01°C、612 Pa），凝結在翅片上的液滴雖可能短暫過冷（實驗曾測到在 −8.19°C 維持 127 秒未凍），最終仍會凍結成霜並持續長厚。霜層一方面像棉被隔絕傳熱、另一方面堵住翅片間的風道使風量銳減，文獻實測同類緊湊式換熱器結霜會讓換熱率大跌 50%–75%，同類空氣源熱泵（ASHP）蒸發器在結霜工況下之系統效率（COP）在運轉 25 分到 100 分鐘之間下降約 53%。",
+      "scope": "山東大學 2018 年《Energies》綜論所整理之熱泵／冷媒蒸發器結霜熱力學條件與換熱衰減實測文獻（50%–75% 係緊湊式換熱器、53% 係空氣源熱泵［ASHP］蒸發器於結霜工況下之量測值），並依 X146R2-S13 WMO 公式推算低溫露點舉例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "微距放大除濕機內部金屬散熱翅片：起初晶瑩水珠順著翅片滑落水箱；隨著進氣變冷，水珠表面突然長出白色針狀冰晶並連成毛茸茸的霜毯，原本暢通的藍色氣流箭頭被白霜擋得繞不過去。不放文字與數字。",
+        "payoff": "冷排一跨過零度線，水就不流進水箱而改在翅片上織成隔熱棉被，既擋風又隔冷，機器自己把自己悶住。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "source_locator": "X146R2-S14，Section 1（緊湊式換熱器 50%–75% 換熱率下降、空氣源熱泵 25→100 分鐘 COP 下降約 53%）、Section 2.1（三相點 0.01°C/612 Pa、過冷至 −8.19°C 維持 127 s、氣→液→固結霜路徑）、Section 2.2（低溫高濕加劇結霜）；X146R2-S13，Section 1 Eq. 2（WMO-No. 8 飽和水氣壓公式推算露點）。",
+      "notes": "研究網 NET_ACAD_SDU。第三章的物理主軸，與下一張三菱電機實機除霜機制無縫銜接。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製金屬翅片微距結霜與風道堵塞動畫。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-7628ac7f23389919",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S14，Section 1（緊湊式換熱器 50%–75% 換熱率下降、空氣源熱泵 25→100 分鐘 COP 下降約 53%）、Section 2.1（三相點 0.01°C/612 Pa、過冷至 −8.19°C 維持 127 s、氣→液→固結霜路徑）、Section 2.2（低溫高濕加劇結霜）；X146R2-S13，Section 1 Eq. 2（WMO-No. 8 飽和水氣壓公式推算露點）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-80a02a4076a487ca",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S14，Section 1（緊湊式換熱器 50%–75% 換熱率下降、空氣源熱泵 25→100 分鐘 COP 下降約 53%）、Section 2.1（三相點 0.01°C/612 Pa、過冷至 −8.19°C 維持 127 s、氣→液→固結霜路徑）、Section 2.2（低溫高濕加劇結霜）；X146R2-S13，Section 1 Eq. 2（WMO-No. 8 飽和水氣壓公式推算露點）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0208",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "冬天除濕機開到一半突然變安靜或只剩微風，而且低溫時就算能開機，一天到底能抽多少水？",
+      "mechanism_key": "x146.dehumidifier.winter_30min_defrost_pause_and_1c_capacity_floor",
+      "answer_target": "那往往不是故障，而是除濕機被迫啟動「自動除霜」。三菱電機官方技術問答明確說明，冬季冷卻器（蒸發器）結霜後，機器會亮起除霜燈、暫停除濕運轉，轉為讓內部熱交換器升溫把霜融化滴進水箱，整個除霜停頓約需 30 分鐘後才會重新開始除濕，因此在低溫下有效除濕時數被反覆切斷。即便是標榜可於 1°C 至 40°C 寬溫域運轉的壓縮機式除濕機（部分機型除外），三菱電機官方腳註也直接寫明：在室溫 1°C、相對濕度 70% 的環境下，日除濕能力會掉到 2.0 公升以下。",
+      "scope": "三菱電機日本官方家電 Q&A（2025-12-01）就自家寬溫域壓縮機式除濕機之除霜邏輯與 1°C/70% RH 能力上限說明。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "時間軸剖面動畫：時鐘指針轉動時，除濕機內部反覆在「藍色運轉結霜」與「橘色停機融霜滴水」之間切換，時鐘上有一大塊扇形時間被標示為暫停融霜，下方水箱水位幾乎停滯。不放文字與數字。",
+        "payoff": "冬天除濕機動不動安靜半小時不是壞掉，是忙著幫自己退冰；冷到接近 1 度時，連寬溫壓縮機式一天都剩不到兩公升。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "X146R2-S10，正文第 2–3 段（結霜暫停除濕、約 30 分鐘融霜恢復）與 ※2 腳註（1°C、70% RH 除濕能力為 2.0 L/日以下）。",
+      "notes": "研究網 NET_CORP_MITSUBISHI。與 K146-0207 形成「熱力學原理 → 實機廠商數據」完美雙證。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製無廠牌除濕機除霜時間軸與融冰滴水動畫。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-f0a630dd25545e83",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S10，正文第 2–3 段（結霜暫停除濕、約 30 分鐘融霜恢復）與 ※2 腳註（1°C、70% RH 除濕能力為 2.0 L/日以下）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0209",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "台灣規格表常見的「B 式除濕機」是什麼意思？既然叫低溫型，為什麼冬天水箱還是裝不滿？",
+      "mechanism_key": "x146.dehumidifier.taiwan_type_a_15c_vs_type_b_5c_classification",
+      "answer_target": "依台灣飛利浦家電官方說明，台灣市售壓縮機式除濕機依適用環境溫度分為「A 式」（適用室溫 15°C 以上）與主流「B 式」（適用室溫 5°C–35°C），若環境低於 5°C 會影響除濕力。不過「能在 5°C–35°C 下開機運轉」，不等於「在 5°C 或 15°C 還能維持 27°C 的額定抽水量」——B 式依然仰賴冷媒冷凝，依 WMO 飽和水氣壓公式（X146R2-S13）與三菱電機冬季除霜說明（X146R2-S10），它同樣逃不掉低溫空氣含水量驟減與冷排結霜被迫暫停除霜的物理天花板。",
+      "scope": "台灣飛利浦家電官方衛教對壓縮機式 A 式（15°C 以上）與主流 B 式（5°C–35°C）適用溫度分類說明（X146R2-S12），搭配三菱電機冬季除霜機制（X146R2-S10）與 WMO 飽和水氣壓公式（X146R2-S13）對照低溫物理限制。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "兩支並行溫度計滑軌：左邊常溫型滑到涼爽區就亮起紅燈停工，右邊低溫型加上除霜盾牌後能一路往下滑到接近結冰區繼續撐著運轉，但水滴從粗水柱縮成細水滴。不放文字、字母與數字。",
+        "payoff": "買到低溫型 B 式只是讓機器寒流來時「不會罷工當機」，沒辦法把冷空氣裡原本就不存在的水變出來。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "source_locator": "X146R2-S12，壓縮機式 vs. 除濕輪式原理大評比段與對照表（A 式 15°C 以上、主流 B 式 5°C–35°C、低於 5°C 影響除濕力）；X146R2-S10（低溫結霜暫停除霜機制）；X146R2-S13（低溫飽和水氣壓驟減公式）。",
+      "notes": "研究網 NET_CORP_PHILIPS_TW。精準破除台灣觀眾「我明明買 B 式怎麼冬天還抽這麼慢」的常見誤解。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製無字母與商標之溫域保護示意動畫。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-222a98cec2a30932",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S12，壓縮機式 vs. 除濕輪式原理大評比段與對照表（A 式 15°C 以上、主流 B 式 5°C–35°C、低於 5°C 影響除濕力）；X146R2-S10（低溫結霜暫停除霜機制）；X146R2-S13（低溫飽和水氣壓驟減公式）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f0a630dd25545e83",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S12，壓縮機式 vs. 除濕輪式原理大評比段與對照表（A 式 15°C 以上、主流 B 式 5°C–35°C、低於 5°C 影響除濕力）；X146R2-S10（低溫結霜暫停除霜機制）；X146R2-S13（低溫飽和水氣壓驟減公式）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-80a02a4076a487ca",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S12，壓縮機式 vs. 除濕輪式原理大評比段與對照表（A 式 15°C 以上、主流 B 式 5°C–35°C、低於 5°C 影響除濕力）；X146R2-S10（低溫結霜暫停除霜機制）；X146R2-S13（低溫飽和水氣壓驟減公式）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0210",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "為什麼日本「除濕輪式」除濕機的額定除濕量是在 20°C 標示，而不是跟壓縮機一樣在 27°C？",
+      "mechanism_key": "x146.dehumidifier.japan_desiccant_20c_rating_and_winter_drying",
+      "answer_target": "因為除濕輪式（日本稱デシカント式）不靠冷排結露直接抓室內空氣的水，依松下官方除濕方式技術說明，它是靠乾燥劑吸濕轉輪（デシカント素子）先吸附空氣中的水氣，再用電熱器加熱蒸發後導入熱交換器冷凝，受氣溫下降的衝擊比壓縮機小，主打秋冬低溫除濕與室內乾衣。以松下日本官方除濕輪機型 F-YZXJ60B 為例，其額定除濕能力 5.6 L/日（衣類乾燥・速乾模式）便是在「室溫 20°C、相對濕度 60%」下標定，而非壓縮機式的 27°C、60% RH。但即使如此，低溫環境水分蒸發變慢仍會拉長乾衣時間：依日本電機工業會自主基準（JEMA-HD090:2017，6 疊房、60Hz、濕度 70%、2 kg 衣物），同一台除濕輪機在 20°C 梅雨條件約 108 分鐘烘乾，降到 10°C 冬季則拉長到約 135 分鐘（【換算】約多花四分之一時間，即增幅 25%）。",
+      "scope": "松下日本官方除濕方式技術頁（X146R2-S08）之除濕輪工作原理，搭配 F-YZXJ60B 官方規格（衣類乾燥・速乾模式 20°C/60% RH 標定 5.6 L/日）與 JEMA-HD090:2017 梅雨（20°C）對冬季（10°C）乾衣時間實測對照（X146R2-S09）；四分之一增幅為【換算】。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "剖面動畫展示一片緩慢旋轉的多孔蜂巢圓盤：四分之三圓盤像乾燥海綿從冷空氣中抓走水珠，轉到四分之一橘紅發熱區時把水蒸出來凝結滴進水箱；背景換成冷冬晾衣間時，衣服飄散的水氣變慢、烘乾進度條拉長約四分之一。不放文字與數字。",
+        "payoff": "除濕輪連測試起跑線都設在比較冷的 20 度，但它只是不怕結霜，遇上 10 度寒流衣物蒸發變慢，乾衣一樣得【換算】多花四分之一時間。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "X146R2-S09，除濕能力標示腳註（衣類乾燥・速乾模式 5.6 L/日，20°C、60% RH）與文末 ※1 JEMA-HD090:2017（6 疊、60Hz、70% RH、2 kg 衣物：20°C 約 108 分 vs 10°C 約 135 分）；X146R2-S08，デシカント方式 段（乾燥劑吸濕轉輪吸附→加熱蒸發→熱交換器冷凝原理）。",
+      "notes": "研究網 NET_CORP_PANASONIC。帶出第四章「換除濕輪就能解決嗎」的視角轉換，也揭開日系規格表的 20°C vs 27°C 隱藏差異。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製無品牌標誌之蜂巢吸附轉輪與加熱再生剖面動畫。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-a3bb17bf68f92cc6",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S09，除濕能力標示腳註（衣類乾燥・速乾模式 5.6 L/日，20°C、60% RH）與文末 ※1 JEMA-HD090:2017（6 疊、60Hz、70% RH、2 kg 衣物：20°C 約 108 分 vs 10°C 約 135 分）；X146R2-S08，デシカント方式 段（乾燥劑吸濕轉輪吸附→加熱蒸發→熱交換器冷凝原理）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-9fd31ebb4ec91242",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S09，除濕能力標示腳註（衣類乾燥・速乾模式 5.6 L/日，20°C、60% RH）與文末 ※1 JEMA-HD090:2017（6 疊、60Hz、70% RH、2 kg 衣物：20°C 約 108 分 vs 10°C 約 135 分）；X146R2-S08，デシカント方式 段（乾燥劑吸濕轉輪吸附→加熱蒸發→熱交換器冷凝原理）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0211",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "壓縮機式跟除濕輪式正面對決，到底氣溫跟露點掉到幾度以下，除濕輪才會真的贏過壓縮機？",
+      "mechanism_key": "x146.dehumidifier.compressor_vs_desiccant_20c_5c_dewpoint_crossover",
+      "answer_target": "亞利桑那州立大學團隊發表於《Science of The Total Environment》（2022）的跨年度實測給出了明確分界線：他們將電動壓縮機式與除濕輪式除濕機擺在戶外連續運轉超過一年，涵蓋氣溫 3.1°C 到 43.7°C、相對濕度 6% 到 85%。結果發現，只要運轉期間平均氣溫高於 20°C、平均相對濕度高於 30%、平均露點高於 5°C，壓縮機式的取水量就比除濕輪式多出 2 倍以上；但一旦氣溫跌破 20°C、相對濕度低於 30% 且露點降到 5°C 以下，壓縮機迅速失靈，反而是除濕輪式表現更佔優勢。",
+      "scope": "亞利桑那州立大學團隊 2022 年《Science of The Total Environment》於美國西南部戶外一年以上對照實測（PubMed 摘要數據）。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "雙曲線賽跑動畫：暖色區裡壓縮機小賽車遠遠把除濕輪甩在身後超過兩倍距離；當賽道一路降溫跨過冷藍色的黃金交叉點後，壓縮機輪胎開始打滑結霜、速度暴跌，穩定前進的除濕輪小車反而超前。不放文字、座標數字與品牌。",
+        "payoff": "20 度氣溫與 5 度露點是兩派除濕機的黃金交叉線——暖濕天壓縮機贏兩倍以上，乾冷低露點（平均低於 20°C、相對濕度低於 30%、露點低於 5°C）才輪到除濕輪反超。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "X146R2-S16，Abstract（3.1–43.7°C、6–85% RH 逾一年實測；>20°C / >30% RH / 露點 >5°C 時壓縮機產水 >2 倍；<20°C / <30% RH / 露點 <5°C 時除濕輪較有利）。",
+      "notes": "研究網 NET_ACAD_ASU_TONGJI。極具記憶點的定量黃金交叉線，不偏袒任何一方、純講熱力學邊界。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製雙路線溫度交叉賽道示意動畫。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-b40208da02928c59",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S16，Abstract（3.1–43.7°C、6–85% RH 逾一年實測；>20°C / >30% RH / 露點 >5°C 時壓縮機產水 >2 倍；<20°C / <30% RH / 露點 <5°C 時除濕輪較有利）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0212",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "除濕輪不怕結冰，為什麼在台灣反而很少見？把轉輪烤乾要付多貴的電費與熱量帳單？",
+      "mechanism_key": "x146.dehumidifier.desiccant_regeneration_120_180c_low_ef_and_heat_penalty",
+      "answer_target": "因為把水從沸石或矽膠毛細孔裡硬逼出來，需要持續的高溫電熱再生。同濟大學與亞利桑那州立大學團隊（2024，《Water Research》）拆解並實測一台商用沸石轉輪除濕機（轉輪直徑 19.8 公分、重 130 克，約 3/4 面積吸濕、1/4 面積電熱再生），熱電偶量到內部電熱器高達 180°C、再生出風達 70°C，整機固定耗電 460W，全年實測日抽水 2.5–5.2 公升，能源因數（EF）只有 0.23–0.48 L/kWh（中位數 0.33 L/kWh）。北京工業大學 2024 年發表於《Buildings》的家用除濕輪實驗也測出，在 20°C、80% RH 與 120–150°C 再生溫度下，未改裝商用轉輪（CM DW）的單位功耗除濕量（DCPP）峰值為 0.54 kg/kWh（優化進氣繞過冷凝器後峰值達 0.59 kg/kWh，兩者均在 130°C 見頂），且再生溫度超過 130°C 後效率反降、約 140°C 除濕率趨平，耗電與轉輪蓄熱升溫卻持續增加——【跨溫濕度條件對照換算】對照台灣 2018 舊制高於 6 至 12 L/日一級壓縮機門檻（27°C、60% RH 下 EF ≥ 2.40 L/kWh，X146R2-S01），除濕輪每抽一公升水往往得花上約四倍以上（對照中位數 0.33 L/kWh 更逾七倍）的電。",
+      "scope": "同濟／ASU 2024 年《Water Research》商用沸石轉輪機（Ivation IVADDH06，半乾旱室內實測）與北京工業大學 2024 年《Buildings》20°C/80% RH 實驗室數據（區分未改裝 CM DW 0.54 kg/kWh 與結構優化後 0.59 kg/kWh）；與台灣 2018 舊制 6–12 L/日一級壓縮機門檻（2.40 L/kWh，27°C/60% RH，X146R2-S01）之倍數差屬【跨溫濕度條件對照換算】。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "能量帳本對比動畫：壓縮機像用小電扇推著冷媒幫浦搬運水氣，一格電就換回兩大桶水；旁邊除濕輪裡頭亮著像小烤箱般熾熱的發熱線圈，吞掉整整四格電才烘出不到一桶水，還冒出一團團暖橘熱浪。不放文字與數字。",
+        "payoff": "除濕輪裡藏著一座超過 120 到 180 度的迷你烤箱，免結霜的代價是每抽一公升水多付數倍電費、還把房間烤熱。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "source_locator": "X146R2-S15，Section 1（冷凝式露點 >0°C 限制）、Section 4.3.2（20°C/80% RH 未改裝商用轉輪 CM DW 於 130°C 再生之 DCPP 峰值 0.54 kg/kWh；超過 130°C 效率反降、約 140°C 除濕率 Dr 趨平）、Section 5.2.2（優化進氣繞過冷凝器後於 130°C DCPP 峰值達 0.59 kg/kWh）；X146R2-S17，Section 2.1（19.8 cm 轉輪、3/4 吸濕與 1/4 再生、460W）、Section 3.1（EF 0.23–0.48 L/kWh、中位數 0.33）、Section 3.4（電熱器 180°C、出風 70°C）；X146R2-S01，Page 18（2018 舊制高於 6 至 12 L/日一級門檻 EF ≥ 2.40 L/kWh，27°C/60% RH）。",
+      "notes": "研究網 NET_ACAD_BJUT＋NET_ACAD_ASU_TONGJI。雙篇同儕審查論文精準撐起除濕輪的能耗與熱力學代價。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製無商標之能量格與烤箱再生線圈示意動畫。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-8a95ac3afcbfa79c",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S15，Section 1（冷凝式露點 >0°C 限制）、Section 4.3.2（20°C/80% RH 未改裝商用轉輪 CM DW 於 130°C 再生之 DCPP 峰值 0.54 kg/kWh；超過 130°C 效率反降、約 140°C 除濕率 Dr 趨平）、Section 5.2.2（優化進氣繞過冷凝器後於 130°C DCPP 峰值達 0.59 kg/kWh）；X146R2-S17，Section 2.1（19.8 cm 轉輪、3/4 吸濕與 1/4 再生、460W）、Section 3.1（EF 0.23–0.48 L/kWh、中位數 0.33）、Section 3.4（電熱器 180°C、出風 70°C）；X146R2-S01，Page 18（2018 舊制高於 6 至 12 L/日一級門檻 EF ≥ 2.40 L/kWh，27°C/60% RH）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-bc2ed03524babfad",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S15，Section 1（冷凝式露點 >0°C 限制）、Section 4.3.2（20°C/80% RH 未改裝商用轉輪 CM DW 於 130°C 再生之 DCPP 峰值 0.54 kg/kWh；超過 130°C 效率反降、約 140°C 除濕率 Dr 趨平）、Section 5.2.2（優化進氣繞過冷凝器後於 130°C DCPP 峰值達 0.59 kg/kWh）；X146R2-S17，Section 2.1（19.8 cm 轉輪、3/4 吸濕與 1/4 再生、460W）、Section 3.1（EF 0.23–0.48 L/kWh、中位數 0.33）、Section 3.4（電熱器 180°C、出風 70°C）；X146R2-S01，Page 18（2018 舊制高於 6 至 12 L/日一級門檻 EF ≥ 2.40 L/kWh，27°C/60% RH）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-bee8f33065504b71",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S15，Section 1（冷凝式露點 >0°C 限制）、Section 4.3.2（20°C/80% RH 未改裝商用轉輪 CM DW 於 130°C 再生之 DCPP 峰值 0.54 kg/kWh；超過 130°C 效率反降、約 140°C 除濕率 Dr 趨平）、Section 5.2.2（優化進氣繞過冷凝器後於 130°C DCPP 峰值達 0.59 kg/kWh）；X146R2-S17，Section 2.1（19.8 cm 轉輪、3/4 吸濕與 1/4 再生、460W）、Section 3.1（EF 0.23–0.48 L/kWh、中位數 0.33）、Section 3.4（電熱器 180°C、出風 70°C）；X146R2-S01，Page 18（2018 舊制高於 6 至 12 L/日一級門檻 EF ≥ 2.40 L/kWh，27°C/60% RH）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0213",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "把壓縮機跟除濕輪塞進同一台「混合式」還是很耗電，工程師後來怎麼靠「回收冷空氣」把耗電砍掉近七成？",
+      "mechanism_key": "x146.dehumidifier.hybrid_vs_eco_hybrid_dual_cooling_power_cut",
+      "answer_target": "為了兼顧夏省電與冬耐冷，松下於 2005 年推出松下自稱全球首台家用混合式除濕機（F-YHA100），把壓縮機放熱器產生的廢熱連同電熱器拿去烘乾除濕轉輪，但因為仍開著加熱器，耗電量依舊偏高。到了 2024 年，松下推出不用電熱器與轉輪的「生態混合式（エコ・ハイブリッド）」，改用兩段冷卻機構：先讓壓縮機冷卻器把空氣冷卻結露除濕，再把這股剛被吹冷的乾燥空氣引去冷卻另一片空冷式熱交換器，用它對剛進機器的潮濕室氣進行「二次預冷除濕」。依松下公開的 JIS 基準實測，同樣日除濕 12.5 公升的級距，傳統混合式消費電力 715W，雙冷卻新構造降到 225W（JIS 除濕功耗降幅 68.5%、官方稱約省 69%；20.0 L/日則由 830W 降至 330W）；而在 JEMA-HD090:2017 2 kg 乾衣實測中，耗電量由 885 Wh 降至 312 Wh（【換算】約省 65%），但代價是乾衣時間從約 75 分鐘拉長至約 90 分鐘。",
+      "scope": "松下日本官方技術頁公布之 2005 年混合式（F-YHA100／F-YHVX120／F-YHX200B）與 2024 年生態混合式（F-YEX120B／F-YEX200D）JIS 與 JEMA-HD090:2017 比較數據。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "機內氣流解剖動畫：先展示舊混合式把壓縮機熱氣＋電熱線送向轉輪；再切換成新雙冷卻構造，剛通過冷排的冰藍乾空氣不直接浪費，而是轉彎繞過第二片銀色熱交換板，搶先替剛進來的濕空氣預冷出一排額外水珠，旁邊電表轉速驟降三分之二。不放文字、數字與商標。",
+        "payoff": "工程師把剛剛冷卻完的冷空氣再拿去當第二層冷排用，拔掉電熱器讓 JIS 除濕功耗砍掉近七成（2 kg 乾衣耗電【換算】約省 65%），只拿多等十幾分鐘換省電。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "X146R2-S08，ハイブリッド方式 段、エコ・ハイブリッド方式 段與文末 JIS／JEMA-HD090:2017 實測功耗腳註。",
+      "notes": "研究網 NET_CORP_PANASONIC。展現工程解題的精彩轉折（不推薦購買，純解說熱交換器回收冷量的巧妙設計與速度換省電取捨）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製無品牌標誌之雙段熱交換氣流迴路動畫。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-9fd31ebb4ec91242",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S08，ハイブリッド方式 段、エコ・ハイブリッド方式 段與文末 JIS／JEMA-HD090:2017 實測功耗腳註。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0214",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "同一台壓縮機除濕機，為什麼日本規格表上會同時寫「16 公升／18 公升」，標示的適用坪數還差了將近一倍？",
+      "mechanism_key": "x146.dehumidifier.japan_50hz_vs_60hz_and_jem1411_wood_concrete_span",
+      "answer_target": "第一個差距來自電網頻率。日本東日本用 50Hz、西日本用 60Hz，定頻交流壓縮機與風扇馬達在 60Hz 下的轉速較快，單位時間內循環的冷媒與風量更大。以夏普壓縮機型 CV-P180 官方規格表為例，同樣維持 27°C、60% RH，同一台機器插在 50Hz 電源上日除濕量為 16 公升（除濕耗電 325W），換到 60Hz 就變成 18 公升（耗電 370W）。第二個差距出現在住宅構造的標示區間：依 JEM 1411（1984 年制定、1998 年改正、2021 年確認，規定自 JIS C 9617 額定能力換算型錄適用面積）標示時，同台 CV-P180 在 60Hz 下木造住宅為 23 疊（38 m²）、混凝土住宅為 45 疊（75 m²）（50Hz 為 20 疊［33 m²］至 40 疊［67 m²］），差距將近一倍。",
+      "scope": "夏普日本官方 CV-P180 定頻壓縮機型規格表與日本電機工業會 JEM 1411 公開規格簡介；變頻機種不受相同定頻轉速比例限制。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "動畫先畫一顆交流馬達齒輪在較慢節拍與較快節拍下切換，帶動水柱高度小幅跳升；接著畫面切到透氣木屋與厚實水泥屋對照，相同一台除濕機能顧好的乾燥範圍在水泥屋裡寬了一倍。不放文字與數字。",
+        "payoff": "連機器本身都沒換，光插頭的電網頻率差 10 赫茲就差出兩公升，木造住宅與混凝土住宅的標示適用空間更差了將近一倍。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "X146R2-S11，定格除湿能力（16/18 L/日）、消費電力（325W/370W）、除湿可能面積（50Hz 20–40 疊、60Hz 23–45 疊）與 ※1、※2；X146R2-S07，JEM 1411 概要表。",
+      "notes": "研究網 NET_CORP_SHARP＋NET_JP_JEMA。解答台灣人去日本買水貨或看日規型錄時最常困惑的雙重標示。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製無品牌標誌之交流轉速與木造／水泥屋剖面對比動畫。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-106be3b9020029ed",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S11，定格除湿能力（16/18 L/日）、消費電力（325W/370W）、除湿可能面積（50Hz 20–40 疊、60Hz 23–45 疊）與 ※1、※2；X146R2-S07，JEM 1411 概要表。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-77c71d38f7bdb036",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S11，定格除湿能力（16/18 L/日）、消費電力（325W/370W）、除湿可能面積（50Hz 20–40 疊、60Hz 23–45 疊）與 ※1、※2；X146R2-S07，JEM 1411 概要表。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0215",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "替附帶 HEPA 濾網的除濕機（含 1 款二合一清淨除濕機與 1 款附贈 HEPA 濾網的傳統除濕機）裝上濾網後，為什麼除濕量竟然可能直接掉超過兩成？",
+      "mechanism_key": "x146.dehumidifier.hepa_filter_airflow_impedance_capacity_ef_drop",
+      "answer_target": "除濕機每小時能抽多少水，高度依賴有多少立方公尺的潮濕空氣順利吹過冷排；高密度的 HEPA 濾網雖然能攔截微粒，卻也會大幅增加進氣風阻。香港消費者委員會 2023 年實測 14 款壓縮機除濕機時發現，其中 2 款附帶 HEPA 濾網的樣本（含 1 款二合一清淨除濕機與 1 款附贈 HEPA 濾網的傳統除濕機）在不裝濾網時表現接近宣稱，但只要照日常習慣裝上 HEPA 濾網，在 26.7°C、60% RH 標準環境下實測日除濕量立刻比宣稱暴跌 13.2% 與 23.1%（在 30°C、80% RH 下更掉 14.7% 與 41.0%），能源因數同步下滑 20.2% 與 33.2%，原本標榜 1 級能源標籤的機器，裝完濾網實測只剩 2 級與 4 級，並經香港機電工程署委託第三方實驗室複檢確認不符強制性能源效益標籤計劃（MEELS）要求。",
+      "scope": "香港消費者委員會 2023 年 2 月（CHOICE #556）14 款樣本實測結果（涵蓋 2 款裝 HEPA 濾網後未達 MEELS 1 級標示之個案——含 1 款二合一清淨除濕機與 1 款附贈 HEPA 濾網的傳統除濕機，並非宣稱所有附濾網機型皆有相同幅度落差）。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "剖面風道動畫：厚實的摺紙狀細密濾網插進進風口後，原本大股湧向冷排的藍白氣流瞬間被壓細變慢，後面冷排結出的水滴立刻稀疏下來，旁邊能效階梯從頂端一格格往下滑。不放文字、數字與商標。",
+        "payoff": "替除濕機戴上一層厚口罩，空氣過不來，抽水力跟省電等級都會跟著一起大跳水。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "X146R2-S06，Dehumidifying Performance of 2 Models Dropped Significantly After Installing HEPA Filters 段與 2 Models Did Not Comply with MEELS's Requirement 段。",
+      "notes": "研究網 NET_HK_CC。超強生活驚喜點，也呼應為什麼濾網積灰塵同樣會拖垮除濕量。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製無品牌標誌之摺疊濾網風阻與氣流衰減動畫。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-059955e1c28df221",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S06，Dehumidifying Performance of 2 Models Dropped Significantly After Installing HEPA Filters 段與 2 Models Did Not Comply with MEELS's Requirement 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0216",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "壓縮機除濕機跟冷氣的原理幾乎一樣，為什麼開除濕機房間反而越吹越暖，不會變涼？",
+      "mechanism_key": "x146.dehumidifier.indoor_condenser_and_latent_heat_warming_room",
+      "answer_target": "冷氣機把吸熱的「蒸發器」裝在室內、把散熱的「冷凝器」裝在室外的室外機，所以熱能被搬到屋外；但獨立式除濕機把蒸發器跟冷凝器背靠背裝在同一個機箱裡。室內空氣先撞上冰冷蒸發器降溫並凝結出水（水氣由氣態變液態會釋放凝結潛熱），這股已經變乾的冷空氣緊接著就流過後方的滾燙冷凝器重新加熱吹回房間——加上壓縮機與風扇馬達消耗的電功最後全轉成廢熱留在室內，總熱量只增不減。因此夏普與松下日本官方規格頁都明文加註「除濕機沒有降低室溫的功能，運轉中反而會發熱使室溫上升」；若是內建電熱器的除濕輪式，台灣飛利浦家電資料指出運轉時更可使室溫上升 3°C 到 5°C。",
+      "scope": "松下官方五種除濕方式技術頁之壓縮機內部冷卻器結露→放熱器加熱吹出氣流說明（X146R2-S08）、夏普 CV-P180 與松下 F-YZXJ60B 官方規格警語，以及台灣飛利浦家電除濕輪室溫上升 3–5°C 說明；熱力學能量守恆機制適用於所有無室外排熱管之獨立除濕機。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "並排剖面動畫：上方冷氣機把紅色熱球穿過外牆管線丟到戶外；下方獨立除濕機的冷排與熱排緊貼在同一盒裡，進氣變藍滴水後立刻穿過後排變回暖橘，加上壓縮機冒出的小熱球全數吹回同一個房間，室溫計緩緩上升。不放文字與數字。",
+        "payoff": "冷氣把熱丟出窗外，除濕機卻把冷排跟熱排關在同一個房間裡，再加上電功與水氣凝結放熱，開久了只會越吹越暖。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "X146R2-S08，コンプレッサー方式 段（冷卻器結露 → 放熱器加熱吹出結構）；X146R2-S11 表下注意事項；X146R2-S09 文末注意事項；X146R2-S12 原理對照表（除濕輪使室溫上升 3–5°C）。",
+      "notes": "研究網 NET_CORP_SHARP（搭配 NET_CORP_PANASONIC、NET_CORP_PHILIPS_TW）。精準拆解除濕機與冷氣最容易混淆的結構差異。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製無品牌標誌之冷氣跨牆排熱 vs 除濕機同室排熱剖面動畫。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-106be3b9020029ed",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S08，コンプレッサー方式 段（冷卻器結露 → 放熱器加熱吹出結構）；X146R2-S11 表下注意事項；X146R2-S09 文末注意事項；X146R2-S12 原理對照表（除濕輪使室溫上升 3–5°C）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-a3bb17bf68f92cc6",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S08，コンプレッサー方式 段（冷卻器結露 → 放熱器加熱吹出結構）；X146R2-S11 表下注意事項；X146R2-S09 文末注意事項；X146R2-S12 原理對照表（除濕輪使室溫上升 3–5°C）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-222a98cec2a30932",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S08，コンプレッサー方式 段（冷卻器結露 → 放熱器加熱吹出結構）；X146R2-S11 表下注意事項；X146R2-S09 文末注意事項；X146R2-S12 原理對照表（除濕輪使室溫上升 3–5°C）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-9fd31ebb4ec91242",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S08，コンプレッサー方式 段（冷卻器結露 → 放熱器加熱吹出結構）；X146R2-S11 表下注意事項；X146R2-S09 文末注意事項；X146R2-S12 原理對照表（除濕輪使室溫上升 3–5°C）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0217",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "台灣除濕機能效貼紙上的「年耗電量」怎麼算的？為什麼 2026 年一上路，原本的 1 級能效可能突然掉成 3 級？",
+      "mechanism_key": "x146.dehumidifier.taiwan_ef_22_5_days_formula_and_2026_regrading",
+      "answer_target": "台灣除濕機能源效率分級的核心指標是「能源因數值 EF（公升／千瓦小時）」，也就是在 CNS 12492 的 27°C、60% RH 標準條件下，每花 1 度電能抽出幾公升水；而貼紙上的「年耗電量（度／年）」則是直接套用公式「（額定日除濕量 ÷ 標示 EF）× 22.5 天」四捨五入推算。隨著壓縮機技術進步，經濟部委託工研院統計 2021 年（民國 110 年）全台申報銷售約 56.8 萬台除濕機中，高達 95.8% 都已拿到舊制（2018 年實施）的 1 級能效（一、二級合計約 99%），分級貼紙幾乎失去鑑別度。因此經濟部自 2026 年（民國 115 年）1 月 1 日正式全面拉高新分級基準，財政部臺北國稅局亦公告提醒，部分舊制第 1 級除濕機在新基準下會被改列為第 3 級，因而不再符合第 1、2 級節能電器退還貨物稅資格。",
+      "scope": "經濟部委託工研院 2023 年 5 月廠商座談會簡報（110 年市場申報統計與附表三年耗電公式）及財政部臺北國稅局 2026 年 1 月 29 日新聞稿。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "五階階梯動畫：原本幾乎一整排小除濕機全都擠爆在最高的第一級台階上；隨著天花板基準線整體往上抬高一大截，原本站在第一階的好幾台瞬間變成落在第三階，旁邊代表 22.5 天的日曆頁與水滴電表呈現標準化估算邏輯。不放文字、數字與廠牌。",
+        "payoff": "不是機器變耗電了，是舊制超過九成五都拿滿分失去鑑別力，2026 年起門檻整體墊高，舊一級直接被洗回三級。",
+        "seconds": [
+          35,
+          50
+        ]
+      },
+      "source_locator": "X146R2-S01，Page 13–14 & 19（110 年 56.8 萬台、一級 95.8%）、Page 30（附表三年耗電量 × 22.5 天公式）；X146R2-S02，正文第 1–2 段（115 年 1 月 1 日新基準生效，舊 1 級調整為新 3 級）。",
+      "notes": "研究網 NET_TW_GOV。第六章收尾扣回台灣觀眾走進賣場最直接看到的貼紙與 2026 年最新制度變動。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製無文字標章之五階能效階梯重劃動畫。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-bee8f33065504b71",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S01，Page 13–14 & 19（110 年 56.8 萬台、一級 95.8%）、Page 30（附表三年耗電量 × 22.5 天公式）；X146R2-S02，正文第 1–2 段（115 年 1 月 1 日新基準生效，舊 1 級調整為新 3 級）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ddf699611b5ddc30",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S01，Page 13–14 & 19（110 年 56.8 萬台、一級 95.8%）、Page 30（附表三年耗電量 × 22.5 天公式）；X146R2-S02，正文第 1–2 段（115 年 1 月 1 日新基準生效，舊 1 級調整為新 3 級）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0218",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "網路上常見巴掌大的靜音「致冷晶片式」迷你除濕機，為什麼跟壓縮機、除濕輪完全不能拿同一把尺比？",
+      "mechanism_key": "x146.dehumidifier.peltier_thermoelectric_small_enclosure_limit",
+      "answer_target": "這類小型無壓縮機除濕盒採用的是「佩爾捷效應（Peltier effect）」半導體致冷晶片，通電後晶片一面變冷、一面發熱，讓空氣流過冷面凝結出水。北京工業大學 2024 年《Buildings》論文將其與壓縮機式並列歸為「冷凝式除濕」，同樣受限於空氣露點須高於 0°C 的凍結物理限制；松下日本官方技術頁則將佩爾捷式定位於衣櫥、鞋櫃等收納空間與廁所等狹小空間除濕，與整室型機種屬不同使用量級。",
+      "scope": "松下日本官方五種除濕方式技術頁對佩爾捷式適用範圍界定，以及北京工業大學 2024 年《Buildings》對冷凝式除濕之分類與露點限制。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "比例尺動畫：把一台小小的靜音晶片盒放進密閉鞋櫃或衣櫥裡慢慢凝出小水珠；一旁畫面切換到寬敞客廳由整室型除濕機負責，對比兩者原生的空間定位量級差。不放文字、數字與廠牌。",
+        "payoff": "晶片小盒跟壓縮機一樣屬於冷凝式、受露點高於 0°C 的凍結限制，官方技術頁將其定位於衣櫥、鞋櫃或廁所等狹小空間除濕，與整室型機種本就屬不同使用量級。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "source_locator": "X146R2-S08，ペルチェ式 段；X146R2-S15，Section 1 Introduction（將 thermoelectric dehumidification 歸為冷凝式除濕並受露點 >0°C 結冰限制）。",
+      "notes": "研究網 NET_ACAD_BJUT（與 NET_CORP_PANASONIC 互證）。補齊五種家用除濕機最後一塊拼圖，防止觀眾把千元半導體除濕盒誤當成壓縮機失靈。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自行繪製無品牌標誌之鞋櫃小除濕盒與客廳空間比例對比動畫。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-8a95ac3afcbfa79c",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S08，ペルチェ式 段；X146R2-S15，Section 1 Introduction（將 thermoelectric dehumidification 歸為冷凝式除濕並受露點 >0°C 結冰限制）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-9fd31ebb4ec91242",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R2-S08，ペルチェ式 段；X146R2-S15，Section 1 Introduction（將 thermoelectric dehumidification 歸為冷凝式除濕並受露點 >0°C 結冰限制）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0301",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "同一盒日本伴手禮餅乾，日本原盒印「賞味期限」，台灣中文貼紙卻把它寫成「有效日期」，是進口商翻錯了嗎？",
+      "mechanism_key": "x146.expiry.tw_import_sticker_mapping",
+      "answer_target": "不是翻錯，而是單軌食安法與食藥署行政指引要求。台灣《食品安全衛生管理法》第22條第1項第7款採單軌「有效日期」標示，衛福部食藥署 2022 年修正之《市售包裝食品有效日期評估指引》第五點進一步明定，進口商除非能請原製造商出具足以佐證相等於台灣「有效日期」定義的實驗或評估資料，否則必須把原包裝上的「賞味期限」或「best before」直接視為並標示為「有效日期」。",
+      "scope": "說明台灣單軌食安法與食藥署行政指引將進口日本與歐美包裝食品品質期直接映射為法定「有效日期」的規範。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "特寫一盒素面日式餅乾禮盒，雙手撕開右下角白色中文進口貼紙「有效日期 2026.11.20」，露出底下印刷完全同一天但字樣不同的「賞味期限 2026.11.20」。",
+        "payoff": "翻開貼紙才發現日期一模一樣、名稱卻從「好不好吃」被強制升級成「能不能賣」，揭開跨國標示轉譯的制度源頭。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "X146R3-S05: 食安法第22條第1項第7款；X146R3-S06: 有效日期評估指引第五點",
+      "notes": "直接回應本集片名與觀眾最常遇見的日貨貼紙疑問。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪原創素面日式點心盒與中文標籤示意，不使用真實商品商標與官方文件截圖；法規原文僅供查證。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-b0919517a3aa678f",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S05: 食安法第22條第1項第7款；X146R3-S06: 有效日期評估指引第五點",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-c07b1315111f700e",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S05: 食安法第22條第1項第7款；X146R3-S06: 有效日期評估指引第五點",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0302",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "同樣標示了 11 月 20 日，為什麼日本法律承認過了「賞味期限」還可能好吃，台灣過了「有效日期」卻連免費送人都違法？",
+      "mechanism_key": "x146.expiry.jp_proviso_vs_tw_ban",
+      "answer_target": "日本《食品表示基準》第2條第1項第8號在定義「賞味期限」時明文加了但書「超過該期限仍可能保持這些品質」；台灣《食品安全衛生管理法》第15條第1項第8款則採單軌嚴管，逾有效日期者禁止販賣、貯存甚至「作為贈品或公開陳列」，違者依第44條處6萬元至2億元罰鍰並沒入銷毀。",
+      "scope": "對照日本雙軌品質但書與台灣單軌有效日期之法律後果差異，限於營業與流通規範，不涉個人居家處分。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "分割畫面左邊日本超市將過了賞味期限的點心標上「尚可食用」圖示，右邊台灣貨架日期一翻過午夜十二點整排下架封存並跳出法條紅章。",
+        "payoff": "同一天午夜十二點在兩地法律眼裡意義完全不同：一邊是風味參考線，一邊是不可跨越的商業禁售紅線。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "X146R3-S01: p. 2（食品表示基準第2條第1項第7・8號）；X146R3-S05: 第15條第1項第8款、第44條第1項第2款、第52條第1項第1款",
+      "notes": "需口播強調台灣第15條處罰對象為食品業者流通行為，避免誤導觀眾以為在家吃過期餅乾會被罰款。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪日台貨架與法律印章動畫呈現，不使用真實門市或法條網頁截圖。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-7039616349add3f9",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S01: p. 2（食品表示基準第2條第1項第7・8號）；X146R3-S05: 第15條第1項第8款、第44條第1項第2款、第52條第1項第1款",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b0919517a3aa678f",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S01: p. 2（食品表示基準第2條第1項第7・8號）；X146R3-S05: 第15條第1項第8款、第44條第1項第2款、第52條第1項第1款",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0303",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "日本把日期分成「消費期限」和「賞味期限」，真的是照「超過 5 天就寫賞味期限」這樣一刀切嗎？",
+      "mechanism_key": "x146.expiry.jp_five_day_myth",
+      "answer_target": "「含製造日約 5 日內」其實是 1995 年厚生省與農水省導入期限制度時的舊通知基準。日本消費者廳 2025 年 3 月檢討報告明確澄清該「5 日線」現已不再承繼，必須回歸食品特性與安全性定義判斷，但實態調查發現至今仍有約 18% 的品項只靠 5 天來機械切分。",
+      "scope": "釐清日本消費期限與賞味期限區分標準的歷史演變，破除「5天規則仍是現行鐵律」的常見舊資訊。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "畫出一條「第5天」虛線，把御飯糰、生鮮三明治與能放一週的低糖蛋糕放上天平，再用 2025 年消費者廳紅筆把死板的「5天切線」劃掉改看劣化速度曲線。",
+        "payoff": "連日本教科書常背的「五天分界線」其實都是三十年前的舊通知，現在看的是劣變速度與致病風險而不是硬切天數。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "source_locator": "X146R3-S01: pp. 6, 17（平成7年通知）；X146R3-S02: pp. 1–2（2.(1)① 約18%事例與不再承繼說明）",
+      "notes": "多數中文科普仍停留在「5日內=消費期限」舊說，用2025年3月日本官方檢討會報告能給出強驚喜感。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪便當、烘焙品與品質曲線圖表現，不引用官方報告原圖。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-7039616349add3f9",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S01: pp. 6, 17（平成7年通知）；X146R3-S02: pp. 1–2（2.(1)① 約18%事例與不再承繼說明）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-6338fc326e839744",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S01: pp. 6, 17（平成7年通知）；X146R3-S02: pp. 1–2（2.(1)① 約18%事例與不再承繼說明）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0304",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "實驗測出餅乾可以放 100 天才走味，為什麼廠商印在盒子上的賞味期限往往只有 80 天、甚至不到 80 天？",
+      "mechanism_key": "x146.expiry.safety_factor_discount",
+      "answer_target": "日本《食品期限表示設定指南》要求把客觀微生物、理化與官能試驗測得的期限，再乘上一個小於 1 的「安全係數」（Q&A 建議變動少者以 0.8 以上為基準）來吸收儲運溫濕度與批次差異。但消費者廳 2024–2025 年調查揭露，約 40% 品項把係數壓到 0.8 以下，甚至連高溫高壓商業滅菌的調理包與罐頭也照打折，引發 2025 年檢討會主張取消對「0.8」的僵化依賴並盡量靠近 1。",
+      "scope": "揭示食品工廠設定包裝日期時的「安全係數」數學折減邏輯與日本 2025 年實態調查發現。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把一根 100 格的實驗保存條放上桌面，拿剪刀剪掉 20% 標上「×0.8 安全係數」，再剪掉更多標上「約 40% 商品 <0.8」，最後拍到連鐵罐頭和調理包都被多剪一截。",
+        "payoff": "包裝上印的日子本來就不是壞掉的臨界點，而是廠商為了保險先幫實驗結果打了七折或八折後的保守數字。",
+        "seconds": [
+          35,
+          50
+        ]
+      },
+      "source_locator": "X146R3-S01: pp. 7–10（加工-22、各業界係數）；X146R3-S02: pp. 2–3（2.(1)③ 約40%設於0.8未滿）",
+      "notes": "這是全片第一個大幅翻轉直覺的科學與工業秘密。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪時間軸進度條、剪刀動畫與無品牌罐頭／調理包示意。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-7039616349add3f9",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S01: pp. 7–10（加工-22、各業界係數）；X146R3-S02: pp. 2–3（2.(1)③ 約40%設於0.8未滿）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-6338fc326e839744",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S01: pp. 7–10（加工-22、各業界係數）；X146R3-S02: pp. 2–3（2.(1)③ 約40%設於0.8未滿）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0305",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "同一塊豆腐、同一條火腿，配方完全沒變，韓國 2023 年改制後，為什麼不少食品包裝上的建議可吃天數直接拉長了數成？",
+      "mechanism_key": "x146.expiry.korea_sellby_to_useby_2023",
+      "answer_target": "韓國自 1985 年起採用「流通期限（유통기한，賣場可販售截止日）」，安全係數只抓品質安全限界期間的 0.6–0.7，導致民眾把它誤當廢棄日、每年損失約 6,500 億韓元。2023 年 1 月 1 日韓國全面改制「消費期限（소비기한）」，把安全係數拉高到 0.8–0.9：食藥處參考值顯示加工乳從 15–17 天拉長到 23–26 天、發酵乳從 14–31 天拉長到 18–55 天、火腿從 10–45 天拉長到 11–61 天；其中須改善冷藏流通基準的部分品項（以冷藏牛乳類為代表），因國內法定冷藏標準為 0–10°C（實測賣場平均 5.8°C）、高於歐美 ≤5°C，獲自 2023 年起最長 8 年緩衝（延至 2031 年）。",
+      "scope": "比較韓國 2023 年由流通期限轉向消費期限的安全係數數學變動、實測品項天數變化，及須改善冷藏流通基準的部分品項（以冷藏牛乳類為代表）獲最長 8 年緩衝至 2031 年的冷鏈原因。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "同一條品質安全限界軸上標出兩把刻度尺：舊尺「流通期限 0.6–0.7」與新尺「消費期限 0.8–0.9」，旁邊豆腐、火腿、優酪乳日曆頁數往後翻多一疊，但鮮奶盒被貼上「2031 緩衝」與 10°C→5°C 溫度計。",
+        "payoff": "食物根本沒變耐久，變的是韓國把「賣場進貨日」換成「消費者安全日」並調高安全係數，還誠實承認鮮奶冷鏈得先降溫才敢拉長。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "source_locator": "X146R3-S07: 全文安全係數與六類品項參考值；X146R3-S08: pp. 6–10（表1、6,500億韓元、0–10°C vs ≤5°C、8年緩衝）",
+      "notes": "超強東亞對照案例，兼具數學反差與冷鏈工程細節。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪豆腐、火腿、牛奶紙盒、溫度計與時間尺呈現，不使用品牌包裝或韓國網站截圖。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-12ad470b93773ad2",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S07: 全文安全係數與六類品項參考值；X146R3-S08: pp. 6–10（表1、6,500億韓元、0–10°C vs ≤5°C、8年緩衝）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8230df5014238577",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S07: 全文安全係數與六類品項參考值；X146R3-S08: pp. 6–10（表1、6,500億韓元、0–10°C vs ≤5°C、8年緩衝）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0306",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "還沒過賞味期限、甚至還剩三分之二效期的日本零食，為什麼會被超市退貨？這跟某些包裝只印「年、月」不印「日」有什麼關係？",
+      "mechanism_key": "x146.expiry.jp_one_third_rule_month_only",
+      "answer_target": "日本食品供應鏈長期盛行「三分之一規則（3分の1ルール）」：製造商必須在賞味期間的前 1/3 內交貨給通路，逾時即使還有 2/3 效期也常遭拒收；同時零售物流拒收比現有庫存早一天到期的批次。為打破這種無效報廢，日本《食品表示基準》第3條第1項允許效期超過 3 個月者改標「年、月」（大括り化），讓同月生產的貨可合併配送；截至 2026 年 10 月，日本農水省統計已有 393 家零售商放寬交貨線（含預定）、377 家製造商改用年月或旬日標示。",
+      "scope": "解釋日本零售商慣習「三分之一規則」與效期逾 3 個月商品改標「年月」的供應鏈減廢機制。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把 6 個月賞味期限切成三等分蛋糕：前 2 個月卡車遲到 1 天就被擋在超商倉庫門外；接著把瓶身「2026.11.14」擦掉日期改成「2026.11」，卡車順利進倉。",
+        "payoff": "包裝少印一個「日」不是偷懶，而是為了讓工廠與超市不再因為差一天就把還剩大半壽命的完好食品整批報廢。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "X146R3-S01: p. 20（食品表示基準第3條第1項）；X146R3-S04: 第1–2節（3分の1ルール與令和8年10月統計）",
+      "notes": "歐盟 Annex X 1(c) 與 Codex 4.7.1(iii) 亦有類似逾3個月只標月年規定，可順帶呼應。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪貨車、三等分效期條與無品牌瓶身日期動畫示意。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-7039616349add3f9",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S01: p. 20（食品表示基準第3條第1項）；X146R3-S04: 第1–2節（3分の1ルール與令和8年10月統計）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-a040191e4ef44839",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S01: p. 20（食品表示基準第3條第1項）；X146R3-S04: 第1–2節（3分の1ルール與令和8年10月統計）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0307",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "同樣都是小麥粉加水做的義大利麵，為什麼乾麵條可以放兩三年，生鮮冷藏義大利麵幾天就發霉？關鍵是「總含水量」嗎？",
+      "mechanism_key": "x146.expiry.water_activity_free_vs_bound",
+      "answer_target": "決定微生物能不能活的不是總含水量，而是「水活性（aw）」——食品中能讓微生物當溶劑運送養分的「自由水」比例（食品水蒸氣壓除以同溫純水飽和水蒸氣壓）。乾燥義大利麵的 aw 低於 0.60，幾乎鎖死所有微生物；生鮮義大利麵的 aw 高達 0.92–0.97（且 pH 5.0–7.0），加上澱粉與蛋白質，讓微生物能自由繁殖。對照美國 FDA 數據：總含水 15% 的花生醬與總含水 8% 的奶粉，aw 同樣都是 0.70，正是因為溶質與基質把水分子牢牢「綁」住了。",
+      "scope": "以乾麵 vs 生鮮麵及花生醬 vs 奶粉實測數值，解釋自由水、結合水與水活性（aw）對保存期限的決定性機制。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把一束乾義大利麵與一盒生鮮麵並排，放大微觀水分子：乾麵裡寥寥無幾的水分子被澱粉與鹽糖雙手扣住（aw < 0.60），生鮮麵裡大量自由水分子四處游動（aw 0.92–0.97）把養分送進菌細胞。",
+        "payoff": "不是水少才不會壞，而是「沒被綁住、微生物喝得到的自由水」夠不夠，這才是食品壽命差幾十倍的物理開關。",
+        "seconds": [
+          35,
+          50
+        ]
+      },
+      "source_locator": "X146R3-S10: DEFINITION, SORPTION BEHAVIOR, Common Foods table；X146R3-S17: Section 1 & Section 2.1.1",
+      "notes": "從法規切換回核心物理化學與微生物原理的樞紐卡。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪乾／濕麵條與水分子氫鍵微觀示意動畫呈現，不直接使用論文原圖。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-d1c8ad87a53f8d15",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S10: DEFINITION, SORPTION BEHAVIOR, Common Foods table；X146R3-S17: Section 1 & Section 2.1.1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-dafea488e781a713",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S10: DEFINITION, SORPTION BEHAVIOR, Common Foods table；X146R3-S17: Section 1 & Section 2.1.1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0308",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "為什麼台灣食藥署的查檢表和美國 FDA 法規都把水活性「0.85」當成生死分界線？肉毒桿菌又在哪一條線以上才會醒過來？",
+      "mechanism_key": "x146.expiry.aw_085_botulinum_093",
+      "answer_target": "美國 FDA 21 CFR Parts 108/113/114 與台灣 TFDA《有效日期評估指引》自主查檢表皆將水活性 aw = 0.85（以及 pH = 4.6）列為關鍵分界：多數致病菌與常見細菌在 aw ≤ 0.85 時受到抑制（故 aw ≤ 0.85 的成品可免受低酸罐頭繁複滅菌管制；惟部分耐旱黴菌與耐高滲透壓酵母在 aw 0.70–0.85 區間仍可緩慢生長，須另行防潮防霉），而能產生致命毒素的肉毒桿菌（Clostridium botulinum）最低生長 aw 約為 0.93（依食品特性最高 0.96）。像肝腸（0.96）、抹醬起司（0.95）、紅豆餡（0.93）都在紅線之上，而沙拉米（0.82）與醬油（0.80）靠鹽分壓低至 ≤ 0.85。",
+      "scope": "量化食品科學與美台法規共用的 aw 0.85／0.93 與 pH 4.6 微生物防線，配以 FDA 實測食品清單。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "一根從 0.00 到 1.00 的水活性直尺：0.60 以下標乾麵、0.70 花生醬／奶粉、0.80 醬油、0.82 沙拉米、0.85 畫出粗紅法規界線、0.93 亮起肉毒桿菌警燈、0.95–0.96 標出抹醬起司與肝腸。",
+        "payoff": "把冰箱與櫥櫃裡的食物全排上這把 0 到 1 的水活性尺，瞬間看懂為什麼醬油常溫放兩年沒事、鮮奶和肉醬卻得分秒必爭。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "X146R3-S06: 第九點自主查檢表（aw≧0.85／pH≧4.6）；X146R3-S10: REGULATIONS & Common Foods table",
+      "notes": "美國與台灣法規各自獨立指向同一物理門檻 aw 0.85，極具跨國科學一致性。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪水活性刻度尺與常見食材圖示呈現。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-c07b1315111f700e",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S06: 第九點自主查檢表（aw≧0.85／pH≧4.6）；X146R3-S10: REGULATIONS & Common Foods table",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-d1c8ad87a53f8d15",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S06: 第九點自主查檢表（aw≧0.85／pH≧4.6）；X146R3-S10: REGULATIONS & Common Foods table",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0309",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "「先聞一聞、沒臭味就能吃」這招到底準不準？為什麼過了「此日期或之前食用／消費期限」的肉和沙拉聞起來沒壞卻不能碰？",
+      "mechanism_key": "x146.expiry.spoilage_vs_pathogenic_bacteria",
+      "answer_target": "美國 USDA FSIS 與歐盟 EFSA、香港食安中心都指出，食物上的細菌分兩群：「腐敗菌（spoilage bacteria）」會產生酸臭、黏液與變色，讓人察覺變質，卻未必致病；「致病菌（pathogenic bacteria）」如沙門氏菌與李斯特菌，即使大量繁殖到足以引起食物中毒的劑量，食物的外觀、氣味與味道仍可能完全正常！因此感官檢查只適用於過了「賞味期限／best before」的低風險品質食品，絕不能拿來測試逾期的「消費期限／use by」高風險生鮮即食食品。",
+      "scope": "區分腐敗菌與致病菌的感官訊號落差，界定「看聞嚐」的合法安全邊界。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "畫出兩種不同顏色的細菌角色：綠色「腐敗菌」拿大聲公放臭氣球讓麵包變軟走味；紫色「致病菌」穿隱形斗篷靜悄悄倍增，讓即食沙拉看起來依舊翠綠新鮮。",
+        "payoff": "鼻子只能抓到會大吵大鬧的「腐敗菌」，抓不到安靜潛伏的「致病菌」——這就是為什麼高風險食品不能靠聞的賭運氣。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "X146R3-S09: p. 2（pathogenic vs spoilage bacteria）；X146R3-S12: Safe2Eat（use by vs best before）；X146R3-S16: 常見謬誤二",
+      "notes": "直擊家庭廚房最普遍且高風險的「聞聞看就好」習慣。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪卡通微生物與即食沙拉／餅乾對照插畫示意。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-dd4a343bbf3f159e",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S09: p. 2（pathogenic vs spoilage bacteria）；X146R3-S12: Safe2Eat（use by vs best before）；X146R3-S16: 常見謬誤二",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-9cf9af9ad7629c08",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S09: p. 2（pathogenic vs spoilage bacteria）；X146R3-S12: Safe2Eat（use by vs best before）；X146R3-S16: 常見謬誤二",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-997a285d6b6a15da",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S09: p. 2（pathogenic vs spoilage bacteria）；X146R3-S12: Safe2Eat（use by vs best before）；X146R3-S16: 常見謬誤二",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0310",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "冷藏食品表面長出小小一點綠黴，把發霉那塊切掉再拿去高溫煮熟，真的就安全了嗎？",
+      "mechanism_key": "x146.expiry.psychrotrophic_mold_heat_stable_mycotoxins",
+      "answer_target": "不安全。同儕審查綜述指出，冷藏生鮮麵食與高水活性食品常見的青黴菌（Penicillium）屬嗜冷真菌，在 4–8°C 冰箱內就能持續生長，部分麴菌（Aspergillus）於 8–10°C 亦能增殖；更致命的是它們分泌的黴菌毒素（如黃麴毒素 aflatoxins 與赭麴毒素 A ochratoxin A）具高度化學穩定性，既會在看不見的菌絲擴散處殘留，又能挺過一般烹煮高溫，光切掉表面霉斑或加熱都無法消除毒素風險。",
+      "scope": "說明嗜冷真菌在冰箱內的生長能力，以及黃麴毒素與赭麴毒素 A 無法靠切除表面霉斑或日常烹煮去除之毒理機制。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "剖面切開一團表面只有一點藍綠霉點的生鮮麵團：底下藏著無色菌絲網與耐熱毒素分子，就算拿刀削掉表層再丟進滾水裡，毒素分子依然完好發亮。",
+        "payoff": "冰箱關不住嗜冷黴菌，滾水也煮不壞它們留下的毒素——看到高水分食品發霉，削皮加熱並不是解藥。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "X146R3-S17: Section 2.2.1, Table 1, Section 2.3",
+      "notes": "補強高水分發霉食品處置誤區，專注於嗜冷真菌與耐熱黴菌毒素（低溫細菌如李斯特菌另見 K146-0309 與 K146-0315），與乾燥餅乾「單純受潮軟掉」做出清楚安全對比。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪生鮮麵團剖面、菌絲與耐熱分子圖示呈現。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-dafea488e781a713",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S17: Section 2.2.1, Table 1, Section 2.3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0311",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "翻遍手邊的鹽巴、砂糖、白醋和口香糖，為什麼在歐洲和國際標準裡它們竟然合法「不印任何保存期限」？",
+      "mechanism_key": "x146.expiry.eu_codex_exemptions",
+      "answer_target": "歐盟 Regulation (EU) No 1169/2011 附錄 X 第 1(d) 點與聯合國國際食品法典 CXS 1-1985（2026 年修正版）第 4.7.1(viii) 條都明定一份「免標最低耐久日清單」，包含：烹調鹽（Codex 明文限定為未加碘食品級食鹽 non-iodized food grade salt）、固態糖（Codex 限定為未營養強化固態糖 non-fortified solid sugars）、幾乎純糖製糖果、口香糖、食用醋、葡萄酒與酒精度 ≥10% 的飲料，以及未削皮切塊的新鮮蔬果（不含芽菜）與 24 小時內消費的烘焙品。背後的共通邏輯很單純：要嘛極端低水活性、高酸度或高酒精讓微生物根本長不起來，要嘛外觀一眼就能看出新不新鮮或當天吃完。",
+      "scope": "彙整歐盟與國際食品法典共通的免標期限清單，並對應背後的低水活性、低 pH 與高酒精抑菌機制。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把鹽罐、糖包、醋瓶、口香糖與紅酒瓶排成一列「無敵隊」，逐一翻轉背面全都是空白日期欄，底下亮出各自護盾：aw極低、pH極酸、酒精≥10%。",
+        "payoff": "不是廠商忘了印，而是這些食物天生自帶低水活性、強酸或高酒精的物理化學護盾，微生物根本進不去。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "X146R3-S11: Annex X point 1(d)；X146R3-S13: Section 4.7.1(viii)（pp. 11–12）",
+      "notes": "注意歐盟附錄 X 明文把「芽菜（sprouting seeds）」排除在新鮮蔬果免標之外，而 Codex 4.7.1(viii) 則特別限定「未加碘食鹽」與「未營養強化固態糖」，皆可作為精準細節。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪素面鹽糖醋瓶、口香糖與物理化學防護盾牌呈現。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-cc36ce1e700c6920",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S11: Annex X point 1(d)；X146R3-S13: Section 4.7.1(viii)（pp. 11–12）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-136d52ad24ac8b47",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S11: Annex X point 1(d)；X146R3-S13: Section 4.7.1(viii)（pp. 11–12）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0312",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "去日本買杯裝冰淇淋，翻一圈怎麼找不到賞味期限？為什麼同一杯冰淇淋在歐洲卻通常要印 Best Before？",
+      "mechanism_key": "x146.expiry.jp_ice_cream_exemption_vs_eu",
+      "answer_target": "日本《食品表示基準》第3條第3項的省略清單，除了食鹽、砂糖、澱粉、口香糖、酒類、冰塊與玻璃瓶／聚乙烯裝飲用水外，還把「冰淇淋類（アイスクリーム類）」與「冷菓」列為品質變化極少、依法可省略賞味期限與保存方法的品項——其背後的食品科學原理（亦見英國 FSA 標準）在於 -18°C 以下冷凍環境可停止微生物增殖。但在歐盟 Annex X 1(d) 與英國 GOV.UK 規範裡，冰淇淋不在免標清單中，仍會標示 Best Before 提醒冰晶粗化與口感風味衰退。",
+      "scope": "對比日本《食品表示基準》第3條第3項納入冰淇淋／冷菓／澱粉／特定瓶裝水免標，與歐盟／英國仍對冷凍品標示 Best Before 的立法哲學差異。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把一杯日本冰淇淋與一杯歐洲冰淇淋並排置於 -18°C 冰櫃中：日本杯底無日期欄，歐洲杯底印著 Best Before End；放大鏡頭看見兩杯都沒有細菌，但歐洲杯強調的是時間久了冰晶變粗的口感提醒。",
+        "payoff": "日本冰淇淋沒印期限不是忘記，是因為冷凍已把微生物凍到靜止；歐洲照印則是把「變不好吃（長大冰晶）」也算進去。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "X146R3-S03: 食品表示基準第3條第3項省略規定表；X146R3-S11: Annex X point 1(d)；X146R3-S14: Best before dates（ice cream）與 -18°C 冷凍抑菌原則",
+      "notes": "這是台灣人去日本旅遊超有共鳴的「冰櫃彩蛋」。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪素面雙杯冰淇淋、-18°C溫度計與冰晶顯微動畫呈現。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-f13dd4b469b2d45c",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S03: 食品表示基準第3條第3項省略規定表；X146R3-S11: Annex X point 1(d)；X146R3-S14: Best before dates（ice cream）與 -18°C 冷凍抑菌原則",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-cc36ce1e700c6920",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S03: 食品表示基準第3條第3項省略規定表；X146R3-S11: Annex X point 1(d)；X146R3-S14: Best before dates（ice cream）與 -18°C 冷凍抑菌原則",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-65d382e866d889f1",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S03: 食品表示基準第3條第3項省略規定表；X146R3-S11: Annex X point 1(d)；X146R3-S14: Best before dates（ice cream）與 -18°C 冷凍抑菌原則",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0313",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "美國超市貨架上印滿了 Best By、Sell By、Use By，你猜美國聯邦法律到底強制哪幾種食品一定要印有效日期？",
+      "mechanism_key": "x146.expiry.us_federal_only_infant_formula",
+      "answer_target": "答案令人意外：只有一種——「嬰兒配方奶粉（infant formula）」！美國 USDA FSIS 明確說明，除受 FDA 監管的嬰兒配方奶粉必須印 \"Use-By\" 外，美國聯邦法規不強制肉品、牛奶、餅乾或罐頭印安全或品質日期（USDA 僅對禽肉與商業滅菌罐頭要求追蹤批號用的包裝日 pack date）。而嬰兒配方奶粉之所以唯一例外，不只為安全，更為了保證每一項營養素不低於標示含量，且沖泡後不會結塊阻塞一般奶嘴孔。",
+      "scope": "揭示美國聯邦食品日期法規僅強制嬰兒配方奶粉標示 Use-By 的反直覺事實，並說明其營養素與奶嘴通過性依據。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "畫出一排美國超市推車商品（牛排、罐頭、起司、餅乾、嬰兒配方罐），聯邦法條聚光燈一打，前面四樣全部暗掉出現「聯邦非強制」，只有嬰兒配方罐亮起「唯一強制 Use-By」並放大奶嘴孔暢通與營養量條。",
+        "payoff": "在美國聯邦層級，除了嬰兒配方奶粉以外，幾乎所有包裝日期都是廠商自願印的品質指南——連多數 Use-By 都不是聯邦安全紅線。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "X146R3-S09: pp. 1–2（Does Federal Law Require Food Product Dating?, Footnote 1, What are the Requirements for Dating Infant Formula?）",
+      "notes": "高反差冷知識，需口播註明「聯邦層級」以精確保留部分美國州法另有乳品／蛋類規範的事實。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪超市推車與無品牌奶粉罐、奶瓶動畫示意。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-dd4a343bbf3f159e",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S09: pp. 1–2（Does Federal Law Require Food Product Dating?, Footnote 1, What are the Requirements for Dating Infant Formula?）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0314",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "包裝上寫有效日期還有半年，為什麼我今天才剛撕開鋁箔封膜，那個日期就立刻失效了？",
+      "mechanism_key": "x146.expiry.opened_package_invalidation",
+      "answer_target": "不論是聯合國 Codex（CXS 1-1985）、歐盟法規（Article 25(2)）、EFSA 2021 年專家工具或香港食安中心，都強調包裝上的日期只對「未開封、依指示保存」狀態有效。一旦撕開包裝，隔絕氧氣、水氣與微生物的密封屏障被打破，手部、湯匙與空氣中的細菌就會移轉進入食物，使高水活性食品的實際安全食用期大幅縮短為幾天內（例如「開封後冷藏、數日內食用」），與原印日期完全脫鉤。",
+      "scope": "說明所有食品日期標示均以「未開封」為前提，開封後包裝屏障破裂與外來菌移轉導致原日期立即失效。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "一罐印著「還有 180 天」的醬料瓶一轉開蓋子「啵」一聲，原本的 180 天倒數計時器瞬間碎裂，換成新的 7 天紅色小鬧鐘，同時空氣水氣與手部微菌箭頭進入瓶口。",
+        "payoff": "日期保護的是「工廠封住的那個小宇宙」，剪刀一剪下去，原本的日曆就作廢了，真正該看的是「開封後幾天內吃完」。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_locator": "X146R3-S11: Article 25(2)；X146R3-S12: EFSA 2021-04-22；X146R3-S13: Section 2（unopened product）；X146R3-S16: 貯存指示",
+      "notes": "觀眾最常忽略卻最直接影響日常食安的關鍵開關。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪醬料罐開蓋與倒數鬧鐘切換動畫示意。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-cc36ce1e700c6920",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S11: Article 25(2)；X146R3-S12: EFSA 2021-04-22；X146R3-S13: Section 2（unopened product）；X146R3-S16: 貯存指示",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-9cf9af9ad7629c08",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S11: Article 25(2)；X146R3-S12: EFSA 2021-04-22；X146R3-S13: Section 2（unopened product）；X146R3-S16: 貯存指示",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-136d52ad24ac8b47",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S11: Article 25(2)；X146R3-S12: EFSA 2021-04-22；X146R3-S13: Section 2（unopened product）；X146R3-S16: 貯存指示",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-997a285d6b6a15da",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S11: Article 25(2)；X146R3-S12: EFSA 2021-04-22；X146R3-S13: Section 2（unopened product）；X146R3-S16: 貯存指示",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0315",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "還沒過期、連包裝都沒開，為什麼忘在室溫半天或塞在偏暖的冰箱裡，食物就能提早壞掉？差個幾度真的有差那麼多嗎？",
+      "mechanism_key": "x146.expiry.temperature_abuse_and_cold_chain",
+      "answer_target": "溫度每差幾度，微生物繁殖速度就完全改寫日期。韓國實驗指出，包裝豆腐放在 23°C 室溫下僅 1 天就超過腐敗標準，牛奶放 25°C 至流通期限到期當日生菌數即暴增超標；香港食安中心與美國 FSIS 警告，即食冷藏切片肉品或雞肉沙拉等易腐冷藏熟食離開冰箱超過 4.4°C（40°F）達 2 小時（室溫 ≥32.2°C／90°F 則僅 1 小時）就不應再吃。反過來看，日本消費者廳 2025 年實態調查亦記載個案：有業者將包含流通在內的冷藏控溫於 7°C（低於日本慣行 10°C 門檻），成功讓特定產品期限延長為 2 倍。",
+      "scope": "量化保存溫度對細菌增殖與實際效期的雙向放大效應（室溫失控提早腐敗 vs 冷鏈降溫倍增效期）。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "三格對照實驗室：左格 23°C 豆腐 24 小時菌落爆表；中格 10°C 冰箱李斯特菌仍在緩爬；右格 5°C–7°C 低溫冷鏈條被拉長成兩倍長度。",
+        "payoff": "沒過期不代表沒壞——日期背後綁著一條隱形溫度線，只要冷鏈斷兩小時，日曆就會瞬間跳票。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "X146R3-S02: p. 4（7°C延長2倍個案、10°C以下李斯特菌）；X146R3-S08: p. 9（豆腐23°C 1天、牛奶25°C至到期當日超標）；X146R3-S09: p. 3（冷雞肉沙拉 40°F 2小時／90°F 1小時）；X146R3-S16: 貯存指示（即食冷藏切片凍肉）",
+      "notes": "呼應第2章韓國冷藏鮮奶延至2031年的冷鏈伏筆，前後呼應度極高。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪溫度計、豆腐盒、冰箱層架與菌落曲線動畫呈現。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-6338fc326e839744",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S02: p. 4（7°C延長2倍個案、10°C以下李斯特菌）；X146R3-S08: p. 9（豆腐23°C 1天、牛奶25°C至到期當日超標）；X146R3-S09: p. 3（冷雞肉沙拉 40°F 2小時／90°F 1小時）；X146R3-S16: 貯存指示（即食冷藏切片凍肉）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8230df5014238577",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S02: p. 4（7°C延長2倍個案、10°C以下李斯特菌）；X146R3-S08: p. 9（豆腐23°C 1天、牛奶25°C至到期當日超標）；X146R3-S09: p. 3（冷雞肉沙拉 40°F 2小時／90°F 1小時）；X146R3-S16: 貯存指示（即食冷藏切片凍肉）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-dd4a343bbf3f159e",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S02: p. 4（7°C延長2倍個案、10°C以下李斯特菌）；X146R3-S08: p. 9（豆腐23°C 1天、牛奶25°C至到期當日超標）；X146R3-S09: p. 3（冷雞肉沙拉 40°F 2小時／90°F 1小時）；X146R3-S16: 貯存指示（即食冷藏切片凍肉）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-997a285d6b6a15da",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S02: p. 4（7°C延長2倍個案、10°C以下李斯特菌）；X146R3-S08: p. 9（豆腐23°C 1天、牛奶25°C至到期當日超標）；X146R3-S09: p. 3（冷雞肉沙拉 40°F 2小時／90°F 1小時）；X146R3-S16: 貯存指示（即食冷藏切片凍肉）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0316",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "鮮肉或熟食明天就要過「消費期限（Use-By）」了，今晚放進冷凍庫真的能當成「時間暫停鍵」嗎？解凍後又能放多久？",
+      "mechanism_key": "x146.expiry.freezer_pause_button_and_thawing",
+      "answer_target": "可以，但必須在「到期當日或之前」動作，且冷凍只是暫停、不是歸零！英國 GOV.UK／FSA 明確指出：在 Use-By 當日或之前以 -18°C 冷凍，細菌在冷凍狀態下無法生長，因此原日期過後仍可安全食用；或在到期前煮熟冷卻冷藏，可再延長 48 小時。但歐盟 EFSA 2021 年科學意見提醒，冷凍並不會殺死所有細菌，解凍時休眠菌會甦醒繼續繁殖——所以必須在冰箱低溫解凍、不可重複冷凍，且英國指南要求解凍後須於 24 小時內用完。",
+      "scope": "說明冷凍（-18°C）與提前烹煮對 Use-By 安全期的合法延長機制，以及解凍後細菌甦醒之 24 小時／48 小時限制。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "倒數計時快歸零的鮮肉盒在午夜前被送進 -18°C 冷凍庫，計時器按下藍色「暫停鍵 II」並結霜；拿回冷藏室解凍時冰霜融化、暫停鍵彈起，出現倒數 24 小時紅圈。",
+        "payoff": "冷凍庫真的能幫快過期的肉按下暫停鍵，但它按的不是「重置鍵」——退冰的那一刻，剩下的時間會接著往下扣。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "source_locator": "X146R3-S12: EFSA 2021-04-22（defrosting）& Safe2Eat（48 hours cooked）；X146R3-S14: When you can eat food after the use-by date",
+      "notes": "極度實用的廚房操作規則，直接給觀眾可帶走的正確做法。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪冷凍庫暫停鍵動畫與冷藏解凍時鐘示意。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-9cf9af9ad7629c08",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S12: EFSA 2021-04-22（defrosting）& Safe2Eat（48 hours cooked）；X146R3-S14: When you can eat food after the use-by date",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-65d382e866d889f1",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S12: EFSA 2021-04-22（defrosting）& Safe2Eat（48 hours cooked）；X146R3-S14: When you can eat food after the use-by date",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0317",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "把包裝上「此日期前食用」改成「此日期前最佳」，真的只是文字遊戲嗎？改這兩個字能少丟多少還好好的食物？",
+      "mechanism_key": "x146.expiry.label_wording_food_waste_impact",
+      "answer_target": "一點都不是文字遊戲。歐盟執委會估計歐盟每年 8,800 萬公噸食物浪費中，高達 10% 與日期標示混淆有關；英國 WRAP 指出英國農場後端浪費有 70% 發生在家庭，單是與 Best Before 相關的家庭丟棄每年就達 18 萬公噸（約 5 億英鎊）。WRAP 2023 年乳品實驗更直接量出改字威力：理解差異的民眾面對過期 1 天的牛奶，印 Use-By 有 47% 會倒掉，改印 Best-Before 降到 31%；過期 1 天優格更從 53% 降到 34%——而 WRAP 與 FSA 協商指南指出，未開封妥善保存的洋芋片過了 Best Before 約可撐 1 個月、餅乾約 6 個月、乾義大利麵最長 3 年。",
+      "scope": "以歐盟與英國 WRAP 實證數據量化日期用語混淆對家庭食物浪費的影響，及改標 Best Before 對丟棄率的實測降幅。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "兩瓶完全一樣、都過期 1 天的牛奶與優格並排（標註受試者已看懂兩類標籤差異）：左邊貼 Use-By 桶裡掉進約一半（47%／53%），右邊改貼 Best-Before 過期一天乳品丟棄率相對縮水約三分之一（31%／34%），旁邊展開常溫品寬限期光譜。",
+        "payoff": "同一瓶牛奶、同一個過期隔天，在看懂兩種標籤差異的前提下，只換兩個字就能讓過期一天牛奶與優格的丟棄率降低約三分之一（47%→31%、53%→34%）——標籤用語與認知本身就是減廢科技。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "source_locator": "X146R3-S12: Safe2Eat（88M tonnes, up to 10%）；X146R3-S15: 2023 Report（47%→31%, 53%→34%）& 2020 Release（180,000 tonnes, £500M, ambient guide）",
+      "notes": "有力收束全片社會與環境意義，不說教而用對照實驗數字說話。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪雙瓶乳品對照柱狀圖與垃圾桶減量動畫呈現。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-9cf9af9ad7629c08",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S12: Safe2Eat（88M tonnes, up to 10%）；X146R3-S15: 2023 Report（47%→31%, 53%→34%）& 2020 Release（180,000 tonnes, £500M, ambient guide）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ed314f08cbcea7d9",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S12: Safe2Eat（88M tonnes, up to 10%）；X146R3-S15: 2023 Report（47%→31%, 53%→34%）& 2020 Release（180,000 tonnes, £500M, ambient guide）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0318",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "同是繁體中文社會，香港怎麼把兩個期限拆成「此日期前最佳」和「此日期或之前食用」？回到台灣手上那盒日本伴手禮，我們到底該怎麼判讀？",
+      "mechanism_key": "x146.expiry.hk_dual_chinese_and_three_step_check",
+      "answer_target": "香港食安中心採與歐盟、澳紐與 Codex 接軌的雙軌制，用繁體中文明確分出「此日期前最佳（品質，過期若仍適宜食用可合法販售）」與「此日期或之前食用（安全，過期嚴禁販售、送出或食用）」。反觀台灣現行單軌「有效日期」下，消費者拿到跨國包裝可照三步驟自我判讀：一、先看原包裝究竟是品質型（賞味期限／Best Before）還是安全型（消費期限／Use By），並對照食材水活性（乾餅乾 vs 冷藏生鮮）；二、確認「未開封」且「溫濕度未破功」；三、品質型低水活性品過期可用看聞嚐確認無受潮油耗或發霉，安全型高水活性冷藏品則絕不靠聞的冒險。",
+      "scope": "對照香港繁體中文雙軌制與台灣單軌制，整合全片法規、水活性與溫控證據，提供回到開場日本伴手禮盒的實務判讀架構。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "鏡頭回到開場那盒日本伴手禮餅乾，旁邊並排香港雙軌中文標籤與台灣單軌貼紙，畫面浮現三張檢查卡：①看原字與水活性、②看開封與溫控、③分開「品質看聞嚐」與「安全不賭博」。",
+        "payoff": "終於看懂那張台灣貼紙背後的全部真相：它守住的是法規底線，而看懂原包裝、水活性與是否開封，才讓你既不吃壞肚子也不白白丟掉好食物。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "source_locator": "X146R3-S16: 全文（香港雙軌定義與業界規範）；X146R3-S06: 第五點；X146R3-S13: Section 2；X146R3-S01: p. 22（総則-24五感判斷）",
+      "notes": "完美首尾呼應開場的日本伴手禮盒，給出清晰可分享的三步判讀心法。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "以自繪日式點心盒、港台標籤文字示意卡與三步驟檢查清單動畫呈現。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-7039616349add3f9",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S16: 全文（香港雙軌定義與業界規範）；X146R3-S06: 第五點；X146R3-S13: Section 2；X146R3-S01: p. 22（総則-24五感判斷）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-c07b1315111f700e",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S16: 全文（香港雙軌定義與業界規範）；X146R3-S06: 第五點；X146R3-S13: Section 2；X146R3-S01: p. 22（総則-24五感判斷）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-136d52ad24ac8b47",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S16: 全文（香港雙軌定義與業界規範）；X146R3-S06: 第五點；X146R3-S13: Section 2；X146R3-S01: p. 22（総則-24五感判斷）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-997a285d6b6a15da",
+          "origin": "wave146-x146-20261121",
+          "locator": "X146R3-S16: 全文（香港雙軌定義與業界規範）；X146R3-S06: 第五點；X146R3-S13: Section 2；X146R3-S01: p. 22（総則-24五感判斷）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0401",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "隱形眼鏡盒子上寫的「含水量 58%」，量的是幫眼睛補水的能力，還是鏡片本身的重量比例？",
+      "mechanism_key": "x146.contacts.iso_water_weight_percent",
+      "answer_target": "依 ISO 18369-1 與 18369-4 定義，含水量指的是鏡片在 20°C 標準生理食鹽水中達平衡時，水分佔鏡片總重量的百分比（mass % / weight %），標準檢驗法是烘乾前後秤重求失重比例（重複性 2%）；它描述的是材料裡裝了多少水，不是幫眼睛保濕的指標。",
+      "scope": "僅談國際標準對水膠（≥10% 含水）與重量含水率的定義，不涉及任何品牌廣告語或個人配戴建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把一片透明鏡片放上實驗室微量天平，再送進烘箱抽乾水分：濕重 100 毫克烘完剩 42 毫克，消失的 58 毫克就是「含水量 58%」，而非水杯往眼睛倒水。",
+        "payoff": "盒上的 58% 是烘乾實驗量出的「材料水重比例」，不是幫眼球補水的保濕分數。",
+        "seconds": [
+          28,
+          42
+        ]
+      },
+      "source_locator": "ISO 18369-1 Clause 3.1.1.10（20°C 標準食鹽水平衡 ≥10%）；ISO 18369-4 Table 1 與 Clause 4.6.2（weight % 烘箱失重法，重複性 2%）",
+      "notes": "開場破題核心卡。破除中文「含水量」帶來的「越水越保濕」語意錯覺。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪實驗室天平、烘箱與水分子比例示意，不使用市售品牌盒面或商標。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-c0bf485f845b2789",
+          "origin": "wave146-x146-20261121",
+          "locator": "ISO 18369-1 Clause 3.1.1.10（20°C 標準食鹽水平衡 ≥10%）；ISO 18369-4 Table 1 與 Clause 4.6.2（weight % 烘箱失重法，重複性 2%）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f0e541045b2c0dab",
+          "origin": "wave146-x146-20261121",
+          "locator": "ISO 18369-1 Clause 3.1.1.10（20°C 標準食鹽水平衡 ≥10%）；ISO 18369-4 Table 1 與 Clause 4.6.2（weight % 烘箱失重法，重複性 2%）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0402",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "鏡片才剛從室溫水盒夾出來戴上眼睛，都還沒吹到冷氣，為什麼含水量就先掉了一截？",
+      "mechanism_key": "x146.contacts.temp_jump_dehydration",
+      "answer_target": "加拿大滑鐵盧大學體外試驗顯示，光是把浸泡在室溫 22°C 保存液中的鏡片升溫到眼表溫度 35°C，5 種材質（共 7 款市售鏡片）整體隨升溫至 35°C 呈含水量下降（多數條件 P ≤ 0.0052，少數 1 小時或 comfilcon A 16 小時條件例外）；一旦睜眼暴露在空氣中，蒸發還會疊加在升溫失水之上。",
+      "scope": "以體外恆溫 22°C 升至 35°C 之實驗數據說明熱力學平衡位移，不推論個人在特定冷氣房的失水秒數。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "溫度計從室溫 22°C 跳到眼表 35°C，水膠高分子網格受熱略微收緊，水珠還沒碰到風就先從網格裡被擠出一圈。",
+        "payoff": "離開 22°C 保存液踏上 35°C 眼球的那一刻，鏡片就因熱平衡改變先掉第一波水。",
+        "seconds": [
+          25,
+          38
+        ]
+      },
+      "source_locator": "PMC8287047 Table 1 & Results（5 種材質共 7 款市售鏡片由 22°C 升溫至 35°C 整體呈含水量下降，多數條件 P ≤ 0.0052，少數 1 小時或 comfilcon A 16 小時條件例外）；ISO 18369-1 Clause 3.1.1.10（20°C 標稱基準溫度）",
+      "notes": "串接標準量測溫度（20°C）與真實眼表溫度（35°C）的落差，讓觀眾立刻理解標稱數字為何一上眼就變動。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪溫度計與聚合物網格縮水動畫，無品牌標示。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-867dcd621f09963e",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMC8287047 Table 1 & Results（5 種材質共 7 款市售鏡片由 22°C 升溫至 35°C 整體呈含水量下降，多數條件 P ≤ 0.0052，少數 1 小時或 comfilcon A 16 小時條件例外）；ISO 18369-1 Clause 3.1.1.10（20°C 標稱基準溫度）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-c0bf485f845b2789",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMC8287047 Table 1 & Results（5 種材質共 7 款市售鏡片由 22°C 升溫至 35°C 整體呈含水量下降，多數條件 P ≤ 0.0052，少數 1 小時或 comfilcon A 16 小時條件例外）；ISO 18369-1 Clause 3.1.1.10（20°C 標稱基準溫度）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0403",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "同樣戴半天，為什麼 58% 高含水傳統鏡片失水反而比 38% 的更多，還被食藥署點名容易覺得乾？",
+      "mechanism_key": "x146.contacts.high_water_faster_dehydration",
+      "answer_target": "高含水傳統水膠內部含較多「自由水與弱結合水」，蒸發門檻低。318 片實戴研究顯示水膠實戴平均含水量從 56.88% 降至 52.58%，高含水與離子型均顯著更易脫水（p < 0.0001）；僅 2 名受試者各輪測 17 對水膠鏡片之 4 小時雙盲試驗（最多掉 5.3%，以 FDA 第四類高含水離子型最大）與 13 人連續過夜延長配戴（extended wear）2 週試驗（58% 離子型 etafilcon A 掉 6.0% ± 1.3%）亦呈現同向趨勢；高濕（>90%）體外眨眼模型（n=4）16 小時試驗中，58% etafilcon A 絕對含水百分點降幅達 10.30% ± 7.46%。台灣食藥署也說明高含水鏡片吸水性較強，在淚液不足者身上更易感到乾澀並吸附蛋白脂質。",
+      "scope": "涵蓋傳統水膠（特別是 FDA 第四類高含水離子型）之日間實戴（318 片橫斷研究與 n=2 4 小時雙盲試驗）、13 人連續過夜延長配戴 2 週試驗及高濕（>90%、n=4）體外眨眼模型脫水趨勢，並明確區分實驗條件，搭配食藥署闢謠機制說明。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "並排兩塊海綿模型：左邊 38% 孔洞緊密、水被抓牢；右邊 58% 塞滿鬆散自由水，微風一吹大量蒸散，水分梯度往下拉動下方薄淚膜。",
+        "payoff": "58% 傳統高含水片多的是容易蒸發的自由水，戴久脫水幅度更大，吸水性高反而更容易拉乾表面。",
+        "seconds": [
+          38,
+          50
+        ]
+      },
+      "source_locator": "PMID 20444120（318 片 56.88%→52.58%, p<0.0001）；PMID 10444050（僅 2 名受試者各輪測 17 對水膠鏡片之 4 小時雙盲試驗，最多掉 5.3%、Group IV 最大）；PMID 12861112（13 人連續過夜延長配戴 2 週試驗，etafilcon A 掉 6.0% ± 1.3%）；PMC8287047（自由水；高濕 >90%、n=4 體外眨眼模型 16 小時絕對含水百分點降幅 10.30% ± 7.46%）；TFDA 闢謠專區（25%–85%、高含水吸水性強）",
+      "notes": "正面回答片名主鉤子，且把 CLADES 318 片、英澳雙盲、滑鐵盧眨眼模型與台灣食藥署串成完整證據鏈。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪兩組孔隙海綿與結合水／自由水鍵結圖示，不含品牌外盒。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-384aef14ecc232e7",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMID 20444120（318 片 56.88%→52.58%, p<0.0001）；PMID 10444050（僅 2 名受試者各輪測 17 對水膠鏡片之 4 小時雙盲試驗，最多掉 5.3%、Group IV 最大）；PMID 12861112（13 人連續過夜延長配戴 2 週試驗，etafilcon A 掉 6.0% ± 1.3%）；PMC8287047（自由水；高濕 >90%、n=4 體外眨眼模型 16 小時絕對含水百分點降幅 10.30% ± 7.46%）；TFDA 闢謠專區（25%–85%、高含水吸水性強）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-1f003bad5d933672",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMID 20444120（318 片 56.88%→52.58%, p<0.0001）；PMID 10444050（僅 2 名受試者各輪測 17 對水膠鏡片之 4 小時雙盲試驗，最多掉 5.3%、Group IV 最大）；PMID 12861112（13 人連續過夜延長配戴 2 週試驗，etafilcon A 掉 6.0% ± 1.3%）；PMC8287047（自由水；高濕 >90%、n=4 體外眨眼模型 16 小時絕對含水百分點降幅 10.30% ± 7.46%）；TFDA 闢謠專區（25%–85%、高含水吸水性強）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-867dcd621f09963e",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMID 20444120（318 片 56.88%→52.58%, p<0.0001）；PMID 10444050（僅 2 名受試者各輪測 17 對水膠鏡片之 4 小時雙盲試驗，最多掉 5.3%、Group IV 最大）；PMID 12861112（13 人連續過夜延長配戴 2 週試驗，etafilcon A 掉 6.0% ± 1.3%）；PMC8287047（自由水；高濕 >90%、n=4 體外眨眼模型 16 小時絕對含水百分點降幅 10.30% ± 7.46%）；TFDA 闢謠專區（25%–85%、高含水吸水性強）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-9cf610141a6b5f49",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMID 20444120（318 片 56.88%→52.58%, p<0.0001）；PMID 10444050（僅 2 名受試者各輪測 17 對水膠鏡片之 4 小時雙盲試驗，最多掉 5.3%、Group IV 最大）；PMID 12861112（13 人連續過夜延長配戴 2 週試驗，etafilcon A 掉 6.0% ± 1.3%）；PMC8287047（自由水；高濕 >90%、n=4 體外眨眼模型 16 小時絕對含水百分點降幅 10.30% ± 7.46%）；TFDA 闢謠專區（25%–85%、高含水吸水性強）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2da8a1bc564c4ff2",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMID 20444120（318 片 56.88%→52.58%, p<0.0001）；PMID 10444050（僅 2 名受試者各輪測 17 對水膠鏡片之 4 小時雙盲試驗，最多掉 5.3%、Group IV 最大）；PMID 12861112（13 人連續過夜延長配戴 2 週試驗，etafilcon A 掉 6.0% ± 1.3%）；PMC8287047（自由水；高濕 >90%、n=4 體外眨眼模型 16 小時絕對含水百分點降幅 10.30% ± 7.46%）；TFDA 闢謠專區（25%–85%、高含水吸水性強）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0404",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "只要買「低含水」就一定不乾嗎？為什麼同樣標 60% 高含水，換一種聚合物失水量卻差了快五倍？",
+      "mechanism_key": "x146.contacts.polymer_friction_tear_split",
+      "answer_target": "不能只看含水數字一刀切。高濕（>90%）體外眨眼模型（n=4）16 小時試驗中，含磷醯膽鹼的 60% omafilcon A 絕對含水百分點降幅僅 2.08% ± 1.18%，遠低於 58% etafilcon A 的 10.30% ± 7.46%。TFOS 國際工作坊與考科藍回顧也指出：鏡片放上眼球會把原本只有 2–5 微米的淚膜劈成鏡前與鏡後兩層；整體脫水量不一定直接等於主觀乾澀，反而與「鏡前淚膜破裂時間」有關，且表面摩擦係數與傍晚舒適度（r^2 = 0.79 及 >0.83）及 2 小時平均舒適度（r^2 = 0.91）高度相關，但 TFOS 亦提醒仍屬觀察相關、尚無一級因果證據且可能混雜廠商邊緣設計。",
+      "scope": "修正「高含水必乾、低含水必濕」的過度簡化，呈現聚合物保水鍵結、淚膜分層與表面摩擦力三個變因。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "先對照 58% 失水 10.30% 與 60% 僅失水 2.08% 的柱狀對比，再拉近眼球剖面：鏡片像薄玻璃片把 2–5 微米淚膜切開成上下兩層，眼皮眨過時感受的是表面摩擦力。",
+        "payoff": "含水百分比只是起點，鎖不鎖得住水、淚膜會不會早破、眼皮滑過有多澀，全看分子結構與表面摩擦。",
+        "seconds": [
+          40,
+          52
+        ]
+      },
+      "source_locator": "PMC8287047（高濕 >90%、n=4 體外眨眼模型 16 小時絕對含水百分點降幅：omafilcon A 2.08% ± 1.18% vs etafilcon A 10.30% ± 7.46%）；IOVS 2013 TFOS37–70（整體脫水與主觀乾澀非線性；表面摩擦係數與傍晚舒適度 r^2 = 0.79 及 >0.83、2 小時平均舒適度 r^2 = 0.91，提醒尚無一級因果證據且可能混雜廠商邊緣設計）；PMC10507745（2–5 μm 淚膜分裂）",
+      "notes": "關鍵科學平衡卡，避免節目把複雜淚膜乾澀簡化成單一「高含水=壞」偽命題。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪 2–5 微米淚膜分層剖面與眼瞼滑動摩擦圖解，不使用市售產品影像。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-867dcd621f09963e",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMC8287047（高濕 >90%、n=4 體外眨眼模型 16 小時絕對含水百分點降幅：omafilcon A 2.08% ± 1.18% vs etafilcon A 10.30% ± 7.46%）；IOVS 2013 TFOS37–70（整體脫水與主觀乾澀非線性；表面摩擦係數與傍晚舒適度 r^2 = 0.79 及 >0.83、2 小時平均舒適度 r^2 = 0.91，提醒尚無一級因果證據且可能混雜廠商邊緣設計）；PMC10507745（2–5 μm 淚膜分裂）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-3fa49506f539f253",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMC8287047（高濕 >90%、n=4 體外眨眼模型 16 小時絕對含水百分點降幅：omafilcon A 2.08% ± 1.18% vs etafilcon A 10.30% ± 7.46%）；IOVS 2013 TFOS37–70（整體脫水與主觀乾澀非線性；表面摩擦係數與傍晚舒適度 r^2 = 0.79 及 >0.83、2 小時平均舒適度 r^2 = 0.91，提醒尚無一級因果證據且可能混雜廠商邊緣設計）；PMC10507745（2–5 μm 淚膜分裂）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-880a8b4b4f16c337",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMC8287047（高濕 >90%、n=4 體外眨眼模型 16 小時絕對含水百分點降幅：omafilcon A 2.08% ± 1.18% vs etafilcon A 10.30% ± 7.46%）；IOVS 2013 TFOS37–70（整體脫水與主觀乾澀非線性；表面摩擦係數與傍晚舒適度 r^2 = 0.79 及 >0.83、2 小時平均舒適度 r^2 = 0.91，提醒尚無一級因果證據且可能混雜廠商邊緣設計）；PMC10507745（2–5 μm 淚膜分裂）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0405",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "除了容易蒸發，把含水量從 38% 拉到 58% 還會對鏡片的「軟硬度」和包裝液帶來什麼取捨？",
+      "mechanism_key": "x146.contacts.modulus_packaging_tradeoff",
+      "answer_target": "美國 FDA 2023 年日戴水膠簡化審查指引（非強制建議，彙整既有核准 510(k) 規格）揭露了物理取捨：38% polymacon 的彈性模數基準為 0.62 MPa、折射率 1.437；含水拉高到 58% 的 etafilcon A 彈性模數降到 0.42 MPa、折射率降到 1.402，鏡片更軟但成型與抗拉強度也隨之改變。該指引並將包裝液基準定在 pH 7.2–7.4、滲透壓 280–320（生理尺度為 mOsm/kg；原文件表誤印為 osmol/kg），以維持鏡片尺寸與含水穩定，而宣稱「保濕／緩解乾眼」的鏡片甚至不能走美國 FDA 的簡化審查路徑。",
+      "scope": "以 FDA 2023 年官方基準表呈現含水量與彈性模數、折射率及包裝液條件之工程連動，不評比個別品牌。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "用手指輕頂兩片不同模數的透明弧面：0.62 MPa 挺得住、0.42 MPa 比較容易軟塌，一旁標出泡在 pH 7.2–7.4 緩衝液裡的穩定狀態，並蓋出 FDA「保濕宣稱不適用簡化路徑」印章。",
+        "payoff": "把水塞高不只影響蒸發，連鏡片軟硬挺度、折射率跟審查門檻都一起連動。",
+        "seconds": [
+          32,
+          44
+        ]
+      },
+      "source_locator": "FDA 2023 Guidance（非強制建議 SPBP）Section III Scope 與 Performance Criteria Table（polymacon 0.62 MPa/RI 1.437 對比 etafilcon A 0.42 MPa/RI 1.402；包裝液基準 pH 7.2–7.4、滲透壓 280–320［生理尺度 mOsm/kg，原表誤印為 osmol/kg］）",
+      "notes": "補充工程面細節與 FDA 對「保濕／緩解乾眼」宣稱的監管態度，增加第二章資訊密度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪鏡片挺度彎折示意與透明泡殼緩衝液圖示，不含品牌名稱。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-a8aeb348cb54988c",
+          "origin": "wave146-x146-20261121",
+          "locator": "FDA 2023 Guidance（非強制建議 SPBP）Section III Scope 與 Performance Criteria Table（polymacon 0.62 MPa/RI 1.437 對比 etafilcon A 0.42 MPa/RI 1.402；包裝液基準 pH 7.2–7.4、滲透壓 280–320［生理尺度 mOsm/kg，原表誤印為 osmol/kg］）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0406",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "角膜明明是活體組織，為什麼不能靠血液送氧，缺氧久了眼睛會自己做出什麼補救？",
+      "mechanism_key": "x146.contacts.avascular_cornea_vegf",
+      "answer_target": "角膜為了維持透明、讓光線無阻穿透，本身完全沒有血管，只能靠大氣中的氧氣（睜眼淚膜氧分壓約 155 mmHg，閉眼時驟降至約 61.5 mmHg）溶進淚膜擴散進去。美國眼科學會指出，當隱形眼鏡造成長期慢性缺氧，角膜上皮會分泌血管內皮生長因子（VEGF），迫使眼白交界的輪部血管往透明角膜內長進去，形成角膜新生血管，嚴重時可能滲出脂質、結疤並威脅視力。",
+      "scope": "說明角膜無血管供氧生理與缺氧誘發 VEGF 新生血管之機制，不提供個人診斷或治療建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把透明角膜畫成一扇不能埋電線的玻璃窗：睜眼時藍點氧氣從空氣溶進淚膜穿入；一旦被不透氧罩子蓋久，窗框邊緣就開始爬出細紅血管線條。",
+        "payoff": "角膜沒有血管，缺氧久了只好自己把血管往透明玻璃上長——這就是隱形眼鏡拚命追透氧的原因。",
+        "seconds": [
+          34,
+          46
+        ]
+      },
+      "source_locator": "PMC12153035（155 vs 61.5 mmHg、角膜 532 μm）；TFDA 闢謠與 PMDA Q1（角膜無血管靠大氣溶氧）；AAO EyeNet 2013（慢性缺氧上調 VEGF 致角膜新生血管）",
+      "notes": "建立整集從「乾澀」轉入「透氧」的生理動機，讓觀眾理解為何廠商非解決氧氣問題不可。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪透明角膜剖面、氧分壓數值與輪部細血管生長示意圖，避免血腥寫實畫面。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-5ac4edb6028c37ac",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMC12153035（155 vs 61.5 mmHg、角膜 532 μm）；TFDA 闢謠與 PMDA Q1（角膜無血管靠大氣溶氧）；AAO EyeNet 2013（慢性缺氧上調 VEGF 致角膜新生血管）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2da8a1bc564c4ff2",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMC12153035（155 vs 61.5 mmHg、角膜 532 μm）；TFDA 闢謠與 PMDA Q1（角膜無血管靠大氣溶氧）；AAO EyeNet 2013（慢性缺氧上調 VEGF 致角膜新生血管）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-642c698406529b25",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMC12153035（155 vs 61.5 mmHg、角膜 532 μm）；TFDA 闢謠與 PMDA Q1（角膜無血管靠大氣溶氧）；AAO EyeNet 2013（慢性缺氧上調 VEGF 致角膜新生血管）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f2b38da51ee537c1",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMC12153035（155 vs 61.5 mmHg、角膜 532 μm）；TFDA 闢謠與 PMDA Q1（角膜無血管靠大氣溶氧）；AAO EyeNet 2013（慢性缺氧上調 VEGF 致角膜新生血管）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0407",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "既然高含水容易脫水，早年廠商為什麼還是拚命把傳統鏡片從 38% 往上塞到 58%？",
+      "mechanism_key": "x146.contacts.hydrogel_water_oxygen_exponential",
+      "answer_target": "因為在傳統水膠裡，聚合物骨架本身幾乎不傳氧，氧氣只能先溶進鏡片裡的水再慢慢擴散過去，透氧係數 Dk 與含水量 W 呈指數關係（常用經驗式 Dk = 1.67 × e^(0.0397W)）。對照美國 FDA 基準，38% 傳統 polyHEMA 的 Dk 只有 10.76，拉高到 58% 的 etafilcon A 才翻倍到 22.43——早年為了讓角膜多吸一口氣，幾乎只能靠拼命塞水。",
+      "scope": "解釋傳統水膠氧氣擴散路徑與 Dk–含水量正相關機制，引用 FDA 基準與學界經驗式。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把水膠畫成被塑膠牆隔開的水道：38% 時水道狹窄、氧氣分子排長隊（Dk 10.76）；把水塞到 58%，水道變寬一倍（Dk 22.43），氧氣才比較過得去。",
+        "payoff": "在傳統水膠時代，「把含水量做高」本來就是為了幫氧氣開路，而不是為了幫眼睛保濕。",
+        "seconds": [
+          34,
+          46
+        ]
+      },
+      "source_locator": "IOVS 2013 TFOS37（polyHEMA 38% 基準）；PMID 16303517（Dk = 1.67 e^(0.0397W)）；FDA 2023 Guidance（polymacon 38%/10.76 vs etafilcon A 58%/22.43）",
+      "notes": "揭開第一個核心反轉：高含水原本是透氧手段，後來卻被誤當成保濕賣點。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪塑膠骨架與水相氧氣通道寬度對照圖，無商標。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-3fa49506f539f253",
+          "origin": "wave146-x146-20261121",
+          "locator": "IOVS 2013 TFOS37（polyHEMA 38% 基準）；PMID 16303517（Dk = 1.67 e^(0.0397W)）；FDA 2023 Guidance（polymacon 38%/10.76 vs etafilcon A 58%/22.43）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-29a9eacc060b733c",
+          "origin": "wave146-x146-20261121",
+          "locator": "IOVS 2013 TFOS37（polyHEMA 38% 基準）；PMID 16303517（Dk = 1.67 e^(0.0397W)）；FDA 2023 Guidance（polymacon 38%/10.76 vs etafilcon A 58%/22.43）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-a8aeb348cb54988c",
+          "origin": "wave146-x146-20261121",
+          "locator": "IOVS 2013 TFOS37（polyHEMA 38% 基準）；PMID 16303517（Dk = 1.67 e^(0.0397W)）；FDA 2023 Guidance（polymacon 38%/10.76 vs etafilcon A 58%/22.43）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0408",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "把傳統水膠塞到接近 100% 全是水，透氧不就無限大了嗎？為什麼偏偏撞上一道物理天花板，還越乾越缺氧？",
+      "mechanism_key": "x146.contacts.pure_water_ceiling_and_dehydration_drop",
+      "answer_target": "不行，因為純水本身傳導氧氣的速度就有物理上限：就算把鏡片做成理論上 100% 純水，Dk 天花板也只落在約 93 至 94 barrer（且完全無法成型配戴）。更糟的是，傳統水膠靠水送氧，一旦高含水鏡片在眼上脫水，送氧水道跟著縮水——在 13 人連續過夜延長配戴（extended wear）2 週試驗中，58% etafilcon A 失水 6.0% 時，Dk 同步下降 3.6 barrer，形成「越乾越缺氧」的雙輸困局。",
+      "scope": "說明純水 Dk 物理上限（25°C 約 93–94 barrer）與傳統水膠於 13 人連續過夜延長配戴（extended wear）2 週試驗中脫水後 Dk 同步下滑之實測結果。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "透氧曲線一路往上爬，卻在 100% 處撞上一條寫著「純水天花板 ~93–94」的鋼樑；同時水滴一蒸發，58% 鏡片的氧氣指針立刻往回掉 3.6 格。",
+        "payoff": "靠水傳氧永遠衝不破純水天花板，而且鏡片一蒸發失水，透氧量還跟著縮水。",
+        "seconds": [
+          32,
+          44
+        ]
+      },
+      "source_locator": "Menicon 博物誌其16 p.225（純水 Dk 上限約 94 × 10^-11）；PMC12153035（水／淚液 Dk = 93 barrer）；PMID 12861112（13 人連續過夜延長配戴 2 週試驗，etafilcon A 失水 6.0% 使 Dk 降 3.6 barrer）",
+      "notes": "把「高含水→脫水→透氧一起掉」扣成一個閉環矛盾，自然引出矽水膠登場。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪指數曲線撞擊純水天花板橫線與脫水掉氧雙儀表動畫，無品牌標示。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-1f003bad5d933672",
+          "origin": "wave146-x146-20261121",
+          "locator": "Menicon 博物誌其16 p.225（純水 Dk 上限約 94 × 10^-11）；PMC12153035（水／淚液 Dk = 93 barrer）；PMID 12861112（13 人連續過夜延長配戴 2 週試驗，etafilcon A 失水 6.0% 使 Dk 降 3.6 barrer）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5ac4edb6028c37ac",
+          "origin": "wave146-x146-20261121",
+          "locator": "Menicon 博物誌其16 p.225（純水 Dk 上限約 94 × 10^-11）；PMC12153035（水／淚液 Dk = 93 barrer）；PMID 12861112（13 人連續過夜延長配戴 2 週試驗，etafilcon A 失水 6.0% 使 Dk 降 3.6 barrer）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2ade8899047f6927",
+          "origin": "wave146-x146-20261121",
+          "locator": "Menicon 博物誌其16 p.225（純水 Dk 上限約 94 × 10^-11）；PMC12153035（水／淚液 Dk = 93 barrer）；PMID 12861112（13 人連續過夜延長配戴 2 週試驗，etafilcon A 失水 6.0% 使 Dk 降 3.6 barrer）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0409",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "角膜到底需要多少透氧率才不會水腫？為什麼「日間配戴」跟「戴著過夜」的門檻差了三倍多？",
+      "mechanism_key": "x146.contacts.holden_mertz_critical_dkt",
+      "answer_target": "1984 年澳洲新南威爾斯大學 36 小時實戴水腫研究定出歷史座標：白天睜眼避免角膜水腫的臨界 Dk/t 是 24.1（等效氧百分比 EOP 9.9%），標準低含水 poly-HEMA 要做到平均厚度 ≤33 微米才過關；而閉眼過夜若想把角膜水腫壓在不戴鏡睡眠原本就會有的 4% 生理水準內，需要 Dk/t 87.0（EOP 17.9%）——是日戴門檻的 3.6 倍，傳統水膠靠水傳氧根本跨不過去。",
+      "scope": "以 1984 年經典實戴試驗定出日戴 24.1 與過夜 87.0 兩條基準線，不作個人可否過夜配戴之建議。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "畫出兩道跨欄高度：白天睜眼欄杆標 24.1，傳統高含水勉強擦過；閉眼過夜欄杆突然拉高到 87.0，傳統水膠跳到天花板都摸不到。",
+        "payoff": "閉上眼沒了直接大氣供氧，不讓角膜異常水腫的透氧門檻從 24.1 暴漲到 87.0，逼出新材料革命。",
+        "seconds": [
+          34,
+          46
+        ]
+      },
+      "source_locator": "PMID 6592160 Abstract（日戴 24.1 ± 2.7 / EOP 9.9%、poly-HEMA ≤33 μm、Duragel 75 ≤166 μm；過夜 87.0 ± 3.3 / 4% 水腫 / EOP 17.9%）",
+      "notes": "文稿與章節中以「1984 年澳洲角膜水腫研究」稱呼，避免放入在世或 1956 年後過世研究者姓名。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪日戴／閉眼兩道跨欄標尺與角膜 4% 厚度變化示意，無商標。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-924bfc1f37f06c6c",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMID 6592160 Abstract（日戴 24.1 ± 2.7 / EOP 9.9%、poly-HEMA ≤33 μm、Duragel 75 ≤166 μm；過夜 87.0 ± 3.3 / 4% 水腫 / EOP 17.9%）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0410",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "既然 24.1 和 87.0 已經算出來了，為什麼十五年後美國柏克萊的模型又把門檻往上推到 35 和 125？",
+      "mechanism_key": "x146.contacts.acidosis_revised_dkt_thresholds",
+      "answer_target": "1999 年美國柏克萊加州大學視光學院修訂五層角膜氧擴散模型，納入過去忽略的「角膜酸化效應」——鏡片擋住二氧化碳排出會讓角膜略偏酸，進而拉高角膜細胞的耗氧速率。雖然維持基底上皮不缺氧的門檻仍接近舊值（睜眼 23、閉眼 89），但若要求整層角膜（包含基質層）完全不缺氧，最低 Dk/t 必須拉升到睜眼 35、閉眼 125。",
+      "scope": "說明 1999 年五層擴散模型修正邏輯與 23/89 對比 35/125 兩組門檻的差別。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "角膜分層切開成上皮、基質、內皮三層：表面上皮在 23/89 時還亮綠燈，但二氧化碳堆積變酸後耗氧加速，要把整塊基質層都點亮，標尺必須再往上推到 35 與 125。",
+        "payoff": "算進角膜酸化後更耗氧的連鎖反應，要讓全層角膜真正不缺氧，門檻直接跳到睜眼 35、閉眼 125。",
+        "seconds": [
+          30,
+          42
+        ]
+      },
+      "source_locator": "PMID 10524787 Abstract（五層模型加入酸化耗氧上升；基底上皮 23/89；全層角膜不缺氧 35/125）",
+      "notes": "解釋為什麼現代矽水膠常把 Dk/t 推破 100 甚至 125 以上，而不是停在 87。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪五層角膜氧氣滲透深度與酸化耗氧燈號示意，無人物與品牌。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-ba85e4e4d2ced3e1",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMID 10524787 Abstract（五層模型加入酸化耗氧上升；基底上皮 23/89；全層角膜不缺氧 35/125）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0411",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "矽水膠為什麼把舊規則整個倒過來：含水量降到 24%–38%，透氧係數反而衝破 100，連脫水都會「越乾越透氧」？",
+      "mechanism_key": "x146.contacts.silicone_hydrogel_inverse_rule",
+      "answer_target": "因為矽水膠加入的「矽氧烷（siloxane）」本身傳氧速度遠超純水，反而是水相拉慢了矽相的氧氣高速公路。獨立實驗室盲測證實一、二代矽水膠與傳統水膠方向完全相反：含水僅 23.0% 的 lotrafilcon A 實測 Dk 飆到 162.0，36.9% 的 senofilcon A 為 107.4，含水拉到 46.5% 的 galyfilcon A 反而掉到 75.2。更戲劇化的是，在 13 人連續過夜延長配戴（extended wear）2 週／4 週試驗中，38.3% 矽水膠 balafilcon A 2 週失水 2.8%、連續配戴 4 週後因矽比例相對變高，Dk 竟然逆向增加 6.0 barrer。",
+      "scope": "呈現矽水膠以矽相主導傳氧的反轉機制與獨立盲測、13 人連續過夜延長配戴（extended wear）2 週／4 週試驗逆增數據，並註明第三代材料已部分跳脫舊反比線。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把兩張趨勢圖疊成一個大叉號：傳統水膠往右上爬（越水越透氧但撞牆），矽水膠反過來往左上衝（水越少、矽高速公路越寬，23% 就衝到 Dk 162），脫水時指針竟然反方向往上跳 6 格。",
+        "payoff": "換成矽水膠後，傳氧主力從水換成矽氧烷——含水量越低反而越透氧，舊直覺瞬間失效。",
+        "seconds": [
+          40,
+          52
+        ]
+      },
+      "source_locator": "PMID 17435503（23.0%→162.0、36.9%→107.4、46.5%→75.2、4/5 宣稱值落 95% CI 外）；PMID 12861112（13 人連續過夜延長配戴 2 週／4 週試驗，balafilcon A 2 週脫水 2.8%、4 週反增 6.0 barrer）；Menicon 博物誌其16（三代演進）",
+      "notes": "全片最大知識翻轉高潮：X 形反轉圖＋「失水 2.8% 反增 6 barrer」超強記憶點。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪 X 形雙曲線圖與矽氧烷高速公路微觀剖面，不顯示商業品牌名稱。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-1f003bad5d933672",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMID 17435503（23.0%→162.0、36.9%→107.4、46.5%→75.2、4/5 宣稱值落 95% CI 外）；PMID 12861112（13 人連續過夜延長配戴 2 週／4 週試驗，balafilcon A 2 週脫水 2.8%、4 週反增 6.0 barrer）；Menicon 博物誌其16（三代演進）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5f571263a0f3ae32",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMID 17435503（23.0%→162.0、36.9%→107.4、46.5%→75.2、4/5 宣稱值落 95% CI 外）；PMID 12861112（13 人連續過夜延長配戴 2 週／4 週試驗，balafilcon A 2 週脫水 2.8%、4 週反增 6.0 barrer）；Menicon 博物誌其16（三代演進）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2ade8899047f6927",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMID 17435503（23.0%→162.0、36.9%→107.4、46.5%→75.2、4/5 宣稱值落 95% CI 外）；PMID 12861112（13 人連續過夜延長配戴 2 週／4 週試驗，balafilcon A 2 週脫水 2.8%、4 週反增 6.0 barrer）；Menicon 博物誌其16（三代演進）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0412",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "既然矽水膠透氧這麼高，為什麼沒有直接宣告「完美無缺」？高透氧換來了哪些代價？",
+      "mechanism_key": "x146.contacts.silicone_tradeoff_and_cochrane_reality",
+      "answer_target": "矽帶來高透氧，也帶來「硬、疏水、愛吸油」三大工程難題：第一代矽水膠彈性模數高達 1.5 MPa（遠硬於傳統水膠的 0.42–0.62 MPa），曾引發機械性角膜上皮弓狀病變（SEAL），疏水表面還得靠電漿處理且較易附著淚液脂質，直到第二、三代才逐步壓低模數（0.43–0.9 MPa）。考科藍 2023 年整合 7 項隨機試驗（1,371 名成人）也給出冷靜結論：目前對矽水膠是否比水膠更舒適的證據確定性「極低」，而在兩項 52 週延長配戴試驗（815 人）中，矽水膠不良事件風險反而未低於水膠（RR 2.03，極低確定性）——透氧高並不等於怎麼戴都沒事。",
+      "scope": "以材料演進史與 2023 年考科藍系統性回顧平衡矽水膠迷思，不推薦特定世代或品牌。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "天平左邊放上「透氧破百」，右邊立刻彈出三個砝碼：硬（1.5 MPa 像塑膠殼）、排斥水珠、吸附油滴；接著翻開考科藍實證卡片，在「一定更舒服？一定零風險？」旁打上問號。",
+        "payoff": "矽水膠解了缺氧，卻沒自動解掉舒適度與感染風險——透氧率從來不是唯一的分數。",
+        "seconds": [
+          38,
+          50
+        ]
+      },
+      "source_locator": "Menicon 博物誌其16（1.5 MPa、SEAL、電漿處理、脂質沉積）；PMC10507745（7 RCTs / 1,371 人、OSDI MD -1.20、52 週延長配戴 RR 2.03 極低確定性）；FDA 2023（0.42–0.62 MPa 對照）",
+      "notes": "破除「矽水膠=萬靈丹」的第二層迷思，體現嚴謹實證立場。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪材料特性天平與水珠／油滴接觸角示意，無品牌標示。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-a8aeb348cb54988c",
+          "origin": "wave146-x146-20261121",
+          "locator": "Menicon 博物誌其16（1.5 MPa、SEAL、電漿處理、脂質沉積）；PMC10507745（7 RCTs / 1,371 人、OSDI MD -1.20、52 週延長配戴 RR 2.03 極低確定性）；FDA 2023（0.42–0.62 MPa 對照）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2ade8899047f6927",
+          "origin": "wave146-x146-20261121",
+          "locator": "Menicon 博物誌其16（1.5 MPa、SEAL、電漿處理、脂質沉積）；PMC10507745（7 RCTs / 1,371 人、OSDI MD -1.20、52 週延長配戴 RR 2.03 極低確定性）；FDA 2023（0.42–0.62 MPa 對照）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-880a8b4b4f16c337",
+          "origin": "wave146-x146-20261121",
+          "locator": "Menicon 博物誌其16（1.5 MPa、SEAL、電漿處理、脂質沉積）；PMC10507745（7 RCTs / 1,371 人、OSDI MD -1.20、52 週延長配戴 RR 2.03 極低確定性）；FDA 2023（0.42–0.62 MPa 對照）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0413",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "盒上印的透氧率 Dk/t 只有一個數字，但高度近視或遠視的人，眼睛各處真的都分得到這麼多氧氣嗎？",
+      "mechanism_key": "x146.contacts.minus3_center_thickness_trap",
+      "answer_target": "分不到。包裝標示單一 Dk/t 的業界慣例，是用「近視 300 度（-3.00 D）鏡片正中央厚度」去除 Dk（例如標稱 Dk 21.4 ÷ 中心厚度 0.0084 cm = 25）。但度數一變，鏡片形狀全變：近視片是中間薄、邊緣厚的凹透鏡，近視 600 度外圈變厚會把周邊透氧往下拉；遠視片反而是中間厚的凸透鏡，2025 年西班牙三維角膜氧合模型算出，同一材質從 -3.00 D 換成 +3.00 D，中央睜眼氧通量直接掉約 26%，+6.00 D 時中央與周邊耗氧差異更達 54%。",
+      "scope": "以 -3.00 D 中心厚度換算慣例、-6.00 D 透氧分佈圖與 2025 年三維模型說明度數幾何對局部供氧之影響。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "放大鏡對準 -3.00 D 鏡片最薄的正中心量尺；鏡頭一拉遠，左邊 -6.00 D 邊緣鼓成厚圈變橘紅，右邊 +3.00 D 正中央鼓成山丘、中央氧通量直接掉 26%。",
+        "payoff": "盒上的透氧率只是「近視 300 度正中央」的單點成績單，一換高度近視或遠視，厚起來的地方氧氣就跟著打折。",
+        "seconds": [
+          40,
+          52
+        ]
+      },
+      "source_locator": "PMC5161396（21.4 ÷ 0.0084 cm = 25 之 -3.00 D 慣例）；Menicon research08（-6.00 D 周邊 Dk/t 降低色階圖）；PMC12153035（-3.00 D 換 +3.00 D 中央降 ~26%、+6.00 D 差異 54%）；ISO 18369-1 Clause 3.1.1.4（lenticular 減厚設計）",
+      "notes": "極具日常衝擊力的「規格表盲區」卡：台灣高度近視人口多，馬上聯想到自己的度數。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪 -3.00 D、-6.00 D、+3.00 D 鏡片剖面厚度與氧通量熱力色階示意，無商標。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-5ac4edb6028c37ac",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMC5161396（21.4 ÷ 0.0084 cm = 25 之 -3.00 D 慣例）；Menicon research08（-6.00 D 周邊 Dk/t 降低色階圖）；PMC12153035（-3.00 D 換 +3.00 D 中央降 ~26%、+6.00 D 差異 54%）；ISO 18369-1 Clause 3.1.1.4（lenticular 減厚設計）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-c0bf485f845b2789",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMC5161396（21.4 ÷ 0.0084 cm = 25 之 -3.00 D 慣例）；Menicon research08（-6.00 D 周邊 Dk/t 降低色階圖）；PMC12153035（-3.00 D 換 +3.00 D 中央降 ~26%、+6.00 D 差異 54%）；ISO 18369-1 Clause 3.1.1.4（lenticular 減厚設計）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5ad1700ae5f12a46",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMC5161396（21.4 ÷ 0.0084 cm = 25 之 -3.00 D 慣例）；Menicon research08（-6.00 D 周邊 Dk/t 降低色階圖）；PMC12153035（-3.00 D 換 +3.00 D 中央降 ~26%、+6.00 D 差異 54%）；ISO 18369-1 Clause 3.1.1.4（lenticular 減厚設計）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e2f10530897efe12",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMC5161396（21.4 ÷ 0.0084 cm = 25 之 -3.00 D 慣例）；Menicon research08（-6.00 D 周邊 Dk/t 降低色階圖）；PMC12153035（-3.00 D 換 +3.00 D 中央降 ~26%、+6.00 D 差異 54%）；ISO 18369-1 Clause 3.1.1.4（lenticular 減厚設計）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0414",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "散光隱形眼鏡為了不亂轉而在下方加厚配重，會讓局部透氧率掉到多低？",
+      "mechanism_key": "x146.contacts.toric_prism_ballast_oxygen_dip",
+      "answer_target": "散光片需要特定軸度對準眼球，常在鏡片特定區域做成較厚的稜鏡配重或穩定帶。澳洲墨爾本 2003 年實測 8 款市售拋棄式散光片的多點厚度，結果最厚處竟然「8 款全軍覆沒」，沒有任何一款達到局部 Dk/t ≥ 12（×10^-9 單位）（遠低於日戴臨界 24.1）；對照之下，同研究測試的矽水膠鏡片在全度數範圍仍維持在 50 以上，突顯只看中央標稱數字會漏掉最厚處的缺氧死角。",
+      "scope": "呈現散光穩定厚區對局部 Dk/t 之實測衝擊，並註明受測品牌為 2003 年世代，新一代矽水膠散光片透氧水準已提升。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "把散光片轉成側面像不倒翁一樣底部加厚，光束照出加厚帶像一道厚牆，八款傳統散光片的局部透氧計量表在那一區全數落在 12 以下。",
+        "payoff": "防止鏡片旋轉的加厚配重區，會讓局部厚度暴增，把盒上漂亮的中央透氧數字在那一帶攔腰砍斷。",
+        "seconds": [
+          30,
+          42
+        ]
+      },
+      "source_locator": "PMID 16303517 Abstract（8 款拋棄式散光片 0/8 達局部 Dk/t ≥ 12；矽水膠全度數 >50）",
+      "notes": "把「中心厚度陷阱」從球面延伸到台灣觀眾同樣常見的散光片。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪散光不倒翁配重厚區剖面與 0/8 計量條圖，無品牌標示。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-29a9eacc060b733c",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMID 16303517 Abstract（8 款拋棄式散光片 0/8 達局部 Dk/t ≥ 12；矽水膠全度數 >50）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0415",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "彩色放大片常常被說「不透氧又掉色」：到底是色素把氧氣堵死了，還是別的地方在作怪？",
+      "mechanism_key": "x146.contacts.colored_lens_pigment_vs_thickness",
+      "answer_target": "要分開看「色素本身」與「鏡片結構厚度」。一項採 ISO 18369-4 極譜法的業界實驗室測試顯示，將色素包覆於鏡片基材內的 etafilcon A 實測 Dk 為 19.7，與透明對照組 19.5 幾乎相同；但實測市售彩片全區時，中周邊印色區因結構較厚，局部 Dk/t 仍低於中心。台灣食藥署 2016 年抽驗 28 件市售合法拋棄式彩片，依原廠送審規格（未列者採食藥署 37°C 超音波萃取與 300–800 nm 光譜法）檢驗均未檢出色素溶出（0/28，僅 1 件許可證標示不符）；台灣食藥署 2017 年報亦以官方公眾風險提示提醒一般透明片每日不超過 8 小時、彩片以 4–6 小時為宜（此屬公眾衛教提示而非個人醫囑）。",
+      "scope": "區分包覆式色素對材料 Dk 的實測、印色區厚度效應與台灣 2016 年 28 件抽驗結果，並註明業界論文之研究範圍限制。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "切開彩片夾層剖面：微米級色素點並沒把分子孔洞完全封死（19.7 對 19.5），但印色那圈鏡片變厚、氧氣路程拉長；右側亮出台灣食藥署 28 件 0 溶出檢驗盤與 4–6 小時時鐘。",
+        "payoff": "合法夾層彩片不一定會掉色或讓材料 Dk 歸零，但中周邊加厚與超時配戴才是拖垮透氧與傷眼的真變數。",
+        "seconds": [
+          38,
+          50
+        ]
+      },
+      "source_locator": "PMC5161396（19.7 vs 19.5、中周邊較厚降局部 Dk/t）；TFDA 2017 年報 pp.126–127（28 件依原廠送審規格或食藥署 37°C 超音波萃取與 300–800 nm 光譜法檢驗 0 溶出、1 件標示不符；p.127 官方公眾風險提示透明片 ≤8 小時／彩片 4–6 小時，非個人醫囑）；TFDA M.5925 第 1–3 頁（≥14 天色素溶出試驗）",
+      "notes": "用實證拆解彩片迷思：既不恐慌式謠傳「全都掉色」，也不輕描淡寫忽略厚區透氧與時數上限。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪夾層色素微觀剖面與 4–6 小時鐘面示意，不使用任何彩片品牌包裝或瞳孔寫實照。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-bae5abf1b490d4ec",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMC5161396（19.7 vs 19.5、中周邊較厚降局部 Dk/t）；TFDA 2017 年報 pp.126–127（28 件依原廠送審規格或食藥署 37°C 超音波萃取與 300–800 nm 光譜法檢驗 0 溶出、1 件標示不符；p.127 官方公眾風險提示透明片 ≤8 小時／彩片 4–6 小時，非個人醫囑）；TFDA M.5925 第 1–3 頁（≥14 天色素溶出試驗）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ad3ff3b59b2767f4",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMC5161396（19.7 vs 19.5、中周邊較厚降局部 Dk/t）；TFDA 2017 年報 pp.126–127（28 件依原廠送審規格或食藥署 37°C 超音波萃取與 300–800 nm 光譜法檢驗 0 溶出、1 件標示不符；p.127 官方公眾風險提示透明片 ≤8 小時／彩片 4–6 小時，非個人醫囑）；TFDA M.5925 第 1–3 頁（≥14 天色素溶出試驗）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e2f10530897efe12",
+          "origin": "wave146-x146-20261121",
+          "locator": "PMC5161396（19.7 vs 19.5、中周邊較厚降局部 Dk/t）；TFDA 2017 年報 pp.126–127（28 件依原廠送審規格或食藥署 37°C 超音波萃取與 300–800 nm 光譜法檢驗 0 溶出、1 件標示不符；p.127 官方公眾風險提示透明片 ≤8 小時／彩片 4–6 小時，非個人醫囑）；TFDA M.5925 第 1–3 頁（≥14 天色素溶出試驗）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0416",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "角膜都已經磨傷了，為什麼很多人摘下鏡片前竟然「完全不覺得痛」？日本官方與學會查出了什麼？",
+      "mechanism_key": "x146.contacts.bandage_effect_and_jp_investigations",
+      "answer_target": "日本隱形眼鏡學會指出，軟式鏡片蓋在角膜上會產生「繃帶效應」，遮蔽角膜神經末梢而掩蓋初期表皮損傷的痛覺，等到發痛就醫往往已惡化。日本 NITE 2008 年針對「2009 年納管前未核准無度數彩片」調查 167 件眼傷（含重症 21 件），高達 99%（83/84）配戴前沒做過眼科診斷，且多款規格超標、部分厚度達透明視力矯正片約 2 倍；台灣食藥署 2017 年報第 127 頁亦引述日本國民生活中心 2014 年實測——17 款市售彩片讓 10 名受試者戴 8 小時，竟有 16 款出現角膜或結膜傷害。",
+      "scope": "以軟式鏡片繃帶效應結合日本 NITE 2008 年（2009 年納管前未核准無度數彩片）調查、學會臨床觀察與食藥署 2017 年報 p.127 轉述之國民生活中心 2014 年測試結果，說明無痛延誤風險。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "鏡片像透明 OK 繃貼在受損的角膜神經末梢上，把「痛覺警報燈」先按靜音；畫面切出三組實查數據牌：99% 未先檢查、厚度達透明片 2 倍、8 小時實戴 16/17 款現角結膜傷害。",
+        "payoff": "軟鏡片像一片蓋住神經的透明 OK 繃——戴著不痛不代表沒傷，往往是等拿下來警報才大響。",
+        "seconds": [
+          40,
+          52
+        ]
+      },
+      "source_locator": "JCLS 2013 PDF（p.1 繃帶效應；NITE 2008 2009 年納管前未核准無度數彩片 167 件／重症 21 件／83/84 即 99% 未受眼科診斷／厚度約 2 倍）；TFDA 2017 年報 p.127（引述日本國民生活中心 2014 年 17 款／10 人 8 小時／16 款角結膜傷害）",
+      "notes": "極高分享度與提醒力的收束轉折。誠實標註國民生活中心 2014 係經由 TFDA 2017 年報轉引。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪角膜神經靜音圖示與數據牌，不使用臨床病眼寫實照片。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-ad3ff3b59b2767f4",
+          "origin": "wave146-x146-20261121",
+          "locator": "JCLS 2013 PDF（p.1 繃帶效應；NITE 2008 2009 年納管前未核准無度數彩片 167 件／重症 21 件／83/84 即 99% 未受眼科診斷／厚度約 2 倍）；TFDA 2017 年報 p.127（引述日本國民生活中心 2014 年 17 款／10 人 8 小時／16 款角結膜傷害）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-6f69dad1c91ed978",
+          "origin": "wave146-x146-20261121",
+          "locator": "JCLS 2013 PDF（p.1 繃帶效應；NITE 2008 2009 年納管前未核准無度數彩片 167 件／重症 21 件／83/84 即 99% 未受眼科診斷／厚度約 2 倍）；TFDA 2017 年報 p.127（引述日本國民生活中心 2014 年 17 款／10 人 8 小時／16 款角結膜傷害）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
+      ]
+    },
+    {
+      "id": "K146-0417",
+      "category": "人體感官與日常行為",
+      "domain": "人體感官與日常行為",
+      "question": "明明在藥妝店就能買到，為什麼日本把包含「無度數彩片」在內的隱形眼鏡，跟洗腎機、人工呼吸器放進同一個醫療器材分級？",
+      "mechanism_key": "x146.contacts.us_tw_jp_regulatory_tiers",
+      "answer_target": "因為隱形眼鏡直接覆蓋無血管角膜，一旦缺氧或感染就可能留下不可逆視力傷害。美國 21 CFR § 886.5925 與台灣食藥署 M.5925 都依配戴時間切分風險：日戴屬第二等級（Class II），過夜長戴直上最高風險第三等級（Class III）；日本管得更嚴，依 MHLW 2009 年 11 月 4 日起彩片納管專頁、PMDA 與 JCLA 規範，連無度數時尚彩片也全面納入「高度管理醫療機器（Class III）」，與厚生勞動省分類簡報所列同級 Class III 例示之透析器（洗腎機）、人工骨、人工呼吸器同屬一級（並與 Class IV 心臟節律器同在高度管理框架內）。日本業界廣告自主基準更明文禁用「無害色素」「免處方箋」「戴著睡覺 OK」，並要求影音廣告以靜止明確文字顯示高度管理醫療器材與遵醫囑警語至少 1 秒（基準解說並建議文字區塊占畫面二分之一）。",
+      "scope": "橫向對比美國、台灣、日本三地法定醫療器材風險分級與日本業界廣告紅線，不涉法律諮詢或個別品牌稽查。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "三國法規階梯並排：美、台把日戴放第二階、長戴放第三階；日本直接把所有隱形眼鏡（含 0 度彩片）送進第三階「高度管理醫療機器」，身旁並列洗腎機透析器與人工呼吸器，並把「無害色素」「免處方箋」貼上紅叉封條。",
+        "payoff": "它看起來像日用品，在東亞法規裡卻是和洗腎機、呼吸器同級的高風險醫材——看懂盒上的數字，才算真正看懂戴進眼睛的東西。",
+        "seconds": [
+          40,
+          52
+        ]
+      },
+      "source_locator": "21 CFR § 886.5925（日戴 Class II／長戴 Class III）；TFDA M.5925 第 1–3 頁（日戴第二等級／長戴第三等級）；MHLW 2009-11-04 彩片納管（X146R4-S18）、PMDA Q1（X146R4-S20）與 JCLA 2021 廣告自主基準（X146R4-S24）證實隱形眼鏡屬 Class III 高度管理医療機器；MHLW 2025-03-25 簡報（X146R4-S19）PDF 第 8 頁別表第一列示隱形眼鏡、第 10 頁 slide 9/42 載明同級 Class III 例示含透析器、人工骨、人工呼吸器（Class IV 含心臟節律器、人工心瓣）；JCLA 第 14 條（要求靜止文字顯示 ≥1 秒；＜解説＞建議占畫面二分之一）",
+      "notes": "精準區分來源歸屬與等級：隱形眼鏡屬日本 Class III 高度管理医療機器出自 MHLW（X146R4-S18）、PMDA（X146R4-S20）與 JCLA（X146R4-S24），而同級 Class III 例示（透析器、人工骨、人工呼吸器）與 Class IV（心臟節律器、人工心瓣）出自 MHLW 2025-03-25 簡報（X146R4-S19）第 10 頁 slide 9/42，勿稱該投影片同格直接並列四者；亦區分 JCLA 第 14 條靜止顯示 ≥1 秒屬強制規定、占畫面二分之一屬解說建議。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "visual_rights": "自繪美台日三地風險階梯、透析器／呼吸器簡筆圖標與禁用語紅叉章，無任何品牌商標。",
+      "origin": "wave146-x146-20261121",
+      "source_refs": [
+        {
+          "source_id": "SRC-bc2434dbae2cd8ef",
+          "origin": "wave146-x146-20261121",
+          "locator": "21 CFR § 886.5925（日戴 Class II／長戴 Class III）；TFDA M.5925 第 1–3 頁（日戴第二等級／長戴第三等級）；MHLW 2009-11-04 彩片納管（X146R4-S18）、PMDA Q1（X146R4-S20）與 JCLA 2021 廣告自主基準（X146R4-S24）證實隱形眼鏡屬 Class III 高度管理医療機器；MHLW 2025-03-25 簡報（X146R4-S19）PDF 第 8 頁別表第一列示隱形眼鏡、第 10 頁 slide 9/42 載明同級 Class III 例示含透析器、人工骨、人工呼吸器（Class IV 含心臟節律器、人工心瓣）；JCLA 第 14 條（要求靜止文字顯示 ≥1 秒；＜解説＞建議占畫面二分之一）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-bae5abf1b490d4ec",
+          "origin": "wave146-x146-20261121",
+          "locator": "21 CFR § 886.5925（日戴 Class II／長戴 Class III）；TFDA M.5925 第 1–3 頁（日戴第二等級／長戴第三等級）；MHLW 2009-11-04 彩片納管（X146R4-S18）、PMDA Q1（X146R4-S20）與 JCLA 2021 廣告自主基準（X146R4-S24）證實隱形眼鏡屬 Class III 高度管理医療機器；MHLW 2025-03-25 簡報（X146R4-S19）PDF 第 8 頁別表第一列示隱形眼鏡、第 10 頁 slide 9/42 載明同級 Class III 例示含透析器、人工骨、人工呼吸器（Class IV 含心臟節律器、人工心瓣）；JCLA 第 14 條（要求靜止文字顯示 ≥1 秒；＜解説＞建議占畫面二分之一）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8e0e52f039e61bb0",
+          "origin": "wave146-x146-20261121",
+          "locator": "21 CFR § 886.5925（日戴 Class II／長戴 Class III）；TFDA M.5925 第 1–3 頁（日戴第二等級／長戴第三等級）；MHLW 2009-11-04 彩片納管（X146R4-S18）、PMDA Q1（X146R4-S20）與 JCLA 2021 廣告自主基準（X146R4-S24）證實隱形眼鏡屬 Class III 高度管理医療機器；MHLW 2025-03-25 簡報（X146R4-S19）PDF 第 8 頁別表第一列示隱形眼鏡、第 10 頁 slide 9/42 載明同級 Class III 例示含透析器、人工骨、人工呼吸器（Class IV 含心臟節律器、人工心瓣）；JCLA 第 14 條（要求靜止文字顯示 ≥1 秒；＜解説＞建議占畫面二分之一）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-0ab11133f314b9a3",
+          "origin": "wave146-x146-20261121",
+          "locator": "21 CFR § 886.5925（日戴 Class II／長戴 Class III）；TFDA M.5925 第 1–3 頁（日戴第二等級／長戴第三等級）；MHLW 2009-11-04 彩片納管（X146R4-S18）、PMDA Q1（X146R4-S20）與 JCLA 2021 廣告自主基準（X146R4-S24）證實隱形眼鏡屬 Class III 高度管理医療機器；MHLW 2025-03-25 簡報（X146R4-S19）PDF 第 8 頁別表第一列示隱形眼鏡、第 10 頁 slide 9/42 載明同級 Class III 例示含透析器、人工骨、人工呼吸器（Class IV 含心臟節律器、人工心瓣）；JCLA 第 14 條（要求靜止文字顯示 ≥1 秒；＜解説＞建議占畫面二分之一）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-642c698406529b25",
+          "origin": "wave146-x146-20261121",
+          "locator": "21 CFR § 886.5925（日戴 Class II／長戴 Class III）；TFDA M.5925 第 1–3 頁（日戴第二等級／長戴第三等級）；MHLW 2009-11-04 彩片納管（X146R4-S18）、PMDA Q1（X146R4-S20）與 JCLA 2021 廣告自主基準（X146R4-S24）證實隱形眼鏡屬 Class III 高度管理医療機器；MHLW 2025-03-25 簡報（X146R4-S19）PDF 第 8 頁別表第一列示隱形眼鏡、第 10 頁 slide 9/42 載明同級 Class III 例示含透析器、人工骨、人工呼吸器（Class IV 含心臟節律器、人工心瓣）；JCLA 第 14 條（要求靜止文字顯示 ≥1 秒；＜解説＞建議占畫面二分之一）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-1199301cabc54da9",
+          "origin": "wave146-x146-20261121",
+          "locator": "21 CFR § 886.5925（日戴 Class II／長戴 Class III）；TFDA M.5925 第 1–3 頁（日戴第二等級／長戴第三等級）；MHLW 2009-11-04 彩片納管（X146R4-S18）、PMDA Q1（X146R4-S20）與 JCLA 2021 廣告自主基準（X146R4-S24）證實隱形眼鏡屬 Class III 高度管理医療機器；MHLW 2025-03-25 簡報（X146R4-S19）PDF 第 8 頁別表第一列示隱形眼鏡、第 10 頁 slide 9/42 載明同級 Class III 例示含透析器、人工骨、人工呼吸器（Class IV 含心臟節律器、人工心瓣）；JCLA 第 14 條（要求靜止文字顯示 ≥1 秒；＜解説＞建議占畫面二分之一）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave146-x146-20261121.json"
       ]
     },
     {
