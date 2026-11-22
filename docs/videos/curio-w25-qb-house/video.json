@@ -1,0 +1,1479 @@
+{
+  "schema_version": 1,
+  "slug": "curio-w25-qb-house",
+  "theme": "paper",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。絕不平、絕不像在念稿。",
+    "performance": "像跟朋友拆解一場藏在捷運與車站角落的三十年減法商戰：開場從日常不洗頭與綠黃紅三色燈直球切入；一九九〇年代在理髮廳睡過頭與關西問卷六倍爆表生動有畫面感；每分鐘一百日圓的減法算盤節奏明快；加油站懸吊油槍催生吸髮器與免拉給排水管搶下車站舊站長室神反轉拍案叫絕；一坪膠囊店出海與六個月培訓學校氣勢拉滿；收尾從空間套利與系統紀律鏗鏘落地。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -18,
+    "duck_db": -8
+  },
+  "pauses": {
+    "line_ms": 0,
+    "scene_ms": 150
+  },
+  "still_motion": "beat",
+  "loops": [
+    {
+      "setup": "q005",
+      "payoff": "q046",
+      "what": "砍掉洗頭不只是省時間，真正的殺招藏在地板下免埋給排水管線"
+    },
+    {
+      "setup": "q009",
+      "payoff": "q048",
+      "what": "十分鐘快剪如何靠砍掉洗頭把店塞進車站畸零死角"
+    },
+    {
+      "setup": "q018",
+      "payoff": "q021",
+      "what": "關西三地市場調查衝出預期六倍的百分之三十意願"
+    },
+    {
+      "setup": "q025",
+      "payoff": "q026",
+      "what": "十分鐘一千日圓等於每分鐘產值一百日圓的減法算盤"
+    },
+    {
+      "setup": "q038",
+      "payoff": "q043",
+      "what": "不洗頭如何解決碎髮——加油站靈感造出懸吊空氣吸髮器"
+    },
+    {
+      "setup": "q051",
+      "payoff": "q053",
+      "what": "一九九五年底日本理髮業放寬公會統一公休與價碼限制"
+    },
+    {
+      "setup": "q061",
+      "payoff": "q072",
+      "what": "硬體被山寨抄走後靠一坪膠囊店出海與六個月培訓學校守住護城河"
+    },
+    {
+      "setup": "q080",
+      "payoff": "q082",
+      "what": "條碼掃描到吸髮機關機的數據計時與跨店動態支援"
+    },
+    {
+      "setup": "q091",
+      "payoff": "q094",
+      "what": "通膨下調價至一千四百日圓並於當時將長輩月一次折扣擴大至全齡"
+    },
+    {
+      "setup": "q099",
+      "payoff": "q100",
+      "what": "創業三十週年前夕交出二〇二六年六月期營收兩百七十一億日圓與雙榜成績單"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "open-station-booth",
+      "chapter": "砍掉洗頭卻奪下第一！QB House 靠吸髮管塞進車站",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a sleek compact modern navy-and-white express haircut booth inside a bright Japanese subway concourse, glowing vertical green-yellow-red signal lamp mounted beside a crystal-clear glass entrance",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q001",
+          "text": "車站常見的ＱＢ快剪，竟砍洗頭奪日本專剪連鎖第一！",
+          "emotion": "日常熟悉感破題"
+        },
+        {
+          "id": "q002",
+          "text": "沒結帳櫃檯、沒電話預約，門外只掛綠黃紅三色燈。",
+          "emotion": "反常細節"
+        }
+      ]
+    },
+    {
+      "id": "open-air-washer-hook",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up inside a crisp modern express haircut station showing a gleaming chrome barber chair beneath a flexible coiled silver-and-blue ceiling air-vacuum hose swirling dark hair clippings upward with cyan air streams",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q003",
+          "text": "剪完拉下頭頂吸髮管，十來分鐘就能俐落走人！",
+          "emotion": "強烈對比"
+        },
+        {
+          "id": "q004",
+          "text": "傳統理髮廳拚命加洗頭按摩，它卻反過來全砍光。",
+          "emotion": "標誌畫面"
+        }
+      ]
+    },
+    {
+      "id": "open-no-water-mystery",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up dramatic studio still-life on dark polished walnut wood showing gleaming chrome barber scissors beside a blue vacuum nozzle facing an unused coiled copper water pipe under warm spotlight",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q005",
+          "text": "你以為砍洗頭只省時？殺招跟地板挖不挖有關！",
+          "emotion": "核心懸念"
+        },
+        {
+          "id": "q006",
+          "text": "靠這套極致減法，它橫跨八國開破七百六十間店。",
+          "emotion": "終點規模"
+        }
+      ]
+    },
+    {
+      "id": "open-scale-contrast",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide warm aerial-angle concourse shot of bustling Japanese railway commuters passing a compact glowing glass haircut booth tucked neatly into a narrow station corner beside ticket gates",
+        "camera": "pull back",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q007",
+          "text": "日本累計服務數億人次，徹底改寫剪髮市場。",
+          "emotion": "驚人戰績"
+        },
+        {
+          "id": "q008",
+          "text": "但它一九九六年起步時，只是一間沒人看好的小店。",
+          "emotion": "起點反差"
+        }
+      ]
+    },
+    {
+      "id": "open-promise-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of Ada standing warmly behind a polished mahogany desk in a bright wooden study with both hands resting calmly palm-down beside a miniature chrome barber scissors and a tiny three-color signal lamp",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "q009",
+          "text": "今天我們就來聊聊，它怎麼靠砍掉洗頭，把快剪塞進車站？",
+          "emotion": "唯一承諾句"
+        }
+      ]
+    },
+    {
+      "id": "luxury-barber-1995",
+      "chapter": "1990 年代理髮廳睡過頭！門外漢在關西測出 6 倍商機",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide warm interior shot of an upscale 1990s Tokyo traditional barbershop with plush dark leather reclining chairs, brass fixtures, steamed hot towels, and glowing warm lamps",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q010",
+          "text": "這場剪髮革命的起點，來自一九九〇年代一場遲到。",
+          "emotion": "承接承諾"
+        },
+        {
+          "id": "q011",
+          "text": "創辦人原在東京幫牙醫找店面租設備，是門外漢。",
+          "emotion": "門外漢背景"
+        }
+      ]
+    },
+    {
+      "id": "half-hour-revelation",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an anonymous Japanese businessman in a crisp navy suit sitting upright in a leather barber chair glancing worriedly at his silver wristwatch as a barber holds scissors beside him",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "q012",
+          "text": "商談前常去高級理髮廳，四千日圓全套耗一小時。",
+          "emotion": "傳統痛點"
+        },
+        {
+          "id": "q013",
+          "text": "有回跳過洗頭熱敷按摩，半小時剪完竟照收四千！",
+          "emotion": "首次頓悟"
+        }
+      ]
+    },
+    {
+      "id": "overslept-meeting",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an anonymous businessman in a tailored suit waking up startled in a reclined leather barber chair covered with a warm towel as afternoon sunlight slants across the empty quiet salon",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "q014",
+          "text": "另一回照舊做全套，熱敷到睡著錯過時間害商談遲到！",
+          "emotion": "情緒引爆點"
+        },
+        {
+          "id": "q015",
+          "text": "他氣得反問：為何替不想做的全套服務買單？",
+          "emotion": "核心質疑"
+        }
+      ]
+    },
+    {
+      "id": "ten-min-concept",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up studio still-life on warm cedar wood displaying a sleek silver pair of barber shears, a clean wooden comb, and a glowing glass ten-minute sand hourglass lit by golden rim light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q016",
+          "text": "回算前次單剪半小時多是寒暄細修，動剪十分鐘！",
+          "emotion": "十分鐘誕生"
+        },
+        {
+          "id": "q017",
+          "text": "於是喊出狂妄點子：十分鐘一千日圓，只剪不洗！",
+          "emotion": "顛覆定位"
+        }
+      ]
+    },
+    {
+      "id": "kansai-survey-test",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide sunlit streetscape of a lively 1990s Osaka commercial district and train plaza bathed in crisp morning light, clean modern avenues and bright storefronts without signs or text",
+        "camera": "pull back",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q018",
+          "text": "門外漢異想天開，精明的客人真的願意買單嗎？",
+          "emotion": "市場驗證疑問"
+        },
+        {
+          "id": "q019",
+          "text": "他沒留在東京測，反跑去最挑剔性價比的大阪做問卷。",
+          "emotion": "反直覺選址"
+        }
+      ]
+    },
+    {
+      "id": "thirty-percent-hit",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up overhead still-life on an oak desk showing three distinct architectural neighborhood map blocks lit by warm sunbeams beside a gleaming brass compass and blank parchment cards",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q020",
+          "text": "連測鬧區難波、辦公區梅田與郊區千里新市鎮。",
+          "emotion": "嚴謹抽樣"
+        },
+        {
+          "id": "q021",
+          "text": "原盼百分之五想試，竟衝出六倍的百分之三十！",
+          "emotion": "30% 爆表揭曉"
+        }
+      ]
+    },
+    {
+      "id": "miniature-store-model",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up inside a sunlit design studio showing a detailed architectural balsa-wood miniature scale model of a tiny compact haircut shop with three angled mirror booths on a drafting table",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q022",
+          "text": "信心到手卻開不成：舊法准理髮公會擋低價，等三年。",
+          "emotion": "三年磨一劍"
+        },
+        {
+          "id": "q023",
+          "text": "等待期間找團隊做縮尺模型，逐公分壓榨空間。",
+          "emotion": "模型驗證"
+        }
+      ]
+    },
+    {
+      "id": "angled-booths-design",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide interior shot of a bright minimalist haircut shop showing three sleek white-and-wood cutting stations angled diagonally along the wall so mirrors never face each other directly",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q024",
+          "text": "最後把狹長店兩排座位斜向錯開，不只縮小坪數，",
+          "emotion": "斜向設計"
+        },
+        {
+          "id": "q025",
+          "text": "還避開對面鏡中對眼！但定價這麼低怎麼賺？",
+          "emotion": "章末鉤子"
+        }
+      ]
+    },
+    {
+      "id": "hundred-yen-per-min",
+      "chapter": "每分鐘 100 日圓的算盤：取消電話傘架與三色燈號",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up dramatic still-life on dark walnut wood showing a gleaming antique brass stopwatch beside a neat stack of polished blank silver coins under golden directional studio lighting",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q026",
+          "text": "滿客每分進帳百圓，一小時六千比四千全套還高！",
+          "emotion": "時間等於成本"
+        },
+        {
+          "id": "q027",
+          "text": "接兩分鐘電話少兩百，幫找拿錯傘五分鐘少五百。",
+          "emotion": "具體算盤"
+        }
+      ]
+    },
+    {
+      "id": "strip-everything-away",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead flat-lay on bright oak wood showing only five essential tools—steel barber scissors, black comb, folded crisp white towel, electrical plug, and chair blueprint—surrounded by empty space",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q028",
+          "text": "先砍預約電話與傘架，佔空間的雜誌電視也省！",
+          "emotion": "徹底減法"
+        },
+        {
+          "id": "q029",
+          "text": "外套雨傘全由客人收進鏡子後方的專屬置物櫃。",
+          "emotion": "鏡後置物櫃"
+        }
+      ]
+    },
+    {
+      "id": "ticket-vending-first",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an anonymous commuter in a clean trench coat inserting a coin into a sleek unbranded navy-blue and silver prepaid ticket machine inside a bright glass shop entrance",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "q030",
+          "text": "他更創美髮業先例，導入先買票的自動售票機。",
+          "emotion": "業界首創售票機"
+        },
+        {
+          "id": "q031",
+          "text": "設計師免碰收銀找零，把雙手全都留給剪刀。",
+          "emotion": "專注剪髮"
+        }
+      ]
+    },
+    {
+      "id": "soba-two-machines",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up inside a bright modern shop vestibule showing two identical sleek matte-navy ticket dispensers standing side by side under warm ceiling downlights on pale tile flooring",
+        "camera": "pull back",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q032",
+          "text": "他見立食麵店售票機一壞，整家店就瞬間停擺，",
+          "emotion": "立食麵店靈感"
+        },
+        {
+          "id": "q033",
+          "text": "再擠也堅持裝兩台互為備援，絕不讓整店斷收。",
+          "emotion": "兩台售票機細節"
+        }
+      ]
+    },
+    {
+      "id": "three-color-signal",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up exterior shot of a modern navy-blue vertical traffic-signal indicator box mounted on a clean glass storefront glowing vividly with emerald green, bright yellow, and crimson red lamps",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q034",
+          "text": "還記得門外那盞三色燈嗎？它怎麼取代預約？",
+          "emotion": "無預約難題"
+        },
+        {
+          "id": "q035",
+          "text": "候位椅底藏壓力感應器，依人數自動切燈！",
+          "emotion": "三色燈號登場"
+        }
+      ]
+    },
+    {
+      "id": "sensor-hourglass-1996",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up inside a neat minimalist haircut booth showing a modern waiting bench beside a clear glass ten-minute hourglass filled with fine golden sand resting on a crisp white counter",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q036",
+          "text": "沒人亮綠燈、候位少黃燈，人多等十五分起亮紅燈！",
+          "emotion": "早期感應機制"
+        },
+        {
+          "id": "q037",
+          "text": "每席再擺十分鐘沙漏，節奏控得像產線精準。",
+          "emotion": "三色定義"
+        }
+      ]
+    },
+    {
+      "id": "prickly-hair-dilemma",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on dark polished mahogany wood of fine dark hair trimmings scattered across a crisp folded white barber cape beneath dramatic warm sidelighting",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q038",
+          "text": "流程砍到見骨卻卡最後死結：不洗頭碎髮怎清？",
+          "emotion": "沙漏節奏"
+        },
+        {
+          "id": "q039",
+          "text": "靠毛巾拍刺癢一整天，小店又擺不下大吸塵器！",
+          "emotion": "吸髮管前鉤子"
+        }
+      ]
+    },
+    {
+      "id": "ada-subtraction-pause",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of Ada seated in a sunlit archive study behind a warm oak desk with both hands resting calmly palm-down between a shiny brass water faucet on her left and a clean blue flexible air nozzle on her right",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "q040",
+          "text": "團隊為機身跟電線沒處放苦思一年半，毫無頭緒。",
+          "emotion": "體驗門檻"
+        },
+        {
+          "id": "q041",
+          "text": "直到他路過日本懸吊式加油站，抬頭看油槍破案！",
+          "emotion": "章末大鉤子"
+        }
+      ]
+    },
+    {
+      "id": "gas-station-hose",
+      "chapter": "加油站靈感造出吸髮管！免拉水管搶下車站舊站長室",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide warm sunlit shot of a clean 1990s Japanese neighborhood service station canopy with flexible rubber hoses suspended neatly from overhead ceiling reels against a golden twilight sky",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q042",
+          "text": "他把主機藏進天花板，讓軟管從頭頂垂直垂降。",
+          "emotion": "加油站靈感"
+        },
+        {
+          "id": "q043",
+          "text": "就這樣造出招牌空氣吸髮管，省下大片地面空間！",
+          "emotion": "空氣吸髮器誕生"
+        }
+      ]
+    },
+    {
+      "id": "air-washer-upgrade",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up inside a bright modern express haircut booth showing two polished mirror stations each equipped with its own overhead coiled blue-and-chrome suction nozzle and compact minimalist swivel chairs",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q044",
+          "text": "原型實測時兩席共用一根管太卡，改一席一支。",
+          "emotion": "一席一管改良"
+        },
+        {
+          "id": "q045",
+          "text": "省掉洗頭台和昂貴躺臥椅，裝潢費砍到三分之一！",
+          "emotion": "三分之一造價"
+        }
+      ]
+    },
+    {
+      "id": "no-plumbing-freedom",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide architectural cutaway view on dark slate showing a compact express haircut booth needing only a single slim overhead electrical cable, with completely dry solid concrete floor underneath and zero plumbing pipes",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q046",
+          "text": "省時間裝潢只是表象，免鑿地板埋水管才是殺招！",
+          "emotion": "揭曉真正殺招"
+        },
+        {
+          "id": "q047",
+          "text": "傳統店得埋給排水管，車站樓板禁挖根本進不去。",
+          "emotion": "傳統地產限制"
+        }
+      ]
+    },
+    {
+      "id": "station-dead-space",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide warm shot inside a bustling Japanese train station corridor where a tiny recessed former station office room tucked beside stairs glows warmly transformed into a streamlined 3-seat glass haircut booth",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q048",
+          "text": "但這還不是全部：他盯上車站舊站長室和儲藏室！",
+          "emotion": "車站畸零死角"
+        },
+        {
+          "id": "q049",
+          "text": "這些空房雖沒水管，卻全卡在通勤人潮動線上！",
+          "emotion": "活化閒置空間"
+        }
+      ]
+    },
+    {
+      "id": "railway-win-win",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of bustling morning Japanese commuters in crisp coats striding past a luminous compact 3-seat glass haircut boutique nestled snugly inside a clean tiled subway concourse",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "q050",
+          "text": "盤算替站方活化閒置空間，自己白吃人潮！",
+          "emotion": "鐵道雙贏"
+        },
+        {
+          "id": "q051",
+          "text": "整套藍圖磨齊了，一九九五年底終於等到舊法鬆綁！",
+          "emotion": "低關店率實績"
+        }
+      ]
+    },
+    {
+      "id": "deregulation-1996",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide sunlit architectural shot of classic Tokyo government district stone buildings under a bright clear spring sky with fresh cherry blossoms framing the clean stone colonnade",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q052",
+          "text": "他立刻提案進駐車站，不料竟直接吃閉門羹！",
+          "emotion": "1996 法規鬆綁"
+        },
+        {
+          "id": "q053",
+          "text": "被嫌沒名氣拒租，他怎麼讓鐵路公司主動點頭？",
+          "emotion": "提前一年出擊"
+        }
+      ]
+    },
+    {
+      "id": "kanda-first-store",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide nostalgic atmospheric shot of a bright fully glass-walled corner haircut shop glowing warmly on a rainy Tokyo Kanda office street in November 1996, wet pavement reflecting golden interior light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q054",
+          "text": "一九九六年他先租東京神田街邊店，用業績說話！",
+          "emotion": "神田一號店"
+        },
+        {
+          "id": "q055",
+          "text": "開幕遇大雨仍客滿，低價吸五家電視台搶拍。",
+          "emotion": "五家電視台採訪"
+        }
+      ]
+    },
+    {
+      "id": "commuter-lunch-habit",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a bright glass-walled Tokyo haircut shop where two smiling office workers sit comfortably in crisp angled barber chairs while attentive stylists snip neatly with steel scissors",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "q056",
+          "text": "爆紅實績讓站方點頭，一九九七年底衝十二店！",
+          "emotion": "新消費習慣"
+        },
+        {
+          "id": "q057",
+          "text": "站穩車站後他拓進商場，打破男客印象拉出兩成女性！",
+          "emotion": "12 店與商場擴張"
+        }
+      ]
+    },
+    {
+      "id": "shopping-mall-expansion",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide bright interior shot of a modern Japanese shopping mall promenade where families, children, and seniors stroll past a modern warm-wood and glass express haircut storefront",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "q058",
+          "text": "後來一路展店破數百，因業績不好收掉的竟不到百分之一！",
+          "emotion": "全時段與女性客"
+        },
+        {
+          "id": "q059",
+          "text": "高獲利引來眼紅，街頭殺出滿街山寨快剪！",
+          "emotion": "稼動率密碼"
+        }
+      ]
+    },
+    {
+      "id": "copycats-arrive",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide twilight city avenue showing several competing brightly lit low-cost salon storefronts lining a busy Japanese commercial street with empty unbranded windows",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q060",
+          "text": "連吸髮管都有廠商仿製，對手整套設備買齊照抄。",
+          "emotion": "競爭者湧入"
+        },
+        {
+          "id": "q061",
+          "text": "站內精華早卡滿、街邊被山寨擠爆，ＱＢ怎搶新點？",
+          "emotion": "300 秒核心懸問"
+        }
+      ]
+    },
+    {
+      "id": "ada-moat-pivot",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of Ada seated in a bright sunlit design archive behind a mahogany desk with both hands resting calmly palm-down beside a clean white architectural pod miniature and a pair of gleaming shears",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "q062",
+          "text": "造出免裝修、半天組好的一坪圓筒亭攻商辦轉角！",
+          "emotion": "轉折預告"
+        },
+        {
+          "id": "q063",
+          "text": "這座超迷你的一坪圓筒亭，真能在日本遍地開花嗎？",
+          "emotion": "300 秒後強鉤子"
+        }
+      ]
+    },
+    {
+      "id": "qb-shell-pod",
+      "chapter": "1 坪膠囊店出海香港新加坡，6 個月學校築起護城河",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up studio architectural shot of a futuristic polished cylindrical one-seat white-and-navy modular haircut capsule pod standing cleanly on a bright polished stone concourse",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q064",
+          "text": "不料它省掉候位區，直接撞上日本理髮法規卡關！",
+          "emotion": "QB Shell 登場"
+        },
+        {
+          "id": "q065",
+          "text": "國內不給放，乾脆帶圓筒亭衝向海外高租商圈！",
+          "emotion": "日本法規卡關"
+        }
+      ]
+    },
+    {
+      "id": "singapore-hk-2002",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide golden-hour skyline view of gleaming modern Singapore and Hong Kong glass waterfront towers and bustling elevated pedestrian skywalks bathed in warm tropical sunlight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q066",
+          "text": "二〇〇二年進新加坡，隔三年殺進寸土寸金香港！",
+          "emotion": "海外破局"
+        },
+        {
+          "id": "q067",
+          "text": "香港租貴三倍照賺，圓筒更奪日本優良設計獎！",
+          "emotion": "Good Design 獲獎"
+        }
+      ]
+    },
+    {
+      "id": "taiwan-global-767",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide sunlit modern East Asian metro concourse reminiscent of Taipei MRT with bright clean stone floors, commuters walking happily past a streamlined glowing navy-and-white express haircut booth",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "q068",
+          "text": "二〇一二登台並拓美加東南亞，今台灣四十二店。",
+          "emotion": "台灣與香港規模"
+        },
+        {
+          "id": "q069",
+          "text": "加香港六十五店，把前面提的版圖推到七百六十七店！",
+          "emotion": "揭曉 767 店"
+        }
+      ]
+    },
+    {
+      "id": "apprentice-bottleneck",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a classic dimly lit Japanese hair salon after closing hours where a tired young apprentice sweeps hair clippings alone beside empty shampoo basins under a solitary lamp",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "q070",
+          "text": "但甩開國內山寨光靠出海不夠：好設計師哪裡找？",
+          "emotion": "人才瓶頸"
+        },
+        {
+          "id": "q071",
+          "text": "傳統店洗頭幾年摸不到剪刀，山寨對手全都缺工。",
+          "emotion": "傳統學徒痛點"
+        }
+      ]
+    },
+    {
+      "id": "logiscut-school-2012",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide sunlit shot inside a bright clean modern Japanese haircutting training academy with neat rows of practice mannequin heads on chrome stands, mirrors, and attentive trainee stylists practicing precise cuts",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "q072",
+          "text": "其實早在二〇一二年，它就自建學校把老師傅手感變理論！",
+          "emotion": "2012 自建學院"
+        },
+        {
+          "id": "q073",
+          "text": "連零經驗新手，特訓六個月就能考過上線。",
+          "emotion": "6 個月速成"
+        }
+      ]
+    },
+    {
+      "id": "four-x-experience",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up studio shot of gleaming Japanese steel haircutting shears hovering over a neatly arranged geometric comb and precision brush set on a clean light oak workstation",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q074",
+          "text": "因只專攻剪髮，設計師經驗是一般沙龍四倍！",
+          "emotion": "4 倍實戰經驗"
+        },
+        {
+          "id": "q075",
+          "text": "培訓輸出海外，香港、台北與台中都設分校。",
+          "emotion": "台北台中分校"
+        }
+      ]
+    },
+    {
+      "id": "stylist-health-relief",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cheerful smiling hairstylist in a neat clean dark-navy uniform standing comfortably upright beside a minimalist cutting mirror with dry healthy hands holding steel scissors",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "q076",
+          "text": "但這還不是全部：免洗頭更解決美髮離職潮！",
+          "emotion": "職業傷害大減"
+        },
+        {
+          "id": "q077",
+          "text": "手不泡水遠離富貴手、不彎腰沖水，設計師更好留！",
+          "emotion": "低離職率秘密"
+        }
+      ]
+    },
+    {
+      "id": "water-saving-billion",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead dramatic sunlit still-life of crystal-clear sparkling blue water droplets rippling across a pristine sunlit pool reflecting clean white ceramic tiles and green botanical leaves",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q078",
+          "text": "順帶省水：每位客人年省七百二十公升，全體逾十三億！",
+          "emotion": "720 公升節水"
+        },
+        {
+          "id": "q079",
+          "text": "水費一併壓低，意外賺到最強環保招牌。",
+          "emotion": "13 億公升環保"
+        }
+      ]
+    },
+    {
+      "id": "ada-digital-turn",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of Ada seated in a bright sunlit study behind a mahogany desk with both hands resting calmly palm-down beside a crisp barcode ticket slip and a small matte-blue vacuum nozzle",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "q080",
+          "text": "管住坪數、水費與人才後，還藏最後一道武器。",
+          "emotion": "數位化鉤子"
+        },
+        {
+          "id": "q081",
+          "text": "從你買票那秒起，每一步早寫進精準數據！",
+          "emotion": "DX 轉折"
+        }
+      ]
+    },
+    {
+      "id": "barcode-vacuum-timer",
+      "chapter": "從 1,000 日圓漲到 1,400 日圓：數據排班與高端轉型",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up inside a clean minimalist salon booth showing a matte-black optical scanner beaming a crisp red light across a blank paper ticket beside an overhead silver air-vacuum power switch",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q082",
+          "text": "掃描票券條碼開始計時，直到吸髮機關機才停止。",
+          "emotion": "條碼加吸髮計時"
+        },
+        {
+          "id": "q083",
+          "text": "靠這套數據精算，平均單次剪髮穩落十二分十五秒！",
+          "emotion": "12 分 15 秒實績"
+        }
+      ]
+    },
+    {
+      "id": "dynamic-staff-shift",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide split-scene architectural view: left shows a busy commuter subway station booth at dusk, right shows a sunlit afternoon suburban shopping mall salon, linked by a subtle glowing golden timeline arc",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q084",
+          "text": "哪間車站午休擠、哪間商場下午忙，總部一眼看穿。",
+          "emotion": "尖離峰預測"
+        },
+        {
+          "id": "q085",
+          "text": "更狠的是按小時跨店支援人力，把空窗壓到最低！",
+          "emotion": "跨店動態支援"
+        }
+      ]
+    },
+    {
+      "id": "porter-prize-ipo",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide sunlit architectural view of a modern Tokyo financial district glass skyscraper facade reflecting clear blue sky and warm afternoon sunbeams",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q086",
+          "text": "這系統二〇一七年奪日本競爭策略大獎波特獎。",
+          "emotion": "2017 波特獎"
+        },
+        {
+          "id": "q087",
+          "text": "隔年登上東京證交所上市，來客規模徹底爆發！",
+          "emotion": "2018 東證上市"
+        }
+      ]
+    },
+    {
+      "id": "comb-co2-cut",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up minimalist still-life on warm pale cedar wood showing a single clean reusable sterilized steel barber comb resting cleanly inside a softly glowing violet UV-sanitizing glass tray",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q088",
+          "text": "問題來了：客量暴增，原為衛生送免洗梳太浪費！",
+          "emotion": "取消塑膠梳減碳"
+        },
+        {
+          "id": "q089",
+          "text": "改消毒年減六百五十九噸碳，二〇二四累破三億人！",
+          "emotion": "3 億人次里程碑"
+        }
+      ]
+    },
+    {
+      "id": "inflation-price-pressure",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up dramatic still-life on dark walnut wood of a brass balance scale where stacks of bright blank silver coins balance against polished steel shears and training textbooks under warm spotlight",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q090",
+          "text": "規模雖衝高峰，但其實通膨升溫後千元價早已扛不住。",
+          "emotion": "通膨挑戰"
+        },
+        {
+          "id": "q091",
+          "text": "物價與薪資雙漲，漲價怎麼做才不掉客？",
+          "emotion": "定價鉤子"
+        }
+      ]
+    },
+    {
+      "id": "price-ladder-2025",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead clean studio shot on pale oak wood showing four neatly ascending polished brass step-blocks rising smoothly from left to right beside gleaming barber shears in crisp studio light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q092",
+          "text": "其實二〇一四年起緩漲：先一千零八十，再一千二。",
+          "emotion": "2014/2019 調價"
+        },
+        {
+          "id": "q093",
+          "text": "二〇二三調一千三百五十，二〇二五年二月一千四。",
+          "emotion": "2025 年 1,400 日圓"
+        }
+      ]
+    },
+    {
+      "id": "monthly-loyalty-clever",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a streamlined modern minimalist smartphone screen glowing softly with a clean green calendar checkmark icon beside a neat pair of silver barber shears on sunlit oak wood",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q094",
+          "text": "妙的是當時把原限長輩的月剪折百圓開放全齡！",
+          "emotion": "ツキイチ全齡折扣"
+        },
+        {
+          "id": "q095",
+          "text": "高頻常客月來一次，體感幾乎沒漲價！",
+          "emotion": "高明留客設計"
+        }
+      ]
+    },
+    {
+      "id": "qb-premium-ginza",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide warm upscale minimalist interior of a refined modern Tokyo underground business-district salon with dark walnut paneling, warm recessed lighting, six crisp leather styling chairs, and calm lounge seating",
+        "camera": "pull back",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q096",
+          "text": "同時反手攻高端，在東京商務區大手町與銀座開新線。",
+          "emotion": "QB PREMIUM 高階線"
+        },
+        {
+          "id": "q097",
+          "text": "加手機候位與造型收尾，拉出高毛利價位帶。",
+          "emotion": "向上破局"
+        }
+      ]
+    },
+    {
+      "id": "short-hours-stylists",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a bright cozy neighborhood Japanese express haircut shop bathed in warm morning sun where two smiling female stylists neatly prepare clean tools at gleaming mirrors",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "q098",
+          "text": "不只分層，為留育兒設計師更開早九晚五短工時店！",
+          "emotion": "短工時門市細節"
+        },
+        {
+          "id": "q099",
+          "text": "這連串佈局，讓它在三十歲前交出何等成績？",
+          "emotion": "章末鉤子"
+        }
+      ]
+    },
+    {
+      "id": "thirty-year-2026",
+      "chapter": "2026 年迎來創業 30 週年，年收 271 億日圓的減法啟示",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide radiant golden-hour view of Tokyo skyline and busy illuminated commuter rail tracks weaving gracefully between modern gleaming commercial towers under warm sunset clouds",
+        "camera": "pull back",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q100",
+          "text": "二〇二六年六月期財報，營收衝兩百七十一億日圓！",
+          "emotion": "271 億財報揭曉"
+        },
+        {
+          "id": "q101",
+          "text": "日經服務業調查裡，它在整體理美容也高居第二！",
+          "emotion": "日經 MJ 雙榜"
+        }
+      ]
+    },
+    {
+      "id": "anniversary-2026-nov",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up warm studio shot of a gleaming pair of precision steel barber shears resting beside a modern navy-and-gold folded ribbon on polished walnut wood with soft golden dust motes",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q102",
+          "text": "同年十一月一日，品牌正式迎來創業三十週年。",
+          "emotion": "2026 三十週年"
+        },
+        {
+          "id": "q103",
+          "text": "當年理髮廳一場遲到，竟改寫亞洲剪髮日常。",
+          "emotion": "三十年對照"
+        }
+      ]
+    },
+    {
+      "id": "asia-daily-commute",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a clean brightly lit express haircut booth inside a lively modern Asian metro station as a smiling commuter steps out looking fresh and sharp with a tidy haircut",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "q104",
+          "text": "如今在東京車站或台北捷運，剪髮就像買杯咖啡。",
+          "emotion": "台日共鳴"
+        },
+        {
+          "id": "q105",
+          "text": "但這還不是全部：多數人其實看錯了「減法」。",
+          "emotion": "預告兩條鐵律"
+        }
+      ]
+    },
+    {
+      "id": "end-rule1-bottleneck",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up architectural still-life on dark mahogany wood showing a glowing golden key unlocking a polished glass miniature train-station niche bathed in warm spotlight",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q106",
+          "text": "大家以為減法只是偷工減料打低價，只剩微利。",
+          "emotion": "第一條鐵律"
+        },
+        {
+          "id": "q107",
+          "text": "真正高明的減法，是拿掉舊習慣、改寫物理規則！",
+          "emotion": "拆掉物理門檻"
+        }
+      ]
+    },
+    {
+      "id": "end-rule1-realestate",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide sunlit architectural view of a bustling subway transit hub showing narrow gleaming glass retail kiosks thriving along wide marble commuter corridors",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q108",
+          "text": "拆掉行業習以為常的硬體前提，版圖立刻變寬。",
+          "emotion": "空間套利核心"
+        },
+        {
+          "id": "q109",
+          "text": "別人在紅海拚折價，你早換到無對手賽道。",
+          "emotion": "人流即廣告"
+        }
+      ]
+    },
+    {
+      "id": "end-rule2-software",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up warm studio shot of an open architectural manual with clean blank geometric diagrams resting beside precision steel shears and a glowing green indicator orb on oak wood",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q110",
+          "text": "只靠亮眼點子，遲早會被大資本對手追上。",
+          "emotion": "第二條鐵律"
+        },
+        {
+          "id": "q111",
+          "text": "拉開三十年差距的不是硬體，是背後紀律。",
+          "emotion": "軟體護城河"
+        }
+      ]
+    },
+    {
+      "id": "end-rule2-data",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide serene interior of an immaculate modern express haircut station glowing in soft morning light with crisp mirrors, neatly angled chairs, and overhead vacuum nozzles aligned in precision",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q112",
+          "text": "當速度與品質都能穩定複製，平價照樣跑出高毛利！",
+          "emotion": "數據效率"
+        },
+        {
+          "id": "q113",
+          "text": "放到今天依然犀利：身邊還有多少綁售附贈品？",
+          "emotion": "顯性回呼"
+        }
+      ]
+    },
+    {
+      "id": "end-less-is-more",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up cinematic shot of a clean glowing three-color vertical signal lamp with the emerald green light shining warmly against a softly blurred golden evening cityscape",
+        "camera": "pull back",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q114",
+          "text": "品牌迷信越豪華越值錢，卻忘了幫人省時間更貴。",
+          "emotion": "深化洞察"
+        },
+        {
+          "id": "q115",
+          "text": "把多餘步驟一刀切斷、核心磨到極致，最難取代。",
+          "emotion": "價值落地"
+        }
+      ]
+    },
+    {
+      "id": "end-legacy-signal",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide warm golden-hour concourse view of a glowing compact glass express haircut booth welcoming evening commuters under a crisp green indicator lamp, warm hopeful cinema lighting",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "q116",
+          "text": "下次路過車站轉角，看見亮起綠燈的透明玻璃門，",
+          "emotion": "生活連結"
+        },
+        {
+          "id": "q117",
+          "text": "別忘了它是一場改寫空間規則的極致減法奇襲！",
+          "emotion": "金句收束"
+        }
+      ]
+    },
+    {
+      "id": "end-ada-closing",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of Ada seated warmly behind a sunlit mahogany archive desk smiling directly at the camera with both hands resting calmly palm-down beside a tiny gleaming steel barber scissors and an open blank notebook",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "q118",
+          "text": "你去過捷運站ＱＢ快剪嗎？印象最深哪裡？",
+          "emotion": "互動提問"
+        },
+        {
+          "id": "q119",
+          "text": "留言聊聊！喜歡商業冷知識，訂閱奇聞檔案局。",
+          "emotion": "俐落收尾"
+        }
+      ]
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "layout": "heimao-left",
+      "headline": "QB House砍洗頭奪第一？",
+      "sub": "免水管塞車站開破760店",
+      "asset": "stock/fd753b960257a13e5c66d6f8683c4c81a34afab470a8c21a9fa71924939277c5.jpg"
+    }
+  },
+  "assets": [
+    {
+      "path": "stock/fd753b960257a13e5c66d6f8683c4c81a34afab470a8c21a9fa71924939277c5.jpg",
+      "sha256": "fd753b960257a13e5c66d6f8683c4c81a34afab470a8c21a9fa71924939277c5",
+      "credit": "Mokaair 奇聞檔案局",
+      "license": "original",
+      "source": "built-in generate_image (w25_hero_thumb, $0)"
+    }
+  ],
+  "youtube": {
+    "title": "砍洗頭奪第一！QB House靠吸髮管塞車站開破760店？｜奇聞檔案局",
+    "description": "每次在捷運站或車站角落看到的「QB House」，剪完竟然不洗頭、沒電話預約，門外只掛一盞綠黃紅三色燈號——你以為砍掉洗頭只是為了省下十分鐘水電嗎？真正讓同業追不上的殺招，其實藏在「免拉給排水管線」解放車站舊站長室與畸零死角的地產魔法裡！\n給每次路過車站快剪店、好奇十分鐘商業模式如何跑出全球 767 家門市與累計逾 3 億人次的人。\n\n這一集從 1990 年代一場高級理髮廳睡過頭的商談遲到講起，看門外漢創辦人如何在消費精明的大阪關西三地測出 6 倍於預期的 30% 嘗試意願、閉關三年用縮尺模型算出斜向座位；以「每分鐘 100 日圓」極致減法砍掉電話、傘架與結帳櫃檯，導入業界首創售票機（甚至因立食蕎麥麵店靈感每店配兩台）與三色燈號；再揭密靈感來自加油站懸吊油槍的「空氣吸髮器」，如何免去給排水管線、把裝潢費砍到傳統店三分之一並搶進車站舊站長室與站員值班室，在 1996 年 11 月 1 日開出神田美土代一號店；最後直擊 1 坪膠囊店「QB Shell」出海新加坡與香港奪設計獎、2012 年進軍台灣與自建 6 個月「邏輯剪髮學校」、條碼加吸髮機數據排班（平均 12 分 15 秒）、2024 年日本累計破 3 億人次、2025 年調至 1,400 日圓並於當時同步開放全齡月一次折百圓優惠，一路邁向 2026 年 6 月期合併營收 271.54 億日圓、創業 30 週年與全球 767 店規模。\n\n本頻道與片中提及之企業與機構無合作或贊助關係。所有歷史年表、門市數與財報數據皆出自下方公開一手與媒體參考資料。\n\n本集插圖由 AI 生成。\n\n資料截至 2026-11-22",
+    "tags": [
+      "QB House",
+      "QB快剪",
+      "快剪店",
+      "商業奇聞",
+      "商業模式",
+      "減法哲學",
+      "車站經濟",
+      "日本品牌",
+      "品牌故事",
+      "奇聞檔案局"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "video_id": null
+  },
+  "sources": [
+    {
+      "title": "キュービーネットホールディングス株式会社：沿革（1995設立・1996神田1號店・海外展開・2024累計3億人）",
+      "url": "https://www.qbnet.jp/company/history/",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "QB HOUSE 公式 QB Lab：ヘアカット専門店「QB HOUSE」誕生ストーリー（關西調查・售票機・三色燈・吸髮器・1996法規鬆綁）",
+      "url": "https://www.qbhouse.co.jp/qblab/birth/",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "QB HOUSE 公式 QB Lab：数字で見るQB HOUSE（2026年6月底全球767店・12分15秒・經驗值4倍・年省逾13億公升水）",
+      "url": "https://www.qbhouse.co.jp/qblab/number/",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "PR TIMES STORY（2022-06-20）：QB HOUSE誕生秘話（每分鐘100日圓算盤・加油站油槍靈感・兩台售票機）",
+      "url": "https://prtimes.com/story/detail/jbAYYZSkROb",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "IPA DX SQUARE（2021-11-30）：QBハウスに10分カットの秘密を聞いてみたらすごくDXだった（條碼掃描至吸髮機關機計時）",
+      "url": "https://dx.ipa.go.jp/interview-qbhouse",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "一橋大學 Porter Prize（2017）：キュービーネットホールディングス受賞企業レポート（免水管進車站舊站長室・關店率低於1%・6個月學校）",
+      "url": "https://www.porterprize.org/pastwinner/2017/12/05170653.html",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "PR TIMES（2024-12-16）：QB HOUSE、カット料金1,400円に。2025年2月1日から（全齡月一次折百圓・累計3億人）",
+      "url": "https://prtimes.jp/main/html/rd/p/000000044.000061391.html",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "Beautopia（2025-08-18）：キュービーネットHD 2025年6月期通期決算（營收255.43億日圓・短工時門市・海外展店）",
+      "url": "https://www.beautopia.jp/178668/",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "Beautopia（2026-08-14）：キュービーネットHD 2026年6月期通期決算（合併營收271.54億日圓・年增6.3%）",
+      "url": "https://www.beautopia.jp/216358/",
+      "checked_on": "2026-11-22"
+    }
+  ]
+}
