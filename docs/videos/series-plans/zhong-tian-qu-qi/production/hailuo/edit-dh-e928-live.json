@@ -7,11 +7,12 @@
  "punch": false,
  "slow_max": 1.1,
  "interpolate": false,
- "duck_ratio": 3.5,
- "duck_release_ms": 900,
+ "duck_ratio": 2.0,
+ "duck_release_ms": 350,
  "sfx_dirs": [
   "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx",
-  "<VIDEO_WORKDIR>/zhong-tian-qu-qi-e928-dh/sfx"
+  "<VIDEO_WORKDIR>/zhong-tian-qu-qi-e928-dh/sfx",
+  "<VIDEO_WORKDIR>/_sfx/zhongtian-real-20261121"
  ],
  "name_whoosh": "swish-9",
  "music": [
@@ -20,7 +21,7 @@
    "from": "s01",
    "to": "s04",
    "offset": 0.0,
-   "gain": -22,
+   "gain": -15,
    "fade_in": 0.3,
    "fade_out": 1.5,
    "tail": 0
@@ -50,7 +51,7 @@
    "from": "s26",
    "to": "s32",
    "offset": 0.0,
-   "gain": -23,
+   "gain": -19,
    "fade_in": 1.0,
    "fade_out": 1.5,
    "tail": 0.3
@@ -120,7 +121,7 @@
    "file": "murmur928",
    "at": "s32",
    "off": 5.52,
-   "gain": -6,
+   "gain": -3,
    "to": "s38"
   },
   {
@@ -144,43 +145,55 @@
   {
    "file": "swish-11",
    "at": "s03",
-   "off": 1.28,
+   "off": 0.48,
    "gain": -3
   },
   {
    "file": "impactWood_heavy_000",
    "at": "s03",
-   "off": 1.7,
+   "off": 0.83,
    "gain": -2
   },
   {
    "file": "impactWood_light_000",
    "at": "s03",
-   "off": 2.04,
+   "off": 1.06,
    "gain": -12
+  },
+  {
+   "file": "impactWood_light_001",
+   "at": "s03",
+   "off": 1.28,
+   "gain": -14
   },
   {
    "file": "cloth1",
    "at": "s03b",
-   "off": 1.0,
+   "off": 0.55,
    "gain": -12
+  },
+  {
+   "file": "swish-11",
+   "at": "s03b",
+   "off": 0.62,
+   "gain": -8
   },
   {
    "file": "tap928",
    "at": "s03b",
-   "off": 1.5,
-   "gain": -11
+   "off": 0.95,
+   "gain": -9
   },
   {
-   "file": "impactWood_light_001",
+   "file": "kneel928",
    "at": "s03b",
-   "off": 1.75,
-   "gain": -8
+   "off": 1.66,
+   "gain": -10
   },
   {
    "file": "impactSoft_heavy_000",
    "at": "s03b",
-   "off": 2.25,
+   "off": 1.76,
    "gain": -4
   },
   {
@@ -244,6 +257,12 @@
    "gain": 2
   },
   {
+   "file": "rooster928",
+   "at": "s08",
+   "off": 0.0,
+   "gain": -22
+  },
+  {
    "file": "cloth2",
    "at": "s09",
    "off": 0.5,
@@ -276,7 +295,7 @@
   {
    "file": "impactWood_heavy_000",
    "at": "s18",
-   "off": 4.0,
+   "off": 2.14,
    "gain": -6
   },
   {
@@ -284,6 +303,12 @@
    "at": "s20",
    "off": 5.917,
    "gain": -3
+  },
+  {
+   "file": "bead928",
+   "at": "s21",
+   "off": 0.12,
+   "gain": -14
   },
   {
    "file": "swish-7",
@@ -334,13 +359,13 @@
    "gain": -4
   },
   {
-   "file": "murmur928end",
+   "file": "murmur928end2",
    "at": "s39",
    "off": 0.0,
    "gain": 2
   },
   {
-   "file": "wind928end",
+   "file": "wind928end2",
    "at": "s39",
    "off": -0.6,
    "gain": -6
@@ -348,13 +373,13 @@
   {
    "file": "impactSoft_heavy_000",
    "at": "s39",
-   "off": 3.5,
+   "off": 2.083,
    "gain": -6
   },
   {
    "file": "gong_02",
    "at": "s39",
-   "off": 3.5,
+   "off": 2.083,
    "gain": -2
   }
  ],
@@ -383,7 +408,7 @@
   },
   "s18": {
    "from": 0,
-   "af": "rubberband=pitch=0.90:formant=preserved,volume=0.6dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "volume=0.2dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s20": {
    "from": 0,
@@ -407,7 +432,7 @@
   },
   "s38": {
    "from": 0,
-   "af": "asetrate=42240,aresample=48000,atempo=1.136364,rubberband=pitch=0.615:formant=preserved,volume=2.0dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "asetrate=42240,aresample=48000,atempo=1.136364,rubberband=pitch=0.733:formant=preserved,volume=0.1dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   }
  },
  "voice_off": [
@@ -416,7 +441,7 @@
  ],
  "move_lines": {},
  "min": {
-  "s39": 7.0
+  "s39": 5.583
  },
  "line_at": {
   "zq928a02": 0.3,
@@ -433,7 +458,7 @@
   "zq928a20": 0.3,
   "zq928a23": 0.3,
   "zq928a25": 0.5,
-  "zq928a29": 0.08,
+  "zq928a29": 0.17,
   "zq928a30": 0.3,
   "zq928a18": 0.0
  },
@@ -452,7 +477,7 @@
  },
  "vf": {
   "s02": "crop=1746:982:87:98,scale=1920:1080:flags=lanczos,setsar=1",
-  "s39": "fade=t=out:st=3.600:d=0.40"
+  "s39": "fade=t=out:st=2.183:d=0.40"
  },
  "subtitle_lines": [
   "zq928a13"

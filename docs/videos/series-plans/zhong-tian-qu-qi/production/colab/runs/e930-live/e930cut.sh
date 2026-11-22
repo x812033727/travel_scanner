@@ -38,6 +38,10 @@ bad+=[f'{s} not in picks.json' for s in want if s not in p]
 bad+=[f'{s} in picks.json, not in the want table' for s in p if s not in want]
 bad+=[f'{s} has crop {p[s].get(\"crop\")} (none may)' for s in p if p[s].get('crop')]
 print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
+# SWAP 2026-11-21 (edit table _note "SWAP 2026-11-21"): clips/s01-t5, s08-t5, s17-t5, s30-t5 are the fix-polish retakes
+# (runpod/polish/picks.json; the assembler takes the highest tN, so the t1 rows above only describe the replaced takes).
+# s08 is cut to its first 128 frames (5.333 s, a08 keeps ~0.6 s after it) as clips/s08-t6.mp4; t5 stays. Rebuilt if missing.
+C=$E/clips; [ -f $C/s08-t6.mp4 ] || ffmpeg -v error -y -i $C/s08-t5.mp4 -frames:v 128 -t 5.3334 -c:v libx264 -preset slow -crf 12 -pix_fmt yuv420p -r 24 -c:a aac -b:a 192k $C/s08-t6.mp4 || exit 1
 # the recordings the edit table lays were rewritten in audio/ (originals in audio/orig/; _note RECORDINGS): a14 and a26 are now
 # s15's and s26's own take voices with one word spliced in from the recording (voice_off s15 s26). Stop if a rewrite is missing.
 A=/root/mokaair-work/videos/zhong-tian-qu-qi-e930-dh/audio

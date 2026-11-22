@@ -3,8 +3,9 @@ set -u
 R=/home/user/zt-work; P=$R/docs/videos/series-plans/zhong-tian-qu-qi/production; Q=$P/colab/runs/_scripts
 E=/root/mokaair-work/videos/_live-e911/zhong-tian-qu-qi-e911-dh; VJ=$R/docs/videos/zhong-tian-qu-qi-e011-r2/video.json
 V=${V:-v1}; mkdir -p $E/cut; [ -f $E/cut/e911-live.mp4 ] && { mkdir -p $E/cut/old-$(date +%H%M); mv $E/cut/e911-live.* $E/cut/final.log $E/cut/old-$(date +%H%M)/ 2>/dev/null; }
-# keep one earlier cut only (the disk is shared with the other episodes' polish cuts)
-ls -d $E/cut/old-* 2>/dev/null | sort | head -n -1 | xargs -r rm -rf
+# keep one earlier cut only (the disk is shared with the other episodes' polish cuts); an old-* holding a .keep file
+# (SWAP 2026-11-21: the pre-swap POLISH cut old-2204 and old-2155, kept for the backup) is never removed
+for d in $(ls -d $E/cut/old-* 2>/dev/null | sort | head -n -1); do [ -f $d/.keep ] || rm -rf $d; done
 rm -rf $E/segments-v4
 # the refined shots must be staged first (live-action/stage.py 11: refined picture + draft voice + trim/crop -> clips/sNN-t1.mp4)
 miss=$(python3 -c "import json,os;p=json.load(open('$E/picks.json'));print(' '.join(s for s in p if not os.path.exists('$E/clips/'+s+'-t1.mp4')))")

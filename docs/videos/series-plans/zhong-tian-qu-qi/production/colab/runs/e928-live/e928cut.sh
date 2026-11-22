@@ -2,7 +2,11 @@
 set -u
 R=/home/user/zt-work; P=$R/docs/videos/series-plans/zhong-tian-qu-qi/production; Q=$P/colab/runs/_scripts
 E=/root/mokaair-work/videos/_live-e928/zhong-tian-qu-qi-e928-dh; VJ=$R/docs/videos/zhong-tian-qu-qi-e028-r2/video.json
-mkdir -p $E/cut; [ -f $E/cut/e928-live.mp4 ] && { mkdir -p $E/cut/old-$(date +%H%M); mv $E/cut/e928-live.* $E/cut/final.log $E/cut/old-$(date +%H%M)/ 2>/dev/null; }
+# POLISH+SWAP 2026-11-21: the 2026-11-17 cut files (lines.json, srt, final.log; the mp4 is review-zt/ep/e028/final.mp4) go to
+# cut/old-1117 once and are kept for the backup; a later run of this script replaces its own previous cut (no old-HHMM).
+mkdir -p $E/cut
+[ -d $E/cut/old-1117 ] || { mkdir -p $E/cut/old-1117; mv $E/cut/e928-live.* $E/cut/final.log $E/cut/old-1117/ 2>/dev/null; }
+rm -f $E/cut/e928-live.* $E/cut/final.log; rm -rf $E/cut/pre
 rm -rf $E/segments-v4
 # the refined shots are staged by live-action/stage.py 28 (refined picture + draft voice + trim -> clips/sNN-t1.mp4); run it
 # when a clip is missing or picks.json is newer than any clip (a re-run of refine-prep.py 28 rewrites picks.json). stage.py
@@ -35,6 +39,25 @@ bad+=[f'{s} not in picks.json' for s in want if s not in p]
 bad+=[f'{s} in picks.json, not in the want table' for s in p if s not in want]
 bad+=[f'{s} has crop {p[s].get(\"crop\")} (want none)' for s in p if p[s].get('crop')]
 print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
+# POLISH+SWAP 2026-11-21 (edit table _note). SWAP: s03 s03b s18 s32 s38 are the fixp retakes clips/sNN-t5.mp4 (already trimmed,
+# runpod/polish/picks.json; the assembler takes the highest take number). POLISH (free fix C): s33's empty-chair wide is
+# replaced by the head of s39's own take before the crowd raises its hands (s39-t1 0-1.417, frames 0-33, Wei already seated) as
+# clips/s33-t2.mp4, and s39 starts on the raised hands (clips/s39-t2.mp4 = s39-t1 from 1.417): made if missing, t1 kept.
+C=$E/clips; ENC="-c:v libx264 -preset slow -crf 12 -pix_fmt yuv420p -r 24 -c:a aac -b:a 192k -ar 32000"
+[ -f $C/s33-t2.mp4 ] || ffmpeg -v error -threads 2 -y -i $C/s39-t1.mp4 -t 1.417 $ENC $C/s33-t2.mp4
+[ -f $C/s39-t2.mp4 ] || ffmpeg -v error -threads 2 -y -ss 1.417 -i $C/s39-t1.mp4 $ENC $C/s39-t2.mp4
+# the episode sfx dir (second sfx_dirs entry), made if missing: rooster928 = rooster-village-loop's first crow (2.1-4.2 s,
+# fades) for s08's distant cock-crow; bead928 = one bead click out of abacus-drop-01 (0.245-0.325 s, e911's bead recipe) for
+# s21's abacus; kneel928 = body-fall-stone-01 0.06-0.46 s (the first impact, fade 0.15) for s03b's knees; murmur928end2 /
+# wind928end2 = murmur928end / wind928end from 1.417 s (s39 now starts 1.417 s later; their baked fades move with it), the
+# wind faded in over 0.6 s again.
+X=/root/mokaair-work/videos/_sfx/zhongtian-real-20261121; S=/root/mokaair-work/videos/zhong-tian-qu-qi-e928-dh/sfx
+AF="aresample=48000,aformat=channel_layouts=stereo"
+[ -f $S/rooster928.wav ] || ffmpeg -v error -y -ss 2.1 -t 2.1 -i $X/zhongtian-sfx-rooster-village-loop.wav -af "afade=t=in:d=0.05,afade=t=out:st=1.7:d=0.4,$AF" $S/rooster928.wav
+[ -f $S/bead928.wav ] || ffmpeg -v error -y -ss 0.245 -t 0.08 -i $X/zhongtian-sfx-abacus-drop-01.wav -af "afade=t=in:d=0.003,afade=t=out:st=0.04:d=0.04,volume=14dB,$AF" $S/bead928.wav
+[ -f $S/kneel928.wav ] || ffmpeg -v error -y -ss 0.06 -t 0.4 -i $X/zhongtian-sfx-body-fall-stone-01.wav -af "afade=t=out:st=0.25:d=0.15,$AF" $S/kneel928.wav
+[ -f $S/murmur928end2.wav ] || ffmpeg -v error -y -ss 1.417 -i $S/murmur928end.wav -af "afade=t=in:d=0.05" $S/murmur928end2.wav
+[ -f $S/wind928end2.wav ] || ffmpeg -v error -y -ss 1.417 -i $S/wind928end.wav -af "afade=t=in:d=0.6" $S/wind928end2.wav
 # nothing is dropped in e928 (DROP empty; all 41 shots are cut in); $VL is video.json without the DROP shots.
 VL=$E/video-live.json; DROP=""
 python3 -c "import json,sys;v=json.load(open('$VJ'));d='$DROP'.split();v['scenes']=[s for s in v['scenes'] if s.get('id') not in d];json.dump(v,open('$VL','w'),ensure_ascii=False,indent=1)"
@@ -52,6 +75,9 @@ ffmpeg -v error -y -i $E/cut/e928-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af
 ffmpeg -hide_banner -i $E/cut/e928-live.mp4 -map 0:a -af loudnorm=I=-14:TP=-2.2:LRA=11:print_format=json -f null - 2>&1 | sed -n '/^{/,/^}/p' \
  | python3 -c "import json,sys;j=json.load(sys.stdin);i,tp=float(j['input_i']),float(j['input_tp']);print(f'pre-loudnorm2 {i} LUFS {tp} dBTP: {tp-14-i:+.2f} after the gain ->', 'linear' if tp-14-i<=-2.2 else 'DYNAMIC (lower the limiter or its attack)')"
 bash $Q/loudnorm2.sh $E/cut/e928-live.mp4
+# the delivery wants the true peak at or under -1 dBTP: print it (ebur128 true peak on the final file)
+ffmpeg -hide_banner -nostats -i $E/cut/e928-live.mp4 -map 0:a -af ebur128=peak=true -f null - 2>&1 | grep -E '^\s+(I|LRA|Peak):' | tail -3 \
+ | tee /dev/stderr | awk '/Peak:/{print ($2<=-1.0)?"true peak ok (<= -1 dBTP)":"TRUE PEAK OVER -1 dBTP"}'
 echo "== cut-qa";   python3 $Q/cut-qa.py $E/cut --stem e928-live 2>&1 | tail -20
 echo "== cut-jumps"; python3 $Q/cut-jumps.py $E/cut 2>&1 | tail -12
 echo "== audio-qa"; python3 $Q/audio-qa.py $E/cut $VL 2>&1 | tail -15

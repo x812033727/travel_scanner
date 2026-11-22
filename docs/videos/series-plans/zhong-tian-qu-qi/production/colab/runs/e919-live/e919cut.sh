@@ -34,6 +34,19 @@ bad+=[f'{s} seed {p[s][\"seed\"]} (want 9191101)' for s in p if s not in seed an
 bad+=[f'{s} not in picks.json' for s in want if s not in p]
 bad+=[f'{s} in picks.json, not in the want table' for s in p if s not in want]
 print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
+# SWAP 2026-11-21 (review-zt SWAP-BRIEF, merged with the free fixes; runpod/polish/picks.json, fix-polish/review-picks.tsv):
+# s01 s20 s21 s26 are the fixp retakes clips/sNN-t5.mp4 (seed 9199101, already trimmed: assemble-v4's pick() takes the
+# highest -tN, so the t1 files stay as they were); s31 is not reshot (Aling's half-up hair is the series rule).
+# POLISH+SWAP 2026-11-21 (edit table _note POLISH+SWAP). The episode sfx dir (third sfx_dirs entry), made if missing:
+# staff919 = staff-thud-01 from 1.03 s (the strike, e911's staff911) for the constables' staves at s04; flog919 = five
+# flogging-far hits 1.05 s apart, low-passed and echoed (far off) under s25/s26; murmur19 = crowd-murmur.py 19 5 (the
+# episode's own recordings reversed, owner 2026-11-21) for the street at s37.
+X=/root/mokaair-work/videos/_sfx/zhongtian-real-20261121; S=/root/mokaair-work/videos/zhong-tian-qu-qi-e919-dh/sfx; mkdir -p $S
+AF="aresample=48000,aformat=channel_layouts=stereo"
+[ -f $S/staff919.wav ] || ffmpeg -v error -y -ss 1.03 -t 0.4 -i $X/zhongtian-sfx-staff-thud-01.wav -af "afade=t=out:st=0.25:d=0.15,$AF" $S/staff919.wav
+[ -f $S/flog919.wav ] || ffmpeg -v error -y -i $X/zhongtian-sfx-flogging-far-01.wav -i $X/zhongtian-sfx-flogging-far-02.wav -i $X/zhongtian-sfx-flogging-far-03.wav -i $X/zhongtian-sfx-flogging-far-04.wav -i $X/zhongtian-sfx-flogging-far-05.wav \
+  -filter_complex "[0]adelay=0|0[a];[1]adelay=1050|1050[b];[2]adelay=2100|2100[c];[3]adelay=3150|3150[d];[4]adelay=4200|4200[e];[a][b][c][d][e]amix=inputs=5:normalize=0,lowpass=f=2500,aecho=0.8:0.5:60|140:0.3|0.2,$AF" $S/flog919.wav
+[ -f $S/murmur19.wav ] || python3 -I $P/colab/runs/_scripts/crowd-murmur.py 19 5
 # no shot is deleted: the cut, audio-qa and the sheets read video.json itself
 # jitter: cut-qa's jitter() on the staged clips is in the edit table's _note (no deshake unless a clip reads over the bar)
 cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VJ $R/docs/videos/zhong-tian-qu-qi-e019-r2/overlays.json $P/hailuo/edit-dh-e919-live.json $E $E/cut/e919-live.mp4 > $E/cut/final.log 2>&1; tail -3 $E/cut/final.log
@@ -50,9 +63,13 @@ ffmpeg -v error -y -i $E/cut/e919-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af
 ffmpeg -hide_banner -i $E/cut/e919-live.mp4 -map 0:a -af loudnorm=I=-14:TP=-2.2:LRA=11:print_format=json -f null - 2>&1 | sed -n '/^{/,/^}/p' \
  | python3 -c "import json,sys;j=json.load(sys.stdin);i,tp=float(j['input_i']),float(j['input_tp']);print(f'pre-loudnorm2 {i} LUFS {tp} dBTP: {tp-14-i:+.2f} after the gain ->', 'linear' if tp-14-i<=-2.2 else 'DYNAMIC (lower the limiter or its attack)')"
 bash $Q/loudnorm2.sh $E/cut/e919-live.mp4
+# the finished file's true peak must stay under -1 dBTP (SWAP-BRIEF); print it with the sample peak
+ffmpeg -hide_banner -i $E/cut/e919-live.mp4 -map 0:a -af ebur128=peak=true+sample -f null - 2>&1 | grep -E '^\s+(I|LRA|Peak):' | tail -4
 echo "== cut-qa";   python3 $Q/cut-qa.py $E/cut --stem e919-live 2>&1 | tail -20
 echo "== cut-jumps"; python3 $Q/cut-jumps.py $E/cut 2>&1 | tail -12
 echo "== audio-qa"; python3 $Q/audio-qa.py $E/cut $VJ 2>&1 | tail -15
 echo "== sheets";   python3 $Q/continuity-sheets.py $E/cut $VJ $E/review/continuity-v1 2>&1 | tail -4
 # the segments are 1-2 GB and only the assembler reads them: gone after the checks (KEEP_SEG=1 keeps them for a look)
 [ "${KEEP_SEG:-0}" = 1 ] || rm -rf $E/segments-v4
+# loudnorm2.sh keeps the pre-loudnorm cut in cut/pre (the disk is short): gone too (KEEP_PRE=1 keeps it)
+[ "${KEEP_PRE:-0}" = 1 ] || rm -rf $E/cut/pre
