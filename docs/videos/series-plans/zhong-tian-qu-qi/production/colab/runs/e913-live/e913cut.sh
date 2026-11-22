@@ -38,6 +38,10 @@ print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
 # (pick-review: shakiness 8, accuracy 15; on the draft jitter 0.43 -> 0.05). REVIEW 3: the edit table smooths with 4, not 12
 # (12 swung the board about 15 px left and right at c2.2-2.8, the hand read as camera motion; 4 holds it to 2-3 px)
 ffmpeg -v error -y -i $E/clips/s26-t1.mp4 -vf "scale=1920:1080:flags=lanczos,fps=24,format=yuv420p,vidstabdetect=shakiness=8:accuracy=15:result=$E/s26.trf" -f null - || exit 1
+# POLISH+SWAP round 2 (2026-11-22): the episode sfx dir (third sfx_dirs entry): bead913 = one bead click out of the real
+# set's abacus-drop-01 (0.245-0.325 s, e911's bead911 recipe) for s09's abacus (was wooden_01, a wood knock)
+X=/root/mokaair-work/videos/_sfx/zhongtian-real-20261121; S=/root/mokaair-work/videos/zhong-tian-qu-qi-e913-dh/sfx; mkdir -p $S
+[ -f $S/bead913.wav ] || ffmpeg -v error -y -ss 0.245 -t 0.08 -i $X/zhongtian-sfx-abacus-drop-01.wav -af "afade=t=in:d=0.003,afade=t=out:st=0.04:d=0.04,volume=14dB,aresample=48000,aformat=channel_layouts=stereo" $S/bead913.wav || exit 1
 cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VJ $R/docs/videos/zhong-tian-qu-qi-e013-r2/overlays.json $P/hailuo/edit-dh-e913-live.json $E $E/cut/e913-live.mp4 > $E/cut/final.log 2>&1; tail -3 $E/cut/final.log
 [ -f $E/cut/e913-live.mp4 ] || exit 1
 # a sample-peak limiter before loudnorm2 keeps it linear (e908-e912: attack 5 ms, limit 0.6 = -4.4 dBFS; the AAC encode

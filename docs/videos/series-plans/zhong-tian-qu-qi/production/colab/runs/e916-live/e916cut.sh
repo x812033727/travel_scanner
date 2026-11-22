@@ -54,6 +54,8 @@ AF="aresample=48000,aformat=channel_layouts=stereo"
 [ -f $S/murmur16.wav ] || python3 -I $Q/crowd-murmur.py 16 30
 [ -f $S/rooster916.wav ] || ffmpeg -v error -y -ss 2.1 -t 2.1 -i $X/zhongtian-sfx-rooster-village-loop.wav -af "afade=t=in:d=0.05,afade=t=out:st=1.7:d=0.4,$AF" $S/rooster916.wav
 [ -f $S/cart916.wav ] || ffmpeg -v error -y -ss 2.4 -t 3.0 -i $X/zhongtian-sfx-ox-cart-01.wav -af "lowpass=f=2400,afade=t=in:d=0.05,afade=t=out:st=0.5:d=2.5,$AF" $S/cart916.wav
+# hoof916 = one hoof stamp out of the series hooves_trot (1.1-1.55 s, faded) for s35's parked carriage (no snort in either set)
+[ -f $S/hoof916.wav ] || ffmpeg -v error -y -ss 1.1 -t 0.45 -i /root/mokaair-work/videos/_series/zhong-tian-qu-qi/sfx/hooves_trot.wav -af "afade=t=in:d=0.01,afade=t=out:st=0.3:d=0.15,$AF" $S/hoof916.wav
 # REVIEW 3: s12 (the insert whose set reads as an outdoor deck) is deleted -- the assembler cuts every scene video.json lists,
 # so the cut, audio-qa and the sheets read $VL, video.json without the scenes in DROP (s12 has no lines)
 VL=$E/video-live.json; DROP="s12"

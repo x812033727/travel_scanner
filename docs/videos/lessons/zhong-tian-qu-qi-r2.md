@@ -7,6 +7,17 @@
 
 這份會自動同步到雲端硬碟 `AI劇/種田娶妻打天下（真人版）/_規則與教訓/教訓/教訓.md`（docs/videos/rules-sync）。
 
+## 2026-11-22 · zhong-tian-qu-qi-e001-r2…e030-r2（真人版第 1–30 集上架前精修）· Claude（claude-opus-5.5-zt-polish-1-30）
+30 集各由沒參與製作的代理審成片，A＋B 約 140 鏡重拍、約 250 項不花錢修改，2026-11-21～22 做完並送回雲端與後台。站主這次定的事在 [`RULES.md`](../series-plans/zhong-tian-qu-qi/production/RULES.md) 第三、四、五、七節（人群聲、音效組、「你覺得該怎麼處理就怎麼處理」、精修後交付）。
+- **上架前精修的順序**：審片 → A、B 級重拍（`fix-polish/` 第 1 輪；挑片判 RETAKE 的寫 `round2/`，第二輪同一個錯還在就改鏡頭設計，不再只改字；再不行 `round3/`；第二波候選寫 `round4/`）→ 每輪草稿由另一個代理獨立挑片（`review-picks.tsv`）→ `_scripts/polish-refine.py N` 做 σ0.5 精修 → `_scripts/polish-stage.py N <精修資料夾>` 放成 `clips/sNN-t5.mp4`（`assemble-v4.mjs` 挑編號最大的，t5 蓋過 t1、t2，刪 t5 就回到舊片）→ 換片重剪 → 交付。提示詞與 Colab 工作由 `_scripts/polish-build.py N [輪]` 從 `spec.json` 與 `prompts/` 產生，每輪種子 `9NN9R01`、`9NN9R02`（R 是輪數）。
+- **`polish-refine.py` 只動重拍的鏡，不重建整集 `picks.json`**：`refine-prep.py` 會從所有挑片檔重建整集並把每支草稿複製進 `runpod/a`，但其他鏡的精修原檔不在這台機器上。精修提示詞用那一鏡在 `live-clips-e9NN.json` 的首格文字、把動作那段換成重拍提示詞的；新插入的鏡（第 2 集 `s01i`）沒有自己的首格文字，借原鏡（s01）的。
+- **後面輪次的 `KEEP` 是「沿用前一輪選的那支」，不是拿掉這鏡；第一輪的 `KEEP` 才是「沿用現行片段」**（`polish-refine.py` 已照這樣讀）。後面輪次的 `RETAKE` 也會把前一輪選的拿掉。例：第 30 集 s08 第二輪兩支都多一隻手，`KEEP` 沿用第一輪 9309101。
+- **還沒做過不花錢修改的集數，把修改與換片合併成一次重剪**（第 13 集起，剪接表 `_note` 寫「POLISH+SWAP 2026-11-21」）：一輪重剪約 35 分鐘，分兩次就多一輪。先做修改再換片的集數，重拍鏡的剪點與跟著它的音效時間在修改那輪先不動，記在 `POST-SWAP.md`，換片時一起處理。
+- 提示詞與參考圖的通用教訓（`chest` 讀成胸口、參考圖反光變玻璃、兩人手部插鏡多一條手臂、會笑的嘴改背後過肩）寫在 `shared.md`〈2026-11-22〉，例子是第 29 集 s26、第 30 集 s08、第 11 集 s17。
+- **掛滿紅柿子的樹會被畫成整面紅珠串**：第 11 集 s17 9119102 背景垂著紅珠簾，來源是場景圖 `set-xujia-yuan-ye-nolantern-l1` 那棵柿子樹。要柿子樹的鏡寫清楚果子數量與枝幹，不要的鏡換場景圖。
+- **柴刀寫短寬方頭的 machete，不寫「long narrow iron blade with a slightly hooked tip」**：會畫成劍（第 5 集 s08、第 2 集 s24、第 9 集 s30）。第 31 集以後的柴刀句也要一起掃（票 `2026-11-21-1-30-a-b-140` Notes）。
+- **交付時改過錄音的集數要另外備份 `zhong-tian-qu-qi-e9NN-dh/audio`**：`_live-e9NN` 裡的 `audio`、`music` 是捷徑，`todrive.sh` 只存連結，不存檔案（第 15 集 a21 照新片段重排、原檔在 `audio/orig/`）。通用的寫法見 `shared.md`〈2026-11-22〉。
+
 ## 2026-11-10 · zhong-tian-qu-qi-e001-r2 · 站主
 `-r2` slug 算真人版（另一部劇）；但 `zt-e9NN-media*`、`zt-e001-r2-media`、`zt-cg-e00N` 分支是 r2 slug 先做的 3D 重做，歸 3D 版。
 下次怎麼做：真人版的工作資料夾用 `_live-e9NN` 或 `zt-live-*` 命名，傳到 `AI劇/種田娶妻打天下（真人版）/`。

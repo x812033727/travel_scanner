@@ -83,7 +83,20 @@ function panelFilters(shot) {
   // `panel_color: {"s38": "red"}` in the edit list: the panel's frame colour for that shot (e917 cut review: the forced-task and
   // penalty panels want a red frame); a shot not named keeps the light-blue frame, as before
   const frame = { red: "0xff4d4d@0.95" }[edit.panel_color?.[shot]] ?? "0x7fd6ff@0.9";
-  let f = `,drawbox=x=(iw-1000)/2:y=${y0}:w=1000:h=${h}:color=0x0b2a4a@0.62:t=fill:enable='${on(start)}'`;
+  // `panel_box: {"s39": [x, w, fontsize]}` in the edit list: the panel's left edge, width and text size for that shot (e917
+  // POLISH+SWAP: s39's retake holds the copper disc at 75-90 % of the frame height, so the penalty panel goes small into the
+  // top-left corner beside his head); a shot not named keeps the centred 1000 px panel at 52 px, exactly as before
+  const box = edit.panel_box?.[shot];
+  if (box) {
+    const [bx, bw, fs] = box.map(Number), row = Math.round(fs * 64 / 52), bh = Math.round(70 * fs / 52) + row * items.length;
+    let g = `,drawbox=x=${bx}:y=${y0}:w=${bw}:h=${bh}:color=0x0b2a4a@0.62:t=fill:enable='${on(start)}'`;
+    g += `,drawbox=x=${bx}:y=${y0}:w=${bw}:h=${bh}:color=${frame}:t=3:enable='${on(start)}'`;
+    items.forEach((item, i) => {
+      g += `,drawtext=expansion=none:fontfile='${FONT}':textfile='${textFile(`${shot}-p${i}`, item.text)}':fontsize=${fs}:fontcolor=${COLORS[item.kind] ?? COLORS.panel}:shadowcolor=0x000000@0.8:shadowx=2:shadowy=2:x=${bx}+(${bw}-text_w)/2:y=${y0 + Math.round(38 * fs / 52) + row * i}:enable='${on(start + 0.1 * i)}'`;
+    });
+    return g;
+  }
+  let f =`,drawbox=x=(iw-1000)/2:y=${y0}:w=1000:h=${h}:color=0x0b2a4a@0.62:t=fill:enable='${on(start)}'`;
   f += `,drawbox=x=(iw-1000)/2:y=${y0}:w=1000:h=${h}:color=${frame}:t=3:enable='${on(start)}'`;
   items.forEach((item, i) => {
     f += `,drawtext=expansion=none:fontfile='${FONT}':textfile='${textFile(`${shot}-p${i}`, item.text)}':fontsize=52:fontcolor=${COLORS[item.kind] ?? COLORS.panel}:shadowcolor=0x000000@0.8:shadowx=2:shadowy=2:x=(w-text_w)/2:y=${y0 + 38 + 64 * i}:enable='${on(start + 0.1 * i)}'`;

@@ -42,6 +42,15 @@ print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
 # and a39 + her breaths need 4.4 s), made if missing, t5 kept.
 C=$E/clips; ENC="-c:v libx264 -preset slow -crf 12 -pix_fmt yuv420p -r 24 -c:a aac -b:a 192k -ar 32000"
 [ -f $C/s40-t6.mp4 ] || ffmpeg -v error -threads 2 -y -i $C/s40-t5.mp4 -t 4.5 $ENC $C/s40-t6.mp4
+# the episode sfx dir (third sfx_dirs entry), made if missing (站主 2026-11-22: the nearest real recording where the libraries
+# have none): bead914 = one bead click out of abacus-drop-01 (0.245-0.325 s, e911/e928's bead recipe) for the abacus in s16 s22 s24;
+# thud914 = staff-thud-01 from 1.03 s, 0.4 s (e912's recipe) for Erniu's pestle in s15; drum914 = war-drum-01 0-0.6 s low-passed
+# at 500 Hz, faded 0.3-0.6 s, for s01's watch drum (laid with impactSoft_heavy_000 in place of impactWood_heavy_001, same peak)
+X=/root/mokaair-work/videos/_sfx/zhongtian-real-20261121; S=/root/mokaair-work/videos/zhong-tian-qu-qi-e914-dh/sfx; mkdir -p $S
+AF="aresample=48000,aformat=channel_layouts=stereo"
+[ -f $S/bead914.wav ] || ffmpeg -v error -y -ss 0.245 -t 0.08 -i $X/zhongtian-sfx-abacus-drop-01.wav -af "afade=t=in:d=0.003,afade=t=out:st=0.04:d=0.04,volume=14dB,$AF" $S/bead914.wav
+[ -f $S/thud914.wav ] || ffmpeg -v error -y -ss 1.03 -t 0.4 -i $X/zhongtian-sfx-staff-thud-01.wav -af "afade=t=out:st=0.25:d=0.15,$AF" $S/thud914.wav
+[ -f $S/drum914.wav ] || ffmpeg -v error -y -t 0.6 -i $X/zhongtian-sfx-war-drum-01.wav -af "lowpass=f=500,afade=t=out:st=0.3:d=0.3,$AF" $S/drum914.wav
 # no vidstab this time: cut-qa's jitter() on every staged clip reads 0.00-0.04 (s22 0.04), nothing hops frame to frame
 cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VJ $R/docs/videos/zhong-tian-qu-qi-e014-r2/overlays.json $P/hailuo/edit-dh-e914-live.json $E $E/cut/e914-live.mp4 > $E/cut/final.log 2>&1; tail -3 $E/cut/final.log
 [ -f $E/cut/e914-live.mp4 ] || exit 1

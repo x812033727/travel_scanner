@@ -11,7 +11,8 @@
  "duck_release_ms": 900,
  "sfx_dirs": [
   "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx",
-  "<VIDEO_WORKDIR>/_sfx/zhongtian-real-20261121"
+  "<VIDEO_WORKDIR>/_sfx/zhongtian-real-20261121",
+  "<VIDEO_WORKDIR>/zhong-tian-qu-qi-e914-dh/sfx"
  ],
  "name_whoosh": "swish-9",
  "music": [
@@ -37,32 +38,32 @@
    "tail": 0
   },
   {
-   "cue": "night",
+   "cue": "z-bed-night-village",
    "from": "s10",
    "to": "s14",
-   "offset": 20.0,
-   "gain": -23,
+   "offset": 2.0,
+   "gain": -20,
    "fade_in": 1.5,
    "fade_out": 1.5,
    "tail": 0.3
   },
   {
-   "cue": "comedy",
+   "cue": "z-bed-village-comedy",
    "from": "s15",
    "to": "s17",
-   "offset": 2.5,
-   "gain": -20,
+   "offset": 1.0,
+   "gain": -15,
    "fade_in": 1.0,
    "fade_out": 0.15,
    "tail": 0
   },
   {
-   "cue": "comedy",
+   "cue": "z-bed-village-comedy",
    "from": "s18",
    "from_off": 1.2,
    "to": "s26",
-   "offset": 25.0,
-   "gain": -21,
+   "offset": 40.0,
+   "gain": -16,
    "fade_in": 0.8,
    "fade_out": 2.0,
    "tail": 0.5
@@ -81,11 +82,11 @@
    "cue": "warm",
    "from": "s32",
    "from_off": 4.4,
-   "to": "s39",
+   "to": "s35",
    "offset": 0.0,
    "gain": -20,
    "fade_in": 2.0,
-   "fade_out": 0.15,
+   "fade_out": 1.0,
    "tail": 0
   },
   {
@@ -98,6 +99,48 @@
    "fade_in": 0.3,
    "fade_out": 0.6,
    "tail": -1.567
+  },
+  {
+   "cue": "z-cue-heart",
+   "from": "s21",
+   "to": "s21",
+   "offset": 14.5,
+   "gain": -24,
+   "fade_in": 0.5,
+   "fade_out": 0.4,
+   "tail": -0.15
+  },
+  {
+   "cue": "z-cue-comedy",
+   "from": "s22",
+   "from_off": 4.2,
+   "to": "s22",
+   "offset": 2.65,
+   "gain": -12,
+   "fade_in": 0.02,
+   "fade_out": 0.8,
+   "tail": 1.0
+  },
+  {
+   "cue": "z-cue-reveal-hit",
+   "from": "s35",
+   "from_off": 3.0,
+   "to": "s35",
+   "offset": 2.05,
+   "gain": -9,
+   "fade_in": 0.02,
+   "fade_out": 1.5,
+   "tail": 2.0
+  },
+  {
+   "cue": "z-bed-farming-montage",
+   "from": "s36",
+   "to": "s39",
+   "offset": 8.0,
+   "gain": -16.5,
+   "fade_in": 1.0,
+   "fade_out": 0.15,
+   "tail": 0
   }
  ],
  "sfx": [
@@ -192,10 +235,10 @@
    "gain": -13
   },
   {
-   "file": "impactWood_heavy_001",
+   "file": "drum914",
    "at": "s01",
    "off": 0.15,
-   "gain": -19
+   "gain": -26
   },
   {
    "file": "impactSoft_heavy_000",
@@ -204,10 +247,10 @@
    "gain": -13
   },
   {
-   "file": "impactWood_heavy_001",
+   "file": "drum914",
    "at": "s01",
    "off": 0.95,
-   "gain": -19
+   "gain": -26
   },
   {
    "file": "impactSoft_heavy_000",
@@ -216,10 +259,10 @@
    "gain": -5
   },
   {
-   "file": "impactWood_heavy_001",
+   "file": "drum914",
    "at": "s01",
    "off": 1.75,
-   "gain": -11
+   "gain": -18
   },
   {
    "file": "impactWood_heavy_000",
@@ -243,7 +286,7 @@
    "file": "impactBell_heavy_001",
    "at": "s35",
    "off": 3.0,
-   "gain": -3
+   "gain": -8
   },
   {
    "file": "gong_02",
@@ -330,28 +373,22 @@
    "gain": -28
   },
   {
-   "file": "impactWood_medium_000",
-   "at": "s15",
-   "off": 0.15,
-   "gain": -16
-  },
-  {
    "file": "cloth1",
    "at": "s15",
    "off": 1.2,
    "gain": -30
   },
   {
-   "file": "impactWood_light_000",
+   "file": "bead914",
    "at": "s16",
    "off": 0.15,
-   "gain": -22
+   "gain": -14
   },
   {
-   "file": "handleCoins2",
+   "file": "bead914",
    "at": "s22",
    "off": 0.2,
-   "gain": -28
+   "gain": -14
   },
   {
    "file": "wooden_01",
@@ -372,16 +409,16 @@
    "gain": -20
   },
   {
-   "file": "impactWood_light_001",
+   "file": "bead914",
    "at": "s24",
    "off": 1.0,
-   "gain": -30
+   "gain": -16
   },
   {
-   "file": "impactWood_light_001",
+   "file": "bead914",
    "at": "s24",
    "off": 3.0,
-   "gain": -30
+   "gain": -16
   },
   {
    "file": "bookPlace1",
@@ -444,36 +481,6 @@
    "gain": -20
   },
   {
-   "file": "splash_01",
-   "at": "s33",
-   "off": 1.0,
-   "gain": -26
-  },
-  {
-   "file": "splash_02",
-   "at": "s33",
-   "off": 2.0,
-   "gain": -28
-  },
-  {
-   "file": "splash_01",
-   "at": "s33",
-   "off": 3.0,
-   "gain": -28
-  },
-  {
-   "file": "splash_02",
-   "at": "s34",
-   "off": 0.3,
-   "gain": -20
-  },
-  {
-   "file": "splash_01",
-   "at": "s34",
-   "off": 1.6,
-   "gain": -26
-  },
-  {
    "file": "paper_02",
    "at": "s35",
    "off": 0.4,
@@ -504,18 +511,6 @@
    "gain": -22
   },
   {
-   "file": "paper_03",
-   "at": "s42",
-   "off": 0.1,
-   "gain": -20
-  },
-  {
-   "file": "paper_04",
-   "at": "s42",
-   "off": 3.6,
-   "gain": -20
-  },
-  {
    "file": "zhongtian-sfx-girl-breath-01",
    "at": "s40",
    "off": 0.0,
@@ -526,6 +521,84 @@
    "at": "s40",
    "off": 3.95,
    "gain": -6
+  },
+  {
+   "file": "thud914",
+   "at": "s15",
+   "off": 0.33,
+   "gain": 0
+  },
+  {
+   "file": "thud914",
+   "at": "s15",
+   "off": 1.42,
+   "gain": 0
+  },
+  {
+   "file": "thud914",
+   "at": "s15",
+   "off": 2.17,
+   "gain": -2
+  },
+  {
+   "file": "bead914",
+   "at": "s22",
+   "off": 0.35,
+   "gain": -16
+  },
+  {
+   "file": "zhongtian-sfx-punt-pole-01",
+   "at": "s27",
+   "off": 1.1,
+   "gain": -6
+  },
+  {
+   "file": "zhongtian-sfx-punt-pole-03",
+   "at": "s32",
+   "off": 4.95,
+   "gain": -8
+  },
+  {
+   "file": "zhongtian-sfx-wring-cloth-07",
+   "at": "s33",
+   "off": 0.6,
+   "gain": -9
+  },
+  {
+   "file": "zhongtian-sfx-wring-cloth-03",
+   "at": "s33",
+   "off": 1.55,
+   "gain": -8
+  },
+  {
+   "file": "zhongtian-sfx-wring-cloth-07",
+   "at": "s33",
+   "off": 2.6,
+   "gain": -10
+  },
+  {
+   "file": "zhongtian-sfx-wring-cloth-07",
+   "at": "s34",
+   "off": 0.0,
+   "gain": -8
+  },
+  {
+   "file": "zhongtian-sfx-wring-cloth-03",
+   "at": "s34",
+   "off": 1.15,
+   "gain": -8
+  },
+  {
+   "file": "zhongtian-sfx-paper-crumple-02",
+   "at": "s42",
+   "off": 0.1,
+   "gain": 2
+  },
+  {
+   "file": "zhongtian-sfx-paper-crumple-01",
+   "at": "s42",
+   "off": 3.0,
+   "gain": 0
   }
  ],
  "frame_round": true,
