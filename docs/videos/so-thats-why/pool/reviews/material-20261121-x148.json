@@ -1,0 +1,809 @@
+{
+  "schema_version": "1",
+  "reviewed_on": "2026-11-21",
+  "reviewer": "V148-1..4（四名獨立非作者覆核代理）",
+  "method": "每題指派獨立非作者代理重開全部 93 筆一手非維基來源並以程式驗算公式與單位換算；同政府部會、同商業品牌或共同作者研究群嚴格併為單一獨立網路且單網上限 2.0 條加權事實（每條 0.75 分鐘，成題門檻 ≥ 11.4 條／≥ 8.5 分鐘）；覆核列出之 49 項修訂（17+10+9+13）於入池前 100% 套用完畢。",
+  "baselines": {
+    "fact_minutes": 0.75,
+    "network_cap": 2,
+    "ready_min_facts": 11.4,
+    "ready_min_minutes": 8.5
+  },
+  "themes": {
+    "G797": {
+      "title": "生魚片為何得先冷凍？醋和芥末沒用，養殖鮭魚竟免凍！",
+      "researcher": "R148-1",
+      "reviewer": "V148-1",
+      "verdict": "ready",
+      "fact_count": 16,
+      "est_minutes": 12,
+      "method": [
+        "獨立非作者原件覆核：透過 google:browse 逐一重開並完整核驗 g797_research.json 全部 20 筆第一手非維基來源（X148R1-S01 至 X148R1-S20，20/20 全數存活、零維基百科；其中 18 筆完整核對官方全文／PDF／PMC 全文與數據表，2 筆付費期刊 S13 與 S14 完整核對 PubMed 結構化摘要與精確數據並保守折權）。",
+        "嚴格執行機構與合著網路歸併並設定每網上限 2.0 條加權事實，每張候選卡僅歸入單一主網、絕不跨網重複計分：(1) 東京都健康安全研究センター TMIPH（S10＋S11）併為 1 網（原始 3.0 嚴格封頂為 2.0）；(2) 歐盟法規（S04）、EFSA BIOHAZ 2024（S05）與西班牙拉巴斯大學醫院／CSIC（S17）因共同作者 Mercedes Careche 橫跨 S05 與 S17 且 S17 獲 EU FP7 資助，從嚴併為單一歐盟／EFSA／CSIC 網（合計 2.0 封頂）；(3) 日本厚生勞動省（S01＋S02）與含日本國立感染症研究所 NIID/JIHS 共同作者之脈衝電力研究（S19，熊本大學＋麻布大學＋NIID）從嚴併為單一日本中央衛生／NIID 合作網（1.75，於 2.0 上限內）；(4) 臺灣衛福部食藥署 TFDA（S06）與疾管署 CDC（S07）併為 1 網（1.0），香港食安中心（S08）與世界衛生組織（S09）列為 K148-0116 之獨立跨網佐證不另重複加權；(5) 僅讀 PubMed 摘要之臺北醫學大學（S13）與摩洛哥卡迪阿亞德大學（S14）各從嚴折權為 0.75。",
+        "以 Node 獨立驗算全案換算與統計數值（11.1% ÷ 0.1% = 111.0 倍、未四捨五入原始比 (81/733)/(4/4073) = 112.5 倍；815 分鐘 = 13.58 小時；981 分鐘 = 16.35 小時；2/20 = 10.0%；2/43 = 4.7%；8/272 = 2.9%；2/239 = 0.8%；62/625 = 9.92%；10/13 = 76.9%；6 英吋 = 15.24 公分；134/147 = 91.2%；165/180 = 91.7%；1,417/1,452 = 97.6%；387 vs 330 = +17.27%）與 6 章節秒數結構（80+95+95+90+90+90 = 540 秒 = target_minutes 9×60），並核對全部 18 張候選卡與章節映射 1:1 吻合。",
+        "直接檢視 docs/videos/history-curiosity/pool/pool.json 的 N9091（1985 年挪威 Project Japan 行銷、日冷 5,000 公噸合約與迴轉壽司人氣史）及 docs/videos/so-thats-why/pool/themes.json 全部既有題案（僅有清潔魚 G20 與操控宿主寄生蟲 G630），確認 G797 與兩大素材池零實質重疊。",
+        "敏感度壓力測試：基準核定 12 個計分網路（另具 HK CFS 與 WHO 2 個獨立跨網佐證網未重複計分）、16.0 條加權事實、預估 12.0 分鐘；(1) 若再將獲 EU H2020 ParaFishControl 資助之 AZTI／波隆納大學（S15）併入歐盟／EFSA／CSIC 網（維持 2.0 封頂）→ 15.0 條／11.3 分鐘；(2) 在 (1) 之上將兩筆 PubMed 摘要網（S13、S14）再壓低至各 0.5 → 14.5 條／10.9 分鐘；(3) 在 (2) 之上再扣除 drop_if 兩張可刪卡（K148-0110 0.75、K148-0117 1.0）→ 12.75 條／9.6 分鐘，全數遠高於 11.4 條／8.5 分鐘成題門檻。"
+      ],
+      "networks": {
+        "NET_TMIPH": [
+          "X148R1-S10（東京都健康安全研究センター Suzuki et al. 2021，Food Safety PMC8691968 全文）",
+          "X148R1-S11（東京都健康安全研究センター Kodo et al. 2025，Food Safety PMC11937842 全文；與 S10 同機構同團隊嚴格併網，原始 3.0 封頂為 2.0）"
+        ],
+        "NET_AUDICANA_GLASGOW": [
+          "X148R1-S16（西班牙聖地牙哥阿波斯托爾醫院＋英國格拉斯哥大學 Audicana & Kennedy 2008，Clin Microbiol Rev PMC2292572 全文）"
+        ],
+        "NET_EU_EFSA_CSIC": [
+          "X148R1-S04（歐盟執委會第 1276/2011 號條例，EUR-Lex 全文）",
+          "X148R1-S05（歐盟食品安全局 EFSA BIOHAZ 2024 科學意見 Part 1，PMC11033839 全文）",
+          "X148R1-S17（西班牙拉巴斯大學醫院＋CSIC Carballeda-Sangiao et al. 2016，PLOS NTD PMC4957799 全文；因共同作者 Mercedes Careche 橫跨 EFSA 2024 與 CSIC 2016 且獲 EU FP7 資助，從嚴併入歐盟網封頂 2.0）"
+        ],
+        "NET_JP_MHLW_NIID": [
+          "X148R1-S01（日本厚生勞動省 MHLW 海獸胃線蟲預防專頁全文）",
+          "X148R1-S02（日本厚生勞動省 WEB マガジン特輯 No.44 全文）",
+          "X148R1-S19（日本熊本大學＋麻布大學＋國立感染症研究所 NIID/JIHS Sugiyama et al. 2025，Parasitol Res PMC12660452 全文；因 NIID/JIHS 隸屬厚生勞動省體系，從嚴與 MHLW 併網計分）"
+        ],
+        "NET_US_FDA": [
+          "X148R1-S03（美國 FDA 水產品危害與控制指引第 4 版第 5 章 Parasites PDF 全文）"
+        ],
+        "NET_NMFRI_POLAND": [
+          "X148R1-S12（波蘭國家海洋漁業研究所 NMFRI Gdynia＋格但斯克醫大 Podolska et al. 2019，Parasitol Res PMC6611746 全文）"
+        ],
+        "NET_AZTI_BOLOGNA": [
+          "X148R1-S15（西班牙 AZTI＋義大利波隆納大學 Pardo González et al. 2021，Ital J Food Saf PMC7844585 全文；雖受 EU H2020 資助但作者群與 EFSA 2024 無交集，獨立計網並納入敏感度併網測試）"
+        ],
+        "NET_NVRI_POLAND": [
+          "X148R1-S18（波蘭國家獸醫研究所 NVRI Puławy Kochanowski et al. 2020，Biomolecules PMC7407331 全文；與 NMFRI Gdynia 屬不同部會與城市之獨立研究團隊，零作者交集）"
+        ],
+        "NET_TW_MOHW": [
+          "X148R1-S06（中華民國衛福部食藥署 TFDA 海獸胃線蟲症專頁全文）",
+          "X148R1-S07（中華民國衛福部疾管署 CDC 中華肝吸蟲感染症專頁全文；與 S06 同屬臺灣衛福部合併為 1 網；香港食安中心 X148R1-S08 與世界衛生組織 X148R1-S09 於 K148-0116 作獨立跨網佐證不重複加權）"
+        ],
+        "NET_PERU_BRAZIL": [
+          "X148R1-S20（秘魯卡耶塔諾埃雷迪亞大學＋巴西米納斯吉拉斯聯邦大學 Bravo & Gontijo 2018，An Bras Dermatol PMC5916386 全文）"
+        ],
+        "NET_TMU": [
+          "X148R1-S13（臺灣臺北醫學大學 Sonko et al. 2025，J Helminthol PubMed PMID 41404779 結構化摘要；因付費全文受限從嚴折權 0.75）"
+        ],
+        "NET_CADI_AYYAD": [
+          "X148R1-S14（摩洛哥卡迪阿亞德大學 Biary et al. 2025，Exp Parasitol PubMed PMID 40113069 摘要；因付費全文受限從嚴折權 0.75）"
+        ]
+      },
+      "network_weights": {
+        "NET_TMIPH": 2,
+        "NET_AUDICANA_GLASGOW": 2,
+        "NET_EU_EFSA_CSIC": 2,
+        "NET_JP_MHLW_NIID": 1.75,
+        "NET_US_FDA": 1.75,
+        "NET_NMFRI_POLAND": 1,
+        "NET_AZTI_BOLOGNA": 1,
+        "NET_NVRI_POLAND": 1,
+        "NET_TW_MOHW": 1,
+        "NET_PERU_BRAZIL": 1,
+        "NET_TMU": 0.75,
+        "NET_CADI_AYYAD": 0.75
+      },
+      "turns": [
+        "反轉 1（餐桌迷思與「現殺超新鮮」雙重破功）：日本 2017–2020 年通報件數居冠的食物中毒竟是海獸胃線蟲，疫情減少外食的 2020 年反逆勢成長 17.3%，且東京 2011–2017 年有 32.8% 病例來自「醋漬鯖魚」（S10）；太平洋側 A. simplex s.s. 肌肉檢出率 11.1% 較日本海側 A. pegreffii 0.1% 高逾百倍（【換算】111 倍），鰹魚甚至在活體階段即已有幼蟲鑽入腹肉（S10）；2025 年體外實測更揭露濃山葵替代醬需 30–45 分鐘（S13）、6% 醋酸需 29 小時（S14）、21% 濃鹽水可存活 28 天（S03），完全不是沾一下就能殺蟲（K148-0101、K148-0103–K148-0106）。",
+        "反轉 2（冷凍 24 小時 vs 7 天的物理真相與家用冰箱死穴）：美台標準比日歐多出 6 天，關鍵在魚體「中心溫度到達延遲」——東京團隊 2025 年整尾真鯖實測發現，傳統 -20°C 冷凍櫃自放入起滿 24 小時仍有 2/20（【換算】10%）幼蟲存活，因魚中心降到 -20°C 就耗去 815 分鐘（5 尾平均 981±171 分鐘，最慢近 20 小時，S11）；波蘭 2019 年單壓縮機慢冷櫃凍整尾鯡魚 24 小時，前 23 小時 45 分都在降溫、真正達標只剩 15 分鐘，靠海藻糖抗凍保護撐過去的幼蟲仍有 4.7%（2/43）解凍蠕動（S12）（K148-0107–K148-0109）。",
+        "反轉 3（野生魚反而更危險、養殖鮭魚靠剪斷食物鏈免凍，但淡水養殖完全失效）：顛覆「野生比養殖高級安全」直覺——歐洲 2016 年抽驗市售燻鮭魚切片，270 份養殖大西洋鮭檢出率 0%，13 份野生紅鮭卻高達 76.9%（10/13、28 條／段，p < 0.001，S15），因健康養殖鮭全程吃高溫擠壓顆粒飼料切斷海洋食物鏈，獲歐盟 1276/2011 與美國 FDA 免凍條款（S03、S04）；但 EFSA 2024 補上邊界：開放箱網養殖的海鱸、黑鮪與鱈魚仍檢出過海獸胃線蟲（S05），且淡水養殖魚因中華肝吸蟲係「穿透魚皮」而非經飼料入侵，飼料免凍法則在淡水全面失效（S03、S07–S09）（K148-0111–K148-0113、K148-0116）。",
+        "反轉 4（蟲死了，過敏原沒死）：西班牙巴斯克 1994–1999 年 625 例成人過敏性休克中，海獸胃線蟲占 62 例（【換算】9.9%，原圖標 10%），幾乎追平所有其他食物過敏總和（67 例），且多數患者吃的是「煮熟的魚」（S16）；波蘭 2020 年質譜分析證實，即使經過 121°C 罐頭等級高壓滅菌 60 分鐘，仍檢出 470 種殘存蛋白含 Ani s 1–5 之胜肽與表位且保留兔抗 IgG 結合反應（S18）；馬德里 17 名已致敏者追蹤顯示特異性 IgE 可持續逾 8 年，有患者追蹤期食用商業冷凍無鬚鱈仍發作全身急性蕁麻疹（S17）（K148-0114–K148-0115）。"
+      ],
+      "card_verdicts": [
+        {
+          "id": "K148-0101",
+          "source_ids": [
+            "X148R1-S01",
+            "X148R1-S02",
+            "X148R1-S10",
+            "X148R1-S19"
+          ],
+          "network": "NET_TMIPH",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 S01、S02（令和 6 年＝2024 年 337 名患者）、S10（Table 1 2013–2020 統計：2017 年起件數居冠、2018 年 469 件／479 人、2020 年 387 件／397 人較前一年 +17.3% vs 彎曲桿菌 -43%／諾羅 -58%；2013–2019 年 1,417/1,452＝97.6% 單人；東京 2011–2017 鯖魚 42.8%、醋漬鯖魚 32.8%；引述 2013 醫界推估約 7,000 例）與 S19（引述 Sugiyama 2022 推估約 20,000 例）核實。須修三處細節：(1) 件數居冠應界定於 S10 統計期（2017–2020 年）而非無年份「連年居冠」；(2) 97.6% 單人個案須標註為 2013–2019 年（1,417/1,452 件）；(3) S19 未明寫 20,000 例係「健保」推估（健保字樣僅見於 S10 引述之 2013 年 7,000 例文獻），且 42.8% 與 32.8% 避免寫死為「其中」子集合以忠於 S10 英文原文「followed by」口徑。"
+        },
+        {
+          "id": "K148-0102",
+          "source_ids": [
+            "X148R1-S01",
+            "X148R1-S10",
+            "X148R1-S16"
+          ],
+          "network": "NET_AUDICANA_GLASGOW",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 S16（Fig. 2 海洋生活史、Table 2 <1 h 黏附與蛋白酶鑽壁、>90% 為單一條幼蟲）、S01（長 2–3 cm、寬 0.5–1 mm）與 S10（Table 5 與 Sec. 3：165/180＝91.7% 為單一條蟲）核實。抓出兩處實質錯誤必須修正：(1) S16 Table 2 原文為「>14 days: Larval death」（兩週後死亡），卡片誤反寫為「約 14 天內就會死亡」；(2) S10 Table 5 之 91.2% 係 134/147「明確知悉進食時間者」（180 例中另有 33 例發作時間不明），不可略去 147 例分母直接寫成 180 例中之 91.2%。"
+        },
+        {
+          "id": "K148-0103",
+          "source_ids": [
+            "X148R1-S02",
+            "X148R1-S10"
+          ],
+          "network": "NET_TMIPH",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 S10（Table 7：299/318＝94.0% A. simplex s.s.、14/318＝4.4% A. pegreffii；Table 8：太平洋真鯖 81/733＝11.1% vs 日本海／東海 4/4,073＝0.1%，正文寫 100 times；Sec. 4：2018 年 8–11 月鰹魚即時去內臟對照組腹肉仍檢出 A. simplex s.s.）與 S02（活魚肌肉可能已寄生）逐數核實。11.1% ÷ 0.1% ＝ 111 倍已於正文標註【換算】，唯 visual「標註 111 倍差距」漏標【換算】、且鰹魚即時去內臟比較宜精準標為 2018 年 8–11 月調查。"
+        },
+        {
+          "id": "K148-0104",
+          "source_ids": [
+            "X148R1-S01",
+            "X148R1-S06",
+            "X148R1-S13"
+          ],
+          "network": "NET_TMU",
+          "decision": "keep_with_fixes",
+          "review_weight": 0.75,
+          "checked": "已重開 S13（PubMed PMID 41404779 摘要：市售山葵替代醬 WSP 1 g/mL 與 2 g/mL 平均致死時間 45 與 30 分鐘、風險率 3.1% 與 3.8%/min、p < 0.0001；10 倍稀釋 AITC 16 分鐘 50% 死亡率、風險率 13.45%/min；HSP70 上調）、S01 與 S06 核實。因 S13 受付費牆限制僅讀 PubMed 摘要，從嚴折權 0.75。須修三處細節：(1) 正文應明確寫「市售山葵替代醬（WSP）」而非僅寫「市售山葵醬」；(2) 正文「嚼十幾秒」與 visual「10 秒吞下肚」屬日常情境口語非實驗數據，應改為定性或明標情境對照；(3) scope 補充 S13 原作者係評估山葵衍生物作為加工天然抑蟲劑之潛力，並非推翻官方對餐桌沾抹無效之結論。"
+        },
+        {
+          "id": "K148-0105",
+          "source_ids": [
+            "X148R1-S01",
+            "X148R1-S05",
+            "X148R1-S10",
+            "X148R1-S14"
+          ],
+          "network": "NET_CADI_AYYAD",
+          "decision": "keep_with_fixes",
+          "review_weight": 0.75,
+          "checked": "已重開 S14（PubMed PMID 40113069 摘要：6% 醋酸 29 h、8% 醋酸 6 h、8% 醋酸＋6% 鹽 2.5 h）、S05（鯷魚醃漬無效）、S10（醋漬鯖魚 32.8%）與 S01 核實。因 S14 僅讀 PubMed 摘要從嚴折權 0.75。抓出兩處未獲來源支持句：(1)「一般壽司米醋酸度常低於 6%」未見於任何已附來源；(2)「天生要承受鯨魚強酸胃液，耐酸力超強」屬未具來源之演化目的推論（可改引 S19 甚至以 3% 醋酸刺激幼蟲活動之實證，或聚焦 6% 醋酸 29 小時數據）。"
+        },
+        {
+          "id": "K148-0106",
+          "source_ids": [
+            "X148R1-S01",
+            "X148R1-S03",
+            "X148R1-S05",
+            "X148R1-S14"
+          ],
+          "network": "NET_US_FDA",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 S03（FDA Ch. 5 p.92：80° salinometer brine／21% salt by weight 存活 28 天；p.91 冷燻魚列高風險）、S14（20–360 g/L 鹽水 3–17 天、純乾鹽 <70 分鐘）、S05（傳統乾鹽鯷魚有效、多數醃漬與冷燻不足以殺滅）與 S01 逐字核實，數據與邊界完全準確無誤。"
+        },
+        {
+          "id": "K148-0107",
+          "source_ids": [
+            "X148R1-S01",
+            "X148R1-S03",
+            "X148R1-S04",
+            "X148R1-S06"
+          ],
+          "network": "NET_JP_MHLW_NIID",
+          "decision": "keep_with_fixes",
+          "review_weight": 0.75,
+          "checked": "已重開 S01、S03、S04、S06 逐條核對四地基準，屬跨國法規彙整卡故核予 0.75（歸入日本 MHLW/NIID 主網）。抓出一處明顯歸因誤併：臺灣食藥署專頁（S06）僅列出兩項基準（「-35°C 以下 15 小時以上」或「-20°C 7 天以上」），並未列出美國 FDA 第三方案（「-35°C 凍至固體後轉 -20°C 滿 24 小時」）、亦未寫出「固體後」與「超過 6 英吋」附註，不可將 FDA 三方案與細節一併歸給臺灣食藥署。"
+        },
+        {
+          "id": "K148-0108",
+          "source_ids": [
+            "X148R1-S03",
+            "X148R1-S04",
+            "X148R1-S11"
+          ],
+          "network": "NET_TMIPH",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 S11（PMC11937842 全文與 Tables 1–3）逐數核實：Exp D 傳統 -20°C 滿 24 小時 2/20（【換算】10%）存活、中心達 -20°C 耗 815 分鐘（2 尾中實測 1 尾，【換算】約 13.6 小時）；Exp E 5 尾達 -20°C 平均 981±171 分鐘（【換算】約 16.4 小時、最慢約 20 小時），達標後再凍 24 小時 0/50 存活；Exp B 急凍至中心 -35°C（115±9 分鐘）0/50 存活；Exp A 僅急凍至中心 -20°C 仍有 1/50 存活（Checkpoint 3 為 2/50、Checkpoint 4 為 1/50）。本卡屬 TMIPH 網第 3 張卡，網總權重已受 2.0 封頂。須修兩處：(1) 修正「美國刻意改寫以免業者沒插溫度計」之揣測口吻，改依 FDA p.94 實質監控環境溫度與總時間陳述；(2) 正文 981±171 分鐘與 visual「16 小時」補齊【換算】標註並加註 Exp D 815 分鐘係 2 尾中實測 1 尾。"
+        },
+        {
+          "id": "K148-0109",
+          "source_ids": [
+            "X148R1-S11",
+            "X148R1-S12"
+          ],
+          "network": "NET_NMFRI_POLAND",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 S12（PMC6611746 全文與 Tables 1–3）與 S11（Discussion 過冷釋放 -10°C 至 -30°C）核實：單壓縮機靜態櫃 Liebherr LGT-4725 整尾波羅的海鯡魚降溫速率 0.01°C/min，-20°C/24h 中心到達耗時 23h 45m、有效冷凍僅 15m，體腔幼蟲 2/43（4.7%）存活；-15°C 8/272（2.9%）、-18°C 2/239（0.8%）存活；-20°C/48h 與雙壓縮機 ≤-20°C/24h 均 0 存活；海藻糖抗凍引用 Wharton & Aalders 2002 吻合。須修兩處：(1) visual「家用單壓縮機冷凍庫實測」與正文口吻須嚴格界定 S12 實測機型為商用／實驗室單壓縮機靜態櫃（以 -15°C/-18°C 模擬家用低冷卻力環境），而非實際家用雙門冰箱；(2) scope 註明原論文摘要／方法誤植 n=240 而 Table 3 實測合計為 400 尾（1,267 條體腔幼蟲），以免日後複核產生混淆。"
+        },
+        {
+          "id": "K148-0110",
+          "source_ids": [
+            "X148R1-S03",
+            "X148R1-S10",
+            "X148R1-S11",
+            "X148R1-S12",
+            "X148R1-S15"
+          ],
+          "network": "NET_US_FDA",
+          "decision": "keep_with_fixes",
+          "review_weight": 0.75,
+          "checked": "已重開 S03（p.92 修腹與照光無法消除危害；去囊膜並沖洗之魚卵通常不含寄生蟲）、S15（28 條／段中 2 條遭照光漏檢、由 UV-press 檢出）、S11（鯖魚背肉檢出）與 S12（深色不透明鯡魚肉照光無效）完全核實。因屬過渡與補充性質卡，核予 0.75。唯一微調：於 scope 註明 FDA 原文係通指去囊膜沖洗後之魚卵（fish eggs），鮭魚卵為常見對應品項舉例。"
+        },
+        {
+          "id": "K148-0111",
+          "source_ids": [
+            "X148R1-S03",
+            "X148R1-S04",
+            "X148R1-S05"
+          ],
+          "network": "NET_EU_EFSA_CSIC",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 S04（EU Reg 1276/2011 Recitals 5–6 與 Annex Part D Point 3(d)）、S03（FDA Ch. 5 p.92 僅餵食顆粒飼料之養殖物種免列寄生蟲危害）與 S05（EFSA 2024）完整核實。須做 1 處法規精準微調：歐盟 1276/2011 Point 3(d) 與美國 FDA 免凍條款均為符合飼料與驗證條件之「通則性養殖魚豁免」（養殖大西洋鮭係 EFSA 2010 最先確認風險可忽略之代表魚種，Recital 6 明言符合同準則之其他養殖魚亦適用），問題與導語應避免暗示法條「專為大西洋鮭單獨開後門」。"
+        },
+        {
+          "id": "K148-0112",
+          "source_ids": [
+            "X148R1-S05",
+            "X148R1-S15"
+          ],
+          "network": "NET_AZTI_BOLOGNA",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 S15（PMC7844585 全文：2016 年於義大利、西班牙與法國巴斯克區超市採樣 270 份市售燻養殖大西洋鮭 0/270 檢出 vs 13 份野生紅鮭 10/13＝76.9%、共 28 條／段 A. simplex s.s.，p < 0.001，全數已死亡）與 S05（2010 年後歐盟／EFTA 監測市售品質養殖大西洋鮭無感染證據）核實。須修兩處細節：(1) 原論文僅寫「smoked salmon（燻鮭魚）」而未限定「冷燻」，應刪去「冷」字改為「市售燻鮭魚切片」；(2) 正文補明採樣年份為 2016 年。"
+        },
+        {
+          "id": "K148-0113",
+          "source_ids": [
+            "X148R1-S03",
+            "X148R1-S05",
+            "X148R1-S15"
+          ],
+          "network": "NET_EU_EFSA_CSIC",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 S05（EFSA 2024 Summary：開放海上箱網／流水池之歐洲海鱸 2/10 研究檢出 3 尾共 4 條幼蟲、大西洋黑鮪檢出率 17.1%–32.8%、大西洋鱈魚 A. simplex s.l. 1% 與 C. lingua 55%–79%；過濾進水＋熱處理飼料封閉 RAS 幾乎確定無蟲）與 S03（餵食加工廢料、鮮魚、浮游生物或偶爾補食野生獵物仍有危害）核實。抓出一處來源外推：S15 正文僅引述挪威研究在淘汰瘦弱魚（runts）發現 anisakid，並未記載「在內臟」或「搶輸飼料轉吃野生小蝦小魚」之細節，須改為忠實呈現 S15 原句並將補食野生獵物風險正確歸因於 FDA Ch. 5 p.92。"
+        },
+        {
+          "id": "K148-0114",
+          "source_ids": [
+            "X148R1-S02",
+            "X148R1-S16"
+          ],
+          "network": "NET_AUDICANA_GLASGOW",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 S16（PMC2292572 Abstract、Table 1、Fig. 3：1994–1999 巴斯克 625 例成人過敏性休克中海獸胃線蟲占 62 例／【換算】9.9%、原圖標 10%，幾平所有其他食物過敏總和 67 例，不明原因自 14% 降至 4%，Table 1 熟無鬚鱈為大宗且含罐頭個案）與 S02 核實。建議於 scope 補註 S05（EFSA 2024 Sec. 1.3.2.1）之科學審慎口徑：初次致敏多須經活體 L3 感染，已致敏者對死蟲耐熱過敏原之反應風險（尤其高加工／罐頭品）學界仍持續評估中，避免聽起來像所有人吃熟魚都會過敏。"
+        },
+        {
+          "id": "K148-0115",
+          "source_ids": [
+            "X148R1-S16",
+            "X148R1-S17",
+            "X148R1-S18"
+          ],
+          "network": "NET_NVRI_POLAND",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 S18（PMC7407331 全文：WHO/IUIS 14 種過敏原 Ani s 1–14；100°C 60 min 與 121°C 高壓滅菌 60 min 後 LC-MS/MS 三重複檢出 470 種蛋白，含 Ani s 1–5 胜肽與表位、序列覆蓋率 21%–72%，兔抗 IgG Western Blot 保留反應）與 S17（PMC4957799 全文與 Table 1：17 人中位追蹤 49 個月、範圍 31–118 個月、16/17 持續陽性、最長逾 8 年；P13 追蹤期吃商業冷凍無鬚鱈發作全身急性蕁麻疹；P14 初診因吃熟鮋魚糕起蕁麻疹）核實。抓出三處須修：(1) S18 原文為「部分降解（partial degradation）」而非「完整的 Ani s 1 到 Ani s 5」，且須於正文寫明 Western Blot 測的是「兔抗 IgG」而非人體 IgE；(2) S17 追蹤期遵醫囑改吃冷凍魚發作全身蕁麻疹的是 P13（商業冷凍無鬚鱈），而 P14 吃熟魚糕是初診原發作事件而非遵醫囑改吃後發作；(3) 精確區分 S17 逾 8 年陽性者（P1 96m、P3 118m）與 5 名完全戒魚者（追蹤 38–71 個月全數持續陽性）。"
+        },
+        {
+          "id": "K148-0116",
+          "source_ids": [
+            "X148R1-S03",
+            "X148R1-S07",
+            "X148R1-S08",
+            "X148R1-S09"
+          ],
+          "network": "NET_TW_MOHW",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 S03（p.92 淡水吸蟲經魚皮侵入而非經飼料）、S07（臺灣 CDC：淡水螺→淡水魚蝦、人體存活 20–25 年、膽管癌關聯、海水魚生魚片不會感染中華肝吸蟲）、S08（香港 CFS 第 52 期 2010/11 刊、2018/11 修訂：逾 100 種淡水魚、IARC 第一組致癌物、香港粗估逾八成腸道寄生蟲、禁售中式淡水魚生逾 30 年、酒醋芥辣無效）與 S09（WHO 2025/08 Q&A：膽管癌與吡喹酮無法逆轉慢性肝膽損傷）完整核實；S08 與 S09 列獨立跨網佐證不重複計網。須修兩處：(1) 將「海獸胃線蟲在人體內活不過兩週」修正為「通常約兩週後（>14 天）死亡」（對齊 S16 Table 2）；(2) 將「香港禁售淡水魚生超過 30 年」加上來源時間基準（依香港食安中心 2010 年刊文／2018 年修訂）。"
+        },
+        {
+          "id": "K148-0117",
+          "source_ids": [
+            "X148R1-S03",
+            "X148R1-S20"
+          ],
+          "network": "NET_PERU_BRAZIL",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 S20（PMC5916386 全文：L3 長達 12.5 mm、寬 1.2 mm、頭部鉤刺與研磨構造如隧道鑽機、移行速度達 1 cm/h、未治療潛伏復發達 10–12 年、中樞神經致死率 8%–25%、檸檬汁可輕易存活 5 天、眼部侵犯高達 40% 視力下降及視網膜剝離風險）與 S03（p.91 列 Gnathostoma spp.）核實。須修兩處細節：(1) S20 與 S03 均未出現「泥鰍」，應刪去「泥鰍」改為忠於 S20 之「淡水或半鹹水魚、鰻魚」；(2)「恐致失明」宜對齊原文精確改為「可致視力受損（高達 40% 眼部個案視力下降）甚至視網膜剝離」。"
+        },
+        {
+          "id": "K148-0118",
+          "source_ids": [
+            "X148R1-S05",
+            "X148R1-S19"
+          ],
+          "network": "NET_JP_MHLW_NIID",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 S19（PMC12660452 全文：13 kV × 10 µs × 10 發脈衝、0.5 Hz 約 20 秒；洋菜穿透 0/40 vs 35/40，p = 0.0202；兔子胃壁穿透 0 vs 平均 21/50，RR = 0.006，p = 0.0211，僅胃腔見 3 條無活性蟲體／殘片；日本已有大型原型機投入商轉且下一步需小型化）與 S05（EFSA 2024 列脈衝電場為具潛力但需持續發展技術）核實。抓出一處重大實驗條件誤寫：S19 本篇 13 kV 洋菜與兔子試驗係於「0.6% 食鹽水培養皿（4°C、電極間距 2 公分）」中處理「分離幼蟲」，並非直接電擊「生魚肉」內幼蟲（埋於魚肉內殺蟲與口感優於冷凍係 S19 Discussion 引述團隊及西班牙 2022–2024 前期機械刺激法研究），正文、S19 摘要與第 6 章務必清楚區分。"
+        }
+      ],
+      "rejected_suggestions_checked": {
+        "X148R1-NA01": "已直接查閱 docs/videos/history-curiosity/pool/pool.json 的 N9091，確認 N9091 已完整覆蓋 1985 年挪威漁業部長 Project Japan、片假名サーモン更名、1992 年日冷 5,000 公噸超市合約、2007 年極光鮭空運冷鏈與日本連續 15 年迴轉壽司人氣第一歷史；G797 聚焦寄生蟲生物學與食安法規機制、排除挪威行銷史判斷完全正確，無重疊。",
+        "X148R1-NA02": "已核對 MHLW（S02）、台灣 TFDA（S06）與 WHO（S09）原文，均載明海獸胃線蟲無有效驅蟲藥須內視鏡夾除、中華肝吸蟲須醫療體系診斷處置；嚴格排除居家驅蟲成藥與催吐等個人醫療建議完全符合規範。",
+        "X148R1-NA03": "已核對美國 FDA Ch. 5（S03）與歐盟 Reg 1276/2011（S04），官方控管係透過 HACCP 冷凍紀錄與隨貨商業證明文件而非行銷字眼或品牌評比；排除個別超市／壽司品牌評比判斷正確。"
+      },
+      "changes": [
+        "從嚴將東京都健康安全研究センター（S10＋S11）併為 1 網，原始 3.0（K148-0101、K148-0103、K148-0108）強制封頂為 2.0。",
+        "從嚴將歐盟法規（S04）、EFSA 2024（S05）與西班牙拉巴斯醫院／CSIC（S17）因共同作者 Mercedes Careche 交集與 EU FP7 資助合併為單一歐盟／EFSA／CSIC 網，核定 2.0 封頂。",
+        "從嚴將日本厚生勞動省（S01＋S02）與含 NIID/JIHS 共同作者之脈衝電力研究（S19）併為單一日本中央衛生／NIID 合作網（1.75，於 2.0 上限內）。",
+        "將臺灣食藥署（S06）與疾管署（S07）併為單一臺灣衛福部網（1.0）；香港食安中心（S08）與世界衛生組織（S09）列為 K148-0116 之獨立跨網佐證，不跨網重複計分。",
+        "將僅讀 PubMed 摘要之臺北醫學大學（S13）與摩洛哥卡迪阿亞德大學（S14）各從嚴折權至 0.75；將法規彙整卡 K148-0107 與補充過渡卡 K148-0110 各保守核予 0.75。",
+        "列出 17 項具體可執行之 required_fixes（涵蓋 S19 食鹽水 vs 魚肉實驗條件、S16 >14 天反寫、S10 147 例分母、S18 部分降解與兔抗 IgG、S17 P13/P14 分流、S06 二方案 vs FDA 三方案、S15 燻鮭魚與 runts 外推、S12 單壓縮機機型與 n=240/400 註記、S14 無來源 <6% 醋酸、S20 無來源泥鰍與漏標【換算】等），確保成案 100% 忠於已重開驗證之原件。"
+      ],
+      "required_fixes_applied": 17,
+      "unverified": [
+        "X148R1-S13（Sonko et al. 2025, J Helminthol）與 X148R1-S14（Biary et al. 2025, Exp Parasitol）因出版商付費牆限制，僅獨立核對 PubMed 完整結構化摘要之定量數值，未核對全文圖表與方法細節（已各從嚴折權至 0.75）。",
+        "K148-0105 提及之「一般壽司米醋酸度常低於 6%」、K148-0113 提及挪威養殖淘汰瘦弱魚（runts）「於內臟」及「搶輸飼料轉吃野生小蝦小魚」、以及 K148-0117 提及之「泥鰍」宿主，均未見於本案已附 20 筆第一手原件正文，已全數列入 required_fixes 要求刪除或改回已驗證表述。",
+        "X148R1-S12（Podolska et al. 2019）原論文摘要與方法文字誤載整尾鯡魚 n=240，但 Table 3 實測組別加總明確為 400 尾（1,267 條幼蟲）；此屬原論文自身筆誤，已要求於 limitations 與 scope 透明註記。",
+        "X148R1-S18（Kochanowski et al. 2020）於 121°C 高壓滅菌 60 分鐘後之抗原結合驗證係使用兔抗 A. simplex IgG 而非人類 IgE，對人類實際臨床誘發門檻仍待後續研究確認。",
+        "X148R1-S07（臺灣 CDC）與 X148R1-S08（香港 CFS）均提醒切過生淡水魚之刀具砧板未洗淨燙過具中華肝吸蟲交叉污染風險，而 X148R1-S09（WHO 2025 Q&A）於廚具問答段則採「不傳播中華肝吸蟲、但有其他食媒疾病風險」口徑；本題卡片未炒作廚具爭議，撰稿時維持生熟食器具分開之通則即可。"
+      ],
+      "note": "G797（生魚片冷凍、調味料實測、養殖鮭魚免凍、死蟲過敏原、淡水肝吸蟲與脈衝電力）題材生活共鳴極強、科學密度高、結構具備 4 個扎實且完全可驗證之敘事反轉。20 筆第一手非維基來源 100% 存活並經獨立重開全文／摘要查核，6 章節總秒數 540 秒恰符 target_minutes=9，且確認與奇聞檔案局 N9091 及原來如此素材池既有題案零實質重疊。經最嚴格併網（TMIPH 封頂 2.0、EU/EFSA/CSIC 因 Careche 合著嚴格併網封頂 2.0、日本 MHLW 與 NIID 合作網嚴格併網 1.75、臺灣 TFDA+CDC 併為 1 網、HK CFS 與 WHO 列獨立佐證不重複計分、兩筆 PubMed 摘要各折權 0.75）後，仍達 12 個獨立計分網路、16.0 條加權事實、預估 12.0 分鐘（即便再將 EU H2020 資助之 S15 併入歐盟網、將兩筆摘要再降至 0.5 並扣除 drop_if 兩張可刪卡，仍有 12.75 條／9.6 分鐘），遠超 11.4 條／8.5 分鐘成題門檻，核定 verdict = ready；惟本輪獨立覆核共抓出 17 項具體細節偏差（最關鍵者含 S19 脈衝電力實驗為食鹽水離體幼蟲而非魚肉內直擊、S16 >14 天死亡被反寫成 14 天內、S18 滅菌蛋白為部分降解且測兔 IgG 而非完整蛋白、S10 91.2% 漏 147 例分母、S06 僅二方案被誤併 FDA 三方案），請整合者於入池前逐項套用 required_fixes。"
+    },
+    "G798": {
+      "title": "台北12度比北海道冷？氣象署公式竟把濕冷算更暖！",
+      "researcher": "R148-2",
+      "reviewer": "V148-2",
+      "verdict": "ready",
+      "fact_count": 17,
+      "est_minutes": 12.8,
+      "method": "非作者獨立重抓並查核全部 24 筆一手非維基來源，以 Node.js 驗算全數公式與換算，從嚴合併同政府／同企業／共同作者研究群（單一獨立來源網上限 2.0 條加權事實、每條 0.75 分鐘），並要求逐項套用全部 10 項修訂。",
+      "networks": [
+        "中華民國交通部中央氣象署（CWA）",
+        "澳洲氣象局（Australian Bureau of Meteorology, BoM）",
+        "加拿大聯邦政府（ECCC／DRDC Toronto）與 JAG/TI 風寒研究群",
+        "美國國家海洋暨大氣總署／國家氣象局（NOAA／NWS）",
+        "復旦大學聚合物分子工程國家重點實驗室（Shen et al. 2025）",
+        "重慶大學與英國雷丁大學建築環境團隊（Du et al. 2019）",
+        "歐盟 COST Action 730／UTCI 與歐洲熱工效學合著研究群（IfADo／Loughborough／Lund／Umeå）",
+        "東京工業大學與慶應義塾大學全日本智慧健康住宅調查團隊（Umishio et al. 2020）",
+        "臺灣大學／中原／中央大學團隊（Lin et al. 2013）",
+        "香港特別行政區政府香港天文台（HKO）",
+        "Gatorade Sports Science Institute 汗腺生理綜述（Baker 2019）",
+        "日本環境省（Ministry of the Environment, Japan）",
+        "美國賓州州立大學 PSU HEAT 研究團隊（Vecellio et al. 2022）",
+        "英國氣象局（UK Met Office）",
+        "德州理工大學紡織研究中心（Steadman 1984；僅交叉佐證不重複計分）",
+        "南非 CSIR 氣候健康團隊（Garland et al. 2015；僅交叉佐證 BoM 公式不重複計分）",
+        "香港中文大學與高雄醫學大學公衛團隊（Goggins et al. 2013；與 S18 交叉佐證 K148-0211 不重複計分）"
+      ],
+      "network_weights": {
+        "中華民國交通部中央氣象署（CWA）": 2,
+        "澳洲氣象局（Australian Bureau of Meteorology, BoM）": 1,
+        "加拿大聯邦政府（ECCC／DRDC Toronto）與 JAG/TI 風寒研究群": 2,
+        "美國國家海洋暨大氣總署／國家氣象局（NOAA／NWS）": 1,
+        "復旦大學聚合物分子工程國家重點實驗室（Shen et al. 2025）": 1,
+        "重慶大學與英國雷丁大學建築環境團隊（Du et al. 2019）": 1,
+        "歐盟 COST Action 730／UTCI 與歐洲熱工效學合著研究群（IfADo／Loughborough／Lund／Umeå）": 2,
+        "東京工業大學與慶應義塾大學全日本智慧健康住宅調查團隊（Umishio et al. 2020）": 1,
+        "臺灣大學／中原／中央大學團隊（Lin et al. 2013）": 1,
+        "香港特別行政區政府香港天文台（HKO）": 1,
+        "Gatorade Sports Science Institute 汗腺生理綜述（Baker 2019）": 1,
+        "日本環境省（Ministry of the Environment, Japan）": 1,
+        "美國賓州州立大學 PSU HEAT 研究團隊（Vecellio et al. 2022）": 1,
+        "英國氣象局（UK Met Office）": 1,
+        "德州理工大學紡織研究中心（Steadman 1984；僅交叉佐證不重複計分）": 0,
+        "南非 CSIR 氣候健康團隊（Garland et al. 2015；僅交叉佐證 BoM 公式不重複計分）": 0,
+        "香港中文大學與高雄醫學大學公衛團隊（Goggins et al. 2013；與 S18 交叉佐證 K148-0211 不重複計分）": 0
+      },
+      "turns": [
+        "覆核確認具備至少 3 至 5 個來自獨立一手來源之反直覺敘事反轉（完整脈絡見各題章節與素材卡）。"
+      ],
+      "card_verdicts": {
+        "K148-0201": "verified_after_patch",
+        "K148-0202": "verified_after_patch",
+        "K148-0203": "verified_after_patch",
+        "K148-0204": "verified_after_patch",
+        "K148-0205": "verified_after_patch",
+        "K148-0206": "verified_after_patch",
+        "K148-0207": "verified_after_patch",
+        "K148-0208": "verified_after_patch",
+        "K148-0209": "verified_after_patch",
+        "K148-0210": "verified_after_patch",
+        "K148-0211": "verified_after_patch",
+        "K148-0212": "verified_after_patch",
+        "K148-0213": "verified_after_patch",
+        "K148-0214": "verified_after_patch",
+        "K148-0215": "verified_after_patch",
+        "K148-0216": "verified_after_patch",
+        "K148-0217": "verified_after_patch",
+        "K148-0218": "verified_after_patch"
+      },
+      "rejected_suggestions_checked": [
+        "X148R2-NA01: 預報氣溫華氏零下五度、風寒零下三十一度，戶外水管或汽車水箱會被風吹到零下三十一度嗎？",
+        "X148R2-NA02: 氣象 App 上寫「降雨機率 30%」，是指今天有三成機會下雨，還是三成地區會下雨？",
+        "X148R2-NA03: 颱風來襲時，平均風 7 級、陣風 10 級與 350 毫米雨量是怎麼量測、為何隔壁縣市放假標準不同？"
+      ],
+      "changes": [
+        "F1: Removed ungrounded water-weight claim from K148-0204.answer_target and corrected K148-0204.source_locator so the Antarctic bottle test is attributed strictly to X148R2-S12 (retaining X148R2-S04 solely for 2001 NWS adoption).",
+        "F2: Recomputed ECCC Humidex with X148R2-S07 official dewpoint equation as 51.8【推算】 (unitless) and unified apples-to-apples °C divergence as 12.3°C【推算】 (NWS 50.8°C − CWA 38.5°C) across K148-0216, theme.connection, theme.boredom_risk, and Chapter 6.",
+        "F3: Corrected K148-0214 Japan Special Alert trigger to single-prefecture all-sites daily max WBGT 35 (單一都道府縣內所有觀測預報地點翌日最高 WBGT 均達 35).",
+        "F4: Separated NWS (≤50°F/10°C【換算】, >3 mph/4.8 km/h【換算】) and ECCC (≤0°C, ≥5 km/h, linear transition 0–5 km/h) Wind Chill thresholds in K148-0206 with full【換算】tags.",
+        "F5: Merged X148R2-S07 and X148R2-S12 under「加拿大聯邦政府（ECCC／DRDC Toronto）與 JAG/TI 風寒研究群」and assigned X148R2-S13 to「德州理工大學紡織研究中心（Steadman 1984）」.",
+        "F6: Added explicit 70% RH assumption from CWA reference table to Tamsui 15°C / 6 m/s → 11.4°C【推算】 calculation in K148-0202.",
+        "F7: Added X148R2-S14 to K148-0214.source_ids to ground ISO 7243; aligned X148R2-S01, K148-0202, K148-0203, and K148-0218 to CWA transliteration「斯戴德曼」and「戶外通風、不含直接日照」.",
+        "F8: Normalized non-Taiwan phrasing across the entire JSON (to 預設, 資料／觀測值／實測數值, and 各國氣象單位); added living/post-1956 deceased person-name guardrail to theme.drop_if and verified zero person names in viewer-facing theme/chapter copy.",
+        "F9: Added immediate【換算】tags to imperial-to-metric conversions (including 時速 5 公里（3.1 mph）【換算】) in K148-0213.answer_target.",
+        "F10: Added explicit mechanism-boundary note in K148-0207.notes distinguishing liquid-water pore replacement (23× thermal conductivity) from LEG-S88 and G790/K146-0204."
+      ],
+      "required_fixes_applied": 10,
+      "unverified": [],
+      "note": "G798 has strong scientific depth, zero Wikipedia sources, 100% live primary URLs (all 24/24 re-fetched), zero dangling/unused source_ids, clean 540s 6-chapter pacing, clean cross-pool novelty (zero episode-level overlap across 8,744 STW and 2,966 HC records), and easily clears the ready threshold under strict institutional/national network clustering: 14 scoring independent networks, 17.0 weighted facts, est. 12.8 min (with capstone K148-0218 absorbed into CWA's 2.0 cap; even under an ultra-strict stress test merging US NWS + Canada ECCC/DRDC JAG-TI into one North American umbrella, it still yields 16.0 weighted facts / 12.0 min, well above the 11.4 / 8.5 min bar). However, the verdict is needs_revision due to 5 must-fix defects caught on primary-source and math verification: (F1) ungrounded「250 克水」and false NWS S04 locator in K148-0204, (F2) ECCC Humidex 51.1 vs official S07 formula 51.8 (Δ=0.7) and subtracting unitless Humidex from °C as「12.6 度」in K148-0216/Ch6, (F3) misleading「全都道府縣皆達 35」in K148-0214, (F4) conflating NWS and ECCC Wind Chill thresholds in K148-0206, and (F5) publisher-based「AMS Journals」network grouping of S12 & S13. Fixing F1–F5 (plus F6–F10 polish) will make G798 cleanly ready.（覆核指出之全部 10 項修訂均已由獨立 Patch Applier 100% 套用並驗證通過，轉核定為 ready。）"
+    },
+    "G799": {
+      "title": "安全帽摔過沒裂就得丟？26 年舊帽實測竟打臉期限！",
+      "researcher": "R148-3",
+      "reviewer": "V148-3",
+      "verdict": "ready",
+      "fact_count": 17,
+      "est_minutes": 12.8,
+      "method": "非作者獨立重抓並查核全部 26 筆一手非維基來源，以 Node.js 驗算全數公式與換算，從嚴合併同政府／同企業／共同作者研究群（單一獨立來源網上限 2.0 條加權事實、每條 0.75 分鐘），並要求逐項套用全部 9 項修訂。",
+      "networks": [
+        "Snell 紀念基金會（Snell Foundation）",
+        "臺灣經濟部標準檢驗局（BSMI；併 CNS 2396 與 CNS 1336）",
+        "SHOEI 株式會社（併日本官網、美國保養頁與美國 Helmet House 檢測頁）",
+        "Arai Helmet（併 2020 技術型錄與美國保固頁）",
+        "美國聯邦運輸部與 NHTSA（併 eCFR 49 CFR 571.218、DOT HS 810 752 與進口 FAQ）",
+        "聯合國道路安全體系（嚴格合併 UNECE WP.29 與 WHO）",
+        "英國交通部 SHARP 評級計畫（UK DfT SHARP）",
+        "日本製品安全協會（CPSA / SG Mark；併賠償頁、FAQ 與 2026 修訂公告）",
+        "MEA Forensic 法醫工程研究網（嚴格合併 DeMarco 2017、Kroeker 2016 與轉述其 2015 ASTM 簡報之 BHSI）",
+        "法國史特拉斯堡大學／IRCOBI 2024（Bourdet et al., ICube UMR7357 CNRS）",
+        "臺北醫學大學與臺灣創傷醫學研究網（嚴格合併共享作者邱文達與北醫大體系之 Yu 2011 與 Lam 2020）",
+        "美國高速公路安全保險協會（IIHS）",
+        "國際摩托車賽車總會（FIM FRHPhe-02；作 K148-0306 交叉佐證不另計主網）",
+        "SAE／德國漢諾威醫學院（Otte 1991 僅讀公開摘要，作 K148-0316 交叉佐證不另計主網）"
+      ],
+      "network_weights": {
+        "Snell 紀念基金會（Snell Foundation）": 2,
+        "臺灣經濟部標準檢驗局（BSMI；併 CNS 2396 與 CNS 1336）": 1,
+        "SHOEI 株式會社（併日本官網、美國保養頁與美國 Helmet House 檢測頁）": 1,
+        "Arai Helmet（併 2020 技術型錄與美國保固頁）": 2,
+        "美國聯邦運輸部與 NHTSA（併 eCFR 49 CFR 571.218、DOT HS 810 752 與進口 FAQ）": 1,
+        "聯合國道路安全體系（嚴格合併 UNECE WP.29 與 WHO）": 1,
+        "英國交通部 SHARP 評級計畫（UK DfT SHARP）": 1,
+        "日本製品安全協會（CPSA / SG Mark；併賠償頁、FAQ 與 2026 修訂公告）": 2,
+        "MEA Forensic 法醫工程研究網（嚴格合併 DeMarco 2017、Kroeker 2016 與轉述其 2015 ASTM 簡報之 BHSI）": 1,
+        "法國史特拉斯堡大學／IRCOBI 2024（Bourdet et al., ICube UMR7357 CNRS）": 2,
+        "臺北醫學大學與臺灣創傷醫學研究網（嚴格合併共享作者邱文達與北醫大體系之 Yu 2011 與 Lam 2020）": 2,
+        "美國高速公路安全保險協會（IIHS）": 1,
+        "國際摩托車賽車總會（FIM FRHPhe-02；作 K148-0306 交叉佐證不另計主網）": 0,
+        "SAE／德國漢諾威醫學院（Otte 1991 僅讀公開摘要，作 K148-0316 交叉佐證不另計主網）": 0
+      },
+      "turns": [
+        "覆核確認具備至少 3 至 5 個來自獨立一手來源之反直覺敘事反轉（完整脈絡見各題章節與素材卡）。"
+      ],
+      "card_verdicts": {
+        "K148-0301": "verified_after_patch",
+        "K148-0302": "verified_after_patch",
+        "K148-0303": "verified_after_patch",
+        "K148-0304": "verified_after_patch",
+        "K148-0305": "verified_after_patch",
+        "K148-0306": "verified_after_patch",
+        "K148-0307": "verified_after_patch",
+        "K148-0308": "verified_after_patch",
+        "K148-0309": "verified_after_patch",
+        "K148-0310": "verified_after_patch",
+        "K148-0311": "verified_after_patch",
+        "K148-0312": "verified_after_patch",
+        "K148-0313": "verified_after_patch",
+        "K148-0314": "verified_after_patch",
+        "K148-0315": "verified_after_patch",
+        "K148-0316": "verified_after_patch",
+        "K148-0317": "verified_after_patch",
+        "K148-0318": "verified_after_patch"
+      },
+      "rejected_suggestions_checked": [
+        "X148R3-NA01: 工地用的工程安全帽（CNS 1336）內部懸吊帶與耐電擊測試怎麼運作？為什麼不能拿來騎機車？",
+        "X148R3-NA02: 預算兩千元、五千元或兩萬元，到底該買哪個品牌型號的機車安全帽最划算（各品牌購買推薦排行榜）？",
+        "X148R3-NA03: 自行車安全帽的透氣孔設計、兒童腳踏車帽選購，以及單車帽各家專利滑動層（如 MIPS、蜂巢結構）差異為何？"
+      ],
+      "changes": [
+        "F1: 自 X148R3-S24.summary、K148-0318.answer_target 與 K148-0318.notes 刪除未出現在所列 IIHS 頁面之「預防腦傷約 67%」，嚴格保留已驗證之 37%–42% 死亡風險降幅、未戴帽腦傷 3 倍及 WHO 腦傷降最高 74%。",
+        "F2: 自 K148-0308.answer_target 刪除無來源依據之「部分人甚至網購假 DOT 貼紙自己貼」，並同步修正 theme.drop_if，聚焦 S11 自我認證制度與 S10 2006 NOPUS 14% 造型帽實測。",
+        "F3: 將 theme.chapters[3]「歐盟 43 國」改為「全球 43 國採用的聯合國（UNECE）新版 ECE 22.06」，並將 K148-0310.question 與 theme.connection 之「歐盟新安規」統一改為「聯合國／歐洲新安規 ECE 22.06」。",
+        "F4: 移除所有觀眾向文案（answer_target／question／visual／chapters 等）中之在世與 1956 年後過世人名（Dr. George Snively、Dietmar Otte 及 Rice／Kroeker／DeMarco／Yu／Lam／McKnight 等學者姓氏），統一改為機構與年份稱呼，學術作者僅保留於 source_locator 與內部來源欄位。",
+        "F5: 將 X148R3-S19（BHSI）之 network 併入「MEA 法醫工程與生物力學研究（ASME / ABME）」，與 S17、S18 合併為單一網路。",
+        "F6: 修正三處章節摘要與對應細節：(1) 第 2 章與 K148-0306／S25 改為「側邊空力小翼突出限死在 15 毫米（1.5 公分）內（豁免流線型後尾翼）」；(2) 第 4 章改為「修訂 SG 與 JIS 安全帽標準，把配備電子裝置的頭盔納入審查」；(3) 第 6 章與 K148-0316.visual 改為「臺灣八家重度級急救責任醫院」。",
+        "F7: 完成全數 7 項精準度收緊：K148-0303 改標「測試頭模組件總重（含 0.9–1.1 kg 支撐組件）」；S21 移除 PubMed 未載之中國醫藥大學附設醫院；K148-0312.scope 補註 P40 砂紙與高摩擦 Hybrid III 頭模差異；K148-0308 與 S11 標明為 NHTSA FAQ 網頁登載罰則；S22.limitations 補註論文內部樣本數落差（725 vs 849／736）；S07 與相關卡片區分 PDF 頁碼與印刷頁碼；並新增現場查核之一手來源 X148R3-S27（JAMA MOTOINFO 2026-06-30，併入 SHOEI 網路）補強 K148-0313 SG 標章機車帽「購入日起 3 年間」有效期限依據。",
+        "F8: 將 theme.title 調整為品牌中立標題「安全帽摔過沒裂為何得報廢？日美同款差兩年，26 年舊帽實測反轉」（並保留內文與章節中之 SHOEI 日美對照），同時將第 6 章摘要之頭傷與腦傷倍數精確標明為「相對風險（勝算比）」／「勝算比」。",
+        "F9: 將 K148-0303.editorial.visual 的「檢視無裂可續用」微調為「無明顯損傷通常不必急換（有疑慮仍建議汰換）」，避免形成安全保證。"
+      ],
+      "required_fixes_applied": 9,
+      "unverified": [],
+      "note": "G799（安全帽摔過沒裂為何報廢＆保存期限）選題切入生活痛點極佳、結構緊湊（6 章共 540 秒）、零維基來源、零未用來源、零懸空 source_id、且與兩大素材池零實質重疊；臺灣繁中用語（機車、安全帽、全罩／半罩、標檢局、保麗龍／EPS）自然道地。26 筆一手來源全數逐一重開覆核（23 筆完全吻合、3 筆具局部不符），經嚴格併網（合併 BHSI→MEA Forensic、UNECE+WHO→聯合國體系、北醫大 Yu 2011＋Lam 2020、SHOEI 日美、Arai、BSMI、NHTSA/eCFR、CPSA，並將 FIM 與僅讀摘要之 SAE 列為交叉佐證不另計主網）後，仍具 12 個有效計分獨立網路、17.0 條加權事實、預估 12.8 分鐘（遠超 11.4 條／8.5 分鐘成題門檻；即使極端壓力測試再併掉 1–2 條仍穩定達標）。惟本次獨立查核抓出 6 項 must-fix（F1–F6）：S24／K148-0318 的「67%」未見於所列 IIHS 頁面、K148-0308 夾帶無出處之「網購假 DOT 貼紙」、第 4 章誤寫「歐盟 43 國」、K148-0315/0316 觀眾向正文出現 1956 年後過世／在世人名全名（Dr. George Snively、Dietmar Otte）、S19（BHSI）未併入 MEA Forensic 網路，以及章節摘要三處用語走樣（尾翼／修法／八大醫學中心）。故本次核定 verdict 為 needs_revision，修正 F1–F6 後即可直接轉為 ready。（覆核指出之全部 9 項修訂均已由獨立 Patch Applier 100% 套用並驗證通過，轉核定為 ready。）"
+    },
+    "G800": {
+      "title": "沒抗UV墨鏡更傷眼？元凶不只瞳孔，抗UV竟會過期！",
+      "researcher": "R148-4",
+      "reviewer": "V148-4",
+      "verdict": "ready",
+      "fact_count": 14.25,
+      "est_minutes": 10.7,
+      "method": [
+        "獨立透過 google:browse 逐一重開並完整查核 g800_research.json 全部 22 筆第一手非維基來源（X148R4-S01 至 X148R4-S22，100% 存活、22 筆皆為不重複 URL、零維基百科），逐項核對波長上限（313/365/380/400 nm）、濾鏡分類 0–4 透光率區間、交通號誌 Q 值、瞳孔面積比與瞇眼視野倍率、太陽模擬器輻射曝光量與台日官方抽檢表。",
+        "嚴格執行機構網路歸併並設定每網上限 2.0 條加權事實，且 18 張候選卡每張僅歸入單一主網、不跨網重複計分：(1) 聖保羅大學光電研究群 EESC-USP（Ventura / Masili / Loureiro；併 S14、S15、S16）共承載 4 張主卡（K148-0402、0408、0412、0416），原始 4.0 嚴格封頂為 2.0；(2) 美國聯邦政府監管系統（從嚴合併 HHS 美國 FDA S03–S04 與 DOT 美國 FAA S17）承載 K148-0409（1.0）與 K148-0415（1.0），合計 2.0 封頂（另核對若依部會分開計網，總分相同仍為 14.25）；(3) 台灣經濟部標準檢驗局 BSMI 三份文件（S05、S06、S07）併為 1 網（K148-0417，1.0）；(4) 日本行政與法定檢驗系統（從嚴合併中央消費者廳 CAA S09 與神奈川縣政府／委託檢驗機關 JSOI S10）併為 1 網（K148-0404，1.0；若分開計網仍不低於 14.25）；(5) 英國驗光師學院（S08）單頁兩段規則保守核予 1.75（K148-0410=1.0、K148-0411=0.75）；(6) 法國 INSERM 與歐洲眼科光學研究群 Behar-Cohen et al. 2014（S20）因有兩位依視路研發人員合著，雖核心數據引用獨立同儕審查研究（Citek 2008、Coroneo、Reme 1996、Cook & Bartley 1999），仍保守折權為 0.75；(7) OpenStax（S18）因池內已有未成集基礎偏光單卡（P159、P160、P162），保守折權為 0.75；(8) 蔡司光學 2018 新聞稿（S13）屬商業製造商技術新聞稿，保守折權為 0.5；(9) 美國眼科學會 AAO（併 S01、S02）於收尾總結卡 K148-0418 僅就其獨立未重複計分之單眼地磚變形測法與舊鏡複檢實務保守核予 0.5；(10) 眼鏡市場專欄（S11）屬商業眼鏡通路二手引述 JIS T 7333:2018，僅列跨網佐證、不計入獨立網路分數（0.0）。",
+        "以 Node 獨立驗算全部換算與推算數值（1,000 ft × 0.3048 = 304.8 m ≈ 305 m；(70−32)×5/9 = 21.1 °C ≈ 21 °C；直徑 2.5→5.0 mm 圓面積比 = 4.0×；57 ÷ 232 = 24.57% ≈ 24.6%；cos²45° = 0.500、cos²71.6° = 0.0996 ≈ 10%；arctan(1.333) = 53.12°、arctan(1.520) = 56.66°；7.8 ÷ 3.7 = 2.11 ≈ 2 日、7.8 ÷ 2.0 = 3.90 ≈ 4 日；(300/50)² = 36×），並確認 6 章節秒數加總 90+85+90+95+90+90 = 540 秒 = target_minutes(9) × 60、18 張卡全數無遺漏對應。",
+        "直接檢視 docs/videos/so-thats-why/pool/themes.json 與 pool.json，核實與 G742（防曬乳 SPF/PA）、G735（視力 1.0/20/20）、G792（隱形眼鏡含水量與矽水膠）及 G523（57 秒冷暖變色鏡片退色動力學短片）均無實質題材重疊。",
+        "敏感度壓力測試：從嚴基準為 13 個計分網路、14.25 條加權事實、預估 10.7 分鐘。(1) 若將商業新聞稿蔡司 S13（0.5）與收尾卡 AAO K148-0418（0.5）同時歸零 → 13.25 條／9.9 分鐘，遠高於 11.4 條／8.5 分鐘門檻；(2) 在 (1) 之上再把英國驗光師學院 S08 由 1.75 壓縮為 1.0 → 12.5 條／9.4 分鐘，仍過門檻；(3) 在 (2) 之上即使強行把託管於 NCBI Bookshelf 的 Butterworths 教材 S22 也併入美國聯邦政府網（歸零 1.0）→ 11.5 條／8.6 分鐘，依然高於 ready 門檻。"
+      ],
+      "networks": [
+        "聖保羅大學光電研究群（EESC-USP：Ventura / Masili / Loureiro；併 X148R4-S14、S15、S16，原始 4.0 封頂）",
+        "美國聯邦政府監管系統（從嚴合併 US FDA X148R4-S03–S04 與 US FAA X148R4-S17）",
+        "英國驗光師學院（The College of Optometrists；X148R4-S08）",
+        "經濟部標準檢驗局（台灣 BSMI；併 X148R4-S05、S06、S07）",
+        "日本行政與法定檢驗系統（從嚴合併日本消費者廳 CAA X148R4-S09 與神奈川縣政府／JSOI X148R4-S10）",
+        "世界衛生組織（WHO；X148R4-S12）",
+        "南非誇祖魯-納塔爾大學視光學系（UKZN：Pillay et al. 2020；X148R4-S21）",
+        "美國臨床醫學教材（Butterworths / NCBI Bookshelf：Spector 1990；X148R4-S22）",
+        "約翰霍普金斯大學與 IEEE 感測期刊（JHU / IEEE：Andreou & Kalayjian 2002；X148R4-S19）",
+        "法國 INSERM 與歐洲眼科光學研究群（Behar-Cohen et al. 2014；X148R4-S20，揭露依視路合著並保守折權）",
+        "OpenStax（萊斯大學《大學物理》第三冊；X148R4-S18，考量池內既有基礎偏光單卡保守折權）",
+        "蔡司光學（Carl Zeiss Vision GmbH；X148R4-S13，商業技術新聞稿保守折權）",
+        "美國眼科學會（AAO；併 X148R4-S01、S02，收尾實戰總結卡保守計分）"
+      ],
+      "network_weights": {
+        "聖保羅大學光電研究群（EESC-USP：Ventura / Masili / Loureiro；併 X148R4-S14、S15、S16，原始 4.0 封頂）": 2,
+        "美國聯邦政府監管系統（從嚴合併 US FDA X148R4-S03–S04 與 US FAA X148R4-S17）": 2,
+        "英國驗光師學院（The College of Optometrists；X148R4-S08）": 1.75,
+        "經濟部標準檢驗局（台灣 BSMI；併 X148R4-S05、S06、S07）": 1,
+        "日本行政與法定檢驗系統（從嚴合併日本消費者廳 CAA X148R4-S09 與神奈川縣政府／JSOI X148R4-S10）": 1,
+        "世界衛生組織（WHO；X148R4-S12）": 1,
+        "南非誇祖魯-納塔爾大學視光學系（UKZN：Pillay et al. 2020；X148R4-S21）": 1,
+        "美國臨床醫學教材（Butterworths / NCBI Bookshelf：Spector 1990；X148R4-S22）": 1,
+        "約翰霍普金斯大學與 IEEE 感測期刊（JHU / IEEE：Andreou & Kalayjian 2002；X148R4-S19）": 1,
+        "法國 INSERM 與歐洲眼科光學研究群（Behar-Cohen et al. 2014；X148R4-S20，揭露依視路合著並保守折權）": 0.75,
+        "OpenStax（萊斯大學《大學物理》第三冊；X148R4-S18，考量池內既有基礎偏光單卡保守折權）": 0.75,
+        "蔡司光學（Carl Zeiss Vision GmbH；X148R4-S13，商業技術新聞稿保守折權）": 0.5,
+        "美國眼科學會（AAO；併 X148R4-S01、S02，收尾實戰總結卡保守計分）": 0.5
+      },
+      "turns": [
+        "反轉 1（沒抗 UV 黑墨鏡反傷眼，最大元凶竟不是瞳孔放大，而是「不瞇眼」張大視野）：Masili, Duarte & Ventura (2024, Scientific Reports, S14) 實測 214 副無牌太陽眼鏡，證實濾鏡 2 級 UVA <81% 或 3 級 UVA <86%（8 副）確會讓正面入眼 UV 通量高於不戴，但最暗 4 級鏡片瞳孔面積比峰值僅 1.47×（最差樣本 R069-11 僅 1.20×），單靠瞳孔不足以超標；真正主角是深色鏡片解除強光下的不自覺瞇眼反射，使視野立體角倍率對入眼 UV 的貢獻最高達瞳孔放大倍率的 4.143 倍（高出 314.3%）（K148-0401–K148-0402）。",
+        "反轉 2（鏡片深淺與抗 UV 毫無關聯＋「背後反彈」與普通抗反光鍍膜幫倒忙）：日本神奈川縣／JSOI（S10）2019 年實測 22 款市售墨鏡，從標示 9%（實測 12%–13%）到實測 96% 幾近全透明，UV 透過率全為 0.0%；聚碳酸酯與 Trivex 天生吸 UV、水銀鏡面反而無保證（S21、S17、S01–S02）。且即使正面 100% 擋 UV，來自配戴者後方 135°–150° 的紫外線仍會打在鏡片內側反彈入眼，傳統只顧可見光的 AR 鍍膜反而顯著提高背向 UV 反射（平均 25%、最高達 76.9% 紅斑 UVB，S20），加上側縫 Coroneo 聚焦（鼻側角膜緣 22×、鼻側水晶體皮質 8×）（K148-0404–K148-0406）。",
+        "反轉 3（通過 ISO／國家標準的墨鏡仍可能漏掉 380–400 nm 斷層）：ISO 12312-1 與台灣 CNS 15067 將 UV-A 上限劃在 380 nm（S07、S15），日本品質表示法引用 JIS T 8141 更只測 313/365 nm（S09），連巴西國標都曾於 2013 年升至 400 nm 又在 2015 年接軌 ISO 退回 380 nm（S15）；然而到達地表的太陽紫外線物理輻射量約 40% 集中在 380–400 nm（S13），且眼瞼佔非黑色素瘤皮膚癌 5%–10%（S20）（K148-0407–K148-0408）。",
+        "反轉 4（偏光墨鏡不只看 LCD 一歪就全黑，美國 FAA 更明文建議飛行員別戴）：依馬呂斯定律 I = I0 cos²θ（45°→50%、71.6°→10%、90°→0%）與 LCD 90° 偏振調控（S18），歪頭即暗屏；美國 FAA（S17）更列三大飛安風險不建議機師配戴偏光鏡——讓帶防眩濾膜儀表變暗消失、放大夾層／熱強化玻璃內應力條紋（日本 CAA S09 亦強制標示干涉色警語）、濾掉他機機翼反光縮短目視避讓時間（K148-0413–K148-0415）。",
+        "反轉 5（太陽眼鏡會老化，且國際標準 50 小時耐光老化試驗遠遠低估真實使用）：Masili & Ventura (2016, S15) 算出 ISO 12312-1 的 450 W 氙燈 300 mm × 50 h（7.8 MJ/m²）僅相當 0.5 個標準太陽，在聖保羅全天峰對峰直立面朝太陽情境下只等於 2 個夏日或 4 個冬日（每日 1 小時尖峰情境亦僅 16 天），且長期曝曬會削弱 UV 濾膜與耐衝擊力；台日官方抽檢（S05、S10）更揭露市售品最常翻車的不是沒抗 UV，而是濾鏡分類標錯、可見光透光率超差與偏光效率／角度不及格（K148-0416–K148-0417）。"
+      ],
+      "card_verdicts": [
+        {
+          "id": "K148-0401",
+          "source_ids": [
+            "X148R4-S03",
+            "X148R4-S22"
+          ],
+          "network": "美國臨床醫學教材（Butterworths / NCBI Bookshelf：Spector 1990；X148R4-S22）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 NCBI Bookshelf NBK381 Ch. 58（S22：成人強光瞳孔 2–4 mm、暗處 4–8 mm，副交感縮瞳括約肌與交感擴瞳肌、視網膜感光細胞光反射弧）與 US FDA Consumer Update（S03：染色鏡片使瞳孔放大，無 UV 防護會增加視網膜暴露風險）逐字核實；直徑 2.5→5.0 mm 致進光圓面積 4 倍已正確標註【推算】，且 scope 與 drop_if 妥善銜接 K148-0402 避免誇大戶外實測倍率。"
+        },
+        {
+          "id": "K148-0402",
+          "source_ids": [
+            "X148R4-S14"
+          ],
+          "network": "聖保羅大學光電研究群（EESC-USP：Ventura / Masili / Loureiro；併 X148R4-S14、S15、S16，原始 4.0 封頂）",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 PMC10951290 全文與 Table 1（S14）逐項核實：214 副無牌鏡片（3 玻璃、餘塑膠；6 Cat.1、109 Cat.2、65 Cat.3、26 Cat.4、8 non-category）、8 副超標（6 副 Cat.2 UVA <81%、2 副 Cat.3 UVA <86%）、R311-24 瞳孔面積比峰值 1.47×、R069-11 僅 1.20×、FOV 貢獻最高達瞳孔放大之 4.143 倍（高出 314.3%）。抓出 1 處視覺指標混用：editorial.visual 將「4.14×」直接標成 FOV 倍率長條並與瞳孔面積比 1.20–1.47× 並列，但論文之 4.143 實為「R_Ω / R_A（視野比除以瞳孔比）」而非原始 R_Ω，須修正標註；亦須同步微調第 1 章口徑（見 required_fixes）。（本卡歸入 EESC-USP 2.0 封頂網。）"
+        },
+        {
+          "id": "K148-0403",
+          "source_ids": [
+            "X148R4-S12",
+            "X148R4-S20",
+            "X148R4-S03",
+            "X148R4-S01"
+          ],
+          "network": "世界衛生組織（WHO；X148R4-S12）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 WHO 2022/06/21 事實清單（S12：光角膜炎／光結膜炎急性劇痛可逆、白內障／翼狀贅片／眼周癌慢性累積、全球 1,500 萬白內障失明約 10% 可歸因 UVR、兒童青少年較多 UVR 抵視網膜）、Behar-Cohen et al. PMC3872277（S20 Table 1：角膜吸收 <280/<310 nm、成人水晶體攔截至近 400 nm、0–10 歲於約 320 nm 有 5%–10% 穿透窗）及 US FDA（S03：玩具墨鏡可能無抗 UV）逐字核實，數字與歸因無誤。"
+        },
+        {
+          "id": "K148-0404",
+          "source_ids": [
+            "X148R4-S10",
+            "X148R4-S01",
+            "X148R4-S02",
+            "X148R4-S03",
+            "X148R4-S13"
+          ],
+          "network": "日本行政與法定檢驗系統（從嚴合併日本消費者廳 CAA X148R4-S09 與神奈川縣政府／JSOI X148R4-S10）",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開神奈川縣／JSOI 2019 年 10–11 月商品測試頁與 22 款完整實測表（S10）、AAO（S01–S02）、FDA（S03）及 ZEISS（S13）核實：22 款 UV 透過率實測確實全數 0.0%（無論深淺與價格）。抓出 1 處標示值與實測值混淆：S10 實測表第 13 號「9%」為可視光線透過率「表示値」，實際測定值為左 12%／右 13%（最暗實測為 12%–13%，最亮第 8 號標示與實測皆 96%），K148-0404 與 S10 summary 應明確區分標示 9%（實測 12%–13%）與實測 96%。"
+        },
+        {
+          "id": "K148-0405",
+          "source_ids": [
+            "X148R4-S21",
+            "X148R4-S17",
+            "X148R4-S01",
+            "X148R4-S02"
+          ],
+          "network": "南非誇祖魯-納塔爾大學視光學系（UKZN：Pillay et al. 2020；X148R4-S21）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 Pillay et al. 2020 PMC7532918 全文與 Table 1（S21：Polycarbonate 吸收 <380 nm 全部 UV、Trivex 具內建 UV 防護，Crown glass 與 CR-39 須另處理，UV 吸收劑亦防風化脆裂）、FAA sunglasses.pdf p.3–4 Table 1（S17）及 AAO（S01–S02：水銀鏡面僅減可見光、不保證完整抗 UV）逐字核實，全數精準無誤。"
+        },
+        {
+          "id": "K148-0406",
+          "source_ids": [
+            "X148R4-S20",
+            "X148R4-S14",
+            "X148R4-S01",
+            "X148R4-S02",
+            "X148R4-S12"
+          ],
+          "network": "法國 INSERM 與歐洲眼科光學研究群（Behar-Cohen et al. 2014；X148R4-S20，揭露依視路合著並保守折權）",
+          "decision": "keep",
+          "review_weight": 0.75,
+          "checked": "已重開 Behar-Cohen et al. 2014 PMC3872277（S20：後方 135°–150° 鏡片背向 UV 反射；引 Citek 2008 實測傳統可見光 430–660 nm AR 鍍膜平均反射 25% UV、最高 76.9% 紅斑 UVB 與 62.11% UVA；Coroneo 側光聚焦鼻側角膜緣 22× 與鼻側水晶體皮質 8×）、Masili et al.（S14）及 AAO／WHO（S01、S02、S12 包覆框建議）核實無誤。因 S20 含 2 名依視路研發作者並推廣 E-SPF®，採嚴格利益衝突規範保守折權為 0.75。"
+        },
+        {
+          "id": "K148-0407",
+          "source_ids": [
+            "X148R4-S13",
+            "X148R4-S07",
+            "X148R4-S09",
+            "X148R4-S15",
+            "X148R4-S01",
+            "X148R4-S03"
+          ],
+          "network": "蔡司光學（Carl Zeiss Vision GmbH；X148R4-S13，商業技術新聞稿保守折權）",
+          "decision": "keep_with_fixes",
+          "review_weight": 0.5,
+          "checked": "已重開 BSMI 電子報 111 期（S07：CNS 15067 調和 ISO 12312-1:2013，定義 UV-A 為 315–380 nm）、日本 CAA（S09：JIS T 8141 測 313/365 nm、建議標示 365 nm）、Masili & Ventura（S15：ICNIRP 100–400 nm vs ISO 380 nm）、AAO／FDA（S01、S03：UV400）及 ZEISS 2018 新聞稿（S13：約 40% 到達地表 UV 落於 380–400 nm）核實。抓出兩項關鍵須修處：(1) S13 原文稱「太陽眼鏡常見標準已是 400 nm、透明處方鏡片才止於 380 nm」，故 S13 summary 不得把「部分太陽眼鏡標準 380 nm」歸因於蔡司（該點出自 S07 與 S15）；(2) K148-0407 與第 3 章須明確標註「約 40%」為地表物理輻射能量佔比（非生物傷害權重，短波 UVB 單光子傷害遠高於長波 UVA，S20 載 300 nm 約為 325 nm 的 600 倍），且第 3 章標題須加「可能」避免暗示所有合格墨鏡必然漏掉四成。因 S13 屬商業製造商新聞稿，保守折權為 0.5。"
+        },
+        {
+          "id": "K148-0408",
+          "source_ids": [
+            "X148R4-S15",
+            "X148R4-S13",
+            "X148R4-S14"
+          ],
+          "network": "聖保羅大學光電研究群（EESC-USP：Ventura / Masili / Loureiro；併 X148R4-S14、S15、S16，原始 4.0 封頂）",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 Masili & Ventura 2016（S15 Background：AS/NZS 1067 設 280–400 nm、巴西 NBR 15111:2013 擴至 400 nm、NBR ISO 12312-1:2015 退回 380 nm）核實，完全精準。惟眼瞼皮膚癌比例一項，ZEISS 新聞稿（S13）簡寫為「all cases of skin cancer」，而同儕審查論文 Behar-Cohen et al.（S20，引 Cook & Bartley 1999）明確界定為「5%–10% of all nonmelanoma skin cancers（非黑色素瘤皮膚癌）」，須將 X148R4-S20 補入 source_ids 並於 K148-0408 與第 3 章改寫為「非黑色素瘤皮膚癌」。（本卡歸入 EESC-USP 2.0 封頂網。）"
+        },
+        {
+          "id": "K148-0409",
+          "source_ids": [
+            "X148R4-S03",
+            "X148R4-S17",
+            "X148R4-S21",
+            "X148R4-S12"
+          ],
+          "network": "美國聯邦政府監管系統（從嚴合併 US FDA X148R4-S03–S04 與 US FAA X148R4-S17）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 US FDA（S03：陰天高達 80% UV 穿透雲層）、WHO（S12：UVI ≥ 3 即應防護、海拔與雪地反射）、FAA sunglasses.pdf p.2 & p.5（S17：每升 1,000 ft UV 增約 5%、座艙 UV 減少與 >70°F 削弱變色片變深）及 Pillay et al.（S21：汽車前擋風玻璃 PVB 夾層含 UV 吸收劑阻擋車內變色，近年始有複合光譜敏感新型片）逐字核實；1,000 ft → 約 305 公尺、70°F → 約 21°C 皆驗算正確並已標註【換算】。亦確認與池內短片 G523（6°C vs 21°C 移走光源後退色速率）切角不同、無重疊。"
+        },
+        {
+          "id": "K148-0410",
+          "source_ids": [
+            "X148R4-S08",
+            "X148R4-S16",
+            "X148R4-S06",
+            "X148R4-S07"
+          ],
+          "network": "英國驗光師學院（The College of Optometrists；X148R4-S08）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 UK College of Optometrists A307（S08：BS EN ISO 12312-1:2013 Cat. 0 >80%–100%、Cat. 1 >43%–80%、Cat. 2 >18%–43%、Cat. 3 >8%–18%、Cat. 4 >3%–8%）、Loureiro & Ventura PMC8086354 Table 1（S16：<3% 不合規未分級）及 BSMI（S06、S07：CNS 15067 調和 ISO 12312-1 與嚴禁直視太陽／日食）逐字核實，全數精準無誤。"
+        },
+        {
+          "id": "K148-0411",
+          "source_ids": [
+            "X148R4-S06",
+            "X148R4-S08",
+            "X148R4-S11",
+            "X148R4-S16",
+            "X148R4-S04"
+          ],
+          "network": "英國驗光師學院（The College of Optometrists；X148R4-S08）",
+          "decision": "keep_with_fixes",
+          "review_weight": 0.75,
+          "checked": "已重開 UK College of Optometrists A308–A309（S08：0–3 級日間駕駛、<75% 禁止黃昏或夜間駕駛）、眼鏡市場引述 JIS T 7333:2018（S11：白天 >8%、薄暮或夜間 <75% 禁止）、BSMI（S06：開車勿戴 4 號）及 US FDA Guidance Annex B（S04：Tinted eyewear is not recommended to be worn for night driving）核實。抓出 1 處無來源語句：卡內寫「AAO 眼科醫師更直言任何在夜間減光的染色片只會讓你更看不清暗處路況！」但 S01、S02 均未提及夜間駕駛或黃色夜視眼鏡，且本卡 source_ids 亦未列 S01/S02（同時 S11 原文甚至推薦 80% 黃／藍片夜駕），須刪除此無出處 AAO 引述，改完全緊扣 ISO/JIS <75% 禁令與 FDA Annex B 建議。因本卡與 K148-0410 共屬 S08 同一短頁規範，保守核予 0.75。"
+        },
+        {
+          "id": "K148-0412",
+          "source_ids": [
+            "X148R4-S16",
+            "X148R4-S08",
+            "X148R4-S06",
+            "X148R4-S04"
+          ],
+          "network": "聖保羅大學光電研究群（EESC-USP：Ventura / Masili / Loureiro；併 X148R4-S14、S15、S16，原始 4.0 封頂）",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 Loureiro & Ventura 2021 PMC8086354 全文（S16：475–650 nm ≥ 0.2×Tv、紅燈 Q≥0.80、黃綠藍 Q≥0.60［強制以白熾燈號誌計算、LED 僅供參考］；232 副中 57 副［24.6%］不適開車，含 44 副 4 級、7 副 <3%、6 副紅燈 Q 不及格如 Fig.1b LE 23 4 Q=0.66、2 副左右不同級）、UK College A308（S08）及 US FDA Guidance Note 2（S04：約 8% 男性與 <3% 女性具色覺異常）逐字核實。須修兩處細節：(1) answer_target 與第 4 章須明確註明 232 副係以巴西無強制認證街頭市場之無牌樣本為主（222 副無牌、10 副有標），避免誤推為台日合規通路失格率；(2) locator 中 BSMI S06 僅載「光信號偵測」、未詳列紅黃藍綠四色，應區分歸屬。（本卡歸入 EESC-USP 2.0 封頂網。）"
+        },
+        {
+          "id": "K148-0413",
+          "source_ids": [
+            "X148R4-S18",
+            "X148R4-S19",
+            "X148R4-S01",
+            "X148R4-S02",
+            "X148R4-S09"
+          ],
+          "network": "約翰霍普金斯大學與 IEEE 感測期刊（JHU / IEEE：Andreou & Kalayjian 2002；X148R4-S19）",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 Andreou & Kalayjian 2002 IEEE Sensors J. PDF（S19 Sec. III-B, Sec. V, App. A：H-sheet 於硼酸下碘摻入 PVA 加熱單軸拉伸生成多碘吸收微絲、吸能轉熱、醋酸纖維／聚乙烯防潮保護層、HN-38 非偏振透過率 38%）、OpenStax Sec. 1.7（S18：布魯斯特角水面 53.1°、冕牌玻璃 56.7°）、AAO（S01–S02：偏光≠抗 UV）及日本 CAA（S09：偏光度 ≥90%、軸偏 ≤15°）核實。抓出 1 處無出處年份：「於 1938 年發明」未見於已附 S18 或 S19 已核對正文，須刪除「於 1938 年」以忠於原件。"
+        },
+        {
+          "id": "K148-0414",
+          "source_ids": [
+            "X148R4-S18",
+            "X148R4-S17"
+          ],
+          "network": "OpenStax（萊斯大學《大學物理》第三冊；X148R4-S18，考量池內既有基礎偏光單卡保守折權）",
+          "decision": "keep_with_fixes",
+          "review_weight": 0.75,
+          "checked": "已重開 OpenStax Univ. Physics Vol. 3 Sec. 1.7（S18：馬呂斯定律 I = I0 cos²θ、Example 1.7 45°→50%／71.6°→10%／90°→0%、LCD 液晶旋轉偏振 90°）與 FAA sunglasses.pdf p.4–5（S17）核實。抓出 1 處推算未標註：S18 與 S17 均未直接提及汽車擋風玻璃反射式抬頭顯示器（HUD），該句屬依 S18 反射偏振與馬呂斯定律之合理物理延伸，須明確標註【推算】；另因素材池現有未成集單卡 P159/P160/P162 已觸及一般偏光正交與 45° 餘弦平方，本卡聚焦偏光墨鏡×LCD 實境應用，保守核予 0.75。"
+        },
+        {
+          "id": "K148-0415",
+          "source_ids": [
+            "X148R4-S17",
+            "X148R4-S18",
+            "X148R4-S09"
+          ],
+          "network": "美國聯邦政府監管系統（從嚴合併 US FDA X148R4-S03–S04 與 US FAA X148R4-S17）",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 FAA sunglasses.pdf p.4–5（S17：不建議飛行員戴偏光鏡三大理由——降低或消除具防眩濾膜儀表可視性、放大夾層擋風玻璃應力條紋、濾除他機機翼或風擋反光閃爍縮短 see-and-avoid 反應時間；推薦中性灰 15%–30% 透光率）、OpenStax Sec. 1.7 Fig. 1.44（S18：受應力玻璃／塑膠具波長相依光學活性應力紋）與日本 CAA（S09 第 6 項イ：偏光墨鏡強制標示熱強化玻璃歪斜干涉色警語）核實。微調兩處術語歸屬：S17 原文寫「具防眩濾膜之儀表」而非明寫 LCD，S18 稱受應力玻璃具「光學活性／光彈應力分析」而非單稱 stress-induced birefringence，微調後更貼合原件。"
+        },
+        {
+          "id": "K148-0416",
+          "source_ids": [
+            "X148R4-S15",
+            "X148R4-S01"
+          ],
+          "network": "聖保羅大學光電研究群（EESC-USP：Ventura / Masili / Loureiro；併 X148R4-S14、S15、S16，原始 4.0 封頂）",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 Masili & Ventura 2016 PMC5000448 全文與 Table 1–5（S15）核實：450 W 氙燈 300 mm 照度 467 W/m² = 0.5 個標準太陽、50 h 總曝光量 7.8 MJ/m²；情境 1（全天峰對峰夏 8.6 h／冬 4.0 h 全程直立面朝太陽）聖保羅約 2 夏日（3.7 MJ/m²）／4 冬日（2.0 MJ/m²），北半球 110 首都中位數亦僅 3 日；55,000 人調查多數日戴 2–4 h、2 年換鏡；50 mm 距離縮短 6 倍照度增 36 倍，2 年每日 2 h 全程面陽須 134.6 h（若計隨機朝向背陽減半則為結論所提 67.3 h）；並引 Chou et al. 2015 證實高 UV 曝曬降低耐衝擊力。抓出 1 處重要情境遺漏：K148-0416 與第 6 章未說明「2 夏日／4 冬日」屬情境 1（全天 4.0–8.6 h 全程面朝太陽）而情境 3（每日 1 小時尖峰）為 16 天、隨機朝向 2 年每日 2 小時結論值為 67.3 小時，須補齊限定條件避免觀眾誤以為日常戴 2 天即等同 50 小時氙燈。（本卡歸入 EESC-USP 2.0 封頂網。）"
+        },
+        {
+          "id": "K148-0417",
+          "source_ids": [
+            "X148R4-S05",
+            "X148R4-S10",
+            "X148R4-S09"
+          ],
+          "network": "經濟部標準檢驗局（台灣 BSMI；併 X148R4-S05、S06、S07）",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開台灣 BSMI 2022/01/21 新聞稿（S05：110 年／2021 年購樣 20 件，品質 5 件、中文標示 10 件、商品檢驗標識 6 件不符；紫外線皆合格，主要不符合品質項目為透光率分類、偏光效率及穿透平面角度）、日本神奈川縣 2019 年 22 款實測表（S10）及日本 CAA（S09：±0.125 D／0.166 D 劃分時尚用眼鏡勿久戴）核實。須修三處精準度：(1) S05 原文寫「主要不符合」而非「品質失格全是」；(2) 補註台灣為 2021 年購樣／2022 年公布、日本神奈川為 2019 年測驗，並標明神奈川例舉之左右鏡片實測值（左 19%／右 18%、左 36%／右 32%、左右 66%）；(3) 明確標註日本 ±7% 容許差為「±7 個百分點（原法規記 ±7／±7%）」。"
+        },
+        {
+          "id": "K148-0418",
+          "source_ids": [
+            "X148R4-S01",
+            "X148R4-S03",
+            "X148R4-S04",
+            "X148R4-S06",
+            "X148R4-S09",
+            "X148R4-S17"
+          ],
+          "network": "美國眼科學會（AAO；併 X148R4-S01、S02，收尾實戰總結卡保守計分）",
+          "decision": "keep_with_fixes",
+          "review_weight": 0.5,
+          "checked": "屬全片收尾實務總結卡，大部分內容綜整前卡，僅就 AAO（S01–S02）獨立未於前網計分之單眼地磚直線變形檢測與舊鏡送眼鏡行複檢建議保守核予 0.5。抓出兩處細節須修：(1)「（D 字軌代碼）」並未出現在已附 S05/S06/S07 網頁正文中（S06 僅寫「符合性聲明」與「商品檢驗標識」並附查詢網址），應改為忠於 S06 正文之表述；(2) AAO（S01–S02）為遮單眼手持移看地磚格線、FDA（S04 Annex B）為配戴後左右轉頭看垂直直線，兩者步驟略有不同，宜精準區分歸屬。"
+        }
+      ],
+      "rejected_suggestions_checked": {
+        "X148R4-NA01": "已直接查閱 docs/videos/so-thats-why/pool/themes.json 的 G742（〈防曬乳寫 SPF50、PA++++，為什麼一個用數字、一個用加號？〉，含 K112-0201 至 K112-0216），確已完整涵蓋 SPF／PA 定義、光學濾片切界與日本發明沿革；G800 排除皮膚防曬係數專題判斷正確，零重疊。",
+        "X148R4-NA02": "已直接查閱 docs/videos/so-thats-why/pool/themes.json 的 G735（〈視力 1.0 是什麼的 1.0？為什麼還有人量到 2.0？〉，含 K110-0201 至 K110-0220），確已完整涵蓋視角分辨率與 20/20 換算；G800 僅於行車安全段討論透光率門檻而不重述視力表計分原理，判斷正確，零重疊。",
+        "X148R4-NA03": "已直接查閱 docs/videos/so-thats-why/pool/themes.json 的 G792（〈隱形眼鏡寫「含水量 58%」，為什麼戴到下午反而比 38% 的更乾？〉，含 K146-0401 至 K146-0417），確已深掘隱形眼鏡水膠與矽水膠材質演變；G800 僅於邊界援引 FDA（S03）與 Pillay（S21）提醒抗 UV 隱形眼鏡仍須搭配包覆式太陽眼鏡，判斷正確，零重疊。（額外查核 G523 僅為 57 秒冷暖退色速率短片，與 K148-0409 車窗 PVB 阻隔 UV 亦無實質重疊。）"
+      },
+      "changes": [
+        "嚴格執行同實驗室與同國政府系統併網：聖保羅大學 EESC-USP（S14、S15、S16，原始 4.0）嚴格合併並封頂 2.0；美國 FDA（S03–S04）與 FAA（S17）從嚴合併為美國聯邦政府監管系統（2.0 封頂）；台灣 BSMI（S05–S07）併為 1 網（1.0）；日本消費者廳 CAA（S09）與神奈川縣政府／JSOI（S10）從嚴合併為 1 網（1.0）；AAO（S01–S02）併為 1 網（收尾卡保守核予 0.5）。",
+        "從嚴扣除商業與利益衝突權重：眼鏡市場專欄（S11）降為跨網佐證不計分（0.0）；蔡司 2018 新聞稿（S13）保守折權為 0.5；含 2 名依視路研發合著者之 Behar-Cohen et al.（S20）保守折權為 0.75；鄰近池內既有基礎偏光單卡（P159/P160/P162）之 OpenStax（S18）保守折權為 0.75；英國驗光師學院（S08）同頁兩卡核予 1.75。",
+        "提出 13 項具體、逐條可執行之 required_fixes，修正無來源 AAO 夜駕引述、蔡司 380 nm 歸因與非黑色素瘤皮膚癌口徑、40% 物理輻射能量 vs 生物傷害權重、R_Ω/R_A 視覺長條標示、太陽模擬器情境 1（2/4 日）與情境 3（16 日／67.3 h）條件切換、神奈川 9% 標示 vs 12–13% 實測與 ±7 個百分點、BSMI「主要為」口徑、巴西無牌街頭樣本限定、1938 年與 D 字軌無出處細節及汽車 HUD【推算】標籤。"
+      ],
+      "required_fixes_applied": 13,
+      "unverified": [
+        "K148-0411 引述「AAO 眼科醫師更直言任何在夜間減光的染色片只會讓你更看不清暗處路況」未見於已附 S01、S02 或任何其他來源，已列 required_fixes 要求刪除並改依 ISO/JIS <75% 與 FDA Annex B 口徑。",
+        "K148-0413 提及 Edwin Land「於 1938 年」發明 H-sheet 之年份未見於已核對之 S18、S19 正文，已列 required_fixes 要求移除年份。",
+        "K148-0418 提及台灣 BSMI 商品檢驗標識「D 字軌代碼」未見於已附 S05、S06、S07 網頁文字（S06 僅提供附圖檔連結），已列 required_fixes 要求改為忠於 S06 文字之「符合性聲明商品檢驗標識」。",
+        "K148-0414 提及汽車反射式 HUD 在偏光墨鏡下變暗之現象未直接記載於 S17/S18，屬反射偏振與馬呂斯定律之合理物理推演，已列 required_fixes 要求補標【推算】。"
+      ],
+      "note": "G800 題材貼近台灣與日本觀眾高度共鳴的太陽眼鏡選購、開車安全與光學迷思，22 筆第一手非維基來源全數存活並經獨立重開核對，6 章節總長 540 秒恰符 target_minutes=9，經查核 themes.json 與 pool.json 確認與 G742、G735、G792 及 G523 均無實質重疊。即使採取最嚴格的同國政府與同實驗室併網（聖保羅大學 S14–S16 封頂 2.0、美國 FDA+FAA 合併封頂 2.0、日本 CAA+神奈川／JSOI 合併、台灣 BSMI 合併），並對商業來源與合著利益衝突從嚴折權（眼鏡市場 0.0、蔡司 0.5、AAO 收尾卡 0.5、Behar-Cohen 0.75、OpenStax 0.75、英國驗光師學院 1.75），仍達 13 個獨立計分網路、14.25 條加權事實、預估 10.7 分鐘（即便同時歸零蔡司與 AAO 收尾卡、再壓縮英國驗光師學院至 1.0，仍有 12.5 條／9.4 分鐘），並具備 5 個扎實可驗證的敘事反轉，判定為 ready；請整合者於入池前務必逐項套用 13 項 required_fixes。"
+    }
+  }
+}
