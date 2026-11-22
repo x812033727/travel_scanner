@@ -8,4 +8,9 @@
 - `FT`、`WaPo`、`Daily Mail`、`NYT`、`KBS` 原文沒開，只讀轉述，旁白都說是轉述。採購網、預算書沒直接查，所以「總額查不到」只限讀過的報導。
 - lint 留一條警告：`archivist-final` 約 10.5 秒，工具會拉長畫面。寧可留著，不為它再拆一景重讀一輪。
 - 舊片：`story-adapt-michelin-guide-stars`（BSsyQ8HAVVg）已放棄，沒有 remake。
-- **下一步要站主核准才做**：`tts` → 聽 → `keyframes --takes 3` → 分鏡 → `music --loop` → 成片。
+- 2026-11-21 R2 全面新規則重製（`antigravity/curio-w02-remake`）：
+  - **劇本與零警告**：拆併為 81 景、91 句（`lint` **`0 errors, 0 warnings`**），清掉舊版全部 33 條警告；`subtitles.burn_in: false`、`intro_at: "none"`（`0:00` 冷開場鉤子直入＋前 15 秒呼應縮圖／標題）＋`v4-endscreen` 片尾；獨立查核 `verify-2.md`（PASS）、前 300 秒三位人設審查 `opening-review`（`9.2/10`，`would_stay_300: true`）與雙讀者盲評 `narrative`（`14/14` 全過）完成。
+  - **旁白、配樂與八語配音**：繁中 Gemini `Sulafat`（`tempo: 1.18`，實測語速 **`4.58 字／秒`**、總長 `09:21`）＋循環配樂 `music/5846379f92e64064.mp3`；`check-audio` 標記句逐句真耳複聽，`t071` 多音字「外傳預算」以 `say`／`say_for`（「外船預算」）重錄為正確的 `wài chuán yù suàn`；八語（`en, ja, ko, es, pt, id, vi, th`）獨立審校修完 30 處幣別／月份但書後以 MiniMax 全數合成 `.m4a`（`0` 溢窗），並依獨立觀眾審查修畢日語訓讀／月份、西葡縮寫、印尼語專名起句、越語空格千分位（`35 000` 須寫 `35 nghìn`，否則 MiniMax 唸成 `không`）與越／葡小數逗號（須寫 `phẩy`／`vírgula`）。
+  - **關鍵影格與九語黑猫代表物縮圖**：全集 `81` 鏡 100% 改由內建 `generate_image`（`16:9` 劇場級動畫光影 × 厚塗水粉質感，`US$0.00`）重繪，鎖定標準 `ada-canon-v2.png` 與 1920 年創辦人設定圖、`nobody: true` 佔比 `63%`（零米其林寶寶、零商標文字、零 1956 後人物），全數通過四邊像素檢測、兩輪獨立四格 2x 放大審圖與成片獨立觀眾審查（含重繪第 70 鏡台灣木雕地圖精準對應雙北 2、新竹縣市 2、台中 1、南高 2 共七都銅釘），以 `keyframes import --provider external --usd 0` 匯入；九語 `heimao-left` 縮圖（紅皮無字指南＋SVG 向量三顆六瓣金星＋黑輪胎＋金幣＋左下 Ada 反應）全數渲染並逐張目視驗過。
+  - **組裝、QA、獨立觀眾審查與備份送審**：`assemble --adopt-branding` 產出 `final.mp4`（`17,487` 格＝`09:42.9`，`-14 LUFS`，true peak `-2.0 dBFS`，`sha256: 99fe8242330db5aae66ec01cef96e64b6e16fba8cbc9506287fa69f769629f50`），八語 `.m4a` 與九語 `.srt` 對齊品牌片長，`qa` **`11/11` 全過**，獨立子代理 `review/audience-review.md` 複驗 **`9.12 / 10`（PASS，`blocking_fixes: []`）**；全套 R2 成品與 `製作檔` 已備份至 Google Drive `W02`（`12XnJcan_DZ-LVc7Dc4afeWgSut7RuZqp`，舊檔歸檔 `_舊版/20261121_pre_r2`）並推送 `final` 至 `/admin/videos`。
+
