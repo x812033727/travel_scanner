@@ -287,39 +287,47 @@ export function YoutubeManualUpload({ slug, draft, children, disabled = false }:
   </div>;
 }
 
+const isLive = (review: Review) => review.status === "pending" || review.status === "approved";
+
 /**
- * The Short's final review when it carries its upload package (tools/video/shorts/push.mjs puts
- * metadata.json on it): the newest final review waiting for the owner or approved by them.
+ * What a Short's guide is read from, with the cut the owner reviews as its "final" file. The publish
+ * review of that final review (`final_review_id`), waiting or approved, has the newest package: a
+ * push of a cut already approved can only send it there, the approved final is left as it is
+ * (tools/video/shorts/push.mjs). Without one, it is the metadata.json on the final review itself.
  */
 export function shortPackageReview(project: Project): Review | null {
   if (!project.shorts_line || project.dropped_at) return null;
-  const final = project.reviews.find((review) => review.gate === "final" && !review.subject && (review.status === "pending" || review.status === "approved"));
-  return final && fileFor(final, "metadata") ? final : null;
+  const final = project.reviews.find((review) => review.gate === "final" && !review.subject && isLive(review));
+  if (!final) return null;
+  const cut = final.files.map((file) => (file.role === "preview" ? { ...file, role: "final" } : file));
+  const publish = project.reviews.find((review) => review.gate === "publish" && isLive(review) && review.payload.final_review_id === final.id && fileFor(review, "metadata"));
+  if (!publish) return fileFor(final, "metadata") ? { ...final, files: cut } : null;
+  // The cut and the cover stay the final review's: the publish review has no cover.
+  const files = new Map([...publish.files, ...cut.filter((file) => file.role !== "metadata")].map((file) => [file.role, file]));
+  return { ...publish, files: [...files.values()] };
 }
 
 /**
  * A Short's hand upload (owner, 2026-11-21: Shorts are uploaded by hand, not by the site): the same
- * guide as a long video's, read from the Short's final review, whose cut is the "preview" file and
- * whose metadata.json the push tool attaches. It calls neither YouTube nor anything that publishes.
+ * guide as a long video's, read from the Short's package (shortPackageReview). It calls neither
+ * YouTube nor anything that publishes.
  */
 export function ShortManualUpload({ project }: { project: Project }) {
   const [attempt, setAttempt] = useState(0);
-  const final = shortPackageReview(project);
-  if (!final) return null;
+  const review = shortPackageReview(project);
+  if (!review) return null;
   // A new package (or a reload) mounts a new reader, as ManualPackage does.
-  return <ShortPackage key={`${final.id}:${fileFor(final, "metadata")?.sha256}:${attempt}`} project={project} final={final} onReload={() => setAttempt((value) => value + 1)} />;
+  return <ShortPackage key={`${review.id}:${fileFor(review, "metadata")?.sha256}:${attempt}`} project={project} review={review} onReload={() => setAttempt((value) => value + 1)} />;
 }
 
-function ShortPackage({ project, final, onReload }: { project: Project; final: Review; onReload: () => void }) {
+function ShortPackage({ project, review, onReload }: { project: Project; review: Review; onReload: () => void }) {
   const t = useTranslations("admin.videoYoutube.manual");
   const [data, setData] = useState<Package | null>(null);
   const [error, setError] = useState<"loadFailed" | null>(null);
   useEffect(() => {
     let current = true;
     const controller = new AbortController();
-    // The guide offers the "final" file: here that is the cut the owner reviews.
-    const review = { ...final, files: final.files.map((file) => (file.role === "preview" ? { ...file, role: "final" } : file)) };
-    readMetadata(fileUrl(project.slug, fileFor(final, "metadata")), controller.signal)
+    readMetadata(fileUrl(project.slug, fileFor(review, "metadata")), controller.signal)
       .then(({ metadata, metadataFailed }) => { if (current) setData({ project, review, languages: null, files: review.files, metadata, metadataFailed }); })
       .catch(() => { if (current) setError("loadFailed"); });
     return () => { current = false; controller.abort(); };

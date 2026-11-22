@@ -1,14 +1,14 @@
 ---
 id: 2026-11-22-shorts-hand-upload-exclusive
 title: Hand-uploaded Shorts: keep them off the site's calendar, package from publish review, record the link
-status: open
+status: in-progress
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5-5-shorts-hand-upload
+claimed_at: 2026-11-22T02:40:00Z
 created_at: 2026-11-22T02:31:21Z
 completed_at:
-branch:
+branch: claude/fervent-jang-97f73d
 depends_on: []
 scope:
   - apps/api/app/video_shorts
@@ -20,6 +20,11 @@ scope:
   - apps/web/components/admin-video-reviews.tsx
   - apps/web/components/admin-video-reviews.test.tsx
   - docs/videos/SHORTS.md
+  - apps/api/app/video_youtube/vps.py
+  - apps/web/components/admin-video-short-link.tsx
+  - apps/web/components/admin-video-short-link.test.tsx
+  - apps/web/lib/admin-video-short-link-copy.ts
+  - apps/web/lib/admin-video-short-link-messages
 ---
 
 # Hand-uploaded Shorts: keep them off the site's calendar, package from publish review, record the link
@@ -48,25 +53,26 @@ reading origin/main at 25fbefed5 (not reproduced by running it):
 
 ## Definition of done
 
-- [ ] The guide shows from a pending or approved publish review of the current cut; the approved
+- [x] The guide shows from a pending or approved publish review of the current cut; the approved
       final is not rewritten.
-- [ ] A hand-uploaded Short never gets a slot, leaves one it holds that is not on YouTube yet,
+- [x] A hand-uploaded Short never gets a slot, leaves one it holds that is not on YouTube yet,
       and is never sent or retried under the standing consent.
-- [ ] With the final approved and no publish review, the owner can record the Studio link and
+- [x] With the final approved and no publish review, the owner can record the Studio link and
       its publish time; afterwards it is not scheduled or uploaded again.
-- [ ] Tests for each of the above; SHORTS.md says so.
+- [x] Tests for each of the above; SHORTS.md says so.
 
 ## Steps
 
-- [ ] Claim (see Notes: refused on overlapping scope, waiting for the owner).
-- [ ] `video_shorts`: one predicate for "uploaded by hand": a live final or publish review with
-      `hand_pushed`, or the current id has a `video_youtube_linked` audit row (no migration).
+- [x] Claim (refused on overlapping scope; forced on the owner's yes, see Notes).
+- [x] `video_shorts`: one predicate for "uploaded by hand": a live final or publish review with
+      `hand_pushed`, or the current id has a `video_youtube_linked` audit row marked `by_hand`
+      (no migration).
       Use it in `assign_approved`, `library_of`, `lock_due_slots` (release held slots), `_assign`,
       `send_due` and `waiting_uploads`.
-- [ ] `video_youtube/sync.py`: check it again under the project lock for automatic `request_sync`
+- [x] `video_youtube/sync.py`: check it again under the project lock for automatic `request_sync`
       and `retry_sync`, and before an automatic run's scheduling write.
-- [ ] `link_youtube` for a Short: refuse while a sync runs, release the slot with the link.
-- [ ] Web: prefer the publish review whose `final_review_id` is the current final (cover from the
+- [x] `link_youtube` for a Short: refuse while a sync runs, release the slot with the link.
+- [x] Web: prefer the publish review whose `final_review_id` is the current final (cover from the
       final); show `UploadedForm` with the guide, in place of the send form for a hand upload.
       A link saved without a time needs a way to add the time later (the form hides once linked).
 
@@ -77,7 +83,9 @@ Web: vitest for the publish-only package and the link form. Then the checks in C
 
 ## Notes
 
-- No code changed yet. `claim` refused on 2026-11-22: nine active claims overlap. Not forced.
+- `claim` was refused on 2026-11-22 (nine active claims overlap). The owner answered in the
+  session, 2026-11-22: 「可以強制認領」. Claimed with `--force`; those nine tasks and the two open
+  PRs below are untouched.
   - merged PRs, stale claims: let-managers-link-a-private-studio (#1475),
     dub-narrator-only-explainer-dramas-tool (#1482), worker-video-languages-five (#1614),
     judge-7-judge (#1850), daily-brief-on-the-host-worker (#1918),
@@ -89,3 +97,26 @@ Web: vitest for the publish-only package and the link form. Then the checks in C
 - Dirty checkouts: only `docs/videos/SHORTS.md` was found modified, in
   agent-a2b4bc4db4c679370 (file dated 10-10). The scan covered this machine's worktrees only,
   with a five-second limit on each, and not cloud sessions.
+
+### Decisions while implementing
+
+- `by_hand` is only marked when no upload package was approved at link time (or the Short is
+  hand-pushed). A link after approval stays on the calendar: `vps.action("record")` calls
+  `link_youtube` too, and SHORTS.md's fallback for the claim pastes an address after approval.
+- Added to the scope, none of them claimed by another task: `video_youtube/vps.py` (refuses to
+  upload a second copy) and the link form with its copy. The copy is JSON beside the component's
+  lib file because the five admin.json files are bound by the duration receipt; that is also why
+  the form is its own component and not `UploadedForm`, whose help promises the site schedules.
+- The consent text is unchanged on purpose: its SHA-256 binds the owner's consent, and a new
+  wording would void it.
+
+### Known limits
+
+- Worker-made Shorts stay automatic. The owner was asked in passing whether every Short should
+  be manual and has not said so.
+- A worker's Short linked by hand before approval loses the link form once its package is
+  approved: the page cannot tell it from a claimed one (`ProjectOut` has no such field).
+- A linked Short with no time and no approved package still reads `making` on the Shorts tab.
+- The calendar's picker still lists hand uploads; choosing one is refused with the reason.
+- A slot already `scheduled` on YouTube is left alone; the owner recalls it.
+- Local tests ran on SQLite only (Docker in WSL needs elevation); PostgreSQL runs in CI.

@@ -27,6 +27,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import AdminAuditLog, User, VideoProject, VideoReview
 from app.video_reviews.storage import ReviewStore
+from app.video_shorts import hand_upload
 from app.video_shorts.errors import ShortsRefused
 from app.video_shorts.models import VideoShortsSettings, VideoShortsSlot
 from app.video_shorts.quota import QUOTA_REASONS, Quota
@@ -197,7 +198,8 @@ async def waiting_uploads(
     session: AsyncSession, row: VideoShortsSettings, now: datetime | None = None
 ) -> list[Waiting]:
     """The Shorts that hold a slot in the coming days and have no video on YouTube yet,
-    in the order of their slots."""
+    in the order of their slots. One the owner uploads by hand is not among them: what is
+    claimed here, the site schedules."""
     moment = now or datetime.now(UTC)
     slots = list(
         await session.scalars(
@@ -223,6 +225,8 @@ async def waiting_uploads(
             )
         )
     }
+    for slug in await hand_upload.hand_uploaded(session, projects.values()):
+        del projects[slug]
     reviews: dict[Any, list[VideoReview]] = {}
     if projects:
         for review in await session.scalars(

@@ -124,6 +124,7 @@ from app.video_reviews.schemas import (
 )
 from app.video_reviews.storage import ReviewStore, StorageRefused, valid_slug
 from app.video_shorts import costs as shorts_costs
+from app.video_shorts import hand_upload
 from app.video_shorts import slots as shorts_slots
 from app.video_shorts.claim import duration_seconds
 from app.video_shorts.settings import auto_approves_shorts
@@ -2964,6 +2965,11 @@ async def link_youtube(
     for a pending imported final, refuses an existing or duplicated ID, and verifies privacy
     and channel ownership before recording anything. The worker reads the id back on its next
     round and writes it into the work directory's video.json.
+
+    A Short linked before an upload package was approved, or one pushed by hand, is the owner's
+    hand upload (``video_shorts.hand_upload``): the link is marked and the slot it held is given
+    back in the same transaction, so the calendar never schedules that video. A link made after
+    the package was approved (the VPS uploader records one so) stays on the site's route.
     """
     if publish_at is not None and publish_at.tzinfo is None:
         raise AppError(422, "video_youtube_publish_at_naive", "上架時間要帶時區")
@@ -3017,13 +3023,31 @@ async def link_youtube(
         publish_at, reason = reported.publish_at, reported.reason
         source = "youtube" if publish_at is not None else None
     now = datetime.now(UTC)
+    by_hand = False
+    if project.shorts_line is not None:
+        # Locked only now: asking YouTube may commit, and the Shorts sender takes this lock
+        # before it starts a run.
+        project = await _project(session, slug, lock=True)
+        _refuse_dropped(project)
+        if youtube_sync_running(project.youtube_sync):
+            raise AppError(
+                409,
+                "video_youtube_link_sync_running",
+                "這支正在送 YouTube，等它跑完再記錄連結",
+            )
+        reviews = await _reviews(session, project, refresh=True)
+        by_hand = publish_approved_at(reviews) is None or await hand_upload.is_hand_uploaded(
+            session, project
+        )
+        if by_hand:
+            await shorts_slots.release(session, slug, now)
     project.youtube_video_id = video_id
     project.youtube_publish_at = publish_at
     project.updated_at = now
     session.add(
         AdminAuditLog(
             actor_user_id=user.id,
-            action="video_youtube_linked",
+            action=hand_upload.LINKED_ACTION,
             target=f"video_project:{slug}",
             metadata_json={
                 "slug": slug,
@@ -3032,6 +3056,7 @@ async def link_youtube(
                 "publish_at_source": source,
                 "publish_at_reason": reason,
                 **({"private_only": True} if private_only else {}),
+                **({hand_upload.LINKED_MARK: True} if by_hand else {}),
             },
         )
     )
