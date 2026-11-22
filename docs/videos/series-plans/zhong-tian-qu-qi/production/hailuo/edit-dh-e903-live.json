@@ -17,30 +17,74 @@
  "name_whoosh": "swish-9",
  "music": [
   {
-   "cue": "tension",
+   "cue": "z-bed-standoff",
    "from": "s01",
    "to": "s16",
-   "offset": 0,
-   "gain": -14,
+   "offset": 20.0,
+   "gain": -12,
+   "fade_in": 0.4,
    "fade_out": 0.6,
    "tail": 0.3
   },
   {
-   "cue": "comedy",
+   "cue": "z-bed-village-comedy",
    "from": "s17",
+   "to": "s18",
+   "offset": 0.0,
+   "gain": -12.5,
+   "fade_in": 0.4,
+   "fade_out": 0.4,
+   "tail": 0
+  },
+  {
+   "cue": "z-cue-system",
+   "from": "s19",
+   "to": "s20",
+   "offset": 32.0,
+   "gain": -16,
+   "fade_in": 0.3,
+   "fade_out": 0.5,
+   "tail": 0
+  },
+  {
+   "cue": "z-bed-village-comedy",
+   "from": "s21",
+   "to": "s24",
+   "offset": 18.4,
+   "gain": -12.5,
+   "fade_in": 0.5,
+   "fade_out": 0.4,
+   "tail": 0
+  },
+  {
+   "cue": "z-cue-system",
+   "from": "s25",
+   "to": "s25",
+   "offset": 40.0,
+   "gain": -18,
+   "fade_in": 0.2,
+   "fade_out": 0.5,
+   "tail": 0
+  },
+  {
+   "cue": "z-bed-village-comedy",
+   "from": "s26",
    "to": "s30",
-   "offset": 0,
-   "gain": -17.5,
+   "offset": 47.1,
+   "gain": -12.5,
+   "fade_in": 0.6,
    "fade_out": 0.8,
    "tail": 0.3
   },
   {
-   "cue": "suspense",
+   "cue": "z-bed-night-village",
    "from": "s31",
    "to": "s40",
-   "offset": 0,
-   "gain": -16,
-   "fade_out": 1.6
+   "offset": 0.0,
+   "gain": -9.5,
+   "fade_in": 1.0,
+   "fade_out": 1.6,
+   "tail": 0
   }
  ],
  "sfx": [
@@ -89,7 +133,7 @@
   {
    "file": "impactSoft_heavy_000",
    "at": "s06",
-   "off": 1.0,
+   "off": 0.8,
    "gain": -18
   },
   {
@@ -308,7 +352,7 @@
  "frame_round": true,
  "clip_voice": true,
  "voice_skip": {
-  "s06": 1.5,
+  "s06": 1.9,
   "s37": 1.8
  },
  "voice_until": {

@@ -16,6 +16,9 @@ rm -rf $E/segments-v4
 # in the first 10 s from episode 3 on; the review's s02 from 1.0 and s03 0.3-4.6 put s04 at 12.13 s); s09 from 1.0 s
 # (the villagers standing inside the yard; he speaks at 1.98). x264 crf 12, aac 32 kHz; assemble-v4's pick() takes the
 # highest -tN, so the -t1 files stay as they were. Made again if missing.
+# SWAP 2026-11-22 (second wave, fix-polish/round4): clips/s06-t5.mp4 (seed 9039402, start@0 end-before@6.583, picked
+# whole) overrides s06-t1; no t6 was ever cut for s06, nothing to redo. The delivered cut is moved to cut/old-HHMM and
+# marked .keep by hand.
 C=$E/clips
 [ -f $C/s01-t2.mp4 ] || ffmpeg -v error -y -i $C/s01-t1.mp4 -t 2.2 -c:v libx264 -preset slow -crf 12 -pix_fmt yuv420p -r 24 -c:a aac -b:a 192k -ar 32000 $C/s01-t2.mp4
 [ -f $C/s02-t2.mp4 ] || ffmpeg -v error -y -i $C/s02-t1.mp4 -ss 1.5 -c:v libx264 -preset slow -crf 12 -pix_fmt yuv420p -r 24 -c:a aac -b:a 192k -ar 32000 $C/s02-t2.mp4
@@ -38,8 +41,9 @@ cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VL
 [ -f $E/cut/e903-live.mp4 ] || exit 1
 # the e901 / e908-e930 finish: a sample-peak limiter (attack 8 ms), then loudnorm2.sh (linear, -14 LUFS, TP -2.2). Limit 0.53,
 # not 0.55: at 0.55 the polished cut measured -2.17 dBTP after the gain and loudnorm2 went dynamic.
-# The first cut (2026-11-09) had neither.
-ffmpeg -v error -y -i $E/cut/e903-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af "alimiter=limit=0.53:attack=8:release=60:level=false,aresample=48000" $E/cut/e903-live.lim.mp4 && mv $E/cut/e903-live.lim.mp4 $E/cut/e903-live.mp4
+# The first cut (2026-11-09) had neither. SWAP 2026-11-22: 0.53 -> 0.51, with the Flow beds 0.53 measured -2.04 dBTP after
+# the gain (loudnorm2 dynamic).
+ffmpeg -v error -y -i $E/cut/e903-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af "alimiter=limit=0.51:attack=8:release=60:level=false,aresample=48000" $E/cut/e903-live.lim.mp4 && mv $E/cut/e903-live.lim.mp4 $E/cut/e903-live.mp4
 ffmpeg -hide_banner -i $E/cut/e903-live.mp4 -map 0:a -af loudnorm=I=-14:TP=-2.2:LRA=11:print_format=json -f null - 2>&1 | sed -n '/^{/,/^}/p' \
  | python3 -c "import json,sys;j=json.load(sys.stdin);i,tp=float(j['input_i']),float(j['input_tp']);print(f'pre-loudnorm2 {i} LUFS {tp} dBTP: {tp-14-i:+.2f} after the gain ->', 'linear' if tp-14-i<=-2.2 else 'DYNAMIC (lower the limiter or its attack)')"
 bash $Q/loudnorm2.sh $E/cut/e903-live.mp4

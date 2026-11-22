@@ -22,6 +22,8 @@ C=$E/clips
 # retakes clips/sNN-t5.mp4 (s19 and s40 KEEP). s14 drops the first 0.5 s of its t5 (her lips part at 0-0.5; the inner
 # line a16 still fits before her line at 4.20 without speeding up): clips/s14-t6.mp4, made again if missing.
 [ -f $C/s14-t6.mp4 ] || ffmpeg -v error -y -i $C/s14-t5.mp4 -ss 0.5 -c:v libx264 -preset slow -crf 12 -pix_fmt yuv420p -r 24 -c:a aac -b:a 192k -ar 32000 $C/s14-t6.mp4
+# SWAP 2026-11-22 (second wave, round4): s25 is the fixp4 retake clips/s25-t5.mp4 (already trimmed 0.375-5.833 s; no t6
+# for s25, so the assembler takes t5 as it is). The delivered first-wave cut was moved by hand to cut/old-w1 (.keep).
 VL=$E/video-live.json; DROP=""
 # $VL = video.json (DROP empty) with s14 Tang Xiaotang on screen: the t5 retake shows her in the doorway saying a17 with
 # her lips, so she joins s14's characters and a17 loses 畫外 (the clip's voice plays; s16 does the same via voice_on).
