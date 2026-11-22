@@ -2,7 +2,11 @@
 set -u
 R=/home/user/zt-work; P=$R/docs/videos/series-plans/zhong-tian-qu-qi/production; Q=$P/colab/runs/_scripts
 E=/root/mokaair-work/videos/_live-e914/zhong-tian-qu-qi-e914-dh; VJ=$R/docs/videos/zhong-tian-qu-qi-e014-r2/video.json
-V=${V:-v1}; mkdir -p $E/cut; [ -f $E/cut/e914-live.mp4 ] && { mkdir -p $E/cut/old-$(date +%H%M); mv $E/cut/e914-live.* $E/cut/final.log $E/cut/old-$(date +%H%M)/ 2>/dev/null; }
+# POLISH+SWAP 2026-11-21: the 2026-11-15 cut files (lines.json, srt, final.log; its mp4 is review-zt/ep/e014/final.mp4) go to
+# cut/old-1115 once and carry a .keep (never removed); a later run replaces its own previous cut (no old-HHMM).
+mkdir -p $E/cut
+[ -d $E/cut/old-1115 ] || { mkdir -p $E/cut/old-1115; mv $E/cut/e914-live.* $E/cut/final.log $E/cut/old-1115/ 2>/dev/null; touch $E/cut/old-1115/.keep; }
+rm -f $E/cut/e914-live.* $E/cut/final.log; rm -rf $E/cut/pre
 rm -rf $E/segments-v4
 # the refined shots must be staged first (live-action/stage.py 14: refined picture + draft voice + trim/crop -> clips/sNN-t1.mp4)
 miss=$(python3 -c "import json,os;p=json.load(open('$E/picks.json'));print(' '.join(s for s in p if not os.path.exists('$E/clips/'+s+'-t1.mp4')))")
@@ -32,6 +36,12 @@ bad=[f'{s} start {p[s][\"trim\"].get(\"start\",0)} end-before {p[s][\"trim\"].ge
 bad+=[f'{s} seed {p[s][\"seed\"]} (want {v})' for s,v in seed.items() if p[s]['seed']!=v]
 bad+=[f'{s} seed {p[s][\"seed\"]} (want 9141101)' for s in p if s not in seed and p[s]['seed']!=9141101]
 print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
+# POLISH+SWAP 2026-11-21 (edit table _note). SWAP: s03 s11 s13 s37 s40 s42 are the fixp retakes clips/sNN-t5.mp4 (already
+# trimmed, runpod/polish/picks.json; the assembler takes the highest take number); picks.json and the want table above still
+# describe the t1 staging, which stays on disk. s40: clips/s40-t6.mp4 = s40-t5 0-4.5 s (frames 0-107; the take is a static 6.17 s
+# and a39 + her breaths need 4.4 s), made if missing, t5 kept.
+C=$E/clips; ENC="-c:v libx264 -preset slow -crf 12 -pix_fmt yuv420p -r 24 -c:a aac -b:a 192k -ar 32000"
+[ -f $C/s40-t6.mp4 ] || ffmpeg -v error -threads 2 -y -i $C/s40-t5.mp4 -t 4.5 $ENC $C/s40-t6.mp4
 # no vidstab this time: cut-qa's jitter() on every staged clip reads 0.00-0.04 (s22 0.04), nothing hops frame to frame
 cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VJ $R/docs/videos/zhong-tian-qu-qi-e014-r2/overlays.json $P/hailuo/edit-dh-e914-live.json $E $E/cut/e914-live.mp4 > $E/cut/final.log 2>&1; tail -3 $E/cut/final.log
 [ -f $E/cut/e914-live.mp4 ] || exit 1
@@ -47,7 +57,20 @@ ffmpeg -v error -y -i $E/cut/e914-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af
 ffmpeg -hide_banner -i $E/cut/e914-live.mp4 -map 0:a -af loudnorm=I=-14:TP=-2.2:LRA=11:print_format=json -f null - 2>&1 | sed -n '/^{/,/^}/p' \
  | python3 -c "import json,sys;j=json.load(sys.stdin);i,tp=float(j['input_i']),float(j['input_tp']);print(f'pre-loudnorm2 {i} LUFS {tp} dBTP: {tp-14-i:+.2f} after the gain ->', 'linear' if tp-14-i<=-2.2 else 'DYNAMIC (lower the limiter or its attack)')"
 bash $Q/loudnorm2.sh $E/cut/e914-live.mp4
+# POLISH+SWAP 2026-11-21 (e912 lesson): the true peak after loudnorm2; above -1.5 dBTP a second sample-peak limiter at 0.7 touches
+# just those peaks; the delivery wants <= -1 dBTP: printed on the final file
+TP=$(ffmpeg -hide_banner -nostats -i $E/cut/e914-live.mp4 -map 0:a -af ebur128=peak=true -f null - 2>&1 | grep -A1 'True peak:' | grep -oE -- '-?[0-9.]+ dBFS' | tail -1 | cut -d' ' -f1)
+echo "after loudnorm2: true peak $TP dBTP"
+if python3 -c "import sys;sys.exit(0 if float('$TP')>-1.5 else 1)"; then
+ ffmpeg -v error -y -i $E/cut/e914-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af "alimiter=limit=0.7:attack=8:release=60:level=false,aresample=48000" $E/cut/e914-live.lim.mp4 && mv $E/cut/e914-live.lim.mp4 $E/cut/e914-live.mp4
+ echo "second limiter applied"
+fi
+ffmpeg -hide_banner -nostats -i $E/cut/e914-live.mp4 -map 0:a -af ebur128=peak=true -f null - 2>&1 | grep -E '^\s+(I|LRA|Peak):' | tail -3 \
+ | awk '{print} /Peak:/{print ($2<=-1.0)?"true peak ok (<= -1 dBTP)":"TRUE PEAK OVER -1 dBTP"}'
 echo "== cut-qa";   python3 $Q/cut-qa.py $E/cut --stem e914-live 2>&1 | tail -20
 echo "== cut-jumps"; python3 $Q/cut-jumps.py $E/cut 2>&1 | tail -12
 echo "== audio-qa"; python3 $Q/audio-qa.py $E/cut $VJ 2>&1 | tail -15
 echo "== sheets";   python3 $Q/continuity-sheets.py $E/cut $VJ $E/review/continuity-v1 2>&1 | tail -4
+# the segments are 1-2 GB and only the assembler reads them: gone after the checks (KEEP_SEG=1 keeps them for a look)
+[ "${KEEP_SEG:-0}" = 1 ] || rm -rf $E/segments-v4
+[ "${KEEP_PRE:-0}" = 1 ] || rm -rf $E/cut/pre

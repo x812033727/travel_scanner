@@ -10,7 +10,8 @@
  "duck_ratio": 3.5,
  "duck_release_ms": 900,
  "sfx_dirs": [
-  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx"
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx",
+  "<VIDEO_WORKDIR>/_sfx/zhongtian-real-20261121"
  ],
  "name_whoosh": "swish-9",
  "music": [
@@ -29,7 +30,7 @@
    "from": "s09",
    "to": "s12",
    "offset": 0.0,
-   "gain": -22,
+   "gain": -15,
    "fade_in": 0.8,
    "fade_out": 1.5,
    "tail": 0
@@ -60,17 +61,17 @@
    "from": "s19",
    "to": "s24",
    "offset": 25.0,
-   "gain": -22,
+   "gain": -16,
    "fade_in": 1.0,
    "fade_out": 0.6,
    "tail": 0
   },
   {
-   "cue": "warm",
+   "cue": "z-bed-farming-montage",
    "from": "s25",
    "to": "s29",
-   "offset": 0.0,
-   "gain": -19,
+   "offset": 1.5,
+   "gain": -8,
    "fade_in": 0.5,
    "fade_out": 1.5,
    "tail": 0.3
@@ -80,7 +81,7 @@
    "from": "s31",
    "to": "s35",
    "offset": 0.0,
-   "gain": -22,
+   "gain": -16,
    "fade_in": 1.5,
    "fade_out": 2.0,
    "tail": 0.3
@@ -253,19 +254,19 @@
    "file": "swish-3",
    "at": "s09",
    "off": 0.2,
-   "gain": -20
+   "gain": -10
   },
   {
    "file": "swish-7",
    "at": "s09",
    "off": 1.5,
-   "gain": -22
+   "gain": -10
   },
   {
    "file": "swish-3",
    "at": "s09",
    "off": 2.8,
-   "gain": -22
+   "gain": -10
   },
   {
    "file": "swish-11",
@@ -330,7 +331,7 @@
   {
    "file": "footstep_grass_001",
    "at": "s21",
-   "off": 0.8999999999999999,
+   "off": 0.9,
    "gain": -32
   },
   {
@@ -342,13 +343,13 @@
   {
    "file": "footstep_grass_001",
    "at": "s21",
-   "off": 2.0999999999999996,
+   "off": 2.1,
    "gain": -32
   },
   {
    "file": "footstep_grass_000",
    "at": "s21",
-   "off": 2.6999999999999997,
+   "off": 2.7,
    "gain": -32
   },
   {
@@ -360,7 +361,7 @@
   {
    "file": "footstep_grass_000",
    "at": "s21",
-   "off": 3.8999999999999995,
+   "off": 3.9,
    "gain": -32
   },
   {
@@ -370,28 +371,16 @@
    "gain": -32
   },
   {
+   "file": "footstep_grass_000",
+   "at": "s21",
+   "off": 5.1,
+   "gain": -32
+  },
+  {
    "file": "impactWood_heavy_002",
    "at": "s21",
-   "off": 5.25,
-   "gain": -18
-  },
-  {
-   "file": "rustle03",
-   "at": "s25",
-   "off": 0.5,
-   "gain": -22
-  },
-  {
-   "file": "rustle03",
-   "at": "s25",
-   "off": 2.5,
-   "gain": -22
-  },
-  {
-   "file": "rustle03",
-   "at": "s25",
-   "off": 4.5,
-   "gain": -22
+   "off": 5.85,
+   "gain": -10
   },
   {
    "file": "footstep_grass_000",
@@ -408,7 +397,7 @@
   {
    "file": "footstep_grass_000",
    "at": "s25",
-   "off": 2.4000000000000004,
+   "off": 2.4,
    "gain": -30
   },
   {
@@ -432,8 +421,98 @@
   {
    "file": "footstep_grass_000",
    "at": "s25",
-   "off": 5.6000000000000005,
+   "off": 5.6,
    "gain": -30
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s25",
+   "off": 6.4,
+   "gain": -30
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s25",
+   "off": 7.2,
+   "gain": -30
+  },
+  {
+   "file": "zhongtian-sfx-plough-earth-01",
+   "at": "s25",
+   "off": 0.5,
+   "gain": 6
+  },
+  {
+   "file": "zhongtian-sfx-plough-earth-02",
+   "at": "s25",
+   "off": 1.1,
+   "gain": 6
+  },
+  {
+   "file": "zhongtian-sfx-plough-earth-03",
+   "at": "s25",
+   "off": 1.7,
+   "gain": 6
+  },
+  {
+   "file": "zhongtian-sfx-plough-earth-04",
+   "at": "s25",
+   "off": 2.3,
+   "gain": 6
+  },
+  {
+   "file": "zhongtian-sfx-plough-earth-05",
+   "at": "s25",
+   "off": 2.9,
+   "gain": 6
+  },
+  {
+   "file": "zhongtian-sfx-plough-earth-06",
+   "at": "s25",
+   "off": 3.5,
+   "gain": 6
+  },
+  {
+   "file": "zhongtian-sfx-plough-earth-07",
+   "at": "s25",
+   "off": 4.1,
+   "gain": 6
+  },
+  {
+   "file": "zhongtian-sfx-plough-earth-08",
+   "at": "s25",
+   "off": 4.7,
+   "gain": 6
+  },
+  {
+   "file": "zhongtian-sfx-plough-earth-10",
+   "at": "s25",
+   "off": 5.3,
+   "gain": 6
+  },
+  {
+   "file": "zhongtian-sfx-plough-earth-11",
+   "at": "s25",
+   "off": 5.9,
+   "gain": 6
+  },
+  {
+   "file": "zhongtian-sfx-plough-earth-12",
+   "at": "s25",
+   "off": 6.5,
+   "gain": 6
+  },
+  {
+   "file": "zhongtian-sfx-plough-earth-01",
+   "at": "s25",
+   "off": 7.1,
+   "gain": 6
+  },
+  {
+   "file": "zhongtian-sfx-plough-earth-02",
+   "at": "s25",
+   "off": 7.7,
+   "gain": 6
   },
   {
    "file": "impactBell_heavy_001",
@@ -492,26 +571,29 @@
   {
    "file": "paper_04",
    "at": "s42",
-   "off": 0.6,
+   "off": 1.55,
    "gain": -26
   },
   {
    "file": "gong_02",
    "at": "s42",
-   "off": 5.45,
+   "off": 5.85,
    "gain": -2
   },
   {
    "file": "impactSoft_heavy_000",
    "at": "s42",
-   "off": 5.45,
+   "off": 5.85,
    "gain": -2
   }
  ],
  "frame_round": true,
  "clip_voice": true,
  "voice_skip": {},
- "voice_until": {},
+ "voice_until": {
+  "s18": 5.1,
+  "s42": 5.85
+ },
  "clip_af": {
   "s10": {
    "from": 0,
@@ -587,7 +669,7 @@
   },
   "s42": {
    "from": 0,
-   "af": "asendcmd=c='2.0 rubberband pitch 1.3;3.5 rubberband pitch 1.12;4.6 rubberband pitch 1.0',rubberband=pitch=1.0:formant=preserved"
+   "af": "asendcmd=c='1.5 rubberband pitch 1.3;4.8 rubberband pitch 1.0',rubberband=pitch=1.0:formant=preserved"
   }
  },
  "voice_off": [
@@ -597,12 +679,16 @@
  ],
  "move_lines": {},
  "min": {
-  "s42": 8.0
+  "s42": 8.417
  },
  "line_at": {
-  "zq915a21": 0.25,
+  "zq915a21": 0.15,
   "zq915a23": 0.25,
-  "zq915a34": 2.3
+  "zq915a34": 2.3,
+  "zq915a11": 1.0,
+  "zq915a15": 0.58,
+  "zq915a18": 0.25,
+  "zq915a24": 2.08
  },
  "panel_y": {
   "s03": 860
@@ -611,12 +697,13 @@
   "s03": 3.85
  },
  "vf": {
-  "s42": "split[qaa][qab];[qab]crop=420:380:500:380,gblur=sigma=8,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((85-abs(X+500-(if(lt(T\\,2.500)\\,755\\,if(lt(T\\,2.750)\\,755+(-55)*(T-2.500)/0.250\\,if(lt(T\\,3.250)\\,700+(2)*(T-2.750)/0.500\\,if(lt(T\\,4.000)\\,702+(-30)*(T-3.250)/0.750\\,if(lt(T\\,4.750)\\,672+(18)*(T-4.000)/0.750\\,if(lt(T\\,5.250)\\,690+(-40)*(T-4.750)/0.500\\,if(lt(T\\,5.560)\\,650+(2)*(T-5.250)/0.310\\,652))))))))))/16\\,0\\,1)*clip((75-abs(Y+380-(if(lt(T\\,2.500)\\,522\\,if(lt(T\\,2.750)\\,522+(26)*(T-2.500)/0.250\\,if(lt(T\\,3.250)\\,548+(32)*(T-2.750)/0.500\\,if(lt(T\\,4.000)\\,580+(-2)*(T-3.250)/0.750\\,if(lt(T\\,4.750)\\,578+(-20)*(T-4.000)/0.750\\,if(lt(T\\,5.250)\\,558+(34)*(T-4.750)/0.500\\,if(lt(T\\,5.560)\\,592+(3)*(T-5.250)/0.310\\,595))))))))))/16\\,0\\,1)*clip((T-2.4)/0.1\\,0\\,1)'[qac];[qaa]format=rgba[qad];[qad][qac]overlay=500:380,format=yuv420p,fade=t=out:st=5.250:d=0.31",
+  "s42": "fade=t=out:st=5.650:d=0.33",
   "s17": "split[paa][pab];[pab]crop=640:720:0:360,gblur=sigma=12,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))-172)/20\\,0\\,1)*clip((50-(r(X\\,Y)-b(X\\,Y)))/15\\,0\\,1)*clip((640-X)/40\\,0\\,1)*clip(Y/40\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=0:360,format=yuv420p",
   "s11": "split[saa][sab];[sab]crop=520:600:440:0,gblur=sigma=60:sigmaV=1,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((90-abs(X+440-(if(lt(T\\,0.000)\\,780\\,if(lt(T\\,2.000)\\,780+(-43)*(T-0.000)/2.000\\,if(lt(T\\,4.000)\\,737+(-25)*(T-2.000)/2.000\\,if(lt(T\\,5.000)\\,712+(-64)*(T-4.000)/1.000\\,if(lt(T\\,5.300)\\,648+(-18)*(T-5.000)/0.300\\,630))))))))/40\\,0\\,1)*clip((280-abs(Y+0-(if(lt(T\\,0.000)\\,270\\,if(lt(T\\,5.300)\\,270+(0)*(T-0.000)/5.300\\,270)))))/40\\,0\\,1)*clip((5.3-T)/0.1\\,0\\,1)'[sac];[saa]format=rgba[sad];[sad][sac]overlay=440:0,format=yuv420p",
   "s13": "split[faa][fab];[fab]crop=1920:600:0:480,eq=contrast=0.6:saturation=0.88:brightness=0.015,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((Y-30)/110\\,0\\,1)'[fac];[faa]format=rgba[fad];[fad][fac]overlay=0:480,format=yuv420p",
   "s19": "split[fba][fbb];[fbb]crop=1920:520:0:560,eq=contrast=0.82:saturation=0.92:brightness=0.01,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((Y-20)/150\\,0\\,1)'[fbc];[fba]format=rgba[fbd];[fbd][fbc]overlay=0:560,format=yuv420p",
-  "s28": "split[kaa][kab];[kab]crop=1920:520:0:0,hue=s=0.25,colorbalance=rs=0.08:bs=-0.08:rm=0.14:gm=0.02:bm=-0.12:rh=0.18:gh=0.05:bh=-0.10,eq=brightness=0.03,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((470-Y)/120\\,0\\,1)'[kac];[kaa]format=rgba[kad];[kad][kac]overlay=0:0,format=yuv420p,colorbalance=rs=0.08:gs=0.02:bs=-0.10:rm=0.08:gm=0.02:bm=-0.10:rh=0.06:gh=0.02:bh=-0.12,eq=saturation=0.92:gamma=0.97"
+  "s28": "split[kaa][kab];[kab]crop=1920:520:0:0,hue=s=0.25,colorbalance=rs=0.08:bs=-0.08:rm=0.14:gm=0.02:bm=-0.12:rh=0.18:gh=0.05:bh=-0.10,eq=brightness=0.03,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((470-Y)/120\\,0\\,1)'[kac];[kaa]format=rgba[kad];[kad][kac]overlay=0:0,format=yuv420p,colorbalance=rs=0.08:gs=0.02:bs=-0.10:rm=0.08:gm=0.02:bm=-0.10:rh=0.06:gh=0.02:bh=-0.12,eq=saturation=0.92:gamma=0.97",
+  "s06": "split[waa][wab];[wab]crop=1100:190:0:330,eq=brightness=-0.08,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((r(X\\,Y)-b(X\\,Y)-25)/20\\,0\\,1)*clip((1100-X)/80\\,0\\,1)*clip(Y/40\\,0\\,1)*clip((190-Y)/40\\,0\\,1)'[wac];[waa]format=rgba[wad];[wad][wac]overlay=0:330,format=yuv420p"
  },
  "subtitle_lines": [],
  "_note": "live action, written 2026-11-15 from edit-dh-e914-live.json (its form) and edit-dh-e913-live.json (REVIEW 3) with the e909-e914 lessons applied from the start, on the refined, staged clips (_live-e915/zhong-tian-qu-qi-e915-dh/clips/sNN-t1.mp4, 42 shots): clip_voice, no punch-in, slow-down <= 1.1, interpolate off, frame_round, no title card (s01 goes straight on from e914 s42, after a night), names {}. Every offset is seconds from the first frame of the trimmed shot (c). SOURCES: script/storyboard/video.json/overlays.json in docs/videos/zhong-tian-qu-qi-e015-r2; picks.json rebuilt by refine-prep.py 15 from colab/runs/e915-live/picks-merged.tsv, fix1/review-picks.tsv and review3-trims.tsv (in that order) and re-staged with stage.py 15; e915cut.sh's want table holds every trim (whole frames, tolerance 0.001) and the seeds. REVIEW3-TRIMS (first cut): s22 end 6.25 -> 6.125 (a -9 dB knock at c5.90-6.00, the pick's 6.19-6.29 noise, sat on the cut; 見 ends draft 5.45); s32 end 6.584 -> 6.375 (post list: her mouth slackens at 6.5; 字 ends c6.00, -65 dB after); s26 (fix1, whole 6.56) end 4.5 (a25 c0.12-3.73, then 2.8 s of her back); s41 (fix1, whole 6.56) end 4.25 (a39 ends c3.71; the frame slides right at c4.3-5.0). The fix1 retakes s08 s10 s21 s25 play whole. MEASURED: faster-whisper medium (scratchpad fw env, wav first) word times on every staged clip plus 50 ms RMS at both ends: no trim cuts a syllable (heads -55..-80 dB before the first word, tails decayed; tightest s16 / s39, whose last word decays into the clip's own end at 6.56: -60 / -63 dB on the last 50 ms). Whisper heard every clip-voiced line (homophones only: 行賄, 圍巫, 牛溫, 東脈 for 冬麥, 黎/梨, 暮假, 裡透, 圓是彎的, 柳西, 一車一輛, 潛伏的, 前園外, 瞧就通). PITCH (YIN on 16 kHz per speech span; clip_af rubberband formant preserved, a change inside a shot by asendcmd at a pause, timing unchanged; re-measured on the segments): Xu 106-142: s10 0.78 until 2.6 (天剛亮 181 -> 142), s16 0.88 (155 -> 136/131/123), s18 0.8 (178/160/167 -> 145/128/132), s33 1.28 (95/85 -> 118/109), s39 0.72 until 4.72 (190 -> 138, then 130); kept s06 s35. Qin 220-255: s11 1.1 at 2.6-4.5 (211 -> 235), s24 1.06 from 4.2 (-> 229/232), s27 0.88 / 1.0 at 1.8 / 1.08 at 3.33 (276/254/213 -> 242/254/224), s30 0.88 / 1.2 at 2.9 (267/198/187 -> 232/239/225), s32 1.25 / 1.12 at 2.4 (176/205/203 -> 219/234/225), s34 1.1 / 1.0 at 1.95 / 1.18 at 3.6 (-> 242/239/229). Erniu 160-180: s12 1.1 (-> 162-172), s14 1.15 / 1.3 at 2.0 (144/129/126 -> 165/167/157), s17 1.1 / 1.0 at 1.4 / 1.25 at 4.6 / 1.1 at 6.55 (-> 167/182/165/167). Hanbo (measured 102-133 on his takes, recordings 93-148): s15 0.75 from 5.44 (都沒糧吃 181 -> 136); kept s29. Shi 110-160: s22 0.92 (162/163 -> 150/153; a 0.2 s burst at c4.6 still reads ~240, listen). Lai San (measured: recordings 108-188, takes 95-228; kept to about 125-170): s38 0.88 / 0.72 at 2.95 / 1.0 at 5.0 (182/225/163 -> 174/163/165), s40 1.25 from 5.1 (就繞山 102 -> 162; 不走 195/95 left), s42 1.3 at 2.0-3.5 / 1.12 to 4.6 (95/112 -> 124/126). VOICE_OFF s21 s23 s36: the takes are Erniu 320-372 Hz (s21, s23) and Lai San 286-323 Hz (s36) -- 0.5 needed, beyond 0.65 -- so the recordings are laid where the takes speak: a21 at line_at 0.8 (s21, a side-on wide walk), a23 at 0.25 (s23, a medium shot: lips not matched, listen), a34 at 3.3 (s36, Lai small at the right of a wide). RECORDINGS (audio/, originals in audio/orig/, e909's recipe acompressor 3:1 at -20 dB + volume + alimiter 0.84, integrated LUFS before -> after): Tang a01 -17.3 -> -14.5, a02 -18.6 -> -14.5, a09 -16.7 -> -14.5, a35 -16.8 -> -14.6 (its sample peak was +0.5 dBFS); Xu inner a04 -20.9 -> -14.5, a06 -17.2 -> -14.6, a10 -18.0 -> -14.5; Xu off screen a14 -15.2 -> -14.5 with rubberband 0.75 until 1.6 first (193 -> 151); system a03 -17.8 -> -14.6, a05 -16.8 -> -14.6, a27 -19.1 -> -14.6; Erniu a21 -15.2 -> -14.5 with rubberband 0.7 / 1.05 at 1.0 / 0.75 at 2.8 first (246/163/229 -> 175/172/171), a23 -17.0 -> -14.6 with 1.3 / 0.82 at 1.9 (125/211 -> 176/158); Lai a34 -16.1 -> -14.5. Untouched: a07 -15.7, a20 -14.5, a25 -14.4, a39 -14.2 (Tang, no fixed range: her recordings 128-381, kept as recorded), the lines the clips voice, the raw-tts files, long-pause-takes/ and review-trim-takes/. LAID LINES (defaults unless named): s01 a01, s02 a02, s03 a03 + a04, s04 a05 + a06, s05 a07, s07 a09, s08 a10, s13 a14, s20 a20, s21 a21 0.8, s23 a23 0.25, s26 a25, s28 a27, s36 a34 3.3, s37 a35, s41 a39. subtitle_lines none: a03 and a27 are word for word on their panels, a05 (圖紙不退) has no panel and is subtitled anyway. PANEL: s03 panel_y 860 (Xu's face fills the upper left of a close shot) and panel_until 3.85 (a03 ends c3.78, a04's subtitle from c3.90); s28 at the default top (sky). MUSIC (library cues only, no new cue: Lyria is a paid service; music linked as zhong-tian-qu-qi-e915-dh/music -> _series/zhong-tian-qu-qi/music, the e914 way): (1) warm s01-s08 from 0 (-21, fade 1.0/1.5): the tired, warm cue; (2) comedy s09-s12 from 0 (-22, 0.8/1.5): the drill and the banter; (3) night from cue 20 under s13 c0.3-s15 (-24, 1.5/1.0): 牛都死光了 sinks; (4) warm from cue 15, s16-s18 + 0.3 (-21, 0.8/1.5): it lifts as the drawing is unrolled; (5) comedy from cue 25, s19-s24 (-22, 1.0/0.6): three men stuck, the plough arrives; (6) warm s25-s29 + 0.3 from 0 (-19, in 0.5): it swells as she pushes alone; s30 runs on beds; (7) night s31-s35 + 0.3 from 0 (-22, 1.5/2.0): the cold grove; (8) tension s36-s42 from 0 (-21, 1.0/1.0) to the end. Ducked 3.5 : 1, release 900 ms. SFX (_series/zhong-tian-qu-qi/sfx). Beds: workshop s01-s08 fire-1 -30 (the candle) + Wind -13 + wind1 -13 (1.75 s later); threshing ground from s08 c6.0 birds -18 + Wind -10 + wind1 -10 (s09 c1.25); field from s18 c6.5 birds -16 + Wind -9 + wind1 -9 (s19 c1.25); grove from s30 c6.0 Wind -9 + wind1 -9 (s30 c5.0: starting it at s31 c1.25 left 183.9-184.9 at -45 M on the first cut); bridge from s35 c3.5 Wind -11 + wind1 -11 (s36 c1.25) + birds -24. ACCENTS: the two system dings (auto); s28 c0.0 impactBell_heavy_001 -10 with the ding (曲轅犁，一人可耕, the bright accent); s38 c4.75 after 一車一兩 impactSoft_heavy_000 -6 + impactWood_heavy_001 -14 (-26 M at -10/-18 on the first cut, too faint); s42 c5.45 after his last word gong_02 -2 + impactSoft_heavy_000 -2 (-12 M, after the line, ringing out in the black). Spot effects: s01 paper peel 0.3; s02 paper 0.6, pats 3.6/4.1; s04 paper 0.6; s05 cloth 0.4; s07 bead 0.5; s08 charcoal 0.4/2.2/4.0; s09 staff whooshes 0.2/1.5/2.8; s13 gust 0.3; s15 staff taps 0.5/1.1; s16 paper 0.5; s18 running steps 6.1-6.7; s19 rope/wood strain 0.4/2.6; s21 steps 0.3-5.7, plough set down 7.1; s25 soil turning 0.5-6.5 and steps 0.8-7.2; s29 soil 3.0; s31 bamboo 0.5/2.8; s32 leaves 0.3; s36 cart 0.5/2.0, stop 3.1; s42 paper 0.6. VF (on the 1920x1080 picture before the grade; draft px x2, y x1.985; blur and tone only, no darkening box): s42 the paper's faint fake writing (post list 3.75-6.58 draft = c2.75-5.56): a 210x180 box (feather 16, sigma 10) tracked on the paper from c2.4 (centre 755,522 -> 700,548 -> 702,580 -> 672,578 -> 690,558 -> 650,592 -> 652,595 at c2.5/2.75/3.25/4.0/4.75/5.25/5.56), then the picture fades out over c5.00-5.56; s17 the back of the plough drawing (faint frame lines): only cream paper pixels (luma over ~172, R-B under ~45) of the left 640x720 softened, sigma 7, hands and bricks untouched; s11 the out-of-focus vertical pole in the sky (c0-5.25): a 180-wide box tracked (x 780 -> 737 -> 712 -> 648 -> 630 at c0/2/4/5/5.3), y 0-560, horizontal blur sigma 60 (vertical 1), gone by c5.3 before her staff swings into that sky; the pole's lower end beside her sleeve (y 560-900) is left -- a box there smeared her arm; s13 the ground below y 510-620 at contrast 0.6 / saturation 0.88, s19 below y 580-730 at contrast 0.82 (the people walk down into it, so only a little): the furrow pattern of the set picture toned down; s28 noon to sunset: the sky (y < 470, feather 120) desaturated to 0.25 and warmed, then the whole picture warmed (colorbalance, saturation 0.92, gamma 0.97), next to s27/s29. Not done: s21's large curved iron share darkened locally (it is already dark steel; darkening does not change its shape and a tracked patch over a moving blade for 8 s would show), s01 s04 s06 s07 the stirring stick (post list: optional). JITTER: cut-qa's jitter() on every staged clip 0.00-0.05: no deshake, no vidstab. SLOWED/HELD: none slowed; the only hold is s42 (min 6.5: 0.94 s after the clip, all of it black after the fade). END: s42 is Lai San's own voice (通 ends c5.38); the picture fades over c5.00-5.56 and holds black to 6.5 while the gong rings; e915cut.sh fades the sound over the last 1.0 s.\nRESULT (e915cut.sh as written): 251.33 s (6032 frames; script estimate 225: the takes run longer than the storyboard's seconds, nothing slowed); -14.0 LUFS, LRA 8.2, peak -3.4 dBFS; loudnorm2 linear (pre -14.42 LUFS, -3.68 dBTP + 0.42 = -3.26 <= -2.2); cut-qa: fps 24, jitter 42 steady, held FAIL s42 0.94 s and black FAIL 0.958 s -- both the intended end (the picture is faded out at c5.56 and the black holds the gong; the post brief allows black after the fade), motion FAIL 6.7 / static 5 % on the clips (cut after grade 5.6 / 16 %) -- a property of the refined slow push-ins; cut-jumps 0; audio-qa 40 lines 0 problems (gap notes before a11, a20, a25, a30: s09, s19, s25, s31 have no lines, on purpose). Floor: no stretch under -40 M after the first 0.5 s. Accents on the finished cut (0.4 s momentary): s38 -22.6 between his phrases; s42 end -10.8 after his last word, the loudest moment (listen; 2 dB down if it jumps). Whisper (medium) on the processed segments heard every pitched line and every voice_off recording. BY EAR / EYE: 11.6-19.6 s03 panel at the bottom, gone at 15.43 before a04; 56.9-57.7 s10 天剛亮 at 0.78; 61.9-67.2 s11 the softened pole; 73.5-78.2 s13 a14 (0.75 on its first phrase) and the toned-down ground; 78.2-84.0 s14 Erniu at 1.15 / 1.3; 89.4-90.6 s15 都沒糧吃 at 0.75; 97.5-105.3 s17 four pitch switches and the softened paper; 105.3-112.3 s18 at 0.8; 112.3-116.8 s19 the ground contrast with the men walking down into it; 121.5-129.5 s21 a21 (pitched recording) on the side-on walk; 134.1 s22 the 0.2 s high burst in 頭一回見; 135.4-139.7 s23 a23 against his open mouth (voice_off, lips not matched); 146.7-154.7 s25 8 s of ploughing (cut shorter?); 164.0-168.5 s28 the sunset grade next to s27/s29, the bell with the ding; 186.8-196.7 s32 at 1.25/1.12, s33 at 1.28; 209.4-212.9 s36 a34 laid; 219.9-227.4 s38 at 0.88/0.72, accent 224.7; 239.1-240.6 s40 就繞山 at 1.25; 244.8-251.3 the end: the paper box, a40, the fade, the gong in the black. REVIEW 3 (2026-11-16, colab/runs/e915-live/review3-plan.md: cut-review.md + cut-review-2.md merged, the coordinator's picks; the only paid work was the fix2 drafts and the Colab refines of s02 s21 s26, run by the coordinator; work files in the session scratchpad, deleted after the cut). PICKS: refine-prep.py 15 picks-merged.tsv fix1/review-picks.tsv review3-trims.tsv fix2/review-picks.tsv review4-trims.tsv -- fix2 after review3-trims, or review3-trims' s26 row (fix1 9151202) would win -- then stage.py 15; e915cut.sh's want/seed tables follow. s02 9151102 0.5-6.0 (refined from the draft alone; checked at 1312x736: two grey-blue sleeved hands and two peach-sleeved hands at c2.0-3.0, three at c0.5-1.5, one peach hand from c3.9; nothing doubled), pats bookPlace1 3.6/4.1 -> one at 3.9, the frame her hand lands (there is no second pat: the hand stays down and smooths). s21 fix2 9151302 1.625-8.0: the beam is one bowed arc and they set the plough down side-on at draft 6.25-6.875, standing in view from 7.0; the front frame and share are still large while carried (9151301 the same, and it stands the plough on end), so the start is cut to where Erniu's mouth starts moving (draft 2.0-4.95), 1.6 s less carried share; a21 line_at 0.8 -> 0.25 (c0.25-4.49, the last phrase 石師傅也裝好了 partly on his closed grin, voice_off as before); steps 0.3-4.5 (5.1/5.7 dropped), set-down impactWood_heavy_002 7.1 -> 5.25 (draft 6.875). s26 fix2 9151302 0-4.5: one Tang (her back, two buns, pink ribbons) pointing at c1.5-3.5, Qin far left behind a dark-wood plough with a bowed beam and a raised handle, nothing reads as a sword (9151301 draws the plough as an upright pole and a large man fills the right third). TRIMS (review4-trims.tsv, whole frames: start floor, end ceil to 3 decimals; laid lines from lines.json, which is the silence-trimmed length; clip voices from whisper word times on the staged clips plus 50 ms RMS at each cut): s01 end 6.0 (a01 ends c4.50, 0.50 after), s03 end 7.542 (the plan's 7.5 left a03 + a04 + the engine's lead/gap/tail 0.04 s short and the first re-cut padded a frame; 181 frames, 0.36 after a04), s04 end 7.125 (0.50), s05 end 5.0 (a07 c4.07, 0.68), s08 end 5.625 (fix1 whole before; a10 c5.04, 0.58), s10 start 0.5 (-64 dB there; 天 from draft 1.42), s13 end 4.5 (0.58), s15 start 1.5 (-55 dB there; 冬麥 from draft 2.01), s19 end 4.5, s20 end 4.0 (0.55), s25 end 5.75 (fix1 whole before), s27 end 5.334 (128 frames; the T handle at the bottom edge from c4.608 is out; a26 c4.14, 0.44), s28 end 4.5 (1.85 after the system line), s31 end 5.0, s36 start 1.5, s37 end 5.375 (a35 c4.17), s39 start 1.0 (his voice starts draft 2.50, -58..-68 dB before). No trim cuts a syllable. Moved with the starts: clip_af s10 2.6 -> 2.1, s15 5.44 -> 4.94, s39 4.72 -> 3.72; line_at a34 3.3 -> 2.3 (c2.3-5.74, the cart still rolls up to the beam). SFX: s15 staff taps 0.5/1.1 -> 0.0/0.6; s25 rustle 6.5, steps 6.4/7.2 deleted (step 5.6 is 0.2 s long and rings 0.05 s into s26); s36 creak3 0.5 deleted, creak1 2.0 -> 1.0, impactWood_light 3.1 -> 2.1, wind1 1.25 -> 0.25; s08's threshing-ground birds and Wind 6.0 -> 5.1 (s08 is 5.625 now; 0.5 s before the cut as before); s38 impactSoft_heavy_000 -6 -> -2, impactWood_heavy_001 -14 -> -10 (0.4 s momentary at the hit -22.6 -> -18.4, between his phrases). VOICE: the grove: clip_af s30 + volume -2.5 dB, s32 -4 dB, s34 -1.5 dB (line maxima a29 -8.4 -> -9.0, a30 -7.5 -> -9.2, a32 -9.8 -> -10.6 M; a30 is no longer above the rest: a08 -8.2 and a28 -8.4 are louder; whisper still hears 這是我娘，墳上沒能寫她的名字). s22 頭一回見: the burst at c4.68-4.84 is 250-390 Hz against Shi's 115-125 around it; the plan's asendcmd 0.6 at 4.65-4.9 lowered it (to 174-254) but whisper then read 不會回見 / 同意推薦, and every later switch point tried (4.55-4.62, 0.6-0.75) either read 同一回見 or did not lower it (rubberband switches late); so the pitch stays 0.92 and the burst is 5 dB down with a 50 ms ramped volume dip (volume expression, eval=frame), whisper 頭一回見. VF: s17 the paper's softening sigma 7 -> 12 (fingers untouched: the mask is the cream pixels); s42 the paper box 210x180 -> 170x150, sigma 10 -> 8; s06 not done: the top band (y < 420) holds Xu's head and Tang's buns, darkening it would grade faces apart from bodies. END: vf s42 fade st 5.000 d 0.56 -> st 5.250 d 0.31 (通 ends c5.38, at 233.71, in a picture still mostly lit); min 6.5 -> 8.0 (2.44 s of black); e915cut.sh fades the sound over the last 1.5 s (was 1.0); the gong (c5.45, 233.78): RMS 0.25 s -13 at 233.8, -22 at 234.8 (fade start 234.83), -29 at 235.3, -40 at 235.8, -50 at 236.05 -- it rings out under the fade; momentary at the hit -11.4. RESULT (e915cut.sh as written): 236.33 s (5672 frames; was 251.33); -14.0 LUFS, LRA 6.4, peak -2.9 dBFS; loudnorm2 linear (pre -14.48 LUFS, -3.36 dBTP + 0.48 = -2.88 <= -2.2); cut-qa: fps 24, jitter 42 steady, held FAIL s42 2.44 s and black FAIL 2.416 s (the intended end, longer on purpose), motion FAIL 6.6 / static 5 % on the clips (5.5 / 16 % after grade), as before; cut-jumps 0; audio-qa 40 lines 0 problems (gap notes before a11, a20, a25, a30, on purpose). Floor: two 0.1-0.2 s dips to -40.4 / -40.8 M (9.8, the tail of s02; 230.0, a pause in s42), nothing longer. Whisper (medium) on every trimmed or changed shot in the cut heard every line (homophones as before; a21 reads 師兄弟, a27 頂，許願離，一人可更 -- recordings unchanged). BY EAR / EYE: 5.0-10.5 s02 the new take, the pat at 8.90; 51.5-52.2 s10 天剛亮 at 0.78 after the new start; 68.2-71.6 s13 a14; 82.9-84.4 s15 都沒糧吃 at 0.75; 91.0-98.8 s17 the paper softened at sigma 12; 113.75-120.13 s21 the fix2 plough (carried share large until 118.6, set down 119.0), a21 from 114.0; 124.8-125.0 s22 頭一回見 with the dip; 126.0-130.3 s23 我來拉; 137.3-143.0 s25 cut at 5.75; 143.0-147.5 s26 the fix2 far view (plough, not a sword); 147.5-152.1 s27 end (no T handle); 162.4-188.7 the grove lines at -2.5/-4/-1.5 dB, s32 a30 174.2-179.3 still clear?; 195.1-198.5 s36 a34 at 2.3; 209.2 s38 the accent at +4 dB; 230.3-231.8 s42 紙坊賣我; 233.6-236.33 the end: 橋就通 lit, the fade, the gong in 2.4 s of black, the 1.5 s audio fade; Tang a02 5.1, a25 143.2, a39 224.2 against each other."

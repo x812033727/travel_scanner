@@ -10,7 +10,8 @@
  "duck_ratio": 3.5,
  "duck_release_ms": 900,
  "sfx_dirs": [
-  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx"
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx",
+  "<VIDEO_WORKDIR>/_sfx/zhongtian-real-20261121"
  ],
  "name_whoosh": "swish-9",
  "music": [
@@ -258,7 +259,7 @@
   {
    "file": "cloth1",
    "at": "s08",
-   "off": 3.3,
+   "off": 0.3,
    "gain": -32
   },
   {
@@ -349,25 +350,31 @@
    "file": "wooden_01",
    "at": "s14",
    "off": 0.05,
-   "gain": -14
+   "gain": -8
   },
   {
    "file": "swish-3",
    "at": "s14",
-   "off": 0.3,
+   "off": 0.25,
    "gain": -24
   },
   {
    "file": "impactWood_heavy_000",
    "at": "s14",
-   "off": 0.85,
-   "gain": -12
+   "off": 0.67,
+   "gain": -6
   },
   {
    "file": "rustle03",
    "at": "s14",
-   "off": 0.9,
+   "off": 0.7,
    "gain": -20
+  },
+  {
+   "file": "impactWood_light_001",
+   "at": "s14",
+   "off": 0.95,
+   "gain": -16
   },
   {
    "file": "rustle03",
@@ -382,28 +389,16 @@
    "gain": -30
   },
   {
-   "file": "creak2",
-   "at": "s16",
-   "off": 0.1,
-   "gain": -24
-  },
-  {
    "file": "cloth1",
    "at": "s16",
-   "off": 1.0,
+   "off": 3.0,
    "gain": -30
   },
   {
    "file": "creak1",
    "at": "s20",
-   "off": 0.5,
+   "off": 4.2,
    "gain": -26
-  },
-  {
-   "file": "impactWood_light_000",
-   "at": "s20",
-   "off": 1.2,
-   "gain": -24
   },
   {
    "file": "impactWood_light_001",
@@ -476,6 +471,12 @@
    "at": "s30",
    "off": 1.0,
    "gain": -26
+  },
+  {
+   "file": "zhongtian-sfx-thumbprint-01",
+   "at": "s30",
+   "off": 1.03,
+   "gain": 0
   },
   {
    "file": "paper_02",
@@ -654,7 +655,7 @@
   },
   "s20": {
    "from": 0,
-   "af": "volume=2dB,asendcmd=c='1.6 rubberband pitch 0.6',rubberband=pitch=1.0:formant=preserved,volume=3dB,alimiter=limit=0.89:attack=1:release=50:level=false"
+   "af": "asendcmd=c='1.5 rubberband pitch 0.7',rubberband=pitch=0.75:formant=preserved"
   },
   "s22": {
    "from": 0,
@@ -663,10 +664,6 @@
   "s24": {
    "from": 0,
    "af": "asendcmd=c='5.5 rubberband pitch 1.0',rubberband=pitch=0.65:formant=preserved,volume=2dB,alimiter=limit=0.89:attack=1:release=50:level=false"
-  },
-  "s28": {
-   "from": 0,
-   "af": "rubberband=pitch=0.9:formant=preserved"
   },
   "s29": {
    "from": 0,
@@ -697,14 +694,14 @@
   "zq913a08": 0.3,
   "zq913a10": 0.6,
   "zq913a14": 1.3,
-  "zq913a16": 1.25,
+  "zq913a16": 0.14,
   "zq913a18": 0.37,
   "zq913a20": 0.5,
   "zq913a22": 0.6,
   "zq913a27": 0.4,
   "zq913a32": 0.3,
   "zq913a33": 1.0,
-  "zq913a34": 0.5
+  "zq913a34": 2.0
  },
  "panel_y": {
   "s18": 870
@@ -714,18 +711,21 @@
  },
  "vf": {
   "s01": "split[paa][pab];[pab]crop=220:476:1700:603,gblur=sigma=22,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((X+1700)-1740)/40\\,0\\,1)*clip(((Y+603)-643)/40\\,0\\,1)*clip((1.25-T)/0.2\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=1700:603,format=yuv420p",
-  "s02": "split[paa][pab];[pab]crop=420:545:1200:330,gblur=sigma=20,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((X+1200)-1240)/35\\,0\\,1)*clip((1585-(X+1200))/35\\,0\\,1)*clip(((Y+330)-365)/30\\,0\\,1)*clip((844-(Y+330))/40\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=1200:330,format=yuv420p",
+  "s02": "split[paa][pab];[pab]crop=310:445:1310:335,gblur=sigma=11,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((X+1310)-1310)/60\\,0\\,1)*clip((1620-(X+1310))/60\\,0\\,1)*clip(((Y+335)-335)/60\\,0\\,1)*clip((780-(Y+335))/60\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=1310:335,format=yuv420p",
   "s03": "split[paa][pab];[pab]crop=380:456:510:178,gblur=sigma=22,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((X+510)-540)/30\\,0\\,1)*clip((860-(X+510))/30\\,0\\,1)*clip(((Y+178)-208)/30\\,0\\,1)*clip((605-(Y+178))/30\\,0\\,1)*clip((1.5-T)/0.12\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=510:178,format=yuv420p,split[qaa][qab];[qab]crop=360:456:330:178,gblur=sigma=22,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((X+330)-360)/30\\,0\\,1)*clip((660-(X+330))/30\\,0\\,1)*clip(((Y+178)-208)/30\\,0\\,1)*clip((605-(Y+178))/30\\,0\\,1)*clip((T-1.38)/0.12\\,0\\,1)'[qac];[qaa]format=rgba[qad];[qad][qac]overlay=330:178,format=yuv420p",
   "s04": "split[paa][pab];[pab]crop=250:294:875:785,gblur=sigma=12,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((X+875)-900)/25\\,0\\,1)*clip((1100-(X+875))/25\\,0\\,1)*clip(((Y+785)-(810+68*T))/25\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=875:785,format=yuv420p",
   "s07": "split[paa][pab];[pab]crop=450:208:515:362,gblur=sigma=12,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((X+515)-540)/25\\,0\\,1)*clip((940-(X+515))/25\\,0\\,1)*clip(((Y+362)-387)/25\\,0\\,1)*clip((546-(Y+362))/25\\,0\\,1)*clip((T-0.9)/0.2\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=515:362,format=yuv420p",
   "s12": "split[paa][pab];[pab]crop=130:814:0:69,gblur=sigma=18,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((100-X)/30\\,0\\,1)*clip(((Y+69)-99)/30\\,0\\,1)*clip((853-(Y+69))/30\\,0\\,1)*clip((0.75-T)/0.15\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=0:69,format=yuv420p",
-  "s23": "split[paa][pab];[pab]crop=480:388:640:635,gblur=sigma=18,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((X+640)-670)/30\\,0\\,1)*clip((1090-(X+640))/30\\,0\\,1)*clip(((Y+635)-665)/30\\,0\\,1)*clip((993-(Y+635))/30\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=640:635,format=yuv420p",
+  "s23": "split[paa][pab];[pab]crop=390:340:710:650,gblur=sigma=9,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((X+710)-710)/30\\,0\\,1)*clip((1100-(X+710))/30\\,0\\,1)*clip(((Y+650)-650)/30\\,0\\,1)*clip((990-(Y+650))/30\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=710:650,format=yuv420p",
   "s26": "vidstabtransform=input=/root/mokaair-work/videos/_live-e913/zhong-tian-qu-qi-e913-dh/s26.trf:smoothing=4:zoom=3:optzoom=0:interpol=bicubic",
   "s36": "split[paa][pab];[pab]crop=124:202:1042:421,gblur=sigma=12,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((X+1042)-1054)/12\\,0\\,1)*clip((1154-(X+1042))/12\\,0\\,1)*clip(((Y+421)-433)/12\\,0\\,1)*clip((612-(Y+421))/12\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=1042:421,format=yuv420p,scale=w='trunc(1920*(1+0.01*t)/2)*2':h=-2:eval=frame,crop=1920:1080",
   "s38": "scale=w='trunc(1920*(1+0.008*t)/2)*2':h=-2:eval=frame,crop=1920:1080",
   "s42": "scale=w='trunc(1920*(1+0.006*t)/2)*2':h=-2:eval=frame,crop=1920:1080,fade=t=out:st=4.42:d=0.6",
   "s10": "split[paa][pab];[pab]crop=140:232:812:234,gblur=sigma=14,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((X+812)-832)/20\\,0\\,1)*clip((944-(X+812))/20\\,0\\,1)*clip(((Y+234)-254)/20\\,0\\,1)*clip((446-(Y+234))/20\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=812:234,format=yuv420p",
-  "s13": "split[paa][pab];[pab]crop=540:340:180:740,gblur=sigma=12,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((66-abs(X+180-(if(lt(T\\,0.513)\\,298+(-13)*(T-0.000)/0.513\\,if(lt(T\\,1.026)\\,285+(43)*(T-0.513)/0.513\\,if(lt(T\\,1.539)\\,328+(130)*(T-1.026)/0.513\\,if(lt(T\\,2.052)\\,458+(30)*(T-1.539)/0.513\\,if(lt(T\\,2.565)\\,488+(70)*(T-2.052)/0.513\\,if(lt(T\\,3.078)\\,558+(20)*(T-2.565)/0.513\\,if(lt(T\\,3.591)\\,578+(50)*(T-3.078)/0.513\\,if(lt(T\\,4.104)\\,628+(-16)*(T-3.591)/0.513\\,if(lt(T\\,5.027)\\,612+(-10)*(T-4.104)/0.923\\,602))))))))))))/16\\,0\\,1)*clip((88-abs(Y+740-(if(lt(T\\,0.513)\\,848+(67)*(T-0.000)/0.513\\,if(lt(T\\,1.026)\\,915+(20)*(T-0.513)/0.513\\,if(lt(T\\,1.539)\\,935+(25)*(T-1.026)/0.513\\,if(lt(T\\,2.052)\\,960+(33)*(T-1.539)/0.513\\,if(lt(T\\,2.565)\\,993+(22)*(T-2.052)/0.513\\,if(lt(T\\,3.078)\\,1015+(15)*(T-2.565)/0.513\\,if(lt(T\\,3.591)\\,1030+(-5)*(T-3.078)/0.513\\,if(lt(T\\,4.104)\\,1025+(-5)*(T-3.591)/0.513\\,if(lt(T\\,5.027)\\,1020+(-2)*(T-4.104)/0.923\\,1018))))))))))))/16\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=180:740,format=yuv420p"
+  "s13": "split[paa][pab];[pab]crop=540:340:180:740,gblur=sigma=12,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((66-abs(X+180-(if(lt(T\\,0.513)\\,298+(-13)*(T-0.000)/0.513\\,if(lt(T\\,1.026)\\,285+(43)*(T-0.513)/0.513\\,if(lt(T\\,1.539)\\,328+(130)*(T-1.026)/0.513\\,if(lt(T\\,2.052)\\,458+(30)*(T-1.539)/0.513\\,if(lt(T\\,2.565)\\,488+(70)*(T-2.052)/0.513\\,if(lt(T\\,3.078)\\,558+(20)*(T-2.565)/0.513\\,if(lt(T\\,3.591)\\,578+(50)*(T-3.078)/0.513\\,if(lt(T\\,4.104)\\,628+(-16)*(T-3.591)/0.513\\,if(lt(T\\,5.027)\\,612+(-10)*(T-4.104)/0.923\\,602))))))))))))/16\\,0\\,1)*clip((88-abs(Y+740-(if(lt(T\\,0.513)\\,848+(67)*(T-0.000)/0.513\\,if(lt(T\\,1.026)\\,915+(20)*(T-0.513)/0.513\\,if(lt(T\\,1.539)\\,935+(25)*(T-1.026)/0.513\\,if(lt(T\\,2.052)\\,960+(33)*(T-1.539)/0.513\\,if(lt(T\\,2.565)\\,993+(22)*(T-2.052)/0.513\\,if(lt(T\\,3.078)\\,1015+(15)*(T-2.565)/0.513\\,if(lt(T\\,3.591)\\,1030+(-5)*(T-3.078)/0.513\\,if(lt(T\\,4.104)\\,1025+(-5)*(T-3.591)/0.513\\,if(lt(T\\,5.027)\\,1020+(-2)*(T-4.104)/0.923\\,1018))))))))))))/16\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=180:740,format=yuv420p",
+  "s31": "split[paa][pab];[pab]crop=1920:680:0:400,format=rgba,geq=r='(0.299*r(X\\,Y)+0.587*g(X\\,Y)+0.114*b(X\\,Y))*0.8+0.2*r(X\\,Y)':g='(0.299*r(X\\,Y)+0.587*g(X\\,Y)+0.114*b(X\\,Y))*0.8+0.2*g(X\\,Y)':b='(0.299*r(X\\,Y)+0.587*g(X\\,Y)+0.114*b(X\\,Y))*0.8+0.2*b(X\\,Y)':a='255*clip((r(X\\,Y)-max(g(X\\,Y)\\,b(X\\,Y))-45)/40\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=0:400,format=yuv420p",
+  "s06": "colorbalance=rm=0.05:bm=-0.05",
+  "s11": "colorbalance=rm=0.05:bm=-0.05"
  },
  "subtitle_lines": [
   "zq913a19"

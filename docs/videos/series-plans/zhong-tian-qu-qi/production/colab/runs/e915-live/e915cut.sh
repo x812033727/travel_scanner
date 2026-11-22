@@ -2,7 +2,11 @@
 set -u
 R=/home/user/zt-work; P=$R/docs/videos/series-plans/zhong-tian-qu-qi/production; Q=$P/colab/runs/_scripts
 E=/root/mokaair-work/videos/_live-e915/zhong-tian-qu-qi-e915-dh; VJ=$R/docs/videos/zhong-tian-qu-qi-e015-r2/video.json
-V=${V:-v1}; mkdir -p $E/cut; [ -f $E/cut/e915-live.mp4 ] && { mkdir -p $E/cut/old-$(date +%H%M); mv $E/cut/e915-live.* $E/cut/final.log $E/cut/old-$(date +%H%M)/ 2>/dev/null; }
+# POLISH+SWAP 2026-11-21: the 2026-11-16 cut files (lines.json, srt, final.log; its mp4 is review-zt/ep/e015/final.mp4) go to
+# cut/old-1116 once and carry a .keep (never removed); a later run replaces its own previous cut (no old-HHMM).
+mkdir -p $E/cut
+[ -d $E/cut/old-1116 ] || { mkdir -p $E/cut/old-1116; mv $E/cut/e915-live.* $E/cut/final.log $E/cut/old-1116/ 2>/dev/null; touch $E/cut/old-1116/.keep; }
+rm -f $E/cut/e915-live.* $E/cut/final.log; rm -rf $E/cut/pre
 rm -rf $E/segments-v4
 # the refined shots must be staged first (live-action/stage.py 15: refined picture + draft voice + trim/crop -> clips/sNN-t1.mp4)
 miss=$(python3 -c "import json,os;p=json.load(open('$E/picks.json'));print(' '.join(s for s in p if not os.path.exists('$E/clips/'+s+'-t1.mp4')))")
@@ -34,12 +38,18 @@ bad=[f'{s} start {p[s][\"trim\"].get(\"start\",0)} end-before {p[s][\"trim\"].ge
 bad+=[f'{s} seed {p[s][\"seed\"]} (want {v})' for s,v in seed.items() if p[s]['seed']!=v]
 bad+=[f'{s} seed {p[s][\"seed\"]} (want 9151101)' for s in p if s not in seed and p[s]['seed']!=9151101]
 print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
+# POLISH+SWAP 2026-11-21 (edit table _note). SWAP: s21 s25 s42 are the fixp retakes clips/sNN-t5.mp4 (already trimmed,
+# runpod/polish/picks.json: s21 9159101 0.25-6.75, s25 9159102 whole 8.0, s42 9159101 0.583-6.583; the assembler takes the
+# highest take number); picks.json and the want table above still describe the t1 staging, which stays on disk.
+# audio/zq915a21.wav is rebuilt on the s21 take's phrase onsets (the REVIEW 3 file kept as audio/orig/zq915a21-r3.wav).
+# sfx: the 2026-11-21 set (_sfx/zhongtian-real-20261121, plough-earth on s25) is the edit table's second sfx dir.
 # no vidstab: cut-qa's jitter() on every staged clip reads 0.00-0.05 (s02 s37 0.05, s14 0.04), nothing hops frame to frame
 cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VJ $R/docs/videos/zhong-tian-qu-qi-e015-r2/overlays.json $P/hailuo/edit-dh-e915-live.json $E $E/cut/e915-live.mp4 > $E/cut/final.log 2>&1; tail -3 $E/cut/final.log
 [ -f $E/cut/e915-live.mp4 ] || exit 1
 # a sample-peak limiter before loudnorm2 keeps it linear (e908-e912: attack 5 ms, limit 0.6 = -4.4 dBFS; the AAC encode
 # after it overshoots at shorter attacks and loudnorm2 then goes dynamic and clicks). e913 REVIEW 3: attack 8 ms -- with 5 ms
 # the e913 re-cut's AAC overshot to -3.11 dBTP and loudnorm2 went dynamic; 8 ms held it to -3.84 dBTP, linear; kept for e914, e915
+# END (POLISH+SWAP: the s42 retake: 通 ends c5.78, fade c5.65-5.98, gong c5.85, min 8.417 = 2.44 s black; the sound fade as below)
 # END (REVIEW 3): s42 is Lai San's own voice (his last word 通 ends c5.38); the picture fades over c5.25-5.56 (vf fade=t=out:st=5.250:d=0.31,
 # so 橋就通 is said in a lit picture) and min 8.0 holds about 2.44 s of black after it, so the low accent laid at c5.45
 # (gong_02 + impactSoft_heavy_000) and the tension cue ring out in the dark. The sound fades over the last 1.5 s.
@@ -49,7 +59,20 @@ ffmpeg -v error -y -i $E/cut/e915-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af
 ffmpeg -hide_banner -i $E/cut/e915-live.mp4 -map 0:a -af loudnorm=I=-14:TP=-2.2:LRA=11:print_format=json -f null - 2>&1 | sed -n '/^{/,/^}/p' \
  | python3 -c "import json,sys;j=json.load(sys.stdin);i,tp=float(j['input_i']),float(j['input_tp']);print(f'pre-loudnorm2 {i} LUFS {tp} dBTP: {tp-14-i:+.2f} after the gain ->', 'linear' if tp-14-i<=-2.2 else 'DYNAMIC (lower the limiter or its attack)')"
 bash $Q/loudnorm2.sh $E/cut/e915-live.mp4
+# POLISH+SWAP 2026-11-21 (e912 lesson): the true peak after loudnorm2; above -1.5 dBTP a second sample-peak limiter at 0.7 touches
+# just those peaks; the delivery wants <= -1 dBTP: printed on the final file
+TP=$(ffmpeg -hide_banner -nostats -i $E/cut/e915-live.mp4 -map 0:a -af ebur128=peak=true -f null - 2>&1 | grep -A1 'True peak:' | grep -oE -- '-?[0-9.]+ dBFS' | tail -1 | cut -d' ' -f1)
+echo "after loudnorm2: true peak $TP dBTP"
+if python3 -c "import sys;sys.exit(0 if float('$TP')>-1.5 else 1)"; then
+ ffmpeg -v error -y -i $E/cut/e915-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af "alimiter=limit=0.7:attack=8:release=60:level=false,aresample=48000" $E/cut/e915-live.lim.mp4 && mv $E/cut/e915-live.lim.mp4 $E/cut/e915-live.mp4
+ echo "second limiter applied"
+fi
+ffmpeg -hide_banner -nostats -i $E/cut/e915-live.mp4 -map 0:a -af ebur128=peak=true -f null - 2>&1 | grep -E '^\s+(I|LRA|Peak):' | tail -3 \
+ | awk '{print} /Peak:/{print ($2<=-1.0)?"true peak ok (<= -1 dBTP)":"TRUE PEAK OVER -1 dBTP"}'
 echo "== cut-qa";   python3 $Q/cut-qa.py $E/cut --stem e915-live 2>&1 | tail -20
 echo "== cut-jumps"; python3 $Q/cut-jumps.py $E/cut 2>&1 | tail -12
 echo "== audio-qa"; python3 $Q/audio-qa.py $E/cut $VJ 2>&1 | tail -15
 echo "== sheets";   python3 $Q/continuity-sheets.py $E/cut $VJ $E/review/continuity-v1 2>&1 | tail -4
+# the segments are 1-2 GB and only the assembler reads them: gone after the checks (KEEP_SEG=1 keeps them for a look)
+[ "${KEEP_SEG:-0}" = 1 ] || rm -rf $E/segments-v4
+[ "${KEEP_PRE:-0}" = 1 ] || rm -rf $E/cut/pre

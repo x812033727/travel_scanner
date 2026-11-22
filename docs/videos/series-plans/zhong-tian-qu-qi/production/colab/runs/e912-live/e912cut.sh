@@ -2,8 +2,13 @@
 set -u
 R=/home/user/zt-work; P=$R/docs/videos/series-plans/zhong-tian-qu-qi/production; Q=$P/colab/runs/_scripts
 E=/root/mokaair-work/videos/_live-e912/zhong-tian-qu-qi-e912-dh; VJ=$R/docs/videos/zhong-tian-qu-qi-e012-r2/video.json
-# POLISH 2026-11-21: at most one old cut is kept (the disk is short): an older cut/old-* goes before this one moves there
-V=${V:-v1}; mkdir -p $E/cut; [ -f $E/cut/e912-live.mp4 ] && { rm -rf $E/cut/old-*; mkdir -p $E/cut/old-$(date +%H%M); mv $E/cut/e912-live.* $E/cut/final.log $E/cut/old-$(date +%H%M)/ 2>/dev/null; }
+# POLISH 2026-11-21: at most one old cut is kept (the disk is short): an older cut/old-* goes before this one moves there.
+# SWAP 2026-11-21: an old-* holding a .keep file is never removed (old-2107 = the cut before the polish, old-2116 = the
+# POLISH cut before the swap; both kept for the backup); only the non-kept ones go
+V=${V:-v1}; mkdir -p $E/cut; [ -f $E/cut/e912-live.mp4 ] && { for d in $E/cut/old-*; do [ -f $d/.keep ] || rm -rf $d; done; mkdir -p $E/cut/old-$(date +%H%M); mv $E/cut/e912-live.* $E/cut/final.log $E/cut/old-$(date +%H%M)/ 2>/dev/null; }
+# SWAP 2026-11-21: clips/s11 s17 s21 s22-t5.mp4 (runpod/polish/picks.json, already trimmed: s11 9129101 3.125-8.0,
+# s17 9129102 2.5-8.0, s21 9129102 1.25-8.0, s22 9129101 1.75-10.083) win over the t1 files; picks.json and the want
+# table below still describe the t1 staging, which stays on disk
 rm -rf $E/segments-v4
 # the refined shots must be staged first (live-action/stage.py 12: refined picture + draft voice + trim/crop -> clips/sNN-t1.mp4)
 miss=$(python3 -c "import json,os;p=json.load(open('$E/picks.json'));print(' '.join(s for s in p if not os.path.exists('$E/clips/'+s+'-t1.mp4')))")

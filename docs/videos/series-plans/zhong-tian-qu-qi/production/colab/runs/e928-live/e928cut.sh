@@ -77,7 +77,7 @@ ffmpeg -hide_banner -i $E/cut/e928-live.mp4 -map 0:a -af loudnorm=I=-14:TP=-2.2:
 bash $Q/loudnorm2.sh $E/cut/e928-live.mp4
 # the delivery wants the true peak at or under -1 dBTP: print it (ebur128 true peak on the final file)
 ffmpeg -hide_banner -nostats -i $E/cut/e928-live.mp4 -map 0:a -af ebur128=peak=true -f null - 2>&1 | grep -E '^\s+(I|LRA|Peak):' | tail -3 \
- | tee /dev/stderr | awk '/Peak:/{print ($2<=-1.0)?"true peak ok (<= -1 dBTP)":"TRUE PEAK OVER -1 dBTP"}'
+ | awk '{print} /Peak:/{print ($2<=-1.0)?"true peak ok (<= -1 dBTP)":"TRUE PEAK OVER -1 dBTP"}'
 echo "== cut-qa";   python3 $Q/cut-qa.py $E/cut --stem e928-live 2>&1 | tail -20
 echo "== cut-jumps"; python3 $Q/cut-jumps.py $E/cut 2>&1 | tail -12
 echo "== audio-qa"; python3 $Q/audio-qa.py $E/cut $VL 2>&1 | tail -15

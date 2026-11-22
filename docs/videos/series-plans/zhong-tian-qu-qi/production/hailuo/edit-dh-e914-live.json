@@ -10,7 +10,8 @@
  "duck_ratio": 3.5,
  "duck_release_ms": 900,
  "sfx_dirs": [
-  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx"
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx",
+  "<VIDEO_WORKDIR>/_sfx/zhongtian-real-20261121"
  ],
  "name_whoosh": "swish-9",
  "music": [
@@ -86,6 +87,17 @@
    "fade_in": 2.0,
    "fade_out": 0.15,
    "tail": 0
+  },
+  {
+   "cue": "z-cue-cliffhanger",
+   "from": "s40",
+   "from_off": 0.3,
+   "to": "s42",
+   "offset": 0.0,
+   "gain": -16,
+   "fade_in": 0.3,
+   "fade_out": 0.6,
+   "tail": -1.567
   }
  ],
  "sfx": [
@@ -246,12 +258,6 @@
    "gain": -1
   },
   {
-   "file": "drawKnife2",
-   "at": "s03",
-   "off": 1.2,
-   "gain": -26
-  },
-  {
    "file": "cloth1",
    "at": "s05",
    "off": 0.3,
@@ -322,12 +328,6 @@
    "at": "s10",
    "off": 0.6,
    "gain": -28
-  },
-  {
-   "file": "door_close_01",
-   "at": "s14",
-   "off": 5.3,
-   "gain": -22
   },
   {
    "file": "impactWood_medium_000",
@@ -482,8 +482,8 @@
   {
    "file": "paper_03",
    "at": "s37",
-   "off": 1.0,
-   "gain": -30
+   "off": 3.4,
+   "gain": -24
   },
   {
    "file": "impactWood_light_001",
@@ -507,13 +507,25 @@
    "file": "paper_03",
    "at": "s42",
    "off": 0.1,
-   "gain": -26
+   "gain": -20
   },
   {
    "file": "paper_04",
    "at": "s42",
-   "off": 1.75,
-   "gain": -28
+   "off": 3.6,
+   "gain": -20
+  },
+  {
+   "file": "zhongtian-sfx-girl-breath-01",
+   "at": "s40",
+   "off": 0.0,
+   "gain": -2
+  },
+  {
+   "file": "zhongtian-sfx-girl-breath-01",
+   "at": "s40",
+   "off": 3.95,
+   "gain": -6
   }
  ],
  "frame_round": true,
@@ -530,7 +542,7 @@
   },
   "s03": {
    "from": 0,
-   "af": "asendcmd=c='1.6 rubberband pitch 1.1',rubberband=pitch=0.88:formant=preserved,volume=-2dB"
+   "af": "asendcmd=c='1.8 rubberband pitch 1.2',rubberband=pitch=0.96:formant=preserved,volume=-2dB"
   },
   "s04": {
    "from": 0,
@@ -586,7 +598,7 @@
   },
   "s37": {
    "from": 0,
-   "af": "rubberband=pitch=1.06:formant=preserved"
+   "af": "rubberband=pitch=1.15:formant=preserved"
   },
   "s38": {
    "from": 0,
@@ -599,6 +611,10 @@
   "s41": {
    "from": 0,
    "af": "rubberband=pitch=1.12:formant=preserved"
+  },
+  "s11": {
+   "from": 0,
+   "af": "rubberband=pitch=1.1:formant=preserved"
   }
  },
  "voice_off": [
@@ -617,7 +633,8 @@
   "zq914a24": 0.6,
   "zq914a25": 0.3,
   "zq914a27": 1.6,
-  "zq914a41": 0.05
+  "zq914a41": 0.05,
+  "zq914a39": 0.45
  },
  "panel_y": {
   "s01": 860,
@@ -633,14 +650,16 @@
  },
  "vf": {
   "s01": "split[maa][mab];[mab]crop=670:400:1250:380,format=rgba,geq=r='0.65*((0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))+0.6*(r(X\\,Y)-(0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))))':g='0.65*((0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))+0.6*(g(X\\,Y)-(0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))))':b='0.65*((0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))+0.6*(b(X\\,Y)-(0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))))':a='255*clip((r(X\\,Y)-b(X\\,Y)-60)/50\\,0\\,1)*clip(X/40\\,0\\,1)*clip(Y/40\\,0\\,1)*clip((400-Y)/40\\,0\\,1)'[mac];[maa]format=rgba[mad];[mad][mac]overlay=1250:380,format=yuv420p",
-  "s03": "split[maa][mab];[mab]crop=660:380:0:700,format=rgba,geq=r='0.65*((0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))+0.6*(r(X\\,Y)-(0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))))':g='0.65*((0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))+0.6*(g(X\\,Y)-(0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))))':b='0.65*((0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))+0.6*(b(X\\,Y)-(0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))))':a='255*clip((r(X\\,Y)-b(X\\,Y)-60)/50\\,0\\,1)*clip((660-X)/40\\,0\\,1)*clip(Y/40\\,0\\,1)'[mac];[maa]format=rgba[mad];[mad][mac]overlay=0:700,format=yuv420p",
   "s04": "crop=1600:900:0:0,scale=1920:1080:flags=lanczos,setsar=1",
   "s06": "split[maa][mab];[mab]crop=640:420:0:660,format=rgba,geq=r='0.65*((0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))+0.6*(r(X\\,Y)-(0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))))':g='0.65*((0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))+0.6*(g(X\\,Y)-(0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))))':b='0.65*((0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))+0.6*(b(X\\,Y)-(0.3*r(X\\,Y)+0.59*g(X\\,Y)+0.11*b(X\\,Y))))':a='255*clip((r(X\\,Y)-b(X\\,Y)-60)/50\\,0\\,1)*clip((640-X)/40\\,0\\,1)*clip(Y/40\\,0\\,1)'[mac];[maa]format=rgba[mad];[mad][mac]overlay=0:660,format=yuv420p,crop=1440:810:480:40,scale=1920:1080:flags=lanczos,setsar=1",
   "s23": "split[taa][tab];[tab]crop=820:340:1100:740,gblur=sigma=10,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((200-abs(X+1100-(if(lt(T\\,0.000)\\,1368\\,if(lt(T\\,1.500)\\,1368+(76)*(T-0.000)/1.500\\,if(lt(T\\,2.500)\\,1444+(92)*(T-1.500)/1.000\\,if(lt(T\\,3.000)\\,1536+(44)*(T-2.500)/0.500\\,if(lt(T\\,3.250)\\,1580+(16)*(T-3.000)/0.250\\,if(lt(T\\,4.000)\\,1596+(-32)*(T-3.250)/0.750\\,if(lt(T\\,4.500)\\,1564+(52)*(T-4.000)/0.500\\,if(lt(T\\,5.100)\\,1616+(56)*(T-4.500)/0.600\\,1672)))))))))))/16\\,0\\,1)*clip((45-abs(Y+730-(if(lt(T\\,0.000)\\,824\\,if(lt(T\\,1.500)\\,824+(42)*(T-0.000)/1.500\\,if(lt(T\\,2.500)\\,866+(46)*(T-1.500)/1.000\\,if(lt(T\\,3.000)\\,912+(32)*(T-2.500)/0.500\\,if(lt(T\\,3.250)\\,944+(12)*(T-3.000)/0.250\\,if(lt(T\\,4.000)\\,956+(12)*(T-3.250)/0.750\\,if(lt(T\\,4.500)\\,968+(16)*(T-4.000)/0.500\\,if(lt(T\\,5.100)\\,984+(56)*(T-4.500)/0.600\\,1040)))))))))))/16\\,0\\,1)'[tac];[taa]format=rgba[tad];[tad][tac]overlay=1100:740,format=yuv420p",
   "s24": "split[qaa][qab];[qab]crop=200:110:860:848,gblur=sigma=10,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(X/16\\,0\\,1)*clip((200-X)/16\\,0\\,1)*clip(Y/16\\,0\\,1)*clip((110-Y)/16\\,0\\,1)*clip((6.0-T)/0.1\\,0\\,1)'[qac];[qaa]format=rgba[qad];[qad][qac]overlay=860:848,format=yuv420p",
-  "s38": "split[paa][pab];[pab]crop=560:220:0:860,gblur=sigma=16,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((520-(X+0))/40\\,0\\,1)*clip(((Y+860)-900)/40\\,0\\,1)*clip((T-1.45)/0.1\\,0\\,1)*clip((2.9-T)/0.1\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=0:860,format=yuv420p",
-  "s41": "split[paa][pab];[pab]crop=740:840:1180:0,gblur=sigma=10,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((X+1180)-1240)/60\\,0\\,1)*clip((780-(Y+0))/60\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=1180:0,format=yuv420p",
-  "s42": "fade=t=out:st=4.840:d=0.6"
+  "s38": "split[paa][pab];[pab]crop=560:220:0:860,gblur=sigma=16,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((520-(X+0))/40\\,0\\,1)*clip(((Y+860)-900)/40\\,0\\,1)*clip((T-1.45)/0.1\\,0\\,1)*clip((2.9-T)/0.1\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=0:860,format=yuv420p,colortemperature=temperature=4300:mix=0.8,curves=all='0/0 0.5/0.43 0.85/0.76 1/0.92',colorbalance=rs=0.03:bs=-0.04",
+  "s41": "split[paa][pab];[pab]crop=740:840:1180:0,gblur=sigma=10,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip(((X+1180)-1240)/60\\,0\\,1)*clip((780-(Y+0))/60\\,0\\,1)'[pac];[paa]format=rgba[pad];[pad][pac]overlay=1180:0,format=yuv420p,colortemperature=temperature=4300:mix=0.8,curves=all='0/0 0.5/0.43 0.85/0.76 1/0.92',colorbalance=rs=0.03:bs=-0.04",
+  "s42": "colortemperature=temperature=4300:mix=0.8,curves=all='0/0 0.5/0.43 0.85/0.76 1/0.92',colorbalance=rs=0.03:bs=-0.04,fade=t=out:st=4.840:d=0.6",
+  "s35": "colortemperature=temperature=4300:mix=0.8,curves=all='0/0 0.5/0.43 0.85/0.76 1/0.92',colorbalance=rs=0.03:bs=-0.04",
+  "s39": "colortemperature=temperature=4300:mix=0.8,curves=all='0/0 0.5/0.43 0.85/0.76 1/0.92',colorbalance=rs=0.03:bs=-0.04",
+  "s40": "colortemperature=temperature=4300:mix=0.8,curves=all='0/0 0.5/0.43 0.85/0.76 1/0.92',colorbalance=rs=0.03:bs=-0.04"
  },
  "subtitle_lines": [
   "zq914a23"
