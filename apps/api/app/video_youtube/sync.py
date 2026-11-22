@@ -45,6 +45,7 @@ from app.models import AdminAuditLog, User, VideoProject, VideoReview
 from app.video_reviews import admin_service as reviews
 from app.video_reviews.schemas import ProjectOut
 from app.video_reviews.storage import ReviewStore
+from app.video_shorts import hand_upload
 from app.video_youtube import connection, language_package
 from app.video_youtube.client import (
     AuthorizationLost,
@@ -279,6 +280,19 @@ async def _project_reviews(session: AsyncSession, project: VideoProject) -> list
     return list(rows)
 
 
+async def _refuse_hand_upload(
+    session: AsyncSession, project: VideoProject, mode: Any, on_behalf: dict[str, Any] | None
+) -> None:
+    """A Short the owner uploads by hand: the site neither sends it under the standing consent
+    nor uploads its file, which would put a second copy on the channel. Asked under the
+    project's lock, so a link recorded a moment ago counts. What the owner asks of a video
+    they uploaded (``studio``) stays theirs to ask."""
+    automatic = as_dict(on_behalf).get("auto") is True
+    uploads = mode == "upload" and project.youtube_video_id is None
+    if (automatic or uploads) and await hand_upload.is_hand_uploaded(session, project):
+        raise Refused(409, "video_youtube_hand_upload", hand_upload.NOT_SENT)
+
+
 async def _linked_connection(session: AsyncSession) -> Any:
     row = await connection.connection_row(session)
     if not connection.linked(row):
@@ -329,6 +343,7 @@ async def request_sync(
     from app.video_youtube.vps import assert_idle
 
     await assert_idle(session, slug, upload=payload.mode == "upload")
+    await _refuse_hand_upload(session, project, payload.mode, on_behalf)
     package = await asyncio.to_thread(
         read_approved_package, store, slug, project, await _project_reviews(session, project)
     )
@@ -429,6 +444,8 @@ async def retry_sync(
         raise Refused(409, "video_youtube_sync_running", "這支影片正在送 YouTube，等它跑完再送")
     if state.get("status") == "done":
         raise Refused(409, "video_youtube_sync_done", "上一次已經全部完成；要改資料請重新送出")
+    mode = as_dict(state.get("request")).get("mode")
+    await _refuse_hand_upload(session, project, mode, on_behalf)
     store = reviews.review_store(await load_runtime_settings(session))
     package = await asyncio.to_thread(
         read_approved_package, store, slug, project, await _project_reviews(session, project)
@@ -576,6 +593,8 @@ async def _automatic_schedule_guard(run: Run) -> AsyncIterator[None]:
             raise LeaseLost(run.slug)
         if project is None or project.dropped_at is not None:
             raise StepFailed("這支影片已經被放棄了，這次排程已停止")
+        if await hand_upload.is_hand_uploaded(session, project):
+            raise StepFailed(hand_upload.NOT_SENT)
         yield
 
 

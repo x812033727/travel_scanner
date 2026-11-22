@@ -25,6 +25,7 @@ from app.config import Settings
 from app.models import User, VideoProject
 from app.video_reviews import admin_service as reviews
 from app.video_reviews.storage import ReviewStore, valid_slug
+from app.video_shorts import hand_upload
 from app.video_youtube import sync, vps_settings
 from app.video_youtube.errors import Refused
 from app.video_youtube.requests import captioned, text_problem
@@ -340,6 +341,8 @@ async def start(session: AsyncSession, slug: str, user: User, payload: StartIn) 
             "vps_video_uncertain",
             "API 曾開始上傳，請先到 Studio 核對並貼上原影片網址，避免重複上傳",
         )
+    if not video_id and await hand_upload.is_hand_uploaded(session, project):
+        raise Refused(409, "vps_hand_upload", hand_upload.NOT_SENT)
     m = dict(pack.metadata)
     title = payload.title if payload.title is not None else m.get("title", "")
     description = (
