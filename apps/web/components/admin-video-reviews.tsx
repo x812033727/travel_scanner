@@ -12,6 +12,7 @@ import {
   useRefresh, useWhen, NARRATION_LOCALES, youtubeSyncStuck,
 } from "@/components/admin-video-review-card";
 import { DeleteVideo } from "@/components/admin-video-delete";
+import { ShortManualUpload } from "@/components/admin-video-manual-upload";
 import { AdminVideoSeries, DocPanel, type Series } from "@/components/admin-video-series";
 import { AdminVideoSettings } from "@/components/admin-video-settings";
 import { AdminVideoRenewal } from "@/components/admin-video-renewal";
@@ -482,6 +483,7 @@ function ProjectDetail({ slug, onBack, onOpen }: { slug: string; onBack: () => v
         <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{ty("resendHelp")}</p>
         <div className="mt-3"><YoutubePublishForm key={project.youtube_sync?.finished_at ?? "resend"} slug={slug} review={approvedPackage(project.reviews)} connection={connection} canUpload={false} videoId={project.youtube_video_id} previous={project.youtube_sync?.request ?? null} onSent={load} /></div>
       </details>}
+      {short && !project.youtube_video_id && <ShortManualUpload project={project} />}
       {!dropped && ownLanguages && <LanguagePanel slug={slug} project={project} canManage={manage.allowed} onSaved={load} />}
       {live.length === 0 && !dropped && <p className="text-[var(--muted)]">{t("noPending")}</p>}
       {live.map((review) => <ReviewCard key={review.id} slug={slug} review={review} canManage={manage.allowed && !dropped} onDecided={load} mp4Gone={retired} discussion={discussion(review)} vertical={short} />)}
