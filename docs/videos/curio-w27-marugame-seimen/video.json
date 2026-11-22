@@ -1,0 +1,1566 @@
+{
+  "schema_version": 1,
+  "slug": "curio-w27-marugame-seimen",
+  "theme": "paper",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。絕不平、絕不像在念稿。",
+    "performance": "像跟朋友拆解顛覆餐飲常識的逆向商戰：開場反差明快；燒鳥店起家與香川製麵所帶畫面感；美食街與天婦羅動線帶拆解爽感；耗能與品質危機壓低聲線；麵職人與控溫大釜翻轉亮起；收尾溫暖有力。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -18,
+    "duck_db": -8
+  },
+  "pauses": {
+    "line_ms": 0,
+    "scene_ms": 150
+  },
+  "still_motion": "beat",
+  "loops": [
+    {
+      "setup": "m002",
+      "payoff": "m100",
+      "what": "丸龜市零門市為何後來反成品牌文化靠山"
+    },
+    {
+      "setup": "m005",
+      "payoff": "m036",
+      "what": "捨棄中央廚房為何反變高獲利印鈔機"
+    },
+    {
+      "setup": "m014",
+      "payoff": "m019",
+      "what": "兵庫加古川烤雞店怎麼找到白天也能排隊的新品類"
+    },
+    {
+      "setup": "m022",
+      "payoff": "m030",
+      "what": "每店塞機器很笨重，為何展店反而比工廠連鎖快"
+    },
+    {
+      "setup": "m034",
+      "payoff": "m044",
+      "what": "單店設備和人力這麼貴，這筆帳到底靠誰買單"
+    },
+    {
+      "setup": "m050",
+      "payoff": "m052",
+      "what": "生麵要煮十到十五分鐘，為何排隊幾乎免等"
+    },
+    {
+      "setup": "m054",
+      "payoff": "m066",
+      "what": "全用日本國產小麥手工打麵，怎麼擋品質崩盤"
+    },
+    {
+      "setup": "m062",
+      "payoff": "m074",
+      "what": "全國大釜整天滾水又高耗能，兩張奇牌如何解套"
+    },
+    {
+      "setup": "m079",
+      "payoff": "m082",
+      "what": "正牌香川對手用中央廚房，為何獲利輸逾九倍"
+    },
+    {
+      "setup": "m086",
+      "payoff": "m087",
+      "what": "沒有海外工廠，夏威夷首店怎麼創下全球紀錄"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-mall-steam-hook",
+      "chapter": "丸龜市零門市卻年賣千億日圓？",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a lively sunlit shopping mall food court, warm white steam billowing above an open cedar counter while ordinary diners queue with wooden trays",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m001",
+          "speaker": "narrator",
+          "emotion": "好奇提問",
+          "text": "逛美食街時，你常被丸龜製麵的熱氣吸過去吧？"
+        },
+        {
+          "id": "m002",
+          "speaker": "narrator",
+          "emotion": "反差直球",
+          "text": "但烏龍麵聖地香川的丸龜市，竟一間店也沒開。"
+        }
+      ]
+    },
+    {
+      "id": "s02-kagawa-zero-map",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of a carved wooden relief map of Shikoku island on an oak desk, one single lit brass pin in eastern Kagawa while the western bay sits bare beside a compass",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m003",
+          "speaker": "narrator",
+          "text": "查日本官網，全香川縣目前也只有高松唯一一家。"
+        },
+        {
+          "id": "m004",
+          "speaker": "narrator",
+          "emotion": "嚴肅對照",
+          "text": "更反常的是，同業都蓋中央廚房送冷凍麵省錢。"
+        }
+      ]
+    },
+    {
+      "id": "s03-factory-vs-cauldron",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot contrasting a chilly gray automated frozen-food conveyor belt on the left with a warm sunlit open wooden counter featuring a steaming iron cauldron and steel dough roller on the right",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m005",
+          "speaker": "narrator",
+          "text": "它卻堅持日本八百八十七店全直營，每店現打。"
+        },
+        {
+          "id": "m006",
+          "speaker": "narrator",
+          "text": "照常識早該虧垮，二零二六年度年報卻很驚人。"
+        }
+      ]
+    },
+    {
+      "id": "s04-earnings-ledger-contrast",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a heavy brass balance scale on a sunlit timber counter, a towering stack of bright coins beside a steaming stoneware bowl easily outweighing a tiny coin pile next to a toy freezer truck",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m007",
+          "speaker": "narrator",
+          "emotion": "反轉亮起",
+          "text": "日本丸龜營收達一千三百七十二億日圓，"
+        },
+        {
+          "id": "m008",
+          "speaker": "narrator",
+          "text": "本業獲利是中央廚房最大對手九倍、利益率百分之十六。"
+        }
+      ]
+    },
+    {
+      "id": "s05-ada-ledger-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of Ada, a slender female archivist with chin-length wavy black hair, dark burgundy round glasses, dusty green-blue trench coat over ivory knit sweater, laying parchment plans and a cedar ladle across a bright desk",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m009",
+          "speaker": "narrator",
+          "text": "檔案局研究員把這份逆向帳本攤開。"
+        },
+        {
+          "id": "m010",
+          "speaker": "narrator",
+          "emotion": "俐落破題",
+          "text": "今天我們就來聊聊，它如何棄工廠反變印鈔機。"
+        }
+      ]
+    },
+    {
+      "id": "s06-kakogawa-1985-yakitori",
+      "chapter": "兵庫燒鳥店誕生「假丸龜」",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet 1985 Japanese neighborhood backstreet in Hyogo at dusk, warm glowing doorway of a tiny timber charcoal grill tavern beneath an indigo evening sky",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m011",
+          "speaker": "narrator",
+          "emotion": "娓娓道來",
+          "text": "故事起點不在香川，在一九八五年兵庫加古川。"
+        },
+        {
+          "id": "m012",
+          "speaker": "narrator",
+          "text": "創辦人開了間炭火烤雞店，生意紅卻撞上天花板。"
+        }
+      ]
+    },
+    {
+      "id": "s07-yakitori-charcoal-ceiling",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of glowing red charcoal embers beneath skewers of sizzling grilled chicken over an iron hearth, fragrant smoke curling in warm evening light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m013",
+          "speaker": "narrator",
+          "text": "烤雞只做晚餐宵夜，白天店面幾乎空轉沒收入。"
+        },
+        {
+          "id": "m014",
+          "speaker": "narrator",
+          "emotion": "埋下伏筆",
+          "text": "問題來了：想攻全國，改賣什麼能白天也排隊？"
+        }
+      ]
+    },
+    {
+      "id": "s08-sanuki-noodle-shop-epiphany",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a rustic countryside kitchen shed in Kagawa surrounded by sunlit green rice fields, thick white steam billowing from open wooden doors while locals stand happily holding hot bowls",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m015",
+          "speaker": "narrator",
+          "text": "他走進父親故鄉香川讚岐的鄉間製麵所，震住了。"
+        },
+        {
+          "id": "m016",
+          "speaker": "narrator",
+          "text": "鐵皮屋沒裝潢卻冒滿白煙，大白天排滿吃熱麵的人。"
+        }
+      ]
+    },
+    {
+      "id": "s09-steam-experience-insight",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of thick glossy ivory udon strands rising in a woven bamboo strainer from a bubbling cast-iron cauldron, dramatic backlit steam swirling in morning sunbeams",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m017",
+          "speaker": "narrator",
+          "text": "同行看了只想蓋工廠標準化，他卻看懂相反事。"
+        },
+        {
+          "id": "m018",
+          "speaker": "narrator",
+          "emotion": "反轉亮起",
+          "text": "客人不光為便宜，是為親眼看麵下鍋的現場感。"
+        }
+      ]
+    },
+    {
+      "id": "s10-nov-2000-kakogawa-first-store",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide exterior shot of a new suburban Japanese roadside restaurant in Kakogawa under crisp autumn morning light, warm cedar beams, dark ceramic roof tiles, bright glass windows filled with rising steam",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m019",
+          "speaker": "narrator",
+          "text": "二零零零年十一月，他借香川名城丸龜當招牌開店。"
+        },
+        {
+          "id": "m020",
+          "speaker": "narrator",
+          "text": "首店落腳隔著瀨戶內海的兵庫，並非香川丸龜。"
+        }
+      ]
+    },
+    {
+      "id": "s11-open-kitchen-gamble",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside an open glass-walled kitchen where anonymous cooks in crisp white aprons knead fresh wheat dough beside stacked burlap flour sacks and gleaming steel rollers",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m021",
+          "speaker": "narrator",
+          "text": "他打通廚房牆面改成全開放式，絕不叫冷凍麵。"
+        },
+        {
+          "id": "m022",
+          "speaker": "narrator",
+          "emotion": "埋下伏筆",
+          "text": "每店塞製麵機聽來笨重，展店反比工廠連鎖快？"
+        }
+      ]
+    },
+    {
+      "id": "s12-2003-kobe-food-court",
+      "chapter": "捨棄中央廚房反解開展店鎖鏈",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bright 2003 Kobe shopping mall atrium food court, daylight streaming from skylights onto a steaming wooden booth where curious shoppers gather amid quiet neighboring stalls",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m023",
+          "speaker": "narrator",
+          "emotion": "轉折切入",
+          "text": "二零零三年九月，丸龜把整套製麵機搬進神戶商場。"
+        },
+        {
+          "id": "m024",
+          "speaker": "narrator",
+          "emotion": "反問驚奇",
+          "text": "當年美食街都在拼省工，這怪招竟意外爆紅。"
+        }
+      ]
+    },
+    {
+      "id": "s13-mall-live-billboard",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of mall shoppers pausing in a sunlit corridor, turning curiously toward an open timber counter where swirling steam rises beside crispy fried shrimp baskets",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m025",
+          "speaker": "narrator",
+          "emotion": "回到觀眾",
+          "text": "你想想，別家躲後場熱菜，就它當眾切麵。"
+        },
+        {
+          "id": "m026",
+          "speaker": "narrator",
+          "text": "白煙變免費看板，進商場省建店費、靠人流省廣告費。"
+        }
+      ]
+    },
+    {
+      "id": "s14-cold-chain-shackle-broken",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of a carved wood map of Japan contrasting one cramped red ring around a factory truck on the left against glowing warm paper lanterns lighting up freely from Hokkaido to Kyushu on the right",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m027",
+          "speaker": "narrator",
+          "emotion": "反轉驚奇",
+          "text": "更怪的是，沒中央廚房竟幫它解開冷鏈束縛。"
+        },
+        {
+          "id": "m028",
+          "speaker": "narrator",
+          "text": "對手跨縣得先砸錢蓋廠養冷凍車，還得密集開店。"
+        }
+      ]
+    },
+    {
+      "id": "s15-single-store-is-factory",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a compact stainless-steel dough roller tucked inside a tidy wooden kitchen nook beside neatly stacked kraft wheat flour sacks and ceramic sea-salt crocks",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m029",
+          "speaker": "narrator",
+          "text": "丸龜每店就是小工廠，常溫運麵粉明天就能開張。"
+        },
+        {
+          "id": "m030",
+          "speaker": "narrator",
+          "emotion": "回收伏筆",
+          "text": "商場見它專吸排隊人潮，反而搶著邀它進軍全國。"
+        }
+      ]
+    },
+    {
+      "id": "s16-2006-ipo-2011-47-prefectures",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a handcrafted wooden archipelago model of Japan dotted with dozens of bright lit glass beads stretching from snowy north to sunny south under dramatic window sunbeams",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m031",
+          "speaker": "narrator",
+          "text": "憑輕裝打法，二零一一年開遍四十七都道府縣。"
+        },
+        {
+          "id": "m032",
+          "speaker": "narrator",
+          "text": "同年全日本破五百店，接著攻進街邊與市中心。"
+        }
+      ]
+    },
+    {
+      "id": "s17-compact-urban-store-power",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a sleek compact downtown Tokyo street corner eatery at lunchtime, brisk office commuters stepping past warm wooden slats and gentle rising steam",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m033",
+          "speaker": "narrator",
+          "emotion": "實例佐證",
+          "text": "日本一橋大學報告指出，都會店月營收比一般店高三成。"
+        },
+        {
+          "id": "m034",
+          "speaker": "narrator",
+          "emotion": "埋下伏筆",
+          "text": "但設備多又吃人工，高成本靠誰買單？"
+        }
+      ]
+    },
+    {
+      "id": "s18-ada-tray-diagram",
+      "chapter": "自助托盤與天婦羅的吸金動線",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of Ada in her dusty green-blue trench coat and dark burgundy round glasses leaning thoughtfully over a miniature wooden scale model of a straight cafeteria lane, pointing with a brass stylus from kettle to fryer",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m035",
+          "speaker": "narrator",
+          "text": "研究員翻開同份報告，發現秘密在店內單向動線。"
+        },
+        {
+          "id": "m036",
+          "speaker": "narrator",
+          "emotion": "回收伏筆",
+          "text": "全自助砍光帶位、桌邊點菜跟端盤，外場費大減。"
+        }
+      ]
+    },
+    {
+      "id": "s19-narrow-menu-focus",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of a clean minimalist cedar table showing four crisp items: a steaming ceramic udon bowl in clear broth, crispy prawn fry, a triangular rice ball, and sweet tofu pockets",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m037",
+          "speaker": "narrator",
+          "text": "菜單縮到極簡，只賣麵配炸物、飯糰和豆皮壽司。"
+        },
+        {
+          "id": "m038",
+          "speaker": "narrator",
+          "text": "點餐快，品項單純更能集中進貨壓低麵粉價。"
+        }
+      ]
+    },
+    {
+      "id": "s20-base-bowl-price-hook",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a rustic cedar wooden tub brimming with freshly boiled steaming thick white udon strands beside a ceramic dipping cup on a bright sunlit counter",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m039",
+          "speaker": "narrator",
+          "text": "成本壓下來後，招牌釜揚烏龍麵就能賣到速食價。"
+        },
+        {
+          "id": "m040",
+          "speaker": "narrator",
+          "emotion": "埋下伏筆",
+          "text": "你心防一鬆，端托盤滑過自助餐檯的十秒才是機關。"
+        }
+      ]
+    },
+    {
+      "id": "s21-tempura-golden-wall",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an illuminated self-service counter lined with shining steel trays heaped with crispy fried prawn tempura, fluffy vegetable fritters, and sweet potato slices under warm spotlights",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m041",
+          "speaker": "narrator",
+          "text": "領麵到結帳之間，是一排暖燈現炸天婦羅牆。"
+        },
+        {
+          "id": "m042",
+          "speaker": "narrator",
+          "text": "炸蝦、蔬菜餅滋滋起鍋，手邊剛好擺好小盤和夾子。"
+        }
+      ]
+    },
+    {
+      "id": "s22-tongs-impulse-psychology",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an anonymous diner's hand gently lifting a crisp fried shrimp tempura with stainless tongs onto a small porcelain dish resting on a cedar tray beside a steaming bowl",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m043",
+          "speaker": "narrator",
+          "emotion": "回到觀眾",
+          "text": "老實說，你是不是常只想吃麵，卻手滑多夾炸物？"
+        },
+        {
+          "id": "m044",
+          "speaker": "narrator",
+          "emotion": "回收伏筆",
+          "text": "平價麵是誘餌，真正拉毛利的印鈔引擎是天婦羅。"
+        }
+      ]
+    },
+    {
+      "id": "s23-ticket-doubling-math",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of a wooden cafeteria tray carrying one modest hot soup bowl flanked by two heaped crisp tempura plates and a seaweed-wrapped rice ball under sunny light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m045",
+          "speaker": "narrator",
+          "emotion": "實例佐證",
+          "text": "二零二零年調查，釜揚麵兩百九十日圓，客單價五百七十。"
+        },
+        {
+          "id": "m046",
+          "speaker": "narrator",
+          "text": "短短十秒消費翻倍，這套設計還沒完。"
+        }
+      ]
+    },
+    {
+      "id": "s24-free-scallion-condiment-bar",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of vibrant chopped green scallions, crisp flaky tempura crumbs, and freshly grated ginger arranged in glazed ceramic bowls along a sunny wooden condiment station",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m047",
+          "speaker": "narrator",
+          "text": "結帳後滿滿蔥花、天婦羅花和薑泥全讓你免費加。"
+        },
+        {
+          "id": "m048",
+          "speaker": "narrator",
+          "text": "免費配料讓你覺得超值，再靠季節限定留住老客。"
+        }
+      ]
+    },
+    {
+      "id": "s25-boiling-time-bottleneck",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of thick raw ivory wheat strands plunging into a vast swirling cast-iron cauldron of boiling water while a brass mechanical kitchen timer ticks on a timber shelf",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m049",
+          "speaker": "narrator",
+          "emotion": "切入破綻",
+          "text": "等等，生麵煮熟要十到十五分鐘，藏著大瓶頸。"
+        },
+        {
+          "id": "m050",
+          "speaker": "narrator",
+          "emotion": "埋下伏筆",
+          "text": "中午美食街人擠人，為何你點完幾乎免等就端走？"
+        }
+      ]
+    },
+    {
+      "id": "s26-predictive-batch-boiling",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an anonymous seasoned kitchen cook glancing toward an approaching lunch crowd through the open glass counter while lifting a steaming bamboo strainer right on cue",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m051",
+          "speaker": "narrator",
+          "emotion": "回收伏筆",
+          "text": "它絕不接單才煮，靠來客預測提前十幾分算量下鍋。"
+        },
+        {
+          "id": "m052",
+          "speaker": "narrator",
+          "text": "你排隊時大釜正好起鍋，隊伍飛快、翻桌率超高。"
+        }
+      ]
+    },
+    {
+      "id": "s27-dashi-fresh-brewing",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of clear honey-colored Japanese kelp and bonito dashi broth pouring from a copper ladle into a stoneware pot with wisps of fragrant steam",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m053",
+          "speaker": "narrator",
+          "text": "不只麵現煮，高湯現熬、飯糰也用日本米現捏。"
+        },
+        {
+          "id": "m054",
+          "speaker": "narrator",
+          "emotion": "危機升高",
+          "text": "但全套手工越鋪越大，邁向八百店時危機爆發。"
+        }
+      ]
+    },
+    {
+      "id": "s28-domestic-wheat-humidity-crisis",
+      "chapter": "八百間店全手工的失控危機",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a rainy overcast Japanese street seen through a fogged-up eatery glass pane, raindrops streaking down while raw wheat dough rests unevenly on a cedar kneading table",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m055",
+          "speaker": "narrator",
+          "text": "危機第一槍在原料：它堅持全用日本國產小麥。"
+        },
+        {
+          "id": "m056",
+          "speaker": "narrator",
+          "text": "國產粉雖香卻比進口粉嬌貴，濕度一變就跑味。"
+        }
+      ]
+    },
+    {
+      "id": "s29-flavor-drift-risk",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two ceramic bowls side by side under cool dim kitchen lighting, one filled with crisp square-edged glossy udon strands and the other slumped and soft",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m057",
+          "speaker": "narrator",
+          "text": "雨天乾天照死板配方打，熟成差一點就軟爛沒勁。"
+        },
+        {
+          "id": "m058",
+          "speaker": "narrator",
+          "emotion": "危機爆發",
+          "text": "全國靠新手照本宣科，今天好吃明天走味就完了。"
+        }
+      ]
+    },
+    {
+      "id": "s30-utility-energy-burn",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an oversized cast-iron boiling kettle roaring with excessive clouds of scalding steam under stark dim kitchen lights, an analog water dial and electric gauge spinning fast beside copper pipes",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m059",
+          "speaker": "narrator",
+          "text": "更要命的是水電黑洞：每店大釜幾乎整天狂滾。"
+        },
+        {
+          "id": "m060",
+          "speaker": "narrator",
+          "text": "全憑手感控溫補水，全國直營店每天白燒水電費。"
+        }
+      ]
+    },
+    {
+      "id": "s31-ada-two-front-dilemma",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of Ada in her dusty green-blue trench coat standing in a dimly lit archive holding a wooden rolling pin in one hand and a brass pressure gauge in the other, brow furrowed in deep focus",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m061",
+          "speaker": "narrator",
+          "text": "制度更卡死：放加盟怕偷換冷凍麵，直營又高離職。"
+        },
+        {
+          "id": "m062",
+          "speaker": "narrator",
+          "emotion": "埋下伏筆",
+          "text": "顧問全勸它蓋工廠，它卻反手打出兩張奇牌。"
+        }
+      ]
+    },
+    {
+      "id": "s32-2016-menshokunin-birth",
+      "chapter": "台前麵職人與幕後數位控溫",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a proud anonymous artisan wearing a crisp white cook jacket with a deep indigo collar and matching indigo cap examining smooth white dough in warm sunlit rays",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m063",
+          "speaker": "narrator",
+          "emotion": "反轉亮起",
+          "text": "二零一六年，它創辦分星級的「麵職人」嚴格考試。"
+        },
+        {
+          "id": "m064",
+          "speaker": "narrator",
+          "text": "普通店員穿全白，考過才能換深藍領口並掛名牌。"
+        }
+      ]
+    },
+    {
+      "id": "s33-30-percent-pass-rate",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an artisan's hands inspecting the crisp concave edge and springy bounce of a freshly sliced raw wheat ribbon across a pale cypress cutting board",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m065",
+          "speaker": "narrator",
+          "emotion": "實例佐證",
+          "text": "入門一星過三成，看天氣調配的二星僅一成。"
+        },
+        {
+          "id": "m066",
+          "speaker": "narrator",
+          "emotion": "回收伏筆",
+          "text": "全公司還設唯一最高階麵匠，巡迴全國死守口感。"
+        }
+      ]
+    },
+    {
+      "id": "s34-senior-homemaker-partners",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a cheerful sunlit open kitchen where experienced middle-aged and silver-haired kitchen staff fry crisp tempura and prepare dough warmly alongside younger teammates",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m067",
+          "speaker": "narrator",
+          "text": "為解高離職，它廣聘主婦與長輩，銀髮曾破兩千二。"
+        },
+        {
+          "id": "m068",
+          "speaker": "narrator",
+          "text": "他們留任久，連社區活動人潮都先通知備料。"
+        }
+      ]
+    },
+    {
+      "id": "s35-2024-all-stores-menshokunin",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a smiling row of anonymous indigo-collared artisans standing in bright warm sunlight inside a bustling timber dining hall, steaming iron pots glowing behind them",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m069",
+          "speaker": "narrator",
+          "emotion": "反轉驚奇",
+          "text": "二零二四年三月，日本全門市達成百分百配職人。"
+        },
+        {
+          "id": "m070",
+          "speaker": "narrator",
+          "text": "當年職人衝上一千六百三十二名，兩年後仍全滿。"
+        }
+      ]
+    },
+    {
+      "id": "s36-auto-kama-invention",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a sleek modern cast-iron boiling cauldron fitted with clean brass thermal probes, shining steel control valves, and gently simmering clear water in warm light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m071",
+          "speaker": "narrator",
+          "emotion": "埋下伏筆",
+          "text": "台前靠職人鎖死手藝，那大釜狂燒的水電怎解？"
+        },
+        {
+          "id": "m072",
+          "speaker": "narrator",
+          "text": "它找中部電力跟設備廠，把控溫補水變自動感測。"
+        }
+      ]
+    },
+    {
+      "id": "s37-2019-meti-energy-prize",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of two glass energy and water columns on an oak workbench dropping sharply in level beside a gleaming bronze laurel medallion under warm sunlight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m073",
+          "speaker": "narrator",
+          "emotion": "反轉亮起",
+          "text": "實測一口智慧釜省電三成一、省水更直逼四成八。"
+        },
+        {
+          "id": "m074",
+          "speaker": "narrator",
+          "emotion": "回收伏筆",
+          "text": "二零一九年奪省能源最高獎，還配濾油機拉長油壽。"
+        }
+      ]
+    },
+    {
+      "id": "s38-backend-digital-frontstage-analog",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide split-depth shot showing a tidy back-office nook with a slim glowing tablet showing simple colorful curve lines, opening through a cedar arch into a warm steam-filled front kitchen",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m075",
+          "speaker": "narrator",
+          "text": "後台用平板排班、短片教揉麵，鏡頭即時抽查。"
+        },
+        {
+          "id": "m076",
+          "speaker": "narrator",
+          "emotion": "俐落破題",
+          "text": "這就是它的鐵律：台前極致手工，幕後極致數位。"
+        }
+      ]
+    },
+    {
+      "id": "s39-hard-to-copy-moat",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a heavy fortress gate built from interlocking cedar beams and steaming brass gears bathed in crisp late-afternoon sunlight, conveying an uncopyable operational barrier",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m077",
+          "speaker": "narrator",
+          "text": "最狠的是，蓋好工廠的對手根本不可能拆廠抄它。"
+        },
+        {
+          "id": "m078",
+          "speaker": "narrator",
+          "text": "你愈嫌它笨重麻煩，這套打法反而愈成護城河。"
+        }
+      ]
+    },
+    {
+      "id": "s40-two-giants-same-year",
+      "chapter": "財報對決宿敵與丸龜市零自售和解",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a sunlit fork in a Japanese highway, the left lane leading toward a silver industrial factory complex with freight trucks and the right lane heading to a warm timber eatery glowing with lanterns",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m079",
+          "speaker": "narrator",
+          "emotion": "嚴肅對照",
+          "text": "不信嗎？拿同年起家的正牌香川宿敵直接對財報。"
+        },
+        {
+          "id": "m080",
+          "speaker": "narrator",
+          "text": "吉野家旗下花丸烏龍麵生在高松，走標準工廠路。"
+        }
+      ]
+    },
+    {
+      "id": "s41-hanamaru-vs-marugame-gap",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of two side-by-side timber pedestals on a bright studio table: on the left sits a modest bronze coin stack beside a chilled plastic crate, while on the right tower four tall gleaming pillars and nine bright bars beside a steaming bowl",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m081",
+          "speaker": "narrator",
+          "emotion": "對比基準",
+          "text": "花丸二六年賣三百三十億日圓、利益二十四億。"
+        },
+        {
+          "id": "m082",
+          "speaker": "narrator",
+          "emotion": "回收伏筆",
+          "text": "還記得開頭？丸龜利益兩百二十億日圓、贏逾九倍。"
+        }
+      ]
+    },
+    {
+      "id": "s42-group-cash-engine",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a polished brass turbine wheel driving wooden gears connected to several smaller restaurant miniatures arranged in a bright sunlit ring on an oak table",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m083",
+          "speaker": "narrator",
+          "text": "母集團兩千七百八十七億日圓營收，它扛近一半。"
+        },
+        {
+          "id": "m084",
+          "speaker": "narrator",
+          "text": "單一利益甚至超過集團合併數，堪稱現金印鈔機。"
+        }
+      ]
+    },
+    {
+      "id": "s43-hawaii-waikiki-2011",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a sunny palm-lined Waikiki avenue in Hawaii at late afternoon, a joyful long queue of beachgoers and tourists winding outside a bright glass-front open kitchen",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m085",
+          "speaker": "narrator",
+          "emotion": "實例佐證",
+          "text": "不只稱霸日本，二零一一年更直殺夏威夷海灘。"
+        },
+        {
+          "id": "m086",
+          "speaker": "narrator",
+          "emotion": "埋下伏筆",
+          "text": "別家在海島建廠卡死，它空運機器竟創什麼紀錄？"
+        }
+      ]
+    },
+    {
+      "id": "s44-waikiki-world-number-one",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a breezy tropical open-kitchen bar where steaming soup bowls and tall fizzy dark iced colas sit on cedar trays while bright sunlight streams past swaying palm leaves",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m087",
+          "speaker": "narrator",
+          "emotion": "回收伏筆",
+          "text": "在地調麵配冰可樂，威基基店奪全品牌業績第一。"
+        },
+        {
+          "id": "m088",
+          "speaker": "narrator",
+          "text": "一三年台北印尼、二一年倫敦，母集團海外破九百。"
+        }
+      ]
+    },
+    {
+      "id": "s45-taipei-mall-connection",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bright East Asian department store basement dining hall lined with warm cedar trim, diners carrying trays of steaming bowls and crisp fried prawns toward sunny tables",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m089",
+          "speaker": "narrator",
+          "emotion": "回到觀眾",
+          "text": "下次你在台灣美食街看師傅切麵，那可不是作秀。"
+        },
+        {
+          "id": "m090",
+          "speaker": "narrator",
+          "text": "那台機器正是它免蓋工廠、橫掃海外的終極武器。"
+        }
+      ]
+    },
+    {
+      "id": "s46-ada-return-to-kagawa",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of Ada in her dusty green-blue trench coat standing by a sunlit archive window looking toward a distant Japanese hilltop castle stone wall glowing in crisp afternoon rays",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m091",
+          "speaker": "narrator",
+          "emotion": "呼應開頭",
+          "text": "故事還沒完。還記得開頭嗎？為何丸龜市零門市？"
+        },
+        {
+          "id": "m092",
+          "speaker": "narrator",
+          "text": "橫掃海外的霸主回到香川本家，反一路退到高松。"
+        }
+      ]
+    },
+    {
+      "id": "s47-kagawa-local-dominance",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a peaceful sunlit lane in Kagawa Prefecture lined with three cozy old-school timber culinary sheds with white steam drifting beneath a bright coastal sky",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m093",
+          "speaker": "narrator",
+          "text": "香川轉角全是超平價在地老店，競爭全日本最硬。"
+        },
+        {
+          "id": "m094",
+          "speaker": "narrator",
+          "text": "它在高松原開三店，一五與二二年陸續收掉兩家。"
+        }
+      ]
+    },
+    {
+      "id": "s48-local-skepticism-tension",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a weathered mossy stone lantern beside a quiet Kagawa coastal lane at late afternoon, warm sunbeams meeting cool sea-blue shadows across cedar lattice doors",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m095",
+          "speaker": "narrator",
+          "text": "加上部分在地人對外來品牌借用地名原本有心結。"
+        },
+        {
+          "id": "m096",
+          "speaker": "narrator",
+          "emotion": "埋下伏筆",
+          "text": "問題來了：它沒硬開旗艦店，改怎麼跟丸龜破冰？"
+        }
+      ]
+    },
+    {
+      "id": "s49-marugame-castle-stone-wall",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a soaring curved Japanese hilltop castle stone wall in Marugame bathed in crisp morning light, neat timber restoration scaffolding framing one side beside green pines",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m097",
+          "speaker": "narrator",
+          "text": "二零二二年四月，它主動和丸龜市簽地域活化約。"
+        },
+        {
+          "id": "m098",
+          "speaker": "narrator",
+          "text": "母公司捐逾一億日圓，修丸龜城石垣和離島學校。"
+        }
+      ]
+    },
+    {
+      "id": "s50-zero-self-sales-udon-festival",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a festive sunny outdoor plaza beneath a stone hilltop castle where smiling visitors hold steaming bowls gathered around lively local timber stalls beneath colorful pennants",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m099",
+          "speaker": "narrator",
+          "emotion": "反轉驚奇",
+          "text": "二零二五年十一月，它更在丸龜辦烏龍麵大祭典。"
+        },
+        {
+          "id": "m100",
+          "speaker": "narrator",
+          "emotion": "回收伏筆",
+          "text": "自家一碗不賣，全場讓給在地老店，把人潮送回城。"
+        }
+      ]
+    },
+    {
+      "id": "s51-brand-equity-full-circle",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a serene Seto Inland Sea ferry crossing sparkling turquoise water toward a small green island pier with a freshly built warm cedar waiting pavilion",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m101",
+          "speaker": "narrator",
+          "text": "它更在丸龜離島設研修所，尊當地為心之本店。"
+        },
+        {
+          "id": "m102",
+          "speaker": "narrator",
+          "emotion": "埋下伏筆",
+          "text": "但這還不是全部，它究竟翻轉了哪條餐飲舊公式？"
+        }
+      ]
+    },
+    {
+      "id": "s52-cost-misconception-flip",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wooden abacus and bright wheat stalks resting beside a steaming handmade udon bowl on a sunlit desk, warm directional rays highlighting fine grain",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m103",
+          "speaker": "narrator",
+          "text": "回看這二十六年，商學院常識其實只算了一半帳。"
+        },
+        {
+          "id": "m104",
+          "speaker": "narrator",
+          "text": "工廠省了製造成本，卻丟掉新鮮感、逼你砸廣告。"
+        }
+      ]
+    },
+    {
+      "id": "s53-frontstage-value-investment",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gleaming steel blade smoothly slicing a thick pale ivory sheet of fresh dough into crisp even strips as flour dust sparkles in morning sunbeams",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m105",
+          "speaker": "narrator",
+          "text": "丸龜把外場和後台砍到底，省下的錢全砸進前場。"
+        },
+        {
+          "id": "m106",
+          "speaker": "narrator",
+          "text": "讓你看麵粉變熱麵，這份信任是廣告買不到的。"
+        }
+      ]
+    },
+    {
+      "id": "s54-new-challenges-ahead",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a rainy evening urban street where rising grain sacks and glowing utility dials sit silhouetted behind a warm lit restaurant window reflecting city rain",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m107",
+          "speaker": "narrator",
+          "emotion": "埋下伏筆",
+          "text": "但近年通膨與缺工夾擊，重手工還撐得住嗎？"
+        },
+        {
+          "id": "m108",
+          "speaker": "narrator",
+          "emotion": "回收伏筆",
+          "text": "它靠限定新品與職人品管，讓毛利持續領先同業。"
+        }
+      ]
+    },
+    {
+      "id": "s55-efficiency-redefined",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of glossy freshly boiled thick udon strands lifted gently from a dark ceramic bowl with clear savory broth and bright green scallions shining in soft rim light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m109",
+          "speaker": "narrator",
+          "emotion": "俐落收拍",
+          "text": "真效率不是全藏工廠，而是把錢花在關鍵那一秒。"
+        },
+        {
+          "id": "m110",
+          "speaker": "narrator",
+          "text": "對烏龍麵來說，就是大釜剛起鍋冒白煙的第一口。"
+        }
+      ]
+    },
+    {
+      "id": "s56-self-service-tempura-smile",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a smiling anonymous diner seated at a sunny oak table lifting glossy white strands with bamboo chopsticks beside crisp fried prawn tempura and chopped scallions",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m111",
+          "speaker": "narrator",
+          "text": "肯在顧客眼前花笨工夫，反而比誰都更能賺長久。"
+        },
+        {
+          "id": "m112",
+          "speaker": "narrator",
+          "text": "這就是一場故意走慢路、卻甩開全市場的逆向豪賭。"
+        }
+      ]
+    },
+    {
+      "id": "s57-kagawa-sunlit-memory",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of warm late-afternoon sunbeams sweeping across lush green wheat fields and a calm turquoise Seto bay in Kagawa beneath a luminous open sky",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m113",
+          "speaker": "narrator",
+          "text": "下次經過丸龜透明櫥窗，看見麵粉袋跟金黃炸物，"
+        },
+        {
+          "id": "m114",
+          "speaker": "narrator",
+          "text": "你看到的就是把「故意不省工」變護城河的機器。"
+        }
+      ]
+    },
+    {
+      "id": "s58-tempura-choice-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a cedar cafeteria tray sliding past two tempting dishes under warm light: a crisp fried prawn tempura on the left and a fluffy vegetable kakiage fritter on the right",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m115",
+          "speaker": "narrator",
+          "emotion": "互動提問",
+          "text": "這就是今天的故事！端托盤經過剛起鍋天婦羅時，"
+        },
+        {
+          "id": "m116",
+          "speaker": "narrator",
+          "emotion": "互動提問",
+          "text": "你是只吃麵的一號理性派，還是多夾炸物二號派？"
+        }
+      ]
+    },
+    {
+      "id": "s59-tray-warm-farewell",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cozy glowing timber dining counter at dusk with rising fragrant steam, tidy cedar trays, and warm paper lanterns illuminating the inviting interior",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m117",
+          "speaker": "narrator",
+          "text": "留言打一或二告訴我，也分享你必夾的隱藏炸物。"
+        },
+        {
+          "id": "m118",
+          "speaker": "narrator",
+          "text": "喜歡這種拆解排隊名店反直覺算盤，快按讚訂閱。"
+        }
+      ]
+    },
+    {
+      "id": "s60-ada-closing-curio",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of Ada in her dusty green-blue trench coat and dark burgundy round glasses smiling warmly beside her sunlit oak archive desk, closing an ivory dossier folder next to a steaming teacup",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m119",
+          "speaker": "narrator",
+          "text": "每週從熟悉招牌裡，翻出顛覆常識的帳本。"
+        },
+        {
+          "id": "m120",
+          "speaker": "narrator",
+          "emotion": "俐落收拍",
+          "text": "我是奇聞檔案局，留言告訴我，下次見！"
+        }
+      ]
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "layout": "heimao-left",
+      "headline": "丸龜製麵狂賣千億？",
+      "sub": "丸龜市零門市卻捨棄中央廚房",
+      "asset": "stock/0b1bc333c832b6cf9896050740e4585c3752aebccd5326b99d88e38723b00e91.jpg"
+    }
+  },
+  "assets": [
+    {
+      "path": "stock/0b1bc333c832b6cf9896050740e4585c3752aebccd5326b99d88e38723b00e91.jpg",
+      "sha256": "0b1bc333c832b6cf9896050740e4585c3752aebccd5326b99d88e38723b00e91",
+      "credit": "Mokaair 奇聞檔案局",
+      "license": "original",
+      "source": "built-in generate_image (w27_hero_thumb, $0)"
+    }
+  ],
+  "youtube": {
+    "title": "丸龜製麵棄工廠反而年賣1372億日圓？在丸龜市竟零門市｜奇聞檔案局",
+    "description": "走進百貨美食街總能看見大排長龍的丸龜製麵，但它在香川縣丸龜市竟然連一間門市都沒有，還違反餐飲業常識放棄中央廚房、堅持全直營門市現打現煮，為何營收反而飆上 1,372 億日圓？\n給每次去丸龜製麵排隊端托盤都好奇「全手工怎麼可能比工廠賺更多」，想知道它如何把天婦羅動線與麵職人制度變成印鈔機的人。\n\n本片依東利多控股 2026 年 3 月期決算短信、吉野家控股 2026 年 2 月期決算資料、一橋商學院第 20 屆波特獎評審報告、日本服務大賞官方案例與丸龜製麵公開資訊，拆解 1985 年兵庫加古川燒鳥店起家、2000 年加古川一號店與 2003 年商場美食街突圍、免除冷鏈工廠半徑限制、自助托盤與天婦羅客單價翻倍結構、2016 年麵職人認證與 2024 年全門市 100% 配置、2019 年省電 31.3%／省水 47.6% 經濟產業大臣賞自動控溫大釜，以及對決中央廚房對手與 2025 年丸龜市零自售烏龍麵祭典的完整真相。\n\n本頻道與片中提及品牌無合作關係。本集插圖由 AI 生成。\n資料截至 2026-11-22",
+    "tags": [
+      "奇聞檔案局",
+      "丸龜製麵",
+      "東利多",
+      "日本商業",
+      "商業模式",
+      "中央廚房",
+      "烏龍麵",
+      "商業奇聞"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "video_id": null
+  },
+  "sources": [
+    {
+      "title": "東利多控股（3397）2026年3月期決算短信〔IFRS〕",
+      "url": "https://pdf.irpocket.com/C3397/WUpy/rz8q/vzaE.pdf",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "東利多控股2026年3月期決算摘要（Investalk）",
+      "url": "https://investalk.jp/3397/toridoll-2026-03-earnings/",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "Otsumu企業事例：東利多控股2026年3月期事業結構與887直營店",
+      "url": "https://otsumu.co.jp/knowledge/cases/toridoll-marugame-seimen-multi-brand.html",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "一橋商學院第20屆波特獎官方報告：丸龜製麵事業（2020）",
+      "url": "https://www.porterprize.org/pastwinner/2020/12/07140000.html",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "第3屆日本服務大賞優秀賞官方案例：丸龜製麵（SPRING）",
+      "url": "https://service-award.jp/result_case03/spring06.html",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "丸龜製麵官方新聞稿：2024年3月日本全門市100%配置麵職人",
+      "url": "https://prtimes.jp/main/html/rd/p/000000180.000056642.html",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "東利多控股永續報告：2026年2月底維持全門市100%麵職人配置",
+      "url": "https://www.toridoll.com/en/sustainability/about/index.html",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "東利多控股外部表彰：2019省能源大賞經濟產業大臣賞（自動控溫大釜）",
+      "url": "https://www.toridoll.com/sustainability/external/",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "丸龜製麵官網香川縣門市清單（僅高松彩虹通1店、丸龜市0店）",
+      "url": "https://stores.marugame.com/%E9%A6%99%E5%B7%9D%E7%9C%8C",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "丸龜製麵官網：與香川縣丸龜市之地域活化協定與丸龜烏龍麵祭典",
+      "url": "https://jp.marugame.com/sustainability/marugame-city/",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "J-CAST新聞：丸龜製麵在香川苦戰至縣內僅剩1店之經緯（2022）",
+      "url": "https://www.j-cast.com/2022/02/20430996.html?p=all",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "地元報道（ジモコロ）：香川唯一門市與丸龜市企業版故鄉稅逾1億日圓支援（2025）",
+      "url": "https://www.e-aidem.com/ch/jimocoro/entry/tatsui33/",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "吉野家控股（9861）2026年2月期決算摘要：花丸事業營收與利益",
+      "url": "https://investalk.jp/9861/yoshinoya-holdings-2026-02-earnings/",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "東利多控股官方沿革：1985創業、2000加古川1號店與海外展店年表",
+      "url": "https://www.toridoll.com/company/",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "PRESIDENT Online：丸龜製麵夏威夷威基基店奪全球單店營收第一之背景（2024）",
+      "url": "https://president.jp/articles/-/82418?page=1",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "流通新聞：丸龜製麵台灣一號店（台北信義新天地）2013年4月30日開幕",
+      "url": "https://www.ryutsuu.biz/backnumber/store/f043004.html",
+      "checked_on": "2026-11-22"
+    }
+  ]
+}
