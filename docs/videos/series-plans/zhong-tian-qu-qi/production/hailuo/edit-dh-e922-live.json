@@ -10,7 +10,8 @@
  "duck_ratio": 3.5,
  "duck_release_ms": 900,
  "sfx_dirs": [
-  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx"
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx",
+  "<VIDEO_WORKDIR>/_sfx/zhongtian-real-20261121"
  ],
  "name_whoosh": "swish-9",
  "music": [
@@ -27,7 +28,7 @@
   {
    "cue": "warm",
    "from": "s13",
-   "to": "s20",
+   "to": "s19",
    "offset": 0.0,
    "gain": -21,
    "fade_in": 0.8,
@@ -37,29 +38,39 @@
   {
    "cue": "night",
    "from": "s21",
-   "to": "s36",
+   "to": "s26",
    "offset": 0.0,
+   "gain": -19,
+   "fade_in": 0.6,
+   "fade_out": 0.4,
+   "tail": 0.2
+  },
+  {
+   "cue": "night",
+   "from": "s27",
+   "to": "s36",
+   "offset": 34.21,
    "gain": -23,
-   "fade_in": 1.5,
+   "fade_in": 0.4,
    "fade_out": 1.2,
    "tail": 0.2
   },
   {
    "cue": "tension",
    "from": "s37",
-   "to": "s38",
+   "to": "s37",
    "offset": 0.0,
    "gain": -21,
    "fade_in": 0.3,
    "fade_out": 0.8,
-   "tail": 0.2
+   "tail": 0.5
   },
   {
-   "cue": "river",
+   "cue": "z-bed-farewell",
    "from": "s39",
    "to": "s41",
    "offset": 0.0,
-   "gain": -22,
+   "gain": -23,
    "fade_in": 0.8,
    "fade_out": 2.5,
    "tail": 0
@@ -78,6 +89,13 @@
    "at": "s13",
    "off": 0,
    "gain": -11,
+   "to": "s19"
+  },
+  {
+   "file": "Wind",
+   "at": "s21",
+   "off": 0,
+   "gain": -6,
    "to": "s26"
   },
   {
@@ -85,7 +103,7 @@
    "at": "s27",
    "off": 0,
    "gain": -10,
-   "to": "s38"
+   "to": "s37"
   },
   {
    "synth": "river",
@@ -165,20 +183,14 @@
   {
    "file": "dishes_02",
    "at": "s14",
-   "off": 0.2,
-   "gain": -28
+   "off": 1.5,
+   "gain": -26
   },
   {
    "file": "impactWood_light_000",
    "at": "s19",
    "off": 0.6,
    "gain": -24
-  },
-  {
-   "file": "footstep_wood_000",
-   "at": "s20",
-   "off": 1.6,
-   "gain": -26
   },
   {
    "file": "impactWood_light_001",
@@ -199,16 +211,16 @@
    "gain": -20
   },
   {
-   "file": "impactWood_light_000",
+   "file": "zhongtian-sfx-knuckle-knock-02",
    "at": "s27",
-   "off": 0.15,
-   "gain": -20
+   "off": 3.85,
+   "gain": 2
   },
   {
-   "file": "impactWood_light_000",
+   "file": "zhongtian-sfx-knuckle-knock-03",
    "at": "s27",
-   "off": 0.4,
-   "gain": -20
+   "off": 4.1,
+   "gain": 2
   },
   {
    "file": "creak1",
@@ -220,7 +232,7 @@
    "file": "impactPlate_light_000",
    "at": "s29",
    "off": 0.9,
-   "gain": -26
+   "gain": -10
   },
   {
    "file": "paper_02",
@@ -231,68 +243,26 @@
   {
    "file": "impactSoft_heavy_000",
    "at": "s33",
-   "off": 2.558,
+   "off": 3.45,
    "gain": -18
   },
   {
    "file": "paper_03",
    "at": "s34",
    "off": 0.25,
-   "gain": -14
+   "gain": -2
   },
   {
    "file": "paper_04",
    "at": "s34",
    "off": 2.5,
-   "gain": -14
+   "gain": -2
   },
   {
    "file": "cloth2",
    "at": "s37",
    "off": 2.9,
    "gain": -16
-  },
-  {
-   "file": "footstep_grass_000",
-   "at": "s38",
-   "off": 0.3,
-   "gain": -18
-  },
-  {
-   "file": "footstep_grass_001",
-   "at": "s38",
-   "off": 0.75,
-   "gain": -18
-  },
-  {
-   "file": "footstep_grass_000",
-   "at": "s38",
-   "off": 1.2,
-   "gain": -18
-  },
-  {
-   "file": "footstep_grass_001",
-   "at": "s38",
-   "off": 1.65,
-   "gain": -18
-  },
-  {
-   "file": "footstep_grass_000",
-   "at": "s38",
-   "off": 2.1,
-   "gain": -18
-  },
-  {
-   "file": "footstep_grass_001",
-   "at": "s38",
-   "off": 2.5,
-   "gain": -18
-  },
-  {
-   "file": "creak2",
-   "at": "s38",
-   "off": 2.6,
-   "gain": -22
   },
   {
    "file": "footstep_wood_000",
@@ -307,10 +277,10 @@
    "gain": -20
   },
   {
-   "file": "splash_01",
+   "file": "zhongtian-sfx-punt-pole-05",
    "at": "s40",
    "off": 0.5,
-   "gain": -26
+   "gain": -10
   },
   {
    "file": "impactSoft_heavy_000",
@@ -323,6 +293,12 @@
    "at": "s41",
    "off": 2.95,
    "gain": -2
+  },
+  {
+   "file": "zhongtian-sfx-punt-pole-06",
+   "at": "s41",
+   "off": 0.0,
+   "gain": -16
   }
  ],
  "frame_round": true,
@@ -360,7 +336,7 @@
   },
   "s14": {
    "from": 0,
-   "af": "volume=-3.8dB"
+   "af": "volume=-2.7dB"
   },
   "s16": {
    "from": 0,
@@ -376,7 +352,7 @@
   },
   "s22": {
    "from": 0,
-   "af": "volume=1.3dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "volume=0.2dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s23": {
    "from": 0,
@@ -388,7 +364,7 @@
   },
   "s33": {
    "from": 0,
-   "af": "volume=-2.2dB"
+   "af": "volume=-3.2dB"
   },
   "s36": {
    "from": 0,
@@ -405,8 +381,10 @@
   "s41": 7.2
  },
  "line_at": {
-  "zq922a35": 0.5,
-  "zq922a01": 0.5
+  "zq922a35": 0.42,
+  "zq922a01": 0.5,
+  "zq922a05": 1.93,
+  "zq922a18": 3.9
  },
  "line_lead": {},
  "panel_y": {
@@ -425,7 +403,8 @@
   "s30": "split[paa][pab];[pab]crop=600:610:600:470,format=gbrp,split=4[pac][pad][pak][pae];[pad]geq=r='255*gt(r(X\\,Y)\\,110)*lt(g(X\\,Y)\\,215)*lt(r(X\\,Y)-g(X\\,Y)\\,34)*lt(r(X\\,Y)-b(X\\,Y)\\,75)':g='0':b='0',extractplanes=r,gblur=sigma=6,lut=y='if(gt(val\\,150)\\,255\\,0)'[pap];[pak]geq=r='255*1':g='0':b='0',extractplanes=r[paq];[pap][paq]blend=all_mode=multiply,gblur=sigma=3,lut=y='clip(val*3\\,0\\,255)',geq=lum='lum(X\\,Y)*clip((min(min(X\\,W-X)\\,Y))/16\\,0\\,1)'[pam];[pae]gblur=sigma=10,format=gbrp[pag];[pag][pam]alphamerge[pah];[pac][pah]overlay,format=yuv420p[pao];[paa][pao]overlay=600:470",
   "s33": "split[pba][pbb];[pbb]crop=720:420:120:660,format=gbrp,split=4[pbc][pbd][pbk][pbe];[pbd]geq=r='255*gt(r(X\\,Y)\\,110)*lt(g(X\\,Y)\\,215)*lt(r(X\\,Y)-g(X\\,Y)\\,34)*lt(r(X\\,Y)-b(X\\,Y)\\,75)':g='0':b='0',extractplanes=r,gblur=sigma=6,lut=y='if(gt(val\\,150)\\,255\\,0)'[pbp];[pbk]geq=r='255*1':g='0':b='0',extractplanes=r[pbq];[pbp][pbq]blend=all_mode=multiply,gblur=sigma=3,lut=y='clip(val*3\\,0\\,255)',geq=lum='lum(X\\,Y)*clip((min(min(X\\,W-X)\\,Y))/16\\,0\\,1)'[pbm];[pbe]gblur=sigma=10,format=gbrp[pbg];[pbg][pbm]alphamerge[pbh];[pbc][pbh]overlay,format=yuv420p[pbo];[pba][pbo]overlay=120:660",
   "s41": "fade=t=out:st=3.600:d=0.60",
-  "s10": "crop=1120:630:300:260,scale=1920:1080:flags=lanczos,setsar=1"
+  "s10": "crop=1120:630:300:260,scale=1920:1080:flags=lanczos,setsar=1",
+  "s31": "colorbalance=rh=-0.13:gh=-0.02:bh=0.14:rm=-0.04:bm=0.05,curves=all='0/0 0.35/0.36 0.55/0.66 1/1'"
  },
  "subtitle_lines": [
   "zq922a31"

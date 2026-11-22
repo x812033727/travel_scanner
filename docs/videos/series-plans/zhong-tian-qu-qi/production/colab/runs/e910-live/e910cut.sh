@@ -17,6 +17,8 @@ miss=$(python3 -c "import json,os;p=json.load(open('$E/picks.json'));print(' '.j
 [ -f $E/clips/s36-t6.mp4 ] || ffmpeg -v error -y -ss 1.500 -to 8.000 -i /root/mokaair-work/review-zt/colab/refined/e910-s36.mp4 \
   -ss 1.500 -to 8.000 -i /root/mokaair-work/videos/zhong-tian-qu-qi-e910-dh/runpod/live/fixp2/out/s36-9109201.mp4 \
   -map 0:v -map 1:a? -c:v libx264 -crf 16 -preset fast -pix_fmt yuv420p -c:a aac -b:a 192k -shortest $E/clips/s36-t6.mp4
+# SWAP 2026-11-22 (second wave, round4): s27 and s28 are new clips/sNN-t5.mp4 (fixp4 9109402 / 9109401 in runpod/polish/picks.json);
+# neither has a t6, so nothing here re-cuts them (the trims below are the old t1 staging's and are not used for them).
 # edit-dh-e910-live.json's _note has the values -- warn (not stop) if picks.json does not have them (start, end-before; 0 = none)
 python3 -c "
 import json;p=json.load(open('$E/picks.json'))
