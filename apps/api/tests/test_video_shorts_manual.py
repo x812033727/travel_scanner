@@ -20,7 +20,7 @@ import pytest
 from sqlalchemy import select
 
 from app.models import VideoProject, VideoReview, VideoToolToken
-from app.video_automation.models import VideoDramaEpisode
+from app.video_automation.models import VideoDramaEpisode, VideoDramaRequest
 from app.video_reviews import admin_service
 from app.video_reviews.schemas import DecisionIn, ReviewFile, ReviewIn
 from app.video_shorts import claim, hand_upload, overview, slots
@@ -58,9 +58,13 @@ async def site(
 ) -> AsyncIterator[ShortsSite]:
     async with open_shorts_site(monkeypatch, tmp_path, request.param) as value:
         async with value.factory() as session:
-            # An approval asks whether the video is an episode of a drama series.
+            # An approval asks whether the video is an episode of a drama series. PostgreSQL wants
+            # the table an episode's foreign key points at; SQLite would not notice.
             db = await session.connection()
-            await db.run_sync(VideoDramaEpisode.metadata.create_all, [VideoDramaEpisode.__table__])
+            await db.run_sync(
+                VideoDramaEpisode.metadata.create_all,
+                [VideoDramaRequest.__table__, VideoDramaEpisode.__table__],
+            )
             await session.commit()
         yield value
 
