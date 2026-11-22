@@ -7,6 +7,8 @@ E=/root/mokaair-work/videos/_live-e921/zhong-tian-qu-qi-e921-dh; VJ=$R/docs/vide
 # previous cut to old-HHMM after removing the non-kept old-* (at most one old cut besides the kept one: the disk is short).
 mkdir -p $E/cut
 [ -d $E/cut/old-1116 ] || { mkdir -p $E/cut/old-1116; mv $E/cut/e921-live.* $E/cut/final.log $E/cut/old-1116/ 2>/dev/null; touch $E/cut/old-1116/.keep; }
+# SECOND WAVE 2026-11-22: the first-wave POLISH+SWAP cut (03:08, not delivered) goes to cut/old-w1 once, with a .keep.
+[ -d $E/cut/old-w1 ] || { mkdir -p $E/cut/old-w1; mv $E/cut/e921-live.* $E/cut/final.log $E/cut/old-w1/ 2>/dev/null; touch $E/cut/old-w1/.keep; }
 [ -f $E/cut/e921-live.mp4 ] && { for d in $E/cut/old-*; do [ -f $d/.keep ] || rm -rf $d; done; mkdir -p $E/cut/old-$(date +%H%M); mv $E/cut/e921-live.* $E/cut/final.log $E/cut/old-$(date +%H%M)/ 2>/dev/null; }
 rm -rf $E/cut/pre
 rm -rf $E/segments-v4
@@ -44,7 +46,10 @@ print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
 # (runpod/polish/picks.json, already trimmed: s13 9219102 1.083-6.583, s14b 9219102 0-6.25, s20 9219101 1.917-6.583, s21b 9219101
 # 0.583-2.542, s22 9219101 0.375-3.75, s22b 9219101 0.667-4.667, s36 9219102 2.0-6.583, s37 9219102 0.958-8.0; the assembler takes
 # the highest take number); picks.json and the want table above still describe the t1 staging, which stays on disk.
-for s in s13 s14b s20 s21b s22 s22b s36 s37; do [ -f $E/clips/$s-t5.mp4 ] || { echo "missing clips/$s-t5.mp4"; exit 1; }; done
+# SECOND WAVE 2026-11-22 (round4/round5 review-picks.tsv): s27 = round5 9219501 0.25-6.583, s32 = round4 9219401 1.0-6.583
+# (the crop the pick asks for is done by the edit table's vf, not on the clip), s36 = round4 9219401 0-6.583; each replaced the
+# clip's earlier t5 (s36) or stands over the t1 (s27, s32). No t6 exists for any of them and none is made here.
+for s in s13 s14b s20 s21b s22 s22b s27 s32 s36 s37; do [ -f $E/clips/$s-t5.mp4 ] || { echo "missing clips/$s-t5.mp4"; exit 1; }; done
 # the episode sfx dir (third sfx_dirs entry), made if missing: sob921 = Xiaohe's own sob after the kept span of the s21b draft
 # (raw 2.55-3.45 s, the same child's voice, pitched x1.3 like the clip voice), laid at s21b c1.15 over the cut into s22;
 # steps921 = cloth-shoe steps for s36 (Wei's five steps to the threshold, low-passed concrete steps, and the two thugs' fainter
@@ -57,6 +62,18 @@ AF="aresample=48000,aformat=channel_layouts=stereo"
 [w0]adelay=100|100[a0];[w1]adelay=600|600[a1];[w2]adelay=1100|1100[a2];[w3]adelay=1600|1600[a3];[w4]adelay=2100|2100[a4];\
 [t0]volume=-9dB,adelay=350|350[b0];[t1]volume=-12dB,adelay=700|700[b1];[t2]volume=-9dB,adelay=1350|1350[b2];[t3]volume=-12dB,adelay=1700|1700[b3];\
 [a0][a1][a2][a3][a4][b0][b1][b2][b3]amix=inputs=9:normalize=0,lowpass=f=2500,apad=whole_dur=2.6,$AF" $S/steps921.wav
+# steps921b (SECOND WAVE) replaces steps921 for the round4 s36 (6.56 s): Wei's ten cloth-shoe steps every 0.6 s from c0.2 to
+# the threshold (c5.6), 0.9 dB softer each as he walks away, and the limping thug's firm step / dragged (-6 dB, low-passed) step
+# pairs c0.35-2.60 until he is out at ~c2.8; series footstep_concrete_000-003. (steps921.wav, the first wave's 2.6 s, stays on disk.)
+[ -f $S/steps921b.wav ] || ffmpeg -v error -y -i $L/footstep_concrete_000.wav -i $L/footstep_concrete_001.wav -i $L/footstep_concrete_002.wav -i $L/footstep_concrete_003.wav -filter_complex "\
+[0:a]asplit=4[f0_0][f0_1][f0_2][f0_3];[1:a]asplit=4[f1_0][f1_1][f1_2][f1_3];[2:a]asplit=4[f2_0][f2_1][f2_2][f2_3];[3:a]asplit=4[f3_0][f3_1][f3_2][f3_3];\
+[f0_0]volume=-0.0dB,adelay=200|200[e0];[f1_0]volume=-0.9dB,adelay=800|800[e1];[f2_0]volume=-1.8dB,adelay=1400|1400[e2];[f3_0]volume=-2.7dB,adelay=2000|2000[e3];\
+[f0_1]volume=-3.6dB,adelay=2600|2600[e4];[f1_1]volume=-4.5dB,adelay=3200|3200[e5];[f2_1]volume=-5.4dB,adelay=3800|3800[e6];[f3_1]volume=-6.3dB,adelay=4400|4400[e7];\
+[f0_2]volume=-7.2dB,adelay=5000|5000[e8];[f1_2]volume=-8.1dB,adelay=5600|5600[e9];\
+[f2_2]volume=-9dB,adelay=350|350[e10];[f3_2]volume=-15dB,lowpass=f=900,adelay=800|800[e11];[f0_3]volume=-9dB,adelay=1250|1250[e12];\
+[f1_3]volume=-15dB,lowpass=f=900,adelay=1700|1700[e13];[f2_3]volume=-11dB,adelay=2150|2150[e14];[f3_3]volume=-17dB,lowpass=f=900,adelay=2600|2600[e15];\
+[e0][e1][e2][e3][e4][e5][e6][e7][e8][e9][e10][e11][e12][e13][e14][e15]amix=inputs=16:normalize=0,lowpass=f=2500,apad=whole_dur=6.6,atrim=0:6.6,$AF" $S/steps921b.wav
+# zq921a29 / zq921a32 (voice_off s27 s32) have their leading silence trimmed by hand (audio/README-retakes.txt; untrimmed in audio/orig/).
 # no shot is deleted: DROP is empty, so $VL is video.json as written (kept the e916/e920 way so a later REVIEW 3 can drop one)
 VL=$E/video-live.json; DROP=""
 python3 -c "import json,sys;v=json.load(open('$VJ'));d='$DROP'.split();v['scenes']=[s for s in v['scenes'] if s.get('id') not in d];json.dump(v,open('$VL','w'),ensure_ascii=False,indent=1)"

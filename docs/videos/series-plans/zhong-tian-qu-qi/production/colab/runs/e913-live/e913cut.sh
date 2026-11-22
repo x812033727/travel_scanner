@@ -42,6 +42,9 @@ ffmpeg -v error -y -i $E/clips/s26-t1.mp4 -vf "scale=1920:1080:flags=lanczos,fps
 # ends c3.66 (20 ms RMS), the door edge holds to c3.79 and creeps from c3.83, swings from c3.92 -- cut before the door moves
 # toward his left so s21 (Tang: 先別關) does not cut against the swing's direction; t5 stays (x264 crf 12, aac 32 kHz)
 [ -f $E/clips/s20-t6.mp4 ] || ffmpeg -v error -y -i $E/clips/s20-t5.mp4 -t 3.875 -c:v libx264 -preset slow -crf 12 -pix_fmt yuv420p -r 24 -c:a aac -b:a 192k -ar 32000 $E/clips/s20-t6.mp4 || exit 1
+# SWAP WAVE 2 (2026-11-22): clips/s08-t5.mp4 = round4 9139401 2.416-6.583, clips/s28-t5.mp4 = round5 9139501 0.5-6.583
+# (fix-polish/round4, round5 review-picks.tsv), already trimmed; neither shot has (or needs) a t6 -- only s20-t6 above is cut here
+for s in s08 s28; do [ -f $E/clips/$s-t6.mp4 ] && { echo "stale clips/$s-t6.mp4 would beat the wave-2 t5"; exit 1; }; done
 # POLISH+SWAP round 2 (2026-11-22): the episode sfx dir (third sfx_dirs entry): bead913 = one bead click out of the real
 # set's abacus-drop-01 (0.245-0.325 s, e911's bead911 recipe) for s09's abacus (was wooden_01, a wood knock)
 X=/root/mokaair-work/videos/_sfx/zhongtian-real-20261121; S=/root/mokaair-work/videos/zhong-tian-qu-qi-e913-dh/sfx; mkdir -p $S
