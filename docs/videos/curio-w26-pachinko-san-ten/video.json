@@ -1,0 +1,1516 @@
+{
+  "schema_version": 1,
+  "slug": "curio-w26-pachinko-san-ten",
+  "theme": "paper",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。絕不平、絕不像在念稿。",
+    "performance": "像跟朋友拆解一場日本車站霓虹背後六十五年的法規商業奇案：開場從禁賭與店外五公尺換真鈔反差切入；戰後香菸買人與黑道搶地盤有畫面感；一九六一年大阪前警官聯手社福協會排黑反轉語氣亮起；八四年法條與店員裝傻帶點幽默；九零年代東京排黑封真純金氣勢拉滿；近年金價暴漲撞穿上限節奏緊湊；收尾拆解十六兆貸玉帳本與制度鋼索鏗鏘落地。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -18,
+    "duck_db": -8
+  },
+  "pauses": {
+    "line_ms": 0,
+    "scene_ms": 150
+  },
+  "still_motion": "beat",
+  "loops": [
+    {
+      "setup": "p002",
+      "payoff": "p037",
+      "what": "刑法禁賭與風俗營業法禁現金下，為何店外五公尺能換真鈔"
+    },
+    {
+      "setup": "p006",
+      "payoff": "p050",
+      "what": "交換所就在牆外五公尺，柏青哥店員為何依法只能裝傻"
+    },
+    {
+      "setup": "p010",
+      "payoff": "p033",
+      "what": "三店方式怎合法避開禁賭，又為何險被飆漲金價拆穿"
+    },
+    {
+      "setup": "p014",
+      "payoff": "p024",
+      "what": "原本換牛奶糖的溫和遊戲，怎麼捲進戰後街頭地盤血戰"
+    },
+    {
+      "setup": "p028",
+      "payoff": "p033",
+      "what": "黑道快吞掉產業時，大阪冒出什麼連警方都點頭的奇招"
+    },
+    {
+      "setup": "p046",
+      "payoff": "p050",
+      "what": "一九八四年修法把禁令寫更死，為何逼出店員裝傻大戲"
+    },
+    {
+      "setup": "p056",
+      "payoff": "p058",
+      "what": "大家多半換特殊景品，店家為何囤幾百種零食家電"
+    },
+    {
+      "setup": "p062",
+      "payoff": "p076",
+      "what": "沒市價的塑膠牌惹議加上東京黑道盤踞，東京如何解套"
+    },
+    {
+      "setup": "p084",
+      "payoff": "p094",
+      "what": "防彈的真純金盾牌，怎麼被飆漲的國際金價從內部炸開"
+    },
+    {
+      "setup": "p104",
+      "payoff": "p106",
+      "what": "號稱十六點二兆的市場規模，背後藏著什麼會計錯覺"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-neon-paradox",
+      "chapter": "霓虹店外五公尺，小金片竟換出整疊真鈔",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a glowing Japanese shopping street at dusk, warm sunset meeting vivid crimson and golden doorway lights of a retro pachinko parlor, curious commuter pausing outside looking at the brightly lit entrance",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p001",
+          "text": "去日本車站旁，你一定看過亮眼的柏青哥店。",
+          "emotion": "日常破題"
+        },
+        {
+          "id": "p002",
+          "text": "日本刑法禁賭，管遊藝場的《風俗營業法》更禁發錢！",
+          "emotion": "反差直球"
+        }
+      ]
+    },
+    {
+      "id": "s02-five-meter-window",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot along a narrow concrete side alley right outside a parlor wall, a patron stepping five paces to a tiny slate-blue frosted-glass street kiosk with a stainless pass-through tray sliding out crisp green folded banknotes",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p003",
+          "text": "可贏了鋼珠換塊小金片，出門五公尺到磨砂小窗，",
+          "emotion": "畫面帶入"
+        },
+        {
+          "id": "p004",
+          "text": "金片往鐵槽一推，整疊真鈔就穩穩滑出來了。",
+          "emotion": "反轉驚奇"
+        }
+      ]
+    },
+    {
+      "id": "s03-clerk-cant-say",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a bright modern parlor prize counter, a polite uniformed young clerk smiling awkwardly while raising both hands in gentle refusal across the counter toward a puzzled traveler holding a tiny clear acrylic gold case",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p005",
+          "text": "更怪的是問店員去哪換錢，他竟正經說不知道！",
+          "emotion": "幽默荒謬"
+        },
+        {
+          "id": "p006",
+          "text": "小窗就貼在牆外，為何他連指方向都不敢？",
+          "emotion": "懸念上揚"
+        }
+      ]
+    },
+    {
+      "id": "s04-cabinet-trillions",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of a grand polished oak desk holding a thick official ivory-bound government reply dossier beside a towering pyramid of gleaming silver steel pachinko balls and golden coin stacks under sunlit beams",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p007",
+          "text": "答案在三家分工的「三店方式」，切開打球與換現！",
+          "emotion": "權威震驚"
+        },
+        {
+          "id": "p008",
+          "text": "就靠它，小彈珠台竟年撐十六點二兆日圓市場！",
+          "emotion": "高潮數字"
+        }
+      ]
+    },
+    {
+      "id": "s05-ada-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a sunlit timber archive study, the slender archivist in dark-burgundy round glasses and olive trench coat over an off-white turtleneck leaning over a wooden table spreading out three glowing cards forming a triangle loop beside a small golden acrylic chip",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p009",
+          "text": "多數人以為業者鑽漏洞，歷史紀錄卻指相反起點。",
+          "emotion": "轉折亮起"
+        },
+        {
+          "id": "p010",
+          "text": "今天聊聊這套「三店方式」，怎撐過六十五年？",
+          "emotion": "承諾定調"
+        }
+      ]
+    },
+    {
+      "id": "s06-kansai-street-stall",
+      "chapter": "一包香菸引爆戰後街頭搶地盤血戰",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a nostalgic 1930s Kansai festival street market in warm late-afternoon golden light, smiling passersby and children gathering around a rustic wooden hand-operated tabletop pinball contraption lined with brass nails beside wrapped caramel candies",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p011",
+          "text": "這要從戰前關西街頭的兒童彈珠台說起。",
+          "emotion": "娓娓道來"
+        },
+        {
+          "id": "p012",
+          "text": "三零年代打贏換牛奶糖，用獎品「景品」代發錢成規矩。",
+          "emotion": "輕快對比"
+        }
+      ]
+    },
+    {
+      "id": "s07-nagoya-1930",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a quiet dimmed wartime Japanese workshop with rows of wooden pachinko boards draped under dust cloths and sealed wooden shutters, contrasting with a warm ray of postwar dawn light breaking through",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p013",
+          "text": "戰時一度被禁，一九四六年一解禁立刻紅遍全國。",
+          "emotion": "起伏轉場"
+        },
+        {
+          "id": "p014",
+          "text": "問題來了：溫和的換糖遊戲，怎會捲進街頭血戰？",
+          "emotion": "懸念上揚"
+        }
+      ]
+    },
+    {
+      "id": "s08-candy-to-adult",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a warm wooden desk holding a vintage fountain pen, a red circular wooden seal stamp, a neat row of shiny steel pachinko balls, and vintage yellow brass coins illuminated by crisp morning window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p015",
+          "text": "關鍵在四八年，風俗營業法把柏青哥納管。",
+          "emotion": "穩健說明"
+        },
+        {
+          "id": "p016",
+          "text": "明文禁發錢、限換日用品，卻引來天大破口！",
+          "emotion": "語氣亮起"
+        }
+      ]
+    },
+    {
+      "id": "s09-1948-act",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of stacked retro plain paper-wrapped cigarette packs resting beside a brass scale and gleaming silver pachinko balls on a dark walnut counter, dramatic warm golden rim light highlighting their crisp paper folds",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p017",
+          "text": "原來架上最搶手的日用品，竟是一包一包的香菸！",
+          "emotion": "驚奇反差"
+        },
+        {
+          "id": "p018",
+          "text": "當年香菸由國家專賣統一定價，簡直就像準鈔票。",
+          "emotion": "點破關鍵"
+        }
+      ]
+    },
+    {
+      "id": "s10-cigarette-currency",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a moody 1950s Japanese back alley under glowing warm streetlamps, a coat-clad middleman standing by a wooden utility pole quietly trading folded bills for plain paper cigarette packs with a departing player",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p019",
+          "text": "五零年代初，店外冒出低價收菸的街頭收購販。",
+          "emotion": "說書帶入"
+        },
+        {
+          "id": "p020",
+          "text": "客人折價換現、收購販轉賣回店家，一轉手狂賺價差！",
+          "emotion": "節奏加快"
+        }
+      ]
+    },
+    {
+      "id": "s11-street-bainin",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of an old wooden prize shelf where paper cigarette boxes are swept aside and replaced by colorful wrapped daily goods, boxed soaps, and packaged treats under stark dramatic sidelight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p021",
+          "text": "警方拿香菸專賣法猛抓，但這還不是最失控的！",
+          "emotion": "懸念升級"
+        },
+        {
+          "id": "p022",
+          "text": "店家改換其他日用品當獎品，收購販隔天照樣排隊收。",
+          "emotion": "幽默無奈"
+        }
+      ]
+    },
+    {
+      "id": "s12-monopoly-crackdown",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide low-angle shot of a rain-slicked 1950s Osaka neon backstreet at night, ominous long shadows of rival men in dark trench coats facing off outside a brightly lit parlor doorway, tense golden and cold slate-blue contrast",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p023",
+          "text": "收購生意越滾越大，暴力團盯上這塊肥肉。",
+          "emotion": "轉入緊張"
+        },
+        {
+          "id": "p024",
+          "text": "黑道搶店外收購權，不只恐嚇店家更動刀槍！",
+          "emotion": "畫面衝擊"
+        }
+      ]
+    },
+    {
+      "id": "s13-gang-turf-war",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a rain-washed 1950s Tokyo Ikebukuro shopping alley at night with startled shopkeepers peering through a cracked glass parlor door illuminated by flickering crimson neon reflections",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p025",
+          "text": "爭地盤血戰從大阪鬧區一路燒到東京池袋街頭！",
+          "emotion": "擴大危機"
+        },
+        {
+          "id": "p026",
+          "text": "店家直接向客人買回犯法，不管又成黑道提款機！",
+          "emotion": "進退兩難"
+        }
+      ]
+    },
+    {
+      "id": "s14-gang-cliffhanger",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a cracked glass parlor doorway reflecting red neon glow and rain droplets on wet asphalt, a scattered handful of steel pachinko balls glinting in a dark puddle",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p027",
+          "text": "就在整個產業快被黑道吞掉時，大阪竟冒出奇招。",
+          "emotion": "蓄勢待發"
+        },
+        {
+          "id": "p028",
+          "text": "而且這個解方，竟然連大阪府警都點頭放行了！",
+          "emotion": "章末鉤子"
+        }
+      ]
+    },
+    {
+      "id": "s15-osaka-1961",
+      "chapter": "一九六一年大阪前警官聯手警方拆成三家店",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bustling 1961 Osaka commercial district beneath clear morning light, vintage trams gliding past sunlit low-rise concrete shops and bridge railings with crisp mid-century commuters walking along the sidewalk",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p029",
+          "text": "這奇招出自前警官，他正是大阪柏青哥公會首任理事長！",
+          "emotion": "反轉亮起"
+        },
+        {
+          "id": "p030",
+          "text": "靠警界背景，他決定找警方正面協商排黑！",
+          "emotion": "揭開關鍵"
+        }
+      ]
+    },
+    {
+      "id": "s16-police-negotiation",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tidy 1961 conference room table bathed in angled afternoon window light, two ceramic teacups sitting beside a clean schematic diagram sketched with three separate wooden blocks and brass arrows",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p031",
+          "text": "一九六一年二月，史稱大阪方式的三店原型上路。",
+          "emotion": "關鍵時間"
+        },
+        {
+          "id": "p032",
+          "text": "怎麼斷黑道財路？他們把收購權直接交給社福協會！",
+          "emotion": "拍案叫絕"
+        }
+      ]
+    },
+    {
+      "id": "s17-welfare-twist",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a warm sunlit 1961 small neighborhood kiosk counter where an elderly woman in a neat cardigan calmly receives a small boxed token from a smiling customer, clean tidy interior bathed in gentle golden daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p033",
+          "text": "由大阪身障者未亡人福祉事業協會接窗口，",
+          "emotion": "溫暖驚奇"
+        },
+        {
+          "id": "p034",
+          "text": "幫戰爭遺孀與身障者就業，讓黑道無縫可鑽！",
+          "emotion": "有力落點"
+        }
+      ]
+    },
+    {
+      "id": "s18-three-shop-loop",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of three distinct miniature architectural models arranged in a crisp sunlit triangle on a warm oak drafting table: a crimson parlor, a slate-blue welfare kiosk, and a timber wholesale warehouse linked by glowing golden tokens",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p035",
+          "text": "中間再插進獨立批發商，三家店的循環就成形了。",
+          "emotion": "清晰拆解"
+        },
+        {
+          "id": "p036",
+          "text": "但三家店怎串起來，才不踩到法律的禁賭紅線？",
+          "emotion": "懸念上揚"
+        }
+      ]
+    },
+    {
+      "id": "s19-ada-triangle-check",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the slender archivist in dark-burgundy round glasses and olive trench coat standing beside a corkboard holding three colored yarn pins arranged in a wide triangle with clear space between them, warm sunlit studio",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p037",
+          "text": "店家發景品、社福買下付現，批發商再買回批給店。",
+          "emotion": "明快節奏"
+        },
+        {
+          "id": "p038",
+          "text": "三筆交易各自獨立合法，就拆解了直接兌現禁令！",
+          "emotion": "俐落收拍"
+        }
+      ]
+    },
+    {
+      "id": "s20-chain-transparency",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of wooden ledger trays, brass counting weights, and neat stacks of sealed small prize tokens moving cleanly along a sunlit 1960s wholesale sorting table with crisp orderly geometry",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p039",
+          "text": "流向透明、衝突銳減，社福團體也拿到穩定經費。",
+          "emotion": "正向推進"
+        },
+        {
+          "id": "p040",
+          "text": "等等，當年大阪府警真准這套做法永遠合法嗎？",
+          "emotion": "懸念上揚"
+        }
+      ]
+    },
+    {
+      "id": "s21-police-warning",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an open 1961 vintage archival magazine lying on a dark timber desk beside brass spectacles and a ticking pocket watch under serious dramatic side window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p041",
+          "text": "翻開當年業界雜誌會嚇一跳，大阪警方早潑了冷水！",
+          "emotion": "驚訝轉折"
+        },
+        {
+          "id": "p042",
+          "text": "防犯部長明講這只是防黑道吸血的「過渡處置」。",
+          "emotion": "嚴肅對照"
+        }
+      ]
+    },
+    {
+      "id": "s22-nationwide-spread",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide aerial stylized view of 1960s Japan at twilight with warm golden light pulses spreading outward from Osaka along glowing railway lines toward Tokyo, Nagoya, and Kyushu",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p043",
+          "text": "但救急太好用，六七年業界把三店架構推向各地。",
+          "emotion": "歷史反差"
+        },
+        {
+          "id": "p044",
+          "text": "從六一年算起，這套妥協就這樣被默許了二十多年。",
+          "emotion": "格局放大"
+        }
+      ]
+    },
+    {
+      "id": "s23-temporary-cliffhanger",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a heavy leather-bound 1984 Japanese statute volume slamming onto a wooden gavel block, dust motes rising in a sharp beam of cool morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p045",
+          "text": "直到一九八四年大修《風俗營業法》，罰則才寫死！",
+          "emotion": "危機升高"
+        },
+        {
+          "id": "p046",
+          "text": "法網越收越緊，為何反而逼出店員裝傻大戲？",
+          "emotion": "章末鉤子"
+        }
+      ]
+    },
+    {
+      "id": "s24-1984-article23",
+      "chapter": "一九八四年修法劃紅線，逼出店員裝傻大戲",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of four bold wax-sealed red ribbon barriers crossing over four symbolic props on a dark desk: folded bills, a returned prize box, spilled steel balls by a doorframe, and a paper storage slip",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p047",
+          "text": "新法二十三條，把原靠地方條例擋的禁回購寫進國法！",
+          "emotion": "俐落破題"
+        },
+        {
+          "id": "p048",
+          "text": "三家必須資本人事完全獨立，嚴禁任何串通！",
+          "emotion": "清單加快"
+        }
+      ]
+    },
+    {
+      "id": "s25-pretend-strangers",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot splitting a sunlit brick wall between a brightly lit parlor exit on the left and a tiny unmarked slate-blue exchange window five meters away on the right, a parlor clerk facing away politely while a customer walks out holding a tiny acrylic case",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p049",
+          "text": "這才解開開頭謎團：店員只要隨手替你一指路，",
+          "emotion": "回收伏筆"
+        },
+        {
+          "id": "p050",
+          "text": "就會被認定與窗口串通回購，整間店立刻違法！",
+          "emotion": "恍然大悟"
+        }
+      ]
+    },
+    {
+      "id": "s26-miyagi-bust",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle shot of a darkened small-town parlor entrance shuttered behind crisp yellow-and-black caution tape and rotating red-blue patrol reflections on wet evening pavement",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p051",
+          "text": "別以為只是演戲，偷踩回購紅線立刻被抓！",
+          "emotion": "轉入嚴肅"
+        },
+        {
+          "id": "p052",
+          "text": "二零二六年十月，宮城仍有店家涉自營窗口遭送辦。",
+          "emotion": "實例佐證"
+        }
+      ]
+    },
+    {
+      "id": "s27-cabinet-tightrope",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stately pale-stone parliamentary hall desk bathed in cool skylight, an official ivory document resting directly on a razor-thin brass wire stretched taut between two stone pillars",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p053",
+          "text": "就算三家獨立，政府在國會也不背書，只說未必算賭！",
+          "emotion": "精準定調"
+        },
+        {
+          "id": "p054",
+          "text": "為守住這條灰色紅線，兌獎區更冒出怪現象！",
+          "emotion": "鋼索紅線"
+        }
+      ]
+    },
+    {
+      "id": "s28-five-hundred-prizes",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a dazzling, supermarket-like prize display aisle inside a modern Japanese pachinko hall, shelves packed floor to ceiling with colorful snack boxes, tea bottles, rice bags, plush cushions, and small appliances while a curious visitor browses",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p055",
+          "text": "整排貨架像小型超市，零食到吹風機全擺滿。",
+          "emotion": "日常畫面"
+        },
+        {
+          "id": "p056",
+          "text": "大家專換可變現的「特殊景品」，幹嘛囤日用品？",
+          "emotion": "好奇提問"
+        }
+      ]
+    },
+    {
+      "id": "s29-legal-facade",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of five neatly grouped categories of everyday household items—cereal boxes, folded towels, teapots, bottled drinks, and board game boxes—arranged with museum precision under bright warm shelf lights",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p057",
+          "text": "官方訂了備品義務，逼店家證明自己是遊藝場。",
+          "emotion": "解答亮起"
+        },
+        {
+          "id": "p058",
+          "text": "業界基準每店得擺滿五百種、五大類日用品才合格！",
+          "emotion": "驚奇細節"
+        }
+      ]
+    },
+    {
+      "id": "s30-cap-10560",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gleaming brass balance scale on a polished counter, a small wrapped luxury box on one side held strictly under a lowered crimson glass ceiling bar glowing with warm studio rim light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p059",
+          "text": "不只擺滿貨架，法規還嚴管景品本身價值，",
+          "emotion": "埋下伏筆"
+        },
+        {
+          "id": "p060",
+          "text": "明確規定每件景品都必須具備真實市價！",
+          "emotion": "關鍵數字"
+        }
+      ]
+    },
+    {
+      "id": "s31-ada-legal-lens",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the slender archivist in dark-burgundy round glasses and olive trench coat holding a magnifying glass over two separate wooden stamps set far apart on a sunny desk, thoughtful analytical expression",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p061",
+          "text": "偏偏早年換錢的特殊景品，只是沒價值的塑膠牌！",
+          "emotion": "切入破綻"
+        },
+        {
+          "id": "p062",
+          "text": "八四修法後查得更嚴，立刻引爆變相賭博爭議！",
+          "emotion": "追問核心"
+        }
+      ]
+    },
+    {
+      "id": "s32-tokyo-gang-shadow",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide atmospheric evening shot of late-1980s Tokyo alleys lined with glowing neon doorways and dark shuttered side booths casting long tense shadows across wet concrete",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p063",
+          "text": "但這還不是全部——東京還卡著黑道死結！",
+          "emotion": "情勢轉急"
+        },
+        {
+          "id": "p064",
+          "text": "東京沒走大阪社福路，戰後起遭黑道纏了五十年！",
+          "emotion": "震撼事實"
+        }
+      ]
+    },
+    {
+      "id": "s33-tokyo-gold-hook",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tiny shimmering pure gold bullion rectangle sealed inside a crystal-clear thick acrylic case catching a sharp spotlight beam against deep midnight-blue velvet",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p065",
+          "text": "為了一次解決排黑與市價爭議，東京祭出狠棋：",
+          "emotion": "蓄力拉高"
+        },
+        {
+          "id": "p066",
+          "text": "不只拔除黑道，更要端出沒人敢質疑的王牌景品！",
+          "emotion": "章末鉤子"
+        }
+      ]
+    },
+    {
+      "id": "s34-tokyo-1991-war",
+      "chapter": "東京血戰六年半排黑，把真純金封進壓克力盒",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of early-1990s Tokyo high-rises and dense downtown alleys under moody dusk clouds, bold warm neon reflections glinting along wet streets beside quiet closed metal shutters",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p067",
+          "text": "想推王牌制度得先清場：九一年五月東京聯手排黑。",
+          "emotion": "開展大戰"
+        },
+        {
+          "id": "p068",
+          "text": "警視廳撐腰看似穩當，竟打成六年半槍火硬仗！",
+          "emotion": "急轉直下"
+        }
+      ]
+    },
+    {
+      "id": "s35-firebomb-resistance",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium exterior shot at night of a scorched 1990s Tokyo storefront shutter glowing with flickering orange firelight against cold midnight-blue rain shadows, tense dramatic lighting",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p069",
+          "text": "斷了黑道數十年財路，反撲來得又快又狠。",
+          "emotion": "緊張沉重"
+        },
+        {
+          "id": "p070",
+          "text": "東京北澤、墨東分會幹部的店與家，竟遭開槍丟汽油彈！",
+          "emotion": "震撼細節"
+        }
+      ]
+    },
+    {
+      "id": "s36-six-years-clean",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a crisp sunlit Tokyo avenue in December 1997, orderly winter pedestrians walking safely past clean glass exchange kiosks along bright sidewalks beneath clear blue morning sky",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p071",
+          "text": "公會咬牙撐到九七年底，才完成東京都全域排黑。",
+          "emotion": "克難收果"
+        },
+        {
+          "id": "p072",
+          "text": "清場成功，他們立刻揭曉前面埋下的王牌景品！",
+          "emotion": "氣勢揚起"
+        }
+      ]
+    },
+    {
+      "id": "s37-gold-ingots-trio",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead macro shot of three differently sized sparkling pure gold rectangular mini-bars sealed inside crystal-clear hard acrylic rectangular cases lined up neatly on soft warm ivory felt under golden studio lighting",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p073",
+          "text": "他們把貨真價實的純金，直接封進壓克力盒！",
+          "emotion": "對比驚奇"
+        },
+        {
+          "id": "p074",
+          "text": "分一克、零點三與零點一克，為何砸重本？",
+          "emotion": "懸念上揚"
+        }
+      ]
+    },
+    {
+      "id": "s38-real-gold-proof",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a jeweler's brass precision scale weighing a tiny gleaming gold rectangular plate beside an opened clear acrylic case on a sunlit velvet appraisal mat",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p075",
+          "text": "純金全球有市價，拿去銀樓也能照價賣！",
+          "emotion": "點破高明"
+        },
+        {
+          "id": "p076",
+          "text": "坐實真實市價要件，徹底堵死法理破綻。",
+          "emotion": "回收伏筆"
+        }
+      ]
+    },
+    {
+      "id": "s39-gold-cycle-scale",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a brightly lit 1995 Japanese pachinko megahall at peak boom, endless gleaming rows of chrome machines packed with enthusiastic patrons and stacked overflowing plastic baskets of silver steel balls",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p077",
+          "text": "其實就在九零年代全盛期，柏青哥衝上巔峰。",
+          "emotion": "氣勢上揚"
+        },
+        {
+          "id": "p078",
+          "text": "一九九五年全國竟有一萬八千兩百四十四家店！",
+          "emotion": "震撼數字"
+        }
+      ]
+    },
+    {
+      "id": "s40-34-trillion-peak",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle dramatic shot of an immense golden staircase of stacked gleaming steel ball trays rising into bright warm skylight, symbolizing a colossal mid-2000s peak leisure market",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p079",
+          "text": "九四年近三千萬人玩，約每四日本人有一位。",
+          "emotion": "生活共感"
+        },
+        {
+          "id": "p080",
+          "text": "零五年總借球額衝卅四點九兆——純金隱憂已埋下！",
+          "emotion": "歷史峰值"
+        }
+      ]
+    },
+    {
+      "id": "s41-gold-peg-illusion",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a clear acrylic gold chip spinning smoothly like a stable golden coin inside a calm circular brass track under balanced sunlit reflections",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p081",
+          "text": "原來約二十年前金價穩，一克大景品僅兩千五百圓。",
+          "emotion": "平穩鋪陳"
+        },
+        {
+          "id": "p082",
+          "text": "人人都以為純金閉環無懈可擊，能跑百年。",
+          "emotion": "欲揚先抑"
+        }
+      ]
+    },
+    {
+      "id": "s42-gold-trap-hook",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a glowing upward-shooting golden bullion bar bursting sharply upward through a cracked thin glass line, intense dramatic golden-crimson light radiating outward",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p083",
+          "text": "問題來了：二十年後，防彈純金竟變定時炸彈！",
+          "emotion": "危機爆發"
+        },
+        {
+          "id": "p084",
+          "text": "國際金價火箭衝天，整套閉環瞬間從內部炸開！",
+          "emotion": "章末鉤子"
+        }
+      ]
+    },
+    {
+      "id": "s43-gold-35x-surge",
+      "chapter": "國際金價暴漲三倍半，差點從內部拆穿閉環",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide dramatic shot of gleaming stacked gold ingots rising steeply like towering golden mountain steps from left to right against a blazing warm sunset-gold sky",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p085",
+          "text": "金價飆多兇？日本金商田中貴金屬紀錄，",
+          "emotion": "對比基準"
+        },
+        {
+          "id": "p086",
+          "text": "一九年均四千九，二五年狂飆三倍半破兩萬二千八！",
+          "emotion": "震撼飆升"
+        }
+      ]
+    },
+    {
+      "id": "s44-ceiling-collision",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single gleaming pure gold bar inside a clear acrylic case pushing violently upward against a heavy glowing red glass barrier beam, sharp golden sparks along the contact edge",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p087",
+          "text": "但現行單件景品限一萬零五百六十圓，怎麼辦？",
+          "emotion": "回收伏筆"
+        },
+        {
+          "id": "p088",
+          "text": "一克純金市價直接衝破一萬圓，撞穿了法定天花板！",
+          "emotion": "危機升高"
+        }
+      ]
+    },
+    {
+      "id": "s45-arbitrage-rush",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot along a bright Tokyo sidewalk where an excited player holding a gleaming clear acrylic gold chip bypasses a small slate-blue exchange window and walks straight toward a sunlit jewelry appraisal shop with a sparkling diamond emblem",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p089",
+          "text": "更誇張，拆去銀樓賣竟比去交換所還賺！",
+          "emotion": "反問驚奇"
+        },
+        {
+          "id": "p090",
+          "text": "還有人埋伏窗口外高價攔截，抽走金片！",
+          "emotion": "戲劇亂象"
+        }
+      ]
+    },
+    {
+      "id": "s46-ada-gold-shock",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the slender archivist in dark-burgundy round glasses and olive trench coat staring wide-eyed at a brass balance scale tilting heavily downward under a tiny gold bar against a pile of crisp folded bills, sunlit timber archive",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p091",
+          "text": "諷刺吧？為合法封真金，反險被套利抽乾！",
+          "emotion": "觀眾共感"
+        },
+        {
+          "id": "p092",
+          "text": "逼得東京流通體系展開史無前例緊急自救。",
+          "emotion": "銜接下一步"
+        }
+      ]
+    },
+    {
+      "id": "s47-melt-value-inversion",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of a clear acrylic pure gold bar case being gently lifted away from a velvet tray while a gleaming cool-toned pure silver mini-bar in a fresh clear case takes its place on the right",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p093",
+          "text": "二零二三年底，東京被迫停供爆表的一克純金。",
+          "emotion": "果斷處置"
+        },
+        {
+          "id": "p094",
+          "text": "零點一克金也太貴，隔年急推純銀接最低面額！",
+          "emotion": "回收伏筆"
+        }
+      ]
+    },
+    {
+      "id": "s48-three-hikes-2025",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of three stepped glass pedestals holding a larger gold acrylic chip, a smaller gold acrylic chip, and a cool silver acrylic chip, each ascending sharply across three crisp blank calendar silhouettes illuminated by bright dramatic sunlight",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p095",
+          "text": "但這還不是終點！二零二五年單年竟連漲三次價。",
+          "emotion": "懸念升級"
+        },
+        {
+          "id": "p096",
+          "text": "零點三克金片漲到九千圓，銀片也翻倍漲成一千圓！",
+          "emotion": "節奏緊湊"
+        }
+      ]
+    },
+    {
+      "id": "s49-leftover-balls",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a player's hand resting beside a shallow metal tray holding a small leftover mound of gleaming silver pachinko balls next to a chilled fruit juice can and colorful biscuit snack packs on a bright parlor counter",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p097",
+          "text": "最低換現跳到千圓，剩幾百圓零碎鋼珠卡住換不了。",
+          "emotion": "生活痛點"
+        },
+        {
+          "id": "p098",
+          "text": "你猜客人怎麼辦？只好存卡或抓飲料零食花掉！",
+          "emotion": "幽默小梗"
+        }
+      ]
+    },
+    {
+      "id": "s50-akihabara-pendant",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two sleek flat rectangular translucent collector-card cases enclosing decorative silver-toned jewelry pendant charms lying neatly beside a retired pure gold bar case on a sunlit wooden counter",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p099",
+          "text": "二六年二月，秋葉原指標大店乾脆停用金銀景品。",
+          "emotion": "最新進展"
+        },
+        {
+          "id": "p100",
+          "text": "改推定額墜飾與金價脫鉤，東京純金時代開始鬆動。",
+          "emotion": "時代轉折"
+        }
+      ]
+    },
+    {
+      "id": "s51-headline-bridge",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sleek brass magnifying lens hovering above an open crisp ivory statistical ledger illuminated by warm sunlight, casting an enlarged shimmering mirage of silver steel balls onto the wooden desk",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p101",
+          "text": "問題來了：為何連大店都扛不住金價波動？",
+          "emotion": "節奏收緊"
+        },
+        {
+          "id": "p102",
+          "text": "因為開頭那十六點二兆，你其實被帳面數字騙了！",
+          "emotion": "懸念上揚"
+        }
+      ]
+    },
+    {
+      "id": "s52-illusion-hook",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of a massive glittering pool of steel pachinko balls spiraling rapidly inside a glass funnel while only a thin gleaming stream of golden coins trickles out into a small brass vault below",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p103",
+          "text": "日本《休閒白皮書》算它占休閒市場逾兩成，",
+          "emotion": "呼應開頭"
+        },
+        {
+          "id": "p104",
+          "text": "連二一年十四點六兆數字，都藏著會計錯覺！",
+          "emotion": "章末鉤子"
+        }
+      ]
+    },
+    {
+      "id": "s53-turnover-vs-profit",
+      "chapter": "十六兆帳本真相曝光，三分之二門市悄然熄燈",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide visual comparison on a sunlit wooden archive desk: on the left, a gigantic glowing circular track cycling the same tall stack of silver steel balls endlessly; on the right, a compact neatly stacked brass box about one-sixth the height representing actual net margin",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p105",
+          "text": "無論卅四兆或十六兆，全是反覆投錢的總借球額。",
+          "emotion": "揭開錯覺"
+        },
+        {
+          "id": "p106",
+          "text": "扣掉獎品，二一年實際毛利僅約二點三九兆日圓！",
+          "emotion": "真實帳本"
+        }
+      ]
+    },
+    {
+      "id": "s54-two-thirds-gone",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet sunlit suburban Japanese road where a lone commuter walks past two small shuttered retro neighborhood pachinko parlors standing dim on the left while a single massive brightly lit multi-story glass megahall glows on the right",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p107",
+          "text": "警察廳門市數更殘酷：全盛一萬八千多家，",
+          "emotion": "對比落差"
+        },
+        {
+          "id": "p108",
+          "text": "二五年底剩六千四百六十四家，近三分之二熄燈！",
+          "emotion": "強烈對照"
+        }
+      ]
+    },
+    {
+      "id": "s55-megahall-survivors",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide interior shot of a spacious ultra-modern Japanese pachinko megahall bathed in crisp warm-white architectural lighting, wide spotless aisles and comfortable padded seats with calm adult players",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p109",
+          "text": "留下的均逾五百台，全國玩家七百二十萬。",
+          "emotion": "現況定格"
+        },
+        {
+          "id": "p110",
+          "text": "手遊分流、禁菸加高投資，小店大量退場。",
+          "emotion": "時代背景"
+        }
+      ]
+    },
+    {
+      "id": "s56-shrinking-giant",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a gleaming golden tightrope stretching high across a bright sunlit modern Japanese city skyline, balancing a miniature crimson pachinko cabinet, a small acrylic gold case, and a slate-blue kiosk booth in delicate equilibrium",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p111",
+          "text": "回頭看，三店方式從不是無敵作弊神器。",
+          "emotion": "收束昇華"
+        },
+        {
+          "id": "p112",
+          "text": "但走過六十五年，為何仍沒人敢輕易拆它？",
+          "emotion": "深度提問"
+        }
+      ]
+    },
+    {
+      "id": "s57-every-shock-tests-it",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of three interlocking brass rings suspended cleanly in sunlit air—one holding steel balls, one holding a gold chip, one holding folded bills—gently vibrating as warm sunlight catches every edge",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p113",
+          "text": "禁換現怕資金回地下，合法化又怕反賭反彈。",
+          "emotion": "道破僵局"
+        },
+        {
+          "id": "p114",
+          "text": "店員那句「不知道」，成了最緊的安全扣。",
+          "emotion": "畫龍點睛"
+        }
+      ]
+    },
+    {
+      "id": "s58-street-revisit",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide warm evening shot of a lively Tokyo station street, travelers strolling calmly past the glowing crimson doorway of a pachinko parlor and glancing knowingly at a tiny quiet slate-blue exchange window tucked around the corner",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p115",
+          "text": "下次去日本經過霓虹門，不妨瞄一眼巷口。",
+          "emotion": "回到觀眾"
+        },
+        {
+          "id": "p116",
+          "text": "磨砂小窗背後，藏治安、法條與純金奇案。",
+          "emotion": "餘韻綿長"
+        }
+      ]
+    },
+    {
+      "id": "s59-viewer-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of two clean sunlit wooden coasters side by side on a cafe table—one holding a bright brass balance scale, the other holding a red wooden gavel—under warm golden afternoon window rays",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "p117",
+          "text": "換作你立法，支持直接合法課稅，還是徹底禁店外換錢？",
+          "emotion": "互動提問"
+        },
+        {
+          "id": "p118",
+          "text": "留言告訴我你的選擇，我超好奇大家怎麼看！",
+          "emotion": "熱情互動"
+        }
+      ]
+    },
+    {
+      "id": "s60-end-ada-closing",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in the warm sunlit timber archive study, the slender archivist in dark-burgundy round glasses and olive trench coat over an off-white turtleneck gently closing a leather archive folder beside a single gleaming silver pachinko ball on the desk, warm inviting smile toward viewer",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p119",
+          "text": "好啦這就是奇聞檔案局，街頭日常背後全是博弈。",
+          "emotion": "溫暖結尾"
+        },
+        {
+          "id": "p120",
+          "text": "喜歡真實商業奇案別忘訂閱，下次見！",
+          "emotion": "明亮收尾"
+        }
+      ]
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "layout": "heimao-left",
+      "headline": "柏青哥禁賭能換錢？",
+      "sub": "拆成三家店竟撐起16兆日圓",
+      "asset": "stock/26be3c63a1780759b0729d4041a52d1192cb64db38d4404f46d199b700061b74.jpg"
+    }
+  },
+  "assets": [
+    {
+      "path": "stock/26be3c63a1780759b0729d4041a52d1192cb64db38d4404f46d199b700061b74.jpg",
+      "sha256": "26be3c63a1780759b0729d4041a52d1192cb64db38d4404f46d199b700061b74",
+      "credit": "Mokaair 奇聞檔案局",
+      "license": "original",
+      "source": "built-in generate_image (w26_hero_thumb_v4, $0)"
+    }
+  ],
+  "youtube": {
+    "title": "日本柏青哥憑什麼合法換錢？三店方式揭16兆真相｜奇聞檔案局",
+    "description": "走進日本霓虹閃爍的柏青哥店，明明刑法禁賭、《風俗營業法》更嚴禁店家發放現金或回購獎品，為何走出店門五公尺的磨砂小窗口，卻能把一塊小金片換成真鈔？\n給每次去日本經過柏青哥店都滿腦子問號，好奇「三店方式」怎麼撐過六十五年、又為何差點被飆漲金價拆穿的人。\n\n本片依日本國會內閣答辯書、風營法條文、警察廳統計與《レジャー白書》，拆解 1961 年大阪前警官聯手警方與社福協會排黑起源、1984 年四道禁令與單件 10,560 日圓上限、1991–1997 年東京排黑與 24K 純金景品改革、2019–2025 年金價年均狂飆 3.5 倍（2025 盤中最高 22,844 日圓/克）引發停供 1 克金與 2025 三連漲，以及 14.6 兆／16.2 兆日圓貸玉額背後的 2.39 兆毛利與門市縮減真相。\n\n本頻道與片中提及機構無合作關係。本集插圖由 AI 生成。\n資料截至 2026-11-22",
+    "tags": [
+      "奇聞檔案局",
+      "柏青哥",
+      "三店方式",
+      "日本商業",
+      "風營法",
+      "特殊景品",
+      "日本文化",
+      "商業奇聞"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "video_id": null
+  },
+  "sources": [
+    {
+      "title": "參議院第196回內閣答辯書第13號（2018）",
+      "url": "https://www.sangiin.go.jp/japanese/joho1/kousei/syuisyo/196/touh/t196013.htm",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "參議院第187回內閣答辯書第45號（2014）",
+      "url": "https://www.sangiin.go.jp/japanese/joho1/kousei/syuisyo/187/touh/t187045.htm",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "眾議院第193回質問主意書第398號（2017）",
+      "url": "https://www.shugiin.go.jp/internet/itdb_shitsumon.nsf/html/shitsumon/a193398.htm",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "眾議院第193回內閣答辯書第398號（2017）",
+      "url": "https://www.shugiin.go.jp/internet/itdb_shitsumon.nsf/html/shitsumon/b193398.htm",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "日本風營法第23條條文（e-Gov整理）",
+      "url": "https://lawplayer.com/jp/article/323AC0000000122/23",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "ツナグ行政書士：風營法景品上限與備品規則",
+      "url": "https://tsunagu-office.net/archives/37771",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "每日新聞（2026-10-30）：宮城自家買い送檢",
+      "url": "https://mainichi.jp/articles/20261030/k00/00m/310/347000c",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "遊技日本《歷史㉞》：買人與1961大阪方式",
+      "url": "https://yugi-nippon.com/pachinko-column/post-73797/",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "弁護士JP：1954昭和柏青哥池袋買人抗爭",
+      "url": "https://www.excite.co.jp/news/article/ben54_jp_news_2113/",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "都遊協官方紀錄：1991–1997排黑與純金景品",
+      "url": "https://www.toyoukyo.or.jp/activity_01.html",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "日刊SPA!（2024）：1克金景品與銀景品導入",
+      "url": "https://nikkan-spa.jp/2012318",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "日刊SPA!（2023）：東京停供1克純金景品",
+      "url": "https://nikkan-spa.jp/1966221/3",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "Pricey（2026）：田中貴金屬金價與2025三連漲",
+      "url": "https://www.pricey.jp/web/articles/4974",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "《遊技産業レポート2023》：14.6兆貸玉與2.39兆毛利",
+      "url": "https://mirai-pachinko.jp/wp-content/uploads/2023/05/02light.pdf",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "藤商事IR：2025白皮書16.2兆與警察廳6,464店",
+      "url": "https://www.fujimarukun.co.jp/corp/ir/individuals/market.html",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "グリーンべると：《白書2026》16.2兆與720萬人",
+      "url": "https://web-greenbelt.jp/post-119753/",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "娯楽産業：警察廳2025年單店平均500.4台",
+      "url": "https://www.goraku-sangyo.com/%E8%AD%A6%E5%AF%9F%E5%BA%81%E3%80%80%E4%BB%A4%E5%92%8C7%E5%B9%B4%E3%81%AE%E9%A2%A8%E4%BF%97%E7%92%B0%E5%A2%83%E3%81%AE%E7%8F%BE%E7%8A%B6%E7%AD%89%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/",
+      "checked_on": "2026-11-22"
+    }
+  ]
+}
