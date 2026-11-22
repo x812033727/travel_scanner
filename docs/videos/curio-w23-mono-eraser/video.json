@@ -1,0 +1,1550 @@
+{
+  "schema_version": 1,
+  "slug": "curio-w23-mono-eraser",
+  "theme": "paper",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。絕不平、絕不像在念稿。",
+    "performance": "像跟朋友拆解一場藏在鉛筆盒裡的半世紀商業奇襲：開場從考場日常直球破題；1959年塑膠橡皮擦與1949年八十億粒子輕快俐落；1967年贈品反客為主帶驚喜笑意；1969年三色紙套與可塑劑盔甲生動有共鳴；2017年五百六十件過九件壓低緊湊再揭曉；考場無字版反常識節奏爽快；收尾兩條商業鐵律鏗鏘落地。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -18,
+    "duck_db": -8
+  },
+  "pauses": {
+    "line_ms": 0,
+    "scene_ms": 150
+  },
+  "still_motion": "beat",
+  "loops": [
+    {
+      "setup": "m002",
+      "payoff": "m022",
+      "what": "高價鉛筆為何免費送一塊塑膠橡皮擦"
+    },
+    {
+      "setup": "m004",
+      "payoff": "m044",
+      "what": "日本約五成市場規模的真實口徑與家族延伸"
+    },
+    {
+      "setup": "m005",
+      "payoff": "m062",
+      "what": "五百六十件申請只過九件的純色彩商標窄門真相"
+    },
+    {
+      "setup": "m007",
+      "payoff": "m074",
+      "what": "拿到商標五個月後故意刪光文字進考場的原因"
+    },
+    {
+      "setup": "m009",
+      "payoff": "m104",
+      "what": "免費贈品反客為主成為日本第一號色彩商標的完整路徑"
+    },
+    {
+      "setup": "m013",
+      "payoff": "m014",
+      "what": "是哪家公司把冷門的新型塑膠橡皮擦推向全日本"
+    },
+    {
+      "setup": "m021",
+      "payoff": "m022",
+      "what": "濃黑頂規鉛筆怎麼向顧客證明擦得乾淨"
+    },
+    {
+      "setup": "m031",
+      "payoff": "m032",
+      "what": "幾公分的小橡皮擦如何在滿櫃文具中被看見"
+    },
+    {
+      "setup": "m047",
+      "payoff": "m048",
+      "what": "貨架冒出撞色仿品時蜻蜓牌怎麼反擊"
+    },
+    {
+      "setup": "m051",
+      "payoff": "m052",
+      "what": "早有平面與立體商標為何仍非闖純色彩商標不可"
+    },
+    {
+      "setup": "m073",
+      "payoff": "m078",
+      "what": "奪下日本第一號後為何反而親手把自家名字全刪光"
+    },
+    {
+      "setup": "m091",
+      "payoff": "m094",
+      "what": "數位時代市場萎縮時這塊老牌橡皮擦如何突圍"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "open-desk-eraser",
+      "chapter": "買鉛筆送的免費贈品，怎麼奪日本首號純色彩商標",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a crisp snowy rectangular rubber emerging partway from a plain matte paper sleeve on a bright wooden exam desk beside a sharpened dark-green hexagonal pencil and answer sheet, three separated glowing ribbons of cobalt blue, silver-pearl, and charcoal light crossing the wood",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m001",
+          "text": "你從小在考場握過的藍白黑橡皮擦，原本並不單賣。",
+          "emotion": "直球破題，日常強烈反差"
+        },
+        {
+          "id": "m002",
+          "text": "它最早只是買整打高級鉛筆時，免費送的贈品。",
+          "emotion": "點出贈品反差"
+        }
+      ]
+    },
+    {
+      "id": "open-gift-box",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of an open luxury dark-green wooden gift box holding twelve sharpened dark-green hexagonal pencils on velvet lining with one tiny plain snowy plastic cube tucked humbly in the corner, dramatic studio rim lighting",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m003",
+          "text": "照理說，贈品向來只是襯托主角的便宜小配角。",
+          "emotion": "鋪陳常理對照"
+        },
+        {
+          "id": "m004",
+          "text": "沒想到半世紀後，它竟逆襲拿下日本半壁江山。",
+          "emotion": "拉開巨大反差"
+        }
+      ]
+    },
+    {
+      "id": "open-seal-gauntlet",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle close-up of a gleaming golden wax official seal stamped beside three separate floating translucent geometric ribbons of cobalt blue, pure pearl, and charcoal black hovering over a dark mahogany archive table, theatrical spotlight",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m005",
+          "text": "它還從核准率不到百分之二的窄門殺出重圍。",
+          "emotion": "高張力數字反差"
+        },
+        {
+          "id": "m006",
+          "text": "靠藍白黑三色，拿下日本第一號純色彩商標。",
+          "emotion": "重磅高潮標籤一"
+        }
+      ]
+    },
+    {
+      "id": "open-wordless-exam",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two identical plain snowy rectangular PVC bars in completely blank unmarked matte paper sleeves resting neatly beside two unprinted wooden pencils on a quiet morning wooden classroom desk, soft rays through tall windows",
+        "camera": "pull back",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m007",
+          "text": "更怪的是，拿商標五個月後它推出無字新款。",
+          "emotion": "修正「取證」，重磅高潮標籤二"
+        },
+        {
+          "id": "m008",
+          "text": "連一個字母都不印，反而成了日本考場熱門神物。",
+          "emotion": "強化懸疑張力"
+        }
+      ]
+    },
+    {
+      "id": "open-promise-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of Ada in her sage-green trench coat and round tortoiseshell glasses standing in a bright archive room holding up a plain snowy rectangular rubber toward a shaft of golden light, three soft separated ambient color beams glowing gently behind her",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m009",
+          "text": "今天就聊聊，免費贈品怎麼變日本第一號色彩商標？",
+          "emotion": "唯一承諾句，不劇透轉折"
+        }
+      ]
+    },
+    {
+      "id": "hist-rubber-import",
+      "chapter": "1949 年起磨了十四年的「八十億顆粒子」",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a mid-twentieth-century Japanese drafting workshop with timber workbenches, rough pale natural tree rubber cubes, smudged graphite notebooks, and glass chemical beakers glowing under tall factory windows",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m010",
+          "text": "想看懂它怎麼逆襲，得回到一九五〇年代末。",
+          "emotion": "砍掉遠古繞路，直接切入衝突"
+        },
+        {
+          "id": "m011",
+          "text": "當時日本全靠進口天然橡膠，貴又容易擦髒紙面。",
+          "emotion": "點出舊材質痛點"
+        }
+      ]
+    },
+    {
+      "id": "hist-pvc-1959",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a crisp snowy PVC plastic pad gliding smoothly across dark graphite strokes on drafting paper, lifting neat spiral shavings cleanly without smudging, directional sidelight",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m012",
+          "text": "一九五九年，日本橡皮擦廠搶先推出 PVC 塑膠擦。",
+          "emotion": "亮出關鍵發明"
+        },
+        {
+          "id": "m013",
+          "text": "但大家還是習慣舊橡膠，誰能把新材質推向全日本？",
+          "emotion": "第一分鐘精準鉤子"
+        }
+      ]
+    },
+    {
+      "id": "tombow-lab-1949",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet post-war nineteen-fifties Japanese graphite research room where an anonymous craft technician in a neat lab coat inspects fine charcoal graphite powder beside porcelain mortars and steel rollers in golden afternoon light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m014",
+          "text": "推手不是橡皮擦廠，而是老牌鉛筆廠蜻蜓牌。",
+          "emotion": "反轉出場，交代公司身分"
+        },
+        {
+          "id": "m015",
+          "text": "把時間往前推十年，它就在實驗室苦磨筆芯。",
+          "emotion": "流暢帶回 1949 主線"
+        }
+      ]
+    },
+    {
+      "id": "tombow-8-billion",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up cross-section illustration of ultra-fine dark shimmering graphite micro-particles packed densely like velvet night-sky stardust inside a gleaming hexagonal wooden pencil core under golden laboratory magnification",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m016",
+          "text": "從一九四九年起，團隊花十四年狂磨石墨與黏土。",
+          "emotion": "語氣佩服有分量"
+        },
+        {
+          "id": "m017",
+          "text": "硬是在一立方公釐的筆芯裡，塞進八十億顆粒子。",
+          "emotion": "放慢唸清八十億數字"
+        }
+      ]
+    },
+    {
+      "id": "tombow-mono-1963",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a sleek polished dark-green hexagonal luxury pencil resting on a deep velvet cushion beside crisp silky-black graphite strokes on thick ivory paper, gallery spotlight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m018",
+          "text": "一九六三年，象徵獨一無二的高級鉛筆 MONO 登場。",
+          "emotion": "亮出 MONO 語源與年份"
+        },
+        {
+          "id": "m019",
+          "text": "筆跡濃黑又滑順，瞬間在設計與建築圈爆紅。",
+          "emotion": "畫面感強，零重複"
+        }
+      ]
+    },
+    {
+      "id": "tombow-mono100-1967",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stately dark lacquered wooden presentation box holding a neat dozen of gleaming jet-black hexagonal flagship pencils on a bright Japanese shop counter, golden rim light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m020",
+          "text": "一九六七年它乘勝追擊，推出更高規格的 MONO100。",
+          "emotion": "升級推進，無週年算術干擾"
+        },
+        {
+          "id": "m021",
+          "text": "但筆芯越濃黑，大家越怕擦不乾淨，該怎麼辦？",
+          "emotion": "章末鉤子，1 分 45 秒直入主角"
+        }
+      ]
+    },
+    {
+      "id": "freebie-box-1967",
+      "chapter": "1967 年每打送一塊的贈品，竟然搶走主角風頭",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a neat hand in a tailored wool sleeve gently tucking a small plain snowy rectangular plastic cube into the spare corner slot of a dozen dark luxury pencils inside an open gift box, workshop daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m022",
+          "text": "這塊免費贈品就在這時登場：買一打送一塊。",
+          "emotion": "明確回呼開場贈品"
+        },
+        {
+          "id": "m023",
+          "text": "盒裡塞的，正是當時還不普及的塑膠橡皮擦。",
+          "emotion": "扣回前章 PVC 鋪陳"
+        }
+      ]
+    },
+    {
+      "id": "freebie-clean-erase",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up of a plain snowy rectangular PVC bar wiping straight through a dense jet-black graphite shading patch on crisp drafting paper, leaving an astonishingly spotless trail behind it",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m024",
+          "text": "原本只想讓買家試擦，證明濃黑筆跡能擦乾淨。",
+          "emotion": "說明原意"
+        },
+        {
+          "id": "m025",
+          "text": "結果一擦下去，這塊小贈品竟然把買家全驚呆了。",
+          "emotion": "埋下反轉"
+        }
+      ]
+    },
+    {
+      "id": "freebie-shop-buzz",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a cozy late-nineteen-sixties Japanese wood-paneled paper shop where two smiling students and a draftsman lean over a glass display counter gesturing excitedly at a small plain rubber piece held by a shopkeeper",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m026",
+          "text": "顧客用過口碑炸開，紛紛跑回文具行追問同一句。",
+          "emotion": "生動場景感"
+        },
+        {
+          "id": "m027",
+          "text": "能不能別買整打鉛筆，單賣盒裡那塊橡皮擦？",
+          "emotion": "趣味口吻演繹顧客心聲"
+        }
+      ]
+    },
+    {
+      "id": "freebie-stand-alone-decision",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of Ada in a bright archival study examining a neat row of vintage nineteen-sixties handwritten Japanese customer request cards stacked beside a single plain PVC rubber on an oak desk",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m028",
+          "text": "單買呼聲越滾越大，終於逼得鉛筆廠順應民意。",
+          "emotion": "順水推舟"
+        },
+        {
+          "id": "m029",
+          "text": "一九六九年，這塊免費贈品正式扶正獨立開賣。",
+          "emotion": "歷史轉折落地"
+        }
+      ]
+    },
+    {
+      "id": "sleeve-counter-dilemma",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bustling nineteen-sixties Japanese writing-goods counter packed with tall jars of colorful pencils, pastel notebooks, and wooden rulers, while tiny plain rectangles lie barely noticeable in a small wooden tray at the front",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m030",
+          "text": "但獨立上市前問題來了：設計團隊撞上殘酷現實。",
+          "emotion": "急轉設立懸念"
+        },
+        {
+          "id": "m031",
+          "text": "橡皮擦才幾公分大，混在文具貨架裡怎麼被看見？",
+          "emotion": "提出具體設計難題"
+        }
+      ]
+    },
+    {
+      "id": "sleeve-tricolor-spark",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up of a bright nineteen-sixties Japanese designer drafting table with three separate matte color paper swatch cards—one vivid cobalt blue, one pure pearl, one deep charcoal black—arranged beside a brass compass, scissors, and a plain PVC rectangle",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m032",
+          "text": "設計團隊參考三色國旗的高對比醒目視覺。",
+          "emotion": "揭曉設計靈感"
+        },
+        {
+          "id": "m033",
+          "text": "替橡皮擦套上由上而下藍、白、黑三等分紙套。",
+          "emotion": "清楚交代三色比例"
+        }
+      ]
+    },
+    {
+      "id": "sleeve-shelf-pop",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cheerful late-nineteen-sixties Japanese schoolgirl in a neat navy sailor uniform spotting a glowing desk-goods tray from across a bright shop counter, soft separated shafts of blue and pearl window light highlighting plain rectangles in crisp sleeves",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m034",
+          "text": "這招一擊命中，客人隔著走道就能一眼鎖定它。",
+          "emotion": "緊接三色紙套，指代精準"
+        },
+        {
+          "id": "m035",
+          "text": "但這還不是全部，這張紙套其實更是物理盔甲。",
+          "emotion": "自然升級到物理保護"
+        }
+      ]
+    },
+    {
+      "id": "sleeve-pvc-armor",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bare snowy PVC rubber accidentally resting directly against a glossy painted wooden desk surface beside a crisp protective plain paper sleeve ready to slide over it, bright educational sidelight",
+        "camera": "pull back",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m036",
+          "text": "PVC 橡皮擦含可塑劑，貼塑膠尺久了會沾黏變軟。",
+          "emotion": "補上物理原因，生活經驗秒懂"
+        },
+        {
+          "id": "m037",
+          "text": "官方至今提醒用完收進紙套，不傷文具和桌面。",
+          "emotion": "緊貼官方注意事項"
+        }
+      ]
+    },
+    {
+      "id": "sleeve-permanent-billboard",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a neat plain rectangular PVC piece sliding smoothly back inside its snug plain matte paper sleeve on a bright study desk beside a ruler and canvas pencil case",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m038",
+          "text": "物理需求意外把紙套變成拆不掉的隨身活招牌。",
+          "emotion": "點出物理剛需變品牌資產"
+        },
+        {
+          "id": "m039",
+          "text": "每擦完收回去一次，就在腦裡多刷一次藍白黑記憶。",
+          "emotion": "精彩收束紙套章節"
+        }
+      ]
+    },
+    {
+      "id": "manual-five-generations",
+      "chapter": "守住藍白黑半世紀，卻撞上舊商標擋不住的仿品",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of five neat plain solid-ivory rectangular pieces lined chronologically in a crisp row on a bright wooden archive tray with a gentle blue-to-navy tint progression reflected on glass coasters beside them, museum lighting",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m040",
+          "text": "更驚人的決定不在配色，而在之後半世紀。",
+          "emotion": "流暢承接上章"
+        },
+        {
+          "id": "m041",
+          "text": "從初代到二〇一三年第五代，總共改版過四次。",
+          "emotion": "修正算術：五代＝四次改版"
+        }
+      ]
+    },
+    {
+      "id": "manual-design-bible",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick cloth-bound blank design specification binder opened on an architect desk beside brass proportional dividers, three separate paint sample tiles in blue, pearl, and charcoal, and a wooden ruler, studio light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m042",
+          "text": "標誌與字體換過好幾輪，初代藍色也曾稍微偏亮。",
+          "emotion": "緊貼五十週年新聞稿細節"
+        },
+        {
+          "id": "m043",
+          "text": "唯獨藍白黑三等分寫進設計規範，半世紀不變。",
+          "emotion": "語氣堅定有魄力"
+        }
+      ]
+    },
+    {
+      "id": "share-50-percent",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide overhead flat-lay of a tidy collection of sleek modern desk tools—plain erasers, correction tape dispensers, mechanical pencils, and dark hexagonal pencils—arranged on a pale oak tabletop with half glowing under warm golden spotlight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m044",
+          "text": "根據推估，二〇一五年它拿下日本約一半市場。",
+          "emotion": "明確回呼開場＋補齊 2015 年口徑"
+        },
+        {
+          "id": "m045",
+          "text": "這三色走進校園與職場，成了日本文具代名詞。",
+          "emotion": "俐落展現家族版圖，零型錄念稿"
+        }
+      ]
+    },
+    {
+      "id": "copycat-shelf-threat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a crowded modern school-supplies aisle shelf where rows of similar-looking plain rubbers in blue-tinted blank sleeves sit close together under cool store lighting, creating visual confusion for a puzzled shopper reaching forward",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m046",
+          "text": "不過成了國民必備款後，貨架上就冒出同配色仿品。",
+          "emotion": "衝突升級"
+        },
+        {
+          "id": "m047",
+          "text": "客人瞄到類似配色伸手就拿，這漏洞怎麼堵？",
+          "emotion": "具體商業痛點與疑問"
+        }
+      ]
+    },
+    {
+      "id": "ip-layer-1999",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of three formal parchment certificate folders bound with crimson silk ribbons stacked neatly beside a brass magnifying glass and a plain solid geometric cube on a mahogany legal desk, warm desk-lamp glow",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m048",
+          "text": "其實早在一九九九年，它就先拿下兩件平面商標。",
+          "emotion": "清楚倒敘亮出前瞻佈局"
+        },
+        {
+          "id": "m049",
+          "text": "隔年再註冊立體商標，連整塊外型一起護住。",
+          "emotion": "白話介紹兩種舊商標，無無關獎項"
+        }
+      ]
+    },
+    {
+      "id": "ip-old-trademark-gap",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a translucent glowing blueprint outline of a rectangular cube on a slate workbench while a slightly altered slanted generic cube slips past a brass caliper barrier beside it, dramatic contrast light",
+        "camera": "pull back",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m050",
+          "text": "但舊商標綁著字樣與外型，對手照抄配色就難擋。",
+          "emotion": "白話點破舊商標盲點"
+        },
+        {
+          "id": "m051",
+          "text": "想徹底封死同配色仿品，還有沒有更強的武器？",
+          "emotion": "04:10 提前引爆標題主軸！"
+        }
+      ]
+    },
+    {
+      "id": "law-jpo-2015",
+      "chapter": "560 件只過 9 件！2017 年日本第一號「純色彩商標」",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide exterior shot of a stately modern Tokyo government patent office building bathed in crisp April cherry-blossom spring daylight, soft pink petals drifting past pale stone columns and tall glass windows",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m052",
+          "text": "二〇一五年四月一日，日本商標制度迎來大變革。",
+          "emotion": "直接答題，帶出法制轉折"
+        },
+        {
+          "id": "m053",
+          "text": "負責審商標的日本特許廳，首度開放純色彩商標。",
+          "emotion": "清楚定義新制度"
+        }
+      ]
+    },
+    {
+      "id": "law-day-one-filing",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a polite Japanese office clerk in a neat dark blazer placing an official application dossier tied with navy cord onto a polished mahogany patent-office intake counter beside a gleaming brass clock in morning sidelight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m054",
+          "text": "只要過關，就能在指定商品上依法獨占配色。",
+          "emotion": "點出最強威力"
+        },
+        {
+          "id": "m055",
+          "text": "蜻蜓牌首日火速遞件，但審查門檻有多嚴格？",
+          "emotion": "製造張力，精準維持鉤子節奏"
+        }
+      ]
+    },
+    {
+      "id": "law-article-3-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of Ada in an archival law library gazing up in awe at towering neat stacks of thick leather-bound evidence binders, consumer survey folders, and historic print catalog scrapbooks piled high across a long oak table",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m056",
+          "text": "日本商標法認定，單純顏色原本並不具識別力。",
+          "emotion": "消除雙重「但」，直點法條核心"
+        },
+        {
+          "id": "m057",
+          "text": "企業必須提出長期使用鐵證，證明民眾早已認得它。",
+          "emotion": "白話解釋使用による識別性"
+        }
+      ]
+    },
+    {
+      "id": "law-archive-proof",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up of vintage Japanese print magazine clippings, blank stacked sales ledger books, and historic shop brochures spread neatly beside a brass magnifying glass on a bright mahogany conference table",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m058",
+          "text": "從市占、媒體報導到歷年廣告，全得一頁頁備齊。",
+          "emotion": "緊貼特許廳官方說明"
+        },
+        {
+          "id": "m059",
+          "text": "最硬的是無字盲測：抹掉字，光看顏色就得認出。",
+          "emotion": "鋪陳視覺盲測高潮"
+        }
+      ]
+    },
+    {
+      "id": "law-blind-color-test",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an ordinary Japanese commuter in a bright modern interview room looking at three separate unprinted color cards in blue, pearl, and charcoal held by a researcher and lighting up with instant recognition",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m060",
+          "text": "全國調查必須衝出壓倒性辨識度，才過得了關。",
+          "emotion": "一句講透純色彩核心門檻"
+        },
+        {
+          "id": "m061",
+          "text": "門檻設得這麼高，最後到底核准了幾件？",
+          "emotion": "04:55 精準引爆 560 過 9 揭曉，消除高牆重複"
+        }
+      ]
+    },
+    {
+      "id": "law-560-to-9",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot on a deep slate wooden table: hundreds of small pale wooden pegs spread across the left side funneling through a narrow brass gate toward just nine gleaming golden hexagonal tokens glowing brightly on the right",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m062",
+          "text": "截至二〇二二年六月，約五百六十件申請裡，",
+          "emotion": "明確回呼開場，自然銜接淘汰率"
+        },
+        {
+          "id": "m063",
+          "text": "全國竟然只核准九件，核准率不到百分之二。",
+          "emotion": "放慢唸清官方統計"
+        }
+      ]
+    },
+    {
+      "id": "law-monopoly-weight",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an antique gleaming brass balance scale on a dark wood courtroom desk weighing three glowing translucent color crystal prisms against a heavy stack of leather-bound law books, dramatic rim light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m064",
+          "text": "因為顏色是公共財，特許廳絕不輕易放行。",
+          "emotion": "消除連句九成八重複，直入官方理由"
+        },
+        {
+          "id": "m065",
+          "text": "就算是大企業送件，也常得排隊補件好幾年。",
+          "emotion": "點出權利分量"
+        }
+      ]
+    },
+    {
+      "id": "law-peer-icons",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bright Japanese neighborhood street corner at golden hour: separated abstract ambient storefront light bands of crisp pearl, orange, green, and red reflect gently on clean shop glass beside evening lantern bokeh",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m066",
+          "text": "你猜得出來，這不到百分之二的名單裡還有誰嗎？",
+          "emotion": "自然小鉤子"
+        },
+        {
+          "id": "m067",
+          "text": "像是超商的白底橘綠紅條紋，還有老牌雞汁泡麵。",
+          "emotion": "引用特許廳同文實例"
+        }
+      ]
+    },
+    {
+      "id": "law-chicken-ramen-wait",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a vintage brass sand hourglass trickling golden sand beside three blank stacked trademark examination folders on a quiet oak government review desk, dramatic sidelight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m116",
+          "text": "連賣六十年的國民雞汁麵，都一路審了三年半。",
+          "emotion": "對比突顯審查嚴格"
+        },
+        {
+          "id": "m117",
+          "text": "期間得交出跨世代問卷鐵證，才勉強拿到門票。",
+          "emotion": "加深戲劇份量"
+        }
+      ]
+    },
+    {
+      "id": "law-giant-rivals",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a glowing modern Tokyo shopping district at dusk where towering brightly lit unlettered glass storefronts dwarf a small warm wooden stationery boutique glowing brightly at street level",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m108",
+          "text": "進榜的多半是財力雄厚、鋪天蓋地的國民大企業。",
+          "emotion": "拉大對比張力"
+        },
+        {
+          "id": "m109",
+          "text": "平價橡皮擦憑什麼，搶先拿下第一號色彩商標？",
+          "emotion": "揭曉前最後拉滿懸念"
+        }
+      ]
+    },
+    {
+      "id": "law-two-year-wait",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a thoughtful legal researcher in a dark wool blazer sitting beside a quiet Tokyo office window looking out at drifting spring petals over a single navy-tied application dossier on a mahogany desk",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m118",
+          "text": "它能擠進首波名單，靠的是數十年單品高曝光。",
+          "emotion": "交代 2015-04 到 2017-03 兩年審查"
+        },
+        {
+          "id": "m119",
+          "text": "人人天天收進三色紙套，全國辨識度高得驚人。",
+          "emotion": "緊接三月十日揭曉高潮"
+        }
+      ]
+    },
+    {
+      "id": "law-march-2017-win",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an embossed official patent registration certificate sealed with a deep crimson wax stamp and silk ribbon resting beside a gleaming plain snowy rubber under three separated floating shafts of blue, pearl, and charcoal skylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m068",
+          "text": "經過近兩年審查，二〇一七年三月十日正式註冊。",
+          "emotion": "高潮揭曉，語氣鏗鏘"
+        },
+        {
+          "id": "m069",
+          "text": "寫下歷史，成為日本史上第一號純色彩商標。",
+          "emotion": "精準數字落地"
+        }
+      ]
+    },
+    {
+      "id": "law-gazette-2017",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up of a freshly printed thick official ivory government gazette folio tied with blue silk cord opening under morning desk light beside a brass fountain pen and a plain snowy eraser",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m070",
+          "text": "一塊日常文具竟搶下頭香，消息立刻轟動業界。",
+          "emotion": "零重複，交代生效日"
+        },
+        {
+          "id": "m071",
+          "text": "從此在橡皮擦上，不印字光靠三色就受法律保護。",
+          "emotion": "順手交代 2017-04 官方公告規模"
+        }
+      ]
+    },
+    {
+      "id": "law-anti-copycat-shield",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a translucent glowing crystalline shield dome arching gently over a neat row of plain snowy plastic erasers on a bright retail display tray while shadowy generic gray cubes stay pushed cleanly outside the dome",
+        "camera": "pull back",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m072",
+          "text": "同配色仿品終於被堵死，故事本該完美落幕。",
+          "emotion": "點出實戰威力"
+        },
+        {
+          "id": "m073",
+          "text": "換作別家早就開香檳慶功，它為何推出無字版？",
+          "emotion": "章末懸疑大轉折"
+        }
+      ]
+    },
+    {
+      "id": "exam-hall-rules",
+      "chapter": "故意把自家商標字全刪光！2017 年搶進日本考場",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet, tense winter Japanese university entrance examination hall with neat rows of wooden desks, daylight slanting across blank answer sheets as anonymous students in winter sweaters sit focused before the bell",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m074",
+          "text": "這反常操作的答案，藏在日本大學入學考場裡。",
+          "emotion": "明確回呼開場高潮二"
+        },
+        {
+          "id": "m075",
+          "text": "當時大學入學中心考試，嚴防考具印有英文字句。",
+          "emotion": "嚴守一手新聞稿口徑"
+        }
+      ]
+    },
+    {
+      "id": "exam-student-peel",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an anxious Japanese high school student in a navy blazer sitting at a wooden study desk nervously peeling the plain paper sleeve completely off a rectangular eraser so only the bare soft rubber remains",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m076",
+          "text": "考生怕英文字踩線，進考場前乾脆把紙套撕掉。",
+          "emotion": "貼近真實考生痛點"
+        },
+        {
+          "id": "m077",
+          "text": "沒了紙套不只容易折斷，手汗一滑也難握穩。",
+          "emotion": "呼應前面物理盔甲，細節神連結"
+        }
+      ]
+    },
+    {
+      "id": "exam-wordless-launch",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two pristine plain rectangular plastic erasers wrapped in completely blank unadorned matte paper sleeves sealed inside a clear minimalist twin-pack pouch resting on a bright oak retail counter",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m078",
+          "text": "拿商標才五個月，二〇一七年八月蜻蜓牌出手。",
+          "emotion": "俐落切入奇招"
+        },
+        {
+          "id": "m079",
+          "text": "推出無字考場版，字母、數字和記號全都清空。",
+          "emotion": "揭曉神操作"
+        }
+      ]
+    },
+    {
+      "id": "exam-shelf-relief",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a calm Japanese high school student and parent in winter coats smiling together in a warm well-lit bookstore aisle as the student picks up a crisp blank-sleeved twin-pack eraser from an organized wooden display",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m110",
+          "text": "大考季一到，考生和家長再也不用提心吊膽。",
+          "emotion": "具體生活場景共鳴"
+        },
+        {
+          "id": "m111",
+          "text": "不用逐行檢查背面英文，伸手抓這包就能安心進場。",
+          "emotion": "俐落收束心理痛點"
+        }
+      ]
+    },
+    {
+      "id": "exam-color-still-speaks",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of Ada in a bright bookstore craft-goods corner holding up a plain blank-sleeved eraser with a delighted knowing smile, three separated soft glowing ribbons of cobalt blue, pearl, and deep charcoal floating gently in the air behind her",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m080",
+          "text": "別牌刪字就變無名氏，它卻留住受保護的三色。",
+          "emotion": "點出獨一無二的護城河優勢"
+        },
+        {
+          "id": "m081",
+          "text": "一字不印全合規，包裝裡還藏了什麼巧思？",
+          "emotion": "自然小鉤子"
+        }
+      ]
+    },
+    {
+      "id": "exam-two-pack-drop",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle close-up inside a quiet classroom showing one snowy plastic eraser rolling away across a wooden floor beneath a desk chair while a second identical backup piece sits safely ready on top of the desk in daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m082",
+          "text": "它特地做雙入裝，就是怕你在考場意外掉地上。",
+          "emotion": "精準數字，帶出洞察"
+        },
+        {
+          "id": "m083",
+          "text": "因為考場禁止互借文具，大家習慣多帶一塊。",
+          "emotion": "細節直擊人心"
+        }
+      ]
+    },
+    {
+      "id": "exam-size-spec",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a sleek brass caliper measuring a compact snow-colored pocket PVC rubber bar beside three completely unprinted matte dark-green hexagonal mark-sheet pencils on a quiet cedar school desk, morning window glow",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m084",
+          "text": "尺寸選最順手的小款，放進鉛筆盒不佔空間。",
+          "emotion": "精準 PE-01A 官方尺寸"
+        },
+        {
+          "id": "m085",
+          "text": "配早兩年的純素面鉛筆，直接湊齊應考組。",
+          "emotion": "改用「純素面」，零日語借詞"
+        }
+      ]
+    },
+    {
+      "id": "exam-green-spec",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a careful Japanese paper-mill craftsperson in a crisp apron inspecting sheets of recycled pale paper pulp beside neatly folded blank protective sleeves on a bright cedar workbench",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m120",
+          "text": "就連這張無字紙套也沒省料，堅持用再生紙漿。",
+          "emotion": "緊貼官方綠色採購規格"
+        },
+        {
+          "id": "m121",
+          "text": "考場防踩線連環保都顧到，一上市就爆好評。",
+          "emotion": "強化品牌誠意"
+        }
+      ]
+    },
+    {
+      "id": "exam-permanent-line",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a neat bright Japanese bookstore exam-season display shelf lined with tidy rows of plain blank-sleeved twin-pack erasers and classic five graduated sizes of plain white erasers under warm retail spotlights",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m086",
+          "text": "這絕非短線噱頭，首年訂下六萬五千包目標。",
+          "emotion": "精準官方銷售計畫"
+        },
+        {
+          "id": "m087",
+          "text": "後來更納入常設商品，但這還不是它的極限。",
+          "emotion": "緊貼官方產品頁，自然帶出常設地位"
+        }
+      ]
+    },
+    {
+      "id": "anniv-50th-collector",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an excited young collector smiling over an open navy commemorative presentation box holding five plain crisp pocket-sized rubbers and a tiny gleaming enamel pin on a bright Japanese boutique counter",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m088",
+          "text": "二〇一九年藍白黑滿五十週年，推出五代復刻盒。",
+          "emotion": "主詞清楚：藍白黑五十週年"
+        },
+        {
+          "id": "m089",
+          "text": "五個時代紙套一字排開，看盡半世紀的堅持。",
+          "emotion": "自然口語「一百四十二款」"
+        }
+      ]
+    },
+    {
+      "id": "anniv-600-yen-pin",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of five crisp minimalist pocket erasers arranged side by side inside an open presentation case beside a small gleaming metallic commemorative lapel pin under warm boutique spotlights",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m122",
+          "text": "當年這組三色，後來跨足三十五個文具品類。",
+          "emotion": "緊貼官方 50 週年 600 日圓細節"
+        },
+        {
+          "id": "m123",
+          "text": "從鉛筆賣到修正帶，整座文具家族壯大到上百款。",
+          "emotion": "情感共鳴"
+        }
+      ]
+    },
+    {
+      "id": "anniv-five-eras",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead collage-style tabletop still-life showing five generations of drafting tools—a vintage wooden slide rule, graph paper, classic exam answer sheet, architectural blueprint, and sleek modern notebook—arranged harmoniously around five plain crisp white rubbers",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m112",
+          "text": "從製圖桌到考場，它陪一代又一代寫了又擦。",
+          "emotion": "緊貼 50 週年新聞稿"
+        },
+        {
+          "id": "m113",
+          "text": "三色紙套從醒目工具，變成跨世代的國民記憶。",
+          "emotion": "情感升華"
+        }
+      ]
+    },
+    {
+      "id": "exam-legal-to-product",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a relieved cheerful Japanese student walking out of a bright paper shop hugging a crisp shopping bag in crisp winter daylight, soft bokeh street trees in background",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m090",
+          "text": "日常消耗品，就這樣長成文具迷收藏的圖騰。",
+          "emotion": "流暢承接 50 週年收藏盒"
+        },
+        {
+          "id": "m091",
+          "text": "不過數位時代少拿鉛筆，老牌橡皮擦撐得住嗎？",
+          "emotion": "章末懸疑，精準引出終章"
+        }
+      ]
+    },
+    {
+      "id": "future-digital-decline",
+      "chapter": "2024 年扇貝殼新款與刪字不滅的護城河",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young designer at a sleek modern desk sketching on a glass tablet with a digital stylus while a classic wooden pencil and plain rubber rest quietly in soft focus beside a coffee cup",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m092",
+          "text": "隨著平板普及，日本橡皮擦市場確實緩慢萎縮。",
+          "emotion": "冷靜交代現代挑戰"
+        },
+        {
+          "id": "m093",
+          "text": "不少同業狂加花俏功能，反而犧牲了擦拭力。",
+          "emotion": "緊貼 Good Design 2024 評語背景"
+        }
+      ]
+    },
+    {
+      "id": "future-scallop-2024",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a warm ivory warm natural ivory rubber bar resting beside clean pearlescent scallop shells and fine mineral shell powder in a porcelain dish on pale cedar wood, crisp studio light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m094",
+          "text": "但蜻蜓牌在二〇二四年，加入一成以上扇貝殼粉。",
+          "emotion": "亮出最新演化實例"
+        },
+        {
+          "id": "m095",
+          "text": "做成省掉增白的象牙色新款，問題來了，好用嗎？",
+          "emotion": "精準修正：省略增白著色工序"
+        }
+      ]
+    },
+    {
+      "id": "future-biomass-honest",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a neatly crafted natural ivory eraser resting on clean pale wood beside delicate white scallop shell halves and a fine graphite sketch cleanly erased down the center, soft gallery daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m114",
+          "text": "環保文具向來難賣，因為大家怕減碳不好擦。",
+          "emotion": "緊貼 24G030108 評審背景"
+        },
+        {
+          "id": "m115",
+          "text": "這款新品拿到公司第一枚生質標章，擦拭力依舊經典。",
+          "emotion": "精準官方事實"
+        }
+      ]
+    },
+    {
+      "id": "future-design-awards",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bright minimalist design museum exhibition table where two admiring visitors inspect sleek erasers, slim correction tape dispensers, and fine mechanical pencils beside brushed-metal award plaques",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m124",
+          "text": "早在二〇一一年，經典款就拿到設計長壽獎。",
+          "emotion": "緊貼 Tombow BRAND STORY 得獎清單"
+        },
+        {
+          "id": "m125",
+          "text": "幾十年外型極簡克制，早已成了日本工業設計代表。",
+          "emotion": "精準收束設計硬實力"
+        }
+      ]
+    },
+    {
+      "id": "future-gmark-2024-win",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the natural ivory pad cleanly wiping a crisp pencil sketch line on notebook paper beside a sleek matte-gold minimal design award ribbon emblem on a bright wooden drafting table",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m096",
+          "text": "二〇二四年這款環保新作，同樣再獲設計獎肯定。",
+          "emotion": "把 2011 與 2024 設計獎自然成對收進終章"
+        },
+        {
+          "id": "m097",
+          "text": "就算橡皮擦本體不再雪白，大家為何照樣買單？",
+          "emotion": "設問過渡到信任遷移"
+        }
+      ]
+    },
+    {
+      "id": "future-trust-transfer",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of Ada standing in a bright design studio comparing a natural ivory scallop-shell bar in her left hand and a classic snowy PVC eraser in her right hand with an appreciative nod",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m098",
+          "text": "因為幾十年累積的信任，早已超越原本的白色外觀。",
+          "emotion": "展現品牌資產遷移力"
+        },
+        {
+          "id": "m099",
+          "text": "串起近六十年逆襲，藏著兩條商業鐵律。",
+          "emotion": "精準預告「兩條」，對應第一第二"
+        }
+      ]
+    },
+    {
+      "id": "end-step1-freebie-hook",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single gleaming snowy plastic piece sitting proudly on a golden spotlight pedestal while a tall dark hexagonal pencil leans respectfully beside it on an oak tabletop",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m100",
+          "text": "第一，產品不怕出身低，怕沒聽見顧客喊單買。",
+          "emotion": "第一條商業洞察"
+        },
+        {
+          "id": "m101",
+          "text": "當年若嫌贈品便宜，今天根本沒文具霸主。",
+          "emotion": "反面點醒"
+        }
+      ]
+    },
+    {
+      "id": "end-step2-consistency",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bright warm archival gallery hallway where five framed minimal geometric study plaques line a wooden wall beneath three long parallel ambient shafts of blue, pearl, and charcoal light stretching toward the horizon",
+        "camera": "pull back",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m102",
+          "text": "第二，辨識度不是靠三年換臉，而是靠時間複利。",
+          "emotion": "第二條商業洞察"
+        },
+        {
+          "id": "m103",
+          "text": "長期死守同一組配色，法律才願把純色獨家交給你。",
+          "emotion": "零重複 48 年，點出時間與法規共振"
+        }
+      ]
+    },
+    {
+      "id": "end-step3-invisible-moat",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pristine pure rectangular plastic eraser in a completely blank paper sleeve resting on a crisp exam sheet beside a golden wax trademark seal, bathed in late-afternoon golden rays",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m104",
+          "text": "最高級護城河，是抹掉名字大家依然認得你。",
+          "emotion": "全片金句鏗鏘落地"
+        },
+        {
+          "id": "m105",
+          "text": "一塊免費贈品，就這樣寫進日本智財教科書。",
+          "emotion": "完整收束主線"
+        }
+      ]
+    },
+    {
+      "id": "end-ada-closing",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of Ada in her sage-green trench coat and round tortoiseshell glasses smiling warmly at the camera in a cozy golden-hour archive studio while holding up a fresh plain snowy plastic cube beside an open vintage notebook",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m106",
+          "text": "你有把整塊橡皮擦用完，還是半路弄丟了？",
+          "emotion": "親切生活互動提問"
+        },
+        {
+          "id": "m107",
+          "text": "留言聊聊！喜歡商業冷知識，訂閱奇聞檔案局。",
+          "emotion": "俐落收尾，零下集預告"
+        }
+      ]
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "layout": "heimao-left",
+      "headline": "MONO 橡皮擦原本是贈品？",
+      "sub": "靠三色奪日本第一號商標",
+      "asset": "stock/dff6269b705e1b922b339db454d18ed7749c13d8a0c03f223a20be689169bec4.jpg"
+    }
+  },
+  "assets": [
+    {
+      "path": "stock/dff6269b705e1b922b339db454d18ed7749c13d8a0c03f223a20be689169bec4.jpg",
+      "sha256": "dff6269b705e1b922b339db454d18ed7749c13d8a0c03f223a20be689169bec4",
+      "credit": "Mokaair 奇聞檔案局",
+      "license": "original",
+      "source": "built-in generate_image (w23_hero_thumb, $0)"
+    }
+  ],
+  "youtube": {
+    "title": "560 件過 9 件！蜻蜓牌 MONO 竟然靠三色奪日本首號色彩商標？｜奇聞檔案局",
+    "description": "從小考試鉛筆盒裡一定躺著的那塊藍白黑 MONO 橡皮擦，在 1967 年竟然只是買高級鉛筆「MONO100」整打才免費附送的贈品——它怎麼反客為主成為約五成市占霸主，甚至在 560 件申請只過 9 件的窄門裡奪下日本第一號「純色彩商標」？\n給每次握著藍白黑橡皮擦、好奇日常文具背後商業與商標布局的人。\n\n這一集從 1959 年日本領先全球推出 PVC 塑膠橡皮擦講起，回溯蜻蜓牌（トンボ鉛筆）自 1949 年起耗時 14 年研發「每立方毫米 80 億顆粒子」筆芯，推出 1963 年高級鉛筆 MONO 與 1967 年旗艦 MONO100，以及每打免費附贈 1 塊塑膠擦卻因「太好擦」被迫於 1969 年換上藍白黑三色旗紙套獨立開賣的意外轉折；接著拆解紙套防止可塑劑沾黏溶蝕桌面的物理作用、半世紀五代四次改版未變的設計手冊、2015 年公司推計約五成市占與 1999 至 2000 年平面與立體商標為何仍留盲點；再直擊 2015 年 4 月 1 日日本開放「僅由色彩組成之商標」後，如何依《商標法》第 3 條第 2 項提出長期實績與認知問卷，於 2017 年 3 月 10 日以登錄第 5930334 號搶下日本第一號純色彩商標（特許廳至 2022 年 6 月統計約 560 件申請僅 9 件獲准），並在同年 8 月 18 日把紙套文字全刪光推出「無文字版雙入裝」切入大學入學中心考試專架，最後以 2019 年 50 週年復刻盒、2011 年長壽設計獎與 2024 年省略增白著色的扇貝殼生質版再獲 Good Design 獎收束這堂半世紀品牌資產課。\n\n本頻道與片中提及之企業與機構無合作或贊助關係。所有商標登錄與歷史數據皆出自下方公開一手與機構參考資料。\n\n本集插圖由 AI 生成。\n\n資料截至 2026-11-22",
+    "tags": [
+      "MONO橡皮擦",
+      "蜻蜓牌",
+      "Tombow",
+      "色彩商標",
+      "純色彩商標",
+      "日本特許廳",
+      "文具奇聞",
+      "品牌故事",
+      "商業奇聞",
+      "奇聞檔案局"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "video_id": null
+  },
+  "sources": [
+    {
+      "title": "株式会社トンボ鉛筆（Tombow）：MONO BRAND STORY（since 1963）",
+      "url": "https://www.tombow.com/brands/mono/",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "株式会社トンボ鉛筆公式プレスリリース（2017-04-11）：MONOの青白黒の３色柄が「色彩のみからなる商標」として登録されました",
+      "url": "https://www.tombow.com/press/170411/",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "株式会社トンボ鉛筆公式プレスリリース（2017-08-07）：文字なし「モノ消しゴム」発売",
+      "url": "https://www.tombow.com/press/170807/",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "経済産業省 特許庁広報誌「とっきょ」Vol.53（2022-08-01）：色彩のみからなる商標の登録のハードルが高い理由は？",
+      "url": "https://www.jpo.go.jp/news/koho/kohoshi/vol53/07_page1.html",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "文具のとびら（2017-04-12）：トンボ鉛筆「MONO」の3色柄が「色彩のみからなる商標」として登録",
+      "url": "https://www.buntobi.com/articles/entry/news/006468/",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "株式会社トンボ鉛筆 トンボKIDS：消しゴムの歴史（1959 日本塑膠橡皮擦誕生）",
+      "url": "https://www.tombow.com/sp/kids/eraser/history_world.html",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "株式会社トンボ鉛筆公式プレスリリース（2019-06-12）：モノカラー誕生50周年記念セット発売",
+      "url": "https://www.tombow.com/press/190612/",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "GOOD DESIGN AWARD 2024（24G030108）：ホタテ貝殻バイオマス MONO 消しゴム",
+      "url": "https://www.g-mark.org/gallery/winners/21586?years=2024",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "株式会社トンボ鉛筆公式製品ページ：モノ消しゴム（紙套保護與常設規格）",
+      "url": "https://www.tombow.com/products/mono/",
+      "checked_on": "2026-11-22"
+    }
+  ]
+}

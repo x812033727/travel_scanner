@@ -1,0 +1,24 @@
+# curio-w23-mono-eraser 製作筆記
+
+- **選題**：後台題目池（`/admin/videos?tab=pools` → 奇聞檔案局 → 單集題，更新至 `2026-11-21-curio-1988`）第 1 名 `N9093`（總分 9.82／底分 9.78／需求 10，W-商業與品牌奇聞）。
+- **代號與備份目錄**：`W01`–`W03` 已製作，`W04`–`W22` 保留於舊品牌故事移入規劃與 `W08` 夾娃娃機，故本集採用 `curio-w23-mono-eraser`。
+  - Google Drive：`AI/備份/AI劇/奇聞檔案局/W23/`（ID: `1ZUj9glbnDjMQBenEQOuKnVsfWdNkH076`）與 `W23/製作檔/`（ID: `1VkVuWl-_u0KIOzMi_z9mg6ZNyZfScrBu`）。
+  - GitHub 分支：`antigravity/curio-w23-mono-eraser`。
+- **來源核實（9 筆一手／機構來源全數即時驗證 HTTP 200）**：
+  - Tombow 官方 × 6（`brands/mono/`, `press/170411/`, `press/170807/`, `press/190612/`, `products/mono/`, `sp/kids/eraser/history_world.html`）、日本特許廳《とっきょ》Vol.53、Good Design Award 2024（`24G030108`）、文具のとびら（2017-04-12）。
+  - 獨立事實查核（`verify-2.md`）：**`PASS`（14/14 CONFIRMED，0 DISCREPANCY，0 NOT FOUND）**。
+- **腳本與多輪獨立審查（v11 定稿）**：
+  - 63 鏡、125 句、2,356 口語字元（預估 `Sulafat` 正文 ~08:18，全片 ~9.6 分鐘）、`41/63 = 65%` 無人純物件／場景鏡（`nobody: true`）、0 張字卡、`subtitles.burn_in: false`、`pauses: {line_ms: 0, scene_ms: 150}`、`still_motion: "beat"`、`music: {gain_db: -18, duck_db: -8}`、`12` 組顯式 `loops`。
+  - `node tools/video/cli.mjs lint --slug curio-w23-mono-eraser`：**`0 errors, 0 warnings`**（全 9 語系通過）。
+  - `opening-review`：**`PASSED`**（`Newcomer 9.2 / Scroller 8.7 / Stickler 9.1`，全數 `would_stay_300: true`，雜湊綁定 `review/opening-review.json`）。
+  - 官方 14 題敘事面板：`storytelling panel: passed`（`14/14`，`review/narrative.json`；另經兩輪雙盲測讀者雙雙 `14/14 PASS`）。
+- **視覺合規與 2x 四象限獨立審圖（63/63 = 100% PASS）**：
+  - **日本第 5930334 號純色彩商標迴避**：全片縮圖與 63 張關鍵影格嚴格禁止繪製藍白黑三等分條紋橡皮擦紙套，全面改採純白素面橡皮擦、單色素面紙套與分離式藍／白／炭黑光帶或獨立色卡；初審抓出 `40-law-anti-copycat-shield` 條紋紙套違規並已重繪改為純白無套橡皮擦，複審確認 **63/63 零商標違規**。
+  - **1956 人物紅線**：全片 **0 名真人入鏡或點名**，所有企業團隊、學生與審查員皆為匿名原型角色。
+  - **Ada 角色鎖定**：6 張 Ada 出場鏡（`05`, `15`, `29`, `45`, `59`, `63`）全數以內建 `generate_image`（`\$0`）鎖定 `ada-canon-v2.png` 生成並經 2x 四象限審圖確認臉部、服裝與五指解剖手性無誤；其餘 57 張採站主授權 `gemini-3.1-flash-image`（2K, 16:9，零 MiniMax 生圖）生成並經多輪 2x 審圖清除所有奶油邊框、假字、鐘面／尺規數字與多手瑕疵，全數匯入（`--provider external --usd 0`）。
+- **9 語縮圖與 8 語譯文獨立審查**：
+  - 全 9 語縮圖（`zh-TW/en/ja/ko/es/pt/id/vi/th`）採 `heimao-left` 版型且第一行全數點名 MONO 橡皮擦，9 張全數渲染並目視驗收通過。
+  - 8 語譯文（`en/ja/ko/es/pt/id/vi/th`）嚴守各語系 MiniMax `× 0.88` 字長上限與語音潔淨規則，並派獨立 8 語審查代理抓出並全數修補細節（如 EN `scallop shell`/`cubic millimeter`、JA `2013`/`1日`/`登録`、KO `10% 이상`/`롱라이프 디자인상`、ES/PT `Good Design`/`tricolor`/`em sigilo`、ID `minimal 10%`/`lebih dari seratus`、VI `Thiết kế Trường tồn`/`thân tẩy`、TH `Long Life Design`/`1 ใน 10 ขึ้นไป`、`UTF-8 1,701 bytes <= 2,200`）。
+- **後台與待辦**：
+  - `/admin/videos` 已推送 `script` 與 `storyboard`（`pending`）。
+  - 僅待 Google Gemini TTS 每日配額於太平洋午夜（`00:00 PST` = 台灣 `16:00`）重置後執行：`tts`（`zh-TW` `Sulafat`）→ `check-audio` → `music` → 8 語 MiniMax `dub` ＋ `check-audio --second-opinion` → `clips` → `assemble --adopt-branding` → `captions` → `qa`（11/11）→ 獨立成片觀眾評測 `review/audience-review.md` → Drive 零差異備份 → `review-push`（`audio`/`final`）→ PR。
