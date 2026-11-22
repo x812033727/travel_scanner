@@ -5,7 +5,10 @@ E=/root/mokaair-work/videos/_live-e912/zhong-tian-qu-qi-e912-dh; VJ=$R/docs/vide
 # POLISH 2026-11-21: at most one old cut is kept (the disk is short): an older cut/old-* goes before this one moves there.
 # SWAP 2026-11-21: an old-* holding a .keep file is never removed (old-2107 = the cut before the polish, old-2116 = the
 # POLISH cut before the swap; both kept for the backup); only the non-kept ones go
-V=${V:-v1}; mkdir -p $E/cut; [ -f $E/cut/e912-live.mp4 ] && { for d in $E/cut/old-*; do [ -f $d/.keep ] || rm -rf $d; done; mkdir -p $E/cut/old-$(date +%H%M); mv $E/cut/e912-live.* $E/cut/final.log $E/cut/old-$(date +%H%M)/ 2>/dev/null; }
+V=${V:-v1}; T=$(date +%H%M); mkdir -p $E/cut; [ -f $E/cut/e912-live.mp4 ] && { for d in $E/cut/old-*; do [ -f $d/.keep ] || rm -rf $d; done; mkdir -p $E/cut/old-$T; mv $E/cut/e912-live.* $E/cut/final.log $E/cut/old-$T/ 2>/dev/null; [ "${KEEP_OLD:-0}" = 1 ] && touch $E/cut/old-$T/.keep; }
+# SWAP-2 2026-11-22: KEEP_OLD=1 marks the cut it moves aside with .keep (the delivered SWAP cut, old-HHMM, kept for the
+# backup like old-2107 / old-2116). clips/s11-t5.mp4 is now round4's 9129402 3.875-8.0 (4.125 s, runpod/polish/picks.json,
+# colab/runs/e912-live/fix-polish/round4/review-picks.tsv); no t6 exists for any e912 shot, so nothing to re-trim
 # SWAP 2026-11-21: clips/s11 s17 s21 s22-t5.mp4 (runpod/polish/picks.json, already trimmed: s11 9129101 3.125-8.0,
 # s17 9129102 2.5-8.0, s21 9129102 1.25-8.0, s22 9129101 1.75-10.083) win over the t1 files; picks.json and the want
 # table below still describe the t1 staging, which stays on disk

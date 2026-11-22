@@ -6,6 +6,9 @@ E=/root/mokaair-work/videos/_live-e914/zhong-tian-qu-qi-e914-dh; VJ=$R/docs/vide
 # cut/old-1115 once and carry a .keep (never removed); a later run replaces its own previous cut (no old-HHMM).
 mkdir -p $E/cut
 [ -d $E/cut/old-1115 ] || { mkdir -p $E/cut/old-1115; mv $E/cut/e914-live.* $E/cut/final.log $E/cut/old-1115/ 2>/dev/null; touch $E/cut/old-1115/.keep; }
+# SWAP wave 2 2026-11-22 (round4: s20 s27 s30 s32 s33): the wave-1 cut (223.31 s, made 2026-11-22, not delivered) goes to
+# cut/old-w1 once and carries a .keep (never removed)
+[ -d $E/cut/old-w1 ] || { mkdir -p $E/cut/old-w1; mv $E/cut/e914-live.* $E/cut/final.log $E/cut/old-w1/ 2>/dev/null; touch $E/cut/old-w1/.keep; }
 rm -f $E/cut/e914-live.* $E/cut/final.log; rm -rf $E/cut/pre
 rm -rf $E/segments-v4
 # the refined shots must be staged first (live-action/stage.py 14: refined picture + draft voice + trim/crop -> clips/sNN-t1.mp4)
@@ -36,6 +39,8 @@ bad=[f'{s} start {p[s][\"trim\"].get(\"start\",0)} end-before {p[s][\"trim\"].ge
 bad+=[f'{s} seed {p[s][\"seed\"]} (want {v})' for s,v in seed.items() if p[s]['seed']!=v]
 bad+=[f'{s} seed {p[s][\"seed\"]} (want 9141101)' for s in p if s not in seed and p[s]['seed']!=9141101]
 print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
+# SWAP wave 2 2026-11-22: s20 s27 s30 s32 s33 are the round4 retakes clips/sNN-t5.mp4 (fix-polish/round4/review-picks.tsv,
+# already trimmed; no t6 for them).
 # POLISH+SWAP 2026-11-21 (edit table _note). SWAP: s03 s11 s13 s37 s40 s42 are the fixp retakes clips/sNN-t5.mp4 (already
 # trimmed, runpod/polish/picks.json; the assembler takes the highest take number); picks.json and the want table above still
 # describe the t1 staging, which stays on disk. s40: clips/s40-t6.mp4 = s40-t5 0-4.5 s (frames 0-107; the take is a static 6.17 s

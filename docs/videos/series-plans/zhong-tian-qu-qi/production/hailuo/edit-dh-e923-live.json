@@ -10,7 +10,9 @@
  "duck_ratio": 3.5,
  "duck_release_ms": 900,
  "sfx_dirs": [
-  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx"
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx",
+  "<VIDEO_WORKDIR>/_sfx/zhongtian-real-20261121",
+  "<VIDEO_WORKDIR>/zhong-tian-qu-qi-e923-dh/sfx"
  ],
  "name_whoosh": "swish-9",
  "music": [
@@ -27,30 +29,72 @@
   {
    "cue": "night",
    "from": "s09",
-   "to": "s18",
+   "to": "s12",
    "offset": 0.0,
    "gain": -23,
    "fade_in": 1.0,
+   "fade_out": 1.0,
+   "tail": 0.0
+  },
+  {
+   "cue": "z-cue-heart",
+   "from": "s12",
+   "from_off": 4.9,
+   "to": "s13b",
+   "offset": 0.5,
+   "gain": -21,
+   "fade_in": 0.8,
+   "fade_out": 1.5,
+   "tail": 0.3
+  },
+  {
+   "cue": "night",
+   "from": "s14",
+   "to": "s18",
+   "offset": 28.1,
+   "gain": -23,
+   "fade_in": 1.0,
+   "fade_out": 1.5,
+   "tail": 1.6
+  },
+  {
+   "cue": "z-bed-sweet-romance",
+   "from": "s19",
+   "to": "s21",
+   "offset": 0.5,
+   "gain": -17,
+   "fade_in": 0.4,
    "fade_out": 1.5,
    "tail": 0.6
   },
   {
    "cue": "warm",
-   "from": "s19",
+   "from": "s22",
    "to": "s27",
-   "offset": 0.6,
+   "offset": 18.6,
    "gain": -21,
-   "fade_in": 0.4,
+   "fade_in": 1.0,
    "fade_out": 1.5,
    "tail": 0.6
   },
   {
-   "cue": "suspense",
-   "from": "s28",
-   "to": "s40",
+   "cue": "z-bed-standoff",
+   "from": "s27",
+   "from_off": 4.3,
+   "to": "s39",
    "offset": 0.0,
-   "gain": -21,
+   "gain": -15,
    "fade_in": 0.4,
+   "fade_out": 1.2,
+   "tail": 0.8
+  },
+  {
+   "cue": "z-cue-cliffhanger",
+   "from": "s40",
+   "to": "s40",
+   "offset": 6.4,
+   "gain": -15,
+   "fade_in": 0.8,
    "fade_out": 2.5,
    "tail": 0
   }
@@ -118,7 +162,7 @@
    "file": "splash_02",
    "at": "s02",
    "off": 1.45,
-   "gain": -16
+   "gain": -12
   },
   {
    "file": "cloth2",
@@ -129,50 +173,44 @@
   {
    "file": "impactSoft_heavy_000",
    "at": "s06",
-   "off": 1.3,
+   "off": 3.45,
    "gain": -20
   },
   {
-   "file": "cloth1",
-   "at": "s07",
-   "off": 0.1,
-   "gain": -24
-  },
-  {
-   "file": "splash_01",
+   "file": "zhongtian-sfx-punt-pole-01",
    "at": "s08",
    "off": 1.0,
-   "gain": -28
+   "gain": -6
   },
   {
-   "file": "impactWood_light_000",
+   "file": "bead923",
    "at": "s11",
    "off": 0.25,
-   "gain": -30
+   "gain": -2
   },
   {
-   "file": "impactWood_light_000",
+   "file": "bead923",
    "at": "s11",
    "off": 0.7,
-   "gain": -30
+   "gain": -2
   },
   {
-   "file": "impactWood_light_000",
+   "file": "bead923",
    "at": "s11",
    "off": 1.15,
-   "gain": -30
+   "gain": -2
   },
   {
-   "file": "impactWood_light_000",
+   "file": "bead923",
    "at": "s11",
    "off": 1.6,
-   "gain": -30
+   "gain": -2
   },
   {
-   "file": "impactWood_light_000",
+   "file": "bead923",
    "at": "s11",
    "off": 2.05,
-   "gain": -30
+   "gain": -2
   },
   {
    "file": "impactSoft_heavy_000",
@@ -187,10 +225,10 @@
    "gain": -18
   },
   {
-   "file": "splash_01",
+   "file": "zhongtian-sfx-punt-pole-03",
    "at": "s21",
    "off": 1.0,
-   "gain": -28
+   "gain": -6
   },
   {
    "file": "impactSoft_heavy_000",
@@ -202,31 +240,31 @@
    "file": "creak1",
    "at": "s28",
    "off": 0.15,
-   "gain": -22
+   "gain": -14
   },
   {
    "file": "footstep_wood_000",
    "at": "s28",
    "off": 1.1,
-   "gain": -26
+   "gain": -18
   },
   {
    "file": "footstep_wood_000",
    "at": "s28",
    "off": 1.45,
-   "gain": -26
+   "gain": -18
   },
   {
    "file": "footstep_wood_000",
    "at": "s28",
    "off": 4.3,
-   "gain": -26
+   "gain": -18
   },
   {
    "file": "footstep_wood_000",
    "at": "s28",
    "off": 4.65,
-   "gain": -26
+   "gain": -18
   },
   {
    "file": "paper_02",
@@ -241,12 +279,6 @@
    "gain": -26
   },
   {
-   "file": "creak3",
-   "at": "s37",
-   "off": 0.25,
-   "gain": -26
-  },
-  {
    "file": "impactSoft_heavy_000",
    "at": "s38",
    "off": 0.02,
@@ -256,13 +288,13 @@
    "file": "paper_01",
    "at": "s39",
    "off": 0.3,
-   "gain": -22
+   "gain": -14
   },
   {
    "file": "impactWood_light_000",
    "at": "s39",
    "off": 0.32,
-   "gain": -28
+   "gain": -18
   },
   {
    "file": "impactSoft_heavy_000",
@@ -274,6 +306,108 @@
    "file": "gong_02",
    "at": "s40",
    "off": 5.6,
+   "gain": -2
+  },
+  {
+   "file": "splash_02",
+   "at": "s06",
+   "off": 2.3,
+   "gain": -18
+  },
+  {
+   "file": "impactWood_heavy_000",
+   "at": "s06",
+   "off": 3.45,
+   "gain": -20
+  },
+  {
+   "file": "zhongtian-sfx-wring-cloth-03",
+   "at": "s07",
+   "off": 0.1,
+   "gain": 4
+  },
+  {
+   "file": "zhongtian-sfx-punt-pole-05",
+   "at": "s27",
+   "off": 0.5,
+   "gain": -8
+  },
+  {
+   "file": "bead923",
+   "at": "s15",
+   "off": 1.28,
+   "gain": -6
+  },
+  {
+   "file": "bead923",
+   "at": "s15",
+   "off": 1.4,
+   "gain": -6
+  },
+  {
+   "file": "bead923",
+   "at": "s15",
+   "off": 3.6,
+   "gain": -6
+  },
+  {
+   "file": "bead923",
+   "at": "s15",
+   "off": 3.72,
+   "gain": -6
+  },
+  {
+   "file": "bead923",
+   "at": "s15",
+   "off": 3.84,
+   "gain": -6
+  },
+  {
+   "file": "bead923",
+   "at": "s15",
+   "off": 3.96,
+   "gain": -6
+  },
+  {
+   "file": "bead923",
+   "at": "s15",
+   "off": 4.08,
+   "gain": -6
+  },
+  {
+   "file": "bead923",
+   "at": "s15",
+   "off": 4.2,
+   "gain": -6
+  },
+  {
+   "file": "abacus923",
+   "at": "s22",
+   "off": 4.2,
+   "gain": -4
+  },
+  {
+   "file": "bead923",
+   "at": "s25",
+   "off": 0.3,
+   "gain": -4
+  },
+  {
+   "file": "bead923",
+   "at": "s25",
+   "off": 2.0,
+   "gain": -4
+  },
+  {
+   "file": "bead923",
+   "at": "s25",
+   "off": 2.3,
+   "gain": -4
+  },
+  {
+   "file": "zhongtian-sfx-thumbprint-01",
+   "at": "s39",
+   "off": 0.3,
    "gain": -2
   }
  ],
@@ -300,7 +434,7 @@
   },
   "s23": {
    "from": 0,
-   "af": "volume=0.6dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "volume=1.3dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s26": {
    "from": 0,
@@ -328,7 +462,7 @@
   },
   "s37": {
    "from": 0,
-   "af": "rubberband=pitch=0.66:formant=preserved"
+   "af": "rubberband=pitch=0.80:formant=preserved,volume=-1.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s05": {
    "from": 0,
@@ -340,7 +474,7 @@
  ],
  "move_lines": {},
  "min": {
-  "s40": 10.0
+  "s40": 9.6
  },
  "line_at": {
   "zq923a01": 0.25
@@ -358,19 +492,20 @@
  },
  "panel_until": {
   "s13": 2.38,
-  "s40": 6.6
+  "s40": 6.0
  },
  "vf": {
-  "s06": "crop=1408:792:0:150,scale=1920:1080:flags=lanczos,setsar=1",
   "s09": "crop=1856:1044:0:18,scale=1920:1080:flags=lanczos,setsar=1",
   "s12": "crop=1872:1053:0:14,scale=1920:1080:flags=lanczos,setsar=1",
-  "s23": "crop=1872:1053:0:14,scale=1920:1080:flags=lanczos,setsar=1",
+  "s23": "eq=gamma=1.08,colorbalance=rs=0.05:bs=-0.05:rm=0.05:bm=-0.05:rh=0.03:bh=-0.04",
   "s26": "crop=1856:1044:0:18,scale=1920:1080:flags=lanczos,setsar=1",
   "s38": "crop=1792:1008:64:0,scale=1920:1080:flags=lanczos,setsar=1",
-  "s40": "fade=t=out:st=6.000:d=0.60"
+  "s40": "crop=1670:939:250:0,scale=1920:1080:flags=lanczos,setsar=1,fade=t=out:st=6.000:d=2.0",
+  "s32": "crop=1872:1053:0:14,scale=1920:1080:flags=lanczos,setsar=1"
  },
  "subtitle_lines": [
-  "zq923a10"
+  "zq923a10",
+  "zq923a37"
  ],
  "_note": "Live action, written 2026-11-17 from edit-dh-e922-live.json (its form: panel_color, panel_until, subtitle_lines, clip_af, vf crop-and-scale) on the refined, staged clips (_live-e923/zhong-tian-qu-qi-e923-dh/clips/sNN-t1.mp4, 41 shots with s13b, every one used, nothing dropped): clip_voice, no punch-in, slow-down <= 1.1, interpolate off, frame_round, no title card, names {}. Episode 23 is arc 3 (r2-bible-e021-e030.md). It picks up episode 22's close (Xu with the lantern at the ferry, the boat at the jetty, Tang on it with her back to us): s01 is the same moment, Xu already wading after the boat. Every offset is seconds from the first frame of the trimmed shot (c). SOURCES: script/storyboard/video.json/overlays.json in docs/videos/zhong-tian-qu-qi-e023-r2; picks.json from refine-prep.py 23 picks-merged.tsv fix1/review-picks.tsv review3-trims.tsv (fix1 retakes s17 9231202, s31 9231201, s38 9231201; REVIEW 3 re-trims s07 s27 s29 and drops s04 in e923cut.sh; no crop= anywhere; the h3r.sh refine it prints was NOT run -- the 41 refined clips were already there), staged with stage.py 23 (41 staged, 0 missing); e923cut.sh's want and seed tables hold every trim and seed. LINKS: zhong-tian-qu-qi-e923-dh/music -> ../_series/zhong-tian-qu-qi/music (by hand, the e922 way); stage.py links _live-e923/.../audio and music. Every effect is in the series library (one sfx dir). No new music, no paid service. Work files: session scratchpad e923c/ (mkedit923.py + overrides.json + note.txt write this file; lev923.py, meas.py, f0b.py (YIN pitch), fw2.py, mom.py (per-line momentary p75), floor.py).\nTRIMS: the pickers' trims stand (s26 starts on the first sample of 那 at raw 1.625: the 25 ms before it is -61 dB, so no word is cut; every clip-voiced word checked with faster-whisper medium on the staged clip, numpy f32le input, one clip per process, plain and with the line as context). review3-trims.tsv (new, first cut) shortens the silent tails over ~1 s, measured on the first assembly's lines.json, to ~0.55 s after the last line, end rounded UP to a whole frame: s10 4.042, s13 5.875, s17 5.292, s19 6.0 (Xu's clip voice ends c4.94), s20 6.5, s21 6.0, s35 4.709. Starts unchanged.\nVOICE: every on-screen speaker keeps the take's own voice except s01 (voice_off [s01]): Xu's clip shout measured 364 Hz (YIN; 314-397) -- not his voice; x0.62 (the floor) left ~239 Hz and whisper heard 唇尖 for 船家/船上, x0.68 傳家/傳上. s01 is a wide side shot (his face small), so the recording a01 is laid instead, re-made from audio/orig/ with rubberband pitch 0.80 formant preserved (271 -> 216 Hz, e922 a35's shout ~208) and volume only to -13.1 LUFS (the shout); whisper plain 船家,回頭,船上是我娘子 (better than the raw recording's 船架). line_at a01 0.25. Clip voices kept: Xu s05 s08 s09 s12 s16 s19 s23 s26 s34; Wei s28 s30 s32 s37 s38 (s38 the fix1 take, 三十天後，我帶著花轎來接新娘 word for word, 轎 heard 俏). The post list's lip-sync splits (s05 s09 s26 a24 at its pauses, s16's a14 head/tail, s24's a22 head) were written for laying recordings; with the clip voice the lips match by construction, so nothing is split; s24 a22 is laid on Tang's back and the assembler's silenceremove takes its 0.33 s head. s36 (Wei's half-open lips with a murmur at 4.42-4.78 and 5.84-6.34) and s31 (fix1, his mouth shut from c0) have no on-screen line, so the clip's sound is muted and a34 / a29 are laid. Whisper heard every clip line right but for homophones (妳/你, 她/他, 船→傳, 贏→迎, 林二丫→零二押, 魏記→慰藉, 州→周, 作→做, 轎→俏). Laid recordings: a01, a02, a04, a07, a09+a10 (system), a11 (inner), a12, a13, a15, a16, a18, a19 (inner), a20, a22, a23, a25, a27, a29, a31, a33, a34, a37+a38 (system).\nPITCH (YIN, 60-450 Hz; the old autocorrelation in meas.py locks on harmonics in shouts and laughs): Xu 96-145: s05 148 (teeth chattering), s08 130, s09 104, s12 102, s16 113, s19 113, s23 106, s26 124, s34 116 kept; a11/a19 (inner) 105/127. Wei 110-157: s28 148, s30 113, s32 127, s38 124 kept; s37 213 (the laugh 好 at 239) -> clip_af rubberband 0.72 formant preserved (~157 over the words; whisper identical to the raw, 好。三位老人家，聽清楚了，替本公子作個證). Tang: recordings at their recorded pitch. No elder or boatman speaks.\nRECORDINGS (audio/, originals in audio/orig/ (22 files), file lengths unchanged; lev923.py = e922's lev922.py: zeroed outside the source's -45 dB span -0.03/+0.10 s, integrated LUFS on that span): acompressor 3:1 at -20 dB + volume + alimiter 0.84 to ~-14.5: a02 -17.2, a04 -15.4, a11 -22.6, a12 -18.6, a13 -16.3, a15 -16.4, a16 -17.2, a18 -17.4, a19 -16.6, a20 -18.7, a22 -16.9, a23 -15.3, a25 -15.3, a27 -16.6, a31 -18.1; a07 (很小聲) -20.9 and a33 (很輕) -18.3 -> -15.6; system a09 -18.8, a10 -17.8, a37 -16.9, a38 -20.9 -> -14.6 with volume + alimiter 0.89 attack 10, no compressor; a29 -13.7 -> -14.5 (volume only); a01 see VOICE. Untouched: a34 -14.8, every clip-voiced line's file, raw-tts files, take1/ take2/.\nLEVELS (clip voices brought to the recordings with clip_af volume; 0.4 s momentary p75 over each line's span in the cut): s08 -3.3, s09 -1, s12 -1.5, s19 -1.2, s23 +0.6, s26 -2.3, s28 -2.1, s30 -4.1, s32 -2.9, s34 +0.5, s38 -2.6, s05 0 (each over -1 dB ends in alimiter 0.89). Floor: beds synth river -18 + Wind -12 (ferry), river -18 + Wind -10 (night boat), river -18 + birds -22 (sunrise), wind1 -9 (inn) keep the gaps over -40 M except short dips at cuts (see RESULT).\nPANELS (no burned subtitles; soft CC at the bottom): s13 唐小棠 好感 +6 -> 30 at panel_y 880 (at the default 120 it sat on Xu's face), panel_until 2.38: a09 (叮。唐小棠，好感加六, panel only) ends c2.34 and a10 宿主泡在冰水裡說的話，倒是比平常值錢 -- not on the panel -- starts c2.46 with a CC (subtitle_lines [zq923a10]), so panel and CC never meet. s40 the two penalty rows with panel_color red at panel_y 860 (two rows, to y 1058): the top would cover Tang's and Xu's faces; at the bottom it covers the paper with the red print and Wei's hand -- the print, a whole-palm blot that does not match s39's thumb, is not stressed (post list 5; no darkening). a37/a38 match the panel word for word, so no CC.\nMUSIC (library cues only, the script's plan): (1) tension s01-s08 + 0.3 (-22, 0.2/1.5): the chase at the ferry; accent impactSoft_heavy_000 s06 c1.3 -20 (the hand reaching down); (2) night s09-s18 + 0.6 (-23, 1.0/1.5): the boat at night; accent s12 c5.05 -20 (after 抵的債); (3) warm s19-s27 + 0.6 (-21, 0.4/1.5): sunrise, the bet; accent s27 c4.2 -20 (after 靠岸); (4) suspense s28-s40 (-21, 0.4/2.5): the inn; accent s38 c0.02 -22 (after 作個證), the end hit and gong. Ducked 3.5 : 1, release 900 ms. The system's ding is the assembler's synth before each system line.\nSFX: s01 splash_02 0.2 -24 (wading), s02 splash_02 1.45 -16 (the splash), s04 splash_01 2.0 -22 (the pole), s06 cloth2 0.2 -18, s07 cloth1 0.3 -24 (wringing), s08 splash_01 1.0 -28 (in the 家 tail, before 往 at 1.70), s11 impactWood_light_000 x5 0.25-2.05 -30 (beads), s20 impactSoft_heavy_000 0.9 -24 (the slap on his arm, raw 0.875-1.0), s21 splash_01 1.0 -28, s28 creak1 0.15 -22 + footstep_wood_000 1.1/1.45 (before 三 at 1.72) and 4.3/4.65 (between 來了 and 怎麼) -26, s29 paper_02 0.15 -22, s32 impactWood_light_001 0.1 -26 (the fan, before 我 at 0.48), s37 creak3 0.25 -26 (the chair, before the laugh at 0.66), s39 paper_01 0.3 -22 + impactWood_light_000 0.32 -28 (the thumb), s40 impactSoft_heavy_000 -6 + gong_02 -2 at 5.6.\nVF (on the 1920x1080 picture before the grade; nothing boxed dark, nothing masked): right-edge face remnants (post list 1) by a whole-shot crop-and-scale anchored left, so no mid-shot jump: s09 crop=1856:1044:0:18 (64 px; the nose sliver at c0-0.17 was ~40 px), s26 the same (her face sliver ~48 px at c0, gone by c0.5), s12 and s23 crop=1872:1053:0:14 (48 px; slivers ~30 / ~20 px) -- checked at c0.0/0.125 (and s26 0.25/0.45/0.55); s38 crop=1792:1008:64:0 (1.07x anchored top: the bamboo stub tips at the bottom centre, ~50 px at c0.3, go; his bun stays inside); s40 fade=t=out:st=6.000:d=0.60. Not cropped: s38 the right third is the plain wall; s34 her ear and cheek line at the left (accepted).\nJITTER: cut-qa's jitter() 41 shots steady: no deshake. END: s40 the inn wide shot; a37+a38 end at c5.30, the low hit and the gong at c5.60, the picture fades over c6.00-6.60 and min 9.00 holds ~2.4 s of black (the take ends at c8.0) while the gong rings out; e923cut.sh fades the sound over the last 1.5 s.\nACCEPTED (post list 7-8, no action): s17 the small knots round both buns; s28 the elders walking in one by one, s29 one elder full face, s28/s37/s40 the elders' faces; s01-s03 shallow water and the boat close to the jetty (it matches e922's close); s06 the courtyard-like background (stone lantern); s07 Tang rising in from the bottom edge; s23 the black ink pattern on his robe; bun counts on her back shots; s34 her ear and cheek line; s40 Tang's and Xu's faces, the palm-sized red blot.\nREVIEW 3 (2026-11-17, colab/runs/e923-live/review3-plan.md: cut-review.md + cut-review-2.md merged, the coordinator's picks; nothing paid -- no Colab, no RunPod, no site TTS, no charge notice; work files in the session scratchpad e923r3/ (mkedit-r3.py edits this table in place, img/, fwcut.txt, mom3.txt) with e923c/'s f0b.py, fw2.py, mom.py, floor.py; mkedit923.py was NOT re-run and would undo REVIEW 3 if it were). ACCEPTED (coordinator, no action): Tang's front-face single bun (s19 s37 s40) against the back-view buns; s31 Wei's seat behind the table; s33 Wei's lips slightly open; s35 the fingers; the wager paper's size and colour; Xu's grey outer coat on and off; s07 on, the clothes not wet; s21 the boatman at the stern; s23 the orange hair rim; s28 the fan cord; s13 the panel over the hands; s19 the light change (scripted). PICKS: review3-trims.tsv gains s07 start@2.250, s27 end-before@4.709, s29 end-before@4.292 (one pair per row); refine-prep.py 23 picks-merged.tsv fix1/review-picks.tsv review3-trims.tsv (the h3r.sh refine it prints was NOT run), then stage.py 23 (41 staged); e923cut.sh's want table follows and DROP=\"s04\". DROP: s04 (both reviews: Tang missing under the awning; no line) with its splash_01; s03 a02 ends 10.75, s05's first 冷 follows ~1 s later -- whisper 7.17-17.13 plain 你瘋了? 這是初冬的水,會凍死人的。冷,冷得要命。所以你先拉我上去,再罵。 TRIMS (whole frames, frame by frame on the staged clips): s07 start 1.75 -> 2.25 (54 frames; at raw 2.25 her head and shoulder tops are in, the rise from the bottom edge goes; a04 laid c0.12-4.12, the shot is 4.33; cloth1 0.3 -> 0.1); s27 end 5.042 -> 4.709 (113 frames; a25 ends c4.11, 0.60 after; the accent c4.2 stays in); s29 end 4.625 -> 4.292 (103 frames; a27 ends c3.72, 0.57 after). Whisper on the cut: s07->s08 你回去,船家,別管他,照樣往縣城乘。船家,往縣城就往縣城,我跟他一起去。 (context word for word); s27->s28 輸了,我跟他回京。傳家,縣城碼頭靠岸。三日還沒到,你就來了?怎麼還帶了一串人?; s29->s30 我請了商會三位老人,來替我們的賭約作證。賭約?你拿什麼跟我賭?拿你自己。 -- homophones only, no word cut. PANEL s40: assemble-v4.mjs has no per-row timing (one start per panel, row i at start + 0.1 i), so the panel is not split: panel_from s40 3.30 (a38 失敗：唐小棠好感歸零 starts c3.34; row 1 at 195.72, row 2 at 195.82; before it only a37's voice, no CC -- accepted by the coordinator) and panel_until s40 6.60 (checked: lit at 198.96 = c6.54 over the near-black last fade frames, gone at 199.06; the fade is in vf, which runs before the panel, so the panel itself does not dim -- it goes on the frame the picture reaches black). GONG: gong_02 (4.5 s; 0.25 s RMS -9 -> -21 at 1.75 s -> -30 at 3.0 s -> -38 at 4.25 s) was cut by the 1.5 s sound fade 1.9 s after it starts: min s40 9.0 -> 10.0 (held 1.20 s of the take's last frame under the black), so the fade starts ~2.9 s after the gong; in the cut 198.0 -10, 199.0 -16, 200.0 -22, 201.0 -30, 202.0 -53. VF: s06 crop=1408:792:0:150 + scale (1.36x, top left; review 2): the stone lantern and the arch are out at c0.04/1.2/2.4 and the last frame (a dark jetty post at the right edge at c0), both hands and sleeves in (her fingertips touch the top edge in the last frame), the wet hand sharp at 1:1 -- kept. SOUND: the s08 -> s09 hole (-55..-60 dB at 31.52-31.60 in the first cut): the night river (synth) and Wind beds start at s08 c4.1 instead of s09 c0, so they fade in while the ferry beds fade out -- the cut (28.75) now reads -37..-39 at its quietest; no min hold on s08: its last 12 frames differ 2.0-3.0 each (the push-in keeps moving), a 6-frame freeze would show. s38 accent impactSoft_heavy_000 -22 -> -16 (183.40 now -22 dB in 20 ms RMS against -43 before it, after 證); s20 slap -24 -> -18 (88.11, under 要你管 -- listen). s18 -> s19 floor (84.3-85.4 at -48 in the first cut): birds from s18 c4.0 (but birds.wav is chirps over digital silence, so it cannot carry a floor), the sunrise river (synth) from s18 c3.8, and the warm cue's offset 0.0 -> 0.6 (cue-warm.mp3 is silent for its first ~0.7 s): the dip is now 81.2-81.95 at -46 (was 1.1 s at -48; s19 starts 81.71) -- the rest is the night cue's own quiet tail; listen. PITCH: s37 Wei x0.72 -> x0.66 (clip_af rubberband formant preserved; review 2): YIN over the words on the staged clip x0.72 160, x0.69 154, x0.66 146 Hz against s38 124; whisper x0.66 alone 好,三位老人家,聽清楚了,替本公子做個證。 (了 0.98), with its line as context word for word, after s36's cut audio 好﹔三位老人家,聽清楚了﹔替本公子做個證。; in the cut 170.83-189.92 with context word for word -- kept. a29 對，拿我自己 (review 2): the recording measures 258 Hz (first phrase 262, the rest 258) against Tang's a27 176, a31 194, a33 213, a34 216 in the inn -- a clear outlier; x0.9 (235 Hz) made whisper hear 平收 for 比營收 alone and after a28's audio (the original keeps 比: 鼻音收 / 比贏收) -> NOT shifted, the file is unchanged; audio/take1/zq923a29.wav (the first take, 174 Hz, 5.68 s) is a no-cost alternative for the ear. RESULT (e923cut.sh after REVIEW 3, third run; the first had only the birds moved (dip -48), the second the sunrise river too (-46 over 0.9 s)): 202.42 s (40 shots; was 204.92); -14.0 LUFS, LRA 4.2, peak -3.1 dBFS; loudnorm2 linear (pre -14.83 LUFS, -4.16 dBTP + 0.83 = -3.33 <= -2.2); cut-qa: fps 24, jitter ok (40 steady), motion FAIL 5.9 / static 6 % on the clips (4.7 / 17 % after grade and vignette: a talking episode), held FAIL s40 1.20 s and black FAIL 3.375 s -- the intended end under the black; cut-jumps 0; audio-qa 38 lines 0 problems; 35 CC entries. LEVELS (0.4 s momentary p75 per line): -12.1..-14.1 (median -12.9); a07 -14.1 and a33 -13.8 (the quiet lines), a01 -12.3. Floor dips under -40 M: 0.1-0.7 s at cuts and pauses, 81.2-81.95 (-46, above), 130.2-130.5 (-47, s27 -> s28). BY EAR / EYE (new timeline): 11.58-12.5 s05 the first 冷 (limiter?); 0.0-3.73 s01 a01 x0.80; 176.83-189.92 s37 Wei x0.66 then s38 (one man? 了 audible?); 146.04-151.03 s31 a29 high (or take1); 56.95-66.0 a12 -> a13 (one Tang?); 120.54 s26 那 on the first frame; 192.42-202.42 s40 the panel from 195.72 (after a37), off at 199.02 on the black, the hit and the gong at 198.02 ringing into the black; 17.13-19.58 s06 the 1.36x crop; 19.58 s07's new head; 11.5 s03 -> s05 without s04; 28.75 s08 -> s09 the bed across the cut; 81.2-82.0 the dawn dip; 88.11 s20 the slap at -18; 183.39 s38 the accent at -16; the new tails of s27 (130.17) and s29 (141.00).\nFIRST CUT (before REVIEW 3) -- RESULT (e923cut.sh, fifth run; the first assembly before the tail trims was 209.33 s): 204.92 s (41 shots); -14.0 LUFS, LRA 4.4, peak -3.4 dBFS; loudnorm2 linear (pre -14.82 LUFS, -4.22 dBTP + 0.82 = -3.40 <= -2.2; the fourth run at limit 0.6 came back at 0.01 dBTP and went dynamic, so the limiter is now 0.55 and s05 has an alimiter); cut-qa: fps 24, jitter ok, motion FAIL 5.9 / static 6 % on the clips (4.7 / 17 % after grade and vignette: a talking episode), black FAIL 2.375 s -- the intended end; cut-jumps 0; audio-qa 38 lines 0 problems; 35 CC entries (a09, a37, a38 panel only). LEVELS (0.4 s momentary p75 per line): -12.1..-13.9 (median -12.9): a07 -13.9 and a33 -13.8 (the quiet lines), a01 -12.3 (the shout), a05 -12.1, a28 -12.1. Floor dips under -40 M: 0.3-0.6 s at cuts and pauses, and 84.3-85.4 (-48, s18 -> s19: the night cue's tail and s19's silent first second), 96.3-96.6 (-48, s20 -> s21), 133.0-133.6 (-47, s27 -> s28). Whisper on the cut (medium, numpy, one span per process): s01 船家,回頭,船上是我娘子; s13 聽(叮)唐小棠好感加六,宿主泡在冰水裡說的話都(倒)是比平常值錢; s37 好,三位老人家,聽清楚,替本公子做個證 (in context 聽清楚了); s40 聽(叮),強制任務,六(鬥)商三十日,勝出,失敗,唐小棠好感歸零 (in context word for word).\nFIRST CUT BY EAR / EYE (old timeline): 0.0-4.71 s01 a01 x0.80 on the wide shot (lips loosely, the shout's pitch); 14.08-19.63 s05 the chattering 148 Hz and the limiter on its first 冷; 180.33-186.87 s37 Wei x0.72 (the laugh 好 and 證 ending 0.05 s before the cut); 186.87-193.42 s38 the 1.07x crop and the accent at its head; 49.29-55.17 s13 the panel off at 51.67 and a10's CC; 195.92-204.92 s40 the red panel over the paper, the hit and gong at 201.52, the fade and the black; 123.38-128.29 s26 the crop and 那 on the first frame; 31.58-37.42 s09 and 43.96-49.29 s12 the crops; 84.3-85.4, 96.3-96.6, 133.0-133.6 the floor dips; the new tails of s10 (41.46), s13 (55.17), s17 (80.13), s19 (90.04), s20 (96.54), s21 (102.54), s35 (174.33); 144.50-149.42 s30 and 154.96-160.50 s32 (Wei -4.1/-2.9 dB); 90.04-96.54 s20 the slap at 90.94."
 }

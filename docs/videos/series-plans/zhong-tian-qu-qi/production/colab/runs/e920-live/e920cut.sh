@@ -47,6 +47,8 @@ print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
 # POLISH+SWAP 2026-11-21 (review-zt EDIT-BRIEF + SWAP-BRIEF; edit table _note POLISH+SWAP). s01 s10 s15 s33 s37b are the fixp
 # retakes clips/sNN-t5.mp4 (runpod/polish/picks.json, fix-polish/review-picks.tsv; trimmed already), picked over t1 by the
 # assembler. s08 ends 0.5 s earlier without stage.py: clips/s08-t2.mp4 = s08-t1 0-3.75 s (a08 + TAIL needs 3.75), made if missing.
+# SWAP 2026-11-22 (second wave, fix-polish/round4): s09 s24 are clips/sNN-t5.mp4 too (already trimmed; no t6 for either).
+# The cut this run replaces was moved to cut/old-HHMM.keep by hand first (kept for the delivery backup, not deleted here).
 C=$E/clips
 [ -f $C/s08-t2.mp4 ] || ffmpeg -v error -threads 2 -y -i $C/s08-t1.mp4 -t 3.75 -c:v libx264 -preset slow -crf 12 -pix_fmt yuv420p -r 24 -c:a aac -b:a 192k -ar 32000 $C/s08-t2.mp4
 # the episode sfx dir (third sfx_dirs entry), made if missing: murmur20 = crowd-murmur.py (the owner's reversed-recording
