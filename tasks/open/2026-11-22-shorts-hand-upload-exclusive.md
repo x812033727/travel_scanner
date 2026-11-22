@@ -1,7 +1,7 @@
 ---
 id: 2026-11-22-shorts-hand-upload-exclusive
 title: Hand-uploaded Shorts: keep them off the site's calendar, package from publish review, record the link
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: claude-opus-5-5-shorts-hand-upload
@@ -12,7 +12,6 @@ branch: claude/fervent-jang-97f73d
 depends_on: []
 scope:
   - apps/api/app/video_shorts
-  - apps/api/app/video_reviews/admin_service.py
   - apps/api/app/video_youtube/sync.py
   - apps/api/tests/test_video_shorts_manual.py
   - apps/web/components/admin-video-manual-upload.tsx
@@ -65,13 +64,14 @@ reading origin/main at 25fbefed5 (not reproduced by running it):
 
 - [x] Claim (refused on overlapping scope; forced on the owner's yes, see Notes).
 - [x] `video_shorts`: one predicate for "uploaded by hand": a live final or publish review with
-      `hand_pushed`, or the current id has a `video_youtube_linked` audit row marked `by_hand`
-      (no migration).
+      `hand_pushed`, or the current id was linked (audit row) while no package was approved
+      (no migration, nothing stored).
       Use it in `assign_approved`, `library_of`, `lock_due_slots` (release held slots), `_assign`,
       `send_due` and `waiting_uploads`.
 - [x] `video_youtube/sync.py`: check it again under the project lock for automatic `request_sync`
       and `retry_sync`, and before an automatic run's scheduling write.
-- [x] `link_youtube` for a Short: refuse while a sync runs, release the slot with the link.
+- [x] `link_youtube` needs no change: the rule reads its audit row, the next tick releases the
+      slot, and a run already queued stops at the guard.
 - [x] Web: prefer the publish review whose `final_review_id` is the current final (cover from the
       final); show `UploadedForm` with the guide, in place of the send form for a hand upload.
       A link saved without a time needs a way to add the time later (the form hides once linked).
@@ -100,8 +100,8 @@ Web: vitest for the publish-only package and the link form. Then the checks in C
 
 ### Decisions while implementing
 
-- `by_hand` is only marked when no upload package was approved at link time (or the Short is
-  hand-pushed). A link after approval stays on the calendar: `vps.action("record")` calls
+- A link is a hand upload only when no upload package was approved at link time (or the Short
+  is hand-pushed). A link after approval stays on the calendar: `vps.action("record")` calls
   `link_youtube` too, and SHORTS.md's fallback for the claim pastes an address after approval.
 - Added to the scope, none of them claimed by another task: `video_youtube/vps.py` (refuses to
   upload a second copy) and the link form with its copy. The copy is JSON beside the component's
@@ -109,6 +109,10 @@ Web: vitest for the publish-only package and the link form. Then the checks in C
   the form is its own component and not `UploadedForm`, whose help promises the site schedules.
 - The consent text is unchanged on purpose: its SHA-256 binds the owner's consent, and a new
   wording would void it.
+
+- `admin_service.py` is deliberately untouched: the long-form duration receipt binds it, and
+  the rule can be read from what `link_youtube` already writes. This also covers links recorded
+  before this change.
 
 ### Known limits
 
@@ -120,3 +124,12 @@ Web: vitest for the publish-only package and the link form. Then the checks in C
 - The calendar's picker still lists hand uploads; choosing one is refused with the reason.
 - A slot already `scheduled` on YouTube is left alone; the owner recalls it.
 - Local tests ran on SQLite only (Docker in WSL needs elevation); PostgreSQL runs in CI.
+
+### Checks run (2026-11-22, Windows 11)
+
+- lint:web, check:i18n, typecheck:web, test:web (4403), check:tasks, ruff, mypy app and tests: pass.
+- pytest: the full suite before the last edit, 8137 pass and 2 fail (both on main too, filed as
+  2026-11-22-api-tests-red-on-windows); after it the Shorts, YouTube and review suites, 726 pass
+  and 1 fail (one of those two), and test_video_shorts_manual.py, 34 pass.
+- test:tools and test:docs-videos: 15 failures, the same 15 on a clean origin/main checkout.
+  The long-form duration receipt check passes.

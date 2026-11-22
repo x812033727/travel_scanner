@@ -20,7 +20,6 @@ import pytest
 from sqlalchemy import select
 
 from app.models import VideoProject, VideoReview, VideoToolToken
-from app.problems import AppError
 from app.video_automation.models import VideoDramaEpisode
 from app.video_reviews import admin_service
 from app.video_reviews.schemas import DecisionIn, ReviewFile, ReviewIn
@@ -36,7 +35,6 @@ from tests.test_video_shorts_publish import (
     VIDEO,
     ShortsSite,
     agree,
-    audits,
     change,
     open_shorts_site,
     project_of,
@@ -97,8 +95,10 @@ async def push_by_hand(site: ShortsSite, slug: str = SLUG, gate: str = "final") 
 
 
 async def without_package(site: ShortsSite, status: str = "superseded") -> None:
-    """The cut is approved and no upload package is."""
-    await edit_review(site, "publish", status=status, decided_at=None)
+    """The cut is approved and no upload package is, as of an hour ago."""
+    await edit_review(
+        site, "publish", status=status, decided_at=None, updated_at=datetime.now(UTC) - HOURS
+    )
 
 
 async def link(site: ShortsSite, publish_at: datetime | None = None) -> Any:
@@ -305,12 +305,11 @@ async def test_the_studio_link_is_recorded_without_an_approved_package(
     view = await link(site)
 
     assert (view.youtube_video_id, view.youtube_publish_at) == (VIDEO, None)
-    assert await freed(site, held), "in the link's own transaction"
-    [entry] = await audits(site, "video_youtube_linked")
-    assert entry.metadata_json["by_hand"] is True
+    assert await is_by_hand(site), "from the link's commit"
+    assert (await send(site, now)).sent == 0
 
     # A package approved afterwards does not bring it back to the calendar.
-    await edit_review(site, "publish", status="approved", decided_at=now)
+    await edit_review(site, "publish", status="approved", decided_at=datetime.now(UTC))
     await ticked(site, now)
     assert site.launched == [] and site.google.updates == []
     project = await project_of(site)
@@ -339,9 +338,9 @@ async def test_a_hand_pushed_short_with_an_approved_package_is_linked_as_one(
     await push_by_hand(site)
     held = await slot(site, now + 20 * HOURS, SLUG, "locked")
     await link(site, now + 48 * HOURS)
-    [entry] = await audits(site, "video_youtube_linked")
-    assert entry.metadata_json["by_hand"] is True
-    assert await freed(site, held)
+    assert await is_by_hand(site)
+    await ticked(site, now)
+    assert (await slot_of(site, held)).project_slug is None
 
 
 async def test_a_worker_s_short_linked_after_its_package_stays_on_the_site_s_route(
@@ -356,20 +355,59 @@ async def test_a_worker_s_short_linked_after_its_package_stays_on_the_site_s_rou
     # The VPS uploader's "record" links this way too.
     await link(site)
 
-    [entry] = await audits(site, "video_youtube_linked")
-    assert "by_hand" not in entry.metadata_json
+    assert not await is_by_hand(site)
     assert (await slot_of(site, held)).project_slug == SLUG
     assert (await send(site, now)).sent == 1
 
 
-async def test_a_link_waits_for_a_send_that_is_running(site: ShortsSite, now: datetime) -> None:
-    await short(site, SLUG)
+async def test_a_run_queued_before_the_link_stops_before_it_writes(
+    site: ShortsSite, now: datetime
+) -> None:
+    await ready(site, now)
+    assert (await send(site, now)).sent == 1
+    # The package is withdrawn, then the owner records their own upload.
     await without_package(site)
-    await change(site, SLUG, youtube_sync=new_state(request_for(now + 20 * HOURS)))
-    with pytest.raises(AppError) as refused:
-        await link(site, now + 48 * HOURS)
-    assert refused.value.code == "video_youtube_link_sync_running"
-    assert (await project_of(site)).youtube_video_id is None
+    await edit_review(site, "publish", updated_at=now - HOURS)
+    await link(site, now + 48 * HOURS)
+
+    await sync.run_sync(SLUG, site.factory)
+
+    assert site.google.updates == []
+    assert (await project_of(site)).youtube_publish_at == now + 48 * HOURS
+
+
+async def test_a_corrected_link_stays_the_owner_s_after_the_package_is_approved(
+    site: ShortsSite, now: datetime
+) -> None:
+    await short(site, SLUG)
+    await without_package(site, "pending")
+    await link(site, now + 48 * HOURS)
+    await edit_review(site, "publish", status="approved", decided_at=datetime.now(UTC))
+    async with site.factory() as session:
+        await admin_service.link_youtube(session, SLUG, site.owner, "ShortVid002", now + 72 * HOURS)
+    assert await is_by_hand(site)
+
+
+async def test_an_unlink_ends_the_hand_upload(site: ShortsSite, now: datetime) -> None:
+    await site.link()
+    await short(site, SLUG)
+    await without_package(site, "pending")
+    site.youtube.put(VIDEO)
+    await link(site)
+    await edit_review(site, "publish", status="approved", decided_at=datetime.now(UTC))
+    async with site.factory() as session:
+        await admin_service.unlink_youtube(session, SLUG, site.owner)
+    await link(site)
+    assert not await is_by_hand(site)
+
+
+async def test_a_package_replaced_after_the_link_leaves_it_on_the_site_s_route(
+    site: ShortsSite, now: datetime
+) -> None:
+    await short(site, SLUG)
+    await link(site, now + 48 * HOURS)
+    await edit_review(site, "publish", status="superseded", updated_at=now + HOURS)
+    assert not await is_by_hand(site)
 
 
 async def test_a_locked_slot_that_still_holds_a_hand_upload_is_not_sent(
