@@ -6,6 +6,8 @@ E=/root/mokaair-work/videos/_live-e929/zhong-tian-qu-qi-e929-dh; VJ=$R/docs/vide
 # restore had no cut mp4 here) go to cut/old-1117 once and carry a .keep (never removed); a later run replaces its own cut.
 mkdir -p $E/cut
 [ -d $E/cut/old-1117 ] || { mkdir -p $E/cut/old-1117; mv $E/cut/e929-live.* $E/cut/final.log $E/cut/old-1117/ 2>/dev/null; touch $E/cut/old-1117/.keep; }
+# SWAP wave 3 2026-11-22: the delivered POLISH+SWAP cut (07:02, 171.38 s) goes to cut/old-w2 once, with a .keep
+[ -d $E/cut/old-w2 ] || { mkdir -p $E/cut/old-w2; mv $E/cut/e929-live.* $E/cut/final.log $E/cut/old-w2/ 2>/dev/null; touch $E/cut/old-w2/.keep; }
 rm -f $E/cut/e929-live.* $E/cut/final.log; rm -rf $E/cut/pre
 rm -rf $E/segments-v4
 # the refined shots are staged by live-action/stage.py 29 (refined picture + draft voice + trim -> clips/sNN-t1.mp4); run it
@@ -54,6 +56,12 @@ print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
 C=$E/clips; X264="-c:v libx264 -crf 14 -preset slow -pix_fmt yuv420p -c:a aac -b:a 192k"
 cutclip() { [ -f $C/$1-t6.mp4 ] && [ $C/$1-t6.mp4 -nt $C/$1-$2.mp4 ] || ffmpeg -v error -y -ss $3 -i $C/$1-$2.mp4 -t $4 -frames:v $(python3 -c "print(round($4*24))") $X264 $C/$1-t6.mp4; }
 cutclip s10 t5 1.5 4.042; cutclip s33 t5 0 4.0
+# SWAP wave 3 2026-11-22 (round5/review-picks.tsv): s27 9299501 0-4.583, s30 9299502 0-5.5, s35 9299502 1.0-8.0 are
+# clips/sNN-t5.mp4 as staged, whole -- no t6 for them (this script never cut one), so the assembler takes the t5.
+# s27's handoff sound: one crinkle of the real-set paper packet (zhongtian-sfx-paper-packet-01 5.30-5.66 s, crinkle
+# 0.04-0.28 s in, a tick at 0.28) into zhong-tian-qu-qi-e929-dh/sfx/packet929.wav; made when missing.
+PK=/root/mokaair-work/videos/zhong-tian-qu-qi-e929-dh/sfx/packet929.wav
+[ -f $PK ] || ffmpeg -v error -y -ss 5.30 -t 0.36 -i /root/mokaair-work/videos/_sfx/zhongtian-real-20261121/zhongtian-sfx-paper-packet-01.wav -af "afade=t=in:d=0.03,afade=t=out:st=0.30:d=0.06" -ar 48000 $PK
 # s31's cover (the bow of s32, refined draft 2.000-3.458) was read from runpod/a/st2/refined/s32.mp4, which is not on this
 # machine. It is taken back from the published cut (ep/e029/final.mp4 154.000-155.458, 35 frames: s31 starts at 149.000 and
 # the cover at its c5.000) with the dh grade and the vignette undone (vignette mode=backward, then gamma, then contrast and
@@ -83,6 +91,8 @@ cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VL
 # END: s35 is the suspense tail (Tang Xiaotang behind Xu Yan, a32 ends ~c3.5, he turns his head): the low hit and gong_02 at
 # c3.6, the picture fades out over c4.267-4.667 (vf) and min holds black while the gong rings out; the sound fades over the
 # last 1.0 s. REVIEW 3: min 8.1 -> 7.1 (2.43 s of black; the gong, 4.5 s long, is faded over c6.1-7.1, 2.5-3.5 s into its ring).
+# SWAP wave 3: the new s35 is 7.0 s and plays whole at 1x (slow_shot 1.0), fades over c6.6-7.0, min 9.417 keeps the same
+# 2.417 s of black; the hit, gong and cliffhanger stay at c3.6 (a32 ends c3.49); the gong rings out by c8.1, inside the black.
 D=$(ffprobe -v error -show_entries format=duration -of csv=p=0 $E/cut/e929-live.mp4); FS=$(python3 -c "print(f'{$D-1.0:.3f}')")
 ffmpeg -v error -y -i $E/cut/e929-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af "alimiter=limit=0.55:attack=8:release=60:level=false,aresample=48000,afade=t=out:st=$FS:d=1.0" $E/cut/e929-live.lim.mp4 && mv $E/cut/e929-live.lim.mp4 $E/cut/e929-live.mp4
 # loudnorm2 is linear only when the measured true peak plus the gain to -14 LUFS stays at or under -2.2 dBTP: print it

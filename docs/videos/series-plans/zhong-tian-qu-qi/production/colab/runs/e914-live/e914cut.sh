@@ -9,6 +9,9 @@ mkdir -p $E/cut
 # SWAP wave 2 2026-11-22 (round4: s20 s27 s30 s32 s33): the wave-1 cut (223.31 s, made 2026-11-22, not delivered) goes to
 # cut/old-w1 once and carries a .keep (never removed)
 [ -d $E/cut/old-w1 ] || { mkdir -p $E/cut/old-w1; mv $E/cut/e914-live.* $E/cut/final.log $E/cut/old-w1/ 2>/dev/null; touch $E/cut/old-w1/.keep; }
+# SWAP wave 3 2026-11-22 (round7: s12 = 9149702 t5, made 09:23): the wave-2 cut (223.63 s, delivered) goes to cut/old-w3 once
+# and carries a .keep (never removed). s12 has no t6 (this script never trimmed one for it), so the new t5 is taken as it is.
+[ -d $E/cut/old-w3 ] || { mkdir -p $E/cut/old-w3; mv $E/cut/e914-live.* $E/cut/final.log $E/cut/old-w3/ 2>/dev/null; touch $E/cut/old-w3/.keep; }
 rm -f $E/cut/e914-live.* $E/cut/final.log; rm -rf $E/cut/pre
 rm -rf $E/segments-v4
 # the refined shots must be staged first (live-action/stage.py 14: refined picture + draft voice + trim/crop -> clips/sNN-t1.mp4)
@@ -39,6 +42,7 @@ bad=[f'{s} start {p[s][\"trim\"].get(\"start\",0)} end-before {p[s][\"trim\"].ge
 bad+=[f'{s} seed {p[s][\"seed\"]} (want {v})' for s,v in seed.items() if p[s]['seed']!=v]
 bad+=[f'{s} seed {p[s][\"seed\"]} (want 9141101)' for s in p if s not in seed and p[s]['seed']!=9141101]
 print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
+# SWAP wave 3 2026-11-22: s12 is the round7 retake clips/s12-t5.mp4 (fix-polish/round7/review-picks.tsv, 0.667-6.542, 5.875 s).
 # SWAP wave 2 2026-11-22: s20 s27 s30 s32 s33 are the round4 retakes clips/sNN-t5.mp4 (fix-polish/round4/review-picks.tsv,
 # already trimmed; no t6 for them).
 # POLISH+SWAP 2026-11-21 (edit table _note). SWAP: s03 s11 s13 s37 s40 s42 are the fixp retakes clips/sNN-t5.mp4 (already
