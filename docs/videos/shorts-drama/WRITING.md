@@ -55,6 +55,7 @@ YouTube Shorts／Reels／TikTok 播放時，手機介面會蓋掉直式畫面四
 
 - **英文 `ff` 構圖保護句**：只要該鏡有地面線索或角落破綻，在 `ff` 尾端明寫 `Keep key face, furry paws, and punchline props framed inside the middle-upper 9:16 safe area, clear of the bottom quarter and right edge.`。
 - **剪接推近 `anchor` 規範**：在 `edit/plan.json` 用 `push`＋`anchor: [ax, ay]` 推近細節時，`ax` 必須落在 `0.07–0.84`、`ay` 必須落在 `0.09–0.72`（`preflight.mjs` 會自動檢查）。
+  - **注意（2026-11-22）**：`edit.py` 目前的 `push` 只會往左上角放大，`anchor` 沒有作用。要推近或把重點拉回安全區，請先用 ffmpeg 裁出固定鏡頭（`crop=w:h:x:y,scale=720:1280`）當 `clip`。臉偏右、畫面又沒有文字的鏡可以 `hflip`。裁好後抽一格疊紅框確認。
 
 ### 4. 無縫重播迴圈（Seamless Loop）與高留存設計
 Shorts 演算法最看重 **`average_view_duration_percentage > 100%`**（觀眾看完自動重播至少多看幾秒）。11–16 秒的零台詞短劇可用三種實戰手法拉高重播率：
