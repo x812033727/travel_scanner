@@ -2,7 +2,13 @@
 set -u
 R=/home/user/zt-work; P=$R/docs/videos/series-plans/zhong-tian-qu-qi/production; Q=$P/colab/runs/_scripts
 E=/root/mokaair-work/videos/_live-e924/zhong-tian-qu-qi-e924-dh; VJ=$R/docs/videos/zhong-tian-qu-qi-e024-r2/video.json
-mkdir -p $E/cut; [ -f $E/cut/e924-live.mp4 ] && { mkdir -p $E/cut/old-$(date +%H%M); mv $E/cut/e924-live.* $E/cut/final.log $E/cut/old-$(date +%H%M)/ 2>/dev/null; }
+# POLISH+SWAP 2026-11-21: the 2026-11-17 cut files (lines.json, srt, final.log; the mp4 is review-zt/ep/e024/final.mp4) go to
+# cut/old-1117 once, with a .keep (kept for the backup); an old-* holding a .keep is never removed. A later run moves its own
+# previous cut to old-HHMM after removing the non-kept old-* (at most one old cut besides the kept one: the disk is short).
+mkdir -p $E/cut
+[ -d $E/cut/old-1117 ] || { mkdir -p $E/cut/old-1117; mv $E/cut/e924-live.* $E/cut/final.log $E/cut/old-1117/ 2>/dev/null; touch $E/cut/old-1117/.keep; }
+[ -f $E/cut/e924-live.mp4 ] && { for d in $E/cut/old-*; do [ -f $d/.keep ] || rm -rf $d; done; mkdir -p $E/cut/old-$(date +%H%M); mv $E/cut/e924-live.* $E/cut/final.log $E/cut/old-$(date +%H%M)/ 2>/dev/null; }
+rm -rf $E/cut/pre
 rm -rf $E/segments-v4
 # the refined shots are staged by live-action/stage.py 24 (refined picture + draft voice + trim -> clips/sNN-t1.mp4); run it
 # when a clip is missing or picks.json is newer than any clip (a re-run of refine-prep.py 24 rewrites picks.json). stage.py
@@ -28,6 +34,15 @@ bad+=[f'{s} not in picks.json' for s in want if s not in p]
 bad+=[f'{s} in picks.json, not in the want table' for s in p if s not in want]
 bad+=[f'{s} has crop {p[s][\"crop\"]} (none expected)' for s in p if p[s].get('crop')]
 print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
+# POLISH+SWAP 2026-11-21 (edit table _note). SWAP: s19 and s24 are the fixp retakes clips/sNN-t5.mp4 (runpod/polish/picks.json,
+# already trimmed: s19 9249101 1.458-7.25, s24 9249101 0-4.5; the assembler takes the highest take number); picks.json and the
+# want table above still describe the t1 staging, which stays on disk. POLISH (free fix 4): s01 ends at 5.208 (clips/s01-t2.mp4
+# = s01-t1 0-5.208, 125 frames: a01 laid at 0.30 ends 4.98 + the 0.22 tail, so nothing is held); made if missing, t1 kept.
+C=$E/clips; ENC="-c:v libx264 -preset slow -crf 12 -pix_fmt yuv420p -r 24 -c:a aac -b:a 192k -ar 32000"
+[ -f $C/s01-t2.mp4 ] || ffmpeg -v error -threads 2 -y -i $C/s01-t1.mp4 -t 5.208 $ENC $C/s01-t2.mp4
+# the episode sfx dir (second sfx_dirs entry), made if missing: murmur24 = crowd-murmur.py 24 64 (this episode's recordings
+# reversed, -19 LUFS) under the street s01-s12 (the review's market crowd; ancient-market-loop is barred)
+[ -f /root/mokaair-work/videos/zhong-tian-qu-qi-e924-dh/sfx/murmur24.wav ] || python3 -I $Q/crowd-murmur.py 24 64
 # nothing is dropped in e924 (DROP empty; all 37 shots with s15b are cut in); $VL is video.json without the DROP shots.
 VL=$E/video-live.json; DROP=""
 python3 -c "import json,sys;v=json.load(open('$VJ'));d='$DROP'.split();v['scenes']=[s for s in v['scenes'] if s.get('id') not in d];json.dump(v,open('$VL','w'),ensure_ascii=False,indent=1)"
@@ -46,9 +61,17 @@ ffmpeg -v error -y -i $E/cut/e924-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af
 ffmpeg -hide_banner -i $E/cut/e924-live.mp4 -map 0:a -af loudnorm=I=-14:TP=-2.2:LRA=11:print_format=json -f null - 2>&1 | sed -n '/^{/,/^}/p' \
  | python3 -c "import json,sys;j=json.load(sys.stdin);i,tp=float(j['input_i']),float(j['input_tp']);print(f'pre-loudnorm2 {i} LUFS {tp} dBTP: {tp-14-i:+.2f} after the gain ->', 'linear' if tp-14-i<=-2.2 else 'DYNAMIC (lower the limiter or its attack)')"
 bash $Q/loudnorm2.sh $E/cut/e924-live.mp4
+# POLISH+SWAP 2026-11-21: a second alimiter after loudnorm2 (0.7 = -3.1 dBFS, the e904/e916 way) takes any peak the AAC
+# re-encode lifts past the first one with the louder music; the level stays -14.0 LUFS.
+ffmpeg -v error -y -i $E/cut/e924-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af "alimiter=limit=0.7:attack=5:release=50:level=false,aresample=48000" $E/cut/e924-live.lim2.mp4 && mv $E/cut/e924-live.lim2.mp4 $E/cut/e924-live.mp4
+# the delivery wants the true peak at or under -1 dBTP: print it (ebur128 true peak on the final file)
+ffmpeg -hide_banner -nostats -i $E/cut/e924-live.mp4 -map 0:a -af ebur128=peak=true -f null - 2>&1 | grep -E '^\s+(I|LRA|Peak):' | tail -3 \
+ | awk '{print} /Peak:/{print ($2<=-1.0)?"true peak ok (<= -1 dBTP)":"TRUE PEAK OVER -1 dBTP"}'
 echo "== cut-qa";   python3 $Q/cut-qa.py $E/cut --stem e924-live 2>&1 | tail -20
 echo "== cut-jumps"; python3 $Q/cut-jumps.py $E/cut 2>&1 | tail -12
 echo "== audio-qa"; python3 $Q/audio-qa.py $E/cut $VL 2>&1 | tail -15
 echo "== sheets";   python3 $Q/continuity-sheets.py $E/cut $VL $E/review/continuity-v1 2>&1 | tail -4
 # the segments are 1-2 GB and only the assembler reads them: gone after the checks (KEEP_SEG=1 keeps them for a look)
 [ "${KEEP_SEG:-0}" = 1 ] || rm -rf $E/segments-v4
+# loudnorm2.sh keeps the pre-loudnorm cut in cut/pre (the disk is short): gone too (KEEP_PRE=1 keeps it)
+[ "${KEEP_PRE:-0}" = 1 ] || rm -rf $E/cut/pre

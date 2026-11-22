@@ -38,6 +38,10 @@ print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
 # (pick-review: shakiness 8, accuracy 15; on the draft jitter 0.43 -> 0.05). REVIEW 3: the edit table smooths with 4, not 12
 # (12 swung the board about 15 px left and right at c2.2-2.8, the hand read as camera motion; 4 holds it to 2-3 px)
 ffmpeg -v error -y -i $E/clips/s26-t1.mp4 -vf "scale=1920:1080:flags=lanczos,fps=24,format=yuv420p,vidstabdetect=shakiness=8:accuracy=15:result=$E/s26.trf" -f null - || exit 1
+# POLISH+SWAP round 3 (2026-11-22, coordinator's wave-2 note): clips/s20-t6.mp4 = s20-t5 to 3.875 s (93 frames): his line
+# ends c3.66 (20 ms RMS), the door edge holds to c3.79 and creeps from c3.83, swings from c3.92 -- cut before the door moves
+# toward his left so s21 (Tang: 先別關) does not cut against the swing's direction; t5 stays (x264 crf 12, aac 32 kHz)
+[ -f $E/clips/s20-t6.mp4 ] || ffmpeg -v error -y -i $E/clips/s20-t5.mp4 -t 3.875 -c:v libx264 -preset slow -crf 12 -pix_fmt yuv420p -r 24 -c:a aac -b:a 192k -ar 32000 $E/clips/s20-t6.mp4 || exit 1
 # POLISH+SWAP round 2 (2026-11-22): the episode sfx dir (third sfx_dirs entry): bead913 = one bead click out of the real
 # set's abacus-drop-01 (0.245-0.325 s, e911's bead911 recipe) for s09's abacus (was wooden_01, a wood knock)
 X=/root/mokaair-work/videos/_sfx/zhongtian-real-20261121; S=/root/mokaair-work/videos/zhong-tian-qu-qi-e913-dh/sfx; mkdir -p $S

@@ -10,7 +10,9 @@
  "duck_ratio": 3.5,
  "duck_release_ms": 900,
  "sfx_dirs": [
-  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx"
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx",
+  "<VIDEO_WORKDIR>/_sfx/zhongtian-real-20261121",
+  "<VIDEO_WORKDIR>/zhong-tian-qu-qi-e921-dh/sfx"
  ],
  "name_whoosh": "swish-9",
  "music": [
@@ -33,6 +35,16 @@
    "fade_in": 0.3,
    "fade_out": 1.2,
    "tail": 0.2
+  },
+  {
+   "cue": "z-bed-battle",
+   "from": "s21",
+   "to": "s22",
+   "offset": 64.0,
+   "gain": -16,
+   "fade_in": 0.3,
+   "fade_out": 0.8,
+   "tail": 0.4
   },
   {
    "cue": "suspense",
@@ -68,6 +80,18 @@
    "to": "s37"
   },
   {
+   "file": "zhongtian-sfx-folding-fan-02",
+   "at": "s02",
+   "off": 7.21,
+   "gain": 12
+  },
+  {
+   "file": "impactWood_light_001",
+   "at": "s03",
+   "off": 0.66,
+   "gain": -14
+  },
+  {
    "file": "impactWood_light_000",
    "at": "s04",
    "off": 1.2,
@@ -86,6 +110,24 @@
    "gain": -16
   },
   {
+   "file": "impactWood_light_000",
+   "at": "s13",
+   "off": 0.72,
+   "gain": -20
+  },
+  {
+   "file": "zhongtian-sfx-paper-unfold-01",
+   "at": "s16",
+   "off": 0.25,
+   "gain": -4
+  },
+  {
+   "file": "zhongtian-sfx-paper-unfold-03",
+   "at": "s16",
+   "off": 1.1,
+   "gain": -6
+  },
+  {
    "file": "impactWood_light_001",
    "at": "s17",
    "off": 0.85,
@@ -101,13 +143,13 @@
    "file": "impactWood_light_000",
    "at": "s19",
    "off": 2.2,
-   "gain": -22
+   "gain": -14
   },
   {
    "file": "cloth2",
    "at": "s21",
    "off": 0.5,
-   "gain": -16
+   "gain": 0
   },
   {
    "file": "impactSoft_heavy_000",
@@ -116,9 +158,21 @@
    "gain": -16
   },
   {
+   "file": "impactPlank_medium_000",
+   "at": "s21",
+   "off": 1.5,
+   "gain": -18
+  },
+  {
+   "file": "sob921",
+   "at": "s21b",
+   "off": 1.15,
+   "gain": 6
+  },
+  {
    "file": "swish-9",
    "at": "s22",
-   "off": 0.55,
+   "off": 0.3,
    "gain": -12
   },
   {
@@ -130,20 +184,50 @@
   {
    "file": "impactWood_heavy_000",
    "at": "s22",
-   "off": 1.0,
-   "gain": -11
+   "off": 1.45,
+   "gain": -14
+  },
+  {
+   "file": "zhongtian-sfx-body-fall-stone-01",
+   "at": "s22",
+   "off": 1.8,
+   "gain": -10
+  },
+  {
+   "file": "swish-7",
+   "at": "s24",
+   "off": 0.06,
+   "gain": -16
+  },
+  {
+   "file": "zhongtian-sfx-staff-thud-01",
+   "at": "s25",
+   "off": 3.07,
+   "gain": 6
+  },
+  {
+   "file": "zhongtian-sfx-folding-fan-02",
+   "at": "s28",
+   "off": 3.79,
+   "gain": 12
   },
   {
    "file": "impactWood_medium_001",
    "at": "s28b",
    "off": 0.05,
-   "gain": -14
+   "gain": -9
+  },
+  {
+   "file": "splash_02",
+   "at": "s28b",
+   "off": 0.15,
+   "gain": -24
   },
   {
    "file": "door_open",
    "at": "s29",
    "off": 0.1,
-   "gain": -24
+   "gain": -12
   },
   {
    "file": "impactSoft_heavy_000",
@@ -155,18 +239,24 @@
    "file": "door_close_01",
    "at": "s32",
    "off": 1.7,
-   "gain": -26
+   "gain": -18
+  },
+  {
+   "file": "steps921",
+   "at": "s36",
+   "off": 0.0,
+   "gain": -12
   },
   {
    "file": "impactSoft_heavy_000",
    "at": "s37",
-   "off": 6.86,
+   "off": 6.95,
    "gain": -8
   },
   {
    "file": "gong_02",
    "at": "s37",
-   "off": 6.86,
+   "off": 6.95,
    "gain": -5
   }
  ],
@@ -174,7 +264,7 @@
  "clip_voice": true,
  "voice_skip": {},
  "voice_until": {
-  "s37": 6.84
+  "s37": 7.0
  },
  "clip_af": {
   "s01": {
@@ -219,7 +309,7 @@
   },
   "s20": {
    "from": 0,
-   "af": "rubberband=pitch=0.78:formant=preserved,volume=-2.3dB"
+   "af": "rubberband=pitch=0.92:formant=preserved,volume=-2.3dB"
   },
   "s22b": {
    "from": 0,
@@ -259,19 +349,28 @@
   },
   "s37": {
    "from": 0,
-   "af": "asendcmd=c='1.15 rubberband pitch 0.88;3.9 volume volume -0.3dB',rubberband=pitch=0.62:formant=preserved,volume=-1.8dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "asendcmd=c='1.38 rubberband pitch 1.0;4.0 volume volume -0.3dB',rubberband=pitch=0.60:formant=preserved,volume=-1.8dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s21b": {
+   "from": 0,
+   "af": "rubberband=pitch=1.3:formant=preserved"
   }
  },
  "voice_off": [
   "s28"
  ],
+ "voice_on": [
+  "s21b"
+ ],
  "move_lines": {},
  "min": {
-  "s37": 10.83
+  "s37": 11.04
  },
  "line_at": {
-  "zq921a23": 0.45,
-  "zq921a30": 0.91
+  "zq921a30": 0.91,
+  "zq921a08": 0.92,
+  "zq921a23": 0.55,
+  "zq921a24": 0.22
  },
  "line_lead": {},
  "panel_y": {
@@ -289,13 +388,14 @@
   "s15": "split[tca][tcb];[tcb]crop=120:500:560:20,format=gbrp,split=3[tcc][tcd][tce];[tcd]geq=r='255*gt(r(X\\,Y)\\,55)*gt(r(X\\,Y)-b(X\\,Y)\\,15)':g='0':b='0',extractplanes=r,gblur=sigma=5,lut=y='clip(val*3\\,0\\,255)',geq=lum='lum(X\\,Y)*clip((min(min(min(X\\,W-X)\\,Y)\\,H-Y))/14\\,0\\,1)'[tcm];[tce]gblur=sigma=10,format=gbrp[tcg];[tcg][tcm]alphamerge[tch];[tcc][tch]overlay,format=yuv420p[tco];[tca][tco]overlay=560:20",
   "s17": "split[tda][tdb];[tdb]crop=340:290:960:640,format=gbrp,split=3[tdc][tdd][tde];[tdd]geq=r='255*gt(r(X\\,Y)\\,110)*gt(r(X\\,Y)-g(X\\,Y)\\,70)':g='0':b='0',extractplanes=r,gblur=sigma=6,lut=y='clip(val*3\\,0\\,255)',geq=lum='lum(X\\,Y)*clip((min(min(min(X\\,W-X)\\,Y)\\,H-Y))/16\\,0\\,1)'[tdm];[tde]gblur=sigma=8,format=gbrp[tdg];[tdg][tdm]alphamerge[tdh];[tdc][tdh]overlay,format=yuv420p[tdo];[tda][tdo]overlay=960:640",
   "s18": "split[tea][teb];[teb]crop=560:580:210:420,format=gbrp,split=3[tec][ted][tee];[ted]geq=r='255*gt(r(X\\,Y)\\,60)*lt(r(X\\,Y)-g(X\\,Y)\\,32)*gt(r(X\\,Y)-b(X\\,Y)\\,15)*lt(g(X\\,Y)-b(X\\,Y)\\,45)':g='0':b='0',extractplanes=r,gblur=sigma=7,lut=y='clip(val*3\\,0\\,255)',geq=lum='lum(X\\,Y)*clip((min(min(min(X\\,W-X)\\,Y)\\,H-Y))/20\\,0\\,1)'[tem];[tee]gblur=sigma=10,format=gbrp[teg];[teg][tem]alphamerge[teh];[tec][teh]overlay,format=yuv420p[teo];[tea][teo]overlay=210:420",
-  "s19": "split[tfa][tfb];[tfb]crop=640:340:760:740,format=gbrp,split=3[tfc][tfd][tfe];[tfd]geq=r='255*gt(r(X\\,Y)\\,60)*lt(r(X\\,Y)-g(X\\,Y)\\,32)*gt(r(X\\,Y)-b(X\\,Y)\\,15)*lt(g(X\\,Y)-b(X\\,Y)\\,45)':g='0':b='0',extractplanes=r,gblur=sigma=7,lut=y='clip(val*3\\,0\\,255)',geq=lum='lum(X\\,Y)*clip((min(min(X\\,W-X)\\,Y))/20\\,0\\,1)'[tfm];[tfe]gblur=sigma=12,format=gbrp[tfg];[tfg][tfm]alphamerge[tfh];[tfc][tfh]overlay,format=yuv420p[tfo];[tfa][tfo]overlay=760:740:enable='lt(t,2.35)'",
+  "s19": "split[tfa][tfb];[tfb]crop=640:340:760:740,format=gbrp,split=3[tfc][tfd][tfe];[tfd]geq=r='255*gt(r(X\\,Y)\\,60)*lt(r(X\\,Y)-g(X\\,Y)\\,32)*gt(r(X\\,Y)-b(X\\,Y)\\,15)*lt(g(X\\,Y)-b(X\\,Y)\\,45)':g='0':b='0',extractplanes=r,gblur=sigma=7,lut=y='clip(val*3\\,0\\,255)',geq=lum='lum(X\\,Y)*clip((min(min(X\\,W-X)\\,Y))/20\\,0\\,1)'[tfm];[tfe]gblur=sigma=12,format=gbrp[tfg];[tfg][tfm]alphamerge[tfh];[tfc][tfh]overlay,format=yuv420p[tfo];[tfa][tfo]overlay=760:740:enable='lt(t,2.35)',split[tqa][tqb];[tqb]crop=1360:250:560:0,format=gbrp,split=3[tqc][tqd][tqe];[tqd]geq=r='255*gt(r(X\\,Y)\\,70)*gt(r(X\\,Y)-b(X\\,Y)\\,30)':g='0':b='0',extractplanes=r,gblur=sigma=5,lut=y='clip(val*3\\,0\\,255)',geq=lum='lum(X\\,Y)*clip((min(X\\,H-Y))/14\\,0\\,1)'[tqm];[tqe]gblur=sigma=10,format=gbrp[tqg];[tqg][tqm]alphamerge[tqh];[tqc][tqh]overlay,format=yuv420p[tqo];[tqa][tqo]overlay=560:0",
   "s26": "split[tga][tgb];[tgb]crop=600:330:380:640,format=gbrp,split=3[tgc][tgd][tge];[tgd]geq=r='255*gt(r(X\\,Y)\\,60)*lt(r(X\\,Y)-g(X\\,Y)\\,32)*gt(r(X\\,Y)-b(X\\,Y)\\,15)*lt(g(X\\,Y)-b(X\\,Y)\\,45)':g='0':b='0',extractplanes=r,gblur=sigma=7,lut=y='clip(val*3\\,0\\,255)',geq=lum='lum(X\\,Y)*clip((min(min(min(X\\,W-X)\\,Y)\\,H-Y))/20\\,0\\,1)'[tgm];[tge]gblur=sigma=12,format=gbrp[tgg];[tgg][tgm]alphamerge[tgh];[tgc][tgh]overlay,format=yuv420p[tgo];[tga][tgo]overlay=380:640",
   "s27": "split[tha][thb];[thb]crop=290:260:150:520,format=gbrp,split=3[thc][thd][the];[thd]geq=r='255*gt(r(X\\,Y)\\,110)*gt(r(X\\,Y)-g(X\\,Y)\\,70)':g='0':b='0',extractplanes=r,gblur=sigma=5,lut=y='clip(val*3\\,0\\,255)',geq=lum='lum(X\\,Y)*clip((min(min(min(X\\,W-X)\\,Y)\\,H-Y))/14\\,0\\,1)'[thm];[the]hue=s=0.1,eq=brightness=-0.08,format=gbrp[thg];[thg][thm]alphamerge[thh];[thc][thh]overlay,format=yuv420p[tho];[tha][tho]overlay=150:520,split[tna][tnb];[tnb]crop=340:190:330:810,gblur=sigma=10,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip(min(min(X\\,W-X)\\,min(Y\\,H-Y))/24\\,0\\,1)'[tnc];[tna]format=rgba[tnd];[tnd][tnc]overlay=330:810,format=yuv420p",
   "s28b": "split[tia][tib];[tib]crop=460:380:1140:400,format=gbrp,split=3[tic][tid][tie];[tid]geq=r='255*gt(r(X\\,Y)\\,60)*lt(r(X\\,Y)-g(X\\,Y)\\,32)*gt(r(X\\,Y)-b(X\\,Y)\\,15)*lt(g(X\\,Y)-b(X\\,Y)\\,45)':g='0':b='0',extractplanes=r,gblur=sigma=7,lut=y='clip(val*3\\,0\\,255)',geq=lum='lum(X\\,Y)*clip((min(min(min(X\\,W-X)\\,Y)\\,H-Y))/20\\,0\\,1)'[tim];[tie]gblur=sigma=12,format=gbrp[tig];[tig][tim]alphamerge[tih];[tic][tih]overlay,format=yuv420p[tio];[tia][tio]overlay=1140:400:enable='lt(t,1.0)'",
   "s33": "split[tja][tjb];[tjb]crop=1920:110:0:0,format=gbrp,split=3[tjc][tjd][tje];[tjd]geq=r='255*gt(r(X\\,Y)\\,70)*gt(r(X\\,Y)-b(X\\,Y)\\,30)':g='0':b='0',extractplanes=r,gblur=sigma=5,lut=y='clip(val*3\\,0\\,255)',geq=lum='lum(X\\,Y)*clip((H-Y)/14\\,0\\,1)'[tjm];[tje]gblur=sigma=7,format=gbrp[tjg];[tjg][tjm]alphamerge[tjh];[tjc][tjh]overlay,format=yuv420p[tjo];[tja][tjo]overlay=0:0",
   "s35": "split[tka][tkb];[tkb]crop=380:220:760:860,format=gbrp,split=4[tkc][tkd][tkk][tke];[tkd]geq=r='255*gt(r(X\\,Y)\\,110)*gt(r(X\\,Y)-g(X\\,Y)\\,70)':g='0':b='0',extractplanes=r,gblur=sigma=6,lut=y='if(gt(val\\,120)\\,255\\,0)'[tkp];[tkk]geq=r='255*gt(r(X\\,Y)-g(X\\,Y)\\,40)*lt(r(X\\,Y)\\,232)*lt(g(X\\,Y)\\,100)':g='0':b='0',extractplanes=r[tkq];[tkp][tkq]blend=all_mode=multiply,gblur=sigma=4,lut=y='clip(val*3\\,0\\,255)',geq=lum='lum(X\\,Y)*clip((min(min(X\\,W-X)\\,Y))/16\\,0\\,1)'[tkm];[tke]gblur=sigma=6,format=gbrp[tkg];[tkg][tkm]alphamerge[tkh];[tkc][tkh]overlay,format=yuv420p[tko];[tka][tko]overlay=760:860",
-  "s37": "split[tma][tmb];[tmb]crop=205:175:1340:235,gblur=sigma=5.5,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip(min(min(X\\,W-X)\\,min(Y\\,H-Y))/18\\,0\\,1)'[tmc];[tma]format=rgba[tmd];[tmd][tmc]overlay=1340:235,format=yuv420p,split[tla][tlb];[tlb]crop=180:700:1740:380,gblur=sigma=18,eq=brightness=-0.04,format=rgba,geq=r='r(X\\,Y)':g='g(X\\,Y)':b='b(X\\,Y)':a='255*clip(min(min(X\\,W-X)\\,min(Y\\,H-Y))/30\\,0\\,1)'[tlc];[tla]format=rgba[tld];[tld][tlc]overlay=1740:380:enable='lt(t,4.2)',format=yuv420p,fade=t=out:st=7.300:d=0.50"
+  "s37": "fade=t=out:st=7.500:d=0.50",
+  "s14b": "eq=gamma=0.80:brightness=-0.02"
  },
  "subtitle_lines": [],
  "_note": "Live action, written 2026-11-16 from edit-dh-e920-live.json and edit-dh-e919-live.json (their form, panel_color, voice_until, line_at, the REVIEW 3 keys), on the refined, staged clips (_live-e921/zhong-tian-qu-qi-e921-dh/clips/sNN-t1.mp4, 41 shots with s14b s21b s22b s28b, every one used): clip_voice, no punch-in, slow-down <= 1.1, interpolate off, frame_round, no title card, names {}. Episode 21 opens arc 3 (r2-bible-e021-e030.md) and picks up episode 20's last shot: Tang Xiaotang frightened behind the counter, Wei Shaoqing and Sun already inside the shop -- s01 opens on that same moment and axis (Wei and Sun at the door post, Xu in front of the counter), so the first cut is a continuation, not a new scene; no abacus in this episode (accepted, as is the jump from e920 s37b). Every offset is seconds from the first frame of the trimmed shot (c). SOURCES: script/storyboard/video.json/overlays.json in docs/videos/zhong-tian-qu-qi-e021-r2; picks.json from refine-prep.py 21 (picks-merged.tsv, fix1/review-picks.tsv, review3-trims.tsv (REVIEW 3); s28 s37 are the fix1 retakes 9211201, s36 the fix1 retake 9211202, no crop= anywhere), staged with stage.py 21 (41 staged, 0 missing); e921cut.sh's want and seed tables hold every trim and seed. LINKS: zhong-tian-qu-qi-e921-dh/music -> ../_series/zhong-tian-qu-qi/music (by hand, the e920 way); stage.py links _live-e921/.../audio and music. Every effect is in the series library (one sfx dir). No new music, no paid service.\nTRIMS (first cut; REVIEW 3 below trims eight shots): none changed then. faster-whisper medium (scratchpad fw env, numpy f32le input, one clip per process, word times) on the 22 clip-voiced staged clips plus 50 ms RMS at both ends: heads -47..-88 dB in the first 50 ms; the loud windows at 0.10-0.15 s (s08 -35, s19 -27, s28 -30, s30 -28, s33 -2, s37 -31) are each the first syllable or s33's nasal laugh starting right after the cut, not a cut word (s33's 呵 laugh is the picker's 'nose laugh' at raw 1-2); tails -53..-80 dB except s27 (-39 at -0.1 s: 邊 ends at 6.54 of 6.56, the picker's 'voice to 6.54') -- every clip ends after its last word. Every trim is on a whole frame (start rounded down, end-before up, 3 decimals).\nVOICE: every on-screen speaker keeps the take's own voice except s28. voice_off [\"s28\"] (the post list: 'lay the recording'; the fix1 take says 好 at c0.09-0.53 and pauses 1.7 s before the rest, the recording only 0.32 s): a30 is laid with line_at 1.40 so its second half (那就照你說的，去官府講, recording onset 1.20 s, 1.02 s into the silence-trimmed file) lands on his mouth for 那就 (raw 5.10 = c2.225, x1.087 after the shot's slow-down to the 5.58 s the line needs); 好 falls at c1.40-2.1, on his open grin (c1.6-2.0), not on the take's own 好 -- listen; the fallback is the clip voice (voice_off [], line_at without zq921a30) with clip_af rubberband 0.75 (172 Hz -> ~129). s35 keeps the take's voice: the post list's split of a35 (先別怕 from ~0.76, the rest from ~2.95 raw) was for laying the recording; the take says 先別怕 at c0.2-0.9 (whisper with the line as a prompt; without a prompt it drops the three words), pauses as the recording does and reads the rest word for word at 111 Hz (Xu 106-145) -- fallback: voice_off [\"s35\"] and the recording split as the post list writes it. s06 a06 (6.64 s file, 6.13 s of speech) fits the 6.584 s shot after the assembler's silence trim (shot 6.63 s); s29 has no line, its take is muted (the assembler mutes a no-line shot), the door is an effect. Whisper heard every clip voice right but for homophones (許→徐/許晏, 唐小棠→唐小唐, 州府→周府, 冒名犯→茂名飯, 櫃檯→跪台, 井邊→景邊, 小禾→小何, 門閂→門捆). Laid lines (recordings): s03 a03, s04 a04, s06 a06, s07 a07, s09 a09 (inner), s11 a11, s12 a12, s14 a14 (system, panel) + a15 (inner), s14b a16 (system, no overlay: a CC line) + a17 (inner), s21b a23 (line_at 0.45: 哥 on her open mouth at c0.45-1.0), s24 a26, s28 a30 (line_at 1.40), s34 a34; the rest LEAD 0.12.\nPITCH (clip_af, rubberband formant preserved; f0 autocorrelation median per phrase, raw -> processed; whisper on every processed take read as the raw): Xu 106-145: s01 120, s15 106, s17 128, s18 133, s23 96/116, s27 134, s32 102, s35 111 kept. Wei Shaoqing (recordings a03-a36 99-154): s05 128, s08 133, s10 137, s13 110, s19 132/105, s30 103/124, s33 125 (the laugh 178) kept; s20 x0.78 (178/181 -> 142); s37 asendcmd x0.68 for 三日後 then x0.88 from 1.15 s (239 / 152 / 134 -> 168 / ~140 / 121; a36 99). Sun (a02 143, a28 121): s02 許老闆 125 kept, x0.85 from 1.9 s (174 -> 150), s26 117 kept. Qin 219-255: s22b x1.10 (211/188 -> 229). Erniu s25 276 kept (a shout, 大嗓門; e920 shouts 262-302). Tang, Xiaohe: recordings at their recorded pitch (a04 340, a07 254, a34 271; a23 372).\nRECORDINGS (audio/, originals in audio/orig/ (13 files), file lengths unchanged; lev.py: the result is zeroed outside the source's -45 dB peak span -0.03/+0.10 s so the assembler trims the same span; integrated LUFS on that span, before -> after): to ~-14.5 with acompressor 3:1 at -20 dB + volume + alimiter 0.84 latency=1: a03 -16.1, a04 -20.3, a06 -15.5, a09 -17.5, a11 -18.2, a12 -18.2, a17 -20.0, a26 -17.2, a30 -16.7, a34 -17.1 -> -14.5/-14.6; system a14 -18.6 -> -14.5 and a16 -20.7 -> -14.6 with volume + alimiter 0.89 attack 10 and no compressor (whisper reads 叮 冒名入冊 按律流放 and 三千里 本系統… in context; the long-context pass once heard 暫緘裡 for 三千里, the file alone and a 4 s span read 三千里); a07 -13.8 -> -15.4 (volume + alimiter 0.89, no compressor: Tang's slap line sat 1.6 dB over the scene). Untouched: a15 -14.5, a23 -13.3 and every clip-voiced line's file, raw-tts files, take1/ take2/.\nLEVELS (clip voices brought to the recordings with clip_af volume, measured in the cut as 0.4 s momentary p75 over each line's span): the whole episode is one evening in the shop (plus the back door), so one window -- see RESULT. Floor: the beds (Wind -11 in the shop, wind1 -11 at the well) keep the gaps over -40 M except 0.1-0.5 s dips at cuts and pauses; longer only at 12.5-13.0 (s02 -> s03), 29.6-30.0 (s05 between 見過妳 and 早報), 164.7-165.1 (s27's last pause) and 216.2-216.9 (s37 between 冒名犯 and 許老闆).\nPANELS (no burned subtitles; the soft CC sits at the bottom): s14 the overlay 冒名入冊，按律流放 (penalty) with panel_color red (a punishment, the e917 rule) and panel_y 16: at the default 120 it sat on his forehead and eyes through the push-in; at 16 it covers only the top of his hair (checked at c0.75 and c6.75). s14b's a16 has no overlay, so it is a CC line.\nMUSIC (library cues only, the storyboard's plan: scene 1 low suspense with accents on 林二丫 and 官府的事, scene 2 a short fight cue that ends at c28, scene 3 cold low strings with a light accent on 見過 and a big one at c37): (1) suspense s01-s19 + 0.3 from 0 (-24, 1.5/1.2): the confrontation, continuing episode 20's tension close; (2) tension s20-s28 + 0.2 from 0 (-23, 0.3/1.2): the thugs, the stick, the door bar, Sun's whisper, Xu's 門在那邊, Wei backing off; (3) suspense s28b-s37 from cue 50 (-24, 1.0/2.5): the bucket, the well, 見過?, the threat, into the black. Ducked 3.5 : 1, release 900 ms. Accents (impactSoft_heavy_000, each after the word, never on one): s11 c5.1 -16 (after 林二丫), s18 c5.08 -18 (in the pause after 官府的事), s30 c5.8 -20 (after 見過), s37 c6.86 -8 with gong_02 -5 (after 門).\nSFX: beds Wind -11 s01-s28b (indoors, night), wind1 -11 s29-s31 (the back yard), Wind -11 s32-s37. Spot: s04 impactWood_light_000 1.2 -24 (she backs into the stool), s07 impactWood_medium_000 1.5 -16 (both palms on the counter, raw 2.0), s17 impactWood_light_001 0.6 -20 (the red paper slapped down), s19 impactWood_light_000 2.2 -22 (the fan snapped shut), s21 cloth2 0.5 -16 + impactSoft_heavy_000 1.3 -16 (the shove, she sits down hard), s22 hit_02 1.25 -14 + impactWood_heavy_000 1.3 -16 (the thug trips over the stick and lands), s28b impactWood_medium_001 0.05 -20 (the bucket 咚 behind the back door, off screen), s29 door_open 0.1 -24, s32 door_close_01 1.7 -26 (he shuts the back door 0-1.9).\nVF (on the 1920x1080 picture before the grade; vf921.py in the scratchpad; every mask blurs (or, s27, desaturates) only what a colour key picks inside a box, grown and feathered, so faces and hands stay sharp; nothing is boxed dark): fan paper key R>60, R-G<32, R-B>15, G-B<45 (fan paper ~130/110/80; skin has R-G 30-60 and stays outside the boxes, the gold embroidery G-B > 45 mostly): s18 the fan's ink bamboo (x 210-770 y 420-1000, sigma 10, the whole shot); s19 the fan's flowers and the red seal that reads as a character (x 760-1400 y 740-1080, sigma 12, until c2.9 when the fan is down); s26 the fan's ink landscape (x 380-980 y 640-970, sigma 12, whole shot); s28b the fan's calligraphy while it is still in frame (x 1140-1600 y 400-780, sigma 12, until c1.3). Red key R>110, R-G>70: s17 the faint marks on the red marriage paper (x 960-1300 y 640-930, sigma 8), s35 the strokes on the red paper (x 760-1140 y 860-1080, sigma 12). Wood/tan key: s08 the row of hanging tags along the top edge (x 560-1920 y 0-120, R>70, R-B>30: the black bun and the green jade drop out), s33 the half plaques along the top edge (x 0-1920 y 0-110, same key), s14 the framed sheet on the back wall left of his head (x 560-745 y 160-640, R>55, R-B>15; his hair is darker than the key), s15 the upright wooden plaque on the back wall (x 560-680 y 20-520, same key). s27 the red flowers in the brush pot by Wei's head from c1.8 (x 280-440 y 520-760, red key) -> hue s 0.1, brightness -0.08. s37 the third face at the right edge (to raw ~5.2, c4.0): a plain feathered box x 1740-1920 y 380-1080, gblur 18 and brightness -0.04 (blur first, a light darken), enable lt(t,4.2); then fade=t=out:st=7.300:d=0.50. Checked before/after on frames (s08 6.0, s14 7.5, s15 3.0, s17 4.0, s18 0.3/4.6, s19 0.5, s26 0.3/4.0, s27 6.0, s28b 0.2, s33 2.5, s35 5.5, s37 0.3): no face touched; the gold shoulder embroidery next to the fans in s18, s19 and s28b is softened at the box edge (look). Accepted, not masked: s21b/s22b/s23 the night-market background, the counting-house props, s01's fan (small, a plain pattern), s37's small gold thing at the lower right (c0-0.4), s33's round wall plaques below the top edge.\nJITTER: cut-qa's jitter() on every staged clip 0.00-0.01: no deshake. END: s37 is Wei Shaoqing's line on his own take; 門 ends at c6.84 and the take at c6.834, so voice_until 6.84 ends the subtitle there; the gong and a low hit at c6.86 while the picture holds the take's last frame (the e919 lesson: a freeze hides the end of the mouth better than an early fade), the picture fades over c7.30-7.80 and min 10.83 holds ~3 s of black while the gong rings out; e921cut.sh fades the sound over the last 1.5 s. OPENING: no line_lead; s01 starts on Xu's line at c0.5 under the suspense cue's 1.5 s fade-in and the wind; the final one-pass loudnorm's lift of the first seconds (e920) leaves a01 within the window (see RESULT).\nREVIEW 3 (2026-11-16, colab/runs/e921-live/review3-plan.md: cut-review.md + cut-review-2.md merged, the coordinator's picks; nothing paid -- no Colab, no RunPod, no site TTS; work files in the session scratchpad e921r3/ (vf921r3.py, mkedit.py, lev2.py = lev.py with a pitch shift first, mom.py, env.py, vtc.sh), deleted after the cut but the scripts). ACCEPTED (coordinator, no action): the night-market background of s21b/s22b/s23; the bead curtain and rows of candles behind s28 and s37; s36 Wei not reaching the threshold and three thugs; Xu's full-tooth grin in s27/s32; the red paper slapped down twice in s17 (only its sound moved); the flat white marriage paper on the counter (s17/s27); s01 Wei two steps back from e920's last shot and Xu standing still; s24 the staff not touching the chest; the s14 -> s14b jump; Sun's pitch gap between s02 (x0.85) and s26 (whisper); s22's visual miss (the thug falls by himself) -- fixed by sound only. PICKS: refine-prep.py 21 picks-merged.tsv fix1/review-picks.tsv review3-trims.tsv (review3-trims.tsv is new; it only copies the drafts and writes the st2 work files -- the h3r.sh refine it prints was NOT run), then stage.py 21 (41 staged); e921cut.sh's want table follows. TRIMS (review3-trims.tsv; whole frames; each tail checked frame by frame on the staged clip and against the line ends in e921-live.lines.json; the laid recordings start at LEAD 0.12 and the clip voices at the shot's head, so no word moves): s03 end 5.75 (a03 ends c5.20; two fingers on the folded paper, still 5.0-6.5), s04 end 5.5 (a04 ends c5.03; her back and Wei still), s05 end 6.083 (clip voice ends c4.80, a closed-mouth smile from c5.0), s07 end 4.5 (a07 ends c3.52), s09 end 5.75 (a09 ends c4.15), s14 end 6.75 (a15 ends c6.09; his eyes flick aside at c6.25-6.7, kept), s14b end 6.25 (a17 ends c5.68, a still face); s28 start 2.875 -> 3.333 (80 frames; the reviews said ~3.083-3.25, but zoomed frames show the mouth still open at raw 3.25 and 3.29, only a smile's parted lips at 3.333 and closed from 3.375) with line_at zq921a30 1.40 -> 0.91 (the shot is line_at + a30 3.97 + TAIL 0.22 long, slowed x1.089 over the 4.667 s left, so 那就 at 1.02 s into the trimmed file stays on his mouth at raw 5.10; the old alignment moved by 0.009 s); sfx and vf times in these shots are untouched (all before the new tails). PITCH: a15 (s14 inner voice, 205 Hz, Xu 92-138) and a09 (s09 inner voice, 174 Hz) re-made from audio/orig/ (a15 copied there first; it had not been touched) with rubberband formant preserved. a15 tried x0.70/0.72/0.75 (and 0.78/0.82/0.85): whisper with no context hears 柳芳/刘放 for 流放 at every shift (the original reads 流放), and with the system line before it as context (冒名入冊，按律流放 -- in the cut a15 follows a14 directly) x0.70 and x0.75 read word for word -> x0.70 (~150 Hz; word times as the original), levelled with volume + alimiter 0.84 and no compressor as before (-17.0 -> -14.6 LUFS); in the cut whisper reads 流放 她一個姑娘家 要流放到哪裡去. a09 x0.78 and x0.80 both word for word with no context -> x0.78 (~134 Hz), lev.py's compressor + volume (-20.3 -> -14.5). s37 clip_af base rubberband 0.68 -> 0.62 (三日後 168 -> ~154 Hz; 0.88 from c1.15 unchanged), whisper as before (三日後 周府來拿茂名飯 許老闆記得開門). VOICE: s37 the last phrase 許老闆，記得開門 +1.5 dB: the same asendcmd gets '3.9 volume volume -0.3dB' (c3.5-4.2 is the take's pause between 冒名犯 and 許老闆) and an alimiter 0.89 at the end of the chain (that phrase alone peaked at -0.7 dBFS): p75 -14.1 -> -13.0. s23 clip_af -1.5 -> -4 dB (稿子 放軟; max -9.5 -> -10.8 M, p75 -14.5, ~1.5-2 dB under the scene, over the bed). s30: a flat -5 dB (the coordinator's number) left 我們是不是在哪見過 at p75 -15.1, too quiet, so -5 dB for 等等, asendcmd -6 dB from c1.3 for 井邊那位姑娘 and -3 dB from c3.4 for the question (both in the take's pauses: 等等 c0.15-0.35, 井邊那位姑娘 c1.40-2.55, the question c3.65-5.45): max -7.4 -> -10.0 M, p75 -12.5 / -13.4 for the two halves (scene -12.4..-13.0). s02 clip_af 0.5 -> 1.7 dB (review 1: its words sat under the scene): 許老闆 half p75 -15.2 -> -14.7, the rest -13.6 -> -13.2 (the final one-pass loudnorm lifts the opening, as e920's s01: only ~0.5 dB shows). SFX: s22 the stick (review 2 medium 1): hit_02 c1.25 -14 -> c0.70 -9 (his knees go) and impactWood_heavy_000 c1.3 -16 -> c1.0 -11 (his back lands), plus swish-9 at c0.55 -12 (tried -18 first: unmeasurable under the bed); 50 ms RMS -15 / -16 dB at 125.75 / 126.05 (was -19 at 132.9, 0.25 s after he landed), clear of s22b's 再 (128.1). s17 impactWood_light_001 c0.6 -> c0.85 (the paper lands at c0.87). s28b the bucket impactWood_medium_001 -20 -> -14 (50 ms RMS -28 -> -22) so Wei's turn to the back door has a cause. VF (vf921r3.py; each tried on the staged clip with vtc.sh, before/after crops): s37 the black block steps on the lantern top (they move with the camera: x 1370-1450 y 265-355 at c0.3, x 1415-1520 y 290-385 at c6.75): a feathered plain box x 1340-1545 y 235-410 (feather 18), gblur 5.5, the whole shot, before the right-edge box (sigma 4 still showed the notch, 7 smeared the lantern and the box edge); the bead strings in the box go soft. s27: the desaturation box x 280-440 -> x 150-440 (y 520-780; at c6.4 the flowers reach x 190 and the old box's feathered edge let red through), and the dark abacus on the counter behind Wei's shoulder (c2.5 x 560-640, c6.5 x 360-600, y 830-960: a row of beads that reads as an abacus, and this episode has none) gets a feathered box x 330-670 y 810-1000, gblur 10, the whole shot. s19 the fan box enable lt(t,2.9) -> lt(t,2.35): at c2.333 a corner of the open fan is still in the box, from c2.375 it is folded and low left, and the shape at the bottom centre from c2.75 is the shut fan's ribs, no painting -- the gold chest embroidery is sharp from c2.375. s28b enable lt(t,1.3) -> lt(t,1.0) (the fan is edge-on from c0.917, a sliver at c1.0). s35 the red paper: the whole-paper key at sigma 12 turned it pale orange; now only the strokes inside it are blurred -- a stroke key R-G>40, R<232, G<100 multiplied by the inside of the red-paper key (R>110, R-G>70, blurred sigma 6, > 120: the paper's own edges and the finger shadows on it drop out), grown 4, blurred sigma 6; the paper stays deep red with sharp edges at c2/c3/c5 and the stroke rows are a faint smudge (the fingertips on the paper soften a little at the edge). s05 the fan (gold leaves in a row like cursive): the s26 fan-paper key, box x 500-1460 y 640-1080 (wider than review 2's: the fan moves from x 640-1360 to 520-1320), sigma 12, the whole shot; the box top at 640 keeps most of the gold shoulders out. s02 the fan (gold bamboo leaves, in frame c0.5-6.5 at x 920-1380 y 560-840): the same key, box x 900-1400 y 540-860, sigma 12; its brightest gold leaves at c6.5 become a gold blur, not strokes; Sun's hand over the fan at c5.0 softens a little at its edge. CHECKED, NOT CHANGED: a16 三千里 -- the file alone reads 三千里，本系統直報率條 and the cut 三千里 本系統直報律條: no change. s24 a26 也想攔 -- no context: 也像來; with the line as the prompt: 也想攔 (攔 3.96-4.18 in the file): not clearly missing -> no re-record (listen). s30 在哪兒見過 -- the take with no prompt has 兒 (5.18-5.34), with the subtitle as the prompt it is gone and 見 runs 5.16-5.46: not a clear 兒 -> the subtitle stays 在哪見過 (listen).\nRESULT (e921cut.sh as written after REVIEW 3, second run; the first had s30 at a flat -5 dB and the swish at -18): 216.46 s (41 shots, 5195 frames; was 223.56); -14.0 LUFS, LRA 6.1, peak -2.7 dBFS; loudnorm2 linear (pre -14.8 LUFS, -3.58 dBTP + 0.8 = -2.78 <= -2.2); cut-qa: fps 24, jitter ok (41 shots steady), motion FAIL 4.8 / static 13 % on the clips (3.7 / 34 % after grade and vignette: a talking episode), held FAIL s37 4.00 s and black FAIL 3.08 s -- the intended end; cut-jumps 0; audio-qa 36 lines 0 problems (gap notes before a24, a31, a32: s21 s22, s28b s29 and s31 have no lines, on purpose). LEVELS (0.4 s momentary p75 per line): -11.7..-13.6 for 35 of 36 (median -12.7); a23 Xiaohe's 哥! -11.7; s23 a25 -14.5 (softened on purpose); floor under -40 M only in 0.1-0.6 s dips at cuts and pauses (as the first cut). Whisper (medium, no prompt, numpy input, one span per process) on the cut: s09 宰相府 原來他所躲的那個人 就是他 (說 -> 所, homophone-ish; the file alone reads 說); s14-s14b 聽(叮) 茂名入冊 暗綠流放 流放？她一個姑娘家 要流放到哪裡去？三千里 本系統直報律條 不報辦法 不用你報辦法 辦法我自己想; s24 一個村姑拿根棍子 也像來宰相府的人; s28 好，那就照你說的，去官府講 (好 at ~160.2, 那就 from ~161.1-161.5 on his mouth); s30 等等 景邊那位姑娘 我們是不是在哪兒見過; s37 三日後 周府來拿茂名飯 許老闆 記得開門.\nBY EAR / EYE (new timeline): 79.87-83.28 s14 a15 x0.70 then 86.73-89.6 s14b a17 (one man?); 47.16-51.2 s09 a09 x0.78; 205.63-212.47 s37 三日後 x0.62 and the louder 許老闆，記得開門 (~209.9), 212.47-216.46 the freeze, fade and gong in the black; 123.04-131.79 s21b-s22b (s22b Qin x1.10), 116.50-120.54 s20 x0.78; 84.04-86.61 a16 三千里; 139.5-140.5 s24 攔; 125.04-127.79 s22 swish 0.55 / hit 0.70 / landing 1.0 against the fall; 131.79-136.04 s23 and 170.29-176.25 s30 (quieter; s30's three levels), 5.29-13.29 s02 (+1.2 dB), 98.04-104.08 s17 the slap at c0.85, 164.29-167.79 s28b the louder bucket; 159.21-164.29 s28 the new head (closed smile) and 好 / 那就 on the mouth; 205.63-216.46 s37 the softened lantern; 152.67-159.21 s27 the flowers and the blurred abacus; 196.83-202.62 s35 the red paper; 24.54-29.88 s05 and 5.29-13.29 s02 the fans; 110.63-116.50 s19 (box off at 112.98); 164.29-165.29 s28b the fan to c1.0; the shorter tails of s03 (13.29), s04 (19.04), s05, s07 (36.50), s09, s14, s14b."

@@ -75,6 +75,10 @@ ffmpeg -v error -y -i $E/cut/e916-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af
 ffmpeg -hide_banner -i $E/cut/e916-live.mp4 -map 0:a -af loudnorm=I=-14:TP=-2.2:LRA=11:print_format=json -f null - 2>&1 | sed -n '/^{/,/^}/p' \
  | python3 -c "import json,sys;j=json.load(sys.stdin);i,tp=float(j['input_i']),float(j['input_tp']);print(f'pre-loudnorm2 {i} LUFS {tp} dBTP: {tp-14-i:+.2f} after the gain ->', 'linear' if tp-14-i<=-2.2 else 'DYNAMIC (lower the limiter or its attack)')"
 bash $Q/loudnorm2.sh $E/cut/e916-live.mp4
+# POLISH+SWAP 2026-11-21: s01's take clips at 0 dBFS on a plosive (c3.05, Xu's voice); with the louder music the first
+# limiter still lets it through and the AAC re-encode lands it at -0.1 dBTP. A second alimiter after loudnorm2 (0.7 = -3.1 dBFS,
+# the e904 way) takes only that peak; the level stays -14.0 LUFS.
+ffmpeg -v error -y -i $E/cut/e916-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af "alimiter=limit=0.7:attack=5:release=50:level=false,aresample=48000" $E/cut/e916-live.lim2.mp4 && mv $E/cut/e916-live.lim2.mp4 $E/cut/e916-live.mp4
 # the delivery wants the true peak at or under -1 dBTP: print it (ebur128 true peak on the final file)
 ffmpeg -hide_banner -nostats -i $E/cut/e916-live.mp4 -map 0:a -af ebur128=peak=true -f null - 2>&1 | grep -E '^\s+(I|LRA|Peak):' | tail -3 \
  | awk '{print} /Peak:/{print ($2<=-1.0)?"true peak ok (<= -1 dBTP)":"TRUE PEAK OVER -1 dBTP"}'
