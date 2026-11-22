@@ -14,6 +14,13 @@ AF="aresample=48000,aformat=channel_layouts=stereo"
 [ -f $S/abacus909l.wav ] || ffmpeg -v error -y -ss 0.15 -t 1.9 -i $X/zhongtian-sfx-abacus-drop-01.wav -af "afade=t=in:d=0.02,afade=t=out:st=1.5:d=0.4,$AF" $S/abacus909l.wav
 [ -f $S/whetstone909.wav ] || ffmpeg -v error -y -t 2.45 -i $X/zhongtian-sfx-whetstone-02.wav -af "afade=t=out:st=2.15:d=0.3,$AF" $S/whetstone909.wav
 [ -f $S/whetstone909s23.wav ] || ffmpeg -v error -y -t 4.9 -i $X/zhongtian-sfx-whetstone-09.wav -af "afade=t=in:d=0.05,afade=t=out:st=4.4:d=0.5,$AF" $S/whetstone909s23.wav
+# GAP SFX 2026-11-22 (review-zt/GAP-BRIEF.md, gap-20261122 rows e009 s19-s23 old-door, s01 horse-snort; edit _note GAP SFX):
+# horse909 = horse-snort-01 0-0.62 s (one snort, onset 0.04, body to 0.55) for s01; door909a = old-door-01 0-1.0 s (latch
+# clack 0.04, second clack 0.36, wood tick 0.74) for s20's door opening; door909b = old-door-03 0.24-0.42 s (the single latch
+# clack at 0.28 of the file, 0.04 into the cut) for s23, sized to fit the gap between his words.
+[ -f $S/horse909.wav ] || ffmpeg -v error -y -t 0.62 -i $X/zhongtian-sfx-horse-snort-01.wav -af "afade=t=out:st=0.45:d=0.17,$AF" $S/horse909.wav
+[ -f $S/door909a.wav ] || ffmpeg -v error -y -t 1.0 -i $X/zhongtian-sfx-old-door-01.wav -af "afade=t=out:st=0.8:d=0.2,$AF" $S/door909a.wav
+[ -f $S/door909b.wav ] || ffmpeg -v error -y -ss 0.24 -t 0.18 -i $X/zhongtian-sfx-old-door-03.wav -af "afade=t=in:d=0.01,afade=t=out:st=0.1:d=0.08,$AF" $S/door909b.wav
 # the refined shots must be staged first (live-action/stage.py 9: refined picture + draft voice + trim/crop -> clips/sNN-t1.mp4)
 miss=$(python3 -c "import json,os;p=json.load(open('$E/picks.json'));print(' '.join(s for s in p if not os.path.exists('$E/clips/'+s+'-t1.mp4')))")
 [ -z "$miss" ] || { echo "not staged: $miss -- run: python3 $P/live-action/stage.py 9"; exit 1; }

@@ -23,6 +23,11 @@ AF="aresample=48000,aformat=channel_layouts=stereo"
 [ -f $S/murmur08.wav ] || python3 -I $Q/crowd-murmur.py 8 8
 [ -f $S/drum908.wav ] || ffmpeg -v error -y -ss 0.015 -t 0.45 -i $X/zhongtian-sfx-war-drum-01.wav -ss 0.015 -t 0.45 -i $X/zhongtian-sfx-war-drum-01.wav -filter_complex "[0]$AF,apad=whole_dur=0.45,afade=t=out:st=0.3:d=0.15[a];[1]$AF,apad=whole_dur=0.45,afade=t=out:st=0.3:d=0.15,volume=-6dB[b];[a][b]concat=n=2:v=0:a=1" $S/drum908.wav
 [ -f $S/horse908.wav ] || ffmpeg -v error -y -t 1.6 -i /root/mokaair-work/videos/_series/zhong-tian-qu-qi/sfx/hooves_trot.wav -af "afade=t=out:st=1.0:d=0.6,$AF" $S/horse908.wav
+# GAP SFX 2026-11-22 (review-zt/GAP-BRIEF.md, gap-20261122/README.md row e008 s25): machete908.wav = zhongtian-sfx-machete-
+# unsheath-01 0.06-0.40 s (the one muffled scrape, 0.02-0.20 s into the cut), highpass 60 (the file carries -34 dBFS of
+# sub-40 Hz rumble), fades 0.005/0.12; replaces drawKnife1 (a pure 2.5 kHz ring) on the s25 draw. The s17/s18 horse snorts
+# are zhongtian-sfx-horse-snort-01/02 straight from the set (no cut needed).
+[ -f $S/machete908.wav ] || ffmpeg -v error -y -ss 0.06 -t 0.34 -i $X/zhongtian-sfx-machete-unsheath-01.wav -af "highpass=f=60,afade=t=in:d=0.005,afade=t=out:st=0.22:d=0.12,$AF" $S/machete908.wav
 # $VL = video.json with the CC of zq908a32 (s29, CC 30, 23 characters on one line) broken at its full stop
 VL=$E/video-live.json
 python3 -c "import json;v=json.load(open('$VJ'))

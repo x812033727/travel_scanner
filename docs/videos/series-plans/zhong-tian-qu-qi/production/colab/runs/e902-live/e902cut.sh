@@ -24,6 +24,13 @@ S=/root/mokaair-work/videos/zhong-tian-qu-qi-e902-dh/sfx; X=/root/mokaair-work/v
 # SWAP 2026-11-21: chain902.wav = the first rattle peak of zhongtian-sfx-iron-chain-01 (0.32-0.82 s, peak 0.08 s in, fade out
 # 0.3/0.2) for the rings landing in the dirt in the new s01 (c2.08)
 [ -f $S/chain902.wav ] || ffmpeg -v error -y -ss 0.32 -t 0.5 -i $X/zhongtian-sfx-iron-chain-01.wav -af "afade=t=in:d=0.005,afade=t=out:st=0.3:d=0.2,aresample=48000,aformat=channel_layouts=stereo" $S/chain902.wav
+# GAP SFX 2026-11-22 (gap-20261122 README, abacus-click-01: the set's made abacus, single rosary-bead knocks re-timed into
+# flicks): abacus902a = 0.00-3.45 s (12 clicks 0.05-3.23, fade out 3.05/0.4) under s08's flicking (replaces handleCoins);
+# abacus902b = one click (1.95-2.11 s, click 0.026 in) and abacus902c = two clicks (2.69-2.99 s, clicks 0.022/0.152 in)
+# on s10's two finger touches (replace handleCoins2)
+[ -f $S/abacus902a.wav ] || ffmpeg -v error -y -ss 0.0  -t 3.45 -i $X/zhongtian-sfx-abacus-click-01.wav -af "afade=t=in:d=0.003,afade=t=out:st=3.05:d=0.4,aresample=48000,aformat=channel_layouts=stereo" $S/abacus902a.wav
+[ -f $S/abacus902b.wav ] || ffmpeg -v error -y -ss 1.95 -t 0.16 -i $X/zhongtian-sfx-abacus-click-01.wav -af "afade=t=in:d=0.003,afade=t=out:st=0.08:d=0.08,aresample=48000,aformat=channel_layouts=stereo" $S/abacus902b.wav
+[ -f $S/abacus902c.wav ] || ffmpeg -v error -y -ss 2.69 -t 0.30 -i $X/zhongtian-sfx-abacus-click-01.wav -af "afade=t=in:d=0.003,afade=t=out:st=0.22:d=0.08,aresample=48000,aformat=channel_layouts=stereo" $S/abacus902c.wav
 # $VL = video.json (left as it is) plus s01i after s01 (SWAP 2026-11-21, fix-polish/round3): the insert of A-ling's right wrist,
 # the red band and the pale old scar (the answer to episode 1's hook), her left hand pulling the sleeve over them; no line, so
 # assemble-v4 cuts it at its clip's length (clips/s01i-t5.mp4, 4.458 s) and mutes the clip's own sound; music and effects

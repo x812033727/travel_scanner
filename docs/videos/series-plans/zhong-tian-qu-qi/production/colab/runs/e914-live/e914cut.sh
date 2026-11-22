@@ -12,6 +12,9 @@ mkdir -p $E/cut
 # SWAP wave 3 2026-11-22 (round7: s12 = 9149702 t5, made 09:23): the wave-2 cut (223.63 s, delivered) goes to cut/old-w3 once
 # and carries a .keep (never removed). s12 has no t6 (this script never trimmed one for it), so the new t5 is taken as it is.
 [ -d $E/cut/old-w3 ] || { mkdir -p $E/cut/old-w3; mv $E/cut/e914-live.* $E/cut/final.log $E/cut/old-w3/ 2>/dev/null; touch $E/cut/old-w3/.keep; }
+# GAP SFX 2026-11-22 (review-zt/GAP-BRIEF.md): the delivered wave-3 cut (223.13 s, review 45dc2535) goes to cut/old-gap once
+# and carries a .keep (never removed)
+[ -d $E/cut/old-gap ] || { mkdir -p $E/cut/old-gap; mv $E/cut/e914-live.* $E/cut/final.log $E/cut/old-gap/ 2>/dev/null; touch $E/cut/old-gap/.keep; }
 rm -f $E/cut/e914-live.* $E/cut/final.log; rm -rf $E/cut/pre
 rm -rf $E/segments-v4
 # the refined shots must be staged first (live-action/stage.py 14: refined picture + draft voice + trim/crop -> clips/sNN-t1.mp4)
@@ -60,6 +63,10 @@ AF="aresample=48000,aformat=channel_layouts=stereo"
 [ -f $S/bead914.wav ] || ffmpeg -v error -y -ss 0.245 -t 0.08 -i $X/zhongtian-sfx-abacus-drop-01.wav -af "afade=t=in:d=0.003,afade=t=out:st=0.04:d=0.04,volume=14dB,$AF" $S/bead914.wav
 [ -f $S/thud914.wav ] || ffmpeg -v error -y -ss 1.03 -t 0.4 -i $X/zhongtian-sfx-staff-thud-01.wav -af "afade=t=out:st=0.25:d=0.15,$AF" $S/thud914.wav
 [ -f $S/drum914.wav ] || ffmpeg -v error -y -t 0.6 -i $X/zhongtian-sfx-war-drum-01.wav -af "lowpass=f=500,afade=t=out:st=0.3:d=0.3,$AF" $S/drum914.wav
+# GAP SFX 2026-11-22 (gap-20261122, the owner's Pixabay additions to the set): bamboo914 = bamboo-leaves-loop (30.12 s) 0-29 s
+# then 10-29.6 s through a 2 s equal-power crossfade (46.6 s, no hard loop seam over s01-s09's 45.17 s), highpass 250 Hz twice
+# (the 20-55 Hz rumble read as 'Vehicle'), a slow 3:1 compressor for the 6-9 s gust (-26.7 LUFS, LRA 3.0), 0.5 s fade-in
+[ -f $S/bamboo914.wav ] || ffmpeg -v error -y -i $X/zhongtian-sfx-bamboo-leaves-loop.wav -i $X/zhongtian-sfx-bamboo-leaves-loop.wav -filter_complex "[0:a]atrim=0:29,asetpts=PTS-STARTPTS[a];[1:a]atrim=10:29.6,asetpts=PTS-STARTPTS[b];[a][b]acrossfade=d=2:c1=qsin:c2=qsin,highpass=f=250:poles=2,highpass=f=250:poles=2,acompressor=threshold=0.03:ratio=3:attack=200:release=1500:makeup=1,afade=t=in:d=0.5,$AF" $S/bamboo914.wav
 # no vidstab this time: cut-qa's jitter() on every staged clip reads 0.00-0.04 (s22 0.04), nothing hops frame to frame
 cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VJ $R/docs/videos/zhong-tian-qu-qi-e014-r2/overlays.json $P/hailuo/edit-dh-e914-live.json $E $E/cut/e914-live.mp4 > $E/cut/final.log 2>&1; tail -3 $E/cut/final.log
 [ -f $E/cut/e914-live.mp4 ] || exit 1
@@ -69,8 +76,10 @@ cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VJ
 # END (REVIEW 3): s42 is a recorded-line shot (a41 at 1.05x laid at c0.05, Tang's back, last word ends c4.81); the picture fades
 # over c4.84-5.44 (vf fade=t=out:st=4.840:d=0.6) and min 6.667 holds about 1.2 s of black after it, so the low accent laid at
 # c4.85 (gong_02 + impactSoft_heavy_000) rings out (cut-review 2 medium 7: it had 0.58 s). The sound fades over the last 1.0 s.
+# GAP SFX 2026-11-22: limit 0.6 -> 0.55 (-5.2 dBFS, e901-e906's value): with the bamboo bed the AAC overshot to -3.13 dBTP,
+# loudnorm2 needed -2.05 > -2.2 and went dynamic (gain 0.5-6.8 dB per second on that run, kept in cut/old-gap1)
 D=$(ffprobe -v error -show_entries format=duration -of csv=p=0 $E/cut/e914-live.mp4); FS=$(python3 -c "print(f'{$D-1.0:.3f}')")
-ffmpeg -v error -y -i $E/cut/e914-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af "alimiter=limit=0.6:attack=8:release=60:level=false,aresample=48000,afade=t=out:st=$FS:d=1.0" $E/cut/e914-live.lim.mp4 && mv $E/cut/e914-live.lim.mp4 $E/cut/e914-live.mp4
+ffmpeg -v error -y -i $E/cut/e914-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af "alimiter=limit=0.55:attack=8:release=60:level=false,aresample=48000,afade=t=out:st=$FS:d=1.0" $E/cut/e914-live.lim.mp4 && mv $E/cut/e914-live.lim.mp4 $E/cut/e914-live.mp4
 # loudnorm2 is linear only when the measured true peak plus the gain to -14 LUFS stays at or under -2.2 dBTP: print it
 ffmpeg -hide_banner -i $E/cut/e914-live.mp4 -map 0:a -af loudnorm=I=-14:TP=-2.2:LRA=11:print_format=json -f null - 2>&1 | sed -n '/^{/,/^}/p' \
  | python3 -c "import json,sys;j=json.load(sys.stdin);i,tp=float(j['input_i']),float(j['input_tp']);print(f'pre-loudnorm2 {i} LUFS {tp} dBTP: {tp-14-i:+.2f} after the gain ->', 'linear' if tp-14-i<=-2.2 else 'DYNAMIC (lower the limiter or its attack)')"

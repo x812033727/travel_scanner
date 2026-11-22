@@ -22,6 +22,9 @@ S=/root/mokaair-work/videos/zhong-tian-qu-qi-e901-dh/sfx; X=/root/mokaair-work/v
 # eye snap at c0.83, under the synth underwater bed
 [ -f $S/bubble901.wav ] || ffmpeg -v error -y -i /root/mokaair-work/videos/_series/zhong-tian-qu-qi/sfx/splash_02.wav -af "lowpass=f=650,lowpass=f=650,afade=t=out:st=0.45:d=0.25,aresample=48000,aformat=channel_layouts=stereo" $S/bubble901.wav
 [ -f $S/chain901.wav ] || ffmpeg -v error -y -ss 0.1 -t 1.0 -i $X/zhongtian-sfx-iron-chain-01.wav -af "afade=t=in:d=0.02,afade=t=out:st=0.7:d=0.3,aresample=48000,aformat=channel_layouts=stereo" $S/chain901.wav
+# GAP SFX 2026-11-22 (gap-20261122, the owner's Pixabay additions to the set): cough901.wav = zhongtian-sfx-cough-01 0.0-0.56 s
+# (one short cough, its two pulses at +0.2-0.3 and +0.45 s) for s06 c0.85; the s11 drips use the set's water-drip-04/-03 as they are
+[ -f $S/cough901.wav ] || ffmpeg -v error -y -t 0.56 -i $X/zhongtian-sfx-cough-01.wav -af "afade=t=in:d=0.01,afade=t=out:st=0.48:d=0.08,aresample=48000,aformat=channel_layouts=stereo" $S/cough901.wav
 VL=$E/video-live.json; DROP=""
 python3 -c "import json,sys;v=json.load(open('$VJ'));d='$DROP'.split();v['scenes']=[s for s in v['scenes'] if s.get('id') not in d];json.dump(v,open('$VL','w'),ensure_ascii=False,indent=1)"
 cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VL $R/docs/videos/zhong-tian-qu-qi-e001-r2/overlays.json $P/hailuo/edit-dh-e901-live.json $E $E/cut/e901-live.mp4 > $E/cut/final.log 2>&1; tail -3 $E/cut/final.log

@@ -49,6 +49,10 @@ AF="aresample=48000,aformat=channel_layouts=stereo"
 [ -f $S/flog919.wav ] || ffmpeg -v error -y -i $X/zhongtian-sfx-flogging-far-01.wav -i $X/zhongtian-sfx-flogging-far-02.wav -i $X/zhongtian-sfx-flogging-far-03.wav -i $X/zhongtian-sfx-flogging-far-04.wav -i $X/zhongtian-sfx-flogging-far-05.wav \
   -filter_complex "[0]adelay=0|0[a];[1]adelay=1050|1050[b];[2]adelay=2100|2100[c];[3]adelay=3150|3150[d];[4]adelay=4200|4200[e];[a][b][c][d][e]amix=inputs=5:normalize=0,lowpass=f=2500,aecho=0.8:0.5:60|140:0.3|0.2,$AF" $S/flog919.wav
 [ -f $S/murmur19.wav ] || python3 -I $P/colab/runs/_scripts/crowd-murmur.py 19 5
+# GAP SFX 2026-11-22 (review-zt/GAP-BRIEF.md, gap-20261122/README.md; set manifest 2740ddbb...): ladder919.wav =
+# zhongtian-sfx-ladder-creak-01 0.30-1.45 s (two creaks of the old wooden stair, at file 0.4-0.6 and 0.9-1.25; fades
+# 0.05/0.2) for s38: Xu stands at the bamboo ladder's head between its rails and steps off onto the tiles at c1.3-1.5.
+[ -f $S/ladder919.wav ] || ffmpeg -v error -y -ss 0.30 -t 1.15 -i $X/zhongtian-sfx-ladder-creak-01.wav -af "afade=t=in:d=0.05,afade=t=out:st=0.95:d=0.2,$AF" $S/ladder919.wav
 # no shot is deleted: the cut, audio-qa and the sheets read video.json itself
 # jitter: cut-qa's jitter() on the staged clips is in the edit table's _note (no deshake unless a clip reads over the bar)
 cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VJ $R/docs/videos/zhong-tian-qu-qi-e019-r2/overlays.json $P/hailuo/edit-dh-e919-live.json $E $E/cut/e919-live.mp4 > $E/cut/final.log 2>&1; tail -3 $E/cut/final.log

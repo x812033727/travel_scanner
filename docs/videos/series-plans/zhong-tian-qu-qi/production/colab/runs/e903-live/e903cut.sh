@@ -30,6 +30,12 @@ C=$E/clips
 S=/root/mokaair-work/videos/zhong-tian-qu-qi-e903-dh/sfx; X=/root/mokaair-work/videos/_sfx/zhongtian-real-20261121; mkdir -p $S
 [ -f $S/abacus903.wav ] || ffmpeg -v error -y -ss 0.15 -t 1.2 -i $X/zhongtian-sfx-abacus-drop-01.wav -af "afade=t=in:d=0.02,afade=t=out:st=0.9:d=0.3,aresample=48000,aformat=channel_layouts=stereo" $S/abacus903.wav
 [ -f $S/murmur03.wav ] || python3 -I $Q/crowd-murmur.py 3 3.2
+# GAP SFX 2026-11-22 (review-zt/GAP-BRIEF.md, gap-20261122/README.md; set manifest 2740ddbb...): brush903.wav =
+# zhongtian-sfx-brush-writing-03 0-2.05 s (the bristle strokes before the loud tap at 2.1, fades 0.05/0.3) for s13's brush
+# on the paper c0.8-2.9 in place of paper_03; bucket903.wav = zhongtian-sfx-water-bucket-loop 0.78-1.28 s (one slosh and its
+# decay, fades 0.02/0.15) for s26 in place of splash_02. s31's door is zhongtian-sfx-old-door-03 straight from the set.
+[ -f $S/brush903.wav ] || ffmpeg -v error -y -t 2.05 -i $X/zhongtian-sfx-brush-writing-03.wav -af "afade=t=in:d=0.05,afade=t=out:st=1.75:d=0.3,aresample=48000,aformat=channel_layouts=stereo" $S/brush903.wav
+[ -f $S/bucket903.wav ] || ffmpeg -v error -y -ss 0.78 -t 0.5 -i $X/zhongtian-sfx-water-bucket-loop.wav -af "afade=t=in:d=0.02,afade=t=out:st=0.35:d=0.15,aresample=48000,aformat=channel_layouts=stereo" $S/bucket903.wav
 # s31's laid line zq903a28 (Xu Yan from behind, -21 dB in the cut against A-Ling's -13 after it) is 3 LU louder:
 # audio/zq903a28.wav is rewritten from audio/orig/zq903a28.wav with a compressor's makeup and a limiter (the e910 way: a
 # plain volume would clip, the recording peaks at 0 dBFS, and the final limiter would eat it); -17.8 -> -14.6 LUFS, peak -1.0.

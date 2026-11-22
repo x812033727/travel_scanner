@@ -21,6 +21,12 @@ S=/root/mokaair-work/videos/zhong-tian-qu-qi-e905-dh/sfx; mkdir -p $S
 # rattle for the s39 abacus landing on the board, fades 0.01/0.25).
 [ -f $C/s38-t6.mp4 ] || ffmpeg -v error -y -i $C/s38-t5.mp4 -t 4.5 -c:v libx264 -preset slow -crf 12 -pix_fmt yuv420p -r 24 -c:a aac -b:a 192k -ar 32000 $C/s38-t6.mp4
 [ -f $S/abacus905.wav ] || ffmpeg -v error -y -ss 0.2 -t 0.6 -i /root/mokaair-work/videos/_sfx/zhongtian-real-20261121/zhongtian-sfx-abacus-drop-01.wav -af "afade=t=in:d=0.01,afade=t=out:st=0.35:d=0.25,aresample=48000,aformat=channel_layouts=stereo" $S/abacus905.wav
+# GAP SFX 2026-11-22 (review-zt/GAP-BRIEF.md): cork905.wav = zhongtian-sfx-cork-pop-01 0-0.45 s (the first pop, onset 0.045,
+# fades 0.005/0.2) for s24; stir905a/b.wav = zhongtian-sfx-pot-stir-loop 30.5 / 35.5 s, 6.6 s each, highpass 120, lowpass
+# 4500 and a 4:1 compressor at -32 dB so the loop's spoon clanks do not stick out, fades 0.4/0.6 (s15 and s22).
+SR=/root/mokaair-work/videos/_sfx/zhongtian-real-20261121
+[ -f $S/cork905.wav ] || ffmpeg -v error -y -t 0.45 -i $SR/zhongtian-sfx-cork-pop-01.wav -af "afade=t=in:d=0.005,afade=t=out:st=0.25:d=0.2,aresample=48000,aformat=channel_layouts=stereo" $S/cork905.wav
+for st in a:30.5 b:35.5; do [ -f $S/stir905${st%%:*}.wav ] || ffmpeg -v error -y -ss ${st#*:} -t 6.6 -i $SR/zhongtian-sfx-pot-stir-loop.wav -af "highpass=f=120,lowpass=f=4500,acompressor=threshold=-32dB:ratio=4:attack=2:release=80,afade=t=in:d=0.4,afade=t=out:st=6.0:d=0.6,aresample=48000,aformat=channel_layouts=stereo" $S/stir905${st%%:*}.wav; done
 # $VL = video.json with the CC text of zq905a31 (s32) cut to what the take says: whisper and the review hear
 # 三錢？一斗米才幾十文，妳這價…… and nothing of 會不會太高 (the recording is not laid; the take's own voice plays)
 VL=$E/video-live.json
