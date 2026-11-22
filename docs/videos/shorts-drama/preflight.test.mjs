@@ -26,7 +26,7 @@ function makeValidSpec(overrides = {}) {
         id: 's01-hook',
         camera: 'Medium shot, locked',
         chars: ['afu'],
-        dur: 1.2,
+        dur: 1.8,
         in: 0.2,
         ff: 'Medium shot of a cozy kitchen with a solid plain cream wall behind: A-Fu the corgi lies lazily on the sofa while a pile of unbranded ceramic plates sits on the counter.',
         clip: 'The corgi shown in <Picture 1> casually waves one furry paw without looking up. His lips remain closed. The camera holds a static shot.',
@@ -89,12 +89,12 @@ test('compliant zero-dialogue spec passes with zero errors and zero warnings', (
   assert.equal(report.series, 'wangjia-couple');
   assert.equal(report.summary.errors, 0);
   assert.equal(report.summary.warnings, 0);
-  assert.equal(report.summary.totalDuration, 11.4);
+  assert.equal(report.summary.totalDuration, 12);
 });
 
 test('catches SFX placed at or after shot duration and tight tail SFX', () => {
   const spec = makeValidSpec();
-  spec.shots[0].sfx = [['tap', 1.2]]; // equal to dur -> error
+  spec.shots[0].sfx = [['tap', 1.8]]; // equal to dur -> error
   spec.shots[4].sfx = [['dun', 2.8]]; // 0.2s from end -> warn
   const report = preflightShort(spec);
   assert.equal(report.ok, false);
@@ -150,7 +150,7 @@ test('enforces series-specific rules for influencer-piglet and raccoon-mischief'
     slug: 'influencer-piglet-e06',
     intros: { fenfen: 'pink piglet', bf: 'capybara boyfriend' },
   });
-  piglet.shots[0].dur = 2.4; // > 1.5s hook error
+  piglet.shots[0].dur = 2.8; // > 2.5s hook error
   piglet.shots[0].chars = ['fenfen'];
   piglet.shots[1].chars = ['fenfen', 'bf']; // forbidden two-shot
   piglet.shots[2].chars = ['fenfen'];
@@ -170,8 +170,18 @@ test('enforces series-specific rules for influencer-piglet and raccoon-mischief'
   raccoon.shots[1].id = 's02-key';
   raccoon.shots[1].dur = 2.0;
   raccoon.shots[1].sfx = [['keys', 0.2]];
+  raccoon.shots[1].dur = 2.4; // > 2.2s: the dumbstruck face drags
   const racReport = preflightShort(raccoon);
   assert.ok(racReport.issues.some((i) => i.code === 'raccoon_key_reaction_slow' && i.severity === 'warn'));
+
+  // 2026-11-22: signals and hooks too short to read are flagged, 1.5–2.2 s is accepted.
+  for (const [dur, code] of [[0.7, 'raccoon_signal_too_short'], [1.6, null]]) {
+    raccoon.shots[1].dur = dur;
+    const codes = preflightShort(raccoon).issues.map((i) => i.code).filter((c) => c.startsWith('raccoon_'));
+    assert.deepEqual(codes, code ? [code] : []);
+  }
+  raccoon.shots[0].dur = 1.0;
+  assert.ok(preflightShort(raccoon).issues.some((i) => i.code === 'hook_too_short'));
 });
 
 test('detects 9:16 Safe-Zone anchor violations and cut-plan (edit/plan.json) mode', () => {
