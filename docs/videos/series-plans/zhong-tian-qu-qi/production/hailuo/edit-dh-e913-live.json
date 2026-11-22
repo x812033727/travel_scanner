@@ -476,7 +476,7 @@
    "file": "zhongtian-sfx-thumbprint-01",
    "at": "s30",
    "off": 1.03,
-   "gain": 0
+   "gain": 8
   },
   {
    "file": "paper_02",
@@ -655,7 +655,7 @@
   },
   "s20": {
    "from": 0,
-   "af": "asendcmd=c='1.5 rubberband pitch 0.7',rubberband=pitch=0.75:formant=preserved"
+   "af": "asendcmd=c='1.5 rubberband pitch 0.7',rubberband=pitch=0.75:formant=preserved,volume=3dB,alimiter=limit=0.89:attack=1:release=50:level=false"
   },
   "s22": {
    "from": 0,
@@ -701,7 +701,10 @@
   "zq913a27": 0.4,
   "zq913a32": 0.3,
   "zq913a33": 1.0,
-  "zq913a34": 2.0
+  "zq913a34": 2.0,
+  "zq913a09": 0.24,
+  "zq913a21": 0.2,
+  "zq913a29": 0.22
  },
  "panel_y": {
   "s18": 870

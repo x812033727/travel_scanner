@@ -2,7 +2,13 @@
 set -u
 R=/home/user/zt-work; P=$R/docs/videos/series-plans/zhong-tian-qu-qi/production; Q=$P/colab/runs/_scripts
 E=/root/mokaair-work/videos/_live-e916/zhong-tian-qu-qi-e916-dh; VJ=$R/docs/videos/zhong-tian-qu-qi-e016-r2/video.json
-mkdir -p $E/cut; [ -f $E/cut/e916-live.mp4 ] && { mkdir -p $E/cut/old-$(date +%H%M); mv $E/cut/e916-live.* $E/cut/final.log $E/cut/old-$(date +%H%M)/ 2>/dev/null; }
+# POLISH+SWAP 2026-11-21: the 2026-11-16 cut files (lines.json, srt, final.log; the mp4 is review-zt/ep/e016/final.mp4) go to
+# cut/old-1116 once, with a .keep (kept for the backup); an old-* holding a .keep is never removed. A later run moves its own
+# previous cut to old-HHMM after removing the non-kept old-* (at most one old cut besides the kept one: the disk is short).
+mkdir -p $E/cut
+[ -d $E/cut/old-1116 ] || { mkdir -p $E/cut/old-1116; mv $E/cut/e916-live.* $E/cut/final.log $E/cut/old-1116/ 2>/dev/null; touch $E/cut/old-1116/.keep; }
+[ -f $E/cut/e916-live.mp4 ] && { for d in $E/cut/old-*; do [ -f $d/.keep ] || rm -rf $d; done; mkdir -p $E/cut/old-$(date +%H%M); mv $E/cut/e916-live.* $E/cut/final.log $E/cut/old-$(date +%H%M)/ 2>/dev/null; }
+rm -rf $E/cut/pre
 rm -rf $E/segments-v4
 # the refined shots are staged by live-action/stage.py 16 (refined picture + draft voice + trim -> clips/sNN-t1.mp4); run it
 # when a clip is missing or picks.json is newer than any clip (a re-run of refine-prep.py 16 rewrites picks.json)
@@ -31,6 +37,23 @@ bad=[f'{s} start {p[s][\"trim\"].get(\"start\",0)} end-before {p[s][\"trim\"].ge
 bad+=[f'{s} seed {p[s][\"seed\"]} (want {v})' for s,v in seed.items() if p[s]['seed']!=v]
 bad+=[f'{s} seed {p[s][\"seed\"]} (want 9161101)' for s in p if s not in seed and p[s]['seed']!=9161101]
 print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
+# POLISH+SWAP 2026-11-21 (edit table _note). SWAP: s29 and s40 are the fixp retakes clips/sNN-t5.mp4 (runpod/polish/picks.json,
+# already trimmed: s29 9169101 0.583-5.459, s40 9169102 1.333-6.25; the assembler takes the highest take number); picks.json and
+# the want table above still describe the t1 staging, which stays on disk. POLISH (free fix 3): s26 ends 0.583 s earlier
+# (clips/s26-t2.mp4 = s26-t1 0-5.417, before Xu's smile; a25 needs 5.655 s, so the shot is slowed 1.044x, a recorded line)
+# and s27 0.5 s earlier (clips/s27-t2.mp4 = s27-t1 0-5.25: a26 ends c4.89 + the 0.34 s tail): made if missing, t1 kept.
+C=$E/clips; ENC="-c:v libx264 -preset slow -crf 12 -pix_fmt yuv420p -r 24 -c:a aac -b:a 192k -ar 32000"
+[ -f $C/s26-t2.mp4 ] || ffmpeg -v error -threads 2 -y -i $C/s26-t1.mp4 -t 5.417 $ENC $C/s26-t2.mp4
+[ -f $C/s27-t2.mp4 ] || ffmpeg -v error -threads 2 -y -i $C/s27-t1.mp4 -t 5.25 $ENC $C/s27-t2.mp4
+# the episode sfx dir (second sfx_dirs entry), made if missing: murmur16 = crowd-murmur.py 16 30 (this episode's recordings
+# reversed, -19 LUFS) under the school gate s29-s34; rooster916 = rooster-village-loop's first crow (2.1-4.2 s, e928's recipe)
+# for s39 -> s40 (dawn); cart916 = ox-cart-01 2.4-5.4 s low-passed at 2.4 kHz and faded out from 0.5 s, the barrow rolling away
+# at the start of s08.
+X=/root/mokaair-work/videos/_sfx/zhongtian-real-20261121; S=/root/mokaair-work/videos/zhong-tian-qu-qi-e916-dh/sfx; mkdir -p $S
+AF="aresample=48000,aformat=channel_layouts=stereo"
+[ -f $S/murmur16.wav ] || python3 -I $Q/crowd-murmur.py 16 30
+[ -f $S/rooster916.wav ] || ffmpeg -v error -y -ss 2.1 -t 2.1 -i $X/zhongtian-sfx-rooster-village-loop.wav -af "afade=t=in:d=0.05,afade=t=out:st=1.7:d=0.4,$AF" $S/rooster916.wav
+[ -f $S/cart916.wav ] || ffmpeg -v error -y -ss 2.4 -t 3.0 -i $X/zhongtian-sfx-ox-cart-01.wav -af "lowpass=f=2400,afade=t=in:d=0.05,afade=t=out:st=0.5:d=2.5,$AF" $S/cart916.wav
 # REVIEW 3: s12 (the insert whose set reads as an outdoor deck) is deleted -- the assembler cuts every scene video.json lists,
 # so the cut, audio-qa and the sheets read $VL, video.json without the scenes in DROP (s12 has no lines)
 VL=$E/video-live.json; DROP="s12"
@@ -50,9 +73,14 @@ ffmpeg -v error -y -i $E/cut/e916-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af
 ffmpeg -hide_banner -i $E/cut/e916-live.mp4 -map 0:a -af loudnorm=I=-14:TP=-2.2:LRA=11:print_format=json -f null - 2>&1 | sed -n '/^{/,/^}/p' \
  | python3 -c "import json,sys;j=json.load(sys.stdin);i,tp=float(j['input_i']),float(j['input_tp']);print(f'pre-loudnorm2 {i} LUFS {tp} dBTP: {tp-14-i:+.2f} after the gain ->', 'linear' if tp-14-i<=-2.2 else 'DYNAMIC (lower the limiter or its attack)')"
 bash $Q/loudnorm2.sh $E/cut/e916-live.mp4
+# the delivery wants the true peak at or under -1 dBTP: print it (ebur128 true peak on the final file)
+ffmpeg -hide_banner -nostats -i $E/cut/e916-live.mp4 -map 0:a -af ebur128=peak=true -f null - 2>&1 | grep -E '^\s+(I|LRA|Peak):' | tail -3 \
+ | awk '{print} /Peak:/{print ($2<=-1.0)?"true peak ok (<= -1 dBTP)":"TRUE PEAK OVER -1 dBTP"}'
 echo "== cut-qa";   python3 $Q/cut-qa.py $E/cut --stem e916-live 2>&1 | tail -20
 echo "== cut-jumps"; python3 $Q/cut-jumps.py $E/cut 2>&1 | tail -12
 echo "== audio-qa"; python3 $Q/audio-qa.py $E/cut $VL 2>&1 | tail -15
 echo "== sheets";   python3 $Q/continuity-sheets.py $E/cut $VL $E/review/continuity-v1 2>&1 | tail -4
 # the segments are 1-2 GB and only the assembler reads them: gone after the checks (KEEP_SEG=1 keeps them for a look)
 [ "${KEEP_SEG:-0}" = 1 ] || rm -rf $E/segments-v4
+# loudnorm2.sh keeps the pre-loudnorm cut in cut/pre (the disk is short): gone too (KEEP_PRE=1 keeps it)
+[ "${KEEP_PRE:-0}" = 1 ] || rm -rf $E/cut/pre
