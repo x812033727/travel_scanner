@@ -6,6 +6,9 @@ E=/root/mokaair-work/videos/_live-e928/zhong-tian-qu-qi-e928-dh; VJ=$R/docs/vide
 # cut/old-1117 once and are kept for the backup; a later run of this script replaces its own previous cut (no old-HHMM).
 mkdir -p $E/cut
 [ -d $E/cut/old-1117 ] || { mkdir -p $E/cut/old-1117; mv $E/cut/e928-live.* $E/cut/final.log $E/cut/old-1117/ 2>/dev/null; }
+# WAVE2 2026-11-22: the delivered first-wave cut (2026-11-22 00:49, 189.71 s) goes to cut/old-w1 once and is kept (.keep).
+[ -d $E/cut/old-w1 ] || { mkdir -p $E/cut/old-w1; mv $E/cut/e928-live.* $E/cut/final.log $E/cut/old-w1/ 2>/dev/null; touch $E/cut/old-w1/.keep; }
+touch $E/cut/old-1117/.keep
 rm -f $E/cut/e928-live.* $E/cut/final.log; rm -rf $E/cut/pre
 rm -rf $E/segments-v4
 # the refined shots are staged by live-action/stage.py 28 (refined picture + draft voice + trim -> clips/sNN-t1.mp4); run it
@@ -45,6 +48,9 @@ print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
 # clips/s33-t2.mp4, and s39 starts on the raised hands (clips/s39-t2.mp4 = s39-t1 from 1.417): made if missing, t1 kept.
 C=$E/clips; ENC="-c:v libx264 -preset slow -crf 12 -pix_fmt yuv420p -r 24 -c:a aac -b:a 192k -ar 32000"
 [ -f $C/s33-t2.mp4 ] || ffmpeg -v error -threads 2 -y -i $C/s39-t1.mp4 -t 1.417 $ENC $C/s33-t2.mp4
+# WAVE2 2026-11-22 (round5): s09-t5 is the 6.56 s fixp5 take 9289501 from 0; the cut keeps its first 5.0 s (the old s09 length:
+# a06 ends at c4.36, the ingot is held out from c1.5 to the end) as clips/s09-t6.mp4, remade whenever s09-t5 is newer.
+[ -f $C/s09-t6.mp4 ] && [ $C/s09-t6.mp4 -nt $C/s09-t5.mp4 ] || ffmpeg -v error -threads 2 -y -i $C/s09-t5.mp4 -t 5.0 $ENC $C/s09-t6.mp4
 [ -f $C/s39-t2.mp4 ] || ffmpeg -v error -threads 2 -y -ss 1.417 -i $C/s39-t1.mp4 $ENC $C/s39-t2.mp4
 # the episode sfx dir (second sfx_dirs entry), made if missing: rooster928 = rooster-village-loop's first crow (2.1-4.2 s,
 # fades) for s08's distant cock-crow; bead928 = one bead click out of abacus-drop-01 (0.245-0.325 s, e911's bead recipe) for

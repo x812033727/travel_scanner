@@ -36,7 +36,8 @@ bad+=[f'{s} has crop {p[s][\"crop\"]} (none expected)' for s in p if p[s].get('c
 print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
 # POLISH+SWAP 2026-11-21 (edit table _note). SWAP: s19 and s24 are the fixp retakes clips/sNN-t5.mp4 (runpod/polish/picks.json,
 # already trimmed: s19 9249101 1.458-7.25, s24 9249101 0-4.5; the assembler takes the highest take number); picks.json and the
-# want table above still describe the t1 staging, which stays on disk. POLISH (free fix 4): s01 ends at 5.208 (clips/s01-t2.mp4
+# want table above still describe the t1 staging, which stays on disk. SWAP wave 2 (2026-11-22): s34 is the fixp4 retake
+# clips/s34-t5.mp4 (9249401 0-4.5, already trimmed; t1 kept); no t6 is cut for any e924 shot. POLISH (free fix 4): s01 ends at 5.208 (clips/s01-t2.mp4
 # = s01-t1 0-5.208, 125 frames: a01 laid at 0.30 ends 4.98 + the 0.22 tail, so nothing is held); made if missing, t1 kept.
 C=$E/clips; ENC="-c:v libx264 -preset slow -crf 12 -pix_fmt yuv420p -r 24 -c:a aac -b:a 192k -ar 32000"
 [ -f $C/s01-t2.mp4 ] || ffmpeg -v error -threads 2 -y -i $C/s01-t1.mp4 -t 5.208 $ENC $C/s01-t2.mp4

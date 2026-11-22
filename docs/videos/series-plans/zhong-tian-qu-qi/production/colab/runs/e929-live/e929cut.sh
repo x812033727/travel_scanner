@@ -2,7 +2,11 @@
 set -u
 R=/home/user/zt-work; P=$R/docs/videos/series-plans/zhong-tian-qu-qi/production; Q=$P/colab/runs/_scripts
 E=/root/mokaair-work/videos/_live-e929/zhong-tian-qu-qi-e929-dh; VJ=$R/docs/videos/zhong-tian-qu-qi-e029-r2/video.json
-mkdir -p $E/cut; [ -f $E/cut/e929-live.mp4 ] && { mkdir -p $E/cut/old-$(date +%H%M); mv $E/cut/e929-live.* $E/cut/final.log $E/cut/old-$(date +%H%M)/ 2>/dev/null; }
+# POLISH+SWAP 2026-11-22: the 2026-11-17 cut files (lines.json, srt, final.log; its mp4 is review-zt/ep/e029/final.mp4, the
+# restore had no cut mp4 here) go to cut/old-1117 once and carry a .keep (never removed); a later run replaces its own cut.
+mkdir -p $E/cut
+[ -d $E/cut/old-1117 ] || { mkdir -p $E/cut/old-1117; mv $E/cut/e929-live.* $E/cut/final.log $E/cut/old-1117/ 2>/dev/null; touch $E/cut/old-1117/.keep; }
+rm -f $E/cut/e929-live.* $E/cut/final.log; rm -rf $E/cut/pre
 rm -rf $E/segments-v4
 # the refined shots are staged by live-action/stage.py 29 (refined picture + draft voice + trim -> clips/sNN-t1.mp4); run it
 # when a clip is missing or picks.json is newer than any clip (a re-run of refine-prep.py 29 rewrites picks.json). stage.py
@@ -12,8 +16,10 @@ rm -rf $E/segments-v4
 # square's crowd: twelve of this episode's recordings reversed and filtered, unintelligible; zhong-tian-qu-qi-e929-dh/sfx,
 # the edit table's second sfx dir; REVIEW 3 adds hooves929.wav there: hooves_trot 0-3.959 s, -24 dB rising to -16 by 1.7 s, faded
 # out over the last 0.6 s, laid at s31 c3.3 to s32 c0.8). s31's vf reads the refined s32 picture directly (runpod/a/st2/refined/s32.mp4).
-stale=$(python3 -c "import json,os;e='$E';p=json.load(open(e+'/picks.json'));t=os.path.getmtime(e+'/picks.json');print(' '.join(s for s in p if not os.path.exists(f'{e}/clips/{s}-t1.mp4') or os.path.getmtime(f'{e}/clips/{s}-t1.mp4')<t))")
-[ -z "$stale" ] || { echo "staging (stale: $stale)"; python3 $P/live-action/stage.py 29 || exit 1; }
+# POLISH+SWAP 2026-11-22: the refine sources (runpod/a/st2) are not on this machine, so the script no longer re-stages by
+# itself -- it stops and says so (the e926 way)
+miss=$(python3 -c "import json,os;p=json.load(open('$E/picks.json'));print(' '.join(s for s in p if not os.path.exists('$E/clips/'+s+'-t1.mp4')))")
+[ -z "$miss" ] || { echo "not staged: $miss -- run: python3 $P/live-action/stage.py 29"; exit 1; }
 # e929 trims and seeds the edit table assumes (edit-dh-e929-live.json _note): picks.json as refine-prep.py 29 builds it from
 # picks-merged.tsv, fix1/review-picks.tsv and review3-trims.tsv (run in colab/runs/e929-live: refine-prep.py 29 picks-merged.tsv
 # fix1/review-picks.tsv review3-trims.tsv, then stage.py 29; fix1 replaced s10 and s11, the two paper inserts). review3-trims.tsv
@@ -38,6 +44,23 @@ bad+=[f'{s} in picks.json, not in the want table' for s in p if s not in want]
 bad+=[f'{s} has crop {p[s].get(\"crop\")} (only s10 may)' for s in p if p[s].get('crop') and s!='s10']
 bad+=[f's10 crop {p[\"s10\"].get(\"crop\")} (want 870:493:45:25)' for _ in [0] if 's10' in p and p['s10'].get('crop')!='870:493:45:25']
 print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
+# POLISH+SWAP 2026-11-22 (edit table _note). SWAP: clips/sNN-t5.mp4 (runpod/polish/picks.json, already trimmed; wave 1
+# fix-polish/review-picks.tsv: s07 9299102 whole, s11 9299102 0-4.458, s21 9299101 whole, s33 9299102 whole; round2: s26
+# 9299202 0-4.75; wave 2 round4: s10 9299401 from 1.0) win over t1; picks.json and the want table above describe the t1
+# staging. Clips cut here (the assembler takes the highest take number and has no per-shot trim; each remade when missing or
+# older than its t5 -- delete one to re-cut):
+#  s10-t6 = t5 from 1.5 (draft 2.5, POST-SWAP: the first 2.5 s of the draft read as a sticker on the paper; 97 frames);
+#  s33-t6 = t5 0-4.0 (the ledger slips c0.5-1.75 and is clamped by c2.0; a30 c0.3-3.12; the old shot's 4.0 s, 96 frames).
+C=$E/clips; X264="-c:v libx264 -crf 14 -preset slow -pix_fmt yuv420p -c:a aac -b:a 192k"
+cutclip() { [ -f $C/$1-t6.mp4 ] && [ $C/$1-t6.mp4 -nt $C/$1-$2.mp4 ] || ffmpeg -v error -y -ss $3 -i $C/$1-$2.mp4 -t $4 -frames:v $(python3 -c "print(round($4*24))") $X264 $C/$1-t6.mp4; }
+cutclip s10 t5 1.5 4.042; cutclip s33 t5 0 4.0
+# s31's cover (the bow of s32, refined draft 2.000-3.458) was read from runpod/a/st2/refined/s32.mp4, which is not on this
+# machine. It is taken back from the published cut (ep/e029/final.mp4 154.000-155.458, 35 frames: s31 starts at 149.000 and
+# the cover at its c5.000) with the dh grade and the vignette undone (vignette mode=backward, then gamma, then contrast and
+# saturation inverted), so the assembler's grade and vignette give the published picture again; the warm colorbalance is
+# already in it, so s31's vf no longer adds it.
+CV=$E/runpod/s32-cover-from-final.mp4
+[ -f $CV ] || ffmpeg -v error -y -ss 154.000 -i /root/mokaair-work/review-zt/ep/e029/final.mp4 -an -frames:v 35 -vf "vignette=angle=PI/5:mode=backward,eq=gamma=1.020408,eq=contrast=0.952381:saturation=1.086957,format=yuv420p" -c:v libx264 -crf 12 -preset slow -pix_fmt yuv420p $CV
 # nothing is dropped in e929 (DROP empty; all 35 shots are cut in); $VL is video.json without the DROP shots.
 VL=$E/video-live.json; DROP=""
 python3 -c "import json,sys;v=json.load(open('$VJ'));d='$DROP'.split();v['scenes']=[s for s in v['scenes'] if s.get('id') not in d];json.dump(v,open('$VL','w'),ensure_ascii=False,indent=1)"
@@ -66,6 +89,14 @@ ffmpeg -v error -y -i $E/cut/e929-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af
 ffmpeg -hide_banner -i $E/cut/e929-live.mp4 -map 0:a -af loudnorm=I=-14:TP=-2.2:LRA=11:print_format=json -f null - 2>&1 | sed -n '/^{/,/^}/p' \
  | python3 -c "import json,sys;j=json.load(sys.stdin);i,tp=float(j['input_i']),float(j['input_tp']);print(f'pre-loudnorm2 {i} LUFS {tp} dBTP: {tp-14-i:+.2f} after the gain ->', 'linear' if tp-14-i<=-2.2 else 'DYNAMIC (lower the limiter or its attack)')"
 bash $Q/loudnorm2.sh $E/cut/e929-live.mp4
+# POLISH+SWAP 2026-11-22 (e912/e923 lesson): the true peak after loudnorm2; above -1.5 dBTP a second sample-peak limiter at 0.7
+TP=$(ffmpeg -hide_banner -nostats -i $E/cut/e929-live.mp4 -map 0:a -af ebur128=peak=true -f null - 2>&1 | grep -A1 'True peak:' | grep -oE -- '-?[0-9.]+ dBFS' | tail -1 | cut -d' ' -f1)
+echo "after loudnorm2: true peak $TP dBTP"
+if python3 -c "import sys;sys.exit(0 if float('$TP')>-1.5 else 1)"; then
+ ffmpeg -v error -y -i $E/cut/e929-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af "alimiter=limit=0.7:attack=8:release=60:level=false,aresample=48000" $E/cut/e929-live.lim.mp4 && mv $E/cut/e929-live.lim.mp4 $E/cut/e929-live.mp4
+ echo "second limiter applied"
+fi
+ffmpeg -hide_banner -nostats -i $E/cut/e929-live.mp4 -map 0:a -af ebur128=peak=true -f null - 2>&1 | grep -E '^\s+(I|LRA|Peak):' | tail -3
 echo "== cut-qa";   python3 $Q/cut-qa.py $E/cut --stem e929-live 2>&1 | tail -20
 echo "== cut-jumps"; python3 $Q/cut-jumps.py $E/cut 2>&1 | tail -12
 echo "== audio-qa"; python3 $Q/audio-qa.py $E/cut $VL 2>&1 | tail -15

@@ -6,6 +6,8 @@ E=/root/mokaair-work/videos/_live-e923/zhong-tian-qu-qi-e923-dh; VJ=$R/docs/vide
 # cut/old-1117 once and carry a .keep (never removed); a later run replaces its own previous cut (no old-HHMM).
 mkdir -p $E/cut
 [ -d $E/cut/old-1117 ] || { mkdir -p $E/cut/old-1117; mv $E/cut/e923-live.* $E/cut/final.log $E/cut/old-1117/ 2>/dev/null; touch $E/cut/old-1117/.keep; }
+# SWAP 2026-11-22 (wave 2: s27 s28 s40 round5/round6): the POLISH+SWAP wave-1 cut (203.67 s) goes to cut/old-w1 once (.keep)
+[ -d $E/cut/old-w1 ] || { mkdir -p $E/cut/old-w1; mv $E/cut/e923-live.* $E/cut/final.log $E/cut/old-w1/ 2>/dev/null; touch $E/cut/old-w1/.keep; }
 rm -f $E/cut/e923-live.* $E/cut/final.log; rm -rf $E/cut/pre
 rm -rf $E/segments-v4
 # the refined shots must be staged first (live-action/stage.py 23; the refine sources are not on this machine, so the script
@@ -32,7 +34,8 @@ bad+=[f'{s} has crop {p[s][\"crop\"]} (none expected)' for s in p if p[s].get('c
 print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
 # POLISH+SWAP 2026-11-21/22 (edit table _note). SWAP: clips/sNN-t5.mp4 (runpod/polish/picks.json, already trimmed; wave 1
 # fix-polish/review-picks.tsv: s06 9239101 0.5-4.167 (used whole, 3.67 s: the pull over the gunwale is c1.75-3.5), s33 9239101
-# 0.5-4.75, s37 9239102 0.333-6.583; wave 2 fix-polish/round4/review-picks.tsv: s23 9239401 0.625-6.125, s31 9239401 0-5.75) win
+# 0.5-4.75, s37 9239102 0.333-6.583; wave 2 fix-polish/round4/review-picks.tsv: s23 9239401 0.625-6.125, s31 9239401 0-5.75;
+# round5: s27 9239502 0.5-5.25, s40 9239502 0-8.0 (no crop any more); round6: s28 9239602 0.791-6.583) win
 # over t1; picks.json and the want table above describe the t1 staging. No t2/t6 is cut from any clip of this episode.
 # The episode sfx dir (third sfx_dirs entry) holds two sounds cut from the real set's abacus-drop-01 (prayer beads, the set has
 # no abacus; e902/e906 way): bead923.wav = one bead click 0.245-0.325 s +14 dB; abacus923.wav = the rattle 0.15-1.35 s.

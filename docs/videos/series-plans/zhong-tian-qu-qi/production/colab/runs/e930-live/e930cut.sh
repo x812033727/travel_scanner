@@ -41,7 +41,14 @@ print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
 # SWAP 2026-11-21 (edit table _note "SWAP 2026-11-21"): clips/s01-t5, s08-t5, s17-t5, s30-t5 are the fix-polish retakes
 # (runpod/polish/picks.json; the assembler takes the highest tN, so the t1 rows above only describe the replaced takes).
 # s08 is cut to its first 128 frames (5.333 s, a08 keeps ~0.6 s after it) as clips/s08-t6.mp4; t5 stays. Rebuilt if missing.
-C=$E/clips; [ -f $C/s08-t6.mp4 ] || ffmpeg -v error -y -i $C/s08-t5.mp4 -frames:v 128 -t 5.3334 -c:v libx264 -preset slow -crf 12 -pix_fmt yuv420p -r 24 -c:a aac -b:a 192k $C/s08-t6.mp4 || exit 1
+# SWAP wave 2 (2026-11-22, _note "SWAP wave 2"): s08-t5, s14-t5, s17-t5, s29-t5, s31-t5 are the round4 retakes (fixp4). t6 is
+# cut from t5 whenever t6 is missing or older than t5 (the wave-1 s08-t6 is kept as clips/w1/s08-t6.mp4.keep): s08 first 128
+# frames (5.333 s, a08 ends c4.70), s14 first 91 frames (3.792 s, the old length; a13 ends c3.31), s17 first 144 frames (6.000 s).
+C=$E/clips
+for sf in s08:128 s14:91 s17:144; do s=${sf%%:*}; n=${sf##*:}
+  [ -f $C/$s-t6.mp4 ] && [ $C/$s-t6.mp4 -nt $C/$s-t5.mp4 ] && continue
+  ffmpeg -v error -y -i $C/$s-t5.mp4 -frames:v $n -t $(python3 -c "print(f'{$n/24+0.0001:.4f}')") -c:v libx264 -preset slow -crf 12 -pix_fmt yuv420p -r 24 -c:a aac -b:a 192k $C/$s-t6.mp4 || exit 1
+done
 # the recordings the edit table lays were rewritten in audio/ (originals in audio/orig/; _note RECORDINGS): a14 and a26 are now
 # s15's and s26's own take voices with one word spliced in from the recording (voice_off s15 s26). Stop if a rewrite is missing.
 A=/root/mokaair-work/videos/zhong-tian-qu-qi-e930-dh/audio

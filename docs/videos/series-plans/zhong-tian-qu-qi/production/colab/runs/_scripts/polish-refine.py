@@ -4,7 +4,7 @@
 refine-prep.py rebuilds the whole episode's picks.json from every picks file and copies every draft into runpod/a; the
 polish pass only replaces a few shots and the refined originals of the other shots are not on this machine, so this
 script touches nothing of the episode's existing picks. It reads
-  colab/runs/e9NN-live/fix-polish/review-picks.tsv, then fix-polish/round2..5/review-picks.tsv (a later round wins; RETAKE
+  colab/runs/e9NN-live/fix-polish/review-picks.tsv, then fix-polish/round2..9/review-picks.tsv (a later round wins; RETAKE
   and KEEP rows drop the shot),
 and for each picked seed writes, under ~/mokaair-work/videos/_live-e9NN/zhong-tian-qu-qi-e9NN-dh/runpod/polish/:
   ff/sNN.png        frame 0 of the picked draft, cover-cropped to 1312x736 (the refine keyframe, as route_a_st2.py does)
@@ -39,7 +39,7 @@ STYLE = [("[Shot 1] 3D CG.", "[Shot 1] Photorealistic live-action film footage o
           "Natural, realistic human motion of real actors; faces, hair and costumes stay as in the first frame.")]
 
 picks = {}
-for tsv, folder in [(FP / "review-picks.tsv", "fixp")] + [(FP / f"round{r}" / "review-picks.tsv", f"fixp{r}") for r in range(2, 6)]:
+for tsv, folder in [(FP / "review-picks.tsv", "fixp")] + [(FP / f"round{r}" / "review-picks.tsv", f"fixp{r}") for r in range(2, 10)]:
     if not tsv.is_file():
         continue
     for line in tsv.read_text(encoding="utf-8").splitlines()[1:]:

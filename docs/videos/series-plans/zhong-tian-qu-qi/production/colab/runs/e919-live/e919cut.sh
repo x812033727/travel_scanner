@@ -37,6 +37,8 @@ print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
 # SWAP 2026-11-21 (review-zt SWAP-BRIEF, merged with the free fixes; runpod/polish/picks.json, fix-polish/review-picks.tsv):
 # s01 s20 s21 s26 are the fixp retakes clips/sNN-t5.mp4 (seed 9199101, already trimmed: assemble-v4's pick() takes the
 # highest -tN, so the t1 files stay as they were); s31 is not reshot (Aling's half-up hair is the series rule).
+# SWAP wave 2 2026-11-22 (round4 fix-polish/round4/review-picks.tsv): s16 s32 are clips/sNN-t5.mp4 (fixp4 9199401, already
+# trimmed: s16 0.083-8.0, s32 1.25-6.583); no t6 is cut for this episode. The beds are the Flow z-bed-*/z-cue-* (owner 2026-11-22).
 # POLISH+SWAP 2026-11-21 (edit table _note POLISH+SWAP). The episode sfx dir (third sfx_dirs entry), made if missing:
 # staff919 = staff-thud-01 from 1.03 s (the strike, e911's staff911) for the constables' staves at s04; flog919 = five
 # flogging-far hits 1.05 s apart, low-passed and echoed (far off) under s25/s26; murmur19 = crowd-murmur.py 19 5 (the

@@ -45,6 +45,13 @@ print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
 C=$E/clips; ENC="-c:v libx264 -preset slow -crf 12 -pix_fmt yuv420p -r 24 -c:a aac -b:a 192k -ar 32000"
 [ -f $C/s26-t2.mp4 ] || ffmpeg -v error -threads 2 -y -i $C/s26-t1.mp4 -t 5.417 $ENC $C/s26-t2.mp4
 [ -f $C/s27-t2.mp4 ] || ffmpeg -v error -threads 2 -y -i $C/s27-t1.mp4 -t 5.25 $ENC $C/s27-t2.mp4
+# SWAP2 2026-11-22 (round4, fix-polish/round4/review-picks.tsv): s11 s27 s32 are clips/sNN-t5.mp4 (s11 9169401 already
+# trimmed 0.25-5.417; s27 9169402 and s32 9169401 whole, 6.54 s). s27 and s32 are cut down here to t6 (the assembler takes the
+# highest take): s27-t6 = t5 0-5.5 (a26 ends c4.89 + 0.6, the hand has stopped at c2.0), s32-t6 = t5 0-5.0 (a30 ends c4.07,
+# she holds the sheet up from c2.5; the old s32 was 5.0 s, so murmur16 and the market cue keep their timing). Remade whenever
+# the t5 is newer than the t6, so a later t5 never loses to a stale t6.
+for st in s27:5.5 s32:5.0; do s=${st%%:*}; t=${st##*:}
+  [ -f $C/$s-t6.mp4 ] && [ $C/$s-t6.mp4 -nt $C/$s-t5.mp4 ] || ffmpeg -v error -threads 2 -y -i $C/$s-t5.mp4 -t $t $ENC $C/$s-t6.mp4; done
 # the episode sfx dir (second sfx_dirs entry), made if missing: murmur16 = crowd-murmur.py 16 30 (this episode's recordings
 # reversed, -19 LUFS) under the school gate s29-s34; rooster916 = rooster-village-loop's first crow (2.1-4.2 s, e928's recipe)
 # for s39 -> s40 (dawn); cart916 = ox-cart-01 2.4-5.4 s low-passed at 2.4 kHz and faded out from 0.5 s, the barrow rolling away

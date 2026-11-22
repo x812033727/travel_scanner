@@ -6,6 +6,8 @@ E=/root/mokaair-work/videos/_live-e915/zhong-tian-qu-qi-e915-dh; VJ=$R/docs/vide
 # cut/old-1116 once and carry a .keep (never removed); a later run replaces its own previous cut (no old-HHMM).
 mkdir -p $E/cut
 [ -d $E/cut/old-1116 ] || { mkdir -p $E/cut/old-1116; mv $E/cut/e915-live.* $E/cut/final.log $E/cut/old-1116/ 2>/dev/null; touch $E/cut/old-1116/.keep; }
+# SWAP wave 2 (2026-11-22): the delivered POLISH+SWAP cut (2026-11-22 01:17, 239.13 s) goes to cut/old-w1 once with a .keep
+[ -d $E/cut/old-w1 ] || { mkdir -p $E/cut/old-w1; mv $E/cut/e915-live.* $E/cut/final.log $E/cut/old-w1/ 2>/dev/null; touch $E/cut/old-w1/.keep; }
 rm -f $E/cut/e915-live.* $E/cut/final.log; rm -rf $E/cut/pre
 rm -rf $E/segments-v4
 # the refined shots must be staged first (live-action/stage.py 15: refined picture + draft voice + trim/crop -> clips/sNN-t1.mp4)
@@ -41,6 +43,8 @@ print('WARNING picks.json trims: '+'; '.join(bad)) if bad else None"
 # POLISH+SWAP 2026-11-21 (edit table _note). SWAP: s21 s25 s42 are the fixp retakes clips/sNN-t5.mp4 (already trimmed,
 # runpod/polish/picks.json: s21 9159101 0.25-6.75, s25 9159102 whole 8.0, s42 9159101 0.583-6.583; the assembler takes the
 # highest take number); picks.json and the want table above still describe the t1 staging, which stays on disk.
+# SWAP wave 2 (2026-11-22, fix-polish/round4/review-picks.tsv): s14 s17 s22 s28 s40 are fixp4 clips/sNN-t5.mp4 (already trimmed;
+# no t6 for any e915 shot). Edit table _note "SWAP 2026-11-22".
 # audio/zq915a21.wav is rebuilt on the s21 take's phrase onsets (the REVIEW 3 file kept as audio/orig/zq915a21-r3.wav).
 # sfx: the 2026-11-21 set (_sfx/zhongtian-real-20261121, plough-earth on s25) is the edit table's second sfx dir.
 # no vidstab: cut-qa's jitter() on every staged clip reads 0.00-0.05 (s02 s37 0.05, s14 0.04), nothing hops frame to frame
