@@ -180,14 +180,14 @@ export function preflightShort(doc, { engine = 'h3', mode: forcedMode = null } =
 
       // 第 1 鏡鉤子節奏檢查
       if (i === 0) {
-        if (series === 'influencer-piglet' && dur > 1.5) {
+        if (series === 'influencer-piglet' && dur > 2.5) {
           issues.push(
             issue(
               'error',
               'piglet_hook_too_long',
               shotId,
-              `《網美小豬》第 1 鏡唯美照 dur=${dur}s 超過 1.5s`,
-              '唯美照必須壓在 1.0–1.2s（0.9s 快門聲）立刻拉遠揭曉假景，否則觀眾直接滑走',
+              `《網美小豬》第 1 鏡唯美照 dur=${dur}s 超過 2.5s`,
+              '第 1 鏡 1.8–2.4s：看得到腳架上的手機對著粉粉（觀眾才知道在拍照），再接苦力與假景',
             ),
           );
         } else if (dur > 2.5) {
@@ -196,8 +196,18 @@ export function preflightShort(doc, { engine = 'h3', mode: forcedMode = null } =
               'warn',
               'hook_too_long',
               shotId,
-              `第 1 鏡（鉤子）dur=${dur}s 偏長，建議壓在 0.8–1.5s`,
-              '第一格直接從出事／衝突瞬間開始，避免前 1.2 秒太慢造成高滑走率',
+              `第 1 鏡（鉤子）dur=${dur}s 偏長，建議 1.8–2.4s`,
+              '第一格直接從出事／衝突瞬間開始，同時看得出誰、在哪、想幹嘛',
+            ),
+          );
+        } else if (dur < 1.5) {
+          issues.push(
+            issue(
+              'warn',
+              'hook_too_short',
+              shotId,
+              `第 1 鏡（鉤子）dur=${dur}s 太短，第一次看的觀眾來不及看懂誰、在哪、想幹嘛`,
+              '拉到 1.8–2.4s（WRITING.md §一，2026-11-22 盲審）',
             ),
           );
         }
@@ -256,20 +266,28 @@ export function preflightShort(doc, { engine = 'h3', mode: forcedMode = null } =
       }
     }
 
-    // 鑰匙聲反應鏡過長檢查（《闖禍小浣熊》實戰教訓）
-    if (
-      series === 'raccoon-mischief' &&
-      Number.isFinite(dur) &&
-      dur > 1.2 &&
-      (sfxList.some((s) => /keys?/i.test(s.name)) || /key/i.test(shotId))
-    ) {
+    // 「有人回來了」訊號鏡：太短看不懂、太長變呆臉（《闖禍小浣熊》實戰教訓）
+    const isSignalShot =
+      series === 'raccoon-mischief' && Number.isFinite(dur) && (sfxList.some((s) => /keys?/i.test(s.name)) || /key/i.test(shotId));
+    if (isSignalShot && dur < 1.5) {
+      issues.push(
+        issue(
+          'warn',
+          'raccoon_signal_too_short',
+          shotId,
+          `《闖禍小浣熊》「有人回來了」訊號鏡 dur=${dur}s 短於 1.5s`,
+          '2026-11-22 盲審實證：0.7s 的訊號鏡沒人看得懂；拉到 1.5–2.2s，來的人要佔大面積、看得出是誰',
+        ),
+      );
+    }
+    if (isSignalShot && dur > 2.2) {
       issues.push(
         issue(
           'warn',
           'raccoon_key_reaction_slow',
           shotId,
-          `《闖禍小浣熊》鑰匙聲反應鏡 dur=${dur}s 超過 1.2s`,
-          '2026-11-04 雙人笑點審核實證：鑰匙聲呆臉反應超過 1 秒就會冷掉，建議壓在 0.6–0.8s',
+          `《闖禍小浣熊》訊號反應鏡 dur=${dur}s 超過 2.2s`,
+          '拖的是呆臉不是訊號：訊號 1.5–2.2s，呆臉只留最後約 0.5s',
         ),
       );
     }
@@ -526,14 +544,14 @@ export function preflightShort(doc, { engine = 'h3', mode: forcedMode = null } =
     }
 
     const lastShot = shots.at(-1);
-    if (lastShot && Number(lastShot.hold ?? 0) < 0.4 && !lastShot.seamless_loop) {
+    if (lastShot && Number(lastShot.hold ?? 0) < 0.8 && !lastShot.seamless_loop) {
       issues.push(
         issue(
           'warn',
           'missing_ending_hold',
           lastShot.id || `shot_${shots.length}`,
-          '最後一鏡沒有設定 hold ≥ 0.4s（也未標記 seamless_loop: true）',
-          '建議加 "hold": 0.6–0.9 停在最強反應格讓觀眾看懂笑點，或刻意設計無縫迴圈並標記 seamless_loop: true',
+          '最後一鏡沒有設定 hold ≥ 0.8s（也未標記 seamless_loop: true）',
+          '建議加 "hold": 0.8–1.0 停在最強反應格讓觀眾看懂笑點，或刻意設計無縫迴圈並標記 seamless_loop: true',
         ),
       );
     }
