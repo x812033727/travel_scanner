@@ -19,6 +19,10 @@
 - **9 語縮圖與 8 語譯文獨立審查**：
   - 全 9 語縮圖（`zh-TW/en/ja/ko/es/pt/id/vi/th`）採 `heimao-left` 版型且第一行全數點名 MONO 橡皮擦，9 張全數渲染並目視驗收通過。
   - 8 語譯文（`en/ja/ko/es/pt/id/vi/th`）嚴守各語系 MiniMax `× 0.88` 字長上限與語音潔淨規則，並派獨立 8 語審查代理抓出並全數修補細節（如 EN `scallop shell`/`cubic millimeter`、JA `2013`/`1日`/`登録`、KO `10% 이상`/`롱라이프 디자인상`、ES/PT `Good Design`/`tricolor`/`em sigilo`、ID `minimal 10%`/`lebih dari seratus`、VI `Thiết kế Trường tồn`/`thân tẩy`、TH `Long Life Design`/`1 ใน 10 ขึ้นไป`、`UTF-8 1,701 bytes <= 2,200`）。
-- **後台與待辦**：
-  - `/admin/videos` 已推送 `script` 與 `storyboard`（`pending`）。
-  - 僅待 Google Gemini TTS 每日配額於太平洋午夜（`00:00 PST` = 台灣 `16:00`）重置後執行：`tts`（`zh-TW` `Sulafat`）→ `check-audio` → `music` → 8 語 MiniMax `dub` ＋ `check-audio --second-opinion` → `clips` → `assemble --adopt-branding` → `captions` → `qa`（11/11）→ 獨立成片觀眾評測 `review/audience-review.md` → Drive 零差異備份 → `review-push`（`audio`/`final`）→ PR。
+- **配音、配樂、組裝、8 語配音與獨立觀眾審片（全數完成）**：
+  - `zh-TW` `Sulafat` TTS：125/125 句完成（正文 `08:54`，語速 `4.55 字/秒` >= `4.4 字/秒`），123/125 句 `check-audio` 通過，餘 2 句（`m037`、`m040`）經實聽複核確認為 ASR 誤聽與自然口語無須重錄；Lyria 配樂 4x 無縫循環（`music/9a10402265f01e72.mp3`）。
+  - 成片組裝：`final.mp4`（`16,667` 格，`-14 LUFS`，真峰值 `-1.9 dBFS`，配樂底噪 `-30.8 LUFS`，sha256 `db8d326bd19c`）；`captions` 零警告；印尼語縮圖改為 `3 Warna MONO Sah?` 重渲後 9 語縮圖零警告；`qa` 9/11 通過（僅待站主核准 `narration` 關卡與站台旅遊立場分數 `0.22`，`建議 0.02`、`業配 0.21`）。
+  - 獨立成片一般觀眾審片（`review/audience-review.md`）：**`8.9 / 10`**（`Would watch to end: Yes`，**無阻斷瑕疵，可進入打包、備份與 `final` 送審**）。
+  - 8 語 MiniMax 配音全數混音完成（均含配樂底軌）：`en.m4a`（21 MB）、`ja.m4a`（18 MB）、`ko.m4a`（19 MB）、`es.m4a`（20 MB）、`pt.m4a`（20 MB，收緊 `m062`–`m063`）、`id.m4a`（21 MB）、`vi.m4a`（21 MB）、`th.m4a`（20 MB，收緊 `m012`–`m013`、`m088`–`m089`）。
+  - `/admin/videos` 關卡：`script`（approved）、`storyboard`（approved）、`audio`（pending）、`final`（pending）、`dubs`（pending）。
+  - Google Drive 零差異備份：`W23/`（`1ZUj9glbnDjMQBenEQOuKnVsfWdNkH076`）與 `W23/製作檔/`（`1VkVuWl-_u0KIOzMi_z9mg6ZNyZfScrBu`）完整同步並經 `verify_drive_zero_diff.mjs` 驗證 `differences: 0`。
