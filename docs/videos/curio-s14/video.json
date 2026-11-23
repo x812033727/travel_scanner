@@ -5,14 +5,16 @@
   "category": "explainer",
   "narration_locale": "zh-TW",
   "target_minutes": [
-    9,
+    8,
     11
   ],
   "voice": {
     "provider": "gemini",
+    "model": "gemini-3.8-flash-lite-tts",
     "name": "Sulafat",
-    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
-    "performance": "像一個一份一份翻口供的檔案員。開場帶點笑意，預告句一句一停。碑那章平實莊重；船夫那章像聽老人講古，睡過頭帶點好笑，勝負低沉帶過。熊本那章帶點懷疑；小說家那章輕快，「剛剛好」短而停一拍。最後誠懇，結尾乾脆。"
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。絕不平、絕不像在念稿。",
+    "performance": "像一位把四百年口供逐份攤開的說書人：開場問句帶懸念，銅像導覽帶一點笑意。小倉石碑平實莊重，「兩雄同時相會」清晰有力；船夫回憶像聽老人講古，睡過頭帶點幽默，「小次郎輸了」沉穩帶笑，「完全沒說他是故意的」亮起來。1909 年顯彰會帶一點推理趣味；直木與吉川輕快推進，「剛剛好」短而停一拍；《五輪書》隻字未提沉穩收束，結尾誠懇乾脆。",
+    "tempo": 1.24
   },
   "subtitles": {
     "burn_in": false
@@ -22,83 +24,19 @@
   },
   "characters": [],
   "music": {
-    "prompt": "light, curious, a little mysterious, no vocals",
+    "track": "curio-bed-w02-5846379f.mp3",
+    "sha256": "1e5ed2ec449999974cdf6abd04e80a56fb2ef972b49114fbe36b3560df855717",
     "gain_db": -20,
     "duck_db": -10
   },
-  "loops": [
-    {
-      "setup": "mu105",
-      "payoff": "mu209",
-      "what": "兒子的碑上，兩人怎麼上島"
-    },
-    {
-      "setup": "mu106",
-      "payoff": "mu302",
-      "what": "一百年後帶來船夫的話的商人"
-    },
-    {
-      "setup": "mu107",
-      "payoff": "mu406",
-      "what": "熊本那張桌子上選了哪一本"
-    },
-    {
-      "setup": "mu108",
-      "payoff": "mu526",
-      "what": "武藏自己的書怎麼寫這一場"
-    },
-    {
-      "setup": "mu103",
-      "payoff": "mu528",
-      "what": "島上的官方導覽摺頁"
-    },
-    {
-      "setup": "mu207",
-      "payoff": "mu325",
-      "what": "碑上那把木頭的武器"
-    },
-    {
-      "setup": "mu205",
-      "payoff": "mu333",
-      "what": "碑上沒有名字的岩流"
-    },
-    {
-      "setup": "mu218",
-      "payoff": "mu403",
-      "what": "沼田家說動手的不只一個人"
-    },
-    {
-      "setup": "mu314",
-      "payoff": "mu404",
-      "what": "島上的檢使"
-    },
-    {
-      "setup": "mu320",
-      "payoff": "mu516",
-      "what": "信裡的「適當的時候」"
-    },
-    {
-      "setup": "mu328",
-      "payoff": "mu413",
-      "what": "小次郎那句「你遲到了嗎」"
-    },
-    {
-      "setup": "mu334",
-      "payoff": "mu408",
-      "what": "聽說十八歲"
-    },
-    {
-      "setup": "mu336",
-      "payoff": "mu508",
-      "what": "「故意」最早寫在哪裡"
-    }
-  ],
+  "pauses": {
+    "line_ms": 0,
+    "scene_ms": 150
+  },
+  "still_motion": "beat",
   "youtube": {
-    "category_id": 27,
-    "made_for_kids": false,
-    "default_language": "zh-TW",
-    "title": "宮本武藏在巖流島真的故意遲到？四份口供｜奇聞檔案局",
-    "description": "二〇〇三年，巖流島上的武藏銅像比小次郎的晚了四個月揭幕，島上的官方導覽摺頁開玩笑說，也許是配合他決鬥遲到的「史實」（摺頁原文：「決闘に遅刻したという史実にあわせてかも…」）。可是「故意遲到」這件事，最早是誰說的？\n\n這一集照證人開口的順序，一份一份翻口供：武藏死後九年、承應三年（1654 年）養子宮本伊織在小倉立的碑，寫的是「兩雄同時相會」；門司城代沼田家的家記，對手只叫「小次郎」；正德二年（1712 年）一個小倉商人轉述當年船夫的話，由熊本的豐田家三代寫成寶曆五年（1755 年）的《武公傳》、安永五年（1776 年）的《二天記》，裡面有睡過頭、削槳、「小次郎負たり」和十八歲，卻沒有寫他為什麼晚到；明治四十二年（1909 年）熊本的宮本武藏遺蹟顯彰會把各種說法排在一起，選了《二天記》，轉述時還多寫了幾句；最早把遲到寫成計謀的，是我們查到的直木三十五的短篇（直木 1934 年歿），他還記了一句來源不明的批評；吉川英治的《宮本武藏》（1935–1939 年朝日新聞連載）讓它家喻戶曉。最後是武藏自己在寬永二十年（1643 年）動筆的《五輪書》。\n\n《二天記》用《肥後文獻叢書》第二卷本、顯彰會本《宮本武藏》（含小倉碑文、《五輪書》與《沼田家記》的轉引），兩者都在國立國會圖書館數位典藏；直木三十五〈巖流島〉與吉川英治的小說、隨筆用青空文庫本。《沼田家記》原書我們沒開，只用了顯彰會本的轉引。巖流島那天的日期，《二天記》寫慶長十七年四月（1612 年），另有十幾年前的說法。\n\n每個引文、年份與數字的出處列在下方參考資料；旁白裡的日期是舊曆，「我們覺得」的句子是本頻道的看法。導覽摺頁只引用文字，沒有放截圖。\n\n本集插圖由 AI 生成；畫中的歷史人物都是卡通化的角色，不寫名字、不追求相似；吉川英治、直木三十五與現代研究者不入畫。\n\n資料截至 2026-10-19",
+    "title": "宮本武藏故意遲到 2 小時？死後 9 年石碑竟隻字未提｜奇聞檔案局",
+    "description": "日本劍豪宮本武藏在巖流島決鬥，真的靠「故意遲到兩小時」激怒佐佐木小次郎才贏的嗎？\n給看過武藏小說、漫畫與戲劇，或好奇歷史名場面怎麼一步步定型的人。\n\n2003 年巖流島（正式島名至今仍叫「船島」）揭幕的武藏銅像比小次郎晚了四個月，官方導覽打趣說也許配合他決鬥遲到的「史實」。但翻開武藏過世九年後、承應三年（1654）養子宮本伊織在小倉立下的石碑，對手只稱「岩流」，登島那幕寫的更是「兩雄同時相會」，隻字未提遲到；同在關門海峽岸邊門司城的《沼田家記》則是目前查到最早出現「小次郎」名字的紀錄。\n\n大眾熟悉的睡過頭、向投宿商行主人要搖櫓的槳削成木刀與「小次郎負たり」，以及後來湊齊的「佐佐木小次郎十八歲」，出自熊本豐田家三代先後整理的《武公傳》（1755）與《二天記》（1776），書中交代巖流島細節大多來自慶長十七年四月十三日（西曆 1612 年 5 月 13 日；另有早十幾年比試之說）決鬥一百年後，小倉商人村屋勘八郎轉述當年船夫的回憶——但《二天記》全篇並未寫他為何晚到。明治四十二年（1909）熊本顯彰會本選用《二天記》，轉述時多加了「慢慢起身」等從容語氣；目前查到最早把遲到寫成計謀爭論的是直木三十五（1934 年歿）短篇〈巖流島〉，隨後吉川英治《宮本武藏》（1935–1939 年《朝日新聞》連載將近四年）讓「故意遲到」家喻戶曉，而武藏晚年所著《五輪書》對這一戰隻字未提。\n\n旁白日期依日本舊曆，「我們覺得」為本頻道觀點，完整史料出處列於下方參考資料。\n\n資料截至 2026-11-19\n本集插圖與縮圖底圖由 AI 生成。",
     "tags": [
       "宮本武藏",
       "巖流島",
@@ -106,30 +44,42 @@
       "故意遲到",
       "二天記",
       "五輪書",
+      "小倉碑文",
       "吉川英治",
       "日本史",
-      "歷史名場面",
       "奇聞檔案局"
     ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
     "video_id": null
   },
   "thumbnail": {
     "template": "thumb",
     "data": {
-      "layout": "heimao",
-      "headline": "四份口供**全對不上？**",
-      "sub": "最早石碑竟寫**同時上島**",
-      "shot": "the-question"
+      "layout": "heimao-left",
+      "headline": "宮本武藏**沒遲到？**",
+      "sub": "死後 9 年石碑，竟寫同時上島",
+      "asset": "stock/0ce6e482c6c0aa10c91205156b74288e1e53a302323f3483f6a2bd88b2edd438.jpg"
+    },
+    "replaces": {
+      "template": "thumb",
+      "data": {
+        "layout": "heimao",
+        "headline": "心理戰**全是編的？**",
+        "sub": "死後 9 年石碑寫「同時相會」",
+        "asset": "stock/1abe3f593f0ec72e1e2c987fc475c0da9b41281af61a22de7e5b5560141c3f0f.png"
+      }
     }
   },
   "sources": [
     {
-      "title": "豐田景英校《二天記》（《肥後文獻叢書》第二卷，隆文館，明治四十三年；國立國會圖書館數位典藏）",
+      "title": "豐田景英校《二天記》（《肥後文獻叢書》第二卷，隆文館，1910 年；國立國會圖書館數位典藏）",
       "url": "https://dl.ndl.go.jp/pid/766733",
       "checked_on": "2026-10-19"
     },
     {
-      "title": "宮本武藏遺蹟顯彰會編《宮本武藏》（金港堂書籍，明治四十二年；含小倉碑文錄文、《五輪書》、《沼田家記》轉引；國立國會圖書館數位典藏）",
+      "title": "宮本武藏遺蹟顯彰會編《宮本武藏》（金港堂書籍，1909 年；收錄小倉碑文、《五輪書》、《沼田家記》等；國立國會圖書館數位典藏）",
       "url": "https://dl.ndl.go.jp/pid/992019",
       "checked_on": "2026-10-19"
     },
@@ -149,64 +99,168 @@
       "checked_on": "2026-10-19"
     },
     {
-      "title": "關門海峽觀光推進協議會〈巖流島〉導覽摺頁（PDF，2019 年 4 月製作；只引文字）",
+      "title": "關門海峽觀光推進協議會〈巖流島〉官方導覽摺頁",
       "url": "https://kanmon.gr.jp/kanmon2020/wp-content/uploads/2017/12/ganryu2019JP.pdf",
       "checked_on": "2026-10-19"
     },
     {
-      "title": "日文維基百科〈宮本武蔵 (小説)〉（朝日新聞連載期間；二手）",
+      "title": "和曆與西曆換算（maechan.net）",
+      "url": "https://maechan.net/kanreki/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "日文維基百科〈宮本武蔵〉",
+      "url": "https://ja.wikipedia.org/wiki/%E5%AE%AE%E6%9C%AC%E6%AD%A6%E8%94%B5",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "日文維基百科〈二天記〉",
+      "url": "https://ja.wikipedia.org/wiki/%E4%BA%8C%E5%A4%A9%E8%A8%98",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "日文維基百科〈宮本武蔵 (小説)〉",
       "url": "https://ja.wikipedia.org/wiki/%E5%AE%AE%E6%9C%AC%E6%AD%A6%E8%94%B5%20%28%E5%B0%8F%E8%AA%AC%29",
       "checked_on": "2026-10-19"
     }
   ],
-  "assets": [],
+  "assets": [
+    {
+      "path": "stock/1abe3f593f0ec72e1e2c987fc475c0da9b41281af61a22de7e5b5560141c3f0f.png",
+      "source": "Mokaair AI illustration",
+      "license": "Proprietary"
+    },
+    {
+      "path": "stock/0ce6e482c6c0aa10c91205156b74288e1e53a302323f3483f6a2bd88b2edd438.jpg",
+      "source": "Mokaair 奇聞檔案局",
+      "license": "Mokaair"
+    }
+  ],
+  "loops": [
+    {
+      "setup": "mu101",
+      "payoff": "mu607",
+      "what": "宮本武藏在巖流島是不是靠故意遲到取勝"
+    },
+    {
+      "setup": "mu102",
+      "payoff": "mu606",
+      "what": "巖流島官方導覽摺頁還寫了什麼關鍵事實"
+    },
+    {
+      "setup": "mu105",
+      "payoff": "mu604",
+      "what": "武藏六十歲寫的《五輪書》藏著什麼意外"
+    },
+    {
+      "setup": "mu104",
+      "payoff": "mu205",
+      "what": "死後九年最早石碑刻著兩人怎麼碰面"
+    },
+    {
+      "setup": "mu202",
+      "payoff": "mu203",
+      "what": "武藏養子立的石碑怎麼稱呼對手"
+    },
+    {
+      "setup": "mu203",
+      "payoff": "mu320",
+      "what": "碑上沒姓也沒名的巖流什麼時候湊齊佐佐木小次郎全名"
+    },
+    {
+      "setup": "mu204",
+      "payoff": "mu315",
+      "what": "碑上的木製武器在《二天記》變成什麼來歷"
+    },
+    {
+      "setup": "mu207",
+      "payoff": "mu209",
+      "what": "宮本家以外的人怎麼記錄這場決鬥"
+    },
+    {
+      "setup": "mu210",
+      "payoff": "mu403",
+      "what": "《沼田家記》不只一人動手的說法後來怎麼被反駁"
+    },
+    {
+      "setup": "mu213",
+      "payoff": "mu306",
+      "what": "遲到兩小時的故事從哪本書冒出來"
+    },
+    {
+      "setup": "mu306",
+      "payoff": "mu321",
+      "what": "《二天記》寫這場遲到怎麼發生的（有沒有寫心理戰動機）"
+    },
+    {
+      "setup": "mu321",
+      "payoff": "mu301",
+      "what": "《二天記》這段遲到細節又是從哪來的"
+    },
+    {
+      "setup": "mu309",
+      "payoff": "mu404",
+      "what": "《二天記》裡島上派檢使看守這件事後來被拿來證明什麼"
+    },
+    {
+      "setup": "mu313",
+      "payoff": "mu508",
+      "what": "信裡那句「到了適當的時候就過去」到了小說變成什麼"
+    },
+    {
+      "setup": "mu320",
+      "payoff": "mu405",
+      "what": "「聽說十八歲」的年紀說法後來連誰都懷疑"
+    },
+    {
+      "setup": "mu322",
+      "payoff": "mu402",
+      "what": "《二天記》怎麼打敗其他版本變成主流"
+    },
+    {
+      "setup": "mu411",
+      "payoff": "mu501",
+      "what": "目前查到誰最早把遲到白紙黑字寫成計謀"
+    },
+    {
+      "setup": "mu510",
+      "payoff": "mu605",
+      "what": "《二天記》開頭說明自己怎麼看待這些比武傳聞"
+    }
+  ],
   "scenes": [
     {
       "id": "unveil",
-      "chapter": "二〇〇三年，晚到的那尊銅像",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a seaside lawn on a small island under a mild overcast sky, a park worker in a cap pulling a white cloth off a bronze statue of a swordsman on a plinth and smiling toward the viewer, calm sea behind him",
+        "prompt": "Wide shot of a seaside lawn on a small island under a mild overcast sky, a park worker in a cap pulling a white cloth off a bronze statue of a swordsman on a plinth, calm sea behind him",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "mu101",
-          "text": "二〇〇三年四月十四日，巖流島上，武藏的銅像揭幕了。",
-          "emotion": "沉穩開場，語速放慢"
+          "text": "日本劍豪宮本武藏在巖流島決鬥，真的靠「故意遲到」贏了佐佐木小次郎嗎？",
+          "emotion": "開場核心問句，直接有戲"
         }
-      ]
+      ],
+      "chapter": "2003 年巖流島銅像揭幕，早期卷宗卻寫另一回事"
     },
     {
       "id": "four-months",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a park worker in a cap on the island lawn, holding up four fingers with a cheeky grin to the front, a second bronze statue of a long-haired swordsman on a plinth behind him, soft grey sky",
+        "prompt": "Medium shot of a park worker in a cap on the island lawn holding up four fingers with a wry smile beside two bronze statues on stone plinths, calm strait behind",
         "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "mu102",
-          "text": "比小次郎那一尊，晚了四個月。",
-          "emotion": "帶點笑意"
-        }
-      ]
-    },
-    {
-      "id": "brochure",
-      "template": "big",
-      "data": {
-        "text": "決闘に遅刻したという史実",
-        "kicker": "巖流島導覽摺頁（關門海峽觀光推進協議會）",
-        "sub": "武藏像晚完成，也許是配合他決鬥遲到的「史實」"
-      },
-      "lines": [
-        {
-          "id": "mu103",
-          "text": "島上的官方導覽開玩笑說，也許是為了配合他決鬥遲到的「史實」。",
-          "emotion": "帶點笑意"
+          "text": "2003 年巖流島武藏銅像揭幕，比小次郎那尊晚四個月；官方導覽還打趣說是配合遲到的「史實」。",
+          "say": "二〇〇三年巖流島武藏銅像揭幕，比小次郎那尊晚四個月；官方導覽還打趣說是配合遲到的「史實」。",
+          "say_for": "e78608c24165",
+          "emotion": "帶笑意點出導覽把遲到當史實"
         }
       ]
     },
@@ -214,60 +268,15 @@
       "id": "popular",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young duellist with a long tied-back ponytail, a crimson haori and a very long sword at his hip standing on a pebbly beach in grey daylight, arms crossed and tapping one foot with an impatient frown at us, an empty sea behind him",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu104",
-          "text": "大家熟悉的故事還多一層：他是故意遲到的，要讓對手在島上乾等。"
-        }
-      ]
-    },
-    {
-      "id": "tease-iori",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a middle-aged samurai in a formal dark kamishimo standing beside a tall plain stone monument in a castle town under a soft grey sky, resting one hand on the stone and looking our way with a solemn look",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu105",
-          "text": "可是武藏死後九年，他的兒子在小倉立了一塊碑，刻下那天兩人怎麼上島。",
-          "emotion": "停在這裡，不揭曉"
-        }
-      ]
-    },
-    {
-      "id": "tease-merchant",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a cheerful Edo-era merchant in a striped kimono with a small travel bundle on his back kneeling on the veranda of a samurai house in daylight, leaning forward and telling a story with one hand raised toward the viewer, soft overcast light",
+        "prompt": "Medium shot of a young duellist with a high ponytail and crimson haori waiting impatiently on a pebbly beach with arms crossed and a long sword at his hip, calm grey sea behind",
         "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "mu106",
-          "text": "一百年後，一個商人帶來了當年船夫的話。"
-        }
-      ]
-    },
-    {
-      "id": "tease-table",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a Meiji-era editor in a dark Western suit and round spectacles with a neat moustache standing at a long table in an office in the afternoon, laying several blank booklets side by side and looking up to the front with a thoughtful expression, soft window light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu107",
-          "text": "明治四十二年，熊本有一群人，把找得到的說法，全排上了一張桌子。"
+          "id": "mu103",
+          "text": "小說與戲劇更演得活靈活現：說他故意晚到兩小時玩心理戰，還在船上削槳當木刀取勝。",
+          "emotion": "點明小說與戲劇之大眾印象，不重複後文一擊取勝措辭"
         }
       ]
     },
@@ -275,1286 +284,64 @@
       "id": "tease-cave",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an old Edo-era sword master with white hair, a short white beard and a plain dark kimono kneeling at a low writing table at the mouth of a rocky cave, holding a brush over a blank scroll and looking up at us with a calm face, soft overcast light",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu108",
-          "text": "武藏自己晚年也寫了一本書。這一場，他怎麼寫？",
-          "emotion": "問句，停一拍"
-        }
-      ]
-    },
-    {
-      "id": "the-question",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono's face on a small boat at sea under a pale sky, eyes half closed and a faint smile our way, the oars resting beside him",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu109",
-          "text": "那天，他到底是不是故意遲到的？",
-          "emotion": "問句上揚，停一拍"
-        }
-      ]
-    },
-    {
-      "id": "first-witness",
-      "chapter": "承應三年，兒子在小倉立了一塊碑",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a middle-aged samurai in a formal dark kamishimo standing beside a tall plain stone monument in a castle town under a soft grey sky, resting one hand on the stone and looking toward the viewer with a solemn look",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu201",
-          "text": "最早替那一天作證的，就是那塊碑。",
-          "emotion": "平實，像翻開卷宗"
-        }
-      ]
-    },
-    {
-      "id": "iori-raises",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a middle-aged samurai in a formal dark kamishimo watching workers out of frame, raising one hand to signal and looking to the front with a proud face, a tall blank stone being set upright behind him, mild overcast light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu202",
-          "text": "承應三年四月，武藏的養子宮本伊織，把它立在小倉城下。"
-        }
-      ]
-    },
-    {
-      "id": "filial",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a middle-aged samurai in a formal dark kamishimo's face in soft grey light, bowing his head slightly with his eyes closed, his palms pressed together at us, the edge of a stone monument beside him",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu203",
-          "text": "碑上自己說：這是孝子立的，要讓後人看見。"
-        },
-        {
-          "id": "mu204",
-          "text": "最早的證人，也是最想替他說話的人。"
-        }
-      ]
-    },
-    {
-      "id": "nameless",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a stonemason in a short coat kneeling before a tall blank stone in a yard in daylight, chisel in one hand and mallet in the other, glancing up our way with a puzzled look, soft overcast light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu205",
-          "text": "碑上的對手，沒有姓，也沒有名，只叫「岩流」，一個兵法高手。"
-        }
-      ]
-    },
-    {
-      "id": "real-blade",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young duellist with a long tied-back ponytail, a crimson haori and a very long sword at his hip standing on a pebbly shore in soft hazy light, gripping the hilt of his long sheathed sword and scowling toward the viewer, mild overcast light",
+        "prompt": "Medium shot of an elderly Edo-era sword master with white hair and plain dark kimono sitting with a bamboo brush over an unrolled scroll inside a rocky cave mouth, soft daylight",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "mu206",
-          "text": "是岩流要求用真刀比。",
-          "emotion": "加重"
+          "id": "mu105",
+          "text": "偏偏武藏六十歲寫劍術兵法書《五輪書》，回顧平生不敗戰績，翻開找這場決鬥卻有大意外；",
+          "emotion": "把六十多場留給下章首揭，零重複數字"
         }
       ]
     },
     {
-      "id": "wooden-reply",
+      "id": "tease-iori",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono standing on a pebbly shore in grey daylight, holding a plain wooden sword upright in one hand and raising his chin to the front with a calm expression, soft overcast light",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu207",
-          "text": "武藏回他：你用刀，我用木頭。"
-        }
-      ]
-    },
-    {
-      "id": "two-arrive",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of a small low island in a grey strait under a soft overcast sky, a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono stepping from a small boat onto the pebbly shore and looking at us, the far shore faint behind him",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu208",
-          "text": "然後，兩個人上了島。碑上怎麼寫？",
-          "emotion": "問句"
-        }
-      ]
-    },
-    {
-      "id": "same-time",
-      "template": "big",
-      "data": {
-        "text": "兩雄同時相會",
-        "kicker": "小倉碑文，承應三年",
-        "sub": "兩位英雄，同時到場相會"
-      },
-      "lines": [
-        {
-          "id": "mu209",
-          "text": "兩雄同時相會。兩個人，同時到。",
-          "emotion": "揭曉，放慢"
-        }
-      ]
-    },
-    {
-      "id": "no-late",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room in the afternoon, holding up a blank rubbing of a stone inscription with both hands and raising her eyebrows our way, soft light through a paper screen",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu210",
-          "text": "最早的這份口供，沒有一個字提到遲到；"
-        },
-        {
-          "id": "mu211",
-          "text": "不過「同時」，也可以只是雙雙到場，不一定準到時刻。"
-        }
-      ]
-    },
-    {
-      "id": "lightning",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono standing still on a pebbly shore under a heavy grey sky, holding his wooden sword lowered at his side and looking toward the viewer with a solemn face, a faint flash of lightning far out at sea",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu212",
-          "text": "勝負，碑上寫得很短：木刀一擊，閃電都比它慢。"
-        }
-      ]
-    },
-    {
-      "id": "island-name",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an Edo-era ferryman in a straw hat standing in his boat at midday, pointing back at a small low island and grinning to the front, mild hazy light",
+        "prompt": "Medium shot of a middle-aged samurai in formal dark kamishimo standing beside a tall smooth stone monument in a castle town, mild morning light",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "mu213",
-          "text": "從此，船島被人叫成了岩流島。"
+          "id": "mu104",
+          "text": "而他死後才九年，最早記下決鬥經過的石碑，刻出的碰面情形更跟你想的完全不一樣！",
+          "emotion": "高潮預告二，死後九年石碑停在揭曉前"
         }
       ]
     },
     {
-      "id": "only-two",
+      "id": "clash-hero",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a small low island in a grey strait in mild overcast light, a young duellist with a long tied-back ponytail, a crimson haori and a very long sword at his hip standing alone at the waterline and shading his eyes at us",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu214",
-          "text": "可是那天在島上的，只有他們兩個嗎？",
-          "emotion": "問句"
-        }
-      ]
-    },
-    {
-      "id": "numata-house",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an elderly samurai castle keeper in a grey kamishimo kneeling in a castle hall in the afternoon, holding up a closed record book in both hands and looking our way with a serious look, soft window light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu215",
-          "text": "另一份紀錄，是門司城代沼田家的家記。",
-          "say": "另一份紀錄，是門司城代找田家的家記。",
-          "say_for": "a114011233ad"
-        }
-      ]
-    },
-    {
-      "id": "kojiro-name",
-      "template": "big",
-      "data": {
-        "text": "小次郎",
-        "kicker": "《沼田家記》（顯彰會本轉引）",
-        "sub": "我們查到最早出現這個名字的紀錄"
-      },
-      "lines": [
-        {
-          "id": "mu216",
-          "text": "我們查到，「小次郎」這個名字，最早就出現在這裡。"
-        }
-      ]
-    },
-    {
-      "id": "disciples",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young Edo-era sword student in a practice hall in the late morning, holding a wooden practice sword and puffing out his chest in an argument toward the viewer, soft light through a paper screen",
+        "prompt": "Close-up of a carved wooden oar sword and a gleaming steel katana crossed above splashing turquoise sea waves under bright morning sunlight",
         "camera": "pan left",
-        "visual": "still"
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "mu217",
-          "text": "起因，是兩邊的弟子在吵，誰的劍法比較強。"
+          "id": "mu106",
+          "text": "我們檔案局研究員翻開四百年卷宗，發現關鍵根本不在島上，而在後人怎麼一步步改寫他！",
+          "emotion": "介紹研究員並給一句精準方向，零重複零劇透"
         }
       ]
     },
     {
-      "id": "numata-doubt",
+      "id": "ada-open",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an elderly samurai castle keeper in a grey kamishimo's face in a castle hall, lowering his voice with one hand beside his mouth and glancing to the front, soft window light",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu218",
-          "text": "它還說，最後動手的不只武藏一個人；這段只有轉引，到今天還有爭議。",
-          "emotion": "放低，一句帶過"
-        }
-      ]
-    },
-    {
-      "id": "who-told",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room in the afternoon, holding two blank folders apart in her hands and tilting her head at us, soft light through a paper screen",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu219",
-          "text": "那遲到的故事，又是從哪裡來的？",
-          "emotion": "問句，停一拍"
-        }
-      ]
-    },
-    {
-      "id": "old-mouth",
-      "chapter": "正德二年，商人說起了那個船夫",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of an old boatman with a weathered face, a straw hat and a short cotton coat's face on a wooden jetty, squinting and grinning our way, the grey sea behind him, mild hazy light",
+        "prompt": "Medium close-up of Ada with her wavy raven bob with a side fringe and thin crimson glasses, holding up a closed cloth-bound dossier in a wood-panelled archive study, soft daylight",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "mu301",
-          "text": "紀錄裡說，細節大多來自一個划船的老人。",
-          "emotion": "揭曉"
-        }
-      ]
-    },
-    {
-      "id": "merchant-arrives",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a cheerful Edo-era merchant in a striped kimono with a small travel bundle on his back walking up to the gate of a samurai house at midday, bowing with a broad smile toward the viewer, mild overcast light",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu302",
-          "text": "還記得開頭那個商人嗎？正德二年春天，他從小倉來到肥後的八代。",
-          "emotion": "語氣親近，略上揚"
-        }
-      ]
-    },
-    {
-      "id": "toyoda-listens",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an elderly Edo-era samurai in a plain brown haori kneeling on tatami in the afternoon, cupping one hand to his ear and leaning in to the front with a curious expression, soft window light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu303",
-          "text": "一個叫豐田正剛的武士，問他巖流島的事。"
-        }
-      ]
-    },
-    {
-      "id": "merchant-tells",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a cheerful Edo-era merchant in a striped kimono with a small travel bundle on his back kneeling on the veranda of a samurai house in daylight, leaning forward and telling a story with one hand raised at us, soft overcast light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu304",
-          "text": "商人說，他親戚在下關開批發行，當年武藏就住在那裡；"
-        }
-      ]
-    },
-    {
-      "id": "boatman",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an old boatman with a weathered face, a straw hat and a short cotton coat sitting on a wooden jetty under a pale sky, holding a long oar across his knees and smiling our way with a toothless grin, a small boat tied beside him",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu305",
-          "text": "家裡有個老人，就是那天替武藏划船的人。"
-        }
-      ]
-    },
-    {
-      "id": "same-words",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of an elderly Edo-era samurai in a plain brown haori's face in soft light through a paper screen, eyebrows raised in surprise and one finger lifted toward the viewer",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu306",
-          "text": "商人只講過一次嗎？",
-          "emotion": "問句"
-        },
-        {
-          "id": "mu307",
-          "text": "沒有。書裡說，他來過好幾次，每次講的，一個字都不差。"
-        }
-      ]
-    },
-    {
-      "id": "three-generations",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young Edo-era samurai clerk in a pale blue kimono kneeling at a low writing table in the afternoon, writing on a blank page with a brush and glancing up to the front, a stack of older hand-bound notebooks beside him, soft window light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu308",
-          "text": "豐田家祖孫三代，把這些話寫成了書：寶曆五年叫《武公傳》，"
-        },
-        {
-          "id": "mu309",
-          "text": "安永五年，孫子改名叫《二天記》。"
-        }
-      ]
-    },
-    {
-      "id": "school",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young Edo-era samurai clerk in a pale blue kimono standing in a quiet practice hall in the late morning, holding a wooden sword upright before his face with reverent eyes at us, soft light through a paper screen",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu310",
-          "text": "寫書的這一家，學的就是武藏傳下來的劍法。"
-        },
-        {
-          "id": "mu311",
-          "text": "他們筆下的那一天，是什麼樣子？",
-          "emotion": "問句"
-        }
-      ]
-    },
-    {
-      "id": "arrive-kokura",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono walking along a castle-town street in daylight with a travel hat on his back, glancing our way with a calm face, mild overcast light",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu312",
-          "text": "書裡寫，那是慶長十七年四月，武藏從京都來到小倉。"
-        }
-      ]
-    },
-    {
-      "id": "elder-sets",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a stern Edo-era chief retainer in a formal kamishimo kneeling in a castle reception room in the afternoon, holding up one finger to fix a time and speaking firmly toward the viewer, soft window light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu313",
-          "text": "家老約他：明天辰時一開始，在島上跟岩流小次郎比試。"
-        }
-      ]
-    },
-    {
-      "id": "officials",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an Edo-era samurai official in a formal kamishimo standing on a pebbly island shore in soft hazy light, holding a short staff upright and looking to the front with a strict look",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu314",
-          "text": "島上，派了檢使看守，號令很嚴。"
-        }
-      ]
-    },
-    {
-      "id": "vanished",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a castle retainer in a grey kimono standing in a wooden corridor in grey daylight, scratching his head with a puzzled expression at us, an open sliding door to an empty tatami room behind him",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu315",
-          "text": "沒想到，當天晚上，武藏不見了。",
-          "emotion": "轉折，壓低"
-        },
-        {
-          "id": "mu316",
-          "text": "他去了哪裡？",
-          "emotion": "問句"
-        }
-      ]
-    },
-    {
-      "id": "rumor",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an Edo-era townswoman standing by a town well at midday, cupping a hand to her mouth as if whispering and glancing sideways our way, mild hazy light",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu317",
-          "text": "城裡傳說：他怕了，逃了。",
-          "emotion": "加快"
-        }
-      ]
-    },
-    {
-      "id": "found",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a round-faced Edo-era innkeeper in an apron standing in the doorway of a seaside wholesale house in the late morning, pointing inside with a knowing grin toward the viewer, soft grey light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu318",
-          "text": "後來在下關找到他，就在那個船夫待的批發行裡。"
-        }
-      ]
-    },
-    {
-      "id": "letter",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono kneeling at a low table in a plain room in the afternoon, folding a blank letter in his hands with a sly half smile to the front, soft light through a paper screen",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu319",
-          "text": "書裡還收了一封據說是他寫的信：家老準備的船，他不坐，要自己從這裡搭船去。"
-        }
-      ]
-    },
-    {
-      "id": "good-time",
-      "template": "big",
-      "data": {
-        "text": "能時分參可申候",
-        "kicker": "《二天記》所收書信，四月十二日（真偽未定）",
-        "sub": "到了適當的時候，我就過去"
-      },
-      "lines": [
-        {
-          "id": "mu320",
-          "text": "信裡有一句，先記住：到了適當的時候，我就過去。",
-          "emotion": "放慢"
-        }
-      ]
-    },
-    {
-      "id": "oversleep",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono lying on a futon in a plain room under a pale sky, propped up on one elbow and yawning at us, a sliding door half open behind him",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu321",
-          "text": "第二天，約好的時刻快到了。武藏呢？",
-          "emotion": "問句"
-        },
-        {
-          "id": "mu322",
-          "text": "太陽都升得老高了，他還在睡。",
-          "emotion": "帶點好笑"
-        }
-      ]
-    },
-    {
-      "id": "runner",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an Edo-era runner in a short coat and a white headband kneeling at the edge of a veranda in daylight, out of breath and holding out a folded blank note our way, mild overcast light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu323",
-          "text": "小倉的信差來催了兩次。他回說馬上去，然後洗了臉，吃完飯。"
-        }
-      ]
-    },
-    {
-      "id": "oar-ask",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a round-faced Edo-era innkeeper in an apron standing in the doorway of a seaside inn at midday, holding out a long wooden oar with both hands and smiling toward the viewer, mild overcast light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu324",
-          "text": "還記得碑上那把木頭的武器嗎？在這本書裡，它有了來歷：",
-          "emotion": "語氣親近"
-        }
-      ]
-    },
-    {
-      "id": "carve",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono sitting on a wooden step by a seaside inn in soft hazy light, carving a long oar into a big wooden sword with a small knife and glancing up to the front, wood shavings at his feet",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu325",
-          "text": "他跟旅店主人要了一支搖櫓的槳，在岸上削成一把大木刀。"
-        }
-      ]
-    },
-    {
-      "id": "late-arrive",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of a small boat crossing a grey strait toward a low island under a soft overcast sky, an old boatman with a weathered face, a straw hat and a short cotton coat rowing at the stern and looking at us",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu326",
-          "text": "到島上時，已經是巳時以後，比約好的晚了大約兩個小時以上。"
-        }
-      ]
-    },
-    {
-      "id": "are-you-late",
-      "template": "big",
-      "data": {
-        "text": "汝後れたるか",
-        "kicker": "《二天記》，小次郎",
-        "sub": "你遲到了嗎！"
-      },
-      "lines": [
-        {
-          "id": "mu327",
-          "text": "等在島上的小次郎呢？",
-          "emotion": "問句"
-        },
-        {
-          "id": "mu328",
-          "text": "他在水邊大喊：我比約好的先到，你遲到了嗎！",
-          "emotion": "加重"
-        }
-      ]
-    },
-    {
-      "id": "scabbard",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an angry young duellist with a long tied-back ponytail and a red haori standing in shallow surf in grey daylight, flinging an empty sword scabbard away into the water with one hand, facing us, soft overcast light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu329",
-          "text": "他拔出刀，把刀鞘丟進海裡。"
-        }
-      ]
-    },
-    {
-      "id": "smile",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono standing ankle deep in the shallow surf under a pale sky, holding his big wooden sword lowered and grinning toward the viewer, mild hazy light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu330",
-          "text": "武藏站在淺水裡笑了："
-        }
-      ]
-    },
-    {
-      "id": "you-lost",
-      "template": "big",
-      "data": {
-        "text": "小次郎負たり",
-        "kicker": "《二天記》，武藏",
-        "sub": "小次郎，你輸了；贏的人，怎麼會丟掉刀鞘？"
-      },
-      "lines": [
-        {
-          "id": "mu331",
-          "text": "小次郎，你輸了；贏的人，怎麼會丟掉刀鞘？",
-          "emotion": "揭曉，放慢"
-        }
-      ]
-    },
-    {
-      "id": "bow",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono standing on a pebbly shore in soft hazy light, bowing politely with his wooden sword held at his side and glancing to the front, a small boat waiting behind him",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu332",
-          "text": "勝負分了：小次郎敗了，武藏向檢使行禮，搭原來的船回下關。",
-          "emotion": "低沉，一句帶過"
-        }
-      ]
-    },
-    {
-      "id": "full-name",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a young Edo-era samurai clerk in a pale blue kimono's face at a writing table in the afternoon, writing a last line with a brush and pausing with a doubtful look at us, soft window light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu333",
-          "text": "碑上沒名字的岩流，在書末有了全名：佐佐木小次郎，"
-        },
-        {
-          "id": "mu334",
-          "text": "這時十八歲，書上寫的是：聽說。"
-        }
-      ]
-    },
-    {
-      "id": "no-why",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room in the afternoon, running one finger down a blank page and frowning our way, soft light from tall windows",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu335",
-          "text": "這麼仔細的一段，偏偏沒寫一件事：他為什麼晚到。"
-        }
-      ]
-    },
-    {
-      "id": "who-added",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a young archivist in a cardigan and round glasses's face in a reading room, chewing the end of a pencil with a puzzled look toward the viewer, mild window light",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu336",
-          "text": "那「故意」這兩個字，最早是在哪裡寫下來的？",
-          "emotion": "問句，停一拍"
-        }
-      ]
-    },
-    {
-      "id": "table",
-      "chapter": "明治四十二年，熊本的編者攤開了各種版本",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a Meiji-era editor in a dark Western suit and round spectacles with a neat moustache standing at a long table in an office in the afternoon, laying several blank booklets side by side and looking up to the front with a thoughtful expression, soft window light",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu401",
-          "text": "在它寫下來之前，開頭那張桌子先動了手。"
-        }
-      ]
-    },
-    {
-      "id": "kensho-book",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a Meiji-era editor in a dark Western suit and round spectacles with a neat moustache standing beside a printing press in the afternoon, holding up a freshly bound blank book with a proud smile at us, soft light through a paper screen",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu402",
-          "text": "熊本的宮本武藏遺蹟顯彰會，正在編一本《宮本武藏》。"
-        }
-      ]
-    },
-    {
-      "id": "reject",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a Meiji-era editor in a dark Western suit and round spectacles with a neat moustache at a long table in the afternoon, pushing one blank booklet aside with the back of his hand and shaking his head our way, soft window light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu403",
-          "text": "沼田家說最後動手的不只一個人？編者說：不可信。",
-          "say": "找田家說最後動手的不只一個人？編者說：不可信。",
-          "say_for": "77752bde2dd2"
-        }
-      ]
-    },
-    {
-      "id": "reason",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a Meiji-era editor in a dark Western suit and round spectacles with a neat moustache's face in soft light through a paper screen, tapping his temple with one finger and raising an eyebrow toward the viewer",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu404",
-          "text": "還記得島上那些檢使嗎？編者的理由是：號令那麼嚴，不可能。",
-          "emotion": "語氣親近"
-        }
-      ]
-    },
-    {
-      "id": "circle",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room at midday, holding up an old book with a blank cover and pointing at it with a wry smile to the front, mild window light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu405",
-          "text": "可是這個理由，本身就出自《二天記》。",
-          "emotion": "放慢"
-        }
-      ]
-    },
-    {
-      "id": "follow",
-      "template": "big",
-      "data": {
-        "text": "今は二天記に傳へし處に從へり",
-        "kicker": "宮本武藏遺蹟顯彰會《宮本武藏》，明治四十二年",
-        "sub": "現在，就照《二天記》傳下來的"
-      },
-      "lines": [
-        {
-          "id": "mu406",
-          "text": "最後他們寫：現在，就照《二天記》。",
-          "emotion": "放慢"
-        },
-        {
-          "id": "mu407",
-          "text": "可是，他們全信嗎？",
-          "emotion": "問句"
-        }
-      ]
-    },
-    {
-      "id": "ages",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a Meiji-era editor in a dark Western suit and round spectacles with a neat moustache at a long table, holding up two fingers on one hand and one on the other with a doubtful frown at us, soft window light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu408",
-          "text": "前面書末那句「聽說十八歲」呢？編者自己就說：《二天記》寫的年紀，很靠不住。"
-        }
-      ]
-    },
-    {
-      "id": "grave-search",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a Meiji-era editor in a dark Western suit and round spectacles with a neat moustache standing on a pebbly island shore under a pale sky, holding his bowler hat in one hand and shading his eyes with the other, looking around our way with a puzzled look",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu409",
-          "text": "編者還親自渡海，到島上找小次郎的墓，什麼痕跡都沒找到。"
-        }
-      ]
-    },
-    {
-      "id": "added",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a Meiji-era editor in a dark Western suit and round spectacles with a neat moustache at a desk in the afternoon, adding a line to a blank manuscript with a dip pen and a mischievous smile toward the viewer, soft light through a paper screen",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu410",
-          "text": "更怪的是，轉述《二天記》那一段時，他們多寫了幾句。"
-        }
-      ]
-    },
-    {
-      "id": "already-there",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up of an Edo-era runner in a short coat and a white headband standing on a sandy path beside a pine tree at midday, one arm pointing back toward the sea, looking to the front with his mouth wide open in an urgent shout, mild overcast light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu411",
-          "text": "信差來催，這本書寫：小次郎早就到了。"
-        }
-      ]
-    },
-    {
-      "id": "slowly",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono in a plain room in grey daylight, slowly rising from a futon and stretching one arm with an unhurried face at us, soft window light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu412",
-          "text": "武藏呢？慢慢地起來，從容地站起身，穿上絲綢的夾衣。",
-          "emotion": "放慢，帶點好笑"
-        }
-      ]
-    },
-    {
-      "id": "worse",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a young duellist with a long tied-back ponytail, a crimson haori and a very long sword at his hip's face on a pebbly shore under a pale sky, red with anger and shouting our way, mild overcast light",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu413",
-          "text": "小次郎那句「你遲到了嗎」，也變成了：你違約，也太過分了。"
-        }
-      ]
-    },
-    {
-      "id": "not-in-niten",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room, laying two blank pages side by side on the table and pointing at a gap between them toward the viewer, soft daylight",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu414",
-          "text": "這幾句，《二天記》原文都沒有。",
-          "emotion": "短，停一拍"
-        }
-      ]
-    },
-    {
-      "id": "attitude",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses leaning back in a reading-room chair in the afternoon, arms folded and a thoughtful smile to the front, soft light from tall windows",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu415",
-          "text": "我們覺得，到這裡，晚到已經開始像是一種態度了。",
-          "emotion": "像跟朋友說自己的看法"
-        }
-      ]
-    },
-    {
-      "id": "motive-q",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a young archivist in a cardigan and round glasses's face in a reading room, holding up one finger as if about to ask a question at us, mild window light",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu416",
-          "text": "語氣有了。可是動機呢？",
-          "emotion": "問句，停一拍"
-        }
-      ]
-    },
-    {
-      "id": "naoki-desk",
-      "chapter": "昭和十年，報上開始連載武藏",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a 1930s novelist in a dark kimono sitting at a low desk by a window in the afternoon, seen from behind, his brush raised over blank manuscript paper, a stack of old books at his elbow, soft light through a paper screen",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu501",
-          "text": "我們找得到的，是一個短篇小說，作者直木三十五，一九三四年就過世了。"
-        }
-      ]
-    },
-    {
-      "id": "naoki-trust",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room in the afternoon, holding up an old paperback with a blank cover and nodding our way, soft daylight",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu502",
-          "text": "他照《二天記》寫，說那是一本可以信的書。"
-        }
-      ]
-    },
-    {
-      "id": "naoki-plan",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono lying on a futon in soft hazy light with his eyes open, staring up at the ceiling with a scheming smile toward the viewer, a wooden sword beside his pillow",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu503",
-          "text": "他寫，武藏睡覺的時候，好像一直在想怎麼對付小次郎。"
-        }
-      ]
-    },
-    {
-      "id": "cowardly",
-      "template": "big",
-      "data": {
-        "text": "卑怯な謀",
-        "kicker": "直木三十五〈巖流島〉引的批評",
-        "sub": "故意拖時間，讓小次郎等到累，是卑鄙的計謀"
-      },
-      "lines": [
-        {
-          "id": "mu504",
-          "text": "接著，他引了一句已經有人在說的批評：故意拖時間，讓對手等到累，是卑鄙的計謀。"
-        }
-      ]
-    },
-    {
-      "id": "naoki-source",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room, spreading empty hands over a pile of plain index cards with an apologetic smile to the front, soft light from tall windows",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu505",
-          "text": "這句是誰說的、多早，我們還沒查到；直木自己也說，可能是後人的話。"
-        }
-      ]
-    },
-    {
-      "id": "naoki-defends",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono standing on a pebbly shore in grey daylight, arms folded and a cool little smile at us, his wooden sword tucked under one arm",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu506",
-          "text": "然後他替武藏辯護：大部分比試，武藏都會晚一點到，故意讓對手焦躁。",
-          "emotion": "揭曉"
-        }
-      ]
-    },
-    {
-      "id": "both-sides",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a young archivist in a cardigan and round glasses's face in a reading room, holding up a plain card in each hand and raising her eyebrows our way, mild window light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu507",
-          "text": "罵的人說是卑鄙，辯的人說是兵法；兩邊說的，都是故意。",
-          "emotion": "放慢"
-        }
-      ]
-    },
-    {
-      "id": "earliest",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses at a reading-room table in the afternoon, holding up a thin old paperback with a blank cover and tapping its spine toward the viewer, mild window light",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu508",
-          "text": "所以前面那個問題的答案是：寫成字、留下來的「故意」，我們找到最早的就是這一篇。",
-          "emotion": "揭曉，放慢"
-        }
-      ]
-    },
-    {
-      "id": "newspaper",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a 1930s newspaper boy in a flat cap standing on a city pavement in the late morning, holding up a bundle of blank newspapers and calling out to the front with a big grin, mild hazy light",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu509",
-          "text": "直木過世一年多後，吉川英治的《宮本武藏》在朝日新聞開始連載，一連四年。"
-        }
-      ]
-    },
-    {
-      "id": "yoshikawa-essay",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room in the afternoon, holding up a thin old essay book with a blank cover and tapping it to the front, soft daylight",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu510",
-          "text": "吉川怎麼看《二天記》？",
-          "emotion": "問句"
-        },
-        {
-          "id": "mu511",
-          "text": "他在隨筆裡說，最可信的就是它；"
-        }
-      ]
-    },
-    {
-      "id": "first-move",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono sitting on a veranda at midday, holding up one finger with a sly grin at us, a wooden sword across his knees, mild overcast light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu512",
-          "text": "又說武藏對付小次郎的第一招，就是故意不守約定的時間。",
-          "emotion": "加重"
-        }
-      ]
-    },
-    {
-      "id": "boat-late",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an old boatman with a weathered face, a straw hat and a short cotton coat rowing a small boat across a grey strait, turning his head to call out our way with a worried look, mild overcast light",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu513",
-          "text": "小說裡，船夫提醒他：時間，已經晚很久了。"
-        },
-        {
-          "id": "mu514",
-          "text": "武藏怎麼回？",
-          "emotion": "問句"
-        }
-      ]
-    },
-    {
-      "id": "just-right",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a rugged Edo-era swordsman with an untidy topknot, a short beard and a plain dark kimono's face in a small boat at sea under a pale sky, eyes calm and a faint smile toward the viewer, the tip of a big wooden sword resting on his shoulder",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu515",
-          "text": "還記得那封信裡的「適當的時候」嗎？到了小說，他只回一句：",
-          "emotion": "語氣親近"
-        },
-        {
-          "id": "mu516",
-          "text": "剛剛好。",
-          "emotion": "揭曉，短"
-        }
-      ]
-    },
-    {
-      "id": "accuse",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young duellist with a long tied-back ponytail, a crimson haori and a very long sword at his hip standing at the waterline in soft hazy light, pointing his free hand forward and shouting to the front with a furious expression, his long sword sheathed at his hip",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu517",
-          "text": "小次郎則當面指控他：每一次，都故意不守時。"
-        }
-      ]
-    },
-    {
-      "id": "famous",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young woman in a 1930s cloche hat sitting on a park bench in daylight, clutching a folded blank newspaper to her chest and gasping to the front, mild hazy light",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu518",
-          "text": "這部小說，讓「故意遲到」變成了家喻戶曉的事。"
-        }
-      ]
-    },
-    {
-      "id": "silent",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an old Edo-era sword master with white hair, a short white beard and a plain dark kimono kneeling at a low writing table at the mouth of a rocky cave, holding a brush over a blank scroll and looking up at us with a calm face, soft overcast light",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu519",
-          "text": "可是這份卷宗裡，還有一個證人，從頭到尾沒開口。是誰？",
-          "emotion": "轉折，問句"
+          "id": "mu107",
+          "text": "今天我們就來聊聊，「故意遲到兩小時」的心理戰到底是怎麼冒出來的！",
+          "emotion": "單一承諾句承接前句改寫脈絡，俐落推進正文"
         }
       ]
     },
@@ -1562,195 +349,1074 @@
       "id": "cave-climb",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a rocky mountain path under a soft grey sky, an old Edo-era sword master with white hair, a short white beard and a plain dark kimono climbing slowly with a walking staff and pausing to look our way, a small cave mouth above him",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu520",
-          "text": "武藏自己。",
-          "emotion": "揭曉，短"
-        },
-        {
-          "id": "mu521",
-          "text": "寬永二十年十月，六十歲的他，登上肥後的岩殿山，開始寫《五輪書》。"
-        }
-      ]
-    },
-    {
-      "id": "record",
-      "template": "stats",
-      "data": {
-        "title": "《五輪書》序裡的戰績",
-        "stats": [
-          {
-            "value": "13 歲",
-            "label": "第一次比試，贏"
-          },
-          {
-            "value": "16 歲",
-            "label": "又贏一場"
-          },
-          {
-            "value": "60 多次",
-            "label": "一次都沒輸"
-          }
-        ],
-        "source": "《五輪書》序（顯彰會本所收抄本）"
-      },
-      "lines": [
-        {
-          "id": "mu522",
-          "text": "他在序裡數自己的戰績：十三歲第一次比試就贏，十六歲又贏一場，",
-          "reveal": 1
-        },
-        {
-          "id": "mu523",
-          "text": "一生比了六十多次，一次都沒輸，全在十三到二十八、九歲之間。",
-          "reveal": 2
-        }
-      ]
-    },
-    {
-      "id": "age-29",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of an old Edo-era sword master with white hair, a short white beard and a plain dark kimono's face at the cave mouth, counting on his fingers with a faraway look toward the viewer, soft overcast light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu524",
-          "text": "照《二天記》，巖流島那年他二十九歲，剛好落在這段的尾巴。"
-        },
-        {
-          "id": "mu525",
-          "text": "那這一場呢？",
-          "emotion": "問句，停一拍"
-        }
-      ]
-    },
-    {
-      "id": "no-word",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses in a reading room in the afternoon, closing an old book slowly and shaking her head to the front, soft light from tall windows",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu526",
-          "text": "在我們查的這個本子裡，岩流、小次郎、船島，一個字都沒有。",
-          "emotion": "放慢"
-        }
-      ]
-    },
-    {
-      "id": "no-reason",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an old Edo-era sword master with white hair, a short white beard and a plain dark kimono at the cave mouth, setting his brush down on the blank scroll and looking at us with a quiet face, soft overcast light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu527",
-          "text": "最該知道答案的那個人，什麼都沒留下。",
-          "emotion": "誠懇"
-        }
-      ]
-    },
-    {
-      "id": "brochure-again",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a smiling island tour guide in a windbreaker standing on a seaside lawn under a pale sky, holding up a folded blank leaflet our way with a teasing grin, a bronze statue of a swordsman on a plinth behind her",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu528",
-          "text": "還記得開頭那份導覽嗎？它還寫了：決鬥那年的島，只有今天的六分之一大。",
-          "emotion": "語氣親近"
-        }
-      ]
-    },
-    {
-      "id": "island-grew",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of a small island in a calm strait under a pale sky, a park worker in a cap standing on its shore and spreading his arms wide with a grin toward the viewer",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mu529",
-          "text": "我們覺得，這個故事也跟島一樣，是後來才長大的。",
-          "emotion": "像跟朋友說自己的看法"
-        }
-      ]
-    },
-    {
-      "id": "answer",
-      "template": "big",
-      "data": {
-        "text": "「故意遲到」是後來的讀法",
-        "kicker": "慶長十七年的巖流島",
-        "sub": "那天島上發生了什麼，至今各說各話"
-      },
-      "lines": [
-        {
-          "id": "mu530",
-          "text": "所以「故意遲到」可以結案：一手的紀錄都沒寫動機，那是後來的讀法。"
-        },
-        {
-          "id": "mu531",
-          "text": "至於那天島上到底發生了什麼，到今天還是各說各話。"
-        }
-      ]
-    },
-    {
-      "id": "file-stamped",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young archivist in a cardigan and round glasses at a wooden desk in the afternoon, pressing a rubber stamp onto the cover of a plain manila folder and smiling to the front, soft window light",
+        "prompt": "Wide shot of a rocky mountain path under a soft grey sky, an elderly Edo-era sword master with white hair and dark kimono climbing with a wooden staff toward a cave mouth",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "mu532",
-          "text": "這份檔案，存檔。",
-          "emotion": "收尾，乾脆"
+          "id": "mu601",
+          "text": "先翻《五輪書》：1643 年武藏隱居九州熊本山洞動筆，1645 年過世前約一週完成；",
+          "say": "先翻《五輪書》：一六四三年武藏隱居九州熊本山洞動筆，一六四五年過世前約一週完成；",
+          "say_for": "a3dca6f631ca",
+          "emotion": "交代 1643 動筆與 1645 死前約一週完成，與後文 1654 死後九年嚴密吻合"
+        }
+      ],
+      "chapter": "1643 年《五輪書》隻字未提，1654 年石碑寫「兩雄同時相會」"
+    },
+    {
+      "id": "youth-top",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small wooden spinning top and a tiny carved wooden horse resting on a tatami floor in a quiet old house, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu602",
+          "text": "開頭連十三、十六歲贏誰都點了名，還寫明直到二十八九歲、六十多場比試全勝；",
+          "emotion": "首次亮出六十多場比試全勝，緊湊不念表"
         }
       ]
     },
     {
-      "id": "outro",
-      "template": "outro",
+      "id": "record",
+      "template": "shot",
       "data": {
-        "title": "存檔",
-        "cta": "訂閱奇聞檔案局",
-        "lines": [
-          "「故意遲到」是後來的讀法"
-        ]
+        "prompt": "Medium shot of an elderly Edo-era sword master with white hair and dark kimono seated calmly behind a low wooden desk inside a mossy rocky cave with clean scroll, brush and iron kettle",
+        "camera": "tilt up",
+        "visual": "still"
       },
       "lines": [
         {
-          "id": "mu533",
-          "text": "你第一次聽到武藏故意遲到，是在哪裡？",
-          "emotion": "問句上揚，像在聊天"
-        },
+          "id": "mu603",
+          "text": "而相傳發生在 1612 年、他二十八九歲時的巖流島之戰，正好落在這段期間；",
+          "say": "而相傳發生在一六一二年、他二十八九歲時的巖流島之戰，正好落在這段期間；",
+          "say_for": "9db78cbb106a",
+          "emotion": "自然口語精準咬合二十八九歲區間，不堆多餘設問直奔下句揭曉"
+        }
+      ]
+    },
+    {
+      "id": "gorin-blank",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up of an unrolled clean washi sheet spread across dark oak wood grain beside an open stitched historical volume, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
         {
-          "id": "mu534",
-          "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
-          "emotion": "收尾，誠懇"
+          "id": "mu604",
+          "text": "結果翻遍這本《五輪書》，別說小次郎，連這場海島決鬥都隻字未見！",
+          "emotion": "以隻字未見重音兌現第一個鉤子，避免與後文句尾撞詞"
+        }
+      ]
+    },
+    {
+      "id": "kokura-castle",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a Japanese castle keep with layered dark tiled roofs on tall sloping grey stone walls, white plaster walls and pine trees in calm morning sun",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu201",
+          "text": "既然本人沒寫，就看死後九年最早的石碑：1654 年，在巖流島對岸的九州小倉城下，",
+          "say": "既然本人沒寫，就看死後九年最早的石碑：一六五四年，在巖流島對岸的九州小倉城下，",
+          "say_for": "f61440c4b251",
+          "emotion": "承接本人沒寫並點明小倉在巖流島對岸"
+        }
+      ]
+    },
+    {
+      "id": "iori-raises",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a middle-aged samurai in formal dark kamishimo watching workers hoist a tall smooth stone monument with ropes and wooden scaffolding, mild daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu202",
+          "text": "武藏的養子宮本伊織立碑，記下養父戰績與這場決鬥；那碑上怎麼記對手跟碰面經過？",
+          "emotion": "一問統攝對手稱呼與碰面經過，消除疊詞轉折"
+        }
+      ]
+    },
+    {
+      "id": "nameless",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stonemason in a dark work coat kneeling with a wooden mallet and chisel beside a tall smooth stone stele in a courtyard, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu203",
+          "text": "碑上對手既沒姓「佐佐木」、也沒名「小次郎」，只稱劍術兵法高手「巖流」。",
+          "emotion": "俐落揭曉碑上僅稱巖流"
+        }
+      ]
+    },
+    {
+      "id": "real-blade",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young duellist in a crimson haori standing on a pebbly shore with his hand resting on the hilt of a long sword at his hip, grey sea behind",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu204",
+          "text": "碑文寫，是巖流主動要求拿真刀決一死戰；武藏回他：你揮真刀，我提木製武器應戰。",
+          "emotion": "統一『巖流』字形，清楚呈現真刀對木製武器之約"
+        }
+      ]
+    },
+    {
+      "id": "two-arrive",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a rugged Edo-era swordsman holding a wooden weapon and a rival duellist in a crimson haori facing each other on a pebbly island shore, calm strait behind",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu205",
+          "text": "接著兩人登上原稱「船島」的小島，關鍵的碰面經過，碑文竟刻著「兩雄同時相會」！",
+          "emotion": "依碑文與事件時序先揭曉登島與兩雄同時相會"
+        }
+      ]
+    },
+    {
+      "id": "lightning",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a rugged Edo-era swordsman in a dark kimono standing still on a rocky shore with his wooden sword lowered while a bright bolt of lightning flashes over the distant sea",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu208",
+          "text": "隨即武藏木刀一擊取勝、快過閃電，船島因巖流敗亡才俗稱巖流島——整塊碑完全沒寫誰晚到！",
+          "emotion": "順接一擊取勝與島名由來，句尾換詞扣緊未寫晚到並銜接下句但書"
+        }
+      ]
+    },
+    {
+      "id": "ada-simultaneous",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy raven bob with a side fringe and thin crimson glasses, holding one finger up thoughtfully beside an archive shelf, soft daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu207",
+          "text": "當然「同時相會」未必精確到幾點幾分；況且這是養子立的碑，宮本家以外的人又怎麼記？",
+          "emotion": "精簡字義但書並減少破折號反問模板"
+        }
+      ]
+    },
+    {
+      "id": "moji-castle",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of tall white Japanese castle walls on a high stone base under a pale overcast sky, plum blossoms on a branch in the foreground, calm spring light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu209",
+          "text": "小倉鄰城領主沼田家，決鬥後曾收留怕對手同門尋仇的武藏；後人轉引的《沼田家記》片段裡，",
+          "emotion": "清楚交代收留怕對手同門尋仇之關聯，避開易聽岔地名",
+          "say": "小倉隔壁城的領主沼田家，決鬥後曾收留怕對手同門尋仇的武藏；後人轉引的《沼田家記》片段裡，",
+          "say_for": "fd690041e854"
+        }
+      ],
+      "chapter": "小倉鄰城《沼田家記》與十八世紀初傳記，早期紀錄皆未提遲到"
+    },
+    {
+      "id": "kojiro-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wooden desk lit by a warm paper lantern at night with an unrolled clean washi scroll, dark slate inkstone and bamboo brush resting on a porcelain stand",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu210",
+          "text": "稱對手「小次郎」，寫兩邊原約不帶人，武藏弟子卻躲在島上，最後動手的不是武藏一個人！",
+          "emotion": "稱對手小次郎並點明原約不帶人對比不只武藏一人動手，嚴守查核紅線不提蘇醒打死"
+        }
+      ]
+    },
+    {
+      "id": "numata-doubt",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an elderly samurai castle keeper in a grey kamishimo in a quiet hall, looking gravely toward the viewer in soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu211",
+          "text": "這份年代未詳的外人紀錄雖有爭議，奇特的是：連對武藏這麼不留情面的說法，也沒說他遲到！",
+          "emotion": "單就內容不留情面描述，不預設沼田家敵意動機"
+        }
+      ]
+    },
+    {
+      "id": "early-books",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a stack of stitched Edo manuscripts with a second thick bundle of washi sheets tied with hemp string on a low wooden desk, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu212",
+          "text": "決鬥約百年後的十八世紀初，劍客傳記配合他「二刀流」雙刀名聲，已寫出他討船槳劈成雙木刀應戰；",
+          "emotion": "補齊主詞與船槳避免討獎同音歧義"
+        }
+      ]
+    },
+    {
+      "id": "box-mystery",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wooden document box with its lid half open on tatami and a folded washi sheet resting inside, soft light through a paper screen",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu213",
+          "text": "但當時傳記只出現船槳木刀；「遲到兩小時」到底要再隔多久、在哪本書才第一次冒出來？",
+          "emotion": "不再重複第四次沒提遲到句型，以單一懸念推進《二天記》"
+        }
+      ]
+    },
+    {
+      "id": "draft-bundle",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick bundle of clean washi sheets tied with hemp string on a low wooden desk beside a closed dark slate inkstone, soft morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu306",
+          "text": "答案是決鬥一百六十多年後、1776 年武藏流派傳人編的《二天記》——翻開一看，卻藏著大反轉！",
+          "say": "答案是決鬥一百六十多年後、一七七六年武藏流派傳人編的《二天記》——翻開一看，卻藏著大反轉！",
+          "say_for": "c93bd36edb60",
+          "emotion": "精準稱武藏流派傳人，消除死後百餘年門下之世代歧義"
+        }
+      ],
+      "chapter": "1776 年《二天記》寫出大睡遲到與削船槳，卻未寫心理戰動機"
+    },
+    {
+      "id": "gold-fan",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a shiny gold folding fan opened wide on a lacquered stand in an empty Japanese hall, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu308",
+          "text": "書裡寫舊曆四月，統治小倉的「小倉藩」准許武藏跟小次郎正式對決；",
+          "emotion": "先交代舊曆四月准許對決，時序清晰零衝突"
+        }
+      ]
+    },
+    {
+      "id": "officials",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stern Edo-era samurai official in formal kamishimo standing guard on a pebbly island beach beside calm grey water, mild overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu309",
+          "text": "比試前一天，重臣跟武藏約好明早七點從小倉搭官船登島，並派監場官「檢使」封島；",
+          "emotion": "清楚交代比試前一天官船之約與檢使封島",
+          "say": "比試前一天，藩裡大臣跟武藏約好明早七點從小倉搭官船登島，並派監場官「檢使」封島；",
+          "say_for": "edee2fc96d16"
+        }
+      ]
+    },
+    {
+      "id": "empty-room",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty straw floor cushion facing a closed paper sliding door in a quiet Japanese room, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu310",
+          "text": "沒想到當晚武藏竟突然消失！全城瘋傳他聽說小次郎太強，臨陣嚇跑了。",
+          "emotion": "承接前句正常安排急轉直下，零突兀連接詞"
+        }
+      ]
+    },
+    {
+      "id": "found",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a round-faced Edo-era innkeeper in an apron standing in the doorway of a seaside wholesale house and pointing inside with a knowing grin, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu311",
+          "text": "小倉藩連夜派使者跨越海峽，到對岸本州的下關找人，才發現他住進當地一間商行；",
+          "emotion": "緊湊交代過海到對岸下關商行尋獲"
+        }
+      ]
+    },
+    {
+      "id": "letter-washi",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bamboo ink brush resting across a folded washi letter on a low wooden desk beside a dark slate inkstone, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu312",
+          "text": "找到人後，書裡收錄一封據稱他寫給重臣的信：他突然改口不搭官船，要自己從下關搭船登島；",
+          "emotion": "消除回了一封書聽感歧義，明寫從下關搭船登島並保留據稱但書"
+        }
+      ]
+    },
+    {
+      "id": "letter-corner",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up of the lower corner of a folded washi letter beside a dark slate inkstone and bamboo brush tip on cedar wood, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu313",
+          "text": "至於幾點出發，信裡只寫：「到了適當的時候，我就過去。」書裡沒解釋用意；那決鬥當天一早呢？",
+          "emotion": "自然口語決鬥當天一早推進懸念，保持 45 秒內鉤子密度"
+        }
+      ]
+    },
+    {
+      "id": "oversleep",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a rugged Edo-era swordsman with an untidy topknot and dark kimono lying on a futon in a plain room, propped on one elbow and yawning, sliding door half open",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu314",
+          "text": "日上三竿了，他竟還在睡！小倉藩兩度派使者過海催他登島，他才回說「馬上去」，接著洗臉吃飯，",
+          "emotion": "消除約定當早重詞與回馬上去歧義，忠於原文洗臉吃飯"
+        }
+      ]
+    },
+    {
+      "id": "carve",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a rugged Edo-era swordsman in a dark kimono sitting on a wooden step outside a seaside inn, carving a long wooden oar into a large wooden sword with wood shavings at his feet",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu315",
+          "text": "出發前還向商行主人討來搖櫓船槳，先在岸上削大木刀，才由商行船夫載他前往巖流島；",
+          "emotion": "用還向…才由…凸顯不疾不徐削刀才過海的戲劇感"
+        }
+      ]
+    },
+    {
+      "id": "late-arrive",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small wooden boat crossing a grey strait toward a low island under a soft overcast sky, an old boatman in a straw hat rowing at the stern",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu316",
+          "text": "船靠岸已晚兩小時以上！早登島久等的小次郎衝到水邊怒斥：「我早到了，你怎麼這麼慢！」",
+          "emotion": "補明早登島久等，扣緊原文我比約定早到"
+        }
+      ]
+    },
+    {
+      "id": "scabbard",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an angry young duellist with a high ponytail and crimson haori standing in shallow surf, flinging an empty dark sword scabbard into the splashing waves",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu317",
+          "text": "但這還不是最衝動的：小次郎罵完拔出三尺長刀，竟氣得把刀鞘扔進海裡！",
+          "emotion": "動作升級推高衝突張力"
+        }
+      ]
+    },
+    {
+      "id": "smile",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a rugged Edo-era swordsman in a dark kimono standing ankle-deep in shallow surf, holding his large wooden sword lowered with a calm smile",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu318",
+          "text": "武藏踏在淺水裡笑說：「小次郎輸了！會贏的人怎會丟掉收刀的刀鞘？」",
+          "emotion": "補收刀二字讓路人一聽即懂武士邏輯，忠於原文笑說"
+        }
+      ]
+    },
+    {
+      "id": "bow",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a rugged Edo-era swordsman in a dark kimono standing on a pebbly shore bowing respectfully with his wooden sword held at his side, a small boat waiting behind",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu319",
+          "text": "緊接著兩人交鋒、小次郎倒下，武藏向檢使行禮後跳上原船離開——戲演完了，但你發現盲點沒？",
+          "emotion": "俐落收束勝負並在句尾直接拋出盲點鉤住觀眾"
+        }
+      ]
+    },
+    {
+      "id": "niten-magnify",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a round brass magnifying glass resting over the end of a long clean washi sheet on an oak desk, soft window light from the left",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu321",
+          "text": "《二天記》只記他改船大睡，沒寫為激怒對手才「故意遲到」！那書裡這段改船大睡，到底是從哪聽來的？",
+          "emotion": "明確指代書裡這段改船大睡從哪聽來，與前問哪本書徹底區隔"
+        }
+      ]
+    },
+    {
+      "id": "old-mouth",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old boatman with a weathered face, straw hat and short cotton coat beside calm water, looking steadily toward the viewer in soft daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu301",
+          "text": "其實早在決鬥滿百年的 1712 年，這段改船大睡的細節，才從武藏流派傳人口傳記下來！",
+          "say": "其實早在決鬥滿百年的一七一二年，這段換船又睡晚的細節，才從武藏流派的口耳相傳記下來！",
+          "say_for": "5f8dec135824",
+          "emotion": "精準接住書裡這段改船大睡從哪聽來"
+        }
+      ]
+    },
+    {
+      "id": "toyoda-listens",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly Edo-era samurai in a plain brown haori kneeling on tatami beside a low table and listening intently in soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu302",
+          "text": "那一年，定居熊本的武藏流派門人向小倉商人打聽，才知那間下關商行是商人親戚開的；",
+          "emotion": "承接 1712 年，一句話交代熊本門人向小倉商人打聽親戚商行"
+        }
+      ]
+    },
+    {
+      "id": "strait-sail",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small wooden sailboat crossing a calm blue sea toward green hills under pale clouds, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu303",
+          "text": "書裡宣稱，當年載他登島的老船夫回憶經商人轉述仍一字不差；歷代門人結合小倉重臣後代紀錄，",
+          "emotion": "直接扣接剛才載他登島的商行船夫，零孤立人物",
+          "say": "書裡宣稱，當年載他登島的老船夫回憶經商人轉述仍一字不差；歷代門人結合小倉大臣後代紀錄，",
+          "say_for": "65994fbe0a44"
+        }
+      ]
+    },
+    {
+      "id": "higo-hills",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet Japanese hamlet of steep thatched-roof houses with wooden walls among tall cedar trees and misty green slopes, soft afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu305",
+          "text": "1755 年寫初稿《武公傳》、後編成《二天記》，註明細節大多來自船夫——連對手全名也是湊的？",
+          "say": "一七五五年寫初稿《武公傳》、後編成《二天記》，註明細節大多來自船夫——連對手全名也是湊的？",
+          "say_for": "c2495c7c2997",
+          "emotion": "避免重唸 1776 年，交代初稿武公傳與細節大多來自船夫"
+        }
+      ]
+    },
+    {
+      "id": "ukiyo-stage",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of pale pink five-petal sakura blossoms and loose petals resting on a polished wooden stage floor in an empty room, soft spring light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu307",
+          "text": "沒錯！前面碑上沒姓的對手，我們查到最早也是 1746 年民間戲曲刊本才替他冠姓；",
+          "say": "沒錯！前面碑上沒姓的對手，我們查到最早也是一七四六年民間戲曲刊本才替他冠姓；",
+          "say_for": "9683baf66606",
+          "emotion": "直接回答上句懸問並揭曉 1746 年戲曲冠姓"
+        }
+      ]
+    },
+    {
+      "id": "niten-sign",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an ink brush resting across a long clean washi sheet on a low wooden desk beside a dark slate inkstone, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu320",
+          "text": "直到《二天記》書末，才把全名與傳聞年紀湊齊：聽說佐佐木小次郎當時十八歲。",
+          "emotion": "回收碑上無名伏筆並標明傳聞語氣"
+        }
+      ]
+    },
+    {
+      "id": "niten-open",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a stitched Edo chronicle lying open at clean washi pages with a bamboo ink brush resting across it beside a ceramic inkwell, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu322",
+          "text": "問題來了：《二天記》怎麼打敗其他版本變成主流？又是誰替他加上「故意」的心機？",
+          "emotion": "章末雙重懸念推進第 4 章"
+        }
+      ]
+    },
+    {
+      "id": "kensho-stack",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall stack of ten cloth-bound Japanese historical volumes resting on a polished lacquered table in a quiet study hall, soft morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu401",
+          "text": "轉捩點在明治四十二年、西元 1909 年，熊本的「宮本武藏遺蹟顯彰會」編了一本《宮本武藏》。",
+          "say": "轉捩點在明治四十二年、西元一九〇九年，熊本的「宮本武藏遺蹟顯彰會」編了一本《宮本武藏》。",
+          "say_for": "0e3d66e23924",
+          "emotion": "接住上章問題切入 1909 顯彰會本"
+        }
+      ],
+      "chapter": "1909 年熊本編者選用《二天記》，轉述時多加從容語氣"
+    },
+    {
+      "id": "kensho-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Meiji-era editor in a dark Western suit and round spectacles standing beside a printing press holding a freshly bound book with a proud smile, soft light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu402",
+          "text": "編者把前面幾種說法攤在桌上比對，最後拍板宣布：採用《二天記》！",
+          "emotion": "點出拍板定案"
+        }
+      ]
+    },
+    {
+      "id": "wastebasket",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two crumpled balls of paper lying inside a small woven wooden wastebasket beside a study desk, mild morning sun",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu403",
+          "text": "為什麼淘汰《沼田家記》「不只一人動手」的說法？還記得《二天記》寫島上有檢使嚴格看守嗎？",
+          "emotion": "顯性回呼第 1 次"
+        }
+      ]
+    },
+    {
+      "id": "reason",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a Meiji-era editor in a dark Western suit and round spectacles tapping his temple with one finger and raising an eyebrow in soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu404",
+          "text": "編者說號令那麼嚴，怎麼可能讓弟子躲著動手？但你想想，這個理由本身就出自《二天記》啊！",
+          "emotion": "跟觀眾一起抓出循環論證"
+        }
+      ]
+    },
+    {
+      "id": "ages",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Meiji-era editor in a dark Western suit and round spectacles at a long wooden table holding up fingers on both hands with a doubtful frown, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu405",
+          "text": "其實編者自己也沒全信《二天記》，在書裡坦承：《二天記》寫的兩人年紀組合很靠不住；",
+          "emotion": "誠實交代年齡組合批評"
+        }
+      ]
+    },
+    {
+      "id": "grave-search",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Meiji-era editor in a dark Western suit holding his bowler hat on a pebbly island shore under a pale sky and shading his eyes to search around",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu406",
+          "text": "編者親自登島找小次郎的墓也毫無痕跡，今天島上的小次郎碑還是隔年 1910 年才立的；",
+          "say": "編者親自登島找小次郎的墓也毫無痕跡，今天島上的小次郎碑還是隔年一九一〇年才立的；",
+          "say_for": "6cd2f0a5c185",
+          "emotion": "扣緊島上無實物證據"
+        }
+      ]
+    },
+    {
+      "id": "kensho-compendium",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick stitched Japanese historical volume lying flat open at clean pages on an oak desk, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu407",
+          "text": "島上沒證據只能靠書；但這還不是最妙的，顯彰會本轉述《二天記》時，竟自己多添了幾句話！",
+          "emotion": "因果推進揭曉添筆"
+        }
+      ]
+    },
+    {
+      "id": "slowly",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a rugged Edo-era swordsman in a dark kimono slowly rising from a futon in a plain tatami room and stretching one arm unhurriedly in soft morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu408",
+          "text": "信差來催時多了「小次郎早就到了」，武藏變成「慢慢起身、從容站起穿衣」，小次郎則大罵「違約太過分」！",
+          "emotion": "生動對照三處添筆"
+        }
+      ]
+    },
+    {
+      "id": "two-sheets",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two clean white washi sheets lying side by side on a dark wooden desk with a bamboo ink brush resting between them, soft window light from the left",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu409",
+          "text": "把兩本書擺在一起對照，這些慢條斯理的動作，《二天記》原文通通沒有。",
+          "emotion": "乾脆戳破差異"
+        }
+      ]
+    },
+    {
+      "id": "clan-box",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall dark lacquered document box wrapped crosswise with a purple silk cord tied in a neat bow on its lid on tatami, soft spring light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu410",
+          "text": "我們覺得，從這一刻起，晚起遲到已經開始被寫成一副從容不迫的姿態了。",
+          "emotion": "標明我們覺得之頻道觀點，與前文中性措辭一致"
+        }
+      ]
+    },
+    {
+      "id": "archive-shelf",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a tall wooden archive shelf with stitched historical registers pulled half out as if searched, gentle midday light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu411",
+          "text": "不過這本書還是沒寫「故意」；那目前查到，最早是誰白紙黑字把遲到寫成心理戰計謀的？",
+          "emotion": "以「目前查到最早是誰」精準對齊下章「我們查到更早是直木」"
+        }
+      ]
+    },
+    {
+      "id": "naoki-desk",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a 1930s writer in a dark kimono seen strictly from behind at a low wooden desk by a paper window, holding a brush over clean manuscript paper beside stacked books",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu501",
+          "text": "大家常猜小說家吉川英治；我們查到更早是 1934 年過世的作家直木三十五短篇〈巖流島〉。",
+          "say": "大家常猜小說家，吉川英治；查到更早是一九三四年過世的作家直木三十五，寫的〈巖流島〉小說。",
+          "say_for": "e88270db650a",
+          "emotion": "交代兩人作家身分並揭曉直木更早"
+        }
+      ],
+      "chapter": "直木三十五短篇先寫計謀爭論，吉川英治連載讓故意遲到定型"
+    },
+    {
+      "id": "naoki-plan",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a rugged Edo-era swordsman in a dark kimono lying awake on a futon in a quiet tatami room in soft morning light, staring up thoughtfully at the wooden ceiling",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu502",
+          "text": "直木照《二天記》寫，卻多推想了一句：武藏賴床時，好像一直在盤算對付小次郎的對策。",
+          "emotion": "點出往故意邁出半步"
+        }
+      ]
+    },
+    {
+      "id": "cowardly",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a 1930s wooden study desk lit by a green-shaded brass lamp with clean white manuscript sheets, fountain pens, ink bottle and a round desk clock",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu503",
+          "text": "接著直木引述當時已有的一句批評：故意拖時間讓小次郎等累，根本是卑鄙的計謀！那直木怎麼回？",
+          "emotion": "重音引述批評並提問"
+        }
+      ]
+    },
+    {
+      "id": "note-box",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a folded clean washi memo resting inside an open wooden document box on tatami, gentle midday light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu504",
+          "text": "批評出自誰未查到，直木也說或許是後人議論；卻辯護武藏常故意晚到讓對手焦躁！",
+          "emotion": "交代批評出處未查並揭曉辯護"
+        }
+      ]
+    },
+    {
+      "id": "naoki-defends",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a rugged Edo-era swordsman in a dark kimono standing on a pebbly beach in grey daylight with arms folded and a composed smile, wooden sword tucked under one arm",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu505",
+          "text": "你看，罵的人說卑鄙、護的人說兵法，兩邊講的都是「故意」！那這個說法怎麼變成全民常識？",
+          "emotion": "點破兩邊皆故意並推進吉川"
+        }
+      ]
+    },
+    {
+      "id": "asahi-press",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of steel rotary newspaper press rollers feeding clean newsprint sheets in a 1930s sunlit pressroom, mild morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu506",
+          "text": "直木過世一年多後，1935 到 1939 年，吉川英治《宮本武藏》在《朝日新聞》連載將近四年。",
+          "say": "直木過世一年多後，一九三五到一九三九年，吉川英治《宮本武藏》在《朝日新聞》連載將近四年。",
+          "say_for": "dfd4ea070981",
+          "emotion": "推進至報紙連載"
+        }
+      ]
+    },
+    {
+      "id": "essay-compendium",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a stitched Japanese book lying open on an oak desk with clean pages in soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu507",
+          "text": "吉川在隨筆裡說《二天記》最可信，還斷言武藏對付小次郎的第一招，就是故意遲到動搖他的心理。",
+          "emotion": "交代隨筆斷言",
+          "say": "吉川英治在隨筆裡說《二天記》最可信，還斷言武藏對付小次郎的第一招，就是故意遲到動搖他的心理。",
+          "say_for": "08a128272879"
+        }
+      ]
+    },
+    {
+      "id": "just-right",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a rugged Edo-era swordsman in a dark kimono sitting in a small wooden boat at sea, calmly shaving a broken wooden oar blade with a small knife",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu508",
+          "text": "小說裡船夫急喊遲到了，武藏改在船上削船底破槳，呼應前面信裡「適當的時候」回說：「剛剛好。」",
+          "emotion": "點出改在船上削船底破槳並回呼信裡適當的時候"
+        }
+      ]
+    },
+    {
+      "id": "accuse",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young duellist with a high ponytail and crimson haori standing at the waterline pointing forward and shouting angrily with a long sword at his hip",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu509",
+          "text": "岸上的小次郎更當面痛罵他「每次都故意不守時」！從此「故意遲到」紅遍全日本。",
+          "emotion": "推上高潮定型"
+        }
+      ]
+    },
+    {
+      "id": "dandelion-spread",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of white dandelion seeds drifting across a sunlit green meadow under a clear pale blue sky, soft afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu510",
+          "text": "就這樣，小說替遲到補齊了心機；但回頭翻《二天記》開頭說明，編者自己怎麼看這些比武傳聞？",
+          "emotion": "章末直接拋問二天記開頭說明，與第七章首句無縫咬合"
+        }
+      ]
+    },
+    {
+      "id": "cave-box",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain wooden manuscript box with its lid half open on tatami and clean folded paper inside, mild morning sun through a paper screen",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu605",
+          "text": "連《二天記》開頭說明也坦承，武藏的比武傳聞常張冠李戴！再看今天，還記得開頭那份導覽嗎？",
+          "emotion": "直接回答上章尾問並顯性回呼開頭導覽"
+        }
+      ],
+      "chapter": "《二天記》自承傳聞紛雜，今日船島面積更擴張成當年六倍"
+    },
+    {
+      "id": "brochure-again",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a smiling island tour guide in a windbreaker on a seaside lawn holding a folded leaflet beside a bronze statue of a swordsman on a plinth, pale sky",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu606",
+          "text": "導覽寫道，今天的島面積已是決鬥當年的約六倍大，正式島名至今仍叫「船島」——傳說不也一樣嗎？",
+          "emotion": "揭曉導覽兩項新事實並順勢反問帶入結案"
+        }
+      ]
+    },
+    {
+      "id": "closed-archive",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain wooden archive box with its lid closed and tied neatly with a white cord on tatami, soft light through a paper screen",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mu607",
+          "text": "我們覺得確實如此：回看剛剛從《五輪書》、石碑到作家的演變，「故意遲到」只是後世讀法，就此結案。",
+          "emotion": "用回呼收束全片順時證據鏈，完整對齊標題與縮圖承諾"
+        }
+      ]
+    },
+    {
+      "id": "answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide aerial shot of a small green wooded island with rocky cliffs and a wooden pavilion in a sparkling turquoise strait under warm golden sunlight, three small figures on a path",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu608",
+          "text": "至於四百年前島上實際怎麼交手，在武藏本人沉默之下，就留給歷史解讀了。",
+          "emotion": "分清已結案與留白"
+        }
+      ]
+    },
+    {
+      "id": "ada-subscribe",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy raven bob with a side fringe and thin crimson glasses, hugging a closed cloth-bound archive dossier and smiling warmly in a quiet study, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mu609",
+          "text": "本案存檔！回看卷宗，你信最早的石碑，還是船夫回憶？歡迎留言並訂閱奇聞檔案局。",
+          "emotion": "誠懇邀請二選一留言與訂閱"
         }
       ]
     }

@@ -145,8 +145,8 @@ metadata:
    ```
     - **角色造型與頭身比鎖死（與《原來如此事務所》嚴格分家）**：奇聞全系列人物固定採 **3.5 頭身修長繪本／劇場動畫比例（`3.5-head slender storybook theatrical anime proportion`）**——與《原來如此事務所》的 2.5 頭身圓滾大頭 Q 版（所長＋小問）在頭身比、剪影與色盤上完全不同，**嚴禁畫成 2.5 頭身大頭娃娃或混用隔壁角色**。串場檔案局研究員 **`ada`** 出場時，`ImagePaths` **必傳 Repo 內正式設定圖 `docs/videos/history-curiosity/series-sheets/characters/ada/ada-canon-v2.png`**（黑色微捲齊下巴短髮＋側分斜瀏海、暗酒紅細圓框眼鏡、褪色青雙排釦風衣配牛皮紙米白高領毛衣，見 `docs/videos/history-curiosity/series-sheets/README.md`）；單集內跨 ≥ 4 鏡出場的可入畫歷史人物，開畫前同樣以 3.5 頭身比例產出固定角色設定圖並傳入 `ImagePaths`；重繪修正既有鏡頭時把前一版圖檔一併傳入 `ImagePaths` 鎖定構圖與道具位置。
     - **全片畫風 100% 統一**：同一集內所有鏡頭必須統一為劇場級動畫光影 × 厚塗水粉質感，**嚴禁前段混留舊版平塗黑框大頭卡通、後段才切厚塗水粉**（觀眾連看會像兩部不同動畫拼貼）。
-    - **情緒光影與年代道具精準對齊**：遇到夜間大火、災難逃生、陰鬱法庭審訊等緊張場次，依劇情將光影微調為火光橘紅高反差冷暖輪廓光或陰天冷灰藍窗光，避免在緊急逃難場套用悠閒午後暖陽；歷史道具嚴禁現代穿幫（例如 17 世紀倫敦不可畫現代圓形橡膠腳輪手推車、現代白瓷餐盤、現代對折賀卡式雙開頁或懸空無支撐木匾，應指定木輻條鐵箍輪手推車、粗陶／錫镴盤與三摺火漆羊皮紙信）。
-   - **防畫紙白邊與防招牌亂碼（實戰必加）**：桌面物件／書本／食物特寫容易被水粉筆觸留出四周白紙邊，Prompt 尾端必加 `100% full-bleed edge-to-edge composition where rich background pigment reaches every single outer pixel on all four sides`；街道與建築外景必加 `plain unadorned timber and stone walls with clean blank surfaces and zero hanging shop signs`。
+    - **情緒光影與年代道具精準對齊**：遇到夜間大火、災難逃生、陰鬱法庭審訊等緊張場次，依劇情將光影微調為火光橘紅高反差冷暖輪廓光或陰天冷灰藍窗光，避免在緊急逃難場套用悠閒午後暖陽；歷史道具嚴禁現代穿幫（例如 17 世紀倫敦不可畫現代圓形橡膠腳輪手推車、現代白瓷餐盤、現代對折賀卡式雙開頁或懸空無支撐木匾，應指定木輻條鐵箍輪手推車、粗陶／錫镴盤與三摺火漆羊皮紙信；**東亞古裝與和服必明寫左領壓右領之「右衽」`traditional right-over-left kimono collar wrap (left lapel folded neatly over right lapel)`，嚴禁畫反成壽衣左衽；中日韓古籍必明寫線裝書 `stitched thread-bound washi book (wahon)` 或卷軸而非西洋皮面精裝書；船槳削製木刀無金屬圓鍔亦無刀鞘**）。
+   - **防畫紙白邊與防招牌亂碼（實戰必加）**：桌面物件／書本／食物特寫容易被水粉筆觸留出四周白紙邊，Prompt 尾端必加 `100% full-bleed edge-to-edge composition where rich background pigment reaches every single outer pixel on all four sides`（桌面邊緣亦禁留垂掛白紙條）；街道與建築外景必加 `plain unadorned timber and stone walls with clean blank surfaces and zero hanging shop signs`。
    - **會冒字的道具與螢幕**：書頁、文件、木牌一律寫成 `clean blank parchment surface` 或改拍闔上的書脊與人物表情；現代題材螢幕只畫一條藍色路線、一個白色轉彎箭頭或紅色定位釘；數字與比例畫成具體視覺對比（鼓或扁的錢包、滿載的小船），不上文字卡。
    - **畫面不必每鏡都有人（`nobody: true` 純物件／場景鏡佔 45%–65%）**：內建 `generate_image` 不會像早期 MiniMax 在空景帳篷亂畫人臉，**嚴禁為了湊人頭把每一鏡都塞進 Ada 或路人**。全集約 **45%–65%** 鏡頭應標 `"nobody": true`，直接聚焦歷史器物、航海儀器、火山／船隻／建築環境或數量視覺對比，生圖 Prompt 明確寫出純環境與物件結構，嚴禁出現路人、背景人影或殘肢；角色鏡頭（約 **35%–55%**）只放在關鍵行動、發現異常線索與情緒轉折拍。
 
@@ -164,10 +164,10 @@ metadata:
 
 所有關鍵影格轉成 `1920×1080` PNG 後、鎖定 `storyboard` 關卡之前，必須通過**程式邊緣檢測＋獨立子代理四格 2 倍放大審查**：
 
-1. **100% 滿版無邊框**：先檢查四邊外框像素，零白邊、零黑邊、零相框線。
+1. **100% 滿版無邊框**：先檢查四邊外框像素，零白邊、零黑邊、零相框線（且縮圖底圖 `00-hero` 不得原檔重複充當正文鏡頭）。
 2. **零文字與零亂碼**：把每張圖切成左上、右上、左下、右下四張 2 倍放大圖（2x zoom quadrants），派**沒參與生圖的獨立子代理**逐張檢查，嚴禁任何中英文字母、數字、街道招牌字、印章字或黑板粉筆亂碼。
 3. **解剖、人數與 `nobody` 精準**：手指數（5 指）、眼神對焦正常；`nobody: true` 鏡頭零路人與殘肢；跨鏡角色五官髮色服裝與設定圖一致，全集畫風一致。
-4. **圖文相符、時代道具與地理考證**：畫面必須精準接住旁白當下講的主體與數量；**嚴禁時代穿幫與物理懸空**（例如 1816 年出現現代插電檯燈、1666 年出現現代橡膠腳輪手推車或懸空無支撐木匾）；若畫面出現地圖或地球儀，標記位置必須 100% 符合真實地理（例如印尼松巴哇島不可插在巴布亞紐幾內亞、菲律賓不可插在北太平洋公海；若無把握精準對位，改畫局部火山島或無標記古地球儀）。
+4. **圖文相符、時代道具與地理考證**：畫面必須精準接住旁白當下講的主體與數量；**嚴禁時代穿幫與物理懸空**（例如 1816 年出現現代插電檯燈、1666 年出現現代橡膠腳輪手推車或懸空無支撐木匾、東亞和服與古裝畫反成「左衽」、江戶古籍畫成西洋皮面精裝書、削船槳木刀誤畫金屬護手或刀鞘）；若畫面出現地圖或地球儀，標記位置必須 100% 符合真實地理（例如印尼松巴哇島不可插在巴布亞紐幾內亞、菲律賓不可插在北太平洋公海；若無把握精準對位，改畫局部火山島或無標記古地球儀）。
 
 任何一鏡被獨立審圖代理抓到上述瑕疵，立即把原圖與角色設定圖傳入 `ImagePaths` 重繪修正，直到全集 100% 通過後才逐鏡執行 `keyframes import --provider external --usd 0` 並送審分鏡。
 
@@ -218,16 +218,16 @@ metadata:
 **旁白與八語配音**
 
 1. `tts --slug <SLUG> --dry-run` 看句數與費用 → `tts --slug <SLUG>`（確認實測語速 ≥ 4.4 字／秒，不足加 `voice.tempo`）→ `check-audio --slug <SLUG>`。
-2. `check-audio` 標出唸錯的句子寫在 `review/check-flags.json`，`tts --slug <SLUG> --redo <check-flags.json>` 只重唸那幾句；speech journal 記著已付錢的句子，中斷後重跑不會重複收費。
-3. 重唸還錯（中文多音字、年份、外文數字或縮寫如 `St. Paul's`、西文千分位 `13,200`、日文逗號數字 `68,596`、印尼文 `666`；以及 MiniMax 常見坑：**印尼文禁寫 `&` 必展開為 `dan`**、**越南文千分位禁寫 `.` 改空格且全大寫縮寫改小寫音讀**、**西葡單字母等級前避開同母音連音吞字**、**泰文窄時間窗避開音節過長的外來縮寫**）就改那一句的字，合併後重錄該句並重跑 `check-audio` 確認；遇到拼寫與發音不一致的英文姓氏或古地名（如 `Pepys` 應唸 `Peeps` 而非「佩皮斯／皮普斯」），在單集 `story-lexicon` 補上音標式英文讀法鎖定全片一致。改了中文旁白就要重新跑盲評 `narrative` 與 `script --slug`。
-4. 同一集的 `tts`、`dub` 與 `check-audio` 會共用 speech lock（「the project is held by …」，結束碼 3）：**同一集一次只跑一個語音指令**（外語 `check-audio` 一次跑一個 `--locale`，每個約 2.5 分鐘）。
+2. `check-audio` 標出唸錯的句子寫在 `review/check-flags.json`，`tts --slug <SLUG> --redo <check-flags.json>` 只重唸那幾句；speech journal 記著已付錢的句子，中斷後重跑不會重複收費。中文旁白若因古地名或文言詞被轉寫器誤聽，優先在該句補白話同音 `say`＋`say_for = textHash(line.text)` 重錄單句，**不改 `line.text`**，即可保留已通過的 `opening-review`、盲評 `narrative`（注意盲評 `evidence` 壓在 160 字內且單獨標 `[muXXX]`，不寫破折號區間）與八語 `source_hash`。
+3. 跑八語 `dub` 前，先照 MiniMax 實測語速（`en 13.9`、**`ja 4.84`**、`ko 6.67`、`es 15.3`、`pt 14.6`、`id 14.2`、`vi 17.3`、`th 11.2` 字／秒）`× 0.94` 並對每個四位數西元年額外預扣字數（西／葡／印尼扣 15–20 字元、日／韓／泰扣 5–8 字）預縮 `i18n/*.json`，省去整輪超窗重錄。重唸還錯（中文多音字、年份、外文數字或縮寫如 `St. Paul's`、西文千分位 `13,200`、日文逗號數字 `68,596`、印尼文 `666`；以及 MiniMax 常見坑：**印尼文禁寫 `&` 必展開為 `dan`**、**越南文千分位禁寫 `.` 改空格且全大寫縮寫改小寫音讀**、**西葡單字母等級前避開同母音連音吞字，且句中禁寫 `; ¿qué …?`／`; como …?` 必拆成 `. ¿Pero qué …?`／`. Mas como …?` 獨立句**、**泰文窄時間窗避開外來縮寫且 `ลือว่า` 改 `เล่าลือกันว่า`、`จากพาย` 改 `จากพายเรือ`**、**日文避開 `下` 訓讀誤讀 `もと`（`下関` 寫 `しものせき`、`下書き` 寫 `草稿`）、`舟で` 改 `船で`、`櫓` 改 `船を漕ぐ櫂`、單字 `碑` 改雙字 `石碑`、句首數字前補引導詞並寫 `じゅうさん歳／じゅうはっ歳`**、**韓文日本古籍名改借詞如 `책 《니텐키》`、`2시간` 寫 `두 시간`、`배 밑` 改 `바닥의`**）就改那一句的字，合併後重錄該句並重跑 `check-audio` 確認；遇到拼寫與發音不一致的英文姓氏或古地名（如 `Pepys` 應唸 `Peeps` 而非「佩皮斯／皮普斯」），在單集 `story-lexicon` 補上音標式英文讀法鎖定全片一致。改了中文旁白 `line.text` 就要重新跑 `opening-review`、盲評 `narrative` 與 `script --slug`。
+4. 同一集的 `tts`、`dub` 與 `check-audio` 會共用 speech lock（「the project is held by …」，結束碼 3）：**同一集一次只跑一個語音指令**；雲端容器跑外語 `check-audio --second-opinion`（`WHISPER_MODEL=medium`）時**一次只跑單一 `--locale`**（勿用 `&&` 串三語以上，避免超時觸發容器重啟）。
 
 **插圖生成、2x 放大審圖與匯入（2026-11-14 現行流程）**
 
 1. 嚴禁呼叫 `node tools/video/cli.mjs keyframes` 讓站台調用 MiniMax 生圖。
-2. 先用內建 `generate_image`（`AspectRatio: "16:9"`）畫出單集跨 ≥ 4 鏡出場的角色設定圖，再逐批生成全集關鍵影格（有角色出場必傳 `ImagePaths`）。若遇 `gemini-3.1-flash-image` 配額冷卻，先跑完八語翻譯、配音與 `check-audio`，等配額恢復再繼續生圖，**絕不退回 MiniMax**。
-3. 將所有關鍵影格轉為 `1920×1080` PNG 並切出四格 2x 放大圖，交由獨立子代理逐張審過（零文字、零白邊、角色一致、五指與地理／時代道具無誤），不合格鏡頭帶原圖進 `ImagePaths` 重繪。
-4. 全數審過後，逐鏡執行 `node tools/video/cli.mjs keyframes import --slug <SLUG> --shot <ID> --file <PNG> --provider external --usd 0` 寫入 `keyframes/manifest.json`，再鎖定並推送 `storyboard` 關卡。注意：之後只要改動 `video.json` 某景的 `prompt`，該景的外部匯入紀錄就會失效，務必先定稿 `video.json` 再匯入。
+2. 先用內建 `generate_image`（`AspectRatio: "16:9"`）畫出單集跨 ≥ 4 鏡出場的**單人居中全身正面**角色設定圖（勿畫三視圖，避免後續鏡頭複製出分身），再逐批生成全集關鍵影格（有角色出場必傳 `ImagePaths`；**`nobody: true` 純物件鏡嚴禁傳含人物設定圖或掛 `character` 角色參考，只可傳無人物件鏡作畫風參考**；攤開的東亞線裝和本採 **90 度正俯視平拍**並明寫薄軟紙封與內頁齊平、僅正中央折縫縫白絲線；無護手削木刀正面寫 `plain smooth guardless suburito wooden oar-sword`，禁寫負面詞 `no tsuba` 以免觸發畫出圓鍔）。若遇 `gemini-3.1-flash-image` 配額冷卻，先跑完八語翻譯、配音與 `check-audio`，等配額恢復再繼續生圖（或經站主明確同意後改走站台 `/api/video/media/images` 指定同款 `image_model: "gemini-3.1-flash-image"`、`size: "2K"`、`aspect: "16:9"` 生圖），**絕不退回 MiniMax**。
+3. 將所有關鍵影格轉為 `1920×1080` PNG 並切出四格 2x 放大圖，交由獨立子代理逐張審過（零文字、零白邊、角色一致、五指與地理／時代道具無誤），不合格鏡頭針對性重繪（若舊圖 `左衽` 折線頑固則不帶舊圖、改只帶標準 `右衽` 設定圖或改背側四分之三視角）。
+4. 全數審過後，逐鏡執行 `node tools/video/cli.mjs keyframes import --slug <SLUG> --shot <ID> --file <PNG> --provider external --usd 0` 寫入 `keyframes/manifest.json`（若期間曾微調 `video.json`，記得把未重繪的既有合格鏡頭也重跑一次 `keyframes import` 補齊新 `visual_hash` 清單），確認 `status` 顯示 `[x] keyframes drawn` 後推送 `storyboard` 關卡。注意：之後只要改動 `video.json` 某景的 `prompt`，該景的外部匯入紀錄就會失效，務必先定稿 `video.json` 再匯入。
 
 **前 300 秒觀眾審查（站主 2026-11-19「前300秒都不會滑走、嚴格審核」，配音前必過）**：劇本定稿後、跑 `tts` 之前，先 `node tools/video/cli.mjs opening-review --slug <SLUG>` 寫出審查包（`review/opening-packet.md`：縮圖大字、標題、前 300 秒的口白與時間，有角色時顯示名字而不是代號）。**預設由製作中的 AI 自己派三個全新的子代理**（Claude Code、Codex 都可以；不花站台額度），各開新的對話、只給這份審查包，分別扮演 `newcomer`（第一次點進來的路人）、`scroller`（邊滑手機、隨時想走）、`stickler`（專抓沒頭沒尾和跳接），把三份 JSON 存成陣列後 `opening-review --slug <SLUG> --record <檔案> --author <你的名字>` 記錄；作者不能當讀者，每位讀者要照抄審查包裡的 `opening_hash`。另一種是 `opening-review --slug <SLUG> --ask`，改由站台用站主為漫劇查核階段選的模型跑三次（算進每月額度，結果由工具直接向站台要，最難造假）。**三位都要 score ≥ 8.5、不會滑走、problems 為空**才算過；沒過就照列出的問題改稿，再找**新的**三位重審。審查結果綁定這一版的縮圖大字、標題和前 300 秒口白，這三樣一改就要重審；300 秒之後的修改、停頓、念法微調和重錄單句不用。沒過關之前 `tts` 會拒絕合成；`tts --dry-run` 和 `opening-review --check` 會顯示目前狀態（主機產線用自己的盲評，不受影響）。
 
@@ -235,7 +235,7 @@ metadata:
 
 1. `music --slug <SLUG>`（`--dry-run` 先看價，一首約 US$0.08；不足片長加 `--loop`）→ `render` → `clips`（全是靜圖加運鏡，不花錢，
    但 `assemble` 一定要它的 manifest）→ `assemble`（一集約 15 分鐘，4 核心一次跑一集）→ `captions` → `qa`（11/11）
-   → **獨立子代理成片觀眾視角評分（`review/audience-review.md`，問題全數修完並重過 `qa` 11/11）** → `package` → 雲端硬碟完整備份與獨立核對 → `review-push --gate final`（站主 2026-11-14 定案：修完觀眾評分問題後才推後台跟備份）。
+   → **獨立子代理成片觀眾視角評分（`review/audience-review.md`，問題全數修完並重過 `qa` 11/11）** → `package` → 雲端硬碟完整備份與獨立核對 → `review-push --gate final`（站主 2026-11-14 定案：修完觀眾評分問題後才推後台跟備份）。**若重推已有八語配音的集數（更新 `final`＋`publish`），舊的 `languages` 審核單會自動失效，且必須等站主先核准新 `publish` 後才能執行 `review-push --slug <SLUG> --gate languages`（否則同步 YouTube 會報「已選取的 `<locale>` 配音尚未核准，請先完成語言包」），交付時務必提醒站主並在 `publish` 核准後補推 `languages` 及備份 `review/languages.json`**。
 2. `render` 用 Playwright 開瀏覽器。容器預裝的 Chromium 版本可能比 repo 的 Playwright 舊，報「Executable doesn't
    exist」時不要 `playwright install`：在暫存目錄建一個 `PLAYWRIGHT_BROWSERS_PATH`，把預裝的 headless shell
    接成 Playwright 要的版本號資料夾（`chrome-headless-shell-linux64/chrome-headless-shell` 指到預裝的

@@ -1,6 +1,49 @@
-# S14 巖流島「故意遲到」：寫稿紀錄
+# S14 巖流島「故意遲到」：重製與審片紀錄
 
-## 查核（2026-10-19）
+## 2026-11-20 重製進度（R20 定稿、九語音軌全數通過、71 張 2x 審圖清單）
+
+### 1. 劇本、審查與九語音軌狀態（100% 完成並備份雲端）
+- **定稿版本**：R20（70 景、70 句旁白、無卡片、`intro_at: "none"`、`"pauses": {"line_ms": 0, "scene_ms": 150}`、`"still_motion": "beat"`、`thumbnail.data.layout: "heimao"`）；`node tools/video/cli.mjs lint --slug curio-s14` → **`0 errors, 0 warnings`**。
+- **獨立查核（`verify-2.md`）**：對照 [`verify-1.md`](verify-1.md) 45 列與 11 項核心禁令（不提春山、兩雄同時相會字義但書、不畫傷勢／倒地者、《二天記》船夫「大多來自」並拆開 1712→1755→1776、區分岸上削槳與小說船上削破槳且不指認艪／艫、「小次郎負たり」、不提物干竿與燕返、直木先吉川後且標批評出處未查、《五輪書》死前約一週且不稱親筆原稿、吉川英治 1962 歿不入畫、「我們覺得」標示觀點）全數 **PASS**。
+- **前 300 秒觀眾審查（`opening-review`）**：三位全新獨立子代理（`r20-reader-newcomer`、`r20-reader-scroller`、`r20-reader-stickler`，`opening_hash: 0e7e2355bdffea8b07a0e1f74757f72c601379d953eeef532ccd4930eb657ffc`）皆為 **`9.2 / 10`**、`would_stay_300: true`、`swipe_at: null`、`problems: []`（紀錄於 `review/opening-review.json`）。
+- **盲評兩位獨立讀者（`narrative`）**：[`panel/reader-1.json`](panel/reader-1.json) 與 [`panel/reader-2.json`](panel/reader-2.json) 皆 **`14 / 14` 通過**（`narrative` hash `61c187b6046b094e`，紀錄於 `review/narrative.json`）。
+- **九語黑猫滿版縮圖**：`thumbnail.jpg`（`zh-TW`）與 `thumbnails/{en,ja,ko,es,pt,id,vi,th}.jpg` 全數渲染並逐張目視檢查通過（單行亮黃大標、單行純白副標、零壓臉、零孤字斷行）。
+- **中文旁白與配樂**：
+  - `zh-TW`（Gemini `Sulafat`，`tempo: 1.24`）：片長 **`09:00`**，純講話實測語速 **`4.60 字／秒`**（≥ 4.4 字／秒下限），`check-audio` **`70 / 70` 全數通過（`0 flagged`）**。
+  - 配樂：綁定 `curio-bed-w02-5846379f.mp3`（`gain_db: -20, duck_db: -10`）。
+- **八語 MiniMax 配音（`dub --provider minimax`＋`check-audio --second-opinion`）**：`en, ja, ko, es, pt, id, vi, th` 八語音軌（`dubs/<locale>.m4a`）全數合入時窗且逐語 **`70 / 70` 全數通過（`0 flagged`）**。
+
+### 2. 71 張插圖四格 2x 放大審圖與匯入狀態（`71 / 71` 100% 通過並推送 `storyboard`）
+站主授權於內建生圖冷卻期間改走站台 Gemini 生圖 API（`/api/video/media/images`，指定 `image_model: "gemini-3.1-flash-image"`、`size: "2K"`、`aspect: "16:9"`，絕不使用 MiniMax），已完成 4 張單人正面設定圖（`characters/{musashi-29,kojiro,musashi-60,meiji-editor}.png`）與全部 36 張待修關鍵影格重繪，並全數通過程式外框滿版檢測（`0 border/size flags`）與獨立子代理四格 2x 放大審查（連同既有合格圖合計 **`71 / 71` 張 100% PASS**）：
+- **角色設定圖（4 張，對齊 `ada-canon-v2.png` 3.5–4 頭身修長劇場水粉比例）**：
+  - `characters/musashi-29.png`（29 歲青年武藏：深靛小袖標準小寫 `y` 字右衽、空腰帶零刀鞘、一體成形無鍔無護手削木刀 `suburito`）
+  - `characters/kojiro.png`（青年小次郎：高馬尾、朱紅無袖羽織配淺蔥小袖右衽、左腰單把長刀）
+  - `characters/musashi-60.png`（60 歲晚年武藏：灰白束髻短鬚、炭褐小袖右衽配灰藍袴）
+  - `characters/meiji-editor.png`（1909 年熊本顯彰會編者：中分黑髮、短髭、細圓框眼鏡、明治深灰三件式西裝，與 `48-reason`、`50-grave-search` 完全一致）
+- **獨立子代理四格 2x 放大審查全數通過（`71 / 71` PASS）**：
+  - 既有保留 35 張：`00-hero`（`stock/1abe3f59...png`）、`Ada` 全 3 鏡（`07-ada-open`、`18-ada-simultaneous`、`70-ada-subscribe`）及 31 張無人物件／環境鏡。
+  - 重繪通過 36 張：
+    - 6 張 `nobody: true` 物件鏡（`06-clash-hero` 獨立海浪刀尖對峙構圖；`11-gorin-blank`、`44-niten-open`、`51-kensho-compendium`、`62-essay-compendium` 採 90 度正俯視袋綴線裝和本，薄軟紙封與內頁齊平、僅正中央折縫縫白線、零西洋硬殼圓拱書背與歐洲花布；`61-asahi-press` 1930 年代昭和鋼製滾筒輪轉印刷機送出全白新聞紙）。
+    - 30 張人物鏡（`01-unveil`、`02-four-months` 兩尊無甲束髻右衽青銅劍士像配舉 4 指工作人員、`03-popular`、`04-tease-cave`、`05-tease-iori`、`08-cave-climb` 背影朝上爬向山洞、`10-record`、`13-iori-raises` 單座石碑配三腳木架滑輪繩索吊裝、`14-nameless` 背側石匠五指持槌鑿對空白碑、`15-real-blade`、`16-two-arrive` 無現代輪船海平線雙雄同時登島、`17-lightning`、`21-numata-doubt`、`26-officials` 素面肩衣零印章亂碼、`28-found` 無招牌旅店門口指向室內空手武藏、`31-oversleep` 標準右衽打呵欠、`32-carve`、`33-late-arrive` 船夫單槳搖櫓與武藏船首抱木刀、`34-scabbard` 左腰零殘留鯉口、`35-smile`、`36-bow`、`39-toyoda-listens` 右衽配全素襖門、`46-kensho-book` 全素色書脊、`49-ages` 全素布面書疊、`52-slowly` 素面床之間壁龕零掛軸字與雙手五指、`56-naoki-desk` 純背影素羽織、`57-naoki-plan`、`60-naoki-defends`、`63-just-right`、`64-accuse`）。
+- **匯入與分鏡核准**：70 景全數寫入 `keyframes/manifest.json`（`[x] keyframes drawn`），完成 `render`（`[x] frames rendered`），推送 `storyboard` 並由站主核准（`[x] storyboard approved`），`clips` 產出 70 靜圖運鏡清單（`US$0.00`）。
+
+### 3. 成片合成、`qa`（`11 / 11`）與獨立觀眾視角審查（`8.60 / 10` PASS）
+- **成片合成與品管（`qa` `11 / 11` 全過）**：
+  - `assemble --slug curio-s14 --adopt-branding`：`final.mp4`（`sha256: 06530d2067da`，總長 `9m21.21s`／`16,835` 格，零片頭＋片尾 `mokaair-brand-package-v4-endscreen`，`-14.0 LUFS`）；八語音軌零成本重混對齊片尾長度後，`captions` 與 `qa` **`11 of 11 checks passed`**（`assemble`、`render`、`narration`、`pace`、`captions`、`metadata`、`facts`、`links`、`thumbnail`、`policy` `0.72`、`disclosure`）。
+- **獨立一般觀眾視角評分挑刺（`review/audience-review.md`）**：
+  - 六項指標得分：`8.8`（標題與縮圖吸睛度）、`8.5`（九語縮圖排版與說明欄前兩行鉤子）、`8.9`（開場前 300 秒留存力與敘事推進）、`8.5`（旁白語速、咬字與配樂混音聽感）、`8.2`（全片畫風統一性、光影色溫節奏與時代考證）、`8.7`（無字視覺敘事清楚度與首尾承諾兌現），**總平均 `8.60 / 10`（門檻 ≥ 8.0），`0` 阻斷級瑕疵（PASS）**；2026-11-19 承諾兌現對照題 **100% 正面兌現（PASS）**。
+- **雲端備份與後台推送**：完整備份至 Google Drive `S14` 雙目錄（`0 differences`）並執行 `review-push --slug curio-s14 --gate final` 送交後台審核。
+
+### 4. 2026-11-21 上架與 2026-11-23 黑猫特徵物縮圖回補同步
+- **YouTube 上架（`JaCrrJFEgMc`）**：站主於 `2026-11-21T04:37Z` 核准 `final`（`06530d2067da`）、`07:16Z` 核准 PR #2197 新版黑猫特徵物九語縮圖（`layout: "heimao-left"`、`「宮本武藏沒遲到？／死後 9 年石碑，竟寫同時上島」`、`stock/0ce6e482...jpg`、`thumbnail.jpg` `f0f72d3abb5c`）之 `publish`（`b94f8ba2`）與 `languages`（`faf14b4d`），並於 `07:17Z` 完成 YouTube `JaCrrJFEgMc` 私人上傳與 9 語字幕／縮圖／8 語配音同步。
+- **2026-11-23 回補修復**：因 `2026-11-21T12:43Z` 舊分支收尾曾把 Google Drive 覆蓋回舊版「心理戰全是編的？」縮圖，已自 `_舊版/20261121T124340Z` 完整還原新版特徵物九語縮圖、`stock/0ce6e482...jpg`、`video.json`、`i18n/*.json` 與 `review/languages.json`（`310c820db761`）至 Google Drive 雙目錄（`S14/` `9/9`、`S14/製作檔/curio-s14/` `29/29`，`0 differences`）並同步回 PR #2186。
+
+
+
+---
+
+## 早期初稿紀錄（2026-10-19）
+
 
 - 事實全部來自 [`../history-curiosity/topic-checks/S14.md`](../history-curiosity/topic-checks/S14.md)：42 列逐列開原文，獨立覆核 33 列維持、
   7 列加但書、2 列推翻。寫稿前照覆核〈表外要改的〉改了那份檔案（每處標「依覆核」）：
