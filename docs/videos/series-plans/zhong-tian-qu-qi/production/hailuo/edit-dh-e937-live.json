@@ -219,7 +219,7 @@
    "file": "wind1",
    "at": "s40",
    "off": 0.0,
-   "gain": -12,
+   "gain": -8,
    "to": "s40"
   },
   {
@@ -303,13 +303,13 @@
   {
    "file": "zhongtian-sfx-drag-struggle-08",
    "at": "s26",
-   "off": 0.6,
+   "off": 0.767,
    "gain": 8
   },
   {
    "file": "zhongtian-sfx-staff-thud-01",
    "at": "s26",
-   "off": 0.95,
+   "off": 1.117,
    "gain": 7
   },
   {
@@ -506,5 +506,5 @@
  "slow_shot": {},
  "subtitle_lines": [],
  "ding": {},
- "_note": "e937 真人版 REVIEW 3（2026-11-23；第一版見 cut-notes.md，scratchpad e937c/：mkov937.py、levall937.sh → lev937.py、music／beds／spots／lineat／vol.json、cutf0.py；跑法 scratchpad e937cut.sh）。全部決定、量測與已知瑕疵寫在 colab/runs/e937-live/review3-plan.md（第一版的在 cut-notes.md）。\n片：picks.json＝refine-prep（picks-merged → fix1 → fix2 → cut-trims → review3-trims → fix3/review-picks.tsv）。fix3 換九鏡裡的八鏡：s09 s12 s19 s27 s31 s32 9371231、s18 s28 9371232（皆已精修）；s27b KEEP fix2 9371221。review3-trims：s20 c0–1.75、s26 c0.5–1.75。\n聲音：s01 改鋪錄音 a01（rb 0.92）；a16 不變調；秦霜片中原聲 s05 s13 s14 ×0.97（規則 43 不允許再低）；s19 rb 1.26、s31 asetrate 0.62（換片）；a18 ×0.97；a31 −15.0；s40 +4.5 dB、min 7.5 秒停格＋太鼓一聲。\n混音：配樂床在台詞下約 11 dB（cue 增益 −8..−15，側鏈 ratio 4、release 700 ms）；定點音效改用真實音效庫 sfx-real-20261121（zhongtian-sfx-*）；人群聲只用 murmur37；s34→s35 底噪跨場交疊。\n畫面：s17 s21 提亮、s37 壓暗；s37 面板 c4.7；CC「扔！」延到 1.0 秒（e937cut.sh 後處理）。"
+ "_note": "e937 真人版 REVIEW 3（2026-11-23；第一版見 cut-notes.md，scratchpad e937c/：mkov937.py、levall937.sh → lev937.py、music／beds／spots／lineat／vol.json、cutf0.py；跑法 scratchpad e937cut.sh）。全部決定、量測與已知瑕疵寫在 colab/runs/e937-live/review3-plan.md（第一版的在 cut-notes.md）。\n片：picks.json＝refine-prep（picks-merged → fix1 → fix2 → cut-trims → review3-trims → fix3/review-picks.tsv）。fix3 換九鏡裡的八鏡：s09 s12 s19 s27 s31 s32 9371231、s18 s28 9371232（皆已精修）；s27b KEEP fix2 9371221。review3-trims：s20 c0–1.75、s26 c0.5–1.75。\n聲音：s01 改鋪錄音 a01（rb 0.92）；a16 不變調；秦霜片中原聲 s05 s13 s14 ×0.97（規則 43 不允許再低）；s19 rb 1.26、s31 asetrate 0.62（換片）；a18 ×0.97；a31 −15.0；s40 +4.5 dB、min 7.5 秒停格＋太鼓一聲。\n混音：配樂床在台詞下約 11 dB（cue 增益 −8..−15，側鏈 ratio 4、release 700 ms）；定點音效改用真實音效庫 sfx-real-20261121（zhongtian-sfx-*）；人群聲只用 murmur37；s34→s35 底噪跨場交疊。\n畫面：s17 s21 提亮、s37 壓暗；s37 面板 c4.7；CC「扔！」延到 1.0 秒（e937cut.sh 後處理）。\n終驗後（final-check.md〈三〉輕微 4、8、11 三項選做，2026-11-23）：(1) s26 剪點 2.5–3.75 → 2.333–3.541（picks.json 直接改、e937cut.sh want 表同步；原檔 e937c/bak-final/）：只收終點時（2.5–3.625，run6）片長 1.125 秒低於組片最短 1.2 秒會被放慢 1.075 倍、槍尾鐵箍仍露 2 格，所以起點往前 4 格（多 0.17 秒兩人握槍）、終點收到 3.541：鏡長仍 1.21 秒、不放慢，槍尾金屬尖與地平線亮點一格都不露（逐格 e937c/polish/s26butt2.jpg）；擦聲、悶聲跟著 +0.167（c0.767、c1.117）。(2) s12 vf colorbalance rs/rm −0.06、bs/bm +0.06、saturation 0.92、gamma 0.95：成片 Y 41.5→37.4、U 127.9→130.1、V 128.1→125.9（s11 28/133.5/125.3、s13 34/130.3/126.8）。(3) s40 疊 wind1 −8（beds，庫裡沒有風聲）：句間 250 ms 由 −44..−45 → −30..−41（多半 −30..−34），太鼓不動。定版 run7：205.79 秒（final.log；檔長 205.81）、−14.0 LUFS、LRA 5.1、峰值 −2.8；cut-qa motion FAIL（同前）與 held FAIL（s40 刻意停格 1.19 秒，REVIEW 3 應修 1 的設計）；cut-jumps 0；audio-qa 39 句 0 問題；CC 36 條。"
 }
