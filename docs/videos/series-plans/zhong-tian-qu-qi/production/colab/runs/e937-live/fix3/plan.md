@@ -27,6 +27,12 @@ BATCH=b SESSION=zt-live2 bash <scratchpad>/e937f3.sh   # s09 s12 s19 s31（同�
 BATCH=c SESSION=zt-live3 bash <scratchpad>/e937f3.sh   # s28（A 批跑完、zt-live3 釋放之後）
 ```
 
-## 結果
+## 跑與挑片（2026-11-23）
 
-見本檔最後〈跑與挑片〉與 `review-picks.tsv`。
+- 送前 `colab sessions` 空、沒有別的 driver、assignments 0、餘額 **167.04 CU**。A 批（zt-live3）與 B 批（zt-live2）同時跑、各一輪 8/8（10:13–10:36 UTC），跑完各自 `ONLY_SELF=1` 釋放 → **163.06 CU（16 支 98 秒 3.98 CU）**。
+- C 批 s28：zt-live3 前兩次 G4 assign 一直 `Service Unavailable`（同時 zt-live2 在精修），第二輪拿到、1232 做完，**1231 沒拍成**（1232 夠用，不補）。
+- **挑片**（`review-picks.tsv`，只有第三輪修片代理一人挑；scratchpad `e937r3/look/`）：s27 1231、s32 1231、s18 1232、s09 1231、s12 1231、s19 1231、s31 1231、s28 1232 換；**s27b KEEP fix2 9371221**。
+- **精修**：`SESSION=zt-live2 PREP=1 PRECHECK_ONLY=1 ONLY=… bash <scratchpad>/e937refine.sh`（picks 43 等於六個 tsv 疊起來，openings、43 jobs、refine.py --check 0 錯）→ 七鏡一次在 zt-live2 完成；
+  s28 在 zt-live3 三次拿不到 G4，改 zt-live2 一次完成。`.seed` 由 progress 檔補成挑的種子，1312×736、格數等於草稿；舊精修移到 `refined/old/`。草稿／精修並排看過（`e937r3/look/ref1–3.jpg`）。
+- 餘額 163.06 → 158.50（C 批＋七鏡精修）→ **158.26 CU**（s28 精修）。**fix3 合計 8.78 CU**。最後 sessions 空、assignments 0、rate 0，沒有未記名 VM。
+- 換進成片：`e937cut.sh` run4（見 `../review3-plan.md`〈結果〉）。

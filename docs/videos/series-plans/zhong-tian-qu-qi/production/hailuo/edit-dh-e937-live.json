@@ -10,6 +10,7 @@
  "duck_ratio": 4,
  "duck_release_ms": 700,
  "sfx_dirs": [
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx-real-20261121",
   "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx",
   "<VIDEO_WORKDIR>/_live-e937/zhong-tian-qu-qi-e937-dh/sfx-local",
   "<VIDEO_WORKDIR>/zhong-tian-qu-qi-e937-dh/sfx"
@@ -70,7 +71,7 @@
    "cue": "reveal-hit",
    "from": "s27",
    "to": "s27",
-   "offset": 5.85,
+   "offset": 5.48,
    "gain": -4,
    "fade_in": 0.05,
    "fade_out": 0.8,
@@ -124,6 +125,13 @@
    "to": "s09b"
   },
   {
+   "file": "zhongtian-sfx-night-crickets-loop",
+   "at": "s01",
+   "off": 0,
+   "gain": -14,
+   "to": "s09b"
+  },
+  {
    "file": "Wind",
    "at": "s10",
    "off": -0.2,
@@ -138,18 +146,18 @@
    "to": "s18"
   },
   {
-   "file": "fire-1",
+   "file": "zhongtian-sfx-torch-07",
    "at": "s17",
    "off": 0.0,
-   "gain": -18,
+   "gain": -12,
    "to": "s18"
   },
   {
-   "file": "smoke-hiss",
+   "file": "zhongtian-sfx-powder-grains-loop",
    "at": "s21",
    "off": 0.0,
-   "gain": -14,
-   "to": "s21"
+   "gain": 12,
+   "to": "s22"
   },
   {
    "file": "murmur37",
@@ -159,10 +167,10 @@
    "to": "s22"
   },
   {
-   "file": "fire",
+   "file": "zhongtian-sfx-building-fire-loop",
    "at": "s23",
    "off": 0.0,
-   "gain": -14,
+   "gain": -16,
    "to": "s23"
   },
   {
@@ -173,6 +181,13 @@
    "to": "s35"
   },
   {
+   "file": "zhongtian-sfx-night-crickets-loop",
+   "at": "s29",
+   "off": -0.3,
+   "gain": -14,
+   "to": "s34"
+  },
+  {
    "file": "murmur37",
    "at": "s31",
    "off": 0.2,
@@ -180,10 +195,10 @@
    "to": "s31"
   },
   {
-   "file": "fire-1",
+   "file": "zhongtian-sfx-torch-04",
    "at": "s31",
    "off": 0.0,
-   "gain": -18,
+   "gain": -6,
    "to": "s31"
   },
   {
@@ -201,268 +216,196 @@
    "to": "s35"
   },
   {
-   "file": "impactPlank_medium_000",
+   "file": "zhongtian-sfx-table-flip-01",
    "at": "s01",
    "off": 0.05,
-   "gain": -4
-  },
-  {
-   "file": "footstep_grass_000",
-   "at": "s01",
-   "off": 0.25,
-   "gain": 4
-  },
-  {
-   "file": "footstep_grass_001",
-   "at": "s01",
-   "off": 0.6,
-   "gain": 4
-  },
-  {
-   "file": "cloth1",
-   "at": "s09",
-   "off": 0.6,
-   "gain": 4
-  },
-  {
-   "file": "impactSoft_heavy_000",
-   "at": "s10",
-   "off": 0.4,
-   "gain": -13
-  },
-  {
-   "file": "rustle03",
-   "at": "s12",
-   "off": 0.4,
-   "gain": 5
-  },
-  {
-   "file": "footstep_grass_000",
-   "at": "s17",
-   "off": 1.6,
-   "gain": 2
-  },
-  {
-   "file": "footstep_grass_001",
-   "at": "s17",
-   "off": 1.95,
-   "gain": 2
-  },
-  {
-   "file": "footstep_grass_000",
-   "at": "s17",
-   "off": 2.3,
-   "gain": 3
-  },
-  {
-   "file": "footstep_grass_001",
-   "at": "s17",
-   "off": 2.65,
-   "gain": 3
-  },
-  {
-   "file": "footstep_grass_000",
-   "at": "s17",
-   "off": 3.0,
-   "gain": 4
-  },
-  {
-   "file": "footstep_grass_001",
-   "at": "s17",
-   "off": 3.35,
-   "gain": 4
-  },
-  {
-   "file": "swish-11",
-   "at": "s20",
-   "off": 1.45,
-   "gain": 0
-  },
-  {
-   "file": "lime-puff",
-   "at": "s21",
-   "off": 0.0,
-   "gain": -2
-  },
-  {
-   "file": "swish-11",
-   "at": "s21",
-   "off": 0.0,
-   "gain": -2
-  },
-  {
-   "file": "impactSoft_heavy_000",
-   "at": "s21",
-   "off": 0.05,
-   "gain": -5
-  },
-  {
-   "file": "impactSoft_heavy_000",
-   "at": "s23",
-   "off": 0.75,
-   "gain": -9
-  },
-  {
-   "file": "impactSoft_heavy_000",
-   "at": "s23",
-   "off": 1.85,
-   "gain": -9
-  },
-  {
-   "file": "impactSoft_heavy_000",
-   "at": "s23",
-   "off": 3.3,
-   "gain": -10
-  },
-  {
-   "file": "cloth2",
-   "at": "s26",
-   "off": 0.1,
-   "gain": 7
-  },
-  {
-   "file": "impactWood_light_000",
-   "at": "s26",
-   "off": 0.7,
-   "gain": -7
-  },
-  {
-   "file": "footstep_grass_000",
-   "at": "s26",
-   "off": 0.9,
-   "gain": 4
-  },
-  {
-   "file": "impactSoft_heavy_000",
-   "at": "s26",
-   "off": 0.95,
-   "gain": -7
-  },
-  {
-   "file": "impactMetal_heavy_000",
-   "at": "s27",
-   "off": 0.17,
-   "gain": 4
-  },
-  {
-   "file": "swish-9",
-   "at": "s27",
-   "off": 0.25,
-   "gain": -2
-  },
-  {
-   "file": "cloth1",
-   "at": "s28",
-   "off": 0.2,
-   "gain": 6
-  },
-  {
-   "file": "cloth2",
-   "at": "s28",
-   "off": 0.9,
-   "gain": 7
-  },
-  {
-   "file": "footstep_concrete_000",
-   "at": "s31",
-   "off": 0.2,
-   "gain": -11
-  },
-  {
-   "file": "footstep_concrete_001",
-   "at": "s31",
-   "off": 0.7,
-   "gain": -11
-  },
-  {
-   "file": "footstep_concrete_002",
-   "at": "s31",
-   "off": 1.2,
-   "gain": -11
-  },
-  {
-   "file": "splash_01",
-   "at": "s32",
-   "off": 2.75,
-   "gain": 6
-  },
-  {
-   "file": "impactWood_light_000",
-   "at": "s32",
-   "off": 3.6,
-   "gain": -9
-  },
-  {
-   "file": "impactWood_light_000",
-   "at": "s33",
-   "off": 1.25,
    "gain": -3
   },
   {
-   "file": "impactWood_medium_001",
+   "file": "zhongtian-sfx-footsteps-group-03",
+   "at": "s01",
+   "off": 0.2,
+   "gain": 12
+  },
+  {
+   "file": "zhongtian-sfx-drag-struggle-01",
+   "at": "s09",
+   "off": 0.6,
+   "gain": -2
+  },
+  {
+   "file": "zhongtian-sfx-staff-thud-01",
+   "at": "s10",
+   "off": 0.4,
+   "gain": -5
+  },
+  {
+   "file": "zhongtian-sfx-plough-earth-06",
+   "at": "s12",
+   "off": 0.4,
+   "gain": -10
+  },
+  {
+   "file": "zhongtian-sfx-plough-earth-08",
+   "at": "s12",
+   "off": 1.6,
+   "gain": -7
+  },
+  {
+   "file": "zhongtian-sfx-footsteps-group-04",
+   "at": "s17",
+   "off": 1.4,
+   "gain": -5
+  },
+  {
+   "file": "zhongtian-sfx-drag-struggle-08",
+   "at": "s20",
+   "off": 1.45,
+   "gain": -6
+  },
+  {
+   "file": "zhongtian-sfx-body-fall-stone-01",
+   "at": "s21",
+   "off": 0.0,
+   "gain": -5
+  },
+  {
+   "file": "zhongtian-sfx-staff-thud-01",
+   "at": "s21",
+   "off": 0.05,
+   "gain": -1
+  },
+  {
+   "file": "zhongtian-sfx-staff-thud-01",
+   "at": "s23",
+   "off": 0.75,
+   "gain": -3
+  },
+  {
+   "file": "zhongtian-sfx-staff-thud-01",
+   "at": "s23",
+   "off": 1.85,
+   "gain": -3
+  },
+  {
+   "file": "zhongtian-sfx-staff-thud-01",
+   "at": "s23",
+   "off": 3.3,
+   "gain": -4
+  },
+  {
+   "file": "zhongtian-sfx-drag-struggle-08",
+   "at": "s26",
+   "off": 0.6,
+   "gain": 8
+  },
+  {
+   "file": "zhongtian-sfx-staff-thud-01",
+   "at": "s26",
+   "off": 0.95,
+   "gain": 7
+  },
+  {
+   "file": "zhongtian-sfx-staff-swing-hit-01",
+   "at": "s27",
+   "off": 0.42,
+   "gain": -5
+  },
+  {
+   "file": "zhongtian-sfx-armor-09",
+   "at": "s27",
+   "off": 0.45,
+   "gain": 0
+  },
+  {
+   "file": "zhongtian-sfx-machete-spin-01",
+   "at": "s27",
+   "off": 0.55,
+   "gain": -14
+  },
+  {
+   "file": "zhongtian-sfx-drag-struggle-03",
+   "at": "s28",
+   "off": 0.2,
+   "gain": -2
+  },
+  {
+   "file": "zhongtian-sfx-drag-struggle-09",
+   "at": "s28",
+   "off": 0.9,
+   "gain": -1
+  },
+  {
+   "file": "zhongtian-sfx-footsteps-group-04",
+   "at": "s31",
+   "off": 0.0,
+   "gain": -5
+  },
+  {
+   "file": "zhongtian-sfx-wring-cloth-07",
+   "at": "s32",
+   "off": 1.5,
+   "gain": 5
+  },
+  {
+   "file": "zhongtian-sfx-wring-cloth-03",
+   "at": "s32",
+   "off": 1.6,
+   "gain": 7
+  },
+  {
+   "file": "zhongtian-sfx-body-fall-stone-01",
+   "at": "s32",
+   "off": 4.2,
+   "gain": -12
+  },
+  {
+   "file": "zhongtian-sfx-knuckle-knock-05",
+   "at": "s33",
+   "off": 1.25,
+   "gain": -6
+  },
+  {
+   "file": "zhongtian-sfx-staff-thud-01",
    "at": "s33",
    "off": 2.1,
-   "gain": -9
+   "gain": -5
   },
   {
-   "file": "impactWood_light_001",
+   "file": "zhongtian-sfx-knuckle-knock-02",
    "at": "s34",
    "off": 0.2,
-   "gain": -11
+   "gain": -7
   },
   {
-   "file": "footstep_concrete_000",
+   "file": "zhongtian-sfx-footsteps-group-04",
    "at": "s34",
    "off": 0.4,
-   "gain": -13
+   "gain": -8
   },
   {
-   "file": "footstep_concrete_001",
-   "at": "s34",
-   "off": 0.8,
-   "gain": -15
-  },
-  {
-   "file": "footstep_concrete_002",
-   "at": "s34",
-   "off": 1.2,
-   "gain": -17
-  },
-  {
-   "file": "footstep_grass_000",
+   "file": "zhongtian-sfx-footsteps-group-03",
    "at": "s39",
    "off": 0.3,
-   "gain": 4
+   "gain": 10
   },
   {
-   "file": "footstep_grass_001",
-   "at": "s39",
-   "off": 0.7,
-   "gain": 4
-  },
-  {
-   "file": "footstep_grass_000",
-   "at": "s39",
-   "off": 1.1,
-   "gain": 4
-  },
-  {
-   "file": "cloth2",
+   "file": "zhongtian-sfx-drag-struggle-02",
    "at": "s39",
    "off": 1.6,
-   "gain": 11
+   "gain": 2
   },
   {
-   "file": "drum-near",
+   "file": "zhongtian-sfx-war-drum-01",
    "at": "s40",
    "off": 6.05,
-   "gain": 7
+   "gain": -8
   }
  ],
  "frame_round": true,
  "clip_voice": true,
  "voice_skip": {
-  "s31": 2.2,
+  "s31": 1.7,
   "s14": 0.3
  },
  "voice_until": {},
@@ -473,7 +416,7 @@
   },
   "s05": {
    "from": 0,
-   "af": "rubberband=pitch=1.109:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=1.145:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s10": {
    "from": 0,
@@ -489,11 +432,11 @@
   },
   "s14": {
    "from": 0,
-   "af": "rubberband=pitch=1.141:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=1.203:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s19": {
    "from": 0,
-   "af": "rubberband=pitch=1.147:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=1.26:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s24": {
    "from": 0,
@@ -505,7 +448,7 @@
   },
   "s27b": {
    "from": 0,
-   "af": "rubberband=pitch=1.137:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=1.21:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s30": {
    "from": 0,
@@ -513,7 +456,7 @@
   },
   "s31": {
    "from": 0,
-   "af": "asetrate=34560,aresample=48000,atempo=1.388889,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "asetrate=29760,aresample=48000,atempo=1.612903,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s36": {
    "from": 0,
@@ -535,9 +478,10 @@
   "s40": 7.5
  },
  "line_at": {
-  "zq937a26": 2.15,
+  "zq937a26": 1.4,
   "zq937a20": 0.4,
-  "zq937a01": 0.6
+  "zq937a01": 0.6,
+  "zq937a18": 0.4
  },
  "line_lead": {},
  "panel_y": {},
@@ -554,5 +498,5 @@
  "slow_shot": {},
  "subtitle_lines": [],
  "ding": {},
- "_note": "e937 真人版第一版剪接（2026-11-23，照 e936 第一版；scratchpad e937c/：mkov937.py、levall937.sh → lev937.py、music／beds／spots／lineat.json、cutf0.py；跑法 scratchpad e937cut.sh）。全部決定、量測與已知瑕疵寫在 colab/runs/e937-live/cut-notes.md。\n片：picks.json（picks-merged → fix1 → fix2；s27 s27b fix2 9371221）＋ cut-trims.tsv 八鏡（s03 s16 s23 s33 s35 s38 s39 剪尾、s26 收在槍尾金屬尖露出前 c1.75）。\n聲音：片中原聲 23 句（clip_af 變調 13 鏡，目標：二牛 ~205、秦霜 ~250–258（s36 ~200）、刁七 ~165、阿令 ~166、許硯 95–130）；錄音 16 句（voice_off s18 s22 s28；a26 line_at c2.15）；同場角色對與相鄰說話者 ≥ 3 半音（cutf0 量，例外見 cut-notes）。\na20「扔！」用站台重錄（單音節、0.30 秒有聲、聽寫「正」＝同韻）；s20 片中原聲是 0.85 秒 650 Hz 的長尖叫、聽寫成三個字，不用。要站主人耳確認。\n音效：s27 槍挑刀 impactMetal_heavy_000（c0.17）＋swish-9；人群聲只用 crowd-murmur.py 37（murmur37）；其他音效暫用系列庫 _series/zhong-tian-qu-qi/sfx（真實音效庫 _sfx-zhongtian-real-20261121 不在本機，rclone 被權限擋，換庫待做）。"
+ "_note": "e937 真人版 REVIEW 3（2026-11-23；第一版見 cut-notes.md，scratchpad e937c/：mkov937.py、levall937.sh → lev937.py、music／beds／spots／lineat／vol.json、cutf0.py；跑法 scratchpad e937cut.sh）。全部決定、量測與已知瑕疵寫在 colab/runs/e937-live/review3-plan.md（第一版的在 cut-notes.md）。\n片：picks.json＝refine-prep（picks-merged → fix1 → fix2 → cut-trims → review3-trims → fix3/review-picks.tsv）。fix3 換九鏡裡的八鏡：s09 s12 s19 s27 s31 s32 9371231、s18 s28 9371232（皆已精修）；s27b KEEP fix2 9371221。review3-trims：s20 c0–1.75、s26 c0.5–1.75。\n聲音：s01 改鋪錄音 a01（rb 0.92）；a16 不變調；秦霜片中原聲 s05 s13 s14 ×0.97（規則 43 不允許再低）；s19 rb 1.26、s31 asetrate 0.62（換片）；a18 ×0.97；a31 −15.0；s40 +4.5 dB、min 7.5 秒停格＋太鼓一聲。\n混音：配樂床在台詞下約 11 dB（cue 增益 −8..−15，側鏈 ratio 4、release 700 ms）；定點音效改用真實音效庫 sfx-real-20261121（zhongtian-sfx-*）；人群聲只用 murmur37；s34→s35 底噪跨場交疊。\n畫面：s17 s21 提亮、s37 壓暗；s37 面板 c4.7；CC「扔！」延到 1.0 秒（e937cut.sh 後處理）。"
 }
