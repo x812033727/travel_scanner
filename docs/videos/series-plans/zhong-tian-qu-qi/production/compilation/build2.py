@@ -11,10 +11,14 @@ starts=[]; t=0.0
 for e in eps:
     cut=C[e]['cut']; out=Path('parts')/f'{e}.mp4'; starts.append(t)
     if not out.exists():
-        subprocess.run(['ffmpeg','-v','error','-y','-i',str(D/e/'final.mp4'),'-t',f'{cut:.4f}',
-          '-vf','setpts=PTS-STARTPTS','-af',f'aresample=async=1:first_pts=0,apad,atrim=0:{cut:.4f},afade=t=in:d=0.05,afade=t=out:st={cut-0.15:.4f}:d=0.15,asetpts=N/SR/TB',
-          '-c:v','libx264','-preset','fast','-crf','16','-pix_fmt','yuv420p','-r','24','-g','48','-c:a','aac','-b:a','192k','-ar','48000','-ac','2',
+        # no setpts/-r: with them e001 silently lost its last 20 s of picture (5859 of 6337 frames) while the
+        # audio ran on, and the concat then froze the last frame for 20 s; the sources already start at 0 at 24 fps
+        subprocess.run(['ffmpeg','-v','error','-y','-i',str(D/e/'final.mp4'),'-map','0:v:0','-map','0:a:0','-t',f'{cut:.4f}',
+          '-af',f'aresample=async=1:first_pts=0,apad,atrim=0:{cut:.4f},afade=t=in:d=0.05,afade=t=out:st={cut-0.15:.4f}:d=0.15,asetpts=N/SR/TB',
+          '-c:v','libx264','-preset','fast','-crf','16','-pix_fmt','yuv420p','-g','48','-video_track_timescale','12288','-c:a','aac','-b:a','192k','-ar','48000','-ac','2',
           str(out)+'.tmp.mp4'],check=True)
+        n=int(subprocess.run(['ffprobe','-v','error','-select_streams','v:0','-count_packets','-show_entries','stream=nb_read_packets','-of','csv=p=0',str(out)+'.tmp.mp4'],capture_output=True,text=True).stdout)
+        if abs(n-round(cut*fr))>1: raise SystemExit(f'{e}: {n} frames, expected {round(cut*fr)}')
         Path(str(out)+'.tmp.mp4').rename(out)
     d=float(subprocess.run(['ffprobe','-v','error','-show_entries','format=duration','-of','csv=p=0',str(out)],capture_output=True,text=True).stdout)
     C[e]['part_seconds']=d; t+=d
