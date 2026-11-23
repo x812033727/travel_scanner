@@ -13,7 +13,7 @@
   ],
   "thumbnail": {
     "headline": "HTTPS Lock **Fools You**?",
-    "sub": "What that S guards—and why Chrome cut it"
+    "sub": "Who Does the S Actually Protect?"
   },
   "chapters": {
     "kid-cafe-lock-opening": "Can the HTTPS padlock fool you?",
@@ -35,7 +35,7 @@
     "title": "ac6af2a66785",
     "description": "4cb072deb095",
     "tags": "6f5a33c86ff6",
-    "thumbnail": "22432e7f256d"
+    "thumbnail": "97efbb87bb15"
   },
   "lines": {
     "h001": {
@@ -48,7 +48,7 @@
     },
     "h003": {
       "source_hash": "ddd4a4ca6436",
-      "text": "Worse yet, nearly every phishing site trying to steal your password also displays that padlock and runs over HTTPS!"
+      "text": "Worse yet, nearly every phishing site stealing passwords also shows that padlock on HTTPS!"
     },
     "h004": {
       "source_hash": "fedecf045158",
@@ -56,7 +56,7 @@
     },
     "h005": {
       "source_hash": "e77b0d888f03",
-      "text": "Today, let's unpack what that extra S truly locks down—and why even the padlock icon can mislead you."
+      "text": "Today, let's see what that extra S locks—and why even the padlock can mislead you."
     },
     "h006": {
       "source_hash": "0fb5507ba852",
@@ -84,15 +84,15 @@
     },
     "h012": {
       "source_hash": "a54b1cf62ecb",
-      "text": "The extra S stands for secure: TLS encryption seals your note inside an envelope only you and the server can read."
+      "text": "The S means secure: TLS seals your note so only you and the server can read it."
     },
     "h013": {
       "source_hash": "398cdcfadc79",
-      "text": "Aha! So once my note is sealed inside an envelope that classmates can't open, my password is completely safe, right?"
+      "text": "Aha! Once my note is sealed so classmates can't open it, my password is safe, right?"
     },
     "h014": {
       "source_hash": "b376de64f7c5",
-      "text": "Sealing alone isn't enough! After typing a URL, your device asks a directory for directions—what if a crook gives a fake address?"
+      "text": "Not enough! When you type a URL, you ask a directory—what if a crook gives a fake address?"
     },
     "h015": {
       "source_hash": "557e5a200c1d",
@@ -108,11 +108,11 @@
     },
     "h018": {
       "source_hash": "ac90176db13f",
-      "text": "Browsers reject self-made IDs! Sites apply to a trusted Certificate Authority, which asks them to place a secret token online."
+      "text": "Browsers reject fake IDs! Sites apply to a trusted CA and post a secret token to prove control."
     },
     "h019": {
       "source_hash": "5ac874edf268",
-      "text": "The authority checks from multiple vantage points that you control the domain—yet here's the twist: it never checks if you're honest!"
+      "text": "The CA checks domain control from multiple sites—yet here's the twist: it never checks honesty!"
     },
     "h020": {
       "source_hash": "d4124fe21bf0",
@@ -124,7 +124,7 @@
     },
     "h022": {
       "source_hash": "e2fffdddaa1f",
-      "text": "The padlock only proves an encrypted pipe, not trustworthiness—so Chrome swapped it out in 2023. Yet an even scarier risk lurks!"
+      "text": "The lock only proves encryption, not trust—so Chrome replaced it in 2023. Yet a worse risk lurks!"
     },
     "h023": {
       "source_hash": "54abf89ef0e6",
@@ -132,7 +132,7 @@
     },
     "h024": {
       "source_hash": "05575dc5d56a",
-      "text": "If a trusted authority itself slips up and misissues a cert, even a real bank can be spoofed—exact URL, valid padlock!"
+      "text": "If a trusted CA misissues a cert, even a real bank can be spoofed—exact URL, valid lock!"
     },
     "h025": {
       "source_hash": "75ce706dfcdc",
@@ -175,7 +175,7 @@
       "text": "No! The private stamp only proves identity; today's temporary session key is destroyed right after—that's called forward secrecy."
     },
     "h035": {
-      "source_hash": "945af4634fd7",
+      "source_hash": "94b3d600d718",
       "text": "As long as those temporary secrets are erased, even stealing the server's private stamp years later leaves old recordings as gibberish."
     },
     "h036": {
@@ -183,7 +183,7 @@
       "text": "Hold on! Since certs sit in public logs, what stops a crook from copying the game company's cert and mixing paint with me?"
     },
     "h037": {
-      "source_hash": "18105855312c",
+      "source_hash": "dc0162d11704",
       "text": "A copier lacks the real private stamp! The server must sign the live opening transcript—including the paint exchange—on the spot."
     },
     "h038": {
@@ -192,7 +192,7 @@
     },
     "h039": {
       "source_hash": "555da9e3c043",
-      "text": "Every message gets sealed with that key, covering even the outer envelope length—tamper one character and it rejects and disconnects."
+      "text": "Each message is sealed with its outer length—change one character and it fails and disconnects."
     },
     "h040": {
       "source_hash": "37e3baf05815",
@@ -255,7 +255,7 @@
       "text": "And don't forget asking 'where does this site live' before connecting—if that directory lookup runs unencrypted, the name leaks anyway!"
     },
     "h055": {
-      "source_hash": "57cddc488702",
+      "source_hash": "303c7004d1ce",
       "text": "Even asking for directions leaks names! Then back to that free-gems link with HTTPS—how do I actually spot a scammer?"
     },
     "h056": {

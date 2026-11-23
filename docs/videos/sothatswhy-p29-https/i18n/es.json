@@ -13,7 +13,7 @@
   ],
   "thumbnail": {
     "headline": "¿El candado **HTTPS miente**?",
-    "sub": "Qué protege la S y por qué Chrome lo quitó"
+    "sub": "¿A quién protege realmente la S?"
   },
   "chapters": {
     "kid-cafe-lock-opening": "¿El candado HTTPS puede engañarte?",
@@ -35,12 +35,12 @@
     "title": "ac6af2a66785",
     "description": "4cb072deb095",
     "tags": "6f5a33c86ff6",
-    "thumbnail": "22432e7f256d"
+    "thumbnail": "97efbb87bb15"
   },
   "lines": {
     "h001": {
       "source_hash": "289597dedea6",
-      "text": "¡Jefa! Creía que con HTTPS y el candado podía poner mi clave tranquila, ¿por qué Chrome decidió quitar el candado?"
+      "text": "¡Jefa! Con HTTPS y el candado creía estar segura, ¿por qué Chrome quitó el candado?"
     },
     "h002": {
       "source_hash": "434a6226d042",
@@ -48,7 +48,7 @@
     },
     "h003": {
       "source_hash": "ddd4a4ca6436",
-      "text": "¡Y peor aún: casi todos los sitios de phishing que roban claves también llevan ese candado y funcionan con HTTPS!"
+      "text": "¡Y peor aún: casi todo sitio de phishing también lleva candado y funciona con HTTPS!"
     },
     "h004": {
       "source_hash": "fedecf045158",
@@ -88,7 +88,7 @@
     },
     "h013": {
       "source_hash": "398cdcfadc79",
-      "text": "¡Ajá! Entonces si cierro la nota en un sobre que nadie en el camino puede abrir, mi clave ya está a salvo, ¿verdad?"
+      "text": "¡Ajá! Si cierro la nota en un sobre que nadie abre en el camino, ya está a salvo, ¿no?"
     },
     "h014": {
       "source_hash": "b376de64f7c5",
@@ -104,7 +104,7 @@
     },
     "h017": {
       "source_hash": "d982881c0a44",
-      "text": "¿Y no podría alguien dibujarse una credencial falsa en papel? ¿Cómo sabe mi navegador qué sello sí vale?"
+      "text": "¿Y si alguien dibuja una credencial falsa? ¿Cómo sabe mi navegador cuál vale?"
     },
     "h018": {
       "source_hash": "ac90176db13f",
@@ -128,7 +128,7 @@
     },
     "h023": {
       "source_hash": "54abf89ef0e6",
-      "text": "¿Peor que el phishing? Si la autoridad revisa el dominio, un estafador no controla el dominio de un banco real."
+      "text": "¿Peor que el phishing? Si revisan el dominio, un estafador no controla un banco real."
     },
     "h024": {
       "source_hash": "05575dc5d56a",
@@ -175,15 +175,15 @@
       "text": "¡No! El sello privado solo prueba identidad; la clave temporal se destruye al terminar. Eso se llama secreto hacia adelante."
     },
     "h035": {
-      "source_hash": "945af4634fd7",
+      "source_hash": "94b3d600d718",
       "text": "Mientras esos secretos temporales se borren, aunque roben el sello años después, las grabaciones viejas seguirán siendo basura."
     },
     "h036": {
       "source_hash": "eaeddfc3e0f3",
-      "text": "¡Un momento! Si el certificado está en un registro público, ¿qué impide copiar el del juego y mezclar pintura conmigo?"
+      "text": "¡Espera! Si el certificado es público, ¿y si copian el del juego y mezclan pintura?"
     },
     "h037": {
-      "source_hash": "18105855312c",
+      "source_hash": "dc0162d11704",
       "text": "Quien lo copia no tiene el sello privado real; el sitio debe firmar al instante todo el inicio, incluida la mezcla de colores."
     },
     "h038": {
@@ -196,7 +196,7 @@
     },
     "h040": {
       "source_hash": "37e3baf05815",
-      "text": "Si no pueden cambiar el texto, ¿y si copian un sobre cifrado entero para reenviarlo dos veces o cambiar el orden?"
+      "text": "Si no cambian el texto, ¿y si copian un sobre cifrado para reenviarlo o cambiar el orden?"
     },
     "h041": {
       "source_hash": "865605e264f4",
@@ -216,7 +216,7 @@
     },
     "h045": {
       "source_hash": "7621d03a2bab",
-      "text": "¡Hasta los números y el cierre van blindados! Entonces con HTTPS la gente en la ruta ya no ve absolutamente nada, ¿no?"
+      "text": "¡Todo blindado! Entonces con HTTPS la gente en la ruta ya no ve nada, ¿verdad?"
     },
     "h046": {
       "source_hash": "ebdf395b7a34",
@@ -236,7 +236,7 @@
     },
     "h050": {
       "source_hash": "1cd7eaa278ed",
-      "text": "¿Hasta el nombre del sitio que visito va por fuera? ¿No se puede meter también el destinatario en un sobre interior?"
+      "text": "¿El nombre del sitio va por fuera? ¿No se puede meter también en un sobre interior?"
     },
     "h051": {
       "source_hash": "ffe57f18edbd",
@@ -255,8 +255,8 @@
       "text": "Y no olvides cuando preguntaste dónde vive el sitio antes de salir: si esa consulta va sin cifrar, el nombre se filtra igual."
     },
     "h055": {
-      "source_hash": "57cddc488702",
-      "text": "¡Hasta preguntar direcciones filtra nombres! Volviendo al enlace de gemas con HTTPS, ¿cómo freno a un estafador?"
+      "source_hash": "303c7004d1ce",
+      "text": "¡Hasta preguntar filtra nombres! En ese enlace de gemas con HTTPS, ¿cómo freno al estafador?"
     },
     "h056": {
       "source_hash": "8b2dccfd2943",
@@ -268,7 +268,7 @@
     },
     "h058": {
       "source_hash": "0315f6f8cf2a",
-      "text": "¡Ah! Mirando bien la barra de direcciones, este enlace de gemas coló una letra extra en medio del nombre del juego."
+      "text": "¡Ah! Al mirar la barra de direcciones, el enlace coló una letra extra en el nombre del juego."
     },
     "h059": {
       "source_hash": "88a99f867857",
@@ -288,7 +288,7 @@
     },
     "h063": {
       "source_hash": "e27557dfdca6",
-      "text": "Si te encanta desarmar la tecnología cotidiana hasta entenderla bien, suscríbete a Agencia ¡Así Era! ¡Hasta la próxima!"
+      "text": "Si te gusta entender la tecnología diaria, suscríbete a Agencia ¡Así Era! ¡Hasta pronto!"
     }
   }
 }

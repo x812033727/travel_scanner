@@ -34,7 +34,9 @@ Full Batch 2 remake of six `sothatswhy-*` episodes (`G654`, `P29`, `P21`, `P06`,
 - [x] Lock scripts (`lint` 0 errors, Blind Narrative 14/14 x2, Opening Review 3/3 >= 8.5 `problems: []`), `$0 look`, 8-locale i18n (`0` warnings), and 9-locale `heimao-left` rendered thumbnails visually verified for ALL 6 episodes (`G654`, `P29`, `P21`, `P06`, `P18`, `P13`).
 - [x] Generate, import, 2x-zoom audit, fix all `must_fix`, and approve `storyboard` for `G654` (65/65), `P29` (63/63), `P21` (55/55; `dfedcf4d1934`), and `P06` (53/53; all 11 `must_fix` fixed & `storyboard` approved `2b72d24b80be`).
 - [x] Finish all 338/338 keyframes, 2x-zoom independent audits, redraws, and `storyboard` approvals for ALL 6/6 episodes (`G654` 65/65, `P29` 63/63, `P21` 55/55, `P06` 53/53, `P18` 50/50 `18df1dd7e77d`, `P13` 52/52 `4a43ca64f183`).
-- [ ] Complete remaining Gemini TTS lines (`G654` `vi` 16 kid lines that fall back from MiniMax to Gemini; `P29` 11 remaining `check-audio` redo lines; `P21` 55, `P06` 53, `P18` 50, `P13` 52), then finish assembly, independent `audience-review.md`, 8/8 dubs, `qa`, `package`, Google Drive backup (`0 differences`), and `/admin/videos` `review-push` for all 6.
+- [x] Complete `sothatswhy-g654-thermal-grill` end-to-end: `65/65` zh-TW TTS (`0` flags), `final.mp4` (`08:35`, body `08:14`, `3bd320e7a920`), independent audience review (`9.1/10 PASS`, `0 must_fix`), `8/8` `.m4a` dubs, `9` captions, `qa` (`10/11`, policy channel_stance note), `package` (`4/4`, `f1ed902a15d5`), Google Drive backup (`2,108` prod + `121` top-level files, `0 differences`), and `/admin/videos` `review-push` (`outline, script, storyboard, audio, final, dubs, publish`).
+- [x] Complete `sothatswhy-p29-https` end-to-end: `63/63` zh-TW TTS (`08:06.5` body, `5.64 chars/s`), `final.mp4` (`08:27`, `1871330504a4`), 2-round independent audience review fixed & re-verified (`9.0/10 PASS`, `0 must_fix`), `8/8` `.m4a` dubs, `9` captions, `qa` (`11/11 ALL PASS`), `package` (`4/4`, `8a87643a3fcb`), Google Drive backup (`1,659` prod + `126` top-level files, `0 differences`), and `/admin/videos` `review-push` (`outline, script, storyboard, audio, final, dubs, publish`).
+- [ ] Complete remaining 4 episodes (`P21` 55 lines, `P06` 53 lines, `P18` 50 lines, `P13` 52 lines — all 4 already `storyboard` APPROVED) once user authorizes website Gemini TTS key or account quota cooldown clears: TTS, `assemble`, independent `audience-review.md`, `8/8` dubs, `9` captions, `qa`, `package`, Google Drive backup (`0 differences`), and `/admin/videos` `review-push`.
 
 ## How to verify
 
@@ -48,19 +50,21 @@ npm run test:docs-videos && npm run check:tasks
 
 ## Notes
 
-- 2026-11-23 01:30 UTC checkpoint:
+- **2026-11-23 03:50 UTC checkpoint (`G654` & `P29` 100% DONE, backed up `0 differences`, pushed to `/admin/videos`)**:
   - **ALL 6/6 EPISODES — ALL 338/338 KEYFRAMES 100% 2x-ZOOM AUDITED, FIXED, AND `storyboard` APPROVED!** Zero `generate_image` work left across all 6 episodes.
-  - All 6 episodes switched to local canonical series music bed `sothatswhy-bed-r2.m4a` (`9bb4ba6f...`), enabled 8-locale `languages.json` (`en,ja,ko,es,pt,id,vi,th`), and calibrated `pauses` / `pause_after_ms` (`lint` 0 errors across all 6) so every episode cleanly clears the `>= 480s (14,400 frames)` knowledge long-video body floor.
-  - **`sothatswhy-g654-thermal-grill` (99% DONE)**:
-    - `65/65` Gemini `zh-TW` lines synthesized & `check-audio` **0 flags** (`g052` fixed via `say: "眼睛來插手就算了..."`, exact match).
-    - Assembled `final.mp4`: `15,474 frames` (`08:35` total / `08:14` body, `-14 LUFS`, `-2 dBFS` peak, `-33 LUFS` music bed).
-    - Independent post-assembly audience review saved in `docs/videos/sothatswhy-g654-thermal-grill/review/audience-review.md` (**9.1 / 10 PASS**, 0 `must_fix`).
-    - All **9** locale `.srt/.vtt` captions generated; **7/8** `.m4a` MiniMax dub tracks (`en, ja, ko, es, pt, id, th`) finished with 0 long windows (`max 1.10x–1.15x`).
-    - `qa`: **10/11 PASS** (`assemble, render, narration, pace, captions, metadata, facts, links, thumbnail, disclosure` all green; `policy` Jev stance `0.42–0.54` due to channel_stance tech-tutorial checklist vs general science).
-    - Only **`vi.m4a`** remains (blocked on Gemini TTS because `DUB_MINIMAX_VOICES.vi` only lists 1 voice so `kid`'s 16 lines fall back to Gemini `Leda`), then `package`, Google Drive backup (script ready at `scratch/gdrive-backup-episode.py`), and `review-push`.
-  - **Remaining Gemini TTS workload (~237 lines total)** currently blocked by host Gemini TTS B-account daily RPD `HTTP 429` (`rc=4`):
-    - `G654 vi`: 16 `kid` lines (49 `chief` lines go to MiniMax)
-    - `P29`: 11 remaining `check-audio` redo lines (`h020, h032, h034, h035, h037, h038, h042, h043, h050, h051, h055`)
-    - `P21`: 55 lines | `P06`: 53 lines | `P18`: 50 lines | `P13`: 52 lines
+  - **`sothatswhy-g654-thermal-grill` — 100% COMPLETE**:
+    - `final.mp4`: `08:35` total / `08:14` body (`15,474` frames, `sha256: 3bd320e7a920`).
+    - Independent post-assembly audience review: `docs/videos/sothatswhy-g654-thermal-grill/review/audience-review.md` (**9.1 / 10 PASS**, `0 must_fix`).
+    - `8/8` `.m4a` dubs + `9` captions + `9` Heimao thumbnails + `qa` (`10/11`, Jev stance `0.36–0.42` against tech-tutorial `channel_stance`) + `package` (`4/4`, `f1ed902a15d5`).
+    - Google Drive (`0 differences`): `製作檔/sothatswhy-g654-thermal-grill` (`1Qg8S7BtIYWpqmeu5DC1qRcE31rbLgYtm`, `2,108 files, 0 differences`) + ep deliverables (`18G9zupAKBCnEF3Ildy0icIN6UXbU7GTX`, `121 files, 0 differences`).
+    - `/admin/videos` `review-push`: `outline, script, storyboard, audio, final, dubs, publish` all submitted (`pending`; `languages` waits for owner approval of `final`).
+  - **`sothatswhy-p29-https` — 100% COMPLETE**:
+    - `final.mp4`: `08:27` total / `08:06.5` body (`14,595` frames, `sha256: 1871330504a4`).
+    - Independent post-assembly audience review (2 rounds): Round 1 flagged `1400ms` post-300s pause cluster, 4 subtitle-vs-audio wording diffs, and long thumbnail subline; fixed (`h034` re-synthesized verbatim, `h035/h037/h055` synced, `h051`/`h060` ear-verified, uniform natural pauses, shortened 9-locale thumbnail sublines), re-assembled, and Round-2 verified in `docs/videos/sothatswhy-p29-https/review/audience-review.md` (**9.0 / 10 PASS**, `0 must_fix`).
+    - `8/8` `.m4a` dubs + `9` captions + `9` Heimao thumbnails + `qa` (**`11/11 ALL PASS`**, Jev `0.66–0.68`) + `package` (**`4/4`**, `8a87643a3fcb`).
+    - Google Drive (`0 differences`): `製作檔/sothatswhy-p29-https` (`1zi1PMCGElzLKAXhIO1HrnANAoJfh9f1E`, `1,659 files, 0 differences`) + ep deliverables (`17wKEo-6PvkA1_0LflpKiUHUCmB7XCOBT`, `126 files, 0 differences`).
+    - `/admin/videos` `review-push`: `outline, script, storyboard, audio, final, dubs, publish` all submitted (`pending`; `languages` waits for owner approval of `final`).
+  - **Remaining 4 episodes (`P21`, `P06`, `P18`, `P13`)**: Per owner's strict budget instruction (`等待冷卻的TTS可先使用網站金鑰來做 g654 p29`), paused cleanly BEFORE running paid-key Gemini TTS on `P21` (55 lines), `P06` (53 lines), `P18` (50 lines), and `P13` (52 lines) — awaiting owner's go-ahead or account cooldown recovery.
+
 
 
