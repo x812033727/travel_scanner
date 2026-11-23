@@ -2,7 +2,7 @@
 
 - 2026-11-23，第 37 集前置代理。**沒送任何生成**（Colab、RunPod 都沒開，`zt-live2`、`zt-live3` 都沒碰）、**沒有付費圖**、沒 commit、沒改第 33–36 集的檔
   （唯一碰到的共用檔：`writer-tools/e001-r2/build-r2.py` 的 `EN` 加一個鍵 `diaoqi`，舊集逐位元重建不變；refs-live README 加一段）。
-  **獨立審稿還沒做**（提示在 scratchpad `e937prep/review-prompt.md`，由協調者派）。**站台 TTS 錄音 39／39 錄齊、核對完**（協調者准，§4）。
+  **獨立審稿已套用**（§7；改前的檔在 scratchpad `e937prep/*-before-review.*`）。**站台 TTS 錄音 39／39 錄齊、核對完**（協調者准，§4）。
 - 依據：第 36 集前置全套（`writer-tools/e036-r2/{r2.py,review.md,review-independent.md}`、`colab/runs/e936-live/{mkspec.py,spec.json,PREP.md}`（§7 獨立審稿怎麼套、§8 開門圖）、
   `colab/runs/e936/extras.json`、scratchpad `tools/{build936.sh,prep936.sh,rec936-slow.sh,rec936-check.sh,mkhints936.py,fw936.py,f0y936.py,span936.sh,heads936.py}`、`e936d1.sh`）、
   `colab/runs/e935-live/PREP.md` §8（cinema camera）、`r2-bible-e031-e040.md`（拍法 1–43、〈接點〉36→37、〈道具〉〈人物〉〈小角色〉〈場景〉〈原版必修〉第 37 集）、
@@ -10,7 +10,7 @@
 - **接點 36→37 照第 36 集定版成片寫**：`/root/mokaair-work/videos/_live-e936/zhong-tian-qu-qi-e936-dh/cut/e936-live.mp4`（200.84 秒）最後 15 秒與 s31–s34 每秒抽一格
   （scratchpad `e937prep/tail/sheet.jpg`、`sheet2.jpg`）：s35 秦霜在後牆頭回頭；s36 從牆頭望遠山，**滿月**、山上一串小火光；s37 阿令在屋門口；
   s38 許硯在畫左（舊灰外衣、左手陶油燈、側臉朝右上望）、唐小棠背影在正中抓他袖子，背景木桶、樹、院門、滿月；s31 **草蓆在樹與井之間的院子中段**。
-  圖上的**院門本來就推開、門扇靠左柱**（聖經〈接點〉36→37 的備案一：照圖寫）。s01：二牛從後牆中間的院門朝鏡頭衝進來、樹旁四個流民從蓆上坐起。
+  圖上的**院門本來就半開：門扇掛在右門柱、往內半開、門洞左半空著**（聖經〈接點〉36→37 的備案一：照圖寫；初稿寫「靠左柱」是反的，獨立審稿必改 1）。s01：二牛從後牆中間的院門朝鏡頭衝進來、樹旁四個流民從蓆上坐起。
 - scratchpad = `/tmp/claude-0/-home-user-travel-scanner/31162243-7ed2-5899-b9c2-443c1f2a5c1a/scratchpad`；進度 `e937prep/PROGRESS.md`。
 
 ## 0. 站主 11-21～23 規則（PR #2217，`production/OWNER-CHECK-20261122.md`、`tasks/open/2026-11-21-1-30-a-b-140.md` Notes；協調者 2026-11-23 轉達）
@@ -23,7 +23,7 @@
 | 唐小棠背影鏡附髮型參考圖 `refs-live/tangxiaotang-back-shuangji-e929-w3.png`；跪姿要拍到膝蓋 | 她的五個背影鏡（s07、s09、s32、s34、s35）都由 `spec.json` 的 `append_pictures` 加送這張、一句「只定髮型、不定地方與光」；s28 刁七跪、s39 許硯單膝跪都寫全身（Wide），s40 寫成蹲 |
 | 柴刀固定句「a long narrow iron blade with a slightly hooked tip」會被畫成劍 | 本集柴刀不寫（拍法 5），`prep937.sh` 擋 `slightly hooked tip`、`chopper`、`sword`；之後若要寫柴刀改短而寬的方頭厚柴刀 |
 
-## 1. 分鏡（`writer-tools/e037-r2/r2.py`，42 鏡＝c01–c40＋兩個拆鏡）
+## 1. 分鏡（`writer-tools/e037-r2/r2.py`，43 鏡＝c01–c40＋三個拆鏡；下面是寫稿時的紀錄，獨立審稿後的改動見 §7）
 
 - build：scratchpad `tools/build937.sh`（`build-r2.py` → `docs/videos/zhong-tian-qu-qi-e037-r2/{video.json,overlays.json,storyboard.md}`、`hailuo/{ff,clips}-dh-e937.json`）；
   `storyboard-check.py` 稿子 40 鏡 199.5 秒；`shot_reading` 7 個 `cast.speaker`（s03、s16、s37、s38 系統；s08 唐小棠插鏡錄音；s23 二牛插鏡錄音；s33 二牛遠處喊：`OFFSCREEN_SPEECH = False` 的刻意寫法），其他陷阱 0。台詞 39 句逐字照稿。
@@ -72,7 +72,7 @@
 | `colab/runs/e937/extras.json` | 乾淨畫面句；秦霜身分句拿掉柴刀；阿令不寫紅唇；二牛拿掉 `empty-handed`、`an honest open face`；小禾的草兔子塞在腰間；**刁七的皮甲換成破布短褐、繩腰帶，疤寫在左邊** |
 | `colab/runs/e937-live/mkspec.py` → `spec.json` | 42 鏡全部有改：唐小棠背影三鏡拿掉三張臉部圖與身分句、s32 s34 地點句開頭大寫；她的五個背影加送雙丸子背影圖（`append_pictures`）；拿槍三鏡加送長槍道具圖；許硯 angle-b 不送、全景 s04 s09b s10 s35 s39 只送 l1、近景 s03 s15 s16 s37 s38 先 l1 後 angle-a；二牛 s02 的 angle-a 換成 l1、全景 s01 s28 只送 l1；阿令 angle-b 不送、s31 只送 l1；插鏡 s08 s23 拿掉地點句、一張裁切只當地面與光；s17 s21 沒有人；渠（s10–s28、s35–s40）拿掉 `below the deep pool`；only 句點名不具名的人（寫兩次）；鞋句（秦霜皮靴、不具名的人草鞋）；clear-and-still 句逐鏡換（夜氣、油燈、火把、石灰粉、熱水的蒸氣、天快亮的冷空氣）；視線句；大寫 |
 | scratchpad `tools/prep937.sh` | 照 `prep936.sh` 的順序與檢查，改成本集：`append_pictures`（加在最後一張、句子放在場景句後、重編表頭）；唐小棠的名字與臉部圖全集沒有、五個背影都有髮型圖；院門推開、後門半開；沒有細月；草蓆在樹與井之間；兵器字只在劇情要的鏡；煙只有石灰的；跪的鏡是全身；渠沒有潭字、沒有 causeway；沒有 cinema camera、stubble、chopper、sword、armour、tassel。log `tools/prep937.log` |
-| scratchpad `e937d1.sh` | 84 支 522 秒，G4、session `zt-live3`（**先確認沒有別的集在跑**）、兩輪補缺、跑完釋放 VM。**沒有執行**（`DRY=1` 0 錯） |
+| scratchpad `e937d1.sh` | （審稿後 86 支 528 秒，§7）84 支 522 秒，G4、session `zt-live3`（**先確認沒有別的集在跑**）、兩輪補缺、跑完釋放 VM。**沒有執行**（`DRY=1` 0 錯） |
 
 **檢查結果（2026-11-23）**：`build937.sh` 42 鏡、storyboard-check 199.5 秒、shot_reading 7 個 `cast.speaker`（刻意）；免費圖 20 張逐位元重建相同；
 `set-xujia-yuan-ye`（l2）、`-ye-dong2`、`set-xujia-houmen-ye`、`set-shanjiao-qu-ye`、`-ye2`、`-chen`（l1）最新版；st1 DRY `check_manifest` 0／0、st1 preflight 0 錯 0 警告；
@@ -156,9 +156,39 @@ Colab 餘額以跑之前的數字為準（第 36 集收尾記約 220 CU）；**�
 
 ## 6. 還擋著開拍的事（要協調者／站主決定）
 
-1. **獨立分鏡審查**：派審稿代理（`e937prep/review-prompt.md`）；套用後重跑 `build937.sh`、`prep937.sh`、`DRY=1 e937d1.sh`，改前的檔留在 scratchpad `e937prep/*-before-review.*`（照第 36 集 §7）。
+1. ~~獨立分鏡審查~~（2026-11-23 做完、已套用，§7）。
 2. ~~錄音~~：39 句錄齊、核對、重錄 4 句、變調 7 句、BUY 不改（§4）。**a20「扔！」要人耳聽**。
-3. **花錢**：`e937d1.sh` 約 23–27 CU，等協調者；先確認 `zt-live3` 上沒有別的集在跑。
+3. **花錢**：`e937d1.sh`（86 支 528 秒）約 23–27 CU，等協調者；先確認 `zt-live3` 上沒有別的集在跑。
 
 **fix／retake 的提醒（照第 36 集 §6）**：渠的潭字是 `mkspec.py` 拿掉的；**s10–s28、s35–s40 的每個 fix／retake spec 都要帶 `[R2.POOLMARK, ""]`**（插鏡 s23 另外要帶拿掉整句地點句的替換）；
 fix 也要帶 `mkspec.py` 的唐小棠背影替換（身分句、三張臉部圖、`only` 句）與 `append_pictures`（髮型圖、長槍圖：`retake.py` 不會加圖，要照 `prep937.sh` 的做法加在最後一張）、clear-air 逐鏡替換與鞋句。
+
+## 7. 獨立審稿怎麼套（2026-11-23，`writer-tools/e037-r2/review-independent.md`；協調者的決定）
+
+改前的檔在 scratchpad `e937prep/*-before-review.*`（`r2`、`mkspec`、`spec`、`PREP`、`extras`、`prep937`、`e937d1`、`shanjiao_qu_ye_e937`、`bible`、`refs-README`）。
+改完重跑 `build937.sh`（**43 鏡**、shot_reading 7 個刻意的 `cast.speaker`、其他陷阱 0）、`prep937.sh`（rc=0：**86 支、528 秒**（5 秒 12、6 秒 62、8 秒 12）、st1 與 d1 preflight 0／0、
+`check_manifest`／`h3r` 0／0、所有掃描 0、免費圖 30 張逐位元相同，加了下表每項的斷言）、`DRY=1 e937d1.sh` 0 錯、`node tools/video/drama-admin/bundle.mjs build`。
+**錄音不用重錄**：s27b 用原本的 a25（`a25-p125`，4.3 秒／6 秒），台詞編號不變（s27 無台詞）；39 句仍全部放得下 BUY（`tools/span937-buy.txt` 重算）。
+
+| 項目 | 怎麼處理 |
+| --- | --- |
+| 必改 1：院門的門扇寫反 | `YARD`、s01：`the slatted plank gate leaf hinged on the right gate post standing half swung back inward …, the left half of the gateway clear`，二牛從門洞左半衝進來；zh、§1、聖經〈接點〉36→37 一起改（`open`、`hung` 是掃描擋的字，寫成 `swung back`、`hinged`） |
+| 必改 2：s28 槍頭從左進 | 改從**右**緣伸進來（秦霜在 s26、s27 都在右）；mkspec 的 only 句一起改 |
+| 必改 3：s21 掉坑是進行中的動作 | 第一格兩個黑影已經陷在坑裡到腰、斷草圍腰、火把在地上；動作只留煙吞火把 |
+| 必改 4：s26、s27 長桿第一格沒分開 | s26 `its spearhead still an arm's length short of her in the first frame`；s27 `its spearhead pointing low at the ground a step short of him, well apart from his saber` |
+| 必改 5：s10 跪著的壯丁 | 改蹲：`already crouching low on his heels` |
+| 必改 6：`-ye2` 護欄清理的亮直條 | `shanjiao_qu_ye_clean3.py`（上下內插、x 480–520 淡入）→ 新 id `set-shanjiao-qu-ye3-l1`、`-ye3-zhuo`、`-ye3-kong`、`-ye3-cao`；`-ye2-geng`、`-ye2-tian` 照送 |
+| 必改 7：s37 圖文不一致、`-chen` 滿天星 | `destar_e937.py` 去星 → `set-shanjiao-qu-chen2-l1` 一族，s37 改送新裁切 `-chen2-kong`（松樹頂上的灰白天），s35 送去星的 `-chen2` |
+| 建議 1：雙丸子背影圖是白天（協調者同意做夜版） | `tangxiaotang_back_ye.py` → `tangxiaotang-back-shuangji-e929-w3-ye.png`（原檔不動）；s07、s09、s32、s34 夜裡與 s35 天快亮的背影鏡都送夜版（天快亮仍偏暗冷，白天的藍天與屋子更不合） |
+| 建議 2：刁七的刀會變劍 | `SABER` = `one long single-edged saber with a broad, gently curved back, widening toward the tip, a plain round iron disc at the hilt`（`blade`、`guard` 掃描或人數判斷會出事：`guard` 讓 ref2manifest 以為多一個人） |
+| 建議 3：s27 一上一下兩段（協調者定拆鏡） | **s27**（5 秒、無台詞：刀第一格舉到肩高正往下劈，槍頭一挑把刀挑出畫面上方）＋**s27b**（6 秒、中近景：槍尖第一格已經停在喉前一掌、他兩手空著，秦霜說 a25）；兩支都加送長槍道具圖。兩種子多 6 秒、約 0.3 CU |
+| 建議 4：s28 舉手又繞繩 | 刁七兩手第一格已經扭到背後、繩子繞胸口與上臂 |
+| 建議 5：「只有一條路」（免費做法） | s17 六個黑影 `running one behind another in a single file along one narrow beaten footpath across the field toward the ridge`（`track` 是掃描擋的運鏡字） |
+| 建議 6：`-chen` 地面太亮 | 併在必改 7：gamma 1.55 → 1.35、灰白只加在 30–47% 的天空、以藍度加權（松樹不變白） |
+| 建議 7：木板後的拉絲矩形 | 先看 d1（協調者定） |
+| 建議 8：s35 長槍道具圖 | 加送（最後一張） |
+| 建議 9：刁七的疤 | 照定妝照寫 `a short pale old scar on his left cheekbone`（r2.py 與 extras）；s28 臉低著略朝畫左 |
+| 建議 10：後門屋簷的空白木板 | 先看 d1 s31（協調者定） |
+| 建議 11：BUY 可省 | 不改（品質優先） |
+
+**估價**（審稿後）：86 支 528 秒，約 2.4–2.7 小時、**23–27 CU**（比審稿前多 6 秒，約 0.3 CU）。

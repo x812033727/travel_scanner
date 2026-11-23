@@ -7,11 +7,12 @@ Run: python3 -I mkspec.py
   (it also names the gold abacus at her waist, rule 20); the 'only' sentence says she is seen from behind and appears once. She
   has no front face this episode. Her silent backs (s07, s09) are not listed characters (no picture). Owner 2026-11-22 (PR #2217,
   OWNER-CHECK-20261122.md): every back shot of hers (s07, s09, s32, s34, s35) also sends refs-live/tangxiaotang-back-shuangji-
-  e929-w3.png, the two round buns seen from behind, as the LAST picture with one sentence that ties it to the hair only
+  e929-w3-ye.png (after the independent review's 建議 1: the free night copy of the owner's file, the daytime sky and houses
+  pressed into night), the two round buns seen from behind, as the LAST picture with one sentence that ties it to the hair only
   ("append_pictures": prep937.sh appends the picture, renumbers the header and puts the sentence after the set clause).
-- Qin Shuang's spear (bible 〈道具〉, 2026-11-17 定要畫): the shots with the spear in a hand (s26 the raider's, s27, s36) append
-  refs-live/prop-changqiang-l1.png the same way, with a sentence that makes it the one spear of the shot. s35 (a wide, the spear
-  small) and s28 (only its head at the edge) do not.
+- Qin Shuang's spear (bible 〈道具〉, 2026-11-17 定要畫): the shots with the spear in a hand (s26 the raider's, s27, s27b, s35
+  (review 建議 8), s36) append refs-live/prop-changqiang-l1.png the same way, with a sentence that makes it the one spear of the
+  shot. s28 (only its head at the right edge, review 必改 2) does not.
 - Xu Yan's smirking angle-b nowhere (e921 review). The wides (s04, s09b, s10, s35, s39) send his portrait only. Where gen-dh sent
   only angle-a and angle-b (the close-ups s03, s15, s16, s37, s38) his portrait goes first and angle-a second (e930's XU_TWO).
 - Wang Erniu: where gen-dh sends erniu-angle-a with no portrait (the close-up s02) it becomes his portrait (e931-e933); the wides
@@ -37,8 +38,8 @@ Run: python3 -I mkspec.py
 - Sets (r2.py PLACES): the yard: e931's set-xujia-yuan-ye-dong2-l1 (s09b), e936's crops -zhong (s01), -qiang (s04, s05), -chai
   (s06, s09), -wu (s07) and this episode's -shu (s02, s03), -di (s08); the back gate set-xujia-houmen-ye-l1 (s31), -men (s29,
   s30), -xiang (s32, s33, s34): all swapped for pilot.py's newest set-xujia-yuan-ye (l2, never sent); the channel by night
-  set-shanjiao-qu-ye2-l1 (s10, s13), -ye2-zhuo, -ye2-geng, -ye2-tian, -ye2-kong, -ye2-cao, at dawn set-shanjiao-qu-chen-l1
-  (s35), -chen-tian, -chen-zhuo, -chen-geng: swapped for pilot.py's newest set-shentan (never sent). Every swap is sent with an
+  set-shanjiao-qu-ye3-l1 (s10, s13), -ye3-zhuo, -ye2-geng, -ye2-tian, -ye3-kong, -ye3-cao, at dawn set-shanjiao-qu-chen2-l1
+  (s35), -chen2-tian, -chen2-kong, -chen2-geng (after the independent review: 必改 6, 7): swapped for pilot.py's newest set-shentan (never sent). Every swap is sent with an
   absolute path by prep937.sh.
 - No seed of this episode has been run. Seeds 9371101/9371102.
 """
@@ -63,7 +64,7 @@ TANG_BODY = ("keeps exactly the same face, hair and costume as the pictures: Eas
              "small gold abacus hanging at her waist; ")
 TANG_ID = f"Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) {TANG_BODY}"
 TANG_PICS = ["tangxiaotang-portrait-l1.png", "tangxiaotang-angle-a-l1.png", "tangxiaotang-angle-b-l1.png"]
-HAIR_PIC = "tangxiaotang-back-shuangji-e929-w3.png"
+HAIR_PIC = "tangxiaotang-back-shuangji-e929-w3-ye.png"  # the free night copy (review 建議 1); the owner's daytime file is untouched
 HAIR_SENT = ("The back of the young woman's head looks exactly like <Picture N>: the same smooth black hair parted down the "
              "middle and gathered into just two round buns, one on each side, each wrapped with one short pink silk ribbon; that "
              "picture fixes the hairstyle only, never the place or the light.")
@@ -115,7 +116,7 @@ AIR_BY = {**{s: "night" for s in ("s01", "s02", "s05", "s08", "s09b", "s10", "s1
                                   "s20", "s29", "s30", "s33")},
           **{s: "lamp" for s in ("s03", "s04", "s06", "s07", "s09")},
           **{s: "torch" for s in ("s17", "s18", "s31", "s34")},
-          **{s: "powder" for s in ("s21", "s22", "s24", "s25", "s26", "s27", "s28")},
+          **{s: "powder" for s in ("s21", "s22", "s24", "s25", "s26", "s27", "s27b", "s28")},
           "s23": "flame", "s32": "steam",
           **{s: "dawn" for s in ("s35", "s36", "s37")}, **{s: "dawn2" for s in ("s38", "s39", "s40")}}
 INSERTS = ["s08", "s23"]
@@ -152,10 +153,10 @@ def back(beyond, n=2):
 video = json.load(open(VIDEO, encoding="utf-8"))
 scenes = {sc["id"]: sc for sc in video["scenes"]}
 ids = [sc["id"] for sc in video["scenes"]]
-assert len(ids) == 42, len(ids)
+assert len(ids) == 43, len(ids)
 shots = {sid: {} for sid in ids}
 CHANNEL = ids[ids.index("s10"):ids.index("s29")] + ids[ids.index("s35"):]
-assert CHANNEL[0] == "s10" and len(CHANNEL) == 26, CHANNEL
+assert CHANNEL[0] == "s10" and len(CHANNEL) == 27, CHANNEL
 
 # Tang Xiaotang from behind: her identity sentence and her three pictures leave; the hair reference joins every back of hers.
 TANG_BACK = {
@@ -176,7 +177,7 @@ for sid in ("s07", "s09"):  # her silent backs, unlisted
     add(sid, [ONLY_HE, back("Xu Yan one step beyond her in the left third of the frame")])
 for sid in ("s07", "s09", "s32", "s34", "s35"):
     append_pic(sid, HAIR_PIC, HAIR_SENT)
-for sid in ("s26", "s27", "s36"):
+for sid in ("s26", "s27", "s27b", "s35", "s36"):  # s27b split from s27, s35 review 建議 8
     append_pic(sid, SPEAR_PIC, SPEAR_SENT)
 
 # No person sent: the set clause opens the sentence; the inserts lose the place sentence (rule 35).
@@ -222,7 +223,7 @@ add("s31", [BESIDES_HER, "Only A-ling and the eight raiders as dark shapes the c
                          "of anyone appears."])
 add("s33", [BESIDES_HER, "Besides her, only the one raider seen from behind the composition describes is in the frame; no second copy "
                       "of anyone appears."])
-add("s28", [ONLY_2, "Only these 2 people, Wang Erniu and the kneeling Diao Qi, are in the frame, with only the head of a spear at the left "
+add("s28", [ONLY_2, "Only these 2 people, Wang Erniu and the kneeling Diao Qi, are in the frame, with only the head of a spear at the right "
                     "edge; no second copy of anyone appears."])
 add("s39", [BESIDES_THEM, "Only Xu Yan, little Xiaohe and the two women on the bank the composition describes are in the frame; no "
                           "second copy of anyone appears."])
@@ -284,13 +285,13 @@ PLACE = {
          "set-xujia-yuan-ye-dong2-l1.png": ["s09b"],
          "set-xujia-houmen-ye-men-l1.png": ["s29", "s30"], "set-xujia-houmen-ye-l1.png": ["s31"],
          "set-xujia-houmen-ye-xiang-l1.png": ["s32", "s33", "s34"]},
-    ST: {"set-shanjiao-qu-ye2-l1.png": ["s10", "s13"],
-         "set-shanjiao-qu-ye2-zhuo-l1.png": ["s11", "s14", "s17", "s18", "s21", "s22", "s25"],
-         "set-shanjiao-qu-ye2-geng-l1.png": ["s12", "s24", "s26", "s27", "s28"],
-         "set-shanjiao-qu-ye2-tian-l1.png": ["s15", "s16", "s16b", "s19"], "set-shanjiao-qu-ye2-kong-l1.png": ["s20"],
-         "set-shanjiao-qu-ye2-cao-l1.png": ["s23"], "set-shanjiao-qu-chen-l1.png": ["s35"],
-         "set-shanjiao-qu-chen-tian-l1.png": ["s36", "s38"], "set-shanjiao-qu-chen-zhuo-l1.png": ["s37"],
-         "set-shanjiao-qu-chen-geng-l1.png": ["s39", "s40"]},
+    ST: {"set-shanjiao-qu-ye3-l1.png": ["s10", "s13"],  # after the independent review: -ye3 (必改 6), -chen2 (必改 7, 建議 6)
+         "set-shanjiao-qu-ye3-zhuo-l1.png": ["s11", "s14", "s17", "s18", "s21", "s22", "s25"],
+         "set-shanjiao-qu-ye2-geng-l1.png": ["s12", "s24", "s26", "s27", "s27b", "s28"],
+         "set-shanjiao-qu-ye2-tian-l1.png": ["s15", "s16", "s16b", "s19"], "set-shanjiao-qu-ye3-kong-l1.png": ["s20"],
+         "set-shanjiao-qu-ye3-cao-l1.png": ["s23"], "set-shanjiao-qu-chen2-l1.png": ["s35"],
+         "set-shanjiao-qu-chen2-tian-l1.png": ["s36", "s38"], "set-shanjiao-qu-chen2-kong-l1.png": ["s37"],
+         "set-shanjiao-qu-chen2-geng-l1.png": ["s39", "s40"]},
 }
 seen = set()
 for gen, pics in PLACE.items():
