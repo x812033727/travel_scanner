@@ -13,6 +13,6 @@
   - 成片組裝：`final.mp4`（`15,311` 格，`-14 LUFS`，真峰值 `-1.9 dBFS`，配樂底噪 `-30.7 LUFS`，sha256 `7f8b9f45e5e5`）；`captions` 零警告；收短 `en`/`es`/`pt`/`id` 四語縮圖主標後重渲，9 語縮圖全數零警告；`qa` 9/11 過關（僅待站主核准 `narration` 與站台立場分數 `0.36`，`建議 0.05`、`業配 0.04`）。
   - 獨立成片一般觀眾審片（`review/audience-review.md`）：**`9.1 / 10`**（`Would watch to end: Yes`，視聽／配音零阻斷瑕疵；已依建議將 `brief.md` 站主觀點改為正向表述）。
   - 8 語 MiniMax 配音全數混音完成（均含配樂底軌）：`en.m4a`（19 MB，收緊 `w072`–`w073`）、`ja.m4a`（17 MB，收緊 `w026`–`w027`）、`ko.m4a`（17 MB）、`es.m4a`（18 MB，收緊 `w034`–`w035`）、`pt.m4a`（18 MB，收緊 `w072`–`w073`）、`id.m4a`（19 MB）、`vi.m4a`（19 MB）、`th.m4a`（18 MB，收緊超窗 10 窗）。
-  - `/admin/videos` 關卡：`script`（approved）、`storyboard`（approved）、`audio`（pending）、`final`（pending）、`dubs`（pending）。
-  - Google Drive 零差異備份：`AI/備份/AI劇/奇聞檔案局/W08/`（`1ZpMQOzbu53QCBOQ-0AJPMA0BIM3p0SKc`）與 `W08/製作檔/`（`1vrmthZCGtgrtZ5McoqAvTgN-NTHrsKWA`）完整同步並驗證 `differences: 0`。
+  - `/admin/videos` 關卡：`script`、`storyboard`、`audio`、`final`（`7f8b9f45e5e5`）、`dubs`（`fde840a74e2f`）皆已核准並決定全 8 語系；2026-11-23 完成全 9 語字幕、`package`（`4/4`，`metadata.json` `f72fa242ffcb`），推送完整備份層級 `publish`（`717c16de`，`94` 檔，`pending`）與 8 語 `languages`（`fcb272aa`，`cad806c138a4`，`34` 檔，`pending`）至 `/admin/videos`。
+  - Google Drive 零差異備份：已移至正確分類資料夾 `AI/備份/AI劇/奇聞檔案局/W-商業與品牌奇聞/W08/`（`1ZpMQOzbu53QCBOQ-0AJPMA0BIM3p0SKc`，`40/40` `0 differences`）與 `W08/製作檔/`（`1vrmthZCGtgrtZ5McoqAvTgN-NTHrsKWA`，`upload/`＋`captions/`＋`review/`＋`approvals.json`＋`languages.json` 皆 `0 differences`）。
 

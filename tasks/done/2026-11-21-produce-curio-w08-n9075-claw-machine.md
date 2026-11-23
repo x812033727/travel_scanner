@@ -1,13 +1,13 @@
 ---
 id: 2026-11-21-produce-curio-w08-n9075-claw-machine
 title: Produce Curio W08 (N9075 claw machine) full episode
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: antigravity-gemini-curio
 claimed_at: 2026-11-21T12:54:57Z
 created_at: 2026-11-21T12:54:56Z
-completed_at:
+completed_at: 2026-11-23T15:40:30Z
 branch: antigravity/curio-w08-claw-machine
 depends_on: []
 scope:
@@ -52,6 +52,5 @@ npm run check:tasks && npm run test:docs-videos
 - `W04`–`W07` are taken on remote branch `claude/curio-w-batch-2-scripts`, so this episode uses `curio-w08-claw-machine`.
 - All 8 primary sources (`WH12-S016`..`S020`, `S023`..`S025`) verified HTTP 200 via GET (using `archive.org/details/arcade-1-1993-book-scans` and `gcis.nat.gov.tw/elawAp/api/lawAttachment/243`).
 - Strict 1956 person redline (only named real person is William D. Bartlett, died 1948) and zero copyrighted IP mascots / zero trademarks / zero text in images.
-- 2026-11-21 checkpoint backed up to Google Drive `AI/備份/AI劇/奇聞檔案局/W08/製作檔/` (`1ZpMQOzbu53QCBOQ-0AJPMA0BIM3p0SKc` / `1vrmthZCGtgrtZ5McoqAvTgN-NTHrsKWA`). Resume at `tts --slug curio-w08-claw-machine` once Gemini TTS daily quota resets (Pacific midnight = Taiwan 16:00) or server Gemini API key is updated.
-
-
+- 2026-11-23 final packaging & `/admin/videos` update: pulled owner approvals (`audio`, `final` `7f8b9f45e5e5`, `dubs` `fde840a74e2f`) + 8-locale choice (`en,ja,ko,es,pt,id,vi,th`), regenerated 9-locale captions & `package` (`4/4`, `metadata.json` `f72fa242ffcb`), pushed full-tier `publish` (`717c16de`, 94 files, `pending`) and 8-locale `languages` (`fcb272aa`, `cad806c138a4`, 34 files, `pending`).
+- Drive folders moved to `AI/備份/AI劇/奇聞檔案局/W-商業與品牌奇聞/W08/` (`1ZpMQOzbu53QCBOQ-0AJPMA0BIM3p0SKc`, `40/40` `0 differences`) and `W08/製作檔/` (`1vrmthZCGtgrtZ5McoqAvTgN-NTHrsKWA`, `upload/` + `captions/` + `review/` + `approvals.json` + `languages.json` `0 differences`).
