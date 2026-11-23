@@ -216,6 +216,13 @@
    "to": "s35"
   },
   {
+   "file": "wind1",
+   "at": "s40",
+   "off": 0.0,
+   "gain": -12,
+   "to": "s40"
+  },
+  {
    "file": "zhongtian-sfx-table-flip-01",
    "at": "s01",
    "off": 0.05,
@@ -493,7 +500,8 @@
  "vf": {
   "s17": "eq=gamma=1.35:contrast=1.1:saturation=1.1",
   "s21": "eq=gamma=1.35:contrast=1.1:saturation=1.1",
-  "s37": "eq=brightness=-0.06:gamma=0.85"
+  "s37": "eq=brightness=-0.06:gamma=0.85",
+  "s12": "colorbalance=rs=-0.06:bs=0.06:rm=-0.06:bm=0.06,eq=saturation=0.92:gamma=0.95"
  },
  "slow_shot": {},
  "subtitle_lines": [],
