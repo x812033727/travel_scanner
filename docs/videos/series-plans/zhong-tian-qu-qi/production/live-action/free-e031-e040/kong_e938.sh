@@ -16,6 +16,8 @@
 #     set-chengmen-ye2-qiang-l1: the lit wall, the right torch, the top of the barrier (the captain, s23, s26)  560:315 at 460,250
 #     set-chengmen-ye2-men-l1:   the two shut leaves, the side door, the left torch (s24, s28)            640:360 at 0,220
 #     set-chengmen-ye2-lu-l1:    the far end of the barrier, the long wall and the road (s25)             560:315 at 752,300
+#     set-chengmen-ye2-zha2-l1:  e938 fix1: the side door, its torch and the whole barrier with the wall above it, wider
+#                                than -zha, room on the far side for the horse (fix1 s22, s27)               1000:562 at 312,174
 # Usage: bash kong_e938.sh REFS_LIVE_DIR OUTDIR
 set -e
 L=$1; O=$2
@@ -32,3 +34,4 @@ c "$G" set-chengmen-ye2-zha-l1   800:450:380:286
 c "$G" set-chengmen-ye2-qiang-l1 560:315:460:250
 c "$G" set-chengmen-ye2-men-l1   640:360:0:220
 c "$G" set-chengmen-ye2-lu-l1    560:315:752:300
+c "$G" set-chengmen-ye2-zha2-l1  1000:562:312:174
