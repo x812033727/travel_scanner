@@ -7,9 +7,12 @@
   - 2026-11-14 劇場級動畫光影 × 厚塗水粉質感，50% 以上純物件／場景鏡（`nobody: true`），`Ada` 出場鏡鎖定 `ada-canon-v2.png`（3.5 頭身修長比例）。
   - 縮圖採 2026-11-20 `heimao-left` 規則：第一行點名「夾娃娃機」（九語皆明寫主體），畫面零商標、零版權角色、零文字。
   - 1956 人物紅線：唯一點名真人 William D. Bartlett 逝於 1948 年；在世受訪修復師、日台開發與官員一律不點名、不入畫。
-- **2026-11-21 檢查點（等待 Gemini TTS 日額度重置續跑）**：
-  - 已完成並通過：`lint`（**0 errors, 0 warnings**，含全 9 語）、獨立查核 `verify-2.md`（**24/24 CONFIRMED**）、3 角色 `opening-review`（**9.0 / 9.0 / 9.0 PASSED**）、2 位盲讀敘事審查（**14/14 PASS**）、60／60 張 2K 關鍵影格經獨立 2 倍 4 象限審圖全數通過並以 `--provider external --usd 0` 匯入、9 語 `heimao-left` 縮圖渲染並目視驗收、8 語 `i18n`（`en,ja,ko,es,pt,id,vi,th`）經獨立品質稽核修正通過；後台已送審 `script` 與 `storyboard`（`pending`）。
-  - 唯一卡點：伺服器 Gemini 金鑰之 `gemini-3.8-flash-tts`（預設）與 `gemini-3.8-flash-lite-tts`（實測約 19 句觸頂）雙雙達 Google 單日請求上限（HTTP 429）。已切回預設 `gemini-3.8-flash-tts` 保留既有 **93／119 句**快取（僅剩 27 句／595 字元，全片正文預估 08:06 ≥ 08:00）。
-  - 雲端備份：`AI/備份/AI劇/奇聞檔案局/W08/製作檔/`（資料夾 ID `1ZpMQOzbu53QCBOQ-0AJPMA0BIM3p0SKc` / `1vrmthZCGtgrtZ5McoqAvTgN-NTHrsKWA`）。
-  - 續跑指令：待太平洋時間午夜額度重置（台灣 16:00）或後台更新 Gemini 金鑰後，從 `tts --slug curio-w08-claw-machine` 接續 → `check-audio` → `music` → 8 語 MiniMax `dub`＋`check-audio --second-opinion` → `clips` → `assemble --adopt-branding` → `captions` → `qa`（11/11）→ 獨立 `review/audience-review.md` → Drive 零差異覆寫備份 → `review-push --gate audio / final`。
+- **2026-11-22 全片組裝、8 語配音、獨立觀眾審片與備份（全數完成）**：
+  - 前置關卡全數通過：`lint`（**0 errors, 0 warnings**，全 9 語）、獨立查核 `verify-2.md`（**24/24 CONFIRMED**）、3 角色 `opening-review`（**9.0 / 9.0 / 9.0 PASSED**）、2 位盲讀敘事審查（**14/14 PASS**）、60／60 張 2K 關鍵影格 2x 四象限獨立審圖通過並匯入（`--provider external --usd 0`）。
+  - `zh-TW` `Sulafat` TTS：119/119 句完成（正文 `08:09`，實測語速 `4.85 字/秒` >= `4.4 字/秒`）；`check.json` 13 句標記經實聽 13 個 `.wav` 全數確認為 ASR 誤聽或自然口語，0 處唸錯；Lyria 配樂 3x 無縫循環（`music/d7ef806b3905b8b6.mp3`）。
+  - 成片組裝：`final.mp4`（`15,311` 格，`-14 LUFS`，真峰值 `-1.9 dBFS`，配樂底噪 `-30.7 LUFS`，sha256 `7f8b9f45e5e5`）；`captions` 零警告；收短 `en`/`es`/`pt`/`id` 四語縮圖主標後重渲，9 語縮圖全數零警告；`qa` 9/11 過關（僅待站主核准 `narration` 與站台立場分數 `0.36`，`建議 0.05`、`業配 0.04`）。
+  - 獨立成片一般觀眾審片（`review/audience-review.md`）：**`9.1 / 10`**（`Would watch to end: Yes`，視聽／配音零阻斷瑕疵；已依建議將 `brief.md` 站主觀點改為正向表述）。
+  - 8 語 MiniMax 配音全數混音完成（均含配樂底軌）：`en.m4a`（19 MB，收緊 `w072`–`w073`）、`ja.m4a`（17 MB，收緊 `w026`–`w027`）、`ko.m4a`（17 MB）、`es.m4a`（18 MB，收緊 `w034`–`w035`）、`pt.m4a`（18 MB，收緊 `w072`–`w073`）、`id.m4a`（19 MB）、`vi.m4a`（19 MB）、`th.m4a`（18 MB，收緊超窗 10 窗）。
+  - `/admin/videos` 關卡：`script`（approved）、`storyboard`（approved）、`audio`（pending）、`final`（pending）、`dubs`（pending）。
+  - Google Drive 零差異備份：`AI/備份/AI劇/奇聞檔案局/W08/`（`1ZpMQOzbu53QCBOQ-0AJPMA0BIM3p0SKc`）與 `W08/製作檔/`（`1vrmthZCGtgrtZ5McoqAvTgN-NTHrsKWA`）完整同步並驗證 `differences: 0`。
 

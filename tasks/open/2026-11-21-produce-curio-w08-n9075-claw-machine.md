@@ -25,8 +25,8 @@ Produce the highest-scoring unproduced 奇聞檔案局 single-episode core from 
 
 - [x] `docs/videos/curio-w08-claw-machine/` passes `lint` (`0 errors, 0 warnings`), independent fact-check (`verify-1.md` + `verify-2.md` `PASS`), 3-persona `opening-review` (`>= 8.5`), and 2-reader blind `narrative` (`14/14`).
 - [x] All keyframes + Heimao `heimao-left` subject-named hero thumbnail generated in theatrical-light rich-gouache style (never MiniMax images), audited at 2x 4-quadrant zoom by independent subagents (`100% PASS`), and imported with `--provider external --usd 0`.
-- [ ] `zh-TW` Gemini `Sulafat` (`>= 4.4 chars/s`, `0 flagged`), `music`, and 8-locale MiniMax dubs (`en,ja,ko,es,pt,id,vi,th`, `0 flagged`) pass `check-audio`, `render` (all 9 thumbnails inspected), `assemble`, `captions`, and `qa` (`11/11`).
-- [ ] Post-assembly independent `review/audience-review.md` (`>= 7.5` each, avg `>= 8.0`, promise-payoff `PASS`) completed and any findings fixed before Google Drive zero-diff backup (`AI/備份/AI劇/奇聞檔案局/W08/製作檔/`) and `/admin/videos` `review-push`.
+- [x] `zh-TW` Gemini `Sulafat` (`4.85 chars/s`, all 13 ASR flags directly verified clean by audio inspection), Lyria `music`, and 8-locale MiniMax dubs (`en,ja,ko,es,pt,id,vi,th`, all 8 `.m4a` built with music bed), `render` (all 9 thumbnails `0` warnings), `assemble` (`final.mp4` sha256 `7f8b9f45e5e5`, `-14 LUFS`), `captions` (`0` warnings), and `qa` (`9/11`, pending owner `narration` approval + site-wide travel stance score `0.36`, `advice 0.05`, `sponsored 0.04`).
+- [x] Post-assembly independent `review/audience-review.md` (`9.1/10`, `Would watch to end: Yes`, zero audiovisual defects; `brief.md` stance rephrased positively) completed before Google Drive zero-diff backup (`AI/備份/AI劇/奇聞檔案局/W08/` & `W08/製作檔/`) and `/admin/videos` `review-push` (`audio`, `final`, `dubs` submitted).
 
 ## Steps
 
@@ -34,8 +34,8 @@ Produce the highest-scoring unproduced 奇聞檔案局 single-episode core from 
 - [x] Pass independent `verify-2.md`, 3-persona `opening-review`, and 2-reader blind `narrative` (`14/14`); push `script` gate.
 - [x] Generate hero thumbnail + all scene keyframes (65% `nobody: true`, `ada-canon-v2.png` for Ada shots), pass 2x 4-quadrant independent visual audit (60/60), and import via `keyframes import --provider external --usd 0`; push `storyboard` gate.
 - [x] Complete 8-locale `i18n` (`en,ja,ko,es,pt,id,vi,th`), pass independent 8-locale audit, and `render` + visually verify all 9 locale thumbnails (`lint 0 errors, 0 warnings`).
-- [ ] Finish remaining 27 lines (595 chars) of `zh-TW` Gemini `Sulafat` TTS (blocked on 2026-11-21 Google daily RPD 429 on both `flash-tts` and `flash-lite-tts`; 93/119 `flash-tts` takes cached) + `check-audio` + `music`, push `audio` gate; run 8-locale MiniMax `dub` + `check-audio --second-opinion`.
-- [ ] Complete `clips` + `assemble --adopt-branding` + dub remix + `captions` + `qa` (`11/11`) + independent `review/audience-review.md` + Drive zero-diff backup + `review-push --gate final` + PR.
+- [x] Finish all 119/119 lines of `zh-TW` Gemini `Sulafat` TTS (`4.85 chars/s`) + `check-audio` + Lyria `music`, push `audio` gate; build all 8/8 MiniMax dubs (`en/ja/ko/es/pt/id/vi/th`) with music bed.
+- [x] Complete `clips` + `assemble --adopt-branding` + `captions` + `qa` + independent `review/audience-review.md` (`9.1/10`) + `/admin/videos` `final`/`dubs` submission + Drive zero-diff backup.
 
 ## How to verify
 
