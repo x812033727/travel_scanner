@@ -32,7 +32,11 @@
   - `assemble --slug curio-s14 --adopt-branding`：`final.mp4`（`sha256: 06530d2067da`，總長 `9m21.21s`／`16,835` 格，零片頭＋片尾 `mokaair-brand-package-v4-endscreen`，`-14.0 LUFS`）；八語音軌零成本重混對齊片尾長度後，`captions` 與 `qa` **`11 of 11 checks passed`**（`assemble`、`render`、`narration`、`pace`、`captions`、`metadata`、`facts`、`links`、`thumbnail`、`policy` `0.72`、`disclosure`）。
 - **獨立一般觀眾視角評分挑刺（`review/audience-review.md`）**：
   - 六項指標得分：`8.8`（標題與縮圖吸睛度）、`8.5`（九語縮圖排版與說明欄前兩行鉤子）、`8.9`（開場前 300 秒留存力與敘事推進）、`8.5`（旁白語速、咬字與配樂混音聽感）、`8.2`（全片畫風統一性、光影色溫節奏與時代考證）、`8.7`（無字視覺敘事清楚度與首尾承諾兌現），**總平均 `8.60 / 10`（門檻 ≥ 8.0），`0` 阻斷級瑕疵（PASS）**；2026-11-19 承諾兌現對照題 **100% 正面兌現（PASS）**。
-- **雲端備份與後台推送**：完整備份至 Google Drive `S14` 雙目錄（`0 differences`）並執行 `review-push --slug curio-s14 --gate final` 送交後台審核（待站主核准 `final` 後再依序執行 `package` → `review-push --gate publish` → `publish` 核准後補推 `--gate languages`）。
+- **雲端備份與後台推送**：完整備份至 Google Drive `S14` 雙目錄（`0 differences`）並執行 `review-push --slug curio-s14 --gate final` 送交後台審核。
+
+### 4. 2026-11-21 上架與 2026-11-23 黑猫特徵物縮圖回補同步
+- **YouTube 上架（`JaCrrJFEgMc`）**：站主於 `2026-11-21T04:37Z` 核准 `final`（`06530d2067da`）、`07:16Z` 核准 PR #2197 新版黑猫特徵物九語縮圖（`layout: "heimao-left"`、`「宮本武藏沒遲到？／死後 9 年石碑，竟寫同時上島」`、`stock/0ce6e482...jpg`、`thumbnail.jpg` `f0f72d3abb5c`）之 `publish`（`b94f8ba2`）與 `languages`（`faf14b4d`），並於 `07:17Z` 完成 YouTube `JaCrrJFEgMc` 私人上傳與 9 語字幕／縮圖／8 語配音同步。
+- **2026-11-23 回補修復**：因 `2026-11-21T12:43Z` 舊分支收尾曾把 Google Drive 覆蓋回舊版「心理戰全是編的？」縮圖，已自 `_舊版/20261121T124340Z` 完整還原新版特徵物九語縮圖、`stock/0ce6e482...jpg`、`video.json`、`i18n/*.json` 與 `review/languages.json`（`310c820db761`）至 Google Drive 雙目錄（`S14/` `9/9`、`S14/製作檔/curio-s14/` `29/29`，`0 differences`）並同步回 PR #2186。
 
 
 
