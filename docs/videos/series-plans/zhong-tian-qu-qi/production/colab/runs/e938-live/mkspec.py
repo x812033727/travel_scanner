@@ -80,7 +80,7 @@ SPEAR_SENT = ("The long spear shown in <Picture N> is the one spear in this shot
               "small plain iron spearhead; that picture fixes the spear only, never the place or the light.")
 HORSE_PIC = "prop-zaohongma-l1.png"
 HORSE_SENT = ("The horse shown in <Picture N> is the one horse in this shot, keeping exactly its deep red-brown coat, its mane and "
-              "tail of the same red-brown and its plain brown bridle, with the saddle written above; that picture fixes the horse "
+              "tail of the same red-brown and its plain dark bridle, with the saddle written above; that picture fixes the horse "
               "only, never the place or the light.")
 CAP_PIC = "duizhang-portrait-l1.png"
 CAP_SENT = ("The guard captain looks exactly like <Picture N>: the same square face and short black beard, the same black lamellar "
@@ -107,6 +107,7 @@ SHOES = "Every person in the frame wears dark cloth shoes on both feet."
 SHOES_BY = {
     "s01": "Xu Yan wears dark cloth shoes.",
     "s16": "Qin Shuang wears her leather boots, and A-ling and the young woman wear soft cloth shoes.",
+    "s18": "A-ling and the young woman wear soft cloth shoes.",  # a wide after review 建議 3
     "s19": "Xu Yan wears dark cloth shoes.",
     "s22": "A-ling wears soft dark cloth shoes.",
     "s27": "A-ling wears soft dark cloth shoes and the guard captain wears black leather boots.",
@@ -172,8 +173,8 @@ assert OUTSIDE[0] == "s20" and len(OUTSIDE) == 20, OUTSIDE
 
 # Tang Xiaotang from behind: her identity sentence and her three pictures leave; the hair reference joins every back of hers.
 TANG_BACK = {
-    "s02": [ONLY_2, "Only these 2 people are in the frame, the young woman with the buns seen only from behind and Xu Yan one step "
-                    f"beyond her; {ONE_TANG}; no second copy of anyone appears."],
+    "s02": [ONLY_3, "Only these 3 people are in the frame, the young woman with the buns seen only from behind, Xu Yan one step "
+                    f"beyond her and little Xiaohe in the bed; {ONE_TANG}; no second copy of anyone appears."],
     "s04": [ONLY_3, "Only these 3 people are in the frame, the young woman with the buns seen only from behind, little Xiaohe asleep "
                     f"in the bed and Xu Yan by the bedpost; {ONE_TANG}; no second copy of anyone appears."],
     "s07": [ONLY_2, "Only these 2 people are in the frame, the young woman with the buns seen only from behind and little Xiaohe in "
@@ -188,13 +189,13 @@ for sid, onl in TANG_BACK.items():
     add(sid, onl)
     drop(sid, *TANG_PICS)
 add("s07", [f"{STYLE_END} little Xiaohe shown in", f"{STYLE_END} Little Xiaohe shown in"])
-for sid in ("s02", "s04", "s07"):
-    append_pic(sid, HAIR_DAY, HAIR_SENT)
-for sid in ("s16", "s18"):
+# independent review 建議 10 (coordinator): the owner's daytime file shows blue sky and houses, wrong for the room: all five send the
+# free night copy (the hair only)
+for sid in ("s02", "s04", "s07", "s16", "s18"):
     append_pic(sid, HAIR_NIGHT, HAIR_SENT)
 for sid in ("s09", "s12", "s16", "s17"):
     append_pic(sid, SPEAR_PIC, SPEAR_SENT)
-HORSE_SH = ["s16", "s18", "s20", "s21", "s22", "s25", "s27", "s27b", "s29", "s30"]
+HORSE_SH = ["s16", "s18", "s20", "s21", "s22", "s25", "s27", "s27b", "s29", "s30", "s32"]  # s32: review 必改 8
 for sid in HORSE_SH:
     append_pic(sid, HORSE_PIC, HORSE_SENT)
 CAP_SH = ["s23", "s26", "s27", "s27b", "s28", "s32", "s35", "s37", "s38"]
@@ -229,10 +230,11 @@ add("s27", [BESIDES_HER, "Only A-ling on the horse, the guard captain behind the
                          "copy of anyone or of the horse appears."])
 add("s27b", [BESIDES_HER, "Only A-ling on the horse, the guard captain on the paving and the one horse are in the frame; no second copy "
                           "of anyone or of the horse appears."])
-add("s32", [BESIDES_HER, "Only the guard captain, the six crossbowmen, the one guard with the torch and A-ling seen from behind at the "
-                         "right edge, the nine the composition describes, are in the frame; no second copy of anyone appears."])
-add("s12", [ONLY_SHE, "Besides her, only the shoulder of the man at the right edge of the frame and the young woman in grey-white beyond "
-                      "the doorway the composition describes are in the frame; no second copy of anyone appears."])
+add("s32", [BESIDES_HER, "Only the guard captain, the six crossbowmen, the one guard with the torch, A-ling seen from behind at the "
+                         "right edge and the one horse tied at the post, the nine people and the horse the composition describes, are in "
+                         "the frame; no second copy of anyone or of the horse appears."])
+add("s12", [ONLY_SHE, "Besides her, only the shoulder of the man at the right edge of the frame and the young woman in grey-white by the "
+                      "shut door the composition describes are in the frame; no second copy of anyone appears."])
 add("s14", [ONLY_HE, "Besides him, only the back of the young woman's head at the left edge of the frame the composition describes is in "
                      "the frame; no second copy of anyone appears."])
 add("s36", [ONLY_SHE, "Besides her, only the two hands holding the crossbow in the foreground the composition describes are in the "
@@ -291,14 +293,14 @@ for sid in AL_WIDE:
 
 SWAP = {sid: {} for sid in ids}
 PLACE = {
-    TF: {"set-xujia-tangfang-chen-chuang-l1.png": ["s01", "s04"], "set-xujia-tangfang-chen-men-l1.png": ["s02"],
+    TF: {"set-xujia-tangfang-chen-chuang-l1.png": ["s01", "s02", "s04"],  # s02: review 必改 2 (-chen-men no longer sent)
          "set-xujia-tangfang-chen-zhen-l1.png": ["s03"], "set-xujia-tangfang-xi-zhen-l1.png": ["s05", "s11"],
          "set-xujia-tangfang-xi-chuang-l1.png": ["s06", "s07", "s08", "s10"], "set-xujia-tangfang-xi-men-l1.png": ["s09"],
          "set-xujia-tangfang-men-l1.png": ["s12", "s13"], "set-xujia-tangfang-zhen-l1.png": ["s14"],
          "set-xujia-tangfang-chuang-l1.png": ["s15", "s15b", "s19"]},
     YY: {"set-xujia-yuan-ye-dong2-l1.png": ["s16"], "set-xujia-yuan-ye-dong2-wu-l1.png": ["s17"],
          "set-xujia-yuan-ye-dong2-zhong-l1.png": ["s18"]},
-    ST: {"set-guandao-ye-ce-l1.png": ["s20"], "set-guandao-ye-shu-l1.png": ["s21"],
+    ST: {"set-guandao-ye-ce2-l1.png": ["s20"], "set-guandao-ye-shu-l1.png": ["s21"],  # s20: review 必改 4
          "set-chengmen-ye-zha-l1.png": ["s22", "s27"], "set-chengmen-ye-qiang-l1.png": ["s23", "s26"],
          "set-chengmen-ye-men-l1.png": ["s24", "s28"], "set-chengmen-ye-lu-l1.png": ["s25"], "set-chengmen-ye-l1.png": ["s27b"],
          "set-yiguan-men-ye-l1.png": ["s29"], "set-yiguan-men-ye-men-l1.png": ["s30", "s33", "s36"],

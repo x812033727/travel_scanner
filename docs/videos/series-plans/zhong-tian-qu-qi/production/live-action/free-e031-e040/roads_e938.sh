@@ -5,6 +5,8 @@
 # town at the left); rule 33: nothing hung (no notice board, no signboard, no milestone).
 #   set-guandao-ye-ce-l1:  the left half: the long line of dark poplars running across the frame, the flat dark field before it
 #                          and the night sky above (the side-on gallop, s20)
+#   set-guandao-ye-ce2-l1: (independent review 必改 4) the poplar line, the flat ground at its foot and the night sky only, the
+#                          road receding to the right cut away but a corner (the side-on gallop along the track, s20; -ce no longer sent)
 #   set-guandao-ye-shu-l1: closer on the poplar line and the field (the rider waist-up beside the horse's head and neck, s21)
 #   set-chengmen-ye-zha-l1: the half-swung gate leaf and its torch at the left, the waist-high barrier of crossed wooden stakes
 #                          running across the frame, the paving before it (the halt, the charge, s22, s27)
@@ -23,6 +25,7 @@ L=$1; O=$2
 c() { ffmpeg -v error -y -i "$1" -vf "crop=$3,scale=1312:736:flags=lanczos" -flags +bitexact -fflags +bitexact "$O/$2.png"; }
 c "$L/set-guandao-ye-l1.png" set-guandao-ye-ce-l1      720:405:0:210
 c "$L/set-guandao-ye-l1.png" set-guandao-ye-shu-l1     560:315:40:200
+c "$L/set-guandao-ye-l1.png" set-guandao-ye-ce2-l1     520:292:0:228
 c "$L/set-chengmen-ye-l1.png" set-chengmen-ye-zha-l1   736:414:400:310
 c "$L/set-chengmen-ye-l1.png" set-chengmen-ye-qiang-l1 480:270:430:260
 c "$L/set-chengmen-ye-l1.png" set-chengmen-ye-men-l1   560:315:150:300
