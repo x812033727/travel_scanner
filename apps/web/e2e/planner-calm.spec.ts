@@ -32,6 +32,8 @@ async function workspace(page: Page, failSave = false) {
     unexpected.push(`${request.method()} ${path}`);
     return route.fulfill({ status: 503, json: { detail: "Unstubbed request blocked" } });
   });
+  // The fixture trip is 2026-11-11–12 in Asia/Tokyo; pin the clock so the trip is not treated as past once that date goes by.
+  await page.clock.setFixedTime(new Date("2026-11-01T03:00:00Z"));
   await page.goto("/zh-TW/trips/intuitive-trip");
   await expect(page.getByRole("heading", { name: trip.name })).toBeVisible();
   return { writes, unexpected, current: () => trip };

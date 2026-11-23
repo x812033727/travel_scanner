@@ -105,6 +105,24 @@ MEDIA_CATALOG: tuple[MediaModel, ...] = (
         reference_images=1,
         usd_per_image=0.0035,
     ),
+    # MiniMax's pricing page, read 2026-11-13, bills H3-Image by tokens (input text US$2.30,
+    # input image US$1.50, output image US$3.80 a million) and works examples of one picture:
+    # text to image 1K US$0.02179, 2K US$0.02333; each reference adds input-image tokens. The
+    # catalog rounds up to cover a prompt of a few hundred words and one reference. Same key and
+    # base URL as image-01 (providers/minimax.py).
+    MediaModel(
+        "MiniMax-H3-Image",
+        "minimax",
+        "image",
+        "MiniMax H3-Image",
+        note=(
+            "2026-11-10 推出；最多 16 張參考圖（站台送 4 張），1K 約 US$0.022、2K 約 US$0.023"
+            "（依 token 計價，含一張參考圖估 US$0.025／0.027；2026-11-13 查 MiniMax 價目頁）"
+        ),
+        reference_images=4,
+        usd_per_image=0.025,
+        usd_per_image_2k=0.027,
+    ),
     MediaModel(
         "gemini-omni-1.1-flash",
         "gemini",

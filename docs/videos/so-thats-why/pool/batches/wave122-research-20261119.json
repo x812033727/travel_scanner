@@ -1,0 +1,830 @@
+{
+  "batch_id": "wave122-research-20261119",
+  "created_on": "2026-11-19",
+  "scope": "兩條京都出發的特急行程，同步追查交通 IC 卡、指定席、電子票的查驗與有效區間，以具名日期的急行與特急實例驗算到站時刻。",
+  "sources": [
+    {
+      "id": "X122D-S01",
+      "url": "https://kyoto.travel/en/getting-to",
+      "canonical_url": "https://kyoto.travel/en/getting-to",
+      "title": "Getting to Kyoto",
+      "publisher": "京都市觀光協會",
+      "network": "京都市觀光協會",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "閱讀發布單位原始頁面，交叉比對車種、適用憑證與適用區間。",
+      "reading_scope": "From Osaka 段的 JR、Hankyu 與 Keihan 路線",
+      "locator": "From Osaka 段的 JR、Hankyu 與 Keihan 路線",
+      "summary": "JR 大阪站至京都站、阪急大阪梅田至京都河原町、京阪自淀屋橋往京都市中心各有不同的上下車地點。",
+      "limitations": "頁上車程是旅遊導覽估時；京都市中心有多座車站。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X122D-S02",
+      "url": "https://narashikanko.or.jp/en/access/",
+      "canonical_url": "https://narashikanko.or.jp/en/access/",
+      "title": "Access to Nara City",
+      "publisher": "奈良市觀光協會",
+      "network": "奈良市觀光協會",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "閱讀發布單位原始頁面，交叉比對車種、適用憑證與適用區間。",
+      "reading_scope": "By Train 段",
+      "locator": "By Train 段",
+      "summary": "自近鐵京都至近鐵奈良的特急約 35 分鐘，須付加價；JR 的都路快速由 JR 京都開往 JR 奈良。",
+      "limitations": "比較的是列出的典型路線，具體出發與抵達依時刻表。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X122D-S03",
+      "url": "https://www.westjr.co.jp/global/en/howto/guide/movie04.html",
+      "canonical_url": "https://www.westjr.co.jp/global/en/howto/guide/movie04.html",
+      "title": "How to use ICOCA",
+      "publisher": "西日本旅客鐵道",
+      "network": "西日本旅客鐵道",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "閱讀發布單位原始頁面，交叉比對車種、適用憑證與適用區間。",
+      "reading_scope": "Digest (photo guide) 的 How to use ICOCA 首兩步",
+      "locator": "Digest (photo guide) 的 How to use ICOCA 首兩步",
+      "summary": "以 ICOCA 碰入口閘機讀取區，出站時再碰一次，系統自動扣車資。",
+      "limitations": "這是儲值交通卡的基本用法，不說明各私鐵指定席商品。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X122D-S04",
+      "url": "https://www.hankyu.co.jp/en/station_guide/faq.html",
+      "canonical_url": "https://www.hankyu.co.jp/en/station_guide/faq.html",
+      "title": "Questions and Answers",
+      "publisher": "阪急電鐵",
+      "network": "阪急電鐵",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "閱讀發布單位原始頁面，交叉比對車種、適用憑證與適用區間。",
+      "reading_scope": "Tickets 的 ICOCA 問答及 Railway 的 Kyo-Train Garaku / PRiVACE 對照",
+      "locator": "Tickets 的 ICOCA 問答及 Railway 的 Kyo-Train Garaku / PRiVACE 對照",
+      "summary": "阪急接受 ICOCA；假日觀光列車京とれいん 雅洛只收普通運賃，PRiVACE 另需指定座席費。",
+      "limitations": "觀光列車有特定運行日；不能推定一般時段一定有車。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X122D-S05",
+      "url": "https://faq.hankyu.co.jp/faq/show/31?site_domain=default",
+      "canonical_url": "https://faq.hankyu.co.jp/faq/show/31?site_domain=default",
+      "title": "特急料金は別途発生しますか",
+      "publisher": "阪急電鐵",
+      "network": "阪急電鐵",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "閱讀發布單位原始頁面，交叉比對車種、適用憑證與適用區間。",
+      "reading_scope": "FAQ 31，回答「当社の特急列車は、普通運賃のみ」",
+      "locator": "FAQ 31，回答「当社の特急列車は、普通運賃のみ」",
+      "summary": "阪急說明特急車種本身不另收特急費。",
+      "limitations": "應與另行販售的 PRiVACE 特別車廂指定席券合讀。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X122D-S06",
+      "url": "https://www.hankyu.co.jp/privace/",
+      "canonical_url": "https://www.hankyu.co.jp/privace/",
+      "title": "阪急京都線 座席指定サービス PRiVACE",
+      "publisher": "阪急電鐵",
+      "network": "阪急電鐵",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "閱讀發布單位原始頁面，交叉比對車種、適用憑證與適用區間。",
+      "reading_scope": "停車駅、座席指定料金及乗車位置",
+      "locator": "停車駅、座席指定料金及乗車位置",
+      "summary": "適用編組的 PRiVACE 從大阪梅田方向數第四輛、中央門乘車，座席指定費統一 500 日圓。",
+      "limitations": "只談搭載這項服務的編組與車廂，票價之外另計。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X122D-S07",
+      "url": "https://www.japan.travel/en/my/story/themed-train-japan-asoboy-hello-kitty/",
+      "canonical_url": "https://www.japan.travel/en/my/story/themed-train-japan-asoboy-hello-kitty/",
+      "title": "5 Unique Themed Trains in Japan for Every Traveler’s Itinerary",
+      "publisher": "日本政府觀光局",
+      "network": "日本政府觀光局",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "閱讀發布單位原始頁面，交叉比對車種、適用憑證與適用區間。",
+      "reading_scope": "Hankyu Railways’ Kyo-Train Garaku 小節",
+      "locator": "Hankyu Railways’ Kyo-Train Garaku 小節",
+      "summary": "京とれいん 雅洛部分車廂的設計含庭園，第二與第五車有石庭；旅客不需要加價或另行預約。",
+      "limitations": "營運日與改班須向阪急確認；文章附的照片屬原權利人。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X122D-S08",
+      "url": "https://www.kintetsu.co.jp/foreign/english/about/howto/before.html",
+      "canonical_url": "https://www.kintetsu.co.jp/foreign/english/about/howto/before.html",
+      "title": "Before Boarding a Train",
+      "publisher": "近畿日本鐵道",
+      "network": "近畿日本鐵道",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "閱讀發布單位原始頁面，交叉比對車種、適用憑證與適用區間。",
+      "reading_scope": "Train types；Regular trains / Limited Express trains；Ticket types",
+      "locator": "Train types；Regular trains / Limited Express trains；Ticket types",
+      "summary": "近鐵急行等一般列車只需基本乘車憑證。特急全車指定席，須另備特急券。",
+      "limitations": "車種定義屬近鐵，不能移到阪急或南海。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X122D-S09",
+      "url": "https://www.kintetsu.co.jp/foreign/english/about/limited_express/ticket.html",
+      "canonical_url": "https://www.kintetsu.co.jp/foreign/english/about/limited_express/ticket.html",
+      "title": "Limited Express Tickets",
+      "publisher": "近畿日本鐵道",
+      "network": "近畿日本鐵道",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "閱讀發布單位原始頁面，交叉比對車種、適用憑證與適用區間。",
+      "reading_scope": "Purchase Limited Express Ticket Only、Purchase both、How to read a Limited Express ticket",
+      "locator": "Purchase Limited Express Ticket Only、Purchase both、How to read a Limited Express ticket",
+      "summary": "只買特急券和連基本乘車券一起買是不同選項；前者可另用交通 IC 卡付基本車資，券只限指定班次，車內可能查驗兩種憑證。",
+      "limitations": "不同售票通路的選位、變更規定不一致，依購買方式閱讀。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X122D-S10",
+      "url": "https://eki.kintetsu.co.jp/norikae/T5?USR=PC&slCode=360-0&d=1&dw=0&dmode=detail",
+      "canonical_url": "https://eki.kintetsu.co.jp/norikae/T5?USR=PC&slCode=360-0&d=1&dw=0&dmode=detail",
+      "title": "近鉄 京都駅 京都線平日時刻表",
+      "publisher": "近畿日本鐵道",
+      "network": "近畿日本鐵道",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "閱讀發布單位原始頁面，交叉比對車種、適用憑證與適用區間。",
+      "reading_scope": "2026-03-14 改正；京都駅、平日、詳細、6時欄",
+      "locator": "2026-03-14 改正；京都駅、平日、詳細、6時欄",
+      "summary": "早上六時欄有開往橿原神宮前的急行，也有開往奈良的急行。只看「急行」不能判定終點。",
+      "limitations": "本次使用查閱時的平日時刻表，並非逐日保證。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X122D-S11",
+      "url": "https://eki.kintetsu.co.jp/english/N3?USR=PC&date=20261119&ep=1&pn=3&rp=2&sf=5198-Kyoto+%5BB01%5D&sr=0&st=5212-Kintetsu-Nara+%5BA28%5D&time=0900&tp=0",
+      "canonical_url": "https://eki.kintetsu.co.jp/english/N3?USR=PC&date=20261119&ep=1&pn=3&rp=2&sf=5198-Kyoto+%5BB01%5D&sr=0&st=5212-Kintetsu-Nara+%5BA28%5D&time=0900&tp=0",
+      "title": "Route/Fare Search — Kyoto to Kintetsu-Nara, 19 Nov 2026",
+      "publisher": "近畿日本鐵道",
+      "network": "近畿日本鐵道",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "閱讀發布單位原始頁面，交叉比對車種、適用憑證與適用區間。",
+      "reading_scope": "輸入 2026-11-19 09:00，Kyoto B01 → Kintetsu-Nara A28，Route 1 與 Route 2",
+      "locator": "輸入 2026-11-19 09:00，Kyoto B01 → Kintetsu-Nara A28，Route 1 與 Route 2",
+      "summary": "09:00 急行 09:48 抵達，基本與總額皆 760 日圓。09:25 特急 09:59 抵達，基本 760 加特急 520，總額 1,280。兩條查詢結果皆列零轉乘。",
+      "limitations": "指定日期的官方路線查詢。時刻與金額屬該例；沒有搭乘或購票實測。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X122D-S12",
+      "url": "https://www.kintetsu.co.jp/gyoumu/ticket/",
+      "canonical_url": "https://www.kintetsu.co.jp/gyoumu/ticket/",
+      "title": "近鉄特急チケットレスサービス",
+      "publisher": "近畿日本鐵道",
+      "network": "近畿日本鐵道",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "閱讀發布單位原始頁面，交叉比對車種、適用憑證與適用區間。",
+      "reading_scope": "HOW TO BOARD 及 FAQ 特急券呈示",
+      "locator": "HOW TO BOARD 及 FAQ 特急券呈示",
+      "summary": "購買列車座位後，另持乘車憑證過閘，再按手機顯示的指定座席乘車；另有查驗票面規定。",
+      "limitations": "限定近鐵這項電子特急券服務，不適用所有電子車票。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X122D-S13",
+      "url": "https://www.kintetsu.co.jp/gyoumu/ticket/help/vs/ja/rules.html",
+      "canonical_url": "https://www.kintetsu.co.jp/gyoumu/ticket/help/vs/ja/rules.html",
+      "title": "利用規約｜近鉄特急チケットレスサービス（会員登録なし）",
+      "publisher": "近畿日本鐵道",
+      "network": "近畿日本鐵道",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "閱讀發布單位原始頁面，交叉比對車種、適用憑證與適用區間。",
+      "reading_scope": "第6條 チケットレス特急券等の利用",
+      "locator": "第6條 チケットレス特急券等の利用",
+      "summary": "未註冊購票服務只准乘坐所載班次、車廂及座位。被要求查驗時，需能叫出電子票畫面，截圖與紙本列印不算憑證，至搭乘結束都須能出示。",
+      "limitations": "用購買服務的條款限定查驗方式，不涵蓋售票機的紙本特急券。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X122D-S14",
+      "url": "https://www2.city.kyoto.lg.jp/kotsu/webguide/en/ticket/regular_1day_card_comm.html",
+      "canonical_url": "https://www2.city.kyoto.lg.jp/kotsu/webguide/en/ticket/regular_1day_card_comm.html",
+      "title": "Subway & Bus 1-Day Pass",
+      "publisher": "京都市交通局",
+      "network": "京都市交通局",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "閱讀發布單位原始頁面，交叉比對車種、適用憑證與適用區間。",
+      "reading_scope": "Period of Validity 與 Applicable Routes & Lines",
+      "locator": "Period of Validity 與 Applicable Routes & Lines",
+      "summary": "京都市的地下鐵與巴士一日券列烏丸線、東西線與指定巴士，不涵蓋近鐵京都到奈良的鐵路區間。",
+      "limitations": "本例只判斷這張特定票券，不概括其他聯票。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X122D-S15",
+      "url": "https://www.kintetsu.co.jp/foreign/english/ticket/krp_1day.html",
+      "canonical_url": "https://www.kintetsu.co.jp/foreign/english/ticket/krp_1day.html",
+      "title": "KINTETSU RAIL PASS 1day",
+      "publisher": "近畿日本鐵道",
+      "network": "近畿日本鐵道",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "閱讀發布單位原始頁面，交叉比對車種、適用憑證與適用區間。",
+      "reading_scope": "Limited Express 乘車注意",
+      "locator": "Limited Express 乘車注意",
+      "summary": "近鐵一日券本身不足以搭乘特急，須另外購買特急券。",
+      "limitations": "只在該票所含路線範圍使用；不要與京都市地下鐵一日券對調。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X122D-S16",
+      "url": "https://www.keihan.co.jp/traffic/premiumcar/ticket/",
+      "canonical_url": "https://www.keihan.co.jp/traffic/premiumcar/ticket/",
+      "title": "京阪プレミアムカー チケットの購入方法",
+      "publisher": "京阪電氣鐵道",
+      "network": "京阪電氣鐵道",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "閱讀發布單位原始頁面，交叉比對車種、適用憑證與適用區間。",
+      "reading_scope": "ホーム券売機的発売する列車與支払方法",
+      "locator": "ホーム券売機的発売する列車與支払方法",
+      "summary": "特急停靠站的月台或站廳有無現金售票機，會顯示當日即將發車的最多五班，可用交通 IC 卡付款。",
+      "limitations": "特定售票機，不是進出閘機；不在此沿用舊英語頁的編組及票價。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X122D-S17",
+      "url": "https://www.keihan.co.jp/traffic/premiumcar/about/",
+      "canonical_url": "https://www.keihan.co.jp/traffic/premiumcar/about/",
+      "title": "京阪プレミアムカー 時刻表・料金",
+      "publisher": "京阪電氣鐵道",
+      "network": "京阪電氣鐵道",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "閱讀發布單位原始頁面，交叉比對車種、適用憑證與適用區間。",
+      "reading_scope": "料金與部分淀駅発急行的註腳",
+      "locator": "料金與部分淀駅発急行的註腳",
+      "summary": "Premium Car 為全席指定，乘車券之外要買該車廂票；部分土休日自淀站發往出町柳的急行也有此服務，該註腳列站間 400 日圓。",
+      "limitations": "以官網註腳所限班次為準，不含日本年底及新年特殊班表。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X122D-S18",
+      "url": "https://www.nankai.co.jp/en_railway/traffic/express/sazan.html",
+      "canonical_url": "https://www.nankai.co.jp/en_railway/traffic/express/sazan.html",
+      "title": "Limited Express Southern",
+      "publisher": "南海電氣鐵道",
+      "network": "南海電氣鐵道",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "閱讀發布單位原始頁面，交叉比對車種、適用憑證與適用區間。",
+      "reading_scope": "Features of Limited Express Southern 與 Running Area",
+      "locator": "Features of Limited Express Southern 與 Running Area",
+      "summary": "南海難波至和歌山市一帶的 Southern 為八輛編組，四輛指定席、四輛自由席；自由席車無須指定席券。",
+      "limitations": "Southern 的編組不適用其他南海特急。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X122D-S19",
+      "url": "https://www.nankai.co.jp/en_railway/rapit/",
+      "canonical_url": "https://www.nankai.co.jp/en_railway/rapit/",
+      "title": "About the Limited Express Rapi:t",
+      "publisher": "南海電氣鐵道",
+      "network": "南海電氣鐵道",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "閱讀發布單位原始頁面，交叉比對車種、適用憑證與適用區間。",
+      "reading_scope": "Comfortable 與 Super Seat / Regular Seat",
+      "locator": "Comfortable 與 Super Seat / Regular Seat",
+      "summary": "南海難波至關西機場的 Rapi:t 全車指定，分 Regular Seat 和 Super Seat；Regular 也在指定座席內。",
+      "limitations": "不使用此介紹頁可能變動的折扣或加價金額。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X122D-S20",
+      "url": "https://www.howto-osaka.com/en/access-timetable/",
+      "canonical_url": "https://www.howto-osaka.com/en/access-timetable/",
+      "title": "From Kansai-Airport Station — Access & Timetable",
+      "publisher": "南海電氣鐵道",
+      "network": "南海電氣鐵道",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "閱讀發布單位原始頁面，交叉比對車種、適用憑證與適用區間。",
+      "reading_scope": "Limited Express Rapi:t 段和 Kansai-Airport → Namba 時刻表",
+      "locator": "Limited Express Rapi:t 段和 Kansai-Airport → Namba 時刻表",
+      "summary": "南海在難波與關西機場間列 Rapi:t 和 Airport Express，另明載 Rapi:t 須特急券。",
+      "limitations": "無須用表列最短車程代替每一班的行駛時間。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X122D-S21",
+      "url": "https://www.nara-wu.ac.jp/nwu/intro/access/map/",
+      "canonical_url": "https://www.nara-wu.ac.jp/nwu/intro/access/map/",
+      "title": "アクセスマップ｜奈良女子大学",
+      "publisher": "奈良女子大學",
+      "network": "奈良女子大學",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "閱讀發布單位原始頁面，交叉比對車種、適用憑證與適用區間。",
+      "reading_scope": "京都から 段",
+      "locator": "京都から 段",
+      "summary": "校方列自京都搭近鐵到近鐵奈良的特急約 35 分鐘、急行約 45 分鐘，之後另計步行。",
+      "limitations": "交通導覽估時不含在京都車站候車，實際班次另查。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X122D-S22",
+      "url": "https://www.pref.nara.lg.jp/n044/p105043.html",
+      "canonical_url": "https://www.pref.nara.lg.jp/n044/p105043.html",
+      "title": "交通・料金・開館時間",
+      "publisher": "奈良縣立美術館",
+      "network": "奈良縣立美術館",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "閱讀發布單位原始頁面，交叉比對車種、適用憑證與適用區間。",
+      "reading_scope": "アクセス／公共交通機関をご利用の場合",
+      "locator": "アクセス／公共交通機関をご利用の場合",
+      "summary": "前往奈良縣立美術館，自近鐵奈良一號出口步行約五分鐘；JR 奈良則列東口搭巴士至縣廳前。",
+      "limitations": "為館方推薦到達方式，沒有說從 JR 奈良只能搭公車。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "K122-0201",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "京都的兩張行程都寫「特急」，找車的第一步為什麼是把京都兩字補寫完整？",
+      "mechanism_key": "x122.kansai_tickets.station_pair",
+      "answer_target": "走阪急京都線去大阪梅田，這張行程的起點是京都河原町。走近鐵特急去近鐵奈良，起點則是近鐵京都站。京都市觀光協會的交通指南也把阪急河原町和 JR 京都分列，按營運商和完整站名才能找對入口。",
+      "scope": "使用兩段獨立行程；沒有把兩個月台畫在一棟站房裡。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "出發城市相同，出發車站不同。",
+        "visual": "京都市內的圖分別點亮兩個出發站，接上兩個終點。",
+        "seconds": [
+          24,
+          36
+        ]
+      },
+      "source_ids": [
+        "X122D-S01",
+        "X122D-S02",
+        "X122D-S06"
+      ],
+      "source_locator": "X122D-S01 From Osaka 段的 JR、Hankyu 與 Keihan 路線；X122D-S02 By Train 段；X122D-S06 停車駅、座席指定料金及乗車位置",
+      "notes": "依官方資料自繪站名牌、車廂與票面示意；日期可變的服務及班次按列出的查閱版本。"
+    },
+    {
+      "id": "K122-0202",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "ICOCA 在入口和出口各碰一次，哪一次才會在卡上扣掉這段的車資？",
+      "mechanism_key": "x122.kansai_tickets.gate_purchase_distinct",
+      "answer_target": "JR 西日本示範用儲值 ICOCA 進閘碰讀取區，抵達後出閘再碰，系統會自動扣車資。回到這兩家私鐵，阪急接受 ICOCA，近鐵也把 IC 卡列作基本乘車憑證之一；近鐵另售的特急座位仍得另行購買。",
+      "scope": "指本例的實體儲值交通卡和另購特急券；不談定期券或信用卡後付。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "閘口處理的是這段路的基本車資。",
+        "visual": "進站的卡片移到出站感應區，再另外亮出手機上的座位券。",
+        "seconds": [
+          22,
+          34
+        ]
+      },
+      "source_ids": [
+        "X122D-S03",
+        "X122D-S04",
+        "X122D-S09"
+      ],
+      "source_locator": "X122D-S03 Digest (photo guide) 的 How to use ICOCA 首兩步；X122D-S04 Tickets 的 ICOCA 問答及 Railway 的 Kyo-Train Garaku / PRiVACE 對照；X122D-S09 Purchase Limited Express Ticket Only、Purchase both、How to read a Limited Express ticket",
+      "notes": "依官方資料自繪站名牌、車廂與票面示意；日期可變的服務及班次按列出的查閱版本。"
+    },
+    {
+      "id": "K122-0203",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "從京都按下「去奈良」，為什麼跳出的都路快速會把你送到另一個奈良車站？",
+      "mechanism_key": "x122.kansai_tickets.same_city_other_rail",
+      "answer_target": "奈良市觀光協會分列近鐵京都出發的特急與 JR 京都出發的都路快速。目的地也分成近鐵奈良與 JR 奈良。想照「近鐵奈良站集合」的訊息走，先把終點選對，才談要不要加買特急券。",
+      "scope": "JR 是另一條到奈良市的常用路線；這裡沒有假設兩站相連、同站換月台。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「奈良市」讓兩條路線都成立，「近鐵奈良站」只對其中一條。",
+        "visual": "兩個終點都放在奈良市地圖上，再圈集合站名。",
+        "seconds": [
+          20,
+          31
+        ]
+      },
+      "source_ids": [
+        "X122D-S02",
+        "X122D-S22"
+      ],
+      "source_locator": "X122D-S02 By Train 段；X122D-S22 アクセス／公共交通機関をご利用の場合",
+      "notes": "依官方資料自繪站名牌、車廂與票面示意；日期可變的服務及班次按列出的查閱版本。"
+    },
+    {
+      "id": "K122-0204",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "在阪急京都線月台看到「特急」，只想坐普通車廂，還要去找賣特急券的機器嗎？",
+      "mechanism_key": "x122.kansai_tickets.hankyu_train_class",
+      "answer_target": "阪急 FAQ 明載，自家特急只收通常的乘車運賃，車種本身不另收特急費。搭這趟京都河原町至大阪梅田的普通車廂，可以用阪急接受的 ICOCA 支付基本車資。要另付錢的是特定的座席服務。",
+      "scope": "指阪急特急的普通車廂；下一卡對照 PRiVACE 的指定席。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在這班阪急車上，快車車種與付費座席分開判斷。",
+        "visual": "時刻表的特急兩字保留，旁邊的普通車廂只貼一張基本車資標籤。",
+        "seconds": [
+          22,
+          32
+        ]
+      },
+      "source_ids": [
+        "X122D-S05",
+        "X122D-S04",
+        "X122D-S06"
+      ],
+      "source_locator": "X122D-S05 FAQ 31，回答「当社の特急列車は、普通運賃のみ」；X122D-S04 Tickets 的 ICOCA 問答及 Railway 的 Kyo-Train Garaku / PRiVACE 對照；X122D-S06 停車駅、座席指定料金及乗車位置",
+      "notes": "依官方資料自繪站名牌、車廂與票面示意；日期可變的服務及班次按列出的查閱版本。"
+    },
+    {
+      "id": "K122-0205",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "阪急特急上想買 500 日圓的座位，從月台哪一端數第四節才對？",
+      "mechanism_key": "x122.kansai_tickets.privace_orientation",
+      "answer_target": "有 PRiVACE 的京都線編組要從大阪梅田那一端數到第四輛，走中央車門。官網把這項指定席費列為每席一律 500 日圓，另付普通車資。站在兩個相反方向的月台，仍然要依大阪梅田端辨認。",
+      "scope": "依載有 PRiVACE 的列車，並非每班車或任何第四車都要加價。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "車廂位置是從固定端點數，和乘客面朝哪裡無關。",
+        "visual": "左右翻轉月台視角，兩次都從標著大阪梅田的端點數車輛。",
+        "seconds": [
+          24,
+          38
+        ]
+      },
+      "source_ids": [
+        "X122D-S06"
+      ],
+      "source_locator": "X122D-S06 停車駅、座席指定料金及乗車位置",
+      "notes": "依官方資料自繪站名牌、車廂與票面示意；日期可變的服務及班次按列出的查閱版本。"
+    },
+    {
+      "id": "K122-0206",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "阪急有一班車把小石庭搬進車廂，為什麼看起來更像觀光專車，反而不必買座席券？",
+      "mechanism_key": "x122.kansai_tickets.garden_without_reservation",
+      "answer_target": "日本政府觀光局介紹京とれいん 雅洛第二、第五車設有小石庭。阪急把它和 PRiVACE 列在同一則對照：雅洛在週六、週日與假日班表運行，搭乘只需普通車資，觀光局亦說無須另外預約。裝潢特別和是否收指定席費是兩件事。",
+      "scope": "不把週末觀光車寫成平日一定開行的選項，實際班次仍查當日公告。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "認車名和票制，比看車廂有多豪華準。",
+        "visual": "把石庭車廂與 PRiVACE 的預約圖示放到不同的車名下。",
+        "seconds": [
+          23,
+          36
+        ]
+      },
+      "source_ids": [
+        "X122D-S07",
+        "X122D-S04"
+      ],
+      "source_locator": "X122D-S07 Hankyu Railways’ Kyo-Train Garaku 小節；X122D-S04 Tickets 的 ICOCA 問答及 Railway 的 Kyo-Train Garaku / PRiVACE 對照",
+      "notes": "依官方資料自繪站名牌、車廂與票面示意；日期可變的服務及班次按列出的查閱版本。"
+    },
+    {
+      "id": "K122-0207",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "改搭近鐵的特急去奈良，如果我願意站著，可以省下特急券嗎？",
+      "mechanism_key": "x122.kansai_tickets.kintetsu_all_car",
+      "answer_target": "近鐵把特急列為全車指定席，沒有自由席車廂。特急券和基本車資都需要，而且票只對指定班次有效；站著或尋找下一輛空車廂都無法把這班特急改成只付基本車資的車。",
+      "scope": "近鐵規則限定近鐵特急。不同公司同名車種另查。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "要省掉這一筆，得換車種。",
+        "visual": "把近鐵特急每節車塗成指定席，再切換到普通列車列表。",
+        "seconds": [
+          25,
+          37
+        ]
+      },
+      "source_ids": [
+        "X122D-S09",
+        "X122D-S08"
+      ],
+      "source_locator": "X122D-S09 Purchase Limited Express Ticket Only、Purchase both、How to read a Limited Express ticket；X122D-S08 Train types；Regular trains / Limited Express trains；Ticket types",
+      "notes": "依官方資料自繪站名牌、車廂與票面示意；日期可變的服務及班次按列出的查閱版本。"
+    },
+    {
+      "id": "K122-0208",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同樣在近鐵京都站等「急行」，為什麼早上六點這一班和十四分那一班不能只看車種選？",
+      "mechanism_key": "x122.kansai_tickets.destination_field",
+      "answer_target": "近鐵京都站平日時刻表六時欄，把 06:00 列為橿原神宮前行急行，把 06:14 列為奈良行急行。想選直達近鐵奈良、只需基本車資的車，應同時核對急行與目的地；搭不同目的地的班次須另查轉乘。",
+      "scope": "採 2026-03-14 改正的平日時刻。沒有把每日所有急行都寫成直達奈良。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "急行回答的是車種，目的地要從旁邊那格讀。",
+        "visual": "只留時刻和急行讓觀眾先選，再揭開兩個不同目的地。",
+        "seconds": [
+          25,
+          38
+        ]
+      },
+      "source_ids": [
+        "X122D-S10",
+        "X122D-S08"
+      ],
+      "source_locator": "X122D-S10 2026-03-14 改正；京都駅、平日、詳細、6時欄；X122D-S08 Train types；Regular trains / Limited Express trains；Ticket types",
+      "notes": "依官方資料自繪站名牌、車廂與票面示意；日期可變的服務及班次按列出的查閱版本。"
+    },
+    {
+      "id": "K122-0209",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "校方說京都到近鐵奈良，特急約 35 分、急行約 45 分。到了月台，能直接把這兩個數字當抵達時間嗎？",
+      "mechanism_key": "x122.kansai_tickets.duration_estimate",
+      "answer_target": "奈良女子大學給訪客的是兩種列車的大約車程，另列近鐵奈良到校的步行時間。近鐵官方實際列班則要從指定的出發時刻算。2026 年 11 月 19 日的查詢例，急行在車上 48 分鐘、特急在車上 34 分鐘，即使區間相同，也不必正好等於導覽估時。",
+      "scope": "用校方估時和官方班次交叉核對，只比較車程，不把等車時間加到車上時長。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「坐多久」和「幾點能到」是兩欄。",
+        "visual": "把 35／45 分鐘放在一列，指定班次的發到時刻放在另一列。",
+        "seconds": [
+          24,
+          37
+        ]
+      },
+      "source_ids": [
+        "X122D-S21",
+        "X122D-S11"
+      ],
+      "source_locator": "X122D-S21 京都から 段；X122D-S11 輸入 2026-11-19 09:00，Kyoto B01 → Kintetsu-Nara A28，Route 1 與 Route 2",
+      "notes": "依官方資料自繪站名牌、車廂與票面示意；日期可變的服務及班次按列出的查閱版本。"
+    },
+    {
+      "id": "K122-0210",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "近鐵網頁的兩個購票按鈕都寫「特急」，哪個買完還得準備 ICOCA 或基本乘車券？",
+      "mechanism_key": "x122.kansai_tickets.fare_ticket_bundle",
+      "answer_target": "近鐵的網頁把「只買特急券」和「特急券加基本乘車券」分開。只買前者可另用交通 IC 卡付基本車資；近鐵的無紙特急券服務把動作分成另持乘車憑證進站，再照手機上的班次、座位上車。這解釋了已付座位錢的人為什麼仍得刷閘門。",
+      "scope": "指定使用只買特急券的服務，已連基本車資購買者依該商品使用方式。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "電子特急券買的是這班車的位置，還要有路程的乘車憑證。",
+        "visual": "先圈「只購特急券」，再分別把 ICOCA 和電子券放在入口與座位旁。",
+        "seconds": [
+          25,
+          39
+        ]
+      },
+      "source_ids": [
+        "X122D-S09",
+        "X122D-S12"
+      ],
+      "source_locator": "X122D-S09 Purchase Limited Express Ticket Only、Purchase both、How to read a Limited Express ticket；X122D-S12 HOW TO BOARD 及 FAQ 特急券呈示",
+      "notes": "依官方資料自繪站名牌、車廂與票面示意；日期可變的服務及班次按列出的查閱版本。"
+    },
+    {
+      "id": "K122-0211",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "已經在近鐵網站買好特急券，截下有座號的畫面，車上查票就能給乘務員看嗎？",
+      "mechanism_key": "x122.kansai_tickets.screenshot_inspection",
+      "answer_target": "近鐵未註冊版電子特急券規約第六條要求，搭乘時須能在裝置上叫出電子券畫面，直到乘車結束。站員或乘務員要求出示時，截圖和紙本列印都不被接受。票所載的車次、車廂和座號則指出本人可搭的位置。",
+      "scope": "特指近鐵該電子特急券服務；購自車站的實體有效票券不在此例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "查驗時要能叫出有效票畫面；照片裡座號正確仍不夠。",
+        "visual": "模擬同一組座號，一張顯示為相簿截圖，另一張顯示為可開啟的特急券。",
+        "seconds": [
+          24,
+          38
+        ]
+      },
+      "source_ids": [
+        "X122D-S12",
+        "X122D-S13",
+        "X122D-S09"
+      ],
+      "source_locator": "X122D-S12 HOW TO BOARD 及 FAQ 特急券呈示；X122D-S13 第6條 チケットレス特急券等の利用；X122D-S09 Purchase Limited Express Ticket Only、Purchase both、How to read a Limited Express ticket",
+      "notes": "依官方資料自繪站名牌、車廂與票面示意；日期可變的服務及班次按列出的查閱版本。"
+    },
+    {
+      "id": "K122-0212",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "手上若是京都市地下鐵巴士一日券，能跟近鐵一日券一樣，把京都到奈良的那段勾掉嗎？",
+      "mechanism_key": "x122.kansai_tickets.pass_coverage",
+      "answer_target": "京都市交通局的一日券列烏丸線、東西線和規定的巴士路線，未列近鐵京都到奈良這段。近鐵一日券是另一項商品，適用區間內有它仍須另買特急券才能坐特急。要分兩步看：先看通行證包哪段路，再看有沒有包要坐的列車。",
+      "scope": "比較所指兩種觀光票券，不把所有一日券視為同樣的鐵路通票。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "先確認路線涵蓋，才知道還缺基本車資或座席費。",
+        "visual": "攤開兩張票的適用區域，在近鐵線及特急席位各留一格。",
+        "seconds": [
+          23,
+          36
+        ]
+      },
+      "source_ids": [
+        "X122D-S14",
+        "X122D-S15"
+      ],
+      "source_locator": "X122D-S14 Period of Validity 與 Applicable Routes & Lines；X122D-S15 Limited Express 乘車注意",
+      "notes": "依官方資料自繪站名牌、車廂與票面示意；日期可變的服務及班次按列出的查閱版本。"
+    },
+    {
+      "id": "K122-0213",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "京阪特急月台的機器也能刷 ICOCA。這一刷和剛才進站時的一刷，各買到什麼？",
+      "mechanism_key": "x122.kansai_tickets.keihan_two_readers",
+      "answer_target": "京阪 Premium Car 要基本乘車憑證加該車廂的券。月台或站廳的無現金券賣機會顯示當日即將發車的最多五班；先選班次，再用可用的交通 IC 卡付款，是另外購買指定席。閘門的一次感應不會替人挑其中一班。",
+      "scope": "限京阪提供的無現金座席券販賣機及其接受的 IC 卡，不概括所有月台設備。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一張卡在兩台機器上，付的是不同項目。",
+        "visual": "站口的讀卡區只標車資，月台機的螢幕多出供旅客選擇的車次。",
+        "seconds": [
+          20,
+          31
+        ]
+      },
+      "source_ids": [
+        "X122D-S16",
+        "X122D-S17"
+      ],
+      "source_locator": "X122D-S16 ホーム券売機的発売する列車與支払方法；X122D-S17 料金與部分淀駅発急行的註腳",
+      "notes": "依官方資料自繪站名牌、車廂與票面示意；日期可變的服務及班次按列出的查閱版本。"
+    },
+    {
+      "id": "K122-0214",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "京阪寫特急的時刻表旁邊，怎麼會有一班只寫「急行」也明列 400 日圓？",
+      "mechanism_key": "x122.kansai_tickets.keihan_paid_express",
+      "answer_target": "京阪 Premium Car 的註腳指向部分土休日、從淀站發往出町柳的急行，限定這個班次條件的 Premium Car 各停車站間均列 400 日圓。不論外面怎樣寫車種，費用指的是裡面的指定座席。",
+      "scope": "排除日本年底及新年特殊班表；沒有說全京阪急行或所有座位都收 400。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "加價可以跟著車廂走，未必跟著「特急」兩字走。",
+        "visual": "先把急行文字放大，再用箭頭把 400 日圓指回 Premium Car。",
+        "seconds": [
+          18,
+          30
+        ]
+      },
+      "source_ids": [
+        "X122D-S17"
+      ],
+      "source_locator": "X122D-S17 料金與部分淀駅発急行的註腳",
+      "notes": "依官方資料自繪站名牌、車廂與票面示意；日期可變的服務及班次按列出的查閱版本。"
+    },
+    {
+      "id": "K122-0215",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "南海的 Southern 掛著「特急」，一列八節怎麼有一半不用買指定席券？",
+      "mechanism_key": "x122.kansai_tickets.southern_four_four",
+      "answer_target": "南海把 Southern 的八輛編組分成四輛指定席、四輛自由席；官網明說自由席部分無須指定席券。先確認車名和區間，再選對車廂，不能用近鐵特急全車指定的規則推算南海的車。",
+      "scope": "限定 Southern 編組，路線是難波往和歌山市或和歌山港方向。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一列八節車，有兩種取得席位的方式。",
+        "visual": "用兩種色塊分出一列 Southern 的四加四編組。",
+        "seconds": [
+          18,
+          29
+        ]
+      },
+      "source_ids": [
+        "X122D-S18"
+      ],
+      "source_locator": "X122D-S18 Features of Limited Express Southern 與 Running Area",
+      "notes": "依官方資料自繪站名牌、車廂與票面示意；日期可變的服務及班次按列出的查閱版本。"
+    },
+    {
+      "id": "K122-0216",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "南海 Rapi:t 的座位明明寫 Regular，為什麼不能照 Southern 自由席的方式上車？",
+      "mechanism_key": "x122.kansai_tickets.rapit_regular",
+      "answer_target": "同是南海，難波與關西機場之間的 Rapi:t 卻是全車指定，兩種座位名是 Regular Seat 和 Super Seat。Regular 是座椅等級，仍是指定席，這班車另需特急券。若只看普通／特別的翻譯，很容易把兩條線的規則混起來。",
+      "scope": "限定 Rapi:t 的兩種座等，不把南海機場線所有車種都寫成全車指定。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "Regular Seat 和自由席回答的是不同問題。",
+        "visual": "把 Regular 和 Super 同時放進 Rapi:t 的指定席框。",
+        "seconds": [
+          18,
+          29
+        ]
+      },
+      "source_ids": [
+        "X122D-S19",
+        "X122D-S20"
+      ],
+      "source_locator": "X122D-S19 Comfortable 與 Super Seat / Regular Seat；X122D-S20 Limited Express Rapi:t 段和 Kansai-Airport → Namba 時刻表",
+      "notes": "依官方資料自繪站名牌、車廂與票面示意；日期可變的服務及班次按列出的查閱版本。"
+    },
+    {
+      "id": "K122-0217",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "約在奈良縣立美術館，朋友傳「一號出口走五分鐘」，是哪一個奈良站？",
+      "mechanism_key": "x122.kansai_tickets.museum_last_mile",
+      "answer_target": "館方交通頁把這句寫在近鐵奈良站一號出口後。若到了 JR 奈良站，館方列的是東口搭奈良交通巴士，在縣廳前下車。同是從京都到奈良，改選 JR 或近鐵會改變後段的集合說明。",
+      "scope": "依館方所列的步行及巴士抵達方式，沒有說從 JR 只能搭巴士。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "站名相差幾個字，最後一段走法就不同。",
+        "visual": "把美術館指引覆在兩個終點上，將一號出口與東口巴士分別接回正確車站。",
+        "seconds": [
+          26,
+          40
+        ]
+      },
+      "source_ids": [
+        "X122D-S22",
+        "X122D-S02"
+      ],
+      "source_locator": "X122D-S22 アクセス／公共交通機関をご利用の場合；X122D-S02 By Train 段",
+      "notes": "依官方資料自繪站名牌、車廂與票面示意；日期可變的服務及班次按列出的查閱版本。"
+    },
+    {
+      "id": "K122-0218",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "去同一個近鐵奈良站，京都月台那班不必加 520 日圓的急行，為什麼還先到？",
+      "mechanism_key": "x122.kansai_tickets.earliest_arrival",
+      "answer_target": "近鐵 2026 年 11 月 19 日路線查詢列 09:00 出發的直達急行，09:48 到，只收基本車資 760 日圓。09:25 出發的直達特急在 09:59 到，基本 760 加特急 520，共 1,280 日圓。後者在車上少坐 14 分鐘，出發卻晚 25 分鐘，抵達反而晚 11 分鐘。想在這兩班之間最早到又少付費，選前一班奈良行急行。",
+      "scope": "只算這個日期、這兩班、一般成人查詢所列票價。前提是在出發前有時間搭上兩班任一班；不保證任一時段急行較早到。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "花錢能買這班的指定席與較短車程，買不到已經先開走的 25 分鐘。",
+        "visual": "用同一條時間軸標 09:00、09:25、09:48、09:59，再各自補上基本車資及座位費。",
+        "seconds": [
+          31,
+          45
+        ]
+      },
+      "source_ids": [
+        "X122D-S11",
+        "X122D-S08"
+      ],
+      "source_locator": "X122D-S11 輸入 2026-11-19 09:00，Kyoto B01 → Kintetsu-Nara A28，Route 1 與 Route 2；X122D-S08 Train types；Regular trains / Limited Express trains；Ticket types",
+      "notes": "依官方資料自繪站名牌、車廂與票面示意；日期可變的服務及班次按列出的查閱版本。"
+    }
+  ],
+  "not_added": [
+    {
+      "id": "X122D-NA01",
+      "question": "進出站讀得到時間，能否從兩次閘門時間算出旅客搭哪一班？",
+      "reason": "原來如此 K118-0202 已收閘門時間與具體搭乘班次之間的推論限制。本批用明確指定的電子特急券說明座位查驗。",
+      "existing_ids": [
+        "K118-0202"
+      ]
+    },
+    {
+      "id": "X122D-NA02",
+      "question": "交通卡沒有電池，碰到閘門時用哪裡來的電？",
+      "reason": "原來如此 LEG-A68 與長題 G710 已收讀卡器感應供電。本批只問儲值卡和另售的車票各付哪一項。",
+      "existing_ids": [
+        "LEG-A68"
+      ]
+    }
+  ]
+}

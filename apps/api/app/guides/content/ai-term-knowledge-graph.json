@@ -4,12 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial",
-    "ai-terms"
+    "ai-terms",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "知識圖譜（Knowledge Graph）：把事物與關係說清楚",
@@ -76,6 +79,7 @@
           "width": 1600,
           "height": 900,
           "caption": "連線的意義與方向，是圖譜能回答問題的關鍵。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -214,6 +218,842 @@
         },
         {
           "title": "Neo4j：Graph database concepts",
+          "url": "https://neo4j.com/docs/getting-started/appendix/graphdb-concepts/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Knowledge Graphs: Making Entities and Relationships Clear",
+      "description": "Knowledge graphs organize entities and relationships to trace who took part in what, where and when through links. Using community events, this article covers entity identity, relationship direction, sources and time; compares Resource Description Framework (RDF) and property graphs; and explains why graphs are not equivalent to visualizations or reliable facts. Learn when to build one and how it works with tables, vector search and graph retrieval-augmented generation (GraphRAG).",
+      "hero": {
+        "src": "/guides/ai-term-knowledge-graph/hero-en.jpg",
+        "alt": "A central event connects to people, venues and documents; differently colored links represent specific relationships, not just similarity.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "A knowledge graph organizes knowledge through entities and their relationships, giving links explicit meaning and traceable identifiers.",
+            "Building a graph starts with checking whether different records refer to the same entity. Relationships also need explicit types and directions: appearing together does not mean jointly organizing an event.",
+            "Graphs may be curated manually, extracted using rules or built by language models. All can contain errors; if the original document is wrong, even perfect extraction merely stores an incorrect claim faithfully.",
+            "A knowledge graph is more than data drawn as dots and lines. Visualization is just one interface for reading a graph."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A knowledge graph organizes knowledge through entities and their relationships. Entities can be people, organizations, places, documents or events. Relationships describe who participates in what, where something is located or where information comes from. The focus is on giving links explicit meaning and traceable identifiers, not merely drawing data as dots and lines."
+        },
+        {
+          "type": "paragraph",
+          "text": "The term has no single definition that restricts it to one storage technology. This article uses the W3C Resource Description Framework (RDF) concepts specification and Neo4j's explanation of property graphs as concrete foundations for introducing two common representations. The examples use fictional community event data; the relationships in the graph are teaching examples, not investigations into real people or organizations. Readers will learn to distinguish connections supported by data from guesses made after viewing a graph."
+        },
+        {
+          "type": "heading",
+          "text": "Establish Identity Before Relationships",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If two documents both mention “Shancheng Bookshop,” first determine whether they refer to the same bookshop. Identical names may refer to different branches, while different names may reflect an organization changing its name. A graph needs stable entity identifiers, with names and aliases retained as properties. Without this step, subsequent queries following relationships may conflate different entities, producing formally coherent answers with misattributed facts."
+        },
+        {
+          "type": "paragraph",
+          "text": "Relationships also need explicit types and directions. “The bookshop organizes the event” and “The event takes place at the bookshop” express different responsibilities; appearing together in the same report does not mean jointly organizing an event. When building a graph, define relationships according to evidence and preserve uncertainty. Where necessary, represent “a document claims there was collaboration” as a claim with a source, rather than promoting it directly to an unconditional fact."
+        },
+        {
+          "type": "heading",
+          "text": "How RDF and Property Graphs Represent Data",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A basic RDF statement can be understood as a subject, predicate and object: for example, “Event A, held at, Venue B.” The W3C specification defines RDF graphs and related identification mechanisms and data types, giving different sources a shared basis for representation. This is only a conceptual example; it does not mean that arbitrary Chinese phrases satisfy a complete data-exchange specification. Actual systems must still choose appropriate vocabularies and identification methods."
+        },
+        {
+          "type": "paragraph",
+          "text": "Property graphs commonly represent data as nodes, typed relationships and properties attached to nodes or relationships. An event node can have a date, while an organizing relationship can have a role or validity period. Both approaches organize connections, but their data models, query languages and interoperability mechanisms differ. Neither is simply a newer replacement for the other. The choice depends on existing tools, data-exchange requirements and how the team manages data."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-knowledge-graph/diagram-1-en.svg",
+          "alt": "Shancheng Bookshop organizes a book club meeting, Riverside Association co-organizes it, and Qinghe Classroom is the venue; a venue is not automatically a co-organizer.",
+          "width": 1600,
+          "height": 900,
+          "caption": "The meaning and direction of links are key to a graph's ability to answer questions.",
+          "description": "Shancheng Bookshop organizes a book club meeting, Riverside Association co-organizes it, and Qinghe Classroom is the venue; a venue is not automatically a co-organizer.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Example: Who Took Part in the Same Event?",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose the data states that Shancheng Bookshop organized a book club meeting, Riverside Association co-organized it, and the venue was Qinghe Classroom. For the query “Which groups have organized events with Shancheng Bookshop?”, the system can first find the bookshop, follow links to the events it organized to find other co-organizing groups, and finally return the events and sources. The expected results include Riverside Association, but Qinghe Classroom only served as the venue and cannot automatically be treated as a co-organizer."
+        },
+        {
+          "type": "paragraph",
+          "text": "If an event record also says “the speaker is from Riverside Association,” that still does not establish that the association co-organized the event. In this case, retain the speaker's affiliation relationship or note that the information remains unconfirmed. This example illustrates a graph's advantage: relationship types let queries distinguish between connections with different meanings. Connecting everyone mentioned with a generic “related to” link may produce a dense graph, but it makes precise questions like this difficult to answer."
+        },
+        {
+          "type": "paragraph",
+          "text": "Now change the question to “Who are the current long-term partners?” A single joint event is insufficient to answer this. The data must explicitly state a collaboration period or an ongoing relationship; “previously organized an event together” cannot be converted directly into “current partner.” Time and relationship status should therefore be stored alongside the evidence, and answers should explain the scope of the data. These judgments must be handled responsibly during modeling and querying; graph storage does not make them happen automatically."
+        },
+        {
+          "type": "heading",
+          "text": "A Graph Cannot Vouch for Its Sources",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Graphs may be curated manually, extracted using rules or built by language models. Every approach can produce errors. If the original document is wrong, even perfect extraction merely stores an incorrect claim faithfully; model-based extraction may also misinterpret references or miss negation. The source's credibility, the extraction's faithfulness and the correctness of entity merging need separate checks. Errors at these stages have different causes and cannot be captured by a single overall confidence score."
+        },
+        {
+          "type": "paragraph",
+          "text": "Graphs also need updating when sources are withdrawn or revised. If several sources support a relationship, deleting one does not necessarily mean the entire relationship should disappear, but the change cannot simply be ignored. Retaining source links and validity periods helps track which conclusions are affected. For data requiring review, distinguish candidate relationships from confirmed ones so that unverified extraction results are not used directly in public-facing answers."
+        },
+        {
+          "type": "heading",
+          "text": "When to Use Graphs and How to Combine Them with Other Methods",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "When common questions require tracing relationships across multiple entities, such as event participation, content citations or organizational collaboration, graph structures readily express these paths. But if the data mainly requires filtering and aggregation within a single table, a relational database may be more straightforward. Graph storage is not a necessary replacement for every join (JOIN) query, and a large data volume does not automatically make graph modeling appropriate. Start by writing down the actual questions to answer, then choose the structure."
+        },
+        {
+          "type": "paragraph",
+          "text": "Vector search is good at finding semantically similar starting points, while graphs are good at following explicit relationships. The two can work together. For example, use text to find a potentially matching bookshop, then use its identifier to query formally recorded event relationships. GraphRAG goes further by passing the graph and related text to a generation workflow to produce answers. These steps still need to retain the original text; a link extracted by a model is not sufficient as a citation."
+        },
+        {
+          "type": "paragraph",
+          "text": "A small acceptance test can begin with a manually verified set of entities and relationships, including different people with the same name, name changes, expired relationships and conflicting sources. Check whether queries follow the correct relationship types, identify the evidence for each result and avoid forcing connections when data is absent. Evaluate a graph by the verifiable questions it supports, not simply by growth in node count or a more complex-looking visualization. Visualization is just one interface for reading a graph. Dense lines, nearby nodes or matching colors may reflect choices made by a layout algorithm rather than formal meanings in the data itself. When sharing a graph, include a relationship legend and a scope description so readers know which visual features carry meaning and which merely improve the layout."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Method",
+            "Focus",
+            "Considerations"
+          ],
+          "rows": [
+            [
+              "Tables",
+              "Organize records into rows and columns",
+              "Suited to clearly defined filtering and statistics"
+            ],
+            [
+              "Knowledge graphs",
+              "Entities and meaningful relationships",
+              "Require identity and source governance"
+            ],
+            [
+              "Vector representations",
+              "Content similarity",
+              "Do not directly provide explicit relationship types"
+            ]
+          ],
+          "caption": "Concept comparison; sources verified in 9/2026."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "First Ask What the Link Actually Means",
+          "text": "Appearing together, jointly organizing an event and formal collaboration are different relationships. Every important link should have an identifiable type, time and source."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Graph Retrieval-Augmented Generation (GraphRAG): Understanding Document Collections Through Relationships",
+              "kind": "life",
+              "slug": "ai-term-graph-rag"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is an Embedding? Placing Content in a Space Where It Can Be Compared",
+              "kind": "life",
+              "slug": "ai-term-embedding"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is Retrieval-Augmented Generation (RAG)? Giving Answers Verifiable Support",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI Terms Index: From Loop Engineering to Generative AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "W3C: RDF 1.1 Concepts and Abstract Syntax",
+          "url": "https://www.w3.org/TR/rdf11-concepts/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Neo4j: Graph database concepts",
+          "url": "https://neo4j.com/docs/getting-started/appendix/graphdb-concepts/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "ナレッジグラフ（Knowledge Graph）：事物と関係を明確にする",
+      "description": "ナレッジグラフはエンティティと関係でデータを整理し、「誰が何に参加し、どこで、いつ起きたか」をリンクに沿って検索できるようにします。本記事ではコミュニティイベントのデータを例に、エンティティの識別、関係の方向、出典、時間を説明します。リソース記述フレームワーク（RDF）とプロパティグラフの表現の違いを紹介し、グラフが可視化や信頼できる事実と同じではないことも解説します。読めば、データがグラフ化に適しているかを判断でき、テーブル、ベクトル検索、グラフ検索拡張生成（GraphRAG）との組み合わせ方も理解できます。",
+      "hero": {
+        "src": "/guides/ai-term-knowledge-graph/hero-ja.jpg",
+        "alt": "中心のイベントが人物、会場、文書のノードにつながり、色の異なる線は単なる類似度ではなく具体的な関係を表す",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "ナレッジグラフ（Knowledge Graph）は、事物とその関係で知識を整理する方法です。リンクに明確な意味を持たせ、識別情報を追跡できるようにすることが重要です。",
+            "グラフを作るには、異なるデータに登場する対象が同じエンティティかを先に確認します。関係にも明確な種類と方向が必要で、一緒に記載されているだけでは共同主催とはいえません。",
+            "グラフは人手での整理、ルールによる抽出、言語モデルなどで作れますが、どの方法でも誤りは起こり得ます。元の文書が誤っていれば、どれほど正確に抽出しても、誤った主張を忠実に保存するだけです。",
+            "ナレッジグラフは、データを丸い点と線の集まりとして描くだけのものではありません。可視化は、グラフを読み取るためのインターフェースの一つにすぎません。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "ナレッジグラフ（英語：Knowledge Graph）は、事物とその関係で知識を整理する方法です。事物には人物、組織、場所、文書、イベントなどがあり、関係は誰が何に参加したか、何がどこにあるか、データがどこから来たかを表します。重要なのは、リンクに明確な意味を持たせ、識別情報を追跡できるようにすることです。単にデータを丸い点と線の集まりとして描くことではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この用語には、使用できる保存技術を特定のものに限定するような単一の定義はありません。本記事では、W3C のリソース記述フレームワーク（RDF）の概念仕様と Neo4j のプロパティグラフの説明を具体的な土台として、よく使われる表現方法を二つ紹介します。例には架空のコミュニティイベントのデータを使います。図の関係は解説用の設定であり、実在する人物や組織を調査したものではありません。読者は、どの関係がデータで裏付けられ、どれが図を見た後の推測にすぎないかを見分けられるようになります。"
+        },
+        {
+          "type": "heading",
+          "text": "まず同一性を確認し、そのうえで関係を扱う",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "二つの文書に「山城書屋」が登場した場合、まず同じ書屋を指しているかを判断する必要があります。同じ名前でも別の支店かもしれず、名前が違っても同じ組織が改名しただけかもしれません。グラフには安定したエンティティ識別子が必要で、名称や別名は属性として保持します。この段階を処理しないと、その後に関係をたどって検索する際、異なる対象を混同し、形式上はつながっていても事実の対応を取り違えた回答を得るおそれがあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "関係にも明確な種類と方向が必要です。「書屋がイベントを主催する」と「イベントの会場が書屋である」では、表す責任が異なります。同じ報告書に一緒に記載されているだけでは、共同主催とはいえません。グラフを作る際は、証拠に基づいて関係を定義し、確定できない部分は未確定のまま残すべきです。必要に応じて「ある文書が協力関係にあると主張している」と出典付きの主張として表し、無条件の事実へと直接格上げしないようにします。"
+        },
+        {
+          "type": "heading",
+          "text": "RDF とプロパティグラフの表現方法",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "RDF の基本的な文は、主語、述語、目的語として理解できます。例えば「イベント甲、開催場所、会場乙」です。W3C の仕様は RDF グラフと関連する識別方法やデータ型を定義し、異なる出典に共通の表現基盤を提供します。ここで示したのは概念上の例にすぎず、中国語の語句を任意に使えばデータ交換仕様のすべてを満たせるという意味ではありません。実際のシステムでは、適切な語彙や識別方法も選ぶ必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一方、プロパティグラフでは、データをノード、種類を持つ関係、ノードや関係に付くプロパティとして表すことが一般的です。イベントのノードには日付を、主催関係には役割や有効期間を持たせられます。どちらの方法でも関連を整理できますが、データモデル、クエリ言語、相互運用の方法は異なります。新しい方が古い方を置き換えるという関係ではなく、既存のツール、データ交換の要件、チームのデータ管理方法に応じて選びます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-knowledge-graph/diagram-1-ja.svg",
+          "alt": "山城書屋が読書会を主催し、河畔協会が共催、青禾教室で開催する。会場を自動的に共同主催者とみなすことはできない",
+          "width": 1600,
+          "height": 900,
+          "caption": "線の意味と方向が、グラフで質問に答えるための鍵です。",
+          "description": "山城書屋が読書会を主催し、河畔協会が共催、青禾教室で開催する。会場を自動的に共同主催者とみなすことはできない",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "例：同じイベントに参加したのは誰か",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "データに、山城書屋が読書会を主催し、河畔協会が共催、会場は青禾教室と明記されているとします。「山城書屋と一緒にイベントを開催したことのある団体は？」と入力すると、システムはまず書屋を見つけ、主催したイベントのノードをたどって他の共催団体を探し、最後にイベントと出典を返せます。期待される結果には河畔協会が含まれますが、青禾教室の役割は会場だけなので、自動的に共同主催団体として扱うことはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "イベントの記録に別途「講師は河畔協会の所属」と書かれていても、それだけでは協会が共催者である証拠にはなりません。この場合は講師の所属関係を保持するか、情報が未確認であることを記録すべきです。この例はグラフの利点を示しています。関係の種類によって、同じようにつながっていても意味が異なる状況を検索時に区別できます。言及されたすべての対象を「関連」でつなぐだけでは、図が密になっても、このような正確さを要する質問には対応しにくくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "続いて「現在の長期的な協力パートナーは？」と質問を変えると、一度だけ一緒にイベントを開催したという事実では答えられません。データに協力期間や継続的な関係が明示されている必要があり、「共同主催したことがある」をそのまま「現在のパートナー」に変えることはできません。そのため、時間や関係の状態は証拠とともに保存し、回答でもデータの範囲を説明すべきです。これらはモデル化や検索の際に責任を持って判断する事柄であり、グラフ形式で保存するだけで自動的に処理されるものではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "グラフは出典の信頼性を保証できない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "グラフは人手での整理、ルールによる抽出、言語モデルなどで作れますが、どの方法でも誤りは起こり得ます。元の文書が誤っていれば、どれほど正確に抽出しても、誤った主張を忠実に保存するだけです。モデルによる抽出では、代名詞などの指示先を誤って推測したり、否定を見落としたりすることもあります。原文の信頼性、抽出の忠実さ、同じエンティティとして正しく統合できているかを、分けて確認する必要があります。各段階で誤りの原因は異なるため、全体を一つの信頼度スコアだけで表すことはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "出典が撤回または改訂された場合、グラフも更新する必要があります。ある関係が複数の資料で裏付けられているなら、そのうち一つを削除したからといって、必ずしも関係全体を消すべきとは限りません。ただし、何も対応しなくてよいわけでもありません。出典へのリンクと有効期間を保持すると、どの結論が影響を受けるかを追跡しやすくなります。審査が必要なデータでは、候補の関係と確認済みの関係を区別し、未検証の抽出結果がそのまま外部向けの回答に使われないようにすべきです。"
+        },
+        {
+          "type": "heading",
+          "text": "グラフが適する場面と、他の方法との組み合わせ方",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "よくある質問に答えるために、イベントへの参加、コンテンツの引用、組織間の協力など、複数のエンティティにまたがる関係をたどる必要がある場合、グラフ構造はこうした経路を表現しやすい方法です。ただし、データの用途が主に単一テーブルでの絞り込みや集計なら、リレーショナルデータベースの方が直接的かもしれません。グラフ形式での保存は、すべての結合（JOIN）クエリに必要な代替手段ではなく、データ量が多いからといってグラフ化に適するとも限りません。まず実際に答えたい質問を書き出し、その後で構造を決めるべきです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ベクトル検索は意味の近い出発点を探すのが得意で、グラフは明確な関係をたどって探索を広げるのが得意なので、両者は組み合わせられます。例えば、まずテキストから該当しそうな書屋を見つけ、次に識別子を使って正式なイベント関係を検索します。GraphRAG はさらに、グラフと関連テキストを生成プロセスに渡して回答します。これらの段階でも原文を保持する必要があり、モデルが抽出した一本の線を、十分な引用根拠として扱うことはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "小規模な受け入れ検証では、まず一組のエンティティと関係を人手で確認し、同名の別人、名称変更、期限切れの関係、互いに矛盾する出典を加えるとよいでしょう。検索が正しい種類の関係をたどるか、各結果の根拠を示せるかを調べ、データがないときに無理に結び付けないことも確認します。グラフの評価では、どのような検証可能な質問に対応できるかを見るべきで、ノード数の増加や可視化の見た目の複雑さだけで判断してはいけません。可視化は、グラフを読み取るためのインターフェースの一つにすぎません。線が密集している、ノードが近い、色が同じといった特徴は、レイアウトアルゴリズムの選択による場合があり、必ずしもデータ自体の正式な意味を表してはいません。図を共有する際は、関係の凡例と対象範囲の説明を添え、どの視覚的特徴に意味があり、どれが見やすく配置するためだけのものかを読者に伝えるべきです。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "処理の重点",
+            "留意点"
+          ],
+          "rows": [
+            [
+              "テーブル",
+              "行と列でレコードを整理",
+              "明確な条件での絞り込みや集計に適する"
+            ],
+            [
+              "ナレッジグラフ",
+              "エンティティと意味のある関係",
+              "同一性と出典の管理が必要"
+            ],
+            [
+              "ベクトル表現",
+              "コンテンツの類似性",
+              "明確な関係の種類を直接は示さない"
+            ]
+          ],
+          "caption": "概念の比較。出典は 2026 年 9 月に確認。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "まず、この線が何を表すのかを問う",
+          "text": "一緒に記載されること、共同主催、正式な協力は、それぞれ異なる関係です。重要な線はすべて、種類、時間、出典を説明できるようにすべきです。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "グラフ検索拡張生成（GraphRAG）：関係から文書群全体を理解する",
+              "kind": "life",
+              "slug": "ai-term-graph-rag"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "埋め込みベクトル（Embedding）とは：コンテンツを比較可能な空間に配置する",
+              "kind": "life",
+              "slug": "ai-term-embedding"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "検索拡張生成（RAG）とは：回答に確認できる根拠を添える",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 用語総索引：Loop Engineering から生成 AI まで",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "W3C：RDF 1.1 概念と抽象構文",
+          "url": "https://www.w3.org/TR/rdf11-concepts/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Neo4j：グラフデータベースの概念",
+          "url": "https://neo4j.com/docs/getting-started/appendix/graphdb-concepts/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "지식 그래프(Knowledge Graph): 대상과 관계를 명확히 설명하기",
+      "description": "지식 그래프는 개체와 관계로 데이터를 구성해 ‘누가 무엇에 참여했고, 어디서 언제 일어났는지’를 연결을 따라 조회할 수 있게 합니다. 이 글은 커뮤니티 행사 데이터를 예로 개체 식별, 관계 방향, 출처와 시간을 살펴보고, 자원 기술 프레임워크(RDF)와 속성 그래프의 표현 방식 차이를 소개합니다. 또한 그래프가 시각화나 신뢰할 만한 사실 그 자체는 아님을 설명합니다. 읽고 나면 데이터가 그래프 구축에 적합한지 판단하고, 데이터 테이블·벡터 검색·그래프 검색 증강 생성(GraphRAG)과 어떻게 결합하는지 이해할 수 있습니다.",
+      "hero": {
+        "src": "/guides/ai-term-knowledge-graph/hero-ko.jpg",
+        "alt": "중심 사건이 인물, 장소, 문서 노드와 연결되어 있으며, 서로 다른 색의 연결선은 단순한 유사도가 아닌 구체적인 관계를 나타냅니다",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "지식 그래프(Knowledge Graph)는 대상과 그 관계로 지식을 구성하는 방식입니다. 핵심은 연결에 명확한 의미와 추적 가능한 식별 정보를 부여하는 것입니다.",
+            "그래프를 구축하려면 서로 다른 데이터가 언급하는 대상이 같은 개체인지 먼저 확인해야 합니다. 관계에도 명확한 유형과 방향이 필요하며, 함께 등장한다고 공동 주최한 것은 아닙니다.",
+            "그래프는 수작업 정리, 규칙 기반 추출, 언어 모델로 구축할 수 있으며, 어느 방식이든 오류가 생길 수 있습니다. 원문이 틀렸다면 아무리 정확히 추출해도 잘못된 주장을 충실히 저장할 뿐입니다.",
+            "지식 그래프는 단순히 데이터를 여러 원과 선으로 그리는 것이 아닙니다. 시각화는 그래프를 읽는 하나의 인터페이스일 뿐입니다."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "영어로 Knowledge Graph라고 하는 지식 그래프는 대상과 그 관계로 지식을 구성하는 방식입니다. 대상은 인물, 기관, 장소, 문서, 사건 등이 될 수 있으며, 관계는 누가 무엇에 참여했는지, 무엇이 어디에 있는지, 데이터가 어디에서 왔는지를 설명합니다. 핵심은 연결에 명확한 의미와 추적 가능한 식별 정보를 부여하는 것이며, 단순히 데이터를 여러 원과 선으로 그리는 데 있지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 용어에는 특정 저장 기술만 사용해야 한다고 정한 단일한 정의가 없습니다. 이 글은 W3C의 자원 기술 프레임워크(RDF) 개념 명세와 Neo4j의 속성 그래프 설명을 구체적인 토대로 삼아 널리 쓰이는 두 가지 표현 방식을 소개합니다. 예시에는 가상의 커뮤니티 행사 데이터를 사용합니다. 그래프의 관계는 학습용 설정이며, 실제 인물이나 조직을 조사한 결과가 아닙니다. 독자는 어떤 연관성이 데이터로 뒷받침되고, 어떤 것은 그래프를 보고 한 추측에 불과한지 구별할 수 있게 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "관계를 논하기 전에 개체부터 식별하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "두 문서가 모두 ‘산청책방’을 언급한다면, 먼저 같은 책방인지 판단해야 합니다. 이름이 같아도 다른 지점일 수 있고, 이름이 달라도 같은 기관이 이름을 바꾼 것일 수 있습니다. 그래프에는 안정적인 개체 식별자가 필요하며, 이름과 별칭은 속성으로 보존합니다. 이 단계를 처리하지 않으면 이후 관계를 따라 조회할 때 서로 다른 대상을 혼동해 형식적으로는 일관되지만 사실관계가 잘못 연결된 답변을 얻을 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "관계에도 명확한 유형과 방향이 필요합니다. ‘책방이 행사를 주최한다’와 ‘행사가 책방에서 열린다’는 서로 다른 책임을 나타냅니다. 같은 보고서에 함께 등장한다고 공동 주최한 것은 아닙니다. 그래프를 구축할 때는 증거에 따라 관계를 정의하고, 확실하지 않은 부분은 불확실한 상태로 남겨야 합니다. 필요하다면 ‘어떤 문서가 협력이 있었다고 주장한다’를 출처가 있는 주장으로 표현해야 하며, 곧바로 무조건적인 사실로 격상해서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "RDF와 속성 그래프의 표현 방식",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "RDF의 기본 진술은 주어, 술어, 목적어로 이해할 수 있습니다. 예를 들면 ‘행사 갑, 개최 장소, 장소 을’입니다. W3C 명세는 RDF 그래프와 관련 식별 방식 및 데이터형을 정의해 서로 다른 출처가 공통된 표현 기반을 갖게 합니다. 여기서는 개념만 예시한 것으로, 이런 자연어 구절을 임의로 사용한다고 해서 완전한 데이터 교환 규격을 준수하는 것은 아닙니다. 실제 시스템에서는 적절한 어휘와 식별 방식도 선택해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "속성 그래프는 흔히 데이터를 노드, 유형이 있는 관계, 그리고 노드나 관계에 부여된 속성으로 표현합니다. 행사 노드에는 날짜가 있을 수 있고, 주최 관계에는 역할이나 유효 기간이 있을 수 있습니다. 두 방식 모두 연관성을 구성할 수 있지만 데이터 모델, 쿼리 언어, 상호 운용 방식이 다릅니다. 어느 하나가 낡아서 다른 하나로 대체되는 관계는 아닙니다. 기존 도구, 데이터 교환 요구 사항, 팀의 데이터 관리 방식에 따라 선택해야 합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-knowledge-graph/diagram-1-ko.svg",
+          "alt": "산청책방이 독서 모임을 주최하고 허판협회가 협력 주최하며, 모임은 칭허교실에서 열립니다. 장소를 자동으로 공동 주최자로 간주해서는 안 됩니다",
+          "width": 1600,
+          "height": 900,
+          "caption": "연결선의 의미와 방향은 그래프가 질문에 답할 수 있게 하는 핵심입니다.",
+          "description": "산청책방이 독서 모임을 주최하고 허판협회가 협력 주최하며, 모임은 칭허교실에서 열립니다. 장소를 자동으로 공동 주최자로 간주해서는 안 됩니다",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "예시: 누가 같은 행사에 참여했는가",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "데이터에 산청책방이 독서 모임을 주최하고 허판협회가 협력 주최하며, 장소는 칭허교실이라고 명시되어 있다고 가정해 보겠습니다. ‘어떤 단체가 산청책방과 함께 행사를 열었나요?’라고 입력하면 시스템은 먼저 책방을 찾고, 그 책방이 주최한 행사 노드를 따라 다른 협력 주최 단체를 찾은 뒤, 행사와 출처를 반환할 수 있습니다. 예상 결과에는 허판협회가 포함됩니다. 하지만 칭허교실은 장소 역할만 하므로 자동으로 공동 주최 기관으로 간주해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "행사 기록에 ‘연사는 허판협회 소속’이라고 별도로 적혀 있어도, 그것만으로 협회가 협력 주최했다는 증거는 부족합니다. 이때는 연사의 소속 관계를 보존하거나 데이터가 아직 확인되지 않았다고 기록해야 합니다. 이 예시는 그래프의 장점을 보여 줍니다. 관계 유형을 통해 똑같이 연결되어 있어도 의미가 다른 상황을 쿼리에서 구별할 수 있습니다. 언급된 모든 대상을 ‘관련 있음’으로만 연결하면 그래프는 촘촘해져도 이런 정밀한 질문에 답하기 어렵습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이어서 질문을 ‘현재 장기 협력 파트너는 어디인가요?’로 바꾸면, 한 차례의 공동 행사만으로는 답할 수 없습니다. 데이터에 협력 기간이나 지속적인 관계가 명시되어 있어야 하며, ‘과거에 공동 주최했다’를 곧바로 ‘현재 파트너다’로 바꿔서는 안 됩니다. 따라서 시간과 관계 상태를 증거와 함께 저장하고, 답변에서도 데이터의 범위를 밝혀야 합니다. 이는 모델링과 쿼리 과정에서 책임 있게 판단해야 할 사항이며, 그래프 방식으로 저장한다고 자동으로 해결되지는 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "그래프가 출처의 신뢰성을 보증하지는 않습니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "그래프는 수작업 정리, 규칙 기반 추출, 언어 모델로 구축할 수 있으며, 어느 방식이든 오류가 생길 수 있습니다. 원문이 틀렸다면 아무리 정확히 추출해도 잘못된 주장을 충실히 저장할 뿐입니다. 모델을 통한 추출은 대명사가 가리키는 대상을 잘못 추정하거나 부정 표현을 놓칠 수도 있습니다. 원문의 신뢰도, 추출의 충실성, 개체 식별 정보가 올바르게 병합되었는지를 따로 점검해야 합니다. 각 단계의 오류 원인은 다르므로 하나의 종합 신뢰도 점수로만 뭉뚱그려서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "출처가 철회되거나 수정되면 그래프도 갱신해야 합니다. 어떤 관계가 여러 자료로 뒷받침된다면 그중 하나를 삭제했다고 반드시 관계 전체가 사라져야 하는 것은 아닙니다. 그렇다고 아무 조치도 하지 않아서는 안 됩니다. 출처 링크와 유효 기간을 보존하면 어떤 결론이 영향을 받는지 추적하는 데 도움이 됩니다. 검토가 필요한 데이터는 후보 관계와 확인된 관계를 구분해, 검증되지 않은 추출 결과가 외부에 제공하는 답변에 곧바로 사용되지 않도록 해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "그래프가 적합한 경우와 다른 방법을 결합하는 방식",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "자주 묻는 질문에 답하려면 여러 개체에 걸쳐 관계를 추적해야 하는 경우, 예를 들어 행사 참여, 콘텐츠 인용, 조직 간 협력을 살펴보는 경우에는 그래프 구조로 이런 경로를 쉽게 표현할 수 있습니다. 하지만 데이터 처리가 주로 단일 테이블의 필터링과 합산이라면 관계형 데이터베이스가 더 간단할 수 있습니다. 모든 조인(JOIN) 쿼리를 반드시 그래프 기반 저장 방식으로 대체해야 하는 것은 아니며, 데이터양이 많다고 반드시 그래프 구축에 적합한 것도 아닙니다. 먼저 실제로 답하려는 질문을 적은 뒤 구조를 결정해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "벡터 검색은 의미가 비슷한 출발점을 찾는 데 강하고, 그래프는 명확한 관계를 따라 탐색을 확장하는 데 강하므로 두 가지를 결합할 수 있습니다. 예를 들어 먼저 텍스트로 해당할 가능성이 있는 책방을 찾은 뒤, 식별자로 정식 행사 관계를 조회할 수 있습니다. GraphRAG는 한 단계 더 나아가 그래프와 관련 텍스트를 생성 과정에 전달해 답변하도록 합니다. 이 과정에서도 원문을 보존해야 하며, 모델이 추출한 연결선 하나를 충분한 인용 근거로 간주해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "소규모 검증은 먼저 개체와 관계 한 세트를 사람이 확인하고, 동명이인, 이름 변경, 만료된 관계, 서로 모순되는 출처를 추가하는 방식으로 시작할 수 있습니다. 쿼리가 올바른 관계 유형을 따라가는지, 각 결과의 근거를 제시할 수 있는지 점검하고, 데이터가 없을 때 억지로 연결하지 않는지도 확인합니다. 그래프를 평가할 때는 어떤 검증 가능한 질문에 답할 수 있도록 지원하는지 살펴봐야 하며, 노드 수가 늘었는지나 시각화가 더 복잡해 보이는지만 봐서는 안 됩니다. 시각화는 그래프를 읽는 하나의 인터페이스일 뿐입니다. 선이 조밀하거나 노드가 가깝거나 색이 같은 것은 배치 알고리즘의 선택일 수 있으며, 반드시 데이터 자체에 정식으로 정의된 의미를 나타내지는 않습니다. 그래프를 공유할 때는 관계 범례와 범위 설명을 덧붙여, 독자가 어떤 시각적 특징을 해석해도 되는지, 어떤 것은 단지 배치를 명확하게 하려는 것인지 알 수 있게 해야 합니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "방법",
+            "처리의 초점",
+            "유의 사항"
+          ],
+          "rows": [
+            [
+              "데이터 테이블",
+              "행과 열로 기록 구성",
+              "명확한 조건의 필터링과 통계에 적합"
+            ],
+            [
+              "지식 그래프",
+              "개체와 의미 있는 관계",
+              "개체 식별과 출처 관리 필요"
+            ],
+            [
+              "벡터 표현",
+              "콘텐츠의 유사성",
+              "명확한 관계 유형을 직접 제공하지 않음"
+            ]
+          ],
+          "caption": "개념 비교. 출처 확인 시점: 2026년 9월."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "먼저 이 선이 정확히 무엇을 뜻하는지 물어보세요",
+          "text": "함께 등장하는 것, 공동 주최하는 것, 공식적으로 협력하는 것은 서로 다른 관계입니다. 중요한 연결선은 각각 유형, 시간, 출처를 설명할 수 있어야 합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "그래프 검색 증강 생성(GraphRAG): 관계로 문서 묶음 전체 이해하기",
+              "kind": "life",
+              "slug": "ai-term-graph-rag"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "임베딩 벡터(Embedding)란: 콘텐츠를 비교 가능한 공간에 배치하기",
+              "kind": "life",
+              "slug": "ai-term-embedding"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "검색 증강 생성(RAG)이란: 답변에 확인 가능한 근거를 붙이기",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 용어 전체 색인: Loop Engineering부터 생성형 AI까지",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "W3C: RDF 1.1 개념 및 추상 구문",
+          "url": "https://www.w3.org/TR/rdf11-concepts/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Neo4j: 그래프 데이터베이스 개념",
+          "url": "https://neo4j.com/docs/getting-started/appendix/graphdb-concepts/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "知识图谱（Knowledge Graph）：把事物与关系说清楚",
+      "description": "知识图谱用实体及关系组织数据，让“谁参与什么、在哪里、何时发生”能沿链接查询。本文以社群活动数据演示实体识别、关系方向、来源与时间，介绍资源描述框架（RDF）和属性图的表示差异，也说明图谱不等于可视化或可信事实。读完能判断数据适不适合建图，并理解它如何与数据表、向量搜索及图谱检索增强生成（GraphRAG）搭配。",
+      "hero": {
+        "src": "/guides/ai-term-knowledge-graph/hero-zh-cn.jpg",
+        "alt": "中心事件连接到人物、场地及文件节点，不同颜色的连线表示具体关系而非单纯相似度",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "知识图谱（Knowledge Graph）是以事物及其关系组织知识的方式，重点是让链接具有明确意义与可追溯的标识。",
+            "建图要先确认不同数据提到的是否为同一实体，关系也需要明确的类型和方向，共同出现不等于共同主办。",
+            "图谱可能由人工整理、规则抽取或语言模型建立，每种方式都可能出错；原始文件若有误，抽取得再正确也只是忠实存储错误主张。",
+            "知识图谱不只是把数据画成一群圆点和线条，可视化只是阅读图谱的一个界面。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "知识图谱，英文 Knowledge Graph，是以事物及其关系组织知识的方式。事物可以是人物、机构、地点、文件或事件，关系则描述谁参与什么、何者位于哪里、数据来自何处。它的重点是让链接具有明确意义与可追溯的标识，不只是把数据画成一群圆点和线条。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这个词没有只允许使用某一种存储技术的单一定义。本篇以 W3C 的资源描述框架（RDF）概念规范和 Neo4j 的属性图说明作为具体基础，介绍两种常见表示方式。示例采用虚构的社群活动数据；图上的关系是教学设定，不是对真实人物或组织的调查。读者将能辨认哪些关联可由数据支持，哪些只是看图后的猜测。"
+        },
+        {
+          "type": "heading",
+          "text": "先有身份，再谈关系",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "若两份文件都提到“山城书屋”，首先要判断是否为同一间书屋。名称相同可能是不同分店，名称不同也可能是同一机构改名。图谱需要稳定的实体标识符，名称与别名则作为属性保留。没有处理这一步，后续沿关系查询就可能把不同主体混在一起，得到形式连贯但事实错置的答案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "关系也需要明确类型和方向。“书屋主办活动”与“活动位于书屋”表达的责任不同；在同一篇报告里共同出现，不等于共同主办。建图时应依证据定义关系，保留不能确定的部分，必要时把“某文件声称有合作”表示为带来源的主张，而不是直接升级成无条件事实。"
+        },
+        {
+          "type": "heading",
+          "text": "RDF 与属性图怎么表示",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "RDF 的基本陈述可理解为主语、谓语、宾语：例如“活动甲、举办于、场地乙”。W3C 规范定义了 RDF 图与相关标识及数据类型，使不同来源有共同的表示基础。这里只是概念示例，不代表任意使用中文短语就已符合完整的数据交换规范；实际系统还要选择适当词汇与标识方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "属性图则常把数据表示为节点、带类型的关系，以及附在节点或关系上的属性。活动节点可以有日期，主办关系可以有角色或有效期。两种方式都能组织关联，但数据模型、查询语言与互通方式不同。它们不是一个新旧淘汰序列，选择要看现有工具、交换需求和团队如何管理数据。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-knowledge-graph/diagram-1-zh-cn.svg",
+          "alt": "山城书屋主办读书会，河畔协会协办，读书会举办于青禾教室；场地不能自动视为共同主办方",
+          "width": 1600,
+          "height": 900,
+          "caption": "连线的意义与方向，是图谱能回答问题的关键。",
+          "description": "山城书屋主办读书会，河畔协会协办，读书会举办于青禾教室；场地不能自动视为共同主办方",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "演示：谁参与过同一场活动",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "假设数据写明山城书屋主办读书会，河畔协会协办，地点在青禾教室。输入“哪些团体曾和山城书屋一起办活动？”时，系统可先找到书屋，再沿其主办的活动节点找其他协办团体，最后返回活动与来源。预期结果包含河畔协会，但青禾教室只有场地角色，不能自动把它也当成共同主办单位。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果活动记录另写“讲者来自河畔协会”，仍不足以证明协会是协办方。这时应保留讲者的所属关系，或者记下数据尚未确认。例子说明图谱的好处：关系类型使查询可以区分同样相连但意义不同的情况。若只把所有提及者用“相关”连起来，虽然图很密，却难以支持这种精确问题。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接着改问“目前有哪些长期合作伙伴？”单次共同活动并不足以回答。需要数据明示合作期间或持续关系，不能把“曾共同主办”直接变成“现任伙伴”。因此时间与关系状态应随证据一起存储，答案也应说明数据范围。这些是建模与查询时需要负责作出的判断，不会因采用图存储就自动完成。"
+        },
+        {
+          "type": "heading",
+          "text": "图谱不能替来源背书",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "图谱可能由人工整理、规则抽取或语言模型建立，每种方式都可能出错。原始文件若有误，抽取得再正确也只是忠实存储错误主张；模型抽取还可能猜错指代或漏掉否定。需要分开检查原文可信度、抽取是否忠实，以及身份是否合并正确。这些阶段的错误原因不同，不能只用一个整体置信度分数概括。"
+        },
+        {
+          "type": "paragraph",
+          "text": "来源撤回或修订时，图谱也需要更新。若某条关系由多份数据支持，删除其中一份不一定等于整条关系应消失；但也不能完全不处理。保留来源链接与有效期，有助于追踪哪些结论受影响。对需要审核的数据，应区分候选关系和已确认关系，避免未验证的抽取结果直接用于对外回答。"
+        },
+        {
+          "type": "heading",
+          "text": "何时适合用图，如何与其他方法搭配",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "当常见问题需要跨多个实体追踪关系，例如事件参与、内容引用或组织合作，图的结构容易表达这些路径。但数据如果主要用于单一表格的筛选与求和，关系型数据库可能更直接。图存储不是所有连接（JOIN）查询的必要替代，数据量大也不表示一定适合建图。应先写出实际要回答的问题，再决定结构。"
+        },
+        {
+          "type": "paragraph",
+          "text": "向量搜索擅长找意思相近的起点，图谱则擅长沿明确关系展开，两者可以搭配。例如先用文本找到可能对应的书屋，再用标识符查询正式的活动关系。GraphRAG 进一步把图及相关文本交给生成流程回答。这些步骤仍需保留原文，不能把一条模型抽取的连线当成充分引用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "小规模验收可以先人工确认一组实体与关系，加入同名不同人、改名、过期关系与相互矛盾的来源。检查查询是否走对关系类型，是否能指出每个结果的依据，并确认无数据时不会强行连接。评估图谱应看它能支持哪些可核对的问题，不只是节点数增加或可视化看起来更复杂。可视化只是阅读图谱的一个界面。线条密集、节点靠近或颜色相同，可能是布局算法的选择，不一定是数据本身的正式含义。分享图时应附上关系图例与范围说明，让读者知道哪些视觉特征可以解读，哪些只是为了排版清楚。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "处理重点",
+            "需要留意"
+          ],
+          "rows": [
+            [
+              "数据表",
+              "用行与字段组织记录",
+              "适合明确筛选及统计"
+            ],
+            [
+              "知识图谱",
+              "实体与有意义的关系",
+              "需要身份和来源治理"
+            ],
+            [
+              "向量表示",
+              "内容的相似性",
+              "不直接提供明确关系类型"
+            ]
+          ],
+          "caption": "概念对照；来源核实于 2026 年 9 月。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先问这条线究竟代表什么",
+          "text": "共同出现、共同主办和正式合作是不同关系。每条重要连线都应能说明类型、时间与来源。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "图谱检索增强生成（GraphRAG）：从关系看懂整批文件",
+              "kind": "life",
+              "slug": "ai-term-graph-rag"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "嵌入向量（Embedding）是什么：把内容放进可比较的空间",
+              "kind": "life",
+              "slug": "ai-term-embedding"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "检索增强生成（RAG）是什么：让回答附上可查的依据",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名词总索引：从 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "W3C：RDF 1.1 概念与抽象语法",
+          "url": "https://www.w3.org/TR/rdf11-concepts/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Neo4j：图数据库概念",
           "url": "https://neo4j.com/docs/getting-started/appendix/graphdb-concepts/",
           "checked_on": "2026-09-14"
         }

@@ -3,7 +3,7 @@ import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { test } from "node:test";
-import { pacificDay, trafficBreakdown, videoSummaries, windowOf } from "./analysis.mjs";
+import { clock, firstBigDrop, pacificDay, retentionPoints, trafficBreakdown, videoSummaries, windowOf } from "./analysis.mjs";
 import { main, spans, toCsv } from "./cli.mjs";
 import { codeName, withNames } from "./codes.mjs";
 
@@ -192,4 +192,89 @@ test("traffic prints each source and its search terms for a video", async () => 
   const { out, overrides } = harness(answer);
   assert.equal(await main(["traffic", "--slug", "ai-agent-vs-chatbot"], overrides), 0);
   assert.match(out.join(""), /YouTube search \| 5 \| 12 \| 1 \|[\s\S]*top search term[\s\S]*- ai agent 是什麼 \(12 views\)/);
+});
+
+// --- retention ---------------------------------------------------------------------------------
+
+/** 100 points: a slow slide, a sharp fall between 9% and 10%, a bigger one at 50% (past 30%). */
+function retentionRows() {
+  const rows = [];
+  for (let step = 1; step <= 100; step += 1) {
+    const watch = 1 - step * 0.004 - (step >= 10 ? 0.2 : 0) - (step >= 50 ? 0.3 : 0);
+    rows.push([step / 100, Number(watch.toFixed(4)), 0.42]);
+  }
+  return rows;
+}
+const RETENTION = {
+  video_id: "vidAAAAAAA1", title: "AI 代理", published_at: "2026-10-20T03:00:00+00:00", duration_seconds: 785,
+  start: "2026-10-19", end: "2026-11-02", audience: "all",
+  columns: ["elapsedVideoTimeRatio", "audienceWatchRatio", "relativeRetentionPerformance"], rows: retentionRows(),
+  policy: "Rows are YouTube Analytics API data exactly as YouTube returned it.",
+};
+
+test("the first big drop is the largest neighbouring fall within the first 30%, in seconds", () => {
+  const points = retentionPoints({ columns: RETENTION.columns, rows: [...RETENTION.rows].reverse() });
+  assert.equal(points[0].ratio, 0.01, "points are put in elapsed order");
+  const drop = firstBigDrop(points, { duration: 785 });
+  assert.deepEqual([drop.from_ratio, drop.to_ratio, drop.fall], [0.09, 0.1, 0.204]);
+  assert.deepEqual([drop.from_seconds, drop.to_seconds], [70.6, 78.5]);
+  assert.equal(drop.share_lost, Number((0.204 / 0.964).toFixed(4)));
+  assert.equal(firstBigDrop(points).from_seconds, null, "no duration, no seconds");
+  assert.equal(firstBigDrop(retentionPoints({ columns: RETENTION.columns, rows: [[0.01, 1, 0.5], [0.02, 1.1, 0.5]] })), null);
+  assert.equal(clock(78.5), "1:18.5");
+});
+
+test("retention asks the site for one video and prints the curve and the self-computed drop", async () => {
+  const { out, calls, overrides } = harness((url) => (url.pathname.endsWith("/retention") ? { body: RETENTION } : { body: OVERVIEW }));
+  assert.equal(await main(["retention", "--slug", "ai-agent-vs-chatbot", "--organic", "--from", "2026-10-20", "--to", "2026-11-01"], overrides), 0);
+  const asked = calls.find((call) => call.url.pathname.endsWith("/retention")).url;
+  assert.equal(asked.pathname, "/api/video/youtube-reports/retention");
+  assert.deepEqual(Object.fromEntries(asked.searchParams), { video_id: "vidAAAAAAA1", start: "2026-10-20", end: "2026-11-01", organic: "true" });
+  const text = out.join("");
+  assert.match(text, /duration: 785 s, from the video's length on YouTube/);
+  assert.match(text, /first big drop \(self-computed\): 9% -> 10% of the video \(1:10\.6 -> 1:18\.5\): audience watch ratio 0\.964 -> 0\.76, a fall of 0\.204/);
+  assert.match(text, /Self-computed from the YouTube Analytics API retention curve/);
+  assert.match(text, /\| 0\.1 \| 1:18\.5 \| 0\.76 \| 0\.42 \|/);
+  assert.equal(text.split("\n").filter((line) => /^\| 0?\.?\d/.test(line) || /^\| 1 \|/.test(line)).length, 100);
+});
+
+test("retention writes CSV with --duration overriding YouTube's length, and JSON with the derived block apart", async () => {
+  const dir = mkdtempSync(path.join(os.tmpdir(), "yt-retention-"));
+  try {
+    const file = path.join(dir, "curve.csv");
+    const { err, overrides } = harness(() => ({ body: { ...RETENTION, duration_seconds: null } }));
+    assert.equal(await main(["retention", "--video", "vidAAAAAAA1", "--duration", "100", "--format", "csv", "--out", file], overrides), 0);
+    const lines = readFileSync(file, "utf8").trim().split("\n");
+    assert.equal(lines[0], "elapsedVideoTimeRatio,audienceWatchRatio,relativeRetentionPerformance,elapsed_seconds_self_computed");
+    assert.equal(lines.length, 101);
+    assert.equal(lines[10], "0.1,0.76,0.42,10");
+    assert.match(err.join(""), /100 points[\s\S]*first big drop \(self-computed\): 9% -> 10% of the video \(0:09\.0 -> 0:10\.0\)/);
+    const json = harness(() => ({ body: RETENTION }));
+    assert.equal(await main(["retention", "--video", "vidAAAAAAA1", "--format", "json"], json.overrides), 0);
+    const parsed = JSON.parse(json.out.join(""));
+    assert.deepEqual(parsed.rows, RETENTION.rows, "YouTube's rows untouched");
+    assert.equal(parsed.derived.first_big_drop.to_seconds, 78.5);
+    assert.match(parsed.derived.note, /Self-computed/);
+    const unknown = harness(() => ({ body: { ...RETENTION, duration_seconds: null } }));
+    assert.equal(await main(["retention", "--video", "vidAAAAAAA1"], unknown.overrides), 0);
+    assert.match(unknown.out.join(""), /duration: unknown[\s\S]*9% -> 10% of the video: audience/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("retention exits 3 for the owner, 4 for YouTube's refusals, 2 for bad options", async () => {
+  const relink = harness(() => ({ status: 409, body: { code: "video_youtube_analytics_missing", detail: "頻道授權沒有包含 YouTube Analytics（yt-analytics.readonly）：到設定分頁按「重新連結」" } }));
+  assert.equal(await main(["retention", "--video", "vidAAAAAAA1"], relink.overrides), 3);
+  assert.match(relink.err.join(""), /重新連結/);
+  for (const [status, code] of [[503, "video_youtube_analytics_disabled"], [404, "video_youtube_retention_no_data"], [404, "video_youtube_retention_other_channel"], [429, "video_youtube_analytics_quota"]]) {
+    const refused = harness(() => ({ status, body: { code, detail: "說明" } }));
+    assert.equal(await main(["retention", "--video", "vidAAAAAAA1"], refused.overrides), 4, code);
+    assert.match(refused.err.join(""), new RegExp(code));
+  }
+  for (const args of [[], ["--video", "vidAAAAAAA1", "--slug", "x"], ["--video", "a b"], ["--video", "vidAAAAAAA1", "--duration", "-1"], ["--video", "vidAAAAAAA1", "--format", "xml"], ["--video", "vidAAAAAAA1", "--from", "2026-11-02", "--to", "2026-11-01"]]) {
+    const bad = harness(() => ({ body: RETENTION }));
+    assert.equal(await main(["retention", ...args], bad.overrides), 2, args.join(" "));
+    assert.equal(bad.calls.length, 0);
+  }
 });

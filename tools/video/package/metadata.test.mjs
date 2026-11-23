@@ -13,7 +13,7 @@ import { readJson } from "../core/paths.mjs";
 import { writeLanguages } from "../core/stages.mjs";
 import { estimateTimeline } from "../core/timeline.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeTranslations } from "../compile/fixture.mjs";
-import { composeMetadata } from "./metadata.mjs";
+import { composeMetadata, uploadChecklist } from "./metadata.mjs";
 
 test("every locale's description credits the stock photos of assets[], and says so when they tip it over the byte limit", () => {
   const doc = fixture();
@@ -63,6 +63,15 @@ test("every locale's description opens on the hook, links the article once with 
   assert.deepEqual(metadata.tags, ["token", "詞元", "AI 名詞十分鐘", "分詞"], "the narration's tags only");
   const plain = composeMetadata({ doc: { ...doc, category: "explainer" }, timeline }).metadata.description;
   assert.match(plain, /\n\n#token #詞元$/, "a category without a series row: two hashtags");
+  const curio = composeMetadata({ doc: { ...doc, slug: "curio-s42-pig-war", category: "explainer" }, timeline }).metadata.description;
+  assert.match(curio, /\n\n#token #詞元 #奇聞檔案局$/, "curio-* slug gets its series hashtag");
+  const stw = composeMetadata({ doc: { ...doc, slug: "sothatswhy-p23-mirror", category: "explainer" }, timeline }).metadata.description;
+  assert.match(stw, /\n\n#token #詞元 #原來如此事務所$/, "sothatswhy-* slug gets its series hashtag");
+  const story = composeMetadata({ doc: { ...doc, slug: "story-b01-michelin", category: "story" }, timeline }).metadata.description;
+  assert.match(story, /\n\n#token #詞元 #品牌故事$/, "story category gets its series hashtag");
+  const checklist = uploadChecklist({ metadata, captions: ["captions/zh-TW.srt"], thumbnail: true });
+  assert.match(checklist, /8\. 播放清單：勾選對應系列的播放清單/);
+  assert.match(checklist, /低門檻二選一互動題.*置頂/);
 });
 
 test("cardless compilation descriptions use revised chapter titles on an older measured timeline", () => {

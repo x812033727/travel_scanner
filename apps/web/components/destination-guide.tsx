@@ -61,6 +61,7 @@ export function DestinationGuide({
   destination,
   places,
   hotspotsEnabled,
+  flightSearchEnabled = true,
   merchants,
   related,
   guides,
@@ -69,6 +70,7 @@ export function DestinationGuide({
   destination: DestinationSummary;
   places: GuideEntry[] | null;
   hotspotsEnabled: boolean;
+  flightSearchEnabled?: boolean;
   merchants: GuideEntry[] | null;
   related: DestinationSummary[];
   guides: GuideListResult;
@@ -174,7 +176,7 @@ export function DestinationGuide({
       <section className="mt-10">
         <h2 className="text-2xl font-bold tracking-tight">{copy.planTitle}</h2>
         <ul className="mt-4 space-y-2">
-          <li><Link className={link} href="/search/new">{copy.planTrip}</Link></li>
+          {flightSearchEnabled && <li><Link className={link} href="/search/new">{copy.planTrip}</Link></li>}
           <li><Link className={link} href={`/destinations/${destination.id}/services`}>{copy.stays}</Link></li>
         </ul>
         {/* Reviewed partner entrances for this city. A client island inside a server page: it

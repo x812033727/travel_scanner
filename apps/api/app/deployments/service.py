@@ -8,6 +8,16 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.auth.service import verify_password
 from app.config import get_settings
 from app.deployments.agent import DeploymentAgentClient
+from app.deployments.host import (
+    EXECUTOR as HOST_EXECUTOR,
+)
+from app.deployments.host import (
+    host_checks,
+    host_commits,
+    is_host_run,
+    read_host_status,
+    unclaimed_too_long,
+)
 from app.deployments.schemas import (
     AgentOverview,
     DeploymentCreateRequest,
@@ -43,9 +53,7 @@ async def _view(
     include_events: bool = False,
 ) -> DeploymentRunView:
     requester = (
-        await session.get(User, run.requested_by_user_id)
-        if run.requested_by_user_id
-        else None
+        await session.get(User, run.requested_by_user_id) if run.requested_by_user_id else None
     )
     events: list[DeploymentEventView] = []
     if include_events:
@@ -90,7 +98,57 @@ async def _view(
     )
 
 
+def _audit_terminal(session: AsyncSession, run: DeploymentRun) -> bool:
+    """Add the one terminal audit row a finished run gets; False when it already has it."""
+    metadata = dict(run.metadata_json or {})
+    if run.status in ACTIVE_DEPLOYMENT_STATUSES or metadata.get("terminal_audited"):
+        return False
+    metadata["terminal_audited"] = True
+    run.metadata_json = metadata
+    action = {
+        "succeeded": "deployment.succeeded",
+        "rolled_back": "deployment.rolled_back",
+    }.get(run.status, "deployment.failed")
+    duration = None
+    if run.started_at and run.finished_at:
+        duration = max(0, int((run.finished_at - run.started_at).total_seconds()))
+    session.add(
+        AdminAuditLog(
+            actor_user_id=run.requested_by_user_id,
+            action=action,
+            target=str(run.id),
+            metadata_json={
+                "run_id": str(run.id),
+                "target_sha": run.target_sha,
+                "status": run.status,
+                "duration_seconds": duration,
+                **({"failure_code": run.failure_code} if run.failure_code else {}),
+            },
+        )
+    )
+    return True
+
+
+async def _reconcile_host(session: AsyncSession, run: DeploymentRun) -> DeploymentRun:
+    """The timer writes host runs itself; the API only times out an unclaimed request and
+    audits a finished one."""
+    changed = False
+    if unclaimed_too_long(run):
+        run.status = "failed"
+        run.failure_code = "deployment_executor_unavailable"
+        run.failure_detail = "主機自動部署排程器 10 分鐘內沒有接手這筆請求"
+        run.finished_at = datetime.now(UTC)
+        changed = True
+    if _audit_terminal(session, run):
+        changed = True
+    if changed:
+        await session.commit()
+    return run
+
+
 async def _reconcile(session: AsyncSession, run: DeploymentRun) -> DeploymentRun:
+    if is_host_run(run):
+        return await _reconcile_host(session, run)
     if not run.agent_job_id or run.status not in ACTIVE_DEPLOYMENT_STATUSES:
         return run
     try:
@@ -149,37 +207,74 @@ async def _reconcile(session: AsyncSession, run: DeploymentRun) -> DeploymentRun
                 created_at=event.created_at,
             )
         )
-    terminal = run.status not in ACTIVE_DEPLOYMENT_STATUSES
-    metadata = dict(run.metadata_json or {})
-    if terminal and not metadata.get("terminal_audited"):
-        metadata["terminal_audited"] = True
-        run.metadata_json = metadata
-        action = {
-            "succeeded": "deployment.succeeded",
-            "rolled_back": "deployment.rolled_back",
-        }.get(run.status, "deployment.failed")
-        duration = None
-        if run.started_at and run.finished_at:
-            duration = max(0, int((run.finished_at - run.started_at).total_seconds()))
-        session.add(
-            AdminAuditLog(
-                actor_user_id=run.requested_by_user_id,
-                action=action,
-                target=str(run.id),
-                metadata_json={
-                    "run_id": str(run.id),
-                    "target_sha": run.target_sha,
-                    "status": run.status,
-                    "duration_seconds": duration,
-                },
-            )
-        )
+    _audit_terminal(session, run)
     if previous_status != run.status or job.events:
         await session.commit()
     return run
 
 
+async def _cooldown_until(session: AsyncSession) -> datetime | None:
+    latest_terminal = await session.scalar(
+        select(DeploymentRun)
+        .where(~DeploymentRun.status.in_(ACTIVE_DEPLOYMENT_STATUSES))
+        .order_by(DeploymentRun.finished_at.desc())
+        .limit(1)
+    )
+    if latest_terminal is None or latest_terminal.finished_at is None:
+        return None
+    finished = latest_terminal.finished_at
+    if finished.tzinfo is None:
+        finished = finished.replace(tzinfo=UTC)
+    cooldown_until = finished + timedelta(seconds=get_settings().deploy_cooldown_seconds)
+    return cooldown_until if cooldown_until > datetime.now(UTC) else None
+
+
+async def _host_overview(session: AsyncSession) -> DeploymentOverview:
+    active = await session.scalar(
+        select(DeploymentRun)
+        .where(DeploymentRun.status.in_(ACTIVE_DEPLOYMENT_STATUSES))
+        .order_by(DeploymentRun.created_at.desc())
+    )
+    if active is not None:
+        active = await _reconcile(session, active)
+        if active.status not in ACTIVE_DEPLOYMENT_STATUSES:
+            active = None
+    latest_success = await session.scalar(
+        select(DeploymentRun)
+        .where(DeploymentRun.status == "succeeded")
+        .order_by(DeploymentRun.finished_at.desc())
+        .limit(1)
+    )
+    row, host = await read_host_status(session)
+    live = row.live_sha if row else None
+    target = row.target_sha if row else None
+    ci_status = (row.ci_status if row else None) or "unknown"
+    return DeploymentOverview(
+        enabled=get_settings().deployments_configured,
+        executor="host_timer",
+        agent_connected=host.responding,
+        deployed_sha=live,
+        target_sha=target,
+        target_commit_subject=row.target_commit_subject if row else None,
+        # The timer asks GitHub only inside the deploy window, so an unknown CI result does
+        # not hide an update: the timer checks CI itself when it claims the request.
+        update_available=bool(
+            target and live and target != live and ci_status in {"unknown", "success"}
+        ),
+        ci_status=ci_status,
+        ci_url=row.ci_url if row else None,
+        commits=host_commits(row),
+        checks=host_checks(host),
+        active_run=await _view(session, active, include_events=True) if active else None,
+        last_success=await _view(session, latest_success) if latest_success else None,
+        cooldown_until=await _cooldown_until(session),
+        host=host,
+    )
+
+
 async def deployment_overview(session: AsyncSession) -> DeploymentOverview:
+    if get_settings().deployment_executor == HOST_EXECUTOR:
+        return await _host_overview(session)
     agent_connected = True
     active = await session.scalar(
         select(DeploymentRun)
@@ -242,7 +337,15 @@ async def deployment_overview(session: AsyncSession) -> DeploymentOverview:
     )
 
 
-async def preflight_deployment() -> DeploymentPreflightResult:
+async def preflight_deployment(session: AsyncSession) -> DeploymentPreflightResult:
+    if get_settings().deployment_executor == HOST_EXECUTOR:
+        row, host = await read_host_status(session)
+        return DeploymentPreflightResult(
+            ok=host.responding and not host.paused_reason,
+            checked_at=datetime.now(UTC),
+            checks=host_checks(host),
+            target_sha=row.target_sha if row else None,
+        )
     return await DeploymentAgentClient().preflight()
 
 
@@ -262,6 +365,8 @@ async def create_deployment(
         return await _view(session, replay, include_events=True)
     if not actor.password_hash or not verify_password(payload.password, actor.password_hash):
         raise AppError(401, "deployment_reauth_failed", "目前密碼不正確")
+    if get_settings().deployment_executor == HOST_EXECUTOR:
+        return await _create_host_deployment(session, actor, payload, idempotency_key)
     overview = await deployment_overview(session)
     if overview.active_run is not None:
         raise AppError(409, "deployment_in_progress", "目前已有部署正在執行")
@@ -372,6 +477,114 @@ async def create_deployment(
         raise AppError(502, "deployment_agent_invalid_response", "部署代理工作識別碼不正確")
     run.status = created.status
     await session.commit()
+    return await _view(session, run, include_events=True)
+
+
+async def _create_host_deployment(
+    session: AsyncSession,
+    actor: User,
+    payload: DeploymentCreateRequest,
+    idempotency_key: str,
+) -> DeploymentRunView:
+    overview = await deployment_overview(session)
+    host = overview.host
+    if overview.active_run is not None:
+        raise AppError(409, "deployment_in_progress", "目前已有部署正在執行")
+    if await session.scalar(
+        select(DatabaseOperationRun.id).where(
+            DatabaseOperationRun.status.in_(ACTIVE_DATABASE_OPERATION_STATUSES)
+        )
+    ):
+        raise AppError(
+            409,
+            "deployment_blocked_by_database_operation",
+            "資料庫維護期間不能執行部署",
+        )
+    if overview.cooldown_until is not None:
+        raise AppError(429, "deployment_cooldown", "前一次部署剛完成，請稍候五分鐘")
+    if host is None or not host.responding:
+        raise AppError(
+            503, "deployment_executor_unavailable", "主機自動部署排程器超過 15 分鐘沒有回報"
+        )
+    if host.paused_reason:
+        # The owner's rule (2026-11-16): no forced deploy past a failed automatic one; a
+        # person reads its log and removes the paused file first.
+        raise AppError(
+            409,
+            "deployment_autodeploy_paused",
+            f"上一次自動部署失敗、已暫停，先讀 log 再刪暫停檔：{host.paused_reason}"[:500],
+        )
+    if payload.mode == "rebuild":
+        target = overview.deployed_sha
+        if not target:
+            raise AppError(503, "deployment_executor_unavailable", "排程器還沒回報正式站版本")
+    else:
+        target = overview.target_sha
+        if not target:
+            raise AppError(503, "deployment_executor_unavailable", "排程器還沒回報 main 的版本")
+        if overview.ci_status not in {"unknown", "success"}:
+            raise AppError(409, "deployment_ci_not_green", "最新 main 尚未通過 CI")
+        if target == overview.deployed_sha:
+            raise AppError(409, "deployment_already_current", "目前已是最新綠燈版本")
+    if target != payload.expected_target_sha:
+        raise AppError(409, "deployment_target_changed", "版本已更新，請重新檢查後再部署")
+    if payload.confirmation != f"DEPLOY {target[:7]}":
+        raise AppError(422, "deployment_confirmation_invalid", "部署確認文字不正確")
+    run = DeploymentRun(
+        id=uuid4(),
+        requested_by_user_id=actor.id,
+        idempotency_key=idempotency_key,
+        agent_job_id=None,
+        status="queued",
+        stage="queued",
+        previous_sha=overview.deployed_sha,
+        target_sha=target,
+        target_commit_subject=(
+            _safe_text(overview.target_commit_subject, 255) if payload.mode == "latest" else None
+        ),
+        ci_url=overview.ci_url if payload.mode == "latest" else None,
+        metadata_json={
+            "executor": HOST_EXECUTOR,
+            "mode": payload.mode,
+            "wait_for_paid_work": payload.wait_for_paid_work,
+        },
+    )
+    session.add(run)
+    session.add(
+        DeploymentEvent(
+            run_id=run.id,
+            sequence=1,
+            stage="queued",
+            status="queued",
+            message="已送出，等待主機排程器接手（最多約 5 分鐘）",
+        )
+    )
+    session.add(
+        AdminAuditLog(
+            actor_user_id=actor.id,
+            action="deployment.requested",
+            target=str(run.id),
+            metadata_json={
+                "run_id": str(run.id),
+                "target_sha": target,
+                "executor": HOST_EXECUTOR,
+                "mode": payload.mode,
+            },
+        )
+    )
+    try:
+        await session.commit()
+    except IntegrityError as exc:
+        await session.rollback()
+        concurrent_replay = await session.scalar(
+            select(DeploymentRun).where(
+                DeploymentRun.requested_by_user_id == actor.id,
+                DeploymentRun.idempotency_key == idempotency_key,
+            )
+        )
+        if concurrent_replay is not None:
+            return await _view(session, concurrent_replay, include_events=True)
+        raise AppError(409, "deployment_in_progress", "目前已有部署正在執行") from exc
     return await _view(session, run, include_events=True)
 
 

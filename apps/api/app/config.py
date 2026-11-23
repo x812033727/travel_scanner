@@ -86,6 +86,8 @@ OFFICIAL_PROVIDER_HOSTS: dict[str, frozenset[str]] = {
     # balance and GPU stock that REST does not report.
     "runpod_api_base_url": frozenset({"rest.runpod.io"}),
     "runpod_graphql_url": frozenset({"api.runpod.io"}),
+    # IndexNow instant indexing notifications (Bing, Yahoo TW, Naver, DuckDuckGo, ChatGPT).
+    "indexnow_endpoint": frozenset({"api.indexnow.org"}),
 }
 
 
@@ -121,6 +123,11 @@ class Settings(BaseSettings):
     community_smtp_password: str | None = None
     community_mail_from: str = ""
     deployments_enabled: bool = False
+    # host_timer: the admin button queues a deployment_runs row that the host's root auto deploy
+    # timer (ops/autodeploy) claims and runs through /root/deploy-travel-scanner.sh; only the
+    # owner role may press it. agent: the deployment agent (ops/deployer) over its socket, which
+    # production cannot use yet (ops/deployer/README.md). Production sets host_timer.
+    deployment_executor: Literal["host_timer", "agent"] = "agent"
     deploy_admin_emails: str = ""
     database_admin_emails: str = ""
     admin_database_maintenance_enabled: bool = False
@@ -214,6 +221,9 @@ class Settings(BaseSettings):
     flight_status_enabled: bool = True
     airline_fares_enabled: bool = True
     pricing_enabled: bool = True
+    flight_search_enabled: bool = False
+    videos_enabled: bool = False
+    member_features_enabled: bool = False
     trust_proxy_client_ip: bool = False
     # Proof that a forwarded address came from our own BFF rather than from something else
     # that can reach this API. Nothing at the network layer can tell those apart: neither
@@ -264,6 +274,9 @@ class Settings(BaseSettings):
     # this is the model the planner and the trip parser use.
     gemini_model: str = "gemini-3.8-flash"
     minimax_api_key: str | None = None
+    # More M Plan keys besides minimax_api_key, separated by commas or white space: every MiniMax
+    # call picks among all of them by how busy and how used each is (app.ai.minimax_pool).
+    minimax_api_keys_extra: str | None = None
     # Jev is TypeSafe's System One model. It decides -- choice, score, noul -- and never
     # generates text, so it is not an AI_PLANNER_PRIORITY vendor and never a planner
     # fallback; it lives here only because its key belongs on the same encrypted card.
@@ -412,6 +425,8 @@ class Settings(BaseSettings):
     # The free Basic tier allows 30 calls/day; keep five calls for connection checks.
     odsay_daily_request_limit: int = Field(default=25, ge=0, le=10_000_000)
     next_public_site_url: str = "http://localhost:3000"
+    indexnow_key: str | None = None
+    indexnow_endpoint: str = "https://api.indexnow.org/indexnow"
     airline_crawler_user_agent: str = (
         "TravelScannerBot/0.1 (+https://github.com/x812033727/travel_scanner)"
     )
@@ -456,6 +471,14 @@ class Settings(BaseSettings):
     # never from model text; scoring stays with the existing structured assessment step.
     hotspot_guide_gemini_enabled: bool = False
     hotspot_guide_gemini_api_key: str | None = None
+    # More Gemini keys (Google AI Ultra accounts with monthly Cloud credit), separated by commas
+    # or white space. They are used up in order before hotspot_guide_gemini_api_key, which comes
+    # last (app.ai.gemini_pool).
+    hotspot_guide_gemini_api_keys_extra: str | None = None
+    # Optional monthly USD budget per key in the same order (extras, then the site key); blank
+    # or 0 is no budget. Google's own refusal (prepay balance out, or a spending cap) is what
+    # switches keys.
+    hotspot_guide_gemini_key_budgets_usd: str | None = None
     hotspot_guide_gemini_base_url: str = "https://generativelanguage.googleapis.com"
     # Flash-tier models refuse "list these sources" prompts on the grounded path, but
     # handle the schema-bound candidate list fine, and gemini-2.5-pro is closed to new
@@ -573,10 +596,15 @@ class Settings(BaseSettings):
     # Gemini narration uses the site's Gemini key (hotspot_guide_gemini_*). Its month counts
     # the text characters sent: 300,000 is about a hundred 10-minute videos, roughly US$13 at
     # the 2026 price of gemini-3.8-flash-tts.
-    video_speech_gemini_monthly_character_limit: int = Field(
-        default=300_000, ge=0, le=100_000_000
-    )
+    video_speech_gemini_monthly_character_limit: int = Field(default=300_000, ge=0, le=100_000_000)
     video_speech_gemini_timeout_seconds: float = Field(default=150.0, ge=5, le=280)
+    # MiniMax narration (app/video_speech/minimax.py) uses the site's MiniMax key and base URL
+    # (minimax_api_*), the ones image-01 uses. Its month counts the text characters sent; an
+    # M Plan subscription also caps speech per day or per window, which MiniMax enforces.
+    # Zero (the default) counts without blocking: the plan's own windows are the limit, and
+    # every curio episode's eight dubs go through MiniMax. Set a number to cap the month.
+    video_speech_minimax_monthly_character_limit: int = Field(default=0, ge=0, le=100_000_000)
+    video_speech_minimax_timeout_seconds: float = Field(default=150.0, ge=5, le=280)
     # Stock photos for the illustrated slides (docs/videos/ILLUSTRATED.md §圖庫照片): the
     # pipeline searches Pexels and Pixabay through POST /api/v1/video/media/stock/* with a video
     # tool token and the server fetches the file into the media store, so the keys stay here.
@@ -705,6 +733,8 @@ class Settings(BaseSettings):
 
     @property
     def deployments_configured(self) -> bool:
+        if self.deployment_executor == "host_timer":
+            return bool(self.deployments_enabled and self.deploy_admin_email_set)
         return bool(
             self.deployments_enabled
             and self.deploy_admin_email_set
@@ -860,6 +890,7 @@ class Settings(BaseSettings):
         if self.deployments_enabled:
             if not self.deploy_admin_email_set:
                 errors.append("DEPLOY_ADMIN_EMAILS must contain at least one email")
+        if self.deployments_enabled and self.deployment_executor == "agent":
             if not self.deploy_agent_hmac_key or len(self.deploy_agent_hmac_key) < 32:
                 errors.append("DEPLOY_AGENT_HMAC_KEY must be set to at least 32 characters")
             if self.deploy_agent_socket != "/run/travel-scanner-deployer/deployer.sock":

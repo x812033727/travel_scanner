@@ -1,0 +1,3414 @@
+{
+  "batch_id": "wave74-earth-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第二十四輪從零研究的新長題（天氣、地質、天象、水、地磁）：0 °C 以上下雪（F84／V87）、鳴沙（F85／V88）、光害（F93／V96）、暴雨溪水新舊水（F97／V100）、指南針與地磁（F99／V102），都留後備。",
+  "sources": [
+    {
+      "id": "E74-S001",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5861046/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41467-018-03629-7",
+      "title": "Spatial variation of the rain–snow temperature threshold across the Northern Hemisphere",
+      "publisher": "Nature Communications 9:1148（2018）；Jennings、Winchell、Livneh、Molotch（科羅拉多大學波德分校）",
+      "version": "出版社開放取用版（CC BY；PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "搜尋結果給出 PMC5861046，以 Europe PMC REST（文件記載 API）/webservices/rest/PMC5861046/fullTextXML 取 JATS 全文，curl 預設標頭；python 去標籤、刪去參考文獻表後轉文字",
+      "reading_scope": "正文全文（摘要、Introduction、Results 三節、Discussion 與 Methods 至 Snowfall frequency simulations 開頭）；補充資料（Supplementary Table/Fig.）未讀",
+      "locator": "Results〈Spatial variability of observed rain–snow thresholds〉（平均 1.0 °C、95% 在 −0.4～2.4 °C、落基山與洛磯山間 ~3.8 °C、青藏高原 ~4.5 °C、日本例外）；〈Meteorological controls〉與 Fig. 2 圖說（各濕度級 50% 門檻 4.5→0.7 °C、2.5 °C 時下雪機率差 30 倍以上）；Fig. 4 段（雙變數模型最低成功率 68.7% vs 60.7%）；Discussion（VIC 預設 0.0 °C）",
+      "summary": "用 1978–2007 年北半球 11,924 個陸地測站、1,780 萬筆人工目視降水型態報告，求每站雨雪各半的地面氣溫（50% 門檻）。6,883 站可擬合，平均 1.0 °C，95% 落在 −0.4～2.4 °C；大陸性與山地較高（美國洛磯山與山間區接近 3.8 °C、青藏高原周邊接近 4.5 °C），海洋性與低地較低，墨西哥灣影響區常在冰點以下下雨。日本雖屬海洋性卻高於平均，作者歸因於西伯利亞冷氣團越過日本海時降水粒子在上層形成、溫度遞減率變陡、雪晶較不易融化。依相對濕度分級，50% 門檻由 40–50% 的 4.5 °C 降到 90–100% 的 0.7 °C，濕度每增 10% 門檻約降 0.8 °C；2.5 °C 時最乾一級下雪機率是最濕一級的 30 倍以上；氣壓的影響小得多（各級差 1.0 °C 對濕度的 3.8 °C）。作者以蒸發冷卻讓雪晶在冰點以上保持固態解釋。含濕度的方法在 0.6–3.4 °C 間表現較好，雙變數（氣溫＋濕度）模型最低成功率 68.7%，只用氣溫的 60.7%。VIC 模式預設 0.0 °C 比觀測平均低 1.0 °C，會在大範圍低估降雪。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "目視報告不含雨夾雪與混合型（已剔除）；測站多在低地、高濕，作者自承取樣偏差；海上未分析。日本例外的原因是作者推論。地圖化的連續門檻是模式（MERRA-2＋迴歸）產品，不是觀測。文中引用的 Dai（2008）海陸結論是前人結果，不算本篇。 覆核 V87（2026-11-12）：limitations 的『日本例外的原因是作者推論』改為『原因是作者引用前人文獻 50–52 的解釋』；summary 補『95%』在摘要指測站、在 Results 寫成 observations。",
+      "author_cache": {
+        "file": "f84src/jennings2018.xml（轉文字 jennings2018.txt）",
+        "sha256_prefix": "1af90ec0bd0889e8",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S002",
+      "url": "https://www.jstage.jst.go.jp/article/jmsj1965/59/1/59_1_26/_pdf/-char/en",
+      "canonical_url": "https://doi.org/10.2151/jmsj1965.59.1_26",
+      "title": "Non-Melting Phenomena of Snowflakes Observed in Subsaturated Air below Freezing Level",
+      "publisher": "Journal of the Meteorological Society of Japan Ser. II 59(1):26–32（1981）；松尾敬世、佐粧純男（氣象研究所）",
+      "version": "J-STAGE 出版社 PDF（免費公開）",
+      "accessed_on": "2026-11-12",
+      "read_via": "搜尋結果的 J-STAGE 文章頁，頁上 PDF 連結以 curl 下載；pdftotext -layout 轉文字",
+      "reading_scope": "全文（摘要、第 1–5 節、日文摘要；圖 2–5 與表 1 只讀圖說，數值表未逐格讀）",
+      "locator": "摘要；第 1 節（1976 年氣象廳手冊以地上 2.5 °C 判別、4–6 °C 降雪不罕見）；第 2 節（輪島、松本、日光；濕度 60% 以下 4–6 °C 見雪；臨界濕度回歸式）；第 4 節（輪島 1975 年探空：地面與 0 °C 高度濕度差眾數 −2.5%）",
+      "summary": "分析輪島（海邊 5 m）、松本（內陸 610 m）、日光（1292 m）冬季地面觀測。地上氣溫越高下雪頻率越低，但濕度越低下雪頻率越高；濕度 60% 以下時地上氣溫 4–6 °C 仍見降雪。每個氣溫級距都有一個臨界濕度，低於它時降水全是雪；三站臨界濕度與地上氣溫成線性：輪島 RHcri=−7.5T+93、松本 −7.3T+96、日光 −6.2T+91，與作者先前的理論計算相符。當時氣象廳例行預報以地上 2.5 °C 判別雨雪。作者用輪島 1975 年 1–3 月探空檢查，地面與 0 °C 高度的濕度差眾數只有 −2.5%，因此認為多數情況只看地面條件就能判斷。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "三站資料期間與長度不同；降水型態是測候所人員目視；冰霰（graupel）在 0 °C 以下的資料已排除。「只看地面就夠」是作者依輪島一季探空的推論。",
+      "author_cache": {
+        "file": "f84src/matsuo1981b.pdf（轉文字 matsuo1981b.txt）",
+        "sha256_prefix": "4233bdab337f08a0",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S003",
+      "url": "https://www.jstage.jst.go.jp/article/jmsj1965/59/1/59_1_10/_pdf/-char/en",
+      "canonical_url": "https://doi.org/10.2151/jmsj1965.59.1_10",
+      "title": "Melting of Snowflakes below Freezing Level in the Atmosphere",
+      "publisher": "Journal of the Meteorological Society of Japan Ser. II 59(1):10–25（1981）；松尾敬世、佐粧純男（氣象研究所）",
+      "version": "J-STAGE 出版社 PDF（免費公開）",
+      "accessed_on": "2026-11-12",
+      "read_via": "搜尋結果的 J-STAGE 文章頁，頁上 PDF 連結以 curl 下載；pdftotext -layout 轉文字",
+      "reading_scope": "只讀摘要、第 1 節、第 2 節（長岡觀測方法）與第 3 節開頭（模擬假設）；第 3 節後半的計算結果圖、第 4–5 節未逐段讀",
+      "locator": "摘要（飽和空氣中 1–5 mm 雪片數百公尺內融完；未飽和空氣不融化層 RH 90% 約 120 m、RH 50% 約 700 m；地上氣溫 ≥1 °C 時落速幾乎與質量無關）；第 2 節（1978、1979 年長岡觀測、約二十場降雪）",
+      "summary": "理論加觀測：在 0 °C 高度以下的飽和空氣中，雪片一越過 0 °C 就開始融化，相當於 1–5 mm 雨滴的雪片幾百公尺內融完；在未飽和空氣中，雪片表面昇華帶走熱量讓自己保持在冰點以下，形成一段不融化層，其厚度隨濕度下降近似線性增加：相對濕度 90% 約 120 m、50% 約 700 m。在不融化層下方才開始融化，且越乾的空氣融化層越薄。新潟長岡 1978、1979 年的實測顯示，雪片落速與含水量隨地上氣溫（0 °C 以上）與濕度改變；地上氣溫較高（約 1 °C 以上）時，落速幾乎不隨質量變，有些小雪片比大雪片快。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "數字來自摘要；模擬假設溫度遞減率 6 °C/km、0 °C 以下濕度固定、雪片不碎裂不合併。只讀到第 3 節開頭，計算圖未核。與 F84-S002 同一研究群（松尾、佐粧）。",
+      "author_cache": {
+        "file": "f84src/matsuo1981a.pdf（轉文字 matsuo1981a.txt）",
+        "sha256_prefix": "2e23a134255ec362",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S004",
+      "url": "https://www.data.jma.go.jp/haneda-airport/weather_topics/file/rjtt_wt20151228.pdf",
+      "canonical_url": "https://www.data.jma.go.jp/haneda-airport/weather_topics/file/rjtt_wt20151228.pdf",
+      "title": "羽田空港 WEATHER TOPICS 第 56 号「降雪について」",
+      "publisher": "東京航空地方氣象台（日本氣象廳），2015 年 12 月 28 日",
+      "version": "官方 PDF",
+      "accessed_on": "2026-11-12",
+      "read_via": "搜尋結果所列 data.jma.go.jp 的 PDF 連結，curl 下載；pdftotext 轉文字（第 2 圖散布圖只讀圖說）",
+      "reading_scope": "全文 2 頁（第 1–4 節）",
+      "locator": "第 2 節「雪・みぞれ・雨の境目、雪の目安」與第 2 圖圖說（2000 年 11 月～2012 年 4 月、抽出 1487 件）",
+      "summary": "東京航空地方氣象台統計羽田 2000 年 11 月至 2012 年 4 月 1,487 筆降水的地上氣溫與濕度：地上氣溫 3 °C 以下、濕度 80% 以上時雨雪可能混在；3～5 °C 時濕度低仍可能是雪。說明雪片在 0 °C 以上開始融化，但空氣乾時蒸發與昇華帶走熱量使它不易融化。太平洋側平地下雪的目安是上空 1,500 m 低於 −4 °C 或 5,500 m 低於 −30 °C。另說明天氣預報文把凍雨與雪あられ當雪、氷あられ當雨處理。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "官方科普刊物，不是論文；散布圖的點未逐點讀；「目安」是預報經驗值。航空情報與警報段落不採用（不提供防災建議）。",
+      "author_cache": {
+        "file": "f84src/jma_rjtt20151228.pdf（轉文字 jma_rjtt20151228.txt）",
+        "sha256_prefix": "0f0ca88c84361607",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S005",
+      "url": "https://www.metsoc.jp/tenki/pdf/1998/1998_03_0171.pdf",
+      "canonical_url": "https://www.metsoc.jp/tenki/pdf/1998/1998_03_0171.pdf",
+      "title": "関東地方における気温の高度分布と降水形態の関係",
+      "publisher": "天気 45(3):171–（1998）；安田朝明、遠峰菊郎（防衛大學校地球科學科）",
+      "version": "日本氣象學會公開 PDF",
+      "accessed_on": "2026-11-12",
+      "read_via": "搜尋結果所列 metsoc.jp PDF，curl 下載；pdftotext 轉文字（有一處 PDF 結構警告，文字可讀）",
+      "reading_scope": "只讀要旨、第 1 節、第 2 節與第 3 節開頭（約前 3 頁，至第 2 圖與第 1 表說明）；事例分析各節與結論未逐段讀，要旨所述類型結論以要旨為準",
+      "locator": "要旨（タイプ 1、タイプ 2）；第 1 節（氣象廳 1976：地上 2 °C、850 hPa −4 °C；1991：關東沿岸 3 °C、內陸 2 °C）；第 3 節開頭與第 2 圖（飛行場地上 1～4 °C 雨雪混在、4 °C 降雪時濕度 60～70%）",
+      "summary": "用 1995、1996 年 1–2 月關東八次連續降水，結合地面、東京鐵塔（250 m）、筑波山（868 m）氣溫。地上與低層大氣雨雪混在的氣溫幅大致一致。事例分成兩型：タイプ 1 在地上較高溫、低濕時就開始下雪，地上 2 °C 時降水大多變雪，0 °C 附近的高度層薄；タイプ 2 要低溫、高濕才轉雪，地上 2 °C 時常仍是雨，要到 1 °C 才大部分變雪，降水量多、0 °C 附近的層厚。飛行場資料中地上 0 °C 以下為雪，1～4 °C 雨雪混在，4 °C 下雪時濕度 60～70%。引述氣象廳指標：地上 2 °C、850 hPa −4 °C；關東判別溫度沿岸 3 °C、內陸 2 °C。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "八個事例、兩個冬季；飛行場氣溫以 1 °C 為單位通報。濕度低時的冷卻效果作者引 Matsuo 等 1981 解釋，屬引用。氣象廳指標屬引用背景。 覆核 V87（2026-11-12）：reading_scope 補：V87 另讀到討論與結論（第 185 頁前後），作者對タイプ2 的解釋是雪融化冷卻形成等溫層、タイプ1 因降水少而不形成。",
+      "author_cache": {
+        "file": "f84src/tenki1998_0171.pdf（轉文字 tenki1998_0171.txt）",
+        "sha256_prefix": "8a0d995110a5f2c5",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S006",
+      "url": "https://diposit.ub.edu/bitstreams/37f874ce-8404-4154-8eb9-e4df2925abca/download",
+      "canonical_url": "https://hdl.handle.net/2445/186853",
+      "title": "Precipitation phase discrimination: diagnosing and nowcasting（博士論文，第 3.1 節收錄 Casellas 等 2021〈Surface precipitation phase discrimination in complex terrain〉J. Hydrol. 592:125780）",
+      "publisher": "巴塞隆納大學 2022；Enric Casellas（巴塞隆納大學應用物理系／加泰隆尼亞氣象局）",
+      "version": "大學機構典藏的博士論文 PDF（論文內含期刊排版版）",
+      "accessed_on": "2026-11-12",
+      "read_via": "搜尋結果的典藏頁 https://diposit.ub.edu/dspace/handle/2445/186853 由伺服器轉到 items 頁，頁上 bitstream 下載連結以 curl 下載；pdftotext 轉文字",
+      "reading_scope": "只讀第 3.1 節（期刊論文）的摘要、前言、表 3 與兩個事例的表格與討論段，另以關鍵字讀論文總摘要；論文其餘章節（插值、臨近預報）未讀",
+      "locator": "第 3.1 節摘要（九個冷季、七種方案、7,702 筆觀測、濕球 0.7 °C、PSS 0.77）；表 3（單一門檻：氣溫 1.3 °C PSS 0.72、露點 0.1 °C 0.74、濕球 0.7 °C 0.77）；事例表（依事例調整後門檻 0.9–1.3 °C）",
+      "summary": "加泰隆尼亞（西班牙東北、地形複雜）九個冷季（10–5 月）7,702 筆品管後的天氣現象觀測，比較七種地面雨雪判別方案：含空氣飽和程度的方案最好，濕球溫度單一門檻 0.7 °C 對『雪／非雪』的 Pierce 技術得分 0.77；只用氣溫的最佳門檻 1.3 °C 得分 0.72。兩個降雪事例中，最適門檻在事例之間、甚至同一事例內都不同，作者建議監測時用一段門檻範圍；公民科學與社群媒體觀測集中在人口區，有用也有限制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "期刊版權屬 Elsevier（All rights reserved），本文經大學典藏的博士論文合法公開；只讀上列段落。濕球與氣溫的差距（0.77 對 0.72）是同一資料集內比較。",
+      "author_cache": {
+        "file": "f84src/casellas_thesis.pdf（轉文字 casellas_thesis.txt）",
+        "sha256_prefix": "58f1186fb106696c",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S007",
+      "url": "https://www.frontiersin.org/articles/10.3389/fenvs.2023.1202895/pdf",
+      "canonical_url": "https://doi.org/10.3389/fenvs.2023.1202895",
+      "title": "Precipitation-type discrimination and changes in related climate indices in the upper Heihe River Basin during 1960–2021",
+      "publisher": "Frontiers in Environmental Science 11:1202895（2023）；Wang、Zhang、Wang、Zeng、Shi、Xiao（湖南師範大學等）",
+      "version": "出版社開放取用 PDF（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "搜尋結果所列 frontiersin.org PDF 連結，curl 下載；pdftotext 轉文字",
+      "reading_scope": "只讀關鍵字（threshold、°C）前後段落與結論段；氣候指數趨勢各節未讀（本題不用）",
+      "locator": "2.3 節與結果段（逐 3.0–5.5 °C 試門檻；11–4 月最佳 4.5 °C、5–10 月 3.6 °C；T3.6_4.5 法最適合）",
+      "summary": "黑河上游（青藏高原東北緣）六站，用日平均氣溫判別雨雪：在 3.0–5.5 °C 間逐一試門檻，11 月至翌年 4 月的最佳門檻是 4.5 °C，5–10 月是 3.6 °C，兩段門檻法在此流域表現最好。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "門檻是『日平均氣溫』，不能和逐時或瞬時氣溫門檻直接比。文中引用 Chen 等 2014（643 站、氣溫法優於濕球法）是前人結果，不算本篇。氣候趨勢部分不採用。",
+      "author_cache": {
+        "file": "f84src/frontiers_heihe.pdf（轉文字 frontiers_heihe.txt）",
+        "sha256_prefix": "a51cd8c4886f0424",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S008",
+      "url": "https://harvest.usask.ca/bitstreams/4c4523ee-f07d-4c1b-8eef-95d723a35a1f/download",
+      "canonical_url": "http://hdl.handle.net/10388/ETD-2013-10-1279",
+      "title": "Precipitation Phase Partitioning with a Psychrometric Energy Balance: Model Development and Application（碩士論文）",
+      "publisher": "薩斯喀徹溫大學水文中心 2013；Phillip Harder（指導 John Pomeroy）",
+      "version": "大學機構典藏論文 PDF",
+      "accessed_on": "2026-11-12",
+      "read_via": "搜尋結果的 HARVEST 紀錄頁（伺服器轉到 items 頁），頁上 bitstream 連結以 curl 下載；pdftotext 轉文字",
+      "reading_scope": "只讀摘要、第 5 章結論與以關鍵字找到的第 3.2 節段落；第 2、4 章未逐段讀",
+      "locator": "摘要；第 5 章（15 分鐘與日尺度過渡區 2.9 °C 對 7.6 °C；心理測溫能量平衡法優於氣溫法）",
+      "summary": "在加拿大洛磯山 Marmot Creek 研究流域多個高度，以 15 分鐘間隔觀測降水型態與氣象多年，用落下水凝物的質量與能量平衡算出『水凝物溫度』判別雨雪，表現明顯優於只用氣溫的方法，且計算時距越短越好。用氣溫看雨雪混在的過渡區，15 分鐘尺度約 2.9 °C 寬，日尺度約 7.6 °C 寬。不同判別法造成的水文差異可達雨量比 20%、雪水當量峰值 160 mm。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "碩士論文，期刊版（Harder & Pomeroy 2013 Hydrol. Process.）未讀；只讀摘要與結論層級的數字。水文影響數字片中不用。 覆核 V87（2026-11-12）：summary 與 locator 改為：用氣溫看的過渡區 15 分鐘約 4.9 °C、日尺度約 10.7 °C；水凝物溫度 T_i 為 2.9 °C 與 7.6 °C。limitations 加：pdftotext 丟失 T_i／T_a 符號，數字主詞需看頁面影像（論文第 34 頁）。",
+      "author_cache": {
+        "file": "f84src/harder2013_thesis.pdf（轉文字 harder2013_thesis.txt）",
+        "sha256_prefix": "be1d2d5969672126",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S009",
+      "url": "https://www.jstage.jst.go.jp/article/jmsj/79/3/79_3_731/_pdf/-char/ja",
+      "canonical_url": "https://doi.org/10.2151/jmsj.79.731",
+      "title": "On the Near-0 °C Frequency Maximum in Surface Air Temperature under Precipitation: A Statistical Evidence for the Melting Effect",
+      "publisher": "Journal of the Meteorological Society of Japan 79(3):731–739（2001）；藤部文昭（氣象研究所）",
+      "version": "J-STAGE 出版社 PDF（掃描影像，免費公開）",
+      "accessed_on": "2026-11-12",
+      "read_via": "搜尋結果的 J-STAGE 文章頁，頁上 PDF 連結以 curl 下載；PDF 是掃描影像、pdftotext 無文字，以 pdftoppm 轉 PNG 後目視閱讀",
+      "reading_scope": "只目視讀第 1 頁（摘要與第 1 節）、第 8 頁（第 6 節後半與第 7 節摘要）與第 9 頁（摘要結尾）；第 2–7 頁的資料、方法與圖未讀",
+      "locator": "摘要；第 7 節 Summary (1)–(5)；第 6 節 Eq. (10) 段（1 mm 降水融化可造成約 292 m 等溫層的估算，作者假設）",
+      "summary": "用 808 個 AMeDAS 自動站 19 年逐時資料：有降水時的地面氣溫頻率在略高於 0 °C（平均 0.3 °C）處有明顯高峰，無降水時沒有高峰，作者認為來自雪粒融化。峰高（相對鄰近溫度區間的頻率超出量）全部降水平均 122%，前一小時降水 1 mm 時 89%、較強降水時 200–300%；無風且強降水（4–6 mm/h 與 ≥7 mm/h）時達數百到一千 %，風速大時明顯變低，顯示亂流混合會破壞等溫層。峰高幾乎與兩小時以前的降水無關，降水結束後幾小時內消退。太平洋側平原、特別是關東內陸峰最高。以簡化假設估計，平均情況相當於幾百公尺厚的 0 °C 等溫層，無風強降水時約 1 km。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "掃描 PDF 沒有逐字文字快取，作者只存 PDF 與 PNG（f84src/jmsj2001_png/）；只讀三頁。等溫層厚度是作者用簡化假設推估。與 F84-S002/S003 同屬氣象研究所，但作者、年代、方法不同；覆核若合併為同群，兩者合計封頂 2.0。 覆核 V87（2026-11-12）：summary 補：作者也以淺層冷空氣滯留與層狀降水解釋關東內陸高峰；limitations 補：單一作者，與松尾、佐粧無共同作者。",
+      "author_cache": {
+        "file": "f84src/jmsj2001_731.pdf（頁面影像 jmsj2001_png/p-1.png、p-8.png、p-9.png）",
+        "sha256_prefix": "f2675459a30119a0",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S010",
+      "url": "https://ojs.zrc-sazu.si/ags/article/download/8573/9531/28568",
+      "canonical_url": "https://doi.org/10.3986/AGS.8573",
+      "title": "Latent cooling of atmosphere as an indicator of lowered snow line: Case study from Planica and Vrata valleys",
+      "publisher": "Acta geographica Slovenica 61(1):7–23（2021）；Danijela Strle、Matej Ogrin（盧布爾雅那大學文學院）",
+      "version": "出版社開放取用 PDF（PDF 前附該期封面與目錄）",
+      "accessed_on": "2026-11-12",
+      "read_via": "搜尋結果的文章頁 https://ojs.zrc-sazu.si/ags/article/view/8573 → 頁上全文頁 /view/8573/9531 → 頁上下載連結，curl 下載；pdftotext 轉文字",
+      "reading_scope": "全文英文部分（摘要、第 1–3 節七個事例、第 4 節前段）；第 4 節後段、結論與斯洛維尼亞文段落未讀",
+      "locator": "第 2 節（谷地測站 725–1390 m、15 分鐘紀錄）；第 3 節事例 3、5、6（降水時 0～0.5 °C，雨停回升 2～3 °C）",
+      "summary": "2015/16、2016/17 兩個冬季，在朱利安阿爾卑斯山 Planica 與 Vrata 兩條谷地不同高度（725–1390 m）裝溫度記錄器，每 15 分鐘記一次，分析七次『雪線下降』事件。兩谷的降溫幾乎同時發生；降水期間谷地氣溫被壓在 0～0.5 °C 之間，降水一停或減弱就回升 1～3 °C；之後若有冷平流才降到 0 °C 以下。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "前言中的 Innsbruck 1956 年六月降雪、等溫層厚 1–3 km 等是引用前人，不算本篇。降水量取自數公里外的國家氣象站，只作粗估。Vrata 記錄器解析度 0.5 °C。 覆核 V87（2026-11-12）：summary 的『降水期間谷地氣溫被壓在 0～0.5 °C』改為『事例 3 降水時 0～0.5 °C；另一事例 Planica −0.5～+0.5 °C』。",
+      "author_cache": {
+        "file": "f84src/ags_planica.pdf（轉文字 ags_planica.txt）",
+        "sha256_prefix": "d0a980b784941363",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S011",
+      "url": "https://elib.dlr.de/50027/1/fulltext.pdf",
+      "canonical_url": "https://doi.org/10.1256/qj.05.158",
+      "title": "Cooling by melting precipitation in Alpine valleys: An idealized numerical modelling study",
+      "publisher": "Q. J. R. Meteorol. Soc. 132:1489–1508（2006）；Unterstrasser、Zängl（慕尼黑大學氣象研究所）",
+      "version": "DLR 機構典藏 elib 的全文 PDF",
+      "accessed_on": "2026-11-12",
+      "read_via": "搜尋結果的 elib.dlr.de/50027 紀錄頁，頁上 fulltext.pdf 連結以 curl 下載；pdftotext 轉文字",
+      "reading_scope": "只讀摘要（Summary）、第 1 節與第 2 節分析計算段（關鍵字輔助）；數值模擬結果各節未逐段讀",
+      "locator": "Summary；第 2 節（體積效應使所需降水量減少，但少於幾何體積因子）",
+      "summary": "理想化模擬：若谷地初始 0 °C 高度遠低於兩側山脊，谷內空氣與外界脫鉤，融雪所需潛熱不斷從谷內空氣取走，直到雪線降到谷底。山體占去的體積使谷地比平原需要較少降水就能降溫，但減少幅度小於幾何體積因子。若上層與外界交換帶入暖平流，超過某一門檻（取決於降水強度與初始 0 °C 高度）就不會明顯降溫；兩種結果之間的過渡帶很窄，作者因此認為實際預報有很大不確定性；參數化亂流的中尺度模式會系統性低估谷地的融化降溫。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "高度理想化二維模式，非觀測；只讀摘要與分析段。",
+      "author_cache": {
+        "file": "f84src/unterstrasser2006.pdf（轉文字 unterstrasser2006.txt）",
+        "sha256_prefix": "092ada6f9c1d408f",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S012",
+      "url": "https://earthweb.ess.washington.edu/roe/GerardWeb/Publications_files/Minder_etal_MountainSnowJAS11.pdf",
+      "canonical_url": "https://doi.org/10.1175/JAS-D-10-05006.1",
+      "title": "Mesoscale Controls on the Mountainside Snow Line",
+      "publisher": "Journal of the Atmospheric Sciences 68:2107–2127（2011）；Minder、Durran、Roe（華盛頓大學）",
+      "version": "作者研究群網站存放的出版版 PDF",
+      "accessed_on": "2026-11-12",
+      "read_via": "搜尋結果所列華盛頓大學 Roe 研究群網頁 PDF，curl 下載；pdftotext 轉文字",
+      "reading_scope": "只讀摘要、第 1 節（術語、前人研究、可能機制）與第 3 節控制模擬及『no Qmelt』實驗段（關鍵字輔助）；其餘敏感度實驗與理論模型各節未逐段讀",
+      "locator": "摘要；第 3 節控制模擬（d0C 142 m、dS 221 m、d 267 m）；no Qmelt 實驗（dS 221→190 m、少 14%；(d)Qmelt 61 m；空氣停留在融化區的時間）",
+      "summary": "半理想化 WRF 模擬氣流越過山脊：迎風坡上的雪線比上游自由大氣的 0 °C 高度低 267 m（控制模擬）。關掉融雪潛熱冷卻後，0 °C 高度的下降少了 43%，但雪線下降只少 14%（221→190 m），作者算出融雪冷卻造成的部分約 61 m，並指出這與前人把融雪冷卻當主因不同；原因之一是空氣通過融化區的時間太短，冷卻有限。絕熱上升冷卻與雪片融化所需距離的空間差異也有重要貢獻；模擬的融化距離很依賴微物理參數化的選擇。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "數值模擬，非觀測；前言中 Marwitz、Kingsmill、White 等觀測數字為引用，不算本篇。摘要中與氣候暖化相關的推論不採用（領域不碰氣候政策）。 覆核 V87（2026-11-12）：summary 補 d、dS 的定義與『空氣在融化區只停留約 10 分鐘』。",
+      "author_cache": {
+        "file": "f84src/minder2011.pdf（轉文字 minder2011.txt）",
+        "sha256_prefix": "3272cf1af0adf829",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S013",
+      "url": "https://www.dpri.kyoto-u.ac.jp/nenpo/no63/ronbunB/a63b0p20.pdf",
+      "canonical_url": "https://www.dpri.kyoto-u.ac.jp/nenpo/no63/ronbunB/a63b0p20.pdf",
+      "title": "XRAINを用いた冬期の0℃高度の推定手法に関する検討",
+      "publisher": "京都大學防災研究所年報 63B（2020）；高見和弥、佐藤亮太（鐵道總合技術研究所）、鈴木賢士（山口大學）、山口弘誠、中北英一",
+      "version": "機構公開 PDF",
+      "accessed_on": "2026-11-12",
+      "read_via": "搜尋結果所列 dpri.kyoto-u.ac.jp PDF，curl 下載；pdftotext 轉文字",
+      "reading_scope": "只讀 Synopsis、第 1 節與第 2 節（約前 2 頁）；第 3 節以後的推估方法與驗證未讀",
+      "locator": "第 1 節與 Fig. 1（新潟 AMeDAS 2015–2019 冬季）；第 2 節（融化層中 ZH、ZDR 大、ρHV 小，形成亮帶）",
+      "summary": "新潟 AMeDAS 2015–2019 年冬季逐時資料：1 小時積雪深增加 2 cm 以上的時刻，99% 地上氣溫在 1 °C 以下；但把 1 °C 以下且有降水的時刻全部挑出，四成以上積雪深沒有增加，作者據此說只用地上氣溫判別雨雪準確度不高。偏波雷達在融化層裡把部分融化的雪片看成又大又扁的水滴，反射因子與反射因子差變大、偏波相關係數變小，仰角掃描時呈圓環狀『亮帶』，可用來推估 0 °C 高度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "積雪深沒增加不等於下雨（作者自己也說有壓密與融化影響）；只讀前兩頁。",
+      "author_cache": {
+        "file": "f84src/dpri_a63b0p20.pdf（轉文字 dpri_a63b0p20.txt）",
+        "sha256_prefix": "1136e85576e49978",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S014",
+      "url": "https://labo.msc.u-paris.fr/~daerr/reprints/Douady-et-al_Song-dunes_PRL2006.pdf",
+      "canonical_url": "https://doi.org/10.1103/PhysRevLett.97.018002",
+      "title": "Song of the Dunes as a Self-Synchronized Instrument",
+      "publisher": "Physical Review Letters 97, 018002（2006）；Douady、Manning、Hersen、Elbelrhiti、Protière、Daerr、Kabbachi（巴黎第七大學 MSC／ESPCI PMMH／摩洛哥 Ibn Zohr 大學）",
+      "version": "出版社排版版 PDF，放在共同作者 A. Daerr 實驗室網站的 reprints 目錄（WebSearch 列出）；同文 arXiv:nlin/0412047v3 也已下載核對為同一篇後刪除快取",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 原樣下載 WebSearch 列出的網址（工具預設標頭），pdftotext 轉文字",
+      "reading_scope": "全文 4 頁（摘要、正文、Table I、Fig. 1–4 圖說、參考文獻）",
+      "locator": "摘要；第 1 頁正文（風不是聲源、同沙丘不同位置與同沙場不同大小沙丘頻率相同、頻率只依粒徑、旋轉刮板實驗）；Table I；Fig. 2 圖說（頻率約為平均剪切率的 10 倍）；Fig. 3、4 圖說（0.47 m/s、0.23 m/s 門檻）；第 3–4 頁（多次使用後粒表層消失、聲音也消失，作者稱 preliminary）",
+      "summary": "作者在摩洛哥、智利、中國、阿曼直接觀察：聲音不是風吹沙丘，而是崩落的沙流中顆粒相對運動造成；同一沙丘不同位置、同一沙場不同大小沙丘量到同一頻率，每個沙場有自己的粒徑與頻率（Table I：160 µm 預測 100 Hz、實測 105±10 Hz；340 µm 實測 63±5 Hz；Sand Mountain 一列取自他人文獻）。實驗室用直徑 1 m、寬 25 cm 的環形槽與馬達帶動的刮板推摩洛哥會唱的沙，得到頻率穩定、範圍連續的聲音，頻率只由平均剪切率決定（約 10 倍），作者據此說沙丘本身不是必要的共鳴箱。刮板速度低於約 0.47 m/s 不發聲；在沙丘滑落面築閘門槽做受控崩落，表面速度低於 0.23 m/s 聲音停止。作者提出顆粒同步運動、像喇叭一樣推動空氣，並以耦合波解釋門檻。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "同步耦合波是作者提出的詮釋，正文自己說要再做實驗直接量；Table I 的 Sand Mountain 一列引自 Lindsay 等 1976，不是本篇量測；110 dB 引自 Hersen 博士論文，不採用；「粒子表層消失後也不再發聲」作者明寫 preliminary observations。補充音檔未聽。與池中 X40-004（Dagois-Bohy 等 2012，SRC-15b0a7a4812f949f）同一研究群，群內合計封頂 2.0。 覆核 V88（2026-11-12）：version 改為：另由 WebSearch 列出的 https://arxiv.org/pdf/nlin/0412047（未指定版本，5 頁）下載比對後刪除；不寫 v3。",
+      "author_cache": {
+        "file": "f85src/douady2006.pdf",
+        "sha256_prefix": "18d7d7b00052ecd1",
+        "text_file": "f85src/douady2006.txt",
+        "text_sha256_prefix": "5b39e866c8ca9848",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S015",
+      "url": "https://www.phys.ens.fr/~foldingslidingstretchinglab/papers/A37_CommentSong.pdf",
+      "canonical_url": "https://doi.org/10.1029/2007GL032509",
+      "title": "Comment on \"Solving the mystery of booming sand dunes\" by Nathalie M. Vriend et al.",
+      "publisher": "Geophysical Research Letters 35, L08306（2008）；Andreotti、Bonneau、Clément（ESPCI PMMH）",
+      "version": "出版社 PDF，放在作者實驗室網站 papers 目錄（WebSearch 列出；檔名 A37_CommentSong 但內容為對 Vriend 等 2007 的評論）。WebSearch 另列 ar5iv 0710.1815 為同文，未抓。",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 原樣下載 WebSearch 列出的網址，pdftotext 轉文字",
+      "reading_scope": "全文 3 頁（§1–3、Fig. 1–2 圖說、結語與參考文獻）；auxiliary material 未讀",
+      "locator": "[2]–[5]（地表沙層只有表面波、60 mm 下振動已大幅減弱）；[6]（自測 50 cm 乾沙共振約 70 Hz、1 m 低於 50 Hz，摩洛哥鳴聲 100 Hz）；[8]（2002 年起 13 趟野外、約 20 次自發與 100 次人為崩落、沙丘高 4–42 m，頻率都在一個全音內）；[9] 與 Fig. 2",
+      "summary": "PMMH 團隊反駁加州理工的共振解釋：作者自測 50 cm 深乾沙的共振約 70 Hz、1 m 深時低於 50 Hz 且幾乎看不出，都比摩洛哥 100 Hz 的鳴聲低；13 趟野外、約 20 次自發和 100 次人為崩落、4 到 42 m 高的新月形沙丘，量到的頻率都在同一個全音內；不同流層厚度的崩落頻率也不變；把 Vriend 等的 Dumont 數據畫成圖，鳴聲頻率和其估的共振頻率沒有相關，而和 √(g/d) 相符。作者寫沙丘中 60 mm 深處的振動已大幅減弱。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "這是評論文；Vriend 等另有回覆（GRL 35, L08307），本輪未讀。60 mm 的數據在 auxiliary Figure S4，只讀到正文一句。不得把本篇 60 mm 與 F85-S004 的 200 mm 當成同一實驗的矛盾數字相減，只能並列為兩組各自的量測。 覆核 V88（2026-11-12）：summary 補：同篇 [8] 指 Vriend 等人造崩落速度不穩，脈衝式推動只得到類似其 70 Hz 點的低頻『吱』；[9] 同時否定 Douady 2006 與 Vriend 2007 的兩種共振說。limitations 補：60 mm 是補充圖 S4、以 Andreotti 2004 的埋入式感測器量，不是本評論的新量測。",
+      "author_cache": {
+        "file": "f85src/A37_CommentSong.pdf",
+        "sha256_prefix": "088e4dc313cb12e2",
+        "text_file": "f85src/A37_CommentSong.txt",
+        "text_sha256_prefix": "869d675230710d21",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S016",
+      "url": "https://www.phys.ens.fr/~foldingslidingstretchinglab/papers/A43_PRLBooming.pdf",
+      "canonical_url": "https://doi.org/10.1103/PhysRevLett.103.238001",
+      "title": "Booming Dune Instability",
+      "publisher": "Physical Review Letters 103, 238001（2009）；Andreotti、Bonneau（ESPCI PMMH）",
+      "version": "出版社 PDF，作者實驗室網站（WebSearch 列出）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 原樣下載，pdftotext 轉文字",
+      "reading_scope": "摘要、引言（三類解釋）、Steady state 第一段、Field measurements 段、Conclusion、Fig. 3 與 Fig. 5 圖說；中間線性穩定分析的數學推導只略讀",
+      "locator": "摘要；第 1 頁引言 (i)–(iii)；第 2 頁 Steady state（崩落層厘米級、剪切帶）；第 4 頁 Field measurements（2009 年 7 月 Sidi-Aghfinir 50 次受控崩落、25 次合成剖面、跨界面振幅掉一個數量級、門檻厚度隨濕度上升）；Fig. 5 圖說（107 Hz 的顫音）",
+      "summary": "作者把三派解釋分成：沙流本身像週期聲源、寬頻聲源被某層共振選頻、沙流像選擇性放大器；本篇以理論說明崩落層與靜止沙丘之間的剪切帶會讓沿表面傳的彈性波指數成長。野外：2009 年 7 月在摩洛哥 Sidi-Aghfinir 做 50 次受控崩落；加速度計訊號都有低頻拍頻（例：中心 107 Hz 帶顫音）；25 次合成的振動剖面在崩落層中間有節點，越過流動與靜止的交界振幅掉一個數量級；崩落要超過某個厚度才會響，這門檻隨濕度升高。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "主體是理論；野外量測用來對照。『門檻隨濕度升高』只一句、未給數字。與 F85-S002 同群，群內合計封頂 2.0。 覆核 V88（2026-11-12）：summary 刪『這門檻隨濕度升高』作為 2009 年野外結果；改寫『原文引 [5,14] 說門檻厚度隨濕度上升』。25 次與 50 次的關係原文未寫。",
+      "author_cache": {
+        "file": "f85src/A43_PRLBooming.pdf",
+        "sha256_prefix": "ffad6b0383ab9ea2",
+        "text_file": "f85src/A43_PRLBooming.txt",
+        "text_sha256_prefix": "a7adc35772ff4f2d",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S017",
+      "url": "https://authors.library.caltech.edu/records/b3tan-cab83/files/1.4931971.pdf",
+      "canonical_url": "https://doi.org/10.1063/1.4931971",
+      "title": "Linear and nonlinear wave propagation in booming sand dunes",
+      "publisher": "Physics of Fluids 27, 103305（2015）；Vriend（劍橋大學 DAMTP）、Hunt、Clayton（加州理工）",
+      "version": "出版社 PDF，CaltechAUTHORS 機構典藏（record 公開、status open）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 列出 resolver.caltech.edu 記錄頁，curl 由伺服器轉到 authors.library.caltech.edu 記錄頁，再循頁上的 files 連結下載（伺服器轉到 S3 簽名網址）；pdftotext 轉文字",
+      "reading_scope": "摘要、§I 引言、§II（A–C）、§VII 討論、§VIII 結論；§III–VI 波速量測只讀關鍵數字所在段（grep m s−1 前後）",
+      "locator": "摘要；§I 第 1 段（70–105 Hz、半高寬 < 10 Hz、夏季乾熱較常見，引他人）；Fig. 1 圖說（Eureka 2007-10-27：前 1–3 s 打嗝 50–90 Hz、15–17 s 鳴聲 80–90 Hz、功率大 20 倍）；§II.A（85±4 Hz、200 mm 深的感測器振幅低約 30%、頻率幾乎相同）；§II.B（手推 0.25 m/s、約 50 mm、76±14 Hz、一停手就停）；§VIII（打嗝約 70 Hz、約 115 m/s 表面波；鳴聲約 85 Hz、約 250 m/s 體波）",
+      "summary": "加州理工團隊在 Eureka 與 Dumont 兩處大沙丘埋地震檢波器：一次人造崩落先出現短促、寬頻的『打嗝』，約 5 秒後轉成接近單音、帶泛音的鳴聲（Eureka 例：80–90 Hz，功率比打嗝大約 20 倍）。手在沙面推出 50 mm 深的剪切只會發出短脈衝（76±14 Hz），一停手就停，不會持續。作者結論：打嗝走約 115 m/s 的非線性表面波，持續鳴聲走約 250 m/s、線性不色散的壓縮波，支持他們先前的『表層乾沙波導』模型，並認為 Andreotti 量到的 40 m/s 是不重要的表面波。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "引言裡『較小的沙丘不能持續鳴響』『夏天才易響』『頻率不依粒徑』是引自本群 2007、2009 年論文或 Nori 等，不當本篇結果；那些原文（Vriend 2007 GRL、Vriend 博士論文）本輪讀不到。CaltechAUTHORS 權利欄：不授予商業重製權。 覆核 V88（2026-11-12）：summary『約 5 秒後轉成接近單音』改為『約 5 秒後訊號明顯變強，第 15–17 秒集中於 80–90 Hz』；locator 補摘要『burps… similar frequency content to sounds generated by small-scale shearing in laboratory-scale experiments』。",
+      "author_cache": {
+        "file": "f85src/vriend2015_pof.pdf",
+        "sha256_prefix": "7333221b8d7849b4",
+        "text_file": "f85src/vriend2015_pof.txt",
+        "text_sha256_prefix": "4a4316c07da33d72",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S018",
+      "url": "https://jcaa.caa-aca.ca/index.php/jcaa/article/download/1101/830/1220",
+      "canonical_url": "https://jcaa.caa-aca.ca/index.php/jcaa/article/download/1101/830/1220",
+      "title": "Musical sand characterization",
+      "publisher": "Canadian Acoustics（加拿大聲學學會期刊，開放取用），Acoustics Week 會議論文摘要（Windsor，1997 年 10 月，依 F85-S006 參考文獻）；Leach、Goldsack、Kilkenny（勞倫森大學）",
+      "version": "期刊開放 PDF（一頁會議摘要）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 原樣下載 WebSearch 列出的網址，pdftotext 轉文字",
+      "reading_scope": "全文（一頁）",
+      "locator": "§2 RESULTS（Physical、Chemical 段）；§3 CONCLUSION",
+      "summary": "勞倫森大學團隊整理：會響的沙通常粒徑與形狀分選好、表面光滑；但光滑、圓、乾淨的玻璃珠不響；把不響的沙混進會響的沙，或沾濕，會很快讓它不響；把野外樣本細分成窄粒徑段，沒有哪一段獨佔響的能力；紅外光譜在會響的沙粒表面測到類似矽膠的含水非晶質二氧化矽層（3400 cm⁻¹ 吸收帶），市售矽膠也能發出類似的拍頻聲。結論：多種因素共同決定，『乾、淨、圓』的沙也不一定響。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "一頁會議摘要，不是完整論文；矽膠層的完整證據在 Goldsack 等 1997 Nature（未讀）。『玻璃珠不響』是對鳴沙而言，與 F85-S009（GSJ）說煮過的玻璃珠能發出『鳴り砂』的吱聲不是同一種條件，片中不得互相否定。 覆核 V88（2026-11-12）：limitations 刪『玻璃珠不響是對鳴沙而言』，改為：本摘要把海灘那一種稱為 singing sand、兩種合稱 musical sand，『玻璃球不 sing』與 F85-S009（煮洗玻璃珠能吱）及 F85-S008 引 Brown 1965 相反，三方都無原始數據，片中不用。",
+      "author_cache": {
+        "file": "f85src/jcaa1101.pdf",
+        "sha256_prefix": "13617c21a2fa75cc",
+        "text_file": "f85src/jcaa1101.txt",
+        "text_sha256_prefix": "dd9881e01d1f9978",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S019",
+      "url": "https://jcaa.caa-aca.ca/index.php/jcaa/article/download/1102/831/1221",
+      "canonical_url": "https://jcaa.caa-aca.ca/index.php/jcaa/article/download/1102/831/1221",
+      "title": "The geography of acoustic (musical) sands",
+      "publisher": "Canadian Acoustics 會議論文摘要；Tapper、Leach、Goldsack（勞倫森大學）",
+      "version": "期刊開放 PDF（一頁會議摘要）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 原樣下載 WebSearch 列出的網址",
+      "reading_scope": "全文（一頁）",
+      "locator": "INTRODUCTION（吱聲 > 500 Hz、鳴聲 < 100 至約 500 Hz；880 年中國記載、日本民俗、馬可波羅）；CONCLUSIONS（各大洲都有；乾濕循環、風）",
+      "summary": "同一勞倫森團隊把文獻與自採的會響沙地點畫成世界圖：各大洲都有，分布在乾燥沙漠與湖、河、海岸；作者推測需要濕季『洗』、乾季配合形成表面矽膠層，再加上風把沙粒吹乾磨亮。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "成因是作者推論；地圖未列數字。與 F85-S005、F85-S007 同校，勞倫森合計封頂 1.0；本篇只作背景，不另算條數。",
+      "author_cache": {
+        "file": "f85src/jcaa1102.pdf",
+        "sha256_prefix": "6cd7a5fc258738cd",
+        "text_file": "f85src/jcaa1102.txt",
+        "text_sha256_prefix": "36ff688f4d66862a",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S020",
+      "url": "https://www.jstage.jst.go.jp/article/ast/43/6/43_E2206/_pdf/-char/en",
+      "canonical_url": "https://doi.org/10.1250/ast.43.297",
+      "title": "Sound mechanics from squeaky and booming dune sands",
+      "publisher": "Acoustical Science and Technology 43(6), 297–（2022），日本音響學會；A. J. Patitsas（勞倫森大學物理系）",
+      "version": "J-STAGE 開放 PDF（出版社版）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 原樣下載 WebSearch 列出的 J-STAGE PDF 網址，pdftotext",
+      "reading_scope": "摘要、§1 引言、§2 開頭兩段；後續公式推導與實驗圖只略讀",
+      "locator": "摘要；§1 第 1–4 段（吱聲來自杵下方薄剪切帶、主頻約 1,000 Hz；鳴沙約 100 Hz；把球丟到鳴沙上不會發出樂音；批評 Andreotti、Douady 與 Vriend 三種模型）",
+      "summary": "勞倫森的另一位物理學者以杵或落球敲打會吱吱叫的海灘沙：聲源在杵正下方一條薄剪切帶，顆粒層以緩慢的黏滑方式互相滑過，主頻約 1,000 Hz；同樣的球丟到鳴沙上卻沒有樂音。作者另提出鳴沙是崩落層底部的『碰撞剪切帶』同步碰撞，主頻約 100 Hz，並認為前述三派模型各有說不通處。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "以模型為主，自己的落球實驗只在 §1–2 提到；作者自稱早年對鳴沙的結論『有疑問』。與 F85-S005 同校，勞倫森合計封頂 1.0。",
+      "author_cache": {
+        "file": "f85src/patitsas_ast43.pdf",
+        "sha256_prefix": "168fecf81b711192",
+        "text_file": "f85src/patitsas_ast43.txt",
+        "text_sha256_prefix": "6d79ab7f1bc1d38a",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S021",
+      "url": "https://public.websites.umich.edu/~nori/boom/Review-Booming-Sand.pdf",
+      "canonical_url": "https://public.websites.umich.edu/~nori/boom/Review-Booming-Sand.pdf",
+      "title": "Sound-producing sand avalanches",
+      "publisher": "Contemporary Physics 38(5), 329–342（1997）；Sholtz、Bretz、Nori（密西根大學）",
+      "version": "作者頁上的刊本 PDF（伺服器由 /~nori/ 轉址）；未取得 DOI 連結，canonical_url 記原網址",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 原樣下載 WebSearch 列出的網址（伺服器 301 到 public.websites.umich.edu/nori/boom/Review-Booming-Sand.pdf）",
+      "reading_scope": "第 329–330 頁（摘要、§1）全文；其餘 12 頁只讀關鍵字（Hz、washed、Sand Mountain、humid）前後",
+      "locator": "p.329 摘要與 §1（吱聲 < 1/4 s、500–2500 Hz；鳴聲 50–300 Hz；至少 31 處鳴沙丘；鳴沙最好下雨後幾週；吱聲沙洗過再乾最易響）；p.338 前後（1994 年夏 Sand Mountain 自測）",
+      "summary": "綜述把會發聲的沙分兩種：海灘、湖岸、河床常見的『吱聲沙』，被踩或壓時發出不到四分之一秒、500–2500 Hz 的短吱聲；少見、多在沙漠深處大沙丘的『鳴沙』，崩落時發出 50–300 Hz 的低沉長音，可傳到 10 km 外。兩者對水的反應相反：鳴沙要非常乾，最好是下雨後幾週；吱聲沙則在剛被水洗過、再晾乾時最容易響。作者強調兩者都還沒有令人滿意的解釋（1997 年）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "綜述，多數數字引自他人；只算『兩種會響的沙、對水反應相反』這個框架，不算個別數字。",
+      "author_cache": {
+        "file": "f85src/Review-Booming-Sand.pdf",
+        "sha256_prefix": "abb4d6af8df07813",
+        "text_file": "f85src/Review-Booming-Sand.txt",
+        "text_sha256_prefix": "d58b25b72c7bf31c",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S022",
+      "url": "https://www.gsj.jp/data/chishitsunews/08_03_13.pdf",
+      "canonical_url": "https://www.gsj.jp/data/chishitsunews/08_03_13.pdf",
+      "title": "鳴り砂実験を授業に生かす試み",
+      "publisher": "地質ニュース 643 号，27–29 頁（2008 年 3 月）；兼子尚知、宮地良典（產綜研 地質調查綜合中心）",
+      "version": "官方機構 PDF",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 原樣下載 WebSearch 列出的網址，pdftotext",
+      "reading_scope": "全文 3 頁",
+      "locator": "§2（鳴り砂的兩個特徵：石英比例高、被乾淨海水與波浪洗磨；稍髒就不響、可作環境指標；機構未完全解明）；§3–4（水中鳴り砂『かえるすな』）；§5（0.1–0.2 mm 玻璃珠以蒸餾水煮洗、乾燥後可當替代品）",
+      "summary": "日本地質調查所的推廣文：會吱吱叫的『鳴り砂』兩個特徵是石英比例高、以及被乾淨海水和適度波浪洗磨得非常乾淨；只要稍微變髒就不響，所以可當海岸乾淨的指標，日本一些鳴沙海灘因污染與工程在變差。也有在水裡也會響的特殊鳴り砂（山形縣飯豐町以『かえるすな』販售）。直徑 0.1–0.2 mm 的玻璃珠用蒸餾水煮洗、乾燥後也能像鳴り砂一樣響。作者寫發聲機構仍有不明之處。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "推廣與教學文章，不是研究論文；『表面乾淨使摩擦係數變大』是作者的說明，不是本篇實測。兼子曾與山口大學宮田雄一郎（F85-S011）合著，日本網絡合計封頂 1.0。 覆核 V88（2026-11-12）：summary『可當海岸乾淨的指標』改為『有可能當作環境指標』（原文：可能性をもっています／かもしれません）。",
+      "author_cache": {
+        "file": "f85src/gsj_08_03_13.pdf",
+        "sha256_prefix": "f951d1e86a4a87ab",
+        "text_file": "f85src/gsj_08_03_13.txt",
+        "text_sha256_prefix": "f895a797cf81dd99",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S023",
+      "url": "https://www.gsj.jp/data/gcn/gsj_cn_vol15.no5_p154-155.pdf",
+      "canonical_url": "https://www.gsj.jp/data/gcn/gsj_cn_vol15.no5_p154-155.pdf",
+      "title": "地質情報展 2025 くまもと 体験・実験コーナー「鳴り砂」",
+      "publisher": "GSJ 地質ニュース Vol.15 No.5，154–155 頁（2026 年 5 月）；兼子尚知、中村由美（產綜研）",
+      "version": "官方機構 PDF",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 原樣下載 WebSearch 列出的網址",
+      "reading_scope": "全文 2 頁",
+      "locator": "§2（特徵與環境指標，與 F85-S009 同句；島根縣大田市琴ヶ浜的沙；攤位第 18 回）",
+      "summary": "同一作者 2025 年活動報告：重述鳴り砂兩特徵，並寫鳴り砂海灘是自然環境健全的證明；用琴ヶ浜的沙放在酒杯裡以棒子搗擊讓民眾聽。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "活動報告，只用來確認 2008 年說法到 2026 年仍是同一機構的說明；不另算條數。",
+      "author_cache": {
+        "file": "f85src/gsj_cn15_5.pdf",
+        "sha256_prefix": "33a3f5ab4ddd1461",
+        "text_file": "f85src/gsj_cn15_5.txt",
+        "text_sha256_prefix": "81530cdfb30e714d",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S024",
+      "url": "https://kaken.nii.ac.jp/ja/grant/KAKENHI-PROJECT-16540418",
+      "canonical_url": "https://kaken.nii.ac.jp/ja/grant/KAKENHI-PROJECT-16540418",
+      "title": "未固結堆積物の変形における粒子間摩擦の効果（KAKENHI 16540418）",
+      "publisher": "日本學術振興會科研費資料庫 KAKEN（NII）；研究代表 宮田雄一郎（山口大學理學部），2004–2005",
+      "version": "官方研究計畫頁（研究概要）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 原樣下載 WebSearch 列出的網址，python 去標籤讀文字",
+      "reading_scope": "整頁研究概要；成果報告書 PDF 未讀",
+      "locator": "研究概要第 1–4 點",
+      "summary": "山口大學把普通沙長時間人工洗磨：洗得越久，先變成乾燥時會響的鳴り砂，再變成只在水中會響的『水中鳴り砂』。乾燥鳴り砂在水中不響，水中鳴り砂乾燥時不響。作者據此認為表面越平滑乾淨，乾燥時顆粒間摩擦越高；再更乾淨時，在水中的摩擦反而最低。作者自己寫驗證並不充分。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只是計畫摘要，沒有數字、洗磨時數或樣本描述；機制是作者詮釋且自稱驗證不足。與 F85-S009 屬同一日本合作網絡。 覆核 V88（2026-11-12）：author_cache 註明：KAKEN 頁為動態 HTML，2026-11-12 覆核重抓 sha256 前綴 4f834e909a12e673 與作者 75f8968fdc379ed6 不同，研究概要文字相同；summary 『把普通沙』改為『把人工洗磨的沙試料』。",
+      "author_cache": {
+        "file": "f85src/kaken16540418.html",
+        "sha256_prefix": "75f8968fdc379ed6",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S025",
+      "url": "https://nh.kanagawa-museum.jp/assets/icp/contents/1598785738987/simple/tobira119_1_ishihama.pdf",
+      "canonical_url": "https://nh.kanagawa-museum.jp/assets/icp/contents/1598785738987/simple/tobira119_1_ishihama.pdf",
+      "title": "きれいになって鳴きました－サハラ砂漠の鳴き砂？－",
+      "publisher": "自然科学のとびら 31(2)，通卷 119 號（2025 年 6 月），神奈川縣立生命之星・地球博物館；石浜佐栄子（學藝員）",
+      "version": "博物館館刊 PDF",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 原樣下載 WebSearch 列出的網址，pdftotext（直排文字，順序需對照 PDF 版面）",
+      "reading_scope": "全文一頁",
+      "locator": "全文：洗淨方法（密閉容器加水、每天換水、振盪 194 小時）、結果（玻璃容器中以棒子戳發出吱聲）、顯微觀察（鐵鏽紅褐色變淡、表面有光澤）",
+      "summary": "博物館為籌備『すな』特展，把館藏、本來不是鳴き砂的撒哈拉沙漠沙放進密閉容器加水，每天換水、用振盪機搖 194 小時；洗後放入玻璃容器以棒子戳，發出了吱聲。顯微鏡下原本附著的鐵鏽紅褐色變淡、沙粒磨得有光澤。文中也寫，表面沾上一點微粒就不響，所以過去三陸與日本海側很多的鳴き砂海灘現在大幅減少。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一次館內試驗、無對照、無聲譜數據；是學藝員的館刊短文，不是同儕審查研究；只能說『洗過之後會吱』，不能說撒哈拉沙丘會因此鳴響。 覆核 V88（2026-11-12）：summary 刪『本來不是鳴き砂』，改為『館方聽說非鳴沙的石英粒洗得夠乾淨也可能會叫，於是試洗館藏撒哈拉沙』；原文未記洗前測試。",
+      "author_cache": {
+        "file": "f85src/kanagawa_tobira119.pdf",
+        "sha256_prefix": "f1607392eaf889ec",
+        "text_file": "f85src/kanagawa_tobira119.txt",
+        "text_sha256_prefix": "58f1d6c96abed500",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S026",
+      "url": "https://arxiv.org/pdf/1305.2241",
+      "canonical_url": "https://arxiv.org/abs/1305.2241",
+      "title": "Mechanism of acoustic emissions from booming sand dunes",
+      "publisher": "arXiv:1305.2241v1（2013）；Zhen-Ting Wang（中國科學院寒區旱區環境與工程研究所）",
+      "version": "arXiv 預印本 v1（未見期刊版）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 原樣下載 WebSearch 列出的網址",
+      "reading_scope": "全文 3 頁",
+      "locator": "第 1 頁引言（各派解釋）；第 2 頁 Fig. 2–3 與結語（顆粒鏈長 30–100 顆、約 1–3 cm；作者自承實驗證據不足）",
+      "summary": "中國科學院的作者用有限元把靜止沙層裡一條條受力的『顆粒鏈』當懸臂樑：鏈長 30 到 100 顆粒徑時的基頻剛好涵蓋觀測到的鳴沙頻率，對 300 µm 的沙約 1–3 cm，因此提出聲音來自崩落層下方幾公分厚固態層裡顆粒鏈的共振。作者自己寫實驗證據不足。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "未經同儕審查的預印本、純數值模型；只當『還有第四種解釋』的一句，算 0.25。",
+      "author_cache": {
+        "file": "f85src/arxiv1305.2241.pdf",
+        "sha256_prefix": "6b675c6ccaed1529",
+        "text_file": "f85src/arxiv1305.2241.txt",
+        "text_sha256_prefix": "89eaf18b495a0277",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S027",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4928945/fullTextXML",
+      "canonical_url": "https://doi.org/10.1126/sciadv.1600377",
+      "title": "The new world atlas of artificial night sky brightness",
+      "publisher": "Sci Adv 2:e1600377（2016）；Falchi、Cinzano（ISTIL，義大利 Thiene）、Duriscoe、Kyba、Elvidge、Baugh、Portnov、Rybnikova、Furgoni",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文，CC BY-NC）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、結果、討論、結論）；表 2 國家逐列數字未逐列讀",
+      "locator": "摘要；Results〈Upward function and maps〉段末（22.0 mag/arcsec² 自然背景、氣輝變化）；色階說明（橙色＝夏季銀河被遮、紅色＝與航海曙暮光結束時一樣亮）；人口統計段（83%、Singapore、South Korea 66%）；地理鄰近段（Beijing、Hong Kong、Taiwan 周邊）；Discussion（陰天柏林 10 倍為引用；4000K LED 2.5 倍；VIIRS 對 500 nm 以下不敏感）",
+      "summary": "以 VIIRS 衛星夜光資料加光傳播模型、用逾 35,000 筆地面量測校正，算出全球人工天空亮度地圖：全球約 83%、美歐逾 99% 人口住在光污染天空下；逾三分之一人類看不到銀河（歐洲 60%、北美近 80%）；新加坡全體人口住在眼睛無法完全暗適應的亮度下，南韓 66%；北京、香港周邊與臺灣也在看不到銀河的大片區域之列；紅色級的天空跟原始夜空在航海曙暮光結束時一樣亮，作者說那裡的人『從沒經歷真正的夜』。討論段：假設光通量不變，4000K 白光 LED 對暗視覺波段的污染約為高壓鈉燈 2.5 倍；VIIRS 對 500 nm 以下不敏感，會『錯誤地顯示』許多城市光污染減少，而肉眼看到的天空其實變亮。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "模型地圖，校準於衛星過境約凌晨 1 點、晴天；作者明說傍晚更亮、陰天會更亮（陰天 10 倍出自 Kyba 2011，不算本篇結果）。LED 2.5 倍與『將錯誤顯示減少』是預測（forecast map），不是量到的趨勢。Kyba 為共同作者，與 F93-S004～S006 研究群有交集，研究群封頂另計（見 research_groups）。臺灣只出現在地理段一句，沒有臺灣專屬數字。 覆核 V96（2026-11-12）：limitations 的研究群改為併入 Kyba／Hölker 子群（2.0），並加註 Falchi 也是 S005 共同作者；locator 加註 4000K LED 2.5 倍附參考文獻 16–18，是引述。",
+      "author_cache": {
+        "file": "f93src/PMC4928945.txt（原始 PMC4928945.xml）",
+        "sha256_prefix": "433532ac7fcfbd1c",
+        "xml_sha256_prefix": "095df95931dc047d",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S028",
+      "url": "https://arxiv.org/pdf/1106.3842v1",
+      "canonical_url": "https://doi.org/10.1007/s10661-011-2136-1",
+      "title": "Night-sky brightness monitoring in Hong Kong – a city-wide light pollution assessment",
+      "publisher": "Environ Monit Assess 184:2537–2557（2012）；Pun、So（香港大學物理系）",
+      "version": "arXiv 作者存放稿 v1（2011-06-20；期刊版未讀）",
+      "accessed_on": "2026-11-12",
+      "read_via": "arXiv API（export.arxiv.org/api/query，文件記載 API；http 由伺服器 301 轉 https）取得條目，以條目所列 pdf 連結 curl 下載，pdftotext -layout 轉文字",
+      "reading_scope": "摘要、第 1 節、第 3 節結果中都市／鄉間比較與 9:30pm／11:30pm 比較段（以關鍵字定位後讀整段）；第 4–5 節未逐段讀",
+      "locator": "摘要；第 3 節（15.0 vs 20.1 mag/arcsec²；13.2 mag/arcsec² 逾 500 倍；IAU 21.6 建議值比較；9:30pm 比 11:30pm 亮）",
+      "summary": "2008 年 3 月起 15 個月，用手持 SQM 在香港 18 區 199 個地點量 1,957 組夜空亮度：都市夜空平均約 15.0 mag/arcsec²，比最暗鄉間（20.1）亮約 100 倍；最糟的都市地點 13.2 mag/arcsec²，比香港最暗處亮逾 500 倍；晚上 9:30 普遍比 11:30 亮，作者歸因於部分公共與商業照明較晚關掉；有限抽樣下，夜空亮度與空氣污染物濃度找不到確定關係。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "手持單點量測、時段固定兩個；讀的是 arXiv 作者稿，不是期刊排版版。『100 倍』『500 倍』是作者自己的換算，照原文用。",
+      "author_cache": {
+        "file": "f93src/arXiv1106.3842v1.txt（原始 arXiv1106.3842v1.pdf）",
+        "sha256_prefix": "f3fc0c412aeeae8b",
+        "pdf_sha256_prefix": "3dd8f3755534d918",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S029",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7358754/fullTextXML",
+      "canonical_url": "https://doi.org/10.1016/j.jqsrt.2020.107219",
+      "title": "Night sky brightness monitoring network in Wuxi, China",
+      "publisher": "J Quant Spectrosc Radiat Transf 258:107219（2021）；Cui、Shen、Huang、Shen（江蘇天一中學）、So、Pun（香港大學）",
+      "version": "Elsevier COVID-19 資源中心授權存入 PMC 的全文",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "全文（摘要至建議段）",
+      "locator": "Abstract；〈NSB at Yixing No. 1 Station〉（春節夜 16.8、新月夜 18.6、滿月夜 16.4 mag/arcsec²）；〈NSB among WBMN stations〉（晴夜比陰夜暗 0.5–1.2 mag/arcsec²）",
+      "summary": "無錫高中生主導的 SQM 監測網（2019 起兩站）：同一站新月夜平均 18.6、春節夜 16.8、滿月夜 16.4 mag/arcsec²，作者推測春節夜變亮與煙火有關，2020 年禁放煙火後春節午夜後較暗；晚上 9–10 點商業、娛樂與景觀照明陸續關閉後天空明顯變暗；兩站晴夜比陰夜暗約 0.5–1.2 mag/arcsec²，作者指出這比柏林的差距小。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有兩站、幾個夜晚的例子；春節夜與滿月夜為全陰、新月夜為部分雲，三者天氣不同，不可直接比成『煙火≒滿月』。煙火粉塵與光污染的關係作者自己說尚無法下結論。與 F93-S002 同屬香港大學 Pun 研究群。 覆核 V96（2026-11-12）：summary 補上 2020 春節『午夜前較亮（作者歸因城市發展）』。",
+      "author_cache": {
+        "file": "f93src/PMC7358754.txt（原始 PMC7358754.xml）",
+        "sha256_prefix": "68be723b0cd67c67",
+        "xml_sha256_prefix": "e7d9f3ab8c5e0f1f",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S030",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3047560/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0017307",
+      "title": "Cloud coverage acts as an amplifier for ecological light pollution in urban ecosystems",
+      "publisher": "PLoS ONE 6:e17307（2011）；Kyba、Ruhtz、Fischer（柏林自由大學）、Hölker（IGB 柏林）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文，CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論）",
+      "locator": "Abstract；Results 表 2（各雲量中位數與放大倍數）；Discussion（陰天 16.5 mag/arcsec²；4.1 倍於鄉間高月；32 km 外 2.8 倍；香港碩士論文未見雲效應的討論）",
+      "summary": "2010 年 4–9 月在柏林市區（距市中心約 10 km）與鄉間（32 km）用 SQM 量無月夜空：雲量由 0 到 8 成，市區夜空變亮 10.1 倍、32 km 外的鄉間也變亮 2.8 倍；晴天時市區已比鄉間亮 6.1 倍；不論天氣，柏林夜空幾乎總是跟夏夜高掛的月亮一樣亮，陰天市區比鄉間晴天高月時還亮 4.1 倍。作者也寫：在原始環境雲是星空中的暗影，在城市雲是暗天上的亮塊；同類的香港研究（碩士論文）沒看到雲效應，作者推測與香港能見度短、量測點離城遠有關。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "一個城市、一個夏季；SQM 量的是天頂一塊天空的亮度（不是照度）。『雲在原始環境是暗的』在本篇是定性描述配照片，量化的反例在 F93-S005、F93-S007。",
+      "author_cache": {
+        "file": "f93src/PMC3047560.txt（原始 PMC3047560.xml）",
+        "sha256_prefix": "39665be1b198d0ef",
+        "xml_sha256_prefix": "668c07d0b19f2cb1",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S031",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5389131/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/srep08409",
+      "title": "Worldwide variations in artificial skyglow",
+      "publisher": "Sci Rep 5:8409（2015）；Kyba 等多國共同作者（IGB／柏林自由大學主導的國際彙整）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文）；另讀 2015 年更正 PMC4525780（只改一位作者所屬機構）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、結果、討論、方法）＋更正啟事全文",
+      "locator": "Abstract；Results（23.24–13.26 magSQM/arcsec²、0.22–2200 NSU；陰天中位數比晴天亮的段落；Plymouth 17.6、Berlin 16.2）；Discussion 結語（月亮週期被遮蔽、雲照亮而非變暗）",
+      "summary": "彙整 44 個站的 SQM 連續資料：夜空亮度跨近四個數量級（最暗 Kitt Peak 23.24、最亮荷蘭 Schipluiden 13.26 magSQM/arcsec²），作者估人工光出現前天頂大多在 20–24 mag/arcsec² 之間；陰天相對晴天從『暗三分之一』到『亮近 18 倍』都有，最暗的站陰天反而更暗，最大放大在 Plymouth（17.6）與 Berlin（16.2）市中心；陰天有月時，原始夜空的站被月光照亮逾 10 倍，市區站在陰天已看不出月相週期。作者結語：月亮週期被遮蔽、雲讓環境變亮而非變暗；只有約三分之一的站常有不到自然星空兩倍亮的時段。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "站點不是隨機抽樣；與 F93-S004 同研究群（Kyba／Hölker），群內合計封頂 2.0。更正啟事只改 Claudia Hesse 的所屬機構，不影響數字。 覆核 V96（2026-11-12）：limitations 加註 43 位共同作者含 Falchi（ISTIL）、Posch、Puschnig（維也納）、Schwope（AIP）、Bennie、Gaston（艾希特）、Spoelstra、den Outer；summary 的『原始夜空的站被月光照亮逾 10 倍』改為只指 Schiermonnikoog 一站。",
+      "author_cache": {
+        "file": "f93src/PMC5389131.txt（原始 PMC5389131.xml）；更正 PMC4525780.txt",
+        "sha256_prefix": "57bc261f8b80d287",
+        "xml_sha256_prefix": "3121c0dc854efc59",
+        "correction_txt_sha256_prefix": "b638b418aa740ec7",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S032",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5532222/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-017-06998-z",
+      "title": "Imaging and mapping the impact of clouds on skyglow with all-sky photometry",
+      "publisher": "Sci Rep（2017，DOI 10.1038/s41598-017-06998-z）；Jechow、Kolláth、Ribas、Spoelstra、Hölker、Kyba",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文，CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "摘要、前言、結果（表 1 與圖 1–2 說明）全文；Discussion 與 Methods 只讀前段",
+      "locator": "Abstract；Introduction 末段；Results 表 1（Balaguer 到 Montsec 9 站晴夜／多雲夜天頂亮度）",
+      "summary": "西班牙 Balaguer 鎮到 Montsec 天文公園 27 km 的兩次相機全天量測：晴夜天頂亮度從 1 km 處 1.16 降到公園 0.20–0.22 mcd/m²；部分雲的夜晚各站最多亮到 6 倍，公園處 0.49 mcd/m²；作者寫有雲時，晴天接近自然亮度的地區會跟晴天的城郊一樣亮——雲把城市的光帶進偏遠區。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只兩個夜晚；部分雲（不是全陰）；同研究群（Kyba／Hölker），群內封頂。",
+      "author_cache": {
+        "file": "f93src/PMC5532222.txt（原始 PMC5532222.xml）",
+        "sha256_prefix": "99e62323b2591dae",
+        "xml_sha256_prefix": "5a94e93d3bf5e61d",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S033",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5098997/fullTextXML",
+      "canonical_url": "https://doi.org/10.1098/rsos.160541",
+      "title": "Anthropogenic disruption of the night sky darkness in urban and rural areas",
+      "publisher": "R Soc Open Sci 3:160541（2016）；Bará（聖地牙哥－德孔波斯特拉大學，加利西亞）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文，CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "摘要、前言、結果（densitogram、雲放大、m1/3、月光調變因子 γ）、討論、結論；方法的單位換算段略讀",
+      "locator": "Abstract；§3.2（雲放大因子 10–16、聖地牙哥約 25、都市陰天可比自然晴夜亮逾 300 倍；暗區雲讓天頂暗於自然值）；§3.4（γ：都市 0.2–0.3×10⁻³、暗鄉間 1.5–2.4×10⁻³）；Conclusion",
+      "summary": "加利西亞氣象局 14 個測站的 2015 年全年 SQM 資料：都市與城郊站的亮度直方圖呈雙峰，晴夜與陰夜相差 2.5–3.5 mag/arcsec²，雲放大因子約 10（Guísamo）到 16（Vigo），聖地牙哥市中心約 25；作者據 Vigo、聖地牙哥晴夜已比自然亮 21、13 倍，推算都市陰夜可能比自然晴夜亮 300 倍以上。暗的鄉間站相反，雲擋住天體光，讓天頂暗於自然值。越靠近市中心，夜空亮度隨月相的起伏越弱（γ 由暗鄉間 1.5–2.4×10⁻³ 降到都市 0.2–0.3×10⁻³）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "一年資料、一個地區；『300 倍以上』是作者在本文中用兩個倍數相乘推出的估計，照原文用『可能』。",
+      "author_cache": {
+        "file": "f93src/PMC5098997.txt（原始 PMC5098997.xml）",
+        "sha256_prefix": "7e99271cc2e0275b",
+        "xml_sha256_prefix": "362ff11fdb39e502",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S034",
+      "url": "https://arxiv.org/pdf/2212.09103v3",
+      "canonical_url": "https://arxiv.org/abs/2212.09103v3",
+      "title": "Skyglow inside your eyes: intraocular scattering and artificial brightness of the night sky",
+      "publisher": "Int J Sustain Light（2023）1–9；Bará（A Coruña 天文協會）、Bao-Varela（聖地牙哥－德孔波斯特拉大學）",
+      "version": "arXiv v3（作者存放，頁首標期刊版頁碼）",
+      "accessed_on": "2026-11-12",
+      "read_via": "arXiv API（export.arxiv.org/api/query，文件記載 API；http 由伺服器 301 轉 https）取得條目，以條目所列 pdf 連結 curl 下載，pdftotext -layout 轉文字",
+      "reading_scope": "全文第 1–4 節（摘要、引言、眩光方程、模型與結果、討論前半）；第 5 節結論略讀",
+      "locator": "Abstract；§3.2 Results（約 17 m 內眼內散射主導、4 m 內空氣柱散射仍比眼內項暗約 4 mag）；§4 Discussion 第一段（遮住燈光 4 m 處約 +5、15 m 處約 +1 magV/arcsec²；極限星等由 −0.69 到 +3.97）",
+      "summary": "用標準的眼內散射（眩光）公式，算一個 40 歲觀察者站在 8 m 高路燈旁仰望天頂：路燈直射進眼睛的光在眼球裡散開，等效成『加在天上的亮度』；在這個例子裡，離路燈約 17 m 內，眼內散射比整座城市的天空輝光還亮；用手擋住燈，4 m 處天空可暗約 5 mag/arcsec²、15 m 處約 1 mag/arcsec²。作者說這給『用手遮住路燈就看到更多星』的日常經驗一個數字支撐，但最後仍受城市天空輝光限制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "模型計算、一個『特定但不至於不實際』的例子，不是實測；極限星等換算引自其文獻 [32]。與 F93-S007 同作者（Bará），同群封頂；不涉及眼睛健康。",
+      "author_cache": {
+        "file": "f93src/arXiv2212.09103v3.txt（原始 arXiv2212.09103v3.pdf）",
+        "sha256_prefix": "7224ff5335db46c0",
+        "pdf_sha256_prefix": "25459ce6f499495d",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S035",
+      "url": "https://arxiv.org/pdf/1803.00299v1",
+      "canonical_url": "https://arxiv.org/abs/1803.00299v1",
+      "title": "Night sky brightness above Zagreb 2012.–2017.",
+      "publisher": "Andreić（札格瑞布大學礦業地質石油工程學院）；arXiv 預印本（期刊版本未查）",
+      "version": "arXiv v1 預印本",
+      "accessed_on": "2026-11-12",
+      "read_via": "arXiv API（export.arxiv.org/api/query，文件記載 API；http 由伺服器 301 轉 https）取得條目，以條目所列 pdf 連結 curl 下載，pdftotext -layout 轉文字",
+      "reading_scope": "摘要、第 1 節、第 3 節討論後段與第 4 節結論（以關鍵字定位後讀整段）",
+      "locator": "Abstract（兩峰約 15.0 與 18.2 mag/arcsec²、相差約 3 mag；2012–2017 平均無顯著變化）；第 3 節與維也納、香港比較",
+      "summary": "札格瑞布市中心附近一站 2012–2017 年 SQM 資料：亮度集中在兩個峰，約 15.0（陰天）與 18.2 mag/arcsec²（晴天），相差約 3 mag；六年間平均夜空亮度除了逐年氣象差異外沒有顯著改變；作者與維也納、香港比較，認為札格瑞布光污染大幾倍。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單站、預印本；『六年無顯著變化』未說明是否校正儀器老化（對照 F93-S014、F93-S015 的老化問題），片中只能當『未校正的原始紀錄』。 覆核 V96（2026-11-12）：limitations 刪『未說明是否校正儀器老化』的暗示，改寫原作者自己的限制：市中心早已照亮、郊區可能不同、單站無法推論全城。",
+      "author_cache": {
+        "file": "f93src/arXiv1803.00299v1.txt（原始 arXiv1803.00299v1.pdf）",
+        "sha256_prefix": "775f95d92634c1cf",
+        "pdf_sha256_prefix": "90b0bf255e73f2ce",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S036",
+      "url": "https://arxiv.org/pdf/1912.05673v1",
+      "canonical_url": "https://doi.org/10.1093/mnras/stz3514",
+      "title": "Circalunar variations of the night sky brightness – an FFT perspective on the impact of light pollution",
+      "publisher": "MNRAS（2020，DOI 10.1093/mnras/stz3514）；Puschnig（波昂大學）、Wallner（維也納大學／斯洛伐克科學院）、Posch（維也納大學）",
+      "version": "arXiv v1（作者存放，標『Accepted for publication in MNRAS』）",
+      "accessed_on": "2026-11-12",
+      "read_via": "arXiv API（export.arxiv.org/api/query，文件記載 API；http 由伺服器 301 轉 https）取得條目，以條目所列 pdf 連結 curl 下載，pdftotext -layout 轉文字",
+      "reading_scope": "摘要、§1.1、§5.2–5.3（以章節讀整節）；§3 月光模型讀表 2 前後段；其餘略讀",
+      "locator": "Abstract（16.5 magSQM/arcsec² 時月相節律幾乎消失；林茲 1/9、小鎮 1/3；只有兩個國家公園站保有自然振幅）；§5.2（振幅由 1.55 降到 0.33 mag）；§5.3（式 3、月相對比 30%–300%）",
+      "summary": "奧地利 23 個 SQM 站兩年資料做傅立葉分析：所有站都還測得到 29.5 天的月相節律，但越亮的地方振幅越小（從最暗站 1.55 降到最亮站 0.33 magSQM/arcsec²）；外推到平均天頂亮度 16.5 magSQM/arcsec² 時月相節律實際上消失；與無人工光的地點相比，州首府林茲（約 20 萬人）的月相對比只剩 1/9，不到一萬人的小鎮剩 1/3；只有兩個國家公園站保有自然的月相振幅。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "中緯度（約 48°）一國資料；『16.5 時消失』是線性外推；SQM 寬波段。與 F93-S012 同研究群（Puschnig／Posch／Wallner），群內封頂 2.0。 覆核 V96（2026-11-12）：研究群改列入 Kyba 2015 合著網（Puschnig、Posch 為 S005 共同作者）。",
+      "author_cache": {
+        "file": "f93src/arXiv1912.05673v1.txt（原始 arXiv1912.05673v1.pdf）",
+        "sha256_prefix": "137cf0ee511b67c1",
+        "pdf_sha256_prefix": "ef57ba3b91f7b2a4",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S037",
+      "url": "https://arxiv.org/pdf/2210.09177v1",
+      "canonical_url": "https://doi.org/10.1093/mnras/stac3003",
+      "title": "Long-term trends of light pollution assessed from SQM measurements and an empirical atmospheric model",
+      "publisher": "MNRAS（2022，DOI 10.1093/mnras/stac3003）；Puschnig（波昂大學）、Wallner、Schwope（AIP 波茨坦）、Näslund（斯德哥爾摩大學）",
+      "version": "arXiv v1（作者存放，標 Accepted 2022 October 15）",
+      "accessed_on": "2026-11-12",
+      "read_via": "arXiv API（export.arxiv.org/api/query，文件記載 API；http 由伺服器 301 轉 https）取得條目，以條目所列 pdf 連結 curl 下載，pdftotext -layout 轉文字",
+      "reading_scope": "摘要、第 1 節、第 5 節討論、第 6 節結論全段；第 2–4 節方法與模型略讀",
+      "locator": "Abstract（鄉間 1.7%、都市 1.8%、中間地帶 3.7%／年；倍增 41、39、19 年；方法可偵測 ±1.5%／年）；§1（Bará 2021 加利西亞約 0.06、Puschnig 2021 約 0.03–0.05 mag/年老化修正，為引述）；§5（中間地帶增最快的解釋；VIIRS 波段 500–900 nm 與 SQM 400–600 nm 不同；老化修正平均 −31±20 mmag/年）",
+      "summary": "奧地利 24 站加斯德哥爾摩、波茨坦共 26 站 4–10 年 SQM 資料，先用曙暮光修正儀器老化（老化修正斜率由 0 到近 −80、平均 −31±20 mmag/arcsec²/年），再用大氣資料模型扣掉天候影響：光污染平均每年增加——鄉間 11 站 1.7%、都市 9 站 1.8%、中間地帶 6 站 3.7%（倍增時間 41、39、19 年），方法的偵測界限約 ±1.5%/年。作者解釋增最快的是中間地帶：都市本來就極亮，新燈相對影響小；正在開發的中間地帶加一盞燈影響最大。地表反照率與植被對天頂亮度影響最大。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "引言中其他研究的老化數字是引述，不算本篇。倍增時間是作者換算。與 F93-S010 同研究群，封頂 2.0。 覆核 V96（2026-11-12）：summary 的『中間地帶』註明為小鎮（Braunau、Grieskirchen、Freistadt、Mattighofen、Vöcklabruck，另含林茲近郊 Pasching），三個增幅各 ±1.5%/年；研究群改列入 Kyba 2015 合著網。",
+      "author_cache": {
+        "file": "f93src/arXiv2210.09177v1.txt（原始 arXiv2210.09177v1.pdf）",
+        "sha256_prefix": "6aa423b9f7bf9611",
+        "pdf_sha256_prefix": "e9906a9879f795c0",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S038",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8320935/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/jimaging5050056",
+      "title": "Measurements of Night Sky Brightness in the Veneto Region of Italy: Sky Quality Meter Network Results and Differential Photometry by Digital Single Lens Reflex",
+      "publisher": "J Imaging 5:56（2019）；Bertolo、Binotto（ARPA Veneto）、Ortolani、Sapienza（帕多瓦大學）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文，CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "摘要、前言、§3（直方圖、季節、§3.5 長期趨勢）、結論；§3.6 相機測光略讀",
+      "locator": "§3.5（Ekar、Pennar 2014–2019 月眾數趨勢、斜率 0.0029 與 0.0032、與同期約 10% 照明增加矛盾）；Conclusions",
+      "summary": "威尼托大區 SQM 網：阿夏戈高原兩座專業天文台（Ekar、Pennar）2014–2019 年無月夜的月眾數亮度逐步『變暗』（線性斜率 0.0029 與 0.0032），作者說這與同期該區公私照明據估增加約 10%（ARPA 未發表資料）矛盾，需要查明是真的減少，還是濕度、懸浮微粒變化、LED 取代鈉燈造成 SQM 低估，或儀器窗口老化。也寫都市站直方圖雙峰，兩峰間距主要由雲的反射放大決定。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "斜率單位原文未在該句寫明（圖為 mag/arcsec² 對月份），片中只說『逐年變暗』不報斜率；『10% 照明增加』是未發表估計。與 F93-S013 同研究群（威尼托 ARPA／帕多瓦），封頂 2.0。",
+      "author_cache": {
+        "file": "f93src/PMC8320935.txt（原始 PMC8320935.xml）",
+        "sha256_prefix": "e093d99b7fc82e6c",
+        "xml_sha256_prefix": "af34cfafb95c8a11",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S039",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768471/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/s25020516",
+      "title": "SQM Ageing and Atmospheric Conditions: How Do They Affect the Long-Term Trend of Night Sky Brightness Measurements?",
+      "publisher": "Sensors 25:516（2025）；Fiorentin、Cavazzani、Ortolani（帕多瓦大學）、Bertolo、Binotto（ARPA Veneto）、Saviane（ESO）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文，CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、方法、結果 §3.1–3.3.2；§3.3.3 La Silla 讀到表 15 前；結論只讀摘要所述）",
+      "locator": "Abstract；§3.1.1（新舊 SQM 並排差 0.078 mag）；§3.1.3（老化在 470 nm 以下明顯）；§3.1.4（老化斜率 5.3 與 31 mmag/年 vs 曙暮光趨勢 53 與 85）；§3.2（日射量 2014 起每年約 +2.5 W/m²，可能與波河平原暖氣由柴油改甲烷有關）；§3.2.2（空氣變透明約占曙暮光趨勢 1/3–1/2）；§3.2.3（帕多瓦 r=0.72、Passo Valles 相反）",
+      "summary": "回頭查威尼托量到的『夜空變暗』：把用了 6 年的帕多瓦 SQM 與新機並排，舊機讀數暗約 0.078 mag；實驗室裡兩台老機對 470 nm 以下（藍光）的靈敏度明顯衰退——正是白光 LED 增加的波段；但老化只解釋部分趨勢。同時當地日射量自 2014 年每年約增 2.5 W/m²、氣溶膠光學厚度下降，空氣變乾淨：在受光污染的帕多瓦與 Ekar，空氣越透明，向下散射的人造光越少、夜空量起來越暗；遠離光源的 Passo Valles 則略相反。作者結論：大氣條件在夜空亮度變化中扮演顯著、主要的角色。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "『柴油改甲烷』是作者推測（could be caused）。老化數值只來自兩台機器。與 F93-S012 同研究群，封頂 2.0。 覆核 V96（2026-11-12）：summary 的『兩台老機對 470 nm 以下明顯衰退』改為：帕多瓦那台 470 nm 以下衰退；阿夏戈 Pennar 那台連 550 nm 以上也衰退，450 nm 只剩約六成。",
+      "author_cache": {
+        "file": "f93src/PMC11768471.txt（原始 PMC11768471.xml）",
+        "sha256_prefix": "87700142fd425b1a",
+        "xml_sha256_prefix": "5e704c99057f86ea",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S040",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9473566/fullTextXML",
+      "canonical_url": "https://doi.org/10.1126/sciadv.abl6891",
+      "title": "Environmental risks from artificial nighttime lighting widespread and increasing across Europe",
+      "publisher": "Sci Adv 8:eabl6891（2022）；Sánchez de Miguel、Bennie、Rosenfeld、Dzurjak、Gaston（艾希特大學；Sánchez de Miguel 兼馬德里康普頓斯大學）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文，CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、結果、討論、方法前半）",
+      "locator": "Introduction 第一段（DMSP 450–1000 nm、VIIRS-DNB 480–920 nm）；Results〈Shifting spectra〉（B/G、G/R 比值上升）；〈Changes in light intensity〉（G 波段 10.59→11.77，+11.1%）；〈Biological impacts〉中星光指數 SLI 上升；Discussion（VIIRS 漸進低估）",
+      "summary": "用太空人在國際太空站拍的夜間相片，做出歐洲 2012–2013 與 2014–2020 兩期彩色夜光圖：燈光整體由偏橘（鈉燈）轉白（白光 LED），藍／綠、綠／紅比值都上升；綠波段強度中位數增加 11.1%；主要的夜光衛星 VIIRS 只感應 480–920 nm，對藍光不敏感，作者說這造成對光量『越來越嚴重的低估』；以色彩比估算的星光可見度指數（SLI）也上升，代表看星更難。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "藍波段原文寫增加 24.4%，但同句的中位數 3.6→3.88 只差約 8%，數字前後不一，片中不用藍波段百分比。SLI 是由色彩比換算的指標，不是實際數星。太空站相片非系統拍攝、需校正。 覆核 V96（2026-11-12）：研究群改列入 Kyba 2015 合著網；summary 補 SLI 中位數只由 0.64 升到 0.65。",
+      "author_cache": {
+        "file": "f93src/PMC9473566.txt（原始 PMC9473566.xml）",
+        "sha256_prefix": "14f5bb6817398cf1",
+        "xml_sha256_prefix": "f642600940ae00bd",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S041",
+      "url": "https://arxiv.org/pdf/2103.17125v2",
+      "canonical_url": "https://doi.org/10.1093/mnrasl/slab030",
+      "title": "The proliferation of space objects is a rapidly increasing source of artificial night sky brightness",
+      "publisher": "MNRAS Letters（2021，DOI 10.1093/mnrasl/slab030）；Kocifaj（斯洛伐克科學院／考門斯基大學）、Kundracik、Barentine、Bará",
+      "version": "arXiv v2 預印本（2021-04-01；期刊版未讀）",
+      "accessed_on": "2026-11-12",
+      "read_via": "arXiv API（export.arxiv.org/api/query，文件記載 API；http 由伺服器 301 轉 https）取得條目，以條目所列 pdf 連結 curl 下載，pdftotext -layout 轉文字",
+      "reading_scope": "摘要、第 1 節、第 2 節方法到 2.2 前段；第 3–4 節結果與結論未逐段讀（數字以摘要為準）",
+      "locator": "Abstract（天頂亮度約 20 µcd/m²、約為自然夜空 10%、IAU 1979 年觀測站上限）；§1（2021 年 1 月 1 日約 3,372 顆衛星在軌）",
+      "summary": "以模型估計人造衛星與太空碎片反射陽光形成的『擴散』夜空亮度：初步估計天頂亮度可能已達約 20 µcd/m²，約比自然光源決定的夜空亮 10%，恰是國際天文聯合會 1979 年為天文台訂的光污染上限；作者稱這是由太空物體造成的新天空輝光效應，連沒有城市燈光的偏遠地點也躲不掉。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "作者自稱 preliminary estimates，是模型推估、無實測；第 3–4 節未逐段讀，只採摘要數字。Bará 為共同作者，與 F93-S007、S008 合計不超過 2.0。 覆核 V96（2026-11-12）：summary 刪『連沒有城市燈光的偏遠地點也躲不掉』，補『只算已編目物體，為下限』。",
+      "author_cache": {
+        "file": "f93src/arXiv2103.17125v2.txt（原始 arXiv2103.17125v2.pdf）",
+        "sha256_prefix": "956b0e1d4cf0f9d6",
+        "pdf_sha256_prefix": "693064577dd21b55",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S042",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8669019/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-021-02365-1",
+      "title": "Linking solar minimum, space weather, and night sky brightness",
+      "publisher": "Sci Rep 11:23893（2021；2023 年更正）；A. D. Grauer（亞利桑那大學 Catalina Sky Survey）、P. A. Grauer（Cosmic Campground 國際暗空保護區）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文，CC BY）；另讀 2023 更正 PMC10264386（只改參考文獻 9）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "摘要、前言、資料與分析、結果（Event A／B、半年週期）、結論；地理變化段略讀；更正啟事全文",
+      "locator": "Abstract；〈Data collection and analysis〉（CCIDSS 距重要光源 60 km 以上、人工光天頂不可測）；結果（241 夜夜均氣輝最大/最小 1.68 倍、5 分鐘尺度 1.957 倍、半年振幅約 0.2 mag、Event A 約 0.40 mag）；Conclusions（22.07 與亮於 21.57 mag/arcsec²）",
+      "summary": "2018 年 9 月到 2020 年 4 月太陽活動極小期，在新墨西哥州一處距重要光源 60 km 以上的暗空保護區連續量天頂亮度：天然夜空幾乎從不固定——241 個夜晚的夜均氣輝最亮與最暗相差 1.68 倍，有的夜晚暗到 22.07、有的亮過 21.57 mag/arcsec²；有約 0.2 mag 的半年週期；太陽冠洞吹來的太陽風抵達地球時，夜空可亮約 0.40 mag（1.44 倍）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "一個主站加四站、一個太陽極小期；SQM／TESS 寬波段。更正只修參考文獻 9，不影響數字。",
+      "author_cache": {
+        "file": "f93src/PMC8669019.txt（原始 PMC8669019.xml）；更正 PMC10264386.txt",
+        "sha256_prefix": "e923355cd2a1dc70",
+        "xml_sha256_prefix": "1075527b5a8a2eac",
+        "correction_txt_sha256_prefix": "7c40b394fa563578",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S043",
+      "url": "https://arxiv.org/pdf/2105.01066v2",
+      "canonical_url": "https://doi.org/10.3847/1538-3881/abfdaa",
+      "title": "Natural Night Sky Brightness during Solar Minimum",
+      "publisher": "AJ 162:25（2021）；Alarcon、Serra-Ricart、Lemes-Perera、Mallorquín（加那利天文研究所 IAC）",
+      "version": "arXiv v2（作者存放，2021-06-23）",
+      "accessed_on": "2026-11-12",
+      "read_via": "arXiv API（export.arxiv.org/api/query，文件記載 API；http 由伺服器 301 轉 https）取得條目，以條目所列 pdf 連結 curl 下載，pdftotext -layout 轉文字",
+      "reading_scope": "摘要、第 1 節前兩段、第 6 節結論（雙欄混排，讀到可辨識部分）；第 2–5 節未逐段讀",
+      "locator": "Abstract（11 百萬筆、44 台光度計、自然夜空振幅 0.1 mag、多數夜晚有短時變化）；§1『The natural night sky is never completely dark』",
+      "summary": "太陽極小期在全球 40 多個暗空地點用同型光度計收集 1,100 萬筆天頂亮度，濾掉日、月、雲、銀河與黃道光後求自然夜空亮度：原始夜空的亮度在所有光度計上都有約 0.1 mag/arcsec² 的起伏，與半年振盪相容；絕大多數夜晚都看到短時間的亮度變化，作者歸因於中氣層以上的氣輝事件。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀摘要、引言與結論；正文方法與逐站數值未讀，條數壓低。與 F93-S016 主題重疊，只算新增的『多國 44 台』那部分。 覆核 V96（2026-11-12）：reading_scope 已寫明只讀摘要、引言前兩段與結論；條數改為 0（只當旁證）。",
+      "author_cache": {
+        "file": "f93src/arXiv2105.01066v2.txt（原始 arXiv2105.01066v2.pdf）",
+        "sha256_prefix": "b82efa3c6c4f280b",
+        "pdf_sha256_prefix": "8188d099cb2df832",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S044",
+      "url": "https://arxiv.org/pdf/1405.4209v1",
+      "canonical_url": "https://doi.org/10.1093/mnras/stu992",
+      "title": "Human Contrast Threshold and Astronomical Visibility",
+      "publisher": "MNRAS（2014，DOI 10.1093/mnras/stu992）；Crumey（諾森比亞大學人文學系）",
+      "version": "arXiv v1（作者存放，2014-05-16）",
+      "accessed_on": "2026-11-12",
+      "read_via": "arXiv API（export.arxiv.org/api/query，文件記載 API；http 由伺服器 301 轉 https）取得條目，以條目所列 pdf 連結 curl 下載，pdftotext -layout 轉文字",
+      "reading_scope": "摘要、§1.1、§3.2 Bowen 1947 威爾遜山資料分析段（約 1,000–1,090 行）；其餘公式推導未讀",
+      "locator": "Abstract；§3.2（新估 1947 年威爾遜山天頂 21.61 mag/arcsec²；Garstang 2000 估 20.24、Garstang 2004 估 1950 年 20.82；洛杉磯光排放前半世紀較低、後半世紀增長遠快於 Garstang 所算）",
+      "summary": "作者建立新的人眼對比閾值模型，回頭用天文學家 Bowen 1947 年在威爾遜山用望遠鏡看到的最暗星，反推當時天頂亮度約 21.61 mag/arcsec²（修正大氣後），比前人 Garstang 的估計（20.24；他 2004 年模型估 1950 年 20.82）暗得多；作者據此認為洛杉磯在二十世紀前半的光排放比 Garstang 假設的低，後半世紀光污染增長遠比他算的快。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "模型反推，不是當年直接量天空亮度；只讀相關段落。",
+      "author_cache": {
+        "file": "f93src/arXiv1405.4209v1.txt（原始 arXiv1405.4209v1.pdf）",
+        "sha256_prefix": "427250949c058882",
+        "pdf_sha256_prefix": "fa6ef183f9402be4",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S045",
+      "url": "https://hess.copernicus.org/articles/22/5847/2018/hess-22-5847-2018.pdf",
+      "canonical_url": "https://doi.org/10.5194/hess-22-5847-2018",
+      "title": "Studying catchment storm response using event- and pre-event-water volumes as fractions of precipitation rather than discharge",
+      "publisher": "Hydrol. Earth Syst. Sci. 22:5847–5865（2018）；von Freyberg、Studer、Rinderer、Kirchner（ETH Zurich／WSL；Rinderer 為 Freiburg）",
+      "version": "出版社正式版（CC BY 4.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出的 HESS PDF 連結，curl 預設標頭下載，pdftotext -layout 轉文字",
+      "reading_scope": "全文（摘要、1 前言、2 方法、3 結果 3.1–3.3、4 討論、5 結論）；表 1、表 2 只讀表頭與文中引述",
+      "locator": "摘要；1 前言第 3 段（60 mm 例子）；2.1 Field site（0.7 km²）；3.1 第 2–3 段（Qe/Q 0.04–0.75、平均 0.23、約 77% pre-event、只有兩場 >50%；Qpe/P 約三分之一雨量、Qe/P <10%）；3.2（峰值時 event 比例比事件中最高值小，作者 suggests 峰流主要由 pre-event 供給）；3.3 第 2 段（較濕的前期條件 Qe/Q 較低，但相關不顯著，不採）",
+      "summary": "瑞士前阿爾卑斯 Erlenbach 0.7 km² 試驗集水區，2016 年 9 月到 2017 年 10 月無雪期 24 場暴雨，用高頻穩定同位素（δ18O、δ2H）做二成分分離：事件水佔流量比例 0.04–0.75、平均 0.23±0.04，只有兩場超過 50%，平均約 77% 是雨前就存在的水；每場雨『推出』的舊水約等於雨量的三分之一，雨水本身直接進溪的不到雨量一成；作者認為峰值流量主要靠動員舊水。（前期越濕事件水佔比越低的相關，原文寫明不顯著，不採。）",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一小集水區、只含無雪期；事件水比例依同位素二成分模型，誤差另見表 2；『77%』是 24 場平均，不是每場；與其他集水區的比較作者只引前人，不算本篇結果。 覆核 V100（2026-11-12）：summary 補：Qpe/P 與前期濕度強相關、與雨量雨強無關（摘要、3.3）。",
+      "author_cache": {
+        "file": "f97src/hess-22-5847-2018.txt",
+        "sha256_prefix": "656dbdba9f0b071e",
+        "raw_file": "f97src/hess-22-5847-2018.pdf",
+        "raw_sha256_prefix": "43c8dcbd4285198c",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S046",
+      "url": "https://hess.copernicus.org/articles/24/1101/2020/hess-24-1101-2020.pdf",
+      "canonical_url": "https://doi.org/10.5194/hess-24-1101-2020",
+      "title": "Technical note: An improved discharge sensitivity metric for young water fractions",
+      "publisher": "Hydrol. Earth Syst. Sci. 24:1101–1107（2020）；Gallart、von Freyberg、Valiente、Kirchner、Llorens、Latron（IDAEA-CSIC 巴塞隆納、ETH／WSL）",
+      "version": "出版社正式版（CC BY 4.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出的 HESS PDF 連結，curl 下載，pdftotext",
+      "reading_scope": "全文（技術短文 7 頁：摘要、1–4 節）",
+      "locator": "摘要（Fyw 在最高流量時趨近 1）；2 節（Can Vila 0.56 km²、半濕潤地中海、1115–1458 m；464 個雨水、858 個溪水樣本；流量加權 F*yw 0.226±0.028、時間加權 Fyw 0.061±0.008；最大採樣流量 226 mm/d）",
+      "summary": "西班牙庇里牛斯山前 Can Vila 0.56 km² 集水區，40 個月密集採樣：以時間平均，只有約 6% 的溪水是兩三個月內的『年輕水』；以流量加權則約 23%；在最大的洪水時，年輕水比例趨近 1。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與 F97-S001 同屬 Kirchner／von Freyberg 合作網（共同作者），兩篇合計封頂 2.0；本篇主旨是方法（指標改良），數值只取作者明寫的；『年輕水』定義是約 2–3 個月內的降水，與 F97-S001 的『事件水』定義不同，不可混為一談。",
+      "author_cache": {
+        "file": "f97src/hess-24-1101-2020.txt",
+        "sha256_prefix": "ac5080c6acfc1a6a",
+        "raw_file": "f97src/hess-24-1101-2020.pdf",
+        "raw_sha256_prefix": "4531abc7e5855c08",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S047",
+      "url": "https://hess.copernicus.org/articles/19/4183/2015/hess-19-4183-2015.pdf",
+      "canonical_url": "https://doi.org/10.5194/hess-19-4183-2015",
+      "title": "Understanding runoff processes in a semi-arid environment through isotope and hydrochemical hydrograph separations",
+      "publisher": "Hydrol. Earth Syst. Sci. 19:4183–4199（2015）；Camacho Suarez、Saraiva Okello、Wenninger、Uhlenbrook（UNESCO-IHE、TU Delft）",
+      "version": "出版社正式版（CC BY 3.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果的 HESS metrics 頁上的 PDF 連結，curl 下載，pdftotext",
+      "reading_scope": "摘要、1 前言、2 研究區（Kaap 集水區）、3 方法前段；結果與討論只讀摘要所列數字對應段落附近",
+      "locator": "摘要（二成分：地下水佔總逕流 64–98%；三成分：直接逕流濕潤時最高 41%、淺層 45%、深層地下水最高 84%）；2 研究區（約 1640 km²、半乾燥、年雨量 583–1243 mm）；3 方法（2013–2014 雨季四場事件）",
+      "summary": "南非 Kaap 集水區（約 1640 km²、半乾燥），2013–2014 雨季四場降雨事件用同位素與化學示蹤做流量分離：二成分分離中地下水佔總逕流 64–98%；三成分分離中，直接落入河道與地表漫流的直接逕流在濕潤條件最多佔 41%，深層地下水最多 84%；前期降雨越多，直接逕流越多。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有四場事件；『地下水』在二成分模型裡就是 pre-event 成分；結果與討論章節沒有逐段讀完，只核到摘要數字與方法；半乾燥區的結果不可直接套到台灣。",
+      "author_cache": {
+        "file": "f97src/hess-19-4183-2015.txt",
+        "sha256_prefix": "80112654faa626a8",
+        "raw_file": "f97src/hess-19-4183-2015.pdf",
+        "raw_sha256_prefix": "09a94811cd7f5144",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S048",
+      "url": "https://hess.copernicus.org/preprints/hess-2019-276/hess-2019-276.pdf",
+      "canonical_url": "https://doi.org/10.5194/hess-2019-276",
+      "title": "Characterization of event water fractions and transit times under typhoon rainstorms in fractured mountainous catchments: Implications for time-variant parameterization",
+      "publisher": "HESS Discussions 預印本（2019）；Lee、Shih、Lan、Lee、Peng、Lee、Huang（臺灣大學地理系等）",
+      "version": "討論稿預印本（CC BY 4.0）；HESS 預印本頁註明『revision was not accepted』；後改題刊於 Water 12(4):1169（2020，doi:10.3390/w12041169），正式版只讀到臺師大學術典藏頁的摘要",
+      "accessed_on": "2026-11-12",
+      "read_via": "預印本 PDF：WebSearch 結果連結，curl 下載，pdftotext；預印本頁狀態：WebSearch 結果所列 https://hess.copernicus.org/preprints/hess-2019-276 ；正式版摘要：WebSearch 結果所列 scholar.lib.ntnu.edu.tw 典藏頁",
+      "reading_scope": "預印本：摘要、1 前言、2.1 研究區、3 結果第 1–3 段、4 討論中 Few 與雨量段落；Water 正式版只讀摘要",
+      "locator": "預印本摘要；2.1 Study Site（坪林 111 km²、大林 79 km²，翡翠水庫集水區）；結果段（PL 0.14–0.56、DL 0.2–0.8；MTTew PL 3.3–6.7 h、DL 2.3–10.9 h）；正式版摘要（六場颱風，MTTew 2.0–11.0 h，Few 0.2–0.8，平均雨強越大 Few 越高）",
+      "summary": "北臺灣翡翠水庫集水區的坪林與大林兩個中尺度陡峭集水區，六場颱風每約 3 小時採雨水與溪水 δ18O，用 TRANSEP 模型估事件水比例 Few 0.2–0.8、事件水平均通過時間 2–11 小時；平均雨強越大，事件水比例越高、通過時間越短。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "HESS 審查未接受修訂，正式版刊於 Water（MDPI；本工作階段 mdpi.com 回 403，正式版全文未讀，只讀典藏頁摘要；摘要的 2.0–11.0 h、0.2–0.8 與預印本一致）。模型估計值，不是二成分直接分離；預印本內文 PL 為 0.14–0.56、DL 為 0.2–0.8，摘要寫 0.2–0.8，片中只說『兩成到八成』並標明是兩個集水區合計範圍。 覆核 V100（2026-11-12）：version 與 limitations 改為：計數只依 Water 12:1169 摘要（典藏頁）；HESS 預印本未獲接受，內文數字、站名與面積不計；預印本前言 eight 與摘要 six typhoon events 不一。",
+      "author_cache": {
+        "file": "f97src/hess-2019-276.txt",
+        "sha256_prefix": "c5b7ca63ace1d016",
+        "raw_file": "f97src/hess-2019-276.pdf",
+        "raw_sha256_prefix": "74989a09044e5a9b",
+        "status_page": "f97src/hess-2019-276-page.html",
+        "status_page_sha256_prefix": "54bb6085882a9d66",
+        "published_abstract": "f97src/ntnu_lee2020.html",
+        "published_abstract_sha256_prefix": "a0a53eb685a91cce",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S049",
+      "url": "https://hess.copernicus.org/articles/20/5015/2016/hess-20-5015-2016.pdf",
+      "canonical_url": "https://doi.org/10.5194/hess-20-5015-2016",
+      "title": "The importance of snowmelt spatiotemporal variability for isotope-based hydrograph separation in a high-elevation catchment",
+      "publisher": "Hydrol. Earth Syst. Sci. 20:5015–5033（2016）；Schmieder、Hanzer、Marke、Garvelmann、Warscher、Kunstmann、Strasser（因斯布魯克大學、KIT）",
+      "version": "出版社正式版（CC BY 3.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果的 HESS 文章頁上的 PDF 連結，curl 下載，pdftotext",
+      "reading_scope": "摘要、1 前言、2 研究區、5.4 分離結果段；其餘方法細節略讀",
+      "locator": "摘要（融雪佔溪流 35±3%〔早期融雪〕、75±14%〔融雪高峰〕）；2 研究區（Rofenache 98 km²）；1 前言第 2 段（引前人：溫帶研究 pre-event >50%，永凍土與高山研究事件水 >70%——只作背景，不算本篇結果）",
+      "summary": "奧地利阿爾卑斯 Rofenache 98 km² 高山集水區，2014 年春兩場融雪事件，依南北坡分別採融雪水並用模型融雪量加權：融雪在早期融雪期約佔溪流 35%，到融雪高峰約佔 75%；只用單一坡向或舊加權法會差到 15 或 5 個百分點。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有一個融雪季、兩場事件；『事件水』在此是融雪水（雪是整個冬天累積的，不是當天的雨）；前言中他人研究的百分比不算本篇結果。",
+      "author_cache": {
+        "file": "f97src/hess-20-5015-2016.txt",
+        "sha256_prefix": "883e4df879235f23",
+        "raw_file": "f97src/hess-20-5015-2016.pdf",
+        "raw_sha256_prefix": "c1ba7763edf49463",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S050",
+      "url": "https://hess.copernicus.org/articles/21/5891/2017/hess-21-5891-2017.pdf",
+      "canonical_url": "https://doi.org/10.5194/hess-21-5891-2017",
+      "title": "A sprinkling experiment to quantify celerity–velocity differences at the hillslope scale",
+      "publisher": "Hydrol. Earth Syst. Sci. 21:5891–5910（2017）；van Verseveld、Barnard、Graham、McDonnell、Brooks、Weiler（Deltares、科羅拉多大學、薩斯喀徹溫大學、US EPA、Freiburg）",
+      "version": "出版社正式版（CC BY 3.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果的 HESS 文章頁上的 PDF 連結，curl 下載，pdftotext",
+      "reading_scope": "摘要、1 前言、3.1–3.4 方法、4.1–4.3 結果（含表 1、表 2）；4.4 以後的模型結果只讀段首",
+      "locator": "摘要；1 前言第 1 段（流量反應可比平均通過時間快數個量級——引前人，不算本篇）；4.2 第 1–2 段（土壤水分 0–0.3 m 灑水 30 分鐘後開始上升；濕潤鋒速度 43–150 mm/h〔TDR〕、10–116 mm/h〔張力計〕）；4.3 與表 2（δ2H 峰值抵達 1–8 天、垂直速度 6–17 mm/h；溝槽事件水比例最高 26%，扣除深層地下水後 37%）",
+      "summary": "美國奧勒岡 H. J. Andrews 實驗林 Watershed 10 山坡，連續灑水 24 天並在開始時加入氘標記水：土壤水分在灑水 30 分鐘後就開始上升，濕潤鋒（壓力／水分變化）往下傳的速度約 43–150 mm/h；但被標記的水本身往下走只有約 6–17 mm/h，峰值要 1–8 天才到；從山坡溝槽流出的水裡，被標記的新水最多只佔 26%。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一山坡、人工灑水（3–4 mm/h），不是天然暴雨；速度是點量測推算；『快數個量級』是前言引前人。共同作者 H. R. Barnard 也是 F97-S010 的共同作者，兩篇主導實驗室不同（本篇 Deltares／McDonnell 網，F97-S010 Brooks／Utah），覆核時可合併考慮。 覆核 V100（2026-11-12）：research_groups 的 B、F 合併為『McDonnell／Barnard／Brooks 合作網（H. R. Barnard 共同作者）』，封頂 2.0。",
+      "author_cache": {
+        "file": "f97src/hess-21-5891-2017.txt",
+        "sha256_prefix": "dec3b08ce0fc3f4f",
+        "raw_file": "f97src/hess-21-5891-2017.pdf",
+        "raw_sha256_prefix": "3e11ffebd92f18d1",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S051",
+      "url": "https://hess.copernicus.org/articles/23/4333/2019/hess-23-4333-2019.pdf",
+      "canonical_url": "https://doi.org/10.5194/hess-23-4333-2019",
+      "title": "Time variability and uncertainty in the fraction of young water in a small headwater catchment",
+      "publisher": "Hydrol. Earth Syst. Sci. 23:4333–4347（2019）；Stockinger、Bogena、Lücke、Stumpp、Vereecken（Forschungszentrum Jülich、BOKU 維也納）",
+      "version": "出版社正式版（CC BY 4.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出的 HESS PDF 連結，curl 下載，pdftotext",
+      "reading_scope": "摘要、1 前言前段、2.1 研究區、3.1–3.5 結果；4 討論只讀熱浪段落",
+      "locator": "摘要；2.1（Wüstebach 38.5 ha、艾菲爾國家公園）；3.1（雨水 δ18O −3.04 至 −17.80‰，幅度 14.76‰；溪水 −7.78 至 −8.74‰，幅度 0.96‰，約為雨水的 1/15）；3.3（全期 Fyw 0.12±0.04）；3.4（189 個一年視窗平均 0.09，84% 落在 0.05–0.13）",
+      "summary": "德國 Wüstebach 38.5 公頃源頭集水區 4.5 年 δ18O 紀錄：雨水的同位素在一年內大幅擺盪（幅度 14.76‰），溪水只擺 0.96‰，約為雨水的十五分之一；全期估出不到三個月的年輕水約 12%（±4%）；用 189 個滑動一年視窗算，平均 9%，而且起算的週次不同結果就會變。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一小集水區；Fyw 是由季節正弦波振幅比推得的估計；2015 年熱浪期間不確定性大增；『1/15』為原文寫法。 覆核 V100（2026-11-12）：summary 改：14.76‰／0.96‰ 是 4.5 年全距（非一年內）；Fyw 由擬合正弦振幅 0.72／0.08‰ 估得。",
+      "author_cache": {
+        "file": "f97src/hess-23-4333-2019.txt",
+        "sha256_prefix": "07d20960605c1d20",
+        "raw_file": "f97src/hess-23-4333-2019.pdf",
+        "raw_sha256_prefix": "0827121dfc8fbf8f",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S052",
+      "url": "https://hess.copernicus.org/articles/14/2289/2010/hess-14-2289-2010.pdf",
+      "canonical_url": "https://doi.org/10.5194/hess-14-2289-2010",
+      "title": "Dating of streamwater using tritium in a post nuclear bomb pulse world: continuous variation of mean transit time with streamflow",
+      "publisher": "Hydrol. Earth Syst. Sci. 14:2289–2301（2010）；Morgenstern、Stewart、Stenger（GNS Science、Aquifer Dynamics、Lincoln Ventures，紐西蘭）",
+      "version": "出版社正式版（CC BY 3.0）；PDF 第 3 頁附 2010-11-16 的圖 1 更正",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果的 HESS 文章頁上的 PDF 連結，curl 下載，pdftotext",
+      "reading_scope": "摘要、1 前言、2 定年原理、3 研究區、4 結果（流量—年齡關係、矽、硝酸鹽）、5 地下水體積估算；圖 1 更正頁",
+      "locator": "摘要（冬季高基流 2–5 年、夏季 30–40 年、乾旱 >100 年；地下水庫 15.4×10⁶ m³ ≈ 全集水區 1 m 水深 ≈ 年總流量 2.3 倍；矽與年齡相關）；2 節（氚半衰期 12.32 年；氚可定 1 年到數百年，穩定同位素與化學法較適合 <3 年）；3 節（Toenepi 15.1 km² 酪農區）",
+      "summary": "紐西蘭 Waikato 的 Toenepi 集水區（15.1 km² 酪農區），用溪水的氚定年：冬季基流高時溪水平均年齡 2–5 年，夏季基流下降時 30–40 年，乾旱時超過 100 年；支撐基流的地下水約 1,540 萬立方公尺，相當於全集水區 1 公尺水深、年總流量的 2.3 倍；溪水含矽量與年齡相關。作者也寫，穩定同位素與化學方法較適合 3 年以下的水。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一集水區；年齡是集總參數模型下的平均通過時間；南半球核試氚已衰減到背景以下，北半球當時還不能這樣單點定年（原文）。",
+      "author_cache": {
+        "file": "f97src/hess-14-2289-2010.txt",
+        "sha256_prefix": "4ea64f3f9504e687",
+        "raw_file": "f97src/hess-14-2289-2010.pdf",
+        "raw_sha256_prefix": "b7d8193bf97c107a",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S053",
+      "url": "https://hess.copernicus.org/articles/21/4615/2017/hess-21-4615-2017.pdf",
+      "canonical_url": "https://doi.org/10.5194/hess-21-4615-2017",
+      "title": "Aggregation effects on tritium-based mean transit times and young water fractions in spatially heterogeneous catchments and groundwater systems",
+      "publisher": "Hydrol. Earth Syst. Sci. 21:4615–4627（2017）；Stewart、Morgenstern、Gusyev、Małoszewski（GNS Science 等）",
+      "version": "出版社正式版（CC BY 3.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出的 HESS PDF 連結，curl 下載，pdftotext",
+      "reading_scope": "摘要與 1 前言（只讀這兩部分）",
+      "locator": "摘要（季節示蹤循環法適用到約 5 年、氚到約 200 年）",
+      "summary": "虛擬實驗：用季節同位素循環推平均年齡，只能看到約 5 年以內；氚可以看到約 200 年；兩種方法在集水區不均勻時都會低估平均年齡。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與 F97-S008 同一 GNS 研究群，合計封頂 2.0；本篇是模型虛擬實驗，只取方法適用範圍一句；只讀摘要與前言，不寫『全文』。",
+      "author_cache": {
+        "file": "f97src/hess-21-4615-2017.txt",
+        "sha256_prefix": "404863d69f55222e",
+        "raw_file": "f97src/hess-21-4615-2017.pdf",
+        "raw_sha256_prefix": "35ad8a08c6d7c160",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S054",
+      "url": "https://doi.org/10.1038/s43247-025-02303-3",
+      "canonical_url": "https://doi.org/10.1038/s43247-025-02303-3",
+      "title": "Groundwater dominates snowmelt runoff and controls streamflow efficiency in the western United States",
+      "publisher": "Communications Earth & Environment 6:341（2025）；Brooks、Solomon、Kampf、Warix、Bern、Barnard、Barnard 等（猶他大學主導，含 USGS 作者）",
+      "version": "出版社開放取用版（HTML 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果的 USGS Publications Warehouse 紀錄頁（pubs.usgs.gov/publication/70267407）列出的 DOI 連結，curl 跟隨伺服器轉址到 nature.com，存 HTML 後 python 去標籤",
+      "reading_scope": "摘要、Introduction、Results、Discussion 全段；Methods 未讀",
+      "locator": "Abstract；Introduction 末段（42 個集水區、冬季低流量採樣與融雪期再採）；Results 第 1 段（冬季基流平均 10.4〔SD 4.5〕年、融雪逕流 5.7〔SD 4.3〕年、58〔SD 34〕% 為一年以上的舊水）；Results 第 3 段（沉積／碎屑岩基流 14.0 年 vs 硬岩／頁岩 6.5 年）；Discussion 第 3 段（儲水量為年雨量 8.1 倍 vs 3.4 倍）",
+      "summary": "美國西部內陸 42 個融雪源頭集水區，用氚定年：冬季基流平均 10.4 年；融雪高峰期的溪水平均也有 5.7 年，估計 58% 是一年以上前落下的舊水，與『融雪很快變成河水』的常見假設相反；透水性高的沉積岩集水區基流平均 14.0 年，硬岩／頁岩只有 6.5 年；推算的地下儲水量分別約為年雨量的 8.1 倍與 3.4 倍。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "58% 的標準差 34%，集水區間差異大；儲水量計算假設蒸發散與溪流取水年齡分布重疊（原文寫明假設）；不談水資源政策段落。 覆核 V100（2026-11-12）：research_groups 的 B、F 合併為『McDonnell／Barnard／Brooks 合作網（H. R. Barnard 共同作者）』，封頂 2.0。 覆核 V100（2026-11-12）：reading_scope 補：Methods 有部分段落已在快取中（2022 水年、40／38 站），不是『未讀』。",
+      "author_cache": {
+        "file": "f97src/brooks2025.txt",
+        "sha256_prefix": "de98ec2adf1f6b1a",
+        "raw_file": "f97src/brooks2025.html",
+        "raw_sha256_prefix": "7432f6b295e20585",
+        "entry_page": "f97src/usgs_70267407.html",
+        "entry_page_sha256_prefix": "4c1a1e7f8c2a320f",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S055",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4949550/fullTextXML",
+      "canonical_url": "https://doi.org/10.1002/2015WR017888",
+      "title": "Stream water age distributions controlled by storage dynamics and nonlinear hydrologic connectivity: Modeling with high-resolution isotope data",
+      "publisher": "Water Resources Research 51:7759–7776（2015）；Soulsby、Birkel、Geris、Dick、Tunaley、Tetzlaff（亞伯丁大學 Northern Rivers Institute）",
+      "version": "出版社開放取用版（CC BY；PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果先列出 abdn.elsevierpure.com 的 PDF（curl 回 403，停止，未重送）；同一次搜尋結果另列 PMC4949550，改以 Europe PMC REST（文件記載 API）search 確認 PMCID 與題名，再用 /webservices/rest/PMC4949550/fullTextXML 取全文，python 去標籤",
+      "reading_scope": "全文（摘要、1–6 節）",
+      "locator": "Abstract；2 研究區（Bruntland Burn 3.2 km²、蘇格蘭高地 240–580 m）；4 結果（飽和區通量約佔年逕流 70%、地下水直接入溪約 30%）；結果第 75 行附近（校準期平均 1.8±1.3 年，高流量約 30 天、低流量約 4 年）；6 結論",
+      "summary": "蘇格蘭高地 Bruntland Burn 3.2 km² 集水區，以每日同位素紀錄校準示蹤模型：溪水平均年齡約 1.8 年，大洪水時約一個月，乾旱時接近地下水的約 4 年；地下水直接補給約佔年逕流 30%，卻在一年大部分時間主導流量。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "年齡是模型輸出（以實測同位素校準），不是直接量測；Aberdeen 典藏 PDF 被 403 擋，本筆改由 Europe PMC 取得（同一篇論文、不同資料庫，連結來自同一次搜尋結果），覆核可自行判斷是否接受此取得路徑。 覆核 V100（2026-11-12）：limitations 改為：取得路徑經覆核接受（403 的是 Aberdeen Pure 典藏，PMC 為另一資料庫，PMC 連結原樣列在同一次搜尋結果第一筆，Europe PMC REST 為 BRIEF 第 3 條列名的文件化 API）。",
+      "author_cache": {
+        "file": "f97src/PMC4949550.txt",
+        "sha256_prefix": "de9db587b603fbea",
+        "raw_file": "f97src/PMC4949550.xml",
+        "raw_sha256_prefix": "3fcaee649631890d",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S056",
+      "url": "https://hess.copernicus.org/articles/21/23/2017/hess-21-23-2017.pdf",
+      "canonical_url": "https://doi.org/10.5194/hess-21-23-2017",
+      "title": "Towards a tracer-based conceptualization of meltwater dynamics and streamflow response in a glacierized catchment",
+      "publisher": "Hydrol. Earth Syst. Sci. 21:23–41（2017）；Penna、Engel、Bertoldi、Comiti（佛羅倫斯大學、波札諾自由大學、EURAC）",
+      "version": "出版社正式版（CC BY 3.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出的 HESS PDF 連結，curl 下載，pdftotext",
+      "reading_scope": "摘要、1 前言、2 研究區（只讀這三部分）",
+      "locator": "摘要（融雪佔溪流最高 70–79%〔晚春至初夏〕、冰川融水最高 57–69%〔盛夏〕，四種情境）；2 研究區（Saldur 61.7 km²、義大利阿爾卑斯）",
+      "summary": "義大利阿爾卑斯 Saldur 河（61.7 km²、有冰川），三年同位素與導電度示蹤：融雪在晚春到初夏最多佔溪流 70–79%，冰川融水在盛夏最多佔 57–69%。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀摘要、前言、研究區；百分比是四種端元情境的範圍；與本題主問題（暴雨後的河水是新是舊）只間接相關，最終核心未採用。",
+      "author_cache": {
+        "file": "f97src/hess-21-23-2017.txt",
+        "sha256_prefix": "2185d61d2573aae9",
+        "raw_file": "f97src/hess-21-23-2017.pdf",
+        "raw_sha256_prefix": "3ee5e1b73cb6c6e4",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E74-S057",
+      "url": "https://jimclifford.ca/philosophical-transactions-ocr-1665-1869/articles/jstor-108052/",
+      "canonical_url": "https://doi.org/10.1098/rstl.1834.0005",
+      "title": "On the Position of the North Magnetic Pole",
+      "publisher": "Philosophical Transactions of the Royal Society of London 124:47–52（1834）；James Clark Ross（OCR 轉錄頁：Philosophical Transactions Archive 1665–1869 OCR 計畫，metadata 來自 JSTOR）",
+      "version": "1834 年原文的 OCR 轉錄（非出版社掃描；公有領域文獻）",
+      "read_via": "WebSearch 結果所列網址，curl 原樣下載 HTML，python 去標籤轉文字",
+      "reading_scope": "轉錄頁全文的正文段落（開頭到 'Northern Magnetic Pole of the earth' 結尾）；文末表格 OCR 明顯錯亂，未採用",
+      "locator": "正文：1831 年 5 月 28 日在西海岸量到傾角 89°41′、水平針指 N 57° W，估計約 35 英里外；6 月 1 日抵達計算位置，以 floss silk、單根亞麻纖維懸吊水平針皆不顯示任何方向；三組傾角平均 89°58′15″、89°59′46″、89°59′；『hardly possible to be more than a few miles』",
+      "summary": "Ross 記述 1831 年尋找北磁極：接近時一具方位羅盤的指向不確定到 8–10 度，因為指向力極弱；到達估計位置後，把水平磁針用絲線或單根亞麻纖維吊起來，針停在放下時的方向、完全不轉；傾角三組平均都在 89°58′ 到 89°59′46″ 之間；他寫這只是粗略近似，但距真正位置『不太可能超過幾英里』，並建議找多名觀測者長期觀測，才能知道磁極是否移動。",
+      "limitations": "OCR 轉錄，不是出版社的掃描頁；正文可讀，但文末觀測表 OCR 嚴重錯亂（日期與數值重複、欄位混亂），完全不採用。北磁極當時的經緯度不從此頁取，改用 F99-S002（Newitt 2009）表 5 的 1831.4 年觀測位置。英國國威的段落不入片。 覆核 V102（2026-11-12）：version 改為『olmOCR（AI 視覺模型）機器轉錄，非出版社掃描』；limitations 加『正文弧秒級數字未經掃描核對，不入片』。",
+      "author_cache": {
+        "file": "f99src/ross1834_ocr.txt",
+        "sha256_prefix": "c7f0caa7a15eb077",
+        "raw_file": "f99src/ross1834_ocr.html",
+        "raw_sha256_prefix": "b0f09f336fbd496a",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "E74-S058",
+      "url": "https://link.springer.com/content/pdf/10.1186/BF03353178.pdf",
+      "canonical_url": "https://doi.org/10.1186/BF03353178",
+      "title": "Location of the North Magnetic Pole in April 2007",
+      "publisher": "Earth, Planets and Space 61:703–710（2009）；L. R. Newitt（加拿大渥太華）、A. Chulliat（巴黎地球物理研究所）、J.-J. Orgeval",
+      "version": "出版社開放取用版（CC BY 4.0）PDF",
+      "read_via": "WebSearch 結果的 link.springer.com 文章頁（curl），再依頁面上的 Article PDF 連結（/content/pdf/10.1186/BF03353178.pdf）下載，pdftotext 轉文字",
+      "reading_scope": "全文（摘要、1 引言、2 調查與觀測、3 四種定位法、3.5 地殼異常、4 磁極移動、5 結論）",
+      "locator": "1 Introduction 第 1 段（常見誤解清單）、第 2 段（NMP 定義：傾角 90°、水平強度 0；所有指南針會『通往』NMP 但不直接指向它）；2.1（Twin Otter、離 Eureka 710 km 以上）；2.2（磁偏角誤差在觀測點放大到 20°–40°）；Table 5、Table 6（1904.5–1948.0 約 9.3 km/yr；1994.0–2001.0 51.5 km/yr；2001.0–2007.3 52.0 km/yr）；摘要（2007.3 位置 83.95°N、120.72°W，不確定度 40 km）",
+      "summary": "作者先列出關於北磁極的常見誤解：北磁極會吸引指南針、指南針直接指向北磁極、針在北磁極會失控亂轉、磁場在磁極最強、南半球的指南針指向南磁極。北磁極定義為磁場垂直向下的點（傾角 90°、水平強度 0）；指南針沿磁子午線最後都會『通到』北磁極，但因北極區磁場極不像偶極，並不直接指向它。2007 年 4 月以滑雪起落架的 Twin Otter 飛到離最近有人據點 Eureka 710 km 以外的冰上，四個點各只花約一小時觀測，四種方法平均得 83.95°N、120.72°W，不確定度 40 km。觀測位置表顯示 1831.4 年在 70.1°N、96.9°W；20 世紀大部分時間每年約 9 km，1994–2001 平均 51.5 km/yr、2001–2007 平均 52.0 km/yr；作者寫觀測點太少，無法確定是否已開始減速。",
+      "limitations": "常見誤解清單中『磁場會影響健康』一項不入片（醫療）。『針在北磁極失控亂轉』被列為誤解，而 F99-S003 WMM 報告 1.8 節寫『結果是一根旋轉的針』，兩份官方／原研究用語不同，片中只講 Ross 實際看到的『針停在哪就在哪』，不下『會不會轉』的定論。第二作者 Chulliat 現為 WMM2025 報告第一作者（見 research_groups 的封頂說明）。 覆核 V102（2026-11-12）：limitations 加：摘要的『五個地點』含 2005 年一點；§5 寫 NMP 看來已不再加速。",
+      "author_cache": {
+        "file": "f99src/newitt2009.txt",
+        "sha256_prefix": "8fdf4c0b282513d9",
+        "raw_file": "f99src/newitt2009.pdf",
+        "raw_sha256_prefix": "24c6217f7bfba697",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "E74-S059",
+      "url": "https://repository.library.noaa.gov/view/noaa/71569/noaa_71569_DS1.pdf",
+      "canonical_url": "https://doi.org/10.25923/prbc-s316",
+      "title": "The US/UK World Magnetic Model for 2025-2030: Technical Report",
+      "publisher": "NOAA National Centers for Environmental Information 與 British Geological Survey（Chulliat、W. Brown、Nair、Gómez Pérez、Young、Watson、Boneh、Beggan、Meyer、Paniccia），2025",
+      "version": "官方技術報告 PDF（109 頁，approved for public release）",
+      "read_via": "WebSearch 結果的 NOAA 典藏頁 repository.library.noaa.gov/view/noaa/71569，依頁面 PDF 連結下載，pdftotext 轉文字",
+      "reading_scope": "1.1 Introduction、1.1.1–1.1.3、1.6 Magnetic poles、1.7 South Atlantic Anomaly、1.8 Blackout Zones、1.9、2.1 Background（約第 9–30 頁）；其餘方程式、資料處理、誤差與圖表章節未讀",
+      "locator": "1.1（磁偏角定義；地核場、地殼場、擾動場；每五年更新）；1.1.3 Table 1（地表總強度 23,000–67,000 nT）；1.6（2025.0 北傾角極 85.76°N、139.30°E；預測北極約 35 km/yr 且逐漸減速，南極約 9 km/yr）；1.7（SAA 處場強不到平均的 60%）；1.8（指南針沿水平磁場；磁極處磁力線垂直；BoZ 為 H<2000 nT；舊規『距磁極約 1000 英里起指南針越來越不可靠』；北極不可靠區縮小逾 600 萬 km²）；2.1（地核場佔地表場強 95% 以上）",
+      "summary": "WMM 的主要功能是提供任一地點的磁偏角，也就是水平磁場方向與真北的夾角。指南針沿當地的水平磁力線排列；大部分地方磁力線接近水平，但在磁極磁力線垂直，所以指南針不好用。軍方規格把水平強度低於 2000 nT 的區域定為『失效區』、低於 6000 nT 為『注意區』；舊的紙本海圖警語是『距磁極約 1000 英里起指南針越來越不可靠』，改用失效區後北極的不可靠範圍少了 600 多萬平方公里。2025.0 時北傾角極在 85.76°N、139.30°E，報告預測未來五年北極平均約 35 km/yr 並逐漸減速、南極約 9 km/yr。南大西洋異常區的場強不到全球平均的 60%，使低軌衛星暴露在較多高能粒子下，2025–2030 年預期持續加深、變寬。",
+      "limitations": "模型報告，不是單一實驗；未讀章節（資料、誤差、圖表）不引用。BoZ 的界線本身是規格定義，報告也說不是『踏出一步就失效』的硬界線。與 F99-S004 同一團隊（NCEI＋BGS）。",
+      "author_cache": {
+        "file": "f99src/noaa71569.clean.txt",
+        "sha256_prefix": "cb09611072b28cec",
+        "raw_file": "f99src/noaa71569.pdf",
+        "raw_sha256_prefix": "3bed06a4381b06ca",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "E74-S060",
+      "url": "https://repository.library.noaa.gov/view/noaa/72269/noaa_72269_DS1.pdf",
+      "canonical_url": "https://doi.org/10.25923/2gcf-s393",
+      "title": "December 2025 State of the Geomagnetic Field",
+      "publisher": "NOAA NCEI 與 British Geological Survey，2025 年 12 月",
+      "version": "官方年度評估報告 PDF（13 頁）",
+      "read_via": "WebSearch 結果所列 PDF 網址，curl 原樣下載，pdftotext 轉文字",
+      "reading_scope": "Summary、Introduction、Magnetic Dip Poles and Blackout Zones、South Atlantic Anomaly 各節（第 3–13 頁）；Model Errors、Secular Variation、Solar Cycle 與 Appendix 只看到 Summary 的轉述，未逐段讀",
+      "locator": "Summary（2025 年起北、南傾角極平均 36、9 km/yr；SAA 加深約 30 nT、西移約 20 km；強磁暴時高磁緯磁偏角偏差超過 15°）；Magnetic Dip Poles 節（Table 3；2015–2020 年 WMM2015 發布後北極突然加速，預測與觀測差到 10 km/yr，靠臨時的 WMM2015v2 修正；預測 2030 年前降到略高於 30 km/yr）；SAA 節（SAA 強度約為磁極附近的三分之一；25,000 nT 等值線內面積一年增約 8%）",
+      "summary": "2025.0 到 2026.0，北傾角極平均每年移動 36 km、南傾角極 9 km，方向沒有明顯改變；WMM2025 預測北極會慢慢減速到 2030 年前略高於每年 30 km。相比之下，2015–2020 年 WMM2015 發布後不久北極突然加速，預測與觀測差到每年 10 km，只好臨時發布 WMM2015v2。南大西洋異常是地磁最弱的區域，強度約為磁極附近的三分之一，一年內又加深約 30 nT、西移約 20 km，地表 25,000 nT 等值線圍出的面積增加約 8%。",
+      "limitations": "年度監測報告，數字為模型與 Swarm 衛星導出的估計。Summary 提到強磁暴時磁偏角偏差超過 15°，相關章節未逐段讀，不入片。與 F99-S003 同一團隊。 覆核 V102（2026-11-12）：locator 加圖 1 說明『WMM2015v2… released in late 2018』。",
+      "author_cache": {
+        "file": "f99src/noaa72269.txt",
+        "sha256_prefix": "070a1ba82961ffe9",
+        "raw_file": "f99src/noaa72269.pdf",
+        "raw_sha256_prefix": "d6ea18dc06252abc",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "E74-S061",
+      "url": "https://eprints.whiterose.ac.uk/160366/1/Livermore_etal_accepted_manuscript.pdf",
+      "canonical_url": "https://doi.org/10.1038/s41561-020-0570-9",
+      "title": "Recent north magnetic pole acceleration towards Siberia caused by flux lobe elongation",
+      "publisher": "Nature Geoscience 13:387–391（2020）；Livermore（里茲大學）、Finlay（丹麥技術大學 DTU Space）、Bayliff（里茲大學）",
+      "version": "作者接受稿（White Rose Research Online 依出版社自存政策上傳）",
+      "read_via": "WebSearch 結果所列 White Rose PDF 網址，curl 下載（伺服器自行轉到 /id/eprint/ 路徑），pdftotext 轉文字；典藏頁 eprints.whiterose.ac.uk/160366/ 另存",
+      "reading_scope": "全文正文（摘要、四個小節、Methods）；參考文獻只看前 3 條；補充資料（影片、圖 S1–S2）未讀",
+      "locator": "Abstract（1990–2005 由 0–15 km/yr 加速到 50–60 km/yr；2017 年 10 月越過國際換日線、距地理北極 390 km 內；預測十年內再往西伯利亞 390–660 km）；Recent movement 節（加拿大斑 −59.6 → −58.0 µT、西伯利亞斑 −60.5 → −60.6 µT，1999–2019）；Localised flux lobe elongation 節（模型解釋 1104 km 中的 961 km，87%；另兩種假說只有 142 km、16 km）；Future predictions 節（7000 年來無偏好位置；西元前 4500 與 1300 年可能有 3–4 倍速的類比事件；只要小小重組就可能扭轉趨勢）",
+      "summary": "北磁極的位置大致由地核表面加拿大底下與西伯利亞底下兩大團負磁通的『拔河』決定。1999–2019 年地表的加拿大強磁斑從 −59.6 減到 −58.0 µT，西伯利亞斑略增（−60.5 到 −60.6 µT）。原因是加拿大那團磁通在 1990 年代被核心流拉長、甚至分成兩小團，小尺度的場穿過地函衰減得較快，地表的加拿大斑就變弱；只讓這一區變化的數值實驗就解釋了 1999–2019 年北磁極移動 1104 km 中的 961 km（87%），先前提出的另外兩種機制只能動 142 km 與 16 km。多種簡單模型預測未來十年北磁極會沿原軌跡再往西伯利亞移動 390–660 km；作者也寫，過去 7000 年北磁極在地理北極附近亂繞、沒有偏好的位置，只要兩團磁通的平衡小小改變就可能扭轉趨勢。",
+      "limitations": "接受稿，非出版社排版版；數字以接受稿為準。核心流的解釋作者自己說非唯一（non-unique）。西元前 4500、1300 年的『類比事件』出自作者引用的重建模型，片中標為『可能』。DTU 的 Finlay 與 CHAOS 模型相關，若日後引用 DTU 其他論文要併入同群。 覆核 V102（2026-11-12）：limitations 加：『過去 400／7000 年軌跡』引自 Korte & Mandea 2008 等重建（ref 12），不是本文結果。",
+      "author_cache": {
+        "file": "f99src/livermore2020_wr.txt",
+        "sha256_prefix": "aa985a674f318cbe",
+        "raw_file": "f99src/livermore2020_wr.pdf",
+        "raw_sha256_prefix": "0ff8f0bef081e811",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "E74-S062",
+      "url": "https://livrepository.liverpool.ac.uk/3021664/1/427843_1_merged_1520611049_small.pdf",
+      "canonical_url": "https://doi.org/10.1073/pnas.1722110115",
+      "title": "Earth's magnetic field is probably not reversing",
+      "publisher": "PNAS 115(20):5111–5116（2018）；M. Brown（冰島大學／GFZ）、M. Korte（GFZ）、R. Holme（利物浦大學）、I. Wardinski、S. Gunnarson",
+      "version": "利物浦大學典藏標示為 Author Accepted Manuscript；PDF 版面帶 DRAFT 浮水印、標 'compiled on March 9, 2018'",
+      "read_via": "WebSearch 結果的利物浦大學典藏頁 livrepository.liverpool.ac.uk/3021664/，依頁面 PDF 連結下載，pdftotext 轉文字",
+      "reading_scope": "全文正文（摘要、Significance、Results、Discussion A–D、Materials and Methods 前段）；補充資料與影片未讀",
+      "locator": "Abstract 與 Introduction（1840 年有直接觀測以來每世紀約減 5%）；Results 第 2–3 段（49 ka、46 ka 兩段類似 SAA 的時期，局部場強降到最多 60%，但全球偶極只降 10–20%，之後回到偶極主導）；Discussion A–C（SAA 類結構是暫時的、不是即將偏移或翻轉的診斷；偏移需要從多處開始的全球性減弱、兩半球都長出反向磁通；今日偶極仍比 40–50 ka 多數時間強）",
+      "summary": "作者建了一個 5 萬到 3 萬年前的全球地磁模型，涵蓋最近兩次『偏移』（Laschamp 約 4.1 萬年前、Mono Lake 約 3.4 萬年前）。兩次偏移的場都不像今天。反而約 4.9 萬與 4.6 萬年前有兩段跟今天的南大西洋異常很像的時期：局部場強最多掉 60%，但全球偶極只少 10–20%，之後場重新回到偶極主導，沒有變成偏移或翻轉。作者據此推論今天變弱的場也會恢復，不會發生偏移或翻轉；偏移需要全球多處同時減弱、兩個半球都長出反向磁通。作者也強調，這不代表今天的減弱會馬上停止。",
+      "limitations": "模型推論，標題自己用 probably；結論靠 30–50 ka 的模型解析度。PDF 是帶 DRAFT 浮水印的稿本，若與 PNAS 正式版數字有出入以正式版為準（正式版未讀）。與 F99-S007、F99-S008 的看法不同，片中須並列。ESA 頁（F99-S009）引述的 GFZ 研究者與本文 Korte 同機構，兩者合計封頂 2.0。 覆核 V102（2026-11-12）：limitations 加：60% 只指 46 ka；Europe PMC 正式版 PMC5960311 的 fullTextXML 回 500、render PDF 回 403（V102，2026-11-12），正式版仍未讀；典藏頁摘要為正式版文字。",
+      "author_cache": {
+        "file": "f99src/brown2018_liv.clean.txt",
+        "sha256_prefix": "af4dc3ecee95d5d0",
+        "raw_file": "f99src/brown2018_liv.pdf",
+        "raw_sha256_prefix": "003bd0c85a289f30",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "E74-S063",
+      "url": "https://www.earth-prints.org/bitstream/2122/12372/1/Pavon_Carrasco_feart-04-00040.pdf",
+      "canonical_url": "https://doi.org/10.3389/feart.2016.00040",
+      "title": "The South Atlantic Anomaly: The Key for a Possible Geomagnetic Reversal",
+      "publisher": "Frontiers in Earth Science 4:40（2016）；F. J. Pavón-Carrasco、A. De Santis（義大利國家地球物理與火山研究所 INGV）",
+      "version": "出版社開放取用版 PDF（INGV Earth-prints 典藏）",
+      "read_via": "WebSearch 結果所列 Earth-prints PDF 網址，curl 下載（伺服器自行轉到 /server/api/core/bitstreams/…/content），pdftotext 轉文字",
+      "reading_scope": "全文（摘要、Introduction、SAA 近 200 年、SAA 起源、Discussion、Conclusions）；補充動畫未看",
+      "locator": "Abstract（偶極矩 7.7×10²² A·m² 不算低）；SAA During the Last 200 Years（最低強度平均每年 −30 nT；面積持續擴大）；Figure 6 段（固定偶極或四極，SAA 面積約少 50%；兩者都固定少 85%）；Discussion（偶極能量每世紀約 −12%、非偶極能量 +70%；全新世偶極矩 4–11、平均 8.1±1.6×10²²；偏移約 3×10²²、上次翻轉低於 1×10²²；平均 40 萬年一次、上次在 78 萬年前；非洲反向斑每世紀 −2.54×10⁵ nT、美洲斑在消失）",
+      "summary": "作者用 1840–2015 年的地磁模型檢視『南大西洋異常是不是翻轉前兆』。支持的一面：偶極場的能量每世紀少約 12%、非偶極部分每世紀多約 70%，地核表面南大西洋底下的反向磁通斑在長大、西移，非洲那一塊最低值每世紀再降 2.54×10⁵ nT；過去 8300 萬年平均約 40 萬年翻一次，上次在 78 萬年前。反對的一面：2015 年的偶極矩 7.7×10²² A·m² 跟全新世平均（8.1±1.6）差不多，遠高於偏移時（約 3）與上次翻轉時（低於 1）；作者自己的結論是三個特徵只有兩個符合，『偶極還不夠低』這一點不成立。",
+      "limitations": "標題寫 the key for a possible reversal，但內文結論是正反並陳；片中不能說成『義大利研究說要翻轉了』。−12%／+70% 是能量（均方值）的變化率，不是場強，不能和 F99-S006、F99-S008 的『每世紀 5%』直接比。",
+      "author_cache": {
+        "file": "f99src/pavon2016_ingv.txt",
+        "sha256_prefix": "a28a786bc6b53f02",
+        "raw_file": "f99src/pavon2016_ingv.pdf",
+        "raw_sha256_prefix": "1c5b8ca2f8b4126b",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "E74-S064",
+      "url": "https://www.frontiersin.org/articles/10.3389/feart.2015.00061/pdf",
+      "canonical_url": "https://doi.org/10.3389/feart.2015.00061",
+      "title": "An impending geomagnetic transition? Hints from the past",
+      "publisher": "Frontiers in Earth Science 3:61（2015）；C. Laj（巴黎高等師範學院）、C. Kissel（LSCE，CEA-CNRS-UVSQ）",
+      "version": "出版社開放取用版 PDF",
+      "read_via": "WebSearch 結果所列 frontiersin.org PDF 網址，curl 下載（伺服器自行轉址），pdftotext 轉文字",
+      "reading_scope": "全文（摘要、Introduction、The Data、Discussion 各小節、Conclusions）",
+      "locator": "Introduction（觀測以來平均每世紀減 5%，比單純擴散衰減快約一個數量級；目前翻轉率 3.7 次／百萬年）；Duration of the Excursions（Laschamp 方向變化共 640 年、每 180° 約 320 年；強度低於一半的期間 1500–3000 年；下降約比恢復快一倍）；Rate of Change（Laschamp 最後一段每年約 14–16.5 nT；71.6–68 ka 強度掉 60–65% 卻沒有方向變化）；Discussion 末段與 Conclusions（今日下降率與 Laschamp 幾乎相同；以目前速率約 1000 年才降到一半；即使加速一倍也要約 500 年方向才開始明顯變化，接著約 600 年）",
+      "summary": "作者用北大西洋沉積物與格陵蘭冰芯的鈹-10、氯-36 紀錄，把 7.5 萬年來的地磁強度排到精確年代上。約 4.1 萬年前的 Laschamp 偏移：方向變化前後只花 640 年（每轉 180° 約 320 年），但強度低於平常一半的期間長達 1500–3000 年，而且掉得比回升快約一倍；約 7.16 萬到 6.8 萬年前強度掉了 60–65%，卻沒有發生方向變化。作者認為今天的下降速率和 Laschamp 前段幾乎一樣，『不可逆的過程可能已經開始』；但以目前速率要約 1000 年才降到一半，就算加速一倍，也要約 500 年後方向才會開始明顯改變。",
+      "limitations": "作者自己說是在『未來會像 Laschamp』的假設下暫定推估（tentatively suggest）；與 F99-S006 的結論相反，片中並列。文末哥倫布的比喻是作者的修辭，不入片。編輯是 F99-S007 的共同作者 De Santis（審稿關係，不視為同群）。 覆核 V102（2026-11-12）：limitations 加：審稿人含 J. Tarduno（F99-S010）；『與 1840 年以來幾乎相同』比的是 Laschamp 偏移期間的下降率，作者自稱時間尺度不同、不易直接比。",
+      "author_cache": {
+        "file": "f99src/laj2015_frontiers.txt",
+        "sha256_prefix": "4a5223267b0c821e",
+        "raw_file": "f99src/laj2015_frontiers.pdf",
+        "raw_sha256_prefix": "062c9f598b8673f2",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "E74-S065",
+      "url": "https://www.esa.int/Applications/Observing_the_Earth/FutureEO/Swarm/Swarm_probes_weakening_of_Earth_s_magnetic_field",
+      "canonical_url": "https://www.esa.int/Applications/Observing_the_Earth/FutureEO/Swarm/Swarm_probes_weakening_of_Earth_s_magnetic_field",
+      "title": "Swarm probes weakening of Earth's magnetic field",
+      "publisher": "歐洲太空總署 ESA（2020-05-20，頁面標示 ARCHIVE CONTENT）",
+      "version": "官方新聞頁",
+      "read_via": "WebSearch 結果網址，curl 下載（伺服器自行轉到 esa.int/articles/… 路徑），python 去標籤轉文字",
+      "reading_scope": "全文正文",
+      "locator": "第 4–6 段（過去 200 年全球平均場強少約 9%；1970–2020 年 SAA 最低值由約 24,000 降到 22,000 nT，面積擴大並以每年約 20 km 西移；近五年非洲西南方出現第二個最低中心）",
+      "summary": "ESA 寫：過去 200 年地磁場的全球平均強度少了約 9%；1970 到 2020 年南大西洋異常的最低值從約 24,000 降到 22,000 nT，面積擴大、每年約西移 20 km；近五年在非洲西南方出現第二個最低中心，可能分成兩個。",
+      "limitations": "新聞頁，屬入口；只取 9%／200 年與 1970–2020 最低值兩個數字，其餘與 F99-S003／S004 重疊不重算。頁中引述 GFZ 研究者，與 F99-S006（GFZ 共同作者）合計封頂。頁中『偶極傾斜約 11°』與 WMM 的 9.21° 定義與年份不同，不引用。 覆核 V102（2026-11-12）：limitations 加：同頁『約 25 萬年翻一次』與 F99-S007 的 40 萬年不同，不引用；同頁也寫 SAA 的強度下降『在正常波動範圍內』。",
+      "author_cache": {
+        "file": "f99src/esa_swarm2020.txt",
+        "sha256_prefix": "e464fb0d89df6141",
+        "raw_file": "f99src/esa_swarm2020.html",
+        "raw_sha256_prefix": "5c04a330cde3351c",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "E74-S066",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4525173/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/ncomms8865",
+      "title": "Antiquity of the South Atlantic Anomaly and evidence for top-down control on the geodynamo",
+      "publisher": "Nature Communications 6:7865（2015）；Tarduno（羅徹斯特大學）、Watkeys、Huffman、Cottrell、Blackman、Wendt、Scribner、Wagner",
+      "version": "出版社開放取用版（CC BY-NC-SA 4.0；PMC 收錄之 JATS 全文）",
+      "read_via": "WebSearch 結果給出 PMCID PMC4525173；以 Europe PMC REST（文件記載 API）/webservices/rest/PMC4525173/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "全文（摘要、引言、Results 三小節、Discussion、Methods、圖說）；補充資料未讀",
+      "locator": "引言第 2 段（南部非洲鐵器時代農村的儀式性清潔會燒掉茅屋、穀倉與牛欄，燒到至少 1000 °C；Baobab 1013–1047、Icon 1317–1415、Kolope 1507–1585 AD）；Directional data（1030–1225 AD 每年 0.06°，1225–約 1550 AD 每年 0.11°–0.12°，1840 年後約 0.07°）；Palaeointensity（保守估計每年 −0.054±0.036 µT，大於 1840 年以來的 −0.036 µT/yr，且降到比今天低）；Discussion 末段（作者推測非洲底下 LLSVP 邊緣可能是長期觸發翻轉的地點）",
+      "summary": "南部非洲鐵器時代的農村在儀式性清潔時會把茅屋、穀倉和牛欄燒掉，地板被燒到至少 1000 °C，冷卻時記下當時地磁的方向與強度。研究者從三個遺址得到約西元 1000–1600 年的紀錄：方向在 1225 到約 1550 年每年變 0.11°–0.12°，比 1840 年以來的約 0.07° 還快；強度在 1250 年後急降，保守估計每年 −0.054 µT，大於 1840 年以來的 −0.036 µT，而且降到比今天還低，之後又回升。作者因此認為南大西洋異常這種低場在當地會反覆出現，並推測與地函底部一塊巨大低速區的邊緣有關，可能是長期觸發翻轉的地點。",
+      "limitations": "只有三個遺址、四個方向時窗；陶片的 Thellier–Coe 成功率只有約 3%。『觸發翻轉的地點』是作者的推測（we propose／conjecture），不是觀測結論；片中不寫成『翻轉從非洲開始』。 覆核 V102（2026-11-12）：limitations 加：強度來自陶片、方向來自燒過的地板；保守速率 −0.054±0.036 µT/yr 的誤差與 1840 年以來的 −0.036 同大。",
+      "author_cache": {
+        "file": "f99src/PMC4525173.txt",
+        "sha256_prefix": "16511dc07c3e35e9",
+        "raw_file": "f99src/PMC4525173.xml",
+        "raw_sha256_prefix": "1d5d9e6abf150487",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "E74-S067",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6685714/fullTextXML",
+      "canonical_url": "https://doi.org/10.1126/sciadv.aaw4621",
+      "title": "Synchronizing volcanic, sedimentary, and ice core records of Earth's last magnetic polarity reversal",
+      "publisher": "Science Advances 5:eaaw4621（2019）；Singer、Jicha（威斯康辛大學麥迪遜分校）、Mochizuki（熊本大學）、Coe（加州大學聖塔克魯茲）",
+      "version": "出版社開放取用版（CC BY-NC 4.0；PMC 收錄之 JATS 全文）",
+      "read_via": "WebSearch 結果給出 PMCID PMC6685714；以 Europe PMC REST（文件記載 API）fullTextXML 取全文，python 去標籤轉文字",
+      "reading_scope": "摘要、Introduction、Results 各段（Chile、Guadeloupe、Punaruu、La Palma、Haleakala 定年）、Discussion（Evolution of geodynamo instability 一節與數值模擬比較）；Methods 與補充資料未讀",
+      "locator": "Abstract（約 79.5 萬年前開始減弱、約 78.4 萬年前偏移、約 77.3 萬年前最終翻轉；整個過程約 2.2 萬年）；Results（Chile 六道轉換期熔岩 784±2 ka，其中四道虛擬偶極矩低於 2×10²² Am²；對照布容期最近 10 萬年平均 6.83×10²²）；Discussion 第 1 段（最終翻轉在 4000 年內完成；整個過程至少 2.2 萬年、可能長達 3 萬年；與 Valet 等『三次崩潰在 9000 年內』的假說不同）",
+      "summary": "作者把夏威夷、大溪地、智利、拉帕爾馬等地轉換期熔岩的氬-氬定年，和有天文定年的海洋沉積物、南極冰芯鈹-10 對齊，重建上一次地磁翻轉（Matuyama–Brunhes）：約 79.5 萬年前場先變弱、出現短暫偏移，約 78.4 萬年前再次偏移、場又變弱，之後一萬多年方向亂跳，最後在約 77.3 萬年前、不到 4000 年內完成 180° 翻轉。整個過程至少 2.2 萬年、可能長達 3 萬年；智利那批熔岩的虛擬偶極矩有四道低於 2×10²² Am²，約為最近 10 萬年平均的三成以下。",
+      "limitations": "過程長度靠多種紀錄對齊，作者寫可能 2.2–3 萬年；『三成以下』是 2×10²² 與 6.83×10²² 兩個原文數字並列，片中直接說兩個數字，不說成倍數。只有一次翻轉，不能推到所有翻轉。",
+      "author_cache": {
+        "file": "f99src/PMC6685714.txt",
+        "sha256_prefix": "4be14b26105f2b9c",
+        "raw_file": "f99src/PMC6685714.xml",
+        "raw_sha256_prefix": "a26bf9cea2217ce6",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "E74-S068",
+      "url": "https://geomag.bgs.ac.uk/education/poles.html",
+      "canonical_url": "https://geomag.bgs.ac.uk/education/poles.html",
+      "title": "Magnetic Poles",
+      "publisher": "British Geological Survey 地磁組",
+      "version": "官方教育頁（含 IGRF-14 1900–2030 極位置表）",
+      "read_via": "F99-S004 報告內文列出的網址，curl 原樣下載，python 去標籤轉文字",
+      "reading_scope": "全文（含極位置表）",
+      "locator": "第 1–4 段（傾角極、地磁極定義；傾角極一天內走出橢圓軌跡；地殼磁場也造成差異）；極位置表（1900.0 北傾角極 70.46°N、−96.19°）",
+      "summary": "BGS 說明：傾角極是磁場垂直的點，南北兩個不必對蹠；地磁極是模型中虛構的中心偶極軸與地表的交點，無法實地量到。實際上傾角極受太陽風驅動的磁層電流影響，每天會畫出橢圓形軌跡、天天不同，地殼的磁性岩石也會讓量到的位置和模型不同。",
+      "limitations": "與 F99-S003／S004 同一團隊，只作背景與畫面資料，不另計條數。",
+      "author_cache": {
+        "file": "f99src/bgs_poles.txt",
+        "sha256_prefix": "0313cd075db3c7aa",
+        "raw_file": "f99src/bgs_poles.html",
+        "raw_sha256_prefix": "95a451220ac1bce7",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "E74-S069",
+      "url": "https://www.ncei.noaa.gov/products/wandering-geomagnetic-poles",
+      "canonical_url": "https://www.ncei.noaa.gov/products/wandering-geomagnetic-poles",
+      "title": "Wandering of the Geomagnetic Poles",
+      "publisher": "NOAA NCEI",
+      "version": "官方產品頁",
+      "read_via": "F99-S004 報告內文列出的網址，curl 原樣下載，python 去標籤轉文字",
+      "reading_scope": "全文",
+      "locator": "Experimental Observations of Dip Poles 段（1831 年 Ross；加拿大 NRCan 1948–1994 調查；2001、2007 年 Poly-Arctique 合作；最近一次調查約每年 55 km 向北北西）",
+      "summary": "NCEI 簡述北傾角極的實地調查史：1831 年 Ross 首次定位；加拿大自然資源部 1948–1994 年定期調查；2001、2007 年法國民間 Poly-Arctique 計畫與 NRCan、IPGP 等合作再加兩點，最近一次調查顯示約每年 55 km 向北北西移動。",
+      "limitations": "與 F99-S003 同一團隊；『55 km』與 F99-S002 原文『略多於 50 km』說法不同，片中用原研究的數字，本頁只作調查史入口，不另計條數。",
+      "author_cache": {
+        "file": "f99src/ncei_wandering.txt",
+        "sha256_prefix": "e81a3c2eb308f9bd",
+        "raw_file": "f99src/ncei_wandering.html",
+        "raw_sha256_prefix": "73fa848ff4961329",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "E74-001",
+      "question": "地面氣溫已經 4、5 °C，為什麼落下來的還是雪？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.subsaturated_surface_snow_above_freezing_critical_humidity",
+      "answer_target": "日本氣象研究所分析輪島、松本、日光三個測候所的冬季地面觀測：濕度越低，同樣氣溫下越常是雪；濕度 60% 以下時，地上氣溫 4–6 °C 仍見降雪。每個氣溫都有一個臨界濕度，低於它時降水全是雪，三站的臨界濕度都隨地上氣溫直線下降（輪島 RHcri＝−7.5T＋93）。作者用自己先前的熱量計算解釋：乾空氣裡雪片表面昇華，把自己冷到冰點以下。",
+      "scope": "日本三站地面統計（三站資料期間不同，降水型態為人員目視）；當時氣象廳以 2.5 °C 判別只當背景、標明是引用；不給出行或防災建議。",
+      "source_ids": [
+        "E74-S002"
+      ],
+      "source_locator": "F84-S002 摘要、第 1–2 節、第 5 節",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：2.5 °C 判別是引用氣象廳手冊，不算本篇事實。松尾群（S002＋S003）合計 1.25。 原提案 F84-001（目標 F84-T1，原角色 hook；依本池欄位記為 segment）。非作者覆核 V87（2026-11-12）改字後收；數字、條件都在原文；把引用的 2.5 °C 從計數拿掉。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為 0 °C 以上就只會下雨，第一個反例就是 5 °C 的雪。",
+        "visual": "溫濕度散布圖重畫：雪點越乾越往右延伸，加一條斜的臨界濕度線。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "E74-002",
+      "question": "雪片掉進 0 °C 以上的空氣，為什麼不會馬上融化？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.snowflake_sublimation_cooling_nonmelting_layer_depth",
+      "answer_target": "松尾與佐粧用自己做的雪片融化速率經驗式計算：在 0 °C 高度以下的飽和空氣裡，雪片一越過 0 °C 就開始融化，相當於 1–5 mm 雨滴的雪片在幾百公尺內融完；在未飽和空氣裡，雪片表面昇華把自己冷到冰點以下，要往下落一段才開始融，這段『不融化層』隨濕度下降近似線性變厚：相對濕度 90% 約 120 m、50% 約 700 m。",
+      "scope": "理論計算（假設遞減率 6 °C/km、0 °C 以下濕度固定、雪片不碰撞不碎裂）；數字取自摘要；長岡落速觀測不入稿。",
+      "source_ids": [
+        "E74-S003"
+      ],
+      "source_locator": "F84-S003 摘要；第 2 節",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：只採不融化層厚度與濕度；落速觀測離題、且正文未讀，不算。 原提案 F84-002（目標 F84-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V87（2026-11-12）改字後收；原文支持；刪掉離題的落速段並標明是計算。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把『為什麼乾空氣會下雪』從統計變成一顆雪片的熱量帳。",
+        "visual": "一顆雪片穿過 0 °C 線，兩欄並排：濕空氣裡很快變水滴、乾空氣裡多走 700 m 才開始濕。",
+        "seconds": [
+          50,
+          70
+        ]
+      }
+    },
+    {
+      "id": "E74-003",
+      "question": "羽田機場統計十幾年的降水，雨和雪是在幾度分開的？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.haneda_rain_snow_temperature_humidity_scatter_1487",
+      "answer_target": "東京航空地方氣象台統計羽田 2000 年 11 月至 2012 年 4 月 1,487 筆降水的地上氣溫與濕度：地上 3 °C 以下、濕度 80% 以上時雨雪可能混在；3～5 °C 時濕度低仍可能是雪。",
+      "scope": "官方科普刊物的統計；上空 1,500 m／5,500 m 的『目安』是預報經驗值、不入稿；不帶航空或交通建議。",
+      "source_ids": [
+        "E74-S004"
+      ],
+      "source_locator": "F84-S004 第 2 節與第 2 圖圖說",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：與 F84-001 同一答案方向，只新增『近年首都圈也一樣』；上空目安是經驗值、與題目的地面問題無關。 原提案 F84-003（目標 F84-T1，原角色 hook；依本池欄位記為 segment）。非作者覆核 V87（2026-11-12）改字後收；數字正確；與 F84-001 重疊，降為 0.25 並刪去上空目安。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把 1981 年的結論拉到近年的首都圈。",
+        "visual": "羽田跑道示意＋兩個條件框（3 °C/80%、3～5 °C/乾）。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "E74-004",
+      "question": "雨雪各半的那個氣溫，在世界各地都一樣嗎？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.rain_snow_50pct_threshold_spatial_continental_maritime",
+      "answer_target": "科羅拉多大學 Jennings 等用北半球 11,924 個測站 1978–2007 年約 1,780 萬筆人工降水型態報告，求每站雨雪各半的地面氣溫：6,883 個可擬合的測站平均 1.0 °C，95% 落在 −0.4～2.4 °C；大陸性與山地較高（美國山間區與洛磯山接近 3.8 °C，青藏高原周邊接近 4.5 °C），海洋性與低地較低，墨西哥灣影響區常在冰點以下就下雨。",
+      "scope": "觀測門檻的地理差異；講『測站』不講『每一筆觀測』；不談未來趨勢。",
+      "source_ids": [
+        "E74-S001"
+      ],
+      "source_locator": "F84-S001 Results 第一節與 Fig. 1",
+      "premise_status": "screened",
+      "notes": "算 0.75（同作者）。Jennings 群合計 1.5。 原提案 F84-004（目標 F84-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V87（2026-11-12）改字後收；數字全部在原文；補上 6,883 站與 11,924 站的差別，避免把平均說成 1,780 萬筆的平均。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "轉折一的主證據：『0 °C 分雨雪』不只不準，而且各地差好幾度。",
+        "visual": "北半球地圖上的測站點，顏色由藍到紅，青藏高原與洛磯山特別紅。",
+        "seconds": [
+          50,
+          70
+        ]
+      }
+    },
+    {
+      "id": "E74-005",
+      "question": "同樣 2.5 °C，空氣乾一點，下雪的機會差多少？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.rain_snow_threshold_relative_humidity_bins",
+      "answer_target": "同一批北半球觀測按相對濕度分級：雨雪各半的氣溫從 40–50% 的 4.5 °C 降到 90–100% 的 0.7 °C，濕度每多 10% 門檻約低 0.8 °C；2.5 °C 時最乾一級下雪的機率是最濕一級的 30 倍以上。氣壓（海拔）也有影響但小得多：各級只差 1.0 °C，濕度各級差 3.8 °C。",
+      "scope": "數字照原文分級；不換算成其他倍數。",
+      "source_ids": [
+        "E74-S001"
+      ],
+      "source_locator": "F84-S001〈Meteorological controls〉與 Fig. 2 圖說",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）。旁白若引 Jennings 的機制要說『蒸發冷卻』，昇華的說法留給松尾。 原提案 F84-005（目標 F84-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V87（2026-11-12）照原稿收；數字、條件與分級都在原文；與 F84-001 方向相同，作者已壓到 0.5，合理。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把日本三站的結論放大到半個地球，並給出『乾 10% ≈ 暖 0.8 °C』的直覺。",
+        "visual": "六條 S 形曲線依濕度排開。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "E74-006",
+      "question": "日本靠海，為什麼雨雪門檻反而比北半球平均高？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.japan_sea_airmass_high_rain_snow_threshold_model_default",
+      "answer_target": "Jennings 等的測站資料裡，日本雖屬海洋性氣候，雨雪各半的氣溫卻普遍高於北半球平均。作者引前人研究說明：西伯利亞冷氣團越過日本海時，降水粒子在氣團上層形成、溫度遞減率變陡，地面量到的溫度比雪形成處暖得多，雪晶較不易融化。",
+      "scope": "日本高於平均是本篇觀測；原因是作者引用前人（文獻 50–52）的解釋，旁白要標明；成功率與 VIC 模式預設不入稿（屬方法比較，與 F84-007 重疊）。",
+      "source_ids": [
+        "E74-S001"
+      ],
+      "source_locator": "F84-S001 Results 第一節末；Fig. 4 段；Discussion",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：成功率與模式預設刪去；原因是引用前人。 原提案 F84-006（目標 F84-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V87（2026-11-12）改字後收；日本例外成立，但原因是引用；方法成功率與 F84-007 重疊而刪。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "和台灣觀眾熟悉的日本雪國接上，順勢交代『加了濕度也只到七成』。",
+        "visual": "日本海上空冷氣團剖面示意。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "E74-007",
+      "question": "用濕球溫度取代氣溫，雨雪就判斷得準了嗎？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.catalonia_wet_bulb_threshold_modest_gain_event_variability",
+      "answer_target": "巴塞隆納大學與加泰隆尼亞氣象局用九個冷季、7,702 筆品管後觀測比較七種地面雨雪判別方案：把空氣飽和程度算進去的方案最好，濕球溫度 0.7 °C 對『雪／非雪』的技術得分 0.77，只用氣溫（最佳 1.3 °C）是 0.72。分析兩場降雪時，最適門檻在不同事例之間、甚至同一場裡的不同時段都會變。",
+      "scope": "只講判別方法的比較；不寫監測建議與公民科學段；不給預報或防災建議。",
+      "source_ids": [
+        "E74-S006"
+      ],
+      "source_locator": "F84-S006 第 3.1 節摘要、表 3、兩事例表",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：濕度較好與 F84-001／F84-005 同方向，只新增『差距不大』與『同場會變』。巴塞隆納群只此一篇。 原提案 F84-007（目標 F84-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V87（2026-11-12）改字後收；數字正確；『濕度重要』已被三篇說過，下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "修正『換成濕球就解決』的期待：好一點，不是萬用尺。",
+        "visual": "兩根溫度計（乾、濕）＋兩個得分條 0.72／0.77。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "E74-008",
+      "question": "在青藏高原邊上，日平均氣溫 4 °C 還算下雪天嗎？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.heihe_daily_mean_two_season_threshold",
+      "answer_target": "黑河上游六站用日平均氣溫判別雨雪，逐一試 3.0–5.5 °C：11 月至翌年 4 月最佳門檻 4.5 °C，5–10 月 3.6 °C。",
+      "scope": "門檻是日平均氣溫，不能和 Jennings 的逐筆地面氣溫 4.5 °C 並列比較（只是數字巧合）；不談氣候趨勢。",
+      "source_ids": [
+        "E74-S007"
+      ],
+      "source_locator": "F84-S007 2.3 節與結果段",
+      "premise_status": "screened",
+      "notes": "算 0.25（同作者）。列入 drop_if：若片長不足以說清日平均與瞬時氣溫的差別，整條刪。 原提案 F84-008（目標 F84-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V87（2026-11-12）改字後收；數字正確；最大風險是觀眾把兩個 4.5 °C 當成同一件事。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "給高原一個具體的數字，並引出『用日平均看會更模糊』。",
+        "visual": "高原山谷地圖＋兩段門檻條。",
+        "seconds": [
+          20,
+          30
+        ]
+      }
+    },
+    {
+      "id": "E74-009",
+      "question": "看一整天的平均氣溫，和看每 15 分鐘，雨雪的分界一樣清楚嗎？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.precip_phase_transition_width_timescale_hydrometeor_temperature",
+      "answer_target": "薩斯喀徹溫大學在加拿大洛磯山 Marmot Creek 多年的 15 分鐘觀測：用氣溫看，雨雪混在的過渡區在 15 分鐘尺度約 4.9 °C 寬、用日平均時約 10.7 °C 寬；改用由落下粒子的質量與能量平衡算出的『水凝物溫度』，過渡區縮到 2.9 °C（15 分鐘）與 7.6 °C（日），判別也比只用氣溫準，時距越短越好。",
+      "scope": "只用判別與時間尺度的結論；水文影響數字不用。",
+      "source_ids": [
+        "E74-S008"
+      ],
+      "source_locator": "F84-S008 摘要；第 5 章",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：作者把水凝物溫度的數字寫成氣溫，已改；本條是方法學，與 F84-007 同屬『換變數只改善一點』。 原提案 F84-009（目標 F84-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V87（2026-11-12）改字後收；數字主詞錯（T_i 誤作 T_a），已改正並下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "說明為什麼各研究的門檻數字差那麼多：量的時間尺度不同。",
+        "visual": "同一場降水畫成 15 分鐘曲線與一天一點的對比。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "E74-010",
+      "question": "下雨天的氣溫為什麼常常剛好停在 0 °C 出頭？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.amedas_near_zero_temperature_frequency_peak_melting",
+      "answer_target": "氣象研究所藤部文昭用 808 個 AMeDAS 自動站 19 年的逐時資料：有降水時，地面氣溫的出現頻率在略高於 0 °C（平均 0.3 °C）處有一個明顯高峰，沒有降水時沒有；作者認為這是雪粒融化吸熱造成的。高峰在全部降水平均高出鄰近溫度區間 122%，前一小時降水 1 mm 時 89%、較強降水 200–300%，無風的強降水可達數百到一千 %；風大時明顯變低，作者認為亂流混合會破壞 0 °C 等溫層。高峰幾乎只跟最近兩小時的降水有關，降水停後幾小時內消退；關東平原內陸最明顯，作者也指出那裡常有淺層冷空氣滯留。",
+      "scope": "統計證據；等溫層厚度（平均幾百公尺、無風強降水約 1 km）是作者用簡化假設推估，只能說『作者估計』；第 2–7 頁的資料處理與圖未讀。",
+      "source_ids": [
+        "E74-S009"
+      ],
+      "source_locator": "F84-S009 摘要；第 7 節 Summary (1)–(5)",
+      "premise_status": "screened",
+      "notes": "算 1.0（作者 1.25）：只讀摘要、討論末段與 Summary，關東內陸那句同時有冷空氣滯留的解釋，不另算。藤部與松尾、佐粧：同機構、相隔 20 年、無共同作者、不同研究室（松尾致謝氣象研究所物理氣象研究部），判為不同研究群。 原提案 F84-010（目標 F84-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V87（2026-11-12）改字後收；數字逐一在影像上；補上作者自己對關東的『冷空氣滯留』解釋，避免把高峰全講成融化。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "轉折二的主證據：不是先冷了才下雪，是降水自己把氣溫拉到 0 °C。",
+        "visual": "氣溫直方圖在 0.3 °C 冒出一根尖柱，旁邊無降水的直方圖是平的。",
+        "seconds": [
+          60,
+          75
+        ]
+      }
+    },
+    {
+      "id": "E74-011",
+      "question": "同樣是關東下雪，為什麼有時 2 °C 就轉雪，有時要等到 1 °C？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.kanto_type1_type2_rain_snow_transition_near_zero_layer",
+      "answer_target": "防衛大學校用 1995、1996 年關東八次降水，加上東京鐵塔與筑波山的氣溫：一種是地上較暖、較乾就開始下雪，地上 2 °C 時降水大多是雪，降水少、近地面接近 0 °C 的高度層很薄；另一種要低溫、高濕才轉雪，2 °C 時常仍是雨、要到 1 °C 才大多變雪，降水量多（約每小時 1 mm 以上），東京鐵塔看得到 0 °C 附近的等溫層。作者認為後者是雪融化的冷卻造成的，前者降水少，融化冷卻不足以形成等溫層。",
+      "scope": "八個事例的分類與作者解釋；飛行場氣溫以 1 °C 為單位；氣象廳判別溫度是引用、不入稿；不給交通建議。",
+      "source_ids": [
+        "E74-S005"
+      ],
+      "source_locator": "F84-S005 要旨、第 1 節、第 3 節開頭與第 2 圖",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：引用的判別溫度與 4 °C／60–70% 的濕度重疊不算；改寫成以作者自己的融化冷卻解釋接轉折二。防衛大學校群只此一篇。 原提案 F84-011（目標 F84-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V87（2026-11-12）改字後收；數字正確；作者漏讀了討論裡最有用的一句，已補入；引用背景不計。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把『乾冷』與『濕、量大而厚 0 °C 層』兩條路並排，接到融化降溫。",
+        "visual": "東京鐵塔與筑波山的溫度剖面兩型並排。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "E74-012",
+      "question": "山谷裡下雪時的氣溫曲線，雨一停會怎麼變？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.julian_alps_valley_precip_pins_zero_rebound_after",
+      "answer_target": "盧布爾雅那大學在朱利安阿爾卑斯山兩條谷地（725–1,390 m）每 15 分鐘記錄氣溫，分析 2015/16、2016/17 兩個冬季七次『雪線下降』事件：兩谷的降溫幾乎同時發生；以其中一次為例，降水時氣溫被壓在 0～0.5 °C，降水一停就回升到 2、3 °C；另一次事件中 Planica 谷在降水期間停在 −0.5～+0.5 °C。要等之後的冷平流，氣溫才降到 0 °C 以下。作者把這種降溫歸於融雪的潛熱冷卻。",
+      "scope": "溫度紀錄的描述；『融雪造成』是作者解讀（文中沒有直接量融化）；降水量取自數公里外的國家測站；不碰雪崩或交通安全。",
+      "source_ids": [
+        "E74-S010"
+      ],
+      "source_locator": "F84-S010 第 3 節事例 1、3、5、6",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：兩谷同步不另算；0～0.5 °C 改成事例而非通則。盧布爾雅那群只此一篇。 原提案 F84-012（目標 F84-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V87（2026-11-12）改字後收；數字在原文，但作者把單一事例的 0～0.5 °C 寫成通則；改正並下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把 F84-010 的統計放進一條真實的山谷，看得到『雨停就回暖』。",
+        "visual": "兩條溫度曲線＋降水柱，降水時曲線貼著 0 °C 走。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "E74-013",
+      "question": "為什麼山谷比平原容易被融雪冷到下雪？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.valley_volume_effect_melting_cooling_bifurcation",
+      "answer_target": "理想化模擬：谷地初始 0 °C 高度遠低於山脊時，谷內空氣與外界脫鉤，融雪所需熱量不斷從谷內取走，直到雪線降到谷底；山體占去體積讓所需降水比平原少，但少得不如幾何體積比例。若暖平流超過某一門檻就不會降溫，兩種結果之間的過渡很窄，作者認為實際預報不確定性大。",
+      "scope": "模式結果，標明為模擬。",
+      "source_ids": [
+        "E74-S011"
+      ],
+      "source_locator": "F84-S011 Summary；第 2 節",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者），全部取自 Summary 與第 2 節分析段；旁白要說『理想化模擬』，並可補一句模擬中的體積效應比解析計算還小。 原提案 F84-013（目標 F84-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V87（2026-11-12）照原稿收；原文支持，計數已保守。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "說明為什麼『融雪降溫』偏愛山谷。",
+        "visual": "V 形谷與平原各畫一個要被冷卻的空氣盒子。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "E74-014",
+      "question": "迎風山坡上的雪線比遠處低，是融雪把空氣冷下來的嗎？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.windward_snowline_drop_melting_cooling_minor_share",
+      "answer_target": "華盛頓大學用半理想化的數值模式模擬氣流越過山脊：迎風坡上的雪線比上游自由大氣的 0 °C 高度低 267 m。把融雪吸熱從模式拿掉，0 °C 高度的下降少了 43%，但雪線的下降只少 14%（221 m 變 190 m）；作者算出 267 m 裡歸給融雪冷卻的約 61 m，並指出這和前人把融雪冷卻當主因的看法不同：強風下空氣只在融化區待約 10 分鐘，冷不下來；上升氣流的絕熱冷卻與雪片融化所需距離的空間差異同樣重要。",
+      "scope": "數值模擬，非觀測；不說『融雪冷卻占 14%』；微物理參數化與氣候暖化推論不入稿。",
+      "source_ids": [
+        "E74-S012"
+      ],
+      "source_locator": "F84-S012 摘要；第 3 節控制模擬與 no Qmelt 實驗",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：微物理選擇一項與題目無關不算。華盛頓大學群只此一篇。 原提案 F84-014（目標 F84-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V87（2026-11-12）改字後收；數字正確，但要防止『占 14%』的誤讀；補上 10 分鐘停留時間這個原文數字。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "轉折二的反轉：融雪降溫要空氣待得住；風一直吹的山坡上，它只是配角。",
+        "visual": "同一座山兩次模擬的雪線，一條有融雪冷卻、一條沒有，只差一點點。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "E74-015",
+      "question": "雷達怎麼看得出空中有一層雪正在融？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.niigata_le1c_no_snow_increase_radar_melting_layer_signature",
+      "answer_target": "偏波雷達在融化層裡把部分融化的雪片看成又大又扁的水滴：水平反射因子與反射因子差變大、偏波相關係數變小，仰角掃描時呈一圈『亮帶』，京大等研究者用它來推估冬季的 0 °C 高度。",
+      "scope": "只用雷達融化層特徵；新潟『四成沒積雪』因原文自承不等於下雨而不採用；鐵道著雪與安全對策不入稿。",
+      "source_ids": [
+        "E74-S013"
+      ],
+      "source_locator": "F84-S013 第 1 節與 Fig. 1；第 2 節",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：積雪深統計的限制太大，刪。鐵道總研／京大群只此一篇。列入 drop_if。 原提案 F84-015（目標 F84-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V87（2026-11-12）改字後收；積雪深那半條原文自己就說不能當雨的證據，刪；只留雷達亮帶。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "說明為什麼要看『上空』：雷達亮帶就是空中正在融化的雪。",
+        "visual": "雷達 PPI 上的一圈亮環。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "E74-016",
+      "question": "沙漠低鳴和海灘吱吱聲，是同一種會唱的沙嗎？",
+      "domain": "生活聲學與樂器物理",
+      "mechanism_key": "acoustics.booming_dune_two_sand_types_squeak_vs_boom_water_opposite",
+      "answer_target": "不是同一種。1997 年密西根大學的綜述把會發聲的沙分兩類：海灘、湖岸、河床常見的吱聲沙，被踩或壓時吱一下，不到四分之一秒、500–2500 Hz；少見、多在沙漠深處大沙丘的鳴沙，崩落時發出通常 50–300 Hz 的低沉聲音，綜述寫最遠可在 10 公里外聽到。兩者對水的反應也不同：鳴沙要非常乾，最好是上次下雨後幾週。作者寫兩種都還沒有令人滿意的解釋。",
+      "scope": "綜述框架；個別數字多引自他人。『吱聲沙剛洗過再晾乾最易響』移到轉折二那一章才講，開場不先說，否則轉折二被提前揭曉。",
+      "source_ids": [
+        "E74-S021"
+      ],
+      "source_locator": "p.329 摘要與 §1",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）。 原提案 F85-001（目標 F85-T1，原角色 hook；依本池欄位記為 segment）。非作者覆核 V88（2026-11-12）改字後收；原文相符；只把『洗過最易響』從開場移走，避免先講掉轉折二，問題句改成不預設『風』的版本（『不是風』是 F85-002 的答案）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為沙丘會響是傳說，其實有兩種會響的沙，而且一種怕水、一種愛洗澡。",
+        "visual": "左邊海灘腳踩吱一聲的短波形，右邊沙丘滑落的長波形；一滴水落在兩邊，效果相反。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "E74-017",
+      "question": "沙丘的低鳴是風吹出來的，還是沙子自己滑出來的？",
+      "domain": "生活聲學與樂器物理",
+      "mechanism_key": "acoustics.booming_dune_avalanche_relative_grain_motion_not_wind",
+      "answer_target": "風不是聲源，這在 2006 年已是研究者的共識；巴黎與摩洛哥的團隊在摩洛哥、智利、中國、阿曼直接觀察後再排除兩種說法：聲音不是整塊沙一頓一頓滑動造成的（只有乾的、自由流動的沙才會響），也不是沙丘內部的共鳴，因為同一座沙丘不同位置、同一沙場大小不同的沙丘量到同一個頻率；每個沙場有自己的粒徑和頻率（摩洛哥 160 µm 實測 105±10 Hz；智利 Cerro Bramador 270 µm，75±10 Hz）。他們在摩洛哥一座鳴沙丘的滑落面築了附閘門的槽做受控崩落，三次實驗中沙面流速低於每秒 0.23 公尺時聲音就停。",
+      "scope": "『不是風』原文寫成既有共識，不說成本篇證明；只用作者自測三列；0.23 m/s 是一座沙丘、三次實驗。",
+      "source_ids": [
+        "E74-S014"
+      ],
+      "source_locator": "摘要；第 1 頁正文；Table I；Fig. 4 圖說",
+      "premise_status": "screened",
+      "notes": "條數 0.75，但歸入合併後的巴黎群（Douady／MSC＋Andreotti／PMMH），群內封頂 2.0。 原提案 F85-002（目標 F85-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V88（2026-11-12）改字後收；數字、條件對得上；改掉『2006 年觀察證明不是風』的錯置（原文把它當已知前提），補上本篇真正排除的兩種說法。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "聲音跟著沙崩落的速度開關，不跟著風。",
+        "visual": "沙丘滑落面上一條木板圍出的槽，閘門一拉沙流下，聲壓曲線跟著流速一起起落。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "E74-018",
+      "question": "用刮板在槽裡推沙，音高由推多快、還是推多深決定？",
+      "domain": "生活聲學與樂器物理",
+      "mechanism_key": "acoustics.booming_sand_lab_blade_frequency_set_by_shear_rate",
+      "answer_target": "兩者都不是單獨決定。巴黎團隊把摩洛哥會唱的沙放進直徑 1 公尺、寬 25 公分的環形槽，用馬達帶刮板推沙，得到持續、音高穩定的聲音，音高能連續改變，所以不是槽子本身的共鳴。四組改深度、改速度的數據畫在一起，落在同一條線上：頻率只跟平均剪切率（速度除以推動的沙層高度）有關，大約是它的 10 倍；刮板慢於每秒約 0.47 公尺就不出聲。作者因此主張沙丘不是必要的共鳴箱。",
+      "scope": "『沙丘不必要』是作者結論；加州理工把這類實驗室聲音歸為『嗝』（F85-006），這點要在同章或下一章交代；不與 G400／X40-004（篩後剩一個主音）重講。",
+      "source_ids": [
+        "E74-S014"
+      ],
+      "source_locator": "第 1 頁正文第 2 段；Fig. 1–3 圖說",
+      "premise_status": "screened",
+      "notes": "條數 0.75，歸入合併後巴黎群（封頂 2.0）。 原提案 F85-003（目標 F85-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V88（2026-11-12）改字後收；原文相符；但原問題句『沒有沙丘只有一槽沙還唱得出嗎』與池中短題 G400 標題『離開整座沙丘，一盤沙子還能唱出好幾個音嗎』幾乎同句，改問本篇獨有的答案（剪切率）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "以為沙丘越大越會唱，結果一槽沙、一片刮板就唱了，音高由推多快、推多厚決定。",
+        "visual": "環形槽俯視，刮板繞圈推沙，旁邊音高計隨刮板速度升降；四條曲線疊成一條。",
+        "seconds": [
+          55,
+          65
+        ]
+      }
+    },
+    {
+      "id": "E74-019",
+      "question": "鳴沙的音高會不會隨沙丘大小或沙流厚薄改變？",
+      "domain": "生活聲學與樂器物理",
+      "mechanism_key": "acoustics.booming_dune_frequency_constant_across_dune_sizes_resonance_tested",
+      "answer_target": "PMMH 團隊說不會。他們 2002 年起去摩洛哥 13 趟，錄了約 20 次自然崩落和 100 次人為崩落，新月形沙丘高 4 到 42 公尺，不同地點、不同天氣，頻率都在同一個全音以內；只要崩落均勻穩定，換不同的流層厚度頻率也不變。他們自己量乾沙層的共振：50 公分深約 70 Hz，1 公尺深時幾乎看不出、低於 50 Hz，都比摩洛哥 100 Hz 的鳴聲低。他們還反過來說，加州理工那邊人推的崩落速度不穩，推一下停一下只會得到類似 70 Hz 的低頻『吱』，不能當成穩定鳴響的頻率。",
+      "scope": "評論文，量法在 auxiliary material（未讀）；共振數字不得與加州理工的數字相減；『對方是吱不是鳴』是 PMMH 的指控，與 F85-006 加州理工『實驗室是嗝』並列成雙方互指，不判誰對。",
+      "source_ids": [
+        "E74-S015"
+      ],
+      "source_locator": "[6]、[8]、[9]、Fig. 2",
+      "premise_status": "screened",
+      "notes": "條數 1.0，歸入合併後巴黎群（Daerr 為 Douady 2006 共同作者、Andreotti 與 Douady 2000／2002 合著），群內封頂 2.0。 原提案 F85-004（目標 F85-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V88（2026-11-12）改字後收；數字、單位、條件逐句相符；補上同篇 [8] 的反指控（使轉折一成為雙向爭議），刪掉『所以頻率不是任何一層的共振決定』這種總括句，改照原文分述。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "4 公尺和 42 公尺的沙丘唱同一個音，讓『沙丘是樂器箱』的直覺站不住。",
+        "visual": "並排兩座一高一矮的沙丘，各自的頻譜峰對齊在同一條線；旁邊一條 70 Hz 的共振線明顯低一截。",
+        "seconds": [
+          55,
+          65
+        ]
+      }
+    },
+    {
+      "id": "E74-020",
+      "question": "沙流只有幾公分厚，聲音是怎麼越滾越大的？",
+      "domain": "生活聲學與樂器物理",
+      "mechanism_key": "acoustics.booming_avalanche_shear_band_instability_vibrato_humidity_threshold",
+      "answer_target": "PMMH 團隊 2009 年用理論提出：崩落的沙層只有厘米級，它和靜止沙丘之間有一條很薄的剪切帶，彈性波在這條會摩擦的交界反射時會被放大，作者拿雷射來比喻。同年 7 月他們在摩洛哥 Sidi-Aghfinir 做 50 次受控崩落拿來對照：加速度計訊號都有低頻拍頻、帶顫音（一例中心 107 Hz）；把 25 次的數據合起來重建振動剖面，越過流動層和靜止層的交界，振幅掉一個數量級。",
+      "scope": "放大機制是理論；『響的門檻厚度隨濕度升高』原文引自他人研究，刪去，不當本篇量測；25 次與 50 次的關係原文沒寫，不說是其中 25 次。",
+      "source_ids": [
+        "E74-S016"
+      ],
+      "source_locator": "摘要；第 1 頁引言；第 4 頁 Field measurements；Fig. 5",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：濕度門檻不是本篇量測，扣 0.25。合併後巴黎群已超過 2.0，本條邊際為 0。 原提案 F85-005（目標 F85-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V88（2026-11-12）改字後收；把引自他人的『門檻隨濕度升高』寫成 2009 年 7 月野外結果，是把引文當本篇結果；刪去並下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沙的歌有顫音，因為不只一個模式同時在長。",
+        "visual": "沙流剖面動畫：上層流動、下層靜止，交界處一條細帶；波從前緣往後越來越大，頻譜上兩條靠近的峰造成拍頻。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "E74-021",
+      "question": "大沙丘的長鳴和手一推的短『嗝』，是同一種聲音嗎？",
+      "domain": "生活聲學與樂器物理",
+      "mechanism_key": "acoustics.booming_vs_burping_body_wave_vs_surface_wave_field_geophones",
+      "answer_target": "加州理工團隊說不是。他們在美國 Eureka 與 Dumont 大沙丘埋地震檢波器：一次人造崩落，前 1 到 3 秒是零碎、寬頻（50–90 Hz）的『嗝』，約 5 秒後訊號明顯變強，到第 15 到 17 秒集中在 80–90 Hz、帶泛音，功率約大 20 倍。手在沙面以每秒約 0.25 公尺推出約 5 公分深的剪切，只得到一陣陣短脈衝（76±14 Hz），一停手就停。他們量到『嗝』走約每秒 115 公尺的表面波，長鳴走約每秒 250 公尺的體波，結論是兩者是不同的現象；論文摘要並說，實驗室小規模剪切發出的聲音，頻率內容跟沙丘上的『嗝』相似。",
+      "scope": "兩個沙場、少數代表紀錄；『實驗室的是嗝』是加州理工的分類，Douady 2006 說實驗室聲音持續且音高穩定、PMMH 2008 說小規模也重現了持續鳴響——片中只能並列，結論是『沒有定論』。手推 0.25 m/s 與刮板 0.47 m/s 不同裝置，不比較。",
+      "source_ids": [
+        "E74-S017"
+      ],
+      "source_locator": "摘要；Fig. 1、Fig. 3 圖說；§II.A–B；§VIII",
+      "premise_status": "screened",
+      "notes": "算 1.0（同作者）；加州理工群合計 1.5。 原提案 F85-006（目標 F85-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V88（2026-11-12）改字後收；改掉『約 5 秒後轉成長鳴』（原文是 5 秒後訊號增強、15–17 秒才是 80–90 Hz 的長鳴），並把『實驗室只是嗝』明寫為加州理工摘要的說法，與巴黎兩組相反說法並列。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "實驗室那一槽沙唱的，可能只是『嗝』，不是沙丘的長鳴——兩派在吵的其實是兩種聲音。",
+        "visual": "同一段 32 秒的聲譜圖：左側零碎寬頻，右側一條亮線加泛音；標上『嗝』『鳴』。",
+        "seconds": [
+          55,
+          65
+        ]
+      }
+    },
+    {
+      "id": "E74-022",
+      "question": "鳴聲是只在表面幾公分，還是整層沙丘都在震？",
+      "domain": "生活聲學與樂器物理",
+      "mechanism_key": "acoustics.booming_dune_depth_of_vibration_two_groups_disagree",
+      "answer_target": "兩組人量到的不一樣。加州理工在美國 Eureka 沙丘把一個檢波器放在沙面、一個埋在 20 公分深，長鳴時埋著的振幅只低約 30%，頻率幾乎一樣；他們主張長鳴是被表層約 2 公尺乾沙困住的壓縮波，巴黎團隊量到的每秒 40 公尺慢波只是無關緊要的表面波。巴黎 PMMH 團隊則引用他們埋在摩洛哥沙丘裡的感測器，說鳴響時 60 毫米深處的振動已經大幅減弱，所以聲音是沿表面傳的，跟公尺尺度的共振無關。",
+      "scope": "兩組不同國家、不同沙丘、不同感測器；20 cm 與 60 mm 不可相減或說誰量錯；『約 2 公尺波導』出自加州理工 2007 年論文（本輪未讀），只說是他們的主張；PMMH 的 60 mm 數據在補充圖 S4（未讀）。",
+      "source_ids": [
+        "E74-S017",
+        "E74-S015"
+      ],
+      "source_locator": "F85-S004 §II.A、§VIII 末段；F85-S002 [5]",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：本篇新增的只有 200 mm 一組對照與對 40 m/s 的反駁；作者把 200 mm 量測寫成『據此支持波導模型』是兩段原文接成因果，刪去。 原提案 F85-007（目標 F85-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V88（2026-11-12）改字後收；刪掉原文沒有的因果連接；『一兩公尺』改為原文的『約 2 公尺』並標明出自 2007 年論文；60 mm 標明是補充圖、引其 2004 年量法。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "四十年後，大家仍在吵聲音在幾公分還是幾公尺深——這題目前沒有定論。",
+        "visual": "沙丘剖面上兩組感測器：一邊埋 20 cm 仍綠燈，一邊 6 cm 已轉暗；中間寫『兩組沙丘、兩種量法』。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "E74-023",
+      "question": "會唱的沙一定是又乾、又圓、又乾淨的沙嗎？",
+      "domain": "地質與地形",
+      "mechanism_key": "acoustics.musical_sand_not_explained_by_size_shape_alone_silica_gel_layer",
+      "answer_target": "不一定。加拿大勞倫森大學團隊整理他們多年的實驗：會響的沙通常粒徑整齊、表面光滑，但把會響的沙篩成很窄的粒徑段，沒有哪一段獨佔會響的能力；把不響的沙混進去、或沾濕，會很快讓它啞掉。他們用紅外光譜在會響的沙粒表面測到一層含水的、類似矽膠的非晶質二氧化矽，市售矽膠也能發出類似的拍頻聲；結論是許多因素一起作用，乾、淨、圓的沙也常常不響。同校另一位物理學者 2022 年寫：同樣的球丟到海灘吱聲沙上會發聲，丟到沙漠鳴沙上卻沒有樂音。",
+      "scope": "勞倫森 1997 年是一頁會議摘要，數據在 Nature 1997（未讀）；矽膠層說有人反對（屈建軍 2007，讀不到）；『玻璃珠不響』刪去——與 GSJ 教材和 Nori 綜述引的 1965 年實驗相反，沒有原始數據可判斷；『篩後無一段獨佔』與 X40-004『篩後剩一個主音』問的是不同問題，不說矛盾。",
+      "source_ids": [
+        "E74-S018",
+        "E74-S020"
+      ],
+      "source_locator": "F85-S005 §2–3；F85-S007 摘要、§1 第 2 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：刪玻璃珠；勞倫森 S005 0.25（一頁摘要、無數字）＋ S007 落球 0.25。 原提案 F85-008（目標 F85-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V88（2026-11-12）改字後收；作者把勞倫森的 singing sand 誤讀成『鳴沙』，因而說玻璃珠衝突是兩種現象；原文用詞正好相反。玻璃珠在三份來源互相矛盾，片中不用。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "光滑不是答案：比沙更光滑的玻璃珠反而不唱。",
+        "visual": "一排顯微照片：會響的沙、玻璃珠、不響的沙；玻璃珠上打一個問號。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "E74-024",
+      "question": "不會叫的沙洗一洗，會變成會叫的沙嗎？",
+      "domain": "地質與地形",
+      "mechanism_key": "acoustics.squeaking_sand_cleaning_turns_silent_sand_squeaky",
+      "answer_target": "日本有兩個例子，都是海灘那種『吱』的沙。神奈川縣立生命之星・地球博物館聽說『不是鳴沙的石英粒，洗得夠乾淨也可能會叫』，就把館藏的撒哈拉沙加水密封、每天換水、用振盪機搖了 194 小時，洗完放進玻璃容器用棒子一戳，發出了『啾』；顯微鏡下原本的紅褐色鐵鏽變淡、沙粒磨出光澤。山口大學一項研究計畫把沙人工長時間洗磨，洗得越久，先變成乾的時候會叫的鳴沙，再洗下去變成只在水裡會叫、乾了反而不叫的『水中鳴沙』，作者自己寫驗證還不充分。",
+      "scope": "博物館是單次館內試驗、無聲譜、原文沒說洗前不會叫；山口大學只有 KAKEN 研究概要，沒有數字或樣本描述；兩者都是吱聲沙，不得說撒哈拉沙丘洗了會唱；GSJ 玻璃珠一句刪（與勞倫森相反）。",
+      "source_ids": [
+        "E74-S025",
+        "E74-S024",
+        "E74-S022"
+      ],
+      "source_locator": "F85-S012 全文；F85-S011 研究概要；F85-S009 §5",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 1.25）：博物館 0.25（單次、無數據）；KAKEN 0.25（只有計畫摘要，依 BRIEF 摘要不當全文）；GSJ 玻璃珠 0（來源互相矛盾）。另：Nori 綜述 p.329–330 已寫『吱聲沙剛水洗再晾乾最易響』『洗淨可讓失聲的吱聲沙復活』，本條新增的是撒哈拉沙與水中鳴沙兩個具體例。 原提案 F85-009（目標 F85-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V88（2026-11-12）改字後收；改掉原文沒有的『本來不會叫』『普通沙』；刪掉與另一來源衝突的玻璃珠；兩份日本來源一份是館刊短文、一份是計畫摘要，下修到 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "會不會叫不是沙的出身，而是表面有多乾淨——連撒哈拉的啞沙洗 194 小時都會叫。",
+        "visual": "時間軸：紅褐色沙粒在振盪機裡轉，194 小時後變亮；玻璃杯裡一戳『啾』。旁邊一杯水中的沙戳下去像蛙叫。",
+        "seconds": [
+          55,
+          65
+        ]
+      }
+    },
+    {
+      "id": "E74-025",
+      "question": "日本的鳴沙海灘為什麼越來越少？",
+      "domain": "地質與地形",
+      "mechanism_key": "acoustics.squeaking_beach_sand_contamination_silences_environment_indicator",
+      "answer_target": "日本地質調查所的推廣文章說，鳴沙有兩個特徵：石英比例高，以及被乾淨海水和適度的波浪洗磨得非常乾淨；只要稍微髒了就不響，所以鳴沙海灘『有可能』當成海岸乾淨的指標，並寫幾處海灘似乎因海岸污染與工程在變差。神奈川的博物館也寫，過去三陸海岸與日本海側有很多鳴沙海灘，因為表面沾一點微粒就不叫，現在數量大減。",
+      "scope": "沒有數量統計；『環境指標』原文是可能性；『表面乾淨摩擦變大才響』是推廣文的說明；不做保育、旅遊建議。",
+      "source_ids": [
+        "E74-S022",
+        "E74-S025"
+      ],
+      "source_locator": "F85-S009 §2、§4；F85-S012 第 2 段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：GSJ 與博物館講的是同一個答案（髒了就不叫、海灘變少），都無數字，合計 0.25。 原提案 F85-010（目標 F85-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V88（2026-11-12）改字後收；保留語氣被寫成斷言；兩份來源同一答案，不分開計。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沙會不會叫，是一張海有多乾淨的成績單。",
+        "visual": "日本海岸線地圖上的鳴沙點，一個個由亮轉灰。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "E74-026",
+      "question": "鳴沙之謎到底解開了沒？還有哪些說法在比？",
+      "domain": "生活聲學與樂器物理",
+      "mechanism_key": "acoustics.booming_sand_rival_explanations_unresolved_grain_chain_model",
+      "answer_target": "還沒有定論。巴黎 MSC 團隊說是顆粒同步運動、頻率由剪切率定；巴黎 PMMH 團隊說是剪切帶把表面彈性波放大；加州理工說是表層乾沙像波導困住壓縮波；勞倫森的物理學者認為三派各有說不通處，改提崩落層底部的碰撞剪切帶；中國科學院一位作者 2013 年在未經審查的預印本裡再提一種：靜止沙層裡長 1 到 3 公分的顆粒鏈像小懸臂樑一樣共振，他也寫實驗證據不足。",
+      "scope": "Wang 2013 是預印本、純模型；不評判誰對；這一條是整理卡，片長 30–40 秒為限。",
+      "source_ids": [
+        "E74-S026",
+        "E74-S020"
+      ],
+      "source_locator": "F85-S013 第 2 頁 Fig. 2 與結語；F85-S007 §1",
+      "premise_status": "screened",
+      "notes": "算 0.25（同作者），只新增 Wang 的模型。 原提案 F85-011（目標 F85-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V88（2026-11-12）改字後收；原文相符；清單感高，列入 drop_if 首刪。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "十幾年後，各派還在用不同沙丘、不同儀器互相反駁。",
+        "visual": "五張卡片並排：同步、放大、波導、剪切帶、顆粒鏈；每張下面寫『誰提的、量了什麼』。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "E74-027",
+      "question": "全世界有多少人抬頭已經看不到銀河？",
+      "domain": "天文",
+      "mechanism_key": "skyglow.world_atlas_milky_way_hidden_share",
+      "answer_target": "2016 年的世界人工夜空亮度地圖（衛星夜光加模型、用逾 35,000 筆地面量測校正）算出：全球約 83% 人口住在光污染的天空下，逾三分之一人類看不到銀河，歐洲 60%、北美近 80%；新加坡全體人口住在亮到眼睛無法完全暗適應的天空下，南韓是 66%；北京、香港周邊與臺灣也在看不到銀河的大片區域之列。最亮的那一級，天空跟原始夜空在航海曙暮光結束時一樣亮，作者說那裡的人從沒經歷真正的夜。",
+      "scope": "模型地圖（VIIRS＋傳播模型，逾 35,000 筆地面量測校正）、晴天；不報臺灣比例；不評價任何地方的照明法規；地理段照原文只說『北京、香港周邊與臺灣』，不加國名排列。",
+      "source_ids": [
+        "E74-S027"
+      ],
+      "source_locator": "摘要；人口統計段；地理鄰近段；色階說明",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 1.0）：本篇共同作者有 Kyba，依規併入 Kyba／Hölker 群（與 S004–S006 合計封頂 2.0）；群內分配 F93-004 1.0、F93-005 0.5、F93-001 0.5。另 Falchi 本人也是 Kyba 2015（S005）43 位共同作者之一，見 Kyba 2015 合著網（S001 ISTIL＋Kyba／Hölker S004–S006＋維也納 Puschnig／Posch S010–S011＋艾希特 Bennie／Gaston S014），網封頂 3.0、其中 Kyba／Hölker＋ISTIL 子群 2.0。 原提案 F93-001（目標 F93-T1，原角色 hook；依本池欄位記為 segment）。非作者覆核 V96（2026-11-12）改字後收；數字逐句相符；只改研究群歸屬與條數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "你頭上的天空，八成以上的人已經不是原本的夜。",
+        "visual": "世界夜空亮度地圖由黑到白漸層，銀河從城市上空淡出。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "E74-028",
+      "question": "香港的夜空比郊野亮多少？晚一點會比較暗嗎？",
+      "domain": "天文",
+      "mechanism_key": "skyglow.hong_kong_urban_rural_survey_evening_decline",
+      "answer_target": "香港大學 2008 年起 15 個月在全港 199 個地點量 1,957 組夜空亮度：都市平均 15.0 mag/arcsec²，比最暗的鄉間（20.1）亮約 100 倍；最糟的地點 13.2，比最暗處亮逾 500 倍；晚上 9:30 普遍比 11:30 亮，作者歸因於部分公共與商業照明較晚才關。",
+      "scope": "手持量測、兩個時段；作者稿版本。",
+      "source_ids": [
+        "E74-S028"
+      ],
+      "source_locator": "摘要；第 3 節",
+      "premise_status": "screened",
+      "notes": "算 0.75：一次調查的兩個主要結果。與 F93-003 同屬香港大學 Pun 研究群。 原提案 F93-002（目標 F93-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V96（2026-11-12）照原稿收；逐句相符；100 倍、500 倍是作者原文自己的換算。仍只讀作者稿，期刊版若改數字要核對（寫進 evidence_gaps）。0.75 維持（Pun 群合計 1.0）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "離你最近的大城，夜空亮到百倍以上。",
+        "visual": "香港地圖上 199 個點由紫到黑；兩個時鐘 9:30、11:30。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "E74-029",
+      "question": "放煙火的春節夜、滿月夜和新月夜，城郊的天空差多少？",
+      "domain": "天文",
+      "mechanism_key": "skyglow.wuxi_festival_fireworks_moon_comparison",
+      "answer_target": "無錫的高中生監測網在宜興一站量到：新月夜平均 18.6、春節夜 16.8、滿月夜 16.4 mag/arcsec²，作者推測春節夜較亮與煙火有關，但煙火粉塵與光害的關係還不能下結論；晚上 9 到 10 點商業、娛樂與景觀照明陸續關掉後，天空明顯變暗；兩站晴夜比陰夜暗約 0.5–1.2 mag/arcsec²。",
+      "scope": "三夜天氣不同，不說『煙火等於滿月』；2020 年春節同時有『午夜前較亮（作者歸因城市發展）』與『午夜後較暗（禁放）』兩個結果，片中不單講禁放；不評價禁放法令。",
+      "source_ids": [
+        "E74-S029"
+      ],
+      "source_locator": "〈NSB at Yixing No. 1 Station〉；〈NSB among WBMN stations〉",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：單站幾個夜晚的例子；雲的部分與 F93-004、007 重複，熄燈變暗與 F93-002 重複，只新增『節慶與月亮的對照』。Pun 群（S002、S003）合計 1.0。 原提案 F93-003（目標 F93-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V96（2026-11-12）改字後收；數字相符；作者的 answer 只說『2020 年禁放後春節午夜後變暗』，漏了同一段『午夜前反而更亮』，單講禁放會誤導，刪去該句；與 002、004 重疊多，降為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "人怎麼生活，夜空就怎麼亮。",
+        "visual": "一條夜晚亮度曲線，標出煙火、熄燈時間與月相。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "E74-030",
+      "question": "陰天的晚上一定比晴天暗嗎？",
+      "domain": "weather_sky",
+      "mechanism_key": "skyglow.cloud_amplification_urban_berlin",
+      "answer_target": "在城市裡相反。柏林 2010 年夏天的量測：雲量從 0 到全陰，市區（距市中心約 10 km）夜空亮度增為 10.1 倍，32 km 外的鄉間也亮了 2.8 倍；不論天氣，柏林夜空幾乎總跟夏夜高掛的月亮一樣亮，陰天市區比鄉間晴天高月時還亮 4.1 倍。原理是城市往上漏的光被雲底反射回地面；在沒有城市燈光的地方，雲是遮住星光的暗影。",
+      "scope": "一城一季；SQM 量天頂亮度。",
+      "source_ids": [
+        "E74-S030"
+      ],
+      "source_locator": "Abstract；表 2；Discussion",
+      "premise_status": "screened",
+      "notes": "算 1.0：轉折一的主實驗。Kyba／Hölker 群（S004–S006）合計 2.0。 原提案 F93-004（目標 F93-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V96（2026-11-12）照原稿收；柏林全陰（8 oktas）10.1 倍逐句成立；轉折一的主實驗。1.0 維持（Kyba／Hölker＋ISTIL 子群 2.0 內）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "你以為陰天夜更黑，城市的陰天卻是一年最亮的夜。",
+        "visual": "同一個城市晴夜與陰夜並排，雲底發橘光；旁邊鄉間雲是黑影。",
+        "seconds": [
+          55,
+          65
+        ]
+      }
+    },
+    {
+      "id": "E74-031",
+      "question": "雲讓夜空變亮或變暗，全世界都一樣嗎？",
+      "domain": "weather_sky",
+      "mechanism_key": "skyglow.cloud_effect_sign_flips_with_pollution_level",
+      "answer_target": "44 個站的國際彙整：陰天相對晴天，從『暗三分之一』到『亮近 18 倍』都有——最暗的地方雲讓夜更暗，放大最多的在城市中心（Plymouth 17.6、柏林市中心 16.2 倍）；夜空亮度在各站之間跨近四個數量級。陰天有月時，荷蘭自然夜空的海島站 Schiermonnikoog 被月光照亮逾 10 倍，最亮的站只多 5–20%，市區站在陰天已看不出月相；只有約三分之一的站常有不到自然星空兩倍亮的時段。",
+      "scope": "站點非隨機抽樣；柏林市中心 16.2 與 F93-004 的柏林 10.1（距市中心約 10 km 的另一站、另一年）是不同站，片中要分開說；不談對生物的影響。",
+      "source_ids": [
+        "E74-S031"
+      ],
+      "source_locator": "Abstract；Results；Discussion 結語",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：Kyba／Hölker＋ISTIL 子群封頂 2.0（004 1.0、001 0.5、005 0.5）。 原提案 F93-005（目標 F93-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V96（2026-11-12）改字後收；『原始夜空的站被月光照亮逾 10 倍』原文只指 Schiermonnikoog 一站，改寫；補上柏林 16.2 與 10.1 是不同站；條數依子群封頂降。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雲是放大器還是遮光罩，取決於你離城市多近。",
+        "visual": "世界地圖上 44 個點，箭頭向上（變亮）或向下（變暗）。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "E74-032",
+      "question": "城市的光能跟著雲跑多遠？",
+      "domain": "weather_sky",
+      "mechanism_key": "skyglow.clouds_carry_city_glow_into_remote_park",
+      "answer_target": "西班牙 Balaguer 鎮到 Montsec 天文公園 27 km 的全天相機量測：晴夜天頂亮度從鎮外 1 km 的 1.16 降到公園的約 0.2 mcd/m²；部分有雲的夜晚各站最多亮到 6 倍，公園處 0.49 mcd/m²。作者寫：有雲時，晴天接近自然的地區會跟晴天的城郊一樣亮。",
+      "scope": "兩個夜晚、部分雲。",
+      "source_ids": [
+        "E74-S032"
+      ],
+      "source_locator": "Abstract；Results 表 1",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.25）：Kyba／Hölker＋ISTIL 子群已滿 2.0；核心本身數字正確，但不放進本題最終核心（見 cuts）。 原提案 F93-006（目標 F93-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V96（2026-11-12）照原稿收；數字相符（『最多 6 倍』在表 1 末欄 4.8 km 處）；因子群封頂與清單感，從題目刪除，核心保留可給別題。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雲把城市的光送進天文公園。",
+        "visual": "剖面動畫：城鎮、山谷、天文台，雲底一路反光。",
+        "seconds": [
+          30,
+          35
+        ]
+      }
+    },
+    {
+      "id": "E74-033",
+      "question": "整個地區的測站都看到雲的放大嗎？最亮的陰夜有多亮？",
+      "domain": "weather_sky",
+      "mechanism_key": "skyglow.galicia_network_cloud_factor_and_dark_site_inversion",
+      "answer_target": "西班牙加利西亞 14 個氣象站 2015 年全年資料：都市與城郊的亮度分布都有兩個峰（晴與陰），雲放大因子約 10 到 16，聖地牙哥市中心約 25；作者推算都市陰夜可能比自然晴夜亮 300 倍以上。暗的鄉間站相反，雲擋住星光，天頂暗於自然值；越靠近市中心，夜空隨月相的起伏越弱。",
+      "scope": "一年、一地區；300 倍是作者在文中的推估。",
+      "source_ids": [
+        "E74-S033"
+      ],
+      "source_locator": "§3.2；§3.4；Conclusion",
+      "premise_status": "screened",
+      "notes": "算 0.5：第二個獨立研究群重現轉折一並給出更大的數字；月相部分與 F93-009 重疊不另算。Bará 相關（S007、S008、S015）合計 1.5。 原提案 F93-007（目標 F93-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V96（2026-11-12）照原稿收；加利西亞 10–25 倍逐句成立，300 倍照原文用『可能』；是與 Kyba 網無共同作者的第二個研究群，轉折一成立。0.5 維持（Bará 網 S007、S008、S015 合計 1.25）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "換一個國家、換一群人量，結果一樣。",
+        "visual": "加利西亞 14 站的雙峰直方圖。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "E74-034",
+      "question": "城市的夜空六年沒變亮，是光害沒變嗎？",
+      "domain": "weather_sky",
+      "mechanism_key": "skyglow.zagreb_bimodal_clear_cloudy_flat_trend",
+      "answer_target": "札格瑞布市中心附近一站 2012–2017 年的紀錄：亮度集中在約 15.0（陰天）與 18.2 mag/arcsec²（晴天）兩個峰，相差約 3 mag；六年平均除了氣象年差沒有顯著改變。但作者自己說，這只代表市中心穩定——市中心早就蓋滿、照亮了，正在擴張的郊區可能完全不同，只靠市中心這一站看不出來。",
+      "scope": "單站預印本；不說『沒校正老化所以可能錯』（原文沒有，是作者把另一研究的老化問題套上來）；只講原作者自己的限制。",
+      "source_ids": [
+        "E74-S035"
+      ],
+      "source_locator": "Abstract；§3–4",
+      "premise_status": "screened",
+      "notes": "算 0.25：雙峰為重現；新增的是『市中心穩定不代表全城穩定』的原作者說明，可直接接 F93-016。 原提案 F93-008（目標 F93-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V96（2026-11-12）改字後收；作者的 answer 用『沒有說明是否校正儀器老化——下一章會看到，這一點可能改變結論』把 S013／S011 的問題套到札格瑞布，原文沒有這個推論；原作者已給出自己的解釋（市中心飽和、郊區另論），改用原文。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "紀錄說沒變，不等於真的沒變。",
+        "visual": "一條六年平平的曲線，打上問號。",
+        "seconds": [
+          30,
+          35
+        ]
+      }
+    },
+    {
+      "id": "E74-035",
+      "question": "光害會把月亮的盈虧也蓋掉嗎？",
+      "domain": "天文",
+      "mechanism_key": "skyglow.circalunar_contrast_loss_vs_sky_brightness",
+      "answer_target": "奧地利 23 站兩年的資料做頻譜分析：所有站都還測得到 29.5 天的月相節律，但越亮的地方振幅越小（最暗站 1.55、最亮站 0.33 magSQM/arcsec²）；外推到平均天頂亮度 16.5 magSQM/arcsec² 時月相節律實際上消失。和無人工光的地方比，州首府林茲的月相對比只剩九分之一，不到一萬人的小鎮也只剩三分之一；23 站裡只有兩個國家公園站保有自然的月相起伏。",
+      "scope": "48°N 一國；16.5 為外推。",
+      "source_ids": [
+        "E74-S036"
+      ],
+      "source_locator": "Abstract；§5.2–5.3",
+      "premise_status": "screened",
+      "notes": "算 0（作者 1.0）：維也納群屬 Kyba 2015 合著網（S001 ISTIL＋Kyba／Hölker S004–S006＋維也納 Puschnig／Posch S010–S011＋艾希特 Bennie／Gaston S014），網封頂 3.0、其中 Kyba／Hölker＋ISTIL 子群 2.0；網內 3.0 已由 004 1.0、001 0.5、005 0.5、016 1.0 用滿。月相被遮也已在 F93-005（Kyba 2015）與 F93-007（Bará γ）出現；不放進本題（見 cuts）。 原提案 F93-009（目標 F93-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V96（2026-11-12）照原稿收；數字逐句相符；但與『為什麼看不到星』只間接相關、與 005 重疊，且合著網封頂已滿，核心保留、從題目刪除。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在小鎮，滿月與新月的差別只剩三分之一。",
+        "visual": "月相列＋兩條亮度曲線：國家公園大起伏、林茲幾乎平線。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "E74-036",
+      "question": "站在路燈下看不到星，光害是在天上還是在眼睛裡？",
+      "domain": "天文",
+      "mechanism_key": "skyglow.intraocular_scatter_streetlight_glare_model",
+      "answer_target": "也在眼睛裡。用標準的眼內散射公式模擬站在 8 m 高路燈旁仰望天頂：路燈直射進眼睛的光在眼球裡散開，等效於把天空變亮；這個例子裡，離路燈約 17 m 以內，眼內散射比整座城市的天空輝光還亮；用手擋住燈，4 m 處天空可暗約 5 mag/arcsec²、15 m 處約 1 mag/arcsec²。但擋住之後仍受整座城市的天空輝光限制。",
+      "scope": "模型、一個例子；不談眼睛健康。",
+      "source_ids": [
+        "E74-S034"
+      ],
+      "source_locator": "Abstract；§3.2；§4 第一段",
+      "premise_status": "screened",
+      "notes": "算 0.5（模型降一級）。Bará 相關合計 1.5。 原提案 F93-010（目標 F93-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V96（2026-11-12）照原稿收；數字與條件相符（模型、單一例子，已在 scope 寫明）；直接回答題目問題。模型已降到 0.5，維持（Bará 網合計 1.25）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "用手當遮光板，真的能多看到星。",
+        "visual": "主持人站路燈下伸手遮眼，天空背景由灰變深。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "E74-037",
+      "question": "不在城市旁邊，天空就沒有人造光了嗎？",
+      "domain": "天文",
+      "mechanism_key": "skyglow.space_objects_diffuse_sky_brightness_model",
+      "answer_target": "2021 年一篇模型研究初步估計：人造衛星與太空碎片反射陽光，肉眼與低解析度儀器看起來像一層均勻的天光，天頂亮度可能已增加約 20 µcd/m²，約為自然夜空的 10%，恰是國際天文聯合會 1979 年為天文台場址訂的光污染上限；作者說只算了已編目的物體，所以是下限。",
+      "scope": "作者自稱初步估計、無實測；不說『地球上沒有一個地方躲得掉』（原文沒有）；不談衛星業者或法規。",
+      "source_ids": [
+        "E74-S041"
+      ],
+      "source_locator": "Abstract；§1",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：初步模型、第 3 節結果未逐段讀。Bará 為共同作者，併入 Bará 網（007 0.5＋010 0.5＋011 0.25＝1.25）。 原提案 F93-011（目標 F93-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V96（2026-11-12）改字後收；刪掉原文沒有的『沒有一個地方躲得掉』；補『下限』；初步模型且結果段未讀，降一級。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連最暗的沙漠，頭上也多了一層人造光。",
+        "visual": "地球外繞滿小亮點的軌道殼層，地面的天空背景淡淡發亮。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "E74-038",
+      "question": "天文台的測量顯示夜空越來越暗，光害改善了嗎？",
+      "domain": "weather_sky",
+      "mechanism_key": "skyglow.asiago_observatory_trend_darkening_paradox",
+      "answer_target": "義大利阿夏戈高原兩座天文台 2014–2019 年的監測顯示無月夜空逐年『變暗』，但同期該區公私照明據估增加約 10%。管理單位自己寫：要查是真的減少，還是濕度、懸浮微粒變化、LED 取代鈉燈造成儀器低估，或儀器窗口老化。",
+      "scope": "10% 為未發表估計；不報斜率數字。",
+      "source_ids": [
+        "E74-S038"
+      ],
+      "source_locator": "§3.5；Conclusions",
+      "premise_status": "screened",
+      "notes": "算 0.5：轉折二的起點。威尼托群（S012、S013）合計 1.5。 原提案 F93-012（目標 F93-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V96（2026-11-12）照原稿收；逐句相符；轉折二起點。0.5 維持（威尼托群 1.5）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "燈變多了，量到的天卻變暗——哪裡出錯？",
+        "visual": "兩條線：照明數往上、量到的亮度往下，交叉處打問號。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "E74-039",
+      "question": "量到夜空變暗，問題出在儀器還是空氣？",
+      "domain": "weather_sky",
+      "mechanism_key": "skyglow.sqm_blue_ageing_and_cleaner_air",
+      "answer_target": "兩者都有，而且空氣占大頭。帕多瓦把用了 6 年的測光儀與新機並排，舊機讀數暗約 0.078 mag；實驗室裡，這台對 470 nm 以下的藍光明顯變鈍（白光 LED 正好在 460 nm 附近多出一峰），在阿夏戈天文台用了 10 年的那台更糟，連 550 nm 以上也衰退，450 nm 只剩新機的六成；但老化不夠解釋量到的整個趨勢。同一時期當地日射量自 2014 年每年約增 2.5 W/m²、懸浮微粒變少，空氣變乾淨：在受光污染的帕多瓦與阿夏戈 Ekar，空氣越透明，往下散射回地面的人造光越少，夜空量起來越暗；遠離光源的山口則相反。作者結論：大氣條件扮演顯著而主要的角色。",
+      "scope": "老化只兩台；470 nm 只指帕多瓦那台，阿夏戈那台是寬波段衰退；不說『兩台都只是藍光變鈍』；『柴油改甲烷』為作者推測，片中不用；本篇沒有算出扣除後的光害真實趨勢，不可說『阿夏戈其實在變亮』。",
+      "source_ids": [
+        "E74-S039"
+      ],
+      "source_locator": "§3.1–3.2.3",
+      "premise_status": "screened",
+      "notes": "算 1.0：同一研究的老化與大氣兩個結果合計（威尼托群 012 0.5＋013 1.0＝1.5）。 原提案 F93-013（目標 F93-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V96（2026-11-12）改字後收；作者把『470 nm 以下』套到兩台老機，原文只指帕多瓦那台，阿夏戈 Pennar 那台在 550 nm 以上也衰退；改寫並補上『大氣是主要角色』與『本篇沒算出光害真實趨勢』的界線。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "變暗的不一定是燈，可能是儀器『色盲』加上空氣變乾淨。",
+        "visual": "測光儀拆開、藍色濾光片褪色；霧霾散去、城市光柱變短。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "E74-040",
+      "question": "LED 換掉鈉燈之後，從太空看城市為什麼可能『變暗』？",
+      "domain": "天文",
+      "mechanism_key": "skyglow.led_blue_light_satellite_blindness_forecast",
+      "answer_target": "世界地圖的作者在 2016 年預告：主要的夜光衛星 VIIRS 對 500 nm 以下不敏感，看不到白光 LED 的藍光峰，所以城市改用白光 LED 後，衛星會『錯誤地顯示』許多城市光污染減少，肉眼看到的天空其實變亮。",
+      "scope": "是預測，不是量到的趨勢；不用『2.5 倍』（原文引自其他文獻，且只是示意圖的假設）；不評價照明法規或建議燈色。",
+      "source_ids": [
+        "E74-S027"
+      ],
+      "source_locator": "Discussion（Fig. 5B 段）",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.5）：與 F93-001 同篇，子群已滿；2.5 倍是引述。實測版的『衛星低估』由 F93-015 承擔，本核心不放進題目。 原提案 F93-014（目標 F93-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V96（2026-11-12）改字後收；作者把引用前人的 2.5 倍當成本篇結果；刪去並降為 0，不進題。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "衛星說變暗，眼睛說變亮。",
+        "visual": "兩張同一城市的圖：衛星版變暗、肉眼版變亮。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "E74-041",
+      "question": "太空站的照片看得出歐洲的夜晚在變白、變亮嗎？",
+      "domain": "天文",
+      "mechanism_key": "skyglow.iss_photos_europe_whitening_viirs_underestimate",
+      "answer_target": "看得出。太空人拍的夜間照片做成 2012–2013 與 2014–2020 兩期歐洲彩色夜光圖：燈光由偏橘轉白，藍／綠、綠／紅比值都上升，綠波段強度中位數增加 11.1%；主要夜光衛星 VIIRS 只感應 480–920 nm，作者說這造成對光量『越來越明顯的低估』；以色彩比換算的看星難度指標只微幅上升（中位數 0.64→0.65）。",
+      "scope": "不用藍波段 24.4%（與同句中位數不一致）；指標是由色彩比換算、微幅；不談褪黑激素、昆蟲等生物影響；太空站照片非系統拍攝。",
+      "source_ids": [
+        "E74-S040"
+      ],
+      "source_locator": "Introduction；Results；Discussion",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.75）：艾希特 Bennie／Gaston 與 Kyba 2015 合著，屬 Kyba 2015 合著網（S001 ISTIL＋Kyba／Hölker S004–S006＋維也納 Puschnig／Posch S010–S011＋艾希特 Bennie／Gaston S014），網封頂 3.0、其中 Kyba／Hölker＋ISTIL 子群 2.0，網內 3.0 已滿。保留在題中，作轉折二『衛星說變暗』的實測依據。 原提案 F93-015（目標 F93-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V96（2026-11-12）改字後收；數字相符；補上看星指標只是 0.64→0.65 的微幅變化，避免誇大；研究群併入合著網後計 0。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "換了顏色的光，衛星沒看見，太空人的相機看見了。",
+        "visual": "兩張米蘭夜景：2012 橘、2015 白。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "E74-042",
+      "question": "把儀器老化和天氣扣掉，光害到底每年增加多少？哪裡增最快？",
+      "domain": "天文",
+      "mechanism_key": "skyglow.corrected_trends_intermediate_sites_fastest",
+      "answer_target": "奧地利 24 站加斯德哥爾摩、波茨坦各一站，4–10 年資料，先用曙暮光修正儀器老化（各站每年 0 到近 0.08 mag、平均約 0.03 mag），再用大氣資料模型扣掉天候：光污染平均每年增加——鄉間 1.7%、都市 1.8%、介於兩者之間的小鎮 3.7%（倍增約 41、39、19 年；每個數字都有 ±1.5%/年的不確定）。增最快的不是都市，而是 Freistadt、Mattighofen、Braunau 這類小鎮；作者的解釋是都市本來就極亮，多一盞燈影響相對小，小鎮發展時新裝或換新的燈影響大得多。",
+      "scope": "intermediate 指小鎮（另含一個林茲近郊），不譯成『城郊』或『郊區』；都市與鄉間的增幅接近偵測界限；這是奧地利的資料，不能拿來說阿夏戈或札格瑞布『其實在變亮』；作者的解釋是 may be explained。",
+      "source_ids": [
+        "E74-S037"
+      ],
+      "source_locator": "Abstract；§5–6",
+      "premise_status": "screened",
+      "notes": "算 1.0：轉折二的落點。維也納群屬 Kyba 2015 合著網（S001 ISTIL＋Kyba／Hölker S004–S006＋維也納 Puschnig／Posch S010–S011＋艾希特 Bennie／Gaston S014），網封頂 3.0、其中 Kyba／Hölker＋ISTIL 子群 2.0，網內 3.0 中占 1.0。 原提案 F93-016（目標 F93-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V96（2026-11-12）改字後收；把 intermediate 寫成『城郊中間地帶』『郊區最快』不對——表 1 的中間站多是不到一萬人的小鎮（S010 也稱 Freistadt、Mattighofen 為 small towns）；補上每個數字 ±1.5%/年與資料地點，並禁止與阿夏戈接成一條因果鏈。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "校正之後，答案是：還在變亮，而且郊區最快。",
+        "visual": "三條上升線：鄉間、都市、中間地帶，中間那條最陡。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "E74-043",
+      "question": "七十多年前的山頂天文台，夜空有多暗？",
+      "domain": "天文",
+      "mechanism_key": "skyglow.mount_wilson_1947_reconstructed_sky_brightness",
+      "answer_target": "用新的人眼對比閾值模型重算天文學家 1947 年在洛杉磯附近威爾遜山看到的最暗星，反推當時天頂約 21.61 mag/arcsec²，比前人估的 20.24（及 1950 年 20.82）暗得多；作者認為洛杉磯在二十世紀前半的光排放比原以為的低，後半世紀光污染的增長遠比過去算的快。",
+      "scope": "模型反推；只讀相關段。",
+      "source_ids": [
+        "E74-S044"
+      ],
+      "source_locator": "Abstract；§3.2",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：單一作者的新人眼閾值模型反推一個數字，不是當年量的天空亮度；只讀 §3.2 與摘要。 原提案 F93-017（目標 F93-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V96（2026-11-12）改字後收；數字相符；模型反推、只有一個數字與一句推論，降一級。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一位天文學家 1947 年的觀測紀錄，變成光害的時間膠囊。",
+        "visual": "老照片：威爾遜山 60 吋望遠鏡；疊上今日洛杉磯夜景。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "E74-044",
+      "question": "完全沒有燈光的地方，夜空每晚都一樣黑嗎？",
+      "domain": "天文",
+      "mechanism_key": "skyglow.natural_airglow_nightly_and_semiannual_variation",
+      "answer_target": "也不一樣。新墨西哥州一處距重要光源 60 km 以上的暗空保護區，在 2018–2020 太陽活動極小期連續量測：241 個夜晚的夜均氣輝最亮與最暗相差 1.68 倍；有約 0.2 mag 的半年週期；太陽冠洞吹來的太陽風抵達時，夜空可亮約 0.40 mag。加那利天文研究所彙整 40 多處暗空地點的資料，也報告原始夜空約 0.1 mag 的起伏。",
+      "scope": "太陽極小期；寬波段；Alarcón 只讀摘要與結論，只當一句旁證、不報其他數字；不把氣輝變化與光害變化相減。",
+      "source_ids": [
+        "E74-S042",
+        "E74-S043"
+      ],
+      "source_locator": "Grauer 結果與結論；Alarcon 摘要",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：Grauer 0.75；Alarcón 只讀摘要層級、與 Grauer 半年週期重複，計 0。 原提案 F93-018（目標 F93-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V96（2026-11-12）改字後收；數字相符；Alarcón 只讀摘要／結論，依規不算條數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "天然的夜也會呼吸——這是判斷光害的基準線。",
+        "visual": "暗空下綠、橘色氣輝的延時影像。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "E74-045",
+      "question": "下過一場大雨，溪水暴漲、變得滾滾黃濁，流過去的大多是剛下的雨嗎？",
+      "domain": "地下水",
+      "mechanism_key": "hydrology.storm_runoff_mostly_pre_event_water_isotopes",
+      "answer_target": "多半不是。瑞士 Erlenbach 一個 0.7 平方公里的山區集水區，研究者在 2016–2017 年無雪期的 24 場暴雨，用雨水與溪水裡氫、氧同位素的差別把溪水拆成『這場雨的水』和『雨前就在地下的水』：這場雨的水平均只佔流量 23%（各場 4% 到 75%），24 場裡只有兩場超過一半；平均算起來，暴雨時流過量水站的水約 77% 是雨前就存在集水區裡的舊水。",
+      "scope": "一個小集水區、無雪期 24 場；23% 與 77% 是平均；同位素二成分分離有誤差；不推到所有河流。",
+      "source_ids": [
+        "E74-S045"
+      ],
+      "source_locator": "摘要；3.1 第 2–3 段",
+      "premise_status": "screened",
+      "notes": "算 1.0，同作者。23% 是 24 場 Qe/Q 的算術平均（不是以水量加權）。 原提案 F97-001（目標 F97-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V100（2026-11-12）照原稿收；數字、單位、條件、主詞都在 3.1；『黃濁』是問題句的情境描述，不入答案。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為洪水就是剛下的雨，原文顯示大多是雨前就藏在地下的水。",
+        "visual": "雨滴與溪水各貼上不同顏色的『同位素指紋』，溪水色條上 77% 是舊水色。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "E74-046",
+      "question": "雨下得越大，被推進溪裡的舊水比例就越高嗎？",
+      "domain": "地下水",
+      "mechanism_key": "hydrology.rain_activates_old_water_third_of_rainfall",
+      "answer_target": "不是看雨多大，而是看雨前地有多濕。在 Erlenbach 的 24 場暴雨裡，每場雨平均『推出』的舊水約等於雨量的三分之一（平均 0.28），雨水本身直接進溪的不到雨量一成（平均 0.08）——作者寫，降雨動員舊水的效果將近是直接送雨水進溪的三倍。被推出的舊水佔雨量的比例，和雨前七天下了多少雨強相關（相關係數 0.79），和四小時雨強幾乎無關（−0.15）；反過來，雨水直接進溪的比例跟雨強強相關（0.71），跟雨前濕度無關（0.03）。研究者並認為，洪峰主要是靠動員舊水形成的。",
+      "scope": "同一研究、同一集水區、無雪期 24 場；『三分之一』『不到一成』是 24 場平均；『將近三倍』照原文 nearly 3-fold；相關係數為 Spearman；『洪峰主要靠舊水』原文為 suggests；Qe/Q 與前期濕度的負相關原文寫明不顯著，不用。",
+      "source_ids": [
+        "E74-S045"
+      ],
+      "source_locator": "3.1 第 3 段；3.2；3.3 第 2 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（同作者），研究群 A 合計 2.0。作者原問題『雨下得越多，舊水也跟著變多嗎？』答『在 Erlenbach 是這樣』與原文相反：原文的重點正是 Qpe/P 不隨雨量雨強變，而隨前期濕度變。改寫後可作片中第三個小轉折。 原提案 F97-002（目標 F97-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V100（2026-11-12）改字後收；作者問題的答案方向錯：原文摘要與 3.3 都寫被動員的舊水（相對雨量）由前期濕度控制、不受雨量雨強控制；已改寫並補相關係數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雨像一隻手把地下的舊水擠出來，而不是自己流進溪。",
+        "visual": "一桶滿水的海綿從上面倒水，下面先流出的是原本海綿裡的舊水（動畫示意，標『示意』）。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "E74-047",
+      "question": "那最大的洪水呢？是不是就換成新雨水當主角？",
+      "domain": "地下水",
+      "mechanism_key": "hydrology.young_water_fraction_flow_weighted_vs_time_weighted",
+      "answer_target": "會往那個方向走。西班牙 Can Vila 0.56 平方公里的地中海山區集水區，40 個月採了 464 個雨水、858 個溪水樣本：照時間平均，兩三個月內落下的『年輕水』只佔溪水約 6%；照流量加權則約 23%；在採到的最大洪水，年輕水比例趨近 1。",
+      "scope": "『年輕水』是約 2–3 個月內的降水，與『這場雨的水』定義不同；一個集水區；技術短文以方法為主。",
+      "source_ids": [
+        "E74-S046"
+      ],
+      "source_locator": "摘要；第 2 節（Table 1 後段落）",
+      "premise_status": "screened",
+      "notes": "算 0.25：von Freyberg、Kirchner 為共同作者，與 F97-S001 同群 A，群內 2.0 封頂只剩 0.25。 原提案 F97-003（目標 F97-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V100（2026-11-12）照原稿收；數字在原文；『年輕水』（2–3 個月內）與『事件水』定義不同，片中須分開說。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "平常時候溪水很『老』，越大的洪水越『年輕』。",
+        "visual": "同一條溪三格：平水、漲水、大洪水，年輕水色塊由小到幾乎滿。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "E74-048",
+      "question": "在半乾燥的地方，暴雨後的河水總該是雨水了吧？",
+      "domain": "地下水",
+      "mechanism_key": "hydrology.semi_arid_storm_runoff_groundwater_dominated",
+      "answer_target": "也不一定。南非 Kaap 集水區（約 1640 平方公里、半乾燥），研究者在 2013–2014 年雨季的四場降雨事件用同位素和化學成分分離流量：二成分分離中，地下水佔總逕流 64% 到 98%；再細分三成分時，直接落進河道和地表漫流的『直接逕流』在集水區很濕的時候最多也只佔 41%，深層地下水最多佔 84%。",
+      "scope": "四場事件、一個集水區；64–98% 是同位素與化學示蹤各分離結果合列的範圍（只看同位素時 δ18O 為 64–92%）；二成分模型中的『地下水』即雨前水；數字不合成平均；結果與討論只核到摘要數字對應段落與表 5。",
+      "source_ids": [
+        "E74-S047"
+      ],
+      "source_locator": "摘要；2 研究區；3 方法（四場事件）",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：四場事件、一個結論（二成分範圍），三成分的 41%／84% 是同一結論的細分，不另算；獨立研究群 E。 原提案 F97-004（目標 F97-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V100（2026-11-12）改字後收；數字都在原文；補註 64–98% 混合同位素與化學示蹤；四場事件、一個結論，從嚴下修 0.75。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連半乾燥地區，暴雨後的河水也主要是地下水。",
+        "visual": "南非地圖標出 Kaap 集水區，四根柱子各自的地下水比例 64–98%。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "E74-049",
+      "question": "颱風的豪雨呢？台灣的山溪也是舊水比較多嗎？",
+      "domain": "地下水",
+      "mechanism_key": "hydrology.taiwan_typhoon_event_water_fraction_intensity",
+      "answer_target": "颱風不一樣。臺灣的研究團隊在北臺灣兩個中尺度陡峭山區集水區，六場颱風期間約每 3 小時採雨水和溪水的氧-18，用模型估出：溪水裡『這場雨的水』佔兩成到八成，雨水平均 2 到 11 小時就到溪裡；平均雨強越大，新雨水比例越高、到得越快。研究者認為，強降雨可能打開了快速的優勢流路徑。",
+      "scope": "只依 Water 12:1169（2020）經同儕審查的摘要（典藏頁，正式版全文未讀）；模型（TRANSEP）估計；兩成到八成是兩集水區、六場合計範圍；HESS 預印本未獲接受，其內文數字（坪林 0.14–0.56、面積、雨量 30 mm 門檻）不入稿；『可能』照原文 likely。",
+      "source_ids": [
+        "E74-S048"
+      ],
+      "source_locator": "預印本摘要、2.1、結果段；Water 2020 摘要",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：預印本修訂未被 HESS 接受，未獲接受的內文數字一律不計；正式版只讀到摘要，摘要內的三項（Few 範圍、MTT 範圍、雨強方向）合計 0.5。片中仍可作轉折一的反例，但口吻要標『模型估計』。 原提案 F97-005（目標 F97-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V100（2026-11-12）改字後收；預印本未獲接受→內文數字不計，坪林／大林名稱與面積只出自預印本，也拿掉；預印本前言『eight』與摘要『six』不一，作者未註明；改只用正式版摘要，下修 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在台灣的颱風豪雨下，新雨水可以佔到八成——『大多是舊水』不是定律。",
+        "visual": "北臺灣地形圖標坪林、大林兩集水區，颱風雲圖疊上，雨強越大的場次事件水色塊越大。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "E74-050",
+      "question": "春天融雪讓山溪暴漲，流的就是剛融的雪水嗎？",
+      "domain": "地下水",
+      "mechanism_key": "hydrology.alpine_snowmelt_share_early_vs_peak",
+      "answer_target": "看時候。奧地利阿爾卑斯 Rofenache（98 平方公里）的研究者在 2014 年春天兩場融雪事件，分別在北坡、南坡收集融雪水，再用模型算的融雪量加權後分離溪水：融雪剛開始時，融雪水約佔溪水 35%；到融雪高峰時約佔 75%。只用一面坡的樣本，結果最多差 15%。",
+      "scope": "一個高山集水區、一季兩場事件；融雪水是整個冬天積的雪，不是當天的雨；不與 F97-S010 的氚年齡相比或相減。",
+      "source_ids": [
+        "E74-S049"
+      ],
+      "source_locator": "摘要；2 研究區",
+      "premise_status": "screened",
+      "notes": "算 0.75，同作者。『15 個百分點』改為原文『up to 15 %』。融雪水是整個冬天積的雪，片中要說清楚；與 F97-011 不同地區、不同定義（本季融雪 vs 一年以上的水），不可並列成矛盾或相減。 原提案 F97-006（目標 F97-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V100（2026-11-12）改字後收；數字在原文；改『百分點』為原文寫法，補『兩場事件』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "高山融雪高峰時，溪水大多真的是剛融的雪。",
+        "visual": "南北坡兩個採樣點，溪水色條從 35% 長到 75%。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "E74-051",
+      "question": "如果大部分是舊水，為什麼雨一下，溪水幾個小時就漲起來？",
+      "domain": "地下水",
+      "mechanism_key": "hydrology.celerity_faster_than_water_velocity_sprinkling",
+      "answer_target": "因為傳得快的是『壓力』，不是水本身。美國奧勒岡 H. J. Andrews 實驗林的研究者在一片山坡連續灑水 24 天，開頭 24.5 小時灑的是加了氘的標記水：表層 30 公分的土壤水分在灑水 30 分鐘後就開始上升，水分變化往下傳的速度（中位數）約每小時 43–150 毫米；但被標記的水本身往下只走每小時約 6–17 毫米，峰值要 1 到 8 天才到；從山坡底溝槽流出的水裡，標記水最多只佔 26%。",
+      "scope": "一片山坡、人工灑水約 3–4 mm/h；速度為點量測推算（43–150 為 TDR，張力計為 10–116）；『快數個量級』是前言引前人，不用。",
+      "source_ids": [
+        "E74-S050"
+      ],
+      "source_locator": "4.2 第 1–2 段；4.3；表 1、表 2",
+      "premise_status": "screened",
+      "notes": "算 1.0（作者 1.25）：一個山坡實驗的一組對照（兩種速度＋26%）。與 F97-S010 共同作者 H. R. Barnard 重疊，B、F 合併為一群封頂 2.0（本條 1.0＋F97-011 1.0）。與池中 O3060（河道洪波速度≠水速）概念相鄰但機制不同（土壤中的壓力／濕潤鋒），片中一句帶過不重講 O3060。 原提案 F97-007（目標 F97-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V100（2026-11-12）改字後收；數字、單位、條件逐字核對無誤；補『開頭 24.5 小時』『表層 30 公分』『中位數』；研究群合併後下修 1.0。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "溪水漲得快，不代表雨水跑得快——是新水把舊水『推』出來。",
+        "visual": "一根灌滿水的水管，從一端推入紅色新水，另一端立刻流出的是原本的透明舊水（示意）；並排兩條速度尺 43–150 vs 6–17 mm/h。",
+        "seconds": [
+          55,
+          65
+        ]
+      }
+    },
+    {
+      "id": "E74-052",
+      "question": "科學家怎麼知道溪裡的水是什麼時候下的雨？",
+      "domain": "地下水",
+      "mechanism_key": "hydrology.stream_isotope_damping_one_fifteenth_of_rain",
+      "answer_target": "看雨水的『季節起伏』到了溪裡被磨平多少。德國艾菲爾國家公園的 Wüstebach（38.5 公頃）有 4.5 年的紀錄：這段期間雨水氧-18 的最高最低差 14.76‰，溪水只差 0.96‰，原文寫只有雨水的十五分之一。研究者把季節起伏擬合成正弦波，雨水的振幅 0.72‰、溪水 0.08‰，由這兩個振幅相比，估出溪水裡不到三個月的『年輕水』全期約 12%；改用 189 個滑動的一年視窗重算，平均約 9%，而且從哪一週開始算，結果就會變。",
+      "scope": "一個小集水區；14.76／0.96 是 4.5 年全距，不是一年內；年輕水比例由擬合振幅比估計；2015 年熱浪期間不確定性大。",
+      "source_ids": [
+        "E74-S051"
+      ],
+      "source_locator": "摘要；3.1；3.3；3.4",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：方法說明不算條，結果為『溪水起伏只剩十五分之一』與『年輕水約一成』。改正兩處：『一年內』→ 4.5 年全距；『由這個振幅比估出』→ 由擬合正弦波振幅（0.72 vs 0.08‰）估出。 原提案 F97-008（目標 F97-T1，原角色 hook；依本池欄位記為 segment）。非作者覆核 V100（2026-11-12）改字後收；作者把 4.5 年全距寫成『一年內』，並把 Fyw 寫成由全距比推得；原文 Fyw 用的是擬合振幅比。已改正，方法部分不計，下修 0.75。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雨水的『季節指紋』進了地下就被磨平，溪水只剩十五分之一的起伏。",
+        "visual": "兩條正弦波：雨水大幅擺盪、溪水幾乎是平線，標 14.76‰ 與 0.96‰。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "E74-053",
+      "question": "那溪裡的『舊水』到底多舊？幾週、幾個月？",
+      "domain": "地下水",
+      "mechanism_key": "hydrology.tritium_stream_age_varies_with_flow",
+      "answer_target": "可以是幾十年。紐西蘭 Toenepi 集水區（15.1 平方公里的酪農區）用溪水裡的氚定年：冬天基流高時，溪水平均年齡 2–5 年；夏天基流下降時 30–40 年；乾旱時超過 100 年。研究者由年齡和基流推算，支撐溪流的地下水約 1,540 萬立方公尺，相當於全集水區 1 公尺深的水、年總流量的 2.3 倍；溪水含矽量也跟年齡一起升高。",
+      "scope": "一個集水區；年齡是集總模型的平均通過時間；不推到台灣河川。",
+      "source_ids": [
+        "E74-S052"
+      ],
+      "source_locator": "摘要；3 研究區；4–5 節",
+      "premise_status": "screened",
+      "notes": "算 1.5，同作者；研究群 C 與 F97-010 合計 2.0。 原提案 F97-009（目標 F97-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V100（2026-11-12）照原稿收；數字、單位、條件全部在摘要與第 3 節。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一條小溪，乾旱時流的可能是一百多年前落下的雨。",
+        "visual": "時間軸從今天往回拉：冬天 2–5 年、夏天 30–40 年、乾旱 >100 年，同一條溪三張季節照。",
+        "seconds": [
+          55,
+          65
+        ]
+      }
+    },
+    {
+      "id": "E74-054",
+      "question": "用同位素量出來的溪水年齡，為什麼常常只有幾個月到幾年？",
+      "domain": "地下水",
+      "mechanism_key": "hydrology.stable_isotope_age_window_truncation",
+      "answer_target": "因為那把尺看不到更老的水。紐西蘭 GNS 的研究者寫，用雨水同位素季節起伏推年齡的方法，只適用到約 5 年；氚（半衰期 12.32 年）可以看到約 200 年；Toenepi 那篇也寫，穩定同位素和化學方法比較適合 3 年以下的水，很可能把年齡分布的長尾巴截掉、看不到更老的水。不過同一篇也提醒，集水區不均勻時，兩種方法算出的平均年齡都可能偏低。",
+      "scope": "方法適用範圍；5 年與 200 年出自 F97-S009 摘要（虛擬實驗），3 年、半衰期與『截掉』出自 F97-S008 第 2 節；不說具體哪篇舊研究低估多少；補上氚也有聚合偏差的限制。",
+      "source_ids": [
+        "E74-S052",
+        "E74-S053"
+      ],
+      "source_locator": "F97-S009 摘要；F97-S008 第 2 節",
+      "premise_status": "screened",
+      "notes": "算 0.5，同作者。原問題『以前很多研究說…』的前提沒有出處，改成不需前提的問法；補 S009 同句的限制，避免講成『氚才準』。 原提案 F97-010（目標 F97-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V100（2026-11-12）改字後收；改掉無出處的問題前提，補上原文同段『氚同樣有聚合偏差』的平衡句。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "量出來的年齡，受限於拿什麼尺去量。",
+        "visual": "兩把尺：一把刻到 5 年，一把刻到 200 年，溪水年齡的長尾巴只有第二把量得到。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "E74-055",
+      "question": "春天融雪讓西部的河暴漲，那些水是今年冬天的雪嗎？",
+      "domain": "地下水",
+      "mechanism_key": "hydrology.snowmelt_runoff_tritium_age_western_us",
+      "answer_target": "大多不是。研究者在美國西部內陸 42 個融雪源頭集水區，冬天低流量時與融雪期各採一次溪水做氚定年：冬季基流平均 10.4 年；融雪高峰時的溪水平均也有 5.7 年，估計 58% 是一年以上前落下的舊水。作者寫，這和『融雪很快變成河水』的常見假設相反。",
+      "scope": "42 個集水區（實際冬季樣本 40 站、融雪期 38 站），2022 水年一次取樣；58% 的標準差 34%；兩成分混合模型；與 F97-006 是不同方法、不同地區、不同定義，不相比或相減。",
+      "source_ids": [
+        "E74-S054"
+      ],
+      "source_locator": "Abstract；Results 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 1.0（作者 1.25）：H. R. Barnard 同為 F97-S006 共同作者，B、F 合併一群封頂 2.0（F97-007 1.0＋本條 1.0）。 原提案 F97-011（目標 F97-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V100（2026-11-12）改字後收；數字在原文；補單一水年與實際站數；研究群合併後下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "河水在春天暴漲，流的卻多半是好幾年前的雨雪。",
+        "visual": "美國西部地圖 42 個點，兩個時鐘：冬天 10.4 年、融雪 5.7 年。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "E74-056",
+      "question": "同一條溪的水，年紀會每天不一樣嗎？",
+      "domain": "地下水",
+      "mechanism_key": "hydrology.daily_stream_age_storm_month_dry_years",
+      "answer_target": "會。蘇格蘭高地 Bruntland Burn（3.2 平方公里），研究者用每天採的雨水與溪水同位素校準一個模型，模型算出：溪水平均約 1.8 歲；大雨時，從山坡和河邊泥炭地流出的較年輕的水佔上風，溪水年齡降到約一個月；乾旱時溪水主要靠地下水，接近 4 歲。模型也算出，地下水直接流進溪裡的量只約佔年逕流 30%，卻在一年大部分時間主導流量。",
+      "scope": "全部是模型輸出（以實測同位素校準），片中要說『模型算出』；一個集水區。",
+      "source_ids": [
+        "E74-S055"
+      ],
+      "source_locator": "Abstract；4 結果；6 結論",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：年齡全是模型輸出；『年齡隨流量變』的概念已由 F97-009（氚實測）與 F97-003 給出，本條新增的是每日尺度的一個月／四年對比。研究群 I 獨立（McDonnell 雖列 Aberdeen 職銜，但不是本篇作者，不併群）。 原提案 F97-013（目標 F97-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V100（2026-11-12）改字後收；取得路徑不違規（見 rule1_record）；年齡為模型輸出，答案句補『模型算出』，從嚴下修 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "河水的年紀不是一個數字，而是每天在換的混合比例。",
+        "visual": "同一個溪段一年的日曆，每格顏色代表當天水齡：雨天淡、旱季深。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "E74-057",
+      "question": "1831 年第一個走到北磁極的人，手上的磁針做了什麼？",
+      "domain": "磁學",
+      "mechanism_key": "geomagnetism.ross_1831_suspended_needle_no_direction",
+      "answer_target": "什麼也沒做。Ross 在 1831 年 6 月 1 日走到他算出的位置，把只用來量強度的那根磁針水平吊起來，先用三、四股細絲、再用單股絲、最後用單根亞麻纖維，針都停在放下時的位置，一點也不轉；換另一根針也一樣。他用傾角儀量，三組平均都只差垂直一、兩分角（OCR 轉錄，數字待原掃描核對）。他寫這只是粗略近似，但離真正的磁極『不太可能超過幾英里』；要知道磁極會不會移動，得有多名觀測者在四周長期觀測。",
+      "scope": "1834 年論文的 AI-OCR 轉錄（olmOCR），只用正文的定性描述；三組傾角的弧秒值不入片，除非讀到 Royal Society 原掃描頁；文末表格完全不用。當年位置 70.1°N、96.9°W 取自 F99-S002 表 5（1831.4）。",
+      "source_ids": [
+        "E74-S057",
+        "E74-S058"
+      ],
+      "source_locator": "F99-S001 正文（6 月 1 日懸吊試驗與三組傾角）；F99-S002 Table 5（1831.4 觀測位置）",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：單一歷史觀測；轉錄是 AI 模型 OCR 且表格已見幻覺，數字部分不計。 原提案 F99-001（目標 F99-T1，原角色 hook；依本池欄位記為 segment）。非作者覆核 V102（2026-11-12）改字後收；定性描述（吊針不轉、換針一樣、離磁極不超過幾英里）在轉錄正文上逐句可對；但轉錄來源是 olmOCR 機器轉錄，文末表格已出現成串重複的錯誤，正文數字的可信度不足以當一手數字。作者寫『先用幾股絲線、再用單根絲』與原文相符，『換另一根針也一樣』相符。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "站在『北磁極』上，磁針反而不知道該指哪裡。",
+        "visual": "雪屋旁，一根細絲吊著磁針，畫面靜止；旁邊一個傾角儀的針幾乎垂直朝下。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "E74-058",
+      "question": "指南針不是指著北磁極嗎？",
+      "domain": "磁學",
+      "mechanism_key": "geomagnetism.compass_not_aimed_at_dip_pole_misconceptions",
+      "answer_target": "不是。研究北磁極的 Newitt 等人在 2009 年的論文一開頭就列出常見誤解：北磁極會把指南針吸過去、指南針直接指著北磁極、磁場在磁極最強、南半球的指南針指向南磁極，這些都不對。北磁極的定義是磁場垂直向下的點，傾角 90°、水平強度是 0；所有指南針順著磁子午線走，最後都會『走到』北磁極，但北極區的磁場很不像一根棒磁鐵，磁子午線不是放射狀收過去，所以指南針並不直直對準它。WMM 技術報告也寫，指南針順著當地的水平磁力線排，大部分地方磁力線接近水平，到了磁極磁力線變成垂直，指南針就不好用了。",
+      "scope": "刪掉『地表場強 23,000–67,000 nT』（與問題無關的表格數字）；『磁場影響健康』不入片；Newitt 把『針在磁極失控亂轉』列為誤解、WMM 卻寫『spinning needle』，片中兩句都不引，只講 Ross 看到的不轉。",
+      "source_ids": [
+        "E74-S058",
+        "E74-S059"
+      ],
+      "source_locator": "F99-S002 §1 Introduction 第 1–2 段；F99-S003 §1.8 第 3 段、§1.1.3 Table 1",
+      "premise_status": "screened",
+      "notes": "作者算 1.0；併群後與 F99-003／004／007／008 合計封頂 2.0。 原提案 F99-002（目標 F99-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V102（2026-11-12）改字後收；原文逐句相符；刪一個與題無關的數字。這條是轉折一的主幹。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "大家以為指南針指著北磁極，其實它只認得腳下那一小段磁力線的方向。",
+        "visual": "地球上畫彎彎曲曲的磁子午線，一群小指南針各自順著線排，線最後收在一點，但沒有一根針的延長線穿過那一點。",
+        "seconds": [
+          55,
+          65
+        ]
+      }
+    },
+    {
+      "id": "E74-059",
+      "question": "北磁極在冰海上，研究者怎麼去『抓』它？它跑多快？",
+      "domain": "磁學",
+      "mechanism_key": "geomagnetism.north_dip_pole_2007_field_survey_speed_record",
+      "answer_target": "2007 年 4 月，研究者坐裝了滑雪板的 Twin Otter 小飛機，飛到預估在最近有人住的 Eureka 氣象站西北方 710 km 以外的海冰上；因為來回就要飛約 6 小時，一天只來得及停四個點，每點只給一小時架設和觀測（一般定點要花到三天）。加上 2005 年的一個點，用四種方法算出北磁極在 83.95°N、120.72°W，不確定度 40 km。磁極附近水平場太弱，在 Resolute 估 4° 的磁偏角誤差，到觀測點就放大成 20°–40°。歷年實測：1831 年在 70.1°N、96.9°W；1904–1973 年間每年約 9 km；1994–2001 年平均每年 51.5 km、2001–2007 年 52.0 km。作者寫速度看來已穩定在每年略多於 50 km、大概不再加速，但觀測點太少，還不能確定是否開始減速。",
+      "scope": "實地調查一次；速率是兩次觀測間的平均；710 km 是事前預估的磁極位置到 Eureka 的距離。",
+      "source_ids": [
+        "E74-S058"
+      ],
+      "source_locator": "F99-S002 摘要、§2.1、§2.2、Table 5、Table 6、§5",
+      "premise_status": "screened",
+      "notes": "作者 0.75；併群封頂。 原提案 F99-003（目標 F99-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V102（2026-11-12）改字後收；改正：『四個點』只是 2007 年那天，摘要的『五個地點』含 2005 年一點；710 km 是預估磁極位置與 Eureka 的距離；補上作者自己的『看來已不再加速』，免得觀眾以為 2007 年還在加速。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "要找一個每年跑 50 公里、又在冰上的點，只能飛過去、量一小時就走。",
+        "visual": "雙引擎小飛機降在海冰上，研究者在三腳架上架經緯儀；地圖上一串紅點從加拿大往北延伸，點距越拉越長。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "E74-060",
+      "question": "既然指南針不指真北，飛機、手機怎麼知道差多少？到了磁極附近又怎麼辦？",
+      "domain": "磁學",
+      "mechanism_key": "geomagnetism.wmm_declination_and_blackout_zone",
+      "answer_target": "靠世界磁場模型（WMM）。它最主要的工作，就是告訴你任一地點的水平磁場和真北差幾度，也就是磁偏角；美英國防部、北約、國際水文組織都用它，民間導航也廣泛使用；因為地核的變化無法完全預測，每五年要換一版。到了磁極附近，規格從 WMM2020 起把水平強度低於 2000 nT 的地方畫成『失效區』，在裡面磁偏角不準、指南針不能信；低於 6000 nT 是『注意區』。以前美國國防部的極區地圖和海圖印的是『接近磁極約 1000 英里起指南針越來越不可靠』，而且因為紙本跟不上磁極移動，這句話蓋在離『地理』北極 1000 英里內的所有圖上；改成跟著磁極移動的失效區後，北極的不可靠範圍少了 600 多萬平方公里。",
+      "scope": "失效區是規格定義的漸變區，報告寫不是踏出一步就失靈；面積比較是 2025.0 的值。",
+      "source_ids": [
+        "E74-S059"
+      ],
+      "source_locator": "F99-S003 §1.1 第 1、4 段、§1.8、Table 5",
+      "premise_status": "screened",
+      "notes": "作者 0.75；併群封頂。 原提案 F99-004（目標 F99-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V102（2026-11-12）改字後收；改正：舊警語蓋的範圍是『地理極』1000 英里內（不是離磁極），失效區從 WMM2020 才有；其餘相符。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "磁北和真北的差，要靠一張每五年重畫一次的全球地圖來補。",
+        "visual": "手機地圖上的指北針旁跳出『磁偏角 −4°』之類的小字（示意，不放真實數值）；北極地圖上一個紅色圓圈慢慢挪動，外圈黃色注意區。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "E74-061",
+      "question": "北磁極為什麼在 1990 年代突然開始往西伯利亞狂奔？",
+      "domain": "磁學",
+      "mechanism_key": "geomagnetism.north_pole_flux_lobe_tug_of_war",
+      "answer_target": "因為地核表面兩團磁通在『拔河』。Livermore 等人用衛星時代的高解析地磁模型，發現北磁極的位置大致由加拿大底下和西伯利亞底下兩大團負磁通的平衡決定。加拿大那團在 1990 年代被核心流拉長、1999 年後分成兩小團（作者推測起因是 1970–1999 年間核心流型態改變）；小尺度的磁場穿過地函衰減得比較快，地表的加拿大強磁斑就從 −59.6 減到 −58.0 µT，西伯利亞斑則略增（−60.5 到 −60.6 µT），磁極就被拉向西伯利亞。只讓加拿大那一區變化的數值實驗，就重現了 1999–2019 年北磁極移動 1104 km 中的 961 km（87%）；先前提出的另外兩種解釋只能讓它動 142 km 和 16 km。磁極速度也由歷史上的每年 0–15 km 加速到 50–60 km（2020 年論文寫的『現在速度』），2017 年 10 月越過國際換日線，離地理北極不到 390 km。",
+      "scope": "模型重建；核心流的解釋作者自稱非唯一。",
+      "source_ids": [
+        "E74-S061"
+      ],
+      "source_locator": "F99-S005 Abstract；Recent movement 第 3 段；Localised flux lobe elongation 全段",
+      "premise_status": "screened",
+      "notes": "作者 1.0；Livermore／Finlay 群與 F99-006 合計 1.25。 原提案 F99-005（目標 F99-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V102（2026-11-12）改字後收；數字逐一相符；改掉『分析衛星資料』的籠統說法，補上作者標的『likely』與時間。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "磁極會跑，不是因為北極有什麼東西在動，而是三千公里下的兩團磁通一邊變弱、一邊變強。",
+        "visual": "地核表面兩團藍色斑塊像兩隊拔河，加拿大那團被拉長成麵條、分成兩截，地表的紅點滑向西伯利亞。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "E74-062",
+      "question": "磁北極會一直跑到西伯利亞去嗎？以前也這樣跑過嗎？",
+      "domain": "磁學",
+      "mechanism_key": "geomagnetism.north_pole_past_wandering_and_forecast",
+      "answer_target": "短期內大概會繼續，但長期誰也說不準。Livermore 等人用幾種簡單模型從 2019 年往後推，未來十年北磁極會沿原路線再往西伯利亞走 390–660 km；但他們也寫，兩團磁通的平衡很微妙，只要小小重組就可能讓它掉頭。他們引用前人的重建說，過去 7000 年磁極在地理北極附近亂繞、沒有偏好的位置，西元前 4500 年和 1300 年可能有過類似的加速。",
+      "scope": "7000 年與過去 400 年的軌跡是 Livermore 引用 Korte & Mandea 2008 等重建，片中標『引用前人重建』；『3–4 倍』不入片；預測只是 2019 年起的線性外推與兩端模型。",
+      "source_ids": [
+        "E74-S061"
+      ],
+      "source_locator": "F99-S005 Future predictions and historical perspectives 全段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：只有十年預測與『小小重組就可能掉頭』是本篇結果；歷史軌跡是引用前人，不算本篇。 原提案 F99-006（目標 F99-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V102（2026-11-12）改字後收；把引用前人的重建寫成本篇結果，是本輪 brief 點名的錯誤類型；降為 0.25 並標明出處。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "這次狂奔不是第一次，磁極幾千年來本來就在北極附近亂繞。",
+        "visual": "一張北極俯視圖，一條細線在地理北極周圍繞來繞去，最後一段粗線直衝西伯利亞，前方畫一段虛線扇形。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "E74-063",
+      "question": "北磁極還在加速嗎？",
+      "domain": "磁學",
+      "mechanism_key": "geomagnetism.north_pole_deceleration_wmm_out_of_cycle",
+      "answer_target": "最新的估計是比較慢了，而且預測還會再慢。NOAA 與英國地質調查所的年度報告寫，2025 年初到 2026 年初北傾角極平均每年走 36 km、南傾角極 9 km，方向沒有明顯改變，實際速度也貼著 WMM2025 的預測；模型預測到 2030 年前會慢慢降到略高於每年 30 km。對照組是上一個週期：2015–2020 年 WMM2015 剛發布不久，北極突然加速，預測和實際差到每年 10 km，只好在 2018 年底提前發布 WMM2015v2。（片中可以把 2020 年 Livermore 等人寫的『現在每年 50–60 km』並列，但要說明是不同研究、不同方法的數字。）",
+      "scope": "36 km/yr 是 Swarm 衛星導出模型的 2025.0–2026.0 平均，不是實地調查；『比較慢』只能用兩份資料並列，不能說成同一份原文寫『已減速 X km』。",
+      "source_ids": [
+        "E74-S060",
+        "E74-S059",
+        "E74-S061"
+      ],
+      "source_locator": "F99-S004 Summary、Magnetic Dip Poles 節第 3–4 段；F99-S003 §1.6 第 3 段；F99-S005 引言末句",
+      "premise_status": "screened",
+      "notes": "作者 0.75；併群封頂。 原提案 F99-007（目標 F99-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V102（2026-11-12）改字後收；改正：臨時改版是 2018 年底發布（作者章名與畫面寫 2019 年；Livermore 寫的是『2019 年高知名度的不定期更新』，兩者可寫成『2018 年底到 2019 年』）；『已經慢下來了』沒有單一原文，改成並列兩個來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "新聞說磁極越跑越快，最新的量測是它正在減速。",
+        "visual": "速度折線圖：1900 年代平平、1990 年代陡升到 50 多、2020 年後往下彎到 36；一張日曆在 2019 年被貼上『臨時更新』的便利貼。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "E74-064",
+      "question": "地球磁場最弱的地方在哪裡？它還在變弱嗎？",
+      "domain": "磁學",
+      "mechanism_key": "geomagnetism.south_atlantic_anomaly_current_deepening",
+      "answer_target": "在南大西洋到南美一帶，叫南大西洋異常。WMM 技術報告寫那裡的場強不到全球平均的 60%，低軌衛星經過時會碰到較多高能粒子；年度報告寫那裡的強度約只有磁極附近的三分之一，而且還在變：2025 到 2026 年最低處又加深約 30 nT、往西移約 20 km，地表 25,000 nT 等值線圍出的面積一年增加約 8%。近年地表在它東端還長出第二個低點。",
+      "scope": "面積用 25,000 nT 等值線；不可與 F99-012（Pavón 用 32,000 nT）的面積混用；衛星損害只說風險較高。",
+      "source_ids": [
+        "E74-S059",
+        "E74-S060"
+      ],
+      "source_locator": "F99-S003 §1.7；F99-S004 Summary、South Atlantic Anomaly 節",
+      "premise_status": "screened",
+      "notes": "作者 0.5；併群封頂。 原提案 F99-008（目標 F99-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V102（2026-11-12）改字後收；相符；補上兩份研究的 SAA 面積定義不同，不可混用。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "磁場不是到處一樣強，有一塊『凹洞』正在變深、變大、往西走。",
+        "visual": "地球儀轉到南大西洋，一塊藍紫色凹陷慢慢擴大、往西滑，一顆小衛星經過時閃一下。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "E74-065",
+      "question": "整個地球的磁場，兩百年來弱了多少？",
+      "domain": "磁學",
+      "mechanism_key": "geomagnetism.global_field_9pct_loss_200yr_esa",
+      "answer_target": "ESA 寫，過去 200 年地磁場的全球平均強度少了約 9%；1970 到 2020 年南大西洋異常的最低值從約 24,000 nT 降到約 22,000 nT。",
+      "scope": "新聞頁的兩個數字；ESA 頁的『約 25 萬年翻一次』與 Pavón 引 De Santis 2013 的『40 萬年』不同，片中兩者都不並用（若要講平均間隔，只用 F99-011 並標明是 8300 萬年統計）。",
+      "source_ids": [
+        "E74-S065"
+      ],
+      "source_locator": "F99-S009 第 4–5 段",
+      "premise_status": "screened",
+      "notes": "作者 0.25；GFZ 群（ESA 引 Matzka）與 F99-010 合計 1.25。 原提案 F99-009（目標 F99-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V102（2026-11-12）改字後收；數字相符；補記同頁與 Pavón 不一致的翻轉間隔，避免混用。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "九個百分點，聽起來不多，卻足以讓人開始問：是不是要翻了？",
+        "visual": "一條緩緩下降的強度曲線，旁邊兩個數字 24,000 → 22,000 nT。",
+        "seconds": [
+          30,
+          35
+        ]
+      }
+    },
+    {
+      "id": "E74-066",
+      "question": "磁場變弱、南大西洋異常變大，是磁極快要翻轉的前兆嗎？",
+      "domain": "地質",
+      "mechanism_key": "geomagnetism.saa_like_states_recovered_without_excursion",
+      "answer_target": "研究過去的人有一派說『大概不是』。Brown 等人建了 5 萬到 3 萬年前的全球地磁模型：最近兩次『偏移』（約 4.1 萬年前的 Laschamp、3.4 萬年前的 Mono Lake）時的場都不像今天；反而約 4.9 萬和 4.6 萬年前有兩段和今天南大西洋異常很像的時期，都沒有變成偏移或翻轉，之後場仍由偶極主導。以 4.6 萬年前那次為例，局部場強最多掉了 60%，全球偶極卻只少 10–20%（依作者接受稿）。作者推論今天變弱的場也會恢復；要發生偏移，得全球多處同時變弱、兩個半球都長出反向磁通，不是一塊異常往外擴大就夠。他們也寫，這不代表減弱馬上會停，可能還會持續一段不確定的時間，今天的偶極甚至可能降到當年那兩段的水準。",
+      "scope": "模型推論，標題用 probably；60% 只是 46 ka 那次的例子；60%、10–20% 只在稿本正文（DRAFT 版面、2018-03-09 編譯），正式版未讀到，片中口白標『依作者接受稿』、寫稿前若讀到正式版要核對；與 F99-014 結論不同，必須並列。",
+      "source_ids": [
+        "E74-S062"
+      ],
+      "source_locator": "F99-S006 Abstract、Results 第 2–3 段、Discussion A–C",
+      "premise_status": "screened",
+      "notes": "算 1.0（作者 1.25）：結論句在正式版摘要上可對，但關鍵數字只來自 DRAFT 稿本、正式版兩次公開途徑都讀不到。 原提案 F99-010（目標 F99-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V102（2026-11-12）改字後收；改正：60% 原文只指 46 ka 那段（作者寫成兩段都是）；補上作者自己的保留（可能繼續減弱、可能降到 49／46 ka 的水準）；數字標稿本。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "類似今天的『磁場凹洞』以前出現過至少兩次，都自己恢復了。",
+        "visual": "兩張並排的古地球磁場圖，南大西洋都有一塊凹陷；時間軸往前走，凹陷消失、場恢復成整齊的南北兩極。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "E74-067",
+      "question": "現在的地磁到底算不算『很弱』？上次翻轉多久以前？",
+      "domain": "地質",
+      "mechanism_key": "geomagnetism.present_dipole_moment_vs_holocene_and_transitions",
+      "answer_target": "以長時間來看還不算弱。Pavón-Carrasco 與 De Santis 算出，從 1840 年起偶極場的能量每世紀少約 12%，非偶極部分的能量每世紀多約 70%；而且按 8300 萬年的統計平均約 40 萬年翻一次，現在已經隔了很久——這兩點看起來像翻轉前的樣子。但 2015 年的偶極矩是 7.7×10²² A·m²，跟過去一萬兩千年的平均（8.1±1.6×10²²，範圍 4–11）差不多，遠高於歷次偏移時的約 3×10²² 和上次翻轉時的不到 1×10²²。作者的結論是：三個翻轉特徵裡兩個符合，但『偶極夠低』這一點不成立；他們也引用前人指出，像現在這麼久沒翻轉，機率上並不罕見。",
+      "scope": "−12%、+70% 是能量（均方值）的變化，不是場強；不與其他研究的『每世紀 5%』比。『上次翻轉 78 萬年前』是本文引用值，片中上次翻轉的時間一律用 F99-015（Singer）的『約 79.5 萬到 77.3 萬年前』，不並列兩個年代。偶極矩刻度尺只用本文的四個數字，不把 Singer 的 6.83、2×10²² 畫在同一把尺上（參考序列不同）。",
+      "source_ids": [
+        "E74-S063"
+      ],
+      "source_locator": "F99-S007 Discussion（Figure 7、8 段）與 Conclusions",
+      "premise_status": "screened",
+      "notes": "作者 1.0；INGV 群與 F99-012 合計 1.5。 原提案 F99-011（目標 F99-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V102（2026-11-12）改字後收；相符；補上作者自己承認兩個特徵符合（避免觀眾以為本文是單純『不會翻』），以及與 Singer 年代、刻度的混用風險。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "磁場在變弱沒錯，但它是從偏強的地方往下掉，現在大約在一萬年來的平均附近。",
+        "visual": "刻度尺從 0 到 11×10²²：標出『上次翻轉 <1』『偏移 ~3』『全新世平均 8.1』『2015 年 7.7』四個記號。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "E74-068",
+      "question": "南大西洋異常是從哪裡來的？",
+      "domain": "地質",
+      "mechanism_key": "geomagnetism.saa_reversed_flux_patches_core_mantle_boundary",
+      "answer_target": "來自地核表面南大西洋底下『方向反過來』的磁通斑。Pavón-Carrasco 與 De Santis 用 1840–2015 年的模型，發現異常區最低強度平均每年降 30 nT、面積一路擴大；如果把偶極或四極的部分固定在 1840 年的樣子，異常的面積會少約一半，兩者都固定就少 85%。地核表面的反向斑在 1900 年前後分成兩塊（作者提醒 1900 年前只有一塊可能是舊模型解析度不夠）：非洲和南極之間大西洋底下那塊的最低值每世紀再降 2.54×10⁵ nT、越長越大並西移，南美那塊則似乎在消退。",
+      "scope": "面積以地表 32,000 nT 等值線定義，不與 F99-008 的 25,000 nT 面積混用。",
+      "source_ids": [
+        "E74-S063"
+      ],
+      "source_locator": "F99-S007 SAA During the Last 200 Years (a)(b)、Figure 6 段、Discussion 末段與 Figure 9",
+      "premise_status": "screened",
+      "notes": "作者 0.5。 原提案 F99-012（目標 F99-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V102（2026-11-12）改字後收；相符；位置改成原文的『非洲與南極之間』，『消失』改『似乎在消退』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "地表的凹洞，是三千公里下一塊『反著長』的磁通在作怪。",
+        "visual": "剖面圖：地表凹陷正下方的地核表面有一塊顏色相反的斑，裂成兩塊，一塊長大、一塊變淡。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "E74-069",
+      "question": "南大西洋異常是最近才出現的嗎？",
+      "domain": "地質",
+      "mechanism_key": "geomagnetism.south_african_burnt_huts_archaeomagnetic_record",
+      "answer_target": "不是，南部非洲的考古紀錄顯示這一帶的低場以前就出現過。鐵器時代的農村在儀式性清潔時會把茅屋、穀倉和牛欄燒掉，地板燒到至少 1000 °C，冷卻時把當時地磁的方向『凍』在泥土裡；同時代的陶片則記下強度。Tarduno 等人從三個遺址拿到約西元 1000–1600 年的紀錄：1225 到約 1550 年磁場方向每年變 0.11°–0.12°，比 1840 年以來當地的約 0.07° 還快；陶片顯示 1250 年後強度急降，保守估計每年 −0.054±0.036 µT（1840 年以來是 −0.036 µT），最低點約在 1370 年、比今天還低，之後又回升。作者推測這和地函底部非洲巨大低速區的邊緣有關，所以這一帶的低場會反覆出現。",
+      "scope": "方向來自燒過的地板、強度來自陶片（Thellier–Coe 成功率約 3%）；保守估計的誤差 ±0.036 和 1840 年以來的速率一樣大，片中不說『快很多』；『長期觸發翻轉的地點』是作者推測，不入片。",
+      "source_ids": [
+        "E74-S066"
+      ],
+      "source_locator": "F99-S010 引言第 2 段、Results（Directional data、Palaeointensity）、Discussion",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：強度速率的誤差範圍與比較值同大，只算方向速率加『降到比今天低再回升』。 原提案 F99-013（目標 F99-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V102（2026-11-12）改字後收；改正：作者寫『燒掉的穀倉記下強度』，原文強度來自陶片；漏掉 ±0.036 的誤差（與比較值同大）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "七百年前，這裡的磁場就掉得比現在還快、還低，後來又回來了。",
+        "visual": "夜裡一圈茅屋與圓形穀倉被點火，火光熄滅後，地上燒硬的泥地浮出一根小指南針的圖案。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "E74-070",
+      "question": "如果磁場真的要偏移或翻轉，會一夕之間發生嗎？",
+      "domain": "地質",
+      "mechanism_key": "geomagnetism.laschamp_excursion_duration_and_extrapolation",
+      "answer_target": "不會。Laj 與 Kissel 用北大西洋沉積物和格陵蘭冰芯的鈹-10、氯-36 重建 7.5 萬年來的地磁強度：約 4.1 萬年前的 Laschamp 偏移，方向變化前後共 640 年（每轉 180° 約 320 年），但強度低於平常一半的期間長達 1500–3000 年，掉得比回升快約一倍；約 7.16 萬到 6.8 萬年前強度掉了 60–65%，卻完全沒有方向變化。他們指出 Laschamp 期間的快速下降率和 1840 年以來的下降率幾乎一樣（但也說兩者時間尺度不同、不容易直接比），因此暫定推估『不可逆的過程可能已經開始』；但以目前速率要約 1000 年才降到一半，就算下降加快一倍（他們認為這是極端上限），也要約 500 年後方向才開始明顯改變，之後再花約 600 年。",
+      "scope": "作者在『未來會像 Laschamp』的假設下暫定推估；與 F99-010 結論相反，必須並列。",
+      "source_ids": [
+        "E74-S064"
+      ],
+      "source_locator": "F99-S008 Introduction、Duration of the Excursions、Rate of Change、Discussion 末段、Conclusions",
+      "premise_status": "screened",
+      "notes": "作者 1.25；LSCE 群上限內。審稿／編輯關係不視為同群，但在 notes 記下。 原提案 F99-014（目標 F99-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V102（2026-11-12）改字後收；改正：原文比的是『Laschamp 偏移期間的高下降率』與 1840 年以來的下降率，不是『Laschamp 前段』，且作者自己保留『不易直接比』；補上加速一倍是『極端上限』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "主張『可能已經開始』的研究者，算出來的也是五百年以後的事。",
+        "visual": "兩條時間軸並列：上面是 Laschamp 的強度谷底，下面是今天的曲線外推，中間用一把尺量出『~500 年』。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "E74-071",
+      "question": "上一次地磁翻轉，從開始到翻完花了多久？",
+      "domain": "地質",
+      "mechanism_key": "geomagnetism.matuyama_brunhes_reversal_22ka_process",
+      "answer_target": "至少兩萬兩千年。Singer 等人把夏威夷、大溪地、智利、拉帕爾馬等地在翻轉期間噴出的熔岩重新定年，再和海洋沉積物、南極冰芯對齊：約 79.5 萬年前場先變弱、出現一次偏移，之後一度回強；約 78.4 萬年前又一次偏移、場又變弱，接著一萬多年沉積物記錄的方向亂跳，最後在約 77.3 萬年前、不到 4000 年內完成 180° 翻轉。整個過程至少 2.2 萬年、可能長達 3 萬年。智利那批熔岩有四道的虛擬偶極矩低於 2×10²² Am²（文中引用的對照值：最近 10 萬年平均 6.83×10²²）。",
+      "scope": "只有一次翻轉；過程長度靠多種紀錄對齊；6.83 是引用值；本題『上次翻轉』的年代以本條為準。",
+      "source_ids": [
+        "E74-S067"
+      ],
+      "source_locator": "F99-S011 Abstract；Results（Chile 段）；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "作者 1.0；威斯康辛群上限內。 原提案 F99-015（目標 F99-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V102（2026-11-12）改字後收；相符；補上『之後一度回強』與 6.83 是引用值。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "真正的翻轉是一場兩萬年的慢動作，最後那一下也要幾千年。",
+        "visual": "一條長長的時間軸，三個閃爍的『不穩定』標記，最後一段箭頭從北指向南，旁邊標『<4000 年』。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "E74-NA001",
+      "question": "地面氣溫 0 °C 以上，雪為什麼更容易出現在海上而不是陸地？（Dai 2008 海陸比較）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Dai 2008 GRL 的 NCAR OpenSky 典藏頁（n2t.org ARK 轉址）出現機器驗證頁，依規定停止；Jennings 2018 對此的討論是引用，不能代替原文。 原提案 F84-NA001。",
+      "reentry_condition": "從 NCAR 典藏頁或出版社免費版以原連結正常讀到全文時",
+      "reading_status": "blocked（challenge 頁）"
+    },
+    {
+      "id": "E74-NA002",
+      "question": "雪融化吸熱真的能讓雨在幾小時內轉成大雪嗎？（Kain、Goss、Baldwin 2000 田納西個案）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "唯一找到的全文是 UNT 網頁典藏的 NOAA SPC PDF，curl 遇 TLS 憑證鏈失敗；依規定未換客戶端重試。 原提案 F84-NA002。",
+      "reentry_condition": "同一公開連結可正常建立 TLS 連線時，或出現 NOAA 官方典藏連結",
+      "reading_status": "unreadable（TLS）"
+    },
+    {
+      "id": "E74-NA003",
+      "question": "溫度剖面只差 ±0.5 °C 或降水強弱不同，地面降水型態會改變嗎？（Thériault、Stewart、Henson 2010）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "AMS 版 403、NCAR OpenSky 典藏需機器驗證；只讀到搜尋摘要，不收。 原提案 F84-NA003。",
+      "reentry_condition": "合法全文可讀時",
+      "reading_status": "blocked"
+    },
+    {
+      "id": "E74-NA004",
+      "question": "實測的山坡雪線比上游低多少？（Minder & Kingsmill 2013 Sierra Nevada 雷達）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "作者網站 PDF（atmos.albany.edu）TLS 憑證鏈失敗；依規定未換客戶端。 原提案 F84-NA004。",
+      "reentry_condition": "同一連結可正常下載時；會補上 F84-014 缺的觀測面，但與 Minder 群同群（合計封頂 2.0，最多 +0.75）",
+      "reading_status": "unreadable（TLS）"
+    },
+    {
+      "id": "E74-NA005",
+      "question": "風洞裡的雪片要落多遠才融完？（Mitra 等 1990 JAS；DTIC ADA129030 雪片融化報告）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "AMS 403；apps.dtic.mil 403。 原提案 F84-NA005。",
+      "reentry_condition": "合法全文可讀時",
+      "reading_status": "blocked"
+    },
+    {
+      "id": "E74-NA006",
+      "question": "長岡實測融化中雪片的含水率與落速關係（Misumi 等）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "core.ac.uk 下載 403。 原提案 F84-NA006。",
+      "reentry_condition": "出版社或機構典藏可讀時",
+      "reading_status": "blocked"
+    },
+    {
+      "id": "E74-NA007",
+      "question": "瑞士阿爾卑斯 30 年資料：上空溫度剖面能不能讓雨雪判別更準？（Froidurot 等 2014）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "DOI 轉到 journals.ametsoc.org 回 403；只讀到搜尋摘要。 原提案 F84-NA007。",
+      "reentry_condition": "合法全文可讀時",
+      "reading_status": "blocked（403）"
+    },
+    {
+      "id": "E74-NA008",
+      "question": "中國鳴沙山的沙為什麼『啞』了？表面的小孔與 0.3% 含水量是發聲關鍵嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "屈建軍等 2007《中國科學 D 輯》〈鳴沙表面結構特徵與共鳴機制的模擬實驗研究〉的 sciengine PDF（WebSearch 列出 https://www.sciengine.com/doi/pdf/ddb14c7420b343f29838447b9312e9bd）兩次 curl 都在連線階段被重置；另一篇 sciengine PDF 回 429。只讀到搜尋摘要轉述『與 SiO2 凝膠無關、多孔結構像亥姆霍茲共鳴腔、水分臨界 0.3%、粉塵堵孔變啞沙、封禁後鳴沙山復鳴』，都不是原文，不立核心。 原提案 F85-NA001。",
+      "reentry_condition": "用同一公開連結正常下載到原文一次；可立約 0.75 條，並可成第三個轉折（直接反駁勞倫森的矽膠層說、鳴沙山因滑沙粉塵失聲再復鳴）。",
+      "reading_status": "blocked（sciengine.com 連線重置／429）"
+    },
+    {
+      "id": "E74-NA009",
+      "question": "小沙丘為什麼不能持續鳴響？夏天有、冬天沒有的那層慢速沙是什麼？",
+      "existing_ids": [],
+      "source_ids": [
+        "E74-S017"
+      ],
+      "reason": "這兩點出自 Vriend 等 2007 GRL 與 Vriend 2010 加州理工博士論文；博士論文 PDF（thesis.library.caltech.edu）兩次連線被重置，2007 GRL 只見於第三方課程網站，不視為合法開放版本；core.ac.uk 一份 PDF 回 403；劍橋 Apollo 記錄頁回 429。F85-S004 引言只轉述，不算本篇結果。 原提案 F85-NA002。",
+      "reentry_condition": "由 CaltechAUTHORS 或 CaltechTHESIS 頁面連結正常讀到原文；在加州理工群封頂內最多 +0.25。",
+      "reading_status": "blocked（thesis.library.caltech.edu 連線重置；core.ac.uk 403；repository.cam.ac.uk 429）"
+    },
+    {
+      "id": "E74-NA010",
+      "question": "華北三處地質公園會響與不響的沙，礦物和顆粒表面差在哪？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Han 等 2017 Arabian Journal of Geosciences 10:241 只在 Springer 頁與 ResearchGate 見到摘要，沒有合法開放全文；只讀到摘要不算。 原提案 F85-NA003。",
+      "reentry_condition": "讀到出版社 OA 或作者機構典藏全文；可立約 0.5 條（第四個獨立研究群的實測比較）。",
+      "reading_status": "abstract only（未下載）"
+    },
+    {
+      "id": "E74-NA011",
+      "question": "勞倫森大學 Patitsas 2008〈Singing sands and booming dunes〉",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "WebSearch 列出的 LU|ZONE PDF 由伺服器轉址後回 404；未改寫網址重試。 原提案 F85-NA004。",
+      "reentry_condition": "由 LU|ZONE handle 頁上的連結讀到；勞倫森封頂內最多 +0.25。",
+      "reading_status": "404"
+    },
+    {
+      "id": "E74-NA012",
+      "question": "民眾肉眼數星的資料顯示夜空每年變亮約 9.6%，遠快於衛星量到的約 2%？（Kyba 等 2023 Science）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "搜尋結果列出的 GFZ 機構典藏頁（gfzpublic.gfz.de/pubman/item/item_5014827）以 curl 讀取回 403，依規定停止，未換客戶端或主機重送；出版社 Science 版未嘗試（付費）。只看過搜尋摘要與新聞稿標題，不立核心。 原提案 F93-NA001。",
+      "reentry_condition": "GFZ 典藏頁能以原連結正常讀取時讀全文；屬 Kyba／Hölker 研究群，該群已達 2.0 封頂，只能替換 F93-006（0.25）並把轉折二的『肉眼實測』補上，條數最多 +0.25～0.5。",
+      "reading_status": "blocked（gfzpublic.gfz.de 403）"
+    },
+    {
+      "id": "E74-NA013",
+      "question": "衛星量到 2012–2016 年全球人造照明面積每年增 2.2%、亮度增 1.8%？（Kyba 等 2017 Sci Adv）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC 無 PMC 全文；搜尋結果列出的艾希特大學典藏頁（ore.exeter.ac.uk/repository/handle/10871/30020）以 curl 讀取回 HTTP 202、內容為空（疑似機器驗證），依規定停止。數字只見於搜尋摘要，不立核心。 原提案 F93-NA002。",
+      "reentry_condition": "典藏頁能正常讀取時；同屬 Kyba 研究群（封頂），只能讓 F93-014 的『衛星說變暗』有實測對照，不加條數。",
+      "reading_status": "blocked（ore.exeter.ac.uk 202 空內容）"
+    },
+    {
+      "id": "E74-NA014",
+      "question": "積雪加上雲，郊區的夜可以比滿月還亮？（Jechow & Hölker 2019 J Imaging，PMC8320966）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "已下載全文快取 f93src/PMC8320966.txt（sha256 35274dd533cc0f87）但只讀標題與摘要；且同屬 Kyba／Hölker 群，該群已 2.0 封頂，加了也不增條數。 原提案 F93-NA003。",
+      "reentry_condition": "若要替換 F93-006，讀全文後可算 0.25–0.5（群內封頂不變）。",
+      "reading_status": "cached，未讀全文"
+    },
+    {
+      "id": "E74-NA015",
+      "question": "看得到幾顆星：義大利逐地的可見星數地圖（Cinzano & Falchi 2020 JQSRT）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "arXiv 2007.00354v1 全文已讀（f93src/arXiv2007.00354v1.txt，sha256 83cb300d549c5c0c），但只是方法加示意地圖，作者明言未與觀測比較；色階只給 0–200 到 >1300 顆的分級，沒有可講的逐地結論。ISTIL 群已有 F93-001、014。 原提案 F93-NA004。",
+      "reentry_condition": "作者出版全球可見星數圖集並與實地數星比較時，約 0.5。",
+      "reading_status": "full text read"
+    },
+    {
+      "id": "E74-NA016",
+      "question": "新城市讓埃及 Kottamia 天文台的夜空變亮？（Aboushelib 等 2023 Sci Rep，PMC10556021）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "全文快取 f93src/PMC10556021.txt（sha256 e862f5908b7650a3），讀摘要與結論：只有 2022 年連續三夜的 UBVRI 量測，沒有新城市建成前的對照，『新城市使天空變亮』是方位推論。 原提案 F93-NA005。",
+      "reentry_condition": "有同站前後期對照時約 0.5。",
+      "reading_status": "abstract＋conclusion"
+    },
+    {
+      "id": "E74-NA017",
+      "question": "荷蘭九台 SQM 的逐年穩定度（den Outer 等 2015 Sensors，PMC4431212）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "只讀結論：逐年靈敏度標準差約 5%，屬儀器方法，與本題事實重複（老化已由 F93-013、016 處理）。 原提案 F93-NA006。",
+      "reentry_condition": "不需要。",
+      "reading_status": "conclusion only（f93src/PMC4431212.txt，sha256 5d22b006fa23e21f）"
+    },
+    {
+      "id": "E74-NA018",
+      "question": "用曙暮光校正 SQM 老化（Puschnig 等 2021 MNRAS，arXiv 2012.04042）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "已下載（f93src/arXiv2012.04042v1.txt，sha256 3c31c45517bcfb2b）未讀；Vienna 群已 2.0 封頂。 原提案 F93-NA007。",
+      "reentry_condition": "不加條數，可作 F93-016 方法的出處。",
+      "reading_status": "cached，未讀"
+    },
+    {
+      "id": "E74-NA019",
+      "question": "同樣是山，為什麼有的溪水特別老？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "非作者覆核 V100（2026-11-12）退回：原文數字無誤，但研究群合併後封頂已滿，本題計 0 條；為降低清單感自最終核心刪除（非因錯誤）。 原提案 F97-012。",
+      "reentry_condition": "覆核理由所列的缺口補上後重提。",
+      "reading_status": "已讀來源，核心退回"
+    },
+    {
+      "id": "E74-NA020",
+      "question": "全世界的河水，有多少是兩三個月內落下的雨？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Jasechko、Kirchner、Welker、McDonnell 2016 Nature Geoscience（doi:10.1038/ngeo2636）：伯明罕大學典藏頁（WebSearch 結果）只有摘要，授權寫 All rights reserved，沒有全文檔；摘要說 254 個集水區、年輕水約佔全球河川流量三分之一、約 90% 集水區至少 5%。只讀摘要不立核心。 原提案 F97-NA001。",
+      "reentry_condition": "讀到合法全文（出版社 OA 或作者典藏）後約可立 0.75 條；但與 Kirchner（A）、McDonnell（B）兩群重疊，群內封頂要合併計算。",
+      "reading_status": "abstract_only（f97src/bham_jasechko.html）"
+    },
+    {
+      "id": "E74-NA021",
+      "question": "瑞典北方森林融雪時，河水裡是融雪還是舊地下水？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Laudon 等 2004 WRR：WebSearch 結果列出 hal-insu.archives-ouvertes.fr 的 PDF，curl 回 HAL 的機器人驗證頁，停止，未換客戶端或主機重試。 原提案 F97-NA002。",
+      "reentry_condition": "HAL 能正常提供 PDF 時以同一連結再試一次；可立約 0.75 條（瑞典 SLU 群，新研究群）。",
+      "reading_status": "blocked（HAL 機器人驗證）"
+    },
+    {
+      "id": "E74-NA022",
+      "question": "全球地下水有多少是 50 年內補進來的？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Gleeson 等 2016 Nature Geoscience：Göttingen Research Online 典藏頁回 403 與 Site Protection 驗證頁，停止；另一個網站的 PDF 標示 Fair Use，不是合法開放版本，不讀。 原提案 F97-NA003。",
+      "reentry_condition": "讀到出版社 OA 或作者典藏全文；與河水年齡主題相關但屬地下水總量，約 0.5 條，也可能另成別題。",
+      "reading_status": "blocked（goettingen-research-online 403）"
+    },
+    {
+      "id": "E74-NA023",
+      "question": "雨水的痕跡在溪水峰值裡佔多少（另一篇 MDPI Water 研究）？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "WebSearch 結果列出 mdpi.com/2073-4441/11/1/123，curl 回 403，停止。颱風研究的正式版（Water 12:1169）也在同一網站，未嘗試，只讀臺師大典藏頁摘要；DOAJ 記錄頁 WebFetch 回 403，停止。 原提案 F97-NA004。",
+      "reentry_condition": "MDPI 不再擋時以原連結再試一次；Water 12:1169 全文讀到後，F97-005 可由 0.75 升到 1.0。",
+      "reading_status": "blocked（mdpi.com 403、doaj.org 403）"
+    },
+    {
+      "id": "E74-NA024",
+      "question": "冰川集水區的溪水裡，融雪與冰川融水各佔多少？",
+      "existing_ids": [],
+      "source_ids": [
+        "E74-S056"
+      ],
+      "reason": "F97-014 已提案入池，但與本題主問題距離較遠，作者不放進 F97-T1 最終核心。 原提案 F97-NA005。",
+      "reentry_condition": "若之後組『冰川河的水從哪來』一題，可直接取用。",
+      "reading_status": "partial（摘要、前言、研究區）"
+    },
+    {
+      "id": "E74-NA025",
+      "question": "冰川底下流出來的河，水都是冰川融的嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "作者提案，作者自判離題、不進片；覆核 V100 沒有逐核心覆核，依「每份研究產出都要經非作者覆核」不入池。 原提案 F97-014。",
+      "reentry_condition": "經非作者覆核後再提。",
+      "reading_status": "作者已讀來源，未經覆核"
+    },
+    {
+      "id": "E74-NA026",
+      "question": "北磁極 2007 年的實地定位全文（CORE 版）",
+      "existing_ids": [],
+      "source_ids": [
+        "E74-S058"
+      ],
+      "reason": "WebSearch 結果的 core.ac.uk/download/208384688.pdf 回 403，依規定停止、不換客戶端；改讀同一搜尋結果所列出版社 link.springer.com 文章頁，再循頁面 Article PDF 連結取得全文（F99-S002）。不另立核心。 原提案 F99-NA001。",
+      "reentry_condition": "不需要；出版社版已讀到全文。",
+      "reading_status": "blocked（core.ac.uk 403）；以出版社開放版取代"
+    },
+    {
+      "id": "E74-NA027",
+      "question": "Ross 1831 年觀測表的逐日傾角與位置",
+      "existing_ids": [],
+      "source_ids": [
+        "E74-S057"
+      ],
+      "reason": "OCR 轉錄頁文末表格明顯錯亂（日期、欄位重複，數值不合理），不能當原文用；Royal Society 原掃描頁未在搜尋結果中出現，未嘗試。 原提案 F99-NA002。",
+      "reentry_condition": "循公開連結讀到 Phil Trans 1834 原始掃描頁，可把當年位置與每日傾角升為一手，約 +0.25（Ross 已 0.75）。",
+      "reading_status": "OCR 表格不可用"
+    },
+    {
+      "id": "E74-NA028",
+      "question": "南半球的南磁極為什麼跑得比北磁極慢？",
+      "existing_ids": [],
+      "source_ids": [
+        "E74-S059",
+        "E74-S060"
+      ],
+      "reason": "目前只有 WMM 的數字（南極約 9 km/yr），缺解釋機制的原文；Mandea & Dormy 2003 EPS（搜尋結果有出版社 PDF）未讀，且作者機構 IPGP 與 Newitt 2009 共同作者重疊。 原提案 F99-NA003。",
+      "reentry_condition": "讀到 Mandea & Dormy 2003 或其他非 IPGP 群的南傾角極原研究，約 0.5，可加在 F99-007 之後。",
+      "reading_status": "未讀"
+    },
+    {
+      "id": "E74-NA029",
+      "question": "磁暴時指南針會偏多少？",
+      "existing_ids": [
+        "N269",
+        "S58-006"
+      ],
+      "source_ids": [
+        "E74-S060"
+      ],
+      "reason": "年度報告 Summary 一句『強磁暴時高磁緯磁偏角偏差超過 15°』，對應章節未逐段讀；池中磁暴題已多。 原提案 F99-NA004。",
+      "reentry_condition": "逐段讀 F99-S004 的 Solar Cycle Progression and Magnetic Storms 節，且只寫指南針（不寫電網）時，約 0.25。",
+      "reading_status": "只讀到 Summary"
+    }
+  ]
+}

@@ -39,7 +39,7 @@ from urllib.parse import parse_qs, urlsplit
 from uuid import UUID, uuid4
 
 import httpx
-from sqlalchemy import and_, func, or_, select
+from sqlalchemy import and_, case, func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import Settings
@@ -84,9 +84,10 @@ from app.video_automation.settings import (
     look_pick_note,
     outline_demo_wanted,
 )
+from app.video_backup.drive_links import drive_links
 from app.video_media.meter import SlugSpend, spend_by_slug
 from app.video_reviews import admin_package_zip as package_zip
-from app.video_reviews import dub_retry
+from app.video_reviews import dub_retry, shelf
 from app.video_reviews.clips import backup_tier_role
 from app.video_reviews.producer_state import worker_view
 from app.video_reviews.schemas import (
@@ -94,6 +95,7 @@ from app.video_reviews.schemas import (
     DUB_LOCALES,
     LOCALE_PARTS,
     VIDEO_CATEGORY_CODES,
+    VIDEO_SHOW_CODES,
     WORKER_CAPTION_LOCALES,
     YOUTUBE_VIDEO_ID_PATTERN,
     CategoryIn,
@@ -649,6 +651,10 @@ def _summary(
             )
             if code is not None:
                 retry_blocked[locale] = code
+    # The folder the worker last reported; its ids count only while they were read for it.
+    backup_record = project.backup if isinstance(project.backup, dict) else {}
+    folder = backup_record.get("folder")
+    drive = drive_links(backup_record, folder if isinstance(folder, str) else None)
     return {
         "dub_retries": retries,
         "dub_retry_blocked": retry_blocked,
@@ -698,6 +704,10 @@ def _summary(
         ),
         "dub_locales": [locale for locale, choice in choices.items() if choice.dub],
         "series_slug": project.series_slug,
+        "series_key": project.series_key,
+        "topic": project.topic,
+        "drive_folder_url": drive[0],
+        "drive_final_url": drive[1],
         "episode_number": project.episode_number,
         "youtube_sync": public_state(project.youtube_sync),
     }
@@ -765,6 +775,7 @@ async def upsert_project(
     project = await session.scalar(
         select(VideoProject).where(VideoProject.slug == slug).with_for_update()
     )
+    existed = project is not None
     if project is None:
         # A sender that has been answered for this slug before finds no row only when the owner
         # deleted it (admin_deletion.py); a worker that has not noticed yet must not bring it back.
@@ -777,7 +788,13 @@ async def upsert_project(
     project.checklist = [item.model_dump() for item in payload.checklist]
     # The owner records the id on /admin/videos first; a report that does not carry it yet
     # (the worker reads it back a round later) must not clear it.
-    if payload.youtube_video_id is not None:
+    # An id the owner unlinked (unlink_youtube) is the old cut's: video.json still names it, and a
+    # report that carries it must not link the video again or replace the new cut's id.
+    if (
+        payload.youtube_video_id is not None
+        and payload.youtube_video_id != project.youtube_video_id
+        and not (existed and payload.youtube_video_id in await unlinked_youtube_ids(session, slug))
+    ):
         project.youtube_video_id = payload.youtube_video_id
     if payload.source_guide is not None:
         project.source_guide = payload.source_guide
@@ -796,6 +813,7 @@ async def upsert_project(
         project.shorts_series = payload.shorts_series
     if payload.source_slug is not None:
         project.source_slug = payload.source_slug
+    shelf.refresh(project)
     # The card pipeline only makes Shorts, and the lists tell a Short by its content line: a
     # row in that format without one would show among the tutorials.
     if project.format == "shorts" and project.shorts_line is None:
@@ -1121,6 +1139,23 @@ def _category_filter(category: str) -> Any:
     return VideoProject.category == category
 
 
+def _shelf_column() -> Any:
+    """The catalog's first row for a video (app/video_reviews/shelf.py): one of the two shows
+    that stand on their own, else its category, else ``none``."""
+    return case(
+        (VideoProject.series_key.in_(shelf.SHOWS), VideoProject.series_key),
+        else_=func.coalesce(VideoProject.category, "none"),
+    )
+
+
+def _shelf_filter(value: str) -> Any:
+    return _shelf_column() == value
+
+
+def _key_filter(column: Any, value: str) -> Any:
+    return column.is_(None) if value == "none" else column == value
+
+
 def _state_filter(state: str) -> Any:
     if state == "dropped":
         return VideoProject.dropped_at.is_not(None)
@@ -1139,56 +1174,110 @@ def _search_filter(q: str) -> Any:
     )
 
 
+async def _key_counts(session: AsyncSession, column: Any, where: list[Any]) -> dict[str, int]:
+    rows = await session.execute(
+        select(column, func.count(VideoProject.id)).where(*where).group_by(column)
+    )
+    return {(str(value) if value is not None else "none"): int(count) for value, count in rows}
+
+
+def _listed_keys(counts: dict[str, int], labels: dict[str, str] | None = None) -> list[FacetCount]:
+    """The values that list something, by name (a series) or by code (a topic, whose code is
+    its name), ``none`` last."""
+    named = sorted(
+        (code for code in counts if code != "none" and counts[code] > 0),
+        key=lambda code: ((labels or {}).get(code) or code),
+    )
+    facets = [
+        FacetCount(code=code, count=counts[code], label=(labels or {}).get(code)) for code in named
+    ]
+    if counts.get("none"):
+        facets.append(FacetCount(code="none", count=counts["none"]))
+    return facets
+
+
 async def browse_projects(
     session: AsyncSession,
     *,
     category: str | None = None,
+    shelf_code: str | None = None,
+    series: str | None = None,
+    topic: str | None = None,
     state: str | None = None,
     q: str | None = None,
     page: int = 1,
     limit: int = BROWSE_PAGE_SIZE,
     work_dir: str | None = None,
 ) -> ProjectPage:
-    """One page of the review tab's catalog, newest report first (docs/videos/HANDS-OFF.md
-    §影片分類): the tutorials and the dramas, narrowed by a category (``none`` for the unfiled
-    ones), a state and a search, with how many each other value of the two filters would list."""
+    """One page of the review tab's catalog (docs/videos/HANDS-OFF.md §影片分類): the tutorials
+    and the dramas, narrowed by a shelf (one of the two explainer shows, or a category without
+    them; ``none`` for the unfiled), a series and a topic within it (migration 0147), a state
+    and a search, with how many each other value of each filter would list.
+
+    ``category`` is the filter from before shelves and is still read: on its own it is the
+    shelf of the same name. A picked series or topic lists in episode order, everything else
+    newest report first."""
     query = q.strip() if q else ""
     filters: dict[str, Any] = {"scope": _browse_scope()}
-    if category is not None:
-        filters["category"] = _category_filter(category)
+    if shelf_code is None and category is not None:
+        shelf_code = category
+    if shelf_code is not None:
+        filters["shelf"] = _shelf_filter(shelf_code)
+    if series is not None:
+        filters["series"] = _key_filter(VideoProject.series_key, series)
+    if topic is not None:
+        filters["topic"] = _key_filter(VideoProject.topic, topic)
     if state is not None:
         filters["state"] = _state_filter(state)
     if query:
         filters["q"] = _search_filter(query)
 
-    def without(name: str) -> list[Any]:
-        return [clause for key, clause in filters.items() if key != name]
+    def without(*names: str) -> list[Any]:
+        return [clause for key, clause in filters.items() if key not in names]
 
     total = int(
         await session.scalar(select(func.count(VideoProject.id)).where(*filters.values())) or 0
     )
     pages = (total + limit - 1) // limit
+    order: tuple[Any, ...] = (
+        (
+            VideoProject.topic.asc().nulls_last(),
+            VideoProject.episode_number.asc().nulls_last(),
+            VideoProject.slug.asc(),
+        )
+        if series is not None or topic is not None
+        else (VideoProject.last_synced_at.desc(), VideoProject.id.desc())
+    )
     listed = list(
         (
             await session.execute(
                 _listing_statement()
                 .where(*filters.values())
-                .order_by(VideoProject.last_synced_at.desc(), VideoProject.id.desc())
+                .order_by(*order)
                 .offset((page - 1) * limit)
                 .limit(limit)
             )
         ).all()
     )
-    category_rows = {
-        (str(value) if value is not None else "none"): int(count)
-        for value, count in (
-            await session.execute(
-                select(VideoProject.category, func.count(VideoProject.id))
-                .where(*without("category"))
-                .group_by(VideoProject.category)
-            )
-        ).all()
-    }
+    # The old category facet keeps its meaning (every category, the shows inside theirs), so a
+    # page from before shelves reads the same counts.
+    category_rows = await _key_counts(
+        session, VideoProject.category, without("shelf", "series", "topic")
+    )
+    shelf_rows = await _key_counts(session, _shelf_column(), without("shelf", "series", "topic"))
+    series_facets: list[FacetCount] = []
+    topic_facets: list[FacetCount] = []
+    if shelf_code is not None:
+        series_facets = _listed_keys(
+            await _key_counts(session, VideoProject.series_key, without("series", "topic")),
+            await shelf.load_series_labels(session),
+        )
+        topic_facets = _listed_keys(
+            await _key_counts(session, VideoProject.topic, without("topic"))
+        )
+        # A shelf whose videos have no topics shows no topic row.
+        if all(facet.code == "none" for facet in topic_facets):
+            topic_facets = []
     state_counts = [
         FacetCount(
             code=value,
@@ -1214,6 +1303,12 @@ async def browse_projects(
                 for code in (*VIDEO_CATEGORY_CODES, "none")
             ],
             state=state_counts,
+            shelf=[
+                FacetCount(code=code, count=shelf_rows.get(code, 0))
+                for code in (*VIDEO_SHOW_CODES, *VIDEO_CATEGORY_CODES, "none")
+            ],
+            series=series_facets,
+            topic=topic_facets,
         ),
     )
 
@@ -1228,6 +1323,7 @@ async def set_category(
     if payload.category != previous:
         now = datetime.now(UTC)
         project.category = payload.category
+        shelf.refresh(project)
         project.updated_at = now
         session.add(
             AdminAuditLog(
@@ -2942,6 +3038,89 @@ async def link_youtube(
     await session.commit()
     view = await project_view(session, slug)
     return view.model_copy(update={"youtube_publish_note": reason})
+
+
+UNLINKED_ACTION = "video_youtube_unlinked"
+
+
+async def unlinked_youtube_ids(session: AsyncSession, slug: str) -> set[str]:
+    """The YouTube ids the owner took off this video with ``unlink_youtube``, from the audit log.
+
+    A report or an uploader job that still names one of them speaks for the old cut: the worker's
+    video.json, the repository's docs/videos/<slug>/video.json and the VPS uploader's last job all
+    keep the id they once had, and none of them is told about the unlink.
+    """
+    rows = await session.scalars(
+        select(AdminAuditLog.metadata_json).where(
+            AdminAuditLog.action == UNLINKED_ACTION,
+            AdminAuditLog.target == f"video_project:{slug}",
+        )
+    )
+    return {
+        str(row["youtube_video_id"])
+        for row in rows
+        if isinstance(row, dict) and isinstance(row.get("youtube_video_id"), str)
+    }
+
+
+async def unlink_youtube(session: AsyncSession, slug: str, user: User) -> ProjectOut:
+    """Take an uploaded-but-unscheduled video's YouTube link off, so a remade cut can go up again.
+
+    Only for the "linked, no publish time" state (the owner pasted or the site recorded an id, and
+    nothing says when it goes public): a scheduled or public video is refused, and so is one whose
+    YouTube send or VPS uploader job is still going, or one the owner dropped. Everything that
+    speaks for the old video goes with the id: the resumable upload session, the last send's state
+    and the "removed from YouTube" mark, so the page, the senders and a long renewal read the video
+    as never uploaded. The video on the channel is left alone; the owner deletes it in Studio.
+
+    The worker's and the repository's video.json keep the old id and report it again; the audit
+    row written here is how ``upsert_project`` (and the VPS sender) know to ignore it.
+    """
+    project = await _project(session, slug, lock=True)
+    _refuse_dropped(project)
+    if project.youtube_video_id is None:
+        raise AppError(409, "video_youtube_not_linked", "這支影片沒有 YouTube 連結，不用解除")
+    if project.youtube_publish_at is not None:
+        raise AppError(
+            409,
+            "video_youtube_unlink_scheduled",
+            "這支影片已記錄公開時間（已排程或已公開），不能解除連結；要換片請先在 Studio 處理",
+        )
+    if youtube_sync_running(project.youtube_sync):
+        raise AppError(
+            409, "video_youtube_unlink_sync_running", "YouTube 同步進行中，等它跑完再解除連結"
+        )
+    from app.video_youtube.vps import assert_idle
+
+    try:
+        await assert_idle(session, slug)
+    except Refused as refused:
+        raise AppError(refused.status, refused.code, refused.detail) from refused
+    previous = project.youtube_video_id
+    now = datetime.now(UTC)
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action=UNLINKED_ACTION,
+            target=f"video_project:{slug}",
+            metadata_json={
+                "slug": slug,
+                "youtube_video_id": previous,
+                "had_upload_session": project.youtube_upload_session is not None,
+                "youtube_sync_status": (project.youtube_sync or {}).get("status"),
+                "youtube_removed_at": (
+                    project.youtube_removed_at.isoformat() if project.youtube_removed_at else None
+                ),
+            },
+        )
+    )
+    project.youtube_video_id = None
+    project.youtube_upload_session = None
+    project.youtube_sync = None
+    project.youtube_removed_at = None
+    project.updated_at = now
+    await session.commit()
+    return await project_view(session, slug)
 
 
 async def backfill_youtube_publish_times(

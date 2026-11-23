@@ -39,6 +39,12 @@ import uuid
 from pathlib import Path
 from typing import Any, Callable
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import accounts  # noqa: E402
+
+# COLAB_ACCOUNT_SLOT picks the account this agent leased (accounts.py claim).
+accounts.activate()
+
 SKILL_DIR = Path(__file__).resolve().parents[1]
 NOTEBOOK = SKILL_DIR / "assets" / "qwen_image_edit.ipynb"
 AUTH = os.environ.get("COLAB_AUTH", "oauth2")

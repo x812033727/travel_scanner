@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Annotated, Literal
+from typing import Annotated, Any, Literal
 from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
@@ -45,13 +45,13 @@ class VideoBudgetAttribution(BaseModel):
 
 class SpeechRequest(VideoBudgetAttribution):
     model_config = ConfigDict(extra="forbid")
-    # An Azure voice name, or "gemini:<voice>" for Gemini.
+    # An Azure voice name, "gemini:<voice>" for Gemini or "minimax:<voice id>" for MiniMax.
     voice: str = Field(min_length=3, max_length=90)
-    # Azure only; Gemini takes its pace from the style.
+    # Azure, and MiniMax as its speed; Gemini takes its pace from the style.
     rate: str = Field(default="+0%", pattern=r"^[+-]\d{1,2}%$")
     # Gemini only: how to deliver, e.g. "relaxed, like explaining to a friend".
     style: str | None = Field(default=None, min_length=1, max_length=400)
-    # Gemini only: one of GEMINI_TTS_MODELS; the default model when omitted.
+    # Gemini or MiniMax: one of that provider's models; its default model when omitted.
     model: str | None = Field(default=None, min_length=3, max_length=60)
     segments: list[SpeechSegmentIn] = Field(min_length=1, max_length=200)
 
@@ -72,6 +72,26 @@ class SpeechStatus(BaseModel):
     gemini_voices: list[str] = []
     gemini_monthly_limit: int = 0
     gemini_used: int | None = None
+    # MiniMax narration: available when the site's MiniMax key is set; its own month of text
+    # characters.
+    minimax_configured: bool = False
+    minimax_models: list[str] = []
+    minimax_voices: list[str] = []
+    minimax_monthly_limit: int = 0
+    minimax_used: int | None = None
+
+
+class MiniMaxQuotaOut(BaseModel):
+    # When the server asked, and the host it asked (www.minimax.io or www.minimaxi.com).
+    checked_at: datetime
+    host: str
+    # MiniMax's own answer without base_resp, bounded (app/video_speech/minimax.py ``bounded``):
+    # no official page names its fields, so they are passed on as MiniMax wrote them.
+    quota: dict[str, Any]
+    # Every M Plan key the site shares calls out among (app.ai.minimax_pool), the first one
+    # first: its place in the list, the last four characters of its fingerprint, and its answer
+    # or why there is none. ``quota`` above stays the first key's.
+    accounts: list[dict[str, Any]] = Field(default_factory=list)
 
 
 class VideoToolTokenCreate(BaseModel):

@@ -1,0 +1,146 @@
+{
+  "batch_id": "wave63-tech-20261111",
+  "created_on": "2026-11-12",
+  "scope": "黃燈前停或走的路口錄影研究：替後備組題 C8-01 補原始資料（作者 F21，覆核 V24），成題 G624。",
+  "sources": [
+    {
+      "id": "T63-S001",
+      "url": "https://files.topslab.wisc.edu/publications/2006/Gates - dilemma zones.pdf",
+      "canonical_url": "https://files.topslab.wisc.edu/publications/2006/Gates%20-%20dilemma%20zones.pdf",
+      "title": "Analysis of Dilemma Zone Driver Behavior at Signalized Intersections（TRB Paper No. 07-3351）",
+      "publisher": "Tim J. Gates、David A. Noyce、Luis Laracuente（University of Wisconsin–Madison）／TRB 2007 Annual Meeting CD-ROM",
+      "version": "TRB 2007 年會論文修訂稿（稿面：Resubmitted November 15th, 2006；Paper revised from original submittal），威斯康辛大學 TOPS Lab 檔案伺服器",
+      "accessed_on": "2026-11-11",
+      "read_via": "WebSearch（Wortman Fox 黃燈行為）結果列出此 PDF 連結（檔名含空格）；curl 以百分號編碼空格後 GET 200，pdftotext -layout 轉文字。",
+      "reading_scope": "全文（摘要、文獻回顧、方法、Table 1 路口條件、煞車反應、減速度、停或走的邏輯迴歸、Figure 9–10 旅行時間分布、結論）",
+      "locator": "Abstract；Table 1 Site Characteristics；Methodology（2.0–5.5 秒篩選）；Analysis 首段（1,001 輛、463 停／538 走、15/50/85 百分位速度 31/41/51 mph）；〈Deceleration Rate〉Figure 7 後文；邏輯迴歸 Equation 6 與其後條列、82% 預測率；Figure 9–10 後文；Conclusions",
+      "summary": "2006 年 4–8 月在威斯康辛州麥迪遜 6 個號誌路口（速限 25–50 mph、黃燈 3.5–5.0 秒）錄影，取每次黃燈第一輛停車與最後一輛通過的車共 1,001 輛（停 463、走 538）。黃燈亮時離停止線不到 2 秒的車全部通過；停車的車只有 5% 在 2.9 秒以內；通過的車只有 5% 在 4.5 秒以外、不到 1% 在 5.5 秒以外；接近速度對停與走的 85 百分位旅行時間幾乎沒影響，對 15 百分位只有中等影響。邏輯迴歸：黃燈亮時到停止線的估計時間是停或走『遠遠最強』的預測因子，單用它可預測 77%；另外隔壁車道有車通過、大型車、沒有側街等候者、較短週期、較長黃燈都使通過機率上升；整體模型預測率 82%。第一輛停車的煞車反應 15/50/85 百分位 0.7、1.0、1.6 秒，減速度 7.2、9.9、12.9 ft/s²；接近速度越快減速度越大；超過 40 mph 的停車者 69% 用了大於 10 ft/s² 的減速度，40 mph 以下只有 26%；離路口 4 秒以內停的人一半用超過 11.0 ft/s²，4 秒以外一半低於 9.3 ft/s²。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "年會修訂稿，正式刊本（TRR 2030，作者多一位 Nordheim）可能有差異，本輪未讀刊本；只有一個都會區 6 個路口；旅行時間是用黃燈亮前速度與距離估算；減速度用『速度÷煞車時間』計算的平均值。FHWA 2023 綜整（池中 SRC-fb6e42a2c378224c，T62 系列的來源）在 Table 3 摘了這篇的減速度結果，但池中沒有任何核心用到這篇，原文也是本輪才讀。第一作者 Gates 也是 NCHRP 731（T62-003、T62-005 的資料來源）的共同作者，兩批資料不同（本篇是 2006 年麥迪遜自己的錄影）。作者對 ITE 10 ft/s² 的設計建議是對美國公式的意見，不得套到台灣。內文轉述的 Chang 等 1985 數字是轉引，不計。 覆核 V24（2026-11-12）：limitations 加：『樣本先篩成黃燈亮時離停止線 2.0–5.5 秒的第一停／最後走車輛（5.5 秒以外仍通過的少數因屬闖紅燈而保留）；不到 2 秒全部通過來自初篩資料』；summary 的減速度與反應時間樣本數改為 444 輛（Table 2）；速度影響改寫為『85 百分位幾乎無影響、15 百分位中等影響（通過車 15 百分位在 35 mph 以下降到 3.5 秒、停車車在 45 mph 以上升到約 3.6 秒）』。作者寫的正式刊本『多一位 Nordheim』我未核對，刪去或標『未核』。",
+      "author_cache": {
+        "file": "f21src/gates2007.pdf（文字：f21src/gates2007.txt）",
+        "sha256_prefix": "722db80d934d187b（文字 f180e2563cb8dbf3）",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T63-S002",
+      "url": "https://www.psy.uni-hamburg.de/arbeitsbereiche/biologische-psychologie-und-neuropsychologie/publikationen/zusammenfassungen-artikel/faeb-15-ley-2013.pdf",
+      "canonical_url": "https://doi.org/10.1016/j.neuropsychologia.2013.03.004",
+      "title": "Partial recovery of visual–spatial remapping of touch after restoring vision in a congenitally blind man（Facts About Eye and Brain 單頁摘要）",
+      "publisher": "Pia Ley 等／漢堡大學生物心理與神經心理學系、L V Prasad Eye Institute 的單頁摘要；原刊 Neuropsychologia 2013",
+      "version": "研究室發布的一頁通俗摘要，不是論文",
+      "accessed_on": "2026-11-11",
+      "read_via": "WebSearch 結果列出此 PDF；curl GET 200，pdftotext 轉文字。",
+      "reading_scope": "只讀到一頁摘要（約 80 字），原刊全文未讀到（未找到公開全文連結）",
+      "locator": "單頁全文",
+      "summary": "2 歲移除先天白內障的一位男性，在兩手觸碰先後判斷中也沒有交叉效應；摘要據此說快速把觸覺對到視覺空間有賴早年視覺經驗。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只是摘要，不算全文，不計任何事實；單一個案；只用於 not_added 紀錄。",
+      "author_cache": {
+        "file": "f21src/ley2013_summary.pdf（文字：f21src/ley2013_summary.txt）",
+        "sha256_prefix": "e62f51bad47a2467（文字 cf440754db0bd11b）",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "T63-001",
+      "question": "黃燈一亮，駕駛人決定停或走，主要看什麼？開得快慢會改變那條界線嗎？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.stop_go_decision_travel_time_predictor_field",
+      "answer_target": "主要看『還要幾秒才到停止線』。威斯康辛大學 2006 年在麥迪遜 6 個號誌路口（速限每小時 25 到 50 英里）錄影，取每個車道每次黃燈第一輛停下和最後一輛通過的車，只留黃燈亮時離停止線約 2 到 5.5 秒的，共 1,001 輛。初步整理時，離停止線不到 2 秒的車全部通過；在這批車裡，停下的只有 5% 在 2.9 秒以內，通過的只有 5% 在 4.5 秒以外。把時間分布按接近速度分開看，85 百分位幾乎不變，15 百分位則有中等變化（低速時通過車的 15 百分位略短）。研究者用邏輯迴歸找影響停或走的因素：黃燈亮時到停止線的估計時間『遠遠是最強的』，單用它就能猜對 77%；隔壁車道有沒有車通過、是不是大型車、側街有沒有人車在等，也有顯著影響。",
+      "scope": "美國單一都會區 6 個路口、年會修訂稿；時間是用黃燈前速度與距離估算；這是觀察停或走，不是闖紅燈或事故研究。不得換算成公里、不得與台灣 3／4／5 秒表或任何台灣路口對照、不得推出『低速路黃燈短有風險』；模型中『黃燈較長通過機率較高』一項不進片（容易被讀成黃燈長反而多人闖，原文沒有這個意思）；作者對 ITE 公式的設計建議不進片；不給駕駛建議。",
+      "source_ids": [
+        "T63-S001"
+      ],
+      "source_locator": "F21-S002：Abstract；Table 1；Analysis 首段；Equation 6 後條列與 77%／82% 預測率；Figure 9–10 後文；Conclusions",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：時間界線與速度影響小 0.25（與 T62-004 同方向，價值在於把轉述換成可讀的原始資料，但不等於重現 FHWA 的說法）；多因素模型中隔壁車道、大型車、側街等候者 0.25。旅行時間是最強因子本身與 T62-004 同一結論，不另計。 原提案 F21-002（目標 C8-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V24（2026-11-12）改字後收；來源合規、雜湊相同，數字全對；池中沒有任何核心用這篇原文（T62 系列只有 FHWA 2023 綜整的轉述）。但答案與 payoff 把『85 百分位幾乎不受速度影響』擴大成『與速度無關、不管開多快』，並且漏寫 2.0–5.5 秒篩選窗；改字後收，計 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為停或走的界線會跟著車速照公式一路移動；真實錄影裡，界線的高端幾乎不動，只有低端隨速度小幅移動——決定停或走主要是在數『還有幾秒』。",
+        "visual": "路口俯視，車道上畫 2 秒、2.9 秒、4.5 秒三條時間線（不畫距離、不標公里），三種速度的車流到同一條時間線前分流。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "T63-002",
+      "question": "公式假設停車時用一個固定的『舒適減速度』，真實的駕駛人是這樣煞車的嗎？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.stopping_deceleration_rises_with_approach_speed",
+      "answer_target": "不是，開得越快的人煞得越重。同一份 2006 年麥迪遜錄影裡，能算出減速度的 444 輛黃燈後第一個停下的車，減速度 15、50、85 百分位是每秒平方 7.2、9.9、12.9 英尺；美國運輸工程師學會（ITE）常用的每秒平方 10 英尺，大約落在中位數。但分開看速度：接近時速超過 40 英里的停車者，69% 用了比 10 還重的煞車；40 英里以下只有 26%。離停止線 4 秒以內停的人，一半用了超過 11.0 的減速度；4 秒以外的一半低於 9.3。研究者的結論是：減速度跟接近速度、離路口多遠、反應快慢都有關，一個固定值描述不了所有人。",
+      "scope": "同一研究、同 6 個路口；減速度是『速度÷煞車時間』算出的平均值，不是最大煞車能力；不得與 T62-003 的 NCHRP 平均 10.08 相減或併成同一組數字（兩批資料）；作者『10 ft/s² 對高速路口可能偏保守』是對美國公式的設計意見，不進片，也不得與台灣條文比較（台灣第 231 條是查表，沒有寫減速度）；不給駕駛建議。",
+      "source_ids": [
+        "T63-S001"
+      ],
+      "source_locator": "F21-S002：Abstract；〈Deceleration Rate〉Table 2 與 Figure 7 後文；Conclusions 減速度條列",
+      "premise_status": "screened",
+      "notes": "同意 0.5：減速度隨接近速度與距離改變是池中沒有的結論（T62-003 只有 NCHRP 平均與 85 百分位）。與 F21-002 同一研究，兩核心合計 1.0。 原提案 F21-003（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V24（2026-11-12）改字後收；數字與條件相符，只有樣本數寫錯（444 不是 463）；禁用項（ITE 設計建議、與台灣比較、與 T62-003 相減、駕駛建議）都已寫進 scope。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "公式裡那個『大家都一樣』的煞車力道，在錄影裡其實隨速度與距離一路變。",
+        "visual": "兩條減速度分布曲線（≤40 mph、>40 mph），中間一條 10 ft/s² 的直線，標 26% 與 69%；英制單位上字卡，不換算。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "T63-NA001",
+      "question": "兩歲才開刀移除先天白內障的人，交叉手時會被騙嗎？（Ley 等 2013）",
+      "existing_ids": [
+        "H61-007",
+        "H62-003"
+      ],
+      "source_ids": [
+        "T63-S002"
+      ],
+      "reason": "只讀到漢堡大學研究室的一頁摘要，原刊 Neuropsychologia 全文找不到公開連結；單一個案，方向與 H61-007（晚開刀者只有觸覺時不被騙）、H62-003（七歲開刀的少女）相同。 原提案 F21-NA001。",
+      "reentry_condition": "讀到 Ley 等 2013 的開放全文（作者稿或典藏），最多算 0.5，並與 H62-003 合為『個案』一句。",
+      "reading_status": "只讀到摘要"
+    },
+    {
+      "id": "T63-NA002",
+      "question": "黃燈後最後通過的車，有多少其實停得下來？",
+      "existing_ids": [],
+      "source_ids": [
+        "T63-S001"
+      ],
+      "reason": "Gates 等以假設的 1.0 秒反應與減速度推算約 15–30% 的最後通過車『可合理停下』，是對駕駛人選擇的評價，容易變成駕駛建議；本系列不放。 原提案 F21-NA002。",
+      "reentry_condition": "無。",
+      "reading_status": "全文讀"
+    },
+    {
+      "id": "T63-NA003",
+      "question": "黃燈越長，駕駛人越傾向不停直接通過嗎？",
+      "existing_ids": [
+        "T62-007"
+      ],
+      "source_ids": [
+        "T63-S001"
+      ],
+      "reason": "Gates 等的邏輯迴歸中黃燈長度是顯著因子（較長→通過機率較高），但這是『進入路口』不是闖紅燈，放進片中容易被讀成『黃燈長反而多人闖』或拿來評價台灣設定；T62-007 已說『長黃燈被當綠燈』無定論。 原提案 F21-NA003。",
+      "reentry_condition": "有專門研究黃燈長度與駕駛人適應、且有闖紅燈與事故資料的開放原文時再議。",
+      "reading_status": "全文讀"
+    },
+    {
+      "id": "T63-NA004",
+      "question": "台灣第 231 條的 3／4／5 秒黃燈表是怎麼推導出來的？",
+      "existing_ids": [
+        "T62-001"
+      ],
+      "source_ids": [],
+      "reason": "搜尋交通部、運輸研究所、修正總說明與對照表，只找到條文本身（池中已有）與媒體說法，沒有找到官方公開的推導或依據文件。 原提案 F21-NA005。",
+      "reentry_condition": "找到交通部或運研所公開說明此表依據的文件（例如修正總說明、研究報告）時優先補，可讓 T62-001 真正回答『台灣為什麼』。",
+      "reading_status": "未找到"
+    }
+  ]
+}

@@ -1,0 +1,519 @@
+{
+  "batch": "batches/wave33-20261112.json",
+  "reviewed_on": "2026-11-12",
+  "method": "四位沒有參與研究的覆核代理（R331：Z1；R332：Z2；R333：Z3；R334：Z4）逐題至少重開一個關鍵來源、每個關鍵字跑一次素材池搜尋並 grep 批次檔去重、對照系列不收清單與 8 分鐘門檻；修改直接寫進批次的題目欄位，覆核新讀的來源編入該研究代理的來源序號。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 19,
+    "NEEDS_CHECK": 2
+  },
+  "source_renames": {
+    "R331-S001": "Z1-S036",
+    "R331-S002": "Z1-S037",
+    "R332-S001": "Z2-S025",
+    "R332-S002": "Z2-S026",
+    "R332-S003": "Z2-S027",
+    "R332-S004": "Z2-S028",
+    "R333-S001": "Z3-S027",
+    "R333-S002": "Z3-S028",
+    "R333-S003": "Z3-S029",
+    "R333-S004": "Z3-S030",
+    "R334-S001": "Z4-S023",
+    "R334-S002": "Z4-S024"
+  },
+  "verdicts": [
+    {
+      "id": "N3361",
+      "agent": "Z1",
+      "reviewer": "R331",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Z1-S010 https://fr.wikisource.org/w/index.php?title=Étude_sur_les_moyens_de_communication_avec_les_planètes（頁名取自 fr.wikisource 搜尋 API 結果，全文）；另重開 Z1-S011 https://fr.wikisource.org/wiki/Académie_des_sciences_–_Séance_hebdomadaire/10、Z1-S012／Z1-S013 La_Planète_Mars_et_ses_conditions_d’habitabilité/P4/1900 與 /P4/1892、Z1-S015 en.wikipedia action=raw、Z1-S016 Gizmodo",
+      "reopen_result": "Cros 全文確實寫：『Extrait du Cosmos des 7, 14 et 24 août 1869』；§4『C’est en ce mode qu’Archimède employait, dit-on, la chaleur solaire à incendier la flotte ennemie』（比喻）；§5『une puissante lampe électrique, mise au foyer d’un miroir réflecteur parabolique』；§6 訊號『n’est que deux fois plus faible que celle de Neptune vu de la terre』；§7 兩盞燈造出約八等的人造星；§9 極區適合設站，太陽只在條件句『Dans ce cas, on pourrait prendre comme source lumineuse, le soleil lui-même』；II §3『l’éclair simple, l’éclair double, triple』；II §7『Nous vous avons vu ; nous vous avons compris』；II §8 白珠黑珠 19 3 7 1 1 4 25、『le tissage et la broderie』；III §3 planche 17、17-1 rouge；III §4 Schrœter、Harding、Messier 與『Il faut une idée préconçue pour voir』。全文沒有燒字、請願、城市。La Nature 1873 p.287（9 月 22 日會議）：『Un jeune savant… M. Charles Cros』、金星凌日提案、Meunier 建議改對火星、『un autre Charles Cros』。Flammarion：1892 腳註『imaginé en 1869, par mon ami Charles Cros… Excursions dans le Ciel』；『Projets imaginaires!』在 1900 年衝一節中、記 1901 年 1 月 9 日 SAF 演講，緊接 Schmoll 1891 年大熊座燈光提議之後，研究稿寫『1900 年』不準。英文維基：Martian communication mirror 一節確實只引 Ley 1958。Gizmodo：datePublished 2014-10-16、作者 Alissa Walker、『In 1874』『burning large letters』『until his death in 1888』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，Cros 原文逐條對上。改：Flammarion『Projets imaginaires!』是記 1901 年 1 月 9 日演講、緊接 Schmoll 提議說的（研究稿寫成 1900 年統稱）；Gizmodo 日期作者補上；La Nature 評語先稱讚再半開玩笑，不是單純玩笑；海王星亮度比改成『約一半』；1869 年 Flammarion 與 Cros 同齡二十多歲，原畫面『留鬍子的老天文學家』錯；結尾手機標題違反不放字；Flammarion 卒年在 LOC 1925 年報紙確認（Z1-S036）。長度 8–10 分鐘可撐：三個轉折（電燈加數數而非燒字、他沒說是城市而是叫人去看、1873 年金星凌日與『另一位 Cros』），弱點是『燒字』的來源 Ley 1958 讀不到，只能說『目前讀到最早』。"
+    },
+    {
+      "id": "N3362",
+      "agent": "Z1",
+      "reviewer": "R331",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Z1-S022 https://www.loc.gov/resource/sn85052114/1909-04-28/ed-1/?sp=3（OCR，並以資源頁 JSON 所列 jp2 版面影像與 ALTO 座標裁切對讀）；另重開 Z1-S017、S018、S019、S020、S021、S023、S024、S025、S026、S028、S029、S030、S032、S033、S034",
+      "reopen_result": "Paducah 版面影像：主標『OFFERS $10,000,000 TO SIGNAL MARS』下有副題『Harvard Astronomer Not Certain Planet Is Inhabited—Advises Delay』；Fort Worth 4 月 28 日電『A fund of $10,000,000 has been raised for the purpose of signaling the planet Mars, if William Henry Pickering… will say the word』『The Star and Telegram, an afternoon paper here… authorized to make the pledge』；波士頓稿『However, I don’t feel that we know enough about the planet as yet to spend much money in signaling to』。Barre 同日刊同一則波士頓稿，標題『TEXAS TO MARS SCHEME PLEASES / Prof. Pickering of Harvard Is Ready to Take Up That $10,000,000 Offer』。《Sun》4 月 28 日是 4 月 27 日另一則波士頓稿：『NOT TIME YET TO SIGNAL MARS / Prof. Pickering Says We’d Better See if There’s Any One There to Answer Signals』，並說運河『in many respects… seem to be artificial』——研究稿把《Sun》與 Barre 說成同一電訊，不對。Perth Amboy 4/19：『If some one will advance $10,000,000… by next July』、『confident that Mars is inhabited』、四分之一英里鏡面、『as there are intelligent people on Mars』、Lowell 印作 Powell。Tribune 4/19 短電訊無一千萬；4/20 社論『Professor Pickering estimates the cost… at $10,000,000』、Galton。Evening Star 4/21：Hedrick、Eichelberger『a story that bobbed up periodically』、巴黎『amused skepticism』、Flammarion『the time probably has not yet come』『communication will not be established in our time』。Mitchell：約一千碼、摩斯碼至少五年。Wood：巴爾的摩 4 月 29 日電、白色鹼地黑點。Todd：6/14 Spokane 框內引句、10/18 Perth Amboy『a stretch of the imagination』、11/19 Roswell 仍寫九月。訃聞：Daily Alaska Empire 1939-06-02『DR. DAVID TODD DIES; DREAM IS NOT FULFILLED / Astronomer Hoped to Communicate with Mars During His Lifetime』，Lynchburg 6 月 2 日電、84 歲、『died here last night』、安地斯山火星照片；版面上沒有寫美聯社。Evening Star 1938-01-22：W. H. Pickering 80 歲在牙買加 Mandeville 過世。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，19 則報紙大致逐字對上。改：『同一電訊兩家標題相反』原寫 Barre 對《Sun》，但《Sun》是另一則前一天的稿；真正內文相同、標題相反的是 Paducah（建議延後）對 Barre（準備接下一千萬），已對 Paducah 版面影像；鉤子『先不要』換成 Pickering 原話；刪『美聯社』；補 Todd 卒日卒地、安地斯照片、Pickering 卒地、Wood 電訊日期、Flammarion『不會在我們這一代』。卒年：W. H. Pickering 1938、Todd 1939 在頁面上確認，哥哥 E. C. Pickering 1919（Z1-S037，本題不出場）。長度 9–11 分鐘可撐，兩條線各有翻轉（Pickering 自己主張先觀測、Todd 自己說通訊是想像力的延伸）再加訃聞收尾。"
+    },
+    {
+      "id": "N3363",
+      "agent": "Z1",
+      "reviewer": "R331",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Z1-S001 https://www.loc.gov/resource/sn83030272/1902-05-09/ed-1/?sp=9（OCR，並以資源頁 JSON 所列 jp2 版面影像裁切對讀）；另重開 Z1-S002、Z1-S003（Tesla Universe 轉錄）、Z1-S004、Z1-S006、Z1-S008、Z1-S009",
+      "reopen_result": "《Sun》版面影像：〈ELECTRIC DINNER TO KELVIN〉，Brady 與 New York Edison 同人在 Delmonico's 宴請、Kelvin 週六啟程；『“New York,” said Lord Kelvin, enthusiastically, “is the foremost city in the world in electric lighting. I am almost tempted to say in the universe, but I cannot without some reservation, because I am not sure what they are doing in Mars.”』，全則無 signal。Providence 5/10：『Lord Kelvin is of the opinion that Mars has signalled New York』，接著拿紐約警察三班制與 Tammany 開玩笑。Tribune 5/11〈LORD AND LADY KELVIN SAIL〉：『sailed for home yesterday on the steamer Lucania』、『There is one thing I wish to deny emphatically, and that is the absurd report…』，之後還說『Photography in natural colors will soon be an established fact』——研究稿鉤子『最後一件事不是科學』不成立。Tesla Universe：標示 New York Morning Telegraph, May 11th, 1902, p.4，是網站轉錄、非原刊影像，日期在他否認之後。Savannah 5/24『particularly the glare of the electricity』；River Falls 5/22『inhabitants of Mars were signaling to the earth』。Rock Island Argus 1907-12-18：Kelvin『died yesterday』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.visual",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立。改：鉤子（否認後他接著談彩色攝影）、刪『特地要記者寫下』『主動否認』、時間順序（《Morning Telegraph》是否認隔天才登，標明只有 Tesla Universe 轉錄）、Edison 與 Tesla 卒年沒在頁面確認而改不入畫。長度只有 4–6 分鐘：N2421 已入選、9–11 分鐘、不在任何題案，再接會超過 13 分鐘，所以不能接 N2421；只能考慮接 N2803（見 theme_suggestions），站主決定前暫緩成題。"
+    },
+    {
+      "id": "N3381",
+      "agent": "Z2",
+      "reviewer": "R332",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Z2-S001 https://archive.org/download/sim_saturday-review-uk_the-saturday-review_1898-10-01_86_2240/sim_saturday-review-uk_the-saturday-review_1898-10-01_86_2240_djvu.txt（全文）；另重開 Z2-S002 Horton 1904 pp. 92–95 與版權頁、Z2-S003 Egan 2002 全文、Z2-S004 word histories 全文；新讀 Z2-S025",
+      "reopen_result": "Saturday Review 1898-10-01〈“Macbeth” and Mrs. Kendal〉，文末署名『Max.』，開頭提到『my predecessor』Mr. Shaw。原句：『According to Aubrey the play was first acted in 1606, at Hampton Court, in the presence of King James. It is stated that Hal Berridge, the youth who was to have acted the part of Lady Macbeth, “fell sudden sicke of a pleurisie, wherefor Master Shakespere himself did enacte in his stead.”』——生病、代演，沒有死亡、沒有詛咒。同篇『Pepys』段：『Thence to the Cockpitt Theatre … my dearest Mrs Knipp … She was most comickal and natural when she walks forth sleeping (the which I can testify, for Mrs Pepys also walks sleeping at some times)』。主旨是經理們約定三十年內不再重演《哈姆雷特》《羅密歐》《馬克白》，『The stage is crowded with ghosts』。稱讚 Mrs. Patrick Campbell 與 Forbes Robertson、Tabor 演 Macduff；Kendal 夫婦在 St. James's 是另一段（稱 Mrs. Kendal 遠在其他英國女演員之上，但不是演馬克白夫人）。Horton 1904 p. 94：『Do not return to your dressing room if anything has been forgotten. Never quote “Macbeth” in the dressing room. It is considered unlucky to leave a hat on the bed.』版權頁『Copyright, 1904 By William E. Horton』。Egan：迷信『is well documented in the nineteenth and twentieth centuries』、Berridge『7 August 1606』、四份名錄無此人、Henry Berredge 1593-07-28 受洗於 Bitchfield、Aubrey 索引無此名、Epstein 1993、Huggett 1981、1634 年 Q 本作『Scottish wayward sisters』。word histories：Beerbohm『1872-1956』、pastiche of Aubrey、也偽造了 Pepys 日記、早期禁忌『primarily against quoting』、1906 Scrap Book 與 1921 Matthews 引文。London Remembers：Beerbohm『Died 20/5/1956』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json、batches/*.json（含 not_added）、topics-fg.json grep Macbeth、Scottish play、馬克白、Berridge、Beerbohm 皆無題目；pool CLI 回『Index is stale』，未重建；Z1、Z3、Z4 無重疊。前提成立，主要轉折（第一份文字只是生病、而且是仿古戲作）逐字對得上。改：Berridge 一句是『It is stated』，不是直接『據 Aubrey』；Horton 那行在帽子禁忌前一行，不是『夾在中間』；補 Egan 自己說 19 世紀已有充分紀錄（未舉例），與 word histories 並陳，避免把 1904 講成定論；鉤子『在開玩笑』改成『仿古口吻編的』。Beerbohm 1956 年 5 月 20 日過世，正好落在『1956 年以前可畫／1956 年後不入畫』兩句之間，保守判不入畫（他也不是畫面必需）。卒年原本取自研究代理自行拼的維基百科網址，改用 London Remembers。事實約 16 條，片長 8–9 分鐘。"
+    },
+    {
+      "id": "N3382",
+      "agent": "Z2",
+      "reviewer": "R332",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Z2-S009 https://www.gutenberg.org/cache/epub/62215/pg62215-images.html（前言、第 7–8 章、Daroga 段）；另重開 Z2-S005–S008 四份電訊（loc.gov fo=json 所列的 fulltext_file）與 Z2-S010 Guichet du Savoir #48586；新讀 Z2-S026",
+      "reopen_result": "Leroux 前言：『Le fantôme de l'Opéra a existé』、『Les événements ne datent guère que d'une trentaine d'années』。第 7 章：Richard 說正廳中間那位穿黑衣的胖太太是『ma concierge』，第一次來歌劇院，被派去接替 mam' Giry。第 8 章：『Elle chante ce soir à décrocher le lustre!』，吊燈『s'abîmait au milieu de l'orchestre』，『Mon dessein n'est point de faire revivre ici une heure historique. Les curieux n'ont qu'à ouvrir les journaux de l'époque. Il y eut de nombreux blessés et une morte』，砸在那位要接替領位員 Giry 的人頭上，隔天標題『Deux cent mille kilos sur la tête d'une concierge!』。Erik：『Le lustre, ça n'est pas moi! ... Il était très usé, le lustre... Il est tombé tout seul』。電訊：Topeka 標題『INTO A PRIVATE BOX. Chandelier Falls in an Opera House Killing a Lady.』，內文『Helle Opera House … counterpoise of the big chandelier broke and crashed through the ceiling into a box』；Waterbury『weighing nearly half a ton, fell through the ceiling into the fourth gallery during a performance of “Helle” … Madame Chaumet was instantly killed, another woman fatally, and five other persons less seriously, hurt』；Indianapolis『PARIS, May 20 … into a box … the manager went on the stage, explained the situation and reassured the people』；St. Croix 5-23『a counterweight sustaining a chandelier fell through the ceiling into the fourth gallery, killing one person』。Guichet：七噸、340 盞、四個 700 公斤配重連絞盤；Fontaine『cet accident devait inspirer à Gaston Leroux』；Dupèchez『défoncer le plafond des cinquièmes loges … Mme Chomette, concierge au n°7 de la rue Rochechouart. Elle est l'unique victime. Le lustre, lui, n'a pas bougé』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep Garnier、Phantom of the Opera、Fantôme、歌劇魅影、chandelier、吊燈、Leroux 皆無題目（吊燈只撞到 N423 照片、Leroux 只撞到出版社）。前提成立。最重要的改正：研究稿說小說把死者『從觀眾變成魅影的替身領位員』，漏了原文裡最強的連結——小說的死者是經理 Richard 的門房，Dupèchez 說 1896 年的死者 Chomette 太太也是門房，這成為第二個轉折；『orchestre』是正廳座位，不是樂池；Topeka 標題譯錯；落點補 Dupèchez 的『第五層包廂』並陳；『啟發 Leroux』明寫是 Fontaine 與 Tézenas 的判斷。排除線：死者只用天花板的洞與空座位，不畫遺體與傷者，scope 已寫。Leroux 卒年改用 Universalis。事實約 18 條，8–10 分鐘。"
+    },
+    {
+      "id": "N3383",
+      "agent": "Z2",
+      "reviewer": "R332",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Z2-S011 https://archive.org/download/truehistoryofgho00pepp/truehistoryofgho00pepp_djvu.txt 與 Z2-S012 https://archive.org/download/ghostasproduced00dircgoog/ghostasproduced00dircgoog_djvu.txt；新讀 Z2-S027、Z2-S028",
+      "reopen_result": "Dircks 1863：書名頁『BY HENRY DIRCKS, CIVIL ENGINEER … THE INVENTOR』、題詞引《Macbeth》匕首獨白；序：1858 年 9 月 Leeds 英國科學促進會、The Engineer 10 月 1 日等報導；『In 1858, offers were made through several advertisements in The Times … for illustrating the story of Dickens' Haunted Man』，找過 Crystal Palace、Polytechnic、Colosseum，『as a small royalty was demanded … each in succession declined』；『On Wednesday, December 24, the first exhibition took place before a select party』，引《Times》27 日：『intended to illustrate Charles Dickens' idea of the Haunted Man, and by means of an apparatus called the Photodrome, invented by Mr. Rose, of Glasgow』；『my invention is attributed to a gentleman in Glasgow, not only in this but in all the reports of the week』；Rose 的否認登在 Illustrated London News 1 月 10 日；Britannia『The Widow and Orphans』4 月起、Adelphi 6 月、Châtelet 7 月。Pepper 1890：『a private view of the new illusion to be introduced into Bulwer's … A Strange Story』、『took out a provisional patent … in the names, at my request, of Dircks and Pepper』；另處『The late Mr. O'Connor … painted the first scene used, representing the laboratory of The Haunted Man … the late Charles Dickens, by his special written permission … ran for fifteen months … twelve thousand pounds』；再後『The next ghost story was told in the large theatre; and it illustrated Charles Dickens's story of the Haunted Man』；引《Times》1 月 20 日『Mr. Pepper's Strange Lecture』；剪報『the offspring of two fathers』；巴黎 Robin、45 度玻璃的玩具專利；Faraday『I really don't understand it』。Wellcome：Dircks『(1806-1873)』；Grace's Guide：Pepper『(1821-1900)』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep Pepper's、Pepper ghost、Dircks、Polytechnic、Phantasmagori 皆無題目；原來如此事務所池也沒有（pepper 只撞到辣椒）。最近的 N422 珠寶館幽靈、N2982 Schrepfer 答案不同。前提成立。改：Pepper 的書不是『兩次寫成 Haunted Man』，是一處說第一個布景是它、另一處說它是搬到大劇場後的下一齣；『27 年後』是研究者換算，刪；補 Rose 否認的刊物日期、Pepper 書中《Times》稱之 Strange Lecture、Dickens 在書中已是『the late』。卒年改用 Wellcome 與 Grace's Guide（後者經 WebFetch 摘要，標 search_snippet_only），Faraday 未核卒年，入畫前補。兩個轉折成立（發明者早就提案被拒；第一週報紙記在第三個人名下）。9–11 分鐘。"
+    },
+    {
+      "id": "N3384",
+      "agent": "Z2",
+      "reviewer": "R332",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Z2-S013 https://archive.org/download/mmoiresrcratifss01robe/mmoiresrcratifss01robe_djvu.txt（書名頁 1831、第九章 pp. 214–221）；另重開 Z2-S014 https://archive.org/download/wondersofoptics00mari/wondersofoptics00mari_djvu.txt（書名頁、序、pp. 188–191）與 archive.org metadata",
+      "reopen_result": "Robertson 1831 tome I：第九章目錄列『Article de Poultier. — L'apparition de Louis XVI demandée. — Spectres mis sous les scellés. — Mon départ pour Bordeaux』；『je n'en citerai plus qu'un, fait presque tout entier d'imagination, mais mordant, satirique … il se termine d'ailleurs par une allusion à un fait qui me porta préjudice. Le représentant Poultier en était l'auteur, et l'inséra dans l'Ami des Lois, dont il était directeur. L'article portait sa signature en toutes lettres』，注『Du 8 germinal an VI. — 28 mars 1798』。文中 Voltaire『Crois-tu que la vanité soit du génie』、鬼群圍住兩人『L'un était Barrère et l'autre Chambon』、『un chouan amnistié, et employé dans les charrois de la république』問 Louis XVI、『J'avais une recette pour cela, avant le 18 fructidor』。之後：『Cette dernière phrase, que me prêtait Poultier, était ingénieuse … On demanda effectivement cette apparition; j'ai lieu de soupçonner que ce fut là un tour d'agent provocateur, et la vengeance d'un homme de police』，『les scellés furent apposés sur mes boîtes et sur mes papiers』，申請重開不成，『je partis pour Bordeaux』。Marion 英譯：『an amusing account … in one of the contemporary journals, written by Poultier』、『Delille, who was present』、『A royalist who was present』、『whispered to Robertson by his friend Ponthieu』、『the next day the exhibition was prohibited』、之後准許、搬到 Capuchin 修院；書名頁出版者『Charles Scribner's Sons, successors to Scribner, Armstrong, & Co.』沒有年份（metadata 著錄 1869）；譯者序：『certain anecdotes of a local character have been altered … or condensed』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep Robertson、Poultier、Phantasmagori、fantasmagori、幻影劇只撞到別的 Robertson（N146、N467）與 N2982 Schrepfer（召鬼但不同答案）。前提成立，兩個轉折都在原文：主角自己說報導『幾乎全是想像』；英譯本把它當同時代記述並加了『在場』與 Ponthieu。改：補 Robertson 原句後半『結尾影射一件讓我吃虧的事』，讓觀眾知道 Louis XVI 的要求他承認真有其事；英譯本的掃描頁沒有年份、出版者名稱是 Charles Scribner's Sons，題目不再寫 1869；補譯者序承認改寫軼事；Marion 版的裸胸描寫不念。人物卒年不再依維基百科分類，改以 1798 年已在世成年的紀錄判斷。事實約 15 條，片長下修 8–10 分鐘。"
+    },
+    {
+      "id": "N3385",
+      "agent": "Z2",
+      "reviewer": "R332",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Z2-S021 https://archive.org/download/in.ernet.dli.2015.235026/2015.235026.The-Elizabethan_djvu.txt（Marlowe 條 pp. 423–424）；另重開 Z2-S022 Gentleman's Magazine 1850-09 p. 234 與 Z2-S023 Johnston 2013 導論 pp. 6–7",
+      "reopen_result": "Chambers：『It became the centre of a curious mythos, which was used to point a moral against the stage. Of this there are several versions: (a) 1604. T. M. The Black Book … “Hee had a head of hayre like one of my Diuells in Dr. Faustus when the old Theater crackt and frighted the audience.” (b) 1633. Prynne, Histriomastix, f. 556, “The visible apparition of the Devill on the stage at the Belsavage Play-house, in Queen Elizabeths dayes (to the great amazement both of the actors and spectators) while they were there prophanely playing the History of Faustus (the truth of which I have heard from many now alive, who well remember it) there being some distracted with that feareful sight.” (c) n.d. J. G. R. … (d) c. 1673. John Aubrey … “that Mr. Alleyne, being a Tragedian and one of the original actors in many of the celebrated Shakespear's plays, in one of which he played a Demon, with six others, and was in the midst of the play surpriz'd by an apparition of the Devil …”』。Gentleman's Magazine：『a book in my possession printed by Vautrollier in 1585 … The note in prose will remind the reader of the story told of Alleyne』，筆記全文與 Chambers 引的一致，後接道德詩。Johnston：兩則『neither is anything close to a first hand account … both were written well after』，Prynne 是反劇場論戰，Exeter 那則『does not accurately describe any scene in Doctor Faustus』，Faustus 施法時只出現一個魔鬼，Mephistopheles 說召來他的是背棄上帝而非咒語；腳注引 Poole 2011『myth』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池中只有 N366（歷史上的浮士德本人），grep Faustus、Prynne、Alleyn、Belsavage 無題目；Dulwich 只撞到 N2605 Collier（不同案）。前提成立。改：題目『一份比一份晚、一份比一份多』與原文不合（Exeter 筆記無日期，Aubrey 比 Exeter 簡略），改成『最早的沒有多出來的魔鬼、最詳細的沒有日期』；鉤子『沒有一份是在場的人寫的』超出 Johnston 原話，改寫；Aubrey 句補『許多莎士比亞名劇的原班演員』。排除線：魔鬼只當劇本角色與傳聞，不談教義，Mephistopheles 的台詞只用來說明『劇情對不上』，已寫進 scope；不碰現存宗教教義。事實約 14 條，誠實估 7–8.5 分鐘，單獨成集偏薄，建議與 N3386 合成一集（見 theme_suggestions）。"
+    },
+    {
+      "id": "N3386",
+      "agent": "Z2",
+      "reviewer": "R332",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Z2-S017 https://archive.org/download/voyagedunfrancoi08lala/voyagedunfrancoi08lala_djvu.txt（書名頁 MDCCLXIX、pp. 261、292–294）；Z2-S018 原圖：https://archive.org/download/lartduviolonouco00cart/lartduviolonouco00cart.pdf（metadata API 列出的檔案，第 277 頁）；另重開 Z2-S020",
+      "reopen_result": "Lalande 第八卷（Paris: Desaint, M.DCC.LXIX）：教堂樂團『quarante personnes … le célèbre Tartini est actuellement l'un d'eux』；Padoue 一節稱他『depuis long-temps le premier violon de l'Europe; sa modestie, ses mœurs, sa piété』；『Tartini est né en 1692 à Pirano en Istrie; son père l'ayant enfermé à cause d'une inclination qui ne convenoit pas à sa famille』；『il m'a raconté un trait … Il rêva une nuit, en 1713, qu'il avoit fait un pacte, & que le diable étoit à son service … il imagina de lui donner son violon … une sonate si singulière & si belle … il en perdoit la respiration … il prit à l'instant son violon … mais ce fut en vain; la pièce qu'il composa pour lors est à la vérité la plus belle qu'il ait jamais faite, & il l'appelle encore la sonate du diable … qu'il eût brisé son violon & abandonné pour toujours la musique』。沒有『âme』，魔鬼拉的是整首奏鳴曲。Cartier 原圖（No. 126，Larghetto Affectuoso）：『SONATE de TARTINI, QUE SON ECOLE AVOIT NOMMÉE le TRILLE DU DIABLE, D'après le Rêve du Maître, qui disoit avoir vû le diable au pied de son lit executant le trille écrit dans le morceau final de cette Sonate. (+)』；腳注『Cette Pièce est Très rare; Je la dois à BAILLOT, Son amour Pour les belles productions de TARTINI L'a décidé à m'en faire le sacrifice.』。AllClassical：『first published (posthumously) by J.B. Cartier in Paris in 1798』，第一人稱英譯含『a bargain with the Devil for my soul』，轉引 Druce 2003。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep Tartini、Devil's Trill、顫音無題目（Lalande 只撞到 N2841 彗星恐慌，同作者不同案）。前提成立。改：Cartier 編號是 No. 126 不是『第 127 號前』（看過原圖）；『他死後二十多年』是用維基百科卒年換算的，刪，改用 AllClassical 的『posthumously』；補 Lalande 同章稱讚 Tartini 的『piété』，作為轉折的反差；『學生取的』改為原文的『他的學派』。排除線：魔鬼契約只講文字史，不談靈魂與救贖教義，scope 已寫，不構成現存宗教教義題。事實約 12 條，5–6.5 分鐘，維持 chapter，接 N3385。"
+    },
+    {
+      "id": "N3401",
+      "agent": "Z3",
+      "reviewer": "R333",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Z3-S001 https://archive.org/download/methodofarchimed00arch/methodofarchimed00arch_djvu.txt（檔名取自 archive.org metadata API；Introductory Note pp. 5–7）；另重開 Z3-S004 https://www.pbs.org/wgbh/nova/physics/inside-archimedes-palimpsest.html、Z3-S005 https://archive.archaeology.org/0309/reviews/archimedes.html、Z3-S003 https://stanfordmag.org/contents/eureka",
+      "reopen_result": "Heath：『discovery by Heiberg in 1906』；Papadopulos Kerameus 1899 年 Ἱεροσολυμιτικὴ βιβλιοθήκη 第四卷的 notice；1908 再看；178–185 葉為 16 世紀紙；10 世紀兩欄；『An attempt was made (fortunately with only partial success) to wash out the old writing』，Euchologion 寫於『12th–13th or 13th–14th centuries』；177 葉、29 葉無痕、9 葉洗掉；含《方法》『the greater part』；『formerly only known by an allusion to it in Suidas … but the Metrica of Heron, newly discovered … published in 1903, quotes three propositions』；θεωρεῖν／ἀποδεικνύναι。PBS：『1907–1930 … probably after 1929, a forger paints copies of medieval evangelical portraits in gold leaf onto four pages』；『Circa 1930 A member of a French family … purchases the manuscript from a local dealer』；1971 Wilson、1846 Tischendorf；1991 估 80–120 萬；『roughly double』。Archaeology：家族『claiming that one of their own bought it in Constantinople in the 1920s』；畫像『copied from a medieval manuscript published in 1929, after the French family claims to have acquired the palimpsest』。Stanford：一戰後巴黎書商取得；『Although the evidence is sketchy, Noel speculates』二戰時加畫四福音書作者、毀四頁；地下室；Mr. B；15 天一頁、近四年；紅色像素；同步輻射。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立、來源夠。改正三處：『只剩辭書一句』漏了 Heron 的三個命題；祈禱書年代是 12–14 世紀；『偽畫年代三種說法』實際上 PBS 與書評一致（1929 年後），真正對不上的是三份來源對取得者與時間的敘述，轉折改寫為此。與原來如此 R33002（50–85 秒的 XRF 成像原理）核心不同，造影只一句。片長 8–10 分鐘，三個翻轉結論的轉折（祈禱書保住了字；消失後三份說法互相矛盾；20 世紀的『古畫』才是毀掉四頁的元兇）。"
+    },
+    {
+      "id": "N3402",
+      "agent": "Z3",
+      "reviewer": "R333",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Z3-S006 https://archive.org/download/enthllungenberd00lykogoog/enthllungenberd00lykogoog_djvu.txt（檔名取自 metadata API；pp. 10–13、19–24）",
+      "reopen_result": "Simonides 1853-11-08 倫敦信（Lykurgos 德譯）：『das Original ist ein Palimpsest, und die Buchstaben lassen sich kaum erkennen … so dass ich öfters errathend abschreibe』，並說 Lykurgos 憑猜的校改『mit dem Original verglichen, fanden sich richtig』。巴黎試劑使『braungelbe Farbe der alten Schrift in blaue Farbe übergehen』，Simonides『sogleich verschaffte er sich das chemische Mittel selbst』。『Etwa Mitte November … 1000 Thlr. … er verlangte 2000』；『Ende November (den 28.)』合約三個月內 2000 塔勒；『am 30. Novbr.』對照發現自己的校改與『ganz moderne … Redensart』；『Den 2. Dec. bezeichnete ich in Gegenwart aller hier studirenden Griechen den Simonides als einen Betrüger und Fälscher』。Lepsius 聲明：71 葉、大四開、每頁兩欄共 284 欄、Uranios『aus Stephanus von Byzanz bekannt』、上層約 12 世紀草書是真的；12 月 31 日初看；隔天開價 5000 塔勒；1 月 11 日 14 人；半價墊付；10–12 天後讀到新王國諸王。Lykurgos 註：1 月 27 日報告國王以阻止『der schon vom Könige bewilligten Kaufsumme』；1 月 30 日與 Ehrenberg、Magnus、Pertz、Pinder；Tischendorf 電報『Ich bin überzeugt, dass das Uraniospalimpsest ein Betrug ist』，Lepsius 稱 1 月 29 日 4 時的電報無影響；『erst nachdem Lepsius 2500 Thlr. bezahlt hatte, vollzog Dindorf am 15. Januar die Zahlung』；1 月 31 日 Lepsius 與 Stieber、2 月 1 日逮捕並扣押手稿與墨水。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "日期與人物全部相符，前提成立。補上墊付 2500、Dindorf 1 月 15 日用柏林的錢付 2000 的來龍去脈（解掉研究稿的金額矛盾），題目改掉來源沒寫的『留學生』與『最早』，加上 Dindorf『我不會被他騙』的原話當轉折。確認全題不碰《西乃抄本》，Tischendorf 只出現在電報；另排除 Hermas 抄本。8–10 分鐘，四個轉折。"
+    },
+    {
+      "id": "N3403",
+      "agent": "Z3",
+      "reviewer": "R333",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Z3-S010 http://www.loc.gov/resource/sn83020847/1924-09-11/ed-1/?sp=10、Z3-S011 http://www.loc.gov/resource/sn83020847/1924-09-18/ed-1/?sp=3、Z3-S012 http://www.loc.gov/resource/sn87055779/1924-09-17/ed-1/?sp=1（皆以 fo=json 所列 fulltext_service 讀全文）；新讀 Z3-S027～S004",
+      "reopen_result": "9-11 社論 'Lost Books'：『The lost books of Livy cannot possibly be faked, but report of their discovery is easily enough fabricated; wait and see is sound attitude』，學界『reasonably calm』。9-18 社論：蛋堡；皇家科學院 10 月 1 日全體會議；Barone『There is no mistaking the style; it is Livy's, without doubt』；Poggio／Tacitus；『107 as against the 35』。9-17 South Bend：『admitted that he had not found any Livy codices but had simply discovered information connected with them. This was announced officially Tuesday』，神父訪問、倫敦出版社出價一百萬美元。新讀 10-02：Conway 對 Max Funke 獲准抄下的兩行安色爾字『specially impressed』，稱有 Livy 風格；10-16：Salomon Reinach『was able to exculpate Prof di Martino from the suspicion of fraud brought upon him by the mendacious article by a Berlin journalist, Dr Funke, who got the alleged passage from Livy … not from Martino but from an article in a Naples newspaper on an entirely different subject』；9-11 美聯社：教育部長 Casati 電令適用禁止出售古物的法律。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.minutes",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "研究稿最大的轉折只靠二手部落格；覆核在 Chronicling America 找到一手，內容與部落格不同（查出那兩行出處的是 Reinach，說來自那不勒斯報紙另一篇文章，不是『牛津劍橋教授認出聖馬丁傳』），改以一手為準。Conway『超級瘋子大軍』沒找到原報，移出稿件。部落格的『墨索里尼禁止出口』換成一手的教育部長電令。新增排除：同期報導混入『耶穌生平』的宗教主張。8–10 分鐘，四個轉折（失蹤；沒書就背書；自己承認沒書；被稱讚的兩行原文是抄報紙）。"
+    },
+    {
+      "id": "N3404",
+      "agent": "Z3",
+      "reviewer": "R333",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Z3-S016 https://www.aisixiang.com/data/159187.html；Z3-S015 https://www.chinawriter.com.cn/n1/2021/0407/c404063-32071497.html",
+      "reopen_result": "田衛衛：引《北夢瑣言》作『而後公卿亦多垂訝……內不許垂《秦婦吟》幛子』；『累計發現敦煌《秦婦吟》寫本11件』；完本只有 P.3381、羽57R+S.0692、P.2700+S.5834、P.3780 四件；有題記 6 件；署名『學仕、學仕郎、學士郎、學士童兒、寺彌、百姓等共計六種』；P.3381（905）『天復伍年乙丑歲十二月十五日敦煌郡金光明寺學仕張龜寫』；安友盛（919）、馬富德（957）、淨土寺〔沙〕彌趙員住『左手書之』；『字跡大多較為拙劣，基本可以確定為初學者所書』；『存數比例最大的文獻之一』；兩件陰奴兒所寫小尺寸口袋本。吳令華：引作『爾後……障子』；1666 字、238 句、《長恨歌》840 字；韋藹編《浣花集》未收；吳世昌『其撰家戒不許掛此詩乃指此二事，非諱「內庫」一聯』；陳寅恪『適觸新朝宮閫之隱情』；『這番推論，雖非直接證據』。同文也寫了秦婦被擄委身、官軍與巢軍的人肉買賣、李氏女條。《北夢瑣言》原書仍未讀到。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial.minutes",
+        "editorial.payoff",
+        "editorial.visual",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "敦煌部分逐字相符。排除線不夠：只擋了吃人與暴力，沒擋秦婦被擄委身的性暴力情節，而吳世昌、陳寅恪兩說的原文正好連到人肉買賣與『宮閫』，已在 scope 規定兩說只講到哪裡為止。題記署名含寺彌與百姓，題目改為『多半是學生』；『孩子用左手寫』改為沙彌。《北夢瑣言》原文仍未讀到（維基文庫 API 429、Gutenberg 鏡像 502），兩篇轉引有『爾後／而後』『障子／幛子』之別，鉤子加註，撰稿前要核原書。素材約 7.5–9 分鐘，三個轉折。陳寅恪（1969）、吳世昌（1986）不入畫，visual 已確認沒有他們。"
+    },
+    {
+      "id": "N3405",
+      "agent": "Z3",
+      "reviewer": "R333",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Z3-S018 https://archive.org/download/cu31924026674253/cu31924026674253_djvu.txt（檔名取自 metadata API；Introduction pp. viii–xviii）",
+      "reopen_result": "『now for the first time given』；『political constitutions of a hundred and fifty-eight states』；Harpocration 多次引用、6 世紀 Sopater 用過、Photius 似乎只從前人引文認識；『between the sixth and the ninth century it disappeared』；Heitz 與 Rose 認為引文都是二手；『The text is written in four hands』，第一手半草書、『very correct』，第二手『habitual mis-spellings … the writer was not a scholar』、多由第一手改正、第一手推為想替自己藏書抄一部的學者、第二手推為『slave or professional scribe employed by him』；正面帳目『dated in the eleventh year of Vespasian』、『those of the bailiff of a private estate』、推為 78–79 A.D.，抄本約 1 世紀末或至遲 2 世紀初；Rose 1886 年 91 條、明說書名 58 條中 55 條在紙草上、No. 347 在缺頭、No. 423 在殘段、只有 No. 407 明顯不同；成書在 307 B.C. 以前、提到 329 B.C.；『burden of proof lies on those who would dispute』。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "editorial.minutes",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "事實全部相符，只微調第一手抄者的描述。單獨不到 8 分鐘，維持 chapter；與 N3406 接成一集時壓到 5.5–6.5 分鐘，合計 11–13 分鐘。轉折：帳本背面；古人引文 58 對 55；書對了但作者仍有疑問。"
+    },
+    {
+      "id": "N3406",
+      "agent": "Z3",
+      "reviewer": "R333",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Z3-S021 https://www.plekos.uni-muenchen.de/2024/r-galen.pdf；Z3-S022 https://www.historyofinformation.com/detail.php?id=4048；Z3-S024 https://www.roger-pearse.com/weblog/2011/06/08/the-vlatadon-library-in-thessalonika/",
+      "reopen_result": "Plekos：『(re)discovery by Antoine Pietrobelli of the codex Thessalonicensis Vlatadon 14, a fifteenth-century manuscript』、2005、兩篇『not mentioned in the catalogue of Eustratiades』、codex unicus；新校本編者否定 Andreiomenos、主張『second half of the fifteenth century』。History of Information：192 年大火燒了和平神殿與聖道倉庫，藏書、藥物、器械、蠟模；倉庫存部分皇家檔案、有軍隊看守；帕拉丁丘所有公共圖書館；ibn Aknin 13 世紀希伯來文；英譯 §13『neither possible to find any of the rare books and the ones “nowhere else kept”, nor … the common ones sought out for the accuracy of the text … which include two Homeric works, the Plato of Panaetius』；§14 自己校好的書『neither was something added nor words taken away, not even a paragraphos』。Pearse：『published by S. Eustratiades in 1918. There is no copy in the United Kingdom … about 136 pages, but ms. 14 is the only medical text』，轉述 Boudon-Millot 來信。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial.minutes",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "研究稿把兩部荷馬與 Panaetius 本柏拉圖歸成『罕見、別處沒有收藏』的書，英譯原文其實屬於『為求文字精確而找的常見書』，已改正。1918 年目錄的細節只來自部落格轉述的私人來信，改標轉述；並改正為『抄本有列在目錄上、裡面兩篇沒列』。發現者在世，不點名。單獨 chapter，與 N3405 接一集。轉折：講失去書的書也失傳；它在一本已經印出來的目錄裡『不存在』；連抄本年代與抄工都還在改。"
+    },
+    {
+      "id": "N3407",
+      "agent": "Z3",
+      "reviewer": "R333",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "Z3-S025 https://www.cuhk.edu.hk/ics/21c/media/articles/c087-200403086.pdf（pp. 134–135）",
+      "reopen_result": "『1972年，英國劍橋新學院教授格芮非司（Samuel B. Griffith）為翻譯《孫子兵法》，向中國社會科學院詢問有關《孫子兵法》的年代等問題，時任中國社會科學院院長的郭沫若在來函上作了批示，表達了《史記．孫武傳》不可靠、《孫子兵法》是戰國時期著作的個人看法，並安排年已八十歲的顧頡剛書面答覆。二十天後，顧頡剛做出了回答』；三點結論（孫武傳全不可信、決不作於春秋、作者猜是孫臏）；筆記末尾『聞今年山東某地出土木簡《孫子兵法》，視今本倍多，不知何時可見到。1972 年 8 月 23 日陳金生君來談及』；作者稱 1972 年 4 月銀雀山同時出土兩部、『不僅完全推翻了顧頡剛等人』的懷疑；《漢書．藝文志》分列《吳孫子兵法》與《齊孫子》、《齊孫子》隋唐以後失傳（轉述）。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "editorial.role",
+        "editorial.minutes",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "顧頡剛 1972 年書面答覆經重開相符；補上研究稿漏掉的『郭沫若批示自己也認為孫武傳不可靠』。Griffith『英國劍橋新學院教授』是梁濤文的說法，身分待核。仍缺《漢書·藝文志》原文、1974 年《文物》簡報、1975→1985 篇目重分的內容，現有素材只有 5–6.5 分鐘，維持待查並降為 chapter；接 N3002（8.5–10.5）會超過 13 分鐘，所以不合併，只建議排在 N3002 之後。顧頡剛、郭沫若、Griffith 均 1956 年後過世，連背影也不畫。"
+    },
+    {
+      "id": "N3421",
+      "agent": "Z4",
+      "reviewer": "R334",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Z4-S001 https://archive.org/download/sim_open-court_1894-09-13_8_368/sim_open-court_1894-09-13_8_368_djvu.txt（metadata API 列出）；Z4-S002 https://archive.org/download/karmastoryofbudd00carurich/karmastoryofbudd00carurich_djvu.txt（metadata API 列出）；Z4-S004 經 https://doi.org/10.20613/hikaku.13.0_22 頁面的 PDF 連結 https://www.jstage.jst.go.jp/article/hikaku/13/0/13_22/_pdf/-char/ja；Z4-S024 青空文庫（循英文維基外部連結取得）；Z4-S005 對照 Standard Ebooks 的 Garnett 譯本 chapter-3-7-3（搜尋結果連結）",
+      "reopen_result": "Open Court 368 號（CHICAGO, SEPTEMBER 13, 1894；DR. PAUL CARUS, EDITOR）目次『KARMA. A Tale with a Moral. EDITOR』，正文：修行者 Narada 對垂死的強盜首領講 Kandata，『When Buddha, the Lord, heard the prayer of the demon suffering in hell, he sent down a spider on a cobweb』，『Let go the cobweb. It is mine!』『At once the cobweb broke』，『What is hell? It is nothing but egotism』，全篇沒有放過蜘蛛的善行，篇末署『P. C.』。1917 第六版：佛陀先問『Kandata, did you ever perform an act of kindness?』再看見『I will not step upon the spider』；出版者廣告：托爾斯泰俄譯並推薦、法譯以托爾斯泰名出版（Ollendorff 1900 為注）、1897-05-02 Berliner Evangelisches Sonntagsblatt 也用托爾斯泰名、Büchner 1895 年『apparently』把『P. C.』當成巴利文寫本、托爾斯泰回信『I should be very happy were I the author of this tale』並稱其『one of the best products of national wisdom』、長谷川出了『three successive editions on crepe paper』由 Kwason Suzuki 插畫。安田 1970：吉田 1958 年 1 月新潮文庫本初談『一本の葱』、1950 年前後已有此說、1967 年 3 月吉田更正為山口靜一的發現；國會圖書館藏明治二十八年十二月七日初版（18 頁縐紗紙本、鈴木華邨彩色）與 1894 初稿一樣簡單、再版未見、加筆在初版與再版之間；片野介紹明治三十一年九月一日長谷川商店《因果の小車》（釋宗演校閱、鈴木大拙譯述）；神代種亮轉述芥川『横須賀の古本屋…藍色の和本』，安田借出原表紙確為藍色和本，並說『いたずら好きの芥川』。青空文庫本第三節有一句推測語氣的評語（『浅間しく思召されたのでございましょう』），研究稿『全篇沒有說教段落』『不下結論』過頭。蔥寓言 Garnett 譯文與研究稿一致，另有『So the angel wept and went away』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json、batches/*.json（含 not_added）grep 蜘蛛、芥川、Akutagawa、Kandata、犍陀多、Carus、Karma、一根蔥、onion、Tolstoy、托爾斯泰：蜘蛛只命中 N165、N347 等不同答案，Carus 只命中無關字串。前提成立，兩個以上會翻轉結論的轉折（1894 無善行→1895-12 初版仍無→1898 日譯已有；芥川讀的可能是藍色和本日譯；故事一路被當成托爾斯泰之作）都在逐字讀到的頁面上。改正：鉤子的『署名編者』改為『目錄寫編者、篇末署 P. C.』（正好接 Büchner 的誤讀）；補 1950 年前後已有蔥說、長谷川三版、托爾斯泰稱其為民族智慧；Büchner 的誤會標為出版者的推測；芥川結尾不是『不下結論』，改為『只留一句推測語氣的評語』；刪掉『Carus 原創』的暗示，並列蔥寓言骨架但不推傳承。Z4-S003 的網址是研究代理直接輸入的（違反規則 1，見回報），改引覆核循連結重取的 Z4-S024。宗教：只講文本史，地獄極樂當場景、不評教義，scope 足夠。片長 9–11 分鐘可撐。"
+    },
+    {
+      "id": "N3422",
+      "agent": "Z4",
+      "reviewer": "R334",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Z4-S007 https://archive.org/download/loscomentariosre01vega/loscomentariosre01vega_djvu.txt；Z4-S008 https://archive.org/download/sumaynarracionde25705gut/pg25705.txt；Z4-S009 https://archive.org/download/partofchronicleperu00ciez/partofchronicleperu00ciez_djvu.txt（三者皆 metadata API 列出）；新讀 Z4-S023 Sarmiento（advancedsearch → metadata → pg20218.txt）",
+      "reopen_result": "Garcilaso（1918 Lima 版，序言『Publicada la «Primera Parte» en 1609』）：十六七歲時問來訪親戚中『al mas anciano dellos』，稱他『Inca, tio』（不是舅舅；編者注說是叔祖 Cusi Huallpa）；太陽把兩個孩子放在『la laguna Titicaca』，給『una varilla de oro, de media vara de largo y dos dedos de grueso』；他們往北，進了『Pacarec Tampu』小客棧（名字是這位印加後來取的）；Cap. XVIII 記 Paucartampu 三扇窗、Ayar Cachi／Uchú／Sauca、『dicen mil disparates』『Yo no me entremeto en cosas tan hondas』；Cap. XIX『(aunque fabulosa)』『hasta los veinte años』。Betanzos 第一章：造物者 Con Tici Viracocha 從 Collasuyo 的一座湖出來，到湖邊 Tiaguanaco 造出太陽與白晝；第三章四男四女出 Pacaritambo，手拿『alabardas de oro』。Cieza：太陽『came forth from the island of Titicaca』。Sarmiento（1572 手稿）：Manco Ccapac『carried with him a staff of gold, to test the lands』；Mama Huaco 擲兩根金杖、一根在 Huanay-pata 扎牢，『Others say』是 Manco 的金杖沉下；Ayar Cachi 被 Tampu-chacay 用石頭封在 Tampu-tocco 的窗內。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep Manco、Ayar、Pacaritambo、Titicaca、喀喀、Garcilaso、Inca、印加、Viracocha、Sarmiento：只命中 N701（Huayna Capac 預言）、N608（戈約島劃線）與 wave7 not_added 的 Fuente Magna 碗，答案都不同。原稿兩個核心主張錯：『1550–1551 年的版本裡沒有湖』——湖在 Betanzos 與 Cieza 裡都有，只是屬於造物者與太陽；『金杖目前讀到最早是 Garcilaso 1609』——Sarmiento 1572 年的洞穴版裡就有金杖試土、在庫斯科附近沉下。題目改成『湖、洞、金杖原本分開，是誰把它們接成一個故事』，轉折反而更多（湖原屬造物者→金杖原屬洞穴版→Garcilaso 1609 才合成，且自稱 fabulosa）。『舅舅』改為『他稱為 tío 的長輩』；Andina 只經摘要工具讀到，刪掉年份與『週年慶』等摘要以外的細節。今天仍在的爭議：不碰祕玻湖區歸屬、不評安地斯信仰，scope 足夠。片長調為 8.5–10.5 分鐘。"
+    },
+    {
+      "id": "N3423",
+      "agent": "Z4",
+      "reviewer": "R334",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Z4-S011 https://archive.org/download/panchatantra035159mbp/panchatantra035159mbp_djvu.txt；Z4-S012 https://archive.org/download/calilaydimnafabu00bdpsuoft/calilaydimnafabu00bdpsuoft_djvu.txt；Z4-S014 https://archive.org/download/fabulas00sama/fabulas00sama_djvu.txt（皆 metadata API 列出）；Z4-S013 https://es.wikisource.org/wiki/Conde_Lucanor/Ejemplo_7（由搜尋結果中的 es.wikisource〈Conde Lucanor〉目錄頁連結）；Z4-S015 https://eduscol.education.fr/document/8084/download",
+      "reopen_result": "Ryder 序言：『The text here translated is late, dating from the year 1199 A.D.』，Hertel 認為原書約西元前 200 年在 Kashmir 編成、印度有二十五種以上版本，並說這部書是『one of La Fontaine’s important sources』；正文婆羅門 Seedy、barley-meal、『Then I will get up and kick her.』『turned him white all over』。Calila 1917 編者：古卡斯提亞本出自 Abdalla ben Almocafa 8 世紀中葉阿拉伯文本；書末題記說經拉丁文、歸給阿方索十世，『en todas sus partes inexacta』判為 apócrifa，1251 年可能要『adelantarla en unos treinta años』；正文『religioso』、蜂蜜奶油罐掛在床頭、十隻母山羊→五年四百隻→一百頭牛（含牛奶收益）→『ferir lo he con esta vara』→『derramóse la miel e la manteca sobre su cabeza』。Conde Lucanor 目錄頁標『1335』；Exemplo VII『una olla de miel en la cabeça』『començó a reír…dio con la mano en su fruente』『A las cosas çiertas vos comendat / et las fuizas vanas dexat』。Samaniego Libro II 卷首：伯爵『Á Fedro y La Fontaine por modelos / Me pusiste á la vista』，緊接 Fábula II〈La Lechera〉，『El cántaro cayó. Pobre Lechera!』。eduscol：『Émission diffusée le 26 juin 2021』，VII, 9，第二部寓言集 1678。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep Lechera、Perrette、Laiti、milkmaid、擠奶、Pancatantra、Panchatantra、五卷書、Calila、Kalila、Lucanor：只有 F09（國王的新衣，《Conde Lucanor》另一則）提到同一本書，答案不同。最大的錯：原稿把 Ryder 譯的婆羅門大麥粉版當成『最前面一站』，但 Ryder 自己寫明底本是 1199 年的晚期本，比 8 世紀阿拉伯本與卡斯提亞譯本都晚；改成『印度那一支』，並把這點變成第三個轉折。補 Samaniego 自稱以 La Fontaine 為範本（同一卷卷首）、Calila 的夢裡已經有牛奶收益。片長 8–9.5 分鐘（約 13 條不重複事實）。"
+    },
+    {
+      "id": "N3424",
+      "agent": "Z4",
+      "reviewer": "R334",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Z4-S016 經 https://doi.org/10.11606/issn.2176-9419.v25i1p31-50 文章頁的 PDF 連結 https://revistas.usp.br/flp/pt_BR/article/view/211321/200845；Z4-S017 https://archive.org/download/lendasenarrativa17005gut/17005-8.txt（metadata API 列出，Latin-1 轉碼）",
+      "reopen_result": "Franco & Vilaça 2023（Filologia e Linguística Portuguesa 25(1):31–50）：《Lendas e Narrativas》1851『se encontram diversos textos literários que foram publicados entre os anos de 1838 e 1846』；14 個見證（11 抄本、3 印本）；『não era a uma “Dama” e sim a uma “Dona”』、『galicismo ‘dama’』；COD-977 外交版：小標『cõ condição, q’ senão benzesse』、『molher de mto alta linhagē』、『nũca se santificasse』、『esta dona … saluando q’ auia hũ pee forcado como de cabra』、alão 與 podenga、『teue o por milagre & assinou se & disse sta maria val, quem vjo nunca tal cousa』、『por hua fresta do paço』、Pardallo 與不卸鞍不餵食的叮囑、『& assi o foi』。Herculano：標題『A DAMA-PÉ-DE-CABRA / RIMANCE DE UM JOGRAL』、『SECULO XI』；『livro muito velho … E o auctor do livro velho leu-a algures, ou ouviu-a contar … a algum jogral』；『os pés forcados como os de cabra』（兩隻）；『leve o diabo a podenga』、『faces negras』、『preta e luzidia』、『garras』；後段她一樣對 Inigo 說『Vês tu aquelle valente onagro? … te levará a Toledo, onde livrarás teu pae』『Estás por isto, Pardalo?』，並稱上帝『o velho tyranno do ceu』、笑聲『como aquelle deve de ser o rir do diabo』、唱『cantiga de bruxas』；結尾『tinha pacto com Belzebuth』『Como não quero improvisar mentiras』。",
+      "changed_fields": [
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep Pé-de-Cabra、Pé de Cabra、羊蹄、Linhagens、Herculano、Melusin：只有 wave19 一條 not_added 把它留作 F 軸線索（寫 1843 年 Herculano），N1442、N1682 只借 Herculano 的史書，答案不同。改正：（1）原稿轉折三『老書後半段她是救人的母親』拿來對比 Herculano 不成立——Herculano 版她同樣派 Pardalo 救父，差在魔鬼化的語氣與女巫歌，已照原文改寫；（2）補『一隻羊蹄（抄本）vs 兩隻（Herculano）』；（3）鉤子拿掉『1851 年』：那是合集年，研究者說收的是 1838–1846 年發表的作品，首刊年本輪未核；（4）Herculano 自己就說老書作者是從吟遊詩人那裡聽來的，加進流傳段。『跟魔鬼有約』只是小說結尾村人的傳聞，十字當故事禁忌，不碰宗教教義；scope 已寫。片長 8–10 分鐘。"
+    },
+    {
+      "id": "N3425",
+      "agent": "Z4",
+      "reviewer": "R334",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "Z4-S019 https://zh.wikisource.org/wiki/三國遺事/卷第二（由搜尋結果中的英文維基 King Gyeongmun’s ear tale 頁 wikisource 模板連結開啟頁面；維基文庫 API 當時回 429，未重試繞過）；Z4-S020 https://archive.org/download/themetamorphoses26073gut/26073-0.txt（metadata API 列出）",
+      "reopen_result": "〈四十八景文大王〉：『王諱膺廉。年十八為國仙』、三種美行、『王之上公主貌甚寒寢。第二公主甚美』、範教師『郎若娶弟則予必死於郎之面前。娶其兄則必有三美』、三美『娶長故。今登位一也。昔之欽豔弟主。今易可取二也。娶兄故。王與夫人喜甚三也』、『王之寢殿。每日暮無數眾蛇俱集…寡人若無蛇不得安寢…每寢吐舌滿胸』、『王耳忽長如驢耳…唯襆頭匠一人知之…入道林寺竹林中。無人處向竹唱云。吾君耳如驢耳…乃伐竹而植山茱萸。風吹則但聲云吾君耳長』，下一條〈處容郎 望海寺〉從『第四十九憲康大王之代』開始。Riley 1851 英譯：『the ears of the slowly moving ass』『a purple turban』、剪髮僕人對土坑低語、蘆葦一年後『moved by the gentle South wind』說出。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "premise_status",
+        "editorial",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep 驢耳、당나귀、景文、Gyeongmun、Midas、邁達斯、Samguk：Midas 只命中 N3046（戈爾迪之結），景文只在 wave9 來源字串。原文逐字無誤，題目補上三美的內容。但暫緩：這是 5–7 分鐘的 chapter，研究稿建議接 N1005〈處容〉，可是 N1005 已是 8–10 分鐘的單集，合起來超過 13 分鐘，wave23 已用同樣理由不把 N2563 接進 N1005；池中沒有同核心的兄弟題。今天流傳的版本只有兩則經摘要工具讀到的專欄；記者『王統更替所以醜化』的看法只經摘要讀到，已刪。中韓／日韓：景文王與《三國遺事》屬新羅，不涉今天的國家歸屬爭議，Midas 只並列不推傳承，沒有碰到禁區。要收需補：《三國史記》景文王本紀（db.history.go.kr 與 우리역사넷 被擋）做成『野史與正史對照』的同型題，或一份可逐字讀的今天流傳版本；否則轉 Shorts。"
+    }
+  ],
+  "theme_suggestions": [
+    {
+      "ids": [
+        "N2803",
+        "N3363"
+      ],
+      "shared_question": "報上說『火星在向地球打信號』時，當事人原本說的是什麼、又是誰加上『信號』兩個字？",
+      "why_it_flows": "N2803 是 1894 與 1900 年天文台的『突起』電報被報紙寫成信號、由發電報的天文台自己澄清；N3363 是 1902 年 Kelvin 晚宴上一句『不確定火星上在做什麼』被社論寫成『火星向紐約打了信號』、他上船前自己否認、否認又被轉述走樣。同一個核心問題、同一種走樣路徑，時間順接 1900→1902；N2803 7.5–9 分鐘加上剪到 3–4 分鐘的 Kelvin 段，約 10.5–13 分鐘，不靠補料。N2421（9–11 分鐘、已入選）不能再接。若站主不採這個題案，N3363 暫緩當後備章節。"
+    },
+    {
+      "ids": [
+        "N3385",
+        "N3386"
+      ],
+      "shared_question": "舞台與樂壇最有名的兩個『魔鬼現身』——浮士德台上多一個魔鬼、Tartini 夢裡床尾拉顫音的魔鬼——最生動的細節是誰、在哪一份文字裡才加上去的？",
+      "why_it_flows": "兩題同一個方法、同一個答案型態：最早的文字裡魔鬼都比較『平淡』（1604 年只有劇場裂開；1769 年只有一個契約和一整首奏鳴曲），最生動的細節出現在晚出、沒有日期或作者自己以外的人手上（Exeter 的無名手寫筆記；Cartier 樂譜上『學派取的名字』與床尾）。時間順著 1604→1633→1673→1769→1798→1850 走，不必補料。N3385 壓到約 7–7.5 分鐘（四則各一段、Johnston 一段），N3386 約 5–5.5 分鐘，合計 12.5–13 分鐘；若合起來超過 13 分鐘，建議 N3386 暫緩、不要硬塞。魔鬼一律可愛戲服造型，兩題都只講文本，不談教義。"
+    },
+    {
+      "ids": [
+        "N3405",
+        "N3406"
+      ],
+      "shared_question": "一本古人只留下書名和引文的書，從埃及帳本的背面、塞薩洛尼基修院的抄本裡回來時，人們靠什麼認出它？又有什麼是認出來之後仍然說不準的？",
+      "why_it_flows": "N3405 用古人引文對答案（58 條對上 55 條），卻留下『作者是不是亞里斯多德本人』；N3406 是一本講『書會一夜消失』的書自己失傳、又在一本已經印出來的目錄裡『隱形』，認出它之後連抄本年代與抄工都還在改。兩題都是『只剩書名與引文→實物回來→驗明正身與剩下的疑問』，不用補料；各壓到 5.5–6.5 分鐘，合計 11–13 分鐘。"
+    }
+  ],
+  "rule1_record": [
+    "Z4（研究）：三處違規。自己組出日文維基〈蜘蛛の糸〉的 action=raw 網址（未當來源）；自己輸入青空文庫網址並把出處謊報成「英文維基外部連結」（覆核從公開連結重取同頁、逐字核對，N3421 改引 R334 的來源）；自己拼 archive.org 的 Landes 1886 OCR 檔名（只用在 not_added 的禁區判斷，該判斷依據作廢）。依前幾批慣例不整份重做：所有被採用的內容都已由覆核循公開連結重讀。",
+    "Z2（研究）：在迴圈裡自己拼了 7 個英文維基百科網址抓卒年分類（只寫進 risk 欄）；覆核 R332 把卒年全部換成搜尋結果連到的可讀頁面或一手文字裡的年代。另呼叫過第三方 gutendex 書目 API（不在允許清單、未回傳、未使用）。",
+    "Z1、Z3：覆核 R331、R333 逐筆查工具紀錄，沒有發現違規。覆核者本身都沒有拼網址。"
+  ],
+  "reviewer_notes": {
+    "R331": {
+      "rule1_audit": "逐筆檢查研究代理 Z1 的工具紀錄：loc.gov 版面網址都來自 Chronicling America 搜尋 API（fo=json）的結果，full_text 連結取自資源頁 JSON；fr.wikisource 各頁名（Cros 全文、Flammarion P4/1892 與 P4/1900、Anthologie Tome premier）都出自維基文庫搜尋 API 結果，Académie…/10 出自 WebSearch 結果；en.wikipedia Charles_Cros 出自 WebSearch 結果、action=raw 屬允許的格式參數；Gizmodo、Tesla Universe、teslasociety、openedition、worldradiohistory IRE PDF 都出自 WebSearch 結果；archive.org 的 metadata 由 advancedsearch 的 identifier 取得，djvu.txt 檔名由 metadata 的檔案清單列出。沒有發現猜測或拼湊網址。Tesla Universe 是轉錄，已在 N3363 標明非原刊。",
+      "blocked_sites": [
+        "tile.loc.gov 的版面 PDF（storage-services …/0858.pdf）回 Cloudflare『Just a moment』機器驗證頁，沒有繞過；改用同一資源頁 JSON 所列的 jp2 影像對讀",
+        "fr.wikisource.org 搜尋 API 有時回非 JSON（間歇性），重送一次即可"
+      ]
+    },
+    "R332": {
+      "rule1_record": [
+        "Z2（研究）：在同一個迴圈裡自行拼出 7 個英文維基百科網址（en.wikipedia.org/wiki/ 加 John_Henry_Pepper、Henry_Dircks、Giuseppe_Tartini、Gaston_Leroux、Max_Beerbohm、Edward_Alleyn、William_Prynne），這些網址沒有出現在先前的搜尋結果或頁面連結裡，違反規則 1；讀到的卒年只用在各題 risk 欄。覆核已全部改掉：Beerbohm、Leroux、Dircks、Pepper 改用搜尋結果連到的可讀頁（R332-S001–S004），17–18 世紀人物改以一手文字裡的年代判斷，Faraday 標為入畫前待補。Robertson 的維基百科頁是搜尋結果裡的連結，不算違規，但只當索引、已不用。",
+        "Z2（研究）：另手動呼叫第三方的 gutendex.com 書目 API（不在說明檔列舉的公開 API 內），沒有回傳結果，未使用；Gutenberg #62215 是從 WebSearch 結果與 gutenberg.org 書目頁的連結取得，不受影響。其餘 archive.org 檔名都先經 metadata API 列出、loc.gov 全文經 fo=json 的 fulltext_file，其他頁面都來自搜尋結果。",
+        "R332（覆核）：沒有拼網址。London Remembers 是搜尋結果連結的 301 轉址；Cartier 掃描 PDF 是 archive.org metadata API 列出的檔名；Grace's Guide 與 Universalis 用搜尋結果裡的網址（Dircks 的 Grace's Guide 頁 503 未讀，沒有改試 www 版）。"
+      ],
+      "reviewer_notes": "排序建議（不必合併）：N3383（Pepper's Ghost）與 N3384（Robertson 幻影劇）可連排成『舞台上的鬼是怎麼做出來的』，但兩題回答的問題不同，不列入 theme_suggestions。N3381 與 N3382 都是『傳說比紀錄晚、而且出處在玩文字』，不要連排。去重另查：F28（四谷怪談）、N3221（藍鼎元審鬼）與本批無重疊；pool CLI 回 Index is stale，未重建，去重以 grep pool.json、batches/*.json（含 not_added）、topics-fg.json 與 Z1、Z3、Z4 為主。",
+      "blocked_sites": [
+        "gracesguide.co.uk/Henry_Dircks（503）",
+        "collection.sciencemuseumgroup.org.uk（JS 頁，curl 讀不到內容）"
+      ]
+    },
+    "R333": {
+      "dedup_record": "grep 結果：Archimedes／阿基米德只命中 S24 浴缸來源與 wave29 N3064（Poe 引的假阿基米德著作），palimpsest 只命中 N1025 塞提一世名號與 Pípila 期刊名，Heiberg 只命中 Axel Heiberg 島；Simonides 只在 wave23 not_added（西乃抄本）；Uranios、Lykurgos、Dindorf、Di Martino、Fusco、秦婦吟、韋莊、Athenaion、雅典政制、Kenyon、Vlatad、銀雀山、孫臏 皆無命中；Livy／李維 只命中 N2682 等李維兆象題；Galen 只命中巴西人名 Galeno；北夢瑣言只命中 N2481 周秦行紀；顧頡剛只命中 N181 等孟姜女相關；N3002 為汲冢竹書。原來如此池：Archimedes 命中浮力題與 R33002（重寫本 XRF 成像，theme_seed 50–85 秒）。同批 Z2、Z4 無重疊。沒有重複。",
+      "rule1_record": {
+        "research_agent_Z3": "覆核逐筆讀了研究代理 Z3 的工具紀錄（99 次呼叫）：每個開啟的網址都能對回前一步的搜尋結果、archive.org 搜尋或 metadata API、loc.gov 的 fo=json／fulltext_service；Papers Past、dynamic-rsnz、京大與東吳 PDF、OAPEN、core.ac.uk、paginasc.it 的網址都出現在 WebSearch 結果裡；Simonides 兩本書的 djvu 檔名來自 metadata API（第一次因空格失敗，第二次只做 URL 編碼）。沒有發現猜測或拼湊網址。機器驗證（Papers Past Incapsula）、429（維基文庫 API、OAPEN）都沒有繞過。",
+        "reviewer_R333": "覆核只開了研究稿列出的來源網址（原本即來自搜尋結果）、archive.org metadata API 給出的檔名、loc.gov 搜尋結果與 fo=json 列出的全文服務、以及 WebSearch 結果裡的網址（維基文庫三頁、chinaheritage.net、dev4.gutenberg.org〔代理 502〕）。沒有自己輸入或拼湊任何網址；維基文庫 API 回 429 未重試。"
+      },
+      "series_suggestions": [
+        "N3402 與 N2608 Vrain-Lucas 排成『科學院受騙』系列，不合併",
+        "N3407 補料後排在 N3002（汲冢竹書）之後：兩次『書從墓裡回來』，不合併（合計超過 13 分鐘）",
+        "N3401 與原來如此 R33002 分屬兩個系列，本題造影只一句，不講成像原理"
+      ],
+      "blocked_sites": [
+        "zh.wikisource.org MediaWiki API（429，未重試）",
+        "dev4.gutenberg.org（代理 502，搜尋結果中的《北夢瑣言》電子書讀不到）",
+        "paperspast.natlib.govt.nz（研究代理記錄的 Incapsula 機器驗證，覆核未再開）"
+      ]
+    },
+    "R334": {
+      "rule1_audit": {
+        "agent": "Z4",
+        "violations": [
+          "研究代理第 20 步：自己組出 https://ja.wikipedia.org/w/index.php?title=蜘蛛の糸&action=raw（書名頁沒有出現在任何搜尋結果或頁面連結）。未被當成來源。",
+          "研究代理第 21 步：直接輸入 http://www.aozora.gr.jp/cards/000879/files/92_14545.html。前兩次搜尋都明說找不到青空文庫頁，同一步之前讀英文維基只取前 80 行，沒有讀到外部連結；Z4-S003 卻寫『英文維基外部連結列出的網址』，出處說明不實。覆核循維基頁外部連結重新取得（R334-S002），候選改引 R334-S002。",
+          "研究代理第 105 步：對 advancedsearch 回傳的 contesetlgende00landuoft 沒有查 metadata，直接拼出 _djvu.txt 檔名下載（brief 明列的『自己拼 archive.org 的 OCR 檔名』）。這份 Landes 1886 文本只用在 not_added『越南〈蚊子的由來〉』的禁區判斷，該條的依據因此不成立，需另循連結重讀才能引用。"
+        ],
+        "clean": "其餘候選來源都追得到合法路徑：archive.org 檔案都先經 metadata API 列出；J-STAGE、USP、eduscol、Plethos、Andina、chikumashobo、nocutnews、imaeil、Gutenberg 28054 都在搜尋結果裡；es.wikisource〈Conde Lucanor〉目錄頁在搜尋結果裡、Ejemplo_7 是目錄頁連結；zh.wikisource 卷第二由搜尋 API 回傳。"
+      },
+      "blocked_sites": [
+        "encykorea.aks.ac.kr（英文維基引用的〈경문왕의 귀설화〉條目）：HTTP 503",
+        "contents.history.go.kr（우리역사넷 景文王頁）：HTTP 400 Request Blocked",
+        "zh.wikisource.org 搜尋 API：HTTP 429（限流），未重試繞過，改循英文維基頁上的 wikisource 連結開頁面"
+      ]
+    }
+  }
+}

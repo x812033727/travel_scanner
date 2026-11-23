@@ -32,6 +32,7 @@ from app.guides.schemas import (
     PublishWrite,
     RestoreWrite,
     RevisionDetail,
+    SearchSort,
     Section,
     SeriesIndex,
     SitemapList,
@@ -85,6 +86,27 @@ async def list_public(
     )
 
 
+@public_router.get("/trending", response_model=PublicList)
+async def list_public_trending(
+    response: Response,
+    session: Session,
+    locale: Locale = "zh-TW",
+    kind: Kind | None = None,
+    section: Section | None = None,
+    topic: str | None = Query(default=None, max_length=64),
+    limit: int = Query(default=6, ge=1, le=service.MAX_TRENDING),
+) -> PublicList:
+    response.headers["Cache-Control"] = "no-store"
+    return await service.public_trending(
+        session,
+        locale,
+        kind=kind,
+        section=section,
+        topic=topic,
+        limit=limit,
+    )
+
+
 # A reader's search box, not an editor's: 120 queries a minute per address is far more
 # than a person types and far less than a scraper wants. The limiter fails open on
 # purpose (``over_named_rate_limit``): a search that goes dark because Redis blinked is
@@ -105,6 +127,7 @@ async def search_public(
     destination: str | None = Query(default=None, max_length=64),
     country: str | None = Query(default=None, max_length=32),
     topic: str | None = Query(default=None, max_length=64),
+    sort: SearchSort = "relevance",
     limit: int = Query(default=10, ge=1, le=search.MAX_LIMIT),
     offset: int = Query(default=0, ge=0, le=search.MAX_OFFSET),
 ) -> GuideSearchResult:
@@ -124,6 +147,7 @@ async def search_public(
         destination=destination,
         country=country,
         topic=topic,
+        sort=sort,
         limit=limit,
         offset=offset,
     )

@@ -20,6 +20,83 @@ export const CURIO_MAX_CARD_RUN = 3;
  */
 export const CURIO_MUSIC = Object.freeze({ prompt: "light, curious, a little mysterious, no vocals", gain_db: -20, duck_db: -10 });
 
+/**
+ * The pacing both narrated cartoon series take (owner, 2026-11-05; made the series default on
+ * 2026-11-11): no gap between sentences and a short one between scenes, so the cut's silence
+ * falls from 7-10% to the reference channels' 3% or less, and stills that hold and then move
+ * (push, pan, pull) instead of one slow glide. Until then each video.json had to opt in, and none
+ * of the episodes made after the rule did (.agents/skills/producer/references/pace-targets.md).
+ */
+export const SERIES_PACING = Object.freeze({ pauses: Object.freeze({ line_ms: 0, scene_ms: 150 }), still_motion: "beat" });
+
+/** Whether a video belongs to a series that takes SERIES_PACING: 奇聞檔案局 (curio-) and 原來如此事務所 (sothatswhy-). */
+export const isPacedSeries = (doc) => /^(curio|sothatswhy)-/.test(doc?.slug ?? "");
+
+/**
+ * The most shots in one episode that may lean on the same generic stand-in prop (a fat/flat purse
+ * or wallet, a thick plain-covered book). Measured on curio-w01 (4 purses), curio-w02 (7 purses),
+ * curio-s13-v2 (9 plain books) and curio-s26-v2 (10 plain books) against 黑貓研究院's topic-specific
+ * physical props (2026-11-18; register.mjs STORY_SERIES_SCREEN_RULE).
+ */
+export const GENERIC_PROP_MAX = 2;
+export const GENERIC_PROP_FAMILIES = Object.freeze([
+  Object.freeze({ id: "purse", label: "purse/wallet (錢包／皮夾)", pattern: /\b(?:purses?|wallets?)\b/i }),
+  Object.freeze({ id: "plain-book", label: "thick/plain-covered book (空白厚書)", pattern: /\b(?:thick\s+(?:plain[- ]covered\s+)?books?|plain[- ]covered\s+books?)\b/i }),
+]);
+export const isGenericPropSeries = (doc) => /^(?:curio|sothatswhy|story)-/.test(doc?.slug ?? "");
+
+/** Warn when a paced or story episode repeats a generic purse/wallet or plain-book stand-in in 3+ shots. */
+export function genericPropWarnings(doc) {
+  if (!isGenericPropSeries(doc) || doc?.format !== "drama") return [];
+  const shots = (doc.scenes ?? []).filter((scene) => isShot(scene) && typeof scene.data?.prompt === "string");
+  if (shots.length <= GENERIC_PROP_MAX) return [];
+  const warnings = [];
+  for (const family of GENERIC_PROP_FAMILIES) {
+    const matched = shots.filter((scene) => family.pattern.test(scene.data.prompt)).map((scene) => scene.id);
+    if (matched.length <= GENERIC_PROP_MAX) continue;
+    warnings.push({
+      path: "scenes",
+      message: `${matched.length} shots draw the generic ${family.label} stand-in (${matched.slice(0, 6).join(", ")}${matched.length > 6 ? " …" : ""}); cap any generic stand-in at ${GENERIC_PROP_MAX} shots an episode and draw topic-specific wordless physical objects or cross-sections from this story instead (register.mjs STORY_SERIES_SCREEN_RULE)`,
+    });
+  }
+  return warnings;
+}
+
+/**
+ * Nameless demonstrative/pronoun openings that hide the episode's subject on a Heimao thumbnail
+ * (owner, 2026-11-20: curio-s10-v2 dropped to 1.8% CTR when "本能寺" was hidden behind "這句話根本沒寫？").
+ */
+export const NAMELESS_HEIMAO_HEADLINE = /^(?:這句話|這個人|這兩(?:個)?字|這件事|這本書|這張紙|這顆(?![A-Za-z0-9\u4e00-\u9fff]*錶)|這台|這支|這個|它(?![A-Za-z0-9])|他(?![A-Za-z0-9])|她(?![A-Za-z0-9])|誰喊的)/u;
+
+/** Warn when a curio-, sothatswhy- or story- Heimao thumbnail opens with a nameless pronoun instead of naming the subject. */
+export function heimaoSubjectWarnings(doc) {
+  if (!isGenericPropSeries(doc) || doc?.format !== "drama") return [];
+  const data = doc.thumbnail?.data;
+  if (!data || !["heimao", "heimao-left"].includes(data.layout) || typeof data.headline !== "string") return [];
+  const plain = data.headline.replace(/\*\*/g, "").replace(/^[\s「『"“¿¡]+/u, "");
+  if (!NAMELESS_HEIMAO_HEADLINE.test(plain)) return [];
+  return [{
+    path: "thumbnail.data.headline",
+    message: `heimao headline "${data.headline}" opens with a nameless demonstrative/pronoun instead of naming the recognizable person, event, brand or signature object up front (owner, 2026-11-20); put the subject name in line 1`,
+  }];
+}
+
+/**
+ * What a paced series' drama is missing of SERIES_PACING (plus generic-prop overuse and nameless
+ * Heimao headlines across the illustrated series), as lint warnings. A local video is never changed
+ * behind its back: tightening the pauses moves the timeline an owner may already have approved, so
+ * the warning names the fields and the re-approval they cost.
+ */
+export function pacingWarnings(doc) {
+  if (doc?.format !== "drama") return [];
+  if (!isPacedSeries(doc)) return [...genericPropWarnings(doc), ...heimaoSubjectWarnings(doc)];
+  const warnings = [];
+  if (doc.pauses === undefined) warnings.push({ path: "pauses", message: `this series closes the gaps between sentences (owner, 2026-11-05): add "pauses": ${JSON.stringify(SERIES_PACING.pauses)}; the timeline moves, so the narration and storyboard go back to the owner (the voice is not re-recorded)` });
+  if (doc.still_motion === undefined) warnings.push({ path: "still_motion", message: `this series' stills hold and then move instead of gliding (owner, 2026-11-05): add "still_motion": "${SERIES_PACING.still_motion}" (only the cut changes; no picture is redrawn)` });
+  warnings.push(...genericPropWarnings(doc), ...heimaoSubjectWarnings(doc));
+  return warnings;
+}
+
 // The bookends are not the body: the opening title, chapter cards and the outro card.
 const FRAMES = new Set(["title", "chapter", "outro"]);
 

@@ -1,0 +1,910 @@
+{
+  "batch_id": "wave55-earth-20261111",
+  "created_on": "2026-11-11",
+  "scope": "重力衛星怎麼量出地下水少了多少、聖華金谷的抽水與地層下陷、抽水怎麼讓河流變少，以及同一條 Exit Glacier 兩百年的末端帳：替長題 G34、G03、G10 補原研究、USGS Circular 與 NPS 報告；十二來源，其中 NSIDC〈Science of Glaciers〉是池中 SRC-c24d3d245cddb657 同一頁的本輪全文重讀，併入同一來源 id。",
+  "sources": [
+    {
+      "id": "S55-S001",
+      "url": "https://doi.org/10.1038/nature08238",
+      "retrieval_url": "https://new.fore.yale.edu/files/Rodell_Velicogna_Famiglietti.pdf",
+      "canonical_url": "https://doi.org/10.1038/nature08238",
+      "doi": "10.1038/nature08238",
+      "title": "Satellite-based estimates of groundwater depletion in India",
+      "publisher": "Rodell, Velicogna & Famiglietti；Nature 460:999–1002 (2009)",
+      "version": "出版版 PDF（耶魯大學 Forum on Religion and Ecology 網站存放）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（PDF），pdftotext 全文",
+      "reading_scope": "全文：主文、Fig.1–3 圖說、Methods 摘要段、參考文獻",
+      "locator": "p.999 摘要與 GRACE 段；p.1000 水體分量逐項排除段；p.1001 季節振幅、0.33 m/yr、政府估計對照與結論段；Methods 段（73 個月解、縮放係數 1.95、誤差預算）",
+      "summary": "用 GRACE 總水量變化減去五組 GLDAS 模擬的土壤水，估計印度西北拉賈斯坦、旁遮普、哈里亞納（含德里，約 43.8 萬 km²、1.14 億人）2002 年 8 月至 2008 年 10 月地下水以每年 4.0±1.0 cm 水深（17.7±4.5 km³）下降，累計淨失 109 km³，約印度最大水庫容量的兩倍、米德湖的近三倍；期間雨量接近或略高於正常。逐項排除：喜馬拉雅冰川即使把全喜馬拉雅的冰損都放在最近的 150 km，也只可能占趨勢 2.8 km³/yr（15%）；七座大水庫反而每年增 0.5 km³；稻田淺水每年乾涸；土壤水趨勢僅 0.4 cm/yr。地下水季節振幅 5.9 cm，小於土壤水 10.3 cm 與總水量 13.8 cm，且季節循環落後土壤水約 40 天。以比出水量 0.12 換算區域平均水位每年約降 0.33 m，局部都市可達 10 m/yr。政府估計的年赤字為 13.2 km³，GRACE 結果更大。GRACE 空間解析度不優於約 16 萬 km²；平滑造成訊號衰減，作者乘上縮放係數 1.95，總誤差 1.0 cm/yr 由 GRACE 0.54、土壤水 0.38、縮放 0.50、洩漏 0.60 合成。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "2002–2008 舊資料，非現況；存放處非出版社或作者機構（大學網站上的出版版 PDF，未經付費牆）；局部 10 m/yr 引自報紙報導；完整 Methods 只在線上版，未讀。",
+      "access_notes": "引用以 DOI 10.1038/nature08238 為準（Nature 460:999–1002）。實際讀的是耶魯大學 Forum on Religion and Ecology 網站存放的出版版 PDF（retrieval_url），屬第三方存放、未經付費牆；覆核 V8 以一般請求重抓同檔。完整 Methods 只在 Nature 線上版，未讀。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f5src/rodell2009.pdf",
+        "sha256_prefix": "a9b4da563e168f10",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S55-S002",
+      "url": "https://grace.jpl.nasa.gov/system/downloadable_items/3_Landerer.2011WR011453.pdf",
+      "canonical_url": "https://doi.org/10.1029/2011WR011453",
+      "doi": "10.1029/2011WR011453",
+      "title": "Accuracy of scaled GRACE terrestrial water storage estimates",
+      "publisher": "Landerer & Swenson；Water Resources Research 48, W04531 (2012)（JPL GRACE 網站提供 PDF）",
+      "version": "出版版",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（PDF），pdftotext 全文",
+      "reading_scope": "摘要、§1–2、§4.4（時間尺度不同的空間型態）、§5 總結與討論、Figure 8 圖說",
+      "locator": "[1] 摘要；[7] 去條紋與 300 km 高斯濾波；[26]–[29] 印度西北例與式(5)；[31]–[32] 限制",
+      "summary": "JPL 網格化陸地水資料用模型模擬求『增益係數』，把濾波（去條紋＋半寬 300 km 高斯）與截斷造成的訊號衰減補回，並附洩漏與量測誤差格網。作者提醒：增益係數來自模型，不依賴 GRACE 實測，用來把資料外推到 GRACE 解析不了的細尺度，這些細尺度『並非 GRACE 真正量到』。模型多半沒有抽地下水或冰川融化，係數主要對季節變化最佳化，未必適用長期趨勢。以 Rodell 2009 的印度西北含水層為例：季節訊號範圍廣、幾乎不衰減，係數為 1；只在含水層內的長期下降嚴重衰減，需要 3.2；若用單一係數（1.7）會高估季節變化、低估趨勢，必須把季節與長期分開各乘各的係數。平均區域越大，誤差越小。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "方法論文，數值依 2012 年資料版本與濾波設定；JPL 現行產品已改以 mascon 為主（見 S004），此係數不可套用到現行產品。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f5src/landerer2012.pdf",
+        "sha256_prefix": "615b1e5002973c02",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S55-S003",
+      "url": "https://repository.tugraz.at/records/b8kfr-fp535",
+      "canonical_url": "https://doi.org/10.1029/2020JB021297",
+      "doi": "10.1029/2020JB021297",
+      "title": "GRACE Follow-On Accelerometer Data Recovery",
+      "publisher": "Behzadpour, Mayer-Gürr & Krauss（格拉茨工大）；JGR Solid Earth 126, e2020JB021297 (2021)，CC BY 開放全文",
+      "version": "出版版",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（TU Graz 典藏 PDF），pdftotext",
+      "reading_scope": "摘要、Key Points、§1 引言",
+      "locator": "摘要；§1 第1–4段",
+      "summary": "GRACE-FO 於 2018 年 5 月 22 日發射，延續 GRACE（2002–2017）。兩顆衛星都有三軸加速度計量非重力力（大氣阻力、輻射壓）與推進器干擾，重力求解要先扣掉它們。GRACE-D 的加速度計在軌約一個月後（在軌檢測期）雜訊升高、資料系統性劣化，此後用 GRACE-C 的量測加上時間與姿態修正、再加推進器模型，合成『移植（transplant）』資料代替。移植法源自 GRACE 在 2002–2003 年兩段數週只有一顆加速度計可用的時期。作者指出低階係數 C20、C30 對移植法敏感，提出改良的回復方法。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "技術論文，只讀摘要與引言；改良方法的細節與數值結果未讀；不可說 GRACE-D 加速度計至今仍完全不可用（見 S004 2026 現況）。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f5src/behzadpour2021.pdf",
+        "sha256_prefix": "97ec4efdab5c7271",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S55-S004",
+      "url": "https://isdc-data.gfz.de/grace-fo/DOCUMENTS/NEWSLETTER/2025/GRACE-FO_SDS_NL_028_202503.pdf",
+      "canonical_url": "https://isdc-data.gfz.de/grace-fo/DOCUMENTS/NEWSLETTER/2025/GRACE-FO_SDS_NL_028_202503.pdf",
+      "title": "GRACE Follow-On Science Data System Newsletter No. 28 (Mar 2025 – Mar 2026)",
+      "publisher": "JPL／GFZ／UT-CSR（Landerer、Eicker、Save 等）",
+      "version": "No. 28，軌道參數日期 2026-05-07",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（PDF），pdftotext -layout",
+      "reading_scope": "p.1–4：人事、新聞、資料更新、任務現況與軌道表、科學相關事件",
+      "locator": "p.1 News & Announcements；p.2 Science & Applications Data Updates；p.3 Other Mission Updates；p.4 軌道參數表與 Mission Events",
+      "summary": "2026 年 4 月 16 日 NASA Senior Review 審議把任務延長三年至 2029 年 9 月（結果預計 2026 年仲夏）。後繼任務 GRACE-C 於 2025 年 12 月通過 KDP-D 進入總裝測試，預定 2028 年 12 月發射，與 GRACE-FO 重疊。Level-2/3 資料已到 2026 年 3 月，現行版本 RL06.3；GFZ GravIS 另有衛星地下水產品（2002 年 4 月–2023 年 9 月，G3P 計畫）。2026-05-07 軌道：平均高度 448.8 km，兩星相距 215.0 km、日漂 −0.20 km，高度每天衰減約 24 m；太陽週期 25 活動過去 12 個月下降，衰減率與非重力力隨之減小。兩顆加速度計皆以正常模式運作；GF1 的資料產生移植產品供替代 GF2 的量測。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "任務通訊（官方）；延長審議結果尚未公布；撰稿當期仍需重查新一期通訊。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f5src/gfz_nl028.pdf",
+        "sha256_prefix": "39311388368c4c10",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S55-S005",
+      "url": "https://science.nasa.gov/blogs/science-news/2026/06/05/aquifer-decline-in-brazilian-breadbasket/",
+      "canonical_url": "https://science.nasa.gov/blogs/science-news/2026/06/05/aquifer-decline-in-brazilian-breadbasket/",
+      "title": "NASA Satellites Reveal Aquifer Decline in Brazilian Breadbasket",
+      "publisher": "NASA Science（Science News blog）",
+      "version": "2026-06-05",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 HTML，去標籤全文閱讀",
+      "reading_scope": "全文 6 段",
+      "locator": "第2–6段",
+      "summary": "NASA 與巴西研究機構在 Science Advances（2026-06-03）發表：用人工智慧把 GRACE／GRACE-FO 衛星資料、井水位、地質與用水資料結合，評估巴西 2002–2023 年地下水，產出全國約 850 萬 km² 的高解析地圖；含水層供應巴西 55% 的用水，中部與東部數個含水層持續下降，有些地區多年幾乎沒有補注；亞馬遜部分地區則隨降雨與河水氾濫季節性大起大落；農業擴張與商業用地區域下降最嚴重。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "新聞稿層級；Science Advances 原文未讀；高解析地圖是模型融合產品，不是 GRACE 直接解析。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f5src/brazil.html",
+        "sha256_prefix": "4bab9140385025df",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S55-S006",
+      "url": "https://pubs.usgs.gov/circ/circ1182/pdf/06SanJoaquinValley.pdf",
+      "canonical_url": "https://pubs.usgs.gov/circ/circ1182/pdf/06SanJoaquinValley.pdf",
+      "title": "San Joaquin Valley, California: Largest human alteration of the Earth's surface（Land Subsidence in the United States, Circular 1182）",
+      "publisher": "USGS（Galloway & Riley），Circular 1182",
+      "version": "1999",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（PDF），pdftotext 全文",
+      "reading_scope": "全章：背景、地層、地下水收支、灌溉史、抽水造成下陷、水位回升與延遲壓密、乾旱復發、水壓密、隱藏成本",
+      "locator": "p.24 首段與 1970 統計；p.25–26 地層與 Corcoran Clay；p.28–29 1955 抽水量與水位降；p.29–30 回升與 Cantua Creek；p.30 壓密圖註；p.31 1976–77 乾旱段；p.34 成本",
+      "summary": "聖華金谷靠抽地下水成為重要農業區，也造成人類最大規模的地表改變之一。谷地是沉積槽，陸相沉積一半以上是易壓密的細粒黏土與粉砂；遍布中西部的湖相 Corcoran Clay 厚可達約 160 英尺，把淺層含水層與深層受壓含水層隔開，下陷主要對應深層的抽水與水位下降。1955 年全美灌溉用地下水約四分之一（近 800 萬英畝呎）在此抽出；深層水位在西側部分地區降逾 400 英尺，1960 年時每年約降 10 英尺。到 1970 年下陷超過 1 英尺的面積逾 5,200 平方英里（約半個谷地），Mendota 附近最大逾 28 英尺；1950–60 年代的加速抽水造成約 75% 的總下陷體積。引入地表水後，深層水位在 1967–1974 年回升達 200 英尺，下陷趨緩；但 Cantua Creek 附近觀測井 1968–1974 年水位回升逾 200 英尺，同期地面又下陷 2 英尺，原因是黏土層孔隙水壓要很久才與含水層平衡，通常需數百年。圖註寫明：含水層系統有些彈性回彈，但壓密的材料永遠回不到壓密前的厚度。1976–77 年乾旱減少輸水，只抽了 1960 年代高峰年量的三分之一，水位就在大範圍急降逾 150 英尺、下陷恢復（Cantua Creek 1977 年近 0.5 英尺），反映壓密造成的儲水空間永久減少；『壓密釋出的水』只在第一次大規模洩降時拿得到。直接與間接成本在 1993 年估達每年 1.8 億美元。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "1999 年出版，資料多到 1990 年代；現況需另查（如 USGS／加州 DWR 新資料）；英制單位需換算。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f5src/c1182_sjv.pdf",
+        "sha256_prefix": "4011bd310d4c1c0a",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S55-S007",
+      "url": "https://pubs.usgs.gov/circ/circ1182/pdf/03intro.pdf",
+      "canonical_url": "https://pubs.usgs.gov/circ/circ1182/pdf/03intro.pdf",
+      "title": "Introduction（Land Subsidence in the United States, Circular 1182）",
+      "publisher": "USGS（Galloway, Jones & Ingebritsen 編），Circular 1182",
+      "version": "1999",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（PDF），pdftotext 全文",
+      "reading_scope": "引言全文",
+      "locator": "第1–2頁首段；Mining ground water 段",
+      "summary": "美國 45 州逾 17,000 平方英里直接受地層下陷影響；已辨識的下陷八成以上來自開採地下水。含有足夠厚黏土與粉砂（阻水層）的沖積含水層，長期水位下降會一次性釋出『壓密水』，表現為區域性、永久性的下陷。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "1999 年資料。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f5src/c1182_intro.pdf",
+        "sha256_prefix": "324916e6a68ea2aa",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S55-S008",
+      "url": "https://pubs.usgs.gov/circ/1376/",
+      "canonical_url": "https://pubs.usgs.gov/circ/1376/",
+      "title": "Streamflow Depletion by Wells—Understanding and Managing the Effects of Groundwater Pumping on Streamflow（Circular 1376）",
+      "publisher": "USGS（Barlow & Leake），Circular 1376",
+      "version": "2012",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（PDF 84 頁），pdftotext；讀前言、引言、各章關鍵段與誤解章",
+      "reading_scope": "Foreword、Introduction、Time Response 段（C aquifer 例）、Variable and Cyclic Pumping（Ipswich 例）、Common Misconceptions（補注與開發、抽水停止後的耗減）、Conclusions；分析與數值模型章未逐段讀",
+      "locator": "Foreword 第2段；p.26–27 Ipswich 段與 Fig.20；p.39–40『Aquifer Recharge and Development』；p.42–43『Depletion after Pumping Stops』要點 1–6；p.24–25 C aquifer 模擬",
+      "summary": "Theis 1940 指出：井抽的水起初來自含水層儲量減少，持續抽水後影響擴散到遠處相連的河、湖、濕地，減少地下水排出或誘發河水補入，合稱『河川耗減』或『截取』；有些地區地下水占年河川流量達 90%。常見誤解是『抽水不超過平均補注量就安全』：Bredehoeft 等（1982）的『水收支迷思』指出，未開發含水層的天然補注本來就與天然排出平衡，抽水最終主要靠減少排出（河川基流、蒸散）來平衡，補注多半不因抽水增加，所以可持續抽多少取決於能截走多少天然排出，而非補注量。抽水停止後：最大耗減可能出現在停抽之後，含水層擴散性低或井離河遠時尤其如此；從開始抽到水位完全回復，耗減總量等於抽出總量；回復時間常比抽水時間長。亞利桑那 C 含水層模擬中，全部河段最大耗減出現在停抽約 44 年後。麻州 Ipswich 河流域以生活與商業用水為主的抽水，造成夏季低流量期明顯耗減，過去乾旱年曾導致魚類與貝類死亡；一口距河約 500 英尺的供水井，其季節變化的抽水經含水層緩衝後，河川耗減的起伏比抽水小。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "概念性通論與模擬例；Ipswich 耗減曲線為解析模型計算，魚貝死亡轉引 Armstrong 等（2001）；C 含水層 44 年為模擬結果，不是觀測。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f5src/usgs_c1376.pdf",
+        "sha256_prefix": "d62a8b5170aa9340",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S55-S009",
+      "url": "https://irma.nps.gov/DataStore/DownloadFile/562710",
+      "canonical_url": "https://irma.nps.gov/DataStore/DownloadFile/562710",
+      "identity_urls": [
+        "https://www.npshistory.com/publications/kefj/nrr-2016-1341.pdf"
+      ],
+      "title": "200 Years of Terminus Retreat at Exit Glacier, 1815–2015（Natural Resource Report NPS/KEFJ/NRR—2016/1341）",
+      "publisher": "Deborah Kurtz、Emily Baker；National Park Service, Kenai Fjords National Park",
+      "version": "2016-11",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 PDF（npshistory.com 保存的 NPS 報告原檔），pdftotext 全文",
+      "reading_scope": "摘要、Introduction（Background、Measuring Glacial Melt、Previous Measurements）、Methods（資料、centerline／box 法、季節）、Results（方法比較、centerline 結果、季節性）、Summary；附錄表未逐列讀",
+      "locator": "摘要 p.v；p.1–5；p.16–17 方法比較（2005→2006 centerline +6 m／box −4 m）；p.17–20 結果與季節段",
+      "summary": "Exit Glacier 從 1815 年小冰期最大範圍到 2015 年 9 月退了 2.5 公里；1889 年前幾乎不動，1889–2015 平均每年 19.7 公尺，2011–2015 每年 44.5 公尺；1950 年以來退 1 公里。1950 前位置靠樹輪定年的冰磧，之後用航照，2008 年起每年 GPS 沿冰緣走一圈。1987–88 冬天前進 15–18 公尺，壓過園方剛建的步道和告示牌；1983–1993 年曾前進 150 公尺；1974、1984、1993、1998、2006 年有小前進。2010–2015 冬季中位退 9.1 公尺、夏季 33.3 公尺（每天 3.9 公分 vs 25.6 公分，夏季約快 6.6 倍）。園方回憶 2006 年前有些冷冬因冰向前流量大於冬季融化而前進，如今冬天也在退；10–5 月有 51% 的日子均溫高於 0°C。報告：末端前進或後退由融化與流動的平衡決定。同一段 2005→2006 變化，中線法算前進 6 公尺、框法算後退 4 公尺。末端只是冰河的一小部分（全長 9.97 公里、面積 37.8 平方公里），末端後退只是冰量變化的一種量法。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "作者讀的是第三方網站保存的鏡像，已由覆核比對與 NPS IRMA 官方原檔位元組相同；報告明言不推論原因或機制；季節倍數摘要寫 6.7、內文寫 6.6，引用時說『約 6.6–6.7 倍』。",
+      "access_notes": "官方原檔是 NPS IRMA DataStore（Reference 2237007，DownloadFile 562710），即本來源網址；作者讀的是 npshistory.com 的鏡像（identity_urls），覆核 V9 向 IRMA 取回官方原檔，與鏡像位元組相同（sha256 一致）。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/nrr1341.pdf",
+        "sha256_prefix": "15b185132a4a4070",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S55-S010",
+      "url": "https://www.nps.gov/kefj/learn/nature/glaciermonitoring.htm",
+      "canonical_url": "https://www.nps.gov/kefj/learn/nature/glaciermonitoring.htm",
+      "title": "Glacier Monitoring — Kenai Fjords National Park",
+      "publisher": "U.S. National Park Service",
+      "version": "頁面最後更新 2024-07-28",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200，轉純文字全文",
+      "reading_scope": "全文：五項監測（重複攝影、縮時攝影、Exit 末端製圖、冰河範圍製圖）",
+      "locator": "Repeat Photography；Time-Lapse；Exit Glacier Terminus Mapping",
+      "summary": "USGS 的 Grant 與 Higgins 在 1900 年代初拍下峽灣潮水冰河，2004–05 年 USGS 的 Molnia 回到原點重拍。2010 年夏天每天拍 Exit Glacier，縮時影片呈現冰流動、變薄與融化。末端歷史位置用航照數位化，近年每年秋天用 GPS 或航照追蹤。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "網頁簡介；無數值。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/npsmon.html",
+        "sha256_prefix": "082ae8577d534929",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S55-S011",
+      "url": "https://www.nps.gov/kefj/blogs/visualizing-glacial-processes-using-time-lapse-photography-at-exit-glacier.htm",
+      "canonical_url": "https://www.nps.gov/kefj/blogs/visualizing-glacial-processes-using-time-lapse-photography-at-exit-glacier.htm",
+      "title": "Visualizing Glacial Processes: Using Time Lapse Photography at Exit Glacier",
+      "publisher": "National Park Service（Sean LaHusen 撰）",
+      "version": "2014-09-04（頁面更新 2015-10-21）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200，轉純文字全文",
+      "reading_scope": "全文",
+      "locator": "第2–6段",
+      "summary": "末端 10 年內退了 270 公尺，『冰河邊緣』步道從貼近冰壁變成離縮小的末端將近 40 公尺。兩台縮時相機一天一張：一台在末端、一台在上游約 1 公里的 Marmot Meadows。影片可看到冰體變薄、兩側內縮，也能看到冰在流：Exit Glacier 平均每天向谷下移動約 30 公分，慢到整天盯著也看不出來。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "園方部落格；30 公分/日為『平均約』，未說量測點與方法；不可與末端退縮速率逐點相減。作者本地快取存錯成另一篇 NPS 部落格〈Chasing a Retreating Glacier〉（author_cache 的雜湊對應那份錯檔），不是本頁；本頁內容以覆核 V9 2026-11-11 線上重讀為準（270 公尺、約 40 公尺與平均每天約 30 公分都在線上原文）。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/npstl.html",
+        "sha256_prefix": "863871c7022648ab",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。此快取存錯成另一篇部落格，不能拿來核對本頁。"
+      }
+    },
+    {
+      "id": "S55-S012",
+      "url": "https://nsidc.org/learn/parts-cryosphere/glaciers/science-glaciers",
+      "canonical_url": "https://nsidc.org/learn/parts-cryosphere/glaciers/science-glaciers",
+      "title": "Science of Glaciers",
+      "publisher": "National Snow and Ice Data Center（NSIDC）",
+      "version": "2026-11-11 讀取當下版本",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 HTML，轉純文字全文（重讀既有 SRC-c24d3d245cddb657）",
+      "reading_scope": "全文：Growing、Moving forward、In retreat、How glaciers move、Components（Terminus、Crevasses、Ogives、Icefalls、Glacier caves）、Types",
+      "locator": "Moving forward 第1–4段；In retreat 第1–4段（WGMS 數字）；How glaciers move 圖說（Muir 1941/2004）與第1–4段（Hubbard 1986）；Terminus 圖說（Perito Moreno）；Ogives",
+      "summary": "冰在自身重量下以內部變形（creep）與底部滑動移動；底部滑動可占薄而冷、陡坡冰河大部分運動，但溫暖厚、緩坡冰河只占 10–20%；Columbia Glacier 是大而溫暖的低角度冰河，主要靠滑動。底部比表面慢，冷底冰河底部只有表面速度的一小部分。後退與前進只指末端位置；後退時冰河仍像輸送帶向下移動，只是融得比流得快。Muir Glacier 1941 與 2004 同點照片：退 12 公里、變薄超過 800 公尺。1986 年 Hubbard Glacier 每天衝 10 公尺、兩個月堵住 Russell 峽灣成湖。Perito Moreno 末端持續推進。Ogive 弧帶指向下游，因為中央摩擦少流得快。WGMS 追蹤 140 條高山冰河、37 條參考冰河；2021 年連續第 34 年失去質量；每十年平均損失 1980 年代 214 毫米到 2010 年代 896 毫米；1980–2018 累計 21.7 公尺水當量，像從平均冰河頂上削掉 24 公尺厚。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "科普頁；WGMS 數字轉引 AMS 與 WGMS 報告，未讀原報告。",
+      "refreshes_source_id": "SRC-c24d3d245cddb657",
+      "applies_to_candidate_ids": [
+        "N213",
+        "N214",
+        "N215",
+        "N216",
+        "N217",
+        "N218"
+      ],
+      "access_notes": "與池中 SRC-c24d3d245cddb657（nature-20261101 節錄閱讀）是同一頁；以同一網址追加本輪全文重讀紀錄，不另立來源。舊核心 N214、N215 已有的『冰在流』『末端看收支』不重計，本輪新增的流速量級、累積區與消融區、弧形條紋與質量平衡由 S55-021、S55-022、S55-023、S55-024 承接。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/nsidc.html",
+        "sha256_prefix": "d50d53dcb5ebbf20",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "S55-001",
+      "question": "衛星不看地底，怎麼算出印度西北六年少了 109 立方公里的地下水？",
+      "domain": "地球觀測",
+      "mechanism_key": "gravimetry.grace.nw_india_groundwater_depletion_case",
+      "answer_target": "Rodell 等 2009 年用 GRACE 量到的總水量變化，減去模型算的土壤水，估計印度西北拉賈斯坦、旁遮普、哈里亞納三邦（含德里，約 1.14 億人）從 2002 年 8 月到 2008 年 10 月，地下水平均每年少約 4 公分水深，相當每年 17.7 立方公里，合計 109 立方公里，約是印度最大水庫容量的兩倍；這段期間雨量接近甚至略高於正常，作者認為主因是灌溉等抽水。",
+      "scope": "2002–2008 舊資料，不可當現況；只說『研究估計』，±誤差要一起交代。",
+      "source_ids": [
+        "S55-S001"
+      ],
+      "source_locator": "S001 摘要；p.1001 結論段",
+      "premise_status": "screened",
+      "notes": "目標 G34 開場（審查缺『有數字的真實流域研究』）；原角色 hook。 原提案 F5-010。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照原稿收；照錄。2002–2008 舊資料要標年份。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "衛星沒拍到一滴水，卻算出一座半大水庫的水不見了。",
+        "visual": "印度地圖上三邦亮起；一個水庫輪廓被抽乾兩次；旁邊是雙星在上空飛過的示意。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "S55-002",
+      "question": "重力衛星只量到總水量，研究者怎麼一項項排除冰川、水庫和稻田，剩下地下水？",
+      "domain": "地球觀測",
+      "mechanism_key": "gravimetry.grace.component_elimination_nw_india",
+      "answer_target": "同一研究逐項排查：喜馬拉雅冰川就算把整條山脈的融冰都放在最近的 150 公里內，最多也只能解釋趨勢的 15%；七座大水庫在研究期間反而每年多了 0.5 立方公里；稻田是不到一公尺的淺水、每年會乾；土壤水用五組模型模擬，趨勢只有每年 0.4 公分。剩下的長期下降才歸給地下水。地下水的季節振幅只有 5.9 公分，小於土壤水的 10.3 與總水量的 13.8，而且季節高峰比土壤水晚約 40 天。",
+      "scope": "一個區域的處理例；數字依原文；模型組合不再展開。",
+      "source_ids": [
+        "S55-S001"
+      ],
+      "source_locator": "S001 p.1000 冰川、水庫、稻田、土壤水段；p.1001 季節振幅段",
+      "premise_status": "screened",
+      "notes": "G34『總水量不是地下水明細』章（O3063）的具體做法；O3063 只有原則，這裡算 2 條數字事實。原角色 chapter_core。 原提案 F5-011。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照原稿收；照錄。G34 最終版刪季節振幅句，算 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "地下水不是被『看到』的，是把其他嫌疑犯一個個排除後剩下的。",
+        "visual": "總水量長條被依次切掉：冰川（最多 15%）、水庫（反而 +0.5）、稻田（歸零）、土壤水（0.4），剩下深藍一段標『地下水』。",
+        "seconds": [
+          60,
+          75
+        ]
+      }
+    },
+    {
+      "id": "S55-003",
+      "question": "衛星算出來的地下水，和政府帳本、井裡的水位對得起來嗎？",
+      "domain": "地球觀測",
+      "mechanism_key": "gravimetry.grace.compare_official_budget_and_water_table",
+      "answer_target": "Rodell 的結果是每年 17.7 立方公里，比印度政府估計的年赤字 13.2 立方公里還大，作者說這表示回滲的灌溉水比政府估得少、或抽得比估的多。用比出水量 0.12 換算，區域平均水位每年約降 0.33 公尺；報紙報導的都市局部降幅可到每年 10 公尺，各地差異很大。GRACE 的空間解析度不比約 16 萬平方公里好，它給的是大區域平均，不是哪一口井。",
+      "scope": "10 m/yr 為作者引用的報紙報導；只能說『報導中』。",
+      "source_ids": [
+        "S55-S001"
+      ],
+      "source_locator": "S001 p.999 GRACE 解析度段；p.1001 0.33 m 段與政府估計段",
+      "premise_status": "screened",
+      "notes": "G34『總水量不是地下水明細』章的對照與限制；原角色 turn（衛星比官方帳本更悲觀）。 原提案 F5-012。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照覆核意見改字後收；拆掉原文沒有的因果連接。G34 最終版只算 1 條（官方帳對照＋解析度）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "衛星數字和地面帳本不同，差別本身就是資訊。",
+        "visual": "兩根柱子 13.2 vs 17.7；平均 0.33 m 的淺淺水位線旁邊插一口降 10 m 的深井。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "S55-004",
+      "question": "同一筆重力資料，為什麼季節變化乘 1、長期下降卻要乘 3.2？",
+      "domain": "地球觀測",
+      "mechanism_key": "gravimetry.grace.gain_factor_seasonal_vs_trend",
+      "answer_target": "GRACE 資料要先濾波去雜訊，濾波會把訊號抹淡，所以要乘一個『增益係數』補回。Landerer 與 Swenson 用 Rodell 的印度西北為例：季節變化範圍很大，幾乎沒被抹淡，係數是 1；只發生在含水層內的長期下降被抹得很淡，要乘 3.2；如果只用一個平均係數 1.7，季節會被高估、趨勢會被低估。Rodell 原文自己用的係數是 1.95，總誤差每年 1.0 公分由量測、土壤水、縮放、洩漏四項合成。這些係數來自模型，作者明說補出的細部並不是 GRACE 真正量到的。",
+      "scope": "2012 年方法與資料版本；不可套用到現行 mascon 產品；兩個係數（1.95 與 3.2）出自不同處理，不可說成同一件事的矛盾。",
+      "source_ids": [
+        "S55-S002",
+        "S55-S001"
+      ],
+      "source_locator": "S002 [26]–[29]、[31]–[32]；S001 Methods 段",
+      "premise_status": "screened",
+      "notes": "G34『流域邊界不是訊號的牆』章（O3081）的轉折，取代審查建議但已 404 的 JPL 頁 O3082；原角色 turn。 原提案 F5-013。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照原稿收；照錄。片中可省掉 1.95 與誤差預算那句，避免觀眾以為 1.95 和 3.2 打架。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把模糊照片放大要靠假設；假設錯了，長期趨勢會被說小。",
+        "visual": "兩條曲線（季節、長期）各自被濾鏡壓扁，一條只需 ×1，一條要 ×3.2；單一 ×1.7 的版本季節太高、趨勢太低。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "S55-005",
+      "question": "量重力的雙星之一，加速度計發射一個月就壞了，資料怎麼還能用？",
+      "domain": "地球觀測",
+      "mechanism_key": "gravimetry.grace_fo.accelerometer_transplant",
+      "answer_target": "GRACE-FO 在 2018 年 5 月 22 日發射，接續 2002 到 2017 年的 GRACE。兩顆衛星都靠加速度計記下大氣阻力、太陽輻射壓等非重力推力，才能把它們從軌道變化裡扣掉。其中 GRACE-D 的加速度計在軌約一個月後雜訊升高、資料劣化，此後改用另一顆 GRACE-C 的量測，加上時間與姿態修正和推進器模型，合成『移植』資料代替；這個做法源自 GRACE 在 2002 到 2003 年曾有幾週只有一顆加速度計可用。",
+      "scope": "不可說至今完全不可用（2026 通訊稱兩顆皆以正常模式運作，但仍以 GF1 產生移植產品）；只讀到論文摘要與引言。",
+      "source_ids": [
+        "S55-S003",
+        "S55-S004"
+      ],
+      "source_locator": "S003 摘要、§1；S004 p.4 Mission Events",
+      "premise_status": "screened",
+      "notes": "G34『太陽推一下也會改軌道』章（O3062）的轉折：分離非重力的儀器本身也會出問題；原角色 turn。 原提案 F5-014。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照原稿收；照錄。注意：這裡的 GRACE-C 是 GRACE-FO 的其中一顆（GF1），和 S55-006 的後繼任務 GRACE-C（GRACE-Continuity）同名，片中要改稱『另一顆衛星』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一顆的感測器失靈，就借另一顆的數據補，代表每一筆重力都帶著修補的假設。",
+        "visual": "兩顆衛星，一顆的加速度計圖示變紅；箭頭把另一顆的讀數複製過去，加上一個時間差。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "S55-006",
+      "question": "這對衛星現在還在天上嗎？資料更新到哪裡？",
+      "domain": "地球觀測",
+      "mechanism_key": "gravimetry.grace_fo.mission_status_2026",
+      "answer_target": "JPL 與 GFZ 2026 年的任務通訊：2026 年 5 月 7 日兩顆 GRACE-FO 平均高度 448.8 公里、相距 215 公里，高度每天降約 24 公尺；過去一年太陽活動減弱，軌道衰減與非重力推力都變小。月資料已出到 2026 年 3 月；NASA 在 2026 年 4 月審議延長到 2029 年 9 月，結果待公布；後繼的 GRACE-C 已進入總裝測試，預定 2028 年 12 月發射，與 GRACE-FO 重疊。",
+      "scope": "撰稿當期必須重查最新一期通訊與 NASA 審議結果；數字為 2026-05 快照。",
+      "source_ids": [
+        "S55-S004"
+      ],
+      "source_locator": "S004 p.1 News；p.2 Data Updates；p.3–4 軌道表",
+      "premise_status": "screened",
+      "notes": "G34 現況（審查要求『GRACE-FO 現況撰稿當期重查』）；可併入收尾章。原角色 limit。 原提案 F5-015。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照原稿收；內容正確，但今天已過『仲夏』，審議結果很可能已公布；G34 最終版不用，若撰稿時要放進收尾必須先查新一期通訊。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "這本水帳還在記，而且已經排好下一任記帳員。",
+        "visual": "軌道高度計緩慢下降、兩星間距標 215 km；時間軸 2002–2017 GRACE、2018– GRACE-FO、2028 GRACE-C。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "S55-007",
+      "question": "重力衛星解析度只有幾百公里，為什麼新聞裡能看到很細的地下水地圖？",
+      "domain": "地球觀測",
+      "mechanism_key": "gravimetry.grace.ai_downscaled_groundwater_maps_brazil",
+      "answer_target": "NASA 2026 年 6 月報導一項巴西研究：用人工智慧把 GRACE 與 GRACE-FO 的資料，和井水位、地質、用水紀錄結合，做出巴西 2002 到 2023 年、約 850 萬平方公里的高解析地下水地圖；含水層供應巴西 55% 的用水，中部與東部數個含水層持續下降，有些地區出現幾乎沒有補注的年份。細圖是多種資料融合的估計，不是衛星本身就能看得那麼細。",
+      "scope": "新聞稿層級，原論文未讀；只能說『研究估計』；與 S55-004 的『細尺度不是真正量到』一致。",
+      "source_ids": [
+        "S55-S005"
+      ],
+      "source_locator": "S005 第2–6段",
+      "premise_status": "screened",
+      "notes": "G34 收尾或『新的月份為何能改舊估值』章後的延伸；原角色 limit。可刪。 原提案 F5-016。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照覆核意見改字後收；修正『多年』的語意加重。G34 最終版不用（篇幅，原論文也未讀）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "地圖越細，越要問：哪一部分是量的，哪一部分是算的。",
+        "visual": "粗格子的衛星圖逐漸疊上井點與地質圖層，最後變成細緻地圖，角落標『融合估計』。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "S55-008",
+      "question": "加州聖華金谷底下是什麼地層，抽了多少水，水位掉了多少？",
+      "domain": "地下水",
+      "mechanism_key": "groundwater.sjv.corcoran_clay_pumping_drawdown",
+      "answer_target": "聖華金谷是一個沉積槽，陸相沉積有一半以上是容易壓密的細粒黏土和粉砂；一層湖相的 Corcoran 黏土厚可到約 160 英尺，把淺層與深層受壓含水層隔開，下陷主要對應深層的抽水。1955 年全美灌溉用的地下水約四分之一、將近 800 萬英畝呎在這裡抽出；深層水位在西側部分地區降了 400 英尺以上，1960 年時每年還在降約 10 英尺。",
+      "scope": "1999 年 USGS 回顧，單位英制，寫稿時換算；只講這個場址。",
+      "source_ids": [
+        "S55-S006"
+      ],
+      "source_locator": "S006 p.25–26 地層段；p.28–29 1955 抽水量與水位段",
+      "premise_status": "screened",
+      "notes": "G03 監測個案（審查要求同一場址的地層、水位、抽水量）；原角色 hook 或 chapter_core。 原提案 F5-023。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照原稿收；照錄。www.usgs.gov 對研究者回 403，但這份 Circular 在 pubs.usgs.gov，今天一般請求也是 200，不是繞過。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "先把舞台搭起來：一層黏土蓋子、一個抽水量全美第一的谷地。",
+        "visual": "谷地剖面：上層淺含水層、中間 Corcoran 黏土、下層深含水層；抽水井伸到深層，水位線一路往下。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "S55-009",
+      "question": "聖華金谷的地面到底沉了多少？",
+      "domain": "地下水",
+      "mechanism_key": "groundwater.sjv.subsidence_magnitude",
+      "answer_target": "到 1970 年，下陷超過 1 英尺的面積逾 5,200 平方英里，約半個谷地；Mendota 附近最大超過 28 英尺，那裡一根電線桿上掛著 1925、1955、1977 年的地面高度牌。1950 到 60 年代的加速抽水，造成了總下陷體積的約 75%。",
+      "scope": "1970 年統計，非現況。",
+      "source_ids": [
+        "S55-S006"
+      ],
+      "source_locator": "S006 p.24 首段與照片說明；p.29–30『75 percent』段",
+      "premise_status": "screened",
+      "notes": "G03『水抽走，地面也可能降』章（N086）的數字；原角色 hook（電線桿上的三塊牌子）。 原提案 F5-024。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照原稿收；照錄；當開場。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "地面不是降幾公分，是降到一層樓以上。",
+        "visual": "電線桿上三塊高度牌，最上面一塊高過人頭許多；地圖上下陷超過 1 英尺的範圍塗滿半個谷地。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "S55-010",
+      "question": "水位回升了 200 英尺，為什麼地面還在往下沉？",
+      "domain": "地下水",
+      "mechanism_key": "groundwater.sjv.delayed_aquitard_compaction_cantua_creek",
+      "answer_target": "引進渠道與水道的地表水後，深層水位在 1967 到 1974 年回升達 200 英尺，下陷變慢；但 Cantua Creek 附近一口觀測井在 1968 到 1974 年水位回升超過 200 英尺，同一期間地面又沉了 2 英尺。原因是黏土層裡的孔隙水壓要很久才跟上含水層的變化，時間取決於黏土層的厚度與透水性，在聖華金谷通常要幾百年才大致平衡。",
+      "scope": "單一觀測井例；『數百年』為 USGS 的一般性敘述。",
+      "source_ids": [
+        "S55-S006"
+      ],
+      "source_locator": "S006 p.29–30 回升段與 Cantua Creek 段",
+      "premise_status": "screened",
+      "notes": "G03 最關鍵的轉折『水位回來、地面回不去』前半（審查說此轉折缺來源字句）；原角色 turn。 原提案 F5-025。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照原稿收；照錄。補上第一輪點名缺的『水位回來、地面回不去』字句。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "井裡的水回來了，腳下的地還在付上一輪的帳。",
+        "visual": "雙軸圖：水位線大幅回升，下陷線仍緩緩下滑；黏土層剖面裡的水壓慢慢傳遞。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "S55-011",
+      "question": "地面沉下去還會彈回來嗎？為什麼乾旱時少少抽一點，水位就暴跌？",
+      "domain": "地下水",
+      "mechanism_key": "groundwater.sjv.irreversible_compaction_lost_storage",
+      "answer_target": "USGS 寫得很直接：含水層有些彈性回彈，但壓密的材料永遠回不到壓密前的厚度，這種下陷是永久的。1976 到 77 年乾旱時輸水減少，農民重新抽水，只抽了 1960 年代高峰年量的三分之一，水位就在大範圍急降超過 150 英尺，下陷又開始，Cantua Creek 一年沉了將近半英尺；因為壓密吃掉了儲水的孔隙，那些『壓密時擠出來的水』只在第一次大洩降時拿得到，用了就沒了。",
+      "scope": "1970–90 年代資料；不可把『永久』說成所有地層都一樣，限含厚黏土的沖積含水層。",
+      "source_ids": [
+        "S55-S006",
+        "S55-S007"
+      ],
+      "source_locator": "S006 p.30 壓密圖註；p.31 1976–77 乾旱段；S007 Mining ground water 段",
+      "premise_status": "screened",
+      "notes": "G03 轉折後半，補上審查要求逐句寫進的『壓密不可逆』原文；原角色 turn。 原提案 F5-026。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照原稿收；照錄。G03 最強的轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "抽地下水有一部分像挖礦：挖出來的空間不會再長回來。",
+        "visual": "海綿被壓扁後只回彈一點點；第二次乾旱時，同樣抽三分之一的水，水位線跌得更深。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "S55-012",
+      "question": "美國的地層下陷，有多少是抽地下水造成的？",
+      "domain": "地下水",
+      "mechanism_key": "groundwater.us_subsidence_share_groundwater",
+      "answer_target": "USGS 1999 年的整理（面積數字引自美國國家研究委員會 1991 年）：美國 45 個州、超過 1.7 萬平方英里直接受地層下陷影響，已辨識的下陷八成以上來自開採地下水；含厚黏土的沖積含水層長期水位下降，會一次性擠出壓密水，造成區域性、永久性的下陷。",
+      "scope": "1999 年統計。",
+      "source_ids": [
+        "S55-S007"
+      ],
+      "source_locator": "S007 第1–2頁首段；Mining ground water 段",
+      "premise_status": "screened",
+      "notes": "G03 把個案放回全國尺度；原角色 segment（可併入下陷章開頭）。 原提案 F5-027。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照覆核意見改字後收；補上數字的原始出處。G03 最終版不用（為壓到 13 分以內，全國統計是清單、沒有轉折）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "聖華金谷不是特例，而是最大的那一個。",
+        "visual": "美國地圖上 45 州的下陷點；圓餅圖 80% 標地下水。",
+        "seconds": [
+          25,
+          35
+        ]
+      }
+    },
+    {
+      "id": "S55-013",
+      "question": "井裡抽出來的水，一開始和後來分別是從哪裡來的？",
+      "domain": "地下水",
+      "mechanism_key": "groundwater.theis_storage_then_capture",
+      "answer_target": "USGS 引 Theis 1940 年的觀點：井抽出的水起初來自含水層儲量減少；繼續抽，影響會擴散到遠處相連的河、湖、濕地，讓地下水少流出去、或把河水引進來，這叫河川耗減或『截取』。在美國有些地方，地下水占河川年流量多達九成。",
+      "scope": "通論；與 N087 機制部分重疊，只計 0.5。",
+      "source_ids": [
+        "S55-S008"
+      ],
+      "source_locator": "S008 Foreword 第2段",
+      "premise_status": "screened",
+      "notes": "G03『沒抽河水，河水卻減少』章（N087）的時間順序；原角色 chapter_core。 原提案 F5-028。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照原稿收；照錄。與 N087 機制重疊，只算 0.5 條（時間順序＋90%）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "井先吃存款，再吃河流的收入。",
+        "visual": "水桶示意：先從桶底舀，接著桶外連著的小河水位下降。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "S55-014",
+      "question": "抽的水不超過每年補進來的量，為什麼還是不保證安全？",
+      "domain": "地下水",
+      "mechanism_key": "groundwater.water_budget_myth_capture",
+      "answer_target": "美國常把『抽水不超過長期平均補注』當成永續，但 USGS 引 Bredehoeft 等 1982 年的『水收支迷思』指出：沒開發的含水層裡，天然補注本來就和天然排出平衡，排出就是河川基流、泉水和植物蒸散；大多數補注不會因為抽水而增加，所以抽出的水最後主要靠減少這些排出來平衡。能持續抽多少，取決於能截走多少天然排出，而河流、濕地需要的水量可能讓這個上限更低。",
+      "scope": "概念論述；不給任何地區的『安全抽水量』數字。",
+      "source_ids": [
+        "S55-S008"
+      ],
+      "source_locator": "S008 p.39–40『Aquifer Recharge and Development of Water Resources』",
+      "premise_status": "screened",
+      "notes": "G03 核心轉折：直接回答片名『為什麼不能一直抽』；原角色 turn。 原提案 F5-029。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照原稿收；照錄。直接回答片名的轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "補多少不是答案，河流讓出多少才是。",
+        "visual": "天平左邊『補注』右邊『排出』原本平衡；加一口井後，補注不變，右邊的河流與樹被拿走一塊。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "S55-015",
+      "question": "有沒有真實的河，因為附近的井而在夏天變乾？",
+      "domain": "地下水",
+      "mechanism_key": "groundwater.ipswich_streamflow_depletion_case",
+      "answer_target": "麻州 Ipswich 河流域以生活與商業用水為主的抽水，造成夏季低流量時明顯的河川耗減，過去乾旱年曾導致魚和貝類死亡。USGS 用一口離河約 500 英尺的供水井示範：春夏抽得多、秋冬抽得少，但經過含水層緩衝，河川耗減的起伏比抽水量小。",
+      "scope": "魚貝死亡轉引 Armstrong 等（2001）；耗減曲線是解析模型計算，不是直接量測。",
+      "source_ids": [
+        "S55-S008"
+      ],
+      "source_locator": "S008 p.26–27 Ipswich 段與 Fig.20",
+      "premise_status": "screened",
+      "notes": "G03 N087 章的實例（審查缺河川截流實測案例；本例的生態後果有文獻，耗減數值為模型）；原角色 segment。 原提案 F5-030。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照原稿收；照錄；耗減曲線是模型，魚貝死亡是轉引文獻，答案與範圍都已寫明。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "被抽乾的不只是地下，還有夏天的河。",
+        "visual": "2005 年乾河床照片的示意重繪；井與河相距 500 英尺的平面圖，抽水曲線上下大波動、河川耗減曲線平緩。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "S55-016",
+      "question": "井已經停了，河流為什麼還會越來越少，甚至停抽幾十年後才最少？",
+      "domain": "地下水",
+      "mechanism_key": "groundwater.depletion_after_pumping_stops",
+      "answer_target": "USGS 整理：停抽後地下水要回頭把洩降漏斗填滿，所以最大的河川耗減可能出現在停抽之後，含水層擴散慢或井離河遠時特別明顯；從開始抽到水位完全回復，河流被耗減的總量等於抽出的總量；在許多情況下，回復所需時間可能比抽水的時間還長。在亞利桑那 C 含水層的模擬中，整體最大耗減出現在停抽約 44 年後。",
+      "scope": "44 年為模擬結果；不可當觀測。",
+      "source_ids": [
+        "S55-S008"
+      ],
+      "source_locator": "S008 p.42–43 要點 1–6；p.24–25 C aquifer 段",
+      "premise_status": "screened",
+      "notes": "G03 時間尺度的轉折，可與 N095（補注延遲）合章；原角色 turn。 原提案 F5-031。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照覆核意見改字後收；只把『常比』改回原文的『許多情況下可能』。44 年是模擬。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "關掉井不是結帳，是開始分期還款。",
+        "visual": "時間軸：抽水 50 年的方塊結束後，河川耗減曲線繼續上升，在第 95 年才到頂。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "S55-017",
+      "question": "同一條冰河兩百年退了多遠，是怎麼量出來的？",
+      "domain": "冰河",
+      "mechanism_key": "glacier.exit_glacier.terminus_record_methods",
+      "answer_target": "美國國家公園管理局整理 Alaska 的 Exit Glacier：從 1815 年小冰期最大範圍到 2015 年 9 月，末端退了 2.5 公里；1889 年前幾乎不動，1889 到 2015 年平均每年退 19.7 公尺，2011 到 2015 年每年 44.5 公尺；1950 年以來退了 1 公里。1950 年前的位置靠樹輪定年的冰磧，之後用航照，2008 年起每年由人員拿 GPS 沿冰緣走一圈。",
+      "scope": "NPS NRR 2016/1341（第三方保存 PDF）；同一冰河的時序紀錄，回應企劃自列缺口。",
+      "source_ids": [
+        "S55-S009"
+      ],
+      "source_locator": "S009 摘要；p.7–8；p.17",
+      "premise_status": "screened",
+      "notes": "G10 開場用的同一冰河紀錄（企劃 evidence_gaps）。 原提案 F6-028。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；同一冰河的時序紀錄，正是企劃 evidence_gaps 要的。來源 URL 應改記 IRMA 官方檔。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一條冰河，兩百年的位置都有人記著。",
+        "visual": "Exit Glacier 地圖上從 1815 到 2015 的末端線一條條往上游收。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "S55-018",
+      "question": "冰河末端一直在退，冰本身是不是也往山上跑？",
+      "domain": "冰河",
+      "mechanism_key": "glacier.exit_glacier.flow_while_retreating",
+      "answer_target": "不是。2014 年園方在末端和上游約 1 公里處各架一台縮時相機，一天拍一張；同一地點 2010 年的影片裡，冰河在變薄、兩側內縮，同時也看得到冰在往下流——Exit Glacier 平均每天向谷下移動約 30 公分，慢到整天盯著也看不出來。同一篇文章說，末端在那之前 10 年內退了 270 公尺，『冰河邊緣』步道已離縮小的末端將近 40 公尺。",
+      "scope": "NPS 2014 部落格；30 公分/日為平均約略值，未說量測點，不與末端速率相減。",
+      "source_ids": [
+        "S55-S011",
+        "S55-S010"
+      ],
+      "source_locator": "S011 第2–6段；S010 Time-Lapse",
+      "premise_status": "screened",
+      "notes": "G10 主矛盾的同一冰河實證（開場『兩個相反方向』）。 原提案 F6-029。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照覆核意見改字後收；主矛盾的同一冰河實證成立；只補年份。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冰每天往下走，末端卻每年往上退。",
+        "visual": "縮時畫面：冰面上的石塊一格格往下移，末端紅線一格格往上縮。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "S55-019",
+      "question": "冰河在冬天反而會往前長，是什麼決定的？",
+      "domain": "冰河",
+      "mechanism_key": "glacier.exit_glacier.seasonal_melt_flow_balance",
+      "answer_target": "Exit Glacier 以前在冬天真的會往前。園方 1987 年起用捲尺量末端，記下冬季小幅前進在這條冰河很常見；1987–88 年冬天它一口氣前進 15–18 公尺，壓過園方剛建好的步道和告示牌。園方人員也回憶，2006 年前有些冷冬，冰往前流的量大於冬季融掉的量，末端就前進。如今冬天也在退：2010 到 2015 年，冬季中位只退 9.1 公尺、夏季退 33.3 公尺，換算每天 3.9 公分對 25.6 公分，夏季約快 6.6 到 6.7 倍；2011 到 2016 年，10 月到 5 月有 51% 的日子均溫高於 0°C。報告的結論是：末端前進或後退，取決於融化與流動之間的平衡。",
+      "scope": "NPS NRR 2016/1341；『2006 年前冷冬前進』是園方人員回憶，1987–88 年前進是實測，旁白分開說；報告不推論氣候原因；季節速率不得與 S55-018 的 30 公分/日相減。",
+      "source_ids": [
+        "S55-S009"
+      ],
+      "source_locator": "S009 p.5 Previous Exit Glacier Terminus Measurements；p.19–20 Seasonality of Retreat",
+      "premise_status": "screened",
+      "notes": "turn：同一條冰河曾在冬天前進，證明『流動』一直在，只是被融化蓋過。 原提案 F6-030。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照覆核意見改字後收；核心轉折；併入 S55-NA006 的 1987–88 實測，回憶與紀錄分開說。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冰河前進還是後退，是兩股力量的拔河。",
+        "visual": "天平一端是『往前流』、一端是『融掉』，冬天偏流動、夏天偏融化，到後來冬天也偏融化。",
+        "seconds": [
+          50,
+          65
+        ]
+      }
+    },
+    {
+      "id": "S55-020",
+      "question": "冰河剛好一年『前進 6 公尺』又『後退 4 公尺』，哪個才對？",
+      "domain": "冰河",
+      "mechanism_key": "glacier.exit_glacier.centerline_vs_box",
+      "answer_target": "都對，看你怎麼量。NPS 比較兩種方法：中線法沿主流向量末端最遠的一點，框法算整個冰舌前緣的平均位置。2005 到 2006 年，冰河兩側內縮，中間卻有一塊 4 公尺寬的冰往前凸出 6 公尺；中線法因此算出前進 6 公尺，框法算出後退 4 公尺。報告說兩種都算準確，只是量的東西不同：一個量冰伸得最遠的地方，一個量整條前緣的整體表現。這是 Exit Glacier 唯一一次兩法方向相反，其他年份只差在距離，長期總退縮兩法也沒有顯著差別。報告也提醒，末端只是冰河的一小部分：整條冰河長 9.97 公里、面積 37.8 平方公里。",
+      "scope": "NPS NRR 2016/1341 p.3–4、16–17。",
+      "source_ids": [
+        "S55-S009"
+      ],
+      "source_locator": "S009 p.3–4；p.16–17 方法比較段",
+      "premise_status": "screened",
+      "notes": "turn：『後退』本身是量法定義出來的，改變觀眾對『後退』的直覺。 原提案 F6-031。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照覆核意見改字後收；補『唯一一次』，刪掉與 S55-024 重複的句子。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一張照片，換一把尺就從前進變後退。",
+        "visual": "同一個冰舌輪廓，先畫一條中線量出 +6，再框一個方框量出 −4。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "S55-021",
+      "question": "堅硬的冰河是靠什麼往下移動的？",
+      "domain": "冰河",
+      "mechanism_key": "glacier.flow.creep_and_basal_sliding_fraction",
+      "answer_target": "NSIDC 說冰在自身重量下以兩種方式移動：冰內部變形（潛移）和在底部岩石或沉積物上滑動。底部滑動可占薄而冷、陡坡冰河的大部分運動，但溫暖、厚、緩坡冰河只占 10–20%；Alaska 的 Columbia Glacier 雖大而溫暖、坡度低，卻主要靠滑動。底部因摩擦比表面慢，底部很冷時，底部速度只有表面的一小部分。",
+      "scope": "NSIDC Science of Glaciers 全文重讀；N214 機制只算增量。",
+      "source_ids": [
+        "S55-S012"
+      ],
+      "source_locator": "S012 Moving forward 第1–3段；How glaciers move 第2–3段",
+      "premise_status": "screened",
+      "notes": "chapter_core（N214 給數字與例外）。 原提案 F6-033。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；N214 給數字與例外；只算增量。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冰不是整塊滑下去，是邊變形邊滑。",
+        "visual": "冰河剖面：表面箭頭長、底部箭頭短；另一條冰河底部有水層，箭頭全都一樣長。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "S55-022",
+      "question": "冰河後退時，是整條冰往回縮嗎？",
+      "domain": "冰河",
+      "mechanism_key": "glacier.retreat.terminus_only_conveyor",
+      "answer_target": "NSIDC 說明：冰河的前進和後退只指末端位置；後退時冰仍像輸送帶一樣往下坡移動，冰河沒有往上流，只是融得比流得快。高處的累積區雪多於融，低處的消融區融多於積，兩者打平時冰河平衡；一旦打破，就加速前進或後退。",
+      "scope": "NSIDC 全文重讀；N215 已有同一句，只算增量（累積區／消融區）。",
+      "source_ids": [
+        "S55-S012"
+      ],
+      "source_locator": "S012 How glaciers move 第4段；Components of a glacier",
+      "premise_status": "screened",
+      "notes": "segment；N215 保留為同章舊核心。 原提案 F6-034。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；N215 同一句只算累積區／消融區的增量。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "後退不是倒車，是輸送帶末端的融化跟不上。",
+        "visual": "輸送帶動畫：上方不斷加雪方塊，下方末端方塊融掉的速度比輸送帶快。",
+        "seconds": [
+          30,
+          45
+        ]
+      }
+    },
+    {
+      "id": "S55-023",
+      "question": "冰河表面的弧形條紋，怎麼透露冰中間流得比較快？",
+      "domain": "冰河",
+      "mechanism_key": "glacier.flow.ogives_center_faster",
+      "answer_target": "有些冰河在冰瀑下方會出現深淺交替的弧帶（ogive）：夏天融化再結凍、沉積物聚在表面形成深色帶，冬天積雪困住小氣泡形成淺色帶。因為冰河中央與岩壁的摩擦少、流得比兩側快，這些帶被拉成指向下游的弧形。冰流過障礙或邊緣摩擦造成的應力超過冰的強度時，就裂出冰隙。",
+      "scope": "NSIDC 全文重讀；冰隙部分 N216 已有，只算增量。",
+      "source_ids": [
+        "S55-S012"
+      ],
+      "source_locator": "S012 Ogives；Moving forward 第4段",
+      "premise_status": "screened",
+      "notes": "segment；『冰在流』的肉眼證據。 原提案 F6-036。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；答案正確，留在池中；G10 為守企劃 8–9 分鐘上限連同 N216 冰隙章一起不收（裂縫回答的是另一題）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冰河自己把流速差畫在表面上。",
+        "visual": "空拍冰河表面一條條弧帶，箭頭在中央最長、兩邊最短。",
+        "seconds": [
+          30,
+          45
+        ]
+      }
+    },
+    {
+      "id": "S55-024",
+      "question": "只看末端位置，夠不夠判斷一條冰河在變小？",
+      "domain": "冰河",
+      "mechanism_key": "glacier.mass_balance.wgms_vs_terminus",
+      "answer_target": "不夠。世界冰河監測服務（WGMS）追蹤的是質量平衡——一年下來冰河得到還是失去質量：140 條高山冰河，其中 37 條有超過 30 年紀錄的參考冰河。據 NSIDC 轉述，2021 年全球高山冰河連續第 34 年失去質量；每十年平均損失從 1980 年代 214 毫米水當量增加到 2010 年代 896 毫米；1980 到 2018 年累計 21.7 公尺，像從平均冰河頂上削掉 24 公尺厚。NPS 的 Exit Glacier 報告也說，末端後退是一般人最容易看到的冰量變化，卻只是其中一種量法；冰河是立體的，四周都在融，還要量面積、表面高度和冰厚，才算得出總冰量。",
+      "scope": "NSIDC 轉引 WGMS／AMS（原報告未讀）；NPS 報告 p.3。",
+      "source_ids": [
+        "S55-S012",
+        "S55-S009"
+      ],
+      "source_locator": "S012 In retreat 第4段；S009 p.3 Measuring Glacial Melt",
+      "premise_status": "screened",
+      "notes": "收尾：第三把尺（質量），把『兩把尺』推到『冰河健康要看整本帳』。 原提案 F6-037。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照覆核意見改字後收；收尾的第三把尺；接收 S55-020 移過來的句子。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "末端是門面，質量才是存款。",
+        "visual": "冰河剖面像被一刀一刀削薄，旁邊 24 公尺刻度。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "S55-NA001",
+      "question": "增益係數能不能拿來放大長期趨勢？（O3082 原 JPL 頁）",
+      "existing_ids": [
+        "O3082"
+      ],
+      "source_ids": [
+        "S55-S002"
+      ],
+      "reason": "原 JPL Tellus 陸地網格頁 404；同一論點改由 Landerer & Swenson 2012 原論文支持，已寫成新核心，不再沿用 O3082 的 JPL 頁。 原提案 F5-NA002。",
+      "reentry_condition": "不需要；若 JPL 新網址恢復說明頁，可作第二來源。",
+      "reading_status": "原頁 404；替代原論文已讀"
+    },
+    {
+      "id": "S55-NA002",
+      "question": "聖華金谷地層下陷每年造成多少損失？下陷量與抽水量為什麼是 1 比 3？",
+      "existing_ids": [],
+      "source_ids": [
+        "S55-S006"
+      ],
+      "reason": "來源已讀（每年 1.8 億美元、1993 年幣值；A 區下陷體積與累積抽水約 1:3），但成本不回答核心問題，1:3 比例需讀圖才能講清楚；為免離題與片長膨脹不另立核心。 原提案 F5-NA004。",
+      "reentry_condition": "若 G03 片長不足再考慮併入 S55-011。",
+      "reading_status": "已讀，未採"
+    },
+    {
+      "id": "S55-NA003",
+      "question": "GRACE-FO 的 GRACE-D 加速度計問題如何影響 C20、C30 係數？",
+      "existing_ids": [],
+      "source_ids": [
+        "S55-S003"
+      ],
+      "reason": "論文只讀摘要與引言；C20/C30 屬專業細節，對觀眾沒有新轉折，不另立核心。 原提案 F5-NA005。",
+      "reentry_condition": "無。",
+      "reading_status": "摘要與引言已讀"
+    },
+    {
+      "id": "S55-NA004",
+      "question": "Exit Glacier 之外，USGS 基準冰河同時有流速與末端紀錄嗎？",
+      "existing_ids": [
+        "N214",
+        "N215"
+      ],
+      "source_ids": [],
+      "reason": "usgs.gov Benchmark Glacier Project 頁 curl 403，未讀；G10 改用 NPS Exit Glacier 報告與 NSIDC。 原提案 F6-NA002。",
+      "reentry_condition": "以瀏覽器取得 USGS 頁面或 ScienceBase 資料說明全文。",
+      "reading_status": "未讀（403）"
+    },
+    {
+      "id": "S55-NA005",
+      "question": "E7006（鍋穴）錯掛的冰楔／熱融湖來源該怎麼清？",
+      "existing_ids": [
+        "E7006"
+      ],
+      "source_ids": [],
+      "reason": "G10 material.missing 要求先清錯掛來源。查 pool.json：E7006 的第一筆 source_ref 是 SRC-f2de49ac9ccccc6e（NPS〈Permafrost Landforms as Indicators of Climate Change in Parks Across the Arctic〉，locator『Ice-wedge Polygons第二段』），與埋冰融化成鍋穴無關；第二筆 SRC-2bc7ad5b83b3068d（NPS Potholes Turnout）才支持答案。本代理只能讀不能改 repo，建議整合時從 E7006.source_refs 移除 SRC-f2de49ac9ccccc6e。E7006 屬 G76，不入 G10 新稿。 原提案 F6-NA006。 整合時查過：E7006 的這筆來源不是寫錯在 E7006 的批次裡，而是來自 2026-11-01 編輯合併的變體 E11012（dedup-decisions 把 E11012 併入 E7006，合併後的核心沿用所有成員的來源）；原題紀錄受各快照凍結，本池沒有逐筆移除舊來源指向的機制，所以本輪不改，記為第五輪審視紀錄的未決資料問題。E7006 不在任何可成題長題。",
+      "reentry_condition": "要清除就得改動 E11012→E7006 的編輯合併（或新增一種逐筆排除舊來源指向的機制並宣告在快照變動裡），另案處理；在那之前，E7006 進稿時只引 SRC-2bc7ad5b83b3068d。",
+      "reading_status": "repo 紀錄已核對；未重讀兩個 NPS 頁"
+    },
+    {
+      "id": "S55-NA006",
+      "question": "一路退縮的冰河，也會突然前進嗎？",
+      "existing_ids": [
+        "S55-019"
+      ],
+      "source_ids": [
+        "S55-S009"
+      ],
+      "reason": "非作者覆核 V9（2026-11-11）退回：1987–88 年的實測已併入 S55-019 撐住『冬天前進』的回憶；其餘小前進清單是同一答案的更多例子，不另立核心。近鄰：併入 S55-019。 原提案 F6-032。",
+      "reading_status": "來源已讀（S55-S009 IRMA 原檔 p.5、p.19 Figure 9 說明）；覆核重開結果：150 m、1987–88 冬季 15–18 m、1974／1984／1993／1998／2006 的小前進都在原文。"
+    },
+    {
+      "id": "S55-NA007",
+      "question": "同一個位置拍兩張照片，相隔 60 年能看出冰河怎麼變？",
+      "existing_ids": [
+        "S55-019"
+      ],
+      "source_ids": [
+        "S55-S012",
+        "S55-S010"
+      ],
+      "reason": "非作者覆核 V9（2026-11-11）退回：三條都是別的冰河；企劃 drop_if 明訂末端與冰塊不能用不同冰河混剪，而『流動也能讓冰河前進』已由 Exit Glacier 自己的 1987–88 實測（S55-019）講到。照片版權也未解。淘汰。 原提案 F6-035。",
+      "reading_status": "來源已讀（S55-S012 nsidc.txt Muir 圖說、Hubbard 段、Perito Moreno 圖說；S55-S010）；覆核重開結果：Muir 12 km／800 m、Hubbard 1986 每天 10 m、Perito Moreno 持續推進都在原文。"
+    }
+  ]
+}

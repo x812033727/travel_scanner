@@ -1,0 +1,293 @@
+{
+  "batch_id": "wave120-maps-20261119",
+  "created_on": "2026-11-19",
+  "scope": "六張地圖讀法，從方格、比例變化、潮位零點讀到步行通行權。用圖例與可重查的官方數字區分看起來相似的記號。",
+  "sources": [
+    {
+      "id": "X120M-S01",
+      "url": "https://www.usgs.gov/faqs/how-much-distance-does-a-degree-minute-and-second-cover-your-maps",
+      "canonical_url": "https://www.usgs.gov/faqs/how-much-distance-does-a-degree-minute-and-second-cover-your-maps",
+      "title": "How much distance does a degree, minute, and second cover on your maps?",
+      "publisher": "U.S. Geological Survey",
+      "version": "2026-11-19 查閱之官方資料",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文，逐段核對示意圖解說、數值或資料列。",
+      "reading_scope": "首段經緯差異及 At 38 degrees North latitude 的兩個距離",
+      "locator": "首段經緯差異及 At 38 degrees North latitude 的兩個距離",
+      "summary": "在北緯 38 度，南北一緯度約 69 英里，東西一經度約 54.6 英里。經線越靠近極點越聚攏。",
+      "limitations": "數字為該緯度約數。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X120M-S02",
+      "url": "https://osmaps.com/discover/guides/beginners-guide-to-grid-references/",
+      "canonical_url": "https://osmaps.com/discover/guides/beginners-guide-to-grid-references/",
+      "title": "What are Grid References?",
+      "publisher": "Ordnance Survey / OS Maps",
+      "version": "2026-11-19 查閱之官方資料",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文，逐段核對示意圖解說、數值或資料列。",
+      "reading_scope": "Understanding the National Grid、4-Figure Grid References 圖 D 與 6-figure Grid References 圖 E",
+      "locator": "Understanding the National Grid、4-Figure Grid References 圖 D 與 6-figure Grid References 圖 E",
+      "summary": "TL 選定 100 公里方格；四位數以目標格西南角標示，先東距後北距。六位數將該一公里方格每邊再分十份。",
+      "limitations": "限英國 National Grid。方格大小和定位設備的實測精度是不同的量。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X120M-S03",
+      "url": "https://www.usgs.gov/faqs/do-all-usgs-75-minute-topographic-maps-show-utm-grid",
+      "canonical_url": "https://www.usgs.gov/faqs/do-all-usgs-75-minute-topographic-maps-show-utm-grid",
+      "title": "Do all USGS 7.5 minute topographic maps show the UTM grid?",
+      "publisher": "U.S. Geological Survey",
+      "version": "2026-11-19 查閱之官方資料",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文，逐段核對示意圖解說、數值或資料列。",
+      "reading_scope": "Historical Topographic Map Collection (1884–2006) 與 US Topo maps (2010–present)",
+      "locator": "Historical Topographic Map Collection (1884–2006) 與 US Topo maps (2010–present)",
+      "summary": "舊 1:24,000 圖幅的完整格網與邊緣短刻曾隨製圖政策改變；新 US Topo 的 GeoPDF 圖層可切換。",
+      "limitations": "保留與美國林務署合作出版之歷史圖幅的例外。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X120M-S04",
+      "url": "https://tidesandcurrents.noaa.gov/datum_options.html",
+      "canonical_url": "https://tidesandcurrents.noaa.gov/datum_options.html",
+      "title": "Tidal Datums",
+      "publisher": "NOAA Center for Operational Oceanographic Products and Services",
+      "version": "2026-11-19 查閱之官方資料",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文，逐段核對示意圖解說、數值或資料列。",
+      "reading_scope": "MLLW 定義及 Navigating the Datums Page",
+      "locator": "MLLW 定義及 Navigating the Datums Page",
+      "summary": "MLLW 用基準期間每個潮汐日較低的低潮取平均，NOAA 將它用作潮汐預報與海圖基準。",
+      "limitations": "不同地區或圖面可能採其他基準；先核對當地資料設定。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X120M-S05",
+      "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?product=predictions&application=DataAPI_Interactive&begin_date=20241201&end_date=20241201&datum=MLLW&station=9414290&time_zone=lst_ldt&units=metric&interval=hilo&format=json",
+      "canonical_url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?product=predictions&application=DataAPI_Interactive&begin_date=20241201&end_date=20241201&datum=MLLW&station=9414290&time_zone=lst_ldt&units=metric&interval=hilo&format=json",
+      "title": "Tide Predictions, San Francisco station 9414290, December 1, 2024",
+      "publisher": "NOAA CO-OPS Data API",
+      "version": "2026-11-19 查閱之官方資料",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文，逐段核對示意圖解說、數值或資料列。",
+      "reading_scope": "predictions 陣列的 04:25 和 17:32 兩筆 L，查詢參數 datum=MLLW、units=metric、time_zone=lst_ldt",
+      "locator": "predictions 陣列的 04:25 和 17:32 兩筆 L，查詢參數 datum=MLLW、units=metric、time_zone=lst_ldt",
+      "summary": "12 月 1 日兩個預測低潮中，當地 04:25 為 1.002 公尺，17:32 為 −0.21 公尺。",
+      "limitations": "此為預報，並非測潮站的實測水位或目前狀況。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X120M-S06",
+      "url": "https://nauticalcharts.noaa.gov/learn/nautical-cartography.html",
+      "canonical_url": "https://nauticalcharts.noaa.gov/learn/nautical-cartography.html",
+      "title": "Nautical Cartography",
+      "publisher": "NOAA Office of Coast Survey",
+      "version": "2026-11-19 查閱之官方資料",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文，逐段核對示意圖解說、數值或資料列。",
+      "reading_scope": "Generalization，Offsetting features，以及金門大橋至惡魔島的歷史紙圖序列",
+      "locator": "Generalization，Offsetting features，以及金門大橋至惡魔島的歷史紙圖序列",
+      "summary": "公路與鐵路符號有時為了能分辨而錯位。水中礁石、浮標及航道邊界不能用這種挪移處理，鄰近礁石可合併描繪成礁脊。",
+      "limitations": "頁末不同圖幅是已停刊的紙海圖對照；本卡只解釋該機構陳述的編圖原則。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X120M-S07",
+      "url": "https://osmaps.com/discover/guides/open-access-land-and-right-to-roam/",
+      "canonical_url": "https://osmaps.com/discover/guides/open-access-land-and-right-to-roam/",
+      "title": "Understanding Open Access Land and What the Right to Roam Means",
+      "publisher": "Ordnance Survey / OS Maps",
+      "version": "2026-11-19 查閱之官方資料",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文，逐段核對示意圖解說、數值或資料列。",
+      "reading_scope": "What does open access land look like on an OS map? 及 Are there places within access land where you still can’t go?",
+      "locator": "What does open access land look like on an OS map? 及 Are there places within access land where you still can’t go?",
+      "summary": "面狀的淡黃或淺黃褐色網底標示開放通行地，步道的線則標示可循的特定路線。圖示範圍含法令例外。",
+      "limitations": "此題使用英格蘭的圖例和步行規則。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X120M-S08",
+      "url": "https://www.gov.uk/right-of-way-open-access-land/use-your-right-to-roam",
+      "canonical_url": "https://www.gov.uk/right-of-way-open-access-land/use-your-right-to-roam",
+      "title": "Rights of way and accessing land — Use your right to roam",
+      "publisher": "GOV.UK",
+      "version": "2026-11-19 查閱之官方資料",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文，逐段核對示意圖解說、數值或資料列。",
+      "reading_scope": "Use your right to roam、What you can and cannot do、Excepted land、Find open-access land",
+      "locator": "Use your right to roam、What you can and cannot do、Excepted land、Find open-access land",
+      "summary": "英格蘭指定開放的土地可步行穿越，部分為私有。私人住宅庭園等屬排除範圍；官方另提供查詢臨時關閉的入口。",
+      "limitations": "限步行，其他活動及當日限制另依地點查詢。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "K120-0401",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "從北緯 38 度出發，往北走一個緯度，和沿緯線往東走一個經度，哪一段比較長？",
+      "mechanism_key": "x120.map.degrees_at_38n",
+      "answer_target": "把球面上兩段路都標上一度。在北緯 38 度附近，一緯度約 69 英里；沿該緯線的一經度只有約 54.6 英里。經線在赤道離得較遠，越靠近兩極越聚攏，相同的東西角差在地面就跨得愈短。",
+      "scope": "用美國地質調查局列的北緯 38 度約數；不將該距離套在所有緯度。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一度描述角差；東西那一段的弧長還得看人在哪個緯度。",
+        "visual": "拿兩條紙帶沿球儀向北、向東各跨一格，再把紙帶攤平。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_ids": [
+        "X120M-S01"
+      ],
+      "source_locator": "X120M-S01，At 38 degrees North latitude 下的兩筆約數。",
+      "notes": "自繪地圖局部、圖例或坐標方格。需要真實數字時標示資料機構、地點與單位。"
+    },
+    {
+      "id": "K120-0402",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "英國地圖上的 TL 6233 變成 TL 625 333，多出來的兩個數字怎麼把搜尋範圍縮小？",
+      "mechanism_key": "x120.map.six_digit_grid_square",
+      "answer_target": "先用 TL 選出長寬各 100 公里的大格，62 和 33 找到一個一公里方格的西南角。把這一格每邊再分十份。接在 62 後的 5 指向東距的小格，接在 33 後的 3 指向北距的小格。兩個數字各進一個方向，一公里見方就縮成一百公尺見方。",
+      "scope": "以 Ordnance Survey 圖 D、E 為例。代碼指出方格；不把格內某一棟房子當成已被實際測定的位置。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "多出的兩位一東一北，各把一個方向切成十份。",
+        "visual": "自繪 TL 方格局部，並排拆開的 62、33，再用兩支不同色的筆插入 5 和 3。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_ids": [
+        "X120M-S02"
+      ],
+      "source_locator": "X120M-S02，Understanding the National Grid、圖 D（TL 6233）及圖 E（625 333）。",
+      "notes": "自繪地圖局部、圖例或坐標方格。需要真實數字時標示資料機構、地點與單位。"
+    },
+    {
+      "id": "K120-0403",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "兩版美國地形圖都有一公里格網，為什麼一張橫豎全是黑線，另一張卻只在圖框留藍色短刻？",
+      "mechanism_key": "x120.map.utm_grid_ticks_and_layers",
+      "answer_target": "美國地質調查局的歷史 1:24,000 圖幅，從 1950 年代中期起用間隔一千公尺的藍色邊刻標 UTM 格網。1979 年改畫整張黑色格線，1992 和 1994 年又曾調整政策。同一套座標可以有不同畫法。今天看到的若是新版 US Topo 的分層 GeoPDF，還能單獨把格網圖層關掉。",
+      "scope": "例子限 USGS 的 7.5 分圖幅。歷史上與美國林務署合作出版的國家森林圖不畫完整格網，不能光憑黑線有無斷代。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "讀圖框可以發現格網還在，差別在出版時怎麼印、開檔時顯示哪一層。",
+        "visual": "同一張地形底圖先只在圖緣加短刻，再連成格網；最後示意數位檔的格網顯示開關。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_ids": [
+        "X120M-S03"
+      ],
+      "source_locator": "X120M-S03，Historical Topographic Map Collection 與 US Topo maps 兩段。",
+      "notes": "自繪地圖局部、圖例或坐標方格。需要真實數字時標示資料機構、地點與單位。"
+    },
+    {
+      "id": "K120-0404",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "舊金山同一天的兩次低潮，一次高過零、一回卻是負 0.21 公尺。海水怎麼會低過海圖的零？",
+      "mechanism_key": "x120.map.negative_tide_prediction",
+      "answer_target": "查 NOAA 舊金山站 2024 年 12 月 1 日的預報，以平均較低低潮（MLLW）為零，當地 04:25 的低潮為 1.002 公尺，17:32 那次為負 0.21 公尺。這個基準把一段時期裡每個潮汐日較低的那次低潮取平均，當中的個別低潮可以落在平均之下。負號表示低於所選基準。",
+      "scope": "這兩筆為同日同站的預報，單位公尺。潮位相對基準；沒有把它當作現場水深。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "潮位的零點來自長期平均，傍晚的預報可以落到線下。",
+        "visual": "在一把標示 MLLW 的尺上點出兩筆預報，畫一條水平零線，再將傍晚那個點放低 21 公分。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_ids": [
+        "X120M-S04",
+        "X120M-S05"
+      ],
+      "source_locator": "X120M-S04，MLLW；X120M-S05，predictions 中 type=L 的兩筆。",
+      "notes": "自繪地圖局部、圖例或坐標方格。需要真實數字時標示資料機構、地點與單位。"
+    },
+    {
+      "id": "K120-0405",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "畫海圖時，鐵路和公路太擠可以稍微挪開；礁石和浮標擠在一起時，製圖員也能把它們挪開嗎？",
+      "mechanism_key": "x120.map.offset_on_land_not_water",
+      "answer_target": "NOAA 說明小比例尺海圖的編法時，舉了緊貼的道路與鐵路：陸上符號可以錯開，才能各自讀清楚。水中的礁石、浮標、航道界線則保留位置。到了實在畫不下的尺度，相鄰的幾塊礁石可合併描成一條礁脊，換一種符號交代那裡有礁。",
+      "scope": "採 NOAA 的製圖原則，礁脊示意合併的是相鄰礁石；沒有把浮標與礁石合併為同一物。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣是符號擠在一起，水中危險物還要保住原來的位置。",
+        "visual": "第一格畫兩條陸上線錯開，第二格將數塊相鄰的礁石畫成原位置的一段礁脊。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_ids": [
+        "X120M-S06"
+      ],
+      "source_locator": "X120M-S06，Generalization 下的 Offsetting features。",
+      "notes": "自繪地圖局部、圖例或坐標方格。需要真實數字時標示資料機構、地點與單位。"
+    },
+    {
+      "id": "K120-0406",
+      "category": "地球天氣與太空",
+      "domain": "地球天氣與太空",
+      "question": "英格蘭步行地圖上一條有色小徑進入淡黃色區域，為什麼走在裡面有時可以離開那條線？",
+      "mechanism_key": "x120.map.access_area_versus_public_path",
+      "answer_target": "地圖上步道的線指一條可以沿著走的路。指定開放通行地的面狀底色則表示，在允許的範圍內，徒步者通常也可以離開路線。土地可能仍是私人的。規則另外排除住宅、私人花園等處，指定區也可能因臨時管制關閉；讀完圖例還須確認當地限制。",
+      "scope": "限英格蘭、Ordnance Survey 相應圖種與徒步通行。法定排除用地和臨時限制照樣適用。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "有色線交代哪條路可以走，用面積標出來的通行權則有自己的邊界。",
+        "visual": "畫一條線通過淡黃色山坡，把私人庭園挖空，再示範一般步道段和可離線行走的有效範圍。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_ids": [
+        "X120M-S07",
+        "X120M-S08"
+      ],
+      "source_locator": "X120M-S07，What does open access land look like；X120M-S08，Use your right to roam、Excepted land 及 Find open-access land。",
+      "notes": "自繪地圖局部、圖例或坐標方格。需要真實數字時標示資料機構、地點與單位。"
+    }
+  ],
+  "not_added": [
+    {
+      "id": "X120M-NA01",
+      "question": "格網北怎麼會與指向北極的真北分開？",
+      "reason": "本輪比對查到 M2085 已經用格網線與地理經線解釋兩種北向。",
+      "existing_ids": [
+        "M2085"
+      ]
+    },
+    {
+      "id": "X120M-NA02",
+      "question": "把小比例尺的街道地圖放大，為什麼仍然看不到原本省去的巷子？",
+      "reason": "M2076 已說明放大已概化的圖無法補回細節。",
+      "existing_ids": [
+        "M2076"
+      ]
+    }
+  ]
+}

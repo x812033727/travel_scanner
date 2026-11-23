@@ -1,0 +1,266 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-17",
+  "status": "TOPIC_APPEAL_REFERENCE_NOT_FINAL_CUT_REVIEW",
+  "owner_request": "站主 2026-11-17 問怎麼有效率增加 6.5 分以上的題，選「先做 1 再做 2」：先改包裝總分 6.0–6.5 的單集題。",
+  "candidates_method": {
+    "scope": "總分 6.0–6.5 的入選單集題改包裝後的複評，第 2 輪 17 題：question、hook、payoff 由未參與研究與評分的改寫編輯重寫（問句 40–110 字、一個問號），事實與來源不動，新文字的數字與專名都在原題卡裡。複評的五項平均高於原分的 10 題採用新包裝並以這份分數為準；其餘維持原文與原分。",
+    "persona": "台灣 25–45 歲、喜歡歷史懸案／奇聞／都市傳說長片的一般觀眾",
+    "card_fields": "題目、完整問題、開場鉤子、這集會揭曉（前 260 字）、畫面",
+    "reviewers": "兩位新評審各評一次，並放進同六題錨點；不讀 repo、不上網。各自用錨點平均與基準錨點平均的差扣掉鬆緊，再取兩人平均。五項欄位是兩人的原始平均，score 是校正後的五項平均；併入需求的總分由 build 計算。",
+    "sample_anchors": {
+      "P09": [
+        8.0,
+        8.2
+      ],
+      "N384": [
+        7.5,
+        7.5
+      ],
+      "N2843": [
+        4.4,
+        4.4
+      ],
+      "N2181": [
+        6.8,
+        6.8
+      ],
+      "N3266": [
+        5.0,
+        5.2
+      ],
+      "N142": [
+        7.1,
+        7.1
+      ]
+    },
+    "baseline_anchor_mean": 6.858,
+    "sample_offsets": {
+      "zr2-a": -0.39,
+      "zr2-b": -0.32
+    },
+    "caveat": "錨點題和短問句排在一起時，評審給錨點的分數比先前幾批低 0.1–0.25，校正後新題的分數可能因此偏高約 0.2；總分只比 6.5 高一點的題要當成邊緣題看。",
+    "not_adopted": {
+      "N3344": {
+        "previous": 6.62,
+        "rescored": 6.06
+      },
+      "N706": {
+        "previous": 6.56,
+        "rescored": 6.36
+      },
+      "N1564": {
+        "previous": 6.68,
+        "rescored": 5.71
+      },
+      "N2241": {
+        "previous": 6.09,
+        "rescored": 5.16
+      },
+      "N2406": {
+        "previous": 6.37,
+        "rescored": 6.16
+      },
+      "N2504": {
+        "previous": 7.04,
+        "rescored": 6.56
+      },
+      "N2403": {
+        "previous": 6.64,
+        "rescored": 6.26
+      }
+    }
+  },
+  "candidates": [
+    {
+      "id": "N2745",
+      "rank": 1,
+      "of": 400,
+      "score": 8.16,
+      "raw": 7.8,
+      "click": 8.0,
+      "hook": 7.5,
+      "surprise": 7.5,
+      "payoff": 7.5,
+      "share": 8.5,
+      "comment": "粽子原來不是為屈原？端午一定轉到家族群組。",
+      "previous": {
+        "score": 6.55,
+        "comment": "端午節前後會想看，粽子跟屈原無關算有料但略有耳聞。",
+        "review": "reviews/audience-20261117-rest.json",
+        "changes": "書名全部拿掉，題目只留「最早寫粽子的人沒提屈原、先接上的是五彩絲」；hook 改用蛟龍偷祭品。"
+      }
+    },
+    {
+      "id": "N2762",
+      "rank": 2,
+      "of": 400,
+      "score": 8.11,
+      "raw": 7.75,
+      "click": 8.25,
+      "hook": 8.5,
+      "surprise": 8.0,
+      "payoff": 6.5,
+      "share": 7.5,
+      "comment": "渡渡鳥頭裡有115顆鉛彈超震撼，可惜兇手線索斷了。",
+      "previous": {
+        "score": 7.14,
+        "comment": "渡渡鳥頭裡有115顆鉛彈超驚人，可惜標題長到我看不完；鉤子很強。",
+        "review": "reviews/audience-20261114.json",
+        "changes": "題目砍到只剩「街頭活鳥」對「115 顆鉛彈」，火堆那一句移到 payoff。"
+      }
+    },
+    {
+      "id": "N2801",
+      "rank": 3,
+      "of": 400,
+      "score": 8.01,
+      "raw": 7.65,
+      "click": 8.0,
+      "hook": 7.5,
+      "surprise": 7.5,
+      "payoff": 8.0,
+      "share": 7.25,
+      "comment": "火星語被拆成匈牙利語很過癮，結尾銀行那段也想看。",
+      "previous": {
+        "score": 7.14,
+        "comment": "降靈會說出火星語、最後被拆成幼稚版法語加匈牙利語，又怪又好笑。",
+        "review": "reviews/audience-20261114.json",
+        "changes": "只留 55／248 與「父親是匈牙利裔」這一個反常點，拿掉字母、四十段與年份；hook 改用「質疑後 17 天長出第二種語言」。"
+      }
+    },
+    {
+      "id": "N1465",
+      "rank": 4,
+      "of": 400,
+      "score": 7.81,
+      "raw": 7.45,
+      "click": 7.5,
+      "hook": 8.0,
+      "surprise": 7.5,
+      "payoff": 7.25,
+      "share": 7.0,
+      "comment": "原來最早版本是老婆慫恿還接回來，跟印象差很多。",
+      "previous": {
+        "score": 7.14,
+        "comment": "姨捨山大家看過楢山節考，原版是被妻子慫恿丟伯母，反轉不錯。",
+        "review": "reviews/audience-20261114.json",
+        "changes": "題目只留「伯母與妻子」的家庭版反轉，佛經一線移到 payoff，並把「有沒有這個風俗」講明不下結論。"
+      }
+    },
+    {
+      "id": "N1022",
+      "rank": 5,
+      "of": 400,
+      "score": 7.61,
+      "raw": 7.25,
+      "click": 7.5,
+      "hook": 7.5,
+      "surprise": 7.25,
+      "payoff": 6.5,
+      "share": 7.5,
+      "comment": "馬丘比丘叫錯名字？會想轉給去過的朋友，可惜只是推論。",
+      "previous": {
+        "score": 6.55,
+        "comment": "馬丘比丘連名字都叫錯？去過或想去的人會轉。",
+        "review": "reviews/audience-20261117-rest.json",
+        "changes": "把「名字可能是隔壁山的」直接當題目，Bingham 上山時的場景移到 hook。"
+      }
+    },
+    {
+      "id": "N2262",
+      "rank": 6,
+      "of": 400,
+      "score": 7.21,
+      "raw": 6.85,
+      "click": 7.0,
+      "hook": 7.5,
+      "surprise": 6.5,
+      "payoff": 7.25,
+      "share": 6.0,
+      "comment": "天降箭頭很有畫面，答案是石器被沖出來，合理但不炸。",
+      "previous": {
+        "score": 6.17,
+        "comment": "天上掉箭頭原來是雨沖出石器，小品可愛，但題材偏冷。",
+        "review": "reviews/audience-20261117-rest.json",
+        "changes": "題目改成場景加一個「到底從哪來」，答案（石鏃、雨沖出來）不再寫在題目裡，移到 payoff 開頭。"
+      }
+    },
+    {
+      "id": "N1662",
+      "rank": 7,
+      "of": 400,
+      "score": 7.01,
+      "raw": 6.65,
+      "click": 6.75,
+      "hook": 6.25,
+      "surprise": 7.25,
+      "payoff": 6.75,
+      "share": 6.25,
+      "comment": "下雨反而救了愛因斯坦這點有意思，題目太繞。",
+      "previous": {
+        "score": 6.28,
+        "comment": "下雨反而救了愛因斯坦，這個轉折不錯，總統撐傘等日食很有畫面。",
+        "review": "reviews/audience-20261117-two.json",
+        "changes": "題目從觀眾知道的 1919 年切入，把「放晴反而對不上」當懸念；hook 拿掉 answer_target 沒有的撐傘。"
+      }
+    },
+    {
+      "id": "N784",
+      "rank": 8,
+      "of": 400,
+      "score": 6.96,
+      "raw": 6.6,
+      "click": 8.0,
+      "hook": 6.5,
+      "surprise": 5.0,
+      "payoff": 6.5,
+      "share": 7.0,
+      "comment": "與那國海底遺跡必點，結論是天然的有點掃興但服氣。",
+      "previous": {
+        "score": 6.28,
+        "comment": "與那國海底金字塔我有興趣，但題目在講文化財名單很掃興。",
+        "review": "reviews/audience-20261117-rest.json",
+        "changes": "拿掉文化財名單與遺跡發現屆，改問「3D 模型重看後為什麼沒有人類痕跡」；行政細節不進題目。"
+      }
+    },
+    {
+      "id": "N2902",
+      "rank": 9,
+      "of": 400,
+      "score": 6.66,
+      "raw": 6.3,
+      "click": 6.75,
+      "hook": 6.75,
+      "surprise": 5.5,
+      "payoff": 6.75,
+      "share": 5.75,
+      "comment": "拿破崙的占卜書是假的不意外，但書評吐槽很好笑。",
+      "previous": {
+        "score": 6.28,
+        "comment": "拿破崙的占卜書聽起來很神祕，書評一句話就拆穿有笑點，不過標題太長、像在念摘要。",
+        "review": "reviews/audience-20261114.json",
+        "changes": "題目只留年份矛盾這一個笑點，墨水腳註移到 hook；payoff 先給「是編的、誰可能編的」。"
+      }
+    },
+    {
+      "id": "N2421",
+      "rank": 10,
+      "of": 400,
+      "score": 6.61,
+      "raw": 6.25,
+      "click": 7.25,
+      "hook": 7.25,
+      "surprise": 5.25,
+      "payoff": 5.75,
+      "share": 5.75,
+      "comment": "海軍幫忙聽火星很吸引人，結果什麼都沒有也猜得到。",
+      "previous": {
+        "score": 6.38,
+        "comment": "特斯拉聽到火星訊號很吸睛，但真相只是原文比較保守，有點洩氣。",
+        "review": "reviews/audience-20261117-two.json",
+        "changes": "從「三個人都比傳說保守」改成 1924 年相紙上的臉這個畫面；特斯拉與馬可尼移到 payoff。"
+      }
+    }
+  ]
+}

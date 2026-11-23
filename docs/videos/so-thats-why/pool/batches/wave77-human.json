@@ -1,0 +1,1060 @@
+{
+  "batch_id": "wave77-human-20261111",
+  "created_on": "2026-11-13",
+  "scope": "第二十七輪從零研究的新長題（人的感官與行為）：嗅覺（F128／V148）、打哈欠（F137／V157），都留後備。",
+  "sources": [
+    {
+      "id": "H77-S001",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4491703/fullTextXML",
+      "canonical_url": "https://doi.org/10.7554/eLife.08127",
+      "title": "The number of olfactory stimuli that humans can discriminate is still unknown",
+      "publisher": "eLife 4:e08127（2015）；Gerkin RC、Castro JB（亞利桑那州立大學、Bates College）",
+      "version": "出版社開放取用版（CC BY，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC4491703/fullTextXML，curl 預設標頭，200；PMCID 由 Europe PMC search API 的同一次搜尋結果取得",
+      "reading_scope": "正文全文逐段讀：Abstract、Introduction、Problems with the estimate（含圖 1–3 說明與表 2）、Explanation…各小節、Building the stimulus space 兩小節、An upper or a lower bound?、Avenues for improving the estimate。Appendix 1 的證明只讀標題；eLife digest 是期刊編輯寫的，不當來源。",
+      "locator": "Introduction 第 1–3 段；表 2；圖 3 及其補充圖 1 說明；Redundancy in the stimulus space 第 2–3 段；An upper or a lower bound? 第 1–2 段與圖 6 說明",
+      "summary": "作者用 Bushdid 等 2014 公開的原始資料、照原方法重算：估計值隨受試人數、每類測驗數與顯著水準系統性變動，跨 25 個數量級；假設新受試者表現相近，若多約 100 名受試者，同一分析會得出約 10^29 種全部可辨；顯著標準稍嚴則少於 5000 種。原式是上界（Hamming bound），所以原資料至多支持「最多約一兆」；若改用下界，用原文的 d 可能小到約一萬。化合物庫從 128 種加倍，估計值放大約 2^30 倍。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "重算的是別人的資料；Bushdid 原文（Science 2014，PMC4483192）本輪讀不到（Europe PMC REST 500、PDF 頁 403、Science 403），原文設計只能經本篇轉述，不另算。Science 2024 有一則 Bushdid 等的勘誤（PMID 38386753，訂閱限定）未讀，內容不明，寫稿前要查。作者自認對框架本身是否合理先保持中立。eLife digest 與 Meister 2015（F128-S002）的 digest 相同，屬編輯文字。",
+      "author_cache": {
+        "file": "stw27/f128src/PMC4491703.xml（JATS 原檔）；PMC4491703.txt（本機去標籤稿，雜湊 e9284dce7913aea4）",
+        "sha256_prefix": "c1b71551fee9ddc6",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H77-S002",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4491593/fullTextXML",
+      "canonical_url": "https://doi.org/10.7554/eLife.07865",
+      "title": "On the dimensionality of odor space",
+      "publisher": "eLife 4:e07865（2015）；Meister M（加州理工學院）",
+      "version": "出版社開放取用版（CC BY，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC4491593/fullTextXML，curl 預設標頭，200；PMCID 由 Europe PMC search API 的同一次搜尋結果取得",
+      "reading_scope": "正文全文逐段讀：Abstract、Introduction、Results 五小節（How not to estimate…、toy microbe、color vision、at least 10 odors、Where is the flaw?）、Discussion 兩小節與表 1。Materials and methods 未讀。",
+      "locator": "Introduction 第 3–4 段（148 對）；Failure on a simple model…（約 9×10^11）；Failure on the color vision system（10^27、無限多）；Humans can discriminate at least 10 odors（雜訊 0.4、10 種）；Where is the flaw? 末段（99.99%）",
+      "summary": "作者把 Bushdid 的估算法套在答案已知的系統上：只會說「好吃／難吃／普通」三種反應的玩具微生物，算出約 9×10^11 種；模擬人類色覺（已知約一兩百萬色），算出至少 10^27 種，推到極限是無限多。反過來，一個只有一個維度、雜訊 0.4 弧度的模型就能擬合原資料，而這模型只能分出約 10 種氣味。原研究實際測到可分辨的只有 148 對。結論：原資料與 10 種到一兆種都相容。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "模擬與推理，不是新的嗅覺實驗；「人能分辨一兩百萬色」「嗅覺受器約 400 種」「氣味空間只有一兩個維度」「olfactory white」都是引用前人，不算本篇。與 F128-S001 同期發表、互相引用，但查無合著（見 research_groups）。",
+      "author_cache": {
+        "file": "stw27/f128src/PMC4491593.xml（JATS 原檔）；PMC4491593.txt（本機去標籤稿，雜湊 3c60f0d2d686558a）",
+        "sha256_prefix": "1115910eda69af18",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H77-S003",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3835330/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0080621",
+      "title": "Olfactory sensitivity for six predator odorants in CD-1 mice, human subjects, and spider monkeys",
+      "publisher": "PLoS ONE 8(11):e80621（2013）；Sarrafchi A、Odhammer AM、Hernandez Salazar LT、Laska M（林雪平大學、韋拉克魯斯大學）",
+      "version": "出版社開放取用版（CC BY，PMC JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC3835330/fullTextXML，curl 預設標頭，200；PMCID 由 Europe PMC search API 的同一次搜尋結果取得",
+      "reading_scope": "全文逐段讀：Abstract、Introduction、Materials and Methods 各節、Results 四節（小鼠、蜘蛛猴、人、跨物種比較）與結構活性一節、Discussion 前六段。表 1–3 數值只看人類那張的正文對應句；Discussion 最後關於嗅球大小的段落讀到一半。",
+      "locator": "Results『Human subjects』第 1 段（第 1–4 次測驗進步、第 4、5 次無差）；『Comparison between species』全段；Discussion 第 6 段（基因數 ≈1,060／≈900／≈390 為引用）",
+      "summary": "同一套六種含硫捕食者氣味（鼬、貓、臭鼬、狐狸的分泌物成分），測 6 隻小鼠、4 隻蜘蛛猴、12 名受試者的偵測閾值。小鼠有四種比人靈敏，但另兩種（2-propylthietane、3-mercapto-3-methylbutyl formate）是人比小鼠靈敏；人和蜘蛛猴只有兩種有差、一勝一負。12 名受試者有四種氣味的個人閾值低於 1 ppt；五次測驗中前四次有進步，第 4、5 次間不再進步。作者認為功能受器基因數不是靈敏度的好預測。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 6 種氣味、樣本很小（6 隻、4 隻、12 人），三物種測法不同（自動嗅覺計／開箱／三選一擠瓶），作者也承認；受器基因數（小鼠 ≈1,060、蜘蛛猴 ≈900、人 ≈390）是引用前人，不算本篇結果。不得推成「人鼻子比老鼠好」。",
+      "author_cache": {
+        "file": "stw27/f128src/PMC3835330.xml（JATS 原檔）；PMC3835330.txt（本機去標籤稿，雜湊 d29dee8166af5733）",
+        "sha256_prefix": "7163cc28523098b0",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H77-S004",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6350102/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fvets.2018.00345",
+      "title": "Canine Olfactory Thresholds to Amyl Acetate in a Biomedical Detection Scenario",
+      "publisher": "Frontiers in Veterinary Science 5:345（Europe PMC 列 2018 年）；Concha AR、Guest CM、Harris R、Pike TW、Feugier A、Zulch H、Mills DS（林肯大學等）",
+      "version": "出版社開放取用版（CC BY，PMC JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC6350102/fullTextXML，curl 預設標頭，200；PMCID 由 Europe PMC search API 的同一次搜尋結果取得",
+      "reading_scope": "Abstract、Introduction 前兩段、Materials and Methods 中訓練與測試步驟（Step 6、閾值訓練兩階段、測試段）、Results 全段、Discussion 以關鍵字逐段掃讀（第 1–6 段）。圖表數值未逐格讀。",
+      "locator": "Results 第 1 句與圖 2 說明；Methods『detection threshold training』與測試段（30 週）；Discussion 第 2–3、5 段",
+      "summary": "10 隻受訓偵測犬在八臂轉盤上找出乙酸戊酯（溶在礦物油裡），經約 30 週訓練後測閾值：各狗估計閾值從 1:40,000,000（30 ppb）到 1:1,500,000,000（1.5 ppt），狗與狗之間差很大；準確度在 81.71% 以上。作者說最低值比先前報告低約 30 倍，也提醒溶劑同時是對照，低濃度時差異可能來自誤報與正確之間的取捨。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "是液相稀釋比，不是空氣中的濃度，不能和 F128-S003 人類閾值相比或相除；只有一種氣味；研究情境是「醫療偵測」，片中只講靈敏度、不講疾病偵測。Mills 與 Polgár 研究的 Miklósi 合著過，兩篇同一網。 覆核 V148（2026-11-13）：limitations 加：「原文 Results 括號內的 30 ppb、1.5 ppt 與稀釋比 1:4,000 萬、1:15 億不相等，也與 Methods 的校正值（1:1,000＝0.01 ppm 頂空）不一致；只用稀釋比。」",
+      "author_cache": {
+        "file": "stw27/f128src/PMC6350102.xml（JATS 原檔）；PMC6350102.txt（本機去標籤稿，雜湊 b078877e7839e475）",
+        "sha256_prefix": "85320fe0266dc2f1",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H77-S005",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3115944/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0020704",
+      "title": "Dogs discriminate identical twins",
+      "publisher": "PLoS ONE 6(6):e20704（2011）；Pinc L、Bartoš L、Reslová A、Kotrba R（捷克）",
+      "version": "出版社開放取用版（CC BY，PMC JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC3115944/fullTextXML，curl 預設標頭，200；PMCID 由 Europe PMC search API 的同一次搜尋結果取得",
+      "reading_scope": "全文逐段讀（短文）：Abstract、Introduction、Results、Discussion、Materials and Methods、圖 1 說明。",
+      "locator": "Abstract；Results 唯一段；Discussion 第 1 段；Methods 氣味採集與列隊段",
+      "summary": "10 隻專做氣味比對的捷克警犬，各做 12 次比對（60 次列隊），對象是兩對同卵雙胞胎（5、7 歲）與兩對異卵雙胞胎（8、13 歲），住同一屋、吃同樣食物。結果 120 次全對：每隻狗都能把同卵雙胞胎的氣味分開，也能把同一人兩次採的氣味配成一對。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有兩對同卵雙胞胎、且都是兒童；狗是長期受訓的列隊比對犬；作者提到早期研究結果不一（引用，不算）。司法用途與法規不評價。",
+      "author_cache": {
+        "file": "stw27/f128src/PMC3115944.xml（JATS 原檔）；PMC3115944.txt（本機去標籤稿，雜湊 5aacd7277d715ddf）",
+        "sha256_prefix": "7a2a7df3fe9626a4",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H77-S006",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5131614/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/srep36876",
+      "title": "Biomimetic Sniffing Improves the Detection Performance of a 3D Printed Nose of a Dog and a Commercial Trace Vapor Detector",
+      "publisher": "Scientific Reports 6:36876（2016）；Staymates ME、MacCrehan WA、Staymates JL、Kunz RR、Mendum T、Ong TH、Geurtsen G、Gillen GJ、Craven BA（NIST、MIT 林肯實驗室、賓州州立大學）",
+      "version": "出版社開放取用版（CC BY，PMC JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC5131614/fullTextXML，curl 預設標頭，200；PMCID 由 Europe PMC search API 的同一次搜尋結果取得",
+      "reading_scope": "Abstract、Introduction 全文、Results 三節與圖 1–4 說明、Discussion 前兩段。Methods 未讀。",
+      "locator": "Results『Flow visualization…』兩段與圖 1 說明；『Aerodynamic sampling performance…』（DNT 3 cm 約 8 倍；DMF 10 cm 約 4 倍、20 cm 約 18 倍）；Discussion 第 1 段",
+      "summary": "依一隻 29.5 公斤拉布拉多混種的 MRI 重建、3D 列印的狗鼻模型，用紋影攝影看嗅聞：吐氣時每個鼻孔噴出一道往下、往外斜的亂流氣柱，把鼻子前方帶味道的空氣往鼻孔拉；吸氣時再把它吸進去，每秒約 5 次。同樣吸進一公升空氣，主動嗅聞比持續吸氣多取到的氣體：距 3 cm 的 DNT 約 8 倍；DMF 在 10 cm 約 4 倍、20 cm 約 18 倍。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "是模型與機械活塞，不是活狗；「每秒約 5 次」「吸氣只吸 1–2 cm 內」是引言引用前人，不算本篇；商用偵測器改裝（16 倍）是應用，片中不講爆裂物偵測細節。Craven 也是 F128-S007 作者，兩篇同一網。",
+      "author_cache": {
+        "file": "stw27/f128src/PMC5131614.xml（JATS 原檔）；PMC5131614.txt（本機去標籤稿，雜湊 ee0a3a0f0e0ef0bf）",
+        "sha256_prefix": "ac5a577089abdcef",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H77-S007",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11950533/fullTextXML",
+      "canonical_url": "https://doi.org/10.1093/molbev/msaf035",
+      "title": "Genetic and Anatomical Determinants of Olfaction in Dogs and Wild Canids",
+      "publisher": "Molecular Biology and Evolution msaf035（2025）；Mouton A、Bird DJ、Li G、Craven BA、Levine JM、Morselli M、Pellegrini M、Van Valkenburgh B、Wayne RK、Murphy WJ（UCLA、德州農工等）",
+      "version": "出版社開放取用版（CC BY，PMC JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC11950533/fullTextXML，curl 預設標頭，200；PMCID 由 Europe PMC search API 的同一次搜尋結果取得",
+      "reading_scope": "Abstract、Introduction 略讀、Results 五節全文與圖 1–4 說明、Discussion 前五節（至 Breed Groups and Olfaction）。Discussion『Olfaction and Snout Length』『Conclusion』、Methods 與補充資料未讀。",
+      "locator": "Results『Olfactory Genomics』第 2–4 段；『Morphology』第 2 段；Discussion『Dog Breeds and Olfaction: Scent Hounds in Name Alone』第 1、4 段；Abstract 末句",
+      "summary": "比較 30 個犬種 111 隻狗、灰狼與郊狼的完整嗅覺受器基因數與篩板（嗅神經穿過的骨板）大小：狗平均明顯比狼少，個別狗 749–822 個、狼 784–927 個；狗的相對篩板也較小。在狗之間，嗅覺犬（米格魯、尋血獵犬、臘腸狗，或常用的偵測犬種）平均 775 個、非嗅覺犬 778 個，沒有差別；篩板大小、基因表現也沒差；短鼻、中鼻、長鼻犬種之間同樣沒差。作者結論：好的嗅覺偵測犬多半靠行為特質與訓練，不是鼻子構造或基因上的優勢。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "量的是基因數、骨骼與表現量，不是行為測驗；表現量分析樣本少（作者自承）。「訓練與行為」是作者對沒有差異的解讀，不是本篇測到的。與 F128-S006 同屬 Craven 網，合計封頂 2.0。",
+      "author_cache": {
+        "file": "stw27/f128src/PMC11950533.xml（JATS 原檔）；PMC11950533.txt（本機去標籤稿，雜湊 9d679a61f7673989）",
+        "sha256_prefix": "1454f8a865b29802",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H77-S008",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4859551/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0154087",
+      "title": "A Test of Canine Olfactory Capacity: Comparing Various Dog Breeds and Wolves in a Natural Detection Task",
+      "publisher": "PLoS ONE 11(5):e0154087（2016）；Polgár Z、Kinnunen M、Újváry D、Miklósi Á、Gácsi M（羅蘭大學）",
+      "version": "出版社開放取用版（CC BY，PMC JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC4859551/fullTextXML，curl 預設標頭，200；PMCID 由 Europe PMC search API 的同一次搜尋結果取得",
+      "reading_scope": "Abstract、Introduction、Methods（Subjects、測試程序、五級難度、資料分析）、Results 全段、Discussion 以關鍵字逐段掃讀（第 1–8 段）。表 1 未逐格讀。",
+      "locator": "Methods『Subjects』與圖 2（五級蓋子）；Results 第 1–4 段；Discussion 第 2、4、5 段",
+      "summary": "不需事先訓練的找肉測驗：四個陶盆之一下藏生火雞肉，蓋子從全開、5 孔、3 孔、1 孔到全密五級。12 隻人養大的灰狼、41 隻家犬（分嗅覺犬種、非嗅覺犬種、短鼻犬種）。只有最難的全密蓋這一級有組間差：嗅覺犬種勝過短鼻犬種；嗅覺犬與狼高於機率，非嗅覺犬與短鼻犬不高於機率。狼第一次測得出奇地低，重測的 5 隻在最難一級也到約 90%，狗重測不變。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "作者自承無法把嗅覺能力和動機、疲勞、吃飽等因素完全分開；戶外、自然氣味；短鼻犬只有 12 隻；與另一篇哈巴狗勝過德國牧羊犬的研究結果相反（引用，Hall 等 2015 本輪讀不到）。與 F128-S004（Mills）合著網，封頂 2.0。",
+      "author_cache": {
+        "file": "stw27/f128src/PMC4859551.xml（JATS 原檔）；PMC4859551.txt（本機去標籤稿，雜湊 fe2c39701cc96b10）",
+        "sha256_prefix": "b722d297843b3c9e",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H77-S009",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4470656/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0129387",
+      "title": "Olfactory Orientation and Navigation in Humans",
+      "publisher": "PLoS ONE 10(6):e0129387（2015）；Jacobs LF、Arter J、Cook A、Sulloway FJ（柏克萊加州大學）",
+      "version": "出版社開放取用版（CC BY，PMC JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC4470656/fullTextXML，curl 預設標頭，200；PMCID 由 Europe PMC search API 的同一次搜尋結果取得",
+      "reading_scope": "Abstract、Introduction、Methods 全部、Results 全部、Discussion 第 1–2、5–6 段。",
+      "locator": "Results『Accuracy』段（289.0 對 361.4 cm；隨機 529.4 cm；32 對 13 人）；Methods 測試程序；Discussion 第 1 段",
+      "summary": "45 名大學生蒙眼、戴耳塞，被帶到房間裡一個隨機點，房內兩處各放一種精油，在點上聞一分鐘後被繞圈帶到迷失方向，再自己走回去。只能用鼻子時平均離目標 289.0 cm，鼻子也被夾住的對照情況 361.4 cm，隨機亂站約 529.4 cm；45 人中 32 人用鼻子時比較準。離氣味源近不會比較準，作者推論受試者是在整合兩種氣味的分布。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "差距不大（p = .049），三種情況順序固定（先嗅覺），對照情況中更多人還記得入口方向；房間小、只有兩種氣味；前言『人能匍匐追蹤氣味』『人有一兆種』是引用，不算。 覆核 V148（2026-11-13）：summary／limitations 加：找回目標時受試者已拿掉所有遮蔽（眼睛張開）；對照組（361.4 cm）也顯著優於隨機 529.4 cm。",
+      "author_cache": {
+        "file": "stw27/f128src/PMC4470656.xml（JATS 原檔）；PMC4470656.txt（本機去標籤稿，雜湊 47a2d75f14e41031）",
+        "sha256_prefix": "328a1ebefe0f1159",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H77-S010",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10827900/fullTextXML",
+      "canonical_url": "https://doi.org/10.1007/s10339-023-01169-7",
+      "title": "Memory effects of visual and olfactory landmark information in human wayfinding",
+      "publisher": "Cognitive Processing（2024）；Schwarz M、Hamburger K（吉森大學）",
+      "version": "出版社開放取用版（CC BY，PMC JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC10827900/fullTextXML，curl 預設標頭，200；PMCID 由 Europe PMC search API 的同一次搜尋結果取得",
+      "reading_scope": "Abstract、Introduction 各節略讀、Methods（Participants、材料、程序）、Results 兩部分（wayfinding、recognition）全文、Discussion 第 1 段。後續討論段未讀。",
+      "locator": "Results『Visual versus olfactory』兩段（wayfinding、recognition）與時間比較段；Discussion 第 1 段",
+      "summary": "52 人在虛擬迷宮學一條路，18 個路口各有一個地標：一組是圖片（27 人），一組是聞一瓶氣味（25 人）；當下與一個月後各測一次選路與認地標。選路：氣味組正確率 0.59、一個月後 0.53，圖片組 0.66、0.55，兩組沒有顯著差，氣味組都高於三選一的機率；圖片組一個月後顯著下降，氣味組沒有顯著下降。認地標：圖片 0.97／0.96 明顯勝過氣味 0.76／0.75。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Discussion 第 1 段寫成『64% 與 55%』，與 Results 的 0.59／0.53 不一致，片中只用 Results 數字；氣味『一個月沒退步』是不顯著（不是證明不變）；樣本 52 人、虛擬環境。 覆核 V148（2026-11-13）：limitations 加：時間×模態交互作用不顯著（p = 0.254），時間主效果顯著；Methods 寫「three between-subject conditions」但只報兩組。",
+      "author_cache": {
+        "file": "stw27/f128src/PMC10827900.xml（JATS 原檔）；PMC10827900.txt（本機去標籤稿，雜湊 e4b8b5291e7b3fc4）",
+        "sha256_prefix": "72647946e5e4b63c",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H77-S011",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7545250/fullTextXML",
+      "canonical_url": "https://doi.org/10.1093/chemse/bjaa049",
+      "title": "Smell-Based Memory Training: Evidence of Olfactory Learning and Transfer to the Visual Domain",
+      "publisher": "Chemical Senses（2020）；Olofsson JK、Ekström I、Lindström J、Syrjänen E、Stigsdotter-Neely A、Nyberg L、Jonsson S、Larsson M（斯德哥爾摩大學等）；勘誤 Chem Senses 2021（PMC8345828）",
+      "version": "出版社開放取用版（CC BY，PMC JATS 全文）＋勘誤全文",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC7545250/fullTextXML，curl 預設標頭，200；PMCID 由 Europe PMC search API 的同一次搜尋結果取得",
+      "reading_scope": "Abstract、Introduction、Methods（Participants、Wine professionals、訓練遊戲、程序、評估）、Results 全部（含 Comparison to wine professionals）、Discussion 第 1–5 段；勘誤（PMC8345828）全文。",
+      "locator": "Methods『Participants』（106 人、72 人完成）與訓練程序（約 40 天、每天約 10 分鐘）；Results『Comparison to wine professionals』；勘誤全文（只改圖 3 標籤）",
+      "summary": "72 名 18–50 歲成人在家每天玩約 10 分鐘的配對遊戲、約 40 天：一組配氣味（茶葉罐），一組配看不懂的文字。訓練前，15 位葡萄酒專業人士在嗅覺閾值與氣味辨別上勝過氣味組；訓練後，氣味組在辨別、命名、辨認、閾值四項都與專業人士無顯著差；文字組仍比不上。氣味訓練也讓沒練過的圖形配對進步，反過來沒有。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "「無顯著差」不等於「一樣好」；專業人士年紀較大、只測一次；勘誤指出原圖 3 兩組標籤顛倒，作者說結果與解讀不變（片中不用圖 3）；作者把失智、認知訓練當應用前景，片中不提健康用途。Olofsson 與 Gerkin 在 2020 年 COVID 嗅覺聯盟論文合著，與 F128-S001 同一網。 覆核 V148（2026-11-13）：limitations 加：視覺組訓練後只在閾值與辨別兩項仍落後專業者；氣味組閾值與專業者 p = 0.07、g = 0.56。",
+      "author_cache": {
+        "file": "stw27/f128src/PMC7545250.xml（JATS 原檔）；PMC7545250.txt（本機去標籤稿，雜湊 67609f0b9af07993）",
+        "sha256_prefix": "9594c7ea363d1056",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H77-S012",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13710685/fullTextXML",
+      "canonical_url": "https://doi.org/10.3758/s13423-026-03025-z",
+      "title": "Is the Proust phenomenon fact or fiction? A systematic review and meta-analysis of odor-evoked autobiographical memories",
+      "publisher": "Psychonomic Bulletin & Review（2026）；Bobei OI、Cîrneci D、Podina IR（布加勒斯特大學）",
+      "version": "出版社開放取用版（CC BY，PMC JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC13710685/fullTextXML，curl 預設標頭，200；PMCID 由 Europe PMC search API 的同一次搜尋結果取得",
+      "reading_scope": "Abstract、Introduction 全文、Methods 標題與結果量定義、Results 的 Characteristics、Main results 五小節（情緒強度與愉悅、喚回感、記憶年代、罕見度、具體與鮮明）、Publication bias；Subgroup／Meta-regression 只讀摘要句，Discussion 未逐段讀。",
+      "locator": "Results『Characteristics of included studies』（18 篇、1,330 人）；『Emotional intensity and pleasantness』（g = 0.23、0.20）；『Evocativeness』（g = 0.22）；『Age of AMs』（g = 0.53，8 個比較）；『Rarity』（p = .10）；『Specificity and vividnes』（p = .30、.07）",
+      "summary": "合併 18 篇實驗、1,330 人，比較氣味與圖片、聲音、文字等提示喚起的自傳記憶：氣味喚起的記憶情緒較強（g = 0.23）、較愉快（g = 0.20）、較有「回到當時」的感覺（g = 0.22）、年代較久遠（g = 0.53），效果都小到中等；但在具體細節（p = .30）與鮮明度（p = .07）上沒有顯著優勢，罕見度整體也不顯著。作者結論：氣味的優勢是選擇性的，不是全面的，不能完全證實「普魯斯特現象」。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "統合分析，不是單一實驗；「年代較久遠」只有 8 個比較、作者說量法不一要保守；罕見度排除臨床樣本後變顯著，片中不講；部分納入研究含臨床族群，片中不談治療用途。池中 L164 只講「嗅覺與情緒記憶路徑」，本篇是新的效果量證據。 覆核 V148（2026-11-13）：limitations 加：樣本越大效果越小（情緒強度、愉悅、罕見度），鮮明與罕見度的 Egger 檢定顯著。",
+      "author_cache": {
+        "file": "stw27/f128src/PMC13710685.xml（JATS 原檔）；PMC13710685.txt（本機去標籤稿，雜湊 6d3720aaaaacdac8）",
+        "sha256_prefix": "69956559f0b44691",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H77-S013",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2965053/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fnevo.2010.00108",
+      "title": "Yawning and Stretching Predict Brain Temperature Changes in Rats: Support for the Thermoregulatory Hypothesis",
+      "publisher": "Frontiers in Evolutionary Neuroscience 2:108（2010）；Shoup-Knox ML、Gallup AC、Gallup GG Jr、McNay EC（紐約州立大學奧本尼分校、賓漢頓大學）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC2965053/fullTextXML，curl 預設標頭（200）；本機轉純文字後讀（PMC2965053.txt）",
+      "reading_scope": "全文逐段讀完：摘要、Introduction、Materials and Methods（受試動物、手術、資料收集）、Results 全段與表 1、圖 1 說明、Discussion 全文。",
+      "locator": "Materials and Methods〈Subjects〉（七隻中四隻有打哈欠）；Results 第一、二、三段（21 次哈欠；打前 1 分鐘斜率轉正、打時轉負；Y 平均降 −0.11°C；約 18 秒後達峰）；Discussion 第一、二段（相關研究的限制）",
+      "summary": "研究者把溫度探針埋進大鼠前額皮質，連續量腦溫。七隻大鼠中四隻在兩小時內打了哈欠，共 21 次。腦溫在哈欠前約一分鐘開始上升，打哈欠時轉為下降，三分鐘內回到基線；單純哈欠後平均降 0.11°C，伸懶腰也有類似變化。作者自己在討論段說這是相關研究，樣本小，也可能是哈欠前的血流或激素變化讓腦溫先升，不一定是腦溫升高觸發哈欠。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "n 很小（4 隻、21 次哈欠，獨立事件 Y 13、S 14、Y+S 8）；相關研究，作者自承不能判斷因果；只量淺層皮質。Introduction 裡『哈欠不受血氧二氧化碳影響』是引用 Provine 1987，不是本篇結果，不得算本篇事實。",
+      "author_cache": {
+        "file": "stw27/f137src/PMC2965053.xml（全文 XML）；PMC2965053.txt（去標籤稿）",
+        "sha256_prefix": "eb640e85671125b9（xml）／d510953a53a4a11c（txt）",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H77-S014",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3178034/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fnevo.2011.00003",
+      "title": "Contagious yawning and seasonal climate variation",
+      "publisher": "Frontiers in Evolutionary Neuroscience 3:3（2011）；Gallup AC、Eldakar OT",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC3178034/fullTextXML，curl 預設標頭（200）；本機轉純文字後讀（PMC3178034.txt）",
+      "reading_scope": "全文逐段讀完：摘要、Introduction、Methods（地點、受試者、程序、統計）、Results 全段與表 1、Discussion 全文。",
+      "locator": "摘要；Methods 第一、二段（Tucson，2010 年 6 月與 2011 年 2 月，每季 80 人，看 20 張哈欠照片、自陳）；Results 第一至三段（34.4%；冬 36/80＝45.0%、夏 19/80＝23.8%；冬天在外越久越常打、夏天相反）；Discussion 第一段（thermal window）",
+      "summary": "在美國亞利桑那州土桑的戶外，研究者請路人看 20 張別人打哈欠的照片，再自填有沒有跟著打。冬天（平均約 22°C）80 人中 36 人（45.0%）說有，初夏（平均約 37°C）80 人只有 19 人（23.8%）。控制睡眠、在戶外待多久與濕度後，氣溫是唯一顯著的預測因子：越熱越少打。冬天在外面待越久越容易打，夏天則相反，待越久越不會打。作者把這解讀為『溫度窗』：外面的空氣要比身體涼，打哈欠才有降溫作用。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "自陳是否打哈欠（未錄影核實）；量的是看照片引發的哈欠（觀眾容易聯想到『傳染』，與 LEG-S05 的題相鄰，本片只用來談溫度、不談為什麼會傳染）；兩季不同受試者、田野條件不同；與 F137-S001 同一研究網（Gallup），合計封頂 2.0。 覆核 V157（2026-11-13）：limitations 補：溫度是陰影讀數、受試者在直射陽光下；『溫度窗』是 Gallup & Gallup 2007 提出、本篇事先據以預測的假說。",
+      "author_cache": {
+        "file": "stw27/f137src/PMC3178034.xml（全文 XML）；PMC3178034.txt（去標籤稿）",
+        "sha256_prefix": "5fcc75d3ca7bd16d（xml）／57c396dfcf317de9（txt）",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H77-S015",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3503956/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0050569",
+      "title": "Development of Fetal Yawn Compared with Non-Yawn Mouth Openings from 24–36 Weeks Gestation",
+      "publisher": "PLoS ONE 7(11):e50569（2012）；Reissland N、Francis B、Mason J（杜倫大學、蘭卡斯特大學）",
+      "version": "出版社開放取用版（CC BY，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC3503956/fullTextXML，curl 預設標頭（200）；本機轉純文字後讀（PMC3503956.txt）",
+      "reading_scope": "全文逐段讀完：摘要、Introduction、Methods（受試者、掃描、編碼定義、統計）、Results 全段、Discussion 全文、圖 1–3 說明。",
+      "locator": "Methods〈Participants〉（15 名健康胎兒，24、28、32、36 週各掃一次）與編碼定義段（張口到最大的時間長於閉口時間＝哈欠）；Results 第一段（58 次掃描，56 次哈欠、27 次非哈欠張口；每小時 6.02 對 2.79）與第三段（各週平均 1.93、1.40、0.73、0.0）；Discussion 第一、二段",
+      "summary": "研究者用 4D 超音波追蹤 15 名健康胎兒，從 24 週到 36 週每四週錄一次臉部。他們把『張口比閉口慢』的張口算成哈欠，58 次掃描中看到 56 次哈欠、27 次一般張口。每 600 秒觀察的平均哈欠數從 24 週的 1.93 次降到 36 週的 0 次，作者據此認為哈欠可能與早期神經成熟有關。胎兒在羊水裡，還沒有呼吸空氣。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "分類只看開合時間比，後來被 F137-S004（Menin 2026）與其 2019 年研究質疑特異度太低（見 F137-004）；『隨週數下降』因此是有爭議的結果，片中要與 F137-004 同章並列。只有 15 名胎兒。不得引申為產檢或健康判斷。 覆核 V157（2026-11-13）：summary 補：一般張口也從 1.00 降到 0（兩者都隨週數下降）；刪『胎兒在羊水裡，還沒有呼吸空氣』這句作者加入的背景（原文無）。",
+      "author_cache": {
+        "file": "stw27/f137src/PMC3503956.xml（全文 XML）；PMC3503956.txt（去標籤稿）",
+        "sha256_prefix": "754d4d05700133d1（xml）／5688d2936c7c5ee8（txt）",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H77-S016",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12935229/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0341339",
+      "title": "Fetal yawning and mouth openings: Frequency, developmental trends, and association with birth weight",
+      "publisher": "PLOS One 21(2):e0341339（2026）；Menin D、Veronese P、Gervasi MT、Oster H、Dondi M（費拉拉大學、帕多瓦醫院、紐約大學）",
+      "version": "出版社開放取用版（CC BY 4.0，PMC 收錄 JATS 全文，附審稿紀錄）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC12935229/fullTextXML，curl 預設標頭（200）；本機轉純文字後讀（PMC12935229.txt）",
+      "reading_scope": "讀完：摘要、Introduction 全文（含研究問題 H1–H5）、Materials and methods（受試者、掃描、SCPB 定義、信度、統計）、Results 全段、Discussion 前三段。Discussion 後段（出生體重的臨床意涵）與審稿往返只略讀。補充資料未讀。",
+      "locator": "Introduction 第七至十一段（降溫說的盲點：胎兒；Reissland 方法的特異度質疑）；Methods（32 名健康胎兒，23–31 週；兩位 Baby FACS 編碼者，Kappa .88／1.00）；Results 第一段（平均每小時 3.63 次哈欠，中位數 2.11；一般張口 15.69 次）與第二、四段（哈欠次數與週數無關；一般張口隨週數減少）；Discussion 第一、二段",
+      "summary": "同樣用 4D 超音波看 32 名健康胎兒（23–31 週），但改用以 Baby FACS 動作單位定義的編碼系統，由兩位編碼者分類（分類一致性 Kappa 1.00）。結果：哈欠平均每小時 3.63 次、中位數約 2 次，與週數無關；隨週數減少的是一般的張口。作者認為先前研究看到『哈欠隨週數下降』，多半是把一般張口也算成哈欠。作者在前言說，胎兒的體溫主要靠母體調節，所以胎兒打哈欠是降溫說『沒直接解釋到的盲點』，但也記下降溫說支持者的反駁：在子宮裡出現的行為，出生後不一定是同一種功能。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Gallup AC 是本篇的學術編輯（不是作者），不算合著，但寫在這裡供覆核判斷；本篇與出生體重的負相關屬健康推論，片中不用。前言中『Provine 1987 吸氧與二氧化碳不影響哈欠』『降溫說只在大鼠、鸚鵡、小鼠有直接證據』都是引用，不算本篇結果。Menin 2019 的 11.5% 對 67.5% 是前一篇的結果，本篇只引用，不計。 覆核 V157（2026-11-13）：summary 與 locator 改：第二位編碼者只抽看 30%（n = 10）；每名胎兒只掃一次（平均 26.17 週）；limitations 補作者自承檢定力有限、只能排除 23–31 週內的急遽變化、32–36 週沒有資料。",
+      "author_cache": {
+        "file": "stw27/f137src/PMC12935229.xml（全文 XML）；PMC12935229.txt（去標籤稿）",
+        "sha256_prefix": "0ff6c2c42cc5d63c（xml）／7ff518e7db49a417（txt）",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H77-S017",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9075618/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0268083",
+      "title": "Factors affecting yawning frequencies in preterm neonates",
+      "publisher": "PLoS ONE 17(5):e0268083（2022）；Menin D、Ballardini E、Panebianco R、Garani G、Borgna-Pignatti C、Oster H、Dondi M",
+      "version": "出版社開放取用版（CC BY，PMC 收錄 JATS 全文，附審稿紀錄）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC9075618/fullTextXML，curl 預設標頭（200）；本機轉純文字後讀（PMC9075618.txt）",
+      "reading_scope": "讀完：摘要、Introduction、Methods（樣本、錄影、統計）、Results 全段、Discussion 全文；審稿往返只讀與晝夜節律有關的兩段。",
+      "locator": "Methods〈Participants〉（58 名早產新生兒，觀察時矯正 32–42 週）與錄影段（餵奶前後各約 30 分鐘）；Results 第一、二段（35/58 打過；餵奶前每小時 3.60 次、後 1.50 次）與 QS 段（安靜睡眠中沒有哈欠；排除安靜睡眠後差異仍在）；Discussion 第一段",
+      "summary": "研究者錄下 58 名早產新生兒在定時餵奶前與餵奶後各約 30 分鐘的自然行為。餵奶前平均每小時打 3.60 次哈欠，餵奶後 1.50 次；安靜睡眠時一次哈欠也沒有，把安靜睡眠的時間扣掉再算，餵奶前比較多的差異仍在。作者認為早產兒的哈欠同時受飢餓、清醒程度等不同機制調節。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與 F137-S004 同一研究網（Menin／Dondi／Oster），合計封頂 2.0。雙胞胎第二胎打較多涉及臨床風險推論，片中不用；審稿人指出餵奶前總是較早錄，作者以早產兒尚無晝夜節律回應，片中說『研究者比較了餵奶前後』，不說『飢餓造成哈欠』。 覆核 V157（2026-11-13）：limitations 補：學術編輯同樣是 Gallup AC（不是作者）。",
+      "author_cache": {
+        "file": "stw27/f137src/PMC9075618.xml（全文 XML）；PMC9075618.txt（去標籤稿）",
+        "sha256_prefix": "2b31179923abc408（xml）／830afdc7652fae30（txt）",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H77-S018",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5328991/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fvets.2017.00022",
+      "title": "When Yawning Occurs in Elephants",
+      "publisher": "Frontiers in Veterinary Science 4:22（2017）；Rossman ZT、Hart BL、Greco BJ、Young D、Padfield C、Weidner L、Gates J、Hart LA（加州大學戴維斯分校等）",
+      "version": "出版社開放取用版（CC BY，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC5328991/fullTextXML，curl 預設標頭（200）；本機轉純文字後讀（PMC5328991.txt）",
+      "reading_scope": "全文逐段讀完：摘要、Introduction、Methods（聖地牙哥兩園區與南非 Knysna 象園、白天與夜間錄影）、Results 全段與表 2、表 3、Discussion 全文。",
+      "locator": "Methods 夜間觀察段（47 夜、545 小時錄影；72 小時對照）；Results〈Daytime〉（243 小時只見 1 次）與夜間段（站著走動 74 小時 4 次；起身時共 133 次；最後一次躺臥起身 54% 對非最後 19%，p < 0.0001；平均約 6 秒）；Discussion 第一、二段",
+      "summary": "研究者在南非一座象園用紅外線攝影機拍了 47 個夜晚、545 小時，看九頭非洲象。白天 243 小時的觀察只看到 1 次哈欠；夜裡站著走動的 74 小時也只有 4 次。幾乎所有哈欠都出現在大象從躺下休息後起身的時候，共 133 次；天亮前最後一次起身時，平均 54% 的起身伴隨哈欠，前幾次起身只有 19%。作者認為這符合『哈欠和醒過來、大腦啟動有關』的說法。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "圈養個體、九頭象；六至九月夜間圈舍有暖燈，兩季資料合併，不能拿來談氣溫；『傳染』的六次觀察作者自說太少，片中不用。 覆核 V157（2026-11-13）：summary 改：白天 243 小時是 6–9 月、七頭象（成年公象白天不在場）；limitations 補：夜間對照時數原文 Methods 寫 72 h、Results 寫 74 h，前後不一致。",
+      "author_cache": {
+        "file": "stw27/f137src/PMC5328991.xml（全文 XML）；PMC5328991.txt（去標籤稿）",
+        "sha256_prefix": "9409d5fbf53a0768（xml）／19a9a705329689bb（txt）",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H77-S019",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6872524/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-019-53613-4",
+      "title": "Spontaneous Yawning and its Potential Functions in South American Sea Lions (Otaria flavescens)",
+      "publisher": "Scientific Reports 9:17226（2019）；Palagi E、Guillén-Salazar F、Llamazares-Martín C（比薩大學、瓦倫西亞 CEU 大學）",
+      "version": "出版社開放取用版（CC BY 4.0，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC6872524/fullTextXML，curl 預設標頭（200）；本機轉純文字後讀（PMC6872524.txt）",
+      "reading_scope": "全文逐段讀完：摘要、Introduction（四個假說與預測）、Methods（群體、錄影、情境分類、PC/MC 方法、統計）、Results 全段、Discussion 全文。",
+      "locator": "Methods〈Animals〉（13 隻）與〈Data collection〉（14 個月、304 段 6 分鐘焦點錄影、29 小時）；Results 第一段（433 次哈欠；只有『情境』進入最佳模型）；〈Post-Conflict〉段（攻擊者 N = 13、p = 0.0001；受害者 N = 12、p = 0.004）；Discussion 第一段",
+      "summary": "研究者在西班牙瓦倫西亞水族館錄了 13 隻南美海獅、29 小時，記到 433 次哈欠。牠們打哈欠最多的時候，是躺在平台上閉眼、在醒和睡之間切換的休息時段。另一方面，打完架後 30 秒內，不論是出手的一方還是被打的一方，哈欠都比平常同樣情境多。雌雄之間沒有差別，地位高低也看不出差別。作者認為海獅的哈欠同時跟睏倦與短期緊張有關。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "圈養單一群體；『焦慮』是作者對行為指標的解讀，片中說『打完架後哈欠變多』，不說『海獅會焦慮所以打哈欠』。Palagi 與 Massen 在 2025 年 MacaqueNet 聯合論文合著，Massen 又常與 Gallup 合著；本片沒有用 Massen 的論文，逐對查只算二度相連（見 research_groups）。 覆核 V157（2026-11-13）：summary 刪『雌雄之間沒有差別』或補『作者說雄性太少，此結論要謹慎』。",
+      "author_cache": {
+        "file": "stw27/f137src/PMC6872524.xml（全文 XML）；PMC6872524.txt（去標籤稿）",
+        "sha256_prefix": "a7d31903c78dd423（xml）／02f83e36a64e7b2b（txt）",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H77-S020",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4992016/fullTextXML",
+      "canonical_url": "https://doi.org/10.1007/s00114-016-1395-7",
+      "title": "Investigating determinants of yawning in the domestic (Equus caballus) and Przewalski (Equus ferus przewalskii) horses",
+      "publisher": "The Science of Nature（Naturwissenschaften）103:72（2016）；Górecka-Bruzda A、Fureix C、Ouvrard A、Bourjade M、Hausberger M（波蘭科學院、雷恩第一大學）",
+      "version": "出版社開放取用版（CC BY 4.0，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC4992016/fullTextXML，curl 預設標頭（200）；本機轉純文字後讀（PMC4992016.txt）",
+      "reading_scope": "讀完：摘要、Introduction、Methods（群體、觀察時段、分類、統計）、Results〈Przewalski horses〉〈Domestic horses〉〈Comparison between species〉、Discussion 前四段；表 1 只核對閹馬一列。",
+      "locator": "Methods（19 匹普氏野馬、16 匹家馬，半自然放牧）；Results 普氏野馬段（中位數每小時 0.6 次；成年單身公馬 1.50 次對一歲母馬、公馬各 0.50 次；與攻擊行為 rs = 0.59，只看公馬 rs = 0.64）；Comparison 段（兩種馬的哈欠頻率沒有差別）；Discussion 第一、二段（母馬與閹馬約每小時 0.07 次）",
+      "summary": "研究者在半自然的大圍場觀察 19 匹普氏野馬與 16 匹家馬。兩種馬的哈欠頻率沒有差別，所以馴化本身沒有讓馬多打哈欠。差別在性別與社會處境：成年的單身公馬一小時打約 1.5 次，比一歲大的小母馬、小公馬（各約 0.5 次）多；母馬和閹馬一小時只有約 0.07 次。普氏野馬裡，打架越多的個體哈欠越多。作者推測，觸發哈欠的可能是互動的強度，而不是好壞。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "樣本小（成年單身公馬 N = 8、閹馬 N = 3，與閹馬的比較只達趨勢 P = 0.062）；相關不是因果；Results 中家馬段的數字與普氏野馬段有混排，片中只用摘要與 Discussion 也寫到的數字。Bourjade M 與 Massen 在 2024 年一篇獼猴眼色論文合著，屬二度相連（見 research_groups）。 覆核 V157（2026-11-13）：summary 刪『母馬和閹馬一小時只有約 0.07 次』；limitations 補：Discussion 的 0.07『whether wild or domestic』與表 2 家馬母馬平均 0.27、中位數 0.33 矛盾，0.07 只是 3 匹閹馬的平均，野馬樣本沒有成年母馬。",
+      "author_cache": {
+        "file": "stw27/f137src/PMC4992016.xml（全文 XML）；PMC4992016.txt（去標籤稿）",
+        "sha256_prefix": "c07ec5290a803699（xml）／6a003cf27f5e0ad3（txt）",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H77-S021",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3626133/fullTextXML",
+      "canonical_url": "https://doi.org/10.2196/ijmr.2241",
+      "title": "Born to Yawn? Understanding Yawning as a Warning of the Rise in Cortisol Levels: Randomized Trial",
+      "publisher": "Interactive Journal of Medical Research 1(2):e4（2012）；Thompson SB、Bishop P（伯恩茅斯大學）",
+      "version": "出版社開放取用版（CC BY 2.0，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC3626133/fullTextXML，curl 預設標頭（200）；本機轉純文字後讀（PMC3626133.txt）",
+      "reading_scope": "讀完：摘要、Introduction、Methods（20 人、三種誘發條件、唾液與肌電）、Results 全段與表 1–3 的描述、Discussion 前段；Introduction 中關於甘草與疾病的段落略讀。",
+      "locator": "摘要 Results（打哈欠組 t10 = −3.071、P = .01；兩組效果量中等、統計檢定力約 33–36%）；Results（樣本一：不打組 n = 9 平均 3.39、打組 n = 11 平均 2.97；樣本二：4.58 對 3.93；兩組之間兩次都沒有顯著差異）",
+      "summary": "20 名志願者看哈欠照片、讀無聊的文字等，研究者在開始和打完哈欠（或實驗結束）時各採一次唾液測皮質醇。打哈欠的 11 人第二次比第一次高，達統計顯著，作者據此說支持『哈欠時皮質醇升高』的假說。但沒打哈欠的 9 人第二次也比較高（3.39 → 4.58），兩組在兩次採樣都沒有顯著差別，作者自己算出的統計檢定力只有約三成。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "小樣本、檢定力低；不打組的上升未達顯著可能是樣本太少，這是讀者對數字的比較，片中要說『兩組都上升、兩組之間沒差』而不說『推翻』；作者的診斷工具構想不得進片。",
+      "author_cache": {
+        "file": "stw27/f137src/PMC3626133.xml（全文 XML）；PMC3626133.txt（去標籤稿）",
+        "sha256_prefix": "f20d8f934c9f98d2（xml）／20ef367366a85270（txt）",
+        "note": "作者快取在 2026-11-13 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "H77-001",
+      "question": "人的嗅覺受器基因比老鼠少很多，聞東西就一定比老鼠遲鈍嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "sense.olfaction.receptor_gene_count_not_threshold_mouse_human",
+      "answer_target": "不一定。林雪平大學等研究者用同一組六種含硫的捕食者氣味成分（出自鼬類與臭鼬的肛腺分泌物、貓與狐狸的尿），測 6 隻小鼠、4 隻蜘蛛猴和 12 名受試者能聞到的最低濃度。小鼠有四種比人靈敏，但另外兩種反而是人比小鼠靈敏；人和蜘蛛猴只在兩種上有差，一勝一負。有些受試者對其中四種氣味，空氣中濃度低於一兆分之一還聞得到。研究者認為，這支持「一個物種有多少功能嗅覺受器基因，不太能預測牠對某種氣味有多靈」的看法。",
+      "scope": "只講本篇六種氣味；受器基因數（小鼠約 1,060、人約 390）是原文引用前人，只能當背景字卡並標「引用」；三物種測法不同（小鼠自動嗅覺計、猴開箱、人三選一擠瓶），人用的是 12 人平均、動物是個體值；不說「人比老鼠靈」。",
+      "source_ids": [
+        "H77-S003"
+      ],
+      "source_locator": "Results『Human subjects』第 1–3 段、『Comparison between species』全段；Discussion 第 6 段",
+      "premise_status": "screened",
+      "notes": "算 1.0（同作者）：跨物種勝負 0.75＋個人低於 1 ppt 0.25。G3 Laska 網 1.0。 原提案 F128-001（目標 F128-T1，原角色 hook；依本池欄位記為 segment）。非作者覆核 V148（2026-11-13）改字後收；數字、條件與主詞都在原文；只把「分泌物」改成肛腺分泌物或尿、「研究者據此認為」改成原文的「支持……的看法」，並補上人類是平均值、測法不同。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "轉折一的起點：基因多≠每種都比較靈。",
+        "visual": "三個物種的剪影並排，六種氣味瓶下方標勝負箭頭；人贏的兩瓶亮起。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "H77-002",
+      "question": "狗的鼻子到底能聞到多淡的味道？每隻狗都一樣靈嗎？",
+      "domain": "動物行為與感官",
+      "mechanism_key": "animal.dog_amyl_acetate_threshold_ppt_individual_spread",
+      "answer_target": "受過訓的狗可以很靈，但狗與狗差很多。林肯大學等研究者讓 10 隻偵測犬在八個位置的轉盤上，從 7 個只裝礦物油的樣本裡找出溶在礦物油裡的乙酸戊酯，訓練約 30 週後測最低能找出的濃度：各隻狗估計的閾值，從稀釋到 4,000 萬分之一，一路到 15 億分之一，狗與狗之間差很多。研究者也提醒，濃度很低時溶劑同時是對照樣本，狗的差異可能有一部分只是「寧可誤報、還是寧可漏掉」的取捨，不一定是鼻子真的不同。",
+      "scope": "只講液體稀釋比；原文括號裡的 30 ppb、1.5 ppt 與稀釋比及 Methods 的校正值（1:1,000＝0.01 ppm）互相矛盾，片中不用 ppb／ppt，也不寫成「空氣中濃度」；不能和 F128-001 的人類氣相閾值相比；不講醫療偵測；不自算倍數。visual 改為「一條從 1/4,000 萬到 1/15 億的稀釋刻度尺」。",
+      "source_ids": [
+        "H77-S004"
+      ],
+      "source_locator": "Results 第 1 句與圖 2 說明；Methods 閾值訓練與測試段；Discussion 第 3、5 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：靈敏度的絕對值因單位矛盾不能講，只剩稀釋比範圍與個體差異。G4 Miklósi／Mills 網：本條 0.5＋F128-007 1.0＝1.5。 原提案 F128-002（目標 F128-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V148（2026-11-13）改字後收；作者把稀釋比與原文括號內的 ppb／ppt 並列成「15 億分之一（1.5 ppt）」，觀眾會讀成相等；但 15 億分之一若當比例約是 0.67 ppb，且原文自己的校正值也對不上。改成只用稀釋比並寫明矛盾，下修 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "建立「狗很靈」的事實，同時埋下「差異來自個體與訓練」的伏筆。",
+        "visual": "一條從 30 ppb 到 1.5 ppt 的刻度尺，10 個狗頭像散落在不同位置。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "H77-003",
+      "question": "同卵雙胞胎住同一個家、吃同樣的飯，狗分得出他們的氣味嗎？",
+      "domain": "動物行為與感官",
+      "mechanism_key": "animal.dog_scent_lineup_monozygotic_twins_children",
+      "answer_target": "在這個實驗裡分得出來。捷克研究者請 10 隻專做氣味比對的警犬，比對兩對同卵雙胞胎（5 歲、7 歲）和兩對異卵雙胞胎的氣味布；狗先聞一個起始氣味，再到七個罐子裡找相同的。每隻狗做 12 次比對，總共 120 次判斷全對：雙胞胎兩人的氣味不會被配成一對，而同一個人分兩次採的氣味會被配起來。",
+      "scope": "只有兩對同卵雙胞胎、都是兒童，狗是長期受訓的比對犬；不說『任何狗都能』；不評價司法用途；原文前言提到早期研究結果不一（引用，不算）。",
+      "source_ids": [
+        "H77-S005"
+      ],
+      "source_locator": "Abstract；Results；Discussion 第 1 段；Methods 列隊段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）。G7 Pinc 網 0.5。 原提案 F128-003（目標 F128-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V148（2026-11-13）照原稿收；逐句相符。只提醒：狗是專做氣味列隊比對的認證警犬，片中要說；它展示的是受訓狗的鑑別力，和「人鼻 vs 狗鼻」只間接相關，清單感高時可刪（見 drop_if）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "讓觀眾感受狗鼻的「解析度」，接到下一章它怎麼取樣。",
+        "visual": "七個玻璃罐排成一列，兩個長得一樣的小孩剪影各連到不同罐子。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "H77-004",
+      "question": "狗嗅聞時一直噴氣，不會把要聞的味道吹走嗎？",
+      "domain": "動物行為與感官",
+      "mechanism_key": "animal.dog_sniff_expiratory_jets_entrain_odor_3d_nose",
+      "answer_target": "不會，吐出的氣反而幫忙把味道拉過來。美國標準與技術研究院等研究者用先前依一隻拉布拉多混種磁振造影重建的狗鼻模型 3D 列印出來，用紋影攝影看氣流：吐氣時每個鼻孔各噴出一道往下、往兩側斜的亂流氣柱，這些氣柱把鼻子前方帶著氣味的空氣往鼻孔方向捲過來，下一口吸氣再吸進去。以每吸進一公升空氣收到多少氣味分子來比，一吸一吐的嗅聞比一直吸多：距離 3 公分的二硝基甲苯約 8 倍；另一種化學蒸氣（二甲基甲醯胺）在 10 公分約 4 倍，20 公分約 18 倍。",
+      "scope": "是模型和活塞，不是活狗；「不會直接吹散正前方的氣味」「每秒約 5 次」「吸氣只吸 1–2 公分內」都是前言引用前人，不算；可說「與先前對活狗的觀察一致」；兩種蒸氣比重不同、量法不同，作者自承不宜直接比較；不講爆裂物偵測器改裝。",
+      "source_ids": [
+        "H77-S006"
+      ],
+      "source_locator": "Results 第 1–2 節與圖 1–3 說明；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（同作者）。G5 Craven 網：本條 0.75＋F128-005 0.5＋F128-006 0.75＝2.0（封頂）。 原提案 F128-004（目標 F128-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V148（2026-11-13）改字後收；倍數與距離都在 Results；刪掉來自前言引用的「不會直吹前方」，把「同樣吸進一公升」改成原文的每公升正規化，模型來源標為先前研究。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把「狗靈」的一部分歸到怎麼聞，而不只鼻子裡有什麼。",
+        "visual": "側視狗鼻，吐氣時兩道斜向下的煙柱，前方的色煙被捲向鼻孔；倍數疊字。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "H77-005",
+      "question": "狗是狼馴化來的，鼻子裡的嗅覺基因跟狼一樣多嗎？",
+      "domain": "動物演化",
+      "mechanism_key": "animal.dog_vs_wolf_functional_or_genes_cribriform_plate",
+      "answer_target": "平均比狼少。加州大學洛杉磯分校、德州農工大學等研究者數了 30 個犬種、111 隻狗與灰狼、郊狼完整可用的嗅覺受器基因：個別狗在 749 到 822 個之間，狼在 784 到 927 個之間，狗平均明顯比狼少；量頭骨上讓嗅神經穿過的篩板，狗的相對大小也比狼小。研究者推測，馴化後狗多靠人供應食物，對嗅覺的天擇壓力放鬆了，但也可能只是族群瓶頸造成的流失。",
+      "scope": "「放鬆天擇」與「瓶頸」都是作者的推測，兩說並陳；不說狗聞得比狼差（本篇沒測行為）；澳洲野犬（820 個）是例外可當一句旁白，不另算。",
+      "source_ids": [
+        "H77-S007"
+      ],
+      "source_locator": "Results『Olfactory Genomics』第 2–3 段；『Morphology』第 2 段；Discussion 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）。篩板的比較對象是「野生犬科（狼與郊狼）」，片中照寫。 原提案 F128-005（目標 F128-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V148（2026-11-13）照原稿收；數字、比較對象與兩個推測都在原文；兩說並陳、不說狗聞得比狼差，作者 scope 已寫。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "轉折二的鋪陳：狗鼻的「硬體」未必比祖先好。",
+        "visual": "狼與狗頭骨剖面並排，篩板發亮；下方兩條基因數長條。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "H77-006",
+      "question": "米格魯、尋血獵犬這些「嗅覺犬」，天生的鼻子硬體比較好嗎？",
+      "domain": "動物演化",
+      "mechanism_key": "animal.scent_hound_no_or_gene_or_cribriform_advantage",
+      "answer_target": "在基因與骨骼上找不到。同一篇研究把犬種分組比較：嗅覺犬（米格魯、尋血獵犬、臘腸狗，或常用作偵測犬的德國牧羊犬、拉布拉多、黃金獵犬）平均有 775 個完整嗅覺受器基因，非嗅覺犬 778 個，沒有差別；篩板大小也沒有比別的狗大，跟靠眼睛打獵的視覺型獵犬比也一樣；嗅覺上皮的基因表現同樣沒找到差別（但樣本少）；短鼻、中鼻、長鼻犬種之間，基因數和篩板也沒差。名氣最大的尋血獵犬落在所有犬種的正中間。研究者推測，優秀的偵測犬多半靠行為特質和訓練，而不是鼻子構造或基因上的優勢——這一點本篇並沒有直接測。",
+      "scope": "只講基因數、篩板、表現量；「跟視覺型獵犬比」只限篩板（骨骼）；「靠行為與訓練」必須標「研究者推測、本篇沒測行為」；不得接到 F128-010 的人類訓練研究組成因果（不同物種、不同研究）；不說「嗅覺犬不比別的狗會聞」。",
+      "source_ids": [
+        "H77-S007"
+      ],
+      "source_locator": "Results『Olfactory Genomics』第 4–5 段、『Morphology』第 2–4 段、『Gene Expression』；Discussion『Scent Hounds in Name Alone』第 1、4 段；Abstract 末句",
+      "premise_status": "screened",
+      "notes": "算 0.75（同作者）。G5 封頂 2.0。 原提案 F128-006（目標 F128-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V148（2026-11-13）改字後收；原文支持；改正兩處：「跟視覺型獵犬比也沒差」原文只講骨骼；「研究者因此認為」改成推測並註明沒測行為。作者 turns 把本條的訓練推測與 F128-010（人練嗅覺）並列成「練習佔一部分」，是跨研究接因果，刪。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "轉折二：觀眾以為嗅覺犬是鼻子天生特別，研究者在硬體上找不到差別。",
+        "visual": "尋血獵犬照片從排行榜第一名滑到中間；三個長條（基因、篩板、表現量）幾乎一樣高。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "H77-007",
+      "question": "那嗅覺犬實際找東西，有比較厲害嗎？短鼻狗、狼又怎樣？",
+      "domain": "動物行為與感官",
+      "mechanism_key": "animal.breed_group_natural_detection_task_closed_lid_wolf_retest",
+      "answer_target": "在一個不用訓練的找肉測驗裡，有。匈牙利羅蘭大學的研究者把生火雞肉藏在四個倒扣陶盆之一下的盒子裡，盒蓋從全開、5 個孔、3 個孔、1 個孔到完全密封分五級，測了 41 隻家犬和 12 隻人養大的灰狼。前四級各組差不多；到最難的全密封，嗅覺犬種明顯勝過短鼻犬種（勝過一般犬種只是接近顯著），嗅覺犬和狼高於亂猜，一般犬和短鼻犬則跟亂猜沒差。狼第一次測得出奇地差，挑出來重測的 5 隻在最難一級到約九成，狗重測則沒變。研究者也承認，這個測驗分不開嗅覺和動機、疲勞、吃飽這些因素。",
+      "scope": "與 F128-006 並列，只呈現「硬體沒差、這個測驗表現有差」的張力，不替兩篇下統一結論，也不說「所以是訓練造成」（本篇是不經訓練的測驗）；嗅覺 vs 一般犬 p = .053 不能說「勝過」；重測狼是 Level 5 未滿分者；另一篇哈巴狗勝過德國牧羊犬的研究是引用，只能說「也有研究得到相反結果」。",
+      "source_ids": [
+        "H77-S008"
+      ],
+      "source_locator": "Methods『Subjects』與圖 2；Results 第 1–4 段；Discussion 第 2、4–5 段",
+      "premise_status": "screened",
+      "notes": "算 1.0（同作者）。G4：0.5＋1.0＝1.5。 原提案 F128-007（目標 F128-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V148（2026-11-13）改字後收；主要數字相符；補上「勝過一般犬只接近顯著」與重測樣本是挑選的。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "轉折二的另一半：表現差異存在，但可能來自動機與經驗。",
+        "visual": "四個陶盆、五種蓋子由開到密，不同狗頭像在最後一級分成兩群。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "H77-008",
+      "question": "人蒙著眼、只用鼻子記住房間裡一個位置，之後找得回去嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "sense.human_odor_map_relocation_two_essential_oils",
+      "answer_target": "比完全沒線索時準一些，但差距很小。柏克萊加州大學的研究者讓 45 名大學生戴眼罩、耳塞，先被繞圈帶到失去方向，再被帶到房間裡一個隨機點，房間兩處各放一種精油；他們在點上聞一分鐘，再被繞路帶回起點，然後拿掉所有遮蔽、自己走回剛才那一點。記位置時只能用鼻子的那一輪，平均離目標約 289 公分；連鼻子也被夾住、什麼都感覺不到的對照輪約 361 公分，兩者差異剛好過統計門檻（p = 0.049）；45 人裡有 32 人用鼻子那輪比較準。要注意的是，連對照輪都比隨機亂站（約 529 公分）準，所以真正的比較是 289 對 361。離精油近的人並沒有比較準，研究者推論大家是在整合兩種氣味的分布。",
+      "scope": "找回時眼睛是張開的，片中不得說「蒙眼走回去」；三種情況順序固定、嗅覺輪先做；p = .049 必須講「差距很小、剛過門檻」；房間小、兩種氣味；前言「人能趴著追氣味」「人能分辨一兆種」都是引用，不用；不說「人能像狗一樣導航」。",
+      "source_ids": [
+        "H77-S009"
+      ],
+      "source_locator": "Methods 測試程序；Results『Accuracy』與『odor source distance』段；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：單一小實驗、勉強顯著，「離氣味源遠近無關」只是無相關結果，併入不另算。G6 Jacobs 網 0.5。 原提案 F128-008（目標 F128-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V148（2026-11-13）改字後收；作者把流程寫成「聞完被繞圈帶到失去方向再走回去」，實際是先失去方向、聞完被帶回起點後拿掉眼罩再找；也把 529 公分寫成像是亂猜基準，但對照組同樣勝過隨機，所以「比瞎猜好一點」不是本篇的比較。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把「人鼻很遜」的印象往回拉：人的鼻子平常沒被拿來用。",
+        "visual": "俯視房間格線，一個蒙眼人走回標點，三個圓圈標 289／361／529 公分。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "H77-009",
+      "question": "用氣味當路標，記一個月會比看圖片忘得快嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "sense.virtual_maze_odor_vs_picture_landmarks_one_month",
+      "answer_target": "這個實驗裡，氣味路標沒有比較快被忘，但也不能說記得比較牢。德國吉森大學的研究者讓 52 人在虛擬迷宮裡看一條有 18 個路口的路線，每個路口有一個地標：一組看圖片，一組由實驗者遞上一小瓶氣味；之後在每個路口選往哪走。選對的比例，氣味組當下 0.59、一個月後 0.53，圖片組 0.66、0.55；兩組沒有顯著差別，氣味組也都明顯高於亂猜的三分之一。一個月後兩組整體都下降，雖然單看圖片組下降顯著、氣味組不顯著，但「下降幅度兩組不同」這件事在統計上並不成立。另外，要認出「這個地標剛剛出現過」，圖片（約九成七）明顯勝過氣味（約七成五）。",
+      "scope": "只用 Results 的 0.59／0.53，不用 Discussion 的 64%／55%；不得說「氣味路標一個月都沒退步」或「氣味比圖片記得牢」（交互作用不顯著）；原文提到三個組別卻只分析兩組，寫稿前要查；虛擬環境、52 人。",
+      "source_ids": [
+        "H77-S010"
+      ],
+      "source_locator": "Results 兩個『Visual versus olfactory』段與時間比較段；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：「圖片退步、氣味不退步」的對比在交互作用不顯著下不能算，只剩「氣味路標可用、與圖片無差」與「辨認較差」。G8 Hamburger 網 0.5。 原提案 F128-009（目標 F128-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V148（2026-11-13）改字後收；作者照單組配對檢定寫「圖片顯著退步、氣味退步不顯著」，暗示氣味較不易忘；但原文的時間×模態交互作用不顯著（p = 0.254），兩組都隨時間下降。改寫並下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "人用氣味記路不差，但「認得是哪個味道」比較弱，為最後一章鋪梗。",
+        "visual": "迷宮俯視，路口一邊是圖片框、一邊是小瓶子，一個月後圖片淡出、瓶子還在。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "H77-010",
+      "question": "人的嗅覺能練嗎？練一個多月能跟品酒專業人士比嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "sense.odor_memory_game_training_vs_wine_professionals",
+      "answer_target": "在這個研究裡，練過的人追得很近。斯德哥爾摩大學等研究者讓 72 名成人在家每天玩約 10 分鐘的配對遊戲、持續約 40 天：一組配氣味（裝茶葉的錫罐），一組配看不懂的韓文、中文字符。訓練前，15 位葡萄酒專業人士在嗅覺閾值和氣味辨別兩項勝過氣味組；訓練後，氣味組在辨別、命名、辨認、閾值四項都和專業人士沒有顯著差別（閾值那項仍有中等差距，只是不顯著），只練字符的那組在閾值和辨別兩項仍比不上專業人士。",
+      "scope": "只說「沒有顯著差別」，不說「一樣好」；閾值 p = 0.07、g = 0.56 要講；專業人士年紀較大、只測一次；視覺組只在閾值與辨別兩項落後；圖形記憶遷移與失智應用不講；不給任何訓練建議；不得與 F128-006 的狗「訓練說」接成因果。",
+      "source_ids": [
+        "H77-S011"
+      ],
+      "source_locator": "Methods『Participants』與訓練程序；Results『Comparison to wine professionals』；勘誤全文",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）。G1 Gerkin／Olofsson 網：F128-011 1.0＋本條 0.5＝1.5。 原提案 F128-010（目標 F128-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V148（2026-11-13）改字後收；作者寫「只練文字的那組仍比不上」，原文只在閾值與辨別兩項比不上；並補閾值差距的效果量，避免觀眾讀成「追平」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "與 F128-006 的「訓練說」呼應：鼻子好不好，練習佔一部分。",
+        "visual": "兩條進度條，一條從低處爬到和酒杯圖示同高。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "H77-011",
+      "question": "「人能分辨一兆種氣味」是怎麼算出來的？換個算法會差多少？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "sense.trillion_odors_estimate_fragile_upper_bound_reanalysis",
+      "answer_target": "差到幾乎什麼答案都算得出來。2014 年有研究說人至少能分辨一兆種氣味；亞利桑那州立大學的兩位研究者拿那篇公開的原始資料、照原方法重算，發現結果會隨受試人數、每類測幾組、顯著標準的選擇大幅變動，可以相差 25 個數量級：假設新受試者表現差不多，只要多找約 100 人，同一套算法就會得出「這個框架裡所有超過 10^29 種的混合全都分得出來」；判定標準稍嚴一點，又會變成不到 5,000 種。他們還指出，原本那條公式算的是上限、不是下限，所以就算其他都對，原資料頂多支持「最多約一兆種」，下限可能只有約一萬。",
+      "scope": "Bushdid 2014 原文與 Science 2024 勘誤（PMID 38386753）都沒讀，片中只能說「2014 年的研究，依兩篇重分析的轉述」，原研究的設計只用轉述一句、不另算；寫稿前必須先讀勘誤，若勘誤改了原估計或公式，本條要改寫；10^29 與 5,000 是本篇的數字，不得和 F128-012 的「10 種」併成「從 10 種到 10^29 種」的一個區間；不說原作者造假；本篇是重分析，不是新實驗。",
+      "source_ids": [
+        "H77-S001"
+      ],
+      "source_locator": "Introduction 第 1–3 段；表 2；圖 3 補充圖 1；An upper or a lower bound? 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 1.0（作者 1.25）：脆弱性 0.5＋上限非下限 0.5；作者另算的「化合物庫加倍放大 2^30 倍」0.25 不在 answer_target 裡，刪。G1 合計 1.5。 原提案 F128-011（目標 F128-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V148（2026-11-13）改字後收；數字都在原文；作者條數裡算了答案沒寫的 2^30（0.25），刪；並禁止把兩篇的數字併成一個區間（作者的轉折二就是這樣寫的）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "轉折三：觀眾記得「一兆種」，重算顯示這個數字站不住。",
+        "visual": "一根刻度從 10^3 拉到 10^29 的長尺，中間「一兆」的旗子被推來推去。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "H77-012",
+      "question": "同一套算法拿去算顏色，會得到什麼？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "sense.trillion_method_positive_control_color_microbe_ten_odors",
+      "answer_target": "會算出荒謬的答案。加州理工學院的研究者把同一套估算法套在答案已知的系統上：一隻只會回應「好吃、難吃、普通」三種的玩具微生物，算出來能分辨約 9 千億種氣味；模擬人類色覺（實驗上已知約幾百萬色），算出至少 10^27 種顏色，推到極限是無限多。反過來，他用一個只有一個維度的簡單模型就能擬合原研究的資料，而那個模型只分得出約 10 種氣味。原研究實際測到可分辨的只有 148 對，所以那份資料跟「10 種」和「一兆種」都說得通——不是說人只能分辨 10 種，而是這份資料分不出答案。",
+      "scope": "「人能分辨幾百萬色」「約 400 種受器」是引用前人，只當背景；不說「人只能分辨 10 種」；本篇是模擬；「10 種」只能歸 Meister，不與 F128-011 的 10^29 併成同一區間。",
+      "source_ids": [
+        "H77-S002"
+      ],
+      "source_locator": "Introduction 第 4 段（148 對）；Results 第 2–4 節與圖 1–3 說明",
+      "premise_status": "screened",
+      "notes": "算 1.0（作者 1.25）：正對照（微生物＋色覺）0.5＋一維模型 10 種 0.5；「原估計不可靠」的結論與 F128-011 相同，不重算。G2 Meister 網 1.0。 原提案 F128-012（目標 F128-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V148（2026-11-13）改字後收；數字相符；結論與 F128-011 重疊，下修 0.25；補「不是說人只能分辨 10 種」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "轉折三收束：不是人鼻多神，是算法會把任何系統算成「很多」。",
+        "visual": "三個框並排：微生物 9×10^11、色覺 10^27、一維環只有 10 格；148 這個數字放大。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "H77-013",
+      "question": "都說氣味最能勾起往事，那些記憶真的比較清楚嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "sense.proust_meta_analysis_selective_odor_memory_advantage",
+      "answer_target": "比較有感覺，但不一定比較清楚。布加勒斯特大學的研究者合併 18 篇實驗、共 1,330 人，比較用氣味和用圖片、聲音、文字當提示喚起的往事：氣味喚起的記憶情緒較強、較愉快、比較有「回到當時」的感覺，而且年代較久遠，效果大多偏小；但在細節多寡和鮮明程度上，氣味沒有顯著優勢。研究者的結論是，氣味的優勢是選擇性的，不能完全證實「聞到味道就鮮明想起往事」的普魯斯特現象。",
+      "scope": "統合分析；「年代較久遠」只有 8 個比較；樣本越大的研究效果越小，要講；不講臨床族群與治療用途；L164 只當機制背景。不放進 F128-T1（離題，見 non_author_reviews），留池作記憶題的候選。",
+      "source_ids": [
+        "H77-S012"
+      ],
+      "source_locator": "Results『Characteristics』；『Emotional intensity and pleasantness』；『Evocativeness』；『Age of AMs』；『Specificity and vividnes』",
+      "premise_status": "screened",
+      "notes": "算 1.0（同作者），但不計入 F128-T1。G9 Bobei 網。 原提案 F128-013（目標 F128-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V148（2026-11-13）改字後收；原文相符，可入池；但它談的是記憶的特性，不回答「人鼻是否比狗差」，從 F128-T1 移出。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "收尾前的反轉：人鼻的「特殊能力」也被誇大了，但不是假的。",
+        "visual": "一杯茶與瑪德蓮，旁邊七個指標的長條，四條亮、兩條灰。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "H77-014",
+      "question": "打哈欠的前後，大腦的溫度會變嗎？",
+      "domain": "動物行為與感官",
+      "mechanism_key": "animal.yawn_brain_temperature_rat_probe",
+      "answer_target": "在大鼠身上量到會。研究者把溫度探針埋進七隻大鼠的前額皮質，四隻在測試中打了哈欠，共 21 次。腦溫在哈欠前約一分鐘開始往上，平均要到哈欠開始後約 18 秒才到頂，接著往下、回到原本的水準；單純打哈欠（13 次）後三分鐘平均降了 0.11°C，伸懶腰前後也有類似的起落。作者自己說這只是相關：哈欠前的血流或激素變化也可能讓腦溫先升，不能證明是『腦熱了才打哈欠』。",
+      "scope": "只說大鼠、淺層皮質、n＝4 隻 21 次（單純哈欠 13 次）；不說『證明打哈欠會幫腦降溫』，不換算成人腦（原文 22% 的比擬不用）；Introduction 引 Provine 1987 不是本篇結果。原寫『打哈欠時轉為往下』要補『平均到哈欠後約 18 秒才到頂』，避免觀眾以為一張嘴就降溫。",
+      "source_ids": [
+        "H77-S013"
+      ],
+      "source_locator": "Methods〈Subjects〉；Results 第一至三段；Discussion 第一、二段",
+      "premise_status": "screened",
+      "notes": "算 1.0（同作者）。Gallup 網 001＋002＝2.0 封頂。 原提案 F137-001（目標 F137-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V157（2026-11-13）改字後收；數字、條件都在原文；只補上峰值落在哈欠後約 18 秒、−0.11°C 是單純哈欠 13 次的平均，以免把迴歸斜率的轉向說成一張嘴就降溫。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "你打哈欠時，大鼠的大腦溫度在變——但先升還是先打，作者自己也說不準。",
+        "visual": "大鼠剪影頭部一支細探針，下方一條溫度曲線：哈欠前一分鐘上坡、哈欠標記處轉下坡；曲線旁標『n = 4 隻、21 次』。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "H77-015",
+      "question": "天氣越熱，人越常打哈欠嗎？",
+      "domain": "行為與學習",
+      "mechanism_key": "human.yawn_thermal_window_season",
+      "answer_target": "在美國亞利桑那州土桑量到的是相反。研究者在戶外請路人看 20 張打哈欠的照片，再自填有沒有跟著打：二月（陰影下平均約 22°C）80 人中 36 人說有（45.0%），六月初夏（約 37°C）只有 19 人（23.8%）。把前一晚睡多久、在戶外待多久和濕度一起考慮，氣溫是唯一顯著的因子。夏天在外面待越久越少打；冬天反而待越久越常打，研究者推測是因為測試都在大太陽下。這個結果符合他們事先根據『溫度窗』假說做的預測：外面的空氣要比身體涼，打哈欠才可能有降溫的用處，氣溫接近或超過體溫時就該變少。",
+      "scope": "只談氣溫與哈欠多寡，不講為什麼會被別人的哈欠引發（LEG-S05 暫緩題）；不在片中用『傳染』二字當機制，只說『看照片後有沒有打』。自陳、兩季不同的人、田野條件；溫度是陰影讀數、受試者在陽光下。『溫度窗』是事先提出的假說，不寫成本篇發現；不說『夏天打哈欠是因為熱』或任何降溫建議。",
+      "source_ids": [
+        "H77-S014"
+      ],
+      "source_locator": "摘要；Methods 第一、二段；Results 第一至三段；Discussion 第一段",
+      "premise_status": "screened",
+      "notes": "算 1.0（同作者）。Gallup 網封頂 2.0。與 LEG-S05 查核包的降溫列相鄰（該列有 Massen 2014 維也納冬 1.4°C 18.3%、夏 19.4°C 41.7%，是溫度窗的冷端），本條是熱端、不同研究，不扣條；但若日後重啟 S05，兩者要互相對照。 原提案 F137-002（目標 F137-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V157（2026-11-13）改字後收；數字都在原文。改正：作者寫『研究者的解讀是溫度窗』——溫度窗是 2007 年就提出、本篇拿來預測的假說，不是看完資料才得出的解讀；22°C 是陰影讀數；冬天『待越久越常打』原文另有陽光的解釋，要一起說。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "熱到跟體溫差不多時，哈欠反而變少——降溫說要的是『比你涼的空氣』。",
+        "visual": "左右兩張街景：冬天的土桑 22°C 與夏天 37°C，各 80 個小人，冬天 36 個張嘴、夏天 19 個；中間一條溫度計，標出『體溫』線。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "H77-016",
+      "question": "還在肚子裡的胎兒會打哈欠嗎？",
+      "domain": "行為與學習",
+      "mechanism_key": "human.fetal_yawn_4d_ultrasound_count",
+      "answer_target": "超音波看得到像哈欠的動作。英國一項研究用 4D 超音波追蹤 15 名健康胎兒，在 24、28、32、36 週各錄一次臉，把『嘴張得比合得慢』的張口都算成哈欠：58 次掃描共記到 56 次哈欠、27 次一般張口，而且每 600 秒的哈欠數從 24 週平均 1.93 次降到 36 週的 0 次，一般張口也一起變少。作者據此認為哈欠可能和神經發育成熟有關。不過這把尺後來被質疑太寬（見下一題）。",
+      "scope": "只講本篇的認法與數字，遞減必須和 F137-004 同章並列，不得單獨當結論；刪掉作者加的『胎兒還沒吸過一口空氣，所以哈欠不只是吸一大口氣』——兩篇原文都沒有這個推論，『哈欠不是缺氧』的一手來源 Provine 1987 未讀到。不得引申為產檢或健康判斷。",
+      "source_ids": [
+        "H77-S015"
+      ],
+      "source_locator": "Methods 編碼定義段；Results 第一、三段；Discussion 第一、二段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：本篇的計數方法已被後作證明特異度低，56 次哈欠與遞減都可能是一般張口；『胎兒有哈欠』本身 F137-004 也給得出。保留本條的價值只在當轉折二的『舊說法』。Reissland 網與其他各網逐對查無合著（V157 補查）。 原提案 F137-003（目標 F137-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V157（2026-11-13）改字後收；數字對。改正：作者在答案與轉折二加了『泡在羊水裡、還沒吸過空氣，所以哈欠不只是吸一大口氣』，是作者推論，原文沒有；補上一般張口也一起下降（這正是後作質疑的關鍵）；因方法已被質疑，下修 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "肺裡還沒有空氣，也在打哈欠——那哈欠就不只是『吸一大口氣』。",
+        "visual": "超音波般的灰階胎兒側臉，嘴慢慢張開、快速合上；旁邊兩條時間條：張口段長、閉口段短。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "H77-017",
+      "question": "胎兒的哈欠真的會隨週數越打越少嗎？",
+      "domain": "行為與學習",
+      "mechanism_key": "human.fetal_yawn_recount_strict_coding",
+      "answer_target": "換一把更嚴的尺，至少在 23 到 31 週之間看不到。義大利的研究者用 4D 超音波看 32 名健康胎兒（每名掃一次），改用嬰兒臉部動作編碼系統定義哈欠；另一位編碼者抽看三成影片，哈欠與一般張口的分類完全一致。結果哈欠每小時平均 3.63 次、中位數約兩次，和週數沒有關係；隨週數變少的是一般張口。他們認為先前『越長越少打』的結果，是舊認法把許多一般張口也算成哈欠。這篇的前言也整理了雙方的說法：胎兒的體溫主要靠母體調節，有學者因此認為降溫說解釋不了胎兒的哈欠；支持降溫說的人則回應，子宮裡的行為出生後不一定是同一種用途。",
+      "scope": "只限 23–31 週、橫斷面（每名胎兒一次），作者自承樣本小、看不出細微趨勢，只能排除『急遽變化』；32–36 週沒有資料，不能說 36 週的 0 次被推翻。前言的雙方論點是引述（Walusinski；Gallup & Eldakar），不是本篇發現。出生體重的相關屬健康推論，不用。說『換一種認法結果不同』，不說『推翻』。",
+      "source_ids": [
+        "H77-S016"
+      ],
+      "source_locator": "Introduction 第七至十一段；Methods 編碼與信度段；Results 第一、二、四段；Discussion 第一、二段",
+      "premise_status": "screened",
+      "notes": "算 1.0（同作者）。Menin／Dondi 網：004 1.0＋005 0.5＝1.5。轉折二改以本條為主：觀眾聽完降溫說後以為它能解釋一切，本篇前言點出胎兒是降溫說的盲點、且『越長越少』是量法造成的。 原提案 F137-004（目標 F137-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V157（2026-11-13）改字後收；數字對。改正：作者寫『由兩位編碼者分類，分類一致』——第二位只看 30%；漏了樣本只到 31 週、每名一次、作者自承檢定力有限，片中不能說『越長大越少』整個消失，只能說在 23–31 週看不到。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一群胎兒的影像，換一把尺來量，結論就變了——哈欠研究最難的常常是『哪一下才算哈欠』。",
+        "visual": "兩排相同的張口動畫：上排舊尺把大部分都打勾，下排新尺只勾少數；旁邊兩條曲線，一條往下掉、一條持平。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "H77-018",
+      "question": "剛出生的早產寶寶什麼時候比較常打哈欠？",
+      "domain": "行為與學習",
+      "mechanism_key": "human.preterm_neonate_yawn_before_feeding",
+      "answer_target": "研究者比較了定時餵奶的前和後。義大利一間醫院錄下 58 名早產新生兒在餵奶前與餵奶後的自然行為：餵奶前平均每小時 3.60 次哈欠，餵奶後 1.50 次；安靜熟睡時一次都沒有，把熟睡的時間扣掉再算，餵奶前比較多的差異還在。作者認為，早產兒的哈欠已經受不只一種機制影響，例如飢餓和清醒程度。",
+      "scope": "只說『餵奶前比較多、熟睡時沒有』；餵奶前的錄影總是在前（審稿人點出的時間混淆）；不說『餓了就會打哈欠』，不談雙胞胎與健康風險，不給任何照護建議。",
+      "source_ids": [
+        "H77-S017"
+      ],
+      "source_locator": "Methods〈Participants〉與錄影段；Results 第一、二段與 QS 段；Discussion 第一段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：一個比較、一句結論；與片子核心問題（哈欠的功能、降溫說的證據）只間接相關，屬『哈欠受多種狀態調節』的旁證。Menin 網合計 1.5。清單感高時第一個可刪。 原提案 F137-005（目標 F137-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V157（2026-11-13）改字後收；數字對；『各約 30 分鐘』原文以觀察時段描述，片中不必給分鐘數。下修理由是與核心問題的距離與單一比較。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "還不會說餓的寶寶，餵奶前哈欠比較多，熟睡時一個都沒有。",
+        "visual": "保溫箱剪影旁一個鐘面：餵奶前的半小時有幾個小哈欠圖示、餵奶後只剩一兩個；熟睡區塊整段空白。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "H77-019",
+      "question": "大象什麼時候打哈欠？",
+      "domain": "動物行為與感官",
+      "mechanism_key": "animal.elephant_yawn_arousal_from_recumbency",
+      "answer_target": "幾乎都在躺下休息後起身的時候。研究者在南非一座象園用紅外線攝影機拍了 47 夜、545 小時，看九頭非洲象。七頭在白天的 243 小時裡只被看到 1 次哈欠；夜裡站著走動的時段也只有 4 次。從躺臥起身時則記到 133 次，而且天亮前最後一次起身，平均 54% 會打哈欠，夜裡前幾次起身只有 19%。作者認為這符合『哈欠和醒過來、讓大腦活躍起來有關』的說法。",
+      "scope": "圈養九頭象（白天只觀察七頭）；夜間對照時數原文寫 72 小時與 74 小時兩種，片中不說時數；暖燈與兩季合併，不能談溫度；54%、19% 是各象百分比的平均；『傳染』的六次觀察不用。",
+      "source_ids": [
+        "H77-S018"
+      ],
+      "source_locator": "Methods 夜間觀察段；Results〈Daytime〉與夜間段、表 2；Discussion 第一、二段",
+      "premise_status": "screened",
+      "notes": "算 1.0（同作者）。Hart 網與其他各網逐對查無合著（V157 補查）。是『醒覺／狀態切換』說最清楚的動物例子，直接回答『為什麼打』。 原提案 F137-006（目標 F137-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V157（2026-11-13）改字後收；數字都在原文。改正：243 小時是 6–9 月七頭象的白天時數，不是九頭；夜間對照時數原文自相矛盾（72／74），片中不給。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "大象一天幾乎不打哈欠，卻在天亮前最後一次爬起來時打得最多。",
+        "visual": "夜視綠色畫面裡一頭大象慢慢站起、鼻子下方張大嘴；時間軸上白天一個點、夜裡起身處一串點，最後一次起身最密。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "H77-020",
+      "question": "海獅在什麼時候打哈欠？",
+      "domain": "動物行為與感官",
+      "mechanism_key": "animal.sea_lion_yawn_rest_and_post_conflict",
+      "answer_target": "兩種時候都多。研究者在西班牙一座水族館分析 13 隻南美海獅、29 小時的錄影，記到 433 次哈欠：最多的是躺在平台上閉著眼、不跟同伴互動的休息時段。另外，打完架後的 30 秒內，不論出手的還是被打的，哈欠都比平常類似情境多。作者認為海獅的哈欠同時跟睏倦和短暫的緊張有關。",
+      "scope": "圈養單一群體；說『打完架後哈欠變多』，不說『海獅焦慮所以打哈欠』；雌雄差異因雄性太少不入稿（作者自說需謹慎），地位無關可不提。",
+      "source_ids": [
+        "H77-S019"
+      ],
+      "source_locator": "Methods〈Animals〉〈Data collection〉；Results 第一段與〈Post-Conflict〉段；Discussion 第一段",
+      "premise_status": "screened",
+      "notes": "算 1.0（同作者）。Palagi 網與本片其他來源作者逐對無直接合著（V157 以 Europe PMC 成對查詢補查 0 篇）；只經 Massen JJM 與 Gallup 網間接相連（Massen–Palagi，MacaqueNet 2025，PMID 39934999；Massen 與 Gallup AC 合著 7 篇），照本輪慣例不併網、記錄在案。 原提案 F137-007（目標 F137-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V157（2026-11-13）改字後收；數字與條件都對。刪『雌雄之間看不出差別』——原文自承雄性太少、此結論要謹慎；把『在醒與睡之間切換』改成原文較保守的『閉眼休息、不互動』，避免把作者引別的物種的說法當成海獅的量測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "海獅在打瞌睡時打哈欠，打完架也打——同一個動作，兩種場合。",
+        "visual": "兩格漫畫：左格海獅趴在岩台上半閉眼張嘴；右格兩隻海獅剛分開，兩隻都張大嘴；下方一行數字『29 小時、433 次』。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "H77-021",
+      "question": "馬打哈欠，是被人類養出來的習慣嗎？",
+      "domain": "動物行為與感官",
+      "mechanism_key": "animal.horse_yawn_males_aggression_not_domestication",
+      "answer_target": "不是。研究者在半自然的大圍場觀察 19 匹普氏野馬和 16 匹家馬，兩種馬的哈欠頻率沒有差別，作者認為馴化本身沒有讓馬多打哈欠。差別在性別與社會處境：普氏野馬裡，成年的單身公馬一小時打約 1.5 次，一、兩歲的小母馬、小公馬各約 0.5 次；越常打架的個體，哈欠也越多。作者推測，觸發哈欠的可能是互動的激烈程度，而不是互動的好壞。",
+      "scope": "刪掉『母馬和閹馬一小時只有約 0.07 次』：原文 Discussion 這一句與自己的表 2 矛盾（家馬母馬平均 0.27、中位數 0.33；0.07 只是 3 匹閹馬的平均），且野馬樣本沒有成年母馬。相關不是因果；與閹馬比較只是趨勢；家馬的攻擊相關不成立（家馬是與友好互動相關），不說『所有馬都是打架越多越打』；不談圈養福利。",
+      "source_ids": [
+        "H77-S020"
+      ],
+      "source_locator": "Methods；Results 普氏野馬段與 Comparison 段；Discussion 第一、二段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：去掉錯誤數字後剩『馴化無差』與『成年公馬多、與攻擊相關』；後者與海獅的衝突後增加指向同一答案（社會緊張），在片中是第二個例子。Hausberger 網與本片其他來源作者逐對無直接合著；只經 Massen 間接相連（Massen–Bourjade 2024，PMID 39582017），不併網、記錄在案。清單感高時第二個可刪。 原提案 F137-008（目標 F137-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V157（2026-11-13）改字後收；作者把原文 Discussion 裡與自身表格矛盾的 0.07 當成母馬與閹馬共同的值寫進答案與畫面（『母馬與閹馬 0.07』長條圖），須刪；『一歲』改『一、兩歲』（Methods 寫 1- and 2-year-old）。下修 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "野馬家馬打得一樣多，真正拉開差距的是成年公馬和打架。",
+        "visual": "兩群馬的剪影並排、上方哈欠計數相同；再切到一匹成年公馬與他馬對峙後張大嘴，旁邊小長條圖：公馬 1.5、小馬 0.5、母馬與閹馬 0.07。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "H77-022",
+      "question": "打哈欠是在提醒身體「壓力荷爾蒙升高了」嗎？",
+      "domain": "行為與學習",
+      "mechanism_key": "human.yawn_cortisol_small_trial_weak",
+      "answer_target": "目前證據很弱。英國一項研究讓 20 名志願者看哈欠照片、讀關於哈欠的無聊文字、看短片，在開始時和打完哈欠（沒打的人在結束時）各採一次唾液測皮質醇。打哈欠的 11 人第二次比第一次高，達統計顯著，作者據此說支持『哈欠時皮質醇升高』。但沒打哈欠的 9 人第二次也比較高，只是沒達顯著；兩組之間，兩次採樣都沒有顯著差別。作者自己算出的統計檢定力只有約三成。",
+      "scope": "只呈現原文數字與作者自承的檢定力；說『這份資料還分不出來』，不說『推翻』；不談診斷、疾病或健康。",
+      "source_ids": [
+        "H77-S021"
+      ],
+      "source_locator": "摘要 Results；Results 樣本一、二的描述與 t 檢定段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）。Thompson 網與其他各網逐對查無合著（V157 補查）。 原提案 F137-009（目標 F137-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V157（2026-11-13）改字後收；數字對；補『沒打的人第二次較高但未達顯著』，避免讓觀眾以為兩組上升一樣確定；『讀無聊的文字』改為原文的『關於哈欠的無聊文字』並補短片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "打了的人和沒打的人，口水裡的荷爾蒙一起升高——那就還說不上是哈欠的關係。",
+        "visual": "兩排試管：左排『打哈欠』、右排『沒打』，兩排的液面都從第一次升到第二次；上方一個天秤兩邊幾乎平。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "H77-NA001",
+      "question": "狗有多少個嗅覺受器基因？其中多少是壞掉的？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Quignon 等 2005 Genome Biology（PMC1257466，已下載 f128src/PMC1257466.xml）摘要與 Results 第一節：拳師犬基因組找到 1,094 個嗅覺受器基因、20.3% 為偽基因。但作者 Ostrander、Lindblad-Toh、Galibert 與 F128-S007 的 Wayne、Murphy 合著（見 research_groups），併入 Craven 網，該網已用滿 2.0，本題加 0；而且 F128-005 已有更新的狗與狼比較。 原提案 F128-NA001。",
+      "reentry_condition": "Craven 網有刪核心而空出額度、或片中需要「狗約一千個基因」字卡時，可作背景，計 0.25。",
+      "reading_status": "讀了 Abstract、Background、Results 第一、二節；其餘未讀。"
+    },
+    {
+      "id": "H77-NA002",
+      "question": "Bushdid 等 2014「人能分辨一兆種氣味」的原始實驗怎麼做？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "PMC4483192（作者稿）Europe PMC REST fullTextXML 回 500（重試兩次）；同一次搜尋結果列出的 europepmc.org PDF 頁 403、doi.org→science.org 403。只能經 F128-S001、S002 轉述，不另算。Science 2024 另有一則勘誤（PMID 38386753，訂閱限定）未讀。 原提案 F128-NA002。",
+      "reentry_condition": "Europe PMC REST 恢復時以同一連結正常讀一次；屬 Gerkin 網（Gerkin 與 Keller 合著過），最多讓 F128-011 從轉述升原文，約 +0.25。",
+      "reading_status": "未讀到全文。"
+    },
+    {
+      "id": "H77-NA003",
+      "question": "人的鼻子真的是十九世紀的迷思嗎（McGann 2017）？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "McGann 2017 Science（PMC5512720）REST 500（重試兩次）、europepmc.org PDF 403、Science 403。且為評論文，多數數字引用前人，即使讀到也只能當入口。 原提案 F128-NA003。",
+      "reentry_condition": "只作入口找原研究，不直接計條。",
+      "reading_status": "未讀到全文。"
+    },
+    {
+      "id": "H77-NA004",
+      "question": "狗鼻子裡的氣流怎麼把空氣分流到嗅覺區？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Craven、Paterson、Settles 2010 J R Soc Interface（PMC2871809）REST 500（重試兩次）、europepmc.org PDF 403、royalsocietypublishing 403；且屬 Craven 網，已封頂。 原提案 F128-NA004。",
+      "reentry_condition": "Craven 網有空出額度且原連結可讀時。",
+      "reading_status": "未讀到全文。"
+    },
+    {
+      "id": "H77-NA005",
+      "question": "狗的嗅覺腦區跟視覺連在一起嗎（Andrews 等 2022）？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "J Neurosci 2022（PMC9398547）REST fullTextXML 500，重試兩次仍 500；未改抓其他主機。 原提案 F128-NA005。",
+      "reentry_condition": "同一 REST 連結恢復時正常讀一次；新研究群（Johnson、Horowitz），約 0.5–0.75。",
+      "reading_status": "未讀到全文。"
+    },
+    {
+      "id": "H77-NA006",
+      "question": "為什麼看到別人打哈欠自己也會打？是同理心嗎？",
+      "existing_ids": [
+        "LEG-S05"
+      ],
+      "source_ids": [],
+      "reason": "池中 LEG-S05 已是這一題（excluded_legacy，notes：傳染性哈欠機制未定，先不做假裝已解答的長片；exclusion_reason：不得靠新標題復活）。本題刻意不以傳染為核心，只在 F137-002 用看照片引發的哈欠談溫度。 原提案 F137-NA001。",
+      "reentry_condition": "站主決定重啟 S05 時，由 S05 的查核包另行處理。",
+      "reading_status": "未為此題讀新來源。"
+    },
+    {
+      "id": "H77-NA007",
+      "question": "狗、黑猩猩、狼會被人類的哈欠傳染嗎？",
+      "existing_ids": [
+        "LEG-S05"
+      ],
+      "source_ids": [],
+      "reason": "屬傳染題，LEG-S05 的查核包已列 Joly-Mascheroni 2008、Harr 2009、Madsen 2013、Romero 2013、Neilands 2020；Europe PMC 另有 Joly-Mascheroni 2025（黑猩猩看機器人打哈欠）、Gallup & Wozny 2022（人被動物哈欠傳染）等開放全文，但收進來等於以新標題復活 S05。 原提案 F137-NA002。",
+      "reentry_condition": "同 F137-NA001。",
+      "reading_status": "只看過 Europe PMC 書目，未讀全文。"
+    },
+    {
+      "id": "H77-NA008",
+      "question": "打哈欠是因為缺氧或二氧化碳太多嗎？",
+      "existing_ids": [
+        "LEG-S05"
+      ],
+      "source_ids": [],
+      "reason": "答案的一手來源是 Provine、Tate & Geldmacher 1987（Behav Neural Biol 48:382–393），Europe PMC 標為非開放取用；本輪讀到的幾篇都只是在前言引用它（F137-S001、S004、S006），引用不算本篇結果。LEG-S05 查核表已有此列。 原提案 F137-NA003。",
+      "reentry_condition": "找到 Provine 1987 的合法開放全文（例如作者典藏）後，可補為開場迷思，約 0.75 條。",
+      "reading_status": "只讀到他篇的引用句。"
+    },
+    {
+      "id": "H77-NA009",
+      "question": "打哈欠和深呼吸一樣嗎？腦脊髓液會因此流動嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Martinac、Waters、Lloyd、Bilston 的 MRI 研究（預印本 bioRxiv 10.64898/2025.12.17.695005；期刊版 Respir Physiol Neurobiol 2026，訂閱制）。Europe PMC 只給摘要；預印本 DOI 連結轉到 biorxiv.org 回 429（error code 1015），照規則原連結再試一次仍 429，未繞過。只讀到摘要，不算。 原提案 F137-NA004。",
+      "reentry_condition": "限流解除後，用同一個 DOI 連結正常讀到全文；這是與其他研究網無合著的獨立群，可望補 1.0–1.5 條，並成為『哈欠不只是大口吸氣』的第三個轉折。",
+      "reading_status": "只讀 Europe PMC 摘要。"
+    },
+    {
+      "id": "H77-NA010",
+      "question": "腦越大的動物，哈欠打得越久嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Massen 等 2021（Commun Biol，PMC8102614，已快取全文）。屬 Gallup／Massen 研究網，該網已用滿 2.0；而且 Massen 與 Palagi、Bourjade 都有合著，引用它會讓海獅與馬兩網併入 Gallup 網，淨條數反而減少。 原提案 F137-NA005。",
+      "reentry_condition": "若改用它取代 F137-001 或 F137-002（同網內替換），可增加趣味但不增加條數。",
+      "reading_status": "全文已存 f137src/PMC8102614.*，只讀摘要與結果第一段。"
+    },
+    {
+      "id": "H77-NA011",
+      "question": "打完哈欠，臉的溫度會變低嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Eguibar 等 2017（BMC Neurosci，PMC5209817，已快取）有 Gallup AC 為共同作者，屬同網且已封頂；Eguibar 與 Moyaho 合著六篇，引用會再併網。 原提案 F137-NA006。",
+      "reentry_condition": "同網替換時可用。",
+      "reading_status": "全文已存，只讀摘要。"
+    },
+    {
+      "id": "H77-NA012",
+      "question": "中風病人為什麼會一直打哈欠？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Krestel 等 2015（Brain Struct Funct，PMC4341028，已快取）屬病人臨床資料，題目規則不收醫療內容。 原提案 F137-NA007。",
+      "reentry_condition": "不重入。",
+      "reading_status": "只讀摘要。"
+    },
+    {
+      "id": "H77-NA013",
+      "question": "哈欠是給同伴看的訊號，還是自己的生理動作？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Moyaho 等 2017（Heliyon，PMC5727380）是大鼠舊資料的再分析，與本題核心問題距離較遠；Moyaho 與 Eguibar 合著，若同時用 F137-NA006 會併網。 原提案 F137-NA008。",
+      "reentry_condition": "需要第五個社會面向的研究網時可補 0.5。",
+      "reading_status": "只讀摘要。"
+    }
+  ]
+}

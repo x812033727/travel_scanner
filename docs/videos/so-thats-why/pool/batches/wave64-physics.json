@@ -1,0 +1,1156 @@
+{
+  "batch_id": "wave64-physics-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第十四輪：替後備組題 C8-02 雨天水漂補上不同研究群的實車量測（成題 G625）、替 C9-02 濕沙補液橋與鹽黏結研究（仍後備；作者 F23，覆核 V26）；兩個從零研究的新長題：冰為什麼滑（C10-01）與衣服濕了為什麼變深（C10-02），都留後備（作者 F24，覆核 V27）。",
+  "sources": [
+    {
+      "id": "P64-S001",
+      "url": "https://uni-obuda.hu/journal/Fichtinger_Bardos_Szalay_Edelmann_Plochl_127.pdf",
+      "canonical_url": "https://uni-obuda.hu/journal/Fichtinger_Bardos_Szalay_Edelmann_Plochl_127.pdf",
+      "title": "Pneumatic Tyre Aquaplaning: an Experimental Investigation on Manifestations and Influences of Appearance",
+      "publisher": "Andreas Fichtinger、Johannes Edelmann、Manfred Plöchl（維也納工業大學 Institute of Mechanics and Mechatronics）、Ádám Bárdos、Zsolt Szalay（布達佩斯科技經濟大學）／Acta Polytechnica Hungarica 19(9), 45–65, 2022",
+      "version": "期刊刊本 PDF（開放取用期刊，Óbuda 大學網站）",
+      "accessed_on": "2026-11-11",
+      "read_via": "WebSearch 結果直接列出此 PDF 網址；curl 200（工具預設標頭），pdftotext 轉文字。",
+      "reading_scope": "全文（摘要、引言、§2 量測設置、§3.1–3.5 結果、結論）",
+      "locator": "§2（四輛車、胎規、胎紋深、胎壓、車重；ZalaZONE 試車場、灑水車道與水漂水池、水深自 0.62 mm）；§3.1 Figure 4 後文（後驅車 C、1.1 mm、70／80／約 100 km/h；右側水略多）與 Figure 5 後文（前驅車 A 後輪走在前輪清過的軌跡）；§3.2 Figure 6–8 後文（牽引係數 0.15、<0.05；約 0.55 降到約 0.05；130 km/h 後輪空轉失穩）；Conclusions 第 3–4 段",
+      "summary": "維也納工業大學與布達佩斯科技經濟大學在匈牙利 ZalaZONE 試車場，用四輛只裝標準量產感測器加 GNSS 的車（一輛前驅、兩輛後驅、一輛四驅，胎況與胎壓各不同）開過灑水車道（水深 0.6–2 mm 左右）與水漂水池（可到 7 mm），記錄輪速、引擎扭力、轉向等。後驅車 C 在 1.1 mm 水深下，沒出力的前輪 70 km/h 時輪速與車速一致；80 km/h 右前輪出現極輕微的減速；約 100 km/h 右前輪大致可算完全水漂；灑水器在左側、右側水略多，所以右輪先出現。前驅車 A 的後輪走在前輪清過的軌跡上，水膜較薄，減速事件小得多。前驅車全油門時，由空轉推算的牽引係數一度降到 0.15（部分水漂）與 0.05 以下（右前輪完全水漂）；後驅車 B 在 1.1 mm 下，牽引係數隨速度從約 0.55 降到約 0.05。後驅車 C 以 130 km/h 進入 1.1 mm 水深車道，前右輪強烈減速，約 13 秒後兩後輪開始明顯空轉，車輛失穩打轉。作者結論：前驅車的駕駛較容易從前輪空轉察覺水漂；後驅車的後輪走在前輪軌跡上、要排的水較少，水漂可能要到較高速度才被察覺。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "四輛車的胎規、胎紋深、胎壓、車重都不同，作者沒有做控制單一變因的比較，不得說成『前驅比後驅安全』或反之；本篇也比較了舊夏胎與新冬胎，那部分不進片（會滑向選胎建議）；130 km/h 打轉是單次試驗；文中『駕駛會加大方向盤角度』等觀察與自動駕駛的展望不進片；作者目的是開發偵測方法，不是定出水漂速度。與池中 P62-002（NASA 1963 的輪子減速與摩擦）機制相近，本篇新在『整車、前後輪、左右輪不同步』。研究群（TU Wien／BME）與池中 NASA、FHWA、TTI、Virginia Tech（P62-007）、Cabut（里昂／Michelin）都不同。 覆核 V26（2026-11-12）：summary 把『四輛只裝標準量產感測器加 GNSS』改為『車上匯流排訊號加雙天線差分 GNSS，四驅車另量轉向拉桿力，水深用 MARWIS 光學感測器』；牽引係數兩組數字分標車別（0.15／<0.05 為前驅車 A、1.2 mm 全油門；0.55→0.05 為後驅車 B、1.1 mm、右後輪）；limitations 加『車 C 的胎況原文自相矛盾（§2 幾乎全新約 7 mm，Fig. 4／8 圖說寫 medium worn），不得引胎況』與『前驅後驅比較的結論句不進片』；read_via 補記伺服器轉到 acta.uni-obuda.hu。",
+      "author_cache": {
+        "file": "f23src/fichtinger_aph127.pdf（文字 f23src/fichtinger_aph127.txt）",
+        "sha256_prefix": "b549a1ebc236d350",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P64-S002",
+      "url": "https://hal.archives-ouvertes.fr/hal-01983073/file/2000-J-Colloid-Int-Sci.pdf",
+      "canonical_url": "https://hal.science/hal-01983073v1",
+      "title": "Liquid Bridge between Two Moving Spheres: An Experimental Study of Viscosity Effects",
+      "publisher": "Olivier Pitois、Pascal Moucheront、Xavier Chateau（LMSGC，Champs-sur-Marne）／Journal of Colloid and Interface Science 231, 26–31 (2000)，doi:10.1006/jcis.2000.7096",
+      "version": "期刊刊本 PDF（HAL 典藏 hal-01983073v1，首頁標示 HAL Authorization）",
+      "accessed_on": "2026-11-11",
+      "read_via": "WebSearch 結果列出 HAL PDF 網址；curl 200，伺服器轉到 hal.science 同一路徑；pdftotext 轉文字；第 4 頁（Fig. 3）以 pdftoppm 轉圖讀圖。",
+      "reading_scope": "全文（理論、裝置、材料、§4.1 毛細區結果與 Fig. 3、§4.2 黏滯區、結論）",
+      "locator": "§3.1（半徑 4 mm 紅寶石球、天平量力 −1/5 N、精度 10 µN）；Table 1（PDMS 油表面張力 21 mN/m）；§4.1 第 1–2 段與 Fig. 3a–b（V≈0.05 µl 與 1.5 µl；最大力在 D=0，約 0.5 mN，之後隨距離下降直到斷）",
+      "summary": "在兩顆半徑 4 mm 的紅寶石球之間放一小滴矽油形成液橋，上球掛在天平下、下球以極慢速度拉開，量液橋的吸引力。慢拉（毛細主導）時，與部分前人結果不同，最大吸引力出現在兩球貼著時（D=0，約 0.5 mN），之後隨球距拉大而下降，直到液橋斷。Fig. 3 以理論最大值 2πRσcosθ 為單位畫兩種液橋（約 0.05 µl 與 1.5 µl）：兩者在 D=0 都接近 1；小液橋的力在球距約半徑的 0.1–0.15 倍時已接近零，大液橋到約 0.25 倍仍有。實驗與理論、數值解相符，小液量時尤其吻合。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "矽油、紅寶石球、毫米級球，不是水與沙；本篇主題是黏滯效應，毛細區只有一節；『兩種液量貼著時拉力相同』與『大液橋拉得比較遠』來自讀 Fig. 3 的正規化曲線，文字只寫最大力在 D=0、約 0.5 mN，未逐字寫兩者相同；不得換算體積倍數；與池中 P63-014（不到 50 奈米油層）屬同一說法的直接量測背景，不重算『99.9% 沒出力』。研究群（LMSGC，後 Navier 實驗室前身之一）與池中 Montpellier、Bonn、Schiffer、Halsey、Kudrolli、Lyon 各組不同。 覆核 V26（2026-11-12）：locator 註明 Fig. 3a、3b 橫軸範圍不同（0–0.15 與 0–0.3）。",
+      "author_cache": {
+        "file": "f23src/pitois2000.pdf（文字 f23src/pitois2000.txt、f23src/p.txt）",
+        "sha256_prefix": "a5ea839108eac3e9",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P64-S003",
+      "url": "https://hal.science/hal-01619249v1/file/effect-of-the-particle-size-and-the-liquid-content.pdf",
+      "canonical_url": "https://hal.science/hal-01619249",
+      "title": "Effect of the particle size and the liquid content on the shear behaviour of wet granular material",
+      "publisher": "Haithem Louati、Driss Oulahna、Alain de Ryck（阿爾比礦業學院 RAPSODEE 中心）／Powder Technology 315, 398–409 (2017)，doi:10.1016/j.powtec.2017.04.030",
+      "version": "HAL 典藏全文 PDF（hal-01619249v1，HAL 上線 2019-03-15）",
+      "accessed_on": "2026-11-11",
+      "read_via": "WebSearch 列出 HAL 紀錄頁 hal.archives-ouvertes.fr/hal-01619249（轉到 hal.science）；紀錄頁 href 給出 hal-01619249v1/file/effect-of-the-particle-size-and-the-liquid-content.pdf；curl 200，pdftotext。",
+      "reading_scope": "全文（引言、材料與方法、§3.1–3.2 結果含 Fig. 13–14 文字、§3.2.3 張力強度估算、結論）",
+      "locator": "§2 第 2–3 段（PEG 400；VR% = 液體體積／顆粒總體積；0.01%–20% 與 20%–60%）；§3.2.2 四個區段 a)–d) 與 Fig. 14 文字（8–11 kPa 平均應力比：加 1% 由 0.4 到 0.5；20%→40% 由約 0.5 到 0.6；約 40% 最大，之後下降；60% 高正向應力回到乾的值）；§3.2.2 X 光斷層（40% 時珠子成團）",
+      "summary": "把 12–40 µm 與 70–110 µm 兩種玻璃珠拌入聚乙二醇（PEG 400），在環形剪切盒量穩態剪切。液量以液體體積對顆粒體積的比例 VR 表示，70–110 µm 珠子從 0.01% 一路加到 60%。在 8–11 kPa 正向應力下的平均應力比：只加 1% 液體就從約 0.4 升到 0.5，之後一段持平（作者稱飽和）；液量 20% 到 40% 時又從約 0.5 升到 0.6，約 40% 最大，再多就下降；到 60%、高正向應力時，應力比回到乾珠的值，作者解讀為孔隙被液體填滿、氣液界面的吸力消失。X 光斷層顯示 40% 時珠子結成團塊、團塊之間有空隙（funicular 狀態）。較小的珠子張力強度較大。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "液體是 PEG 400 不是水、顆粒是玻璃珠不是沙；VR 是液體對顆粒的體積比，與池中 P63-018（水對沙的質量比）、P63-020（液體體積分率）單位不同，不得換算或比大小，也不得說互相矛盾；量的是應力比，不是沙堡高度；研究群（Albi）與池中各組不同。 覆核 V26（2026-11-12）：summary 加『第一段（1% 上升、之後持平）引言標為同組前作 [10]』、『60% 換算飽和度 S=82%，填滿是高正向應力壓密後』、『區段 b) 另寫 25→30% 上升、30–40% 不變，與 Fig. 14 文字略有出入』、『作者寫液量作用在低正向應力時更明顯，Fig. 14 量在 8–11 kPa』。",
+      "author_cache": {
+        "file": "f23src/louati2017.pdf（文字 f23src/louati2017.txt；紀錄頁 f23src/hal01619249.html）",
+        "sha256_prefix": "924bc8673793f004",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P64-S004",
+      "url": "https://comptes-rendus.academie-sciences.fr/mecanique/item/10.1016/j.crme.2007.01.008.pdf",
+      "canonical_url": "https://comptes-rendus.academie-sciences.fr/mecanique/item/10.1016/j.crme.2007.01.008.pdf",
+      "title": "Évolution de la cohésion dans un matériau granulaire : de la capillarité à la cimentation（Evolution of cohesion in a granular material: from capillarity to cementation）",
+      "publisher": "Jean-Yves Delenne、Fabien Soulié、Moulay Said El Youssoufi、Christian Saix（蒙彼利埃第二大學 LMGC）／Comptes Rendus Mécanique 335, 119–124 (2007)，doi:10.1016/j.crme.2007.01.008",
+      "version": "期刊刊本 PDF（法國科學院 Comptes Rendus 網站）",
+      "accessed_on": "2026-11-11",
+      "read_via": "WebSearch 結果直接列出此 PDF 網址；curl 200，pdftotext（法文本文加英文節本）。",
+      "reading_scope": "全文（法文摘要、英文節本、§2 樣本與流程、§3 結果、§4 結論）",
+      "locator": "§2（0.4–0.8 mm 玻璃珠與 Ventoux 沙、SiO2 ≥ 99.6%；飽和 NaCl 溶液 35.6 g／100 g 水；含量 3%、5%、7%；直徑 25 mm、高 17 mm；20 °C、相對濕度 43%）；§3 第 1–4 段（82＋60 個樣本；強度提高為初始的 20–30 倍；同樣析出量強度不一定相同）；§3 Fig. 3 文字（ic ≈ 0.8 起急升）；Fig. 1(c) 文字（由延性變脆性）",
+      "summary": "把玻璃珠與天然 Ventoux 沙（0.4–0.8 mm）各拌入 3%、5%、7% 的飽和食鹽水，做成小圓柱，在 20 °C、相對濕度 43% 下晾不同時間，秤重推算析出的鹽量，再做無側限壓縮到破。共 82 個玻璃珠樣本、60 個沙樣本。剛開始只有液橋的毛細凝聚力，強度低、壓下去是延性變形；鹽開始析出時強度仍低；直到析出的鹽占樣本裡全部鹽的比例（結晶指數）約 0.8 以上，強度急升，可達初始的 20 到 30 倍，破壞變成一下脆斷。決定跳升的不是析出鹽的絕對量，而是析出比例；兩種材料、三種初始含量都同樣分成『毛細區』與『膠結區』。結晶指數從未到 1，作者認為有殘留水被鹽封住。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "用的是飽和食鹽水（每 100 g 水 35.6 g 鹽），遠比海水鹹，不得說成『海水沙堡乾了會變硬 20–30 倍』；小圓柱在控溫控濕室內乾燥，不是海灘；強度是同幾何樣本的最大壓縮力。研究群：LMGC（El Youssoufi）與池中 P63-018（Richefeu、El Youssoufi、Radjaï）同一實驗室，本篇並引用該文；機制（鹽膠結）與 P63-018（毛細凝聚力飽和）不重疊，但依『同一研究群只算一次上限』保守計。 覆核 V26（2026-11-12）：limitations 加『沒有淡水對照，不符合 P63-NA007 的再議條件』與『延性到脆性只是 Fig. 1(c) Ventoux 沙 5% 的典型曲線』。",
+      "author_cache": {
+        "file": "f23src/crme2007_salt.pdf（文字 f23src/crme2007_salt.txt）",
+        "sha256_prefix": "ef2f82e98f3f73d2",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P64-S005",
+      "url": "https://par.nsf.gov//servlets/purl/10327148",
+      "canonical_url": "https://par.nsf.gov//servlets/purl/10327148",
+      "title": "Geotechnical Investigation of Spatiotemporal Variations at a Sand Beach characterized by Active Erosion and Sediment Remobilization Processes",
+      "publisher": "Nina Stark、Nicola Brilli（維吉尼亞理工 土木與環境工程系）／研討會論文（NSF Public Access Repository 典藏，NSF CMMI-1751463 資助）",
+      "version": "NSF PAR 典藏的作者稿 PDF（研討會論文，文中自稱 conference contribution、preliminary study）",
+      "accessed_on": "2026-11-11",
+      "read_via": "WebSearch 結果列出 par.nsf.gov 網址（照原樣含雙斜線）；curl 200 application/pdf；pdftotext。",
+      "reading_scope": "全文（摘要、引言、區域、方法、結果與討論、結論）",
+      "locator": "METHODS 第 2–3 段（推管取樣、Dynamax SM150 ±3%、Soil Saber 十字板與貫入、BlueDrop 落下式貫入儀約 1 m 落下）；RESULTS 第 3–5 段（d50 0.25–0.30 mm；越靠海含水量與密度越高；十字板在 OC3 附近最強、往更濕處下降；落下式貫入儀在 OC4–6 明顯較硬；排水條件不同）；CONCLUSION",
+      "summary": "2019 年 8 月 17–18 日在阿拉斯加 Yakutat 的 Ocean Cape 中砂海灘（d50 0.25–0.30 mm）沿一條垂直海岸線的剖面，在 6 個點（OC1 最靠陸、OC6 最靠水）同時量含水量、密度與表層 10 cm 的強度。含水量與密度大致越靠水越高。三種強度量法結果明顯不同：十字板剪力在含水較低、密度中等的 OC3 附近最強，往更濕處下降，作者認為與含水量經由表觀凝聚力的非線性關係較接近；落下式貫入儀卻在含水與密度都較高的 OC4–6 量到明顯更硬，作者推測較快的貫入是不排水狀態，孔隙水的黏滯可能增加阻力。作者結論：海灘表層沙的強度隨位置變化很大，但量法本身差異大，還沒有公認做法，需要更多資料。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "作者自稱初步研究；強度沒有換成單一數值（落下式貫入儀用最大減速度當指標）；只有一座海灘、兩天；含水量計可能受海水鹽度影響而偏高；不能從本篇得出『最佳含水量』或任何數字結論；只能當『實驗室結論搬到真實海灘並不簡單』的佐證。Virginia Tech 但與池中 P62-007（同校車輛動力學團隊、不同題）無關。 覆核 V26（2026-11-12）：summary 補『第三種量法（Soil Saber 貫入）重複試驗不一致、難看出趨勢』；read_via 註明今日重抓 10327148 為 1,126,213 位元組 PDF、內文即本篇；blocked 裡的 10138515 是另一個未用網址。",
+      "author_cache": {
+        "file": "f23src/stark_nsf.pdf（文字 f23src/stark_nsf.txt）",
+        "sha256_prefix": "36807ab30c07ce91",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P64-S006",
+      "url": "https://www.arxiv.org/pdf/1802.08172",
+      "canonical_url": "https://arxiv.org/abs/1802.08172",
+      "title": "Shear strength of wet granular materials: macroscopic cohesion and effective stress",
+      "publisher": "Michel Badetti、Abdoulaye Fall、François Chevoir、Jean-Noël Roux（Laboratoire Navier）／arXiv:1802.08172v1（後刊於 Eur. Phys. J. E 2018）",
+      "version": "arXiv v1 預印本",
+      "accessed_on": "2026-11-11",
+      "read_via": "WebSearch 結果列出 www.arxiv.org/pdf/1802.08172；curl 200，pdftotext。",
+      "reading_scope": "摘要、引言前段與結論；其餘以搜尋關鍵字瀏覽（以數值模擬為主）",
+      "locator": "摘要；§1 第 1–2 段",
+      "summary": "濕聚苯乙烯珠的流變量測加離散元素模擬，檢驗 Mohr-Coulomb 凝聚力與有效應力假設；簡化的 Rumpf 公式在較大液量時近似正確，但抓不到低液量時凝聚力的下降。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只用於 not_added：以模擬與方法為主，觀眾可懂的新事實少；『低液量凝聚力下降』與池中 P63-020（低於約 0.2% 液橋搭不起來）方向重疊；第二作者 Fall 也是池中 P63-022／P63-023（Bonn 2014）的作者。",
+      "author_cache": {
+        "file": "f23src/badetti2018.pdf（文字 f23src/badetti2018.txt）",
+        "sha256_prefix": "2b5b4e52e662da19",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P64-S007",
+      "url": "https://ar5iv.labs.arxiv.org/html/1709.00205",
+      "canonical_url": "https://arxiv.org/abs/1709.00205",
+      "title": "Tensile Stress Relaxation in Unsaturated Granular Materials",
+      "publisher": "Filippo Bianchi、Marcel Thielmann、Roman Mani、Dani Or、Hans Jürgen Herrmann（ETH Zürich、拜羅伊特大學）／arXiv:1709.00205（Granular Matter）",
+      "version": "ar5iv HTML 轉製版",
+      "accessed_on": "2026-11-11",
+      "read_via": "WebSearch 結果先列 pdf.arxiv.org/pdf/1709.00205，curl 回 500（未重試其他路徑）；同一搜尋結果另列 ar5iv.labs.arxiv.org/html/1709.00205，curl 200，以 python 去標籤成文字。",
+      "reading_scope": "摘要與引言（其餘未細讀）",
+      "locator": "Abstract；§1 第 1 段",
+      "summary": "濕顆粒拉伸後停止拉伸，張應力仍隨時間鬆弛；緊密堆積抑制顆粒重排，只剩液體重新分布主導鬆弛。引言整理：低飽和度液橋、較高飽和度液團都提供凝聚力，再高時效果消失、強度明顯下降。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只用於 not_added：主題（拉伸後應力鬆弛）與沙堡題距離遠；引言內容是文獻整理，不是本篇量測。",
+      "author_cache": {
+        "file": "f23src/ar5iv_1709.00205.html（文字 f23src/ar5iv_1709.00205.txt）",
+        "sha256_prefix": "3c0f6caae0eb8d6e",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P64-S008",
+      "url": "https://ir.amolf.nl/pub/10003/16396OA.pdf",
+      "canonical_url": "https://doi.org/10.1021/acs.jpclett.8b01188",
+      "title": "Molecular Insight into the Slipperiness of Ice（Weber, Nagata, Ketzetzi, Tang, Smit, Bakker, Backus, M. Bonn, D. Bonn）",
+      "publisher": "J. Phys. Chem. Lett. 9, 2838–2842 (2018)，American Chemical Society；AMOLF 機構典藏",
+      "version": "出版社最終版 PDF（首頁標 CC-BY-NC-ND 開放取用）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（論文標題）結果列出 AMOLF 典藏 PDF 連結與 UvA-DARE 紀錄頁；curl 預設標頭 GET 200；pdftotext 轉文字",
+      "reading_scope": "全文 5 頁（正文、圖說、結論；補充資料未讀）",
+      "locator": "第 2838 頁摘要與第一段；第 2839 頁 Figure 1 圖說與〈optimal temperature〉段；第 2840 頁 Figure 3（刮痕 7 分鐘）與 Arrhenius 段；第 2841 頁結論段",
+      "summary": "鋼球在冰上滑，溫度 −100 到 0 °C、速度 10⁻⁶–10⁻¹ m/s。−100 °C 摩擦係數 μ=0.5，與同一鋼球對玻璃的乾摩擦相當；升溫到約 −7 °C 降到 μ=0.01，降幅超過一個數量級，遵循 Arrhenius 關係、活化能約 11.5 kJ/mol，與分子模擬算出的冰表面分子擴散活化能相近。−7 °C 以上摩擦又急升，球在冰上留下犁溝（塑性變形）；作者稱約 −7 °C 為最佳滑行溫度，也是多數溜冰場維持的溫度。低摩擦區摩擦與速度無關，作者據此認為摩擦生熱在本實驗不重要。分子模擬：表面只有兩個氫鍵的 DA 型水分子以『滾動』方式擴散，數量與速度隨溫度增加。−10 °C 用螺絲起子刮出的深刮痕約 7 分鐘後幾乎填平。結論：滑來自最表層高移動性的分子，而非一般所說的準液層；摩擦隨溫度平滑變化，看不到可歸於離散表面融化轉變的不連續。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "同一研究室（D. Bonn、M. Bonn）另有 F24-S002 與 F24-S006，三份合計計數有上限。實驗是毫米級鋼球、低速（固定 0.38 mm/s），不是真冰刀；『約 −7 °C 是多數溜冰場溫度』是作者陳述。授權 CC-BY-NC-ND。 覆核 V27（2026-11-12）：limitations 補：彈性區（−7 °C 以下）摩擦力與 Hertz 接觸面積成正比、與平均接觸壓力無關；鋼球換玻璃球摩擦行為相同。結論句應引原文 \"surface melting contributes indirectly to slipperiness by creating highly mobile surface molecules\"，不寫成否定水層。",
+      "author_cache": {
+        "file": "f24src/weber_jpcl2018.pdf",
+        "sha256_prefix": "cc85c18863d43a08",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P64-S009",
+      "url": "https://pure.uva.nl/ws/files/75733521/PhysRevX.11.011025_1_.pdf",
+      "canonical_url": "https://doi.org/10.1103/PhysRevX.11.011025",
+      "title": "Friction on Ice: How Temperature, Pressure, and Speed Control the Slipperiness of Ice（Liefferink, Hsia, Weber, Bonn）",
+      "publisher": "Physical Review X 11, 011025 (2021)，American Physical Society；UvA-DARE 典藏",
+      "version": "出版社最終版（CC BY 4.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（論文標題）列出 UvA-DARE 紀錄頁 https://dare.uva.nl/id/a901a712-0a68-42ca-a80f-732e541288d2；依其 citation_pdf_url 與下載連結取得 PDF（curl 200，紀錄頁亦存 uva_liefferink.html，sha256 前 16 碼 ba2209fbda834306）。WebSearch 另列的 physics.aps.org featured-article-pdf 連結 curl 回 403，未繞過。",
+      "reading_scope": "全文 13 頁（第 I–IV 節；附錄只看到圖說層級）",
+      "locator": "第 1 頁摘要與引言；Fig. 1 圖說；§III.A–B（Arrhenius、犁溝、模型冰刀 −7.7 ± 2.3 °C）；Fig. 2(a) 圖說（−1.5 °C 壓力融化使硬度驟降）；§III.C（接觸壓力 35、85 MPa、指數上升）；§III.D–E（−90 °C 0.55→0.9、HDPE 加水 1 m/s）；§IV（1 μm/s 仍滑、SiC 與玻璃導熱差兩個數量級）",
+      "summary": "球與一段真冰刀（寬 1.67 mm、長向曲率半徑 22 m，取 5 mm）在冰上滑，法向力 2.5 N、0.38 mm/s。遠離熔點時遵循 Arrhenius（ΔE=11.5 kJ/mol）；高於約 −20 °C 球開始犁進冰面，摩擦隨升溫增加；模型冰刀最低摩擦在 −7.7 ± 2.3 °C，μ=0.039 ± 0.003。冰的壓入硬度隨溫度近似線性下降，到 −1.5 °C 因壓力融化驟降。換粗糙度不同的玻璃球（Sq 98–3077 nm）提高局部接觸壓力：光滑球約 35 MPa 彈性接觸，粗球升到約 85 MPa（等於冰的硬度）；剪應力隨接觸壓力指數上升，作者比作潤滑劑的壓黏效應——壓力越大越不滑，只有接觸壓力夠小時才進入『滑』的狀態。−20 °C 在 1 μm/s 仍很滑，SiC 與玻璃導熱差兩個數量級但滑度相近，作者認為摩擦對摩擦生熱不敏感；以 HDPE 加水對照，水膜潤滑要到 1 m/s 以上才開始。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與 F24-S001、F24-S006 同一研究室，計數合計有上限。實驗速度最高 0.1 m/s，遠低於真實溜冰；作者自己說 1 m/s 以上的情形本裝置測不到。『壓力越大越不滑』限彈性區、低溫段（−30 到 −90 °C 為主），不得說成『踩得越重越不會滑倒』。 覆核 V27（2026-11-12）：limitations 補：粗糙度改變的是局部接觸壓力；原文 \"the contact pressure in both the plastic and the elastic regime is almost independent of the normal force\"，35／85 MPa 為 −50 °C 計算值；指數上升見於 −30 到 −90 °C 彈性區。HDPE 加水對照的 1 m/s 是人工冰替代物。",
+      "author_cache": {
+        "file": "f24src/uva_liefferink_prx2021.pdf",
+        "sha256_prefix": "24a8d87a757e8e74",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P64-S010",
+      "url": "https://arxiv.org/pdf/1907.01316",
+      "canonical_url": "https://doi.org/10.1103/PhysRevX.9.041025",
+      "title": "Nanorheology of interfacial water during ice gliding（Canale, Comtet, Niguès, Cohen, Clanet, Siria, Bocquet）",
+      "publisher": "arXiv:1907.01316；後刊於 Physical Review X 9, 041025 (2019)",
+      "version": "arXiv v1（2019-07-02）；期刊版本輪未讀",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（arxiv 1907.01316）結果列出 arxiv.org/pdf/1907.01316；curl 200；pdftotext。WebSearch 列的 HAL 頁（hal.univ-brest.fr/X-DEP-MECA/hal-03079481v1）curl 只回入口頁、沒有檔案連結。",
+      "reading_scope": "主文全文（§I–IV，圖說）；補充材料未讀",
+      "locator": "摘要；§I 引言（Bowden、Colbeck 排除壓力融化、膜厚文獻 5–10 μm 對 <50 nm）；§III.A（μ=0.015、接近熔點摩擦上升）；§III.C 與 Fig. 2（膜厚 100–500 nm、與速度無關、約為平衡預融膜 4 倍）；§III.D（黏度最高約水的 100 倍、as viscous as an oil）；§III.E 與 Fig. 4（疏水塗層摩擦最多降 10 倍）；§IV（冰屑與水的懸浮液）",
+      "summary": "玻璃珠（半徑約 1.5 mm）裝在音叉上側向劃冰、同時用法向小振動量冰與珠之間那層膜（−16 到 0 °C）。摩擦係數約 0.015，與巨觀量測一致；越接近熔點摩擦越大。滑動中的膜厚 100–500 nm，隨溫度增加，幾乎不隨速度變（與『越快膜越厚』的通說相反），約為平衡預融膜的 4 倍。這層膜是黏彈性的，黏度隨溫度升高到最高約純水的兩個數量級，作者形容『像油一樣黏』，認為正因為黏才不容易被擠出、能避免固體直接接觸。把玻璃珠矽烷化變疏水後，摩擦最多降 10 倍，膜厚不變、黏度下降，作者連結到冬季運動打蠟。作者推測膜是磨下的次微米冰屑與水的懸浮液。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "讀的是送審前的 arXiv v1；期刊版 DOI 10.1103/PhysRevX.9.041025 未讀，片中標『預印本』。實驗是毫米珠、微米振幅、最高約 0.1 m/s；『像油一樣黏』是作者比喻。打蠟只能說『作者提供一個解釋』，不得給選蠟或滑雪建議。 覆核 V27（2026-11-12）：version 寫明：arXiv:1907.01316v1（2019-07-02 送審前版本），片中標「預印本」；實驗為音叉上半徑約 1.5 mm 玻璃珠、−16 到 0 °C，不是冰刀。",
+      "author_cache": {
+        "file": "f24src/canale_arxiv.pdf",
+        "sha256_prefix": "fc08c2d246f14b4d",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P64-S011",
+      "url": "https://aip.brightspotcdn.com/PTO.v58.i12.50_1.online.pdf",
+      "canonical_url": "https://doi.org/10.1063/1.2169444",
+      "title": "Why Is Ice Slippery?（Robert Rosenberg）",
+      "publisher": "Physics Today 58(12), 50–55 (2005)，American Institute of Physics",
+      "version": "AIP 線上 PDF（6 頁）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（Rosenberg Why is ice slippery Physics Today）結果列出 physicstoday.aip.org 專文頁與此 PDF 連結；curl 200；pdftotext",
+      "reading_scope": "全文 6 頁（正文、圖 1–6 圖說）",
+      "locator": "第 50 頁〈Pressure melting〉（Thomson 1850、Joly 1886 的 466 atm 與 −3.5 °C、花式 −5.5 °C、冰球 −9 °C、−30 °C 仍可溜冰、Scott 的 −30 °C 與 Wilson 的 −46 °C）；第 51 頁〈Frictional heating〉（Bowden & Hughes 1939 少女峰冰洞、金屬雪板摩擦較高）與 Colbeck 段；〈Melting below zero〉（Faraday 1850 復冰）；第 52 頁 Hosler 1957 冰球分離力（圖 3）；〈Measuring thickness〉；第 53–54 頁 NMR、Döppenschmidt & Butt 1998 AFM（−24 °C 12 nm、−0.7 °C 70 nm、約 −33 °C 開始）、圖 4 各方法差異",
+      "summary": "教材級專文。一般人以為冰刀壓力讓冰融化：Joly 1886 算出刀刃壓力 466 大氣壓、熔點降到 −3.5 °C；但他沒解釋更冷時怎麼溜，而花式滑冰最佳約 −5.5 °C、冰球約 −9 °C，−30 °C 仍可溜冰。Bowden 與 Hughes 1939 在瑞士少女峰的冰洞量摩擦，金屬雪板比木雪板摩擦高，推論是摩擦生熱融冰（導熱會影響摩擦生熱、不影響壓力融化）。Colbeck 在冰刀上裝熱電偶，看到升溫隨速度增加，若是壓力融化（吸熱）應看到降溫。但摩擦生熱與壓力融化都解釋不了『站著不動也滑』。Faraday 1850 年提出冰表面即使低於冰點也有一層液膜（以兩塊冰碰到就黏起來的復冰為證），被 Thomson 反對、遺忘約一世紀。1957 年 Hosler 等量兩顆冰球拉開的力，越接近 0 °C 越大，在冰飽和以下的蒸氣壓、−4 °C 以下不黏。AFM 量到表面類液層上限從 −24 °C 的 12 nm 到 −0.7 °C 的 70 nm，約 −33 °C 開始；NMR 顯示 −20 到 0 °C 表面分子轉動比冰內快五個數量級；不同方法量到的厚度差很大。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "專文多為轉述原研究（Joly、Bowden & Hughes、Colbeck、Hosler、Döppenschmidt & Butt），原研究本輪未讀，計數照轉述下修。PDF 文字層的負號是特殊字元（⊗），對照圖 2 的座標軸與上下文判為負號。2005 年的觀點，作者自己的結論『壓力融化、摩擦生熱、表面類液層各依溫度扮演角色』是當時看法。 覆核 V27（2026-11-12）：limitations 補：摘要寫 \"In 1859 Faraday postulated\"，正文為 1850 年 6 月 7 日演講、1859 年發表；「介於無序固體與液體之間」是專文引 Wettlaufer；Rosenberg 全文為轉述，本覆核合計封頂 1.5 條。",
+      "author_cache": {
+        "file": "f24src/rosenberg_pt2005.pdf",
+        "sha256_prefix": "be635d0b09287011",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P64-S012",
+      "url": "https://cambridge.org/core/services/aop-cambridge-core/content/view/S0022143021000976",
+      "canonical_url": "https://doi.org/10.1017/jog.2021.97",
+      "title": "Revisiting mechanics of ice–skate friction: from experiments at a skating rink to a unified hypothesis（Lever, Lines, Taylor, Hoch, Asenath-Smith, Sodhi）",
+      "publisher": "Journal of Glaciology 68(268), 337–356 (2022)，Cambridge University Press",
+      "version": "出版社版（CC BY 4.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（論文標題）結果列出此 cambridge.org 連結；curl 200（PDF）；pdftotext",
+      "reading_scope": "全文 20 頁（摘要、§1–2 文獻與機制整理、溜冰場觀測、熱模型、討論）",
+      "locator": "摘要；§1 引言；§2.1（de Koning 1992 速滑 μ=0.0046 ± 0.0004、最低在 −6 到 −9 °C）；§2.4 Pressure-melting（−0.074 °C/MPa、Colbeck 1997 冰刀底溫度遠低於 0 °C）；觀測要點列（冰粒不是水滴、溫度不均、刀與冰交角最高 −0.45 °C 與 −2.2 °C、0.01 s 內 −1.8 °C）；討論（高壓區、富冰泥漿）",
+      "summary": "美國陸軍寒區研究與工程實驗室在室內溜冰場用紅外熱像與高速攝影拍冰刀滑過的冰面（約 2.7 m/s 等）。觀測：冰刀兩側噴出的是有稜角、會彈跳的冰粒，不是水滴；刀痕形狀不規則，像冰碎裂而非平順融化；刀痕溫度沿長與寬都不均，有零星熱點；即使刀心通過後 0.01 s 內量到的最高溫也遠低於 0 °C（一次 −1.8 °C），刀與冰交角最高 −0.45 °C（速滑刀）與 −2.2 °C（冰球刀）。作者整理：壓力降低熔點的效應很弱，0 °C 附近每 MPa 只降 0.074 °C；1930 年代摩擦生熱自潤滑理論取代壓力融化，至今仍廣被接受。結論：觀測不支持整片刀面都有融水膜，較符合刀下零星高壓區裡的富冰泥漿；他們把壓力融化、磨耗、潤滑膜併成一個統一假說，也承認機制『經過一世紀研究仍不確定』。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "觀測樣本是少數幾趟、兩種冰刀；作者說冷卻曲線『不能確認也不能排除』刀過時形成 0 °C 融層。de Koning 1992 與 Colbeck 1997 是本文轉述。統一假說是假說，片中用『研究者提出』。 覆核 V27（2026-11-12）：locator／summary 補：Colbeck 1997 的冰刀底溫度量測（遠低於 0 °C、速度越快越熱）Lever 解讀為「與摩擦生熱一致，但與整片 0 °C 水膜不符」；de Koning 1992 是一位速滑選手的冰場直道試滑，不是比賽。",
+      "author_cache": {
+        "file": "f24src/lever2022_jog.pdf",
+        "sha256_prefix": "75728fe24b3edecd",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P64-S013",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6727213/fullTextXML",
+      "canonical_url": "https://doi.org/10.1021/acs.accounts.8b00615",
+      "title": "The Surface of Ice under Equilibrium and Nonequilibrium Conditions（Nagata, Hama, Backus, Mezger, D. Bonn, M. Bonn, Sazaki）",
+      "publisher": "Accounts of Chemical Research 52(4), 1006–1015 (2019)，ACS",
+      "version": "PMC 全文 XML（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST 搜尋 API（標題查詢）回傳 PMCID 與開放取用標記，再用文件記載的 fullTextXML 端點取全文（200）；轉純文字",
+      "reading_scope": "全文（Conspectus、各節、圖說；參考文獻略）",
+      "locator": "Conspectus；Introduction（三種準液態：無序層、準液滴、準液膜）；Figure 1 圖說（−90、−16、−2 °C）；〈Emergence of QL-Droplets and QL-Films above −2 °C under Nonequilibrium Conditions〉；〈The Slipperiness of the Ice Surface〉",
+      "summary": "綜述把冰表面的『準液層』分成三種：最表層的無序層約 −90 °C 開始出現（三個氫鍵的分子變成兩個氫鍵），第二層約 −16 °C 才開始無序，而且是一個雙層接一個雙層、不是漸進地變；到 −2 °C 以上才會出現不均勻分布的準液滴與準液膜，而且只在水氣過飽和或未飽和（非平衡）時出現，在冰與水氣平衡時看不到；這些液滴與液膜據報比水黏 20 與 200 倍。−90 到 −2 °C 之間只有無序層一種狀態。作者說不同技術量到的準液層厚度差很多，可能量的不是同一種東西。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與 F24-S001、F24-S002 同一研究室（Bonn），是綜述，主要整理自己群組與 Sazaki 群組的工作；其中『滑』的那節是 F24-S001 的重述，不另計。原研究 Sazaki 2012、Murata 2016、Sánchez 2017（PNAS）經 Europe PMC fullTextXML 回 500，未讀。 覆核 V27（2026-11-12）：limitations 補：−2 °C 以上液滴／液膜是 Sazaki 群組共焦顯微觀察（綜述整理），20 與 200 倍為 \"have been reported\"（引文）。",
+      "author_cache": {
+        "file": "f24src/epmc_PMC6727213.xml",
+        "sha256_prefix": "5b0e284a4487fde5",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P64-S014",
+      "url": "https://wtamu.edu/~cbaird/sq/2013/11/06/why-does-water-make-a-shirt-darker",
+      "canonical_url": "https://wtamu.edu/~cbaird/sq/2013/11/06/why-does-water-make-a-shirt-darker",
+      "title": "Why does water make a shirt darker?（Science Questions with Surprising Answers）",
+      "publisher": "Christopher S. Baird，West Texas A&M University 物理系副教授的教學問答頁",
+      "version": "線上頁（2013-11-06）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出此頁；curl GET 200，HTML 轉文字",
+      "reading_scope": "全頁",
+      "locator": "第 1–5 段（纖維透明、多界面反射、雪／鹽／沙／乳白石英）；〈Spill some water〉段（水填空隙、白衫疊橘衫、逆光較亮）；〈another effect〉段（漫射變鏡面）；染色段",
+      "summary": "單根衣服纖維其實大多是透明的，白色來自許多纖維與空氣的界面讓光反覆反射；透明的冰、鹽塊、石英、水在變成雪、食鹽、沙、雲時變白也是同一個道理。衣服沾水後，水填進纖維間的空氣小洞，水與纖維對光的作用相近，等於拿掉了大部分反射界面，濕的那塊變得比較透明，你看到的是後面較暗的東西（皮膚或另一件衣服）。白衣服疊在亮橘色衣服上，弄濕的那塊會變得更橘、不是更黑；把濕的地方對著亮光，濕處反而比較亮。另一個效應：水把粗糙表面變平滑，從漫射變成接近鏡面反射，不在鏡面角度看時就顯得暗。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "教學問答頁，非原研究；沒有量化資料。池中 N274（雪為什麼白）是同一個『多界面散射』原理的近鄰，本頁只取『沾水後變透明』與『看後面是什麼』兩點。與池中其他 cbaird 頁不同頁。 覆核 V27（2026-11-12）：locator 補「染色段」的結論：重染色衣濕了不是變透明，而是多次反射被抑制、染料吸收更多而變深、更飽和。",
+      "author_cache": {
+        "file": "f24src/baird_shirt.html",
+        "sha256_prefix": "2528887d7d07fbbf",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P64-S015",
+      "url": "https://eprints.whiterose.ac.uk/id/eprint/242589/7/European%20J%20Soil%20Science%20-%202026%20-%20Hick%20-%20Organic%20Carbon%20and%20Texture%20Control%20Moisture%20Dependence%20of%20Soil%20Shortwave%20Infrared.pdf",
+      "canonical_url": "https://doi.org/10.1111/ejss.70319",
+      "title": "Organic Carbon and Texture Control Moisture Dependence of Soil Shortwave Infrared Reflectance（Hick, Chapman, Breure, Ziv）",
+      "publisher": "European Journal of Soil Science 77(2), e70319 (2026)，Wiley／British Society of Soil Science；White Rose（Leeds）典藏",
+      "version": "出版社版（OPEN ACCESS，CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出 White Rose 典藏 PDF；curl 200；pdftotext",
+      "reading_scope": "全文 19 頁（摘要、引言、方法、結果、討論、附錄 A3 與 C 圖說）",
+      "locator": "摘要；§1 引言第 2–3 段（Ångström 1925、Twomey 1986 的折射率解釋、Lobell & Asner 2002 可見光約 20%／SWIR 約 50% 飽和、Weidong 2002 過臨界點反升）；方法（28 個歐洲土樣、0 到約 60% 體積含水）；結果與討論（可見光衰減率較高、同樣在約 20% 飽和、OC 與黏粒影響）；Figure A3 圖說（樣本 1、3、9、28 在飽和時 <1400 nm 反射率略升，水膜改變散射）",
+      "summary": "28 個歐洲農地土樣在實驗室加水到約 35% 重量含水再逐步烘乾量光譜。所有樣本反射率隨含水量增加而下降，最適合用遞減指數函數描述；可見光衰減得快、也較早停住，與 Lobell & Asner 2002 報告的可見光約 20%、短波紅外約 50% 體積含水量就飽和相同。有幾個樣本在泡水飽和時反射率反而略升（<1400 nm），作者歸因於表面水膜改變散射，並把這些量測剔除。有機碳多的土變暗得慢（作者引前人解釋：本來就暗，掩蓋了水的效果），黏粒、粉砂多的變暗得快；有機碳與黏粒占模型解釋力約七成，模型解釋 67% 的變異。引言轉述：土壤濕了變暗約 100 年前（Ångström 1925）就有人在實驗室研究；Twomey 等 1986 歸因於土的折射率比較接近水而不接近空氣，濕了散射減少。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "土壤遙測研究，不是衣服；Twomey 1986、Lobell & Asner 2002、Weidong 2002 都是轉述（原文 Applied Optics、SSSAJ 付費未讀）。『反射率略升』是附錄圖說、只有 4 個樣本、作者剔除不分析。不同單位（重量與體積含水量）不得混用。",
+      "author_cache": {
+        "file": "f24src/hick2026_ejss.pdf",
+        "sha256_prefix": "3f05d5a88126e42e",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P64-S016",
+      "url": "https://hal.inrae.fr/hal-02758005v1/document",
+      "canonical_url": "https://doi.org/10.1109/IGARSS.2009.5417807",
+      "title": "Soil moisture impact on lab measured reflectance of bare soils in the optical domain [0.4–15 μm]（Lesaignoux, Fabre, Briottet, Olioso）",
+      "publisher": "IGARSS 2009 研討會論文；HAL（INRAE）典藏",
+      "version": "作者存放稿（HAL 標 CC BY 4.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出 HAL 文件連結；curl 200；pdftotext",
+      "reading_scope": "全文 4 頁",
+      "locator": "摘要；§2.1 含水量量法；§3 開頭（約 30 個法國土樣、50% 到 2%、三百多條光譜）；§3.1（可見光乾與飽和差 <0.13、近紅外與短波紅外 <0.3、含水 >20% 幾乎測不到礦物吸收峰、鐵吸收不太受影響）；§4 結論",
+      "summary": "ONERA 在實驗室把約 30 個法國土樣（黏土、石灰質、沙質）泡到飽和再分五、六個階段烘乾，量 0.4–15 μm 光譜，含水量約 50% 到 2%，共三百多條。所有樣本在整個光學波段都是越濕反射率越低；可見光乾與飽和的反射率差小於 0.13，近紅外與短波紅外小於 0.3；含水量超過 20% 時，石英、碳酸鹽等礦物的吸收特徵幾乎被蓋掉，鐵的吸收特徵則不太受濕度影響。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "研討會短文，數字多在圖上；與 F24-S010 同一研究群，合計有上限。是土，不是布。",
+      "author_cache": {
+        "file": "f24src/hal_lesaignoux.pdf",
+        "sha256_prefix": "fb2ec5bc2fd89c65",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P64-S017",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4367358/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/s150203262",
+      "title": "Estimation of Soil Moisture Content from the Spectral Reflectance of Bare Soils in the 0.4–2.5 μm Domain（Fabre, Briottet, Lesaignoux）",
+      "publisher": "Sensors 15(2), 3262–3281 (2015)，MDPI",
+      "version": "PMC 全文 XML（CC BY 4.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 列出 PMC 頁；pmc.ncbi.nlm.nih.gov 前輪紀錄有 reCAPTCHA，故改用 Europe PMC REST 搜尋 API（PMCID 查詢）確認開放取用，再用文件記載的 fullTextXML 端點取全文（200）。Europe PMC 列出的 mdpi.com PDF 未試（MDPI 前輪 403）。",
+      "reading_scope": "全文（摘要、引言、方法、結果、結論）",
+      "locator": "摘要（32 個土樣、190 條光譜、RMSE 3.8–6.2%、R² 0.74–0.91）；§1 引言（Ångström 的實驗與後續）；§2 資料庫建法（泡到飽和、333.15 K 烘 30 分鐘逐步乾）",
+      "summary": "用 32 個土樣、190 條不同含水量的光譜，比較從反射光譜估土壤含水量的幾種方法；最好的方法誤差（RMSE）3.8–6.2%、R² 0.74–0.91；模擬機載 HyMap 感測器並做大氣校正後，最好的仍是逆推半經驗模型（RMSE 2.9%、R² 0.96）。引言整理：Ångström 的實驗室量測顯示含水量增加時反射率下降、土面變暗，後來的實驗也證實，進而被用來從遙測影像估含水量。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "方法論文，對『為什麼變暗』沒有新機制；與 F24-S009 同一研究群（ONERA）。 覆核 V27（2026-11-12）：summary 改：3.8–6.2% 是四種新方法的 RMSE 範圍，最好的是 ISER 模型。",
+      "author_cache": {
+        "file": "f24src/epmc_PMC4367358.xml",
+        "sha256_prefix": "33ee79f3c42cf4c4",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P64-001",
+      "question": "下雨天車子水漂時，四個輪子是一起飄起來的嗎？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.vehicle_axle_front_rear_left_right_onset",
+      "answer_target": "不是。2022 年維也納工業大學與布達佩斯科技經濟大學在匈牙利的試車場，讓四輛不同的車開過灑水車道，主要讀車上原有感測器記下的每個輪子轉速，另加衛星定位量車速。在約 1.1 毫米深的水上，一輛後驅車沒出力的前輪：時速 70 公里時輪速和車速一致；80 公里時右前輪開始出現極輕微的減速；研究者說約 100 公里時右前輪大致可算完全水漂。灑水器裝在車道左邊，右邊的水略多一點，所以先出事的是右輪。另一輛前驅車的後輪走在前輪清過水的軌跡上，水膜較薄，減速小得多（研究者也提醒兩車的胎與載重不同）。在一次刻意超過水漂速度、以時速 130 公里開進同樣水深的試驗裡，右前輪先強烈減速，約 13 秒後兩個後輪明顯空轉，車子失穩打轉。",
+      "scope": "一座試車場、四輛胎況、胎壓、載重各不同的車，作者沒有控制單一變因：不比較前驅後驅（包括誰比較早察覺）、不比較夏胎冬胎、不提胎紋深淺（車 C 的胎況原文前後矛盾）、不給任何駕駛或換胎建議；130 公里打轉是單次、刻意超過水漂速度的試驗；牽引係數 0.55→0.05 是另一輛後驅車的數字，若引用要標明車別，且不與 P62-002 的 0.05 合成同一實驗；『70 公里沒有跡象』是用輪速減速判斷，不得拿來和 P62-007『約 30 英里開始部分水漂』（嵌胎感測器、不同量法）對比成矛盾；公里／時與英里／時只並列不換算。",
+      "source_ids": [
+        "P64-S001"
+      ],
+      "source_locator": "F23-S001 §2；§3.1 Figure 4–5 後文；§3.2 Figure 6–8 後文；Conclusions 第 3–4 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：與 P62-002（未煞車輪在總水漂前就減速、摩擦 ≤0.05、方向失控；串列起落架後輪在前輪後方）、P62-007（遠低於總水漂速度就開始部分水漂）、P62-008（只壓到一側的水窪產生偏轉扭矩）機制都重疊，新增的只有『現代乘用車在約 1.1 mm 水上的實測速度，與左右水量差一點就先在一側出現』。0.55→0.05 與 130 km/h 打轉不另計。 原提案 F23-001（目標 C8-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V26（2026-11-12）改字後收；數字逐句相符、來源合規、雜湊相同；但感測器描述不準、牽引係數的車別被混在一起、胎況原文矛盾、作者答案含前驅後驅比較，改字後收；計數因與三個舊核心重疊下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水漂不是整台車一起浮起來，而是某一個輪子先開始，連左右兩邊的水差一點都有差。",
+        "visual": "俯視動畫：灑水車道右側水較厚，四個輪子各有一條輪速曲線，右前輪的線先往下掉。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P64-002",
+      "question": "兩顆珠子之間那一小滴液體，液體多一點，拉力就大一點嗎？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.capillary_bridge_force_peak_at_contact_volume_sets_reach",
+      "answer_target": "貼在一起的時候差不多。法國 LMSGC 的實驗把一小滴矽油夾在兩顆半徑 4 毫米的紅寶石球之間，上面那顆掛在天平下，再非常慢地把兩顆球拉開。拉力最大是在兩顆球還貼著的時候，約 0.5 毫牛頓，之後越拉越小，直到液橋斷掉。論文圖中比較了約 0.05 微升與 1.5 微升兩種液橋：貼著時的拉力都接近理論最大值；從圖上看，差別在大的那滴能被拉得比較遠才斷。",
+      "scope": "矽油與紅寶石球、毫米級，不是水與沙；『兩種液量貼著時拉力接近』與『大液橋拉得比較遠』是讀 Fig. 3（兩圖橫軸範圍不同），旁白要說『從圖上看』；不換算液量或距離倍數；編輯欄『水橋的力氣不看水多，看兩顆沙有沒有貼著』刪掉『沙』，改成『兩顆球』。",
+      "source_ids": [
+        "P64-S002"
+      ],
+      "source_locator": "F23-S002 §3.1；Table 1；§4.1 第 1–2 段與 Fig. 3a–b",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：文字只支持『最大力在貼合時、約 0.5 mN、拉開後下降』；液量比較靠讀圖要打折；矽油紅寶石球不是水和沙；『只有接觸點附近那一點液體在出力』的結論 P63-014 已有，這裡只是單一液橋的直接量測。 原提案 F23-002（目標 C9-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V26（2026-11-12）改字後收；數字與條件對；但核心訊息與 P63-014 同方向，新增部分靠讀圖、材料不是水與沙，計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水橋的力氣不看水多，看兩顆沙有沒有貼著；多的水只是讓它晚一點斷。",
+        "visual": "兩顆球之間一彎液體被慢慢拉長，旁邊天平讀數從最高點往下掉；小液滴先斷、大液滴拉得更長。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P64-003",
+      "question": "液體一直加，濕顆粒的強度就停在飽和那裡了嗎？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.wet_beads_shear_second_rise_funicular_then_loss",
+      "answer_target": "不一定只有一段。法國阿爾比礦業學院把 70 到 110 微米的玻璃珠拌聚乙二醇，液體從顆粒體積的 0.01% 一路加到 60%，在環形剪切盒裡量。在 8 到 11 千帕的壓力下，應力比加 1% 液體就從約 0.4 升到 0.5，接著持平一段（這段與他們之前的研究一致）；液量在 20% 到 40% 之間又從約 0.5 升到 0.6，約 40% 時最大，再多就下降。到 60%、壓得很緊的時候，應力比回到乾珠子的值，作者的解讀是孔隙被液體填滿，氣液界面的吸力消失了。X 光斷層看到 40% 時珠子結成一團一團、團與團之間留著空隙。",
+      "scope": "PEG 400 與玻璃珠、不是水與沙；量在 8–11 kPa，比沙堡大得多的壓力，作者也說液量的作用在低壓時更明顯，不得說『沙堡也會有第二段』；液量是液體對顆粒的體積比，與 P63-018（質量比）、P63-020（體積分率）只並列、不換算、不比大小、不說矛盾；不說『突然失效』。",
+      "source_ids": [
+        "P64-S003"
+      ],
+      "source_locator": "F23-S003 §2 第 2–3 段；§3.2.2 a)–d) 與 Fig. 14 文字；X 光斷層段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：第一段（1% 大升再持平）是同組前作、與 P63-018／P63-020 同方向不計；『泡滿就沒有凝聚力』P63-013 的四種狀態已有，不計；新增只有『索狀（funicular）區第二段上升、約 40% 最大』，且在高壓、非水非沙下量得。 原提案 F23-003（目標 C9-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V26（2026-11-12）改字後收；數字逐句對；但只有第二段上升是新的，條件（高壓、PEG、玻璃珠）離沙堡遠，計數下修並刪『突然』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "『水加到某個量就飽和』只講了一半：在這個實驗裡，再多一些又變強一點，直到縫隙快被灌滿才掉回乾珠子的水準。",
+        "visual": "一條曲線：先跳一階、平台、再爬一段、最後掉回乾沙那條線；旁邊三格顯微示意：小水橋、水團、全泡滿。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P64-004",
+      "question": "用飽和鹽水弄濕的沙，乾了以後是散掉還是變硬？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.brine_drying_salt_cementation_strength_jump",
+      "answer_target": "先差不多，然後突然變硬。蒙彼利埃第二大學的實驗把 0.4 到 0.8 毫米的玻璃珠和天然的 Ventoux 沙拌入飽和食鹽水（每 100 克水溶 35.6 克鹽，比海水鹹得多），做成直徑 25 毫米、高 17 毫米的小圓柱，在攝氏 20 度、相對濕度 43% 下晾不同時間再壓到破，共 82 個玻璃珠樣本與 60 個沙樣本。一開始只有液橋的毛細力，強度低；鹽開始析出時強度還是低；等析出的鹽占全部鹽約八成以上，強度急升，最高到一開始的 20 到 30 倍。在一組沙的例子裡，壓下去也從慢慢變形變成一下脆斷。研究者發現，決定變硬的不是析出了多少克鹽，而是已經析出的比例。",
+      "scope": "飽和食鹽水遠比海水鹹，不得說成海水、不得說『海水沙堡乾了會變硬 20–30 倍』、不給堆沙堡建議；沒有淡水對照；室內控溫控濕的小圓柱；只說明『毛細凝聚』與『鹽膠結』是兩種不同的黏法；不與 N234（鹽結晶撐碎石頭）合成同一機制。",
+      "source_ids": [
+        "P64-S004"
+      ],
+      "source_locator": "F23-S004 §2；§3 第 1–4 段；Fig. 3 文字；Fig. 1(c) 文字",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）：機制全新、條件寫得清楚、全文可讀；同一實驗室（LMGC，El Youssoufi）在本題已有 P63-018（Richefeu 2006，1.0 條），兩篇不同研究、不同機制、事實不重疊，同群合計 1.5 條，低於 V25 用過的同一研究合計上限 1.75，不再下修；但它離『沙堡』遠（飽和鹽水、無淡水對照），不給更多。 原提案 F23-004（目標 C9-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V26（2026-11-12）改字後收；數字逐句對；作者把它列為『水乾了沙堡就散』的轉折，但材料是飽和食鹽水、沒有淡水或海水對照，改為一般章節；延性到脆性限定為一組例子。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水乾了，沙不一定散：如果水裡有鹽，鹽會在原本水橋的位置結晶，把沙粒焊在一起。",
+        "visual": "同一個小沙柱的四個時間點：水橋→水變少→鹽晶在接觸點出現→一壓就脆裂；旁邊壓力計讀數突然跳高。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P64-005",
+      "question": "在真正的海灘上，沙越濕就量得越硬嗎？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.beach_moisture_strength_method_dependent_field",
+      "answer_target": "沒那麼單純。維吉尼亞理工的研究者 2019 年 8 月在阿拉斯加一處中砂海灘，沿一條垂直海岸線的剖面選 6 個點，同時量含水量、密度和表層 10 公分的強度。越靠海，含水量和密度大致越高；但量強度的方法給出不同的樣子：用十字板轉的，在含水較低的中段較強、往更濕處反而變弱；用約 1 公尺高落下的貫入儀，卻在靠海、更濕更密的地方量到明顯更硬；第三種手壓貫入的結果重複量不一致，看不出趨勢。作者說這是初步研究，海灘上怎麼量強度還沒有公認做法，貫入得快慢不同，水來不來得及排開也不同。",
+      "scope": "一座海灘、兩天、初步研究、量法互相不一致；不給任何最佳含水量或數字結論；只能當寫稿時『實驗室規律搬到真實海灘不簡單』的背景。",
+      "source_ids": [
+        "P64-S005"
+      ],
+      "source_locator": "F23-S005 METHODS 第 2–3 段；RESULTS AND DISCUSSION 第 3–5 段；CONCLUSION",
+      "premise_status": "screened",
+      "notes": "計 0（作者 0.25）：作者自稱初步，三法結果不一致、沒有可帶走的數字或規律，照 V25 對只有定性背景者的保守算法不計；可留在收尾一句話當證據限制，不撐分鐘。 原提案 F23-005（目標 C9-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V26（2026-11-12）改字後收；來源與內容都對，作者也確實讀到 10327148 這一份；但沒有可計的事實，計 0。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "實驗室裡的漂亮曲線，到真正的海灘就被潮水、密度和量法攪在一起。",
+        "visual": "海灘剖面 6 個點，含水量往海邊升高；兩種儀器的強度曲線一個先升後降、一個一路往海邊升高。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P64-006",
+      "question": "大家都說冰刀把冰壓化了才滑，這個說法哪裡出了問題？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_pressure_melting_cold_skating_gap",
+      "answer_target": "這個說法有出處：Physics Today 2005 年的專文整理，1886 年 Joly 算出冰刀刃口壓力約 466 大氣壓，熔點只降到約 −3.5 °C。問題是他沒解釋更冷時怎麼溜：專文寫花式滑冰最適溫度約 −5.5 °C、冰球約 −9 °C，在冷到 −30 °C 的地方仍能溜冰；Scott 1910 年的南極探險紀錄也說在 −30 °C 滑雪很輕鬆。壓力能降的那幾度，不夠解釋這麼冷的冰還這麼滑。",
+      "scope": "歷史說法與專文整理的溫度（轉述）；不給任何冰場溫度、不談安全。",
+      "source_ids": [
+        "P64-S011"
+      ],
+      "source_locator": "F24-S004 第 50 頁〈Pressure melting〉與次段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 1.0）：整條是專文轉述 Joly 與滑冰溫度，原研究未讀；Rosenberg 全文合計封頂 1.5。 原提案 F24-001（目標 C10-01，原角色 hook；依本池欄位記為 segment）。非作者覆核 V27（2026-11-12）改字後收；數字逐字成立；因屬轉述下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "大家最熟的解釋，一算就不夠。",
+        "visual": "冰刀剖面加壓力計，旁邊溫度計從 −3.5 °C 一路降到 −30 °C，溜冰人還在滑。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P64-007",
+      "question": "壓力真的能讓冰的熔點降多少？在冰刀底下量溫度看到什麼？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_pressure_melting_point_depression_rate",
+      "answer_target": "很少。0 °C 附近每增加 1 MPa，冰的熔點只降約 0.074 °C，而且融冰還要吸熱。Colbeck 等在冰刀底部裝熱電偶量溫度：滑得越快溫度越高——若是壓力融化（吸熱）應該看到降溫；而且量到的溫度一直遠低於 0 °C。Lever 等的解讀是：這些量測與摩擦生熱一致，但與「整片刀面底下一層 0 °C 的水」不符。",
+      "scope": "熔點降幅是 Lever 2022 引的物性；Colbeck 1997 經 Lever 與 Physics Today 轉述，原文未讀。不自行換算大氣壓。",
+      "source_ids": [
+        "P64-S012",
+        "P64-S011"
+      ],
+      "source_locator": "F24-S005 §2.4 Pressure-melting；F24-S004 第 51 頁 Colbeck 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：一個物性常數加一個轉述的量測。 原提案 F24-002（目標 C10-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V27（2026-11-12）改字後收；把同一研究拆成兩個發現、並把它說成對摩擦生熱不利，已改正。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "壓力融化的帳算不過，量溫度也對不上。",
+        "visual": "熔點曲線幾乎平躺；冰刀上的熱電偶讀數往上跳而不是往下。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P64-008",
+      "question": "1939 年有人在冰洞裡做實驗，提出冰滑是摩擦生熱融出來的，他們怎麼判斷的？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_frictional_heating_hypothesis_history",
+      "answer_target": "Bowden 與 Hughes 在瑞士少女峰研究站上方挖的冰洞裡量雪板摩擦，洞內溫度不超過 −3 °C。金屬雪板的摩擦比木雪板高；他們的理由是：摩擦生熱會受雪板導熱影響，壓力融化不會，所以認為是摩擦熱融出水膜。Lever 等說，在研究界這個「自潤滑」理論從 1930 年代起取代了壓力融化，至今仍最廣被接受；Physics Today 專文則提醒，一般人心中壓力融化仍主導了將近一百年。",
+      "scope": "歷史研究，經專文與 Lever 2022 轉述；原論文未讀。",
+      "source_ids": [
+        "P64-S011",
+        "P64-S012"
+      ],
+      "source_locator": "F24-S004 第 51 頁〈Frictional heating〉；F24-S005 摘要與 §1",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：兩份轉述合一句，原文未讀。 原提案 F24-003（目標 C10-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V27（2026-11-12）改字後收；推論句改回原文；「取代」限研究界。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "第二個解釋登場：不是壓的，是磨熱的。",
+        "visual": "冰洞裡的雪板測試台，金屬板與木板並排，熱量從金屬板散走的箭頭。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P64-009",
+      "question": "如果冰滑是摩擦熱融出來的，那慢到幾乎不動的時候還會滑嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_slippery_at_micrometer_speeds",
+      "answer_target": "在實驗室裡會。Liefferink 等在 −20 °C 讓球以每秒 1 微米的速度滑，冰仍然很滑；換成導熱差兩個數量級的碳化矽球與玻璃球，滑度也差不多。同一研究室較早的 Weber 等，在低摩擦區把速度改變四個數量級以上，摩擦係數也不變。兩篇都據此認為，在他們的實驗裡摩擦生熱不是冰滑的主因。Physics Today 專文也提醒：摩擦生熱和壓力融化都解釋不了站著不動也會滑。",
+      "scope": "實驗室毫米球對冰、最高約 0.1 m/s；不推論到真實溜冰速度。兩篇同一研究室，片中說「同一個研究團隊」。",
+      "source_ids": [
+        "P64-S009",
+        "P64-S008"
+      ],
+      "source_locator": "F24-S002 §IV 第 3–4 段；F24-S001 第 2839–2840 頁速度段與 Figure 1b",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 1.0）：同一研究室兩篇的同一結論；計入 Bonn 研究群合計上限 3.0。 原提案 F24-004（目標 C10-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V27（2026-11-12）改字後收；數字成立；同研究群合計下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "摩擦生熱也不是全部答案。",
+        "visual": "慢動作計時：球每秒走 1 微米，旁邊大字『還是很滑』；兩顆不同顏色的球並排。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P64-010",
+      "question": "早在 1850 年，就有人說冰的表面本來就有一層水嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_faraday_liquid_film_regelation_history",
+      "answer_target": "有。Physics Today 專文整理：Faraday 1850 年在演講中用「兩塊冰一碰就凍在一起」的復冰實驗，推論冰面即使在冰點以下也覆著一層液膜；Thomson 認為那只是壓力造成，他的說法主導了將近一百年，Faraday 的想法被冷落。1957 年 Hosler 等量兩顆冰球互碰後拉開所需的力，溫度越接近 0 °C 越大；水氣低於冰的飽和時，−4 °C 以下兩球不黏，他們當時據此推論表面有液膜。（後來的研究對冰球相黏另有氣相搬運的解釋，見池中 S46-001。）",
+      "scope": "史實與 1957 年量測，經專文轉述；液膜是當時的推論，不當冰球相黏的現代定論。",
+      "source_ids": [
+        "P64-S011"
+      ],
+      "source_locator": "F24-S004 第 50 頁〈Melting below zero〉、第 52 頁與圖 3",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：轉述；與 S46-001／S46-NA009 相鄰，答案不同（本核心是史料），不重計 S46-001。 原提案 F24-005（目標 C10-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V27（2026-11-12）改字後收；轉述下修，並補上池中已有的反面解釋，避免把液膜說成定論。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "第三個解釋其實最早：冰表面本來就濕濕的。",
+        "visual": "兩顆冰球碰在一起再拉開，旁邊溫度計越接近 0 °C 拉力越大。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P64-011",
+      "question": "冰表面那層「像水的東西」有多厚？大家量到的一樣嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_quasi_liquid_layer_thickness_disagreement",
+      "answer_target": "量法不同，答案差很多。Physics Today 專文整理：原子力顯微鏡量到的厚度上限，從 −24 °C 的 12 奈米到 −0.7 °C 的 70 奈米，並推算約 −33 °C 開始出現；核磁共振顯示 −20 到 0 °C 之間表面分子的轉動比冰內部快約五個數量級，但只有液態水的約 1/25；X 光、質子背散射等方法給的厚度又不同，實驗條件也難以比較。專文引 Wettlaufer 的看法：這層東西是從無序固體、部分有結構的準液體一路變到液體，所以各方法很難量到一致的答案。",
+      "scope": "只講量測差異，不給「冰面水層厚度＝X」的單一答案；全為轉述。",
+      "source_ids": [
+        "P64-S011"
+      ],
+      "source_locator": "F24-S004 第 53–54 頁 NMR 段、Döppenschmidt & Butt 段、圖 4 圖說、Wettlaufer 段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.75）：轉述數字；「各技術量的可能不是同一種東西」與 F24-015 同一要點只算一次。 原提案 F24-006（目標 C10-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V27（2026-11-12）改字後收；數字成立；把 Wettlaufer 的看法歸位。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "就算有這層，它比頭髮細上千倍，而且還量不準。",
+        "visual": "冰面放大到奈米級，幾條不同顏色的『厚度線』彼此對不上。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P64-012",
+      "question": "冰越冷越滑，還是越接近 0 °C 越滑？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_arrhenius_temperature_minimum",
+      "answer_target": "都不是。Weber 等量鋼球在冰上以每秒 0.38 毫米滑：−100 °C 時摩擦係數約 0.5，和同一顆鋼球在玻璃上的乾摩擦差不多——這麼冷的冰一點都不滑；升溫到約 −7 °C，摩擦降到約 0.01，降了一個數量級以上。下降的方式符合一個活化能約 11.5 kJ/mol 的熱活化關係；比 −7 °C 更暖，摩擦又升高（見下一章）。",
+      "scope": "實驗室鋼球、固定 0.38 mm/s；不說路面結冰、不給冰場溫度。",
+      "source_ids": [
+        "P64-S008"
+      ],
+      "source_locator": "F24-S001 第 2838 頁摘要、第 2839 頁 Figure 1a 與首段",
+      "premise_status": "screened",
+      "notes": "算 1.0：同一實驗的溫度曲線，Bonn 研究群合計上限內。 原提案 F24-007（目標 C10-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V27（2026-11-12）改字後收；逐字成立。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冰不是天生就滑；太冷的冰像玻璃一樣澀。",
+        "visual": "摩擦係數對溫度的曲線，從 −100 °C 高處滑下來；一端畫鋼球卡在冰上。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P64-013",
+      "question": "研究者說冰會滑，是因為表面「最上面那層分子」在滾來滾去，這是什麼意思？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_surface_mobile_molecules_rolling",
+      "answer_target": "Weber 等的分子模擬顯示，冰最表面有一種氫鍵比較少、掛得比較鬆的水分子，會用交換氫鍵夥伴的方式在表面「滾動」，溫度越高數量越多、動得越快；它們移動的活化能和摩擦隨溫度下降的活化能幾乎一樣，作者認為兩者有關。實驗上，−10 °C 用螺絲起子在冰面刮出的深溝，約 7 分鐘後幾乎被填平，表面因此很平滑。作者的解讀是：常被說成「冰上有一層準液層」的表面融化，是間接透過製造這些高移動性的分子讓冰變滑；摩擦隨溫度平滑變化，看不到某個溫度突然融出一層的跳變。",
+      "scope": "作者的解讀，用「研究者認為」；不說成定論，不說「推翻水膜」。",
+      "source_ids": [
+        "P64-S008"
+      ],
+      "source_locator": "F24-S001 第 2839–2841 頁 MD 段、Figure 3、結論段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：同一論文的第二個結果（刮痕自癒）與模擬解讀；Bonn 研究群合計上限 3.0。 原提案 F24-008（目標 C10-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V27（2026-11-12）改字後收；把「不是厚水膜」改回原文的「表面融化間接起作用」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "主角換成一層分子，而且它會自己把刮痕補平。",
+        "visual": "冰面原子動畫：幾顆水分子在表面打滾；刮痕縮短的縮時。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P64-014",
+      "question": "既然越接近 0 °C 表面分子越活躍，為什麼接近 0 °C 反而沒那麼滑？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_ploughing_near_melting",
+      "answer_target": "因為冰變軟了。Weber 等發現約 −7 °C 以上摩擦又急升，球在冰上留下看得見的犁溝。同一團隊的 Liefferink 等量到冰的壓入硬度隨溫度上升近似線性下降，到 −1.5 °C 因壓力融化驟降；他們把一小段真冰刀裝上實驗台量，最滑的溫度是 −7.7 ± 2.3 °C、摩擦係數約 0.039。另一份實測（Lever 等轉述 de Koning 1992）：一位速滑選手在冰場直道滑行，冰刀摩擦最低出現在冰面 −6 到 −9 °C。三份是不同的裝置，數字分開講。",
+      "scope": "不給冰場或任何溫度建議；三個數字分屬不同研究，並列不合併、不平均；de Koning 為轉述。",
+      "source_ids": [
+        "P64-S008",
+        "P64-S009",
+        "P64-S012"
+      ],
+      "source_locator": "F24-S001 第 2839 頁〈nonmonotonic〉段；F24-S002 Fig. 2(a) 圖說、§III.B 末段；F24-S005 §2.1",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：犁溝與硬度、模型冰刀最低點；de Koning 轉述不計。 原提案 F24-009（目標 C10-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V27（2026-11-12）改字後收；「比賽」改正；三研究並列。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "太冷不滑、太暖會陷，中間有個甜蜜點。",
+        "visual": "U 形曲線：左邊冰太硬、右邊球陷進去犁出溝。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P64-015",
+      "question": "冰面接觸點的壓力越大，冰會越滑嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_increases_exponentially_with_contact_pressure",
+      "answer_target": "在這組實驗裡相反。Liefferink 等用表面越來越粗的玻璃球在冰上滑，讓真正碰到冰的那些小點承受的壓力變大：在 −50 °C，光滑球的平均接觸壓力約 35 MPa、冰只有彈性變形；粗球升到約 85 MPa，等於冰的硬度。在 −30 到 −90 °C 的彈性區，剪應力隨這個局部接觸壓力呈指數上升——接觸點壓得越緊越不滑，作者比作潤滑油被壓緊時變黏，認為壓力妨礙了表面分子的移動。要注意：改變的是表面粗糙造成的局部壓力，不是用力往下壓；他們算出加大法向力時接觸壓力幾乎不變。作者也說，冰刀沿長方向曲率半徑有 3 到 22 公尺、刃緣很利，對應滑行要低摩擦、轉彎要高摩擦。",
+      "scope": "限實驗室 −30 到 −90 °C 彈性區、局部接觸壓力由粗糙度改變；不說「踩重一點／輕一點比較不會滑倒」，不給任何走路或運動建議。",
+      "source_ids": [
+        "P64-S009"
+      ],
+      "source_locator": "F24-S002 §III.C 與 Fig. 3、Fig. 4、§III.B 冰刀段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 1.0）：同一論文一個結果；Bonn 研究群合計上限 3.0。 原提案 F24-010（目標 C10-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V27（2026-11-12）改字後收；問題與答案改寫，避免把局部接觸壓力說成用力壓。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "壓力不但沒幫忙，還在扯後腿。",
+        "visual": "同一塊冰，光滑球輕輕滑過、粗球被『黏住』；接觸點放大，壓力計紅到頂。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P64-016",
+      "question": "另一派研究者在滑動的珠子和冰之間量到一層膜，那層膜跟一般的水一樣嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_meltwater_film_viscoelastic_100x",
+      "answer_target": "不一樣。Canale 等（預印本）把玻璃珠裝在音叉上劃冰，同時用另一個振動方向探那層夾在中間的膜：滑動時的膜厚 100 到 500 奈米，隨溫度升高而變厚，卻幾乎不隨速度變（和「滑越快、膜越厚」的通說相反），約是靜止時冰面預融膜的 4 倍。這層膜有彈性也有黏性，黏度最高約純水的一百倍（兩個數量級），作者形容「像油一樣黏」——正因為黏，才不容易被擠出去，兩個固體不直接碰到。量到的摩擦係數約 0.015，而且越接近熔點越大。",
+      "scope": "預印本（arXiv v1）；毫米玻璃珠、微米振幅、−16 到 0 °C；不說是冰刀。",
+      "source_ids": [
+        "P64-S010"
+      ],
+      "source_locator": "F24-S003 摘要、§III.A、§III.C 與 Fig. 2、§III.D",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：同一實驗多個數字合一條；只讀到送審前版本，下修。 原提案 F24-011（目標 C10-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V27（2026-11-12）改字後收；改正「冰刀」；標預印本。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "就算有水，也不是你想像的那種水。",
+        "visual": "兩杯液體比黏度：清水與一杯『冰下的水』，後者像油一樣慢慢流。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P64-017",
+      "question": "冬季運動在板底打蠟，跟冰為什麼滑有關係嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_hydrophobic_coating_viscosity_drop",
+      "answer_target": "Canale 等（預印本）把玻璃珠表面鍍一層奈米級矽烷、變成疏水，摩擦最多降到原來的十分之一，越接近熔點降得越多；膜厚沒變，變的是膜的黏度下降。作者把這連到冬季運動打蠟，說這是一個意外的解釋；但他們也說雪比冰複雜得多，蠟的硬度也有作用。",
+      "scope": "只說研究提供一種解釋；不給選蠟、上蠟或任何運動建議。",
+      "source_ids": [
+        "P64-S010"
+      ],
+      "source_locator": "F24-S003 §III.E 與 Fig. 4",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：同一預印本第二個結果；Canale 合計 1.0。 原提案 F24-012（目標 C10-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V27（2026-11-12）改字後收；數字成立，預印本下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "表面化學一改，膜的黏度跟著改。",
+        "visual": "兩顆珠子並排滑，一顆水珠攤平、一顆水珠站起來；摩擦條一長一短。",
+        "seconds": [
+          35,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P64-018",
+      "question": "到真的溜冰場拍冰刀，刀底下有沒有一整片水？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_skate_rink_infrared_no_full_water_film",
+      "answer_target": "看起來沒有。Lever 等在室內溜冰場用紅外熱像和高速攝影拍冰刀滑過：刀兩側噴出的是有稜角、會彈跳的冰粒，不是水滴；刀痕是不規則的三角形，研究者認為冰在快速擠壓下脆裂扮演重要角色；刀痕溫度忽高忽低、有零星熱點；就算刀過去後 0.01 秒內量到的最高溫也遠低於 0 °C，刀與冰交角最熱只有 −0.45 °C（速滑刀）和 −2.2 °C（冰球刀）。研究者說這些觀測不支持「整片刀面底下有一層融水」，但也承認降溫曲線不能確認、也不能排除刀過時短暫形成 0 °C 的融層。",
+      "scope": "少數幾趟、兩種冰刀；不推論所有冰場。",
+      "source_ids": [
+        "P64-S012"
+      ],
+      "source_locator": "F24-S005 觀測要點列、熱像段、討論首段",
+      "premise_status": "screened",
+      "notes": "算 1.0：同一組觀測三點合一條；Lever 合計 1.75。 原提案 F24-013（目標 C10-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V27（2026-11-12）改字後收；數字成立；推論歸因作者並保留限制。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "真冰場上看到的是碎冰，不是水花。",
+        "visual": "高速攝影：冰刀推出一串閃亮冰粒；熱像條帶上幾個零星亮點。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P64-019",
+      "question": "那冰到底為什麼滑？現在有統一的答案嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_skate_slurry_high_pressure_zones_hypothesis",
+      "answer_target": "還沒有。Lever 等提出：冰刀下方不是均勻受壓，而是零星的高壓區，冰在那裡脆裂，形成冰屑和水混成的「富冰泥漿」來潤滑——在這些高壓點上，壓力融化又可能扮演角色，所以他們把壓力融化、磨耗和潤滑膜併成一個統一假說；這和 Canale 等推測的「水加次微米冰屑的懸浮液」相呼應。另一邊，Weber、Liefferink 等認為低溫時關鍵是表面一層會動的分子，接近 0 °C 則是冰變軟、被犁開。Lever 等寫：研究了一百多年，機制仍不確定；Canale 等也說仍有爭議。",
+      "scope": "各派並列，不判輸贏；不說「科學家終於解開」「水膜說被推翻」「壓力融化完全錯」。",
+      "source_ids": [
+        "P64-S012",
+        "P64-S010"
+      ],
+      "source_locator": "F24-S005 摘要、§1 首段、討論；F24-S003 §IV",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：統一假說是假說；「仍不確定」是定調不是事實；Canale 懸浮液推測已在其 1.0 內。 原提案 F24-014（目標 C10-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V27（2026-11-12）改字後收；把各派寫完整、點名出處。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "答案不是一句話：不同溫度、速度、壓力下，主角可能不同。",
+        "visual": "三條線索（分子、黏膜、碎冰泥漿）收進一張圖，中間打問號。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P64-020",
+      "question": "冰表面的「準液層」什麼時候出現？是一直都有一層水嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_premelt_bilayer_onset_and_nonequilibrium_droplets",
+      "answer_target": "不是一層水。Nagata 等的綜述整理：最表層的分子約從 −90 °C 開始變無序（三個氫鍵的分子變成兩個），第二層要到約 −16 °C，而且是一層一層跳著變、不是慢慢變厚；要到 −2 °C 以上，共焦顯微鏡才看得到分布不均的小液滴和液膜，而且只在空氣中水氣過飽和或未飽和的不平衡狀態出現，冰和水氣平衡時看不到。這些液滴、液膜據報比水黏 20 倍和 200 倍。綜述也說，不同技術量到的「準液層」可能量的根本不是同一個東西。",
+      "scope": "綜述；溫度數字分屬模擬、光譜與顯微觀測，片中標來源類型；黏度倍數為「據報」。",
+      "source_ids": [
+        "P64-S013"
+      ],
+      "source_locator": "F24-S006 Conspectus、Introduction、Figure 1 圖說、〈Emergence of QL-Droplets〉節",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.75）：綜述整理，原研究（Sazaki 2012、Murata 2016、Sánchez 2017）未讀；「滑」的一節重述 Weber 不計；Bonn 研究群合計上限 3.0。 原提案 F24-015（目標 C10-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V27（2026-11-12）改字後收；數字成立；綜述與同研究群下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "『冰上有一層水』這句話，連那層水是什麼都還在吵。",
+        "visual": "溫度軸上三個刻度：−90、−16、−2 °C，各自亮起一層；最右邊才冒出小水珠。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P64-021",
+      "question": "衣服濕了變深色，是水把顏色染深了嗎？",
+      "domain": "生活光學",
+      "mechanism_key": "optics.wet_fabric_more_transparent_not_darker",
+      "answer_target": "要看是什麼衣服。白襯衫：水填進纖維之間的空氣縫，水跟纖維對光的作用差不多，等於拿掉大部分反射界面，濕的那塊變得比較透明——你看到的是它後面比較暗的東西（皮膚或底下的衣服）。所以白衫疊在亮橘色衣服上，弄濕的地方會變得更橘而不是更黑；把濕處對著亮光，濕的地方反而比較亮。深色的染色衣服則不是變透明：乾的時候每根纖維表面還會反射一點各色的光，看起來偏淡；濕了以後這些多次反射被抑制，更多光被染料吸收，顏色變得更深、更飽和。",
+      "scope": "教學問答頁（Baird, WTAMU），沒有量化資料；不給洗衣或去漬建議。",
+      "source_ids": [
+        "P64-S014"
+      ],
+      "source_locator": "F24-S007〈Spill some water〉段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 1.0）：「水填空隙減少散射」與池中濕紙不收紀錄同機制不計；只算看到後面（兩反例）與染色布吸收兩點，且來源是教學頁。 原提案 F24-017（目標 C10-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V27（2026-11-12）改字後收；補上同頁染色衣段，避免把白衫的結果套到所有衣服。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "濕不是變黑，是變透明。",
+        "visual": "白衫疊在橘衫上，潑水處透出橘色；拿到窗前濕處發亮。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P64-022",
+      "question": "除了變透明，濕的表面還有什麼讓它看起來暗？",
+      "domain": "生活光學",
+      "mechanism_key": "optics.wet_surface_diffuse_to_specular",
+      "answer_target": "表面變平滑。乾布或乾地粗糙，光往四面八方散，從哪個角度看都亮；水把小坑填平，反射接近鏡面，只有在鏡面角度才亮，其他角度看就顯得暗。",
+      "scope": "教學頁原理。",
+      "source_ids": [
+        "P64-S014"
+      ],
+      "source_locator": "F24-S007〈another effect〉段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：教學頁一句原理。 原提案 F24-018（目標 C10-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V27（2026-11-12）照原稿收；成立；只下修條數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "濕地面在某個角度會反光，其他角度更暗。",
+        "visual": "同一塊濕地磚，從兩個角度看一亮一暗。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P64-023",
+      "question": "土濕了變暗，科學家研究多久了？他們怎麼解釋？",
+      "domain": "生活光學",
+      "mechanism_key": "earth.soil_wet_darkening_refractive_index_history",
+      "answer_target": "大約一百年。Hick 等的論文引言整理：1925 年 Ångström 就在實驗室研究過土壤濕了看起來變暗；Twomey 等 1986 年把原因歸於土粒的折射率比較接近水、不接近空氣，土濕了散射減少、反射變少。附著在土粒表面的一薄層水只在約 1400、1900 奈米附近吸收；讓整個光譜都變暗的是填進孔隙的自由水。",
+      "scope": "轉述前人；原論文未讀。",
+      "source_ids": [
+        "P64-S015",
+        "P64-S017"
+      ],
+      "source_locator": "F24-S008 §1 第 2–3 段；F24-S010 §1",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：全為轉述，折射率機制與濕紙不收紀錄同答案。 原提案 F24-019（目標 C10-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V27（2026-11-12）改字後收；轉述下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "衣服的道理，在土上被量了一百年。",
+        "visual": "1925 年的實驗桌與今天的光譜儀並排。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P64-024",
+      "question": "水加得越多，土就越來越暗嗎？",
+      "domain": "生活光學",
+      "mechanism_key": "earth.soil_reflectance_exponential_saturation_with_moisture",
+      "answer_target": "不會一直暗下去。Hick 等量 28 個歐洲農地土樣，反射率隨含水量增加呈遞減指數：一開始暗得快，後來趨於平緩；可見光大約在體積含水量 20% 就不再明顯變暗，短波紅外要到約 50%，和 Lobell 與 Asner 2002 年的結果相同。",
+      "scope": "土壤實驗室量測；不換算成衣服或道路。",
+      "source_ids": [
+        "P64-S015"
+      ],
+      "source_locator": "F24-S008 摘要、討論（Lobell & Asner 比較段）",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：同一研究，Hick 合計 1.25。 原提案 F24-020（目標 C10-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V27（2026-11-12）改字後收；成立，下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一點點水就很暗，再多水也不會更暗。",
+        "visual": "反射率曲線先陡降後變平。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P64-025",
+      "question": "泡到全濕的土，有可能反而比較亮嗎？",
+      "domain": "生活光學",
+      "mechanism_key": "earth.soil_reflectance_rises_at_waterlogging",
+      "answer_target": "有可能。Hick 等的附錄記錄，28 個樣本裡有 4 個在泡到飽和時，波長 1400 奈米以下的反射率略升，作者歸因於表面水膜改變了散射；他們把這些量測剔除，並說與前人觀察一致。",
+      "scope": "只有附錄圖說，作者未分析；只能說『有時』。",
+      "source_ids": [
+        "P64-S015"
+      ],
+      "source_locator": "F24-S008 Figure A3 圖說、§3 結果段",
+      "premise_status": "screened",
+      "notes": "算 0.25：附錄圖說，4 個樣本。 原提案 F24-021（目標 C10-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V27（2026-11-12）照原稿收；成立。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水多到浮在表面，就換成另一種反光。",
+        "visual": "泥巴表面積水反光。",
+        "seconds": [
+          30,
+          35
+        ]
+      }
+    },
+    {
+      "id": "P64-026",
+      "question": "同樣加水，為什麼有的土變暗很明顯、有的不太明顯？",
+      "domain": "生活光學",
+      "mechanism_key": "earth.soil_darkening_rate_organic_carbon_clay",
+      "answer_target": "跟土本身有關。Hick 等發現有機碳多的土變暗得比較慢（作者引前人解釋：它本來就暗，掩蓋了水的效果），黏粒、粉砂多的土變暗得較快；有機碳和黏粒占模型解釋力約七成，整個模型能解釋 67% 的差異。",
+      "scope": "土壤研究。",
+      "source_ids": [
+        "P64-S015"
+      ],
+      "source_locator": "F24-S008 摘要、討論",
+      "premise_status": "screened",
+      "notes": "算 0.25：Hick 上限內。 原提案 F24-022（目標 C10-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V27（2026-11-12）照原稿收；成立。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "本來就黑的東西，濕了也看不出來。",
+        "visual": "淺色沙土與黑色腐植土並排潑水。",
+        "seconds": [
+          30,
+          35
+        ]
+      }
+    },
+    {
+      "id": "P64-027",
+      "question": "實驗室裡一點一點烘乾土，看到的變暗有多大？",
+      "domain": "生活光學",
+      "mechanism_key": "earth.soil_lab_drying_reflectance_drop_magnitude",
+      "answer_target": "Lesaignoux 等把約 30 個法國土樣泡到飽和，再分五、六段烘乾，從約 50% 到 2% 含水量量了三百多條光譜：所有樣本都是越濕越暗；可見光乾與飽和的反射率差小於 0.13，近紅外與短波紅外小於 0.3；含水超過 20% 時，礦物的吸收特徵幾乎被蓋掉。",
+      "scope": "研討會短文；數字多在圖上。",
+      "source_ids": [
+        "P64-S016"
+      ],
+      "source_locator": "F24-S009 §3、§3.1",
+      "premise_status": "screened",
+      "notes": "算 0.5：與 F24-S010 同一研究群，合計 1.0。 原提案 F24-023（目標 C10-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V27（2026-11-12）照原稿收；成立。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "量化：變暗有多大。",
+        "visual": "一排從濕到乾的土樣培養皿。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P64-028",
+      "question": "衛星怎麼利用『濕了變暗』這件事？",
+      "domain": "生活光學",
+      "mechanism_key": "earth.soil_moisture_estimated_from_reflectance",
+      "answer_target": "既然越濕越暗，就能反過來從反射光譜估土壤含水量。Fabre 等用 32 個土樣、190 條光譜比較幾種方法，誤差（RMSE）在 3.8% 到 6.2% 之間，最好的是一種半經驗模型；模擬機載感測器並扣掉大氣影響後，最好的仍是它，誤差約 2.9%。",
+      "scope": "方法論文；不談農業建議。",
+      "source_ids": [
+        "P64-S017"
+      ],
+      "source_locator": "F24-S010 摘要",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：方法論文，與「為什麼變暗」無新機制；ONERA 合計 0.75。 原提案 F24-024（目標 C10-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V27（2026-11-12）改字後收；改正誤差範圍的歸屬。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "地面變暗，成了一把量水的尺。",
+        "visual": "空拍光譜影像，一塊田從淺到深上色。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "P64-NA001",
+      "question": "濕沙的剪切模數隨液量怎麼變？（Møller & Bonn 2007）",
+      "existing_ids": [
+        "P63-020",
+        "P63-019"
+      ],
+      "source_ids": [],
+      "reason": "UvA-DARE 紀錄頁（WebSearch 列出）只有 DOI 連結、沒有全文檔；EPL 刊本未讀；只讀到搜尋結果的摘要（1–3% 液體分率最強）。且 Bonn 研究群在本題已有 P63-019～P63-024，P63-020 已轉述同一結論。 原提案 F23-NA001。",
+      "reentry_condition": "出現合法公開全文，且能提供 P63-020 沒有的新量測時。",
+      "reading_status": "只讀到摘要（搜尋結果）"
+    },
+    {
+      "id": "P64-NA002",
+      "question": "濕顆粒的凝聚力能不能用『有效應力』算出來？",
+      "existing_ids": [
+        "P63-018",
+        "P63-020"
+      ],
+      "source_ids": [
+        "P64-S006"
+      ],
+      "reason": "以離散元素模擬與方法論為主，觀眾可懂的新事實少；低液量凝聚力下降與 P63-020 重疊；第二作者 Fall 亦為 Bonn 2014（P63-022／P63-023）作者。 原提案 F23-NA002。",
+      "reentry_condition": "題目要講『怎麼從單一水橋算到整堆沙』時再議。",
+      "reading_status": "摘要與引言全文讀；其餘瀏覽"
+    },
+    {
+      "id": "P64-NA003",
+      "question": "濕沙被拉開後停下來，張力還會繼續變嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "P64-S007"
+      ],
+      "reason": "應力鬆弛主題離沙堡題遠；pdf.arxiv.org 回 500，只讀 ar5iv 的摘要與引言。 原提案 F23-NA003。",
+      "reentry_condition": "不建議再議。",
+      "reading_status": "摘要與引言"
+    },
+    {
+      "id": "P64-NA004",
+      "question": "X 光看濕沙堆裡的水（Scheel 等 2008，Nature Materials 與 J. Phys.: Condens. Matter）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "ANU 典藏的 JPCM 檔設 2037-12-31 禁閱、只有 request-a-copy，不申請；搜尋結果出現 ANU 個人網頁上的 Nature Materials PDF，非出版社授權副本，依指示不碰。 原提案 F23-NA004。",
+      "reentry_condition": "出版社或典藏正式開放全文時。",
+      "reading_status": "只讀到典藏紀錄頁與搜尋摘要"
+    },
+    {
+      "id": "P64-NA005",
+      "question": "未飽和砂的張力強度是否有兩個高峰？（Baltodano-Goulding 2006 學位論文、Lu 等 2007）",
+      "existing_ids": [
+        "P63-018"
+      ],
+      "source_ids": [],
+      "reason": "MOSpace 紀錄頁 WebFetch 403、curl 轉址後 500，未讀到全文；Lu 等 2007 ASCE 為付費牆，只有搜尋摘要。 原提案 F23-NA005。",
+      "reentry_condition": "MOSpace 恢復且全文可讀時，可補『水對砂張力強度雙峰』約 0.5 條。",
+      "reading_status": "未讀（網站錯誤／付費牆）"
+    },
+    {
+      "id": "P64-NA006",
+      "question": "Cabut 等 2021 Physics of Fluids 刊本（P63-002 的同儕審查版）",
+      "existing_ids": [
+        "P63-002"
+      ],
+      "source_ids": [],
+      "reason": "搜尋只找到 AIP 新聞稿、Physics World 報導與出版社頁，沒有開放全文或 HAL 刊本；新聞稿不當來源；同一研究群也不另加條數。 原提案 F23-NA006。",
+      "reentry_condition": "HAL 或期刊開放刊本時，只核對數字，不加條數。",
+      "reading_status": "未讀（無開放全文）"
+    },
+    {
+      "id": "P64-NA007",
+      "question": "胎內加速度計量接地長度在濕路變短多少？（Matilainen & Tuononen）",
+      "existing_ids": [
+        "P62-007"
+      ],
+      "source_ids": [],
+      "reason": "Aalto 研究入口只有書目、沒有全文檔；2015 年 MSSP 期刊版未見開放全文。 原提案 F23-NA007。",
+      "reentry_condition": "Aalto 典藏開放作者稿時，可補約 0.5 條。",
+      "reading_status": "只讀到書目"
+    },
+    {
+      "id": "P64-NA008",
+      "question": "白襯衫的纖維幾乎是透明的，為什麼整件看起來是白的？",
+      "existing_ids": [
+        "N274"
+      ],
+      "source_ids": [],
+      "reason": "非作者覆核 V27（2026-11-12）退回：同答案換物件。片中可在 F24-017 開頭用一句帶過，不算條數。 原提案 F24-016。",
+      "reentry_condition": "覆核理由所列的缺口補上後重提。",
+      "reading_status": "已讀來源，核心退回"
+    },
+    {
+      "id": "P64-NA009",
+      "question": "人怎麼一眼看出東西是濕的？暗、加上顏色變飽和，就會被看成濕的嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Sawayama, Adelson & Nishida 2017（J Vis 17(5):7，DOI 10.1167/17.5.7）只讀到 Europe PMC 的摘要：MIT DSpace 紀錄頁的 bitstream 下載連結連續三次回 429（Too Many Requests），DOI 轉到 jov.arvojournals.org 回 403；Europe PMC 標非開放取用、無 PMC 全文。摘要說加深、加飽和度的影像轉換會讓乾的場景看起來較濕、顏色多的影像較有效，但只讀摘要不算。 原提案 F24-NA001。",
+      "reentry_condition": "MIT DSpace 恢復下載後取得全文，可補 C10-02 約 1 條，並提供『看起來濕』的第二個轉折。",
+      "reading_status": "只讀摘要"
+    },
+    {
+      "id": "P64-NA010",
+      "question": "沙或土濕了變暗，是光被困在水膜裡反覆內反射，還是往前散射變多？",
+      "existing_ids": [
+        "N274"
+      ],
+      "source_ids": [],
+      "reason": "兩派原論文 Twomey, Bohren & Mergenthaler 1986（Applied Optics 25:431）與 Lekner & Dorf 1988（Applied Optics 27:1278）都在付費期刊；搜尋結果裡的 wgtn.ac.nz 職員頁 PDF 與 Zhang & Voss 2006 的 physics.miami.edu 個人頁 PDF 是研究者自行放置的出版社檔，授權不明（照第十三輪 V25 對個人頁副本的處理），未下載。只經 Hick 2026 轉述 Twomey 的結論。 原提案 F24-NA002。",
+      "reentry_condition": "找到出版社或機構典藏的開放全文，可補 C10-02 機制章約 1–1.5 條，且能區分兩種機制。",
+      "reading_status": "未讀"
+    },
+    {
+      "id": "P64-NA011",
+      "question": "濕布的顏色差異有多大？乾濕之間 ΔE 是幾個單位？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "WebSearch 列出的 NC State 學位論文（repository.lib.ncsu.edu bitstream）curl TLS 憑證驗證失敗，未關閉驗證；Jasper & Jasper 2025（MDPI Fibers）未試（MDPI 前輪 403）；SAGE 的聚酯研究只見第三方鏡像（sage.cnpereading.com），不用。 原提案 F24-NA003。",
+      "reentry_condition": "取得任一份開放全文的布料乾濕色差量測，可補 C10-02 約 1 條，讓題目回到『衣服』。",
+      "reading_status": "未讀"
+    },
+    {
+      "id": "P64-NA012",
+      "question": "冰刀滑過時刀底下的溫度到底多高？（Colbeck 1997 冰刀熱電偶）",
+      "existing_ids": [],
+      "source_ids": [
+        "P64-S011",
+        "P64-S012"
+      ],
+      "reason": "Colbeck, Najarian & Smith 1997（Am J Phys 65:488）付費；只經 F24-S004、F24-S005 轉述，已併入 F24-002 打折計數，不另立核心。 原提案 F24-NA004。",
+      "reentry_condition": "取得原文可把 F24-002 由 0.75 升到 1.0。",
+      "reading_status": "只讀轉述"
+    },
+    {
+      "id": "P64-NA013",
+      "question": "冰表面一層一層融化的實驗證據（Sánchez 等 2017；Sazaki 等 2012；Murata 等 2016）",
+      "existing_ids": [],
+      "source_ids": [
+        "P64-S013"
+      ],
+      "reason": "三篇 PNAS 原文經 Europe PMC REST fullTextXML 皆回 500，Europe PMC 標非開放取用；pmc.ncbi.nlm.nih.gov 前輪有 reCAPTCHA，未試。只經 F24-S006 綜述整理，已併入 F24-015。 原提案 F24-NA005。",
+      "reentry_condition": "取得任一篇開放全文，F24-015 可由 0.75 升到 1.0，且不再全靠 Bonn 研究室的綜述。",
+      "reading_status": "只讀綜述"
+    },
+    {
+      "id": "P64-NA014",
+      "question": "搖過的汽水打開為什麼會噴？敲罐子有用嗎？",
+      "existing_ids": [
+        "LEG-S72",
+        "P230"
+      ],
+      "source_ids": [],
+      "reason": "去重時判與 LEG-S72（曼陀珠提供成核點、二氧化碳一下冒出）同答案、P230（開瓶後分壓下降）近鄰；可讀的開放研究以啤酒為主（Sopina 等 2019 arXiv 隨機試驗、Rodríguez-Rodríguez 等 2014 PRL），Nature Reviews Physics 社論也說不一定適用汽水。未展開研究。 原提案 F24-NA006。",
+      "reentry_condition": "若站主認為『搖』與『丟糖』是不同題，可用 Sopina 2019（arXiv:1912.01999）與 Rodríguez-Rodríguez 2014（Málaga 機構典藏）另開。",
+      "reading_status": "只讀社論（f24src/natrevphys_s42254-023-00579-y.pdf，sha256 前 16 碼 8f6751844b732706）"
+    }
+  ]
+}

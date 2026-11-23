@@ -1,0 +1,317 @@
+{
+  "batch_id": "wave121-music-20261119",
+  "created_on": "2026-11-19",
+  "scope": "用六張原創短譜把印在紙上的記號、數位檔紀錄及實際奏出的聲音對起來。",
+  "sources": [
+    {
+      "id": "X121M-S01",
+      "url": "https://handbook.musescore.org/notation/expressive-markings/slurs-and-ties",
+      "canonical_url": "https://handbook.musescore.org/notation/expressive-markings/slurs-and-ties",
+      "title": "Slurs and ties",
+      "publisher": "MuseScore Studio Handbook",
+      "version": "線上版",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟維護者的記譜手冊或資料格式原文，核對定義和例譜。",
+      "reading_scope": "開頭 Slurs and ties，對照 slur 的 legato 與 tie 的同音延長",
+      "locator": "開頭 Slurs and ties，對照 slur 的 legato 與 tie 的同音延長",
+      "summary": "延音線將同音高的後一個音值併入前一音。圓滑線在示例中跨越不同音高，提示連奏，具體奏法依樂器而異。",
+      "limitations": "比較兩個單旋律例子，不將音高是否不同當作所有弧線的唯一辨識法。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X121M-S02",
+      "url": "https://handbook.musescore.org/notation/repeats/voltas",
+      "canonical_url": "https://handbook.musescore.org/notation/repeats/voltas",
+      "title": "Voltas",
+      "publisher": "MuseScore Studio Handbook",
+      "version": "線上版",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟維護者的記譜手冊或資料格式原文，核對定義和例譜。",
+      "reading_scope": "首段 Voltas 的標 1. 與 2. 例譜，以及 Adding voltas to your score",
+      "locator": "首段 Voltas 的標 1. 與 2. 例譜，以及 Adding voltas to your score",
+      "summary": "反覆段第一次演奏標 1 的結尾，返回起點，第二次接標 2 的結尾；記譜軟體可依設定播放。",
+      "limitations": "示例為兩次反覆，不推論所有曲子的走法。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X121M-S03",
+      "url": "https://www.w3.org/2021/06/musicxml40/musicxml-reference/elements/ending/",
+      "canonical_url": "https://www.w3.org/2021/06/musicxml40/musicxml-reference/elements/ending/",
+      "title": "The <ending> element",
+      "publisher": "W3C Music Notation Community Group",
+      "version": "MusicXML 4.0",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟維護者的記譜手冊或資料格式原文，核對定義和例譜。",
+      "reading_scope": "element definition 及 number 屬性",
+      "locator": "element definition 及 number 屬性",
+      "summary": "反覆結尾可分不同遍次，number 屬性說明哪些遍次使用該結尾。",
+      "limitations": "規定交換檔如何表達遍次。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X121M-S04",
+      "url": "https://handbook.musescore.org/notation/rhythm-meter-and-measures/measure-and-multimeasure-rests",
+      "canonical_url": "https://handbook.musescore.org/notation/rhythm-meter-and-measures/measure-and-multimeasure-rests",
+      "title": "Measure and multimeasure rests",
+      "publisher": "MuseScore Studio Handbook",
+      "version": "線上版",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟維護者的記譜手冊或資料格式原文，核對定義和例譜。",
+      "reading_scope": "Measure rests 的定義、置中示例與 4/2、8/4 的附註",
+      "locator": "Measure rests 的定義、置中示例與 4/2、8/4 的附註",
+      "summary": "整小節休止用置中的記號表示，常與全休止符同形。它指一整小節或一個聲部的沉默，長度由該小節決定。",
+      "limitations": "只用完整的 3/4 與 4/4 小節作例子。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X121M-S05",
+      "url": "https://www.w3.org/2021/06/musicxml40/musicxml-reference/elements/rest/",
+      "canonical_url": "https://www.w3.org/2021/06/musicxml40/musicxml-reference/elements/rest/",
+      "title": "The <rest> element",
+      "publisher": "W3C Music Notation Community Group",
+      "version": "MusicXML 4.0",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟維護者的記譜手冊或資料格式原文，核對定義和例譜。",
+      "reading_scope": "Attributes → measure",
+      "locator": "Attributes → measure",
+      "summary": "measure 設為 yes 時，明示這是整小節休止。",
+      "limitations": "這個屬性只描述是否為整小節；本身不指定每一拍的時長。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X121M-S06",
+      "url": "https://www.w3.org/2021/06/musicxml40/musicxml-reference/elements/cue/",
+      "canonical_url": "https://www.w3.org/2021/06/musicxml40/musicxml-reference/elements/cue/",
+      "title": "The <cue> element",
+      "publisher": "W3C Music Notation Community Group",
+      "version": "MusicXML 4.0",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟維護者的記譜手冊或資料格式原文，核對定義和例譜。",
+      "reading_scope": "<cue> 定義與 <type> 對 full size / cue size 的說明",
+      "locator": "<cue> 定義與 <type> 對 full size / cue size 的說明",
+      "summary": "<cue> 表示播放時靜音的提示音符。一般音符也可印成小字並照樣播放；真正的提示音符可以印成正常大小但保持靜音。",
+      "limitations": "只談 MusicXML 的表達規則，其他軟體及真人演奏不作概括。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X121M-S07",
+      "url": "https://lilypond.org/doc/v2.24/Documentation/notation/displaying-rhythms#upbeats",
+      "canonical_url": "https://lilypond.org/doc/v2.24/Documentation/notation/displaying-rhythms#upbeats",
+      "title": "LilyPond Notation Reference — Upbeats",
+      "publisher": "GNU LilyPond",
+      "version": "2.24",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟維護者的記譜手冊或資料格式原文，核對定義和例譜。",
+      "reading_scope": "Upbeats 首段與 3/4 的 partial 例譜",
+      "locator": "Upbeats 首段與 3/4 的 partial 例譜",
+      "summary": "弱起小節可以用實際持續時間記入，曲首的 partial 表達第一個完整小節以前的時值。",
+      "limitations": "僅舉曲首先奏一拍的自編例。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X121M-S08",
+      "url": "https://www.w3.org/2021/06/musicxml40/musicxml-reference/elements/measure-partwise/",
+      "canonical_url": "https://www.w3.org/2021/06/musicxml40/musicxml-reference/elements/measure-partwise/",
+      "title": "The <measure> element (partwise)",
+      "publisher": "W3C Music Notation Community Group",
+      "version": "MusicXML 4.0",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟維護者的記譜手冊或資料格式原文，核對定義和例譜。",
+      "reading_scope": "number、implicit、text 三個屬性，含 pickup measure",
+      "locator": "number、implicit、text 三個屬性，含 pickup measure",
+      "summary": "弱起小節的 number 常用 0，implicit 常設 yes 以隱藏小節號。辨識資料的編號、是否印出，以及小節裡的音符可分開記錄。",
+      "limitations": "規格使用 typically；不規定所有弱起小節都必須編作 0。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X121M-S09",
+      "url": "https://lilypond.org/doc/v2.24/Documentation/notation/displaying-pitches#instrument-transpositions",
+      "canonical_url": "https://lilypond.org/doc/v2.24/Documentation/notation/displaying-pitches#instrument-transpositions",
+      "title": "LilyPond Notation Reference — Instrument transpositions",
+      "publisher": "GNU LilyPond",
+      "version": "2.24",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟維護者的記譜手冊或資料格式原文，核對定義和例譜。",
+      "reading_scope": "Instrument transpositions 對 written C 的說明，與小提琴、B-flat clarinet 同奏例",
+      "locator": "Instrument transpositions 對 written C 的說明，與小提琴、B-flat clarinet 同奏例",
+      "summary": "移調設定描述譜面 C 實際發出的音。小提琴及降 B 單簧管的範例展示兩種寫法如何取得相符的實際音高。",
+      "limitations": "限已知分譜以記譜音高輸入，不重複移調演奏音高的總譜。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X121M-S10",
+      "url": "https://www.w3.org/2021/06/musicxml40/musicxml-reference/elements/chromatic/",
+      "canonical_url": "https://www.w3.org/2021/06/musicxml40/musicxml-reference/elements/chromatic/",
+      "title": "The <chromatic> element",
+      "publisher": "W3C Music Notation Community Group",
+      "version": "MusicXML 4.0",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟維護者的記譜手冊或資料格式原文，核對定義和例譜。",
+      "reading_scope": "<chromatic> 元素定義",
+      "locator": "<chromatic> 元素定義",
+      "summary": "以半音數表示從記譜音到實際音高的差。若有 octave-change，八度變化需另外計入。",
+      "limitations": "題卡只用降 B 單簧管的例子，沒有額外八度變化。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "K121-0401",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "樂譜上兩個音符被弧線連起來，什麼時候第二個音要奏出來，什麼時候只要把第一個音留住？",
+      "mechanism_key": "x121.score.tie_slur",
+      "answer_target": "先看兩個四分音符都是 Do，中間畫延音線。它把後一個四分音符的長度接到第一個 Do，第二個位置不用再起音。另一小段從 Do 走到 Re，跨過兩音的圓滑線要求連奏，Re 依然要奏出來。讓聽者先數有幾個音高，再回到譜面辨認這條線。",
+      "scope": "限單旋律的延音線與圓滑線示例。圓滑線的具體演奏方式依樂器而異。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "第一格顯示同音的兩個音符，第二格把後一音移高；同步畫出持續一音與換音的時間軸。",
+        "payoff": "兩條線都能畫成弧形，但一條延長一個音，另一條要求相鄰音接得平順。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_ids": [
+        "X121M-S01"
+      ],
+      "source_locator": "X121M-S01，Slurs and ties 的頭兩段。",
+      "notes": "用自編旋律和自畫分譜示意。以指定的記譜法或檔案格式為範圍。"
+    },
+    {
+      "id": "K121-0402",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "兩個結尾在樂譜上印成前後兩格，為什麼第一次回頭，第二次卻要跳過第一格？",
+      "mechanism_key": "x121.score.volta_pass_index",
+      "answer_target": "把反覆段記作 A，兩個結尾記作 B、C。若 B 的括線標 1.、C 標 2.，第一次走 A、B，遇反覆記號回頭。第二次走 A 後跳過 B，接 C。四段的順序是 A、B、A、C。MusicXML 可在結尾記錄適用的遍次，讓讀檔的一方知道該走哪一格。",
+      "scope": "例子已設好兩次反覆及兩個結尾，不含其他跳躍或返回記號。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "讓光點沿三格自畫短譜跑，先留下兩枚路徑箭頭，第二次回到 A 才亮出 C。",
+        "payoff": "括線上的數字指定第幾遍要用這個結尾。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_ids": [
+        "X121M-S02",
+        "X121M-S03"
+      ],
+      "source_locator": "X121M-S02 首段，X121M-S03 number 屬性。",
+      "notes": "用自編旋律和自畫分譜示意。以指定的記譜法或檔案格式為範圍。"
+    },
+    {
+      "id": "K121-0403",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "一個看起來像全休止符的黑方塊，放進三拍子的空小節，為什麼等三拍就輪到下一個音？",
+      "mechanism_key": "x121.score.bar_rest_meter",
+      "answer_target": "在 3/4 拍的完整空小節中央放入整小節休止，吹奏這個聲部的人要等三個四分音符的時間。換成 4/4 拍的完整小節，同一個形狀就等四拍。數位譜還可以用 MusicXML 的 measure 屬性標出「整小節」。看清它佔的是哪一個小節，下一次進來的地方就不同了。",
+      "scope": "只比較完整的 3/4 與 4/4 小節和單一聲部；不將這種畫法推給所有拍號與不完全小節。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "寫兩行譜，空小節內的形狀和大小相同，底下分別亮三格與四格節拍。",
+        "payoff": "整小節休止要等滿這一小節；一小節有幾拍由拍號決定。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_ids": [
+        "X121M-S04",
+        "X121M-S05"
+      ],
+      "source_locator": "X121M-S04，Measure rests；X121M-S05，measure=yes 的定義。",
+      "notes": "用自編旋律和自畫分譜示意。以指定的記譜法或檔案格式為範圍。"
+    },
+    {
+      "id": "K121-0404",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "把一串提示小音符放大到正常字級，為什麼 MusicXML 分譜播放時還是聽不見？",
+      "mechanism_key": "x121.score.cue_size_vs_sound",
+      "answer_target": "在 MusicXML 4.0 裡，標為 cue 的音符在播放時靜音，把印出的尺寸調成正常大小仍然如此。反方向也成立：一般會發聲的音符可以排成提示音符那樣小，仍保留聲音。讓兩份同樣大小的音符排在一起，就能看出「印多大」和「播放時要不要出聲」是兩筆不同的訊息。",
+      "scope": "限依 MusicXML 4.0 語義解讀的分譜；範例比較音符身分與顯示大小。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "螢幕兩欄放相同旋律。一欄把 cue 音符放大，另一欄將一般音符縮小，對照兩條聲音軌。",
+        "payoff": "提示身分決定是否播放，字級可以另外改。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "source_ids": [
+        "X121M-S06"
+      ],
+      "source_locator": "X121M-S06，<cue> 定義的 silent/full size 與 normal notes/cue size 對照。",
+      "notes": "用自編旋律和自畫分譜示意。以指定的記譜法或檔案格式為範圍。"
+    },
+    {
+      "id": "K121-0405",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "第一個完整小節前明明唱了一拍，為什麼打開樂譜檔看得到「第 0 小節」，印出來卻沒這個號碼？",
+      "mechanism_key": "x121.score.pickup_zero_hidden_number",
+      "answer_target": "在自編的 3/4 曲子裡，開頭先唱一個四分音符，再進入完整的三拍。這一拍放在弱起小節，照樣有時值。MusicXML 的分譜常用 0 辨認這個小節，另設 implicit 為 yes，讓它的小節號不印出來。頁面看不到 0，歌唱進來的那一拍仍寫在譜裡。",
+      "scope": "採 MusicXML partwise 的典型標法；0 在這裡是小節編號，不指零拍，也不代表所有軟體都必須採這種編號。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "在譜下標一拍、三拍、三拍，切到檔案看最前面的編號，再回到印刷視圖。",
+        "payoff": "曲首的聲音、它持續多久，以及小節號是否可見，各自有紀錄。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_ids": [
+        "X121M-S07",
+        "X121M-S08"
+      ],
+      "source_locator": "X121M-S07，Upbeats；X121M-S08，number、implicit 屬性。",
+      "notes": "用自編旋律和自畫分譜示意。以指定的記譜法或檔案格式為範圍。"
+    },
+    {
+      "id": "K121-0406",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "降 B 單簧管和鋼琴的分譜上都寫 Do，為什麼按各自的譜奏出來，卻聽見兩個音高？",
+      "mechanism_key": "x121.score.written_pitch_transposition",
+      "answer_target": "鋼琴譜寫中央 C，對應的實際音就是中央 C。降 B 單簧管的分譜寫同一個 C，實際聽到的是低一個全音的降 B。如果要兩者同奏鋼琴的中央 C，單簧管的分譜應寫高一個全音的 D。數位譜需要知道它記錄的是移調樂器的書寫音，才能在播放時把這兩種記法轉回對應的聲音。",
+      "scope": "例子是常見降 B 單簧管的移調分譜和鋼琴。若已用實際音高記譜，不能再套同一轉換。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "visual": "先讓鋼琴 C 與單簧管分譜 C 對上兩個不同的琴鍵，再將單簧管分譜升為 D，視聽兩軌才重合。",
+        "payoff": "要讓兩種樂器發出同一音高，印在分譜上的音有時得錯開一個全音。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "source_ids": [
+        "X121M-S09",
+        "X121M-S10"
+      ],
+      "source_locator": "X121M-S09，Instrument transpositions 的 written C 說明與 B-flat clarinet 範例；X121M-S10，chromatic。",
+      "notes": "用自編旋律和自畫分譜示意。以指定的記譜法或檔案格式為範圍。"
+    }
+  ],
+  "not_added": [
+    {
+      "id": "X121M-NA01",
+      "question": "貝多芬《英雄》樂譜的題頁，拿破崙的名字怎麼留下刮掉的痕跡？",
+      "reason": "奇聞 N7926 已用譜本、作曲家通信與初版題獻追查這個刮痕。",
+      "existing_ids": [
+        "N7926"
+      ]
+    }
+  ]
+}

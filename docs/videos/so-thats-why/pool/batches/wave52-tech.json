@@ -1,0 +1,320 @@
+{
+  "batch_id": "wave52-tech-20261111",
+  "created_on": "2026-11-11",
+  "scope": "斷電後的資料保存與 QR Code 的定位與糾錯：替長題 G17 與企劃 P12 補標準組織與開發方的公開說明；七來源，自製測試只當示範、不列來源。",
+  "sources": [
+    {
+      "id": "T52-S001",
+      "url": "https://www.jedec.org/sites/default/files/Alvin_Cox%20%5BCompatibility%20Mode%5D_0.pdf",
+      "canonical_url": "https://www.jedec.org/sites/default/files/Alvin_Cox%20%5BCompatibility%20Mode%5D_0.pdf",
+      "title": "JEDEC SSD Specifications Explained",
+      "publisher": "Alvin Cox（Seagate；JEDEC JC-64.8 主席），JEDEC 網站公開簡報；溫度表頁標『Material submitted by Intel』",
+      "version": "簡報 PDF（56 頁，無日期）",
+      "accessed_on": "2026-11-11",
+      "read_via": "jedec.org PDF 200；pdftotext 全文，第 27 頁表格為圖片，以 pdftoppm 150 dpi 轉圖目讀",
+      "reading_scope": "全簡報；第 23–27 頁 endurance rating、application classes、溫度與保存表；extrapolation requirements 頁",
+      "locator": "p.23 Endurance rating 條件 1–4；p.25 classes 表；p.27 Temperatures and data retention 兩表；Extrapolation 條件 3–4",
+      "summary": "JESD218：TBW 額定的條件之一是 SSD 在寫滿額定量後『斷電保存資料達類別要求時間』；Client 類：使用 40°C 每天 8 小時、斷電保存 30°C 1 年；Enterprise：55°C 24 小時、斷電 40°C 3 個月。依 Intel 的去捕獲（detrapping）保存加速模型（JESD47/JEP122 正式模型）的週數表：Client 使用溫度 40°C 時，斷電溫度 25°C≈105 週、30°C≈52 週、35°C≈26、40°C≈14、45°C≈7、50°C≈4、55°C≈2 週；同一斷電 30°C，使用溫度 25°C 只有 28 週、55°C 達 199 週。保存驗證須同時涵蓋溫度加速機制（1.1 eV）與非溫度加速機制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "簡報是標準委員會說明而非標準全文（JESD218 需註冊下載未讀）；表值是磨損到額定 TBW 後的要求模型，不是新碟或任何品牌實測；溫度表為 Intel 提供資料。",
+      "author_cache": {
+        "file": "scratchpad/f1cache/jedec_cox.pdf",
+        "sha256_prefix": "15b4a0048da5c00b",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T52-S002",
+      "url": "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/8827/16gb-ddr4-sdram.pdf",
+      "canonical_url": "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/8827/16gb-ddr4-sdram.pdf",
+      "title": "16Gb: x4, x8, x16 DDR4 SDRAM（MT40A4G4/2G8/1G16）datasheet",
+      "publisher": "Micron Technology（DigiKey 轉載 PDF）",
+      "version": "資料手冊 PDF（JESD79-4 相容）",
+      "accessed_on": "2026-11-11",
+      "read_via": "DigiKey PDF 200，pdftotext；讀 Features 與 Refresh/TCR 相關段",
+      "reading_scope": "Features；Important Notes（tREFI）；REFRESH Command 段",
+      "locator": "Features『64ms, 8192-cycle refresh up to 85°C』；tREFI 註記",
+      "summary": "DDR4 規格要求 0–85°C 間 64 ms 內發 8,192 次刷新命令，平均間隔 tREFI＝7.8125 µs；85–95°C 須 32 ms 內 8,192 次（tREFI 3.906 µs）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "廠商資料手冊，非 JEDEC 標準本體；不給單一電容實際保持時間。",
+      "author_cache": {
+        "file": "scratchpad/f1cache/micron_16gb.pdf",
+        "sha256_prefix": "e47c5421e1a8417e",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T52-S003",
+      "url": "https://www.qrcode.com/en/about/error_correction.html",
+      "canonical_url": "https://www.qrcode.com/en/about/error_correction.html",
+      "title": "Error correction feature",
+      "publisher": "DENSO WAVE（QR Code 開發方）qrcode.com",
+      "version": "網頁當期版（無日期）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl 200，HTML 全文去標籤逐句讀；等級百分比表為圖片未讀，改由 T52-S004 文字表核對。",
+      "reading_scope": "全頁",
+      "locator": "Error Correction Feature 段、Reed-Solomon 註腳",
+      "summary": "QR 糾錯以 Reed-Solomon 碼加在原資料上；可在位元組（碼字）層級修正、適合集中的突發錯誤；一碼字=8 位元；例：100 資料碼字要修 50 個需 100 個 RS 碼字，總 200 碼字可修 50 → 25%＝Q 級；以總碼字比例表示因為髒污也可能落在 RS 碼字上；工廠易髒選 Q/H，乾淨大資料量選 L，M（15%）最常用。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "廠商說明頁、非標準全文；ISO/IEC 18004 需購買未讀。",
+      "author_cache": {
+        "file": "scratchpad/f1cache/about_error_correction.html",
+        "sha256_prefix": "44e25f08579ea5f6",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T52-S004",
+      "url": "https://www.qrcode.com/en/about/standards.html",
+      "canonical_url": "https://www.qrcode.com/en/about/standards.html",
+      "title": "QR Code Standardization",
+      "publisher": "DENSO WAVE qrcode.com",
+      "version": "網頁當期版",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl 200，HTML 全文逐句讀",
+      "reading_scope": "全頁含 Outline Specification 表",
+      "locator": "Outline Specification 表、標準化年表",
+      "summary": "符號 21×21 至 177×177 模組（每版每邊 +4）；數字最多 7,089、英數 4,296、位元組 2,953、漢字 1,817；L/M/Q/H 約可還原 7/15/25/30% 碼字；結構化連接最多 16 個；1997 AIM、1999 JIS X 0510、2000 ISO/IEC 18004；DENSO WAVE 對標準化 QR 不行使專利 2938338。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "沒有定位、時序、格式資訊、遮罩的逐項說明；那些只在付費 ISO 規格。",
+      "author_cache": {
+        "file": "scratchpad/f1cache/about_standards.html",
+        "sha256_prefix": "8075589ca8d1abe9",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T52-S005",
+      "url": "https://www.qrcode.com/en/history/index.html",
+      "canonical_url": "https://www.qrcode.com/en/history/index.html",
+      "title": "History of QR Code",
+      "publisher": "DENSO WAVE qrcode.com",
+      "version": "網頁當期版",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl 200（/en/history/ 目錄式網址 403，改讀 index.html 200），Section 1 全段逐句讀",
+      "reading_scope": "Section 1 開發故事；Section 2 只讀開頭",
+      "locator": "Section 1『position detecting pattern』『1:1:3:1:1』段",
+      "summary": "開發者原昌宏以方形位置偵測圖形解決讀取速度；選方形因最不常出現在表單等印刷品；團隊把傳單、雜誌、紙箱上的圖樣化成黑白，統計黑白寬度比，找出最少出現的 1:1:3:1:1 作為偵測圖形寬度比，藉此不論掃描角度 360° 都能判定方向；一年半後完成約可存 7,000 數字的碼，讀取比其他碼快 10 倍以上；1994 發表。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "公司自述史，非獨立史料；『快10倍』無測試條件。",
+      "author_cache": {
+        "file": "scratchpad/f1cache/q_hist.html",
+        "sha256_prefix": "084967452d0efd38",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T52-S006",
+      "url": "https://www.qrcode.com/en/codes/model12.html",
+      "canonical_url": "https://www.qrcode.com/en/codes/model12.html",
+      "title": "QR Code Model 1 and Model 2",
+      "publisher": "DENSO WAVE qrcode.com",
+      "version": "網頁當期版",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl 200，全文逐句讀",
+      "reading_scope": "全頁",
+      "locator": "Model 2 段",
+      "summary": "Model 1 最大版本 14（73×73）可存 1,167 數字；Model 2 為改良版，藉嵌入的校正圖形（alignment pattern），在曲面或斜角讀取造成影像變形時仍能有效讀取，最大版本 40（177×177）、7,089 數字。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "未給校正圖形的位置規則與數量。",
+      "author_cache": {
+        "file": "scratchpad/f1cache/codes_model12.html",
+        "sha256_prefix": "9247e4ae6db315f5",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T52-S007",
+      "url": "https://www.qrcode.com/en/howto/code.html",
+      "canonical_url": "https://www.qrcode.com/en/howto/code.html",
+      "title": "Point for determining the code area",
+      "publisher": "DENSO WAVE qrcode.com",
+      "version": "網頁當期版",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl 200，全文逐句讀",
+      "reading_scope": "全頁",
+      "locator": "Securing Margin 段與計算例",
+      "summary": "QR 需四周 4 模組寬、不印任何東西的留白（quiet zone）；例：50 英數字 M 級需版本 3（版本 2 M 級只存 38 字），400 dpi 每模組 4 點＝0.254 mm，29 模組＝7.366 mm，加 8 模組留白＝9.398 mm 見方。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "未說明留白不足時讀取器如何失敗；自製測試的失敗例只當示範，不列為來源（見 T52-NA002）。",
+      "author_cache": {
+        "file": "scratchpad/f1cache/howto_code.html",
+        "sha256_prefix": "3358d8b619f3b0e9",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "T52-001",
+      "question": "SSD 拔下來放抽屜，資料保證能放多久？標準是怎麼定的？",
+      "domain": "半導體記憶",
+      "mechanism_key": "flash_ssd_jesd218_power_off_retention_requirement_end_of_life",
+      "answer_target": "JEDEC 的 SSD 標準 JESD218 把『斷電保存』寫進耐寫額定（TBW）的條件：硬碟寫滿額定的資料量之後，仍要能在斷電下保存資料一段規定時間。消費級（Client）類別假設使用時 40°C、每天 8 小時，要求斷電放在 30°C 時保存 1 年；企業級假設 55°C 全天使用，只要求斷電 40°C 保存 3 個月。所以『一年』是磨損到盡頭時的最低要求，不是新碟的實際壽命。",
+      "scope": "限 JEDEC 公開簡報轉述；JESD218 本文需註冊未讀。不給任何品牌的保存天數。",
+      "source_ids": [
+        "T52-S001"
+      ],
+      "source_locator": "S001 p.23 條件4；p.25 classes 表。",
+      "premise_status": "screened",
+      "notes": "填 G17 審稿點名缺的『斷電後保存期限』，放在第四章『沒有機械零件也會磨損』之後作真轉折：磨損與保存是連動的。約 2 條新事實。 原提案 F1-009。非作者覆核 V4（2026-11-11）照原稿收；簡報原文相符；『一年是磨損到額定量時的最低要求』是由條件 4 直接推得，合理。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "快閃記憶的保存是有期限的，而且是用『用到最舊時』來保證。",
+        "visual": "Client/Enterprise 兩欄規格卡：使用溫度×時數、斷電溫度×時間（示意卡，標 JESD218）",
+        "seconds": [
+          50,
+          80
+        ]
+      }
+    },
+    {
+      "id": "T52-002",
+      "question": "同一顆舊 SSD 斷電放著，放在 25°C 跟放在 55°C，資料能撐的時間差多少？",
+      "domain": "半導體記憶",
+      "mechanism_key": "flash_retention_arrhenius_temperature_acceleration_table",
+      "answer_target": "JEDEC 簡報附的週數表（依 Intel 的去捕獲保存加速模型，即 JESD47/JEP122 採用的模型）：消費級碟在 40°C 下用到額定壽命後，斷電放在 25°C 約可保存 105 週，30°C 約 52 週，40°C 約 14 週，55°C 只剩約 2 週——溫度每升 5°C 大約砍半。驗證時規定要同時考慮受溫度加速（活化能 1.1 eV）和不受溫度加速的兩類漏失機制。",
+      "scope": "表值為模型要求，不是實測；只適用磨損到額定 TBW 的情況。不推到 USB 隨身碟或記憶卡的具體天數。",
+      "source_ids": [
+        "T52-S001"
+      ],
+      "source_locator": "S001 p.27 Client 表 40°C 欄；Extrapolation 條件 4。",
+      "premise_status": "screened",
+      "notes": "填 G17 審稿要的『斷電放久也會慢慢漏，熱的時候更快』那個轉折。約 2 條新事實。 原提案 F1-010。非作者覆核 V4（2026-11-11）照原稿收；我轉圖重讀表格，數字一致；『每升 5°C 約砍半』與表值相符。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "資料沒在動，電子卻在慢慢逃；越熱逃得越快。",
+        "visual": "以表值畫『斷電溫度 vs 週數』階梯長條，標『JEDEC 簡報模型值』",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "T52-003",
+      "question": "SSD 用的時候越熱，斷電後的保存週數反而越長？",
+      "domain": "半導體記憶",
+      "mechanism_key": "flash_retention_higher_cycling_temperature_longer_retention_detrapping_model",
+      "answer_target": "同一張 JEDEC 週數表裡，斷電溫度固定在 30°C 時，若碟子平常在 25°C 下使用只能保存約 28 週，在 55°C 下使用卻可到約 199 週；企業級表也同方向。這組數字來自 Intel 的去捕獲保存模型。",
+      "scope": "只轉述表值與模型名稱；表沒有說明原因，『高溫使用反而保存較久』的機制沒有可讀的一手來源，片中只報表值、不解釋。不鼓勵用高溫使用硬碟。",
+      "source_ids": [
+        "T52-S001"
+      ],
+      "source_locator": "S001 p.27 Client 表 30°C 列；表註『detrapping retention mechanism』。",
+      "premise_status": "screened",
+      "notes": "填 G17 第四章後的第二個轉折（測試或改變『熱一定壞』的結論）。1 條新事實（反向效應），機制句保守。需非作者覆核表格判讀。 原提案 F1-011。非作者覆核 V4（2026-11-11）照覆核意見改字後收；表值正確，但機制解釋在來源裡找不到，是作者補寫的。刪掉機制句後只剩 1 條事實（反向的表值），可以作 G17 的小轉折，不能單獨撐一章。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個溫度，在寫入時與存放時效果相反。",
+        "visual": "表格同列左右兩端高亮（28 週 vs 199 週）；兩個溫度計：『用的時候』『放的時候』",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "T52-004",
+      "question": "電腦的記憶體每秒要『重寫』自己幾次？溫度高時規格要多勤？",
+      "domain": "半導體記憶",
+      "mechanism_key": "dram_refresh_64ms_8192_commands_halved_above_85c",
+      "answer_target": "DDR4 記憶體規格要求：在 0 到 85°C 之間，每 64 毫秒內要送出 8,192 次刷新命令，平均每 7.8 微秒一次；溫度在 85 到 95°C 時，時限縮成 32 毫秒，刷新間隔也減半。換算下來，每一格電容每秒至少被重新補電十幾次；規格在 85°C 以上要求刷新次數加倍。",
+      "scope": "限 Micron DDR4 資料手冊引述的規格；『每秒十幾次』由 1000/64≈15.6 換算。不給單一電容實際保持時間。漏電隨溫度變快若要講，須另附來源（E2282 的來源只支持『會漏電』，不支持溫度關係）。",
+      "source_ids": [
+        "T52-S002"
+      ],
+      "source_locator": "S002 Features；tREFI 註記段。",
+      "premise_status": "screened",
+      "notes": "填 G17 第一章『先找到一種會漏的記憶』審稿要的 DRAM 刷新規格數值；與 T52-002 成對：DRAM 以毫秒計、快閃以週計，但都怕熱。1–2 條新事實。 原提案 F1-012。非作者覆核 V4（2026-11-11）照覆核意見改字後收；近鄰：部分重疊 E2282（DRAM 要刷新的機制），規格數字讀得到，是第一輪點名缺的 DRAM 刷新數值。和 E2282 是同一章，只算 1 條新事實；",
+      "editorial": {
+        "role": "segment",
+        "payoff": "會漏的記憶靠不停補；熱時漏得快就補得更勤。",
+        "visual": "64 ms 時間條上 8,192 個小刻度，溫度超過 85°C 時刻度加倍",
+        "seconds": [
+          35,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T52-005",
+      "question": "QR Code 三個角的方框，為什麼偏偏是黑白 1:1:3:1:1 的比例？",
+      "domain": "tech",
+      "mechanism_key": "qr.finder_pattern_1_1_3_1_1_ratio_survey_360_orientation",
+      "answer_target": "QR Code 開發方 DENSO WAVE 的說法：開發者原昌宏為了讓讀取器快速找到碼，加入方形的位置偵測圖形；選方形是因為它最不容易出現在表單等印刷品上。團隊把傳單、雜誌、紙箱上的圖樣化成黑白，日復一日統計黑白寬度的比例，找出印刷品上最少出現的 1:1:3:1:1，作為偵測圖形的寬度比，讀取器只要搜尋這個比例，不論從 360 度哪個角度掃都能判定方向。Model 2 另外嵌入校正圖形，讓印在曲面或斜拍變形時仍能讀。而且碼的四周要留 4 個模組寬、什麼都不印的留白。",
+      "scope": "公司自述史；『快 10 倍』不引用。校正圖形只講用途，不講位置規則（規格未讀）。",
+      "source_ids": [
+        "T52-S005",
+        "T52-S006",
+        "T52-S007"
+      ],
+      "source_locator": "S005 Section 1；S006 Model 2 段；S007 Securing Margin。",
+      "premise_status": "screened",
+      "notes": "填 P12 第一章『先找到哪一塊是碼』的逐主張官方來源。約 2 條新事實（1:1:3:1:1 由統計選出、360°；校正圖形抗變形）。 原提案 F1-025。非作者覆核 V4（2026-11-11）照覆核意見改字後收；近鄰：部分重疊 LEG-A36（定位圖形幫助找位置與方向），原文相符。『從印刷品統計選出 1:1:3:1:1』與校正圖形是新事實，『辨認方向』本身 A36 已有。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先要『認得出這是碼』，所以選一個世上最少見的黑白節奏。",
+        "visual": "掃描線穿過定位框得 1:1:3:1:1 的黑白寬度條；印刷品統計示意",
+        "seconds": [
+          50,
+          80
+        ]
+      }
+    },
+    {
+      "id": "T52-006",
+      "question": "同樣大小的損傷，為什麼一整塊污漬有時比零散的小點更好修？",
+      "domain": "tech",
+      "mechanism_key": "qr.reed_solomon_codewords_v3_block_vs_scattered_damage_tests",
+      "answer_target": "DENSO WAVE 的官方說明：QR Code 的糾錯以 Reed-Solomon 碼加在原資料上，以 8 位元一個『碼字』為單位修正，官方說它適合集中的突發錯誤；例如 100 個資料碼字加 100 個修正碼字共 200 個，可修其中 50 個，也就是 25%（Q 級），各等級的比例都以總碼字計。",
+      "scope": "『30% 是碼字不是面積』已是 LEG-A36 的核心，本核心只保留『集中與零散』這個新點。示範只代表一個版本 3 的數位碼與兩個桌面解碼器（qrcode 8.2、OpenCV 5.0.0.93、zxing-cpp 3.1.1），片中標『本片自製示範』，不當發現引用。不說任何遮擋比例都保證成功。",
+      "source_ids": [
+        "T52-S003",
+        "T52-S004"
+      ],
+      "source_locator": "S003 Error Correction Feature；S004 Outline 表。",
+      "premise_status": "screened",
+      "notes": "P12 第三、四章『缺了為什麼能補』『同樣一塊損傷，結果為何不同』。示範素材：F1 自製 QR 遮擋與翻轉測試（scratchpad f1scripts/qrtest.py、qrtest2.py；f1qr/results*.json）只當畫面示範，不在 source_ids，旁白不得把測試結果講成研究發現；刪除『版本 3 的 H 級最多只能修 22 個碼字』。 原提案 F1-026。非作者覆核 V4（2026-11-11）照覆核意見改字後收；近鄰：核心答案『30% 是碼字不是面積』與 LEG-A36 重複；改寫後只保留『集中與零散』這個新點，有來源的新內容只有『適合集中突發錯誤』和 25% 算例，原題目則是 A36 已經做過的。自製測試結果我逐筆核對過，可以拿來在畫面上示範，但依本 pool 規則不能當成研究發現引用，所以重寫成以 S001 為主、測試只當畫面。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同樣大小的損傷，集中成一塊時落在較少的碼字裡，零散的小點卻可能各打壞一個碼字。",
+        "visual": "原創碼字格示意：同面積的一整塊污漬與散點各覆蓋幾個碼字；『本片自製示範』標示的桌面解碼成功與失敗對照。",
+        "seconds": [
+          45,
+          75
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "T52-NA001",
+      "question": "QR Code 時序圖形、格式資訊雙份、遮罩圖形的規格細節",
+      "existing_ids": [
+        "LEG-A36",
+        "T52-006"
+      ],
+      "source_ids": [
+        "T52-S004"
+      ],
+      "reason": "qrcode.com 公開頁沒有時序圖形、格式資訊與遮罩的文字說明，ISO/IEC 18004 需付費；不能用教學網站冒充官方。自製測試的結果只能當示範（見 T52-NA002），不另立核心。",
+      "reentry_condition": "取得 ISO/IEC 18004 或 JIS X 0510 正文。",
+      "reading_status": "qrcode.com 各頁已讀；規格未讀。"
+    },
+    {
+      "id": "T52-NA002",
+      "question": "QR Code 只遮掉一個角，為什麼糾錯再高也救不回來？",
+      "existing_ids": [
+        "LEG-A36",
+        "T52-005"
+      ],
+      "source_ids": [
+        "T52-S007"
+      ],
+      "reason": "非作者覆核 V4 退回：核心幾乎全靠本工作階段的自製 QR 測試，而本素材池只收有可讀紀錄的外部來源，自製測試只能當畫面示範、不能當發現引用；『只遮一個角，糾錯再高也救不回來』把一次桌面測試講成通則，LEG-A36 也刻意不說『少一角必敗』。S005 的留白事實已併入 T52-005；旋轉都讀得到的結果可當 T52-005『360° 判定方向』的示範；定位角與留白破壞可當 P12 第三章的示範畫面，旁白只能說『在本片這次測試裡，兩個解碼器都讀不到』。格式資訊與時序線的結果不入片。",
+      "reentry_condition": "取得 ISO/IEC 18004 或 JIS X 0510 正文，或有可讀的外部研究測過定位圖形與格式資訊損傷。",
+      "reading_status": "S005 已讀；自製測試（原 F1-S026，腳本與兩份結果 JSON）由 V4 逐筆核對，但依規則不列為來源。"
+    }
+  ]
+}

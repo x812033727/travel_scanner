@@ -38,9 +38,9 @@ export function PartnerLink({
     } catch { /* counting never stands between a reader and the link */ }
   };
   return (
-    <aside className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] px-4 py-3">
-      <p className="text-xs font-semibold text-[var(--muted)]">
-        <span className="rounded-full bg-[var(--line)] px-2 py-0.5 text-[var(--ink)]">{labels.badge}</span>
+    <aside className="rounded-2xl border border-[var(--line)] bg-[var(--surface-tint)]/55 px-4 py-3.5 shadow-[var(--shadow-sm)]">
+      <p className="text-[length:var(--text-xs)] font-semibold text-[var(--muted)]">
+        <span className="rounded-full bg-[var(--teal-soft)] px-2.5 py-0.5 text-[var(--teal-dark)]">{labels.badge}</span>
         <span className="ml-2">{link.display_name}</span>
       </p>
       <a
@@ -51,7 +51,7 @@ export function PartnerLink({
         aria-label={`${label} · ${link.display_name} · ${labels.newTab}`}
         onClick={count}
         onAuxClick={(event) => { if (event.button === 1) count(); }}
-        className="mt-3 inline-flex min-h-11 items-center gap-2 rounded-xl border border-[var(--teal)] bg-[var(--surface-raised)] px-4 py-3 text-sm font-semibold text-[var(--teal)] hover:bg-[var(--teal-soft)]"
+        className="mt-3 inline-flex min-h-11 items-center gap-2 rounded-xl border border-[var(--teal)] bg-[var(--surface-raised)] px-4 py-3 text-sm font-semibold text-[var(--teal)] shadow-[var(--shadow-sm)] transition-colors hover:bg-[var(--teal-soft)]"
       >
         {label}
         <ExternalLink size={15} aria-hidden="true" />

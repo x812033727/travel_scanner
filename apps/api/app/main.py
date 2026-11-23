@@ -11,6 +11,7 @@ from app.admin.router import router as admin_router
 from app.admin.router import runtime_router
 from app.admin.security_router import router as admin_security_router
 from app.admin.user_router import router as admin_user_router
+from app.admin_ai_accounts.router import colab_accounts_router
 from app.admin_ai_accounts.router import colab_tool_router as colab_credentials_router
 from app.admin_ai_accounts.router import router as ai_accounts_router
 from app.ads.router import router as ads_router
@@ -89,8 +90,10 @@ from app.video_automation.admin_api import admin_router as admin_video_automatio
 from app.video_automation.admin_api import tool_router as video_automation_router
 from app.video_backup.admin_api import admin_router as admin_video_backup_router
 from app.video_backup.admin_api import tool_router as video_backup_router
+from app.video_dramas.router import router as admin_video_dramas_router
 from app.video_media.admin_api import media_router as video_media_router
 from app.video_plans.router import router as admin_video_plans_router
+from app.video_pools.router import router as admin_video_pools_router
 from app.video_reviews.admin_api import admin_router as admin_video_reviews_router
 from app.video_reviews.admin_api import tool_router as video_reviews_router
 from app.video_reviews.public_api import public_router as videos_public_router
@@ -216,6 +219,7 @@ app.include_router(line_router, prefix="/api/v1")
 app.include_router(video_tool_tokens_router, prefix="/api/v1")
 app.include_router(video_speech_router, prefix="/api/v1")
 app.include_router(colab_credentials_router, prefix="/api/v1")
+app.include_router(colab_accounts_router, prefix="/api/v1")
 app.include_router(runpod_tool_router, prefix="/api/v1")
 app.include_router(gpu_routes_router, prefix="/api/v1")
 app.include_router(runpod_admin_router, prefix="/api/v1")
@@ -234,6 +238,8 @@ app.include_router(video_automation_router, prefix="/api/v1")
 app.include_router(admin_video_automation_router, prefix="/api/v1")
 app.include_router(video_media_router, prefix="/api/v1")
 app.include_router(admin_video_plans_router, prefix="/api/v1")
+app.include_router(admin_video_pools_router, prefix="/api/v1")
+app.include_router(admin_video_dramas_router, prefix="/api/v1")
 # The Shorts tab (docs/videos/SHORTS.md). The publish and the jobs routers start empty: the
 # tickets that fill them add routes to their own file and leave this one alone.
 app.include_router(video_shorts_router, prefix="/api/v1")

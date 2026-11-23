@@ -26,6 +26,9 @@ describe("single-owner provider settings registry", () => {
     ["brave_guides", "hotspot_guide_brave_daily_search_budget", "providers"],
     ["runtime", "flight_provider_mode", "system"],
     ["layout", "trips_enabled", "layout"],
+    ["layout", "flight_search_enabled", "layout"],
+    ["layout", "videos_enabled", "layout"],
+    ["layout", "member_features_enabled", "layout"],
   ])("%s.%s has exactly one owner: %s", (provider, field, owner) => {
     const scopes: AdminSettingsScope[] = ["providers", "system", "layout", "hotspots", "foods", "hotels"];
     expect(scopes.filter((scope) => settingsOwner(provider, "config", field) === scope)).toEqual([owner]);

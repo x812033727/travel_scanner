@@ -186,7 +186,7 @@ test("FAQ contents links reach the authored questions before related reading", a
   const authored = page.locator("h2#section-2");
   await expect(authored).toHaveText("出發前的問答");
   await expect(page.locator("h2", { hasText: "出發前的問答" })).toHaveCount(1);
-  const faqLink = page.locator('a[href="#section-2"]');
+  const faqLink = page.locator('a[href="#section-2"]:visible');
   await faqLink.click();
   await expect(page).toHaveURL(/#section-2$/);
   expect(await authored.evaluate((node) => node.nextElementSibling?.id)).toBe("article-faq");

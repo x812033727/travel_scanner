@@ -27,10 +27,13 @@ def test_the_reviewed_source_file_loads_and_pairs_press_with_first_party_hosts()
     rows = sources_cli.load_file(sources_cli.DEFAULT_FILE)
     assert len(rows) >= 10
     assert all(row.role == "evidence" for row in rows if row.is_first_party)
-    for vertical in ("ai", "crypto"):
+    for vertical in ("ai", "tech", "crypto"):
         in_vertical = [row for row in rows if row.vertical == vertical]
         assert any(row.is_first_party for row in in_vertical), vertical
         assert any(not row.is_first_party for row in in_vertical), vertical
+    by_name = {row.name: row for row in rows}
+    kocpc_keywords = set(by_name["電腦王阿達 (lead)"].config["include_title_keywords"])
+    assert {"AI", "iOS", "Chrome", "Windows", "NotebookLM", "資安"} <= kocpc_keywords
 
 
 # How a page of a host is read: the story region and what is left out of it.

@@ -55,3 +55,18 @@
   - 累計 US$7.05。重新合成中。
 - **成片核准與上架包**：重新合成（final.mp4 sha256 40f56608625e），配樂沒有超過 1 秒的空檔，數字卡與縮圖目視確認；qa 10/11（links 8/32 容器 403）。依站主「我看是ok 你在確認一次沒問題就進入下一階段」記 final 核准；`package` 4/4 過，上架包在工作目錄 upload/（zh-TW）。下一步：站主決定上架時間與 en/ja/ko 的標題說明、CC、配音。累計 US$7.05。
 - **改成不燒錄**（站主 2026-11-04「奇聞跟原來如此都改成不燒字幕」）：`subtitles.burn_in: false`，只重新合成，插圖與核准不受影響、不花錢。final.mp4 sha256 84889ed1bf1b，qa 11/11，package 4/4，final 重新記核准。
+
+## 2026-11-05
+
+- **卡片全改成插圖**（站主：原來如此走國際路線，畫面不放字；規則在企劃 README 的「畫面上的字」，做法照 P05）：`build_scenes.py` 最後的 `CARD_TO_SHOT` 把 16 張資料卡片
+  （chief-explains-mist、vapour-vs-cloud、lapse-rate、cloud-weight、air-weight、droplet-size、fall-speed、hundred-cubed、collision、coalescence、two-routes、
+  day-steps、sea-breeze、chief-engine、hour、drop-shapes）改成同名的鏡頭，台詞（文字、說話者、情緒、停頓、id）一字不動，數字由角色念、配音與 CC 帶語言。
+  提示詞照之前學到的：一個人做一件事、面向觀眾，動作在前、`KIDDESC`／`CHIEFDESC` 在後；所長只用 waist-up 加素牆；畫面寫明 no letters or numbers；
+  比較用並排的東西、箭頭、放大鏡、蹺蹺板、沙漏表示；積雲寫「下面比上面寬、平的灰底」，不寫 cauliflower 也不寫 puffy。小問 13 鏡、所長 2 鏡。片尾 `outro` 照舊是唯一的卡片，沒有加 `theme`。
+- **drop-shapes 拆成兩鏡**：兩句加起來估約 12.5 秒，超過一鏡 12 秒的上限（lint 錯誤）。第二句 p132 移到緊接在後的新鏡頭 `drop-shapes-burst`（所長看大雨滴碎開），
+  句子本身不變、順序不變。代價：場景之間多一個 700 ms 的 scene gap，p131 之後整片晚 0.7 秒（估算 20,773 → 20,794 格），其他 140 句的長度不變。
+  要完全不動時間軸就把這段拿掉，lint 會回到 1 個錯誤。
+- **運鏡**：舊的 100 個鏡頭運鏡全部沒變（跟 `git show HEAD:…/video.json` 逐鏡比對過）；chief-explains-mist、collision、sea-breeze 以前當過鏡頭，沿用 `cameras.json` 裡原本的運鏡；
+  其他 14 個新鏡頭由產生器照 `CAMS` 的順序補在 `cameras.json` 尾端（產生器現在會自動補，跟 P05 一樣）。
+- **結果**：118 場、117 張插圖、1 張卡片（片尾），lint 0 錯誤、24 警告（比改前少一個 risk.text_first；其他都是已知的 craft 節奏與用字警告）。新鏡頭的插圖還沒畫（17 鏡，要站主授權才跑 `keyframes`）。
+  企劃 README 寫「P02 已上架，不重做」，這次是站主改變主意；重畫、重新合成與重新上架都還沒做。

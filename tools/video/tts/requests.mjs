@@ -42,6 +42,10 @@ const partsLength = (parts) => parts.reduce((sum, part) => sum + part.text.lengt
 // Mirrors VOICE_PREFIX and LONG_PAUSE_FROM_MS in apps/api/app/video_speech/gemini.py.
 export const GEMINI_VOICE_PREFIX = "gemini:";
 const LONG_PAUSE_FROM_MS = 600;
+// Mirrors VOICE_PREFIX, PAUSE_MIN_MS and PAUSE_MAX_MS in apps/api/app/video_speech/minimax.py.
+export const MINIMAX_VOICE_PREFIX = "minimax:";
+const MINIMAX_PAUSE_MIN_MS = 10;
+const MINIMAX_PAUSE_MAX_MS = 99_990;
 
 /**
  * The voice part of a request body. Azure takes a voice name and a rate; Gemini takes a
@@ -57,7 +61,28 @@ export function voiceFields(voice) {
       ...(voice.model ? { model: voice.model } : {}),
     };
   }
+  if (voice.provider === "minimax") {
+    return { voice: `${MINIMAX_VOICE_PREFIX}${voice.name}`, rate: voice.rate ?? "+0%", ...(voice.model ? { model: voice.model } : {}) };
+  }
   return { voice: voice.name, rate: voice.rate ?? "+0%" };
+}
+
+/**
+ * The text the server sends MiniMax (minimax.py speech_text); its length is what the MiniMax
+ * month counts. Markup characters are dropped, half-width parentheses become full-width, and a
+ * pause marker goes only between two segments that have something to say.
+ */
+export function minimaxText(segments) {
+  const spoken = segments
+    .map((segment) => ({ segment, text: segment.parts.map((part) => (part.alias || part.text).replace(/[<>#]/g, " ").replaceAll("(", "（").replaceAll(")", "）")).join("").trim() }))
+    .filter((entry) => entry.text);
+  return spoken
+    .map(({ segment, text }, index) => {
+      if (index === spoken.length - 1 || !(segment.break_after_ms > 0)) return text;
+      const ms = Math.min(MINIMAX_PAUSE_MAX_MS, Math.max(MINIMAX_PAUSE_MIN_MS, segment.break_after_ms));
+      return `${text}<#${(ms / 1000).toFixed(2)}#>`;
+    })
+    .join("");
 }
 
 /** The transcript the server sends Gemini; its length is what the Gemini month counts. */
@@ -70,6 +95,9 @@ export function geminiText(segments) {
   }
   return text.trim();
 }
+
+/** Local post-synthesis speedup factor (`> 1`), or `null` when omitted or `1` (wire body stays unchanged). */
+export const effectiveTempo = (voice) => (typeof voice?.tempo === "number" && voice.tempo > 1 ? voice.tempo : null);
 
 /**
  * Every request for a video, in narration order. A request carries one voice: a scene is cut
@@ -87,12 +115,13 @@ export function planRequests(doc, lexicon) {
     let characters = 0;
     let fields = null;
     let speaker = null;
+    let tempo = null;
     const flush = () => {
       if (!chunk.length) return;
       const segments = chunk.map((line, index) => ({ parts: line.parts, break_after_ms: index < chunk.length - 1 ? SPLIT_BREAK_MS : 0 }));
       const body = { ...fields, segments };
-      const key = createHash("sha256").update(JSON.stringify([chunk.map((line) => line.id), body])).digest("hex").slice(0, 16);
-      requests.push({ id: `${scene.id}#${requests.filter((request) => request.scene === scene.id).length}`, scene: scene.id, speaker, lines: chunk, body, key });
+      const key = createHash("sha256").update(JSON.stringify(tempo ? [chunk.map((line) => line.id), body, tempo] : [chunk.map((line) => line.id), body])).digest("hex").slice(0, 16);
+      requests.push({ id: `${scene.id}#${requests.filter((request) => request.scene === scene.id).length}`, scene: scene.id, speaker, lines: chunk, body, key, ...(tempo ? { tempo } : {}) });
       chunk = [];
       characters = 0;
     };
@@ -100,25 +129,28 @@ export function planRequests(doc, lexicon) {
       const parts = spokenParts(spokenText(line), lexicon);
       const length = partsLength(parts);
       if (length > MAX_REQUEST_CHARACTERS) throw new Error(`line ${line.id} has ${length} characters; the server takes ${MAX_REQUEST_CHARACTERS} at once`);
-      const voice = voiceFields(voiceFor(doc, line));
+      const resolved = voiceFor(doc, line);
+      const voice = voiceFields(resolved);
+      const lineTempo = effectiveTempo(resolved);
       const lineSpeaker = line.speaker ?? NARRATOR;
       const canonical = parts.map((part) => part.alias || part.text).join("").normalize("NFC").trim();
       if (line.audio_ref !== undefined) {
         const original = originals.get(line.audio_ref);
-        if (!original || original.reference || original.speaker !== lineSpeaker || original.canonical !== canonical || JSON.stringify(original.voice) !== JSON.stringify(voice)) throw new Error(`line ${line.id}: audio_ref must name an earlier original take with identical speaker, spoken content and effective voice`);
+        if (!original || original.reference || original.speaker !== lineSpeaker || original.canonical !== canonical || JSON.stringify(original.voice) !== JSON.stringify(voice) || (original.tempo ?? null) !== lineTempo) throw new Error(`line ${line.id}: audio_ref must name an earlier original take with identical speaker, spoken content and effective voice`);
         flush();
-        const key = createHash("sha256").update(JSON.stringify([voice, parts])).digest("hex").slice(0, 16);
-        requests.push({ id: `${scene.id}#ref-${line.id}`, scene: scene.id, speaker: lineSpeaker, audio_ref: line.audio_ref, lines: [{ id: line.id, parts, weight: Math.max(1, spokenUnits(spokenText(line))), key }], body: { ...voice, segments: [{ parts, break_after_ms: 0 }] }, key });
+        const key = createHash("sha256").update(JSON.stringify(lineTempo ? [voice, parts, lineTempo] : [voice, parts])).digest("hex").slice(0, 16);
+        requests.push({ id: `${scene.id}#ref-${line.id}`, scene: scene.id, speaker: lineSpeaker, audio_ref: line.audio_ref, lines: [{ id: line.id, parts, weight: Math.max(1, spokenUnits(spokenText(line))), key }], body: { ...voice, segments: [{ parts, break_after_ms: 0 }] }, key, ...(lineTempo ? { tempo: lineTempo } : {}) });
         originals.set(line.id, { reference: true });
         continue;
       }
-      originals.set(line.id, { speaker: lineSpeaker, canonical, voice });
-      if (characters + length > MAX_REQUEST_CHARACTERS || lineSpeaker !== speaker || JSON.stringify(voice) !== JSON.stringify(fields)) flush();
+      originals.set(line.id, { speaker: lineSpeaker, canonical, voice, ...(lineTempo ? { tempo: lineTempo } : {}) });
+      if (characters + length > MAX_REQUEST_CHARACTERS || lineSpeaker !== speaker || lineTempo !== tempo || JSON.stringify(voice) !== JSON.stringify(fields)) flush();
       fields = voice;
       speaker = lineSpeaker;
+      tempo = lineTempo;
       // A clip stays current while its own words and the voice stay the same, whatever its
       // neighbours do, so an edit to one line retakes that line alone.
-      const key = createHash("sha256").update(JSON.stringify([voice, parts])).digest("hex").slice(0, 16);
+      const key = createHash("sha256").update(JSON.stringify(lineTempo ? [voice, parts, lineTempo] : [voice, parts])).digest("hex").slice(0, 16);
       chunk.push({ id: line.id, parts, weight: Math.max(1, spokenUnits(spokenText(line))), key });
       characters += length;
     }
@@ -129,10 +161,11 @@ export function planRequests(doc, lexicon) {
 
 /**
  * Billable characters the server will count for a request: for Azure its SSML inside <voice>,
- * for Gemini the characters of the transcript.
+ * for Gemini and MiniMax the characters of the text they are sent.
  */
 export function billableForRequest(body) {
   if (body.voice.startsWith(GEMINI_VOICE_PREFIX)) return geminiText(body.segments).length;
+  if (body.voice.startsWith(MINIMAX_VOICE_PREFIX)) return minimaxText(body.segments).length;
   let markup = 0;
   for (const segment of body.segments) {
     for (const part of segment.parts) {

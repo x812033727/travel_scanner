@@ -1,0 +1,44 @@
+{
+  "slug": "2026-14-jiefu",
+  "title": "預報說我會嫁給他",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": { "min": 90, "max": 180, "chapter_finale_min": 120 },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "站主 2026-10-28：每集 3–5 個鉤子。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），可再加 extra_hooks 0–2 句；lib/validate.mjs 擋掉寫成同一件事的。"
+  },
+  "closed_ending": false,
+  "ending_note": "第五季收掉主線：第十三號颱風撞上婚期，兩個預報員值完颱風夜才去結婚；十月二十四日的霧嶼，晴；嚴霽的誓詞沒有一個天氣的字；原本那句『我等了九年』不會再有人說，未來筆記最後一頁自己白了、天氣瓶變清，小雷忘了十年，變回普通的十歲小孩，用自己的心喊了一聲姊夫；白板停止發布戀愛預報。第 300 集最後一格，婚禮後第一個上班日的校門口，一個穿黃色小雨衣的小女孩衝過來抱住小雷大喊『舅舅！你怎麼變這麼小！』——又一個從未來回來的人，留第二部的口子。站主要收死的話，刪掉最後一格、cliffhanger 改 emotion 即可。",
+  "aspect": { "decided": null, "suggested": "16:9", "why": "照《種田娶妻打天下》的建議。" },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom）；target_minutes 填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線。",
+    "look": "真人電影感現代都市職場甜寵輕喜劇：預報課的螢幕藍與雷達回波、頂樓觀測坪的白色百葉箱與探空氣球、夏家公寓的暖黃飯桌、霧嶼的蚵架與海霧；天空一季換一種——颱風的鉛灰、初雪的白藍、春霧的乳白、雷陣雨的紫、晴天的金藍。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md；前 3 秒允許是當眾喊錯稱呼或私事被當眾爆出的社死場面；白板上的紅筆數字、未來筆記的頁數、天氣瓶的結晶是固定的插入特寫。",
+    "reuse": "固定場景：預報課開放辦公室與白板、課長的玻璃隔間與天氣瓶、茶水間、頂樓觀測坪、三樓記者會室與攝影棚、夏家公寓的飯桌與小雷的書桌；第三季起加霧嶼漁港、海產店與老氣象站。",
+    "voice": "國語；女主輕、快，緊張時講數字；男主低、短，每句像預報，一緊張就報天氣；小雷童聲但滿口大人詞；十九歲的倒影同一個語氣低八度；夏媽台語大嗓門、方曼雲播音腔；第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json。",
+    "per_episode": "平均約 120 秒一集 ≈ 3,000–3,800 點。",
+    "per_season": "60 集 ≈ 18–23 萬點；五季 ≈ 90–115 萬點。",
+    "levers": "辦公室文戲為主，一張首格＋緩推可省六到七成；白板、筆記、驗證表與雷達螢幕上的字一律後製疊上，不靠海螺生成文字；颱風、初雪、海霧、雷陣雨的天空空景一季拍一組跨集重用。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包，不是逐集分鏡劇本。",
+  "reference": {
+    "work": "《姐，他真是我姐夫》（2026 年 1–10 月紅果熱度合併榜第 14，榜上數字是 5 月日均熱度；都市甜寵輕喜劇＋職場暗戀＋穿越）",
+    "how": "只學套路：務實怕事但清醒的女職員暗戀冷面上司三年、知道未來的弟弟當眾喊錯稱呼把雙向暗戀攤在陽光下、弟弟只能說不能替姊姊決定、預言被當胡說要靠證據驗證、霸總在喜歡的人面前破防、沒有反派沒有誤會沒有惡毒女配的無虐甜、你以為單戀其實對方更早。職業與職場（氣象中心預報課，不是公司會計）、穿越的形式（十九歲的記憶醒在九歲的自己身上）、未來筆記與天氣瓶、代價（說出口的未來一兌現就從他腦子裡消失）、城市汐港與離島霧嶼、每個人物、劇情與台詞全部原創，不搬原劇任何情節。"
+  },
+  "title_candidates": ["預報說我會嫁給他", "我弟從十年後回來爆雷", "晴時多雲，偶爾喜歡你"],
+  "title_decision": "未定；先用候選第一個，站主可改。"
+}

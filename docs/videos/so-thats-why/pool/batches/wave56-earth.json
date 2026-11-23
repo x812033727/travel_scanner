@@ -1,0 +1,689 @@
+{
+  "batch_id": "wave56-earth-20261111",
+  "created_on": "2026-11-11",
+  "scope": "離岸流的成因、類型與浮標實測；日食的頻率、食帶寬度與沙羅週期：替長題 G12、G09 補官方說明、資料表與現地研究（作者 F8，非作者覆核 V11）。",
+  "sources": [
+    {
+      "id": "S56-S001",
+      "url": "https://www.weather.gov/safety/ripcurrent-science",
+      "canonical_url": "https://www.weather.gov/safety/ripcurrent-science",
+      "title": "Rip Current Science",
+      "publisher": "美國國家氣象局（NWS／NOAA）",
+      "version": "網頁現行版（2026-11-11 擷取）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（工具預設標頭），去標籤後閱讀",
+      "reading_scope": "全頁：Where, When and Why Rip Currents Form；Structure and Circulation Patterns；Types of Rip Currents；Rip Current Flow, Behavior and Characteristics；Myths and Misconceptions；Glossary（How to Spot 一節只略讀，未取用）",
+      "locator": "各節標題如上；快取文字檔 nws_rip_science.txt 第 59–100 行",
+      "summary": "離岸流由碎浪驅動，但光有碎浪不夠，要沿岸方向的碎浪有強有弱。碎浪把水推向岸形成增水（wave setup），常約為碎波高的 10%；水沿岸從增水高處流向低處，匯合後向外。循環胞由沿岸供流、窄而快的頸部、碎浪帶外散開的頭部組成。類型依成因分為地形控制（沙洲缺口的水道型、外海地形的聚焦型）、結構物邊界型（遮蔽型與偏轉型）、純水動力型（瞬時 flash rip，持續數分鐘）。水道型寬 5–100 碼、深 3–10 英尺以上、間距 50–500 碼，可停在原地數天到數月；流速常約每秒 1–2 英尺，可達每秒 8 英尺；脈動 30 秒到 1 分鐘、流速可加倍以上；潮差小於 6 英尺的海灘在低潮前後一兩小時較快、高潮時可能停止；退潮並不比漲潮強；離岸流不是潮流，也不是近底回流（undertow）；沙洲不會崩塌。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "官方科普整理頁，數值為概括範圍、英制單位，沒有逐項註明原研究；分類轉述自 Castelle 等 2016（該文本輪 403 未讀）。頁內有辨識與避險段落，本池只取流動機制，不作救生教學。 覆核 V11（2026-11-11）：limitations 補：〈Myths and Misconceptions〉與〈Flow speed and behavior〉兩節句句對泳客而寫，本池只取水流的分類與驅動來源；〈How to Spot Rip Currents〉全節不取用。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/nws_rip_science.html",
+        "sha256_prefix": "d4f792c19a8e4e72",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S56-S002",
+      "url": "https://calhoun.nps.edu/server/api/core/bitstreams/490ccc59-b35c-4090-b128-78496ac1c6ce/content",
+      "canonical_url": "https://doi.org/10.1016/j.margeo.2009.09.011",
+      "title": "Mean Lagrangian flow behavior on an open coast rip-channeled beach: A new perspective（MacMahan 等，Marine Geology 268 (2010) 1–15）",
+      "publisher": "Elsevier／美國海軍研究生院 Calhoun 典藏（美國政府著作）",
+      "version": "期刊刊本 PDF；doi:10.1016/j.margeo.2009.09.011；典藏 hdl.handle.net/10945/41275",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 下載 PDF，pdftotext -layout 轉文字後閱讀",
+      "reading_scope": "全文 15 頁：摘要、§1–§5、Table 1、Fig. 3–5、Fig. 12 圖說（§4.5–4.6 質量平衡與渦度的算式只略讀）",
+      "locator": "Abstract；§2.1；§3.2；§4.1；§4.2；Table 1；§4.4；§5 第 3–5 段",
+      "summary": "2007 年春在加州蒙特雷 Sand City 的水道型離岸流海灘，放入最多 30 顆 GPS 定位漂流浮標（定位誤差小於 40 公分），每次約 3 小時、共 7 次。與「離岸流把東西有效送出碎浪帶」的傳統看法相反，流場是半封閉的大渦旋，浮標多半繞圈留在碎浪帶內；離岸流型與蜿蜒型的日子合計平均每小時約 19% 的浮標離開碎浪帶，法國 Truc Vert 為 14%、英國 Perranporth 為 16%，三處總平均 17%，對應 e 摺時間 9.5 小時。蒙特雷三小時平均向外流速 30 cm/s，時間平均峰值 40–60 cm/s；離開的浮標約以 20 cm/s 被帶到約兩個碎浪帶寬度之外。浪最大時離開的最少，中等浪較多，小浪又減少。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "三處海灘、各幾天的佈放，浮標是水面漂流物，不代表整個水層；作者自己說碎浪帶外的觀測點很少。文中有關游泳者的段落本池不取用。DOI 落地頁未開，讀的是典藏刊本。 覆核 V11（2026-11-11）：limitations 補：摘要的峰值流速 40–60 cm/s 與正文 §4.4 的 0.4–0.65 m/s 不一致；離開率 19%、14%、16% 都排除只有沿岸流的日子；離開的浮標多被撈起重放；9.5 小時是假設指數型自相關與不回流的推算。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/macmahan2010_calhoun.pdf",
+        "sha256_prefix": "058343c04d37605d",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S56-S003",
+      "url": "https://eclipse.gsfc.nasa.gov/SEsaros/SEperiodicity.html",
+      "canonical_url": "https://eclipse.gsfc.nasa.gov/SEsaros/SEperiodicity.html",
+      "title": "Periodicity of Solar Eclipses（Fred Espenak）",
+      "publisher": "NASA 哥達德太空飛行中心（GSFC）日食網頁",
+      "version": "網頁現行版（內文自述數值為 2000 CE、活躍沙羅序列數為 2008 年）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（工具預設標頭），去標籤後閱讀",
+      "reading_scope": "§1.1 Eclipse Seasons、§1.2 Interval Between Two Successive Solar Eclipses、§1.3、§1.4 Saros 全文；§1.5 略讀；§1.6 以後未讀",
+      "locator": "§1.1 全段與註 1；§1.2 Table 1；§1.4 第 1–4、7、12 段",
+      "summary": "月球軌道對黃道傾斜約 5.1°，交於兩個交點；新月落在交點前後約 17°（實際 15.39°–18.59°）內才有日食。太陽每天走 0.99°，穿過 34° 寬的食區要 34.5 天，而朔望月 29.53 天，所以每個食季一定有一次、可能兩次日食；兩個食季中點相隔 173.3 天，因為交點每年西退 19.3°。相鄰兩次日食相隔 1、5 或 6 個朔望月（各占 11.4%、23.1%、65.5%）。沙羅＝223 朔望月＝6585.3223 天，239 近點月、242 交點月也幾乎相等，約 18 年 11 天 8 小時；多出的三分之一天讓下一次的食帶西移約 120°，三個沙羅（約 54 年 34 天）才回到大致同一區。一個沙羅序列持續 1,226–1,551 年、含 69–87 次日食。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Espenak 個人署名的 GSFC 參考頁，頁面多年未更新；§1.6 以後未讀。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/gsfc_periodicity.html",
+        "sha256_prefix": "93bcc39a63ac904f",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S56-S004",
+      "url": "https://eclipse.gsfc.nasa.gov/SEcat5/SEcatalog.html",
+      "canonical_url": "https://eclipse.gsfc.nasa.gov/SEcat5/SEcatalog.html",
+      "title": "Five Millennium Catalog of Solar Eclipses: -1999 to +3000",
+      "publisher": "NASA GSFC 日食網頁（Espenak 與 Meeus，NASA/TP-2008-214170 的網頁版）",
+      "version": "網頁現行版",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（工具預設標頭），去標籤後閱讀",
+      "reading_scope": "Introduction 與 Statistics 各表（類型、中心食分類、每年次數、五次日食的年份、極值表）；各世紀明細表未讀",
+      "locator": "Statistics for Solar Eclipses 各表",
+      "summary": "西元前 2000 年到西元 3000 年共 11,898 次日食：偏食 4,200（35.3%）、環食 3,956（33.2%）、全食 3,173（26.7%）、全環食 569（4.8%）。每個曆年最少 2 次、最多 5 次：2 次的年份占 72.5%、3 次 17.5%、4 次 9.5%、5 次只有 25 年（0.5%，含 1935、2206 年）。五千年間最長的全食 7 分 29 秒（2186 年 7 月 16 日），最長的環食 12 分 23 秒。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "計算目錄，古代與遠未來的時刻受地球自轉不確定影響；只讀統計表。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/gsfc_secat5.html",
+        "sha256_prefix": "923dacef9a7d3901",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S56-S005",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html",
+      "canonical_url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html",
+      "title": "Moon Fact Sheet",
+      "publisher": "NASA NSSDCA（GSFC）",
+      "version": "網頁現行版",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（工具預設標頭），去標籤後閱讀",
+      "reading_scope": "Bulk parameters、Orbital parameters 與表下註解全文",
+      "locator": "Orbital parameters 表與星號註",
+      "summary": "月球軌道半長軸 0.3844 百萬公里，平均近地點 0.3633、平均遠地點 0.4055 百萬公里；軌道一年中會變，月地距離大致在 357,000 到 407,000 公里之間；對黃道傾角 5.145°；朔望週期 29.53 天；在距地球 378,000 公里（赤道，衝時平均值）時視直徑 1896 角秒。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與池中 SRC-95980f5576415af8 同一頁。資料表不附推導；視直徑只給一個距離下的值。 覆核 V11（2026-11-11）：不另立來源；以 2026-11-11 的新閱讀紀錄（Bulk、Orbital parameters 與表下註解；頁面標示 Last Updated 11 January 2024）掛回池中 SRC-95980f5576415af8。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/nssdc_moonfact.html",
+        "sha256_prefix": "a468979dfb4179e3",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S56-S006",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/sunfact.html",
+      "canonical_url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/sunfact.html",
+      "title": "Sun Fact Sheet",
+      "publisher": "NASA NSSDCA（GSFC）",
+      "version": "網頁現行版",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（工具預設標頭），去標籤後閱讀",
+      "reading_scope": "全表",
+      "locator": "Apparent diameter from Earth；Distance from Earth",
+      "summary": "太陽從地球看的視直徑：1 天文單位時 1919 角秒，最大 1952、最小 1887 角秒；日地距離平均 149.6、最小 147.1、最大 152.1 百萬公里。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "資料表；與月球資料表的視直徑是各自條件下的值，並排比較要標明條件。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/nssdc_sunfact.html",
+        "sha256_prefix": "bcc186a518298636",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S56-S007",
+      "url": "https://openstax.org/books/astronomy-2e/pages/4-7-eclipses-of-the-sun-and-moon",
+      "canonical_url": "https://openstax.org/books/astronomy-2e/pages/4-7-eclipses-of-the-sun-and-moon",
+      "title": "Astronomy 2e §4.7 Eclipses of the Sun and Moon",
+      "publisher": "OpenStax（Rice University）",
+      "version": "Astronomy 2e 網頁版（2026-11-11 擷取）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（工具預設標頭），去標籤後閱讀",
+      "reading_scope": "§4.7 全節（日食幾何、日食外觀、月食；觀測安全方塊略讀未取用）",
+      "locator": "Eclipses of the Sun 第 1–6 段",
+      "summary": "日月視大小都約半度；月球軌道傾斜約 5°。多數時候月球看起來比太陽略小，即使對準也蓋不滿，成為環食；月球比平均距離近時才有全食。月影尖端以每小時約 1,500 公里向東掃過一條窄帶；食帶兩側各約 3,000 公里內看到偏食；全食時間最長不超過約 7 分鐘。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "入門教材的概括數字，不分個別日食。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/openstax_astro_4_7.html",
+        "sha256_prefix": "bc858897e7bc3144",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S56-S008",
+      "url": "https://science.nasa.gov/solar-system/skywatching/how-is-the-2024-total-solar-eclipse-different-than-the-2017-eclipse/",
+      "canonical_url": "https://science.nasa.gov/solar-system/skywatching/how-is-the-2024-total-solar-eclipse-different-than-the-2017-eclipse/",
+      "title": "How the 2024 Total Solar Eclipse Is Different than the 2017 Eclipse",
+      "publisher": "NASA Science",
+      "version": "網頁（2024 年日食前發布，2026-11-11 擷取）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（工具預設標頭），去標籤後閱讀",
+      "reading_scope": "全文",
+      "locator": "第 3、8–9 段",
+      "summary": "月地距離會變：2017 年日全食時月球比 2024 年那次遠一點，食帶較窄，約 62–71 英里寬；2024 年 4 月 8 日在北美的食帶寬 108–122 英里。2017 年最長全食 2 分 42 秒（伊利諾州 Carbondale 附近），2024 年最長 4 分 28 秒（墨西哥 Torreón 西北）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "事前預報的科普文，英制單位；只比較這兩次。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/nasa_2024_vs_2017.html",
+        "sha256_prefix": "fb405374c94fb806",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S56-S009",
+      "url": "https://eclipse.gsfc.nasa.gov/SEpath/SEpath2001/SE2024Apr08Tpath.html",
+      "canonical_url": "https://eclipse.gsfc.nasa.gov/SEpath/SEpath2001/SE2024Apr08Tpath.html",
+      "title": "Path of Total Solar Eclipse of 2024 Apr 08（Fred Espenak）",
+      "publisher": "NASA GSFC 日食網頁",
+      "version": "網頁現行版",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（工具預設標頭），去標籤後閱讀",
+      "reading_scope": "說明文字與整張路徑表（每 120 秒一列）",
+      "locator": "路徑表 Diam. Ratio、Path Width、Central Line Durat. 三欄",
+      "summary": "2024 年 4 月 8 日日全食的本影路徑表：月日視直徑比沿中心線約 1.040–1.057，食帶寬度從端點的 144 公里到最寬 203 公里，中心線全食時間最長 4 分 28.2 秒。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "計算值；寬度是沿路徑各點的幾何寬度，與 NASA 科普文的北美段英里數是不同取樣。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/gsfc_path2024.html",
+        "sha256_prefix": "0691bf43354ccdde",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S56-S010",
+      "url": "https://spaceplace.nasa.gov/eclipses/en/",
+      "canonical_url": "https://spaceplace.nasa.gov/eclipses/en/",
+      "title": "What Is an Eclipse?",
+      "publisher": "NASA Space Place",
+      "version": "網頁現行版",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（工具預設標頭），去標籤後閱讀",
+      "reading_scope": "全文",
+      "locator": "solar eclipse 段",
+      "summary": "地球上某處每約一年半有一次日全食；平均而言，同一個地點大約每 375 年才看得到一次、每次幾分鐘。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "兒童科普頁，375 年沒有列出計算來源（常見出處是 Meeus 的統計，未讀）；寫稿前宜補一手來源。 覆核 V11（2026-11-11）：limitations 補：375 年那句字面寫「a solar eclipse」，依上下文指日全食；只能當「NASA 科普頁的說法」引用。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/spaceplace_ecl.html",
+        "sha256_prefix": "8a0730cd970e37f4",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S56-S011",
+      "url": "https://science.nasa.gov/eclipses/future-eclipses/eclipse-2024/faq/",
+      "canonical_url": "https://science.nasa.gov/eclipses/future-eclipses/eclipse-2024/faq/",
+      "title": "2024 Total Solar Eclipse: Frequently Asked Questions",
+      "publisher": "NASA Science",
+      "version": "網頁現行版",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（工具預設標頭），去標籤後閱讀",
+      "reading_scope": "How rare are total solar eclipses? 與 Saros 兩題；其餘略讀",
+      "locator": "How rare are total solar eclipses? 題",
+      "summary": "五千年 11,898 次日食的類型數字與 GSFC 目錄相同；換算下來每年 2–3 次各類日食，約每 3 年 2 次日全食。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "FAQ 轉述 GSFC 目錄；安全觀測題未取用。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/nasa_eclipse_faq.html",
+        "sha256_prefix": "8cab0960a50f7280",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S56-S012",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9100690/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/polym14091888",
+      "title": "Development of a Highly Efficient Environmentally Friendly Plasticizer（Vikhareva 等，Polymers 2022, 14, 1888）",
+      "publisher": "MDPI（CC BY；PMC9100690）",
+      "version": "刊本全文；doi:10.3390/polym14091888",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST fullTextXML（curl GET 200），去標籤後閱讀",
+      "reading_scope": "§2.3.7 玻璃轉移測定、§3 末段與 Table 5、結論；合成與流變段略讀",
+      "locator": "§2.3.7；Table 5；Table 5 上方段落",
+      "summary": "DSC（每分鐘升溫 2 K、−100 到 100°C、樣品 4–8 毫克）測 PVC 組成物的玻璃轉移：未塑化 PVC 87°C（正文寫 87.5°C），每 100 份 PVC 加 50 份 DOP 後降到 −37°C。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "DOP 同樣只是對照組；正文把重量份誤寫成 ppm、87 與 87.5 兩處不一致；單一添加量，且 −37°C 比一般文獻值低，寫稿前要再找一份添加量對 Tg 的系列資料核對。 覆核 V11（2026-11-11）：F8-025 退回後沒有核心引用這筆來源；不進來源庫，只留在未收紀錄。",
+      "author_cache": {
+        "file": "scratchpad/stw6/f8src/PMC9100690.xml",
+        "sha256_prefix": "9c6cf68ee3d630ea",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "S56-001",
+      "question": "浪一直把水推上岸，多出來的水憑什麼會往外流？",
+      "domain": "海洋",
+      "mechanism_key": "rip.wave_setup_alongshore_gradient_drives_seaward_flow",
+      "answer_target": "碎浪把水推向岸，讓岸邊水位微微墊高，叫增水（wave setup），常約為碎波高的 10%，肉眼難辨、儀器量得到。光有碎浪不夠：要沿岸方向的碎浪有強有弱。浪碎得多的地方增水高，碎得少的地方增水低，水沿著岸「往低處流」，在碎浪少的那一段匯合，再轉向外海。所以離岸流出現在碎浪較少、兩側碎浪較多的夾縫。",
+      "scope": "美國國家氣象局的概括說明；10% 是常見量級不是定值。只講流動成因，不談辨識與避險。",
+      "source_ids": [
+        "S56-S001"
+      ],
+      "source_locator": "Where, When and Why Rip Currents Form 第 2–3 段",
+      "premise_status": "screened",
+      "notes": "補 G12 缺的官方成因說明。N191 只有「透過局部缺口集中離岸」一句；這裡新增增水 10%、沿岸差異才是必要條件、水沿岸往低處流。算 1.5 條（缺口一事與 N191 重疊，不重算）。 原提案 F8-001（目標 G12，原角色 segment；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）照原稿收；照原稿收。N191 已有「由缺口集中離岸」；本核心只算增水 10% 與「沿岸差異才是必要條件、水沿岸往低處流」，算 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "浪往岸，是因為浪把水堆高了；水往外，是因為堆得不一樣高。",
+        "visual": "俯視海岸：兩側白浪區水面標 H、中間暗水區標 L，箭頭沿岸匯向中間再轉向外。",
+        "seconds": [
+          60,
+          80
+        ]
+      }
+    },
+    {
+      "id": "S56-002",
+      "question": "一股離岸流從頭到尾長什麼樣子，哪一段最快？",
+      "domain": "海洋",
+      "mechanism_key": "rip.feeder_neck_head_cell_dimensions",
+      "answer_target": "離岸流是近岸循環胞的一部分：沿岸的供流（feeder）從兩側匯合，轉向外形成窄而快的頸部，穿過碎浪帶後在外側減速、散開成頭部，水再被碎浪帶回岸邊。流速從供流逐漸加快，大約在頸部向外一半處最高，到頭部慢下來停住；橫向以中間最快，深度上在水面下一點最快。NWS 也寫明另一種樣態：水主要在碎浪帶內打轉，只偶爾向外流出。沙洲缺口的水道型離岸流寬約 5 到 100 碼、水道深約 3 到 10 英尺以上、相鄰兩股相隔 50 到 500 碼，浪大時間距常較大，可以停在同一處數天、數週到數月。",
+      "scope": "水道型（沙洲缺口）離岸流的概括範圍，英制原文，公制換算寫稿時做並標「約」；其他類型尺度不同。NOAA 舊頁（N191 來源）的寬度說法是另一份概括，片中只用一份並標來源。",
+      "source_ids": [
+        "S56-S001"
+      ],
+      "source_locator": "Rip Current Structure and Circulation Patterns；Types—Channelized；Flow speed and behavior 第 2 段",
+      "premise_status": "screened",
+      "notes": "新增構造三段、流速分布、水道尺度與持續時間。算 2 條。NOAA 舊頁的「寬不超過 25 公尺」是另一份概括，片中擇一並標來源。 原提案 F8-002（目標 G12，原角色 segment；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）改字後收；數字照錄；補上同節的「碎浪帶內再循環」一句，讓浮標章有官方頁的呼應。構造三段、流速分布、水道尺度各半條，算 1.5 條（作者算 2）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "它不是一條直直沖出去的水柱，是一個有進有出的迴圈。",
+        "visual": "同一張俯視圖標上供流、頸、頭三段，顏色表示流速，頸部中段最亮。",
+        "seconds": [
+          60,
+          75
+        ]
+      }
+    },
+    {
+      "id": "S56-003",
+      "question": "沙灘平平的、沒有沙洲缺口，為什麼照樣有離岸流？",
+      "domain": "海洋",
+      "mechanism_key": "rip.types_without_sandbar_gap_boundary_flash",
+      "answer_target": "沙洲缺口只是讓沿岸碎浪不均的一種原因。外海的海底峽谷、海脊或沙洲會讓浪集中在某處碎，形成位置跟著浪向移動的聚焦型；防波堤、突堤、碼頭或岬角旁有兩種：背浪側因為被遮住、浪小增水低，水沿岸流回結構物再向外（遮蔽型），迎浪側則是斜向入浪造成的沿岸流撞上結構物被折向外海（偏轉型）。連平直、沒有任何地形的海灘也會有：兩組不同方向的浪互相干涉，讓某些地方的碎浪比旁邊高，增水不均就驅動離岸流；短波峰的碎浪則會產生小渦旋，合併成只持續幾分鐘的瞬時離岸流。這一類純靠水動力的離岸流，位置和時間都無法精確預測。",
+      "scope": "分類是 NWS 依 Castelle 等 2016 的轉述（原文本輪 403 未讀），片中只說「美國國家氣象局的分類」。純水動力型的流速與持續時間，NWS 自己說因缺乏現地量測而所知較少；「幾分鐘」只屬於短波峰渦旋合併的那一種。",
+      "source_ids": [
+        "S56-S001"
+      ],
+      "source_locator": "Types of Rip Currents：Focused；Structurally-Controlled（Shadow／Deflection）；Hydrodynamically-Controlled",
+      "premise_status": "screened",
+      "notes": "第一個轉折：觀眾以為要有缺口。新增聚焦型、遮蔽／偏轉型、瞬時型三類成因。算 2 條。偏轉型正好接 N190 的沿岸流。Castelle 2016 原文 403 未讀，只能寫「NWS 依該分類」。 原提案 F8-003（目標 G12，原角色 turn；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）改字後收；把被併成一句的兩種水動力機制拆開，「幾分鐘」只留給原文所指的那一種。遮蔽型與 F8-001 同是增水差，只算半條；聚焦、偏轉、純水動力各半條，共 1.5 條（作者算 2）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "缺口不是必要條件；必要的是沿岸有強有弱。",
+        "visual": "三格並排：海底峽谷外的聚焦、突堤兩側一進一出、平直海灘上忽然冒出的白色水舌。",
+        "seconds": [
+          75,
+          90
+        ]
+      }
+    },
+    {
+      "id": "S56-004",
+      "question": "同一股離岸流，為什麼忽快忽慢，還跟潮水高低有關？",
+      "domain": "海洋",
+      "mechanism_key": "rip.pulsing_wave_groups_and_tidal_water_level",
+      "answer_target": "離岸流不穩定。一組較大的浪（浪群）碎掉時，岸邊增水升高，流速會突然加快，可以超過原來的兩倍，這樣的一次脈動持續約 30 秒到 1 分鐘。它也跟潮位有關，因為潮位決定浪在哪裡碎、碎多少：潮差小於約 6 英尺的海灘，低潮前後一兩個小時水淺、碎浪最多，常流得較快，高潮時水深、碎浪少，可能完全停掉；潮差大的海灘低潮時沙洲露出水面，離岸流反而關掉，最快出現在中潮。重點是水位，不是方向：沒有發現退潮時比漲潮時強。",
+      "scope": "NWS 概括；各海灘的最快潮位不同。不延伸成何時下水的建議。",
+      "source_ids": [
+        "S56-S001"
+      ],
+      "source_locator": "Rip pulsing；Tidal modulation 兩段",
+      "premise_status": "screened",
+      "notes": "新增脈動的時間與倍數、小潮差與大潮差兩種規律、「退潮較強」是誤解。算 2.5 條。 原提案 F8-004（目標 G12，原角色 segment；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）改字後收；改正脈動時間的主詞。脈動 1 條、兩種潮差規律 1 條；「退潮不比漲潮強」併在潮位那條，共 2 條（作者算 2.5）。片中不得把潮位規律講成何時可以下水。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「退潮才有離岸流」是把水位和方向搞混了。",
+        "visual": "同一地點低潮與高潮兩張照片並排（NWS 頁有 Duck 的對照圖，權利另查），下方流速條隨浪群一跳一跳。",
+        "seconds": [
+          65,
+          80
+        ]
+      }
+    },
+    {
+      "id": "S56-005",
+      "question": "把 30 顆會定位的浮標丟進離岸流，它們真的一路被沖到外海嗎？",
+      "domain": "海洋",
+      "mechanism_key": "rip.gps_drifter_surfzone_retention_19_percent_per_hour",
+      "answer_target": "多數沒有。2007 年在加州蒙特雷一處離岸流常年存在的海灘，研究團隊每次放入 16 到 27 顆 GPS 漂流浮標（整批 30 顆，定位誤差小於 40 公分），每次約 3 小時、共 7 次。結果與「離岸流把東西一路送出去」的經典看法相反：流場是半封閉的大渦旋，浮標繞圈、留在碎浪帶內，偶爾才有一顆被一陣爆發帶出去。把出現離岸流型與蜿蜒型流場的日子合起來，平均每小時約 19% 的浮標離開碎浪帶；最高的一天 28%，有一天只有 4%。同樣的做法在法國 Truc Vert 是每小時 14%，英國 Perranporth 是 16%。",
+      "scope": "三處水道型開放海岸、各幾天的資料；三個百分比都不含只有沿岸流的日子（那些日子幾乎沒有浮標離開）。浮標代表水面漂流物，離開的浮標多被撈起重放，沒有一路追蹤。不能換成「人有幾成機會」；文中游泳者的段落本池不取用，片中不得由此推出任何自救做法。",
+      "source_ids": [
+        "S56-S002"
+      ],
+      "source_locator": "Abstract；§3.2；§4.2；Table 1",
+      "premise_status": "screened",
+      "notes": "補 G12 點名缺的現地觀測；第二個轉折。算 2.5 條（方法與規模、渦旋留住、三處的每小時離開比例）。 原提案 F8-005（目標 G12，原角色 turn；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）改字後收；數字都對，補上統計的條件。方法半條、渦旋留住 1 條、三處離開率半條，共 2 條（作者算 2.5）。這是 G12 第二個轉折的唯一實測來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「海裡的河」這個比喻只對了一小部分：大部分的水在原地打轉。",
+        "visual": "浮標軌跡圖（原文 Fig. 3，權利另查；可自繪示意）：一圈一圈的線擠在碎浪帶內，只有幾條細線伸向外海。",
+        "seconds": [
+          80,
+          105
+        ]
+      }
+    },
+    {
+      "id": "S56-006",
+      "question": "現場量到的離岸流有多快？被帶出去的東西會漂多遠？",
+      "domain": "海洋",
+      "mechanism_key": "rip.measured_velocity_exit_distance_wave_height_dependence",
+      "answer_target": "蒙特雷那幾次佈放，離岸流在碎浪帶內向外的流速三小時平均是每秒 30 公分，時間平均的峰值依浪與潮約每秒 40 到 60 公分（正文另一處寫到 65）。那一處碎浪帶平均寬約 135 公尺，水道大約每 125 公尺一條。少數離開碎浪帶的浮標，大約以每秒 20 公分被帶到約兩個碎浪帶寬度之外。離開的比例和浪高的關係不是越大越多：浪最大的日子離開的最少，中等浪最多，浪很小時又變少；浪小到幾乎不在水道內碎時，浮標改成沿著地形蜿蜒往下游走。作者自己說這只是粗略的趨勢。",
+      "scope": "單一海灘 7 次佈放；作者說碎浪帶外的觀測點少、與浪高的關係只是粗略趨勢。這是三小時平均，不能和 NWS 的瞬間最大每秒 8 英尺相比或相減。",
+      "source_ids": [
+        "S56-S002"
+      ],
+      "source_locator": "Abstract；§2.1；§3.2 末段；§4.1；§4.2；§4.4；§5 與 Fig. 12 說明",
+      "premise_status": "screened",
+      "notes": "新增實測平均與峰值流速、離開的距離與速度、浪高的非單調關係。算 2 條。平均值與 NWS 的概括值是不同量，片中分開講。 原提案 F8-006（目標 G12，原角色 segment；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）改字後收；補上摘要與正文峰值不一致，並把作者的保留語寫進答案。流速半條、離開的距離與速度半條、浪高的非單調關係半條，共 1.5 條（作者算 2）。不得與 NWS 的每秒 1–2 英尺、最高 8 英尺相減或排成同一條線。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "浪越大不等於越多東西被送出去。",
+        "visual": "流速剖面：碎浪帶內 30、峰值 40–60、帶外 20（cm/s）三段色條；下方三種浪高對應三種軌跡。",
+        "seconds": [
+          55,
+          70
+        ]
+      }
+    },
+    {
+      "id": "S56-007",
+      "question": "既然大部分的水在打轉，碎浪帶裡的水要多久才換掉？",
+      "domain": "海洋",
+      "mechanism_key": "rip.surfzone_flushing_efolding_time_9_5_hours",
+      "answer_target": "研究者拿三處海灘合計每小時 17% 的離開率去推算，在假設離開的不再回來的前提下，得到的特徵時間是 9.5 小時：過了 9.5 小時，原本在碎浪帶內的浮標估計還有約 30% 留著，70% 已離開。這比更早一份研究估計的「約 3 小時沖刷整個碎浪帶」慢得多；作者也提到有少數離開的浮標後來又回到碎浪帶，離岸越遠回來的機會越小。",
+      "scope": "這是研究者在特定假設下的推算（原文寫明假設指數型自相關與不回流），不是量到的時間；17% 與 9.5 小時的換算照原文引用，不自行重算或解釋算法。3 小時是該文引用 Smith 與 Largier 1995 的估計，原文未讀。",
+      "source_ids": [
+        "S56-S002"
+      ],
+      "source_locator": "§4.2 第 2 段；§5 第 4 段",
+      "premise_status": "screened",
+      "notes": "新增 9.5 小時與 30%／70%。算 1 條。與 F8-005 同一研究，覆核若併入 F8-005 可接受。 原提案 F8-007（目標 G12，原角色 segment；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）改字後收；同一研究的延伸推算，只算 0.5 條（作者算 1），在片中併在浮標章之後一小段。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "離岸流更像一台慢慢漏的攪拌機，不是排水管。",
+        "visual": "水缸示意：每小時舀走一小杓，9.5 小時後還剩三成。",
+        "seconds": [
+          35,
+          50
+        ]
+      }
+    },
+    {
+      "id": "S56-008",
+      "question": "離岸流、潮流、近底回流、回沖，是同一種水流嗎？",
+      "domain": "海洋",
+      "mechanism_key": "rip.not_tide_not_undertow_not_collapsing_sandbar",
+      "answer_target": "不是。潮汐是 6 到 12 小時尺度的水位升降，海灣口、河口隨漲退潮出現的強流叫潮流；離岸流不是水位升降，是碎浪驅動的集中水流，只是強弱受潮位調節。碎浪帶回岸邊的水還有另一條回程：貼著底部往外流的近底回流（undertow），它通常比離岸流慢，和離岸流是兩種不同的現象。浪沖上灘面再退下來的回沖（backwash）又是另一回事，只發生在灘面附近。沙洲也不會突然崩塌：它的移動要幾天到幾個月，大風暴時也要幾小時；水突然變深，多半是一組大浪讓水位短暫升高，常伴隨一次離岸流脈動。",
+      "scope": "只做名詞辨正：各是什麼水流、由什麼驅動、多快。原文對泳客的判斷（會不會把人拉下去、危不危險、會不會把人沖倒）一律不取用，片中不得出現「不會被拉下水所以不用怕」之類的說法，也不談遇到時怎麼做。",
+      "source_ids": [
+        "S56-S001"
+      ],
+      "source_locator": "Rip Current Myths and Misconceptions 全節；Glossary：Undertow、Rip Tide、Backwash",
+      "premise_status": "screened",
+      "notes": "新增四個常被混用的名詞各自的機制。算 2 條。若覆核認為靠近安全宣導可刪，本題仍有約 16 條。 原提案 F8-008（目標 G12，原角色 segment；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）改字後收；只留水流的分類與驅動來源，把安全判斷的句子全部拿掉。四個名詞合 0.5 條、沙洲移動的時間尺度 0.5 條，共 1 條（作者算 2）。若寫稿時做不到不帶安全暗示，整個核心刪掉，G12 仍有 12 條（8.8 分）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "回到外海的路不只一條，離岸流只是最集中的那一條。",
+        "visual": "剖面圖：水面的碎浪向岸、貼底的回流向外；旁邊俯視圖才是離岸流，兩張圖不疊在一起。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "S56-009",
+      "question": "月球軌道只歪了 5 度，為什麼就足以讓大多數新月撲空？一年有幾次機會？",
+      "domain": "天文",
+      "mechanism_key": "eclipse.node_zone_17deg_season_34_days_173_day_spacing",
+      "answer_target": "月球軌道對地球繞日的平面傾斜約 5.1°，兩個平面只交於兩個交點。新月要落在交點前後約 17° 以內（依日月距離在 15.39° 到 18.59° 之間），月影才碰得到地球。太陽每天在黃道上走 0.99°，穿過這段 34° 寬的區域要 34.5 天；而新月每 29.53 天一次，比 34.5 天短，所以太陽每次經過交點，一定有一次、有時有兩次日食。這段時間叫食季，兩個食季的中點相隔 173.3 天，比半年短一點，因為交點每年向西退 19.3°。",
+      "scope": "幾何平均值；不涉及個別日食的日期與地點。",
+      "source_ids": [
+        "S56-S003",
+        "S56-S005"
+      ],
+      "source_locator": "S003 §1.1 全段與註 1；S005 Orbital parameters（傾角 5.145°、朔望 29.53 天）",
+      "premise_status": "screened",
+      "notes": "補 G09 缺的傾角與交點數值。N248 只有「多數時候從上下方經過」；新增 5.1°、17° 食限、34.5 天對 29.53 天、173.3 天與交點西退。算 3 條。 原提案 F8-009（目標 G09，原角色 segment；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）照原稿收；照原稿收。N248 只有「多數時候從上下方經過」。5.1° 半條、食限與 34.5 天對 29.53 天 1.5 條、173.3 天與交點西退半條，共 2.5 條（作者算 3）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是每個月都歪掉，而是一年只有兩段各一個多月的窗口對得上。",
+        "visual": "兩個呼拉圈斜交，交點兩側各塗 17° 的色帶；太陽沿圈每天走一小格，新月標記每 29.5 格出現一次。",
+        "seconds": [
+          70,
+          90
+        ]
+      }
+    },
+    {
+      "id": "S56-010",
+      "question": "日食到底算不算稀有？一年最少幾次、最多幾次？",
+      "domain": "天文",
+      "mechanism_key": "eclipse.two_to_five_per_year_interval_1_5_6_lunations",
+      "answer_target": "以全地球來算，日食一點也不稀有。NASA 的五千年目錄（西元前 2000 年到西元 3000 年）裡，每一個曆年至少有 2 次日食，最多 5 次：剛好 2 次的年份占 72.5%，3 次 17.5%，4 次 9.5%，5 次的只有 25 年，例如 1935 年與 2206 年。相鄰兩次日食相隔 1、5 或 6 個朔望月，其中隔 6 個月的占 65.5%，隔 1 個月的（同一個食季連兩次）占 11.4%。",
+      "scope": "計算目錄的統計，含各種類型的日食（多數地方看不到）。",
+      "source_ids": [
+        "S56-S004",
+        "S56-S003"
+      ],
+      "source_locator": "S004 Number of Eclipses Per Year 表與五次日食年份表；S003 §1.2 Table 1",
+      "premise_status": "screened",
+      "notes": "轉折一的數字骨架：全球每年至少兩次。算 2 條（每年 2–5 次的分布；相鄰間隔 1／5／6 個月）。 原提案 F8-010（目標 G09，原角色 turn；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）照原稿收；照原稿收。每年 2–5 次的分布 1 條、相鄰間隔半條，共 1.5 條（作者算 2）。片中要說明這包含只有極區看得到的小偏食。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "日食不挑年份，它每年都來；挑的是地點。",
+        "visual": "五千年的年份長條：72.5% 塗成「2 次」，最右邊一小條「5 次」標出 1935。",
+        "seconds": [
+          55,
+          70
+        ]
+      }
+    },
+    {
+      "id": "S56-011",
+      "question": "五千年將近一萬兩千次日食裡，全食占多少？",
+      "domain": "天文",
+      "mechanism_key": "eclipse.type_shares_five_millennium_catalog",
+      "answer_target": "同一份目錄的 11,898 次日食：偏食 4,200 次（35.3%），環食 3,956 次（33.2%），全食 3,173 次（26.7%），同一場又全又環的全環食 569 次（4.8%）。環食比全食多。NASA 的說法是：全球每年有 2 到 3 次各類日食，日全食約每 3 年 2 次。",
+      "scope": "同上；類型以整場日食在地球上能看到的最大食相分類。",
+      "source_ids": [
+        "S56-S004",
+        "S56-S011"
+      ],
+      "source_locator": "S004 Solar Eclipses: -1999 to +3000 表；S011 How rare are total solar eclipses?",
+      "premise_status": "screened",
+      "notes": "新增四種類型的次數與比例、環食多於全食。算 1.5 條。全環食的成因在池中 N252，這裡只給比例。 原提案 F8-011（目標 G09，原角色 segment；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）照原稿收；照原稿收，算 1 條（四種類型的次數比例；FAQ 是同一目錄的轉述不另計。作者算 1.5）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "對準了也只有四分之一多一點的機會是全食。",
+        "visual": "一條分段色條 35.3／33.2／26.7／4.8，全食那段最後才亮起。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "S56-012",
+      "question": "月亮和太陽在天上明明差不多大，為什麼環食反而比全食多？",
+      "domain": "天文",
+      "mechanism_key": "eclipse.moon_apparent_size_usually_smaller_than_sun",
+      "answer_target": "因為兩者的視大小都在變，而月亮很多時候略小一點。NASA 資料表：太陽的視直徑在 1887 到 1952 角秒之間，1 天文單位時是 1919 角秒；月球在距地球 378,000 公里時是 1896 角秒（資料表只給這一個條件的平均值），而月地距離大致在 357,000 到 407,000 公里之間（平均近地點 363,300、平均遠地點 405,500 公里）。OpenStax 的說法是：很多時候月球看起來比太陽略小，即使完全對準也蓋不滿，成為環食；日食發生在月球比平均距離近一些的時候，本影才碰得到地面，成為全食。",
+      "scope": "視直徑各有條件（太陽 1 AU 與全年極值；月球只有 378,000 公里、衝時平均一個值）；兩張表並排時標明條件，不自行換算比例，也不自行推算近地點、遠地點的月球視直徑。「很多時候」照 OpenStax 原文，不寫成「多數時候」或百分比；環食比全食多的數字只用 F8-011 的目錄統計。",
+      "source_ids": [
+        "S56-S005",
+        "S56-S006",
+        "S56-S007"
+      ],
+      "source_locator": "S005 Orbital parameters 與 Mean values；S006 Apparent diameter from Earth；S007 第 6–7 段",
+      "premise_status": "screened",
+      "notes": "補 G09 缺的月地距離範圍與視直徑數值；轉折二。N250 只有「月地距離改變影錐能否到達地表」；新增距離範圍、兩者的角秒、月球多數時候略小。算 2 條。 原提案 F8-012（目標 G09，原角色 turn；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）改字後收；把「多數時候」改回原文的程度。N250 已有「月地距離決定影錐到不到地面」；本核心只算視直徑與距離的數值 1 條、「很多時候略小」半條，共 1.5 條（作者算 2）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「剛好一樣大」是平均來說差一點點，而且差的那一點是月亮輸。",
+        "visual": "兩個圓盤疊在一起：太陽在 1887–1952 之間呼吸，月亮隨距離縮放，多數時候露出一圈亮邊。",
+        "seconds": [
+          75,
+          95
+        ]
+      }
+    },
+    {
+      "id": "S56-013",
+      "question": "同樣是日全食，為什麼 2024 年的全食帶比 2017 年寬那麼多、時間也長得多？",
+      "domain": "天文",
+      "mechanism_key": "eclipse.path_width_2017_vs_2024_moon_distance",
+      "answer_target": "全食帶有多寬，看月球當時離地球多近。NASA 在 2024 年日食前比較過兩次橫越美國的日全食：2017 年 8 月 21 日那次月球稍遠，食帶約 62 到 71 英里寬，最長全食 2 分 42 秒；2024 年 4 月 8 日月球較近，北美段食帶寬 108 到 122 英里，最長 4 分 28 秒。哥達德中心的路徑表給出 2024 年那次沿線的月日視直徑比約 1.040 到 1.057，食帶從端點的 144 公里到最寬 203 公里；全食時間在食帶中央最長，往兩側邊緣遞減。",
+      "scope": "只比較這兩次；NASA 那篇是事前預報值。英里數是 NASA 科普文的說法（2024 年限北美段），公里數是路徑表全程，兩者取樣不同、不互相換算，片中各自標來源。",
+      "source_ids": [
+        "S56-S008",
+        "S56-S009"
+      ],
+      "source_locator": "S008 第 3、8–9 段；S009 路徑表 Diam. Ratio、Path Width、Durat. 欄",
+      "premise_status": "screened",
+      "notes": "補 G09 缺的本影帶寬度數值。N251 只有「影錐縮窄」；新增兩次日食的實際帶寬與時間、視直徑比。算 2 條。「中心線最長、邊界為零」見 GSFC 名詞表（已讀，未另立來源）。 原提案 F8-013（目標 G09，原角色 segment；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）改字後收；刪掉沒有來源的「降到零」。N251 只有「影錐縮窄」；兩次日食的帶寬與時間 1 條、路徑表的視直徑比與沿線寬度半條，共 1.5 條（作者算 2）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "月亮近一點點，地上的黑影就寬出幾十公里。",
+        "visual": "美國地圖上兩條食帶，2017 細、2024 粗；旁邊月球遠近的小圖同步放大縮小。",
+        "seconds": [
+          65,
+          85
+        ]
+      }
+    },
+    {
+      "id": "S56-014",
+      "question": "全球每年都有日食，那為什麼一個地方幾百年才等到一次日全食？",
+      "domain": "天文",
+      "mechanism_key": "eclipse.one_place_375_years_shadow_1500_kmh_7_minutes",
+      "answer_target": "因為本影落在地上只是一個小點，而且跑得很快。OpenStax：月影尖端以每小時約 1,500 公里向東掃過，畫出一條細帶，帶外兩側各約 3,000 公里只看得到偏食；全食最長大約 7 分鐘。NASA 目錄裡五千年間最長的一次是 2186 年 7 月 16 日的 7 分 29 秒，最短的只有 9 秒。所以雖然地球上平均每一年半左右某處就有一次日全食，NASA 的科普頁說，同一個地點平均要約 375 年才輪到一次、每次只有幾分鐘。",
+      "scope": "375 年只能寫成「NASA Space Place 科普頁的說法」：那是兒童科普頁，沒有列計算來源，原句字面是「日食」、依上下文指日全食；個別地點可相隔幾年或上千年。不放進標題、縮圖或章名，寫稿前要補到一手統計（Meeus 或 Espenak 的地點統計），補不到就只留「一年半一次、每次一條細帶」的定性說法。",
+      "source_ids": [
+        "S56-S007",
+        "S56-S004",
+        "S56-S010"
+      ],
+      "source_locator": "S007 第 9 段；S004 Extreme Durations 表；S010 solar eclipse 段",
+      "premise_status": "screened",
+      "notes": "補「一地多久看到一次」。新增影速、偏食範圍、時間上限與五千年極值、375 年。算 2.5 條。375 年的一手統計（Meeus）未讀，列在 still_missing。 原提案 F8-014（目標 G09，原角色 segment；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）改字後收；375 年是 NASA 官方頁上的句子，可以引用但只當一句有出處的說法，不當這一章的支柱；這一章靠影速、帶寬與時間上限站得住。影速與偏食範圍 1 條、時間上限與極值半條、375 年半條，共 2 條（作者算 2.5）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "每年都有，但輪到你家要等十幾代人。",
+        "visual": "地球儀上一個小黑點拖出細線；旁邊計數器：全球「每年」、此地「375 年」。",
+        "seconds": [
+          60,
+          75
+        ]
+      }
+    },
+    {
+      "id": "S56-015",
+      "question": "日食為什麼會隔 18 年又重演一次？重演的那一場為什麼不在原地？",
+      "domain": "天文",
+      "mechanism_key": "eclipse.saros_223_months_shifts_120_degrees_west",
+      "answer_target": "因為月球的三個週期剛好湊得上：223 個朔望月是 6585.3223 天，239 個近點月是 6585.5375 天，242 個交點月是 6585.3575 天，都落在 6585 天多一點。隔這麼久（約 18 年 11 天 8 小時，叫一個沙羅），新月、月球遠近、相對交點的位置幾乎都回到原樣，於是出現一場很像的日食。古代的迦勒底人最早是從月食的重複認出這個間隔的。但那多出來的三分之一天，讓地球多轉了約 8 小時，下一場的食帶就落在西邊約 120° 的地方；要三個沙羅、約 54 年又 34 天，才回到大致同一區。一個沙羅序列不會永遠持續：交點每次偏一點，整個序列從一極移到另一極，歷時 1,226 到 1,551 年、共 69 到 87 次日食。",
+      "scope": "週期為西元 2000 年的值；序列統計出自同頁。只能說古人認出了這個重複的間隔（最早用在月食），不寫成古人能預報某地的日食。不涉及古代紀錄的解讀（那是池中 S51-002）。",
+      "source_ids": [
+        "S56-S003"
+      ],
+      "source_locator": "§1.4 第 1–4、7、12 段",
+      "premise_status": "screened",
+      "notes": "補 saros。新增三個週期的天數、18 年 11 天 8 小時、西移 120° 與三倍沙羅、序列壽命。算 3 條。可在此章尾一句話指向 G569（S51-002），但不合併；Stephenson 2016 補充表本輪未讀。 原提案 F8-015（目標 G09，原角色 turn；依本池欄位記為 segment）。非作者覆核 V11（2026-11-11）改字後收；改掉來源不支持的「古人也能預報日食」前提。三個週期湊齊 1 條、西移 120° 與三倍沙羅 1 條、序列壽命半條，共 2.5 條（作者算 3）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "日食會重演，只是每次都換一批觀眾。",
+        "visual": "世界地圖上同一沙羅序列的三條食帶，依次往西跳三分之一圈；第四條回到原區。",
+        "seconds": [
+          85,
+          105
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "S56-NA001",
+      "question": "離岸流六種類型各自的環流與危害（Castelle 等 2016，Earth-Science Reviews 163:1–21）",
+      "existing_ids": [
+        "N191"
+      ],
+      "source_ids": [
+        "S56-S001"
+      ],
+      "reason": "原文三個入口都拿不到：core.ac.uk 直接 PDF 403、Plymouth 研究入口的 PDF 403、PEARL 典藏頁 404。分類內容只能經由 NWS 的轉述（F8-003）。 原提案 F8-NA001。",
+      "reentry_condition": "任一開放典藏可正常下載時補讀，作 F8-003 的一手來源。",
+      "reading_status": "未讀（403／404）"
+    },
+    {
+      "id": "S56-NA002",
+      "question": "USLA（美國救生協會）的離岸流官方說明",
+      "existing_ids": [
+        "N191"
+      ],
+      "source_ids": [
+        "S56-S001"
+      ],
+      "reason": "www.usla.org 兩個網址都回 403。官方成因說明改用 NWS〈Rip Current Science〉。USLA 頁以安全宣導為主，本題也不取用救生內容。 原提案 F8-NA002。",
+      "reentry_condition": "網站可正常開啟且有成因段落時作第二官方來源。",
+      "reading_status": "未讀（403）"
+    },
+    {
+      "id": "S56-NA003",
+      "question": "被離岸流帶走的人順著漂會不會自己回到淺水？（MacMahan 2010 的游泳者段落）",
+      "existing_ids": [],
+      "source_ids": [
+        "S56-S002"
+      ],
+      "reason": "同一研究確實有游泳者隨流繞圈的觀察與據此的建議，但 G12 明定不得轉成救生教學；本池只取浮標資料（F8-005～F8-007）。 原提案 F8-NA003。",
+      "reentry_condition": "另開經過完整安全查核、並對照台灣主管機關最新指引的題目時再議。",
+      "reading_status": "已讀全文，刻意不取用"
+    },
+    {
+      "id": "S56-NA004",
+      "question": "瞬時離岸流（flash rip）有多快、持續多久的現地量測",
+      "existing_ids": [],
+      "source_ids": [
+        "S56-S001"
+      ],
+      "reason": "NWS 自己寫明因缺乏現地量測而所知較少；本輪找到的開放全文只有水道型（MacMahan 2010）。AMS 期刊直接 PDF 403，Europe PMC 與 Crossref 檢索沒有找到開放的染料或浮標研究。 原提案 F8-NA004。",
+      "reentry_condition": "找到開放全文的瞬時離岸流現地研究（例如 Feddersen 團隊的染料實驗）時新增。",
+      "reading_status": "未找到可讀全文"
+    },
+    {
+      "id": "S56-NA005",
+      "question": "古代日食紀錄怎麼夾出地球自轉變慢（接 G569）",
+      "existing_ids": [
+        "S51-002"
+      ],
+      "source_ids": [
+        "S56-S003"
+      ],
+      "reason": "池中已有 S51-002／G569。本輪沒有讀 Stephenson 等 2016 的補充表，所以 G09 不與 G569 合併，只在沙羅一章末尾留一句指向。 原提案 F8-NA005。",
+      "reentry_condition": "讀到 Stephenson、Morrison、Hohenkerk 2016 的補充表後，再評估是否加一章。",
+      "reading_status": "未讀"
+    },
+    {
+      "id": "S56-NA006",
+      "question": "同一場日食為什麼有人看到全食、有人看到環食",
+      "existing_ids": [
+        "N252"
+      ],
+      "source_ids": [
+        "S56-S004"
+      ],
+      "reason": "池中 N252 已有同一答案；本輪只在 F8-011 補上全環食占 4.8% 的比例，不另立核心。 原提案 F8-NA006。",
+      "reentry_condition": "無",
+      "reading_status": "已讀（統計表）"
+    },
+    {
+      "id": "S56-NA007",
+      "question": "塑膠的黏彈性主曲線與時間–溫度疊加（OpenLearn〈Introduction to polymers〉）",
+      "existing_ids": [
+        "H3090"
+      ],
+      "source_ids": [],
+      "reason": "H3090 的來源 open.edu 本輪回 403（printable 頁與課程首頁都是），無法重讀，也拿不到該課程的 Tg／Tm 表。應力鬆弛的量測改由 Statnik 等 2022（F8-026）支持。 原提案 F8-NA009。",
+      "reentry_condition": "網站可正常開啟時重讀 5.3–5.4 節，並補該課程的 Tg／Tm 表作第二來源。",
+      "reading_status": "未讀（403）"
+    }
+  ]
+}

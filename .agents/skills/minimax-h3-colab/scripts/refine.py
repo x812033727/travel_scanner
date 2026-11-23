@@ -43,6 +43,18 @@ ID_RE = re.compile(r"^[A-Za-z0-9_-]{1,40}$")
 SAMPLER_RE = re.compile(r"^[a-z0-9_]{1,40}$")
 
 
+def draft_frames(path: Path) -> int | None:
+    """The draft's frame count from ffprobe, or None when ffprobe is missing or cannot tell."""
+    import shutil
+    import subprocess
+    if not shutil.which("ffprobe"):
+        return None
+    probe = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-count_frames", "-show_entries",
+                            "stream=nb_read_frames", "-of", "csv=p=0", str(path)], capture_output=True, text=True)
+    text = probe.stdout.strip()
+    return int(text) if probe.returncode == 0 and text.isdigit() else None
+
+
 def load_jobs(manifest_path: Path, output_dir: Path | None, only: set[str] | None) -> tuple[list[dict[str, Any]], list[str]]:
     """The jobs to run and every problem that would waste a session; nothing is uploaded here."""
     errors: list[str] = []
@@ -79,6 +91,10 @@ def load_jobs(manifest_path: Path, output_dir: Path | None, only: set[str] | Non
                 errors.append(f"{where}: {key} missing or empty: {value}")
             else:
                 files[key] = path
+        frames = draft_frames(files["input_video"]) if "input_video" in files else None
+        if frames is not None and (frames - 5) % 17:
+            errors.append(f"{where}: the draft has {frames} frames; the refine notebook takes only H3 lengths 17k+5 "
+                          f"(a trimmed draft must end on one: {', '.join(str(17 * k + 5) for k in range(2, 8))} ...)")
         prompt = entry.get("prompt")
         if entry.get("prompt_file"):
             prompt_path = resolve_path(base, entry["prompt_file"])

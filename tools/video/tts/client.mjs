@@ -220,6 +220,15 @@ const trackLanguage = (language) => (language === NARRATION_LOCALE ? {} : { lang
  * the line says and `language` the locale the clip is read in; a server from before either
  * existed refuses the field, so each goes only when it says something the default does not.
  */
+/**
+ * What is left of the owner's MiniMax M Plan, as MiniMax reports it. One attempt: a key without a
+ * plan answers a 502 that asking again does not change, and the owner can simply ask again.
+ */
+export async function minimaxQuota(options) {
+  const response = await call({ ...defaults(options), attempts: 1, path: "speech/minimax-quota", init: { method: "GET" } });
+  return response.json();
+}
+
 export async function transcribeClip({ wav, terms = [], language = NARRATION_LOCALE, ...options }) {
   const request = { audio: Buffer.from(wav).toString("base64"), ...(terms.length ? { terms } : {}), ...trackLanguage(language) };
   return postPaid(options, "speech/transcribe", request, async (response) => {

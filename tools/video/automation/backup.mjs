@@ -1,5 +1,5 @@
 // The backup (docs/videos/BACKUP.md): every video on YouTube or ready to upload is copied to the
-// owner's Google Drive, under AI/備份/<series>/<episode>/, with rclone, and the tidy keeps a
+// owner's Google Drive, under AI/備份/<series>/<episode>/ (AI劇/<名稱>/<集數>/ for the dramas), with rclone, and the tidy keeps a
 // video's files on the host until Drive has them. The site holds the settings, the list of videos
 // and each one's folder and tier (apps/api/app/video_backup); this file does the copying, once a
 // round, before the tidy. A video being revised is off the site's list until it is ready again,
@@ -26,6 +26,7 @@ import { pipeline } from "node:stream/promises";
 import { atomicWrite, isInside, readJson, resolveWorkBase, stopRequested } from "../core/paths.mjs";
 import { USER_AGENT } from "../tts/client.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
+import { writeDriveIndex } from "./drive-index.mjs";
 import { DOWNLOADS_PER_ROUND, fetchReviewPackage, packageFetched, packageIncomplete } from "./review-package.mjs";
 
 export const PER_ROUND_ENV = "VIDEO_BACKUP_PER_ROUND";
@@ -47,6 +48,12 @@ export const MAX_FAILURES = 3;
 export const FAILED_RETRY_MS = 6 * 60 * 60 * 1000;
 // Reports that only say "queued" or repeat a done the site missed; the token's window is 120 a minute.
 export const REPORTS_PER_ROUND = 10;
+// Backed-up videos whose Drive folder and final.mp4 ids the site asks for (needs_drive_ids), read
+// with two `rclone lsjson` each (the parent's listing for the folder, `--stat` for final.mp4), so
+// the admin can link them (owner, 2026-11-18). Videos the host already cleared count too: only
+// Drive is read.
+export const DRIVE_LOOKUPS_PER_ROUND = 20;
+const DRIVE_ID = /^[A-Za-z0-9_-]{10,200}$/;
 // The full tier's extra files, beside upload/ (docs/videos/BACKUP.md §每一層備份哪些檔).
 // recordings/ holds an imported episode's line recordings (review-package.mjs, 2026-11-01).
 // Since 2026-11-03 the host clears a video whole once Drive holds it (tidy.mjs purge), so the full
@@ -337,6 +344,8 @@ export function backupClient(ctx) {
     lock: (body) => call("POST", "lock", body),
     answer: (id, body) => call("POST", `test/${id}`, body),
     report: (slug, body) => call("POST", `${slug}/report`, body),
+    drive: (slug, body) => call("POST", `${slug}/drive`, body),
+    index: () => call("GET", "index"),
     project: async (slug) => (await get(reviews(slug), "application/json")).json(),
     download: async (slug, sha256, target) => {
       const response = await get(`${reviews(slug)}/files/${sha256}`, "*/*");
@@ -464,18 +473,28 @@ async function freeBytes(job) {
 }
 
 /**
- * A video the site files somewhere new (an imported drama moved from drama/<episode> into
- * drama/<series>/<episode>, 2026-11-01): its Drive folder is moved there, server side and without
+ * A video the site files somewhere new (into AI劇/<名稱>/<集數>/, 2026-11-10, or an older version
+ * into that episode's _舊版/<slug>/): its Drive folder is moved there, server side and without
  * an upload, and the site is told the new folder, which from then on is the one it stores. A
  * folder that is not in Drive (never backed up, or moved already) counts as moved. Returns
  * whether the video may be backed up this round.
+ *
+ * The new folder may already hold another version of the episode (H01/ with H01/_舊版/curio-h01/
+ * in it). Then nothing in it is overwritten: the moving folder's own _舊版/ joins the episode's
+ * (a name already there stays behind, in the old folder), and a file of the same name with other
+ * content goes to _舊版/<時間>-搬移/ before the moving one takes its place, as a copy does (its
+ * own folder: the copy that follows in the same round uses _舊版/<時間>/ and would replace it).
  */
 async function moveFolder(job, video, copy) {
   const from = video.moved_from;
   if (typeof from !== "string" || !from || from === video.folder || from.split("/").includes("..")) return true;
   if (!copy) return false;
-  const moved = await job.rclone(["moveto", `${job.remote}:${remoteJoin(job.prefix, from)}`, `${job.remote}:${remoteJoin(job.prefix, video.folder)}`]);
-  const absent = moved.code !== 0 && /directory not found|not found|doesn't exist/i.test(`${moved.stderr}\n${moved.stdout}`);
+  const source = `${job.remote}:${remoteJoin(job.prefix, from)}`;
+  const target = `${job.remote}:${remoteJoin(job.prefix, video.folder)}`;
+  const there = await job.rclone(["lsf", target, "--max-depth", "1"]);
+  const occupied = there.code === 0 && there.stdout.trim() !== "";
+  const moved = occupied ? await mergeFolder(job, source, target) : await job.rclone(["moveto", source, target]);
+  const absent = moved.code !== 0 && NOT_FOUND.test(`${moved.stderr}\n${moved.stdout}`);
   if (moved.code !== 0 && !absent) {
     job.lines.push(`backup: ${video.slug}: could not move ${from} to ${video.folder} (${why(moved)}); the next round tries again`);
     return false;
@@ -487,6 +506,15 @@ async function moveFolder(job, video, copy) {
   if (state && typeof state === "object") saveBackupState(workdir, { ...state, state: "pending", folder: video.folder, queued_at: job.now.toISOString() });
   await tellSite(job, video.slug, { state: "pending", folder: video.folder, tier: video.tier });
   return true;
+}
+
+const NOT_FOUND = /directory not found|not found|doesn't exist/i;
+
+/** moveFolder into a folder that already holds files: nothing there is overwritten. */
+async function mergeFolder(job, source, target) {
+  const olds = await job.rclone(["move", `${source}/${OLD_VERSIONS}`, `${target}/${OLD_VERSIONS}`, "--ignore-existing", "--delete-empty-src-dirs", "--tpslimit", "5", "--retries", "5"]);
+  if (olds.code !== 0 && !NOT_FOUND.test(`${olds.stderr}\n${olds.stdout}`)) return olds;
+  return job.rclone(["move", source, target, "--checksum", "--backup-dir", `${target}/${OLD_VERSIONS}/${stamp(job.now)}-搬移`, "--exclude", `/${OLD_VERSIONS}/**`, "--delete-empty-src-dirs", "--tpslimit", "5", "--retries", "5"]);
 }
 
 async function tellSite(job, slug, body) {
@@ -780,7 +808,72 @@ export async function backupRound(ctx, { copy = true, client: given, rclone: run
     const next = await backUp(job, video, state);
     verdicts.set(video.slug, verdictOf(next));
   }
+  if (copy) {
+    await linkDriveIds(job, config.videos ?? []);
+    // The daily sheets in <path>/_總表/ (drive-index.mjs); never part of any video's verdict.
+    await writeDriveIndex(job);
+  }
   return { lines, gate: withDeleted({ enabled: true, verdicts }) };
+}
+
+const parseJson = (text) => {
+  try {
+    return JSON.parse(text);
+  } catch {
+    return null;
+  }
+};
+const idOf = (item) => (typeof item?.ID === "string" && DRIVE_ID.test(item.ID) ? item.ID : null);
+
+/** The Drive id rclone reports for one file, or null when it is not there. */
+async function driveFileId(job, where) {
+  const found = await job.rclone(["lsjson", "--stat", where]);
+  return found.code === 0 ? idOf(parseJson(found.stdout)) : null;
+}
+
+/**
+ * The Drive id of one folder, or null when it is not there or its name is not unique. rclone
+ * answers `lsjson --stat` on a folder as the root of its own listing, with no ID (rclone 1.74,
+ * seen on the host 2026-11-19), so the folder is looked up in its parent's listing instead.
+ */
+async function driveFolderId(job, where) {
+  const colon = where.indexOf(":");
+  const inside = where.slice(colon + 1);
+  const slash = inside.lastIndexOf("/");
+  const name = inside.slice(slash + 1);
+  if (!name) return null;
+  const parent = `${where.slice(0, colon + 1)}${slash < 0 ? "" : inside.slice(0, slash)}`;
+  const listed = await job.rclone(["lsjson", "--dirs-only", parent]);
+  if (listed.code !== 0) return null;
+  const items = parseJson(listed.stdout);
+  const matches = Array.isArray(items) ? items.filter((item) => item?.IsDir && item.Name === name) : [];
+  return matches.length === 1 ? idOf(matches[0]) : null;
+}
+
+/**
+ * The Drive ids of backed-up videos the site has none for (apps/api/app/video_backup/drive_links.py):
+ * each folder's, and its final.mp4's when it holds one, at most DRIVE_LOOKUPS_PER_ROUND a round.
+ * A folder that cannot be read is tried again next round; nothing in Drive changes.
+ */
+export async function linkDriveIds(job, videos) {
+  let looked = 0;
+  for (const video of videos) {
+    if (!video?.needs_drive_ids || typeof video.slug !== "string" || !SLUG.test(video.slug) || typeof video.folder !== "string" || !video.folder) continue;
+    if (looked >= DRIVE_LOOKUPS_PER_ROUND) break;
+    looked += 1;
+    const where = `${job.remote}:${remoteJoin(job.prefix, video.folder)}`;
+    const folderId = await driveFolderId(job, where);
+    if (!folderId) {
+      job.lines.push(`backup: ${video.slug}: the id of its Drive folder could not be read; the next round tries again`);
+      continue;
+    }
+    const finalId = await driveFileId(job, `${where}/final.mp4`);
+    try {
+      await job.client.drive(video.slug, { folder: video.folder, folder_id: folderId, ...(finalId ? { final_file_id: finalId } : {}) });
+    } catch (error) {
+      job.lines.push(`backup: ${video.slug}: the site did not take its Drive ids (${error.message}); they are read again next round`);
+    }
+  }
 }
 
 /** Whether the tidy may clear a video, from its backup state. */

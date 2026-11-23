@@ -837,6 +837,18 @@
       "pricing_enabled": {
         "label": "プランと利用パック",
         "help": "料金ナビゲーション、利用パック操作、/pricing ページを制御します。"
+      },
+      "flight_search_enabled": {
+        "label": "航空券・宿泊検索",
+        "help": "航空券・宿泊検索の導線やトップページの検索フォーム表示を制御します。"
+      },
+      "videos_enabled": {
+        "label": "動画ライブラリ",
+        "help": "ナビゲーションやトップページ、フッターの動画リンク表示を制御します。"
+      },
+      "member_features_enabled": {
+        "label": "会員機能・ログイン表示",
+        "help": "ログインボタン、保存、マイページ、マイ旅行導線、カード上の保存・旅行追加ボタンを制御します。管理者は /login から直接ログインできます。"
       }
     }
   },
@@ -926,7 +938,10 @@
       "pg_dump": "バックアップツール",
       "github_ci": "GitHub CI",
       "api": "API",
-      "web": "Web"
+      "web": "Web",
+      "host_timer": "ホストのデプロイタイマー",
+      "autodeploy_paused": "自動デプロイの停止",
+      "dry_run": "ドライラン"
     },
     "noSha": "未取得",
     "seconds": "{count} 秒",
@@ -968,7 +983,27 @@
     "warningBody": "デプロイ前に PostgreSQL のバックアップを取得します。新しい版のヘルスチェックが失敗した場合はアプリケーションのみを戻し、マイグレーションの取り消しやデータベースの自動復元は行いません。",
     "passwordLabel": "現在のパスワード",
     "typeLabel": "入力",
-    "confirmSubmit": "確認してデプロイ"
+    "confirmSubmit": "確認してデプロイ",
+    "reasonTimerOffline": "ホストのデプロイタイマーから 15 分以上報告がありません",
+    "reasonAutodeployPaused": "前回の自動デプロイが失敗して停止中です。ログを確認し、停止ファイルを削除してから再実行してください",
+    "rebuildCurrent": "現在のバージョンを再ビルド",
+    "rebuildTitle": "{sha} を再ビルド",
+    "waitPaidWork": "有料の動画ジョブの実行中はデプロイしない（推奨）",
+    "hostTitle": "ホストの自動デプロイタイマー",
+    "hostHint": "デプロイ時間帯に main を 1 日 1 回まで自動デプロイします。ボタンからの依頼は約 5 分以内に処理されます。",
+    "hostLastReport": "最終報告",
+    "hostNever": "まだ報告がありません",
+    "hostDryRun": "ドライラン：実際にはデプロイしません",
+    "hostWindow": "デプロイ時間帯",
+    "hostWindowAny": "制限なし",
+    "hostToday": "今日の自動デプロイ",
+    "hostDecision": "最後の判断",
+    "hostLastDeploy": "タイマーによる最後のデプロイ",
+    "hostLastDeployValue": "{sha}・検証 {verify}",
+    "hostMissed": "デプロイされずに時間帯が終了",
+    "hostMissedValue": "{window}：{sha} は {gate} で止まりました：{reason}",
+    "hostPaused": "自動デプロイは停止中です",
+    "hostWarningBody": "デプロイスクリプトが PostgreSQL をバックアップするのは migration が変わったときだけです。すべてのコンテナが再起動し（約 8 秒エラーになります）、失敗したデプロイはロールバックされ自動デプロイが停止します。"
   },
   "aiAccountsPanel": {
     "loading": "アカウントの状態を読み込んでいます…",
@@ -1010,6 +1045,12 @@
     "computeUnits": "残り {units} コンピューティングユニット",
     "computeRate": "1 時間あたり {rate}",
     "computeActive": "実行中のランタイム {count} 件",
+    "leaseHolder": "{holder} が使用中",
+    "leaseDetail": "トークン {token} · {time} までリース",
+    "leaseBreak": "アカウントを取り戻す",
+    "leaseConfirmBreak": "取り戻す",
+    "leaseBreakHint": "停止したエージェントにだけ使います。動いているエージェントはリースを更新し、アカウントが空いていれば再び取ります。",
+    "leasesUnavailable": "どのエージェントが Colab アカウントを使っているか読み取れません：{detail}",
     "snapshotMissing": "このアカウントの利用枠はまだありません。ホストが自動で読み取ります。「再読み込み」でも取得できます。",
     "recorderMissing": "このアカウントのステータスラインが利用枠の記録につながっていません。再ログインするか、ホストのエージェントを再起動すると直ります。",
     "usageUnavailable": "利用枠を読み取れません：{detail}",
@@ -1490,6 +1531,10 @@
     "minimax_api_key": {
       "label": "MiniMax API Key",
       "help": "MiniMax Responses API に使います。"
+    },
+    "minimax_api_keys_extra": {
+      "label": "追加の MiniMax M Plan キー",
+      "help": "複数入力できます（カンマまたは改行で区切り）。MiniMax を呼び出すたびに、上のキーとこれらの中から、処理中の件数と残りの利用枠をもとに 1 つを選びます。枠を使い切ったキーはリセットまで休ませます。"
     },
     "jev_api_key": {
       "label": "Jev API キー",
@@ -2170,6 +2215,21 @@
     "uncategorized": "未分類",
     "categoryFilter": "カテゴリ",
     "categoryAll": "すべてのカテゴリ",
+    "shelfFilter": "番組",
+    "shelfAll": "すべての番組",
+    "shelves": {
+      "curio": "奇聞ファイル局",
+      "sothatswhy": "なるほど事務所",
+      "explainer": "解説（その他）"
+    },
+    "seriesFilter": "シリーズ",
+    "seriesAll": "すべてのシリーズ",
+    "seriesNone": "シリーズなし",
+    "topicFilter": "分類",
+    "topicAll": "すべての分類",
+    "topicNone": "分類なし",
+    "driveFolder": "ドライブのフォルダ",
+    "driveFinal": "完成版",
     "stateFilter": "状態",
     "stateAll": "すべて",
     "search": "検索",
@@ -2202,10 +2262,10 @@
     "loadError": "動画を読み込めませんでした",
     "retry": "再試行",
     "retryVideoTitle": "動画が停止しています",
-        "retryVideoHelp": "原因を修正したら、ワーカーにこの動画を一度だけ再試行させます。",
-        "retryVideoPending": "再試行を依頼しました。次の実行時に処理されます。",
-        "retryVideoButton": "この動画を再試行",
-        "retryVideoError": "再試行を依頼できませんでした: {message}",
+    "retryVideoHelp": "原因を修正したら、ワーカーにこの動画を一度だけ再試行させます。",
+    "retryVideoPending": "再試行を依頼しました。次の実行時に処理されます。",
+    "retryVideoButton": "この動画を再試行",
+    "retryVideoError": "再試行を依頼できませんでした: {message}",
     "pending": "判断待ち {count} 件",
     "noPendingShort": "判断待ちなし",
     "progress": "進捗 {done}/{total}",
@@ -2274,6 +2334,11 @@
     "dropConfirm": "この動画を中止しますか？元に戻せません。",
     "dropButton": "この動画を中止する",
     "dropError": "中止できませんでした：{message}",
+    "unlinkTitle": "YouTube 連携を解除",
+    "unlinkHelp": "作り直して再送した動画向け：サイトはこの YouTube 動画（{id}、公開日時未記録）を記録から外し、動画はアップロード待ちに戻ります。新しい版をアップロードして連携し直せます。チャンネル上の古い動画は削除されないので、Studio でご自身で処理してください。",
+    "unlinkButton": "連携を解除",
+    "unlinkConfirm": "この動画と YouTube 動画 {id} の連携を解除しますか？YouTube 上の古い動画は残ります。",
+    "unlinkError": "解除できませんでした：{message}",
     "approveDubs": "Studio にアップロード済み",
     "downloadTrack": "{file} をダウンロード",
     "dubKeptLines": "{count} 文（{lines}）は、Jev の聞き取りが台本と違っていた収録をそのまま使っています。録り直しが時間枠に収まらなかったためです。アップロードの前に音声トラック全体を一度聞いてください",

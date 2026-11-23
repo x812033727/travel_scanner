@@ -1,0 +1,338 @@
+{
+  "batch_id": "wave54-earth-20261111",
+  "created_on": "2026-11-11",
+  "scope": "黑洞照片拍到了什麼、火山讀數變了是不是岩漿：替長題 G16 補 EHT 第一號論文（M87*、人馬座 A*），替組題 C3-06 補埃特納雷達干涉與長谷破火山口兩個新系統；四來源。",
+  "sources": [
+    {
+      "id": "S54-S001",
+      "url": "https://arxiv.org/abs/1906.11238",
+      "canonical_url": "https://arxiv.org/abs/1906.11238",
+      "doi": "10.3847/2041-8213/ab0ec7",
+      "title": "First M87 Event Horizon Telescope Results. I. The Shadow of the Supermassive Black Hole",
+      "publisher": "Event Horizon Telescope Collaboration；ApJL 875:L1 (2019)，CC BY 3.0",
+      "version": "期刊正式版排版（arXiv 收錄之出版版 PDF）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（arXiv PDF），pdftotext 全文",
+      "reading_scope": "摘要、§1 引言、§3 EHT、§4–5 觀測與影像（含兩階段盲測）、§6–7 模型與物理解讀、§9 結論",
+      "locator": "摘要；§1 光子捕獲半徑段；§3 第1–3段與 Fig.1；§5 第1–4段與 Fig.3；§6 『First…Third』三點、Fig.4 圖說、排除替代解釋段；§9",
+      "summary": "EHT 以 1.3 mm 波長、八個站點六個地點組成地球大小的虛擬望遠鏡，基線 160 m 到 10,700 km，理論解析度約 25 µas；各站以氫邁射頻標同步錄下訊號，事後集中相關。基線只稀疏取樣，影像重建是欠定問題：先由四個團隊互不交流、獨立重建，都得到直徑約 38–44 µas、南側較亮的環；再用三條管線各掃上千到上萬組參數，並以已知形狀（環、新月、實心盤、雙源）的合成資料驗證。結果：環直徑 42±3 µas、中央亮度凹陷對比 >10:1，四天觀測都穩定（位置角在前後兩天差約 20°）。無自轉黑洞的光子捕獲半徑為 √27 rg，大於事件視界 2 rg；新月模型量到的是發光區大小，不是陰影本身。南側偏亮由接近光速順時針旋轉物質的相對論性射束解釋，推得自旋指離地球；但 Fig.4 三個物理情境截然不同的模擬都同樣好地擬合，作者強調單一好擬合不代表某模型勝出。噴流特徵與隨機亮團被排除（後者應以約 5 µas／天移動）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "質量 6.5×10⁹ 太陽質量依模擬庫推得；陰影與事件視界的比例依自旋與模型；影像使用權依期刊 CC BY 3.0，EHT 官網影像授權未另核。",
+      "author_cache": {
+        "file": "scratchpad/stw4/f3src/eht_1906.11238.pdf",
+        "sha256_prefix": "be6604770bb0d0a6",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S54-S002",
+      "url": "https://arxiv.org/abs/2311.08680",
+      "canonical_url": "https://arxiv.org/abs/2311.08680",
+      "doi": "10.3847/2041-8213/ac6674",
+      "title": "First Sagittarius A* Event Horizon Telescope Results. I. The Shadow of the Supermassive Black Hole in the Center of the Milky Way",
+      "publisher": "Event Horizon Telescope Collaboration；ApJL 930:L12 (2022)",
+      "version": "arXiv v2 2023-11-16 作者稿",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（arXiv PDF），pdftotext 全文",
+      "reading_scope": "摘要、§1、影像重建段與 Fig.3 圖說、幾何模型段、結論",
+      "locator": "摘要；Fig.3 圖說；影像段『four clusters』段",
+      "summary": "2017 年八台望遠鏡觀測銀河中心人馬座 A*：發光區在一小時內就會變化；各種影像與模型分析都支持一個直徑 51.8±2.3 µas 的亮粗環、內部較暗，符合約 4×10⁶ 太陽質量的 Kerr 黑洞。重建影像分成四群：三群是位置角不同的環、第四群是少數非環形；環的直徑、厚度一致，但沿環的亮度分布約束很差，這種多樣性反映基線覆蓋稀疏，不是黑洞不同時刻的快照。與 M87* 合起來，三個數量級的質量範圍都符合廣義相對論預測。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "作者稿版本；正式版為 2022 年 ApJL 930:L12；亮點位置不可解讀為真實結構。",
+      "author_cache": {
+        "file": "scratchpad/stw4/f3src/eht_2311.08680.pdf",
+        "sha256_prefix": "df498bcaa7f11a5c",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S54-S003",
+      "url": "https://doi.org/10.1029/2000JB900095",
+      "retrieval_url": "https://www.ipgp.fr/~beaudu/download/jgr99.pdf",
+      "canonical_url": "https://doi.org/10.1029/2000JB900095",
+      "doi": "10.1029/2000JB900095",
+      "title": "Volcano-wide fringes in ERS synthetic aperture radar interferograms of Etna (1992–1998): Deformation or tropospheric effect?",
+      "publisher": "Beauducel、Briole（IPGP）、Froger（Clermont-Ferrand）；Journal of Geophysical Research 105(B7), 16391–16402 (2000)",
+      "version": "第一作者 IPGP 個人頁公開的作者稿（頁首仍為 VOL. XX），與 JGR 正式版同一研究；正式版未讀",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET www.ipgp.fr/~beaudu/download/jgr99.pdf 200，pdftotext 全文自讀",
+      "reading_scope": "全文：Abstract、§1–2、§3.1–3.4、§4.1–4.3 與結果段、§5 Conclusion",
+      "locator": "Abstract；§1（Massonnet 1995 的 16 公里深岩漿庫消脹詮釋）；§3.3（一個條紋＝2.8 公分）；§3.4 每年 9–11 月負峰；§4.1 相位—高程關係；結果段 1995-08-27/28 一天 −2.8±1.5 條紋；§5",
+      "summary": "埃特納火山 1992–1999 年 38 景 ERS 影像做出 238 張干涉圖；先前研究把全山尺度的條紋讀成岩漿庫消脹再膨脹。作者指出，分層大氣造成的相位延遲會和高程同步變化，簡單變形源卻不會；聯合反演後，各景的對流層延遲在 −2.7 到 +3.0 條紋間變動（一條紋約 2.8 公分），1995 年 8 月 27、28 日相隔一天的兩景就差 −2.8 條紋，不可能是地面一天動了這麼多；岩漿體積變化反而落在誤差內，部分干涉圖不需任何變形就能完全以兩次拍攝時的大氣差解釋。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "假設水平均勻的分層大氣；變形源深度固定 6 公里；作者稿與正式版可能有小差異；不推到現今校正方法。",
+      "author_cache": {
+        "file": "scratchpad/f4src/beauducel.pdf",
+        "sha256_prefix": "2b64b1626bb94cd2",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S54-S004",
+      "url": "https://doi.org/10.1029/2020JB019495",
+      "retrieval_url": "https://gfzpublic.gfz-potsdam.de/pubman/item/item_5003229_2/component/file_5003275/5003229.pdf",
+      "canonical_url": "https://doi.org/10.1029/2020JB019495",
+      "doi": "10.1029/2020JB019495",
+      "title": "Hydrologically Induced Deformation in Long Valley Caldera and Adjacent Sierra Nevada",
+      "publisher": "Silverii、Montgomery-Brown（USGS 加州火山觀測站）、Borsa、Barbour；JGR Solid Earth 125, e2020JB019495 (2020)",
+      "version": "期刊正式版 PDF，GFZ 機構典藏（第一作者現職單位）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET gfzpublic.gfz-potsdam.de 200，pdftotext 全文自讀",
+      "reading_scope": "Key Points、Abstract、Plain Language Summary、§1、§2 觀測（Fig.3–4 文字）、§3、§4.3 Response to Pore Pressure Variations、§5 Conclusions",
+      "locator": "Abstract；§2 振幅（水平 10–15 毫米、達垂直 80–120%）；§3 乾旱上升、多雨下沉；§4.3 裂隙進水、Convict Lake 群震落後流量 24 天（引 Montgomery-Brown 2019）、約 30 天；§5",
+      "summary": "長谷破火山口的 GNSS 位移和雨雪、溪流緊密相關：大尺度上，積雪與地下水的重量讓地面多雨年下沉、乾旱年上升；破火山口西南緣幾個站每年還有 10–15 毫米的水平往復，負載模型解釋不了，與泉水流量同步，作者推論是融雪水灌進山坡裂隙使岩體膨脹、排水後收縮；同一區的淺層群震也被融雪調控（Montgomery-Brown 2019：峰值落後溪流約 24 天）。作者指出這是非構造、非岩漿訊號，會讓火山觀測被誤讀。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "2010–2016 等時段；裂隙孔隙壓為假說性解釋；群震結果引自 Montgomery-Brown 等 2019 GRL（Wiley 403，只讀 USGS 頁摘要，未計）；破火山口多年膨脹仍歸因岩漿源。",
+      "author_cache": {
+        "file": "scratchpad/f4src/gfz.pdf",
+        "sha256_prefix": "4b7933497d50ee8a",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "S54-001",
+      "question": "要拍到 M87 星系中心的黑洞，望遠鏡得多大？",
+      "domain": "天文",
+      "mechanism_key": "astro.eht.vlbi_earth_sized_array",
+      "answer_target": "事件視界望遠鏡在 1.3 毫米波長，把八個站點、六個地點的電波望遠鏡串成一台幾乎有地球直徑那麼大的虛擬望遠鏡：觀測 M87* 時基線從 160 公尺到 10,700 公里，理論解析度約 25 微角秒。各站同時錄下訊號，用 GPS 把錄音的時間對齊到數十奈秒內，每站的氫邁射頻標讓訊號在積分時間內保持相干；觀測完把錄音集中到一處，兩兩比對相關。",
+      "scope": "解析度為繞射極限理論值。",
+      "source_ids": [
+        "S54-S001"
+      ],
+      "source_locator": "S001 §3 第1–3段、Fig.1",
+      "premise_status": "screened",
+      "notes": "目標 G16 新開場章（企劃列『缺 EHT 原始影像重建說明』）；原角色 chapter_core。距離數字不在此來源，旁白若用需另源，題目只作問句不入稿。 原提案 F3-021。依本池欄位記為 segment。非作者覆核 V7（2026-11-11）照覆核意見改字後收；分開 GPS 同步與氫邁射頻標的角色；題目去掉原文沒有的距離數字，旁白若要講距離就用原文的 16.8 百萬秒差距並標出處。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "照片不是一次快門，是八個地方同時錄音再拼起來。",
+        "visual": "地球上八個點連線成網，網越大能分辨越小。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "S54-002",
+      "question": "黑洞照片有沒有可能是電腦「想像」出來的環？",
+      "domain": "天文",
+      "mechanism_key": "astro.eht.blind_independent_imaging_synthetic_validation",
+      "answer_target": "EHT 的基線只取樣到有限、稀疏的空間頻率，從資料反推影像是一個約束不足的問題，不只一種影像能符合資料。為了避免把預期畫進去，第一階段由四個團隊互不交流、各自重建，四隊都得到直徑約 38–44 微角秒、南側較亮的環；第二階段用三條不同軟體的管線，各掃一千到一萬組參數，只保留既符合觀測、又能把已知形狀的合成資料（環、新月、實心圓盤、不對稱雙源）正確還原的設定。",
+      "scope": "影像仍是重建結果，解析度統一模糊到 20 微角秒。",
+      "source_ids": [
+        "S54-S001"
+      ],
+      "source_locator": "S001 §5 第1–3段",
+      "premise_status": "screened",
+      "notes": "目標 G16 轉折章：『影像是推論』如何被測試；原角色 turn。 原提案 F3-022。依本池欄位記為 segment。非作者覆核 V7（2026-11-11）照覆核意見改字後收；只把『無限多解』改回原文的『約束不足』。是 G16 的主轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "四組人背對背各畫一張，畫出同一個環——這才敢說環是真的。",
+        "visual": "四個隔開的房間各自出一張環，最後疊在一起；合成資料的圓盤、雙點被管線正確還原。",
+        "seconds": [
+          60,
+          80
+        ]
+      }
+    },
+    {
+      "id": "S54-003",
+      "question": "那個黑洞的環有多大、中間有多黑，四天看都一樣嗎？",
+      "domain": "天文",
+      "mechanism_key": "astro.eht.m87_ring_size_contrast_stability",
+      "answer_target": "M87* 的環直徑 42±3 微角秒，中央亮度凹陷和環的對比超過 10 比 1；2017 年 4 月在四個不同的日子分別觀測，環的大小和寬度都穩定，只有亮處的方位角在前兩天和後兩天之間轉了約 20 度。和 2009、2012 年的資料比，總亮度有變，核心大小卻沒有明顯改變，符合陰影大小取決於黑洞質量、不隨變動的氣體而變的預期。",
+      "scope": "2017 年四晚與 2009／2012 舊資料比較；『大小由質量決定』是作者對穩定性的解讀。",
+      "source_ids": [
+        "S54-S001"
+      ],
+      "source_locator": "S001 摘要；§5 第4段與 Fig.3；§7 穩定性段",
+      "premise_status": "screened",
+      "notes": "目標 G16『影像約束了什麼』章的實測數字；算 1.5 條。 原提案 F3-023。非作者覆核 V7（2026-11-11）照覆核意見改字後收；改『晚上』為『日子』，並補上原文『總亮度有變』的對照；其餘照錄。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "亮的部分會動，黑的大小不動——黑的那塊才是黑洞的簽名。",
+        "visual": "四天的影像並排：環大小不變，亮點位置微轉。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "S54-004",
+      "question": "照片上量到的那個環，量的是黑洞本身還是周圍的光？",
+      "domain": "天文",
+      "mechanism_key": "astro.eht.photon_capture_radius_vs_horizon_emission_ring",
+      "answer_target": "EHT 論文說，從遠處看不自轉的黑洞，光子捕獲半徑是 √27 個重力半徑，比標示事件視界的 2 個重力半徑大；瞄準得比這個距離更靠近黑洞的光，都會被捕獲掉進去。它也說明，新月形模型量到的直徑是包圍陰影的發光區大小，不是陰影本身；環的直徑和黑洞質量成正比，但比例係數還受自旋、傾角與發光區的物理條件影響，要用模擬影像庫來校準。",
+      "scope": "比例依自旋與模型；X2042 已講陰影≠事件視界，本核心只增數值與『環量的是發光區』。",
+      "source_ids": [
+        "S54-S001"
+      ],
+      "source_locator": "S001 §1 光子捕獲半徑段；§6 新月直徑段",
+      "premise_status": "screened",
+      "notes": "目標 G16 第二章『黑圈不等於實體球的邊』的原始數字；只算 0.5–1 條（與 X2042 重疊）。 原提案 F3-024。非作者覆核 V7（2026-11-11）照覆核意見改字後收；改兩處措辭。與 X2042 重疊，只增數值與『環量的是發光區』，算 0.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "你量到的是光的跑道，不是終點線。",
+        "visual": "同心圓：事件視界、光子捕獲半徑、發光環，三圈標相對大小（示意）。",
+        "seconds": [
+          30,
+          45
+        ]
+      }
+    },
+    {
+      "id": "S54-005",
+      "question": "環的下半邊比較亮，能看出黑洞往哪邊轉嗎？可是不同模型都對得上怎麼辦？",
+      "domain": "天文",
+      "mechanism_key": "astro.eht.beaming_spin_direction_model_degeneracy",
+      "answer_target": "EHT 用大量模擬比對後解讀：環的南北亮度不對稱由黑洞自旋控制，與自旋指離地球的模型相符、與指向地球的不符；再假設噴流與視線夾 17 度、物質與黑洞同向轉動，影像下半部的物質正朝我們而來，從地球看是順時針轉，下半部較亮就是這種接近光速運動的相對論性射束。但論文 Fig.4 也特別示範，三個物理情境截然不同的模擬，經過同樣的觀測流程後和資料擬合得一樣好，作者提醒單一好的擬合不代表那個模型勝出。",
+      "scope": "自旋方向依噴流傾角與共轉盤假設；X2044 已有射束機制，本核心算 1 條。",
+      "source_ids": [
+        "S54-S001"
+      ],
+      "source_locator": "S001 §6 Second／Third 段、Fig.4 圖說；§9",
+      "premise_status": "screened",
+      "notes": "目標 G16『偏亮一邊』章的原始解讀與限制；原角色 turn（約束有上限）。 原提案 F3-025。依本池欄位記為 segment。非作者覆核 V7（2026-11-11）照覆核意見改字後收；把推論順序與假設條件改回原文。是 G16 的第二個轉折（約束有上限）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "亮度告訴我們方向，卻沒辦法告訴我們全部的故事：三種世界畫出同一張照片。",
+        "visual": "三組不同模擬圖經過觀測模糊後變成幾乎一樣的三張環。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "S54-006",
+      "question": "那個環會不會只是噴流或幾團剛好排成圈的亮雲？",
+      "domain": "天文",
+      "mechanism_key": "astro.eht.alternative_interpretations_rejected",
+      "answer_target": "論文說這不太可能是噴流的特徵：多次 VLBI 觀測 M87 視界外的噴流都沒看過圓環，大型噴流巡天也一樣。若是幾團隨機排成環的亮雲，應該以接近光速移動、每天約 5 微角秒，四天內就會看到結構明顯改變，但沒有。",
+      "scope": "作者的排除論證，依據其他 VLBI 觀測；不是窮舉所有替代解釋。",
+      "source_ids": [
+        "S54-S001"
+      ],
+      "source_locator": "S001 §7 排除替代解釋段",
+      "premise_status": "screened",
+      "notes": "目標 G16『影像約束了什麼』章的排除；若片長超過 10 分鐘先刪。 原提案 F3-026。非作者覆核 V7（2026-11-11）照原稿收；照原文；G16 片長已達上限 10 分，最終組合不用，留池備用。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "排除冒牌貨也是證據的一部分：亮雲會跑，這個環不跑。",
+        "visual": "亮雲在四天內飄散 vs 環不動的對照動畫（示意）。",
+        "seconds": [
+          25,
+          35
+        ]
+      }
+    },
+    {
+      "id": "S54-007",
+      "question": "銀河中心黑洞的照片上那幾團亮點，是真的結構嗎？",
+      "domain": "天文",
+      "mechanism_key": "astro.eht.sgra_ring_modes_azimuthal_uncertainty",
+      "answer_target": "EHT 2022 年發表銀河中心人馬座 A* 的影像：它的發光一小時內就會變，環直徑 51.8±2.3 微角秒、內部較暗，符合約 400 萬太陽質量的黑洞。重建出的影像分成四群：三群是亮處朝不同方向的環，第四群是少數不是環的形狀；環的大小和厚度各種方法一致，但沿著環的亮度分布約束很差。論文明說這種多樣性來自基線覆蓋稀疏，加上對象本身在變，不是黑洞在不同時刻的快照。",
+      "scope": "作者稿版本；正式版 ApJL 930:L12 (2022)。",
+      "source_ids": [
+        "S54-S002"
+      ],
+      "source_locator": "S002 摘要；Fig.3 圖說；影像段 four clusters",
+      "premise_status": "screened",
+      "notes": "目標 G16 收尾前的轉折：同一張照片哪些可信、哪些不可信；原角色 turn。 原提案 F3-027。依本池欄位記為 segment。非作者覆核 V7（2026-11-11）照覆核意見改字後收；題目去掉原文沒有的『三個』；答案補上原文正文的『對象在變』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "照片上最醒目的亮點，正是最不能相信的部分。",
+        "visual": "四群平均影像並排（重繪）：環大小一致、亮點方向各異。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "S54-008",
+      "question": "火山衛星雷達圖上一圈圈條紋變多了，為什麼不一定是火山在脹或縮？",
+      "domain": "地球與火山監測",
+      "mechanism_key": "volcano.insar.tropospheric_delay_mimics_deformation_etna",
+      "answer_target": "埃特納是最早、也最常被用雷達干涉研究的火山。早期研究把全山尺度的條紋讀成 16 公里深岩漿庫體積減少造成的消脹，後續研究又讀出接著的膨脹。巴黎地球物理研究所用 1992–1999 年 38 景 ERS 影像做出 238 張干涉圖重新檢查：分層的大氣讓雷達相位隨高程一起延遲，簡單的彈性變形源卻不會造成相位與高程的這種相關。聯合反演後，各景的對流層延遲在約 −2.7 到 +3.0 條紋之間變動（誤差約 ±1.2 條紋；一條紋約相當 2.8 公分）；1995 年 8 月 27 日與 28 日只隔一天的兩景，大氣差就達約 −2.8±1.5 條紋。作者據此認為埃特納干涉圖上的條紋多半可能來自大氣而不是變形，大尺度變形量比先前估計明顯縮小，岩漿體積變化低於誤差、無法可靠估計；有些干涉圖完全不需要火山變形，就能用兩次拍攝時的大氣差解釋。",
+      "scope": "1990 年代 ERS 資料與當時方法；假設水平均勻分層大氣；不代表今日 InSAR 監測不可靠（現多有大氣校正）。與 O3013（雷達相位含大氣延遲的一般說明）同原理，本核心只計埃特納的具體證據。",
+      "source_ids": [
+        "S54-S003"
+      ],
+      "source_locator": "S003 Abstract；§1；§3.3；§4.1；結果段 1995-08-27/28；§5",
+      "premise_status": "screened",
+      "notes": "目標 C3-06（火山讀數）：補基勞厄亞與斯特龍博利以外的第一座火山，作為『讀數變了卻不是岩漿』的第三個轉折，放在氣體兩章之前或之後。 原提案 F4-006。作者標為轉折，依本池欄位記為 segment。非作者覆核 V6（2026-11-11）照覆核意見改字後收；機制與數字都有原文，但刪掉撰稿者自乘的『快 8 公分』、補上誤差，並把『早期研究』拆成消脹（16 公里）與後續膨脹兩篇，岩漿體積照摘要措辭。與 O3013（雷達相位含大氣的一般說明）同原理，本核心只計埃特納的具體證據，計 2 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一張圖上的條紋，可能只是兩天的空氣濕度不同。",
+        "visual": "原創：同一座山兩天拍攝、條紋數不同的示意；相位對高程散點圖（大氣）與同心變形條紋（岩漿源）對照。",
+        "seconds": [
+          70,
+          95
+        ]
+      }
+    },
+    {
+      "id": "S54-009",
+      "question": "火山口周圍的 GPS 站每年都會來回動上一公分多，是底下的岩漿在呼吸嗎？",
+      "domain": "地球與火山監測",
+      "mechanism_key": "volcano.gnss.hydrologic_loading_poroelastic_long_valley",
+      "answer_target": "加州長谷破火山口布滿 GNSS 站，用來追蹤岩漿造成的抬升。研究發現站點位移與雨雪、溪流緊密對應：大尺度上，積雪與地下水的重量增加時地面下沉、減少時抬升，乾旱的年份持續上升；破火山口西南緣幾站每年還多出約 10–15 毫米的水平往復，達各站垂直幅度的八成到一倍二，負載模型解釋不了。這些水平位移與泉水流量高度相關，但落後約 30 到 55 天。作者推論是融雪水滲進山坡裂隙使岩體膨脹、排乾後收縮，並指出這種非構造的水文訊號若不扣除，可能讓人誤讀長谷火山系統的觀測。",
+      "scope": "裂隙孔隙壓是作者假說；破火山口多年膨脹（如 2011 年起）作者仍歸因岩漿源。",
+      "source_ids": [
+        "S54-S004"
+      ],
+      "source_locator": "S004 Key Points、Abstract、PLS；§2（Fig.3–4 文字）；§3；§4.3；§5",
+      "premise_status": "screened",
+      "notes": "目標 C3-06：補第二座火山系統與第二個新原研究；與 S54-010 同一來源，兩核心合計不超過 2.5 條。 原提案 F4-007。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V6（2026-11-11）照覆核意見改字後收；新火山系統、新原研究，但原稿把相關說成同步、把 120% 說成一倍以上、把作者的『非構造』加成『非岩漿』，已照原文改正。計 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "火山口的地面也會跟著季節的水呼吸，扣掉它，剩下的才是岩漿。",
+        "visual": "原創：雪山、溪流與 GNSS 站水平箭頭春夏外推、秋冬內收示意；流量曲線與水平位移曲線疊圖（標明形狀對應，非原圖）。",
+        "seconds": [
+          55,
+          75
+        ]
+      }
+    },
+    {
+      "id": "S54-010",
+      "question": "破火山口邊緣一到初夏就冒出成群小地震，為什麼研究者說和火山無關？",
+      "domain": "地球與火山監測",
+      "mechanism_key": "volcano.seismicity.snowmelt_triggered_swarms_long_valley",
+      "answer_target": "據 Silverii 等 2020 年的轉述，Montgomery-Brown 等 2019 年分析長谷破火山口南邊 Convict Lake 一帶 33 年的淺層地震（地表下 4 公里內），發現地震率峰值約落後溪流峰值 24 天，解讀為融雪補注後孔隙壓力沿陡傾岩層往下擴散，觸發非火山的群震。Silverii 等再算出，在群震峰值明顯的幾年，峰值落後泉水流量約 30 天，與高處幾個 GNSS 站水平位移的落後相近，因此推論裂隙網中的孔隙壓擴散可能同時驅動群震與水平形變。",
+      "scope": "群震原研究 Montgomery-Brown 等 2019 GRL 全文未讀（Wiley 403），本核心只用 S004 §4.3 對它的轉述與 S004 自己算的約 30 天；撰稿前需讀原文。",
+      "source_ids": [
+        "S54-S004"
+      ],
+      "source_locator": "S004 §4.3 第2–3段（24 天、約 30 天）",
+      "premise_status": "screened",
+      "notes": "目標 C3-06，與 S54-009 合為一章；若撰稿前讀不到原文，本核心只當 S54-009 的半句延伸，不另計。 原提案 F4-008。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V6（2026-11-11）照覆核意見改字後收；屬二手轉述，答案已標明出處層次；只能當 S54-009 那一章的延伸，計 0.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "地震不一定從岩漿房來，也可能是一個月前的雪。",
+        "visual": "原創時間軸：溪流峰值→約一個月後地震數峰值。",
+        "seconds": [
+          30,
+          45
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "S54-NA001",
+      "question": "融雪觸發長谷群震的原研究（Montgomery-Brown 2019 GRL）",
+      "existing_ids": [
+        "S54-010"
+      ],
+      "source_ids": [],
+      "reason": "Wiley PDF 403，USGS 頁只有摘要；摘要不算已讀，因此 S54-010 只用 S54-S004 對它的轉述。 原提案 F4-NA003。",
+      "reentry_condition": "撰稿前從 AGU 或 USGS 取得全文。",
+      "reading_status": "只讀 USGS Publications Warehouse 摘要頁。"
+    }
+  ]
+}

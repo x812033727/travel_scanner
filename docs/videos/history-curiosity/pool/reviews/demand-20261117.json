@@ -1,0 +1,1313 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-17",
+  "method": {
+    "what": "需求：照參考頻道觀看數歸納的四個是非題，併進獨立觀眾評分當第六項。",
+    "questions": {
+      "east_asia": "這集的主角是台灣或東亞的人、地方、事件或故事，或台灣一般成年觀眾不用解釋就認得的東亞文化內容",
+      "prophecy_ghost": "主題是預言、末日，或鬼魂、靈異、死後世界、通靈、詛咒",
+      "ancient_alien": "主題是古文明、考古遺跡，或外星人、UFO、太空來的訊號",
+      "famous": "片名或追問裡的主角，台灣一般成年觀眾一聽就叫得出名字"
+    },
+    "formula": "demand = 1 + 2.25 × 答「是」的題數；score = (五項平均 base × 5 + demand) ÷ 6",
+    "basis": "馬臉姐（@malianjie）與 cheap（@cheapaoe）最新 200 支的題材分組；見 docs/videos/channel-review-20261116/README.md",
+    "reviewers": "2 位獨立評審各讀一批題案卡（片名、追問、章名），不讀 repo、不上網；拿不準答否。每批放同三組題，12 個答案全部一致。重複題取多數。",
+    "gate": "站主 2026-11-17：門檻維持 6.5 看總分；可成題總分低於 6.5 改成後備，基準初評的題案也一樣。",
+    "scope": "只評素材可成題且已有觀眾評分的題案。"
+  },
+  "counts": {
+    "scored": 77,
+    "demoted": 54
+  },
+  "themes": [
+    {
+      "id": "T01",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 7.68,
+      "score": 6.57,
+      "reason": "主題是海底錄到的怪聲與誤判，發生在歐美海域，不是靈異也不是外星訊號，Bloop 等名稱需要解釋。",
+      "reviewers": [
+        "curio-1",
+        "curio-2"
+      ]
+    },
+    {
+      "id": "T02",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 6.81,
+      "score": 5.84,
+      "reason": "德州與挪威的不明怪光，雖叫鬼光但談的是光學觀測而非鬼魂，馬爾法與赫斯達倫都需要解釋。",
+      "reviewers": [
+        "curio-1",
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T04",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": true,
+        "famous": true
+      },
+      "demand": 5.5,
+      "base": 6.58,
+      "score": 6.4,
+      "reason": "ancient_alien：主題是火星上有沒有外星生命；famous：火星是人人叫得出的名字。",
+      "reviewers": [
+        "curio-1",
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T06",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 7.31,
+      "score": 6.26,
+      "reason": "主題是北美防空誤報，題案卡沒有主打 UFO，三起事件在台灣都需要解釋。",
+      "reviewers": [
+        "curio-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T09",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": true,
+        "famous": false
+      },
+      "demand": 3.25,
+      "base": 6.86,
+      "score": 6.26,
+      "reason": "ancient_alien：主題是考古遺址與真假文物證據；主角是北歐人、文蘭地圖與肯辛頓石碑，哥倫布只是對照，故 famous 為 false。",
+      "reviewers": [
+        "curio-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T10",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": true,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 3.25,
+      "base": 7.28,
+      "score": 6.61,
+      "reason": "prophecy_ghost：主題是靈魂照與鬼影照片；三張照片本身需要解釋。",
+      "reviewers": [
+        "curio-1"
+      ]
+    },
+    {
+      "id": "T11",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 3.25,
+      "base": 6.61,
+      "score": 6.05,
+      "reason": "famous：十三號星期五是人人知道的名稱；內容雖有香港與四樓，但主軸多在西方的十三禁忌，拿不準故 east_asia 為 false，數字禁忌也不算詛咒靈異。",
+      "reviewers": [
+        "curio-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T12",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 3.25,
+      "base": 6.56,
+      "score": 6.01,
+      "reason": "famous：格林童話、白雪公主、糖果屋、青蛙王子都是人人認得的名字。",
+      "reviewers": [
+        "curio-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T13",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 3.25,
+      "base": 6.78,
+      "score": 6.19,
+      "reason": "famous：小紅帽、睡美人、穿長靴的貓是人人認得的童話。",
+      "reviewers": [
+        "curio-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T14",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 3.25,
+      "base": 6.81,
+      "score": 6.22,
+      "reason": "famous：安徒生、小美人魚、國王的新衣、醜小鴨人人認得。",
+      "reviewers": [
+        "curio-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T16",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 3.25,
+      "base": 6.71,
+      "score": 6.13,
+      "reason": "famous：洛基、雷神之鎚與諸神黃昏因電影而人人認得；主題是神話文本的成書，不算末日預言或考古。",
+      "reviewers": [
+        "curio-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T17",
+      "answers": {
+        "east_asia": true,
+        "prophecy_ghost": true,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 7.75,
+      "base": 7.01,
+      "score": 7.13,
+      "reason": "east_asia：中國的《聊齋》；prophecy_ghost：鬼狐故事；famous：倩女幽魂、聶小倩、聊齋人人認得。",
+      "reviewers": [
+        "curio-1"
+      ]
+    },
+    {
+      "id": "T18",
+      "answers": {
+        "east_asia": true,
+        "prophecy_ghost": true,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 7.75,
+      "base": 7.11,
+      "score": 7.22,
+      "reason": "east_asia：日本《怪談》；prophecy_ghost：雪女與無耳芳一是鬼怪故事；famous：雪女在台灣一聽就知道。",
+      "reviewers": [
+        "curio-1"
+      ]
+    },
+    {
+      "id": "T26",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": true,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 3.25,
+      "base": 7.88,
+      "score": 7.11,
+      "reason": "prophecy_ghost：主題是英國先知的預言；希普頓媽媽與柴郡先知需要解釋。",
+      "reviewers": [
+        "curio-1"
+      ]
+    },
+    {
+      "id": "T27",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": true,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 3.25,
+      "base": 8.18,
+      "score": 7.36,
+      "reason": "prophecy_ghost：主題是通靈板與轉桌降靈；通靈板、會算數的馬算不上一聽就叫得出的專名，拿不準答 false。",
+      "reviewers": [
+        "curio-1"
+      ]
+    },
+    {
+      "id": "T31",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 7.01,
+      "score": 6.01,
+      "reason": "主題是未知生物的鑑定，不屬靈異或外星；雪人只是三例之一，博德明野獸與卓柏卡布拉需要解釋。",
+      "reviewers": [
+        "curio-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T32",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 3.25,
+      "base": 6.53,
+      "score": 5.98,
+      "reason": "famous：傑克與魔豆、羅賓漢人人認得。",
+      "reviewers": [
+        "curio-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T34",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 8.48,
+      "score": 7.23,
+      "reason": "主題是美國都市傳說為何有人信，搭便車的鬼只是三例之一，沒有叫得出名字的主角。",
+      "reviewers": [
+        "curio-1"
+      ]
+    },
+    {
+      "id": "T35",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": true,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 3.25,
+      "base": 7.31,
+      "score": 6.63,
+      "reason": "prophecy_ghost：主題是末日預言落空之後；飛碟只是其中一例的背景，大失望等事件需要解釋。",
+      "reviewers": [
+        "curio-1"
+      ]
+    },
+    {
+      "id": "T38",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 7.58,
+      "score": 6.48,
+      "reason": "主題是肉雨與紅雨的化驗，發生在美國與印度，不屬任何一類，也沒有知名主角。",
+      "reviewers": [
+        "curio-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T40",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": true,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 5.5,
+      "base": 6.88,
+      "score": 6.65,
+      "reason": "prophecy_ghost：主題是預言命中怎麼算出來；famous：辛普森家庭人人認得。",
+      "reviewers": [
+        "curio-1"
+      ]
+    },
+    {
+      "id": "T41",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 7.28,
+      "score": 6.23,
+      "reason": "主題是球狀閃電、極光聲與地震光等自然現象，青海與松代只是觀測地點，不算東亞題材，也沒有專名主角。",
+      "reviewers": [
+        "curio-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T42",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": true,
+        "famous": false
+      },
+      "demand": 3.25,
+      "base": 6.66,
+      "score": 6.09,
+      "reason": "ancient_alien：主題是 UFO 傳說與外星衛星；黑騎士衛星需要解釋，拿不準故 famous 為 false。",
+      "reviewers": [
+        "curio-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T43",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 6.53,
+      "score": 5.61,
+      "reason": "歐洲中世紀傳說，片名主打的綠皮膚小孩需要解釋，花衣魔笛手只佔一半，拿不準答 false。",
+      "reviewers": [
+        "curio-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T46",
+      "answers": {
+        "east_asia": true,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 5.5,
+      "base": 7.98,
+      "score": 7.57,
+      "reason": "east_asia：中國歷史名場面；famous：虞姬、曹操、岳母刺字人人認得。",
+      "reviewers": [
+        "curio-1"
+      ]
+    },
+    {
+      "id": "T47",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 3.25,
+      "base": 6.68,
+      "score": 6.11,
+      "reason": "famous：華盛頓與砍櫻桃樹人人認得；主題是故事出處考證，天使異象不當作靈異主題。",
+      "reviewers": [
+        "curio-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T48",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 3.25,
+      "base": 7.68,
+      "score": 6.94,
+      "reason": "famous：哥倫布、福爾摩斯的華生、伽利略人人認得。",
+      "reviewers": [
+        "curio-1"
+      ]
+    },
+    {
+      "id": "T49",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": true,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 3.25,
+      "base": 6.58,
+      "score": 6.02,
+      "reason": "prophecy_ghost：主題是兩張鬼照；照片本身沒有台灣人叫得出的名字。",
+      "reviewers": [
+        "curio-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T50",
+      "answers": {
+        "east_asia": true,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 3.25,
+      "base": 7.38,
+      "score": 6.69,
+      "reason": "east_asia：日本民間故事；一寸法師與舌切雀在台灣不是人人不用解釋就認得，拿不準答 false。",
+      "reviewers": [
+        "curio-1"
+      ]
+    },
+    {
+      "id": "T51",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": true,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 3.25,
+      "base": 6.58,
+      "score": 6.02,
+      "reason": "prophecy_ghost：主題是教宗預言與梅林預言；兩者都需要解釋。",
+      "reviewers": [
+        "curio-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T54",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 6.58,
+      "score": 5.65,
+      "reason": "西班牙征服者與熙德的勇氣傳說，不屬任何一類，科爾特斯與熙德都需要解釋。",
+      "reviewers": [
+        "curio-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T57",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 3.25,
+      "base": 6.63,
+      "score": 6.07,
+      "reason": "famous：皮諾丘人人認得；泰國人魚故事不屬東亞範圍。",
+      "reviewers": [
+        "curio-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T59",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": true,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 5.5,
+      "base": 6.93,
+      "score": 6.69,
+      "reason": "prophecy_ghost：主題是 2012 末日預言；famous：2012 末日與馬雅曆人人知道；重點在末日說的來源而非古文明考古。",
+      "reviewers": [
+        "curio-1"
+      ]
+    },
+    {
+      "id": "T60",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 3.25,
+      "base": 6.63,
+      "score": 6.07,
+      "reason": "famous：三隻小豬與三隻熊人人認得。",
+      "reviewers": [
+        "curio-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T65",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 7.51,
+      "score": 6.42,
+      "reason": "人魚乾標本的鑑定，片名先打美國巴納姆的斐濟美人魚，岡山寺只佔一半，拿不準答 false，兩者都需要解釋。",
+      "reviewers": [
+        "curio-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T69",
+      "answers": {
+        "east_asia": true,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 3.25,
+      "base": 6.63,
+      "score": 6.07,
+      "reason": "east_asia：日本民間故事；這裡的鬼是昔話角色而非靈異主題，摘瘤爺爺與稻草富翁不是人人叫得出，拿不準答 false。",
+      "reviewers": [
+        "curio-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T72",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": true,
+        "famous": false
+      },
+      "demand": 3.25,
+      "base": 7.58,
+      "score": 6.86,
+      "reason": "ancient_alien：主題是軍方拍到的 UFO 影片；墨西哥與智利這兩起事件需要解釋。",
+      "reviewers": [
+        "curio-1"
+      ]
+    },
+    {
+      "id": "T73",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": true,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 5.5,
+      "base": 7.38,
+      "score": 7.07,
+      "reason": "prophecy_ghost：主題是彗星會毒死全人類的末日恐慌；famous：哈雷彗星人人認得。",
+      "reviewers": [
+        "curio-1"
+      ]
+    },
+    {
+      "id": "T75",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 6.71,
+      "score": 5.76,
+      "reason": "主題是里斯本大地震引起遠方湖水震盪的地震學紀錄，發生在歐洲，不屬任何一類，也需要解釋。",
+      "reviewers": [
+        "curio-1"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T78",
+      "answers": {
+        "east_asia": true,
+        "prophecy_ghost": true,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 5.5,
+      "base": 7.08,
+      "score": 6.82,
+      "reason": "east_asia：朝鮮官員筆記；prophecy_ghost：主題是鬼故事；筆記與人物都需要解釋。",
+      "reviewers": [
+        "curio-1"
+      ]
+    },
+    {
+      "id": "T79",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 6.98,
+      "score": 5.98,
+      "reason": "美國與巴西報紙炒出的怪物傳說，是怪獸而非鬼魂詛咒，澤西惡魔需要解釋",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T82",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 3.25,
+      "base": 6.88,
+      "score": 6.27,
+      "reason": "主角愛因斯坦是一聽就認得的名字；其餘是天文觀測史",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T90",
+      "answers": {
+        "east_asia": true,
+        "prophecy_ghost": true,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 5.5,
+      "base": 7.21,
+      "score": 6.92,
+      "reason": "主角是日本的靈柩車與三人合照禁忌；主題是會招致死亡的禁忌，屬詛咒類",
+      "reviewers": [
+        "curio-2"
+      ]
+    },
+    {
+      "id": "T97",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": true,
+        "famous": false
+      },
+      "demand": 3.25,
+      "base": 7.88,
+      "score": 7.11,
+      "reason": "主題是火星人入侵廣播引發的恐慌，屬外星人題材；事件本身需要解釋",
+      "reviewers": [
+        "curio-2"
+      ]
+    },
+    {
+      "id": "T100",
+      "answers": {
+        "east_asia": true,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 3.25,
+      "base": 6.51,
+      "score": 5.97,
+      "reason": "主角是 17 世紀歐洲書裡的朝鮮，屬東亞；Hamel 與該書需要解釋",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T107",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 3.25,
+      "base": 6.58,
+      "score": 6.02,
+      "reason": "峇里島猴子舞與泰國水上市場是東南亞而非東亞；泰國水上市場與峇里島是台灣觀眾熟悉的觀光名字",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T111",
+      "answers": {
+        "east_asia": true,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 3.25,
+      "base": 7.08,
+      "score": 6.44,
+      "reason": "主角是日本土用丑鰻魚與節分惠方卷的習俗；名稱對一般觀眾仍需稍加解釋",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T113",
+      "answers": {
+        "east_asia": true,
+        "prophecy_ghost": true,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 5.5,
+      "base": 6.58,
+      "score": 6.4,
+      "reason": "依章名（887 松林吃人鬼、746、頭塔）判斷是日本朝廷正史裡的鬼怪記載，屬東亞；主題是鬼",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T114",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 7.58,
+      "score": 6.48,
+      "reason": "歐洲博物館的贗品與造假工匠，主題是偽造鑑定而非古文明本身，沒有熟悉的名字",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T116",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 3.25,
+      "base": 6.58,
+      "score": 6.02,
+      "reason": "巴西是人人認得的名字；主題是南美地名由來",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T117",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 3.25,
+      "base": 7.16,
+      "score": 6.51,
+      "reason": "莎士比亞是一聽就認得的名字；主題是手稿偽造鑑定",
+      "reviewers": [
+        "curio-2"
+      ]
+    },
+    {
+      "id": "T118",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 7.11,
+      "score": 6.09,
+      "reason": "歐洲血雨與天降魚的自然現象調查，不屬任何一類，也沒有知名主角",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T119",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": true,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 3.25,
+      "base": 7.78,
+      "score": 7.02,
+      "reason": "主題是幽靈船傳說；飛翔的荷蘭人對一般台灣觀眾仍需解釋",
+      "reviewers": [
+        "curio-2"
+      ]
+    },
+    {
+      "id": "T121",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": true,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 3.25,
+      "base": 6.56,
+      "score": 6.01,
+      "reason": "主題是天氣預言說中與否；Murphy 與 Wiggins 無人認得",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T122",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": true,
+        "famous": false
+      },
+      "demand": 3.25,
+      "base": 6.96,
+      "score": 6.34,
+      "reason": "主題是被當成古代飛碟目擊的紙草與抄本，屬 UFO；Tulli 紙草需要解釋",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T123",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": true,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 3.25,
+      "base": 7.08,
+      "score": 6.44,
+      "reason": "主題是德國村莊的鬧鬼（騷靈）案件；無知名主角",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T125",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 3.25,
+      "base": 7.06,
+      "score": 6.42,
+      "reason": "亞歷山大大帝是一聽就認得的名字；主題是古書文獻比對而非古文明遺跡之謎",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T126",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": true,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 5.5,
+      "base": 6.91,
+      "score": 6.67,
+      "reason": "主題是被說成預言網路與手機的話；馬克吐溫與特斯拉是認得的名字",
+      "reviewers": [
+        "curio-2"
+      ]
+    },
+    {
+      "id": "T127",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 6.98,
+      "score": 5.98,
+      "reason": "英語片語與單字的字源考證，不屬任何一類，主角需要解釋",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T128",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 3.25,
+      "base": 6.68,
+      "score": 6.11,
+      "reason": "多瑙河是一聽就認得的名字；主題是地下水文追蹤",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T130",
+      "answers": {
+        "east_asia": true,
+        "prophecy_ghost": true,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 7.75,
+      "base": 7.78,
+      "score": 7.77,
+      "reason": "主角是清代紀曉嵐，屬東亞；主題是鬼與裝鬼；紀曉嵐是台灣觀眾一聽就認得的名字",
+      "reviewers": [
+        "curio-2"
+      ]
+    },
+    {
+      "id": "T131",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": true,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 3.25,
+      "base": 6.81,
+      "score": 6.22,
+      "reason": "主題是魔鬼在舞台上現身與夢中魔鬼的靈異傳說；Tartini 需要解釋，浮士德也未必人人認得",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T133",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": true,
+        "famous": false
+      },
+      "demand": 3.25,
+      "base": 7.06,
+      "score": 6.42,
+      "reason": "主題是宗教畫裡被讀成飛碟的圖像，屬 UFO；畫作本身需要解釋",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T135",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 7.38,
+      "score": 6.32,
+      "reason": "歐美的豬戰爭與水桶戰爭，是戰爭軼事，不屬任何一類，也需要解釋",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T136",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 6.78,
+      "score": 5.82,
+      "reason": "法國國王名言的出處考證，片名未點出人人認得的人名，不屬任何一類",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T138",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 6.83,
+      "score": 5.86,
+      "reason": "海蛇目擊紀錄是海怪題材，不是鬼魂或外星，主角需要解釋",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T142",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 6.61,
+      "score": 5.68,
+      "reason": "中南美地名笑話的考證，Yucatán 需要解釋，不屬任何一類",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T145",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": true,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 3.25,
+      "base": 6.51,
+      "score": 5.97,
+      "reason": "主題是幽靈大軍的目擊傳說，屬鬼魂靈異；無知名主角",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T150",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 7.41,
+      "score": 6.34,
+      "reason": "歐洲動物審判的軼事考證，不屬任何一類，無知名主角",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T151",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 6.71,
+      "score": 5.76,
+      "reason": "英國 Nelson 與 Pitt 的遺言考證，不屬任何一類，一般台灣觀眾不認得",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T152",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": true,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 3.25,
+      "base": 7.61,
+      "score": 6.88,
+      "reason": "題案卡自稱旅館鬼故事，主題是鬼故事的流變；無知名主角",
+      "reviewers": [
+        "curio-2"
+      ]
+    },
+    {
+      "id": "T153",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": true
+      },
+      "demand": 3.25,
+      "base": 7.08,
+      "score": 6.44,
+      "reason": "黑鬍子是台灣觀眾普遍聽過的海盜名字；主題是海盜埋寶傳說",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T154",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 6.68,
+      "score": 5.73,
+      "reason": "戰場聲音傳播的怪現象，屬聲學與戰史，不屬任何一類，無知名主角",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T156",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 7.51,
+      "score": 6.42,
+      "reason": "英國城堡秘密地道傳說的實地查證，不是鬼魂主題，無知名主角",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T157",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 6.91,
+      "score": 5.92,
+      "reason": "動物預知地震的古希臘紀錄考證，是自然前兆而非預言靈異，也不是古文明之謎，無知名主角",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T159",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": true,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 3.25,
+      "base": 6.78,
+      "score": 6.19,
+      "reason": "主題是拜倫的算命預言與凶兆；拜倫對一般台灣觀眾不算一聽就認得",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    },
+    {
+      "id": "T161",
+      "answers": {
+        "east_asia": false,
+        "prophecy_ghost": false,
+        "ancient_alien": false,
+        "famous": false
+      },
+      "demand": 1.0,
+      "base": 6.78,
+      "score": 5.82,
+      "reason": "古人對大象與鴕鳥的誤解，屬博物學史，不屬任何一類，無知名主角",
+      "reviewers": [
+        "curio-2"
+      ],
+      "demoted": true
+    }
+  ]
+}

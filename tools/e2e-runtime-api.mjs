@@ -8,6 +8,9 @@ const visibility = {
   flight_status_enabled: true,
   airline_fares_enabled: true,
   pricing_enabled: true,
+  flight_search_enabled: true,
+  videos_enabled: true,
+  member_features_enabled: true,
 };
 
 const operationCosts = Object.fromEntries([
@@ -556,6 +559,14 @@ const server = createServer((request, response) => {
   // requests depend on this staying "off"; `guides-adsense.spec.ts` turns it on per test.
   if (request.method === "GET" && requestUrl.pathname === "/api/v1/ads/config") {
     response.end(JSON.stringify({ enabled: false, publisher_id: null, slot_id: null, cmp_enabled: false }));
+    return;
+  }
+  if (request.method === "GET" && requestUrl.pathname === "/api/v1/guides/trending") {
+    response.end(JSON.stringify({ articles: [], next_cursor: null }));
+    return;
+  }
+  if (request.method === "GET" && requestUrl.pathname === "/api/v1/guides/series") {
+    response.end(JSON.stringify({ series: [] }));
     return;
   }
   if (request.method === "GET" && requestUrl.pathname === "/api/v1/admin/dashboard") {

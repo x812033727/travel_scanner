@@ -26,12 +26,14 @@ from app.infra import enforce_named_rate_limit
 from app.models import User
 from app.problems import AppError
 from app.video_speech.admin_api import VideoTool
-from app.video_youtube import reports
+from app.video_youtube import reports, retention
 from app.video_youtube.errors import Refused
 from app.video_youtube.schemas import ReportsSyncIn, ReportsSyncOut
 
 # A tool's `sync` loops while files remain; the worker knocks a few times a day.
 SYNCS_PER_HOUR = 30
+# Each retention curve is one videos.list unit and one YouTube Analytics API query.
+RETENTION_PER_HOUR = 60
 
 Session = Annotated[AsyncSession, Depends(get_session)]
 ContentReader = Annotated[User, Depends(require_capability("content.read"))]
@@ -104,6 +106,30 @@ async def tool_rows(
         },
         headers=headers,
     )
+
+
+@tool_router.get("/retention")
+async def tool_retention(
+    tool: VideoTool,
+    session: Session,
+    video_id: Annotated[str, Query(min_length=6, max_length=20, pattern=r"^[A-Za-z0-9_-]+$")],
+    start: date | None = None,
+    end: date | None = None,
+    organic: bool = False,
+) -> JSONResponse:
+    """One video's audience retention curve from the YouTube Analytics API (100 points of
+    ``elapsedVideoTimeRatio`` with ``audienceWatchRatio`` and ``relativeRetentionPerformance``),
+    asked of YouTube now with the stored grant; ``organic`` keeps organic traffic only."""
+    await enforce_named_rate_limit(
+        "video_youtube_retention", str(tool.id), limit=RETENTION_PER_HOUR, window_seconds=3600
+    )
+    try:
+        found = await retention.retention(
+            session, video_id=video_id, start=start, end=end, organic=organic
+        )
+    except Refused as error:
+        raise _refused(error) from error
+    return JSONResponse(found.as_json(), headers={"Cache-Control": "no-store"})
 
 
 @admin_router.get("")

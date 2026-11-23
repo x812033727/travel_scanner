@@ -24,7 +24,7 @@ import { dubLocales, dubScript, speechCurrent, speechLexicon, translationHash } 
 import { atomicWrite, contentPackFile, docDir, isInside, readJson, readText, stopRequested, videoFile } from "./paths.mjs";
 import { DEFAULT_LOCALES, narrationLocale, TARGET_LOCALES, textHash } from "./schema.mjs";
 import { sourceHashes } from "./translations.mjs";
-import { FPS, picturesBound, speechHash, visualHash } from "./timeline.mjs";
+import { cutVisualBound, FPS, picturesBound, speechHash, visualHash } from "./timeline.mjs";
 import { fitStale } from "../templates/templates.mjs";
 
 /**
@@ -574,7 +574,7 @@ export async function pipelineStatus({ slug, root, workdir }) {
     },
     "music generated": { done: musicDone, todo: cli("music", slug) },
     "video assembled": {
-      done: Boolean(checks?.ok) && checks.speech_hash === speech && checks.visual_hash === visual && !fitStale(doc, checks) && assembledMedia && runtimeCurrent && existsSync(path.join(workdir, ARTIFACTS.video)),
+      done: Boolean(checks?.ok) && checks.speech_hash === speech && cutVisualBound(checks.visual_hash, doc) && !fitStale(doc, checks) && assembledMedia && runtimeCurrent && existsSync(path.join(workdir, ARTIFACTS.video)),
       note: checks && !checks.ok ? `checks failed: ${(checks.problems ?? []).join("; ")}` : anime && !runtimeCurrent ? "the current body, runtime policy and final-file evidence need assemble again" : undefined,
       todo: cli("assemble", slug),
     },

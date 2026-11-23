@@ -43,7 +43,7 @@ PR #2026）。每鏡多了人物、服裝、道具、表情、離場與秒數；
 
 ## 備份
 
-- 工作資料夾每天推一次到 `transfer/zt-e001-r2-work`（`git add -f`、單檔 < 100 MB、推完數檔數）。
+- 工作資料夾每天用 `docs/videos/ai-drama-drive/todrive.sh` 傳一次到雲端硬碟 `AI劇/種田娶妻打天下（真人版）/第001集/製作檔/`（2026-11-10 起不再推 `transfer/zt-e001-r2-work`；規則 `docs/videos/AI-DRAMA-DRIVE.md`）。
 - 試拍與整集的提示詞、manifest、takes 照慣例放 `production/colab/runs/e001-r2/`。
 
 ## 結果（做完填）

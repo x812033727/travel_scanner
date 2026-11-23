@@ -1,0 +1,658 @@
+{
+  "schema_version": 1,
+  "slug": "tai-nainai-e015",
+  "format": "drama",
+  "target_minutes": [
+    1.5,
+    3.0
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action modern Taiwanese urban family drama, film still, natural cinematic light, realistic skin and fabric texture, soft flattering beauty light on faces, shallow depth of field; the old Shen house in warm amber wood and candlelight, the Shengtong tower in cold blue glass, the small pharmacy in warm white fluorescent light",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, letters, Chinese characters, readable signs, subtitles, watermark, logo, brand names, license plates, extra fingers, deformed hands, blood, gore, nudity, cleavage, low neckline, bare back, see-through clothing, short skirt, wet clothes, fantasy glow effects, sparkles",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces, clothes and props stay the same; her elderly manners stay slow and steady; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "heqisheng",
+      "name": "何啟盛",
+      "appearance": "East Asian man of forty-eight, cold and polished: short hair combed flat, a high nose and thin lips, chin slightly raised when he looks at people, a dark navy suit with a white shirt, a navy tie and a gold tie clip, black leather shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十八歲的集團高層，男聲，冷、硬、居高臨下，話短"
+      }
+    },
+    {
+      "id": "yuetang-18",
+      "name": "沈月棠",
+      "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze that seems to have seen a hundred years, light natural makeup, black hair in one thick old-fashioned three-strand braid over her right shoulder tied with a dark blue cotton cord, a plain moon-white cotton shirt with a high stand-up collar and fabric frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, a thick old silver ring on her left ring finger with its small square seal face turned toward the palm, back very straight, hands folded in front of her waist like an elderly lady",
+      "voice": {
+        "provider": "gemini",
+        "name": "Kore",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的少女嗓，說話卻是老人家的規矩：慢、短、穩，客氣而有分寸，句尾往下收；生氣時聲音更低、更慢，不尖叫；童謠用輕輕唸唱的方式"
+      },
+      "shot_looks": [
+        {
+          "id": "shouyi",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder, wearing a loose plain off-white cotton burial robe with a high stand-up collar and fabric frog buttons fastened to the throat, long sleeves to the wrists and loose trousers to the ankles, white cloth shoes, the thick old silver ring on her left ring finger with the seal face toward the palm, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "wrinkle",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder tied with a dark blue cotton cord, a plain moon-white high-collared cotton shirt with frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, the back of her right hand covered in a patch of fine crinkled old-woman wrinkles, clearly visible, in sharp contrast to her young face and her smooth left hand, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "yaoju",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder tied with a dark blue cotton cord, an oversized white pharmacist's coat worn open with the sleeves rolled to the wrists over a plain moon-white high-collared cotton shirt buttoned to the throat, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, the back of her right hand covered in a patch of fine crinkled old-woman wrinkles, clearly visible, in sharp contrast to her young face and her smooth left hand, back very straight"
+        },
+        {
+          "id": "faint-line",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder tied with a dark blue cotton cord, a plain moon-white high-collared cotton shirt with frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, on the back of her right hand the old wrinkles have faded to one thin pale line, still clearly visible in close-up, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "white-strand",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder with a clearly visible streak of white hair about a finger wide from her right temple braided into it, a plain moon-white high-collared cotton shirt with frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, the back of her right hand covered in a patch of fine crinkled old-woman wrinkles, clearly visible, in sharp contrast to her young face and her smooth left hand, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "huiyi-1948",
+          "appearance": "the same young woman of eighteen in 1948: an oval face, gently curved brows, calm almond eyes, black hair in two neat braids tied with plain cotton string, a pale blue cotton side-fastening blouse with a high collar and fabric frog buttons, a dark cotton skirt to the ankles, black cloth shoes, the thick silver ring on her left ring finger, standing straight with her hands folded, 1940s portrait photograph style"
+        }
+      ]
+    },
+    {
+      "id": "xiaoman",
+      "name": "沈小滿",
+      "appearance": "East Asian high-school girl of seventeen, a round face and big bright eyes, straight blunt bangs and a high ponytail, a school uniform: a navy blazer one size too big, a white shirt with a navy ribbon tie, a navy pleated skirt below the knee, white socks and black school shoes, no badge or lettering on the uniform",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十七歲的高中女生，聲音快、亮；受委屈時先笑一下再哭，哭的時候聲音壓低"
+      },
+      "shot_looks": [
+        {
+          "id": "home",
+          "appearance": "East Asian girl of seventeen, a round face and big bright eyes, straight blunt bangs and a high ponytail, an oversized light grey hoodie, loose black track pants, white socks"
+        },
+        {
+          "id": "damp",
+          "appearance": "East Asian high-school girl of seventeen, a round face and big bright eyes, straight blunt bangs and a high ponytail, her bangs and the shoulders of her navy blazer damp and water marks on her cheeks, the blazer one size too big and buttoned over a white shirt with a navy ribbon tie, a navy pleated skirt below the knee, dry and fully covering, white socks and black school shoes, no badge or lettering"
+        }
+      ]
+    },
+    {
+      "id": "zhiyuan",
+      "name": "沈知遠",
+      "appearance": "East Asian young man of thirty, clean-cut and handsome: sword-like straight brows, long single-lidded eyes, a straight nose and a clean jawline, about 180 cm tall with broad shoulders, short neat black hair, a white pharmacist's coat worn open over a dark navy shirt with the sleeves rolled to the elbows, dark grey trousers, black sneakers, a calm focused look",
+      "voice": {
+        "provider": "gemini",
+        "name": "Alnilam",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十歲的藥師，男聲，低、穩、話不多但句句到位；對她說話時放軟"
+      },
+      "shot_looks": [
+        {
+          "id": "shirt",
+          "appearance": "East Asian young man of thirty, clean-cut and handsome: sword-like straight brows, long single-lidded eyes, a straight nose and a clean jawline, about 180 cm tall with broad shoulders, short neat black hair, a dark navy shirt with the sleeves rolled to the elbows, dark grey trousers, black sneakers, no coat"
+        },
+        {
+          "id": "coat",
+          "appearance": "East Asian young man of thirty, clean-cut and handsome: sword-like straight brows, long single-lidded eyes, a straight nose and a clean jawline, about 180 cm tall with broad shoulders, short neat black hair, a dark charcoal wool overcoat over a dark navy shirt, dark grey trousers, black sneakers"
+        }
+      ]
+    },
+    {
+      "id": "fubo",
+      "name": "福伯",
+      "appearance": "East Asian old man of eighty-eight, thin and very upright, very short white hair, a lean lined face with respectful steady eyes, a neatly ironed grey Chinese-style jacket with fabric frog buttons, black trousers, black cloth shoes, the silver chain of an old pocket watch running from a button to his jacket pocket",
+      "voice": {
+        "provider": "gemini",
+        "name": "Enceladus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八十八歲的老管家，男聲，蒼老、恭敬、慢，一句話常帶一個「是」；著急時聲音發抖但不拔高"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a low suspenseful cello drone carried over from the parking lot, one accent on the medicine's name, softening into the first warm piano notes; then in the study one theme in three variations: a tense muted string figure, a light playful pizzicato, and a warm gentle piano and strings, one accent on the form and everything stopping as the brush touches the paper; no vocals"
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "何家的舊帳｜恁祖媽今年18 第15集",
+    "description": "車窗降下，何啟盛問她怎麼知道他父親的名字。她說何志誠在沈記偷過一帖驅寒散，那是民國五十八年冬天；老太太沒送他去派出所，還替他付了學費。何啟盛說這件事他父親只跟他一個人說過；她說他女兒欺負的是沈家的孩子，他父親要是知道不會答應。何啟盛升起車窗走了。晚上在書房，知遠把手機往桌上一放：何曉陽又傳了新影片「沒落小姐撿垃圾」，兩萬個讚。她問這些東西能不能像記帳一樣留下來，知遠說截圖就留得住；她拿舊手機對著螢幕拍照，小滿哭著笑出來。知遠把截圖和她拍的拿去藥局印成A4，她用漿糊一張張黏成一長卷，捲在擀麵棍上，像一本老帳。小滿說只有監護人能進審議，福伯從老太太的文件箱裡拿出一張空白委託書：老太太只是失蹤，委託書老太太自己能簽。她提起小楷毛筆，福伯按住她的手：外人看了，這是偽造文書。她抬眼：我簽我自己的名字，算什麼偽造？筆尖落下。",
+    "tags": [
+      "恁祖媽今年18",
+      "AI短劇",
+      "家族劇",
+      "老靈魂"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "我簽我自己",
+      "tag": "恁祖媽今年18",
+      "shot": "c22"
+    }
+  },
+  "scenes": [
+    {
+      "id": "c01",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t015001",
+          "speaker": "heqisheng",
+          "text": "妳怎麼會知道我父親的名字？",
+          "emotion": "壓著聲音，發緊"
+        }
+      ],
+      "data": {
+        "prompt": "In the school parking lot in late afternoon, ten minutes before sunset, the low sun slanting in from the back left, seen from outside the black sedan's right rear window. Two people and a driver: the dark tinted window slides all the way down; He Qisheng in his navy suit and gold tie clip sits in the right rear seat, his face pale, his chin no longer raised; on screen right, outside the window, only the moon-white shoulder of Shen Yuetang; the back of the driver's head soft in the far front seat on screen right. He turns to look out at her, braces his hand on the door armrest and leans toward the window. He Qisheng speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, tight and held down, not smiling. Her mouth is not seen.",
+        "camera": "medium shot, slow push-in",
+        "characters": [
+          "heqisheng",
+          "yuetang-18"
+        ]
+      },
+      "chapter": "同一刻"
+    },
+    {
+      "id": "c01b",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "The school parking lot in late afternoon, ten minutes before sunset, the low sun slanting in from the back left and stretching shadows to the right, seen from the far end of the lot with a white painted line on the asphalt in the foreground. Three people and a driver: left of centre a black sedan facing screen right, its right rear window fully down, He Qisheng only a dark navy silhouette inside, the driver only the back of a head; on screen right Shen Yuetang in her moon-white high-collared shirt and navy long skirt stands outside that window, back straight, hands folded at her waist; two steps behind her at the back right Shen Xiaoman in her school uniform with her navy schoolbag, not smiling; the school building behind. Yuetang stands still, head bowed slightly toward the open window; the silhouette inside leans toward the glass. No mouth is seen.",
+        "camera": "wide shot, locked",
+        "characters": [
+          "yuetang-18",
+          "xiaoman",
+          "heqisheng"
+        ],
+        "motion": "She stands still, head bowed toward the open window, while the figure inside leans toward it."
+      },
+      "action_seconds": 1
+    },
+    {
+      "id": "c01c",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "In the back seat of a black sedan in late afternoon: the first frame is a man's right hand in a navy suit sleeve and white shirt cuff, its palm braced on the inner door armrest; behind it, out of focus, the frame of the lowered window and the low evening light outside. Only the hand is in the frame; no face and no mouth. The palm presses down on the armrest and holds still, the knuckles going pale.",
+        "camera": "close-up on the hand, locked",
+        "characters": [
+          "heqisheng"
+        ],
+        "motion": "The palm presses down on the armrest and holds, the knuckles going pale."
+      },
+      "action_seconds": 1
+    },
+    {
+      "id": "c02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t015002",
+          "speaker": "yuetang-18",
+          "text": "他在沈記偷過一帖驅寒散，民國五十八年冬天。",
+          "emotion": "慢，一字一字"
+        }
+      ],
+      "data": {
+        "prompt": "In the school parking lot in late afternoon, ten minutes before sunset, the low sun slanting in from the back left, seen from low beside the car, the window frame in the foreground: Shen Yuetang in her moon-white high-collared shirt, braid over her right shoulder, stands outside the car; behind her the evening sky and the outline of the school building, nobody else. She is the only person in the frame, not smiling, her gaze calm. Hands folded at her waist, she bows her head slightly to look into the car, first at eye level, then lower toward the armrest. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, slow, word by word.",
+        "camera": "low-angle close-up, slow push-in from medium close-up",
+        "characters": [
+          "yuetang-18"
+        ]
+      }
+    },
+    {
+      "id": "c03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t015003",
+          "speaker": "yuetang-18",
+          "text": "老太太沒送他去派出所，還替他付了學費。",
+          "emotion": "平穩"
+        }
+      ],
+      "data": {
+        "prompt": "In the back seat of a black sedan in late afternoon, seen through the open right rear window from outside: He Qisheng in his navy suit and gold tie clip, behind him the dark car roof and the far-side window. He is the only person in the frame, not smiling; his Adam's apple bobs once. His fingers on the armrest suddenly tighten; his eyes avoid the window and shift toward the back of the front seat on screen right. His mouth stays closed while a calm young woman's voice is heard from outside the frame.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "heqisheng"
+        ]
+      }
+    },
+    {
+      "id": "c04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t015004",
+          "speaker": "heqisheng",
+          "text": "這件事，我父親只跟我一個人說過。",
+          "emotion": "低，像在自言自語"
+        }
+      ],
+      "data": {
+        "prompt": "In the back seat of a black sedan in late afternoon: He Qisheng in his navy suit, behind him the far-side window and the parking lot out of focus. He is the only person in the frame, not smiling, his face paler still. He slowly turns his head back toward the open window; his lips move twice before any sound comes, and his hand lets go of the armrest. He Qisheng speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, low, almost to himself.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "heqisheng"
+        ]
+      }
+    },
+    {
+      "id": "c05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t015005",
+          "speaker": "yuetang-18",
+          "text": "你女兒欺負的，是沈家的孩子。你父親要是知道，不會答應。",
+          "emotion": "低而慢"
+        }
+      ],
+      "data": {
+        "prompt": "From inside a black sedan looking out through the open right rear window in late afternoon: in the left foreground He Qisheng's right shoulder and the back of his head, navy suit; on screen right, beyond the window frame, Shen Yuetang in her moon-white high-collared shirt, face turned toward screen left, the low slanting sun on half her face. Two people. She straightens up, hands still folded at her waist, steps back half a pace and stands still, looking into his eyes. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, low and slow, not smiling. He Qisheng's mouth stays closed.",
+        "camera": "over-the-shoulder shot from inside the car, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "heqisheng"
+        ]
+      }
+    },
+    {
+      "id": "c06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t015006",
+          "speaker": "heqisheng",
+          "text": "開車，今天的事，誰都不准提。",
+          "emotion": "冷，話短"
+        }
+      ],
+      "data": {
+        "prompt": "In the back seat of a black sedan in late afternoon. Two people: He Qisheng in his navy suit turns toward the driver's seat in the far front on screen right; the back of the driver's head, in a dark suit, out of focus. Not smiling, he turns his face away from the window and speaks toward the driver. He Qisheng speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, cold and clipped. His finger presses the switch and the dark window rises, the reflection of a calm young woman's face appearing again on the glass.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "heqisheng"
+        ]
+      }
+    },
+    {
+      "id": "c07",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "In the school parking lot at sunset, seen from ground level, the rear of the black sedan in the foreground; white lines, other cars with no plates visible, the school building behind. Two people on foot: Shen Yuetang in her moon-white shirt and navy skirt stands where she was, hands folded, her shadow stretched long; at the back right Shen Xiaoman in her school uniform with her navy schoolbag. The car pulls away, its rear sliding out of frame toward the exit on screen right. Yuetang stays still; Xiaoman runs two steps to her side, grabs her sleeve and looks up at her; Yuetang looks down at Xiaoman. Both mouths closed.",
+        "camera": "low-angle wide shot from ground level, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "xiaoman"
+        ],
+        "motion": "The black sedan drives off toward screen right as Xiaoman runs two steps to Yuetang's side and grabs her sleeve."
+      },
+      "action_seconds": 6
+    },
+    {
+      "id": "c08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t015007",
+          "speaker": "zhiyuan",
+          "text": "何曉陽又傳了新影片，標題叫沒落小姐撿垃圾。",
+          "emotion": "壓著火，低"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old study of the Shen house at night, seen from the south wall looking north, the back of an empty chair by the desk in the foreground; the dark wooden desk under the north window, a green-shaded desk lamp and a small hanging lamp, warm narrow light; a bookcase with blank spines. Three people: Shen Yuetang in her moon-white shirt sits at the desk; Shen Xiaoman in an oversized light grey hoodie and black track pants sits on a stool at the desk's left; at the back left Shen Zhiyuan in his dark navy shirt with the sleeves rolled to the elbows pushes open the door in the west wall and strides in. He comes to the desk, slaps his phone face down on it and braces both hands on the edge; the two look up at him. Shen Zhiyuan speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, low, holding back anger. None of them smile; the others keep their mouths closed.",
+        "camera": "wide shot, slow push-in",
+        "characters": [
+          "zhiyuan",
+          "yuetang-18",
+          "xiaoman"
+        ],
+        "character_looks": {
+          "zhiyuan": "shirt",
+          "xiaoman": "home"
+        }
+      },
+      "chapter": "夜"
+    },
+    {
+      "id": "c09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t015008",
+          "speaker": "zhiyuan",
+          "text": "兩萬個讚，拍的是上禮拜四，被丟進垃圾桶的書包。",
+          "emotion": "低，一句說完"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old study of the Shen house at night under the warm desk lamp: Shen Zhiyuan in his dark navy shirt with the sleeves rolled to the elbows, behind him the bookcase and the north window out of focus. He is the only person in the frame, not smiling, his jaw tight. He pulls a chair over and sits, then taps one finger on the back of the face-down phone on the desk. Shen Zhiyuan speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, low, in one breath.",
+        "camera": "close-up, slow push-in from medium close-up",
+        "characters": [
+          "zhiyuan"
+        ],
+        "character_looks": {
+          "zhiyuan": "shirt"
+        }
+      }
+    },
+    {
+      "id": "c10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t015009",
+          "speaker": "xiaoman",
+          "text": "那天她們把我的書包丟進垃圾桶，還在旁邊拍。",
+          "emotion": "小聲，哭腔"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old study of the Shen house at night under warm lamplight: Shen Xiaoman in an oversized light grey hoodie and black track pants, behind her the north window out of focus. She is the only person in the frame, her eyes red again, not smiling. She lowers both hands from her face, grips the cuffs of her hoodie and keeps her head down. Shen Xiaoman speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, small and tearful.",
+        "camera": "close-up, slow push-in from medium close-up",
+        "characters": [
+          "xiaoman"
+        ],
+        "character_looks": {
+          "xiaoman": "home"
+        }
+      }
+    },
+    {
+      "id": "c11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t015010",
+          "speaker": "yuetang-18",
+          "text": "這些欺負人的東西，能像記帳一樣，一筆一筆留下來？",
+          "emotion": "慢，像在問帳"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old study of the Shen house at night, seen from the left side of the desk: Shen Yuetang in her moon-white high-collared shirt, behind her the north window and the green shade of the desk lamp. She is the only person in the frame, not smiling. Her gaze moves from screen left down to the phone lying face down on the desk; she reaches out her right forefinger and taps its back lightly, then lifts her eyes toward screen right. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, slow, as if asking about an account.",
+        "camera": "close-up, slow push-in from medium close-up",
+        "characters": [
+          "yuetang-18"
+        ]
+      }
+    },
+    {
+      "id": "c12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t015011",
+          "speaker": "zhiyuan",
+          "text": "能，截圖就留得住，按兩個鍵就好。",
+          "emotion": "簡短"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old study of the Shen house at night under the desk lamp: in the left foreground Shen Yuetang's right shoulder and the thick braid over it; on screen right Shen Zhiyuan in his dark navy shirt with the sleeves rolled to the elbows, face turned toward screen left, not smiling. Two people. He turns his phone over so the screen faces her and its back faces the camera, and presses a button on its side with his thumb to demonstrate. Shen Zhiyuan speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, brief. Yuetang's mouth stays closed.",
+        "camera": "over-the-shoulder shot, slow push-in",
+        "characters": [
+          "zhiyuan",
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "zhiyuan": "shirt"
+        }
+      }
+    },
+    {
+      "id": "c13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t015012",
+          "speaker": "xiaoman",
+          "text": "姐，那叫拍照，不叫截圖啦。",
+          "emotion": "含淚笑出來"
+        },
+        {
+          "id": "t015013",
+          "speaker": "yuetang-18",
+          "text": "拍下來就是截下來，帳記得住就好。",
+          "emotion": "不慌不忙"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old study of the Shen house at night under the warm desk lamp. Three people: in the middle Shen Yuetang in her moon-white shirt holds up her old black phone, one corner cracked, back to the camera, in both hands; on screen right Shen Zhiyuan in his dark navy shirt holds his phone upright on the desk with both hands, screen toward her, back to camera, frozen; on screen left Shen Xiaoman in an oversized light grey hoodie and black track pants. Yuetang, earnest, aims and presses once; the shutter clicks. Xiaoman bursts out laughing through tears, wiping her eyes with her sleeve; Shen Xiaoman speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, laughing through tears, while Yuetang's mouth stays closed. Then Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, unhurried, while Xiaoman's mouth stays closed. Zhiyuan, mouth closed, holds back a laugh.",
+        "camera": "medium shot, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "zhiyuan",
+          "xiaoman"
+        ],
+        "character_looks": {
+          "zhiyuan": "shirt",
+          "xiaoman": "home"
+        }
+      }
+    },
+    {
+      "id": "c14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t015014",
+          "speaker": "zhiyuan",
+          "text": "我把截圖跟妳拍的，拿去藥局印出來。",
+          "emotion": "放軟"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old study of the Shen house at night under the desk lamp. Two people: Shen Zhiyuan in his dark navy shirt with the sleeves rolled to the elbows stands up holding his own phone in one hand and takes the old phone Shen Yuetang hands him with the other, both screens turned inward; Yuetang in her moon-white shirt stays seated at the desk. He holds the two phones together and walks toward the door at the back left, turns at the door and speaks, the corner of his mouth lifting in a faint smile that shows a hint of a canine tooth. Shen Zhiyuan speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, softened. She nods once, mouth closed. The shot ends as he is halfway out of the door.",
+        "camera": "medium shot, tracking with Zhiyuan toward the door",
+        "characters": [
+          "zhiyuan",
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "zhiyuan": "shirt"
+        }
+      }
+    },
+    {
+      "id": "c15",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the small old study of the Shen house at night under the warm desk lamp, looking straight down at the desk as she sees it: the first frame is her two hands over a stack of A4 printouts, every sheet face down so only white paper backs show. Her right hand in a moon-white cuff holds a flat brush and dips it once into a small bowl of white paste; her left hand holds down the edge of a sheet. She brushes a line of paste along the edge, presses the next sheet's edge onto it and smooths it flat with her palm. No face in the frame.",
+        "camera": "close-up from above on her hands, locked",
+        "characters": [
+          "yuetang-18"
+        ],
+        "motion": "She brushes paste along the paper edge, lays the next sheet over it and smooths it flat with her palm."
+      },
+      "action_seconds": 4,
+      "chapter": "夜（下）"
+    },
+    {
+      "id": "c16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t015015",
+          "speaker": "fubo",
+          "text": "從前老太太的帳，也是這樣一卷一卷捲起來的。",
+          "emotion": "低，像在回想"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old study of the Shen house at night, lit only by the green-shaded desk lamp, one corner of a long paper strip on the floor in the foreground. The pasted strip of A4 sheets runs from the desk across the floor toward screen left, face down, white backs only. Four people: Shen Xiaoman in an oversized light grey hoodie and black track pants kneels in the left foreground holding the end of the strip; Shen Yuetang in her moon-white shirt sits at the desk pasting; Fu Bo in his grey Chinese jacket stands behind her right shoulder handing her sheets one by one; Shen Zhiyuan in his dark navy shirt sits at the desk's right side. All focused, not smiling. Fu Bo hands over a sheet; she brushes, presses and smooths it on, and the strip grows longer; Xiaoman shuffles back to pull it straight. Fu Bo speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, low, remembering. All others' mouths closed.",
+        "camera": "wide shot, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "fubo",
+          "xiaoman"
+        ],
+        "character_looks": {
+          "xiaoman": "home"
+        }
+      }
+    },
+    {
+      "id": "c17",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the small old study of the Shen house at night: Shen Zhiyuan in his dark navy shirt with the sleeves rolled to the elbows sits at the right side of the desk, head down, trimming the white margins of A4 sheets with scissors, every sheet face down so only white backs show; the desk lamp lights the side of his face from screen left; the bookcase behind him out of focus. Two people: at the left edge of the frame only half of Shen Yuetang's face and her shoulder. He trims intently, brows drawn, a canine tooth lightly biting his lower lip, and lays a finished sheet by her hand; she glances up at him. Both mouths closed.",
+        "camera": "close-up, slow push-in from medium close-up",
+        "characters": [
+          "zhiyuan",
+          "yuetang-18"
+        ],
+        "motion": "He trims a sheet with scissors and lays it by her hand; she glances up at him.",
+        "character_looks": {
+          "zhiyuan": "shirt"
+        }
+      },
+      "action_seconds": 4
+    },
+    {
+      "id": "c18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t015016",
+          "speaker": "yuetang-18",
+          "text": "週五審議那天，我把這卷帳攤在他們面前。",
+          "emotion": "篤定"
+        },
+        {
+          "id": "t015017",
+          "speaker": "xiaoman",
+          "text": "可是姐，學校說只有監護人能進家長會。",
+          "emotion": "為難"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old study of the Shen house at night under the desk lamp. Two people: Shen Yuetang in her moon-white shirt sits at the desk rolling the long paper strip round and round onto a plain wooden rolling pin with both hands, white paper backs on the outside; Shen Xiaoman in an oversized light grey hoodie and black track pants gets up from the floor and walks to the left side of the desk. Neither smiles. Yuetang rolls the last turn, sets the roll on its rolling pin on the left corner of the desk and folds her hands. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, certain, while Xiaoman's mouth stays closed; then Shen Xiaoman speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, troubled, while Yuetang's mouth stays closed.",
+        "camera": "medium shot, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "xiaoman"
+        ],
+        "character_looks": {
+          "xiaoman": "home"
+        }
+      }
+    },
+    {
+      "id": "c19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t015018",
+          "speaker": "fubo",
+          "text": "老太太只是失蹤，委託書，老太太自己能簽。",
+          "emotion": "低而慢，意有所指"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old study of the Shen house at night under the desk lamp. Three people: Fu Bo in his grey Chinese jacket slowly crouches at the right side of the desk and pulls out from under it a dark wooden document box with brass corners, about forty by thirty centimetres; Shen Yuetang in her moon-white shirt sits on screen left; Shen Zhiyuan in his dark navy shirt stands behind the desk on the right. Fu Bo opens the brass clasp, lifts the lid and draws one blank A4 form from a stack, seen edge-on with its face never shown, lays it with both hands on the desk in front of her and looks straight up into her eyes, not smiling, his gaze certain. Fu Bo speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, low and slow, meaningful. The others keep their mouths closed.",
+        "camera": "medium shot, slow push-in to medium close-up",
+        "characters": [
+          "fubo",
+          "yuetang-18",
+          "zhiyuan"
+        ],
+        "character_looks": {
+          "zhiyuan": "shirt"
+        }
+      }
+    },
+    {
+      "id": "c20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t015019",
+          "speaker": "zhiyuan",
+          "text": "太奶奶不在，這張要誰來簽？",
+          "emotion": "不解"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old study of the Shen house at night under the desk lamp, seen from the right side of the desk. Three people: Shen Yuetang in her moon-white shirt sits at the desk; Shen Zhiyuan in his dark navy shirt and Shen Xiaoman in an oversized light grey hoodie and black track pants stand on either side of the desk and exchange a puzzled look; the form lies flat in front of her, seen low and edge-on so its face is never shown. Neither of them smiles. Zhiyuan frowns at the form, then looks up toward screen right; Shen Zhiyuan speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, puzzled. Yuetang does not answer; she picks up a black-handled fine brush and slowly loads it with ink on the old inkstone, mouth closed.",
+        "camera": "medium shot from the right side of the desk, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "zhiyuan",
+          "xiaoman"
+        ],
+        "character_looks": {
+          "zhiyuan": "shirt",
+          "xiaoman": "home"
+        }
+      }
+    },
+    {
+      "id": "c21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t015020",
+          "speaker": "fubo",
+          "text": "月棠，外人看了，這是偽造文書。",
+          "emotion": "聲音發抖"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old study of the Shen house at night under the desk lamp, seen from the side with the camera level with the desk top: the first frame is two hands. A young right hand in a moon-white cuff holds a fine black-handled brush, its tip stopped one finger's height above a form seen only edge-on, its face never shown; a very old wrinkled hand in a grey Chinese-jacket cuff rests on the back of her hand and holds it still. The brush tip stays where it is; the old hand trembles slightly. An old man's voice is heard from outside the frame. No faces in the frame.",
+        "camera": "close-up on the hands at desk height, locked",
+        "characters": [
+          "yuetang-18",
+          "fubo"
+        ]
+      }
+    },
+    {
+      "id": "c22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t015021",
+          "speaker": "yuetang-18",
+          "text": "我簽我自己的名字，算什麼偽造？",
+          "emotion": "低而慢"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old study of the Shen house at night, lit only by the desk lamp, seen from the desk's left side: Shen Yuetang in her moon-white high-collared shirt sits at the desk holding the fine brush in her right hand; an old wrinkled hand in a grey cuff, entering from the right edge, rests on the back of hers; out of focus at the back right Shen Zhiyuan in his dark navy shirt and Shen Xiaoman in an oversized light grey hoodie and black track pants stand by the desk; the paper roll on its rolling pin on the desk corner. Only Yuetang is in focus. She raises her eyes toward screen right and speaks; Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, low and slow, not smiling, her gaze steady. The old hand slowly withdraws from hers; she lowers her eyes and the brush tip touches the form, seen edge-on with its face never shown. Others' mouths closed. The last frame holds as the tip lands.",
+        "camera": "close-up, slow push-in from medium close-up",
+        "characters": [
+          "yuetang-18",
+          "zhiyuan",
+          "xiaoman"
+        ],
+        "character_looks": {
+          "zhiyuan": "shirt",
+          "xiaoman": "home"
+        }
+      }
+    }
+  ]
+}

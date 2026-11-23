@@ -1,0 +1,449 @@
+{
+  "batch_id": "wave52-physics-20261111",
+  "created_on": "2026-11-11",
+  "scope": "量測頂端、射出成形痕跡與太空站液滴燃燒：替長題 G13、G24 與企劃 P04 補一手來源；九來源，非媒體製作。",
+  "sources": [
+    {
+      "id": "P52-S001",
+      "url": "https://www.bipm.org/en/history-si/kilogram",
+      "canonical_url": "https://www.bipm.org/en/history-si/kilogram",
+      "title": "Historical perspective: Unit of mass, kilogram",
+      "publisher": "BIPM",
+      "version": "網頁當期版",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl 200，全文逐句讀",
+      "reading_scope": "全頁",
+      "locator": "Historical perspective 段",
+      "summary": "1889 定義：公斤＝國際公斤原器（鉑銥合金）的質量，存於 BIPM；同時製作 40 個相似原器，校準後分配給會員國；1901 第3屆 CGPM 確認公斤是質量單位；1946 第二次定期驗證發現各國原器平均與國際原器逐漸偏離，1989–1991 第三次驗證確認，最初一批的中位差約 25 微克；2018 第26屆 CGPM 決議以普朗克常數重新定義。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "二手摘要頁；第三次驗證原報告（Girard 1994, Metrologia）未讀。注意：媒體常用的『約 50 微克』是另一個比較（原器 vs 六個正式複本、2007 BIPM 說法，見台灣標檢局雙月刊轉述），兩數不可混用。頁面寫『大多數』複本分給會員國、部分留在 BIPM；沒有『保險箱』一詞（出自 P52-S003）。",
+      "author_cache": {
+        "file": "scratchpad/f1cache/bipm_494cfd.html",
+        "sha256_prefix": "b5f33d9dd4a5ddc4",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P52-S002",
+      "url": "https://www.bipm.org/documents/20126/41483022/SI-Brochure-9-EN.pdf",
+      "canonical_url": "https://www.bipm.org/documents/20126/41483022/SI-Brochure-9-EN.pdf",
+      "title": "The International System of Units (SI Brochure)",
+      "publisher": "BIPM",
+      "version": "第 9 版，PDF 標題 version 4.01 EN",
+      "accessed_on": "2026-11-11",
+      "read_via": "BIPM 文件庫 PDF 200，pdftotext 後讀公斤定義、Appendix 4 與 2018 CGPM Resolution 1",
+      "reading_scope": "2.3.1 公斤定義段；CGPM 2018 Resolution 1 與 Appendix 2；Appendix 4 實現方式段",
+      "locator": "公斤定義段（『The previous definition of the kilogram…』）；Resolution 1 Appendix 2；Appendix 4『Kibble balance』『silicon sphere』段",
+      "summary": "公斤以固定普朗克常數 h＝6.626 070 15×10⁻³⁴ J s 定義；舊定義讓原器質量恰為 1 kg、h 要量，新定義讓 h 精確、原器質量反而要量；採用時原器質量＝1 kg、相對標準不確定度 1×10⁻⁸；自 2019-05-20 生效。實現方式之一是 Kibble 秤（舊稱瓦特秤）：以質量、當地重力加速度與速度表示的機械功率，和以約瑟夫森與量子霍爾效應量測的電功率相比，mgv＝Ch；另一是數約 1 公斤矽球裡的原子數（體積、晶格常數、矽原子與電子質量比）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "正式文件但只讀相關節；未讀 CCM 的 mise en pratique 細則。",
+      "author_cache": {
+        "file": "scratchpad/f1cache/si9.pdf",
+        "sha256_prefix": "5442eea2c680caf7",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P52-S003",
+      "url": "https://doi.org/10.1088/0026-1394/52/2/310",
+      "canonical_url": "https://doi.org/10.1088/0026-1394/52/2/310",
+      "doi": "10.1088/0026-1394/52/2/310",
+      "title": "Calibration campaign against the international prototype of the kilogram in anticipation of the redefinition of the kilogram part I: comparison of the international prototype with its official copies",
+      "publisher": "Stock、Barat、Davis、Picard、Milton（BIPM）；Metrologia 52, 310–316 (2015)",
+      "version": "期刊正式版，OPEN ACCESS（CC BY 3.0）",
+      "accessed_on": "2026-11-11",
+      "read_via": "iopscience 期刊 PDF 200（OpenAlex 標 hybrid OA），pdftotext 全文逐段讀",
+      "reading_scope": "Abstract、1 Introduction、4 清洗、5 質量比較、Fig2–3 圖說、6、7 Summary",
+      "locator": "Abstract；Sec.1 第3–4段；Sec.4 Table5 前後；Sec.5 Fig2 圖說與 no.25/73 段；Sec.6；Sec.7",
+      "summary": "國際原器自第三次定期驗證（1988–1992）後鎖在保險箱未用，BIPM 日常校準靠一組鉑銥工作標準器維持『as-maintained』單位，其不確定度由 2.3 µg 增為 2013 年估 7 µg。2014『特別校準』：清洗洗滌移除國際原器 16.8 µg、七個原器平均 15 µg（標準差 2 µg）；清洗後六個正式複本相對原器的質量自第三次驗證以來平均只變 −1 µg（標準差 3 µg），第二、三次驗證看到的複本逐漸變重趨勢沒有再現；但 BIPM 工作標準器都比 1992 年輕，特殊用途原器 no.25 少 18 µg、no.73 少 33 µg，使 2014 年 BIPM 維持的質量單位相對原器偏了 35 µg。清洗後原器質量回升，國際原器初期約 0.02 µg/天。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀 Part I；35 µg 偏移的詳細分析在後續論文未讀。",
+      "author_cache": {
+        "file": "scratchpad/f1cache/stock2015.pdf",
+        "sha256_prefix": "b2d86bbc8742dd30",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P52-S004",
+      "url": "https://doi.org/10.3390/polym16162318",
+      "canonical_url": "https://doi.org/10.3390/polym16162318",
+      "doi": "10.3390/polym16162318",
+      "title": "Study of Injection Molding Process to Improve Geometrical Quality of Thick-Walled Polycarbonate Optical Lenses by Reducing Sink Marks",
+      "publisher": "Vanek、Ovsik、Stanek、Hanzlik、Pata；Polymers 16, 2318 (2024)",
+      "version": "期刊正式版（PMC11360770，CC BY 4.0）",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST 全文 XML 200，去標籤逐段讀",
+      "reading_scope": "Abstract、2 Materials and Methods（材料、模具、模擬條件、量測）、3.3–3.5、Table 6–8、4 Discussion 開頭、5 Conclusions",
+      "locator": "2.2 Materials；Table 2；2.7 量測（−0.578 mm 例）；3.3 驗證參數範圍；Table 6–8",
+      "summary": "真實零件案例：Covestro Makrolon LED 2245 聚碳酸酯光學透鏡，厚 12.5/16.5/20.5 mm，P20 鋼模、Arburg 470 E；驗證範圍射出壓力 60–100 MPa、保壓 48–80 MPa、熔體 250–300°C、模溫 80–120°C。以 3D 掃描量平面側縮痕：最佳條件下實測 0.412±0.018、1.053±0.111、1.616±0.138 mm，越厚越深；模擬預測 0.348/0.481/0.600 mm，越厚低估越多（Moldflow 對純厚壁區甚至偵測不到縮痕，改用 Cadmould）。提高射出壓力與模溫、降低熔體溫度可減小縮痕；12.5 mm 以射出壓力影響最大，較厚件改由熔體溫度主導，作者解釋為厚件冷卻時的體積收縮比壓力與保壓的作用更主導。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一材料與幾何；DOE 兩水準；正文差值（0.574、1.000 mm）與 Table 8（0.572、1.061 mm）不一致，引用以表為準。透鏡不是盒子，只能作『厚區縮痕』的真實例。",
+      "author_cache": {
+        "file": "scratchpad/f1cache/PMC11360770.xml",
+        "sha256_prefix": "7966c6a97ef4c8da",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P52-S005",
+      "url": "https://doi.org/10.1371/journal.pone.0307485",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0307485",
+      "doi": "10.1371/journal.pone.0307485",
+      "title": "External gas-assisted mold temperature control and optimization molding parameters for improving weld line strength in polyamide plastics",
+      "publisher": "Nguyen Truong Giang 等；PLOS ONE 19(8): e0307485 (2024)",
+      "version": "期刊正式版（PMC11340943，CC BY）",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST 全文 XML 200，讀摘要、材料、Table 1、3 Results 填充時間段、Conclusion",
+      "reading_scope": "Abstract、2 材料與方法、Table 1、Results 首段、Conclusion",
+      "locator": "Table 1（20 組 UTS/伸長率）；Results『Compared to the UTS value of the composite without … weld line, which is 80 MPa』",
+      "summary": "PA6（Libolon N200）ASTM D638 試片，雙澆口造成結合線；含結合線試片抗拉強度 36.5–62.3 MPa，對照無結合線約 80 MPa（作者原文用 composite 字樣但材料為純 PA6）；以外部熱氣把模面加熱到 173°C 時最佳 62.3 MPa、伸長率 582.6%，不加熱 45.1 MPa；熔體溫度是影響最大的因子、填充時間最小。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一材料與試片；模溫效果非單調（111°C 43.0、153°C 47.7 MPa）；『80 MPa』原文寫 composite，存在用詞不一致。",
+      "author_cache": {
+        "file": "scratchpad/f1cache/PMC11340943.xml",
+        "sha256_prefix": "c59c1f9ea7c3656d",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P52-S006",
+      "url": "https://doi.org/10.3390/polym15204102",
+      "canonical_url": "https://doi.org/10.3390/polym15204102",
+      "doi": "10.3390/polym15204102",
+      "title": "Weld Line Strength of Polyamide Fiberglass Composite at Different Processing Parameters in Injection Molding Technique",
+      "publisher": "Nguyen Van-Thuc 等；Polymers 15, 4102 (2023)",
+      "version": "期刊正式版（PMC10610415，CC BY 4.0）",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST 全文 XML 200，讀摘要、材料、討論末段與結論",
+      "reading_scope": "Abstract、2 材料、3 討論末段（fiber bridging）、4 Conclusions",
+      "locator": "Abstract；2 Materials（Akulon K224-G6 110 MPa）；Conclusions",
+      "summary": "PA6＋30% 玻纖（DSM Akulon K224-G6，型錄抗拉 110 MPa）：結合線試片最佳實驗 76.8 MPa，ANN＋GA 預測最佳 85.1 MPa；保壓壓力對結合線強度影響最大、熔體溫度對伸長率影響最大；提高模溫讓結合線區連接較好、伸長率大增。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "110 MPa 是型錄值，不是同批無結合線試片；只作輔證。",
+      "author_cache": {
+        "file": "scratchpad/f1cache/PMC10610415.xml",
+        "sha256_prefix": "8521a27b7e1499ba",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P52-S007",
+      "url": "https://www.nasa.gov/learning-resources/for-kids-and-students/what-is-microgravity-grades-5-8/",
+      "canonical_url": "https://www.nasa.gov/learning-resources/for-kids-and-students/what-is-microgravity-grades-5-8/",
+      "title": "What Is Microgravity? (Grades 5-8)",
+      "publisher": "NASA STEM Team",
+      "version": "2012-02-15 文章（頁面框架 2026 當期）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl 200，正文去標籤逐句讀",
+      "reading_scope": "正文各節：Is There Gravity in Space?、Why Do Objects Float、How Can Spacecraft Fall Around Earth、Why Does NASA Study、Can Microgravity Be Found on Earth",
+      "locator": "『about 90 percent』段、Fire burns differently 段",
+      "summary": "太空站軌道高度 200–250 英里，該高度地球重力約為地面的 90%，100 磅的人爬梯到站高度約 90 磅；漂浮是因為自由落體而非沒有重力；微重力下火焰較圓。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "2012 年兒童教育頁，高度範圍偏舊；我用 g(h)=g0·(R/(R+h))²、R=6371 km 自行核算：200 英里(322 km)≈0.906、250 英里(402 km)≈0.885，與『約 90%』相符（計算非來源原文）。『火焰較圓』無條件說明，不單獨引用。",
+      "author_cache": {
+        "file": "scratchpad/f1cache/nasa_micro.html",
+        "sha256_prefix": "032a4fbd40b079a1",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P52-S008",
+      "url": "https://www.nasa.gov/international-space-station/space-station-facts-and-figures/",
+      "canonical_url": "https://www.nasa.gov/international-space-station/space-station-facts-and-figures/",
+      "title": "Space Station Facts and Figures",
+      "publisher": "NASA",
+      "version": "Page Last Updated: Jul 16, 2024",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl 200，正文逐句讀",
+      "reading_scope": "頁首事實段",
+      "locator": "『five miles per second』段",
+      "summary": "太空站以每秒約 5 英里飛行，約每 90 分鐘繞地一圈，24 小時 16 圈、經歷 16 次日出日落。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "頁面沒有軌道高度數字。",
+      "author_cache": {
+        "file": "scratchpad/f1cache/nasa_issfacts.html",
+        "sha256_prefix": "8c66ef8715307bea",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P52-S009",
+      "url": "https://ntrs.nasa.gov/citations/20140006750",
+      "canonical_url": "https://ntrs.nasa.gov/citations/20140006750",
+      "title": "Cool-flame Extinction During N-Alkane Droplet Combustion in Microgravity",
+      "publisher": "Nayagam、Dietrich、Hicks、Williams；Central States Section of the Combustion Institute 2014 Spring Technical Meeting（NASA NTRS 20140006750）",
+      "version": "2014-03 會議論文全文 PDF",
+      "accessed_on": "2026-11-11",
+      "read_via": "NTRS API /api/citations/20140006750/downloads/20140006750.pdf（200, application/pdf），pdftotext 全文逐段讀",
+      "reading_scope": "Abstract、1 Introduction、2 Experiments、3.1 n-decane、3.2 n-octane、3.3 n-heptane 開頭；Fig1–3 圖說",
+      "locator": "2 Experiments；3 Results 首段；3.1 R377/R374/R379/R383；3.2 R298/R694/R698/R707",
+      "summary": "ISS 上 Combustion Integrated Rack 的 MDCA（燃燒室自由容積約 95 L），以對針釋放自由漂浮液滴、熱絲點火；FLEX 至今完成三百多次液滴燃燒，初徑約 1.5–5 mm、壓力 0.5–3 atm。大的正烷烴液滴先有可見熱焰，熱焰因輻射熄滅後，相機與 UV 相機都看不到火焰，但寬頻與窄頻輻射計仍記錄放熱，液滴以稍慢速率（例 n-decane 0.41→0.33 mm²/s）繼續準穩態燃燒，稱『冷焰』，最後在有限直徑熄滅、剩餘液滴只蒸發；與 NTC（負溫度係數）低溫化學、引擎爆震相關。氧濃度提高到 25% 時避開輻射熄滅、改以微爆結束；降到 17%、14% 熄滅更早；氦稀釋 75% 時熱焰一瞬即滅、冷焰也很快結束。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "會議論文，非期刊同儕審查定稿；n-heptane 細節引用作者 2012 期刊論文（Combustion and Flame 159，未讀）。冷焰為輻射計推得，無影像；限於特定燃料、壓力、氧與稀釋氣體。",
+      "author_cache": {
+        "file": "scratchpad/f1cache/ntrs_coolflame.pdf",
+        "sha256_prefix": "15037323e9a1e546",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P52-001",
+      "question": "全世界的公斤原器，明明存放在 BIPM，為什麼各國的複本會慢慢跟它對不上？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.kilogram_prototype_copies_divergence_periodic_verification",
+      "answer_target": "1889 年起，公斤就等於存放在 BIPM 的一顆鉑銥合金國際原器的質量；同時做了 40 顆相似原器，校準後大多分給會員國，部分留在 BIPM。1946 年第二次定期驗證時發現，各國原器平均而言正逐漸偏離國際原器；1989–1991 年第三次驗證確認這個趨勢，最初那批原器與國際原器的中位差約 25 微克。（以下是旁白推論，不是頁面引述：因為定義就是那顆原器，原器自己變了也無從察覺，只能看到『大家相對它在動』。）",
+      "scope": "25 微克是第三次驗證最初一批原器的中位差，不是國際原器變輕 25 微克；片中不用 50 微克（來源未逐句讀）。『保險箱』一說出自 P52-S003，不歸給本頁。不說原器失準造成日常秤錯。",
+      "source_ids": [
+        "P52-S001"
+      ],
+      "source_locator": "S001 Historical perspective 段。",
+      "premise_status": "screened",
+      "notes": "填 G13 第三章『最高那一顆也不是永遠的答案』前半，接在 M2057 之後，取代抽象敘述。約 2 條新事實（40 顆複本與分配；1946/1991 驗證與 25 µg）。 原提案 F1-001。非作者覆核 V4（2026-11-11）照覆核意見改字後收；數字與年代都對得上 BIPM 頁。要改的是兩處措辭比原文多（全數分給會員國、保險箱），以及原 F1-S025 只是摘要工具讀到的，不能掛在來源裡。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "基準本身會不會動，只能從一群複本的相對漂移間接看出來。",
+        "visual": "時間軸：1889 分配 40 顆→1946、1991 兩次回 BIPM 比較，散點圖相對原器偏移（示意，數值只標 25 µg 中位）",
+        "seconds": [
+          50,
+          80
+        ]
+      }
+    },
+    {
+      "id": "P52-002",
+      "question": "把公斤改成用普朗克常數定義後，那顆國際公斤原器還是不是剛好一公斤？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.kilogram_planck_constant_definition_prototype_now_measured",
+      "answer_target": "2018 年第 26 屆 CGPM 決議、2019 年 5 月 20 日生效：把普朗克常數 h 固定為 6.626 070 15×10⁻³⁴ J s，再搭配已用常數定義的秒與公尺，推出公斤。舊定義讓原器恰為 1 公斤、h 要靠實驗量；新定義反過來，h 精確，原器的質量變成要量的東西。選定的 h 數值讓採用當下原器仍是 1 公斤，但帶有 1×10⁻⁸ 的相對標準不確定度。",
+      "scope": "只講定義與原器角色的對調；不展開其他基本單位改定義。",
+      "source_ids": [
+        "P52-S002"
+      ],
+      "source_locator": "S002 公斤定義段；CGPM 2018 Resolution 1 Appendix 2；生效日。",
+      "premise_status": "screened",
+      "notes": "填 G13 第三章；與既有 M2058（改定義後實物角色）部分重疊，只算 1 條新事實（原器反成被量者＋1e-8）。 原提案 F1-002。非作者覆核 V4（2026-11-11）照原稿收；逐句相符。和 M2058（定義與量值傳遞是不同層次）主題相近，只多出『原器反成被量者、1e-8』這一點，計 1 條新事實，F1 自己也是這樣算。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "定義與被量的東西對調：常數成了尺，原器成了被量的砝碼。",
+        "visual": "天平兩端翻轉動畫：1889『原器=1 kg，h=?』↔ 2019『h=固定，原器=1 kg±10 µg』",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "P52-003",
+      "question": "沒有了標準砝碼，實驗室要怎麼從一個常數『做出』一公斤？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.kilogram_realization_kibble_balance_silicon_sphere",
+      "answer_target": "SI 手冊舉了兩種實現方式。Kibble 秤（舊稱瓦特秤）把質量 m、當地重力加速度 g 與速度 v 構成的機械功率，和用約瑟夫森效應與量子霍爾效應量到的電功率相比，得到 mgv＝Ch 的關係，h 就是普朗克常數。另一種是數一顆約一公斤的矽球裡有多少原子：量球的體積、晶格常數，再配合矽原子與電子的質量比等常數算出質量。任何能把質量和 h、光速、銫頻率連起來的物理方程式，原則上都可以用。",
+      "scope": "只說原理層級；不給任何實驗室的實測不確定度；不說家用秤會用到 Kibble 秤。",
+      "source_ids": [
+        "P52-S002"
+      ],
+      "source_locator": "S002 Appendix 4『Kibble balance』『silicon sphere』段。",
+      "premise_status": "screened",
+      "notes": "填 G13 第三章後半（原企劃缺 Kibble 秤／矽球來源）。約 2 條新事實。 原提案 F1-003。非作者覆核 V4（2026-11-11）照覆核意見改字後收；原理描述正確，只有『主要』一詞是原文沒有的。Kibble 秤與矽球正是第一輪點名缺的來源，補上後 G13 第三章不必抽象講。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "定義不再綁一個物件，但仍要有人用儀器把它做出來，再往下傳。",
+        "visual": "Kibble 秤兩模式示意（秤重/移動線圈）與矽球數原子示意，標『原理示意』",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "P52-004",
+      "question": "國際公斤原器真的在變輕嗎？2014 年把它拿出來一比，結果出乎意料在哪？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.ipk_extraordinary_calibration_cleaning_and_working_standard_offset",
+      "answer_target": "國際原器自 1992 年起鎖在保險箱沒用，BIPM 平常用一組鉑銥工作標準器維持質量單位，不確定度從 2.3 微克漸增到 2013 年估計的 7 微克。2014 年為改定義做『特別校準』：先清洗洗滌，國際原器被洗掉 16.8 微克的表面污染，七顆原器平均 15 微克；洗乾淨後，六個正式複本相對原器的質量自第三次驗證以來平均只變了 −1 微克，過去看到的『複本逐漸變重』趨勢沒有再現。BIPM 的工作標準器和專供特殊用途的原器，這次全都比第三次驗證（1988–1992）時輕，其中特殊用途原器 no.73 少了 33 微克，使 BIPM 維持的質量單位相對原器偏了 35 微克。洗完後原器質量又會回升，國際原器最初約每天 0.02 微克。",
+      "scope": "限 BIPM Part I 結果；35 微克偏移的完整分析在後續論文未讀。不得說『原器被證明沒變』，原器本身無法相對於自身檢驗；只能說原器與正式複本表現一致。",
+      "source_ids": [
+        "P52-S003"
+      ],
+      "source_locator": "S003 Abstract；Sec.1；Sec.4 Table5；Sec.5 Fig2 圖說與 no.25/73；Sec.6；Sec.7。",
+      "premise_status": "screened",
+      "notes": "填 G13 第三章到第四章的橋：『最高那一顆』與『把偏差扣掉之後』之間的真轉折——漂移來自使用鏈而非鎖住的頂端，也接上修正值與不確定度。約 3 條新事實（清洗 15 µg；複本只變 −1 µg 趨勢未再現；工作標準器使單位偏 35 µg／不確定度 2.3→7 µg）。 原提案 F1-004。非作者覆核 V4（2026-11-11）照覆核意見改字後收；這條是 G13 最好的轉折（被懷疑的頂端和複本彼此一致，反而是使用中的那一層偏了 35 µg），數字全部讀得到。唯一錯誤是把 33 µg 那顆特殊用途原器說成工作標準器，必須改。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "最常被懷疑的頂端很穩，天天被摸的中間層才是誤差來源。",
+        "visual": "Fig2 型折線：六複本 1889→1946→1991→2014 相對原器（2014 回到一致）；對照工作標準器下降箭頭；清洗前後秤量動畫",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "P52-005",
+      "question": "透明塑膠透鏡做得越厚，表面那個凹陷為什麼越深，連模擬軟體都算不準？",
+      "domain": "塑膠製造",
+      "mechanism_key": "injection_thick_polycarbonate_lens_sink_depth_measured_vs_simulated",
+      "answer_target": "捷克研究團隊用 Covestro 的 Makrolon LED 2245 聚碳酸酯，在 P20 鋼模裡射出 12.5、16.5、20.5 公釐三種厚的光學透鏡，用 3D 掃描量平面側的縮痕。即使在模擬找出的最佳條件下，實測縮痕仍有 0.41、1.05、1.62 公釐，越厚越深；模擬只預測 0.35、0.48、0.60 公釐，越厚低估越多，作者推測模擬沒算到冷卻到室溫時的額外收縮，也可能是軟體材料資料的誤差，作者說確切原因目前無法確認；其中一套常用軟體甚至偵測不到純厚壁區的縮痕。",
+      "scope": "限此材料、幾何與 DOE 兩水準；正文差值與 Table 8 不一致，以表為準。透鏡不是盒子，作『厚區縮痕』真實例。原刊圖為 CC BY，可依授權引用但另行確認。",
+      "source_ids": [
+        "P52-S004"
+      ],
+      "source_locator": "S004 2.2、Table 2、2.7、Table 7–8、Discussion。",
+      "premise_status": "screened",
+      "notes": "填 G24 第三章『灌滿之後，為什麼還要補料』審稿要的有條件實物案例（縮痕）。約 2 條新事實（實測深度隨厚度；模擬低估擴大）。 原提案 F1-013。非作者覆核 V4（2026-11-11）照覆核意見改字後收；數字全對。補上作者自己的保留，避免把一個推測說成結論。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "凹痕深淺記錄的是厚處冷卻時的體積收縮，連電腦都容易低估。",
+        "visual": "三片透鏡剖面與實測/模擬深度條形對照（依 Table 8 重畫）；掃描色圖示意",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "P52-006",
+      "question": "想消除厚件縮痕，一直加大保壓壓力就有用嗎？",
+      "domain": "塑膠製造",
+      "mechanism_key": "injection_thick_part_sink_melt_temperature_dominates_over_pressure",
+      "answer_target": "同一研究的統計分析顯示：提高射出壓力和模具溫度、降低熔體溫度，都能讓縮痕變淺。但最重要的因子隨厚度改變——12.5 公釐的透鏡以射出壓力影響最大；16.5 和 20.5 公釐則換成熔體溫度最重要。作者解釋，件越厚，冷卻時本身的體積收縮越主導，壓力和保壓能補償的比例就越小。",
+      "scope": "結論限其參數範圍（射出 60–100 MPa、保壓 48–80 MPa、熔體 250–300°C、模溫 80–120°C）；不給一般工廠設定建議。",
+      "source_ids": [
+        "P52-S004"
+      ],
+      "source_locator": "S004 3.3 驗證範圍；Table 6 與其前後討論。",
+      "premise_status": "screened",
+      "notes": "填 G24 第三章的轉折：補料不是萬能，與 D2131/D2133（澆口凝固後無法補料）互補。1–2 條新事實。 原提案 F1-014。非作者覆核 V4（2026-11-11）照原稿收；逐句相符，是 G24 第三章『補料不是萬能』的真轉折；參數範圍已寫進 scope。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "補料能救薄處，救不了大塊材料自己冷縮。",
+        "visual": "因子重要度排名在三種厚度間換位的動畫（依 Table 6）",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "P52-007",
+      "question": "塑膠零件上那條細線，實際上會讓它弱多少？",
+      "domain": "塑膠製造",
+      "mechanism_key": "injection_weld_line_tensile_strength_loss_and_mold_heating_pa6",
+      "answer_target": "越南團隊用 PA6 尼龍做雙澆口拉伸試片，讓兩股熔體在中間相遇形成結合線。含結合線的試片抗拉強度依製程介於約 36 到 62 MPa，對照沒有結合線的約 80 MPa；把模面用外部熱氣加熱到 173°C 時最好，達 62.3 MPa、伸長率約 580%，不加熱時約 45 MPa。另一篇加 30% 玻纖的 PA6，結合線試片最好也只有 76.8 MPa，型錄強度是 110 MPa，且保壓壓力是影響最大的因子。",
+      "scope": "限兩篇單一材料試片研究；PA6 對照值作者原文用語不一致；玻纖件 110 MPa 是型錄值非同批對照。模溫效果非單調。不由外觀判定任何產品強度。",
+      "source_ids": [
+        "P52-S005",
+        "P52-S006"
+      ],
+      "source_locator": "S005 Table 1、Results 首段、Conclusion；S006 Abstract、2、Conclusions。",
+      "premise_status": "screened",
+      "notes": "填 G24 第二章『兩股流動碰面會留下什麼』與第五章『看見一條線，能判定它壞了嗎』的有條件數據，並補審稿要的第二個工程來源（保壓與結合線強度）。約 2–3 條新事實。 原提案 F1-015。非作者覆核 V4（2026-11-11）照原稿收；數字逐一對過；scope 已標明對照值與型錄值不是同批對照。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一條線的強弱，取決於兩股熔體相遇時還夠不夠熱。",
+        "visual": "雙澆口試片充填動畫→結合線→拉伸斷在線上；強度條形圖（有/無結合線、不同模溫）",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "P52-008",
+      "question": "太空站上的重力只少一成，太空人為什麼還會飄？",
+      "domain": "science",
+      "mechanism_key": "orbit.iss_altitude_gravity_ninety_percent_free_fall",
+      "answer_target": "NASA 的說明：太空站軌道高度在 200 到 250 英里時，那裡的地球重力約是地面的 90%，一個在地面 100 磅的人若能爬梯到太空站高度，仍有約 90 磅重；這和既有 LEG-S80 所綁 NASA Glenn 頁自己寫的『250 英里處 88.8%』相符，只作交叉核對。太空站約 90 分鐘繞地一圈、一天 16 圈，也就是一天看到 16 次日出日落；漂浮是因為站和人一起自由落體，而不是沒有重力。",
+      "scope": "NASA 教育頁為 2012 年版，高度範圍偏舊；不做自行的平方反比核算。九成重力已在 LEG-S80 的來源，本核心新事實只計週期數字（約 0.5 條）。不談潮汐力。",
+      "source_ids": [
+        "P52-S007",
+        "P52-S008"
+      ],
+      "source_locator": "S007 Is There Gravity in Space? 段；S008 頁首事實段。",
+      "premise_status": "screened",
+      "notes": "P04 第一、二章：S80 當期核對＋週期數字，新事實計 0.5 條，不是 2 條。 原提案 F1-022。非作者覆核 V4（2026-11-11）照覆核意見改字後收；近鄰：部分重疊 LEG-S80（同一組事實已在其 NASA Glenn 來源），完成了第一輪要求的『九成重力當期核對』，但這不是新事實：既有 S80 來源已有 88.8%。作者的平方反比核算是自己算的，只能當旁證，不能當來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "重力幾乎都還在，只是你和地板一起在掉。",
+        "visual": "地球與太空站比例示意（不畫自行核算的曲線）；體重計在梯頂讀約 90 磅；一天繞 16 圈、16 次日出日落的軌道圈。",
+        "seconds": [
+          45,
+          75
+        ]
+      }
+    },
+    {
+      "id": "P52-009",
+      "question": "太空站上的火焰熄滅了，燃料為什麼還在『燒』？",
+      "domain": "science",
+      "mechanism_key": "combustion.iss_flex_cool_flame_after_radiative_extinction",
+      "answer_target": "NASA 在太空站燃燒整合架上的 FLEX 實驗，讓 1.5 到 5 公釐的燃料液滴在約 95 公升的燃燒室裡自由漂浮、用熱絲點火，已做了三百多次。大顆的正烷烴液滴（如正癸烷、正庚烷）先燒出可見的熱焰，熱焰因輻射散熱而熄滅後，彩色相機與紫外相機都看不到火了，但寬頻與窄頻輻射計仍量到放熱，液滴繼續縮小，直徑平方的縮小速率從每秒 0.41 降為 0.33 平方公釐（例：正癸烷、0.5 大氣壓、21% 氧），研究者稱為『冷焰』，最後在某個直徑突然停止，剩下的液滴只是蒸發。冷焰屬於與引擎爆震相關的低溫化學。",
+      "scope": "限所列燃料、壓力 0.5–1 atm 等條件；冷焰由輻射計推得、無影像；n-heptane 細節原期刊論文未讀。不說所有太空火焰都會變冷焰；不推到太空站防火規範。",
+      "source_ids": [
+        "P52-S009"
+      ],
+      "source_locator": "S009 1 Introduction；2 Experiments；3 首段；3.1 R377。",
+      "premise_status": "screened",
+      "notes": "填 P04 第四章『火焰變了能告訴你什麼』：審稿要的第二個有條件的太空站燃燒結果。約 2–3 條新事實。與 LEG-S48（近球形火焰、無 cool flame 支線）不重複。 原提案 F1-023。非作者覆核 V4（2026-11-11）照覆核意見改字後收；內容讀得到，有條件也寫明。單位描述與儀器名稱要照原文。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "沒有浮力對流，火焰可以安靜到看不見卻還在放熱。",
+        "visual": "D² 對時間的直線兩段斜率（依 Fig1a 重畫）與『可見焰熄滅』標記；輻射計曲線",
+        "seconds": [
+          60,
+          95
+        ]
+      }
+    },
+    {
+      "id": "P52-010",
+      "question": "同一顆太空液滴，多一點氧或加一點氦，火焰的結局為什麼完全不同？",
+      "domain": "science",
+      "mechanism_key": "combustion.iss_flex_oxygen_helium_conditions_change_extinction_mode",
+      "answer_target": "同一組 FLEX 實驗改變周圍氣體：改氧的試次是正癸烷：0.5 大氣壓下把氧濃度從 21% 提高到 25%，火焰更靠近液滴、溫度更高，就不再發生輻射熄滅，而是燒到很小時液滴微爆；降到 17%、14% 時，熱焰和冷焰都更早熄滅。加氦的試次是正辛烷：在一大氣壓、氧固定 21% 下用氦取代氮，氦導熱好、帶走熱量，燃燒加快但兩段時間都縮短；氦加到 75% 時，熱焰點著不到一秒就滅、冷焰也很快結束。",
+      "scope": "限論文所列個別試次（R374、R379、R383、R694、R698、R707）；不歸納成通用規律數值。",
+      "source_ids": [
+        "P52-S009"
+      ],
+      "source_locator": "S009 3.1 Fig1b–d；3.2 Fig2a–d。",
+      "premise_status": "screened",
+      "notes": "填 P04 第四章『分清條件』：同一微重力下火焰行為仍由氣體條件決定，避免『微重力火焰都一樣』。約 2 條新事實。 原提案 F1-024。非作者覆核 V4（2026-11-11）照覆核意見改字後收；數字與條件都對，只是兩組實驗是不同燃料，原稿沒寫，容易被聽成同一顆液滴。它正好支撐企劃要求的『不能說所有微重力火焰都一樣』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "微重力只拿掉了對流，結局還由氧和導熱決定。",
+        "visual": "四格小圖：21%/25%/17%/14% 氧的熄滅方式；氦比例滑桿",
+        "seconds": [
+          45,
+          75
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "P52-NA001",
+      "question": "台灣的國家公斤原器編號與目前質量追溯鏈怎麼走？",
+      "existing_ids": [
+        "M2001"
+      ],
+      "source_ids": [],
+      "reason": "搜尋未找到國家度量衡標準實驗室公開的原器編號或追溯鏈頁面；標檢局雙月刊 195 期 p.126 只經摘要工具讀，不是可記錄的逐句閱讀，不列為來源（原 F1-S025 已移除）。G13 不需此段也能成立。",
+      "reentry_condition": "找到 NML/標檢局官方追溯圖或報告並逐段讀。",
+      "reading_status": "WebSearch 結果與標檢局 p.126 摘要；未讀全文。"
+    },
+    {
+      "id": "P52-NA002",
+      "question": "FLEX 冷焰對太空站防火程序的意涵",
+      "existing_ids": [
+        "P52-009"
+      ],
+      "source_ids": [],
+      "reason": "只見 APS 摘要搜尋片段；Springer 2014 論文頁出現 bot 驗證，未繞過。",
+      "reentry_condition": "讀到 Dietrich 等 2014 Microgravity Sci. Technol. 全文或 NASA 正式說明。",
+      "reading_status": "link.springer.com 回傳 Client Challenge，未讀。"
+    }
+  ]
+}

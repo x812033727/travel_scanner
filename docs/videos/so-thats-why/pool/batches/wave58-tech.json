@@ -1,0 +1,106 @@
+{
+  "batch_id": "wave58-tech-20261111",
+  "created_on": "2026-11-12",
+  "scope": "端對端加密通訊的法院文件與第二家業者的白皮書：替長題 G38 補 Signal 以外的來源（作者 F11，覆核 V14）。",
+  "sources": [
+    {
+      "id": "T58-S001",
+      "url": "https://www.aclu.org/sites/default/files/field_document/open_whisper_documents_0.pdf",
+      "canonical_url": "https://www.aclu.org/sites/default/files/field_document/open_whisper_documents_0.pdf",
+      "title": "Open Whisper Systems subpoena documents（維吉尼亞東區聯邦檢察官函、大陪審團傳票、禁言令、OWS 回覆與附件 A、ACLU 致檢察官函、取代令）",
+      "publisher": "美國公民自由聯盟（ACLU）公布的法院與檢方文件影本；原件出自美國司法部維吉尼亞東區聯邦檢察官辦公室與該區聯邦地方法院",
+      "version": "2016（取代令蓋章日期 2016-09-29；PDF 建立於 2016-09-30）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀（PDF 內含 OCR 文字層，20 頁）",
+      "reading_scope": "20 頁全部讀完（OCR 有錯字，日期與帳號已被塗黑）",
+      "locator": "Redacted E.D. Va. Subpoena（第 2 頁）；Redacted E.D. Va. Order；Redacted OWS Response to Subpoena 與 Attachment A；Redacted Superseding Order",
+      "summary": "檢方的大陪審團傳票要 Open Whisper Systems（Signal 當時的營運者）交出兩個帳號的：用戶姓名、地址、電話、電子郵件、付款方式、註冊 IP、IP 歷史紀錄、帳號歷史、通聯紀錄（toll records）、上下游業者、由 cookie 資料關聯到的帳號，以及其他聯絡資訊。治安法官另依 18 U.S.C. §2705(b) 下令一年內不得向任何人透露有這張傳票。OWS 由 ACLU 代理回覆：兩個號碼只有一個有 Signal 帳號；手上符合傳票的資料只有帳號建立時間與最後一次連上伺服器的日期，附件 A 就是兩行 Unix 毫秒時間戳；其餘各類資料「沒有、因此無法提供」。之後法院在檢方與 OWS 律師都同意下發出取代令，准許公開塗黑後的文件。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "文件由 OWS 的代理人 ACLU 公布，不是獨立第三方；但內容是檢方與法院的文件影本（傳票、兩份法院命令），回覆函是向 FBI 探員提出的正式回覆。文件證明的是「OWS 這樣回覆、檢方同意公開」，不是法院對 Signal 伺服器做過鑑識。只是 2016 年一案。與池中 T57-S001（signal.org/bigbrother/eastern-virginia-grand-jury/）是同一事件的不同文件：T57-S001 是營運者的說明頁，這份是該頁所附的原始文件。 覆核 V14（2026-11-12）：summary 補：公開版 Attachment A 的兩個時間戳數值已塗黑；回覆函另主張依 ECPA §2703(c)(2) 傳票只能索取特定類別；取代令有法院書記官 A TRUE COPY 戳記。limitations 註明與池中 SRC-f002daa27215b9ef（signal.org/bigbrother/eastern-virginia-grand-jury/）是同一事件的原始文件。",
+      "author_cache": {
+        "file": "scratchpad/stw8/f11src/aclu-ows-documents.pdf",
+        "sha256_prefix": "cdb2f8deade32457",
+        "note": "文字檔 aclu-ows-documents.txt；ACLU 說明文章另存 aclu-edva.html／aclu-edva.txt（只當入口） 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T58-S002",
+      "url": "https://www.whatsapp.com/security/WhatsApp-Security-Whitepaper.pdf",
+      "canonical_url": "https://www.whatsapp.com/security/WhatsApp-Security-Whitepaper.pdf",
+      "title": "WhatsApp Encryption Overview — Technical white paper",
+      "publisher": "WhatsApp LLC（Meta）官方技術白皮書",
+      "version": "Version 10，2026-10-30 更新（首版 2016-04-05）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀",
+      "reading_scope": "Group Messages、Transport Security、Defining End-to-End Encryption、Implementation on WhatsApp Services、Implementation with Cloud API 五節逐句讀；Client Registration、Initiating Session Setup 略讀；其餘各節（通話、狀態、App State Syncing 等）只做關鍵字檢索",
+      "locator": "Group Messages（p.17）；Transport Security（p.35）；Defining End-to-End Encryption 與 Implementation with Cloud API（p.36）",
+      "summary": "WhatsApp 自己的說明：群組訊息用 Sender Keys——寄件人先產生一把鏈金鑰與簽章金鑰，用一對一的加密通道逐一交給每位成員；之後每則群組訊息只加密一次、簽章後把「單一份密文」交給伺服器，由伺服器做 server-side fan-out 分送給所有群組成員；有人離開時所有成員清掉 Sender Key 重來。用戶端與伺服器之間另有一層 Noise Pipes 加密通道，白皮書說它把中繼資料對「未經授權的網路觀察者」加密；伺服器只存用戶端的公開認證金鑰。白皮書也界定：與使用 Cloud API 的企業之間的通訊雖用同一套 Signal 協定加密，但因為不是直接送到企業自己控制的端點，WhatsApp 不把它視為端對端加密；用 Cloud API 時 Meta 會持有企業的私鑰。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "廠商自述，不是第三方查核；白皮書沒有列出伺服器保存哪些中繼資料，本核心不得由它推論「WhatsApp 伺服器存了什麼」；只逐句讀了五節。版本日期 2026-10-30，之後可能再改版。",
+      "author_cache": {
+        "file": "scratchpad/stw8/f11src/whatsapp-wp.pdf",
+        "sha256_prefix": "d4f7e87d2043246d",
+        "note": "文字檔 whatsapp-wp.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "T58-001",
+      "question": "那張要通訊軟體交資料的傳票，上面到底列了哪些東西？換回來的是什麼？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "e2ee.subpoena_documents_demand_list_vs_attachment",
+      "answer_target": "公開的文件本身看得到兩邊。維吉尼亞東區聯邦大陪審團 2016 年給 Signal 營運者的傳票，要兩個電話號碼的帳號資料：用戶姓名、地址、電話、電子郵件、付款方式、註冊 IP、IP 歷史紀錄、帳號歷史、通聯紀錄、上下游業者、由 cookie 關聯到的其他帳號。治安法官同時下令一年內不得向任何人（律師除外）提起這張傳票。營運者由律師回覆：兩個號碼只有一個有帳號；手上符合的只有帳號建立時間和最後一次連上伺服器的日期，附件就是這兩行、以毫秒計的時間戳，其餘各類「沒有，因此無法提供」；回覆函還指出，清單裡有些類別依法本來就不能只用傳票索取。後來在檢方同意下，法院改發命令，准許公開塗黑後的整包文件。",
+      "scope": "2016 年美國一案；文件由營運者的代理人 ACLU 公布，內容是檢方函、傳票、兩份法院命令與回覆函的影本，取代令上有法院書記官的戳記。它證明的是當事人這樣回覆、檢方同意公開，不是法院鑑識過伺服器。公開版附件的兩個時間戳數值已塗黑。",
+      "source_ids": [
+        "T58-S001"
+      ],
+      "source_locator": "Redacted E.D. Va. Subpoena；Order；OWS Response 與 Attachment A；Superseding Order",
+      "premise_status": "screened",
+      "notes": "算 1 條：傳票索取的清單 0.5，一年禁言令、只有一個號碼有帳號與檢方同意後公開 0.5。「只交出兩個時間戳」的結論已在 T57-001，不重計。 原提案 F11-008（目標 G38，原角色 hook；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；逐句相符。這份文件把 T57-001 的營運者自述接上對造與法院的文件，是上一輪 still_missing（1）要的。新增的事實只有清單與程序，算 1 條，同意作者（嚴格算至少 0.5 條，見題評）。補一句原文有、作者沒用的：回覆函對傳票範圍的法律異議。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "清單很長，回函很短：加密擋住的是內容，沒有存的東西則是連法院命令也變不出來。",
+        "visual": "一張傳票，十幾個項目逐行亮起；翻到回覆函的附件，只剩兩行數字。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T58-002",
+      "question": "群組訊息也是端對端加密，那是誰負責把一則訊息送到每個成員手上？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "e2ee.whatsapp_sender_keys_server_fanout_cloud_api",
+      "answer_target": "在 WhatsApp，是伺服器。它的技術白皮書寫明群組的作法：寄件人先產生一把自己的「寄件金鑰」，用一對一的加密通道逐一交給群組裡每位成員的每台裝置；之後每則群組訊息只加密一次，把單一份密文交給伺服器，由伺服器分送給所有群組成員；有人離開時，所有成員清掉寄件金鑰重來。也就是內容是鎖著的，分送這一步由伺服器做。白皮書還劃了一條線：和使用 Cloud API 的企業帳號對話，雖然用的是同一套加密協定，但訊息不是直接送到企業自己控制的端點，WhatsApp 自己不把它算作端對端加密，而且在這種情形下 Meta 會持有企業的私鑰。",
+      "scope": "WhatsApp 白皮書第 10 版（2026-10-30）的自述，不是第三方查核；白皮書沒有列出伺服器保存哪些中繼資料或名單，本核心只照字面說「分送由伺服器做」，不得延伸成「WhatsApp 伺服器存了什麼」。與 Signal 對照時要用 T57-009 的完整說法（2014 年逐人送出、伺服器不知道有群組；2019 年起把加密後的群組狀態存在伺服器），不可只拿 2014 年的舊設計對比。Cloud API 一句是白皮書的定義，不要延伸成對特定企業的指控。只逐句讀了五節。",
+      "source_ids": [
+        "T58-S002"
+      ],
+      "source_locator": "Group Messages（p.17）；Defining End-to-End Encryption；Implementation with Cloud API（p.36）",
+      "premise_status": "screened",
+      "notes": "算 1 條：伺服器分送 0.5、Cloud API 不算端對端 0.5。 原提案 F11-009（目標 G38，原角色 segment；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；原文相符，刪掉一句推論與一句不對等的跨文件對比後收。這是談第二個服務時用它自己的官方文件，符合上一輪 still_missing（4）。算 1 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「加密」和「誰在送信」是兩件事：內容鎖住了，名單還是得有人拿著。",
+        "visual": "一則群組訊息變成一個上鎖的包裹，交到伺服器手上，伺服器照著一張名單複製成好幾份送出去；名單畫在伺服器那一側。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "T58-NA001",
+      "question": "伺服器既然拿著群組名單，它能不能自己改名單？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "非作者覆核 V14（2026-11-12）退回：裁定：會議簡報不能算。理由有三：（一）本輪標準寫明「只讀到摘要的不算全文」，簡報是作者自己的條列摘要，沒有模型的前提、名單由誰簽、成員在介面上看得到什麼，這些正是「伺服器控制名單」這句話在片中會不會被說過頭的關鍵；（二）這句話指名一個有二十億使用者的服務有設計弱點，只憑一張投影片的一行字不夠；（三）作者的答案已經出現一句簡報上沒有的話（沒有用密碼學保護），正說明只靠簡報會自己補。簡報可以當入口與待讀清單，不當來源、不計條數、不進本題最終核心。重評條件：讀到論文全文（King’s College 典藏的 accepted manuscript 是 CC BY，換個網路環境應可讀；或 ePrint 2025/794、Rösler 等 EuroS&P 2018）第 3、7 節後，照原文寫，可算 1 條。在那之前，片中關於「伺服器能改成員」只能照 T57-009 說「Signal 的說法是」。 原提案 F11-010。",
+      "reentry_condition": "覆核理由所列的缺口補上後重提。",
+      "reading_status": "已讀來源，核心退回"
+    }
+  ]
+}

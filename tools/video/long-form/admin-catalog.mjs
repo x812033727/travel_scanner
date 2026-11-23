@@ -13,7 +13,6 @@ const SOURCES = {
   season1: ["docs/videos/so-thats-why/episodes.json", "episodes"],
   season2: ["docs/videos/so-thats-why/season2/dispositions.json", "episodes"],
   season3: ["docs/videos/so-thats-why/season3-topics.json", "episodes"],
-  "brand-stories": ["docs/videos/story-plans/brand-stories-100/stories.json", "stories"],
   "ai-terms": ["docs/videos/ai-terms/terms.json", "terms"],
 };
 const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
@@ -67,25 +66,6 @@ function sourceText(catalog, record) {
       field("原查核入口", record.original_check), field("原文字審稿收據", record.review_receipt),
       field("相關題目", list(record.duplicate_of)));
   }
-  if (catalog === "brand-stories") {
-    const chapters = record.chapters.map((chapter, index) => `第 ${index + 1} 章\n${chapter.point}`).join("\n\n");
-    const claims = record.must_verify.map((claim, index) => paragraphs(`${index + 1}. ${claim.claim}`,
-      `來源編號：${claim.sources.map((number) => number + 1).join("、")}`,
-      claim.core ? "原企劃標示為核心主張。" : "",
-      claim.attributed ? "保留來源歸屬，不改寫成無條件結論。" : "",
-      claim.reviewer_only ? "原查核標示：僅審稿者可讀的來源。" : "")).join("\n\n");
-    const sources = record.sources.map((source, index) => paragraphs(`${index + 1}. ${source.publisher}\n${source.url}`,
-      field("原來源類型", source.kind), field("原來源支持的內容", source.supports), field("原確認日期", source.checked))).join("\n\n");
-    const cast = record.cast.map((person) => paragraphs(field("原人物識別", person.id), person.role, person.appearance)).join("\n\n");
-    return paragraphs(field("題目", record.title), field("故事主題", record.subject), field("原企劃分類", record.category),
-      field("原企劃地區", record.region), field("原企劃敏感議題標記", record.sensitivity), field("相關站內文章", record.related_guide),
-      field("原企劃製作序號", String(record.number)), field("故事摘要", record.logline), field("核心問題", record.question),
-      field("章節要點", chapters), field("帶走的觀點", record.takeaway), field("必須核對的主張", claims),
-      field("原企劃來源", sources), field("查核限制與未採用說法", record.caveats), field("畫面注意事項", record.image_notes),
-      field("人物畫面提案", cast), field("人名與名稱", list(record.names)),
-      field("縮圖文字提案", record.thumbnail?.headline), field("縮圖畫面提案", record.thumbnail?.idea),
-      record.publish ? `原企劃的發布順序提案（不是正式排程）\n第 ${record.publish.day} 天，${record.publish.slot}` : "");
-  }
   return paragraphs(field("來源文章標題", record.article_title), field("名詞", record.zh), field("英文名詞", record.en),
     field("其他稱呼", list(record.aliases)), field("開場問題", record.hook), field("企劃備註與分工", record.notes),
     field("來源文章", record.article_url), field("相鄰名詞", list(record.related)),
@@ -95,7 +75,6 @@ function sourceText(catalog, record) {
 function stageFor(catalog, record) {
   if (catalog === "season1" || catalog === "season2") return "REVIEWED_OUTLINE_NOT_MEDIA";
   if (catalog === "season3") return "CHECKED_CANDIDATE_REQUIRES_OUTLINE";
-  if (catalog === "brand-stories") return "REVIEWED_STORY_PLAN_NOT_MEDIA";
   return record.status === "covered" ? "COVERED_DO_NOT_REMAKE" : "TERM_PLAN_NOT_MEDIA";
 }
 
@@ -114,8 +93,8 @@ export function buildAdminCatalog({ root = ROOT, readSource = sourceReader(root)
   const policyProblems = validatePolicy(policy);
   if (policyProblems.length) throw new Error(policyProblems.join("; "));
   if (plans.schema_version !== 1 || plans.status !== "DURATION_PLANS_ONLY" || !Array.isArray(plans.entries)
-    || plans.entries.length !== 473 || plans.totals?.entries !== 473 || !same(plans.totals.catalogs, CATALOG_COUNTS)) {
-    throw new Error("all 473 plans in the five expected catalogs are required");
+    || plans.entries.length !== 373 || plans.totals?.entries !== 373 || !same(plans.totals.catalogs, CATALOG_COUNTS)) {
+    throw new Error("all 373 plans in the four expected catalogs are required");
   }
   if (!plans.source_hashes || typeof plans.source_hashes !== "object" || Array.isArray(plans.source_hashes)) {
     throw new Error("plans source hashes are required");
@@ -164,8 +143,7 @@ export function buildAdminCatalog({ root = ROOT, readSource = sourceReader(root)
     if (slugs.has(plan.video_slug)) throw new Error(`duplicate video slug: ${plan.video_slug}`);
     slugs.add(plan.video_slug);
     counts[plan.catalog] += 1;
-    const expectedSlug = plan.catalog === "brand-stories" ? record.slug
-      : plan.catalog === "ai-terms" ? record.video_slug : `sothatswhy-${record.id.toLowerCase()}`;
+    const expectedSlug = plan.catalog === "ai-terms" ? record.video_slug : `sothatswhy-${record.id.toLowerCase()}`;
     if (plan.video_slug !== expectedSlug || plan.stage !== stageFor(plan.catalog, record)
       || plan.source_status !== (record.status ?? "reviewed-plan")) throw new Error(`source identity/stage drift: ${identity}`);
     if (plan.target_seconds !== policy.catalogs[plan.catalog].target_seconds
@@ -232,7 +210,7 @@ export function runAdminCatalog(command, root = ROOT) {
   } else if (readFileSync(destination, "utf8") !== text) {
     throw new Error("admin catalog differs from current hash-bound source plans; rebuild and review it");
   }
-  return `${command === "build" ? "Built" : "PASS:"} all 473 source planning entries; no database import or production work.`;
+  return `${command === "build" ? "Built" : "PASS:"} all 373 source planning entries; no database import or production work.`;
 }
 
 if (process.argv[1] && pathToFileURL(path.resolve(process.argv[1])).href === import.meta.url) {

@@ -25,6 +25,7 @@ from app.config import Settings
 from app.models import User, VideoProject
 from app.video_reviews import admin_service as reviews
 from app.video_reviews.storage import ReviewStore, valid_slug
+from app.video_shorts import hand_upload
 from app.video_youtube import sync, vps_settings
 from app.video_youtube.errors import Refused
 from app.video_youtube.requests import captioned, text_problem
@@ -156,7 +157,17 @@ async def assert_idle(session: AsyncSession, slug: str, *, upload: bool = False)
     if settings is None:
         return
     job = await latest(slug, settings=settings)
-    if job and (job.get("state") in ACTIVE or (upload and job.get("video_id"))):
+    if not job:
+        return
+    if job.get("state") in ACTIVE:
+        raise Refused(409, "vps_job_exists", "這支影片已有 VPS 工作，請先查看或記錄它的結果")
+    # A finished job's video the owner unlinked (reviews.unlink_youtube) is the old cut's, not
+    # an upload of this one the site forgot to record.
+    if (
+        upload
+        and job.get("video_id")
+        and job["video_id"] not in await reviews.unlinked_youtube_ids(session, slug)
+    ):
         raise Refused(409, "vps_job_exists", "這支影片已有 VPS 工作，請先查看或記錄它的結果")
 
 
@@ -316,7 +327,11 @@ async def start(session: AsyncSession, slug: str, user: User, payload: StartIn) 
     supplied_id = reviews.youtube_video_id(payload.url or "")
     if payload.url and not supplied_id:
         raise Refused(422, "vps_video_invalid", "請貼上有效的 YouTube 影片網址")
-    known_id = project.youtube_video_id or (old or {}).get("video_id")
+    # The last job's video stands for this one unless the owner unlinked it (a remade cut).
+    old_id = (old or {}).get("video_id")
+    if old_id and old_id in await reviews.unlinked_youtube_ids(session, slug):
+        old_id = None
+    known_id = project.youtube_video_id or old_id
     if known_id and supplied_id and known_id != supplied_id:
         raise Refused(409, "vps_video_changed", "影片網址與已記錄的影片不同")
     video_id = known_id or supplied_id
@@ -326,6 +341,8 @@ async def start(session: AsyncSession, slug: str, user: User, payload: StartIn) 
             "vps_video_uncertain",
             "API 曾開始上傳，請先到 Studio 核對並貼上原影片網址，避免重複上傳",
         )
+    if not video_id and await hand_upload.is_hand_uploaded(session, project):
+        raise Refused(409, "vps_hand_upload", hand_upload.NOT_SENT)
     m = dict(pack.metadata)
     title = payload.title if payload.title is not None else m.get("title", "")
     description = (

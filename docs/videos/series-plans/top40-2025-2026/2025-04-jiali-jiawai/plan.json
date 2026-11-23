@@ -1,0 +1,44 @@
+{
+  "slug": "2025-04-jiali-jiawai",
+  "title": "海風吹進門",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": { "min": 90, "max": 180, "chapter_finale_min": 120 },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "站主 2026-10-28：每集 3–5 個鉤子。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），可再加 extra_hooks 0–2 句；lib/validate.mjs 擋掉寫成同一件事的。"
+  },
+  "closed_ending": false,
+  "ending_note": "第五季收掉主線：兩個孩子長大、老屋改建完成、阿玉的魚攤交給小婷、阿明退休那天全家回到當年認識的堤防；第 300 集最後一格，小傑帶著一個女孩回家，女孩手裡抱著一個嬰兒，留第二部的口子。站主要收死的話，刪掉最後一格、cliffhanger 改 emotion 即可。",
+  "aspect": { "decided": null, "suggested": "16:9", "why": "照《種田娶妻打天下》的建議。" },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom）；target_minutes 填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線。",
+    "look": "真人電影感 1990 年代台灣南部港口小鎮年代劇：鐵皮屋、魚市、公車、柑仔店、卡拉 OK；暖黃與海藍；台語對白配繁中字幕。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md；前 3 秒允許是一句台語金句或一個年代物件特寫。",
+    "reuse": "固定場景：鹽港的老屋與飯桌、魚市魚攤、公車站牌與公車內、小學校門、堤防。",
+    "voice": "台語為主、國語夾雜；阿玉大嗓、阿明慢條斯理，第 1 集前要站主試聽核定（台語 TTS 要先測）。"
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json。",
+    "per_episode": "平均約 120 秒一集 ≈ 3,000–3,800 點。",
+    "per_season": "60 集 ≈ 18–23 萬點；五季 ≈ 90–115 萬點。",
+    "levers": "飯桌文戲用一張首格＋緩推可省四到六成；年代街景每季拍一組重用。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包，不是逐集分鏡劇本。",
+  "reference": {
+    "work": "《家裡家外》（2025 紅果峰值熱度第 4，聽花島，四川方言年代劇）",
+    "how": "只學套路：方言＋年代還原＋重組家庭、強勢直爽的媽媽與寵妻護家的爸爸、沒有大反派、衝突在生活尺度內解決、繼親認同、年代懷舊、季末停在家庭面對新階段。地域（1990 年代台灣南部港口小鎮）、語言（台語）、職業（魚攤與公車司機）、人名、劇情與台詞全部原創，不搬原劇情節。"
+  },
+  "title_candidates": ["海風吹進門", "魚攤媽媽與公車爸爸", "鹽港一家"],
+  "title_decision": "未定；先用候選第一個《海風吹進門》，站主可改。"
+}

@@ -8,13 +8,19 @@
 // so the listener's check can hear each phrase. Nothing the other tool measured is taken over:
 // the cut is measured again, and what cannot be measured from a finished file (where the cards
 // sit inside the frame) is left for the owner to look at once.
+//
+// A silent drama (meta.json "line": "drama", "silent": true; docs/videos/shorts-drama/) says
+// nothing, so its directory holds final.mp4 and meta.json, no zh-TW.srt, and may hold the cover
+// its maker chose (cover.png, else the first frame is taken). Its script has no scenes and its
+// timeline no cue; meta.json may carry `localizations`, its own titles and descriptions in the
+// eight other languages, which go to YouTube as they are.
 import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
 import { locateFfmpeg, runTool } from '../assemble/ffmpeg.mjs';
 import { ROOT, resolveWorkBase } from '../core/paths.mjs';
 import { measureFinal } from './build.mjs';
-import { PROFILE, SCRIPT_FILE, USAGE_FILE, parseSrt, sha256, srt, validate } from './core.mjs';
+import { PROFILE, SCRIPT_FILE, USAGE_FILE, isSilent, parseSrt, sha256, srt, validate } from './core.mjs';
 
 const saveJson = (file, data) => writeFileSync(file, `${JSON.stringify(data, null, 2)}\n`);
 const number = (i) => String(i).padStart(3, '0');
@@ -25,7 +31,7 @@ const PHRASES_PER_SCENE = 3;
 export function timelineFromCaptions(cues, scenes) {
   let phrase = 0;
   const built = [];
-  for (const [sceneIndex, scene] of scenes.entries()) {
+  for (const [sceneIndex, scene] of (scenes ?? []).entries()) {
     for (const text of scene.narration) {
       const cue = cues[phrase];
       const startFrame = Math.round(cue.start * PROFILE.fps);
@@ -77,13 +83,36 @@ export function frameRateProblem(video) {
   return `the cut runs at ${named}, not the Shorts profile's ${PROFILE.fps} fps: re-encode it to ${PROFILE.fps} fps (ffmpeg -vf fps=${PROFILE.fps}) and import it again`;
 }
 
-export async function importShort({ from, workdir, tools = null, measureImpl = measureFinal, now = () => new Date() }) {
-  for (const name of ['final.mp4', 'zh-TW.srt', 'meta.json']) if (!existsSync(path.join(from, name))) throw new Error(`${from} has no ${name}`);
+/** The script of a silent drama: meta.json's fields, and nothing said. */
+export function silentScriptFromImport(meta) {
+  const { headlines: _headlines, scenes: _scenes, ...fields } = meta;
+  return { schema_version: 2, format: 'shorts', locale: 'zh-TW', ...fields };
+}
+
+/** The script a directory to import makes, and its captions (none for a silent drama). */
+function readImport(from) {
+  for (const name of ['final.mp4', 'meta.json']) if (!existsSync(path.join(from, name))) throw new Error(`${from} has no ${name}`);
   const meta = JSON.parse(readFileSync(path.join(from, 'meta.json'), 'utf8'));
-  const cues = parseSrt(readFileSync(path.join(from, 'zh-TW.srt'), 'utf8'));
+  const captions = path.join(from, 'zh-TW.srt');
+  if (meta?.silent === true) {
+    if (existsSync(captions)) throw new Error(`${from} holds zh-TW.srt, but meta.json says the drama is silent: a silent drama says nothing, so take the captions out or the "silent" out`);
+    const doc = silentScriptFromImport(meta);
+    const errors = validate(doc);
+    if (errors.length) throw new Error(`meta.json does not make the script of a silent drama:\n${errors.join('\n')}`);
+    return { doc, cues: [] };
+  }
+  if (!existsSync(captions)) throw new Error(`${from} has no zh-TW.srt (a silent drama says "silent": true in meta.json)`);
+  const cues = parseSrt(readFileSync(captions, 'utf8'));
+  if (!cues.length) throw new Error(`${from}/zh-TW.srt holds no caption (a silent drama says "silent": true in meta.json)`);
   const doc = scriptFromImport(meta, cues);
   const errors = validate(doc);
   if (errors.length) throw new Error(`meta.json and the captions do not make a script:\n${errors.join('\n')}`);
+  return { doc, cues };
+}
+
+export async function importShort({ from, workdir, tools = null, measureImpl = measureFinal, now = () => new Date() }) {
+  const { doc, cues } = readImport(from);
+  const silent = isSilent(doc);
   // An imported experiment would need its evidence too; that is a build, not an import.
   if (doc.evidence?.length) throw new Error('an imported cut carries no evidence files: build an experiment from its script instead');
   const { ffmpeg, ffprobe } = tools ?? (await locateFfmpeg());
@@ -108,16 +137,19 @@ export async function importShort({ from, workdir, tools = null, measureImpl = m
     // Each phrase as the listener's check takes it: 48 kHz, mono, cut at its caption's times.
     await runTool(ffmpeg, ['-y', '-v', 'error', '-ss', (cue.startFrame / PROFILE.fps).toFixed(3), '-t', (cue.frames / PROFILE.fps).toFixed(3), '-i', final, '-vn', '-ac', '1', '-ar', '48000', '-c:a', 'pcm_s16le', path.join(directory, 'audio', `${number(cue.index)}.wav`)]);
   }
-  await runTool(ffmpeg, ['-y', '-v', 'error', '-i', final, '-frames:v', '1', path.join(directory, 'upload', 'cover.png')]);
+  // The cover its maker chose, for a silent drama that brings one; else the first frame.
+  const cover = path.join(from, 'cover.png');
+  if (silent && existsSync(cover)) copyFileSync(cover, path.join(directory, 'upload', 'cover.png'));
+  else await runTool(ffmpeg, ['-y', '-v', 'error', '-i', final, '-frames:v', '1', path.join(directory, 'upload', 'cover.png')]);
   const scriptBytes = `${JSON.stringify(doc, null, 2)}\n`;
   writeFileSync(path.join(directory, SCRIPT_FILE), scriptBytes);
   // Written from the timeline, on the frame grid: the package's captions are the ones the
-  // checks read, whatever clock the other tool wrote its own on.
-  writeFileSync(path.join(directory, 'upload', 'zh-TW.srt'), srt(timeline));
+  // checks read, whatever clock the other tool wrote its own on. A silent drama has none.
+  if (!silent) writeFileSync(path.join(directory, 'upload', 'zh-TW.srt'), srt(timeline));
   saveJson(path.join(directory, 'upload', 'titles.json'), doc.titles);
   saveJson(path.join(directory, 'timeline.json'), timeline);
   saveJson(path.join(directory, 'checks.json'), { ok: false, imported: true, profile: PROFILE, seconds, frames, layout: null, loudness: measured.loudness, final_sha256: sha256(finalBytes), checked_at: now().toISOString() });
   saveJson(path.join(directory, USAGE_FILE), { narration: { seconds: 0, characters: 0, calls: 0, provider: 'files' }, stages: {}, checks: {} });
-  saveJson(path.join(directory, 'upload', 'manifest.json'), { schema_version: 2, slug: doc.slug, line: doc.line, series: doc.series, build_id: `import-${sha256(finalBytes).slice(0, 16)}`, status: 'imported', created_at: now().toISOString(), document_sha256: sha256(scriptBytes), narrator: { source: 'imported' }, evidence: [], files: ['final.mp4', 'zh-TW.srt', 'cover.png', 'titles.json'].map((name) => ({ name, sha256: sha256(readFileSync(path.join(directory, 'upload', name))) })) });
-  return { directory, final, seconds, status: 'imported', phrases: timeline.cues.length };
+  saveJson(path.join(directory, 'upload', 'manifest.json'), { schema_version: 2, slug: doc.slug, line: doc.line, series: doc.series, build_id: `import-${sha256(finalBytes).slice(0, 16)}`, status: 'imported', created_at: now().toISOString(), document_sha256: sha256(scriptBytes), narrator: { source: 'imported' }, evidence: [], files: ['final.mp4', ...(silent ? [] : ['zh-TW.srt']), 'cover.png', 'titles.json'].map((name) => ({ name, sha256: sha256(readFileSync(path.join(directory, 'upload', name))) })) });
+  return { directory, final, seconds, status: 'imported', phrases: timeline.cues.length, ...(silent ? { silent: true } : {}) };
 }

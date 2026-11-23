@@ -1,0 +1,653 @@
+{
+  "batch_id": "wave137-research-20261119",
+  "created_on": "2026-11-19",
+  "scope": "從皮夾裡意外破損的鈔票出發，逐張比較殘券面積如何換成給付、哪些片可以合算，最後以洪災大量回收的處理紀錄查核實物怎麼清點。算例均假設為真券且其他申請條件成立。 參考 #2182「桌面／口袋 30 公分掃描」與「跨文化神轉折」，以 K117-0403 的半張歐元、K133-0002 的新臺幣碎片為種子。保留「意外只救回一部分」場景，改問面額的部分給付怎麼算；參考批 N9022 的剩餘日圓硬幣另屬機場銷售。",
+  "sources": [
+    {
+      "id": "R137-S01",
+      "url": "https://banknotes.rba.gov.au/damaged-banknotes/damaged-banknotes-policy/",
+      "canonical_url": "https://banknotes.rba.gov.au/damaged-banknotes/damaged-banknotes-policy/",
+      "title": "Damaged Banknotes Policy",
+      "publisher": "澳洲儲備銀行",
+      "network": "澳洲儲備銀行",
+      "version": "本次實際開啟的政策、指令、估價表或當事機關災後紀錄",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀當局原文，PDF 對照頁、表格欄位與算例。",
+      "reading_scope": "Incomplete Banknotes，三檔規則、半張十元例與流水號段",
+      "locator": "Incomplete Banknotes，三檔規則、半張十元例與流水號段",
+      "summary": "少了不到兩成可付全額；少了二至八成按剩餘面積付、按澳元整數估值；少了超過八成沒有給付。舉半張十澳元可換五元。",
+      "limitations": "局限澳洲合資格的殘券申請；碎片的估值與是否受理是兩件事。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R137-S02",
+      "url": "https://banknotes.rba.gov.au/assets/pdf/grids-polymer.pdf",
+      "canonical_url": "https://banknotes.rba.gov.au/assets/pdf/grids-polymer.pdf",
+      "title": "澳洲聚合物鈔券缺片估價格",
+      "publisher": "澳洲儲備銀行",
+      "network": "澳洲儲備銀行",
+      "version": "本次實際開啟的政策、指令、估價表或當事機關災後紀錄",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀當局原文，PDF 對照頁、表格欄位與算例。",
+      "reading_scope": "Grids for Assessing Value of Australian Polymer Banknotes with Pieces Missing，首頁 Formula 與各面額圖尺",
+      "locator": "Grids for Assessing Value of Australian Polymer Banknotes with Pieces Missing，首頁 Formula 與各面額圖尺",
+      "summary": "按實際尺寸印出、比對尺寸，算出完全和部分露出的格數；以一百減去格數除一百估留存比例。算到澳幣五角的尾數向下取整。",
+      "limitations": "這是估價工具；央行的審定金額可能不同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R137-S03",
+      "url": "https://www.rbi.org.in/commonman/Upload/English/FAQs/PDFs/INDIANCURRENCY15042025.pdf",
+      "canonical_url": "https://www.rbi.org.in/commonman/Upload/English/FAQs/PDFs/INDIANCURRENCY15042025.pdf",
+      "title": "Indian Currency，鈔券與硬幣問答",
+      "publisher": "印度儲備銀行",
+      "network": "印度儲備銀行",
+      "version": "本次實際開啟的政策、指令、估價表或當事機關災後紀錄",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀當局原文，PDF 對照頁、表格欄位與算例。",
+      "reading_scope": "2025 年 4 月 15 日 PDF，收兌單元第 4 問及 Note Refund Rules – Amended 對照表",
+      "locator": "2025 年 4 月 15 日 PDF，收兌單元第 4 問及 Note Refund Rules – Amended 對照表",
+      "summary": "到二十盧比的鈔券，最大完整一片必須大於一半才拿全額。五十盧比以上另有半額檔。",
+      "limitations": "適用殘券；不要把同張兩片合成完整鈔的特殊情形放進同一欄。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R137-S04",
+      "url": "https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=18770",
+      "canonical_url": "https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=18770",
+      "title": "Reserve Bank of India (Note Refund) Rules 2009，整合 2018 修正",
+      "publisher": "印度儲備銀行",
+      "network": "印度儲備銀行",
+      "version": "本次實際開啟的政策、指令、估價表或當事機關災後紀錄",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀當局原文，PDF 對照頁、表格欄位與算例。",
+      "reading_scope": "Part II，Rule 8(1)、(2)(i)–(iv) 與 Table 1、2；表2 ₹50 舊券與 New MG Series 兩列",
+      "locator": "Part II，Rule 8(1)、(2)(i)–(iv) 與 Table 1、2；表2 ₹50 舊券與 New MG Series 兩列",
+      "summary": "五十盧比以上按最大單一連續片的面積判，表列全額、半額所需的最小平方公分；同張兩大塊各達四成另有得付全額條款。",
+      "limitations": "面積表向上取到整平方公分；同面額不同版型有不同門檻。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R137-S05",
+      "url": "https://rbi.org.in/scripts/BS_ViewMasDirections.aspx?id=13362",
+      "canonical_url": "https://rbi.org.in/scripts/BS_ViewMasDirections.aspx?id=13362",
+      "title": "Master Direction – Facility for Exchange of Notes and Coins（2026-10-16 更新）",
+      "publisher": "印度儲備銀行",
+      "network": "印度儲備銀行",
+      "version": "本次實際開啟的政策、指令、估價表或當事機關災後紀錄",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀當局原文，PDF 對照頁、表格欄位與算例。",
+      "reading_scope": "Soiled Note 與 Mutilated and Imperfect Notes 兩節，及其對修訂後 NRR 的引用",
+      "locator": "Soiled Note 與 Mutilated and Imperfect Notes 兩節，及其對修訂後 NRR 的引用",
+      "summary": "同張鈔兩片合起來完整、沒有缺少重要特徵並貼合，可按污損鈔收受。缺了一部分的則屬殘損鈔。",
+      "limitations": "指令把殘券金額連回 2009 規則及其 2018 修正，不能從新指令的年份另造新的比例。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R137-S06",
+      "url": "https://www.boj.or.jp/en/about/services/bn/sonsyo.htm",
+      "canonical_url": "https://www.boj.or.jp/en/about/services/bn/sonsyo.htm",
+      "title": "Criteria for Exchange of Damaged Banknotes",
+      "publisher": "日本銀行",
+      "network": "日本銀行",
+      "version": "本次實際開啟的政策、指令、估價表或當事機關災後紀錄",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀當局原文，PDF 對照頁、表格欄位與算例。",
+      "reading_scope": "正文資格文字與三張給付圖，2/3、2/5 兩處界點",
+      "locator": "正文資格文字與三張給付圖，2/3、2/5 兩處界點",
+      "summary": "仍保有正反兩面，餘面積達三分之二付全額；達五分之二但未達三分之二付半額。可辨為鈔票的灰燼也適用這些條件。",
+      "limitations": "不能因見到散灰就假設能付全額；原規定還限定提交人及辦理處所。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R137-S07",
+      "url": "https://www.boj.or.jp/en/about/services/bn/hikikae.htm",
+      "canonical_url": "https://www.boj.or.jp/en/about/services/bn/hikikae.htm",
+      "title": "Exchange of Damaged Cash",
+      "publisher": "日本銀行",
+      "network": "日本銀行",
+      "version": "本次實際開啟的政策、指令、估價表或當事機關災後紀錄",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀當局原文，PDF 對照頁、表格欄位與算例。",
+      "reading_scope": "§4(1)、§5(1)(a)、§5(2)，正反面、同券認定與脆片容器",
+      "locator": "§4(1)、§5(1)(a)、§5(2)，正反面、同券認定與脆片容器",
+      "summary": "保留正反面是鈔券收兌條件。可識別為同張者才合計留存面積；易碎燒焦殘鈔可放容器避免進一步破損。",
+      "limitations": "缺正反面或無法辨認的碎屑不能只用紙面外廓估價。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R137-S08",
+      "url": "https://www.rbnz.govt.nz/money-and-cash/money-and-cash-resources/what-to-do-with-damaged-or-old-cash",
+      "canonical_url": "https://www.rbnz.govt.nz/money-and-cash/money-and-cash-resources/what-to-do-with-damaged-or-old-cash",
+      "title": "What to do with damaged or old cash",
+      "publisher": "紐西蘭儲備銀行",
+      "network": "紐西蘭儲備銀行",
+      "version": "本次實際開啟的政策、指令、估價表或當事機關災後紀錄",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀當局原文，PDF 對照頁、表格欄位與算例。",
+      "reading_scope": "Damaged banknotes，Series 6 or 7；How to make a claim",
+      "locator": "Damaged banknotes，Series 6 or 7；How to make a claim",
+      "summary": "該頁以意外毀損的第六或七系列真鈔為對象，一般落在三分之一與三分之二之間付半額，達三分之二可付全額。",
+      "limitations": "避用正好三分之一：網頁同時用了 more than 與 between。六七系列殘券及舊幣兌換是不同段落。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R137-S09",
+      "url": "https://www.snb.ch/dam/jcr%3A1312f6a5-9d82-4946-b2ea-16ecd0347e8b/instr_damaged_notes.en.pdf",
+      "canonical_url": "https://www.snb.ch/dam/jcr%3A1312f6a5-9d82-4946-b2ea-16ecd0347e8b/instr_damaged_notes.en.pdf",
+      "title": "Instruction sheet on exchanging damaged banknotes",
+      "publisher": "瑞士國家銀行",
+      "network": "瑞士國家銀行",
+      "version": "本次實際開啟的政策、指令、估價表或當事機關災後紀錄",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀當局原文，PDF 對照頁、表格欄位與算例。",
+      "reading_scope": "2026-04-20，第 1 頁 Important information on exchanging banknotes",
+      "locator": "2026-04-20，第 1 頁 Important information on exchanging banknotes",
+      "summary": "一般立即交換的例子包含一塊完整連續、超過一半且完整序號可辨；或各自連續的兩塊合計過半且看得出同號。難以重組的大量殘片可能需數月檢查。",
+      "limitations": "這些是立即兌換條件。其他送件仍可能個別審查，不能把未達立即條件直接說成零元。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R137-S10",
+      "url": "https://www.rba.gov.au/publications/bulletin/2022/jun/what-can-you-do-with-your-damaged-banknotes.html",
+      "canonical_url": "https://www.rba.gov.au/publications/bulletin/2022/jun/what-can-you-do-with-your-damaged-banknotes.html",
+      "title": "What Can You Do With Your Damaged Banknotes?",
+      "publisher": "澳洲儲備銀行",
+      "network": "澳洲儲備銀行",
+      "version": "本次實際開啟的政策、指令、估價表或當事機關災後紀錄",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀當局原文，PDF 對照頁、表格欄位與算例。",
+      "reading_scope": "Bulletin June 2022，Claims from Cyclone Debbie in 2017、Figure 5",
+      "locator": "Bulletin June 2022，Claims from Cyclone Debbie in 2017、Figure 5",
+      "summary": "澳洲央行收到 Debbie 風災 32 件洪災申請，共支付約 330 萬澳元；處理約 9.2 萬張，濕鈔黏在一起須重複清點，機關可用乾燥櫃。",
+      "limitations": "這些是特定風災各件合計，不能用來給一張殘券估價。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R137-S11",
+      "url": "https://www.bundesbank.de/en/tasks/topics/bundesbank-processes-more-than-1-5-million-banknotes-following-catastrophic-floods-885344",
+      "canonical_url": "https://www.bundesbank.de/en/tasks/topics/bundesbank-processes-more-than-1-5-million-banknotes-following-catastrophic-floods-885344",
+      "title": "Bundesbank processes more than 1.5 million banknotes following catastrophic floods",
+      "publisher": "德國聯邦銀行",
+      "network": "德國聯邦銀行",
+      "version": "本次實際開啟的政策、指令、估價表或當事機關災後紀錄",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀當局原文，PDF 對照頁、表格欄位與算例。",
+      "reading_scope": "2022-02-10 原報告，Manual labour 及美因茨記者會的實收統計",
+      "locator": "2022-02-10 原報告，Manual labour 及美因茨記者會的實收統計",
+      "summary": "德國 2021 年洪災送來泡透的紙鈔，機器會受損，工作人員乾燥、壓平、查真偽、清點；乾衣機放網球能避免鈔券扭作一團。",
+      "limitations": "德國機關用於特殊洪災的流程；紙鈔張數與含硬幣在內的現金給付總額不可混算。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "K137-0201",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "半張十澳元送去估價，另一半不見了，央行自己的例子付多少？",
+      "mechanism_key": "x137.damaged_note.half_ten",
+      "answer_target": "澳洲央行的例子是五澳元。央行說，缺的那片也可能被人另行提出，所以在中段按留下的面積比例付。前提是意外殘損、真券與申請條件都成立。",
+      "scope": "這是官方估值例；未把同一張故意剪成碎片拿去領錢。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "澳洲央行的例子是五澳元。",
+        "visual": "用無票面圖樣的十格紙條，標示剩下與遺失的部分。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_ids": [
+        "R137-S01"
+      ],
+      "source_locator": "R137-S01 Incomplete Banknotes，三檔規則、半張十元例與流水號段",
+      "notes": "這是官方估值例；未把同一張故意剪成碎片拿去領錢。"
+    },
+    {
+      "id": "K137-0202",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "一張二十盧比意外只剩剛好半張，照澳元的例子填十盧比，銀行會照付嗎？",
+      "mechanism_key": "x137.damaged_note.india_low",
+      "answer_target": "看印度的低面額規則。到二十盧比這一檔，單一最大連續片必須大於原券一半才付全額；剛好一半屬於不付的那邊。只送這一片，不能填原面額的一半。",
+      "scope": "面積依該面額和版型核算，不能把兩片完整同券也當成這個單片案例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看印度的低面額規則。",
+        "visual": "在數線 50% 畫空心圓，請觀眾把單片放在哪一邊。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_ids": [
+        "R137-S03",
+        "R137-S04"
+      ],
+      "source_locator": "R137-S03 2025 年 4 月 15 日 PDF，收兌單元第 4 問及 Note Refund Rules – Amended 對照表；R137-S04 Part II，Rule 8(1)、(2)(i)–(iv) 與 Table 1、2；表2 ₹50 舊券與 New MG Series 兩列",
+      "notes": "面積依該面額和版型核算，不能把兩片完整同券也當成這個單片案例。"
+    },
+    {
+      "id": "K137-0203",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同樣剩整整一半，印度人把二十盧比的題卡換成五十盧比，答案還是零嗎？",
+      "mechanism_key": "x137.damaged_note.india_high",
+      "answer_target": "換面額就換到另一張表。五十盧比以上，最大單片落在四成到八成的半額檔；五十盧比新券剩整半片又滿足其餘條件，能按半額算二十五盧比。切勿用面額去乘前一張題卡的規則。",
+      "scope": "以新 MG 系列五十盧比說明，餘半片 44.55 平方公分，超過半額 36、未到全額 72；大小另有法定表。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "換面額就換到另一張表。",
+        "visual": "把同樣的 50% 紙片放到兩張印度價目欄。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_ids": [
+        "R137-S04",
+        "R137-S03"
+      ],
+      "source_locator": "R137-S03 2025 年 4 月 15 日 PDF，收兌單元第 4 問及 Note Refund Rules – Amended 對照表；R137-S04 Part II，Rule 8(1)、(2)(i)–(iv) 與 Table 1、2；表2 ₹50 舊券與 New MG Series 兩列",
+      "notes": "以新 MG 系列五十盧比說明，餘半片 44.55 平方公分，超過半額 36、未到全額 72；大小另有法定表。"
+    },
+    {
+      "id": "K137-0204",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "損鈔蓋住大半張澳洲估價格，你要數的是被紙遮住的格子，還是露出來的？",
+      "mechanism_key": "x137.damaged_note.grid",
+      "answer_target": "照央行表，數完全或部分露出的格子，再把一百減去格數、除一百。表是分面額的；印出時要選實際尺寸，用尺或完整同面額券核對，才有相同比例可比。",
+      "scope": "這張格子用來估價，央行最後審定可能和估值不同。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "照央行表，數完全或部分露出的格子，再把一百減去格數、除一百。",
+        "visual": "先用縮小影印的空白格和標準格示範同張樣片會圈出不同範圍。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_ids": [
+        "R137-S02"
+      ],
+      "source_locator": "R137-S02 Grids for Assessing Value of Australian Polymer Banknotes with Pieces Missing，首頁 Formula 與各面額圖尺",
+      "notes": "這張格子用來估價，央行最後審定可能和估值不同。"
+    },
+    {
+      "id": "K137-0205",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "半張五澳元照比例是兩元五角，估價格要你填兩元還是三元？",
+      "mechanism_key": "x137.damaged_note.round",
+      "answer_target": "面額乘留存比例為 2.50 澳元。該估價表明列尾數五十分或以下向下、超過五十分才向上，因此這一格的估值是兩澳元。",
+      "scope": "只談估價表內的取整規則，不保證申請核定金額。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "面額乘留存比例為 2.50 澳元。",
+        "visual": "在格子旁寫 5 乘 0.50，分開填入計算值與整元估值。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_ids": [
+        "R137-S02"
+      ],
+      "source_locator": "R137-S02 Grids for Assessing Value of Australian Polymer Banknotes with Pieces Missing，首頁 Formula 與各面額圖尺",
+      "notes": "只談估價表內的取整規則，不保證申請核定金額。"
+    },
+    {
+      "id": "K137-0206",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "錢角少一點也照比例扣款嗎？澳洲那把尺為什麼兩頭填的不是乘法？",
+      "mechanism_key": "x137.damaged_note.ends",
+      "answer_target": "澳洲政策分三段。少了不到兩成付全額，少了超過八成不付，中間才按餘下面積。假設同面額且其餘條件成立，剩 85% 與剩 15% 就分別落在全額與零。",
+      "scope": "兩個例子都避開界點；「剩下」與「缺了」加起來是百分之百。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "澳洲政策分三段。",
+        "visual": "讓觀眾在同一條數線的兩端先貼上全額與零，再填中段。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_ids": [
+        "R137-S01",
+        "R137-S02"
+      ],
+      "source_locator": "R137-S01 Incomplete Banknotes，三檔規則、半張十元例與流水號段；R137-S02 Grids for Assessing Value of Australian Polymer Banknotes with Pieces Missing，首頁 Formula 與各面額圖尺",
+      "notes": "兩個例子都避開界點；「剩下」與「缺了」加起來是百分之百。"
+    },
+    {
+      "id": "K137-0207",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "如果只留原券的 36%，紐西蘭那張還有機會換回半額嗎？",
+      "mechanism_key": "x137.damaged_note.nz",
+      "answer_target": "紐西蘭央行指其意外損壞的第六或第七系列真鈔，一般高於三分之一、低於三分之二付半額。36% 落在中間，面額十紐元在這個例子裡可按五紐元估。",
+      "scope": "只談該頁適用系列和一般情況。用 36% 避開官網對恰好三分之一的不同措辭。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "紐西蘭央行指其意外損壞的第六或第七系列真鈔，一般高於三分之一、低於三分之二付半額。",
+        "visual": "把 36 格覆在一百格紙上，跟三分之一的虛線比。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_ids": [
+        "R137-S08"
+      ],
+      "source_locator": "R137-S08 Damaged banknotes，Series 6 or 7；How to make a claim",
+      "notes": "只談該頁適用系列和一般情況。用 36% 避開官網對恰好三分之一的不同措辭。"
+    },
+    {
+      "id": "K137-0208",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同一塊 36% 的紙片，放在日本的五分之二門檻前，為什麼連半額也沒有？",
+      "mechanism_key": "x137.damaged_note.jp",
+      "answer_target": "日本銀行列三檔。未滿五分之二沒有價值；從五分之二到未滿三分之二付半額；達到三分之二付全額。36% 小於 40%，所以即使這是正反俱存的真券，也未達半額。",
+      "scope": "換的是日圓券；不能拿一張外幣實物去選對自己有利的央行。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "日本銀行列三檔。",
+        "visual": "在同一張 36 格上再疊一條 40 格線，留下四格空隙。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_ids": [
+        "R137-S06",
+        "R137-S08"
+      ],
+      "source_locator": "R137-S06 正文資格文字與三張給付圖，2/3、2/5 兩處界點；R137-S08 Damaged banknotes，Series 6 or 7；How to make a claim",
+      "notes": "換的是日圓券；不能拿一張外幣實物去選對自己有利的央行。"
+    },
+    {
+      "id": "K137-0209",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "紐西蘭殘券留到剛好三分之二，和只多留在半張附近的那一角，價值怎麼跳？",
+      "mechanism_key": "x137.damaged_note.nz_upper",
+      "answer_target": "依紐西蘭央行對第六、七系列意外殘損真券的說明，達三分之二時給全額。以半張和恰好三分之二張十紐元模擬，兩次留存比例只差六分之一張，給付卻從五元變十元。",
+      "scope": "算例沒有計算匯率，也沒有對低界恰三分之一作斷言。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "依紐西蘭央行對第六、七系列意外殘損真券的說明，達三分之二時給全額。",
+        "visual": "先遮住一張等分六格的紙上三格，再多露出一格。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_ids": [
+        "R137-S08"
+      ],
+      "source_locator": "R137-S08 Damaged banknotes，Series 6 or 7；How to make a claim",
+      "notes": "算例沒有計算匯率，也沒有對低界恰三分之一作斷言。"
+    },
+    {
+      "id": "K137-0210",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同樣是五十盧比的一整塊殘券，面積同為 75 平方公分，為什麼兩張的估價分岔？",
+      "mechanism_key": "x137.damaged_note.series",
+      "answer_target": "印度附表給同面額兩個版型不同門檻。舊五十盧比的全額至少 86 平方公分、半額 43；新 MG 系列分別是 72 和 36。75 平方公分一塊，在這組條件下舊券半額、新券全額。",
+      "scope": "75 平方公分是依原表設計的假想題，不是現場實際收兌的一張券。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "印度附表給同面額兩個版型不同門檻。",
+        "visual": "各用原尺寸長方形做外框，把同面積樣片覆在兩個框內。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_ids": [
+        "R137-S04"
+      ],
+      "source_locator": "R137-S04 Part II，Rule 8(1)、(2)(i)–(iv) 與 Table 1、2；表2 ₹50 舊券與 New MG Series 兩列",
+      "notes": "75 平方公分是依原表設計的假想題，不是現場實際收兌的一張券。"
+    },
+    {
+      "id": "K137-0211",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同一張新五十盧比找回兩片，兩片合計 72 平方公分，36 加 36 和 37 加 35 會一樣嗎？",
+      "mechanism_key": "x137.damaged_note.two_pieces",
+      "answer_target": "還要看每一片。新 MG 五十盧比整張 89.10 平方公分。兩片各有 36 平方公分，均達四成，合資格時可適用兩片同券全額條款；37 加 35 有一片不到四成，最大單片 37 只達半額檔。",
+      "scope": "假設都是同一張原券的兩片，其他申請條件成立；規則對兩大塊使用 may，不把個案結果保證為全額。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "還要看每一片。",
+        "visual": "做兩對不同寬度的無圖樣紙片，總面積相同，逐片對照 36。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_ids": [
+        "R137-S04"
+      ],
+      "source_locator": "R137-S04 Part II，Rule 8(1)、(2)(i)–(iv) 與 Table 1、2；表2 ₹50 舊券與 New MG Series 兩列",
+      "notes": "假設都是同一張原券的兩片，其他申請條件成立；規則對兩大塊使用 may，不把個案結果保證為全額。"
+    },
+    {
+      "id": "K137-0212",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "鈔票意外斷成兩片，一點都沒少，在印度還要套缺角券的面積表嗎？",
+      "mechanism_key": "x137.damaged_note.intact_pair",
+      "answer_target": "印度央行指令把同一張鈔斷成兩片、貼合後整張齊全且重要特徵皆在的情形列入污損鈔。少掉一部分才是殘券的典型情況。確認是否缺紙，才知道應查哪一節。",
+      "scope": "以 2026 年指令中的 soiled note 定義為限，不適用分屬兩張紙鈔的拼片。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "印度央行指令把同一張鈔斷成兩片、貼合後整張齊全且重要特徵皆在的情形列入污損鈔。",
+        "visual": "在兩張對照卡上，先用空白紙拼全再抽走一塊。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_ids": [
+        "R137-S05"
+      ],
+      "source_locator": "R137-S05 Soiled Note 與 Mutilated and Imperfect Notes 兩節，及其對修訂後 NRR 的引用",
+      "notes": "以 2026 年指令中的 soiled note 定義為限，不適用分屬兩張紙鈔的拼片。"
+    },
+    {
+      "id": "K137-0213",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "瑞士一塊殘鈔明明超過半張，想走櫃檯通常可立即交換的情形，還要看清哪一行？",
+      "mechanism_key": "x137.damaged_note.serial",
+      "answer_target": "瑞士國家銀行的指引寫，一塊連續殘券大於原鈔一半，序號也要完整可辨，才符合這一項一般可立即交換的條件。澳洲殘券政策則明說，序號有無本身不影響殘片估值。",
+      "scope": "比較的是瑞士的立即交換條件與澳洲估值；未達瑞士這項條件不能直接改判沒收或零元。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "瑞士國家銀行的指引寫，一塊連續殘券大於原鈔一半，序號也要完整可辨，才符合這一項一般可立即交換的條件。",
+        "visual": "把近六成的空白樣片和一條假序號分開翻卡。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_ids": [
+        "R137-S09",
+        "R137-S01"
+      ],
+      "source_locator": "R137-S01 Incomplete Banknotes，三檔規則、半張十元例與流水號段；R137-S09 2026-04-20，第 1 頁 Important information on exchanging banknotes",
+      "notes": "比較的是瑞士的立即交換條件與澳洲估值；未達瑞士這項條件不能直接改判沒收或零元。"
+    },
+    {
+      "id": "K137-0214",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "兩塊瑞士紙鈔合起來已經超過半張，兩塊上的序號怎麼讀才符合一般立即兌換條件？",
+      "mechanism_key": "x137.damaged_note.sw_pair",
+      "answer_target": "瑞士指引還列了各自連續的兩片：合計必須大於一半，兩片要能辨出同一個序號。這比只有紙片總面積多問了一步，並把可立即交換與需要檢查的送件區分開。",
+      "scope": "限該指引所列立即交換例。對燒毀、腐朽等情形另需在表單交代受損原因。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "瑞士指引還列了各自連續的兩片：合計必須大於一半，兩片要能辨出同一個序號。",
+        "visual": "用兩組含相同或不同練習號碼的紙片示意，不使用真券號碼。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_ids": [
+        "R137-S09"
+      ],
+      "source_locator": "R137-S09 2026-04-20，第 1 頁 Important information on exchanging banknotes",
+      "notes": "限該指引所列立即交換例。對燒毀、腐朽等情形另需在表單交代受損原因。"
+    },
+    {
+      "id": "K137-0215",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "一盒燒焦的日圓，紙已經脆到快散，為什麼還要保住殘片的位置？",
+      "mechanism_key": "x137.damaged_note.ash",
+      "answer_target": "日本銀行說仍可辨認是鈔票的灰，得依相同面積準則評估；鈔券要保有正反面。燒脆的殘券可放容器以免進一步碎裂，已崩成無法判明的碎屑可能毫無價值。",
+      "scope": "不能以灰重換面額，拿到灰也不保證給付。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "日本銀行說仍可辨認是鈔票的灰，得依相同面積準則評估；鈔券要保有正反面。",
+        "visual": "用褐色薄紙代替殘片，分開畫整塊輪廓與散開後不易辨讀的情形。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_ids": [
+        "R137-S06",
+        "R137-S07"
+      ],
+      "source_locator": "R137-S06 正文資格文字與三張給付圖，2/3、2/5 兩處界點；R137-S07 §4(1)、§5(1)(a)、§5(2)，正反面、同券認定與脆片容器",
+      "notes": "不能以灰重換面額，拿到灰也不保證給付。"
+    },
+    {
+      "id": "K137-0216",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "德國大水過後，送來的鈔票看來還有一整捆，為什麼不能直接送進點鈔機？",
+      "mechanism_key": "x137.damaged_note.flood",
+      "answer_target": "德國聯邦銀行說，2021 年洪災中泡透的鈔票會損傷分揀機；沾泥的一束若黏著乾掉，又可能再也數不清。人員得及時乾燥、壓平、辨真偽再點數。",
+      "scope": "是美因茨國家分析中心的災後作業，不是一般個人在家應採的處理。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "德國聯邦銀行說，2021 年洪災中泡透的鈔票會損傷分揀機；沾泥的一束若黏著乾掉，又可能再也數不清。",
+        "visual": "先畫一束黏鈔的截面，問觀眾能辨出幾張；再拆開示意逐張清點。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_ids": [
+        "R137-S11"
+      ],
+      "source_locator": "R137-S11 2022-02-10 原報告，Manual labour 及美因茨記者會的實收統計",
+      "notes": "是美因茨國家分析中心的災後作業，不是一般個人在家應採的處理。"
+    },
+    {
+      "id": "K137-0217",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "德國央行在乾衣機放網球，再用鋪路石壓鈔票，兩件東西各管哪一步？",
+      "mechanism_key": "x137.damaged_note.tennis",
+      "answer_target": "該中心報告說，網球幫忙防止沾濕的券在烘乾時扭纏；攤平後再用鋪路石加重壓住。這些工具為的是讓鈔券能被逐張處理，並不靠重量讀出面額。",
+      "scope": "這是聯邦銀行對特定洪災的第一手示範，沒有說網球能驗真或算折價。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "該中心報告說，網球幫忙防止沾濕的券在烘乾時扭纏；攤平後再用鋪路石加重壓住。",
+        "visual": "做乾衣機示意動畫，轉到下一格再畫平紙上的重物。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_ids": [
+        "R137-S11"
+      ],
+      "source_locator": "R137-S11 2022-02-10 原報告，Manual labour 及美因茨記者會的實收統計",
+      "notes": "這是聯邦銀行對特定洪災的第一手示範，沒有說網球能驗真或算折價。"
+    },
+    {
+      "id": "K137-0218",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "澳洲央行為一場風災處理約九萬二千張鈔票，為什麼得數上不只一遍？",
+      "mechanism_key": "x137.damaged_note.cyclone",
+      "answer_target": "Debbie 風災後澳洲央行收到 32 件洪災申請，共付約 330 萬澳元，處理約 9.2 萬張鈔票。受水浸泡的鈔會黏住，通常要多次清點，也能先用乾燥櫃。這些是整批統計，無法從總額回推某張缺角券的面積。",
+      "scope": "只對 2017 年風災這批案件；澳洲的乾燥櫃與德國的網球是分別記錄。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "Debbie 風災後澳洲央行收到 32 件洪災申請，共付約 330 萬澳元，處理約 9.2 萬張鈔票。",
+        "visual": "把「件、張、澳元」三個單位翻開，最後回到半張十澳元的單張題。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_ids": [
+        "R137-S10"
+      ],
+      "source_locator": "R137-S10 Bulletin June 2022，Claims from Cyclone Debbie in 2017、Figure 5",
+      "notes": "只對 2017 年風災這批案件；澳洲的乾燥櫃與德國的網球是分別記錄。"
+    }
+  ],
+  "not_added": [
+    {
+      "id": "R137-NA01",
+      "question": "一張歐元紙鈔剛好剩下一半，證明另一半被毀還能兌換嗎？",
+      "reason": "這是種子 K117-0403 已交代的舉證與歐元面積門檻。新題從口袋裡同一種物件追不同的部分給付算法，不再把歐元補證重列一張。",
+      "existing_ids": [
+        "K117-0403"
+      ]
+    },
+    {
+      "id": "R137-NA02",
+      "question": "兩袋受損新臺幣面積一樣，怎麼只有能拼成同券的那袋能估價？",
+      "reason": "K133-0002 已用台灣規定拆過同券碎片可合算這個答案，換情境而規則不變。印度新題另外比最大單塊及兩片各達門檻，瑞士題限特定序號條件的立即交換。",
+      "existing_ids": [
+        "K133-0002"
+      ]
+    },
+    {
+      "id": "R137-NA03",
+      "question": "日本機場的扭蛋機，是不是特別適合旅客花掉口袋裡最後的硬幣？",
+      "reason": "參考 PR #2182 的 W 軸 N9022 已用出境旅客剩餘日圓解釋該通路的銷售。這是既有商業答案，不把「同樣在皮夾裡」當成新題。",
+      "existing_ids": []
+    },
+    {
+      "id": "R137-NA04",
+      "question": "不論哪一國、任何年份的鈔票，只要保住印著序號的那一角就能拿回全額嗎？",
+      "reason": "缺少跨地區共同規則。澳洲不看序號單獨決定估值，瑞士的一般立即交換同時看面積和序號，日本另有兩面俱存的要求，原命題失去前提。",
+      "existing_ids": []
+    }
+  ]
+}

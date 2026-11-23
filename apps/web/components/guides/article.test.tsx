@@ -46,7 +46,7 @@ const document = {
 
 function draw(
   overrides: Record<string, unknown> = {},
-  extra: { readingTime?: string; adsense?: AdsenseConfig; labels?: Partial<GuideArticleLabels>; geminiSeries?: VisibleGeminiSeries | null; related?: ReactNode } = {},
+  extra: { readingTime?: string; adsense?: AdsenseConfig; labels?: Partial<GuideArticleLabels>; geminiSeries?: VisibleGeminiSeries | null; related?: ReactNode; sidebarToc?: boolean; newsRail?: ReactNode } = {},
 ) {
   return render(
     <GuideArticle
@@ -55,6 +55,8 @@ function draw(
       adsense={extra.adsense}
       geminiSeries={extra.geminiSeries}
       related={extra.related}
+      sidebarToc={extra.sidebarToc}
+      newsRail={extra.newsRail}
       state={{
         slug: "tokyo-esim", kind: "howto", locale: "zh-TW", status: "published",
         destination_id: "tokyo", destination_label: "東京",
@@ -272,6 +274,37 @@ describe("GuideArticle artwork, dates and contents", () => {
     expect(screen.getByRole("link", { name: "Someone" }).getAttribute("href")).toBe(hero.credit.source_url);
   });
 
+  it("suppresses synthetic automated news placeholder heroes and body diagrams while keeping real images", () => {
+    const syntheticHero = {
+      src: "/guides/news-assets/deadbeef1234567890abcdef-hero.webp",
+      alt: "Placeholder artwork",
+      width: 1600,
+      height: 900,
+      credit: { author: "Mokaair", license: "Original editorial artwork", source_url: null },
+    };
+    const { container } = draw({
+      kind: "life",
+      news_date: "2026-11-12",
+      document: {
+        ...document,
+        hero: syntheticHero,
+        blocks: [
+          ...document.blocks,
+          {
+            type: "image" as const,
+            src: "/guides/news-assets/deadbeef1234567890abcdef-diagram.svg",
+            alt: "Synthetic diagram",
+            width: 1600,
+            height: 900,
+            credit: { author: "Mokaair", license: "Original editorial artwork", source_url: null },
+          },
+        ],
+      },
+    });
+    expect(container.querySelector("img")).toBeNull();
+    expect(screen.queryByText(/Original editorial artwork/)).toBeNull();
+  });
+
   it("dates nothing by itself: no first publication, and no date an expired notice applied until", () => {
     const fresh = draw();
     expect(screen.queryByText(/2026-09-10/)).toBeNull();
@@ -293,6 +326,13 @@ describe("GuideArticle artwork, dates and contents", () => {
   it("shows the reading time the page worded", () => {
     draw({}, { readingTime: "閱讀時間約 4 分鐘" });
     expect(screen.getByText("閱讀時間約 4 分鐘")).toBeTruthy();
+  });
+
+  it("shows news_date on dated news items while keeping evergreen guides undated", () => {
+    const dated = draw({ kind: "life", news_date: "2026-11-12" });
+    const time = dated.container.querySelector("time");
+    expect(time?.getAttribute("datetime")).toBe("2026-11-12");
+    expect(time?.textContent).toBe("2026-11-12");
   });
 
   it("offers a table of contents once there are three sections, pointing at the renderer's ids", () => {
@@ -557,6 +597,58 @@ describe("GuideArticle translations", () => {
 
 describe("GuideArticle summary and FAQ", () => {
   const faq = { type: "faq" as const, items: [{ question: "要實體 SIM 嗎？", answer: "不用。" }, { question: "多少錢？", answer: "看方案。" }] };
+
+  const news = { kind: "life", news_date: "2026-11-17" };
+  const points = ["系統卡已公布。", "公布了測試日期。", "提供完整測試結果。"];
+  const moreLabel = "其餘 2 則重點";
+  const contents = ["系統卡", "測試日期", "測試結果"].map((text) => ({ type: "heading", level: 2, text }));
+
+  it("shows the first news takeaway and keeps the other points and chapter links in native disclosures", () => {
+    const { container } = draw({
+      ...news, document: { ...document, blocks: [{ type: "summary", items: points }, ...contents] },
+    }, { sidebarToc: true, labels: { summaryMore: moreLabel }, newsRail: <aside>側欄</aside> });
+    const article = container.querySelector("article[data-news-reading]")!;
+    expect(article.querySelector("header")?.textContent).not.toContain(labels.life);
+    expect(article.querySelector("header a")?.textContent).toBe("東京");
+    expect(article.querySelector("header [data-news-meta] time")?.textContent).toBe(news.news_date);
+    expect(article.lastElementChild?.textContent).toBe("側欄");
+    const summary = article.querySelector("[data-news-body] #article-summary")!;
+    expect(summary.querySelector(":scope > ul")?.textContent).toBe(points[0]);
+    const more = summary.querySelector("details")!;
+    expect(more.open).toBe(false);
+    expect(Array.from(more.querySelectorAll("li"), (item) => item.textContent)).toEqual(points.slice(1));
+    expect(more.querySelector("summary")?.textContent).toBe(moreLabel);
+    more.querySelector("summary")!.click();
+    expect(more.open).toBe(true);
+    const toc = screen.getByText(labels.contents, { selector: "summary" }).closest("details")!;
+    expect(toc.open).toBe(false);
+    toc.querySelector("summary")!.click();
+    expect(toc.open).toBe(true);
+    expect(Array.from(toc.querySelectorAll("a"), (a) => container.querySelector(a.hash)?.textContent))
+      .toEqual(contents.map((entry) => entry.text));
+  });
+
+  it("shows a single news takeaway without a disclosure", () => {
+    const { container } = draw({
+      ...news, document: { ...document, blocks: [{ type: "summary", items: [points[0]] }] },
+    }, { labels: { summaryMore: moreLabel } });
+    const summary = container.querySelector("#article-summary")!;
+    expect(summary.querySelector("li")?.textContent).toBe(points[0]);
+    expect(summary.querySelector("details")).toBeNull();
+  });
+
+  it.each([{}, { ...news, series: { hub: { kind: "life", slug: "example", title: "系列" } } }])(
+    "keeps full summaries, expanded contents and the existing body layout for guides and series", (overrides) => {
+      const { container } = draw({
+        ...overrides, document: { ...document, blocks: [{ type: "summary", items: points }, ...contents] },
+      }, { sidebarToc: true, labels: { summaryMore: moreLabel } });
+      expect(container.querySelector("[data-news-reading]")).toBeNull();
+      const summary = container.querySelector("#article-summary")!;
+      expect(summary.querySelector("details")).toBeNull();
+      expect(Array.from(summary.querySelectorAll("li"), (item) => item.textContent)).toEqual(points);
+      expect(screen.getByText(labels.contents, { selector: "summary" }).closest("details")?.open).toBe(true);
+    },
+  );
 
   it("draws the summary under the description and keeps FAQ answers before the related reading and sources", () => {
     const { container } = draw({

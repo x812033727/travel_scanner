@@ -1,0 +1,283 @@
+{
+  "batch_id": "wave69-physics-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第十九輪：替後備組題 C9-01 浴室唱歌補浴室殘響實測與歌手聽覺回饋研究（作者 F35，覆核 V38），仍後備。",
+  "sources": [
+    {
+      "id": "P69-S001",
+      "url": "https://www.jstage.jst.go.jp/article/ast/32/5/32_5_201/_pdf/-char/en",
+      "canonical_url": "https://www.jstage.jst.go.jp/article/ast/32/5/32_5_201/_article/-char/en",
+      "title": "CENSREC-4: An evaluation framework for distant-talking speech recognition in reverberant environments（Fukumori、Nishiura 等，Acoust. Sci. & Tech. 32(5):201–210, 2011）",
+      "publisher": "日本音響學會 Acoustical Science and Technology（J-STAGE 開放全文）",
+      "version": "出版版 PDF（Technical Report）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出 J-STAGE 文章頁 /_article/-char/en；curl（預設標頭）取文章頁，頁上 PDF 連結 /_pdf/-char/en，curl 200；pdftotext -layout",
+      "reading_scope": "§1、§2.1（脈衝響應量測、Table 1–2、浴室擺位段）；後段辨識結果略讀",
+      "locator": "§2.1.1 第一段（八種環境、TSP 量測）；浴室擺位段（mouth simulator over the bathtub…）；Table 2（Japanese style bath 1.5×1.0 m、0.3 m、0.60 s、29.5 dBA）",
+      "summary": "日本 CENSREC 語音辨識評測框架的資料庫：研究團隊用 B&K 4128 仿嘴喇叭與 TSP 訊號，在八種環境量脈衝響應：辦公室、電梯廳、車內、客廳、交誼廳、和室、會議室與一間日式組合浴室（prefabricated bath）。浴室裡仿嘴喇叭放在裝了冷水的浴缸上方，麥克風在側牆，相距 0.3 公尺。Table 2：浴室 1.5×1.0 公尺、殘響時間 T60 0.60 秒、環境噪音 29.5 dBA；同表辦公室 9.0×6.0 公尺 0.25 秒、客廳 7.0×3.0 公尺 0.65 秒、和室 3.5×2.5 公尺 0.40 秒、會議室 7.0×8.5 公尺 0.65 秒、電梯廳 11.5×6.5 公尺 0.75 秒、車內 0.05 秒。T60 以 0.05 秒為解析度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有一間浴室、一個收音位置；T60 的頻帶與算法（T20／T30）表上沒寫，只給單一值、解析度 0.05 秒；目的為語音辨識，不是唱歌，也沒有量早期反射或 STv；房間尺寸是平面兩邊長，沒有高度與容積。不得說「浴室的殘響是 0.6 秒」，只能說「這一間」。入口：東京大學嵯峨山‧小野研究室的研究介紹頁（hil.t.u-tokyo.ac.jp RevHMM）表 1 轉列 CENSREC-4 的 JSB 浴室 0.60 秒，該頁只當入口、不計。 覆核 V38（2026-11-12）：limitations 補「同表另有 Lounge 11.5×27.0 m 0.50 s；D20 表不含浴室」。",
+      "author_cache": {
+        "file": "f35src/censrec4_ast2011.pdf",
+        "sha256_prefix": "63ce44e9c5f104a9",
+        "text": "f35src/censrec4.txt",
+        "article_page": "f35src/jstage_ast32_201.html (cf04da3fa4e7bbaf)",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P69-S002",
+      "url": "http://joshuaglasner.com/wp-content/uploads/2023/10/Redman_et_al_2023.pdf",
+      "canonical_url": "https://doi.org/10.1121/10.0021331",
+      "title": "Singing in different performance spaces: The effect of room acoustics on singers' perception（Redman、Glasner、D'Orazio、Bottalico；JASA 154(4):2256–2264, 2023）",
+      "publisher": "J. Acoust. Soc. Am.（共同作者 Joshua D. Glasner 個人網站存放的出版社排版 PDF）",
+      "version": "出版社排版 PDF（作者網站）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 找到 joshuaglasner.com/research/current-research/；curl 取該頁（f35src/glasner_current_research.html，e911161612fec13f），頁上 href 即此 PDF；curl 200；pdftotext（raw 與 -layout）；負號在 PDF 文字層是 (cid:2) 字元，以 pdfminer 逐字元核對 Table VI、VII 的負號",
+      "reading_scope": "全文（摘要、引言、方法、結果、Table I–VII、討論、限制）",
+      "locator": "§II.A–C（9 人、五場地、21 項量表、固定順序）；§III.A（三因子 56／28／16%）；Table V（喜好度：Factor 1 0.12、Factor 2 0.07、Factor 3 n.s. p=0.391）；Table VI（STv −10.5／−13.0／−4.90／−11.4／−13.3 dB）；Table VII 與 §III.B.2（STv −0.28、EDT −16.40、EDTf −1.95）；§IV.A.2、§IV.B.1–2、§IV.C",
+      "summary": "Illinois 研究群：9 位職業或半職業古典歌手（6 女 3 男，平均 25.2 歲）在校內五個空場地無伴奏唱〈Caro mio ben〉，每場唱完填 21 項 10 公分類比量表。因素分析得三個感受：房間支持感（解釋 56% 變異）、房間安靜感（28%）、房間音色（16%）。喜好度隨支持感（估計 0.12，p<0.001）與安靜感（0.07，p=0.002）上升，音色不顯著（p=0.391）。「唱的時候覺得很迴響」與「不唱時覺得吵」是安靜感的反面；作者：歌手偏好「有些殘響、但不要太多」。以假人頭量的 STv（耳邊 5–100 ms 反射聲對 0–5 ms 直達聲的能量比）在五場地為 −4.90 到 −13.3 dB；支持感因子隨 STv 每升 1 dB 降 0.28（p<0.001），作者寫：反射聲相對直達聲越少，歌手回報的喜好度越高。安靜感隨 EDT 每秒降 16.40；音色因子隨 EDTf 降 1.95。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 9 人、五個場地（最小 400 m³，沒有浴室或小房間）；場地順序固定，作者自列順序效應與疲勞為限制；STv 的反向關係只來自五個房間層級的差異，作者沒有解釋機制。與 Bottalico 2022（F35-S003）、Bottalico 2025（P63-S005，池中）同一研究群；與 F35-S003 是同一次錄音的兩篇（本篇自稱第二階段），兩篇事實合計不超過 1.75 條。池中 P63-NA003 等的正是這份全文（當時只讀到摘要）。共同作者網站的出版社排版版，權利以 ASA 為準。 覆核 V38（2026-11-12）：limitations「五個場地（最小 400 m³，沒有浴室或小房間）」改「五個場地：四間室內 400–16,500 m³ 與一座露天劇場（無容積）；沒有浴室或小房間」；summary 補「『唱的時候覺得很迴響』在 Table IV 對支持感因子負荷 0.66、對安靜感負荷 0.44（與安靜感負相關）；『有一些但不要太多』是作者據此的詮釋」；補「STv 對支持感的模型依變項是因子分數，『喜好度上升』是作者的推論；五處中只有 Colwell −4.90 dB 偏高，其他四處 −10.5 到 −13.3 dB」；「兩篇合計不超過 1.75」改「Bottalico 研究群在本題已達 3.0 封頂，本篇與 F35-S003 新增計 0」。",
+      "author_cache": {
+        "file": "f35src/Redman_et_al_2023.pdf",
+        "sha256_prefix": "601975350d17c69c",
+        "text": "f35src/Redman_raw.txt；f35src/Redman_et_al_2023.txt",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P69-S003",
+      "url": "http://joshuaglasner.com/wp-content/uploads/2022/06/4131_1.pdf",
+      "canonical_url": "https://doi.org/10.1121/10.0011675",
+      "title": "Singing in different performance spaces: The effects of room acoustics on vibrato and pitch inaccuracy（Bottalico、Łastowiecka、Glasner、Redman；JASA 151(6):4131–4139, 2022）",
+      "publisher": "J. Acoust. Soc. Am.（共同作者 Joshua D. Glasner 個人網站存放的出版社排版 PDF）",
+      "version": "出版社排版 PDF（作者網站）",
+      "accessed_on": "2026-11-12",
+      "read_via": "同 F35-S002 的作者頁 href；curl 200；pdftotext（raw 與 -layout）；Table III、V 的負號以 pdfminer 核對（STv 前為 (cid:2)、估計值前為符號字型的減號）",
+      "reading_scope": "摘要、引言、方法（場地、參與者、量測）、Table II–V、結果 ICC 段、討論 B 段；討論後半略讀",
+      "locator": "Abstract；Table III（STv −10.54／−13.28／−13.00／−4.97／−11.04 dB）；Table IV（各房間 Vext、Dc 平均）；結果 ICC 段（Room 2%／2%；Vext Room 33%、Singer 23%）；Table V（pitch inaccuracy 對 STv 估計 −0.88、SE 0.37；Bonferroni α=0.0125）",
+      "summary": "同一批 9 位古典聲樂學生在同五個場地無伴奏唱同一首詠嘆調。音準誤差（每個音與目標音的距離）全體平均 32.8 音分，各場地平均 27.1（Colwell Playhouse）到 40.5 音分（露天劇場）；音準誤差與顫音速率的變異，房間只占約 2%，主要是歌手個人差異。音準誤差與演唱者位置的 STv 呈顯著負相關（STv 每高 1 dB，誤差約少 0.88 音分）；STv 最高的 Colwell Playhouse 是 −4.97 dB。顫音幅度則相反，房間占 33%、歌手 23%：Smith Memorial Room 平均 58.4 音分，其他四處 84.9–100.8 音分；顫音幅度隨清晰度 C80 增加、隨 EDT 減少。作者：歌手能聽到自己多少，可能影響音準。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "9 人、五場地、順序固定；相關不是因果；與 F35-S002 同一次錄音，兩篇合計不超過 1.75 條。不得與 P63-009 的合唱音分相減或並成同一例（不同研究、不同量法）。 覆核 V38（2026-11-12）：summary「主要是歌手個人差異」補數字「歌手占 43%（音準）、50%（顫音速率）」；顫音幅度段刪「最乾」字樣，改「約 400 m³ 的 Smith Memorial Room」；補「STv 本篇平均 125 Hz–4 kHz，與 Redman 2023（125 Hz–2 kHz）數值不同，不得混表」。",
+      "author_cache": {
+        "file": "f35src/Bottalico2022_4131_1.pdf",
+        "sha256_prefix": "146b2443f048f13c",
+        "text": "f35src/B22_raw.txt；f35src/B22_layout.txt",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P69-S004",
+      "url": "https://hal.science/hal-02356057v1/file/LuizardEtAl_paper_ISRA_2019_revised_final.pdf",
+      "canonical_url": "https://hal.science/hal-02356057v1",
+      "title": "Adaptation of singers to physical and virtual room acoustics（Luizard、Steffens、Weinzierl；International Symposium on Room Acoustics 2019, Amsterdam）",
+      "publisher": "TU Berlin Audio Communication Group；HAL 開放典藏（研討會全文）",
+      "version": "作者存放的研討會論文全文",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出 hal.archives-ouvertes.fr/hal-02356057；curl 取紀錄頁（f35src/hal-02356057.html，87491efea1468ed9），頁上 href 即此 PDF；curl 200；pdftotext -layout",
+      "reading_scope": "全文（摘要、引言、方法、Table 1–3、結果、討論、結論）",
+      "locator": "§2.1（四位歌手、六處場地八種條件、量測）；Table 2（STearly −4.9 到 −17.6 dB 等）；§3 第一、二段（ICC：曲目 28%、歌手 18%、房間與環境 <1%；一般模型邊際 R² 最多 2%）；§3 第三段（個人模型：實體 15%、量測虛擬 7%、模擬虛擬 11%）；§5",
+      "summary": "柏林工大研究群：四位受過十年以上訓練的聲樂學生，在錄音室（有無吸音簾）、室內樂廳、小劇場、Joseph Joachim 廳（有無吸音簾）、教堂、柏林愛樂廳共八種聲學條件唱自選的一快一慢兩首，再到消音室用耳機加頭部追蹤的虛擬房間重唱。平均起來，演唱特徵的變異主要來自曲目（28%）與歌手（18%），房間與環境類型都不到 1%；把所有歌手放在一起，房間參數沒有顯著關係，最多解釋 2%。分開每位歌手看，實體房間平均可解釋 15%、虛擬房間 7% 與 11%，但沒有共同模式：有人主要改音色與音量，有人改速度，有一位方向與其他人相反。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 4 人；研討會論文（期刊版 Luizard 等 2020 JASA EL132 經 doi.org 轉 pubs.aip.org 回 403，未讀）；場地都是演出或錄音空間，沒有浴室；量的是演唱特徵（速度、音量、音色），沒有評好壞或音準。 覆核 V38（2026-11-12）：summary「有人主要改音色與音量，有人改速度」改「Singer 3 主要改音色與音量，Singer 4 速度、音量、音色都改；Singer 2 方向與其他三人相反」；補「另唱共同曲〈生日快樂〉，分析用兩首自選曲」；limitations 補 HAL 頁標示「作者提交的檔案、Autorisation HAL」。",
+      "author_cache": {
+        "file": "f35src/LuizardEtAl_ISRA2019.pdf",
+        "sha256_prefix": "537c13d938a62082",
+        "text": "f35src/LuizardEtAl_ISRA2019.txt",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P69-S005",
+      "url": "https://dspace.library.uvic.ca/server/api/core/bitstreams/bb2c7b52-aca8-45a1-b87f-f699d433aa31/content",
+      "canonical_url": "https://doi.org/10.17743/jaes.2016.0062",
+      "title": "Perceptual Evaluation and Analysis of Reverberation in Multitrack Music Production（De Man、McNally、Reiss；J. Audio Eng. Soc. 65(1/2):108–116, 2017）",
+      "publisher": "University of Victoria DSpace（作者接受稿）",
+      "version": "作者接受稿 PDF",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果直接列出此 bitstream 網址（紀錄頁 HTML 也含同一 bitstream id）；curl 200；pdftotext -layout",
+      "reading_scope": "摘要與以 vocal／voice／reverberant／preferred 搜尋的段落；未逐句讀完",
+      "locator": "Abstract；§4（Fig. 3，被評為 too reverberant 的混音偏好顯著較低）",
+      "summary": "受過訓練的混音者對專業錄音的多軌混音評偏好並寫評語：沒有單一最受歡迎的殘響量，但可以找到上下限；被評為「太多殘響」的混音，偏好分數顯著低於「太乾」的。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "評的是整首混音（多軌），不是單獨的歌聲，也不是演唱者自己；聽者是受過訓練的工程師。只記於 not_added，不計。",
+      "author_cache": {
+        "file": "f35src/deman2017_jaes.pdf",
+        "sha256_prefix": "24f38bb401d44877",
+        "text": "f35src/deman2017.txt",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P69-001",
+      "question": "真的去量一間浴室，聲音停了之後還會拖多久？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.prefab_bathroom_t60_measured",
+      "answer_target": "日本一個語音辨識資料庫（CENSREC-4）的研究團隊量過一間：平面 1.5×1.0 公尺的日式組合浴室，仿嘴喇叭放在裝了冷水的浴缸上方、麥克風貼側牆、相距約 0.3 公尺，量到的殘響時間 T60 是 0.60 秒。同一張表裡，9×6 公尺的辦公室 0.25 秒、7×3 公尺的客廳 0.65 秒、3.5×2.5 公尺的和室 0.40 秒。這一間浴室最小，回聲卻拖得比辦公室長，和這個客廳差不多。",
+      "scope": "只有一間浴室、一個收音位置、一個單一 T60（解析度 0.05 秒，頻帶與算法未寫）；目的為語音辨識；沒有早期反射或 STv。只說「這一間」，不說「浴室殘響是 0.6 秒」；不與 Bottalico、Redman 或 HyperPhysics 的秒數相減、算倍數或排成同一量尺。",
+      "source_ids": [
+        "P69-S001"
+      ],
+      "source_locator": "F35-S001 §2.1.1；浴室擺位段；Table 2",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：照保守算法，只有一間浴室、一個數值；同表其他房間只是對照不另計。pool.json 無 CENSREC／Fukumori／32_5_201。補到 V25 點名缺口（1）的最低限度：有一個浴室實測，但沒有早期反射或回送比例。 原提案 F35-001（目標 C9-01，原角色 hook；依本池欄位記為 segment）。非作者覆核 V38（2026-11-12）改字後收；數字、條件逐字相符；只把計數降為 0.5，scope 補「不與其他研究秒數並列」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最小的那一間，回聲比辦公室拖得長，和客廳差不多",
+        "visual": "同一資料庫的房間平面方塊依尺寸排開，旁標 T60；不放其他研究的房間",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P69-002",
+      "question": "歌手喜不喜歡一個場地，看的是什麼？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.singer_room_liking_support_quiet_not_timbre",
+      "answer_target": "Illinois 的研究讓 9 位古典歌手在五個場地無伴奏唱同一首〈Caro mio ben〉，每唱完一處就填 21 項感受。統計歸出三種感受：房間撐不撐得住聲音（解釋 56%）、房間安不安靜（28%）、房間的音色（16%）。越覺得被撐住、越覺得安靜，就越喜歡在那裡唱；音色沒有顯著影響。「唱的時候覺得很迴響」兩邊都有：它跟「被撐住」一起上升，卻也讓房間顯得不安靜；作者據此詮釋，歌手喜歡的是「有一些殘響，但不要太多」。",
+      "scope": "9 人、五個場地（四間室內 400 到 16,500 立方公尺、一座露天劇場）、場地順序固定（作者自列順序效應與疲勞）；沒有浴室或小房間；是歌手自評，不是聽眾評分，不說別人聽起來如何。「有一些但不要太多」是作者的詮釋，不是量出的最佳值。",
+      "source_ids": [
+        "P69-S002"
+      ],
+      "source_locator": "F35-S002 §III.A；Table IV–V；§IV.A.2",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.75）。內容成立，但 Bottalico 研究群在本題已有 P63-004 0.75、P63-005 0.75（Bottalico 等 2025）、P63-006 0.75、P63-007 0.5（Sierra-Polanco…Bottalico 2021）、P63-008 0.75（Bottalico 等 2016），合計 3.5，已超過同研究群 3.0 封頂（第十四輪 Bonn、第十六輪 Birkhead、V33 北澤的先例）；Redman 2023 的四位作者含 Bottalico 與 Glasner，與 2025 篇的共同作者重疊。照封頂新增不再計分；舊核心是 V25 定案，本輪不回頭改。若站主決定 Bottalico 群不套封頂，本條最多 0.5（中等殘響與 P63-010、P63-011 同方向不計）。 原提案 F35-002（目標 C9-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V38（2026-11-12）改字後收；數字相符；補上「迴響感也落在支持感（0.66）」這半句，否則觀眾會以為歌手只把迴響當缺點；場地描述改正（有一座露天、沒有容積）；同研究群封頂計 0。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "歌手在意的是撐得住、夠安靜；迴響感兩頭都沾，所以要剛好",
+        "visual": "三個因子的圓餅（56／28／16），「迴響感」一條線同時連到前兩塊，一正一負",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P69-003",
+      "question": "耳邊房間送回來的聲音越多，歌手就越覺得被撐住嗎？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.higher_stv_lower_felt_support_five_venues",
+      "answer_target": "在這個五場地研究裡，關係是反過來的。研究者用假人頭量演唱位置耳邊的回送比例（嘴巴發出、5 到 100 毫秒內反射回耳朵的能量，對比直接到耳朵的聲音），五處從 −13.3 到 −4.90 分貝；回送比例每高 1 分貝，歌手的「被撐住」感受分數降 0.28。作者據此推論：反射聲相對直達聲越少，歌手越喜歡那個場地。不過五處裡只有一處明顯偏高，其他四處擠在 −10.5 到 −13.3 分貝之間。",
+      "scope": "只有五個場地、9 人、順序固定；是房間層級的關聯，作者沒提出機制；四間室內 400 立方公尺以上加一座露天劇場，沒有浴室或小房間。不得與 P63-004（另一篇的小教室回送比例最高）串成「浴室回送多，所以不覺得被撐住」——那是跨研究拼出的因果鏈。不得與 F35-004 的 STv 數值混用（兩篇頻帶不同）。",
+      "source_ids": [
+        "P69-S002"
+      ],
+      "source_locator": "F35-S002 Table VI–VII；§III.B.2；§IV.B.1；§IV.C",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.5）：Bottalico 研究群封頂（見 F35-002）；且與浴室無關，不能當本題轉折。留作一句「送回來多，不等於覺得被撐住」的背景。 原提案 F35-003（目標 C9-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V38（2026-11-12）改字後收；數字與負號正確；改正「五處都 400 m³ 以上」（一座是露天）、標明喜好是作者推論、標出一處離群；與浴室無關，降為 segment、計 0。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在大場地裡，送回來多不等於覺得被撐住",
+        "visual": "五個場地點在 STv 橫軸，四點擠在左邊、一點在右邊，旁標「只有五個房間」",
+        "seconds": [
+          25,
+          35
+        ]
+      }
+    },
+    {
+      "id": "P69-004",
+      "question": "同一批歌手換了場地，唱出來的音準和顫音變了多少？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.room_support_pitch_error_small_vibrato_varies",
+      "answer_target": "音準主要是人自己的事：同一批 9 位歌手在五個場地，音準誤差平均 32.8 音分，這些差異裡房間只占約 2%，歌手之間的差別占 43%；不過回送比例越高，誤差稍小（每高 1 分貝約少 0.88 音分），回送最高的那處平均 27.1 音分。顫音幅度反而最受房間影響（房間占 33%、歌手 23%）：最小的那間室內樂廳（約 400 立方公尺）平均 58.4 音分，其他四處 84.9 到 100.8 音分。",
+      "scope": "9 人、五場地、順序固定；相關不是因果；不與 P63-009 的合唱音分比較或相減；沒有浴室；不說哪個房間「唱得比較好」或「比較好聽」；STv 數值用本篇 Table III，不與 Redman 2023 的表混用。",
+      "source_ids": [
+        "P69-S003"
+      ],
+      "source_locator": "F35-S003 Abstract；Table IV–V；結果 ICC 段",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.5）：Bottalico 研究群封頂（見 F35-002）。內容是轉折一（房間對音準份量小）的另一個研究場景，與 P63-009 同方向；若不套封頂最多 0.5。 原提案 F35-004（目標 C9-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V38（2026-11-12）改字後收；數字相符；改「大部分」為 43%、刪「最乾」；同研究群封頂計 0。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "音準的差別主要在人；房間動得比較多的是顫音的幅度",
+        "visual": "兩根堆疊柱：音準誤差（房間 2%、歌手 43%）與顫音幅度（房間 33%、歌手 23%）",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P69-005",
+      "question": "換一個房間唱歌，人會照同一套方式調整嗎？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.singer_room_adaptation_individual_small",
+      "answer_target": "不會，而且房間的份量比想像小。柏林工大讓 4 位聲樂學生在錄音室、小劇場、室內樂廳、教堂到柏林愛樂廳等八種條件裡，唱各自選的一快一慢兩首歌，再到消音室用耳機重現這些房間重唱。演唱特徵的差異主要來自曲目（28%）和歌手（18%），房間不到 1%；所有人一起看，房間參數沒有顯著關係，最多只解釋 2%。分開每個人看，實體房間平均能解釋 15%，但每個人調的東西不同：一位主要改音色和音量，另一位連速度也一起改，還有一位改的方向跟其他人相反。",
+      "scope": "只有 4 人；研討會論文（期刊版 403 未讀）；場地 420 立方公尺以上，沒有浴室；量的是速度、音量、音色等演唱特徵，不是好壞或音準。",
+      "source_ids": [
+        "P69-S004"
+      ],
+      "source_locator": "F35-S004 §3 第一至三段；§5",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：研討會論文、4 人，且與 P63-009、F35-004 同方向；新增的只有「沒有共同調整模式」。獨立研究群（TU Berlin），不受 Bottalico 封頂影響。pool.json 無 Luizard／Weinzierl／hal-02356057。 原提案 F35-005（目標 C9-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V38（2026-11-12）改字後收；數字相符；修正個別歌手的描述；研討會論文與同方向降為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "房間改變的不多，而且每個人改的地方不一樣",
+        "visual": "四位歌手各一列，被房間改變的項目點亮，位置各不相同，一列的箭頭反向",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "P69-NA001",
+      "question": "聽的人覺得加了殘響的歌聲比較好聽、比較準嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "P69-S005"
+      ],
+      "reason": "找不到直接評歌聲（加或不加殘響）的聽眾端研究。最接近的 De Man 等 2017 是受訓混音者評整首多軌混音：沒有單一最佳殘響量，被評為『太多殘響』的偏好顯著較低；評的不是單獨歌聲，也不是浴室，不計。Sayles & Winter 2008（殘響削弱高次諧波的音高時間編碼）只見搜尋摘要，且是人工聲音、不是歌聲，未讀全文。卡拉 OK 迴音『聽起來比較會唱』只見部落格與問答，不是來源。 原提案 F35-NA001。",
+      "reentry_condition": "有開放全文的聽眾評分研究：同一段歌聲加不同殘響，請聽者評好聽度或音準。",
+      "reading_status": "F35-S005 只讀摘要與關鍵段；其餘未讀到合格來源"
+    },
+    {
+      "id": "P69-NA002",
+      "question": "浴室的早期反射、回送比例（STv）有實測嗎？",
+      "existing_ids": [
+        "P63-004"
+      ],
+      "source_ids": [],
+      "reason": "只找到 F35-S001 的單一 T60。SCIRP〈Evaluating Room Acoustics for Speech Intelligibility〉（搜尋摘要稱量過一間住宅浴室 RT60 0.52 秒）curl 只回 JS 轉址、WebFetch 403，未讀、不計；其他『浴室 0.5–1.5 秒』都是隔音業者或電商文章。 原提案 F35-NA002。",
+      "reentry_condition": "SCIRP 該文可正常讀取，或有開放的小浴室早期反射／STv 量測。",
+      "reading_status": "未讀（403）"
+    },
+    {
+      "id": "P69-NA003",
+      "question": "合唱歌手偏好的自聽比例、早期反射範圍（KTH 進度報告）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "diva-portal.org 的 KTH QPSR 全文（diva2:1416134）curl 連線被重設、WebFetch 503，未讀；搜尋摘要提到『早期反射 15–35 毫秒最受偏好、殘響時間影響小』，但只是摘要，不計。 原提案 F35-NA003。",
+      "reentry_condition": "diva-portal 可正常讀取時。",
+      "reading_status": "未讀"
+    },
+    {
+      "id": "P69-NA004",
+      "question": "音不準的人是因為聽不出來嗎？（Pfordresher & Brown 2007）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "與 P63-NA009 同：作者網站 PDF curl TLS 憑證驗證失敗（不關閉驗證）、WebFetch 503，仍未讀。 原提案 F35-NA004。",
+      "reentry_condition": "能正常讀取全文時。",
+      "reading_status": "未讀"
+    },
+    {
+      "id": "P69-NA005",
+      "question": "歌手在不同房間的調整：Luizard 等 2020 JASA 期刊版",
+      "existing_ids": [],
+      "source_ids": [
+        "P69-S004"
+      ],
+      "reason": "doi.org/10.1121/10.0000715 轉 pubs.aip.org 回 403；core.ac.uk 兩個 PDF 回 403。只用 HAL 的 ISRA 2019 研討會全文（F35-005）。 原提案 F35-NA005。",
+      "reentry_condition": "期刊版有合法公開全文時，可把 F35-005 的『4 首、8 房間、各人變異比例』補成期刊數字。",
+      "reading_status": "未讀（403）"
+    }
+  ]
+}

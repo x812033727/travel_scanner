@@ -1,0 +1,549 @@
+{
+  "batch_id": "wave121-everyday-20261119",
+  "created_on": "2026-11-19",
+  "scope": "十二張可從日常器物觀察的短章素材，涵蓋鑄幣、版畫、縫紉、樂器、光學、攝影、食品、輪胎及運動規則。",
+  "sources": [
+    {
+      "id": "X121E-S01",
+      "url": "https://www.usmint.gov/learn/production-process/coin-production",
+      "canonical_url": "https://www.usmint.gov/learn/production-process/coin-production",
+      "title": "Coin Production",
+      "publisher": "United States Mint",
+      "version": "美國鑄幣局現行製幣流程說明",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀取機構或製造商的原文，核對下列段落與操作圖說。",
+      "reading_scope": "Burnishing 段及 Striking 段「Coins are struck differently depending on their finish」。",
+      "locator": "Burnishing 段及 Striking 段「Coins are struck differently depending on their finish」。",
+      "summary": "普通流通幣一次壓印，收藏用精製幣至少壓印兩次。壓機每次將正反兩副模具同時壓向幣坯。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "聚焦該局有關壓印次數的說明，不把任何亮面金屬片都判為精製幣。",
+      "network": "UNITED_STATES_MINT"
+    },
+    {
+      "id": "X121E-S02",
+      "url": "https://www.tate.org.uk/art/art-terms/m/monotype",
+      "canonical_url": "https://www.tate.org.uk/art/art-terms/m/monotype",
+      "title": "Monotype",
+      "publisher": "Tate",
+      "version": "Art Terms 的單刷版畫詞條",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀取機構或製造商的原文，核對下列段落與操作圖說。",
+      "reading_scope": "圖版後的技法正文，末段「a second, lighter impression」。",
+      "locator": "圖版後的技法正文，末段「a second, lighter impression」。",
+      "summary": "玻璃或金屬等光滑版面承接墨畫，墨轉印到紙上。偶能用餘墨再拉印一張較淡的畫。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "限以同一層墨轉印。重新在板上作畫會改變示例條件。",
+      "network": "TATE"
+    },
+    {
+      "id": "X121E-S03",
+      "url": "https://www.schmetzneedles.com/pages/needle-guide",
+      "canonical_url": "https://www.schmetzneedles.com/pages/needle-guide",
+      "title": "Needle Guide",
+      "publisher": "SCHMETZ",
+      "version": "家用縫紉機針原廠指南",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀取機構或製造商的原文，核對下列段落與操作圖說。",
+      "reading_scope": "Anatomy of a SCHMETZ Needle 的 Shoulder、Blade、Color Code，兩色帶分別說明 needle type 與 size。",
+      "locator": "Anatomy of a SCHMETZ Needle 的 Shoulder、Blade、Color Code，兩色帶分別說明 needle type 與 size。",
+      "summary": "有兩道色環的針，上環表示用途類型，下環表示尺寸。公制尺寸隨針身直徑，例如 75 對應 0.75 mm。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "依 SCHMETZ 圖示解讀帶兩道標記的針，其他牌子須查自己的圖例。",
+      "network": "SCHMETZ"
+    },
+    {
+      "id": "X121E-S04",
+      "url": "https://www.yamaha.com/en/musical_instrument_guide/clarinet/mechanism/mechanism002.html",
+      "canonical_url": "https://www.yamaha.com/en/musical_instrument_guide/clarinet/mechanism/mechanism002.html",
+      "title": "The Structure of the Clarinet: A single barrel for many keys",
+      "publisher": "Yamaha Corporation",
+      "version": "Musical Instrument Guide 原廠樂器機構圖",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀取機構或製造商的原文，核對下列段落與操作圖說。",
+      "reading_scope": "Enabling the rings to work together，左手食指與中指之間的圓蓋圖，及右小指按鍵的連動圖。",
+      "locator": "Enabling the rings to work together，左手食指與中指之間的圓蓋圖，及右小指按鍵的連動圖。",
+      "summary": "指環能透過連動機構帶動另一個音孔的圓蓋。右小指位置的按鍵也能連到上方的鍵。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "僅指圖示機構，避免將每一指環與每一音孔說成完全相同配置。",
+      "network": "YAMAHA"
+    },
+    {
+      "id": "X121E-S05",
+      "url": "https://imaging.nikon.com/sport-optics/guide/binoculars/basic/basic_05/",
+      "canonical_url": "https://imaging.nikon.com/sport-optics/guide/binoculars/basic/basic_05/",
+      "title": "Exit pupil",
+      "publisher": "Nikon",
+      "version": "Basic Information about Binoculars",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀取機構或製造商的原文，核對下列段落與操作圖說。",
+      "reading_scope": "前段 8×42 算例；What is the relationship between bright/low-light conditions and the exit pupil of binoculars? 的明暗圖。",
+      "locator": "前段 8×42 算例；What is the relationship between bright/low-light conditions and the exit pupil of binoculars? 的明暗圖。",
+      "summary": "出瞳直徑為物鏡有效直徑除以倍率。原廠也示範在亮處與暗處，人眼瞳孔大小如何改變可接收的光束。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "本文以幾何口徑作比較，未量測兩款實物透光率；人眼瞳孔大小也隨個人與環境變化。",
+      "network": "NIKON"
+    },
+    {
+      "id": "X121E-S06",
+      "url": "https://www.instax.com/mini_12/en/",
+      "canonical_url": "https://www.instax.com/mini_12/en/",
+      "title": "instax mini 12",
+      "publisher": "FUJIFILM",
+      "version": "mini 12 即影即有相機原廠產品頁",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀取機構或製造商的原文，核對下列段落與操作圖說。",
+      "reading_scope": "Point 02，Close-up mode OFF 與 ON 的構圖對照，以及 30 to 50 cm 說明。",
+      "locator": "Point 02，Close-up mode OFF 與 ON 的構圖對照，以及 30 to 50 cm 說明。",
+      "summary": "原廠用同一個近物對照關閉與開啟近拍模式的照片位置。建議此模式用於距離三十至五十公分。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "限定此型相機與原廠建議拍攝範圍。",
+      "network": "FUJIFILM_INSTAX"
+    },
+    {
+      "id": "X121E-S07",
+      "url": "https://www.instax.com/mini_12/en/spec/",
+      "canonical_url": "https://www.instax.com/mini_12/en/spec/",
+      "title": "Product Specifications: instax mini 12",
+      "publisher": "FUJIFILM",
+      "version": "mini 12 機身規格表",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀取機構或製造商的原文，核對下列段落與操作圖說。",
+      "reading_scope": "Viewfinder 與 Shooting Range 欄，Real image finder、target spot、parallax correction 與 close-up mode。",
+      "locator": "Viewfinder 與 Shooting Range 欄，Real image finder、target spot、parallax correction 與 close-up mode。",
+      "summary": "此機使用帶瞄準標記的光學取景器，近拍模式有視差補正；表列近拍範圍 0.3 至 0.5 公尺。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "不據此推定內部採用哪一種傳動部件。",
+      "network": "FUJIFILM_INSTAX"
+    },
+    {
+      "id": "X121E-S08",
+      "url": "https://support.apple.com/en-us/104966",
+      "canonical_url": "https://support.apple.com/en-us/104966",
+      "title": "Take and edit Live Photos",
+      "publisher": "Apple Support",
+      "version": "Apple 的 iPhone 原況照片使用說明",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀取機構或製造商的原文，核對下列段落與操作圖說。",
+      "reading_scope": "首段記錄快門前後時間，How to change the key photo 中拖曳白框和 Make Key Photo。",
+      "locator": "首段記錄快門前後時間，How to change the key photo 中拖曳白框和 Make Key Photo。",
+      "summary": "原況照片會記下拍攝當下之前和之後各 1.5 秒。編輯時可以從這段記錄另選主要照片。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "限拍攝當時有開原況照片且保留這段資料的檔案。",
+      "network": "APPLE"
+    },
+    {
+      "id": "X121E-S09",
+      "url": "https://www.ams.usda.gov/grades-standards/maple-syrup-grades-standards",
+      "canonical_url": "https://www.ams.usda.gov/grades-standards/maple-syrup-grades-standards",
+      "title": "Maple Syrup Grades & Standards",
+      "publisher": "USDA Agricultural Marketing Service",
+      "version": "美國農業部楓糖漿分級說明",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀取機構或製造商的原文，核對下列段落與操作圖說。",
+      "reading_scope": "U.S. Grade A 列表的 uniform color、flavor and odor、color class 以及雜質條件。",
+      "locator": "U.S. Grade A 列表的 uniform color、flavor and odor、color class 以及雜質條件。",
+      "summary": "A 級糖漿的色澤要均勻，風味強度應符合該色級，另有氣味及潔淨等要求。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "不能只憑瓶中色澤判定一批是否達到全部 A 級條件。",
+      "network": "USDA_AMS"
+    },
+    {
+      "id": "X121E-S10",
+      "url": "https://vermontmaple.org/learn/grades-types",
+      "canonical_url": "https://vermontmaple.org/learn/grades-types",
+      "title": "Grades of Maple Syrup",
+      "publisher": "Vermont Maple Sugar Makers’ Association",
+      "version": "佛蒙特楓糖業者協會分級頁",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀取機構或製造商的原文，核對下列段落與操作圖說。",
+      "reading_scope": "四個 color classes 段落，Golden color with a delicate taste 至 Very dark color with strong taste。",
+      "locator": "四個 color classes 段落，Golden color with a delicate taste 至 Very dark color with strong taste。",
+      "summary": "協會辨認金黃、琥珀、深色與極深色四種色級，並列出預期風味強弱。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "季節是常見觀察，單瓶的實際採收日不能由顏色反推。",
+      "network": "VERMONT_MAPLE_ASSOC"
+    },
+    {
+      "id": "X121E-S11",
+      "url": "https://wholegrainscouncil.org/whole-grains-101/easy-ways-enjoy-whole-grains/grain-month-calendar/oats-%E2%80%93-january-grain-month/types",
+      "canonical_url": "https://wholegrainscouncil.org/whole-grains-101/easy-ways-enjoy-whole-grains/grain-month-calendar/oats-%E2%80%93-january-grain-month/types",
+      "title": "Types of Oats",
+      "publisher": "Oldways Whole Grains Council",
+      "version": "燕麥製程圖解",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀取機構或製造商的原文，核對下列段落與操作圖說。",
+      "reading_scope": "Rolled Oats – regular (old fashioned)、Rolled Oats – quick or instant 兩段。",
+      "locator": "Rolled Oats – regular (old fashioned)、Rolled Oats – quick or instant 兩段。",
+      "summary": "普通壓片燕麥經蒸、壓成片。進一步減薄、延長蒸製或兩者兼施，會得到較快煮的種類。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "以無添加的燕麥片本身比較，不推定單包調味粥的配料或特定烹調時間。",
+      "network": "OLDWAYS_WHOLE_GRAINS_COUNCIL"
+    },
+    {
+      "id": "X121E-S12",
+      "url": "https://www.parktool.com/en-us/blog/repair-help/tire-and-tube-removal-and-installation",
+      "canonical_url": "https://www.parktool.com/en-us/blog/repair-help/tire-and-tube-removal-and-installation",
+      "title": "Tire and Tube Removal and Installation",
+      "publisher": "Park Tool",
+      "version": "自行車工具廠維修教材",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀取機構或製造商的原文，核對下列段落與操作圖說。",
+      "reading_scope": "Inner Tube Inspection 的單一小孔和兩條對稱裂口對照，圖說 Symmetrical slits are indicative of a rim pinch。",
+      "locator": "Inner Tube Inspection 的單一小孔和兩條對稱裂口對照，圖說 Symmetrical slits are indicative of a rim pinch。",
+      "summary": "內胎被輪圈與路面物體夾壓時，常留下對稱的兩處裂口；尖物穿刺較常見單一小孔。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "損傷形狀是診斷線索，不能反推出事故當時胎壓或唯一成因。",
+      "network": "PARK_TOOL"
+    },
+    {
+      "id": "X121E-S13",
+      "url": "https://www.lodgecastiron.com/pages/how-to-season",
+      "canonical_url": "https://www.lodgecastiron.com/pages/how-to-season",
+      "title": "How to Season Cast Iron",
+      "publisher": "Lodge Cast Iron",
+      "version": "原廠裸鑄鐵鍋養護說明",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀取機構或製造商的原文，核對下列段落與操作圖說。",
+      "reading_scope": "What is seasoning? 中油脂 polymerization 的描述，初期不均與 flaky layers 的段落。",
+      "locator": "What is seasoning? 中油脂 polymerization 的描述，初期不均與 flaky layers 的段落。",
+      "summary": "原廠把 seasoning 定義為油脂經熱聚合、附著鍋面的硬層。使用初期不同部位累積程度可能不同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "限未上琺瑯的鑄鐵鍋；本卡不提供加熱操作程序。",
+      "network": "LODGE_CAST_IRON"
+    },
+    {
+      "id": "X121E-S14",
+      "url": "https://www.randa.org/rog/the-rules-of-golf/rule-18",
+      "canonical_url": "https://www.randa.org/rog/the-rules-of-golf/rule-18",
+      "title": "Rule 18 – Stroke-and-Distance Relief, Ball Lost or Out of Bounds, Provisional Ball",
+      "publisher": "The R&A",
+      "version": "查閱日現行 Rules of Golf",
+      "accessed_on": "2026-11-19",
+      "read_via": "直接讀取機構或製造商的原文，核對下列段落與操作圖說。",
+      "reading_scope": "18.2a(1) 三分鐘搜尋時間；18.3c(1)–(3) 暫定球變成比賽球與必須放棄的條件。",
+      "locator": "18.2a(1) 三分鐘搜尋時間；18.3c(1)–(3) 暫定球變成比賽球與必須放棄的條件。",
+      "summary": "合法打出的暫定球尚未變成比賽球時，若在三分鐘搜尋時限內於處罰區以外的場內找到原球，就須放棄暫定球，其桿數也不計。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只比較已合規宣告的暫定球，不處理處罰區內或出界已確定的情況。",
+      "network": "R_AND_A"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "K121-0001",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "美國精製硬幣要壓至少兩次，難道是因為第一次壓正面、第二次才輪到反面？",
+      "mechanism_key": "x121.daily.proof_multiple_strikes",
+      "answer_target": "想像把一片幣坯放進兩副相對的模具中間。每壓一次，正反模就一起把兩面的圖樣印進金屬。美國鑄幣局的普通流通幣通常這樣壓一次就完成，精製幣則至少再壓一次。既然第一下已包含兩面，第二下仍是在既有兩面的圖案上重複壓印。",
+      "scope": "以美國鑄幣局該頁比較的流通幣和精製幣為例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "數壓機動了幾次，和數硬幣有幾面，是兩種計數。",
+        "visual": "自畫側面剖面，讓上下模同時在幣坯上留下正反圖樣，再把同一製程重播第二次。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_ids": [
+        "X121E-S01"
+      ],
+      "source_locator": "X121E-S01，Striking 的 obverse and reverse dies 及 proof coins are struck at least twice。",
+      "notes": "既有 K119-0008 解釋如何先在幣坯做出凸邊，本卡看有圖模具的壓印次數。"
+    },
+    {
+      "id": "K121-0002",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "單刷版畫號稱每張獨一無二，為什麼在原版上不再上墨，有時卻還能印出第二張？",
+      "mechanism_key": "x121.daily.monotype_residual_ink",
+      "answer_target": "在光滑的玻璃或金屬板上用墨畫出形狀，把它轉印到紙上。第一次轉印已經取走相當一部分墨，但版上有時仍留著薄薄的墨跡。再壓一張乾淨的紙，就可能得到輪廓相似、色調卻淡得多的第二張。這兩張呈現的是同一次上墨先後兩次轉移的結果。",
+      "scope": "依 Tate 的 monotype 詞條，不替第二張指定固定濃度。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "第二張能印出影子，恰好顯出第一張拿走了多少墨。",
+        "visual": "先畫有墨的平版，再並排第一張紙、版上餘墨、第二張紙，用相同位置的深淺串起來。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_ids": [
+        "X121E-S02"
+      ],
+      "source_locator": "X121E-S02，末段 second, lighter impression。",
+      "notes": "與乾刻 K120-0002 的銅版毛刺受損不同；這裡不用靠版面磨耗解釋深淺。"
+    },
+    {
+      "id": "K121-0003",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "把縫紉機針從包裝裡拿出來，為什麼針肩上要畫上下兩圈顏色？",
+      "mechanism_key": "x121.daily.machine_needle_type_size_bands",
+      "answer_target": "對照 SCHMETZ 的家用機針圖例，有兩道色帶的針，上帶告訴你是哪種用途的針，例如做明線的 Topstitch；下帶告訴你粗細。公制尺寸 75 指針身直徑約 0.75 毫米。因此上帶相同、下帶不同的兩支針，可以做同一類工作卻有不同粗細。",
+      "scope": "限圖例所示品牌和有兩道色環的針。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "先看針要做哪種事，再讀這一支有多粗，兩圈各答一題。",
+        "visual": "畫兩支上環同色、下環不同的示意針，另將一處針身直徑畫成橫截面。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_ids": [
+        "X121E-S03"
+      ],
+      "source_locator": "X121E-S03，機針構造中 Upper color band、Lower color band 及 blade diameter 的對照。",
+      "notes": "圖只標欄位，若用真實針色需再對照該廠色碼表。"
+    },
+    {
+      "id": "K121-0004",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "單簧管手只壓住一個圓環，怎麼連兩指之間、根本沒有碰到的那個音孔也一起關上？",
+      "mechanism_key": "x121.daily.clarinet_ring_linked_pad",
+      "answer_target": "看原廠機構圖裡左手食指和中指之間的小圓蓋。旁邊的環形鍵連到這個蓋，手指壓下相連的圓環，連桿就同時帶動小蓋封住它的音孔。換到右手小指一側，按下較低的匙狀鍵也能連動上方的鍵。要看哪個孔關了，得沿著金屬件追到它帶動的另一端。",
+      "scope": "限 Yamaha 示範的單簧管鍵系。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一根手指能同時管到手下的環與指尖夠不到的孔。",
+        "visual": "畫左手兩環及其間小圓蓋，先只亮指下的環，再沿連桿亮起小圓蓋。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_ids": [
+        "X121E-S04"
+      ],
+      "source_locator": "X121E-S04，Enabling the rings to work together 兩張連動圖。",
+      "notes": "演示鍵系動作，不談單簧管如何產生泛音。"
+    },
+    {
+      "id": "K121-0005",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "把標示 8×42 的雙筒望遠鏡拿離眼睛，目鏡裡那個小亮圓為什麼只有大約 5.3 毫米寬？",
+      "mechanism_key": "x121.daily.binocular_exit_pupil_circle",
+      "answer_target": "望遠鏡對向明亮的普通景物、從眼睛前方稍微移開，目鏡中央可見光束形成的小亮圓，稱為出瞳。出瞳直徑用物鏡有效直徑除以倍率估算，這款是 42 毫米除以 8，約等於 5.3 毫米。在暗處眼睛瞳孔放大時，較小的出瞳就可能限制進眼的光束；亮處眼睛的瞳孔本來較小，增大出瞳的差別就未必顯眼。",
+      "scope": "依 Nikon 幾何示例，實際亮度也受透光率等因素影響。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "用倍率和口徑兩個印在鏡身上的數字，就能預測目鏡後的亮圈。",
+        "visual": "自畫明亮室內牆面和一副鏡筒，從後方放大出瞳，疊上 42 ÷ 8 的尺寸線。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_ids": [
+        "X121E-S05"
+      ],
+      "source_locator": "X121E-S05，8×42 算例與兩組日、夜示意。",
+      "notes": "K120-0005 看雙眼調焦環，這裡讀出射光束的口徑。"
+    },
+    {
+      "id": "K121-0006",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "用 instax mini 12 近拍一個杯子，明明在取景框正中央，為什麼還要把鏡頭多轉一格？",
+      "mechanism_key": "x121.daily.instant_camera_near_parallax",
+      "answer_target": "這台相機的光學取景窗和拍攝鏡頭分處兩個位置。杯子靠近時，從兩個位置望向杯沿，看到的中心會有偏差。原廠將 30 至 50 公分列為近拍模式的使用範圍；切到這一格時，取景器會啟用視差補正，讓瞄準標記對到的主體更接近成像中央。",
+      "scope": "限 mini 12 規格的近拍距離與構圖補正，未量測固定偏移量。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "近拍時要照顧的還有取景窗與拍攝鏡頭之間的距離。",
+        "visual": "自繪機身前方兩個觀察位置與杯子，連出兩條線，對照近拍模式開與關的中央標記。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_ids": [
+        "X121E-S06",
+        "X121E-S07"
+      ],
+      "source_locator": "X121E-S06，Point 02 的 Close-up mode ON/OFF；X121E-S07，Viewfinder 與 Shooting Range。",
+      "notes": "討論拍攝前的視線，不重述 K120-0006 的顯影膏缺區。"
+    },
+    {
+      "id": "K121-0007",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "iPhone 原況照片裡有人正好眨眼，照片都拍完了，怎麼還能換成他上一刻睜眼的樣子？",
+      "mechanism_key": "x121.daily.live_photo_key_frame",
+      "answer_target": "在拍攝前就開啟原況照片時，iPhone 會保留按快門之前和之後各 1.5 秒的片段。若睜眼那刻剛好也在記錄裡，編輯時可以沿著影格拖動白框，將它設成主要照片。相簿呈現的代表畫面換了，能挑的範圍仍限於那段實際錄到的內容。",
+      "scope": "限原況照片已開啟且保留所錄片段的情況，普通靜態照片沒有這個選擇。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "被換上的表情，來自快門前後確實留下的另一個時刻。",
+        "visual": "畫一條時間帶，將快門點放中央，原主要畫面標為眨眼，再把白框移到睜眼影格。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_ids": [
+        "X121E-S08"
+      ],
+      "source_locator": "X121E-S08，開頭記錄長度及 How to change the key photo。",
+      "notes": "不涉及模型合成或用另一張獨立照片替換臉部。"
+    },
+    {
+      "id": "K121-0008",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "兩瓶美國楓糖漿都寫 Grade A，一瓶金黃、另一瓶卻深到幾乎透不過光，怎麼還能同級？",
+      "mechanism_key": "x121.daily.maple_grade_a_color_classes",
+      "answer_target": "Grade A 要求同一批顏色均勻、風味符合該色級，還有氣味、潔淨等品質條件。它並沒有指定所有 A 級糖漿都必須同一個色澤。佛蒙特業者列的色級從 Golden、Amber、Dark 到 Very Dark，對應的典型楓味從較柔和到較強。兩瓶各自在自己的色級達到要求，便可能同時標示 Grade A。",
+      "scope": "以美國 Grade A 與佛蒙特的四種色級為例；不用肉眼去推斷全部品質條件或精確採收日期。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "A 級管品質；標籤上另外那個表示深淺的詞，才幫你預期風味強度。",
+        "visual": "把同尺寸透明瓶排在白底前，各貼 Grade A，再替兩端加上 Golden 與 Very Dark 的色級小標。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_ids": [
+        "X121E-S09",
+        "X121E-S10"
+      ],
+      "source_locator": "X121E-S09，U.S. Grade A；X121E-S10，四類 color classes 及個別風味。",
+      "notes": "與其他國家或舊制的 A、B 分級分開。"
+    },
+    {
+      "id": "K121-0009",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "兩袋都是壓片燕麥，為什麼一袋要慢慢煮，另一袋只需很短時間就軟了？",
+      "mechanism_key": "x121.daily.quick_rolled_oat_geometry",
+      "answer_target": "傳統壓片燕麥先把去殼燕麥粒蒸過，再壓成片，讓表面積增加。照全穀物協會的圖解，繼續把片壓得更薄，或延長蒸製，便能做出快熟或即食的種類。做對照時用兩碗原味燕麥、給相同時間，薄片或較充分預處理的一碗會較快變軟；不能只看外袋上都有「全穀」就用同一個煮法。",
+      "scope": "限無調味的 rolled oats，實際加水比例與時間依產品說明。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "快熟可以來自片的厚薄及蒸製程度，全穀標示仍然成立。",
+        "visual": "把一粒燕麥的蒸製與壓片畫成兩條支線，以側面比較兩種片厚。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_ids": [
+        "X121E-S11"
+      ],
+      "source_locator": "X121E-S11，Rolled Oats – regular 及 Rolled Oats – quick or instant。",
+      "notes": "鋼切與石磨另有流程，不混進這次的壓片比較。"
+    },
+    {
+      "id": "K121-0010",
+      "category": "物理化學與日常材料",
+      "domain": "物理化學與日常材料",
+      "question": "自行車內胎破了兩道左右相對的小裂口，真的剛好有兩根刺一起扎進去嗎？",
+      "mechanism_key": "x121.daily.inner_tube_paired_pinch",
+      "answer_target": "攤平損壞的內胎，先看孔洞的形狀與相對位置。Park Tool 的圖例裡，細小的單孔常見於尖物穿刺；兩道位置對稱的短裂口則常見於夾壓。輪子撞到路面突起時，內胎被輪圈與外側物體擠住，一次衝擊就能留下成對痕跡。形狀能指出值得檢查的方向，單看照片推不回當時的胎壓。",
+      "scope": "限裝有內胎的自行車輪，使用常見損傷圖例做辨認。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "成對裂口可以來自一次夾壓，孔數不用等於刺的數目。",
+        "visual": "畫內胎貼在輪圈兩側的截面，再把夾壓後的內胎攤開，對應兩處裂痕。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_ids": [
+        "X121E-S12"
+      ],
+      "source_locator": "X121E-S12，Inner Tube Inspection 的小孔與 symmetrical slits 對照。",
+      "notes": "不以這兩道痕跡保證所有個案都由同一原因造成。"
+    },
+    {
+      "id": "K121-0011",
+      "category": "飲食與廚房科學",
+      "domain": "飲食與廚房科學",
+      "question": "鑄鐵鍋倒掉油、擦乾之後，為什麼鍋面還留著一層滑順的黑色養鍋層？",
+      "mechanism_key": "x121.daily.cast_iron_seasoned_film",
+      "answer_target": "裸鑄鐵上的養鍋層來自油脂受熱後的聚合。原本能流動的油逐漸形成附著在鐵表面的硬層，所以倒去液態油時，這層已形成的表面仍會留下。新鍋各部位起初可能深淺不同，因為食物接觸處、爐面熱點及溫度會影響油層在哪裡累積。",
+      "scope": "以 Lodge 未上琺瑯的熟成鑄鐵鍋為例，不能只憑色澤認定任何黑色殘留物都是養鍋層。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣都來自油，能流走的那一層和已附著在鐵面的硬層有不同狀態。",
+        "visual": "畫出鍋面剖面，把可流動的油畫成液滴，把已形成的薄層保留在鍋面。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_ids": [
+        "X121E-S13"
+      ],
+      "source_locator": "X121E-S13，What is seasoning? 的 polymerization 及新鍋覆層可能不均一段。",
+      "notes": "不延伸到噴塗不沾鍋或琺瑯鍋的表面。"
+    },
+    {
+      "id": "K121-0012",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "高爾夫第一球可能出界，暫定球卻打得更漂亮。三分鐘內找回第一球，能自己選留下哪顆嗎？",
+      "mechanism_key": "x121.daily.golf_abandon_provisional_in_time",
+      "answer_target": "情境是球員已依規則宣告並打出暫定球，以免原球真的遺失或出界時才折返。搜尋開始後三分鐘內，原球在場內、處罰區以外被找到，而且暫定球還沒依其他規定成為比賽球。此時球員得放棄暫定球，依原球位置打下去；之前為那顆暫定球所打的桿數也不計入。球的位置漂不漂亮沒有選擇效力。",
+      "scope": "限規則 18.3c(3) 指定情形，且未從比原球估計位置更靠洞處打暫定球。不討論處罰區內找到或已確定出界。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "暫定球替你保留的是原球找不到時的下一步，找回原球後就不能拿它替換。",
+        "visual": "自畫兩色球與搜尋計時，找到原球時擦去計分表裡暫定球那幾格。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_ids": [
+        "X121E-S14"
+      ],
+      "source_locator": "X121E-S14，18.2a(1) 及 18.3c(3) When Provisional Ball Must Be Abandoned。",
+      "notes": "用規則安排一個示意球局，不指稱真的有某場比賽如此判決。"
+    }
+  ],
+  "not_added": [
+    {
+      "id": "X121E-NA001",
+      "question": "樂高光滑平磚的頂面沒有凸點，拆磚器為什麼能掉轉一端從邊緣翹起？",
+      "reason": "查到 K117-0010 已用光滑平磚及拆磚器另一頭解釋，這一輪不再換色重收。",
+      "existing_ids": [
+        "K117-0010"
+      ]
+    },
+    {
+      "id": "X121E-NA002",
+      "question": "硬幣人像還沒壓上，為什麼幣坯上已經有一圈凸邊？",
+      "reason": "本輪閱讀美國鑄幣局製程時，發現凸邊加工和 K119-0008 相同，另收精製幣壓印次數的問題。",
+      "existing_ids": [
+        "K119-0008"
+      ]
+    },
+    {
+      "id": "X121E-NA003",
+      "question": "拍立得出片後上邊有一塊褐色缺口，是不是鏡頭把那裡拍暗了？",
+      "reason": "K120-0006 已用未被顯影膏鋪滿的上緣區域解釋，本批近拍題只談取景窗的視差。",
+      "existing_ids": [
+        "K120-0006"
+      ]
+    }
+  ]
+}

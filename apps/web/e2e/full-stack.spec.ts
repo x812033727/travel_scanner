@@ -33,14 +33,18 @@ test("manual insertion and single-stop cross-day move persist through the real A
   // Do not match the register URL's ?next=/trips suffix before sign-in finishes.
   await expect(page).toHaveURL((url) => url.pathname === "/zh-TW/trips", { timeout: 15_000 });
   // Use the same-origin session established by the real browser sign-in flow.
-  const created = await page.evaluate(async () => {
+  // Dates relative to today: the real API refuses a trip that started more than a day ago,
+  // so a fixed 2026-11-11 start broke this test with a 422 once 2026-11-13 arrived.
+  const firstDay = isoDaysFromToday(30);
+  const secondDay = isoDaysFromToday(31);
+  const created = await page.evaluate(async ([startDate, endDate]) => {
     const response = await fetch("/api/travel/trips", {
       method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ source: "blank", planning_mode: "manual_blank", name: "直覺排序驗證",
-        destination_name: "日本東京", start_date: "2026-11-11", end_date: "2026-11-12" }),
+        destination_name: "日本東京", start_date: startDate, end_date: endDate }),
     });
     return { status: response.status, body: await response.json() };
-  });
+  }, [firstDay, secondDay]);
   expect(created.status, JSON.stringify(created.body)).toBe(201);
   const trip = created.body;
   const readTrip = () => page.evaluate(async (id: string) => {
@@ -48,7 +52,9 @@ test("manual insertion and single-stop cross-day move persist through the real A
     if (!response.ok) throw new Error(`Trip reload failed: ${response.status}`);
     return response.json();
   }, trip.id);
-  const nextLunch = trip.items.find((item: { day_date: string; system_role: string }) => item.day_date === "2026-11-12" && item.system_role === "lunch").id;
+  const nextLunch = trip.items.find((item: { day_date: string; system_role: string }) => item.day_date === secondDay && item.system_role === "lunch").id;
+  // Pin the browser clock (after sign-in) a day before the trip so "DAY 2" is never relabelled "今天".
+  await page.clock.setFixedTime(new Date(`${isoDaysFromToday(29)}T03:00:00Z`));
   await page.goto(`/zh-TW/trips/${trip.id}`);
   await page.getByRole("button", { name: "加入第一個地點", exact: true }).click();
   const picker = page.getByRole("dialog", { name: "下一站想去哪裡？" });
@@ -61,7 +67,7 @@ test("manual insertion and single-stop cross-day move persist through the real A
   await page.getByLabel("只有一站也能移動 的更多操作", { exact: true }).click();
   await page.getByRole("button", { name: "移動 只有一站也能移動", exact: true }).click();
   const move = page.getByRole("dialog", { name: "移動這個行程" });
-  await move.getByLabel("日期").selectOption("2026-11-12");
+  await move.getByLabel("日期").selectOption(secondDay);
   await move.getByLabel("插入位置").selectOption(nextLunch);
   const saved = page.waitForResponse((response) => response.url().endsWith("/itinerary") && response.request().method() === "PUT" && response.status() === 200);
   await move.getByRole("button", { name: "移到這裡" }).click();
@@ -69,17 +75,23 @@ test("manual insertion and single-stop cross-day move persist through the real A
   await expect.poll(async () => {
     const state = await readTrip();
     return state.items.find((item: { title: string }) => item.title === "只有一站也能移動")?.day_date;
-  }).toBe("2026-11-12");
+  }).toBe(secondDay);
   await page.reload();
   await page.getByRole("button", { name: /DAY 2/ }).click();
   const card = page.locator(".planner-itinerary-card").filter({ hasText: "只有一站也能移動" });
   await expect(card).toContainText("固定時間 · 10:00");
   const persisted = await readTrip();
-  const day = persisted.items.filter((item: { day_date: string }) => item.day_date === "2026-11-12");
+  const day = persisted.items.filter((item: { day_date: string }) => item.day_date === secondDay);
   expect(day.map((item: { system_role: string }) => item.system_role)).toEqual(["hotel_start", null, "lunch", "dinner", "hotel_end", "return_flight"]);
 });
 
 // The trip calendar only renders one month; walk forward until the day exists.
+function isoDaysFromToday(days: number) {
+  const date = new Date();
+  date.setUTCDate(date.getUTCDate() + days);
+  return date.toISOString().slice(0, 10);
+}
+
 async function pickTripDay(page: Page, iso: string) {
   const toggle = page.getByRole("group", { name: "旅行日期", exact: true }).getByRole("button");
   if (await toggle.getAttribute("aria-expanded") !== "true") await toggle.click();
@@ -174,8 +186,10 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
   await page.locator(".calm-new-trip-name > summary").click();
   await page.getByLabel("旅程名稱").fill("東京固定餐食行程");
   await page.getByLabel("目的地").fill("日本東京");
-  await pickTripDay(page, "2026-11-10");
-  await pickTripDay(page, "2026-11-10");
+  // A day relative to today: a fixed 2026-11-10 became a past, disabled day in the calendar.
+  const tripDay = isoDaysFromToday(30);
+  await pickTripDay(page, tripDay);
+  await pickTripDay(page, tripDay);
   await expect(page.getByRole("group", { name: "旅行日期", exact: true }).getByRole("button")).toContainText("1 天");
   await createBlankTrip(page);
 
@@ -196,8 +210,8 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
   await page.getByLabel("班號").fill("BR 198");
   await page.getByLabel("出發機場").fill("TPE");
   await page.getByLabel("抵達機場").fill("NRT");
-  await page.getByLabel("當地起飛時間").fill("2026-11-10T08:50");
-  await page.getByLabel("當地抵達時間").fill("2026-11-10T13:10");
+  await page.getByLabel("當地起飛時間").fill(`${tripDay}T08:50`);
+  await page.getByLabel("當地抵達時間").fill(`${tripDay}T13:10`);
   await page.getByRole("button", { name: "儲存航班" }).click();
   await expect(page.getByRole("dialog", { name: "設定去程航班" })).toBeHidden();
   await expect(flightCards.first()).toContainText("長榮航空 BR 198");
@@ -207,8 +221,8 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
   await page.getByLabel("班號").fill("BR 197");
   await page.getByLabel("出發機場").fill("NRT");
   await page.getByLabel("抵達機場").fill("TPE");
-  await page.getByLabel("當地起飛時間").fill("2026-11-10T20:20");
-  await page.getByLabel("當地抵達時間").fill("2026-11-10T23:10");
+  await page.getByLabel("當地起飛時間").fill(`${tripDay}T20:20`);
+  await page.getByLabel("當地抵達時間").fill(`${tripDay}T23:10`);
   await page.getByRole("button", { name: "儲存航班" }).click();
   await expect(flightCards.last()).toContainText("長榮航空 BR 197");
 
@@ -275,8 +289,11 @@ test("a saved trip searches flights from its own criteria and takes a quote back
   await page.locator(".calm-new-trip-name > summary").click();
   await page.getByLabel("旅程名稱").fill("東京查機票");
   await page.getByLabel("目的地").fill("日本東京");
-  await pickTripDay(page, "2026-11-10");
-  await pickTripDay(page, "2026-11-14");
+  // Dates relative to today: the real API refuses to search a trip whose departure has
+  // passed in its timezone, and the editor opens on "today" when it falls inside the trip,
+  // so fixed dates broke this test once 2026-11-10 arrived in Tokyo.
+  await pickTripDay(page, isoDaysFromToday(30));
+  await pickTripDay(page, isoDaysFromToday(34));
   await expect(page.getByRole("group", { name: "旅行日期", exact: true }).getByRole("button")).toContainText("5 天");
   await createBlankTrip(page);
   const tripUrl = page.url();

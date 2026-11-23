@@ -35,6 +35,7 @@ from app.foods.platform_review_import import apply_food_platform_reviews
 from app.foods.service import seed_food_catalog
 from app.foods.trend_import import DEFAULT_FILE as TREND_MERCHANTS_FILE
 from app.foods.trend_import import backfill_english_names, import_trend_merchants
+from app.guides import indexnow as guides_indexnow
 from app.guides.content_pack import (
     ContentPackError,
     apply_import,
@@ -91,6 +92,7 @@ from app.usage.service import PACKAGE_DEFAULTS, create_usage_account, grant_pack
 from app.video_automation.story_cli import import_story_file
 from app.video_media.prune_cli import prune_video_media
 from app.video_reviews.admin_service import backfill_youtube_publish_times
+from app.video_reviews.shelf import backfill as backfill_video_shelf
 from app.video_youtube.errors import Refused as YoutubeRefused
 from app.video_youtube.retitle import DEFAULT_LIMIT as CAPTION_TITLES_LIMIT
 from app.video_youtube.retitle import caption_channel_titles
@@ -445,6 +447,13 @@ async def backfill_video_publish_times(apply: bool) -> dict[str, Any]:
     reports (admin_service.backfill_youtube_publish_times); one line per video either way."""
     async with SessionFactory() as session:
         return await backfill_youtube_publish_times(session, apply=apply)
+
+
+async def backfill_video_shelves(apply: bool) -> dict[str, Any]:
+    """File every video under its show and topic for the review catalog (migration 0147);
+    reports only unless ``apply``."""
+    async with SessionFactory() as session:
+        return await backfill_video_shelf(session, apply=apply)
 
 
 async def caption_video_titles(
@@ -1103,11 +1112,49 @@ def main() -> None:
             "migration 0078 and after any bulk publish that bypassed the admin write path."
         ),
     )
+    indexnow_submit = subparsers.add_parser(
+        "indexnow-submit",
+        help=(
+            "Submit recently published guide URLs (or explicit --url values) to IndexNow for "
+            "Bing, Yahoo TW, Naver, and ChatGPT Search; dry-run unless --apply"
+        ),
+    )
+    indexnow_submit.add_argument(
+        "--since-hours",
+        type=int,
+        default=48,
+        help="Collect live guide revisions published in the last N hours (default: 48)",
+    )
+    indexnow_submit.add_argument(
+        "--limit",
+        type=int,
+        default=1000,
+        help="Maximum URLs to collect from the database (default: 1000)",
+    )
+    indexnow_submit.add_argument(
+        "--url",
+        action="append",
+        default=[],
+        help="Explicit URL(s) to submit instead of querying recent guide revisions",
+    )
+    indexnow_submit.add_argument(
+        "--apply",
+        action="store_true",
+        help="Actually POST the URLs to IndexNow instead of printing a dry-run plan",
+    )
     media_prune = subparsers.add_parser(
         "video-media-prune",
         help="Expire old media generation jobs and delete the files no live job names",
     )
     media_prune.add_argument("--dry-run", action="store_true")
+    shelves = subparsers.add_parser(
+        "video-shelf-backfill",
+        help=(
+            "File every video under its show (奇聞檔案局, 原來如此事務所, a drama) and topic for "
+            "the /admin/videos catalog (migration 0147); reports only unless --apply"
+        ),
+    )
+    shelves.add_argument("--apply", action="store_true", help="Write the changes")
     publish_times = subparsers.add_parser(
         "video-youtube-backfill-publish-times",
         help=(
@@ -1498,6 +1545,8 @@ def main() -> None:
                 args.destination, args.slug_prefix, args.limit, args.dry_run, args.approve
             )
         )
+    elif args.command == "video-shelf-backfill":
+        print(json.dumps(asyncio.run(backfill_video_shelves(args.apply)), ensure_ascii=False))
     elif args.command == "backfill-trip-item-names":
         print(json.dumps(asyncio.run(backfill_trip_items(args.dry_run)), ensure_ascii=False))
     elif args.command == "review-pending-guides":
@@ -1546,6 +1595,43 @@ def main() -> None:
         fill_hotspot_labels(
             args.file or list(BOOTSTRAP_FILES), args.dry_run, args.overwrite_original
         )
+    elif args.command == "indexnow-submit":
+
+        async def _run_indexnow() -> dict[str, Any]:
+            settings = get_settings()
+            if args.url:
+                urls = list(args.url)
+            else:
+                async with SessionFactory() as session:
+                    urls = await guides_indexnow.recent_published_urls(
+                        session,
+                        since_hours=args.since_hours,
+                        site_url=settings.next_public_site_url,
+                        limit=args.limit,
+                    )
+            if not args.apply:
+                return {
+                    "dry_run": True,
+                    "key_configured": bool(guides_indexnow.valid_key(settings.indexnow_key)),
+                    "site_url": settings.next_public_site_url,
+                    "count": len(urls),
+                    "sample_urls": urls[:10],
+                }
+            result = await guides_indexnow.notify_urls(urls)
+            return {
+                "dry_run": False,
+                "count": len(urls),
+                "submitted": result.submitted,
+                "accepted": result.accepted,
+                "status_code": result.status_code,
+                "skipped_reason": result.skipped_reason,
+                "error": result.error,
+            }
+
+        summary = asyncio.run(_run_indexnow())
+        print(json.dumps(summary, ensure_ascii=False, indent=2))
+        if args.apply and not summary.get("accepted"):
+            raise SystemExit(1)
 
 
 if __name__ == "__main__":

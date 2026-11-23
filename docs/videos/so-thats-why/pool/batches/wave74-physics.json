@@ -1,0 +1,3198 @@
+{
+  "batch_id": "wave74-physics-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第二十四輪從零研究的新長題（材料、流體、聲音、顏色）：玻璃怎麼老（F90／V93）、水槽水環（F91／V94）、人類回聲定位（F92／V95）、超黑（F101／V104），都留後備。",
+  "sources": [
+    {
+      "id": "P74-S001",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10523479/fullTextXML",
+      "canonical_url": "https://doi.org/10.1073/pnas.2311583120",
+      "title": "Photonic crystals built by time in ancient Roman glass",
+      "publisher": "PNAS 120(42):e2311583120（2023）；Guidetti、Zanini、Franceschin、Moglianetti、Kim、Omenetto 等（塔夫茲大學 Omenetto 研究室與義大利研究者）",
+      "version": "出版社開放取用版（PMC10523479 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "Significance、摘要、前言、Results and Discussion 全段、Conclusion；Materials and Methods 與 SI 未讀",
+      "locator": "Results and Discussion 第 1–4 段（阿奎萊亞出土、西元前 1 世紀至西元 1 世紀、毫米厚金屬光澤銹層）；Fig. 2 圖說與其後兩段（藍、綠、紅各片奈米層厚 116、235、290 nm；平均反射約 80%）；金色片段段落（λ>550 nm 反射 80–100%、上千層）；Fig. 3 圖說（乾時藍反射約 90%、泡水後下降、乾後恢復）；注水段（完全浸水時大多透明、不是發色團造成）；LA-ICP-MS 段（銹層富矽、缺鈉等陽離子）",
+      "summary": "義大利阿奎萊亞郊外耕土裡撿到的一片羅馬鈉鈣玻璃（西元前 1 世紀至西元 1 世紀），表面蓋著毫米厚、金屬光澤的銹層。電子顯微鏡看到銹層由估計遠超過一千層、疏密交替的二氧化矽奈米層組成，每一疊像布拉格反射鏡；單色片段平均反射約 80%（相對銀鏡），金色片段在 λ>550 nm 反射 80–100%。顏色是結構色：水滲進去顏色就紅移、完全浸水時片子大多透明，乾了又恢復；作者說這不是發色團造成。成分上銹層富矽、鈉等被溶出。作者把它解釋為受酸鹼值驅動的「玻璃網絡溶解（由上而下）＋二氧化矽奈米粒自組裝（由下而上）」。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一碎片的個案；作者自己說它的有序度與層數遠高於先前紀錄，是罕見例子，不能說所有出土玻璃的虹彩都這麼整齊。形成機制（鹼性 pH 7–10、pH 循環）是引用前人的背景，不是本研究在現場量到的；埋藏史不明。 覆核 V93（2026-11-12）：limitations 加：「碎片製作年代（西元前 1 世紀至西元 1 世紀）不等於銹層形成時間；原文只說 centuries-long，埋藏史不明；是耕土中地表調查撿到。」",
+      "author_cache": {
+        "file": "f90src/PMC10523479.txt（原始 PMC10523479.xml）",
+        "sha256_prefix": "6437e5a60377ad04",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄 stw24/f90src/，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。",
+        "xml_sha256_prefix": "f56661d416d04a4e"
+      }
+    },
+    {
+      "id": "P74-S002",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4346618/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/ncomms7360",
+      "title": "Origin and consequences of silicate glass passivation by surface layers",
+      "publisher": "Nature Communications 6:6360（2015）；Gin、Jollivet、Fournier、Angeli、Frugier、Charpentier 等（法國原子能署 CEA Marcoule）",
+      "version": "出版社開放取用版（PMC4346618）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "摘要、前言、Results 全部小節、Discussion 全段；Methods 未讀",
+      "locator": "Results〈Glass still corrodes despite silica saturation conditions〉（速度下降約 3.7 個數量級：最初幾小時約 500 nm/d、363 天約 0.1 nm/d）；〈The alteration layer acts as a molecular sieve〉（截止 <1 nm）；Discussion 第 3 段（以 0.1 nm/d 腐蝕 1 cm 需超過 25 萬年，90 °C；矽酸鹽礦物沉澱可破壞鈍化層）",
+      "summary": "用核廢料玻璃界的參考玻璃 ISG，在 90 °C、pH 7、溶液一開始就飽和非晶二氧化矽的條件下泡一年：玻璃仍會腐蝕，但速度從最初幾小時約 500 nm/天降到 363 天約 0.1 nm/天，約降 3.7 個數量級。表面變質層是原地重新聚合的矽酸鹽網絡，像分子篩，只讓小於 1 nm 的分子進出（重水進得去、1 nm 的染料只進到外層 250 nm）。作者算：若速度停在 0.1 nm/天，90 °C 下腐蝕 1 公分要超過 25 萬年；但也寫明矽酸鹽礦物沉澱等反應可能破壞這層、讓玻璃變得不耐久。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "實驗室條件（90 °C、二氧化矽飽和、靜置、溶液少更新），不是野外；是核廢料參考玻璃，不是窗玻璃或古玻璃。25 萬年是作者在「速度不再下降」保守假設下的算式，不是觀測。片中不得延伸為核廢料安全評價。 覆核 V93（2026-11-12）：limitations 加：「矽酸鹽礦物破壞保護層是引用前人（refs 6、54–56），不是本實驗觀察；本實驗是二氧化矽一開始就飽和，與 Ballidon（未飽和）等野外研究條件不同，只能並列。」",
+      "author_cache": {
+        "file": "f90src/PMC4346618.txt（原始 PMC4346618.xml）",
+        "sha256_prefix": "107d74c98293ee39",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄 stw24/f90src/，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。",
+        "xml_sha256_prefix": "299de944f522c5a1"
+      }
+    },
+    {
+      "id": "P74-S003",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11913731/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41529-025-00571-0",
+      "title": "Insights into long term glass corrosion mechanisms from the Ballidon experiment",
+      "publisher": "npj Materials Degradation 9:72（2025）；Thorpe、Fisher、Manifold、Creasey-Gray、Jackson 等（雪菲爾大學）",
+      "version": "出版社開放取用版（PMC11913731）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "摘要、前言（含 Table 1–3）、Results〈Site characterisation〉、各玻璃小節以 grep 關鍵字讀、〈Laboratory dissolution tests〉關鍵段、Discussion 兩小節全文；Methods 與 SI 未讀；Results 中 Glass 8、9 與微生物小節只讀關鍵字附近",
+      "locator": "摘要；前言第 1、4 段（1970 年建於 Ballidon 採石場、52 年）；Discussion〈Agreement between field observations and laboratory tests〉第 2、4、6 段（平板玻璃與硼矽玻璃無可見變質；各玻璃層厚 1–3、≤50、≤1000、5–10、1–2 µm；實驗室預測比野外小 5 倍；Glass 2 的層由約 20 µm（30 年）長到約 50 µm（52 年），沒有顯著保護）；〈Alteration chemistry and morphology〉第 1 段（條帶數約等於埋藏年數、像年輪的假說與實驗室也能形成）；Results〈Alteration on Glass 2〉（約 40–60 條目視、ImageJ 數到 50 個週期）",
+      "summary": "1970 年在英格蘭德比郡 Ballidon 採石場旁，用石灰岩碎石堆了一個土丘，埋入九種玻璃（新製的羅馬配方、中世紀配方、低矽的 Hangleton 配方，以及當時的平板玻璃、硼矽烤盤玻璃、光學玻璃等），2022 年（52 年）挖出分析。平板玻璃與硼矽玻璃沒有可見變質層；羅馬配方 1–3 µm、中世紀配方最多 50 µm、低矽的 Hangleton 配方最多 1000 µm，耐久順序與實驗室短測一致、大致跟二氧化矽含量走。中世紀配方的變質層裡數到約 50 條條帶，接近埋藏年數；作者說「誘人」把它當年輪，但實驗室也做得出類似層，兩種解釋不互斥，不下定論。早先研究以為中世紀配方的層有保護作用，這次看到它從 30 年時約 20 µm 長到 52 年約 50 µm；實驗室以現場溫度酸鹼度測的初始速度，預測的層厚比野外小約 5 倍，作者推論野外乾濕循環造成裂縫、分層與吸收環境元素。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "「羅馬配方」「中世紀配方」是 1970 年新做的複製品，不是古物。條帶與年數的對應是作者在一張完整剖面上的計數，作者明說不下定論。Wareham（1963 年）5 年、9 年結果是本文引用 1970 年代報告的表格，不算本篇結果。野外與實驗室差 5 倍的原因是作者列出的可能解釋。 覆核 V93（2026-11-12）：summary 與 limitations 改：「實驗室預測比野外小約 5 倍」是 Glass 3（Hangleton）的比較，作者認為較可能是層分離膨脹與吸收外來元素；中世紀配方（Glass 2）的證據是 30 年約 20 µm → 52 年約 50 µm。平板與硼矽玻璃是「無可見變質層、只有局部侵蝕」。reading_scope 照實：Results 多數小節只讀關鍵字附近。",
+      "author_cache": {
+        "file": "f90src/PMC11913731.txt（原始 PMC11913731.xml）",
+        "sha256_prefix": "9e1345f691b2543f",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄 stw24/f90src/，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。",
+        "xml_sha256_prefix": "ddbfafc3bb104631"
+      }
+    },
+    {
+      "id": "P74-S004",
+      "url": "https://www.nature.com/articles/s41529-018-0038-1.pdf",
+      "canonical_url": "https://doi.org/10.1038/s41529-018-0038-1",
+      "title": "Long-term weathering rate of stained-glass windows using H and O isotopes",
+      "publisher": "npj Materials Degradation 2:17（2018）；Sessegolo、Verney-Carron、Saheb、Remusat、Gonzalez-Cano、Nuns、Mertz、Loisel、Chabas（巴黎東克雷泰伊大學 LISA 等）",
+      "version": "出版社開放取用 PDF（標示 OPEN）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出的 nature.com PDF 連結，curl 預設標頭下載（伺服器自行加上 ?error=cookies_not_supported 參數並回 200 PDF），pdftotext -layout 轉文字",
+      "reading_scope": "全文 9 頁逐頁讀（摘要、前言、Results and Discussion、結論、方法）；參考文獻未讀",
+      "locator": "摘要（變質層不擋水氣與交互擴散；交互擴散係數 3.6×10⁻²⁰／4.9×10⁻²⁰ m²/s，與 1–4 年模型樣品相近）；Results 第 1 段（14 世紀 OU2、EV1；50–200 µm 坑、約 100 µm 連續層）；第 5 頁右欄（650 年：雨 66 µm、水氣 31–35 µm、合計約 100 µm，與古樣品 50–200 µm 一致）；Methods（樣品來自盧昂聖旺修道院教堂與埃夫勒聖母主教座堂）",
+      "summary": "兩塊 14 世紀彩繪玻璃（盧昂聖旺修道院教堂 OU2、埃夫勒主教座堂 EV1），表面已有 50–200 µm 的變質坑或約 100 µm 的連續層。研究者讓它們吸含重氫、重氧的水氣，發現水氣經裂縫與孔隙一路到達未變質玻璃的界面，變質主要靠玻璃裡的鉀、鈣與水中的氫交換（交互擴散），算出的係數與只放 1–4 年的模型玻璃相近，所以那層變質層擋不住水氣。結合同群先前用含重氫雨水測的係數與巴黎每年約 6% 時間在下雨，算出 650 年裡雨貢獻約 66 µm、水氣貢獻約 31–35 µm，合計約 100 µm，與古窗實際 50–200 µm 吻合。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有兩件樣品；650 年的拆分是以 Fick 定律加上巴黎降雨時數的估算，雨水係數來自同群另一篇（Verney-Carron 等），不是逐年觀測。 覆核 V93（2026-11-12）：limitations 加：「原文只給雨 66 µm、水氣 31–35 µm，『三分之一』是作者自行換算，不用；原文沒有『不下雨時』。」",
+      "author_cache": {
+        "file": "f90src/s41529-018-0038-1.txt（原始 PDF s41529-018-0038-1.pdf）",
+        "sha256_prefix": "ff00bf838245caa0",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄 stw24/f90src/，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。",
+        "pdf_sha256_prefix": "51c82389dbff246a"
+      }
+    },
+    {
+      "id": "P74-S005",
+      "url": "https://www.nature.com/articles/s41529-023-00367-0.pdf",
+      "canonical_url": "https://doi.org/10.1038/s41529-023-00367-0",
+      "title": "Alteration of medieval stained glass windows in atmospheric medium: review and simplified alteration model",
+      "publisher": "npj Materials Degradation 7:49（2023）；Verney-Carron、Sessegolo、Chabas、Lombardo、Rossano 等（LISA 等，與 F90-S004 同研究群）",
+      "version": "出版社開放取用 PDF（REVIEW ARTICLE，標示 OPEN）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出的 nature.com PDF 連結，curl 預設標頭下載（200 PDF），pdftotext -layout 轉文字",
+      "reading_scope": "只讀關鍵字附近：摘要、前言、〈Alteration phenomenology〉組成與厚度段、〈Influence of glass composition〉、〈Kinetic modeling〉與 700 年估算段；表 1–3 只看與文字對應的列；其餘未讀",
+      "locator": "第 3 頁左欄（Si-K-Ca 窗 SiO2 40–62 wt%、平均 50；矽少、修飾離子多所以不耐久）；第 3 頁右欄〈Alteration thickness〉（大氣中變質厚度由接近 0 到約 300 µm，極端 1–3 mm）；〈Kinetic modeling〉（700 年預測 138–204 µm）",
+      "summary": "綜述：中世紀鉀鈣矽彩繪玻璃 SiO2 只有 40–62 wt%（平均約 50），修飾離子多，所以耐久性低、對風化很敏感；文獻中 13–14 世紀窗在大氣中的變質層由接近 0 到約 300 µm，極端情況 1–3 mm。作者用同位素示蹤得到的動力學參數做簡化模型，外推 700 年得到 138–204 µm 的變質厚度，與古窗樣品一致。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "綜述，其中多數厚度與各城市暴露資料是整理前人研究，只取作者自己的模型結論與組成概括；與 F90-S004 同群，合計封頂。 覆核 V93（2026-11-12）：不計條數；limitations 加：「700 年 138–204 µm 的模型含作者任意設定的 25% 潮濕時間比例，並刪去溶解項；只讀關鍵字附近。」",
+      "author_cache": {
+        "file": "f90src/s41529-023-00367-0.txt（原始 PDF s41529-023-00367-0.pdf）",
+        "sha256_prefix": "914c0c314b6e5dfd",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄 stw24/f90src/，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。",
+        "pdf_sha256_prefix": "bda58dec91129183"
+      }
+    },
+    {
+      "id": "P74-S006",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9512812/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-022-20482-3",
+      "title": "Natural glass alteration under a hyperalkaline condition for about 4000 years",
+      "publisher": "Scientific Reports 12:16216（2022）；Kikuchi、Sato、Fujii、Shimbashi、Arcilla 等（北海道大學等）",
+      "version": "出版社開放取用版（PMC9512812）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "摘要、前言、Results 全段、Discussion 前半（壽命估算與保護膜判斷）；後半與 Methods 只略讀",
+      "locator": "摘要；Site description（菲律賓巴拉望、火山灰層 4516±73 至 3445±73 年前、滲水 pH 11.16）；Discussion 第 3–4 段（估計速率至多 10^-11.1 mol m⁻² s⁻¹，比鹼性初始速率慢至少 2.5 個數量級；次生礦物較可能是保護膜）",
+      "summary": "菲律賓巴拉望一層夾在超基性沉積物間的火山灰，裡面的流紋岩質火山玻璃泡在 pH 約 11 的強鹼地下水中約四千年仍留著。作者用顆粒大小與年代估算，它的溶解速率最多約 10^-11.1 mol m⁻² s⁻¹，比強鹼下新鮮玻璃的初始速率慢至少 2.5 個數量級；因為水流快、矽不會飽和，作者認為包在外面的黏土類次生礦物較可能扮演保護膜。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "天然火山玻璃，不是人造玻璃；速率是以最大粒徑與沉積年代反推的上限；「保護膜」是作者推論。 覆核 V93（2026-11-12）：summary 改：「現場滲水 pH 約 11；作者推估早期 pH 約 9.5，約 2800 年前起 pH 11.2 為主」；limitations 加作者自述「不容易套到其他系統」。",
+      "author_cache": {
+        "file": "f90src/PMC9512812.txt（原始 PMC9512812.xml）",
+        "sha256_prefix": "60702e0e2d33657e",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄 stw24/f90src/，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。",
+        "xml_sha256_prefix": "623f5131beffea39"
+      }
+    },
+    {
+      "id": "P74-S007",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12435163/fullTextXML",
+      "canonical_url": "https://doi.org/10.1002/cplu.202500205",
+      "title": "From Green to Brown: Characterization of the Fast Alteration of Modern Greenish Enamels in Glass Windows",
+      "publisher": "ChemPlusChem 90(9):e202500205（2025）；Palomar、Calatayud、Oujja、Maestro-Guijarro 等（西班牙國家研究委員會 CSIC 等，與坎特伯里主教座堂彩繪玻璃工作室合作）",
+      "version": "出版社開放取用版（PMC12435163）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "摘要、前言全段、Results 前半（光學顯微、輪廓儀、SEM-EDS、UV-vis、LIBS 深度分析）以 grep 讀關鍵段；Raman、XRD、XPS 與結論只讀摘要層級",
+      "locator": "摘要；前言第 4–9 段（2009–2014 年新做的窗、1980/90 年代供應的同一款綠色琺瑯、幾年後出現褐斑，三地朝向與溫差不同、都在鄉間）；Results（褐層約 3 µm、白色沉積約 1 µm、褐層含鉛高、硼與鉻在表層 3 µm 變少）",
+      "summary": "坎特伯里主教座堂彩繪玻璃工作室在 2009–2014 年做了新窗，裝在兩座教堂與主教座堂迴廊；幾年後，凡是用到同一款 1980/90 年代供應的綠色透明琺瑯的地方都出現褐斑。三處朝向、溫差都不同，共通點只有這款琺瑯與鄉間環境。分析發現綠琺瑯表面長了一層約 3 µm、富含鉛的褐層（另有約 1 µm 的白色沉積）；作者提出三步機制：鉛離子從琺瑯溶出、形成鹼式碳酸鉛（白色），再轉成深色的二氧化鉛。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一款琺瑯、三個地點；機制是作者依多種分析提出的推論；這款琺瑯已不再供應。片中只講材料變化，不給修復或採購建議。 覆核 V93（2026-11-12）：summary 改：「部分綠色區塊出現褐斑，三處共同點是同一款琺瑯」，刪「凡是用到」；說明琺瑯是塗層、不是窗玻璃本體。",
+      "author_cache": {
+        "file": "f90src/PMC12435163.txt（原始 PMC12435163.xml）",
+        "sha256_prefix": "78d9323a7c3f9ed5",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄 stw24/f90src/，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。",
+        "xml_sha256_prefix": "e790167866bc0d43"
+      }
+    },
+    {
+      "id": "P74-S008",
+      "url": "https://pure.uva.nl/ws/files/2728125/175854_ICOM_CC_2016_page_123_Verhaar.pdf",
+      "canonical_url": "https://pure.uva.nl/ws/files/2728125/175854_ICOM_CC_2016_page_123_Verhaar.pdf",
+      "title": "Weeping Glass: The Identification of Ionic Species on the Surface of Vessel Glass Using Ion Chromatography",
+      "publisher": "ICOM-CC Glass and Ceramics Working Group interim meeting 2016, pp. 123–133；Verhaar、van Bommel、Tennent（阿姆斯特丹大學）",
+      "version": "阿姆斯特丹大學典藏 UvA-DARE 的出版版本（荷蘭著作權法 25fa 條 Taverne 開放）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出的 UvA 典藏 PDF，curl 預設標頭下載（200 PDF），pdftotext 轉文字",
+      "reading_scope": "全文 10 頁（摘要、前言、實驗、結果與討論至 IC 解讀段）逐頁讀；參考文獻未讀",
+      "locator": "摘要（13 種離子、11 件器物、潮解相對濕度 11–99%）；前言第 2–3 段（Organ 1957 年建議 42% 以下、依碳酸鉀；近 60 年沒有分析研究驗證）；表 1（17–19 世紀荷蘭、威尼斯酒杯、瓶與漢堡博物館細密畫、銀版相片蓋玻璃）；〈Interpreting the analytical results〉第 2 段（Organ 的評估過度簡化）",
+      "summary": "研究者用棉棒擦下阿姆斯特丹國家博物館、漢堡博物館、康寧玻璃博物館共 11 件「會流淚」的玻璃（17 世紀荷蘭瓶、威尼斯酒杯、19 世紀細密畫與銀版相片的蓋玻璃），用離子層析測表面液膜：主要有鈉、鉀、鈣、鎂與甲酸根、氯、硫酸根等多種離子，比一般以為的複雜。1957 年 Organ 只根據碳酸鉀，建議把這類玻璃放在相對濕度 42% 以下，近六十年沒人用分析驗證；這些離子可能形成的化合物，潮解濕度從 11% 到 99% 都有，所以很難只給一個保證不流淚的濕度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "初步結果，作者說取樣程序仍待驗證，器物之間不能直接比濃度；樣本 11 件。片中不給家中收藏保存建議。",
+      "author_cache": {
+        "file": "f90src/verhaar2016.txt（原始 PDF 175854_ICOM_CC_2016_page_123_Verhaar.pdf）",
+        "sha256_prefix": "ce0b8f135a621f00",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄 stw24/f90src/，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。",
+        "pdf_sha256_prefix": "7dc29bd460010e71"
+      }
+    },
+    {
+      "id": "P74-S009",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8896789/fullTextXML",
+      "canonical_url": "https://doi.org/10.1126/sciadv.abl6769",
+      "title": "Novel optical photothermal infrared (O-PTIR) spectroscopy for the noninvasive characterization of heritage glass-metal objects",
+      "publisher": "Science Advances 8(9):eabl6769（2022）；Marchetti、Beltran、Nuyts、Borondics、De Meyer、Van Bos、Debulpaep、De Wael 等（安特衛普大學 AXES 等）",
+      "version": "出版社開放取用版（PMC8896789）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "摘要、前言、Results 前半（器物背景、元素分析、O-PTIR 結果）以 grep 讀關鍵段；Methods 未讀",
+      "locator": "前言第 3 段（梅赫倫「封閉花園」祭壇、16 世紀、多數黃銅件幾乎完好、少數嚴重腐蝕）；Results 第 1–3 段（腐蝕產物含玻璃的鉀、玻璃珠上有銅鋅；鉀不足以單獨證明，需要分子證據）；O-PTIR 段（甲酸鹽／乙酸鹽等羧酸鹽、鉀玻璃珠表面同樣光譜）；結論（玻璃誘發的金屬腐蝕）",
+      "summary": "比利時梅赫倫修道院的 16 世紀「封閉花園」祭壇裡有上百件黃銅小飾件，多數幾百年後仍近乎完好，只有少數亮片和銅線嚴重腐蝕。研究者在這些腐蝕產物裡找到來自玻璃的鉀，在旁邊風化的鉀玻璃珠上找到銅與鋅；再用新的光熱紅外光譜看到兩邊都有羧酸鹽（甲酸鹽／乙酸鹽）等相同產物，判定是玻璃誘發的金屬腐蝕：風化玻璃溶出的鹼離子讓貼著它的黃銅壞掉。作者也寫明，光有鉀還不夠證明，要靠分子層級的證據。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "少數樣品、單一收藏；主旨是展示分析技術；「玻璃誘發」的機制引用前人（Fischer 等），本篇提供的是這批器物的證據。 覆核 V93（2026-11-12）：summary 改：決定性證據是所有樣品上的鹼式甲酸銅（古金屬上極少見，除非接觸風化玻璃），甲酸來自木頭等有機物放出的甲醛；reading_scope 明寫只讀關鍵段，條數 0.25。",
+      "author_cache": {
+        "file": "f90src/PMC8896789.txt（原始 PMC8896789.xml）",
+        "sha256_prefix": "77dfc529ccc61471",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄 stw24/f90src/，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。",
+        "xml_sha256_prefix": "25020d622efe8e8f"
+      }
+    },
+    {
+      "id": "P74-S010",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12396639/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0331048",
+      "title": "Sci-tech analysis and related research on three glass beads unearthed from M686 in the Qin cemetery of Warring States Period in Hejia, Zhouling",
+      "publisher": "PLoS ONE 20(8):e0331048（2025）；Ha、Sun、Zhai（中國研究者）",
+      "version": "出版社開放取用版（PMC12396639）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "摘要、前言全段、樣品描述；Results 與 Discussion 只讀關鍵字附近（風化產物、顏色、溶出）",
+      "locator": "摘要（鉛鋇矽酸鹽玻璃、主要風化產物碳酸鉛與硫酸鋇、鉛鋇硫持續溶出、鋇比鉛易溶、Cu(II) 轉 Cu(I) 解釋顏色改變）；前言第 1 段（鉛鋇玻璃為中國特有、戰國初出現、延續到東漢）",
+      "summary": "陝西咸陽周陵何家村戰國秦墓 M686 出土三顆綠色玻璃環珠，都屬中國特有的鉛鋇矽酸鹽玻璃（戰國初出現、延續到東漢），以二價銅著色。風化後表面主要長出碳酸鉛與硫酸鋇；剖面看到鉛、鋇、硫持續從玻璃溶出，再與墓土物質反應；作者依土壤元素判斷鋇比鉛更易溶於水；風化同時伴隨銅由二價轉成一價，作者用來解釋風化後的顏色改變。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "三顆珠子、一座墓；顏色改變的解釋是作者根據 XPS 價態提出；只讀關鍵段。 覆核 V93（2026-11-12）：reading_scope 維持「只讀關鍵字附近」，條數 0.25；補「未風化本體玻璃已含約 54% 一價銅」。",
+      "author_cache": {
+        "file": "f90src/PMC12396639.txt（原始 PMC12396639.xml）",
+        "sha256_prefix": "18cfa1dad8331ea9",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄 stw24/f90src/，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。",
+        "xml_sha256_prefix": "979c51a88b88731f"
+      }
+    },
+    {
+      "id": "P74-S011",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10631726/fullTextXML",
+      "canonical_url": "https://doi.org/10.1126/sciadv.adi6086",
+      "title": "Geological timescales' aging effects of lunar glasses",
+      "publisher": "Science Advances 9(45):eadi6086（2023）；Chen、Zhao、…、Bai、Wang WH 等（中國科學院物理研究所等）",
+      "version": "出版社開放取用版（PMC10631726）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "摘要、前言第 1–2 段、Results 只以 grep 讀模量增幅與年齡估計段；未逐段讀，不立核心",
+      "locator": "摘要；前言（Welch 等 2013 大猩猩玻璃 1.5 年室溫收縮為引用）；年齡段（數百萬到數十億年）；模量增幅 66.4%、73.5%、50.6%",
+      "summary": "嫦娥五號月壤中的五顆玻璃顆粒（直徑約 20–53 µm），經過數百萬到數十億年的「物理老化」，楊氏模量比參照狀態增加超過 73.5%，硬度變化小得多。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀關鍵字附近；「參照狀態（H-A sample）」的定義未讀懂，不立核心，只記於 not_added。",
+      "author_cache": {
+        "file": "f90src/PMC10631726.txt（原始 PMC10631726.xml）",
+        "sha256_prefix": "8ec310e1de90517e",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄 stw24/f90src/，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。",
+        "xml_sha256_prefix": "48cac23f7f410b86"
+      }
+    },
+    {
+      "id": "P74-S012",
+      "url": "https://arxiv.org/pdf/2010.04107",
+      "canonical_url": "https://arxiv.org/abs/2010.04107v3",
+      "title": "Experimental evidence for surface tension origin of the circular hydraulic jump",
+      "publisher": "arXiv 預印本 v3（2021-07-05）；Bhagat、Wilson、Linden（劍橋大學 DAMTP／化工系）",
+      "version": "arXiv v3 作者稿（未比對期刊正式版）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 下載搜尋結果列出的 arXiv PDF，pdftotext 轉文字",
+      "reading_scope": "全文逐段讀摘要、§1 前言、§2 前人研究、§3.1 臨界流量段、§4.1 微重力、§4.2 重力影響；§3.2–3.3 推導與 §5 只看結論句",
+      "locator": "摘要；§1 第 2–4 段；§2 倒數第 4 段起（2018 年水平、垂直、傾斜牆與天花板實驗的轉述；Duchesne 2019 批評）；§4.1（Avedisian & Zhao 6.32 cm³/s、11.78 vs 11.68 mm；NASA C-9 約 2% 重力 25 秒）；§4.2（Q*C 水 3060 cm³/s≈183 L/min、界面活性劑 807 cm³/s、矽油 D1–D3 為 13.3、5.8、2.6 cm³/s）",
+      "summary": "劍橋團隊回應批評的論文。轉述自己 2018 年把水柱打在水平、垂直、傾斜板與從下方打到透明天花板，水躍半徑都不隨方向改變；整理別人在落塔與 NASA C-9 拋物線飛行（約地球 2% 重力）做的實驗，主張微重力下水躍仍出現在差不多的半徑；定義重力開始重要的臨界流量 Q*C，水約 3060 cm³/s（183 L/min），遠大於水槽流量；但三種矽油的 Q*C 只有 2.6–13.3 cm³/s，實驗流量多半超過，重力在那裡會有影響。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "作者是爭議一方；微重力數據是別人（Avedisian & Zhao 2000、Painter 2007、Phillips 2008）的，本篇是重新讀圖與比對，不能說成本篇實驗。2018 年原文（JFM 851 R5）本輪讀不到，傾斜與天花板實驗只能以本篇轉述呈現。arXiv v3 與期刊版未比對。 覆核 V94（2026-11-12）：加列 2018 原始預印本：Bhagat, Jha, Linden, Wilson〈On the origin of the hydraulic jump in a thin liquid film〉arXiv:1712.04255（https://arxiv.org/pdf/1712.04255，作者第 61 次搜尋結果已列出），reading_scope 至少 §1、§4、§5 與圖 1、圖 3 圖說；F91-001 改以它為主來源，F91-S001／S002 只當後來的轉述。F91-NA001 的 reading_status 改為『預印本可讀；JFM 期刊版仍讀不到（斜板實驗只見 2021 轉述）』。",
+      "author_cache": {
+        "file": "f91src/arxiv-2010.04107.txt",
+        "sha256_prefix": "1d7c7c396d02c533",
+        "raw_file": "f91src/arxiv-2010.04107.pdf",
+        "raw_sha256_prefix": "6143ca81f310eb9f",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S013",
+      "url": "https://arxiv.org/pdf/2609.22403",
+      "canonical_url": "https://arxiv.org/pdf/2609.22403",
+      "title": "An experimental and numerical study of the circular hydraulic jump",
+      "publisher": "arXiv 預印本 v1（2026-09-18，註明 Under consideration for publication in J. Fluid Mech.）；Mallik、Jasak、Wilson、Linden、Bhagat（劍橋大學）",
+      "version": "arXiv v1 預印本，尚未同行審查定稿",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 下載搜尋結果列出的 arXiv PDF，pdftotext 轉文字",
+      "reading_scope": "摘要、§1 前言、§3 實驗方法、§4.1 定性觀察全節、§4.2 開頭、§4.3 全節、§6 結論全節、圖 15 圖說；§2 量綱分析與 §5 數值方法只略讀標題",
+      "locator": "§4.1（2 L/min 水柱，0.08 s 起水躍停在 42.2±0.7 mm；外緣 0.1 s 約 50 mm 到 0.5 s 64 mm、厚度 1.4→3.0 mm、約 5 s 到板緣）；§4.3（跳處 Fr²=O(10)–O(10²)、We=O(1)）；§6（γ 0.010→0.072 N/m 半徑 42.7→25.3 mm；接觸角 0–90° 都約 27.5±0.5 mm；222 筆資料）",
+      "summary": "同一劍橋團隊 2026 年的新實驗與模擬：用染色吸光量水膜厚度，水柱一打到板上約 0.08 秒水躍就停在約 42 mm，外面的水膜繼續擴張、加厚、流出板緣，水躍不動；量到的跳處 Fr² 在 10 到 100 之間、各流體差很多，We 卻都約 1；模擬只改表面張力，半徑隨之改變，只改接觸角，半徑不變；彙整 203 筆實驗加 19 筆模擬，表面張力公式貼合，重力公式高估。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "預印本、與 F91-S001 同一研究群（同群封頂 2.0）；作者是爭議一方；彙整資料含他人實驗；本輪未逐一核對 222 筆資料來源。 覆核 V94（2026-11-12）：limitations 加：作者自己寫實驗刻意選在 Q*≫1 範圍、預期大流量時重力會起作用；圖 7 圖說留有『Give Q* values for each case.』的未定稿字樣。",
+      "author_cache": {
+        "file": "f91src/arxiv-2609.22403.txt",
+        "sha256_prefix": "173d96f11b7028cf",
+        "raw_file": "f91src/arxiv-2609.22403.pdf",
+        "raw_sha256_prefix": "3be83a3bbd65892f",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S014",
+      "url": "https://ntrs.nasa.gov/api/citations/19980048927/downloads/19980048927.pdf",
+      "canonical_url": "https://ntrs.nasa.gov/citations/19980048927",
+      "title": "The Circular Hydraulic Jump in Microgravity（Final Report, NASA Grant NAG 3-1627）",
+      "publisher": "NASA/CR-207909；C. Thomas Avedisian（康乃爾大學機械與航太系），執行期 1994-06-24 至 1996-06-23",
+      "version": "NASA 技術報告伺服器掃描 PDF（OCR 文字層）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 下載搜尋結果列出的 NTRS PDF，pdftotext -layout 轉文字（一般模式字序錯亂，改讀 layout 檔）",
+      "reading_scope": "報告正文第 1–13 頁全讀（摘要、目標、前人研究、實驗設計、結果 5.1–5.2、結論 1–7 條）；附圖頁只看圖說",
+      "locator": "摘要；§4（落塔、可用時間約 1 s、下游水深 2–15 mm、流量 2.39–26.47 ml/s）；§5.1（G<<1 出現同心毛細波、跳往外推）；§5.2（約 1.2 s、平均 G 1.1×10⁻²、G=1 數據與 Watson 型公式吻合，微重力不吻合）；§6 結論 1–7",
+      "summary": "康乃爾團隊在落塔裡讓水柱打在泡在水槽裡的玻璃板上，從正常重力突然進入微重力（約百分之一 g，約 1.2 秒）：微重力下仍能建立穩定的圓形水躍，直徑比正常重力時大，約 200 毫秒內調整完；所有微重力實驗下游都有毛細漣漪；正常重力的半徑用既有公式預測得好，微重力的半徑預測不好；微重力下半徑也不再隨下游水深明顯改變。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "下游水深由把板子泡進水槽控制（不是水槽底那種自由外流），與廚房情境不同；時間只有約 1 秒；這是 1996 年結案報告，後來的期刊版 Avedisian & Zhao 2000（Proc R Soc A）本輪未讀到；OCR 有錯字，數字已對照 layout 版。報告引用的 Labus 1976『微重力下沒出現水躍』是他人結果，不算本來源事實。 覆核 V94（2026-11-12）：summary 與 limitations 加：§5.1 明寫 Q = 6.32 ml/s、水深 4 mm 這組直徑變大，正是劍橋 2021 重讀期刊版那張圖的同一組條件；§5.2 作者推測微重力下有被正常重力掩蓋的過程變重要。",
+      "author_cache": {
+        "file": "f91src/ntrs-19980048927.layout.txt",
+        "sha256_prefix": "0d607f4da64fc79e",
+        "raw_file": "f91src/ntrs-19980048927.pdf",
+        "raw_sha256_prefix": "ef61f545c2761a52",
+        "note": "OCR 一般模式文字 ntrs-19980048927.txt 字序錯亂，覆核請讀 layout 檔。作者快取未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S015",
+      "url": "https://thales.mit.edu/bush/wp-content/uploads/2012/04/jump_paper_1.pdf",
+      "canonical_url": "https://doi.org/10.1017/S0022112003005159",
+      "title": "The influence of surface tension on the circular hydraulic jump",
+      "publisher": "J. Fluid Mech. 489:229–238（2003）；Bush、Aristoff（MIT 數學系）",
+      "version": "作者實驗室網站存放的期刊排版 PDF",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 下載搜尋結果列出的 MIT 實驗室 PDF，pdftotext 轉文字",
+      "reading_scope": "全文（10 頁），推導 §2 只讀結論式的文字說明",
+      "locator": "摘要；§3 第 2 段（1–2 滴界面活性劑，3 cm 的水躍擴大約 20%）；§3 末（標準誤 15%→10%；最小的水躍半徑最多縮 30%）；§4 討論",
+      "summary": "MIT 團隊在 Watson 黏性理論加入水躍彎曲面的表面張力力：滴 1–2 滴洗潔劑類界面活性劑，半徑 3 cm 的水躍平順擴大約 20%；加入表面張力修正後理論與實驗的標準誤由 15% 降到 10%；表面張力讓最小的那些水躍半徑最多小 30%；但作者結論是在實驗室尺度下表面張力對半徑的修正一般很小，只在半徑小、高度低的水躍才明顯，並指出微重力下影響會大幅增加。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "實驗多用甘油水溶液（1–30 cS）並以外牆控制下游水深，不是自由流出的水槽；作者自己說界面活性劑實驗因 Marangoni 效應等複雜因素沒有再深入。",
+      "author_cache": {
+        "file": "f91src/mit-bush-jump_paper_1.txt",
+        "sha256_prefix": "2f77ec6a02e16be7",
+        "raw_file": "f91src/mit-bush-jump_paper_1.pdf",
+        "raw_sha256_prefix": "7b5f89e0a6f90d04",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S016",
+      "url": "https://thales.mit.edu/bush/wp-content/uploads/2012/04/jump_stability_jfm.pdf",
+      "canonical_url": "https://doi.org/10.1017/S0022112006009839",
+      "title": "An experimental investigation of the stability of the circular hydraulic jump",
+      "publisher": "J. Fluid Mech. 558:33–52（2006）；Bush、Aristoff、Hosoi（MIT）",
+      "version": "作者實驗室網站存放的期刊排版 PDF",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 下載搜尋結果列出的 MIT 實驗室 PDF，pdftotext 轉文字",
+      "reading_scope": "摘要、§1、§3（含圖 3–6 圖說）、§4 前半（10 cS 參數研究）；§5–6 理論只讀摘要層級結論",
+      "locator": "摘要（貓眼、三葉與四葉草、領結、蝴蝶；λ=(74±7)σ/(ρUv²)）；§3 第 3 段與圖 6（五邊形、半徑 2 cm、加界面活性劑擴大約 20% 變回圓形，σ 70→40 dyn/cm）；§4（3–10 邊；H>0.83 cm 不再有水躍、水柱直接插入）",
+      "summary": "同 MIT 團隊做黏一點的甘油水溶液、外圈水深可調：圓形水躍會破成 3 到 10 邊的穩定多邊形，還有貓眼、領結、蝴蝶、三葉與四葉草；在一個半徑約 2 cm 的五邊形水躍裡加 1–2 滴界面活性劑，它擴大約 20%、變回圓形、邊緣變緩；外圈水深超過 0.83 cm 時就沒有水躍，水柱直接插進水裡；作者把破對稱解釋成表面張力造成的不穩定。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與 F91-S004 同一研究群（同群封頂 2.0）；液體是甘油水溶液，不是自來水；多邊形需要控制外圈水深，水槽一般看不到。",
+      "author_cache": {
+        "file": "f91src/mit-bush-jump_stability_jfm.txt",
+        "sha256_prefix": "92a423584faea765",
+        "raw_file": "f91src/mit-bush-jump_stability_jfm.pdf",
+        "raw_sha256_prefix": "59473cbb18d4dce0",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S017",
+      "url": "https://arxiv.org/pdf/1903.11495",
+      "canonical_url": "https://doi.org/10.1103/PhysRevFluids.4.084001",
+      "title": "Surface tension and the origin of the circular hydraulic jump in a thin liquid film",
+      "publisher": "Phys. Rev. Fluids 4:084001（2019）；Duchesne、Andersen、Bohr（丹麥技術大學物理系）",
+      "version": "arXiv v3 作者稿（2019-08-06）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 下載搜尋結果列出的 arXiv PDF，pdftotext 轉文字",
+      "reading_scope": "全文（7 頁）；§II–IV 推導讀文字與結論式",
+      "locator": "摘要；§I（Bhagat 條件 We⁻¹+Fr⁻²≈1 對照修正後 α²We⁻¹+Fr⁻²≈1）；§IV 末（乙二醇水溶液例子，黏性壓力約為毛細壓力 3.1 倍）；§V 結語",
+      "summary": "丹麥 Bohr 團隊直接反駁劍橋 2018：認為劍橋能量式裡新加的表面能項沒有依據、與基本流體力學不合；正確處理後，表面張力只透過界面曲率的拉普拉斯壓力起作用，在薄膜裡要乘上很小的厚寬比平方，影響遠小於劍橋所稱；又強調水躍位置一般同時取決於內外兩側的流動，這類條件最多只是半徑上限，且劍橋看的是外緣還在擴張的暫態，不是穩態。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "純理論批評，無新實驗；『3.1 倍』是作者拿他人文獻剖面代入的估算，不是量測。與 F91-S007、F91-S008 同屬 Bohr／Duchesne 網絡（合計封頂 2.0）。",
+      "author_cache": {
+        "file": "f91src/arxiv-1903.11495.txt",
+        "sha256_prefix": "397e6ab89dd5af55",
+        "raw_file": "f91src/arxiv-1903.11495.pdf",
+        "raw_sha256_prefix": "0bae31fd09d8cedc",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S018",
+      "url": "https://ar5iv.org/html/2112.09538",
+      "canonical_url": "https://resolve.cambridge.org/core/journals/journal-of-fluid-mechanics/article/circular-hydraulic-jumps-where-does-surface-tension-matter/64DC768E3B28CBF240CF539DA340CAF6",
+      "title": "Circular hydraulic jumps: where does surface tension matter?",
+      "publisher": "J. Fluid Mech.（2022）；Duchesne（里爾大學 IEMN）、Limat（巴黎大學 MSC）",
+      "version": "ar5iv 由 arXiv 2112.09538 轉出的 HTML（伺服器轉址到 ar5iv.labs.arxiv.org）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 抓搜尋結果列出的 ar5iv 網址（伺服器 301 到 ar5iv.labs.arxiv.org），python 去標籤轉文字",
+      "reading_scope": "摘要、§1 前言、§4 末段、§5、§6 結論全讀；§2–3 液膜推導只略讀",
+      "locator": "摘要；§1 第 4–5 段；§5（部分潤濕暫態也導出劍橋那條比例律）；§6 結論三種情境",
+      "summary": "Duchesne 與 Limat 認為劍橋的實驗觀察有價值但解釋不對：劍橋式的表面能項在一個自由液膜例子會導出違背伯努利的速度分布；照他們的修正，Bohr 的重力比例律適用於整片板都有外圈流動膜的穩態水躍，劍橋那條表面張力比例律則出現在乾表面（含超疏水）、水柱打天花板、以及低黏度液體在部分潤濕表面剛形成水躍的暫態；結論是沒有適用所有情況的單一比例律，臨界 Froude 數問題仍未解。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "ar5iv 轉檔把數學式都剝掉，比例律的式子本身本機文字讀不到；與 F91-S006 共同作者 Duchesne，算同一網絡。HAL 典藏頁（lilloa.hal.science）亦已抓存但未逐段比對兩版是否一致。",
+      "author_cache": {
+        "file": "f91src/ar5iv-2112.09538.txt",
+        "sha256_prefix": "e8a9bed5fd52acc2",
+        "raw_file": "f91src/ar5iv-2112.09538.html",
+        "raw_sha256_prefix": "1868b486a1d335a1",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S019",
+      "url": "https://arxiv.org/pdf/1111.4599",
+      "canonical_url": "https://ar5iv.labs.arxiv.org/html/1111.4599",
+      "title": "Model for Polygonal Hydraulic Jumps",
+      "publisher": "Phys. Rev. E 85:036316（2012）；Martens（馬普所哥廷根）、Watanabe（茨城大學）、Bohr（丹麥技術大學）",
+      "version": "arXiv v3 作者稿（2012-02-29）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 下載搜尋結果列出的 arXiv PDF，pdftotext 轉文字",
+      "reading_scope": "只讀摘要與 §I 前言；模型推導未讀",
+      "locator": "摘要",
+      "summary": "Bohr 等人提出多邊形水躍的唯象模型：以水躍處的表面渦旋（roller）流動結構、質量守恆與靜水壓—黏滯力平衡為基礎；簡化的非線性版本即使不計表面張力，也能解出和實驗很像的多邊形；完整模型中圓形在 Bond 數夠小時才不穩定。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀摘要與前言，不算全文；與 F91-S006 同一 Bohr 網絡。 覆核 V94（2026-11-12）：summary 補摘要的最後一句：完整模型中，圓形在 Bond 數夠小時才不穩定。",
+      "author_cache": {
+        "file": "f91src/arxiv-1111.4599.txt",
+        "sha256_prefix": "04eab8a913d38619",
+        "raw_file": "f91src/arxiv-1111.4599.pdf",
+        "raw_sha256_prefix": "2b5e10db86745a52",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S020",
+      "url": "https://arxiv.org/pdf/physics/0610021",
+      "canonical_url": "https://arxiv.org/abs/physics/0610021",
+      "title": "Gravity-free hydraulic jumps and metal femtocups",
+      "publisher": "arXiv physics/0610021 v1（2006-10-03）；Govindarajan、Mathur、DasGupta、Selvi、John、Kulkarni（印度 JNCASR，班加羅爾）；期刊版 PRL 98:164502（2007）",
+      "version": "arXiv v1 預印本（期刊版標題為 femtoliter cups，內容未比對）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 下載搜尋結果列出的 arXiv PDF，pdftotext 轉文字",
+      "reading_scope": "全文（4 頁正文）",
+      "locator": "第 1 段；式 (4) 後一段（廚房水槽 F 約 1、W 約 10–100；次微米 F~10⁸、W~10⁻²）；實驗段（Nd:YAG 雷射燒蝕、外徑約 300 nm–10 µm、側壁約 100 nm、容量約 1 fL、水躍直徑約為總直徑一半）",
+      "summary": "印度團隊 2006 年寫：廚房水槽的水躍重力是關鍵，因為那裡 F 約 1、W 約 10–100，表面張力只是小修正；但在次微米尺度情況反過來，淺水方程容許只靠表面張力形成的無重力水躍。他們用雷射燒蝕把熔融金屬微滴噴到基板上，在很窄的條件下凝固成外徑約 300 nm 到 10 µm、側壁約 100 nm、容量約 1 飛升的小杯，金、銀、銅、鈮、錫都做得出來，作者認為杯緣就是凍結下來的水躍。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "預印本 v1，期刊版未讀；金屬杯是暫態凝固結構，作者自己說無法與理論細部比較；『廚房水槽 F~1』是作者的量級估計，不是量測，且與劍橋 2026 量到的 Fr² 10–100 是不同研究、不同定義，不能相減或並排當同一例子。",
+      "author_cache": {
+        "file": "f91src/arxiv-physics-0610021.txt",
+        "sha256_prefix": "05e132df6ed271cc",
+        "raw_file": "f91src/arxiv-physics-0610021.pdf",
+        "raw_sha256_prefix": "f4e14c11958fbd07",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S021",
+      "url": "https://arxiv.org/pdf/1010.1701",
+      "canonical_url": "https://arxiv.org/pdf/1010.1701",
+      "title": "Experimental demonstration of the supersonic-subsonic bifurcation in the circular jump: A hydrodynamic white hole",
+      "publisher": "Phys. Rev. E 83:056312（2011）；Jannes、Piquet、Maïssa、Mathis、Rousseaux（尼斯大學 Dieudonné 實驗室）",
+      "version": "arXiv v2 作者稿（2011-05-12）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 下載搜尋結果列出的 arXiv PDF，pdftotext 轉文字",
+      "reading_scope": "全文前 3 頁（前言、實驗、鞍結分岔、色散關係）；最後一節 transplanckian 討論只略讀",
+      "locator": "實驗段（矽油 ν=20 cS、γ=0.0206 N/m；針插表面產生馬赫錐；θ 由約 π/10 到 3/4 半徑處約 π/4，近脊處到 π/2，跳外錐消失）；圖 4 圖說（Q=240 L/h）",
+      "summary": "尼斯團隊把一根針只插進水躍內側薄膜的表面，看它拖出的 V 形波（馬赫錐）張角：越靠近水躍越開，到水躍脊附近剛好 90°，跳外 V 形消失；這表示表面波速度剛好在水躍處等於水流速度，水躍像一個『白洞』的視界——外面的表面波進不去。過渡是平滑的，和把水躍當成震波的標準模型不同，作者說不排除是針造成的。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "用高黏度、低表面張力的矽油，不是水；量的是含表面張力修正的表面波速，這個實驗本身不能判定重力或表面張力誰決定半徑；劍橋 F91-S001 認為矽油屬於重力有影響的流量範圍，兩篇不能合併成同一個例子。",
+      "author_cache": {
+        "file": "f91src/arxiv-1010.1701.txt",
+        "sha256_prefix": "9a86dcaba3e47a25",
+        "raw_file": "f91src/arxiv-1010.1701.pdf",
+        "raw_sha256_prefix": "bb20ce30bfcfaef6",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S022",
+      "url": "https://authors.library.caltech.edu/records/rjpc6-2sj62/files/water-bells-formed-on-the-underside-of-a-horizontal-plate-part-1-experimental-investigation.pdf?download=1",
+      "canonical_url": "https://doi.org/10.1017/S0022112009993351",
+      "title": "Water bells formed on the underside of a horizontal plate. Part 1. Experimental investigation",
+      "publisher": "J. Fluid Mech. 649:19–43（2010）；Jameson、Jenkins（澳洲紐卡索大學）、Button、Sader（墨爾本大學）",
+      "version": "Caltech 作者典藏的期刊排版 PDF（伺服器轉址到典藏的 S3 下載連結）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 下載搜尋結果列出的 Caltech 典藏連結，伺服器自行轉址；pdftotext 轉文字",
+      "reading_scope": "摘要、§1 前言、§3.1 薄膜流全節；§3.2 以後與 §4 只看圖說與標題",
+      "locator": "摘要；§3.1（流量越大離開半徑越大；黏度 100 倍時離開半徑約變 4 倍；Triton 濃度 +30%、表面張力約 −10%，離開半徑約 +3%；噴嘴半徑無影響；玻璃與鐵氟龍無明顯差別）",
+      "summary": "把水柱由下往上打在一大片水平板的底面：液體沿天花板般的板底向外鋪開，到某個半徑突然自行離開板面落下，可能聚成包住空氣的『水鐘』。流量越大、離開半徑越大；黏度大 100 倍，離開半徑約差 4 倍；表面張力降約 10%，離開半徑約大 3%；噴嘴大小與板子是玻璃還是鐵氟龍都看不出差別。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "量的是液膜『離開板面』的半徑，原文沒有稱它為水躍；Duchesne & Limat（F91-S007）把『水柱打天花板』歸入表面張力比例律的情境，但那是他們的歸類，不是本文結論；液體多為甘油水溶液與界面活性劑溶液。 覆核 V94（2026-11-12）：summary『玻璃與鐵氟龍無明顯差別』改為『70% 甘油在玻璃與鐵氟龍上形成的水鐘尺寸無明顯差別』；limitations 加劍橋 2018 預印本圖 3(c) 曾拿這組數據比對自己的理論。",
+      "author_cache": {
+        "file": "f91src/caltech-waterbells-part1.txt",
+        "sha256_prefix": "ca42bc587ff34ec5",
+        "raw_file": "f91src/caltech-waterbells-part1.pdf",
+        "raw_sha256_prefix": "5ae4d1a7dbaca875",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S023",
+      "url": "https://resolve.cambridge.org/core/services/aop-cambridge-core/content/view/CB1EAA3D8AC4DBCEC9AFA89C0CED5502/S002211202200670Xa_hi.pdf/the-transient-spread-of-a-circular-liquid-jet-and-hydraulic-jump-formation.pdf",
+      "canonical_url": "https://doi.org/10.1017/jfm.2022.670",
+      "title": "The transient spread of a circular liquid jet and hydraulic jump formation",
+      "publisher": "J. Fluid Mech. 947:A34（2022）；Baayoun、Khayat（西安大略大學）、Wang（南方科技大學）",
+      "version": "出版社開放取用版（CC BY 4.0），伺服器轉址到 www.cambridge.org",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 下載搜尋結果列出的 PDF 連結，伺服器自行轉址；pdftotext 轉文字",
+      "reading_scope": "摘要、§1 前言全節、§5 摘要與討論前半；§2–4 推導與數值未讀",
+      "locator": "§1 第 3–5 段（文獻回顧：稱 Bhagat 2018 被證明形式上有誤；轉述 Avedisian & Zhao 2000 半徑隨重力下降而增大）",
+      "summary": "加拿大 Khayat 團隊的暫態水躍理論，前言把劍橋 2018 歸為『後來被證明形式上有誤、誤讀結果』（引 Duchesne 2019、Bohr & Scheichl 2021、Duchesne & Limat 2022），並把 Avedisian & Zhao 2000 轉述為『重力降到 2% 時水躍半徑與寬度隨時間增加』。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "相關句子都是文獻回顧，不是本篇結果；只用來標示第三方怎麼讀這場爭議，不立核心。",
+      "author_cache": {
+        "file": "f91src/jfm2022-transient.txt",
+        "sha256_prefix": "1572fb593a97c064",
+        "raw_file": "f91src/jfm2022-transient.pdf",
+        "raw_sha256_prefix": "69b12bc61165d997",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S024",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5578488/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pcbi.1005670",
+      "title": "Mouth-clicks used by blind expert human echolocators – signal description and model based signal synthesis",
+      "publisher": "PLoS Comput Biol 13(8):e1005670（2017）；Thaler、Reich、Zhang、Wang、Smith、Tao 等（Durham 大學）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "只讀摘要（作者摘要）",
+      "locator": "Abstract",
+      "summary": "三位盲人回聲定位專家的嘴部喀聲：約 3 ms、峰值 2–4 kHz、10 kHz 也有能量；從嘴出發 60° 錐內音量大致不變，更大角度逐漸下降，降得比說話多。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有三位專家；只讀摘要，未讀方法與結果細節；摘要中「先前報告 3–15 ms、2–8 kHz」是前人數字，不引。",
+      "author_cache": {
+        "file": "f92src/PMC5578488.txt（原始 PMC5578488.xml）",
+        "sha256_prefix": "48a4a267bc669e84",
+        "xml_sha256_prefix": "a921815238be6e71",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S025",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6797687/fullTextXML",
+      "canonical_url": "https://doi.org/10.1007/s10162-019-00728-0",
+      "title": "Human Click-Based Echolocation of Distance: Superfine Acuity and Dynamic Clicking Behaviour",
+      "publisher": "JARO 20:499–510（2019）；Thaler、De Vos、Kish、Antoniou、Baker、Hornikx（Durham 大學等）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "只讀摘要",
+      "locator": "Abstract",
+      "summary": "8 位每天使用回聲定位超過 3 年的盲人：參考距離 50 cm 時能察覺 3 cm 的變化、150 cm 時 7 cm，與物體大小（28.5 cm 或 80 cm 圓盤）無關；反射較弱時喀聲更大、次數更多，兩者各自調整。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀摘要；8 人；實驗室條件。",
+      "author_cache": {
+        "file": "f92src/PMC6797687.txt（原始 PMC6797687.xml）",
+        "sha256_prefix": "c07a46c64a489b82",
+        "xml_sha256_prefix": "7e906ba95224c247",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S026",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5832709/fullTextXML",
+      "canonical_url": "https://doi.org/10.1098/rspb.2017.2735",
+      "title": "Human echolocators adjust loudness and number of clicks for detection of reflectors at various azimuth angles",
+      "publisher": "Proc R Soc B 285:20172735（2018）；Thaler、De Vos、Kish、Antoniou、Baker、Hornikx（Durham 大學等）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "只讀摘要",
+      "locator": "Abstract",
+      "summary": "8 位盲人專家偵測 100 cm 外直徑 17.5 cm 的圓形反射板：0°、45°、90° 都 100% 正確，135° 約 80%，180°（正後方）降到猜測水準 50%；角度越偏，喀聲越大聲、次數越多；回聲比喀聲弱到 −27 dB 仍可穩定偵測。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀摘要。「−27 dB 比先前預期低」的比較對象未讀原文，不引比較。",
+      "author_cache": {
+        "file": "f92src/PMC5832709.txt（原始 PMC5832709.xml）",
+        "sha256_prefix": "e2ffa58c92a034e5",
+        "xml_sha256_prefix": "d7d2ad35a82e1a82",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S027",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13020946/fullTextXML",
+      "canonical_url": "https://doi.org/10.1177/09567976211068070",
+      "title": "Human Echolocators Have Better Localization Off Axis",
+      "publisher": "Psychol Sci 33(7):1143（2022）；Thaler、Norman、De Vos、Kish、Antoniou 等（Durham 大學）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "只讀摘要",
+      "locator": "Abstract",
+      "summary": "9 位盲人專家：目標放在偏 45° 時定位比正前方 0° 更準，喀聲也較小聲；作者以雙耳強度差在 45° 附近變化較快作為可能解釋，並指出一般聽聲源定位是正前方最準。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀摘要；解釋是作者提出的「可能」機制。",
+      "author_cache": {
+        "file": "f92src/PMC13020946.txt（原始 PMC13020946.xml）",
+        "sha256_prefix": "61fea3d47874961b",
+        "xml_sha256_prefix": "5a77fe11bd7f1afc",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S028",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8171922/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0252330",
+      "title": "Human click-based echolocation: Effects of blindness and age, and real-life implications in a 10-week training program",
+      "publisher": "PLoS One 16(6):e0252330（2021）；Norman、Dodsworth、Foresteire、Thaler（Durham 大學）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "摘要、§1 前言末段與 §2.2 受試者、§3.1.1–3.1.3 結果、§3.4 追蹤調查開頭、§4 討論全部；未讀 §3.1.4 細節表格與審稿紀錄",
+      "locator": "Abstract；§2.2；§3.1.2（.54→.79）；§3.1.3（.38→.69）；§4 第 1–4 段",
+      "summary": "14 位明眼人（21–71 歲）與 12 位先天失明者（27–79 歲）各上 20 次、10 週喀聲回聲定位課：兩組都明顯進步，大小辨別正確率平均由 .54 升到 .79，方向辨別由 .38 升到 .69，方向任務期末與專家相當；部分任務明眼人反而較好，作者分析認為可能較能以年齡（或雙耳聽力差）解釋；年齡與失明都不是實作任務學習速度的限制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "小樣本；明眼組較年輕；不含任何復健或行動訓練建議（片中不引追蹤調查的生活改善）。 覆核 V95（2026-11-12）：summary 刪「方向任務期末與專家相當」，改「專家在 100 cm 較難距離受測，不可直接比較」；補「虛擬迷宮碰撞的組差加入年齡共變量後仍顯著」；「先天失明者」改「失明者（多數出生或一歲內診斷）」。",
+      "author_cache": {
+        "file": "f92src/PMC8171922.txt（原始 PMC8171922.xml）",
+        "sha256_prefix": "eec2c0f7df32999f",
+        "xml_sha256_prefix": "1fa815dc0c50cb8e",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S029",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3102086/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0020162",
+      "title": "Neural Correlates of Natural Human Echolocation in Early and Late Blind Echolocation Experts",
+      "publisher": "PLoS One 6(5):e20162（2011）；Thaler、Arnott、Goodale（西安大略大學）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "摘要（Background/Results/Conclusions）與前言第 1 段、圖 1 說明",
+      "locator": "Abstract；Introduction 第 1 段",
+      "summary": "兩位回聲定位專家（一位早期失明、一位晚期失明）在 fMRI 中聽自己的喀聲錄音：含回聲與去掉回聲的對照聲相比，兩人的距狀皮質（視覺區）都有較多活動，聽覺皮質則看不出差異。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 2 人；被動聆聽錄音，不是實際走動。",
+      "author_cache": {
+        "file": "f92src/PMC3102086.txt（原始 PMC3102086.xml）",
+        "sha256_prefix": "db52457b80c8b4c0",
+        "xml_sha256_prefix": "aca4502ea64e6647",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S030",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6790759/fullTextXML",
+      "canonical_url": "https://doi.org/10.1098/rspb.2019.1910",
+      "title": "Retinotopic-like maps of spatial sound in primary ‘visual’ cortex of blind human echolocators",
+      "publisher": "Proc R Soc B 286:20191910（2019）；Norman、Thaler（Durham 大學）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "只讀摘要",
+      "locator": "Abstract",
+      "summary": "盲人回聲定位專家的初級「視覺」皮質裡，聲音位置的偏心度圖與明眼人視覺偏心度的預測圖可直接比較，相似程度與回聲定位能力正相關；作者排除想像等由上而下的解釋。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀摘要。",
+      "author_cache": {
+        "file": "f92src/PMC6790759.txt（原始 PMC6790759.xml）",
+        "sha256_prefix": "f381cd437f99955b",
+        "xml_sha256_prefix": "4ac9c4413ecd6083",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S031",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11186672/fullTextXML",
+      "canonical_url": "https://doi.org/10.1093/cercor/bhae239",
+      "title": "Changes in primary visual and auditory cortex of blind and sighted adults following 10 weeks of click-based echolocation training",
+      "publisher": "Cereb Cortex 34(6):bhae239（2024）；Norman、Hartley、Thaler（Durham 大學）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "只讀摘要",
+      "locator": "Abstract",
+      "summary": "與 S005 同一批 12 位盲人與 14 位明眼人，訓練前後 MRI：兩組合起來，左右 V1 對回聲的活化都因訓練增加；右側 A1 對聲音本身（不限回聲）的活化也增加。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀摘要；與 S005 同一批受試者，不算獨立重現。 覆核 V95（2026-11-12）：limitations 補「兩組的灰質結構變化不同（摘要：structural analyses also showed differences between the groups）」。",
+      "author_cache": {
+        "file": "f92src/PMC11186672.txt（原始 PMC11186672.xml）",
+        "sha256_prefix": "4b08edcfdd55a937",
+        "xml_sha256_prefix": "99062561281d7bc0",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S032",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5638915/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-017-12967-3",
+      "title": "Visual sensory stimulation interferes with people’s ability to echolocate object size",
+      "publisher": "Sci Rep 7:13069（2017）；Thaler、Foresteire（Durham 大學）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "摘要與前言全部",
+      "locator": "Abstract；Introduction 第 2–6 段",
+      "summary": "回聲定位時同時照一道不帶資訊的白光，明眼新手判斷物體大小的能力顯著下降；換成皮膚振動刺激則沒有（明眼人與盲人專家都沒有）；白光也不影響音量、音高、聲源位置的聽覺對照作業。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀摘要與前言，未讀結果數字；作者結論「共用神經資源」是推論。 覆核 V95（2026-11-12）：summary 補「白光條件只測 22 位明眼新手，3 位盲人專家只參加觸覺條件」。",
+      "author_cache": {
+        "file": "f92src/PMC5638915.txt（原始 PMC5638915.xml）",
+        "sha256_prefix": "e4299a874614cd44",
+        "xml_sha256_prefix": "4ee620b0312315e9",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S033",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4852930/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0154868",
+      "title": "People's Ability to Detect Objects Using Click-Based Echolocation: A Direct Comparison between Mouth-Clicks and Clicks Made by a Loudspeaker",
+      "publisher": "PLoS One 11(5):e0154868（2016）；Thaler、Castillo-Serrano（Durham 大學）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "只讀摘要",
+      "locator": "Abstract",
+      "summary": "27 位明眼新手用頭戴喇叭的喀聲偵測物體，整體比自己彈舌好；兩位盲人專家兩種都一樣好；明眼人用喇叭時與盲人專家沒有統計差異；嘴部喀聲越像喇叭（峰值頻率與音量較高）的人表現越好。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀摘要；Thaler 群封頂內，不另計條數（只作 F92-010 的旁證）。",
+      "author_cache": {
+        "file": "f92src/PMC4852930.txt（原始 PMC4852930.xml）",
+        "sha256_prefix": "eae07c5630b764b1",
+        "xml_sha256_prefix": "f4897d4e2c5fa6c2",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S034",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4281102/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0115363",
+      "title": "Ranging in Human Sonar: Effects of Additional Early Reflections and Exploratory Head Movements",
+      "publisher": "PLoS One 9(12):e115363（2014）；Wallmeier、Wiegrebe（慕尼黑大學）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "只讀摘要",
+      "locator": "Abstract",
+      "summary": "在用真實走廊脈衝響應做成的虛擬回聲空間裡，6 位矇眼明眼人與 1 位盲人專家用自己的發聲判斷離前牆的距離：0.75–4 m 各參考距離的辨別門檻都小於 1 m，0.75 m 時最好、約 20 cm；額外的早期反射影響不大；自由轉頭在複雜情境可改善，但不一定勝過最佳固定朝向。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀摘要；虛擬聲學空間。",
+      "author_cache": {
+        "file": "f92src/PMC4281102.txt（原始 PMC4281102.xml）",
+        "sha256_prefix": "49fe6cae992608b6",
+        "xml_sha256_prefix": "9cc754d3b4987412",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S035",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4448837/fullTextXML",
+      "canonical_url": "https://doi.org/10.1098/rsos.140185",
+      "title": "Self-motion facilitates echo-acoustic orientation in humans",
+      "publisher": "R Soc Open Sci 1:140185（2014）；Wallmeier、Wiegrebe（慕尼黑大學）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "摘要、方法受試者段、討論前 4 段",
+      "locator": "Abstract；Methods 受試者段（8 位明眼人）；Discussion 第 1–4 段",
+      "summary": "8 位明眼人在虛擬走廊用回聲判斷自己的朝向：靠近一側牆時判斷出現系統性偏差（作者認為近牆的強早期反射遮蔽了對側牆的較晚反射）；允許整個身體旋轉（前庭輸入）時這種系統誤差消失，但仍有前後混淆；再允許頭相對身體轉動，前後混淆減少。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "虛擬聲學空間；8 人；「遮蔽」是作者的解釋。 覆核 V95（2026-11-12）：summary 補「靠近側牆時一律往遠離該牆方向偏，平均 13.5°」；limitations 補「直達聲未模擬，遮蔽指近牆反射遮對側牆反射」。",
+      "author_cache": {
+        "file": "f92src/PMC4448837.txt（原始 PMC4448837.xml）",
+        "sha256_prefix": "5caffdbdbf59a50e",
+        "xml_sha256_prefix": "f77eb2df0c993eb0",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S036",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8044610/fullTextXML",
+      "canonical_url": "https://doi.org/10.1177/03010066211000617",
+      "title": "Comparing Echo-Detection and Echo-Localization in Sighted Individuals",
+      "publisher": "Perception 50(4):308（2021）；Tirado、Gerdfeldter、Kärnekull、Nilsson（斯德哥爾摩大學）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "摘要與討論前 4 段",
+      "locator": "Abstract；Discussion 第 1–4 段",
+      "summary": "10 位無經驗的明眼人在 1–4.25 m 共 10 個距離做兩種判斷：有沒有東西（偵測）比東西在左或右（定位）多半做得好，最近的 1 與 1.7 m 最明顯，數人偵測不錯但定位接近猜測；最近距離時含反射的刺激整體比沒反射的大約 10 dB，約到 2–2.5 m 後差別消失。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "10 人；以自動裝置放錄製或播放喀聲；10 dB 是作者的聲學分析，用來解釋（不是直接證明）偵測較易的原因。 覆核 V95（2026-11-12）：summary 的「以自動裝置放錄製或播放喀聲」改為「喇叭播放專家喀聲的模擬錄音、頭部以下巴架固定」；補「近距離反射喀聲聲壓高於直達喀聲；作者並列三種解釋（響度、遮蔽、先行效應的 discrimination suppression）」。",
+      "author_cache": {
+        "file": "f92src/PMC8044610.txt（原始 PMC8044610.xml）",
+        "sha256_prefix": "2f420426b833c475",
+        "xml_sha256_prefix": "08eef1ba779a63db",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S037",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8158938/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0251397",
+      "title": "Discrimination of 2D wall textures by passive echolocation for different reflected-to-direct level difference configurations",
+      "publisher": "PLoS One 16(5):e0251397（2021）；Kritly、Sluyts、Pelegrín-García、Glorieux、Rychtáriková（KU Leuven）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "摘要、前言末段、方法限制段（第 74 段）、Conclusion and perspectives 全節",
+      "locator": "Abstract；第 74 段；Conclusion「Distance」「Excitation stimulus」「Room impulse response configurations」「Spectral coloration」",
+      "summary": "14 位無經驗明眼人被動聆聽合成的彈舌回聲，分辨不同牆面紋理（平牆到樓梯狀）：牆在 5.0 m 比在 0.8 m 分得好，作者認為近距離時直達聲遮蔽了反射；把反射加強 6 dB 或拿掉直達聲都使分辨變好；反射的「音色染色」是主要線索。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "被動聆聽、虛擬合成；作者自己指出主動發聲時前向遮蔽的問題可能小很多（第 74 段），片中必須說明。 覆核 V95（2026-11-12）：summary 補分辨分數 0.79（5 m）對 0.71（0.8 m）。",
+      "author_cache": {
+        "file": "f92src/PMC8158938.txt（原始 PMC8158938.xml）",
+        "sha256_prefix": "8aee5892c73c5d8a",
+        "xml_sha256_prefix": "86d99985df87bf82",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S038",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4892586/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0156654",
+      "title": "Depth Echolocation Learnt by Novice Sighted People",
+      "publisher": "PLoS One 11(6):e0156654（2016）；Tonelli、Brayda、Gori（義大利理工學院 IIT）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "摘要、受試者段、討論與結論全部",
+      "locator": "Abstract；Participants 第 25 段；Discussion 第 52–62 段",
+      "summary": "18 位明眼新手站在 5 根不同距離、張角相同的桿子前判斷距離：訓練約一小時後、第二次就高於猜測；回聲室裡的準確度與精確度比無響室好，但答對比例兩室沒有顯著差異，進步幅度也相近；用舌頭或用手打出喀聲沒有差別。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "18 人分四組，每組人數少；「回聲室較好」只在準確度與精確度，不在答對率。 覆核 V95（2026-11-12）：summary「用舌頭或用手」改「用舌頭或手指彈（finger-snaps）」。",
+      "author_cache": {
+        "file": "f92src/PMC4892586.txt（原始 PMC4892586.xml）",
+        "sha256_prefix": "942ca0600c322cad",
+        "xml_sha256_prefix": "3ddcbac01e690444",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S039",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5315722/fullTextXML",
+      "canonical_url": "https://doi.org/10.1007/s00221-016-4833-z",
+      "title": "Learning to echolocate in sighted people: a correlational study on attention, working memory and spatial abilities",
+      "publisher": "Exp Brain Res 235:809–818（2017）；Ekkel、van Lier、Steenbergen（拉德堡德大學）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "摘要、前言、受試者段、討論前 3 段",
+      "locator": "Abstract；Participants 第 17 段；Discussion 第 1–3 段",
+      "summary": "23 位明眼大學生學用回聲分辨大小：5 位完全沒轉頭的人表現與猜測無異（被排除）；其餘人的進步幅度與持續與分配注意力測驗（PASAT）正相關，與工作記憶、空間能力不相關；平均答對 63.2%，最大的進步出現在第四次。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "相關研究，不是因果；「轉頭是必要的」是作者由 5 人推出的說法。",
+      "author_cache": {
+        "file": "f92src/PMC5315722.txt（原始 PMC5315722.xml）",
+        "sha256_prefix": "fc32635ad4f0b812",
+        "xml_sha256_prefix": "1c5bd5680feaa9c0",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S040",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10138724/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/ijerph20085573",
+      "title": "Binaural Listening with Head Rotation Helps Persons with Blindness Perceive Narrow Obstacles",
+      "publisher": "Int J Environ Res Public Health 20(8):5573（2023）；Miura、Okochi、Suzuki、Ifukube（日本產業技術綜合研究所 AIST、東京大學 RCAST 等）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "摘要、前言第 1–3 段、§5 結論",
+      "locator": "Abstract；Introduction；§5 Conclusions",
+      "summary": "全盲受試者判斷不發聲障礙物（寬度、距離不同）的有無與距離：轉頭與雙耳聆聽都能提升定位；不能轉頭或只用單耳時，判斷偏向「有障礙物」（作者解釋為避險）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "未讀結果數字；不涉任何行動訓練建議。",
+      "author_cache": {
+        "file": "f92src/PMC10138724.txt（原始 PMC10138724.xml）",
+        "sha256_prefix": "5af34233b13ce4e8",
+        "xml_sha256_prefix": "02cec5ae0f30e3d0",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S041",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10971107/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/life14030356",
+      "title": "Examining How Interaural Differences Owing to Head Rotation during Walking Improve the Distance of Auditory Obstacle Perceptions among Individuals with Visual Impairment",
+      "publisher": "Life 14(3):356（2024）；Miura、Okochi、Matsuo 等（AIST、東京大學 RCAST、筑波技術大學）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "只讀摘要",
+      "locator": "Abstract",
+      "summary": "5 位全盲男性判斷障礙物距離，走路時比站著準；走路時頭部轉動峰值 2.78°–11.11°（平均 6.55°）；兩耳時間差與強度差的察覺門檻 86.2 μs 與 1.28 dB，對應轉頭 23.5° 與 9.17°，音色差門檻約 6.30°；作者推論強度差可能有貢獻、音色差可當線索。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀摘要；小樣本案例研究；結論是作者推論。",
+      "author_cache": {
+        "file": "f92src/PMC10971107.txt（原始 PMC10971107.xml）",
+        "sha256_prefix": "ca3c0cfd44a669cd",
+        "xml_sha256_prefix": "65d76e9831c28fb7",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S042",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8099053/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0250517",
+      "title": "Effectiveness of time-varying echo information for target geometry identification in bat-inspired human echolocation",
+      "publisher": "PLoS One 16(5):e0250517（2021）；Sumiya、Ashihara、Watanabe、Terada、Hiryu、Ando（日本 NICT、AIST 等）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "摘要與討論第 1–3 段",
+      "locator": "Abstract；Discussion「Effective sensing strategies…」第 1–3 段",
+      "summary": "15 位明眼人用手機按出仿蝙蝠的寬頻調頻聲（最高 41 kHz，經 1/7 縮小假人頭錄音、降頻後以耳機聽）：目標在轉動、回聲隨時間變化時能分出兩種形狀；目標靜止時不行，在沒有回饋的測試回合差異才顯著。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "不是自然的嘴部喀聲，是裝置與降頻；差異只在測試回合顯著。 覆核 V95（2026-11-12）：summary 刪「目標靜止時不行」，改「答對率中位數靜止 56.3%、轉動 62.5%（練習）／68.8%（測驗）；練習回合 12/15 人兩種條件都高於猜測」。",
+      "author_cache": {
+        "file": "f92src/PMC8099053.txt（原始 PMC8099053.xml）",
+        "sha256_prefix": "ed3ff6426514ba42",
+        "xml_sha256_prefix": "c5ff58b4e092a240",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S043",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12685218/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0330943",
+      "title": "Audition and balance: The impact of echolocation on postural control",
+      "publisher": "PLoS One 20(12):e0330943（2025）；Chouk、Dross、Termoz（法國 Gipsa-Lab 等）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "只讀摘要",
+      "locator": "Abstract",
+      "summary": "11 位矇眼、聽力正常的年輕人在半無響室站著：反射物移動（尤其朝受試者靠近）時，對物體的察覺比靜止時好，站姿也較穩；但察覺與穩定度之間沒有顯著相關。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀摘要；11 人；作者自己說需更多對照研究。",
+      "author_cache": {
+        "file": "f92src/PMC12685218.txt（原始 PMC12685218.xml）",
+        "sha256_prefix": "d9fd04b202c87b30",
+        "xml_sha256_prefix": "e9b17b13b3be9752",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S044",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13086550/fullTextXML",
+      "canonical_url": "https://doi.org/10.1523/ENEURO.0342-25.2026",
+      "title": "Neural and Behavioral Correlates of Evidence Accumulation in Human Click-Based Echolocation",
+      "publisher": "eNeuro 13(4):ENEURO.0342-25.2026（2026）；García-Lázaro、Teng（Smith-Kettlewell 眼科研究所、卡地夫大學）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "摘要與討論前兩節",
+      "locator": "Abstract；Discussion 第 1–2 段",
+      "summary": "4 位盲人專家與 21 位明眼新手聽 2–11 聲合成喀聲的虛擬回聲判斷左右：專家明顯較好，而且喀聲越多門檻越低（符合跨多聲累積資訊）；腦波從第一聲起就能解碼回聲在哪一側；早期失明者只聽兩聲就超過 70%，晚期失明、擔任回聲定位教練的那位成績較低。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "4 位專家；虛擬回聲；早晚期失明差別只是 1 位對其餘，作者也只說「一致於」。 覆核 V95（2026-11-12）：summary 的早晚期失明比較加註「EB 3 位、LB 1 位」並標為不入稿。",
+      "author_cache": {
+        "file": "f92src/PMC13086550.txt（原始 PMC13086550.xml）",
+        "sha256_prefix": "e6f4ca08359bf5c0",
+        "xml_sha256_prefix": "570cf40903eeba5f",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S045",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10909950/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fnins.2024.1288635",
+      "title": "Object recognition via echoes: quantifying the crossmodal transfer of three-dimensional shape information between echolocation, vision, and haptics",
+      "publisher": "Front Neurosci 18:1288635（2024）；Teng、Danforth 等（Smith-Kettlewell）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "摘要與總討論前兩段",
+      "locator": "Abstract；General discussion 第 1–2 段",
+      "summary": "先用回聲「看」一個物體，再只用手摸從兩個中挑出它：盲人專家對日常與陌生物體都高於猜測，明眼人只有日常物體高於猜測；另一組 22 位明眼人看模糊照片後做同樣的觸摸配對，模糊核 σ 約 2.5°（約 5° 寬）時成績與回聲組相當。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "「相當於模糊 5°」是一種換算方式，作者自己也說換別的物體或參數會不同。",
+      "author_cache": {
+        "file": "f92src/PMC10909950.txt（原始 PMC10909950.xml）",
+        "sha256_prefix": "ca9b18d452a3b904",
+        "xml_sha256_prefix": "464654965f13e450",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S046",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5391114/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0175750",
+      "title": "Blindness enhances auditory obstacle circumvention: Assessing echolocation, sensory substitution, and visual-based navigation",
+      "publisher": "PLoS One 12(4):e0175750（2017）；Kolarik、Scarfe、Moore、Pardhan（安格里亞魯斯金大學、劍橋大學）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "摘要與討論前 3 段",
+      "locator": "Abstract；Discussion 第 1–3 段",
+      "summary": "10 位明眼人、8 位不會回聲定位的盲人與 1 位盲人專家，用聲音繞過 0.6 × 2 m 的障礙：不會回聲定位的盲人比矇眼明眼人碰撞少、走得快、速度修正少、偵測距離遠；專家與一般盲人差不多（但比明眼人好）；有視覺時表現遠比聽覺好。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 1 位專家；「盲人聽覺代償」是作者的詮釋。",
+      "author_cache": {
+        "file": "f92src/PMC5391114.txt（原始 PMC5391114.xml）",
+        "sha256_prefix": "43d085c3a5e89b8d",
+        "xml_sha256_prefix": "f3096da0e00d39d4",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S047",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12540596/fullTextXML",
+      "canonical_url": "https://doi.org/10.1007/s00221-025-07180-y",
+      "title": "Compression may be a general tendency of auditory distance judgments: evidence from distance estimates using a novel echolocation skill",
+      "publisher": "Exp Brain Res 243:231（2025）；Kolarik、Evans、McCarthy、Moore（東安格里亞大學、劍橋大學、安格里亞魯斯金大學）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "摘要與討論前 3 段",
+      "locator": "Abstract；Discussion 第 1–3 段",
+      "summary": "11 位矇眼明眼人用自己的喀聲估 30、60、90 cm 外鋁或泡棉物體的距離：估計符合壓縮的冪函數（遠處低估），斜率鋁 0.94、泡棉 0.71；材質影響的是估計的一致性。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "摘要寫「兩個最近距離泡棉低估較多」，討論寫「只有最遠距離鋁的估計顯著較大，最近兩距離是一致性較好」，兩處不一致，本池照討論；不引作者與前人斜率的比較。 覆核 V95（2026-11-12）：summary 確認不寫「壓縮得比較少」。",
+      "author_cache": {
+        "file": "f92src/PMC12540596.txt（原始 PMC12540596.xml）",
+        "sha256_prefix": "d42d6f5331f1fa7b",
+        "xml_sha256_prefix": "7f809c7b602ef04d",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S048",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11486407/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0306001",
+      "title": "Effectiveness of different sounds in human echolocation in live tests",
+      "publisher": "PLoS One 19(10):e0306001（2024）；Bujacz、Królak、Sztyler、Skulimowski 等（羅茲工業大學）",
+      "version": "出版社開放取用版（Europe PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字後讀",
+      "reading_scope": "摘要、前言第 1 段、§4 討論前 3 段",
+      "locator": "Abstract；§1 第 1 段；§4 第 1–3 段",
+      "summary": "戶外找 1 × 2 m 障礙物的方向與距離，12 位盲人與 14 位明眼人、都沒受過正式訓練：全盲者顯著好過其他人，仍有殘餘視力的法定失明者與明眼人沒有顯著差別；中心頻率約 3–4 kHz、頻譜寬的聲音最準，喇叭放的聲音大致比自己發的（機械響板、彈舌、拍手）好，機械響板與 1 kHz 最差；噪音類聲音最準卻被評為最不舒服。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "作者說的「殘餘視力就不需發展回聲定位」是推論；分組人數少。 覆核 V95（2026-11-12）：summary 補「全盲 7 人、殘餘視力 5 人（其中兩人成年後才失去視力）；自稱自學專家為 TB5、TB7 兩人」。",
+      "author_cache": {
+        "file": "f92src/PMC11486407.txt（原始 PMC11486407.xml）",
+        "sha256_prefix": "fcb8be1890963b1e",
+        "xml_sha256_prefix": "bc68359d47debce2",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P74-S049",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5760687/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41467-017-02088-w",
+      "title": "Structural absorption by barbule microstructures of super black bird of paradise feathers",
+      "publisher": "Nature Communications 9:1（2018）；McCoy、Feo、Harvey、Prum（耶魯大學 Prum 實驗室／哈佛）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文）",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "全文：摘要、前言、結果（反射光譜、羽毛微結構、光線追蹤）、討論、方法；參考文獻與補充資料未讀",
+      "locator": "摘要；Results〈Reflectance spectra〉第 2 段（0.05–0.31% 對 3.2–4.7%）；〈Feather microstructure〉第 1、3 段（傾斜約 30°、腔深 200–400 µm、鍍金後仍黑）；〈Light-scattering simulations〉第 4–5 段（總積分反射只低 50%、遠端方向最黑）；Discussion 第 1–4 段（99.95%、緊鄰鮮豔色塊、色彩校正假說）",
+      "summary": "比較 5 種有「超黑」羽的極樂鳥與 2 種一般黑羽的近親：超黑羽在正向（直射）量法下反射率 0.05–0.31%，一般黑羽 3.2–4.7%，差一到兩個數量級；超黑羽的羽小枝長滿小刺、朝羽尖傾斜約 30° 排成密陣列，形成深約 200–400 µm、寬 5–30 µm 的腔。為電子顯微鏡鍍上一層金後，一般黑羽變成金色，超黑羽仍是黑的。光線追蹤顯示超黑羽讓光多次散射；但以積分球量總反射，超黑羽只比一般黑羽低約 50%，而且無論光從哪來，從羽毛末端方向看最黑，作者認為對應雌鳥看求偶雄鳥的方向。同一種 Lophorina 用於展示的披肩是超黑、背部不用於展示的是一般黑。作者提出假說：超黑長在鮮豔色塊旁，抹去周圍的白色反光點，干擾觀者的色彩校正，使旁邊的顏色看起來更亮、甚至像自己發光。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "博物館標本量測；部分物種只量一隻；「讓旁邊顏色更亮」是作者假說，本文沒有做鳥的知覺實驗；99.95% 是直射光、正向量法，不是任何角度。",
+      "author_cache": {
+        "file": "f101src/PMC5760687.txt",
+        "sha256_prefix": "6ded4dbddd8c2990",
+        "raw_file": "f101src/PMC5760687.xml",
+        "raw_sha256_prefix": "8f102a978905ca60",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；txt 為 JATS 以 python 去標籤轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12"
+    },
+    {
+      "id": "P74-S050",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6532503/fullTextXML",
+      "canonical_url": "https://doi.org/10.1098/rspb.2019.0589",
+      "title": "Structurally assisted super black in colourful peacock spiders",
+      "publisher": "Proceedings of the Royal Society B 286:20190589（2019）；McCoy、McCoy、Mandsberg、Shneidman、Aizenberg、Prum、Haig（哈佛 Aizenberg 實驗室與耶魯 Prum 實驗室）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文）",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "全文：摘要、背景、方法、結果、討論；補充資料未讀",
+      "locator": "摘要；Results 第 1 段（0.44%、0.35%、Cylistella 4.61%、Drepanornis 0.17%）；第 2 段（微透鏡高約 6 µm）；第 6–8 段（光程增 20%、尺寸接近最佳折衷）",
+      "summary": "兩種孔雀跳蛛（Maratus speciosus、M. karrie）的超黑區在 30° 收光角下反射 0.44% 與 0.35%；近緣、全身一般黑的跳蛛 Cylistella 為 4.61%；同法量的極樂鳥 Drepanornis bruijnii 超黑羽 0.17%。超黑區角質層長滿高約 6 µm、緊密排列的凸起（微透鏡陣列），M. karrie 另覆一層刷狀黑鱗。模擬顯示微透鏡讓穿進去的光在黑色素層中的路徑長 20%，並把部分反射光繞射出雌蛛眼睛的視角；半徑約 2 µm、高為半徑 2–3 倍的實際尺寸，落在「減少表面反射」與「增加吸收路徑」兩者的折衷最佳點附近。作者同樣提出超黑讓鄰近顏色更亮的感官偏好假說。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與 F101-S001 同一第一作者（McCoy），列為同一研究群合計封頂 2.0；標本保存在酒精中，作者說量到的黑度可能低估；功能是假說。",
+      "author_cache": {
+        "file": "f101src/PMC6532503.txt",
+        "sha256_prefix": "cf3149020b2a28ca",
+        "raw_file": "f101src/PMC6532503.xml",
+        "raw_sha256_prefix": "e1d33dd9d69d957b",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；txt 為 JATS 以 python 去標籤轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12"
+    },
+    {
+      "id": "P74-S051",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7064527/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41467-020-15033-1",
+      "title": "Diverse nanostructures underlie thin ultra-black scales in butterflies",
+      "publisher": "Nature Communications 11:1294（2020）；Davis、Nijhout、Johnsen（杜克大學 Johnsen 實驗室）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文）",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "全文：摘要、前言、結果（反射、鱗片奈米結構、FDTD 模擬）、討論、方法；補充資料未讀",
+      "locator": "Results〈Wing reflectance spectra〉（0.06–0.4%、對照 1–3%）；〈Scale nanostructure〉末段（鍍金後仍黑）；〈FDTD〉第 1–3 段（比平板低 14–40 倍、拿掉小梁或縱脊升 3–16 倍、兩者都拿掉 7–28 倍、同體積平板去料最多升兩倍）；第 4 段（k=0 接近 100%、k=0.06 約 1%）；Discussion 第 1、3 段（厚度約五分之一、超黑一定鄰接顏色、Trogonoptera 與 Catonephele 雄蝶超黑雌蝶較亮）",
+      "summary": "10 種、分屬 4 個亞科的蝴蝶黑斑在 500 nm、垂直照射下反射 0.06–0.4%，同屬較不黑的對照 1–3%。所有超黑鱗片都有陡峭縱脊與粗大的小梁（連接上下層的柱），鍍金後仍黑，沒有這些構造的變亮。模擬：完整鱗片比同體積吸收材料做成的兩片平板反射低 14–40 倍；拿掉小梁或縱脊，反射升高 3–16 倍，兩者都拿掉升 7–28 倍。若材料完全不吸收（k=0），兩層鱗片疊在白底上的反射接近 100%；k=0.06 時降到約 1%，黑色素本身的高折射率不是必要條件。這些構造做在約為人造或其他天然超黑材料五分之一厚的鱗片裡。作者寫：沒有已知全身都超黑的蝴蝶，超黑斑總是鄰接彩色、白色或虹彩斑；Trogonoptera 與 Catonephele 雄蝶超黑、雌蝶的黑反射較高。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "每種只取一個標本；功能（加強色彩對比）是作者假說；反射是 500 nm 單一波長的比較值；「超越極樂鳥」一句原文註明是未發表資料，不採用。 覆核 V104（2026-11-12）：limitations 補：「原文沒有明寫每種幾個標本（方法逐種列一份）；圖說 n = 3–5 是翅面量測位置數；內文 10 種 4 亞科，Fig. 1 圖說寫 11 種 5 亞科。」",
+      "author_cache": {
+        "file": "f101src/PMC7064527.txt",
+        "sha256_prefix": "8143f002bfcf3786",
+        "raw_file": "f101src/PMC7064527.xml",
+        "raw_sha256_prefix": "869758bb87a1cdc7",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；txt 為 JATS 以 python 去標籤轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12"
+    },
+    {
+      "id": "P74-S052",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3655483/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/srep01846",
+      "title": "Snake velvet black: Hierarchical micro- and nanostructure enhances dark colouration in Bitis rhinoceros",
+      "publisher": "Scientific Reports 3:1846（2013）；Spinner、Kovalev、Gorb、Westhoff（德國基爾大學 Gorb 群）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文）",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "全文：摘要、前言、結果（形態、光學、紅外影像）、討論、方法",
+      "locator": "Results〈Morphology〉第 1、3 段（鍍金鈀後黑區仍黑；葉狀結構高 30 µm、奈米脊高 600 nm 間距 330 nm）；〈Optical characteristics〉第 1–2 段（黑鱗中位數 10.8%、淺色 26.7%；鍍膜後黑鱗中位數 3.5%）；第 3 段（黑鱗在大角度反射遞減）；第 6 段（照燈 1 分鐘黑區平均高 2 °C）；Discussion 第 5、7 段（各角度都低、森林地面偽裝的詮釋）",
+      "summary": "西非加彭咽蝮（Bitis rhinoceros）蛻皮上的天鵝絨黑斑，表面是高約 30 µm 的葉狀微結構，上面再覆高約 600 nm、間距約 330 nm 的奈米脊；淺色區只有約 10 µm 的低凸起。黑鱗反射（相對 PTFE 白標準）中位數 10.8%，淺色鱗 26.7%。鍍上 15 nm 金鈀後，淺色鱗變得像金屬（中位數 55.5%），黑鱗仍黑，反射反而降到中位數 3.5%。作者指出這種黑在各個觀看角度都低，不像布料天鵝絨只有某些角度有光澤；並依這種蛇伏擊、躺在林床的習性，把高對比斑紋解讀為偽裝。照燈加熱 1 分鐘後，黑區平均比淺色區高 2 °C。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "量的是蛻皮，不是活蛇；反射值相對擴散白標準，不能和直射量法的 0.05% 等數字直接比；偽裝是作者依生態推論，沒有捕食實驗；溫差是蛻皮在燈下的量測。 覆核 V104（2026-11-12）：limitations 加：「黑鱗反射中位數 10.8%，不是超黑；黑鱗散射低角度最強、高角度遞減，沒有『各角度都低』；材料為兩隻個體的蛻皮。」",
+      "author_cache": {
+        "file": "f101src/PMC3655483.txt",
+        "sha256_prefix": "9bb57677c3331826",
+        "raw_file": "f101src/PMC3655483.xml",
+        "raw_sha256_prefix": "6577c1687fdd2014",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；txt 為 JATS 以 python 去標籤轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12"
+    },
+    {
+      "id": "P74-S053",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11635292/fullTextXML",
+      "canonical_url": "https://doi.org/10.3762/bjnano.15.122",
+      "title": "Ultrablack color in velvet ant cuticle",
+      "publisher": "Beilstein Journal of Nanotechnology 15:1554–1565（2024）；Lopez、Krings、Machado、Gorb、Guillermo-Ferreira（巴西聖保羅大學等，與基爾大學 Gorb 合作）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文）",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "全文：摘要、前言、材料方法、結果、討論",
+      "locator": "Results 第 1 段（反射光譜與孔雀蜘蛛、極樂鳥相近）；Results 末段（紅外影像：比環境低 2 °C、白毛區與超黑區無溫差）；Discussion 第 5–6 段（警戒色假說）",
+      "summary": "巴西蟻蜂 Traumatomutilla bifurca 雌蜂黑色體壁的反射光譜與孔雀蜘蛛、極樂鳥的超黑相近，低於鳥翼鳳蝶 Troides helena；表面有密刺與中空、有溝槽的剛毛，體壁是疊層加支柱。熱像實驗中，蟻蜂體表一直比環境低 2 °C，白毛區與超黑區沒有溫差；作者因此認為顏色在牠的體溫調節中只是次要。作者提出超黑可能是加強警戒訊號，但寫明證據有限。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "內文沒有給整體反射百分比數字，只有圖中光譜比較；與 F101-S004、S006 同屬 Gorb 合作網絡，三篇合計封頂 2.0；功能只有假說。 覆核 V104（2026-11-12）：limitations 加：「熱像用的是一隻覆沙放在保麗龍板上的標本（specimen），不是活體。」",
+      "author_cache": {
+        "file": "f101src/PMC11635292.txt",
+        "sha256_prefix": "bddd0016259388d7",
+        "raw_file": "f101src/PMC11635292.xml",
+        "raw_sha256_prefix": "b6d3ef7415da6a80",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；txt 為 JATS 以 python 去標籤轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12"
+    },
+    {
+      "id": "P74-S054",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10130904/fullTextXML",
+      "canonical_url": "https://doi.org/10.3762/bjnano.14.41",
+      "title": "The origin of black and white coloration of the Asian tiger mosquito Aedes albopictus (Diptera: Culicidae)",
+      "publisher": "Beilstein Journal of Nanotechnology 14:496–508（2023）；Rebora、Salerno、Piersanti、Kovalev、Gorb（義大利佩魯賈大學與基爾大學）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文）",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "全文：摘要、前言、結果、討論、方法",
+      "locator": "摘要；Results（光學顯微：浸油後白鱗變透明、黑鱗仍暗）；Results〈鍍膜〉段（金鈀 10 nm 後黑白差異幾乎消失）；Discussion 第 1、5 段（多次折射反射為白色主因）",
+      "summary": "白線斑蚊後腳跗節的白鱗與黑鱗，在 SEM、TEM 下的微奈米結構看不出明顯差別，差在黑鱗含深色色素（黑色素）。白鱗沒有色素，浸到折射率接近幾丁質的油裡就變透明；黑鱗浸油仍暗。鍍上 10 nm 金鈀後，黑白兩種鱗片的視覺差異幾乎消失。作者認為白色主要來自鱗片脊與小肋上的多次折射與反射，而且是隨角度變化的亮白。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "白色量了光譜，黑鱗沒有給反射數字；與 F101-S004、S005 同屬 Gorb 合作網絡；本題只用「同一種構造，有沒有色素決定黑或白」這一點。蚊子在此只當光學材料，不涉及防治或健康內容。",
+      "author_cache": {
+        "file": "f101src/PMC10130904.txt",
+        "sha256_prefix": "db9eb0a5cf3ad991",
+        "raw_file": "f101src/PMC10130904.xml",
+        "raw_sha256_prefix": "2f68c919dbea81a9",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；txt 為 JATS 以 python 去標籤轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12"
+    },
+    {
+      "id": "P74-S055",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12657505/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41467-025-65649-4",
+      "title": "Ultrablack wool textiles inspired by hierarchical avian structure",
+      "publisher": "Nature Communications（2025）；Jayamaha、Park、Shepherd（康乃爾大學 Shepherd 實驗室）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文）",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "全文：摘要、前言、結果與討論（顯微、化學、分光、FDTD、織物性質）、方法前段；補充資料未讀",
+      "locator": "摘要（總反射平均 0.13%、120° 範圍角度無關）；〈Visual and microscopic〉第 3 段（白羊毛蝕刻後顏色不變）；〈Spectrophotometric analysis〉第 1 段（L* 數列；UBW L* 0.50、植絨 1.06）、第 3 段（0.130% 對 0.274%；極樂鳥羽 0.97%）、第 4 段（植絨布角度不對稱）；Table 3（洗滌後 L* +4.13）",
+      "summary": "把白色美麗諾羊毛先用類黑色素的聚多巴胺（PDA）染黑，再用電漿蝕刻出奈米纖絲束：總反射率（400–700 nm 平均）0.13%，作者稱為目前報導最黑的布；市售超黑植絨布量得 0.274%。同樣條件的電漿蝕刻做在未染的白羊毛上，也長出奈米結構，但顏色沒有改變（L* 93.72 對 93.71）；只染不蝕刻的黑羊毛 L* 13.60，蝕刻 80 分鐘後 L* 0.69。作者把同一法量博物館的大掩月鳥（極樂鳥）羽毛，總反射 0.97%，但註明標本羽毛方向可能不是活鳥展示時的角度。新布在 120° 範圍內都很黑；植絨布某些斜角會明顯變亮。加速洗滌後 L* 升 4.13。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "作者自稱「最黑的布」以其文獻與市售比較為限；0.97% 是總反射，不能和 S001 的正向 0.05–0.31% 相比；這是工程材料，不給任何產品或穿著建議。 覆核 V104（2026-11-12）：summary 刪「大掩月鳥」種名，改「一件極樂鳥羽毛標本」。",
+      "author_cache": {
+        "file": "f101src/PMC12657505.txt",
+        "sha256_prefix": "d314fa70d2f41a98",
+        "raw_file": "f101src/PMC12657505.xml",
+        "raw_sha256_prefix": "0d0a14bbad2cdac6",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；txt 為 JATS 以 python 去標籤轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12"
+    },
+    {
+      "id": "P74-S056",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12285719/fullTextXML",
+      "canonical_url": "https://doi.org/10.1126/sciadv.adw5857",
+      "title": "Hidden white and black feather layers enhance plumage coloration in tanagers and other songbirds",
+      "publisher": "Science Advances 11:eadw5857（2025）；Price-Waldman、Ali、Shultz、Hogan、Stoddard（普林斯頓大學 Stoddard 實驗室等）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文）",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "摘要、前言、結果全部五節、討論前兩段；方法與補充資料未讀",
+      "locator": "Results 第 1 節（26 種 Tangara 雄鳥：胡蘿蔔素羽下皆白層、結構色羽下皆黑層；黑層峰值反射約 5%）；第 2 節（黑底使結構色飽和度升、亮度降，色相不變）；第 4 節（三個最二色性的黃斑：雌鳥羽下是黑層，雌雄羽枝本身光譜差不多）；第 5 節（16 科 34 個色塊；只有黑色素的鳥沒有這種分層）",
+      "summary": "唐納雀屬（Tangara）的彩色羽毛底下藏著一層看不見的白或黑：調查 26 種雄鳥，紅黃的胡蘿蔔素羽下一定是白層，藍紫的結構色羽下一定是黑層（黑層峰值反射約 5%）。把同一根羽毛放在白底或黑底上用三種方法量：白底讓胡蘿蔔素羽更亮；黑底讓結構色羽飽和度升高、亮度降低，色相不變。三個雌雄差最大的黃色斑塊，雄鳥黃羽下是白層、雌鳥是黑層；在同色底上比較，雌雄羽枝本身的黃幾乎分不出來，作者結論雌鳥較暗主要來自底下那層黑，而不是色素少。在 16 科 34 個色塊的鳴禽中也看到同樣的配對；只有黑色素的鳥沒有這種分層。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "博物館標本；雌雄差異只在三個黃斑塊最明顯，結構色斑塊的雌雄差多半不是黑白之分；不是超黑，黑層峰值反射約 5%。",
+      "author_cache": {
+        "file": "f101src/PMC12285719.txt",
+        "sha256_prefix": "e6827279f365e5bd",
+        "raw_file": "f101src/PMC12285719.xml",
+        "raw_sha256_prefix": "787fa132b63949f0",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；txt 為 JATS 以 python 去標籤轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12"
+    },
+    {
+      "id": "P74-S057",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6964691/fullTextXML",
+      "canonical_url": "https://doi.org/10.7717/peerj.8161",
+      "title": "Structure and pigment make the eyed elater’s eyespots black",
+      "publisher": "PeerJ 8:e8161（2020）；Wong、Marek（維吉尼亞理工大學）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文）",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "全文：摘要、前言、方法、結果、討論、結論",
+      "locator": "摘要（吸收 96.1%、收光角 24.8°）；Results 末兩段（眼斑 3.90%、白眼線 32.92%、亮殼 46.14%；三種蝴蝶 0.51–0.71%；45° 量 0.30–0.38%；鍍金屬後眼斑 10.38%、眼線 44.56%）；Discussion 第 1 段（剛毛間距約 10 µm，比蜘蛛大十倍）",
+      "summary": "北美眼紋叩頭蟲（Alaus oculatus）背上兩個假眼，由垂直豎起、內含類黑色素顆粒的剛毛組成。垂直量時眼斑反射 3.90%（作者說不算超黑），白色眼線 32.92%、亮面外殼 46.14%；同法量的三種超黑蝴蝶 0.51–0.71%。改在 45° 量，眼斑只有 0.30–0.38%。鍍上金屬遮住色素後，眼斑升到 10.38%（是未鍍的 2.66 倍），白眼線升到 44.56%，作者據此說眼斑的黑一部分來自結構、一部分來自色素。剛毛間距約 10 µm，比孔雀蜘蛛的構造大十倍。作者推測假眼用來嚇阻或警告捕食者，尚待野外實驗。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只量兩隻標本；功能是推測；「吸收 96.1%」是由垂直反射 3.9% 推得，不含穿透。 覆核 V104（2026-11-12）：limitations「只量兩隻標本」改為「選三隻做形態，反射量自其中兩隻；金屬鍍層是鉑鈀（Pt-Pd）」。",
+      "author_cache": {
+        "file": "f101src/PMC6964691.txt",
+        "sha256_prefix": "3263a539e38baebe",
+        "raw_file": "f101src/PMC6964691.xml",
+        "raw_sha256_prefix": "8a2bbe4a25ca678f",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；txt 為 JATS 以 python 去標籤轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12"
+    },
+    {
+      "id": "P74-S058",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5648565/fullTextXML",
+      "canonical_url": "https://doi.org/10.1126/sciadv.1700232",
+      "title": "Bioinspired phase-separated disordered nanostructures for thin photovoltaic absorbers",
+      "publisher": "Science Advances 3:e1700232（2017）；Siddique、Donie、Gomard 等、Hölscher（德國卡爾斯魯厄理工學院 KIT 與加州理工）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文）",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "摘要、前言、結果三節（蝶鱗分析、薄膜設計、製作）前段；製作後的量測細節、方法與補充資料只讀到摘要層級",
+      "locator": "摘要（積分吸收正向增 90%、大角度可達 200%）；Results 第 1 節第 2–3 段（尖端孔隙率約 59%、可見光吸收約 98%、比基部高 6%）；第 1 節第 5 段（比同體積平板積分吸收增 18%）",
+      "summary": "黑色紅珠鳳蝶（Pachliopta aristolochiae）的深黑鱗片，網孔佔面積（孔隙率）在鱗片尖端約 59%、可見光吸收約 98%，比孔隙率低的基部高 6%。模擬中，同樣多的吸收材料做成蝶鱗的形狀，比壓成平板的積分吸收多 18%，主要靠不規則排列的奈米孔。團隊照這個原理在非晶矽薄膜上用高分子相分離做出亂排奈米孔，積分吸收在正向增加 90%，大入射角時可達 200%。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "應用端是光吸收層的實驗室樣品，不是完成的太陽能電池效率；「+90% 到 +200%」是相對於未做孔的同材料。 覆核 V104（2026-11-12）：summary 改正 59% 的意思：霧面黑區平均孔隙率約 59%（暗淡黑區 37%）；圖說的 +59% 是尖端比基部高。",
+      "author_cache": {
+        "file": "f101src/PMC5648565.txt",
+        "sha256_prefix": "0077f0facef92032",
+        "raw_file": "f101src/PMC5648565.xml",
+        "raw_sha256_prefix": "4c25a6979763b0d4",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；txt 為 JATS 以 python 去標籤轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12"
+    },
+    {
+      "id": "P74-S059",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11813591/fullTextXML",
+      "canonical_url": "https://doi.org/10.1098/rsos.241905",
+      "title": "Does biofluorescence enhance visual signals in birds-of-paradise?",
+      "publisher": "Royal Society Open Science 12:241905（2025）；Martin、Carr、Sparks（美國自然史博物館等）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文）",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "摘要、前言；結果與討論中提到黑羽、超黑與對比的段落（以 black 關鍵字定位後讀整段）；方法未讀",
+      "locator": "摘要（45 種中 37 種核心極樂鳥有螢光）；Results 某段（黑與虹彩羽量不到螢光）；Discussion〈contrast〉數段（螢光區周圍常是超黑羽；求偶時張開黑羽襯托螢光口腔或羽毛）",
+      "summary": "檢查全部 45 種極樂鳥：核心類群 37 種（17 屬中的 14 屬）都有生物螢光，多在求偶展示會用到的羽毛、皮膚與口腔內，發綠到黃綠光；黑羽與虹彩羽都量不到螢光。作者描述多種雄鳥的螢光部位被超黑羽包圍，求偶時張開黑色披肩或翅膀，讓螢光區對比更強，據此認為螢光可能加強展示訊號。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "「超黑讓螢光更醒目」是作者的描述與推論，沒有測雌鳥的反應；本題只取「黑羽不螢光、螢光區被超黑包圍」兩點；研究群與 McCoy 群不同，但引用了 McCoy 2018。",
+      "author_cache": {
+        "file": "f101src/PMC11813591.txt",
+        "sha256_prefix": "38388822f42f5cac",
+        "raw_file": "f101src/PMC11813591.xml",
+        "raw_sha256_prefix": "c72de7f851ace62c",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；txt 為 JATS 以 python 去標籤轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12"
+    },
+    {
+      "id": "P74-S060",
+      "url": "https://www.nasa.gov/solar-system/nasa-eyes-highly-versatile-carbon-nanotube-technology-for-different-spaceflight-applications/",
+      "canonical_url": "https://www.nasa.gov/solar-system/nasa-eyes-highly-versatile-carbon-nanotube-technology-for-different-spaceflight-applications/",
+      "title": "NASA Eyes Highly Versatile Carbon-Nanotube Technology for Different Spaceflight Applications",
+      "publisher": "NASA 戈達德太空飛行中心（Lori Keesey，2018-05-10）",
+      "version": "NASA 官方網頁（2026-11-12 擷取）",
+      "read_via": "WebSearch（allowed_domains nasa.gov）結果連結，curl 預設標頭下載 HTML，python 去標籤",
+      "reading_scope": "全文（整篇文章本文）",
+      "locator": "〈Straylight Suppression〉段（吸收 99.8%；縫隙不吸光、電子把光轉成熱）",
+      "summary": "戈達德的奈米碳管塗層像一層直立的「地毯」；測試中吸收 99.8% 的入射光，所以看起來很黑。光進入奈米管森林後，管間的縫隙讓光彈不出來，但縫隙本身不吸光；光的電場激發碳管中的電子，把光變成熱。用途之一是吸收儀器內部亂彈的雜散光。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "機構新聞性質的官方頁；99.8% 未說明波段與量法；研究群與 S013 相同（Hagopian／戈達德），合計封頂。",
+      "author_cache": {
+        "file": "f101src/nasa_cnt.txt",
+        "sha256_prefix": "1dd12c35a985b534",
+        "raw_file": "f101src/nasa_cnt.html",
+        "raw_sha256_prefix": "4159d88418070158",
+        "note": "HTML 以 curl 存檔、python 去標籤成 txt；未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12"
+    },
+    {
+      "id": "P74-S061",
+      "url": "https://science.nasa.gov/science-research/science-enabling-technology/technology-highlights/carbon-nanotubes-and-the-search-for-life-on-other-planets/",
+      "canonical_url": "https://science.nasa.gov/science-research/science-enabling-technology/technology-highlights/carbon-nanotubes-and-the-search-for-life-on-other-planets/",
+      "title": "Carbon Nanotubes and the Search for Life on Other Planets",
+      "publisher": "NASA Science（2024-09-03）",
+      "version": "NASA 官方網頁（2026-11-12 擷取）",
+      "read_via": "WebSearch（allowed_domains nasa.gov）結果連結，curl 預設標頭下載 HTML，python 去標籤",
+      "reading_scope": "全文（整篇文章本文）",
+      "locator": "第 1–3 段（2007 年戈達德開發；99% 是空的；系外行星比恆星暗百億倍；日冕儀）；中段（變跡鏡與 Lyot 光闌塗奈米碳管、約 1380 °F 生長）",
+      "summary": "戈達德團隊 2007 年開發的多壁奈米碳管「森林」99% 是空隙，進去的光不被反射，而是搖動碳原子晶格中的電子變成熱。望遠鏡要看系外行星，行星比它繞的恆星暗約百億倍，必須用日冕儀擋掉星光；日冕儀裡的變跡鏡與 Lyot 光闌在需要的地方長上奈米碳管，吸走結構邊緣繞射來的雜散光。碳管要在華氏 1380–1382 度的爐中長出來，這也是把它做在鏡面上的難處；正為未來的「適居世界天文台」改良。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "官方科普頁；未給反射率數字；與 S012 同一研究群（戈達德 Hagopian），兩頁合計封頂；溫度以原文華氏為準。 覆核 V104（2026-11-12）：publisher／limitations 加：「奈米碳管日冕儀元件由 Hagopian 的公司 Advanced Nanophotonics 以 SBIR 經費開發；同頁溫度寫 1382°F 與 1380°F 兩種。」",
+      "author_cache": {
+        "file": "f101src/nasa_sci_cnt.txt",
+        "sha256_prefix": "97052992e0db1607",
+        "raw_file": "f101src/nasa_sci_cnt.html",
+        "raw_sha256_prefix": "163609d694da68d0",
+        "note": "HTML 以 curl 存檔、python 去標籤成 txt；未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12"
+    },
+    {
+      "id": "P74-S062",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4549356/fullTextXML",
+      "canonical_url": "https://doi.org/10.1186/s11671-015-1052-7",
+      "title": "An Ingenious Super Light Trapping Surface Templated from Butterfly Wing Scales",
+      "publisher": "Nanoscale Research Letters 10:344（2015）；Han、Li、Mu、Yang、Niu、Zhang、Ren（吉林大學仿生工程實驗室）",
+      "version": "出版社開放取用版（PMC 收錄 JATS 全文）",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "摘要、背景、方法、結果與討論前四節（含複製品反射量測）；之後的機制延伸討論未逐句讀",
+      "locator": "Results〈Macroscopic〉（黑翅 400–900 nm 反射低於 8%）；〈Microscopic〉（縱脊間距約 1.6 µm、似蜂巢網孔）；〈Light trapping mechanism〉（SiO2 負複製品平均反射約 20%，平板約 80%）",
+      "summary": "以紅頸鳥翼蝶（Trogonoptera brookiana）黑翅為模板：黑翅在 400–900 nm 的反射低於 8%，鱗片有間距約 1.6 µm 的縱脊與脊間的似蜂巢網孔。團隊用溶膠凝膠把鱗片形狀翻成二氧化矽負複製品（透明材料、沒有黑色素）：複製品平均反射約 20%，沒有這種結構的平板約 80%，只剩四分之一。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "摘要說「低於 10%」、內文說「低於 8%」，片中用內文；複製品是「負形」，不是原構造；文中「顏色來自結構而非色素」的溶劑測試很粗略，不採用。 覆核 V104（2026-11-12）：limitations 加：「同材料平板反射約 80%，量法未說明，對玻璃平板而言偏高。」",
+      "author_cache": {
+        "file": "f101src/PMC4549356.txt",
+        "sha256_prefix": "7347daee361ac9d3",
+        "raw_file": "f101src/PMC4549356.xml",
+        "raw_sha256_prefix": "3b5ca2bb907e356f",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；txt 為 JATS 以 python 去標籤轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12"
+    },
+    {
+      "id": "P74-S063",
+      "url": "https://scholars.duke.edu/publication/1452597",
+      "canonical_url": "https://doi.org/10.1016/j.cub.2020.06.044",
+      "title": "Ultra-black Camouflage in Deep-Sea Fishes（Duke Scholars 書目頁所附摘要）",
+      "publisher": "Current Biology 30(17):3470–3476（2020）；Davis、Thomas、Goetz、Robison、Johnsen、Osborn（杜克 Johnsen 群與史密森尼）",
+      "version": "只讀到書目頁上的摘要",
+      "read_via": "WebSearch 結果連結，curl 預設標頭下載 HTML；DOI 經 linkinghub 轉 cell.com 回 403（Just a moment 驗證頁），停止",
+      "reading_scope": "只讀到摘要（不算全文）",
+      "locator": "摘要",
+      "summary": "摘要：16 種、分屬 7 個目的深海魚演化出反射低於 0.5% 的超黑皮膚；黑色素體比其他魚大而橢圓，模擬預測形狀差異讓反射降一半以上；超黑能讓視覺捕食者的發現距離比 2% 反射的魚縮短 6 倍以上。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀到摘要，不立核心、不計條數；與 S003 同屬 Johnsen 群，即使讀到全文也在同群 2.0 封頂內。",
+      "author_cache": {
+        "file": "f101src/duke_sch.html",
+        "sha256_prefix": "e5e87ce5b7ecf2af",
+        "note": "Duke Scholars HTML 存檔；摘要在頁面文字中；未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-12"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P74-001",
+      "question": "出土的羅馬玻璃閃著金光、藍光，那是古人塗上去的嗎？",
+      "domain": "生活光學",
+      "mechanism_key": "materials.roman_glass_weathering_silica_nanolamella_bragg_mirror",
+      "answer_target": "不是塗料，是玻璃自己變出來的結構。2023 年研究一片在義大利阿奎萊亞城郊耕土裡、考古地表調查時撿到的羅馬鈉鈣玻璃（成分年代為西元前 1 世紀到西元 1 世紀）：表面蓋著毫米厚、金屬光澤的銹層，研究者估計裡面有遠超過一千層疏密交替的二氧化矽奈米層，每一疊像一面布拉格反射鏡（藍、綠、紅色碎片的高密度層各約 116、235、290 nm 厚）；單色碎片平均反射約 80%（以銀鏡為基準），金色碎片在波長 550 nm 以上反射 80–100%。銹層富矽、其他陽離子變少，作者解釋為玻璃網絡被溶解後、二氧化矽奈米粒再沉積排列而成。",
+      "scope": "單一碎片的個案；作者說它的有序度與層數比以往紀錄高，不說所有出土玻璃的虹彩都這麼整齊；形成條件（鹼性、pH 循環）是引用前人；埋藏多久、在什麼環境不明，原文只說是「數百年尺度」的腐蝕過程，不說「兩千年疊出來」。",
+      "source_ids": [
+        "P74-S001"
+      ],
+      "source_locator": "F90-S001 Results 第 1–4 段、Fig. 2 圖說與其後兩段、金色片段段落、LA-ICP-MS 段",
+      "premise_status": "screened",
+      "notes": "算 1.0（照作者）：同一碎片的結構、層數、反射率合一條；Omenetto／IIT 群合計 1.5。 原提案 F90-001（目標 F90-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V93（2026-11-12）改字後收；數字、單位、條件都在原文；改掉 payoff 的「兩千年慢慢疊出來」（碎片的製作年代不等於銹層形成時間，原文只說 centuries-long、埋藏史不明），「出土」補成耕土地表調查撿到；「鈉被溶走」改為原文的「富矽、其他陽離子變少」（低密度層的鈉訊號反而較強）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "古玻璃上的彩虹不是髒、不是漆，是玻璃在漫長埋藏裡自己排出的上千層小鏡子。",
+        "visual": "金色碎片特寫，鏡頭拉近到一疊疊奈米層的示意，最後疊回金色反光。",
+        "seconds": [
+          55,
+          70
+        ]
+      }
+    },
+    {
+      "id": "P74-002",
+      "question": "古玻璃的虹彩是顏料還是結構？泡水會怎樣？",
+      "domain": "生活光學",
+      "mechanism_key": "materials.roman_glass_patina_water_infiltration_color_shift",
+      "answer_target": "同一片羅馬玻璃的藍色銹片，乾的時候反射約 90%；滴水滲進去，反射光很快往紅色偏、強度變弱，水完全乾了又回到原來的顏色和亮度；整片泡在水裡時，可見光的干涉色被壓掉，銹片大多是透明的，也看不到本體玻璃的深綠色。銹層裡雖有微量的鐵等元素，但量少到不影響光譜，作者據此說顏色不靠發色團，而是層狀結構。",
+      "scope": "同一碎片；只說這片銹層的顏色來自結構，不推論到其他古玻璃。",
+      "source_ids": [
+        "P74-S001"
+      ],
+      "source_locator": "F90-S001 Fig. 3 圖說（F 部分）、注水段",
+      "premise_status": "screened",
+      "notes": "算 0.5：與 F90-001 同一研究、同一碎片，A 群合計 1.5（封頂 2.0 內）。 原提案 F90-002（目標 F90-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V93（2026-11-12）改字後收；逐句相符；只補「水乾後亮度也恢復」與「微量的鐵不影響光譜」的原文說法，避免寫成「鐵被溶光」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一滴水就能讓顏色變、乾了又回來，證明它是「結構色」。",
+        "visual": "示意動畫：銹片吸水、顏色滑向紅色、泡水變透明、乾燥恢復。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P74-003",
+      "question": "玻璃泡在水裡會一直被吃掉嗎？還是表面那層會自己踩煞車？",
+      "domain": "化學與溶液",
+      "mechanism_key": "materials.borosilicate_glass_passivating_layer_rate_drop_molecular_sieve",
+      "answer_target": "在特定的實驗室條件下會踩煞車。法國原子能署 2015 年把核廢料玻璃研究常用的參考玻璃 ISG，靜置泡在 90 °C、pH 7、一開始就飽和非晶二氧化矽的水裡一年：玻璃仍被腐蝕，但速度從最初幾小時約每天 500 nm，降到第 363 天約每天 0.1 nm，約降 3.7 個數量級。表面變質層是原地重新聚合的矽酸鹽網絡，像一張分子篩，只讓小於 1 nm 的分子通過（重水進得去，1 nm 的染料分子只進得了最外面 250 nm）。",
+      "scope": "90 °C、二氧化矽一開始就飽和、靜置的實驗室條件；參考玻璃，不是窗玻璃或古玻璃；片中不說核廢料玻璃安不安全、處置場可不可靠。與 Ballidon、教堂窗只能並列，且要說明條件不同：Ballidon 是二氧化矽未飽和的開放土丘（原文 under-saturated），不能說成「同一層殼到了野外失靈」。",
+      "source_ids": [
+        "P74-S002"
+      ],
+      "source_locator": "F90-S002 Results〈Glass still corrodes〉〈molecular sieve〉",
+      "premise_status": "screened",
+      "notes": "算 0.75（照作者）。 原提案 F90-003（目標 F90-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V93（2026-11-12）改字後收；數字與條件正確；scope 加上禁止核廢料安全評價與「與野外研究條件不同（矽飽和 vs 未飽和）」的明文，避免轉折三被寫成因果。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在實驗室裡，玻璃表面那層確實能把腐蝕慢到幾千分之一。",
+        "visual": "對數座標的速度曲線一路往下掉；分子篩示意：小水分子穿過、大染料分子卡在外面。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P74-004",
+      "question": "照那個「煞車後」的速度，玻璃要多久才會被吃掉一公分？",
+      "domain": "化學與溶液",
+      "mechanism_key": "materials.passivated_glass_residual_rate_centimeter_timescale_caveat",
+      "answer_target": "同一研究的作者用「速度不再下降」這個保守假設算了一筆：若一直維持第 363 天的每天 0.1 nm，在 90 °C 下腐蝕掉 1 公分要超過 25 萬年。但他們同時提醒，這次實驗沒觀察到、文獻中已知的反應——溶液裡長出會消耗矽的矽酸鹽礦物（黏土類、沸石等）——可能破壞這層保護、讓玻璃變得不那麼耐久。",
+      "scope": "作者在單一假設下的算式，不是觀測；只講這個實驗室條件；礦物破壞保護層是作者引用前人；不得延伸為核廢料處置安全評價。",
+      "source_ids": [
+        "P74-S002"
+      ],
+      "source_locator": "F90-S002 Discussion 第 3 段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：25 萬年是同一實驗速度的換算、礦物破壞是引用，新增的原研究事實有限。B 群合計 1.0。 原提案 F90-004（目標 F90-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V93（2026-11-12）改字後收；數字正確，但「矽酸鹽礦物破壞保護層」是引用前人、非本實驗結果，25 萬年是假設性算式，下修為 0.25；明寫不作安全評價。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「25 萬年」聽起來很穩，但附帶一個會讓煞車失靈的條件。",
+        "visual": "1 公分刻度尺旁的時間軸；旁邊冒出礦物晶體把薄層撐破的示意。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P74-005",
+      "question": "同樣埋在土裡五十年，哪種玻璃會被吃掉、哪種幾乎沒事？",
+      "domain": "化學與溶液",
+      "mechanism_key": "materials.ballidon_52yr_burial_glass_composition_durability_ranking",
+      "answer_target": "英國 1970 年在德比郡 Ballidon 採石場旁，用石灰岩碎石堆了一個土丘，埋進九種玻璃——照羅馬、中世紀和 Hangleton 古物成分「新做」的複製品，以及當時的平板玻璃、硼矽烤盤玻璃、光學玻璃等——2022 年（埋 52 年）挖出分析：平板玻璃與硼矽玻璃沒有可見的表面變質層，只有局部侵蝕；羅馬配方只有 1–3 µm，中世紀配方最多 50 µm，矽最少的 Hangleton 配方最多 1000 µm（約 1 mm，出現在靠近底下土壤、較潮濕的那一層）。耐久順序與實驗室短測一致，大致跟著二氧化矽含量走（中世紀配方 53.0 mol%、Hangleton 49.8 mol%，平板玻璃 72.0 mol%、硼矽玻璃 81.5 mol%）；唯一例外是 E 玻璃彈珠，野外沒變質、實驗室卻不算耐久。",
+      "scope": "九種都是 1970 年新做的複製品或當時產品，不是古物；一處鹼性、二氧化矽未飽和的土丘；1 mm 是最潮濕位置的最大值；作者提醒層厚不等於溶掉的玻璃量。",
+      "source_ids": [
+        "P74-S003"
+      ],
+      "source_locator": "F90-S003 前言第 1、4 段；Discussion〈Agreement…〉第 2、4 段",
+      "premise_status": "screened",
+      "notes": "算 0.75：同一實驗的配置與層厚排序合一條。Wareham 5、9 年資料是引用，不算。 原提案 F90-005（目標 F90-T1，原角色 hook；依本池欄位記為 segment）。非作者覆核 V93（2026-11-12）改字後收；數字逐句相符；補上「只有局部侵蝕」（原文不是完全沒事）、1 mm 出現在底層較潮濕處、硼矽玻璃 81.5 mol%，以及 E-glass 例外；明寫「新做的複製品」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一塊土裡五十年，有的玻璃毫髮無傷，有的長出一毫米的殼。",
+        "visual": "土丘剖面動畫，九片玻璃並排，旁邊長出不同厚度的變質層長條圖。",
+        "seconds": [
+          50,
+          65
+        ]
+      }
+    },
+    {
+      "id": "P74-006",
+      "question": "玻璃的風化層一條一條的，可以像年輪一樣數年份嗎？",
+      "domain": "化學與溶液",
+      "mechanism_key": "materials.glass_alteration_banding_tree_ring_hypothesis_ballidon",
+      "answer_target": "很誘人，但還不能直接當年輪。Ballidon 埋了 52 年的中世紀配方玻璃，研究者在幾張影像上目測數到 40–60 條條帶（依解析度和怎麼算一條而不同），在解析度最高、整層沒裂開的那張剖面上用影像軟體數到 50 個週期，接近埋藏年數；這 50 年間夏季平均溫度和各層厚度也都往上走。作者說在這種近地表、每年冷熱乾濕交替的地方，「年輪說」有幾分道理，但實驗室固定條件下偶爾也做得出類似的薄層，兩種解釋不互斥，他們不下定論；層會分離、後來的變化也會蓋掉早期紋路。",
+      "scope": "一件樣品、一張完整剖面的計數；作者明說不下定論。",
+      "source_ids": [
+        "P74-S003"
+      ],
+      "source_locator": "F90-S003 Results〈Alteration on Glass 2〉；Discussion〈Alteration chemistry and morphology〉第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.5。 原提案 F90-006（目標 F90-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V93（2026-11-12）改字後收；改正計數的說法：40–60 是多張影像目測的範圍，50 是最高解析度那張用 ImageJ 數的；「層厚趨勢跟夏季溫度」改為原文的兩者都隨年增加。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "五十年剛好五十條，看起來像年輪，研究者卻刻意不把話說死。",
+        "visual": "SEM 條帶示意，一條條點亮計數到 50，再出現實驗室燒杯也畫出條紋的對照。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P74-007",
+      "question": "玻璃外面長出那層殼，在野外能保護裡面的玻璃嗎？",
+      "domain": "化學與溶液",
+      "mechanism_key": "materials.ballidon_field_alteration_layer_not_protective_lab_underestimate",
+      "answer_target": "在 Ballidon 的土裡看起來不能。早先研究以為中世紀配方玻璃上的變質層有保護作用，但這次看到它從埋 30 年時約 20 µm 長到 52 年時約 50 µm，平均每年約 1 µm；研究者綜合野外與實驗室結果，認為 52 年間大致一直維持初始速度，那層因為大量裂縫或孔隙沒有提供顯著保護。另一種最不耐久的 Hangleton 配方，野外的層比實驗室用現場溫度、酸鹼度預測的厚約 5 倍；但作者認為這較可能是層在乾濕循環中分離、膨脹，又吸進土裡的鈣、磷等元素，而不是玻璃溶得更快——所以層有多厚，不等於玻璃少了多少。",
+      "scope": "一處鹼性、二氧化矽未飽和的土丘；5 倍是 Glass 3（Hangleton）的比較，不可套到中世紀配方；差距的原因是作者列出的可能解釋。與 F90-003 不同研究、不同條件（90 °C 矽飽和 vs 野外未飽和），片中並列，不寫成「同一層殼到野外失靈」。",
+      "source_ids": [
+        "P74-S003"
+      ],
+      "source_locator": "F90-S003 Discussion〈Agreement…〉第 6 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：主事實是 Glass 2 的 20→50 µm 與「沒有顯著保護」；5 倍那段改正後只是層厚≠溶解量的提醒，與 F90-005 scope 重疊。Ballidon 群合計 1.75（封頂 2.0 內）。 原提案 F90-007（目標 F90-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V93（2026-11-12）改字後收；作者把 Glass 3 的「實驗室預測小 5 倍」接到中世紀配方的 20→50 µm 後面，寫成同一件事，而且把作者用來解釋層膨脹的原因寫成「保護失效的原因」——兩段原文被接成因果。已拆開改寫並下修為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "實驗室裡會踩煞車的那層殼，在會下雨、會乾裂的土裡卻擋不住。",
+        "visual": "左右分割：左邊實驗室燒杯中速度曲線變平，右邊土丘裡殼層乾裂、水沿裂縫灌進去。",
+        "seconds": [
+          50,
+          65
+        ]
+      }
+    },
+    {
+      "id": "P74-008",
+      "question": "教堂彩繪玻璃沒泡在水裡，只是吹著潮濕空氣，也會被腐蝕嗎？",
+      "domain": "化學與溶液",
+      "mechanism_key": "materials.medieval_stained_glass_water_vapor_interdiffusion_isotope_tracer",
+      "answer_target": "會。兩塊 14 世紀彩繪玻璃（盧昂聖旺修道院教堂、埃夫勒聖母主教座堂）表面原本就有半徑 50–200 µm 的變質坑，或約 100 µm 厚的連續變質層；研究者讓它們吸含重氫、重氧的水氣，發現水氣會沿裂縫和孔隙一路走到未變質玻璃的界面，在那裡與玻璃中的鉀、鈣等交換（交互擴散）。算出的交互擴散係數（20 °C、相對濕度 70% 與 90% 時分別約 3.6×10⁻²⁰ 與 4.9×10⁻²⁰ m²/s）和只放 1–4 年的模型玻璃相近，作者的結論是：這層變質層擋不住水氣與交互擴散。",
+      "scope": "兩件樣品；實驗室重水氣暴露。",
+      "source_ids": [
+        "P74-S004"
+      ],
+      "source_locator": "F90-S004 摘要；Results 第 1 段；結論",
+      "premise_status": "screened",
+      "notes": "算 0.5。 原提案 F90-008（目標 F90-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V93（2026-11-12）改字後收；逐句相符；「50–200 µm 的坑」補成原文的「半徑」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "就算屋簷擋住了雨，空氣裡的水氣也一路鑽到玻璃深處。",
+        "visual": "彩繪窗的剖面放大，水氣分子沿裂縫往下走，在界面亮起。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P74-009",
+      "question": "一扇彩繪窗六百多年的風化，有多少是雨造成、多少是水氣？",
+      "domain": "化學與溶液",
+      "mechanism_key": "materials.stained_glass_650yr_rain_versus_vapor_alteration_budget",
+      "answer_target": "同一研究的作者把自己量到的水氣係數，和同群先前用含重氫的雨水量到的係數放在一起，再假設巴黎平均約 6% 的時間在下雨，用擴散定律估算一扇窗 650 年的帳：雨約貢獻 66 µm，水氣約 31–35 µm，合計約 100 µm，和古窗文獻中 50–200 µm 的實際厚度相符。這是作者的估算，不是一年一年量出來的；作者據此說，相對濕度對變質厚度的貢獻不能忽略。",
+      "scope": "Sessegolo 等人以 Fick 定律加巴黎降雨時數的估算（雨水係數來自同群另一篇），不是觀測；只說原文數字，不自行換算成「三分之一」「三分之二」，也不寫「不下雨時」。2023 年綜述的 700 年 138–204 µm 含任意設定的參數、作者只讀關鍵段，不入稿。",
+      "source_ids": [
+        "P74-S004",
+        "P74-S005"
+      ],
+      "source_locator": "F90-S004 第 5 頁右欄；F90-S005 第 3 頁左欄組成段、〈Kinetic modeling〉",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：F90-S005 只讀關鍵字附近、又是綜述加任意參數模型，0。LISA 群合計 1.0。 原提案 F90-009（目標 F90-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V93（2026-11-12）改字後收；必須寫成原作者的估算；作者在 payoff 與轉折一自行換算「三分之一／三分之二」並加上原文沒有的「不下雨時」，已刪；S005 只讀關鍵段，不計條數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "六百多年的風化帳：研究者估算雨約 66 µm、潮濕空氣約 31–35 µm。",
+        "visual": "一條 100 µm 的長條，被切成雨（藍）與水氣（灰）兩段。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P74-010",
+      "question": "有沒有天然玻璃泡在強鹼水裡幾千年還沒溶光？",
+      "domain": "化學與溶液",
+      "mechanism_key": "materials.volcanic_glass_4000yr_hyperalkaline_groundwater_slow_rate",
+      "answer_target": "有。菲律賓巴拉望一層沉積在約 4500 到 3400 年前之間的火山灰裡，流紋岩質火山玻璃到今天還在；現在那裡滲出的地下水 pH 約 11。作者推估，早期地下水混了海水、pH 約 9.5，約 2800 年前起才以 pH 約 11.2 的強鹼地下水為主。以顆粒大小與年代反推，玻璃的溶解速率最多約 10^-11.1 mol m⁻² s⁻¹，比強鹼下新鮮玻璃的初始速率慢至少 2.5 個數量級；因為地下水流得快、矽不會累積飽和，作者認為外面包的次生礦物較可能扮演保護膜。作者也說這個結果不容易套到成分、溫度、水流不同的系統。",
+      "scope": "天然火山玻璃；不是整整四千年都泡在 pH 11 的水裡；速率是上限估計；保護膜是作者推論；不延伸為核廢料處置評價。",
+      "source_ids": [
+        "P74-S006"
+      ],
+      "source_locator": "F90-S006 Site description；Discussion 第 3–4 段",
+      "premise_status": "screened",
+      "notes": "算 0.5。與 F90-007 結論方向相反，片中以「保不保護看環境」並列，不合併數字。 原提案 F90-010（目標 F90-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V93（2026-11-12）改字後收；作者寫「泡在 pH 約 11 的強鹼地下水中約四千年」與原文不符（pH 11.2 為主約從 2800 年前起，早期約 9.5）；已改正並補上作者自己的不可外推限制。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣是外殼，有的地方擋不住，有的地方擋了四千年。",
+        "visual": "火山灰層剖面，一粒氣泡壁形狀的玻璃碎片外面包著鬆鬆的礦物殼。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P74-011",
+      "question": "新做的彩繪窗，綠色琺瑯為什麼幾年就變褐？",
+      "domain": "化學與溶液",
+      "mechanism_key": "materials.modern_lead_rich_green_enamel_browning_lead_leaching",
+      "answer_target": "坎特伯里主教座堂彩繪玻璃工作室 2009–2014 年做的新窗，裝在兩座教堂和主教座堂後，幾年內綠色區塊出現褐色斑點和污漬；三處的共同點是都用了同一款 1980/90 年代供應的綠色透明琺瑯（現已停產）。分析看到綠琺瑯上長出兩層、合計約 3 µm：下層白色、上層是含鉛較高的褐層；作者提出三步機制：琺瑯裡的鉛離子溶出，先形成白色的鹼式碳酸鉛，再轉成深色的二氧化鉛。",
+      "scope": "單一款琺瑯（塗在玻璃上的低熔點彩色玻璃層，不是窗玻璃本體）、三個地點；機制是作者推論；不與古窗比耐久；不給修復或選購建議。",
+      "source_ids": [
+        "P74-S007"
+      ],
+      "source_locator": "F90-S007 摘要；前言第 4–9 段；Results 輪廓儀與 LIBS 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：單一產品、三處，且作者 Results 只以 grep 讀關鍵段。 原提案 F90-011（目標 F90-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V93（2026-11-12）改字後收；改掉原文沒有的「凡是用到…都出現」與「古窗還在、新窗幾年就壞」的比較；題目改成不暗示新舊比較；部分閱讀下修為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "幾百年的古窗還在，新窗的綠色卻幾年就變褐。",
+        "visual": "同一扇窗的綠色區塊由翠綠漸漸長出褐斑；側邊小圖示意鉛從琺瑯冒出。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P74-012",
+      "question": "博物館裡會「流淚」的老玻璃，只要放乾一點就好了嗎？",
+      "domain": "家用材料與清潔界面",
+      "mechanism_key": "materials.weeping_glass_surface_ion_mixture_deliquescence_range",
+      "answer_target": "沒那麼簡單。阿姆斯特丹大學等研究者擦下阿姆斯特丹國家博物館、漢堡博物館、康寧玻璃博物館 11 件「流淚」玻璃表面的液膜，用離子層析測出 5 種陽離子、8 種陰離子，主要是鈉、鉀、鎂、鈣與乙酸根、甲酸根、氯、硝酸根、碳酸根、硫酸根，比一般以為的複雜。1957 年 Organ 只依碳酸鉀，建議把這類玻璃放在相對濕度 42% 以下，近六十年沒有分析研究驗證；這些離子可能形成的化合物，潮解濕度從 11% 到 99% 都有，例如甲酸鉀只要約 16–17%，所以很難給一個保證不流淚的濕度，作者甚至說某些玻璃在某些環境下可能沒有這樣的濕度。",
+      "scope": "初步結果、11 件；作者說取樣程序仍待最佳化，器物間不直接比濃度；只講博物館研究結論，不給家中收藏或任何保存建議。",
+      "source_ids": [
+        "P74-S008"
+      ],
+      "source_locator": "F90-S008 摘要；前言第 2–3 段；〈Interpreting the analytical results〉第 2 段",
+      "premise_status": "screened",
+      "notes": "算 0.75。舊核心 H10006（玻璃病：鹼溶出、吸濕、早期薄層與後期細紋）講機制；本核心新增液膜成分與「42% 規則」的檢驗，不重算 H10006 已有句子。 原提案 F90-012（目標 F90-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V93（2026-11-12）改字後收；逐句相符；補齊離子種類與甲酸鉀 16–17% 的例子，scope 寫明不給保存建議。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "讓玻璃「不流淚」的濕度，不是一個數字就能說完。",
+        "visual": "玻璃杯表面的小水珠放大，浮出一個個離子符號，旁邊濕度刻度 11% 到 99% 一長條。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P74-013",
+      "question": "玻璃自己壞掉，會連累貼著它的金屬嗎？",
+      "domain": "化學與溶液",
+      "mechanism_key": "materials.glass_induced_brass_corrosion_potassium_leaching_heritage",
+      "answer_target": "會。比利時梅赫倫 16 世紀「封閉花園」聖髑祭壇裡有上百件黃銅小飾件，多數幾百年後仍近乎完好，只有少數嚴重腐蝕。研究者在這些黃銅表面一再找到常和鋅混在一起的鉀，但作者說光有鉀還不夠；他們用新的光熱紅外光譜在所有樣品上都看到鹼式甲酸銅——這種腐蝕產物在古金屬上極少見，除非金屬貼著風化的玻璃。作者引用前人的解釋：風化玻璃表面的鹼性液膜一方面溶解金屬，一方面把木頭等有機材料老化放出的甲醛轉成甲酸，最後沉澱成甲酸銅。",
+      "scope": "一批器物、少數樣品；本篇主旨是分析技術；機制引用前人，本篇提供的是這批器物的證據；作者只讀關鍵段，條數下修。",
+      "source_ids": [
+        "P74-S009"
+      ],
+      "source_locator": "F90-S009 前言第 3 段；Results 第 1–3 段與 O-PTIR 段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.75）：協調者裁定作者只讀關鍵字附近的來源不得以全文計；覆核者已逐段核對上列句子，若下一輪由作者逐段讀完可回 0.5。 原提案 F90-013（目標 F90-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V93（2026-11-12）改字後收；改正關鍵證據（鹼式甲酸銅＋甲醛來源），刪去「兩邊同樣的羧酸鹽」的過度簡化；只讀關鍵段，降為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一顆生病的玻璃珠，可以讓旁邊的黃銅爛掉。",
+        "visual": "祭壇上玻璃珠與黃銅亮片相貼，鉀離子從珠子流向亮片，亮片長出綠白色腐蝕。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P74-014",
+      "question": "兩千多年前中國的「琉璃珠」埋在墓裡，變色是怎麼回事？",
+      "domain": "化學與溶液",
+      "mechanism_key": "materials.warring_states_lead_barium_glass_weathering_copper_valence",
+      "answer_target": "陝西咸陽周陵何家村戰國秦墓 M686 出土的三顆綠色玻璃珠，屬中國古代特有的鉛鋇矽酸鹽玻璃，主要以二價銅著色。風化後表面主要長出碳酸鉛與硫酸鋇；剖面顯示鉛、鋇、硫持續從玻璃溶出，再和墓葬環境裡的物質反應；作者依墓土的元素分析判斷鋇比鉛更容易溶在水裡。風化同時伴隨銅從二價變成一價，作者用這點解釋顏色的改變。",
+      "scope": "三顆珠、一座墓；顏色解釋是作者根據 XPS 價態提出；作者只讀摘要與關鍵段，條數下修。",
+      "source_ids": [
+        "P74-S010"
+      ],
+      "source_locator": "F90-S010 摘要；前言第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：協調者裁定只讀關鍵字附近不得以全文計；若逐段讀完可回 0.5。 原提案 F90-014（目標 F90-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V93（2026-11-12）改字後收；內容與摘要相符；「琉璃珠」改為原文的玻璃珠；只讀關鍵段降為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "東方的古玻璃配方不同，壞的方式也不同：溶出的是鉛和鋇。",
+        "visual": "綠色環珠逐步覆上白黃色風化物；元素小方塊 Pb、Ba 從珠子裡飄出。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P74-015",
+      "question": "把水柱打在立起來或倒過來的板子上，水槽那一圈還會在同一個半徑嗎？",
+      "domain": "流體物理",
+      "mechanism_key": "fluids.circular_jump.orientation_independence_claim",
+      "answer_target": "劍橋 Bhagat 團隊 2017 年底的預印本：同一個噴嘴、每分鐘 1 公升的水柱，分別打在垂直板、從上方打水平板、從下方往上打水平板，剛形成的水躍半徑都約 26 mm；他們據此寫『重力在水躍形成時不起作用，只影響形成之後』。但同一篇也寫：垂直板上的水躍看得出不是正圓，重力有小影響，半徑是沿與重力垂直的方向量的；從下方打的半徑比垂直板略大。",
+      "scope": "劍橋是爭議一方；這是預印本（期刊版 JFM 851 R5 讀不到，期刊版與 2021 轉述提到的斜板實驗無法核對）。只講『剛形成的那一圈』，不說『板子怎麼轉都正圓』，不用 2026 年『almost exactly circular』的說法。",
+      "source_ids": [
+        "P74-S012",
+        "P74-S013"
+      ],
+      "source_locator": "F91-S001 §2 倒數第 4 段；F91-S002 §1 第 3 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（劍橋群封頂內，群合計 2.0）。原始預印本可讀，F91-NA001 的再入條件部分滿足：由轉述升為原文，但不增條數。 原提案 F91-001（目標 F91-T1，原角色 hook；依本池欄位記為 segment）。非作者覆核 V94（2026-11-12）改字後收；作者以為 2018 原文讀不到，只用後來論文轉述；其實作者自己第 61 次搜尋結果就列了 arXiv 1712.04255。原文讀出兩個要改的地方：垂直板上不是正圓（原作者自己承認重力有小影響、量半徑專挑與重力垂直的方向），量的是剛形成的初始水躍；四種方向中的斜板只見於轉述。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把板子轉 90 度、甚至倒過來，那一圈都不動。",
+        "visual": "廚房水槽俯拍一圈水環，切到示意圖：同一水柱打在水平、垂直、天花板三種板子，圈的大小一樣。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P74-016",
+      "question": "水躍外面那層厚水一直往外流、流到板子邊緣落下去，那一圈會不會被推著走？",
+      "domain": "流體物理",
+      "mechanism_key": "fluids.circular_jump.outer_film_does_not_move_jump",
+      "answer_target": "劍橋 2026 年預印本用染色吸光量水膜厚度：每分鐘 2 公升的水柱打到原本乾的壓克力板上，約 0.08 秒後水躍停在約 42 mm（之後量到 42.2±0.7 mm）；同一段時間外圈水膜從 0.1 秒的約 50 mm 擴到 0.5 秒的 64 mm、厚度由約 1.4 增到 3.0 mm，約 5 秒流過板緣，之後板上已沒有接觸線，水躍都沒有移動。作者說這表示外圈水膜不影響水躍半徑，也不支持 Duchesne 與 Limat 的接觸線解釋。",
+      "scope": "單一流量的單一次紀錄；預印本未經審查定稿；作者是爭議一方。『不支持』是原文用語，不寫成『推翻』。",
+      "source_ids": [
+        "P74-S013"
+      ],
+      "source_locator": "§4.1 第 1–6 段、圖 3–6",
+      "premise_status": "screened",
+      "notes": "算 0.5（同一實驗多個數字合計）；劍橋群封頂內。 原提案 F91-002（目標 F91-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V94（2026-11-12）改字後收；數字、單位、條件都在原文。只把『反駁』改成原文的『不支持』（provides no support），並寫明板子原本是乾的。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "外面的水怎麼變，裡面那一圈都不動。",
+        "visual": "時間軸動畫：0.08 秒定住的內圈，外圈一路擴張、加厚、流出板緣。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P74-017",
+      "question": "如果水環是重力決定的，跳的地方應該是水流速度剛好等於重力波速度；量出來是這樣嗎？",
+      "domain": "流體物理",
+      "mechanism_key": "fluids.circular_jump.weber_order_one_froude_large",
+      "answer_target": "劍橋 2026 年預印本用量到的水膜厚度與流量反推平均流速：水、水—異丙醇、水—甘油三種液體在多個流量下，水躍處的 Fr²（流速平方比重力波速平方）在 10 到 100 之間、各組差很多，沒有共同的 Froude 數；We（慣性比表面張力）卻每一組都約等於 1。模擬中只把表面張力從 0.010 調到 0.072 N/m，半徑由 42.7 縮到 25.3 mm；只改接觸角 0° 到 90°，五種情形半徑都約 27.5 mm。彙整 203 筆實驗與 19 筆模擬，表面張力公式貼合，重力比例式高估半徑。",
+      "scope": "作者自己說實驗刻意選在 Q*≫1（表面張力主導）的範圍，流量大很多時預期重力會起作用；流速是深度平均的反推值；彙整含他人資料；預印本，圖說仍有未定稿字樣，正式刊出後要重核。數字限本研究條件，不換算成家用水龍頭，不與印度團隊『廚房 F 約 1』並列。",
+      "source_ids": [
+        "P74-S013"
+      ],
+      "source_locator": "§4.3；§6 第 2–5 段；圖 15 圖說",
+      "premise_status": "screened",
+      "notes": "算 0.75（量測 Fr²/We 0.5＋兩項模擬控制 0.25）；劍橋群封頂內。 原提案 F91-003（目標 F91-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V94（2026-11-12）改字後收；數字都對。補上原文自己寫的選樣條件（Q*≫1）與『流量大時重力會回來』，避免觀眾以為這是所有條件下的結論；並註明預印本未定稿。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是在重力波追不上的地方跳，而是在表面張力撐不住的地方跳。",
+        "visual": "兩條曲線沿半徑往外降：Fr² 到跳處還很大，We 剛好掉到 1。",
+        "seconds": [
+          55,
+          70
+        ]
+      }
+    },
+    {
+      "id": "P74-018",
+      "question": "劍橋團隊說重力不重要，有沒有說在什麼情況下重力會回來？",
+      "domain": "流體物理",
+      "mechanism_key": "fluids.circular_jump.critical_flow_rate_gravity_returns",
+      "answer_target": "有。劍橋 2021 年論文算出一個臨界流量，超過它重力才明顯影響半徑：常溫水約 3060 cm³/s（約每分鐘 183 公升），表面張力約一半的界面活性劑水溶液約 807 cm³/s，作者說都遠大於一般水槽流量；但別人實驗用的三種矽油，臨界流量只有 2.6、5.8、13.3 cm³/s，實驗流量多半超過，作者自己也承認那些實驗裡重力有作用、會讓半徑比只算表面張力時小。",
+      "scope": "臨界流量是劍橋模型算出的值，不是量測；『遠大於水槽流量』是作者原話，片中不另外給家用流量數字。",
+      "source_ids": [
+        "P74-S012"
+      ],
+      "source_locator": "摘要；§4.2 第 1–3 段",
+      "premise_status": "screened",
+      "notes": "算 0.25（劍橋群封頂，群合計 2.0），照作者。 原提案 F91-004（目標 F91-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V94（2026-11-12）照原稿收；逐句相符；計數照作者 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "黏稠、表面張力低的液體或水量極大時，重力就回來了。",
+        "visual": "刻度條：水的臨界流量在很遠的右邊，矽油的在很近的左邊，實驗流量區塊標在中間。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P74-019",
+      "question": "在太空般的微重力裡打開水龍頭，水躍還會出現嗎？",
+      "domain": "流體物理",
+      "mechanism_key": "fluids.circular_jump.drop_tower_microgravity_cornell",
+      "answer_target": "會。康乃爾 Avedisian 團隊 1994–96 年在落塔裡做：水柱打在部分泡進水裡的玻璃板上，先在正常重力下建立水躍，再讓整套裝置自由落下約 1.2 秒（平均約地球重力的百分之一）。微重力下仍能建立穩定的圓形水躍，但直徑比正常重力時大，約 200 毫秒調整完；所有微重力實驗的下游都出現同心的毛細漣漪，跳的過渡變得比較緩；正常重力的半徑用既有公式預測得好，微重力的預測得不好，作者推測有一個在正常重力下被掩蓋的物理過程在微重力下變得重要。有些條件下水躍是進入微重力後才出現，直徑一直在變。",
+      "scope": "下游水深由把板子泡進水裡控制，不是水槽那種自由外流；只有約 1 秒；這是結案報告，期刊版（Avedisian & Zhao 2000）未讀到。重力值用報告自己的 1.1×10⁻²，不與劍橋寫的『約 2%』混用。",
+      "source_ids": [
+        "P74-S014"
+      ],
+      "source_locator": "摘要；§4；§5.1；§5.2；§6 結論 1–7",
+      "premise_status": "screened",
+      "notes": "算 1.0：獨立研究群的原始實驗，含存在、變大、200 ms、漣漪四項；康乃爾群封頂 2.0 內。 原提案 F91-005（目標 F91-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V94（2026-11-12）改字後收；數字都對；補上報告自己對『微重力預測不好』的解讀與『有些條件直徑一直在變』，讓這條不被讀成單純支持重力派或表面張力派。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "重力少了九成九，水環還在，只是變大、起了漣漪。",
+        "visual": "落塔示意：裝置放開瞬間，俯視水環從小圈擴成大圈、外面浮出一圈圈漣漪。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P74-020",
+      "question": "同一批微重力實驗，為什麼有人說水躍變大，有人說它根本沒動？",
+      "domain": "流體物理",
+      "mechanism_key": "fluids.circular_jump.same_microgravity_data_two_readings",
+      "answer_target": "康乃爾 1996 年的結案報告寫：在流量每秒 6.32 毫升、下游水深 4 mm 這一組，進入微重力後水躍直徑明顯變大，並把『微重力下直徑比較大』列為結論，說這符合既有公式『重力變小、直徑變大』的大方向，但數字對不上。劍橋 2021 年重讀同一計畫 2000 年期刊版裡、同樣是每秒 6.32 cm³、水深 4 mm 的一張圖，卻說水躍停在同一個位置、資料不支持期刊版『半徑略為擴大』的說法；劍橋也轉述期刊版作者曾推測表面張力可能是水躍的起因，並把微重力下仍有水躍當成重力不是主因的證據。",
+      "scope": "兩邊讀的是同一計畫、同一組條件，但不是同一份文件（1996 報告圖 8 對 2000 期刊版圖 3）；期刊版本輪讀不到，只能經劍橋轉述，所以只並陳兩種讀法，不判定誰對。不說『原作者的結論剛好相反』：康乃爾只說直徑變大，沒有說重力是水躍的成因，而且據劍橋轉述，期刊版作者自己也推測表面張力。",
+      "source_ids": [
+        "P74-S014",
+        "P74-S012"
+      ],
+      "source_locator": "F91-S003 §6 結論 2；F91-S001 §4.1 第 4–5 段",
+      "premise_status": "screened",
+      "notes": "算 0.25：新增的是康乃爾報告在同一條件下的明寫（康乃爾群合計 1.25）；劍橋的讀圖屬劍橋群，群已封頂 2.0，不另計。 原提案 F91-006（目標 F91-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V94（2026-11-12）改字後收；作者的敘述有兩處誤導：一是說兩邊讀的是『不同版本的資料與圖』，其實兩邊講的是同一組條件（6.32 cm³/s、水深 4 mm；1996 報告 §5.1 明寫這組直徑變大），作者漏讀這句，反而把可核對的地方寫弱了；二是 payoff『被當成決定性證據的那批實驗，原作者自己的結論剛好相反』不成立：康乃爾的結論是直徑變大，沒有主張重力造成水躍，劍橋還轉述期刊版作者推測表面張力。分歧只在『半徑變沒變』，所以轉折二不能靠這條撐，只能當補充。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "被當成決定性證據的那批實驗，原作者自己的結論剛好相反。",
+        "visual": "畫面一分為二：左邊康乃爾報告結論『larger in microgravity』，右邊劍橋論文『remains at the same location』，中間是同一張落塔示意。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P74-021",
+      "question": "在水躍裡滴一兩滴洗潔精，那一圈會變嗎？",
+      "domain": "流體物理",
+      "mechanism_key": "fluids.circular_jump.surfactant_expands_jump_mit",
+      "answer_target": "會。MIT 的 Bush 與 Aristoff 2003 年做了一個初步實驗：半徑 3 cm 的層流水躍，加 1–2 滴界面活性劑（市售清潔劑或超潤濕劑）後平順擴大約 20%，邊緣變得比較不陡；把水躍彎曲面上的表面張力力加進傳統的 Watson 理論後，理論與實驗的標準誤由 15% 降到 10%，最小的那些水躍半徑因表面張力最多小 30%。但他們的結論是：在地面實驗室，表面張力對半徑的修正一般很小，只在小而矮的水躍才明顯，在微重力下會大幅增強。",
+      "scope": "液體多為甘油水溶液、下游水深由外牆控制；界面活性劑實驗作者沒有深入。",
+      "source_ids": [
+        "P74-S015"
+      ],
+      "source_locator": "摘要；§3 第 2 段；§3 末；§4",
+      "premise_status": "screened",
+      "notes": "算 1.0；MIT 群封頂 2.0 內（與 F91-008 合計 1.75）。 原提案 F91-007（目標 F91-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V94（2026-11-12）改字後收；數字相符；只把『簡單實驗』改成原文的『初步實驗』，並寫明界面活性劑種類。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "洗潔精一滴，水環就大兩成；但同一批人當時仍說表面張力是小修正。",
+        "visual": "水槽俯拍，滴管滴一滴洗潔精，水環向外擴一圈。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P74-022",
+      "question": "水環一定是圓的嗎？",
+      "domain": "流體物理",
+      "mechanism_key": "fluids.circular_jump.polygon_clover_capillary_instability",
+      "answer_target": "不一定。MIT 團隊 2006 年用較黏的甘油水溶液、加深外圈水深，看到圓形水躍破成 3 到 10 邊的穩定多邊形，還有貓眼、領結、蝴蝶、三葉與四葉草；在一個平均半徑約 2 cm 的五邊形水躍裡加 1–2 滴界面活性劑（表面張力由 70 降到 40 dyn/cm），它擴大約 20% 並變回圓形，作者把破對稱解釋為表面張力造成的不穩定。丹麥 Bohr 等人 2012 年的模型，簡化版不計表面張力也能解出很像的多邊形，但完整模型裡圓形要在 Bond 數夠小（表面張力相對夠強）時才會不穩定。",
+      "scope": "多邊形需要較黏的液體與控制外圈水深，一般水槽看不到；『外圈超過 0.83 cm 就沒有水躍』只限 MIT 那一組參數；Bohr 模型只讀摘要與前言。不說『有不需要表面張力派』。",
+      "source_ids": [
+        "P74-S016",
+        "P74-S019"
+      ],
+      "source_locator": "F91-S005 摘要、§3、圖 6、§4；F91-S008 摘要",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 1.0）：MIT 部分 0.25（加界面活性劑擴大約 20% 已在 F91-007，本條只新增破對稱與形狀；MIT 群合計 1.25）＋Bohr 模型 0.25（只讀摘要，計入 Bohr／Duchesne 網絡，網絡合計 1.5）。這條回答的是『形狀』不是『重力還是表面張力決定半徑』，是題目的旁支。 原提案 F91-008（目標 F91-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V94（2026-11-12）改字後收；作者把 Bohr 2012 寫成『不計表面張力也解出多邊形』而 payoff 寫成『表面張力派與不需要表面張力派』，漏了同一段摘要的『完整模型在 Bond 數夠小時才不穩定』；0.83 cm 是單一參數組的值。與 F91-007 的 20% 擴大重疊，且只部分回答主問題，下修為 0.5，列為可刪。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "圓圈會折出角；連多邊形都有『表面張力派』與『不需要表面張力派』。",
+        "visual": "黏稠液體的三角形、方形、蝴蝶形水躍示意，滴一滴洗潔精後變回圓。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P74-023",
+      "question": "反方怎麼說劍橋的表面張力理論？",
+      "domain": "流體物理",
+      "mechanism_key": "fluids.circular_jump.dtu_rebuttal_laplace_pressure",
+      "answer_target": "丹麥技術大學 Duchesne、Andersen、Bohr 2019 年指出，劍橋的能量式裡新加了一項『表面能通量』卻沒有出處，與基本流體力學不合；照他們的推導，表面張力在薄膜裡只透過液面彎曲的拉普拉斯壓力起作用，還要乘上厚度對半徑比值的平方，影響遠小於劍橋所稱。他們也強調劍橋看的是外圈還在擴張的暫態，水躍位置一般取決於內外兩側流動，這類條件最多只能給半徑上限。",
+      "scope": "純理論批評、無新實驗；文中拿乙二醇水溶液剖面估黏性壓力約為毛細壓力 3 倍，是代入估算，片中不當量測講。",
+      "source_ids": [
+        "P74-S017"
+      ],
+      "source_locator": "摘要；§I；§V",
+      "premise_status": "screened",
+      "notes": "算 0.75；Bohr／Duchesne 網絡封頂 2.0 內（網絡合計 1.5）。 原提案 F91-009（目標 F91-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V94（2026-11-12）照原稿收；逐句相符，『3 倍』已依作者 scope 不當量測。注意劍橋 2026（F91-002）已針對『只看暫態』這點回應，兩條要前後接。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "反方說：劍橋多算了一項，表面張力沒那麼大。",
+        "visual": "兩條式子並列，反方在 We 項前面加上一個很小的係數。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P74-024",
+      "question": "兩派都有實驗支持，有沒有可能兩種水環其實是不同情況？",
+      "domain": "流體物理",
+      "mechanism_key": "fluids.circular_jump.two_scalings_two_situations",
+      "answer_target": "Duchesne 與 Limat 2022 年的看法是：沒有適用所有情況的單一比例律。Bohr 的重力比例律對應整片板都有流動外圈水膜的穩態水躍；劍橋那條表面張力比例律則出現在乾表面（可能是超疏水）、水柱打天花板，以及低黏度液體在部分潤濕表面剛形成水躍的暫態。他們說劍橋的實驗觀察有價值，但『多一項表面能』的解釋大概不對；臨界 Froude 數的問題仍未解，斜板上兩種比例律怎麼競爭也還待研究。劍橋 2026 年預印本回應：外圈接觸線移動、消失都沒讓水躍移動（F91-002），模擬中接觸角也不影響半徑（F91-003）。",
+      "scope": "比例律式子在 ar5iv 轉檔被剝除，片中只講結論；『劍橋 2018 量的正是乾板上剛形成的水躍』要寫成 Duchesne 與 Limat 的歸類，配劍橋預印本自己的『initial jump』用語，不寫成定論。HAL 版未逐段比對。",
+      "source_ids": [
+        "P74-S018"
+      ],
+      "source_locator": "摘要；§6 結論",
+      "premise_status": "screened",
+      "notes": "算 0.5；Bohr／Duchesne 網絡封頂內。 原提案 F91-010（目標 F91-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V94（2026-11-12）改字後收；內容相符。補上原文說劍橋『觀察有價值、解釋大概不對』的分寸與斜板一句；Duchesne 與 Limat 列的三種情境正好包含劍橋 2018 的方向實驗（乾板、天花板、剛形成），這是轉折二最硬的一句，但只能寫成他們的歸類。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "吵了八年，也許兩派量的根本是不同的水環。",
+        "visual": "分割畫面：左『整片板都濕的穩態』，右『乾板、天花板、剛打開的暫態』，各掛一條比例律。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P74-025",
+      "question": "表面張力能不能完全不靠重力就做出水躍？",
+      "domain": "流體物理",
+      "mechanism_key": "fluids.circular_jump.femtocup_gravity_free_submicron",
+      "answer_target": "印度 JNCASR 的 Govindarajan 團隊 2006 年寫：在廚房水槽，F 約 1、W 約 10–100，重力是關鍵、表面張力只是小修正；但到次微米尺度剛好反過來，理論上只靠表面張力就能形成水躍。他們用雷射燒蝕把熔融金屬微滴噴到基板上，在很窄的雷射能量與基板溫度範圍內凝固成外徑約 300 nm 到 10 µm、側壁約 100 nm、容量約 1 飛升的小杯，金、銀、銅、鈮、錫都做得出來，作者認為杯緣就是凍結的水躍。",
+      "scope": "預印本 v1；金屬杯是暫態凝固，作者自己說無法細部比對理論；『廚房 F~1、W 10–100』是 2006 年用噴流速度與半徑估的量級，且『表面張力只是小修正』引用的是他人結果（[5]），與劍橋 2026 量到的局部 Fr² 是不同研究、不同定義，不並列。",
+      "source_ids": [
+        "P74-S020"
+      ],
+      "source_locator": "第 1 段；式 (4) 後一段；實驗段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：『廚房尺度重力主導』那半句是量級估計加引用前人（與 F91-007 的 Bush 結論同向），新增的是次微米無重力水躍與金屬小杯；JNCASR 群合計 0.5。 原提案 F91-011（目標 F91-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V94（2026-11-12）改字後收；數字相符；下修理由是『表面張力只是小修正』是引用前人，不是本篇結果。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把水環縮到百萬分之一，它就變成金屬做的小杯子。",
+        "visual": "SEM 風格示意：一顆顆小金屬杯，旁邊標尺 1 µm。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P74-026",
+      "question": "水環為什麼被物理學家叫做『白洞』？",
+      "domain": "流體物理",
+      "mechanism_key": "fluids.circular_jump.white_hole_mach_cone",
+      "answer_target": "尼斯 Rousseaux 團隊 2011 年在矽油水躍裡，把一根針只插進內側薄膜表面，看它拖出的 V 形波（馬赫錐）：視野起點（靠近衝擊處）張角約 π/10，到水躍半徑四分之三處約 π/4，到水躍脊附近張成 90°。這表示表面波速度剛好在水躍處等於水流速度，外面的漣漪進不去內圈，像光的黑洞倒過來的『白洞』。他們看到的過渡是平滑的，與把水躍當震波的模型不同，作者說不確定是不是針造成的。",
+      "scope": "矽油、高黏度低表面張力；量的是可能含毛細修正的表面波速，原文明說不分是不是純重力波，這個實驗不能判定重力或表面張力誰決定半徑；不與劍橋的 Fr² 合併成同一例子。",
+      "source_ids": [
+        "P74-S021"
+      ],
+      "source_locator": "實驗段；圖 3、4 圖說",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）。本條不回答本題問題，覆核從長題 final_core_ids 移除，只留在池中當獨立核心。 原提案 F91-012（目標 F91-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V94（2026-11-12）改字後收；數字相符；『離中心越近 V 越尖』改成原文的『視野起點約 π/10』。本條與『重力還是表面張力』無關，從長題刪除以降低清單感。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水槽裡就有一個漣漪逃不進去的『白洞』。",
+        "visual": "針尖在薄水流上拖出 V 字，越往外 V 越開，到水環處變成一條橫線。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P74-027",
+      "question": "水柱打在天花板上，水會在哪裡掉下來？",
+      "domain": "流體物理",
+      "mechanism_key": "fluids.circular_jump.ceiling_jet_departure_radius",
+      "answer_target": "澳洲 Jameson 與 Sader 團隊 2010 年把水柱由下往上打在大片水平板底面：液體沿板底向外鋪開，到某個半徑突然離開板面落下，可能聚成包住空氣的『水鐘』。流量越大離開半徑越大；黏度大 100 倍，離開半徑約差 4 倍；表面張力降約 10%，離開半徑約大 3%；噴嘴大小看不出影響；70% 甘油在玻璃與鐵氟龍板上形成的水鐘尺寸沒有明顯差別。",
+      "scope": "量的是『離開板面』的半徑，原文沒有稱為水躍；劍橋 2018 把這組數據與自己的理論對照、2021 又說液體在水躍外因重力落下，兩種說法都是劍橋的解讀；Duchesne 與 Limat 把天花板情境歸入表面張力比例律是他們的歸類。",
+      "source_ids": [
+        "P74-S022"
+      ],
+      "source_locator": "摘要；§3.1",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）；只間接回答本題，覆核從長題 final_core_ids 移除。 原提案 F91-013（目標 F91-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V94（2026-11-12）改字後收；『玻璃或鐵氟龍板都看不出差別』原文是水鐘尺寸（dimensions of the bell），不是離開半徑；此外這條量的不是水躍，與主問題只間接相關，下修並移出長題。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "倒過來沖，水也在某一圈『決定』離開。",
+        "visual": "從下往上的水柱打在透明板底，水沿板底鋪開後在一圈處落下，形成鐘形水幕。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P74-028",
+      "question": "會用回聲「看」路的盲人，彈舌頭那一聲「喀」長什麼樣？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "echolocation_human.mouth_click_signature_beam",
+      "answer_target": "很短、偏高音、往前送。Durham 大學等 2017 年錄了三位盲人回聲定位專家的大量嘴部喀聲：每一聲約只有 3 毫秒，最強的頻率在 2–4 kHz，10 kHz 也還有能量；從嘴巴往前 60° 的錐形範圍裡音量大致一樣，角度再大就逐漸變小，降得比說話聲多。",
+      "scope": "三位專家；只讀摘要；不教怎麼彈舌；不提『先前報告 3–15 ms』。",
+      "source_ids": [
+        "P74-S024"
+      ],
+      "source_locator": "F92-S001 Abstract",
+      "premise_status": "screened",
+      "notes": "算 0.25（同作者）。只讀摘要，但這一句就是本篇的主要結果；Thaler 群封頂內。 原提案 F92-001（目標 F92-T1，原角色 hook；依本池欄位記為 segment）。非作者覆核 V95（2026-11-12）改字後收；數字、條件與原文一致；只把『Durham 大學』改成『Durham 大學等』（作者群跨伯明罕、北京理工等）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "原來「喀」不是隨便一聲，而是一道很短、往前送的高音脈衝。",
+        "visual": "頻譜圖＋從嘴巴往前張開的 60° 扇形，扇形外顏色漸淡。",
+        "seconds": [
+          40,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P74-029",
+      "question": "只靠彈舌的回聲，能聽出多小的距離差？東西在背後還聽得到嗎？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "echolocation_human.expert_distance_acuity_adaptive_clicking",
+      "answer_target": "比想像細得多，而且人會像蝙蝠一樣調整叫聲。Durham 大學測 8 位每天用喀聲回聲定位超過 3 年的盲人：參考距離 50 cm 時能察覺 3 cm 的變化、150 cm 時是 7 cm，與圓盤大小無關；反射越弱，喀聲越大、次數越多，兩者各自調整。另一個實驗把直徑 17.5 cm 的圓板放在 1 公尺外：正前方、45°、90° 都 100% 偵測到，135° 約 80%，正後方 180° 只剩猜測的 50%，作者以嘴部喀聲往前送的方向性解釋；角度越偏，喀聲越大聲、越多。再一篇測 9 位專家，目標偏 45° 時定位反而比正前方準，喀聲也較小聲。",
+      "scope": "三篇都只讀摘要；8–9 位專家、實驗室條件；偏 45° 較準的機制是作者的『可能』解釋，不說。",
+      "source_ids": [
+        "P74-S025",
+        "P74-S026",
+        "P74-S027"
+      ],
+      "source_locator": "F92-S002 Abstract；F92-S003 Abstract；F92-S004 Abstract",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：三篇都只讀摘要，依規定不算全文條數；回頭讀完三篇 Results 可回到 0.5（Thaler 群封頂內）。 原提案 F92-002（目標 F92-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V95（2026-11-12）改字後收；數字無誤；只讀摘要而下修。補『反射越弱』的兩項是各自調整。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "人不只是聽，還會依情況把「喀」打大聲、打多次。",
+        "visual": "圓板繞著人轉一圈，每個角度旁標正確率；喀聲波形依角度變大變密。",
+        "seconds": [
+          60,
+          75
+        ]
+      }
+    },
+    {
+      "id": "P74-030",
+      "question": "回聲定位是盲人才學得會的本事嗎？明眼人和盲人一起上 10 週課會怎樣？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "echolocation_human.training_blind_vs_sighted_10_weeks",
+      "answer_target": "明眼人也學得會，而且進步的幅度不輸盲人。Durham 大學讓 14 位明眼人（21–71 歲）與 12 位失明者（27–79 歲）上 10 週、20 次的喀聲回聲定位課：兩組都明顯進步，分辨大小的正確率平均由 .54 升到 .79，分辨方向由 .38 升到 .69；年齡與失明都沒有限制實作任務的進步幅度。有些任務明眼組反而較好（例如期末分辨大小 .84 對 .74），作者認為一部分可能是明眼組較年輕或雙耳聽力較好，但虛擬迷宮的碰撞次數差異把年齡算進去後仍在。上過課也不等於專家：每天使用十年以上的專家在更遠的 100 cm 做同一個大小任務，正確率仍較高。",
+      "scope": "小樣本；明眼組中位數 26 歲、盲人組 45 歲；不說『與專家相當』；不談追蹤調查的生活改善與任何復健建議；盲人組的『先天』不精確（部分為幼年診斷），改稱失明者。",
+      "source_ids": [
+        "P74-S028"
+      ],
+      "source_locator": "F92-S005 Abstract；§3.1.2、§3.1.3；§4 第 1–4 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）：一個訓練實驗兩個數字與一個組間結論。Thaler 群封頂內。 原提案 F92-003（目標 F92-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V95（2026-11-12）改字後收；刪掉『方向任務期末與專家相當』（專家在不同且更遠的距離受測，p=.057，審稿人明言不得如此比較）；『學得一樣快』改成原文的『進步幅度不受失明與年齡限制』；補上年齡無法解釋全部組差的反例；加上『上課≠專家』的條件。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "以為看不見才會，其實十週課後明眼人進步得一樣多。",
+        "visual": "兩條上升曲線（明眼、失明）幾乎貼在一起，終點旁放專家的灰點。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P74-031",
+      "question": "用回聲「看」東西的時候，大腦是用聽覺區還是視覺區？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "echolocation_human.calcarine_cortex_echo_processing",
+      "answer_target": "視覺區也加入了。2011 年讓兩位盲人專家（一位早期、一位晚期失明）在 fMRI 裡聽自己喀聲的錄音，有回聲比起去掉回聲的對照聲，兩人的距狀皮質（視覺區）活動都較多，聽覺皮質卻看不出差別；2019 年同群在盲人專家的初級視覺皮質裡找到按聲音位置排列、可與明眼人視覺圖直接比較的圖，越像的人回聲定位越好；2024 年上過 10 週課的盲人與明眼人合起來看，左右 V1 對回聲的反應都在訓練後增加。",
+      "scope": "2011 年只有 2 人、被動聽錄音；2019、2024 只讀摘要；2024 與 F92-003 同一批受試者；2024 兩組的結構變化不同，不說『明眼人的視覺區被改造』。",
+      "source_ids": [
+        "P74-S029",
+        "P74-S030",
+        "P74-S031"
+      ],
+      "source_locator": "F92-S006 Abstract；F92-S007 Abstract；F92-S008 Abstract",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：S007、S008 只讀摘要，S006 只有 2 人；讀完 S007／S008 Results 可回到 0.5（Thaler 群封頂內）。 原提案 F92-004（目標 F92-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V95（2026-11-12）改字後收；內容相符；只讀摘要而下修；補上 2024 年兩組結構分析不同的但書。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "聽回聲，大腦裡負責「看」的那一區也在忙。",
+        "visual": "腦的側視圖，後腦視覺區在「喀＋回聲」時亮起，聽覺區兩種聲音一樣亮。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P74-032",
+      "question": "回聲定位用到視覺區，那開著燈會不會反而干擾？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "echolocation_human.visual_light_interferes_echo_size",
+      "answer_target": "在明眼新手身上會。Durham 大學讓明眼新手一邊用喀聲判斷物體大小、一邊照一道不帶任何資訊的白光，判斷能力顯著下降；換成皮膚上的振動刺激就沒有影響（明眼人與 3 位盲人專家都沒有）；同一道白光也不影響判斷音量、音高、聲源位置的普通聽覺作業。",
+      "scope": "白光條件只測了明眼新手（22 人），盲人專家只做觸覺條件；『共用神經資源』是作者推論。",
+      "source_ids": [
+        "P74-S032"
+      ],
+      "source_locator": "F92-S009 Abstract",
+      "premise_status": "screened",
+      "notes": "算 0.25（同作者）。 原提案 F92-005（目標 F92-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V95（2026-11-12）改字後收；補上白光只測明眼人：不能說盲人專家也會被光干擾。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "照一道沒用的光，反而讓回聲判斷變差。",
+        "visual": "矇眼者前方一盞白燈閃亮，旁邊大小判斷的分數條變短；換成手臂振動時分數條不變。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P74-033",
+      "question": "回聲能讓人知道自己離牆多遠嗎？準到什麼程度？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "echolocation_human.virtual_corridor_ranging_threshold",
+      "answer_target": "可以，近的時候最準。慕尼黑大學用真實走廊的聲學響應做出虛擬走廊，6 位矇眼明眼人與 1 位盲人專家用自己嘴巴發出的聲音判斷離前牆遠近：參考距離 0.75–4 m 的辨別門檻都小於 1 m，0.75 m 時最好、約 20 cm；多加幾道早期反射影響不大；自由轉頭在複雜情境能幫忙。",
+      "scope": "虛擬聲學空間；只讀摘要；7 人。",
+      "source_ids": [
+        "P74-S034"
+      ],
+      "source_locator": "F92-S011 Abstract",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：只讀摘要；讀完 Results 可回到 0.5（Wiegrebe 群）。注意：本條說明『估距離是近處最準』，轉折一不能寫成『越近什麼都越差』。 原提案 F92-006（目標 F92-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V95（2026-11-12）改字後收；數字相符；只讀摘要而下修；本條本身是轉折一的反向條件，要寫進轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "聽回聲判斷離牆遠近，近處可以準到二十公分左右。",
+        "visual": "走廊俯視圖，人往前移，旁邊門檻條從 20 cm 慢慢變長。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P74-034",
+      "question": "靠近一面牆時，回聲為什麼反而會把人帶偏？轉身、轉頭有用嗎？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "echolocation_human.near_wall_bias_resolved_by_self_motion",
+      "answer_target": "有用，而且兩種動作各解一種錯。慕尼黑大學讓 8 位明眼人在虛擬走廊裡用自己發聲的回聲調整身體朝向：靠近一側牆時，每個人都往遠離那面牆的方向偏，平均 13.5°；作者認為是近牆較強的早期反射部分遮住了對側牆較晚的反射。允許整個身體轉動時這種系統偏差消失，但仍會前後搞混；再允許頭相對身體快速轉動，前後混淆就明顯減少。",
+      "scope": "虛擬聲學空間、直達聲未模擬：這裡的『遮蔽』是近牆反射遮對側牆反射，不是自己的喀聲遮回聲；8 人；遮蔽是作者解釋。",
+      "source_ids": [
+        "P74-S035"
+      ],
+      "source_locator": "F92-S012 Discussion 第 2–3 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：一個實驗三個條件，但轉折一用到的『遮蔽』只是作者解釋，且與題目宣稱的『自己的喀聲遮回聲』不是同一件事。Wiegrebe 群合計 0.75。 原提案 F92-007（目標 F92-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V95（2026-11-12）改字後收；補上原文 13.5° 與『偏離近牆』方向；釐清此實驗沒有模擬直達聲，不能拿來支持『自己的喀聲遮蔽回聲』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "站著不動會被近牆騙，轉身、轉頭各修掉一種錯。",
+        "visual": "俯視走廊，人靠左牆時估計的朝向箭頭歪向一邊；轉椅一轉箭頭回正，再轉頭時前後箭頭不再亂跳。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P74-035",
+      "question": "聽得出前面有東西，就一定知道它在左邊還右邊嗎？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "echolocation_human.detection_vs_localization_close_range",
+      "answer_target": "不一定，近的時候特別難。斯德哥爾摩大學讓 10 位沒經驗的明眼人頭部固定、聽喇叭放出的錄製喀聲，反射圓盤在 1–4.25 m 共 10 個距離：多數人『有沒有東西』比『在左還在右』做得好，最近的 1 m 與 1.7 m 最明顯，有幾人偵測不錯、左右卻接近猜測。作者指出這麼近時回聲在 10 毫秒內就緊跟著喀聲回來，這正是耳朵容易把後到聲音的方向『併』進先到聲音的時間範圍；另一個可能是，判斷『有沒有』可以靠整體變大聲（最近時約大 10 dB），判斷左右卻要比兩耳強度差的方向。",
+      "scope": "喇叭放的錄製喀聲、頭部固定、新手；不是自己發聲；三種解釋都是作者提出的可能，不寫成定論；不說『喀聲蓋住回聲』（近距離回聲其實比直達聲大）。",
+      "source_ids": [
+        "P74-S036"
+      ],
+      "source_locator": "F92-S013 Abstract；Discussion 第 1–4 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：主要對比 0.5；10 dB 是作者提出的三種解釋之一，不另計。Nilsson 群。 原提案 F92-008（目標 F92-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V95（2026-11-12）改字後收；作者把喇叭播放寫成『放錄製或播放』含糊帶過，題綱又把本篇當『自己的喀聲遮蔽回聲』的證據；原文近距離回聲比直達聲更大，作者的解釋是三選項並列，已改。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "以為越近越清楚，其實近到一個程度，只聽得出「有東西」。",
+        "visual": "左右兩個問號在近距離閃爍，遠一點才分得出箭頭方向；旁邊音量條近處高出一截。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P74-036",
+      "question": "用回聲分辨牆面是平的還是凹凸的，牆近一點比較容易嗎？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "echolocation_human.wall_texture_masking_by_direct_sound",
+      "answer_target": "在這個聆聽實驗裡，遠的反而容易一點。KU Leuven 讓 14 位沒經驗的明眼人用耳機被動聽合成的彈舌回聲，分辨平牆到樓梯狀等不同紋理：牆在 5 m 時的分辨分數平均 0.79，在 0.8 m 時 0.71；作者認為近距離時直接傳到耳朵的喀聲與反射重疊，蓋住了反射的資訊；把反射加強 6 dB 或拿掉直達聲，分辨都變好；主要線索是反射帶來的『音色染色』。作者也說，真正自己彈舌時，這種前向遮蔽可能小很多。",
+      "scope": "被動聆聽、虛擬合成；差距不大（0.79 對 0.71）；片中必須說作者的自發聲但書。",
+      "source_ids": [
+        "P74-S037"
+      ],
+      "source_locator": "F92-S014 Abstract；Conclusion「Distance」「Room impulse response configurations」；第 74 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）。Glorieux 群。 原提案 F92-009（目標 F92-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V95（2026-11-12）改字後收；補上兩個距離的實際分數，避免『分得好』誇大；保留作者自己的主動發聲但書。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "近處的回聲被自己的喀聲蓋住，遠一點反而聽得出牆面花紋。",
+        "visual": "兩面牆（平、樓梯狀）一近一遠，近處聲波和喀聲疊成一團、遠處分成兩段。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P74-037",
+      "question": "完全沒學過的明眼人，第一次彈舌能聽出距離嗎？在無響室會比較好嗎？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "echolocation_human.novice_depth_learning_room_reverb",
+      "answer_target": "一小時就開始聽得出，而且有回響的房間更準。義大利理工學院讓 18 位明眼新手判斷 5 根不同距離、張角相同的桿子：訓練約一小時、第二次測驗就高於猜測；在一般有回響的房間，判斷的準確度與精確度比無響室好，但答對比例兩室沒有顯著差別，進步幅度也相近；用舌頭彈或用手指彈出聲音，結果沒有差別。",
+      "scope": "18 人分四組；『回響房間較好』只在準確度與精確度；『用手打出』改為原文的手指彈（finger-snaps）。",
+      "source_ids": [
+        "P74-S038"
+      ],
+      "source_locator": "F92-S015 Abstract；Discussion 第 53–62 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（同作者）。Gori／Brayda 群。 原提案 F92-010（目標 F92-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V95（2026-11-12）改字後收；相符；『用手打出喀聲』改成原文的手指彈。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "安靜到沒回音的房間，不一定比較好學。",
+        "visual": "兩個房間並排：無響室牆上滿是尖錐，一般房間有回聲線；兩邊的落點散布圖，一般房間較集中。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P74-038",
+      "question": "學回聲定位，頭要不要動？誰學得比較快？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "echolocation_human.head_movement_attention_learning",
+      "answer_target": "在這個小實驗裡，完全不轉頭的人學不起來。拉德堡德大學讓 23 位明眼大學生學用回聲分辨大小：5 位全程沒轉頭的人，成績與猜測沒兩樣（因此被排除）；其餘 18 人的進步幅度，和持續、分配注意力測驗（PASAT）的成績正相關，與工作記憶、空間能力無關；有聲音時平均答對 63.2%。",
+      "scope": "相關研究；『轉頭是必要的』是作者由 5 人推出的說法，片中要說『在這個實驗裡』；不談誰適合學、不做篩選建議。",
+      "source_ids": [
+        "P74-S039"
+      ],
+      "source_locator": "F92-S016 Participants 第 17 段；Discussion 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）。Ekkel 群。刪『最大的進步出現在第四次』（細節，不入稿）。 原提案 F92-011（目標 F92-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V95（2026-11-12）改字後收；把『頭不動幾乎學不會』限定在本實驗 5 人；63.2% 是有聲音條件的平均。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不動頭的 5 個人都停在猜測水準。",
+        "visual": "23 個小人頭像，5 個僵直不動的灰掉；其餘頭像左右擺動。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P74-039",
+      "question": "看不見的人靠「障礙感」察覺前方的牆，走路時為什麼比站著準？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "echolocation_human.obstacle_sense_head_rotation_interaural",
+      "answer_target": "作者推測和走路時頭會微微轉、兩耳聽到的差跟著變有關。日本產總研與東京大學的研究讓全盲者判斷不會發聲的障礙物：能轉頭、用兩耳聽時定位較好；不能轉頭或只用一耳時，判斷偏向『有東西』。另一篇讓 5 位全盲男性判斷距離，走路比站著準，走路時頭部轉動的峰值約 2.78°–11.11°（平均 6.55°）；兩耳強度差的察覺門檻 1.28 dB 對應轉頭 9.17°，音色差門檻約 6.30°，作者推論強度差『可能』有貢獻、音色差可當線索。",
+      "scope": "『障礙感』是聽環境聲的被動回聲，不是彈舌；S018 只讀摘要、5 人；S017 未讀結果數字；兩篇的寫作目的都是行動訓練，片中完全不提訓練、輔具或建議。",
+      "source_ids": [
+        "P74-S040",
+        "P74-S041"
+      ],
+      "source_locator": "F92-S017 Abstract；§5；F92-S018 Abstract",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：S018 只讀摘要、S017 只讀摘要與結論。Miura／Ifukube 群。 原提案 F92-012（目標 F92-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V95（2026-11-12）改字後收；答案句『因為走路時頭會微微轉』把作者推論寫成定論，改為『作者推測』；只讀摘要而下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "走路時頭不自覺轉幾度，剛好讓兩耳聽出差別。",
+        "visual": "俯視人頭隨步伐左右擺 6°，兩耳旁音量條一高一低交替。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P74-040",
+      "question": "仿蝙蝠的回聲，什麼時候人才分得出形狀？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "echolocation_human.time_varying_echo_shape_identification",
+      "answer_target": "目標轉動、回聲跟著變的時候比較好分。日本研究者讓 15 位明眼人在手機上按一下，由喇叭放出仿蝙蝠的寬頻調頻聲（最高 41 kHz），用 1/7 大小的假人頭錄下回聲、降頻後以耳機聽：目標轉動時答對率中位數 62.5%（有回饋的練習）與 68.8%（沒回饋的測驗），靜止時兩者都是 56.3%；兩種條件的差別只在沒有回饋的測驗回合才顯著。多數人說自己聽的是回聲強弱、音色或音高隨時間的變化。",
+      "scope": "裝置發聲與降頻，不是嘴部喀聲；效果小；不說『靜止時分不出來』（練習回合 12/15 人在兩種條件都高於猜測）。",
+      "source_ids": [
+        "P74-S042"
+      ],
+      "source_locator": "F92-S019 Abstract；Discussion 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：作者把『靜止時不行』寫成結論，原文是差異小且只在測驗回合顯著；又不是彈舌，只能當『要動才聽得清』的旁證。Sumiya 群（與 Miura 群雖同屬 AIST，但不同研究所、兩篇作者無重疊，維持分群，對總數無影響）。 原提案 F92-013（目標 F92-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V95（2026-11-12）改字後收；『目標靜止時不行』與原文不符（靜止時多數人在練習回合也高於猜測），改用原文的中位數；非彈舌，降為旁證。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一張不動的回聲很難認，變化的回聲才說得出形狀。",
+        "visual": "兩個形狀在轉盤上轉，旁邊聲紋隨時間起伏；轉盤停住時聲紋變成一條直線。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P74-041",
+      "question": "東西朝你移動過來，用回聲會比較容易察覺嗎？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "echolocation_human.moving_reflector_perception_posture",
+      "answer_target": "在這個小實驗裡會。法國 Gipsa-Lab 讓 11 位矇眼、聽力正常的年輕人站在半無響室，旁邊有一塊可自動移動的反射板：反射板在動、尤其朝人靠近時，人對它的察覺比靜止時好。",
+      "scope": "只讀摘要；11 人；姿勢穩定那一半與題目無關，而且會滑向平衡、健康，不入稿。",
+      "source_ids": [
+        "P74-S043"
+      ],
+      "source_locator": "F92-S020 Abstract",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：只讀摘要，且只收察覺那一項。Termoz 群。可刪（見 drop_if）。 原提案 F92-014（目標 F92-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V95（2026-11-12）改字後收；只讀摘要、站姿穩定與題目無關，降為 0.25 並刪去姿勢那一半。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "動的東西比不動的好「聽」。",
+        "visual": "反射板滑向矇眼者，人腳下的重心軌跡圈變小。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P74-042",
+      "question": "彈一聲和彈十聲有差嗎？專家是一聲定勝負嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "echolocation_human.click_evidence_accumulation_eeg",
+      "answer_target": "專家是一聲一聲累積的。Smith-Kettlewell 研究所讓 4 位盲人專家與 21 位明眼新手聽 2–11 聲合成喀聲的虛擬回聲判斷左右：專家明顯較好，而且喀聲越多、門檻越低，符合跨多聲累積資訊；腦波從第一聲起就能解碼回聲在哪一側。",
+      "scope": "4 位專家；虛擬回聲；早晚期失明的差別只是 1 位對其餘 3 位，不入稿（不能用來說早期失明才學得好）。",
+      "source_ids": [
+        "P74-S044"
+      ],
+      "source_locator": "F92-S021 Abstract；Discussion 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：刪去 1 對 3 的早晚期失明比較。Teng 群合計 1.0。 原提案 F92-015（目標 F92-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V95（2026-11-12）改字後收；早期／晚期失明比較只有 1 位晚期失明者，不能當結果；刪去後下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "專家不是一聲就判斷，而是越聽越確定。",
+        "visual": "一串喀聲，每響一聲，左右判斷的指針就更穩地停到一邊。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P74-043",
+      "question": "用回聲「看」到的東西，清楚程度相當於什麼樣的視力？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "echolocation_human.echo_object_resolution_blur_equivalent",
+      "answer_target": "大約像看一張模糊的照片。Smith-Kettlewell 研究所讓人先用回聲探一個物體，再只用手從兩個裡摸出它：盲人專家對日常與陌生物體都高於猜測，明眼新手只有日常物體高於猜測；另一組 22 位明眼人看一張模糊照片後做同樣的觸摸配對，模糊程度約 σ 2.5°（約 5° 寬）時，成績與回聲組相當。",
+      "scope": "「相當於 5° 模糊」只是一種換算，作者說換物體或參數就會不同。",
+      "source_ids": [
+        "P74-S045"
+      ],
+      "source_locator": "F92-S022 Abstract；General discussion 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）。Teng 群。片中說『大約像看一張模糊照片』並帶出作者自己的但書。 原提案 F92-016（目標 F92-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V95（2026-11-12）照原稿收；相符。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "回聲裡的形狀資訊，大約等於一張很糊的照片。",
+        "visual": "一個茶壺照片逐步模糊，停在約 5° 寬的模糊時旁邊打勾。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P74-044",
+      "question": "沒學過回聲定位的盲人，用聲音繞過障礙會比矇眼的明眼人好嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "echolocation_human.blind_nonexperts_obstacle_circumvention",
+      "answer_target": "會。英國安格里亞魯斯金與劍橋的研究讓 10 位明眼人、8 位不會回聲定位的盲人與 1 位盲人專家，只靠聲音繞過一塊 0.6 × 2 m 的障礙：不會回聲定位的盲人比矇眼的明眼人碰撞較少、走得較快、速度修正較少、更早察覺障礙；那位專家用聽覺時和其他組差不多或更好；能用眼睛看時，表現遠比只用聽覺好。作者把盲人較好解釋為長期失去視覺後聽覺能力的增強。",
+      "scope": "只有 1 位專家；『聽覺代償』是作者詮釋；這組盲人『不會回聲定位』，所以這不是『每天用回聲定位』的證據，而是『長期只能靠聽覺』的證據。",
+      "source_ids": [
+        "P74-S046"
+      ],
+      "source_locator": "F92-S023 Abstract；Discussion 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（同作者）。Kolarik 群。轉折二必須照這個主詞寫。 原提案 F92-017（目標 F92-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V95（2026-11-12）改字後收；『專家和一般盲人差不多（但比明眼人好）』改回原文『similar to or better than』；並指出本篇不能支持『每天靠回聲定位』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "平常就靠耳朵的人，沒學過也比較會。",
+        "visual": "動作捕捉的走路軌跡：盲人組平順繞過，矇眼組軌跡曲折、撞上障礙的紅點較多。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P74-045",
+      "question": "用回聲估距離，也會把遠的估近嗎？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "echolocation_human.echo_distance_compression_material",
+      "answer_target": "會。英國研究者讓 11 位矇眼明眼人稍加練習後，用自己的喀聲估 30、60、90 cm 外鋁或泡棉物體的距離：估計值符合壓縮的冪函數（遠處被估近），斜率鋁 0.94、泡棉 0.71；材質主要影響估計的一致性。",
+      "scope": "只有 30–90 cm 三個距離；不說『壓縮得比較少』（那是與前人研究的比較）；摘要與討論對材質效果寫法不一致，只說『影響一致性』。",
+      "source_ids": [
+        "P74-S047"
+      ],
+      "source_locator": "F92-S024 Discussion 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：作者答案句『但壓縮得比較少』正是自己說不引的前人比較，刪去後只剩一組斜率。Kolarik 群合計 1.0。 原提案 F92-018（目標 F92-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V95（2026-11-12）改字後收；答案句違反作者自己的限制（拿前人斜率比較），已刪；剩下的發現很窄，下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "回聲裡的距離也會被壓扁，而軟的泡棉更難估。",
+        "visual": "鋁塊與泡棉塊在三個距離，估計點落在一條往下彎的線上，泡棉的點散得更開。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P74-046",
+      "question": "看不見的人都比較會回聲定位嗎？只看得到一點點的人呢？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "echolocation_human.total_blindness_vs_residual_vision",
+      "answer_target": "全盲者較好，還留有一點視力的人卻和明眼人差不多。波蘭羅茲工業大學在戶外讓 12 位盲人（7 位全盲、5 位有殘餘視力）與 14 位明眼人、都沒受過正式訓練，判斷 1 × 2 m 障礙物的方向與距離：全盲者顯著好過其他人，有殘餘視力的人與明眼人沒有顯著差別；表現最好的兩位全盲者說是長期自己摸索出來的。",
+      "scope": "分組人數少（7／5）；作者『視力沒全失就不必發展回聲定位』是推論，片中只說『可能』；不談任何訓練。",
+      "source_ids": [
+        "P74-S048"
+      ],
+      "source_locator": "F92-S025 Abstract；§4 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）。Bujacz 群。 原提案 F92-019（目標 F92-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V95（2026-11-12）改字後收；補上分組人數與『最好的兩位』，避免說成全盲者普遍自學。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是「看不見」本身，而是「每天都得靠它」。",
+        "visual": "三組長條：全盲、殘餘視力、明眼，第一條明顯較高，後兩條等高。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P74-047",
+      "question": "用來回聲定位的聲音，哪一種最好用？自己彈舌一定最好嗎？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "echolocation_human.best_emission_sound_3_4khz",
+      "answer_target": "3–4 kHz、頻譜寬的聲音最好，喇叭放的往往比自己發的好。同一個戶外實驗比較多種聲音：中心頻率約 3–4 kHz、頻譜寬的聲音最準，喇叭播的聲音大致比機械響板、彈舌、拍手這些自己發的好；明眼人用 3、4 kHz 的鼓聲最好，盲人組用藍噪音、粉紅噪音最好，噪音類卻被評為最不舒服。",
+      "scope": "戶外單一場地；不推薦任何產品、聲音或訓練方法；不提喇叭型號。",
+      "source_ids": [
+        "P74-S048"
+      ],
+      "source_locator": "F92-S025 Abstract；§4 第 2–3 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）。Bujacz 群合計 1.0。 原提案 F92-020（目標 F92-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V95（2026-11-12）改字後收；補上兩組最好的聲音不同。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最好用的聲音，偏偏是最難聽的。",
+        "visual": "各種聲音的頻譜並排，3–4 kHz 那一格標星號；噪音那格旁邊一張皺眉臉。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P74-048",
+      "question": "黑色羽毛還能「更黑」嗎？極樂鳥的黑到底有多黑？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "color.ultrablack_bird_of_paradise_reflectance",
+      "answer_target": "能。耶魯團隊量了 5 種極樂鳥求偶用的黑羽：用直射光、從正面量，只反射 0.05–0.31% 的光；親緣相近、一般黑羽的鳥是 3.2–4.7%，差了一到兩個數量級。作者寫這相當於直射光的 99.95% 被吸收，接近人造的超黑材料。",
+      "scope": "博物館標本、正向直射量法；「99.95%」只適用這種量法，不是任何角度（見 F101-003）。",
+      "source_ids": [
+        "P74-S049"
+      ],
+      "source_locator": "摘要；Results〈Reflectance spectra〉第 2 段；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.5：一組量測數字。McCoy 群（S001、S002）合計封頂 2.0。 原提案 F101-001（目標 F101-T1，原角色 hook；依本池欄位記為 segment）。非作者覆核 V104（2026-11-12）照原稿收；數字、單位、量法條件都在原文；0.5 條合理。研究群改併入「McCoy／Prum–Johnsen–Stoddard–Hölscher 合著網絡」（見 non_author_reviews），本核心在該網絡 2.0 封頂內。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一般的黑還會反光，極樂鳥的黑把幾乎所有直射光吞掉。",
+        "visual": "兩根並排的黑羽在同一盞燈下：一根看得到亮邊，一根像紙上挖了個洞；數字卡 0.05% 對 3%。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P74-049",
+      "question": "把極樂鳥的黑羽鍍上一層金，會變成金色嗎？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "color.ultrablack_gold_coating_test",
+      "answer_target": "一般黑羽會，超黑羽不會。研究者為電子顯微鏡替羽毛鍍金：一般黑羽鍍完變金色；超黑羽鍍完仍是黑的。因為超黑羽的羽小枝長滿小刺、朝羽尖傾斜約 30° 排成密陣列，中間是深約 200–400 µm、寬 5–30 µm 的腔，光進去要彈很多次，每彈一次被吃掉一些。作者說這是「結構吸光」的直接實驗證據。",
+      "scope": "鍍金只說明結構本身能讓表面變暗；羽毛裡仍有黑色素，不能說「超黑不需要色素」（見 F101-007、F101-012）。",
+      "source_ids": [
+        "P74-S049"
+      ],
+      "source_locator": "Results〈Feather microstructure〉第 1、3 段；Fig. 3c–d 說明",
+      "premise_status": "screened",
+      "notes": "算 0.5：一個實驗＋構造描述。同群。 原提案 F101-002（目標 F101-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V104（2026-11-12）照原稿收；逐句相符；scope 已寫「羽毛裡仍有黑色素」。0.5 條，網絡封頂內。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連金子都蓋不住的黑，代表黑的不是材料，而是形狀。",
+        "visual": "顯微照片：一般羽小枝平平的；超黑羽小枝像一排排捲起的乾橡樹葉；兩根鍍金羽毛並排。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P74-050",
+      "question": "極樂鳥的超黑，從哪個方向看都一樣黑嗎？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "color.ultrablack_directional_bias_viewer",
+      "answer_target": "不是。用積分球收集所有方向的反射，超黑羽只比一般黑羽低約 50%，表示從其他角度仍有反光（量測）。光線追蹤模擬顯示，不論光從哪裡來，超黑羽都把大部分光反射往羽毛基部方向，所以從羽毛末端那一側看最黑。作者把這和野外的求偶姿勢對照，提出假說：這種方向性讓雌鳥看到的正好是最黑的角度。同一種 Lophorina，展示用的披肩是超黑，背上不用來展示的羽毛只是一般黑。",
+      "scope": "積分球是量測；「末端方向最黑」是模擬；「對準雌鳥視角」是作者假說（We hypothesize），沒有測雌鳥看到什麼。",
+      "source_ids": [
+        "P74-S049"
+      ],
+      "source_locator": "Results〈Light-scattering simulations〉第 4–5 段；〈Feather microstructure〉第 2 段；Discussion 第 2 段",
+      "premise_status": "screened",
+      "notes": "算 0.5：方向性＋同一隻鳥兩種黑。同群。 原提案 F101-003（目標 F101-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V104（2026-11-12）改字後收；作者寫「作者指出這正好對應雌鳥看雄鳥的方向」，原文是 congruent＋We hypothesize，改成假說並標明模擬與量測各自的部分。0.5 條，網絡封頂內。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最黑的黑是「對準觀眾」的黑，換個角度就沒那麼神奇。",
+        "visual": "繞著一根超黑羽轉的鏡頭：某一側像黑洞，轉到另一側出現灰色光澤；雌鳥在樹枝上俯看的視線箭頭。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P74-051",
+      "question": "沒有羽毛的蜘蛛，也做得出超黑嗎？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "color.ultrablack_peacock_spider_microlens",
+      "answer_target": "做得出。兩種孔雀跳蛛的超黑區，在 30° 收光角下只反射 0.44% 與 0.35%；全身一般黑的近緣跳蛛是 4.61%。牠們的外殼長滿高約 6 µm、緊密排列的小凸起（微透鏡），其中一種上面還蓋一層刷狀黑鱗。模擬顯示凸起讓光在黑色素層裡走的路長 20%，實際尺寸剛好落在「表面少反射」與「多吸收」兩者的折衷最佳點附近。",
+      "scope": "標本保存在酒精；光程與最佳尺寸來自模擬。原文的「超黑緊鄰亮色、讓顏色更亮」是作者以感官偏好提出的假說，本文沒有做蜘蛛的知覺實驗，片中不得說成結果。",
+      "source_ids": [
+        "P74-S050"
+      ],
+      "source_locator": "Results 第 1、2、6–8 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同群封頂後只計 0.5；原可算 0.75）。McCoy 群合計 2.0 已滿。 原提案 F101-004（目標 F101-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V104（2026-11-12）改字後收；數字相符；補上「讓旁邊顏色更亮」只是假說的界線。與 S001 同第一作者，網絡封頂內 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "鳥用羽毛、蜘蛛用凸起，不同材料走到同一招。",
+        "visual": "孔雀跳蛛跳舞的插畫，鏡頭拉近到黑色區塊的一顆顆小饅頭凸起，光線箭頭在凸起間彈跳。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P74-052",
+      "question": "蝴蝶翅膀上的超黑，是同一種構造做出來的嗎？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "color.ultrablack_butterfly_trabeculae_diversity",
+      "answer_target": "不是同一種形狀，但是同一個原理。杜克團隊量了分屬 4 個亞科的 10 種蝴蝶黑斑，在 500 nm、垂直照射下只反射 0.06–0.4%，同屬較不黑的對照是 1–3%。鱗片上的孔洞有蜂巢形、長方形、V 形，大小也不同；共同點是陡峭的縱脊加上又粗又多的小梁（撐住上下層的小柱）。鍍金後有這些構造的鱗片仍黑，沒有的變亮。",
+      "scope": "方法逐種列出標本（看來每種一份），每份量翅面 3–5 個位置（圖說 n=3–5）；500 nm 單波長、垂直照射；內文 10 種 4 亞科，圖說寫 11 種 5 亞科，片中用內文並不強調種數。鍍金對照只在補充圖。原文同句的「超越極樂鳥」註明 unpublished data，不採用。",
+      "source_ids": [
+        "P74-S051"
+      ],
+      "source_locator": "Results〈Wing reflectance spectra〉；〈Scale nanostructure〉",
+      "premise_status": "screened",
+      "notes": "算 0.5。Johnsen 群（S003；S015 摘要同群不計）封頂 2.0。 原提案 F101-005（目標 F101-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V104（2026-11-12）改字後收；數字相符；補上原文內部種數不一致，並說明圖說的 n = 3–5 是翅面量測位置數，不是標本數。網絡封頂後此核心不增加條數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "形狀可以五花八門，只要讓光進得去、出不來。",
+        "visual": "四種鱗片孔洞的電子顯微圖並排（蜂巢、長方、V 形），下方標同一句「縱脊＋小梁」。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P74-053",
+      "question": "把蝴蝶鱗片裡的小柱拿掉，黑會差多少？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "color.ultrablack_butterfly_structure_removal_model",
+      "answer_target": "差很多。模擬中，完整鱗片比用同樣多吸收材料做成的兩片平板，反射低 14–40 倍；只拿掉小梁或縱脊，反射升高 3–16 倍，兩者都拿掉升 7–28 倍。反過來，從平板上去掉同樣體積的材料，反射最多只升兩倍——差別在形狀，不在材料多寡。",
+      "scope": "是 FDTD 模擬，不是實際拆鱗片；兩層鱗片疊在全反射白底上計算。",
+      "source_ids": [
+        "P74-S051"
+      ],
+      "source_locator": "Results〈FDTD modeling〉第 1–2 段；Fig. 3 說明",
+      "premise_status": "screened",
+      "notes": "算 0.5：同一組模擬的多個數字合計。同群。 原提案 F101-006（目標 F101-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V104（2026-11-12）照原稿收；逐句相符，scope 已寫是 FDTD 模擬。（圖說另寫 2.5–10%，與內文 14–40 倍是同一事實的兩種表達，不另計。）網絡封頂後不增加條數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣多的黑，排成迷宮就比攤成一片黑幾十倍。",
+        "visual": "動畫：一塊黑色平板變形成有柱有脊的鱗片，反射光的箭頭由粗變細；再拆掉小柱，箭頭又變粗。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P74-054",
+      "question": "如果結構這麼厲害，鱗片不用吸光的材料也能黑嗎？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "color.ultrablack_needs_absorber_refractive_index",
+      "answer_target": "不行。同一個蝴蝶鱗片模擬，材料完全不吸光（k=0）時，兩層鱗片疊在全反射白底上的反射接近 100%；k 只要到 0.06（黑色 Morpho 鱗片的值），反射降到約 1%。作者結論：不一定要黑色素，但一定要「很會吸光的材料」；黑色素特別高的折射率實部反而不是必要，實部比黑色素低更理想。",
+      "scope": "模擬結果；k=0.06 是作者引用的另一研究數值。",
+      "source_ids": [
+        "P74-S051"
+      ],
+      "source_locator": "Results〈FDTD〉第 4 段；Fig. 5",
+      "premise_status": "screened",
+      "notes": "算 0.5。同群；Johnsen 群合計 2.0。 原提案 F101-007（目標 F101-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V104（2026-11-12）改字後收；原意不變，但「不用黑色素也能黑嗎→不行」會被誤讀成「非黑色素不可」；原文說的是要強吸收材料、不必是黑色素。改題與答案。網絡封頂後不增加條數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "迷宮再好，也要有人在裡面把光吃掉。",
+        "visual": "同一個鱗片模型，材料從透明玻璃色漸變到深褐，旁邊反射率數字從 100% 一路降到 1%。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P74-055",
+      "question": "有全身都超黑的蝴蝶嗎？超黑通常長在哪裡？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "color.ultrablack_butterfly_borders_color_dimorphism",
+      "answer_target": "作者寫目前沒有已知全身超黑的蝴蝶，超黑斑都鄰接彩色、白色或虹彩斑（討論段改說「常常」）。在 Trogonoptera 與 Catonephele 兩屬，雄蝶是超黑、雌蝶的黑反射較高。這些超黑做在只有人造或其他天然超黑材料約五分之一厚的鱗片層裡。至於為什麼長在顏色旁邊，作者只提出假說：可能用來加強旁邊顏色的亮度與飽和度，本文沒有做知覺實驗。",
+      "scope": "「加強對比」是假說（We hypothesize／consistent with the hypothesis）；「總是鄰接」出自前言的假說句，討論段用 frequently；雌雄差只舉兩屬。",
+      "source_ids": [
+        "P74-S051"
+      ],
+      "source_locator": "Introduction 末段（沒有已知全身超黑的蝴蝶、超黑鄰接色塊）；Discussion 第 1、3 段",
+      "premise_status": "screened",
+      "notes": "算 0.5。同群，Johnsen 群合計 2.0 已滿。 原提案 F101-008（目標 F101-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V104（2026-11-12）改字後收；把「總是」與「frequently」並陳，功能明確標為假說。網絡封頂後不增加條數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "蝴蝶的超黑像畫框，總是框著顏色。",
+        "visual": "鳥翼蝶的翅膀：亮綠色帶被絲絨黑包圍；雄雌兩隻並排，雌蝶的黑多了一點灰。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P74-056",
+      "question": "很深的黑一定是拿來炫耀的嗎？有沒有用天鵝絨黑躲起來的動物？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "color.ultrablack_viper_velvet_camouflage",
+      "answer_target": "有反例，但牠不是「超黑」。西非加彭咽蝮蛻皮上的天鵝絨黑斑，表面是高約 30 µm 的葉狀突起、上面再覆約 600 nm 高的奈米脊；黑鱗反射中位數 10.8%、淺色鱗 26.7%（相對擴散白標準）。鍍上 15 nm 金鈀後，淺色鱗出現金屬光澤，黑鱗仍黑，反射中位數還降到 3.5%。作者依牠在林床的生活方式，把黑白高對比的斑紋解讀為偽裝，並自承這類功能推論都是推測。",
+      "scope": "兩隻個體的蛻皮；反射是相對擴散白標準，10.8% 遠高於極樂鳥、蝴蝶的 0.05–0.4%，片中稱「天鵝絨黑」不稱超黑；黑鱗散射在小於 40° 最強、角度越大越低，原文沒有「各個角度都低」；偽裝是生態推論，沒有捕食實驗。",
+      "source_ids": [
+        "P74-S052"
+      ],
+      "source_locator": "Results〈Morphology〉第 1、3 段；〈Optical〉第 1–3 段；Discussion 第 5、7 段",
+      "premise_status": "screened",
+      "notes": "算 0.75：鍍膜實驗＋角度＋構造。Gorb 網絡（S004–S006）合計封頂 2.0。 原提案 F101-009（目標 F101-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V104（2026-11-12）改字後收；刪「這種黑從各個角度看都低」（原文是低角度散射最強、高角度遞減）；這條蛇的反射中位數 10.8%，題目原寫「用超黑躲起來」會誤導，改為天鵝絨黑。條數 0.75→0.5（構造＋鍍膜一組，角度一項刪）。Gorb–Ren 網絡。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣的「把光困住」，蛇拿來消失在落葉堆裡。",
+        "visual": "落葉林床上的咽蝮花紋，黑斑像洞一樣深；並排鍍金鈀前後的蛻皮小片。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P74-057",
+      "question": "蚊子腳上的黑鱗與白鱗，差在構造還是色素？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "color.mosquito_scales_same_structure_pigment_switch",
+      "answer_target": "差在色素。白線斑蚊後腳的白鱗和黑鱗，在電子顯微鏡下的微奈米構造看不出明顯差別，黑鱗多了深色色素。白鱗沒有色素，浸到折射率接近幾丁質的油裡就變透明；黑鱗浸油仍暗。鍍上 10 nm 金鈀後，黑白差異幾乎消失。作者認為白色主要來自鱗片脊與小肋上的多次折射與反射。",
+      "scope": "只用到「同樣的鱗片構造，有色素是黑、沒色素是白」；黑鱗沒有量反射，原文沒說它是超黑；不涉及防治或健康。本題中屬可刪的旁支（見 drop_if）。",
+      "source_ids": [
+        "P74-S054"
+      ],
+      "source_locator": "摘要；Results〈光學顯微〉與〈鍍膜〉段；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.5。Gorb 網絡合計 1.75，未滿 2.0。 原提案 F101-011（目標 F101-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V104（2026-11-12）改字後收；逐句相符；補明黑鱗沒有反射數字、不是超黑。0.5 條，Gorb–Ren 網絡。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一種「多次反射」的構造，加了色素是黑，沒加是白。",
+        "visual": "同一片鱗片的兩個版本：透明的打亮成白，加了褐色顆粒就變黑；再一起泡油，白的消失、黑的留下。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P74-058",
+      "question": "只做出結構、不染黑，白色的羊毛會變黑嗎？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "color.ultrablack_wool_structure_without_dye",
+      "answer_target": "不會。康乃爾團隊用電漿在羊毛表面蝕刻出奈米纖絲束：未染的白羊毛蝕刻後也長出奈米結構，但顏色沒變（L* 93.72 對 93.71，100 是純白）。先用類黑色素的聚多巴胺染過的羊毛 L* 13.60，同樣蝕刻 80 分鐘後降到 0.69。顏色要「染料＋結構」兩樣都有才會超黑。",
+      "scope": "L* 是色度計明度，不是反射百分比；工程材料。",
+      "source_ids": [
+        "P74-S055"
+      ],
+      "source_locator": "〈Visual and microscopic〉第 3 段；〈Spectrophotometric analysis〉第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.75：對照實驗與數列。Shepherd 群。 原提案 F101-012（目標 F101-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V104（2026-11-12）照原稿收；逐句相符；白羊毛「也長出相似結構」有原文。0.75 條（對照實驗＋數列），康乃爾 Shepherd 群獨立。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "結構是放大器，沒有吸光的染料就沒有東西可放大。",
+        "visual": "四塊羊毛排成田字：白、白＋蝕刻、黑、黑＋蝕刻；只有右下角像被剪掉的洞。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P74-059",
+      "question": "人做得出比極樂鳥還黑的布嗎？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "color.ultrablack_wool_vs_flock_angle",
+      "answer_target": "作者說這塊蝕刻羊毛是目前報導裡最黑的布：400–700 nm 平均總反射 0.13%；市售超黑植絨布 0.274%。作者用同法量了一件極樂鳥羽毛標本，總反射 0.97%，但也寫標本羽枝的方向可能不像活鳥展示時那樣。新布在 120° 的傾斜範圍內反射加穿透都對稱地低；植絨布在某些斜角明顯變亮。代價：加速洗滌後 L* 升了 4.13。",
+      "scope": "0.97% 是總反射，不能和 F101-001 的正向 0.05% 比，片中不得說「布比極樂鳥黑」而不附條件；內文沒寫是哪一種極樂鳥（Fig. 1a 的大掩月鳥是 SEM 圖，不是這個量測），不寫種名；「最黑的布」以作者比較範圍為限；不給產品建議。",
+      "source_ids": [
+        "P74-S055"
+      ],
+      "source_locator": "摘要；〈Spectrophotometric〉第 3–4 段；Table 3",
+      "premise_status": "screened",
+      "notes": "算 0.5。Shepherd 群合計 1.25。 原提案 F101-013（目標 F101-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V104（2026-11-12）改字後收；作者把 0.97% 寫成「大掩月鳥」：內文只寫 bird-of-paradise plumage，種名是從 Fig. 1a 推的，刪；120° 指 %TR。0.5 條，Shepherd 群合計 1.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "人工超黑追上了鳥，但要洗得起還是難題。",
+        "visual": "手電筒從正上方與斜 60° 照五塊布；植絨布斜照時亮起一片，羊毛仍暗。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P74-060",
+      "question": "鮮豔的羽毛底下，藏著什麼顏色？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "color.hidden_achromatic_feather_layers_tangara",
+      "answer_target": "藏著一層白或黑。普林斯頓團隊檢查 26 種唐納雀雄鳥：紅黃的胡蘿蔔素羽底下一定是白層，藍紫的結構色羽底下一定是黑層。把同一根羽毛放在白底或黑底上量：白底讓紅黃更亮；黑底讓藍紫飽和度升高、亮度降低，色相不變。在 16 科 34 個色塊的鳴禽裡也看到同樣配對；只有黑色素的鳥沒有這種分層。",
+      "scope": "黑層峰值反射約 5%，不是超黑；博物館標本。",
+      "source_ids": [
+        "P74-S056"
+      ],
+      "source_locator": "Results 第 1、2、5 節",
+      "premise_status": "screened",
+      "notes": "算 0.75。Stoddard 群。 原提案 F101-014（目標 F101-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V104（2026-11-12）照原稿收；逐句相符（白底亮紅黃、黑底提高藍紫飽和度並降亮度、色相不變有 Results 支持）。0.75 條，但 S008 共同作者 Shultz 與 McCoy 合著兩篇（Sci Rep 2021、Ecol Evol 2023），通訊作者 Stoddard 與 Prum 合著（Am Nat 2008 等），併入網絡，封頂後不增加條數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "顏色的鮮豔，一部分是底下那層黑幫的忙。",
+        "visual": "把羽毛一片片掀開的特寫：藍色羽尖下露出一截黑、黃色羽尖下露出一截白。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P74-061",
+      "question": "唐納雀的母鳥顏色比較淡，是因為色素比較少嗎？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "color.hidden_black_layer_female_dullness",
+      "answer_target": "在三個雌雄差最大的黃色斑塊上，主要不是。雄鳥黃羽底下是白層、雌鳥是黑層；把雌雄的黃色羽枝放在同樣的黑底上量，幾乎分不出來。作者認為雌鳥看起來較暗，主要來自底下那層的顏色，而不是胡蘿蔔素多寡；雌鳥羽毛上著色的部分也比較短，讓底層更露出來。",
+      "scope": "只限 Tangara 三個黃斑塊（另兩個黃斑塊差異較小）；結構色斑塊雌雄的底層都是黑；原文用 suggest。本題中屬旁支（見 drop_if）。",
+      "source_ids": [
+        "P74-S056"
+      ],
+      "source_locator": "Results 第 4 節；Discussion 第 2 段",
+      "premise_status": "screened",
+      "notes": "算 0.5。Stoddard 群合計 1.25。 原提案 F101-015（目標 F101-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V104（2026-11-12）改字後收；答案補上「同黑底比較」條件與 suggest 語氣。0.5 條，網絡封頂後不增加。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣的黃，墊白就亮、墊黑就暗。",
+        "visual": "兩根同樣黃的羽尖，一根擺在白紙、一根擺在黑紙上；再換成雌雄鳥的照片。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P74-062",
+      "question": "叩頭蟲背上的「假眼」那麼黑，是結構還是色素？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "color.eyed_elater_eyespot_structure_plus_pigment",
+      "answer_target": "兩者都有。北美眼紋叩頭蟲的假眼由豎起、內含類黑色素的剛毛組成。垂直量反射 3.90%，作者說不算超黑；改在 45° 量只有 0.30–0.38%。鍍上鉑鈀遮住色素後，假眼的反射升到 10.38%（未鍍的 2.66 倍），白色眼線升到 44.56%——原文說這是在量「結構那一份」的吸光。",
+      "scope": "反射量自兩隻個體（共選三隻做形態）；鍍的是鉑鈀；功能（嚇阻或警告）是推測，不放進答案。原文「剛毛間距約 10 µm、蜘蛛約 1 µm」與 S002 量到的蜘蛛凸起高約 6 µm 尺度不同，兩篇不並列，片中不講「大十倍」。",
+      "source_ids": [
+        "P74-S057"
+      ],
+      "source_locator": "摘要；Results 末兩段；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.75。Marek 群。 原提案 F101-016（目標 F101-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V104（2026-11-12）改字後收；作者 payoff 寫「鍍金之後還保留一半的黑」原文沒有，且鍍的是鉑鈀；「比孔雀蜘蛛的構造大十倍」與 S002 的 6 µm 數字衝突，刪。條數 0.75→0.5。Marek 群獨立。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "鍍金之後還保留一半的黑，就是結構的份。",
+        "visual": "叩頭蟲背面特寫，兩個白框黑眼；鍍金屬後的同一塊在不同角度旋轉。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P74-063",
+      "question": "人造的超黑材料，光是怎麼被吃掉的？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "color.carbon_nanotube_forest_absorption",
+      "answer_target": "NASA 戈達德發展的奈米碳管塗層像一片直立的「森林」：管與管之間 99% 是空的，光進去彈不出來；但縫隙本身不吸光，是光的電場推動碳管裡的電子，把光變成熱。NASA 的頁面寫它能吸收照到的光的 99.8%（頁面沒說明波段與量法）。",
+      "scope": "99.8% 出自 NASA 官方新聞頁，未說明波段與量法；「99% 是空的」出自 S013，不是 S012。",
+      "source_ids": [
+        "P74-S060",
+        "P74-S061"
+      ],
+      "source_locator": "S012〈Straylight Suppression〉；S013 第 2 段",
+      "premise_status": "screened",
+      "notes": "算 0.5。戈達德 Hagopian 群（S012、S013）合計封頂。 原提案 F101-017（目標 F101-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V104（2026-11-12）改字後收；作者寫「測試中它吸收 99.8%」原文無「測試中」；兩個句子分屬兩頁，標清楚。0.5 條，NASA 官方頁按委託人指示計數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "和蝴蝶同一招：先留住光，再交給吸收材料。",
+        "visual": "動畫：光子鑽進一片直立的碳管森林，越彈越暗，最後變成一縷熱。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P74-064",
+      "question": "天文學家為什麼需要這麼黑的東西？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "color.carbon_nanotube_coronagraph_stray_light",
+      "answer_target": "為了在恆星旁邊找行星。系外行星的恆星比行星亮約一百億倍，望遠鏡要用日冕儀擋掉星光；變跡鏡與 Lyot 光闌上，只在預測有雜散光的地方長出奈米碳管，吸掉從結構邊緣繞射出來的光。這套做法是 Hagopian 的公司 Advanced Nanophotonics 以 NASA 小企業創新研究經費改良，交給多個研究單位測試，目標是未來的適居世界天文台。碳管要在約華氏 1380 度的爐中長出，鏡子要能耐熱又保持平整，是主要難題。",
+      "scope": "溫度原頁同時寫 1382°F 與 1380°F，照原文寫「約華氏 1380 度」不換算；未給成效數字。「遮住恆星才能拍行星」與池中 N075 同前提，本核心只新增「用奈米碳管吸雜散光」一點。",
+      "source_ids": [
+        "P74-S061"
+      ],
+      "source_locator": "S013 第 2–4 段與中段",
+      "premise_status": "screened",
+      "notes": "算 0.5。同群合計 1.0。 原提案 F101-018（目標 F101-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V104（2026-11-12）改字後收；補上執行者是 Hagopian 的公司（SBIR），不是單純「NASA 在日冕儀上…」；與 N075（日冕儀遮主星）前提重疊，只計新增部分 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最黑的黑，是用來看見最暗的光。",
+        "visual": "恆星強光旁一顆小點；鏡內的黑色圖案像剪紙一樣只長在特定位置。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P74-065",
+      "question": "黑蝴蝶的鱗片，能讓太陽能板吸更多光嗎？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "color.butterfly_black_scales_thin_absorber",
+      "answer_target": "在實驗室的吸光層樣品上可以。紅珠鳳蝶霧面黑區的鱗片，孔洞平均約佔 59%（較不黑的區域 37%）；同一片鱗片孔最多的尖端，可見光吸收約 98%，比孔少的基部高 6%。模擬中，同樣多的材料做成鱗片形狀，比壓成平板多吸收 18%。KIT 等團隊照這個原理在氫化非晶矽薄膜上做出亂排奈米孔，積分吸收在正面照光時相對增加 90%，大角度斜照時可達 200%。",
+      "scope": "吸光層樣品，不是完整電池效率；增幅相對於未做孔的同材料。本題中屬應用旁支（見 drop_if）。",
+      "source_ids": [
+        "P74-S058"
+      ],
+      "source_locator": "摘要；Results 第 1 節第 2–5 段",
+      "premise_status": "screened",
+      "notes": "算 0.75。KIT 群。 原提案 F101-019（目標 F101-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V104（2026-11-12）改字後收；作者把「霧面黑區平均孔隙率 59%」與「尖端比基部高約 59%」混成「尖端網孔約佔 59%」，改正。條數 0.75→0.5；S010 通訊作者 Hölscher 與共同作者 Gomard 都與 Johnsen 合著（Beilstein J Nanotechnol 2017、Bioinspir Biomim 2023），併入網絡，封頂後不增加。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "蝴蝶的黑，連斜射的光都不放過。",
+        "visual": "黑蝶翅的鱗片從尖到根，孔洞由密變疏；旁邊一片薄矽膜被打出相似的亂孔。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P74-066",
+      "question": "極樂鳥身上會螢光的亮色，旁邊是什麼？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "color.bird_of_paradise_fluorescence_super_black_border",
+      "answer_target": "美國自然史博物館團隊檢查全部 45 種極樂鳥，37 種有生物螢光（核心類群全部都有），放出綠到黃綠光，峰值約 520 與 560 nm，位置多在求偶用的羽毛、皮膚、嘴與口腔內。他們描述這些螢光區常被不螢光的深色羽毛圍住——有些種是超黑羽，有些是深色虹彩綠或深褐羽，求偶時張開黑色披肩更醒目。作者推測螢光與周圍深色一起加強對比，沒有測雌鳥的反應。",
+      "scope": "描述加推論；周圍深色不全是超黑；「讓螢光更醒目」是推測。",
+      "source_ids": [
+        "P74-S059"
+      ],
+      "source_locator": "摘要；Results（黑羽無螢光）；Discussion〈contrast〉數段",
+      "premise_status": "screened",
+      "notes": "算 0.5。Sparks 群。 原提案 F101-020（目標 F101-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V104（2026-11-12）改字後收；原文的鄰接羽色包含深褐與深虹彩綠，不是「總是超黑」；「旁邊為什麼總是那麼黑」這題原文答不出來，改題。只有描述與推測，條數 0.5→0.25。Sparks 群獨立（Europe PMC 查無與 McCoy、Prum、Stoddard、Johnsen 合著）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "黑旁邊不只有顏色，還有會發光的顏色。",
+        "visual": "藍光燈下的極樂鳥標本：嘴裡與羽毛亮綠，周圍一圈全黑。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P74-067",
+      "question": "把黑蝴蝶鱗片的形狀翻模成透明玻璃，還會黑嗎？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "color.butterfly_scale_silica_replica_reflectance",
+      "answer_target": "不會黑，但反光少很多。吉林大學團隊以紅頸鳥翼蝶的黑翅為模板（黑翅在 400–900 nm 反射低於 8%），用溶膠凝膠翻出二氧化矽「負形」複製品：這種沒有黑色素的複製品平均反射約 20%，作者量的同材料平板約 80%，約為四分之一。",
+      "scope": "複製品是負形，不是原構造；平板 80% 對一般玻璃而言偏高，原文沒說明量法，片中只說「作者量到」；不得把這一篇和 S003 的 k=0 模擬接成「只到霧面、到不了黑」單一結論，要分開說是兩個研究。",
+      "source_ids": [
+        "P74-S062"
+      ],
+      "source_locator": "Results〈Macroscopic〉、〈Light trapping mechanism〉",
+      "premise_status": "screened",
+      "notes": "算 0.5。吉林大學 Ren 群。 原提案 F101-021（目標 F101-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V104（2026-11-12）改字後收；刪作者自加的「只到霧面、到不了黑」結語（兩研究並列的推論）；平板 80% 的量法不明，條數 0.5→0.25。S014 末位作者任露泉（吉林大學仿生工程教育部重點實驗室）與 Gorb 合著（ACS Appl Mater Interfaces 2022），併入 Gorb 網絡。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "形狀會偷光，但吃光的得是黑色素。",
+        "visual": "蝶翅與一塊白霧玻璃翻模並排，下方兩個反射數字 20% 與 80%。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "P74-NA001",
+      "question": "老教堂窗玻璃下面比較厚，是玻璃幾百年來慢慢往下流嗎？",
+      "existing_ids": [
+        "P70-NA002"
+      ],
+      "source_ids": [],
+      "reason": "池中已有未收紀錄 P70-NA002（第二十輪 F38）：Welch 2013 PRL、Vannoni 2010、Gulbiten & Mauro、Zhao 2013 都讀不到；本輪用 arXiv API 查 Mauro 的室溫鬆弛論文無結果，不再重試被擋的網站。 原提案 F90-NA001。",
+      "reentry_condition": "讀到 Zanotto 1998 或 Gulbiten & Mauro 的合法全文，可當本題開場迷思（約 0.5–0.75）。",
+      "reading_status": "not_found"
+    },
+    {
+      "id": "P74-NA002",
+      "question": "就算不碰水，玻璃自己也會隨時間「老化」變硬嗎？（嫦娥五號月壤玻璃）",
+      "existing_ids": [],
+      "source_ids": [
+        "P74-S011"
+      ],
+      "reason": "Chen 等 2023 Sci Adv 只以 grep 讀模量增幅與年齡段；「參照樣品」怎麼定義未讀懂，且是物理老化，與本題的水腐蝕主線不同，不立核心。 原提案 F90-NA002。",
+      "reentry_condition": "逐段讀完 Results 與 Methods，確認對照組定義後可立約 0.5，當片尾延伸。",
+      "reading_status": "partial（關鍵字附近）"
+    },
+    {
+      "id": "P74-NA003",
+      "question": "博物館的「病玻璃」放太乾會不會反而裂？最適濕度是多少？（Veste Coburg 2026 Heritage）",
+      "existing_ids": [
+        "H10006"
+      ],
+      "source_ids": [],
+      "reason": "WebSearch 列出的薩爾蘭大學典藏 PDF（scidok.sulb.uni-saarland.de）回 403，依規定停止，不改抓出版社或其他主機。 原提案 F90-NA003。",
+      "reentry_condition": "同一個典藏連結能正常下載時讀一次；可立約 0.75，並與 F90-012 成一組「太濕流淚、太乾裂紋」。",
+      "reading_status": "blocked（403）"
+    },
+    {
+      "id": "P74-NA004",
+      "question": "黑曜石吸水形成的水合層能當時鐘定年嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "WebSearch 列出的 maajournal.com 下載連結回 403，依規定停止；其餘結果為付費或只有摘要。 原提案 F90-NA004。",
+      "reentry_condition": "讀到開放全文的黑曜石水合定年原研究，約 0.5。",
+      "reading_status": "blocked（403）"
+    },
+    {
+      "id": "P74-NA005",
+      "question": "南京戰國鉛鋇玻璃的腐蝕是微生物、表面化學還是裂縫造成？（Zhang 等 2023 Heritage Science 11:79）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "WebSearch 列出的 springeropen「counter/pdf」連結被伺服器轉到期刊首頁，沒有拿到論文；Europe PMC 以 DOI 查無收錄；不自行改網址。 原提案 F90-NA005。",
+      "reentry_condition": "由搜尋結果或 DOI 頁的連結讀到全文，約 0.5（須確認與 F90-S010 不同研究群）。",
+      "reading_status": "not_read（連結轉到首頁）"
+    },
+    {
+      "id": "P74-NA006",
+      "question": "沉船裡泡了兩百多年的玻璃，跟實驗室加速測試長出的變質層一樣嗎？（HMS Albion）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "WebFetch 讀到雪菲爾大學典藏頁摘要（CC BY 4.0），作者 Thorpe 等與 F90-S003 同群，該群已達封頂 2.0，加入不增加事實數；全文未讀。 原提案 F90-NA006。",
+      "reentry_condition": "不增加條數；若要替換 Ballidon 某一條才讀全文。",
+      "reading_status": "abstract_only"
+    },
+    {
+      "id": "P74-NA007",
+      "question": "羅馬沉船 Iulia Felix 的玻璃在海水裡一千八百年長出什麼？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "WebFetch 讀帕多瓦大學 IRIS 頁：Barbana 等 2004 J Non-Cryst Solids 無附檔，出版社付費；不立核心。 原提案 F90-NA007。",
+      "reentry_condition": "讀到合法全文，約 0.5。",
+      "reading_status": "not_open"
+    },
+    {
+      "id": "P74-NA008",
+      "question": "玻璃表面那層為什麼能變成分子篩？（Gin 等 2018 Nat Commun）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "已下載 PMC5986767 全文（f90src/PMC5986767.txt，sha256 前 16 碼 c5b2d37b6d25f9f2），只讀摘要；與 F90-S002 同 CEA 群，內容偏機制，未逐段核對，不列入 sources。 原提案 F90-NA008。",
+      "reentry_condition": "逐段讀後可在 CEA 群封頂內最多 +0.5。",
+      "reading_status": "abstract_only"
+    },
+    {
+      "id": "P74-NA009",
+      "question": "Bhagat 等 2018 原文：水柱打在水平、垂直、斜板與天花板的實驗細節與數字",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "搜尋結果給的 cambridge.org PDF 連結被伺服器轉到摘要頁（非開放取用）；core.ac.uk 存放本回 403；劍橋大學典藏頁回 429。依規定停止，不換主機或客戶端重送。F91-001 只能用同團隊後來論文的轉述。 原提案 F91-NA001。",
+      "reentry_condition": "讀到出版社 OA 版或作者典藏的合法全文（典藏頁限流解除後用原連結正常抓一次）；可把 F91-001 由轉述升為原文，但劍橋群已到 2.0 封頂，不增加條數，只增加可信度。",
+      "reading_status": "blocked（cambridge.org 轉址至摘要頁；core.ac.uk 403；repository.cam.ac.uk 429）"
+    },
+    {
+      "id": "P74-NA010",
+      "question": "Bohr & Scheichl 2021〈Surface tension and energy conservation in a moving fluid〉對劍橋能量式的第二篇反駁",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "搜尋結果列出的 TU Wien 典藏 PDF（publik.tuwien.ac.at）兩次連線被重設，未取得內容；只見 F91-S012 前言引用。 原提案 F91-NA002。",
+      "reentry_condition": "同一連結能正常下載時讀全文；屬 Bohr 網絡，網絡目前 1.5，最多 +0.5。",
+      "reading_status": "blocked（連線重設，兩次）"
+    },
+    {
+      "id": "P74-NA011",
+      "question": "Avedisian & Zhao 2000〈The circular hydraulic jump in low gravity〉期刊版與 Phillips 等 2008 NASA C-9 拋物線飛行原文",
+      "existing_ids": [],
+      "source_ids": [
+        "P74-S014"
+      ],
+      "reason": "期刊版只見書目與他人轉述，未找到合法開放全文；Phillips 2008 只見書目。F91-005 用的是同一計畫 1996 年結案報告。 原提案 F91-NA003。",
+      "reentry_condition": "讀到期刊版（含劍橋重讀的那張 6.32 cm³/s、4 mm 圖）可讓 F91-006 兩種讀法對同一張圖，轉折二由『並陳』升為『可核對』；Phillips 2008 若可讀，是第五個獨立研究群，約 +0.75。",
+      "reading_status": "not found（無合法開放全文）"
+    },
+    {
+      "id": "P74-NA012",
+      "question": "Khayat 團隊（西安大略大學）怎麼看這場爭議？",
+      "existing_ids": [],
+      "source_ids": [
+        "P74-S023"
+      ],
+      "reason": "該篇是暫態加速水柱的理論，與主問題相關的只有前言兩句文獻回顧（稱劍橋 2018 被證明有誤；轉述 Avedisian & Zhao 半徑變大），都不是本篇結果，不立核心。 原提案 F91-NA004。",
+      "reentry_condition": "讀到 Wang & Khayat 2019 或 2021 的合法全文（重力與表面張力的數值比較）時，可立約 0.75 條，成為第三方計算。",
+      "reading_status": "全文可讀（CC BY），但相關內容只有文獻回顧"
+    },
+    {
+      "id": "P74-NA013",
+      "question": "Ellegaard 等 1998〈Creating corners in kitchen sinks〉多邊形水躍的發現原文",
+      "existing_ids": [],
+      "source_ids": [
+        "P74-S016"
+      ],
+      "reason": "Nature 原文需訂閱；搜尋結果另列 core.ac.uk 下載連結，但同站本輪另一連結已回 403，未再嘗試其他存放處；只用 MIT 2006 的引述背景。 原提案 F91-NA005。",
+      "reentry_condition": "讀到合法全文；屬 Bohr 網絡，最多 +0.5。",
+      "reading_status": "paywall／未取"
+    },
+    {
+      "id": "P74-NA014",
+      "question": "Liu & Lienhard 1993（MIT 機械系）水射流水躍實驗與表面張力穩定性",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "搜尋結果只有 typeset.io 存放的 PDF，無法確認是授權副本，不讀；Springer 原文需訂閱。 原提案 F91-NA006。",
+      "reentry_condition": "讀到出版社或 MIT 典藏的合法全文；是獨立實驗群（與 Bush 數學系不同實驗室），約 +0.75。",
+      "reading_status": "未讀（副本授權不明）"
+    },
+    {
+      "id": "P74-NA015",
+      "question": "Fernández-Feria、Sanmiguel-Rojas、Benilov 2019 Phys Fluids：Navier–Stokes 模擬支持重力解釋、表面張力超過臨界值時沒有穩態水躍",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "搜尋結果的利默里克大學與卡塔赫納理工學院書目頁沒有全文檔；只讀到搜尋摘要，不算來源。 原提案 F91-NA007。",
+      "reentry_condition": "讀到合法全文；是第三個支持重力派的獨立計算群，約 +0.75，也能讓轉折二不只靠 Bohr 網絡。",
+      "reading_status": "只有書目"
+    },
+    {
+      "id": "P74-NA016",
+      "question": "「臉上感覺到障礙物」：早年盲人以為是臉的觸覺，其實是耳朵嗎？（Supa、Cotzin、Dallenbach 1944 等 facial vision 系列）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "archive.org 的 facialvisionperc00mich、facialvisionrole00milt、facialvisionthep00caro 中繼資料標 access-restricted-item（inlibrary／printdisabled 借閱限定），依規定不讀、不繞過；也是同一個 Dallenbach 群。 原提案 F92-NA001。",
+      "reentry_condition": "出版社或典藏有合法開放全文時，可成開場的歷史轉折（約 0.5，同群封頂）。",
+      "reading_status": "只見 archive.org 搜尋與中繼資料 API，未讀"
+    },
+    {
+      "id": "P74-NA017",
+      "question": "在虛擬空間裡，人能用回聲分出物體在左或右、偵測物體靠哪些頻率？（Rowan 等 2013、2017，南安普敦大學）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC 無開放全文；搜尋結果列出的 eprints.soton.ac.uk/351884 與 /408053 以 curl 預設標頭讀取回 403，依規定停止、未換客戶端。 原提案 F92-NA002。",
+      "reentry_condition": "典藏頁可正常讀取並附作者稿時，可成第十三個研究群（約 0.5–0.75）。",
+      "reading_status": "403，未讀"
+    },
+    {
+      "id": "P74-NA018",
+      "question": "盲人與明眼人偵測錄音裡的反射，誰比較好？（Schenkman & Nilsson 2010、2011 Perception）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC 無開放全文，搜尋只見 PubMed 摘要與 Lund 紀錄頁；且與 F92-S013 同屬 Nilsson 網絡，封頂內加分有限。 原提案 F92-NA003。",
+      "reentry_condition": "有合法全文時，Nilsson 群封頂內最多 +0.5。",
+      "reading_status": "只見搜尋摘要，未讀"
+    },
+    {
+      "id": "P74-NA019",
+      "question": "戴口罩會不會干擾盲人的回聲定位？（Kreidy 等 2022 線上問卷）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "是疫情期間行動困難的自評問卷，內容偏行動與身心影響，接近健康題，且不是直接量回聲定位。 原提案 F92-NA004。",
+      "reentry_condition": "不建議回收。",
+      "reading_status": "只讀 Europe PMC 摘要"
+    },
+    {
+      "id": "P74-NA020",
+      "question": "Thaler 群其他開放論文：噪音中加大喀聲、虛擬空間導航、訓練不改變一般聲源定位、6 小時專業人員訓練等",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC 上可讀，但 Thaler 群已在 F92-001～005 用滿 2.0 封頂；6 小時訓練那篇屬復健實務，不收。 原提案 F92-NA005。",
+      "reentry_condition": "只能用來替換 F92-001～005 中較弱的句子，不加條數。",
+      "reading_status": "只見搜尋列表，未讀全文"
+    },
+    {
+      "id": "P74-NA021",
+      "question": "封城那年世界變安靜了多少？地震儀、城市噪音、海洋與鳥鳴（候選長題）",
+      "existing_ids": [
+        "S51-NA001"
+      ],
+      "source_ids": [],
+      "reason": "第一個候選題；池中只有 S51-NA001 地震儀封城的未收紀錄，沒有同答案核心。牽涉疫情、鳥鳴（F87 領域）與海洋（F88），跨領域多，本輪改做人類回聲定位；未讀來源。 原提案 F92-NA006。",
+      "reentry_condition": "另一輪由聲景作者評估，需先確認地震、城市聲壓、水下噪音三個不同研究群的開放原研究。",
+      "reading_status": "未讀"
+    },
+    {
+      "id": "P74-NA022",
+      "question": "沙丘為什麼會「唱歌」轟鳴？（候選長題）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "池中無；主題偏 F85（沙）與巴黎、加州理工兩群的公開爭論，研究群數不確定，本輪未研究。 原提案 F92-NA007。",
+      "reentry_condition": "確認三個以上研究群開放全文後再評。",
+      "reading_status": "未讀"
+    },
+    {
+      "id": "P74-NA023",
+      "question": "黑得這麼徹底，會不會也特別熱？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "非作者覆核 V104（2026-11-12）退回：不回答本題（光怎麼被關起來、為什麼黑長在亮色旁）；兩例是不同物種、不同材料（蛻皮對標本）、不同條件，只能並列不能合成結論；蟻蜂是標本在沙上加熱，「體溫」與「毛的隔熱更關鍵」是作者從一張熱像推出的解讀。留在本題只增加清單感，退回。若日後有「黑色與體溫」題，可在該題重提並分開兩研究。 原提案 F101-010。",
+      "reentry_condition": "覆核理由所列的缺口補上後重提。",
+      "reading_status": "已讀來源，核心退回"
+    },
+    {
+      "id": "P74-NA024",
+      "question": "深海魚的超黑皮膚有多黑？為什麼能讓捕食者看不到？",
+      "existing_ids": [],
+      "source_ids": [
+        "P74-S063"
+      ],
+      "reason": "Davis 等 2020 Curr Biol：DOI 經 linkinghub 的頁面連結轉到 cell.com，回 403（Just a moment 驗證頁），依規定停止；史密森尼書目頁唯一的全文連結也指向 cell.com，未再試。只讀到 Duke Scholars 頁上的摘要，不立核心。 原提案 F101-NA001。",
+      "reentry_condition": "讀到合法全文（出版社 OA 頁正常開啟或作者典藏）；但與 S003 同屬 Johnsen 群，只能替換本題較弱的 Johnsen 核心，不增加總條數；可讓「躲藏」那一面多一個實測例。",
+      "reading_status": "abstract_only（cell.com 403）"
+    },
+    {
+      "id": "P74-NA025",
+      "question": "最早證明蝴蝶的黑有結構幫忙的實驗說了什麼？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Vukusic、Sambles、Lawrence 2004 Proc R Soc B（Biol Lett 增刊，PMC1810022）：Europe PMC fullTextXML 回 500，Europe PMC 列出的 ?pdf=render 連結回 403；依規定不改抓同一資料庫的 NCBI 主機。 原提案 F101-NA002。",
+      "reentry_condition": "出版社或 Europe PMC 正常提供全文時；艾克斯特 Vukusic 群為獨立研究群，約 0.5 條。",
+      "reading_status": "blocked（europepmc.org 403）"
+    },
+    {
+      "id": "P74-NA026",
+      "question": "奈米碳管做成的「黑體」吸收多少光？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Mizuno 等 2009 PNAS（PMC2669394，日本產總研）：Europe PMC fullTextXML 500、?pdf=render 403；fullTextUrlList 列的 pnas.org 重印本連結回 403。停止。 原提案 F101-NA003。",
+      "reentry_condition": "任一公開連結正常讀到全文；產總研為獨立研究群，約 0.5 條，可補人造超黑的原研究數字。",
+      "reading_status": "blocked（europepmc.org 403、pnas.org 403）"
+    },
+    {
+      "id": "P74-NA027",
+      "question": "甲蟲身上的亂向微柱也能做出超黑嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Parisotto、Wilts 等 2023 Materials Today Advances（10.1016/j.mtadv.2023.100399，S005 參考文獻 27 指出）：DOI 經 linkinghub 轉 ScienceDirect 回 403；Europe PMC 無收錄。 原提案 F101-NA004。",
+      "reentry_condition": "ScienceDirect 正常開啟（該刊為開放取用）；Wilts 群為獨立研究群，約 0.5 條。",
+      "reading_status": "blocked（sciencedirect 403）"
+    },
+    {
+      "id": "P74-NA028",
+      "question": "唐納雀羽毛表面的微結構會放大紅黃色嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "McCoy 等 2021 Sci Rep（PMC8060279）開放可讀，但屬 McCoy 群，本題該群已滿 2.0 封頂；未下載閱讀。 原提案 F101-NA005。",
+      "reentry_condition": "若 S001 或 S002 某核心被覆核退回，才值得讀來遞補。",
+      "reading_status": "not_read（同群封頂已滿）"
+    },
+    {
+      "id": "P74-NA029",
+      "question": "深海巨口魚類的超黑是怎麼演化的？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Chang 等 2025 BMC Ecol Evol（PMC12542184）全文已存（f101src/PMC12542184.txt），但 ultra-black 只在前言當背景列舉，沒有本研究的資料。 原提案 F101-NA006。",
+      "reentry_condition": "無；除非有專門量超黑演化的原研究。",
+      "reading_status": "full_text_read_keyword_only（不相關）"
+    },
+    {
+      "id": "P74-NA030",
+      "question": "蟻蜂的超黑是警戒色嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "P74-S053"
+      ],
+      "reason": "S005 作者自己說證據有限，只提假說，沒有捕食者實驗；不另立核心。 原提案 F101-NA007。",
+      "reentry_condition": "有對捕食者的行為實驗原文時。",
+      "reading_status": "full_text"
+    }
+  ]
+}

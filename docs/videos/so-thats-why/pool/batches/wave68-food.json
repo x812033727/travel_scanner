@@ -1,0 +1,96 @@
+{
+  "batch_id": "wave68-food-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第十八輪：替後備組題 C12-01 冷凍肉解凍出水補消費者盲測與冷凍溫度研究（作者 F31，覆核 V34），仍後備。",
+  "sources": [
+    {
+      "id": "K68-S001",
+      "url": "https://iastatedigitalpress.com/mmb/article/18294/galley/16381/view",
+      "canonical_url": "https://doi.org/10.22175/mmb.18294",
+      "title": "Impacts of Stepwise Aging/Freezing Process and Repeated Freezing on Meat Quality, Physicochemical and Biochemical Properties, and Sensory Attributes of Beef Loins",
+      "publisher": "Saud Ur Rehman、Jin-Kyu Seo、Madison Romanyk、Dong-Jin Shin、Yuan H. Brad Kim（美國普渡大學動物科學系 Kim 研究群）／Meat and Muscle Biology 8(1):18294，2024（Iowa State University Digital Press）",
+      "version": "期刊正式排版 PDF；頁尾標 CC BY 4.0",
+      "read_via": "WebSearch（consumer sensory fresh versus frozen beef paired）結果直接列出此 galley 網址；curl 工具預設標頭 200（回應為 PDF），pdftotext 轉文字",
+      "reading_scope": "全文（摘要、前言、材料方法、結果與討論、Table 2、結論）",
+      "locator": "Abstract；Raw material and sample processing（30 頭牛的成對腰脊、熟成 0／2／3／4 週、−20 °C 真空凍 1–5 週、2 °C 解凍 36 小時）；Consumer panel sensory evaluation（n = 90、15 場、4 位數代碼隨機順序、五組 A0F5T、A2F3T、A3F2T、A4F1T、A5F0T）；Results：Consumer panel 段與 Table 2；結論段",
+      "summary": "普渡大學把 30 頭牛的成對腰脊分到不同『先熟成幾週、再凍幾週』的組合，總長都是 5 週：熟成 0、2、3、4 週後在 −20 °C 真空冷凍 5、3、2、1 週，另一段熟成 5 週、完全沒凍當對照。90 位普渡教職員生在 15 場盲測中吃以 4 位數代碼隨機上桌的牛排塊，嫩度、風味、多汁和整體喜好五組都沒有顯著差異（例如整體喜好 67.11–72.51 分，沒凍那組 68.71 分，滿分 100）。作者也說儀器量的嫩度差距（23–33 N）沒有反映在消費者評分上。",
+      "limitations": "與池中 K67-001、K67-002 同一研究群（Kim 研究群）不同實驗；沒凍那組熟成 5 週、其他組熟成 0–4 週，比的是同樣總天數下的組合，不是單純『凍與不凍』；消費者是校園招募；方向與 K67-004 相同。另有凍兩次的組別與色澤、氧化結果，片中不用。不得說成『冷凍不影響品質』或給熟成、冷凍、解凍建議。 覆核 V34（2026-11-12）：summary 改正設計：「每兩頭牛的成對腰脊依平衡不完全區集分到 4 個熟成期；沒凍對照（A5F0T）取自熟成 4 週那段腰脊的後段、再熟成一週；只有 A4F1T 與 A5F0T 同一段腰脊」；『儀器量的嫩度差距（23–33 N）』改為『各組剪力值落在 23–33 N（多在原文引用分級的 very tender 附近），研究者認為消費者分辨力有限，所以沒反映在評分上』；補『每場 6 位、紅光下品嚐』。",
+      "author_cache": {
+        "file": "f31src/mmb_18294.pdf（文字 f31src/mmb_18294.txt）",
+        "sha256_prefix": "c6f4d07035006ed2",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-11",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "K68-S002",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9222788/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/foods11121791",
+      "title": "The Investigation of Protein Profile and Meat Quality in Bovine Longissimus thoracic Frozen under Different Temperatures by Data-Independent Acquisition (DIA) Strategy",
+      "publisher": "Xia Li、Shuyi Qian 等、Chunhui Zhang、Christophe Blecker（中國農業科學院農產品加工研究所、比利時列日大學 Gembloux）／Foods 11(12):1791，2022（MDPI）",
+      "version": "期刊正式全文 XML（Europe PMC REST fullTextXML，PMC 開放子集）；CC BY 4.0",
+      "read_via": "Europe PMC REST search（AUTH Zhang C／Li X／Blecker C 與 freezing）列出 PMC9222788；以 REST fullTextXML 取得全文（200），去標籤轉文字",
+      "reading_scope": "全文（摘要、材料方法 2.1–2.2、結果 3.1 與 Table 1、蛋白質體學各節略讀、結論）",
+      "locator": "2.1 Sample Collection and Preparation（9 頭 Simmental × 秦川公牛左側背最長肌、每條切 15 塊、PE 膜包、中心溫到達後維持 48 小時、解凍到 4 °C）；3.1 Meat Quality 與 Table 1（thawing loss −12 °C 10.50 a、−18 °C 8.83 b、−38 °C 7.67 bc、−80 °C 7.17 c，n = 6）；4. Conclusions",
+      "summary": "同一條牛背最長肌切成 15 塊，分到鮮肉組與 −12、−18、−38、−80 °C 四種冷凍溫度（各 9 頭牛重複），中心到溫後只凍 48 小時再解凍。解凍損失依序為 10.50%、8.83%、7.67%、7.17%：−12 °C 顯著最高；−18 與 −38 °C、−38 與 −80 °C 之間統計上分不開，只有 −18 與 −80 °C 有差。作者把 −12 °C 較多的損失推測為肌纖維結構破壞與蛋白質變性，並用蛋白質體學找與品質相關的蛋白。",
+      "limitations": "凍的溫度同時改變冷凍速度，只凍 48 小時，不是長期儲存；蛋白質變性是作者推測，本篇沒直接量變性指標；與 K66-002、K66-011 是不同研究群、不同物種或儲存條件，數字不並列。同群的 Qian 等 2022 Food Chem 兩篇（冰晶與肌原纖維蛋白回復）只有 ORBi『Request a copy』，未讀。片中不得說『越冷越好』或推薦冷凍溫度。 覆核 V34（2026-11-12）：limitations 補「方法寫每組 9 個生物重複，Table 1 註 n = 6，前後不一；鮮肉組沒有解凍損失可比」。",
+      "author_cache": {
+        "file": "f31src/PMC9222788.xml（文字 f31src/PMC9222788.txt）",
+        "sha256_prefix": "69a9425a67d3957e",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "accessed_on": "2026-11-11",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "K68-001",
+      "question": "同一批牛的腰脊，先熟成再凍了 1 到 5 週，和熟成 5 週完全沒凍的比，一般人吃得出來嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.paired_loin_aging_freezing_consumer_panel",
+      "answer_target": "在普渡大學 2024 年這個實驗裡沒吃出差別。他們把 30 頭牛的腰脊排成總長都是 5 週的組合：先熟成 0、2、3 或 4 週，再在 −20 °C 真空冷凍 5、3、2 或 1 週；沒凍的對照是從熟成 4 週那段腰脊的後段切下、再多熟成一週。90 位校內消費者分 15 場、在紅光下吃以代碼隨機上桌的牛排塊，嫩度、風味、多汁和整體喜好五組都沒有顯著差異（整體喜好約 67 到 73 分，沒凍那組約 69 分，滿分 100）。研究者也提醒：各組儀器量到的嫩度都落在很嫩的範圍，消費者可能本來就分不出這麼接近的差別。",
+      "scope": "比的是同樣總天數下『熟成加冷凍』的組合，沒凍那組熟成最久，不是單純『凍與不凍』；不是同一頭牛的左右配對；消費者是校園招募；研究者自己指出分辨力有限；與 K67-004 同方向、與 K67-001／002 同一研究群；不得說成『冷凍不影響品質』『一般人都吃不出來』，不給熟成、冷凍、解凍或保存建議，也不轉述作者對產業的建議。另有凍兩次的組別與色澤、氧化結果，片中不用。",
+      "source_ids": [
+        "K68-S001"
+      ],
+      "source_locator": "F31-S006 Raw material and sample processing；Consumer panel sensory evaluation（方法與結果）；Table 2",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：同一 Kim 研究群（K67-001／002 已計 0.75）、方向與 K67-004 相同，沒凍組與冷凍組熟成天數不同、並非左右配對，研究者自己說消費者分辨力有限；只部分回應 still_missing（4）『同一批動物、冷凍數週以上』。 原提案 F31-006（目標 C12-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V34（2026-11-12）改字後收；數字逐格對上，但題目把設計說成同一頭牛左右配對、把剪力值範圍說成差距，均改正；照同研究群與混淆因素下修為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一頭牛、凍了好幾週的那一半，一般人在盲測裡沒挑出來。",
+        "visual": "一頭牛的剖面圖，左右兩條腰脊被切成幾段，有的段蓋上雪花圖示、有的沒有，最後都變成編號小杯。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "K68-002",
+      "question": "同一條牛背肌切成好幾塊，放在不同溫度凍，解凍掉的水一樣嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.paired_beef_freezing_temperature_thaw_loss_48h",
+      "answer_target": "不一樣，但不是一階一階整齊拉開。中國農業科學院與比利時列日大學 2022 年把 9 頭公牛的背最長肌各切成 15 塊，分在 −12、−18、−38、−80 °C 凍到中心溫度後再放 48 小時、解凍：解凍損失依序是 10.50%、8.83%、7.67%、7.17%。統計上只分得出 −12 °C 那組最多，以及 −18 和 −80 °C 有差；−18 和 −38 °C、−38 和 −80 °C 之間都分不開。研究者推測 −12 °C 那組是肌纖維結構和蛋白質受損較多，但這篇沒有直接量蛋白質變性。",
+      "scope": "只凍 48 小時、不是長期儲存；冷凍溫度同時改變冷凍速度；方法寫每組 9 個重複、表註 n = 6；不和 K66-002、K66-011 的數字並列或相減；不得說『越冷越好』、不推薦冷凍溫度或冷凍方式，片中不念『凍得最冷還是掉約 7%』這類比大小的句子。",
+      "source_ids": [
+        "K68-S002"
+      ],
+      "source_locator": "F31-S007 2.1；3.1 與 Table 1；4. Conclusions",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.25）：只凍 48 小時，照 V32 對 K67-005 的先例計 0；結論型（較冷較少、但相鄰溫度分不開）與 K66-011 相同。收進池中，但不放進 C12-01 的最終核心，避免四個遞減數字被聽成『越冷越好』。 原提案 F31-007（目標 C12-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V34（2026-11-12）改字後收；數字逐格對上；照『單一溫度條件只凍 48 小時』與 K66-011 同結論型計 0，並補上重複數前後不一，移出 C12-01。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "凍得再冷，盤子裡還是會有一灘水。",
+        "visual": "一條牛背肌切成五段，分別貼上 −12、−18、−38、−80 °C 的標籤，下方各一個大小不同但都不是零的水窪。",
+        "seconds": [
+          25,
+          35
+        ]
+      }
+    }
+  ],
+  "not_added": []
+}

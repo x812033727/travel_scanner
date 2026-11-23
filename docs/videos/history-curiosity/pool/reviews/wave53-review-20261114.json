@@ -1,0 +1,439 @@
+{
+  "batch": "batches/wave53-20261114.json",
+  "reviewed_on": "2026-11-14",
+  "method": "四位沒有參與研究的獨立覆核代理（R531–R534 依序覆核 ZI1–ZI4）逐題至少重新請求一個關鍵一手／機構來源、對照研究代理的請求紀錄逐筆核對網址出處與快取雜湊、grep 全池與跨系列核心去重、對照系列不收清單與 1956 真人規範及 8 分鐘門檻；修改直接寫進批次的題目與來源欄位，覆核補讀的來源編入該研究代理的來源序號，沒被引用的來源移除。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 19,
+    "NEEDS_CHECK": 1
+  },
+  "source_renames": {
+    "R531-S001": "ZI1-S025",
+    "R531-S002": "ZI1-S026",
+    "R531-S003": "ZI1-S027",
+    "R532-S001": "ZI2-S021",
+    "R532-S002": "ZI2-S022",
+    "R532-S003": "ZI2-S023",
+    "R532-S004": "ZI2-S024",
+    "R532-S005": "ZI2-S025",
+    "R532-S006": "ZI2-S026",
+    "R532-S007": "ZI2-S027",
+    "R532-S008": "ZI2-S028",
+    "R532-S009": "ZI2-S029",
+    "R532-S010": "ZI2-S030",
+    "R532-S011": "ZI2-S031",
+    "R533-S001": "ZI3-S017",
+    "R533-S002": "ZI3-S018",
+    "R533-S003": "ZI3-S019",
+    "R533-S004": "ZI3-S020",
+    "R533-S005": "ZI3-S021",
+    "R534-S001": "ZI4-S018",
+    "R534-S002": "ZI4-S019",
+    "R534-S003": "ZI4-S020",
+    "R534-S004": "ZI4-S021",
+    "R534-S005": "ZI4-S022",
+    "R534-S006": "ZI4-S023"
+  },
+  "verdicts": [
+    {
+      "id": "N5901",
+      "agent": "ZI1",
+      "reviewer": "R531",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZI1-S001 https://www.gutenberg.org/ebooks/12784.txt.utf-8（curl GET，R531 seq 1，534,193 bytes，與 ZI1 快取逐位元相同）；另以 ZI1 快取逐字核對 DNB Wood／Swift／Newton／Kendal／Walpole（ZI1-S002～S006）",
+      "reopen_result": "頁面上確實有：Letter I 的『an hundred pounds in his coin for seventy or eighty in silver』、半年租一百鎊『three horse load』、Conolly『two hundred and forty horses』、銀行家四萬鎊『twelve hundred horses』；Letter II『a dozen or two halfpence of good metal』與口袋裡一塊磚；Letter IV 前言 10 月 13 日出版、10 月 27 日懸賞 £300；Appendix II 化驗報告全文（59 噸餘、『from the several parcels coined』、『spread thin under the hammer without cracking』、『the copper was very good … full weight』、舊幣『like a cinder』、1724-04-27）與編者註『neither imported into Ireland』。DNB Wood 的 360 噸／£100,800、£10,000、『better coin』、30d／23d、六七千鎊、1725 年 8 月交回、年金 £3,000 八年只領三年均在。對不上的兩處：（1）原稿 question／hook 寫『牛頓把銅幣燒紅拿鎚子敲』『牛頓親手』，報告是三人聯名、寫『opened and tried before us』，沒有說誰動手；（2）金衡重量 Appendix II 印『fourteen ounces … and eight pennyweight』，同書所收樞密院委員會報告引同一份化驗卻作『14 ounces troy, and 18 penny-weight』，換算只有 18 才超過一磅常衡，8 應是轉錄誤植。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json candidates／not_added、legacy/w-axis.json、原來如此 QUESTIONS.md 查 Wood's、Drapier、半便士、Hibernia 均無此案，ZI2、ZI4 提案無重疊（ZI3 的 proposal.json 覆核時尚未產出，未查）。一手文本（Swift 書簡與化驗報告轉錄）加 DNB 五條，證據鏈完整；三個轉折（馬匹算術→化驗結果→真正的把柄在特許怎麼來的）撐得起 10–12 分鐘。改掉『牛頓親手』與金衡數字後收。化驗報告是 1903 年編本轉錄 1724 年小冊，旁白要照 scope 說明。"
+    },
+    {
+      "id": "N5902",
+      "agent": "ZI1",
+      "reviewer": "R531",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZI1-S008 https://en.wikisource.org/wiki/Dictionary_of_National_Biography,_1885-1900/Lombe,_Thomas（curl GET，R531 seq 2）；ZI1-S007 Hutton 1817 年版以 ZI1 快取逐段核對 pp. 161–167；另發 IA 檢索找 1791 年初版（R531 seq 10，0 筆）",
+      "reopen_result": "DNB 全條相符：專利 No. 422、卷宗遺失至 1867 年、Zonca 1607／1621／1656、『to an expert Zonca's book is much more satisfactory than Lombe's specification』、1692 年請願、1719 年設廠、1732-01-28 請願、首次要求展延超過十四年、5 George II cap. 8、£14,000、模型存倫敦塔、£120,000、John Lombe 子條『the only authority』、Hutton 所記 1722-03-16 死／03-22 葬、登記簿 1722-11-28、遺囑背書 11-20、『did not appear until 1791』、Thomas 請願未提兄弟之死、1904 勘誤。Hutton 1817 年版的引句都在，但全文沒有『3 月 16 日』——這個日期只存在於 DNB 對 1791 年初版的轉述，『差八個月』是推算；初版在 Internet Archive 沒找到。大學與地方史網頁的引句（candle-light、bales of raw silk、King of Sardinia's ships、femme fatale、death penalty、1714）相符。",
+      "changed_fields": [
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：Lombe、絲廠、Zonca、工業間諜在池內 0 筆；池內專利題都是美國近代案。唯一出處晚近七十年、日期與登記簿不合、機密早已成書、專利展延失敗換 £14,000，轉折足夠 10–12 分鐘。改動：hook／payoff 把『差八個月』改成『傳記辭典查登記簿』的說法並在 scope 註明是 DNB 轉述；1607 年那本書的作者沒有傳記來源，改成只講書名；visual 補『書頁與登記簿不露字』。"
+    },
+    {
+      "id": "N5903",
+      "agent": "ZI1",
+      "reviewer": "R531",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZI1-S011 https://www.gutenberg.org/ebooks/44741.txt.utf-8（curl GET，R531 seq 3，與快取逐位元相同）與 ZI1-S014 https://branchcollective.org/?p=1958（curl GET，R531 seq 9）；DNB Cruikshank／Hone 與英格蘭銀行博物館頁以 ZI1 快取核對",
+      "reopen_result": "1875-12-12 致 Whitaker 信全文相符（『About the year 1817 or 1818』、Dorset Street、『several human beings hanging … two of these were women』、『in ten minutes』、半小時後 Hone 進門、市長派警察、『The Bank directors held a meeting immediately』、『saved the lives of thousands』），Jerrold 按語『Here it will be seen Cruikshank assumed much』在。Crosby 文：1797-02-27 停兌、5 月 3 日 37 Geo III c. 45、1817 年 142／95／32、1818 年頭兩個月 26／21／4（引 Kaye, New Annual Register 39）、1819 年、『J. Ketch』、十一人、『bank post』、輿論不是主因、回到金本位，相符。DNB Cruikshank『of 1818』『above 700l.』『Roman infirmity』、DNB Hone『1820, designed by him, but possibly suggested by Hone』、博物館『more than 300 people were hanged』與 1819 均在。對不上：question 寫『吊著兩個女人』，信裡是幾個人、其中兩個是女人。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：Cruikshank、Bank Restriction、假鈔在池內無此案（N4663 是 Bank 站鬼故事、N5802 是 1814 年證交所騙局）。畫家自述→銀行自己的數字→傳記作者與辭典不買帳→年份三說，轉折足夠 9–11 分鐘。改動：question 的人數寫法；visual 原有『牆上的月曆』（會出現數字）與紙片上『人形剪影掛在橫木下』（遺體），已改成空繩圈與季節變化；劊子手姓名沒有一人一頁傳記來源，改不具名。起訴／處決數字是研究者轉引 1818 年年鑑，維持 scope 的『據研究者引用的銀行報告』。"
+    },
+    {
+      "id": "N5904",
+      "agent": "ZI1",
+      "reviewer": "R531",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZI1-S017 https://www.riksbank.se/globalassets/media/riksbanken-350-ar/tidslinjen/stockholm-banco/24-45-stockholms-banco_eng.pdf（curl GET，R531 seq 4，pdftotext 實讀）；另補讀 ZI1-S025 Flux 1910（IA metadata seq 17、全文 seq 18）、ZI1-S026 1845 年瑞典傳記辭典 pp. 70–71（runeberg.org，seq 13、15、19、20）、ZI1-S027 紐約聯準銀行文章（seq 14）",
+      "reopen_result": "央行史書的數字日期逐項相符（1656-11-30、Witmacker、1639 年入獄至 1643 年、19.72 kg、『almost one hundred times』、兩個賊 170 daler km、1657-07-29、1660 年 3 月 7 日與 11 月 17 日、1661-09-03、500,000／255,000 d km、1663-09-12 不到 4,000 d km、6–10%、1668-07-22 判決含『If he failed to pay what he owed, he would be executed』、1669-02-26、1670-03、3 月 8 日卒）。但補讀的兩份獨立舊紀錄與它有兩處不同：（1）Flux 與 1845 年辭典都把提領潮寫在 1661 年發鈔之後（銅價上漲），不是『1660 年擠兌逼出鈔票』；（2）判決 Flux 寫『Failing in this, he was condemned to imprisonment for life』、並說審判紀錄未公開，辭典只寫『ensam dömd till ersättningen』，都沒有死刑。卒年 1671 由辭典條目（公有領域、一人一條）確證；生年辭典作 1610、央行作 1611。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：Palmstruch、Stockholms Banco、daler 在池內 0 筆；ZI4 的 N5963 野貓銀行機制不同。研究代理自陳的同源問題已補到兩個獨立的公有領域來源，1956 紅線也補上；原稿點名的國王與宰相沒有傳記來源，改成職稱。補讀後翻轉不變弱反而更具體：『天才發明、被判死刑』的簡版對照三份紀錄後，動機與判決都得改寫。但原稿把央行史書一家的順序當定論，已改成三份並陳、不下結論。片長 10–12 分鐘撐得起（銅板錢→擠提→濫發→三種判決）。仍有保留：十七世紀判決原件沒人打開，辭典是未校對瑞典文 OCR；製作前若能再補一份瑞典文近代研究更穩。"
+    },
+    {
+      "id": "N5905",
+      "agent": "ZI1",
+      "reviewer": "R531",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZI1-S019 https://archive.org/download/historyofenglandgard_5/historyofenglandgard_5_djvu.txt（先 GET https://archive.org/metadata/historyofenglandgard_5，R531 seq 5，再抓全文 seq 6，與快取逐位元相同）；ZI1-S020 Price 先讀 metadata（seq 7），全文第一次回 500（seq 8）、第二次成功（seq 21，與快取逐位元相同）",
+      "reopen_result": "Gardiner pp. 71–76、284 逐項相符：1631 年 12 月專利、《壟斷法》排除法人、1632 年初立公司、5,000 噸、每噸 4l.、20,000l.、每磅 3d.、檢驗權、6 月 28 日禁魚油、『found many believers』、12 月 6 日調查庭（市長、倫敦塔副官、市議員）、兩名洗衣婦與木盆、『were as white and sweeter than』、八十多人『peeresses and laundresses being included』、『a smile of incredulity』、9 月查緝人員被圍、每噸 8l.、Portland 收 2,000l.、1637 年 43,000l.、『made exactly the same use of their monopoly』。Price pp. 119–127 相符：1623 年專利、1624 年報告『it destroys the cloth』、Overman 等十六人、1633-05-10、£500–£1,500、兩人『died in restraint』、『in more favorable terms』、『even for private uses』、公司獲准用魚油、£43,000 與 £20,050、1641 年決議只及已不存在的 Westminster 公司、官司十五年、1656 年財政法院。年繳總額兩書不一致屬實（£20,000 對 £26,000）。街頭綽號出自 Gardiner 註腳所引 1635 年義大利文信件，同信還帶『修會出資』流言與一位出資者姓名。",
+      "changed_fields": [
+        "question",
+        "case_key",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：soap／肥皂／Westminster 專賣在池內無此案，池內稅制題都是『課稅引出鑽漏洞』型。法人繞過《壟斷法》→官辦試洗（與 1624 年報告相反）→反對者接手後照做→一路保到 1656 年，轉折足夠 10–12 分鐘。對照系列不收清單（現存宗教）：原稿以十七世紀反天主教綽號開場並寫進 case_key，屬對現存教會的貶稱，全案不靠它也成立，已從 question、case_key、answer_target 拿掉，流言不重述，只留一句『教派背景讓公司更不得人心』的寫法限制。細節仍是 Gardiner 與 Price 轉述樞密院紀錄與 1641 年小冊，原件沒開，旁白照 scope 說『據依樞密院紀錄寫成的史書』。"
+    },
+    {
+      "id": "N5921",
+      "agent": "ZI2",
+      "reviewer": "R532",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "新補一手 ZI2-S021 https://archive.org/download/monthly-notices-of-the-royal-astronomical-society_1883-05-11_43_7/monthly-notices-of-the-royal-astronomical-society_1883-05-11_43_7_djvu.txt（archive.org 站內搜尋 seq 2 → metadata seq 3 → 全文 seq 4）；重抓 ZI2-S001 https://www.gutenberg.org/ebooks/19309.txt.utf-8（seq 1，與 ZI2 快取位元組相同）與 ZI2-S002 p. 303 https://austria-forum.org/web-books/en/maximilianhell00en2020isds/000317（seq 5）；逐字核對 ZI2 快取的 Brill pp. 298–302；補抓傳記頁 ZI2-S022（ADB Hell，seq 17）、ZI2-S023（ADB Littrow，seq 18、20）、ZI2-S024（ADB Zach，seq 16）、ZI2-S025（RAS 訃聞，seq 19）",
+      "reopen_result": "回憶錄與 Brill 專著的引文、年份、頁碼都對得上（Wardhus、丹麥國王、about 1833、兩週、暗室、Aldebaran 引語；p. 298 生前未被公開指控、p. 299 Zach 九個月、p. 301 Encke 1835-04-30『he was a Jesuit』、p. 303 8.79″）。Newcomb 1883 年 MNRAS 原文（pp. 371–381）確認並補強：1835 年、二十七頁手稿、暗室斜光下紙的稜紋連續穿過秒數 35 與 41、在空白頁試刮、『懷疑他的色覺有缺陷』與腳註的紅色色盲。對不上或要補的：（1）1883 年原文裡色盲的消息來源只是『一位應該很了解情況的權威』，並舉『Antares 或 Aldebaran』；指名台長與『最白的星』是 1903 年回憶錄的版本；（2）原 hook 把台長的答話寫成 Newcomb『問出的一句話』，已改；（3）Newcomb 的結論並非手稿毫無事後補寫——偏藍的一行（光絲時刻）是回哥本哈根後加的，已寫進 answer_target；（4）頁碼：原文頁眉自 371 起，Brill 引作 372–81；（5）ADB 1880 的原句是『杜撰之說過頭，改動已獲證實』，另補 ADB 1884 Littrow 條在翻案後仍照舊說。",
+      "changed_fields": [
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json 候選題與 not_added 無 Maximilian Hell／Vardø／Wardhus／色盲（只有一筆來源閱讀紀錄提到 Hell 的生卒）；金星凌日諸題 S52、N1344、N1901、N3324、N5821 核心不同；同批 ZI1、ZI4 無撞題（ZI3 尚未交稿，其請求紀錄皆為占星與招魂題）。不在不收清單（宗教只當 19 世紀偏見史料，risk 已寫界線）。五位點名人物均補到一人一頁的公有領域傳記或學會訃聞。三個以上轉折（延遲是神話、暗室斜光、色盲、翻案仍留一處補寫），9–11 分鐘撐得起。"
+    },
+    {
+      "id": "N5922",
+      "agent": "ZI2",
+      "reviewer": "R532",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "新補一手 ZI2-S026 https://archive.org/download/pbc.gda.pl.C_TP_15026_1820_vol_4____/C_TP_15026_1820_vol_4_____djvu.txt（archive.org 站內搜尋 seq 11 → metadata seq 12 → 全文 seq 13），即 Zach《Correspondance astronomique》第 4 卷 pp. 456–474 的 Encke 原文；逐字核對 ZI2 快取的 Ventura 1990（ZI2-S003）、Olbers Werke（ZI2-S004）、ADB Encke（ZI2-S005）；補抓 ZI2-S027（ADB Gauß，seq 14）、ZI2-S028（ADB Olbers，seq 15）、ZI2-S024（ADB Zach，seq 16）",
+      "reopen_result": "Encke 原文確有判語、Olbers 來信（兩個位置、氣象日誌 4 月 22 日黃道光、萊比錫雜誌 1786 年第一冊 p. 132、三百倍）與十四個位置。『恰好十倍』屬實，但原稿寫錯了對象：Encke pp. 467–468 寫的是 d'Angos 把彗星向徑的對數 9.8208333 筆誤成 0.8208333，也就是『彗星到太陽的距離』十倍（4 月 15 日一例：正確計算差黃經 47°、黃緯 15°；用錯值只差 56″ 與 34″；十四個位置全在 1′10″ 內），不是『把日地距離故意算成十倍』——後者出自 Ventura 1990 的轉述。question、hook、answer_target、visual 已照原文改，並補 p. 464『等於地球第二顆衛星』與 pp. 470–472 的 1798 年日面彗星、1672 年彗星印刷錯誤。其餘日期（1783 年 9 月、1784-01-22、04-11、1785 年 2 月、1789-03-13、1833-09-22）與 Ventura 相符。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json 與同批無 Angos／馬爾他假彗星；N3481、N4062、N5564、N5565、N5663 核心不同。人名：補 Olbers 傳記頁後點名；d'Arrest 沒有一人一頁來源，改不具名；Gauss 改引 ADB 專條（原稿借用另一題的 Brill 專著頁）。三個轉折（兩個位置與火災、雜誌裡的十四行、寫錯的對數）加反面意見，9–12 分鐘撐得起。"
+    },
+    {
+      "id": "N5923",
+      "agent": "ZI2",
+      "reviewer": "R532",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "新補一手 ZI2-S029 https://archive.org/download/mineralogical-magazine_1877-07_1_5/mineralogical-magazine_1877-07_1_5_djvu.txt（archive.org 站內搜尋 seq 21 → metadata seq 22 → 全文 seq 23），即 Steenstrup 論文英譯全文 pp. 143–148；逐字核對 ZI2 快取的 Nordenskiöld 兩篇（ZI2-S006、S007）、Flight 1887（ZI2-S008）、lex.dk（ZI2-S010）",
+      "reopen_result": "Steenstrup 全文確認首段引語（2% 鎳、Widmanstätten 紋、1800 呎），並解決身分問題：p. 144 他本人寫『我兩度在現場停留：1871 年隨 v. Otter 男爵的瑞典遠征隊，1872 年與 Rohde 先生』，Flight p. 29 的『Mr. J. Steenstrup』就是他；p. 145 他 1871 年的報告已主張鐵屬於玄武岩（not analysis, but observation）；p. 146 檢查 40 個地點 200 片薄片。Nordenskiöld 的 cannot be a doubt、like a fungous growth、never been heated、largest discovery、Miocene、200 English miles、三塊 21／8／4 噸，Flight 的六塊重量、19 英噸、36,700 公斤、Ingegerd 與 Gladan、1871 年 9 月、巴黎報告均在原文。小修：『像黴菌』原文是 fungous growth，改『像菌類』；『同年巴黎科學院』Flight 註為 Compt. rend. 1877-01-08；轉折三依全文重寫。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：N2183（Santa Catharina）只把 Ovifak 當對照一句，核心不同；N727、N1785、N4624 是別的鐵；同批無撞題。ZI2-S009（Cambridge 頁只有首段）由 ZI2-S029 全文取代。兩位點名人物有 EB1911 與丹麥國家百科確證卒年（後者是現代百科、非公有領域，但是一人一頁的機構來源）。三個轉折（自己碎掉、岩壁裡也有、運鐵的人第一年就不信），9–11 分鐘撐得起。"
+    },
+    {
+      "id": "N5924",
+      "agent": "ZI2",
+      "reviewer": "R532",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "重抓 ZI2-S013 https://ser.im-ldi.com/MOON/MISC/MeteorCrater_Barringer_r.pdf（seq 8，與 ZI2 快取位元組相同），以 pdftoppm 把 PDF 第 11、19、21 頁轉成影像逐字看；重抓 ZI2-S012 https://zenodo.org/record/1585520/files/article.pdf（seq 9，位元組相同）並 pdftotext 核對；逐字核對 ZI2 快取的 Linda Hall 頁（ZI2-S014）與 Online Books Page（ZI2-S015）",
+      "reopen_result": "影像上確實印著：p. 7『impossible to sink our main shaft more than 222 feet, or about 25 feet below water level』與 quicksand；p. 15『In all 28 holes … not less than 14 … between 450 and 680 feet』『hole No. 20』；p. 17『probably weighed in excess of a million tons』『three hundred feet』『A very few thousand tons』『Where is the other ninety-nine per cent. plus?』與標題 WHAT HAS BECOME OF THE PROJECTILE?。Gilbert 1896 的 8200 萬立方碼、50 哩、1500 呎、560–600 呎、兩週、磐梯山 1888、no infallibility 均在原文。對不上的：（1）原稿『重量以百萬噸計』，印本是『超過一百萬噸』（millions 是 Linda Hall 的話）；（2）『幾千噸』應為『很少的幾千噸』；（3）原稿的『第二節／第四節／第六節』與『最後一節』印本沒有這種編號，改成印本頁碼與『下一節』；（4）漏了 p. 15 Barringer 明文否決『完全汽化』的一段，已補成轉折三的核心。Gilbert 卒 1918（ZI2-S015）、Barringer 卒 1929（ZI2-S014）確認。",
+      "changed_fields": [
+        "answer_target",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json 無 Barringer／Meteor Crater／Coon Butte／Coon Mountain 題（Coon 只命中無關的 N3104）；以 亞利桑那／Arizona／隕石坑 逐筆看過，H03、N147、N728 是別的坑；同批無撞題。該坑今日私人經營，risk 已寫不評論。三個轉折（撞擊說是 Gilbert 提的、兩個檢驗落空又自我動搖、Barringer 否決汽化），10–12 分鐘撐得起。兩人的卒年來源是圖書館權威款目與科學史圖書館頁，偏弱但都是一人一頁。"
+    },
+    {
+      "id": "N5925",
+      "agent": "ZI2",
+      "reviewer": "R532",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "新補一手 ZI2-S030 https://jimclifford.ca/philosophical-transactions-ocr-1665-1869/articles/jstor-102175/（WebSearch 結果網址，seq 6），即皇家學會《Philosophical Transactions》第 15 卷（1685）對《Annus Climactericus》的書評；新補 ZI2-S031 https://mathshistory.st-andrews.ac.uk/Extras/Hevelius_fire/（seq 7）；逐字核對 ZI2 快取的 Hooke 原書（ZI2-S016）、Chalmers（ZI2-S017）、MacTutor 三條（ZI2-S018–020）",
+      "reopen_result": "1685 年書評確有：Halley 1679-05-26 抵達、待到 07-18、自帶望遠鏡照準儀器；抵達當天 Regulus–Spica 54°1′55″，與 1658、1661、1671 年六次所測連角秒相同，6 月 1、7 日重測；7 月 8／18 日證明信『voluntary witness of the almost-incredible certainty』『never to differ more than by an inconsiderable part of a Minute』；9 月 26 日火災七棟房屋；1681 年 8 月重建。對不上的：（1）原稿依 Chalmers 寫 Hevelius『寄出八組距離請 Hooke 檢驗』，Hooke 書中所引 1665 年原信與書評都是 Hevelius 向 Hooke 要這八組距離、『始終沒得到』；（2）Hooke 原話是『小於半角分不可能、百人中難有一人能分辨一角分』，不是籠統的『很難分辨一角分』；（3）Halley 停留不到兩個月，原 hook『兩個月後他回報：比不出高下』不是任何來源的話（『inconclusive』是 MacTutor 的現代評語），已改用書評內容；（4）爭端自 1665 年起，scope 的 1668 改 1665；（5）火災：當時人書信說起火的是車夫留在馬廄的蠟燭，『故意』是 Hevelius 本人的認定，Chalmers 的『在鄉下』實為城門外的花園。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json 只有 N5444 風險欄提到 Hevelius 生卒，N3905 是牛頓與 Hooke；同批無撞題。研究代理自認最薄的一題，原本只有 MacTutor 兩句與 Chalmers；補到 1685 年學會刊物的一手書評後有實測數字與證明信措辭，不必 HOLD。三個轉折（要數據要不到、當面比試與證明信、大火與書評風波），9–11 分鐘撐得起。保留：書評轉述的是 Hevelius 一方的書，Halley 拉丁文原信全文仍沒讀到（scope 已限定寫法）。"
+    },
+    {
+      "id": "N5941",
+      "agent": "ZI3",
+      "reviewer": "R533",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "ZI3-S002 https://tile.loc.gov/text-services/word-coordinates-service?segment=/service/ndnp/dlc/batch_dlc_parkins_ver01/data/sn83030214/00206531848/1914121201/0214.xml&format=alto_xml（R533 seq 25，以 curl 帶 Mokaair-editorial/1.0 重新 GET，與 ZI3 快取逐位元相同；此網址原樣出現在 ZI3 seq 47 的 loc.gov 搜尋結果裡，不是拼的）；逐段重讀 ZI3 快取的耶魯論文全文（ZI3-S001）；為找判決書原卷另做 archive.org advancedsearch 三次（R533 seq 10、21、22）、Google Books API 一次（seq 24，回 429 即停）、WebSearch 兩次；為補卒年做 loc.gov 館藏搜尋兩次（seq 26、27）",
+      "reopen_result": "《紐約論壇報》OCR 確有標題『astrologer again freed』、『freschi finds mrs adams … fortune teller』、『every fortune teller violator the law』、『this was the third time … been acquit…』，只能佐證不能引用。論文頁 18–26 確有：依『disorderly persons』條款『pretending to tell fortunes』一項起訴、前案被駁回、交代律師 Clark L. Jordan 不要讓案子被丟掉、二十頁判決、『the defendant raises astrology to the dignity of an exact science—one of vibration, and she claims that all the planets…』、『every fortune-teller is a violator of the law; but every astrologer is not a fortune-teller』、1914 年小冊封面、1962 年《New Yorker》、1915 年 Malcolm 案、1923 年法學評論與再被控。對不上的：（1）論文只寫『a New York Police Department detective named Adele Preiss』，沒有『女』警探；（2）hook 的『幾個月後』論文沒有；（3）最要緊的一點——論文作者自己的結論是『治安法官大致被辯方說服、認為占星可以稱作科學』，並把『尊嚴』當成法官賦予的評價；研究稿『那句話是在描述被告怎麼主張』是從引文句子讀出來的另一種讀法，稿子卻寫成定論。判決書原卷（32 N.Y. Crim. R. 326–345）仍取不到：archive.org 只有 1880 年代舊卷，沒有第 32 卷。卒年已補：《Evening Star》1932-11-11 p. 20 美聯社訃聞寫她『昨天傍晚』過世（ZI3-S021）。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "去重：pool.json、全部 batches 的 not_added、legacy/w-axis.json、so-thats-why QUESTIONS.md 與同批 ZI1／ZI2／ZI4 對 Evangeline、Freschi、astrolog＋court 皆無命中；池內『占星家上法庭』只有 N2904（Zadkiel 誹謗案），核心不同，不重複。判 HOLD 的理由：全部判決文字只靠一篇大學部畢業論文的引文，而本題的第二個轉折（名言的主詞是被告、不是法院的認定）恰好是研究稿與該論文作者讀法相反之處，沒有原卷無法裁決；派工要求『補不到判決原文就 HOLD』。卒年一項已補齊。已先把稿子改成兩種讀法並列、刪掉沒有來源的細節；日後讀到原卷，三個轉折可撐 8–10 分鐘。"
+    },
+    {
+      "id": "N5942",
+      "agent": "ZI3",
+      "reviewer": "R533",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZI3-S006 https://archive.org/download/cagliostrocompan00funcrich/cagliostrocompan00funcrich_djvu.txt（R533 seq 5–6，先 GET /metadata 再抓全文，與 ZI3 快取逐位元相同）；新增 ZI3-S017 https://archive.org/download/gpl_1801656/gpl_1801656_djvu.txt（1791 年倫敦 Kearsley 版另一掃描本，R533 seq 11 搜尋、seq 15 metadata、seq 18 全文）；新增 ZI3-S018 https://archive.org/download/encyclopaediabri04chisrich/encyclopaediabri04chisrich_djvu.txt（EB1911 第 4 卷，seq 28–30）；另抓 Wellcome 掃描本 b28759801 比對（seq 14、19，該本 OCR 不含這一段的關鍵字，未採用）",
+      "reopen_result": "Funck-Brentano pp. 5–13 逐句對上：6 月 13 日離開、16 日自布洛涅上船、信的日期作 June 26, 1786；『Assuredly, I replied, provided the Bastille became a public promenade!』；末段『Yes, I declare to you, there will reign over you a prince who will achieve glory in the abolition of lettres de cachet, and the convocation of your States-General』；作者自己的改寫句在 p. 11；Breteuil『memorable circular of 1784… virtually put an end to the régime of lettres de cachet』『had decided on the demolition of the Bastille』『general order of October 31, 1785』在 pp. 12。研究代理用的 1791 年英譯掃描本 OCR 破損、引句是還原的；換成可讀掃描本後逐字對上（p. 75：『written in London on the 20th of June 1786, he seems clearly to predict the approaching revolution in France; for he prophesies that “the Bastille shall be destroyed, and become a public walk:” he announces, that “a prince shall reign in France, who will abolish lettres de cachet, convoke the states-general, and re-establish the true religion.”』），還原的大意沒有錯。Trowbridge p. 254 註（20th June 1786）、p. 255 註（『invention of the Inquisition-biographer』）、『nine months in the Bastille』、1795-10-06《Moniteur》在 ZI3 快取裡都對上。對不上的只有題幹一句：『大臣早在 1784 年就已決定拆巴士底』——來源的 1784 年是通令，拆除的決定沒有寫年份。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "去重：池內與同批對 Cagliostro、Balsamo、Breteuil、密札零命中；巴士底相關的 H07、N1604、N2083、N3744、N5745 與『事後成預言』的 N2842（Cazotte）核心都不同。收：三個可對照的印本（1791 審判方、1902 信文英譯、1910 翻案）加 Breteuil 改革的背景，四個轉折都有頁碼；Breteuil 補了 EB1911 傳記頁（1730–1807），國王在片中不點名。信的日期兩說（6 月 20／26 日）已在稿內並列。片長 9–11 分鐘可以成立，但信的法文原件仍未讀到，片中須說『據 1902 年英譯』。"
+    },
+    {
+      "id": "N5943",
+      "agent": "ZI3",
+      "reviewer": "R533",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZI3-S007 https://archive.org/download/enquiryintolifel00browuoft/enquiryintolifel00browuoft_djvu.txt（R533 seq 3–4，先 GET /metadata 再抓全文，與 ZI3 快取逐位元相同）；ZI3-S008 DNB 第 51 卷以 ZI3 快取逐行核對",
+      "reopen_result": "Wood Brown 確有：序言 p. ix Baldi 把活動年代寫成 1240、『a date at least five years posterior to that of his death』；p. 164 Pipini『reputed to have the gift of prophecy』與 Henri d'Avranches 1235 年或 1236 年初的詩；p. 167『ad portas ferreas… in a town named after Flora』、1250 年 Fiorentino or Firenzola in Apulia、『a wall recently built to fill up the ancient gateway of the tower… the iron staples』、皇帝的話；p. 167 註 2 Walter Map 與 Silvester；p. 168 石頭重量、彌撒舉揚、鐘繩、cervilerium；pp. 175–176 Roger Bacon 的 1230 年與『Sic accusator fatorum fata subivit』。DNB vol. 51 pp. 59–61 確有『The scholar died before 1235』、MCCX 的 Abbreviatio Avicennae、1224 年 Cashel、Faenza／Firenzuola、『not more than two ounces』、cerebrerium、『transformed the man of science into a magician』，以及把 1235 年那首詩掛在 Vincent of Beauvais 名下。對不上的：（1）皇帝『一輩子』不進佛羅倫斯、護頭『天天』戴——來源只寫『avoided coming to that city』『invented and wore it』；（2）『Henri d'Avranches 生前就稱他說真話的預言者』——那首詩是他死後寫的，『Veridicus Vates』就在悼他的那幾行裡；（3）『早了大約十五年』是稿子自己相減，1230–1235 對 1250 是十五到二十年；（4）『舊城門的鐵樞』來源是塔樓的舊門洞。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "去重：池內與同批對 Michael Scot、腓特烈二世、Frederick II、Fiorentino、Pipini 零命中。派工要求特別查的『占星師算君王死期』同型題有 N3961（Gaurico）、N3964（Thrasyllus）、N3965（Kepler），『同名地應驗』模子有 N4425（漢尼拔，Pausanias 列了一串同型例子）與 N4161（亨利四世的耶路撒冷）——案子與核心答案（預言者比皇帝早死、應驗場面只見於後來的編年史家、傳說底下是翻譯家）都不同，不算重複，但模子不能再當主軸，已在 scope 寫明只帶一例。兩個來源都是二手整理（1897 專書加 DNB），素材夠 8–10 分鐘，上限由 11 降為 10。"
+    },
+    {
+      "id": "N5944",
+      "agent": "ZI3",
+      "reviewer": "R533",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZI3-S009 https://archive.org/download/sim_great-britain-public-record-1625-1649-domestic-series_1634-1635/sim_great-britain-public-record-1625-1649-domestic-series_1634-1635_djvu.txt（R533 seq 7–8，先 GET /metadata 再抓全文，與 ZI3 快取逐位元相同）；ZI3-S010 Webster 1677 以 ZI3 快取逐段核對；新增 ZI3-S019 https://archive.org/download/bwb_S0-BPY-214_25/bwb_S0-BPY-214_25_djvu.txt（DNB 第 25 卷 Harvey 條，R533 seq 9、13、17）與 ZI3-S020 https://www.gutenberg.org/cache/epub/31511/pg31511-images.html（Notestein 1911，R533 seq 12、16、20）",
+      "reopen_result": "國家檔案摘要確有：主教函（三人已死、Jennet Hargrave 病危；Margaret Johnson 60 歲含淚認罪、『strong imagination… too weak a memory』；Mary Spencer 20 歲、collock 滾下坡、風大人擠聽不見；Frances Dicconson、40s.；『Conceit and malice』）；樞密院令（Baker 與 Clowes 選產婆、聽『Dr. Harvey, the King's physician』指示、『Ship Tavern at Greenwich』）；7 月 2 日證明書（Clowes、Baker 加另五名外科醫師、十名產婆，Janet Hargraves、Frances Dicconson、Mary Spencer 身上『nothing unnatural』，Margaret Johnson 有『two things which may be called teats』）；男孩訊問（aged ten years or thereabouts、King's coachman at Richmond、怕挨打）；再訊問（Mocking Tower about twenty years since、『merely proceeded out of his own brain』、『perceiving that many folks gave ear to him he grew confident in it more and more』）；父親（mason、6 月 28 日起關在 Gatehouse、『very honest harmless people』）。Webster 確有 Kildwick、『Good Boy tell me truly…』、『the persons accused had therefore the more wrong』、seventeen found guilty、Fleet 與戲、Ned of Roughs。對不上的：（1）口供是『摘野李子（bulloes）時』遇到獵犬、用『switch』抽、在『穀倉』裡六人跪著拉繩，不是趕牛途中、不是用繩子抽、不是屋裡；（2）父親『罵過打過兒子』——來源是『sharply rebuked and corrected』；（3）男孩是『set upon a stall』，不是座位隔板；（4）研究代理說 archive.org 找不到含 Harvey 的 DNB 卷，其實他抓的『25stepuoft』內容是 Hailes 起的另一卷；我另取 1891 年第 25 卷，Harvey 條明寫『discoverer of the circulation of the blood』並記 1634 年 6 月 29 日、7 月 2 日這次檢查與『so they were pardoned』；（5）研究稿說結局沒讀到——Notestein 引郡長紀錄：兩年後牢裡仍有九名女巫，三人與男孩指認者同名，『we do not know when they got out』。7 月 10、16 日兩個日期在 OCR 裡欄位錯亂，只能依欄邊日期判讀。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "去重：池內與同批對 Pendle、Edmund Robinson、Lancashire witch、Horestones 零命中，沒有 1612 年 Pendle 審判題，也沒有這個 1634 年案；歐洲女巫題 N5844、N4484、N2382 與兒童假證的 not_added 都是別案；同批 ZI4 的 G 軸兩題（N5964 Lulu Hurst、N5965 費城 Katie King）不相干。收：一手機構來源（國家檔案摘要）加當事人回憶，兩者對『誰教的』說法相左；補上御醫身分與『獲赦／兩年後仍在牢』的結局後有四個轉折，9–12 分鐘成立。"
+    },
+    {
+      "id": "N5945",
+      "agent": "ZI3",
+      "reviewer": "R533",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZI3-S012 https://archive.org/download/trialofduncanter00bann/trialofduncanter00bann_djvu.txt（R533 seq 1–2，先 GET /metadata 再抓全文，與 ZI3 快取逐位元相同）；ZI3-S013（Scott《Letters on Demonology》）與 ZI3-S014（1897 年那本書與 1896-12-29 來信）以 ZI3 快取逐段核對",
+      "reopen_result": "筆錄與導言確有：Scott 1792 年初任律師時由辯護律師 Robert M'Intosh 指給他看；被告的律師與代理人相信有罪；『as good Gaelic as he had ever heard in Lochaber』『Pretty well… for the ghost of an English sergeant!』只在導言（p. xiv），Scott 自評『no sound jest』；M'Pherson 26 歲、1750 年夏在 Christie 山泥炭坡發現遺骨、藍布、深鼠色頭髮、黑緞帶、Growar 叫他別說、Daldownie 勸他私埋（『rebel country』）；穿藍衣的幻影、先以為是 Farquharson 的兄弟、『I am Serjeant Davies』、『could not or would not』、第二次赤裸出現才說出兩人姓名、『in the twinkling of an eye』；『the conversation… was in the Irish language』（p. 30）；通譯 Duncan Campbell 宣誓（p. 33）；Isobel M'Hardie 四十多歲、『something naked』、蒙頭；6 月 10–12 日、十五人陪審團『all, in one voice… not guilty』（pp. 53–54）。對不上的：（1）題幹『證人承認自己先找到了遺骨』——證人宣誓說的是『the above vision was the occasion of his going by himself to see the dead body』，只是供詞從發現遺骨講起；（2）『這場審判有一半用蓋爾語進行』沒有來源，通譯是在 M'Pherson 作證之後才宣誓、負責『之後傳喚』的證人；（3）hook『唯一一次』『一字一句』沒有來源。研究稿漏掉筆錄 pp. 30–32 的重要一段：證人事後在被告 Duncan Clerk 家幫傭一年、當面指他殺人、收到一張二十蘇格蘭鎊的封口字據並當庭交出。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "去重：池內與同批對 Sergeant Davies、Arthur Davies、Terig、Bannatyne 零命中；『鬼與法庭』的 N2865（Greenbrier）、N2501（Fisher 的鬼）、N3785、N5443、N3221 都是別案、核心不同。收：一手法庭筆錄加編者兩次轉述，『名言不在筆錄裡』『供詞的順序與封口字據』『1896 年家族口傳』三個轉折，9–11 分鐘成立。1897 年那本書的作者沒有傳記頁來源（Gutenberg 書目只標 1844–1912），維持不點名。"
+    },
+    {
+      "id": "N5961",
+      "agent": "ZI4",
+      "reviewer": "R534",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZI4-S001 https://archive.org/download/diamondhoax00harp/diamondhoax00harp_djvu.txt（先 GET metadata 再抓全文，R534 seq 1、10；sha256 前 16 碼與研究代理快取相同）；ZI4-S002 https://archive.org/download/clarencekingmemo00cent/clarencekingmemo00cent_djvu.txt（R534 seq 2、11）；ZI4-S003 https://www.wyohistory.org/encyclopedia/diamond-hoax-bonanza-never-was（curl，R534 seq 19）；另補 ZI4-S020 https://oac.cdlib.org/findaid/ark:/13030/c8736v3p/admin/（seq 24）",
+      "reopen_result": "頁面上確實有：五千萬美元的電報、撞球檯、15 萬美元估價、2,500 美元加 1,000 股、四天路程與二十到二十五英里、兩天勘查、1,000 萬資本與 25 人各 8 萬、3,000 英鎊與 35,000 美元成本、35 萬訴訟與 15 萬和解、200 萬「dollar for dollar」退還、「not a share of stock was sold」、「I am not giving this story as a fact」、King「幾個月後」去世之說；Hague「Not then suspecting a fraud」與腳印、小棍洞；Emmons 的密西西比泡沫；Roberts 同日去世、聖誕節早晨見報。對不上的：（1）兩本書頁碼印在頁腳，研究稿多處差一頁（五千萬電報在 p. 196 不是 195；Hague 在 pp. 396–401 不是 395–400）；（2）hook「全美最貴的礦業專家」原書只寫「a very high priced professional」；（3）原稿把「King 出發時是相信的」當定論，但研究稿自己引的 WyoHistory 條目寫 Emmons 與 King 一聽就「suspicious」，兩來源相反；（4）Arnold「1878 年去世」原文是 1878 年中槍、六個月後去世；（5）King 卒日原稿說 OCR 印壞，其實同書 Raymond 小傳 p. 366 清楚寫 1901 年 12 月 24 日。紐約珠寶商的品牌名在 candidate 各欄位與 visual 都沒有出現（S001、S003 原文有點名，摘要未沿用）。",
+      "changed_fields": [
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json、QUESTIONS.md、legacy/w-axis.json、原來如此 QUESTIONS.md 對 Harpending、Diamond Hoax、Clarence King 皆 0 筆；Ralston 3 筆、鑽石相關（N404、N4064、U35）都是別題；同批 ZI1–ZI3 無撞題。素材有三個可查證的轉折加一個「兩說並陳」，撐得起 9–12 分。屬 1872 年早已消失的公司，不評在營運品牌。保留條件：文稿不得把 King「出發時相信」寫成定論；Harpending 的帳是當事人自述。"
+    },
+    {
+      "id": "N5962",
+      "agent": "ZI4",
+      "reviewer": "R534",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZI4-S005 https://archive.org/download/journeytoteacoun00fort/journeytoteacoun00fort_djvu.txt（R534 seq 3、12）；ZI4-S006 https://en.wikisource.org/wiki/Dictionary_of_National_Biography,_1885-1900/Fortune,_Robert（seq 34）；新增 ZI4-S022 https://archive.org/download/sim_memoirs-and-proceedings-chemical-society-london_1843-1844-and-1844-1845_2/…_djvu.txt（advancedsearch seq 29、metadata seq 32、全文 seq 33）",
+      "reopen_result": "頁面上確實有：石膏四份對普魯士藍三份、起鍋前約五分鐘、joss-stick 計時、小瓷匙、工人雙手是藍的、「perfectly ridiculous」、14½ 磅用 8 錢 2½ 分（一盎司多）、每百磅半磅以上、樣品送大博覽會、Thea bohea／viridis 之辨、剃頭刮到流淚；DNB 記 1848 年為東印度公司蒐集茶樹茶籽、1880-04-13 卒。對不上的：原稿 question／hook 寫「英國人問茶工」「茶工說」，原書是「some Chinese from the green-tea country」，而且是 Fortune 轉述一位英國人在上海的談話；化學家的判定原文是「from their appearance」，不是化驗。第二獨立來源：找到並讀了 Fortune 書中所指那位化學家 1844 年 2 月 5 日在化學學會宣讀的原論文——顯微鏡下的藍粒以苛性鉀與稀硫酸確認為普魯士藍，市售綠茶「invariably」如此，並認為是為了消費者要的顏色。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：Robert Fortune、綠茶、染色茶在池內 0 筆核心題（「普魯士藍」2 筆、「茶」各題皆別題背景）；同批無撞題。原稿幾乎只靠一本書，補上 1844 年獨立檢驗後成為「倫敦先看見顏料、產地才看見原因」，轉折由兩個變三個，片長 8–11 分可成立。不碰今天仍在爭的定性（茶樹外移只一句背景）；來源本身的結論是買方偏好造成，不構成醜化任一族群，已在 risk 寫明敘述界線。"
+    },
+    {
+      "id": "N5963",
+      "agent": "ZI4",
+      "reviewer": "R534",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZI4-S007 https://archive.org/download/michiganhistoryo00cool_0/michiganhistoryo00cool_0_djvu.txt（R534 seq 4、13）；ZI4-S008 https://archive.org/download/michiganasprovin03utle/michiganasprovin03utle_djvu.txt（seq 5、14）；ZI4-S009、S010 micourthistory.org 兩頁（seq 39、40）；新增 ZI4-S023 https://archive.org/download/michiganhistoric02michuoft/michiganhistoric02michuoft_djvu.txt（advancedsearch seq 35–36、metadata seq 37、全文 seq 38）",
+      "reopen_result": "頁面上確實有：Cooley pp. 268–272 的現銀繞法、21 家、鋸木廠、州長咨文、「wild cats」、kegs of nails、一百萬美元；Utley pp. 95–105 的名稱來歷不明、法條、49／40 家、Washtenaw 七家 60 萬、1838-03-01 日記、Felch 引文；Felch 1804–1896、Cooley 1824–1898。研究稿說「原刊沒有可下載全文」不對：ZI4 抓到的 michicanpioneerh0002unse 其實是第 17 卷，真正的 1880 年第 2 卷在另一個識別碼，R534 已下載並讀 Felch 原文 pp. 118–124。原文與 1906 年轉引字句略異（carefully／closely watched），並多出：錢從後門遞進來、委員認得出同一批外國錢幣、Shiawassee 保險櫃七枚銅板，以及「釘子」的出處——Jackson County Bank 的箱子，上層銀元、底下釘子和玻璃（p. 122）；同卷 pp. 320–321 照錄 1838-04-03 委員報告：2 月 22 日九只箱子、鉛塊與十便士釘子、一只碎窗玻璃。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：wildcat、野貓銀行、Felch 在各池 0 筆；池內銀行相關 N5702、N5802、N5805 機制不同；同批 ZI1 的 N5904（1661 年斯德哥爾摩銀行紙鈔）是另一國另一世紀，核心不同。研究代理最擔心的兩點（Felch 只有轉引、釘子桶沒指明銀行）都已用原刊解決，並多出「把戲是被認出來的」一個轉折，片長上調為 9–12 分。銀行均於 1839 年前後消失，不涉在營運品牌。"
+    },
+    {
+      "id": "N5964",
+      "agent": "ZI4",
+      "reviewer": "R534",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZI4-S012 https://archive.org/download/jstor-1759987/1759987_djvu.txt（R534 seq 6、15，全文逐句讀）；ZI4-S011 https://archive.org/download/LuluHursttheGeorgiaWonderWritesHerAutobiography/…_djvu.txt（seq 7、16）；ZI4-S013 https://www.georgiaencyclopedia.org/articles/arts-culture/georgia-wonder-phenomenon/（seq 41）；新增 ZI4-S018 https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Newcomb,_Simon（seq 20）",
+      "reopen_result": "頁面上確實有：Newcomb 文 pp. 106–108 的 Volta laboratory「two days later」、草帽帽簷卡在掌根、估計四十磅、五分之一體重、滾輪平台放棄、磅秤「click!」、父母怎麼催都不行、「no darkening of rooms」；Hurst 書 1883-09-18、十四歲、pp. 71–72 多撥 20 磅而秤桿不動、Knoxville 兩場後退出、髮夾刺破枕套、床尾板、偷藏表姊衣服與丟山核桃；州百科 1869 年生、1885 年秋取消歐洲行、1950-05-13 卒。小出入：髮夾第一次交代在 Part II p. 207（研究稿只列 pp. 251–254，後者實為 pp. 252–254）；原稿「本想幾天後說破」原文是每天都打算說、一天拖一天；另補她在 Part II pp. 225–226 仍堅持磅秤沒動。Newcomb 卒年原用書目標目，改用 EB1911 傳記條目（1909-07-11 卒）。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：Lulu Hurst、Georgia Wonder、磁力女孩在各池 0 筆；Newcomb 在池內出現於別題（飛行機器、金星凌日），同批 ZI2 的 N5921 也只把 Newcomb 當 Hell 神父案的查證者，核心不同。當事人自述、現場測試者報告、州百科三方互相牴觸，轉折三個以上，9–11 分成立。Hurst 1950 年卒，距紅線六年，來源是有署名的州百科條目，可靠；畫面已限背影剪影。不教儀式。"
+    },
+    {
+      "id": "N5965",
+      "agent": "ZI4",
+      "reviewer": "R534",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZI4-S016 https://archive.org/download/sim_atlantic_1875-01_35_207/sim_atlantic_1875-01_35_207_djvu.txt（R534 seq 9、18）；ZI4-S015 https://archive.org/download/peoplefromotherw00olco/peoplefromotherw00olco_djvu.txt（seq 8、17）；新增 ZI4-S019 https://en.wikisource.org/wiki/Dictionary_of_National_Biography,_1885-1900/Owen,_Robert_Dale（seq 43）、ZI4-S021 encyclopedia.com Olcott 條（seq 23）；池內 N426 以 python 讀 pool.json 完整紀錄（cli.mjs show 逾時）",
+      "reopen_result": "頁面上確實有：Owen 文 5 月 29 日來信、6 月 5 日到場、Ninth 街近 Arch 街樂器行樓上、七呎寬八呎高胡桃木暗櫃、「Forty memorable sittings」、一吋厚木板牆、珠母貝十字架、親手剪下的金髮、「no longer entertained the slightest doubt」與三段論；Olcott 書 12 月 5 日 mock seance、Owen 的撤回與來信、《Inquirer》1 月 9、11 日、孤兒法院法官、十三欄、5 月 12 日登場、假板、十分錢面具、「cut from a wig」、密西根被抱住、布袋封蠟、結論「seem to be demonstrated」。出入：金髮在 Owen 文 p. 61 而研究稿 locator 未列；十三欄在 p. 437；原稿稱她「房東」，原文是開出租公寓、靈媒夫婦為房客（意思相符，已寫清楚）；question 的「她們的能力」應為這對夫婦。新發現：Owen 撤回之後仍出席 Olcott 的布袋測試並親手封門（p. 465）。Olcott p. 429 的「1875 年 1 月 5 日前後」確與同頁信件（12 月 19 日）及 p. 436 矛盾，判斷是 12 月之誤。DNB 另以一句話證實 Owen 晚年「被靈媒 Katie King 所騙」，卒於 1877-06-17。《Inquirer》原報仍未取得（嘗試以 Podmore 1902、Home 1877 找第二份轉述，兩書都沒有寫自白內容，未列為來源）。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "與 N426 不是同一核心：N426 是倫敦、Crookes 與 Florence Cook，答案是「科學家自己的報告沒達到自設標準」，scope 明寫不講抓包細節；本題是費城另一對靈媒與另一位見證人，答案是「扮演者宣誓自白、見證人在雜誌出刊之際撤回、信徒調查者重測後又信回去」，人、地、文件、答案皆不同，duplicate_of 留空。但兩題共用「Katie King」之名、同屬「名人替靈媒背書」系列（另有 N3805 同在費城），池內 wave50、wave51 也有把這一系列合併後不收的紀錄；若協調者認為系列已飽和，可改列候補。其餘去重：Robert Dale Owen 在池內只以《Footfalls》作者出現於 N5443 來源，Olcott 0 筆；同批無撞題。自白只經 Olcott 轉述是最弱一環，已要求文稿明說；有 Owen 自己的文章、他照錄的信與 DNB 三處撐住主線，9–11 分成立。"
+    }
+  ],
+  "reviewer_notes": {
+    "R531": "（1）整體紮實：24 個來源都有成功請求紀錄且都被題目引用，五題重開關鍵來源後數字、日期、引句幾乎全數相符，去重乾淨；沒有需要刪除的來源。（2）最大的問題在 N5904：把瑞典央行史書一家的說法（先擠兌後發鈔、附條件死刑）當定論，三個來源同源、卒年沒有公有領域傳記頁；補讀 1910 年 Flux 報告與 1845 年瑞典傳記辭典後，順序與判決都有不同寫法，已改成三份並陳，並把沒有傳記來源的國王、宰相改成職稱。（3）為了戲劇性多寫了來源沒有的話：N5901『牛頓親手燒紅錘扁』（報告三人聯名、未言誰動手）、N5903『吊著兩個女人』（信裡是幾個人、其中兩個是女人）。（4）沒有發現同一本書裡的矛盾：N5901 化驗的金衡重量 Appendix II 印 8 本尼威特、同書委員會報告引作 18，只有後者算得出『超過一磅』。（5）N5905 把十七世紀反天主教綽號放進題目與 case_key，牴觸不收清單的現存宗教一條，已改成不靠綽號的寫法。（6）畫面守則：N5903 的 visual 有會出現數字的月曆與吊著的人形剪影，已改；N5902 的書頁與登記簿補上不露字。另：N5902『差八個月』是用 DNB 轉述的日期推算，1817 年版 Hutton 沒有該日期；DNB 的 Wikisource 網址有兩次猜錯（404）的紀錄，顯示是照格式拼的，但收進 sources 的都有 200 紀錄且為正式條目頁，予以保留；同批五題有三題與貨幣相關，機制不同可收，排片要錯開。ZI3 的 proposal.json 覆核時尚未產出，跨代理去重只查了 ZI2（天文題，無重疊）與 ZI4。",
+    "R532": "（1）沒有拼湊網址：20 筆 sources[].url 在 ZI2 access_log 都有 200 紀錄，S001 的純文字網址確實是 Gutenberg 書目頁上的連結；seq 1 自組的站內搜尋網址沒有被任何來源引用。（2）最大的錯在 N5922：把 Encke 的『十倍』寫成『日地距離故意算成十倍』，原文是彗星向徑的對數筆誤（彗星到太陽的距離）——二手研究轉述有誤，研究代理沒讀到原文。（3）N5925 過度依賴 Chalmers 與 MacTutor：『寄出八組距離挑戰』方向相反、hook 的『兩個月後回報比不出高下』不是來源的話；補到 1685 年《Philosophical Transactions》書評後才有實測數字。（4）N5924 數字本身都對（影像核過），但『以百萬噸計』『最後一節』『第幾節』是研究代理自己的概括，且漏了 Barringer 明文否決汽化說這個最好的轉折。（5）N5921 把台長的答話寫成 Newcomb 的問句，並把翻案講得比 Newcomb 自己的結論更徹底；1883 年原文補讀後已分清兩個文本。（6）1956 紅線多處借用專著頁或註腳的生卒年代替一人一頁傳記（Hell、Littrow、Zach、Newcomb、Gauss、d'Arrest），已補 ADB 與學會訃聞，補不到的 d'Arrest 改不具名。N5923 最乾淨，只補全文並解決 Steenstrup 身分。",
+    "R533": "（1）N5941 的核心翻轉建立在沒讀到的判決書上，而且與唯一讀到的論文作者的讀法相反卻寫成定論；原卷覆核時仍取不到，判 HOLD（卒年已用 1932 年訃聞補齊）。（2）幾處把來源沒有的字眼寫進題幹與 hook：N5943 的『一輩子』『天天戴』『生前就稱他預言者』、N5941 的『女警探』『幾個月後』、N5945 的『唯一一次』『一半用蓋爾語』、N5944 的『罵過打過』。（3）N5945 題幹把『供詞從發現遺骨講起』寫成『證人承認自己先找到遺骨』，與宣誓內容相反；同時漏掉筆錄裡最有力的一段（在被告家幫傭一年、二十蘇格蘭鎊封口字據）。（4）N5944 口供細節與 Webster 所印原文有出入（摘野李子、細枝、穀倉），並漏查兩件其實查得到的事：御醫就是 William Harvey（DNB 該卷在 archive.org 另一個識別碼下），以及被告的結局（DNB『獲赦』對郡長紀錄『兩年後九人仍在牢』）。（5）N5942 用了 OCR 破損的掃描本、引句靠還原——換可讀本後證實大意無誤；題幹把 1784 年通令與『決定拆巴士底』併成一句。（6）程序：en.wikisource.org 搜尋 API 第一次 429 後又送了五次（seq 69–73）；seq 86 的 archive.org/metadata/dictionaryofnati26stepuoft 是猜的識別碼（回空物件）；另有一次 counselstack 429（seq 30，之後沒有重試）。逐一比對後，所有 sources[].url 都能在 access_log 的成功請求與其前面的搜尋結果裡找到，沒有猜的或拼的；兩個 tile.loc.gov 網址原樣出現在 loc.gov 搜尋結果 JSON 裡。兩筆只供 not_added 用的來源已移除；not_added 14 筆的 existing_ids 全部是池內真實題號。",
+    "R534": "ZI4 的稿子整體紮實：我重新下載九份全文（雜湊與其快取一致）逐項核對，數字、日期、引句幾乎都在頁面上，沒有發現編造或拼湊網址。主要問題五點：（1）頁碼——兩本頁碼印在頁腳的書（Harpending、King 紀念文集）多處差一頁，另有幾處 locator 漏列實際出處（Hurst 的髮夾 p. 207、Owen 的金髮 p. 61）。（2）該找到的原件沒找到：密西根 Felch 1878 年原文其實在 Internet Archive 另一個識別碼裡（ZI4 抓到的是標錯卷號的第 17 卷），讀原文後「釘子桶」有了出處（Jackson County Bank 的箱子）；Fortune 一題所指的化學家 1844 年論文也在 Internet Archive，補上後不再是單一來源。（3）把一方說法寫成定論：N5961 說 King「出發時是相信的」，但同題引用的州歷史學會條目寫的正相反，改成兩說並陳；hook 的「全美最貴」原書沒有。（4）轉述層級寫得太近：N5962 把 Fortune 轉述的上海問答寫成「茶工說」。（5）卒年來源：Newcomb、Owen 用書目／權威標目，已換成 EB1911 與 DNB 傳記條目，Olcott 補百科傳記；Harpending 仍找不到寫明卒年的傳記頁，只補到檔案館小傳。五題皆 ADOPT_WITH_CHANGES；N5965 與 N426 判定非重複但屬姊妹題，留給協調者決定是否同批收。"
+  },
+  "process_notes": [
+    "研究代理 ZI3 在 en.wikisource.org 搜尋 API 回 429 之後，同一個迴圈又送出五個請求（其請求紀錄 seq 69–73），違反「第一次就停」；之後未再碰該站，覆核者 R533 全程沒有請求該站，DNB 改讀 archive.org 卷冊。",
+    "研究代理 ZI2 的請求紀錄第 1 列與 ZI3 的 seq 86 是自行組出的站內搜尋網址／識別碼；兩者都沒有進入任何來源，覆核者逐筆確認批次內的來源網址都有成功請求紀錄或搜尋出處。",
+    "N5941（1914 年紐約占星師案）判決書原卷（32 N.Y. Crim. R. 326–345）仍取不到，而且「名言其實是法官在描述被告主張」是研究稿自己的讀法，與所引論文作者的結論相反；列待查，讀到原卷再定。",
+    "N5965（1874 年費城 Katie King）與池內 N426（倫敦 Crookes 與 Florence Cook）靈媒、見證人與核心答案都不同，先前兩次不收紀錄針對的是重做倫敦案，故照收；扮演者的自白只經 Olcott 轉述，文稿須明說。"
+  ]
+}

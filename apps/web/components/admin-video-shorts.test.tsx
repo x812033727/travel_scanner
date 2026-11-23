@@ -111,7 +111,7 @@ describe("the Shorts tab of /admin/videos", () => {
     const calls = stubFetch();
     page();
     const tabs = within(screen.getByRole("tablist", { name: "影片審核分頁" })).getAllByRole("tab");
-    expect(tabs.map((each) => each.textContent)).toEqual(["影片", "漫劇", "Shorts", "設定", "長片企劃"]);
+    expect(tabs.map((each) => each.textContent)).toEqual(["影片", "漫劇", "Shorts", "設定", "長片企劃", "題目池", "劇本"]);
     fireEvent.click(tabs[2]);
     expect(await screen.findByRole("region", { name: "Shorts 現況" })).toBeTruthy();
     expect(window.location.search).toContain("tab=shorts");
@@ -120,6 +120,11 @@ describe("the Shorts tab of /admin/videos", () => {
     const views = within(screen.getByRole("tablist", { name: "Shorts 的畫面" })).getAllByRole("tab");
     expect(views.map((each) => each.textContent)).toEqual(["月曆", "片庫與製作中", "成效", "花費", "題庫", "每週報告", "Shorts 設定"]);
     expect(views[0].getAttribute("aria-selected")).toBe("true");
+    // The views come before the status row and "needs you" (owner, 2026-11-21).
+    const bar = screen.getByRole("tablist", { name: "Shorts 的畫面" });
+    for (const name of ["Shorts 現況", "需要你"]) {
+      expect(bar.compareDocumentPosition(screen.getByRole("region", { name })) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    }
     fireEvent.click(views[2]);
     await waitFor(() => expect(window.location.search).toContain("view=metrics"));
     expect(await screen.findByText("還沒有公開的 Shorts")).toBeTruthy();

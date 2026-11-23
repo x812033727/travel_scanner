@@ -20,6 +20,7 @@ import { estimateTimeline } from "./core/timeline.mjs";
 import { eachLine, LINE_ID } from "./core/schema.mjs";
 import { StageError, runCaptions } from "./core/stages.mjs";
 import { narrativeHash, writeScreenplay } from "./core/screenplay.mjs";
+import { askOpeningReview, OPENING_PACKET, OPENING_PERSONAS, OPENING_REVIEW, openingPacket, openingReviewProblems, openingReviewRecord, sessionVerdicts } from "./core/opening-review.mjs";
 import { lintProject, loadProject, pipelineStatus } from "./core/state.mjs";
 
 // `incomplete`: a STOP file ended the stage before it finished. What it made so far is kept and a
@@ -33,6 +34,7 @@ export const AREAS = {
   login: ["tts", "2026-09-24-video-tts-azure"],
   tts: ["tts", "2026-09-24-video-tts-azure"],
   audition: ["tts", "2026-09-24-video-tts-azure"],
+  "minimax-quota": ["tts", "2026-11-12-add-minimax-speech-as-a-third"],
   "check-audio": ["tts", "2026-09-24-video-audio-check"],
   render: ["render", "2026-09-24-video-render-slides"],
   assemble: ["assemble", "2026-09-24-video-assemble-package"],
@@ -79,6 +81,9 @@ Usage: node tools/video/cli.mjs <command> [options]
   ids      [--count N] [--slug S]                  fresh line ids that are not in use
   approve  --slug S --gate outline|script|look|storyboard|audio|final|publish [--workdir D] [--note T]
                                                    record the owner's approval of the file as it is now
+  opening-review --slug S [--record F --author A | --ask | --check] [--workdir D]
+                                                   the strict first-300-seconds review of 原來如此, 奇聞 and brand stories:
+                                                   writes the packet; --record takes three subagents' answers, --ask the site's model; tts waits for it
   narrative --slug S [--answers F] [--workdir D] [--json]
                                                    the storytelling panel (script-writing.md §故事主線與鉤子): without --answers it
                                                    prints the narration and its ten yes-or-no questions for a blind reader; with
@@ -113,6 +118,7 @@ Usage: node tools/video/cli.mjs <command> [options]
   login [--name N] [--paste | --token-file F] [--colab] [--runpod]  pair with the site: allow the printed code on the admin card
   audition --text-file F [--voices V] [--style T] [--slug S] [--workdir D]
                                                    compare voices; A01/B18 pilot samples require their exact budgeted --slug
+  minimax-quota [--json]                           what is left of the owner's MiniMax M Plan (speech, images, video), as MiniMax reports it
   check-audio --slug S [--locale L] [--threshold 0.5] [--force] [--second-opinion "PROGRAM ARGS"]  transcribe every line; Jev judges the ones that differ; a second transcriber rechecks what Jev doubts
   dub --slug S [--locale en,ja,ko] [--format m4a|mp3|wav] [--dry-run] [--redo F [--keep-fitting]] [--line-by-line] [--force] [--style T]
                                                    a YouTube audio track per locale: the translation read by the
@@ -266,6 +272,58 @@ async function cmdNarrative(args, ctx) {
   return verdict.passed ? EXIT.ok : EXIT.lint;
 }
 
+/**
+ * The opening review (core/opening-review.mjs; owner, 2026-11-19): writes the packet the readers
+ * read (review/opening-packet.md); --record <file> --author <name> records three fresh subagents of
+ * the session that made the episode, --ask asks the site's model instead, one request per viewer.
+ * Either exits 1 until every reader would stay the first 300 seconds with nothing to fix; --check
+ * prints where it stands. tts refuses a hand-made episode until it passes.
+ */
+async function cmdOpeningReview(args, ctx) {
+  const values = parse(args, { slug: { type: "string" }, workdir: { type: "string" }, ask: { type: "boolean" }, check: { type: "boolean" }, record: { type: "string" }, author: { type: "string" } });
+  if (!values.slug) throw new UsageError("opening-review needs --slug");
+  const project = loadProject({ slug: values.slug, root: ctx.root });
+  const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: project.doc.slug, root: ctx.root, home: ctx.home });
+  const reviewFile = path.join(workdir, ...OPENING_REVIEW);
+  const report = (record, label) => {
+    const problems = openingReviewProblems(project.doc, record);
+    ctx.stdout.write(`${project.doc.slug}: opening review ${label} ${problems.length ? "not passed" : "passed"} (${reviewFile})\n`);
+    for (const problem of problems) ctx.stdout.write(`  FAIL  ${problem}\n`);
+    return problems.length ? EXIT.lint : EXIT.ok;
+  };
+  if (values.record && values.ask) throw new UsageError("opening-review takes --record or --ask, not both");
+  if (values.check) return report(readJson(reviewFile, null), "is");
+  const packet = path.join(workdir, ...OPENING_PACKET);
+  mkdirSync(path.dirname(packet), { recursive: true });
+  atomicWrite(packet, openingPacket(project.doc));
+  if (values.record) {
+    // Three fresh subagents of the session making the episode read the packet, one per viewer.
+    if (!values.author) throw new UsageError("opening-review --record needs --author (the agent that wrote the script, never one of its readers)");
+    const verdicts = readJson(path.resolve(values.record));
+    if (!Array.isArray(verdicts)) throw new UsageError("--record names a JSON array of the three readers' answers");
+    const round = (readJson(reviewFile, null)?.round ?? 0) + 1;
+    const record = openingReviewRecord(project.doc, sessionVerdicts(verdicts), { round, at: ctx.now(), author: values.author });
+    mkdirSync(path.dirname(reviewFile), { recursive: true });
+    atomicWrite(reviewFile, `${JSON.stringify(record, null, 2)}\n`);
+    return report(record, `round ${round}`);
+  }
+  if (!values.ask) {
+    ctx.stdout.write(`${project.doc.slug}: wrote ${packet}\nGive it to three fresh subagents of this session, one per viewer (${Object.keys(OPENING_PERSONAS).join(", ")}), and record their answers with --record <file> --author <you>; or run --ask to have the site's model read it.\n`);
+    return EXIT.ok;
+  }
+  const { automationClient } = await import("./automation/client.mjs");
+  const round = (readJson(reviewFile, null)?.round ?? 0) + 1;
+  mkdirSync(path.dirname(reviewFile), { recursive: true });
+  // Each answer is saved as it arrives, so a request that fails later does not lose the paid ones.
+  const save = (verdicts) => {
+    const record = openingReviewRecord(project.doc, verdicts, { round, at: ctx.now() });
+    atomicWrite(reviewFile, `${JSON.stringify(record, null, 2)}\n`);
+    return record;
+  };
+  const verdicts = await askOpeningReview(automationClient(ctx, { attempts: 2 }), project.doc, { onVerdict: save });
+  return report(save(verdicts), `round ${round}`);
+}
+
 async function cmdScript(args, ctx) {
   const values = parse(args, { slug: { type: "string" } });
   if (!values.slug) throw new UsageError("script needs --slug");
@@ -372,7 +430,7 @@ async function delegate(command, args, ctx) {
   return module.run(command, args, { ...ctx, EXIT });
 }
 
-const COMMANDS = { lint: cmdLint, status: cmdStatus, ids: cmdIds, approve: cmdApprove, narrative: cmdNarrative, script: cmdScript, captions: cmdCaptions, "story-lexicon-migrate": cmdStoryLexiconMigrate, "story-lexicon-revise": cmdStoryLexiconRevise };
+const COMMANDS = { lint: cmdLint, status: cmdStatus, ids: cmdIds, approve: cmdApprove, narrative: cmdNarrative, "opening-review": cmdOpeningReview, script: cmdScript, captions: cmdCaptions, "story-lexicon-migrate": cmdStoryLexiconMigrate, "story-lexicon-revise": cmdStoryLexiconRevise };
 
 export async function main(argv, overrides = {}) {
   const ctx = { root: ROOT, here: HERE, env: process.env, stdout: process.stdout, stderr: process.stderr, now: () => new Date(), ...overrides };

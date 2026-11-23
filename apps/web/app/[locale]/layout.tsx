@@ -11,14 +11,23 @@ import { SavedItemsProvider } from "@/components/saved-items-provider";
 import { SiteFooter } from "@/components/site-footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteVisibilityProvider } from "@/components/site-visibility-provider";
+import { DiscoveryStatusProvider } from "@/components/discovery-status-provider";
 import { UsageCatalogProvider } from "@/components/usage-catalog-provider";
 import { CommunityProvider } from "@/components/community/provider";
 import { getCommunityState } from "@/lib/community/server";
+import { getDiscoveryStatus } from "@/lib/discovery-status.server";
 import { AnalyticsProvider } from "@/components/analytics-provider";
 import { PrivateRouteIsolation } from "@/components/private-route-isolation";
 import { ThirdPartyAudience } from "@/components/third-party-audience";
 import { TravelpayoutsDrive } from "@/components/travelpayouts-drive";
-import type { AdsenseConfig } from "@/lib/adsense";
+import { ADS_TXT_FALLBACK_PUBLISHER_ID } from "@/app/ads.txt/ads-txt";
+import {
+  isAdsenseOrigin,
+  isAdsensePublisherId,
+  isPublicAdsenseVerificationPath,
+  type AdsenseConfig,
+} from "@/lib/adsense";
+import { fetchAdsenseConfig } from "@/lib/adsense-config";
 import { routing } from "@/i18n/routing";
 import { alternatesFor, FEED_PATH, routePathFromRequest, siteUrl } from "@/lib/seo";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
@@ -46,6 +55,17 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+async function verifiedAdsensePublisherId(host: string | null, routePath: string): Promise<string | null> {
+  const onAdsenseOrigin = isAdsenseOrigin(siteUrl) || isAdsenseOrigin(`https://${host || ""}`);
+  if (!onAdsenseOrigin || !isPublicAdsenseVerificationPath(routePath)) return null;
+  try {
+    const { publisher_id: configured } = await fetchAdsenseConfig();
+    return isAdsensePublisherId(configured) ? configured : ADS_TXT_FALLBACK_PUBLISHER_ID;
+  } catch {
+    return ADS_TXT_FALLBACK_PUBLISHER_ID;
+  }
+}
+
 export async function generateMetadata({ params }: Pick<Props, "params">): Promise<Metadata> {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
@@ -58,6 +78,7 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
   // this header; a page wanting a different canonical still overrides the whole field.
   const path = routePathFromRequest(requestHeaders.get("x-travel-pathname"));
   const home = path === "/";
+  const adsenseAccount = await verifiedAdsensePublisherId(requestHeaders.get("host"), path);
   return {
     metadataBase: new URL(siteUrl),
     title: t("title"),
@@ -85,19 +106,21 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
       ...(home ? { title: t("ogTitle"), description: t("ogDescription") } : {}),
       images: ["/og.png"],
     },
+    ...(adsenseAccount ? { other: { "google-adsense-account": adsenseAccount } } : {}),
   };
 }
 
 export default async function LocaleLayout({ children, params, ads }: Props) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
-  const [messages, siteVisibility, usageCatalog, requestHeaders, jar, community] = await Promise.all([
+  const [messages, siteVisibility, usageCatalog, requestHeaders, jar, community, discovery] = await Promise.all([
     getMessages(),
     getSiteVisibility(),
     getUsageCatalog(locale),
     headers(),
     cookies(),
     getCommunityState(),
+    getDiscoveryStatus(),
   ]);
   // Nobody carrying a session cookie means nobody to ask about. Both providers below
   // used to find that out by sending a request that could only come back 401, on every
@@ -126,6 +149,7 @@ export default async function LocaleLayout({ children, params, ads }: Props) {
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
           <SiteVisibilityProvider state={siteVisibility}>
+          <DiscoveryStatusProvider initialEnabled={discovery.enabled}>
             <UsageCatalogProvider state={usageCatalog}>
               <AnalyticsProvider>
                 <TravelpayoutsDrive enabled={travelpayoutsDriveEnabled} />
@@ -159,6 +183,7 @@ export default async function LocaleLayout({ children, params, ads }: Props) {
                 </HeaderSessionProvider>
               </AnalyticsProvider>
             </UsageCatalogProvider>
+          </DiscoveryStatusProvider>
           </SiteVisibilityProvider>
           </ThemeProvider>
         </NextIntlClientProvider>

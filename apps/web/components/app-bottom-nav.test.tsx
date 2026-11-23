@@ -61,16 +61,26 @@ describe("AppBottomNav", () => {
     expect(screen.getAllByRole("link")).toHaveLength(5);
   });
 
-  it("keeps every tab when the switches could not be read", () => {
-    // "unavailable" is a failed fetch, not the owner closing the site: the
-    // navigation stays and each page still enforces its own gate.
+  it("shows four information-only content tabs when member features are turned off or switches are unavailable", () => {
     render(
       <SiteVisibilityProvider state={{ status: "unavailable", features: closedSiteVisibility }}>
         <AppBottomNav />
       </SiteVisibilityProvider>,
     );
     const links = screen.getAllByRole("link");
-    expect(links).toHaveLength(5);
-    expect(screen.getByRole("link", { name: "探索" }).getAttribute("href")).toBe("/hotspots");
+    expect(links.map((link) => link.getAttribute("href"))).toEqual([
+      "/explore", "/ai", "/guides", "/life",
+    ]);
+  });
+
+  it("hides collections, trips, and my tabs in discovery mode when member features are off", () => {
+    discovery.enabled = true;
+    render(
+      <SiteVisibilityProvider state={{ status: "ready", features: { ...openSiteVisibility, member_features_enabled: false, flight_search_enabled: false, videos_enabled: false } }}>
+        <AppBottomNav />
+      </SiteVisibilityProvider>,
+    );
+    const hrefs = screen.getAllByRole("link").map((link) => link.getAttribute("href"));
+    expect(hrefs).toEqual(["/explore", "/ai", "/guides", "/life"]);
   });
 });

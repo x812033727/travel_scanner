@@ -1,0 +1,255 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-17",
+  "status": "TOPIC_APPEAL_REFERENCE_NOT_FINAL_CUT_REVIEW",
+  "owner_request": "站主 2026-11-17 問「還有繼續有效率的擴充嗎」，選「先評 444 題，再改包裝」：這 444 題評分後總分 6.0–6.5 的單集題改包裝。",
+  "candidates_method": {
+    "scope": "總分 6.0–6.5 的入選單集題改包裝後的複評，第 13 輪 18 題：question、hook、payoff 由未參與研究與評分的改寫編輯重寫（問句 40–110 字、一個問號），事實與來源不動，新文字的數字與專名都在原題卡裡。複評的五項平均比原分高 0.5 以上（第 1–3 輪是「較高即採用」）的 9 題採用新包裝並以這份分數為準；其餘維持原文與原分。",
+    "persona": "台灣 25–45 歲、喜歡歷史懸案／奇聞／都市傳說長片的一般觀眾",
+    "card_fields": "題目、完整問題、開場鉤子、這集會揭曉（前 260 字）、畫面",
+    "reviewers": "兩位新評審各評一次，並放進同六題錨點；不讀 repo、不上網。各自用錨點平均與基準錨點平均的差扣掉鬆緊，再取兩人平均。五項欄位是兩人的原始平均，score 是校正後的五項平均；併入需求的總分由 build 計算。",
+    "sample_anchors": {
+      "P09": [
+        7.9,
+        7.9
+      ],
+      "N384": [
+        6.9,
+        6.8
+      ],
+      "N2843": [
+        4.7,
+        4.5
+      ],
+      "N2181": [
+        6.2,
+        6.4
+      ],
+      "N3266": [
+        4.5,
+        4.7
+      ],
+      "N142": [
+        6.4,
+        6.6
+      ]
+    },
+    "baseline_anchor_mean": 6.858,
+    "sample_offsets": {
+      "zr13-a": -0.66,
+      "zr13-b": -0.68
+    },
+    "caveat": "第 10–13 輪的題都是 reviews/audience-20261117-unscored.json 第一次評分落在 6.0–6.5 的題，第一次改包裝，規則同第 8、9 輪（REWRITE2.md：可沿用原問句裡的主題名稱、地名與身分稱呼，逐題記在批次檔的 notes；數字、最高級與情節仍只能用查核內容裡有的）。每批除了六題錨點，另放 8 題沒改動的對照題一起校正。改寫交稿後主編刪去兩處查核內容沒有的時間（N303 的年份與日期、N2983 的「20 世紀初」）。H36 是舊題庫的題、不在批次檔裡，沒有送改。",
+    "not_adopted": {
+      "N1303": {
+        "previous": 7.47,
+        "rescored": 7.52
+      },
+      "N3027": {
+        "previous": 7.05,
+        "rescored": 7.17
+      },
+      "N781": {
+        "previous": 6.62,
+        "rescored": 6.57
+      },
+      "N303": {
+        "previous": 7.27,
+        "rescored": 7.47
+      },
+      "N4765": {
+        "previous": 7.16,
+        "rescored": 7.27
+      },
+      "N5461": {
+        "previous": 7.51,
+        "rescored": 7.87
+      },
+      "N3743": {
+        "previous": 7.1,
+        "rescored": 7.52
+      },
+      "N4282": {
+        "previous": 7.02,
+        "rescored": 7.27
+      },
+      "N2942": {
+        "previous": 7.31,
+        "rescored": 7.57
+      }
+    }
+  },
+  "candidates": [
+    {
+      "id": "N3102",
+      "rank": 1,
+      "of": 400,
+      "score": 8.37,
+      "raw": 7.7,
+      "click": 7.75,
+      "hook": 7.5,
+      "surprise": 7.75,
+      "payoff": 7.75,
+      "share": 7.75,
+      "comment": "蛋原來是謎底、大砲是現代瞎編，童年被翻轉",
+      "previous": {
+        "score": 7.18,
+        "comment": "蛋才是原本謎底，大砲是後加，顛覆童年想分享",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "從『三個真實身分』的考據改成觀眾都有的疑問：童謠沒寫蛋，為什麼他是蛋。"
+      }
+    },
+    {
+      "id": "N5422",
+      "rank": 2,
+      "of": 400,
+      "score": 8.27,
+      "raw": 7.6,
+      "click": 7.25,
+      "hook": 7.25,
+      "surprise": 7.75,
+      "payoff": 8.0,
+      "share": 7.75,
+      "comment": "聖誕禁餡餅原來撞上國王禁食日，三層反轉好分享",
+      "previous": {
+        "score": 7.54,
+        "comment": "百果餡餅違法錯三層，聖誕必轉",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "從『錯三層』裡挑出最反常的一層：禁吃不是針對餡餅，而是聖誕節撞上國王自己簽的週三禁食日。"
+      }
+    },
+    {
+      "id": "N6205",
+      "rank": 3,
+      "of": 400,
+      "score": 8.22,
+      "raw": 7.55,
+      "click": 8.0,
+      "hook": 7.25,
+      "surprise": 7.75,
+      "payoff": 7.25,
+      "share": 7.5,
+      "comment": "曼薩穆薩撒金大家都聽過，反轉成國王借錢很有梗",
+      "previous": {
+        "score": 7.37,
+        "comment": "首富撒金搞垮埃及很紅，真相是他借錢回家，反差讚",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "從一串數字改成一個反轉：寫下『十二年』的人，記的是國王沒錢借貸。"
+      }
+    },
+    {
+      "id": "N4644",
+      "rank": 4,
+      "of": 400,
+      "score": 8.17,
+      "raw": 7.5,
+      "click": 8.0,
+      "hook": 7.5,
+      "surprise": 7.5,
+      "payoff": 6.5,
+      "share": 8.0,
+      "comment": "粉紅藍曾經相反超想轉給朋友，可惜結論有點散",
+      "previous": {
+        "score": 7.25,
+        "comment": "粉紅藍色之爭人人有感，可惜答案是各說各話",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "用『總統夫人寄錯鞋』這個場景切入，把兩份互相矛盾的紀錄放進同一個問句。"
+      }
+    },
+    {
+      "id": "N6244",
+      "rank": 5,
+      "of": 400,
+      "score": 8.02,
+      "raw": 7.35,
+      "click": 6.75,
+      "hook": 8.0,
+      "surprise": 7.75,
+      "payoff": 7.5,
+      "share": 6.75,
+      "comment": "地圖上的山其實是騾道，嚮導那句話太好笑了",
+      "previous": {
+        "score": 7.42,
+        "comment": "嚮導說這裡只是騾子路，超好笑，地圖烏龍很讚",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "把三條大河、引文串刪掉，用『地圖大山 vs 嚮導說是騾道』一句反差當題目。"
+      }
+    },
+    {
+      "id": "N5183",
+      "rank": 6,
+      "of": 400,
+      "score": 8.02,
+      "raw": 7.35,
+      "click": 7.25,
+      "hook": 7.5,
+      "surprise": 7.25,
+      "payoff": 7.5,
+      "share": 7.25,
+      "comment": "robot原來是化學人造人，作者還認輸，冷知識滿分",
+      "previous": {
+        "score": 7.33,
+        "comment": "作者抗議機器人不是鐵皮還認輸，冷知識想轉",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "把三段年份與 Televox 細節移出題目，只留『作者抗議還認輸』這個反常點。"
+      }
+    },
+    {
+      "id": "N5644",
+      "rank": 7,
+      "of": 400,
+      "score": 8.02,
+      "raw": 7.35,
+      "click": 6.75,
+      "hook": 8.0,
+      "surprise": 7.25,
+      "payoff": 8.0,
+      "share": 6.75,
+      "comment": "蝙蝠塞耳就撞牆超直觀，權威一句話誤導百年很氣人",
+      "previous": {
+        "score": 7.2,
+        "comment": "權威一句話埋掉蝙蝠真相百年，委屈感很帶得動。",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "把兩百字的驚嘆長句砍成一個問句，只留黃銅耳管與權威一句話的對比。"
+      }
+    },
+    {
+      "id": "N4961",
+      "rank": 8,
+      "of": 400,
+      "score": 8.02,
+      "raw": 7.35,
+      "click": 6.75,
+      "hook": 7.75,
+      "surprise": 7.5,
+      "payoff": 7.5,
+      "share": 7.25,
+      "comment": "遺言其實是讀錯字，還有肉派版本，超想留言",
+      "previous": {
+        "score": 7.11,
+        "comment": "愛國遺言是讀錯字，肉派版本超好笑。",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "把四個版本的考據串收成一個反轉：出版者自己登報說讀錯了字。"
+      }
+    },
+    {
+      "id": "N130",
+      "rank": 9,
+      "of": 400,
+      "score": 7.52,
+      "raw": 6.85,
+      "click": 7.5,
+      "hook": 7.0,
+      "surprise": 6.25,
+      "payoff": 7.25,
+      "share": 6.25,
+      "comment": "下棋機器人經典題，愛倫坡猜對又猜錯有點意思",
+      "previous": {
+        "score": 7,
+        "comment": "土耳其下棋機器人經典，愛倫坡猜錯是好反轉",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "保留原題切入點，把『猜對有人』放前面，讓問句停在大火後才揭曉的機關。"
+      }
+    }
+  ]
+}

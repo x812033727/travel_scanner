@@ -1,0 +1,1038 @@
+{
+  "reviewed_on": "2026-11-11",
+  "round": 3,
+  "previous_round": "docs/videos/so-thats-why/pool/reviews/material-20261111-round2.json",
+  "owner_instruction": [
+    "原來如此也繼續擴充",
+    "也可以審",
+    "繼續擴充素材池，一樣做好去重和來源整理，太薄或無聊的題目就合併或淘汰，影片不要為了片長硬湊"
+  ],
+  "bar": "同第一、二輪：旁白每秒 4.5 字、不留空白；片長＝（不重複事實數×140 字＋700 字開場收尾）÷4.5 字／秒；可成題要有至少 8.5 分鐘的素材、至少兩個改變結論的轉折、一個觀眾會問的開場問題；結尾章 30–60 秒。只算有可讀紀錄的外部來源；本工作階段的自製測試或自己的計算不是來源；舊核心的來源已有的事實不重計。",
+  "method": "一條補來源線。作者 F2 針對次接近門檻的後備企劃與組題（P29、P13、P30、P19、P22、C3-09、C2-11），讀第一、二輪列的缺口，只找標準文件、官方頁或開放全文的原研究並親讀全文，寫成 31 個核心提案、22 筆來源紀錄、6 筆未收紀錄。非作者覆核 V5 除 F2-S001 外重新下載全部 22 個來源逐段核對（Anderson & Simester 為掃描 PDF，轉圖逐頁目讀），逐核心判定並重算 7 個目標；覆核結論優先於作者結論，核心的改字照覆核意見逐句套用。",
+  "policies": {
+    "duplicate_sources": "同一份文獻不另立來源：F2-S001（RFC 8446）、F2-S016（Anderson & Simester 2003）、F2-S018（Kivetz 等 2006）分別是 LEG-A55、LEG-B27、LEG-B62 歷史來源背後的同一份文件。批次來源的 url 改用舊來源的網址（rfc8446、kellogg PDF、doi.org），實際下載網址記在 retrieval_url，並加 refreshes_source_id 與 applies_to_candidate_ids，所以本輪閱讀以新的 reading 追加到 SRC-221ec34b296ae4b8、SRC-f03130ce50fe3ee4、SRC-b6543e5552abf38f（照 wave47-reading-source-refresh 的做法），不產生重複來源。LEG-B27 另列的 Springer 出版者頁 SRC-72e5c18b45e5f4c2 是同一篇論文、不同網址，來源 id 無法合併，記在 H53-S001 的 identity_urls 與 access_notes。舊核心的定性句（A55『防偷看與竄改』與『鎖頭不代表可信』、B27『情境相依、新品較強』、B62『越近買越快』）不重計。",
+    "self_run_test": "同第二輪：自製測試只能當畫面示範，不是來源；F2 的分鐘數、DOP 公式與 800 m／秒都出自原文，沒有用自己的計算。",
+    "legacy_sources": "LEG-A55、LEG-A38、LEG-B27、LEG-B62 的其他來源仍是歷史查核，撰稿前重讀。",
+    "roles": "F2 的 editorial.role 用 chapter_core、turn、limit；本池欄位只收 segment 與 theme_seed，所以記為 segment，原角色寫在核心 notes。"
+  },
+  "counts": {
+    "research_proposals": 31,
+    "research_sources_read": 22,
+    "sources_ingested": 22,
+    "sources_merged_into_existing": 3,
+    "new_source_urls": 19,
+    "cores_added": 31,
+    "cores_rejected": 0,
+    "not_added_records": 6,
+    "non_author_cores": {
+      "ADOPT": 18,
+      "ADOPT_WITH_CHANGES": 13,
+      "NEEDS_CHECK": 0,
+      "REJECT": 0
+    },
+    "targets_examined": 7,
+    "targets_ready": [
+      "P29",
+      "P13",
+      "C3-09"
+    ],
+    "targets_reserve": [
+      "P30",
+      "C2-11",
+      "P19",
+      "P22"
+    ],
+    "new_themes_ready": 1,
+    "new_theme_ids": [
+      "G604"
+    ],
+    "pool_selected_before_after": [
+      3584,
+      3615
+    ],
+    "raw_records_before_after": [
+      3974,
+      4005
+    ],
+    "themes_before_after": [
+      603,
+      604
+    ],
+    "distinct_decisions_added": 15
+  },
+  "core_id_mapping": {
+    "F2-001": "T53-001",
+    "F2-002": "T53-002",
+    "F2-003": "T53-003",
+    "F2-004": "T53-004",
+    "F2-005": "T53-005",
+    "F2-006": "T53-006",
+    "F2-007": "T53-007",
+    "F2-008": "T53-008",
+    "F2-009": "T53-009",
+    "F2-010": "T53-010",
+    "F2-011": "T53-011",
+    "F2-012": "T53-012",
+    "F2-013": "T53-013",
+    "F2-014": "T53-014",
+    "F2-015": "T53-015",
+    "F2-016": "T53-016",
+    "F2-017": "T53-017",
+    "F2-018": "T53-018",
+    "F2-019": "T53-019",
+    "F2-020": "H53-001",
+    "F2-021": "H53-002",
+    "F2-022": "H53-003",
+    "F2-023": "H53-004",
+    "F2-024": "H53-005",
+    "F2-025": "H53-006",
+    "F2-026": "P53-001",
+    "F2-027": "P53-002",
+    "F2-028": "P53-003",
+    "F2-029": "P53-004",
+    "F2-030": "P53-005",
+    "F2-031": "P53-006"
+  },
+  "source_id_mapping": {
+    "F2-S001": "T53-S001",
+    "F2-S002": "T53-S002",
+    "F2-S003": "T53-S003",
+    "F2-S004": "T53-S004",
+    "F2-S005": "T53-S005",
+    "F2-S006": "T53-S006",
+    "F2-S007": "T53-S007",
+    "F2-S008": "T53-S008",
+    "F2-S009": "T53-S009",
+    "F2-S010": "T53-S010",
+    "F2-S011": "T53-S011",
+    "F2-S012": "T53-S012",
+    "F2-S013": "T53-S013",
+    "F2-S014": "T53-S014",
+    "F2-S015": "T53-S015",
+    "F2-S016": "H53-S001",
+    "F2-S017": "H53-S002",
+    "F2-S018": "H53-S003",
+    "F2-S019": "P53-S001",
+    "F2-S020": "P53-S002",
+    "F2-S021": "P53-S003",
+    "F2-S022": "P53-S004"
+  },
+  "not_added_mapping": {
+    "F2-NA001": "H53-NA001",
+    "F2-NA002": "H53-NA002",
+    "F2-NA003": "P53-NA001",
+    "F2-NA004": "T53-NA001",
+    "F2-NA005": "T53-NA002",
+    "F2-NA006": "P53-NA002"
+  },
+  "source_merges": [
+    {
+      "proposal_source": "F2-S001",
+      "batch_source": "T53-S001",
+      "merged_into": "SRC-221ec34b296ae4b8",
+      "legacy_core": "LEG-A55",
+      "url": "https://www.rfc-editor.org/rfc/rfc8446",
+      "retrieval_url": "https://www.rfc-editor.org/rfc/rfc8446.txt"
+    },
+    {
+      "proposal_source": "F2-S016",
+      "batch_source": "H53-S001",
+      "merged_into": "SRC-f03130ce50fe3ee4",
+      "also_same_document": "SRC-72e5c18b45e5f4c2（Springer 出版者頁，網址不同，未合併 id，記在 identity_urls）",
+      "legacy_core": "LEG-B27",
+      "url": "https://www.kellogg.northwestern.edu/faculty/anderson_e/htm/personalpage_files/Papers/Effects_of_9_Price_Endings_on_Retail_Sales.pdf"
+    },
+    {
+      "proposal_source": "F2-S018",
+      "batch_source": "H53-S003",
+      "merged_into": "SRC-b6543e5552abf38f",
+      "legacy_core": "LEG-B62",
+      "url": "https://doi.org/10.1509/jmkr.43.1.39",
+      "retrieval_url": "https://business.columbia.edu/sites/default/files-efs/pubfiles/1200/goalgradient.pdf"
+    }
+  ],
+  "source_corrections": {
+    "T53-S008": "作者紀錄說 gps.gov/node/70 與 archive 版文字相同，不正確：military 題的『軍民 URE 相同、多數民用單頻、軍用雙頻』只在 archive.gps.gov（2025 年 2 月後未更新）；version 與 access_notes 已改，T53-016 的 locator 指 archive 版。",
+    "H53-S003": "V5 重讀更正摘要三處（透明卡對照組是減速、買回卡主沒有加速甚至變慢、加入意願問卷是另一個情境），記在 limitations；核心照更正後寫。"
+  },
+  "batches": [
+    "batches/wave53-tech.json",
+    "batches/wave53-human.json",
+    "batches/wave53-physics.json"
+  ],
+  "checkpoint": {
+    "file": "checkpoint-3584.json",
+    "note": "第五十二批（第二輪）結束時的素材池（3,584 個入選、3,974 筆原題）與 603 組題案快照，照前批慣例在新增前凍結；commit 欄是凍結時工作分支的 HEAD。"
+  },
+  "new_themes": [
+    {
+      "id": "G604",
+      "proposal_id": "C3-09",
+      "title": "紙拉不長，那它要怎麼彎、怎麼摺？",
+      "previous": {
+        "verdict": "reserve",
+        "review": "docs/videos/so-thats-why/pool/reviews/material-20261111-round2.json",
+        "recount_facts": 11,
+        "recount_minutes": 8.3
+      },
+      "verdict": "ready",
+      "author_est_minutes": 9.6,
+      "est_minutes": 9.1,
+      "est_minutes_with_P44_008": 9.6,
+      "fact_count": 12.5,
+      "target_minutes": 9,
+      "range_minutes": [
+        8.5,
+        9.5
+      ],
+      "new_cores": [
+        "P53-003",
+        "P53-004"
+      ],
+      "candidate_ids": [
+        "P44-003",
+        "P44-002",
+        "P44-009",
+        "P44-004",
+        "P53-003",
+        "P44-005",
+        "P44-007",
+        "P53-004"
+      ],
+      "dropped": [
+        "P44-008"
+      ],
+      "cuts_applied": "P44-008（模擬的厚板分支）刪去才放得進 9 分；P53-004 放在收尾前，說明材料是 4 毫米瓦楞塑膠板、示範原型；P44-005 的剛度比標『計算』只留一句；不開太空展開結構章（Miura 1985 未讀）。開場 55 秒、收尾 40 秒，十章合計 540 秒。",
+      "still_missing": "Miura 1985 ISAS 報告未讀（JAXA 典藏維護）；Melancon 的能量與壓力曲線來自公分級樣品；沒有用紙做的大型實測結構。",
+      "absorbs_short_themes": [
+        "G476",
+        "G477",
+        "G479"
+      ],
+      "reason": "第二輪 V3 要的實測大型展開結構補上了，而且答的是同一個挑路問題：被迫伸長的那段路就是障壁，所以兩個形狀都穩（V5）。"
+    }
+  ],
+  "theme_updates": {
+    "G38": {
+      "verdict": "reserve",
+      "note": "仍後備。G38 的 libsodium 核心在 P29 由 TLS 原文取代：I3084→T53-006、I3087 與 I3083→T53-007、I3086→T53-009、I3073 與 I3089→T53-008，I3082 的概念由 T53-002 承接、只留一句；I3080／I3081 最多一句。G38 不必再合進 P29。"
+    }
+  },
+  "plans": {
+    "P29": {
+      "title": "網址多一個 S，資料在路上差了什麼？",
+      "scope_note": "企劃在 tools/video/so-thats-why/episode-plan.mjs，不在本素材池範圍；這裡只記覆核結論與支持它的最終核心 ID，企劃改動另由負責企劃的工作處理。",
+      "verdict": "ready",
+      "previous": {
+        "verdict": "reserve",
+        "est_minutes": 6.9
+      },
+      "author_est_minutes": 13.0,
+      "est_minutes": 12.4,
+      "est_minutes_full": 13.5,
+      "fact_count": 19,
+      "fact_count_full": 21,
+      "planned_minutes": 12,
+      "range_minutes": [
+        11,
+        13
+      ],
+      "length_change": "企劃標 13 分（12–14）改成 12 分（11–13）。",
+      "new_pool_cores": [
+        "T53-001",
+        "T53-002",
+        "T53-003",
+        "T53-004",
+        "T53-005",
+        "T53-006",
+        "T53-007",
+        "T53-008",
+        "T53-009",
+        "T53-010",
+        "T53-011"
+      ],
+      "existing_cores_named": [
+        "LEG-A55"
+      ],
+      "chapters": [
+        {
+          "chapter": "資料要經過別人的設備",
+          "core_ids": [
+            "LEG-A55"
+          ],
+          "note": "威脅位置沿用 A55 的舊查核（撰稿前重讀）；本輪沒有新核心。"
+        },
+        {
+          "chapter": "怎麼知道正在和誰說話",
+          "core_ids": [
+            "T53-003",
+            "T53-002",
+            "T53-004",
+            "T53-005",
+            "LEG-A55"
+          ],
+          "note": "信任鏈與信任庫（T53-003）、CertificateVerify 與 Finished 綁定（T53-002，接 I3082 的概念一句）、發證只驗網域控制權（T53-004，轉折，配 A55 的『鎖頭不代表可信』）、CT 公開帳（T53-005，壓成 20 秒一句）。"
+        },
+        {
+          "chapter": "雙方怎麼建立保護",
+          "core_ids": [
+            "T53-001",
+            "T53-006",
+            "T53-007",
+            "T53-010",
+            "T53-009"
+          ],
+          "note": "先交換金鑰、ServerHello 後全加密與前向保密（T53-001）、紀錄序號防重播（T53-006）、紀錄標頭當附加資料（T53-007）、0-RTT 是規格自己留的可重播例外（T53-010，轉折）；close_notify（T53-009）只留一句或刪。"
+        },
+        {
+          "chapter": "保護在哪裡結束",
+          "core_ids": [
+            "T53-011",
+            "T53-008",
+            "LEG-A55"
+          ],
+          "note": "SNI 明文露出網域、ECH 不說已普及（T53-011，轉折）、TLS 不隱藏長度（T53-008，與 T53-011 同章時保留一句）；網站內容與詐騙回到 A55 的舊查核。"
+        }
+      ],
+      "cuts_required": "企劃從 13 分改 12 分（range 11–13）：T53-005 CT 日誌壓成 20 秒一句（1.5→0.5）；T53-009 close_notify 只留一句或刪（對觀眾最不必要）；I3080／I3081 簽名≠加密最多一句；PSK、數學、演算法名不進片；T53-011 照本審查改歸屬，ECH 不說已普及。",
+      "still_missing": "A55 的舊查核來源（Chromium 2018、2023 鎖頭頁、Let's Encrypt 2015、Google 安全部落格 2025）是 legacy，撰稿前重讀；瀏覽器憑證錯誤畫面的當期官方說明未讀（企劃 evidence 要求當期瀏覽器資料）；ECH 實際啟用比例無來源；T53-S001 與池中 SRC-221ec34b296ae4b8 是同一份 RFC 8446，要合併來源 id。",
+      "reason": "重開 RFC 8446、9849、5280、Let's Encrypt 與 CT 頁，F2 的 11 條除 T53-005 主詞過寬、T53-011 把 RFC 9849 的理由掛到 RFC 8446 之外都對得上。全片回答同一個問題：路上的人看得到、改得了、冒充得了什麼；三個轉折是真的會改結論的：發證只查你管不管得了網址（詐騙站也有鎖頭）、規格自己留下可重播的 0-RTT、網域名稱一直以 SNI 明寫。照實算約 19–21 條、12.4–13.5 分；企劃 13 分偏滿，壓到 12 分並刪 close_notify 與 CT 的細節，片子才不會變成協定功能清單。"
+    },
+    "P13": {
+      "title": "GPS 差一點時間，位置怎麼差那麼遠？",
+      "scope_note": "企劃在 tools/video/so-thats-why/episode-plan.mjs，不在本素材池範圍；這裡只記覆核結論與支持它的最終核心 ID，企劃改動另由負責企劃的工作處理。",
+      "verdict": "ready",
+      "previous": {
+        "verdict": "reserve",
+        "est_minutes": 7.4
+      },
+      "author_est_minutes": 12.0,
+      "est_minutes": 11.4,
+      "est_minutes_relativity_6": 12.4,
+      "fact_count": 17,
+      "planned_minutes": 11,
+      "range_minutes": [
+        10,
+        12
+      ],
+      "length_change": "企劃標 14 分（12–15）改成 11 分（10–12），四章各約 140–150 秒。",
+      "new_pool_cores": [
+        "T53-012",
+        "T53-013",
+        "T53-014",
+        "T53-015",
+        "T53-016",
+        "T53-017",
+        "T53-018",
+        "T53-019"
+      ],
+      "existing_cores_named": [
+        "LEG-A38"
+      ],
+      "chapters": [
+        {
+          "chapter": "一顆衛星還不能找到你",
+          "core_ids": [
+            "LEG-A38",
+            "T53-012"
+          ],
+          "note": "傳播時間換距離（A38 舊查核）；衛星帶原子鐘、訊號載發射時刻、要扣大氣延遲（T53-012 前半）。"
+        },
+        {
+          "chapter": "多加訊號怎麼縮小答案",
+          "core_ids": [
+            "T53-012",
+            "T53-013"
+          ],
+          "note": "接收機鐘差是第四個未知數、所以要第四顆衛星（T53-012，轉折）；精度近似為測距誤差×DOP、五顆以上不比四顆差（T53-013，刪去來源沒有的『擠一角／散開』機制句，交會區示意標『原創示意』）。"
+        },
+        {
+          "chapter": "時間和路徑如何帶偏位置",
+          "core_ids": [
+            "T53-014",
+            "T53-015",
+            "T53-016",
+            "LEG-A38"
+          ],
+          "note": "訊號誤差 URE 不等於使用者精度（T53-014）、多路徑（T53-015）、電離層與雙頻，軍用準在接收端不在訊號（T53-016，轉折，用 archive 版並標播出前重查）；相對論照企劃壓到約 90 秒，只留 A38 的 4 條。"
+        },
+        {
+          "chapter": "為什麼有時定位慢或飄",
+          "core_ids": [
+            "T53-017",
+            "T53-018",
+            "T53-019"
+          ],
+          "note": "等電文的冷暖熱啟動（T53-017）、輔助 GPS 省下等待卻讓時間變成第五個未知數（T53-018，轉折，800 m／秒標明是回顧 van Diggelen 2009）、定位對但地圖錯（T53-019，25 秒內）；不放 A58。"
+        }
+      ],
+      "cuts_required": "企劃從 14 分改 11 分（range 10–12），四章各約 140–150 秒：相對論壓到約 90 秒；T53-013 刪掉來源沒有的『衛星擠一角／散開』機制句（或補教材來源）；T53-016 改用 archive 版並改『效應可達數十公尺』；T53-019 地圖錯誤 25 秒內；不放 A58。",
+      "still_missing": "gps.gov 引的手機 4.9 m（ION 原文）未讀；『軍民 URE 相同、民用單頻』只在 archive.gps.gov（2025-02 後未更新），現行 node/70 已刪，播出前重查；A38 六條是 legacy 查核，撰稿前重讀；Navipedia 是 ESA 主辦教材級維基；800 m／秒是 Blay 等 2021 回顧 van Diggelen 2009，要標明。",
+      "reason": "FAA、gps.gov、SPS PS 2020、Navipedia 與 Blay 2021 都重開讀過，四章原本缺的定位幾何、第四顆衛星、多路徑、電離層、輔助 GPS 都補上了。一個問題貫穿（收到訊號的時間怎麼變成位置），轉折是真的：第四顆衛星是替手上的鐘解題、軍用準不在訊號而在雙頻、A-GPS 省下等電文卻讓時間又變成未知數。但照實只有約 17 條、11.4 分，企劃的 14 分會逼相對論章或示意重播撐時間，應改 11 分。"
+    },
+    "P30": {
+      "title": "便宜一點、再買一次：你怎麼決定？",
+      "verdict": "reserve",
+      "author_verdict": "ready",
+      "author_est_minutes": 12.9,
+      "est_minutes": 8.0,
+      "est_minutes_forced_merge": 10.6,
+      "planned_minutes": null,
+      "pool_cores_added": [
+        "H53-001",
+        "H53-002",
+        "H53-003",
+        "H53-004",
+        "H53-005",
+        "H53-006"
+      ],
+      "existing_cores_named": [
+        "LEG-B27",
+        "LEG-B62"
+      ],
+      "cuts_required": "不硬合。若日後重評：只保留『真實數量不變、呈現方式改變』這條線（H53-001／H53-002、H53-003 壓 40 秒、H53-005），H53-004／H53-006 的『越近越快、誰不受影響』只留一句；不加 B26、B73。",
+      "still_missing": "能把兩種機制放進同一個決定的研究（同一批顧客同時面對尾數價格與集點進度的實驗或資料）；Thomas & Morwitz 2005（左位數實驗室條件）全文；Nunes & Drèze 2006 全文；或第二篇真的隨機操弄『呈現』而非『距離』的集點研究，讓下半場不靠目標漸近撐。",
+      "reason": "數字我逐頁對過（A&S 掃描頁 94–105、NBER 二手車、Kivetz 2006），F2 的事實大致可用。問題在橋：『同樣的錢、同樣的杯數，換一種寫法就改變決定』只對 H53-005（先送兩格）成立；H53-004 的越近買越快、H53-006 的分群回答的是『快到目標時動機怎麼變』，那是另一個問題，H53-003 又換成里程數。照共同問題算只有約 10.5 條、8.0 分；把兩半全算進來 10.6 分，但那是兩個題目接在一起，假想顧客只是敘事膠水，正是第一輪說的弱點。企劃自己的規則是沒有同一情境就不合併，所以維持後備；就算日後接受橋接，也只能排 10 分，不是 13 分。"
+    },
+    "P19": {
+      "title": "降噪耳機",
+      "verdict": "reserve",
+      "author_verdict": "reserve",
+      "est_minutes": 7.3,
+      "planned_minutes": null,
+      "pool_cores_added": [
+        "P53-005",
+        "P53-006"
+      ],
+      "existing_cores_named": [
+        "LEG-S86"
+      ],
+      "cuts_required": "不硬補；不合 S26、G43。",
+      "still_missing": "主動噪音控制的教材或期刊來源（相位抵消的空間範圍、延遲與頻寬為何卡在低頻），企劃第二、三章完全靠它；遮蔽釋放的原始研究；DAGA 是廠商會議論文、JCAA 是 2002 年兩頁短文。",
+      "reason": "兩篇新來源都重開讀過，數字對（主動 15–21 dB、被動多半 3–6 dB、被動只對 200 Hz 以上有效、ANR 只在 500 Hz 以下）。但企劃的『多放一個聲音怎麼變小』『耳機怎麼追得上變化』兩章仍沒有教材來源，算起來約 9 條、7.3 分，低於門檻，同意 F2 的後備判斷。"
+    },
+    "P22": {
+      "title": "肥皂與油",
+      "verdict": "reserve",
+      "author_verdict": "reserve",
+      "est_minutes": 5.7,
+      "planned_minutes": null,
+      "pool_cores_added": [],
+      "not_added": "P53-NA002",
+      "still_missing": "硬水與皂垢對照的化學教材；界面張力、乳化與分散的教材來源；第二個轉折。",
+      "reason": "本輪沒有研究 P22，素材與第一輪相同，約 6 條、5.7 分，維持後備。"
+    }
+  },
+  "composition": [
+    {
+      "proposal_id": "C3-09",
+      "title": "紙拉不長，那它要怎麼彎、怎麼摺？",
+      "previous": "第二輪 V3 轉後備（11 條、8.3 分）",
+      "final": "ready（V5）",
+      "theme_id": "G604",
+      "est_minutes": 9.1
+    },
+    {
+      "proposal_id": "C2-11",
+      "title": "沙漏的沙為什麼不會越漏越慢，卻會突然卡住？",
+      "previous": "第一輪組題作者自判後備（docs/videos/so-thats-why/pool/reviews/material-20261111.json composition；沒有長題 id）",
+      "final": "reserve（V5）",
+      "theme_id": null,
+      "author_verdict": "ready",
+      "author_est_minutes": 9.6,
+      "est_minutes": "8.3–8.6",
+      "pool_cores_added": [
+        "P53-001",
+        "P53-002"
+      ],
+      "candidate_ids": [
+        "F10003",
+        "P43-001",
+        "P43-002",
+        "P43-003",
+        "P43-004",
+        "F10005",
+        "G13001",
+        "P53-001",
+        "P53-002"
+      ],
+      "cuts_required": "不硬補；G13002 剪脹、G13001 沙堆底壓不用來撐片長；P53-002 只當銜接，不當轉折。",
+      "still_missing": "『流量與料高無關』的直接量測（例如 Aguirre 等 2010 PRL 對出口流量與壓力無關的實驗，或 Beverloo 1961 原文），現在只有 Mankoc 前言對平底筒倉文獻的整理；沙漏外形（錐形頸）本身的流量資料；標題前半『不會越漏越慢』要有這兩者之一才站得住。",
+      "reason": "Mankoc 原文我重開過：『與液體相反、料高超過約 1.2 倍筒徑後流量與高度無關』寫在前言，是整理既有文獻，而且講的是平底筒倉不是沙漏；自由落體拱是作者說的『看似合理』的解釋。P53-002 的出口比約 5 引自前作，Beverloo 改式是建模細節，不是轉折。把離題的剪脹與沙堆底壓扣掉後，約 11–11.5 條、8.3–8.6 分，在門檻邊上，片名那句又只有二手陳述撐，所以先放後備；補一篇直接量測後可升 ready。",
+      "note": "C2-11 只出現在第一輪組題紀錄，沒有長題 id，這裡只記結論，不新增題案。"
+    }
+  ],
+  "core_reviews": [
+    {
+      "proposal_id": "F2-001",
+      "final_id": "T53-001",
+      "batch": "batches/wave53-tech.json",
+      "question": "連 HTTPS 網站的第一秒，瀏覽器和伺服器先做了什麼，才開始加密？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "T53-S001 RFC 8446 純文字（本人 2026-11-11 重新 curl 200，337,736 bytes）",
+      "reopen_result": "§1.2 原文：static RSA/DH 已移除、all public-key based key exchange mechanisms now provide forward secrecy、All handshake messages after the ServerHello are now encrypted；附錄 E.1 Forward secret 段明寫『只要 session key 已被抹除』。答案句句對得上。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "新事實（A55 只有『防偷看與竄改』一句），算 2 條。前向保密在 psk_ke 模式不成立，不在本片範圍，scope 已排除 PSK。"
+    },
+    {
+      "proposal_id": "F2-002",
+      "final_id": "T53-002",
+      "batch": "batches/wave53-tech.json",
+      "question": "伺服器把憑證送來就好，為什麼還要再簽一次名？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "T53-S001 RFC 8446 純文字（本人 2026-11-11 重新 curl 200，337,736 bytes）",
+      "reopen_result": "§2：CertificateVerify = A signature over the entire handshake using the private key；Finished = A MAC over the entire handshake，E.1 寫 tied to the server's identity by a MAC。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "算 1 條。G38 I3082（libsodium 驗證只綁鑰匙）在 P29 只留概念一句，不另計。"
+    },
+    {
+      "proposal_id": "F2-003",
+      "final_id": "T53-003",
+      "batch": "batches/wave53-tech.json",
+      "question": "瀏覽器怎麼決定一張憑證可以信？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "T53-S003 RFC 5280 §6.1、T53-S005 Let's Encrypt Chains of Trust（本人重抓 200）",
+      "reopen_result": "RFC 5280 頁72–73：trust anchor is an input to the algorithm、路徑驗證的主要目標是名稱與公鑰的綁定；LE 頁：root key material is kept safely offline、Root Programs and Trust Stores may decide to trust a Root CA beyond that date, or terminate trust before。答案相符。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "算 1.5 條：A55 已有『用憑證確認你連到的是這個網址』，本核心只新增信任鏈與信任庫。"
+    },
+    {
+      "proposal_id": "F2-004",
+      "final_id": "T53-004",
+      "batch": "batches/wave53-tech.json",
+      "question": "憑證機構發憑證前，到底查了什麼？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "T53-S004 Let's Encrypt How It Works（重抓 200，Last updated August 2, 2025）",
+      "reopen_result": "原文：Provisioning a DNS record／HTTP resource under a well-known URI；from multiple network perspectives；this process cannot use HTTPS。『不查經營者好不好』是 A55 Chromium 2023 既有句的機制解釋，合理。",
+      "changes_applied": null,
+      "duplicate_of": "部分概念同 LEG-A55（鎖頭不代表可信），本核心只補機制",
+      "reason": "算 1 條；『鎖頭不代表可信』那句已在 A55，不重算。是 P29 的真轉折。"
+    },
+    {
+      "proposal_id": "F2-005",
+      "final_id": "T53-005",
+      "batch": "batches/wave53-tech.json",
+      "question": "如果有憑證機構簽錯了憑證，誰會發現？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "T53-S006 certificate.transparency.dev/howctworks（重抓 200）",
+      "reopen_result": "原文：append-only；SCT 是 MMD 內加入日誌的承諾；Both Safari and Chrome user agents require at least 2 SCTs, depending on certificate lifetimes；If you subscribe to a CT monitor for your domain, you get updates。但頁面沒有說『現在所有憑證』都要先進日誌，是瀏覽器政策要求。",
+      "changes_applied": {
+        "answer_target": "要讓 Chrome 和 Safari 接受，公開憑證在簽發時要先送進公開、只增不刪的 Certificate Transparency 日誌，日誌回一張時間戳記（SCT）；這兩家瀏覽器依憑證效期要求至少兩張 SCT。任何人都能架監測服務，網域主人訂閱後，自己網域的新憑證一進日誌就會收到通知，可以抓到未授權的簽發。信任鏈不是只靠『CA 不出錯』，還多了一本公開帳。"
+      },
+      "duplicate_of": null,
+      "reason": "數字對，但主詞過寬；改成『要讓 Chrome、Safari 接受』。照企劃壓到 20 秒時算 0.5 條。"
+    },
+    {
+      "proposal_id": "F2-006",
+      "final_id": "T53-006",
+      "batch": "batches/wave53-tech.json",
+      "question": "加密的資料被人錄下來、原封不動再送一次，會被接受嗎？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "T53-S001 RFC 8446 純文字（本人 2026-11-11 重新 curl 200，337,736 bytes）",
+      "reopen_result": "§5.3：A 64-bit sequence number is maintained separately for reading and writing、每筆加一、開頭與換鑰時歸零；E.2 Order protection/non-replayability 與『records which are delivered out of order result in AEAD deprotection failures』；nonce 混入 secret per-connection IV；§5.2 解密失敗 MUST bad_record_mac。",
+      "changes_applied": null,
+      "duplicate_of": "取代 G38 I3084（同一概念的 TLS 版）",
+      "reason": "取代 G38 I3084（libsodium），算 1.5 條。"
+    },
+    {
+      "proposal_id": "F2-007",
+      "final_id": "T53-007",
+      "batch": "batches/wave53-tech.json",
+      "question": "加密後，封包外面那些看得到的欄位，能被偷改嗎？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "T53-S001 RFC 8446 純文字（本人 2026-11-11 重新 curl 200，337,736 bytes）",
+      "reopen_result": "§5.2 additional_data = record header；『There is no separate integrity check』；§1.2 只剩 AEAD。",
+      "changes_applied": null,
+      "duplicate_of": "取代 G38 I3087、I3083",
+      "reason": "取代 G38 I3087／I3083，算 1 條。"
+    },
+    {
+      "proposal_id": "F2-008",
+      "final_id": "T53-008",
+      "batch": "batches/wave53-tech.json",
+      "question": "HTTPS 加密了內容，旁人還能從流量看出什麼？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "T53-S001 RFC 8446 純文字（本人 2026-11-11 重新 curl 200，337,736 bytes）",
+      "reopen_result": "§1 Confidentiality：TLS does not hide the length；E.3：length and timing 流量分析、small set of possible messages… video server hosting a fixed corpus、padding-only cover traffic。",
+      "changes_applied": null,
+      "duplicate_of": "概念同 G38 I3073、I3089（以 TLS 原文取代）",
+      "reason": "取代 G38 I3073／I3089 的長度外露概念，不另算 G38；算 1 條。若片長要刪，與 T53-011 同章時保留一句即可。"
+    },
+    {
+      "proposal_id": "F2-009",
+      "final_id": "T53-009",
+      "batch": "batches/wave53-tech.json",
+      "question": "連線突然斷掉，瀏覽器怎麼知道資料收完了沒？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "T53-S001 RFC 8446 純文字（本人 2026-11-11 重新 curl 200，337,736 bytes）",
+      "reopen_result": "§6.1：share knowledge that the connection is ending in order to avoid a truncation attack；close_notify 定義相符。",
+      "changes_applied": null,
+      "duplicate_of": "取代 G38 I3086",
+      "reason": "取代 G38 I3086；算 1 條，但對觀眾是最不必要的一條，P29 若壓到 12 分建議只留一句（見 targets）。"
+    },
+    {
+      "proposal_id": "F2-010",
+      "final_id": "T53-010",
+      "batch": "batches/wave53-tech.json",
+      "question": "TLS 1.3 為了快一點，在哪裡放鬆了保護？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "T53-S001 RFC 8446 純文字（本人 2026-11-11 重新 curl 200，337,736 bytes）",
+      "reopen_result": "§2.3 IMPORTANT NOTE：not forward secret；no guarantees of non-replay between connections；E.5：purchasing an item or transferring money、reorder（moving a delete to after a create）；servers have the responsibility to protect themselves。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "真轉折（改變『每封都防重播』的結論），算 1 條。"
+    },
+    {
+      "proposal_id": "F2-011",
+      "final_id": "T53-011",
+      "batch": "batches/wave53-tech.json",
+      "question": "就算全程 HTTPS，旁人還看得到我在連哪個網站嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "T53-S002 RFC 9849 §1（重抓 200，March 2026）＋ RFC 8446 §4.4.2.2、§9.2",
+      "reopen_result": "RFC 9849 §1 相符：明文 SNI 洩漏目標網域、ECH 用伺服器公鑰加密 ClientHello、ECH 單獨不夠（明文 DNS、伺服器 IP）、many TLS servers host multiple domains on the same IP、SNI 是主要明確訊號。但答案把『因為同一 IP 常放很多網站』說成 TLS 規格建議送 SNI 的理由；RFC 8446 原文的理由是『servers MAY require… clients SHOULD send』，『同一 IP 多網域』出自 RFC 9849 的說明。",
+      "changes_applied": {
+        "answer_target": "TLS 1.3 把大部分握手都加密了，連伺服器憑證也是，但 ClientHello 裡的伺服器名稱指示（SNI）仍是明文，會直接露出你要連的網域；TLS 1.3 規格要求用戶端在適用時送出它，因為伺服器可以要求有這個欄位。2026 年 3 月發布的 RFC 9849（加密的 ClientHello，ECH）說明：許多伺服器在同一個 IP 上放很多網域，SNI 因此是旁觀者判斷你連到哪裡的主要明確訊號；ECH 用伺服器公鑰把 ClientHello 加密，但它也寫明 ECH 單獨不夠，明文 DNS 查詢和伺服器 IP 仍可能洩漏網域，要配合加密 DNS。"
+      },
+      "duplicate_of": null,
+      "reason": "歸屬要改；算 1.5 條。片中不可說 ECH 已普及（無部署來源）。"
+    },
+    {
+      "proposal_id": "F2-012",
+      "final_id": "T53-012",
+      "batch": "batches/wave53-tech.json",
+      "question": "手機又沒有原子鐘，怎麼用衛星的時間量距離？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "T53-S007 FAA GPS How It Works（重抓 200）＋T53-S010 Navipedia Code Based Positioning",
+      "reopen_result": "FAA 正文：原子鐘、時間差算距離、扣電離層與對流層延遲、三顆需同步原子鐘、第四顆就不需要、用四顆算經緯高與時間；Navipedia：four unknown parameters x,y,z,δt、超過四顆用最小平方。",
+      "changes_applied": null,
+      "duplicate_of": "部分同 LEG-A38（傳播時間換距離）",
+      "reason": "LEG-A38 已有『飛行時間×光速＝距離』，本核心只算第四顆／鐘差未知數與大氣延遲，算 1.5 條。"
+    },
+    {
+      "proposal_id": "F2-013",
+      "final_id": "T53-013",
+      "batch": "batches/wave53-tech.json",
+      "question": "同樣看到四顆衛星，為什麼有時準、有時偏很多？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "T53-S009 SPS PS 2020 5th ed.（重抓 200，2,166,466 bytes）",
+      "reopen_result": "B-1 Accuracy = UERE x DOP；A.8.2 沒有 good geometry 有時連 PVT 都解不出；B.2.4.3.4『Using five or more SISs… always results in DOP values that are at least as good as the 4-SIS』；表 3.8 ≥98% global PDOP ≤6。但『衛星擠在天空一角放大得多、散開放大得少』在讀到的段落裡找不到，是撰稿者補的機制句（第二輪審查點名的錯誤類型）。",
+      "changes_applied": {
+        "answer_target": "GPS 官方性能標準把定位精度近似寫成『測距誤差 × DOP』。DOP（精度稀釋因子）是衛星相對使用者的幾何好壞的量度：同樣的測距誤差，幾何不同，放大的倍數就不同；幾何太差時甚至解不出位置。標準也寫明，用五顆以上衛星算出的 DOP 一定不比只用四顆差。政府承諾全球 98% 以上的時間 PDOP 在 6 以下。",
+        "editorial.visual": "四顆衛星不同排法下交會區大小的對照（標明為原創示意、非標準內容；擠／散與放大倍數的對應需另有教材來源才可念出）。"
+      },
+      "duplicate_of": null,
+      "reason": "刪去來源沒有的擠／散說法，或另找教材來源後再加；圖可畫但要標『示意』。算 1.5 條。"
+    },
+    {
+      "proposal_id": "F2-014",
+      "final_id": "T53-014",
+      "batch": "batches/wave53-tech.json",
+      "question": "GPS 訊號只差兩公尺，為什麼手機常差更多？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "T53-S008 gps.gov/node/70（重抓 200）＋T53-S007 FAA",
+      "reopen_result": "node/70：手機開闊天空約 4.9 m（引 ION，未讀）、近建築橋樹變差；URE ≤2.0 m（95%）、2021-04-20 ≤0.643 m；『URE is not user accuracy. User accuracy depends on a combination of satellite geometry, URE, and local factors』。原文沒有『乘上』，乘法是 SPS PS 的近似式。",
+      "changes_applied": {
+        "answer_target": "美國政府承諾的是太空中的訊號：每日全球平均測距誤差（URE）95% 在 2.0 公尺內，2021 年 4 月 20 日實際約 0.643 公尺。官方特別說明 URE 不等於使用者精度：手上的位置還取決於衛星幾何，以及遮擋、大氣和接收機設計這些在地因素。GPS.gov 引述的資料說，開闊天空下的 GPS 手機通常約 4.9 公尺半徑，靠近建築、橋和樹就變差；FAA 對基本 GPS 服務的說法是約 7.0 公尺、95% 時間。"
+      },
+      "duplicate_of": null,
+      "reason": "措辭貼回原文；算 2 條。4.9 m 的 ION 原文未讀，標『gps.gov 引述』。"
+    },
+    {
+      "proposal_id": "F2-015",
+      "final_id": "T53-015",
+      "batch": "batches/wave53-tech.json",
+      "question": "在高樓之間，GPS 為什麼會把你放到對街？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "T53-S011 Navipedia Multipath（重抓 200，oldid=11617）＋T53-S008",
+      "reopen_result": "原文：principal cause is the antenna closeness to the reflecting structures、低仰角重要、碼多路徑理論可達 450 m 但『upper values more than 15 meters are difficult to observe. Typically, it is less than 2 or 3 meters』、靜止接收機幾何每恆星日重複；GPS.gov 列 multipath 與遮擋、室內地下為常見原因。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "算 1.5 條。"
+    },
+    {
+      "proposal_id": "F2-016",
+      "final_id": "T53-016",
+      "batch": "batches/wave53-tech.json",
+      "question": "軍用 GPS 比較準，是因為衛星送給軍方比較好的訊號嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "T53-S008（node/70 與 archive.gps.gov/systems/gps/performance/accuracy/，兩版本人都重抓 200）＋T53-S012 Ionospheric Delay＋T53-S013 Klobuchar",
+      "reopen_result": "(1)『URE 軍民相同、多數民用單頻、軍用雙頻』只在 archive 版（頁首註明 2025 年 2 月後未更新）；現行 node/70 的軍用題已刪掉這兩句，只剩雙頻修正大氣與增強系統。T53-S008 寫『文字相同』不正確。(2) Navipedia 說單頻接收機要用預測模型去掉的『這個效應』可達數十公尺，不是『修正後的殘差』可達數十公尺。(3) GPS.gov 寫 augmentation systems，沒有『地面』。",
+      "changes_applied": {
+        "answer_target": "不是。GPS.gov 舊版說明（2025 年 2 月後未更新的典藏頁）寫：軍用與民用訊號的測距誤差一樣，差別在多數民用裝置只收一個頻率、軍用收兩個；現行頁面仍保留『用兩個頻率可修正大氣造成的扭曲』。訊號穿過電離層會被延遲，延遲和頻率平方成反比，所以比較兩個頻率就能把電離層效應去掉 99.9% 以上；單頻接收機只能用預測模型估這個可達數十公尺的效應，衛星廣播的 Klobuchar 模型全球平均大約修掉一半。加上增強系統，民用甚至可以比軍用更準。",
+        "source_locator": "S008 archive.gps.gov/systems/gps/performance/accuracy/ 的 military 題（現行 gps.gov/node/70 已刪 URE 相同與單／雙頻兩句）；S012 末段；S013 導言",
+        "source T53-S008 version": "現行 node/70 與 archive 版不完全相同：military 題的 URE 與單／雙頻句只在 archive 版。"
+      },
+      "duplicate_of": null,
+      "reason": "三處要改；locator 必須指 archive 版並註明現行頁已改寫，播出前重查。算 2 條（O3057 雷達測高雙頻是不同應用，不重複）。"
+    },
+    {
+      "proposal_id": "F2-017",
+      "final_id": "T53-017",
+      "batch": "batches/wave53-tech.json",
+      "question": "GPS 剛打開時，為什麼要等那麼久才定位？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "T53-S009 SPS PS §2.2（Fig.2.2-1）＋T53-S015 Blay 2021 §2＋T53-S014 Navipedia TTFF（皆重抓 200）",
+      "reopen_result": "SPS PS：LNAV 50 bps、子框1 鐘差修正、子框2–3 星曆、Frame 30 sec repeat；Blay §2：first three subframes of the 30 second navigation frame… as long as 36 seconds；TTFF 頁冷暖熱啟動與 urban canyons 中斷。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "算 1.5 條（等待電文的事實與 T53-018 的 A-GPS 部分相接，不重算）。"
+    },
+    {
+      "proposal_id": "F2-018",
+      "final_id": "T53-018",
+      "batch": "batches/wave53-tech.json",
+      "question": "手機怎麼做到一開地圖就有位置？代價是什麼？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "T53-S015 Blay、Wang、Akos 2021 NAVIGATION 68(1) HTML 全文（重抓 200）",
+      "reopen_result": "§2：assistance data… through the cellular network using SUPL；only milliseconds of IF data；§2.1：『For each one second of error, the pseudoranges would be incorrect on the order of 800 m (Van Diggelen, 2009)』、five columns of H… at least five satellites。800 m 是 Blay 引 van Diggelen，不是本文實驗；答案本身沒寫歸屬，只在 scope。",
+      "changes_applied": {
+        "answer_target": "輔助 GPS 把星曆、鐘差等原本要從衛星慢慢收的資料，改由網路送來，手機通常經 SUPL 協定透過行動網路取得；接收機只要收幾毫秒訊號就能定位，不必等完整電文。但這樣就沒有從電文讀出的精確時間。一篇 2021 年的導航期刊論文回顧 van Diggelen 2009 年的方法指出：時間每差一秒，算出的偽距會錯約 800 公尺，因為衛星一直在動；所以要把粗略時間當成第五個未知數，至少需要五顆衛星。"
+      },
+      "duplicate_of": null,
+      "reason": "把歸屬寫進答案；『因為衛星在移動』原文是用衛星速度／偽距變化率推，保留但不展開。算 2 條，是真轉折。"
+    },
+    {
+      "proposal_id": "F2-019",
+      "final_id": "T53-019",
+      "batch": "batches/wave53-tech.json",
+      "question": "導航把你帶到錯的路口，一定是 GPS 定位錯了嗎？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "T53-S008 gps.gov/node/70（重抓 200）",
+      "reopen_result": "原文：In many cases, a device's GPS hardware is working fine, but its mapping software is faulty；四種地圖錯誤；The U.S. government cannot correct mapping errors in consumer devices。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "算 1 條，作收尾前的界線。"
+    },
+    {
+      "proposal_id": "F2-020",
+      "final_id": "H53-001",
+      "batch": "batches/wave53-human.json",
+      "question": "把 39 元改成 34 元，賣得比較多嗎？郵購目錄的第一個試驗",
+      "verdict": "ADOPT",
+      "key_source_reopened": "H53-S001 Anderson & Simester 2003 作者頁 PDF（重抓 200，pdftoppm 轉圖逐頁目讀 p.94）",
+      "reopen_result": "頁94 正文與 Pilot table：Control $39/$49/$59/$79，Test A／B 各 ±$5 有升有降；66 對 46（$5 lower）對 45（$5 higher）、約 40%、$10 價差幾乎無差、persuaded catalog managers to conduct additional studies。全部對上。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "新事實（LEG-B27 只有概括句），算 2 條。H53-S001 與池中 SRC-f03130ce50fe3ee4（同一網址）、SRC-72e5c18b45e5f4c2（同 DOI）是同一文獻，併入時合併來源 id。"
+    },
+    {
+      "proposal_id": "F2-021",
+      "final_id": "H53-002",
+      "batch": "batches/wave53-human.json",
+      "question": "9 結尾的效果，換個商品、加上『特價』字樣還在嗎？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "H53-S001 頁97–105（Table 2、4、5、7 與正文，目讀）",
+      "reopen_result": "Study 1 每版 20,000、0.341/0.351、約 35%、價格係數不顯著；Study 2 每版 31,250、120 品項、15%、新品 22% 對舊品 10%、價格係數 again all insignificant → more sensitive to $9 cues；Study 3 每版 90,000、308 品項、7%（顯著性取決於是否納入價格變數）、3.9%（21.7 對 17.8）對 8.5%、tentative finding；頁105 作者自己把 Study 3 價格顯著歸因於價格變化更多與樣本更大。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "數字與歸因都對。LEG-B27 已有新品較強／Sale 削弱的定性句，算 1.5 條。"
+    },
+    {
+      "proposal_id": "F2-022",
+      "final_id": "H53-003",
+      "batch": "batches/wave53-human.json",
+      "question": "左邊那位數字的影響，在一台上萬美元的二手車上也看得到嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H53-S002 Lacetera、Pope、Sydnor NBER w17030（重抓 200）",
+      "reopen_result": "Abstract／Introduction：over 22 million wholesale transactions、10,000-mile 門檻不連續下跌、$150–200、79,900–79,999 比 80,000–80,100 貴約 $210、只比 79,800–79,899 便宜 $10、千英里較小跳動、inattention 0.31、volume spikes；原文說證據『suggestive』指向最終消費者。平均成交價 $10,301。",
+      "changes_applied": {
+        "question": "左邊那位數字的影響，在一台上萬美元的二手車上也看得到嗎？",
+        "answer_target": "研究者分析超過 2,200 萬筆美國二手車批發拍賣：里程每跨過一個萬英里整數，售價就不連續地掉約 150 到 200 美元；例如 79,900 多英里的車比 80,000 出頭的貴約 210 美元，卻只比 79,800 多英里的便宜約 10 美元。跨千英里也有較小的跳動。估計出的『不注意』程度約 0.31；賣方也懂，快跨門檻前送拍的車明顯變多。作者說多項證據都指向最終買車的消費者只看了左邊的數字。"
+      },
+      "duplicate_of": null,
+      "reason": "數字對；問句『幾十萬元』暗示台幣、改成美元；『最符合』改回原文強度。對象是里程數不是標價，只能當『同一個左位數讀法換到大金額』的檢驗，算 1.5 條。"
+    },
+    {
+      "proposal_id": "F2-023",
+      "final_id": "H53-004",
+      "batch": "batches/wave53-human.json",
+      "question": "集點卡越接近集滿，人真的買得越快嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H53-S003 Kivetz、Urminsky、Zheng 2006 JMR 全文（重抓 200）",
+      "reopen_result": "949 張集滿卡、約一萬次購買、0.7 天、20%；postreward resetting；透明卡（42 人）的 GDM 估計是『deceleration（b1 = .3, p < .01）』，購買間隔隨接近（不給獎的）集滿而變長，不只是『沒有加速』。",
+      "changes_applied": {
+        "answer_target": "大學咖啡店的集點計畫收回 949 張集滿的 10 格卡、約一萬次購買：隨著章越蓋越多，兩次購買的間隔越來越短，最後一次比第一次平均快約 20%（0.7 天）。拿『只記錄、不換獎勵』透明卡的 42 位對照顧客不但沒有加速，越接近集滿反而買得越慢；集滿換完獎勵後，第二張卡的頭幾次又變慢，像重新起跑。"
+      },
+      "duplicate_of": null,
+      "reason": "對照組結果要寫準：是減速。LEG-B62 已有『越近買越快』，算 1.5 條（對照組與重置）。"
+    },
+    {
+      "proposal_id": "F2-024",
+      "final_id": "H53-005",
+      "batch": "batches/wave53-human.json",
+      "question": "先送你兩格，要買的杯數一樣，為什麼集得更快？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H53-S003 頁48–49",
+      "reopen_result": "108 人隨機、10 格卡對 12 格送 2 格、15.6 對 12.7 天、約 20%、proportion of original distance remaining 都對上。但『加入意願不受影響』是另一個情境問卷（以八次披薩用餐的集點卡為例的受訪者），不是這 108 位顧客。",
+      "changes_applied": {
+        "answer_target": "同一家咖啡店把 108 位顧客隨機分兩組：一組拿 10 格空卡，一組拿 12 格卡但已送 2 格，兩組都還要買 10 杯。送格組平均 12.7 天集滿，空卡組 15.6 天，快了約 20%。作者用『剩下的比例』解釋：剩 10/12 比剩 10/10 感覺近。另一個以餐廳集點卡為情境的問卷則顯示，送格並沒有讓人更想加入，排除了『只是比較喜歡那張卡』的解釋。"
+      },
+      "duplicate_of": null,
+      "reason": "標清楚兩個研究；與 LEG-B62『先送幾格集得更快』重疊，算 1.5 條（數據與排除解釋）。Nunes & Drèze 未讀，不用其數字。"
+    },
+    {
+      "proposal_id": "F2-025",
+      "final_id": "H53-006",
+      "batch": "batches/wave53-human.json",
+      "question": "集點真的推得動每個人嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H53-S003 頁47（Table 2 分群、buyback 段）與摘要",
+      "reopen_result": "58%、29%（p = .13）、7% 與 6%（線性參數接近零）對上；buyback：研究助理以每張 4 美元（另加 1% 機會得 100 美元）買回 73 張未集滿卡，這些人『did not accelerate and even decelerated』；摘要：加速傾向越強，留存越高、重新參與越快。",
+      "changes_applied": {
+        "answer_target": "同一份咖啡店資料分群後，約 58% 的會員有明顯加速，另有 29% 方向相同但不顯著，還有兩群（7%、6%）幾乎不受剩幾格影響。研究助理用每張 4 美元買回的 73 張未集滿卡，主人沒有加速，甚至越集越慢；而第一張卡加速越明顯的人，越可能再集第二張，回來得也越快。"
+      },
+      "duplicate_of": null,
+      "reason": "『較少出現加速』改成原文的『沒有加速、甚至變慢』。算 1.5 條。"
+    },
+    {
+      "proposal_id": "F2-026",
+      "final_id": "P53-001",
+      "batch": "batches/wave53-physics.json",
+      "question": "沙從小孔流出，為什麼不像水那樣越流越慢？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "P53-S001 Mankoc 等 arXiv 0707.4550 v1（重抓 200）",
+      "reopen_result": "§I 第一段：『Contrary to the fluids, when a silo is discharged by gravity, the flow rate does not depend on the height… greater than a value close to 1.2 times the diameter of the silo… saturates due to the Janssen effect』——是前言對文獻的整理，不是本文量測；對象是筒倉（silo），不是沙漏；自由落體拱原文是『it seems plausible to believe』。",
+      "changes_applied": {
+        "answer_target": "納瓦拉大學團隊在論文前言整理數十年的筒倉研究：與液體相反，顆粒靠重力從底孔流出時，流量不隨料層高度變；料層高過約 1.2 倍筒徑後，底部壓力因 Janssen 效應而飽和，流量大致固定。決定流量的是出口：工程上沿用的 Beverloo 經驗式說流量和（出口直徑減去幾顆粒徑）的 5/2 次方成正比；作者認為一個看似合理的解釋是，出口上方有一個由拱界定的自由落體區，顆粒在拱下才開始加速。",
+        "scope": "乾燥、粒徑大於約 0.5 毫米的單一粒徑顆粒；『與高度無關』是原文前言整理既有文獻（本文實驗刻意把料位保持在約兩倍筒徑以上），不是本文量測；自由落體拱是原文『看似合理』的解釋；平底筒倉，不是沙漏外形，片中不可說沙漏已被直接量過。"
+      },
+      "duplicate_of": null,
+      "reason": "答案要把『前言整理既有研究』與『筒倉』寫進句子，不能讓觀眾以為是沙漏的直接量測；Janssen 底壓飽和已由 F10003 支持，算 1.5 條。"
+    },
+    {
+      "proposal_id": "F2-027",
+      "final_id": "P53-002",
+      "batch": "batches/wave53-physics.json",
+      "question": "量沙漏的流量時，看到的是一條直線嗎？出口小到多少就開始卡？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "P53-S001 §II.A、Fig.1、Abstract、§IV",
+      "reopen_result": "Rc ≈ 5 引自前作 [7]；R > Rc 時落下顆粒數除以時間即得流量、任何時刻量都一致；R < Rc 用崩流量除時間；Fig.1 兩種出口（R = 3.5、5.07）都用直線擬合，小出口的漲落沒有被平均掉；1.5–100 倍粒徑都量過，Beverloo 對大小出口要用不同 C、k，改提指數修正式。與 P43-002／P43-003 不重複（它們沒有比值門檻）。",
+      "changes_applied": {
+        "editorial.role": "chapter_core（不是轉折）",
+        "notes": "目標 C2-11 第三、四章銜接（連續流→間歇卡住）；Rc≈5 引自同團隊前作，撰稿標『先前研究』；Beverloo 改式只留一句或不用。"
+      },
+      "duplicate_of": null,
+      "reason": "事實對，但『Beverloo 要換常數、改提新式』是建模細節，『≈5 卡住』引自前作；對觀眾不是轉折，只算 1 條。"
+    },
+    {
+      "proposal_id": "F2-028",
+      "final_id": "P53-003",
+      "batch": "batches/wave53-physics.json",
+      "question": "硬板拼成的摺紙，為什麼能像開關一樣停在兩個形狀？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "P53-S002 Melancon 等 2021 Nature（NSF PAR PDF，重抓 200，4,369,638 bytes）",
+      "reopen_result": "頁546：polyhedra composed of rigid triangular faces connected by perfect rotational hinges are known to be either rigid or volume invariant；stiff facets + stretchable hinges；兩個 compatible 狀態之間 energy barrier caused by the deformation of the facets and the hinges。相符。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "與 C3-09『需要伸長的路變硬』是同一問題的延伸（障壁就是被迫伸長的代價），不是名稱相近；算 1 條（與 P44-004 的雙穩概念部分重疊）。"
+    },
+    {
+      "proposal_id": "F2-029",
+      "final_id": "P53-004",
+      "batch": "batches/wave53-physics.json",
+      "question": "摺紙原理能做出可以住人的大結構嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "P53-S002 頁549 Fig.3d、Fig.4 正文",
+      "reopen_result": "4-mm 瓦楞塑膠板、刻痕鉸鏈；拱門 20×30 cm → 60 cm 高、150 cm 寬、突然洩壓保形、抽真空才摺回；庇護所 1.0×2.0×0.25 m、先停在屋頂內摺的穩定態、再加壓屋頂外翻成 2.5×2.6×2.6 m、開門不影響結構、真空摺回。數字全對。",
+      "changes_applied": {
+        "scope": "示範原型，材料是 4 毫米瓦楞塑膠板（不是紙），未報告耐候與長期使用；不說已商品化。"
+      },
+      "duplicate_of": null,
+      "reason": "材料是瓦楞塑膠板不是紙，片中不能說『紙帳篷』；尺寸串算 1.5 條。是 C3-09 V3 要的『實測大型展開結構』。"
+    },
+    {
+      "proposal_id": "F2-030",
+      "final_id": "P53-005",
+      "batch": "batches/wave53-physics.json",
+      "question": "降噪耳機對飛機轟聲和旁人說話，效果一樣嗎？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "P53-S003 DAGA 2019 Sethi 等（重抓 200）",
+      "reopen_result": "Table 1：主動 21／17.8／20.2／16.2（飛機）、21.1／14.8／17.8（咖啡廳），被動 3.0–6.1，In-Ear 2 被動 13.2／13.7；『Passive noise cancellation is usually only effective for frequencies above 200 Hz』；眼鏡漏聲使耳罩 ANC 變差；ANC 也 attenuating higher frequency speech signals，Ambient Mode 提高語音。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "廠商實驗室會議論文、四款匿名；算 2 條。補不起 P19（見 targets）。"
+    },
+    {
+      "proposal_id": "F2-031",
+      "final_id": "P53-006",
+      "batch": "batches/wave53-physics.json",
+      "question": "降噪耳機擋不住說話聲，為什麼戴著反而比較聽得清楚別人講話？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "P53-S004 Cui 等 2002 Canadian Acoustics 30(3)（重抓 200，351,994 bytes）",
+      "reopen_result": "§1：feedback loop、180-degree phase shift；only effective below 500 Hz because of technical limitation；傷耳能量多在 500 Hz 以上、mere use of ANR does not reduce the risk of hearing loss；reduces the upward spread of masking → speech intelligibility（引 Kryter）。都是前言引述，scope 已寫。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "低頻有效與 LEG-S86 部分重疊，算 1 條；遮蔽釋放只是前言引述，不能當主轉折。"
+    }
+  ],
+  "non_author_reviews": [
+    {
+      "target": "P29 網址多一個 S",
+      "verdict": "ready",
+      "recount_facts": "約 21（全用）／19（照下列刪減後）：A55 既有 8 條扣掉與 T53-003／T53-004 重疊的 1 條＝7；新增 T53-001 2、002 1、003 1.5、004 1、005 1.5、006 1.5、007 1、008 1、009 1、010 1、011 1.5＝14。G38 的 libsodium 核心全部由 TLS 原文取代，不另計。",
+      "recount_minutes": "全用 13.5 分（21×140+700）／270；刪減後 12.4 分（19 條）",
+      "planned_minutes": 12,
+      "cuts_required": "企劃從 13 分改 12 分（range 11–13）：T53-005 CT 日誌壓成 20 秒一句（1.5→0.5）；T53-009 close_notify 只留一句或刪（對觀眾最不必要）；I3080／I3081 簽名≠加密最多一句；PSK、數學、演算法名不進片；T53-011 照本審查改歸屬，ECH 不說已普及。",
+      "still_missing": "A55 的舊查核來源（Chromium 2018、2023 鎖頭頁、Let's Encrypt 2015、Google 安全部落格 2025）是 legacy，撰稿前重讀；瀏覽器憑證錯誤畫面的當期官方說明未讀（企劃 evidence 要求當期瀏覽器資料）；ECH 實際啟用比例無來源；T53-S001 與池中 SRC-221ec34b296ae4b8 是同一份 RFC 8446，要合併來源 id。",
+      "reason": "重開 RFC 8446、9849、5280、Let's Encrypt 與 CT 頁，F2 的 11 條除 T53-005 主詞過寬、T53-011 把 RFC 9849 的理由掛到 RFC 8446 之外都對得上。全片回答同一個問題：路上的人看得到、改得了、冒充得了什麼；三個轉折是真的會改結論的：發證只查你管不管得了網址（詐騙站也有鎖頭）、規格自己留下可重播的 0-RTT、網域名稱一直以 SNI 明寫。照實算約 19–21 條、12.4–13.5 分；企劃 13 分偏滿，壓到 12 分並刪 close_notify 與 CT 的細節，片子才不會變成協定功能清單。",
+      "author_verdict": "ready",
+      "author_est_minutes": 13.0,
+      "author_new_cores": [
+        "T53-001",
+        "T53-002",
+        "T53-003",
+        "T53-004",
+        "T53-005",
+        "T53-006",
+        "T53-007",
+        "T53-008",
+        "T53-009",
+        "T53-010",
+        "T53-011"
+      ]
+    },
+    {
+      "target": "P13 GPS 差一點時間",
+      "verdict": "ready",
+      "recount_facts": "約 17：A38 相對論照企劃只留 4 條（傳播時間換距離、合計約 38 微秒／天、出發前調慢、不修正每天 10 公里級）；新增 T53-012 1.5（與 A38 傳播時間重疊）、013 1.5、014 2、015 1.5、016 2、017 1.5、018 2、019 1＝13。",
+      "recount_minutes": "11.4 分（17×140+700）／270；相對論若留 6 條約 12.4 分",
+      "planned_minutes": 11,
+      "cuts_required": "企劃從 14 分改 11 分（range 10–12），四章各約 140–150 秒：相對論壓到約 90 秒；T53-013 刪掉來源沒有的『衛星擠一角／散開』機制句（或補教材來源）；T53-016 改用 archive 版並改『效應可達數十公尺』；T53-019 地圖錯誤 25 秒內；不放 A58。",
+      "still_missing": "gps.gov 引的手機 4.9 m（ION 原文）未讀；『軍民 URE 相同、民用單頻』只在 archive.gps.gov（2025-02 後未更新），現行 node/70 已刪，播出前重查；A38 六條是 legacy 查核，撰稿前重讀；Navipedia 是 ESA 主辦教材級維基；800 m／秒是 Blay 等 2021 回顧 van Diggelen 2009，要標明。",
+      "reason": "FAA、gps.gov、SPS PS 2020、Navipedia 與 Blay 2021 都重開讀過，四章原本缺的定位幾何、第四顆衛星、多路徑、電離層、輔助 GPS 都補上了。一個問題貫穿（收到訊號的時間怎麼變成位置），轉折是真的：第四顆衛星是替手上的鐘解題、軍用準不在訊號而在雙頻、A-GPS 省下等電文卻讓時間又變成未知數。但照實只有約 17 條、11.4 分，企劃的 14 分會逼相對論章或示意重播撐時間，應改 11 分。",
+      "author_verdict": "ready",
+      "author_est_minutes": 12.0,
+      "author_new_cores": [
+        "T53-012",
+        "T53-013",
+        "T53-014",
+        "T53-015",
+        "T53-016",
+        "T53-017",
+        "T53-018",
+        "T53-019"
+      ]
+    },
+    {
+      "target": "P30 便宜一點、再買一次",
+      "verdict": "reserve",
+      "recount_facts": "硬合時約 15.5：B27／B62 既有扣掉被本輪新核心取代、不能用（Nunes & Drèze 未讀、7-ELEVEN 2005 待重讀、限量收藏離題）後約 6；新增 H53-001 2、H53-002 1.5、H53-003 1.5、H53-004 1.5、H53-005 1.5、H53-006 1.5＝9.5。分開算：左位數半邊約 9 條（7.3 分）、集點半邊約 6.5 條（6.0 分）；只留真正同問題的『呈現改變決定』（B27＋H53-001／H53-002／H53-003＋H53-005）約 10.5 條（8.0 分）。",
+      "recount_minutes": "硬合 10.6 分；只算共同問題的部分 8.0 分（低於 8.5）",
+      "planned_minutes": "不排；若站主仍接受『感覺到的差距』橋接，最多 10 分，不是 13 分",
+      "cuts_required": "不硬合。若日後重評：只保留『真實數量不變、呈現方式改變』這條線（H53-001／H53-002、H53-003 壓 40 秒、H53-005），H53-004／H53-006 的『越近越快、誰不受影響』只留一句；不加 B26、B73。",
+      "still_missing": "能把兩種機制放進同一個決定的研究（同一批顧客同時面對尾數價格與集點進度的實驗或資料）；Thomas & Morwitz 2005（左位數實驗室條件）全文；Nunes & Drèze 2006 全文；或第二篇真的隨機操弄『呈現』而非『距離』的集點研究，讓下半場不靠目標漸近撐。",
+      "reason": "數字我逐頁對過（A&S 掃描頁 94–105、NBER 二手車、Kivetz 2006），F2 的事實大致可用。問題在橋：『同樣的錢、同樣的杯數，換一種寫法就改變決定』只對 H53-005（先送兩格）成立；H53-004 的越近買越快、H53-006 的分群回答的是『快到目標時動機怎麼變』，那是另一個問題，H53-003 又換成里程數。照共同問題算只有約 10.5 條、8.0 分；把兩半全算進來 10.6 分，但那是兩個題目接在一起，假想顧客只是敘事膠水，正是第一輪說的弱點。企劃自己的規則是沒有同一情境就不合併，所以維持後備；就算日後接受橋接，也只能排 10 分，不是 13 分。",
+      "author_verdict": "ready",
+      "author_est_minutes": 12.9,
+      "author_new_cores": [
+        "H53-001",
+        "H53-002",
+        "H53-003",
+        "H53-004",
+        "H53-005",
+        "H53-006"
+      ]
+    },
+    {
+      "target": "C3-09 紙的摺與彎",
+      "verdict": "ready",
+      "recount_facts": "約 13.5：V3 重算 11 條；P53-003 1（與 P44-004 雙穩概念部分重疊）、P53-004 1.5。照 drop_if 刪 P44-008 後 12.5。",
+      "recount_minutes": "9.6 分（13.5 條）；刪 P44-008 後 9.1 分",
+      "planned_minutes": 9,
+      "cuts_required": "P53-004 放在收尾前作生活尺度的回答，說明材料是瓦楞塑膠板；P44-005、P44-008 的計算結果標『計算』，試讀覺得抽象就先刪 P44-008；不開太空展開結構章（Miura 1985 未讀）。",
+      "still_missing": "Miura 1985 ISAS 報告未讀（JAXA 典藏維護）；Melancon 的能量與壓力曲線來自公分級樣品，大型結構只有尺寸與行為描述；沒有用紙做的大型實測結構。",
+      "reason": "重開 Melancon 2021 原文，剛面＋理想鉸鏈『不能動或體積不變』、可伸長鉸鏈造成能量障壁、拱門與庇護所的尺寸和洩氣保形都對上。它回答的是同一個挑路問題：被迫伸長的那段路就是障壁，所以兩個形狀都穩，是 V3 要的實測大型結構，不是名稱相近。約 13.5 條、9.6 分，刪 P44-008 仍有 9.1 分，轉折（剪一刀就平、按翻頂點變硬、灌一口氣翻過山頭自己站住）成立，排 9 分。",
+      "author_verdict": "ready",
+      "author_est_minutes": 9.6,
+      "author_new_cores": [
+        "P53-003",
+        "P53-004"
+      ]
+    },
+    {
+      "target": "C2-11 沙漏",
+      "verdict": "reserve",
+      "recount_facts": "約 11–11.5：只算回答『流速與卡住由什麼決定』的既有核心：F10003 1、P43-001 2、P43-002 1.5、P43-003 1、P43-004 1.5、F10005 1.5、G13001 0.5（沙堆底壓答的是堆積史）、G13002 0（剪脹是另一個問題）＝9；新增 P53-001 1.5（Janssen 飽和已由 F10003 支持）、P53-002 0.5–1。C2 原稿『13 條、8.0 分』兩個數字自己也對不上公式。",
+      "recount_minutes": "8.3–8.6 分（11–11.5 條）",
+      "planned_minutes": "不排；補到直接量測後約 9 分",
+      "cuts_required": "不硬補；G13002 剪脹、G13001 沙堆底壓不用來撐片長；P53-002 只當銜接，不當轉折。",
+      "still_missing": "『流量與料高無關』的直接量測（例如 Aguirre 等 2010 PRL 對出口流量與壓力無關的實驗，或 Beverloo 1961 原文），現在只有 Mankoc 前言對平底筒倉文獻的整理；沙漏外形（錐形頸）本身的流量資料；標題前半『不會越漏越慢』要有這兩者之一才站得住。",
+      "reason": "Mankoc 原文我重開過：『與液體相反、料高超過約 1.2 倍筒徑後流量與高度無關』寫在前言，是整理既有文獻，而且講的是平底筒倉不是沙漏；自由落體拱是作者說的『看似合理』的解釋。P53-002 的出口比約 5 引自前作，Beverloo 改式是建模細節，不是轉折。把離題的剪脹與沙堆底壓扣掉後，約 11–11.5 條、8.3–8.6 分，在門檻邊上，片名那句又只有二手陳述撐，所以先放後備；補一篇直接量測後可升 ready。",
+      "author_verdict": "ready",
+      "author_est_minutes": 9.6,
+      "author_new_cores": [
+        "P53-001",
+        "P53-002"
+      ]
+    },
+    {
+      "target": "P19 降噪耳機",
+      "verdict": "reserve",
+      "recount_facts": "約 9：原 6 條；P53-005 2、P53-006 1（500 Hz 以下有效與 Sony 頁低頻說法重疊，遮蔽釋放只是前言引述）。",
+      "recount_minutes": "7.3 分",
+      "planned_minutes": "不排",
+      "cuts_required": "不硬補；不合 S26、G43。",
+      "still_missing": "主動噪音控制的教材或期刊來源（相位抵消的空間範圍、延遲與頻寬為何卡在低頻），企劃第二、三章完全靠它；遮蔽釋放的原始研究；DAGA 是廠商會議論文、JCAA 是 2002 年兩頁短文。",
+      "reason": "兩篇新來源都重開讀過，數字對（主動 15–21 dB、被動多半 3–6 dB、被動只對 200 Hz 以上有效、ANR 只在 500 Hz 以下）。但企劃的『多放一個聲音怎麼變小』『耳機怎麼追得上變化』兩章仍沒有教材來源，算起來約 9 條、7.3 分，低於門檻，同意 F2 的後備判斷。",
+      "author_verdict": "reserve",
+      "author_est_minutes": 7.4,
+      "author_new_cores": [
+        "P53-005",
+        "P53-006"
+      ]
+    },
+    {
+      "target": "P22 肥皂與油",
+      "verdict": "reserve",
+      "recount_facts": "6（本輪無新增）",
+      "recount_minutes": "5.7 分",
+      "planned_minutes": "不排",
+      "cuts_required": "無。",
+      "still_missing": "硬水與皂垢對照的化學教材；界面張力、乳化與分散的教材來源；第二個轉折。",
+      "reason": "本輪沒有研究 P22，素材與第一輪相同，約 6 條、5.7 分，維持後備。",
+      "author_verdict": "reserve",
+      "author_est_minutes": 5.6,
+      "author_new_cores": []
+    }
+  ],
+  "not_added": [
+    {
+      "proposal_id": "F2-NA001",
+      "final_id": "H53-NA001"
+    },
+    {
+      "proposal_id": "F2-NA002",
+      "final_id": "H53-NA002"
+    },
+    {
+      "proposal_id": "F2-NA003",
+      "final_id": "P53-NA001"
+    },
+    {
+      "proposal_id": "F2-NA004",
+      "final_id": "T53-NA001"
+    },
+    {
+      "proposal_id": "F2-NA005",
+      "final_id": "T53-NA002"
+    },
+    {
+      "proposal_id": "F2-NA006",
+      "final_id": "P53-NA002"
+    }
+  ],
+  "research_blocked": [
+    "msbfile03.usc.edu（Nunes & Drèze PDF：TLS 憑證過期，未關閉驗證；http 版 404）",
+    "web.archive.org（代理連線被重置；WebFetch 不支援）",
+    "jaxa.repo.nii.ac.jp（2026-10-28 起系統維護 503）",
+    "core.ac.uk（403）",
+    "journals.sagepub.com（403，未繞過）",
+    "navcen.uscg.gov（IS-GPS-200N、GPS FAQ 403）",
+    "www.gps.gov 舊網址 /systems/gps/performance/accuracy/ 與 /technical/ps/…pdf 404（改用 node/70、archive.gps.gov）",
+    "letsencrypt.org/docs/certificate-transparency/（404，改讀 certificate.transparency.dev）"
+  ],
+  "limits": "估時是依事實數的紙上估算，不是試讀；所有核心仍是選題候選，寫稿前要逐主張查核。P29、P13 的企劃改動（片長、POOL_SUPPORT、MATERIAL_REVIEW）不在本素材池範圍，由負責企劃的工作處理。G604 約 9.1 分，再刪一章就低於 8.5 分。多數 TLS 與 GPS 來源是標準文件、官方頁或 ESA Navipedia 教材級維基，不是期刊。"
+}

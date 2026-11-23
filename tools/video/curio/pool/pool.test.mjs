@@ -3,7 +3,9 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { ROOT, DIR, hash, intake, assemble, loadDraft, buildPool, urlsIn, normalizeUrl, linkStatuses, validateEditorial } from './core.mjs';
+import { ROOT, DIR, hash, intake, assemble, loadDraft, buildPool, urlsIn, normalizeUrl, linkStatuses, validateEditorial, topicCheckLimits, splitLocator, SCOPE_NOT_SCOPED, CATEGORY_LIST, categoryForAxis, POOL_PARTS, splitPool, readSavedPool, writePool } from './core.mjs';
+import { renderQuestions, renderThemes } from './render.mjs';
+import { validateAudience } from './render.mjs';
 import { validateThemes, renderHtml, renderDedup, renderProducible, producibleData } from './render.mjs';
 import { writeBaseline, readBaseline, validateBaseline } from './history.mjs';
 import { openStore, ingest, search, lookup } from './store.mjs';
@@ -33,8 +35,11 @@ const theme = (id, ids, minutes = 10, extra = {}) => {
   const total = minutes * 60;
   const per = Math.floor(total / 4);
   const chapters = [0, 1, 2, 3].map((i) => ({ title: `章 ${i + 1}`, seconds: i === 3 ? total - per * 3 : per, new_information: `新理解 ${i + 1}`, candidate_ids: [ids[i % ids.length]] }));
-  return { id, title: `題案 ${id}`, core_question: '追問', connection: '同一個核心', boredom_risk: '重複', drop_if: '撤案', evidence_gaps: '待補', status: 'EDITORIAL_THEME_NOT_SCRIPT', production_ready: false, target_minutes: minutes, range_minutes: [8, 13], candidate_ids: ids, chapters, ...extra };
+  return { id, title: `題案 ${id}`, core_question: '追問', connection: '同一個核心', boredom_risk: '重複', drop_if: '撤案', evidence_gaps: '待補', status: 'EDITORIAL_THEME_NOT_SCRIPT', production_ready: false, target_minutes: minutes, range_minutes: [8, 13], candidate_ids: ids, chapters, audience: AUDIENCE, ...extra };
 };
+
+const DEMAND = { base: 7, demand: 5.5, demand_answers: { east_asia: true, prophecy_ghost: true, ancient_alien: false, famous: false }, demand_reason: 'fixture', demand_review: 'reviews/demand-20261117.json' };
+const AUDIENCE = { score: 6.75, rank: 1, of: 1, click: 7, hook: 7, surprise: 7, payoff: 7, share: 7, comment: 'fixture', reviewed_on: '2026-11-14', review: 'reviews/audience-20261114.json', ...DEMAND };
 
 test('topic-check files are read whole: every URL in a table cell is kept and non-200 link checks become limitations', () => {
   const urls = ['https://example.org/a', 'https://example.org/b', 'https://archive.example.net/c?utm_source=x'];
@@ -163,19 +168,32 @@ test('cross-series duplicates against the so-thats-why pool block selection unti
 
 test('editorial estimates are honest: an episode core must reach 8 minutes, otherwise it is a chapter', () => {
   assert.throws(() => validateEditorial({ id: 'N1', editorial: { role: 'episode_core', payoff: 'a', visual: 'b', minutes: [3, 5] } }), /mark it a chapter/);
-  assert.throws(() => validateEditorial({ id: 'N1', editorial: { role: 'chapter', payoff: 'a', visual: 'b', minutes: [3, 15] } }), /within/);
+  assert.throws(() => validateEditorial({ id: 'N1', editorial: { role: 'chapter', payoff: 'a', visual: 'b', minutes: [5, 3] } }), /lo no larger than hi/);
+  assert.throws(() => validateEditorial({ id: 'N1', editorial: { role: 'chapter', payoff: 'a', visual: 'b', minutes: [0, 4] } }), /above 0/);
+  // 沒有上限（站主 2026-11-19）：估到 13 分鐘以上不再被擋。
+  validateEditorial({ id: 'N1', editorial: { role: 'episode_core', payoff: 'a', visual: 'b', minutes: [12, 18] } });
   validateEditorial({ id: 'N1', editorial: { role: 'chapter', payoff: 'a', visual: 'b', minutes: [2, 4] } });
 });
 
-test('themes are 8–13 minutes, add up exactly, use each core once and never plan produced or thin-alone cores', () => {
+test('themes are at least 8 minutes with no upper bound, add up exactly, use each core once and never plan produced or thin-alone cores', () => {
   const batch = { batch_id: 'wave1', sources: [source('S1', 'https://example.org/one'), source('S2', 'https://example.org/two')], candidates: [candidate('N101', '貝奇莫號為什麼漂了幾十年？'), candidate('N102', 'Carroll Deering 號的船員去哪了？', { editorial: { role: 'chapter', payoff: 'a', visual: 'b', minutes: [3, 5] } })] };
   const episodes = { 'curio-h01': { 'video.json': { title: '一艘船' } } };
   const pool = buildPool(fixture({ topics: [topic('H01', '一艘船', 'scripted')], batch, episodes, selection: { revision: 'r', reviewed_on: '2026-11-01', reason: 'test', target_count: 2, ids: ['N101', 'N102'] } }));
   const ok = { episodes: [theme('T01', ['N101', 'N102'], 10)] };
   assert.equal(validateThemes(ok, pool), ok);
+  assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: undefined })] }, pool), /independent audience score/);
+  const later = { ...AUDIENCE, reviewed_on: '2026-11-20', review: 'reviews/audience-20261120.json' };
+  assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: later })] }, pool), /scored again/);
+  const rounds = [{ score: 5, comment: '太硬', changes: '改片名', reviewed_on: '2026-11-19', review: 'reviews/audience-20261119.json' }];
+  assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: { ...later, base: 6.5, score: 6.33, rounds } })] }, pool), /below 6.5/);
+  assert.doesNotThrow(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: { ...later, rounds } })] }, pool));
+  const { demand: _demand, demand_answers: _answers, demand_reason: _reason, demand_review: _record, base: _base, ...five } = AUDIENCE;
+  assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: { ...five, score: 7 } })] }, pool), /needs a demand score/);
+  assert.doesNotThrow(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 10, { audience: undefined, material: { verdict: 'reserve', reviewed_on: '2026-11-11', review: 'fixture', missing: 'fixture' } })] }, pool));
   assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101'], 10)] }, pool), /N102.*cannot stand alone/);
-  assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 7, { range_minutes: [7, 9] })] }, pool), /8–13 minutes/);
-  assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 14, { range_minutes: [12, 14] })] }, pool), /8–13 minutes/);
+  assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 7, { range_minutes: [7, 9] })] }, pool), /at least 8 minutes/);
+  assert.doesNotThrow(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 14, { range_minutes: [12, 14] })] }, pool));
+  assert.doesNotThrow(() => validateThemes({ episodes: [theme('T01', ['N101', 'N102'], 20, { range_minutes: [18, 22] })] }, pool));
   const off = theme('T01', ['N101', 'N102'], 10); off.chapters[0].seconds += 5;
   assert.throws(() => validateThemes({ episodes: [off] }, pool), /add up to the target exactly/);
   const short = theme('T01', ['N101', 'N102'], 10); short.chapters[0].seconds -= 140; short.chapters[1].seconds += 140;
@@ -237,17 +255,187 @@ test('the producible list keeps only fully selected themes and lists the other s
   assert.match(html, /^<!doctype html>/);
 });
 
+test('a theme the material review holds back (reserve or merge) is valid but never on the producible list', () => {
+  const batch = { batch_id: 'wave1', sources: [source('S1', 'https://example.org/one'), source('S2', 'https://example.org/two')], candidates: [candidate('N101', '1931 年貝奇莫號在北極冰原漂了幾十年？'), candidate('N102', 'Carroll Deering 號擱淺時船員去了哪裡？'), candidate('N103', '惡魔島三名逃犯的木筏後來在哪裡找到？'), candidate('N104', '佛蘭南群島燈塔看守人消失前寫了什麼？')] };
+  const pool = buildPool(fixture({ batch, selection: { revision: 'r', reviewed_on: '2026-11-01', reason: 'test', target_count: 4, ids: ['N101', 'N102', 'N103', 'N104'] } }));
+  const review = { reviewed_on: '2026-11-11', review: 'reviews/material-20261111.json' };
+  const themes = { episodes: [
+    theme('T01', ['N101'], 10, { material: { verdict: 'ready', ...review } }),
+    theme('T02', ['N102'], 10, { material: { verdict: 'reserve', missing: '缺第二個升級關卡', ...review } }),
+    theme('T03', ['N103'], 10, { material: { verdict: 'merge', missing: '只有一個轉折', merge_with: ['N104'], ...review } }),
+    theme('T04', ['N104'], 10),
+  ] };
+  validateThemes(themes, pool);
+  assert.deepEqual(producibleData(pool, themes).themes.map((episode) => episode.id), ['T01', 'T04'], 'ready and never-reviewed themes stay; reserve and merge wait');
+  const broken = (material) => ({ episodes: [theme('T01', ['N101'], 10, { material })] });
+  assert.throws(() => validateThemes(broken({ verdict: 'maybe', ...review }), pool), /material needs a verdict/);
+  assert.throws(() => validateThemes(broken({ verdict: 'reserve', ...review }), pool), /says what is missing/);
+  assert.throws(() => validateThemes(broken({ verdict: 'merge', missing: 'x', ...review }), pool), /names what it merges with/);
+});
+
+test('a long finding is kept whole: answer_target is not cut at 800 characters', () => {
+  const finding = `${'紀錄'.repeat(450)}最後一句是結論。`;
+  const root = fixture({ topics: [topic('M10', '馬爾法的燈', 'checked', { finding })], checks: { M10: checkFile(['https://example.org/marfa']) } });
+  const row = intake(root).records.find((record) => record.id === 'M10');
+  assert.ok(finding.length > 800);
+  assert.equal(row.answer_target, finding);
+  assert.match(row.answer_target, /最後一句是結論。$/);
+});
+
+test('legacy scope comes from the limits a topic-check states, or is marked plainly as not yet scoped', () => {
+  const limited = `${checkFile(['https://example.org/a'])}\n## 來源不一致與不能講的事\n\n- 年份兩說。\n- **不能講**：「解開了」；「第一篇」。\n\n## 給撰稿的提醒\n\n- **不說滿**：\n  - 不說「二十年後拆掉」。\n  - 不說「續約七十年」。\n- 其他提醒。\n`;
+  const silent = checkFile(['https://example.org/b']);
+  const root = fixture({ topics: [topic('M10', '馬爾法的燈', 'checked', { risk: '在世人物：不畫臉' }), topic('M11', '沒寫限制的題', 'checked'), topic('M12', '沒查過的題')], checks: { M10: limited, M11: silent } });
+  const rows = new Map(intake(root).records.map((record) => [record.id, record]));
+  const m10 = rows.get('M10');
+  assert.equal(m10.scope_source, `${BANK}/topic-checks/M10.md`);
+  assert.match(m10.scope, /不能講：「解開了」；「第一篇」/);
+  assert.match(m10.scope, /不說滿：不說「二十年後拆掉」。；不說「續約七十年」。/);
+  assert.match(m10.scope, /風險：在世人物：不畫臉$/);
+  assert.doesNotMatch(m10.scope, /待查|年份兩說|其他提醒/);
+  assert.equal(m10.scope_status, undefined);
+  for (const id of ['M11', 'M12']) {
+    const row = rows.get(id);
+    assert.equal(row.scope_status, 'not_yet_scoped', id);
+    assert.ok(row.scope.startsWith(SCOPE_NOT_SCOPED), id);
+    assert.deepEqual(row.card_facts_to_verify, ['年份']);
+    assert.doesNotMatch(row.scope, /待查：/);
+  }
+  assert.deepEqual(topicCheckLimits('## 流傳但查不到（旁白標成流傳）\n\n- 刻在墓裡：沒有。\n- 停電：只有據說。\n\n## 下一節\n- 不算\n'), ['流傳但查不到：刻在墓裡：沒有。；停電：只有據說。']);
+  assert.deepEqual(topicCheckLimits(silent), []);
+  // The marker reaches the views reviewers read.
+  const pool = assemble(intake(root));
+  assert.match(renderQuestions(pool), /範圍未界定/);
+  assert.match(renderThemes({ episodes: [theme('T01', ['M11'])] }, pool), /M11（[^）]*範圍未界定）/);
+  // Screening research replaces the marker with its own scope.
+  const batch = { batch_id: 'legacy1', sources: [source('S1', 'https://example.org/one')], candidates: [], legacy_updates: [{ id: 'M12', answer_target: '查到的紀錄', scope: '不主張的事', source_ids: ['S1'], source_locator: 'S1 第一段', premise_status: 'screened', editorial: { role: 'episode_core', payoff: 'a', visual: 'b', minutes: [8, 10] } }] };
+  write(root, `${DIR}/batches/wave1.json`, batch);
+  const screened = intake(root).records.find((record) => record.id === 'M12');
+  assert.equal(screened.scope, '不主張的事');
+  assert.equal(screened.scope_status, undefined);
+});
+
+test('a batch source_locator is split so each source reference keeps its own locator', () => {
+  const split = splitLocator('A1-S001：1804 圖會；寛政七年；A1-S002：1800 南畝；S003、S004：兩份報紙', ['A1-S001', 'A1-S002', 'A1-S003', 'A1-S004', 'A1-S005']);
+  assert.equal(split.get('A1-S001'), 'A1-S001：1804 圖會；寛政七年');
+  assert.equal(split.get('A1-S002'), 'A1-S002：1800 南畝');
+  assert.equal(split.get('A1-S003'), 'S003、S004：兩份報紙');
+  assert.equal(split.get('A1-S004'), 'S003、S004：兩份報紙');
+  assert.equal(split.get('A1-S005'), 'A1-S001：1804 圖會；寛政七年；A1-S002：1800 南畝；S003、S004：兩份報紙', 'an unnamed source keeps the whole string');
+  const batch = { batch_id: 'wave1', sources: [source('S1', 'https://example.org/one'), source('S2', 'https://example.org/two')], candidates: [candidate('N101', '橡樹島錢坑從哪年開始挖？')] };
+  const row = intake(fixture({ batch })).records.find((record) => record.id === 'N101');
+  assert.deepEqual(row.source_refs.map((ref) => ref.locator), ['S1 第一段', 'S2 第二段']);
+});
+
+test('every core and theme resolves to one of the 9 Drive categories, with B folded into W', () => {
+  assert.equal(CATEGORY_LIST.length, 9);
+  assert.equal(categoryForAxis('H'), 'H-歷史懸案');
+  assert.equal(categoryForAxis('B'), 'W-商業與品牌奇聞');
+  assert.equal(categoryForAxis('W'), 'W-商業與品牌奇聞');
+  const batch = { batch_id: 'wave1', sources: [source('S1', 'https://example.org/one'), source('S2', 'https://example.org/two')], candidates: [candidate('N101', '貝奇莫號為什麼漂了幾十年？')] };
+  const pool = buildPool(fixture({ batch, selection: { revision: 'r', reviewed_on: '2026-11-01', reason: 'test', target_count: 1, ids: ['N101'] } }));
+  assert.equal(pool.candidates[0].category, 'H-歷史懸案');
+  assert.throws(() => validateThemes({ episodes: [theme('T01', ['N101'], 10, { category: '不存在的分類' })] }, pool), /unknown category/);
+});
+
+test('the pool is written as three files and reads back as the same object', () => {
+  const batch = { batch_id: 'wave1', sources: [source('S1', 'https://example.org/one'), source('S2', 'https://example.org/two')], candidates: [candidate('N101', '貝奇莫號為什麼漂了幾十年？')] };
+  const root = fixture({ batch, selection: { revision: 'r', reviewed_on: '2026-11-01', reason: 'test', target_count: 1, ids: ['N101'] } });
+  const pool = buildPool(root);
+  const { main } = splitPool(pool);
+  assert.deepEqual(Object.keys(main), Object.keys(pool));
+  assert.deepEqual(main.sources, { file: 'pool-sources.json', count: pool.sources.length });
+  assert.deepEqual(writePool(root, pool), ['pool.json', 'pool-sources.json', 'pool-records.json']);
+  assert.equal(JSON.stringify(readSavedPool(root)), JSON.stringify(pool));
+  // A part left over from another build must not be read as this pool's.
+  const stale = path.join(root, DIR, 'pool-records.json');
+  fs.writeFileSync(stale, JSON.stringify({ revision: 'older', raw_records: pool.raw_records }));
+  assert.throws(() => readSavedPool(root), /does not belong to this pool\.json/);
+});
+
 test('the committed pool export is internally consistent', { skip: !fs.existsSync(path.join(ROOT, DIR, 'manifest.json')) }, () => {
   // Hash checks only: the full rebuild (`cli.mjs check`) depends on topics.json, which other tasks edit.
   const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, DIR, 'manifest.json'), 'utf8'));
   for (const entry of manifest.files) assert.equal(hash(fs.readFileSync(path.join(ROOT, DIR, entry.file))), entry.sha256, entry.file);
-  const pool = JSON.parse(fs.readFileSync(path.join(ROOT, DIR, 'pool.json'), 'utf8'));
+  const pool = readSavedPool();
+  for (const name of ['pool.json', ...Object.values(POOL_PARTS)]) assert.ok(fs.statSync(path.join(ROOT, DIR, name)).size < 45 * 1024 * 1024, `${name} is near GitHub's 50 MB warning; split it further`);
   assert.equal(pool.counts.high_similarity_pending, 0);
   assert.equal(pool.counts.cross_series_pending, 0);
   assert.equal(pool.counts.approved_scripts, 0);
   assert.equal(pool.candidates.filter((row) => row.selected).length, pool.counts.selected_candidates);
   assert.ok(pool.candidates.every((row) => row.production_ready === false));
+  assert.ok(pool.candidates.every((row) => CATEGORY_LIST.includes(row.category)));
   const themes = JSON.parse(fs.readFileSync(path.join(ROOT, DIR, 'themes.json'), 'utf8'));
   assert.equal(hash(fs.readFileSync(path.join(ROOT, DIR, 'themes.json'))), manifest.theme_definition_sha256);
+  assert.ok(themes.episodes.every((episode) => CATEGORY_LIST.includes(episode.category)));
   validateThemes(themes, pool);
+});
+
+test('audience scores on a theme are 1–10 on five dimensions, ranked, and point at their review record', () => {
+  const good = { score: 7.5, rank: 1, of: 3, click: 8, hook: 7, surprise: 7.5, payoff: 7, share: 8, comment: '想看', reviewed_on: '2026-11-14', review: 'reviews/audience-20261114.json' };
+  assert.doesNotThrow(() => validateAudience('T1', good));
+  assert.doesNotThrow(() => validateAudience('T1', undefined));
+  assert.throws(() => validateAudience('T1', { ...good, hook: 11 }), /between 1 and 10/);
+  assert.throws(() => validateAudience('T1', { ...good, rank: 4 }), /rank/);
+  assert.throws(() => validateAudience('T1', { ...good, review: 'notes.md' }), /reviews\/audience/);
+});
+
+test('a theme scored after the baseline must be improved and rescored to at least the audience minimum', () => {
+  const base = { score: 7, rank: 1, of: 1, click: 7, hook: 7, surprise: 7, payoff: 7, share: 7, comment: 'fixture', reviewed_on: '2026-11-20', review: 'reviews/audience-20261120.json' };
+  const round = { score: 5.5, comment: '片名太長', changes: '縮短片名、刪掉術語章', reviewed_on: '2026-11-19', review: 'reviews/audience-20261119.json' };
+  assert.throws(() => validateAudience('T1', { ...base, rounds: [{ ...round, changes: '' }] }), /changes made after it/);
+  assert.doesNotThrow(() => validateAudience('T1', { ...base, rounds: [round] }));
+});
+
+test('demand is four yes-or-no answers folded into the audience score as a sixth item', () => {
+  const five = { score: 7, rank: 1, of: 3, click: 7, hook: 7, surprise: 7, payoff: 7, share: 7, comment: '想看', reviewed_on: '2026-11-14', review: 'reviews/audience-20261114.json' };
+  assert.doesNotThrow(() => validateAudience('T1', five), 'a theme not yet scored for demand keeps its five-item score');
+  assert.doesNotThrow(() => validateAudience('T1', { ...five, ...DEMAND, score: 6.75 }));
+  assert.throws(() => validateAudience('T1', { ...five, ...DEMAND }), /base × 5 \+ demand/);
+  assert.throws(() => validateAudience('T1', { ...five, ...DEMAND, score: 6.75, demand: 10 }), /demand must be 5.5/);
+  assert.throws(() => validateAudience('T1', { ...five, ...DEMAND, score: 6.75, demand_answers: {} }), /true or false/);
+  assert.throws(() => validateAudience('T1', { ...five, ...DEMAND, score: 6.75, demand_review: 'notes.md' }), /reviews\/demand/);
+  assert.throws(() => validateAudience('T1', { ...five, demand: 5.5 }), /true or false/);
+});
+
+test('a single-episode core carries its demand answers, and an audience score on it is blended with demand', () => {
+  const batch = { batch_id: 'wave1', sources: [source('S1', 'https://example.org/one'), source('S2', 'https://example.org/two')], candidates: [candidate('N101', '貝奇莫號為什麼漂了幾十年？'), candidate('N102', 'Carroll Deering 號的船員去哪了？'), candidate('N103', '第三題？', { editorial: { role: 'chapter', payoff: 'a', visual: 'b', minutes: [3, 5] } })] };
+  const selection = { revision: 'r', reviewed_on: '2026-11-01', reason: 'test', target_count: 3, ids: ['N101', 'N102', 'N103'] };
+  const answers = { east_asia: true, prophecy_ghost: true, ancient_alien: false, famous: false };
+  const scored = (id, score) => ({ id, rank: 1, of: 2, score, click: score, hook: score, surprise: score, payoff: score, share: score, comment: 'fixture' });
+  const build = (demandRows, audienceRows = [scored('N101', 7), scored('N102', 7.2)]) => {
+    const root = fixture({ batch, selection });
+    write(root, `${DIR}/reviews/audience-20261114.json`, { reviewed_on: '2026-11-14', candidates: audienceRows });
+    write(root, `${DIR}/reviews/demand-20261117-cores.json`, { reviewed_on: '2026-11-17', candidates: demandRows });
+    return buildPool(root);
+  };
+  const pool = build([{ id: 'N101', answers, demand: 5.5, reason: 'fixture' }]);
+  const [first, second] = ['N101', 'N102'].map((id) => pool.candidates.find((row) => row.id === id));
+  assert.deepEqual(first.demand, { answers, demand: 5.5, reason: 'fixture', reviewed_on: '2026-11-17', review: 'reviews/demand-20261117-cores.json' });
+  assert.equal(first.audience.base, 7);
+  assert.equal(first.audience.score, 6.75);
+  assert.equal(second.audience.base, undefined, 'a core with no demand answers keeps its five-item score');
+  assert.deepEqual([first.audience.rank, second.audience.rank, first.audience.of], [2, 1, 2], 'scored cores are ranked again on the blended score');
+  const unscored = build([{ id: 'N102', answers, demand: 5.5, reason: 'fixture' }], [scored('N101', 7)]).candidates.find((row) => row.id === 'N102');
+  assert.equal(unscored.demand.demand, 5.5);
+  assert.equal(unscored.audience, undefined, 'demand alone does not invent an audience score');
+  assert.throws(() => build([{ id: 'N101', answers, demand: 10, reason: 'fixture' }]), /demand must be 5.5/);
+  assert.throws(() => build([{ id: 'N101', answers: { east_asia: true }, demand: 3.25 }]), /true or false/);
+  assert.throws(() => build([{ id: 'N103', answers, demand: 5.5 }]), /selected single-episode core/);
+  const brand = { have: true, why: true, standard: false, lose_or_jp: false };
+  assert.throws(() => build([{ id: 'N101', answers: brand, demand: 5.5 }]), /answers east_asia/, 'a history core is not scored on the brand questions');
+});
+
+test('a business and brand core answers the brand questions, not the history ones', () => {
+  const batch = { batch_id: 'wave1', sources: [source('S1', 'https://example.org/one'), source('S2', 'https://example.org/two')], candidates: [candidate('N101', '一條線為什麼有人收過路費？', { axis: 'W' })] };
+  const selection = { revision: 'r', reviewed_on: '2026-11-01', reason: 'test', target_count: 1, ids: ['N101'] };
+  const build = (answers) => {
+    const root = fixture({ batch, selection });
+    write(root, `${DIR}/reviews/demand-20261117-w.json`, { reviewed_on: '2026-11-17', candidates: [{ id: 'N101', answers, demand: 5.5, reason: 'fixture' }] });
+    return buildPool(root);
+  };
+  const row = build({ have: true, why: false, standard: true, lose_or_jp: false }).candidates.find((item) => item.id === 'N101');
+  assert.equal(row.category, 'W-商業與品牌奇聞');
+  assert.equal(row.demand.demand, 5.5);
+  assert.throws(() => build({ east_asia: true, prophecy_ghost: true, ancient_alien: false, famous: false }), /answers have, why, standard, lose_or_jp/);
 });

@@ -10,7 +10,7 @@ import { documentDiscussionPayload, documentDiscussVariant, SCRIPT_DISCUSSION_VA
 import { cardRules, EXPLAINER_DISCUSS_VARIANTS, EXPLAINER_SERIES_INSTRUCTIONS, EXPLAINER_SERIES_PROFILES, EXPLAINER_VARIANTS, explainerProfile, explainerVariants, isExplainerStageVariant } from "./explainer-series.mjs";
 import { Automation, DRAFT_LINE_IDS, planProblem, PROFILED_LINE_IDS_PER_MINUTE, settle } from "./flow.mjs";
 import { instructionsFor, VARIANT_INSTRUCTIONS } from "./prompts.mjs";
-import { STORY_OPENING_RULE, TOLD_TO_ONE_VIEWER } from "./register.mjs";
+import { STORY_OPENING_RULE, STORY_SERIES_SCREEN_RULE, TOLD_TO_ONE_VIEWER } from "./register.mjs";
 import { canonicalJson } from "./run-receipts.mjs";
 import { documentInputs, documentPayload, documentVariant } from "./series.mjs";
 
@@ -117,18 +117,25 @@ test("one table maps each explainer preset to its variants; every name fits the 
 // a new paid call beside that orphan. Hence the hard step before the deploy: no unfinished
 // one-off in a cute preset on the host (docs/videos/explainer-route/DESIGN.md 5.7 item 1).
 // The four 奇聞檔案局 texts that read the bible's 鉤子 or the writer's hook rules moved on 2026-10-19,
-// when the series took the brand stories' 45-second cadence, eight loops and its music bed.
+// when the series took the brand stories' 45-second cadence, eight loops and its music bed. All
+// five moved on 2026-11-05 (owner): 黑猫研究院's ten steps in place of the condensation and the
+// file's three sections, no card and no word on screen, MiniMax image-01 prompt rules, Latin
+// names said as written, and nobody living or dead since 1956 drawn. An unfinished 奇聞檔案局
+// one-off on the host stops with video_ai_receipt_input_changed at its next stage after the deploy.
+// The four writer texts moved again on 2026-11-19 (owner): STORY_OPENING_RULE lets the hook say which
+// way the answer lies and allows one announced aside, one counted list and a verdict before a
+// chapter's open question; the same stop applies to an unfinished one-off.
 const SERIES_TEXT_PINS = {
-  "planner:bible-explainer-cartoon": [6347, "f9afae8a35b9fee5d247b6bb2a4b0729b47fd20c1f9d195eab42a76adf7ac0d2"],
-  "writer:explainer-cartoon": [27161, "24625a430c23d15dc2428d2195c3947b5a18a59b51ab7b9e6e30bcd85b4264f5"],
+  "planner:bible-explainer-cartoon": [7157, "c0c073ea08c1830520cdd8aac05655180dbf74804ddb47fdb53289a472dc7f4a"],
+  "writer:explainer-cartoon": [29414, "9b4da3761a3631968453a25a0c55677f58991ea068a9439bdec2cc02eba7b60c"],
   "verifier:explainer-cartoon": [4305, "6f41570e5090987327a200b7790a6ecdec88c8a0350de2ca49b74cb4e7ca95db"],
-  "planner:discuss-cartoon": [7074, "a489aa308db647b7d936eeeddcac14bed5fda21c4f2765d76acb338cc44a97f6"],
-  "writer:discuss-cartoon": [25626, "19bacf8358177a1a461c5b46643211041f91969434eba8a89404524084a17fca"],
-  "planner:bible-explainer-mystery": [9111, "ef9cf2ef25cf3cd54c445e33d25c80fb469d96e53d70044e93ca451d1b9a087b"],
-  "writer:explainer-mystery": [33923, "a2618084ebfc82667bfe58b049ea8943aaafcf1f9ca884b5709aa9d1866148af"],
-  "verifier:explainer-mystery": [6194, "ab0adfcec0f59fc6c377523ba8272aa33cdb76f736af84e7de256f31b2784722"],
-  "planner:discuss-mystery": [9740, "925081165290cf91c680835650ccdd14e8d6f9256b794ec799c628aaf06686cd"],
-  "writer:discuss-mystery": [32469, "7c1a0a0efde27ce5afddde770ea3dacc0983a2d0b01d5e1347b0956dde60e751"],
+  "planner:discuss-cartoon": [7884, "67c29f2e2e662f11fa2eb5e91fac15a388739750b15f88916406b56950b0cc0a"],
+  "writer:discuss-cartoon": [27879, "d80dab5255695c7bb3a5db63020beb18122d501381b640651de3d62a1a5bf1db"],
+  "planner:bible-explainer-mystery": [10253, "20e96955d47455eb2b5bf9065e6f28686ecb77c9bbe5803496630452a1a4283f"],
+  "writer:explainer-mystery": [33486, "ca6cf3f680e46b925a9c087ff06f8bad3c8cddd91d17de78c7c470f004bc30bd"],
+  "verifier:explainer-mystery": [6433, "e84a1810dab0b060272622dae14a95879470965678851713608fc5ac60dc4b2a"],
+  "planner:discuss-mystery": [10882, "953f812ff7bffa3ff7c70e2132048bcacc894477bc803017c9ac068124ac6dfa"],
+  "writer:discuss-mystery": [32023, "ff517dad6fabb07e816587ec65806358a88384c52f5616db0d92f8372b9aef4a"],
 };
 
 test("the ten texts of the two profiled series are the pinned ones, composed with no genre section", () => {
@@ -148,7 +155,7 @@ test("the ten texts of the two profiled series are the pinned ones, composed wit
   assert.ok(standing.startsWith(EXPLAINER_SERIES_INSTRUCTIONS["writer:explainer-mystery"]) && standing.includes("旁白慢一點") && standing.includes("1. 先講事實"));
 });
 
-test("奇聞檔案局's writer keeps the brand stories' cadence and music bed; 原來如此's does not change", () => {
+test("奇聞檔案局's writer keeps the brand stories' cadence and music bed; 原來如此's takes the ten steps but keeps its cards (2026-11-19)", () => {
   // Owner, 2026-10-19: the brand stories were smoother, had more hooks and music; this series is to
   // be as good or better. Lint reads the same 45 s and eight loops on a curio- slug.
   const mystery = instructionsFor("writer", "drama", "", "explainer-mystery");
@@ -156,18 +163,45 @@ test("奇聞檔案局's writer keeps the brand stories' cadence and music bed; �
   assert.match(mystery, /"loops" lists at least 8 for ten minutes/);
   assert.match(mystery, /ends its last sentence on one concrete, unanswered question/);
   assert.match(mystery, /"music" is never left out/);
-  // 2026-10-25: the two writers also carry the series opening (the stakes, the scene, one promise
-  // sentence, at most two teasers) and the viewer address, after the hook rules they refine.
+  // 2026-10-25: the two writers also carry the series shape and the viewer address, after the hook
+  // rules they refine; 2026-11-05: the shape became 黑猫研究院's ten steps, and the screen rule (no
+  // card, no word on screen, MiniMax prompts, Latin names, nobody since 1956 drawn) came with it.
   for (const key of ["writer:explainer-mystery", "writer:discuss-mystery"]) {
     const text = EXPLAINER_SERIES_INSTRUCTIONS[key];
-    assert.ok(text.includes(STORY_OPENING_RULE) && text.includes(TOLD_TO_ONE_VIEWER), key);
+    assert.ok(text.includes(STORY_OPENING_RULE) && text.includes(TOLD_TO_ONE_VIEWER) && text.includes(STORY_SERIES_SCREEN_RULE), key);
     assert.ok(text.indexOf(STORY_OPENING_RULE) > text.indexOf("No stretch of the body runs longer than 45 seconds"), `${key}: the opening follows the cadence it refines`);
+    assert.match(text, /- No cards: every scene is a "shot"/, key);
+    assert.doesNotMatch(text, /- Cards between shots, and only these/, key);
+    assert.match(text, /"prompt" is English, 100 to 200 characters/, key);
+    assert.doesNotMatch(text, /"a blank newspaper front\s+page"/, `${key}: the no-words series never asks for a blank prop`);
+    assert.match(text, /A Latin-letter name is said as written, never in a Chinese\s+transliteration/, key);
+    assert.doesNotMatch(text, /A foreign name is said in its usual Chinese form/, key);
+    assert.match(text, /The first chapter, 40 to 90 seconds: the hook and the promise/, key);
   }
+  assert.match(mystery, /draw a thing that needs none/);
+  assert.match(STORY_OPENING_RULE, /Ten steps, broadly in the order things happened/);
+  assert.match(STORY_OPENING_RULE, /at most one or two labels of later climaxes/);
+  assert.match(STORY_OPENING_RULE, /「今天我們就來聊聊…」/);
+  assert.match(STORY_SERIES_SCREEN_RULE, /who died in 1956 or later, is never drawn/);
   assert.match(mystery, /the name\s+everybody knows in the first six characters/);
-  assert.ok(!EXPLAINER_SERIES_INSTRUCTIONS["writer:explainer-cartoon"].includes(TOLD_TO_ONE_VIEWER), "原來如此 keeps its register");
+  // Owner, 2026-11-19: new 原來如此 episodes follow 黑猫研究院's ten steps and are told to one viewer.
+  assert.ok(EXPLAINER_SERIES_INSTRUCTIONS["writer:explainer-cartoon"].includes(TOLD_TO_ONE_VIEWER), "原來如此 is told to one viewer");
   assert.match(instructionsFor("planner", "drama", "", "bible-explainer-mystery"), /at least eight for ten minutes/);
   const cartoon = instructionsFor("writer", "drama", "", "explainer-cartoon");
-  assert.doesNotMatch(cartoon, /45 seconds|"music" is never left out/);
+  // 2026-11-19: 原來如此 keeps the 45-second cadence of the ten steps, not 奇聞檔案局's music rule.
+  assert.match(cartoon, /No stretch of the body runs longer than 45\s+seconds without one/);
+  assert.match(cartoon, /"loops" lists at least 8 for ten minutes/);
+  assert.doesNotMatch(cartoon, /"music" is never left out/);
+  // 原來如此 keeps its cards and its picture rules; its opening is the ten steps' hook and promise.
+  assert.ok(!cartoon.includes(STORY_SERIES_SCREEN_RULE) && cartoon.includes(STORY_OPENING_RULE));
+  assert.match(cartoon, /The first chapter, 40 to 90 seconds, aimed at about a minute: the hook and the promise/);
+  assert.match(cartoon, /For a "why" question the ten steps of the shape rule below read this way/);
+  assert.match(cartoon, /never a menu of\s+questions/);
+  assert.match(cartoon, /No greeting and no intro: the first\s+line plays at 0:00/);
+  assert.doesNotMatch(cartoon, /The channel intro plays after it/);
+  assert.match(cartoon, /- Cards between shots, and only these/);
+  assert.match(cartoon, /"prompt" is English, at most 400 characters/);
+  assert.match(cartoon, /A foreign name is said in its usual Chinese form/);
 });
 
 test("each series' texts name their own series, look, cards and rules, and nothing of the flat explainer's or of each other's", () => {
@@ -182,7 +216,9 @@ test("each series' texts name their own series, look, cards and rules, and nothi
       assert.equal(text.includes(preset === "cute-mystery" ? "原來如此" : "奇聞檔案局"), false, `${key} names the other series`);
       if (stage !== "writer") continue;
       assert.ok(text.includes(`"look": {"preset": "${preset}"}`), key);
-      for (const card of explainerCardTemplates(preset)) assert.ok(text.includes(`"${card}" {`), `${key} names ${card}`);
+      // 奇聞檔案局 is offered no card (owner, 2026-11-05); lint still accepts them for older episodes.
+      if (!profile.noWords) for (const card of explainerCardTemplates(preset)) assert.ok(text.includes(`"${card}" {`), `${key} names ${card}`);
+      else for (const card of explainerCardTemplates(preset)) assert.ok(!text.includes(`"${card}" {`), `${key} offers ${card}`);
       assert.match(text, /ONE person doing ONE concrete thing/);
       assert.match(text, /Never a still life or an empty scene on its own/);
       assert.match(text, /at least a third of the lines carry one \(lint warns below\s+that\)/);
@@ -214,7 +250,8 @@ test("each series' texts name their own series, look, cards and rules, and nothi
   }
   // A chapter marker opens each part, and each chapter inside part 3.
   for (const variant of ["explainer-cartoon", "discuss-cartoon"]) assert.match(text("writer", variant), /sits on the first scene of each part, and of each chapter inside\s+part 3 \(so part 3 carries three or four of them, not one\)/, variant);
-  for (const variant of ["explainer-mystery", "discuss-mystery"]) assert.match(text("writer", variant), /sits on the first scene of each part, and of each chapter inside\s+part 3 \(so part 3 carries one for each 「紀錄：」 line, not one for the whole part\)/, variant);
+  // 奇聞檔案局's part 3 is the story of the file since 2026-11-05: a marker on each of its turns.
+  for (const variant of ["explainer-mystery", "discuss-mystery"]) assert.match(text("writer", variant), /sits on the first scene of each part, and on the first scene of\s+each turn inside part 3 \(so part 3 carries two to four of them, not one\)/, variant);
   for (const [stage, variant] of [...sent(EXPLAINER_VARIANTS["cute-cartoon"]), ...sent(EXPLAINER_VARIANTS["cute-mystery"])]) {
     // One sentence a shot, a sentence of up to 24 characters at about 3.4 a second: about 7 seconds at most.
     assert.match(text(stage, variant), /a new picture about every 4 to 7 seconds/, `${stage}:${variant}`);
@@ -222,6 +259,8 @@ test("each series' texts name their own series, look, cards and rules, and nothi
     if (stage !== "writer") continue;
     assert.match(text(stage, variant), /about 4 to 7 seconds \(a line\s+of 24 characters takes about 7;/, `${stage}:${variant}`);
     // "big" has no "source" field (templates.mjs): the rule is for the cards that have one.
+    // 奇聞檔案局 is offered no card at all (owner, 2026-11-05).
+    if (/-mystery$/.test(variant)) continue;
     assert.match(text(stage, variant), /A card that has a "source" field and\s+states a fact names where it is from there/, `${stage}:${variant}`);
     assert.match(text(stage, variant), /"title", "chapter", "big" and "outro" have no such field/, `${stage}:${variant}`);
   }

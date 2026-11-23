@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Rss } from "lucide-react";
 import { redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { GuideCard } from "@/components/guides/card";
@@ -11,7 +12,7 @@ import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { NEWS_TOPICS, guideHref, guideListHref, guideTopicHref, newsOrder } from "@/lib/guides";
 import { getGuideList, getGuideTopics, getSeriesIndex, hubIsEmpty } from "@/lib/guides.server";
-import { localeUrl } from "@/lib/seo";
+import { alternatesFor, localeUrl } from "@/lib/seo";
 import { getGeminiHubReference, getVisibleGeminiSeries, filterGeminiArticleLinks } from "@/lib/gemini-series.server";
 import { breadcrumbs, itemList } from "@/lib/structured-data";
 
@@ -61,7 +62,18 @@ export async function generateMetadata(
     // `follow`, and the first article published here puts it back in the index.
     ...(filtered || empty ? { robots: { index: false, follow: true } } : {}),
     // The topic hub is the page that ranks for a topic; this older `?topic=` URL names it.
-    ...(search.topic ? { alternates: { canonical: localeUrl(locale, guideTopicHref("life", search.topic)) } } : {}),
+    ...(search.topic
+      ? { alternates: { canonical: localeUrl(locale, guideTopicHref("life", search.topic)) } }
+      : !search.cursor
+        ? {
+            alternates: {
+              ...alternatesFor(locale, "/life"),
+              types: {
+                "application/atom+xml": [{ url: localeUrl(locale, "/life/feed.xml"), title: t("lifeTitle") }],
+              },
+            },
+          }
+        : {}),
   };
 }
 
@@ -113,13 +125,12 @@ export default async function LifeHubPage(
         .map((article) => [article.slug, article] as const),
     ),
   );
-  const news = [...newsBySlug.values()].sort(newsOrder).slice(0, NEWS_LIMIT);
-  // "See all" names the topics that actually have something, in ``NEWS_TOPICS`` order, with
-  // each topic's own label from the vocabulary this page already reads -- no new strings, and
-  // while only one vertical publishes it renders as the single link it was before.
+  const datedStories = [...newsBySlug.values()];
+  const news = datedStories.sort(newsOrder).slice(0, NEWS_LIMIT);
+  // Keep a published channel reachable even when another channel fills the whole wire.
   const newsHubs = NEWS_TOPICS.flatMap((slug) => {
     const topic = topics.find((item) => item.slug === slug);
-    return topic && news.some((article) => article.topics?.some((option) => option.slug === slug))
+    return topic && datedStories.some((article) => article.topics.some((option) => option.slug === slug))
       ? [{ slug, label: topic.label }]
       : [];
   });
@@ -138,7 +149,8 @@ export default async function LifeHubPage(
             { name: nav("home"), path: "/" },
             { name: t("guides.lifeHubTitle"), path: "/life" },
           ]),
-          itemList(locale, list.articles.map((article) => ({ name: article.title, path: guideHref(article.kind, article.slug) }))),
+          itemList(locale, news.map((article) => ({ name: article.title, path: guideHref(article.kind, article.slug) })), t("guides.latestNews")),
+          itemList(locale, list.articles.map((article) => ({ name: article.title, path: guideHref(article.kind, article.slug) })), t("guides.allArticles")),
         ]}
       />
       <main className="mx-auto max-w-5xl px-5 py-10 md:px-8">
@@ -152,21 +164,28 @@ export default async function LifeHubPage(
 
         {news.length ? (
           <section className="mt-10" aria-labelledby="life-news-heading" data-testid="life-news">
-            <div className="flex flex-wrap items-baseline justify-between gap-3">
-              <h2 id="life-news-heading" className="text-2xl font-bold tracking-tight">{t("guides.latestNews")}</h2>
-              <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--line)] pb-3">
+              <h2 id="life-news-heading" className="portal-section-heading scroll-mt-24 text-2xl font-extrabold tracking-tight">{t("guides.latestNews")}</h2>
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+                <a
+                  href={`/${locale}/life/feed.xml`}
+                  className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--surface)] px-3.5 text-sm font-semibold text-[var(--ink)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
+                >
+                  <Rss size={15} aria-hidden />
+                  {t("guides.rssSubscribe")}
+                </a>
                 {newsHubs.map((hub) => (
                   <Link
                     key={hub.slug}
-                    className="inline-flex min-h-11 items-center text-[var(--teal)] underline"
+                    className="inline-flex min-h-11 items-center text-sm font-semibold text-[var(--teal)] underline underline-offset-4"
                     href={guideTopicHref("life", hub.slug)}
                   >
-                    {newsHubs.length === 1 ? t("guides.seeAll") : hub.label}
+                    {hub.label}
                   </Link>
                 ))}
               </div>
             </div>
-            <NewsList articles={news} />
+            <NewsList articles={news} leadHeading="h3" />
           </section>
         ) : null}
 
@@ -178,9 +197,9 @@ export default async function LifeHubPage(
         />
 
         <section className="mt-10" aria-labelledby="life-listing-heading">
-          <h2 id="life-listing-heading" className="text-2xl font-bold tracking-tight">{t("guides.allArticles")}</h2>
+          <h2 id="life-listing-heading" className="portal-section-heading border-b border-[var(--line)] pb-3 text-2xl font-extrabold tracking-tight">{t("guides.allArticles")}</h2>
           {list.articles.length ? (
-            <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+            <ul className="mt-4 grid gap-4 sm:grid-cols-2">
               {list.articles.map((article) => (
                 <GuideCard key={article.slug} article={article} labels={cardLabels} />
               ))}
@@ -191,7 +210,7 @@ export default async function LifeHubPage(
 
           {list.next_cursor ? (
             <p className="mt-8">
-              <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={`${next}${encodeURIComponent(list.next_cursor)}`}>
+              <Link className="inline-flex min-h-11 items-center rounded-full border border-[var(--teal)] bg-[var(--surface)] px-5 text-sm font-semibold text-[var(--teal)] shadow-[var(--shadow-sm)] transition-colors hover:bg-[var(--teal-soft)]" href={`${next}${encodeURIComponent(list.next_cursor)}`}>
                 {t("guides.more")}
               </Link>
             </p>

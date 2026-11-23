@@ -1,0 +1,458 @@
+{
+  "batch_id": "wave57-tech-20261111",
+  "created_on": "2026-11-12",
+  "scope": "端對端加密通訊裡伺服器還看得到什麼：替長題 G38 補 Signal 的協定文件與一篇 NDSS 2021 論文（作者 F10，非作者覆核 V13）；G38 改題、仍後備。",
+  "sources": [
+    {
+      "id": "T57-S001",
+      "url": "https://signal.org/bigbrother/eastern-virginia-grand-jury/",
+      "canonical_url": "https://signal.org/bigbrother/eastern-virginia-grand-jury/",
+      "title": "Grand jury subpoena for Signal user data, Eastern District of Virginia",
+      "publisher": "Signal（Signal Technology Foundation）政府要求公開頁",
+      "version": "頁面未標日期（內文：2016 年上半年收到傳票）；2026-11-12 擷取",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200；本機 HTML 全文快取，全文讀",
+      "reading_scope": "頁面正文全文；所附法院文件影像檔未開",
+      "locator": "正文第1–4段",
+      "summary": "Signal 說 2016 年上半年收到維吉尼亞東區聯邦大陪審團傳票，要兩名使用者的資料；能交出的只有帳號註冊的日期時間與最後一次連上服務的日期。聯絡人、群組、和誰通訊的紀錄都沒有存，訊息內容是端對端加密。傳票原本附禁言令，由 ACLU 代理爭取後得以公開。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "營運者自己的說明頁，不是法院文件；所附回覆文件的影像本輪沒有開。只代表 Signal 這個服務在這些要求中的情形，不代表其他通訊軟體。 覆核 V13（2026-11-12）：author_cache 註明：signal.org 與 researchers.mq.edu.au 的頁面位元組雜湊每次抓取不同，去標籤後文字相同；以文字檔為準。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/bigbrother-edva.html",
+        "sha256_prefix": "ac4069c9001d0d95",
+        "note": "去標籤文字檔 bigbrother-edva.txt；總表頁 bigbrother.html 另存 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T57-S002",
+      "url": "https://signal.org/bigbrother/central-california-grand-jury/",
+      "canonical_url": "https://signal.org/bigbrother/central-california-grand-jury/",
+      "title": "Grand jury subpoena for Signal user data, Central District of California",
+      "publisher": "Signal 政府要求公開頁",
+      "version": "頁面未標日期（內文：2021 年上半年）；2026-11-12 擷取",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200；本機 HTML 全文快取，全文讀",
+      "reading_scope": "頁面正文全文；所附文件影像未開",
+      "locator": "正文第2–4段",
+      "summary": "2021 年上半年加州中區聯邦檢察官辦公室的傳票要使用者地址、通訊內容與帳號姓名等；Signal 說交出的仍是與 2016 年相同的兩項：帳號建立與最後連線的 Unix 時間戳。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "同 F10-S009：營運者自述。 覆核 V13（2026-11-12）：author_cache 註明：signal.org 與 researchers.mq.edu.au 的頁面位元組雜湊每次抓取不同，去標籤後文字相同；以文字檔為準。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/bigbrother-cdca.html",
+        "sha256_prefix": "ce9c449f9a084ada",
+        "note": "去標籤文字檔 bigbrother-cdca.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T57-S003",
+      "url": "https://signal.org/docs/specifications/x3dh/",
+      "canonical_url": "https://signal.org/docs/specifications/x3dh/",
+      "title": "The X3DH Key Agreement Protocol",
+      "publisher": "Signal；Moxie Marlinspike、Trevor Perrin（editor）",
+      "version": "Revision 1，2016-11-04",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200；本機 HTML 全文快取，全文讀（數學式只讀文字說明）",
+      "reading_scope": "全文 1–4 節",
+      "locator": "1 導言；2.4–3.3（金鑰種類、預先金鑰包、伺服器給一把就刪）；4.1 Authentication；4.2 Protocol replay；4.5–4.7（省略簽章、金鑰外洩、伺服器信任）",
+      "summary": "X3DH 為「對方離線」設計：Bob 先把身分金鑰、定期更換的簽章預先金鑰和一批只用一次的預先金鑰放到伺服器；Alice 取回一包就能算出共享金鑰並送出第一則加密訊息，伺服器每給出一把一次性預先金鑰就刪掉。規格寫明：若不另外比對身分公鑰，雙方對「在跟誰通訊」沒有密碼學上的保證；初始訊息若沒用到一次性預先金鑰，可能被重播。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "這是協定規格，不是任何 App 的實作說明；Signal 已改用 PQXDH（F10-S013）。 覆核 V13（2026-11-12）：author_cache 註明：signal.org 與 researchers.mq.edu.au 的頁面位元組雜湊每次抓取不同，去標籤後文字相同；以文字檔為準。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/x3dh.html",
+        "sha256_prefix": "f828630af37ad5f7",
+        "note": "去標籤文字檔 x3dh.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T57-S004",
+      "url": "https://signal.org/docs/specifications/doubleratchet/",
+      "canonical_url": "https://signal.org/docs/specifications/doubleratchet/",
+      "title": "The Double Ratchet Algorithm",
+      "publisher": "Signal；Trevor Perrin（editor）、Moxie Marlinspike、Rolfe Schmidt",
+      "version": "Revision 4，2025-11-04",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200；本機 HTML 全文快取，讀 1–2 節、4.1、8 節",
+      "reading_scope": "1 導言、2.1–2.6（KDF 鏈、對稱棘輪、DH 棘輪、亂序訊息）、3.1 的 MAX_SKIP、4.1 標頭加密概述、8.1–8.4 與 8.11；演算法虛擬碼與後量子棘輪細節未逐行讀",
+      "locator": "1 Introduction；2.1（forward security、break-in recovery 定義）；2.2；2.6；8.1 Secure deletion；8.2 Recovery from compromise；8.4 Deletion of skipped message keys；8.11",
+      "summary": "雙棘輪每一則訊息都導出新的金鑰，使較早的金鑰無法由較晚的算出；雙方隨訊息交換新的 Diffie-Hellman 公鑰並混入，使較晚的金鑰也無法由較早的算出。規格說這是為了對付「先錄下密文、日後才攻破裝置」的攻擊者，但若被刪除的明文或金鑰能從儲存媒體救回，保護就失效；金鑰或裝置一旦被攻破，對之後的通訊仍是毀滅性的（冒充、持續中間人、動手腳的亂數）。為了處理遲到的訊息要暫存「跳過的訊息金鑰」，這本身是風險，建議設上限（例：1000）並定期刪除。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "2025 年 11 月的第 4 版已含後量子棘輪的內容，舊版措辭可能不同；規格描述的是設計目標，不是對任何產品的稽核。 覆核 V13（2026-11-12）：author_cache 註明：signal.org 與 researchers.mq.edu.au 的頁面位元組雜湊每次抓取不同，去標籤後文字相同；以文字檔為準。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/doubleratchet.html",
+        "sha256_prefix": "f68d82c6d9f9d12a",
+        "note": "去標籤文字檔 doubleratchet.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T57-S005",
+      "url": "https://signal.org/docs/specifications/pqxdh/",
+      "canonical_url": "https://signal.org/docs/specifications/pqxdh/",
+      "title": "The PQXDH Key Agreement Protocol",
+      "publisher": "Signal；Ehren Kret、Rolfe Schmidt",
+      "version": "Revision 3，2023-05-24（最後更新 2024-01-23）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200；本機 HTML 全文快取，讀 1 節與 4 節開頭至 4.2",
+      "reading_scope": "1 導言、2.5、4 節開頭、4.1；其餘協定步驟未逐段讀",
+      "locator": "1 Introduction；4 Security considerations 開頭；4.1 Authentication",
+      "summary": "PQXDH 在 X3DH 上加一個後量子金鑰封裝，提供後量子的前向保密；規格自己寫明身分驗證仍靠離散對數難題，「不是量子安全的」，面對主動的量子攻擊者沒有身分保證，後量子的可否認相互驗證是未解的研究問題。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀安全性考量的前段；形式化分析（文中引用的 [11]）沒有讀。 覆核 V13（2026-11-12）：author_cache 註明：signal.org 與 researchers.mq.edu.au 的頁面位元組雜湊每次抓取不同，去標籤後文字相同；以文字檔為準。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/pqxdh.html",
+        "sha256_prefix": "3b5a5b1cb1dbfcc1",
+        "note": "去標籤文字檔 pqxdh.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T57-S006",
+      "url": "https://signal.org/blog/sealed-sender/",
+      "canonical_url": "https://signal.org/blog/sealed-sender/",
+      "title": "Technology preview: Sealed sender for Signal",
+      "publisher": "Signal 官方部落格",
+      "version": "2018-10-29",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200；本機 HTML 全文快取，全文讀",
+      "reading_scope": "全文",
+      "locator": "第1–9段（信封比喻、寄件憑證、96 位元投遞權杖）；倒數第4段（時間與 IP 仍在發展）",
+      "summary": "一般寄信時伺服器看得到寄件人與收件人；sealed sender 把寄件人身分放進加密的信封：用戶端定期向服務取一張短效的寄件憑證（電話號碼、身分公鑰、到期時間），連同訊息密文一起再加密，不經身分驗證就交給服務，只附收件人的投遞權杖（由個人資料金鑰導出的 96 位元值）。服務仍必須知道送給誰。文末自己說，對時間關聯與 IP 位址的抵抗仍在發展中。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "2018 年的技術預覽文，是營運者自述；之後的實作可能有變。池中 I3094 講的是 libsodium 的 sealed box（收件人不知寄件人），與這裡「伺服器不知寄件人」不同。 覆核 V13（2026-11-12）：author_cache 註明：signal.org 與 researchers.mq.edu.au 的頁面位元組雜湊每次抓取不同，去標籤後文字相同；以文字檔為準。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/sealed-sender.html",
+        "sha256_prefix": "29e9e3538681c094",
+        "note": "去標籤文字檔 sealed-sender.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T57-S007",
+      "url": "https://www.ndss-symposium.org/wp-content/uploads/ndss2021_1C-4_24180_paper.pdf",
+      "canonical_url": "https://www.ndss-symposium.org/wp-content/uploads/ndss2021_1C-4_24180_paper.pdf",
+      "title": "Improving Signal’s Sealed Sender",
+      "publisher": "NDSS 2021；Martiny、Kaptchuk、Aviv、Roche、Wustrow（科羅拉多大學波德分校等）",
+      "version": "Network and Distributed Systems Security Symposium 2021 論文全文（NDSS 開放取用）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（PDF），pdftotext 轉文字；讀摘要、I–III 節與圖 3 說明",
+      "reading_scope": "摘要、I 導言、II 背景（送達回條、已讀回條）、III 攻擊概述；模擬細節與修補協定的證明未逐段讀",
+      "locator": "Abstract；II-B「Delivery receipt」；Fig. 3 圖說；III 節 epoch 定義",
+      "summary": "研究者以理論與模擬說明：兩人來回多則訊息時，sealed sender 的單邊匿名會失效。關鍵是預設開啟的送達回條——收件裝置自動回一則訊息給寄件人，實測回條的中位數時間是 1480 毫秒。伺服器只要統計「某人收到訊息後緊接著誰也收到訊息」，最少約 5 則訊息就可能把兩個使用者連起來，對用 Tor 或 VPN 的人也有效。作者提出修補方案，估計最完整的方案在數百萬使用者規模下額外密碼運算成本每月不到 40 美元。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "這是理論與模擬，不是對真實使用者或 Signal 伺服器的實際攻擊；攻擊者模型是服務提供者本身。2021 年的論文，Signal 之後是否調整沒有查。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/ndss-sealed.pdf",
+        "sha256_prefix": "000f19da3fec8eba",
+        "note": "文字檔 ndss-sealed.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T57-S008",
+      "url": "https://signal.org/blog/pqxdh/",
+      "canonical_url": "https://signal.org/blog/pqxdh/",
+      "title": "Quantum Resistance and the Signal Protocol",
+      "publisher": "Signal 官方部落格（Ehren Kret）",
+      "version": "2023-09-19",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200；本機 HTML 全文快取，全文讀",
+      "reading_scope": "全文",
+      "locator": "「Harvest Now, Decrypt Later」段；「we are augmenting…must break both」段；部署段",
+      "summary": "現有量子電腦的量子位元還不足以威脅 Signal 用的公鑰密碼，但未來夠強的量子電腦可由公鑰算出私鑰，所以有人可以「先收集、以後再解」。PQXDH 同時用橢圓曲線 X25519 和後量子的 CRYSTALS-Kyber 各算一個共享秘密再合併，攻擊者必須兩個都破；新版用戶端雙方都更新後的新對話已使用。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "營運者公告；只保護對話建立時的金鑰交換。 覆核 V13（2026-11-12）：author_cache 註明：signal.org 與 researchers.mq.edu.au 的頁面位元組雜湊每次抓取不同，去標籤後文字相同；以文字檔為準。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/signal-pqxdh-blog.html",
+        "sha256_prefix": "40a3015c053dfc61",
+        "note": "去標籤文字檔 signal-pqxdh-blog.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T57-S009",
+      "url": "https://signal.org/blog/spqr/",
+      "canonical_url": "https://signal.org/blog/spqr/",
+      "title": "Signal Protocol and Post-Quantum Ratchets",
+      "publisher": "Signal 官方部落格（Graeme Connell、Rolfe Schmidt）",
+      "version": "2025-10-02",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200；本機 HTML 全文快取，讀前半（公告、FS／PCS 定義、金鑰大小與分塊）",
+      "reading_scope": "開頭到「erasure codes」一節；後半的狀態機與形式驗證段未細讀",
+      "locator": "第1–6段；「over 1000 bytes each for ML-KEM 768, compared to the 32 bytes」；chunk 與 erasure codes 段",
+      "summary": "2025 年 10 月 Signal 宣布在雙棘輪旁再加一個後量子棘輪（SPQR），合稱三重棘輪。文章把前向保密與入侵後安全說成一對鏡像：前者保護過去的訊息不受日後入侵影響，後者保護之後的訊息不受先前入侵影響。難處之一是大小：ML-KEM 768 的封裝金鑰與密文各超過 1000 位元組，橢圓曲線只要 32 位元組，所以把金鑰切成小塊、用抹除碼分散在多則訊息裡送。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "營運者公告；後半技術細節未細讀，核心只用前半。 覆核 V13（2026-11-12）：author_cache 註明：signal.org 與 researchers.mq.edu.au 的頁面位元組雜湊每次抓取不同，去標籤後文字相同；以文字檔為準。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/signal-spqr-blog.html",
+        "sha256_prefix": "2aa78ef369b23214",
+        "note": "去標籤文字檔 signal-spqr-blog.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T57-S010",
+      "url": "https://signal.org/blog/safety-number-updates/",
+      "canonical_url": "https://signal.org/blog/safety-number-updates/",
+      "title": "Safety number updates",
+      "publisher": "Signal 官方部落格",
+      "version": "2016-11-17",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200；本機 HTML 全文快取，讀前半與 advisory 段",
+      "reading_scope": "開頭、fingerprint 與 safety number 的說明、金鑰變更與 advisory mode 段",
+      "locator": "第1–2段；「People’s Signal keys change every time they get a new phone or reinstall the app」段；advisory mode 段",
+      "summary": "安全碼讓兩個使用者用比對一組數字或掃一個 QR 碼來確認通訊的私密性，相當於密碼學裡的公鑰指紋。換手機或重裝 App 時金鑰就會變，所以聯絡人會看到安全碼變更；這一版加入只顯示通知、不擋訊息的 advisory 模式。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "2016 年的文章，介面之後有變；只用來說明安全碼是什麼、為什麼會變。 覆核 V13（2026-11-12）：author_cache 註明：signal.org 與 researchers.mq.edu.au 的頁面位元組雜湊每次抓取不同，去標籤後文字相同；以文字檔為準。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/signal-safety-numbers.html",
+        "sha256_prefix": "37b07a33a4835d2c",
+        "note": "去標籤文字檔 signal-safety-numbers.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T57-S011",
+      "url": "https://signal.org/blog/signal-private-group-system/",
+      "canonical_url": "https://signal.org/blog/signal-private-group-system/",
+      "title": "Technology Preview: Signal Private Group System",
+      "publisher": "Signal 官方部落格",
+      "version": "2019-12-09",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200；本機 HTML 全文快取，讀前半（回顧與設計動機）",
+      "reading_scope": "開頭到「Let’s try to build a system…」段；匿名憑證的密碼學細節未讀",
+      "locator": "第1–2段；「Retrospective」各段（明文資料庫的缺點、2014 年方案的 128 位元群組 ID、競態與沒有管理員）",
+      "summary": "多數服務把群組名稱、頭像、成員存在伺服器的明文資料庫，伺服器（以及攻破或以傳票取得伺服器的人）看得到全部，還能偷偷改成員。Signal 2014 年的作法是把群組訊息當成一對一加密訊息逐人送出，附一個隨機的 128 位元群組 ID，從不告訴服務哪些是群組訊息、誰在群組裡；代價是兩人同時改群組設定會撞在一起、也做不出管理員權限。2019 年的新設計改把群組狀態用成員共享的金鑰加密後存在伺服器。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "營運者自述的設計說明；新系統的匿名憑證部分沒有讀。 覆核 V13（2026-11-12）：author_cache 註明：signal.org 與 researchers.mq.edu.au 的頁面位元組雜湊每次抓取不同，去標籤後文字相同；以文字檔為準。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/signal-private-groups.html",
+        "sha256_prefix": "916586b668c8cfbd",
+        "note": "去標籤文字檔 signal-private-groups.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "T57-001",
+      "question": "檢察官拿傳票要通訊軟體交出使用者資料，端對端加密的服務交得出什麼？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "e2ee.signal_subpoena_two_timestamps_only",
+      "answer_target": "以 Signal 公開的紀錄為例：2016 年上半年維吉尼亞東區聯邦大陪審團的傳票要兩名使用者的資料，Signal 說能交的只有兩項——帳號註冊的日期時間，以及最後一次連上服務的日期。聯絡人、群組、和誰通過訊都沒有存，訊息內容是端對端加密的。2021 年加州中區的傳票要地址、通訊內容與帳號姓名，Signal 說交出的仍是同樣兩個時間戳。",
+      "scope": "Signal 這一個服務、營運者自己公開的說明；不代表其他通訊軟體，也不是法院的認定。",
+      "source_ids": [
+        "T57-S001",
+        "T57-S002"
+      ],
+      "source_locator": "S009 正文第1–4段；S010 正文第3–4段",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：2016 年能交的兩項與沒存的三類算 1 條，2021 年重複同樣結果算 0.5 條。本題改題後的開場：有文件可查的事件，補第三輪後審視欄要的「有紀錄的事件」。來源是營運者自述，回覆文件影像未開，寫稿前要開。 原提案 F10-016（目標 G38，原角色 hook；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）改字後收；照原稿，事實數由 1.5 改 1：2021 年是同一個結論的第二個例子。這是營運者自述；頁面所附的傳票與回覆文件沒有開，寫稿前要開。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "加密保護了內容；沒存下來的東西，連傳票也拿不到。",
+        "visual": "一張傳票清單（地址、通訊內容、姓名…）逐項劃掉，最後只剩兩行時間戳。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T57-002",
+      "question": "對方手機關機，第一則訊息怎麼就能先加密好送出去？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "e2ee.x3dh_prekeys_for_offline_recipient",
+      "answer_target": "Signal 的 X3DH 規格是為「對方離線」設計的：每個人先把幾樣公開金鑰放在伺服器——長期的身分金鑰、定期更換並簽過名的預先金鑰、一批只用一次的預先金鑰。寄件人向伺服器拿一包，就能自己算出共享金鑰並送出第一則加密訊息；伺服器每交出一把一次性預先金鑰就把它刪掉，收件人收到訊息後也刪掉對應的私鑰。規格同時提醒：如果那一包裡沒有一次性預先金鑰，這第一則訊息可能被重播。",
+      "scope": "協定規格（2016 年第 1 版），Signal 現已改用加上後量子金鑰的 PQXDH；不是任何 App 的實作稽核。",
+      "source_ids": [
+        "T57-S003"
+      ],
+      "source_locator": "1 導言；2.4–3.3；4.2 Protocol replay",
+      "premise_status": "screened",
+      "notes": "算 1 條：預先金鑰的設計是一個主張；重播提醒只附一句，與 P29 的 T53-010（0-RTT 可重播）是同一類概念，不另計也不展開。 原提案 F10-017（目標 G38，原角色 segment；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）照原稿收；照原稿，算 1 條。重播那一句與 P29 的 T53-010／T53-006 同一類概念，只留一句、不計條數，也不展開。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不在線的人，先把「半把鑰匙」寄放在郵局。",
+        "visual": "伺服器像一排信箱，Bob 的信箱裡放著幾把編號鑰匙；Alice 取走一把後那格變空。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "T57-003",
+      "question": "手機日後被人拿走、鑰匙被挖出來，以前錄下的加密訊息會被解開嗎？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "e2ee.double_ratchet_per_message_keys_forward_secrecy",
+      "answer_target": "雙棘輪的設計目標就是擋這件事：每一則訊息都導出一把新的訊息金鑰，用完就可以刪，而且較早的金鑰無法從較晚的算回去。規格明講它要對付的是「先錄下密文、日後才攻破寄件人或收件人」的攻擊者。但規格也寫了兩個洞：被刪掉的明文或金鑰如果能從儲存媒體救回來，保護就失效；為了處理遲到或亂序的訊息，裝置會暫存「跳過的訊息金鑰」，那些訊息若已被攻擊者錄下，日後攻破裝置就拿得到，所以建議設上限（例如 1000 把）並定期刪除。",
+      "scope": "協定規格的設計目標與自列的限制（2025 年第 4 版）；手機上仍保留的聊天紀錄本來就是明文可讀，不在此列。",
+      "source_ids": [
+        "T57-S004"
+      ],
+      "source_locator": "1 Introduction；2.1–2.2；2.6；8.1；8.4",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：每則換鑰與不可回推算 1 條，規格自列的兩個限制算 0.5 條。第一個轉折：觀眾以為「一把鑰匙保護整段對話」，其實是每則一把、用完就丟。池中 T53-001 提到的前向保密是 TLS 握手的臨時金鑰，機制與層次不同。 原提案 F10-018（目標 G38，原角色 turn；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）改字後收；答案照原稿。事實數由 1.5 改 1：「錄下的密文日後解不開」這個結論池中 T53-001 已有（TLS 的前向保密），本核心只算新增的「每則一把、不可回推」0.5 條與規格自列的兩個限制 0.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是一把鎖鎖住全部，是每封信一把、用完就熔掉。",
+        "visual": "一條齒輪鏈每送一則訊息就前進一格，掉出一把小鑰匙，用完後消失；下方一個小盒子標「遲到訊息的備用鑰匙，上限 1000」。",
+        "seconds": [
+          50,
+          65
+        ]
+      }
+    },
+    {
+      "id": "T57-004",
+      "question": "鑰匙已經被偷過一次，之後的訊息就永遠被看光了嗎？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "e2ee.double_ratchet_break_in_recovery_and_limits",
+      "answer_target": "不一定，但別太樂觀。雙棘輪讓雙方隨訊息交換新的 Diffie-Hellman 公鑰並把結果混進金鑰，所以一個只會旁聽的攻擊者，在偷到金鑰之後，隨著新的交換會再度看不懂——規格稱為入侵後復原。可是規格緊接著說，金鑰或裝置被攻破對之後的通訊仍是毀滅性的：攻擊者可以拿身分私鑰冒充你開新對話、持續當中間人把自己的棘輪金鑰換進去，或在亂數產生器動手腳讓之後的私鑰可預測。懷疑被攻破就必須立刻換掉金鑰與裝置。",
+      "scope": "協定規格的說法；「復原」只針對被動竊聽者。",
+      "source_ids": [
+        "T57-S004",
+        "T57-S009"
+      ],
+      "source_locator": "S012 2.1（break-in recovery）、2.3 概述、8.2 Recovery from compromise；S017 第5段（FS 與 PCS 是一對鏡像）",
+      "premise_status": "screened",
+      "notes": "算 1 條：復原的條件與三種失效情形是同一段的主張。 原提案 F10-019（目標 G38，原角色 segment；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）照原稿收；照原稿，算 1 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "鎖會自己換，但前提是小偷只偷聽、不動手。",
+        "visual": "兩個人各丟一把新鑰匙進攪拌器，旁聽者手上的舊鑰匙變灰；下一格：旁聽者改成站在兩人中間轉手，鑰匙又亮了。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "T57-005",
+      "question": "App 顯示已端對端加密，為什麼還要我跟對方比對一串「安全碼」？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "e2ee.identity_key_verification_safety_number",
+      "answer_target": "因為加密算式本身不知道對面是誰。X3DH 規格寫明：如果雙方沒有透過另一個可信的管道比對身分公鑰（例如比對指紋或掃 QR 碼），就沒有任何密碼學上的保證知道自己在跟誰通訊。金鑰是伺服器轉交的，規格也分析了惡意伺服器交出偽造金鑰的情形。Signal 把這個指紋叫安全碼；換手機或重裝 App 時金鑰就會變，2016 年的官方說明提到，當時金鑰一變要先手動核准才能繼續通訊，另加了一個只提示、不擋訊息的選項。",
+      "scope": "協定規格與 2016 年的官方說明；介面之後有變。",
+      "source_ids": [
+        "T57-S003",
+        "T57-S010"
+      ],
+      "source_locator": "S011 4.1 Authentication、4.5、4.7；S018 第1–2段與金鑰變更段",
+      "premise_status": "screened",
+      "notes": "算 0.5 條：「公鑰與現實身分的對應要另外建立」是舊核心 I3082 的概念，不重計；新增的是規格的明文措辭與「換手機金鑰就變」這個日常入口。 原提案 F10-020（目標 G38，原角色 segment；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）改字後收；概念與 I3082（以及 P29 的 T53-002）相同，只算 0.5 條，同意作者。改一句：2016 年文章沒有說「聯絡人會看到通知」是當時的預設，照原文寫。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "加密保證沒人偷看，不保證你沒寄錯人。",
+        "visual": "兩支手機螢幕各顯示一串數字與 QR 碼，並排比對打勾；另一格：對方換新手機，數字整串變了。",
+        "seconds": [
+          30,
+          45
+        ]
+      }
+    },
+    {
+      "id": "T57-006",
+      "question": "訊息內容加密了，伺服器不是還看得到誰寄給誰嗎？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "e2ee.sealed_sender_envelope_hides_from_address",
+      "answer_target": "傳統作法確實看得到：用戶端先向服務驗證身分，再交出密文與收件人，信封上寄件人、收件人都有。Signal 2018 年公布的 sealed sender 把寄件人收進信封裡：用戶端定期向服務領一張短效的寄件憑證（內含電話號碼、身分公鑰、到期時間），連同訊息密文一起再加密一層，然後不驗證身分就交給服務，只附上收件人的投遞權杖（由收件人個人資料金鑰導出的 96 位元值，用來防濫發）。收件人解開信封才知道是誰寄的。服務仍然必須知道要送給誰；文章自己也說，對時間關聯與 IP 位址的防護還在發展。",
+      "scope": "2018 年的技術預覽文、營運者自述；只藏寄件人，不藏收件人。",
+      "source_ids": [
+        "T57-S006"
+      ],
+      "source_locator": "第3–9段；倒數第4段",
+      "premise_status": "screened",
+      "notes": "算 1 條。池中 I3094（libsodium sealed box：收件人不知道寄件人）是不同的事，這裡是轉信的伺服器不知道寄件人；I3073、I3089（時間戳與長度外露）在 P29 已由 T53-008、T53-011 講過，本題不重複。 原提案 F10-021（目標 G38，原角色 segment；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）照原稿收；照原稿，算 1 條。與 T53-007（看得到的標頭欄位不能改）、T53-008（長度外露）是不同的事：這裡是轉信的伺服器知不知道寄件人。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "信封上只剩收件人，寄件人寫在信紙裡。",
+        "visual": "一封信的信封左上角寄件人欄位被擦掉，內頁多了一張小證件；郵局櫃檯只看得到收件地址。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T57-007",
+      "question": "寄件人都藏進信封了，伺服器還有辦法猜出誰在跟誰聊天嗎？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "e2ee.sealed_sender_delivery_receipt_statistical_disclosure",
+      "answer_target": "研究者說有，而且不用解開任何密文。NDSS 2021 的一篇論文指出，Signal 的送達回條預設開啟而且不能關，收件裝置會自動回一則訊息給寄件人；他們量到回條時間的中位數是 1480 毫秒。於是只要統計「某人收到訊息之後，緊接著哪些人也收到訊息」，來回幾輪就能把兩個人連起來：理論與模擬顯示最少 5 則訊息就夠，對用 Tor 或 VPN 的人特別有效，因為這些人本來可以躲過網路層的追蹤。作者同時提出修補作法，估計最完整的方案在數百萬使用者的規模下，額外的密碼運算成本每月不到 40 美元。",
+      "scope": "理論分析與模擬，攻擊者是服務提供者本身；不是對真實使用者的實際攻擊，也沒有查 Signal 之後是否調整。",
+      "source_ids": [
+        "T57-S007"
+      ],
+      "source_locator": "Abstract；II-B Delivery receipt 與圖 3 圖說；III 節",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：攻擊的原理與「約 5 則」算 1 條，回條時間與修補成本算 0.5 條。第二個轉折：藏住一封信的寄件人，藏不住一來一往的節奏。全題唯一不是營運者自述的來源。 原提案 F10-022（目標 G38，原角色 turn；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）改字後收；照原稿，算 1.5 條。補原文一句更強的條件：送達回條在 Signal 不能關（不是只有預設開啟）。「約 5 則」是理論與模擬的最佳情形（as few as），片中要說「最少」。與 T53-008 的流量分析同類但層次不同（這裡是應用層、攻擊者是服務本身）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一封信看不出誰寄的，一來一回的節拍卻會洩底。",
+        "visual": "時間軸：Bob 收到一封匿名信，約 1.5 秒後 Alice 也收到一封匿名信；重複五次後，兩人之間浮現一條虛線。",
+        "seconds": [
+          50,
+          65
+        ]
+      }
+    },
+    {
+      "id": "T57-008",
+      "question": "現在破不了的密文，被人先錄下來等量子電腦，怎麼辦？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "e2ee.harvest_now_decrypt_later_hybrid_pqxdh",
+      "answer_target": "Signal 在 2023 年 9 月公布的作法是「兩把鎖都要破」：建立對話時同時用橢圓曲線 X25519 與後量子的 CRYSTALS-Kyber 各算出一個共享秘密再合併，攻擊者必須兩個都破才算得出金鑰；它說現有量子電腦的量子位元還不足以威脅目前的公鑰密碼，防的是「先收集、以後再解」。規格自己註明身分驗證還不是量子安全的。2025 年 10 月再宣布替對話進行中的換鑰也加上後量子棘輪；難處之一是大小——ML-KEM 768 的金鑰與密文各超過 1000 位元組，橢圓曲線只要 32 位元組，所以把它切成小塊分散在多則訊息裡送。",
+      "scope": "營運者公告與協定規格；量子電腦何時夠強，來源沒有給時間表。",
+      "source_ids": [
+        "T57-S005",
+        "T57-S008",
+        "T57-S009"
+      ],
+      "source_locator": "S016 HNDL 段與「must break both」段；S013 4.1；S017 第1–6段與金鑰大小段",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：混合金鑰交換與其理由算 1 條，後續棘輪與金鑰大小算 0.5 條。 原提案 F10-023（目標 G38，原角色 segment；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）照原稿收；照原稿，算 1.5 條（混合交換與理由 1、後量子棘輪與大小 0.5）。「量子位元還不夠」是 Signal 2023 年的說法，片中帶年份。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "新鎖還沒被時間考驗過，所以舊鎖不拆，兩把一起掛。",
+        "visual": "一扇門上並排兩把不同形狀的鎖；旁邊一個倉庫堆著錄下來的密文箱，標「以後再開」。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "T57-009",
+      "question": "群組的名稱和成員名單，伺服器總得存著吧？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "e2ee.group_state_not_plaintext_on_server",
+      "answer_target": "Signal 的說明是：多數服務把群組名稱、頭像、成員名單存在伺服器的明文資料庫，伺服器、攻破它的人、拿傳票的人都看得到，伺服器還能偷偷改成員。Signal 2014 年的作法是不讓伺服器知道有群組：群組訊息就是逐人送出的一對一加密訊息，附一個猜不到的隨機 128 位元群組 ID，名稱與成員的更新也這樣在成員之間傳。代價是兩個人同時改設定會互相打架、每個人看到的群組狀態可能不同，也做不出管理員權限。2019 年的新設計才改成把群組狀態用成員共享的金鑰加密後存在伺服器。",
+      "scope": "營運者自述的設計沿革；新系統的匿名憑證部分沒有讀。",
+      "source_ids": [
+        "T57-S011"
+      ],
+      "source_locator": "第2段；「Retrospective」各段",
+      "premise_status": "screened",
+      "notes": "算 1 條：不存明文的作法與它的代價是同一個主張。呼應 F10-016 傳票拿不到群組資料的原因。 原提案 F10-024（目標 G38，原角色 segment；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）照原稿收；照原稿，算 1 條。「多數服務都存明文」是 Signal 對同業的描述，片中說「Signal 的說法是」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不讓郵局知道有社團，代價是社團沒有唯一的名冊。",
+        "visual": "左：伺服器上一張明文表格（群名、成員、置頂訊息）；右：同一群人之間互相傳小紙條更新名冊，其中兩張紙條在半路相撞。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "T57-NA001",
+      "question": "X3DH 第一則訊息沒用到一次性預先金鑰時可被重播",
+      "existing_ids": [
+        "T53-010",
+        "T53-006",
+        "I3084"
+      ],
+      "source_ids": [
+        "T57-S003"
+      ],
+      "reason": "概念與 P29 已用的 TLS 重播核心（0-RTT 可重播、序號防重播）相同，只是換了協定；為了讓 G38 與 P29 不重疊，只在 F10-017 留一句，不另立核心。 原提案 F10-NA007。",
+      "reentry_condition": "不重收。",
+      "reading_status": "X3DH 4.2–4.3 已讀"
+    }
+  ]
+}

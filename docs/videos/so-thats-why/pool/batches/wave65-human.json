@@ -1,0 +1,486 @@
+{
+  "batch_id": "wave65-human-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第十五輪從零研究的新長題：迷路的人真的會繞圈嗎（C11-01，作者 F26，覆核 V29），後備。",
+  "sources": [
+    {
+      "id": "H65-S001",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3434216/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0043861",
+      "title": "Is \"Circling\" Behavior in Humans Related to Postural Asymmetry?",
+      "publisher": "Emilie Bestaven、Etienne Guillaud、Jean-René Cazalets（法國波爾多大學 CNRS INCIA）／PLoS ONE 7(9): e43861, 2012",
+      "version": "期刊刊本全文（CC BY，PMC 開放取用子集）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（公開文件記載的 API；PMCID 取自 Europe PMC search API 結果）；curl 工具預設標頭 200。Europe PMC search（AUTH:\"Bestaven E\"）列出 PMC3434216；WebSearch 亦列出 journals.plos.org 與 ncbi PMC 頁。",
+      "reading_scope": "全文（摘要、引言、方法、結果、討論）",
+      "locator": "Introduction 第 1–3 段（Schaeffer 1928、Lund 1930、1893 年 Scientific American 腿長說、Souman 2009 鞋墊試驗的轉述）；Methods「Walking Task」（90 m×150 m 展覽館、眼罩加耳罩、Trimble 全站儀 ±3 mm）；Results「Walking Trajectories」（88 條軌跡、50%／39%／11%、X-2SD 平均 10.5±6.5 m、3 m 到 >30 m、6 名一致／9 名不一致、turning score 與慣用手腳眼、性別、腿長、軀幹旋轉無關；速度與終點 R=0.586；半徑 19–658 m、80% <300 m）；Results 後段與 Discussion（站姿壓力中心位置與 turning score、主觀垂直的相關）",
+      "summary": "15 名 20–34 歲受試者在波爾多展覽館 90 m×150 m 的封閉空間，戴眼罩與耳罩，被要求「直直往前走」，各走 6 次（第 1 次因緊張較慢而剔除分析），用全站儀追蹤。軌跡變異極大：50% 結束在左邊、39% 右邊、11% 算直；有人 3 m 就開始偏，有人 30 m 以上仍直，平均約 10.5 m 開始偏離；擬合圓半徑 19–658 m，八成小於 300 m。6 人每次都偏同一邊或走直，9 人左右都有。偏向分數與慣用手、腳、眼、性別、腿長差、軀幹轉動能力都無關。走得越快，在偏出之前走得越遠（終點與平均速度 R=0.586）。站立時壓力中心偏哪側與偏向分數相關，壓力中心又與主觀垂直判斷相關，作者推測與前庭塑造的「正前方感」有關。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有 15 人、室內場地；壓力中心與主觀垂直是相關，不是因果；Souman 2009 的數據在本文只是轉述。 覆核 V29（2026-11-12）：summary 補「主觀垂直與 turning score 直接相關不顯著（Rho=−0.437, P=0.104）；EMG 與站姿骨架角度與 COP 無關」；註「88 條含第一趟，與第一趟剔除的說法不一致」。",
+      "author_cache": {
+        "file": "stw15/f26src/PMC3434216.xml",
+        "sha256_prefix": "d7d6c0396f6653b7",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H65-S002",
+      "url": "https://legge.psych.umn.edu/sites/legge.psych.umn.edu/files/2020-08/Kallie%20Schrater%20Legge%202007%20Variability%20in%20Stepping%20Direction%20Explains%20the%20Veering%20Behavior%20of%20Blind%20Walkers.pdf",
+      "canonical_url": "https://doi.org/10.1037/0096-1523.33.1.183",
+      "title": "Variability in Stepping Direction Explains the Veering Behavior of Blind Walkers",
+      "publisher": "Christopher S. Kallie、Paul R. Schrater、Gordon E. Legge（明尼蘇達大學）／J. Exp. Psychol. Hum. Percept. Perform. 33(1), 183–200, 2007",
+      "version": "出版社排版 PDF，放在通訊作者 Legge 實驗室的大學網站（頁緣註明 APA 版權、僅供個人使用）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果直接列出此 PDF；curl 200。Europe PMC core API 列出的 PMC 作者稿（europepmc.org/articles/PMC2259118 與 ?pdf=render）皆回 Cloudflare 403，未繞過。",
+      "reading_scope": "全文（摘要、引言、實驗 1–3、模型、綜合討論）",
+      "locator": "Abstract；Experiment 1（盲人 5 名、蒙眼明眼人 5 名、9.14 m 路徑每 1.52 m 取樣、戴耳罩）；Experiment 2 Results（曲率偵測門檻平均半徑 24.47 m，範圍 11.46–36.48 m，盲與蒙眼無差，與偏走量無相關）；Experiment 3（明確的起始方向指示未減少偏走）；Model 與 General Discussion（三種未察覺的運動誤差；每步方向標準差約 1.3°）",
+      "summary": "明尼蘇達大學三組實驗：先天或後天全盲者與蒙眼的明眼人，偏走軌跡形狀沒有顯著差別；在被引導走一段彎路時，平均要彎到半徑約 24.5 公尺（個人 11.5–36.5 公尺）才能九成判對是彎的，而這個門檻和各人偏走多少無關；起步時給手摸的方向指示，也沒有比直接扶正更直。作者用隨機漫步模型解釋：起步方向誤差、每步固定偏向，以及最重要的「每一步方向的隨機誤差」（估計標準差約 1.3°），累積起來就足以造成偏走。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "作者實驗室放的是 APA 排版檔，頁緣標示僅供個人使用；PMC 作者稿被 Cloudflare 擋，未能對照。路徑只有約 9 公尺、受試 10 人。授權疑慮若覆核不接受，F26-005、F26-006 應改為只讀到摘要。 覆核 V29（2026-11-12）：version 補「作者實驗室網站上的 PsycARTICLES 下載檔（每頁印僅供個人使用）；由資深／通訊作者 Legge 的大學實驗室張貼，依本輪標準可接受」；limitations 刪掉「若不接受改為摘要」的條件，改為「PMC 作者稿 PMC2259118 讀得到時改指該版」；並註「Experiment 1 盲人 5 名中 3 名有殘餘視力；曲率門檻是左右判斷九成正確」。",
+      "author_cache": {
+        "file": "stw15/f26src/kallie2007_umn.pdf",
+        "sha256_prefix": "233819506bb8ea2c",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H65-S003",
+      "url": "http://www.scielo.br/j/pn/a/bqFFdz6gxBsfqzfQ4JJ9HRD/?lang=en",
+      "canonical_url": "https://www.scielo.br/j/pn/a/bqFFdz6gxBsfqzfQ4JJ9HRD/",
+      "title": "Humans tend to walk in circles as directed by memorized visual locations at large distances",
+      "publisher": "Patricia Consolo、Humberto C. Holanda、Sérgio S. Fukusima（聖保羅大學 Ribeirão Preto 等）／Psychology & Neuroscience 7(3), 269–276, 2014",
+      "version": "期刊全文 HTML（SciELO Brazil 開放取用）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出 SciELO 全文頁；curl 200。同一搜尋列出的 redalyc.org PDF 回 403，未繞過。",
+      "reading_scope": "全文（摘要、方法、結果、討論）",
+      "locator": "Abstract；Results「Trajectory pattern」（四種軌跡分類、圓形最常見）、「Individual lateral preference」（69% 偏左、93% 會換邊）、「Circular trajectory analysis」（目標越遠角速度越低、半徑較大、較晚偏）；Discussion 第 1–2 段（幾乎不自我修正）",
+      "summary": "15 名右利、18–30 歲受試者在足球場上先看一眼 30.00、41.60、57.69 或 80.00 公尺外的目標，再在沒有視覺、聽覺線索下朝它走，用 GPS 記錄。所有人都偏離起始方向，最常見的軌跡是一段圓弧；整體 69% 的試次偏左，但 93% 的人在不同次之間會換邊；一旦開始偏，幾乎不會自己修正。目標越遠，圓形軌跡的平均角速度越低、半徑越大，平均也較晚開始偏。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "受試全為右利、人數少；角速度由模型推算，不是直接量測；「偏左 69%」不能推到一般人。",
+      "author_cache": {
+        "file": "stw15/f26src/consolo_scielo.html",
+        "sha256_prefix": "0e27a97c1dbb7a29",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H65-S004",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6766364/fullTextXML",
+      "canonical_url": "https://doi.org/10.7717/peerj.7736",
+      "title": "Effect of orienteering experience on walking and running in the absence of vision and hearing",
+      "publisher": "Weronika Machowska、Piotr Cych、Adam Siemieński、Juliusz Migasiewicz（波蘭弗羅茨瓦夫體育大學）／PeerJ 7:e7736, 2019",
+      "version": "期刊全文（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（公開文件記載的 API；PMCID 取自 Europe PMC search API 結果）；curl 工具預設標頭 200。Europe PMC 開放取用搜尋（blindfolded／without vision 與 walking）列出 PMC6766364。",
+      "reading_scope": "全文（摘要、方法、結果、討論）",
+      "locator": "Abstract；Results 第 1 段（走 20–40 m、跑 20–125 m 後開始繞圈；累積轉角達 π 定義為繞圈）、第 2 段（兩組角偏差無差 p=0.896／0.264；走比跑偏得多 p=0.010）、第 3 段（走路時女性角偏差較大）；Abstract 結論（與偏側性無關）",
+      "summary": "11 名定向越野選手與 11 名田徑跑者在機場空地上，在看不到也聽不到的情況下直走與直跑，用軌跡計算角偏差。所有人都只能先直行一段——走路約 20–40 公尺、跑步約 20–125 公尺——之後就開始繞圈。兩組的角偏差沒有顯著差別；整體來說走路比跑步偏得多；走路時女性角偏差較大；偏走傾向與慣用側沒有關係。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "每組 11 人；作者對定向越野選手的應用建議不採用；性別差異只在走路出現，片中不講。 覆核 V29（2026-11-12）：summary 補「實驗在日落後進行；田徑組步行總距離較長（p=0.049），角偏差兩組無差」。",
+      "author_cache": {
+        "file": "stw15/f26src/PMC6766364.xml",
+        "sha256_prefix": "3b90c700ecc71ff1",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H65-S005",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12399306/fullTextXML",
+      "canonical_url": "https://doi.org/10.1589/jpts.37.2025-056",
+      "title": "Trajectory and asymmetry of lower limb joint moments during normal and blindfolded gait",
+      "publisher": "Naruyoshi Komuro 等（文京學院大學等）／Journal of Physical Therapy Science 37(9), 2025",
+      "version": "期刊全文（CC BY-NC-ND）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 列出 J-STAGE 文章頁（含 _pdf 連結）；全文經 Europe PMC REST fullTextXML（PMCID 取自 Europe PMC 搜尋結果）curl 200。",
+      "reading_scope": "全文（摘要、方法、結果、討論）",
+      "locator": "RESULTS 第 1–3 段（胸廓相對骨盆左偏 −8.7；無視覺步行行進角顯著較小＝軌跡左偏，p<0.01；骨盆與胸廓左旋）",
+      "summary": "20 名健康成年男性站立時胸廓平均相對骨盆偏左；在實驗室步道上蒙眼走，行進角比睜眼時顯著偏左，骨盆與胸廓也較向左旋轉。作者推論軀幹本體感覺左右不平衡。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "實驗室步道、短距離、全男性；與 F26-S006 同一研究群，兩篇合計。",
+      "author_cache": {
+        "file": "stw15/f26src/PMC12399306.xml",
+        "sha256_prefix": "eccbff8987e5da71",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H65-S006",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12765581/fullTextXML",
+      "canonical_url": "https://doi.org/10.1589/jpts.38.1",
+      "title": "The effect of thoracic lateral deviation on gait parameters in blindfolded gait",
+      "publisher": "Naruyoshi Komuro 等（文京學院大學等）／Journal of Physical Therapy Science 38, 2026",
+      "version": "期刊全文",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（公開文件記載的 API；PMCID 取自 Europe PMC search API 結果）；curl 工具預設標頭 200。Europe PMC 開放取用搜尋列出 PMC12765581。",
+      "reading_scope": "全文",
+      "locator": "RESULTS（23 名男性：左群 13、過度左偏群 9、右群 1 剔除；兩群蒙眼行進角都顯著左偏，過度左偏群另有骨盆胸廓左旋，效果量較大）",
+      "summary": "23 名男性依站姿胸廓側偏分組；兩組蒙眼走路都顯著偏左，胸廓左偏較多的一組偏得更明顯，骨盆與胸廓也跟著向左轉。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "同 F26-S005 研究群；只有男性、短步道、右偏組只有 1 人無法比較。",
+      "author_cache": {
+        "file": "stw15/f26src/PMC12765581.xml",
+        "sha256_prefix": "91031f0acb230379",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H65-S007",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13057318/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-026-44217-w",
+      "title": "Uncovering persistent biases in human path integration by separating left and right trials",
+      "publisher": "Jonas Scherer、Martin M. Müller、Anabel Kroehnert、Martin Egelhaaf、Olivier J. N. Bertrand、Norbert Boeddeker（德國比勒費爾德大學）／Scientific Reports 16:11611, 2026",
+      "version": "期刊全文（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（公開文件記載的 API；PMCID 取自 Europe PMC search API 結果）；curl 工具預設標頭 200。Europe PMC 開放取用搜尋列出 PMC13057318。",
+      "reading_scope": "摘要、引言、結果前半（重新分析 11 篇研究、VR 三角形回家任務、兩次相隔至少三週）、討論",
+      "locator": "Abstract；Results「re-analysis」段（11 篇研究個人差異大）；「Results from our virtual reality triangle completion task」與時間持續性段（兩次 session 相隔至少三週，個人左右偏向分量相近，群體分布以零為中心）",
+      "summary": "比勒費爾德大學把 11 篇有左右轉試次的導航研究資料重新分析，並自做桌上型 VR 沙漠三角形回家任務：把左轉與右轉分開看，每個人都有自己偏左或偏右的固定誤差，相隔至少三週再測仍相近；但全體平均起來落在零附近，所以過去把左右試次混在一起平均時看不出來。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "VR 桌面任務、是「回到起點」的轉角誤差，不是直走；XML 內數值以公式物件呈現、部分數字未能讀出，只取質性結論。 覆核 V29（2026-11-12）：summary「相近」改「兩次間差異不顯著、ICC 0.581（作者稱中等穩定）」；publisher 補 2026-04-06 刊出。",
+      "author_cache": {
+        "file": "stw15/f26src/PMC13057318.xml",
+        "sha256_prefix": "42710d62c602eeb3",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H65-S008",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13254405/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41467-026-73713-w",
+      "title": "Individual locomotor bias drives counterclockwise motion in pedestrian crowds",
+      "publisher": "Iñaki Echeverría-Huarte、Claudio Feliciani 等（西班牙納瓦拉大學、東京大學等）／Nature Communications, 2026",
+      "version": "期刊全文（開放取用）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（公開文件記載的 API；PMCID 取自 Europe PMC search API 結果）；curl 工具預設標頭 200。Europe PMC 搜尋（veering OR walking in circles）列出 PMC13254405。",
+      "reading_scope": "全文主要段落（引言、結果各實驗、討論）",
+      "locator": "Introduction 第 3–4 段（五組實驗概述：全為左撇子或全為右轉者仍逆時針、開放校園、日本、幼兒園）；Results「Confined random motion in Spain」（各條件平均極化約 0.2，100% 右轉者與全左側優勢組也相同）；Results 單人行走與慣用手腳眼分析；Discussion（引 Souman 2009 作推測）",
+      "summary": "西班牙與日本的五組實驗：讓一群人在圍場或開放校園裡隨意走動，整群自發出現逆時針旋轉（平均極化約 0.2）；就算全體都是左撇子左腳、或都是「碰牆會右轉」的人，結果也一樣；在左側通行的日本、幼兒園自由活動也出現；單獨一個人在圍場裡走也有同樣偏向，且與慣用手、腳、眼無關。作者結論：來自個人與生俱來的移動偏向，不是人與人互動或社會規範。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與「迷路繞圈」不是同一任務（有視覺、隨意走）。 覆核 V29（2026-11-12）：publisher 補 Nature Communications 17:4869（2026-05-14 接受、2026-06-10 刊出、PMC 2026-06-12 釋出）；version 改「期刊正式刊本（CC BY-NC-ND 4.0；XML 標 is-manuscript no、is-preprint no）」；limitations 補「托兒所資料為引文 17 的既有資料再分析」。",
+      "author_cache": {
+        "file": "stw15/f26src/PMC13254405.xml",
+        "sha256_prefix": "0fb3f578ee80f00a",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H65-S009",
+      "url": "https://www.mpg.de/596269/pressRelease200908171",
+      "canonical_url": "https://www.mpg.de/596269/pressRelease200908171",
+      "title": "Walking in circles（Scientists from Tübingen show that people really walk in circles when lost）",
+      "publisher": "馬克斯·普朗克學會新聞稿，2009-08-20（Souman 等 2009 Current Biology 的機構摘要）",
+      "version": "機構新聞稿",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出；curl 200。原論文 doi.org/10.1016/j.cub.2009.07.053 轉 linkinghub／cell.com，cell.com 回 Cloudflare 403，未繞過。",
+      "reading_scope": "全文（新聞稿）",
+      "locator": "第 2–4 段（Bienwald 森林與突尼西亞撒哈拉 GPS；太陽或月亮可見時才走得直；蒙眼直徑可小於 20 m；同一人時左時右；腿長說被否定）",
+      "summary": "Souman 與 Ernst 團隊讓人在德國 Bienwald 森林與突尼西亞撒哈拉走數小時、用 GPS 記錄：只有看得到太陽或月亮時能保持直線，太陽一被雲遮住就開始繞圈而不自知；蒙眼在空地直走時多數人繞圈，有時直徑不到 20 公尺，但同一人有時偏左有時偏右，所以不是腿長或腿力不同造成。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只是新聞稿，依規定只當入口，不單獨計分；原論文全文讀不到。F26-S001 引言另有轉述（鞋墊改變腿長不影響方向）。 覆核 V29（2026-11-12）：author_cache 註：動態頁重抓 sha256 會變（今日 c692a1c07310f5ed），內文抽字 7,805 字與快取逐字相同。",
+      "author_cache": {
+        "file": "stw15/f26src/mpg_press.html",
+        "sha256_prefix": "acb3a2b4cb33feb4",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "H65-001",
+      "question": "迷路的人真的會繞圈走嗎？還是電影演的？",
+      "domain": "身體感官與動作",
+      "mechanism_key": "locomotion.lost_walking_circles_sun_reference",
+      "answer_target": "看起來是真的，而且有人用 GPS 量過——不過這一段我們只讀到研究機構的新聞稿。德國圖賓根馬普所的團隊讓人在德國森林和突尼西亞的撒哈拉走好幾個小時，只要求「盡量直走」：新聞稿說，看得到太陽或月亮時大致能走直；太陽一躲進雲裡就開始繞圈，自己卻沒發現；蒙眼在空地直走時，多數人繞起圈來，有時直徑不到 20 公尺。接下來我們用讀得到全文的研究，一段一段檢查這件事。",
+      "scope": "Souman 2009 原文未讀，整段標「新聞稿說」；刪掉作者原句「後來法國與巴西的研究也一再看到同樣的繞圈軌跡」（那兩篇的數據已在 F26-003、F26-007 各自計分，Bestaven 場地內多半只看得到弧，不是整圈）。不講求生或迷路應對。",
+      "source_ids": [
+        "H65-S009",
+        "H65-S001",
+        "H65-S003"
+      ],
+      "source_locator": "F26-S009 第 2–4 段；F26-S001 Introduction 第 2–3 段；F26-S003 Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：新聞稿只當入口不計分；唯一的計分理由是它當開場鉤子、且 Bestaven Discussion 印證蒙眼圓圈大小。開場的太陽／雲數據若要保留，畫面須標「新聞稿」。 原提案 F26-001（目標 C11-01，原角色 hook；依本池欄位記為 segment）。非作者覆核 V29（2026-11-12）改字後收；數字對上新聞稿，但開場的核心事實全是新聞稿；作者 0.5 偏高，下修 0.25，並刪掉把別篇數據重算一次的句子。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「迷路會繞圈」不是傳說，看不到太陽時連自己都察覺不到。",
+        "visual": "衛星地圖上森林裡四條 GPS 軌跡：晴天那條直，陰天三條打轉。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "H65-002",
+      "question": "走路會繞圈，是因為兩條腿不一樣長嗎？",
+      "domain": "身體感官與動作",
+      "mechanism_key": "locomotion.veering_not_leg_length_dominance",
+      "answer_target": "多半不是。這個說法很早就有：法國研究者引用 1893 年《科學美國人》的一句話，說迷路的人繞圈是因為兩腿長短不一。2012 年波爾多的研究讓 15 個人戴眼罩加耳罩，在 90×150 公尺的空展覽館裡直走、每人走 6 次：15 人裡有 9 人這次偏左、下次偏右，另外 6 人每次都偏同一邊或走直。把每人的偏向和腿長差、慣用手、腳、眼、性別、軀幹左右轉的能力比對，都找不到關係。圖賓根團隊也曾用鞋墊人為改變腿長，偏走方向並不跟著變（這一句是轉述）。",
+      "scope": "15 人、無顯著相關不等於證明完全無關；只談腿長與慣用側，不說任何身體不對稱都無關。",
+      "source_ids": [
+        "H65-S001",
+        "H65-S009"
+      ],
+      "source_locator": "F26-S001 Introduction 第 2 段；Results「Walking Trajectories」turning score 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：Bestaven 一篇三條（002、003、004）合計封頂 1.75；1893 年那句是 Bestaven 轉引。 原提案 F26-002（目標 C11-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V29（2026-11-12）改字後收；數字成立；「同一個人時左時右」須改成 9/15，轉折照改。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "腿長說被拆掉：同一個人今天左偏、明天右偏，腿可沒變。",
+        "visual": "六次軌跡疊圖：一人六條都往左，另一人左右亂飄；旁邊列出量過的腿長、慣用手腳眼，全部打叉。",
+        "seconds": [
+          50,
+          65
+        ]
+      }
+    },
+    {
+      "id": "H65-003",
+      "question": "蒙眼直走，大家都是走到差不多的地方就開始彎嗎？",
+      "domain": "身體感官與動作",
+      "mechanism_key": "locomotion.veering_onset_radius_speed_variability",
+      "answer_target": "差很多。波爾多那批蒙眼軌跡裡，一半最後偏到左邊、約四成偏到右邊、約一成算得上直；有人走 3 公尺就開始偏，有人走了 30 公尺以上還是直的，平均約 10 公尺開始偏離。若用一個圓去套每條路線，半徑從 19 公尺到 658 公尺都有，八成小於 300 公尺。走得越快的人，在碰到場地邊緣前走得越遠（這是相關，不是建議走快）。",
+      "scope": "室內封閉場館、15 人；「越快越遠」是相關，不是建議走快。",
+      "source_ids": [
+        "H65-S001"
+      ],
+      "source_locator": "F26-S001 Results「Walking Trajectories」第 1–2 段、Figure 2B2、Figure 3 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：與 002、004 同一實驗。 原提案 F26-003（目標 C11-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V29（2026-11-12）改字後收；數字成立；同研究下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "偏走不是固定一個量，而是每次都在擲骰子。",
+        "visual": "88 條軌跡從同一點散開成扇形，旁邊一排大小不一的圓。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "H65-004",
+      "question": "看不見的時候，身體靠什麼判斷「正前方」？",
+      "domain": "身體感官與動作",
+      "mechanism_key": "locomotion.veering_postural_cop_subjective_vertical",
+      "answer_target": "研究者懷疑和內耳平衡系統塑造的「正前方感」有關，但證據只是間接的。同一個波爾多研究量了每個人站著不動時腳底壓力中心偏哪邊，以及在黑暗中把一根投影光棒調到「垂直」的誤差：壓力中心偏的方向和蒙眼走路的偏向有相關，壓力中心又和調垂直的誤差有相關；可是「調垂直的誤差」和走路偏向之間，直接比對並不顯著。他們也沒找到肌肉出力或站姿骨架的左右差。作者因此只說「可能」和前庭有關。",
+      "scope": "兩個相關、一個不顯著、15 人；不得說成已證實是內耳造成，不談前庭疾病。",
+      "source_ids": [
+        "H65-S001"
+      ],
+      "source_locator": "F26-S001 Results 後段（posturography、SVV 段）；Abstract 末兩句；Discussion",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）；Bestaven 合計 1.75。 原提案 F26-004（目標 C11-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V29（2026-11-12）改字後收；作者略去 SVV 與偏向不相關的負結果，會讓「內耳造成」聽起來比原文強；補上。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "直走的關鍵不在腳，而在腦裡那條「正前方」的線。",
+        "visual": "人站在測力板上，腳底壓力中心一個小點偏左；黑暗中一根光棒被調歪幾度。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "H65-005",
+      "question": "自己在走彎路，難道感覺不出來嗎？",
+      "domain": "身體感官與動作",
+      "mechanism_key": "locomotion.curvature_detection_threshold_unrelated_veering",
+      "answer_target": "比想像中難。明尼蘇達大學讓盲人與蒙眼的明眼人被一台推車牽著走一段約 4.6 公尺的彎路，再回答剛才是左彎還是右彎：平均要彎到半徑約 24 公尺，才能九成答對；個人從約 11 公尺到 36 公尺都有。比這更緩的彎，連往哪邊彎都答不穩。而且誰的門檻低，並不代表誰平常走得比較直；盲人和蒙眼者的偏走軌跡形狀也沒有差別。",
+      "scope": "彎路只有 4.57 m、受試 10 人；門檻是「左右判斷九成正確」；不談視障者行動建議。",
+      "source_ids": [
+        "H65-S002"
+      ],
+      "source_locator": "F26-S002 Experiment 2 Results；Experiment 1 Results；Abstract",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：Kallie 一篇兩條合計 1.25。來源可接受（作者實驗室網站），不必降為摘要。 原提案 F26-005（目標 C11-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V29（2026-11-12）改字後收；數字成立；改正「以為是直的」的過度推論與「全盲」用詞。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "我們以為能感覺到自己在轉彎，其實半徑二十幾公尺的弧在腳下就是「直線」。",
+        "visual": "俯視一段半徑 24 公尺的弧，第一人稱視角卻畫成筆直的走道。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "H65-006",
+      "question": "起步前把方向對得很準，就能一路走直嗎？",
+      "domain": "身體感官與動作",
+      "mechanism_key": "locomotion.veering_step_noise_random_walk_model",
+      "answer_target": "不能。明尼蘇達的第三個實驗讓受試者起步前摸著桌子邊緣對準方向，甚至沿著桌邊先走一小段再出發，結果並沒有比單純把人扶正更直。研究者用一個簡單的隨機模型解釋偏走：起步方向的小誤差、每一步固定的小偏向，以及最重要的——每一步方向都帶著一點沒被察覺的隨機誤差，估計標準差約 1.3 度。短短 9 公尺看不太出來，走得越遠，累積的偏差就越明顯。",
+      "scope": "模型是對約 9 公尺路徑的擬合；不給視障者或步行建議。",
+      "source_ids": [
+        "H65-S002"
+      ],
+      "source_locator": "F26-S002 Experiment 3；Model；General Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：同 Kallie。1.3° 是模型擬合值，片中說「估計」。 原提案 F26-006（目標 C11-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V29（2026-11-12）改字後收；成立；刪掉原文沒有的「迷失方向」，補上指示的實際形式。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "每一步只歪一度多一點，幾十步後就是另一個方向。",
+        "visual": "一條路徑由一格格小箭頭組成，每個箭頭隨機抖 1 度，累積成一條彎線。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "H65-007",
+      "question": "先看清楚遠方的目標再閉眼走，會不會比較準？",
+      "domain": "身體感官與動作",
+      "mechanism_key": "locomotion.blind_walking_target_distance_circular_arcs",
+      "answer_target": "還是會走成弧線。巴西聖保羅大學讓 15 個右利者在足球場先看一眼 30 到 80 公尺外的目標，再在看不到、聽不到的情況下朝它走，用 GPS 記錄。所有人都偏離了起始方向，最常見的軌跡是一段圓弧；整體 69% 的試次偏左，但 93% 的人在不同次之間會換邊；一旦開始偏，幾乎不會自己修正。目標越遠，圓弧的平均角速度反而越小、半徑越大，也比較晚才開始偏。",
+      "scope": "受試全是右利；角速度由模型推算；「偏左」不推到一般人，也不與 F26-003 的百分比相比。",
+      "source_ids": [
+        "H65-S003"
+      ],
+      "source_locator": "F26-S003 Results「Trajectory pattern」「Individual lateral preference」「Circular trajectory analysis」；Discussion 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：不同研究群，但「時左時右」與 F26-002 重疊、「圓弧」與 F26-003 重疊，只算新增的「看過目標也一樣、幾乎不修正、遠目標彎得緩」。 原提案 F26-007（目標 C11-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V29（2026-11-12）改字後收；數字成立；與 002、003 部分重疊下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看過目標也沒用，記憶裡的方向一樣會慢慢滑掉。",
+        "visual": "足球場俯視，四個距離的目標旗，GPS 軌跡都畫成往一邊彎的弧。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "H65-008",
+      "question": "很會認路的定向越野選手，閉眼也能走得比較直嗎？",
+      "domain": "身體感官與動作",
+      "mechanism_key": "locomotion.veering_orienteering_experience_no_advantage",
+      "answer_target": "沒有比較直。波蘭的研究在入夜後的機場空地，讓 11 名定向越野選手和 11 名田徑跑者在看不到也聽不到的情況下盡量直走或直跑：所有人都只能先直行一段——走路約 20 到 40 公尺，跑步約 20 到 125 公尺——接著就繞起圈來。兩組的角度偏差沒有顯著差別；偏向和慣用的那一側也沒有關係。整體來說，走路比跑步偏得更多。",
+      "scope": "每組 11 人；作者給選手的訓練建議不用；性別差異片中不講。",
+      "source_ids": [
+        "H65-S004"
+      ],
+      "source_locator": "F26-S004 Abstract；Results 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：「與慣用側無關」和 002 重複，只算經驗比較與走／跑。 原提案 F26-008（目標 C11-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V29（2026-11-12）改字後收；成立；補條件、下修重疊。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "方向感再好的人，一拿掉外界參考也照樣繞圈——這不是技術問題。",
+        "visual": "兩組跑者的軌跡並排：前段一樣直，後段一樣打圈。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "H65-009",
+      "question": "身體姿勢的左右不平衡，跟蒙眼往哪邊偏有關嗎？",
+      "domain": "身體感官與動作",
+      "mechanism_key": "locomotion.blindfold_gait_thoracic_lateral_deviation",
+      "answer_target": "有一些實驗室研究這樣認為，但證據很有限。日本文京學院大學的物理治療團隊發現，他們量的健康男性站著時胸廓幾乎都相對骨盆往左偏；在實驗室步道上蒙眼走，行進方向比睜眼時明顯往左，骨盆與胸廓也跟著向左轉。作者推測和軀幹兩側的本體感覺不平衡有關。不過受試者幾乎全是左偏，右偏的只有一人，沒辦法比較「往右歪的人會不會往右走」。",
+      "scope": "短步道、全男性、同一研究群兩篇；與 F26-002「腿長、慣用側無關」不矛盾，但不能說「姿勢決定往哪偏」；不給矯正建議。",
+      "source_ids": [
+        "H65-S005",
+        "H65-S006"
+      ],
+      "source_locator": "F26-S005 RESULTS 第 1–3 段；F26-S006 RESULTS 與 Table 3",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：同一研究群兩篇、短步道、全男性、缺右偏對照；建議片長不足時第一個刪。 原提案 F26-009（目標 C11-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V29（2026-11-12）改字後收；數字成立但推論弱，且與 Bestaven 的結果有張力，下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "偏走的源頭可能藏在站姿裡一點點的歪。",
+        "visual": "人體俯視骨架，胸廓相對骨盆往左挪了一點，腳印跟著往左斜。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "H65-010",
+      "question": "每個人都有自己固定偏向的一邊嗎？為什麼過去的研究常說「平均沒有偏」？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "navigation.path_integration_individual_side_bias_persistent",
+      "answer_target": "德國比勒費爾德大學把 11 篇有左轉、右轉試次的導航研究重新分析，又自己做了虛擬實境的「繞三角形回起點」任務：把左轉和右轉分開看，每個人都有自己偏左或偏右的誤差，隔至少三週再測，大致還在（作者評為中等穩定）；可是全體平均起來落在零附近。所以把左右混在一起平均，就看不到每個人身上的偏向。",
+      "scope": "是虛擬實境裡的轉角誤差，不是蒙眼直走；只取質性結論、不引用數字。",
+      "source_ids": [
+        "H65-S007"
+      ],
+      "source_locator": "F26-S007 Abstract；Results 重新分析段與時間持續性段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）：不同任務（VR 路徑整合轉角），只取「個人偏向、平均抵消」。 原提案 F26-010（目標 C11-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V29（2026-11-12）改字後收；成立；「相近」改為原文的中等穩定。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「大家平均不偏」不等於「每個人都不偏」。",
+        "visual": "一排人各自的左右偏向箭頭有長有短、有左有右，加總起來歸零。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "H65-011",
+      "question": "一群人在廣場上隨意走，為什麼常常整群繞成逆時針？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "crowd.counterclockwise_individual_locomotor_bias",
+      "answer_target": "研究者發現那來自每個人自己的偏向，不是人跟人互相帶動。西班牙與日本團隊做了五組實驗：讓一群人在圍場或校園裡隨意走，整群自發出現逆時針旋轉；就算全體都是左撇子，或全是「碰到牆習慣右轉」的人，結果一樣；在習慣靠左走的日本、托兒所孩子的自由活動裡也看得到；讓兩百多人一次一個單獨在圍場裡走，也有同樣的偏向，而且和慣用手、腳、眼都無關。真正的生理來源仍未知。",
+      "scope": "與蒙眼迷路是不同任務（看得見、隨意走）；作者引用 Souman 只是推測；不談人群管理建議。",
+      "source_ids": [
+        "H65-S008"
+      ],
+      "source_locator": "F26-S008 Introduction 第 3–4 段；Results 西班牙圍場段、日本段、單人段；Discussion",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：看得見、隨意走，與蒙眼直走是不同任務，與本題主問的連結只有作者的推測。 原提案 F26-011（目標 C11-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V29（2026-11-12）改字後收；論文真實存在、為正式刊本；授權標錯、任務距離較遠，下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連看得見的時候，我們身上那股小小的偏向也還在，只是被眼睛一直修正。",
+        "visual": "俯視操場上的人點，軌跡慢慢匯成逆時針的漩渦；切到單人也畫出同向小彎。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "H65-NA001",
+      "question": "迷路的人在森林、沙漠裡繞圈的原始 GPS 數據（Souman 等 2009 Current Biology）",
+      "existing_ids": [],
+      "source_ids": [
+        "H65-S009"
+      ],
+      "reason": "原論文 DOI 經 linkinghub 轉到 cell.com，回 Cloudflare 403，未繞過；Europe PMC 無開放全文；學術社群網站（academia.edu、ResearchGate）屬第三方轉存不用。只用新聞稿當入口、以 F26-S001／S003 的轉述放在 F26-001。 原提案 F26-NA001。",
+      "reentry_condition": "取得合法公開全文（期刊開放檔或機構典藏）後，F26-001 可由 0.5 升到約 1.25，並可加一條「蒙眼繞圈不固定方向」的原文數據。",
+      "reading_status": "只讀到機構新聞稿與他文轉述"
+    },
+    {
+      "id": "H65-NA002",
+      "question": "美洲鶴覓食時點頭讓頭停住至少一半時間（Cronin 等 2005 Current Biology）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "USGS 出版品紀錄只連到 DOI；DOI 轉 cell.com 回 Cloudflare 403；mdsoar.org 典藏頁 curl 回 400。只讀到搜尋結果摘要，不收。 原提案 F26-NA003。",
+      "reentry_condition": "合法公開全文可讀時，約可補 0.75（野生大型鳥覓食時的點頭，與 F26-019 呼應）。",
+      "reading_status": "只讀到搜尋摘要"
+    },
+    {
+      "id": "H65-NA003",
+      "question": "受過網球訓練的人蒙眼走到目標比較準嗎？（Xing 等 2026 Sci Rep）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "已讀全文，但它量的是「看過目標後蒙眼走的距離準確度」，不是左右偏走；且會滑向「做什麼運動可以改善」的建議，不收。另 Talwar 2024（頻閃視覺訓練後蒙眼直走偏角變小）為無對照組的前後測、偏向訓練與跌倒風險的應用，同樣不收。 原提案 F26-NA005。",
+      "reentry_condition": "出現與偏走方向直接相關、不涉訓練建議的受控研究。",
+      "reading_status": "全文已讀（Xing）；摘要（Talwar）"
+    },
+    {
+      "id": "H65-NA004",
+      "question": "鴿子走動時用視野的哪一塊看東西？（Kano 等 2022 Sci Rep）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "全文已讀，主題是自由活動時看同伴與物件所用的視野區，只在討論中提到點頭與動態視差的假說，與本題「為什麼點頭」連結太弱，不收。 原提案 F26-NA006。",
+      "reentry_condition": "若長題改成「鳥怎麼看世界」再考慮。",
+      "reading_status": "全文已讀"
+    }
+  ]
+}

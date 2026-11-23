@@ -14,6 +14,7 @@ import {
   loadGuideTopicList,
   loadGuideTopics,
   loadSeriesIndex,
+  loadTrendingGuides,
   guideSitemapSummary,
   loadGuideSearch,
   SEARCH_PAGE_SIZE,
@@ -569,10 +570,28 @@ describe("article search", () => {
     expect(await loadGuideSearch("zh-TW", { q: "jr" })).toMatchObject({ available: false });
   });
 
-  it("never sends a negative offset", async () => {
+  it("never sends a negative offset and forwards non-default sort plus trending queries", async () => {
     const fetchMock = respondWith(200, body);
     vi.stubGlobal("fetch", fetchMock);
-    await loadGuideSearch("zh-TW", { q: "jr", offset: -5 });
-    expect(new URL(fetchMock.mock.calls[0][0]).searchParams.get("offset")).toBe("0");
+    await loadGuideSearch("zh-TW", { q: "jr", offset: -5, sort: "latest" });
+    const searchUrl = new URL(fetchMock.mock.calls[0][0]);
+    expect(searchUrl.searchParams.get("offset")).toBe("0");
+    expect(searchUrl.searchParams.get("sort")).toBe("latest");
+
+    await loadGuideSearch("zh-TW", { q: "jr", sort: "relevance" });
+    expect(new URL(fetchMock.mock.calls[1][0]).searchParams.get("sort")).toBeNull();
+
+    const trendingFetch = respond({ articles: [summary], next_cursor: null });
+    vi.stubGlobal("fetch", trendingFetch);
+    const trending = await loadTrendingGuides("zh-TW", { section: "life" }, 5);
+    const trendingUrl = new URL(trendingFetch.mock.calls[0][0]);
+    expect(trendingUrl.pathname).toBe("/api/v1/guides/trending");
+    expect(trendingUrl.searchParams.get("section")).toBe("life");
+    expect(trendingUrl.searchParams.get("limit")).toBe("5");
+    expect(trending.articles).toHaveLength(1);
+
+    vi.stubGlobal("fetch", respond({ ...article, kind: "life", news_date: "2026-11-12" }));
+    const dated = await loadGuideArticle("life", "narita-to-tokyo", "zh-TW");
+    expect(dated.news_date).toBe("2026-11-12");
   });
 });

@@ -14,7 +14,9 @@ describe("a guide card", () => {
   it("shows the hero lazily, the badge, the title as the link, the description and the topics", () => {
     const { container } = render(<ul><GuideCard article={article} labels={labels} /></ul>);
     expect(screen.getByRole("link", { name: "成田機場到東京" }).getAttribute("href")).toBe("/guides/howto/narita-to-tokyo");
-    expect(screen.getByRole("img", { name: "成田機場" }).getAttribute("loading")).toBe("lazy");
+    const img = screen.getByRole("img", { name: "成田機場" });
+    expect(img.getAttribute("loading")).toBe("lazy");
+    expect(img.getAttribute("fetchpriority")).toBeNull();
     expect(screen.getByText("攻略")).toBeTruthy();
     expect(screen.getByText("交通")).toBeTruthy();
     expect(container.querySelector("li")?.getAttribute("data-variant")).toBe("default");
@@ -33,7 +35,24 @@ describe("a guide card", () => {
     const { container } = render(<ul><GuideCard article={article} labels={labels} variant="featured" /></ul>);
     const card = container.querySelector("li")!;
     expect(card.className).toContain("sm:col-span-2");
-    expect(screen.getByRole("img", { name: "成田機場" }).getAttribute("loading")).toBe("eager");
+    const img = screen.getByRole("img", { name: "成田機場" });
+    expect(img.getAttribute("loading")).toBe("eager");
+    expect(img.getAttribute("fetchpriority")).toBe("high");
     expect(card.querySelector("h3")?.className).toContain("text-2xl");
+    expect(card.querySelector("time")).toBeNull();
+  });
+
+  it("renders news_date as a <time> element only for dated news items", () => {
+    const { container } = render(
+      <ul>
+        <GuideCard
+          article={{ ...article, kind: "life", news_date: "2026-11-12" }}
+          labels={labels}
+        />
+      </ul>,
+    );
+    const time = container.querySelector("time");
+    expect(time?.getAttribute("datetime")).toBe("2026-11-12");
+    expect(time?.textContent).toBe("2026-11-12");
   });
 });

@@ -1,0 +1,117 @@
+{
+  "batch_id": "wave61-earth-20261111",
+  "created_on": "2026-11-12",
+  "scope": "亞馬遜上空的暖雨起始量測與碰撞效率教材：替後備組題 C6-02 補來源（作者 F17，覆核 V20），仍後備。",
+  "sources": [
+    {
+      "id": "S61-S001",
+      "url": "https://acp.copernicus.org/articles/17/14433/2017/acp-17-14433-2017.pdf",
+      "canonical_url": "https://doi.org/10.5194/acp-17-14433-2017",
+      "title": "Further evidence for CCN aerosol concentrations determining the height of warm rain and ice initiation in convective clouds over the Amazon basin（Braga、Rosenfeld、Weigel、Jurkat、Andreae、Wendisch、Pöschl、Voigt、Mahnke、Borrmann、Albrecht、Molleker、Vila、Machado、Grulich）",
+      "publisher": "Atmos. Chem. Phys. 17: 14433–14456（2017，CC BY 3.0）；巴西 INPE、希伯來大學、馬克斯普朗克化學所等",
+      "version": "刊本 PDF",
+      "accessed_on": "2026-11-11",
+      "read_via": "WebSearch 結果列出的 ACP 刊本 PDF 連結，curl GET 200（工具預設標頭）；pdftotext -layout",
+      "reading_scope": "全文（Abstract、§1、§3–§5、§6 前段、Table 3；圖只讀圖說）",
+      "locator": "Abstract；§1 倒數第二段（re 13–14 µm、雨生成率約與 re^5 成正比，引 Freud 與 Rosenfeld 2012）；§5.1 第一、二段與 Figure 2 圖說（CCP–CDP re > 13 µm、CAS-DPOL re > 12 µm）；Table 3；§5.3 AC19、AC09、AC18 段；§6 第一、二段（Dr = (5±1.06)·Na）",
+      "summary": "2014 年 9 月 ACRIDICON–CHUVA，HALO 飛機穿越亞馬遜上空成長中的積雲量雲滴與降水粒子。以每秒的量測算降水機率，雲滴有效半徑超過約 13 µm（另一儀器 12 µm）才開始出現雨滴。開始下暖雨的高度（雲底以上）與雲底雲滴數濃度近乎成正比：Dr ≈ 5·Nd（公尺；Nd 每立方公分），偏差約 21%。乾淨的大西洋上空（AC19，Na 約 276 cm⁻³）雲底上 1660 公尺就有雨，當時約 10 °C；被汙染的 AC09、AC18 分別在約 3000、3800 公尺才起雨（後者在 −5.7 °C 等溫線，雨滴仍是液態）。Nd 超過約 1000 cm⁻³ 時，起雨深度超過 5000 公尺，飛機在成長中的積雲裡看不到液態雨滴，最先出現的降水粒子是冰；AC08、AC12、AC20 在量測到的高度內既沒有雨也沒有冰。作者說同樣的線性關係在以色列、印度也見過（Freud 與 Rosenfeld 2012 的斜率約 4）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與池中 S60-002（Freud 等 2008，同一研究群、同是亞馬遜燒林季）不是完全獨立：Rosenfeld 是兩篇共同作者；但這是 2014 年另一個飛機計畫、另一套儀器。只有 8 趟飛行，有起雨的只 3 趟；Na 是由 re 剖面反推（與雲底實測差 20–30%）。re 門檻是有效半徑（13 µm），S60-002 用的是眾數直徑（24 µm），兩者不能互換或並成同一個數字。AC19 在海上，作者推測海鹽大顆粒讓它在 re 約 12 µm 就起雨。以色列、印度的結果是引用。 覆核 V20（2026-11-12）：summary 改：「Dr ≈ 5·Nd」是 D13（由雲底雲滴數以絕熱模式估算的深度）對 Na 的迴歸、所有飛行，三趟實測 Dr 略高於 D13；「Nd>1000 cm⁻³ 時 Dr>5000 m」是摘要概括、5000 m 以上為估算；以冰開始的只有 AC07（Na 963）與 AC13（Na 1080），AC08、AC12、AC20 雨和冰都沒有量到；摘要「polluted conditions 下沒有液態雨滴」指極汙染。",
+      "author_cache": {
+        "file": "f17src/braga2017.pdf（文字 f17src/braga2017.txt）",
+        "sha256_prefix": "23398c4f9f3763ac",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S61-S002",
+      "url": "https://courses.ems.psu.edu/meteo300/node/780",
+      "canonical_url": "https://courses.ems.psu.edu/meteo300/node/780",
+      "title": "METEO 300: Fundamentals of Atmospheric Science, Lesson 5.8 Did you know most precipitation comes from collision-coalescence?（W. Brune）",
+      "publisher": "賓州州立大學地球與礦物科學學院（大學課程教材）",
+      "version": "線上課程頁（2026-11-12 擷取）",
+      "accessed_on": "2026-11-11",
+      "read_via": "由池中已用的 5.7 Vapor Deposition 頁（node/679，K6003 的來源）頁內導覽連結「5.8 Did you know…」進入；curl GET 200（工具預設標頭），去標籤後閱讀",
+      "reading_scope": "全頁正文（影片逐字稿只讀開頭）",
+      "locator": "〈Collisions〉之後：終端速度段（50 µm 約 0.3 m/s、500 µm 約 4 m/s）；Equation 5.16 之後兩段（Ec 定義、小滴隨氣流繞過）；「Ec is small for 10 μm drops…」段；Equation 5.17 之後一段（50 µm 長到 1000 µm 約 25 分鐘；10–20 µm 前靠凝結慢慢長）",
+      "summary": "大滴往下掉、掃過下方小滴才長大；但掃過的有效截面比幾何截面小，因為小滴會順著氣流被帶著繞過大滴。碰撞合併效率 Ec 對 10 µm 的滴很小，要靠隨機讓少數滴先變大；收集滴半徑超過 100 µm 後，對小到 10–20 µm 的小滴效率都很好，到幾百 µm 時接近 100%。在 Ec=1 等假設下，半徑成長率與半徑成正比，所以成長是指數式：液態水 1 g/m³ 時，從 50 µm 長到 1000 µm 只要約 25 分鐘。結論：雲滴靠凝結慢慢長到 10–20 µm，碰撞合併一旦開始產生少數大滴，就指數成長。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "教材頁；Ec 曲線圖是課程依 Rogers 與 Yau 重繪，本輪沒有讀到原始碰撞效率量測。25 分鐘是課程在 Ec=1、vL>>vs、液態水 1 g/m³ 等假設下的推算，不是觀測。與池中 K6001–K6004 同一門課，但 node/780 這一頁池中沒有。 覆核 V20（2026-11-12）：accessed_on 改為 2026-11-12（version 欄寫 2026-11-12 擷取，快取檔時間也是 2026-11-12），或把 version 改成與 accessed_on 一致。",
+      "author_cache": {
+        "file": "f17src/psu780.html",
+        "sha256_prefix": "5515c4131ca5d5a0",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S61-S003",
+      "url": "http://iopscience.iop.org/1367-2630/15/4/045010/pdf/1367-2630_15_4_045010.pdf",
+      "canonical_url": "https://doi.org/10.1088/1367-2630/15/4/045010",
+      "title": "Experimental determination of droplet collision rates in turbulence（Bordás、Roloff、Thévenin、Shaw）",
+      "publisher": "New Journal of Physics 15: 045010（2013，CC BY 3.0）；馬格德堡大學、密西根理工大學",
+      "version": "刊本 PDF（32 頁）",
+      "accessed_on": "2026-11-11",
+      "read_via": "WebSearch 結果的 DLR elib 典藏頁（elib.dlr.de/82188/）上的 PDF 連結，curl GET 200（工具預設標頭，轉址到 iopscience 刊本）；pdftotext -layout",
+      "reading_scope": "Abstract、§1、§2 碰撞核與效率段、§6 全部；§3–§5 只讀標題與圖說",
+      "locator": "Abstract；§1 第二、三段（碰撞是罕見事件、要長時間平均）；§2 式 (1) 後一段（碰撞效率 E12、合併效率在數百微米以下接近 1）；§2 末「The collision efficiency is considered the most uncertain…」條列（引 Devenish 2012、Wang 與 Grabowski 2009）；§6 第一、二段",
+      "summary": "在風洞裡做出與積雲相關的紊流加多分散水滴，用兩種獨立的影像方法直接數水滴碰撞。兩種方法的碰撞率同一數量級，但追蹤法一致比陰影法低約 5–10 倍，作者估整體量測不確定約 10 倍。理論碰撞率都在量測值的 10 倍以內；把小滴靠近時被氣流推開的「碰撞效率」算進去的理論，明顯比只算輸送與聚集的理論接近量測。只算重力沉降的碰撞率出奇地接近量測；作者說在強紊流（高耗散率）條件下，紊流對碰撞率的貢獻才明顯。前言另引別人的研究說，若把紊流對碰撞效率的影響算進去，暖雨起始時間可能縮短到一半。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "量測不確定約 10 倍，只能說「定性上」碰撞效率重要；實驗的大滴尾巴（>100 µm）讓重力主導，作者自己建議改用較窄的滴譜。「紊流讓起雨時間縮短到一半」是前言引用 Wang 與 Grabowski 2009，不是本文量測，不得當本文結果。 覆核 V20（2026-11-12）：summary 改：只算重力的碰撞率出奇地接近量測，ε=0.1 m² s⁻³ 下的理論計算接近純重力，作者說與實驗滴譜裡有 >100 µm 大滴尾巴一致；在實驗量到的高耗散率下，紊流貢獻看得出來。刪「一般紊流下重力沉降就能解釋大部分」。補：本文量碰撞率，碰撞效率是代入理論值，不是量測。read_via 補：V20 今日 DLR elib 頁仍連到同一個 iopscience PDF，但該站回 Radware 機器驗證，未繞過，覆核只依作者快取。",
+      "author_cache": {
+        "file": "f17src/bordas2013.pdf（文字 f17src/bordas2013.txt）",
+        "sha256_prefix": "5a5d175923a2231d",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "S61-001",
+      "question": "換一次飛機、換一年再量，煙塵多的雲是不是也要長得更高才下雨？髒到極點時，先出現的是雨還是冰？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.warm_rain_onset_depth_ice_first_polluted",
+      "answer_target": "是，而且這次排得出一條近似直線。2014 年 9 月，德國的 HALO 研究機在亞馬遜和鄰近的大西洋上空一次次穿過正在長高的積雲。有雨的三趟，雲滴的有效半徑長到約 13 微米（海上那趟約 12 微米）才量到雨滴。研究者用雲底的雲滴數估算雲滴長到 13 微米的高度，八趟飛行排成一條線：雲底每立方公分多一個雲滴，大約要再高 5 公尺；三趟實際量到的起雨高度都略高於這條估算線。乾淨的大西洋上空（估計每立方公分約 280 個雲滴），雲底上 1660 公尺、約 10 °C 的地方就有雨；兩趟汙染的陸上飛行要到約 3000 和 3800 公尺，後者起雨處已是零下 5.7 °C，雨滴還是液態。五趟極汙染的飛行（估計每立方公分約 900 到 1500 個雲滴），在飛機量到的高度內都沒有液態雨滴：其中兩趟最先出現的降水粒子是冰，另外三趟連冰也沒量到。",
+      "scope": "2014 年 9 月一季、8 趟飛行的成長中積雲；有雨的只有 3 趟；雲滴數 Na 由有效半徑剖面反推；「每個雲滴 5 公尺」是對估算深度 D13 的迴歸，不是八個實測起雨高度；5000 m 以上的起雨深度是估算；以冰開始的只有 2 趟。13 微米是有效半徑，S60-002 的 24 微米是眾數直徑，不得並成同一門檻或互換；本文每個雲滴 5 m 與 S60-002 每 100 個 CCN 350 m 的變數不同，不得相比或相減。以色列、印度是作者引用。與 S60-002 同一研究群（Rosenfeld 共同作者），不是完全獨立的重現。",
+      "source_ids": [
+        "S61-S001"
+      ],
+      "source_locator": "F17-S002：Abstract；§5.1 與 Figure 2；Table 3；§5.3；§6 第一、二段",
+      "premise_status": "screened",
+      "notes": "算 1.0 條，不是 1.5：（a）「雲滴越多起雨越高」S60-002 已有（乾淨 1–2 km 對煙霧 ≥4 km、每 100 CCN 多 350 m），本核心是同一研究群另一個計畫、另一套儀器的確認，加上有效半徑 13 µm 的實測門檻，只算 0.5；（b）極汙染時成長中積雲量不到液態雨滴、降水以冰開始（2 趟），以及汙染雲在零下 5.7 °C 仍下液態雨，0.5 條。 原提案 F17-002（目標 C6-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V20（2026-11-12）改字後收；來源合規、雜湊相同。收，但下修到 1.0：主結論與 S60-002 同一研究群、同一地區、同一方向；「乘 5 公尺」是估算線不是八個實測值；「超過 1000 就先出現冰」原文只有兩趟看到冰，三趟什麼都沒有，且門檻不是整齊的 1000。在 C6-02 是第一個轉折的佐證，本身不算新轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雲滴越多，雨要在越高處才開始；髒到極點時，雨還沒來得及在暖的地方形成，雲就先長到結冰的高度。",
+        "visual": "一張橫軸雲滴數、縱軸起雨高度的散點，三個有雨的點連成斜線；極汙染那幾趟畫成一路往上直到冰晶符號。",
+        "seconds": [
+          60,
+          80
+        ]
+      }
+    },
+    {
+      "id": "S61-002",
+      "question": "雲裡的小水滴擠在一起，為什麼還是很難撞在一起變成雨滴？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.collision_efficiency_small_drops_follow_streamlines",
+      "answer_target": "因為太小的滴會跟著空氣繞過去。大滴往下掉時，前方的空氣往兩側彎開，小滴輕到會被氣流帶著從旁邊繞過，真正掃到的面積比兩滴半徑相加的截面小。賓州州立大學的大氣科學課程寫：10 微米左右的滴，這個效率很小，要靠隨機讓少數滴先長得比別人大；收集滴的半徑超過 100 微米後，對小到 10 到 20 微米的滴都撞得很有效率，到幾百微米時接近百分之百。之後越大長得越快：課程在效率等於 1、液態水每立方公尺 1 克等假設下推算，從 50 微米長到 1000 微米約 25 分鐘。一個風洞實驗直接數紊流裡水滴的碰撞次數，兩種量法差 5 到 10 倍；作者說，至少定性上，把碰撞效率算進去的理論比只算輸送的理論接近量測。",
+      "scope": "大學課程教材的機制與理想化推算（25 分鐘是 Ec=1 等假設下的課本推算；Ec 曲線是課程依 Rogers 與 Yau 重繪，不是本輪讀到的量測）。風洞實驗量的是碰撞率、不是碰撞效率，量測不確定約 10 倍，只當定性旁證；不得說「紊流讓下雨快一倍」，也不得說「一般紊流下重力就夠」。",
+      "source_ids": [
+        "S61-S002",
+        "S61-S003"
+      ],
+      "source_locator": "F17-S003：Equation 5.16 後兩段、「Ec is small for 10 μm drops」段、Equation 5.17 後一段；F17-S004：Abstract、§2 末條列、§6 第一、二段",
+      "premise_status": "screened",
+      "notes": "算 1.0 條：PSU node/780 兩件事——小滴隨流線繞過、10 µm 效率很低而 100 µm 以上很高 0.5 條；碰撞一旦開始就越大長越快（25 分鐘，假設下的推算）0.5 條。Bordás 0 條：沒有量碰撞效率、不確定約 10 倍、今日讀不到原站，只當旁證。V19 點名要的「碰撞效率的實驗室或風洞量測全文」仍沒有補到。 原提案 F17-003（目標 C6-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V20（2026-11-12）改字後收；教材頁合規、雜湊相同，機制句都在原文；收，算 1.0。風洞那半句要照原文改寫，且只當旁證不計條。它在 C6-02 是補「卡在哪裡」的章，不是轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雲裡的水滴不是因為不夠多才不下雨，而是太小、會被空氣帶著繞開；要先有幾顆「幸運的大滴」。",
+        "visual": "一顆大滴下落、周圍流線彎開，小點沿流線繞過，只有中心一小圈被撞上；旁邊一條半徑 vs 效率的簡化曲線，10 µm 很低、100 µm 以上接近頂。",
+        "seconds": [
+          55,
+          70
+        ]
+      }
+    }
+  ],
+  "not_added": []
+}

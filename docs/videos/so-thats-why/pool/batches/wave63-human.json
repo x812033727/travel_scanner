@@ -1,0 +1,53 @@
+{
+  "batch_id": "wave63-human-20261111",
+  "created_on": "2026-11-12",
+  "scope": "交叉雙腳的嬰兒研究：替後備組題 C7-01 補原研究（作者 F21，非作者覆核 V24），仍後備。",
+  "sources": [
+    {
+      "id": "H63-S001",
+      "url": "https://research.gold.ac.uk/id/eprint/17710/1/BegumAliSpenceBremner_GRO.pdf",
+      "canonical_url": "https://doi.org/10.1016/j.cub.2015.08.055",
+      "title": "Human infants' ability to perceive touch in external space develops postnatally",
+      "publisher": "Jannath Begum Ali、Charles Spence、Andrew J. Bremner／Current Biology 25(20): R978–R979（2015）；Goldsmiths Research Online 典藏",
+      "version": "作者接受稿（Accepted Version，稿面寫 Resubmitted to Current Biology, August 2015），含 Supplemental Information（Figure S1、Table S1、Experimental Procedures）",
+      "accessed_on": "2026-11-11",
+      "read_via": "WebSearch 結果列出典藏紀錄頁 research.gold.ac.uk/id/eprint/17710 與 eprints-gro.gold.ac.uk 的 PDF；eprints-gro 主機經代理連不上（502）。改開紀錄頁（curl 200，頁上 citation 標記 DOI 10.1016/j.cub.2015.08.055、Accepted Version），PDF 連結取自頁上的 href；curl 200，pdftotext -layout 轉文字。",
+      "reading_scope": "全文（正文、圖說、補充資料的設計、受試者、儀器、程序、編碼與分析）",
+      "locator": "正文第 1 段（摘要式段落）；正文〈Thus, the influence of external spatial coordinates…〉段；Figure 1 圖說（ANOVA 與事後比較、單樣本 t 檢定）；Figure S1 圖說（反應潛時 729 對 1406 ms）；Supplemental〈Participants〉〈Design〉〈Procedure〉",
+      "summary": "4 個月大（17 名，104–134 天）與 6 個月大（13 名，177–220 天）的嬰兒，腳底各貼一個振動器，每次振動一隻腳 1 秒，看先動的是哪隻腳；每 5 次改變雙腳交叉或不交叉。6 個月組不交叉時比交叉時準，而且只有不交叉時高於機率；4 個月組兩種姿勢一樣準、兩種都高於機率，雙腳交叉時明顯勝過 6 個月組；不交叉時兩組沒有差別。4 個月組反應較快（平均 729 對 1406 毫秒），粗大縮腳反應的比例兩組相同（各 .12）。作者結論：觸覺的外部空間編碼在 4 到 6 個月之間出現，更早的嬰兒只按身體上的位置感覺觸碰（tactile solipsism）。作者另引文獻說 10 個月大能適應肢體姿勢改變（引用，不計）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "作者接受稿，與期刊刊本可能有編輯差異；Current Biology 的 Correspondence 短文，正文約一千字；測的是腳、不是手，量的是單一觸碰後先動哪隻腳（不是兩下先後判斷）；兩個年齡是不同的嬰兒（橫斷，不是追蹤同一批）；樣本 17＋13；各組各姿勢的平均正確率只在圖上，正文與圖說給的是合併平均（不交叉 .70、交叉 .62；4 個月 .70、6 個月 .61），旁白不得自己讀圖報數字。池中沒有同一網址或同一篇。 覆核 V24（2026-11-12）：limitations 加：『6 個月組交叉時是機率水準，不是系統性動錯；作者把轉變連到約 5 個月開始伸手，屬推測』。",
+      "author_cache": {
+        "file": "f21src/begumali2015.pdf（文字：f21src/begumali2015.txt）",
+        "sha256_prefix": "c053c4d44bac1b09（文字 e5fc45ece29f1092）",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "H63-001",
+      "question": "四個月大和六個月大的嬰兒，雙腳交叉時一隻腳被碰，哪一組比較會動錯腳？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.infant_crossed_feet_external_coding_emerges_4_to_6_months",
+      "answer_target": "反而是大一點的那組比較常出錯。英國 Goldsmiths 與牛津的研究者讓 17 名 4 個月大、13 名 6 個月大的嬰兒躺在嬰兒椅上，兩隻腳底各貼一個小振動器，每次只振一隻腳 1 秒，只看哪隻腳先動；每 5 次換成雙腳交叉或不交叉。6 個月大的嬰兒不交叉時動對腳的比例比交叉時高，而且只有不交叉時明顯高於亂猜，交叉時接近亂猜；4 個月大的嬰兒兩種姿勢一樣準、都高於亂猜，雙腳交叉時明顯勝過 6 個月大的嬰兒。4 個月大的反應也比較快（平均約 0.73 秒對 1.41 秒），兩組粗大縮腳動作的比例一樣。研究者據此認為：把觸碰放到『外面空間的哪一邊』，是在出生後 4 到 6 個月之間才出現；更早的嬰兒只按『身體上的哪一處』感覺觸碰。",
+      "scope": "測的是腳、單一觸碰後先動哪隻腳，不是兩手兩下的先後判斷；兩個年齡是不同的兩群嬰兒（不是追蹤同一批）；作者接受稿。不得說 4 個月大的嬰兒觸覺比較好；不得與 H62-002 的 13 名早期開刀兒童或 H62-001 的視障嬰兒合成一群，也不得說兩篇矛盾（H62-002 說出生頭 5 個月的視覺不關鍵，本篇說一般嬰兒的交叉代價 4 到 6 個月才出現，兩者講不同的事）；正文只給合併平均，不得從圖上讀出各組數字唸出來；作者引文獻說 10 個月大能適應姿勢改變，是轉引，不計。",
+      "source_ids": [
+        "H63-S001"
+      ],
+      "source_locator": "F21-S001：正文第 1 段、〈Thus, the influence…〉段；Figure 1 圖說；Figure S1 圖說；Supplemental〈Participants〉〈Design〉〈Procedure〉",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：『6 個月有交叉代價』與 H62-001 視力正常嬰兒（5 個月到快 3 歲）已有交叉代價同方向，照 V22 對 H62-001 的先例不重算；真正新增的是『4 個月還沒有交叉代價、交叉時反而勝過 6 個月』這一步，加上樣本小、短篇通訊、量的是腳，計 0.75。 原提案 F21-001（目標 C7-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V24（2026-11-12）改字後收；數字、條件、主詞逐句相符，來源合規、雜湊相同；池中沒有 Begum Ali／雙腳交叉核心。但『6 個月有代價』這半與 H62-001 重疊，6 個月組交叉時是機率水準而非系統性錯，畫面與計數都要下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為小嬰兒什麼都還不會、一定比較容易搞錯；結果最小的那群反而不被交叉騙——因為他們還沒學會把觸碰放到外面的空間。",
+        "visual": "時間軸：4 個月與 6 個月兩個嬰兒俯視圖，雙腳交叉、腳底一點亮起，4 個月那隻動對腳、6 個月那隻動錯；軸上再標 H62-001、H62-002 的位置但不合併。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    }
+  ],
+  "not_added": []
+}

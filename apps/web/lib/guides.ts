@@ -251,6 +251,33 @@ function isOptionalHero(value: unknown): boolean {
   return value === undefined || value === null || isGuideHero(value);
 }
 
+const SYNTHETIC_NEWS_ASSET_PREFIX = "/guides/news-assets/";
+const SYNTHETIC_NEWS_ARTWORK_LICENSE = "Original editorial artwork";
+
+/**
+ * Automated news articles generated a generic concentric-ring placeholder raster under
+ * `/guides/news-assets/` (`Original editorial artwork`) so `GuideDocument` carried a raster hero
+ * without copying source-site photos. It conveys zero story information, so reader surfaces and
+ * social share cards suppress it while keeping real editorial photos and custom illustrations.
+ */
+export function isSyntheticNewsArtwork(
+  hero: { src: string; credit?: { license?: string | null } | null } | null | undefined,
+): boolean {
+  if (!hero) return false;
+  return hero.src.startsWith(SYNTHETIC_NEWS_ASSET_PREFIX)
+    || hero.credit?.license === SYNTHETIC_NEWS_ARTWORK_LICENSE;
+}
+
+export function visibleGuideHero<T extends { src: string; credit?: { license?: string | null } | null }>(
+  hero: T | null | undefined,
+): T | null {
+  return hero && !isSyntheticNewsArtwork(hero) ? hero : null;
+}
+
+export function isSyntheticNewsBlock(block: GuideBlock): boolean {
+  return block.type === "image" && block.src.startsWith(SYNTHETIC_NEWS_ASSET_PREFIX);
+}
+
 export type GuideDocument = {
   title: string;
   description: string;
@@ -297,6 +324,13 @@ export function isGuideListSort(value: unknown): value is GuideListSort {
   return typeof value === "string" && (guideListSorts as readonly string[]).includes(value);
 }
 
+export const guideSearchSorts = ["relevance", "latest"] as const;
+export type GuideSearchSort = typeof guideSearchSorts[number];
+
+export function isGuideSearchSort(value: unknown): value is GuideSearchSort {
+  return typeof value === "string" && (guideSearchSorts as readonly string[]).includes(value);
+}
+
 /** One search result: the card fields plus the passage the match was found in, and the
  *  folded terms the API matched so the card can mark them. */
 export type GuideSearchHit = GuideSummary & { snippet: string; matched: string[] };
@@ -312,15 +346,22 @@ export type GuideSearchResult = {
   next_offset: number | null;
 };
 
-export type ArticleSearchOptions = { section?: GuideSection | null; offset?: number | null };
+export type ArticleSearchOptions = {
+  section?: GuideSection | null;
+  topic?: string | null;
+  sort?: GuideSearchSort | null;
+  offset?: number | null;
+};
 
-/** The results page URL. Only what changes the result set goes in: the query, the section
- *  and the offset, so two readers searching the same thing land on the same address. */
+/** The results page URL. Only what changes the result set goes in: the query, the section,
+ *  optional topic/sort and the offset, so two readers searching the same thing land on the same address. */
 export function articleSearchHref(q: string, options: ArticleSearchOptions = {}): string {
   const params = new URLSearchParams();
   const query = q.trim();
   if (query) params.set("q", query);
   if (options.section) params.set("section", options.section);
+  if (options.topic) params.set("topic", options.topic);
+  if (options.sort && options.sort !== "relevance") params.set("sort", options.sort);
   if (options.offset) params.set("offset", String(options.offset));
   const suffix = params.toString();
   return suffix ? `/search/articles?${suffix}` : "/search/articles";
@@ -402,6 +443,7 @@ export type GuideArticleState = {
   destination_label: string | null;
   topics: GuideTopic[];
   valid_until: string | null;
+  news_date?: string | null;
   expired: boolean;
   document: PublishedGuide | null;
   /** Only the locales genuinely published. The article page turns this into hreflang, so an

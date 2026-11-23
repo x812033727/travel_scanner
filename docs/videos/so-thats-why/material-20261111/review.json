@@ -1,0 +1,363 @@
+{
+ "schema_version": 1,
+ "reviewed_on": "2026-11-11",
+ "scope": "docs/videos/so-thats-why/refresh-20261101/episodes.json plans not yet made (19 of 30)",
+ "rule": "Same as docs/videos/history-curiosity/pool/reviews/material-20261111.json: eight-minute floor kept; ready at 8.5 estimated minutes of non-repeating lines at 4.5 characters a second, two escalations, no recap chapter; reserve names what is missing; merge keeps one core question. No Shorts (owner).",
+ "method": "One reviewer subagent read the plans, EPISODES.md, episodes.json, pool.json and the fact-check packs; estimates are judgement from fact counts, not test reads.",
+ "status": "PROPOSAL_FOR_OWNER: no plan has been moved",
+ "counts": {
+  "ready": 9,
+  "reserve": 10
+ },
+ "plans": [
+  {
+   "id": "P01",
+   "title": "卡片不燙、鍋子卻熱：電怎麼隔空過去？",
+   "verdict": "ready",
+   "distinct_facts": 15,
+   "escalations": 3,
+   "est_unique_chars": 2900,
+   "est_minutes": 10.7,
+   "planned_minutes": 15,
+   "thin_chapters": [
+    "鍋子為什麼自己熱起來（215 秒≈968 字）：S78 只有約 4 條可用事實，約 600 字，需刪減到實際長度",
+    "離開或放歪會怎樣（205 秒≈922 字）：若只回收三種裝置差別即為重述，須改用近場衰減約 10 公分、手機移位停充、鍋具尺寸適配等新事實"
+   ],
+   "missing": "S78 只有 DOE 與 ENERGY STAR 兩個概論頁，缺鍋底材質、複合鍋底與爐面受熱的逐主張查核；A68、A45 的舊查核需依當期版本（ISO/IEC 14443、Qi／Qi2、Apple 支援頁）重讀",
+   "merge_with": [],
+   "source_note": "A68 有 topic-checks/s3-A64-A75.md 五條已查核主張（ISO 14443、NXP 規格書）；A45 有 season2/A45.md 五條（WPC、Apple）；S78 僅兩個政府概論頁，屬題級來源。",
+   "reason": "三種接收端各有獨立事實與明確轉折（取能→存能→自身耗散成熱），去掉重述後約 10.7 分鐘，遠低於規劃的 15 分鐘但過 8.5 分鐘。須照實際長度重排章節，第四章不能變回收章。"
+  },
+  {
+   "id": "P03",
+   "title": "檔案存好、刪掉，真的照畫面發生嗎？",
+   "verdict": "ready",
+   "distinct_facts": 13,
+   "escalations": 3,
+   "est_unique_chars": 2550,
+   "est_minutes": 9.4,
+   "planned_minutes": 13,
+   "thin_chapters": [
+    "進度條到終點了（150 秒≈675 字）：寫入快取的來源只有 Windows 政策說明，容易和第三章重複同一個快取比喻，建議兩章合併"
+   ],
+   "missing": "缺應用程式回報「完成」與作業系統實際寫入（快取刷新）之間差別的一般性官方來源，現有只有 Windows 移除政策與 Apple 退出說明；NIST SP 800-88 Rev. 2、Windows／macOS TRIM 預設需撰稿當日重查",
+   "merge_with": [],
+   "source_note": "A46 有 season2/A46.md 七條主張（Microsoft Learn、Apple 支援）；A66 有 topic-checks/s3-A64-A75.md 五條（CISA、Microsoft fsutil、2010／2011 SSD 研究、NIST 800-88 Rev. 2）。",
+   "reason": "同一個檔案從寫入、退出到刪除與 SSD 例外有四個真轉折，約 9.4 分鐘。前兩章的快取內容需合併，避免重講。"
+  },
+  {
+   "id": "P04",
+   "title": "太空人一直在掉，火焰為什麼也變了？",
+   "verdict": "reserve",
+   "distinct_facts": 11,
+   "escalations": 2,
+   "est_unique_chars": 2250,
+   "est_minutes": 8.3,
+   "planned_minutes": 15,
+   "thin_chapters": [
+    "不是飛到沒有重力（190 秒≈855 字）與一直掉怎麼不撞上（210 秒≈945 字）：S80 只有一個 NASA 頁面，約 5 條事實，兩章合計約 750 字可用，需填充",
+    "火焰變了能告訴你什麼（205 秒≈922 字）：除 USML-1 半球形與外部氣流條件外缺新實驗，易變重述"
+   ],
+   "missing": "S80 只有 NASA〈What is microgravity〉一頁的題級閱讀，無逐主張查核；缺第二個有條件說明的微重力燃燒實驗（例如太空站燃燒研究的具體結果）；缺軌道高度重力仍約九成等數值的當期核對",
+   "merge_with": [],
+   "source_note": "S80 僅 pool 一個 NASA 來源（topic core only）；S48 有 season2/S48.md 六條主張（NASA 影像、ISS 燃燒研究、NTRS USML-1 報告）。",
+   "reason": "共同自由落體到火焰是好轉折，但 S80 素材薄，誠實估計約 8.3 分鐘，未達 8.5 分鐘。補 S80 逐主張查核與第二個燃燒實驗後可重評。"
+  },
+  {
+   "id": "P09",
+   "title": "Wi-Fi 滿格，影片為什麼還會模糊？",
+   "verdict": "ready",
+   "distinct_facts": 15,
+   "escalations": 3,
+   "est_unique_chars": 2850,
+   "est_minutes": 10.6,
+   "planned_minutes": 15,
+   "thin_chapters": [
+    "影片還要走多少段（210 秒≈945 字）：現有素材無 CDN／快取來源，只能講跨洲海纜，而企劃本身禁止說所有影片都跨海",
+    "最慢的一段怎麼拖住全程（215 秒≈968 字）：瓶頸與緩衝模型沒有來源，只能用標明假設的示意，事實密度不足"
+   ],
+   "missing": "CDN 與邊緣快取的官方說明（決定第二章能否成立）；端到端吞吐量由最慢一段決定的教材來源；A10 的海纜數字（TeleGeography 99%、台灣海纜數）需當期重查",
+   "merge_with": [],
+   "source_note": "A06 有 week5/A06.md 約 19 條（NIST、ITU 衰減、調變與 SNR）；A10 有 week6/A10.md 約 14 條（TeleGeography、衛星延遲、台馬海纜）；A64 有 topic-checks/s3-A64-A75.md 五條（RFC 8216、Apple HLS、SIGCOMM 2014、IMC 2012）。",
+   "reason": "三題各自有大量已查核事實，「滿格只量到第一段」→ 路徑 → 播放器主動降畫質有三個真轉折，約 10.6 分鐘。須補 CDN 來源，否則第二章只能縮短。"
+  },
+  {
+   "id": "P10",
+   "title": "手機拍亮夜景，怎麼反而拍壞螢幕？",
+   "verdict": "ready",
+   "distinct_facts": 16,
+   "escalations": 3,
+   "est_unique_chars": 2850,
+   "est_minutes": 10.6,
+   "planned_minutes": 15,
+   "thin_chapters": [
+    "哪些東西是相機重建的（205 秒≈922 字）：要分清摩爾紋與閃爍條紋，但沒有捲簾快門／頻閃條紋的來源，這部分會空"
+   ],
+   "missing": "捲簾快門與螢幕或燈光頻閃條紋的來源；A50 只有一篇摩爾紋研究，缺手機實拍成功／失敗對照的真實紀錄",
+   "merge_with": [],
+   "source_note": "A21 有 week13/A21.md 約 19 條（Google HDR+／Night Sight 論文與部落格、像素合併）；A50 有 season2/A50.md 五條（arXiv 螢幕摩爾紋研究）。",
+   "reason": "A21 素材很厚，加上「規律螢幕讓取樣出錯」這個反例，有三個真轉折，約 10.6 分鐘。缺頻閃條紋來源，第四章需縮短或補查。"
+  },
+  {
+   "id": "P12",
+   "title": "QR Code 缺一塊，為什麼還讀得出來？",
+   "verdict": "reserve",
+   "distinct_facts": 9,
+   "escalations": 2,
+   "est_unique_chars": 2100,
+   "est_minutes": 7.8,
+   "planned_minutes": 13,
+   "thin_chapters": [
+    "黑白格如何承載訊息（185 秒≈832 字）：現有查核包沒有編碼模式、遮罩、格式資訊等內容，只能重述「多了修正資訊」",
+    "同樣遮一塊，結果為何不同（185 秒≈832 字）：企劃要求的實測（等級、資料量、遮擋位置）尚未做，沒有成功／失敗對照"
+   ],
+   "missing": "qrcode.com 上結構（定位、校正、時序圖形、靜區、遮罩、格式資訊）的逐主張查核；自製 QR 碼在不同等級與遮擋位置的實測紀錄（含失敗例）",
+   "merge_with": [],
+   "source_note": "A36 有 season2/A36.md 八條主張，全部出自 DENSO WAVE 的 qrcode.com；原企劃本來就是 480 秒舊語速。",
+   "reason": "現有素材集中在糾錯比例與其邊界，約 7.8 分鐘，編碼與遮擋實測兩章缺料。補 qrcode.com 結構說明與實測後可能達標。"
+  },
+  {
+   "id": "P13",
+   "title": "GPS 差一點時間，位置怎麼差那麼遠？",
+   "verdict": "reserve",
+   "distinct_facts": 8,
+   "escalations": 2,
+   "est_unique_chars": 2000,
+   "est_minutes": 7.4,
+   "planned_minutes": 14,
+   "thin_chapters": [
+    "一顆衛星還不能找到你（170 秒≈765 字）與多加訊號怎麼縮小答案（190 秒≈855 字）：查核包沒有三角定位、第四顆衛星解接收機時鐘的來源",
+    "時間和路徑如何帶偏位置（195 秒≈878 字）：多路徑誤差無來源，只剩相對論修正",
+    "為什麼有時定位慢或飄（205 秒≈922 字）：輔助 GPS 與室內／城市環境無來源"
+   ],
+   "missing": "GPS 定位幾何、接收機時鐘偏差與第四顆衛星的官方來源（gps.gov 或 USCG NAVCEN）；多路徑、電離層等誤差來源的官方說明；輔助 GPS／網路輔助定位的來源",
+   "merge_with": [],
+   "source_note": "A38 有 season2/A38.md 六條主張（USCG NAVCEN GPS 介面規格、相關論文），集中在相對論頻率偏移與鐘校正；舊答案的 38 微秒／每天 10 公里也在其中。",
+   "reason": "已查核的只有相對論與鐘校正，企劃的定位幾何、多路徑與輔助定位都沒有來源，約 7.4 分鐘。補定位幾何與誤差來源後可重評。"
+  },
+  {
+   "id": "P16",
+   "title": "一個月亮，很多海岸怎麼漲潮兩次？",
+   "verdict": "reserve",
+   "distinct_facts": 8,
+   "escalations": 3,
+   "est_unique_chars": 1850,
+   "est_minutes": 6.9,
+   "planned_minutes": 14,
+   "thin_chapters": [
+    "近的一側和遠的一側（170 秒≈765 字）：只有一個 NESDIS 概論頁，遠側隆起的解釋素材不足",
+    "港口紀錄為何不像圖（205 秒≈922 字）：沒有選定的潮位站紀錄，企劃自己說無紀錄不做長稿"
+   ],
+   "missing": "選定港口的 NOAA 潮位站紀錄（日潮、半日潮、混合潮各一）；NOAA 潮汐教學其他章節（潮汐是長週期波、海盆影響）的逐主張閱讀；大小潮的來源段落",
+   "merge_with": [
+    "P24"
+   ],
+   "source_note": "S82 只有 pool 兩個 NOAA 頁面（NESDIS 潮汐成因、Ocean Service 潮汐週期），屬題級閱讀，無逐主張查核。",
+   "reason": "單獨約 6.9 分鐘。與 P24 合成一支「海上最長的波：外海看不出，為什麼岸邊差這麼多」（海嘯常被誤稱 tidal wave 是天然的對照），合計約 14 條事實、約 10.2 分鐘，兩者都需補料。",
+   "merge_rejected": {
+    "on": "2026-11-11",
+    "reason": "建議的核心問題『長波怎麼被水深與海岸塑形』，在潮汐這半邊沒有任何現有素材回答：S82 只有兩個 NOAA 頁面，講的是引力差異與三種潮型因地而異，『潮汐也是受海盆控制的長波』那章 NOAA 教學還沒逐主張讀，港口潮位紀錄也沒有。少了這座橋，前半講月亮的引力、後半講海嘯在淺水變高，是兩個問題接在一起，『海嘯不是潮汐』只是一句命名對照，撐不起轉場。只算回答同一核心的事實（潮型因地而異加 S83 單一 JetStream 頁的傳播與淺化）約 9 條，估約 7.3 分；審查的 10.2 分是把引力模型與大小潮（大小潮的來源段落也缺）一起算進去，而且兩個海灣的近岸紀錄缺了，第四章只能靠示意圖重講。要合必須先補港口潮位紀錄與兩灣近岸紀錄，所以現在是後備。"
+   }
+  },
+  {
+   "id": "P19",
+   "title": "降噪耳機開著，說話聲怎麼還在？",
+   "verdict": "reserve",
+   "distinct_facts": 6,
+   "escalations": 2,
+   "est_unique_chars": 1550,
+   "est_minutes": 5.7,
+   "planned_minutes": 12,
+   "thin_chapters": [
+    "多放一個聲音怎麼變小（165 秒≈742 字）：沒有聲學教材來源，相位與振幅疊加只能靠示意重複",
+    "耳機怎麼追得上變化（170 秒≈765 字）：麥克風、延遲與控制條件沒有來源",
+    "說話與低頻轟聲為何不同（165 秒≈742 字）：只有一款 Sony 耳機說明，沒有受控對照"
+   ],
+   "missing": "聲學教材或學術來源（主動噪音控制、相位抵消、延遲限制）；非單一品牌的頻率效果資料或受控實測；被動隔音的來源",
+   "merge_with": [],
+   "source_note": "S86 只有 pool 一個 Sony WH-XB900N 說明頁，屬指定產品的題級來源。",
+   "reason": "只有一頁產品說明，約 6 條事實、約 5.7 分鐘，三個主章都要靠重播波形撐。缺聲學教材與受控對照，且企劃禁止合 S26。"
+  },
+  {
+   "id": "P20",
+   "title": "微波爐遇到金屬，什麼時候會冒火花？",
+   "verdict": "ready",
+   "distinct_facts": 12,
+   "escalations": 3,
+   "est_unique_chars": 2450,
+   "est_minutes": 9.1,
+   "planned_minutes": 13,
+   "thin_chapters": [
+    "為什麼不能照影片自行猜（185 秒≈832 字）：只有官方使用建議、平滑鋁箔規則與漏能法規約 3 條，約 450 字，需縮短或併入第三章"
+   ],
+   "missing": "尖端與間隙局部場增強的物理教材示意來源（現有查核說「尖端容易冒火」，但沒有教材級的場分布說明）；製造商使用說明需指定一組機型",
+   "merge_with": [],
+   "source_note": "S13 有 week7/S13.md 約 17 條（FDA、USDA、法規、Raytheon 專利與歷史）。",
+   "reason": "「內壁本身是金屬卻不冒火」、「2.45 GHz 不是水的共振」、平滑與皺鋁箔的對照提供三個真轉折，約 9.1 分鐘。第四章事實少，需縮短。"
+  },
+  {
+   "id": "P21",
+   "title": "坐車看書，為什麼容易暈？",
+   "verdict": "ready",
+   "distinct_facts": 14,
+   "escalations": 3,
+   "est_unique_chars": 2700,
+   "est_minutes": 10.0,
+   "planned_minutes": 11,
+   "thin_chapters": [
+    "換成螢幕移動會怎樣（155 秒≈698 字）：查核包沒有視覺誘發暈動（螢幕、模擬器）的來源，這章需補查或縮短"
+   ],
+   "missing": "視覺誘發暈動（車內看螢幕、模擬器）的權威醫學或研究來源；醫學來源需撰稿當期重查（NHS、CDC 等版本）",
+   "merge_with": [],
+   "source_note": "S20 有 week11/S20.md 約 19 條（感覺衝突、衝突偵測神經元、毒物假說、姿勢不穩理論、前庭構造、年齡分布、駕駛較少暈）。",
+   "reason": "駕駛者較少暈、前庭失能者不暈、對手理論三個反例都有來源，約 10 分鐘。須避開治療段落，第三章需補視覺誘發暈動來源。"
+  },
+  {
+   "id": "P22",
+   "title": "水沖不掉的油，肥皂怎麼帶它走？",
+   "verdict": "reserve",
+   "distinct_facts": 6,
+   "escalations": 1,
+   "est_unique_chars": 1500,
+   "est_minutes": 5.6,
+   "planned_minutes": 9,
+   "thin_chapters": [
+    "只有水為什麼不夠（90 秒≈405 字）：無界面張力或極性的教材來源，只能用一句「油水不相容」",
+    "搓洗與沖水怎麼把油帶走（120 秒≈540 字）：只有 CDC「搓洗產生摩擦」一句，與第三章微胞重疊",
+    "換一種水，結果還一樣嗎（125 秒≈562 字）：硬水對照未取得，企劃規定刪除"
+   ],
+   "missing": "硬水與肥皂（皂垢）對照的化學教材來源；界面張力、乳化與分散的教材來源；第二個轉折（目前只有「清水不是完全沒用」一個修正）",
+   "merge_with": [],
+   "source_note": "S53 只有 topic-checks/s3-S51-S63.md 五條（OpenStax 有機化學、CDC 洗手頁）。",
+   "reason": "只有約 6 條事實與一個轉折，約 5.6 分鐘，企劃自己說硬水對照未取得就低於 8 分鐘退出。可結合的 P06 泡泡已製作，暫無合題對象。"
+  },
+  {
+   "id": "P24",
+   "title": "海嘯外海不顯眼，靠岸怎麼變了？",
+   "verdict": "reserve",
+   "distinct_facts": 7,
+   "escalations": 2,
+   "est_unique_chars": 1700,
+   "est_minutes": 6.3,
+   "planned_minutes": 13,
+   "thin_chapters": [
+    "深海裡能量如何前進（185 秒≈832 字）：只有一個 NOAA 頁面的波速與水深關係，事實不足",
+    "兩個海灣為何差很多（185 秒≈832 字）：沒有局部地形或事件紀錄對照，企劃說無對照則縮短"
+   ],
+   "missing": "兩個海灣或事件的官方近岸紀錄（逐數值核對）；NOAA 以外第二個傳播來源（例如 NOAA 海嘯中心或 UNESCO 教材）；S83 逐主張查核",
+   "merge_with": [
+    "P16"
+   ],
+   "source_note": "S83 只有 pool 一個 NOAA JetStream 海嘯傳播頁（含 wave8 補讀段落），屬題級閱讀。",
+   "reason": "單獨約 6.3 分鐘。與 P16 都是受水深與海岸地形控制的長波，合成一支並以「海嘯不是潮汐」作對照，合計約 10.2 分鐘。",
+   "merge_rejected": {
+    "on": "2026-11-11",
+    "reason": "建議的核心問題『長波怎麼被水深與海岸塑形』，在潮汐這半邊沒有任何現有素材回答：S82 只有兩個 NOAA 頁面，講的是引力差異與三種潮型因地而異，『潮汐也是受海盆控制的長波』那章 NOAA 教學還沒逐主張讀，港口潮位紀錄也沒有。少了這座橋，前半講月亮的引力、後半講海嘯在淺水變高，是兩個問題接在一起，『海嘯不是潮汐』只是一句命名對照，撐不起轉場。只算回答同一核心的事實（潮型因地而異加 S83 單一 JetStream 頁的傳播與淺化）約 9 條，估約 7.3 分；審查的 10.2 分是把引力模型與大小潮（大小潮的來源段落也缺）一起算進去，而且兩個海灣的近岸紀錄缺了，第四章只能靠示意圖重講。要合必須先補港口潮位紀錄與兩灣近岸紀錄，所以現在是後備。"
+   }
+  },
+  {
+   "id": "P25",
+   "title": "高鐵車頭變長，為什麼跟隧道有關？",
+   "verdict": "ready",
+   "distinct_facts": 17,
+   "escalations": 4,
+   "est_unique_chars": 3050,
+   "est_minutes": 11.3,
+   "planned_minutes": 12,
+   "thin_chapters": [],
+   "missing": "500 系退役時程、N700ST 上線計畫需撰稿當日重查；鼻長數字需逐一對到車型（N700S 鼻長無一手出處）",
+   "merge_with": [],
+   "source_note": "S16 有 week9/S16.md 約 24 條（鐵道總研、齋藤 2015 博論、原田 2003、石塚 2005、仲津 2018、台灣高鐵施工紀錄）。",
+   "reason": "素材最厚：不是風阻而是隧道、不是超音速、翠鳥只是靈感、台灣 700T 反而比原型短、洞口緩衝罩，至少四個轉折，約 11.3 分鐘。可照規劃製作。"
+  },
+  {
+   "id": "P26",
+   "title": "飛機窗戶的圓角，怎麼改變機身受力？",
+   "verdict": "ready",
+   "distinct_facts": 12,
+   "escalations": 3,
+   "est_unique_chars": 2450,
+   "est_minutes": 9.1,
+   "planned_minutes": 12,
+   "thin_chapters": [
+    "客艙與外面壓力不同（140 秒≈630 字）：查核包沒有客艙壓差數值的來源，只能概念說明"
+   ],
+   "missing": "客艙加壓與壓差數值的工程教材或主管機關來源；彗星號以外的現代窗戶設計與檢查資料（第四章的材料與製造邊界）",
+   "merge_with": [],
+   "source_note": "T07 有 week4/T07.md 約 16 條（應力集中係數、彗星號兩次事故與 RAE 調查、水槽試驗、鉚釘與沖壓鉚接、窗邊應變量測、通氣小孔）。",
+   "reason": "應力集中、反覆加壓疲勞、「不是方窗害的而是開口旁鉚釘」的迷思修正提供三個轉折，約 9.1 分鐘。事故只短引調查證據，第一章需補壓差來源。"
+  },
+  {
+   "id": "P27",
+   "title": "刷卡嗶一聲，錢已經到店家了嗎？",
+   "verdict": "reserve",
+   "distinct_facts": 8,
+   "escalations": 2,
+   "est_unique_chars": 1850,
+   "est_minutes": 6.9,
+   "planned_minutes": 14,
+   "thin_chapters": [
+    "後面怎麼對帳與結算（195 秒≈878 字）：查核包只說 Visa 提供授權、清算、結算，沒有流程細節或時序來源",
+    "取消或退款走回原路嗎（205 秒≈922 字）：退款、沖正與爭議款沒有任何來源"
+   ],
+   "missing": "授權、清算、結算各步驟的卡組織或銀行官方流程說明；取消、退款與爭議款的官方流程；指定一個制度（例如台灣收單）的來源，避免泛化",
+   "merge_with": [],
+   "source_note": "B48 有 season2/B48.md 約八條採用主張（Visa 10-K、Visa 支付流程教學、Visa 金融卡 FAQ、品牌史）。",
+   "reason": "已查核的是四方角色與「Visa 不借錢」，企劃後半的清算結算與退款沒有來源，約 6.9 分鐘。補官方流程後可重評；企劃禁止合 A55。"
+  },
+  {
+   "id": "P28",
+   "title": "電動車常只有一檔，馬達少了什麼？",
+   "verdict": "ready",
+   "distinct_facts": 12,
+   "escalations": 3,
+   "est_unique_chars": 2400,
+   "est_minutes": 8.9,
+   "planned_minutes": 13,
+   "thin_chapters": [
+    "車輪不是只需要轉得快（150 秒≈675 字）：轉矩、轉速、功率的基本概念沒有教材來源，也沒有附條件的曲線"
+   ],
+   "missing": "附條件的馬達與引擎轉矩－轉速曲線來源（企劃寫明沒找到曲線就暫緩）；工程教材對傳動比的說明",
+   "merge_with": [],
+   "source_note": "A23 有 week14/A23.md 約 17 條（單檔減速齒輪、馬達過基速後轉矩下降、Taycan 與 e-tron GT 兩檔、重卡多檔、多一檔不一定更省、Macan 單檔）。",
+   "reason": "「電動車其實有變速箱」、轉矩過基速會掉、保時捷自家 Macan 仍用單檔，三個轉折都有來源，約 8.9 分鐘。仍須補附條件曲線，否則依企劃自身條件暫緩。"
+  },
+  {
+   "id": "P29",
+   "title": "網址多一個 S，資料在路上差了什麼？",
+   "verdict": "reserve",
+   "distinct_facts": 8,
+   "escalations": 2,
+   "est_unique_chars": 1850,
+   "est_minutes": 6.9,
+   "planned_minutes": 13,
+   "thin_chapters": [
+    "怎麼知道正在和誰說話（185 秒≈832 字）：只有「憑證證明網址不證明可信」一條，沒有 CA 與信任鏈來源",
+    "雙方怎麼建立保護（180 秒≈810 字）：握手與金鑰交換只有 RFC 8446 摘要一句",
+    "保護在哪裡結束（185 秒≈832 字）：網域名稱可見性等邊界未查核，查核包明寫不講"
+   ],
+   "missing": "TLS 1.3 握手、金鑰交換與完整性的可讀教材來源；憑證機構與信任鏈的官方說明；HTTPS 仍會露出的資訊（網域名稱、SNI）查核",
+   "merge_with": [],
+   "source_note": "A55 有 topic-checks/s3-A51-A63.md 六條（RFC 8446、Chromium 部落格 2018／2023、Let's Encrypt、Google 安全部落格 2025）。",
+   "reason": "現有素材以普及史與鎖頭誤解為主，企劃的威脅模型、憑證、握手三章缺料，約 6.9 分鐘。補 TLS 與憑證來源後可重評；企劃禁止合 B48。"
+  },
+  {
+   "id": "P30",
+   "title": "便宜一點、再買一次：你怎麼決定？",
+   "verdict": "reserve",
+   "distinct_facts": 10,
+   "escalations": 2,
+   "est_unique_chars": 2100,
+   "est_minutes": 7.8,
+   "planned_minutes": 13,
+   "thin_chapters": [
+    "換個價格情境還有效嗎（185 秒≈832 字）：只有新品較強、促銷字樣削弱兩條條件，不夠一章",
+    "兩個推力什麼時候推不動（185 秒≈832 字）：兩種效應的限制與個體差異沒有研究細節，易變成總結重述"
+   ],
+   "missing": "左位數與郵購實驗的原文樣本與條件（現有多為書目與摘要）；先送幾格（endowed progress）原文數據未讀；把兩種機制接成同一個決定的研究或情境，避免只是兩個名詞相接",
+   "merge_with": [],
+   "source_note": "B27 有 season2/B27.md 約六條採用主張（Anderson & Simester 2003 等 DOI）；B62 有 topic-checks/s3-B51-B63.md 四條（Kivetz 2006、Nunes & Drèze 2006、7-ELEVEN 2005 集點新聞）。",
+   "reason": "兩種機制各有研究，但合計約 10 條、約 7.8 分鐘，且共同核心問題偏弱。補原文條件與限制後可重評；企劃排除 B26、B73。"
+  }
+ ]
+}

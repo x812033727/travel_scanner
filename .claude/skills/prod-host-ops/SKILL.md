@@ -72,7 +72,7 @@ curl -s -o /dev/null -w '%{http_code} %{time_total}s\n' https://mokaair.com/zh-T
 | `BACKUP FAILED: git` / `alembic` / `postgres` | `git -C /root/travel_scanner status`、`alembic_version` 表 | 主機 checkout 壞了或資料庫起不來，通常同時會有別的症狀；先處理站台 |
 | `run=active` 很久 | `journalctl -u travel-scanner-backup -f` | 一次備份正在跑（大庫幾分鐘）；超過一小時再懷疑卡住，`TimeoutStartSec=2h` 會收掉 |
 
-一份備份算不算備份，要看還原：單份 dump 的還原在 `ops/backup/README.md`，整台主機的演練 runbook 由異地備份那張票（`tasks/open/2026-10-07-backup-google-drive-offsite.md`）寫。修備份、改保留數、刪舊目錄都是改正式站，照規矩 3 先問站主。
+一份備份算不算備份，要看還原：單份 dump 的還原在 `ops/backup/README.md`，從雲端拉回來還原在同一份 README 的「Offsite copy」（每晚 21:47 UTC 傳到 `AI/備份/主機/資料庫/nightly/`，2026-11-11 演練過，紀錄在 `tasks/done/2026-10-07-backup-google-drive-offsite.md`）。修備份、改保留數、刪舊目錄都是改正式站，照規矩 3 先問站主。
 
 ## 參考檔
 

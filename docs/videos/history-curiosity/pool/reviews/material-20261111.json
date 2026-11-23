@@ -1,0 +1,1688 @@
+{
+ "schema_version": 1,
+ "reviewed_on": "2026-11-11",
+ "scope": "docs/videos/history-curiosity/pool/themes.json (106 editorial themes)",
+ "rule": "The eight-minute floor stays (owner, 2026-11-11). A theme is ready when its non-repeating narration at 4.5 spoken characters a second with no gaps estimates at 8.5 minutes or more, it has at least two escalating stages, no chapter is mostly recap, and its key candidates are screened. Otherwise reserve (what is missing is named) or merge (with candidates or themes that keep one core question).",
+ "method": "Four independent reviewer subagents, one slice each, read themes.json, pool.json candidates (answer_target, scope, premise_status, sources) and topic-checks where answer_target was truncated. Estimates are judgement from fact counts (about 130-150 characters a fact plus hook and close), not test reads.",
+ "status": "PROPOSAL_FOR_OWNER: nothing in the pool has been moved",
+ "counts": {
+  "ready": 83,
+  "reserve": 9,
+  "merge": 14
+ },
+ "themes": [
+  {
+   "id": "T01",
+   "title": "海底那幾聲怪響，後來各是誰？",
+   "verdict": "ready",
+   "distinct_facts": 27,
+   "escalations": 3,
+   "est_unique_chars": 3500,
+   "est_minutes": 13.0,
+   "thin_chapters": [
+    "結檔：誤讀是怎麼發生的（60 秒）：只有歸納，無新事實，宜壓到 250 字內"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "M07、M23、M26 皆 legacy_screened 且經非作者覆核；Bloop 的 NOAA 舊頁 404，製作前改讀現行頁；M26 有 SOU 2001:85 等 5 筆來源，是全集最厚的一段。",
+   "reason": "三案共約 27 個不重複事實，瑞典段自帶『鯡魚先被排除又被找回』的真翻轉，Bloop→52 赫茲→鯡魚由已解、未解到翻案形成升級。素材明顯超過 8.5 分鐘。"
+  },
+  {
+   "id": "T02",
+   "title": "兩處『鬼光』守了幾十年，為什麼只有一處解開？",
+   "verdict": "ready",
+   "distinct_facts": 27,
+   "escalations": 3,
+   "est_unique_chars": 3600,
+   "est_minutes": 13.3,
+   "thin_chapters": [
+    "結檔：怎樣才算解開（75 秒）：多為兩案對照的重述，宜縮到 60 秒"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "M10、M12 皆 legacy_checked，各有 50–60 筆來源與完整 topic-checks；pool.json 的 answer_target 在 800 字被截斷，scope 仍是舊的『待查』佔位，撰稿要讀 topic-checks/M10.md、M12.md。",
+   "reason": "馬爾法有三次獨立觀測與 1945/1957 最早紀錄之爭，赫斯達倫有 1984 年雷達數字與四套假說輪替，事實量充足。兩層『已解／未解』本身就是升級。"
+  },
+  {
+   "id": "T03",
+   "title": "兩顆星被說成外星東西，論文其實寫了什麼？",
+   "verdict": "ready",
+   "distinct_facts": 22,
+   "escalations": 3,
+   "est_unique_chars": 2800,
+   "est_minutes": 10.4,
+   "thin_chapters": [
+    "結檔：外星是從哪裡進到新聞的（90 秒＝405 字）：新資訊只是前兩章結論的對照，屬重述，宜壓到 250 字"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "M08、U28 皆 legacy_screened、各 5 筆來源；M08 的 Micheli 2018《Nature》加速度論文沒讀到，只靠他文轉引，寫稿前要補讀；在世學者只引論文。",
+   "reason": "每案約 11 個事實，塔比星『論文沒提→另一篇提→2018 指向塵埃』與斥候星『形狀是推的→加速度才是謎→作者自己整段論證』都有轉折，約 10 分鐘。結檔需縮短。"
+  },
+  {
+   "id": "T04",
+   "title": "火星上有生命嗎？兩份最有名的證據後來怎麼了",
+   "verdict": "ready",
+   "distinct_facts": 20,
+   "escalations": 3,
+   "est_unique_chars": 2900,
+   "est_minutes": 10.7,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "U29、U41 皆 legacy_screened；U29 的 1976 年 Science 原文（NTRS 503）與 NASA 當年正式結論沒讀到，只有 Levin 自述與訃聞；U41 的總統聲明全文未讀，只講日期。",
+   "reason": "兩案各約 10 個事實，維京號『正反應→化學解釋→2013 次氯酸鹽』與隕石『聲明早於期刊→逐條被拆→2009 仍主張／2022 非生物』都是多段升級。結檔章有 2009、2022 新資訊，不是重述。"
+  },
+  {
+   "id": "T06",
+   "title": "雷達與防空，怎麼自己製造出目標？",
+   "verdict": "ready",
+   "distinct_facts": 20,
+   "escalations": 4,
+   "est_unique_chars": 2500,
+   "est_minutes": 9.3,
+   "thin_chapters": [
+    "1942 洛杉磯：一千四百發高射炮（180 秒）：章名的『照片是修過的』只有兩篇部落格支持（needs_check），讀不到報社原文就只能說『見報版與原件不同』，該句份量要縮"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "U23、U03 皆 legacy_screened、各 3 筆來源；U23 的照片修圖一點屬 needs_check；U03 的空軍 7 月 29 日記者會逐字稿未讀，只能說『空軍提出』。研究代理自己警告兩章加起來偏短、不要靠開場結檔灌水。",
+   "reason": "兩案共約 20 個事實（陸海軍兩套說法、1948 戰史、民航局 8 月重現、Condon 重算、Robertson 小組），約 9 分多鐘，剛過門檻。照片一句不可撐章，開場與結檔都要壓短。"
+  },
+  {
+   "id": "T09",
+   "title": "北歐人比哥倫布早到美洲：兩件假證據與一件真證據",
+   "verdict": "ready",
+   "distinct_facts": 30,
+   "escalations": 4,
+   "est_unique_chars": 3600,
+   "est_minutes": 13.3,
+   "thin_chapters": [
+    "結檔：真假證據差在哪（60 秒）：純對照，無新事實"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "H37、H38、S22 皆 legacy_screened 並經非作者覆核；H37 只有耶魯自家三個機構頁，沒有獨立同儕審查論文；H38 的方言細節沒讀到一手來源，不要細講。",
+   "reason": "三案各約 10 個事實，石碑『判假→判真→照抄薩迦』與木頭『碳十四範圍→993 年書籤→1021 是砍樹年』都是真轉折。素材遠超 8.5 分鐘，石碑章照題案壓在 120 秒內即可。"
+  },
+  {
+   "id": "T10",
+   "title": "看不見的東西，是怎麼被拍進照片裡的？",
+   "verdict": "ready",
+   "distinct_facts": 30,
+   "escalations": 4,
+   "est_unique_chars": 3700,
+   "est_minutes": 13.7,
+   "thin_chapters": [
+    "結檔：照片什麼時候能當證據（120 秒＝540 字）：新資訊是『三種手法放在一起看』，屬重述，宜壓到 250 字"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "L28、G02（9 筆）、G19（7 筆）皆 legacy_screened；G02 原為 NEEDS_CHECK，第三輪讀到 1869-05-04 三家紐約報紙後解除；G19 的《Life》轉載日期與鬼故事書出版月份未查到，只說『同一年』。",
+   "reason": "三案各有 1869 預審、1983 自承、1936 原刊等一手材料，每章都有自己的轉折，約 13 分鐘的素材。只需把結檔縮短。"
+  },
+  {
+   "id": "T11",
+   "title": "十三號星期五與消失的四樓：不吉利是什麼時候寫進文件的？",
+   "verdict": "ready",
+   "distinct_facts": 24,
+   "escalations": 3,
+   "est_unique_chars": 3000,
+   "est_minutes": 11.1,
+   "thin_chapters": [
+    "聖殿騎士的說法（60 秒）：只有 1307 年逮捕日期一個事實，連結何時流行沒有來源，只夠一兩句，應併進下一章"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "L14 為 legacy_checked（約 60 筆來源，answer_target 在 800 字截斷、scope 是舊佔位，要讀 topic-checks/L14.md）；L06 為 legacy_screened，1901 年報紙只讀標題與首段。",
+   "reason": "L14 有 2009 質詢、2010 作業備考、溫哥華 2015、房價研究等十幾個事實，L06 有 1869→1901→1905→1907 的層層提前，素材約 11 分鐘。現行秒數反而給 L14 太少。"
+  },
+  {
+   "id": "T12",
+   "title": "格林兄弟的初版，後來改掉了什麼？",
+   "verdict": "ready",
+   "distinct_facts": 25,
+   "escalations": 4,
+   "est_unique_chars": 3000,
+   "est_minutes": 11.1,
+   "thin_chapters": [
+    "結檔：為什麼要改（90 秒）：主要資訊『1819 年前言』已在白雪公主章用過，屬重述"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "F02、F03、F04、F07 皆 legacy_screened、3–5 筆來源；研究來源（Project MUSE 等）打不開，『威廉一人修訂』不可講；各版用字比對是研究代理自行逐版搜尋的結果。",
+   "reason": "四章各有 5–7 個帶年份的改版事實，而且一路升級（1819 改繼母→1819 改懷孕句→1840 才改、1857 仍沒改乾淨→德文從沒改、英譯才改）。約 11 分鐘，前言不可在結檔重講。"
+  },
+  {
+   "id": "T13",
+   "title": "佩羅 1697 年的童話，後來被加上與刪掉了什麼？",
+   "verdict": "ready",
+   "distinct_facts": 30,
+   "escalations": 4,
+   "est_unique_chars": 3600,
+   "est_minutes": 13.3,
+   "thin_chapters": [
+    "結檔：被加上與被刪掉的（90 秒）：新資訊『四次改動的共同點』屬重述"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "F05、F06、F12（8 筆）、F13 皆 legacy_screened；F12 原為 NEEDS_CHECK，第三輪讀到 Richer 原文與 Rosenzweig 1863 掃描頁後解除；F13 的巴西萊版只有一個來源。",
+   "reason": "四案事實密（蒂克的獵人沒救活人、佩羅沒有吻、原型都比故事晚、兩首互相打架的教訓詩），約 13 分鐘。藍鬍子章要遵守不談罪行細節。"
+  },
+  {
+   "id": "T14",
+   "title": "安徒生寫完又改的三個結局",
+   "verdict": "ready",
+   "distinct_facts": 25,
+   "escalations": 3,
+   "est_unique_chars": 3000,
+   "est_minutes": 11.1,
+   "thin_chapters": [
+    "結檔：安徒生自己改的與別人改的（90 秒）：新資訊『三題放在一起看』屬重述",
+    "開場：鞋匠的兒子（60 秒）：只有 1819 年去哥本哈根一個傳記事實，跟核心問題無關"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "F08、F09、F10 皆 legacy_screened、各 4 筆來源；1837 年 4 月 7 日出版日只靠校勘本；《盧卡諾伯爵》經 Bülow 德譯是研究者推論。",
+   "reason": "三案各有 8 個左右事實（1836 工作標題、3 月 25 日改稿信、『小天鵝』出版前才改名），約 11 分鐘。開場傳記與結檔要縮。"
+  },
+  {
+   "id": "T16",
+   "title": "北歐神話，其實是一位基督徒寫下來的？",
+   "verdict": "ready",
+   "distinct_facts": 22,
+   "escalations": 3,
+   "est_unique_chars": 2800,
+   "est_minutes": 10.4,
+   "thin_chapters": [
+    "結檔：讀神話之前先看書（120 秒＝540 字）：新資訊『三題放在一起』屬重述，宜壓到 250 字"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "F20、F21、F22 皆 legacy_screened；F22 的寫作年代（1220 年代）無來源只說 13 世紀前半，王室抄本年份只見搜尋摘要；F21 的『蒼蠅是洛基』要核對原文。",
+   "reason": "F22 有序言、結語與〈女巫的預言〉年代之爭，F20、F21 各有 6–7 個事實（含 2014 年符文墜飾的翻轉），約 10 分鐘。題案自稱 F20、F21 各只有一個情節事實，實際連同出處與後世對照夠撐 120 秒。"
+  },
+  {
+   "id": "T17",
+   "title": "《聊齋》的原文，跟電影差在哪？",
+   "verdict": "ready",
+   "distinct_facts": 24,
+   "escalations": 3,
+   "est_unique_chars": 2800,
+   "est_minutes": 10.4,
+   "thin_chapters": [
+    "畫皮：拿筆畫人皮（180 秒＝810 字）：原文情節加篇末評語約 6 個事實，靠情節敘述勉強填滿，要避免逐句翻譯原文",
+    "結檔：原書與電影（90 秒）：屬重述"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "F23、F24、F25 皆 legacy_screened；F24 的 1987 年翻拍只有維基百科支持，只說『1987 年的翻拍』；F25 的刊行年 1740／1766 兩說不一，提刊行前要再查。",
+   "reason": "三章由原文與電影的差異升級到『作者軼事本身也是後人寫的』，事實約 24 個，約 10 分鐘。畫皮章要用電影對照，不要靠朗讀原文撐時間。"
+  },
+  {
+   "id": "T18",
+   "title": "小泉八雲的《怪談》，故事是從誰那裡聽來的？",
+   "verdict": "ready",
+   "distinct_facts": 22,
+   "escalations": 3,
+   "est_unique_chars": 2700,
+   "est_minutes": 10.0,
+   "thin_chapters": [
+    "結檔：寫的、讀的還是聽的（120 秒＝540 字）：新資訊『兩題的答案放在一起』屬重述",
+    "開場：1904 年的一本書（60 秒）：只有作者入籍的背景"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "F26（7 筆）第三輪補到遠田勝本人的科研費報告與書序，NEEDS_CHECK 已解除；青木純二 1930 年的書只讀到書目，不能說『就是這本』；F27 的比較表與節口述只靠 L2-S039 一個來源。",
+   "reason": "雪女『序言說聽來→遠田說是創作→書抄書回流民間→青梅立碑』與芳一『1782 年讀本→更早三版，耳朵越拿越多』各約 11 個事實，約 10 分鐘。結檔要縮短。"
+  },
+  {
+   "id": "T19",
+   "title": "東亞三個怪談的原型，各是誰說的？",
+   "verdict": "ready",
+   "distinct_facts": 24,
+   "escalations": 3,
+   "est_unique_chars": 2900,
+   "est_minutes": 10.7,
+   "thin_chapters": [
+    "結檔：原型是誰說的（120 秒）：新資訊『三個原型放在一起看』屬重述"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "F28、F37、F38 皆 legacy_screened；F38 的 1865 年《嘉齋事實錄》只靠維基形式的 L3-S044，製作前要找原條或國立中央圖書館書目；F37 的《伽婢子》1666 只靠辭典。",
+   "reason": "三案都有可追的年份鏈（1825／1900、1378→1666→1861–64→1884、1651→1818→1865），第三案『證據是後代一百六十年後寫的』是最強轉折，約 11 分鐘。"
+  },
+  {
+   "id": "T20",
+   "title": "浦島、竹取與桃太郎：今天的版本是哪一年統一的？",
+   "verdict": "reserve",
+   "distinct_facts": 21,
+   "escalations": 3,
+   "est_unique_chars": 2600,
+   "est_minutes": 9.6,
+   "thin_chapters": [
+    "1887 與 1894：課本與《日本昔噺》（120 秒）：核心主張只靠學生研討論文轉引，浦島太郎『救被欺負的烏龜』何時進入明治統一版完全沒有來源",
+    "桃太郎：吃了桃變年輕（180 秒＝810 字）：N184 只有約 6 個事實，且兩型先後學界有爭議，可講的份量約 120 秒"
+   ],
+   "missing": "關鍵題來源待補：題目核心『是誰把它們統一成今天這樣』只靠 E-S014（學生論文轉引服部康子等），要補白方勝 1993 或滑川道夫《桃太郎像の変容》；浦島的明治統一沒有任何來源。",
+   "merge_with": [],
+   "source_note": "F29、F30 為 legacy_screened；N184 僅 screened、2 筆來源，『草雙紙大多回春型、明治後統一為果生型』只有學生研討論文轉引；風土記逸文與萬葉集卷 9 原文都沒讀到。",
+   "reason": "素材量約 9.5 分鐘，但題目的核心問題（誰統一了版本）正好落在來源最弱的一章。補到一手研究前不宜開拍。"
+  },
+  {
+   "id": "T21",
+   "title": "沒有飛機的年代，天上的 UFO 長什麼樣？",
+   "verdict": "ready",
+   "distinct_facts": 30,
+   "escalations": 3,
+   "est_unique_chars": 3700,
+   "est_minutes": 13.7,
+   "thin_chapters": [
+    "結檔：媒介決定了 UFO 的樣子（120 秒）：新資訊『三題放在一起看』屬重述"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "U10 為 legacy_checked（78 筆，answer_target 在 800 字截斷，要讀 topic-checks/U10.md）；U24 由 needs_check 經覆核升為 screened，Jung 1958 只有一個來源；U25 的中京大學論文 PDF 503、2026 秋田抄本只讀到導言。",
+   "reason": "傳單、虛舟、飛船三案各有足量一手事實，U10 單案就有兩波時間線、版面統計與奧羅拉的 1973／1976／1979 後續，素材遠超 10 分鐘。"
+  },
+  {
+   "id": "T22",
+   "title": "一個城市同時看到 UFO，最後是怎麼收場的？",
+   "verdict": "ready",
+   "distinct_facts": 30,
+   "escalations": 4,
+   "est_unique_chars": 3800,
+   "est_minutes": 14.1,
+   "thin_chapters": [
+    "結檔：目擊潮怎麼結束（60 秒）：純對照"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "U15（76 筆）、U16（82 筆）為 legacy_checked，answer_target 在 800／697 字處截斷、scope 是舊佔位，撰稿讀 topic-checks；U38 有空軍狀態報告錄文與 Ruppelt 原書，但藍皮書拉伯克原卷未讀。",
+   "reason": "比利時與鳳凰城各有十幾個帶時間的事實和『部分有解、部分未結』的雙層結局，拉伯克有『我錯了』的轉折，素材充足。章節秒數其實偏少。"
+  },
+  {
+   "id": "T23",
+   "title": "百慕達三角真的比較危險嗎？從 Flight 19 講起",
+   "verdict": "ready",
+   "distinct_facts": 15,
+   "escalations": 4,
+   "est_unique_chars": 2500,
+   "est_minutes": 9.3,
+   "thin_chapters": [
+    "救援機也沒回來（120 秒＝540 字）：只有 13 人、19:50 海上火光、『會飛的油箱』三個事實，約 400 字",
+    "傳說怎麼被寫出來（150 秒＝675 字）：只有 1964 年雜誌與 NOAA、海岸防衛隊的說法，雜誌作者與篇名不在素材裡，約 400 字"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "H18 單一候選、legacy_screened、8 筆來源；調查委員會『爆炸直擊』只靠 L5-S010，『魔鬼海』一詞起源只有 Skeptoid；NHHC 與 USNI 頁面 503／403 未讀；勞合社保費說已刪。",
+   "reason": "約 15 個事實，有『領隊迷航→母親申訴→改判原因不明→四字變成神祕證據』與日本魔鬼海的對照，約 9 分鐘，剛過門檻。中段兩章要把秒數移給 Flight 19 與魔鬼海。"
+  },
+  {
+   "id": "T24",
+   "title": "行星排成一線，世界就會出事？三次預言的結局",
+   "verdict": "ready",
+   "distinct_facts": 34,
+   "escalations": 4,
+   "est_unique_chars": 3800,
+   "est_minutes": 14.1,
+   "thin_chapters": [
+    "1919：舊金山的氣象專欄（120 秒）：P19 已併入 P13，但 topic-checks/P13.md 沒有任何 1919 年的內容，當年報紙尚未補；目前沒有素材，照撤案條件應刪章"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "P12（53 筆）、P13（154 筆）為 legacy_checked，素材極厚；併入的 P19（1919）、P20（1962 印度）沒有來源，GAPS 也寫要補當年報紙。answer_target 在 800 字截斷。",
+   "reason": "即使刪掉 1919 章，1524（Hall→Stow→Mackay 層層加料）與 1982（作者先改口、九顆行星散在 96 度）也有三十個以上事實，超過 10 分鐘。1919 章在補到報紙前不能寫。"
+  },
+  {
+   "id": "T26",
+   "title": "預言家過世之後，預言才開始寫？",
+   "verdict": "merge",
+   "distinct_facts": 13,
+   "escalations": 3,
+   "est_unique_chars": 2300,
+   "est_minutes": 8.5,
+   "thin_chapters": [
+    "保加利亞：沒有留下文字的人（120 秒＝540 字）：只有『沒留文字、國家管理形象、危機時的句子追不到出處』三四點，911 與 2016 兩則的出處沒查，不能舉任何具體預言",
+    "開場：每年年底的預言新聞（60 秒）：用的是 Vanga 的年度新聞，素材裡沒有可引的具體例子"
+   ],
+   "missing": "希普頓段約 6 分鐘、素材紮實；Vanga 段沒有一則可追出處的預言，缺第二個有文件可查的案例，合計只約 8.5 分鐘。",
+   "merge_with": [
+    "N961",
+    "N401"
+   ],
+   "source_note": "P26 為 legacy_screened、4 筆來源，有 1873-04-26《Notes and Queries》一手出處；Vanga 部分只有 Valtchinova 與 Novinite 評論；N961（6 筆）、N401（3 筆）皆 screened 且未排入任何題案。",
+   "reason": "希普頓媽媽的 1641→1684→1862→1873 鏈很好，但 Vanga 只能講『沒有文字』，撐不起第二個升級。改用同一核心問題（預言家死後很久才印出的預言）的柴郡先知 Nixon（N961，最早印本約 1714 年）或布拉漢先知（N401，1877 年收集）取代 Vanga，就能過門檻。"
+  },
+  {
+   "id": "T27",
+   "title": "通靈板與轉桌，手是誰在推？",
+   "verdict": "merge",
+   "distinct_facts": 14,
+   "escalations": 2,
+   "est_unique_chars": 2250,
+   "est_minutes": 8.3,
+   "thin_chapters": [
+    "1853：轉桌熱潮（120 秒＝540 字）：素材只有『1850 年代客廳流行』與『被說成電、磁或靈力』兩點，沒有具體場景或人物",
+    "法拉第的紙板與指針（180 秒＝810 字）：一手信件只有日期、裝置、結果與『參加者誠實』約 5 點；《雅典娜神殿》7 月 2 日長文只看到篇名頁碼"
+   ],
+   "missing": "全集只有 G04 一題，約 14 個事實、約 8.3 分鐘；轉桌熱潮章缺具體事例，兩個場景講同一個機制，缺第二個升級關卡。",
+   "merge_with": [
+    "N129"
+   ],
+   "source_note": "G04 為 legacy_screened、5 筆來源，法拉第部分有一手信件；專利局示範與命名故事只靠創辦人後代口述（L3-S003）；N129（會算數的馬漢斯，screened、2 筆來源）未排入任何題案。",
+   "reason": "素材只夠約 8 分鐘，而且法拉第的實驗與通靈板是同一個答案的兩次重述。併入 N129『聰明的漢斯』（1904 年委員會查不出作弊，答案是提問者不自覺的動作），核心問題仍是『人不自覺的動作被當成外力』，就有第二個升級與約 12 分鐘素材。"
+  },
+  {
+   "id": "T28",
+   "title": "一位靈異調查者的三份檔案，為什麼他的學會先質疑、後來又刊出辯護？",
+   "verdict": "ready",
+   "distinct_facts": 40,
+   "escalations": 4,
+   "est_unique_chars": 4200,
+   "est_minutes": 15.6,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "P11 為 legacy_checked（85 筆，topic-checks 超過 10 萬字，answer_target 在 800 字截斷）；G08、G18 為 legacy_screened，G08 的 1956 年《Nature》書評在付費牆後，G18 的 ZSL 館藏頁 403。",
+   "reason": "P11 一案就有逐日時間線與箱內清單，G08 的 1956 指控與 1969 辯護、G18 的毛樣鑑定都是轉折，素材超過 12 分鐘。結檔有『調查者也是檔案』的新角度，不是純重述。"
+  },
+  {
+   "id": "T29",
+   "title": "失落文明的四件證據，是怎麼被讀錯的？",
+   "verdict": "ready",
+   "distinct_facts": 34,
+   "escalations": 4,
+   "est_unique_chars": 3800,
+   "est_minutes": 14.1,
+   "thin_chapters": [
+    "比米尼：直線的石頭與海灘岩（150 秒）：Cayce 預言與 1968 年發現者都沒有來源，只剩地質，約 5 個事實，勉強夠",
+    "結檔：誤讀是怎麼發生的（90 秒）：屬重述"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "H25、P21、M27 為 legacy_screened，N147 為 screened；P21 的預言段與 M27 的主流反駁（只經 HISTORY 轉述 Hafford、Stone）仍屬 needs_check；H25 的空軍中校回信只有一個來源；N147 柏拉圖是寓言一說要補來源。",
+   "reason": "四案都是真物件加誤讀，共三十個以上事實，第三、四件有 2026 年 Bazes 的新實驗等推進，約 13 分鐘。比米尼章不得提預言對上 1968 年。"
+  },
+  {
+   "id": "T31",
+   "title": "未知生物的證據送去驗，結果是什麼？",
+   "verdict": "ready",
+   "distinct_facts": 25,
+   "escalations": 3,
+   "est_unique_chars": 3000,
+   "est_minutes": 11.1,
+   "thin_chapters": [
+    "結檔：證據能證明到哪裡（120 秒）：『排除與證明是兩回事』是概念歸納，大半是重述"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "L21、L32 為 legacy_screened；L38 標 needs_check：ADAS 報告原文沒讀到，只有國會紀錄、當年報導與研究者轉述，觸發題案自己的撤案條件，要站主決定；L21 的物種拆分只靠新聞稿。",
+   "reason": "三案各約 8 個事實，『2014 北極熊說被 2017 重驗推翻』『量尺重拍門柱』『兩腳變四腳、DNA 是郊狼』都是轉折。即使 L38 被撤，L21 加 L32 仍約 10 分鐘。"
+  },
+  {
+   "id": "T32",
+   "title": "傑克與羅賓漢：英雄的身分與理由，是哪一版加上、哪一版拿掉的？",
+   "verdict": "ready",
+   "distinct_facts": 20,
+   "escalations": 4,
+   "est_unique_chars": 2800,
+   "est_minutes": 10.4,
+   "thin_chapters": [
+    "結檔：英雄的身分是誰給的（120 秒＝540 字）：新資訊是歸納，屬重述，宜壓到 250 字"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "F11 為 legacy_screened，Tabart 單行本年份未讀到書目、『雅各斯版成為底本』標待查；F33（9 筆）第三輪補到 Henslowe 帳本與 1569 年 Grafton 原文，『貴族身分後加』已不只靠 Child 一個來源，TEAMS 導言仍 403。",
+   "reason": "傑克『1734 年沒偷→Tabart 加父仇→1890 年 Jacobs 自述刪掉』與羅賓漢『1450 自耕農→1569 可能貴族→1598 亨廷頓伯爵』各是三段升級，約 10 分鐘。結檔要縮。"
+  },
+  {
+   "id": "T33",
+   "title": "可樂的兩個傳說：一個一半是真的，一個是假的",
+   "verdict": "reserve",
+   "distinct_facts": 17,
+   "escalations": 2,
+   "est_unique_chars": 2350,
+   "est_minutes": 8.7,
+   "thin_chapters": [
+    "結檔：一半真的傳說最難破（120 秒＝540 字）：新資訊『兩個傳說放在一起看』屬重述",
+    "紅衣聖誕老人早就穿紅衣（180 秒＝810 字）：約 7 個事實且不能用廣告畫面，填滿 810 字偏緊"
+   ],
+   "missing": "兩個傳說各約 4 分鐘、只共用一個品牌，彼此不升級；古柯鹼『1903 年前去除』只有一篇綜述轉引，1902 年法案是否通過沒查；合計約 8.7 分鐘，沒有緩衝。",
+   "merge_with": [],
+   "source_note": "L20（7 筆）、L25（5 筆）皆 legacy_screened；L20 的 DEA 公告與飲料的連結已拿掉，改用 Gootenberg 與 1961 公約第 27 條；姊妹系列原來如此事務所有 B03（配方保險庫）要錯開。",
+   "reason": "事實約 17 個，估約 8.7 分鐘，剛好卡在門檻上；而且兩題是兩個不同的核心問題，唯一的連結是品牌，中段沒有真正的升級。池中沒找到同核心問題、能補成一集的候選。"
+  },
+  {
+   "id": "T34",
+   "title": "你朋友的朋友遇過：兩個換了地名就能一直講的故事",
+   "verdict": "merge",
+   "distinct_facts": 14,
+   "escalations": 2,
+   "est_unique_chars": 2250,
+   "est_minutes": 8.3,
+   "thin_chapters": [
+    "開場：朋友的朋友（60 秒）：「朋友的朋友」的由來沒有任何候選題來源支撐，只能空講",
+    "結檔：故事怎麼換地名（120 秒，540 字）：只重述兩段的共同骨架，沒有新事實"
+   ],
+   "missing": "總量約 8.3 分鐘，低於 8.5 緩衝；兩段都是「故事→查無實據」，缺最大轉折（「至今沒人出面」被 scope 禁用）。",
+   "merge_with": [
+    "L10"
+   ],
+   "source_note": "L05、L19 各 3 個來源，都是 legacy_screened；1942 年 Beardsley & Hankey 原文（JSTOR）沒讀，南韓群山版只靠一處轉引；L19 早期版本只靠 S025。",
+   "reason": "兩個傳說各只有 6–8 個可用事實，合起來約 8 分鐘且結構重複。改併已查核的 L10（萬聖節糖果，同樣是「人人說真、一件都查不到」）可保住同一個核心問題並清過門檻。"
+  },
+  {
+   "id": "T35",
+   "title": "預言落空之後，信的人去了哪裡？",
+   "verdict": "ready",
+   "distinct_facts": 26,
+   "escalations": 3,
+   "est_unique_chars": 3300,
+   "est_minutes": 12.2,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "P10 已查核（72 個來源，完整素材在 topic-checks/P10.md）；P05 為 legacy_screened 3 個來源，提出 10 月 22 日者的姓名不可講，米勒派自己的刊物未讀。",
+   "reason": "P10 單題就有一集的量（午夜與 4 點 45 分、書內自承的問題、兩次重做失敗、2025 年檔案），P05 補上 1844 年的前例與白袍傳說。三個升級關卡清楚，素材遠超 8.5 分鐘。"
+  },
+  {
+   "id": "T36",
+   "title": "「飛碟」這個詞出現以前，天上的光叫什麼？",
+   "verdict": "ready",
+   "distinct_facts": 19,
+   "escalations": 3,
+   "est_unique_chars": 2950,
+   "est_minutes": 10.9,
+   "thin_chapters": [
+    "撈了一座湖，什麼都沒有（120 秒，540 字）：只有坑與約 3,500 份樣本兩件事，且 Kölmjärv 細節只靠 C-S012"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N145、N146 各只有 2 個來源，美方情報文件與 Robertson 小組紀錄只讀到鏡像；415 中隊戰時日誌未讀；首報月份 10/11 月兩說要並陳。",
+   "reason": "foo fighter 約 7 個事實、幽靈火箭約 12 個（通報格式、單日逾 300 份、撈湖、8 月與 10 月公報改口、美方評估），升級與轉折都有。撈湖一章偏薄，可併入 1946 章。"
+  },
+  {
+   "id": "T37",
+   "title": "有人聽得到、儀器錄不到的聲音",
+   "verdict": "reserve",
+   "distinct_facts": 14,
+   "escalations": 2,
+   "est_unique_chars": 2380,
+   "est_minutes": 8.8,
+   "thin_chapters": [
+    "1895：達爾文的兒子在《自然》徵求（180 秒）：章名所依的 1895 年原信沒讀到，只靠 B-S008 轉述，Nature 各信只讀到摘要",
+    "結檔：聽得到的不一定是同一種（120 秒）：重述兩段結論，沒有新事實"
+   ],
+   "missing": "關鍵題來源待補：巴里薩爾章的核心（達爾文 1895 原信、Nature 各信全文、George Darwin 身分的來源）只有摘要與轉述；溫莎 2014 年報告本身沒讀到，只靠 CBC；總量約 8.8 分鐘、扣掉重述的結檔後沒有餘裕。",
+   "merge_with": [],
+   "source_note": "N121 有 5 個來源、N122 有 7 個，但 Nature 信件全部只讀摘要；Seneca guns 只能用 USGS 與 Hill 的說法。",
+   "reason": "分量勉強過 8.5 分鐘，但巴里薩爾那章的主幹建立在沒讀到原文的信件上，而且嗡嗡聲與轟響其實是兩種現象。原信重開、確認信件往來內容後才可轉 ready。"
+  },
+  {
+   "id": "T38",
+   "title": "天上掉下來的紅雨與肉，後來驗出了什麼？",
+   "verdict": "ready",
+   "distinct_facts": 24,
+   "escalations": 3,
+   "est_unique_chars": 3300,
+   "est_minutes": 12.2,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "M14 已查核（89 個來源，topic-checks/M14.md 含 2012 年 DNA 段）；N123 為 screened 3 個來源，1876 年原刊（Scientific American、Sanitarian、Louisville Medical News）未讀，化驗內容靠 B-S013、B-S014 轉述。",
+   "reason": "M14 單題就撐得起一集，N123 補上一場 1876 年的化驗大戰（念珠藻、肺組織、七件樣本、禿鷹說）。兩段都有轉折，量遠超門檻。"
+  },
+  {
+   "id": "T39",
+   "title": "暴君拉琴與國王叫海退，最早的記錄者原本想說什麼？",
+   "verdict": "reserve",
+   "distinct_facts": 12,
+   "escalations": 2,
+   "est_unique_chars": 2150,
+   "est_minutes": 8.0,
+   "thin_chapters": [
+    "另一位史家的版本與一件還不存在的樂器（120 秒，540 字）：只有蘇埃托尼烏斯一說與「小提琴晚一千多年」兩件事，fiddle 一詞的年份 scope 禁寫",
+    "西元 64 年：尼祿人在哪（180 秒，810 字）：塔西佗一段約 4 個事實，填不滿",
+    "結檔：故事為什麼被倒過來用（90 秒）：重述兩段"
+   ],
+   "missing": "卡西烏斯・狄奧版本未讀（第三位史家缺席）；克努特的 Liber Vitae、溫徹斯特王冠與 Gaimar 版本不在 answer_target，只見於備註；總量約 8 分鐘。",
+   "merge_with": [],
+   "source_note": "N169、N170 各 2 個來源（塔西佗、蘇埃托尼烏斯原文；亨利《英格蘭人史》譯本與大英圖書館）。",
+   "reason": "尼祿約 6 個事實、克努特約 6 個，合計約 8 分鐘，尼祿兩章要靠重述才填得滿。補讀卡西烏斯・狄奧與克努特的 Liber Vitae、王冠段落後再評。"
+  },
+  {
+   "id": "T40",
+   "title": "預言怎麼算命中？聖經密碼、Jeane Dixon 與辛普森家庭",
+   "verdict": "ready",
+   "distinct_facts": 27,
+   "escalations": 3,
+   "est_unique_chars": 3400,
+   "est_minutes": 12.6,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "P09 已查核（53 個來源，topic-checks/P09.md）；P14 為 legacy_screened 4 個來源，1956 年原句有 Paleofuture、Straight Dope 兩份轉錄，Parade 掃描頁碼待補；辛普森家庭只能用世界盃、聖母院假圖、伊波拉書名。",
+   "reason": "P09 本身就是一整集的素材，P14 再加上 Dixon 原句的退路、落空清單、Paulos 1988 與約 800 集的分母。三種錯各成一段，素材充足。"
+  },
+  {
+   "id": "T41",
+   "title": "大氣裡的怪光與怪聲，哪些解開了？",
+   "verdict": "ready",
+   "distinct_facts": 27,
+   "escalations": 3,
+   "est_unique_chars": 3000,
+   "est_minutes": 11.1,
+   "thin_chapters": [
+    "結檔：解到哪裡（90 秒）：只把三段並列，宜壓到 60 秒"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "M05 只有 2 個來源，5 公尺與 100 Hz 只靠 S020；M20 的 75 公尺只有 Laine 系來源，Silverman & Tuan 1973 原文未讀，但有京大 2020 與 Polar Record 1974 等獨立評述；M21 的 SRL 原文 403，數字靠兩篇轉述且一致。",
+   "reason": "三題各有 8–10 個可用事實，各有一個轉折（第一份光譜但光球太大、獨立團隊撲空、松代照片讓學界改口）。量充足，三章都不用重述。"
+  },
+  {
+   "id": "T42",
+   "title": "UFO 傳說是誰寫出來的？黑騎士衛星與黑衣人",
+   "verdict": "ready",
+   "distinct_facts": 15,
+   "escalations": 2,
+   "est_unique_chars": 2550,
+   "est_minutes": 9.4,
+   "thin_chapters": [
+    "黑騎士：1998 年的照片（120 秒，540 字）：只有 NASA 目錄標「太空碎片」與 Ross 的隔熱毯說法兩件事",
+    "結檔：傳說的作者鏈（120 秒）：重述兩段"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "U32 有 5 個來源，Discoverer 8 或 5／23 說法並陳，Oberg 的 PDF 回 503；U34 有 3 個來源，FBI 書衣讀的是 The Black Vault 鏡像，Bridgeport Herald 日期兩說。",
+   "reason": "黑騎士由五件不相干的事拼成（特斯拉、Keyhoe、Discoverer、Lunan 推算與撤回、STS-88），黑衣人有 1953→1956→1962 的改寫順序，合計約 9.4 分鐘。1998 年那章要併進黑騎士主章。"
+  },
+  {
+   "id": "T43",
+   "title": "兩份中世紀紀錄，怎麼讀出兩個不同的故事？",
+   "verdict": "ready",
+   "distinct_facts": 17,
+   "escalations": 2,
+   "est_unique_chars": 2750,
+   "est_minutes": 10.2,
+   "thin_chapters": [
+    "哈默爾恩：今天的解讀（120 秒）：只列出四種假說，各自沒有證據可講，容易變成清單",
+    "結檔：紀錄是怎麼長出來的（150 秒，675 字）：重述兩段，沒有新事實"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "L30 有 4 個來源，Lüneburg 手稿與 1384 年市政紀錄只有一個通俗二手來源，跟博物館說法不一；L29 有 3 個來源，Ralph 的寫作年份與佛萊明說的提出者只見搜尋摘要。",
+   "reason": "哈默爾恩約 10 個事實（銘文、彩窗與 1592 年摹本、1565 年才有老鼠、格林兄弟），伍爾皮特約 7 個（兩位編年史家的三處差異、Clark 的結論），約 10 分鐘。解讀章與結檔要壓短。"
+  },
+  {
+   "id": "T44",
+   "title": "魔神仔與紅衣小女孩：山裡被帶走的人，故事是誰說的？",
+   "verdict": "reserve",
+   "distinct_facts": 13,
+   "escalations": 1,
+   "est_unique_chars": 1950,
+   "est_minutes": 7.2,
+   "thin_chapters": [
+    "1998：一段家庭錄影帶（150 秒）：首播節目與日期查不到電視台紀錄，只能講「兩說」，大半要用節目史墊",
+    "魔神仔：口述研究怎麼說（210 秒，945 字）：書本身沒讀到，只有母題解讀約 6 個事實"
+   ],
+   "missing": "關鍵題來源待補：L01 是 eligible=false、premise needs_check（首播無一手紀錄）；G15 的《魔神仔的人類學想像》本身沒讀到、出版年未確認；單靠 G15 約 5–6 分鐘。",
+   "merge_with": [],
+   "source_note": "G15 有 4 個來源，但書的原文全都讀不到（403、502）；L01 有 7 個來源，電影這一層有 2–3 個來源，「編劇受林美容啟發」只有研之有物一篇。",
+   "reason": "主題的第二章所用候選題還沒過篩（needs_check），G15 單獨填不滿 8 分鐘。要先補到首播紀錄或林美容書的原文。"
+  },
+  {
+   "id": "T45",
+   "title": "官方宣布了原因，案子就結束了嗎？",
+   "verdict": "reserve",
+   "distinct_facts": 21,
+   "escalations": 2,
+   "est_unique_chars": 3000,
+   "est_minutes": 11.1,
+   "thin_chapters": [],
+   "missing": "關鍵題來源待補：N386 是 eligible=false、needs_check，撐起翻轉的 1944-09-13 電稿（州檢察官同日反駁）覆核時被機器驗證擋住；題案自己寫明重開前不可成片。",
+   "merge_with": [],
+   "source_note": "N386 有 4 個來源，但 Johnson 1945 只見書目，Y5-S020、S021 只讀到摘段；M34 有 7 個來源，「送布拉格與莫斯科」「25 億堅戈」「泡水木料」各只有一個來源。",
+   "reason": "兩章合計素材夠 10 分鐘以上，但馬圖恩那章的轉折建立在還沒重開的電稿上，依規則不能列 ready。電稿重開、確認州檢察官的反駁後，可直接轉 ready。"
+  },
+  {
+   "id": "T46",
+   "title": "史書只有一行，名場面是誰補上的？",
+   "verdict": "ready",
+   "distinct_facts": 19,
+   "escalations": 3,
+   "est_unique_chars": 2950,
+   "est_minutes": 10.9,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "三題都是 screened，各 3–4 個原典錄文來源；岳飛章的元明戲曲（《東窗記》《精忠記》）沒讀到原文，只能說「目前讀到的文本中」；三條裴注的作者背景只有常識。",
+   "reason": "虞姬約 6 個事實（名或姓不確定、和歌靠《正義》轉引、《千金記》）、呂伯奢約 8 個（裴注三說、功曹不是陳宮、通鑑不收）、岳飛約 5 個（盡忠與精忠兩條線合一）。三種補法各不相同，約 11 分鐘。"
+  },
+  {
+   "id": "T47",
+   "title": "華盛頓的兩個傳說，各是誰寫出來的？",
+   "verdict": "ready",
+   "distinct_facts": 15,
+   "escalations": 2,
+   "est_unique_chars": 2500,
+   "est_minutes": 9.3,
+   "thin_chapters": [
+    "福吉谷：1861 年費城報紙上的寓言（300 秒，1,350 字）：約 8 個事實只夠約 1,000 字，作者生平與「第三場」何時改動都沒有來源",
+    "櫻桃樹：Weems 第五版的匿名老太太（240 秒）：約 7 個事實，略需壓縮"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N341 有 3 個來源，「1806 年第五版首次加入」只有國家公園管理局一說，第五版原書與 Mount Vernon 頁沒讀到；N402 有 3 個來源，1861-06-24 報紙是社群上傳的掃描，撰稿前要找館藏版。",
+   "reason": "兩題合計約 15 個事實、約 9.3 分鐘，兩個轉折（樹沒被砍倒；最可怕的從第二場變成第三場）都夠清楚。章節秒數高估，福吉谷一章要從 300 秒縮到約 220 秒。"
+  },
+  {
+   "id": "T48",
+   "title": "名人最有名的那一招與那一句，最早是寫在他身上嗎？",
+   "verdict": "merge",
+   "distinct_facts": 12,
+   "escalations": 2,
+   "est_unique_chars": 2050,
+   "est_minutes": 7.6,
+   "thin_chapters": [
+    "哥倫布的蛋：1565 年的「聽說」（240 秒，1,080 字）：只有約 5 個事實（Benzoni 的聽說與古已有之、瓦薩里 1550 年版），而且「古時已做過」指什麼沒查到",
+    "華生：原作裡一次都沒有（240 秒）：約 7 個事實，1909 年報紙原頁未讀，略需墊"
+   ],
+   "missing": "兩章各要 1,080 字，立蛋一章素材只有一半；總量約 7.6 分鐘。",
+   "merge_with": [
+    "N171"
+   ],
+   "source_note": "N345 有 3 個來源；N349 有 3 個來源，1909 年最早用例只靠 Shapiro 一人轉述、原頁未讀。",
+   "reason": "兩個名場面合計約 12 個事實，不到 8 分鐘。併入 N171（伽利略「但它仍在動」最早印在 1757 年）做第三章，核心問題仍是「名人最有名的一句，最早的紀錄在誰身上」。"
+  },
+  {
+   "id": "T49",
+   "title": "長曝光裡的鬼：底片沒被改，畫面裡就沒有人嗎？",
+   "verdict": "ready",
+   "distinct_facts": 19,
+   "escalations": 3,
+   "est_unique_chars": 2900,
+   "est_minutes": 10.7,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N429 有 3 個來源，1895 年心靈研究學會期刊有拍照者筆記與重現實驗，但地點化名 D. Hall，「就是康伯米爾」靠 1926 年的討論；N423 只有 2 個來源，柯達的結論只靠 Underwood 轉述。",
+   "reason": "康伯米爾約 10 個事實（筆記、門沒鎖、椅背雕花、Barrett 重現、相機被碰過、柯南・道爾 1926 年），鬱金香樓梯約 8 個（兩隻左手、1967 年通宵守夜）。第二章帶來新的理解，不用重講原理。"
+  },
+  {
+   "id": "T50",
+   "title": "原典裡使壞的，原本是誰？一寸法師與舌切雀",
+   "verdict": "ready",
+   "distinct_facts": 18,
+   "escalations": 2,
+   "est_unique_chars": 2800,
+   "est_minutes": 10.4,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N445 有 4 個來源，原文有兩份 NDL 活字本互校，改寫年代只有一冊 1927 年繪本；N446 有 3 個來源，宇治拾遺原文是 OCR 片段拼讀，白米一段只靠百科概括，赤本刊年不能講。",
+   "reason": "一寸法師約 10 個事實（被嫌、誣陷姬君、宰相下令、祖父出身、昭和繪本改寫），舌切雀約 8 個（腰折、瓢與白米、鄰女三隻雀、赤本定題、馬琴追認），兩個翻轉各不相同。"
+  },
+  {
+   "id": "T51",
+   "title": "預言準到哪一年，就是寫成的那一年",
+   "verdict": "ready",
+   "distinct_facts": 17,
+   "escalations": 3,
+   "est_unique_chars": 2700,
+   "est_minutes": 10.0,
+   "thin_chapters": [
+    "教宗預言：1590 年之後就不準了（390 秒，1,755 字）：約 8 個事實只夠約 1,150 字，要縮到約 260 秒"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N190 有 4 個來源，抄錯 Panvinio 一點只靠 E-S035，作者身分有反證要並陳；N466 有 3 個來源，都是 19 世紀譯本加一筆圖書館目錄，沒有現代學術研究。",
+   "reason": "教宗預言有「四百年沉默→1595 年才印→抄錯名錄→1590 年斷點」的升級，梅林預言再用 Orderic 當場逐句對照補上新的一層，約 10 分鐘。主章秒數高估，要重新分配。"
+  },
+  {
+   "id": "T52",
+   "title": "日本名場面，最早寫在哪一本書？弁慶的立往生與秀吉的暖草鞋",
+   "verdict": "ready",
+   "distinct_facts": 14,
+   "escalations": 2,
+   "est_unique_chars": 2400,
+   "est_minutes": 8.9,
+   "thin_chapters": [
+    "弁慶：《吾妻鏡》連名字都沒寫（330 秒，1,485 字）：約 7 個事實只夠約 1,000 字",
+    "秀吉：1797 年的一句話（270 秒，1,215 字）：約 7 個事實，略需墊"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N484 有 5 個來源，《平家物語》《源平盛衰記》的弁慶段沒逐段讀；N481 有 6 個來源，《太閤真顯記》未查，甫庵《太閤記》沒逐頁核對；兩題都只能說「目前讀到最早」。",
+   "reason": "約 8.9 分鐘，剛好過門檻：兩題各有一個清楚的轉折（衣河館條目沒有弁慶、1670 年才補進名單；暖草鞋最早只是一句話、酒井忠勝也有同一則）。兩章秒數都高估，要照實際素材縮短。"
+  },
+  {
+   "id": "T53",
+   "title": "神童傳說的出處：聖德太子與一休",
+   "verdict": "merge",
+   "distinct_facts": 15,
+   "escalations": 2,
+   "est_unique_chars": 2250,
+   "est_minutes": 8.3,
+   "thin_chapters": [
+    "聖德太子：十人、八人、三十六個孩子（240 秒，1,080 字）：約 6 個事實，法王帝說的成書年代不能排先後",
+    "一休：死後近兩百年的故事書（240 秒）：翻轉不大，橋的故事在 1668 年本裡的位置只見搜尋摘要"
+   ],
+   "missing": "總量約 8.3 分鐘，低於 8.5 緩衝；一休段的翻轉弱（研究代理自評「翻轉不算大」）。",
+   "merge_with": [
+    "T52"
+   ],
+   "source_note": "N482 有 5 個來源；N483 有 6 個來源，JapanKnowledge 頁 404，只讀到搜尋摘要。",
+   "reason": "兩題合計約 8 分鐘，一休段的轉折偏弱。N483 備註建議併入 T52 的「日本名場面的初出」，核心問題相同（名場面最早寫在哪本書），合併後可清過門檻。"
+  },
+  {
+   "id": "T54",
+   "title": "征服者的名場面：熙德死後出戰與科爾特斯沒燒的船",
+   "verdict": "ready",
+   "distinct_facts": 16,
+   "escalations": 2,
+   "est_unique_chars": 2600,
+   "est_minutes": 9.6,
+   "thin_chapters": [
+    "熙德：約 1289 年才出城的屍體（330 秒，1,485 字）：約 7 個事實只夠約 1,000 字，1102 年撤城焚城不能講"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N487 有 3 個來源，核心翻轉靠兩篇論文，Historia Roderici 原文未讀；N488 有 4 個來源，Z4-S033 只讀到摘要，「燒船」最早出處沒查到。",
+   "reason": "熙德有「詩裡一句→1289 年散文→自稱阿拉伯人所述→阿拉伯傳奇早有」的層次，科爾特斯有本人書信、貝爾納爾證詞與戈馬拉三方對照，約 9.6 分鐘。熙德一章要縮短。"
+  },
+  {
+   "id": "T55",
+   "title": "善德女王留下的兩樣東西：一座臺與一幅畫",
+   "verdict": "ready",
+   "distinct_facts": 16,
+   "escalations": 3,
+   "est_unique_chars": 2700,
+   "est_minutes": 10.0,
+   "thin_chapters": [
+    "瞻星臺：一百年的「天文台」（420 秒，1,890 字）：約 10 個事實只夠約 1,400 字，要縮到約 310 秒"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N504 有 3 個來源，《三國遺事》原文沒直接讀到，「人由中而上下」出自《世宗實錄地理志》要回原典，1970–80 年代論戰細節未讀；N485 只有 2 個來源，兩部書的比較主要靠國史編纂委員會譯註。",
+   "reason": "瞻星臺有「一句記載→1910 年天文台說→1960 年代祭壇說→2023 年仍未定」的升級，牡丹畫有兩部史書並排的翻轉，約 10 分鐘。主章秒數高估。"
+  },
+  {
+   "id": "T56",
+   "title": "應驗的預言，是什麼時候寫下的？爪哇的詛咒短劍與燒餅歌",
+   "verdict": "merge",
+   "distinct_facts": 14,
+   "escalations": 2,
+   "est_unique_chars": 2250,
+   "est_minutes": 8.3,
+   "thin_chapters": [
+    "燒餅歌：託名明初，1912 年才有印本（270 秒，1,215 字）：只有約 6 個事實，1912 年首印只靠 E-S037，陳學霖全文未讀，又不能解讀任何句子"
+   ],
+   "missing": "總量約 8.3 分鐘；短劍章「tujuh ratu」原文待對 Brandes 校訂本，譯本出處不明（題案自己的 drop_if）。",
+   "merge_with": [
+    "N462"
+   ],
+   "source_note": "N191、N549 各只有 2 個來源；N549 的譯本來自網站轉錄、譯者不明。",
+   "reason": "兩題合計約 8 分鐘，燒餅歌章素材只有半章，短劍章的關鍵原文還沒核對。N462《鄭鑑錄》（託名開國、實錄 1739 年才出現）跟燒餅歌是同一個核心問題，可以補上燒餅歌那一段。"
+  },
+  {
+   "id": "T57",
+   "title": "寫完了，又被要求寫下去：皮諾丘與泰國的人魚",
+   "verdict": "ready",
+   "distinct_facts": 15,
+   "escalations": 2,
+   "est_unique_chars": 2600,
+   "est_minutes": 9.6,
+   "thin_chapters": [
+    "皮諾丘：1881 年 10 月 27 日的「Fine」（480 秒，2,160 字）：answer_target 只有約 7 個事實，夠約 1,000 字，主章需腰斬到約 230 秒"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N186 有 3 個來源，連載期數表只靠 E-S019 講義，沒看到原刊書影；N550 有 3 個來源，兩個主要來源同在 Vajirayana 一個網站，第 132 章的卷次歸屬是推論。",
+   "reason": "皮諾丘約 7 個事實、人魚約 8 個，合計約 9.6 分鐘，兩種續寫壓力（讀者／編輯、贊助人）各給一個新理解。標稱「撐得起一集」的 N186 實際素材只有半集，主章秒數嚴重高估。"
+  },
+  {
+   "id": "T58",
+   "title": "新年和婚禮看的日子，掛的名字從哪來？《土亭秘訣》與「佛滅」",
+   "verdict": "ready",
+   "distinct_facts": 19,
+   "escalations": 3,
+   "est_unique_chars": 3000,
+   "est_minutes": 11.1,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N581 有 5 個來源，「1918 年印本」「每月運勢解放後才補」只有一位收藏家的週刊說法，《東國歲時記》原文沒直接讀到；N583 有 6 個來源，「物滅」中間字形只見紺谷轉引鈴木敬信。",
+   "reason": "土亭秘訣約 9 個事實（文集與歲時記的沉默、1930 年代總督府調查、48 卦到 64 卦），佛滅約 10 個（空亡到物滅到仏滅、協紀辨方書、明治新曆、1936 年婚禮指南、札幌火葬統計），兩章都填得滿。"
+  },
+  {
+   "id": "T59",
+   "title": "末日是誰接到 2012 年的？不存在的行星與和諧匯聚",
+   "verdict": "ready",
+   "distinct_facts": 26,
+   "escalations": 3,
+   "est_unique_chars": 3400,
+   "est_minutes": 12.6,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "P16 已查核（100 個來源，topic-checks/P16.md）；N586 只有 2 個來源，Shearer 的書年份 1971／1975 兩說，只照 Hoopes 寫 1975。",
+   "reason": "P16 單題就是一整集（nēberu、Sitchin 1976、ZetaTalk 改期、NASA 問答），N586 剛好補上「誰把末日接到 2012」那一環。量遠超門檻。"
+  },
+  {
+   "id": "T60",
+   "title": "英國兩個「三」的童話，最早印出來時主角是誰？三隻熊與三隻小豬",
+   "verdict": "ready",
+   "distinct_facts": 14,
+   "escalations": 2,
+   "est_unique_chars": 2450,
+   "est_minutes": 9.1,
+   "thin_chapters": [
+    "三隻熊：沒禮貌的老太婆（330 秒，1,485 字）：約 7 個事實只夠約 1,000 字"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N362 有 4 個來源，Mure 結局與 Goldilocks 1904 年只有多倫多公共圖書館館員部落格一個來源；N642 有 5 個來源，1843、1849 年本沒有這篇是 OCR 搜尋的結果，第五版年份只見搜尋摘要。",
+   "reason": "兩題各約 7 個事實，合計約 9.1 分鐘，兩個翻轉（闖入者是老太婆、1843 年的書裡沒有三隻小豬而 Dartmoor 版是小精靈）都清楚。三隻熊那章秒數高估。"
+  },
+  {
+   "id": "T61",
+   "title": "誰變成檳榔樹、誰變成太陽？越南與韓國的兩則變身故事",
+   "verdict": "merge",
+   "distinct_facts": 17,
+   "escalations": 2,
+   "est_unique_chars": 2350,
+   "est_minutes": 8.7,
+   "thin_chapters": [
+    "日月兄妹：1924 年沒有對調（180 秒）：只有一個翻轉（結尾少了對調與針刺），甘蔗田、沒有嬰兒都是一句話的細節，撐 810 字要重講今天的版本"
+   ],
+   "missing": "兩個國家的故事各只有一個翻轉，升級是同一種「今天版本→最早文字」的重複；N648 的 1924 年本細節只靠一份 OCR，要看 NDL 頁面影像；整集估約 8.7 分鐘，沒有緩衝。",
+   "merge_with": [
+    "T68",
+    "N762",
+    "N768"
+   ],
+   "source_note": "N643 四個來源，錄文與英譯都沒註明抄本；N648 只有兩個來源，1924 年本只讀到 OCR。",
+   "reason": "檳榔章夠厚，日月章薄且兩題跨國、核心只靠「換了人」勉強連在一起。建議 N643 併入 T68 做「越南古書裡的民間故事原版」三題一集，N648 另與同書的 N647 排韓國早期印本。"
+  },
+  {
+   "id": "T62",
+   "title": "三方原的勝者與敗者：家康的畫像與信玄的「人是城」",
+   "verdict": "ready",
+   "distinct_facts": 18,
+   "escalations": 4,
+   "est_unique_chars": 2900,
+   "est_minutes": 10.7,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N601 核心幾乎全靠館方學芸員一篇論文（附藏帳與新聞影像）；N602 七個來源，但 1621 寫本與 1656 刊本本身沒開到，「或人の云ふ」在最古本是否相同要再核。",
+   "reason": "家康畫像有 1805→明治→1910→1930→1936→1972→2016 一路升級的藏帳鏈，信玄段再補「有人說」與館後山城的反轉，素材足夠約 10.7 分鐘。章節秒數可照實略收。"
+  },
+  {
+   "id": "T63",
+   "title": "河內的龍與龜：昇龍的黃龍與還劍的金龜",
+   "verdict": "ready",
+   "distinct_facts": 17,
+   "escalations": 3,
+   "est_unique_chars": 2700,
+   "est_minutes": 10.0,
+   "thin_chapters": [
+    "昇龍：有龍、沒有詔（360 秒）：主要是版本年代（1377–88 推定、1479 編、1697 刻、1885 活字、2010 木版）偏書目，1,620 字要靠重複版本年代撐，宜縮到約 240 秒"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N486 核心靠一篇同儕審查論文加一篇研究者訪談，漢文只讀到論文轉錄，越南國家圖書館 Hán Nôm 掃描未開；N605 四個來源，越南學界論文待補。",
+   "reason": "還劍湖段有《藍山實錄》→18 世紀筆記→《大南一統志》→近代故事集的多段升級，可撐 10 分鐘左右。昇龍段資料偏乾，章節要縮，不能照 360 秒寫。"
+  },
+  {
+   "id": "T64",
+   "title": "英國海軍最從容的兩句話：保齡球與望遠鏡",
+   "verdict": "ready",
+   "distinct_facts": 19,
+   "escalations": 4,
+   "est_unique_chars": 2900,
+   "est_minutes": 10.7,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N348 三個來源，細節來自 Stewart 一位證人、1809 年出版，Southey 對 Parker 動機只見 Nicolas 腳註；N610 三個來源，Historic England 名錄頁 403 未讀。",
+   "reason": "兩段都有完整的文本年代鏈（1801→1809；1588→1624→1736→1899），各自有兩到三個轉折，估約 10.7 分鐘。"
+  },
+  {
+   "id": "T65",
+   "title": "人魚乾是什麼做的？巴納姆的斐濟美人魚與岡山寺的人魚",
+   "verdict": "ready",
+   "distinct_facts": 20,
+   "escalations": 4,
+   "est_unique_chars": 3000,
+   "est_minutes": 11.1,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N310 三個來源（含皮博迪博物館）；N721 四個來源，但「1800 年代後半」只有研究團隊一個來源，報導都是轉述。",
+   "reason": "巴納姆段有租借→假信→假博士→自傳招認→哈佛那具的鏈，岡山段有材料、金屬針、碳 14 與書付年代的翻轉，素材充足，約 11 分鐘。"
+  },
+  {
+   "id": "T66",
+   "title": "巴西的兩份腓尼基銘文：有字沒有石，有石沒有字",
+   "verdict": "ready",
+   "distinct_facts": 21,
+   "escalations": 4,
+   "est_unique_chars": 3000,
+   "est_minutes": 11.1,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N781 只有兩個來源，筆跡比對與 Plautus 一句只是 Netto 1885 年自述；N785 只有兩個來源，現代地質判斷與學界對 Ramos 的評論未讀到一手來源，寫稿前要補。",
+   "reason": "Paraíba 石碑有 1872→1873→1874→1875→1885→1968 推廣者自己翻案的強升級鏈，Gávea 段補 1839 年委員的保留，約 11 分鐘。"
+  },
+  {
+   "id": "T67",
+   "title": "1560 年那封信裡的巴西森林與河：Curupira 與 Iara",
+   "verdict": "ready",
+   "distinct_facts": 14,
+   "escalations": 3,
+   "est_unique_chars": 2400,
+   "est_minutes": 8.9,
+   "thin_chapters": [
+    "Iara：詩人自己說是「現代的水仙」（210 秒）：Igpupiára 已在 Curupira 章同一封信裡出現，扣掉重疊只剩詩、作者註與 Cascudo 轉述三件事，945 字偏緊"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N764 三個來源，1560 年信讀的是 1933 年葡文譯本，Smith 1879 只經 2023 年論文轉引；N765 三個來源，Cascudo 論點只透過 2011 年論文轉述，原書未讀，Iara 這個名字何時通行沒查到。",
+   "reason": "兩段各有 1560 年信→19 世紀作家的兩步翻轉，同一封信讓兩題共用一個核心，估約 8.9 分鐘，剛過門檻。Iara 段不能重講 Igpupiára，寫稿時若不足要先補 Cascudo 原書，而不是放慢。"
+  },
+  {
+   "id": "T68",
+   "title": "越南兩個人物的最早文字：山精水精與月亮上的阿貴",
+   "verdict": "merge",
+   "distinct_facts": 14,
+   "escalations": 2,
+   "est_unique_chars": 2300,
+   "est_minutes": 8.5,
+   "thin_chapters": [],
+   "missing": "「九牙象、九距雞、九紅鬃馬」通行版本的出處還沒找到（drop_if 的前提沒滿足），山精水精章失去「今天的版本」那一端；N768 的「回聲是誤記」鏈只靠一篇原刊不明的文章，Pigneau 1772 手稿未逐條核對；整集約 8.5 分鐘，沒有緩衝。",
+   "merge_with": [
+    "T61",
+    "N643"
+   ],
+   "source_note": "N762 三個來源，通行版本只讀到網路摘要與維基類頁面；N768 四個來源，研究代理原標 needs_check，覆核補讀了 1884 年辭典。",
+   "reason": "兩題都只有一個翻轉，且關鍵的「今天版本」出處待補。與 T61 的 N643（同出《嶺南摭怪》）合成越南三題一集，核心問題同為「越南傳說最早的文字跟今天差在哪」，可到約 12 分鐘。"
+  },
+  {
+   "id": "T69",
+   "title": "《今昔物語集》與《宇治拾遺物語》裡的福氣：わらしべ長者與瘤取爺",
+   "verdict": "ready",
+   "distinct_facts": 18,
+   "escalations": 4,
+   "est_unique_chars": 2900,
+   "est_minutes": 10.7,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N766 四個來源，《今昔》與《宇治拾遺》同一系統，不是兩個獨立來源；N767 只有兩個來源，《五常內義抄》未讀。",
+   "reason": "わらしべ長者段有絕食放話、夢中被罵、死馬復活、怕被說是偷的四段升級，瘤取爺段補鬼的抵押邏輯，約 10.7 分鐘。"
+  },
+  {
+   "id": "T70",
+   "title": "英國人怎麼想像暹羅：白象與暹羅貓",
+   "verdict": "ready",
+   "distinct_facts": 16,
+   "escalations": 3,
+   "est_unique_chars": 2700,
+   "est_minutes": 10.0,
+   "thin_chapters": [
+    "白象：一個找不到出處的故事（330 秒）：只有 1859 年 Sala、Brewer、1888 年提問與兩則回覆、OED 五件事，主軸是「找不到」，1,485 字要靠重複「沒有出處」撐，宜縮到約 240 秒"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N824 五個來源，1859 年「最早」只靠一次全文檢索，Bradley＝OED 編者只是「很可能」；N887 五個來源，但關鍵的 1901 年公使館回信原件沒讀到，日期只見 Cabinet 一處。",
+   "reason": "貓那段有抄本年代、貓展、公使館回信三層翻轉，白象段較薄但完整，合計約 10 分鐘。公使館回信是第二段的高潮，製作前要找到原件或至少兩個獨立轉引。"
+  },
+  {
+   "id": "T71",
+   "title": "嚇小孩的怪物，身世是什麼時候補上的？香港奶奶鬼與 Ông Ba Bị",
+   "verdict": "merge",
+   "distinct_facts": 17,
+   "escalations": 2,
+   "est_unique_chars": 2300,
+   "est_minutes": 8.5,
+   "thin_chapters": [],
+   "missing": "兩題各只有一個翻轉（最早的紀錄沒有身世），升級是同一種翻轉重複兩次，第二段沒有新的推進方式；N923 的 1989 年報導只靠 MBC 逐字稿，N925 兩種真人說法都沒追到出處；估約 8.5 分鐘，沒有緩衝。",
+   "merge_with": [
+    "N921"
+   ],
+   "source_note": "N923 四個來源，報導內容只靠 MBC 網站逐字稿、同時期報紙未讀；N925 四個來源，1901 年課本有一手，Oger 圖集只讀到 2009 年重印本的圖說。",
+   "reason": "素材剛好壓在門檻上且兩章結構重複。加入同核心的 N921（赤マント：1939 年專文與後來的年代錯置），做成「大人用來叫孩子回家的怪物」三案一集，第三案提供新的時間錯置推進。"
+  },
+  {
+   "id": "T72",
+   "title": "紅外線裡的 UFO：墨西哥空軍與智利海軍的兩段影片",
+   "verdict": "ready",
+   "distinct_facts": 19,
+   "escalations": 4,
+   "est_unique_chars": 2900,
+   "est_minutes": 10.7,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N842 六個來源，但火炬比對只有一份完整方法，另一份獨立結論沒附細節，「影片不在部裡」只有報導引用的資訊請求截圖；N986 只有兩個來源，卷宗是第三方網站鏡像，CEFAA 官方結論文件沒讀到。",
+   "reason": "墨西哥段有「給科學界」→「機密」→衛星圖對出燃燒塔→視差→有雷達片段仍未解的升級，智利段補卷內早有答案的反轉，約 10.7 分鐘。兩題答案相近，智利段要以「公開說法與卷內文件不一致」為主，不重講紅外線原理。"
+  },
+  {
+   "id": "T73",
+   "title": "1910 年的彗星恐慌：報紙刪掉的半句話，和墨西哥城的那一個月",
+   "verdict": "ready",
+   "distinct_facts": 15,
+   "escalations": 4,
+   "est_unique_chars": 2650,
+   "est_minutes": 9.8,
+   "thin_chapters": [
+    "彗星藥丸與封住的門縫（120 秒）：scope 只准講「報上出現的傳聞」，彗星保險與封門縫也只有概述來源，540 字裡實際可講的只有兩三句"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "P06 是 legacy_screened，Flammarion 1909 年文章只靠 S030 轉述，引句要回原文核對，彗星藥丸只有轉述海地傳聞的一手報導；N1104 三個來源，報紙內容經 2022 年論文轉引《El Imparcial》頁碼，要對到報紙影像。",
+   "reason": "報紙剪掉半句話→藥丸傳聞→墨西哥城的研究所、停電、主教座堂不開堂→洞穴炭筆畫，轉折夠多，約 9.8 分鐘。藥丸章要併進前一章，不能單獨撐 120 秒。"
+  },
+  {
+   "id": "T74",
+   "title": "宣祖朝的客星簿：一次看錯、一次看對",
+   "verdict": "ready",
+   "distinct_facts": 20,
+   "escalations": 4,
+   "est_unique_chars": 3000,
+   "est_minutes": 11.1,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N1201 七個來源，實錄有多條原文，但「高峰前後靠朝鮮的點」只讀到 2017 年一篇論文的資料表；N1202 四個來源，韓國 2007 年 Mira 研究只讀到週刊轉述，反駁方是同儕審查論文。N1201 的筆記提到撞題的 N1224，但池裡查無此 id。",
+   "reason": "1604 年段有「早四天但不是最早」→近百筆逐夜紀錄→光變曲線分型→宣祖的賊星，1594 年段補觀象監自我更正與 Mira 說被位置反駁，約 11 分鐘。"
+  },
+  {
+   "id": "T75",
+   "title": "1755 年 11 月 1 日，遠方的水自己動了",
+   "verdict": "ready",
+   "distinct_facts": 16,
+   "escalations": 4,
+   "est_unique_chars": 2600,
+   "est_minutes": 9.6,
+   "thin_chapters": [
+    "英國：二十多封「地面沒有可感的運動」的信（300 秒）：可用的只有羅蒙德湖、尼斯湖、牛津郡護城河三封與學會編纂、湖震名稱五件事，1,350 字偏緊，宜縮到約 240 秒"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N726 只有兩個來源，Scots Magazine 1755 原刊未讀、只靠 USGS 轉述，尼斯湖信落款 OCR 誤作 1745；N1221 五個來源，荷蘭報紙兩則各只靠 Delpher 一次檢索，兩篇現代源區論文只讀到摘要。",
+   "reason": "水自己動→學會把信對上同一天→荷蘭報紙三週後才知里斯本→Michell 把時間當資料定位→源區至今有爭議，升級清楚，約 9.6 分鐘。英國章要縮，不能為了 300 秒重複各地「水動地不動」。"
+  },
+  {
+   "id": "T76",
+   "title": "等待國王回來的預言：Bandarra 的詩被讀了幾次",
+   "verdict": "ready",
+   "distinct_facts": 16,
+   "escalations": 4,
+   "est_unique_chars": 2600,
+   "est_minutes": 9.6,
+   "thin_chapters": [
+    "每過一次亂世，詩就多幾首（180 秒）：只有「兩版差異集中在最準的幾首」與「1809、1815 年新增第二到第四部」兩件事，810 字撐不起，宜併入上一章"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N461 四個來源，Torre do Tombo 卷宗與 1603、1644 兩版原書都沒開到；N1222 只有兩個來源，判決原文沒讀。",
+   "reason": "詩比國王早→1603 印成塞巴斯蒂安→1644 改讀 João IV→法軍入侵後多出新詩→Vieira 把揭曉定在 1666 並受審，升級夠，約 9.6 分鐘。1809 章要併掉，Vieira 段放回時間順序。"
+  },
+  {
+   "id": "T77",
+   "title": "掛著暹羅名字的兩個『第一次』",
+   "verdict": "ready",
+   "distinct_facts": 16,
+   "escalations": 3,
+   "est_unique_chars": 2650,
+   "est_minutes": 9.8,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N1247 只有兩個來源（KNAW 一本書加 Tachard 遊記），1608 年新聞信原件沒讀到；N1248 三個來源，Narayana 1356 年只靠一篇科普轉載，要補印度數學史學術來源（drop_if 已規定補不到就只講 La Loubère）。",
+   "reason": "1608 年新聞信→沒有在場證據→77 年後華富里的月亮→幻方其實是蘇拉特的方法，三步各有新事實，約 9.8 分鐘。幻方段約 3 分鐘，Narayana 一句補不到時要照實縮，不補別的暹羅題。"
+  },
+  {
+   "id": "T78",
+   "title": "成俔筆記裡的鬼，拿實錄一對",
+   "verdict": "ready",
+   "distinct_facts": 22,
+   "escalations": 4,
+   "est_unique_chars": 3000,
+   "est_minutes": 11.1,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N1161 八個來源，實錄 1457、1449、1471、1478 條都有原文，但「太子指路」只出自《慵齋叢話》；N1163 五個來源，實錄三筆日期齊全，「姑母」「病死」只出自《慵齋叢話》。",
+   "reason": "兩則都有實錄可對，李杜家一則就有傳聞→本人證詞→照常講經→筆記放大的三層升級，素材約 11 分鐘，超過 10 分鐘的目標。"
+  },
+  {
+   "id": "T79",
+   "title": "報紙怎麼生出一隻怪物？澤西惡魔與魔鬼嬰兒",
+   "verdict": "ready",
+   "distinct_facts": 20,
+   "escalations": 4,
+   "est_unique_chars": 2900,
+   "est_minutes": 10.7,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "L34 是 legacy_screened，1735 年源頭的反駁靠 Regal，Jeffries 自承的年份未查到，「上千人目擊」「學校關門」不能講；N1183 六個來源，但 1981 年民俗學者與 1977 年書目只讀到檢索片段，傳播學者原書只讀到 2021 年評論轉述。",
+   "reason": "澤西惡魔有一週內跟進→抓到→展出→1735 年源頭查無的翻轉，魔鬼嬰兒有連載→兩個月成繩書→三個互相矛盾的「誰編的」，約 10.7 分鐘。"
+  },
+  {
+   "id": "T80",
+   "title": "掛在古人名下、說中亡國的預言",
+   "verdict": "ready",
+   "distinct_facts": 20,
+   "escalations": 4,
+   "est_unique_chars": 2950,
+   "est_minutes": 10.9,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N582 五個來源，《明月記》1227 條與《理盡抄》引文都是轉引，要補讀原文；N1225 三個來源，1936 年編者說法與 1914 年口供泰文本對不上，政治文學讀法只經一篇論文轉述。",
+   "reason": "未來記段有《太平記》事後寫成→中世各種未來記→江戶與明治說是正成安排的三段，大城段補兩位國王的歸屬與「兩千年」，約 10.9 分鐘。"
+  },
+  {
+   "id": "T81",
+   "title": "巴西國旗上的南十字：一封量不出星高的信，和一片沒人看得到的星空",
+   "verdict": "ready",
+   "distinct_facts": 21,
+   "escalations": 4,
+   "est_unique_chars": 3000,
+   "est_minutes": 11.1,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N1445 只有兩個來源，信中附圖沒看到原件影像（1912 年錄文在圖的位置斷開）；N1443 只有兩個來源，Teixeira Mendes 與 Morize 的話都是 1933 年 Ribeiro 轉引（Morize 再經 1927 年書），planalto 原頁沒讀到。",
+   "reason": "Mestre João 的信有量不出星高、分不出南極、附言靠太陽的連續反轉，國旗段有八點半天已大亮、從天球外看、挪星與台長意見，約 11 分鐘。兩題來源都只有兩個，查核時要補原件。"
+  },
+  {
+   "id": "T82",
+   "title": "日食證實了相對論？1919 年與 1929 年的兩支觀測隊",
+   "verdict": "ready",
+   "distinct_facts": 20,
+   "escalations": 4,
+   "est_unique_chars": 3100,
+   "est_minutes": 11.5,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N1203 三個來源，1978 年重量數值只經一位科學史家轉引，巴西隊只靠一篇 FAPESP 報導；N1444 四個來源，2.24 與 2.21 只出自 1931-12-16 一則演講報導，ZfA 原論文與後來的重評因 ADS 驗證沒讀到。",
+   "reason": "1919 年段有雲、權重、誰捨棄資料、1978 年重量的升級，1929 年段有器材上山、十萬次量測、「數量上不對」與日食法偏大，約 11.5 分鐘。"
+  },
+  {
+   "id": "T83",
+   "title": "萬隆的兩個導覽說法：『爪哇的巴黎』與六顆沙嗲",
+   "verdict": "merge",
+   "distinct_facts": 13,
+   "escalations": 1,
+   "est_unique_chars": 2250,
+   "est_minutes": 8.3,
+   "thin_chapters": [
+    "1904：「我是聽人這麼叫的」（180 秒）：只有 1904、1913、1914 三筆命中與 Roth 的流傳說法，810 字要靠重講口號撐",
+    "1923：兩棟樓約六百萬盾（300 秒）：多為三種口徑的帳目數字與一次 Delpher 沒命中的負面證據，1,350 字偏乾且重複"
+   ],
+   "missing": "兩題各只有一個翻轉，缺第二個升級關卡；兩段的結論都靠 Delpher 檢索的有無（負面證據），萬隆兩題合計只夠約 8.3 分鐘。",
+   "merge_with": [
+    "N1964",
+    "N1721"
+   ],
+   "source_note": "N1362 三個來源，1904 年那句只在一篇多報聯載的專欄讀到；N1482 六個來源，報名（推定 De Sumatra Post）尚待在 Delpher 頁面確認，「沒有 gedoeng sate」只靠一次檢索。",
+   "reason": "萬隆兩個說法都只有一步「報紙比說法早／不一樣」，撐不到 8.5 分鐘也沒有升級。可與同為「荷屬東印度的地方稱號與傳說，荷文報紙怎麼寫」的 N1964（峇里「最後的天堂」稱號）與 N1721（泗水鯊魚與鱷魚市徽）合成一集，核心仍是綽號與導覽說法的最早文字。"
+  },
+  {
+   "id": "T84",
+   "title": "東南亞的國名是誰取的？『越南』與『Indonesia』",
+   "verdict": "ready",
+   "distinct_facts": 17,
+   "escalations": 3,
+   "est_unique_chars": 2700,
+   "est_minutes": 10.0,
+   "thin_chapters": [
+    "Indonesia：比 Bastian 早三十年（300 秒）：只有 Earl 的兩個詞、Logan 的地理名與四分法、範圍與今天不同、Pramoedya 的指正，約 7 件事，1,350 字偏緊，宜縮到約 240 秒"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N1249 六個來源，但主依據是兩部後出官修史書（《大南寔錄》19 世紀中葉、《清史稿》1928），清朝《仁宗實錄》原文沒讀到；N1486 只有兩個來源，Bastian 首創說與中間環節都只透過 Pramoedya 1964 年講義轉述。",
+   "reason": "越南段有請南越→清帝倒成越南→不准就不受封→1838 改大南而清方照叫→1905 民族運動再用的完整鏈，Indonesia 段補民族名與地理名的區分，約 10 分鐘。"
+  },
+  {
+   "id": "T85",
+   "title": "一句比喻變成名場面：Sagres 的航海學校與 Camões 的游泳",
+   "verdict": "ready",
+   "distinct_facts": 15,
+   "escalations": 4,
+   "est_unique_chars": 2700,
+   "est_minutes": 10.0,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N1505 四個來源，Purchas 原句與 Bourne 論證在 archive.org 讀到，Barros 只經轉引，1963 年 USP 反方論文打不開；N1506 五個來源，1613、1624 年版本年代依 archive.org 著錄，原書頁碼待核。",
+   "reason": "學校段有編年史沒有→Purchas「可以說是」→19 世紀變成 Sagres 學校→1877、1896 年的否定，Camões 段有 1572、1613、1624 三個版本把比喻變成畫面，約 10 分鐘。"
+  },
+  {
+   "id": "T86",
+   "title": "名言第一次被寫下時的樣子：『埋葬死者』與『我留下』",
+   "verdict": "ready",
+   "distinct_facts": 15,
+   "escalations": 4,
+   "est_unique_chars": 2600,
+   "est_minutes": 9.6,
+   "thin_chapters": [],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N1507 五個來源，Alorna 侯爵是哪一位來源不一致，1813 初版與 1920 二版是否改字沒核；N1503 三個來源，《A Malagueta》那段只靠一篇碩士論文轉述，王子的信寫在更正前後沒查到。",
+   "reason": "「埋葬死者」有 1810→1839→1867→1876→1885 的歸屬變動，「我留下」有 9 日謹慎版→10 日更正→給父王的信三份文件對照，約 9.6 分鐘。"
+  },
+  {
+   "id": "T87",
+   "title": "墨西哥獨立第一天的兩個名場面：Dolores 的呼聲與點火的 Pípila",
+   "verdict": "ready",
+   "distinct_facts": 16,
+   "escalations": 4,
+   "est_unique_chars": 2700,
+   "est_minutes": 10.0,
+   "thin_chapters": [
+    "呼聲怎麼變成儀式（150 秒）：只有 1812、1845（含 1864）、1896 三個年份，1896 年鐘的來歷只靠一篇文章，675 字偏緊，宜併入上一章"
+   ],
+   "missing": "",
+   "merge_with": [],
+   "source_note": "N1621 三個來源，Abad y Queipo 公告與 Querétaro 市長信只讀到論文轉引，1896 年鐘只靠 Carballo 一篇；N1626 三個來源，覆核用 archive.org 找到 Bustamante 1823 年原文、與 Alamán 註 505 一致，Pizarro 2021 只讀到摘要。",
+   "reason": "Dolores 段有沒有紀錄→最早見於敵方轉述與旗上題字→開頭是 Viva Fernando VII 的翻轉，Pípila 段有支持與敵視起事的兩位史家對照，約 10 分鐘。儀式章太薄，要併掉。"
+  },
+  {
+   "id": "T88",
+   "title": "災難的數字：當年的報告寫多少？Arica 的美艦與海防的颱風",
+   "verdict": "merge",
+   "distinct_facts": 13,
+   "escalations": 2,
+   "est_unique_chars": 2390,
+   "est_minutes": 8.9,
+   "thin_chapters": [
+    "1868 Arica：四百五十碼還是兩英里：只有約 7 個事實（回憶、錯日期、艦長報告、450 碼／3 英里、直立、沿岸距離吻合、死傷一句），270 秒只填得到約四分之三",
+    "1881 海防：227、3,000 與 30 萬：可用事實約 6 個，死傷限一句帶過，270 秒要靠重講「流傳 vs 報告」才撐得滿"
+   ],
+   "missing": "估約 8.9 分，落在緩衝邊緣；『30 萬』最早出處未查到，Terry 2012 與 Cerveny 2017 原文未讀，海防章的結尾只能寫「未結」；兩章都只有一次翻轉。",
+   "merge_with": [
+    "N1081"
+   ],
+   "source_note": "N1084 的 450 碼已用《紐約先驅報》版面核對，但不是海軍檔案原件；N1584 的 227／3,000／30 萬元出自徐家匯年報，『誤讀金額』只能說成推測。每題的 source_refs 都共用同一段 locator。",
+   "reason": "兩章各約 4 分鐘，合計剛好壓線，而且海防章的關鍵出處還沒查到。N1081（喀拉喀托「聲音繞地球七圈」與 1888 年報告的氣壓波）同屬「流傳數字 vs 當年報告」，補成第三章就能穩穩超過 8.5 分。"
+  },
+  {
+   "id": "T89",
+   "title": "報紙登過的兩個日本怪談：1933 年的幽靈乘客與 1979 年的口裂け女",
+   "verdict": "reserve",
+   "distinct_facts": 13,
+   "escalations": 2,
+   "est_unique_chars": 2300,
+   "est_minutes": 8.5,
+   "thin_chapters": [
+    "1979：口裂け女的半年：只有 4 個事實（1/26 專欄、1978 年底已在岐阜流傳、全國小學生擴散、6/15 晚報宣告平息），210 秒（945 字）只撐得起約 550 字"
+   ],
+   "missing": "口裂け女那段素材只夠約 2 分鐘，缺第二個升級關卡（集團下校等說法已被拿掉）；N1522 三家報紙原件都沒讀到，只有法醫學教授的轉述。",
+   "merge_with": [],
+   "source_note": "N1522 全靠浅田一 1933 年的轉述（單一來源）；L02 的題目卡原本憑記憶起草，查核後只剩 NDL／NHK 兩點，週刊朝日特集未讀。",
+   "reason": "幽靈乘客那段很紮實，但口裂け女只有起訖兩個日期，第二章一定要灌水，估約 8.5 分而且分配失衡。池裡找不到同核心「報紙造了又收了怪談」的第三章（L05 已在 T34），先放保留清單。"
+  },
+  {
+   "id": "T90",
+   "title": "跟著新機器出現的死亡禁忌：靈柩車與三人合照",
+   "verdict": "ready",
+   "distinct_facts": 14,
+   "escalations": 3,
+   "est_unique_chars": 2520,
+   "est_minutes": 9.3,
+   "thin_chapters": [
+    "三人照：從笑話到文部省：6 個事實要填 270 秒（1,215 字），大約只有 800 字，建議縮成約 190 秒",
+    "藏拇指：先有葬式，後有車：約 8 個事實要填 330 秒，略薄，建議縮成約 260 秒"
+   ],
+   "missing": "片長要照實縮到約 9–9.5 分；N821 的常光徹解釋沒讀到，不能引用。",
+   "merge_with": [],
+   "source_note": "N821 有 9 個來源（1910《物識博士》、辭典、名古屋圖書館等）；N1544 有 NDL 全文檢索加 1942 年文部省指導書，但調查原件追不到，只能講成「書上說」。",
+   "reason": "兩章合計約 14 個不重複的事實，1906→1919→1933→1942 的時間序本身就是升級，估約 9.3 分。章節秒數高估，要照素材縮短。"
+  },
+  {
+   "id": "T91",
+   "title": "西語世界的兩個運氣日子：13 號星期二與十二顆葡萄",
+   "verdict": "merge",
+   "distinct_facts": 11,
+   "escalations": 2,
+   "est_unique_chars": 2130,
+   "est_minutes": 7.9,
+   "thin_chapters": [
+    "十二顆葡萄：1909 年以前：一手只有 1904 年畫報一筆，1882、1894 年都是二手轉述，210 秒大約只填得到一半"
+   ],
+   "missing": "估約 7.9 分，不到 8 分；十二顆葡萄那章缺一手證據（1894 年報紙、1909 年「過剩」說的出處都待補讀）。",
+   "merge_with": [
+    "N1065"
+   ],
+   "source_note": "N825 每個年代點各只有一份文件，Correas 的「戰神」只是他的解釋；N1546 只有 2 個來源，核心一手只有 1904 年 Blanco y Negro。",
+   "reason": "兩章合計不到 8 分，葡萄那章撐不滿。N1065（西語世界 12 月 28 日的整人日，16 世紀主教區禁令到 17 世紀 Caviedes）同屬「西語世界的日曆習俗，起源故事比紀錄晚」，補成第三章就能過 8.5 分，核心不變。"
+  },
+  {
+   "id": "T92",
+   "title": "越南開國的讖語，是誰寫進史書的？雷劈木棉與橫山一帶",
+   "verdict": "merge",
+   "distinct_facts": 12,
+   "escalations": 2,
+   "est_unique_chars": 2260,
+   "est_minutes": 8.4,
+   "thin_chapters": [
+    "1009：多出來的兩句讖文：只有約 6 個事實，而且核心「全書多兩句」是本題自己對讀錄文得出，270 秒得反覆念讖文才撐得滿"
+   ],
+   "missing": "估約 8.4 分，不到 8.5；N1563 的關鍵差異沒有學者來源（《禪苑集英》也沒讀到），N1606 缺一篇現代研究（Taylor 或 Kelley），1558 年條人名異字還沒對照刻本。",
+   "merge_with": [
+    "N1441"
+   ],
+   "source_note": "兩題都是一手史書錄文（維基文庫），沒讀到任何現代研究專文；越史略今本是清代四庫本。",
+   "reason": "素材略低於門檻，木棉那章的翻轉又只靠自己對讀。N1441（高麗「十八子」讖，寫下它的是應驗它的朝鮮王朝）同屬「讖語由受益王朝的史書寫下」，補成第三章可以過門檻，同時分攤單一翻轉的風險。"
+  },
+  {
+   "id": "T93",
+   "title": "越南兩個名字被拆開解釋：Đà Lạt 與嘉隆",
+   "verdict": "reserve",
+   "distinct_facts": 12,
+   "escalations": 2,
+   "est_unique_chars": 2260,
+   "est_minutes": 8.4,
+   "thin_chapters": [
+    "Đà Lạt：先有小溪，後有格言：約 6 個事實要填 240 秒（1,080 字），而且 1943 年的格言只讀到轉引，大約只填得到七成",
+    "嘉隆：詔書沒提的兩個地名：約 6 個事實，『1805 年改字』只有市政府網頁一句，240 秒略薄"
+   ],
+   "missing": "估約 8.4 分，不到 8.5；Morval 1943 與 Baudrit 1944 的原刊沒讀，1805 年改字的實錄原文待補，Liam Kelley 的論證讀不到。",
+   "merge_with": [],
+   "source_note": "N1601 的格言與溪名都經 1971 年《史地》學刊轉引（單一來源鏈）；N1607 的建元詔讀的是《大南寔錄》錄文，蔡廷蘭《海南雜著》是一手。",
+   "reason": "兩段各約 4 分，合計低於門檻，每章都要灌一點。池裡沒有同核心「名字被拆字解釋」的題（N1125 講大叻的選址，核心不同），先保留。"
+  },
+  {
+   "id": "T94",
+   "title": "『公正之王要來了』：1901 年泰國東北與 1928 年爪哇的兩則預言",
+   "verdict": "ready",
+   "distinct_facts": 16,
+   "escalations": 3,
+   "est_unique_chars": 2650,
+   "est_minutes": 9.8,
+   "thin_chapters": [
+    "1901：要人抄寫轉告的貝葉：約 8 個事實要填 330 秒（1,485 字），戰鬥與死傷又不能寫，大約只撐得起 260 秒"
+   ],
+   "missing": "Ban Saphue 的年份要查泰國政府公報或 Tej Bunnag 原文才能定案（不影響主線）；印尼方面的記錄沒讀到。",
+   "merge_with": [],
+   "source_note": "N1562 只有 2 個來源（丹隆回憶錄、Murdoch 1974），紅呢帽只出自丹隆一人；N1684 的報紙多半轉自同一兩份稿，算不上互相獨立，但 Zentgraaff 1934 是新增的一手文章。",
+   "reason": "爪哇那章的年份 1912→1921→1928→1930 一路往後挪，加上泰國那章預言日期和起事日期的落差，翻轉夠多，估約 9.8 分。泰國章要縮短。"
+  },
+  {
+   "id": "T95",
+   "title": "大航海最可怕的兩個岬角：Bojador 與好望角",
+   "verdict": "ready",
+   "distinct_facts": 18,
+   "escalations": 4,
+   "est_unique_chars": 2910,
+   "est_minutes": 10.8,
+   "thin_chapters": [],
+   "missing": "不缺關鍵素材；旁註原件沒看影像（依 1898 年轉錄），Zurara 讀的是 1896 年英譯本。",
+   "merge_with": [],
+   "source_note": "N1746 有 4 個來源，包括 Zurara 原典英譯與 Hakluyt 學會版的註；N1745 有旁註轉錄、Pacheco Pereira、Barros 與 Camões 四個文本。",
+   "reason": "兩章各有 8–9 個具體事實，1488→1505→1552→1572 四個文本的順序就是升級，估約 10.8 分。兩章都撐得滿。"
+  },
+  {
+   "id": "T96",
+   "title": "Pedro II 的兩句名言：『它會說話！』與『君主制滑了一下』",
+   "verdict": "ready",
+   "distinct_facts": 14,
+   "escalations": 3,
+   "est_unique_chars": 2520,
+   "est_minutes": 9.3,
+   "thin_chapters": [
+    "1876：『我聽到了』：只有約 7 個事實（6/21 與 6/27 的信、Thomson、1910、1911、1939），360 秒（1,620 字）大約只填得到 60%，要縮成約 230 秒"
+   ],
+   "missing": "1889 年 11 月的里約報紙沒查（連不上 Hemeroteca），Mattoso 1916 年原書第 91 頁也沒讀到；這一題要站主同意把 N1141 從單集壓成一章才成立。",
+   "merge_with": [],
+   "source_note": "N1141 靠國會圖書館的貝爾家族文件（一手）；N1743 的最早出處是 1927 年轉引的 1916 年回憶錄，「當時報紙有沒有寫」是未查，不是沒有。",
+   "reason": "兩句名言各有一條清楚的版本演變（1876→1910→1911→1939；1894→1927→1930→1984），估約 9.3 分。電話章的秒數嚴重高估，必須照素材縮短。"
+  },
+  {
+   "id": "T97",
+   "title": "火星人入侵廣播：報紙寫的恐慌，跟紀錄差在哪？1938 年紐約與 1949 年基多",
+   "verdict": "ready",
+   "distinct_facts": 15,
+   "escalations": 3,
+   "est_unique_chars": 2650,
+   "est_minutes": 9.8,
+   "thin_chapters": [],
+   "missing": "Cantril 的數字只能講成他的估計；厄瓜多當地報紙（El Comercio）沒讀到，1949 年的部分只有兩條通訊社線。",
+   "merge_with": [],
+   "source_note": "P08 是 legacy_screened，2% 的一手出處是廣播業刊物 Broadcasting；N1783 只有 2 個來源，荷語各報都轉自通訊社。",
+   "reason": "1938 年那段有收聽率、Cantril 的算法、刊物的立場三層翻轉，1949 年那段有各報不一的死者數與起因，估約 9.8 分。四章都有新東西可講。"
+  },
+  {
+   "id": "T98",
+   "title": "暹羅的曆：兩個新年、一套印度規則，與一次只有九個月的年",
+   "verdict": "ready",
+   "distinct_facts": 16,
+   "escalations": 3,
+   "est_unique_chars": 2650,
+   "est_minutes": 9.8,
+   "thin_chapters": [],
+   "missing": "缺一篇把三次改曆串起來的現代研究；1889 年公告讀的是 1894 年的彙編本。Cassini 的經度推算全靠旁白講，要寫得很口語。",
+   "merge_with": [],
+   "source_note": "N1844 是三個一手文本（La Loubère、1889 年公告、1940 年曆年法）；N1784 只有 2 個來源（Cassini 附錄、2017 年論文）。",
+   "reason": "兩個新年並存→1889 年改 4 月 1 日→1940 年只算九個月，加上 Cassini 與 2017 年重算「哪一端是已知」的對照，估約 9.8 分。"
+  },
+  {
+   "id": "T99",
+   "title": "外國人叫的暹羅與湄南河，暹羅人自己怎麼叫？",
+   "verdict": "reserve",
+   "distinct_facts": 11,
+   "escalations": 2,
+   "est_unique_chars": 2130,
+   "est_minutes": 7.9,
+   "thin_chapters": [
+    "Tai：自由人還是自由之國：約 5 個事實要填 270 秒（1,215 字），語源只靠一篇博士生的論文，大約只撐得起 150 秒"
+   ],
+   "missing": "估約 7.9 分，不到 8 分；兩章各只有一次翻轉，缺第二個升級關卡，Tai 的語源只有一個現代來源。",
+   "merge_with": [],
+   "source_note": "N1845 只有 2 個來源（La Loubère、A5-S013 一篇論文）；N1487 的 1850 年說明是 1857 年 Bowring 轉引，原件沒讀到。",
+   "reason": "兩章合計約 11 個事實，Tai 那章一定要灌水。池裡也沒有同核心「外國人叫開的名字 vs 暹羅人的叫法」的第三題（N1364 是人口題，核心不同），先保留，或回頭轉 Shorts。"
+  },
+  {
+   "id": "T100",
+   "title": "17 世紀歐洲讀到的東亞報告，錯是誰寫進去的？Hamel 的鱷魚與 Tavernier 的東京",
+   "verdict": "ready",
+   "distinct_facts": 18,
+   "escalations": 3,
+   "est_unique_chars": 2910,
+   "est_minutes": 10.8,
+   "thin_chapters": [],
+   "missing": "不缺關鍵素材；Baron 的生平與 Tavernier 弟弟 Daniel 的行跡還缺一篇現代研究確認。",
+   "merge_with": [],
+   "source_note": "N882 只靠 Hoetink 的學術版本（出版原檔，一手性高）；N1843 是 Tavernier 原書與 Baron 書稿兩個一手文本。",
+   "reason": "Hamel 那段有簿記、1,530 荷盾、1668 年三種印本、Saagman 的插頁、1920 年全文，Tavernier 那段有自述來源與 Baron 逐條更正，估約 10.8 分。每一章都是新東西。"
+  },
+  {
+   "id": "T101",
+   "title": "玻利瓦最有名的兩句話，是誰寫下的？",
+   "verdict": "ready",
+   "distinct_facts": 14,
+   "escalations": 3,
+   "est_unique_chars": 2520,
+   "est_minutes": 9.3,
+   "thin_chapters": [
+    "1805 Monte Sacro：老師口述的誓詞：約 6 個事實要填 210 秒，略薄，出版年 1883 還是 1884 也要先核對"
+   ],
+   "missing": "Uribe Ángel 1884 年的原刊與 O'Leary 的記述都沒讀到；地震死者數只能用「傷亡慘重」一句帶過。",
+   "merge_with": [],
+   "source_note": "N1862 的口述年份來自 Ayacucho 版編者註，『地點被搬家』只引 1923 年公報的考證；N1861 有 Díaz 回憶錄原文、2010 年論文與《卡塔赫納宣言》。",
+   "reason": "地震那句有敵人的回憶錄、2010 年的論文和玻利瓦自己的宣言三層對照，誓詞那句有 1824、1850、1884、1923 四個時間點，估約 9.3 分。"
+  },
+  {
+   "id": "T102",
+   "title": "戰國下剋上的兩個樣板：北条早雲與齋藤道三",
+   "verdict": "ready",
+   "distinct_facts": 15,
+   "escalations": 3,
+   "est_unique_chars": 2650,
+   "est_minutes": 9.8,
+   "thin_chapters": [],
+   "missing": "六角承禎條書原文沒讀到（只有百科與論文的轉述）；早雲的生年之爭與氏綱改姓的理由都沒有研究可引。",
+   "merge_with": [],
+   "source_note": "N1868 只有 2 個來源（百科、小田原市教委年表）；N1863 有百科、2022 年翻刻的《乙夜之書物》與木下聡的研究。",
+   "reason": "早雲那段有出身、署名、庵號、1523 年改姓，道三那段有父子兩代、1669 與 1713 兩部書、『蝮』的初見，估約 9.8 分。"
+  },
+  {
+   "id": "T103",
+   "title": "國旗誕生的浪漫故事：貝西・羅斯與秘魯的紅鶴",
+   "verdict": "ready",
+   "distinct_facts": 16,
+   "escalations": 3,
+   "est_unique_chars": 2650,
+   "est_minutes": 9.8,
+   "thin_chapters": [],
+   "missing": "Valdelomar 故事的篇名與首刊年份沒讀到，只靠兩家秘魯官方媒體；Hopkinson 要酒的事只有 Lemelson 一個可讀來源，《大陸會議紀錄》原文未讀。",
+   "merge_with": [],
+   "source_note": "N344 有 Canby 1870 年的論文、宣誓書與付款紀錄；N1869 有 1820 年法令、1907 年 Paz Soldán 的國旗史、El Peruano 與 Andina。",
+   "reason": "美國那段有家族傳說、付款紀錄、一桶酒三條線，秘魯那段有法令、1907 年國旗史、官方媒體的歸屬，估約 9.8 分。"
+  },
+  {
+   "id": "T104",
+   "title": "端宗身後的兩場夢：顯德王后與寧越郡守",
+   "verdict": "ready",
+   "distinct_facts": 19,
+   "escalations": 4,
+   "est_unique_chars": 3040,
+   "est_minutes": 11.3,
+   "thin_chapters": [],
+   "missing": "《逐睡篇》與《柳川箚記》原書沒讀，只透過《燃藜室記述》的引文；要站主同意把 N1641 從單集壓成一章（R171）。",
+   "merge_with": [],
+   "source_note": "N1641 有 8 個來源、N1881 有 10 個，核心都是實錄條目加野史與地理志，不同文本之間的先後可以逐條對照。",
+   "reason": "兩場夢各有實錄條目、野史、地理志一層層加上去的過程，時序矛盾也具體，估約 11.3 分，是這批素材最厚的一題。"
+  },
+  {
+   "id": "T105",
+   "title": "朝鮮官書裡的兩顆星：견우성與老人星",
+   "verdict": "ready",
+   "distinct_facts": 16,
+   "escalations": 3,
+   "est_unique_chars": 2650,
+   "est_minutes": 9.8,
+   "thin_chapters": [],
+   "missing": "「月亮碰不到 Altair」要靠天文計算，不是來源原句，製作時要附計算說明；《奎章閣》30 輯論文沒讀，實錄原文 14 條也還沒展開。",
+   "merge_with": [],
+   "source_note": "N1903 有 5 個來源（實錄、《史記》索隱、2009 年學會抄錄等）；N1906 原本是 needs_check，靠 R171 讀到 ScienceTimes 的原句才升為 screened。",
+   "reason": "牛宿與 Altair 的雙重身分、《爾雅》的混用，加上 1411 年奏請、21 條沒有觀測、1793 年濟州綸音，估約 9.8 分，超過 9 分的目標。"
+  },
+  {
+   "id": "T106",
+   "title": "爪哇的 6 月 22 日：雅加達的生日與農時曆",
+   "verdict": "ready",
+   "distinct_facts": 14,
+   "escalations": 3,
+   "est_unique_chars": 2520,
+   "est_minutes": 9.3,
+   "thin_chapters": [
+    "另一種說法與市府自己的結論：只有 2 個事實（Hoesein 的日期、1958 年市政史），150 秒大約只撐得起 60 秒，建議併進 1954 那章"
+   ],
+   "missing": "Hoesein 的確切日期兩份二手轉述不一致，要讀 1956–57 年《Bahasa dan Budaja》原文；1888 年的資料是 OCR，要對掃描；1852 與 1855 兩個年份並存。",
+   "merge_with": [],
+   "source_note": "N1961 有 6 個來源（1956 年報導、1958 年市政史等）；N1904 有 Raffles、Crawfurd、1888 年報紙，van Hien 1897 等書還沒讀。",
+   "reason": "第二章改變觀眾對第一章的理解（6 月 22 日要靠 1855 年才定下起點的農時曆推出來），估約 9.3 分。中間那個小章節要併掉。"
+  },
+  {
+   "id": "T107",
+   "title": "觀光明信片上的古老傳統：Kecak 與丹嫩莎朵水上市場",
+   "verdict": "ready",
+   "distinct_facts": 20,
+   "escalations": 4,
+   "est_unique_chars": 3040,
+   "est_minutes": 11.3,
+   "thin_chapters": [],
+   "missing": "電影片名與年份只有轉述，不能講；1947 與 1987 年都來自地方訪談；N1723 壓成一章要站主同意。",
+   "merge_with": [],
+   "source_note": "N1723 有 5 個來源（1934 年遊記、Covarrubias、1937 年報紙、研究者）；N1966 有 3 個來源，年份出自兩篇泰國論文，論文自己用「推定」。",
+   "reason": "Kecak 那段有 1934→1937 的稱呼與 Spies、Limbak、Bona 村三方的編成，丹嫩莎朵那段有 1866→1947→1967→1984→1987 的時間線，估約 11.3 分。"
+  },
+  {
+   "id": "T108",
+   "title": "戰國出世的兩個傳說：三杯茶與一匹馬",
+   "verdict": "ready",
+   "distinct_facts": 17,
+   "escalations": 3,
+   "est_unique_chars": 2780,
+   "est_minutes": 10.3,
+   "thin_chapters": [],
+   "missing": "1716 年刊年、天正 4 年茶屋文書、《近江輿地志略》原文都只讀到轉引；1581 年與知行對不上，是本系列自己排年表看到的，不是學者的結論。",
+   "merge_with": [],
+   "source_note": "N2102 有 5 個來源，N2107 有 7 個（《藩翰譜》、《多聞院日記》摘錄、小和田的講演要旨、國定讀本）。",
+   "reason": "三杯茶那段的地點一層層補上去（無寺名→真言寺→三珠院→觀音寺→古井），名馬那段有原文內部的矛盾與年表對不上，估約 10.3 分。"
+  },
+  {
+   "id": "T109",
+   "title": "《馬來紀年》裡的兩個傳說：會唱歌的山與河口的石頭",
+   "verdict": "ready",
+   "distinct_facts": 18,
+   "escalations": 3,
+   "est_unique_chars": 2910,
+   "est_minutes": 10.8,
+   "thin_chapters": [
+    "Gunung Ledang：停在半山的統帥：今天的通行版（Hang Tuah 親自上山）沒有可引的來源，不能講，只能拿兩個抄本互相對照，翻轉力道比較弱"
+   ],
+   "missing": "今天的通行版要先找到機構或研究來源；Singapore Stone 的文字年代只見搜尋摘要，Abdullah 的長嘴魚石原文沒讀到。",
+   "merge_with": [],
+   "source_note": "N2141 有 Brown 1952 與 Leyden 1821 兩個譯本；N2142 有 Begbie 1834 原書與 2025 年 BiblioAsia 文章。",
+   "reason": "Badang 那段有年鑑原文、1834 年 Begbie 換抄本、1843 年炸毀、2025 年的提問四個層次，Gunung Ledang 那段有兩個抄本的具體差異，估約 10.8 分。"
+  },
+  {
+   "id": "T110",
+   "title": "朝鮮宮廷的兩個『第一』：國王的咖啡與大長今",
+   "verdict": "merge",
+   "distinct_facts": 13,
+   "escalations": 2,
+   "est_unique_chars": 2330,
+   "est_minutes": 8.6,
+   "thin_chapters": [
+    "咖啡：1884 年漢江邊的飯後咖啡：可用事實只有 4–5 個（Lowell 1884、主人沒寫名字、1898 年判決的茶罐、俄館說法沒有同時代紀錄），300 秒（1,350 字）大約只填得到一半"
+   ],
+   "missing": "咖啡章撐不滿 300 秒；傳教士 Berneux 1860 年的信、尹致昊日記、日本公使報告都只有新聞轉述，讀到原件前不能用。",
+   "merge_with": [
+    "N1501"
+   ],
+   "source_note": "N2222 有 4 個來源，可用的一手只有 Lowell 的書與實錄；N2223 的實錄約十條是一手，國家記錄院的文章當二手。",
+   "reason": "估約 8.6 分，但都集中在大長今那章，咖啡那章要灌水。N1501（測雨器被說成蔣英實發明，實錄寫的是世子與全國觀測制度）同屬「朝鮮宮廷人物身上的『第一』，實錄撐不起來」，補進來可以讓咖啡縮短、全片穩過門檻。"
+  },
+  {
+   "id": "T111",
+   "title": "節日吃這個，是誰說的？土用丑的鰻與節分的恵方巻",
+   "verdict": "ready",
+   "distinct_facts": 15,
+   "escalations": 3,
+   "est_unique_chars": 2650,
+   "est_minutes": 9.8,
+   "thin_chapters": [],
+   "missing": "恵方巻的 1932、戰後、1977、1989 四個節點都只靠一份 2018 年書評轉述岩崎竹彥的研究，製作前要讀 2003 年原文；春木屋一說只見轉述。",
+   "merge_with": [],
+   "source_note": "N2301 有 7 個來源（《明和誌》、1911、1913、1916、1936 年的文本）；N2302 只有 3 個來源，關鍵節點集中在 A4-S008 一份書評。",
+   "reason": "鰻那段的招牌故事主角換人（蜀山人→源內→「一說」並列），恵方巻那段的 1932→1977→1989 正好接上鰻的生意，估約 9.8 分。恵方巻的來源偏薄，要列為製作前的必補項目。"
+  },
+  {
+   "id": "T112",
+   "title": "天上落下來的東西從哪裡來？印度支那的黑玻璃與大西洋的落塵",
+   "verdict": "ready",
+   "distinct_facts": 19,
+   "escalations": 3,
+   "est_unique_chars": 3040,
+   "est_minutes": 11.3,
+   "thin_chapters": [],
+   "missing": "Lacroix 的結論只讀到 1950 年的傳記，1932 年專著沒讀；1838 年的樣本是不是 James 那批，沒讀到 2007 年全文前不能說。",
+   "merge_with": [],
+   "source_note": "N2264 有 5 個來源（傳記、2020 年 PNAS 論文與評論、2024 年反駁）；N2265 有達爾文 1846 年論文、Ehrenberg 的數據與 2007 年研究。",
+   "reason": "黑玻璃那段有 1928→1932→2020→2024 的推進，落塵那段有 Ehrenberg 的反證、達爾文的風向推論、2007 年的化學分析，估約 11.3 分。"
+  }
+ ]
+}

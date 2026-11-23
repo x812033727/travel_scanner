@@ -18,19 +18,43 @@ import { localeUrl, siteUrl } from "@/lib/seo";
 const CONTEXT = "https://schema.org";
 const BRAND = "Mokaair";
 
+/** Parse comma-separated verified HTTPS entity URLs (e.g. official YouTube channel) for `sameAs`. */
+export function parseSameAs(raw: string | undefined): string[] {
+  if (!raw) return [];
+  const urls: string[] = [];
+  const seen = new Set<string>();
+  for (const part of raw.split(",")) {
+    const trimmed = part.trim();
+    if (!trimmed) continue;
+    try {
+      const parsed = new URL(trimmed);
+      if (parsed.protocol !== "https:") continue;
+      const normalized = parsed.toString();
+      if (seen.has(normalized)) continue;
+      seen.add(normalized);
+      urls.push(normalized);
+    } catch {
+      continue;
+    }
+  }
+  return urls;
+}
+
 /** The brand as a nested node. No `@context`: a node inside another graph inherits the
  *  enclosing one, and repeating it is noise a validator has to look past. */
-function brand(): object {
+function brand(sameAs?: readonly string[]): object {
+  const verified = sameAs ?? parseSameAs(process.env.NEXT_PUBLIC_SITE_SAME_AS);
   return {
     "@type": "Organization",
     name: BRAND,
     url: siteUrl,
     logo: `${siteUrl}/brand/mokaair-monogram.png`,
+    ...(verified.length ? { sameAs: verified } : {}),
   };
 }
 
-export function organization(): object {
-  return { "@context": CONTEXT, ...brand() };
+export function organization(sameAs?: readonly string[]): object {
+  return { "@context": CONTEXT, ...brand(sameAs) };
 }
 
 export function webSite(locale: Locale, searchEnabled = true): object {
@@ -40,13 +64,13 @@ export function webSite(locale: Locale, searchEnabled = true): object {
     name: BRAND,
     url: localeUrl(locale, "/"),
     inLanguage: locale,
-    // /hotspots really does take `q` and filter on it, so this is a search endpoint a reader can
-    // land on, not a shape invented to earn a sitelinks search box.
+    // /search/articles takes `q` and searches published travel guides and lifestyle/news articles,
+    // so this is a real public search endpoint a reader can land on in every locale.
     ...(searchEnabled ? { potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: `${localeUrl(locale, "/hotspots")}?q={search_term_string}`,
+        urlTemplate: `${localeUrl(locale, "/search/articles")}?q={search_term_string}`,
       },
       "query-input": "required name=search_term_string",
     } } : {}),
@@ -72,11 +96,12 @@ export function breadcrumbs(locale: Locale, trail: readonly Crumb[]): object | n
 
 /** A list whose entries have their own pages. Entries without a URL are left unmarked: a
  *  ListItem a crawler cannot follow is not worth describing. */
-export function itemList(locale: Locale, items: readonly Crumb[]): object | null {
+export function itemList(locale: Locale, items: readonly Crumb[], name?: string): object | null {
   if (!items.length) return null;
   return {
     "@context": CONTEXT,
     "@type": "ItemList",
+    ...(name ? { name } : {}),
     itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,
@@ -157,6 +182,8 @@ export function guideArticle(
     publishedAt: string;
     /** Moves on republication where `publishedAt` does not; absent on an older API. */
     modifiedAt?: string | null;
+    /** Set (`YYYY-MM-DD`) on dated news stories; switches the graph from Article to NewsArticle. */
+    newsDate?: string | null;
     hero?: { src: string; width: number; height: number } | null;
     /** The listing the reader returns to, named as the breadcrumb names it. */
     section: string;
@@ -171,6 +198,8 @@ export function guideArticle(
     collection?: boolean;
     /** The hub's members, when the series listing resolved. */
     entries?: readonly Crumb[] | null;
+    /** Parent series hub when this article is a member lesson of a series. */
+    partOfSeries?: Crumb | null;
     /** The editor's summary block: the answer in two to five sentences. Becomes `abstract`,
      *  and the card that shows it (`#article-summary`) becomes the speakable passage. */
     abstract?: readonly string[] | null;
@@ -186,7 +215,7 @@ export function guideArticle(
   const lastReviewed = checked.length ? checked.reduce((left, right) => (right > left ? right : left)) : null;
   return {
     "@context": CONTEXT,
-    "@type": input.collection ? "CollectionPage" : "Article",
+    "@type": input.collection ? "CollectionPage" : input.newsDate ? "NewsArticle" : "Article",
     headline: input.title,
     name: input.title,
     description: input.description,
@@ -208,6 +237,15 @@ export function guideArticle(
       ? {
           abstract: input.abstract.join(" "),
           speakable: { "@type": "SpeakableSpecification", cssSelector: ["#article-summary"] },
+        }
+      : {}),
+    ...(input.partOfSeries && !input.collection
+      ? {
+          isPartOf: {
+            "@type": "CreativeWorkSeries",
+            name: input.partOfSeries.name,
+            url: localeUrl(locale, input.partOfSeries.path),
+          },
         }
       : {}),
     isAccessibleForFree: true,
@@ -367,6 +405,43 @@ export function foodEstablishments(locale: Locale, seed: unknown, awards: Awards
   const items = typeof seed === "object" && seed !== null ? (seed as { items?: unknown }).items : undefined;
   if (!Array.isArray(items)) return [];
   return (items as MerchantCard[]).map((card) => foodEstablishment(locale, card, awards));
+}
+
+/**
+ * A published YouTube video rendered on `/videos` or embedded under its source article.
+ *
+ * Every field matches what `VideoCard` renders: the title, the YouTube `hqdefault.jpg`
+ * thumbnail, the publication timestamp, the `youtube-nocookie` embed URL and the canonical
+ * watch URL. No invented duration or interaction counts.
+ */
+export function videoObject(
+  locale: Locale,
+  input: {
+    slug: string;
+    title: string;
+    youtubeVideoId: string;
+    publishedAt: string;
+    description?: string | null;
+    articlePath?: string | null;
+    pagePath?: string;
+  },
+): object {
+  const id = input.youtubeVideoId;
+  const pageUrl = localeUrl(locale, input.pagePath ?? "/videos");
+  return {
+    "@context": CONTEXT,
+    "@type": "VideoObject",
+    "@id": `${pageUrl}#video-${input.slug}`,
+    name: input.title,
+    description: input.description?.trim() || input.title,
+    thumbnailUrl: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
+    uploadDate: input.publishedAt,
+    contentUrl: `https://www.youtube.com/watch?v=${id}`,
+    embedUrl: `https://www.youtube-nocookie.com/embed/${id}`,
+    inLanguage: locale,
+    publisher: brand(),
+    ...(input.articlePath ? { mainEntityOfPage: localeUrl(locale, input.articlePath) } : {}),
+  };
 }
 
 /**

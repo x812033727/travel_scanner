@@ -773,6 +773,10 @@ test("h3_refine.ipynb and seedvr2_upscale.ipynb: valid notebooks whose cells com
   const upscale = JSON.parse(readFileSync(UPSCALE_NOTEBOOK, "utf8")).cells.filter((c) => c.cell_type === "code").map((c) => c.source.join("")).join("\n");
   const emptied = upscale.indexOf('for old in [*SRC.glob("*.mp4"), *DST.glob("*.mp4")]:');
   assert.ok(emptied > 0 && emptied < upscale.indexOf('for uploaded in Path("/content").glob("s3in__*.mp4"):'), "seedvr2_upscale.ipynb empties s3_in and s3_out before moving the uploads in");
+  // Vertical 9:16 dramas (Till the Verdict, 2026-11-10): a taller-than-wide clip is fitted to 1080x1920, not cropped to 1920x1080.
+  assert.match(upscale, /if height > width/);
+  assert.match(upscale, /scale=1080:-2:flags=lanczos,crop=1080:1920/);
+  assert.match(upscale, /scale=-2:1080:flags=lanczos,crop=1920:1080/);
 });
 
 test("refine.py --check: a sound manifest passes; every error that would waste a session is named, and nothing is uploaded", { skip: !POSIX }, () => {
@@ -797,6 +801,65 @@ test("refine.py --check: a sound manifest passes; every error that would waste a
   const refused = run("bash", [H3, "refine", "--manifest", bad, "--output-dir", path.join(dir, "out")], env);
   assert.equal(refused.code, 1);
   assert.ok(!existsSync(env.FAKE_COLAB_LOG), "colab was never called");
+});
+
+const FFMPEG = spawnSync("ffmpeg", ["-version"]).status === 0 && spawnSync("ffprobe", ["-version"]).status === 0;
+
+test("refine.py --check: a draft trimmed to a length that is not 17k+5 frames is refused before a session starts (2026-11-07)", { skip: !POSIX || !FFMPEG }, () => {
+  const { env, dir, job } = stagesDir();
+  const clip = (name, frames) => {
+    const out = path.join(dir, "draft", name);
+    const made = spawnSync("ffmpeg", ["-loglevel", "error", "-y", "-f", "lavfi", "-i", "color=c=gray:s=64x32:r=24", "-frames:v", String(frames), "-pix_fmt", "yuv420p", out]);
+    assert.equal(made.status, 0, String(made.stderr));
+    return `draft/${name}`;
+  };
+  const manifest = path.join(dir, "frames.json");
+  writeFileSync(manifest, JSON.stringify({ jobs: [
+    { ...job, id: "c19", input_video: clip("c19-77.mp4", 77), output_name: "c19.mp4" },
+    { ...job, id: "c20", input_video: clip("c20-73.mp4", 73), output_name: "c20.mp4" },
+  ] }));
+  const result = run(PYTHON, ["-I", REFINE, "--manifest", manifest, "--check"], env);
+  assert.equal(result.code, 1);
+  assert.match(result.err, /c19: the draft has 77 frames; the refine notebook takes only H3 lengths 17k\+5/);
+  assert.doesNotMatch(result.err, /c20:/);
+});
+
+test("h3.sh cuts: a draft Ref2VA cut into a second shot is trimmed to the last 17k+5 length before the cut; a draft left too short exits 3", { skip: !POSIX || !FFMPEG }, () => {
+  const dir = mkdtempSync(path.join(tmpdir(), "h3-cuts-"));
+  const drafts = path.join(dir, "out");
+  mkdirSync(drafts);
+  // 124 frames at 24 fps: 77 dark frames, then a hard cut to a bright wide shot (e001 c19 cut at frame 78).
+  const make = (name, first, second) => {
+    const made = spawnSync("ffmpeg", ["-loglevel", "error", "-y", "-f", "lavfi", "-i", `color=c=0x302820:s=96x54:r=24:d=${first / 24}`,
+      "-f", "lavfi", "-i", `color=c=0xc0b8a8:s=96x54:r=24:d=${second / 24}`, "-filter_complex", "[0:v][1:v]concat=n=2:v=1[v]", "-map", "[v]",
+      "-frames:v", String(first + second), "-pix_fmt", "yuv420p", path.join(drafts, name)]);
+    assert.equal(made.status, 0, String(made.stderr));
+  };
+  make("c19.mp4", 77, 47);
+  make("c24.mp4", 30, 94);
+  const still = spawnSync("ffmpeg", ["-loglevel", "error", "-y", "-f", "lavfi", "-i", "color=c=gray:s=96x54:r=24", "-frames:v", "124", "-pix_fmt", "yuv420p", path.join(drafts, "c20.mp4")]);
+  assert.equal(still.status, 0);
+  const manifest = path.join(dir, "st1.json");
+  writeFileSync(manifest, JSON.stringify({ jobs: [
+    { id: "c19", output_path: path.join(drafts, "c19.mp4"), duration_seconds: 5, min_seconds: 3 },
+    { id: "c20", output_path: path.join(drafts, "c20.mp4"), duration_seconds: 5, min_seconds: 4.5 },
+    { id: "c24", output_path: path.join(drafts, "c24.mp4"), duration_seconds: 5, min_seconds: 4 },
+  ] }));
+  const report = path.join(dir, "cuts.json");
+  const result = run("bash", [H3, "cuts", "--input-dir", drafts, "--output-dir", path.join(dir, "trimmed"), "--manifest", manifest, "--json", report], process.env);
+  assert.equal(result.code, 3, result.err + result.out);
+  const rows = Object.fromEntries(JSON.parse(readFileSync(report, "utf8")).map((r) => [r.file, r]));
+  assert.equal(rows["c19.mp4"].cuts[0].frame, 77);
+  assert.equal(rows["c19.mp4"].kept_frames, 73);
+  assert.equal(rows["c20.mp4"].cuts.length, 0);
+  assert.equal(rows["c20.mp4"].kept_frames, 124);
+  assert.equal(rows["c24.mp4"].kept_frames, 22);
+  assert.equal(rows["c24.mp4"].too_short, 4);
+  const frames = (name) => Number(spawnSync("ffprobe", ["-v", "error", "-count_frames", "-show_entries", "stream=nb_read_frames", "-of", "csv=p=0", path.join(dir, "trimmed", name)]).stdout.toString().trim());
+  assert.equal(frames("c19.mp4"), 73);
+  assert.equal(frames("c20.mp4"), 124);
+  assert.match(result.out, /c24\.mp4: .*TOO SHORT, needs 4 s/);
+  rmSync(dir, { recursive: true, force: true });
 });
 
 test("h3.sh refine: one G4 session without high-RAM, three uploads per job, the settings in the environment, then stop", { skip: !POSIX }, () => {
@@ -838,4 +901,157 @@ test("h3.sh upscale: uploads to /content (no folders), passes the model and batc
   assert.match(calls, /upload --session kept \S+s21-st2\.mp4 \/content\/s3in__s21-st2\.mp4/);
   assert.match(calls, /--env S3_DIT_MODEL=seedvr2_ema_7b_fp16\.safetensors --env S3_BATCH_SIZE=81/);
   for (const name of ["s21-st2_1080.mp4", "s34-st2_1080.mp4"]) assert.ok(existsSync(path.join(dir, "final", name)), name);
+});
+
+// --- One Colab account per agent (scripts/accounts.py) -------------------------------------------
+
+const ACCOUNTS = path.join(SCRIPTS, "accounts.py");
+
+// The site's lease routes as the API answers them: a lease per slot, `auto` takes the free signed-in
+// account with the most units (or the one the holder has), credentials only for the holder.
+function leaseSite() {
+  const state = {
+    accounts: [
+      { slot: "a", is_default: true, signed_in: true, compute_units: { balance: 120 }, lease: null },
+      { slot: "b", is_default: false, signed_in: true, compute_units: { balance: 410.5 }, lease: null },
+      { slot: "c", is_default: false, signed_in: false, compute_units: null, lease: null },
+    ],
+    requests: [],
+  };
+  const answer = (response, status, body) => {
+    response.writeHead(status, { "Content-Type": "application/json" });
+    response.end(JSON.stringify(body));
+  };
+  const server = createServer((request, response) => {
+    let raw = "";
+    request.on("data", (chunk) => { raw += chunk; });
+    request.on("end", () => {
+      const url = new URL(request.url, "http://site");
+      state.requests.push(`${request.method} ${url.pathname}${url.search}`);
+      if (request.headers.authorization !== "Bearer mkv_paired") return answer(response, 401, { code: "video_tool_token_invalid", detail: "bad token" });
+      const body = raw ? JSON.parse(raw) : {};
+      const find = (slot) => state.accounts.find((item) => item.slot === slot);
+      if (request.method === "GET" && url.pathname === "/api/video/colab-accounts") return answer(response, 200, { accounts: state.accounts, default: "a" });
+      let match = url.pathname.match(/^\/api\/video\/colab-accounts\/([a-e]|auto)\/lease$/);
+      if (request.method === "POST" && match) {
+        let account;
+        if (match[1] === "auto") {
+          account = state.accounts.find((item) => item.lease?.holder === body.holder)
+            ?? state.accounts.filter((item) => item.signed_in && !item.lease).sort((x, y) => y.compute_units.balance - x.compute_units.balance)[0];
+          if (!account) return answer(response, 409, { code: "colab_no_free_account", detail: "沒有空著的帳號" });
+        } else {
+          account = find(match[1]);
+          if (!account?.signed_in) return answer(response, 409, { code: "colab_not_signed_in", detail: "not signed in" });
+        }
+        if (account.lease && account.lease.holder !== body.holder) return answer(response, 409, { code: "colab_account_leased", detail: `正由「${account.lease.holder}」使用` });
+        account.lease = { slot: account.slot, holder: body.holder, token: "mkv_paired", acquired_at: 1, expires_at: 4102444800 };
+        return answer(response, 200, account.lease);
+      }
+      match = url.pathname.match(/^\/api\/video\/colab-accounts\/([a-e])\/lease\/release$/);
+      if (request.method === "POST" && match) {
+        const account = find(match[1]);
+        const released = account.lease?.holder === body.holder;
+        if (released) account.lease = null;
+        return answer(response, 200, { slot: match[1], released });
+      }
+      if (request.method === "GET" && url.pathname === "/api/video/colab-credentials") {
+        const account = find(url.searchParams.get("slot"));
+        if (account.lease && account.lease.holder !== url.searchParams.get("holder")) return answer(response, 409, { code: "colab_account_leased", detail: "taken" });
+        return answer(response, 200, { tool: "colab", slot: account.slot, credentials: { ...TOKEN, token: `account-${account.slot}` } });
+      }
+      return answer(response, 404, { code: "not_found", detail: request.url });
+    });
+  });
+  return { server, state };
+}
+
+test("accounts.py: two agents on one machine each lease their own account and run the CLI in its own home", { skip: !POSIX }, async () => {
+  const { home, env } = sandbox();
+  const { server, state } = leaseSite();
+  await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
+  // A colab that says which HOME (so which account's token) it runs with.
+  const bin = path.join(home, "bin");
+  writeFileSync(path.join(bin, "colab"), `${FAKE_COLAB.replace('  *version*)', '  *whoami*) echo "home=$HOME token=$(cat "$HOME/.config/colab-cli/token.json")" ;;\n  *version*)')}`);
+  const upstream = path.join(home, "upstream");
+  mkdirSync(path.join(upstream, "scripts"), { recursive: true });
+  writeFileSync(path.join(upstream, "scripts", "runner.py"), "import subprocess\nsubprocess.run(['colab', 'whoami'])\n");
+  const site = { ...env, MOKAAIR_SITE: `http://127.0.0.1:${server.address().port}`, MOKAAIR_VIDEO_TOKEN: "mkv_paired", MINIMAX_H3_COLAB_HOME: upstream };
+  const root = path.join(home, ".cache", "minimax-h3-colab", "accounts");
+  try {
+    const one = await runAsync(PYTHON, ["-I", ACCOUNTS, "claim", "--holder", "agent-one"], site);
+    assert.equal(one.code, 0, one.err);
+    assert.equal(one.out.trim(), "export COLAB_ACCOUNT_SLOT=b COLAB_ACCOUNT_HOLDER=agent-one", "auto takes the most compute units");
+    assert.match(one.err, /Current balance/);
+    const two = await runAsync(PYTHON, ["-I", ACCOUNTS, "claim", "--holder", "agent-two"], site);
+    assert.equal(two.out.trim(), "export COLAB_ACCOUNT_SLOT=a COLAB_ACCOUNT_HOLDER=agent-two");
+    for (const slot of ["a", "b"]) {
+      const token = path.join(root, slot, ".config", "colab-cli", "token.json");
+      assert.equal(JSON.parse(readFileSync(token, "utf8")).token, `account-${slot}`);
+      assert.equal(statSync(token).mode & 0o777, 0o600);
+    }
+    assert.ok(!existsSync(path.join(home, ".config", "colab-cli", "token.json")), "the agent's own HOME gets no token");
+
+    // h3.sh picks the account by COLAB_ACCOUNT_SLOT: the CLI runs with that account's HOME.
+    const asB = run("bash", [H3, "usage"], { ...site, COLAB_ACCOUNT_SLOT: "b" });
+    assert.equal(asB.code, 0, asB.err);
+    assert.match(asB.out, new RegExp(`home=${path.join(root, "b")} token=.*account-b`));
+    const asA = run("bash", [H3, "usage"], { ...site, COLAB_ACCOUNT_SLOT: "A" });
+    assert.match(asA.out, /account-a/);
+    const unclaimed = run("bash", [H3, "usage"], { ...site, COLAB_ACCOUNT_SLOT: "c" });
+    assert.equal(unclaimed.code, 2);
+    assert.match(unclaimed.err, /not set up on this machine/);
+    // The Python scripts select it the same way (h3_detached.py, images.py, colab_detached.py).
+    const activated = run(PYTHON, ["-I", "-c", `import sys; sys.path.insert(0, ${JSON.stringify(SCRIPTS)}); import accounts, shutil; print(accounts.activate(), shutil.which('colab'))`], { ...site, COLAB_ACCOUNT_SLOT: "b" });
+    assert.equal(activated.out.trim(), `b ${path.join(root, "b", "bin", "colab")}`);
+
+    // A third agent finds nothing free (c is not signed in), and nobody takes a held account.
+    const three = await runAsync(PYTHON, ["-I", ACCOUNTS, "claim", "--holder", "agent-three"], site);
+    assert.equal(three.code, 3);
+    assert.match(three.err, /colab_no_free_account/);
+    const steal = await runAsync(PYTHON, ["-I", ACCOUNTS, "claim", "--holder", "agent-three", "--slot", "b"], site);
+    assert.equal(steal.code, 3);
+    assert.match(steal.err, /agent-one/);
+    const listed = await runAsync(PYTHON, ["-I", ACCOUNTS, "list"], site);
+    assert.match(listed.out, /^B\s+yes\s+410\.5\s+agent-one/m);
+    assert.match(listed.out, /^C\s+no/m);
+
+    // Release gives it back and removes the local token; then the third agent gets it.
+    const released = await runAsync(PYTHON, ["-I", ACCOUNTS, "release", "--holder", "agent-one", "--slot", "b"], site);
+    assert.equal(released.code, 0, released.err);
+    assert.ok(!existsSync(path.join(root, "b", ".config", "colab-cli", "token.json")));
+    const after = await runAsync(PYTHON, ["-I", ACCOUNTS, "claim", "--holder", "agent-three"], site);
+    assert.equal(after.out.trim(), "export COLAB_ACCOUNT_SLOT=b COLAB_ACCOUNT_HOLDER=agent-three");
+    assert.ok(state.requests.includes("GET /api/video/colab-credentials?slot=b&holder=agent-one"));
+
+    const badHolder = run(PYTHON, ["-I", ACCOUNTS, "claim", "--holder", "two words"], site);
+    assert.equal(badHolder.code, 1);
+    assert.match(badHolder.err, /--holder/);
+  } finally {
+    server.close();
+    rmSync(home, { recursive: true, force: true });
+  }
+});
+
+test("bootstrap.sh token: with COLAB_ACCOUNT_HOLDER it leases an account instead of overwriting the shared token", { skip: !POSIX }, async () => {
+  const { home, env, token } = sandbox();
+  const { server, state } = leaseSite();
+  await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
+  const site = { ...env, MOKAAIR_SITE: `http://127.0.0.1:${server.address().port}`, MOKAAIR_VIDEO_TOKEN: "mkv_paired" };
+  try {
+    const leased = await runAsync("bash", [BOOTSTRAP, "token"], { ...site, COLAB_ACCOUNT_SLOT: "auto", COLAB_ACCOUNT_HOLDER: "codex-7" });
+    assert.equal(leased.code, 0, leased.err);
+    assert.match(leased.out, /export COLAB_ACCOUNT_SLOT=b COLAB_ACCOUNT_HOLDER=codex-7/);
+    assert.ok(!existsSync(token), "the shared ~/.config token is left alone");
+    const verified = await runAsync("bash", [BOOTSTRAP, "verify"], { ...site, COLAB_ACCOUNT_SLOT: "b", COLAB_ACCOUNT_HOLDER: "codex-7" });
+    assert.equal(verified.code, 0, verified.err);
+    assert.match(verified.out, /Current balance/);
+    // Without a holder, a slot someone leased is refused by the site and nothing is written.
+    const plain = await runAsync("bash", [BOOTSTRAP, "token"], { ...site, COLAB_ACCOUNT_SLOT: "b" });
+    assert.match(plain.err, /HTTP 409/);
+    assert.ok(!existsSync(token));
+    assert.ok(state.requests.includes("GET /api/video/colab-credentials?slot=b"));
+  } finally {
+    server.close();
+    rmSync(home, { recursive: true, force: true });
+  }
 });

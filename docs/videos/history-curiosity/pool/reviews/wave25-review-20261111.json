@@ -1,0 +1,423 @@
+{
+  "batch": "batches/wave25-20261111.json",
+  "reviewed_on": "2026-11-11",
+  "method": "四位沒有參與研究的覆核代理（R251：H1；R252：H2；R253：H3；R254：H4）逐題至少重開一個關鍵來源、每個關鍵字跑一次素材池搜尋並 grep 批次檔去重、對照系列不收清單與 8 分鐘門檻；修改直接寫進批次的題目欄位，覆核新讀的來源編入該研究代理的來源序號。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 20,
+    "ADOPT": 2,
+    "REJECT": 1
+  },
+  "source_renames": {
+    "R253-S001": "H3-S021",
+    "R254-S001": "H4-S025",
+    "R254-S002": "H4-S026"
+  },
+  "verdicts": [
+    {
+      "id": "N2721",
+      "agent": "H1",
+      "reviewer": "R251",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H1-S001 https://archive.org/stream/earlytravelsinin00fostuoft/earlytravelsinin00fostuoft_djvu.txt（Foster 1921，Finch p.166 與注）；另重開 H1-S002 https://archive.org/download/avoyagetoeastin00terrgoog/avoyagetoeastin00terrgoog_djvu.txt（Terry 重印本 p.408）、H1-S003 https://archive.org/download/McGillLibrary-isl_lahore_DS486L3L31892-22490/isl_lahore_DS486L3L31892_djvu.txt（Latif pp.186–187）、H1-S004 https://www.tufs.ac.jp/documents/collaboration/CAAS/9_Alain_DESOULIERES.pdf（pp.90–91、劇中人物表段）",
+      "reopen_result": "頁面上確實寫了：Finch『a faire monument for Don Sha his mother, one of the Acabar his wives, with whom it is said Sha Selim had to do (her name was Immacque Kelle, or Pomgranate kernell); upon notice of which the King caused her to be inclosed quicke within a wall in his moholl, where shee dyed, and the King [Jahangir], in token of his love, commands a sumptuous tombe』；Foster 注：Daniyal 母親一說沒有佐證、陵墓 1615 年才完工。也就是說，封牆活埋與 Jahangir 為愛建墓『已經』在目前讀到最早的 Finch 裡，研究代理題目說『愛情悲劇是 1892 與 1922 年加上的』不成立。Terry 寫的是 Akbar『most beloved wife』Anarkelee，只講改立孫子 Khusrau，接著講毒丸。Latif 原文是『Nadira Begam, or Sharf-un-Nissa, one of the favorites of the harem』、鏡廳裡從鏡中看到她對 Salem 一笑、直立封進磚牆；他引了 Eastwick 對石棺的評語，石棺銘文與 1008／1024 AH、改作 St. James's Church 都在。Désoulières 說 Latif 先有烏爾都文本、Kanhaiya Lal 1884 年的《History of Lahore》已把它當成 Anarkali 之墓，所以 Latif 1892 不能說是第一個；他也寫 Taj 的劇中人物表把 Anarkali 定為後宮的 kanīz（女奴，『專供 Akbar 青睞』的歌舞伎），1931 年序言『我的劇只跟傳說有關』，陵墓自 1924 年起存放旁遮普政府檔案。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json、batches/*.json（含 wave21–24）、reviews 與 H2–H4 都 grep 不到 Anarkali；CLI search「Anarkali」「Lahore」「Mughal」都是 []，「Jahangir」只回 N2661 印度繩技（答案無關）。前提成立，但原題最大的錯是把封牆與愛情說成 1892、1922 年才加的：我重開 Finch 原文，『inclosed quicke within a wall』與『in token of his love』都在 1611 年那段裡。真正一層層被改的是她的身分（妻子／王子之母→寵姬→劇本裡的 kanīz），題目、鉤子與答案都照這條改寫，並把 Latif 改成『目前讀到』（Désoulières 自己就提到更早的烏爾都文本與 1884 年的 Kanhaiya Lal）。兩個轉折是真的：一是最早的版本說的是另一個身分的女人，二是把她定成女奴的劇作家自己說只是傳說。印巴敏感：故事兩地共有，scope 已寫只講蒙兀兒時代的拉合爾、不提分治、不評蒙兀兒皇帝。事實約 14 條，片長下修為 8.5–10 分鐘。"
+    },
+    {
+      "id": "N2722",
+      "agent": "H1",
+      "reviewer": "R251",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H1-S008 https://archive.org/download/bub_gb_dB7qafVTrKkC/bub_gb_dB7qafVTrKkC_djvu.txt（Elliot & Dowson III pp.234–235 與注 1；附錄 pp.609–610）；另重開 H1-S010 https://archive.org/details/in.ernet.dli.2015.504394（Sleeman 1915 版 pp.490–491）與 H1-S011 https://archive.org/details/in.ernet.dli.2015.106213（Carr Stephen pp.92–93）",
+      "reopen_result": "頁面上確實寫了：E&D 的 Barani 節譯有兩處『* * *』刪節號，正文是 Ulugh Khan 在 Afghanpur 搭臨時建物、蘇丹用餐後貴族出去洗手『A thunderbolt from the sky descended upon the earth』、屋頂塌下壓死他和五、六人；注 1：Barani 的沉默讓人懷疑是設計的，Firishta 提到這個懷疑但不信。附錄 Ibn Battuta：聖人 Nizamu-d din Badauni 入神時說『We give him the throne』，『Afterwards he died while the Sultan was absent』，王子扛棺；『the astrologers had predicted that he would never enter again the city of Dehli』；三天蓋好的木造 kushk 設計成大象碰到某一側就倒，Shaikh Ruknu-d din 被叫去做禮拜、回來時已倒。Sleeman：蘇丹常說『Let me but reach Delhi, and this proud priest shall be humbled』，聖人從大軍離開孟加拉到離京一站唯一的回答是『Dihli dur ast』，『This is now become a proverb over the East』，接著才是『很可能』與王子串通、Thug 視他為祖師的猜測。Carr Stephen：引 Ibn Battuta『wise men and astrologers』的煽動預言，接著『Chief among these offenders was the saint Nizam-uddin Aulia』，再接與 Sleeman 相近的『Let me but reach Delhi … this fiend priest shall be humbled』與『Dehli dur ast』；Gujar 詛咒那段旁邊有一個『* Franklin』的注號。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool、wave21–24 batches 與 reviews、H2–H4 都 grep 不到 Nizamuddin／Tughluq／Kuldhara 等名；CLI search「Nizamuddin」「Tughluq」「Delhi」都是 []。同類『預言是後人補上的』P26、P30、N2702 答案不同。前提成立，三份紀錄我都重開：Barani 的霹靂、Ibn Battuta 的占星師與『聖人在蘇丹不在時去世』、Sleeman 的『Dihli dur ast』與『已成諺語』、Carr Stephen 的『這些冒犯者之首就是聖人』都在原文裡。要改的是措辭：（1）『14 世紀的兩位見證者』不對，Ibn Battuta 是後來轉述，改『兩份紀錄』；（2）『最早』只能說『目前讀到最早』，而且 Sleeman 自己說它已是諺語，這句一定要講，不然觀眾會以為 1844 年是英國人編的；（3）Carr Stephen 不是『把占星師換成聖人』，是把聖人說成占星師之首，題目照原文改；（4）payoff 的『四百年後』算錯（1325→1844 是五百多年）；（5）Barani 讀的是有刪節號的節譯，不能說『只寫』；（6）Thug 猜測整段拿掉。兩個轉折成立（霹靂 vs 機關亭；預言者從占星師變成聖人），8.5–10 分鐘誠實。"
+    },
+    {
+      "id": "N2723",
+      "agent": "H1",
+      "reviewer": "R251",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H1-S014 https://www.currentscience.ac.in/Volumes/112/02/0402.pdf、H1-S015 https://www.currentscience.ac.in/Volumes/114/05/0944.pdf、H1-S016 https://www.currentscience.ac.in/Volumes/114/05/0946.pdf（三份 PDF 全文與參考書目逐條讀過）；另重開 H1-S012 https://archive.org/details/india.history.resource.77685（Tod 重印本全文：Palliwals 段、Salim Singh 段、城鎮表、路程表）",
+      "reopen_result": "頁面上確實寫了：Roy 等 2017 的十條參考書目是 Sharma 1978《Jaisalmer, The Golden City》、四篇考古地震學論文、GSI 地震構造圖、兩篇地質論文、Singhvi & Kar 1992，沒有 Tod；正文說『There is no documented evidence that supports the theory of massive evacuation』、地道說『seems absurd』，還寫 Paliwal 至今不過 rakshabandhan，因為那天是災難日，當成黑色的日子紀念；摘要自己也把『mass overnight evacuation』加了引號。Bahadur 等 2018 的七條參考書目是 1998《Paliwal Itihas》p.111、1973 年 Rajasthan District Gazetteers、1910 GSI Memoirs、1909 Erskine 地名辭典、1908 Imperial Gazetteer、2012 族譜，也沒有 Tod；他們說遷徙日是『the full Moon day of Shrawan month of 1882 VS … 29th July 1825』，地震紀錄只有 1819 年 6 月 16 日與 1905 年 4 月 4 日，街牆相連，1982 年照片顯示大多毀壞在最近 30 年；而且他們已經引了 1909 年地名辭典『he (Salim Singh) drove out the Paliwal Brahmins from Jaisalmer state』，還寫『The Paliwals migrated overnight』。Roy 等的回應同樣沒有 Tod，問『Is there any mention of the supposed migration of the Paliwal Brahmins in the Gazetteer?』，說集體遷徙是『a fabricated story』。Tod 原文：『this rich community, amounting to five thousand families, are nearly all in voluntary exile, and the bankers fear to return … but that he retains their families as hostages』，前面是英國代表 1821 年 12 月 17 日的報告；城鎮表『Kooldurro … 200 … 800』；路程表『Kooldurra … A village inhabited by Palliwal Brahmins; two hundred houses; wells』；同書 Palliwals 段又用現在式寫『Almost all the internal trade of the country passes through their hands』。書前序署 1832 年 3 月。",
+      "changed_fields": [
+        "answer_target",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool、wave21–24 與 reviews、H2–H4 都 grep 不到 Kuldhara／Paliwal；CLI search「Kuldhara」「Paliwal」「Jaisalmer」都是 []；wave22 擋下的 Bhangarh 是別的地方。關鍵轉折『雙方都沒引 Tod』我逐條讀了三篇《Current Science》的參考書目與正文，確實三篇都沒有 Tod，成立。重開時多讀到三件研究代理沒寫進的事，已補進答案：（1）Bahadur 等的反駁其實已引了 1909 年地名辭典『drove out the Paliwal Brahmins』，所以回應信的反問本身就答錯了，Tod 是更早一層；（2）Roy 的原論文自己寫 Paliwal 至今把 rakshabandhan 當災難日，而 Bahadur 的日期是 Shrawan 月滿月日（兩者是否同一天要補來源再連）；（3）Tod 同一本書裡，Palliwal 段用現在式說貿易都經他們的手、路程表說 Kooldurra 住著 Palliwal，Salim Singh 段卻說幾乎全都流亡，表的年份不明，這要照原文講，不能講成 Tod 給了日期。兩個轉折（勒索 vs 地震；更早的紀錄就在雙方都沒翻的書裡）都是真的，8.5–10 分鐘誠實。"
+    },
+    {
+      "id": "N2724",
+      "agent": "H1",
+      "reviewer": "R251",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H1-S025 https://www.gutenberg.org/cache/epub/16764/pg16764.txt（Procopius, Wars II.12 與 II.27，Dewing 譯）；另重開 H1-S026 https://www.tertullian.org/fathers/evagrius_4_book4.htm（Evagrius HE IV.27）",
+      "reopen_result": "頁面上確實寫了：Procopius II.12『they say that he added this also that never would the city be liable to capture by the barbarians. This final portion of the letter was entirely unknown to those who wrote the history of that time』，Edessa 人說跟信一起找到，把信刻在城門上；這段中間有一處『* * *』（Gutenberg 版的刪節），之後 Procopius 自己加了一句：就算基督沒有這樣寫，既然人們已經相信，祂也會為此保守這城。II.27 坑道裡放『dry trunks of trees … oil of cedar … sulphur and bitumen』，波斯人往冒煙處潑水『only succeeded in making the bitumen and the sulphur much more active』，全段沒有任何像。Evagrius IV.27 開頭『THE same Procopius narrates what the ancients had recorded concerning Edessa and Abgarus』，緊接著說『城不會落入敵手』這句『is not contained in what was written to Abgarus by Christ our God; as the studious may gather from the history of Eusebius Pamphili, who cites the epistle verbatim』，但他說這是信眾的信念、而信心使它應驗；坑道裡的木頭點不著，『they bring the divinely wrought image, which the hands of men did not form』，用水洗過灑在木頭上，木頭立刻起火；波斯人引水灌救，火『receiving the water as if it had been oil or sulphur』越燒越旺。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool、wave21–24、reviews 與 H2–H4 都 grep 不到 Edessa／Abgar／Mandylion；CLI search「Edessa」「Abgar」「Mandylion」「Procopius」都是 []；H32 杜林裹屍布講碳定年，核心不同。只看紙上紀錄，不評價宗教主張：答案每一句都是『某文本寫了什麼』，scope 已寫不說真假。我重開 Procopius 與 Evagrius 原文，研究代理寫的火、燃料、潑水、『人手沒有做成的像』都在；但多讀到兩件該放進去的事：（1）Evagrius 自己就翻了 Eusebius，說『城不會陷落』不在原信裡——這是全片最好的轉折，也讓片子不會被看成在挑 Evagrius 的錯；（2）Procopius 不是懷疑者，他說就算基督沒寫，神也會為信的人保守這城，兩位史家都要照他們自己的口吻講。另修題目兩處：『兩代人後的版本』沒有來源（成書年代本來就不講），改『較晚的敘利亞文版本』；『五十年後』改『同一世紀末』。三個轉折（沒像→有畫的像→不是人手畫的像；應許是後加的；同一場火有沒有像）都有原文，9–11 分鐘誠實。"
+    },
+    {
+      "id": "N2725",
+      "agent": "H1",
+      "reviewer": "R251",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H1-S021 https://archive.org/details/sim_blackwoods-magazine_1821-05_9_50（Blackwood's 1821 年 5 月 pp.127–129 全文 OCR）；另重開 H1-S018 https://archive.org/details/bim_eighteenth-century_travels-in-various-part_macdonald-john_1790（Macdonald 1790 p.276）",
+      "reopen_result": "頁面上確實寫了：Macdonald『The weather was so stormy, that the sailors said they saw the flying Dutchman. The common story is, that this Dutchman came to the Cape in distress of weather, and wanted to get into harbour, but could not get a pilot to conduct her, and was lost; and that ever since, in very bad weather, her vision appears. The sailors fancy that if you would hail her, she would answer like another vessel.』Blackwood's 的短篇裡，講故事的水手先說大家『give different reasons for it, but my story is this』：一艘阿姆斯特丹船，船長叫 Vanderdecken，在 Table Bay 外逆風，對問他今晚進不進港的船回答『May I be eternally d—d if I do, though I should beat about here till the day of judgment!』，『這艘船出現時一定伴著壞天氣』。",
+      "changed_fields": [
+        "question",
+        "scope",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：CLI search「Flying Dutchman」「Vanderdecken」回 []，「荷蘭人」「幽靈船」只回 G11（另有 N2682 古羅馬『天上的幽靈船』，答案無關）；grep pool 與 wave21–24、H2–H4 也只有 G11 與幾處『要和 G11 區分』的備註。Macdonald 與 Blackwood's 原文我重開，領航員版本與 Vanderdecken 的毒誓都在。能不能成立的關鍵是兄弟題：唯一的兄弟 G11 現在是 Shorts。我查了 pool/README 與 dedup-decisions.json：G11 的處置理由是『沒有同核心的兄弟題可以排成一集』，屬於池子自己的機械處置，不在站主決定的那一條（只有 F15）；而且池子已多次照同一規則把 Shorts 題移回長片（N191、N726、N1084、L02、N821、N825，L02 跟 G11 是同一組第一輪轉 Shorts 的題），都沒有另外請站主決定。所以這一對可以不靠站主就排成一集，我判它可以成立。若協調者認定任何 Shorts 移回都要站主點頭，那這題就要等站主，不要另找別的兄弟硬湊。兩章同一個核心問題（每個細節第一次寫在哪），G11 自己 scope 缺的正是本章的 1790／1795 年文本，接起來順。改的地方：題目把『第一次印出』『1821 年才出現』改成『目前讀到最早』，『假託扒手之名』改成『署名扒手 Barrington』（假託只有搜尋摘要），『1803 年詩人』改成 Scott 引的詩。片長 5–6 分鐘誠實，沒有灌水。"
+    },
+    {
+      "id": "N2741",
+      "agent": "H2",
+      "reviewer": "R252",
+      "verdict": "ADOPT",
+      "key_source_reopened": "H2-S001 https://www.ccel.org/ccel/v/voragine/goldleg1/cache/goldleg1.txt；另重開 H2-S006 https://zh.wikisource.org/wiki/毛詩正義/卷二",
+      "reopen_result": "《黃金傳說》Caxton 譯本〈Here beginneth the Litanies〉章確實寫：大連禱由教宗額我略設立，起因是羅馬人復活節後放縱、上主降下猝死的瘟疫，人走路、玩耍、吃飯、說話時突然死去，『sometime sneezing they died』，所以旁人聽到噴嚏就說『God help you, or Christ help: and yet endureth the custom』，打噴嚏或打呵欠時在臉前畫十字；接著說瘟疫怎麼開始『見於額我略傳』。全段沒有說額我略下令說這句話。《毛詩正義》〈終風〉鄭箋確實是『今俗人嚏，云：「人道我。」此古之遺語也』，毛傳訓『跲』，釋文記孫毓、崔氏讀作『㰦』（張口）——與候選的寫法一致。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複：池內噴嚏只出現在 N166（Ring a Ring o' Roses，答案是瘟疫說 1951 年才出現），pool CLI search「噴嚏」只回 N166、「sneeze」「黃金傳說」「額我略」無相關；grep pool.json、batches/*.json（含 wave21–24）與 H1/H3/H4 也沒有噴嚏題。重開的兩個來源都撐得住 answer_target，scope 已把『額我略下令』『600 年 2 月 16 日』與『黃金傳說是最早』都列為不能說，措辭是『目前讀到』。三層（中世紀瘟疫說→Browne 用普林尼、色諾芬反駁→東亞『有人在講我』與《徒然草》的噴嚏咒）是真轉折，各有一手文本，9–11 分鐘誠實。東亞段是平行而非推翻，但它把『噴嚏會要命』的恐懼放到瘟疫說之外，仍算一層。"
+    },
+    {
+      "id": "N2742",
+      "agent": "H2",
+      "reviewer": "R252",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H2-S011 https://archive.org/details/deutschemytholo00holtgoog（djvu 全文 p.141）；H2-S008 https://archive.org/details/b30766515（djvu 全文）；H2-S013 https://blogs.loc.gov/folklife/2016/04/ostara-and-the-hare/",
+      "reopen_result": "Holtzmann 1874 年講義 p.141 原文：『Der Osterhase ist mir unerklärlich; wahrscheinlich ist der Hase das Thier der Ostara; auf dem Bilde der Abnoba ist ein Häschen dabei. Es kommt aber in der deutschen Mythologie bis jetzt nirgends ein Hase vor』，接著『Uebrigens ist doch der Hase ein Vogel gewesen, da er Eier legt; vielleicht gehen die Ostereier auch nicht einmal bis ins Heidenthum zurück』（復活節結束齋戒、教會在復活節前夕祝聖蛋與肉），但又說前一晚替兔子做窩讓牠下蛋『scheint doch eine heidnische Vorstellung zu sein』。所以引文成立，但 wahrscheinlich 是『大概／很可能』，不是候選寫的『也許』；理由只是一尊 Abnoba 像旁有小兔。1682 年論文（主持 Georg Franck，答辯人 Johannes Richier，1682 年 5 月）OCR 可讀到：『in Germania Superiore, Palatinatu nostrate, Alsatia & vicinis locis, ut & in Westphalia』這種蛋以兔子命名，來自哄單純的人與小孩的故事，說兔子（OCR 為 Der Oster-hase）生下這些蛋、藏在花園草叢灌木裡，孩子更起勁去找；接著說孩子沒人看時不加鹽、奶油、調味就狼吞，吃壞身體，§11 舉了一個在史特拉斯堡吃太多硬煮蛋的女孩。Winick 文確認：Holtzmann『seems to be the first direct connection between hares and Ostara』，譯作『probably』；1882 年 Wackernagel 已有 Ostara 乘兔車；Oberle 的鳥變兔可能是把 Holtzmann 那句誤讀成真的變形。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool CLI search「復活節」只回復活節島與沙皇彩蛋（H21、N107），「Easter」「Ostara」「兔子」無同題（兔子回 N1461、N2462 等無關）；grep pool.json 與 batches/*.json（含 wave21–24）及 H1/H3/H4 都沒有 Ostara、Easter hare。前提成立：Holtzmann 引文與 1682 年論文都在重開的掃描全文裡。要改的是：(1) Holtzmann 的 wahrscheinlich 是『大概』不是『也許』——他其實相當肯定，只是理由薄弱（一尊 Abnoba 像），這反而讓轉折更有力，所以 answer_target 補上理由與他『做窩似異教』的另一面（避免只取對論點有利的半句）；(2) hook 的『最早寫下兔子的那個人』改為『目前找得到最早』，question 的『第一個』加上『據國會圖書館民俗學者整理』；(3)『格林造出 Ostara』改『推出』，避免暗示捏造；(4) 補 Winick 的 Wackernagel 1882 與『Oberle 誤讀』兩點，這是傳播鏈裡真正的一環。1682 確實是本輪讀到最早，候選 question 已寫『目前讀到』。片長 9–11 分鐘可信。"
+    },
+    {
+      "id": "N2743",
+      "agent": "H2",
+      "reviewer": "R252",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H2-S019 https://www.usccr.gov/files/historical/1982/82-001-H.pdf（pdftotext 抽字第 2 頁）；H2-S014 https://www.wordorigins.org/big-list-entries/rule-of-thumb",
+      "reopen_result": "1982 年民權委員會報告第 2 頁確實寫：美國法律建立在『縱容打妻、甚至規定所用武器』的英國普通法上，『This \"rule of thumb\" stipulated that a man could only beat his wife with a \"rod not thicker than his thumb.\"』（註 11：Terry Davidson, \"Wife Beating: A Recurring Phenomenon throughout History\", 1977, p.18）；接著說 Blackstone『commented on the \"rule of thumb\"』，引的卻是『as he is to answer for her misbehavior, the law thought it reasonable to intrust him with this power of chastisement, in the same moderation that a man is allowed to correct his apprentices or children』，註明『as quoted in \"Wife Beating,\" p. 19』——引文裡沒有拇指，也是轉引自 Davidson。委員會的說法我親自核實成立。Wilton 頁面：17 世紀用例（Durham 寫於 1658 年前、1685 年印行；1680 John Alexander；1691 Hope；1721 Kelly）、Buller 無紀錄、Gillray 1782-11-27、Bradley 1824（法官說是在『Raymond 法官』一案承認過，Wilton 說找不到這樣的判決，可能和 Buller 弄混）、Rhodes 1868、Oliver 1874、Kelly 1994『folklaw』都對。但 1970 年代那段與候選不同：Wilton 說 Del Martin 1976 寫『a rule of thumb, so to speak』，『is not a claim that the phrase came out of the practice』，是被許多人誤讀；直接說英國普通法有一條叫 rule of thumb 的規定的是 Davidson 1977。Wilton 也指出這些判決『None … invoked the phrase rule of thumb』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "editorial"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool CLI search「rule of thumb」「經驗法則」無結果，「拇指」回 N2527、N424、N821（藏拇指俗信），答案都不同；grep pool.json、batches/*.json（含 wave21–24）與 H1/H3/H4 沒有 Blackstone、Buller、rule of thumb。依指示親自核了 1982 年報告：標題、『rule of thumb 規定不比拇指粗的棍子』、『Blackstone commented on the rule of thumb』與所引 Blackstone 句子都在第 2 頁，引文沒有拇指且註明轉引自 Davidson 1977——候選這一點正確。要改的是 1970 年代的歸屬：Wilton 明說 Del Martin 1976 的『so to speak』不是起源主張、是被誤讀，直接主張的是 Davidson 1977，所以 question 改成『1977 年的一篇文章』、answer_target 把兩人分開；補上 Bradley 案『Raymond 法官』的錯置與『判決都沒用這個片語』兩點，這是同一來源裡真正的轉折。家暴題：scope 加嚴到只用文件、道具、法庭與法官，不出現任何家庭成員，拿掉無來源的『釀酒師用拇指試溫』畫面，另一幅匿名版畫整幅不用；並保留 Wilton 的提醒，避免被讀成淡化家暴。不在不收清單內，今天也不是兩國之爭。9–11 分鐘可信。"
+    },
+    {
+      "id": "N2744",
+      "agent": "H2",
+      "reviewer": "R252",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H2-S021 https://penelope.uchicago.edu/Thayer/L/Roman/Texts/Macrobius/Saturnalia/7*.html（7.13.6–15）；H2-S024 https://distantreader.org/stacks/earlyprint/txt/A62036.txt",
+      "reopen_result": "馬克羅比烏斯 7.13 拉丁原文：Avienus 的戒指從右手小指掉下，Horus 問為何大家把戒指戴在左手小指旁、又叫 medicinalis 的那根；Disarius 說從埃及傳來一個說法，他查了解剖書發現是真的：一條 nervus 從心臟通到左手小指旁那根手指；Horus 說見過埃及祭司在神像這根手指上塗香料，還說彎起這根手指代表完美數 6；Caecina Albinus 引 Ateius Capito：古人戴戒指為了蓋印不是裝飾，起初『quacumque manu, quolibet digito』，後來印面刻在寶石上，才從事多的右手移到較閒的左手免得寶石碰碎，再挑小指旁那根，因為拇指一直在用、食指無遮護、中指與小指不合適。Swinburne 1686 轉錄本：婚戒戴左手第四指、小指旁，因為『by the received Opinion of the Learned and Experienced in Ripping up, and anatomising men's Bodies』有一條血管從這指通心，『called Vena amoris, Love's Vein』，旁註引 Appion、Gellius、Polydore Vergil、Pliny 33 與『c. foeminae 30 q. 5』。兩處都與候選一致。",
+      "changed_fields": [
+        "question"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool CLI search「戒指」回 M02（金的來源，已排除）、N2201（暹羅貓尾巴）、N423、N763，「無名指」「vena」無同題；grep 沒有 vena amoris、ring finger、婚戒，H1/H3/H4 也沒有。重開的兩個來源都撐得住，Capito 的論證比候選寫的還完整。唯一要改的是 question 的『要到 1686 年……才出現』：本輪只讀到這一本，Swinburne 寫於 17 世紀初、旁註引的教會法與 Polydore Vergil 可能更早有類似說法，所以改成『目前讀到最早見於』，與 scope 一致。answer_target 已寫『見於』，不必改。三層轉折（神經→蓋印的實用理由→法律書裡的『愛之脈』）真實，8.5–10 分鐘可信。"
+    },
+    {
+      "id": "N2745",
+      "agent": "H2",
+      "reviewer": "R252",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H2-S026 https://zh.wikisource.org/wiki/太平御覽/0031 與 https://zh.wikisource.org/wiki/太平御覽/0851（action=raw 全文）；H2-S028 https://zh.wikisource.org/wiki/荊楚歲時記；H2-S027 https://zh.wikisource.org/wiki/續齊諧記",
+      "reopen_result": "《太平御覽》卷三十一〈五月五日〉引《風土記》『仲夏端五…俗重此日與夏至同。先節一日，又以菇葉裹粘米…節日啖。煮肥龜…名曰菹龜。粘米一名粳，一曰角黍，蓋取陰尚陽包裹末之象也』；卷八百五十一引《風土記》『於五月五日及夏至啖之。一名糭，一名角黍，蓋取陰陽尚相裹未分散之時像也』——都沒有屈原，候選這點成立。但同卷三十一另引東漢應劭《風俗通》：『五月五日，以五彩絲系臂者，辟兵及鬼，令人不病溫』，『又曰：亦因屈原，一名長命縷，一名續命縷…』——也就是說，目前讀到最早把五月五日的習俗跟屈原連起來的是這條東漢佚文（接的是五彩絲，不是粽子），比《續齊諧記》早得多，候選沒提。卷八百五十一在《續齊諧記》條下有小注『《異苑》云：粽，屈原婦所作也』，劉宋劉敬叔《異苑》早於梁代吳均，所以『最早把粽子交給屈原的是《續齊諧記》』不成立。卷三十一也引《會稽典錄》記曹娥父親『漢安帝二年五月五日，于縣江溯濤迎波，沉溺死』，所以《後漢書》不是唯一、也未必是最早記這件事的書。《荊楚歲時記》按語原文是邯鄲淳〈曹娥碑〉『五月五日，時迎伍君，逆濤而上，為水所淹』，『斯又東吳之俗，事在子胥，不關屈平也』，《越地傳》『起於越王勾踐』『不可詳矣』；正文『夏至節日，食糉』，按語引《風土記》稱角黍。《續齊諧記》維基文庫本作『區曲』，御覽兩卷分作『區回』『歐回』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool CLI search「端午」「粽子」「屈原」「龍舟」「伍子胥」「曹娥」都回空；grep pool.json、batches/*.json（含 wave21–24 與各批 not_added）只在無關題（鐵砧山劍井、還劍湖的龍舟）出現『端午』『龍舟』，沒有粽子或屈原題；H1/H3/H4 也沒有。依指示自己對了較早的文本，發現兩處『最早』不成立：(1)《太平御覽》卷三十一引東漢《風俗通》已有五彩絲『亦因屈原』，屈原和五月五日的連結比《續齊諧記》早數百年；(2) 卷八百五十一小注引劉宋《異苑》『粽，屈原婦所作也』，早於梁代的《續齊諧記》。另外 hook 的『最早寫下五月五日江上迎神的史書，迎的是另一個人』兩處都錯：《後漢書》沒說迎誰（伍君出自〈曹娥碑〉），而且《會稽典錄》也記了此事。已改 question、hook、answer_target、scope、source_locator 與 payoff；改完故事反而更好：屈原先接上五彩絲、後接上粽子、龍舟始終有人爭，是三段真轉折。新增的兩條都出自候選已列的 H2-S026（同一部《太平御覽》的兩卷），不必加新來源。韓中端午之爭：scope 已排除並加嚴到不碰『哪一國的』；題目本身講六朝文本，不涉今日國族。9–11 分鐘可信。"
+    },
+    {
+      "id": "N2746",
+      "agent": "H2",
+      "reviewer": "R252",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H2-S032 https://penelope.uchicago.edu/encyclopaedia_romana/gladiators/polliceverso.html（WebFetch）；另查 Corbeill 1997〈Thumbs in Ancient Rome: Pollex as Index〉（MAAR 42，JSTOR 4238745）與 2004《Nature Embodied》第 2 章，兩者都要訂閱或購買，沒有讀到、沒有繞過",
+      "reopen_result": "Encyclopaedia Romana（James Grout 編）確實寫：尤維納利斯 verso pollice『with a turn of the thumb』；普魯登修斯 converso pollice，貞女轉一下拇指要勝者刺死倒地者；普林尼的諺語 pollices premere 表示讚許，premere 可指把拇指壓在拳上，也可指把手指壓在折起的拇指上；昆體良有 infesto pollice；Corbeill 讀 premere 為饒命（拇指壓在握起的拳上）、infesto pollice 為伸出向上的拇指＝處死，並以尼姆的 Cavillargues 圓章（2 世紀末或 3 世紀初，刻 STANTES MISSI）為證；Lewis & Short 也說 premere 是讚許、pollex infestus 是不贊成；Gérôme 1872《Pollice Verso》的『拇指朝下』『perpetuated that mistaken notion』，並啟發了《神鬼戰士》（2000）。頁面明說『there is no clear textual evidence for the position of the thumb』『the manner or direction is not known』。所以核心前提（羅馬原文只說轉動、方向不明、朝下＝殺的畫面靠 Gérôme 流傳）有一手拉丁原文（H2-S031、H2-S002）加兩個獨立二手（Encyclopaedia Romana、TIME）支持。",
+      "changed_fields": [
+        "answer_target",
+        "premise_status",
+        "scope",
+        "editorial",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "確認（不駁回）：pool CLI search「拇指」只回 N2527、N424、N821，「thumb」「pollice」無結果；grep 的 Gérôme、Juvenal、thumbs 命中都是無關題（暹羅使節畫作、巴西人魚、指紋），H1/H3/H4 沒有。needs_check 的原因是 Corbeill 原著讀不到；我試了，1997 論文在 JSTOR、2004 年書在 Princeton/Perlego 都要付費，沒有繞過。但這題的核心答案不靠 Corbeill：『羅馬原文只說轉動、沒有方向』有尤維納利斯與普魯登修斯的拉丁原文，『按壓拇指是讚許』有普林尼，『方向至今不明』與『Gérôme 讓誤解流傳』有 Encyclopaedia Romana 與 TIME 兩個獨立來源。Corbeill 與 Morris 的部分已寫成『據……轉述』，所以改為 screened。另外補上昆體良的『敵意拇指』與『方向不明』的明說，scope 標明 Morris 數字只有 TIME 一處；minutes 原來的 [8,10] 低於 8.5 的門檻，事實數（約 14 條）撐得起 8.5–10，改為 [8.5,10]；visual 加一戰壕溝，對上 1917 年的 Empey。轉折真實：轉動→按壓是讚許→1872 年的畫→20 世紀美國大兵的『讚』。"
+    },
+    {
+      "id": "N2761",
+      "agent": "H3",
+      "reviewer": "R253",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H3-S003 https://archive.archaeology.org/9907/etc/mask.html；另以 pdftotext 讀 H3-S001 https://www.ascsa.edu.gr/uploads/media/hesperia/25067959.pdf",
+      "reopen_result": "《Archaeology》1999 頁面寫：「凝視了阿伽門農的臉」是 Schliemann「據說」打給一家希臘報紙的電報；他自己從未把這張面具認作阿伽門農的，只因為它最精美才被連上英雄；Calder 主張偽造，自承證據是間接的，舉的是面部毛髮與另外剪出的耳朵等 Schliemann 從未記下的風格差異；豎井墓後來被證明比推定的特洛伊戰爭至少早 300 年；當期收了 Traill、Demakopoulou 的回應與 Lapatin〈Not A Forgery, How about a Pastiche?〉，Mellink 批評 Calder 是對 Schliemann 的私怨。Dickinson 2005 抽出的文字可辨認：Ludwig 1931 年 p. 208 引的電報有「圓臉的死者」與找納夫普利翁的畫家、相關抄本無從查證、與 1876 年 12 月 3–4 日報紙電報相似、Ludwig 可能「改善」了文字、Schliemann 家族口傳、「factoid」、Demakopoulou 反對 Calder，與答案一致。",
+      "changed_fields": [
+        "editorial",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：素材池 CLI 搜 Schliemann、Agamemnon、邁錫尼、阿伽門農皆為 []，grep pool.json 與 batches/*.json（含 wave21–24）也無命中；同類 N2526、N2527、N2524 是「明星文物被說是偽品」，本題核心是「名言查無實據、名字安到另一張面具上」，不同答案。前提成立，三個轉折（電報出處、圓臉指的是 NM 623、偽造說與反駁）都在 Dickinson 與《Archaeology》裡。改兩處：payoff 原寫「紙上找得到的最早來源是 1931 年一位傳記作家」，但 Ludwig 1931 引的是「圓臉」電報，不是名言本身，名言最早出處沒查到，照 wave21–22 的教訓不能說「最早」；scope 原寫「學界多數反對偽造說」，來源只有 Demakopoulou 與 Dickinson 兩位反駁，當期還有折衷看法，不能說「多數」。遺體只講不畫，scope 已寫清楚；普里阿摩斯寶藏不碰。片長 9–11 分鐘誠實。"
+    },
+    {
+      "id": "N2762",
+      "agent": "H3",
+      "reviewer": "R253",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H3-S006 https://warwick.ac.uk/research/rtp/ct/casestudies/casestudy2；另讀 H3-S005 archive.org djvu 全文 https://archive.org/download/dodoitskindredor00stri/dodoitskindredor00stri_djvu.txt",
+      "reopen_result": "華威頁面寫：遺存只有一隻腳和頭，是任何渡渡鳥僅存的軟組織；送去 CiMAT 掃描是為了推廣（outreach）；金屬物大多在頭骨左後側，大小與位置符合從右側、可能偏下方射入；右側皮膚上原以為是蟲蛀的洞也與此相符；掃描很快讓原本推定的來歷受到懷疑，被處決的展覽品不太可能，來歷在新檔案出現前仍不確定（頁面沒寫 115 這個數字，數字出自論文 H3-S004）。Strickland 1848 原文：引 Lyell 說大學檔案記遺骸 \"a Museo subducta, annuentibus Vice-cancellario aliisque Curatoribus, ad ea lustranda convocatis, die Januarii 8vo, a.p. 1755\"，接著自己寫 \"The head and one of the feet were saved from the flames\"，與答案一致。",
+      "changed_fields": [
+        "question"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：CLI 搜 dodo、渡渡、Tradescant 皆為 []；grep 只命中 wave17 一個 archive.org 網址裡的 \"dodos\" 字串，無相關題。N309 獨角獸角、N383 韃靼植物羊同屬珍奇櫃標本，答案不同。前提成立。只改 question 一處措辭：「拉丁紀錄」是 Strickland 轉引 Lyell 的，研究代理和我都沒讀到大學原始檔案，所以不說「大學檔案裡寫的」，改成「1848 年作者自己引的大學紀錄」。其餘照收；動物標本可畫，鉛彈只用示意圖。兩個 1848 年拼接、一個 2018 年 CT 的翻轉加上兩條未證實的來路，9–10 分鐘誠實。"
+    },
+    {
+      "id": "N2763",
+      "agent": "H3",
+      "reviewer": "R253",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H3-S009 https://www.eurekalert.org/news-releases/983032；另以 pdftotext 讀 H3-S008 WaPo 存檔 PDF；補讀 ADLM 2024-05 新聞稿（編為 H3-S021）",
+      "reopen_result": "Cell Press 新聞稿寫：只有五綹確認來自同一位歐洲男性，被認為「幾乎確定是真的」；先前的鉛中毒分析用的樣本根本不是貝多芬的，來自一位女性；之後驗鉛、鴉片、汞都要用驗證過的樣本；他有肝病的遺傳傾向，至遲在最後一次病倒前幾個月有 B 型肝炎感染；他的 Y 染色體與五位今天同姓的親屬都對不上，婚外父系事件發生在 Hendrik van Beethoven 受孕到七代後 1770 年 Ludwig 受孕之間；沒寫親屬姓名。WaPo 寫：Schindler 1840 年傳記的羊鬍子故事、補寄的那綹今天叫 Halm-Thayer lock 並列入研究；Hiller lock 來自一位阿什肯納茲猶太血統的女性，二十多年前它的研究指向鉛中毒；Reiter 對汙染持保留，說收集頭髮的少年 Ferdinand Hiller 有猶太血統，他的母親可能幫忙保存過；共同祖先是 16 世紀的 Aert van Beethoven。ADLM 新聞稿寫：2024 年驗 Bermann 與 Halm-Thayer 兩綹，鉛分別約為正常的 64 倍與 95 倍，估計血鉛 69–71 µg/dL，研究者說濃度不支持鉛導致死亡，但可能促成他一生的病痛。",
+      "changed_fields": [
+        "answer_target",
+        "editorial",
+        "scope",
+        "source_ids",
+        "source_locator"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：CLI 搜 Beethoven、Hiller 為 [] 或不相關（N342 威廉泰爾），搜貝多芬只命中 N173 薩列里；grep 無題。前提成立，2023 年研究的說法都在新聞稿與 WaPo 裡，沒有超出論文對在世者的結論。最大的問題是漏了 2024 年的回應：研究代理說讀不到就不引，但它恰好推翻了片子隱含的「鉛中毒證據垮了」——驗的正是羊鬍子故事裡補寄的 Halm-Thayer lock，鉛約 95 倍，只是不足以致命。這是真的第四個轉折，也讓 payoff 不再誤導，所以補進答案（新聞稿來源編 H3-S021，正式稿前讀論文）。在世親屬：只說「五位今天同姓的男性」，不畫、不提姓名國籍、不對他們本人下任何基因結論，家族樹不畫今人；scope 補明。醫療內容只轉述研究結論。片長 9.5–11 分鐘誠實。"
+    },
+    {
+      "id": "N2764",
+      "agent": "H3",
+      "reviewer": "R253",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H3-S012 https://pmc.ncbi.nlm.nih.gov/articles/PMC8050239",
+      "reopen_result": "論文寫：1909 年 Bode 在倫敦以 185,000 金馬克買下，因為她的臉像 Leonardo 名畫中人物而歸給他；兩年內刊出超過 730 篇正反文章；1910 年化學分析驗出鯨蠟，1980 年代再驗出；Lucas 的兒子有法定聲明說父親 1846 年做了它（論文沒提蠟燭頭，那是 The Art Newspaper 的轉述）；背部有木片、報紙等 19 世紀材料，也可能是後來修改時加的；2021 年所有分析成分都在 1700 年以後，六個蠟樣合併為 1712–1950，個別最早 1704；用 Lucas 1850 年《麗達與天鵝》當對照，成分極相似；結論是不可能出自 Leonardo，但沒有替 Lucas 定案。",
+      "changed_fields": [
+        "question",
+        "editorial"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：CLI 搜 Flora、Bode、蠟像皆為 []（Bode 只命中不相關的 N1366）；grep 命中的 Flora 是 Goldilocks 來源裡的人名。N2526 金冠同為「博物館買到近代作品、有人出面認領」，核心答案不同，可排成同一系列，但 T114 已滿 13 分鐘，不併。改兩處：question 原寫「要等 2021 年才說清楚蠟來自鯨魚」，但鯨蠟 1910 年就驗出，2021 年解決的是年代；payoff 原寫「一頭 19 世紀的抹香鯨」，碳十四只給 1700 年以後的下限（1712–1950），不能說 19 世紀。Bode 不寫成笑話。8.5–10 分鐘誠實。"
+    },
+    {
+      "id": "N2765",
+      "agent": "H3",
+      "reviewer": "R253",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H3-S015 https://en.wikisource.org/wiki/Page:EB1911_-_Volume_24.djvu/818（讀 action=raw 原文）；另讀 H3-S016 DNB vol. 51 p. 395 原文",
+      "reopen_result": "EB1911 原文：Kesselstadt 死亡面具今在達姆施塔特，曾被宣稱是莎士比亞真正的死亡面具，並被拿來衡量其他畫像的真假；它其實不是死亡面具，而是從死亡面具翻的模，可能還不是直接翻的；背面三處 \"+A°Dm̄1616\" 是唯一連結；Page 量的尺寸近一半與史特拉福半身像相符，其餘他歸給雕塑家的誤差；1849 年出現；Becker 有一幅 1637 年、戴花冠屍體的小畫，傳統說是莎士比亞，但「面貌、死亡年份與花冠都明白指向桂冠詩人 Ben Jonson」；他 1847 年在美因茲 Kesselstadt 伯爵遺物拍賣上買下這幅畫，同場也出現「一件石膏模」（當時沒有任何莎士比亞的說法），他後來在舊貨店找到一件、認定是同一件；結論是只停在猜想。DNB 原文：1849 年 Becker 在美因茲舊貨店發現；面貌像他 1847 年買的、標 1637 年的據稱肖像，畫長期屬於 1843 年過世的伯爵家；1849 年帶到英國，Owen 支持；今在達姆施塔特公爵宮；證據鏈不完整。Garrick 半身像 1845 年在 Lincoln's Inn Fields 倉庫牆內發現，先歸 Clift，傳給女婿 Owen，Owen 賣給 Devonshire 公爵，公爵 1851 年送 Garrick Club。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：CLI 搜 Kesselstadt、death mask、死亡面具皆為 []，搜莎士比亞只命中 N2304 世界書日等；grep 命中的 death mask 是 Resusci-Anne 來源，無關。N2604、N2605（T117）是紙本偽稿，本題是實物身分靠彼此作保的證據撐起，答案不同。前提成立，每個轉折都標了出處。依指示查 EB1911：關鍵的「1847 年拍賣時沒有莎士比亞之名」確實在原文裡，但只有這一個 1911 年的百科來源，DNB 與 Hutton 都沒有這句，我也沒找到第二個來源，所以 scope 補上「旁白說 1911 年大英百科寫」與正式稿前要補讀的兩份文件，補不到就退回 DNB 也支持的部分（片子仍有 2006 年比對與 Garrick 半身像兩個轉折，撐得住）。另修：question 的「所有畫像」原文是「其他畫像」；Garrick 半身像的轉手是 Clift→Owen→Devonshire 公爵→1851 年 Garrick Club，原答案省掉了中間兩手。面具是石膏翻模，可畫成閉眼石膏臉；小畫中的屍體不畫。8.5–10 分鐘誠實。"
+    },
+    {
+      "id": "N2766",
+      "agent": "H3",
+      "reviewer": "R253",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H3-S019 https://lup.lub.lu.se/search/files/83489212/Collecting_curiosities_WEBB.pdf（pdftotext 讀第 9 章 pp. 98–115 全文）；另搜尋英、法文回應",
+      "reopen_result": "第 9 章寫：1790 年代 Lenoir 掘出的棺是木製、沒有紀錄文件，而 1667 年下葬的是銅棺、有書面紀錄，所以 Lenoir 掘出的「很可能不是笛卡兒」；1819 年冬遷葬聖日耳曼德佩時，在當局與學會代表面前發現沒有頭骨；Berzelius 1844 年回憶在《Argus》讀到 Sparrman 遺物拍賣以 18 rdr 36 sk 賣出笛卡兒頭骨、買主是賭場老闆 Arngren、以原價買回；作者指出他記錯日期（《Argus》是 1821 年 3 月 14 日）；頭骨上的說明、拉丁詩與六個名字；1821 年 4 月送到科學院，Berzelius 請求放入棺中未獲照辦，科學院根據 Blanc de Lanautte 的研究認定極可能是真的；隆德碎片內側寫 \"Cartesi – döskalla 1691. No 6\"，1780 年目錄記為 von Stiernman 之女、主教 Celsius 之妻所贈，1821 年後被當成丟臉的偽品；作者寫 \"four are definitely forgeries\"，\"J. Ahlgren 1797\" 大概是唯一真的，偽造最可能在 1779 年後、Fischerström 1796 年死前；結論說巴黎頭骨是偽品、隆德碎片最可能是真的；1983 年 Ahlström 等人傾向巴黎頭骨；指骨 1666 年交給法國大使 Hugues de Terlon，是唯一確定屬於他的；結尾 \"part 1 of our investigation is finished. Now part 2 begins\"。搜尋只找到 IFLScience、Atlas Obscura 等轉述，沒有其他學者或巴黎博物館的回應；博物館標籤仍寫笛卡兒。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "editorial",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：CLI 搜 Descartes、Berzelius、skull 皆為 []，搜笛卡兒只命中 M15、搜頭骨命中 H35 皮爾當人等不相關題；grep 也無題。H29 路易十七心臟、本批 N2763 靠 DNA，本題靠 18 世紀出版品比對，答案不同。依指示把它當成一個團隊的論證：原答案寫「四個名字必定是偽造的」「真正的頭骨可能是隆德碎片」，語氣跟著作者走，改成「他們主張」，並補上作者自己轉述的反方（1983 年 Ahlström 傾向巴黎頭骨）、科學院 1821 年的認定、作者自稱「第一部分」，結局寫明覆核者搜英法文都沒找到回應或 DNA 結果、巴黎仍以笛卡兒之名展示。遺骨：原 visual 有「開棺現場（棺蓋半掩）」，改成闔上的棺；明寫不畫頭骨、骨片、指骨或它們的剪影；Lenoir 的額骨戒指與「頭骨爆裂法」不講。問題措辭的「被笑了兩百年」原文是「被當成丟臉的偽品」，照改。轉折（Berzelius 的買回、隆德碎片、名字比對、Lenoir 的棺）是真的轉折，10–12 分鐘誠實。"
+    },
+    {
+      "id": "N2781",
+      "agent": "H4",
+      "reviewer": "R254",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H4-S002 https://archive.org/download/cu31924029882879/cu31924029882879_djvu.txt（MacMillan 1918，OCR 4636–4700、4910–4960 行）；另重開 H4-S003 https://www.nationalgeographic.com/adventure/article/crocker-land-peary-arctic-continent",
+      "reopen_result": "MacMillan 書上確實寫：1914 年 4 月 21 日 Green 衝回雪屋喊『We have it!』，眼前『山丘、山谷、雪峰橫跨至少一百二十度地平線』，Pee-a-wah-to 看了幾分鐘說是 poo-jok（mist），景色隨太陽轉動變形、晚上完全消失；22–24 日到 Cape Thomas Hubbard 正西北 150 英里，『不只到了地圖上的棕色那塊，還在內側三十英里』，什麼都沒有。回程在 Cape Thomas Hubbard 石堆的可可罐裡找到美國國旗碎片與『非常簡短』的紀錄『Peary, June 28, 1906.』；那天沒有一絲雲霧，肉眼就看得到西南到北北東一片像山丘山谷雪峰的影像，『我們的判斷當時和現在一樣：這是蜃景或海冰的反光（loom）』，但他同頁仍主張 Axel Heiberg Land 以西（不是西北）有陸地。National Geographic 訪談 Welky：以約 5 萬美元的贊助人 George Crocker 命名；他讀過 Peary 的通信（含給 Crocker 的信），回國後數月未提；Peary 留下證明到過的紀錄（訪談稿作 care notes，他說『相當詳細』）寫了打獵、爬山看景，卻沒提 Crocker Land；船員日記說 Peary 從沒提過新大陸；書的打字稿與《Harper's》摘文都沒有，段落在最終書稿與出書之間『神秘地出現』；他也說把什麼誤認成陸地的解釋『都說不通』。",
+      "changed_fields": [
+        "answer_target",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池中與 wave21–24、本輪 H1–H3 以 Crocker、Peary、MacMillan、蜃 grep 皆無同題；N2383 聖博隆東島、N622 魚津蜃氣樓答案不同。L 軸與 N2383、N1424 幻島題一致。前提成立，MacMillan 的兩段（冰上蜃景、同一山頂再見）逐字對得上。改的是 Welky 那段：原稿寫『田野筆記與船員日記都沒寫看到新陸地』，訪談稿說的是 Peary 留下證明到過的紀錄、他的通信、船員日記裡 Peary 沒提過、以及打字書稿與 Harper's 摘文都沒有；另補上 Welky 認為誤認說不通這一句，讓兩種可能的張力說清楚；scope 補上石堆紀錄『非常簡短』與 Welky『相當詳細』不能混成同一張。片長 9–10.5 分鐘誠實：Peary 原文、冰上蜃景與嚮導、走進棕色那塊、同一山頂再見、書稿之謎，五段都有來源。"
+    },
+    {
+      "id": "N2782",
+      "agent": "H4",
+      "reviewer": "R254",
+      "verdict": "REJECT",
+      "key_source_reopened": "H4-S007 https://archive.org/download/bim_eighteenth-century_an-account-of-the-voyage_hawkesworth-john_1773_1_0/bim_eighteenth-century_an-account-of-the-voyage_hawkesworth-john_1773_1_0_djvu.txt（Hawkesworth 1773，OCR 11195–11260、11330–11365 行）",
+      "reopen_result": "頁面上確實寫：有人提議手稿裡的數字寫壞，47 可能是 51，因為福克蘭群島大約在 51 度；於是到大英博物館找到 Cowley 的手稿，『手稿沒有提到一座他取名為 Pepys's Island 的新島』，但記了以文字拼出的『forty-seven degrees and forty minutes』，島『看起來很宜人，林木很多，我甚至可以說整片都是樹林』，他以為是 Sebald de Wert 群島；編者結論是名字應是 Cowley 回國後才取的，數字寫錯之說『看來沒有根據』，但『Cowley 看到的是福克蘭群島，證據非常強』，描述與地圖形狀都相符，接著談 Macbride 繪的福克蘭海圖。研究摘要與原文相符。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複（池中無 Pepys Island、Cowley 同題），研究也做得紮實，但照系列 README『今天兩個國家或兩群人還在爭的事不收』否決。這題的第二個轉折與結局就是『Cowley 1683 年看到的其實是福克蘭群島』，而 Byron 搜尋 Pepys 島正是 1764–65 年那趟前往福克蘭並宣布佔有的航行，訓令把兩者並列；『哪個英國人最早看到福克蘭』本身就是英阿主權爭論兩邊都在引的材料。scope 雖然排除了佔有與立場詞，但跟 N1363 奧黛的先例一樣——拿掉福克蘭就沒有結局，留著它，旁白怎麼寫都會把觀眾帶進主權爭論（留言區也會）。若只講手稿與印本的差異（47°40'、五百艘、名字回國後才取），剩不到 5 分鐘、又沒有能接的兄弟章。研究可留存，若站主日後對此類『殖民時代地理發現但今天有主權爭議』的題目另作決定再重開。"
+    },
+    {
+      "id": "N2783",
+      "agent": "H4",
+      "reviewer": "R254",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H4-S023 https://archive.org/download/annalsofvoyageso00luca/annalsofvoyageso00luca_djvu.txt（Lucas 1898，OCR 1895–1945、8235–8275 行）；另找第二來源 H4-S025 https://archive.org/download/threevoyagesofma00bestrich/threevoyagesofma00bestrich_djvu.txt（Hakluyt Society 1867 年重印 Best 1578《A True Discourse》，OCR 8870–8896 行）",
+      "reopen_result": "Lucas 確實寫：1576 年 Frobisher 在北緯 61 度到格陵蘭，把它當成『Frisland』，1577、1578 年兩次都犯同樣的錯，『無疑是被 Zeno 地圖誤導』；引第二次航行記『Frislande……見於兩位威尼斯兄弟 Nicholaus 與 Antonius Zeni 的描述……comparing their carde with the Coast, we find it very agreeable』；航行令要走散的船守住某緯度『until they get Frisland』；1578 年 6 月 20 日『West Frisland, now named West England』；腳註說 1592 年版 Ortelius 插入英國人稱之為 Anglia Occidentalis 一段。結論段：海圖的來源『至少十一張 1457 到 1558 年間的地圖』，義大利、加泰隆尼亞、斯堪地那維亞（在威尼斯出版）、德國與佛蘭德；有些原圖上寫得正確的地名到 Zeno 圖上扭曲得認不出；所謂 1380 年的海圖整個 15 世紀與 16 世紀到 1558 年都無人知道。Best 1578 年原本（1867 重印）也有同一段，但把兄弟的姓印成『Genoa』、寫『aboute three hundred yeares sithence』，Hakluyt 版（Lucas 引）是 Zeni、兩百年，『very agreeable』一句相同。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池中無 Zeno、Frisland（grep 只命中 zeno.org 網址）；H37 文蘭地圖是 20 世紀偽作靠墨水化驗，答案不同。L 軸與 N1424 七城島、N2383 一致，可接受。研究代理擔心只有 19 世紀來源：Major（辯方）與 Lucas（控方）彼此獨立而立場相反，本題本來就是把兩方判決並陳，scope 也已寫明不說學界一致；關鍵轉折『探險家拿著海圖說非常相符』我在 Best 1578 年原文的 1867 重印本裡獨立讀到，不再只靠 Lucas 轉引，並補進 answer_target 一個真正的紙上線索：1578 年原本把兄弟印成『Genoa』、『三百年前』，到 Hakluyt 版才是『Zeni』『兩百年前』（只講差異、不推論誰改）。新來源記在本檔 added_sources 的 H4-S025。片長 9–11 分鐘誠實。"
+    },
+    {
+      "id": "N2784",
+      "agent": "H4",
+      "reviewer": "R254",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H4-S010 https://meta.bokorder.se/journals/downloadsection/16435（Edberg，META 2017，pp. 50–58）；另重開 H4-S009 https://archive.org/download/arkivkopia.se-runeberg-medornen/medornen.txt（1930 官方書，2566–2590、6318–6338、6820–6832 行）",
+      "reopen_result": "Edberg 確實寫：官方書幾個月內幾乎同時以十二種語言出版，執筆主要是學者，沒有給確定答案，但強調缺乏保暖衣物，凍死是『最可能的解釋』；那時才 10 月初、嚴寒未至，糧食裝備充足、有槍有彈藥；Tryde 1952 年的旋毛蟲說，到 1997 年百年紀念 Andrée 博物館仍採用（Lundström 1997）；引研究說人類旋毛蟲病致死率很低、0.2%；1970 年代在手套裡找到三片指甲、有鉛，但 Andrée 帶著鉛彈，無法下結論；Tore Strindberg 1930 年在 Tromsø 認屍時注意到衣服有撕裂；Uusma 比對後『只有 Frænkel 死在帳篷裡』，Andrée 穿靴戴帽戴手套、持槍、坐在帳外靠著岩石；她在 Gränna 博物館的抽屜裡找到 Strindberg 雙層長襯褲（館藏 536、537），左腿缺失，留下『有五道深切口的參差邊緣，比人手大得多，像大型爪痕』，Edberg 說『這個發現是決定性的』。官方書 6820 行確實寫兩人『在帳篷內並肩長眠，看來是同時』；6327–6334 行寫 Bratvaag 號船員在 Andrée 外套左內袋找到最後的筆記本，Andrée 長眠處在山坡高處、冰多次融化；但『Resignation』腳註掛在 Strindberg 曆本 10 月 6 日『Snöstorm Recogno-scering』這一條，是 Isbjørn 號給報社的電文把『Recognoscering（偵察）』讀成『Resignation』，不是 Andrée 筆記本上的字。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "source_locator"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池中與 wave21–24、本輪 H1–H3 以 Andrée、Örnen、Kvitøya 皆無同題；H10 富蘭克林是同類（失蹤探險隊）但答案是船被找到與因紐特證詞，本題是死因解釋的接力。H 軸與 H10、N105、N301 一致，正確。死因沒有寫成定論：Edberg（支持熊攻擊）與 Svalbard 博物館『仍是謎』並陳，保留。改兩處事實：(1)『Resignation』的腳註其實是電文誤讀 Strindberg 曆本的『Recognoscering（偵察）』，原稿放在 Andrée 筆記本後面，會讓人以為是 Andrée 寫下『認命』，這正是該避免的錯覺；(2) 發現船 Bratvaag 其實就寫在官方書裡，可以講。官方書『自相矛盾』改成『兩處說法對不太上』，並補上 Uusma 的比對證明帳篷那句不對。遺體與攻擊畫面的界線已寫好。片長 9.5–11 分鐘誠實。"
+    },
+    {
+      "id": "N2785",
+      "agent": "H4",
+      "reviewer": "R254",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "H4-S012 https://www.hakluyt.com/downloadable_files/Journal/Milsom_Laperouse.pdf（Milsom 2025，pp. 1–12）；第二獨立來源 H4-S026 https://archive.org/download/narrativeandsuc00dillgoog/narrativeandsuc00dillgoog_djvu.txt（Dillon 1829《Narrative and Successful Result of a Voyage in the South Seas》，OCR 4336–4395、15185–15260 行）",
+      "reopen_result": "Milsom 確實寫：『It is said』國王被押往斷頭台時問『Is there any news of LaPérouse?』；1791 年 8 月 13 日 Pandora 看到 Vanikoro 冒煙，腳註說這些火今天常被解讀為求救，但 Pandora 的文件裡沒有任何這樣的跡象，只寫『看到很多處有煙，推測島上有人住，命名為 Pitt's Island』；d'Entrecasteaux 1793 年 5 月命名 Île de la Recherche『看得太遠，無法準確定在海圖上』，幾乎確定就是要找的島，他病重未查、兩個月後過世；Tikopia 的 lascar 戴著舊式銀劍護手；霍巴特陪審團定罪，『罰款五十鎊、監禁兩個月』，十天後放出並復職，再十天出航；銅鐘刻『BAZIN M'A FAIT』；d'Urville 1827 年 12 月 19 日到霍巴特，引水人 Mansfield 問他有沒有 LaPérouse 的消息，總督副官 Frankland『笑著說他是瘋子、冒險家，所謂發現純屬捏造』，同伴們『只拿 Tikopia 與 Vanikoro 開玩笑』，讀了報上的報告後才改主意。Milsom 文首把抵達植物學灣印成 1789 年，研究代理已改用 1788。第二來源 Dillon 1829 年自己的書附錄轉載霍巴特報紙：最高法院審理『Tytler 控告 Dillon 傷害與拘禁』四天，社論說『若陪審團相信 Tytler 的信、認為 Dillon 瘋了，就該以此判無罪』，又說監禁兩個月可能毀了這趟探險；正文 115–116 頁記 Tikopia 的 lascar（住了十四年）與 Mannicolo 的消息。Dillon 是當事人，但與 Milsom 各自獨立，判刑、『瘋子』指控與 lascar 三個關鍵轉折都對得上；倖存者的下落另有 Hitchcock（H4-S013）。",
+      "changed_fields": [
+        "hook"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池中與 wave21–24 以 Lapérouse、Vanikoro、Dillon grep 皆無；H10 富蘭克林、N301 Fawcett 同屬失蹤探險，答案不同。H 軸與 H10 一致，正確。研究代理擔心只靠 2025 年一篇論文：我用 Dillon 1829 年自己的書（附錄轉載的霍巴特審判報導與 Tikopia 段）獨立核到判刑、Tytler 說他瘋了與 lascar 的劍護手；Pandora 的煙與 d'Entrecasteaux 那段是 Milsom 直接引原始文件（Pandora 文件、Hogg 譯的日記），引文我讀到了；國王之問已寫成『據說』，Cléry 日記沒找到只講到 OCR 搜尋為止，正確。唯一修改是 hook：Pandora 是在 Vanikoro 本島外看到煙，不是『只差一座島的距離』，改成『兩次都看見了它沉沒的那座島，卻都轉頭走了』。暴力與殖民接觸已排除。片長 9.5–11 分鐘誠實。"
+    },
+    {
+      "id": "N2786",
+      "agent": "H4",
+      "reviewer": "R254",
+      "verdict": "ADOPT",
+      "key_source_reopened": "H4-S018 https://www.gutenberg.org/cache/epub/11203/pg11203.txt（King 1827，Vol. 1 純文字 9395–9427 行）",
+      "reopen_result": "King 書上確實寫：Cunningham 記下的字證實了去年記的字，跟 Cook 的字表比對，『證明 Cook 是在 Endeavour River 記的』；『兩份紀錄裡只有兩個字差很多，其中一個是袋鼠的名字』，去年和今年都對他們說 kangaroo、模仿跳躍，他們看得懂，『但我們一說 kangaroo，他們總是糾正說 men-u-ah』；『所以這種動物是被一個偶然得來的名字命名的』，Cook『在袋鼠這個字上弄錯了』；字表一行作『Kangaroo : Men-u-ah : Kangaroo』。與 answer_target 相符。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複：池中『袋鼠』只出現在 N2528 德文郡腳印與澤西惡魔（袋鼠蝙蝠混種），答案無關；N2583、N2584 是南美地名來源，同類不同答案。L 軸（流傳的說法）合適。前提成立，三個轉折（Tench 的 patagaran 與 Colbee 問母牛、King 回到原地聽到 men-u-ah 斷定 Cook 錯了、Haviland 的 gangurru）都是真的轉折，每一個都改變結論；『我聽不懂』神話的最早出處 scope 已寫明不說，Macquarie 與澳洲地理雜誌兩個弱來源也已標成『據……』。原住民的畫法與不評價殖民的界線寫得清楚。片長 8.5–9.5 分鐘偏緊但誠實，不要再加料；若寫稿後不足 8.5 分鐘，寧可短也不硬湊。"
+    }
+  ],
+  "theme_suggestions": [
+    {
+      "ids": [
+        "N2725",
+        "G11"
+      ],
+      "shared_question": "飛翔的荷蘭人的每一個細節——名字、罪名、船長、毒誓、王子的目擊——是誰、在哪份文字裡第一次寫下的？",
+      "why_it_flows": "N2725 走傳說本身的出處（1790 領航員→1795 烏雲→1803／1813 奴隸船與瘟疫→1821 Vanderdecken），G11 接著拆最有名的目擊（1886 年 Dalton 編擴的遊記 vs ADM 53 官方日誌、1974 年鬼故事書才說「寫在航海日誌上」）；同一個方法、時間順著往下，G11 的 scope 缺的 18 世紀末文本正好由 N2725 補上，合計 10–13 分鐘。G11 照 L02 等前例從 Shorts 移回長片；排題前補查 G11 的 ADM 53 單一來源。"
+    },
+    {
+      "ids": [
+        "N2741",
+        "N2744",
+        "N2746"
+      ],
+      "shared_question": "我們每天做的小動作（回應噴嚏、戴戒指的手指、比拇指），最早寫下理由的人到底說了什麼？",
+      "why_it_flows": "三題都從普林尼《博物志》第 28 卷第 5 章同一串『為什麼我們會這樣做』出發（噴嚏致意、按壓拇指、摘戒指），再各自追到後人加上去的解釋（瘟疫說、愛之脈、Gérôme 的拇指朝下），可排成連續三集，片頭共用同一頁普林尼。"
+    },
+    {
+      "ids": [
+        "N2742",
+        "N2745"
+      ],
+      "shared_question": "節日的食物（復活節蛋、粽子），是誰把它交給一位神或一個人物的？",
+      "why_it_flows": "兩題都是『最早記這種食物的文字沒有那個人物，人物是後來一本一本接上去的』：Ostara 由 1874 年的講義接上兔子，屈原先由東漢佚文接上五彩絲、再由南朝書接上粽子；可與 T111（N2301、N2302）排成同一個系列順序。"
+    },
+    {
+      "ids": [
+        "N2766",
+        "N2765"
+      ],
+      "shared_question": "寫在文物身上（或跟它配對）的來歷，能不能證明它是誰的？",
+      "why_it_flows": "笛卡兒頭骨上的六個名字與莎士比亞面具背面的 1616，都是物件自己「寫著」的證據，兩題都靠較早的拍賣、目錄與出版品去檢查它；兩題都是 10 分鐘左右的單集，排成系列順序，不合併。"
+    },
+    {
+      "ids": [
+        "N2762",
+        "N2763"
+      ],
+      "shared_question": "一件名人或名鳥的遺物，是怎麼被接上一段漂亮的故事、又被現代檢驗拆開的？",
+      "why_it_flows": "牛津渡渡鳥被 1848 年一句「極可能」接到倫敦街頭的活鳥，貝多芬的 Hiller lock 被當成他的頭髮做了鉛分析；兩題都是 CT 或 DNA 先證明「不是那個」，再發現真的那一件有別的故事。各自單集，排成系列。"
+    },
+    {
+      "ids": [
+        "N2764",
+        "N2526"
+      ],
+      "shared_question": "博物館買到近代作品之後，怎麼證明是誰做的？",
+      "why_it_flows": "兩題都有作者或其家人出面認領，一題由金匠當場示範，一題拖到 2021 年才由碳十四解決；T114 已滿 13 分鐘，只排成系列順序，不併入。"
+    },
+    {
+      "ids": [
+        "N2781",
+        "N2783"
+      ],
+      "shared_question": "海圖上不存在的陸地，是怎麼被『親眼確認』的？",
+      "why_it_flows": "兩題都是完整單集，不合併；適合排成同一個播放清單：Crocker Land 是探險家在同一山頂重現了當年的『看見』，Frisland 是探險家拿著海圖在真實海岸上說『非常相符』，答案都在紙上（書稿多出的段落、拆回十一張舊圖），可與既有 N2383 聖博隆東島、N1424 七城島同列。"
+    },
+    {
+      "ids": [
+        "N2784",
+        "N2785"
+      ],
+      "shared_question": "失蹤探險隊的答案，為什麼早就在手邊卻沒人看見？",
+      "why_it_flows": "兩題各自是單集，與 H10 富蘭克林同屬 H 軸；Andrée 的答案在 1930 年就進了博物館抽屜，LaPérouse 的島 1791、1793 年兩度被看見，最後由被當成瘋子的船長找到，可排成『失蹤探險』播放清單。"
+    }
+  ]
+}

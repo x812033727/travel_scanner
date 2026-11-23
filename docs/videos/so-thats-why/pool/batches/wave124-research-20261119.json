@@ -1,0 +1,633 @@
+{
+  "batch_id": "wave124-research-20261119",
+  "created_on": "2026-11-19",
+  "scope": "依成田T2實際機種、樓層入口與原始費率，把官方跨午夜範例與日間七小時逐格演算，並查核東京周邊寄物時段、取件憑證與最長保管等條件。",
+  "sources": [
+    {
+      "id": "X124D-S01",
+      "url": "https://www.narita-airport.jp/ja/service/delivery/locker/",
+      "canonical_url": "https://www.narita-airport.jp/ja/service/delivery/locker/",
+      "title": "コインロッカー",
+      "publisher": "成田國際機場",
+      "network": "成田國際機場",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "逐項實讀營運方公布的費率、樓層時段、取件步驟或使用約款。",
+      "reading_scope": "一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧",
+      "locator": "一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧",
+      "summary": "一般小櫃兩種費率均列高33、寬34、深66公分；日租400日圓，午夜後多一天；T2 B1／T3 2F 計時櫃頭六小時300，之後每24小時加400。另列 MULTIECUBE S 櫃32.5×34×65公分，每天400，凌晨兩點換日。T2 B1 同時列一般櫃和24小時多功能櫃。",
+      "limitations": "一般日租、一般計時及多功能機必須分開看；費率和尺寸以查閱日官網為準。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X124D-S02",
+      "url": "https://www.narita-airport.jp/en/service/delivery/locker/",
+      "canonical_url": "https://www.narita-airport.jp/en/service/delivery/locker/",
+      "title": "Coin-Operated Lockers",
+      "publisher": "成田國際機場",
+      "network": "成田國際機場",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "逐項實讀營運方公布的費率、樓層時段、取件步驟或使用約款。",
+      "reading_scope": "Daily rates／Hourly rates／Multi-Functional Coin-Operated Lockers／List",
+      "locator": "Daily rates／Hourly rates／Multi-Functional Coin-Operated Lockers／List",
+      "summary": "英文給出普通日租櫃21:00寄、翌日01:00取算兩天的案例，以及一般小櫃費率。多功能機預約另收500日圓。",
+      "limitations": "英文多功能櫃段落沒有列換日點；其凌晨兩點界線取日文原頁與業者問答。兩種語言同屬一個機場來源。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X124D-S03",
+      "url": "https://multiecube.com/faq/",
+      "canonical_url": "https://multiecube.com/faq/",
+      "title": "マルチエキューブ よくある質問",
+      "publisher": "JR東日本スマートロジスティクス",
+      "network": "JR東日本スマートロジスティクス",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "逐項實讀營運方公布的費率、樓層時段、取件步驟或使用約款。",
+      "reading_scope": "「荷物の取り出し」「利用料金」「予約したロッカーが満状態になっている」",
+      "locator": "「荷物の取り出し」「利用料金」「予約したロッカーが満状態になっている」",
+      "summary": "一般預放與預約的日租以凌晨2時換日；標準預約費每格每次500日圓，另加所用櫃的日租。預約取件憑預約號碼或QR碼，執行取出即結束；網站另列特定站的自由開關服務。",
+      "limitations": "費用例表的M尺寸價格不是成田定價；預約號碼的操作只適用預約件。會員方案優惠另計。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X124D-S04",
+      "url": "https://www.narita-airport.jp/en/access/early-morning/",
+      "canonical_url": "https://www.narita-airport.jp/en/access/early-morning/",
+      "title": "Terminal Use at Night and Early Mornings",
+      "publisher": "成田國際機場",
+      "network": "成田國際機場",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "逐項實讀營運方公布的費率、樓層時段、取件步驟或使用約款。",
+      "reading_scope": "Entrance Accessibility Hours，Terminal 2、Terminal 3",
+      "locator": "Entrance Accessibility Hours，Terminal 2、Terminal 3",
+      "summary": "T2 B1、1樓、2樓與T3的2樓入口列全天開放；T2的3樓、4樓入口為05:00–24:00。",
+      "limitations": "樓層入口開放不保證每一格可用，未量測步行時間，也不代表能通過安檢折返。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X124D-S05",
+      "url": "https://tokyo-haneda.com/en/service/facilities/coin_locker.html",
+      "canonical_url": "https://tokyo-haneda.com/en/service/facilities/coin_locker.html",
+      "title": "Coin Lockers",
+      "publisher": "羽田機場航廈營運方",
+      "network": "羽田機場航廈營運方",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "逐項實讀營運方公布的費率、樓層時段、取件步驟或使用約款。",
+      "reading_scope": "T3 (Terminal 3) Coin Lockers (2F)，Fees、Storage Period 及 Size",
+      "locator": "T3 (Terminal 3) Coin Lockers (2F)，Fees、Storage Period 及 Size",
+      "summary": "羽田T3二樓的小櫃標500日圓／24小時、從開始使用起算；尺寸寬35.2、深67.8、高32公分。",
+      "limitations": "限羽田T3二樓所列小櫃，價格不能移植到羽田其他航廈或成田。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X124D-S06",
+      "url": "https://www.centrair.jp/en/service/baggage-lockers.html",
+      "canonical_url": "https://www.centrair.jp/en/service/baggage-lockers.html",
+      "title": "Lockers — Chubu Centrair International Airport",
+      "publisher": "中部國際機場",
+      "network": "中部國際機場",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "逐項實讀營運方公布的費率、樓層時段、取件步驟或使用約款。",
+      "reading_scope": "Available hours 與 Please note",
+      "locator": "Available hours 與 Please note",
+      "summary": "中部機場T1四樓6:00至22:30，Access Plaza與T1二樓全天開放；超過午夜按天加費，關閉後不能進入三、四樓，官網指往Access Plaza找警衛。",
+      "limitations": "警衛協助並非保證立即取回或免收隔日費。例子只談該機場。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X124D-S07",
+      "url": "https://www.jalabc.com/en/airport_counter/narita-airport_terminal2.html",
+      "canonical_url": "https://www.jalabc.com/en/airport_counter/narita-airport_terminal2.html",
+      "title": "Narita International Airport Terminal2 — JALABC Airport Counters",
+      "publisher": "JAL ABC",
+      "network": "JAL ABC",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "逐項實讀營運方公布的費率、樓層時段、取件步驟或使用約款。",
+      "reading_scope": "Arrival Counter／Departure Counter 對照：Location、Business Hours、Service",
+      "locator": "Arrival Counter／Departure Counter 對照：Location、Business Hours、Service",
+      "summary": "成田T2出發層3樓的JAL ABC有行李寄存，07:00–21:00；抵達層1樓另一櫃從06:30到末班抵達航班後一小時。",
+      "limitations": "不同櫃檯的營業時間分開；一樓末班機會變動，不推定凌晨一點還在營業。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X124D-S08",
+      "url": "https://www.jalabc.com/en/hands-freetravel/baggage-storage.html",
+      "canonical_url": "https://www.jalabc.com/en/hands-freetravel/baggage-storage.html",
+      "title": "Baggage Storage Service",
+      "publisher": "JAL ABC",
+      "network": "JAL ABC",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "逐項實讀營運方公布的費率、樓層時段、取件步驟或使用約款。",
+      "reading_scope": "How to Use STEP1、STEP2，FAQ「Can I pick up my baggage at a different JAL ABC counter?」",
+      "locator": "How to Use STEP1、STEP2，FAQ「Can I pick up my baggage at a different JAL ABC counter?」",
+      "summary": "人工寄存須保留收據並回到原來的櫃檯領取；按曆日含寄、取兩日收費，付款在取件時。",
+      "limitations": "只引用JAL ABC自行提供的人工服務；頁首對一般置物櫃的概說不當作成田規則。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X124D-S09",
+      "url": "https://www.metocan.co.jp/locker/",
+      "canonical_url": "https://www.metocan.co.jp/locker/",
+      "title": "コインロッカー設置場所一覧",
+      "publisher": "東京 Metro／Metro Commerce",
+      "network": "東京 Metro／Metro Commerce",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "逐項實讀營運方公布的費率、樓層時段、取件步驟或使用約款。",
+      "reading_scope": "銀座線 G16 上野駅、利用約款連結",
+      "locator": "銀座線 G16 上野駅、利用約款連結",
+      "summary": "Metro Commerce的銀座線表列上野站各價格及櫃數，並連至原始使用約款。",
+      "limitations": "本題不報上野櫃價或空位，個別標價與當日可用情況以現場為準。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X124D-S10",
+      "url": "https://www.metocan.co.jp/locker/coinlocker_terms.pdf",
+      "canonical_url": "https://www.metocan.co.jp/locker/coinlocker_terms.pdf",
+      "title": "コインロッカー利用約款",
+      "publisher": "東京 Metro／Metro Commerce",
+      "network": "東京 Metro／Metro Commerce",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "逐項實讀營運方公布的費率、樓層時段、取件步驟或使用約款。",
+      "reading_scope": "2024年11月20日版，第1、3、5、6、7、8項",
+      "locator": "2024年11月20日版，第1、3、5、6、7、8項",
+      "summary": "一般櫃服務時間自首班至末班，越末班後以凌晨2時加一天；含開始日最多四天，之後業者移走，另行保管到自開始日起算30天。取出證明遺失要聯絡業者。",
+      "limitations": "只採Metro Commerce一般櫃適用約款。30天包含原先在櫃中的天數。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X124D-S11",
+      "url": "https://www.tokyodisneyresort.jp/en/tdl/service/detail/070.html",
+      "canonical_url": "https://www.tokyodisneyresort.jp/en/tdl/service/detail/070.html",
+      "title": "Storage Lockers (Tokyo Disneyland)",
+      "publisher": "東京迪士尼度假區",
+      "network": "東京迪士尼度假區",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "逐項實讀營運方公布的費率、樓層時段、取件步驟或使用約款。",
+      "reading_scope": "Information，Location、Locker Fees 與同日取件條款",
+      "locator": "Information，Location、Locker Fees 與同日取件條款",
+      "summary": "東京迪士尼樂園入口附近有園內、園外寄物櫃；列小櫃500日圓，寄存物須當天取走。",
+      "limitations": "限東京迪士尼樂園這一頁的寄物櫃，不推論舞濱車站、飯店或其他樂園。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X124D-S12",
+      "url": "https://shinjuku-busterminal.co.jp/en/service/",
+      "canonical_url": "https://shinjuku-busterminal.co.jp/en/service/",
+      "title": "Services and Facilities Guide — Shinjuku Expressway Bus Terminal",
+      "publisher": "新宿高速巴士總站",
+      "network": "新宿高速巴士總站",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "逐項實讀營運方公布的費率、樓層時段、取件步驟或使用約款。",
+      "reading_scope": "Coin lockers：4th floor、Hours 及 QR code printed on the receipt",
+      "locator": "Coin lockers：4th floor、Hours 及 QR code printed on the receipt",
+      "summary": "新宿高速巴士總站四樓觸控櫃可以信用卡或支援的電子貨幣付款，開門要掃收據印出的QR碼。寄物櫃從首班巴士前30分鐘至末班可用。",
+      "limitations": "只談巴士總站寄物機，不將車站大廳或售票處時間代入。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X124D-S13",
+      "url": "https://spacer.co.jp/user/guide/",
+      "canonical_url": "https://spacer.co.jp/user/guide/",
+      "title": "ロッカーの使い方",
+      "publisher": "SPACER",
+      "network": "SPACER",
+      "version": "2026-11-19 查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "逐項實讀營運方公布的費率、樓層時段、取件步驟或使用約款。",
+      "reading_scope": "タッチパネル付き／交通系IC・クレジットカード・PiTaPa；FAQ「レシートは出ないですか？」",
+      "locator": "タッチパネル付き／交通系IC・クレジットカード・PiTaPa；FAQ「レシートは出ないですか？」",
+      "summary": "有面板的部分SPACER可用卡寄物，原卡或感應裝置就是鑰匙。按取出、選卡、靠卡找格位，再靠卡結帳開門；卡片操作不印取件收據。",
+      "limitations": "限支援對應卡片的機型、限用卡流程，不宣稱成田一般櫃皆由此公司營運。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "K124-0201",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "晚上九點把小包放進成田一般日租小櫃，凌晨一點取，為什麼四小時要付800日圓？",
+      "mechanism_key": "x124.luggage_lockers.midnight",
+      "answer_target": "成田自己舉的這組時刻跨過午夜。普通日租小櫃每天400日圓，星期五21:00到午夜算一天，星期六到01:00又算一天，總共800。若改成同一天17:00寄、21:00取，四小時都落在一天，只付400。",
+      "scope": "一般日租小櫃，假設尺寸合適、有空櫃且能接近。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "鐘只走四小時，收費日卻畫了兩格。",
+        "visual": "把同一條四小時紙帶移過午夜。",
+        "seconds": [
+          20,
+          32
+        ]
+      },
+      "source_ids": [
+        "X124D-S01",
+        "X124D-S02"
+      ],
+      "source_locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S02 Daily rates／Hourly rates／Multi-Functional Coin-Operated Lockers／List",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。"
+    },
+    {
+      "id": "K124-0202",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同一只背包改放在成田T2地下一樓，怎麼有一台只算300日圓？",
+      "mechanism_key": "x124.luggage_lockers.hourly",
+      "answer_target": "機場點名T2本館地下一樓、T3本館二樓的一般計時櫃。小格跟一般日租小格同樣高33、寬34、深66公分；四小時落在頭六小時的300日圓內。假設背包高28、寬26、深15公分，兩張帳的差額無須換背包就能出現。",
+      "scope": "只取一般計時機，排除同區另掛品牌的多功能機。尺寸是假設且小於三種小櫃。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "500日圓的差額來自時鐘，連格子的尺寸都相同。",
+        "visual": "標出 T2 B1 一般櫃，再把小包圖放進兩個等大的格子。",
+        "seconds": [
+          20,
+          34
+        ]
+      },
+      "source_ids": [
+        "X124D-S01",
+        "X124D-S02"
+      ],
+      "source_locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S02 Daily rates／Hourly rates／Multi-Functional Coin-Operated Lockers／List",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。"
+    },
+    {
+      "id": "K124-0203",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "還在同一座T2地下一樓，看見MULTIECUBE字樣，九點到一點又該付多少？",
+      "mechanism_key": "x124.luggage_lockers.brand_clock",
+      "answer_target": "日文成田官網在同層列一般與多功能兩種機器。MULTIECUBE的S格每個收費日400日圓，而業者把換日點定在凌晨兩點。現場直接寄、未預約的背包在一點取出，仍在頭一個收費日，所以是400。",
+      "scope": "成田日文頁另有21:00至03:00跨兩個收費日的官方例；英文一般櫃的午夜規則不可套到此品牌。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一樓層中有兩種時鐘，連地圖也不能代替機身名稱。",
+        "visual": "並排 T2 B1 的兩筆設置項目，分別疊上300與400。",
+        "seconds": [
+          25,
+          37
+        ]
+      },
+      "source_ids": [
+        "X124D-S01",
+        "X124D-S03"
+      ],
+      "source_locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S03 「荷物の取り出し」「利用料金」「予約したロッカーが満状態になっている」",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。"
+    },
+    {
+      "id": "K124-0204",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "為什麼成田計時小櫃凌晨三點整取要300，三點零一分卻是700？",
+      "mechanism_key": "x124.luggage_lockers.six_hours",
+      "answer_target": "從21:00開始算，翌日03:00整剛好六小時，仍屬300日圓初段。03:01已進入下一個24小時收費區間，加400，合計700。把同一分鐘帶到一般日租櫃，前後都已跨午夜，都是800。",
+      "scope": "依公開費率逐分鐘試算，不涉及現場機器秒數、四捨五入或延時寬限。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "這一分鐘影響的是從關櫃開始走的六小時線。",
+        "visual": "畫出00:00、02:00與03:00三個刻度，放大03:01。",
+        "seconds": [
+          26,
+          43
+        ]
+      },
+      "source_ids": [
+        "X124D-S01",
+        "X124D-S02"
+      ],
+      "source_locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S02 Daily rates／Hourly rates／Multi-Functional Coin-Operated Lockers／List",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。"
+    },
+    {
+      "id": "K124-0205",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "如果航班改從羽田T3走，價目上的一天又從哪裡算？",
+      "mechanism_key": "x124.luggage_lockers.rolling_day",
+      "answer_target": "羽田T3二樓小櫃公布500日圓／24小時，從旅客開始使用時起算。拿21:00寄的背包試，隔日01:00及上午09:00都還在同一個24小時區間。即使行程已經跨了兩個日曆日期，這個地點算的仍是第一段。",
+      "scope": "限羽田T3二樓安檢前小櫃。純比較計費，未主張旅客在同晚往返兩座機場。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看到「一天」，先找開始走鐘的那一刻。",
+        "visual": "摺起成田地圖，換羽田T3二樓價目，畫出21:00起的24小時。",
+        "seconds": [
+          25,
+          43
+        ]
+      },
+      "source_ids": [
+        "X124D-S05"
+      ],
+      "source_locator": "X124D-S05 T3 (Terminal 3) Coin Lockers (2F)，Fees、Storage Period 及 Size",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。"
+    },
+    {
+      "id": "K124-0206",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "在成田T2，安檢前的三樓和二樓都列一般櫃；凌晨一點該把取件路線畫在哪一層？",
+      "mechanism_key": "x124.luggage_lockers.floor_hours",
+      "answer_target": "機場把T2二樓、B1的入口列作全天開放，一般日租小櫃可選二樓，一般計時與多功能機可選B1。三樓雖然也列一般櫃，入口只開05:00–24:00。安檢前的標示能說明櫃子在哪側，不能把三樓入口延長到凌晨一點。",
+      "scope": "依機場的樓層入口公告。未確認當夜每一格的空位、故障或臨時管制。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "算得出費用，還得走得到櫃門。",
+        "visual": "垂直畫T2的B1、2F、3F，01:00時把3F入口淡出。",
+        "seconds": [
+          23,
+          39
+        ]
+      },
+      "source_ids": [
+        "X124D-S01",
+        "X124D-S04"
+      ],
+      "source_locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S04 Entrance Accessibility Hours，Terminal 2、Terminal 3",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。"
+    },
+    {
+      "id": "K124-0207",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "如果不想用機器，改在成田T2三樓找人寄包，深夜能下到一樓拿嗎？",
+      "mechanism_key": "x124.luggage_lockers.staffed_counter",
+      "answer_target": "JAL ABC的三樓出發櫃台07:00–21:00營業，一樓抵達櫃台從06:30到末班抵達航班之後一小時。假設20:30已把包交給三樓，條款指定帶著收據回原櫃領取。一樓即使有人，也不能替旅客交還三樓收下的這件行李。",
+      "scope": "只取JAL ABC人工寄存的收、取程序；不推定末班機實際時間。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "樓層可以換，保管行李的那個櫃檯換不了。",
+        "visual": "把寄物單上的3F夾回原櫃，另畫1F，兩者之間不畫取件箭頭。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_ids": [
+        "X124D-S07",
+        "X124D-S08"
+      ],
+      "source_locator": "X124D-S07 Arrival Counter／Departure Counter 對照：Location、Business Hours、Service；X124D-S08 How to Use STEP1、STEP2，FAQ「Can I pick up my baggage at a different JAL ABC counter?」",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。"
+    },
+    {
+      "id": "K124-0208",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "寄物樓層關了，包留到隔天增加的費用還有人算嗎？",
+      "mechanism_key": "x124.luggage_lockers.closed_floor",
+      "answer_target": "中部國際機場T1四樓06:00–22:30開放，Access Plaza及T1二樓則為24小時。官網寫明因任何理由未取件的延長費由旅客負擔，跨午夜按天另計；三、四樓關閉後請到Access Plaza找警衛協助。這是為什麼選櫃時應該看回程的那扇門。",
+      "scope": "取中部機場具名例，不能據此要求成田的警衛開門或免計費。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "建物停止讓人出入，價目的日界線仍可能繼續走。",
+        "visual": "以兩行排22:30樓層關門和00:00費用跨日。",
+        "seconds": [
+          21,
+          35
+        ]
+      },
+      "source_ids": [
+        "X124D-S06"
+      ],
+      "source_locator": "X124D-S06 Available hours 與 Please note",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。"
+    },
+    {
+      "id": "K124-0209",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "上野站的Metro Commerce一般櫃也在凌晨兩點多算一天，可以跟成田T2的多功能櫃一樣兩點前隨時回去嗎？",
+      "mechanism_key": "x124.luggage_lockers.station_access",
+      "answer_target": "上野在Metro Commerce的設置表內。一般寄物櫃約款第一項先把使用時間限在首班車到末班車，再說跨過末班而繼續寄放時，以凌晨兩點加一天。如果預計留到隔天首班以後取，費用會多一天；凌晨兩點是結帳界線，並非業者承諾車站當時開放。",
+      "scope": "限Metro Commerce一般櫃，不套用到京成上野站、JR上野站或東京所有車站。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "上野與成田可以同在兩點加費，開門時段卻是各看各的。",
+        "visual": "畫上下兩條線，一條標首末班，另一條標兩點加收。",
+        "seconds": [
+          24,
+          40
+        ]
+      },
+      "source_ids": [
+        "X124D-S10",
+        "X124D-S09",
+        "X124D-S01"
+      ],
+      "source_locator": "X124D-S10 2024年11月20日版，第1、3、5、6、7、8項；X124D-S09 銀座線 G16 上野駅、利用約款連結；X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。"
+    },
+    {
+      "id": "K124-0210",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "明早要回來的行程如果移到東京迪士尼樂園門口，小櫃的500日圓要乘二嗎？",
+      "mechanism_key": "x124.luggage_lockers.day_use_only",
+      "answer_target": "東京迪士尼樂園把寄物櫃標在入口附近，園內外都有。小櫃標500日圓，條款要求寄物必須在同一天取走。拿來裝從早玩到傍晚才要背的外套合適；若排好隔日才取，把500乘二也不會多買到一晚。",
+      "scope": "只論東京迪士尼樂園官方列出的寄物櫃，不推論舞濱車站或飯店。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "有的門沒有「再付一天」這個選項。",
+        "visual": "把翌日取件的便條從樂園櫃移走，保留當晚取件那張。",
+        "seconds": [
+          20,
+          35
+        ]
+      },
+      "source_ids": [
+        "X124D-S11"
+      ],
+      "source_locator": "X124D-S11 Information，Location、Locker Fees 與同日取件條款",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。"
+    },
+    {
+      "id": "K124-0211",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "如果把留在上野的一天延長成一週，同一扇櫃門還會替你保留七天嗎？",
+      "mechanism_key": "x124.luggage_lockers.retention",
+      "answer_target": "Metro Commerce約款第6、7項把原櫃的上限訂在含開始日在內四天。逾期未取，業者會開櫃檢視，把物品移到指定處另存，含寄入日在內保管30天。這時要依業者程序取回，費用、身分與原取件證明另有規定；四和三十兩個數字從同一次寄入開始算。",
+      "scope": "限一般可寄存物品。長期另存30日包含原先在櫃中的天數。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "下週拿著櫃號回來，包可能已換地方。",
+        "visual": "把背包從櫃號移到保管處，用一張日曆標出第4天和第30天。",
+        "seconds": [
+          22,
+          37
+        ]
+      },
+      "source_ids": [
+        "X124D-S10",
+        "X124D-S09"
+      ],
+      "source_locator": "X124D-S10 2024年11月20日版，第1、3、5、6、7、8項；X124D-S09 銀座線 G16 上野駅、利用約款連結",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。"
+    },
+    {
+      "id": "K124-0212",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "在新宿高速巴士總站用信用卡寄包，結帳後掉出的小紙條能先丟嗎？",
+      "mechanism_key": "x124.luggage_lockers.paper_key",
+      "answer_target": "四樓觸控寄物櫃接受支援的信用卡與電子貨幣。營運方特別註明，解鎖需要收據印出的QR碼。回來時要找的是那張紙上的碼，用來付款的卡片排不到這個位置；寄物櫃的服務時段從首班巴士前30分鐘到末班。",
+      "scope": "只談巴士總站四樓，並非JR新宿站寄物櫃。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一筆交易，付款與開門用兩種東西。",
+        "visual": "讓卡片回錢包，把有QR的小紙條另夾進車票套。",
+        "seconds": [
+          20,
+          34
+        ]
+      },
+      "source_ids": [
+        "X124D-S12"
+      ],
+      "source_locator": "X124D-S12 Coin lockers：4th floor、Hours 及 QR code printed on the receipt",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。"
+    },
+    {
+      "id": "K124-0213",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "另一台寄物機同樣感應付款，為什麼面板沒吐出任何取件紙？",
+      "mechanism_key": "x124.luggage_lockers.device_key",
+      "answer_target": "SPACER列出支援卡片的觸控機種。走用卡流程時，寄放當下所碰的卡或感應裝置會成為鑰匙，本來就不印取件收據。取件時先用原卡找格位，再依畫面結帳開門。即使都寫可以用卡，也不能把新宿巴士總站要紙本碼的操作照搬過來。",
+      "scope": "限SPACER相應機型與用卡流程，另一套用App、可分享鑰匙的服務不在此例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "手上的紙可不可以丟，取決於剛才機器把鑰匙交給了誰。",
+        "visual": "畫一張卡先後感應兩次，面板分別顯示找格位與付款。",
+        "seconds": [
+          22,
+          38
+        ]
+      },
+      "source_ids": [
+        "X124D-S13",
+        "X124D-S12"
+      ],
+      "source_locator": "X124D-S13 タッチパネル付き／交通系IC・クレジットカード・PiTaPa；FAQ「レシートは出ないですか？」；X124D-S12 Coin lockers：4th floor、Hours 及 QR code printed on the receipt",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。"
+    },
+    {
+      "id": "K124-0214",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "在成田已預約一整天的MULTIECUBE，能先開一次拿外套、晚上再回同一格拿包嗎？",
+      "mechanism_key": "x124.luggage_lockers.single_release",
+      "answer_target": "預約件回到原機台，輸入預約號碼或掃QR碼可取出。業者問答說一般預約只要完成取出操作，這次使用就結束，即使預約還有時間也無法再把包塞回同一筆預約。它另列的「一日自由開關」地點是GALA湯澤站，不能拿來解釋成田的預約。",
+      "scope": "限MULTIECUBE已預約的寄物，完整取出一次；不同於寄送件，也不推定一般機的取件介面。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "先開門拿外套這個小動作，就會用完這次預約。",
+        "visual": "把外套放在關門前的手上，另示先按「取出」就會結束的路線。",
+        "seconds": [
+          24,
+          39
+        ]
+      },
+      "source_ids": [
+        "X124D-S03",
+        "X124D-S01"
+      ],
+      "source_locator": "X124D-S03 「荷物の取り出し」「利用料金」「予約したロッカーが満状態になっている」；X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。"
+    },
+    {
+      "id": "K124-0215",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同樣打算凌晨一點拿包，為了先留一格，成田多功能小櫃的400日圓為什麼會變成900？",
+      "mechanism_key": "x124.luggage_lockers.reserve_cost",
+      "answer_target": "普通現場寄放按一天400日圓；標準預約依使用格數、每格每次另收500，再付該格原來的日租。21:00到01:00未跨兩點，預約一格S的小包合計900。不是多算一天，隔壁計時機的300也沒有因為跳過午夜而失效。",
+      "scope": "單格標準預約費，排除付費會員的折扣方案與配送費。並未替旅客預約。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "多出的500買的是先留櫃，時間軸上沒有多出一天。",
+        "visual": "把900拆成一張400的寄物費和一張500的預約費。",
+        "seconds": [
+          30,
+          48
+        ]
+      },
+      "source_ids": [
+        "X124D-S01",
+        "X124D-S03"
+      ],
+      "source_locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S03 「荷物の取り出し」「利用料金」「予約したロッカーが満状態になっている」",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。"
+    },
+    {
+      "id": "K124-0216",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "回到成田，同一個小包改成上午九點到下午四點，原來最便宜的計時櫃還能贏嗎？",
+      "mechanism_key": "x124.luggage_lockers.daylight_flip",
+      "answer_target": "七個小時全在白天。一般日租小櫃未過午夜，是400；現場直接寄的MULTIECUBE未過凌晨兩點，也是400。一般計時小格已過六小時，要300加400等於700。想省錢的旅客可以改選400的日租，兩種日租在這次條件下並列。若隔天的固定需求改回21:00–01:00，則一般計時300、多功能現場400、一般日租800。",
+      "scope": "比較同一個放得進三種櫃的小包，只用現場公布基本費率，不含預約、配送、交通及空位承諾。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "原來贏了500的計時機，白天多放三小時反而輸300。",
+        "visual": "讓觀眾把紙鐘撥到09:00和16:00，再將三張價牌由低到高排列。",
+        "seconds": [
+          30,
+          49
+        ]
+      },
+      "source_ids": [
+        "X124D-S01",
+        "X124D-S02",
+        "X124D-S03"
+      ],
+      "source_locator": "X124D-S01 一般櫃「日額制」「時間制」、多機能櫃「日額制」及 T2 本館設置一覧；X124D-S02 Daily rates／Hourly rates／Multi-Functional Coin-Operated Lockers／List；X124D-S03 「荷物の取り出し」「利用料金」「予約したロッカーが満状態になっている」",
+      "notes": "依營運單位公開範例或條款原創演算；同一只背包與旅客行程是假設。"
+    }
+  ],
+  "not_added": [
+    {
+      "id": "X124D-NA01",
+      "question": "在美麗島站只想取行李，怎麼知道要不要過閘？",
+      "reason": "原來如此K118-0206已用這座車站說明閘內閘外置物櫃。新題按成田機種日界與樓層入口查核。",
+      "existing_ids": [
+        "K118-0206"
+      ]
+    },
+    {
+      "id": "X124D-NA02",
+      "question": "衣服洗標的水盆底下多一條線，水要換得更冷嗎？",
+      "reason": "先行檢索生活物件時，原來如此K108-0201和退案X117L-NA001已區分溫度與洗滌程序。",
+      "existing_ids": [
+        "K108-0201"
+      ]
+    }
+  ]
+}

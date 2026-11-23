@@ -1,0 +1,436 @@
+{
+  "batch": "batches/wave52-20261113.json",
+  "reviewed_on": "2026-11-13",
+  "method": "四位沒有參與研究的獨立覆核代理（R521–R524 依序覆核 ZH1–ZH4）逐題至少重開一個關鍵一手／機構來源、讀研究代理的工具與任務紀錄逐筆核對網址出處與雜湊、grep 全池與跨系列核心去重、對照系列不收清單與 1956 真人視覺規範及 8 分鐘門檻；修改直接寫進批次的題目與來源欄位，覆核補讀的一手與單人單頁傳記來源編入該研究代理的來源序號（並徹底剔除拼湊網址與無引用來源）。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 20
+  },
+  "source_renames": {
+    "R521-S001": "ZH1-S051",
+    "R521-S002": "ZH1-S052",
+    "R521-S003": "ZH1-S053",
+    "R521-S004": "ZH1-S054",
+    "R521-S005": "ZH1-S055",
+    "R521-S006": "ZH1-S056",
+    "R521-S007": "ZH1-S057",
+    "R521-S008": "ZH1-S058",
+    "R521-S009": "ZH1-S059",
+    "R521-S010": "ZH1-S060",
+    "R521-S011": "ZH1-S061",
+    "R521-S012": "ZH1-S062",
+    "R521-S013": "ZH1-S063",
+    "R521-S014": "ZH1-S064",
+    "R521-S015": "ZH1-S065",
+    "R521-S016": "ZH1-S066",
+    "R521-S017": "ZH1-S067",
+    "R521-S018": "ZH1-S068",
+    "R521-S019": "ZH1-S069",
+    "R521-S020": "ZH1-S070",
+    "R521-S021": "ZH1-S071",
+    "R521-S022": "ZH1-S072",
+    "R521-S023": "ZH1-S073",
+    "R521-S024": "ZH1-S074",
+    "R521-S025": "ZH1-S075",
+    "R521-S026": "ZH1-S076",
+    "R521-S027": "ZH1-S077",
+    "R521-S028": "ZH1-S078",
+    "R521-S029": "ZH1-S079",
+    "R521-S030": "ZH1-S080",
+    "R522-S001": "ZH2-S046",
+    "R522-S002": "ZH2-S047",
+    "R522-S003": "ZH2-S048",
+    "R524-S001": "ZH4-S042",
+    "R524-S002": "ZH4-S043",
+    "R524-S003": "ZH4-S044",
+    "R524-S004": "ZH4-S045",
+    "R524-S005": "ZH4-S046"
+  },
+  "verdicts": [
+    {
+      "id": "N5801",
+      "agent": "ZH1",
+      "reviewer": "R521",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZH1-S001 https://archive.org/download/bim_eighteenth-century_the-life-and-uncommon-ad_1755/bim_eighteenth-century_the-life-and-uncommon-ad_1755_djvu.txt（先 GET metadata 再抓全文，R521 seq 1–2）、ZH1-S002 https://archive.org/download/historyoftaxatio04doweuoft/historyoftaxatio04doweuoft_djvu.txt（先 GET metadata 再抓全文，R521 seq 3–4），逐字核對 ZH1 本機快取 ZH1-S003、S004、S005、S006、S007，並循合規搜尋補抓非維基權威傳記 ZH1-S051（DNB Bradstreet，R521 seq 21）、ZH1-S052（DNB Jekyll，R521 seq 22）、ZH1-S053（DNB Walpole，R521 seq 23）、ZH1-S054（EB1911 George II，R521 seq 24）",
+      "reopen_result": "頁面上確實寫了：布拉德斯特里特 1755 年都柏林原版自傳 pp. 84–88, 102–103（ZH1-S001）親述研讀 1736 年《琴酒法》看穿無具名指認不得定罪且無搜索令不得破門之漏洞，請友人代租藍錨巷民宅、赴摩爾菲爾德買木雕貓招牌釘窗、貓爪下伸一吋鉛管配屋內漏斗、貓嘴挖投幣孔，花最後 13 英鎊買酒（剩 2 先令），次日聽見『Puss, give me two Pennyworth of Gin』並以人話回應（非學貓叫『Mew』），引爆倫敦民眾爭睹『the inchanted Cat』與鄰居投訴『the Cat-man』；Dowell 1888《英國稅制史》Vol. IV pp. 167–173（ZH1-S002）確認『國會白蘭地』、50 英鎊執照費、20 先令稅額、派兵護衛傑基爾宅第、化名藥水與街頭毆打線人；Difford's Guide（ZH1-S006）確認 Puss 與十九世紀 Old Tom 無檔案連結；四位點名人物均卒於 1764 年以前。惟逐字核對與 access_log 稽核抓出四項重大問題並直接修正：（1）ZH1 全部 25 筆維基百科來源（含本題 ZH1-S008～S011，ZH1 seq 55–58）皆以人工附加『?action=raw』拼湊網址抓取，違反『禁止拼湊網址』規範，已全數剔除並改由合規搜尋取得之《英國國家人物傳記大辭典》（DNB）與《大英百科全書》第 11 版（ZH1-S051～S054）取代；（2）原提案將『Parliament Brandy』『苦役兩個月加鞭刑』『494.7 萬／716 萬加侖』『送葬琴酒夫人 Madam Geneva』與『Puss and Mew』全部誤掛進 Samuelson 1878（ZH1-S003），惟逐字檢索 ZH1-S003 全書上述詞彙均為 0 筆命中！已依原書 Ch. X pp. 160–163 還原其真實內容（100 英鎊罰鍰一半歸線人，及完稅烈酒從 1736 年 6,116,473 加侖暴衝至 1743 年 8,203,430 加侖），並更正 Mew & Ashton 1892（ZH1-S004）自傳引文真實頁碼為 pp. 141–142（原誤標 pp. 129–133）；（3）原提案籠統寫『一兩個月淨賺大筆現款』，已依 1755 年自傳 p. 86 原文（『went on for a Month, in which time I cleared upwards of two and twenty Pounds』）精確還原為『經營一個月淨賺逾 22 英鎊』及 20 英鎊本金明細；（4）重開 Dowell Vol. IV 發掘原提案漏讀之 p. 203 關鍵制度閉環：英國國會於 1737–1738 年（10 Geo. II c. 17、11 Geo. II c. 26）專門針對木頭貓類漏洞修法，明定凡有人『躲在護牆板、布簾或隔板後看不見真身（persons unseen）』偷賣烈酒，直接重罰房屋占有人 100 英鎊！已補入 answer_target、hook 與 ZH1-S002，並移除正片中未建傳記索引之十九世紀史家姓名。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞 pool.json（1,832 題與 2,837 筆 not_added）、legacy/w-axis.json（W01–W19）、原來如此 pool.json 及同輪 ZH1–ZH4 全部提案，均無 1736 年英國《琴酒法》或布拉德斯特里特藍錨巷木頭貓奇案。1755 年當事人自傳原書與 1888 年稅制史證據鏈堅實，剔除拼湊 ?action=raw 維基來源、更正 Samuelson／Mew & Ashton 歸屬與頁碼並補入 1737–1738 年國會修法補洞後通過，片長 10–12 分鐘。"
+    },
+    {
+      "id": "N5802",
+      "agent": "ZH1",
+      "reviewer": "R521",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZH1-S012 https://archive.org/download/trialcharlesran00gurngoog/trialcharlesran00gurngoog_djvu.txt（先 GET metadata 再抓全文，R521 seq 5–6）、ZH1-S015 https://archive.org/download/trialoflordcochr00atlauoft/trialoflordcochr00atlauoft_djvu.txt（先 GET metadata 再抓全文，R521 seq 7–8），逐字核對快取 ZH1-S013、S014，並循合規搜尋補抓非維基權威傳記 ZH1-S055（EB1911 Dundonald，R521 seq 26）、ZH1-S056（DNB Johnstone，R521 seq 27）、ZH1-S057（EB1911 Ellenborough，R521 seq 28）、ZH1-S058（DNB Sir Francis Burdett，R521 seq 29）、ZH1-S059（EB1911 Napoleon I，R521 seq 30）、ZH1-S060（EB1911 William IV，R521 seq 31）、ZH1-S061（EB1911 Queen Victoria，R521 seq 32）",
+      "reopen_result": "頁面上確實寫了：1814 年王座法庭官方速記全卷（ZH1-S012）與 Atlay 1897 專著（ZH1-S015）完整記錄 1814-02-21 多佛港假副官『杜布爾上校』、冬晨大霧鎖死臂板光學電報、四馬驛車與倫敦橋白帽徽第二輛馬車雙線做局、Omnium 從 27½ 暴漲至 33、馬車夫指認格林街 13 號、科克倫『綠衣 vs. 紅衣』宣誓書、泰晤士河底撈出剪碎紅軍衣與銀星、裁縫指認、利斯港搜出英格蘭銀行連號一鎊紙鈔、判刑一年罰一千鎊加示眾枷、西敏選民獄中重選、1816 年廢除詐欺示眾枷立法及 1832／1847／1860 年特赦復旗與西敏寺國葬；全部七位點名人物均確認早於 1902 年過世。惟逐字核對庭審原卷與 access_log 抓出六項事實與來源違規問題並直接修正：（1）剔除本題全部 6 筆拼湊網址之維基百科來源（ZH1-S016～S021，其中 ZH1-S021 係由 wikitext 內文重定向手動拼出 /wiki/Napoleon?action=raw，ZH1 seq 81–82），全數改由《大英百科全書》第 11 版與 DNB（ZH1-S055～S061）支撐；（2）原提案將撈獲碎紅軍衣的泰晤士河船夫名字寫錯成『Thomas Odell』，並稱布包內塞滿『石塊與鉛塊』——重開 1814 年庭審原卷 pp. 30, 125–127（ZH1-S012）與 Atlay pp. 93–94（ZH1-S015）核實，撈煤船夫真名為『George Odell（喬治．奧德爾）』，且沉底椅套布包內壓的是『鉛塊與黃銅／金屬螺絲（pieces of lead and brass screws）』而非石塊（stones 為 0 筆命中）！已全面更正 ZH1-S012、hook、question、answer_target 與 visual；（3）剔除僅見於維基 ZH1-S016 之籠統數字『逾 110 萬英鎊』，改依庭審呈堂精算師稽核報告（ZH1-S012 pp. 183–185, 501；ZH1-S015 pp. 185, 495–496）精確載明三主嫌拋售『759,000 英鎊 Omnium 與 278,000 英鎊 Consols（折合 3% 公債名目當量 1,611,430 英鎊）、毛利 10,450 英鎊（科克倫名下 13.9 萬鎊獲利 2,470 英鎊）』；（4）原提案在 ZH1-S013 摘要寫『巴斯騎士團除籍』與『休．埃布林頓勳爵（Lord Ebrington）宣布親自陪站示眾枷』，惟 1814 年紐約小冊 ZH1-S013 全書止於 7 月中旬西敏補選，根本無巴斯除籍與 Ebrington！且核對 Atlay（ZH1-S015 p. 209），Ebrington 僅在下議院提案免刑，真正公開揚言『若押科克倫上示眾枷將親自站上去陪站』的是西敏同選區國會議員法蘭西斯．伯德特爵士（Sir Francis Burdett，1770–1844，已補 DNB 傳記 ZH1-S058）！已徹底更正 ZH1-S013 與正片歸屬；（5）原提案多次渲染騎士紋章旗被『一腳踢落禮拜堂台階』，惟遍查 ZH1-S013、ZH1-S015、ZH1-S055 均僅載自亨利七世禮拜堂撤下除籍（1860 年葬禮前夕復掛回原位），『踢落台階』係維基獨有描寫（原典 0 筆命中），已全面改回撤除與復掛史實；（6）DNB（ZH1-S056）明載叔父強斯頓（生於 1767 年）於 1814 年 6 月定罪後量刑前潛逃海外『此後不知所終（and was not heard of again）』，已刪除僅見於維基之卒年『1833』（其 1767 年出生距 1956 年達 189 年，完全符合 1956 紅線）。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞 pool.json（既有金融騙局題僅 N3262 波亞斯公債、S21 鬱金香狂熱、N5702 南海泡沫法）、legacy/w-axis.json 與同輪 ZH1–ZH4 提案，均無 1814 年倫敦證交所拿破崙假死訊案。1814 年庭審速記原卷與 1897 年專著證據極為扎實，剔除拼湊維基網址、更正船夫真名與鉛塊螺絲證物、還原精算部位與伯德特爵士陪站史實並移除『踢落台階』後通過，片長 10–12 分鐘。"
+    },
+    {
+      "id": "N5803",
+      "agent": "ZH1",
+      "reviewer": "R521",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZH1-S002 https://archive.org/download/historyoftaxatio04doweuoft/historyoftaxatio04doweuoft_djvu.txt（R521 seq 3–4，Book IV Ch. I § 5 pp. 314–316）、ZH1-S024 https://www.wopc.co.uk/uk/（R521 seq 9），逐字核對快取 ZH1-S022、S023、S025，並循合規搜尋補抓非維基專業史料 ZH1-S062 https://makersofplayingcards.org/wp-content/uploads/2020/01/17-4-Card-Design-Ace-of-Spades.pdf（倫敦製牌商崇敬公會專文，R521 seq 34）、ZH1-S063 https://www.wopc.co.uk/members/ken-lodge/72-the-ace-of-spades（R521 seq 35）、ZH1-S064 https://www.bridgeinthebox.co.uk/https-www-bridgeinthebox-co-uk-death-by-hanging/（1805 哈丁老貝利審判考據，R521 seq 36）及四位君主 EB1911 傳記 ZH1-S065～S068（R521 seq 37–40）",
+      "reopen_result": "頁面上確實寫了：Dowell 1888 Vol. IV pp. 314–316（ZH1-S002）、WOPC（ZH1-S024、ZH1-S063）與倫敦製牌商崇敬公會專文（ZH1-S062）完整印證 1628 年查理一世製牌商公會特許狀、1711 年安妮女王 6 便士牌稅（Chatto ZH1-S022 pp. 157–158 記黑桃 A 紅色六便士稅戳）、1765 年喬治三世起嚴禁牌廠自印黑桃 A 改由印花稅局專印『稅務黑桃 A（Duty Ace）』且偽造處唯一死刑、1801 年漲至 2 先令 6 便士、p. 316 稅務黑桃 A 觸感不同變相替賭桌老千發獎金（premium on card-sharping）、1828 年喬治四世降至 1 先令『老捲毛（Old Frizzle）』、1862 年降至 3 便士封口紙帶並開啟紙牌廠在黑桃 A 印華麗註冊商標傳統，直至 1960 年 8 月英國廢除撲克牌稅；五位點名人物均卒於 1831 年以前。惟逐字核對原典與公會史料抓出五處技術因果錯置與維基單一依賴並直接修正：（1）剔除本題全部 6 筆拼湊『?action=raw』之維基來源（ZH1-S026～S031，其中原提案因 oldbaileyonline.org 403 封鎖而單靠維基 ZH1-S027 支撐理查．哈丁絞刑案），R521 嚴守封鎖名單不碰 oldbaileyonline.org，改經搜尋補抓倫敦製牌商公會 PDF（ZH1-S062）、Ken Lodge 專文（ZH1-S063）與 1805-09-21 老貝利審判專文（ZH1-S064），三方獨立核實格羅夫納廣場製牌商理查．哈丁因私印逾 2,000 張假黑桃 A（由女兒與家人持有）經印花稅局雕刻師當庭指認被判絞刑，並移除非維基來源未印之生年『1770』與『11 月 13 日』；（2）糾正『官方專用紙張厚薄不同』之重大技術誤讀：原提案在 question、answer_target、payoff、visual、notes 均稱稅務局使用『官方專用紙張』導致厚薄不同，惟倫敦製牌商公會專文（ZH1-S062 p. 1）明載 1765 年起『製牌廠必須把自家同款紙張送交稅務局（cardmakers supplied their own matching paper to the Tax Office）』，且重開 Dowell p. 316（ZH1-S002）原文亦精確寫作『The mode in which this card was necessarily prepared rendered it to the touch different』（製作工序而非紙張不同——稅務局用昂貴金屬雕刻凹版壓印黑桃 A，牌廠其餘 51 張則用木刻版印製）！已全面改回『同款自備紙張、但官方金屬雕刻凹版 vs. 51 張木刻版壓印工序導致指尖觸感差異』；（3）原提案稱地下黑市直接賣『缺黑桃 A 的 51 張牌』僅見於維基 ZH1-S026，在全部非維基來源（ZH1-S002、S022–S025、S062–S064）均為 0 筆命中！已移除並改採非維基史料實載之三大逃稅手法：剪角水洗舊牌充二手牌（ZH1-S002、S023）、木刻假版刷亮光液（ZH1-S024、S062）與刮改紅心 A／梅花 A 變造黑桃 A（ZH1-S063）；（4）更正 Chatto 1848（ZH1-S022 pp. 157–158）真實內容為安妮女王時期黑桃 A 六便士紅印稅戳（1628 年特許狀實載於 Taylor ZH1-S023 pp. 162–163 與 ZH1-S024，並註明 Taylor 誤排『1629』）；（5）於 ZH1-S024 limitations 誠實註明 WOPC 內文有一句將 1828 年降稅誤植為『1804』之筆誤（已由 Dowell 9 Geo. IV c. 18 與 ZH1-S063 校正為 1828 年）。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞 pool.json、legacy/w-axis.json（W01–W19）、原來如此 pool.json（含同輪 F156–F159）與同輪 ZH1–ZH4 提案，均無英國印花稅局專印黑桃 A 死刑與老千觸感漏洞案。補齊倫敦製牌商公會專文與三份非維基哈丁審判史料、糾正『自備同款紙張＋金屬凹版 vs. 木刻版工序』觸感成因並剔除維基獨有細節後通過，片長 10–12 分鐘。"
+    },
+    {
+      "id": "N5804",
+      "agent": "ZH1",
+      "reviewer": "R521",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZH1-S032 https://archive.org/download/firepreventionfi00braiuoft/firepreventionfi00braiuoft_djvu.txt（先 GET metadata 再抓全文，R521 seq 10–11）、ZH1-S035 https://www.london-fire.gov.uk/museum/london-fire-brigade-history-and-stories/early-insurance-brigades/（R521 seq 19）、ZH1-S036 https://www.london-fire.gov.uk/museum/london-fire-brigade-history-and-stories/fires-and-incidents-that-changed-history/the-tooley-street-fire/（R521 seq 20），逐字核對快取 ZH1-S033、S034，並循合規搜尋補抓非維基權威傳記 ZH1-S069（DNB Barbon，R521 seq 41）與 ZH1-S070（DNB Braidwood，R521 seq 42）",
+      "reopen_result": "頁面上確實寫了：倫敦消防博物館官方史料（ZH1-S035、ZH1-S036）與布雷德伍德 1866 年遺作《Fire Prevention and Fire Extinction》（ZH1-S032）完整證實：1666 年倫敦大火燒毀約 1,000 萬英鎊財產（市府年收僅 1.2 萬鎊），尼古拉斯．巴本於 1680 年組建火險公司雇用最多 30 名免海軍強徵的泰晤士河船夫救火；官方檔案直接破除『沒貼自家火險標章就見死不救』迷思——因窄街木屋極易延燒自家保戶，各火險公司明令無論有無保險皆須全力撲救、違者立即開除；真實私營弊病在於互搶水源、水帶接頭不合、發啤酒雇路人壓幫浦，以及保財產不保人命而不配救人長梯（賴 1836 年慈善救生梯協會支援）；1833 年聯合成立 LFEE 後，總監布雷德伍德早於 1854-02-10 致函點名警告圖利街巨型倉庫一旦起火全倫敦無人能救（ZH1-S032 pp. 22–23），果於 1861-06-22 因麻料自燃、鐵門忘關與退潮缺水爆發連燒兩週、損失 200 萬鎊大火，布雷德伍德遭崩塌高牆壓死，保險業於 1862 年攤牌逼出《1865 年大都會消防隊法》（每百萬保額徵 35 鎊消防捐）。惟逐字核對抓出三項問題並直接修正：（1）剔除 2 筆拼湊『?action=raw』之維基來源（ZH1-S037、S038），改補合規搜尋取得之 DNB 傳記 ZH1-S069（核實 Nicholas Barbon 卒於 1698 年，移除未印於 DNB 之推估生年與『1699』）與 ZH1-S070（核實 James Braidwood 1800–1861）；（2）原提案將 Walford 1868《Insurance Guide and Hand-Book》（ZH1-S034）火險與保單重稅頁碼標為『pp. 331–342』，惟核對原書 pp. 331–342 全為人壽保險唐提分紅（火險 0 筆命中）！倫敦早期火險與『英國火險業務受政府沉重稅負束縛（fettered by restrictive duties）』實印於 Ch. II pp. 16–17, 26，已精確更正 ZH1-S034 與 source_locator；（3）原提案於 ZH1-S033 limitations 稱該 1914 年小冊對見死不救傳說『僅半信半疑』，惟核對原書 p. 7 實將消防員『quietly going home and to bed（安安靜靜回家上床睡覺）』當成確鑿史實敘述，已如實更正將其定位為傳統迷思流傳標本，與倫敦消防博物館檔案（ZH1-S035）形成精準對照。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞 pool.json（與前批 N5703 1774 年賭命人壽保單禁令完全不同領域）、legacy/w-axis.json、原來如此 pool.json 與同輪 ZH1–ZH4 提案，均無倫敦私營火險消防隊標章迷思與 1861 年圖利街大火案。倫敦消防博物館官方考據與 1866 年遺作原典雙重支撐，剔除拼湊維基網址並更正 Walford 1868 頁碼（pp. 16–17, 26）與 1914 年小冊定性後通過，片長 10–12 分鐘。"
+    },
+    {
+      "id": "N5805",
+      "agent": "ZH1",
+      "reviewer": "R521",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZH1-S039 https://archive.org/download/treatiseontontin32comp/treatiseontontin32comp_djvu.txt（先 GET metadata 再抓全文，R521 seq 14–15）、ZH1-S040 https://archive.org/download/op1242904-1001/op1242904-1001_djvu.txt（先 GET metadata 再抓全文，R521 seq 16–17）、ZH1-S041 https://journals.openedition.org/articulo/891（R521 seq 18），逐字核對快取 ZH1-S014、S034、S042、S043，並循合規搜尋補抓非維基原典與學術權威來源 ZH1-S071（EB1911〈Tontine〉，R521 seq 43）、ZH1-S072（史蒂文生 1889《The Wrong Box》Gutenberg #1585，R521 seq 47）、ZH1-S073（瑞士洛桑大學《Lumières.Lausanne》Tronchin 傳記 #1647，R521 seq 48）及八篇 EB1911／DNB 傳記 ZH1-S067、S074～S080（R521 seq 39, 49–55）",
+      "reopen_result": "頁面上確實寫了：《大英百科全書》第 11 版〈Tontine〉（ZH1-S071）與 Walford 1868 p. 14（ZH1-S034）記載那不勒斯銀行家羅倫佐．通蒂 1653 年提案遭巴黎高等法院否決、路易十四 1689 年發行首宗法國皇家唐提（300 里弗門票、14 組、1726 年最後寡婦年領 73,500 里弗後本金歸零）及法國 1770 年停辦國營唐提；1811 年英國下議院《愛爾蘭唐提調查報告》附錄清冊（ZH1-S040）明列投機客押注 36 歲英王喬治三世、26 歲邊沁與 14 名日內瓦少兒當計命人頭；Compton 1833 pp. 11–12（ZH1-S039）記下愛爾蘭唐提壽星抱怨彼此『unreasonable longevity, because they would not die off fast enough』；Forster 2006（ZH1-S041）、Poitras 2025（ZH1-S042）與 Rodama 2017（ZH1-S043）詳載法國王室 10% 均一終身年金、日內瓦女童生命表、30 名少女連帶證券化池、1788-07-16 十八歲少女馬丁病逝（逾 200 萬里弗本金／212,197 里弗年息）與大革命通膨反噬；十二位點名歷史人物均卒於 1895 年以前。惟逐字核對抓出五項重大時代錯置、來源錯植與紅線問題並直接修正：（1）剔除本題全部 8 筆拼湊『?action=raw』之維基來源（ZH1-S030、S044～S050），補抓史蒂文生 1889 年小說《The Wrong Box》第一章原著（ZH1-S072，直接支撐『最後一人獨吞本金池』文學迷思）、EB1911〈Tontine〉（ZH1-S071）、瑞士洛桑大學《Lumières.Lausanne》學術傳記（ZH1-S073，確認 Théodore Tronchin 1709–1781 生卒年）與 EB1911／DNB 傳記（ZH1-S067、S074～S080）；（2）糾正雙重醫療史嚴重時代錯置（anachronism）：原提案在頂層 scope、candidate question、scope、ZH1-S041 摘要、notes 與 visual 多次把 1770–1780 年代日內瓦少女寫成『打過天花疫苗／接種牛痘』，甚至在 visual 畫出老醫師『背著木製聽診筒……接種牛痘』——惟詹納牛痘疫苗遲至 1798 年才發表、雷奈克木製聽診筒更遲至 1816 年才發明！核對 Forster 法文原文（ZH1-S041）與洛桑大學傳記（ZH1-S073），十八世紀特隆欽與奧迪耶施行的係『天花人痘接種（inoculation de la variole）』，已將全卷文字與視覺提示全面改回『早期天花人痘接種』與『提著隨診木藥箱把脈健檢』；（3）更正 Compton 1833（ZH1-S039，全書僅 32 頁而非 42 頁）重大歸屬錯誤：原提案把『1689 年 96 歲外科醫師遺孀領 73,500 里弗』與『1789 年英國百萬唐提認購不足一半、公家假人頭』塞進 ZH1-S039，惟重開原書核對兩者皆為 0 筆命中！已將 1689 年 300／73,500 里弗寡婦史實改歸實有記載之 Walford p. 14（ZH1-S034）與 EB1911（ZH1-S071，並刪除僅見於維基之『外科醫師遺孀』『96 歲』與『1789 認購不足一半』），並還原 Compton pp. 24–25 真實記載之『1789 年英國唐提第一組歷經四十年股息僅從 4 鎊 3 先令微增至 6 鎊 3 先令 3 便士』；（4）更正 1811 年國會報告（ZH1-S040）本文真實頁碼為 pp. 1–2（非 pp. 3–12），並補入附錄清冊第二組實載之 26 歲哲學家邊沁（Jeremy Bentham，1748–1832，ZH1-S079）與 14 名日內瓦少兒人頭；（5）嚴守 1956 紅線：原提案在 answer_target 直接點名兩位在世當代學者（Forster、Poitras），已自正片敘事移除當代學者姓名，並為 1794 年國民公會財政報告人皮埃爾．約瑟夫．康邦（1756–1820，ZH1-S078）補齊 EB1911 傳記；另同步清除 not_added[5] 誤填之原來如此 ID（LEG-B01～B03）與 not_added[8] 對已剔除維基 seq 73 之引用。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞 pool.json（與 N5703 1774 年英國禁止民間拿名人短期生死開賭盤完全不同，本題為國營唐提與法國王室均一終身年金遭日內瓦銀行團以女童生命表＋人痘接種＋30 人風險池證券化套利）、legacy/w-axis.json 與同輪 ZH1–ZH4 提案，確認零撞題。剔除拼湊維基網址、糾正 1798 牛痘與 1816 聽診筒雙重時代錯置、更正 Compton 1833 歸屬並移除在世學者點名後通過，片長 10–12 分鐘。"
+    },
+    {
+      "id": "N5821",
+      "agent": "ZH2",
+      "reviewer": "R522",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZH2-S001 https://archive.org/download/gri_33125012932865/gri_33125012932865_djvu.txt（先 GET metadata/gri_33125012932865 再抓全文，R522 seq 1, 2）、ZH2-S003 https://www.sil.si.edu/exhibitions/chasing-venus/measuring.htm（R522 seq 3），並逐字核對本機快取 ZH2-S002、ZH2-S004、ZH2-S005、ZH2-S006",
+      "reopen_result": "頁面上確實寫了：1779 年王家印刷局原典《Voyage dans les mers de l'Inde》Tome I（ZH2-S001）記載 Le Gentil 持路易十五 1759-11-17 護照（pp. 85–86），1760-03-26 乘 50 門砲艦 le Berryer 自洛里昂啟航、07-10 抵法蘭西島（pp. 1–2），1761-03-11 改乘快船 la Sylphide（p. 5；Gore 1909 ZH2-S002 p. 338 載明 15 法國呎物鏡裝入『四塊松木板』方筒綁後甲板小桅桿）、05-24 於馬埃外海獲悉英軍攻陷本地治里折返、06-06 於南緯 5 度 45 分海上目視凌日卻因船晃無從定經度而無效；留駐印度洋並於 1766-08 抵馬尼拉（遭西班牙總督疑信件造假，pp. 18–26），1768-03-27 重返本地治里築觀測室（pp. 32–33）；1769 年 5 月清晨皆晴，惟 6 月 4 日清晨（天文日 6 月 3 日）凌日期間突刮風暴烏雲蔽日、上午 8 時 30 分放晴（pp. 34–35）；返航歷經 1770-12-03 颶風斷桅（p. 64）、改搭西班牙王家巡防艦 l'Astrée（p. 65）繞好望角，至 1771-10-08 上午 9 時翻越庇里牛斯山返法，歷時 11 年 6 個月又 13 天（p. 78）、8 箱自然史標本散失（pp. 78–80）；pp. 80–85 本人親手戳破史密森尼（ZH2-S003）與美國國家公園管理局（ZH2-S004）流傳之『宣告死亡、妻子改嫁、家產被分』訛傳——出國前實未婚（返國後始娶諾曼第世家女子育一女，p. 81）、庫唐斯遠親因『缺一張死亡證明（Il leur manquoit un certificat）』未能瓜分遺產（p. 82），實為訴訟代理人索討一成佣金並報稱代管 905 livres 遭竊，經庫唐斯初級法院（含一位忘記迴避之親戚法官）一致判敗訴（pp. 83–85），而科學院改列榮休（Vétéran）亦由路易十五於 1772-02-28 下令恢復 Associé-Astronome 席位（pp. 80–81）；Le Gentil（1725–1792）與 Louis XV（1710–1774）均卒於 1956 年以前。惟逐字核對抓出五處事實顛倒與原頁未印細節並直接修正：（1）提案稿在 S001 摘要、answer_target、source_locator 與 visual 均把英屬馬德拉斯（Madras）天氣寫反，宣稱『馬尼拉與馬德拉斯當天全都萬里無雲』——惟重開 ZH2-S001 p. 34 原文明白印出『Ce fut la même chose à Madras... ce tourbillon s'étoit fait sentir le long de toute la côte de Coromandel, à plus de trente lieues』（馬德拉斯連同整條科羅曼德爾海岸逾三十法里當天同樣被這場風暴蓋死！），真正萬里無雲讓兩位友人看完全程的只有他先前主動離開的馬尼拉（p. 35；ZH2-S002 p. 339 亦僅寫馬尼拉晴朗），已全面更正並將 visual『遠處兩座鄰城卻陽光燦爛』改為『遠處海峽彼岸他剛離開的熱帶島城卻陽光燦爛』；（2）提案稿稱他在本地治里『火藥庫上方』蓋天文台，惟遍查 ZH2-S001 全卷前段『poudre / poudrière』為 0 筆，p. 33 實載於舊要塞廢墟一處『極堅固磚拱（très-bonne voûte）』上方築觀測室，已刪除無根據之『火藥庫』；（3）提案稿稱西班牙巡防艦 l'Astrée 為『26 門砲』，惟原書 p. 65 僅印『l'Astrée, Frégate de guerre de Sa Majesté Catholique』而未印砲數，已刪除未印數字；（4）提案稿誤指路易十五 1772-02-28 復職令載於卷末『Addition à la page 62』、並將『11 年 6 月 13 天』標為 p. 77、馬尼拉總督風波標為 pp. 46–50——實核卷末補遺僅記 1761–1764 英法船長邀乘經過，復職紀錄實印於 pp. 80–81、十一年半總計印於 p. 78、馬尼拉段在 pp. 18–26，且於 ZH2-S002 limitations 註明 Gore p. 338 誤植 3 月 25 日與原典 p. 5（3 月 11 日）之別；（5）檢查 ZH2 access_log 全 72 筆合規（User-Agent 皆為 Mokaair-editorial/1.0，archive.org 皆先查 metadata，零拼湊網址；seq 3 維基頁 HTTP 200 因內嵌 JS 字串觸發假陽性標記但未重試，seq 44 遇 HTTP 500 即停未引用），並將維基生卒條目 S005、S006 權限統一改標為 CC_BY_SA_INDEX_ONLY。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞 pool.json（既有金星凌日題僅 S52 庫克大溪地黑滴效應、N1901 巴達維亞牧師天文台、N1344 1874 墨西哥橫濱觀測隊、N3324 1631 凌日預言）、batches/*.json、原來如此 pool.json、品牌故事與同輪 ZH1／ZH3／ZH4，均無 Le Gentil 十一年半遠征與回憶錄拆穿死後改嫁訛傳公案。1779 年法文一手回憶錄與兩大現代官方機構網頁反差強烈，修正馬德拉斯天氣顛倒、刪除未印『火藥庫／26 門砲』並校準頁碼後通過，片長 10–12 分鐘。"
+    },
+    {
+      "id": "N5822",
+      "agent": "ZH2",
+      "reviewer": "R522",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZH2-S007 https://archive.org/download/s25id13211190/s25id13211190_djvu.txt（先 GET metadata/s25id13211190 再抓全文，R522 seq 4, 5）、ZH2-S009 https://archive.org/download/philtrans08894694/08894694_djvu.txt（先 GET metadata/philtrans08894694 再抓全文，R522 seq 6, 7）、ZH2-S011 https://archive.org/download/b22297388/b22297388_djvu.txt（先 GET metadata/b22297388 再抓全文，R522 seq 8, 9），另循合規搜尋補抓劍橋光學史論文 ZH2-S046 https://vision.psychol.cam.ac.uk/jdmollon/papers/Mollon1987JohnElliot.pdf（R522 seq 23），並逐字核對快取 ZH2-S008、S010、S012–S018、S040",
+      "reopen_result": "頁面上確實寫了：《Annual Register for 1787》pp. [210]–[213]（ZH2-S007）記載倫敦醫師 John Elliot 持兩把繩綁手槍朝與書商同行之淑女開火，陪審團裁定無法證明裝有彈丸免除死刑、移押候審，辯方傳喚醫師（Dr. Symmonds；Clerke ZH2-S008 pp. 57–58 作友人 Dr. Simmons 並錄『濃密極光』『季節永恆』『太陽系最幸福居所』原句及 Bode 1776 前例）出示 1787 年 1 月太陽非火球書信證瘋，遭法官舉 Buffon 反詰；威廉．赫歇爾 1794-12-18 宣讀（1795 刊）《Phil. Trans.》論文（ZH2-S009）主張黑子為磷光雲裂口露出暗色固態太陽地面且住滿居民；小赫歇爾 1858《Outlines of Astronomy》§§386–389a（ZH2-S010）詳述雙層雲遮陽隔熱架構；克希荷夫 1861/1862 專論（ZH2-S011）詳載 1859 鈉焰 D 線亮變暗反轉、背後光源溫度必高於氣體之熱輻射定律、60 條鐵線巧合率小於 (1/2)^60（不到一百萬兆分之一）及熱平衡駁倒赫歇爾與阿拉戈（p. 25）太陽宜居核；八位點名歷史人物均卒於 1888 年以前。惟逐字核對抓出四處維基單一依賴、數據與引文頁碼錯置並直接修正：（1）原提案中『艾略特於 1787-07-22 在新門監獄絕食身亡』單靠維基條目 ZH2-S012，且將出庭證人稱作『瘋人院醫師』、將 1787 年 1 月信稱為『準備呈交皇家學會的論文』亦僅見於維基而未印於 ZH2-S007（僅稱 a Dr. Symmonds 與收到被告 1 月來信）或 ZH2-S008（明稱 His friend Dr. Simmons）——R522 已補抓劍橋大學光學史同行評審論文 J. D. Mollon 1987《Nature》329:19–20（ZH2-S046，引 1787 Old Bailey Sessions Paper 與當代報刊），獨立核實 1787-07-06 槍擊案、移押新門監獄絕食並於 7 月 22 日前身亡，同時刪除維基獨有之『瘋人院醫師／準備呈交皇家學會』改回『友人醫師／1787 年 1 月闡述太陽假說的書信論文』，將 S012 嚴格退回 CC_BY_SA_INDEX_ONLY 索引；（2）提案稿稱赫歇爾 ZH2-S009 寫太陽有『300 英里山脈（p. 59）』並將『太陽住滿居民』名句標於 p. 63——惟重開 S009 核實 p. 59 毫無山高數字，實印於 **p. 52**（推算發光雲峰需五六百英里，且按地球 3 英里山換算太陽可穩固支撐『不低於 334 英里、甚至更高得多的山岳』），而『we need not hesitate to admit that the sun is richly stored with inhabitants』逐字原句實跨印於 **pp. 67–68**（p. 63 係寫 most probably also inhabited），已全數更正；（3）提案稿稱小赫歇爾 ZH2-S010 寫遮陽雲維持『永恆春天（perpetual spring）』且註腳點名阿拉戈——惟重查 S010 全文並無『perpetual spring』（季節永恆實出自 S008 p. 58 艾略特信），且 S010 pp. 245–246 註腳 † 僅匿名稱『光學界最偉大名字之一』，阿拉戈姓名與贊同太陽居民原話實印於克希荷夫 ZH2-S011 pp. 24–25 與 S008 p. 151，已精確拆清歸屬；（4）於 ZH2-S011 limitations 與 scope 補註克希荷夫當年白熾液固核設想與現代電漿模型之科學史界線，並將 source_locator 內縮寫『ZH2-S012..S018 & ZH2-S040』展開為逐一頓號列舉以完全相容 core.mjs splitLocator。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞 pool.json（僅 P 軸 N3161 孔德不可知恆星成分斷言，完全無 1787 Elliot 法庭案或赫歇爾父子太陽宜居論六十五年主流史）、batches/*.json、原來如此 pool.json、品牌故事與同輪 ZH1／ZH3／ZH4，確認零撞題。補入《Nature》光學史專文解除維基單一依賴、更正赫歇爾太陽山高（334 英里，p. 52）與名言頁碼（pp. 67–68）及『友人醫師』身分後通過，片長 10–12 分鐘。"
+    },
+    {
+      "id": "N5823",
+      "agent": "ZH2",
+      "reviewer": "R522",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZH2-S019 https://archive.org/download/monthly-notices-of-the-royal-astronomical-society_1854-11-10_15_1/monthly-notices-of-the-royal-astronomical-society_1854-11-10_15_1_djvu.txt（先 GET metadata 再抓全文，R522 seq 10, 11）、ZH2-S022 https://archive.org/download/mobot31753002152731/mobot31753002152731_djvu.txt（先 GET metadata 再抓全文，R522 seq 12, 13）、ZH2-S023 https://ntrs.nasa.gov/api/citations/20220000509/downloads/MoonCenterGravity_Ahrens.pdf（R522 seq 14），並逐字核對快取 ZH2-S015、S020、S021、S024–S027",
+      "reopen_result": "頁面上確實寫了：漢森 1854-11《MNRAS》論文（ZH2-S019）由格林威治子午觀測導出經驗係數 1.0001544（pp. 9–12），推算月球質心朝遠離地球方向偏離形心 59,000 公尺（p. 15；折合地球逾 216,000 公尺／29 地理哩，p. 16），並推論月背低窪側『大氣層與動植物生命可能在那裡找到容身之所』（p. 16）；小赫歇爾 1871《Outlines of Astronomy》§436a（ZH2-S020 pp. 287–289）與凡爾納《Round the Moon》（ZH2-S021）證實該說廣傳；紐康 1868《Am. J. Sci.》pp. 376–378（ZH2-S022）從天體力學拆穿漢森推導無據；NASA 戈達德技術報告（ZH2-S023）與月球數據表（ZH2-S024）證實月球平均半徑 1,737.4 公里、外氣層僅約 25,000 公斤，且阿波羅雷射（-2.55 km）與 Clementine 光達（-1.74 km）實測質心『反向朝地球偏近約 1.74–2.55 公里』；四位點名人物均卒於 1910 年以前。惟逐字核對抓出五處比喻誤植、章節缺漏、力學論證失真與未印名詞並直接修正：（1）提案稿稱小赫歇爾 ZH2-S020 寫正面巨峰高『約 37 英里』並比喻月球像『浮在水銀上的球』——惟重查 S020 §436a pp. 287–289 原文實印作『近 40 英里（nearly forty miles, p. 288）』，且全段從未提水銀浮球（水銀僅見於同書 p. 108 望遠鏡軸承！），小赫歇爾真正寫的比喻是『一端綁重錘、一端較輕的木棒在中央繫繩甩轉，重端必朝外背離手心』（pp. 287–288）及地球太平洋水半球對比喜馬拉雅高原（p. 289），另修正 S020 reading_scope 將 Part III 誤寫為 Part II 與 S019 引文頁碼（p. 15→p. 16）；（2）提案稿將凡爾納《Round the Moon》（ZH2-S021）定位於 Ch. XIV–XV，惟重核 Gutenberg #16457 原文，Ch. XV〈Glimpses at the Invisible〉係火流星爆亮月背瞬間誤認海洋森林，而明確寫出『月球重心偏離幾何中心，科學家推論空氣與水全被吸往地球看不見的背面』原句實印於 **Ch. XVI〈The Southern Hemisphere〉**，已擴正為 Ch. XIV–XVI；（3）提案稿把紐康 1868（ZH2-S022，實為 Vol. 46 [Whole Vol. 96] No. 138）的拆台理由寫成『違反視差與天平動（libration）觀測』，惟重讀 S022 pp. 376–378 全文並無 libration 一字——紐康真正的精妙證明是：最大攝動項『出差（evection）』所用離心率本就取自形心觀測（已內含 1.0001544 縮放）故理論與觀測必自行抵銷，而檢驗『二均差（variation）』扣除視差不等項修正後殘差僅 -0''.34（『微弱到不足以建立任何理論』），已還原紐康真實論證；（4）提案稿在 ZH2-S023 與 answer_target 寫入『GRAIL 探測器』與『富含鐵鈦』，惟遍查 S023 四頁 PDF 原文僅載阿波羅 15–17、Clementine 與 LRO（LOLA）以及富鐵玄武岩月海（iron-rich Maria）與富鋁斜長岩高地，完全未印『GRAIL』或『titanium／鈦』，已嚴格剔除未印字詞；（5）將維基條目改標 CC_BY_SA_INDEX_ONLY 並展開 source_locator 縮寫。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞 pool.json（既有月球題 S49 太陽報蝙蝠人、N4386 Linné 坑、N5484 1178 月面閃光、N3684 月面植物暗斑均完全無涉漢森偏心月背海洋說）、batches/*.json、原來如此 pool.json、品牌故事與同輪 ZH1／ZH3／ZH4，確認零撞題。修正小赫歇爾『近 40 英里／木棒甩轉比喻』、補齊凡爾納第 16 章、還原紐康出差與二均差真論證並清除 NASA 報告未印名詞後通過，片長 9–11 分鐘。"
+    },
+    {
+      "id": "N5824",
+      "agent": "ZH2",
+      "reviewer": "R522",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZH2-S028 https://archive.org/download/planetaryandste01mitcgoog/planetaryandste01mitcgoog_djvu.txt（先 GET metadata 再抓全文，R522 seq 15, 16）、ZH2-S030 https://www.gutenberg.org/files/28536/28536-h/28536-h.htm（R522 seq 17），另循合規搜尋補抓天文攝影與攝影期刊來源 ZH2-S047 http://robroy.dyndns.info/amateur-astro/astrophotography_for_amateurs.html（R522 seq 25）及 ZH2-S048 https://archive.org/download/photographicnews31unse/photographicnews31unse_djvu.txt（先 GET metadata/photographicnews31unse 再抓全文，R522 seq 24, 26），並逐字核對快取 ZH2-S008、S014、S015、S020、S029、S031–S033",
+      "reopen_result": "頁面上確實寫了：Mitchel 1848 Lecture X pp. 272–280（ZH2-S028）與 Kurtz 1857 §9 pp. 357–366（ZH2-S029，逐字英譯 Mädler 1846《Die Centralsonne》p. 44）詳載多爾帕特天文台長梅德勒比對約 800 顆恆星自行與昴星團鄰域 110 星（60 星南移、僅 1 反向），宣布金牛座昴宿六（Alcyone，估距 498–537 光年）為銀河『中心太陽』、太陽公轉週期 1,820 萬年，並指出『中心太陽』一詞引發神學界誤讀（Clerke ZH2-S008 p. 41 亦評其如立憲體制無實權虛位首長）；小赫歇爾 1871《Outlines of Astronomy》p. 631（ZH2-S020）指出昴星團偏離銀河盤面 26 度故絕非盤面旋轉中心；蒙德 1908《Astronomy of the Bible》（ZH2-S030）記載講壇把昴宿六渲染成上帝寶座、倫敦名牧更拿昴宿六帶亮環照片當證據，實屬攝影瑕疵；NASA JPL（ZH2-S031）核實真正銀河中心為逾 26,000 光年外人馬座 A* 約 400 萬倍太陽質量黑洞；四位點名歷史人物均卒於 1929 年以前。惟逐字核對抓出三項關鍵來源歸屬越界、引文與頁碼誤差並直接修正：（1）提案稿將蒙德 ZH2-S030 頁碼標為 pp. 224–228／226–227、引文寫成『Throne of the Almighty』，並宣稱蒙德在該書當場解釋『透明玻璃乾版背面以臨界角全反射彈回感光層形成玻璃背反射光暈（halation）』——惟重開 S030 HTML 逐字核實，昴宿六全段實印於 **pp. 220–221**（pp. 222–229 為《約伯記》經文考證），原句實為『the seat of heaven, the throne of God』，且蒙德在 p. 221 原文僅點到『took that halo, which every photographer would at once recognize as a mere photographic defect, as a confirmation of this baseless fancy』（純屬每個攝影師一眼就能認出的攝影瑕疵），全頁並未印出『halation』或『臨界角全反射』！為補實這項『攝影師一眼認出的亮星光環瑕疵』並嚴格守住來源歸屬誠信，R522 循合規搜尋補讀 1921 年英國天文攝影手冊 H. H. Waters《Astronomical Photography for Amateurs》pp. 26, 41 & Plate IV（ZH2-S047，明載天文玻璃乾版必塗光學貼合防反光背層 backing，未塗背層拍亮星即生 halation 光暈）與 1887 年《The Photographic News》Vol. 31 pp. 79, 225〈Fighting against Halation〉（ZH2-S048，明載強光穿透乳劑撞擊玻璃板背面反射擴散回感光膜背面更大區域），將『純粹攝影瑕疵』精確歸屬蒙德 S030、將玻璃乾版 halation 背反射機制歸屬 S047／S048，並刪除無出處之『臨界角全反射』；（2）修正 Kurtz 1857（ZH2-S029）§9 真實起訖頁碼為 pp. 357–366（原稿漏計 pp. 357–360，其中 p. 359 載明六年不間斷研究，與 S028 約七年並陳）；（3）將維基條目改標 CC_BY_SA_INDEX_ONLY 並展開 source_locator 縮寫。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞 pool.json、batches/*.json、原來如此 pool.json、品牌故事與同輪 ZH1／ZH3／ZH4，全池均無昴宿六『中心太陽』假說、倫敦講壇光環照片烏龍或人馬座 A* 對比題。更正 Maunder 1908 頁碼（pp. 220–221）與原句，並補入兩份早期天文攝影／攝影期刊文獻誠實拆清玻璃乾版 halation 機制歸屬後通過，片長 9–11 分鐘。"
+    },
+    {
+      "id": "N5825",
+      "agent": "ZH2",
+      "reviewer": "R522",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZH2-S034 https://archive.org/download/bub_gb_kIQcvcwTpaYC/bub_gb_kIQcvcwTpaYC_djvu.txt（先 GET metadata 再抓全文，R522 seq 18, 19）、ZH2-S038 https://archive.org/download/philtrans04791627/04791627_djvu.txt（先 GET metadata 再抓全文，R522 seq 20, 21）、ZH2-S039 https://science.nasa.gov/dwarf-planets/ceres/facts/（R522 seq 22），並逐字核對快取 ZH2-S008、S014、S035–S037、S040–S045",
+      "reopen_result": "頁面上確實寫了：黑格爾 1801 年拉丁文論文《Dissertatio philosophica de Orbitis Planetarum》（《Werke》Bd. 16 pp. 1, 28–29，ZH2-S034；牛津 Wallace 1894 ZH2-S035 pp. 30, 36 fn. 1 辨析誇大傳聞）批評算術級數並改引柏拉圖《蒂邁歐篇》數列把 8 換成 16，以假設語氣寫下火星與木星間『neque ibi planetam desiderari apparet（顯然不需要在那裡尋找行星）』；高斯 1809《Theoria Motus》自序 pp. xiii–xvi（ZH2-S036）親述皮亞齊 1801-01-01 至 02-11 僅追蹤 41 天、地心弧長僅 3 度，經其無預設離心率圓錐曲線法定軌後於 1801-12-07 由馮．札赫率先捕獲；Lodge 1893 Lecture XIII（ZH2-S037）與 Clerke 1902 pp. 79–81（ZH2-S008）詳載波德 2.8 AU 空缺、1800 年 24 區天空警察、1801-12-31／1802-01-01 確認重捕、歐伯斯 1802-03-28 發現傾角 34.5 度智神星與『古行星爆炸論』及海王星打破波德定律；威廉．赫歇爾 1802《Phil. Trans.》pp. 213–232（ZH2-S038）以花園亮盤測微估穀神星 161.6 英里並於 pp. 228–229 首創『Asteroids』一詞；NASA〈Ceres: Facts〉（ZH2-S039）確認真實半徑 476 公里、木星重力擾動成因與 2006 改列矮行星；八位點名古今人物均卒於 1856 年以前。惟逐字核對抓出四處算術自相矛盾、憑記憶添寫未印月份與來源互證誤差並直接修正：（1）提案稿在 S039 摘要與 answer_target 寫出嚴重四倍算術矛盾：『穀神星獨占小行星帶總質量 25%，把整條小行星帶全部加起來，總質量甚至還不到冥王星的十四分之一（穀神星為冥王星 1/14）』——重開 ZH2-S039 原文明印『Even though Ceres comprises 25% of the asteroid belt's total mass, Pluto is still 14 times more massive』，既然『穀神星單顆』是冥王星的 1/14 且佔全帶 1/4，『整條小行星帶總質量』應為冥王星的 4/14（約 28.6%，不到冥王星的三成，絕非不到十四分之一！），已徹底修正；（2）提案稿在 S034 標題與摘要、question、hook、answer_target、scope 反覆寫『1801 年 8 月（Aug. 1801）』黑格爾答辯，惟遍查 ZH2-S034（扉頁僅印『Pro licentia docendi. Jenae 1801』）、ZH2-S035（p. 30 僅載 1801 年初抵耶拿、同年秋開講，p. 36 fn. 1 寫 in the same year 且係英文摘述而非印出拉丁文原句）、S008、S037 與 S043 全部快取均未印出『August／8 月』，屬研究者憑記憶填入未讀到月份，已全面改為頁面實印之『1801 年同一年（Jenae 1801，該年秋開講）』並修正 S035 摘述說明；（3）釐清重捕與智神星日期分工：高斯自序 S036 p. xv fn. 印『December 7, 1801』（札赫初捕星點），Lodge S037 p. 299 印『31st of December』與隔晚歐伯斯確認重逢、智神星僅印『March, 1802』，而精確日期『March 28, 1802』實印於 Clerke ZH2-S008 p. 80，已於內文與 source_locator 精確並陳互證，並於 S037 limitations 註明其概稱高斯 25 歲（實滿 24 歲）及舊說『灶神星最大』已由 S039 校正；（4）將維基條目改標 CC_BY_SA_INDEX_ONLY 並展開 source_locator 縮寫。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞 pool.json（僅 N4262 天王星／海王星發現前恆星紀錄、N2802 高斯西伯利亞森林傳聞，無穀神星發現、黑格爾拉丁文論文撞車、歐伯斯古行星爆炸論與赫歇爾造詞 Asteroids）、batches/*.json、原來如此 pool.json、品牌故事與同輪 ZH1／ZH3／ZH4，確認零撞題。修正『小行星帶總質量不到冥王星 1/14』四倍算術錯誤、移除頁面未印之『8 月』並釐清日期互證後通過，片長 10–12 分鐘。"
+    },
+    {
+      "id": "N5841",
+      "agent": "ZH3",
+      "reviewer": "R523",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZH3-S001 https://archive.org/download/A335131/A335131_djvu.txt（先 GET metadata/A335131 再抓全文，R523 seq 1, 22）、ZH3-S002 https://archive.org/download/bub_gb_49BPAAAAcAAJ/bub_gb_49BPAAAAcAAJ_djvu.txt（先 GET metadata/bub_gb_49BPAAAAcAAJ 再抓全文，R523 seq 2, 23）、ZH3-S006 https://oujjas.com/wp-content/uploads/2024/03/OUJJAS_2023_03_252-261.pdf（R523 seq 14）；並逐字核對本機快取 ZH3-S003、ZH3-S004、ZH3-S005、ZH3-S007 及 ZH3/access_log.json 全數 100 筆紀錄",
+      "reopen_result": "頁面上確實寫了：1490 年奧格斯堡古搖籃本皮埃爾．代伊《Concordantia astronomiae cum theologia》Cap. 60（ZH3-S001）明印自 1414 年往後推算土星十週期至『erunt anni 1789（西元 1789 年）』將見世界律法與教派劇變（『multe tunc et magne et mirabiles alterationes mundi et mutationes future sunt: et maxime circa leges et sectas』）；理查．魯薩 1550 年里昂印本《Livre de l'estat et mutation des temps》（ZH3-S002，p. 180 刊記 1548-02-15 完稿）於 pp. 85–86 明印自編纂時起算『environ deux cens quarante troys ans（約 243 年）』迎來『la future renovation du Monde（世界未來的革新）』，並於 pp. 162–163 逐字法譯代伊『1789 年及十次土星週期與其後約 25 年』；鈴木大輔 2023/2024 放送大學論文（ZH3-S006）確認署期 1558-06-27 之〈致亨利二世書〉現存最早印本為 1568 年里昂死後全集，並以表格核實信內兩套創世年表（4757/4758 年 vs. 自稱約 4173 年 8 個月、實加僅 4092 年 2 個月）；點名古人 Nostradamus（1503–1566）、亨利二世（1559 卒）、Pierre d'Ailly（1350–1420）、Albumasar 與 Roussat 全數早於 17 世紀。惟逐字核對抓出六處事實、算式區間、頁碼與池內題號錯植並直接修正：（1）原稿在 ZH3-S006 摘要宣稱第一套年表抄自『薩佛納羅拉（Savonarola）』且第二套把『亞伯拉罕至出埃及的年數搞混（將 1056 誤印成 1506）』，經重開 PDF 逐頁檢視 p. 256–257 原文與表 2，全篇完全沒有『Savonarola』一字（第一套係與魯薩 4752 年、Jean Lemaire de Belges 4713 年比對），而第二套（抄自 1549 年里昂 Pierre Brindelles 曆書之 4173 年體系）誤印成『1506（原應為 1056）』的其實是第一段『亞當至挪亞誕生』（信內出埃及相關區間 130、430、480 完全未印成 1506），加上漏列巴比倫之囚（531 年），故 1506+600+1年2月+295+100+60+130+430+480+490＝4092 年 2 個月，已全面更正算式區間並刪除無根據之薩佛納羅拉；（2）更正 ZH3-S006 頁碼錯置：1568 死後全集考證實載於 p. 255 註 14（非 p. 254 註 11），兩套年表拆解在 pp. 256–257 與表 2，Albumasar→d'Ailly→Turrel/Roussat→Nostradamus 傳承鏈實載於 pp. 258–260（非 pp. 255–256）；（3）更正 ZH3-S003（Bareste 1840）錯頁：原標『pp. 166–185, 220–235』實為四行詩正文，〈Épître à Henri II〉實印於 pp. 401–424、生平與 1792／亨利二世討論見 pp. 1–69（尤見 pp. 43–45, 58–59），並補齊 S004（pp. 3–31, 309–344）、S005（pp. 1–42, 195–218, 270–292）精確頁碼及修正 S003–S005、S007 之 Internet Archive 真實 identifier 與 metadata seq（64, 65, 66, 82）；（4）移除亨利二世未見於 S003 原頁之生年『1519』（S004 p. 5 註 2 印舊曆 1518），改作『1559 年卒』；（5）原稿 scope 與 notes 將池內既有諾斯特拉達姆斯題號張冠李戴寫成『P05 與 N2402』（查 pool.json 實為 P05＝1844 米勒派大失望、N2402＝1750 倫敦地震恐慌；真正諾氏題為 P01『1999 年 7 月恐怖大王』與 N4163『金籠刺眼詩附會亨利二世』），已修正為正確題號並補上 question 結尾問號；（6）清除 visual 內易生字之『預言書』『法文小冊』『信封』，改為鑲金邊素面古書、無字羊皮卷、無字木刻星圖折頁與撒落一地的木算珠。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞 pool.json（既有諾斯特拉達姆斯題僅 P01 1999 恐怖大王與 N4163 亨利二世比武四行詩）、legacy/、batches/*.json、原來如此 pool.json、品牌故事與同輪 ZH1／ZH2／ZH4，均無〈致亨利二世書〉『1792 年世紀革新』轉抄鏈與同信聖經年表加總穿幫。1490 年代伊搖籃本、1550 年魯薩法文原書與 2024 放送大學文獻學論文證據鏈完整，更正『1506 vs. 1056』真實區間（亞當至挪亞誕生）、論文頁碼與池內去重題號後通過，片長 9–11 分鐘。"
+    },
+    {
+      "id": "N5842",
+      "agent": "ZH3",
+      "reviewer": "R523",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZH3-S010 https://archive.org/download/beholdbridegroo00cummgoog/beholdbridegroo00cummgoog_djvu.txt（先 GET metadata/beholdbridegroo00cummgoog 再抓全文，R523 seq 3, 24）、ZH3-S011 https://archive.org/download/india.history.resource.73157/73157_djvu.txt（先 GET metadata/india.history.resource.73157 再抓全文，R523 seq 4, 25）、ZH3-S012 https://archive.org/download/punchv51lemo/punchv51lemo_djvu.txt（先 GET metadata/punchv51lemo 再抓全文，R523 seq 5, 26）、ZH3-S013 https://www.gutenberg.org/files/28289/28289-h/28289-h.htm（R523 seq 15）、ZH3-S014 https://victorianweb.org/religion/sermons/rhe12.html（R523 seq 16）；並逐字核對本機快取 ZH3-S008、ZH3-S009、ZH3-S015",
+      "reopen_result": "頁面上確實寫了：喬治．艾略特 1855 年〈Evangelical Teaching: Dr. Cumming〉（ZH3-S013 pp. 64–98）於 p. 84 記下康明早期講義將基督可見降臨定於『1864 年』及柯芬園教堂擠如歌劇院、紫丁香燙金（lilac and gold）預言書暢銷現象；康明 1860《The Great Tribulation》（ZH3-S008 p. 25）與《Redemption Draweth Nigh》（ZH3-S009 pp. 152–167）改推 1867 年創世六千年大限；1865《Behold, the Bridegroom Cometh》（ZH3-S010）於序言 p. v 發誓『本書已窮盡我對預言應驗所要寫或說的一切』、p. 47 調侃法皇已通知教宗『租約於 1866 年 12 月最後一天到期』，pp. 52–53 卻微調至 1867 底或 1868 初並預埋更晚日期退路；《Punch》1866-12-08 p. 236〈A Hint to Dr. Cumming〉（ZH3-S012）在 11 月獅子座流星雨後嘲笑康明改口『世界只是要被改頭換面（transmogrified）』；1870《The Seventh Vial》（ZH3-S011）序言首頁 p. ix 原文霸氣宣布『I do not discover one solution presented in previous works that demands reversal or recasting』；Victorian Web（ZH3-S014）與大英百科（ZH3-S015 pp. 275–277）確認 Cumming（1807–1881，會眾 80→900 人、著書約 180 本含養蜂書）與 George Eliot（1819–1880）均卒於 1956 年前。惟逐字核對抓出五項原頁漏讀、頁碼與書目識別碼誤差並直接修正：（1）原稿在 ZH3-S010 limitations 與 N5842 scope 斷言『實讀《Punch》原文未載康明續簽 21 年別墅租約』——經重開 ZH3-S012（1866-12-08《Punch》p. 236）逐字核對，文末倒數第二句赫然白紙黑字印著調侃博士『taken the lease of a cottage for twenty-one years（簽下一棟別墅 21 年租約）』！已補齊《Punch》精確刊期與頁碼（1866 年 12 月 8 日號，p. 236），並在 S010、S012、question、answer_target 與 scope 精確區分：康明 1865 原書（S010 p. 47）調侃教宗租約 1866 底到期，而《Punch》（S012 p. 236）則拿坊間盛傳康明自己簽 21 年別墅租約反諷（誠實標明為《Punch》諷刺傳聞而非契約實據）；（2）ZH3-S009（1860《Redemption Draweth Nigh》pp. 152–167）原書實際將查士丁尼敕令年份印作『532 或 533 年』加 1260 年＝1792/1793 年，已精確還原並補齊頁碼；（3）校正各書精確頁碼範圍：S008（pp. vii–xvi, 19–85）、S010（pp. v–viii, 37–60）、S011 序言（pp. ix–xiv 而非 ix–xii）、S013 艾略特正文（pp. 64–98，p. 99 已是下一篇論文）與 S015（pp. 275–277），同時修正 S008–S012、S015 之 Internet Archive 真實 identifier 與 metadata seq（29, 30, 67, 31, 34, 85）；（4）修正 scope 與 notes 內錯配之池內末日題號（1844 米勒派實為 P05 而非 P17/N5725；1524 占星大洪水實為 P12/N5064 而非 N4163；1806 利茲母雞實為 P27；1910 哈雷彗星實為 P06/N1104/N5525），並補上 question 結尾問號；（5）清除 visual 內易生字之『新世界觀光地圖』，改為『畫滿奇花異草的無字風景畫卷與鄉間小屋銅鑰匙』及素面精裝書。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞 pool.json（既有末日題為 P05 米勒派 1844 大失望、P12/N5064 1524 占星洪水、P17 1666 倫敦大火、P27 利茲預言雞蛋等）、legacy/、batches/*.json、原來如此 pool.json、品牌故事與同輪 ZH1／ZH2／ZH4，均無維多利亞倫敦名嘴牧師約翰．康明 1864–1870 四度移動末日球門柱公案。四部康明一手原書加 1855 喬治．艾略特與 1866-12-08《Punch》p. 236 原刊互證嚴密，更正《Punch》21 年別墅租約原句歸屬與精確頁碼後通過，片長 9–11 分鐘。"
+    },
+    {
+      "id": "N5843",
+      "agent": "ZH3",
+      "reviewer": "R523",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZH3-S016 https://archive.org/download/b30411956_0008/b30411956_0008_djvu.txt（先 GET metadata/b30411956_0008 再抓全文，R523 seq 6, 27）、ZH3-S017 https://archive.org/download/1790courstheoriqueetpratique/1790Courstheoriqueetpratique_djvu.txt（先 GET metadata/1790courstheoriqueetpratique 再抓全文，R523 seq 7, 28）、ZH3-S018 https://archive.org/download/descriptivecatal00brituoft/descriptivecatal00brituoft_djvu.txt（先 GET metadata/descriptivecatal00brituoft 再抓全文，R523 seq 8, 29）、ZH3-S019 https://wellcomecollection.org/works/kj5hdaaw（R523 seq 17）、ZH3-S020 https://publicdomainreview.org/collection/etteilla-thot（R523 seq 18）；並逐字核對本機快取 ZH3-S015（大英百科第 9 卷〈Egypt〉破譯史 pp. 57–58）、ZH3-S021、ZH3-S022",
+      "reopen_result": "頁面上確實寫了：熱貝蘭 1781《Monde primitif》Tome VIII pp. 365–410（ZH3-S016）自述於巴黎貴婦牌桌初見塔羅牌即宣稱係古埃及神廟烈火倖存之《透特之書》、硬拆『Tar-Rosh（王室之道）』偽詞源，同卷『M. le C. de M.***』附文提出『古埃及祭司將預言偽裝成賭具交由人類嗜賭惡習保存』；阿利耶特（Etteilla）1790《Cours théorique et pratique du Livre de Thot》pp. 1–40（ZH3-S017）打出『埃及紙牌占卜學』旗號、宣稱 78 幅象形圖係大洪水後 171 年由 17 位賢哲於孟菲斯火神廟編定並反批熱貝蘭牌序印錯以推銷自家校正套牌；大英博物館 1876 官方圖錄（ZH3-S018）引錄 1392 年法國王室司庫 Poupart 帳冊付給畫師 Jacquemin Gringonneur 56 巴黎蘇繪三副紙牌供查理六世消遣、考證義大利 tarocchi 吃墩牌戲並斥熱貝蘭詞源為文字遊戲（merely an ingenious play with words）；Wellcome 館藏紀錄 kj5hdaaw（ZH3-S019）與大英百科（ZH3-S015、S021、S022）確認查理六世（1368–1422）、熱貝蘭（1728–1784）、阿利耶特（1738–1791）與商博良（1790–1832）均卒於 1840 年前。惟逐字核對抓出五項未印職業、錯頁與來源歸屬錯配並直接修正：（1）原稿在 scope、question、hook、answer_target、payoff、visual 及 S017、S020 反覆宣稱阿利耶特為『前巴黎種子商（marchand grainier）／種子店老闆』，經遍查 ZH3-S016–S022 全部快取，『grainier／seed』命中數為 0！實讀原頁記載的是：大英博物館圖錄（ZH3-S018 Part I pp. 144–146）明載 19 世紀法國牌史文獻稱阿利耶特出身巴黎『假髮匠（perruquier）』，而《Public Domain Review》（ZH3-S020）則載其於 1773 年出版普通抽牌小冊、1789 年 1 月在巴黎奧塞耶街 48 號自封為『埃特亞先生，代數教授（M. Etteilla, Professeur d'Algèbre）』；已全面刪除無出處之『種子商／種子麻袋』，改回原頁實印之『19 世紀牌史記載出身假髮匠、晚年自封代數教授的巴黎紙牌占卜師』；（2）更正大英博物館圖錄（ZH3-S018）大幅錯頁：原標『Part I pp. 9–18, 42–60』，實讀發現 Part I pp. 42–60 根本在講德國與荷蘭早期遊戲牌！Gringonneur 1392 帳冊法文原文實印於 Part I pp. 13, 19（非 pp. 10–11）、『merely an ingenious play with words』在 p. 11，而詳批熱貝蘭、M. le C. de M.*** 與假髮匠 Etteilla 之專節實印於 Part I pp. 138–146、166–167（另見 Part II 補編 pp. 49–58），已全數校正；（3）更正『1822 年商博良破譯羅塞塔石碑』之來源歸屬：原稿歸於 ZH3-S020 與 ZH3-S021（還寫出未印於 S021 之《致達西耶先生書》），惟實讀 S020 全文未提商博良與 1822 年，S021（大英百科第 5 卷 pp. 831–832）亦僅載 1821／1824 著作而未提 1822 與羅塞塔石碑；真正的『1799 羅塞塔石碑出土＋1822 年 1–9 月商博良比對托勒密／克麗奧佩脫拉／拉美西斯王名圈與科普特語破譯象形文字』實完整印於 ZH3 自己已抓快取的大英百科第 9 卷〈Egypt: Decipherment〉pp. 57–58（ZH3-S015）！已將 ZH3-S015 納入 N5843 source_ids 並刪除 S021 未印書名；（4）更正 ZH3-S019 Wellcome 典藏紀錄真實英文標題與編號（Ref. 584577i）、補齊 S022 頁碼（p. 324），並修正 S016–S018、S021、S022 之 IA identifier 與 metadata seq（35, 37, 36, 83, 84）；（5）把 visual 中的種子麻袋店鋪改為『擺著白色捲髮假髮木頭模特兒的小店鋪』，石碑與紙牌均明定為無字純圖案，並補上 question 結尾問號。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞 pool.json（既有占卜工具題僅 G04 1891 美國通靈板專利等，無任何塔羅牌、熱貝蘭或 Etteilla 題目）、legacy/、batches/*.json、原來如此 pool.json、品牌故事與同輪 ZH1（N5803 為英國撲克牌黑桃 A 印花稅偽造刑案，完全無涉）／ZH2／ZH4，確認零撞題。嚴守不教占卜牌陣紅線，刪除未印於來源之『種子商』並補掛大英百科第 9 卷 1822 年破譯史與大英博物館圖錄正確頁碼後通過，片長 9–11 分鐘。"
+    },
+    {
+      "id": "N5844",
+      "agent": "ZH3",
+      "reviewer": "R523",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZH3-S023 https://archive.org/download/b31973619/b31973619_djvu.txt（先 GET metadata/b31973619 再抓全文，R523 seq 9, 30）、ZH3-S024 https://archive.org/download/b30373839/b30373839_djvu.txt（先 GET metadata/b30373839 再抓全文，R523 seq 10, 31）、ZH3-S026 https://archive.org/download/b30512967/b30512967_djvu.txt（先 GET metadata/b30512967 再抓全文，R523 seq 11, 32）、ZH3-S027 https://www.legislation.gov.uk/apgb/Geo2/9/5/pdfs/apgb_17350005_en.pdf（R523 seq 19）；並逐字核對本機快取 ZH3-S025、ZH3-S028、ZH3-S029、ZH3-S030",
+      "reopen_result": "頁面上確實寫了：1712 年控方四版小冊《A Full and Impartial Account... Jane Wenham》pp. 1–36（ZH3-S023）與同年兩部辯護專冊《A Full Confutation of Witchcraft》（ZH3-S024）、《The Case of the Hertfordshire Witchcraft Consider'd》（ZH3-S025）完整互證沃爾肯村偷蕪菁口角、背錯《主禱文》兩句、女僕號稱膝蓋脫臼卻七分鐘跑半英里抱柴火跳五道欄杆、口吐彎別針、燒羽毛枕、1712-03-04 赫特福德巡迴庭 16 名控方證人作證、主審王座法庭大法官鮑威爾爵士（Sir John Powell，1645–1713，ZH3-S029）當庭質疑證物並在陪審團判有罪後立即下令緩刑呈報王室；哈欽森主教 1720 年專著第 10 章 pp. 163–171（ZH3-S026）一手記下已故安妮女王特赦、莊園庇護與 p. 165 親訪溫漢見證全郡怪症絕跡；英國國家檔案館官方《Witchcraft Act 1735》（9 Geo. 2 c. 5，ZH3-S027）ss. 1–4 明令廢除 1604 舊法禁審巫術，反將『假裝（pretend）有巫術算命或尋失物』定為監禁一年加每季市集日頸手枷一小時；DNB 專條確認溫漢（1730-06-11 卒，ZH3-S028）、鮑威爾（1645–1713，ZH3-S029）與哈欽森（1660–1739，ZH3-S030）生卒。惟逐字核對抓出五項關鍵引文錯掛、人數誤差與鄰近題邊界漏標並直接修正：（1）原稿在 ZH3-S024 摘要、answer_target 與 source_locator 宣稱 1712 年赫特福德郡醫師小冊（ZH3-S024）記載了鮑威爾法官『沒有法律禁止飛行』名言，且把全冊頁數寫成 40 頁——經重開 b30373839_djvu.txt（R523 seq 31）逐頁核對，全冊實為 48 頁（pp. 1–48），且全書對『Powell』『flying』『no law』命中數全為 0！該句傳世名言實際上白紙黑字印在《英國國家傳記辭典》兩篇專條：ZH3-S028（Vol. 60 p. 253『when it was alleged that the prisoner could fly, remarked that there was no law against flying』）與 ZH3-S029（Vol. 46 p. 245『“You may — there is no law against flying”』）！已將 S024 還原為其真實 48 頁內容（p. 11 脫臼跑步矛盾、p. 18 四分之三鄉民背錯主禱文、pp. 36–38 煮尿瓶與燒羽毛迷信、p. 43 法王路易十四 1672 停審女巫），並將飛行名言精確改歸 S028 與 S029；（2）原稿多處寫『四名聖公會牧師』，惟 ZH3-S028 p. 253 明載控方 16 名證人中『three of whom were clergymen（三名為聖公會教士）』（S023 亦載兩位教區牧師加小冊作者共三名教士作證），已全面修正為三名聖公會教士；（3）原稿誤把池內既有題『N204』當成『1764 奧特蘭托城堡』（查 pool.json 真實 N204 實為『1944 年英國還在用兩百年前的《巫術法》，為什麼被告的罪名其實是假裝？』即二戰海倫．鄧肯案！）且把『N4484』誤寫成科克巷鬼魂（真實 N4484 為 1727 蘇格蘭多諾赫最後女巫 Janet Horne 案）；已在 N5844 scope 與 notes 嚴格劃清與 N204（1944 二戰鄧肯審判與 1951 廢法）及 N4484（1727 蘇格蘭案）的時代與主軸邊界，絕不跨入 20 世紀鄧肯案；（4）修正 S026 精確頁碼（pp. 163–171）、補齊 S030 頁碼（pp. 338–339），並修正 S023–S025、S028–S030 之 metadata seq（4, 8, 9, 86, 87, 89）；（5）清除 visual 內易生字之『翻開厚法典』『特赦令』『剛印好的小冊子』『舊獵巫卷軸』，改為輕敲木槌、火漆印章素面羊皮卷與隔街比手畫腳，並補上 question 結尾問號。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞 pool.json（特別比對鄰近題 N204『1944 年二戰期間海倫．鄧肯巫術法審判與 1951 廢法』及 N4484『1727 年蘇格蘭多諾赫 Janet Horne 焦油桶考誤』：N5844 專講 1712 年英格蘭最後女巫死刑定罪案珍．溫漢、鮑威爾法官救人、倫敦醫學法理小冊論戰如何催生 1735 年立法反轉，人物與年代早逾兩世紀且在 scope 嚴格切開）、legacy/、batches/*.json、原來如此 pool.json 與同輪 ZH1–ZH4，確認可獨立成集。更正飛行名言真實出處（DNB S028/S029 而非 S024）、教士人數與 N204 邊界後通過，片長 9–11 分鐘。"
+    },
+    {
+      "id": "N5845",
+      "agent": "ZH3",
+      "reviewer": "R523",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZH3-S031 https://archive.org/download/peerageofireland02lodg/peerageofireland02lodg_djvu.txt（先 GET metadata/peerageofireland02lodg 再抓全文，R523 seq 12, 33）、ZH3-S032 https://archive.org/download/s2notesqueries06londuoft/s2notesqueries06londuoft_djvu.txt（先 GET metadata/s2notesqueries06londuoft 再抓全文，R523 seq 13, 34）、ZH3-S034 https://www.gutenberg.org/cache/epub/12965/pg12965-images.html（R523 seq 20）、ZH3-S035 https://howthcastle.ie/about/history/legends/（R523 seq 21）；並逐字核對本機快取 ZH3-S033",
+      "reopen_result": "頁面上確實寫了：1789《The Peerage of Ireland》Vol. II pp. 298–311（ZH3-S031）明載第二代蒂龍伯爵 John Power 於 1693-10-14 卒於都柏林、卡里克教堂黑色大理石碑銘（p. 307）記其享年 29 歲且為未婚單身漢（batchelor），Nichola-Sophia Hamilton 於 1687-02 嫁 Sir Tristram Beresford（1669–1701-06-16）、1694-07 生獨子 Marcus（1763-04-04 卒，娶第三代伯爵 James 之女）、1704-04 改嫁 Richard Gorges 中將（1662-03-12 受洗–1728-04-12 卒，女 Lucy 嫁豪斯勳爵）、1713-02-23 卒葬都柏林聖派翠克大教堂，而馬庫斯么女 Lady Elizabeth Beresford（嫁 Thomas Cobbe）遲至『1736 年 8 月 8 日』才出生（p. 310）；1858《Notes and Queries》2nd S. Vol. VI（ZH3-S032）印出 1802-08-26 都柏林手稿全文（pp. 73–75）並逐條考證儒略曆 1693-10-14 實為星期六（非星期二）、丈夫名字與兒子年齡錯亂、剛生女兒卻預言正懷兒子的前後矛盾，以及『1713 臨終解黑緞帶的同輩閨密實為 1736 年出生的親孫女』；1831-04-23《Mirror of Literature》pp. 283–284（ZH3-S034）刊出直系後裔版把鬼換成第一任丈夫 Sir Tristram 並鬧出『1701 死者在 1714 即位的喬治一世麾下陣亡』穿越笑話；Andrew Lang 1897《The Book of Dreams and Ghosts》pp. 164–174（ZH3-S033）解析孫女手稿傳抄變形與 p. 174 追溯 12 世紀馬姆斯伯里的威廉死後契約烙印母題；豪斯城堡官方歷史頁（ZH3-S035）確認會客廳館藏肖像畫背面舊字條記載手腕黑緞帶於清潔維護時被洗掉。惟逐字核對抓出五處未印生年回推、頁碼錯標與池內題號錯植並直接修正：（1）原稿在 ZH3-S031 摘要、answer_target、scope 與 risk 寫出妮可拉『1666 年 2 月生、滿 47 歲當天過世』及約翰．鮑爾『1665 年生』——經重開 Lodge 1789（R523 seq 33）pp. 299–300, 307 逐字核對，譜系錄僅印妮可拉卒於『23 February 1713』而完全未印出生年月與歲數（『47／48 歲生日過世』實出自 1802 年鬼故事手稿 ZH3-S032 pp. 74–75, 99, 116），且 p. 307 碑銘僅印鮑爾死時『in the 29 Year of his Age』而未印『1665』；已移除研究稿自行回推之未印生年『1666』『1665』，並將 Gorges 精確標為『1662 年受洗–1728 年卒』；（2）更正 Lodge 1789（ZH3-S031）頁碼：卡里克教堂紀念碑實印於 p. 307（非 p. 306）、馬庫斯受洗日實印於 p. 302（非 p. 300），並修正 metadata seq 為 38；（3）更正 1858《Notes and Queries》（ZH3-S032）頁碼：1802 手稿全文僅在 pp. 73–75（p. 99 已是讀者 J. H. L. 抓包 47 歲與 48 歲矛盾的考證信，p. 100 為無關條目），曆法星期六與孫女考證跨 pp. 115–116、A. C. M. 考證跨 pp. 193–194，且原標 p. 482 並無貝雷斯福德條目，已修正為『pp. 73–75, 99, 115–116, 193–194』；同時更正 S033 精確頁碼為 pp. 164–174（非 163–175）；（4）精確還原豪斯城堡官網（ZH3-S035）原句脈絡：館藏會客廳肖像背面未署名舊字條記載該畫手腕原本畫有一圈黑緞帶，但在清潔維護時脫落被洗掉（removed during cleaning），不誇大渲染原頁未寫之修復現場細節；（5）修正 scope 與 notes 內錯配之池內鬼案題號（漢默史密斯假鬼案實為 N203 而非 G01；科克巷鬼魂與泰德沃斯鼓手題號為 N201 與 N202；貝爾女巫為 G09 而非 N2867），清除 visual 內易生字之『鵝毛筆抄書匠』文稿暗示，並補上 question 結尾問號（另同步更正 not_added[2][3][4][6][7] 之題號與 seq 95 DNB 第 44 卷書目）。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞 pool.json（既有英美鬧鬼題為 N201 科克巷鬼魂、N202 泰德沃斯鼓手、N203 漢默史密斯假鬼案、G08 博利牧師館、G09 貝爾女巫等）、legacy/、batches/*.json、原來如此 pool.json、品牌故事與同輪 ZH1–ZH4，均無愛爾蘭貝雷斯福德夫人黑絲絨緞帶鬼約與豪斯城堡肖像畫掉色公案。1789 貴族譜系碑銘、1831 與 1858 雙版本手稿考辨、1897 母題溯源與豪斯城堡館藏紀錄四重印證，移除未印回推生年並校正頁碼後通過，片長 9–11 分鐘。"
+    },
+    {
+      "id": "N5861",
+      "agent": "ZH4",
+      "reviewer": "R524",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZH4-S001 https://archive.org/download/scientific-american-1890-04-26/scientific-american-v62-n17-1890-04-26_djvu.txt（先 GET metadata/scientific-american-1890-04-26 再抓全文，R524 seq 1, 18）、ZH4-S002 https://www.nps.gov/edis/learn/photosmultimedia/a-cultural-history-of-the-edison-talking-doll-record.htm（R524 seq 6）、ZH4-S003 https://www.nps.gov/edis/learn/photosmultimedia/talking-doll-faq-industrial-production.htm（R524 seq 7）、ZH4-S004 https://www.nps.gov/edis/learn/photosmultimedia/talking-doll-faq-economics.htm（R524 seq 8）、ZH4-S005 https://www.nps.gov/edis/learn/photosmultimedia/talking-doll-faq-product-durability.htm（R524 seq 9）；並逐字核對本機快取 ZH4-S006、ZH4-S007、ZH4-S008、ZH4-S009",
+      "reopen_result": "頁面上確實寫了：1890-04-26《科學人》p. 263（ZH4-S001）記載西奧蘭治廠區逾 500 名員工約半數投入洋娃娃產線（日產能約 500 具）、大批女工一人一格獨立小隔間（stall）唸童謠及打孔馬口鐵胸殼與手搖飛輪結構；NPS 專論與 FAQ（ZH4-S002–S006）引據愛迪生檔案明載無翻模複製技術下逐顆真人錄音、裸裝 10 美元／禮服版 12–20 美元／批發 7 美元／德國素體每具 50 美分、20% 製造利潤加 20% 個人權利金、五大退貨災難（搖柄無卡榫、巴黎樣品除兩具外唱針全自玻璃振膜脫落塗瓷膠、低溫蠟筒收縮凍裂加墊法蘭絨、新澤西至芝加哥客運火車晃動磨壞音軌、1890-04-25 波士頓玩具店抗議轉一小時聲音消失與密蘇里退運費 1.60 美元）、總產約 10,060 具、1890-05 初停產、10 月底負債逾 50,000 美元、積壓約 7,500 具收倉租與假扣押 253 箱德國零件（售出上限 2,560 具）；Thomas Alva Edison（1847–1931，ZH4-S007）與 William W. Jacques（1855–1932，ZH4-S008）均確認卒於 1956 年以前。惟逐字核對抓出六處事實與來源歸屬誤差並直接修正：（1）提案稿稱每一顆為『12 秒環狀蠟筒／12 秒短錄音』，經遍查 ZH4-S001–S009 全部快取均完全未印出『12 秒（12 seconds）』，且 ZH4-S006 實為數位復原專案總覽頁（印出『eight recordings in total』與 1888 錫筒〈Twinkle, Twinkle, Little Star〉），並無提案稿在 S006 所寫『Recordings table』六首清單（12 首童謠禱詞目錄實載於 ZH4-S002 註 [53]，8 段音檔清單則見於維基 ZH4-S009 Gallery），已刪除無根據之『12 秒』並更正 S006 欄位；（2）提案稿將 Jacques 中間名寫成『William Wheeler Jacques（威廉．惠勒．賈克斯）』，惟 ZH4-S002、S004、S008、S009 全數僅印『William W. Jacques』而無一字印出『Wheeler』，已全面改回原頁所印『William W. Jacques（威廉．W．賈克斯）』並修正 ZH4-S008 網頁真實標題；（3）提案稿在 question、hook、answer_target、visual 與 S002 摘要均寫女錄音員『對著大號角』錄音，惟 ZH4-S002 原文明載『sitting in a cubicle before a recorder fitted with five wax blanks and speaking into a small mouthpiece』（坐單人小隔間對著裝有五枚空白蠟環的錄音機小型吹嘴發聲；擴音漏斗係裝在娃娃馬口鐵胸腔內），已全面改回單人小隔間與五枚蠟環小型吹嘴；（4）ZH4-S002 原文對人數與工資明確保留推估語氣（『Eighteen women are supposed to have been hired』且註 [37] 明言『The original source for this detail is unclear』；『cost estimates suggest... a couple cents per record』），已與 S001 現場直擊『大批女工』並陳並誠實標明相傳與成本推算語氣；（5）移除 hook 內僅見於維基 ZH4-S009 而未印於 S001–S006 之『身高 22 英吋』，刪除 S009 摘要內原頁未印之『約 4 磅重量』『Simon & Halbig』（德國瓷廠名稱實載於 S003），將 answer_target 全面改由 S001–S006 一手與機構史料支撐，並於 S003 註明積壓 7,500 具與 253 箱數據出自 1891-05-07 愛迪生私人秘書信函（LB049261，不點名）；（6）檢查 ZH4 access_log（57 筆）取得路徑全數合規（User-Agent 皆為 Mokaair-editorial/1.0，archive.org 皆先查 metadata，零重試）。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞 pool.json（1,828 題與 2,813 筆 not_added）、legacy/w-axis.json（W01–W19）、batches/*.json、原來如此 pool.json、品牌故事各批與同輪 ZH1／ZH2（並檢視 ZH3 檢索紀錄），均無愛迪生留聲機洋娃娃公案。1890 年《科學人》原刊與美國國家公園管理局愛迪生實驗室原始檔案證據鏈扎實，刪除未印出的『12 秒』『Wheeler』『對號角錄音』並還原單人隔間五蠟環小型吹嘴與史料保留語氣後通過，片長 9–11 分鐘。"
+    },
+    {
+      "id": "N5862",
+      "agent": "ZH4",
+      "reviewer": "R524",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZH4-S010 https://en.wikisource.org/wiki/Carlill_v_Carbolic_Smoke_Ball_Company（R524 seq 10）、ZH4-S011 https://archive.org/download/sim_the-lancet_1892-07-09_2_3593/sim_the-lancet_1892-07-09_2_3593_djvu.txt（先 GET metadata 再抓全文，R524 seq 2, 19）、ZH4-S012 https://pmc.ncbi.nlm.nih.gov/articles/PMC7351412/（R524 seq 11），另循合規搜尋補抓非維基來源 ZH4-S042 https://www.australiancontractlaw.info/cases/database/carlill（R524 seq 25）、ZH4-S043 https://www.theguardian.com/law/2020/jun/25/landmarks-in-law-louisa-carlill-and-the-fake-flu-cure（R524 seq 26）、ZH4-S044 https://www.pietragallo.com/publications/unmasking-the-power-of-the-anti-fraud-injunction-statute/（R524 seq 31）及芝加哥大學法學院 Simpson 1985 書目頁（R524 seq 23），並逐字核對快取 ZH4-S013–S017",
+      "reopen_result": "頁面上確實寫了：英國上訴法院判決《Carlill v. Carbolic Smoke Ball Company》[1893] 1 Q.B. 256（ZH4-S010）完整重現 1891 年 11 月《Pall Mall Gazette》懸賞 100 英鎊廣告原文、攝政街聯盟銀行 1,000 英鎊存款（戳破 mere puff 抗辯）、補充裝 5 先令，以及 Lindley、Bowen、A. L. Smith 三位大法官駁回被告抗辯之完整法理；《刺胳針》1892-07-09 第 103 頁評論（ZH4-S011）痛批江湖成藥商技術性賴帳並肯定 100 英鎊罰則；PMC7351412（ZH4-S012）與 PMC2844275（ZH4-S013）確認俄羅斯流感偏方脈絡、石炭酸粉橡膠球往鼻孔噴煙構造與 Frederick Augustus Roe 1889 年專利；全部五位點名人物 Carlill（1942 卒）、Roe（1899 卒）、Hawkins（1817–1907）、Lindley（1828–1921）、Bowen（1835–1894）均卒於 1956 年以前。惟逐字核對抓出五項重大書目錯植、維基單一依賴與二手轉引邊界問題並直接修正：（1）ZH4-S012 與 ZH4-S013 兩篇 PMC 開放取用論文標題均遭研究稿張冠李戴——PMC7351412 真實篇名為 Ian Freckelton QC〈COVID-19: Fear, quackery, false representations and the law〉（《Int. J. Law Psychiatry》2020），PMC2844275 真實篇名為 Mark Jackson〈‘Divine Stramonium’: The Rise and Fall of Smoking for Asthma〉（《Medical History》2010 pp. 171–194），且 ZH4-S014 所引 Simpson 出處實為 1985 年《Journal of Legal Studies》14:2 pp. 345–389〈Quackery and Contract Law〉（非 1995 年書）、ZH4-S011 缺標頁碼 p. 103 並多寫原頁未印之『宣判後五天』，已全數更正；（2）原提案將『1891-11-20 至 1892-01-17 吸用』『敗訴後反手加碼 200 英鎊新廣告』與『Carlill 活到 96 歲於 1942-03-10 辭世且死因含流感』全數單靠維基條目 ZH4-S014（違反 CC_BY_SA_INDEX_ONLY 不得單獨支撐正片實質轉折規範），R524 已補抓非維基法學與報刊來源 ZH4-S042（Australian Contract Law）、ZH4-S043（《衛報》Landmarks in law）與 ZH4-S044（NACDL《The Champion》法學專文）逐一核實落地，同時剔除僅見於維基而未印於非維基可讀來源之『售價 10 先令』『11 月 13 日』『1893-02-25《倫敦新聞畫報》報頭』與『Roe 肺結核死因』，將 ZH4-S014 嚴格退回卒年與解散年份索引；（3）原提案稱公司事前去信要求『每天到公司辦公室由秘書當面監督』僅見於維基，已依 ZH4-S012 與 ZH4-S043 還原為『事務律師丈夫前兩封信遭無視、第三封信公司回稱對產品有絕對信心拒賠，庭審時律師抗辯無從得知買家在家是否正確使用』；（4）誠實標明二手轉引邊界：敗訴後羅伊刊登『售出數千顆僅三人領走 100 英鎊、保證金加碼至 200 英鎊附新限制條件』係據後世法學文獻（ZH4-S044）轉引當時後續廣告，不在文稿冒充親見原報紙版面，且因 S014 與 S043 均僅印 Carlill『1942 年 3 月 10 日卒、享壽 96 歲』而未印出生西元年『1845』，已移除未印生年；（5）清除 visual 內易生文字之『報紙插圖』『新海報』『密密麻麻爬滿得拿放大鏡才看得見的螞蟻線條』，改為無字圖畫與小沙漏／小鐵鎖圖案。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞 pool.json、legacy/w-axis.json（W01–W19）、batches/*.json、原來如此 pool.json、品牌故事與同輪 ZH1／ZH2（並檢視 ZH3 檢索紀錄），均無石炭酸煙霧球或《Carlill v. Carbolic Smoke Ball Co.》契約名案。更正兩篇 PMC 論文真實標題與《刺胳針》頁碼、補齊三份非維基來源徹底解除維基單一依賴並誠實標明 200 英鎊後續廣告之二手轉引邊界後通過，片長 9–11 分鐘。"
+    },
+    {
+      "id": "N5863",
+      "agent": "ZH4",
+      "reviewer": "R524",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZH4-S018 https://api.parliament.uk/historic-hansard/commons/1933/may/04/deportation-order-mr-oscar-hartzell（R524 seq 12）、ZH4-S022 https://time.com/archive/6892055/national-affairs-dupes-drake/（R524 seq 14；ZH4-S020 於 R524 seq 13 遇代理瞬時 502 未重試，直接逐字核對 ZH4 快取 seq035），另循合規搜尋補抓同期與非維基來源 ZH4-S045 https://time.com/archive/6820758/crime-nutty/（1936-02-17《TIME》，R524 seq 27）與 ZH4-S046 https://www.forbes.com/forbes/2002/0610/240.html（《Forbes》，R524 seq 30），並逐字核對快取 ZH4-S019、S020、S021、S023、S024",
+      "reopen_result": "頁面上確實寫了：英國下議院《Hansard》1933-05-04（ZH4-S018）記錄內政大臣於 1933 年 2 月驅逐 Oscar Hartzell 並正式宣告英王政府確認絕無任何未分配之法蘭西斯．德雷克遺產；美國郵政部長 1934 會計年度官方年報 pp. 65–66（ZH4-S019）確認逮捕定罪倫敦德雷克遺產郵件詐欺主謀 Hartzell；《時代》1933-01-23（ZH4-S020）、1933-11-27（ZH4-S021）與 1935-12-02（ZH4-S022）同期報導完整記載 7 名代理人郵政禁制令、駐倫敦使館油印回函、100 封西北部受害農民抗議信、宣稱 220 億至 270 億美元遺產、母親被騙 6,000 美元後 1922 年赴英轉做莊家週領 2,500 美元封『男爵』、蘇城判刑 10 年罰金 2,000 美元、入獄後芝加哥同夥改走鐵路快遞（1935-04 查扣 60,000 現金＋40,000 快遞款）及 41 人大審剔除德雷克飯店陪審員。惟逐字核對抓出四處數字誤差與維基單一依賴並直接修正：（1）提案稿在 hook 寫『220 億至 270 億美元』，在 answer_target 卻憑空寫成『50 億至 270 億美元』——遍查全部來源均無『50 億（5 billion）』（ZH4-S021 印『$22,000,000,000』即 220 億，ZH4-S022 印『Some 27 billion dollars』即 270 億），已修正為 220 億至 270 億美元；（2）原提案中『蘇城受審信徒寄 68,000 美元辯護費』『密西根大學教授 Arthur Lyon Cross 出庭作證』『入獄後一年內再收 50 萬美元』『七至八萬人捲走 200 萬美元』及『1943 年精神失常死於聯邦監獄醫院』全數僅出自維基條目 ZH4-S023；R524 已補抓 1936-02-17《時代》量刑現場報導〈CRIME: Nutty〉（ZH4-S045，核實向 70,000 名中西部民眾詐得 1,350,000 美元、哈澤爾兄弟判 5 年、哈澤爾當庭狂呼『連監獄鐵欄杆也關不住我』與法官下令精神鑑定）及《富比士》專文（ZH4-S046，核實蘇城法院外數百支持者脫帽歡呼、入獄後兄弟與同夥續吸金、妄想型思覺失調自稱德雷克本人擁兩倍 1,300 億美元、1943 年 67 歲因喉癌死於精神犯罪醫院），同步刪除僅見於維基之『68,000 美元辯護費』『Arthur Lyon Cross 作證』『再收 50 萬美元』，並剔除不再被任何題目引用之維基來源 ZH4-S025（Arthur Lyon Cross）；（3）嚴守 1956 紅線：補抓之 ZH4-S045、S046 所載芝加哥聯邦法官（Philip L. Sullivan，1960 卒）及卒年未核實之哈澤爾兄弟（Canfield Hartzell）、前手騙徒（Milo Lewis、Sudie Whittaker）一律不點名，統一稱『芝加哥聯邦法官』『哈澤爾的兄弟』『前手騙徒』；（4）清除 visual 內易出現文字數字之『皺巴巴的鈔票』『跨洋電報』『抗議信』『點鈔』，改為小金幣袋、封蠟捲軸、揮舞拳頭與清點金幣袋，並微調 not_added[8] 精確反映 ZH4 access_log seq 1、3 兩筆搜尋網址封鎖紀錄。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞 pool.json（既有詐騙題僅 W01 龐氏騙局、W19 瘋狂艾迪、亨伯特空保險箱案等）、legacy/w-axis.json、batches/*.json、原來如此 pool.json、品牌故事與同輪 ZH1／ZH2（並檢視 ZH3 檢索紀錄），均無 Oscar Hartzell 與德雷克爵士百億遺產騙局。英國國會《Hansard》、美國郵政部長年報與四篇 1933–1936 年《時代》同期報導證據堅實，修正『50 億』筆誤、剔除維基單一細節並補入 1936 年法庭精神鑑定與 1943 年結局非維基出處後通過，片長 10–12 分鐘。"
+    },
+    {
+      "id": "N5864",
+      "agent": "ZH4",
+      "reviewer": "R524",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZH4-S026 https://archive.org/download/experimentsinps02coovgoog/experimentsinps02coovgoog_djvu.txt（先 GET metadata/experimentsinps02coovgoog 再抓全文，R524 seq 3, 20）、ZH4-S027 https://gutenberg.net.au/ebooks13/1307001h.html（R524 seq 15）、ZH4-S028 https://www.gutenberg.org/cache/epub/51743/pg51743-images.html（R524 seq 16）；並逐字核對快取 ZH4-S029、S030、S031、S032、S033、S034",
+      "reopen_result": "頁面上確實寫了：史丹佛大學 1917 年 641 頁原典《Experiments in Psychical Research》（ZH4-S026）導言 pp. xix–xxii 詳載校董 Thomas Welton Stanford 於 1911–1912 年透過校長 David Starr Jordan 捐出 10,000 英鎊（50,000 美元）心靈研究基金、每年 100 英鎊書款及墨爾本自宅降神會 apports 藏品，John Edgar Coover 完成 10,000 次撲克牌雙盲隨機實驗（pp. 48–145）與附錄 D 加州號角靈媒脈搏／呼吸記紋器測試（pp. 503–547）皆無超自然證據；柯南．道爾 1921《The Wanderings of a Spiritualist》Ch. XI（ZH4-S027）一手親述 1920 年雪梨馬口鐵盆變兩隻長頸小幼龜與 100 塊巴比倫假泥板；《Stanford Magazine》2012（ZH4-S029）與《Encyclopedia of Occultism and Parapsychology》（ZH4-S030）確認 Charles Bailey（1870–1947）18 英吋小鯊魚、大英博物館巴格達贗品鑑定、1910-02-20 格勒諾布爾鳥販當面指認、1911-07-06 倫敦印度斯坦語穿幫、1914 逃避史丹佛大學教授赴澳實測及 1918-08 遺囑加註准用一般心理學；五位點名人物均卒於 1948 年以前。惟逐字核對抓出五處書名錯植、來源歸屬與二手轉引誤差並直接修正：（1）ZH4-S028（Project Gutenberg #51743）原書名、出版社與頁碼全數張冠李戴——提案稿誤標為 Joseph McCabe《Spiritualism: A Popular History from 1847》（T. Fisher Unwin, 1920, pp. 16, 224–225），惟重開快取核實 #51743 實為 McCabe 另一部 1920 年專著《Is Spiritualism Based on Fraud? The Evidence Given by Sir A. Conan Doyle and Others Drastically Examined》（London: Watts & Co., 1920，全書僅 160 頁），且澳洲靈媒 Bailey 之印度絲綢關稅與格勒諾布爾鳥店抓包實印於 Ch. I p. 16 與 Ch. VI pp. 90–91，已全面更正 ZH4-S028 與 source_locator；（2）ZH4-S026（Coover 1917）導言雖載墨爾本降神會藏品，全書並未印出『Charles Bailey』姓名，且附錄 D（pp. 503–547 而非 535）測試對象為加州號角靈媒化名『Mrs. \"Key\"』而非 Bailey，已移除首句聘用 Bailey 處誤掛之 S026 引用並精確區分加州號角靈媒測試；（3）提案稿將柯南．道爾 1920 年訪澳鐵盆幼龜（載於 1921 年《Wanderings》ZH4-S027）與『現代假貨浸染近期人類磁氣（steeped in recent human magnetism）更好搬運』混為同一出處，惟『近期人類磁氣』實為 ZH4-S030 二手轉引道爾 1926 年《唯靈論史（The History of Spiritualism）》之名言，已拆清 1921 原著與 1926 二手轉引邊界；（4）ZH4-S029 原文寫『bring a Stanford professor to Australia（請一位史丹佛大學教授赴澳）』，提案稿誤譯成易混為 UC 系統之『加州大學教授』，已改回『從加州請一位史丹佛大學教授』；（5）清除 visual 內易生字與花色符號之『成疊撲克牌』『畫下記號』與楔形文字泥板暗示，改為『無字花紋紙牌』『撥動木算珠』與『素面泥磚』。",
+      "changed_fields": [
+        "answer_target",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞 pool.json（既有 G 軸靈媒題僅 G01–G04、N424–N426、N1162 巴西 Mirabelli、N5621–N5623 英國維多利亞靈媒案等）、batches/*.json、原來如此 pool.json 與同輪 ZH1／ZH2（並檢視 ZH3 檢索紀錄），均無澳洲靈媒 Charles Bailey 與史丹佛大學心靈研究基金公案。更正 Project Gutenberg #51743 真實書名與頁碼（pp. 16, 90–91）、釐清 Coover 1917 歸屬及道爾 1926 二手轉引後通過，片長 10–12 分鐘。"
+    },
+    {
+      "id": "N5865",
+      "agent": "ZH4",
+      "reviewer": "R524",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZH4-S035 https://archive.org/download/dli.ernet.240355/240355-Scientific%20American%20Vol-cxxix%20%281923%29_djvu.txt（先 GET metadata/dli.ernet.240355 再抓全文，R524 seq 4, 21）、ZH4-S036 https://archive.org/download/in.ernet.dli.2015.172901/2015.172901.Fifty-Years-Of-Psychical-Research-A-Critical-Survey_djvu.txt（先 GET metadata/in.ernet.dli.2015.172901 再抓全文，R524 seq 5, 22）、ZH4-S037 https://psi-encyclopedia.spr.ac.uk/articles/george-valiantine/（R524 seq 17）；並逐字核對快取 ZH4-S034、S038、S039、S040、S041",
+      "reopen_result": "頁面上確實寫了：《科學人》1923 年 7 月號 pp. 14, 56–58, 64 與 8 月號社論（ZH4-S035）一手詳載椅腳木條框聲東擊西（the magician's stuff）、書房大地毯下感壓偵測墊（逾 9 磅接通）穿窗連往隔壁房指示燈泡與碼錶觀察員及窗台黑屏後 Dictograph 速記、同席者抓夜光鋁號角散成三節掉地與淘汰結論；Harry Price 1939《Fifty Years of Psychical Research》pp. 198–199, 274（ZH4-S036）確認該參賽者即 George Valiantine（1923-05-26 全黑最終場離座 15 次、最長 18 秒），一手親述 1925 年在倫敦 H. Dennis Bradley（p. 274 明印 1878–1934）宅中抄錄『Luigi Arditi 亡靈義大利語』與《Bradshaw's Complete Anglo-Italian Phrase-Book》連一個逗號都沒改，並於 p. 199 轉引 Bradley 1931《…And After》揭發柯南．道爾靈印＝右腳大拇趾、杜瓦男爵靈印＝左腳大拇趾及手肘與不褪色染料染跡；SPR《Psi Encyclopedia》（ZH4-S037）確認 Valiantine（1874–1947）賓州剃刀業出身、三節式夜光鋁號角、1929 柏林拆節質疑與 1931 揭發始末；全部六位點名人物均卒於 1949 年以前，1956 年後過世之 Bird、Murphy、Whymant、Salter 均未於正片點名。惟逐字核對抓出五處細節、主動語態歸屬與二手轉引邊界誤差並直接修正：（1）ZH4-S035 原刊 7 月號續頁實延伸至 p. 64（應為 pp. 14, 56–58, 64），8 月號社論〈Our Point of View: Our First Psychic Tests〉於 DjVu 檔內並無『p. 86』頁碼標記，且原刊全程匿名僅稱『這位賓州靈媒』而未印 Valiantine 姓名與『15 次／18 秒』（姓名與最終場數字實出自 ZH4-S036 pp. 198–199 與 ZH4-S037），已更正頁碼並於 S035 limitations 與 source_locator 精確註明互證分工；（2）提案稿稱『布拉德利暗中在印模塗上不褪色染料』並將 1931 年腳趾印案寫得像直引原書，惟 ZH4-S036 p. 199 原文採被動語態『An indelible dye had been painted on the substance to be impressed』（當時係實驗設計預塗，並非斷言布拉德利親手暗塗整人），且該段在 Price 1939（ZH4-S036）與 SPR 百科（ZH4-S037）皆屬轉引 Bradley 1931《…And After》（p. 287）與《Daily Express》之二手引述，已改回『印模材料預先被塗上不褪色染料』並於 answer_target、scope、source_locator 誠實標明轉引自 Price 1939 與 SPR 百科；（3）提案稿所寫全名『Herbert Dennis Bradley』之『Herbert』僅見於維基 ZH4-S038，非維基原典 ZH4-S036（p. 274）與 ZH4-S037 均印作『H. Dennis Bradley』，且『在號角吹口驗出大量人類呼氣水氣（moisture）』亦僅見於維基 ZH4-S038 而在 S035–S037 完全未印（0 筆命中），已全面改作『H. Dennis Bradley（H．丹尼斯．布拉德利）』並刪除維基獨有之號角水氣細節，將 ZH4-S038 嚴格退回生卒年索引；（4）提案稿稱布拉德利『捧了他七年、連出兩書』，惟 S036、S037 僅載其長年力挺出書宣傳而未印『七年』字樣，已改為『力挺多年、出書背書』；（5）清除 visual 內易生文字之『奮筆抄寫……小冊子，兩邊句子線條完全重疊』，改為手握羽毛筆側耳傾聽與翻開畫著貢多拉小船的無字圖畫摺頁搖頭微笑。",
+      "changed_fields": [
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：遍查奇聞 pool.json（特別比對 G03 胡迪尼與瑪潔莉電鈴箱測試、N424 瑪潔莉亡兄 Walter 牙蠟拇指印吻合在世波士頓牙醫案，人物、年代與三大拆穿機關完全獨立不重疊）、batches/*.json、原來如此 pool.json 與同輪 ZH1／ZH2（並檢視 ZH3 檢索紀錄），均無賓州號角靈媒 George Valiantine 公案。1923 年《科學人》原刊與 1939 年 Harry Price 專書雙重支撐，更正頁碼、刪除維基獨有『號角水氣』、還原印模預塗染料被動語態並誠實標明 1931《…And After》二手轉引關係後通過，片長 10–12 分鐘。"
+    }
+  ]
+}

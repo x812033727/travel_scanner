@@ -48,7 +48,10 @@ const params = (over: Record<string, string> = {}) =>
 
 /** What the locale layout resolves to, as far as this page reads it. */
 const parent = Promise.resolve({
-  openGraph: { siteName: "Mokaair", locale: "zh_TW", alternateLocale: ["en_US", "ja_JP"], images: [{ url: "/og.png" }] },
+  openGraph: {
+    siteName: "Mokaair", locale: "zh_TW", alternateLocale: ["en_US", "ja_JP"],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Mokaair" }],
+  },
 }) as unknown as ResolvingMetadata;
 
 function jsonLd(container: HTMLElement): Record<string, unknown>[] {
@@ -76,6 +79,7 @@ describe("a published article", () => {
     expect(screen.getByRole("heading", { level: 1 }).textContent).toBe("成田機場到東京車站怎麼走");
     expect(screen.getByText("Skyliner 最快。")).toBeTruthy();
     expect(screen.getByRole("link", { name: "京成電鐵時刻表" }).getAttribute("href")).toBe("https://www.keisei.co.jp/");
+    expect(screen.getByText(/依據上方所列參考來源與標示之核對日期整理/)).toBeTruthy();
     // The topic chip under the body, and the breadcrumb's topic crumb above it.
     expect(screen.getAllByRole("link", { name: "交通" }).map((link) => link.getAttribute("href"))).toEqual([
       "/guides/topics/transport", "/guides/howto?topic=transport",
@@ -86,7 +90,11 @@ describe("a published article", () => {
     const metadata = await generateMetadata({ params: params() }, emptyParent);
     expect(metadata.title).toBe("成田機場到東京車站怎麼走");
     expect(Object.keys(metadata.alternates!.languages!).sort()).toEqual(["ja", "zh-TW"]);
-    expect(metadata.robots).toBeUndefined();
+    expect(metadata.robots).toMatchObject({
+      index: true,
+      follow: true,
+      googleBot: { "max-image-preview": "large", "max-snippet": -1 },
+    });
   });
 
   it("offers x-default only when the English version exists", async () => {
@@ -103,13 +111,24 @@ describe("a published article", () => {
     expect(container.querySelector("a[hreflang]")).toBeNull();
   });
 
-  it("claims no image and leaves the site's share card alone when it has no hero", async () => {
+  it("shares the article with its dynamic editorial OG card when it has no bespoke hero", async () => {
     const metadata = await generateMetadata({ params: params() }, parent);
-    expect(metadata.openGraph).toBeUndefined();
-    expect(metadata.twitter).toBeUndefined();
+    const images = [{ url: "/og/zh-TW/howto/narita-to-tokyo/card.png", width: 1200, height: 630, alt: document.title }];
+    expect(metadata.openGraph).toMatchObject({
+      type: "article", url: metadata.alternates?.canonical, title: document.title, description: document.description,
+      locale: "zh_TW", alternateLocale: ["ja_JP"], publishedTime: document.published_at, images,
+    });
+    expect(metadata.twitter).toMatchObject({
+      card: "summary_large_image", title: document.title, description: document.description, images,
+    });
     const { container } = render(await GuideArticlePage({ params: params() }));
     const article = jsonLd(container).find((graph) => graph["@type"] === "Article")!;
-    expect(article.image).toBeUndefined();
+    expect(article.image).toMatchObject({
+      "@type": "ImageObject",
+      url: expect.stringContaining("/og/zh-TW/howto/narita-to-tokyo/card.png"),
+      width: 1200,
+      height: 630,
+    });
     expect(article.dateModified).toBe("2026-09-01T00:00:00Z");
   });
 
@@ -129,18 +148,26 @@ describe("an article with a hero", () => {
     mocks.article.mockResolvedValue(illustrated);
   });
 
-  it("puts the hero on the share card without losing the layout's locales", async () => {
+  it("shares the editorial hero and lists the article's published translations", async () => {
     const metadata = await generateMetadata({ params: params() }, parent);
     expect(metadata.openGraph).toMatchObject({
       type: "article",
+      url: metadata.alternates?.canonical,
+      title: document.title,
+      description: document.description,
+      section: "旅遊攻略",
+      tags: ["交通"],
       siteName: "Mokaair",
       locale: "zh_TW",
-      alternateLocale: ["en_US", "ja_JP"],
+      alternateLocale: ["ja_JP"],
       publishedTime: "2026-09-01T00:00:00Z",
       modifiedTime: "2026-09-12T09:00:00Z",
       images: [{ url: "/guides/narita-to-tokyo/hero.jpg", width: 1600, height: 900, alt: hero.alt }],
     });
-    expect(metadata.twitter).toEqual({ card: "summary_large_image", images: ["/guides/narita-to-tokyo/hero.jpg"] });
+    expect(metadata.twitter).toMatchObject({
+      card: "summary_large_image", title: document.title, description: document.description,
+      images: [{ url: hero.src, alt: hero.alt }],
+    });
   });
 
   it("still builds the card when the parent metadata is empty", async () => {
@@ -271,7 +298,11 @@ describe("an expired notice", () => {
   it("stays indexable, because withdrawing the URL would break existing links", async () => {
     mocks.article.mockResolvedValue(expired);
     const metadata = await generateMetadata({ params: params({ kind: "intel" }) }, emptyParent);
-    expect(metadata.robots).toBeUndefined();
+    expect(metadata.robots).toMatchObject({
+      index: true,
+      follow: true,
+      googleBot: { "max-image-preview": "large", "max-snippet": -1 },
+    });
   });
 });
 
@@ -292,6 +323,8 @@ describe("a locale the article was never written in", () => {
     const metadata = await generateMetadata({ params: params({ locale: "ko" }) }, emptyParent);
     expect(metadata.robots).toEqual({ index: false });
     expect(metadata.alternates!.languages).toBeUndefined();
+    expect(metadata.openGraph).toBeUndefined();
+    expect(metadata.twitter).toBeUndefined();
   });
 });
 
@@ -306,6 +339,9 @@ describe("a backend fault", () => {
 
   it("keeps the broken page out of the index", async () => {
     mocks.article.mockResolvedValue(broken);
-    expect((await generateMetadata({ params: params() }, emptyParent)).robots).toEqual({ index: false });
+    const metadata = await generateMetadata({ params: params() }, emptyParent);
+    expect(metadata.robots).toEqual({ index: false });
+    expect(metadata.openGraph).toBeUndefined();
+    expect(metadata.twitter).toBeUndefined();
   });
 });

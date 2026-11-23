@@ -609,6 +609,11 @@ async def test_the_azure_path_refuses_as_the_speech_route_does(align_app: Any) -
     assert (await _post({"speech": _speech(voice="gemini:Kore")})).json()[
         "code"
     ] == "video_align_voice_unsupported"
+    # MiniMax has no boundaries either: sent on to the speech route, not refused as unallowed.
+    assert (
+        await _post({"speech": _speech(voice="minimax:Chinese (Mandarin)_News_Anchor")})
+    ).json()["code"] == "video_align_voice_unsupported"
+    assert align_app["calls"] == []
     assert (await _post({"speech": _speech(voice="en-GB-SoniaNeural")})).json()[
         "code"
     ] == "video_speech_voice_not_allowed"

@@ -1,0 +1,642 @@
+{
+  "batch_id": "wave116-phone-20261119",
+  "created_on": "2026-11-19",
+  "scope": "跟著羅馬櫃台上的台灣手機與旅館名片，查清國內冠碼、國際有效號碼、義大利固定電話改碼、聯絡資料保存及漫遊來話。已查兩池既有與退件問句、主張和機制。近鄰 G737 談 112 回撥與定位，G727 談簡訊字元，本批以普通聯絡號碼身分為主題。義大利申報與主管機關頁歸同網，台灣法規合併計算，軟體 FAQ 與欄位原始定義歸同網。",
+  "sources": [
+    {
+      "id": "TEL116-S01",
+      "url": "https://gazette.nat.gov.tw/EG_FileManager/eguploadpub/eg030092/ch05/type1/gov87/num19/Eg.pdf",
+      "canonical_url": "https://gazette.nat.gov.tw/EG_FileManager/eguploadpub/eg030092/ch05/type1/gov87/num19/Eg.pdf",
+      "title": "電信號碼申請及核配辦法，附件一 電信號碼編訂格式",
+      "publisher": "數位發展部與國家通訊傳播委員會／行政院公報",
+      "version": "行政院公報第030卷第092期，2024-05-17",
+      "accessed_on": "2026-11-19",
+      "read_via": "抓取公開原文（439150 bytes，SHA-256 4ce7f352b7fb90cd0def619faeb351c712ff81500c7d24f34682d25467506992），讀取指定段落。",
+      "reading_scope": "附件一表首「行動通信號碼」，0＋9BC＋DE＋FGHI 一列",
+      "locator": "附件一表首「行動通信號碼」，0＋9BC＋DE＋FGHI 一列",
+      "summary": "表內把行動通信冠碼 0 與後續的九個位置分欄。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只取與本片 09 例子相關的欄位。",
+      "network": "NET_TW_Number_Regulation"
+    },
+    {
+      "id": "TEL116-S02",
+      "url": "https://www.taiwanmobile.com.tw/travel/phonesms.html",
+      "canonical_url": "https://www.taiwanmobile.com.tw/travel/phonesms.html",
+      "title": "國際漫遊電話及簡訊",
+      "publisher": "台灣大哥大",
+      "version": "業者公開操作頁，讀取日所見版本",
+      "accessed_on": "2026-11-19",
+      "read_via": "抓取公開原文（59731 bytes，SHA-256 f1952a2fe2b5926982da4c9b0f1001d8f61f8c8111a3b54ccbad701e94295b10），讀取指定段落。",
+      "reading_scope": "國際漫遊撥號方式／打回台灣，首段與提醒行",
+      "locator": "國際漫遊撥號方式／打回台灣，首段與提醒行",
+      "summary": "從日本回撥台灣可輸入 +886，台灣行動門號省去首個 0。頁面也用長按 0 鍵示範輸入加號。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "長按操作限該頁示例。",
+      "network": "NET_TaiwanMobile"
+    },
+    {
+      "id": "TEL116-S03",
+      "url": "https://www.itu.int/rec/dologin_pub.asp?id=T-REC-E.164-202602-I%21%21PDF-E&lang=e&type=items",
+      "canonical_url": "https://www.itu.int/rec/dologin_pub.asp?id=T-REC-E.164-202602-I%21%21PDF-E&lang=e&type=items",
+      "title": "E.164 — The international public telecommunication numbering plan",
+      "publisher": "國際電信聯盟 ITU-T",
+      "version": "02/2026",
+      "accessed_on": "2026-11-19",
+      "read_via": "抓取公開原文（1183511 bytes，SHA-256 63c85c6904f4d92c239fc70cf059a1565fe4731d5f9c7a4ea810c0880c2af6ab），讀取指定段落。",
+      "reading_scope": "§§6.1、6.2.1–2、7.2、7.3.1–2；圖一",
+      "locator": "§§6.1、6.2.1–2、7.2、7.3.1–2；圖一",
+      "summary": "地理編號的國際號碼由國碼與國內有效號碼組成。最長建議十五個數字，國際冠碼不計，目的地國內冠碼也不屬於有效號碼。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "下文限地理區的公眾電信號碼；不以位數判定是否有用戶。",
+      "network": "NET_ITU_Number_Standards"
+    },
+    {
+      "id": "TEL116-S04",
+      "url": "https://www.kddi.com/english/phone/ip/how-to-use/",
+      "canonical_url": "https://www.kddi.com/english/phone/ip/how-to-use/",
+      "title": "How to Use — KDDI-IP Phone",
+      "publisher": "KDDI",
+      "version": "業者公開操作頁，讀取日所見版本",
+      "accessed_on": "2026-11-19",
+      "read_via": "抓取公開原文（52249 bytes，SHA-256 13168fe85159ab70f842ceade8b1485396e1ef467e53359618cebabe293b9d7d），讀取指定段落。",
+      "reading_scope": "Using the service → International calls，第一句",
+      "locator": "Using the service → International calls，第一句",
+      "summary": "此項日本 IP 電話服務用 010 進入國際撥號，下一段才是受話地國碼。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只用此項服務舉例。",
+      "network": "NET_KDDI"
+    },
+    {
+      "id": "TEL116-S05",
+      "url": "https://www.nanpa.com/node/878",
+      "canonical_url": "https://www.nanpa.com/node/878",
+      "title": "About the North American Numbering Plan",
+      "publisher": "North American Numbering Plan Administrator",
+      "version": "管理機構公開網頁，讀取日所見版本",
+      "accessed_on": "2026-11-19",
+      "read_via": "抓取公開原文（36871 bytes，SHA-256 1e07f0247342f983c1da2aabb0206163eaa089e7bd6f411a6d434a9633f04f3e），讀取指定段落。",
+      "reading_scope": "About the NANP，前四段（20 個參與國家／地區、country code、NPA）",
+      "locator": "About the NANP，前四段（20 個參與國家／地區、country code、NPA）",
+      "summary": "美國、加拿大等共用一套計畫與國碼 1，後面接三碼地區碼與七碼本地號碼。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只用來理解共用國碼，無法由此判斷用戶位置。",
+      "network": "NET_NANPA"
+    },
+    {
+      "id": "TEL116-S06",
+      "url": "https://www.agcom.it/competenze/comunicazioni-elettroniche/reti/numerazione/piano-di-numerazione",
+      "canonical_url": "https://www.agcom.it/competenze/comunicazioni-elettroniche/reti/numerazione/piano-di-numerazione",
+      "title": "Piano di numerazione",
+      "publisher": "Autorità per le Garanzie nelle Comunicazioni（AGCOM）",
+      "version": "義大利主管機關公開編號計畫頁，讀取日所見版本",
+      "accessed_on": "2026-11-19",
+      "read_via": "抓取公開原文（65477 bytes，SHA-256 97a3d58626315fc62db8c5719342f135b3cfd822d4df5ca8c5b799352ecb81f4），讀取指定段落。",
+      "reading_scope": "Numerazione dei servizi per prima cifra，0 與 3 兩列",
+      "locator": "Numerazione dei servizi per prima cifra，0 與 3 兩列",
+      "summary": "現行說明把第一碼 0 用於地理號碼，3 用於行動與個人通信服務。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "分類不能用來確認某個號碼已實際配發。",
+      "network": "NET_AGCOM_ItalyPlan"
+    },
+    {
+      "id": "TEL116-S07",
+      "url": "https://www.itu.int/dms_pub/itu-t/oth/02/02/T020200006B0001PDFE.pdf",
+      "canonical_url": "https://www.itu.int/dms_pub/itu-t/oth/02/02/T020200006B0001PDFE.pdf",
+      "title": "Italy (country code +39) — National E.164 numbering plan",
+      "publisher": "AGCOM（義大利主管機關通知，由 ITU 公開）",
+      "version": "Communication of 25.VI.2012, Resolution 52/12/CIR",
+      "accessed_on": "2026-11-19",
+      "read_via": "抓取公開原文（75884 bytes，SHA-256 34b77b91b9ea099aa6610bb81ad95de6bd04fd31187289c2afb955e1c3b6084b），讀取指定段落。",
+      "reading_scope": "第 1 頁 Overview 首碼表；明細表列 06 (NDC) / Area code of Roma",
+      "locator": "第 1 頁 Overview 首碼表；明細表列 06 (NDC) / Area code of Roma",
+      "summary": "義大利向 ITU 申報國碼 +39，國內有效號碼的第一碼用來分服務，羅馬列 06。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "和 AGCOM 網站同一套義大利編號計畫。",
+      "network": "NET_AGCOM_ItalyPlan"
+    },
+    {
+      "id": "TEL116-S08",
+      "url": "https://www.gruppotim.it/content/dam/telecomitalia/it/archivio/documenti/Innovazione/MnisitoNotiziario/archivio/numeri%20vecchi/NT1-2000-supplemento.pdf",
+      "canonical_url": "https://www.gruppotim.it/content/dam/telecomitalia/it/archivio/documenti/Innovazione/MnisitoNotiziario/archivio/numeri%20vecchi/NT1-2000-supplemento.pdf",
+      "title": "Nuovo piano di numerazione",
+      "publisher": "Telecom Italia；Bondi、Chiara、Papini",
+      "version": "Supplemento al Notiziario Tecnico Telecom Italia，Anno 9 n. 1，2000 年 4 月",
+      "accessed_on": "2026-11-19",
+      "read_via": "透過公開網頁索引開啟 PDF 全文，按章節與表格閱讀。",
+      "reading_scope": "紙本頁 104–105，§4.1 Numerazione per i servizi geografici 及 Tabella 2 的 Esempio nazionale／internazionale",
+      "locator": "紙本頁 104–105，§4.1 Numerazione per i servizi geografici 及 Tabella 2 的 Esempio nazionale／internazionale",
+      "summary": "作者記錄 1998 年固定電話改採完整撥號的兩階段日期，說明區內用戶號碼可再以 0、1 起首帶來的容量，並列新舊國內外撥法。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "當時對下一階段手機改碼仍有預定時程。只引已發生的固網改革與表內格式，手機現況另以 AGCOM 核對。",
+      "network": "NET_TelecomItalia_Engineering"
+    },
+    {
+      "id": "TEL116-S09",
+      "url": "https://raw.githubusercontent.com/google/libphonenumber/master/FAQ.md",
+      "canonical_url": "https://raw.githubusercontent.com/google/libphonenumber/master/FAQ.md",
+      "title": "Frequently Asked Questions",
+      "publisher": "Google libphonenumber 維護團隊",
+      "version": "公開專案 master，讀取日快照",
+      "accessed_on": "2026-11-19",
+      "read_via": "抓取公開原文（30976 bytes，SHA-256 3f98ff0a7d03aa05bb093c48a0211cd70946cc4b067af657c7762c76f1f7cf06），讀取指定段落。",
+      "reading_scope": "Parsing 之國碼／區碼歧義（Germany、Indonesia），以及 Why was the national prefix not removed",
+      "locator": "Parsing 之國碼／區碼歧義（Germany、Indonesia），以及 Why was the national prefix not removed",
+      "summary": "德國的 49 也可作區碼；若只給數字和地區脈絡，該工具會檢視整串能否作區內號碼。義大利部分號碼保留可自國際撥入的首零。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "限此軟體的解析行為。",
+      "network": "NET_Google_libphonenumber"
+    },
+    {
+      "id": "TEL116-S10",
+      "url": "https://raw.githubusercontent.com/google/libphonenumber/master/resources/phonenumber.proto",
+      "canonical_url": "https://raw.githubusercontent.com/google/libphonenumber/master/resources/phonenumber.proto",
+      "title": "PhoneNumber 資料欄位定義",
+      "publisher": "Google libphonenumber 維護團隊",
+      "version": "resources/phonenumber.proto，master，讀取日快照",
+      "accessed_on": "2026-11-19",
+      "read_via": "抓取公開原文（6820 bytes，SHA-256 318e28f59e78fdef1656ea9c89287fefc6138fc0b6dc49d748d1271f2bfba95a），讀取指定段落。",
+      "reading_scope": "PhoneNumber 之 national_number、italian_leading_zero 和 number_of_leading_zeros 欄位及註解",
+      "locator": "PhoneNumber 之 national_number、italian_leading_zero 和 number_of_leading_zeros 欄位及註解",
+      "summary": "以整數儲存有效號碼時，額外資訊能保存將來顯示和撥號時需要的首零。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與 FAQ 同一軟體及維護網。",
+      "network": "NET_Google_libphonenumber"
+    },
+    {
+      "id": "TEL116-S11",
+      "url": "https://www.rfc-editor.org/rfc/rfc3966.html",
+      "canonical_url": "https://www.rfc-editor.org/rfc/rfc3966.html",
+      "title": "RFC 3966 — The tel URI for Telephone Numbers",
+      "publisher": "IETF／RFC Editor，Henning Schulzrinne",
+      "version": "2004 年 12 月，RFC 3966",
+      "accessed_on": "2026-11-19",
+      "read_via": "抓取公開原文（51423 bytes，SHA-256 d2577a36418af7aedccf3894d36010bbcffbe009cc24589994549a87ed621a34），讀取指定段落。",
+      "reading_scope": "§1 識別號碼與 dial string、§5.1.5 的 outside line、§5.3 Phone Extensions",
+      "locator": "§1 識別號碼與 dial string、§5.1.5 的 outside line、§5.3 Phone Extensions",
+      "summary": "分機系統可要求先取外線。國際聯絡號碼與某部電話實際要輸入的按鍵分開；分機另有欄位。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "限此標準描述的電話連結，無法預測個別手機或旅館交換機如何處理。",
+      "network": "NET_IETF_RFC3966"
+    },
+    {
+      "id": "TEL116-S12",
+      "url": "https://www.gsma.com/about-us/who-we-are/our-technology/how-roaming-works/",
+      "canonical_url": "https://www.gsma.com/about-us/who-we-are/our-technology/how-roaming-works/",
+      "title": "How Roaming Works",
+      "publisher": "GSMA",
+      "version": "GSMA 漫遊問答，讀取日所見版本",
+      "accessed_on": "2026-11-19",
+      "read_via": "抓取公開原文（90068 bytes，SHA-256 dedda99f02f7d81261cc442c05cf3f628414f1d5a69cb827d5b360f8db644e33），讀取指定段落。",
+      "reading_scope": "How does my mobile work in foreign countries? 與 Is this different if I receive a call?",
+      "locator": "How does my mobile work in foreign countries? 與 Is this different if I receive a call?",
+      "summary": "漫遊合作讓當地業者向原業者確認可用服務。問答中典型的來話先找到原業者，再轉往旅客正使用的網路。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "問答以一般情形說明流程。不同世代、服務及業者實際路徑可能不同。",
+      "network": "NET_GSMA_Roaming"
+    },
+    {
+      "id": "TEL116-S13",
+      "url": "https://www.itu.int/rec/dologin_pub.asp?id=T-REC-E.123-200102-I%21%21PDF-E&lang=e&type=items",
+      "canonical_url": "https://www.itu.int/rec/dologin_pub.asp?id=T-REC-E.123-200102-I%21%21PDF-E&lang=e&type=items",
+      "title": "E.123 — Notation for national and international telephone numbers, e-mail addresses and web addresses",
+      "publisher": "國際電信聯盟 ITU-T",
+      "version": "02/2001",
+      "accessed_on": "2026-11-19",
+      "read_via": "抓取公開原文（215761 bytes，SHA-256 beb2bf50f60c5263fb96de60a36226a7eb9bbbb1c557a66a9ce04f4d0cc366b4），讀取指定段落。",
+      "reading_scope": "§§1–2 名片同列國內與國際號碼；§7.1 國際冠碼符號、§7.2 括號",
+      "locator": "§§1–2 名片同列國內與國際號碼；§7.1 國際冠碼符號、§7.2 括號",
+      "summary": "名片可將國內與國際寫法分行標示；加號放在國碼之前，括號用於國內格式表示視情形才撥的部分，國際格式不建議使用括號。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "講的是印刷呈現的建議。",
+      "network": "NET_ITU_Number_Standards"
+    },
+    {
+      "id": "TEL116-S14",
+      "url": "https://moda.gov.tw/digital-affairs/communications-cyber-resilience/operations/368",
+      "canonical_url": "https://moda.gov.tw/digital-affairs/communications-cyber-resilience/operations/368",
+      "title": "平等接取監督管理",
+      "publisher": "數位發展部",
+      "version": "數位發展部「具體作為」頁，讀取日所見版本",
+      "accessed_on": "2026-11-19",
+      "read_via": "抓取公開原文（89270 bytes，SHA-256 aa29b2563b37f430049d9f994a79035a48cb59e82e5071f9d963fc28991333d7），讀取指定段落。",
+      "reading_scope": "號碼可攜服務及集中式資料庫管理中心兩段",
+      "locator": "號碼可攜服務及集中式資料庫管理中心兩段",
+      "summary": "用戶從一家業者移往另一家接受同類服務，可保留原本門號。台灣另設號碼可攜集中式資料庫管理中心。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與國內編號制度合併計算來源網，未查詢個人或任何實際移轉。",
+      "network": "NET_TW_Number_Regulation"
+    },
+    {
+      "id": "TEL116-S15",
+      "url": "https://www.ncc.gov.tw/chinese/show_file.aspx?file_sn=687&table_name=news",
+      "canonical_url": "https://www.ncc.gov.tw/chinese/show_file.aspx?file_sn=687&table_name=news",
+      "title": "電信網路編碼計畫說明書",
+      "publisher": "國家通訊傳播委員會",
+      "version": "NCC 公開說明檔，讀取日所見之歷史格式",
+      "accessed_on": "2026-11-19",
+      "read_via": "透過公開網頁索引開啟 PDF 全文，按章節與表格閱讀。",
+      "reading_scope": "第四章，行動通信網路號碼之國內書寫格式與國際書寫格式，0ABC DE FGHI 欄位說明",
+      "locator": "第四章，行動通信網路號碼之國內書寫格式與國際書寫格式，0ABC DE FGHI 欄位說明",
+      "summary": "說明書把首個 0 獨立列為行動通信冠碼。外撥採台灣大哥大實際說明。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "歷史資料的括號排版及業者碼欄不用來推論當前業者。",
+      "network": "NET_TW_Number_Regulation"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "K116-0301",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "台灣手機寫成 +886 9xx xxx xxx，國內開頭的 0 原本負責什麼？",
+      "mechanism_key": "x116.phone.tw_mobile_prefix",
+      "answer_target": "對照台灣公報的 09 欄，國內格式可以拆成行動通信冠碼 0 和後面九個位置。業者示範從國外撥回時，在 +886 後接從 9 起算的九碼。",
+      "scope": "限台灣 09 開頭的一般行動門號。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把國內、國際兩行從右對齊，朋友整段有效號碼都還在。",
+        "visual": "旅客手寫兩行遮罩門號，紙片從右往左疊合。",
+        "seconds": [
+          20,
+          40
+        ]
+      },
+      "source_ids": [
+        "TEL116-S01",
+        "TEL116-S15",
+        "TEL116-S02"
+      ],
+      "source_locator": "TEL116-S01 附件一表首「行動通信號碼」，0＋9BC＋DE＋FGHI 一列；TEL116-S15 第四章，行動通信網路號碼之國內書寫格式與國際書寫格式，0ABC DE FGHI 欄位說明；TEL116-S02 國際漫遊撥號方式／打回台灣，首段與提醒行",
+      "notes": "NET_TW_Number_Regulation；作者素材估重 1。"
+    },
+    {
+      "id": "K116-0302",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "台灣大哥大的海外撥號示範，為什麼教人長按剛剛才刪掉的 0？",
+      "mechanism_key": "x116.phone.hold_zero",
+      "answer_target": "示範中的手機長按 0 鍵會叫出 + 符號，畫面上留下的是加號。短按輸入一個數字與長按叫出符號，是同一顆鍵的兩種動作。",
+      "scope": "台灣大哥大說明頁的手機操作例。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最容易弄混的兩個 0，連按下去的動作都不同。",
+        "visual": "手指點一下和按住，輸入框分別只留一個字元。",
+        "seconds": [
+          10,
+          25
+        ]
+      },
+      "source_ids": [
+        "TEL116-S02"
+      ],
+      "source_locator": "TEL116-S02 國際漫遊撥號方式／打回台灣，首段與提醒行",
+      "notes": "NET_TaiwanMobile；作者素材估重 0.5。"
+    },
+    {
+      "id": "K116-0303",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "國際號碼最多十五碼，算的是哪一段？",
+      "mechanism_key": "x116.phone.destination_number_structure",
+      "answer_target": "ITU-T E.164 把地理區國際號碼切成國碼與國內有效號碼，建議上限十五個十進位數字。對台灣這張名片而言，三碼國碼加九碼有效號碼，共十二個數字。用來從當地撥出去的冠碼另計。",
+      "scope": "E.164 地理區號碼；不以長度推論有無用戶。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看名片就能算出哪幾個數字一起指向受話門號。",
+        "visual": "把三格與九格對齊，讓 + 留在格外。",
+        "seconds": [
+          20,
+          40
+        ]
+      },
+      "source_ids": [
+        "TEL116-S03",
+        "TEL116-S01"
+      ],
+      "source_locator": "TEL116-S03 §§6.1、6.2.1–2、7.2、7.3.1–2；圖一；TEL116-S01 附件一表首「行動通信號碼」，0＋9BC＋DE＋FGHI 一列",
+      "notes": "NET_ITU_Number_Standards；作者素材估重 1。"
+    },
+    {
+      "id": "K116-0304",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "日本一部電話進入國際線要按 010，台灣朋友的名片也該加上這三碼嗎？",
+      "mechanism_key": "x116.phone.outbound_access",
+      "answer_target": "KDDI 的日本 IP 電話指南把 010 寫在目的地國碼前。它是這項服務的國際撥號入口，接著輸入的 886 和有效號碼仍指向同一支台灣手機。名片上的 + 留給撥出端依當地方式處理。",
+      "scope": "只舉 KDDI-IP Phone，未概括日本所有話機。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一張名片交給不同撥出端，目的門號穩定，取國際線的方式可以不同。",
+        "visual": "手機名片放在日本桌機旁，010 只放到桌機按鍵上。",
+        "seconds": [
+          20,
+          40
+        ]
+      },
+      "source_ids": [
+        "TEL116-S04",
+        "TEL116-S13"
+      ],
+      "source_locator": "TEL116-S04 Using the service → International calls，第一句；TEL116-S13 §§1–2 名片同列國內與國際號碼；§7.1 國際冠碼符號、§7.2 括號",
+      "notes": "NET_KDDI；作者素材估重 1。"
+    },
+    {
+      "id": "K116-0305",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "看到一張 +1 名片，為什麼還不能肯定對方申辦的是美國門號？",
+      "mechanism_key": "x116.phone.shared_country_code",
+      "answer_target": "北美編號計畫讓美國、加拿大等參與地區共用國碼 1。其後還有三碼地區碼及七碼本地號碼。一個國碼可以指向一套跨境共用的號碼計畫。",
+      "scope": "NANPA 管理範圍，舉美加一組。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "國碼能把來話帶進號碼計畫，僅看這碼未必連申辦國都能唯一決定。",
+        "visual": "在 +1 後遮住所有數字，並排加拿大、美國兩張旅客行李牌。",
+        "seconds": [
+          18,
+          35
+        ]
+      },
+      "source_ids": [
+        "TEL116-S05"
+      ],
+      "source_locator": "TEL116-S05 About the NANP，前四段（20 個參與國家／地區、country code、NPA）",
+      "notes": "NET_NANPA；作者素材估重 1。"
+    },
+    {
+      "id": "K116-0306",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "旅館名片上的 +39 06…，刪掉 0 還算羅馬的地理號碼嗎？",
+      "mechanism_key": "x116.phone.rome_geographic_zero",
+      "answer_target": "義大利向 ITU 申報的表格將羅馬地區碼列作 06。編號計畫還把有效號碼起首 0 分給地理號碼，3 分給行動與個人服務。因此旅館的 0 要留在 +39 後面；義大利手機也沒有一個一概該補的 0。",
+      "scope": "只比較義大利地理及行動通信類別。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一欄的 0，在兩張名片上各有自己的身分。",
+        "visual": "給羅馬旅館的 +39 06… 蓋印，再把義大利行動服務放到 3 開頭那欄。",
+        "seconds": [
+          25,
+          50
+        ]
+      },
+      "source_ids": [
+        "TEL116-S07",
+        "TEL116-S06"
+      ],
+      "source_locator": "TEL116-S07 第 1 頁 Overview 首碼表；明細表列 06 (NDC) / Area code of Roma；TEL116-S06 Numerazione dei servizi per prima cifra，0 與 3 兩列",
+      "notes": "NET_AGCOM_ItalyPlan；作者素材估重 1。"
+    },
+    {
+      "id": "K116-0307",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "1998 年，羅馬人打給同一區的鄰居，為什麼也得多按幾碼？",
+      "mechanism_key": "x116.phone.rome_local_dialling_change",
+      "answer_target": "當年營運工程文章記錄，6 月 19 日開始引進完整的固定電話撥號，同區也輸入 0、區碼其餘部分和用戶號碼；12 月 18 日起公共固網只採此法。文章的羅馬對照例也把國際格式從 +39 6… 改成 +39 06…。",
+      "scope": "義大利固網 1998 年變更，號碼均遮罩。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "朋友沒有搬家，出版社卻得一起改本地及國外讀者手上的電話簿。",
+        "visual": "同一本羅馬電話簿貼上六月、十二月兩張訂正條。",
+        "seconds": [
+          25,
+          55
+        ]
+      },
+      "source_ids": [
+        "TEL116-S08"
+      ],
+      "source_locator": "TEL116-S08 紙本頁 104–105，§4.1 Numerazione per i servizi geografici 及 Tabella 2 的 Esempio nazionale／internazionale",
+      "notes": "NET_TelecomItalia_Engineering；作者素材估重 1。"
+    },
+    {
+      "id": "K116-0308",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "明明每通市內電話都多按幾碼，工程師怎麼會說反而多出號碼？",
+      "mechanism_key": "x116.phone.subscriber_capacity",
+      "answer_target": "先撥完整區碼後，後面的用戶號碼可以重新用 0 或 1 起頭。Telecom Italia 的作者估計，這讓區內約可回收兩成的號碼空間。原本開頭要留給其他撥號用法的數字，能在區碼後發給用戶。",
+      "scope": "兩成是當年文章估計的區內編號空間，不是新增客戶數。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "前面固定多撥區碼，後面的第一格反而多了兩種選擇。",
+        "visual": "將原先封住的 0、1 兩列號碼抽屜拉開。",
+        "seconds": [
+          25,
+          50
+        ]
+      },
+      "source_ids": [
+        "TEL116-S08"
+      ],
+      "source_locator": "TEL116-S08 紙本頁 104–105，§4.1 Numerazione per i servizi geografici 及 Tabella 2 的 Esempio nazionale／internazionale",
+      "notes": "NET_TelecomItalia_Engineering；作者素材估重 1。"
+    },
+    {
+      "id": "K116-0309",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "台灣朋友換了一家電信公司，為什麼整張門號名片仍然能沿用？",
+      "mechanism_key": "x116.phone.portability",
+      "answer_target": "在台灣轉換業者繼續使用同類服務時，用戶可申請保留原號。業者透過號碼可攜集中式資料庫管理中心辦理移轉。即使讀出號段，單靠它也不能保證認出朋友現在的業者。",
+      "scope": "台灣跨業者攜碼，與暫時出國漫遊分開。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一人可以換長期服務業者，聯絡人手中的數字依舊相同。",
+        "visual": "把電信商名稱換掉，聯絡卡上的遮罩門號不動。",
+        "seconds": [
+          20,
+          40
+        ]
+      },
+      "source_ids": [
+        "TEL116-S14"
+      ],
+      "source_locator": "TEL116-S14 號碼可攜服務及集中式資料庫管理中心兩段",
+      "notes": "NET_TW_Number_Regulation；作者素材估重 1。"
+    },
+    {
+      "id": "K116-0310",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "把羅馬旅館號碼塞進一個整數欄位，那顆重要的 0 怎麼保存？",
+      "mechanism_key": "x116.phone.integer_leading_zero",
+      "answer_target": "整數本身無法區分以 0 起頭與刪掉這個 0 的寫法。Google 的 libphonenumber 保存數值時另設欄位，標記國際格式仍要保留的前導零，必要時還可記數量。",
+      "scope": "僅指這個公開號碼工具的資料結構，未推論手機原生通訊錄也採同樣格式。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "資料庫表面可能只剩一串數值，重新排成國際號碼時還需要另一項資訊。",
+        "visual": "把 +39 06… 拆成國碼、數值、留首零三張卡，再重新印回名片。",
+        "seconds": [
+          23,
+          48
+        ]
+      },
+      "source_ids": [
+        "TEL116-S10",
+        "TEL116-S09"
+      ],
+      "source_locator": "TEL116-S10 PhoneNumber 之 national_number、italian_leading_zero 和 number_of_leading_zeros 欄位及註解；TEL116-S09 Parsing 之國碼／區碼歧義（Germany、Indonesia），以及 Why was the national prefix not removed",
+      "notes": "NET_Google_libphonenumber；作者素材估重 1。"
+    },
+    {
+      "id": "K116-0311",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "一串數字已經以 49 開頭，通訊錄工具怎麼還猜不到前兩碼是不是國碼？",
+      "mechanism_key": "x116.phone.ambiguous_digits",
+      "answer_target": "維護者用德國舉例。49 可作德國國碼，也可能是區內號碼的開頭，且容許的長度不只一種。給該工具德國脈絡時，若整串已是可能的區內號碼，工具不會逕把前兩碼拆作國碼；號碼已知是國際格式時，加在前面的 + 能說明意圖。",
+      "scope": "指 libphonenumber 的解析順序，不推論所有軟體或任何具體號碼。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "少掉加號，可能失去的是整串數字該從哪一層讀起的線索。",
+        "visual": "在相同的遮罩數字左側翻出一張 + 紙卡。",
+        "seconds": [
+          20,
+          45
+        ]
+      },
+      "source_ids": [
+        "TEL116-S09"
+      ],
+      "source_locator": "TEL116-S09 Parsing 之國碼／區碼歧義（Germany、Indonesia），以及 Why was the national prefix not removed",
+      "notes": "NET_Google_libphonenumber；作者素材估重 1。"
+    },
+    {
+      "id": "K116-0312",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "旅館房內電話要先取外線，那顆鍵要抄進朋友的號碼嗎？",
+      "mechanism_key": "x116.phone.private_exchange_access",
+      "answer_target": "RFC 3966 把某支電話實際要按的鍵與要找的聯絡號碼分開。旅館的私人交換機可能要求先按一個外線碼；帶著手機離開飯店，這個取線動作沒有理由跟著朋友的國際號碼搬家。",
+      "scope": "標準列舉的私人交換機情境，未指定任何真實旅館。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一位朋友的手機名片可以不動，房內電話卻可能需要額外的第一步。",
+        "visual": "單獨給房內電話一張「取外線」紙條，房門關上時紙條留在房內。",
+        "seconds": [
+          18,
+          38
+        ]
+      },
+      "source_ids": [
+        "TEL116-S11"
+      ],
+      "source_locator": "TEL116-S11 §1 識別號碼與 dial string、§5.1.5 的 outside line、§5.3 Phone Extensions",
+      "notes": "NET_IETF_RFC3966；作者素材估重 1。"
+    },
+    {
+      "id": "K116-0313",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "旅館官網同時印總機和分機，能直接把分機接在國際號碼最後面嗎？",
+      "mechanism_key": "x116.phone.extension",
+      "answer_target": "RFC 3966 的電話連結把交換機後方的分機另存在分機參數。總機的全球號碼與總機內要找的分機，各處理一段的選擇；把兩者黏成一串會改變對全球號碼的解讀。",
+      "scope": "限 RFC 3966 的 tel 連結表達，未假定各手機都可自動轉分機。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "取外線用在自己撥出的一端；分機則指向受話端總機後方的座席。",
+        "visual": "讓名片的「總機」「訂房分機」分居兩欄。",
+        "seconds": [
+          18,
+          38
+        ]
+      },
+      "source_ids": [
+        "TEL116-S11"
+      ],
+      "source_locator": "TEL116-S11 §1 識別號碼與 dial string、§5.1.5 的 outside line、§5.3 Phone Extensions",
+      "notes": "NET_IETF_RFC3966；作者素材估重 0.75。"
+    },
+    {
+      "id": "K116-0314",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "台灣朋友落地羅馬看到當地業者名稱，為什麼親友還是可以撥原號？",
+      "mechanism_key": "x116.phone.home_and_visited_network",
+      "answer_target": "以 GSMA 的一般漫遊說明，當地網路與原業者有漫遊協議，當地網路向原業者核對這位用戶可否漫遊。獲准後，這個台灣門號可使用當地網路服務。",
+      "scope": "假設保留原門號、可語音漫遊且當地有合作網路；不含改辦當地新號。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "手機顯示的網路名稱可以變，通訊錄裡的台灣號碼仍在原計畫裡。",
+        "visual": "同一張 09 名片旁的訊號欄改成「當地網路」，不放商標或實際帳號。",
+        "seconds": [
+          20,
+          42
+        ]
+      },
+      "source_ids": [
+        "TEL116-S12"
+      ],
+      "source_locator": "TEL116-S12 How does my mobile work in foreign countries? 與 Is this different if I receive a call?",
+      "notes": "NET_GSMA_Roaming；作者素材估重 1。"
+    },
+    {
+      "id": "K116-0315",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "兩個台灣朋友都在羅馬，打給漫遊中的那一位，來電怎麼找到這裡？",
+      "mechanism_key": "x116.phone.incoming_roaming_number",
+      "answer_target": "GSMA 描述的一般來話先到受話者原屬網路，再由原網路轉往他正在漫遊的網路，由當地網路接通。即使來電也在羅馬，聯絡人的國際寫法仍是原來的 +886 9…。",
+      "scope": "典型語音來話的概念流程，不聲稱所有來電實際語音都繞行同一物理路線。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "相隔一條街的兩個人，彼此使用的號碼也未必屬於當地。",
+        "visual": "兩張人物紙偶同在羅馬；把「原業者」「當地業者」放到一張來電示意圖。",
+        "seconds": [
+          25,
+          50
+        ]
+      },
+      "source_ids": [
+        "TEL116-S12"
+      ],
+      "source_locator": "TEL116-S12 How does my mobile work in foreign countries? 與 Is this different if I receive a call?",
+      "notes": "NET_GSMA_Roaming；作者素材估重 1。"
+    },
+    {
+      "id": "K116-0316",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "自己印名片，怎麼讓國內外朋友一眼看出哪個 0 該撥？",
+      "mechanism_key": "x116.phone.print_two_lines",
+      "answer_target": "ITU-T 的印刷建議把國內、國際寫法分行，讓對應數字上下對齊。括號在國內格式可提醒某些數字視情況才需撥，國際號碼建議不加括號。用這張版面重排，台灣手機的國際列從 +886 9… 起，羅馬地理號碼的國際列從 +39 06… 起。",
+      "scope": "ITU-T 印刷格式建議；兩地數字來自各自的號碼計畫，未收錄真實門號。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾可以親手把最初兩張名片排好，解答原本看似衝突的兩個 0。",
+        "visual": "白紙印兩行，從右對齊相同數字，把最後一張遮住的 0 紙片放回羅馬那欄。",
+        "seconds": [
+          20,
+          45
+        ]
+      },
+      "source_ids": [
+        "TEL116-S13",
+        "TEL116-S01",
+        "TEL116-S07"
+      ],
+      "source_locator": "TEL116-S13 §§1–2 名片同列國內與國際號碼；§7.1 國際冠碼符號、§7.2 括號；TEL116-S01 附件一表首「行動通信號碼」，0＋9BC＋DE＋FGHI 一列；TEL116-S07 第 1 頁 Overview 首碼表；明細表列 06 (NDC) / Area code of Roma",
+      "notes": "NET_ITU_Number_Standards；作者素材估重 1。"
+    }
+  ],
+  "not_added": []
+}

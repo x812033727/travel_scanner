@@ -8,10 +8,12 @@ from pathlib import Path
 from typing import Any
 from uuid import uuid4
 
+import fakeredis.aioredis
 import httpx
 import pytest
 from httpx import ASGITransport, AsyncClient
 
+import app.admin_ai_accounts.colab_leases as leases_module
 import app.admin_ai_accounts.router as router_module
 from app.admin_ai_accounts.agent import AiAccountsAgentClient
 from app.auth.service import current_user
@@ -121,6 +123,10 @@ def ai_app(monkeypatch: pytest.MonkeyPatch) -> Iterator[dict[str, Any]]:
         state["limits"].append(namespace)
 
     monkeypatch.setattr(router_module, "enforce_named_rate_limit", count_limit)
+    # Colab account leases live in Redis; the credentials route reads them.
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    monkeypatch.setattr(leases_module, "get_redis", lambda: redis)
+    state["redis"] = redis
     monkeypatch.setattr(
         AiAccountsAgentClient, "_transport", lambda self: httpx.MockTransport(agent.handler)
     )

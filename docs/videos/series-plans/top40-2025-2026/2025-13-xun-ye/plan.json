@@ -1,0 +1,56 @@
+{
+  "slug": "2025-13-xun-ye",
+  "title": "她簽下的那個搬家工",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": {
+    "min": 90,
+    "max": 180,
+    "chapter_finale_min": 120
+  },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "站主 2026-10-28：每集 3–5 個鉤子。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），可再加 extra_hooks 0–2 句；lib/validate.mjs 擋掉寫成同一件事的。"
+  },
+  "closed_ending": false,
+  "ending_note": "第五季收掉主線：兩半銅牌在步道橋第一根橋墩的基點合上、賀亭（江亭）以恆基營造繼承人與結構技師身分在聽證會上作證、沈晏翻案、宋氏建設退出重建標案；兩人把當年那紙一年合約換成『沒有期限、雙方都能說不』的新約，在重建的步道橋上各簽一次。第 300 集最後一格：橋墩下一個新的牛皮紙信封，寫著『沈技師，我也想簽一份合約』，留第二部的口子。站主要收死的話，刪掉最後一格、cliffhanger 改 emotion 即可。",
+  "aspect": {
+    "decided": null,
+    "suggested": "16:9",
+    "why": "照《種田娶妻打天下》的建議。"
+  },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom）；target_minutes 填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線。",
+    "look": "真人電影感現代都市情感：工地圍籬與藍圖的冷藍、她頂樓事務所的玻璃夜景、他的搬家貨車與老公寓樓梯間的暖黃；第四季五年後換成恆基總部的石材灰與聽證會的白光。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md；前 3 秒允許是『開價』或『她冷臉簽名』的反差。",
+    "reuse": "固定場景：沈晏的事務所、江亭的貨車駕駛座、江家老公寓樓梯間、河濱封閉步道橋、宋家宴會廳、第四季起的恆基總部與聽證會場。",
+    "voice": "國語；女主低、穩、短句像在審圖；男主第一季話少帶街頭口氣、第四季起沉穩；妹妹脆；閨蜜快嘴；第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json。",
+    "per_episode": "平均約 120 秒一集 ≈ 3,000–3,800 點。",
+    "per_season": "60 集 ≈ 18–23 萬點；五季 ≈ 90–115 萬點。",
+    "levers": "文戲與車內戲為主，一張首格＋緩推可省六到七成；工地與橋各拍一組四時段素材重用。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包，不是逐集分鏡劇本。",
+  "reference": {
+    "work": "《馴野》（2025 年熱度榜第 13，都市姐狗戀／年下忠犬）",
+    "how": "只學套路：帶傷的強勢姐姐用金錢開啟一段交易關係、把底層年下男養成守護者、隱藏身世靠一把『鑰匙』揭露、時間跳躍後弱者變強歸來、前任／嫉妒親屬／聯姻對象三層對手、交易到救贖。她的職業（結構技師）、他的職業（搬家工兼夜校生）、交易的內容（一年陪同與跑腿合約，無任何親密條款）、身分鑰匙（半枚測量基點銅牌）、城市、人物、劇情與台詞全部原創，不搬原劇情節。"
+  },
+  "title_candidates": [
+    "她簽下的那個搬家工",
+    "一年合約，你只准跑腿",
+    "橋塔下的年下守護"
+  ],
+  "title_decision": "未定；先用候選第一個，站主可改。"
+}

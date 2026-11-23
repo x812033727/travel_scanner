@@ -145,9 +145,63 @@ export function trafficBreakdown(rows, { top = 10 } = {}) {
 
 const cell = (value) => (value === null || value === undefined ? "—" : String(value));
 
-/** A Markdown table of ``items`` with ``columns``, with the derived-numbers note above it. */
-export function markdownTable(items, columns) {
+/** A Markdown table of ``items`` with ``columns``, nothing around it. */
+export function plainTable(items, columns) {
   const head = `| ${columns.join(" | ")} |\n| ${columns.map(() => "---").join(" | ")} |\n`;
   const body = items.map((item) => `| ${columns.map((name) => cell(item[name]).replace(/\|/g, "\\|")).join(" | ")} |`).join("\n");
-  return `${DERIVED_NOTE}\n\n${head}${body}\n`;
+  return `${head}${body}\n`;
+}
+
+/** A Markdown table of ``items`` with ``columns``, with the derived-numbers note above it. */
+export function markdownTable(items, columns) {
+  return `${DERIVED_NOTE}\n\n${plainTable(items, columns)}`;
+}
+
+// --- audience retention (YouTube Analytics API, read through the site) ---------------------------
+
+export const RETENTION_NOTE = "Self-computed from the YouTube Analytics API retention curve (the fall between neighbouring points, and seconds from the video's length); not numbers YouTube reported.";
+
+/** The site's retention answer as points ``{ ratio, watch, relative }``, in elapsed order. A
+ * metric YouTube did not return is null. */
+export function retentionPoints({ columns, rows }) {
+  const at = (name) => columns.indexOf(name);
+  const [ratioAt, watchAt, relativeAt] = [at("elapsedVideoTimeRatio"), at("audienceWatchRatio"), at("relativeRetentionPerformance")];
+  return rows
+    .map((row) => ({ ratio: number(row[ratioAt]), watch: watchAt < 0 ? null : number(row[watchAt]), relative: relativeAt < 0 ? null : number(row[relativeAt]) }))
+    .filter((point) => point.ratio !== null)
+    .sort((a, b) => a.ratio - b.ratio);
+}
+
+/** The first big drop: the largest fall of the audience watch ratio between two neighbouring
+ * points that both lie within the first ``within`` of the video (default 30%). With the video's
+ * length in seconds, both ends are given in seconds too. Null when the ratio never falls there. */
+export function firstBigDrop(points, { within = 0.3, duration = null } = {}) {
+  let best = null;
+  for (let index = 1; index < points.length; index += 1) {
+    const [before, after] = [points[index - 1], points[index]];
+    if (after.ratio > within + 1e-9) break;
+    if (before.watch === null || after.watch === null) continue;
+    const fall = before.watch - after.watch;
+    if (fall > 0 && (!best || fall > best.fall + 1e-12)) best = { before, after, fall };
+  }
+  if (!best) return null;
+  const round = (value, places) => Number(value.toFixed(places));
+  const seconds = (ratio) => (duration ? round(ratio * duration, 1) : null);
+  return {
+    from_ratio: best.before.ratio,
+    to_ratio: best.after.ratio,
+    watch_before: best.before.watch,
+    watch_after: best.after.watch,
+    fall: round(best.fall, 4),
+    share_lost: best.before.watch > 0 ? round(best.fall / best.before.watch, 4) : null,
+    from_seconds: seconds(best.before.ratio),
+    to_seconds: seconds(best.after.ratio),
+  };
+}
+
+/** Seconds as m:ss.s. */
+export function clock(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const rest = (seconds - minutes * 60).toFixed(1).padStart(4, "0");
+  return `${minutes}:${rest}`;
 }

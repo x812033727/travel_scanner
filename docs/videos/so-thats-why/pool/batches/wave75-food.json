@@ -1,0 +1,73 @@
+{
+  "batch_id": "wave75-food-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第二十五輪補讀：酸種（F95-T1，F107，無提案），只有不收紀錄。",
+  "sources": [
+    {
+      "id": "K75-S001",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12948946/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41538-026-00725-7",
+      "title": "Rising together: exploring sourdough fermentation diversity through co-design in the HealthFerm citizen science initiative",
+      "publisher": "npj Science of Food（2026，CC BY 4.0）；Meyer, Gettemans, Tan, Tuccillo, Viretto, Angelescu, De Bondt, Neugebauer, Zein Alabiden Tlais, Cavelti, De Vuyst, Gobbetti, Courtin, Zamfir, Coda, Nyström, Weckx, Bokulich（通訊作者 Bokulich，蘇黎世聯邦理工學院；另有 VUB IMDO、Bolzano、Helsinki、Bucharest、KU Leuven）",
+      "version": "Europe PMC 開放取用全文 XML（Received 2025-05-09、Accepted 2026-01-19）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（query=PMCID:PMC12948946，resultType=core，isOpenAccess=Y）後，以 REST /fullTextXML 下載（公開文件記載的 API）；上輪作者快取已刪，本輪重新下載同一份（112194 位元組，與上輪紀錄的大小相同）",
+      "reading_scope": "全文：摘要、前言、結果全部六小節（含圖 1–7 圖說）、討論全部；方法只讀樣本處理（TTA、−80 °C 生物庫）與地理分析段，未讀問卷與統計細節；補充資料未讀",
+      "locator": "結果〈Engagement patterns〉第 1、3 段；〈Fermentation routines〉第 1 段；〈Fermentation fingerprints〉第 1、3 段；討論第 2、6、8 段",
+      "summary": "歐洲公民科學調查：33 國 1091 罐登記、591 人寄回 671 份樣本；只報告問卷、居家 pH／麵包密度／氣味勾選與實驗室 TTA，沒有任何菌相或菌株資料（樣本存入 −80 °C 生物庫留待日後分析）。各國用料與做法有顯著差異，但做法與性狀的 PCA 不依國家或麵粉分群，而是分成家用與烘焙坊兩群（烘焙坊老麵較老、續種較勤、發酵溫度較高）；最老的登記老麵始於 1865 年；實驗室 pH 平均比居家量測低 0.73，作者推測與常溫郵寄中繼續發酵或試紙精度有關。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "沒有微生物組成數據，回答不了『菌從哪裡來、為什麼留下』；自選樣本、德語區偏多（作者自承語言造成偏差）；居家量測與氣味評分雜訊大。作者群與本題已用三個研究群都有共同作者：Meyer、Tan、Neugebauer、Bokulich（K74-027 所用 PMC12901149）、De Vuyst（K74-017 所用 PMC7374928）、Gobbetti（K74-025 所用 PMC9472446）——若收入，三群須併成一網、合計封頂 2.0。池中無同一網址（grep pool.json 無 PMC12948946、41538-026-00725）。",
+      "author_cache": {
+        "file": "f107src/PMC12948946.xml（轉文字 f107src/PMC12948946.txt，sha256 前 16 碼 8000a06905336129）",
+        "sha256_prefix": "f807e05f57f60000",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [],
+  "not_added": [
+    {
+      "id": "K75-NA001",
+      "question": "歐洲家家戶戶的老麵，會不會依國家或地區養出不同的樣子？",
+      "existing_ids": [
+        "K74-012",
+        "K74-017",
+        "K74-025",
+        "K74-027"
+      ],
+      "source_ids": [
+        "K75-S001"
+      ],
+      "reason": "不收，兩個理由。（1）扣題不足：這篇只有做法、酸度、氣味與問卷，沒有任何菌相數據，能說的只有『各國用料不同，但整體做法與性狀不依國家分群、而依家用／烘焙坊分群』（結果〈Fermentation fingerprints〉第 3 段），講的是人怎麼養，不是菌從哪裡來；『最老一罐始於 1865 年』只是登記資料、未經查證；pH 差 0.73 與 K74-027 同屬郵寄偏差，且作者自己列了兩種可能原因。（2）研究群淨值為負：作者含 Meyer／Tan／Neugebauer／Bokulich（ETH，K74-027 0.5）、De Vuyst（VUB，K74-017 0.75）、Gobbetti（Bari／Bolzano，K74-025 1.0），一旦收入，三群依『共同作者即同群』併成一網，0.5＋0.75＋1.0＝2.25 先被封頂到 2.0，本篇再加多少都不計；全題由 9.75 降為 9.5 條。V98 只寫『ETH 群合計不超過 2.0』，漏了 De Vuyst 與 Gobbetti 兩位共同作者。 原提案 F107-NA001。",
+      "reentry_condition": "同一 HealthFerm 生物庫日後發表菌相與地點／做法的分析，而且題目願意刪掉 K74-027 等同網核心換位置時再評；屆時仍與 VUB、Bari 群同網，合計封頂 2.0。",
+      "reading_status": "全文已讀（方法只讀樣本處理與地理分析段，補充資料未讀）"
+    },
+    {
+      "id": "K75-NA002",
+      "question": "老麵裡的乳酸菌，真的可以在同一罐裡一待十幾年嗎？（Pham 等 2025 AEM，Gänzle 群）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "全文讀不到：still_missing 指定的 europepmc.org Free pdf 連結再試一次仍回 403 Cloudflare 驗證頁；同一次 search 回應列出的 Free doi 連結轉到 journals.asm.org 也回 403 驗證頁。依規定停止，摘要不算全文，不立核心。 原提案 F107-NA002。",
+      "reentry_condition": "日後同一 Europe PMC Free 連結或 DOI 頁不再出驗證頁、正常下載全文時再讀；約 0.75 條，新研究群。",
+      "reading_status": "只有上輪 search API 摘要（pool 中 SRC-dc5bb3b62090bb67）"
+    },
+    {
+      "id": "K75-NA003",
+      "question": "舊金山酸種的酸，最早是誰找到是哪一種菌造成的？（Kline & Sugihara 1971）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "全文讀不到：Europe PMC 列出的 Free pdf 連結（europepmc.org/articles/PMC377203?pdf=render）與 Free doi 連結（轉 journals.asm.org）各試一次，都回 403 驗證頁；REST fullTextXML 上輪回 500。 原提案 F107-NA003。",
+      "reentry_condition": "同一公開連結可正常下載時再讀；約 0.5 條，歷史開場。",
+      "reading_status": "未讀"
+    },
+    {
+      "id": "K75-NA004",
+      "question": "比利時傳統老麵的乳酸菌，會因產地和麵粉不同而不同嗎？（Scheirlinck 等 2007 AEM）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "全文讀不到：still_missing 指定的 DOI 頁（doi.org/10.1128/aem.00894-07 轉 journals.asm.org）回 403 驗證頁；Europe PMC Free pdf 連結試一次也回 403。另須注意：作者含 De Vuyst，若日後讀到，要與 K74-017（VUB）併群，合計 0.75＋0.5＝1.25，仍在封頂內。 原提案 F107-NA004。",
+      "reentry_condition": "同一公開連結可正常下載時再讀；約 0.5 條，轉折一的反方平衡；與 VUB 群併計。",
+      "reading_status": "未讀"
+    }
+  ]
+}

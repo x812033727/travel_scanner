@@ -1,0 +1,15 @@
+[Unit]
+Description=Copy the Mokaair nightly backup runs to Google Drive (offsite.py)
+Documentation=file:///opt/travel-scanner-backup/README.md
+After=docker.service travel-scanner-backup.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/opt/travel-scanner-backup
+# Reads OFFSITE_* from /etc/travel-scanner/backup.env on every run; one run at a time.
+ExecStart=/usr/bin/flock -n /var/lock/travel-scanner-offsite.lock /usr/bin/python3 /opt/travel-scanner-backup/offsite.py run
+TimeoutStartSec=5h
+Nice=10
+IOSchedulingClass=idle

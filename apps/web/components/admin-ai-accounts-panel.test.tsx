@@ -285,4 +285,31 @@ describe("AdminAiAccountsPanel", () => {
     fireEvent.click(within(second).getByRole("button", { name: "確認登出" }));
     await waitFor(() => expect(fetchMock.mock.calls.some(([input]) => String(input).endsWith("/admin/ai-accounts/codex/b/logout"))).toBe(true));
   });
+
+  it("shows which agent leases a Colab account and takes it back only after a confirm", async () => {
+    const base = withSlots(
+      account("colab", "a", { logged_in: true, email: "a@example.com", usage: { source: "live", windows: [], compute_units: { balance: 120 } } }),
+      account("colab", "b", { logged_in: true, email: "b@example.com", usage: { source: "live", windows: [], compute_units: { balance: 40 } } }),
+    );
+    const state = { ...base, colab_leases: { b: { slot: "b" as const, holder: "claude-zt-e033", token: "mkv_abcdef", acquired_at: seconds(-600), expires_at: seconds(3_600) } } };
+    const fetchMock = vi.fn((_input: RequestInfo | URL, init?: RequestInit) => init?.method === "POST" ? response({ slot: "b", released: true }) : response(state));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminAiAccountsPanel />);
+    const leased = await screen.findByRole("article", { name: "Google Colab 帳號 B" });
+    expect(within(leased).getByText("claude-zt-e033 正在使用")).toBeTruthy();
+    expect(within(leased).getByText(/權杖 mkv_abcdef · 租約到/)).toBeTruthy();
+    const free = screen.getByRole("article", { name: "Google Colab 帳號 A" });
+    expect(within(free).queryByText(/正在使用/)).toBeNull();
+    fireEvent.click(within(leased).getByRole("button", { name: "收回帳號" }));
+    expect(fetchMock.mock.calls.some(([input]) => String(input).endsWith("/lease/break"))).toBe(false);
+    expect(within(leased).getByText(/只用在已經停掉的 agent/)).toBeTruthy();
+    fireEvent.click(within(leased).getByRole("button", { name: "確認收回" }));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledWith("/api/travel/admin/ai-accounts/colab/b/lease/break", expect.objectContaining({ method: "POST" })));
+  });
+
+  it("says so when the Colab leases cannot be read", async () => {
+    vi.stubGlobal("fetch", vi.fn(() => response({ ...overview(), colab_leases: {}, colab_leases_error: "Colab 帳號租用服務暫時無法使用" })));
+    render(<AdminAiAccountsPanel />);
+    expect(await screen.findByText("讀不到哪些 agent 在用 Colab 帳號：Colab 帳號租用服務暫時無法使用")).toBeTruthy();
+  });
 });

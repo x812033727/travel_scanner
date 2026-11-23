@@ -1396,7 +1396,7 @@ test("illustrated slides are judged by yes/no fault checks once the server takes
   assert.ok(checks.filter((item) => item.cost < 10).every((item) => 10 - item.cost >= 4), "a second-look flaw alone never fails a take");
   assert.match(checks.find((item) => item.key === "style").question, /labelled "style plate"/);
   assert.match(keyframeChecks().find((item) => item.key === "style").question, /the style the context describes/);
-  assert.match(checks.find((item) => item.key === "anatomy").question, /more than five.*hidden or left out by the style does not count/);
+  assert.match(checks.find((item) => item.key === "anatomy").question, /more than five.*eyes that do not match.*hidden or left out by the style does not count/);
   // What the server computes from the answers (apps/api/app/video_media/judge.py), so the bar keeps its meaning.
   const total = checks.reduce((sum, item) => sum + item.weight, 0);
   const overall = (...faults) => Math.round((checks.reduce((sum, item) => sum + (faults.includes(item.key) ? 10 - item.cost : 10) * item.weight, 0) / total) * 100) / 100;
@@ -1799,7 +1799,8 @@ test("a cute explainer's stills are judged by the nine fault checks the illustra
     assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
     assert.ok(site.state.judges.length > 0);
     // No style plate on this route: the style question is the context's, not a plate's.
-    for (const request of site.state.judges) assert.deepEqual(request.rubric, keyframeChecks(), preset);
+    // The cute-mystery look goes to every language with no words on screen: made-up writing fails too.
+    for (const request of site.state.judges) assert.deepEqual(request.rubric, keyframeChecks({ wordless: true }), preset);
     assert.match(site.state.images[0].prompt, /Style: cute Taiwanese YouTube explainer cartoon/);
     assert.ok(site.state.images.every((request) => request.references.length === 0), "no style plate and no sheet");
     // An older server without the checks still scores them on the rubric.
@@ -1813,6 +1814,55 @@ test("a cute explainer's stills are judged by the nine fault checks the illustra
     assert.equal(await main(["keyframes", "--slug", older.slug], olderRun.ctx), EXIT.ok, olderRun.out.stderr);
     assert.ok(olderSite.state.judges.length > 0 && olderSite.state.judges.every((request) => request.rubric.every((item) => item.cost === undefined)), preset);
   }
+});
+
+test("a cute-mystery still is judged with its four zoomed quadrants beside it; without them, on the whole picture with a warning", async () => {
+  const box = sandbox("fixture-explainer", "explainer");
+  rewrite(box, (doc) => {
+    doc.look = { preset: "cute-mystery" };
+    doc.subtitles = { burn_in: false };
+  });
+  const site = mediaSite({ status: { ...STATUS, limits: { judge_checks: 1 } }, verdicts: () => ({ overall: 9, passed: true }) });
+  const asked = [];
+  const zoomImage = async (file, sha256) => {
+    asked.push(sha256);
+    return ["top-left", "top-right", "bottom-left", "bottom-right"].map((quadrant) => {
+      const out = `keyframes/zoom/${sha256.slice(0, 16)}-${quadrant}.png`;
+      mkdirSync(path.join(box.workdir, "keyframes", "zoom"), { recursive: true });
+      writeFileSync(path.join(box.workdir, out), PNG(`${file} ${quadrant}`));
+      return { quadrant, file: out, sha256: SHA(PNG(`${file} ${quadrant}`)) };
+    });
+  };
+  const run = context(box, site.fetchImpl, { zoomImage });
+  assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
+  assert.ok(site.state.judges.length > 0);
+  for (const request of site.state.judges) {
+    assert.deepEqual(request.files.map((each) => each.label), ["keyframe", "keyframe zoom: top-left", "keyframe zoom: top-right", "keyframe zoom: bottom-left", "keyframe zoom: bottom-right"]);
+    assert.ok(request.files.slice(1).every((each) => site.state.uploads.some((upload) => upload.sha256 === each.sha256)), "the crops are in the store");
+  }
+  assert.deepEqual(asked, site.state.judges.map((request) => request.files[0].sha256), "cropped from the picture judged");
+
+  const failing = sandbox("fixture-explainer", "explainer");
+  rewrite(failing, (doc) => {
+    doc.look = { preset: "cute-mystery" };
+    doc.subtitles = { burn_in: false };
+  });
+  const failingSite = mediaSite({ status: { ...STATUS, limits: { judge_checks: 1 } }, verdicts: () => ({ overall: 9, passed: true }) });
+  const fallback = context(failing, failingSite.fetchImpl, { zoomImage: async () => null });
+  assert.equal(await main(["keyframes", "--slug", failing.slug], fallback.ctx), EXIT.ok, fallback.out.stderr);
+  for (const request of failingSite.state.judges) assert.deepEqual(request.files.map((each) => each.label), ["keyframe"]);
+  assert.match(fallback.out.stdout, /warning: zoomed crops could not be made; judged on the whole picture\n/);
+
+  // A look that is not wordless (flat-explainer) asks neither question and gets no crops; cute-cartoon is wordless now.
+  const cartoon = sandbox("fixture-explainer", "explainer");
+  rewrite(cartoon, (doc) => {
+    doc.look = { preset: "flat-explainer" };
+    doc.subtitles = { burn_in: false };
+  });
+  const cartoonSite = mediaSite({ status: { ...STATUS, limits: { judge_checks: 1 } }, verdicts: () => ({ overall: 9, passed: true }) });
+  const plain = context(cartoon, cartoonSite.fetchImpl, { zoomImage: async () => assert.fail("no crops for a look that asks neither question") });
+  assert.equal(await main(["keyframes", "--slug", cartoon.slug], plain.ctx), EXIT.ok, plain.out.stderr);
+  for (const request of cartoonSite.state.judges) assert.deepEqual(request.files.map((each) => each.label), ["keyframe"]);
 });
 
 test("--accept-best is still refused for a cute explainer: its failing picture is the prompt's to fix, then the owner's retry", async () => {

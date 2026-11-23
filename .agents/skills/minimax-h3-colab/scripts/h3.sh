@@ -11,6 +11,10 @@
 #   h3.sh images --manifest ff.json --output-dir first-frames/ [--session NAME] [--progress p.json]
 #                                            paint first frames with Qwen-Image-Edit (scripts/images.py);
 #                                            runs the check first (--no-check skips it)
+#   h3.sh cuts --input-dir out/ --output-dir trimmed/ [--manifest jobs.json]
+#                                            between stage 1 and 2, offline: trim drafts that Ref2VA cut into a
+#                                            second shot back to the last 17k+5 length before the cut (scripts/cuts.py);
+#                                            exit 3 when a trimmed draft is too short for its shot
 #   h3.sh refine --manifest r.json --output-dir out/ [--session NAME]
 #                                            stage 2: upscale a draft clip and re-denoise its low-noise
 #                                            tail at 1312x736 (scripts/refine.py, references/three-stage.md)
@@ -34,6 +38,22 @@ export PATH="$HOME/.local/bin:$PATH"
 export COLAB_AUTH="${COLAB_AUTH:-oauth2}"
 export COLAB_GPU="${COLAB_GPU:-A100}"
 export COLAB_EXEC_TIMEOUT="${COLAB_EXEC_TIMEOUT:-3600}"
+
+# One Colab account per agent (scripts/accounts.py claim): COLAB_ACCOUNT_SLOT=a-e puts that
+# account's `colab` shim first on PATH, so the CLI runs with the account's own HOME (its token and
+# its session list). Unset or `default`: the token in this user's ~/.config/colab-cli, as before.
+account_slot="${COLAB_ACCOUNT_SLOT:-}"
+account_slot="${account_slot,,}"
+case "${1:-}" in
+  "" | -h | --help | check | images-check | cuts | test) ;;
+  *)
+    if [[ -n "$account_slot" && "$account_slot" != "default" ]]; then
+      [[ "$account_slot" =~ ^[a-e]$ ]] || { echo "[minimax-h3-colab] COLAB_ACCOUNT_SLOT must be a-e or default" >&2; exit 2; }
+      account_bin="${COLAB_ACCOUNTS_ROOT:-$HOME/.cache/minimax-h3-colab/accounts}/$account_slot/bin"
+      [[ -x "$account_bin/colab" ]] || { echo "[minimax-h3-colab] account ${account_slot^^} is not set up on this machine; run: accounts.py claim --slot $account_slot --holder <name>" >&2; exit 2; }
+      export PATH="$account_bin:$PATH"
+    fi ;;
+esac
 
 case "${1:-}" in
   "" | -h | --help) sed -n '2,25p' "$0"; exit 0 ;;
@@ -78,6 +98,9 @@ case "${1:-}" in
       python3 -I "$HERE/check_images_manifest.py" "$manifest" || { echo "[minimax-h3-colab] fix the manifest or pass --no-check" >&2; exit 1; }
     fi
     exec python3 -I "$HERE/images.py" batch "${args[@]}" ;;
+  cuts)
+    shift
+    exec python3 -I "$HERE/cuts.py" "$@" ;;
   refine)
     shift
     exec python3 -I "$HERE/refine.py" "$@" ;;

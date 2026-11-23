@@ -1,0 +1,268 @@
+{
+  "batch_id": "wave60-earth-20261111",
+  "created_on": "2026-11-12",
+  "scope": "雲裡的水滴為什麼不馬上變成雨：暖雨比例、氣膠與起雨深度、巨鹽粒、過冷水雲與冰晶、雲種播撒的雷達紀錄：替後備組題 C6-02 補原研究（作者 F16，覆核 V19）。",
+  "sources": [
+    {
+      "id": "S60-S001",
+      "url": "https://insu.hal.science/insu-01175753v1/file/M-lmenst-dt_et_al-2015-Geophysical_Research_Letters.pdf",
+      "canonical_url": "https://doi.org/10.1002/2015GL064604",
+      "title": "Frequency of occurrence of rain from liquid-, mixed-, and ice-phase clouds derived from A-Train satellite retrievals（Mülmenstädt、Sourdeval、Delanoë、Quaas）",
+      "publisher": "Geophys. Res. Lett. 42: 6502–6509（2015，open access）；萊比錫大學；HAL-INSU 典藏",
+      "version": "刊本 PDF（HAL 典藏 v1）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；由 hal-insu.archives-ouvertes.fr/insu-01175753 典藏頁上的檔案連結取得；pdftotext -layout",
+      "reading_scope": "正文讀完（§1–§4 前段；圖只讀圖說）",
+      "locator": "Abstract；§3 第一至五段、Figure 1 與 Figure 3 圖說；§4 第一段",
+      "summary": "CloudSat、CALIPSO、MODIS 2006–2011 資料，依雲頂相態把下雨的雲柱分為液相（暖雨）、混合相、冰相。暖雨在 ITCZ 外的副熱帶海洋很多地方接近 100%；陸地暖雨比例溫帶以外（30° 以外）1%、熱帶 8%，海洋 15%、44%；冰相陸地 67%、71%，海洋 50%、45%，其餘為混合相。液態雲下雨機率海上通常 ≥20%、陸上 <2%。海上下雨與不下雨的暖雲有效半徑相近，陸上下雨的暖雲有效半徑較大、雲頂較高；作者說無法分辨陸雲滴小是氣膠多還是上升氣流強。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "統計的是下雨的頻率（雲柱比例），不是雨量；毛毛雨可能漏測；冰相判定依雲頂；「冷雨」指形成過程，不代表落地是雪。",
+      "author_cache": {
+        "file": "scratchpad/stw10/f16src/hal-mulmenstadt2015.pdf",
+        "sha256_prefix": "849fda018c1a295e",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S60-S002",
+      "url": "https://acp.copernicus.org/articles/8/1661/2008/acp-8-1661-2008.pdf",
+      "canonical_url": "https://doi.org/10.5194/acp-8-1661-2008",
+      "title": "Robust relations between CCN and the vertical evolution of cloud drop size distribution in deep convective clouds（Freud、Rosenfeld、Andreae、Costa、Artaxo）",
+      "publisher": "Atmos. Chem. Phys. 8: 1661–1675（2008，CC BY 3.0）；希伯來大學等",
+      "version": "刊本 PDF",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；由搜尋結果的 ACP 連結取得；pdftotext -layout",
+      "reading_scope": "Abstract、§1、§2.1、§3（Fig. 9 與圖說）、§6 開頭讀過；§2.4 儀器誤差與 §5 有效半徑理論段略讀",
+      "locator": "Abstract；§1 第一段；§3〈Modal drop size and onset of rain〉與 Fig. 9 圖說",
+      "summary": "2002 年 9 月 23 日–10 月 18 日亞馬遜 LBA-SMOCC 計畫，研究飛機穿越對流雲（0 °C 層以下、飛行上限約 5 km）量雲滴譜。煙霧使雲要長到至少 4 km 才下雨，乾淨雲只要 1–2 km；0.5% 過飽和下每多 100 個雲凝結核／cm³，暖雨起始所需雲厚平均增加約 350 m；污染雲中含水量最多的滴徑隨高度變大至少慢約一倍，作者歸因於更多雲滴分水、碰併被壓抑。以含水量最多的滴徑達 24 µm 作為暖雨起始門檻。在每 cm³ 3000 個以上積聚模態粒子時，作者沒有看到這個效應飽和。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一季節、單一地區；起雨門檻是作者定義的；只講 0 °C 層以下的暖雨起始，不代表總雨量減少；FSSP 在濃雲中有重合誤差，作者說會低估。 覆核 V19（2026-11-12）：limitations 補：「污染、過渡與火積雲的量測沒有飛到 DL 達 24 µm 的高度，Z24 是線性擬合外推（§3 Fig. 9 說明後段）」。",
+      "author_cache": {
+        "file": "scratchpad/stw10/f16src/acp-8-1661-2008.pdf",
+        "sha256_prefix": "c0038bb88f64c529",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S60-S003",
+      "url": "https://acp.copernicus.org/articles/15/5645/2015/acp-15-5645-2015.pdf",
+      "canonical_url": "https://doi.org/10.5194/acp-15-5645-2015",
+      "title": "Precipitation effects of giant cloud condensation nuclei artificially introduced into stratocumulus clouds（Jung 等）",
+      "publisher": "Atmos. Chem. Phys. 15: 5645–5658（2015，CC BY 3.0）；邁阿密大學等",
+      "version": "刊本 PDF",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；由搜尋結果的 ACP 連結取得；pdftotext -layout",
+      "reading_scope": "Abstract、§1 讀完；§3 個案結果與 §4 摘要段讀過（圖只讀圖說）",
+      "locator": "Abstract；§1 第二、三段",
+      "summary": "2011 年 8 月 3 日加州中部外海，飛機在層積雲頂附近撒 1–10 µm 鹽粉，30–60 分鐘後取樣：平均雲滴變大、數量變少、大於 10 µm 的大滴增加；平均毛毛雨率約從 0.05 升到 0.20 mm/h，液態水路徑約從 52 降到 43 g/m²，雲底層飛行看到強的毛毛雨雷達回波。估計鹽粒濃度 10⁻²–10⁻⁴ cm⁻³（一般雲凝結核約 10² cm⁻³）。8 月 10 日雲已經在下毛毛雨，加入大顆粒效果不顯著。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "兩個個案；沒有同時的未撒播對照雲（討論階段審稿人提過）；量的是毛毛雨；不得寫成人工增雨可行的證明。",
+      "author_cache": {
+        "file": "scratchpad/stw10/f16src/acp-15-5645-2015.pdf",
+        "sha256_prefix": "91bb9890d566b72e",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S60-S004",
+      "url": "https://acp.copernicus.org/articles/21/17969/2021/acp-21-17969-2021.pdf",
+      "canonical_url": "https://doi.org/10.5194/acp-21-17969-2021",
+      "title": "Hemispheric contrasts in ice formation in stratiform mixed-phase clouds: disentangling the role of aerosol and dynamics with ground-based remote sensing（Radenz 等）",
+      "publisher": "Atmos. Chem. Phys. 21: 17969–17994（2021，CC BY 4.0）；萊布尼茲對流層研究所（TROPOS）等",
+      "version": "刊本 PDF",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；由搜尋結果的 ACP 文章頁上的 PDF 連結取得；pdftotext -layout",
+      "reading_scope": "Abstract、§1、§3.2 開頭（Fig. 6 相關段）、§5 讀完；中段方法略讀",
+      "locator": "Abstract；§3.2 第一、二段（Fig. 6）；§5 第一至四段",
+      "summary": "LACROS 遠測站在萊比錫（污染）、利馬索爾（多沙塵）、蓬塔阿雷納斯（乾淨南半球海洋）多年觀測淺層層狀過冷雲。萊比錫與利馬索爾雲頂低於 −16 °C 的雲幾乎都含冰；蓬塔阿雷納斯同溫度 0.4±0.1 的雲完全是液態，液態雲在 −38 °C 也觀測到（部分與山地重力波有關）。扣掉邊界層耦合與重力波後，蓬塔阿雷納斯在 −24 到 −8 °C 含冰雲比例仍低 0.1–0.4。由光學性質推估的冰核濃度差 1–4 個數量級；作者說差異「可能」由冰核來源造成。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "地面單站遙測；冰核濃度是由氣膠光學推估；原因作者寫為可能；只限淺層層狀雲。 覆核 V19（2026-11-12）：summary 與 limitations 補：低於 −18 °C 的液態雲多嵌在山地重力波中（§3.2.3）；只看紊流充分的雲時三地含冰比例相近、蓬塔阿雷納斯只略低；「liquid-only」的定義是 ice virga 出現時間少於 5%。",
+      "author_cache": {
+        "file": "scratchpad/stw10/f16src/acp-21-17969-2021.pdf",
+        "sha256_prefix": "94c0f98aa30b328a",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S60-S005",
+      "url": "https://acp.copernicus.org/articles/12/4963/2012/acp-12-4963-2012.pdf",
+      "canonical_url": "https://doi.org/10.5194/acp-12-4963-2012",
+      "title": "Ice formation and development in aged, wintertime cumulus over the UK: observations and modelling（Crawford 等）",
+      "publisher": "Atmos. Chem. Phys. 12: 4963–4985（2012，CC BY 3.0）；曼徹斯特大學等",
+      "version": "刊本 PDF",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；由搜尋結果的 ACP 連結取得；pdftotext -layout",
+      "reading_scope": "Abstract、§4.1 各飛行段觀測、§6 模式摘要、§7 開頭讀過；WRF 設定細節略讀",
+      "locator": "Abstract；Table 1；§4.1 R3–R7 段；§6〈Summary of model results〉；§7 第一段",
+      "summary": "2009 年 1 月 22 日英國南部約 100 km 長的淺積雲線（FAAM BAe146 航次 B425），雲頂高於 −8 °C（近雲頂約 −7.5 °C）。雲上方取樣沒有任何冰粒子落入。約 −6 °C 的一段量到柱狀冰晶每公升 100–200 個，另一段多在 20 以下、局部超過 100；冰核參數化與由量到氣膠推估的冰核都只有每公升約 0.01 個量級。氣塊模式：有約 0.01 L⁻¹ 的初始冰即可由霍列特–莫索普凇附碎裂放大到 100 L⁻¹；關鍵一步是雨滴先經碰併長大、落下時收集冰粒凍成大凇附粒子；氣膠很多、長不出大雨滴的模擬中冰沒有被放大。WRF 模擬結論不同，作者說它的雲頂太冷。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一個案；放大機制由氣塊模式與簡算推論，不是直接看到碎裂；冰核來源只能推測。",
+      "author_cache": {
+        "file": "scratchpad/stw10/f16src/acp-12-4963-2012.pdf",
+        "sha256_prefix": "985a2290d8314149",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S60-S006",
+      "url": "https://par.nsf.gov/servlets/purl/10195303",
+      "canonical_url": "https://doi.org/10.1073/pnas.1917204117",
+      "title": "Quantifying snowfall from orographic cloud seeding（Friedrich 等）",
+      "publisher": "PNAS 117（2020），doi 10.1073/pnas.1917204117（DOI 由典藏 PDF 內文取得）；美國國家科學基金會公共存取典藏（NSF PAR）接受稿",
+      "version": "NSF PAR 典藏 PDF（6 頁）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；由搜尋結果的 NSF PAR 連結取得；pdftotext",
+      "reading_scope": "Abstract、Introduction、三個個案的結果段讀過；SI 未讀",
+      "locator": "Abstract；Introduction 第一、二段；19 Jan 個案（Silver Creek、Banner、Five Corners 雪量計段）",
+      "summary": "2017 年愛達荷 SNOWIE：飛機在過冷的冬季山區雲中以焰管釋放碘化銀，只選自然降水很弱（<1 mm/h）的時段。雷達上出現與撒播路線一致、順風移動的撒播線回波；撒播線經過時雪量計多記到 0.05–0.3 mm（例如 19 日 Silver Creek 5 分鐘內 0.2 mm，作者說約為當時自然降水的三到四倍）。三個個案撒播產生的水量估計 1.2×10⁵ m³（撒 20 分鐘）、2.4×10⁵ m³（86 分鐘）、3.4×10⁵ m³（24 分鐘）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "三個刻意挑選的個案；水量由雷達與雪量計推估；不是增雨效益評估，不得寫成可靠水源。NSF PAR 為接受稿，刊本未對照。 覆核 V19（2026-11-12）：version 與 limitations 改：PAR 檔是 PNAS 117(10):5190–5195 的刊本版面（頁首頁碼、「Published under the PNAS license」），不是只有接受稿；刪去「刊本未對照」。",
+      "author_cache": {
+        "file": "scratchpad/stw10/f16src/par-10195303.pdf",
+        "sha256_prefix": "507e06ee174e826a",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "S60-001",
+      "question": "雨大多是小水滴互相碰撞、合併變成的嗎？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.warm_rain_rare_over_land_ice_phase",
+      "answer_target": "在熱帶的海上很多是，但在陸地上，正在下雨的雲絕大多數含冰。萊比錫大學用 CloudSat、CALIPSO 和 MODIS 2006 到 2011 年的衛星資料，把每一個正在下雨的雲柱依雲頂相態分成全液態（暖雨）、混合相和冰相。暖雨在赤道輻合帶以外的副熱帶海洋，很多地方接近百分之百；但在陸地上，暖雨所占的比例在南北緯 30 度以外只有 1%、熱帶 8%，海上則是 15% 和 44%。陸地上冰相分別占 67% 和 71%。只看液態的雲：在海上下雨的機率通常有兩成以上，在陸地上不到 2%。陸地上會下雨的暖雲，雲滴有效半徑比較大、雲頂比較高；作者說分不出陸地雲滴較小是因為氣膠多還是上升氣流強。",
+      "scope": "統計的是下雨的頻率（雲柱比例），不是雨量；毛毛雨可能漏測；相態依最低一層的雲頂判斷，「冰相的雨」指雨形成時雲頂有冰，不代表落地是雪，也不代表過程中沒有碰撞合併（冰相路徑裡常有凇附與融化後的碰併）。不推論台灣個別天氣。舊集 S42 講的是暖雨這一條路，旁白不得說「S42 講錯了」，只說「那是其中一條路，在陸地上更常見的是另一條」。",
+      "source_ids": [
+        "S60-S001"
+      ],
+      "source_locator": "Abstract；§3 第一至五段、Figure 1、Figure 3 圖說",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：陸海暖雨比例（1%／8% 對 15%／44%）1 條、液態雲下雨機率 ≥20% 對 <2% 0.5 條。去重：LEG-S42（舊集）說「小水滴互相合併、長到撐不住才落下」，本核心正是對它的修正；K6024 只講凍毛毛雨可經碰併。無同答案。 原提案 F16-010（目標 C6-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V19（2026-11-12）改字後收；收，scope 補兩句：冰相不等於沒有碰併；S42 的處理方式。這是 C6-02 第二個轉折的支點，數字逐句相符、不是作者推論。算 1.5 條：陸海暖雨比例 1、液態雲下雨機率 0.5（同一資料，但回答的是另一件事：為什麼陸上暖雨少）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "以為雨就是小水滴碰在一起變大；在陸地上，大多數的雨要先經過冰。",
+        "visual": "世界地圖兩層：暖雨比例（海上大片、陸地幾乎空白）；旁邊陸／海兩組圓餅。",
+        "seconds": [
+          55,
+          65
+        ]
+      }
+    },
+    {
+      "id": "S60-002",
+      "question": "空氣裡的煙塵多了，雲要長到多厚才會下暖雨？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.smoke_delays_warm_rain_onset_depth",
+      "answer_target": "高很多。2002 年 9 到 10 月亞馬遜的燒林季，研究飛機一次次穿過對流雲，在 0 °C 層以下量雲滴的大小。乾淨的雲長到 1 到 2 公里厚就開始下暖雨；被燒林煙籠罩的雲，要長到至少 4 公里。平均來說，雲底下每立方公分多 100 個雲凝結核（以 0.5% 過飽和計），暖雨開始所需的雲厚就多約 350 公尺；在污染的雲裡，含水最多的那種滴徑隨高度長大的速度至少慢一倍。作者以這個滴徑到 24 微米當作開始下雨的門檻，解釋是同樣的水被更多雲滴瓜分，碰在一起合併的過程被壓下來。到每立方公分 3000 個以上的粒子，他們也沒有看到這個效應飽和。",
+      "scope": "單一季節、單一地區的飛機量測；起雨門檻（DL 到 24 微米）是作者定義的；污染雲與火積雲的量測沒有飛到那麼高，起雨深度是把量到的直線往上外推的估計，旁白要說「估計要長到 4 公里以上」，不說「量到 4 公里才下」。只講 0 °C 層以下暖雨的起點，不代表總雨量變少；作者自己寫，這麼厚的污染雲到了高處，雨滴會凍成霰與冰雹。不與 F16-013 的數字比較或相減；不寫成空污「讓台灣不下雨」之類的推論。",
+      "source_ids": [
+        "S60-S002"
+      ],
+      "source_locator": "Abstract；§3〈Modal drop size and onset of rain〉與 Fig. 9 圖說",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：乾淨 1–2 km 對煙霧 ≥4 km 與每 100 CCN 多 350 m（同一組量測的兩個數字，合 1 條）；滴徑長大慢一倍與不飽和 0.5 條。K6002（Köhler 門檻）與 K6012（同水分成更多滴更亮）是理論與反照率，本核心是量到的起雨高度，不重計。 原提案 F16-011（目標 C6-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V19（2026-11-12）改字後收；收，改問題用字（高→厚，原文是雲的垂直發展深度）與 scope：補上作者自己寫的外推限制。算 1 條，不是 1.5：起雨深度的對比與每 100 CCN 多 350 公尺是同一組量測的兩種讀法；滴徑長得慢一倍是同一機制的中間量；「沒有飽和」是條件說明。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "以為空氣裡能讓水凝結的粒子越多，越容易下雨；其實雲滴太多、太小，反而要長得更高才下得來。",
+        "visual": "兩朵並排的雲剖面，左乾淨右煙霧；雨開始的高度用水平線標出，右邊高出一大截。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "S60-003",
+      "question": "往只下一點毛毛雨的層積雲裡撒少量大鹽粒，雨會變多嗎？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.giant_ccn_salt_seeding_drizzle",
+      "answer_target": "這一次的實驗裡變多了。2011 年 8 月 3 日在加州中部外海，飛機在一片平整的層積雲頂附近撒下 1 到 10 微米的鹽粉，30 到 60 分鐘後回到下風處量：平均雲滴變大、數量變少，直徑超過 10 微米的大滴變多；原本每小時不到 0.1 毫米的毛毛雨，平均約從每小時 0.05 毫米升到 0.20 毫米，雲裡的液態水從每平方公尺約 52 克降到 43 克。估計撒進去的鹽粒每立方公分只有 0.01 到 0.0001 個，一般雲凝結核則有約 100 個——極少數的大顆粒，雲底雨率估計約變成四倍。另一天（8 月 10 日）雲本來就在下毛毛雨，再撒效果不顯著。",
+      "scope": "兩個個案，沒有同時的未撒播對照雲，追蹤被撒播的氣團靠風速推估（作者自己說單架飛機很難追準）；量的是很弱的毛毛雨。這是用來看「大顆粒能不能帶頭碰併」的物理實驗，不是增雨作業：旁白不得說人工增雨可行、有效、可推廣或能解決缺水，也不給撒播方法細節。",
+      "source_ids": [
+        "S60-S003"
+      ],
+      "source_locator": "Abstract；§1 第二、三段",
+      "premise_status": "screened",
+      "notes": "算 1 條。與 F16-011 方向相反（少數大顆粒促雨、大量小顆粒抑雨），兩者數字不合併。 原提案 F16-012（目標 C6-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V19（2026-11-12）改字後收；收，改問題、答案與 scope。原句「原本不下雨的雲開始下」與原文撒播前已有 0.04–0.09 mm/h 不符，C6-02 轉折一的措辭跟著改。算 1 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "決定下不下的不是粒子多少，而是有沒有夠大的那幾顆先帶頭碰撞。",
+        "visual": "一片平整雲層，飛機撒出一條白線；半小時後同處雲底垂下灰色雨幡。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "S60-004",
+      "question": "雲頂已經零下十幾度，雲裡就一定有冰嗎？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.supercooled_cloud_ice_fraction_inp_contrast",
+      "answer_target": "不一定。萊布尼茲對流層研究所用雷達和光達，在德國萊比錫（污染）、賽普勒斯利馬索爾（沙塵多）和智利蓬塔阿雷納斯（乾淨的南半球中緯度海洋）長期觀測薄薄一層的過冷層狀雲。萊比錫和利馬索爾，雲頂低於零下 16 度的雲幾乎都看得到冰從雲底落下；蓬塔阿雷納斯同樣溫度下，約四成（0.4±0.1）被歸為只有液態，甚至到零下 38 度都還看到。但這些低溫的液態雲很多是山地造成的重力波裡的雲；把邊界層和重力波的影響扣掉後，蓬塔阿雷納斯在零下 24 到零下 8 度之間含冰雲的比例仍少 0.1 到 0.4，只看紊流充分發展的雲，三地已經相近、蓬塔阿雷納斯只略少。作者由空氣的光學性質估計兩地能結冰的粒子濃度差 1 到 4 個數量級，說差異「可能」由此而來。",
+      "scope": "地面單站遙測，只限淺層層狀雲；「只有液態」是沒看到冰從雲底落下，不是直接量到雲裡沒有冰；冰核濃度是推估；原因作者寫為「可能」，而且空氣的上下運動（重力波、紊流）影響很大。旁白不得把「四成」單獨當成冰核差異的證據。不與 F16-011 的煙霧數字比較。",
+      "source_ids": [
+        "S60-S004"
+      ],
+      "source_locator": "Abstract；§3.2 第一、二段（Fig. 6）；§5 第一至四段",
+      "premise_status": "screened",
+      "notes": "算 1 條。K6004（冰比水更能吸水汽）講冰出現後；本核心講冰出不出現取決於冰核，屬新增量測。 原提案 F16-013（目標 C6-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V19（2026-11-12）改字後收；收，改答案與 scope：原答案只報「四成全液態」與冰核差異，漏掉原文自己承認的重力波混淆與「紊流雲三地相近」。改後這一章能說的是「零下不等於有冰，起頭的冰要看粒子，也要看空氣怎麼動」，不能說成冰核一個原因。算 0.5 條，不是 1 條：可靠的部分（過冷液態雲在零下十幾度到三十幾度都存在，比例因地而異）是教科書常識的實測版，歸因部分作者自己保留。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "零度以下不等於結冰：沒有起頭的冰，過冷水可以一直撐著。",
+        "visual": "三個站的溫度—含冰比例曲線，南美那條明顯偏低；溫度計刻度停在零下 20 度。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "S60-005",
+      "question": "雲頂才零下七度、能結冰的粒子又很少，雲裡怎麼量到每公升上百個冰晶？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.secondary_ice_needs_coalescence_raindrops",
+      "answer_target": "研究者的解釋是「冰生冰」，而且得先有暖雨幫忙。2009 年 1 月 22 日英國南部一條約 100 公里長的淺積雲，雲頂高於零下 8 度（近雲頂約零下 7.5 度）。飛機確認沒有冰從上方掉進來；但雲裡約零下 6 度的一段量到柱狀冰晶每公升 100 到 200 個，其他段多在每公升 20 個以下。現行的冰核估算給的起頭冰很少，作者估計初始冰約每公升 0.01 個。氣塊模式顯示：只要有約每公升 0.01 個初始冰，凇附時碎裂出冰屑的過程就能放大到每公升 100 個；關鍵一步是雨滴先靠碰撞合併長大，落下時撈到冰粒、凍成大的凇附粒子。模式裡長不出大雨滴的設定，冰就停在起頭的數量。",
+      "scope": "單一個案；放大機制由模式與簡算推論，不是直接拍到碎裂；模式結果對氣膠數量與碰撞核的設定很敏感（依量測氣膠的對照組本身沒有放大），另一個模式（WRF）結論不同，作者說它的雲頂太冷。K6005 已有「凇附碎裂」的入口，本核心只算新增的量測對照與「先要有大雨滴」。",
+      "source_ids": [
+        "S60-S005"
+      ],
+      "source_locator": "Abstract；§4.1 R3–R7；§6〈Summary of model results〉",
+      "premise_status": "screened",
+      "notes": "算 1 條：冰晶數量比冰核多四個數量級的量測，與暖雨大滴是放大前提（模式）。 原提案 F16-014（目標 C6-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V19（2026-11-12）改字後收；收，改字：起頭冰的來源寫清楚（作者的估計），模式敏感度補進 scope，刪去方向不準確的「把氣膠調多」。算 1 條，同意作者；但它是 C6-02 裡最技術的一章，量到的只有冰晶數，「暖雨是火種」是模式推論。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冰和暖雨不是兩條互不相干的路：碰併長出的雨滴，正是點燃冰生冰的火種。",
+        "visual": "雲剖面：上方一顆冰、下方雨滴落下撞上冰粒變白、四周噴出小冰屑，數字由 0.01 跳到 100。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "S60-006",
+      "question": "往過冷的雲裡撒能結冰的粒子，看得到雪從那裡掉下來嗎？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.glaciogenic_seeding_radar_snowfall_lines",
+      "answer_target": "看得到。2017 年美國愛達荷的 SNOWIE 計畫，飛機在冬季山區的過冷雲裡釋放碘化銀，研究者只挑自然降雪很弱（每小時不到 1 毫米）的時段來分析。地面雷達上出現和撒播路線一致、順著風移動的「撒播線」回波；撒播線經過時，雪量計多記到 0.05 到 0.3 毫米。例如某一站 5 分鐘內記到 0.2 毫米，扣掉當時的自然降雪後約 0.1 毫米歸因於撒播，這個增量是自然降雪起伏的三到四倍。三次個案估計撒播產生的水量：撒 20 分鐘約 12 萬立方公尺、86 分鐘約 24 萬、24 分鐘約 34 萬。",
+      "scope": "三個刻意挑選的個案，水量由雷達與雪量計推估；作者說這只是量化撒播效果的一步，過去的統計評估多半沒有定論。這一章只用來看「過冷雲缺的是起頭的冰」，不是增雨效益評估：旁白不得說人工增雨可靠、划算、可當水源或值得推廣，不給撒播作業細節。PAR 檔為 PNAS 刊本版面。",
+      "source_ids": [
+        "S60-S006"
+      ],
+      "source_locator": "Abstract；Introduction 第一、二段；19 Jan 個案段",
+      "premise_status": "screened",
+      "notes": "算 1 條。這是 K6004（冰在過冷雲裡搶水汽長大）在真實雲裡被直接看到的一次：先缺冰、加了冰就落。 原提案 F16-015（目標 C6-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V19（2026-11-12）改字後收；收，改字：三到四倍比的是自然降雪的起伏，不是自然降水量（作者的寫法會讓觀眾以為撒播讓雪變成四倍）。算 1 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雲裡滿是過冷水卻不下，缺的是起頭的冰；給了冰，雪就沿著撒的那條線掉下來。",
+        "visual": "雷達俯視圖：淡淡的背景回波上出現幾條平行亮線，隨時間往下風處移動，經過地面雪量計時數字跳一格。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    }
+  ],
+  "not_added": []
+}

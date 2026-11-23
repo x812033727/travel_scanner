@@ -4,13 +4,20 @@ who cites this article. Proven through the endpoints the editor and the reader u
 
 from __future__ import annotations
 
-from datetime import timedelta
+from datetime import date, timedelta
 from typing import cast
 
+import pytest
 from sqlalchemy import Table, func, select, update
 
+from app.guides import links
 from app.guides.links_cli import check_guide_links, rebuild_guide_links
-from app.guides.models import GuideArticle, GuideArticleLink, GuideArticleLocale
+from app.guides.models import (
+    GuideArticle,
+    GuideArticleLink,
+    GuideArticleLocale,
+    GuideArticleRevision,
+)
 from app.guides.publication import today
 from app.models import AdminAuditLog
 from tests import test_guides as guides
@@ -278,6 +285,133 @@ async def test_travel_articles_relate_by_destination(database, actor) -> None:
         body = await public(api, "howto", "tokyo-a")
         # Nothing shares the topic; the city decides, and the other city stays out.
         assert [item["slug"] for item in body["related"]] == ["tokyo-b"]
+
+
+async def test_related_pairs_the_release_with_its_system_card_in_the_published_language(
+    database, actor
+) -> None:
+    release = "ai-news-openai-gpt-62-astra-sol-20261117"
+    system_card = "ai-news-gpt-62-astra-sol-system-card-20261117"
+    fifth_day = "ai-news-gpt-62-astra-sol-availability-20261112"
+    wrong_locale = "ai-news-gpt-62-astra-sol-preview-20261117"
+    newest = "ai-news-openai-voice-update-20261118"
+    async with client(make_app(database, actor)) as api:
+        for slug, locale, topic in [
+            (release, "zh-TW", "ai-news"),
+            (system_card, "zh-TW", "ai-news"),
+            (fifth_day, "zh-TW", "ai-news"),
+            ("ai-news-gpt-62-astra-sol-pricing-20261111", "zh-TW", "ai-news"),
+            ("ai-news-gpt-62-astra-sol-glossary-20261117", "zh-TW", "ai-terms"),
+            (wrong_locale, "ja", "ai-news"),
+            ("ai-news-nvidia-stock-price-20261117", "zh-TW", "ai-news"),
+            (newest, "zh-TW", "ai-news"),
+        ]:
+            await published(
+                api,
+                slug,
+                kind="life",
+                destination_id=None,
+                topics=[topic],
+                locale=locale,
+                news_date=date.fromisoformat(slug[-8:]).isoformat(),
+            )
+        await published(api, "editors-pick")
+        async with database() as session:
+            source = (
+                await session.scalars(select(GuideArticle).where(GuideArticle.slug == release))
+            ).one()
+            await links.set_related(
+                session, source, await links.resolve_related(session, source, ["editors-pick"])
+            )
+            await session.commit()
+        assert [item["slug"] for item in (await public(api, "life", release))["related"]] == [
+            "editors-pick",
+            system_card,
+            fifth_day,
+            newest,
+        ]
+        assert (await public(api, "life", system_card))["related"][0]["slug"] == release
+
+
+@pytest.mark.parametrize(
+    ("left", "right"),
+    [
+        ("nvidia-board-ceo-search", "nvidia-stock-price"),
+        ("amd-q3-2026-results", "intel-q3-2026-results"),
+        ("united-blocks-ai-agents", "ebay-blocks-ai-agents"),
+        ("claude-code-2-1-82-release", "claude-code-2-1-83-release"),
+    ],
+)
+def test_news_subject_requires_more_than_a_vendor_or_generic_phrase(left, right) -> None:
+    assert links._subject_overlap(left.split("-"), right.split("-")) == 0
+    assert links._subject_overlap(right.split("-"), left.split("-")) == 0
+
+
+async def test_related_reads_only_available_card_slots_and_replaces_damaged_pointers(
+    database, actor, monkeypatch
+) -> None:
+    async with client(make_app(database, actor)) as api:
+        slugs = [
+            "topic-index",
+            *(f"article-{index}" for index in range(8)),
+            "bad-title",
+            "missing-revision",
+        ]
+        for slug in slugs:
+            await published(api, slug, kind="life", destination_id=None, topics=["tech-news"])
+    async with database() as session:
+        await session.execute(
+            update(GuideArticleLocale)
+            .where(
+                GuideArticleLocale.article_id
+                == select(GuideArticle.id)
+                .where(GuideArticle.slug == "missing-revision")
+                .scalar_subquery()
+            )
+            .values(version=9, published_version=9)
+        )
+        for slug, malformed in (
+            ("bad-title", {"title": 42}),
+            ("article-0", {"title": ["list"]}),
+            ("article-1", {"title": {"wrong": "shape"}}),
+            ("article-2", {"title": False}),
+            ("article-3", {"description": "missing title"}),
+            ("article-4", {"title": "42", "description": ["bad description"]}),
+        ):
+            await session.execute(
+                update(GuideArticleRevision)
+                .where(
+                    GuideArticleRevision.article_locale_id
+                    == select(GuideArticleLocale.id)
+                    .join(GuideArticle, GuideArticle.id == GuideArticleLocale.article_id)
+                    .where(GuideArticle.slug == slug)
+                    .scalar_subquery(),
+                    GuideArticleRevision.action == "published",
+                )
+                .values(document_json=malformed)
+            )
+        await session.commit()
+        ids = (await session.scalars(select(GuideArticle.id))).all()
+        references = await links.references_for(session, "zh-TW", list(ids))
+        by_slug = {card.slug: card for card in references.values()}
+        assert set(by_slug) == {"topic-index", *(f"article-{index}" for index in range(4, 8))}
+        assert by_slug["article-4"].title == "42"
+        assert by_slug["article-4"].description is None
+        source = (
+            await session.scalars(select(GuideArticle).where(GuideArticle.slug == "topic-index"))
+        ).one()
+        reads = []
+        read = links._read_references
+
+        def count_page(rows):
+            page = list(rows)
+            reads.append(len(page))
+            return read(page)
+
+        monkeypatch.setattr(links, "_read_references", count_page)
+        cards = await links.related_articles(session, source, "zh-TW", limit=2)
+        assert [card.slug for card in cards] == ["article-7", "article-6"]
+        assert reads == [2, 1]
 
 
 # --- the operator commands -------------------------------------------------------

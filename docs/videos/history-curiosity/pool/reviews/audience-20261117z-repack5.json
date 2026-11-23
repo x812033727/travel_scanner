@@ -1,0 +1,282 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-17",
+  "status": "TOPIC_APPEAL_REFERENCE_NOT_FINAL_CUT_REVIEW",
+  "owner_request": "站主 2026-11-17 問怎麼有效率增加 6.5 分以上的題，選「先做 1 再做 2」：先改包裝總分 6.0–6.5 的單集題。",
+  "candidates_method": {
+    "scope": "總分 6.0–6.5 的入選單集題改包裝後的複評，第 5 輪 21 題：question、hook、payoff 由未參與研究與評分的改寫編輯重寫（問句 40–110 字、一個問號），事實與來源不動，新文字的數字與專名都在原題卡裡。複評的五項平均比原分高 0.5 以上（第 1–3 輪是「較高即採用」）的 10 題採用新包裝並以這份分數為準；其餘維持原文與原分。",
+    "persona": "台灣 25–45 歲、喜歡歷史懸案／奇聞／都市傳說長片的一般觀眾",
+    "card_fields": "題目、完整問題、開場鉤子、這集會揭曉（前 260 字）、畫面",
+    "reviewers": "兩位新評審各評一次，並放進同六題錨點；不讀 repo、不上網。各自用錨點平均與基準錨點平均的差扣掉鬆緊，再取兩人平均。五項欄位是兩人的原始平均，score 是校正後的五項平均；併入需求的總分由 build 計算。",
+    "sample_anchors": {
+      "P09": [
+        8.2,
+        8.2
+      ],
+      "N384": [
+        7.4,
+        7.7
+      ],
+      "N2843": [
+        5.0,
+        5.3
+      ],
+      "N2181": [
+        6.5,
+        6.3
+      ],
+      "N3266": [
+        5.5,
+        5.5
+      ],
+      "N142": [
+        7.2,
+        7.5
+      ]
+    },
+    "baseline_anchor_mean": 6.858,
+    "sample_offsets": {
+      "zr5-a": -0.36,
+      "zr5-b": -0.29
+    },
+    "caveat": "第 4 輪起每批除了六題錨點，另放 8 題剛評過、沒改動的對照題，用錨點與對照題的現有分數一起校正；N2501 的 answer_target 是一段覆核修訂註記而不是答案，題卡本身待修，不列入。",
+    "not_adopted": {
+      "N3763": {
+        "previous": 7.06,
+        "rescored": 7.42
+      },
+      "N3184": {
+        "previous": 6.72,
+        "rescored": 6.77
+      },
+      "N2626": {
+        "previous": 6.93,
+        "rescored": 6.52
+      },
+      "N4326": {
+        "previous": 6.81,
+        "rescored": 6.47
+      },
+      "N981": {
+        "previous": 6.66,
+        "rescored": 5.72
+      },
+      "N427": {
+        "previous": 6.88,
+        "rescored": 6.07
+      },
+      "N2761": {
+        "previous": 7,
+        "rescored": 6.57
+      },
+      "N503": {
+        "previous": 7.06,
+        "rescored": 7.12
+      },
+      "N645": {
+        "previous": 6.82,
+        "rescored": 6.52
+      },
+      "N5922": {
+        "previous": 6.77,
+        "rescored": 6.87
+      },
+      "N2842": {
+        "previous": 6.72,
+        "rescored": 7.12
+      }
+    }
+  },
+  "candidates": [
+    {
+      "id": "N365",
+      "rank": 1,
+      "of": 400,
+      "score": 8.12,
+      "raw": 7.8,
+      "click": 8.0,
+      "hook": 8.0,
+      "surprise": 7.5,
+      "payoff": 8.0,
+      "share": 7.5,
+      "comment": "羅密歐茱麗葉的原版男主被砍頭？這題一看就想點。",
+      "previous": {
+        "score": 7.1,
+        "comment": "羅密歐原版被砍頭、不在維洛那，有新鮮感",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "小修：把『沒有羅密歐、沒有茱麗葉』放進題目，拿掉來源沒有的『最早』與『拿坡里』，payoff 先講名字和城市是誰改的。"
+      }
+    },
+    {
+      "id": "N144",
+      "rank": 2,
+      "of": 400,
+      "score": 8.07,
+      "raw": 7.75,
+      "click": 8.0,
+      "hook": 8.0,
+      "surprise": 7.25,
+      "payoff": 7.75,
+      "share": 7.75,
+      "comment": "12 英尺怪物其實是倉鴞，反差萌，拆解也清楚。",
+      "previous": {
+        "score": 7.07,
+        "comment": "外星怪物其實是倉鴞，可愛又有解答，雖然聽過",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "題目補上目擊當下的畫面（紅臉、嘶叫、飄過來），拿掉來源沒有的『七個人』『三公尺』『外星』。"
+      }
+    },
+    {
+      "id": "N5761",
+      "rank": 3,
+      "of": 400,
+      "score": 7.97,
+      "raw": 7.65,
+      "click": 8.0,
+      "hook": 7.5,
+      "surprise": 7.25,
+      "payoff": 8.0,
+      "share": 7.5,
+      "comment": "愛麗絲原稿沒有柴郡貓？球桿還是鴕鳥？這種冷知識我愛。",
+      "previous": {
+        "score": 7.01,
+        "comment": "愛麗絲原稿沒有柴郡貓很驚訝，回收初版也有趣但太雜",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "把兩件事縮成『名場面原稿裡沒有』加『初版被作者自己回收』，拿掉人名、章名與年份串，只留 2,000 冊一個數字。"
+      }
+    },
+    {
+      "id": "N3902",
+      "rank": 4,
+      "of": 400,
+      "score": 7.87,
+      "raw": 7.55,
+      "click": 8.0,
+      "hook": 7.25,
+      "surprise": 7.5,
+      "payoff": 7.5,
+      "share": 7.5,
+      "comment": "從小聽的風箏故事可能沒發生過？這個我會點也會轉。",
+      "previous": {
+        "score": 7.08,
+        "comment": "富蘭克林風箏實驗他自己沒寫經過？想點，但開場偏平",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "題目只留『信裡連一個我字都沒有』，開場改用大家熟悉的畫面再反轉；拿掉鑰匙與『被閃電打到』。"
+      }
+    },
+    {
+      "id": "N4382",
+      "rank": 5,
+      "of": 400,
+      "score": 7.72,
+      "raw": 7.4,
+      "click": 7.5,
+      "hook": 7.25,
+      "surprise": 7.0,
+      "payoff": 7.75,
+      "share": 7.5,
+      "comment": "加兩呎的傳說我真的聽過，原來只是平均值，想轉給朋友。",
+      "previous": {
+        "score": 6.55,
+        "comment": "多加兩呎的趣聞被拆穿有意思，但開場太平",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "開場改成六座塔站六個數字的畫面，題目只留『沒有一站是 29,000』這個反常點，拿掉人名、學會名與引文。"
+      }
+    },
+    {
+      "id": "N2183",
+      "rank": 6,
+      "of": 400,
+      "score": 7.67,
+      "raw": 7.35,
+      "click": 7.5,
+      "hook": 7.5,
+      "surprise": 7.25,
+      "payoff": 7.75,
+      "share": 6.75,
+      "comment": "25 噸隕石被當鐵礦熔掉只剩 744 克，又氣又想看。",
+      "previous": {
+        "score": 6.57,
+        "comment": "25 噸隕石被合法熔掉只剩 744 克，滿惋惜想看",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "把 25 噸對 744 克的落差放進題目，問『為什麼爭論還沒完就被挖走』，拿掉敕令年份、期刊與目錄細節。"
+      }
+    },
+    {
+      "id": "N3662",
+      "rank": 7,
+      "of": 400,
+      "score": 7.62,
+      "raw": 7.3,
+      "click": 7.0,
+      "hook": 7.75,
+      "surprise": 7.5,
+      "payoff": 7.75,
+      "share": 6.5,
+      "comment": "石頭人頭上拼出挖掘者的名字太好笑，印刷字型露餡也漂亮。",
+      "previous": {
+        "score": 6.63,
+        "comment": "土墩挖出十誡石，被印刷版聖經抓包，破案感不錯",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "題目小修、把十誡石往前放；開場改用『額頭刻著自己名字的石頭人頭』，比原本逐句譯文有畫面。"
+      }
+    },
+    {
+      "id": "N5564",
+      "rank": 8,
+      "of": 400,
+      "score": 7.57,
+      "raw": 7.25,
+      "click": 7.5,
+      "hook": 7.5,
+      "surprise": 7.0,
+      "payoff": 7.75,
+      "share": 6.5,
+      "comment": "不存在的衛星先拿大獎還進百科，科學界烏龍我愛看。",
+      "previous": {
+        "score": 6.75,
+        "comment": "不存在的衛星拿了大獎很妙，題目塞太多望遠鏡規格",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "拿掉望遠鏡規格、日期與外文名串，題目只問『沒人確認過怎麼先得獎』，答案（誤連背景恆星）放在 payoff 最前面。"
+      }
+    },
+    {
+      "id": "N3643",
+      "rank": 9,
+      "of": 400,
+      "score": 7.42,
+      "raw": 7.1,
+      "click": 7.0,
+      "hook": 7.5,
+      "surprise": 7.5,
+      "payoff": 7.0,
+      "share": 6.5,
+      "comment": "預知夢看錯一個零還自己承認，妙；但夢者是誰沒人認識。",
+      "previous": {
+        "score": 6.76,
+        "comment": "最有名的預知夢是自己看錯數字，不錯，但人和書都不熟。",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "題目聚焦『夢者自己承認看錯一個零』，拿掉書名、學會名與人名，把觀眾不熟的人與書留給正片。"
+      }
+    },
+    {
+      "id": "N6323",
+      "rank": 10,
+      "of": 400,
+      "score": 7.32,
+      "raw": 7.0,
+      "click": 7.75,
+      "hook": 7.75,
+      "surprise": 6.5,
+      "payoff": 6.25,
+      "share": 6.75,
+      "comment": "燒著掉下來卻冰到凍手，超想知道；答案合理但少了點爆點。",
+      "previous": {
+        "score": 6.8,
+        "comment": "燒過的隕石冰到握不住很怪，剝完還留一個謎不錯",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "把最怪的畫面（燒過的石頭冰到握不住）變成題目本身，Fort 的日期錯誤與公函考據移出題目。"
+      }
+    }
+  ]
+}

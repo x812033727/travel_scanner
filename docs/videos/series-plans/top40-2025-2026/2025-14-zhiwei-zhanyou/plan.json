@@ -1,0 +1,44 @@
+{
+  "slug": "2025-14-zhiwei-zhanyou",
+  "title": "他只是我的光替",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": { "min": 90, "max": 180, "chapter_finale_min": 120 },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "站主 2026-10-28：每集 3–5 個鉤子。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），可再加 extra_hooks 0–2 句；lib/validate.mjs 擋掉寫成同一件事的。"
+  },
+  "closed_ending": false,
+  "ending_note": "第五季收掉主線：初一戲院不賣（祁晟投下三年前欠弟弟的那一票、祁夫人也舉手）；祁夫人以段蘅之名回到台上，老范讓燈多亮了一分鐘；望山廳的週年晚宴，她自己按下 Cue 99『自我介紹』、走完那四十七秒，站到祁朔右邊。第 300 集最後一格，老萬遞來祖父最後一個信封——另一座城『十五戲院』的照片，暗掉的台上亮著一盞守夜燈：『這盞，是誰開的？』留第二部的口子。站主要收死的話，刪掉最後一格、讓第 300 集收在她站到祁朔右邊那一格即可（那一格本身就是反轉，檢查器要求季末收在反轉）。",
+  "aspect": { "decided": null, "suggested": "16:9", "why": "照《種田娶妻打天下》的建議。" },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom）；target_minutes 填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線。",
+    "look": "真人電影感現代都市情感：光是主角——望山廳的金與白、初一戲院的暗紅絨布與一盞守夜燈、燈控台的冷藍、家宴長桌主位亮末座暗；她的世界一季比一季亮。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md；前 3 秒允許是『做燈的手滑了』與空走道那束光的反差；每集的奇觀優先用光的變化（亮起、全暗、追光移動、守夜燈）完成，少用大動作。",
+    "reuse": "固定場景：望山廳（含二樓燈控室與後門到台口的中央走道）、初一戲院（觀眾席、台上的記號與守夜燈、燈控室、閣樓）、祁家老宅的家宴長桌、卓映的工作室、老范的修理行、卓媽的改衣店；每個場景先拍全亮、全暗、追光、守夜燈四種光的狀態。",
+    "voice": "國語；卓映低、穩、短句，報燈號像報時間；祁朔平、直，每次都叫她全名；祁晟滑、慢、命令句，第四季起有停頓；祁夫人冷、慢，第五季台上的段蘅要亮；老范粗；卓媽台語；第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json。",
+    "per_episode": "平均約 120 秒一集 ≈ 3,000–3,800 點。",
+    "per_season": "60 集 ≈ 18–23 萬點；五季 ≈ 90–115 萬點。",
+    "levers": "文戲與光的變化為主，一張首格＋光線推移可省六到七成；望山廳與初一戲院各拍一組可重用的空景與四種光的狀態；家宴長桌每季一組首格重用。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包，不是逐集分鏡劇本。",
+  "reference": {
+    "work": "《只為佔有你》（2025 年紅果峰值熱度榜第 14，都市愛情・兄弟三角）",
+    "how": "只學套路：被當眾輕慢的女主當場分手、轉身與前任的親弟弟糾纏、在賭氣與真心之間搖擺、前任追妻火葬場與弟弟上位雙線並行、當眾宣示、護妻、真心驗證、三人同在一個家族與社交圈什麼都被看見、沒有反派只有自尊與家族位階。她的職業（燈光設計師）、對方的家業（從一間戲院起家的會展集團）、替身的形式（打燈時代替主角站位的『光替』）、初一戲院與守夜燈、家宴座次、每個人物、劇情與台詞全部原創，不搬原劇情節。"
+  },
+  "title_candidates": ["他只是我的光替", "前任說我是做燈的", "那束光，我自己打"],
+  "title_decision": "未定；先用候選第一個，站主可改。"
+}

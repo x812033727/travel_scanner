@@ -1,6 +1,6 @@
 // 奇聞檔案局素材池：把題庫、已製作的集數、分支上的草稿與新批次讀成同一份去重後的候選池。
 // 架構照原來如此事務所的素材池（PR x812033727/travel_scanner#1971 的 tools/video/so-thats-why/pool），
-// 輸入格式與規則改成奇聞檔案局的：一題一個 topic-check 檔、已製作的集鎖定、長片 8–13 分鐘。
+// 輸入格式與規則改成奇聞檔案局的：一題一個 topic-check 檔、已製作的集鎖定、長片至少 8 分鐘（沒有上限）。
 import { createHash } from 'node:crypto';
 import { readFileSync, readdirSync, writeFileSync, mkdirSync, existsSync, statSync } from 'node:fs';
 import path from 'node:path';
@@ -10,8 +10,9 @@ export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 export const DIR = 'docs/videos/history-curiosity/pool';
 export const BANK = 'docs/videos/history-curiosity';
 export const TOOL_DIR = 'tools/video/curio/pool';
+// 長片只有下限，沒有上限。站主 2026-11-19：「我是 8 分鐘以上而已，沒有一定要限制在 13 分鐘內」。
+// 2026-11-01 到 11-19 這裡有 LONG_MAX = 13；片長看素材決定，不硬湊，也不為了壓進上限砍素材。
 export const LONG_MIN = 8;
-export const LONG_MAX = 13;
 export const hash = (value) => createHash('sha256').update(value).digest('hex');
 const parse = (root, file) => JSON.parse(readFileSync(path.join(root, file), 'utf8'));
 const exists = (root, file) => existsSync(path.join(root, file));
@@ -63,7 +64,79 @@ export function linkStatuses(text) {
   return statuses;
 }
 
+// 題級查核檔寫下的「不能講」：給沒有篩選研究的舊題當 scope。只收有標籤的條目（不能講、不要說的話、不說滿、
+// 不能畫、不能講細節的）與〈流傳但查不到〉〈不講的事〉兩節；查核檔沒寫的就是沒寫，不從別處推想限制。
+const LIMIT_LABELS = ['不能講', '不要說的話', '不說滿', '不能畫、不能講細節的'];
+const LIMIT_SECTIONS = /^##\s*(流傳但查不到|不講的事)/;
+const plain = (text) => text.replaceAll('**', '').replace(/\s+/g, ' ').trim();
+export function topicCheckLimits(text) {
+  const lines = text.split('\n');
+  const found = [];
+  const label = new RegExp(`^- (?:\\*\\*)?(${LIMIT_LABELS.join('|')})([^：:\\n]*?)(?:\\*\\*)?[：:](?:\\*\\*)?\\s*(.*)$`);
+  for (let i = 0; i < lines.length; i += 1) {
+    const heading = LIMIT_SECTIONS.exec(lines[i]);
+    if (heading) {
+      const items = [];
+      for (let j = i + 1; j < lines.length && !/^#{1,2}\s/.test(lines[j]); j += 1) if (/^\s*- /.test(lines[j])) items.push(plain(lines[j].replace(/^\s*- /, '')));
+      if (items.length) found.push(`${heading[1]}：${items.join('；')}`);
+      continue;
+    }
+    const match = label.exec(lines[i]);
+    if (!match) continue;
+    const parts = [plain(match[3])].filter(Boolean);
+    for (let j = i + 1; j < lines.length && /^\s+\S/.test(lines[j]); j += 1) parts.push(plain(lines[j].replace(/^\s*[-*]\s*/, '')));
+    if (parts.length) found.push(`${plain(match[1] + match[2])}：${parts.join('；')}`);
+  }
+  return found;
+}
+export const SCOPE_NOT_SCOPED = '尚未界定範圍：還沒有查核檔寫下這題哪些話不能講，製作前要先查核並寫下限制（題目卡原列的待查事項不是限制）。';
+
+// 批次的 source_locator 是一整串「A1-S001：…；A1-S002：…」；拆成每個來源自己的定位，認不出的來源才用整串。
+// 段首可以是完整 ID（A1-S001）或同一題來源的短號（S001），也可以幾個並列（A3-S001/S002、S004、S005）。
+export function splitLocator(text, localIds) {
+  const ids = [...new Set(localIds)];
+  const resolve = (token) => {
+    if (ids.includes(token)) return token;
+    const matches = ids.filter((id) => id.endsWith(`-${token}`));
+    return matches.length === 1 ? matches[0] : null;
+  };
+  const idPattern = '(?:[A-Z][A-Z0-9]*-)?S\\d+';
+  const lead = new RegExp(`^\\s*(${idPattern}(?:\\s*[、/／,，]\\s*${idPattern})*)(?![\\w-])\\s*[：:]?\\s*`);
+  const segments = new Map();
+  let current = null;
+  let preamble = [];
+  for (const clause of text.split('；')) {
+    const match = lead.exec(clause);
+    const owners = match ? match[1].split(/\s*[、/／,，]\s*/).map(resolve) : [];
+    if (match && owners.every(Boolean)) {
+      current = owners;
+      for (const id of owners) segments.set(id, [...(segments.get(id) ?? []), clause.trim()]);
+    } else if (current) for (const id of current) segments.get(id).push(clause.trim());
+    else preamble.push(clause.trim());
+  }
+  preamble = preamble.filter(Boolean);
+  return new Map(ids.map((id) => [id, segments.has(id) ? [...preamble, ...segments.get(id)].join('；') : text]));
+}
+
 export const EPISODE_STATES = ['episode_dir', 'remake_dir', 'branch_draft', 'planned_w_axis', 'bank_scripted'];
+
+export const CATEGORIES = Object.freeze({
+  H: 'H-歷史懸案',
+  S: 'S-歷史人物與名場面',
+  M: 'M-奇異現象與自然',
+  F: 'F-童話神話與怪談原版',
+  L: 'L-都市傳說與消失地名',
+  G: 'G-靈異與超自然公案',
+  P: 'P-預言與末日',
+  U: 'U-外星太空與未知訊號',
+  W: 'W-商業與品牌奇聞',
+});
+export const CATEGORY_LIST = Object.freeze(Object.values(CATEGORIES));
+export const categoryCodeForAxis = (axis) => (axis === 'B' ? 'W' : axis);
+export const categoryForAxis = (axis) => {
+  const code = categoryCodeForAxis(axis);
+  return CATEGORIES[code] ?? `${code}-${axis}`;
+};
 
 function episodeDirs(root) {
   const base = path.join(root, 'docs/videos');
@@ -76,7 +149,7 @@ export function validateEditorial(row) {
   const value = row.editorial;
   if (!value || !['episode_core', 'chapter'].includes(value.role) || typeof value.payoff !== 'string' || !value.payoff.trim() || typeof value.visual !== 'string' || !value.visual.trim()) throw new Error(`${row.id}: invalid editorial role, payoff or visual`);
   const minutes = value.minutes;
-  if (!Array.isArray(minutes) || minutes.length !== 2 || minutes.some((n) => !Number.isFinite(n) || n <= 0 || n > LONG_MAX) || minutes[0] > minutes[1]) throw new Error(`${row.id}: editorial.minutes must be [lo, hi] within 0–${LONG_MAX}`);
+  if (!Array.isArray(minutes) || minutes.length !== 2 || minutes.some((n) => !Number.isFinite(n) || n <= 0) || minutes[0] > minutes[1]) throw new Error(`${row.id}: editorial.minutes must be [lo, hi], both above 0 and lo no larger than hi`);
   if (value.role === 'episode_core' && minutes[1] < LONG_MIN) throw new Error(`${row.id}: an episode core must be able to reach ${LONG_MIN} minutes; mark it a chapter instead of padding`);
 }
 
@@ -196,7 +269,8 @@ export function intake(root = ROOT) {
     const locked = !remakeUnlocks.has(id) && states.some((state) => EPISODE_STATES.includes(state));
     const refs = [];
     const check = `${BANK}/topic-checks/${id}.md`;
-    if (exists(root, check)) { bind(check); refs.push(...legacyRefs(id, check, readFileSync(path.join(root, check), 'utf8'), 'local_topic_check_file')); }
+    const checkText = exists(root, check) ? readFileSync(path.join(root, check), 'utf8') : null;
+    if (checkText !== null) { bind(check); refs.push(...legacyRefs(id, check, checkText, 'local_topic_check_file')); }
     for (const locator of made?.locators ?? []) {
       if (!locator.startsWith('docs/videos/curio-')) continue;
       for (const name of ['research.md', 'claims.md', 'brief.md']) {
@@ -208,6 +282,14 @@ export function intake(root = ROOT) {
     }
     refs.push(...(branchRefs.get(id) ?? []));
     const unique = [...new Map(refs.map((ref) => [`${ref.source_id}:${ref.locator}`, ref])).values()];
+    // scope 只放限制（不能講、不能畫）；題目卡的待查事項不是限制，另存 card_facts_to_verify。
+    const limits = checkText ? topicCheckLimits(checkText) : [];
+    const risk = topic?.risk && topic.risk !== 'none' ? `風險：${topic.risk}` : '';
+    // 已製作、重做或有分支草稿的題在集數工作目錄裡查核（claims.md、research.md），沒有題級查核檔時指向那裡，不標未界定。
+    const episodeWork = states.some((state) => state !== 'bank_scripted');
+    const scopeFields = !topic || (episodeWork && !limits.length) ? { scope: `以集數工作目錄的企劃與查核為準。${risk}` }
+      : limits.length ? { scope: [`${check} 寫下的限制：${limits.join('｜')}`, risk].filter(Boolean).join('。'), scope_source: check }
+        : { scope: [SCOPE_NOT_SCOPED, risk].filter(Boolean).join(''), scope_status: 'not_yet_scoped', ...(topic.facts_to_verify?.length ? { card_facts_to_verify: topic.facts_to_verify } : {}) };
     const fromExtra = extra.get(id);
     const axis = topic?.axis ?? fromExtra.axis;
     records.push({
@@ -215,8 +297,9 @@ export function intake(root = ROOT) {
       question: topic?.title ?? fromExtra.question,
       hook: topic?.hook ?? '',
       case_key: `legacy.${id.toLowerCase()}`,
-      answer_target: (topic?.finding ?? fromExtra.answer_target).slice(0, 800),
-      scope: topic ? [topic.facts_to_verify?.length ? `待查：${topic.facts_to_verify.join('；')}` : '', topic.risk && topic.risk !== 'none' ? `風險：${topic.risk}` : ''].filter(Boolean).join('。') || '沿用題目卡；製作前逐條查核。' : '以集數工作目錄的企劃與查核為準。',
+      // 完整保留：以前在 800 字截斷，30 題已查核舊題的紀錄因此只剩前段（2026-11-11 素材審視）。
+      answer_target: topic?.finding ?? fromExtra.answer_target,
+      ...scopeFields,
       bank_status: topic?.status ?? null,
       production: { states, locators: [...new Set(made?.locators ?? [])] },
       locked,
@@ -247,6 +330,10 @@ export function intake(root = ROOT) {
       const { id: localId, url, ...reading } = source;
       localSources.set(localId, sourceId(url, { ...reading, origin: batch.batch_id }));
     }
+    const refsFor = (localIds, locator, supports) => {
+      const split = splitLocator(locator, localIds);
+      return [...new Set(localIds)].map((id) => ({ source_id: localSources.get(id), origin: batch.batch_id, locator: split.get(id), supports }));
+    };
     for (const row of batch.candidates) {
       for (const key of ['id', 'axis', 'question', 'case_key', 'answer_target', 'scope', 'source_locator', 'premise_status']) if (!row[key]) throw new Error(`${file}: candidate ${row.id ?? '?'} missing ${key}`);
       if (!/^N\d{3,}$/.test(row.id)) throw new Error(`${row.id}: new candidates use N-prefixed ids`);
@@ -257,7 +344,7 @@ export function intake(root = ROOT) {
       const { source_ids: localIds, ...rest } = row;
       records.push({
         ...rest, origin: batch.batch_id, domain: `${row.axis} ${axes[row.axis]}`, hook: row.hook ?? '', bank_status: null, production: { states: [], locators: [] }, locked: false,
-        source_refs: [...new Set(localIds)].map((id) => ({ source_id: localSources.get(id), origin: batch.batch_id, locator: row.source_locator, supports: '支持選題前提；完整劇本仍需逐主張查核。' })),
+        source_refs: refsFor(localIds, row.source_locator, '支持選題前提；完整劇本仍需逐主張查核。'),
         eligible: row.premise_status === 'screened', notes: row.notes ?? '', local_references: [file],
       });
     }
@@ -277,10 +364,11 @@ export function intake(root = ROOT) {
         editorial: row.editorial, risk: row.risk ?? null, screened_in: batch.batch_id,
         premise_status: row.premise_status === 'screened' ? 'legacy_screened' : 'legacy_needs_check',
         eligible: row.premise_status === 'screened',
-        source_refs: [...record.source_refs, ...[...new Set(row.source_ids)].map((id) => ({ source_id: localSources.get(id), origin: batch.batch_id, locator: row.source_locator, supports: '篩選研究：支持修正後的題目前提；完整劇本仍需逐主張查核。' }))],
+        source_refs: [...record.source_refs, ...refsFor(row.source_ids, row.source_locator, '篩選研究：支持修正後的題目前提；完整劇本仍需逐主張查核。')],
         notes: [record.notes, row.notes].filter(Boolean).join(' '),
         local_references: [...record.local_references, file],
       });
+      delete record.scope_status; delete record.scope_source; delete record.card_facts_to_verify;
     }
     // 重查：上一批篩選過、被標待查（或新題待查）的題，換管道補到的來源附加上去，有給的欄位取代。
     for (const row of batch.rechecks ?? []) {
@@ -305,10 +393,11 @@ export function intake(root = ROOT) {
         rechecked_in: batch.batch_id,
         premise_status: record.origin === 'legacy' ? (screened ? 'legacy_screened' : 'legacy_needs_check') : row.premise_status,
         eligible: screened,
-        source_refs: [...record.source_refs, ...[...new Set(row.source_ids)].map((id) => ({ source_id: localSources.get(id), origin: batch.batch_id, locator: row.source_locator, supports: '重查補到的來源：支持題目前提；完整劇本仍需逐主張查核。' }))],
+        source_refs: [...record.source_refs, ...refsFor(row.source_ids, row.source_locator, '重查補到的來源：支持題目前提；完整劇本仍需逐主張查核。')],
         notes: [record.notes, row.notes].filter(Boolean).join(' '),
         local_references: [...record.local_references, file],
       });
+      if (fields.scope) { delete record.scope_status; delete record.scope_source; }
     }
   }
   if (new Set(records.map((record) => record.id)).size !== records.length) throw new Error('Raw IDs must be unique across the bank, episodes and batches');
@@ -436,7 +525,7 @@ export function assemble(input, decisions = {}, selection = null) {
     const eligible = !main.locked && !disposition && members.some((record) => record.eligible);
     const status = main.locked ? 'produced' : disposition ? (disposition.disposition === 'shorts' ? 'shorts' : 'excluded') : selectedIds.has(id) ? 'selected' : eligible ? 'held' : 'reserve';
     return {
-      ...main, id, eligible, selected: status === 'selected', pool_status: status,
+      ...main, id, category_code: categoryCodeForAxis(main.axis), category: categoryForAxis(main.axis), eligible, selected: status === 'selected', pool_status: status,
       aliases: members.map((record) => record.id).filter((member) => member !== id),
       question_variants: members.filter((record) => record.id !== id).map((record) => ({ id: record.id, question: record.question, answer_target: record.answer_target, scope: record.scope })),
       source_refs: [...new Map(members.flatMap((record) => record.source_refs).map((ref) => [`${ref.source_id}:${ref.origin}:${ref.locator}`, ref])).values()],
@@ -479,9 +568,14 @@ export function assemble(input, decisions = {}, selection = null) {
   }
   const selected = candidates.filter((row) => row.selected);
   const count = (status) => candidates.filter((row) => row.pool_status === status).length;
+  const byCategory = Object.fromEntries(CATEGORY_LIST.map((cat) => [cat, {
+    canonical: candidates.filter((row) => row.category === cat).length,
+    selected: selected.filter((row) => row.category === cat).length,
+    produced: candidates.filter((row) => row.category === cat && row.pool_status === 'produced').length,
+  }]));
   return {
     schema_version: 1, series: '奇聞檔案局', revision: selection?.revision ?? 'unversioned-draft', status: selection ? 'CURATED_CANDIDATE_POOL_NOT_PRODUCTION' : 'DRAFT_INTAKE',
-    axes: input.axes,
+    axes: input.axes, categories: CATEGORIES,
     counts: {
       raw_records: input.records.length, canonical_cores: candidates.length, alias_records: input.records.length - candidates.length,
       produced_cores: count('produced'), selected_candidates: selected.length, held_candidates: count('held'), reserve_candidates: count('reserve'), shorts_candidates: count('shorts'), excluded_cores: count('excluded'),
@@ -489,6 +583,7 @@ export function assemble(input, decisions = {}, selection = null) {
       source_urls: input.sources.length, current_research_source_urls: input.sources.filter((source) => source.readings.some((reading) => !reading.origin.startsWith('legacy:'))).length,
       selected_source_urls: new Set(selected.flatMap((row) => row.source_refs.map((ref) => ref.source_id))).size,
       new_suggestions_not_added: input.not_added?.length ?? 0, high_similarity_pending: pending.length, cross_series_pending: crossPending.length, approved_scripts: 0,
+      by_category: byCategory,
     },
     inputs: input.inputs, sources: input.sources, candidates, raw_records: input.records,
     dedup: { aliases, merges: links, distinct: decisions.distinct ?? [], dispositions: decisions.dispositions ?? [], cross_series: decisions.cross_series ?? [], potential_pairs: pairs, required_pending: pending, cross_series_pairs: cross, cross_series_pending: crossPending, method: 'exact normalized questions + authored core-answer merges + lexical candidate pairs (title, finding, case key) reviewed by an editor; cross-series lexical pairs against the so-thats-why pool; no claim of exhaustive semantic equivalence' },
@@ -505,17 +600,121 @@ export function loadDraft(root = ROOT) {
   return { input, decisions, draft: assemble(input, decisions) };
 }
 
+// 需求四問與併分（站主 2026-11-17）：題案與單集題共用；render.mjs 轉出同一組名稱。五項平均乘 5 加需求再除以 6。
+export const DEMAND_QUESTIONS = Object.freeze({ east_asia: '台灣或東亞觀眾本來就認得', prophecy_ghost: '預言末日或鬼魂死後', ancient_alien: '古文明或外星', famous: '主角全世界叫得出名字' });
+export const DEMAND_FLOOR = 1;
+export const DEMAND_STEP = 2.25;
+// 商業與品牌類（W）用另一套四問（站主 2026-11-17：品牌故事與黑猫來的題都歸奇聞）：這一類的需求是從黑猫研究院的觀看數歸納的，
+// 歷史懸案那套（東亞、預言鬼魂、古文明外星、名字認得）評不出它們的高下。其他八類不變。
+export const DEMAND_QUESTIONS_W = Object.freeze({ have: '觀眾手上或家裡就有', why: '能問出反常的為什麼', standard: '規格、標準或誰在收錢', lose_or_jp: '大公司輸掉或日本品牌' });
+export const demandQuestionsFor = (category) => (String(category ?? '').startsWith('W') ? DEMAND_QUESTIONS_W : DEMAND_QUESTIONS);
+const sameKeys = (answers, questions) => Boolean(answers) && Object.keys(answers).length === Object.keys(questions).length && Object.keys(questions).every((key) => typeof answers[key] === 'boolean');
+/** The question set these answers were given to, or null when they fit neither. */
+export const demandQuestionsOf = (answers) => [DEMAND_QUESTIONS, DEMAND_QUESTIONS_W].find((questions) => sameKeys(answers, questions)) ?? null;
+export const demandScore = (answers) => DEMAND_FLOOR + DEMAND_STEP * Object.values(answers ?? {}).filter((value) => value === true).length;
+export const blendedScore = (base, demand) => (base * 5 + demand) / 6;
+
 export function buildPool(root = ROOT) {
   const { input, decisions } = loadDraft(root);
   const file = `${DIR}/selection.json`;
   const selection = parse(root, file);
   if (!selection.revision || !selection.reviewed_on) throw new Error('Selection needs a reviewed revision');
   input.inputs.push({ file, sha256: hash(readFileSync(path.join(root, file))) });
-  return assemble(input, decisions, selection);
+  const audience = readAudience(root, input);
+  const pool = assemble(input, decisions, selection);
+  for (const [id, score] of audience) {
+    const row = pool.candidates.find((candidate) => candidate.id === id);
+    if (!row?.selected || row.editorial?.role !== 'episode_core') throw new Error(`${id}: an audience score belongs to a selected single-episode core`);
+    row.audience = score;
+  }
+  // 單集題的需求分（reviews/demand-*.json 的 candidates）：沒有觀眾分的題只帶 demand；有觀眾分的把五項平均留在 base、score 改成併分。
+  const demand = readDemand(root, input);
+  for (const [id, entry] of demand) {
+    const row = pool.candidates.find((candidate) => candidate.id === id);
+    if (!row?.selected || row.editorial?.role !== 'episode_core') throw new Error(`${id}: a demand score belongs to a selected single-episode core`);
+    const questions = demandQuestionsFor(row.category);
+    if (!sameKeys(entry.answers, questions)) throw new Error(`${id}: a ${row.category} core answers ${Object.keys(questions).join(', ')}`);
+    row.demand = entry;
+    if (row.audience) row.audience = { ...row.audience, base: row.audience.score, score: Math.round(blendedScore(row.audience.score, entry.demand) * 100) / 100, demand: entry.demand };
+  }
+  if (demand.size) {
+    const scored = pool.candidates.filter((row) => row.audience).sort((a, b) => b.audience.score - a.audience.score || a.audience.rank - b.audience.rank);
+    scored.forEach((row, index) => { row.audience = { ...row.audience, rank: index + 1, of: scored.length }; });
+  }
+  return pool;
+}
+
+function readDemand(root, input) {
+  const directory = path.join(root, DIR, 'reviews');
+  const scores = new Map();
+  for (const name of existsSync(directory) ? readdirSync(directory).filter((file) => /^demand-[\w-]+\.json$/.test(file)).sort() : []) {
+    const file = `${DIR}/reviews/${name}`;
+    const record = parse(root, file);
+    input.inputs.push({ file, sha256: hash(readFileSync(path.join(root, file))) });
+    for (const row of record.candidates ?? []) {
+      const { id, answers, demand, reason } = row;
+      if (!demandQuestionsOf(answers)) throw new Error(`${file}: ${id} needs true or false for ${Object.keys(DEMAND_QUESTIONS).join(', ')} (or ${Object.keys(DEMAND_QUESTIONS_W).join(', ')} for a W core)`);
+      if (demand !== demandScore(answers)) throw new Error(`${file}: ${id} demand must be ${demandScore(answers)} for these answers`);
+      scores.set(id, { answers, demand, reason: reason ?? '', reviewed_on: record.reviewed_on, review: `reviews/${name}` });
+    }
+  }
+  return scores;
+}
+
+// 獨立觀眾評分（站主 2026-11-14「把分數寫回題目池」）：reviews/audience-*.json 的 candidates 掛到入選的單集題上，
+// 檔名排序較後的紀錄覆蓋較早的。題案（themes.json）的分數寫在題案自己身上，這裡只處理單集題。
+function readAudience(root, input) {
+  const directory = path.join(root, DIR, 'reviews');
+  const scores = new Map();
+  for (const name of existsSync(directory) ? readdirSync(directory).filter((file) => /^audience-[\w-]+\.json$/.test(file)).sort() : []) {
+    const file = `${DIR}/reviews/${name}`;
+    const record = parse(root, file);
+    input.inputs.push({ file, sha256: hash(readFileSync(path.join(root, file))) });
+    for (const row of record.candidates ?? []) {
+      const { id, rank, of, score, click, hook, surprise, payoff, share, comment } = row;
+      if (![score, click, hook, surprise, payoff, share].every((value) => Number.isFinite(value) && value >= 1 && value <= 10) || !Number.isInteger(rank) || rank < 1 || rank > of || !comment) throw new Error(`${file}: ${id} needs score, five dimensions, rank and comment`);
+      scores.set(id, { score, rank, of, click, hook, surprise, payoff, share, comment, reviewed_on: record.reviewed_on, review: `reviews/${name}` });
+    }
+  }
+  return scores;
+}
+
+// pool.json would pass GitHub's 50 MB warning as one file (100 MB is refused), so the two bulky
+// arrays live in their own files and pool.json keeps a pointer where each one was. Reading puts
+// them back in place, so every caller still sees one pool object with the same key order.
+export const POOL_PARTS = { sources: 'pool-sources.json', raw_records: 'pool-records.json' };
+
+export function splitPool(pool) {
+  const main = { ...pool };
+  const parts = {};
+  for (const [key, file] of Object.entries(POOL_PARTS)) {
+    parts[file] = { revision: pool.revision, [key]: pool[key] };
+    main[key] = { file, count: pool[key].length };
+  }
+  return { main, parts };
+}
+
+export function readSavedPool(root = ROOT) {
+  const saved = parse(root, `${DIR}/pool.json`);
+  for (const [key, file] of Object.entries(POOL_PARTS)) {
+    if (Array.isArray(saved[key])) continue; // a pool written before the split
+    if (saved[key]?.file !== file) throw new Error(`pool.json: ${key} must point at ${file}`);
+    const part = parse(root, `${DIR}/${file}`);
+    if (part.revision !== saved.revision || !Array.isArray(part[key]) || part[key].length !== saved[key].count) throw new Error(`${file}: does not belong to this pool.json; run build`);
+    saved[key] = part[key];
+  }
+  return saved;
+}
+
+export function writePool(root, pool) {
+  const { main, parts } = splitPool(pool);
+  writeJson(root, 'pool.json', main);
+  for (const [file, value] of Object.entries(parts)) writeJson(root, file, value);
+  return ['pool.json', ...Object.keys(parts)];
 }
 
 export function readPool(root = ROOT) {
-  const saved = parse(root, `${DIR}/pool.json`);
+  const saved = readSavedPool(root);
   const current = buildPool(root);
   if (JSON.stringify(saved) !== JSON.stringify(current)) throw new Error('Pool drift: the topic bank, episode folders, source files or decisions changed; re-review and run build');
   return saved;

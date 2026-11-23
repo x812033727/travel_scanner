@@ -1,0 +1,2459 @@
+{
+  "reviewed_on": "2026-11-12",
+  "round": 7,
+  "previous_round": "docs/videos/so-thats-why/pool/reviews/material-20261111-round6.json",
+  "owner_instruction": [
+    "繼續擴充"
+  ],
+  "bar": "同前六輪：片長＝（不重複事實數×140 字＋700 字開場收尾）÷每分鐘 270 字；可成題要有至少 8.5 分鐘素材與兩個改變結論的轉折；只算有可讀紀錄的外部來源；舊核心已有的事實不重計。估時是紙上估算，不是試讀。",
+  "method": "兩條補來源線接其餘八組後備長題。作者 F9 接 G52、G43、G42、G30，作者 F10 接 G08、G35、G01、G38；所有來源都以 curl 存本機全文。兩位沒參與撰寫的覆核者（V12 覆核 F9、V13 覆核 F10）核對快取雜湊、重抓來源、逐核心判定、重列最終核心並重算分鐘；覆核結論優先。",
+  "policies": {
+    "reserve_cores": "留後備的題（G42、G35、G01、G38）新補的核心經逐核心覆核後仍入池備用，題案只更新素材審視欄。",
+    "G38_direction": "G38 原題已由企劃 P29 以 TLS 講完；覆核 V13 建議留後備並改題為「訊息說是端對端加密，轉信的伺服器還知道什麼？」，不併入 P29、不淘汰；本輪沒有改企劃。",
+    "preprint": "G52 抽絲章的量測只見於 arXiv:2604.20580（2026-11-12 仍只有 v1，未經同儕審查），片中要標明；轉折的結論改由已刊於 Phys. Rev. X 的拓樸分類研究承擔。",
+    "single_author_evidence": "G42 的第二個轉折全出自同一位作者（Lstiburek 的 1992 年個案與兩份 BSC 文摘），原文的成因是假說，沒有修復後的驗證，所以留後備。",
+    "duplicate_sources": "與池中舊來源同一網址的閱讀自動掛回原來源 id（OpenStax University Physics §9.3 等三筆）。"
+  },
+  "counts": {
+    "research_proposals": 54,
+    "research_proposals_by_author": {
+      "F9": 25,
+      "F10": 29
+    },
+    "research_sources_read": 45,
+    "cores_added": 54,
+    "cores_rejected": 0,
+    "verdicts": {
+      "ADOPT_WITH_CHANGES": 37,
+      "ADOPT": 17
+    },
+    "adopted_but_unused": 26,
+    "not_added_records": 17,
+    "targets_examined": 8,
+    "targets_ready": [
+      "G52",
+      "G43",
+      "G30",
+      "G08"
+    ],
+    "targets_reserve": [
+      "G42",
+      "G35",
+      "G01",
+      "G38"
+    ],
+    "ready_long_themes_before_after": [
+      61,
+      65
+    ],
+    "pool_selected_before_after": [
+      3784,
+      3838
+    ],
+    "raw_records_before_after": [
+      4174,
+      4228
+    ],
+    "source_urls_before_after": [
+      5090,
+      5129
+    ],
+    "not_added_before_after": [
+      2354,
+      2371
+    ],
+    "themes_before_after": [
+      609,
+      609
+    ],
+    "distinct_decisions_added": 66
+  },
+  "core_id_mapping": {
+    "F9-001": "P57-001",
+    "F9-002": "P57-002",
+    "F9-003": "P57-003",
+    "F9-004": "P57-004",
+    "F9-005": "P57-005",
+    "F9-006": "P57-006",
+    "F9-007": "P57-007",
+    "F9-008": "H57-001",
+    "F9-009": "H57-002",
+    "F9-010": "H57-003",
+    "F9-011": "H57-004",
+    "F9-012": "H57-005",
+    "F9-013": "H57-006",
+    "F9-014": "H57-007",
+    "F9-015": "H57-008",
+    "F9-016": "H57-009",
+    "F9-017": "H57-010",
+    "F9-018": "H57-011",
+    "F9-019": "H57-012",
+    "F9-020": "H57-013",
+    "F9-021": "P57-008",
+    "F9-022": "P57-009",
+    "F9-023": "P57-010",
+    "F9-024": "P57-011",
+    "F9-025": "P57-012",
+    "F10-001": "P57-013",
+    "F10-002": "P57-014",
+    "F10-003": "P57-015",
+    "F10-004": "P57-016",
+    "F10-005": "P57-017",
+    "F10-006": "P57-018",
+    "F10-007": "P57-019",
+    "F10-008": "P57-020",
+    "F10-009": "P57-021",
+    "F10-010": "S57-001",
+    "F10-011": "S57-002",
+    "F10-012": "S57-003",
+    "F10-013": "S57-004",
+    "F10-014": "S57-005",
+    "F10-015": "S57-006",
+    "F10-016": "T57-001",
+    "F10-017": "T57-002",
+    "F10-018": "T57-003",
+    "F10-019": "T57-004",
+    "F10-020": "T57-005",
+    "F10-021": "T57-006",
+    "F10-022": "T57-007",
+    "F10-023": "T57-008",
+    "F10-024": "T57-009",
+    "F10-025": "P57-022",
+    "F10-026": "P57-023",
+    "F10-027": "P57-024",
+    "F10-028": "P57-025",
+    "F10-029": "P57-026"
+  },
+  "source_id_mapping": {
+    "F9-S001": [
+      "P57-S001"
+    ],
+    "F9-S002": [
+      "P57-S002"
+    ],
+    "F9-S003": [
+      "P57-S003"
+    ],
+    "F9-S004": [
+      "P57-S004"
+    ],
+    "F9-S005": [
+      "P57-S005"
+    ],
+    "F9-S006": [
+      "P57-S006"
+    ],
+    "F9-S007": [
+      "H57-S001"
+    ],
+    "F9-S008": [
+      "H57-S002"
+    ],
+    "F9-S009": [
+      "H57-S003"
+    ],
+    "F9-S010": [
+      "H57-S004"
+    ],
+    "F9-S011": [
+      "H57-S005"
+    ],
+    "F9-S012": [
+      "H57-S006"
+    ],
+    "F9-S013": [
+      "H57-S007"
+    ],
+    "F9-S014": [
+      "H57-S008"
+    ],
+    "F9-S015": [
+      "H57-S009"
+    ],
+    "F9-S016": [
+      "H57-S010"
+    ],
+    "F9-S017": [
+      "P57-S007"
+    ],
+    "F9-S018": [
+      "P57-S008"
+    ],
+    "F9-S019": [
+      "P57-S009"
+    ],
+    "F9-S020": [
+      "P57-S010"
+    ],
+    "F9-S021": [
+      "P57-S011"
+    ],
+    "F10-S001": [
+      "P57-S012"
+    ],
+    "F10-S002": [
+      "P57-S013"
+    ],
+    "F10-S003": [
+      "P57-S014"
+    ],
+    "F10-S004": [
+      "P57-S015"
+    ],
+    "F10-S005": [
+      "P57-S016"
+    ],
+    "F10-S006": [
+      "P57-S017"
+    ],
+    "F10-S007": [
+      "S57-S001"
+    ],
+    "F10-S008": [
+      "S57-S002"
+    ],
+    "F10-S009": [
+      "T57-S001"
+    ],
+    "F10-S010": [
+      "T57-S002"
+    ],
+    "F10-S011": [
+      "T57-S003"
+    ],
+    "F10-S012": [
+      "T57-S004"
+    ],
+    "F10-S013": [
+      "T57-S005"
+    ],
+    "F10-S014": [
+      "T57-S006"
+    ],
+    "F10-S015": [
+      "T57-S007"
+    ],
+    "F10-S016": [
+      "T57-S008"
+    ],
+    "F10-S017": [
+      "T57-S009"
+    ],
+    "F10-S018": [
+      "T57-S010"
+    ],
+    "F10-S019": [
+      "T57-S011"
+    ],
+    "F10-S020": [
+      "P57-S018"
+    ],
+    "F10-S021": [
+      "P57-S019"
+    ],
+    "F10-S022": [
+      "P57-S020"
+    ],
+    "F10-S023": [
+      "P57-S021"
+    ],
+    "F10-S024": [
+      "P57-S022"
+    ]
+  },
+  "not_added_mapping": {
+    "F9-NA001": "P57-NA001",
+    "F9-NA002": "P57-NA002",
+    "F9-NA003": "P57-NA003",
+    "F9-NA004": "P57-NA004",
+    "F9-NA005": "P57-NA005",
+    "F9-NA006": "P57-NA006",
+    "F9-NA007": "P57-NA007",
+    "F9-NA008": "P57-NA008",
+    "F10-NA001": "P57-NA009",
+    "F10-NA002": "P57-NA010",
+    "F10-NA003": "P57-NA011",
+    "F10-NA004": "P57-NA012",
+    "F10-NA005": "P57-NA013",
+    "F10-NA006": "S57-NA001",
+    "F10-NA007": "T57-NA001",
+    "F10-NA008": "P57-NA014",
+    "F10-NA009": "P57-NA015"
+  },
+  "adopted_but_unused": [
+    "H57-008",
+    "H57-009",
+    "H57-010",
+    "H57-011",
+    "H57-012",
+    "H57-013",
+    "S57-001",
+    "S57-002",
+    "S57-003",
+    "S57-004",
+    "S57-005",
+    "S57-006",
+    "T57-001",
+    "T57-002",
+    "T57-003",
+    "T57-004",
+    "T57-005",
+    "T57-006",
+    "T57-007",
+    "T57-008",
+    "T57-009",
+    "P57-022",
+    "P57-023",
+    "P57-024",
+    "P57-025",
+    "P57-026"
+  ],
+  "source_fixes": [
+    {
+      "proposal_source": "F9-S001",
+      "change": "limitations 補：Fig.6 的均勻拉伸用的是另一塊布（20×30 針、線徑 200 µm、鋼桿抹矽油），與 Fig.1–2 的 51×51 針、80 µm 不同；模型曲線以有效拉伸模數為唯一擬合參數，加載與卸載各一個值。",
+      "why": "作者把兩塊布寫成同一塊。",
+      "requested_by": "V12"
+    },
+    {
+      "proposal_source": "F9-S002",
+      "change": "reading_scope 的機台改為「Taitexma 與 STOLL CMS 530 HP 工業針織機」；limitations 補：「of order ten times softer」的主詞是連接紗段；arXiv 紀錄沒有 journal_ref，Nature Communications 2024 的刊本資訊未由本覆核確認。",
+      "why": "作者寫成手工機，並把十倍用在兩種布之間。",
+      "requested_by": "V12"
+    },
+    {
+      "proposal_source": "F9-S004",
+      "change": "version 補：2026-11-12 開 arxiv.org/abs/2604.20580，2026-04-22 送出，只有 v1，無 journal reference。limitations 補：門檻 2.0±0.8 是作者以停下後張力的平均定義的；附錄 E 有高張力的例外；附錄 D、E、F 本覆核已讀。",
+      "why": "發表狀態查核與作者未讀的附錄。",
+      "requested_by": "V12"
+    },
+    {
+      "proposal_source": "F9-S005",
+      "change": "version 改為：arXiv:2506.22369v1；arXiv 紀錄 journal_ref 為 Phys. Rev. X 16, 031006 (2026)，doi:10.1103/g565-3dyn（刊本未開）。",
+      "why": "作者只寫「PRX 2026」；由 arXiv API 確認卷期。",
+      "requested_by": "V12"
+    },
+    {
+      "proposal_source": "F9-S006",
+      "change": "version 補：arXiv API 顯示 v2（2024-10-22），沒有 journal_ref，按預印本處理。",
+      "why": "發表狀態查核。",
+      "requested_by": "V12"
+    },
+    {
+      "proposal_source": "F9-S003",
+      "change": "limitations 補：作者稱刊於 Extreme Mechanics Letters 2025，本覆核查 arXiv API 時回 503，未能確認。",
+      "why": "刊本資訊未核實。",
+      "requested_by": "V12"
+    },
+    {
+      "proposal_source": "F9-S012",
+      "change": "limitations 補：TL-93-166 的 125 Hz 與 3,150 Hz 低谷報告都沒有說明成因；該試體空腔已含 90 mm 礦纖棉。",
+      "why": "防止片中冠上成因，或與 CBD-239 的「約 33、加棉多 3」併成同一面牆。",
+      "requested_by": "V12"
+    },
+    {
+      "proposal_source": "F9-S011",
+      "change": "read_via 補：pdftotext 預設排版把兩欄交錯，需以 -raw 重轉才讀得通；limitations 補：STC 49 是正文「比裸牆少一點」加 Figure 3 標註。",
+      "why": "作者快取的 .txt 欄序錯亂，逐句核對要重轉。",
+      "requested_by": "V12"
+    },
+    {
+      "proposal_source": "F9-S014",
+      "change": "limitations 補：作者 Joseph Lstiburek 與 F9-S016 的個案論文是同一人；「linked with moldy buildings」引的是他自己的著作（Lstiburek 1993、2002）。",
+      "why": "三個核心屬同一來源群，不是獨立佐證。",
+      "requested_by": "V12"
+    },
+    {
+      "proposal_source": "F9-S015",
+      "change": "同 F9-S014：作者 Joseph Lstiburek；黴菌界限寫的是相對濕度 70%。",
+      "why": "同上；與 F9-S013 的 80% 不同。",
+      "requested_by": "V12"
+    },
+    {
+      "proposal_source": "F9-S016",
+      "change": "title 補作者：J.W. Lstiburek（Building Science Corporation），Thermal Performance of the Exterior Envelopes of Buildings V（1992）；limitations 補：兩個個案的成因是作者的推斷（We may assume、Our hypothesis），沒有改善後的驗證；文中的黴菌界限寫 80%。",
+      "why": "作者把推斷寫成定論，且沒有指出與 BSC 文摘同一作者。",
+      "requested_by": "V12"
+    },
+    {
+      "proposal_source": "F9-S013",
+      "change": "limitations 補：Figure 2 的數字是作者設定的典型日平均條件；本段沒有「寒帶做法搬到濕熱氣候就錯了」這句話。",
+      "why": "作者把這句接在本來源的敘述後面。",
+      "requested_by": "V12"
+    },
+    {
+      "proposal_source": "F9-S017",
+      "change": "limitations 補：PET 的 Tg 約 84–85°C（20°C/min、第二次升溫）與池中 SRC（P56-006）的評估值 342 K 不同，原文未討論；樣品 14 是「Frozen food packaging」。",
+      "why": "防止兩份數字被並成一組。",
+      "requested_by": "V12"
+    },
+    {
+      "proposal_source": "F9-S018",
+      "change": "summary 補：配方為 PVC 100、DOP 40、硬脂酸鈣 6、硬脂酸鋅 5 phr；Tg 取自未老化曲線的中點，±1 為三次量測的最大差；「久放變硬」原文是 also the result of，並引文獻 43。",
+      "why": "作者的讀法兩處不準。",
+      "requested_by": "V12"
+    },
+    {
+      "proposal_source": "F9-S019",
+      "change": "summary 改：合格的自製塑化劑膜 Tg 為 −27 到 −30°C（Table 3；另有 −25°C 的 PD_13 部分相容）；DEHT 為對苯二甲酸二（2-乙基己）酯；PD_30 加 50 phr 時出油的是擠出壓成的成型片，溶液澆鑄的膜是乾爽透明的。",
+      "why": "作者寫成 −27 到 −28°C，並未註明 DEHT 不是鄰苯二甲酸酯。",
+      "requested_by": "V12"
+    },
+    {
+      "proposal_source": "F9-S021",
+      "change": "limitations 補：註 3 的例子是「一個十倍程，例如從 10³ 到 10⁴ 秒」；Figure 6 為 Eg＝100、Er＝10、τ＝1 的模型曲線。",
+      "why": "作者在答案裡自己舉了 10 秒到 1,000 秒。",
+      "requested_by": "V12"
+    },
+    {
+      "proposal_source": "F10-S006",
+      "change": "不另立來源；併入池中 SRC-aebc97f067673f86 當新增的一次閱讀（本輪整節重讀、有本機全文快取）。P57-021 改掛 SRC-aebc97f067673f86。",
+      "why": "網址逐字相同：https://openstax.org/books/college-physics-2e/pages/9-3-stability。",
+      "requested_by": "V13"
+    },
+    {
+      "proposal_source": "F10-S021",
+      "change": "不另立來源；併入池中 SRC-19346cef2dc01be3 當新增的一次閱讀。P57-023、P57-024 改掛 SRC-19346cef2dc01be3。",
+      "why": "網址逐字相同：https://openstax.org/books/chemistry-2e/pages/11-3-solubility。",
+      "requested_by": "V13"
+    },
+    {
+      "proposal_source": "F10-S022",
+      "change": "不另立來源；併入池中 SRC-22bb4f194a5b32a9 當新增的一次閱讀。P57-025 改掛 SRC-22bb4f194a5b32a9。",
+      "why": "網址逐字相同：https://openstax.org/books/chemistry-2e/pages/11-2-electrolytes。",
+      "requested_by": "V13"
+    },
+    {
+      "proposal_source": "F10-S003",
+      "change": "limitations 補：位元組雜湊每次抓取不同（govinfo 頁面），去標籤後全文相同；規則依 88 FR 28403「is stayed and will not take effect」。locator 的 ASTM F2057-19 §7.2 是「空櫃、一次開一個抽屜、50±2 磅」。",
+      "why": "覆核重抓的雜湊是 233473837578a33f，作者記 d00717df128b2f81。",
+      "requested_by": "V13"
+    },
+    {
+      "proposal_source": "F10-S004",
+      "change": "limitations 補：位元組雜湊每次抓取不同（覆核 5b18c30a95dd1336），去標籤後全文相同。",
+      "why": "同上。",
+      "requested_by": "V13"
+    },
+    {
+      "proposal_source": "F10-S007",
+      "change": "summary 與 locator 補：表 3、表 4 的「13 sites」是 11 個地點的 13 筆；有 DGPS 的是 8 個地點的 9 筆。",
+      "why": "Moose River 與 Missouri River at Nebraska City 各出現兩次。",
+      "requested_by": "V13"
+    },
+    {
+      "proposal_source": "F10-S008",
+      "change": "publisher／version 寫明是 SIR 2010-5091 研討會論文集裡的一篇（Holmes），不是獨立的 USGS 報告或期刊論文。",
+      "why": "頁尾：Published online in 2010 as part of U.S. Geological Survey Scientific Investigations Report 2010-5091。",
+      "requested_by": "V13"
+    },
+    {
+      "proposal_source": "F10-S009 至 F10-S014、F10-S016 至 F10-S019、F10-S024",
+      "change": "author_cache 註明：signal.org 與 researchers.mq.edu.au 的頁面位元組雜湊每次抓取不同，去標籤後文字相同；以文字檔為準。",
+      "why": "十一頁重抓後大小相同、雜湊不同，去標籤全文逐字相同。",
+      "requested_by": "V13"
+    },
+    {
+      "proposal_source": "F10-S023",
+      "change": "limitations 補：頁面的用量「600 cc water (little more than 1/2 Gallon)」自相矛盾，不可引用比例。",
+      "why": "半加侖約 1.9 公升。",
+      "requested_by": "V13"
+    },
+    {
+      "proposal_source": "F10-S020",
+      "change": "limitations 補：DSC 的對象是作者另購的三水合醋酸鈉試藥，不是市售暖暖包；市售品「bigger than a hand warmer」。",
+      "why": "避免把兩段量測寫成同一件東西。",
+      "requested_by": "V13"
+    }
+  ],
+  "open_data_issues": [
+    {
+      "id": "P164-legacy-source",
+      "core": "P164",
+      "finding": "P164（底座做寬為什麼不容易翻倒）掛著 SRC-46da948bf0b947d3（arXiv 2112.10615v2，蟑螂穿越障礙），來自把 A12005 併為 P164 問法變體的編輯合併；它只支持 A12005 的窄主張，不支持 P164 的答案。",
+      "action": "本輪不改；G08 的 P164 只引 SRC-aebc97f067673f86（OpenStax §9.3）。",
+      "status": "open"
+    },
+    {
+      "id": "P024-legacy-source",
+      "core": "P024",
+      "finding": "P024（力偶）掛著 SRC-7f5e286c191e97f0（University Physics 第 2 冊 §5.7 電偶極）與 SRC-a92f2cdd629d4cb5（同書 §11.5 電流線圈），來自 E2016、E2116 兩個問法變體的合併；它們支持變體、不支持 P024 的力學答案（該掛的是 SRC-5b24a7651af4cd0a §9.2）。themes.json 的 G08 missing 說「三頁」，實際是這兩頁加 P164 的一頁。",
+      "action": "本輪不改；G08 最終大綱已不用 P024。",
+      "status": "open"
+    }
+  ],
+  "batches": [
+    "batches/wave57-physics.json",
+    "batches/wave57-human.json",
+    "batches/wave57-tech.json",
+    "batches/wave57-earth.json"
+  ],
+  "checkpoint": {
+    "file": "checkpoint-3784.json",
+    "note": "第七輪開工前的素材池快照（3,784 個入選、4,174 筆原題）。"
+  },
+  "core_reviews": [
+    {
+      "proposal_id": "P57-001",
+      "reviewer": "V12",
+      "question": "圍巾一拉就長一大截，裡面那條線到底伸長了多少？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f9src/poincloux2018_prx_arxiv.txt 前言第 2 段、II 節（模型假設、幾何帕松比）、式 (5) 後與 Fig.6 圖說、Materials and Methods；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同（arXiv:1801.08355v2）",
+      "reopen_result": "「100% 量級／幾個百分點」「51×51、80 µm、約 25 m」「忽略拉伸與扭轉、只算彎曲、線長守恆」「ν＝0.46、像不可壓縮彈性體、有效面積守恆」都在原文。錯一處：Fig.6 掛在近乎無摩擦桿上的均勻拉伸，用的是另一塊布（20×30 針、同種尼龍但線徑 200 µm），不是 51×51、80 µm 那一塊；而且模型曲線只有一個擬合參數（有效拉伸模數），加載與卸載各擬合一個值，預測的急遽變硬出現在比實驗更大的變形。",
+      "changes_applied": {
+        "answer_target": "幾乎沒有。研究者用一條直徑 80 微米、長約 25 公尺的尼龍單絲，以針織機織成 51×51 針的平針布，反覆拉伸並追蹤每一針的位置。他們在前言指出，拉一條圍巾很容易就有 100% 量級的變形，同樣的力加在紗線上只會讓它變形幾個百分點。他們的模型不算紗線被拉長或扭轉，只算線被彎曲所存的能量，加上「整條線的總長不變」和「針目的套法不變」這兩個約束，算出的位移場與拉力曲線和量測相符（力的大小靠一個擬合參數對上）。由量測得到的幾何帕松比是 0.46：布被拉長時橫向跟著縮，作者說這塊滿是空洞的布表現得像面積守恆的不可壓縮彈性體。他們另外用一塊 20×30 針、線徑 200 微米的布掛在抹了矽油、近乎無摩擦的鋼桿上，讓它近似均勻變形：這時同一個式子可以一路對到 100% 以上的變形，但模型預測的急遽變硬出現在比實驗更大的變形。",
+        "scope": "尼龍單絲的鬆針織模型布（線徑遠小於針目），單一平針組織；棉毛紗有毛羽與可壓縮性，不在模型內，作者自己說很緊的針織布不適用。「100% 與幾個百分點」是作者前言的量級說法，不是同一樣品的對照量測。0.46 來自 51×51、80 µm 那塊布；「追到 100% 以上」來自另一塊 20×30、200 µm 的布，片中要分開說。讀的是 arXiv v2（刊本 Phys. Rev. X 8, 021075 未開）。"
+      },
+      "duplicate_of": null,
+      "reason": "數字都在原文，但作者把兩塊不同的布寫成同一塊（「把布掛在…」），並把靠擬合參數對上的曲線寫成「算得出…拉力」。改字後收。X5002 已有「不是同等拉長線本身」，本核心只算 1.5 條（模型布規格與只算彎曲＋線長守恆 1；帕松比 0.46 與面積守恆 0.5；另一塊布追到 100% 屬細節不另計），不是作者的 2 條。",
+      "overlaps": [
+        {
+          "existing_id": "X5002",
+          "note": "X5002 的前半句（拉布先改變線圈彎曲，並非同等拉長線）是同一結論；本核心補樣品、模型假設與帕松比，不重算結論。"
+        },
+        {
+          "existing_id": "X5003",
+          "note": "回程功約一半、摩擦遲滯屬 X5003，本核心不寫（作者已移到 F9-NA001）。"
+        }
+      ],
+      "reviewer_facts": 1.5,
+      "final_id": "P57-001",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-002",
+      "reviewer": "V12",
+      "question": "同一條線，只換正針反針的排法，布會差多少？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f9src/singal2024_arxiv.txt「Topology and Elasticity」到「Microstructure and Modulus」全段、Fig.2、Fig.3 圖說與 Methods 的紗線與機台段；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同（arXiv:2302.13467）",
+      "reopen_result": "四種布、x 方向羅紋最軟而平針最硬、y 方向起伏針與桂花針較軟、八種紗的相對各向異性大致一致、Y_even∼180B/[λ³(1−δ)]、Y_odd∼12B/[λ³(1−δ)]、高應力時紗被拉直而急遽變硬：都在原文。但「可以軟到十倍」原文的主詞是「連接紗段」（odd connecting yarn segments can be of order ten times softer compared to even connecting yarn segments），不是某個方向或某兩種布；作者在題案轉折裡寫成「羅紋對平針」，原文沒有這個比值。非線性段原文說「quite similar」，不是「一樣」。樣品是 Taitexma 與 STOLL 工業針織機織的，不是「手工機」。模型估的模數原文自己說比實測「systematically slightly stiffer」。",
+      "changes_applied": {
+        "answer_target": "差很多，而且差在哪個方向可以預測。研究者用同樣的紗在針織機上各織四種布：全正針的平針、一排正一排反的起伏針、一行正一行反的羅紋、正反交錯成棋盤的桂花針，做單軸拉伸並配合模擬。小拉力時四種布都是線性的，但軟硬差很多：橫向拉，羅紋遠比其他三種軟、平針最硬；縱向拉，起伏針和桂花針比較軟。他們的解釋落在相鄰兩針之間那一小段連接紗：兩針同向（正正或反反）時，這段紗左右對稱，拉開它得改變它的曲率，剛度的量級約 180B/λ³（B 是紗的彎曲剛度，λ 是這段的長度）；一正一反相鄰時，這段紗是反對稱的，像一根力臂可以直接轉動，剛度約 12B/λ³。所以作者估計，反對稱的連接紗段可以比對稱的軟到十倍的量級；含有這種紗段的方向就比較好拉。換八種粗細與纖維不同的紗，每種布的相對各向異性大致一樣。拉到很大時紗被拉直，四種布的急遽變硬彼此相似。",
+        "scope": "壓克力紗與絲光棉紗（另有六種紗只用於各向異性比較）的工業針織機樣品，每塊約 31×31 針。「十倍量級」是連接紗段線性剛度的模型估計（式中另有幾何因子 1−δ），不是某兩種布或某個方向的實測比值，片中只能說「模型估計這一小段紗可以軟到十倍的量級」，不得說「羅紋比平針軟十倍」。模型估出的模數原文說比實測略硬。讀的是 arXiv 版，補充資料的表未讀，刊本（Nature Communications 2024）未開。"
+      },
+      "duplicate_of": null,
+      "reason": "把原文的主詞改回連接紗段；刪掉作者自己的結語「這個性質寫在針法裡，不在紗裡」（原文只說相對各向異性與纖維無關）。X5002 後半句已有「正反針排列可改變方向伸展性」，四種布誰軟誰硬只算 0.5 條，連接紗段奇偶對稱的機制與量級 1 條，共 1.5 條（作者算 2）。",
+      "overlaps": [
+        {
+          "existing_id": "X5002",
+          "note": "X5002 引的是同一篇（SRC-b2aeec59fbfd88ba），已有「排列改變方向伸展性」；本核心補方向別的結果與機制。"
+        },
+        {
+          "existing_id": "P49-002",
+          "note": "緊密針織先硬後軟是另一題（Gonzalez 等），不重疊；本輪未讀其來源，不放進題案。"
+        }
+      ],
+      "reviewer_facts": 1.5,
+      "final_id": "P57-002",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-003",
+      "reviewer": "V12",
+      "question": "平針布到底往哪邊捲：左右捲還是上下捲？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f9src/curl2410.txt 2 節、3.1、3.2、5 節、7 節；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同（arXiv:2410.13307v1）",
+      "reopen_result": "棉紗、N_c＝5–30、N_w＝5–90、370 g 重物、bind-off、N_w/N_c≲2 只有左右捲、再寬成雙向捲、更寬只剩上下捲、105 mm 矽膠桿、c/L≃0.7、模擬只定性相符、兩個原因（紗線有遲滯並留下自發曲率；收針邊硬度）：都在原文。原文是「隨 c 減小、在臨界值處出平面的高度增加」，沒有說「突然」。作者漏了一句有用的話：改用尼龍線做同樣實驗得到定性相似的相圖，只是相界略移。原文確實把橫向叫 wale、縱向叫 course。",
+      "changes_applied": {
+        "answer_target": "看這塊布是寬的還是長的。研究者用針織機和棉紗織了一系列長方形平針布，橫向 5 到 90 針、縱向 5 到 30 針，放鬆後分類。橫向針數不到縱向的大約兩倍時，只有左右兩側往背面捲；再寬一些，上下兩端也開始往正面捲，變成兩個方向都捲；更寬時左右不捲了，只剩上下捲。他們量單一線圈的形狀，發現布越寬，線圈本身也被拉得越扁，而且和捲起的高度同向變化。為了看一個線圈為什麼會翹，他們把半個線圈放大成一根 105 毫米長的矽膠桿，夾住兩端、把其中一個方向慢慢縮短：縮到某個比例（約 c/L≃0.7）桿就翹出平面，位置與離散模擬一致。整塊布的簡化模擬也做得出三種捲法，但分界線和實驗只有定性相符；作者認為原因包括真實紗線會留下永久彎曲，以及收針邊的硬度會改變結果。他們改用尼龍線重做，相圖定性相似，分界略有移動。",
+        "scope": "單一機型、單一棉紗，織造時掛 370 g 重物並以收針固定兩端；相界的數字只屬於這組樣品，不能套到所有毛衣。原文把橫向叫 wale、縱向叫 course，與紡織業慣用相反，稿中只用「左右」「上下」。讀的是 arXiv v1；作者稱刊於 Extreme Mechanics Letters 2025，本覆核未能從 arXiv 紀錄確認（API 當時回 503），寫稿前再查。"
+      },
+      "duplicate_of": null,
+      "reason": "內容正確，只把「突然翹出」改回原文的說法並補尼龍線的對照。X5004 已有「線圈長寬形狀關聯於不同捲曲方向」，三種捲法與針數比的分界算 1 條，矽膠桿實驗與模擬只定性相符 0.5 條，共 1.5 條，與作者相同。",
+      "overlaps": [
+        {
+          "existing_id": "X5004",
+          "note": "同一篇（SRC-062cef8afd6b9e93）；X5004 是機制一句，本核心補相圖與放大模型。"
+        }
+      ],
+      "reviewer_facts": 1.5,
+      "final_id": "P57-003",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-004",
+      "reviewer": "V12",
+      "question": "布已經破了一針，為什麼有時一路抽到底，有時抽幾針就停？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f9src/ladder2604.txt 樣品段、Fig.3(e)(f) 兩段、Fig.4 與式 (1) 後、結論、附錄 D、E、F；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同；另開 arxiv.org/abs/2604.20580：2026-04-22 送出，只有 v1，沒有 journal reference",
+      "reopen_result": "0.140 mm 尼龍單絲、70×70、d/l₀＝1/70「similar to that of commercial tights」、烙鐵尖燒斷、f₀＝14.8 mN、f_thr≃2、低於門檻 n_lad/n_y<0.1、更高張力第二行、停下後張力不隨破壞量變且等於門檻、預測在 1.5 以內相符、模擬天然曲率為零時門檻為零：都在原文。三處要改：（1）2.0±0.8 是作者「取所有實驗停下後張力的平均」定出來的門檻，所以「停下時等於門檻」有一半是定義；獨立的證據是 Fig.3(e) 的起始門檻也約在 2。（2）不是「不管抽掉多少」都成立：附錄 E 寫明高張力（例 f＝14.51）時斷線被夾在線圈裡，第二條梯子起不來，停下後張力仍遠高於門檻。（3）門檻來自天然曲率，正文是「may be linked」，量到的曲率換算值平均約 1、最大約 3.5，門檻 2 落在兩者之間；結論才寫成肯定句。",
+      "changes_applied": {
+        "answer_target": "看布原本被繃得多緊，而且抽絲會自己把張力放掉。一份 2026 年、尚未經同儕審查的預印本用直徑 0.14 毫米的尼龍單絲織成 70×70 針的平針布（線徑與每針線長的比例 1/70，作者說接近市售褲襪），裝上雙軸拉伸機繃到指定張力，再用烙鐵尖燒斷一針、高速攝影。把每排線承受的力除以線的彎曲力尺度（14.8 毫牛頓）之後，起抽的門檻大約在 2：低於它幾乎不抽，高於它才抽掉一部分或一整行，更高時連第二行也抽掉。另一個量測是抽絲停下來之後的張力：在中等張力的實驗裡，不管抽掉多少針，停下時的張力都差不多，平均 2.0±0.8，和起抽的門檻是同一個值。作者的解釋是每解開一針就放出一段多餘的線，布鬆了一點、張力降了一點，降到門檻就停；他們因此能從沒破的布的拉力曲線預測最後會抽掉幾針，在一行半以內對得上，更高張力時斷線會卡在線圈裡，預測就不準。作者把門檻歸給織造時線被彎出的永久曲率而不是線與線的摩擦：量到的曲率換算後與門檻同一量級，模擬裡把這個曲率設為零，門檻也變成零。",
+        "scope": "預印本，未經同儕審查（arXiv:2604.20580，2026-11-12 查仍只有 v1、無刊本）；片中每次引用都要說「尚未經同儕審查的研究」。尼龍單絲模型布、預先繃緊、燒斷固定位置的一針；實際絲襪是多股彈性紗並經定型，作者說定型會加強門檻。門檻 2.0±0.8 是作者以停下後張力的平均定義的，不得說成兩個獨立量測剛好相等；高張力時停下後張力高於門檻（附錄 E）。張力以無因次量表示，片中不換算成褲襪上的公斤數。不示範、不教人弄破織物。"
+      },
+      "duplicate_of": null,
+      "reason": "現象與數字都在原文，但作者把定義寫成巧合、漏了高張力的例外、把「may be linked」寫成定論。改字後收。X5005 已有「初始張力影響能否持續」，門檻與自停 1 條、可預測破壞量與門檻來源 0.5 條，共 1.5 條（作者算 2，並自己說降為 1.5 可接受）。",
+      "overlaps": [
+        {
+          "existing_id": "X5005",
+          "note": "同一份預印本（SRC-f74e9d8205231fa8）；X5005 只有傳播與張力條件一句，本核心補量測。"
+        }
+      ],
+      "reviewer_facts": 1.5,
+      "final_id": "P57-004",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-005",
+      "reviewer": "V12",
+      "question": "抽絲跑得多快？為什麼只沿著直行跑？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f9src/ladder2604.txt 與 ladder2604.html（c_b＝30.6 m/s 在數學標記裡）Fig.2(d) 段、Fig.3(a)–(d) 段、Fig.5 兩段；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同",
+      "reopen_result": "低張力跳動、高張力近等速、兩者時間尺度差近兩個數量級、c_b＝30.6 m/s（波長等於每針線長的彎曲波）、v/c_b≃0.1 f、慣性主導應為平方根而量到線性、單一線圈模擬摩擦越小越快且無摩擦回到平方根、先放開線圈 (1) 往上、張力夠高再放開 (2)(3) 往下、「the knit topology entirely controls the direction of propagation」：都在原文。原題目「只往一個方向跑」與答案自己說的「反方向的第二條」矛盾。",
+      "changes_applied": {
+        "question": "抽絲跑得多快？為什麼只沿著直行跑？",
+        "scope": "同 P57-004：未經同儕審查的預印本、尼龍單絲模型布，片中要說明。速度只以相對彎曲波速的比例表示，片中不報「絲襪抽絲每秒幾公尺」；30.6 m/s 是這條模型線上的彎曲波速，不是抽絲速度。"
+      },
+      "duplicate_of": null,
+      "reason": "答案照原稿，只改題目與範圍。方向由套法決定與 X5005 重疊，不計；速度與張力成正比、量級與摩擦的角色算 1 條，與作者相同。若要縮片長，這是 G52 第一個可刪的核心。",
+      "overlaps": [
+        {
+          "existing_id": "X5005",
+          "note": "「沿連接方向傳播」X5005 已有，不重算。"
+        }
+      ],
+      "reviewer_facts": 1,
+      "final_id": "P57-005",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-006",
+      "reviewer": "V12",
+      "question": "抽絲之後，線本身壞了嗎？能不能織出不會一路抽到底的布？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f9src/defect2506.txt II 節（working edge、amimono 的定義）、VIII.2 全段、Fig.10 圖說；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同；arXiv API 的 journal_ref 載 Phys. Rev. X 16, 031006 (2026)，doi:10.1103/g565-3dyn",
+      "reopen_result": "「Apart from the initial cut, the thread remains intact」「topological fracture」「completely reversible, except for the initial damage」「by carefully looping back the ladder… heal the topological fracture」、只能從 working edge 拆而內部受拓樸保護、缺陷等於引入一條 working edge、兩種圖樣（n 個相鄰破口傳成 n−1 個；一個傳成兩個）、示範樣品四個破口止於 4 排共 10 個：逐句都在原文。",
+      "changes_applied": {
+        "scope": "理論分類加示範性樣品；耐抽絲圖樣只有圖說一句的實作結果，沒有力學測試，片中說「研究者提出並織出示範樣品」，不說成市售技術。「線沒有壞」是這篇理論論文對抽絲性質的敘述，不是對某條線的強度量測。讀的是 arXiv v1；arXiv 紀錄載刊本為 Phys. Rev. X 16, 031006 (2026)（刊本未開，寫稿前核對）。數學判準未讀、不引用。"
+      },
+      "duplicate_of": null,
+      "reason": "答案照原稿。這是題案轉折二裡唯一已有刊本的來源，轉折的結論句（破壞是拓樸的、線沒壞、勾得回去）應由它承擔。X5005 沒有這幾點，算 1 條；耐抽絲與易散圖樣 0.5 條，共 1.5 條，與作者相同。",
+      "overlaps": [
+        {
+          "existing_id": "X5005",
+          "note": "X5005 的畫面說明已有「區別逐圈解鎖與每條纖維逐一被扯斷」的意圖，但答案沒有寫；本核心補上來源。"
+        }
+      ],
+      "reviewer_facts": 1.5,
+      "final_id": "P57-006",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-007",
+      "reviewer": "V12",
+      "question": "攤平放著的針織布，「原本的尺寸」只有一個嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f9src/metastability2404.txt 摘要、前言末段、樣品段、Fig.2 與其後一段、結論段；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同；arXiv API：v2（2024-10-22），沒有 journal_ref",
+      "reopen_result": "70×70 尼龍單絲（0.155 mm、μ＝0.5）、雙軸拉伸機、先拉到起始狀態再放到 f<8 mN、靜止形狀「not uniquely defined and strongly dependent on the initial state」、落在一條曲線上、有終點 T、超過終點的形狀沒有外力待不住、實驗與模擬相符、乾摩擦造成：都在原文。兩句被作者寫得太滿：「T 會是可重現的形狀，可經沿 y 方向反覆拉伸達到」原文用的是 would be，是作者的推想，本文沒有做這個實驗；「平的布不用外力就能蓋住有高斯曲率的表面」是作者由面積可變推出的推論，也沒有示範。",
+      "changes_applied": {
+        "answer_target": "不只一個。研究者把 70×70 針的尼龍平針布裝上雙軸拉伸機，先拉到各種不同的起始形狀，再慢慢放到幾乎沒有外力，量每一針的寬與高。結果放鬆後的針目尺寸不是唯一的，強烈取決於放鬆前被拉到什麼起始狀態。這些靜止形狀都落在同一條曲線上，曲線有一個終點，超過終點的形狀沒有外力就待不住；模擬與實驗相符。作者的解釋是線與線之間的乾摩擦：沒有外力時，摩擦讓布可以卡在一整段連續的形狀裡，而不是回到唯一的平衡。作者由此推想兩件事（本文沒有另做實驗）：那個終點應該就是反覆拉伸後可以重現的形狀；每一針占的面積在不受力時就能改變，所以平的針織布可以不靠外力去貼合有弧度的表面。",
+        "scope": "尼龍單絲模型布、摩擦係數 0.5；arXiv 紀錄（v2）沒有刊本資訊，按未經同儕審查的預印本處理，片中要說明。最後兩點是作者的推論，稿中用「作者推想」。不延伸成洗滌、晾曬或保養建議。"
+      },
+      "duplicate_of": null,
+      "reason": "把兩句推論標成推論。靜止形狀取決於歷史、落在有終點的曲線上算 1 條；兩個推論不計。共 1 條（作者算 1.5）。",
+      "overlaps": [
+        {
+          "existing_id": "X5003",
+          "note": "X5003 講加卸載的耗能，本核心講無外力時的形狀；同一個摩擦來源、不同結論，不重複。"
+        }
+      ],
+      "reviewer_facts": 1,
+      "final_id": "P57-007",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H57-001",
+      "reviewer": "V12",
+      "question": "把隔間牆整面換成吸音磚、地毯或窗簾，隔壁會更安靜嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f9src/nbs_hb119.txt「Use Sound Absorbing Materials」段、吸收比例段、「SOUND ABSORPTION VERSUS SOUND INSULATION」全節與 WARNING、樓上聲音一段；f9src/nrc_intro_building_acoustics.txt「Sound Transmission Loss」首段與「Fundamental Noise Control Procedures」；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同（兩份）",
+      "reopen_result": "「imagine a wall constructed solely of acoustical tile, carpet or drapery… virtually no resistance」、磚牆吸音差隔音極好、吸墨紙與游泳池、WARNING 全文、樓上走路說話貼天花板吸音磚不會減少、5–10 dB（高音）對 2–3 dB（低音）、直接音場裡的操作員沒有保護、厚地毯加毛氈襯墊 50–60%、CBD-236 的多孔對不透氣、隔音罩三要素：逐句都在。原文舉的是吸音磚、地毯、窗簾，沒有「吸音棉」。",
+      "changes_applied": {
+        "question": "把隔間牆整面換成吸音磚、地毯或窗簾，隔壁會更安靜嗎？",
+        "scope": "1976 年（NBS Handbook 119）與 1985 年（NRC CBD-236）的政府文件，分貝數與吸收比例是概括的經驗值，沒有量測條件；不是任何產品的規格，也不作居家施工建議。原文舉的材料是吸音磚、地毯、窗簾，稿中不換成其他產品名。"
+      },
+      "duplicate_of": null,
+      "reason": "答案照原稿，題目改成原文舉的三種材料。B4020 已有直接聲與混響場之分，「直接音場沒有保護」不計；「吸音材做成牆幾乎不擋」與多孔的機制 1 條、5–10 對 2–3 dB 與吸收比例 0.5 條、隔音罩三要素 0.5 條，共 2 條（作者算 2.5）。",
+      "overlaps": [
+        {
+          "existing_id": "B4020",
+          "note": "B4020 的結論（吸音只處理混響場）由本來源再支撐一次，不重算。"
+        }
+      ],
+      "reviewer_facts": 2,
+      "final_id": "H57-001",
+      "batch": "batches/wave57-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H57-002",
+      "reviewer": "V12",
+      "question": "牆做得重一倍，隔音可以多多少？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f9src/nrc_cbd239_factors_tl.txt「Mass Law」全段與式 (1)；f9src/nrc_intro_building_acoustics.txt「Physical Properties of Sound」；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同",
+      "reopen_result": "TL＝20 log10(m_s f)−48、「applies to most materials in certain frequency ranges」、質量或頻率加倍約 6 dB、12 dB 要 4 倍、18 dB 要 8 倍、150 mm 澆置混凝土 STC 約 55、「generally the practical limit in normal construction」、10 dB 約對應感覺響度加倍、小於 3 dB 實務上不算顯著：都在原文。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "逐句相符，不改字。池中 P120（十分貝是十倍聲強）、P124（分貝不能直接相加）是分貝的定義題，沒有質量定律；`cli.mjs search 質量定律／mass law／隔音` 無同答案核心。公式與每加倍 6 dB、4 倍與 8 倍 1 條；150 mm 混凝土為實務上限 0.5 條；分貝的聽感對照與 P120 相鄰，不另計。共 1.5 條（作者算 2）。",
+      "overlaps": [
+        {
+          "existing_id": "P120",
+          "note": "P120 講能量比，本核心引的是聽感（10 dB 約響度加倍）；片中兩句不要混成同一句。"
+        }
+      ],
+      "reviewer_facts": 1.5,
+      "final_id": "H57-002",
+      "batch": "batches/wave57-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H57-003",
+      "reviewer": "V12",
+      "question": "一面實際量過的隔間牆，低音和高音的隔音差多少？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f9src/ir761.txt p.3–6（350 件試體、3.05×2.44 m、50 Hz–6.3 kHz、重建六次與 Table 1）與 TL-93-166 資料頁；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同（10.5 MB PDF）",
+      "reopen_result": "G13_WS90(406)_MFB90_G13、STC 33、125 Hz 8.6、1,600 Hz 53.9、3,150 Hz 40.4、4,000 Hz 43.4、6,300 Hz 54.1；重建六次的 STC 範圍 45–46 與 56–59：都在原文。報告對 125 Hz 的深谷與 3,150 Hz 的凹口都沒有說明成因。這面牆的空腔已經塞了 90 mm 礦纖棉而 STC 是 33；H57-005 引的文摘說同類牆「約 33，塞棉再多約 3」，兩份文件的數字對不起來，不能寫成同一面牆。「最普通的牆」是作者的形容，報告沒有這樣說。",
+      "changes_applied": {
+        "answer_target": "差非常多。加拿大國家研究院公開了 350 面石膏板牆的實驗室量測：牆裝在兩間混響室之間 3.05×2.44 公尺的開口，從 50 赫茲量到 6,300 赫茲。其中一面：兩面各一層 13 毫米石膏板，直接鎖在 90 毫米木立柱上，空腔塞礦纖棉，隔音等級 STC 33。同一面牆，1,600 赫茲的聲音被擋掉 53.9 分貝，125 赫茲的只被擋掉 8.6 分貝，到 3,150 赫茲又掉回 40.4 分貝，再往上才回升。一個數字的評級底下是這樣一條起伏的曲線。這份報告也量了自己的可靠度：把同一種牆用同一批新材料整面拆掉重蓋六次，一種牆的 STC 是 45 到 46，另一種隔音較好的是 56 到 59。",
+        "scope": "北美木立柱石膏板牆的實驗室數據（試體 TL-93-166），不是磚牆或 RC 牆；只是 350 面裡的一面，作為「一條真實曲線長什麼樣」的例子，不代表典型住宅。125 Hz 與 3,150 Hz 兩處低谷，報告都沒有標註成因：片中不得把 3,150 Hz 那一處叫做巧合低谷，也不得拿 H57-004 的公式替這面牆算臨界頻率（那是自己的計算）；只能說「報告沒有解釋」。這面牆已含礦纖棉而 STC 33，與 H57-005 文摘的「約 33、加棉多約 3」是兩份文件，不並列成同一面牆。片中不把分貝差換算成倍數。只讀了說明章與三面牆的資料頁。"
+      },
+      "duplicate_of": null,
+      "reason": "數字全對；刪「最普通」，把兩處低谷都標成來源未解釋，並擋掉與 H57-004、H57-005 的串接。一面牆的頻譜與 STC 1 條；重建六次的重現性是量測品質的旁證，不另計。共 1 條（作者算 1.5）。",
+      "overlaps": [
+        {
+          "existing_id": "B4021",
+          "note": "不得用這條曲線的 3,150 Hz 凹口當 B4021 巧合低谷的實例；來源沒有這樣說。"
+        }
+      ],
+      "reviewer_facts": 1,
+      "final_id": "H57-003",
+      "batch": "batches/wave57-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H57-004",
+      "reviewer": "V12",
+      "question": "某一段音高特別漏，算得出是哪一段嗎？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f9src/nrc_cbd239_factors_tl.txt「Effects of Stiffness」全段、式 (2)、Table 1、Figure 1 圖說與其後一段；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同",
+      "reopen_result": "coincidence effect、fc＝A/t、鋼 12,700 → 5 mm 為 2,540 Hz、100 mm 混凝土 187 Hz（表列緻密混凝土 18,700）、石膏板 39,000「quite high… effect on the STC is usually less」、三片各 10 kg/m² 的板 STC 21／28／30、混凝土與合板落在 100–4,000 Hz、低谷深度看能量損失、膠合對鬆鎖：逐句都在原文。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "逐句相符，不改字。B4021 已有機制，不重計；fc＝A/t 與三個例子 1 條、同重三片板與膠合對鬆鎖 0.5 條，共 1.5 條，與作者相同。Figure 1 是理想化曲線，範圍已寫明。",
+      "overlaps": [
+        {
+          "existing_id": "B4021",
+          "note": "B4021 原來只掛付費的 ASHRAE 手冊；本核心替同一機制補上開放來源與數字。"
+        }
+      ],
+      "reviewer_facts": 1.5,
+      "final_id": "H57-004",
+      "batch": "batches/wave57-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H57-005",
+      "reviewer": "V12",
+      "question": "在牆裡塞滿吸音棉，隔音會好多少？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f9src/nrc_cbd239_factors_tl.txt「Gypsum Board Walls」與 Table 2 及其後一段；f9src/nrc_ctu_a.txt 摘要欄、Mass of Gypsum Board、Sound-Absorbing Materials、Cavity Depth、Use of Internal Layers 與 Table 1；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同",
+      "reopen_result": "直接釘在木立柱兩側 STC 約 33、加棉只多約 3、「through the studs」、短路比喻、Table 2 的 48［40］與 57［46］、文摘說加棉約多 8 點而通報說約多 10 點、「waste of money」、空腔深度加倍填滿棉約多 10 不填約多 4、中間加層 58→55（15.9 mm 石膏板）／54（19 mm 木纖維板）：都在原文。三處要收斂：通報寫的是「more than 250」面牆；「石膏板總重加倍約多 10 點」是 92 mm 非承重輕鋼立柱牆（Figure 1）的結果，原文說其他立柱「趨勢相似」；中間加層變差的兩個原因，原文是「內層與立柱剛性相連，讓聲音繞過空腔裡的吸音材」和「把空腔變淺」，不是「把兩邊硬連起來」。",
+      "changes_applied": {
+        "answer_target": "看兩面板是怎麼釘的：可能多 8 到 10 點，也可能只多 3 點。加拿大國家研究院量了 250 多面石膏板牆之後的結論是，最主要的因素是兩面板材彼此有沒有隔開。住宅裡常見的內牆，兩面石膏板直接釘在同一排木立柱上，文摘說 STC 約 33，塞吸音棉只多約 3 點，因為聲音直接經立柱從這面板傳到那面板；研究院的技術通報直說，在剛性相連的牆裡放吸音材是浪費錢，文摘把這種剛性連接比做電路的短路。兩面板隔開之後（交錯立柱、雙排立柱，或一面改釘在彈性槽鋼上），聲音主要走空腔裡的空氣，這時吸音棉才有用：文摘的表裡，木立柱加彈性槽鋼的牆沒有棉 STC 40、有棉 48；雙排立柱 46 對 57。隔開之後其他因素也才生效：通報說，輕鋼立柱牆的石膏板總重加倍約多 10 點；空腔深度加倍，填滿棉時約多 10 點，不填只多約 4 點。還有一個反直覺的結果：在雙排立柱牆的中間再加一層板，STC 從 58 掉到 55（石膏板）或 54（木纖維板）；通報給的理由是中間那層和立柱剛性相連，讓聲音繞過空腔裡的吸音材，還把一個深空腔切成兩個淺的。",
+        "scope": "北美木／輕鋼立柱石膏板牆的實驗室結果；STC 點數是該系列試體的概略值，「加棉約多 8 點」出自 1985 年文摘、「約多 10 點」出自 1997 年技術通報，兩個數字分開說。板重加倍約多 10 點是輕鋼立柱牆的結果。文摘的「約 33、加棉多 3」不與 H57-003 那面已含棉、STC 33 的試體並列。不是施工建議，也不適用於實心 RC 或磚牆（見 H57-006）。"
+      },
+      "duplicate_of": null,
+      "reason": "改三處與原文不合的說法。B4022 只有「空氣仍會耦合兩片已機械隔離的牆板」；直接釘立柱 33／＋3 與隔開後 40 對 48、46 對 57 算 1 條，板重與空腔深度 0.5 條，中間加一層反而變差 0.5 條，共 2 條（作者算 2.5）。",
+      "overlaps": [
+        {
+          "existing_id": "B4022",
+          "note": "B4022 是機制一句；本核心是同一機制的量測結果，不重算機制。"
+        }
+      ],
+      "reviewer_facts": 2,
+      "final_id": "H57-005",
+      "batch": "batches/wave57-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H57-006",
+      "reviewer": "V12",
+      "question": "在水泥磚牆上再貼一層石膏板，隔音一定更好嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f9src/nrc_ctu_b.pdf（另以 pdftotext -raw 重轉，欄序才讀得通）「Concrete Block Walls with Gypsum Board Added」、Figure 2、Figure 3 圖說、方框「Mass-air-mass resonance frequency」；f9src/nrc_cbd239_factors_tl.txt「Double Layer Assemblies」、Figure 2 圖說、「Concrete Block Walls」；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同",
+      "reopen_result": "190 mm 磚牆裸牆 STC 50（Figure 2 標註）、13 mm 彈性槽鋼加 15.9 mm 石膏板、空腔加玻璃棉後共振降到約 100 Hz 且 STC 54、兩面都貼「is one point less than… the wall that does not have gypsum board」、100 Hz 附近「significantly reduced」、原因「cavity depth is too small」、鼓皮的比喻、0.5 mm 鋼板 100 mm／135 Hz／STC 29 對 5 mm／630 Hz／STC 24 與單片 1 mm 鋼板質量定律 STC 28、黏著劑留下幾毫米空氣膜、單層板空氣層應大於 60 mm 以符合 80 Hz：都在原文。「49」是由「比裸牆少一點」與 Figure 3 的標註得到，正文沒有直接寫出 49。作者沒有用到、但同一頁有的對照：空腔不填棉、同樣 13 mm 槽鋼時 STC 51，改用 75 mm Z 形槽鋼 57。",
+      "changes_applied": {
+        "scope": "加拿大 190 mm 空心混凝土磚牆與理想化鋼板雙層牆的數據；台灣的 RC 牆或紅磚牆沒有對應量測，只能說「重牆貼薄板」的原理相同。STC 50／54 是通報的標註與正文，49 是正文「比裸牆少一點」加 Figure 3 標註，片中說「少一點」；曲線未逐點讀數，「100 赫茲附近明顯變差」照正文，不報分貝數。不是施工建議。"
+      },
+      "duplicate_of": null,
+      "reason": "答案照原稿，範圍補上 49 的出處。B4022 已有「空腔內共振可增加傳聲」的一般說法，質量—空氣—質量共振的機制只算 0.5 條；磚牆 50／54／少一點的實測 1 條；鋼板 100 mm 對 5 mm 與黏貼留空氣膜、60 mm 合 0.5 條，共 2 條（作者算 2.5）。",
+      "overlaps": [
+        {
+          "existing_id": "B4022",
+          "note": "B4022 的範圍寫明當時來源沒有低頻空氣彈簧模型；本核心由 NRC 文件補上，B4022 的範圍說明入池時可更新。"
+        }
+      ],
+      "reviewer_facts": 2,
+      "final_id": "H57-006",
+      "batch": "batches/wave57-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H57-007",
+      "reviewer": "V12",
+      "question": "同一種磚，有粉刷和沒粉刷，隔音會差多少？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f9src/nrc_ctu_b.pdf「Effect of Porosity」、Table 2、「Single-Leaf」末段、「Double-Leaf Concrete Block Walls」；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同",
+      "reopen_result": "Table 2 的 14／29／43 與 42／46／49、輕質磚封面後多 5 到 10 點或更多、常重磚幾乎沒差、「different only in degree from leakage… through inadequate mortar joints」、黏或鎖的石膏板封不住、空心裡塞吸音材無效、預期超過 70 的雙層牆只有 60（砂漿掉落搭橋）、「concealed and impossible to rectify」、實驗室結構分離時 70 到 80：逐句都在原文。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "逐句相符，不改字。封面前後兩組數字 1 條；砂漿搭橋的實測 0.5 條（搭橋與側向的概念 B4012 已有）。共 1.5 條，與作者相同。木骨材磚是通報為了對比放的極端例子，範圍已寫明。",
+      "overlaps": [
+        {
+          "existing_id": "B4012",
+          "note": "側向／搭橋的概念 B4012 已有，只計實測數字。"
+        }
+      ],
+      "reviewer_facts": 1.5,
+      "final_id": "H57-007",
+      "batch": "batches/wave57-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H57-008",
+      "reviewer": "V12",
+      "question": "熱帶室內外只差五度，牆裡的水汽問題為什麼不比寒帶小？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f9src/kunzel2022.txt「Outdoor air conditions」兩段與 Figure 2 圖說；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同（Europe PMC PMC10171418 全文 XML）",
+      "reopen_result": "冬天常見 20 K、熱帶例如 5 K（室外 30°C、室內 25°C）、「saturation vapour pressure increases exponentially」、「only a quarter… the vapour pressure difference is threefold」、室外空氣露點低於室溫故不結露「unless the room is conditioned below 24°C… controlled by a humidistat」、黴菌界限是相對濕度 80% 對應的溫度、材料層界限溫度約 28°C：都在原文，而且原文自己說這是「typical daily average… conditions」的例子。原文在這一段講寒冷氣候「所以把水汽控制層放在保溫層內側」，但沒有接著說「搬到濕熱氣候方向就錯了」：答案最後一句是作者自己接上的（那個說法在 H57-009 的文摘裡）。",
+      "changes_applied": {
+        "answer_target": "因為推動水汽的是水汽壓差，不是溫差，而空氣能含的水汽隨溫度指數上升。弗勞恩霍夫建築物理研究所的作者舉了一組典型的日平均條件來比：寒冷或溫和氣候的冬天，室內外常差 20 度；熱帶冷房季例如室外 30°C、室內 25°C，只差 5 度。可是在他們的例子裡，熱帶這邊的溫差只有四分之一，水汽壓差卻是三倍，而且是由室外往室內。該例的室外空氣露點低於室溫，所以除非把房間冷到 24°C 以下（例如冷氣由濕度控制時），牆內不會結出水；但作者提醒，不結露不代表沒事：他們用相對濕度八成當黴菌生長的界限，在該例的條件下，材料層只要低於約 28°C 就進入這個範圍，所以只要室外的濕氣進得了牆體，就不能排除長黴的風險。",
+        "scope": "數字全部屬於原文 Figure 2 設定的「典型日平均條件」，是回顧文章作者的假設例子，不是任何建築的實測或模擬結果，也不是台灣的氣象資料；片中要說「研究者舉的例子」，不替台灣算露點或水汽壓。黴菌界限這裡用相對濕度 80%，H57-009 的文摘用 70%，兩個來源兩個數字，不合併成一句。「寒帶的防潮層做法搬到濕熱氣候方向就錯了」不是這份來源的話，要說就引 H57-009。"
+      },
+      "duplicate_of": null,
+      "reason": "刪掉作者自己接上的最後一句（把兩份來源寫成一條因果鏈）。機制成立，但數字是假設條件：溫差四分之一而水汽壓差三倍、方向向內算 1 條；24°C 與 28°C 兩個界限是同一張示意圖的讀法，不另計。共 1 條（作者算 1.5）。B4018 講換氣的水分差，不是穿過牆體的水汽壓差，不重複。",
+      "overlaps": [
+        {
+          "existing_id": "B4018",
+          "note": "同樣是「室外比室內濕」，但 B4018 是通風帶進來的水分，本核心是跨牆體的水汽壓差方向。"
+        },
+        {
+          "existing_id": "LEG-S69",
+          "note": "露點的基本說明已有（冰飲料杯），片中不必再解釋一次。"
+        }
+      ],
+      "reviewer_facts": 1,
+      "final_id": "H57-008",
+      "batch": "batches/wave57-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H57-009",
+      "reviewer": "V12",
+      "question": "開冷氣的房間，把牆的室內側做成不透氣的，為什麼反而容易出事？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f9src/bsc_bsd106.txt「So What is The Problem?」、分級定義、Recommendations 四項、Figure 1–4 說明；f9src/bsc_bsd012.txt 濕熱氣候段；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同（兩頁）",
+      "reopen_result": "「a cold climate artifact that have diffused into other climates more from ignorance than need」「originally intended to prevent assemblies from getting wet. However, they often prevent assemblies from drying」「prevent assemblies from drying inward. This can be a problem in any air-conditioned enclosure」、0.1／1.0／10 perm 四級、四項 Avoidance、「linked with moldy buildings」、冷卻濕熱空氣使相對濕度升到 70% 以上、乙烯基壁紙把水分困在飾面與石膏板之間：都在原文。要補的是出處關係：這兩份文摘的作者 Joseph Lstiburek，就是 H57-010、H57-011 那篇 1992 年個案論文的作者；「linked with moldy buildings」後面掛的引文（Lstiburek 1993、2002）也是他自己的著作。所以 H57-009、H57-010、H57-011 三個核心是同一個人的說法，不是三個獨立來源。",
+      "changes_applied": {
+        "scope": "顧問公司（Building Science Corporation）的文摘，作者 Joseph Lstiburek 與 H57-010、H57-011 的個案論文是同一人，「與發霉的建築有關聯」引的也是他自己的著作：三個核心算同一個來源群，片中不得說成多方研究一致。建議依美國氣候分區與美式構造（石膏板內襯），不是同儕審查研究，也沒有附模擬數據。perm 是美制單位，片中只講分級概念。黴菌界限這裡是相對濕度 70%，H57-008 用 80%，分開說。BSD-012 只讀了濕熱氣候發霉的段落。不作個案診斷或裝修建議。"
+      },
+      "duplicate_of": null,
+      "reason": "答案照原稿，範圍補上「同一作者」這個會影響整題證據強度的事實。B4004 已有「兩面都不透濕會困住水分」；室內側防潮層在冷氣建築擋住向內乾燥 1 條，分級與乙烯基壁紙 0.5 條，共 1.5 條（作者算 2）。",
+      "overlaps": [
+        {
+          "existing_id": "B4004",
+          "note": "兩面都封的結論 B4004 已有，不重算。"
+        }
+      ],
+      "reviewer_facts": 1.5,
+      "final_id": "H57-009",
+      "batch": "batches/wave57-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H57-010",
+      "reviewer": "V12",
+      "question": "一棟外牆不漏雨的新旅館，第一個夏天牆上就長滿黴，水是從哪裡來的？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f9src/ornl_b5_070_flow.txt 摘要、Case Study One 全段（建築、症狀、修繕、量測、Discussion and Conclusions）；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同（ORNL 研討會論文 PDF）",
+      "reopen_result": "六層、混凝土構架、1989 年 2 月完工、所有室內石膏板面貼不透氣乙烯基壁紙、第一個夏天出現、室內隔間牆也有、外牆與屋頂看不出漏雨、補縫並換約 20% 板材後第二個夏天重現、窗兩側 2–3 Pa、空調機運轉時空腔比室外低 10–15 Pa、關機後 3–4 Pa、機殼與風管不氣密、立柱有孔、木條留空腔、只在夏季冷房時發生、AHM 1990 年調查約 6,800 萬美元：都在原文。但原文的結論句是「We may assume that wall moisture problems are caused by the infiltration of hot, humid air…」「Our hypothesis is also supported by…」：是調查者的推斷，論文沒有交代照這個推斷改善之後問題是否消失。外牆原文是「塗漆的裝飾混凝土磚加金屬立柱背襯、硬質發泡保溫、石膏板與乙烯基壁紙」；「多孔的磚牆」是第二個個案 Table 1 的用字，不在這一個個案。作者 J.W. Lstiburek 是顧問，與 H57-009 兩份文摘同一人。",
+      "changes_applied": {
+        "answer_target": "調查者的判斷是：被空調自己吸進來的室外空氣帶來的。佛羅里達坦帕一棟六層旅館，混凝土構架、混凝土磚外牆內側是金屬立柱與石膏板，室內所有石膏板面都貼了不透氣的乙烯基壁紙，1989 年 2 月完工，第一個夏天就壁紙剝落、板材濕軟、有霉味，壁紙和石膏板之間長滿黴，連室內隔間牆也有，而且不只在與外牆相接的地方，整面都有、程度不一。外牆與屋頂看不出漏雨的痕跡；第一年補了外牆縫、換掉約兩成的板材，第二個夏天照樣發生。調查者去量氣壓：窗戶兩側只差 2 到 3 帕；但在板上鑽孔量牆裡面的空腔，客房空調機一運轉，空腔的氣壓可比室外低 10 到 15 帕，關機後剩 3 到 4 帕。空調機的外殼和風管接頭不氣密，把包住機器的隔間抽成負壓；這些隔間和內外牆的空腔是通的（立柱有孔，磚牆上的板子釘在木條上也留了空腔），負壓沿著牆擴散出去。調查者據此推斷，室外濕熱的空氣穿過外牆被吸進牆內空腔，碰到被冷氣吹冷的石膏板就凝結，壁紙又擋住往室內乾的路，水就積在壁紙背後；問題只在夏天開冷氣時出現，也支持這個推斷。作者開頭引了旅館業協會 1990 年的調查：黴害每年讓業界損失約 6,800 萬美元。",
+        "scope": "1992 年研討會論文裡的一個美國個案，作者是顧問（與 H57-009 的文摘同一人）。成因是調查者由氣壓量測作出的推斷（原文 We may assume、Our hypothesis），論文沒有報告改善後的結果，片中要說「調查者判斷」，不說成已證實。金屬立柱石膏板內襯加乙烯基壁紙是美國旅館做法。只當「水汽可以由空氣帶進牆」的實測例子，不能推成「貼壁紙就發霉」，也不作任何個案診斷。帕是原文單位。"
+      },
+      "duplicate_of": null,
+      "reason": "把推斷標成推斷，刪掉這個個案原文沒有的「多孔」，外牆構造照原文寫。B4001、B4003 已有空氣搬運水分與牆內空腔路徑的機制，不重計；個案經過與兩次修繕無效 1 條、三組氣壓量測 1 條；只在夏季與業界損失數字不另計。共 2 條（作者算 2.5）。",
+      "overlaps": [
+        {
+          "existing_id": "B4001",
+          "note": "機制（漏氣搬運水分）B4001 已有。"
+        },
+        {
+          "existing_id": "B4003",
+          "note": "牆內空腔的空氣路徑 B4003 已有；本核心是它的一個實測個案。"
+        }
+      ],
+      "reviewer_facts": 2,
+      "final_id": "H57-010",
+      "batch": "batches/wave57-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H57-011",
+      "reviewer": "V12",
+      "question": "抽風機把空氣抽出去，補進來的空氣從哪裡來？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f9src/ornl_b5_070_flow.txt Case Study Two（建築、Measurements of Air Pressure、Air Pressurization、Tracer Gas、淋水試驗、Table 1）與 Discussion；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同",
+      "reopen_result": "兩層安養院、1990–1991 年建、承重混凝土磚牆與預鑄混凝土樓板、浴室集中排風實測 3,749 與 7,960 cfm、設計上由各房 PTHP 補氣（3,740 與 7,480 cfm）、PTHP 過大「operating only 20% of the time」、整棟負壓 4–11 Pa、SF6 示蹤氣體約 34 秒到房間、閣樓約一分鐘、淋水一小時後拆開見混凝土磚大片濕、南面約 50% 洩水孔被完全蓋住、三個條件：都在原文。作者漏了原文給的另一個原因：PTHP 的通風風門被拆掉，補氣量降到可忽略。示蹤氣體試驗時該房的 PTHP 沒有運轉。外牆是混凝土磚外加磚飾面或乙烯基外牆板與硬質發泡保溫，不是裸磚牆。",
+      "changes_applied": {
+        "answer_target": "設計上沒補到的，就從牆裡來。同一篇論文的第二個案例是佛羅里達雷克蘭一棟兩層安養院（混凝土磚承重牆、預鑄混凝土樓板）。浴室由集中排風機持續抽氣，實測每分鐘 3,749 與 7,960 立方英尺；設計上要靠各房穿牆安裝的熱泵機（PTHP）補進幾乎等量的外氣，但熱泵選得太大，很快就把房間吹冷而停機，只運轉大約兩成的時間，通風風門又被拆掉，補氣幾乎沒有。結果整棟樓處於負壓，室內比室外低 4 到 11 帕。調查者把一段外牆用塑膠布圍起來、注入示蹤氣體，大約 34 秒後就在房間裡測到；改注入閣樓，約一分鐘。也就是外氣穿過外牆、沿著牆內空腔和樓板接縫進到房間。同一棟樓還有雨水：用淋水架對外牆噴一小時再拆開，混凝土磚牆大片是濕的，南面約五成的洩水孔被植栽和回填土蓋住；作者說，被雨水泡濕的牆把穿過它的空氣再加濕一次。作者歸納，空氣要把水分從外面帶進來需要三個條件同時成立：外面的空氣含水多、外殼有孔洞通路、室內氣壓比室外低。",
+        "scope": "同 H57-010：1992 年的美國個案、同一位顧問作者。排風量為原文的 cfm，片中換算公制時標「約」；不替觀眾的房子判斷是否負壓，也不給調整排風或冷氣的建議。熱泵過大而短暫運轉這一點與池中 B4031（冷氣很快吹冷卻仍濕黏）是同一個現象的另一個後果，片中不重講機制。B4016 講排風使煙道逆流，是同一個負壓概念的另一個後果，不重複。"
+      },
+      "duplicate_of": null,
+      "reason": "補上被拆掉的通風風門。排風實測、補氣沒到、負壓 4–11 Pa 算 1 條；示蹤氣體 34 秒與淋水試驗 0.5 條；三個條件是 B4001 與 H57-010 已有的機制整理，不另計。共 1.5 條（作者算 2）。",
+      "overlaps": [
+        {
+          "existing_id": "B4031",
+          "note": "過大容量、達溫即停：B4031 已有，本核心只用它的後果（補氣沒進來）。"
+        },
+        {
+          "existing_id": "B4016",
+          "note": "負壓的另一個後果，不同答案。"
+        },
+        {
+          "existing_id": "D2087",
+          "note": "洩水孔的作用 D2087 已有，本核心只是它被蓋住的實例。"
+        }
+      ],
+      "reviewer_facts": 1.5,
+      "final_id": "H57-011",
+      "batch": "batches/wave57-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H57-012",
+      "reviewer": "V12",
+      "question": "磚牆或混凝土牆吸了水，會像木構牆那樣很快出問題嗎？室內牆面的水漬又是怎麼來的？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f9src/kunzel2022.txt「Wind-driven rain」末兩段與 Figure 4 圖說、「Solar vapour drive」兩段、「Driving rain leakage」引 ASHRAE 160 一段；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同",
+      "reopen_result": "北美輕構造牆的外貼保溫系統在世紀之交大規模損壞、主因是窗邊與接縫的雨水進到保溫層後面、德國幾十年紀錄良好、窗邊細部「were not that different」、朝西窗下取樣在保溫層後與保溫層內有水（最高約 10% 體積）、一處有螞蟻、差別在承重結構、「masonry and concrete can absorb large amounts of water before any damage becomes apparent」、實心磚石牆室內面水漬「normally caused by liquid rainwater penetration rather than solar vapour drive」、未粉刷磚石牆很透氣、ASHRAE 160 預設 1%：都在原文。作者把兩句併在一起了：「可以輕易被磚石緩衝」原文講的是磚石空腔牆（cavity walls）；實心牆那一句是日曬水汽驅動「通常與毛細吸力驅動的液態流互相競爭」，剩下到達室內面的水汽「一般可以靠通風安全帶走」。",
+      "changes_applied": {
+        "answer_target": "比較耐，但耐不等於沒進水。回顧文章比較了同一種外貼保溫系統在兩地的下場：北美貼在輕構造牆上，世紀之交大規模損壞，主因是窗邊與接縫漏進的雨水留在保溫層後面；德國貼在磚石牆上，幾十年紀錄良好。差別不在窗邊細部，德國朝西窗下的取樣一樣在保溫層後面找到水（最高約 10% 體積），有一處還住了螞蟻；作者說差別在承重的牆：木構對水很敏感，磚石與混凝土能吸收大量水分而不立刻出現損壞。日曬水汽驅動（吸飽雨水的外飾層被太陽加熱，水有很大一部分往牆內走）在實心磚石牆也會發生，但它通常與毛細吸力帶動的液態水流互相抵銷一部分，剩下到達室內面的水汽一般可以靠通風帶走。所以作者說，實心磚石牆室內面出現水漬，通常是液態雨水滲進來，不是日曬水汽驅動；沒有粉刷的磚石牆很透氣，雨水可以被氣壓差直接推過牆。連標準都不假設外牆滴水不進：美國的 ASHRAE 160 在沒有實測資料時，預設打到外牆的雨水有 1% 會穿過外飾層。",
+        "scope": "回顧文章的概括，德國、北美與澳洲的經驗；沒有台灣 RC 外牆貼磁磚的資料，片中不延伸到磁磚牆。「通常是雨水滲入」是作者的判斷，不是任何一面牆的診斷；不給防水施工建議。"
+      },
+      "duplicate_of": null,
+      "reason": "把空腔牆與實心牆兩句分開。B4005 已有日曬把水汽往內推的機制，不重計；磚石與木構對同樣漏水的不同下場 1 條，室內水漬通常是液態雨水與預設 1% 0.5 條，共 1.5 條（作者算 2）。",
+      "overlaps": [
+        {
+          "existing_id": "B4005",
+          "note": "機制同 B4005；本核心補它在磚石牆上的適用範圍。"
+        },
+        {
+          "existing_id": "D2089",
+          "note": "外牆空腔的排水乾燥 D2089 已有；本核心說磚石空腔牆通常不需要通風，角度不同。"
+        }
+      ],
+      "reviewer_facts": 1.5,
+      "final_id": "H57-012",
+      "batch": "batches/wave57-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H57-013",
+      "reviewer": "V12",
+      "question": "新房子的牆沒有漏水也會潮嗎？牆腳一片濕，一定是地下的水往上爬嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f9src/kunzel2022.txt「Indoor climate」首段、「Construction moisture」三段、「Rising damp」段；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同",
+      "reopen_result": "現澆混凝土、蒸壓加氣混凝土、矽酸鈣磚與生鋸木材「contain a lot of moisture when delivered」、灰泥砂漿磚與混凝土磚在工地碰水、歐洲因工期緊而損壞變多、往室內乾要靠通風或除濕、第一個供暖季能耗「sometimes… up to twice the normal rate」、四口之家每天最多 10 公升、融雪鹽與硝酸鹽（來自牲畜或街上的污水）、鹽提高吸濕性與牆面的水汽擴散阻力、牆面潮甚至看起來濕而沒有水從地面被吸上來、鹽含量由下往上遞減故易誤認、處理方法不同：都在原文。原文列的替代解釋是兩個：「summer condensation or hygroscopic moisture」，作者只寫了後者。",
+      "changes_applied": {
+        "scope": "歐洲經驗的概括敘述，「兩倍能耗」「10 公升」都是文章引用的量級，沒有條件細節，而且「第一個供暖季」是歐洲的情境；不替台灣新成屋估乾燥時間。原文說看起來像上升潮氣的也可能是夏季結露或鹽類吸濕，本核心只講後者，稿中要留「也可能是夏季結露」一句。不把鹽造成的吸濕等同於台灣俗稱的壁癌（成因另有白華、滲水等），不給除壁癌或防水的做法。"
+      },
+      "duplicate_of": null,
+      "reason": "答案照原稿，範圍補上原文並列的另一個解釋。池中 D2092–D2094 講混凝土養護與自體乾燥，是材料強度題，不是牆體帶水；`cli.mjs search 壁癌／白華／鹽／施工水分` 無同答案核心。施工水分與能耗 1 條，鹽類吸濕被誤認為上升潮氣 0.5 條（離題案主軸較遠），共 1.5 條（作者算 2）。",
+      "overlaps": [
+        {
+          "existing_id": "D2090",
+          "note": "D2090 是地坪的毛細水與水汽之別；本核心是牆面鹽類吸濕，不同答案。"
+        }
+      ],
+      "reviewer_facts": 1.5,
+      "final_id": "H57-013",
+      "batch": "batches/wave57-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-008",
+      "reviewer": "V12",
+      "question": "寶特瓶、塑膠袋、塑膠杯，實際量起來各在幾度變軟、幾度熔化？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f9src/packwaste_pmc12251665.txt 2.1、2.2.3、Table 1、3.3 節各段、Table 3、Table 4、結論；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同（Europe PMC PMC12251665）",
+      "reopen_result": "希臘、23 件、洗淨剪碎、30→180°C（PET 到 280°C）每分鐘 20°C、升降升、取第二次升溫、樣品 1／10／13／19／20 為 PET（Tg 約 84–85°C、Tm 約 246–248°C）、樣品 2／5／6／17 為 PS（Tg 約 99°C）、Table 3 八件聚乙烯的熔融峰（HDPE 129.4–135；LDPE/LLDPE 109;120.3、109;122、110;121）、樣品 14 為 118 與約 160°C 的 PE/PP 混摻、聚乙烯的種類 FTIR 分不出而要靠 DSC：都在原文。Table 1 的樣品 14 是「Frozen food packaging」，沒有說是袋。PET 的玻璃轉移這裡量到約 84–85°C，池中 P56-006 的評估值是 342 K（約 69°C）：兩個數字差了十幾度，原文沒有討論。",
+      "changes_applied": {
+        "answer_target": "一項 2025 年的研究直接拿家裡的包裝垃圾去量。研究者在希臘收了 23 件用過的塑膠包裝，洗淨剪碎，用差示掃描量熱儀以每分鐘 20°C 升溫、降溫、再升溫，取第二次升溫的結果。兩個牌子的拋棄式水瓶、透明餐盒蓋、優格封蓋和洗髮精瓶是 PET：大約 84 到 85°C 出現玻璃轉移，要到大約 246 到 248°C 才熔融。拋棄式飲料杯、兩個咖啡杯蓋和一個優格杯是聚苯乙烯：大約 99°C 玻璃轉移，文中對它們只報了這個溫度。聚乙烯的八件報的是熔融峰，而且靠它才分得出種類：兩個食物袋、兩個水瓶蓋和一件面霜包裝是高密度聚乙烯，熔融峰在 129 到 135°C；夾鏈袋和兩種外包裝袋是低密度或線性低密度聚乙烯，有兩個熔融峰，例如夾鏈袋是 109 與 120.3°C。一件冷凍食品包裝量出約 118 與約 160°C 兩個峰，是聚乙烯和聚丙烯混在一起。作者說，聚乙烯是哪一種，紅外光譜分不出來，要靠量熱儀量到的熔融與結晶溫度才分得出。",
+        "scope": "單一實驗室、23 件希臘樣品、每件一個值、未附不確定度。取第二次升溫，量到的是材料本身，不是「這件製品在使用時幾度變形」；製品原本的拉伸、結晶等熱史已被第一次加熱抹掉。升溫每分鐘 20°C。PET 這裡是約 84–85°C，池中 P56-006 的評估值是 342 K：兩份資料的數字不同，原文沒有解釋，片中不得相減、不得並列成同一組數據，也不得自己說是升溫速率造成的；要並提就說「另一份資料、另一種量法」。片中不作「幾度以下安全」之類的使用建議，也不示範加熱塑膠。"
+      },
+      "duplicate_of": null,
+      "reason": "數字全對；補上面霜包裝也是高密度聚乙烯、把「冷凍食品袋」改回「冷凍食品包裝」，範圍點明與 P56-006 的 PET 數字不同。P56-006 已有三種塑膠各兩個溫度；日常製品對應到材料與實測溫度算 1 條，聚乙烯靠熔融峰分種類與混摻 0.5 條，共 1.5 條（作者算 2）。",
+      "overlaps": [
+        {
+          "existing_id": "P56-006",
+          "note": "P56-006 明寫來源沒有說哪種製品是哪種塑膠；本核心補這一塊，但數字不能與它並成一組。"
+        },
+        {
+          "existing_id": "H3019",
+          "note": "高、低密度聚乙烯差在支鏈與結晶，H3019 已有；本核心只報量到的熔融峰。"
+        },
+        {
+          "existing_id": "D2142",
+          "note": "寶特瓶吹塑拉伸改變瓶壁性質，D2142 已有；可用來說明為什麼取第二次升溫。"
+        }
+      ],
+      "reviewer_facts": 1.5,
+      "final_id": "P57-008",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-009",
+      "reviewer": "V12",
+      "question": "軟的 PVC，玻璃轉移真的被塑化劑搬到室溫以下了嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f9src/pmc9055983.txt 2.1 與 Table 1、2.2 的 DSC 程序、3.4 節全段、Table 3、3.5 節首段；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同（Europe PMC PMC9055983，RSC Advances 2020）",
+      "reopen_result": "Table 1：PVC 100、DOP 40、硬脂酸鈣 6、硬脂酸鋅 5 phr；熔融混煉 170°C、175°C 壓成 2 mm 片；DSC 每分鐘 10°C；Tg mid 7±1°C；「The glass transition of PPVC is situated below room temperature. Therefore, storage at room temperature means the annealing of plasticized samples」；塑化劑多使轉移區變寬、台階很小、單掃不足以辨識；−10°C 老化 15 小時；約 80°C 的熔融峰（83±1°C）歸為室溫存放長出的次級結晶：都在原文。兩處要修：7°C 是在老化程序標出轉移區之後，從「未老化」那條曲線取的中點值（誤差是三次量測的最大差），不是老化樣品的讀數；「放久變硬」原文是「is also the result of this acquired crystallinity」，是原因之一，且是引文獻的說法。",
+      "changes_applied": {
+        "answer_target": "有量到的例子。一項 2020 年的研究把每 100 份 PVC 加 40 份塑化劑 DOP（鄰苯二甲酸二辛酯）和安定劑，熔融混煉後壓成 2 毫米厚的片，用差示掃描量熱儀（每分鐘升 10°C）量到的玻璃轉移溫度是 7±1°C，作者明寫這種軟 PVC 的玻璃轉移位於室溫以下。這個數字並不好量：塑化劑一多，轉移區變得很寬、熱流上的台階很小，單掃一次幾乎看不出來；作者先把樣品放在 −10°C 15 小時，讓轉移區在曲線上冒出一個吸熱峰、確定位置之後，再從沒有老化的那條曲線取中點。玻璃轉移在室溫以下還帶來一個後果：作者說，把它放在室溫，等於一直在高於玻璃轉移的溫度下「退火」。量熱曲線上在約 80°C 另有一個小熔融峰（這份樣品是 83±1°C），作者歸為存放在室溫期間長出來的次級結晶，並引文獻說，含軟 PVC 的製品放久了變硬，這種後來長出的結晶也是原因之一。",
+        "scope": "單一配方（PVC 100、DOP 40、硬脂酸鈣 6、硬脂酸鋅 5 phr）、熔融混煉壓片、DSC 中點值，靠老化程序才辨識得出轉移區；±1 是三次量測的最大差。池中 P56-008 的 30 phr 薄膜是用動態機械分析量到 61°C，量法、製程都不同：兩個數字不可相減、不可連成「每多 10 份降幾度」的曲線，片中要分開說是兩份研究。也不與 P57-010 的數字連成一條線。「久放變硬」是作者引用文獻的解釋，不是本文的對照實驗。不延伸到塑化劑遷移、健康或法規。"
+      },
+      "duplicate_of": null,
+      "reason": "第六輪退回 F8-025 時缺的那一句（讀得出塑化劑種類、添加量、量法，而且作者自己說在室溫以下）現在有了。改兩處讀法。40 phr DOP 的 7±1°C 與作者原話 1 條；轉移變寬難量與次級結晶 0.5 條，共 1.5 條，與作者相同。",
+      "overlaps": [
+        {
+          "existing_id": "P56-008",
+          "note": "同是 PVC＋DOP，但 P56-008 是 30 phr、DMA、61°C（仍高於室溫）；兩者不可連線、不可相減，池中兩核心並存。"
+        },
+        {
+          "existing_id": "H3025",
+          "note": "機制一句 H3025 已有，不重算。"
+        }
+      ],
+      "reviewer_facts": 1.5,
+      "final_id": "P57-009",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-010",
+      "reviewer": "V12",
+      "question": "塑化劑加得越多，玻璃轉移就等比例一路往下掉嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f9src/pmc12072859.txt 2.1 材料、2.2 DSC、2.4 薄膜製備、Table 3、Table 4、Figure 11 前後兩段、結論；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同（Europe PMC PMC12072859，Materials 2025）",
+      "reopen_result": "DSC 每分鐘 10°C、−80 到 120°C、第二次升溫；溶液澆鑄薄膜、50 phr；Table 3：不加塑化劑的 PVC 膜白而硬 80°C、DEHT 膜 −14°C、PD_03 膜 79°C（不相容、出油、白而硬）、PD_13 −25°C、PD_14 −30、PD_17 −29、PD_30 −28、PD_31 −27、PD_43 −28；「The Tg of the suitable samples were similar and in the −27 °C—−30 °C range」；PD_30 的 10–70 phr 系列：10 phr 降 42°C、15 到 25 phr 再降 6°C、25 到 40 phr 變化最大、cusp 約 30 phr、50 phr 對 PD_30 太多、成型品表面有油：都在原文。作者寫的「−27 到 −28°C」只是後來選去做混料的三種；合格的幾種原文是 −27 到 −30°C。DEHT 是對苯二甲酸二（2-乙基己）酯，不是鄰苯二甲酸酯。PD_30 加 50 份時「膜」是透明乾爽的，出油的是後來擠出壓成的「成型片」，兩種樣品不同。答案末句「塑化劑要待在鏈與鏈之間才有用…」是作者自己的話。",
+      "changes_applied": {
+        "answer_target": "不是等比例，而且要先相容才算數。一項 2025 年的研究用同一種 PVC、同一套量法（差示掃描量熱儀每分鐘 10°C，取第二次升溫）量了一整組溶液澆鑄的薄膜。不加塑化劑的 PVC 膜又白又硬，玻璃轉移 80°C；加 50 份商用塑化劑 DEHT（對苯二甲酸酯）的膜透明可彎，−14°C；作者新做的幾種生質塑化劑，合格的加 50 份時落在 −27 到 −30°C。其中一種對同一個塑化劑做了 10 到 70 份的系列：只加 10 份，玻璃轉移就降了 42°C；從 15 份加到 25 份只再降 6°C；變化最大的一段在 25 到 40 份。作者把轉折處（約 30 份）叫臨界塑化劑含量，並說 50 份對這個塑化劑已經太多：用它做的成型片表面浮出一層油。另一種和 PVC 不相容的配方更清楚：一樣加了 50 份，膜卻出油、又白又硬，玻璃轉移 79°C，作者說與沒加塑化劑的 80°C 非常接近。",
+        "scope": "系列用的是作者自製的生質寡聚酯（PD_30），不是鄰苯二甲酸酯；對照的商用塑化劑 DEHT 是對苯二甲酸酯。逐點溫度只在原文 Figure 11 圖上，正文只給降幅，片中只報「降了 42°C」「再降 6°C」與兩端的 80°C、−14°C、−27 到 −30°C，不自己相減出中間值、不報各添加量的絕對溫度。薄膜是溶液澆鑄；出油的是另外擠出壓成的成型片。不可與 P57-009 或 P56-008 的數字連成一條曲線。"
+      },
+      "duplicate_of": null,
+      "reason": "改正溫度範圍與塑化劑種類，刪掉作者自己的結語。同一 PVC、同一量法下 80°C 對 −14°C 與 −27 到 −30°C 算 1 條；降幅不等比例與臨界含量 0.5 條、不相容時 79°C 0.5 條，共 2 條，與作者相同。",
+      "overlaps": [
+        {
+          "existing_id": "P56-008",
+          "note": "不同研究、不同量法（DMA 對 DSC）、不同塑化劑；不可連線。"
+        },
+        {
+          "existing_id": "P57-009",
+          "note": "兩份都是 DSC，但樹脂、製程、塑化劑不同；片中各說各的。"
+        }
+      ],
+      "reviewer_facts": 2,
+      "final_id": "P57-010",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-011",
+      "reviewer": "V12",
+      "question": "加熱不會熔的橡膠和塑膠，裡面到底是什麼樣子？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f9src/pslc_xlink.txt 全頁、f9src/pslc_plastic.txt 全頁；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同（pslc.ws/macrog/xlink.htm）",
+      "reopen_result": "1839 年、固特異、布上塗膠乳加硫與一點鉛白、誤放熱爐、加熱不融不黏、冬夜放室外不變脆、硫橋把聚異戊二烯鏈接成「one giant supermolecule」、「An object made of a crosslinked rubber is in fact one single molecule」、受熱不能互相流過故不熔、通常先成形再交聯（通常在高溫）、熱固對熱塑、輕度交聯是橡膠而重度交聯是硬的熱固、不溶於溶劑但能吸溶劑成凝膠：都在原頁。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "逐句相符，不改字。但新增的事實很少：H3027 已有「稠密共價交聯形成整體網路、不能流動」，「整件是一個分子」只是同一件事的另一種說法；交聯網絡不溶而只會膨潤，池中 H3093 已有。真正新增的只有「同一種鏈，輕度交聯是橡膠、重度交聯是硬的熱固」與「先成形後交聯」，算 0.5 條（作者算 1）。它的用處是讓 H3027 有一個獨立於 OpenStax 31.7 的來源。教學網站，沒有量測資料。",
+      "overlaps": [
+        {
+          "existing_id": "H3027",
+          "note": "同一結論；本核心主要是替 H3027 補第二個來源。"
+        },
+        {
+          "existing_id": "H3093",
+          "note": "交聯網絡不溶、只會膨潤成凝膠，H3093 已有，不重算。"
+        },
+        {
+          "existing_id": "H3026",
+          "note": "輕度交聯的橡膠彈性 H3026 已有；本題案不用 H3026。"
+        }
+      ],
+      "reviewer_facts": 0.5,
+      "final_id": "P57-011",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-012",
+      "reviewer": "V12",
+      "question": "同一塊塑膠被壓住時，裡面有幾種「讓步」的方式？為什麼力會拖很久才降完？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f9src/roylance_visco.txt 2 節首兩段、3 節 Stress relaxation 與 Figure 5–6、4.2 節末句與註 3、4.3 節首段、thermorheologically simple 段；今日以 curl（預設標頭）重抓同一網址，HTTP 200，sha256 與作者快取完全相同（MIT 3.11 講義 PDF，2001-10-24）",
+      "reopen_result": "「either or both of two fundamentally different atomistic mechanisms」、鍵長鍵角扭曲「≈10⁻¹² seconds」、繞主鏈單鍵旋轉的構形重排、鬆弛模數由玻璃態 Eg 降到橡膠態 Er、「relaxation response moves toward its equilibrium value more quickly than does the creep response」、標準線性固體「drops from Eg to Er in approximately two decades of time, which is generally too abrupt」、真實聚合物是鬆弛時間的分布、降溫等於把曲線沿對數時間平移：都在原文。答案括號裡的「從 10 秒到 1,000 秒」原文沒有（作者自己在範圍裡承認是自己舉的例子）；原文的註 3 另有一個例子，但講的是「一個十倍程」：例如從 10³ 到 10⁴ 秒。Figure 6 是 Eg＝100、Er＝10、τ＝1 的模型曲線。",
+      "changes_applied": {
+        "answer_target": "兩種，快慢差非常多。麻省理工材料系的課程講義說，聚合物受力時，一種是化學鍵的鍵長與鍵角被扭曲，位移很小、極快，大約 10⁻¹² 秒就完成；另一種是分子夠活動時，靠繞著主鏈的單鍵旋轉，讓整條分子的形狀慢慢重排。把一塊聚合物壓到固定的變形量然後不動，一開始的力對應的是鍵被扭曲的「玻璃態」剛度；之後分子逐漸改用伸展構形來容納這個變形，力就往一個較低的「橡膠態」平衡值降，這就是應力鬆弛。如果只有一種鬆弛時間，模型裡的力會在大約兩個十倍程的時間裡降完；講義說這通常太陡，真實的聚合物裡長短不同的鏈段快慢各異，鬆弛時間是一整個分布，所以力會拖過長得多的時間才降完。同一批分子機制也造成固定力下的蠕變，但鬆弛趨向平衡的速度比蠕變快。",
+        "scope": "教材；圖與「兩個十倍程」來自標準線性固體模型（Figure 6 是 Eg＝100、Er＝10、τ＝1 的示意），不是量測資料。片中不得出現「10 秒到 1,000 秒」這類自己舉的數字；要舉例只能用講義註 3 的說法：一個十倍程是例如從 10³ 到 10⁴ 秒。本來源沒有多種材料、長時間的實測鬆弛數據，不能替密封件或卡扣估壽命。池中 P56-009 的兩個時間常數是單一材料 5 分鐘試驗的擬合值，可並列但不可互相推算。"
+      },
+      "duplicate_of": null,
+      "reason": "刪掉作者自己舉的 10 秒到 1,000 秒，以及 H3090 範圍已提過的時間—溫度平移一句。兩種變形機制與 10⁻¹² 秒 0.5 條、單一鬆弛時間約兩個十倍程而真實材料是分布 0.5 條；鬆弛比蠕變快屬 H3090 已並排的內容，不另計。共 1 條（作者算 1.5）。",
+      "overlaps": [
+        {
+          "existing_id": "H3090",
+          "note": "H3090 的機制敘述改由本來源支撐（OpenLearn 原來源仍 403）；時間—溫度疊加 H3090 範圍已提。"
+        },
+        {
+          "existing_id": "P56-009",
+          "note": "P56-009 的「兩個時間常數」是實測擬合，正好是「不只一種鬆弛時間」的例子，但兩者不可互相推算。"
+        }
+      ],
+      "reviewer_facts": 1,
+      "final_id": "P57-012",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-013",
+      "reviewer": "V13",
+      "question": "車子翻覆，多半是轉彎太猛被甩翻的嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f10src/fr-2001-01-973.htm（66 FR 3388）III.A.1、III.B、III.C.1、II 背景；今日以 curl（預設標頭）重抓，HTTP 200；sha256 前 16 碼 b5a13e19d476f506 與作者快取相同",
+      "reopen_result": "「We view the rollover safety problem as 95 percent a problem of tripped rollover and five percent … on-road untripped rollover」「Once the vehicle is in a tripping situation (e.g., has left the road), tire traction is largely irrelevant」「Center of gravity height and track width (and to a much lesser extent roll moment of inertia) are the only vehicle properties with general applicability」逐句在原文；註 6 的 3.7%（1992–96 修正資料）也在；絆倒物原文寫 curb, soft soil, pavement drop off。",
+      "changes_applied": {
+        "answer_target": "多半不是。美國 NHTSA 在 2001 年的公告裡把翻覆問題看成約 95% 是「絆倒型」（車子多半先滑出路面，輪胎或輪圈碰到路緣、軟土、路面落差之類的東西被絆住而翻）、約 5% 是路面上沒被絆到、單靠輪胎抓地力翻的。機關指出，一旦進入被絆住的情況，輪胎抓地力幾乎無關，普遍適用的車輛性質只剩重心高度與輪距（轉動慣量影響小得多）。"
+      },
+      "duplicate_of": null,
+      "reason": "照原稿。95／5 是機關的看法（We view），範圍已寫明；片中說「NHTSA 把它看成」，不說「統計顯示 95%」。絆倒物舉例用原文的路緣、軟土、路面落差（原稿的「水溝」不在原文，寫稿時不要用）。算 1 條。",
+      "overlaps": [
+        {
+          "existing_id": "P164",
+          "note": "P164 只有「底座寬、容許傾角大」一句；本核心是事故型態的比例，不重複。池中搜尋 rollover／翻覆／翻車／SSF 沒有既有核心。"
+        }
+      ],
+      "facts_counted": 1,
+      "final_id": "P57-013",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-014",
+      "reviewer": "V13",
+      "question": "一輛車有多容易翻，能不能用一個數字講？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f10src/fr-2001-01-973.htm（66 FR 3388）III.A.1、III.B、III.C.1、II 背景；今日以 curl（預設標頭）重抓，HTTP 200；sha256 前 16 碼 b5a13e19d476f506 與作者快取相同",
+      "reopen_result": "五個星等的 SSF 界線與風險區間（1.03 以下／40% 以上；1.04–1.12／30–40%；1.13–1.24／20–30%；1.25–1.44／10–20%；1.45 以上／低於 10%）、「six times as high for a vehicle with an SSF of 1.00 as for a vehicle with an SSF of 1.53 (the range of the observed data) based on the linear regression model」、「not a measure … invented by the agency. It was introduced to the agency in 1973 by vehicle manufacturers」都在原文。",
+      "changes_applied": {
+        "scope": "風險是出了單一車輛事故之後翻覆的條件機率，不是上路就翻的機率；2001 年的星等界線，2004 年式起模型改版。六倍是線性迴歸在觀察資料兩端（SSF 1.00 與 1.53）的比較，片中要帶這個條件。",
+        "facts": 1
+      },
+      "duplicate_of": null,
+      "reason": "數字無誤。事實數由 1.5 改 1：星等界線與「六倍」是同一條迴歸曲線讀出來的兩種說法，照本輪規則同一分析的多個數字合計 1 條。六倍要帶條件「觀察資料範圍的兩端、線性迴歸」。",
+      "overlaps": [
+        {
+          "existing_id": "P164",
+          "note": "底座寬"
+        },
+        {
+          "existing_id": "P165",
+          "note": "重心低；本核心把兩者合成比值並對到事故統計，是新增事實，不重計舊結論。"
+        }
+      ],
+      "facts_counted": 1,
+      "final_id": "P57-014",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-015",
+      "reviewer": "V13",
+      "question": "重心高的車，路上真的翻得比較多嗎？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f10src/fr-2001-01-973.htm（66 FR 3388）III.A.1、III.B、III.C.1、II 背景；今日以 curl（預設標頭）重抓，HTTP 200；sha256 前 16 碼 b5a13e19d476f506 與作者快取相同",
+      "reopen_result": "「as a percentage of single-vehicle crashes (passenger cars, 13 percent; vans, 14 percent, pickup trucks, 24 percent; SUVs, 32 percent)」「According to the 1999 FARS, 10,142 people were killed as occupants in light vehicle rollovers」「decrease in c.g. height of approximately 2.0 inches (along with a significant increase in track width) while actually increasing the ground clearance… equivalent to at least one star rating interval」與註 8（Mitsubishi Montero）都在原文。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "照原稿，算 1 條。車型比例沒有控制駕駛與道路，範圍已寫；片中不可說「休旅車因為重心高所以翻 32%」，只能說比例與機關、車廠各自的解讀。",
+      "overlaps": [
+        {
+          "existing_id": "P165",
+          "note": "重心低比較穩的一句結論；本核心是事故比例與改款實例。"
+        }
+      ],
+      "facts_counted": 1,
+      "final_id": "P57-015",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-016",
+      "reviewer": "V13",
+      "question": "只量寬和高太粗糙了吧？實際把車開去急轉彎測，會準很多嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f10src/fr-2003-25360.htm（68 FR 59250）SUMMARY、V.D、VI；今日以 curl（預設標頭）重抓，HTTP 200；sha256 前 16 碼 39c2b139d4f2058e 與作者快取相同",
+      "reopen_result": "「Beginning with rollover ratings for the 2004 model year, NHTSA will combine a vehicle's SSF measurement with its performance in the so-called Fishhook maneuver」「J-Turn maneuver test does not add any meaningful information」「All 11 vehicles that tipped up in any maneuver… the 14 vehicles without tip-up」「the extra risk was small」「the predictive power of tip-up in the dynamic test may not be great」都在原文。另有一句作者沒用：翹起的 11 輛全在 SSF 低於 1.20 的 16 輛裡，SSF 較高的沒有一輛翹起。",
+      "changes_applied": {
+        "answer_target": "有加，但多出來的不多。NHTSA 自 2004 年式起把 SSF 與 Fishhook（魚鉤形急轉）測試一起放進風險模型。25 輛受測車裡有 11 輛在測試中翹起（tip-up）、14 輛沒有，而翹起的 11 輛全都在 SSF 低於 1.20 的 16 輛裡，SSF 較高的沒有一輛翹起。另一種 J-Turn 測試在有 Fishhook 時不再增加有意義的資訊，沒有採用。機關自己寫：模型能給在最嚴苛操控中翹起的車較高的翻覆風險，但多出來的風險很小，翹起的預測力可能不大。"
+      },
+      "duplicate_of": null,
+      "reason": "結論無誤，改兩處用字：原文的 tip-up 是測試定義的「翹起」，不寫成「某項操控測試中內側輪離地」的泛稱；補上原文的「11 輛全部落在 SSF 低於 1.20 的 16 輛裡」，這句直接說明為什麼動態測試多不出多少資訊。算 1 條。",
+      "overlaps": [],
+      "facts_counted": 1,
+      "final_id": "P57-016",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-017",
+      "reviewer": "V13",
+      "question": "抽屜裝滿衣服，櫃子是比較穩還是比較不穩？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f10src/fr-2022-24587.htm（87 FR 72598）；今日以 curl（預設標頭）重抓，HTTP 200；位元組雜湊與作者快取不同（233473837578a33f 對 d00717df128b2f81），去標籤後全文 480,677 字元逐字相同；VII.A；另核對 f10src/fr-2023-08997.htm（88 FR 28403）",
+      "reopen_result": "「When filled extendable elements are closed, the clothing weight contributes to the stability… behind the front legs (fulcrum). However, open extendable elements contribute to the CSU being less stable because the clothing weight is shifted forward in front of the front legs」「filled drawers further decrease stability when more than half of the drawers by volume are open, but increase stability when more than half of the drawers by volume are closed」「8.5 pounds per cubic foot」都在原文。2023 年的 direct final rule 寫明 2022 年規則「is stayed and will not take effect」，改採 ASTM F2057-23。",
+      "changes_applied": {
+        "answer_target": "看抽屜是關著還是開著。美國 CPSC 幕僚的測試與分析：裝滿的抽屜關著時，衣服的重量在前腳（支點）後方，幫忙穩住櫃子；拉開後同樣的重量移到前腳前方，就變成幫倒忙。以容積計，超過一半的抽屜開著時，裝滿比空的更不穩；超過一半關著時，裝滿比較穩。抽屜拉開越多，整體重心越往前，櫃子越容易往前倒。測試用的衣物重量是每立方呎 8.5 磅（ASTM 小組委員會的假設值，幕僚實測後認為合理）。"
+      },
+      "duplicate_of": null,
+      "reason": "照原稿，算 1 條。作者的提醒成立：這份 2022 年規則沒有生效，片中只能說「CPSC 幕僚的測試發現」，不能說「法規規定」或「現行標準」。8.5 磅／立方呎原文是 ASTM 小組委員會的假設值、幕僚測試確認合理，不是幕僚自己量出來的數字，寫稿時照這個主詞。",
+      "overlaps": [
+        {
+          "existing_id": "P165",
+          "note": "P165「重物放下層比較穩」是靜態結論；本核心是同一份重量開關換邊，轉折二的主體，不重計 P165。"
+        }
+      ],
+      "facts_counted": 1,
+      "final_id": "P57-017",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-018",
+      "reviewer": "V13",
+      "question": "一個 20 公斤的小孩爬抽屜，櫃子受到的就是 20 公斤嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f10src/fr-2022-24587.htm（87 FR 72598）；今日以 curl（預設標頭）重抓，HTTP 200；位元組雜湊與作者快取不同（233473837578a33f 對 d00717df128b2f81），去標籤後全文 480,677 字元逐字相同；V 節 ASTM F2057-19 §7.2、VII.B",
+      "reopen_result": "「Forty children, age 20 months to 65 months old」「For all of the interactions, the maximum moment exceeded the weight of the child. The preceding analysis was based on a 12-inch (one foot) horizontal distance」「vertical force, divided by the child's body weight, was close to 1 (staff estimates… approximately 1.08）」「extended their CM an average of about 6 inches from the handle/foothold while ascending」「staff estimated the equivalent force to be more than 1.6 times the weight of the child for typical drawer extensions」都在原文。舊標準的原文是「placing an empty CSU… gradually applying a test weight of 50 ± 2 pounds… only one door or drawer is open at a time」。",
+      "changes_applied": {
+        "answer_target": "不只。CPSC 委託密西根大學運輸研究所，讓 40 名 20 到 65 個月大的孩子在裝了感測器的測試架上做攀爬、拉、靠等動作：以 1 呎力臂計，每一種互動產生的最大力矩都超過孩子的體重。攀上去那一步，垂直力大約等於體重（幕僚估約 1.08 倍），但孩子的重心平均在踏點外側約 6 吋，手還會往外拉；幕僚估計在典型的抽屜伸出量下，等效力超過體重的 1.6 倍。當時的自願標準（ASTM F2057-19）卻是把櫃子清空、一次只拉開一個抽屜，在那個抽屜上慢慢加到 50 磅的靜止重量來測。"
+      },
+      "duplicate_of": null,
+      "reason": "數字無誤。改一處：舊標準測的是「整個櫃子是空的、一次只拉開一個抽屜，在那個抽屜上加 50 磅」，不是「一個拉開的空抽屜」。力矩與體重單位不同，照原文寫法要帶「以 1 呎力臂計」。算 1.5 條（力矩超過體重與 1.6 倍 1 條、舊標準對照 0.5 條）。",
+      "overlaps": [],
+      "facts_counted": 1.5,
+      "final_id": "P57-018",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-019",
+      "reviewer": "V13",
+      "question": "同一個櫃子，放在地毯上會比較容易倒嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f10src/fr-2022-24587.htm（87 FR 72598）；今日以 curl（預設標頭）重抓，HTTP 200；位元組雜湊與作者快取不同（233473837578a33f 對 d00717df128b2f81），去標籤後全文 480,677 字元逐字相同；IV「3. Flooring」、VII.C",
+      "reopen_result": "原文：「Of the 1,221 tip-over weight differences, the tip weight difference was positive for 1,149 (94 percent) of them; negative for 33 (3 percent); and was zero… for 39 (3 percent)」「mean… 7.6 pounds」「median… 7 pounds, but for individual units, the median ranged from 2 to 16 pounds」「corresponded with tilting the CSUs 0.8 to 3 degrees forward, depending on the CSU; the mean… 1.48 degrees」「flooring… reported for 58 incidents. Of these, 47 (81 percent) involved carpeting, which includes rugs」。傾角比對用的是 9 組傾倒重量（「compared 9 tip weights on carpet」）。",
+      "changes_applied": {
+        "answer_target": "多半會。CPSC 幕僚把同一批櫃子分別放在硬地面與地毯上測「加多少重量會倒」：1,221 組比較裡 1,149 組（94%）在地毯上用比較少的重量就倒，33 組相反、39 組相同；差距的中位數是 7 磅。幕僚再把櫃子放回硬地面、往前傾 0、1、2、3 度重測（9 組），發現地毯的效果相當於前傾 0.8 到 3 度，依櫃子而異，平均 1.48 度。在有記錄地板種類的 58 件兒童死亡事故裡，47 件（81%）是地毯或小地毯。",
+        "scope": "幕僚測試用一種地毯與襯墊；等效傾角只比對 9 組、依櫃子而異；事故比例只算 95 件裡有回報地板種類的 58 件，地毯含小地毯。2022 年規則沒有生效，只引用測試發現。"
+      },
+      "duplicate_of": null,
+      "reason": "作者寫「所有受測櫃在地毯上都用比較少的重量就倒」與原文不符：1,221 組裡 94% 在地毯上較早倒，3% 相反、3% 相同。原文的用字是 tended to。另補：傾角對照只有 9 組；地毯的 47 件含小地毯（rugs），且是 95 件裡有回報地板種類的 58 件。算 1.5 條。",
+      "overlaps": [],
+      "facts_counted": 1.5,
+      "final_id": "P57-019",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-020",
+      "reviewer": "V13",
+      "question": "家具傾倒是很罕見的意外嗎？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f10src/cpsc-tipover-2022.pdf（CPSC 幕僚 2023 年 2 月報告）Executive Summary；今日以 curl（預設標頭）重抓，HTTP 200；sha256 前 16 碼 2fb7d222f1d0ca24 與作者快取相同",
+      "reopen_result": "「estimated annual average of 19,400 emergency department (ED)-treated injuries (2019–2021) and the 592 reported fatalities」「children under age 18 years suffered 8,900 (46%) injuries」「482 (81%) involved children under age 18 years」，不穩定因素「small footprint, top heavy… (carpet)… multiple drawers open」都在原文。封面註明是幕僚報告、未經委員會審閱。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "照原稿，算 0.5 條，只當開場理由。片中說「CPSC 幕僚報告估計」。",
+      "overlaps": [],
+      "facts_counted": 0.5,
+      "final_id": "P57-020",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-021",
+      "reviewer": "V13",
+      "question": "人站著不動，為什麼前後比左右更需要肌肉出力？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f10src/openstax-cp-9-3.html（College Physics 2e §9.3）圖 9.16 圖說、雞的兩段、saddle 句；今日以 curl（預設標頭）重抓，HTTP 200；sha256 前 16 碼 4a2a0af3927cb215 與作者快取相同",
+      "reopen_result": "「Muscles are used extensively to balance the body in the front-to-back direction」「the cg of a chicken lies below its hip joints and between its widely separated and broad feet… acts as a pendulum between the hips. Therefore, the chicken is stable for front-to-back displacements as well as for side-to-side displacements」「a marble on a saddle is stable for displacements toward the front or back of the saddle and unstable for displacements to the side」都在原文。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "照原稿，算 0.5 條。來源網址與池中 SRC-aebc97f067673f86 完全相同（https://openstax.org/books/college-physics-2e/pages/9-3-stability），不另立來源，見 source_fixes。",
+      "overlaps": [
+        {
+          "existing_id": "P167",
+          "note": "鞍上的彈珠一句就是 P167 的答案，不重計；本核心只算人與雞的例子 0.5 條。"
+        },
+        {
+          "existing_id": "P163",
+          "note": "同一頁的穩定／不穩定定義，不重計。"
+        }
+      ],
+      "facts_counted": 0.5,
+      "final_id": "P57-021",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S57-001",
+      "reviewer": "V13",
+      "question": "河床真的在動的時候，量到的流量會被吃掉多少？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f10src/sir2006-5079.pdf（USGS SIR 2006-5079）；今日以 curl（預設標頭）重抓，HTTP 200；sha256 前 16 碼 ae36814ff4cecea9 與作者快取相同；以 pdftotext -layout 文字檔讀表 1、3、4；表 4 十三列逐列讀",
+      "reopen_result": "表 4 的 Bed velocity / Water velocity 十三列是 2.23、5.00、4.73、16.4、1.76、4.56、3.04、2.14、1.63、6.24、5.24、4.54、2.22；動床速度 0.028–0.103 m/s；最大是 Battle River 16.4%。十三列是 11 個測點的 13 筆（Moose River 與 Missouri River at Nebraska City 各兩筆）。",
+      "changes_applied": {
+        "answer_target": "USGS 與加拿大環境部人員量的 13 筆動床測次裡（11 個測點），迴圈法量到的平均動床速度是每秒 0.028 到 0.103 公尺，相當於水流平均速度的 1.63% 到 16.4%，最大的是加拿大 Battle River 的 16.4%。底追蹤把這個速度當成「船在往上游走」，所以量到的水速與流量都偏低，偏低的比例大致就是這個數。",
+        "scope": "2006 年報告中動床偏差大於水速 1% 的 13 筆測次（11 個測點），斷面都接近均勻；不是所有河流的統計，也不要自己再統計「多數落在幾趴」。",
+        "facts": 1
+      },
+      "duplicate_of": null,
+      "reason": "範圍與最大值無誤。作者自己數的「13 筆裡 10 筆落在 2% 到 6% 之間」是錯的：落在 2–6% 的是 9 筆（6.24 在外，1.63、1.76、16.4 在外），而且這是作者自己的統計、不在原文，刪掉。「流量少算這麼多」只在平均修正法與斷面均勻的前提下近似成立，改成「偏低的比例大致就是這個數」。事實數由 1.5 改 1：最大值的地點與範圍出自同一張表。",
+      "overlaps": [
+        {
+          "existing_id": "O3073",
+          "note": "O3073 已有「把移動泥沙當固定河床、船速向上游偏、低估流量」，方向與機制不重計；本核心只算實測範圍 1 條。"
+        }
+      ],
+      "facts_counted": 1,
+      "final_id": "S57-001",
+      "batch": "batches/wave57-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S57-002",
+      "reviewer": "V13",
+      "question": "沒有 GPS 的時候，怎麼知道河床偷走了多少？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f10src/sir2006-5079.pdf（USGS SIR 2006-5079）；今日以 curl（預設標頭）重抓，HTTP 200；sha256 前 16 碼 ae36814ff4cecea9 與作者快取相同；以 pdftotext -layout 文字檔讀表 1、3、4；Introduction、Method Description 式 (1)–(3)",
+      "reopen_result": "「first applied in the late 1990s by Brazilian Federal hydrologists on the Amazon River (Callede and others, 2000)」；式 (3) 動床速度＝迴圈閉合差（distance made good）÷ 量測時間；式 (2) 修正量＝動床速度 × 垂直平均流向的斷面積；式 (1) 加回量到的流量。文中算例：修正量 45.9 m³/s，總流量 891.9 m³/s。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "照原稿，算 1 條。Callède 2000 原文未讀（403），「巴西人員先用」是 USGS 的轉述，片中照轉述說。",
+      "overlaps": [
+        {
+          "existing_id": "O3073",
+          "note": "O3073 的範圍欄提到 GNSS 參考與檢查程序「另需核對」，沒有迴圈法；不重複。"
+        }
+      ],
+      "facts_counted": 1,
+      "final_id": "S57-002",
+      "batch": "batches/wave57-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S57-003",
+      "reviewer": "V13",
+      "question": "繞一圈修出來的流量，和用 GPS 量的差多少？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f10src/sir2006-5079.pdf（USGS SIR 2006-5079）；今日以 curl（預設標頭）重抓，HTTP 200；sha256 前 16 碼 ae36814ff4cecea9 與作者快取相同；以 pdftotext -layout 文字檔讀表 1、3、4；表 3、「Comparison of Loop Method to DGPS-based Discharges」",
+      "reopen_result": "原文：「for the nine sites, discharge corrected using the mean [loop method] is within –5.0 percent and 1.3 percent (standard deviation = 1.93 percent)」；表 3 有 DGPS 值的九列：313/317、890/891、486/462（Fair）、698/697、1,865/1,868（Poor）、1,123/1,093、866/863、777/776、1,101/1,103。Summary：「within 5 percent of the measured value using DGPS」。",
+      "changes_applied": {
+        "answer_target": "在 9 筆同時裝了差分 GPS 的動床測次裡，用迴圈法平均修正後的流量與 GPS 參考的流量相差 −5.0% 到 +1.3%（標準差 1.93%）。多數幾乎一樣，例如 South Nahanni River 是 GPS 890、修正後 891 立方公尺每秒；差最多的是北卡的 Rocky River，GPS 是 486、修正後是 462，而那一筆的 GPS 品質被評為 Fair。報告結論是兩種修正法都落在 GPS 值的 5% 以內。",
+        "scope": "報告稱九個測點（表 3 是 8 個地點的 9 筆），斷面均勻；GPS 本身的品質從 Poor 到 Excellent 不等，不是絕對真值；作者自己說兩種修正法差異小是因為斷面均勻。"
+      },
+      "duplicate_of": null,
+      "reason": "數字無誤。報告稱九個測點，但表 3 的九列裡 Missouri River at Nebraska City 出現兩次，實際是 8 個地點的 9 筆，改寫成「9 筆」。Rocky River「差最多」是從表上讀出來的，可以說，但不要自己算百分比；直接用原文的 −5.0% 到 +1.3%。算 1 條。",
+      "overlaps": [],
+      "facts_counted": 1,
+      "final_id": "S57-003",
+      "batch": "batches/wave57-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S57-004",
+      "reviewer": "V13",
+      "question": "既然 GPS 不怕河床動，為什麼不乾脆都用 GPS？繞一圈自己會不會也有誤差？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f10src/sir2006-5079.pdf（USGS SIR 2006-5079）；今日以 curl（預設標頭）重抓，HTTP 200；sha256 前 16 碼 ae36814ff4cecea9 與作者快取相同；以 pdftotext -layout 文字檔讀表 1、3、4；Abstract、表 1、Uncertainty 節、門檻段",
+      "reopen_result": "「DGPS systems… cannot provide consistently accurate positions because of multipath errors and satellite signal reception problems on waterways with dense tree canopy along the banks, in deep valleys or canyons, and near bridges」「Twenty-eight individual loop measurements were made during low-flow conditions at 17 sites」；表 1 Connecticut River at Hartford：1,005 秒、閉合差 −7.41 m；「uncertainty… +/– 0.006 m/s at a 99-percent confidence level」；門檻「greater than 1 percent… mean velocity greater than or equal to 0.6 m/s」「greater than 2 percent… less than 0.6 m/s and greater than or equal to 0.3 m/s」都在原文。系統誤差原文列三項：沒回到原點、羅盤、底追蹤。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "照原稿，算 1.5 條（GPS 的限制 0.5、無動床時的閉合差與 0.006 m/s 1）。表 1 的閉合差範圍是 0.21 到 7.41 公尺，「幾十公分到幾公尺」可用。",
+      "overlaps": [],
+      "facts_counted": 1.5,
+      "final_id": "S57-004",
+      "batch": "batches/wave57-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S57-005",
+      "reviewer": "V13",
+      "question": "這個「誤差」能不能反過來用，拿來量河床上的沙走多快？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f10src/sir2010-5091-holmes.pdf（Holmes，收於 USGS SIR 2010-5091 研討會論文集）；今日以 curl（預設標頭）重抓，HTTP 200；sha256 前 16 碼 f81549660ef58c19 與作者快取相同；virtual velocity 節、密蘇里河案例、表 2",
+      "reopen_result": "「stationary ADCP, the indicated speed of ADCP movement should correspond to the virtual velocity of the bed-material sediments」「Missouri River at St. Charles… June 19, 2002」「determined at several locations longitudinally along a bedform by anchoring the boat」；表 2 共 23 個值，最小 0.034、最大 0.407；「spatially-averaged virtual velocity for the reach was determined to be 0.156 m/s」「larger values… on the stoss side」「bedform velocity of 0.523 m/hr」都在原文。",
+      "changes_applied": {
+        "scope": "單一河段、單日；研討會論文集。虛擬速度是河床表面顆粒的移動，和沙丘整體的推進速度不是同一個量，片中不可相除比較；作者自己說拿表面速度代表整個活動層會高估輸送量。"
+      },
+      "duplicate_of": null,
+      "reason": "照原稿，算 1 條。兩個速度量的是不同的東西，作者已註明不可相除；另補一句原文的保留：ADCP 量到的是河床表面運動中顆粒的速度，拿它代表整個活動層會高估輸送量。這是研討會論文集裡的一篇，不是期刊論文。",
+      "overlaps": [
+        {
+          "existing_id": "S47-003",
+          "note": "洪水退後沙丘的遲滯，另一題（河床形態），不重複。"
+        }
+      ],
+      "facts_counted": 1,
+      "final_id": "S57-005",
+      "batch": "batches/wave57-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S57-006",
+      "reviewer": "V13",
+      "question": "量到河床顆粒的速度，就能算出河底一天運走多少沙嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f10src/sir2010-5091-holmes.pdf（Holmes，收於 USGS SIR 2010-5091 研討會論文集）；今日以 curl（預設標頭）重抓，HTTP 200；sha256 前 16 碼 f81549660ef58c19 與作者快取相同；表 3、Summary",
+      "reopen_result": "表 3：Bedform Velocimetry 13.3；Hubbell and Sayre（活動層 0.61 m）13,900；Einstein（0.00062 m）14.2；van Rijn（0.0016 m）37.4 t/m·d。「More reasonable estimates… of 14.2 and 37.4」「holds great promise, but the development of sensors and/or methods to accurately determine the active depth… is needed to enable more confident estimates」「approximately 25 minutes」（轉述 Rennie 等 2002，礫石河床 Fraser River）都在原文。",
+      "changes_applied": {
+        "scope": "同一篇研討會論文的單一案例；三個數字只並列、不自行換算倍數。25 分鐘出自文中轉述的 Rennie 等 2002（礫石河床 Fraser River），原文未讀，不套用到沙床。"
+      },
+      "duplicate_of": null,
+      "reason": "答案無誤，算 1 條。作者在轉折二寫的「三種估法能差到一千倍」是自己算的倍數（13,900÷14.2），不在原文，片中只說「從 14.2 到 13,900」。25 分鐘是轉述、礫石河床，不可套到密蘇里河的沙床。",
+      "overlaps": [
+        {
+          "existing_id": "O3079",
+          "note": "O3079 是水層未量區的外推；本核心是活動層厚度的假設，同一種「沒量到的要靠假設」，可在片中呼應但各算各的。"
+        }
+      ],
+      "facts_counted": 1,
+      "final_id": "S57-006",
+      "batch": "batches/wave57-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "T57-001",
+      "reviewer": "V13",
+      "question": "檢察官拿傳票要通訊軟體交出使用者資料，端對端加密的服務交得出什麼？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f10src/bigbrother-edva.html；今日以 curl（預設標頭）重抓，HTTP 200；位元組雜湊與作者快取不同（ff4e0faa618d08d2 對 ac4069c9001d0d95，頁面有動態片段），去標籤後全文逐字相同；bigbrother-cdca.html（44f0a322482d5d18 對 ce9c449f9a084ada，去標籤後相同）",
+      "reopen_result": "2016 頁：「the only information we can produce… is the date and time a user registered with Signal and the last date of a user's connectivity」「things we don't have stored include anything about a user's contacts… groups… or any records of who a user has been communicating with」「All message contents are end-to-end encrypted」；2021 頁：「addresses of the users, their correspondence, and the name associated with each account」「Unix timestamps for when each account was created and the date that each account last connected」都在原文。",
+      "changes_applied": {
+        "facts": 1
+      },
+      "duplicate_of": null,
+      "reason": "照原稿，事實數由 1.5 改 1：2021 年是同一個結論的第二個例子。這是營運者自述；頁面所附的傳票與回覆文件沒有開，寫稿前要開。",
+      "overlaps": [],
+      "facts_counted": 1,
+      "final_id": "T57-001",
+      "batch": "batches/wave57-tech.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "T57-002",
+      "reviewer": "V13",
+      "question": "對方手機關機，第一則訊息怎麼就能先加密好送出去？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f10src/x3dh.html（Revision 1，2016-11-04）1、3.2–3.4、4.2；今日以 curl（預設標頭）重抓，HTTP 200；位元組雜湊不同（97d8d3324320d41b 對 f828630af37ad5f7），去標籤後全文逐字相同",
+      "reopen_result": "「designed for asynchronous settings where one user (\"Bob\") is offline but has published some information to a server」「The server should provide one of Bob's one-time prekeys if one exists, and then delete it」「one-time prekey private keys will be deleted as Bob receives messages using them」「If Alice's initial message doesn't use a one-time prekey, it may be replayed to Bob and he will accept it」都在原文。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "照原稿，算 1 條。重播那一句與 P29 的 T53-010／T53-006 同一類概念，只留一句、不計條數，也不展開。",
+      "overlaps": [
+        {
+          "existing_id": "T53-010",
+          "note": "0-RTT 早期資料可重播：同一類概念不同協定；本核心的重播句不計。"
+        },
+        {
+          "existing_id": "T53-006",
+          "note": "序號防重播；不重複。"
+        },
+        {
+          "existing_id": "T53-001",
+          "note": "TLS 握手的金鑰交換是雙方同時在線；本核心是對方離線時的預先金鑰，機制不同。"
+        }
+      ],
+      "facts_counted": 1,
+      "final_id": "T57-002",
+      "batch": "batches/wave57-tech.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "T57-003",
+      "reviewer": "V13",
+      "question": "手機日後被人拿走、鑰匙被挖出來，以前錄下的加密訊息會被解開嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f10src/doubleratchet.html（Revision 4，2025-11-04）1、2.2、8.1、8.4；今日以 curl（預設標頭）重抓，HTTP 200；位元組雜湊不同（a079d7e5a0019eb3 對 f68d82c6d9f9d12a），去標籤後全文逐字相同",
+      "reopen_result": "「The parties derive new keys for every Double Ratchet message so that earlier keys cannot be calculated from later ones」「each message is encrypted with a unique key that can be deleted after encryption or decryption」「designed to provide security against an attacker who records encrypted messages and then compromises the sender or receiver at a later time. This security could be defeated if deleted plaintext or keys could be recovered」「limits on the number of skipped message keys… (e.g. 1000)… delete skipped message keys after an appropriate interval」都在原文。",
+      "changes_applied": {
+        "facts": 1
+      },
+      "duplicate_of": null,
+      "reason": "答案照原稿。事實數由 1.5 改 1：「錄下的密文日後解不開」這個結論池中 T53-001 已有（TLS 的前向保密），本核心只算新增的「每則一把、不可回推」0.5 條與規格自列的兩個限制 0.5 條。",
+      "overlaps": [
+        {
+          "existing_id": "T53-001",
+          "note": "T53-001：TLS 1.3 公鑰交換具前向保密，長期金鑰外洩也解不開過去錄下的流量。結論相同、層次不同（每次連線對每則訊息），結論不重計。"
+        }
+      ],
+      "facts_counted": 1,
+      "final_id": "T57-003",
+      "batch": "batches/wave57-tech.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "T57-004",
+      "reviewer": "V13",
+      "question": "鑰匙已經被偷過一次，之後的訊息就永遠被看光了嗎？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f10src/doubleratchet.html 2.2、8.2；f10src/signal-spqr-blog.html",
+      "reopen_result": "「designed to recover security against a passive eavesdropper who observes encrypted messages after compromising one (or both) of the parties… Despite this mitigation, a compromise of secret keys or of device integrity will have a devastating effect on the security of future communications」與三個例子（身分私鑰冒充開新對話、持續中間人換入棘輪金鑰、改 RNG）、「it must replace them immediately」都在原文。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "照原稿，算 1 條。",
+      "overlaps": [],
+      "facts_counted": 1,
+      "final_id": "T57-004",
+      "batch": "batches/wave57-tech.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "T57-005",
+      "reviewer": "V13",
+      "question": "App 顯示已端對端加密，為什麼還要我跟對方比對一串「安全碼」？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f10src/x3dh.html 4.1、4.5；f10src/signal-safety-numbers.html（2016-11-17；雜湊 d2ba80b3f405468b 對 37b07a33a4835d2c，去標籤後相同）",
+      "reopen_result": "「If authentication is not performed, the parties receive no cryptographic guarantee as to who they are communicating with」「compare public key fingerprints manually, or by scanning a QR code」「A malicious server could provide Alice a prekey bundle with forged prekeys」「People's Signal keys change every time they get a new phone or reinstall the app」都在原文。2016 年那篇說的是：此前金鑰一變就要手動核准才能繼續收發，新增的是可選的提示模式（當時預設關閉）。",
+      "changes_applied": {
+        "answer_target": "因為加密算式本身不知道對面是誰。X3DH 規格寫明：如果雙方沒有透過另一個可信的管道比對身分公鑰（例如比對指紋或掃 QR 碼），就沒有任何密碼學上的保證知道自己在跟誰通訊。金鑰是伺服器轉交的，規格也分析了惡意伺服器交出偽造金鑰的情形。Signal 把這個指紋叫安全碼；換手機或重裝 App 時金鑰就會變，2016 年的官方說明提到，當時金鑰一變要先手動核准才能繼續通訊，另加了一個只提示、不擋訊息的選項。"
+      },
+      "duplicate_of": null,
+      "reason": "概念與 I3082（以及 P29 的 T53-002）相同，只算 0.5 條，同意作者。改一句：2016 年文章沒有說「聯絡人會看到通知」是當時的預設，照原文寫。",
+      "overlaps": [
+        {
+          "existing_id": "I3082",
+          "note": "驗證只連結訊息與公鑰，公鑰與現實身分的對應要另外建立：同一概念，不重計。"
+        },
+        {
+          "existing_id": "T53-002",
+          "note": "CertificateVerify／Finished 把身分與金鑰綁在一起：TLS 靠憑證鏈，這裡靠人工比對；概念相鄰，只算 0.5 條。"
+        }
+      ],
+      "facts_counted": 0.5,
+      "final_id": "T57-005",
+      "batch": "batches/wave57-tech.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "T57-006",
+      "reviewer": "V13",
+      "question": "訊息內容加密了，伺服器不是還看得到誰寄給誰嗎？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f10src/sealed-sender.html（2018-10-29）；雜湊 b1b428b1dfddc4ea 對 29e9e3538681c094，去標籤後全文逐字相同",
+      "reopen_result": "「While the service always needs to know where a message should be delivered, ideally it shouldn't need to know who the sender is」「short-lived sender certificate… contains the client's phone number, public identity key, and an expiration timestamp」「derive a 96-bit delivery token from their profile key」「Without authenticating, hand the encrypted envelope to the service along with the recipient's delivery token」「additional resistance to traffic correlation via timing attacks and IP addresses are areas of ongoing development」都在原文。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "照原稿，算 1 條。與 T53-007（看得到的標頭欄位不能改）、T53-008（長度外露）是不同的事：這裡是轉信的伺服器知不知道寄件人。",
+      "overlaps": [
+        {
+          "existing_id": "I3094",
+          "note": "libsodium sealed box 是收件人不知道寄件人；這裡是伺服器不知道寄件人，不重複。"
+        },
+        {
+          "existing_id": "T53-008",
+          "note": "TLS 不藏長度與時間；本核心的最後一句（時間關聯仍在發展）相鄰，不計條數。"
+        }
+      ],
+      "facts_counted": 1,
+      "final_id": "T57-006",
+      "batch": "batches/wave57-tech.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "T57-007",
+      "reviewer": "V13",
+      "question": "寄件人都藏進信封了，伺服器還有辦法猜出誰在跟誰聊天嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f10src/ndss-sealed.pdf（Martiny 等，NDSS 2021）Abstract、II-B、圖 3；今日以 curl（預設標頭）重抓，HTTP 200；sha256 前 16 碼 000f19da3fec8eba 與作者快取相同",
+      "reopen_result": "「delivery receipts… which are enabled by default on Signal」「These receipts cannot be disabled in Signal」「We measured a median time of 1480 milliseconds… 90% of Delivery Receipts were received within 1909ms」「using theoretical and simulation-based models that Signal could link sealed sender users in as few as 5 messages」「particularly effective against users that employ Tor or VPNs」「extra cryptographic cost of running our most sophisticated solution in a system with millions of users would be less than $40 per month」都在原文。",
+      "changes_applied": {
+        "answer_target": "研究者說有，而且不用解開任何密文。NDSS 2021 的一篇論文指出，Signal 的送達回條預設開啟而且不能關，收件裝置會自動回一則訊息給寄件人；他們量到回條時間的中位數是 1480 毫秒。於是只要統計「某人收到訊息之後，緊接著哪些人也收到訊息」，來回幾輪就能把兩個人連起來：理論與模擬顯示最少 5 則訊息就夠，對用 Tor 或 VPN 的人特別有效，因為這些人本來可以躲過網路層的追蹤。作者同時提出修補作法，估計最完整的方案在數百萬使用者的規模下，額外的密碼運算成本每月不到 40 美元。"
+      },
+      "duplicate_of": null,
+      "reason": "照原稿，算 1.5 條。補原文一句更強的條件：送達回條在 Signal 不能關（不是只有預設開啟）。「約 5 則」是理論與模擬的最佳情形（as few as），片中要說「最少」。與 T53-008 的流量分析同類但層次不同（這裡是應用層、攻擊者是服務本身）。",
+      "overlaps": [
+        {
+          "existing_id": "T53-008",
+          "note": "觀察長度與時間的流量分析：T53-008 是 TLS 規格的一句提醒，本核心是對特定設計的統計攻擊與量測，各算各的。"
+        }
+      ],
+      "facts_counted": 1.5,
+      "final_id": "T57-007",
+      "batch": "batches/wave57-tech.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "T57-008",
+      "reviewer": "V13",
+      "question": "現在破不了的密文，被人先錄下來等量子電腦，怎麼辦？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f10src/signal-pqxdh-blog.html（2023-09-19）、pqxdh.html（Revision 3）4.1、signal-spqr-blog.html（2025-10-02）；三頁位元組雜湊不同、去標籤後全文逐字相同",
+      "reopen_result": "「an attacker must break both systems in order to compute the keys」「the systems known to exist today do not yet have enough qubits to pose a threat」「Harvest Now, Decrypt Later (HNDL)」「Authentication in PQXDH is not quantum-secure」「encapsulation keys and CTs are large - over 1000 bytes each for ML-KEM 768, compared to the 32 bytes required for ECDH」「Send 10 chunks of 100 bytes each」都在原文。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "照原稿，算 1.5 條（混合交換與理由 1、後量子棘輪與大小 0.5）。「量子位元還不夠」是 Signal 2023 年的說法，片中帶年份。",
+      "overlaps": [],
+      "facts_counted": 1.5,
+      "final_id": "T57-008",
+      "batch": "batches/wave57-tech.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "T57-009",
+      "reviewer": "V13",
+      "question": "群組的名稱和成員名單，伺服器總得存著吧？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f10src/signal-private-groups.html（2019-12-09）；雜湊 35976e8519b68b8c 對 916586b668c8cfbd，去標籤後全文逐字相同",
+      "reopen_result": "「the traditional approach to managing group state is storing it in a plaintext database on a server… it's what essentially everyone else does」「tagged with a Group ID (a random 128-bit secret that cannot be guessed)」「Clients never tell the service which messages are group messages」「race condition… divergence in the members' view」「largely precludes role-based access control」都在原文。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "照原稿，算 1 條。「多數服務都存明文」是 Signal 對同業的描述，片中說「Signal 的說法是」。",
+      "overlaps": [],
+      "facts_counted": 1,
+      "final_id": "T57-009",
+      "batch": "batches/wave57-tech.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-022",
+      "reviewer": "V13",
+      "question": "暖暖包按一下金屬片，實際上會熱到幾度、熱多久？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f10src/dergipark-3832355.pdf（Alp & Balköse，Sigma J Eng Nat Sci 42(2):356–365，2024）；今日以 curl（預設標頭）重抓，HTTP 200；sha256 前 16 碼 c967315b1bfb6a55 與作者快取相同",
+      "reopen_result": "「A commercial reusable warmer with 330 g mass… activated by flexing the metal disc… increased to 51.8 °C in 1 minute and it reached to maximum 54.8 °C in 8 minutes. ΔTmax was 30.7 °C… The temperature was 53.3 °C at the 60th minutes」「onset, peak and end set temperatures… 58.55, 63.59 and 100.36 °C」「enthalpy change of the melting… 227 J g-1」都在原文。原文還說這個產品「bigger than a hand warmer」，高溫撐得久是因為單位質量的散熱面積小。",
+      "changes_applied": {
+        "answer_target": "一篇 2024 年的開放取用論文量了一個 330 公克的市售醋酸鈉暖暖包（比一般暖暖包大）：折一下金屬片引發結晶後，表面溫度 1 分鐘升到 51.8 °C，第 8 分鐘到最高 54.8 °C，一小時後還有 53.3 °C。同一篇另外用熱分析量了三水合醋酸鈉試藥：熔化起始溫度 58.55 °C、熔化焓每公克 227 焦耳。",
+        "scope": "單一市售產品、單次量測，貼在表面的熱電偶、包在毛線織物裡；不是每個暖暖包的保證值。DSC 數字是另一份試藥的量測，不可寫成那個暖暖包放出的熱量。期刊是土耳其的大學期刊。"
+      },
+      "duplicate_of": null,
+      "reason": "溫度讀數無誤，算 1 條。刪掉作者自己接的那句「透明的過飽和溶液把這份熱帶著，直到開始結晶才放出來」：DSC 的 227 J/g 是作者另購的三水合醋酸鈉固體的熔化焓，不是那個市售暖暖包的量測，把兩段接成一條因果鏈是上一輪被抓過的寫法。補上原文的條件：這個產品比一般暖暖包大。",
+      "overlaps": [
+        {
+          "existing_id": "P232",
+          "note": "P232 只有「過飽和是亞穩態、析出涉及成核」一句；本核心是實測溫度，不重複。池中搜尋暖暖包／醋酸鈉沒有既有核心。"
+        }
+      ],
+      "facts_counted": 1,
+      "final_id": "P57-022",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-023",
+      "reviewer": "V13",
+      "question": "暖暖包裡那片金屬片，到底對溶液做了什麼？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f10src/openstax-11-3.html 圖 11.17 圖說；dergipark-3832355 導言與 Results；f10src/mq-sandnes.html（只有摘要；雜湊 75356d3d5127d58a 對 59801671aeee3978，去標籤後相同）",
+      "reopen_result": "OpenStax：「Precipitation of the solute is initiated by a mechanical shockwave generated when the flexible metal disk within the solution is \"clicked.\"」；2024 論文：「The seed crystals trapped in metal disc act as nucleation centers」（引前人）與「crystallization occurred as soon as the thermocouple probe was inserted… a clean surface without any… nuclei can also induce crystallization by mechanical action」（作者單次觀察後的推論）；Sandnes 2008 摘要：「nucleation is triggered by preserving seed crystals clamped between opposing metal surfaces… elevated melting point caused by very high local pressures」。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "照原稿，算 0.5 條。作者寫成「來源說法不一」是對的；Sandnes 只有摘要，不能當機制的定論。池中 P232 的範圍欄「成核細節需加第二來源」仍然沒有解決。",
+      "overlaps": [
+        {
+          "existing_id": "P232",
+          "note": "P232 的成核一句；本核心只補「來源說法不一」，0.5 條。"
+        }
+      ],
+      "facts_counted": 0.5,
+      "final_id": "P57-023",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-024",
+      "reviewer": "V13",
+      "question": "透明卻「裝過頭」的溶液，只有糖和鹽這類固體才會嗎？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f10src/openstax-11-3.html（Chemistry 2e §11.3）；今日以 curl（預設標頭）重抓，HTTP 200；sha256 前 16 碼 294b2efd79b71977 與作者快取相同",
+      "reopen_result": "「the carbonated beverage in an open container that has not yet \"gone flat\" is supersaturated with carbon dioxide gas」「In 1986, more than 1700 people in Cameroon were killed when a cloud of gas, almost certainly carbon dioxide, bubbled from Lake Nyos… It is believed that the lake underwent a turnover due to gradual heating from below the lake」都在原文。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "照原稿，算 1 條。來源網址與池中 SRC-19346cef2dc01be3 完全相同，不另立來源。尼奧斯湖在教材裡是「almost certainly」「It is believed」的通論，沒有引原研究；要當 50 秒的一章並報死亡人數，寫稿前要補一份原研究或 USGS 的說明頁。池中搜尋 Nyos／尼奧斯沒有既有核心。",
+      "overlaps": [
+        {
+          "existing_id": "P232",
+          "note": "過飽和的概念不重計；本核心是氣體的例子。"
+        }
+      ],
+      "facts_counted": 1,
+      "final_id": "P57-024",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-025",
+      "reviewer": "V13",
+      "question": "純水明明也有氫和氧，為什麼幾乎不導電？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f10src/openstax-11-2.html（Chemistry 2e §11.2）；今日以 curl（預設標頭）重抓，HTTP 200；sha256 前 16 碼 a79aa24a1c8f74f0 與作者快取相同",
+      "reopen_result": "「Pure water is an extremely poor conductor of electricity because it is only very slightly ionized—only about two out of every 1 billion molecules ionize at 25 °C」「pure hydrogen chloride is a gas consisting of covalent HCl molecules. This gas contains no ions. However, an aqueous solution of HCl is a very good conductor」都在原文。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "照原稿，算 0.5 條。來源網址與池中 SRC-22bb4f194a5b32a9 完全相同，不另立來源。沒有任何實測導電度，這一點補不了 G01 缺的那一塊。",
+      "overlaps": [
+        {
+          "existing_id": "P224",
+          "note": "糖是中性分子、鹽提供可移動離子：概念不重計。"
+        },
+        {
+          "existing_id": "P266",
+          "note": "P266「中性的水裡真的沒有氫離子和氫氧根嗎」的答案是「兩者平衡而非完全沒有離子」：同一個自游離事實、角度不同；本核心新增的只有「十億分之二」與氯化氫的反例，0.5 條。"
+        }
+      ],
+      "facts_counted": 0.5,
+      "final_id": "P57-025",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P57-026",
+      "reviewer": "V13",
+      "question": "要看到光束穿過牛奶水的路徑，牛奶要加多少？加越多越清楚嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f10src/omlc-scat.html（OMLC 課堂示範頁，1996-12-13）；今日以 curl（預設標頭）重抓，HTTP 200；sha256 前 16 碼 2900b276288ef406 與作者快取相同",
+      "reopen_result": "「you might see a dim red line where the laser beam goes through the water」「We had 600 cc water (little more than 1/2 Gallon), and added 1 cc of vitamin D milk」「If you add too much milk you will not see the dim spot… on the screen anymore」「the light beam eventually becomes a glowing ball」「In milk it is scattered mostly at the tiny fat droplets」都在原文。",
+      "changes_applied": {
+        "answer_target": "很少就夠，而且不是越多越好。奧勒岡醫學雷射中心的課堂示範：雷射筆穿過清水時，只在有小氣泡或灰塵的地方看得到很淡的線；加一點點牛奶攪勻（頁面建議從幾滴開始），光束路徑就看得見，牛奶裡的光主要是被細小的脂肪球散射。繼續加牛奶，穿出去打在紙上的光點暗到看不見，光束也從一條線變成一團發光的球。",
+        "scope": "1996 年課堂示範頁的定性描述；頁面寫的用量（600 cc 水、1 cc 牛奶）與它自己的換算「半加侖多一點」對不上，不引用比例。頁面說照片用了較強的雷射；不是強度量測。"
+      },
+      "duplicate_of": null,
+      "reason": "原文的用量自相矛盾：600 cc 不是「半加侖多一點」（半加侖約 1.9 公升）。所以「600 cc 水加 1 cc 牛奶」不能當成可引用的比例，改成「幾滴」；原文自己也叫讀者「start by adding only a few drops」。保留定性的新觀察（加太多：光點消失、光束變成一團），算 0.5 條。這是一頁 1996 年的課堂示範，不是量測。",
+      "overlaps": [
+        {
+          "existing_id": "P241",
+          "note": "P241 已有「分散粒子把光散射進側面視線」；本核心只算「加太多變成一團」0.5 條。"
+        },
+        {
+          "existing_id": "P240",
+          "note": "牛奶是膠體；不重計。"
+        }
+      ],
+      "facts_counted": 0.5,
+      "final_id": "P57-026",
+      "batch": "batches/wave57-physics.json",
+      "disposition": "candidate"
+    }
+  ],
+  "non_author_reviews": [
+    {
+      "target": "G52 一根線，怎麼變成會伸長、捲邊和抽絲的布？",
+      "theme_id": "G52",
+      "title": "一根線，怎麼變成會伸長、捲邊和抽絲的布？",
+      "reviewer": "V12",
+      "author": "F9",
+      "author_verdict": "ready",
+      "author_est_minutes": 11.1,
+      "verdict": "ready",
+      "final_core_ids": [
+        "X5001",
+        "X5002",
+        "P57-001",
+        "X5003",
+        "P57-002",
+        "X5004",
+        "P57-003",
+        "P57-007",
+        "X5005",
+        "P57-006",
+        "P57-004",
+        "P57-005"
+      ],
+      "recount_facts": "14.5 條。舊核心五個各只有一句結論，各算 1 條：X5001、X5002、X5003、X5004、X5005＝5。新核心：P57-001 1.5、P57-002 1.5、P57-003 1.5、P57-004 1.5、P57-005 1、P57-006 1.5、P57-007 1＝9.5。作者的 16.5 條多算了三處：P57-001 把另一塊布（20×30 針、200 µm）的結果當成同一塊布的第二條；P57-002 把 X5002 已有的「排列改變方向伸展性」再算一次；P57-007 把作者的兩句推論算半條。（14.5×140＋700）÷270＝10.1 分。若把只靠預印本 arXiv:2604.20580 的三個核心（X5005、P57-004、P57-005，共 3.5 條）全部拿掉，剩 11 條、8.3 分，不到 8.5。",
+      "recount_fact_count": 14.5,
+      "recount_minutes": 10.1,
+      "planned_minutes": 9.5,
+      "cuts": "沒有刪舊核心；接進池中原題案沒用的 X5003（不在任何題案裡，可以用）。P49-002（緊密針織先硬後軟）同題但本輪沒有人讀它的來源，不放。章節順序改了一處：作者把 P57-006（線沒壞、可勾回，PRX 2026）排在轉折二的最後，本覆核把它提前到「斷一針」那一章，讓轉折的結論句由已刊出的論文承擔，預印本的 P57-004、P57-005 放在後面當量測。作者排 10 分，改排 9.5 分。",
+      "turns": [
+        "以為針織布有彈性是因為線有彈性：模型布的線幾乎不伸長（模型只算彎曲就對得上量測），布的伸縮來自線圈彎曲；而且同一條線只換正反針排法，哪個方向好拉就跟著變，模型估計反對稱的連接紗段可比對稱的軟到十倍的量級。（不得寫成「羅紋比平針軟十倍」，原文沒有這個比值。）",
+        "以為抽絲是線一路斷下去、越抽越糟：除了最初斷掉的那一處線完好無缺，被解開的是套法，可以一針一針勾回去（Phys. Rev. X 2026 的理論論文）；一份尚未經同儕審查的預印本另外量到，每解開一針就放出線、張力下降，降到門檻就自己停。"
+      ],
+      "chapter_outline": [
+        {
+          "title": "開場：圍巾拉長一大截，線伸長了多少",
+          "seconds": 50,
+          "core_ids": [
+            "P57-001",
+            "X5002"
+          ],
+          "new_information": "拉圍巾是 100% 量級的變形，同樣的力加在線上只有幾個百分點；全片的問題：那多出來的長度是哪裡來的。"
+        },
+        {
+          "title": "先有線：短纖維靠捻與摩擦鎖住",
+          "seconds": 45,
+          "core_ids": [
+            "X5001"
+          ],
+          "new_information": "螺旋路徑把拉力變成纖維之間的正向力，摩擦讓短纖維抽不出來。章切說明這是另一份研究的纖維束模型。"
+        },
+        {
+          "title": "伸長的是線圈：只算彎曲就夠的模型布",
+          "seconds": 80,
+          "core_ids": [
+            "X5002",
+            "P57-001"
+          ],
+          "new_information": "51×51 針的尼龍單絲布；模型不算線被拉長，只算彎曲加線長守恆；帕松比 0.46，滿是空洞的布像面積守恆的材料。"
+        },
+        {
+          "title": "拉回來的功變少",
+          "seconds": 35,
+          "core_ids": [
+            "X5003"
+          ],
+          "new_information": "加載與卸載兩條曲線不重合，差的是線與線接觸處的摩擦；同一份研究。"
+        },
+        {
+          "title": "轉折一：同一條線，只換正反針的排法",
+          "seconds": 80,
+          "core_ids": [
+            "P57-002"
+          ],
+          "new_information": "四種布誰軟誰硬、差在哪個方向；相鄰兩針之間那段連接紗，對稱的要改曲率、反對稱的可以轉，模型估計後者可軟到十倍的量級。彈性不在線，在排法。"
+        },
+        {
+          "title": "放著就捲：寬的和長的捲法不同",
+          "seconds": 65,
+          "core_ids": [
+            "X5004",
+            "P57-003"
+          ],
+          "new_information": "棉紗平針布的三種捲法與針數比；把半個線圈放大成 105 毫米矽膠桿，縮到某個比例就翹出平面。換了樣品（棉紗）。"
+        },
+        {
+          "title": "攤平的尺寸不只一個",
+          "seconds": 40,
+          "core_ids": [
+            "P57-007"
+          ],
+          "new_information": "放鬆後的針目尺寸取決於放鬆前被拉成什麼樣，落在一條有終點的曲線上；標明是預印本。"
+        },
+        {
+          "title": "斷一針：解開的是套法，線沒有壞",
+          "seconds": 65,
+          "core_ids": [
+            "X5005",
+            "P57-006"
+          ],
+          "new_information": "一圈放掉下一圈；除了最初斷的那一處線完好，梯子可以一針一針勾回去；整塊布本來只能從最後一排拆，斷一針等於在中間開了口。轉折二的結論句，來源是已刊出的論文。"
+        },
+        {
+          "title": "轉折二：抽絲會自己停",
+          "seconds": 70,
+          "core_ids": [
+            "P57-004",
+            "P57-005"
+          ],
+          "new_information": "尼龍模型布燒斷一針：低於門檻不抽，每解開一針放出線、張力下降，降到門檻就停；速度與張力成正比。全章標「尚未經同儕審查的預印本」。"
+        },
+        {
+          "title": "收尾：回到那條圍巾",
+          "seconds": 40,
+          "core_ids": [
+            "P57-001",
+            "P57-006"
+          ],
+          "new_information": "伸長、捲邊、抽絲都寫在套法裡；說明各章是不同研究、不同樣品的串聯，不是同一塊布連做的實驗。"
+        }
+      ],
+      "core_question": "短纖維如何先成為線，再靠線圈的套法組成會伸長、會捲、會抽絲但線本身沒壞的布？",
+      "connection": "用同一條彩色線從纖維放大到紗、線圈和整片布，每章只多一個結構層級或邊界條件。第 3–4 章是同一塊尼龍模型布，第 7、9 章是同一個實驗室的尼龍模型布；捻紗（纖維束模型）、正反針（壓克力與棉紗）、捲邊（棉紗）三章各換了樣品，章切要明說，同色線只是教學符號。",
+      "boredom_risk": "九章裡有七份不同的研究，容易變成論文巡禮；每章開頭要回到同一條圍巾或同一雙絲襪上看得見的現象，再給那份研究的一個裝置（針目追蹤、四種針法並排、矽膠桿、烙鐵尖），不念樣品規格。",
+      "drop_if": "要縮片長先刪 P57-005（速度），再刪 P57-007（靜止形狀）：兩個都刪後 12.5 條、9.1 分，仍過線。若 arXiv:2604.20580 被撤回或刊本的結論與 v1 不同，X5005、P57-004、P57-005 都要重核；三個都不能用時剩 11 條、8.3 分，退回後備。不以自己拉布、剪布的示範補畫面。",
+      "evidence_gaps": "所有力學數據都來自尼龍單絲、壓克力紗或單一棉紗的模型布，沒有實際毛衣或絲襪的量測；「十倍」是模型估計。兩份是未經同儕審查的預印本（抽絲 arXiv:2604.20580 只有 v1；靜止形狀 arXiv:2404.07811 v2 無刊本資訊），其餘四篇只讀了 arXiv 版。X5001 仍只有一句話。",
+      "still_missing": "（1）寫稿前再查 arXiv:2604.20580 與 arXiv:2404.07811 的發表狀態；仍是預印本就照範圍在片中說明。（2）開刊本核對：Poincloux 等 PRX 2018、Singal 等 Nature Communications 2024（含補充資料的表）、Tajiri 等（作者稱 Extreme Mechanics Letters 2025，本覆核未能確認）、Shimamoto 等 PRX 16, 031006 (2026)。（3）P57-001、P57-002、P57-004、P57-007 套用本覆核的改字；題案轉折一不得出現「羅紋對平針十倍」。（4）圖只能重繪原研究並標出處，不得冒稱做過拉伸試驗。",
+      "reason": "作者點名的問題逐一裁定。（一）單一預印本能不能承擔轉折：不能單獨承擔，但這個轉折不必靠它。轉折二的結論句「線沒壞、解開的是套法、勾得回去」在已刊出的 PRX 2026 論文（P57-006）裡逐句都有；預印本只負責「會自己停」的量測，而且作者在這一點寫得比原文滿（門檻 2.0±0.8 是用停下後張力的平均定義的，高張力時有例外），已改字。池的來源規則把 arXiv 開放全文算作可讀的原研究，X5005 也早已以這份預印本入池，所以它的事實照算，但全章要標預印本。（二）模型布不是真衣服：成立，寫進每個核心的範圍與題案的 evidence_gaps，不影響判定。（三）只讀 arXiv 版：五份快取今日重抓雜湊全同；PRX 2026 的刊本資訊由 arXiv 紀錄確認。（四）「十倍」：原文主詞是連接紗段，作者在轉折裡寫成羅紋對平針，已改。重算 14.5 條、10.1 分，兩個轉折成立，判可成題；它對那份預印本的依賴寫進 drop_if。"
+    },
+    {
+      "target": "G43 房間鋪滿軟墊，隔壁就聽不到嗎？",
+      "theme_id": "G43",
+      "title": "房間鋪滿軟墊，隔壁就聽不到嗎？",
+      "reviewer": "V12",
+      "author": "F9",
+      "author_verdict": "ready",
+      "author_est_minutes": 11.9,
+      "verdict": "ready",
+      "final_core_ids": [
+        "H57-001",
+        "B4020",
+        "H57-002",
+        "H57-003",
+        "B4021",
+        "H57-004",
+        "B4022",
+        "H57-005",
+        "H57-006",
+        "H57-007",
+        "B4012"
+      ],
+      "recount_facts": "15.5 條。舊核心四個各一句，各算 1 條：B4020、B4021、B4022、B4012＝4。新核心：H57-001 2、H57-002 1.5、H57-003 1、H57-004 1.5、H57-005 2、H57-006 2、H57-007 1.5＝11.5。作者的 18 條多算的地方：H57-001 的「直接音場沒有保護」是 B4020 已有的；H57-002 的分貝聽感與 P120 相鄰；H57-003 的重建重現性不是觀眾會帶走的事實；H57-005、H57-006 把 B4022 已有的機制各再算半條。（15.5×140＋700）÷270＝10.6 分。",
+      "recount_fact_count": 15.5,
+      "recount_minutes": 10.6,
+      "planned_minutes": 10,
+      "cuts": "沒有刪舊核心，也沒有刪新核心。B4020、B4021、B4022 原本只靠付費的 ASHRAE 手冊第 8 章，三章改以 NBS Handbook 119 與 NRC 四份開放文件為準。作者排 10 分，維持。第 4 章與第 5 章之間加一條限制：H57-003 那條實測曲線的 3,150 赫茲凹口不得當成巧合低谷的例子。",
+      "turns": [
+        "以為吸音材越多越隔音，那就乾脆塞進牆裡：塞在牆裡確實有用，但只在兩面板沒有硬連的時候（隔開後加棉，文摘說約多 8 點、技術通報說約多 10 點；直接釘在同一排立柱上只多約 3 點），研究院直說後者是浪費錢。",
+        "以為多貼一層板一定更好：190 毫米混凝土磚牆裸牆 STC 50，一面架板填棉 54，兩面都貼反而比裸牆少一點，而且 100 赫茲附近明顯變差，因為板與牆之間的空氣層太淺、發生質量—空氣—質量共振。"
+      ],
+      "chapter_outline": [
+        {
+          "title": "開場：把隔間牆換成地毯會怎樣",
+          "seconds": 50,
+          "core_ids": [
+            "H57-001"
+          ],
+          "new_information": "一面只用吸音磚、地毯或窗簾做的牆幾乎不擋聲音；磚牆吸音差、隔音極好。吸墨紙與游泳池。"
+        },
+        {
+          "title": "吸音材吃掉的是房間裡的聲音",
+          "seconds": 60,
+          "core_ids": [
+            "B4020",
+            "H57-001"
+          ],
+          "new_information": "吸音處理混響場：高音約降 5 到 10 分貝、低音 2 到 3 分貝，站在機器旁的人沒有保護；隔音罩外殼、內襯、彈性支承缺一不可。"
+        },
+        {
+          "title": "牆重一倍，只多六分貝",
+          "seconds": 65,
+          "core_ids": [
+            "H57-002"
+          ],
+          "new_information": "質量定律：面密度或頻率加倍約多 6 分貝，多 12 分貝要 4 倍重；150 毫米混凝土約 STC 55，大致是實務上限。"
+        },
+        {
+          "title": "一面量過的牆：低音與高音差多少",
+          "seconds": 50,
+          "core_ids": [
+            "H57-003"
+          ],
+          "new_information": "同一面 STC 33 的石膏板牆：1,600 赫茲擋 53.9 分貝、125 赫茲只擋 8.6 分貝；兩處低谷報告都沒有解釋，照實說。"
+        },
+        {
+          "title": "某一段音高特別漏",
+          "seconds": 65,
+          "core_ids": [
+            "B4021",
+            "H57-004"
+          ],
+          "new_information": "巧合效應：臨界頻率＝A÷厚度；三片一樣重的板 STC 21、28、30。用文摘自己的理想化圖，不指上一章那條實測曲線。"
+        },
+        {
+          "title": "兩層板中間的空氣不是什麼都不做",
+          "seconds": 45,
+          "core_ids": [
+            "B4022"
+          ],
+          "new_information": "隔開的兩片板仍被空腔裡的空氣耦合，所以兩層的隔音不能直接相加；為下兩章鋪路。"
+        },
+        {
+          "title": "轉折一：牆裡塞棉有沒有用，看板怎麼釘",
+          "seconds": 80,
+          "core_ids": [
+            "H57-005"
+          ],
+          "new_information": "兩面板釘在同一排立柱上：約 33，加棉只多 3，研究院說是浪費錢；隔開後 40 對 48、46 對 57。中間再加一層板反而從 58 掉到 55。"
+        },
+        {
+          "title": "轉折二：水泥磚牆兩面貼板，反而少一點",
+          "seconds": 80,
+          "core_ids": [
+            "H57-006"
+          ],
+          "new_information": "190 毫米磚牆裸牆 STC 50，一面架板填棉 54，兩面都貼比裸牆少一點，100 赫茲附近明顯變差：板與牆之間的空氣層共振。"
+        },
+        {
+          "title": "會漏的磚、搭橋的砂漿與繞路",
+          "seconds": 65,
+          "core_ids": [
+            "H57-007",
+            "B4012"
+          ],
+          "new_information": "多孔的磚不封面只有 STC 14、粉刷後 43；預期 70 以上的雙層磚牆因掉落的砂漿搭橋只剩 60；聲音還會沿樓板與側牆繞過去。"
+        },
+        {
+          "title": "收尾：回答題目",
+          "seconds": 40,
+          "core_ids": [
+            "H57-001",
+            "H57-005"
+          ],
+          "new_information": "軟墊讓自己的房間安靜一點，擋不住隔壁；擋聲音靠重量、隔開與空氣層的深度。說明數據是加拿大實驗室的輕隔間與混凝土磚牆。"
+        }
+      ],
+      "core_question": "吸音和隔音為什麼是兩件事，一面牆擋聲音靠的又是什麼？",
+      "connection": "從「房間裡」走到「牆裡」：先分清吸音處理的是自己房間的回音，再依序看一面牆靠重量、怕某段頻率、兩層板之間的空氣與連接怎麼改變結果，最後是磚牆與繞路。每章用一組實測數字回答上一章留下的「那這樣做呢」。",
+      "boredom_risk": "STC 數字一多就像規格表；每章只留一組對比（33 加 3 對 40 變 48；50、54、少一點），並讓觀眾先猜方向再揭曉。兩個轉折都是「照直覺做反而沒用或變差」，要留足篇幅，不要被前面的公式章擠掉。",
+      "drop_if": "要縮片長先刪「一面量過的牆」（H57-003），再把 H57-007 併成一句：兩者都刪後 13 條、9.3 分，仍過線。若 B4021 的巧合低谷講不清，只留文摘的公式與三片板，不再加例子。全片不得寫成隔音施工教學。",
+      "evidence_gaps": "全部量測來自加拿大 NRC 的石膏板輕隔間與混凝土空心磚牆實驗室數據，加上 1976 年美國 NBS 手冊；沒有台灣 RC 牆、紅磚牆或輕質灌漿牆的數據，STC 是北美的評級（125–4,000 Hz）。兩份文摘是 1985 年版，典藏頁註明可能不符現行做法。IR-761 只讀了說明章與三面牆。",
+      "still_missing": "（1）片中明說數據來自加拿大實驗室的輕隔間與混凝土磚牆，不把 STC 點數套到觀眾家裡。（2）H57-003 的 125 Hz 與 3,150 Hz 低谷來源都沒有解釋：不得叫巧合低谷，也不得用 H57-004 的公式替那面牆算臨界頻率。（3）H57-003 的試體已含礦纖棉而 STC 33，與 H57-005 文摘的「約 33、加棉多 3」不並列成同一面牆。（4）B4012（側向傳聲）仍只有一句，可再補 NRC 側向傳聲報告的實測。（5）H57-001、H57-003、H57-005 套用本覆核改字。",
+      "reason": "作者點名的三點：（一）數據全是加拿大石膏板與混凝土磚牆：屬實，但 STC 33／＋3／＋8 到 10 與磚牆 50／54／少一點這幾組數字逐句都在 NRC 文件裡，機制不分國別，寫進範圍即可，不影響判定。（二）IR-761 只讀說明章與三面牆：H57-003 只用其中一面當「一條真實曲線」的例子，夠用；我核對了 TL-93-166 整頁數字。（三）3,150 Hz 凹口：報告沒有解釋，125 Hz 的深谷也沒有，兩處都不得冠上成因，已寫進 H57-003 的範圍與章節說明。另抓到一處作者沒發現的矛盾：H57-003 那面牆已經塞棉而 STC 33，H57-005 引的文摘卻說同類牆不塞棉約 33、塞了多 3，兩份文件不能寫成同一面牆。重算 15.5 條、10.6 分（作者 11.9 分），兩個轉折都有量測數字，判可成題。"
+    },
+    {
+      "target": "G42 牆越封越緊，為什麼還是會潮？",
+      "theme_id": "G42",
+      "title": "牆越封越緊，為什麼還是會潮？",
+      "reviewer": "V12",
+      "author": "F9",
+      "author_verdict": "ready",
+      "author_est_minutes": 11.1,
+      "verdict": "reserve",
+      "final_core_ids": [
+        "B4001",
+        "H57-008",
+        "H57-009",
+        "B4004",
+        "H57-010",
+        "B4003",
+        "H57-011",
+        "B4005",
+        "H57-012",
+        "H57-013"
+      ],
+      "recount_facts": "13.0 條。舊核心各一句，各算 1 條：B4001、B4003、B4004、B4005＝4（B4002 是寒冷供暖條件下的木構牆板，照作者的處理移出）。新核心：H57-008 1、H57-009 1.5、H57-010 2、H57-011 1.5、H57-012 1.5、H57-013 1.5＝9。作者算 16.5 條。（13.0×140＋700）÷270＝9.3 分，分鐘數過線；判後備的原因是第二個轉折的證據，不是分鐘數。",
+      "recount_fact_count": 13.0,
+      "recount_minutes": 9.3,
+      "planned_minutes": null,
+      "cuts": "B4002 移出（範圍自己寫明不跨氣候）。六個新核心改字後都收進批次，留待本題補齊後使用。",
+      "turns": [
+        "成立：以為水汽永遠由室內往室外、所以不透氣的那層放室內側；開冷氣的濕熱氣候方向相反（回顧文章的例子：溫差只有四分之一，水汽壓差卻是三倍、由外往內），室內側不透氣的飾面擋住的是牆往室內乾的路。但數字是作者設定的典型條件，不是量測。",
+        "不成立為獨立的轉折：以為牆潮不是漏雨就是水汽慢慢滲，其實是負壓把室外濕空氣吸進牆裡。支撐它的 H57-010、H57-011 是同一篇 1992 年研討會論文的兩個個案，成因是調查者的推斷（原文 We may assume、Our hypothesis），論文沒有報告改善後的結果；而替它背書的 H57-009 兩份文摘是同一位作者，引的也是他自己的著作。"
+      ],
+      "chapter_outline": [],
+      "core_question": "牆的潮濕可以從哪幾條路來，為什麼把牆封得更緊不一定讓它更乾？",
+      "connection": "（後備，暫不排章。）可行的主軸是冷房季：水汽方向反過來、室內側不透氣的飾面、負壓把濕空氣吸進牆內空腔、磚石牆的雨水與自帶的水。",
+      "boredom_risk": "個案是 1990 年前後的美國旅館與安養院（石膏板內襯加乙烯基壁紙），國內觀眾的牆是 RC 加粉刷或磁磚，很難對上自己的房子；這正是第一輪放後備的理由，本輪沒有解決。",
+      "drop_if": "找不到獨立於 Lstiburek 的濕熱氣候實測或模擬來源，就維持後備；不得以壁癌、防水、除濕的做法補片長。",
+      "evidence_gaps": "濕熱氣候的證據是一位顧問作者的一篇 1992 年個案論文與他自己的兩份文摘，加上一篇德國作者 2022 年回顧裡的假設例子；沒有牆內溫濕度隨時間的量測或模擬；沒有台灣、亞洲或 RC 牆的資料；BSD-012 只讀了一段；黴菌的相對濕度界限兩個來源一個說 70%、一個說 80%。",
+      "still_missing": "要補到才再評：（1）一份獨立於 Lstiburek 的來源，直接量到或模擬出冷房建築裡濕空氣經牆體或空腔進入、或室內側低透濕層造成受潮（例如佛羅里達太陽能中心 FSEC 的報告，本輪 TLS 憑證驗證失敗沒讀到；或新加坡、香港、台灣建研所的實測）；（2）至少一組牆內溫度與濕度隨時間的量測或熱濕模擬曲線，企劃禁止拿動畫顏色冒稱計算結果這一點才解得開；（3）RC 或磚造外牆在濕熱氣候的資料，讓觀眾對得上自己的牆。補到（1）即可讓第二個轉折成立，分鐘數已經夠（9.3 分）。六個新核心照本覆核改字入池；H57-010 的成因要寫「調查者判斷」。",
+      "reason": "作者自己說這題最弱、改回後備也合理，我同意，理由比作者列的多一項。作者列的限制都屬實：H57-008 的數字是回顧文章作者設定的典型日平均條件；沒有牆內溫濕度的時間序列；BSC 文摘是顧問公司文件、BSD-012 只讀一段；沒有台灣、亞洲或 RC 牆。作者沒有寫的是：H57-009（BSC 兩份文摘）、H57-010、H57-011（1992 年研討會論文）的作者是同一個人 Joseph Lstiburek，文摘裡「與發霉的建築有關聯」引的也是他自己的著作；而且那篇論文對坦帕旅館的成因用的是 We may assume 與 Our hypothesis，沒有改善後的驗證，作者卻在答案裡寫成「是被空調自己吸進來的室外空氣帶來的」。所以六個新核心裡有三個是同一位顧問的說法，第二個轉折等於只有一個來源的推斷。機制本身（空氣流動搬運水分）池中 B4001 另有來源，安養院個案的負壓與示蹤氣體也是實測，因此核心都收，只把推斷標成推斷。重算 13.0 條、9.3 分，分鐘數過線，但「兩個改變結論的轉折」只成立一個半，加上第一輪指出的「觀眾對不上自己的牆」沒有改善，維持後備。另改掉一處作者把兩段原文接成因果鏈的句子（H57-008 末句）。"
+    },
+    {
+      "target": "G30 塑膠軟了，真的就是融化了嗎？",
+      "theme_id": "G30",
+      "title": "塑膠軟了，真的就是融化了嗎？",
+      "reviewer": "V12",
+      "author": "F9",
+      "author_verdict": "ready",
+      "author_est_minutes": 12.4,
+      "verdict": "ready",
+      "final_core_ids": [
+        "H3024",
+        "P56-006",
+        "P57-008",
+        "P56-007",
+        "H3025",
+        "P56-008",
+        "P57-009",
+        "P57-010",
+        "H3027",
+        "P57-011",
+        "H3090",
+        "P56-009",
+        "P57-012"
+      ],
+      "recount_facts": "17.5 條。第六輪覆核（V11）已算定的 11 條原樣沿用、不重算：H3024 1.5、H3025 1、H3027 1、H3090 1.5＝5；P56-006 1.5、P56-007 1、P56-008 2、P56-009 1.5＝6。本輪新增 6.5 條：P57-008 1.5、P57-009 1.5、P57-010 2、P57-011 0.5、P57-012 1。作者算 19 條（新增 8），多算的是：P57-008 的三種塑膠各兩個溫度 P56-006 已有；P57-011 的「整件是一個分子」與 H3027、不溶只膨潤與 H3093 是同一件事；P57-012 的時間—溫度平移 H3090 範圍已提。（17.5×140＋700）÷270＝11.7 分。",
+      "recount_fact_count": 17.5,
+      "recount_minutes": 11.7,
+      "planned_minutes": 10.5,
+      "cuts": "沿用第六輪的裁定：H3026（橡膠為什麼縮回去）不放。P56-006 到 P56-009 四個第六輪入池的核心目前不在任何題案的 candidate_ids 裡（themes.json 只在 G30 的說明文字提到），可以用，也確認沒有被重算。作者把 P57-009、P57-010 那一章題為「門檻真的被搬到室溫以下」，改成「兩份量熱研究：量到在室溫以下，但要加得進去」。作者排 10 分，改排 10.5 分。",
+      "turns": [
+        "軟不等於快熔了：每種塑膠有玻璃轉移與熔融兩個溫度（P56-006 的評估值），拿真的包裝垃圾去量也是兩回事：水瓶（PET）約 84–85°C 玻璃轉移、246–248°C 才熔，飲料杯（聚苯乙烯）只報約 99°C 的玻璃轉移，袋與瓶蓋（聚乙烯）報的是 109 到 135°C 的熔融峰。兩份資料分開說。",
+        "不加熱也能變軟，而且這次整句成立：40 份 DOP 的軟 PVC 以量熱儀量到玻璃轉移 7±1°C，作者明寫在室溫以下；另一份研究同一種 PVC、同一量法，不加是 80°C，加 50 份商用塑化劑 DEHT 是 −14°C、作者自製的幾種是 −27 到 −30°C，但加了不相容的仍是 79°C。這兩份與池中 P56-008（DMA，61°C）是三份研究，不連成一條線。"
+      ],
+      "chapter_outline": [
+        {
+          "title": "開場：三個都「變軟」，是同一件事嗎",
+          "seconds": 45,
+          "core_ids": [
+            "H3024"
+          ],
+          "new_information": "硬的鍵盤按鍵與軟的電線外皮（高分子教學網站舉的例子）、受熱變形的杯蓋、壓久了頂不住的塑膠件：幾種「軟」先並排，全片逐一拆開。畫面是示意，不示範加熱。"
+        },
+        {
+          "title": "兩個溫度：鏈段動起來，與晶體消失",
+          "seconds": 75,
+          "core_ids": [
+            "H3024",
+            "P56-006"
+          ],
+          "new_information": "玻璃轉移與熔融是兩回事；聚乙烯、PET、聚苯乙烯各有兩個溫度（1981–83 年的評估值），室溫落在聚乙烯的兩個溫度之間。轉折一。"
+        },
+        {
+          "title": "拿包裝垃圾去量：瓶、杯、袋各在幾度",
+          "seconds": 75,
+          "core_ids": [
+            "P57-008"
+          ],
+          "new_information": "23 件希臘的包裝垃圾：水瓶是 PET，約 84–85°C 玻璃轉移、246–248°C 才熔；飲料杯是聚苯乙烯，約 99°C；袋與瓶蓋是聚乙烯，靠 109 到 135°C 的熔融峰分種類。說明是另一份資料、另一種量法。"
+        },
+        {
+          "title": "玻璃轉移不是刻在材料上的一個數",
+          "seconds": 45,
+          "core_ids": [
+            "P56-007"
+          ],
+          "new_information": "聚乙烯的玻璃轉移各研究給過 140 到 250 K；聚苯乙烯的隨分子量變。前兩章的 PET 數字不同，片中只說是兩份資料、兩種量法，不替它找原因。"
+        },
+        {
+          "title": "轉折：不加熱，加塑化劑",
+          "seconds": 65,
+          "core_ids": [
+            "H3025",
+            "P56-008"
+          ],
+          "new_information": "30 份 DOP：模數從 1,427.8 降到 396.7 MPa、伸長率從 25% 到 272%，沒有加熱就變軟；這份研究量到的玻璃轉移 61°C，仍高於室溫。"
+        },
+        {
+          "title": "兩份量熱研究：量到在室溫以下，但要加得進去",
+          "seconds": 105,
+          "core_ids": [
+            "P57-009",
+            "P57-010"
+          ],
+          "new_information": "40 份 DOP 的軟 PVC 量到 7±1°C，作者明寫在室溫以下；另一份研究同一種 PVC 同一量法，不加是 80°C、加 50 份商用塑化劑 −14°C，加了不相容的仍是 79°C。三份研究分開說，不連成一條線。轉折二。"
+        },
+        {
+          "title": "再熱也不流：交聯",
+          "seconds": 60,
+          "core_ids": [
+            "H3027",
+            "P57-011"
+          ],
+          "new_information": "硫橋把鏈接成一個網絡，受熱不能互相流過；同一種鏈輕度交聯是橡膠、重度交聯是硬的熱固材料。"
+        },
+        {
+          "title": "壓住不動，頂回來的力卻變小",
+          "seconds": 110,
+          "core_ids": [
+            "H3090",
+            "P57-012",
+            "P56-009"
+          ],
+          "new_information": "兩種讓步方式：鍵被扭曲（約 10⁻¹² 秒）與鏈慢慢改形狀；單一鬆弛時間的模型約兩個十倍程降完，真實材料是一整個分布。實測：超高分子量聚乙烯壓住 5 分鐘，要兩個時間常數才描述得好。"
+        },
+        {
+          "title": "收尾：回答題目",
+          "seconds": 50,
+          "core_ids": [
+            "H3024",
+            "P57-009"
+          ],
+          "new_information": "變軟可以是過了玻璃轉移、熔了、被塑化劑把門檻搬低，或只是力隨時間鬆掉；只有一種叫熔化。"
+        }
+      ],
+      "core_question": "塑膠「變軟」有哪幾種不同的原因，哪一種才是熔化？",
+      "connection": "開場並排三種變軟，之後一章拆一種：溫度（兩個門檻）、添加物（把門檻搬低）、交聯（為什麼有的根本不流）、時間（力自己鬆掉）。每章回到開場的三件東西之一。",
+      "boredom_risk": "溫度數字很多，容易念成表；每章只留一件日常物品與它的一兩個數字。塑化劑一章有三份研究，要用畫面把三份分開（三張不同的樣品卡），不要畫成同一條曲線。",
+      "drop_if": "要縮片長先刪 P57-011 併入 H3027 一句，再刪 P56-007：刪後 16 條、10.9 分。若 P57-009 或 P57-010 在寫稿時發現引用有誤，轉折二退回第六輪的狀態（只能說變軟、不能說降到室溫以下），本題退回後備。不延伸健康、法規與加熱示範。",
+      "evidence_gaps": "沒有同一研究、同一量法、多個添加量的鄰苯二甲酸酯系列：鄰苯二甲酸酯只有單點（40 phr DOP），多添加量系列是作者自製的生質寡聚酯且逐點值只在圖上。P57-008 是單一實驗室 23 件樣品、第二次升溫、沒有不確定度，PET 的玻璃轉移與 P56-006 的評估值差了十幾度而原文沒有解釋。應力鬆弛的實測只有一種材料 5 分鐘；熱固性一章沒有量測數據。",
+      "still_missing": "（1）F9-NA007 的重收條件維持：取得開放全文的鄰苯二甲酸酯多添加量 DSC 系列。（2）可再找一份獨立的日常製品 DSC 交叉核對 P57-008。（3）H3090 的 OpenLearn 來源仍 403，多種材料、長時間的應力鬆弛實測仍缺（F9-NA008）。（4）P57-008、P57-009、P57-010、P57-012 套用本覆核改字；P57-012 不得出現「10 秒到 1,000 秒」。（5）入池時把 G30 的 candidate_ids 換成本覆核的 final_core_ids（移出 H3026）。",
+      "reason": "第六輪擋住本題的是轉折二「塑化劑把玻璃轉移降到室溫以下」沒有來源。本輪兩份開放全文我都逐句核對了：Akhina 等 2020（RSC Advances）Table 1 是 PVC 100、DOP 40 phr，Table 3 的 Tg 中點 7±1°C，3.5 節原話「The glass transition of PPVC is situated below room temperature」；Dziendzioł 等 2025（Materials）Table 3 同一種 PVC、同一 DSC 程序，不加 80°C、加 50 phr DEHT −14°C。轉折成立。作者點名的幾點：三份研究不得連線，已寫進三個核心的範圍與章節說明；章名改掉「真的被搬到」的斷語；P57-012 的「10 秒到 1,000 秒」原文沒有，已刪（講義註 3 的例子是一個十倍程 10³ 到 10⁴ 秒）；H3027 多了 PSLC 的獨立來源，但新增事實只有半條；Roylance 講義是模型曲線，照範圍只當機制說明。另改正作者兩處：P57-010 的溫度範圍應為 −27 到 −30°C，DEHT 是對苯二甲酸酯不是鄰苯二甲酸酯；P57-009 的 7°C 取自未老化曲線。P56-006 到 P56-009 沒有被重算。重算 17.5 條、11.7 分（作者 12.4 分），判可成題。"
+    },
+    {
+      "target": "G08 站得住的東西，為什麼一推就倒？",
+      "theme_id": "G08",
+      "title": "站得住的東西，為什麼一推就倒？",
+      "reviewer": "V13",
+      "author": "F10",
+      "author_verdict": "ready",
+      "author_est_minutes": 9.6,
+      "verdict": "ready",
+      "final_core_ids": [
+        "P57-020",
+        "P163",
+        "P166",
+        "P167",
+        "P57-021",
+        "P164",
+        "P165",
+        "P57-014",
+        "P57-013",
+        "P57-015",
+        "P57-016",
+        "P57-017",
+        "P57-018",
+        "P57-019"
+      ],
+      "recount_facts": "13 條。舊核心五個各只有一句教材答案：P163 1、P166 0.5、P167 0.5、P164 1、P165 1＝4。新核心：P57-013 1、P57-014 1（作者 1.5；星等界線與六倍是同一條迴歸）、P57-015 1、P57-016 1、P57-017 1、P57-018 1.5、P57-019 1.5、P57-020 0.5、P57-021 0.5＝9。合計 13；（13×140＋700）÷270＝9.3 分。作者算 13.5 條、9.6 分。",
+      "recount_fact_count": 13,
+      "recount_minutes": 9.3,
+      "planned_minutes": 9,
+      "cuts": "同意刪 P024（力偶）與 P036（兩人抬箱）：靜力學前置、不回答主問題。新核心九個全收。P164 留用：它在短題 G134（short_explainer，沒有素材判定）裡也有，不在任何可成題長題，可以用；P163、P166、P167、P165 只在 G08。作者排 9.5 分超過重算的 9.3 分，改排 9 分。",
+      "turns": [
+        "以為車子翻覆是轉彎太猛被甩翻：NHTSA 把約 95% 的翻覆看成滑出路面後被絆倒，那一刻起作用的車輛性質只剩重心高與輪距，所以「半輪距除以重心高」這個靜止時量的比值就能對到事故風險（一星 40% 以上、五星低於 10%）；真的開去急轉測，翹起的 11 輛全在 SSF 低的那一群裡，機關自己說多出來的預測力不大。",
+        "以為重物放低、抽屜裝滿就穩：CPSC 幕僚的測試顯示裝滿的抽屜關著是壓艙、以容積計拉開超過一半就變成幫倒忙；爬抽屜的孩子不是靜止的砝碼（等效力超過體重 1.6 倍，舊標準卻用 50 磅靜重測），地毯又大致相當於先讓櫃子前傾 0.8 到 3 度。「重心在底座內就不會倒」只在沒人動它、地面夠硬時成立。"
+      ],
+      "chapter_outline": [
+        {
+          "title": "開場：站得住和推不倒是兩回事",
+          "seconds": 55,
+          "core_ids": [
+            "P57-020",
+            "P163"
+          ],
+          "new_information": "CPSC 幕僚估美國每年約 19,400 人因家具、電視、家電傾倒送急診；平衡只說此刻合力與力矩為零，沒說推一下之後會怎樣。"
+        },
+        {
+          "title": "推一下會不會回來：三種平衡，還有方向",
+          "seconds": 70,
+          "core_ids": [
+            "P163",
+            "P166",
+            "P167",
+            "P57-021"
+          ],
+          "new_information": "穩定、不穩定、中性三種；鞍上的彈珠前後穩左右不穩；人站著前後要靠肌肉，雞的重心掛在髖關節下面像擺。"
+        },
+        {
+          "title": "底座與重心，合成一個比值",
+          "seconds": 70,
+          "core_ids": [
+            "P164",
+            "P165",
+            "P57-014"
+          ],
+          "new_information": "半輪距除以重心高＝SSF，1973 年車廠提出；NHTSA 2001 年把它對到單一車輛事故後的翻覆風險與五個星等。不重講比薩斜塔。"
+        },
+        {
+          "title": "翻車多半不是甩翻的",
+          "seconds": 85,
+          "core_ids": [
+            "P57-013",
+            "P57-015"
+          ],
+          "new_information": "約 95% 是絆倒型，被絆住之後抓地力幾乎無關；單一車輛事故的翻覆比例轎車 13%、休旅車 32%；某款休旅車改款降重心約 2 吋。轉折一。"
+        },
+        {
+          "title": "真的開去急轉測，多知道多少",
+          "seconds": 50,
+          "core_ids": [
+            "P57-016"
+          ],
+          "new_information": "25 輛裡翹起的 11 輛全在 SSF 低於 1.20 的 16 輛裡；機關自己寫多出來的風險很小。轉折一收束。"
+        },
+        {
+          "title": "抽屜裝滿，是壓艙還是推手",
+          "seconds": 65,
+          "core_ids": [
+            "P57-017"
+          ],
+          "new_information": "同一份衣服，關著在支點後面、拉開就到支點前面；以容積計超過一半開著時，裝滿反而更不穩。轉折二。"
+        },
+        {
+          "title": "會動的人和軟的地板",
+          "seconds": 105,
+          "core_ids": [
+            "P57-018",
+            "P57-019"
+          ],
+          "new_information": "40 個孩子的測試：攀爬的等效力超過體重 1.6 倍，舊標準用 50 磅靜重；1,221 組比較裡 94% 在地毯上較早倒，相當於前傾 0.8 到 3 度。"
+        },
+        {
+          "title": "收尾：回答開場並留問題",
+          "seconds": 40,
+          "core_ids": [
+            "P163",
+            "P57-017"
+          ],
+          "new_information": "站得住是此刻的平衡，推不倒要看誰來推、往哪推、地面多軟；留一個留言問題。不給固定家具的教學。"
+        }
+      ],
+      "core_question": "靜止時平衡，和受到擾動後能站回來，差在哪裡？為什麼一個靜止量的幾何比值能預測翻車，卻預測不了被孩子攀爬的櫃子？",
+      "connection": "前三章用小模型建立「推一下會不會回來」與底座、重心；中段把這兩樣合成 SSF，用車子檢驗它為什麼出奇地有用（轉折一）；後段用櫃子檢驗它哪裡不夠（抽屜開關、會動的人、軟地面，轉折二）。兩個案例一正一反，回答同一個問題。",
+      "boredom_risk": "車的段落數字多（星等、百分比），容易變成念表；每章只留一個要觀眾記住的數字。重複推倒模型沒有新增判斷就會無聊，每次只改一個條件。",
+      "drop_if": "要縮片長先刪「真的開去急轉測」一章（P57-016，轉折一仍成立），再刪 P57-021；兩個都刪後 11.5 條、8.6 分，仍過線。若再把與已上架 T14 重疊的 P164、P165 各折半，會掉到 10.5 條、8.0 分，那時退回後備。不做真人家具示範，不出現固定家具或選車的建議。",
+      "evidence_gaps": "櫃子三章全部來自一份沒有生效的 2022 年規則前言，片中一律說「CPSC 幕僚的測試發現」；UMTRI 完整報告（NPR briefing package Tab R）未讀，1.6 倍是幕僚依其資料的估計。車的數字是 1990 年代美國事故資料與 2001、2003 年的公告；沒有傾斜台實測傾角（F10-NA005）。模型示範是本片自製，不是來源。",
+      "still_missing": "（1）寫稿前讀 UMTRI 報告（Tab R）確認 40 人、1.08、6 吋三個數字的原始出處。（2）單位是磅、吋、呎，稿中換算要標明是換算。（3）P57-019 套用本覆核改字（94%，不是全部）；P57-018 的舊標準寫法、P57-016 的 tip-up 用字、P57-014 的六倍條件照本覆核。（4）P57-021 改掛 SRC-aebc97f067673f86。（5）P164、P024 的舊來源見 open_data_issues，本輪不改。（6）TRB Special Report 265 已下載未讀，若要補傾斜台資料從它開始。（7）與已上架 T14〈比薩斜塔〉的銜接：底座與重心只當 SSF 的入口，不重講斜塔；T14 說的「重心在底座內就不會倒不完整」由後三章接上，稿中可明講。",
+      "reason": "九個新核心的數字逐句對過原文，只有 P57-019 一處寫過頭（全部→94%）、P57-018 一處舊標準寫錯對象，改字後都成立。重算 13 條、9.3 分，過 8.5；兩個轉折都會改變觀眾原本的結論，而且一正一反回答同一個核心問題。作者特別標的三點裁定如下：NHTSA 的 95%、星等界線與風險、2003 年動態測試「多出來的風險很小」都在原文，95% 是機關的看法（We view）要照此說；CPSC 的抽屜過半、1.6 倍、0.8–3 度與平均 1.48 度都在原文，2022 年規則依 88 FR 28403 沒有生效，用字必須是「幕僚的測試發現」；沒有傾斜台資料不影響成題。"
+    },
+    {
+      "target": "G35 船明明沒動，流速計怎麼說它往上游走？",
+      "theme_id": "G35",
+      "title": "船明明沒動，流速計怎麼說它往上游走？",
+      "reviewer": "V13",
+      "author": "F10",
+      "author_verdict": "ready",
+      "author_est_minutes": 9.1,
+      "verdict": "reserve",
+      "final_core_ids": [
+        "O3073",
+        "O3072",
+        "S57-001",
+        "S57-002",
+        "S57-003",
+        "S57-004",
+        "S57-005",
+        "S57-006",
+        "O3078",
+        "O3079"
+      ],
+      "recount_facts": "11 條。舊核心四個都只有一句手冊答案：O3073 1（把動床當固定參考、因而低估，是一個機制）、O3072 1.5（要有散射體、太多又衰減）、O3078 1、O3079 1＝4.5；作者給 7 條，等於每個一句話的核心算 1.75 條，超過本輪「一句答案 0.5–1.5 條」的上限。新核心：S57-001 1（作者 1.5；範圍與最大值同一張表，方向已在 O3073）、S57-002 1、S57-003 1、S57-004 1.5、S57-005 1、S57-006 1＝6.5。合計 11；（11×140＋700）÷270＝8.3 分。",
+      "recount_fact_count": 11,
+      "recount_minutes": 8.3,
+      "planned_minutes": null,
+      "cuts": "同意刪 O3077（魚游過的怪值）。六個新核心全部收進池子當備用素材（S57-001、S57-003 套用本覆核改字）。O3072、O3073、O3078、O3079 只在 G35，沒有別的可成題長題在用。",
+      "turns": [
+        "成立的一個：把儀器停在動床上方，底追蹤報的「船速」就是河床泥沙的虛擬速度（密蘇里河一段平均每秒 0.156 公尺），開場的錯讀數換個問題成了訊號；但要換成輸沙量還缺活動層厚度，三種估法從 14.2 到 13,900 公噸。",
+        "不算轉折的一個：作者的轉折一（船沒動卻顯示往上游，是把動床當成岸）就是開場問題的答案（O3073），觀眾沒有先形成再被推翻的結論；13 筆實測與迴圈法是把這個答案量化與修正。最接近第二個轉折的是「GPS 與迴圈兩個參考都會晃」（S57-004），目前只有半個。"
+      ],
+      "chapter_outline": null,
+      "core_question": "靠回音算水流時，儀器究竟把誰當成不動的參考？",
+      "connection": "船停著卻往上游走→儀器聽的是顆粒→河床這個參考在動、動了多少→換參考（GPS、繞一圈）→兩個參考都有雜訊→把誤差當訊號量河床。這條線本身是通的，問題在長度與第二個轉折。",
+      "boredom_risk": "全片是同一艘船、同一種儀器的修正流程，數字都是百分之幾的偏差；沒有清楚的參考系動畫會變成操作手冊。O3078（第四束）與 O3079（未量區外推）和「誰是參考」這條主線無關，是為了長度留的。",
+      "drop_if": "照企劃原來的判斷：做 4–6 分鐘短片（O3073、S57-001、S57-002、S57-005 四個核心就夠），不為 8 分鐘接更多儀器細節。",
+      "evidence_gaps": "三份來源全是 USGS（TM 3-A22、SIR 2006-5079、SIR 2010-5091 裡的一篇研討會論文），沒有 USGS 以外的獨立比對；動床數字是 2006 年、斷面均勻的 13 筆；虛擬速度是單一河段單日。",
+      "still_missing": "差 0.2 分鐘（約半條到一條事實）與半個轉折。要轉可成題需要：（1）一份 USGS 以外、讀得到全文的比對或應用——Callède 等 2000（亞馬遜河迴圈法原文）、Rennie 等 2002（Fraser River 虛擬速度，25 分鐘的出處）、Wagner & Mueller 2011（底追蹤對 GPS 流量比較）任一篇，本輪都是 403 或只有書目；（2）一個能讓觀眾先下錯結論再翻過來的材料，例如「斷面不均勻時平均修正法會修錯方向或修過頭」的實測（SIR 2006-5079 圖 3 只有假想算例，文中算出 2% 的殘差，不是實測）。（3）S57-001 套用本覆核改字（刪「10 筆落在 2–6%」，實際是 9 筆且為自行統計）；S57-003「9 個測點」改「9 筆」；轉折文字裡的「一千倍」刪掉。補不到就照企劃做短片。",
+      "reason": "嚴格重算 11 條、8.3 分，低於 8.5；作者的 9.1 分靠的是把四個一句話的舊核心算成 7 條。即使照作者的舊核心算法，他自己也寫「覆核再扣 1 條就壓線」，而 S57-001 確實要扣 0.5 條。另外兩個轉折只成立一個半。企劃自己寫明不列為 8 分鐘長片候選，本輪補的是實測紀錄、不是新的機制，這個判斷沒有被推翻。六個新核心本身扎實（13 筆、0.028–0.103 m/s、1.63%–16.4%、−5.0% 到 +1.3%、14.2 到 13,900 都逐列對過），收進池子，短片可以直接用。"
+    },
+    {
+      "target": "G01 看起來混勻了，杯子裡真的一樣嗎？",
+      "theme_id": "G01",
+      "title": "看起來混勻了，杯子裡真的一樣嗎？",
+      "reviewer": "V13",
+      "author": "F10",
+      "author_verdict": "reserve",
+      "author_est_minutes": 9.6,
+      "verdict": "reserve",
+      "final_core_ids": [
+        "P188",
+        "P220",
+        "P219",
+        "P240",
+        "P241",
+        "P57-026",
+        "P224",
+        "P57-025",
+        "P228",
+        "P54-006",
+        "P232",
+        "P57-022",
+        "P57-023",
+        "P57-024"
+      ],
+      "recount_facts": "14.5 條（名目）。第四輪 V7 的 11 條照舊（含 P54-006）；新核心 P57-022 1、P57-023 0.5、P57-024 1、P57-025 0.5、P57-026 0.5＝3.5。（14.5×140＋700）÷270＝10.1 分；作者保守算 13.5 條、9.6 分。公式過線，但新增的 3.5 條裡 1.5 條是同一本教科書的通論句（尼奧斯湖、十億分之二）、0.5 條是用量自相矛盾的 1996 年示範頁、0.5 條是「來源說法不一」，只有暖暖包實測 1 條是新的量測。",
+      "recount_fact_count": 14.5,
+      "recount_minutes": 10.1,
+      "planned_minutes": null,
+      "cuts": "不刪舊核心。五個新核心全部收進池子當備用素材（P57-022、P57-026 套用本覆核改字）。舊核心都只在 G01，沒有別的可成題長題在用。",
+      "turns": [
+        "兩杯一樣透明的水，一杯幾乎不導電、一杯導電：概念成立（P224、P57-025），但全片沒有任何一筆有濃度與讀數的導電量測，這個轉折只能用教材的一句話加自製示範撐，而自製示範不是來源。",
+        "透明不代表穩定：暖暖包一按，一分鐘內表面到 51.8 °C（P57-022，有實測）；氣體也會過飽和（汽水、尼奧斯湖，教材通論）。這個轉折本輪補起來了，金屬片的機制照實說來源不一。"
+      ],
+      "chapter_outline": null,
+      "core_question": "幾杯看似混合均勻的液體，為什麼會在導電、結晶和散射時表現不同？",
+      "connection": "作者提的改結構可行，建議照做：把「不沉底」（P219）與「牛奶與光路」（P240、P241、P57-026）併成一章「多大才算溶進去」放在導電之前，散射改當顆粒尺度的證據；結尾由過飽和收（暖暖包、汽水、尼奧斯湖）。這解掉第一輪說的「看不見不等於不存在」重複，也用市售暖暖包解掉「過飽和示範不可控」。",
+      "boredom_risk": "仍然容易變成 OpenStax 第 11 章依序講一遍；導電章若只有一句教材話，會是全片最弱的一段卻擔著第一個轉折。",
+      "drop_if": "補不到導電量測就不排長片；可拆出「暖暖包為什麼一按就熱」當短片（P232、P57-022、P57-023、P57-024）。",
+      "evidence_gaps": "糖鹽導電沒有任何實測值；暖暖包機制沒有讀到全文的專門研究；散射只有定性示範；尼奧斯湖只有教材通論。",
+      "still_missing": "確認後備，但這題離可成題只差一塊，明確條件如下。必要：（1）一份寫明濃度、溫度與儀器的糖水／鹽水導電度量測（開放取用的化學教育論文或有結果表的大學講義）；本輪找到的 Bellevue 講義只有步驟、Indiana 與 De Anza 的講義讀不到（F10-NA002）。有了它，第一個轉折才有來源。建議一併補：（2）Sandnes 2008（Am. J. Phys. 76, 546）或 CrystEngComm 2021 的全文，把 P57-023 從「說法不一」升成有全文依據的機制；（3）尼奧斯湖的原研究或 USGS 說明頁，才能撐一章並報死亡人數；（4）§11.1、§11.5、§1.3 三頁：本覆核用作者快取抽查了 P188、P219、P220、P240、P241 的關鍵句（糖分子比水重仍不沉、膠體粒子不沉降且散射光、糖溶進咖啡是物理變化），都在原文，但不是逐段閱讀，這三頁的閱讀紀錄仍要補成整節。（5）P57-026 的用量不可引用（600 cc 與半加侖對不上）；P57-022 不可把 DSC 的 227 J/g 說成那個暖暖包放的熱。（6）P57-023、P57-024 改掛 SRC-19346cef2dc01be3，P57-025 改掛 SRC-22bb4f194a5b32a9。",
+      "reason": "作者的自我判斷成立，不推翻。公式算得到 9.6–10.1 分，結構重排也可行，但門檻是「8.5 分而且兩個改變結論的轉折都有來源撐」：第一個轉折（導電）是企劃 evidence_gaps 與前兩輪覆核都點名要補的實測，本輪完全沒補到（作者自己的 F10-NA002），撐它的仍是教材一句話；新增條數有一半是教科書通論與一頁用量對不上的示範。照站主「不為片長硬湊」的規則，現在排進去等於用公式過線、用自製示範補洞。補到第（1）項就可以直接轉可成題，不必再重算其他部分。"
+    },
+    {
+      "target": "G38 一封加密訊息，究竟保護了哪些事？",
+      "theme_id": "G38",
+      "title": "訊息說是端對端加密，轉信的伺服器還知道什麼？",
+      "reviewer": "V13",
+      "author": "F10",
+      "author_verdict": "reserve",
+      "author_est_minutes": 7.8,
+      "verdict": "reserve",
+      "final_core_ids": [
+        "T57-001",
+        "T57-002",
+        "T57-003",
+        "T57-004",
+        "I3082",
+        "T57-005",
+        "T57-006",
+        "T57-007",
+        "T57-009",
+        "T57-008"
+      ],
+      "recount_facts": "10 條。I3082 0.5（概念一句，P29 的 T53-002 已承接）。新核心：T57-001 1（作者 1.5；2021 年是同一結論的第二例）、T57-002 1、T57-003 1（作者 1.5；「錄下的密文日後解不開」已在 T53-001）、T57-004 1、T57-005 0.5、T57-006 1、T57-007 1.5、T57-008 1.5、T57-009 1＝9.5。合計 10；（10×140＋700）÷270＝7.8 分，與作者相同。",
+      "recount_fact_count": 10,
+      "recount_minutes": 7.8,
+      "planned_minutes": null,
+      "cuts": "同意把原 G38 的 I3080、I3081、I3083–I3087、I3073、I3089 移出本題（內容已由 P29 的 T53-002、T53-006～T53-009 以 TLS 原文承擔，見第三輪紀錄）。九個新核心全部收進池子當備用素材。I3082 只在 G38，不在別的可成題長題。",
+      "turns": [
+        "以為加密是一把鑰匙鎖住整段對話：雙棘輪每則訊息一把、用完就刪、回推不了；規格自己列了洞（刪掉的資料救得回、暫存的跳過金鑰、裝置被攻破後的冒充）。成立，但結論的前半與 P29 的 T53-001 相鄰。",
+        "以為把寄件人收進信封就沒人知道誰跟誰聊：送達回條不能關、中位數 1480 毫秒就自動回一則，研究者的理論與模擬顯示最少 5 則就能把兩人連起來。成立，全題唯一的獨立來源。"
+      ],
+      "chapter_outline": null,
+      "core_question": "內容端對端加密之後，負責轉信的伺服器還握有什麼、還猜得出什麼？",
+      "connection": "從一張傳票只換到兩個時間戳開始，倒著問：為什麼伺服器交不出內容（預先金鑰、每則換鑰）、交不出身分保證（安全碼）、交不出群組（不存名冊），再問它其實還看得到什麼（收件人、節拍），最後是被錄下來的密文。和 P29（瀏覽器到網站的 TLS 連線保護了什麼）是不同的對手模型：P29 的對手在線路上，這裡的對手是服務本身。",
+      "boredom_risk": "名詞密度高（X3DH、雙棘輪、PQXDH、sealed sender）；每章要落在「伺服器手上多了或少了哪一樣」，不背協定名。量子一章與主問題最遠，最容易變成附加新聞。",
+      "drop_if": "若站主不想為這題再開一輪：G38 淘汰，T57-001、T57-006、T57-007 留在池子裡當獨立核心，不建議併進 P29（理由見 reason）。",
+      "evidence_gaps": "九個新核心裡八個只靠 Signal 自己的規格、部落格與公告；協定設計的主張以規格為原始來源沒有問題，但「伺服器沒有存什麼」（T57-001、T57-009）與「信封上不寫寄件人」（T57-006）是營運者自述，沒有第三方查核。傳票頁所附的法院文件沒有開。只談 Signal 一個服務。",
+      "still_missing": "差 0.7 分鐘，約 1.5 條事實，而且要來自 Signal 以外。依序：（1）開傳票頁所附的傳票與回覆文件（政府一方的文件），把 T57-001 從自述變成有對造文件；（2）讀完 signal.org/blog/private-contact-discovery（作者已下載、只讀開頭，F10-NA008）補「通訊錄怎麼不交給伺服器」1 條；（3）一份獨立的協定分析全文（Cohn-Gordon 等 eprint 2016/1013，本輪 403）或另一篇對 sealed sender／群組的學術評估；（4）若要談其他服務，另找它們自己的官方文件，不可從 Signal 的描述推論。（5）T57-005 套用本覆核改字；T57-007 補「回條不能關」。達到約 11.5 條、兩個轉折照現在的就可成題。",
+      "reason": "裁定：留後備並記下新方向（改題如上），不建議把 T57-001、T57-006、T57-007 併進 P29、也不建議淘汰 G38。理由：（一）九個新核心逐句對過原文都成立，與 T53-002、T53-006～T53-010 沒有同答案的重複——最接近的是 T57-002 的重播一句對 T53-010／T53-006（只留一句、不計）、T57-005 對 T53-002 與 I3082（只算 0.5 條）、T57-003 的結論對 T53-001（扣 0.5 條）、T57-007 對 T53-008（同類不同層，各算各的）。（二）P29 已有約 12.4 分、建議排 12 分，主線是 TLS；再塞三個端對端通訊的核心（約 3.5 條、1.8 分）會超出建議片長，而且把「線路上的對手」和「服務本身是對手」兩個模型混在一章，觀眾反而分不清 HTTPS 與端對端加密保護的是不同的事。（三）新方向離門檻只差約 1.5 條，缺的東西有明確去處。本覆核沒有動任何企劃檔；P29 若要在結尾用一句話預告「連線加密之外，服務本身看得到什麼」可以引 T57-001，但那是 P29 企劃自己的決定。"
+    }
+  ],
+  "reviewer_notes": {
+    "V12": "四題結論：G52、G43、G30 可成題（重算 10.1、10.6、11.7 分；作者 11.1、11.9、12.4），G42 維持後備（分鐘數 9.3 過線，但第二個轉折只有同一位作者的推斷）。25 個提案沒有重複題，全部收：ADOPT 4、ADOPT_WITH_CHANGES 21、REJECT 0。作者的算法比上一輪收斂，每題被扣 1 分上下，主要是把舊核心已有的結論再算半條。最要緊的改正見各題 reason；跨題的兩條：其一，作者以關鍵字比對 pool.json 去重，沒有漏掉同答案核心，但漏了三個相鄰核心（B4031、H3093、D2142），已寫進 overlaps。其二，黴菌的相對濕度界限在 G42 的三個來源裡有 70% 與 80% 兩個說法，不可合併。core_reviews 每筆多一個 reviewer_facts 欄，是本覆核給該核心的條數。",
+    "V13": "結論：G08 可成題（13 條、9.3 分，排 9 分）；G35 後備（11 條、8.3 分，轉折一個半；作者判可成題，本覆核推翻）；G01 後備（確認作者判斷，只差一份導電量測）；G38 後備並改題記下新方向（10 條、7.8 分），不併 P29、不淘汰。29 個提案沒有 REJECT：ADOPT 13、ADOPT_WITH_CHANGES 16。最重要的改正：F10-007「所有受測櫃都」實為 1,221 組裡 94%；F10-010 作者自數的「10 筆落在 2–6%」實為 9 筆且屬自行統計，刪；F10-015／G35 轉折裡的「一千倍」是自算倍數，刪；F10-025 把另一份試藥的 DSC 熔化焓接成暖暖包的放熱，拆開；F10-029 的用量原文自相矛盾（600 cc 對半加侖），不引用；F10-006 舊標準是「空櫃、一次開一個抽屜」；F10-012「9 個測點」是 8 個地點的 9 筆。F10-S006＝SRC-aebc97f067673f86、F10-S021＝SRC-19346cef2dc01be3、F10-S022＝SRC-22bb4f194a5b32a9，三組網址逐字相同，確認不另立來源。P29 是企劃、不在 themes.json，本覆核只記建議、沒有動它。",
+    "V12_method": "沒有參與撰寫。25 個提案逐一從作者快取（f9src/）找到支撐句，逐句核對數字、單位、條件與主詞；21 份來源全部以 curl（工具預設標頭）重抓原網址，HTTP 200，sha256 前 16 碼與作者紀錄、作者快取全部相符（arXiv 5 份 HTML 與 1 份 PDF、NIST 與 NRC 6 份 PDF、Europe PMC 4 份 XML、BSC 2 頁、ORNL 1 份、PSLC 1 頁、MIT 1 份）。另查 arXiv 紀錄確認發表狀態（2604.20580 只有 v1；2506.22369 的 journal_ref 為 PRX 16, 031006；2404.07811 與 2302.13467 無 journal_ref）。NRC CTU-13 的快取文字欄序錯亂，以 pdftotext -raw 重轉後核對。去重重做：`node tools/video/so-thats-why/pool/cli.mjs search <字> --all` 共 72 次查詢（針織 17、隔音 19、牆體水分 19、塑膠 17；每次約 14 秒，都有回應），再以 Python 對 pool.json 的題目與答案做正則比對；每個要用的舊核心都查過 themes.json 的 candidate_ids，沒有一個在別的 material.verdict==ready 的題裡。片長公式（事實數×140＋700）÷270。",
+    "V13_method": "沒有參與撰寫。29 個提案逐一從作者快取（f10src/）找到支撐句，逐句核對數字、單位、條件與主詞；表格（SIR 2006-5079 表 1、3、4，Holmes 表 2、3）逐列讀。24 個來源今日全部以 curl（工具預設標頭）重抓，皆 HTTP 200：11 個位元組雜湊與作者記錄相同（F10-S001、S002、S005–S008、S015、S020–S023），13 個位元組雜湊不同但大小相同、去標籤後全文逐字相同（govinfo 兩頁、signal.org 十頁、Macquarie 一頁，頁面有每次不同的片段）。作者記錄的 sha256 前綴與本機快取檔全部相符。去重以 pool.json 正則比對（中英關鍵字）為主；cli.mjs theme 正常，cli.mjs search 連跑多個關鍵字時逾時，改讀 pool.json，沒有出現 Pool drift 或 Index is stale。舊核心是否被別的可成題長題占用，以 themes.json 的 candidate_ids 與 material.verdict 比對。沒有改 repo 任何檔案。"
+  },
+  "research_blocked": [
+    "F9：www.open.edu（H3090 的 OpenLearn 原來源，?printable=1）：curl 回 403，未繞過；改以 MIT 課程講義（F9-S021）取代機制敘述。",
+    "F9：www.fsec.ucf.edu（佛羅里達太陽能中心報告 PDF）：curl TLS 憑證驗證失敗（exit 60），未關閉驗證，未讀。",
+    "F9：www.tainstruments.com/pdf/literature/TS41.pdf（PVC 的調幅 DSC 應用筆記）：403。",
+    "F9：www.redalyc.org/pdf/470/47053423012.pdf：403。",
+    "F9：repository.kulib.kyoto-u.ac.jp 的 en13051177.pdf：回 200 但內容是 HTML 頁不是 PDF，未再嘗試。",
+    "F9：www.hudexchange.info 的 Noise Guidebook 第 4 章（猜測網址）：404。",
+    "F9：Wiley（Fried 1982、2006 年 DINP 比較等 J. Appl. Polym. Sci. 論文）：付費牆，只在 WebSearch 結果看到摘要句，不算來源。",
+    "F9：出版社刊本未開、只讀 arXiv 版的有：Poincloux 等 PRX 2018、Singal 等 Nature Communications 2024、Tajiri 等 Extreme Mechanics Letters 2025、Shimamoto 等 PRX 2026（都沒有嘗試出版社頁）。",
+    "F9：工具：`cli.mjs theme <id>` 可用；`cli.mjs show <id>` 連續查 22 個核心時逾時（120 秒），沒有出現 Pool drift 或 Index is stale 訊息，也沒有重建索引；舊核心與來源改由 pool.json、themes.json 直接讀。去重以 Python 對 pool.json 的題目與答案做關鍵字比對（中文多組），沒有用 `cli.mjs search`。",
+    "F9：WebFetch 沒有用到；所有來源都是 curl 存檔後讀本機文字。WebSearch 用了兩次，只拿來找網址。",
+    "V12：export.arxiv.org API 查 2604.20580 與 2410.13307 時回 503 或空結果：前者改開 arxiv.org/abs 頁確認只有 v1、無刊本；後者（Tajiri 等）的刊本資訊未能確認。",
+    "V12：出版社刊本（PRX 2018、Nature Communications 2024、PRX 2026、Extreme Mechanics Letters 2025）本覆核也沒有開，只依 arXiv 版與 arXiv 紀錄。",
+    "V12：www.fsec.ucf.edu、www.open.edu 作者記為讀不到，本覆核沒有重試，也沒有繞過。",
+    "F10：pubs.rsc.org（CrystEngComm 2021 d0ce01454k 文章頁與 PDF）：curl 與 WebFetch 都 403，未讀",
+    "F10：American Journal of Physics 76, 546（Sandnes 2008）：全文付費牆；只從 researchers.mq.edu.au 讀到摘要",
+    "F10：www.federalregister.gov 全文純文字網址（01-973、03-25360）：回「Request Access」驗證頁，沒有繞過，改讀 govinfo.gov 的同一份文件（API 的 JSON 詮釋資料可讀）",
+    "F10：hydroacoustics.usgs.gov/memos（OSW 技術備忘錄目錄）：403；water.usgs.gov/admin/memo/SW/sw09.05.pdf：404",
+    "F10：www.tandfonline.com（Callède 等 2000，亞馬遜河迴圈法）：403",
+    "F10：agupubs.onlinelibrary.wiley.com（Gaeuman & Jacobson 2006）：403",
+    "F10：Wagner & Mueller 2011（Journal of Hydrology）、Mueller & Wagner 2007（J. Hydraulic Eng.）：USGS 出版品倉庫只有書目，沒有全文連結，未讀",
+    "F10：eprint.iacr.org/2016/1013.pdf（Signal 協定形式化分析）：403",
+    "F10：ajol.info（STAR 期刊牛奶雷射衰減論文）：403",
+    "F10：iu.pressbooks.pub（Indiana University 導電度實驗講義）：403",
+    "F10：bhes.deanza.edu（De Anza College 導電度講義）與 intro.chem.okstate.edu（ChemSource 丁達耳示範）：連線被重設（curl 35），未讀",
+    "F10：edu.rsc.org（丁達耳教學頁）：405",
+    "F10：已下載但沒有讀、所以不列為來源：TRB Special Report 265（trb265.pdf）、OpenStax University Physics 第 1 冊 §8.4 只做關鍵字檢索、signal.org/blog/private-contact-discovery 只讀開頭、OpenStax Chemistry 2e §11.1／§11.5／§1.3 只做關鍵字檢索",
+    "F10：cli.mjs 的 theme 與 show 正常運作，沒有出現 Pool drift 或 Index is stale；去重另以 pool.json 正則比對",
+    "V13：本覆核沒有新增讀不到的網站；作者 blocked 所列（pubs.rsc.org、AJP 全文、tandfonline、AGU、eprint.iacr.org、ajol.info 等）沒有重試繞過。",
+    "V13：cli.mjs search 連續查多個關鍵字時超過 120 秒逾時，去重改用 pool.json 正則比對。"
+  ],
+  "limits": "估時依事實數紙上估算，不是試讀；所有核心仍是選題候選，寫稿前要逐主張查核。各題 missing 欄列了寫稿前要重讀或補讀的來源。本輪沒有改企劃。"
+}

@@ -12,7 +12,7 @@ import { pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
 import { readCredentials } from "../tts/credentials.mjs";
 import { USER_AGENT } from "../tts/client.mjs";
-import { DERIVED_NOTE, markdownTable, records, trafficBreakdown, videoSummaries, windowOf } from "./analysis.mjs";
+import { clock, DERIVED_NOTE, firstBigDrop, markdownTable, plainTable, records, RETENTION_NOTE, retentionPoints, trafficBreakdown, videoSummaries, windowOf } from "./analysis.mjs";
 import { CODED_COLUMNS, withNames } from "./codes.mjs";
 
 export const EXIT = { ok: 0, usage: 2, owner: 3, external: 4 };
@@ -44,6 +44,15 @@ Usage: node tools/video/youtube-reports/cli.mjs <command> [options]
   traffic [--slug S]... [--video ID]... [--from D] [--to D] [--top N] [--format md|json]
                                     views by traffic source, with the top search terms, suggesting
                                     videos and external pages of each (self-computed)
+  retention (--video ID | --slug S) [--from D --to D] [--organic] [--duration SECONDS]
+            [--format text|csv|json] [--out FILE]
+                                    one video's audience retention curve from the YouTube Analytics
+                                    API (the site asks YouTube with its own grant): 100 points of
+                                    elapsed ratio, audience watch ratio and relative retention
+                                    performance (default span: published day to today, all traffic;
+                                    --organic drops ad traffic), and the first big drop (the largest
+                                    fall between neighbouring points in the first 30%), in seconds
+                                    from --duration or the video's length on YouTube (self-computed)
   export --out DIR [--days N] [--report F]...
                                     overview.json plus one <family>.csv per report for the last N
                                     days (default 28), coded columns named, ready to analyse
@@ -86,6 +95,13 @@ export function client({ site, token, fetchImpl = globalThis.fetch }) {
   return {
     overview: () => call("GET", "youtube-reports"),
     sync: (options) => call("POST", "youtube-reports/sync", { body: options }),
+    retention: ({ video, start, end, organic }) => {
+      const query = new URLSearchParams({ video_id: video });
+      if (start) query.set("start", start);
+      if (end) query.set("end", end);
+      if (organic) query.set("organic", "true");
+      return call("GET", `youtube-reports/retention?${query}`);
+    },
     rows: ({ report, start, end, videos = [] }) => {
       const query = new URLSearchParams({ report, start, end, format: "json" });
       for (const video of videos) query.append("video_id", video);
@@ -345,12 +361,80 @@ async function cmdTraffic(api, values, ctx) {
   return EXIT.ok;
 }
 
+// The site's refusals that only the owner can clear: link the channel (again, with Analytics).
+const OWNER_CODES = new Set(["video_youtube_not_linked", "video_youtube_analytics_missing", "video_youtube_grant_lost"]);
+const RETENTION_COLUMNS = ["elapsedVideoTimeRatio", "audienceWatchRatio", "relativeRetentionPerformance"];
+
+async function cmdRetention(api, values, ctx) {
+  if (Boolean(values.video) === Boolean(values.slug)) throw new UsageError("retention needs one --video ID or one --slug S");
+  if (values.video && !/^[A-Za-z0-9_-]{6,20}$/.test(values.video)) throw new UsageError("--video must be a YouTube video id");
+  for (const [name, value] of [["--from", values.from], ["--to", values.to]]) if (value && !DAY.test(value)) throw new UsageError(`${name} must be YYYY-MM-DD`);
+  if (values.from && values.to && values.from > values.to) throw new UsageError("--from is after --to");
+  const format = values.format ?? "text";
+  if (!["text", "csv", "json"].includes(format)) throw new UsageError("--format is text, csv or json");
+  let given = null;
+  if (values.duration !== undefined) {
+    given = Number(values.duration);
+    if (!(Number.isFinite(given) && given > 0 && given <= 86_400)) throw new UsageError("--duration is the video's length in seconds");
+  }
+  const [video] = await videosFor(api, { video: values.video ? [values.video] : [], slug: values.slug ? [values.slug] : [] });
+  let answer;
+  try {
+    answer = await api.retention({ video, start: values.from, end: values.to, organic: Boolean(values.organic) });
+  } catch (error) {
+    if (!(error instanceof SiteError)) throw error;
+    const detail = error.body?.detail ?? error.message;
+    ctx.stderr.write(`retention: ${error.status} ${error.body?.code ?? ""} ${detail}\n`);
+    return OWNER_CODES.has(error.body?.code) || (error.status === 409 && needsOwner(detail)) ? EXIT.owner : EXIT.external;
+  }
+  const duration = given ?? answer.duration_seconds ?? null;
+  const durationSource = given ? "--duration" : answer.duration_seconds ? "the video's length on YouTube (videos.list)" : null;
+  const points = retentionPoints(answer);
+  const drop = firstBigDrop(points, { duration });
+  const at = (point) => (duration ? Number((point.ratio * duration).toFixed(1)) : null);
+  const audience = answer.audience === "organic" ? "organic traffic only" : "all traffic";
+  const dropLine = drop
+    ? `${(drop.from_ratio * 100).toFixed(0)}% -> ${(drop.to_ratio * 100).toFixed(0)}% of the video${drop.from_seconds !== null ? ` (${clock(drop.from_seconds)} -> ${clock(drop.to_seconds)})` : ""}: audience watch ratio ${drop.watch_before} -> ${drop.watch_after}, a fall of ${drop.fall}${drop.share_lost !== null ? ` (${(drop.share_lost * 100).toFixed(1)}% of those still watching)` : ""}`
+    : "none: the audience watch ratio does not fall within the first 30%";
+  const summary = `first big drop (self-computed): ${dropLine}`;
+  let text;
+  if (format === "json") {
+    text = `${JSON.stringify({ ...answer, derived: { note: RETENTION_NOTE, duration_seconds: duration, duration_source: durationSource, first_big_drop: drop } }, null, 2)}\n`;
+  } else if (format === "csv") {
+    const columns = [...RETENTION_COLUMNS, ...(duration ? ["elapsed_seconds_self_computed"] : [])];
+    text = toCsv({ columns, rows: points.map((point) => [point.ratio, point.watch ?? "", point.relative ?? "", ...(duration ? [at(point)] : [])]) });
+  } else {
+    const head = [
+      `Audience retention of ${answer.title ?? video} (${answer.video_id}), ${answer.start} to ${answer.end} (Pacific days), ${audience}.`,
+      `Points as the YouTube Analytics API returned them; audience watch ratio can exceed 1 where viewers rewind, relative retention performance is 0-1 against YouTube videos of a similar length (0.5 = median).`,
+      `duration: ${duration ? `${duration} s, from ${durationSource}` : "unknown (pass --duration SECONDS for seconds)"}`,
+      summary,
+      RETENTION_NOTE,
+      "",
+    ];
+    const table = plainTable(
+      points.map((point) => ({ elapsed: point.ratio, seconds: duration ? clock(at(point)) : "", audience_watch_ratio: point.watch, relative_retention_performance: point.relative })),
+      ["elapsed", ...(duration ? ["seconds"] : []), "audience_watch_ratio", "relative_retention_performance"],
+    );
+    text = `${head.join("\n")}\n${table}`;
+  }
+  if (values.out) {
+    mkdirSync(path.dirname(path.resolve(values.out)), { recursive: true });
+    writeFileSync(values.out, text);
+    ctx.stderr.write(`retention: ${points.length} points of ${answer.video_id} (${audience}) -> ${values.out}\n${summary}\n`);
+  } else {
+    ctx.stdout.write(text);
+  }
+  return EXIT.ok;
+}
+
 const COMMANDS = {
   overview: [cmdOverview, { json: { type: "boolean" } }],
   sync: [cmdSync, { force: { type: "boolean" }, limit: { type: "string" } }],
   rows: [cmdRows, { report: { type: "string" }, from: { type: "string" }, to: { type: "string" }, video: { type: "string", multiple: true }, slug: { type: "string", multiple: true }, names: { type: "boolean" }, format: { type: "string" }, out: { type: "string" } }],
   videos: [cmdVideos, { window: { type: "string" }, slug: { type: "string", multiple: true }, category: { type: "string" }, shorts: { type: "boolean" }, long: { type: "boolean" }, "published-since": { type: "string" }, format: { type: "string" }, out: { type: "string" } }],
   traffic: [cmdTraffic, { slug: { type: "string", multiple: true }, video: { type: "string", multiple: true }, from: { type: "string" }, to: { type: "string" }, top: { type: "string" }, format: { type: "string" } , out: { type: "string" } }],
+  retention: [cmdRetention, { video: { type: "string" }, slug: { type: "string" }, from: { type: "string" }, to: { type: "string" }, organic: { type: "boolean" }, duration: { type: "string" }, format: { type: "string" }, out: { type: "string" } }],
   export: [cmdExport, { out: { type: "string" }, days: { type: "string" }, report: { type: "string", multiple: true } }],
 };
 

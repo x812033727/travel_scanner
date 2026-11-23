@@ -1,0 +1,44 @@
+{
+  "slug": "2026-05-hongtang-jiangzhi",
+  "title": "薑茶要趁熱",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": { "min": 90, "max": 180, "chapter_finale_min": 120 },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "站主 2026-10-28：每集 3–5 個鉤子。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），可再加 extra_hooks 0–2 句；lib/validate.mjs 擋掉寫成同一件事的。"
+  },
+  "closed_ending": false,
+  "ending_note": "第五季收掉主線：哥哥的反對線解開、她的居家照護所開起來、他十年的守候被她一件一件看見、兩人在鹿川鎮的消防隊門口喝了那杯薑茶。第 300 集最後一格，消防隊的警鈴響，他回頭對她說『等我』，她說『我一直都在等』——留第二部的口子。站主要收死的話，刪掉最後一格、cliffhanger 改 emotion 即可。",
+  "aspect": { "decided": null, "suggested": "16:9", "why": "照《種田娶妻打天下》的建議；這部是真人質感的慢熱劇，需要橫式的留白。" },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom）；target_minutes 填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線。",
+    "look": "真人電影感現代小鎮慢熱劇：衛生所的日光燈、消防隊的紅、小鎮的雨與夜；自然光、手持感；沒有豪門。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md；前 3 秒允許是一個情感錯位的日常瞬間。",
+    "reuse": "固定場景：鹿川鎮衛生所、消防隊門口與值班室、她家的早餐店、他家的老屋、鎮口的公車站。",
+    "voice": "國語；她輕而穩，他低而少，第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json。",
+    "per_episode": "平均約 120 秒一集 ≈ 3,000–3,800 點。",
+    "per_season": "60 集 ≈ 18–23 萬點；五季 ≈ 90–115 萬點。",
+    "levers": "文戲多、用一張首格＋緩推可省四到六成；火場只拍紅光與煙。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包，不是逐集分鏡劇本。",
+  "reference": {
+    "work": "《紅糖薑汁》（2026 年 1–10 月紅果熱度合併榜第 5，杭州錦靈傳媒）",
+    "how": "只學套路：被辜負的普通女子識破渣男、低谷時被青梅竹馬接住、觀眾先知道男主早就愛她、守護型不霸總的男主、用日常細節推進、獨立成長。職業（護理師與消防員）、小鎮、分手事件、家人反對線、人名、劇情與台詞全部原創，不搬原劇情節；原劇沒有多季架構，本劇的五季是原創。"
+  },
+  "title_candidates": ["薑茶要趁熱", "他一直都在", "鹿川鎮的夜班"],
+  "title_decision": "未定；先用候選第一個，站主可改。"
+}

@@ -1,16 +1,47 @@
 import { cache } from "react";
 import {
   closedSiteVisibility,
-  siteFeatureKeys,
   type SiteVisibility,
   type SiteVisibilityState,
 } from "@/lib/site-features";
 
-function isSiteVisibility(value: unknown): value is SiteVisibility {
-  if (typeof value !== "object" || value === null) return false;
-  return siteFeatureKeys.every(
-    (feature) => typeof (value as Record<string, unknown>)[`${feature}_enabled`] === "boolean",
-  );
+const REQUIRED_VISIBILITY_FIELDS = [
+  "hotspots_enabled",
+  "trips_enabled",
+  "alerts_enabled",
+  "flight_status_enabled",
+  "airline_fares_enabled",
+  "pricing_enabled",
+] as const;
+
+const OPTIONAL_VISIBILITY_FIELDS = [
+  "flight_search_enabled",
+  "videos_enabled",
+  "member_features_enabled",
+] as const;
+
+function parseSiteVisibility(value: unknown): SiteVisibility | null {
+  if (typeof value !== "object" || value === null) return null;
+  const record = value as Record<string, unknown>;
+  if (!REQUIRED_VISIBILITY_FIELDS.every((field) => typeof record[field] === "boolean")) {
+    return null;
+  }
+  for (const field of OPTIONAL_VISIBILITY_FIELDS) {
+    if (record[field] !== undefined && typeof record[field] !== "boolean") {
+      return null;
+    }
+  }
+  return {
+    hotspots_enabled: record.hotspots_enabled as boolean,
+    trips_enabled: record.trips_enabled as boolean,
+    alerts_enabled: record.alerts_enabled as boolean,
+    flight_status_enabled: record.flight_status_enabled as boolean,
+    airline_fares_enabled: record.airline_fares_enabled as boolean,
+    pricing_enabled: record.pricing_enabled as boolean,
+    flight_search_enabled: (record.flight_search_enabled as boolean | undefined) ?? false,
+    videos_enabled: (record.videos_enabled as boolean | undefined) ?? false,
+    member_features_enabled: (record.member_features_enabled as boolean | undefined) ?? false,
+  };
 }
 
 /**
@@ -49,9 +80,10 @@ export async function loadSiteVisibility(): Promise<SiteVisibilityState> {
     });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const payload: unknown = await response.json();
-    if (!isSiteVisibility(payload)) throw new Error("Invalid site visibility response");
-    lastGood = { features: payload, readAt: Date.now() };
-    return { status: "ready", features: payload };
+    const parsed = parseSiteVisibility(payload);
+    if (!parsed) throw new Error("Invalid site visibility response");
+    lastGood = { features: parsed, readAt: Date.now() };
+    return { status: "ready", features: parsed };
   } catch {
     if (lastGood && Date.now() - lastGood.readAt < STALE_LIMIT_MS) {
       return { status: "stale", features: lastGood.features };

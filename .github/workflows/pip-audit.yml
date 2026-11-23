@@ -7,7 +7,7 @@ name: pip audit
 # listens for this workflow by its `name:` above.
 on:
   schedule:
-    - cron: "23 3 * * *"
+    - cron: "23 3 * * 1"
   workflow_dispatch:
 
 permissions:

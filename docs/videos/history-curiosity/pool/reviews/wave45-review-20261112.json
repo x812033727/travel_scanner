@@ -1,0 +1,1052 @@
+{
+  "batch": "batches/wave45-20261112.json",
+  "reviewed_on": "2026-11-12",
+  "method": "八位沒有參與研究的覆核代理（R451–R458 依序覆核 ZA1–ZA8）逐題至少重開一個關鍵來源、讀研究代理的工具紀錄逐筆核對網址來源、grep 批次檔去重、對照系列不收清單與 8 分鐘門檻；修改直接寫進批次的題目欄位，覆核新讀的來源編入該研究代理的來源序號。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 28,
+    "NEEDS_CHECK": 12,
+    "REJECT": 2
+  },
+  "source_renames": {
+    "R451-S001": "ZA1-S024",
+    "R451-S002": "ZA1-S025",
+    "R451-S003": "ZA1-S026",
+    "R451-S004": "ZA1-S027",
+    "R452-S001": "ZA2-S027",
+    "R452-S002": "ZA2-S028",
+    "R453-S001": "ZA3-S026",
+    "R455-S001": "ZA5-S016",
+    "R456-S001": "ZA6-S023",
+    "R456-S002": "ZA6-S024",
+    "R456-S003": "ZA6-S025",
+    "R457-S001": "ZA7-S025",
+    "R458-S001": "ZA8-S028",
+    "R458-S002": "ZA8-S029",
+    "R458-S003": "ZA8-S030"
+  },
+  "verdicts": [
+    {
+      "id": "N4961",
+      "agent": "ZA1",
+      "reviewer": "R451",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA1-S004（1867 第三版 Note B）、ZA1-S003、ZA1-S005、ZA1-S006 全部重抓逐字讀",
+      "reopen_result": "1862 版正文確為『how I love my country』；1867 版正文改 leave，卷末『NOTES TO THE SECOND EDITION』B 條重印 1862-04-24 致《泰晤士報》信，稱『a misprint, as it turns out to be, of my own』、叔叔『present in the room』、字跡差、Bedford 公爵借出原件、『no doubt whatever』是 leave。Rose 日記 Thursday January 23d：七點收到 James Stanhope 便條、後收主教便條，『the servant heard him say, My country! oh, my country!』。Rosebery p.258 注：Disraeli『before 1874』、侍者先說 meat pies、Pitt 要 mutton pies、最後『meat pies』、『veal or pork I think, but I have forgotten』，並說 love『was then the authorised version』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "James Stanhope 是 Pitt 的外甥（Lady Hester 為 Pitt 之 niece）不是姪子；Rose 並不在場，日記是第二天早上依便條寫的，原稿『同一夜』易誤導；Note B 屬第二版附注；鉤子『英國史上最愛國』是研究者自評，刪；Stanhope 自稱『我自己的誤印』補入。"
+    },
+    {
+      "id": "N4962",
+      "agent": "ZA1",
+      "reviewer": "R451",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA1-S014（it.wikisource p.131、p.132 action=raw）、ZA1-S013、ZA1-S011、ZA1-S012 重抓",
+      "reopen_result": "Amoretti p.131 注是『ref follow=p130』，Melzi 信前半在 p.130（研究代理沒讀），後半有『alli 2 di maggio』『Dato in Ambriosa die primo Junii 1519』；正文 Venturi『la corte era a s. Germano en Laie ai primi di maggio』；p.132 Lomazzo 詩『Pianse mesto Francesco re di Franza / Quando il Melzi... gli disse』。Catalogue no.1005–1014 共十件 1 mai SGEL、no.1015 3 mai SGEL。Vasari 英譯『in the seventy-fifth year of his age』。Richter：『incredible and demonstrably fictitious legend』，下一段引 Melzi『optimo padre』是反駁 Vasari 對其品行的指責。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "『享年七十五歲』誤譯（原文是第七十五個年頭）；Melzi 信只讀到後半，不能寫『全文抄錄』或『信裡沒有國王』；Richter 拿 Melzi 信是反駁人格指責、不是證明國王不在；『只出自 Vasari』改為『目前讀到的紀錄裡』；Vasari 的告解、領聖體屬宗教臨終場面，刪出敘事與畫面；Richter 同段的 1476 年指控不得進片。"
+    },
+    {
+      "id": "N4963",
+      "agent": "ZA1",
+      "reviewer": "R451",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA1-S018（Quincy 1861）、ZA1-S015、ZA1-S017、ZA1-S019 重抓",
+      "reopen_result": "Quincy p.207 注：Louisa Smith『informed the Editor』，『the name, Thomas Jefferson』，『one o'clock, — a few moments after Mr. Jefferson had died』；正文 Jefferson『at half-past twelve』。Everett：Jefferson『a little before one o'clock』，Adams『toward the hour of noon』。Cranch：Whitney、『a lady present』問加字、『Not a syllable』、『at that very moment, the spirit of Jefferson had already flown』、彩虹。Burstein：說 Louisa 告訴『the wife of Boston's mayor』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "question『傑佛遜幾小時前已經死了』與腳注『幾分鐘後』矛盾，刪；Burstein 的『市長夫人』與腳注原文『編者』不符，以原文為準；補 Everett 自己講稿的時間並列；『唯一已知在場』是 Burstein 的判斷，改為『當天照顧他的』；鉤子去最高級。"
+    },
+    {
+      "id": "N4964",
+      "agent": "ZA1",
+      "reviewer": "R451",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA1-S020（Antommarchi 1825 t.II）、ZA1-S021（Montholon 1847 Vol.III）重抓",
+      "reopen_result": "Antommarchi OCR：『5 h. 7 A. M. sonnent; Napoléon est toujours dans le délire... laisse échapper ceux de « tête armée. » Ce furent les derniers qu'il prononça.』Montholon：『Twice I thought I distinguished the unconnected words, France—armée, tête d'armée—Josephine』；4 月 26 日『I have just seen my good Josephine』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "原文是 «tête armée» 不是『tête… armée』；『把 France 和 Josephine 加進去的是 Montholon』改成『目前讀到最早記下的是』；『死前九天』是自算，刪。片長只有 5–7 分鐘，兄弟題 N4966 待查，若補不到則轉 Shorts。"
+    },
+    {
+      "id": "N4965",
+      "agent": "ZA1",
+      "reviewer": "R451",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA1-S001（Beatty，Gutenberg）、ZA1-S002（Nicolas Vol.VII 注 4）重抓；另新讀 ZA1-S024、ZA1-S025",
+      "reopen_result": "Beatty：『Kiss me, HARDY.』跪下親臉頰，再跪下親額頭，『pronounced distinctly these last words: Thank GOD, I have done my duty』，Hardy 離開約十五分鐘後說不出話。Nicolas 注引 Scott 傳記 p.185『God and my Country』與 1805-12-22 致 Rose 信『Hardy, kiss me!』『I do not mean to tell you everything he said』。Phrase Finder：Kismet 是『later story』、kismet 1830 年才見於英文；Inky Fool：1849 年。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "premise_status",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "研究代理標待查只因流傳版本沒出處；覆核讀到兩個寫 Kismet 說法的頁面，流傳版本成立，改 screened，但兩頁給的 kismet 年份矛盾，片中不採；『兩位在場者』改為『當時船艙裡的兩個人』（Beatty 自己有離開去照顧其他傷患）；排除 Beatty／Scott 記錄中的禱告與宗教語句。"
+    },
+    {
+      "id": "N4966",
+      "agent": "ZA1",
+      "reviewer": "R451",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "ZA1-S008（Schindler 1840）、ZA1-S007（Moscheles 1841）、ZA1-S010（ADS-L 146586、146591）重抓",
+      "reopen_result": "德文本 p.189：『Er fühlt sein Ende, denn gestern sagte er mir und Breuning: Plaudite amici, comoedia finita est』，這段沒寫信的日期；英譯 p.72『my own letter to Moscheles, dated the 24th of March』。146591 的 OCR：『der Kanzleidiener des Herrn Hofrat von Breuning mit dem Kistchen Wein und dem Tranke von Ihnen geschickt... Schade Schade zu spät. Dies waren seine allerletzten Worte』，來源只是一個 Google Books 片段連結。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "最大轉折（Schade, zu spät）與 1840 年《Penny Magazine》仍只經郵件串轉引；3 月 24 日只見於英譯本；Schindler 信 1840 年才印出，『目前讀到最早』須限定為寫信日期而非印出時間。要補：Schindler 1827-04-12 致 Schott 信（BGA 2291）的可讀版本、Penny Magazine 1840-01-11 原頁。"
+    },
+    {
+      "id": "N4967",
+      "agent": "ZA1",
+      "reviewer": "R451",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "ZA1-S022（Aubrey 1898 Vol.I）、ZA1-S023（Gutenberg #51113）重抓",
+      "reopen_result": "Wheldon 信：『seven or eight days after, his whole right side was taken with the dead palsy, and at the same time he was made speechlesse. He lived after this seven days... by intervalls endeavoured to speake, but could not』；Aubrey 筆記『James Wheldon the executor』。Gutenberg 本書名頁 MDCCLXXVI（1776）；生平說 1725 年重演時換的是『a new Scene in the fourth Act』；第五幕 Heartfree『So, now, I am in for Hobbes's Voyage; a great Leap in the Dark』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "流傳的『遺言』版本沒有任何可讀出處（研究代理只有搜尋摘要）；1697 年初版未核對（版本其實是 1776 年，頁面上就有）；『僕人』頁面上沒寫，改成遺囑執行人；原稿暗示『喜劇是這句話的起點』方向錯——劇中『Hobbes's Voyage』已預設觀眾知道這個說法與霍布斯有關。"
+    },
+    {
+      "id": "N4981",
+      "agent": "ZA2",
+      "reviewer": "R452",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA2-S001 https://sites.google.com/view/jerusha-howe-exhibit/room-9；ZA2-S005 https://archive.org/download/harpersnew061various/harpersnew061various_djvu.txt（先叫 metadata 看到檔名，下一次呼叫才下載；pp.608–612）；另讀 S002、S003、S004、S006 與館方書目頁（ZA2-S027，room-9 頁導覽列連結）",
+      "reopen_result": "room-9 頁確實寫：Research suggests that reports of unusual activity in rooms #9 and #10 did not begin until the late-20th century…appear to coincide with the start of the Secret Drawer Society；Online access to magazine articles…‘Jerusha Howe, Spinster’ (Hunnemann) and romanticized tales of her long-lost English fiancé (van Schaick) perpetuate these stories；does not have any primary sources…to support the stories of a beau；While there is no doubt that Jerusha had a love interest (or two)…no concrete evidence of a specific someone。Lunt 1880：pale primrose that died unmarried, had sung her soul away；Adam engaged…the young lady grew sick and died；…treble grief in loss of parents, sister, and sweetheart；Lyman 幻想 some English maiden of high degree might be pleased to wed him；Adam 後來 did marry…the housekeeper。書目：Hunnemann, Harvard Advocate, October 15, 1887；van Schaick 1939。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立。改正 ZA2-S001 的誤譯（館方說她『無疑』有過心上人，原稿譯成『或許』）、館方的意思是今天網路上讀得到的文章讓傳說流傳，不是點名首創；補上 1887/1939 年份的出處（書目頁）；補 Lunt 文中 Lyman 幻想英國新娘、Adam 後娶管家；鉤子去掉沒出處的『美國最老之一』與館方原話的過度簡化。心碎而死只是流傳說法，不涉自殺。英國未婚夫最早出現年份仍答不出，在 notes 標明。"
+    },
+    {
+      "id": "N4982",
+      "agent": "ZA2",
+      "reviewer": "R452",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA2-S009 https://archive.org/download/lifetimesofhenry01brou/lifetimesofhenry01brou_djvu.txt（metadata 先列檔名；pp.146–150）；ZA2-S010 https://gutenberg.org/cache/epub/12621/pg12621-images.html；ZA2-S011 https://gutenberg.org/cache/epub/44625/pg44625-images.html；ZA2-S012",
+      "reopen_result": "1871 書（metadata：publisher New York: Harper）Dec.19 段：At one in the morning, arriving at a decent inn…I have here written down the whole history, with the date, 19th December…No doubt I had fallen asleep; and that the appearance…was a dream, I can not for a moment doubt；附記 Brougham, Oct. 16, 1862…stating that he had died on the 19th of December!!…I believe every such seeming miracle is, like every ghost-story, capable of explanation。Lang 插註 (he has just said that he was awake and on the point of leaving the bath)。Carrington 引文多了 This was on December 19th, 1799，並問 Why should Lord Brougham have dreamed this particular dream at the very moment his friend died?",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "editorial.payoff",
+        "editorial.minutes",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立。改正版本（Harper 紐約版不是 Blackwood）；補 Carrington 加了 1871 版沒有的一句、把『同一天』說成『那一刻』這個新轉折；scope 加上不得自行換算時差、不說同一時刻。血約、墓坑故事只口述。片長照素材收為 8–9 分鐘。"
+    },
+    {
+      "id": "N4983",
+      "agent": "ZA2",
+      "reviewer": "R452",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA2-S014 http://www.folklore.ee/FOAFtale/ftn76.htm（ZA2-S013 頁面註 7 的連結）；ZA2-S015 loc.gov 頁面（ZA2 搜尋結果所列 http://www.loc.gov/resource/sn86063034/1897-11-27/ed-1/?sp=3 加 fo=json → fulltext_service）；ZA2-S013",
+      "reopen_result": "FTN 76：Woollcott 1934 寫 only to have Richard Henry Little point out in the Chicago Tribune that the entire story had been dashed off by Karl Harriman one hot summer night in 1889…I feel free to consider the question still open；Free Press 1897-11-14 標題 ‘Dropped out of Existence; A Strange and True Mystery of the French Capital’；Since the dateline of the story is 1897, the backdrop likely corresponds to the 1889 Paris Exposition；we feel it more reasonable to conclude that Kenneth Herford was, in fact, Harriman；suspect is a simple transposition。Savannah 1897-11-27 p.3 OCR 與 ZA2-S015 摘要相符（綠→紅壁紙、女僕畫十字、black small-pox、It is not marked）。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "editorial.payoff",
+        "editorial.minutes",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，但原稿兩處事實錯：1889 年夏夜說法是 Little 講、Woollcott 轉述且本人存疑；『這是真的只出現在一家報紙』被 Free Press 標題『Strange and True』推翻，轉折三改寫為『從一開始就標成真的』。另補研究者推測背景大概是 1889 年博覽會，避免『最早版本否定 1889』的誤導。關鍵原件在付費庫，只讀到一份轉載，已在 notes 與 scope 標明。"
+    },
+    {
+      "id": "N4984",
+      "agent": "ZA2",
+      "reviewer": "R452",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA2-S018 loc.gov 1825-01-04 p.4（ZA2 搜尋結果所列頁面網址加 fo=json → fulltext_service）；ZA2-S020 1889-07-31 p.4（同法）；ZA2-S017 Goodreads 部落格全文",
+      "reopen_result": "1825 OCR：THE BARBER’S GHOST.—A FACT. A gentleman travelling some years since in one of the southern states…haunted by the ghost of a barber, who was reported to have been murdered in that room…the limb of a venerable oak…The above may be relied on as a fact—the author had it from the mouth of a very respectable gentleman in Massachusetts—to whom it was reported by the person himself。1889：Humorous department…upper part of Connecticut…throwing a towel over his arm…some jumping through the windows…many hundred dollars richer。Prasil：1865 Dayton Daily Empire 沒有引言、像新聞；1869 Cambria Freeman 4 月 1 日附『old but a precious good one』引言；only 1889 in the Humorous Department。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "editorial.minutes",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，但只撐 3.5–4 分鐘，作 N4983 的 chapter（同一核心：被印成『事實』的旅館房間故事最早怎麼寫），合計 11.5–13 分鐘。改正 ZA2-S017 摘要把 1865、1869 也說成幽默欄；1889 年跳窗的是賭客。1823 年最早版只經 Prasil 轉述，旁白標『據研究者』。被殺的理髮師只照原文說是傳說。"
+    },
+    {
+      "id": "N4985",
+      "agent": "ZA2",
+      "reviewer": "R452",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "ZA2-S021 https://archive.org/download/bim_eighteenth-century_the-history-of-the-late-_patten-robert_1717_0/…_djvu.txt（metadata 先列檔名；pp.139–140）；ZA2-S022 Besant djvu.txt（越獄章 pp.293–302、Blanchland 鬼段）；ZA2-S024、S025；新讀 ZA2-S028 Griffiths 1884（WebSearch 結果所列 Gutenberg 網址）",
+      "reopen_result": "Patten：Mr. Forster went up (as Mr Pitts thought) to the Necessary-house…found the fall of the Latch deadned by a piece of List and a Peg in the Kitchins Door, by which his Servant was confined; for Mr. Forster's Man…asked for some Small-beer…there was another, a False one, in the other side the Door, and the Door double-lockt. Thus Mr. Forster, and his Man Thomas Lee, found Means to Escape。Griffiths：the servant had previously obtained an impression in clay of Mr. Pitt’s front door key, and had manufactured a counterfeit key…lock the door on the outside and leave the key in the lock…Prittlewell…Leigh…France，全書搜不到 Dorothy。Besant：fifty guineas down…four hundred and fifty guineas…an impression in wax of the master-key…Thomas Lee…a peg above the latch…If we lock the door from the outside, and leave the key in the lock。Haunted Hosts：documented as far back as 2002 緊接白衣修士句。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "premise_status",
+        "editorial.payoff",
+        "editorial.minutes",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "原稿最大轉折『蠟模、鐵匠目前讀到最早出自 1884 小說』被推翻一半：更早的記述（Griffiths 1884 轉引的 18 世紀輝格派記述者）已有僕人用黏土印鑰匙、自製假鑰匙；小說是照搬舊情節、把鑰匙交給姊姊。鉤子『說要上廁所』『大門外的鑰匙』都是原文沒有的細節，已改。越獄不涉處決或自殺，Derwentwater 處決不展開。待補：Griffiths 所引記述的原件、Besant 之前有沒有『姊姊救兄』的 19 世紀地方紀錄、Dorothy 鬼故事的早期文字。補到後可升為 screened。"
+    },
+    {
+      "id": "N5001",
+      "agent": "ZA3",
+      "reviewer": "R453",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA3-S002（Galilæana 2023 全文 PDF）、ZA3-S003（Vanin arXiv:2204.10388）、ZA3-S001（Lynn 1904）、ZA3-S004（BEA）",
+      "reopen_result": "Galilæana p.92–93：Marius 說 1609 年 11 月看到、12 月 29 日開始觀測；Galileo 指出換格里曆是 1 月 8 日、晚一天；『目前知道他最早一筆觀測是 1610 年 12 月 30 日』。pp.96–99：1898 年出題、截止 1900 年 1 月 1 日，只有 Klug（1862–1925）一篇 235 頁，評審順序 Bakhuyzen→Kapteyn→Oudemans，1900 年 5 月年會採納、1901 年公告『Galileo’s accusations had no serious grounds』，Bosscha 沒通知 Klug。Vanin p.9–12：Mundus Iovialis 三段引文與 1612 年 Prognosticon（獻詞 1611 年 3 月 1 日）『四顆新行星』『從 1609 年 12 月底』『Galileo 已經出版』都對得上；12 月 30 日出自給 Odontius 的信；結論 1)–3) 對得上；另讀到名字『hitherto little-used』與 Barton 1946『taboo』。Lynn 1904 引 Il Saggiatore 法譯『néglige d’avertir le lecteur』對得上。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "主體事實對得上。改：問句『三百年後』（1614→1898）改『將近三百年後』；『沒有根據』改原文的『沒有認真的根據』；補年會採納與公告的年份差、Klug 看期刊才知道；1610 年 12 月 30 日補出處；補名字長期被冷落的轉折（Vanin 轉 Barton），並取消『名字是他想的』的暗示（原書是否歸功 Kepler 沒人讀到）。Kepler 卒年沒有頁面確認，改不入畫。不是今天國家間的爭議（荷蘭民族主義只當 1900 年代的史學現象講）。"
+    },
+    {
+      "id": "N5002",
+      "agent": "ZA3",
+      "reviewer": "R453",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA3-S010、ZA3-S009（Mitchell 1916，archive.org djvu.txt）、ZA3-S007、ZA3-S006（HAO）、ZA3-S003（Vanin 黑子一節）",
+      "reopen_result": "Mitchell part 2 p.82–85：Galileo『in four distinct places』提到第一次看到（Medici 23 個月、Welser 18 個月、Dialogo、Barberini 18 個月）；註：國家版印 15、註『a little uncertain』，Plana 首先指出舊版印錯並印出手跡影本，『After examining this fac-simile, one appreciates that the 23 might have been mistaken for 13, but it is hardly conceivable … 15』是 Mitchell 的話；Carrara 不同意 Plana／Favaro 的解釋。Part 1 p.30–31：排序 Galileo（most probably 1610 夏）、Harriot、Fabricius（『certain』最早出版）、Scheiner。HAO：Harriot 引文『frost & a mist … twise of thrise … right eye & … left』、『text does not mention the spots』、『failed to pay much attention … until a year later』；Fabricius『strange redness, which may last for two days』、Kepler 暗箱、Galileo 與 Scheiner『over who first discovered sunspots took center stage』、1723。Vanin p.8–9：『Thus Scheiner probably preceded Galileo』；Harriot 三個大黑子。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "editorial.payoff",
+        "scope",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "四個錯：(1)『三處』應為四處；(2) 23/13/15 的判斷是 Mitchell 看 Plana 影本後說的，不是 Plana 說的；(3)『跟 1916 年排序正好相反』不對——Mitchell 也把 Fabricius 列為最早出版、Harriot 列為第二位觀測者，差別只在是否採信 Galileo 沒有書面紀錄的 1610 夏天；(4)『誰第一個是 19、20 世紀吵出來的』不成立，Galileo 與 Scheiner 1612 年就在爭（HAO 原文）。另補 Vanin 結論『Scheiner 可能比 Galileo 先看到』；『眼睛紅腫』改『發紅、持續兩天』；鉤子『一個黑點的字都沒寫』改得與 HAO 原句一致。與 N4264 不重複。"
+    },
+    {
+      "id": "N5003",
+      "agent": "ZA3",
+      "reviewer": "R453",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA3-S011（Challis, MNRAS 7:145）、ZA3-S012（Adams, MNRAS 7:149）、ZA3-S013（Physics Today 2011）、ZA3-S014（Linda Hall）",
+      "reopen_result": "Challis：1845 年 9 月收到結果、『so novel a thing … success appeared very doubtful』；7 月 29 日開始、Airy 7 月 9 日的信；柏林第 21 時星圖不在大學圖書館；9 月 29 日三百顆星只一顆註『It seems to have a disk』，10 月 1 日得知 Galle 9 月 23 日找到，『It was then found that the star selected … on September 29 was the planet』；第 39 號後停下『probably … as a cloud then interrupted』，第 49 號；8 月 4 日也記到；『too little confidence in the indications of theory』。Adams：1845 年 9 月給 Challis、10 月 slightly altered 給 Airy；『arrived at independently and previously … not with the intention of interfering with his just claims to the honors of the discovery』。PT：Copley 1846 Le Verrier／1848 Adams、RAS 1847 不頒、13 份 testimonials、1999 年 Neptune File 在智利出現、Peirce『happy accident』、今天學者認為 Galle 與 d’Arrest 共同發現。Linda Hall：多個預測、Airy『apparently』挑選公開。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "editorial.payoff",
+        "scope",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "漏了最大的一個細節：9 月 29 日助手註記『似乎有圓面』那顆就是行星（Challis 原文），已補。第 39 號停下 Challis 只說『可能』是雲，且那次比對本為別的目的，改寫。『Adams 把功勞讓給 Le Verrier』讀得太滿：他明說自己的計算獨立且更早，讓出的是『發現之榮』，問句與結論改寫。Adams、Le Verrier、Galle、Airy、Challis 卒年頁面上沒有，改確認前不入畫。英法優先權是 1846–47 年與 1999 年後的史學，不屬今天國家間的爭議。"
+    },
+    {
+      "id": "N5004",
+      "agent": "ZA3",
+      "reviewer": "R453",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA3-S015（Daily Kennebec Journal 1909-12-22 p.1，loc.gov fo=json→fulltext_service）、ZA3-S017（Evening Star 1909-11-03 p.1）、ZA3-S018（Yankee 1989）；新讀 ZA3-S026（Time 2003）",
+      "reopen_result": "Kennebec 12/22：評議會書面結論『failed to prove』、委員會『no original calculations of observations, but only results』、公眾預期『not proven』、Helm『swindler』、Lonsdale 61 頁打字報告與 16 頁抄本、原始筆記『sent to Europe by another route … would be delivered』。Evening Star 11/3：理事會『lasted more than two hours』、Gannett／Chester／Tittmann 小組看過原始日誌、觀測與全部儀器、『unanimously of the opinion … reached the north pole April 6』、Moore『absolutely no doubt』、決議『prior to 1909』、報導說刻意不提 Cook 的名字。Yankee 1989：Herbert 1988 年 9 月的論點、『as much as 60 miles』、『28 years』、75 年不開放、1984 年 CBS 劇促成開放、Cook 1940 卒、Jo 與 Henson 1955 卒、Peary 1920 卒、學會 1910 年『cursory examination』。Time 2003：1989 年學會委託 Navigation Foundation 查 225 立方英尺文件，宣布 Peary『very likely come within five miles』；『experts are still arguing』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "scope",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "一手報紙都對得上，但漏了最後一個轉折：1989 年國家地理學會委託 Navigation Foundation 的報告又站回 Peary（Time 2003，ZA3-S026），只講到 1988 年 Herbert 會讓『現在怎麼解釋』偏向一邊，已補。『開會兩個鐘頭就宣布』暗示審查草率，與報導不符（小組另看過日誌與儀器，兩小時是理事會開會），鉤子與問句改寫；『原始筆記一直沒到』『讀過原稿的文章』兩處過度推論改正；Herbert『2007 卒』無頁面根據，刪除。不收清單判斷：Time 2003 說專家仍在爭，但這是兩位美國探險家的史料之爭，不是兩國或兩個族群的爭議，與池中其他優先權題同類；片子只講兩份審查怎麼做、不下結論，可收。1988 年質疑者 Herbert 與 Rawlins、Davies、Peary 的孫子都不入畫。"
+    },
+    {
+      "id": "N5005",
+      "agent": "ZA3",
+      "reviewer": "R453",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "ZA3-S021（Cosmographiae Introductio 1907 英譯，archive.org djvu.txt）、ZA3-S023（encyclopedia.com）",
+      "reopen_result": "1907 編者 pp.10–12：拉丁獻詞給 René；Ludd 1507 年說法文本從葡萄牙寄給 René、他請 Basinus 譯成拉丁文；『students together at the house of his uncle』只適合 Soderini，『inadvertently reproduced』，『more than probable』原本寫給 Soderini 的義大利文。pp.28–30：Waldseemüller 之後的大地圖（1516 Carta Marina）、1513 Ptolemy 版 Tabula terra nova、1515 Margarita philosophica 版世界圖不用 America，『subsequently became convinced』、1508 年自誇傳遍全世界、America 起初只指南半部，1538 年 Mercator 才用到北半部。encyclopedia.com：只寫『the first of at least two voyages … in 1499-1500』與『may not have actually written material attributed to him』，沒有直接討論 1497 年。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "1907 年編者的部分都對得上，補了 Ludd 的法文本說與 1515 年地圖的正確名稱。關鍵轉折『1497 年那次航行今天不被採信』只有一個三手條目，而且該條目沒有直接談 1497 年，維持待查。與『哥倫布的評價』（不收清單）相鄰，scope 加註不用『名聲本該屬於哥倫布』這類判斷。人物卒年頁面未確認，改確認前不入畫。7–9 分鐘、低於 8 分鐘下限，補到學術來源後再估。"
+    },
+    {
+      "id": "N5006",
+      "agent": "ZA3",
+      "reviewer": "R453",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "ZA3-S024（Golder 1914，archive.org djvu.txt）",
+      "reopen_result": "序言 pp.14–15：讀國會圖書館購入的原始文件後『forced me to reject many of the views … on the authority of Muller』。pp.70–78：Müller『about the middle of the eighteenth century … based on original manuscripts which he found in Siberia』；名字與 Cook、Franklin 並列；證據是 Deshnef 與同伴的報告，『ex-parte』；1662 年在 Jakutsk 寫給沙皇討薪；註 172『neither the fourth nor the fifth reports makes mention of Deshnef’s voyage』；Ogloblin 1890 年發表 1662、1664、1665（兩份）四份請願；八個論點；註 175 Ogloblin 的 Chukotski 在海峽南口、Müller 的在北口；Slovtsof 拒絕 Müller；『doubtful whether they had a compass』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "Golder 的轉述大致對得上，但問句裡『Müller 1736 年在雅庫次克的檔案翻到』與『早八十年』都不在頁面上（研究代理自己補的年份與換算），已刪。只有 1914 年一個懷疑派來源，今天的主流（Fisher 1981 等）沒讀到，不能當前提，維持待查；讀不到就轉 not_added。不是今天兩國間的爭議，但要避免『美國人質疑俄國人的第一』的框架。人物卒年頁面未確認，不入畫。"
+    },
+    {
+      "id": "N5021",
+      "agent": "ZA4",
+      "reviewer": "R454",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA4-S007 https://zh.wikisource.org/zh-hant/%E8%8D%8A%E6%A5%9A%E6%AD%B2%E6%99%82%E8%A8%98（七月七日兩條與按語）；另重開 ZA4-S008（《古今圖書集成》歲功典第六十五卷）、ZA4-S009（第六十六卷）、ZA4-S011 https://www.ctee.com.tw/news/20220804700190-430903、ZA4-S012 https://studycli.org/graded-readers/cowherd-and-weaver-girl/",
+      "reopen_result": "頁面上確實寫了：『七月七日，為牽牛織女聚會之夜』；按語引《史記·天官書》『是天帝外孫』、傅玄『七月七日，牽牛織女會天河』、『嘗見道書雲：「牽牛娶織女，借天帝二萬錢下禮，久不還，被驅在營室中。」』七夕兩條沒有鵲橋。第六十五卷《事物原始》引《續齊諧記》成武丁『世人至今云織女嫁牽牛也』，『使鵲為橋』記在《風土記》名下；招遠縣志記在《西京雜記》名下並有『至八日，則鵲尾皆禿』；諸城縣俗『織女將嫁，牽牛哭，淚多成雨』。《癸辛雜識》牛女條在『何可盡據』之後還有『然亦似有可怪者』，接著記一則七夕夜群鶴載仙人飛過的見聞——研究稿把這半句截掉了。第六十六卷張耒〈七夕歌〉『河東美人天帝子……自從嫁後廢織紝……但令一歲一相逢』逐字相符；同卷魏了翁詩『何年人號天女孫，便把牛郎擬夫婦。不知此是天關梁』。S012 教材其實署了作者（覃美淇與 Anias Stambolis-D’Agostino，研究稿寫『未署名』），而且說織女是『王母娘娘的第七個女兒』、拿了衣服後兩人『互相愛上了對方』，老牛要牛郎殺了牠、披牛皮上天；S011 書摘說織女是『天帝之女』、王母派人抓回、拔簪劃河。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep pool.json、batches/*.json（含 not_added）與原來如此事務所池，牛郎、織女、牽牛、鵲橋、七夕只命中 N1903（朝鮮實錄的牽牛星，天文題）、N1002（春香，畫面說明）與 wave17 not_added 的韓國〈견우와 직녀〉（高句麗壁畫之爭不收）；營室只命中 N4101 超新星；cli search 回 Index is stale，以 grep 為主。前提成立，三個轉折都在頁面上：星→欠債夫妻、鵲橋掛在兩個書名下、宋人自己說『不根之論』。最大的改動是界線：原稿的轉折之一是『偷藏仙女衣服娶她』（今日版與《搜神記》毛衣女），這正是池中已照『不自願成親』擋下的 Jaka Tarub、〈우렁각시〉型，所以拿掉毛衣女轉折，今日版本只說『老牛指點他在池邊認識織女』；站主若同意用童話方式處理羽衣型，可再加回 ZA4-S010。補進去的是頁面上本來就有、研究稿漏讀的：按語引《史記》『天帝外孫』、張耒『天帝子』、小說『天帝之孫女』、教材『王母第七女』，正好接成『織女是誰的女兒』一條線；周密下半句『然亦似有可怪者』；魏了翁詩；成武丁『世人至今云織女嫁牽牛』。原鉤子用『偷衣服』起頭，改成王母拔簪對比兩萬錢。事實約 15 條，片長 8–9.5 分鐘。"
+    },
+    {
+      "id": "N5022",
+      "agent": "ZA4",
+      "reviewer": "R454",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA4-S017 https://zh.wikisource.org/wiki/%E5%AE%8B%E6%9B%B8/%E5%8D%B722（〈靈芝篇〉）；另重開 ZA4-S016 https://zh.wikisource.org/zh-hant/%E8%91%A3%E6%B0%B8%E5%8F%98%E6%96%87、ZA4-S015 https://zh.wikisource.org/wiki/%E6%90%9C%E7%A5%9E%E8%A8%98_(%E6%95%A6%E7%85%8C%E8%AE%8A%E6%96%87)、ZA4-S018 https://www.ihchina.cn/project_details/12198.html、ZA4-S019 https://www.ihchina.cn/project_details/12203.html",
+      "reopen_result": "頁面上確實寫了：〈靈芝篇〉列虞舜、伯瑜、丁蘭之後『董永遭家貧，父老財無遺。舉假以供養，傭作致甘肥。責家填門至，不知何用歸。天靈感至德，神女為秉機』。變文：『年登十五二親亡』、『帝釋宮中親處分』、『兩兩鴛鴦對鳳凰』、『好看小孩子』、董仲七歲被罵『沒阿孃』、孫賓（臏）指點阿耨池邊抱紫衣裳者、『天火忽然前頭現……檢尋卻得六十張。因此不知天上事』。句道興本：『昔劉向孝子圖曰』、貸錢十萬文、織絹三百疋、『女織經一旬』、『今既償了，不得久住』。東台頁：『最早载于西汉刘向的《孝子传（图）》』、『具有了向爱情故事演变的趋势』、『多地流传、不断附会的“滚雪球”现象』，相關項目列丹陽、金壇、博興、孝感、武陟、萬榮。丹陽頁：七仙女是『玉帝的小女儿』、槐蔭樹、望仙橋跪四十九天；但在明代唱本之前先引了『元至顺《镇江志》记载：汉董永墓在丹阳延陵』，接著才是明嘉靖《織錦記》『董永字延年，润州丹阳人』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep 董永、董仲、槐蔭、天仙、七仙女在 pool.json、batches、原來如此事務所池皆無。前提成立，兩個以上轉折可靠（借債養父→賣身葬父→有子、帝釋、孫賓→七仙女私奔；七地申報）。改正的事實錯誤：研究稿說『明代唱本《織錦記》《槐蔭記》才寫他是丹陽人』，同一頁先引了元至順《鎮江志》的丹陽董永墓，『才』不成立，已改成照頁面順序轉述並標『丹陽的申報說明引』。另把『敦煌〈董永變文〉才多出一個兒子』加上『目前讀到的版本裡』，補上變文是雙親皆亡、賣身葬父母；『最早』一律改成『目前讀到最早的文字』（漢代畫像本輪沒讀）。古人卒年沒在頁面上讀到，改為不當畫面主角。片長 8.5–10 分鐘維持。"
+    },
+    {
+      "id": "N5023",
+      "agent": "ZA4",
+      "reviewer": "R454",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA4-S004 https://ojs.deakin.edu.au/index.php/pecl/article/download/1385/1330（Bin Hu 1997，pdftotext 後讀了 king's age、search、retribution、插畫與注 1 各段）；另重開 ZA4-S003 https://zh.wikisource.org/zh-hant/%E9%85%89%E9%99%BD%E9%9B%9C%E4%BF%8E/%E7%BA%8C%E9%9B%86/%E5%8D%B7%E4%B8%80、ZA4-S005 https://www.medievalists.net/2012/09/asian-origins-of-cinderella-the-zhuang-storyteller-of-guangxi/",
+      "reopen_result": "頁面上確實寫了：Bin Hu『In Louie's version there is likewise no information about the king's age』，國王能『continue his vigil into the night』；『When the story is retold in Wilson's version ... he is a \"young king\"』。派使者帶鞋下鄉（『He sent out messengers with the precious slipper to search the countryside』）是 Wilson 版的引文（注 8，拼法 Yeh-Hsien）；Louie 版是國王先讓本國婦人試穿、把鞋擺在路旁當餌、親自守夜、找到後不逮捕而叫人悄悄跟回家，『The search is more like courtship』。Louie 保留報應：『they were crushed to death in a shower of flying stones』，另加『the king would not permit Yeh-Shen to bring them to his palace』，Bin Hu 說『Obviously Yeh-Shen forgives』；『In Wilson's version no retribution is mentioned at all』，Wilson 讓她責備國王貪心；Wilson/So 插畫有炕、東北的毛皮大衣、後母駕馬車。注 1：Waley 把『征卒』『將』讀成『conscripted』『their general』，是誤譯。原文『至征卒叛時，將發以贍軍。一夕，為海潮所淪』。Beauchamp 摘要：Jameson（1932）、Waley（1947 and 1963）、Duan Chengshi（c. 800-63）、『remarkably close』、Anderson 追到『stories told by Greeks about Egyptians』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：葉限、吳洞、陀汗、Yeh-Shen、Yexian 在池中皆無；灰姑娘系列（F01、N3561、N908、N1462、N4001、N2621、N2622）答案都不同。前提成立，但研究稿把兩本繪本混在一起：『young king』與『派使者帶鞋下鄉』是 Wilson 1993，不是 Louie 1982；題目寫『善良的她原諒後母，只是國王不准後母進宮』，好像繪本拿掉了死亡，其實 Louie 保留飛石之死，拿掉報應的是 Wilson；『原諒』是 Bin Hu 的解讀。已全部照頁面改寫並分開兩本。題目的『在國王想挖出來的前一晚被海潮捲走』原文只說『一夕』，改成『一夜之間』。研究稿 risk 寫的 Ed Young、Waley 卒年都不在讀到的頁面上，刪掉，人物一律不入畫。片長 8–9.5 分鐘維持。"
+    },
+    {
+      "id": "N5024",
+      "agent": "ZA4",
+      "reviewer": "R454",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "ZA4-S001 https://zh.wikisource.org/zh-hant/%E6%90%9C%E7%A5%9E%E5%BE%8C%E8%A8%98/05（〈白水素女〉全文）；另重開 ZA4-S002 https://zh.wikisource.org/zh-hant/%E5%A4%AA%E5%B9%B3%E5%BB%A3%E8%A8%98/%E5%8D%B7%E7%AC%AC083（〈吳堪〉）",
+      "reopen_result": "頁面上確實寫了：謝端進門問『新婦從何所來，而相為炊？』；素女說『十年之中，使卿居富得婦，自當還去』、『吾形已見，不宜復留』，還說『雖然，爾後自當少差』；『留此殼去，以貯米穀，常可不乏』；『居常饒足，不致大富耳。於是鄉人以女妻之，後仕至令長雲。今道中素女祠是也』。〈吳堪〉：螺女『敕余以奉媲』成為妻子；『時縣宰豪士聞堪美妻，因欲圖之』，先要『暇蟆毛及鬼臂』，再要『蝸鬥』，『大如犬』、『能食火』、糞皆火，『宰身及一家，皆為煨燼，乃失吳堪及妻。其縣遂遷於西數步，今之城是也』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池中只有韓國〈우렁각시〉在 wave15、wave33 的 not_added（理由是官員或國王強奪田螺新娘、屬不自願成親）；中國〈白水素女〉沒有自己的題。兩段原文都對得上，補上研究稿漏讀的兩句（她的任務是『使卿居富得婦』、被看見後『爾後自當少差』），這讓轉折更清楚。仍待查的原因：一、今天『田螺姑娘嫁給農夫』的流傳版本沒有兩個可讀出處（照 wave35 規則）；二、〈吳堪〉的縣宰『聞堪美妻，因欲圖之』正是〈우렁각시〉被擋下的那一型（官員想奪螺女），雖然這裡沒有得逞，仍需站主判斷；不行就只用〈白水素女〉，片長會掉到約 2–3 分鐘，只能當 N5022 的一段尾聲。片長誠實估 3–4 分鐘，接 N5022 時 N5022 要壓到 9 分鐘內。"
+    },
+    {
+      "id": "N5025",
+      "agent": "ZA4",
+      "reviewer": "R454",
+      "verdict": "REJECT",
+      "key_source_reopened": "ZA4-S023 https://udn.com/news/story/7272/8683818（温宗翰〈月老面面觀〉全文）；另重開 ZA4-S021 https://zh.wikisource.org/wiki/%E5%A4%AA%E5%B9%B3%E5%BB%A3%E8%A8%98/%E5%8D%B7%E7%AC%AC159、ZA4-S022 https://zh.wikisource.org/wiki/%E7%BA%8C%E5%B9%BD%E6%80%AA%E9%8C%84_(%E5%9B%9B%E9%83%A8%E5%8F%A2%E5%88%8A%E6%9C%AC)/%E5%8D%B7%E5%9B%9B",
+      "reopen_result": "頁面上確實寫了：〈定婚店〉兩本的年份確實是『貞觀二年』與『元和二年』，四部叢刊本多了『老妖妄如此，吾士大夫之家娶婦必敵……奈何婚眇嫗之陋女』與『命苟未合，雖降衣纓而求屠博尚不可得』；赤繩『以係夫婦之足』；韋固『磨一小刀，付其奴曰：汝素幹事，能為我殺彼女，賜汝萬錢』，奴『初刺其心，不幸才中眉間』。温宗翰文：開頭是作者自己在台南祀典武廟拜月老、後來結婚的經歷；『月老本不是自古存在的祀神文化』；『1980年，南投縣為促進觀光需求，於日月潭首創一座月下老人祠後，全台灣各地的月老信仰便發展起來』；『月老在台灣，其實從來就沒有專屬廟宇』；文中點名祀典武廟、重慶寺、高雄地嶽殿等現存宮廟。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複（月老、定婚、韋固、赤繩在池中皆無），文本引文也都對，但照不收清單與片長判否決：一、題目的主軸之一是『台灣廟裡的月老是 1980 年日月潭為觀光蓋祠才興起的』——這是在替一個今天仍在許多宮廟受祭拜的民間信仰下『來歷是觀光造出來的』結論，與 N1705（現存信仰的神蹟是後來的傳說）同型，也碰到『還在執業的宮廟』；而且只有一位民俗專欄作者一個出處，『首創』沒有第二個可讀來源，研究稿也沒做到兩個出處。二、拿掉台灣這段後，剩下的是〈定婚店〉兩個傳本的差異（年份、門第那段罵）、紅繩綁腳、今天教材照錄，事實約 8–9 條，誠實估 5–6 分鐘，池中沒有同一核心問題的兄弟題可接（N3103 年獸答案不同）。三、剩下的核心與鉤子是『出萬錢叫僕人刺殺一個三歲女孩、刀中眉心』，系列的可愛插畫配上以殺幼童開場的鉤子，比切腳跟更容易碰到 YouTube 對未成年人受害內容的審查；就算只敘述不畫，也撐不起鉤子以外的主軸。重新收錄的條件：站主同意兒童遇刺只用道具與花鈿交代、且池中出現同一核心（『命定姻緣』的文本來歷）的兄弟題可接成章節；台灣月老信仰的興起不作為主軸。"
+    },
+    {
+      "id": "N5026",
+      "agent": "ZA4",
+      "reviewer": "R454",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA4-S026 https://zh.wikisource.org/zh-hant/%E3%80%8A%E5%94%90%E5%AE%8B%E5%82%B3%E5%A5%87%E9%9B%86%E3%80%8B%E7%A8%97%E9%82%8A%E5%B0%8F%E7%B6%B4（〈枕中記〉節與注）；另重開 ZA4-S025 https://zh.wikisource.org/zh-hant/%E6%9E%95%E4%B8%AD%E8%A8%98、ZA4-S027 https://www.ourchinastory.com/zh/5715/%E3%80%8C%E9%BB%83%E7%B2%B1%E4%B8%80%E5%A4%A2%E3%80%8D%E5%A4%A2%E4%BA%86%E7%94%9A%E9%BA%BC%EF%BC%9F、ZA4-S028 https://m.thepaper.cn/newsDetail_forward_21476290",
+      "reopen_result": "頁面上確實寫了：魯迅『原文呂翁無名，《邯鄲記》實以呂洞賓，殊誤。洞賓以開成年下第入山，在開元後，不應先已得神仙術，且稱翁也。然宋時固已溷為一談，吳曾《能改齋漫錄》，趙與岩《賓退錄》皆嘗辨之。明胡應麟亦有考正』；『此集之《枕中記》，即據《文苑英華》錄』；《廣記》『開元十九年，道者呂翁經邯鄲道上』、『主人蒸黃粱為饌』、『後來凡言「黃粱夢」者，皆本《廣記》也』；焦湖廟楊林『蓋即《枕中記》所本』。〈枕中記〉：盧生『衣短褐，乘青駒，將適於田』，『舉進士，登第』，晚年『屢乞骸骨，不許』，上疏『今年逾八十』，『是夕薨』，醒來『主人蒸黍未熟』。通俗版：『上京赴考的途中』、『高中狀元』、『80歲才辭官』、『一聲雞鳴』、『黃粱米』。呂仙祠頁：『始建于北宋初期』、主祀呂洞賓、『吕洞宾吕翁即为八仙之一』、盧生祠『就是叙述吕洞宾故事的地方』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：黃粱、枕中、呂翁、呂洞賓、焦湖在池中皆無；N3145 牡丹亭是另一個湯顯祖題。前提成立，但研究稿把魯迅講反了一半：魯迅說《邯鄲記》以呂洞賓當呂翁『殊誤』，緊接著就說『然宋時固已溷為一談』；原 payoff 寫『呂洞賓是被後來的戲搬進來，而一座祠堂把這個誤會蓋成了石頭』，把北宋的祠放在明代的戲之後，先後顛倒，也等於說一座現存宮觀『弄錯了』。已改成『宋代起就混為一談，後來的戲和祠堂一路沿用』，祠堂只引介紹文字。另補研究稿漏讀的：魯迅『且稱翁也』、胡應麟；原文盧生是要去下田（不是赴考），晚年屢求退不准、八十多歲死在任上（通俗版改成 80 歲辭官）。鉤子改標『魯迅指出』，因《廣記》本本身沒讀。片長 8–9 分鐘維持。"
+    },
+    {
+      "id": "N5041",
+      "agent": "ZA5",
+      "reviewer": "R455",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA5-S001 https://www.british-history.ac.uk/cal-state-papers/colonial/america-west-indies/vol17/pp366-380（覆核自己的 WebSearch 直接給了 www 主機的 vol17 目錄頁，再點目錄連結，沒有經過研究代理那條路）；另重開 ZA5-S003 https://gutenberg.org/files/33318/33318-h/33318-h.htm（照伺服器轉址）；ZA5-S004 以研究代理的下載檔核對",
+      "reopen_result": "BHO No. 680：『Kidd had brought 60 lbs. weight of gold, about one hundred weight of silver and 17 bales… left behind him a great ship near the coast of Hispaniola, that nobody but himself could find out… to the value of at least £300,000』；『I heard by the greatest accident in the world the day Capt. Kidd was committed that a man had offered £30 for a sloop… Kidd having owned he had buried some gold on that island (tho' he never mentioned to us any jewels…)』；『If the jewels be right… we guess that the parcel brought by him may be worth £4,500』；『about £14,000』；『search for the goods and treasure sent by Kidd to N. York in three sloops… another depositum of gold』；附件 XIX『Inventory of the gold, silver, jewels and merchandise late in the possession of Capt. Kidd. July 25, 1699. Gold, 1,111 oz., silver, 2,353 oz.』；Kidd 陳述『50 lbs. weight… left in a box in the custody of Mr. Gardiner… but no goods anywhere else. Several of his company landed their chests and goods at other places』。Paine：Gardiner 口述『a Chest and a box of Gold… which box of Gold the said Kidd told the Narrator was intended for my Lord』，全段沒有 bury；Bellomont 1699-10-20 信 Clarke『carried off to the value of about 5000 pounds… (that we know of and perhaps a great deal more)』；『The only authentic Kidd treasure was dug up and inventoried more than two hundred years ago』。Irving：『he had time, it is said, to bury the greater part of his treasures』；〈Wolfert Webber〉『Kidd never was up the Hudson!』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，但研究稿有三個事實錯誤：Emot 說的大船貨值是 £300,000 不是 3 萬鎊；1,111／2,353 盎司是 Kidd 全部金銀的總清單，不是 Gardiner 那一批；Kidd 陳述『沒放在別處』的下一句就說手下把箱子卸在別處，加上 Bellomont 同信追查三艘紐約單桅船與『另一處』、Paine 轉錄 Clarke 運走約 5,000 鎊——『只有一批』不能寫。Irving 的 Hudson 爭論出處篇名也錯。改後 8–9.5 分鐘，可接 N5045。人物卒年：Kidd、Bellomont 只確認已死（Paine 1911），確切年份刪；Gardiner 等不入畫。"
+    },
+    {
+      "id": "N5042",
+      "agent": "ZA5",
+      "reviewer": "R455",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA5-S005 https://i.rcahms.gov.uk/canmore-pdf/WP00000724.pdf（搜尋結果網址，重下後與研究代理的檔案雜湊相同；讀 Summary、§1.3、§5.1–5.4.10、§5.6.4–5.6.6）；ZA5-S003 Paine Chapter VII 重讀",
+      "reopen_result": "報告：『she is thought to be verie riche』；『for he was always, as thai saie, served in sylver』；『the man knowen to your honour and called Smallet』；『The name is not given in any contemporary account』；Lang 1912；Spottiswoode『A ship of Florence』（1655 出版、1635 寫成）；1677 Argyll『It is reported to have been the Admiral of Florence…a ship of 56 guns』；Medina Sidonia『the galleon of the Duke of Florence had returned to Santander』、領餉到 1590；Marolin de Juan『San Juan Bautista, of Ragusa, 800 tons, was burnt in a Scottish port… only persons who escaped it were 15 who were on shore』；1593 年 9 月 7 日馬德里文件（1592 年 8 月 12 日 Valladolid 發起調查），依『two men who say they are from the ship itself』，『whilst taking off the powder to dry, they were engulfed by an explosion』；342 人、279 兵、26 門炮；§1.3.5『clearly influenced by the hunt for treasure… very little chance that the San Juan carried a large quantity of specie』；§5.4.7 備忘繫於 1676 年合約『found nothing but a great deal of cannon-ball… main expectation』；§5.6.4 貴族可能帶少量錢幣與銀器；§1.3.6 現任公爵主張擁有權。Paine：『thirty million ducats of money, and the church plate』；『It is certain that the Florencia… never returned to Spain』；『all previous investigations had failed to prove』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立。改正：1593 年的是調查後發出、依兩名船員證詞的文件；Islay 那艘與 Tobermory 那艘只是報告的『多半』；打撈備忘年份兩來源不同；鉤子刪研究者自算的『將近四百年』；補 Paine 1911『確定沒回西班牙』→ Lang 1912 的先後當轉折。1588 年書信與 1593 年文件仍只經 2006 年報告轉引（覆核搜尋 CSP Scotland 1588 卷沒有拿到公開連結），旁白須標『據報告引述』。Argyll 九世伯爵只確認被斬首（Paine），其餘人物卒年未確認、不入畫。"
+    },
+    {
+      "id": "N5043",
+      "agent": "ZA5",
+      "reviewer": "R455",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA5-S007 https://archive.org/download/cihm_72364/cihm_72364_djvu.txt（先叫 https://archive.org/metadata/cihm_72364 看到檔案清單，下一次呼叫才下載）；ZA5-S003 Paine Chapter IX–X 重讀；ZA5-S006 以研究代理經 metadata API 取得的下載檔核對",
+      "reopen_result": "招股書：『treasure that has lain buried on a lonely Pacific isle since 1835. There is no myth about this treasure』；『In the yea: 1835, when I was about eighteen… barkentine “Mary Dier,” bound from Bristol… a Peruvian fort a few miles above Callao. War existed at this time between the Peruvian and Chilean nations』；『(Description of location and the remainder of Thompson's letter purposely not published at this time.)』；Thompson 在 Jamaica 被 Keating 搭救、死於英國醫院天花；『Keating… made a trip to Cocos Island in 1844, and again in 1846. In the two trips he took away 22,000 pounds sterling』；1897 年 Hackett 與 Keating 遺孀上島；『the man who invests $1,000 gets the snug fortune of $100,000』；全文沒有 Lima、cathedral、church。Paine：『their stories are closely interwoven because the plunder came from the same source at about the same time』；『a numerous company of bold and imaginative liars, every man of them ready to swear on a stack of Bibles that his is the only true』；『Captain Thompson of the merchant brig Mary Dear who stole the twelve million dollars’ worth… entrusted to him by the Spanish residents of Lima in 1820』；Keating 1844 從英國航行時認識 Thompson、Bogue 翻船沉沒、『His ship returned with never a doubloon』；遺孀 1894 年與 Hackett 船長、brig Aurora。Knight：故事『as I heard it from Mr. A----, who was the prime mover of the last venture, and who himself sailed in the “Aurea”』；『no less than five different bands of adventurers in the course of the last twelve years』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.minutes",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提要改寫：研究稿說招股書是『同一筆』利馬大教堂寶藏，但招股書全文沒提利馬或教堂，是『Callao 北邊秘魯要塞寄放的金銀珠寶』；把三版連成同一筆的是 Paine 1911 自己的話，改成引他。『每一版都出自要去挖的人』對 Paine 不成立。補研究稿漏讀的最大轉折：招股書與 Paine 對 Keating 的說法直接矛盾（帶走 22,000 英鎊 vs. 船回港一枚金幣也沒有）。Keating 最早見報時間仍空白、Mary Dier 待對影像（OCR 三處一致）。片長 8.5–10。"
+    },
+    {
+      "id": "N5044",
+      "agent": "ZA5",
+      "reviewer": "R455",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA5-S008 https://www.gutenberg.org/ebooks/23947.txt.utf-8（由搜尋結果 gutenberg.org/ebooks/23947 書目頁的連結取得；讀序、自序、卷三江口與錮金兩條、〈楊展傳〉）；新讀 ZA5-S016 東海大學圖書館館訊 PDF（搜尋結果網址）；ZA5-S009、S010、S011 以研究代理的下載檔核對",
+      "reopen_result": "《蜀碧》：『參將楊展大破賊於江口…裝金寶數千艘，順流東下…展聞逆於彭山之江口，縱火大戰，燒沈其舟…展取所遺金寶，以益軍儲…（至今居民時於江底獲大鞘，其金銀鐫有各州邑名號。）』；『獻自江口敗還…決走川北，將所餘蜀府金銀鑄鉼，及瑤寶等物，用法移錦江，錮其流，穿穴數仞實之，因盡殺鑿工，下土石掩蓋，然後決堤放流，使後來者不得發。名曰錮金』；〈楊展傳〉『率眾百萬，蔽江而下…所掠金玉珠寶及銀鞘數千百，悉沈水底』、『時年四十有五，順治己丑歲』；自序末『壬戌八月朔五，丹溪生磬泉〔遵〕泗自敘』。館訊：〈義例總言〉署乙丑，推乾隆十年（1745）；白鶴堂本乾隆四十二年（1777）。Archaeology：『recovered from the Minjiang River, near its intersection with the Jinjiang River』、『under 16 feet of earth』、2005 年七個銀錠、逾 10,000 件。中央社 2016：『2015年底…專家出具意見書認為…即為歷史記載的張獻忠沉銀中心區域之一』、『1646年…被箭射死』。中央社 2017：出土有『50兩銀錠』，沒有寫銀錠上的字。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，改正兩處事實：『挖的是江口，不是錦江』過頭——出水處在岷江與錦江交會附近，錮金段也沒寫地點；『刻字的銀錠』讀到的報導沒寫，刪。補成書年代（乾隆年間，自序署壬戌；館訊推〈義例總言〉乙丑為乾隆十年）與〈楊展傳〉跟正文的出入（撈走 vs. 全沉）。鉤子改成兩批並列，不放研究者的比對結論。只撐 5–6.5 分鐘，維持 chapter 接 N2927。"
+    },
+    {
+      "id": "N5045",
+      "agent": "ZA5",
+      "reviewer": "R455",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA5-S012 https://gutenberg.org/cache/epub/40580/pg40580-images.html（搜尋結果網址，照轉址）；ZA5-S013 https://www.british-history.ac.uk/cal-state-papers/colonial/america-west-indies/vol30/pp424-446（由搜尋結果 vol30/pp381-397 點頁上 Next 三次）；ZA5-S003 Paine 的 Blackbeard 段重讀；ZA5-S014 以研究代理經 metadata API 取得的下載檔核對",
+      "reopen_result": "Johnson 書名頁『The second EDITION, with considerable ADDITIONS… 1724』、目錄有『III. Of Capt. Teach』；『whether his Wife knew where he had buried his Money? He answered, That no Body but himself and the Devil, knew where it was, and the longest Liver should take all』；『25 Hogsheads of Sugar, 11 Teirces, and 145 Bags of Cocoa, a Barrel of Indigo, and a Bale of Cotton… came to 2500 l.』；Bath-Town『sixty Hogsheads of Sugar, and from honest Mr. Knight, twenty』。Spotswood：『a ship laden with sugar and cocoa, which they pretended they found as a wreck at sea』；『Tach with nine of his crew were killed』；『taken piratically near Bermuda from the subjects of the French King… as some of Taches crew now in custody alledge』。Paine：『Of them all, Blackbeard fills the eye most struttingly as the proper pirate to have buried treasure… we may rest assured that unless his sudden taking-off prevented, he was at pains to bury at least one sea-chest』；『It is more probable that whatever treasure may be hidden among the Isles of Shoals was hidden there by the shipmates of… John Quelch』。Drake：『He is supposed to have buried immense treasure here』、『By report, she has been seen more than once on White Island』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立。改正：版本補『第二版』；Bermuda／法國船是 Spotswood 轉述在押船員供詞；研究稿對 Paine 的轉述錯了——Paine 原話是『可以放心他至少埋過一箱』，改成 1911 年把傳說寫成推定的證據，並補 Paine 自己說 Isles of Shoals 的藏寶更可能屬 Quelch 的手下；鉤子『唯一出處』改『目前讀到最早的出處』。4–5.5 分鐘，維持 chapter 接 N5041，或單獨做 Shorts。"
+    },
+    {
+      "id": "N5061",
+      "agent": "ZA6",
+      "reviewer": "R456",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA6-S003（Censorinus 拉丁文頁，curl 重開）、ZA6-S004／S005／S006（CCEL Gibbon 注 75、注 76、第 35 章本文）、ZA6-S001（Claudian 英譯頁）、ZA6-S007（archive.org Mohr 1895 OCR）",
+      "reopen_result": "Censorinus 17.15：『Quot autem saecula urbi Romae debeantur, dicere meum non est; sed quid apud Varronem legerim, non tacebo … si ita esset, ut traderent historici de Romuli urbis condendae auguriis ac XII vulturis, quoniam CXX annos incolumis praeterisset populus Romanus, ad mille et ducentos perventurum』；21.6 記寫作年為 Pius 與 Pontianus 執政、建城第 991 年。Gibbon 本文：『As early as the time of Cicero and Varro it was the opinion of the Roman augurs that the twelve vultures … represented the twelve centuries assigned for the fatal period of his city (75) … inspired the people with gloomy apprehensions … seriously verified in the downfall of the Western empire』；注 75 只引 Vettius／Varro／Censorinus；注 76『the twelfth century would expire A.D. 447 … Claudian … and Sidonius … may be admitted as fair witnesses of the popular opinion … See Dubos, Hist. Critique』。Claudian：月食、彗星、石雨、蜂群之後『fear, ever a poor interpreter, read disaster in the portent … cutting off the flight of the twelfth vulture, tried to shorten the centuries』；譯者注 8『more than eleven centuries had already passed』。Sidonius 第 55 行『quid, rogo, bis seno mihi vulture Tuscus aruspex portendit?』、第 357–359 行『Iam prope fata tui bis senas vulturis alas complebant (scis namque tuos, scis, Roma, labores): Aetium Placidus mactavit』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.minutes",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提大致成立，但三處要改：（1）鉤子『其實是在說羅馬至少還撐得到一千兩百年』與『打包票』是研究者對 ad mille et ducentos perventurum 的讀法，原文沒有『至少』，『到達 1,200 年』本身就可讀成期限；（2）『Gibbon 注腳裡唯一的出處』不對，注 76 另引 Dubos，只能說注 75 的出處是一條；（3）原稿結論『期限是一層層讀出來的』與 Claudian 的證據衝突——402 年確實有人倒數，Gibbon 的『憂懼』有同時代根據，該改成『恐慌有據、源頭是條件句、定見與應驗是 Gibbon 的概括』。補 Censorinus 自記的建城第 991 年、Claudian 的凶兆清單。與 wave21 not_added 的同題：當時缺 Sidonius，本輪補齊，不算重複；與 N4485 答案不同，可成組。Gibbon 卒年 1794 已以 archive.org 書目 API 確認，可入畫。"
+    },
+    {
+      "id": "N5062",
+      "agent": "ZA6",
+      "reviewer": "R456",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA6-S010（archive.org familiarsciences00prociala OCR，curl 重開）；ZA6-S013、S015 改以合規途徑重讀（ZA6-S023、S002：自己跑 loc.gov 搜尋 API，取 url 欄原樣加 &fo=json → fulltext_file）；ZA6-S011、S012 以研究代理下載檔核對（同一網址）",
+      "reopen_result": "Proctor pp.35–46：開頭『suggest the possibility, nay, even some degree of probability, that this comet may bring danger』；『suggested at the Astronomical Society in April 1880 by Mr. Marth … possibly it may return in, say, seventeen years』；『after only a few — possibly one or two — circuits, the comet will be absorbed by the sun』；『Without saying that I consider there is absolute danger of a similar outburst … (a result which will, in my opinion, most certainly take place)』——『most certainly』指彗星被吸收；全文無年份。St. Croix Avis 全文：『we believe, that there is really a very considerable chance of a catastrophe only fifteen years hence … the world has blandly treated Mr. Proctor's warning … has not made any change in its arrangements』、『in or about the year 1897』、『Mr. Proctor's speculative prediction;—it is not advanced with any absolute confidence』；版面從句中開始。Ouachita：『Richard A. Proctor's article … has attracted a great deal of attention … likely to reappear about 1897』，Young『the community at large would know nothing about it』。Kirkwood：『misinterpreted as indicating the probable destruction of life upon the earth about the close of the present century. His language, however, though somewhat unguarded, expressed no such opinion』。Sekanina：Kirkwood『Should [the sungrazer of 1880] return about 1916 or 1917…』、『Of course, no such comet appeared』、『Fragmentation won!』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.minutes",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，改四處：（1）『1897 是報紙把 Marth 的十七年加在 1880 上算出來的』與鉤子『年份來自……比方說十七年』是研究者推論，改成『原文沒有年份、只有那句比方說』；（2）『最確定會發生』原文是指彗星被太陽吸收，不是指毀滅，已限定；（3）1366 年那段：Kirkwood 引的是英譯，誰加了『世界末日』沒查到，不能說是 Kirkwood 加的；（4）St. Croix 一版從句中開始，評論的原刊處與前半句沒讀到，『我們相信……十五年後』要連同後文的『若天文學家是對的』一起講。S013、S015 原取得路徑違規（rule1_record），覆核已以合規途徑重讀全文，內容支撐不變，不必排題前再重讀。Kirkwood 卒年 1895 已確認可畫。片長取 8–10，與 N5063 合併時取下限。"
+    },
+    {
+      "id": "N5063",
+      "agent": "ZA6",
+      "reviewer": "R456",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "ZA6-S010〈Cold and Wet〉pp.191–198（archive.org OCR，curl 重開）；ZA6-S020 以研究代理下載的全文核對（取得路徑合規：搜尋結果 url 欄加 &fo=json）；ZA6-S017–S019 的 API 片段在工具紀錄逐字核對",
+      "reopen_result": "Proctor：『far more effective … have been the warnings of some American astrologer, who has announced that between 1880 and 1885 the perihelia of the four giant planets … would coincide』、『terrified some in a remarkable degree — especially farmers』、『Jupiter … passed his perihelion on September 5, 1880』、『Saturn … will not pass his perihelion before the autumn of 1885, by which time Jupiter will not be very far from aphelion』、天王海王『pass their perihelia in 1882, at … about 1,700 and about 2,750 millions of miles』、『the distance separating Uranus and Neptune will not be less than about 3,500 millions of miles』、『It came, indeed, too soon for those astrologers whose faith had been pinned on the perihelion passages between 1880 and 1881』。Dakotaian：『223 perihelia and sixteen epidemics … about 7 per cent』、『never before occurred so closely together … since the year 18530 B.C.』、Vulcan『completing its orbit in twenty-three days』、『My conjectures are based upon faith』、『as they will now within five years』；結尾引《路加福音》21:25。St. Landry 片段：『In tracing the history of epidemics for more than two thousand years, Dr. Knapp finds the facts in all cases to validate the theory』、『a little less than thirty-four years』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "Proctor 的計算與引語全部對得上；補上天王、海王的日距，並指出提倡信自己寫『在五年之內』，所以『四顆同時』是 Proctor 轉述時的說法，片中要講清楚；Dakotaian 結尾引福音書談末世，不用。流傳版本的源頭（Knapp）沒讀到、三份報紙只有 API 片段，3.5–4.5 分鐘，維持待查，只能當 N5062 的第二章。"
+    },
+    {
+      "id": "N5064",
+      "agent": "ZA6",
+      "reviewer": "R456",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "ZA6-S021 Pankenier 2009 PDF（lehigh.edu，curl 重開、pdftotext 全文核對 pp.339–362）；另做兩次 WebSearch 查『樂頀』",
+      "reopen_result": "p.339–340：『an impressively close grouping (10.5°, or the width of a hand span) … the densest such gathering in five centuries』、『In Europe the event had long been predicted and, consequently, widely and anxiously anticipated. In China, to all appearances, it was not』。p.359：Zhu Guozhen 記『The Director of Astronomy, Le Huo … “When the planets gather, either there is great good fortune or there is great calamity” … “when armies throughout the realm are plotting, the planets gather in Yingshi”』；『the Veritable Records elides a crucial part of the memorial』。p.360：江西通志『a change of kingship: the virtuous one has occasion to celebrate and the one lacking in virtue is destroyed … How could one not all the more burnish sagely virtue in order to be granted this great beneficence?』、『promoted in 1521 to the post of vice director』、『immediately thrown into prison and was spared only through the intercession of high officials』。p.362：『A senior imperial censor, Jin Xianmin … recommended to the emperor that inspectors of the various defense commands make preparations for battle. This recommendation Emperor Shizong acceded to』及自責詔。注 39：洪武 1385 年相隔約 54°、1387 年超過 150°；p.356：郎瑛年份差一年『probably the result of a copyist's error』。兩次搜尋都找不到任何頁面寫『樂頀』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "研究代理漏讀同一論文 p.362 的最大轉折：皇帝准御史備戰、下自責詔——原稿把宮廷寫成只唱頌歌，已補成『公開頌歌、私下照兵象備戰』；Le Huo 的奏疏結尾是勸修德承福，不是純凶言；『刪掉』改為 Pankenier 的『沒有收（elides）』；郎瑛的年份錯誤加上『可能是抄寫錯誤』。『樂頀』查無可讀出處，改只寫拼音 Le Huo。全部中國史料只經一篇英文論文轉述，維持待查。與 P12 同一天象、答案不同，不算重複；與 wave44 的 N4926 無關。"
+    },
+    {
+      "id": "N5081",
+      "agent": "ZA7",
+      "reviewer": "R457",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "ZA7-S004 Connery 1893（archive.org metadata → _djvu.txt 逐字讀全文）；ZA7-S001 Herald 1874-11-09 p.3（fo=json → fulltext_file）；ZA7-S006 hoaxes.org 全文",
+      "reopen_result": "Herald 原刊確寫『Chris. Anderson the keeper, one of whose charges was Pete, the rhinoceros』、『forty-nine killed, of which only twenty-seven bodies have been identified』、『fifteen bodies at the Morgue』與文末自白。Connery 全文：起因是豹從運獸車滑到車籠之間；O'Connor→Clarke；轉錄 Times 評論『In some cases the children had just gone to school… parents rushed off』；自家孩子、理髮店、電車、號外、Walling『with a bare glance』、Times 編輯『it is related… a brace of pistols』、Dix 一句 OCR 殘缺（hoaxes.org 轉錄為『armed with a rifle』）；『none such ever occurred』『did not drop by so much as one subscriber』；但他的摘要寫『the elephant Pete』、Dix『shooting the leopard』，與原刊（犀牛 Pete、Bengal Tiger）不合。hoaxes.org：第 3 版是頭版、『Armed men rushed into the streets』無出處、〈Third-Term Panic〉『published a week before』、Herald 下一期只登了〈Wild Beasts〉短文。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "premise_status",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "同案在 wave40 已被 U6 放進 not_added（pool.json not_added 第 1855 筆）：原文整篇是猛獸咬死、踩死市民的細節，U6 寫明需站主同意『只講報社收尾與別家報紙的罵』才重提；研究代理寫『池中 grep 沒有同案』是漏查。內容上本題的轉折（同篇自白、Connery 19 年後記錯犀牛與老虎、大象時序）都核對得上，scope 已收窄到 U6 的條件，但是否可做要站主決定，故判待查。事實改正：Connery 轉錄的 Times 是『In some cases』，研究代理寫成『許多家長』；Dix 帶槍一句只出自 Connery；補 Connery 記錯的兩處。"
+    },
+    {
+      "id": "N5082",
+      "agent": "ZA7",
+      "reviewer": "R457",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA7-S007 Mark Twain Project〈Petrified Man〉全頁（Headnote、注、校勘說明、正文）；ZA7-S008 Galaxy 1870-06 〈THE PETRIFIED MAN〉（metadata → _djvu.txt）",
+      "reopen_result": "S007：『The first printing… is not extant』，四份獨立轉載（Sacramento Union 10/9、Nevada Democrat 10/11、Evening Bulletin〈A Washoe Joke〉10/15、Placer Herald 10/18）；1862-10-21 信『It is an unmitigated lie, made from whole cloth. I got it up to worry Sewall』並說要讓他收到冒充 scientific men 的信；玻璃櫃加碼；『certainly an exaggeration』；12 家中 8 家不疑、Alta『sell』；1831 Woodville『An Ossified Man』、1858 Alta 晶洞水騙局；正文手勢逐字相符。S008：原文是『a delicate, a very delicate, satire』（研究代理引成『a very delicate, satire』）、『temporary falling out』、『I really had no desire to deceive anybody』、回憶手勢『left thumb was hooked into the right little finger』、『London Lancet』、『for spite, not for fun』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.minutes",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，兩個來源都重讀過。改正：引文錯字（a delicate, a very delicate, satire）；鉤子的『最有名的惡作劇』沒有出處，刪去；『原刊一張都沒留下來』改成『今天找不到存本』（編者用 not extant）；補 1862 信中冒充科學家來信的計畫、一個月後的玻璃櫃加碼，與 1870 年『no desire to deceive』對照，讓兩個動機版本的落差有原文支撐；scope 補『不說 1870 的諷刺說法是假的』（編者自己認為 1862 前的報紙大概也有，只是存世太少）。素材誠實估 8–9 分鐘，下修。只有兩個來源，轉載報紙原件仍沒讀，寫稿前最好補一份。"
+    },
+    {
+      "id": "N5083",
+      "agent": "ZA7",
+      "reviewer": "R457",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA7-S009 Daily Colonist 1884-07-04 第 3 版（archive.org metadata 檔案清單上的 18840704.pdf，看掃描影像）；ZA7-S011（07-13）、ZA7-S010（07-09）_djvu.txt；ZA7-S012 anomalist.com 全文",
+      "reopen_result": "掃描影像日期行清楚印著『YALE, B. C., July 3rd, 1882.』——原刊誤植。全文都在第 3 版同一欄、沒有截斷：『Dr Hannington』『Conductor R. J. Craig and Express Messenger Costerton』清楚可讀；到站人群『were disappointed, as Jacko had been taken off at the machine shops』；抓捕段寫『the then supposed demented Indian was corralled』，結尾『or is he really what the train men first thought he was, a crazy Indian?』，另有『stray Indian dog』。07-13：『The Columbian says… the wild man wasn't there』相符；07-09 牧師信相符。Coleman 頁：說原報導寫牠『housed in a local jail』（原文沒有）；『As Green has pointed out, the Colonist never disputed its critics』；Mainland Guardian 與 British Columbian 引文相符（轉引）。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.minutes",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，核心轉折（監獄撲空、Colonist 自己轉載）有一手報紙支撐。改正：1882 是原刊誤植不是 OCR；研究代理說文章在『from Spuzzum』截斷，其實沒有截斷，是漏讀結尾——結尾有兩個重要內容：車站人群根本沒看到牠（新轉折），以及原文兩度把牠推測成『demented／crazy Indian』，這是種族貶抑用語，scope 已寫明不唸、不上字幕、不畫，gorilla 只當 1884 年的用字背景；『never disputed』是 Coleman 轉述 Green，不是 Coleman 自己的判斷；Coleman 說原報導寫監獄，原文沒有。Mainland Guardian 與 British Columbian 仍只經 Coleman 轉引（搜尋 UBC Open Collections 沒找到原件），旁白須標『據 Coleman 引述』。"
+    },
+    {
+      "id": "N5084",
+      "agent": "ZA7",
+      "reviewer": "R457",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "ZA7-S017 Eagle River Review 1923-03-29 p.4、ZA7-S013 Wood County Reporter 1896-01-30 p.4、ZA7-S015 Northern Wisconsin Advertiser 1900-07-12 p.1（各頁 fo=json → fulltext_file）",
+      "reopen_result": "S017：『alleged discovery of a wild and unknown animal which he christened the \"Hodag\"』『attracted much attention in the scientific world and men were sent from all over the country to see the curiosity on display at Mr. Shepard's home』『it developed that the \"Hodag\" was a creation of wood and skins or furs made by the discoverer himself』相符。S013：『SPOTTED HODAG (Bovine Spiritualis)… Photographed from life by T. A. Taylor』『Continued from issue of Jan. 23』相符。S015：Lake Goodyear、相機、廢鐵礦、氯仿海綿、蛋、『bovine spiritualis』『gifted fabricator』相符——與 1896 廣告同一個假學名，研究代理沒指出。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "editorial.payoff",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "讀到的報紙都對得上，但流傳版本（1893 炸藥、1896 展出、Kearney 雕刻、兒子配音、承認）只有一個個人網站，1893 New North 原刊與 Shepard 本人的承認都沒讀到；工具紀錄裡的 WHS 搜尋摘要甚至說 1893 專欄寫的是『捕獲』，與炸藥版不一致。payoff 原寫『不是一個人憑空捏出來』——1896 廣告晚於 1893，又與 1900 年 Shepard 版同一學名，撐不起這個定論，已改寫。補到 1893 原刊或 Kortenhof 傳記、WHS 文章改版後的頁面（含 1870 年 Kent County 地方史的說法）即可轉 screened。"
+    },
+    {
+      "id": "N5101",
+      "agent": "ZA8",
+      "reviewer": "R458",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA8-S004 Evening Star 1917-06-08 p.12（za8dl/es.xml，來自頁面 JSON 的 fulltext_file）；ZA8-S001／S002／S003 Nature OCR；ZA8-S005 Jones 部落格全文（za8dl/p8.txt）",
+      "reopen_result": "電訊原文：Lloyd George 'staying for the night at his residence, Walton Heath'，事先 'acquainted with the exact hour'，'gave orders to be called at 3 o'clock ... on the chance of being able to hear the explosions'；'persons at the premier's official residence in London ... supposed they were the sounds of heavy guns until later they learned from the dispatches'；距離 OCR 'from 180 to 140 miles'。Nature 6/28：'evidence ... insufficient'、'not so very great'、'heard only a slight \"phit.\"'、'a well-prepared explosion is seldom noisy'。Davison：內聽區邊界距源 12–65 哩、250／223／1 筆、'not by the sound-vibrations becoming inaudible, but by the absence of sound-vibrations'。Jones 唐寧街版的註腳是 '[1] The internet, passim'；Telegraph 是 6 月 4 日凌晨 2 點一位員工在東南倫敦近郊聽到。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "risk",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立、兩份《自然》與電訊逐字對上。主要錯：題目把 Davison 的結果寫成『近的聽不到、遠的聽得到』，原文是內聽區聽得到、中間寂靜帶聽不到；鉤子用研究者換算的公里；『等了半天』『地震學者』原文沒有；唐寧街版本只有 Jones 一人且他的出處是『The internet, passim』。6–7 分鐘，與 N5102 合一集。"
+    },
+    {
+      "id": "N5102",
+      "agent": "ZA8",
+      "reviewer": "R458",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "ZA8-S009 官方紀錄 Vol.XVI Pt.1 OCR（za8dl/or16.txt）：委員會意見書、Buell 陳述、Mack 證詞全段；ZA8-S012 HistoryNet（覆核 curl 逐字讀）",
+      "reopen_result": "意見書：'About 2 o'clock a heavy and furious cannonading was heard at his headquarters ... \"There was a great waste of powder over there\"'；'As he had an organized signal corps ... this failure was all the more culpable'。Buell 陳述：'though the latter I had not thought of until it was established in evidence before the Commission'（沒有說是辯方證人）。Mack：'was there informed that it was the cavalry under command [of] Captain Gay and the rebels, with artillery on both sides'；告訴他的是 'Colonel Fry, I think. The conversation was in General Buell's tent'；反詰：'it was much heavier than was necessary ... for a cavalry reconnaissance'。HistoryNet：Ross 'temperature-induced refraction, combined with the effects of terrain'、'less than three miles from his Dorsey Farm headquarters'、Gilbert 戰後說 'no sound of the battle had been heard at General Buell's headquarters'。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "risk",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "editorial.minutes",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立。研究代理漏讀 Mack 證詞的關鍵段（司令部當場把砲聲解釋成騎兵交火），題目加了原文沒有的『辯方證人』；HistoryNet 實際可逐字讀，補 Gilbert 戰後與委員會紀錄不一致的轉折。片長上修 6–8，與 N5101 合一集。"
+    },
+    {
+      "id": "N5103",
+      "agent": "ZA8",
+      "reviewer": "R458",
+      "verdict": "REJECT",
+      "key_source_reopened": "ZA8-S013 Linton 1893 全文（za8dl/linton.txt）；ZA8-S016 The Debrief 全文（za8dl/p5.txt）；ZA8-S014 Bradley；ZA8-S015 Chittenden",
+      "reopen_result": "Linton：'From the first this sound did not appear to me to be caused by wind blowing. Its velocity was rather that of sound.'——他引 Bradley 只是當『保證』證明現象存在，自己明白否定風的解釋；Forbes 1893 年已寫 'No scientific explanation ... has ever been published'。The Debrief 2026 年正文直接引了 Bradley 的陣風句（'it now became evident that gusts of wind were passing through the air above us...'）。Chittenden 1895 只引 Forbes、Linton 兩段，接著寫 'No rational explanation has ever been advanced'。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "前提不成立：題目的轉折『第一手的高空陣風解釋被 1895 年導覽書拿掉，謎是這樣保存下來的』——（1）親自多次聽到的 Linton 明白說聲音不像風、速度是聲速，否定了陣風說；（2）『沒有科學解釋』是 Forbes 1893 年先說的，Chittenden 照他；（3）今天的流傳文章（The Debrief）正文就引了 Bradley 的陣風句，解釋沒有不見。剩下的是『至今沒解開』，現代解釋（1930 Popular Science、1937 Miner）都沒讀原文，又只撐 4–6 分鐘、T37 已滿。重新收錄條件：讀到 1930、1937 兩份原文或任何實地量測，另找同核心兄弟題。順帶記：The Debrief 把 Bradley 寫成 1871（報告是 1872 年度）、把 Linton 寫成 1892 年聽到（他是 1890 年聽到、1892 年宣讀），也把 Forbes 寫成『隔年』（兩人 1890 年同船測深）。"
+    },
+    {
+      "id": "N5104",
+      "agent": "ZA8",
+      "reviewer": "R458",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "ZA8-S017 Baxter 1691 OCR（za8dl/baxter.txt）；ZA8-S018 Morton 1712 §127–128；ZA8-S019 Strange Company 轉錄（za8dl/sc.txt）",
+      "reopen_result": "Baxter p.157：'in one Dobs Yard, drum like any Drum beating a March ... no Body in the Well ... it drumm'd on several Changes of Times. When King Charles the Second died, I went to the Oundle-Carrier, at the Ram-Inn in Smithfield; who told me their Well had drummed ... And I heard, it drumm'd once since'。Morton：'never heard when the Water was less than Six, or more than Eleven Foot in Depth'，1700–1708 各日期與水深與研究代理所列一致。1930 轉錄：'heard before the King's death, the Death of Crumwell, the King's coming in, the fire of London ... ye well is in the yard of one Dobbs'。研究代理 curl 鬼地網站拿到 308、0 位元組，流傳版只有摘要。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "premise_status",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "Morton 的量測紀錄扎實，題目有料；但流傳版本（S020）沒有逐字讀到的出處，預兆清單的 17 世紀原信也沒找到，判待查。改正一個誤譯（'And I heard, it drumm'd once since' 是聽說，不是親耳又聽到）與井主名字；補上清單裡的『國王之死』是查理一世。原本建議與 N5103 合集，N5103 已退，需另找兄弟題，否則 5–7 分鐘轉 Shorts。"
+    },
+    {
+      "id": "N5105",
+      "agent": "ZA8",
+      "reviewer": "R458",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "ZA8-S023 Mirabella 1613 OCR（za8dl/mira.txt）；ZA8-S022 Fazello 1558 OCR；ZA8-S025 italiani.it（za8dl/p4.txt）；ZA8-S028 Thyssen 藝術家頁",
+      "reopen_result": "Mirabella 條目標題 'PRIGIONE DI DIONIGI DETTA LAPICIDINE'，先引 'Diod. al libro quindicesimo'，再引 Athenaeus；'affine che i prigioni ... non potessero nè anco fiatare, che dal custode non fossero sentiti'；'avendo io condotto à veder questa carcere quel Pittore singolare ... Michel Angelo da Caravaggio'；'fece questa Carcere à somiglianza d'un orecchio'；'vien chiamato Grotta della Favella'；'Antonio Falcone mio Maestro'。Fazello 的回音洞列在 'In Acradina alie specus'，而 italiani.it 寫耳朵在 'Latomia of Paradise'。Thyssen：'Milan, 1571-Porto Ercole, 1610'。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "risk",
+        "source_ids",
+        "source_locator",
+        "editorial.minutes",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "Mirabella 一段逐字對上，偷聽說目前讀到最早是他寫的、Caravaggio 只說像耳朵，這個轉折成立。但第一個轉折依賴『Fazello 的 Acradina 回音洞就是今天在 Neapolis 的耳朵』，是研究代理的推定；古代文獻也沒讀。Caravaggio 卒年覆核已在可讀頁確認，可入畫。片長下修 6–8。"
+    }
+  ],
+  "theme_suggestions": [
+    {
+      "ids": [
+        "N4965",
+        "N4961"
+      ],
+      "shared_question": "1805–06 年兩位英國人物臨終那句『國家／責任』的遺言，是在場的人記下的，還是後來被改寫、讀錯或換掉的？",
+      "why_it_flows": "Nelson 1805 年 10 月、Pitt 1806 年 1 月相隔三個月過世；Nelson 篇（4–5 分鐘）講『吻』被流傳改成 Kismet 而真正的最後一句兩份紀錄不同，接 Pitt 篇講 love／leave 的誤讀與肉派傳聞，兩題都只用已讀來源，合計約 12–13 分鐘（Pitt 壓到 8 分鐘）。"
+    },
+    {
+      "ids": [
+        "N4983",
+        "N4984"
+      ],
+      "shared_question": "報紙保證『這是真的』的旅館房間故事，最早的印本到底怎麼寫？",
+      "why_it_flows": "兩題都是報紙副刊上被標成真事的旅館房間故事：N4984（1825 年『A Fact』，故事自己就把鬼拆穿，1889 年進了幽默欄）短篇開場，N4983（1897 年『Strange and True Mystery』，到 1990 年長出 1889、342 號房與精神病院）接主體；方法相同、時間順著走，合計 11.5–13 分鐘。"
+    },
+    {
+      "ids": [
+        "N4982",
+        "N3641"
+      ],
+      "shared_question": "名人『準時應驗』的死亡預兆故事，作者或身邊的人自己怎麼解釋，又被誰剪掉？",
+      "why_it_flows": "Brougham 書裡緊接著自己的浴缸故事，就轉述父親對 Lyttelton 之死的懷疑（夢與事件巧合、『時間剛好相合』是轉述時加的）——N3641 的旁證就在 N4982 的同一頁；兩題可以連播成系列，不併成一集（各 8–10 分鐘）。"
+    },
+    {
+      "ids": [
+        "N5001",
+        "N5002"
+      ],
+      "shared_question": "Galileo 說『我先看到』（或指別人抄他）的時候，留下的紙本撐得住多少？",
+      "why_it_flows": "同一個人、同兩年（1610–1612）、同一種證據問題：N5001 是 Galileo 用日曆指控 Marius，N5002 是 Galileo 自己的日期對不上、Scheiner 可能比他早；兩題都已各自撐得起 8 分鐘，可當連續兩集，第二集開頭一句接第一集的 Marius（Lynn 1904 提到 Marius 也說自己獨立看過黑子），不需補料。"
+    },
+    {
+      "ids": [
+        "N5041",
+        "N5045"
+      ],
+      "shared_question": "東岸最有名的兩個海盜埋寶傳說，當年的文件記下的到底是什麼，『埋寶』又是誰、哪一年寫上去的？",
+      "why_it_flows": "兩題用同一個方法、同一類來源（英國殖民地公文摘要本對照 18–19 世紀的小說、遊記與 Paine 1911）：Kidd 有一批被追回過秤的收據，Blackbeard 只有一句轉述的回答；Paine 1911 本身就把兩人並舉，還一個說『唯一可信的寶藏已挖出』、一個說『可以放心他埋過』，正好收尾。合計約 12–13 分鐘，N5041 須壓在 8 分鐘。"
+    },
+    {
+      "ids": [
+        "N5044",
+        "N2927"
+      ],
+      "shared_question": "『把河引開、挖坑埋寶、殺掉工人、再放水蓋回』這一招，史書裡是誰、哪一年寫下的，後來有沒有被找到？",
+      "why_it_flows": "N2927 是 Jordanes 寫 Alaric 410 年葬在 Busento 河底，N5044 是乾隆年間《蜀碧》寫張獻忠的『錮金』，做法幾乎一樣、都沒有出土紀錄；N5044 再多一層：同一本書旁邊記的燒沉船隊，三百多年後真的在江口出水。兩題各 5–6.5 分鐘，合計 10–13。並論是本池自己的比較，旁白標『我們發現』，不靠補料。"
+    },
+    {
+      "ids": [
+        "N5062",
+        "N5063"
+      ],
+      "shared_question": "1880 年代初的「天文末日」預言，年份與「同時」是誰加上去的？",
+      "why_it_flows": "同一位 Proctor、同一本 1882 年文集、同一兩年的美國報紙：N5062 是彗星落日的『1897』在原文裡找不到，N5063 是『四顆行星同時近日點』被他逐顆拆開；N5062 取 8 分鐘、N5063 取 3.5–4 分鐘，合計約 12 分鐘。N5063 仍待查，補到流傳源頭前不排。"
+    },
+    {
+      "ids": [
+        "N5061",
+        "N4485"
+      ],
+      "shared_question": "西羅馬「該」在哪一年滅亡，是誰事後替它定的？",
+      "why_it_flows": "N5061 是 Varro 紀年算出的 447 年與 Gibbon 的『應驗』，N4485 是東方編年史回頭替 476 年蓋章；兩題都在拆『羅馬終點』這個日期是誰寫下的，接起來不必補料。N5061 8–9 分鐘、N4485 8–9.5 分鐘，適合做成前後兩集而不是合併。"
+    },
+    {
+      "ids": [
+        "N5081",
+        "N5082"
+      ],
+      "shared_question": "報紙騙局的作者多年後自己講的版本，能信多少？",
+      "why_it_flows": "兩題都是 1860–70 年代純文字的報紙騙局，原刊都寫明或暗示是假的（Herald 文末自白、Twain 的手勢），流傳的細節都來自作者事後的自述（Connery 1893、Twain 1870），而自述都跟原文對不上（犀牛記成大象；手勢記成另一種）。N5081 需先過站主同意。"
+    },
+    {
+      "ids": [
+        "N5101",
+        "N5102"
+      ],
+      "shared_question": "打仗的聲音到底傳到了誰耳裡——當年紀錄寫的『聽到』與『沒聽到』，是怎麼變成聲學奇談的？",
+      "why_it_flows": "兩題答案方向相反又互補：梅森是遠在一百多哩外『據說聽到』，原始電訊顯示首相是事先知道時刻特地醒著等、倫敦的人當下以為是砲；Perryville 是幾哩外『據說沒聽到』，委員會紀錄顯示司令部聽到砲聲、當場解釋成騎兵交火，『地形加風』是事後的辯護。兩題都落在同一個物理（聲音隨溫度與風在高處折射，近處會出現寂靜帶），Davison 1917 年的寂靜帶地圖可當兩章之間的橋。合計 12–15 分鐘，需壓到 13 分鐘內（N5101 取 6、N5102 取 7）。"
+    }
+  ],
+  "rule1_record": [
+    "ZA6（研究）違規：ZA6-S013（St. Croix Avis）與 ZA6-S015（Ouachita Telegraph）讀全文時，拿 loc.gov 搜尋結果的 id 欄（http 網址）自己改成 https 再加 &fo=json，tile.loc.gov 的全文網址取自這些 JSON，屬同一條違規鏈；同樣做法也用在一頁沒當來源的 Dodge City Times。研究代理自報為「去掉 &q= 參數」，覆核 R456 查明 id 欄本來就沒有 q 參數，實際是改協定。覆核另以合規途徑（自己的搜尋 API 結果的 url 欄原樣加 &fo=json）重讀兩筆，列為 R456-S001、S002，內容相符，排題前不必再重讀。",
+    "ZA6（研究）違反「遇驗證就停」的精神：Papers Past 回機器驗證後，下一個呼叫立刻改抓同一資料庫的另一主機 dynamic-rsnz（網址出自搜尋結果），被權限系統以繞過機器驗證為由擋下，沒有取得內容；blocked_sites 沒寫出擋下的理由。",
+    "ZA1、ZA2、ZA3、ZA4、ZA5、ZA7、ZA8（研究）：覆核 R451、R452、R453、R454、R455、R457、R458 逐筆讀工具紀錄（130、106、111、94、92、114、146 次呼叫），沒有發現猜測、拼湊或改參數的網址；archive.org 都是先叫 metadata、下一次呼叫才下載。",
+    "灰色地帶（不算違規）：ZA1 用 loc.gov 集合端點的 q、fo、c 參數搜尋（文件記載的 API）；ZA2 自組 loc.gov 搜尋的 dates、c 參數；ZA3 拿 loc.gov 搜尋 id 欄改 https 並刪高亮 &q=（同一筆結果的 url 欄本來就有 https 版，所以不算拼湊）；ZA5 抓 prod.british-history.ac.uk 回 401 後，改抓另一筆本來就是 www 主機的搜尋結果，再從那頁目錄連到被擋的同一頁（覆核另從自己的搜尋結果重讀，建議 ZA5-S001 改記覆核路徑）；ZA7 遇 loc.gov 的 503 錯誤頁後，同網址、同客戶端隔段時間重抓；ZA8 對 Papers Past 先用 WebFetch 拿到空白、再換 curl 才看到驗證頁而停（沒取得內容）。",
+    "覆核者本身都沒有拼網址；卒年只在可讀頁面確認，確認不到的人一律不畫成具名人物。"
+  ],
+  "reviewer_notes": {
+    "R451": {
+      "rule1_record": "逐筆讀了 ZA1 的 130 次工具呼叫（subagents/agent-a34f406e6b70c3adc.jsonl）。結論：沒有違規。(1) loc.gov：#25、#26 打 https://www.loc.gov/collections/chronicling-america/?q=…&fo=json&c=40，是 loc.gov JSON API 文件記載的集合端點與 q／fo／c 參數，屬 BRIEF 第 3 條允許範圍；兩次都沒有結果被用作來源，也沒有拿回傳結果再改參數翻頁。(2) archive.org：每個 identifier 都先出現在 advancedsearch 結果或搜尋結果，再叫 metadata、下一次呼叫才下載 metadata 列出的 djvu.txt（#29→#30 一次下兩卷，但兩卷 metadata 都已在 #29 拿到）；liferighthonour04stangoog 回 500 後沒有換網址重試。(3) 其他網址都對得上搜尋結果或頁面連結：Gutenberg 15233-h.htm 與 51113/old/51113-0.txt、Papers Past TS19300104.2.62、ADS-L 五封（146586/90/91/92/607 都在 #53 結果）、Beethoven-Haus 四個 PDF（#58 結果）、lexundria suet_nero/49/r、it.wikisource p.131/p.132（#81 結果，加 action=raw 為允許的 MediaWiki 參數）、HNN 兩篇、founders.archives.gov 99-03-02-4665、quoteinvestigator 2021/10/22/wallpaper（#83 結果）、quod.lib.umich.edu EEBO（#105 結果）、Gallica（QI 頁面上的連結）、HathiTrust handle（ADS-L 頁面上的連結）。(4) 遇擋：Papers Past（Incapsula）、HathiTrust（403）、Gallica（403）、EEBO（403）、founders（202 空內容）都只試一次，沒有換用戶端或改網址重試。(5) 沒有 -A／-H／User-Agent 改動，沒有加減 www、改協定或格式字尾。read_via 照實；唯一不精確是 ZA1-S014 reading_scope 說『兩頁全文』沒錯，但 summary 寫『注中全文抄錄 Melzi 信』，實際 Melzi 信前半在沒讀的 p.130（屬內容錯，已在 N4962 改）。覆核自己：只重開 ZA1 已列網址與搜尋結果給的網址；phrases.org.uk 由伺服器自動轉址到 www.（curl -L 跟隨，非手動改）；historytoday、britannica 兩個 WebFetch 回 403 即停，改用同一次搜尋結果裡的 chateau-amboise 頁。",
+      "blocked_sites": [
+        "www.historytoday.com（WebFetch 403，覆核查卒年時；未重試）",
+        "britannica.com（WebFetch 403；未重試）"
+      ]
+    },
+    "R452": {
+      "rule1_record": {
+        "transcript": "/root/.claude/projects/-home-user-travel-scanner/1d8cbe05-355f-537a-9349-fec9ea4f8166/subagents/agent-a53c97d399f59053f.jsonl（106 次工具呼叫逐筆讀過）",
+        "violations": [],
+        "checked": "所有 curl 網址都能對回：WebSearch 結果（#11 room-9、newengland、patch；#37/#46 mysteriousbritain、gutenberg 12621/44625、paperspast TS18711115.2.12、OAM19200607.2.7、AS19090828.2.115、dynamic-rsnz GRA18710803.2.14；#50 goodreads、quoteinvestigator；#67 ctext、orientalstudies PDF；#86 blanchland.org/?p=1686、haunted-hosts、historicengland；#96 bamburghbones）、頁面連結（#15 列出的 jerusha-howe-exhibit 子頁 href；#54 QI 頁上的 folklore.ee 與 snopes 連結）、archive.org advancedsearch → metadata 檔案清單 → 下一次呼叫才下載（harper 61、harvardadvocate、Brougham、Deming、Patten、Besant、Harper 三書皆同），loc.gov：collections 搜尋 fo=json → 結果 id 原樣加 &fo=json（#59 不加 -L 得 301，#60 加 -L 由伺服器轉到 https，沒有自己改協定）→ 頁面 JSON 的 fulltext_service。遇 403（orientalstudies、historicengland）、500（Harvard Advocate djvu）、502（dynamic-rsnz）都停，沒有換客戶端重試；沒有改 User-Agent，全程 curl 預設標頭。研究代理自述『搜尋結果給的頁面網址只加 fo=json』與紀錄相符。",
+        "gray": "loc.gov collections 搜尋網址的 q、dates、c 參數由研究代理自己組（loc.gov API 文件記載的參數，BRIEF 列 loc.gov fo=json 為可用），不算違規但記下。Harvard Advocate 那筆在 not_added 寫成『1888 卷』，metadata 沒寫卷號，是研究代理的推定。",
+        "reviewer_own": "覆核者自己：archive.org 五檔先叫 metadata、下一次呼叫才下載；Savannah 1897 頁我自己重跑同一搜尋時沒出現，改用 ZA2 搜尋結果原樣給的頁面網址加 fo=json；Griffiths 網址來自我的 WebSearch 結果；Wayside 書目頁是 room-9 頁的導覽列連結。沒有自打網址。"
+      },
+      "source_corrections": [
+        {
+          "id": "ZA2-S001",
+          "fix": "summary『她一生或許有心儀的人』改為『館方說她一生無疑有過心上人（也許不只一位），只是沒有具體證據指向哪一位』；『19 世紀晚期的雜誌文章與 van Schaick…讓她成為為情所困的鬼』改為『今天網路上讀得到的這些文章讓故事流傳、助長了為情所困的鬼的說法』。"
+        },
+        {
+          "id": "ZA2-S009",
+          "fix": "title 的出版資訊改為『New York: Harper & Brothers, 1871（archive.org metadata：publisher New York : Harper）』；頁碼 pp.146–150 依此版。"
+        },
+        {
+          "id": "ZA2-S011",
+          "fix": "summary 補：引文結尾多出 1871 Harper 版沒有的『This was on December 19th, 1799』；Carrington 問的是『為什麼偏偏在朋友死去的那一刻做這個夢』。"
+        },
+        {
+          "id": "ZA2-S017",
+          "fix": "summary『1865、1869（4 月 1 日）、1889 年《Yorkville Enquirer》放在幽默欄』改為『1865 年 Dayton 版地點改成東部某州、沒有引言；1869 年 4 月 1 日 Cambria Freeman 附『很老但很好笑』引言；1889 年 Yorkville Enquirer 放進 Humorous Department』。"
+        },
+        {
+          "id": "ZA2-S020",
+          "fix": "summary『跳窗逃走』指的是賭客，不是房客。"
+        },
+        {
+          "id": "ZA2-S021",
+          "fix": "summary：Forster 是『上樓（Pitts 以為去上廁所）』；被關在廚房的是 Pitts 的僕人；假鑰匙插在『門的另一面』；Forster 把睡袍留在台階上。"
+        },
+        {
+          "id": "ZA2-S024",
+          "fix": "summary『這些現象最早記錄可追到 2002 年』改為『頁面在白衣修士那句後面說這種鬧鬼現象有紀錄可追到 2002 年，指誰不清楚』；該頁把 Tom 逃往法國寫成 1715 年。"
+        }
+      ]
+    },
+    "R453": {
+      "rule1_record": {
+        "transcript": "/root/.claude/projects/-home-user-travel-scanner/1d8cbe05-355f-537a-9349-fec9ea4f8166/subagents/agent-a2cef74ef8b3d2d4c.jsonl（111 次工具呼叫，逐筆讀過）",
+        "violations": [],
+        "server_redirects_confirmed": [
+          "#25：WebSearch #24 結果列出 https://www.arxiv.org/abs/2204.10388，curl -L 抓取，url_effective 為 https://arxiv.org/abs/2204.10388——伺服器轉址；PDF 用該頁的 href=\"/pdf/2204.10388\"。",
+          "#17–18：http://articles.adsabs.harvard.edu//full/seri/Obs../0039//0000367.000.html 原樣出現在 Prickard PDF（#15 下載，網址來自 WebSearch #14 結果）的文字與連結裡；不加 -L 時伺服器回 301 指向 https，加 -L 後落到 scixplorer.org 回 202 空頁，研究代理停手、沒有改用其他客戶端或其他網址。",
+          "#92：WebSearch #90 給 https://encyclopedia.com/…，伺服器轉到 www.encyclopedia.com（url_effective），不是研究代理自己加 www。"
+        ],
+        "url_origins_checked": "其餘網址都對得回來源：Lynn、Galilæana、BEA PDF（搜尋 #9）；Prickard PDF、Springer _1（搜尋 #14）；arXiv 2002.04643（搜尋 #24）；HAO Fabricius（搜尋 #33），HAO Harriot／Scheiner／Galileo（Fabricius 頁的 href）；aps.org（搜尋 #30，403 停手）；PT PDF、S&T、Linda Hall Adams（搜尋 #46）；archives.gov peary1/peary2、docsteach、newengland、diariesofnote、gutenberg 18975（搜尋 #67）；OSU、Spectator（搜尋 #72）；blogs.loc.gov、core.ac.uk（搜尋 #80）；DeGolyer、History Today、raremaps 20098（搜尋 #88）；USP、encyclopedia.com（搜尋 #90）；Dartmouth、Britannica、Routledge（搜尋 #97）。archive.org 都是 advancedsearch → 結果裡的 identifier → metadata（看到檔案清單）→ 下一次呼叫才下載；#51 用 identifier 前綴查 advancedsearch，屬於公開文件記載的搜尋 API。Dartmouth TLS 錯誤後沒有換客戶端重試；403 的網站都沒有重試。沒有改 User-Agent。",
+        "gray_areas": [
+          "loc.gov：搜尋 API 結果的 id 欄是 http://www.loc.gov/resource/…?sp=N，研究代理改寫成 https 並去掉 url 欄的 &q= 高亮參數再加 fo=json（#59、#62、#66 的腳本用 replace(\"http://\",\"https://\")）。同一筆結果的 url 欄就是 https 的同一網址加 &q=，所以不算拼湊，但嚴格說是自己改協定與刪參數；建議以後直接用 url 欄。",
+          "ZA3-S015–S017 的 read_via 寫『fo=json 所列 fulltext_file』，實際 #60、#63 用的是同一份 JSON 裡的 fulltext_service（兩者在本頁 JSON 中值相同），屬描述不精確、非謊報。"
+        ],
+        "reviewer_own": "R453 只重開 ZA3 來源清單上的網址與 loc.gov 頁的 fo=json（列舉的格式參數）及其 JSON 裡的 fulltext_service；HAO Fabricius 頁被伺服器轉到 /education/scientists/johannes-fabricius-1587-1616。新來源 Time 2003 來自 WebSearch 結果。Michigan Daily（搜尋結果）回 403，沒有重試。素材池 CLI 回『Index is stale』，沒有重建，去重以 grep pool.json、batches/*.json（含 not_added）、ZA1／2／4／5 與原來如此池為主。"
+      },
+      "blocked_sites": [
+        "digital.bentley.umich.edu（Michigan Daily 1989 年 AP 稿，403，未重試）"
+      ]
+    },
+    "R454": {
+      "rule1_record": {
+        "transcript_read": "/root/.claude/projects/-home-user-travel-scanner/1d8cbe05-355f-537a-9349-fec9ea4f8166/subagents/agent-ab357e23053f3dffb.jsonl（ZA4 全部 94 次工具呼叫，逐筆抽出 WebSearch 結果網址與每一次 curl）",
+        "violations": [],
+        "checked": [
+          "29 個來源網址都能對回同一 session 先前 WebSearch 結果裡的完整網址（含 zh-hant／wiki／zh-hans 等語言前綴與括號，原樣使用），沒有自己輸入書名頁或改路徑；S013 Gutenberg：書目頁 https://www.gutenberg.org/ebooks/27217 在搜尋結果中，txt 檔是書目頁上的 href『/ebooks/27217.txt.utf-8』，屬點頁面連結，不是改格式字尾。",
+          "ihchina 12198／12199／12200／12203 四個網址都在同一次搜尋結果裡（用迴圈組字串，但每個 id 都來自結果）；12200 連線被重設，沒有重試。",
+          "遇到 403：ctext 太平廣記卷六十二、apa.si.edu Bookdragon、colmex PDF、cerclearning 兩份 PDF，都停止，沒有換用戶端或改網址；journal.oraltradition.org TLS 憑證過期，沒有加 -k 繞過。",
+          "所有 curl 都是預設標頭，沒有 -A／User-Agent；沒有加減 www.、改協定或改參數；沒有用 WebFetch 重試同一網址；沒有 archive.org 呼叫。",
+          "紀錄性的小錯（不是取得途徑違規）：S012 limitations 寫『作者未署名』，頁面其實署了兩位作者；S011／S012 的今日版本細節有漏讀（王母第七女、老牛披皮），已在 N5021 改正。"
+        ],
+        "reviewer_own_conduct": "R454 只重開 ZA4 清單上已有的網址（用 curl 預設標頭），沒有用 WebSearch、沒有自己組新網址；dedup 以 grep pool.json、batches/*.json（含 not_added）、reviews 與原來如此事務所池為主，cli search 回 Index is stale。"
+      }
+    },
+    "R455": {
+      "rule1_record": [
+        "ZA5（研究）：覆核 R455 逐筆讀 92 次呼叫（11 次 WebSearch、約 50 次網路取用，無 WebFetch、無自訂 User-Agent），沒有發現猜測、拼湊網址、加減 www、改參數或遇擋換客戶端重送。",
+        "BHO 的 prod／www 問題（灰色地帶，判不算違規，但研究代理的描述不完整）：#10 搜尋結果同時給了 prod.british-history.ac.uk/node/61764（搜尋結果標題『America and West Indies: July 1699, 26-31』）與 www.british-history.ac.uk/node/61757。#11 抓 prod 那筆回 401（HTTP 認證，prod 是需要帳密的後台主機），沒有換主機重送同一網址；#13 抓的是另一筆本來就是 www 主機的搜尋結果 node/61757（轉址到 vol17/pp283-291），#15–#16 從該頁的 Table of contents 連結到 vol17 目錄，#17 從目錄連到 pp366-380——這正是 401 那一頁的同名頁面。每個網址都對得回搜尋結果或頁面連結，沒有自己改主機名；但結果上是『被擋之後經另一條公開連結拿到同一頁』，研究代理在 blocked_sites 只寫『改從另一個搜尋結果的站內目錄連過去』，沒有說明目錄連到的就是被擋的那一頁。401 是 prod 主機本身的登入保護、不是內容的存取限制（同一內容在 www 主機免登入公開），所以判灰色地帶。為了讓 ZA5-S001 不依賴這條路，覆核自己做了 WebSearch『「America and West Indies: July 1699, 26-31」 british-history.ac.uk Gardiner Kidd』，搜尋結果直接給了 www 主機的 vol17 目錄頁，覆核從目錄連結重讀 pp366-380，內容一致；建議 ZA5-S001 的 read_via 改記這條路。",
+        "ZA5-S013 同型：#74 搜尋結果有 prod.british-history.ac.uk/node/64580（標題『December 1718, 22-31』），研究代理沒有去抓，改用同一次搜尋結果裡的 www…/vol30/pp381-397，再循頁上 Next 三次到 pp424-446；沒有遇擋（沒試 prod），不算違規；覆核照同一路徑重讀。#52 的 www…/node/64595 本身就在 #51 的搜尋結果裡（同時列了 prod 與 www 兩個版本），#53 的 vol31/pp1-21 來自該頁 Previous 連結，#54 的 vol31/i-xl 是搜尋結果。",
+        "同一網址多次請求：#11→#12→#13 Gutenberg（第一次沒跟轉址拿到空檔、#12 用 -I 看 Location、#13 用 -L 跟伺服器 301 轉到 www.gutenberg.org）；#25→#26→#27 canmore.org.uk/site/22320（搜尋結果）照伺服器 301 轉到 www.trove.scot，回 403 Azure WAF 驗證頁後停止。都是跟隨伺服器轉址、不是遇擋重送，不算違規。",
+        "API：#36 loc.gov collections 搜尋加 fo=json（BRIEF 列舉的 API，查詢參數自擬，屬 API 正常用法；回 503 沒有重試）；#37、#44、#78 archive.org advancedsearch；#38、#45、#79 metadata 各自單獨一次呼叫，#39、#46、#80 下一次呼叫才下載清單裡的檔名——合規。#61 的 23947.txt.utf-8 來自 #60 書目頁連結。Papers Past（#43）、cms.um.edu.mo（#63）遇驗證／403 即停；www1.ihp.sinica.edu.tw（#66）連線重設沒有重試。",
+        "覆核 R455 自己：所有網址來自搜尋結果（BHO vol17 目錄、vol30/pp381-397、Gutenberg 33318／40580／23947、rcahms PDF、東海館訊 PDF）、頁面連結（目錄、Next、書目頁的 Plain Text）或 archive.org metadata API 的檔案清單（先叫 metadata、下一次呼叫才下載）；沒有拼網址、沒有試 prod 主機。卒年只寫在可讀頁面上確認的，其餘判不入畫。"
+      ],
+      "reviewer_notes": [
+        "ZA5-S001 的 read_via 建議改為：『WebSearch（覆核 R455）結果 www.british-history.ac.uk/cal-state-papers/colonial/america-west-indies/vol17（目錄）→ 目錄連結 pp366-380』。",
+        "研究代理對 Paine 1911 的幾處轉述（N5045『挖坑的流氓』、N5043『每一版都出自要去挖的人』）都不精確；Paine 自己是 1911 年把傳說寫成推定的作者之一，五題都可以用他當『流傳說法』的一手證據，但他的判斷不能當結論。",
+        "研究稿 risk 欄的卒年（Kidd 1701、Bellomont 1701、Argyll 1685、Spottiswoode 1639、楊展 1649、Knight 1925）多數沒有出現在讀到的頁面上；覆核已改成頁面上確認得到的寫法，確認不到的人物判不入畫。"
+      ]
+    },
+    "R456": {
+      "rule1_record": [
+        "ZA6 [207]、[216]：St. Croix Avis（sn84037526 1882-03-01 sp=4）、Ouachita Telegraph（sn85034336 1882-03-11 sp=4）與 Dodge City Times（sn84029838 1882-05-04 sp=2）的頁面 JSON，是拿搜尋結果的 id 欄（http://www.loc.gov/...?sp=N）把協定改成 https 再加 &fo=json 去抓——改協定，違規。研究代理在 S013、S015 的 limitations 自報為『https、去掉 q 參數的灰色地帶』，但描述不精確：id 欄本來就沒有 q，實際做的是 http 改 https；而且當時（[204]）只印出 id 欄，url 欄要到 [271] 才看到，所以不是『去掉 url 欄的 q』，是改了 id 的協定。Dodge City 那筆沒有自報（沒當來源）。[209]、[218] 的 tile.loc.gov full_text 網址取自這些違規 JSON 的 fulltext_file 欄，屬同一條違規鏈。",
+        "處置：覆核用搜尋 API（文件記載）重跑同一查詢，取結果 url 欄原樣加 &fo=json，再讀 resource.fulltext_file，讀到 St. Croix 與 Ouachita 全文（R456-S001、S002），內容與研究代理摘要相符；S013、S015 不再依賴違規路徑，排題前不必再重讀。另外，研究代理說『關鍵句都另由 API 提供的 relevant_snippet 讀到』大致屬實（[276] 片段含 1897、Winnecke、Marth；[284] 片段含 blandly treated、年金、Grove；[348] 片段只含 Young 反駁中段），但 St. Croix 的『並非以絕對的信心』與 Ouachita 的『引起很大注意』『1897 年前後』只在全文裡。",
+        "ZA6 [113]→[116]：paperspast.natlib.govt.nz 回 Incapsula 機器驗證後，下一個呼叫立刻改抓同一資料庫另一主機 dynamic-rsnz.natlib.govt.nz 的另一篇（網址確實出自搜尋結果 [110]），被權限系統以『Bot Check Circumvention』擋下，沒有取得內容。這屬於遇到驗證頁後換路徑再試同一資料庫，違反『遇驗證就停』的精神；研究代理在 blocked_sites 只寫『呼叫被權限系統擋下』，沒寫被擋的理由。未取得內容，不影響任何來源。",
+        "ZA6 [268]：St. Landry Democrat 的頁面 JSON 用搜尋結果 id 欄原樣（http）加 ?fo=json，以 Python urllib 讀回 403；之後沒有用 curl 或其他客戶端重試同一網址（工具紀錄確認 sn88064537 之後只再出現在讀 API 片段 [287] 的 word_coordinates_url，該網址來自搜尋結果）——合規，研究代理自述屬實。",
+        "ZA6 [238]、[311]：搜尋結果給的是 https://www.loc.gov/item/03022983（無尾斜線），研究代理打的是 /item/03022983/?fo=json，多了尾斜線再加 fo=json；fo=json 是文件記載的格式參數，尾斜線屬極小的路徑改動，灰色地帶；兩次都回 503、沒取得內容，也沒當來源。",
+        "其他取得路徑逐筆核對無違規：Claudian 英譯頁、Censorinus 首頁、CCEL 注 75、注 36/012、Plutarch（fgh.perseids，原主機）、lexundria、arXiv PDF、lehigh PDF、臺北天文館 PDF、e-rara、chinesenotes（404）、spectator（202 空頁，未重試）、Gutenberg 54557、54376、75545 都出自搜尋結果；Claudian 拉丁頁、Censorinus 拉丁全文、Gibbon 注 76 與第 35 章、Gutenberg 16633 的 .txt.utf-8 都是頁面上的連結（工具紀錄看得到 href）；Gutenberg 75545 從 gutenberg.org 換成 www.gutenberg.org 是先用 HEAD 看到 301 的 Location 再照抓，屬跟隨伺服器轉址；archive.org 各 identifier 都先叫 metadata、下一次呼叫才下載；archive.org /metadata/<id>/metadata/creator 子路徑屬文件記載的 metadata API；Dakotaian 全文（locft2.py）用的是 url 欄原樣加 &fo=json，合規；User-Agent 沒有改動。",
+        "覆核自己的取得：只重開 ZA6 清單上的網址（Censorinus、CCEL、Claudian、archive.org 兩本、lehigh PDF），loc.gov 走文件記載的搜尋 API 與結果 url 欄加 fo=json；archive.org advancedsearch（文件記載）查 Gibbon、Kirkwood 卒年；另兩次 WebSearch 查『樂頀』無結果。沒有拼任何網址。"
+      ],
+      "blocked_sites": [
+        "WebSearch 對『樂頀』兩次查詢都沒有可讀結果（不是網站阻擋，記錄備查）"
+      ]
+    },
+    "R457": {
+      "rule1_record": [
+        "逐筆讀了 ZA7 的 114 筆工具紀錄（subagents/agent-ac6c8ea856b85bddf.jsonl）。",
+        "loc.gov 503 重試：第 19 筆以 locft.py 用 curl 抓搜尋結果 resources[0].url + fo=json 時，Wilmington Daily Commercial 一頁回 503 Service Unavailable 的 LoC 錯誤頁（不是 403、Cloudflare 或驗證頁）；第 103 筆在一段時間後以同一支腳本、同一網址、同一用戶端（curl 預設標頭）重抓成功。第 99 筆 Gowrow 三頁也是同網址、加 sleep 重試。判定：合規——503 是伺服器暫時錯誤，不是存取限制，沒有換用戶端、改網址或改標頭。",
+        "loc.gov 網址：搜尋都是 collections/chronicling-america/?q=…&dates=…&fo=json（BRIEF 列舉的 fo=json 搜尋 API）；頁面網址取自結果的 resources[0].url（https，未改協定），再加 fo=json，OCR 從該頁 JSON 的 fulltext_file／fulltext_service 取得。沒有自己改 sp 頁碼。第 10 筆從舊批次檔 grep 搜尋網址樣式當參考，屬 API 格式，不算拼頁面網址。",
+        "archive.org：每個 identifier 都先出現在 advancedsearch 結果（Harper's 1893、1874；Galaxy 1870；Daily Colonist 1884-07 共 26 期；Cox；Hamlin），先叫 metadata 看到檔案清單，下一次呼叫才下載清單上的 _djvu.txt（第 62→63、66→67、29→30、35→36、53→54、81→82、92→93 筆都分開）。",
+        "直接抓取的網頁（hoaxes.org、paperspast TS18931014.2.3、marktwainproject、canadashistory Kay PDF、whatsamhill substack、anomalist、wisconsinhistory CS2321／CS16353、wi101、atlasobscura、theghostinmymachine、metrotimes、hourdetroit）網址都逐字出現在之前的 WebSearch 結果裡；遇 Incapsula（paperspast）、Cloudflare 403（atlasobscura）、Cloudflare 驗證頁（metrotimes）都停止，沒有換用戶端或改網址重試；wisconsinhistory 兩頁 404 後沒有加減 www 或改路徑。沒有使用空 User-Agent、改 User-Agent、加減 www、改協定或格式字尾。",
+        "未發現違規。小瑕疵：S007、S020 等 read_via 寫『curl 下載後逐字讀』，但 S020 只讀了三段（reading_scope 已照實寫）；S009 limitations 說『結尾在本頁截斷』與事實不符（原文全在同頁，是研究代理只印到第 3070 行左右），屬讀得不夠，不是取得途徑違規。",
+        "覆核者自己：只重開 ZA7 來源清單上的網址（hoaxes.org、marktwainproject、anomalist、loc.gov 三頁 fo=json 與其 fulltext_file、archive.org 四個 identifier 先 metadata 後下載），加一次 WebSearch（UBC Mainland Guardian，未找到）。卒年沒有新查，凡來源頁沒寫卒年的人物維持不入畫。"
+      ]
+    },
+    "R458": {
+      "rule1_record": [
+        "逐筆讀了研究代理的工具紀錄（subagents/agent-a64473f5b6d5062e5.jsonl，146 次呼叫）。所有 WebFetch 與 curl 的網址都先出現在先前的搜尋結果、頁面連結或記載的 API 回應裡：archive.org 一律先 advancedsearch、下一次呼叫才叫 metadata、再下一次才下載清單所列 djvu.txt（Nature 三期、Baxter、Morton、Linton、Hayden、Chittenden、官方紀錄、Mirabella、Fazello、Saunders 皆同）；loc.gov 用 fo=json 搜尋，Evening Star 全文網址取自該頁 JSON 的 fulltext_file；Gutenberg 的 pg27292-images.html 取自書目頁連結；沒有發現加減 www、換主機、改格式字尾、改參數或空 User-Agent。",
+        "灰色地帶一筆：paperspast.natlib.govt.nz/newspapers/CHP19161124.2.20 先用 WebFetch，工具回『頁面內容是空的』，研究代理隨即用 curl 抓同一網址，拿到 Incapsula 驗證頁才停。第一次失敗其實就是機器驗證造成的空白，換客戶端再試同一網址違反『遇 403、驗證頁就停，不換用戶端』的精神；沒有取得內容、也沒當來源，不影響任何題目，但應記錄。",
+        "read_via 照實性：研究代理寫『WebFetch 讀過一次後，再用 curl 取同一網址、逐字讀相關句』的 S005、S006、S007、S011、S016、S025——覆核確認 curl 都回 200、文字檔在 za8dl/p1、p2、p4、p5、p7、p8，所引句子都在檔裡，屬實。S020（鬼地網站）curl 回 308、0 位元組，S024（italia.it）回 301、304 位元組，研究代理把兩者標成 search_snippet_only，屬實。S016 的 reading_scope 寫『全文（經工具）』、limitations 寫『非逐字』，但 curl 其實拿到全文，屬保守而非誇大；只是研究代理拿到全文後沒注意到 The Debrief 正文就引了 Bradley 的陣風句，這是 N5103 前提錯誤的來源。S012（HistoryNet）、S008（Welsh Biography）研究代理標 search_snippet_only，覆核已逐字重讀（R458-S003、R458-S002）。",
+        "覆核自己的取得途徑：WebSearch 一次（Caravaggio 卒年），從結果開 museothyssen.org/en/node/14437，curl 回 301，照伺服器回應裡的連結取藝術家頁；biography.wales 照伺服器 Location 加 .html；HistoryNet 是研究代理搜尋結果網址。cli.mjs search 前景加 timeout 150 跑『Messines』『Perryville』，回『Index is stale』，去重改以 grep pool.json、batches/*.json 與同目錄 ZA1–ZA7 檔，五題都沒有同案。"
+      ],
+      "blocked_sites": [
+        "paperspast.natlib.govt.nz（研究代理紀錄：Incapsula 驗證頁）",
+        "atlasobscura.com（403）",
+        "britannica.com（403）",
+        "metmuseum.org（429）",
+        "nature.com（303 轉登入）"
+      ]
+    }
+  }
+}

@@ -1,0 +1,244 @@
+{
+  "batch_id": "wave67-human-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第十七輪：替後備組題 C7-01 交叉雙手補四個其他研究群（先天聾、側躺、自閉症兒童、長者）的研究（作者 F30，覆核 V33），成題 G627。",
+  "sources": [
+    {
+      "id": "H67-S001",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4124471/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/srep05985",
+      "title": "Spatio-temporal processing of tactile stimuli in autistic children（Wada、Suzuki、Takaki、Miyao、Spence、Kansaku；Sci Rep 4:5985, 2014）",
+      "publisher": "Scientific Reports（Nature Portfolio，開放取用）",
+      "version": "出版版全文（Europe PMC 開放子集 XML）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API 列出 PMC4124471（開放取用），以文件記載的 REST fullTextXML 取全文；curl 預設標頭",
+      "reading_scope": "全文（正文、表 1、圖說、方法）",
+      "locator": "Abstract；Results〈TOJs with the arms-uncrossed〉〈Temporal order judgments in the arms-crossed condition〉（Ã r、Ã l、SC、100–300 ms）；〈Relationship between AQ scores…〉；Table 1；Methods〈Participants〉",
+      "summary": "日本國立身障者復健中心（Kansaku 研究群，與 Spence 合作）：10 名自閉症兒童（9–15 歲，平均 11.8 歲）與 10 名配對的一般兒童做雙手交叉的觸覺先後判斷。交叉時一般兒童出現明顯的判斷倒轉，自閉症兒童倒轉小得多（模型的淨最大翻轉機率 Ã r 0.14 對 0.33、Ã l 0.17 對 0.30），差別集中在 100–300 毫秒間隔；但自閉症兒童手不交叉時的時間解析度較差（125 對 82 毫秒）、反應較慢。另 12 名男孩（平均 16.3 歲），自閉特質量表（AQ）分數越高，交叉錯覺通常越小。作者推論自閉症兒童較偏重身體本位的座標，外部空間座標的發展可能受影響。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "每組 10 人、年齡 9–15 歲跨度大；AQ 分析只有 12 名男孩；『偏重身體本位座標』是作者推論。與池中早盲、視障嬰兒『交叉代價較小』同方向，依規則只計 0.5。不得說自閉症兒童觸覺比較好（手不交叉時解析度反而較差）。 覆核 V33（2026-11-12）：summary 補「刺激在兩手無名指背面；受試者閉眼、戴耳塞並聽白噪音；AQ 分析的 12 名男孩來自輕度發展障礙自助團體（AQ 14–36）」。",
+      "author_cache": {
+        "file": "f30src/PMC4124471.xml",
+        "sha256_prefix": "787fd8c39cbae3ec",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H67-S002",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5834188/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0192993",
+      "title": "Deafness alters the spatial mapping of touch（Sharp、Landry、Maheu、Champoux；PLoS ONE 13(3): e0192993, 2018）",
+      "publisher": "PLOS ONE（CC BY 4.0）",
+      "version": "出版版全文（Europe PMC 開放子集 XML）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API 列出 PMC5834188，以 REST fullTextXML 取全文；curl 預設標頭",
+      "reading_scope": "全文",
+      "locator": "Abstract；Introduction 第 4 段（Noel & Wallace 暫時剝奪聽覺）；Methods〈Participants〉與 Table 1；Results 第 1 段（PCD 4.59 對 2.49）；Discussion 第 1–2、5 段",
+      "summary": "蒙特婁大學 Champoux 研究群：13 名先天極重度雙耳聽損成人（平均 38.4 歲，多數戴助聽器、4 人有人工電子耳）與 13 名聽力正常者，雙手各握一塊泡棉方塊、用腳踏板回答哪邊先震。交叉代價指標 PCD（0–8）聾人組平均 4.59、聽人組 2.49，差異顯著；不交叉時與不計時的反應時間兩組沒有差別。作者稱這是早期聽覺剝奪影響觸覺空間對位的第一個證據，方向與早盲者『不被騙』相反。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "每組 13 人；以腳回答（作者自承可能抬高錯誤率）；作者自己提到不少聾人在交叉時整條曲線倒過來、需排除聽不懂指示的可能，他們以口頭確認排除；SOA 只到 ±400 毫秒，看不到 N 字或長間隔恢復；『永久改變』是作者推論；助聽器使用、前庭功能未納入分析。 覆核 V33（2026-11-12）：summary 刪「不交叉時與不計時的反應時間兩組沒有差別」，改「兩組的不計時反應時間（不分姿勢）沒有差別；不交叉時正確率沒有單獨比較」；limitations 補「11 名受測前庭的聾人中 7 名（64%）前庭功能受損，作者說可能解釋部分結果；規定誤解者要剔除，但實際所有人都口頭確認、無人剔除；作者建議改用手或口頭回答」。",
+      "author_cache": {
+        "file": "f30src/PMC5834188.xml",
+        "sha256_prefix": "04fae2afe1baf01d",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H67-S003",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8242022/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-021-92192-1",
+      "title": "Haptic awareness changes when lying down（Unwalla、Cadieux、Shore；Sci Rep 11:13479, 2021）",
+      "publisher": "Scientific Reports（CC BY 4.0）",
+      "version": "出版版全文（Europe PMC 開放子集 XML）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API 列出 PMC8242022，以 REST fullTextXML 取全文；curl 預設標頭",
+      "reading_scope": "全文",
+      "locator": "Abstract；Introduction 第 3–5 段；Methods〈Participants〉〈Apparatus〉〈Procedure〉；Results〈PCD〉（側躺 0.26 對坐直 1.28；矇眼 0.50 對不矇 1.04；各條件仍顯著大於 0）與〈reference frame weights〉（外部權重 task 參數 0.31、0.16）；Discussion 第 1–2 段",
+      "summary": "加拿大 McMaster 大學 Shore 研究群：兩組各 20 名大學生（實驗 1 睜眼、實驗 2 矇眼），雙手交叉與不交叉做觸覺先後判斷，坐直與向左側躺各做一次。側躺時交叉代價（PCD）從坐直的 1.28 降到 0.26，矇眼也讓它從 1.04 降到 0.50，兩者沒有交互作用；但各條件的交叉代價仍大於零。用貝氏階層模型估計，側躺主要是降低了給『外部空間座標』的權重（實驗 1 外部權重變成約 0.31 倍、實驗 2 約 0.16 倍）。作者解讀：外部座標要靠視覺與前庭（哪邊是上）一起撐，側躺讓這些訊號不一致、可靠度下降，腦就少用它。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "年輕大學生、各 20 人；只側躺一個方向；視覺、前庭與身體壓覺的貢獻作者自承無法拆開；權重是模型估計。矇眼減少代價是複製前人（Cadieux & Shore 2013）結果，與池中 H61-004『黑暗中仍會對到外部空間』不矛盾（代價仍在，只是變小），矇眼這半不另計。 覆核 V33（2026-11-12）：summary 補「1.28→0.26、1.04→0.50 是兩組 40 人的 ANOVA 主效應平均；側躺時代價仍顯著大於 0（兩組 p=0.03）；矇眼加側躺的代價不到坐直不矇眼的 5%」。",
+      "author_cache": {
+        "file": "f30src/PMC8242022.xml",
+        "sha256_prefix": "d030a9796ccf57b4",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H67-S004",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4356579/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0118331",
+      "title": "Effects of aging and idiopathic Parkinson's disease on tactile temporal order judgment（Nishikawa、Shimo、Wada、Hattori、Kitazawa；PLoS ONE 10(3): e0118331, 2015）",
+      "publisher": "PLOS ONE（開放取用）",
+      "version": "出版版全文（Europe PMC 開放子集 XML）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API 列出 PMC4356579，以 REST fullTextXML 取全文；curl 預設標頭",
+      "reading_scope": "全文",
+      "locator": "Abstract；Methods〈Participants〉Table 1；Results〈arms-uncrossed〉（時間解析度中位數 41／96／114 毫秒）、〈arms-crossed〉（Ã 三組無差、c 與 σf 老人較大）；Discussion 第 1 段",
+      "summary": "順天堂大學（北澤研究群）：20 名年輕人（23 歲）、23 名無帕金森病的長者與 24 名帕金森病患者（皆約 67 歲）。手不交叉時，年輕人達約 84% 正確所需間隔中位數 41 毫秒，長者 96 毫秒、患者 114 毫秒；交叉時三組都有判斷倒轉，『倒轉最大機率』沒有差別，也就是短間隔被騙的程度長者與年輕人相當；但長者的一般錯誤率較高，翻轉的時間窗也較寬（中位數約 430–530 毫秒對 240 毫秒），所以間隔拉到約 1 秒仍會答錯。帕金森病與同齡長者在各項參數上都沒有差別。作者因此說基底核不是這類先後判斷的必要結構。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與 R44003、H61-001～003 同屬北澤研究群；橫斷面比較（不是追蹤同一批人）；反應時間患者較長；本題只用『老了照樣被騙、只是錯誤拖得更久』，基底核結論不用。 覆核 V33（2026-11-12）：summary「間隔拉到約 1 秒仍會答錯」改「長者的判斷倒轉遍及整個間隔範圍（到約 2 秒）」；補「長者在 catch 與單手刺激試次的錯誤率也較高（年輕人中位數 0），四個錯誤參數彼此相關」；人數補「交叉條件分析為年輕 18、長者 23、患者 16；方法段 26／24 與表 1 的 24／23 不一致」。",
+      "author_cache": {
+        "file": "f30src/PMC4356579.xml",
+        "sha256_prefix": "e0fd8612af46416c",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "H67-001",
+      "question": "自閉症的孩子雙手交叉時，被碰的先後也會說反嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.autism_smaller_crossed_hands_reversal",
+      "answer_target": "比較少說反。日本一項研究讓 10 名 9 到 15 歲的自閉症兒童和 10 名配對的一般發展兒童，閉眼、聽著白噪音，兩手無名指的指背各被輕敲一下，判斷哪隻手先。手不交叉時兩組都答得好，只是自閉症兒童需要的間隔稍長（約 125 對 82 毫秒）；雙手交叉後，一般發展的兒童在 100 到 300 毫秒的間隔常把順序說反，自閉症兒童說反的機率小得多（模型估的最大翻轉約 0.14 對 0.33）。另外 12 名參加發展支持團體的男孩裡，自閉特質分數越高，交叉時說反通常越少。研究者推測，這些孩子比較按「皮膚上的哪裡」來判斷，較少自動換算到外部空間。",
+      "scope": "每組 10 人、年齡跨度大；AQ 分析的 12 名男孩來自輕度發展障礙自助團體，不是一般族群；原因是作者推論。這是一項交叉手作業的結果，不是對自閉症兒童觸覺或能力的評價：不說「比較準」或「比較差」，不給任何診斷、訓練或醫療含意；不與盲人或視障嬰兒合併成「少一種能力就不被騙」。",
+      "source_ids": [
+        "H67-S001"
+      ],
+      "source_locator": "F30-S001 Abstract；Results arms-crossed 段、Table 1；AQ 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）：池中沒有（pool.json 無 autis／自閉／PMC4124471），但「交叉代價較小」與 H61-008、H62-001 同方向，只算 0.5。 原提案 F30-001（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V33（2026-11-12）改字後收；數字逐字相符；改兩處：刺激位置是無名指指背；AQ 男孩的來源寫明。payoff 去掉「解析度較差」的能力評價字眼，改成中性的「需要的間隔稍長」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "說反比較少，不等於各方面都比較快：手不交叉時，他們分辨先後需要的間隔反而稍長",
+        "visual": "兩條交叉時的判斷曲線：一般發展兒童在中段塌下，自閉症兒童較貼近不交叉的曲線",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "H67-002",
+      "question": "看不見的人交叉手比較不會被騙，那天生聽不見的人呢？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.congenital_deafness_larger_crossed_arm_deficit",
+      "answer_target": "這一組反而說反得更多。蒙特婁的研究找來 13 名先天極重度聽損的成人和 13 名聽力正常者，雙手各捏一塊會震動的泡棉方塊，用腳下的踏板回答哪一邊先震。雙手交叉後，聾人組的交叉代價（0 到 8 分的指標）平均 4.59，聽人組 2.49，明顯較大，不少聾人交叉時的答案整條倒過來；兩組的反應時間沒有差別。研究者認為早年的聽覺經驗可能也參與了把觸覺放進外部空間，方向和早盲者相反；但他們也提醒，受測的聾人多數前庭功能受損，可能解釋部分結果，而用腳回答本身也可能抬高錯誤率。",
+      "scope": "每組 13 人；用腳回答；「整條倒過來」研究者以口頭確認排除誤解，實際沒有剔除任何人；11 名受測前庭的聾人中 7 名前庭受損，聽覺與前庭的影響分不開；間隔只到 ±400 毫秒；「永久改變」是作者推論。這是一項交叉手作業的結果，不是對聾人觸覺或能力的評價，不說「聾人觸覺比較差」，不給醫療或助聽、復健建議；不與 H61-008 的早盲者畫成同一量尺的長條圖。",
+      "source_ids": [
+        "H67-S002"
+      ],
+      "source_locator": "F30-S002 Abstract；Methods Participants、Table 1；Results 第 1 段；Discussion 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：方向與池中「少了視覺→代價變小」相反，是新結論，獨立研究群；但用腳回答、整條倒過來的受試者只靠口頭確認排除誤解、前庭缺損是作者自承的混淆，證據比作者寫的弱。片中把它當「外部座標的權重會被別的感覺（含前庭）改變」的一例，與 F30-003 並排。 原提案 F30-002（目標 C7-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V33（2026-11-12）改字後收；主數字對，但作者答案加了原文沒有的「手不交叉時兩組差不多」，並漏掉原作者自己寫的前庭混淆（7／11）；「排除聽不懂指示」實為口頭確認、無人剔除。改答案與 scope，下修為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "少一種感覺不一定比較不會說反：早盲者少說反，先天聾的這一組反而更常說反——而前庭可能也有份",
+        "visual": "兩項研究分開的兩張小圖（不同量尺不並列數值），中間用一個「外部座標權重」旋鈕連起來",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "H67-003",
+      "question": "同樣交叉雙手，躺下來做會比坐著做更不容易搞錯嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.lying_on_side_reduces_crossed_hands_deficit",
+      "answer_target": "會。加拿大 McMaster 大學找了兩組各 20 名大學生雙手交叉判斷「哪隻拇指先震」，一次坐直、一次向左側躺；一組睜眼、一組矇眼。兩組合起來看，側躺時的交叉代價從坐直的 1.28 降到 0.26，但仍大於零。研究者用模型估計，側躺主要是讓大腦少用「外部空間座標」。他們的解讀是：外部座標要靠視覺、內耳前庭和身體被壓的感覺一起告訴你哪邊是上，側躺時這些訊號彼此不一致，可靠度變低，權重就被調低；三者各占多少，他們說還分不開。",
+      "scope": "年輕大學生、各 20 人、只側躺左邊；1.28、0.26 是兩組合併的平均；權重是模型估計；視覺、前庭與身體壓覺的貢獻作者說無法拆開。矇眼降低代價是複製前人結果，不另計，也不與 H61-004「黑暗中仍會對到外部空間」矛盾（代價仍大於零）。不給睡姿或任何健康建議。",
+      "source_ids": [
+        "H67-S003"
+      ],
+      "source_locator": "F30-S003 Abstract；Methods；Results PCD 段與 reference frame weights 段；Discussion 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（同作者）：側躺降低交叉代價是池中沒有的新結論（pool.json 無 Unwalla／Cadieux／PMC8242022；「Shore」只出現在 H61-S003 綜述的轉引），獨立研究群（Shore，McMaster）；矇眼那半 0；權重模型併入。 原提案 F30-003（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V33（2026-11-12）改字後收；數字逐字相符，改答案寫明是兩組合併平均、補「仍大於零」與身體壓覺，role 改為 turn（它與 F30-002 一起撐轉折二）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個人、同一雙手，換個躺姿就比較少說反：外部座標是可以被調低的權重",
+        "visual": "坐直與側躺兩張示意圖並排，旁邊一個「外部座標」旋鈕被轉小",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "H67-004",
+      "question": "年紀大了，交叉手時還會把先後說反嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.aging_crossed_reversal_preserved_wider_flip_window",
+      "answer_target": "照樣會。日本研究比較 20 名年輕人（平均 23 歲）和 23 名約 67 歲的長者：雙手交叉時，兩組在短間隔把先後說反的程度相當；不同的是，長者說反的時間窗比較寬（中位數約 430 對 240 毫秒），間隔拉到一、兩秒仍會答錯，而且長者在只碰一隻手時也比較常答錯，所以這部分不全是交叉造成的。",
+      "scope": "橫斷面比較；只用「年紀大了照樣會說反」一句與時間窗；不提帕金森病、基底核或任何醫學結論；不說長者觸覺退化或能力不足，不給健康建議；長者的一般錯誤率較高要一起說，不能把所有錯誤都歸給交叉。",
+      "source_ids": [
+        "H67-S004"
+      ],
+      "source_locator": "F30-S004 Abstract；Results arms-uncrossed 段（41／96／114 ms）、arms-crossed 段（Ã、c、σf）；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.5）：北澤研究群在本題已有 R44003 1、H61-001 0.5、H61-002 0.5、H61-003 1.0，合計 3.0，照同研究群 3.0 封頂（第十四輪 Bonn、第十六輪 Birkhead 的先例）不再加。內容可留作時間軸上的一句，讓年齡從 4 個月延到 67 歲。 原提案 F30-004（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V33（2026-11-12）改字後收；「約 1 秒」原文無（是到約 2 秒）、漏了長者單手也較常錯的條件、患者人數寫錯；帕金森病段落刪掉以免變成醫學內容；同研究群封頂，計 0。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "這個說反不會隨年紀消失",
+        "visual": "時間軸：4 個月、6 個月、8 歲、23 歲、67 歲，每個點只標「有沒有交叉代價」",
+        "seconds": [
+          15,
+          20
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "H67-NA001",
+      "question": "3D 列印的假蛋在斜坡上，哪種形狀最不會滾走？（Hays & Hauber 2018 JEB）",
+      "existing_ids": [
+        "L66-011",
+        "L66-012"
+      ],
+      "source_ids": [],
+      "reason": "非 Birkhead 研究群的滾動檢驗，正是 V31 列的第（1）項；但 doi.org 轉址到 journals.biologists.com 時 curl（預設標頭）回 403，依規則不繞過。WebFetch 對同一頁曾回出摘要式轉述（錐度最能抑制位移、伸長與不對稱單獨看會增加位移），但那是工具轉述、沒有逐字本機快取，且 curl 已 403，不當來源、不計。Europe PMC 只有書目（非開放子集）；Hays、Ljubičić & Hauber 2020 Auk（錐度指標）的 bioone 頁回 Incapsula 機器驗證，亦未讀。 原提案 F30-NA001。",
+      "reentry_condition": "作者機構典藏或 PMC 出現可直接取得的全文，或站主允許以 WebFetch 讀取並接受無逐字快取。",
+      "reading_status": "未讀全文（curl 403；WebFetch 轉述不計）"
+    },
+    {
+      "id": "H67-NA002",
+      "question": "鳥的骨盆寬窄跟蛋形有關嗎？（Shatkovska 等 2018 J Morphol）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "WebSearch 只找到書目與摘要轉述（peeref、pubmed），沒有開放全文；Europe PMC 非開放。Montgomerie 2021（F30-S006）用了該篇的骨盆資料，結論已併入 F30-006（不對稱與骨盆無明確關係、伸長有），不另立核心。 原提案 F30-NA002。",
+      "reentry_condition": "出現作者典藏或開放全文。",
+      "reading_status": "只見書目與搜尋摘要"
+    },
+    {
+      "id": "H67-NA003",
+      "question": "交叉手讓先後說反的原始實驗（Yamamoto & Kitazawa 2001 Nat Neurosci）",
+      "existing_ids": [
+        "R44003"
+      ],
+      "source_ids": [],
+      "reason": "任務點名的原文；搜尋只見 PubMed 摘要與 typeset.io 上一份來源不明的 PDF（非出版社或作者機構典藏，無法確認授權），不使用；doi.org 出版社頁為付費。R44003 維持 1 條，不升 1.5。 原提案 F30-NA003。",
+      "reentry_condition": "作者機構典藏或出版社開放版本。",
+      "reading_status": "摘要"
+    },
+    {
+      "id": "H67-NA004",
+      "question": "鳥巢的類型會讓蛋殼變硬嗎？（Hung 等 2022 Ecol Lett）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC 開放（PMC9315002，已取 XML），但主題是蛋殼硬度與巢的掛法、位置，不是蛋形，離題；與 Chou、Tuanmu、Hung 2025（REST 仍為非開放）同研究群。 原提案 F30-NA004。",
+      "reentry_condition": "另開『蛋殼為什麼有厚有薄、有硬有軟』題時可用。",
+      "reading_status": "摘要（全文 XML 已存未細讀）"
+    },
+    {
+      "id": "H67-NA005",
+      "question": "北極兩種濱鷸的蛋形隨經度變化（Liu 等 2023 iScience）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "上一輪 L66-NA004 已判關係弱；本輪以 REST 取全文 XML 確認重點是配偶制度與族群擴散，維持不收。 原提案 F30-NA005。",
+      "reentry_condition": "同 L66-NA004。",
+      "reading_status": "摘要與全文 XML（未逐段讀）"
+    },
+    {
+      "id": "H67-NA006",
+      "question": "交叉手效應的統合分析（Schmelter、Langenberg、Mayer、Heed 2026 Front Neurosci）",
+      "existing_ids": [
+        "H61-004"
+      ],
+      "source_ids": [],
+      "reason": "Heed 研究群，任務限定『Heed／Azañón 以外』，未讀、不收。 原提案 F30-NA006。",
+      "reentry_condition": "需要整體效應量時再議。",
+      "reading_status": "只見 Europe PMC 書目"
+    }
+  ]
+}

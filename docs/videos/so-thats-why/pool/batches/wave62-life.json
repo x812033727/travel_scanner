@@ -1,0 +1,108 @@
+{
+  "batch_id": "wave62-life-20261111",
+  "created_on": "2026-11-12",
+  "scope": "動物看到了什麼：烏賊單眼與立體視、蛾在月光下的辨色模型：替組題 C7-02 補原研究（作者 F19，覆核 V22）。",
+  "sources": [
+    {
+      "id": "L62-S001",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10410228/fullTextXML",
+      "canonical_url": "https://doi.org/10.1098/rspb.2023.1267",
+      "title": "Dim-light colour vision in the facultatively nocturnal Asian giant honeybee, Apis dorsata（Vijayan、Balamurali、Johnson、Kelber、Warrant、Somanathan）",
+      "publisher": "Proceedings of the Royal Society B 290:20231267（2023，PMC10410228，CC BY）",
+      "version": "出版社刊本（PMC 全文 XML）",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST 搜尋找到，fullTextXML 下載",
+      "reading_scope": "全文：摘要、§1 前言、§2 Methods（蜂群、刺激與色彩模型、白天與暗光行為測驗、統計）、§3 Results a–c、§4 Discussion、Figure 2–4 圖說",
+      "locator": "§3(a)〈Brightness of the stimulus is an unreliable cue〉；§3(b) 白天 78.9%、88.3%；§3(c) 87.5%、76.6%、44.1%；§4 Discussion 第 1、4 段與模型限制段",
+      "summary": "印度南部野生大蜜蜂訓練找藍色餵食點，再給藍色與三種亮度的灰色（不給糖）。白天 78.9±4.8% 的落點在藍色（20 隻）；訓練黃色的另一組在藍綠黃紅中 88.3±4.6% 選黃色（12 隻）。夜裡，0.1–0.2 cd/m²（比半月亮）87.5±3.9% 選藍、0.01–0.1 cd/m²（半月相當）76.6±5.9%，再暗到 0.001–0.01 cd/m² 只剩 44.1±11.2%，但每個亮度下去灰色的次數都顯著較少。用西洋蜂的感光參數算，月光與暮光下各刺激的色彩距離都小於 1 個 RNL 單位，模型預測幾乎分不出；作者說行為與模型不一致，模型參數來自西洋蜂、光譜不是現場量的，不能可靠解釋。換照明光譜後灰色與藍色的相對亮度會變，亮度不是可靠線索。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "野外蜂群、夜間不能逐隻訓練（只能整群標記）；最暗一級在箱內、樣本 17 隻、每隻約一次落點；色彩模型用西洋蜂參數；「西洋蜂暮光下色盲」是引用他人研究，本文沒有測。 覆核 V22（2026-11-12）：summary 與 limitations 改：模型用的是文獻月光與晚暮光光譜、西洋蜂參數、加入光子雜訊後兩兩距離 <1 RNL；不加雜訊時訓練色與背景可分（Fig.3a）；作者列的限制還有『模型假設亮光、未納入暗光下空間與時間累加』。刪去『最暗一級在箱內』（本輪未核到）。",
+      "author_cache": {
+        "file": "f19src/PMC10410228.xml",
+        "sha256_prefix": "6cd9f2b4bba2bc14",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L62-S002",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6949036/fullTextXML",
+      "canonical_url": "https://doi.org/10.1126/sciadv.aay6036",
+      "title": "Cuttlefish use stereopsis to strike at prey（Feord、Sumner、Pusdekar、Kalra、Gonzalez-Bellido、Wardill）",
+      "publisher": "Science Advances 6(2):eaay6036（2020，PMC6949036，CC BY-NC）",
+      "version": "出版社刊本（PMC 全文 XML）",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST 搜尋找到，fullTextXML 下載",
+      "reading_scope": "摘要、Introduction、Results 四節（含 Fig.1–4 圖說）、Discussion 第 1 段",
+      "locator": "Results〈Intact binocular cues speed up prey capture〉與 Fig.2；〈Cuttlefish also perceive 3D locations correctly when stimuli are anticorrelated…〉與 Fig.3；Introduction 末段（烏賊只有一種視色素）；Discussion 第 1 段",
+      "summary": "烏賊戴紅藍立體眼鏡看螢幕上的蝦。只給一隻眼看到蝦（擬單眼；濾片仍會漏光）時，定位階段花的時間較長、游得較遠、出擊位置離目標較近（3 隻對雙眼 5 隻），偵測、出擊與抓取階段沒有差別；作者引用 Messenger 的早年研究：單眼烏賊攻擊成功率 56%、雙眼 91%，並說雙眼線索不是唯一的深度線索。隨機點的蝦在單眼畫面裡看不出來：兩眼點紋相關或亮暗相反時（6 隻）都打到預期的立體位置，兩眼點紋不相關時從不出擊。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與池中 SRC-24da4888fd2573ec 同一份文件（B2315 的來源），本輪重讀全文。樣本很小（3–6 隻）；擬單眼不是完全單眼；56%／91% 是引用 Messenger 1968，不是本研究。 覆核 V22（2026-11-12）：limitations 補：「Discussion 原文說很多擬單眼與雙眼烏賊表現一樣好；56%／91% 是 Messenger 的手術單眼研究」。",
+      "author_cache": {
+        "file": "f19src/PMC6949036.xml",
+        "sha256_prefix": "220a04e570f319b4",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "L62-001",
+      "question": "烏賊只剩一隻眼看得到蝦，還抓得到嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.cuttlefish_quasi_monocular_strike_delay",
+      "answer_target": "抓得到，但調整位置比較慢。研究者讓戴紅藍眼鏡的烏賊只有一隻眼看到螢幕上的蝦（濾片還會漏一點光，所以不是完全單眼）：在調整位置的階段，牠們花比較久、游比較遠，最後出擊時離目標比較近；發現獵物、出擊和抓取階段跟兩眼都看得到時沒有差別。研究者也說，很多只用一眼的烏賊表現得跟兩眼一樣好，兩眼的線索不是唯一的距離線索。",
+      "scope": "樣本很小（擬單眼 3 隻、雙眼 5 隻）；擬單眼不是完全單眼；早年 Messenger 研究的 56%／91% 若要提，標明是另一研究、手術弄瞎一眼。隨機點紋與反相關結果屬 B2315，不在本核心重講。不寫成單眼烏賊抓不到。",
+      "source_ids": [
+        "L62-S002"
+      ],
+      "source_locator": "F19-S006 Results〈Intact binocular cues speed up prey capture〉、Fig.2；〈…anticorrelated…but not uncorrelated〉、Fig.3；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.5 條，同意作者：擬單眼的時間與位置差（一個實驗）。B2315 本題另計 0.5（同篇合計 1.0）。 原提案 F19-006（目標 C7-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V22（2026-11-12）改字後收；雜湊相同、數字對。收，但刪掉與 B2315 同答案的隨機點紋那半，補上原文『很多單眼烏賊表現一樣好』的保留。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "構造說烏賊兩眼視野有重疊；拿掉一眼的影像，定位就變慢——重疊真的被拿來用，但不是唯一的辦法。",
+        "visual": "烏賊戴紅藍眼鏡示意；兩眼與擬單眼的定位路徑並排（只畫方向、不標數字）。",
+        "seconds": [
+          25,
+          35
+        ]
+      }
+    },
+    {
+      "id": "L62-002",
+      "question": "照西洋蜂眼睛的參數算，月光下應該分不出顏色；野外的大蜜蜂真的分不出來嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.dim_light_bee_colour_model_vs_behaviour",
+      "answer_target": "分得出來。印度的研究者訓練野生大蜜蜂到藍色餵食點，再擺出藍色和三種深淺的灰色（都不給糖）。白天約 79% 的落點在藍色；夜裡光度比半月亮時約 88%、相當半月時約 77%，再暗一級（每平方公尺 0.001 到 0.01 燭光）降到約 44%，但去灰色的次數在每個光度都顯著較少。研究者算過，換照明光譜時灰與藍誰比較亮會跟著變，蜜蜂靠亮暗選不準。用西洋蜂的感光參數、文獻裡的月光與暮光光譜、再加上暗光下的光子雜訊去算，這些顏色之間的距離都小於可分辨的門檻，模型預測幾乎分不出；實際的蜜蜂卻分得出。作者說參數來自別種蜂、光譜不是現場量的、模型也沒算進暗光下的累加，不能可靠解釋這個結果。",
+      "scope": "Apis dorsata 野生蜂群、印度南部；夜間只能整群標記訓練；最暗一級 17 隻、24 次落點；百分比是原文平均值（±標準誤）。模型用的是文獻光譜，不與某一級現場光度一對一對照；不說模型錯了，只說用西洋蜂參數的模型預測與行為不一致；不說所有蜜蜂夜裡看得到顏色（西洋蜂暮光下色盲是引用他人研究）。",
+      "source_ids": [
+        "L62-S001"
+      ],
+      "source_locator": "F19-S004 §3(a)–(c)；§4 Discussion 第 1、4 段與模型限制段；Figure 3–4 圖說",
+      "premise_status": "screened",
+      "notes": "V22 下修為 1.0（作者 1.5）：白天與三種夜間光度的行為結果 1.0；模型不一致是同一研究的解讀，作者自己說不能可靠解釋，不另計。補 V21 still_missing 的『一份行為測驗的開放原研究』。去重：pool.json 無 dorsata、rspb.2023.1267；夜間辨色既有 R37007（守宮）、L61-001（青蛙），答案方向相近但物種與測法不同。 原提案 F19-007（目標 C7-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V22（2026-11-12）改字後收；全文合規、雜湊相同、行為數字全對。收但下修為 1.0；改掉把模型的文獻光譜與半月光度一對一對照的寫法，補上模型沒算累加這條限制。它在 C7-02 是轉折二的旁證（構造／模型會低估），不是轉折本身。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "照另一種蜂的眼睛參數算，月光下應該是黑白世界；把野生大蜜蜂拿去考，牠還是挑得出藍色。",
+        "visual": "四個餵食點（藍與三灰）在白天、比半月亮、半月、更暗四格中的藍色落點比例長條（只用原文百分比）；模型那格標『西洋蜂參數、文獻光譜』。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "L62-NA001",
+      "question": "跳蛛在紅光下跳太短，會不會只是紅光看起來比較暗？",
+      "existing_ids": [
+        "Z7010"
+      ],
+      "source_ids": [],
+      "reason": "非作者覆核 V22（2026-11-12）退回：同一份文件、同一個實驗、同一個問題：亮度對照是 Z7010 答案的控制條件，不是新答案。併入 Z7010（F19-S005 掛為 Z7010 的可讀全文），Z7010 計 1.0。 原提案 F19-005。",
+      "reentry_condition": "覆核理由所列的缺口補上後重提。",
+      "reading_status": "已讀來源，核心退回"
+    }
+  ]
+}

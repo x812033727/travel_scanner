@@ -1,0 +1,55 @@
+{
+  "batch_id": "wave75-human-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第二十五輪補讀：走跑轉換（F100-T1，F106，無提案），只有不收紀錄。",
+  "sources": [
+    {
+      "id": "H75-S001",
+      "url": "https://doi.org/10.1101/2020.07.11.198796",
+      "canonical_url": "https://www.biorxiv.org/content/10.1101/2020.07.11.198796v1",
+      "title": "Does the Preferred Walk-Run Transition Speed on Inclines Minimize Energetic Cost, Heart Rate or Neither?",
+      "publisher": "bioRxiv（Jackson W. Brill, Rodger Kram）",
+      "version": "預印本 v1，Posted July 12, 2020",
+      "accessed_on": "2026-11-12",
+      "read_via": "DOI 連結以 curl（預設標頭）取得 bioRxiv 摘要頁 HTML，python 去標籤轉文字",
+      "reading_scope": "只有摘要頁：ABSTRACT 段、縮寫表、版權註記。正文、方法、結果表、圖都沒讀到（全文頁 429）。",
+      "locator": "ABSTRACT",
+      "summary": "10 名健康、高水準男性越野／山地跑者，0°、5°、10°、15° 坡度；PTS 取走到跑與跑到走換檔速度的平均（漸增法），EOTS 與 HROTS 由走、跑兩條線性迴歸的交點求得。摘要結論：PTS、EOTS、HROTS 都隨坡度變陡而變慢；0°、5°、10° 時 PTS 慢於 EOTS，15° 時兩者收斂；PTS 與 EOTS 只有中度相關；EOTS 與 HROTS 相關，但個人層級無法用心率準確預測 EOTS。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀到摘要，不算全文、不計條數；摘要沒有給各坡度的數值與統計量。預印本、未經同儕審查（版權註記：No reuse allowed without permission）。內容與上一輪作者經 Europe PMC 讀到的摘要相同，沒有新增資訊。Kram 群。",
+      "author_cache": {
+        "file": "biorxiv_198796v1_landing.txt（原始 raw/10.1101_2020.07.11.198796.html，sha256 前 16 碼 f2cc9159d9d15d85）",
+        "sha256_prefix": "b5ad751666b6fb76",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [],
+  "not_added": [
+    {
+      "id": "H75-NA001",
+      "question": "上坡時，人換跑的速度會不會剛好落在最省能的那一點？",
+      "existing_ids": [
+        "H74-025"
+      ],
+      "source_ids": [
+        "H75-S001"
+      ],
+      "reason": "bioRxiv 這次只拿到摘要頁，全文頁 429；只讀摘要不計條數。摘要內容（0°、5°、10° PTS 慢於 EOTS，15° 才收斂）上一輪已在 not_added 記過，沒有新增。可在寫稿時當 H74-025 的限制旁證（『固定坡度的另一研究在 15° 以下仍看到提早換跑』，註明只讀摘要、預印本），但不計分。 原提案 F106-NA001。",
+      "reentry_condition": "bioRxiv 全文頁（摘要頁上的 Full Text 連結）在另一輪正常可讀時，讀方法與結果表；新研究群 Kram，約 0.5 條（與 Kram 1997 同群合計封頂 2.0）。",
+      "reading_status": "abstract only（全文頁 429）"
+    },
+    {
+      "id": "H75-NA002",
+      "question": "重力變小時，人換跑的速度怎麼變？（Kram, Domingo & Ferris 1997；De Witt 等 2014）",
+      "existing_ids": [
+        "H74-027",
+        "H74-028"
+      ],
+      "source_ids": [],
+      "reason": "兩篇 DOI 轉址至 journals.biologists.com 仍回 403（Cloudflare 驗證頁），本輪唯一一次重試失敗，依規定跳過；沒有任何原文可讀，不提核心。 原提案 F106-NA002。",
+      "reentry_condition": "journals.biologists.com 不再要求驗證時，用同一 DOI 連結正常下載一次。Kram 1997 約 0.5–0.75（Kram 群），De Witt 2014 約 0.5（NASA 群）。",
+      "reading_status": "not read（403）"
+    }
+  ]
+}

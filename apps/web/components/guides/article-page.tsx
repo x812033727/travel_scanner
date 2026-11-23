@@ -1,4 +1,5 @@
 import type { Metadata, ResolvingMetadata } from "next";
+import readingStyles from "./news-reading.module.css";
 import { headers } from "next/headers";
 import { permanentRedirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
@@ -10,10 +11,12 @@ import { depthCopy } from "@/lib/codex-learning/units";
 import { seriesCopy } from "@/lib/guide-series-copy";
 import { getGeminiHubReference, getVisibleGeminiSeries, isGeminiSeriesPage, projectGeminiArticle } from "@/lib/gemini-series.server";
 import { publishedGeminiSeries } from "@/lib/gemini-series-projection";
-import { GuideArticle, type GuideArticleLabels } from "@/components/guides/article";
+import { CONTENTS_MIN_HEADINGS, GuideArticle, type GuideArticleLabels } from "@/components/guides/article";
+import { ArticleMobileProgress, ArticleTocRail } from "@/components/guides/article-toc-rail";
 import type { GuideCardLabels } from "@/components/guides/card";
 import { Breadcrumb } from "@/components/guides/breadcrumb";
-import { Backlinks, RelatedGrid } from "@/components/guides/related-grid";
+import { Backlinks, RELATED_GRID_LIMIT, RelatedGrid } from "@/components/guides/related-grid";
+import type { ArticleReference } from "@/lib/guide-series";
 import { VideoCard } from "@/components/videos/video-card";
 import { getVideos } from "@/lib/videos.server";
 import { TravelCrosslinks, type TravelCrosslinksLabels } from "@/components/guides/travel-crosslinks";
@@ -26,13 +29,16 @@ import { citiesForCountry, destinationSeeds, type CatalogTranslator } from "@/li
 import { contentBlockLink } from "@/lib/content-blocks";
 import { guideAffiliateDestination } from "@/lib/guide-affiliate";
 import { splitArticleExtras, guideTopicHref, guideSection,
-  guideHeadings, guideHref, guideListHref, readingMinutes,
+  guideHeadings, guideHref, guideListHref, isGuideHero, isNewsTopic, isSyntheticNewsArtwork,
+  isSyntheticNewsBlock, readingMinutes, visibleGuideHero,
   type GuideArticleState, type GuideKind, type GuideSummary, type PublishedGuide,
 } from "@/lib/guides";
 import { getAdsenseSlot } from "@/lib/adsense.server";
+import * as guidesServer from "@/lib/guides.server";
 import { getGuideTopics, getGuideArticle, getGuideList, getGuideSeries } from "@/lib/guides.server";
-import { localeUrl } from "@/lib/seo";
-import { faqPage, definedTerm, breadcrumbs, guideArticle, type Crumb } from "@/lib/structured-data";
+import { ARTICLE_OG_HEIGHT, ARTICLE_OG_WIDTH, articleOgImagePath } from "@/lib/article-og";
+import { DISCOVER_ROBOTS, localeUrl } from "@/lib/seo";
+import { faqPage, definedTerm, breadcrumbs, guideArticle, videoObject, type Crumb } from "@/lib/structured-data";
 
 /**
  * The one article page, shared by `/guides/[kind]/[slug]` and `/life/[slug]`.
@@ -50,12 +56,43 @@ type Translate = (key: string, values?: Record<string, string | number>) => stri
 /** How many related articles end a travel article; past three it stops being a pick. */
 export const RELATED_ARTICLE_LIMIT = 3;
 
+const RAIL_TRENDING_LIMIT = 5;
+
+const openGraphLocale: Record<Locale, string> = {
+  en: "en_US", ja: "ja_JP", ko: "ko_KR", "zh-TW": "zh_TW", "zh-CN": "zh_CN",
+};
+
 /** The listing an article belongs to: the heading readers return to, and its URL. */
 function listingOf(kind: GuideKind, t: Translate): Crumb {
   const name = kind === "life"
     ? t("guides.lifeHubTitle")
     : kind === "intel" ? t("guides.intelTitle") : t("guides.howtoTitle");
   return { name, path: guideListHref(kind) };
+}
+
+function articleSection(state: GuideArticleState, listingName: string): string {
+  if (!state.news_date) return listingName;
+  const section = guideSection(state.kind);
+  return state.topics.find((topic) => topic.label.trim() && isNewsTopic(section, topic.slug))?.label ?? listingName;
+}
+
+const genericImageAlt = /^(?:image|photo|screenshot|illustration|圖片|图片|照片|截圖|截图|示意圖|示意图|画像|写真|スクリーンショット|이미지|사진|스크린샷)$/iu;
+
+function articlePreviewImage(document: PublishedGuide, newsDate: GuideArticleState["news_date"]) {
+  const hero = visibleGuideHero(document.hero);
+  if (hero || !newsDate) return hero;
+
+  // An authored body image can supply a landscape share card while staying beside its explanation.
+  // isGuideHero applies the same local path, raster format and stored-dimension checks as an actual cover.
+  for (const block of document.blocks) {
+    if (block.type !== "image" || !isGuideHero(block) || isSyntheticNewsArtwork(block)) continue;
+    const alt = block.alt.trim();
+    if (alt && !genericImageAlt.test(alt) && !block.src.endsWith(`/${alt}`)
+      && block.width >= 1200 && block.height >= 630 && block.width > block.height) {
+      return block;
+    }
+  }
+  return null;
 }
 
 /**
@@ -84,57 +121,56 @@ export async function guideArticleMetadata(
     getTranslations({ locale, namespace: "common" }),
   ]);
   const path = guideHref(kind, slug);
+  const canonical = localeUrl(locale, path);
   if (state.status !== "published" || !state.document) {
     return {
       title: t("guides.unavailableTitle"),
       description: t(state.status === "unpublished" ? "guides.notTranslated" : "guides.unavailable"),
       robots: { index: false },
-      alternates: { canonical: localeUrl(locale, path) },
+      alternates: { canonical },
     };
   }
   // Each locale publishes independently, so the root layout's all-five alternate set would
   // advertise translations that do not exist. Declare only the ones actually published.
   const languages = Object.fromEntries(state.published_locales.map((value) => [value, localeUrl(value, path)]));
+  const alternateLocale = state.published_locales.filter((value) => value !== locale).map((value) => openGraphLocale[value]);
+  const { document } = state;
+  const { title, description } = document;
+  const image = articlePreviewImage(document, state.news_date);
+  // Next replaces the entire social object. Articles without bespoke editorial photography
+  // receive a dedicated 1200x630 card carrying their own headline and topic badge for Google
+  // Discover and social sharing instead of repeating the site-wide /og.png logo.
+  const inherited = (await parent)?.openGraph;
+  const images = image
+    ? [{ url: image.src, width: image.width, height: image.height, alt: image.alt }]
+    : [{ url: articleOgImagePath(locale, kind, slug), width: ARTICLE_OG_WIDTH, height: ARTICLE_OG_HEIGHT, alt: title }];
+  const tags = state.topics.map((topic) => topic.label).filter(Boolean);
   return {
-    title: state.document.title,
-    description: state.document.description,
+    title,
+    description,
+    robots: DISCOVER_ROBOTS,
     alternates: {
-      canonical: localeUrl(locale, path),
+      canonical,
       languages: {
         ...languages,
         ...(state.published_locales.includes("en") ? { "x-default": localeUrl("en", path) } : {}),
       },
     },
-    ...(await socialCard(state.document, parent)),
-  };
-}
-
-/**
- * The share card, only when the article has a hero to put on it.
- *
- * Next replaces a whole top-level metadata key rather than merging inside it, so naming
- * `openGraph` here would silently drop the layout's locale and alternate locales. They are
- * read back from the parent and restated; the image path is relative, and the layout's
- * `metadataBase` makes it absolute the same way it does for `/og.png`. Without a hero the
- * keys are left alone and the site card inherits.
- */
-async function socialCard(
-  document: PublishedGuide, parent?: ResolvingMetadata,
-): Promise<Pick<Metadata, "openGraph" | "twitter">> {
-  const hero = document.hero;
-  if (!hero) return {};
-  const inherited = parent ? (await parent).openGraph : null;
-  return {
     openGraph: {
-      ...(inherited?.siteName ? { siteName: inherited.siteName } : {}),
-      ...(inherited?.locale ? { locale: inherited.locale } : {}),
-      ...(inherited?.alternateLocale ? { alternateLocale: inherited.alternateLocale } : {}),
       type: "article",
+      url: canonical,
+      title,
+      description,
+      siteName: inherited?.siteName ?? "Mokaair",
+      locale: openGraphLocale[locale],
+      alternateLocale,
+      section: articleSection(state, listingOf(kind, t).name),
+      ...(tags.length ? { tags } : {}),
       publishedTime: document.published_at,
       modifiedTime: document.modified_at ?? document.published_at,
-      images: [{ url: hero.src, width: hero.width, height: hero.height, alt: hero.alt }],
+      images,
     },
-    twitter: { card: "summary_large_image", images: [hero.src] },
+    twitter: { card: "summary_large_image", title, description, images },
   };
 }
 
@@ -194,6 +230,46 @@ async function relatedTravel(
   return shown.length ? <TravelCrosslinks articles={shown} cities={[]} labels={labels} /> : null;
 }
 
+/**
+ * Fallback related reading for a standalone lifestyle article when the API sent no ranked
+ * `related` list: up to three other lifestyle articles from its primary topic, topped up from
+ * the lifestyle section. Series pages keep their own chapter navigation untouched.
+ */
+async function relatedLife(
+  locale: Locale,
+  state: GuideArticleState,
+  excludeSlugs: readonly string[],
+): Promise<ArticleReference[]> {
+  const own = `${state.kind}:${state.slug}`;
+  const excluded = new Set(excludeSlugs);
+  const key = (article: GuideSummary) => `${article.kind}:${article.slug}`;
+  const picks: GuideSummary[] = [];
+  const take = (articles: GuideSummary[]) => {
+    for (const article of articles) {
+      if (
+        article.kind === "life"
+        && key(article) !== own
+        && !excluded.has(article.slug)
+        && !picks.some((pick) => key(pick) === key(article))
+      ) {
+        picks.push(article);
+      }
+    }
+  };
+  if (state.topics[0]) {
+    take((await getGuideList(locale, { section: "life", kind: "life", topic: state.topics[0].slug }, RELATED_ARTICLE_LIMIT + 1)).articles);
+  }
+  if (picks.length < RELATED_ARTICLE_LIMIT) {
+    take((await getGuideList(locale, { section: "life", kind: "life" }, RELATED_ARTICLE_LIMIT + 1)).articles);
+  }
+  return picks.slice(0, RELATED_ARTICLE_LIMIT).map((article) => ({
+    kind: article.kind,
+    slug: article.slug,
+    title: article.title,
+    description: article.description,
+  }));
+}
+
 export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRoute) {
   await canonicalSlugOrRedirect({ locale, kind, slug });
   const [rawState, t, nav, ts] = await Promise.all([
@@ -220,26 +296,28 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
       <>
         <SiteHeader />
         <main className="mx-auto max-w-3xl px-5 py-10 md:py-14">
-          <h1 className="text-3xl font-bold">{t("guides.unavailableTitle")}</h1>
-          <p role={state.status === "unavailable" ? "alert" : "status"} className="mt-5 leading-8 text-[var(--muted)]">
-            {t(state.status === "unpublished" ? "guides.notTranslated" : "guides.unavailable")}
-          </p>
-          {others.length ? (
-            <ul className="mt-5 flex flex-wrap gap-3">
-              {others.map((value) => (
-                <li key={value}>
-                  <a className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={`/${value}${guideHref(kind, slug)}`} hrefLang={value}>
-                    {localeLabels[value]}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          ) : null}
-          <p className="mt-6">
-            <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={listing.path}>
-              {listing.name}
-            </Link>
-          </p>
+          <div className="rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-6 shadow-[var(--shadow-sm)] md:p-8">
+            <h1 className="text-3xl font-bold tracking-tight">{t("guides.unavailableTitle")}</h1>
+            <p role={state.status === "unavailable" ? "alert" : "status"} className="mt-4 leading-8 text-[var(--muted)]">
+              {t(state.status === "unpublished" ? "guides.notTranslated" : "guides.unavailable")}
+            </p>
+            {others.length ? (
+              <ul className="mt-5 flex flex-wrap gap-2.5">
+                {others.map((value) => (
+                  <li key={value}>
+                    <a className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] bg-[var(--paper)]/70 px-4 text-sm font-semibold text-[var(--teal)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]" href={`/${value}${guideHref(kind, slug)}`} hrefLang={value}>
+                      {localeLabels[value]}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            <p className="mt-6">
+              <Link className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] bg-[var(--paper)]/70 px-5 text-sm font-semibold text-[var(--teal)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]" href={listing.path}>
+                {listing.name}
+              </Link>
+            </p>
+          </div>
         </main>
       </>
     );
@@ -251,14 +329,26 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   const kindLabels = { intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life") };
   // A card is labelled by its section and nothing else, so the kind labels are the whole set.
   const card: GuideCardLabels = kindLabels;
+  const isCodexHub = kind === "life" && slug === HUB_SLUG;
+  const isHub = isCodexHub || Boolean(state.series && !state.series.current && state.series.hub.slug === slug);
+  const isNewsReading = Boolean(state.news_date && !isHub && !state.series && !geminiSeries);
+  const section = guideSection(kind);
+  const topic = state.topics[0];
   // What to read next comes from the API's ranked list when it has one (the editor's picks,
   // then the nearest neighbours); a lesson's own related lessons are already listed by the
-  // series navigation just above and are not repeated. A lifestyle article that names a
-  // destination keeps the travel handover after it; a travel article's list replaces the
-  // same-city cards it used to end with, which an API without the list still supplies.
+  // series navigation just above and are not repeated. Standalone lifestyle articles without
+  // ranked neighbours fall back to same-topic/same-section lifestyle articles. A lifestyle
+  // article that names a destination keeps the travel handover after it; a travel article's
+  // list replaces the same-city cards it used to end with, which an API without the list still supplies.
   const seriesRelated = (state.series?.related ?? []).map((item) => item.slug);
-  const grid = state.related?.length
-    ? <RelatedGrid heading={t("guides.relatedSameTopic")} items={state.related} kindLabels={kindLabels} exclude={seriesRelated} />
+  const apiRelated = (state.related ?? []).filter((item) => !seriesRelated.includes(item.slug));
+  const gridItems = apiRelated.length
+    ? apiRelated.slice(0, RELATED_GRID_LIMIT)
+    : kind === "life" && !isHub && !state.series && !geminiSeries
+      ? await relatedLife(locale, state, seriesRelated)
+      : [];
+  const grid = gridItems.length
+    ? <RelatedGrid layout={isNewsReading ? "news" : undefined} heading={t("guides.relatedSameTopic")} items={gridItems} kindLabels={kindLabels} />
     : null;
   const cited = state.backlinks?.length ? <Backlinks heading={t("guides.citedBy")} items={state.backlinks} /> : null;
   const handover = kind === "life"
@@ -300,8 +390,6 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   const trail: Crumb[] = kind === "life"
     ? [{ name: nav("home"), path: "/" }, listing]
     : [{ name: nav("home"), path: "/" }, { name: t("guides.hubTitle"), path: "/guides" }, listing];
-  const section = guideSection(kind);
-  const topic = state.topics[0];
   if (topic) {
     const vocabulary = await getGuideTopics(locale, section);
     const parentSlug = topic.parent ?? vocabulary.find((item) => item.slug === topic.slug)?.parent ?? null;
@@ -309,11 +397,15 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
     if (parent) trail.push({ name: parent.label, path: guideTopicHref(section, parent.slug) });
     trail.push({ name: topic.label, path: guideTopicHref(section, topic.slug) });
   }
-  const extras = splitArticleExtras(state.document.blocks);
+  const authoredBlocks = state.document.blocks.filter((block) => !isSyntheticNewsBlock(block));
+  const extras = splitArticleExtras(authoredBlocks);
   const labels: GuideArticleLabels = {
     ...kindLabels,
+    publishedOn: t("guides.publishedOn"),
     updated: t("guides.updated"),
-    sources: t("guides.sources"), checkedOn: t("guides.checkedOn"),
+    sources: t("guides.sources"),
+    checkedOn: t("guides.checkedOn"),
+    sourcesProvenance: t("guides.sourcesProvenance"),
     destination: t("guides.destination"),
     contents: state.series?.current ? seriesCopy(locale).contents : t("guides.contents"),
     adLabel: t("guides.adLabel"),
@@ -322,22 +414,67 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
     partner: { badge: t("guides.partnerBadge"), newTab: ts("newTab") },
     blocks: {
       imageCredit: t("guides.imageCredit"), imageDescription: t("guides.imageDescriptionToggle"),
+      viewOriginalImage: state.news_date ? t("guides.viewOriginalImage") : undefined,
       tip: t("guides.calloutTip"), warning: t("guides.calloutWarning"), info: t("guides.calloutInfo"),
     },
     term: { card: t("guides.termCard"), readMore: t("guides.termReadMore") },
     summary: t("guides.summary"),
+    summaryMore: isNewsReading && extras.summary && extras.summary.items.length > 1
+      ? t("guides.summaryMore", { count: extras.summary.items.length - 1 }) : undefined,
     faq: t("guides.faq"),
     support: { text: t("guides.supportText"), action: t("guides.supportAction"), newTab: ts("newTab") },
   };
-  const hero = state.document.hero;
+  const image = articlePreviewImage(state.document, state.news_date);
   const copy = seriesCopy(locale);
   labels.blocks.code = copy;
-  const isCodexHub = kind === "life" && slug === HUB_SLUG;
-  const isHub = isCodexHub || Boolean(state.series && !state.series.current && state.series.hub.slug === slug);
   const useApiDirectory = isHub && !geminiSeries;
-  const series = useApiDirectory ? await getGuideSeries(isCodexHub ? "codex" : state.series!.slug, locale) : null;
+  const excludedTrendingKeys = new Set<string>([
+    `${kind}:${slug}`,
+    ...(state.series?.related ?? []).map((item) => `${item.kind}:${item.slug}`),
+    ...(state.series?.previous ? [`${state.series.previous.kind}:${state.series.previous.slug}`] : []),
+    ...(state.series?.next ? [`${state.series.next.kind}:${state.series.next.slug}`] : []),
+    ...(state.series?.hub ? [`${state.series.hub.kind}:${state.series.hub.slug}`] : []),
+    ...gridItems.map((item) => `${item.kind}:${item.slug}`),
+  ]);
+  const fetchRailTrending = async (): Promise<GuideSummary[]> => {
+    if (isHub) return [];
+    try {
+      if (typeof guidesServer.getTrendingGuides !== "function") return [];
+      const picks: GuideSummary[] = [];
+      const seen = new Set<string>(excludedTrendingKeys);
+      const collect = (articles: unknown) => {
+        if (!Array.isArray(articles)) return;
+        for (const item of articles as GuideSummary[]) {
+          const itemKey = `${item.kind}:${item.slug}`;
+          if (guideSection(item.kind) !== section || seen.has(itemKey)) continue;
+          seen.add(itemKey);
+          picks.push(item);
+          if (picks.length >= RAIL_TRENDING_LIMIT) break;
+        }
+      };
+      if (topic) {
+        const topical = await guidesServer.getTrendingGuides(locale, { section, topic: topic.slug }, 8);
+        collect(topical?.articles);
+      }
+      if (picks.length < RAIL_TRENDING_LIMIT) {
+        const sectional = await guidesServer.getTrendingGuides(locale, { section }, 10);
+        collect(sectional?.articles);
+      }
+      return picks;
+    } catch {
+      return [];
+    }
+  };
+  const [series, railTrending] = await Promise.all([
+    useApiDirectory ? getGuideSeries(isCodexHub ? "codex" : state.series!.slug, locale) : Promise.resolve(null),
+    fetchRailTrending(),
+  ]);
   if (state.series?.current) trail.push({ name: state.series.hub.title, path: guideHref(state.series.hub.kind, state.series.hub.slug) });
-  const headings = guideHeadings(state.document.blocks);
+  const headings = guideHeadings(extras.blocks);
+  const hasDesktopToc = !isHub && (Boolean(state.series?.current) || headings.length >= CONTENTS_MIN_HEADINGS);
+  const hasDesktopRail = !isHub && (hasDesktopToc || railTrending.length > 0);
+  const elevateReadingSheet = !isHub;
+  const canonicalUrl = localeUrl(locale, guideHref(kind, slug));
   const seriesDirectory = isCodexHub
     ? <LearningHub locale={locale} entries={learningEntries(locale, series?.entries ?? [])} available={Boolean(series)} />
     : useApiDirectory
@@ -346,9 +483,87 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
         : <div role="alert"><p>{copy.unavailable}</p><a href={`/${locale}${guideHref(kind, slug)}`} className="inline-flex min-h-11 items-center underline">{copy.retry}</a></div>
       : null;
 
+  const moveTrendingBelow = isNewsReading && hasDesktopToc;
+  const trendingSection = railTrending.length > 0 ? (
+    <section
+      aria-label={nav("searchTrending")}
+      className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4 shadow-[var(--shadow-sm)] sm:p-5"
+    >
+      <h2 className="portal-section-heading text-sm font-extrabold uppercase tracking-wider text-[var(--teal-dark)]">
+        {nav("searchTrending")}
+      </h2>
+      <ol className="mt-3 divide-y divide-[var(--line)] text-sm leading-6">
+        {railTrending.map((item, index) => {
+          const rankClass = index === 0
+            ? "bg-[var(--teal-fill)] text-[var(--primary-text)]"
+            : index < 3
+              ? "bg-[var(--coral-soft)] text-[var(--coral)]"
+              : "border border-[var(--line)] bg-[var(--paper)] text-[var(--muted)]";
+          return (
+            <li
+              key={`${item.kind}:${item.slug}`}
+              className="group relative -mx-2 flex items-start gap-2.5 rounded-xl px-2 py-2.5 transition-colors hover:bg-[var(--paper)]/70"
+            >
+              <span
+                aria-hidden
+                className={`mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md font-mono text-[length:var(--text-xs)] font-extrabold tabular-nums ${rankClass}`}
+              >
+                {index + 1}
+              </span>
+              <div className="min-w-0">
+                <Link
+                  href={guideHref(item.kind, item.slug)}
+                  className="line-clamp-2 font-semibold text-[var(--ink)] underline-offset-4 after:absolute after:inset-0 after:content-[''] group-hover:text-[var(--teal)] group-hover:underline"
+                >
+                  {item.title}
+                </Link>
+                {item.topics[0] ? (
+                  <span className="mt-0.5 block text-[length:var(--text-xs)] text-[var(--muted)]">
+                    {item.topics[0].label}
+                  </span>
+                ) : null}
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </section>
+  ) : null;
+  const sideRail = hasDesktopRail ? (
+    <aside
+      className={railTrending.length > 0 && !moveTrendingBelow
+        ? "min-w-0 space-y-5 lg:sticky lg:top-24"
+        : "hidden lg:sticky lg:top-24 lg:block lg:space-y-5"}
+    >
+      {hasDesktopToc ? (
+        <ArticleTocRail
+          key={canonicalUrl}
+          newsReading={isNewsReading}
+          headings={headings}
+          contentsLabel={labels.contents}
+          backToTopLabel={t("guides.backToTop")}
+          progressLabel={t("guides.readingProgress")}
+          seriesBackHref={state.series?.current ? `/${locale}${guideHref(state.series.hub.kind, state.series.hub.slug)}` : null}
+          seriesBackLabel={state.series?.current ? copy.back : null}
+        />
+      ) : null}
+      {moveTrendingBelow ? null : trendingSection}
+    </aside>
+  ) : null;
+
   return (
     <>
       <SiteHeader />
+      {!isHub ? (
+        <ArticleMobileProgress
+          key={canonicalUrl}
+          newsReading={isNewsReading}
+          backToTopLabel={t("guides.backToTop")}
+          headings={headings.length >= CONTENTS_MIN_HEADINGS ? headings : undefined}
+          contentsLabel={labels.contents}
+          closeLabel={t("guides.closeContents")}
+        />
+      ) : null}
       <StructuredData
         data={[
           breadcrumbs(locale, [...trail, { name: state.document.title, path: guideHref(kind, slug) }]),
@@ -373,8 +588,9 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
             description: state.document.description,
             publishedAt: state.document.published_at,
             modifiedAt: state.document.modified_at,
-            hero,
-            section: listingOf(kind, t).name,
+            newsDate: state.news_date,
+            hero: image ?? { src: articleOgImagePath(locale, kind, slug), width: ARTICLE_OG_WIDTH, height: ARTICLE_OG_HEIGHT },
+            section: articleSection(state, listing.name),
             keywords: state.topics.map((topic) => topic.label),
             // Only an id with a destination page behind it. Every id in the corpus has one
             // today, but the graph may not be the thing that finds out when one stops.
@@ -392,31 +608,67 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
             abstract: extras.summary?.items ?? null,
             collection: isHub,
             entries: series?.entries.map((item) => ({ name: item.title, path: guideHref(item.kind, item.slug) })),
+            partOfSeries: state.series?.current
+              ? { name: state.series.hub.title, path: guideHref(state.series.hub.kind, state.series.hub.slug) }
+              : null,
           }),
+          ...videos.map((video) => videoObject(locale, {
+            slug: video.slug,
+            title: video.title,
+            youtubeVideoId: video.youtube_video_id,
+            publishedAt: video.published_at,
+            description: state.document!.description,
+            articlePath: guideHref(kind, slug),
+            pagePath: guideHref(kind, slug),
+          })),
         ]}
       />
-      <main className={`mx-auto px-5 py-10 md:py-14 ${state.series ? "max-w-6xl" : "max-w-3xl"}`}>
-        <Breadcrumb trail={trail} current={state.document.title} label={t("guides.breadcrumb")} />
-        <div className={state.series?.current ? "grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_15rem]" : ""}>
-        <div className="min-w-0">
-        <GuideArticle
-          geminiSeries={geminiSeries}
-          state={{ ...state, document: state.document }}
-          related={related}
-          readingTime={t("guides.readingTime", { minutes: state.series?.current?.minutes ?? readingMinutes(state.document) })
-            + (state.series?.current?.operation_minutes ? ` · ${depthCopy(locale).practice} ${state.series.current.operation_minutes} ${copy.minutes}` : "")}
-          labels={labels}
-          adsense={adsense}
-          seriesHub={seriesDirectory}
-        />
+      <main data-news-rail={isNewsReading && hasDesktopRail || undefined} className={isNewsReading ? readingStyles.reading : `mx-auto px-5 py-6 sm:py-8 md:py-12 ${isHub || state.series || hasDesktopRail ? "max-w-6xl" : "max-w-3xl"}`}>
+        <Breadcrumb compact={isNewsReading} trail={trail} current={state.document.title} label={t("guides.breadcrumb")} />
+        <div className={!isNewsReading && hasDesktopRail ? "grid min-w-0 gap-6 lg:grid-cols-[minmax(0,1fr)_17.5rem] lg:items-start lg:gap-8" : ""}>
+          <div
+            className={!isNewsReading && elevateReadingSheet
+              ? "min-w-0 rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 py-5 shadow-[var(--shadow-sm)] sm:rounded-3xl sm:p-7 md:p-10"
+              : "min-w-0"}
+          >
+            <GuideArticle
+              geminiSeries={geminiSeries}
+              state={{ ...state, document: state.document }}
+              related={related}
+              readingTime={t("guides.readingTime", { minutes: state.series?.current?.minutes ?? readingMinutes(state.document) })
+                + (state.series?.current?.operation_minutes ? ` · ${depthCopy(locale).practice} ${state.series.current.operation_minutes} ${copy.minutes}` : "")}
+              labels={labels}
+              adsense={adsense}
+              seriesHub={seriesDirectory}
+              newsRail={isNewsReading ? sideRail : undefined}
+              sidebarToc={hasDesktopToc}
+              constrainDiagrams={elevateReadingSheet || hasDesktopRail}
+              share={!isHub ? {
+                url: canonicalUrl,
+                labels: {
+                  shareLabel: t("guides.shareLabel"),
+                  copyLink: t("guides.copyLink"),
+                  linkCopied: t("guides.linkCopied"),
+                  shareLine: t("guides.shareLine"),
+                  shareThreads: t("guides.shareThreads"),
+                  shareFacebook: t("guides.shareFacebook"),
+                  shareX: t("guides.shareX"),
+                  shareSystem: t("guides.shareSystem"),
+                  sharePrompt: t("guides.sharePrompt"),
+                },
+              } : undefined}
+            />
+          </div>
+          {isNewsReading ? null : sideRail}
         </div>
-        {state.series?.current ? <aside className="hidden lg:block"><nav aria-label={labels.contents} className="sticky top-24 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4">
-          <a href={`/${locale}${guideHref(state.series.hub.kind, state.series.hub.slug)}`} className="inline-flex min-h-11 items-center text-[var(--teal)] underline">{copy.back}</a>
-          <h2 className="mt-2 font-semibold">{labels.contents}</h2><ol className="mt-3 space-y-2 text-sm leading-6">{headings.map(heading => <li key={heading.id}><a href={`#${heading.id}`} className="underline">{heading.text}</a></li>)}</ol>
-        </nav></aside> : null}
-        </div>
-        <p className="mt-10">
-          <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={listing.path}>
+        {moveTrendingBelow && trendingSection ? (
+          <aside className={readingStyles.trending}>{trendingSection}</aside>
+        ) : null}
+        <p className="mt-8">
+          <Link
+            className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] bg-[var(--surface)] px-5 py-2 text-sm font-semibold text-[var(--teal)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]"
+            href={listing.path}
+          >
             {listing.name}
           </Link>
         </p>

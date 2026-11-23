@@ -1,0 +1,2464 @@
+{
+  "reviewed_on": "2026-11-11",
+  "round": 6,
+  "previous_round": "docs/videos/so-thats-why/pool/reviews/material-20261111-round5.json",
+  "owner_instruction": [
+    "繼續擴充奇聞跟原來如此素材池"
+  ],
+  "bar": "同前五輪：片長＝（不重複事實數×140 字＋700 字開場收尾）÷每分鐘 270 字；可成題要有至少 8.5 分鐘素材與兩個改變結論的轉折；只算有可讀紀錄的外部來源，自製測試與自己的計算不是來源；舊核心已有的事實不重計。估時是紙上估算，不是試讀。",
+  "method": "兩條補來源線各接四組後備長題，先補各題素材審視欄點名缺的來源。作者 F7 接 G21、G20、G22、G26，作者 F8 接 G12、G09、G11、G30；兩位沒參與撰寫的覆核者（V10 覆核 F7、V11 覆核 F8）核對作者快取雜湊、重抓或線上重讀來源、逐核心判定、重列每題最終核心並重算分鐘；覆核結論優先。",
+  "policies": {
+    "webfetch_only_sources": "Bshary & Grutter 2005、Raihani 等 2012（賭注）、Bshary & Noë 2023、Costanzo 等 2013、Larson 等 2014 五篇本機沒有逐字全文快取（PMC 對 curl 回驗證頁、期刊站回 403，未繞過）；作者以 WebFetch 閱讀，覆核 V10 再以 WebFetch 要求逐字引句重讀，核心所用數字均有逐字引句，但仍是工具回傳，來源限制如實記錄，寫稿前要以可逐句核對的副本重讀。",
+    "reentry_condition_L48": "L48-NA005–007 的重收條件「實讀原研究正文」字面未滿足（Science 2014、Current Biology 2015 原文未取得）；覆核 V10 裁定原作者自己的同儕審查開放全文回顧實質滿足，對應核心範圍寫明「作者回顧」、只用回顧給得出的數字。",
+    "hosted_copies": "Loftus & Palmer 1974 讀的是第三方網站存放的刊本掃描，Roediger & McDermott 1995 讀的是兩份大學課程頁副本；覆核核對過頁眉、頁碼與表格後收，canonical_url 改記 DOI，存放處寫進 limitations。",
+    "duplicate_sources": "do Amaral 等 2013（PMC3827335）、OpenStax College Physics §10.5、NSSDCA Moon Fact Sheet 與池中舊來源網址相同，本輪閱讀自動掛回原來源 id；Catania 2015 的 PMC 版改記池中 nature.com 網址、實際讀取網址記在 retrieval_url。",
+    "safety_scope": "G12 全片不得有離岸流的辨識、自救或何時下水的內容；NWS 頁的 How to Spot 一節與 MacMahan 文中游泳者段落都不取用。",
+    "self_run_test": "本工作階段自己跑的測試與計算不算來源；G11 的轉椅段沒有實測來源，只做定性說明，教材例題數字標明是假設值。",
+    "roles": "提案的 hook／turn 角色依本池欄位一律記為 segment，原角色寫在 notes。"
+  },
+  "counts": {
+    "research_proposals": 53,
+    "research_proposals_by_author": {
+      "F7": 27,
+      "F8": 26
+    },
+    "research_sources_read": 42,
+    "cores_added": 51,
+    "cores_rejected": 2,
+    "verdicts": {
+      "ADOPT_WITH_CHANGES": 41,
+      "ADOPT": 10,
+      "REJECT": 2
+    },
+    "adopted_but_unused": 6,
+    "not_added_records": 22,
+    "targets_examined": 8,
+    "targets_ready": [
+      "G21",
+      "G20",
+      "G22",
+      "G26",
+      "G12",
+      "G09",
+      "G11"
+    ],
+    "targets_reserve": [
+      "G30"
+    ],
+    "ready_long_themes_before_after": [
+      54,
+      61
+    ],
+    "pool_selected_before_after": [
+      3733,
+      3784
+    ],
+    "raw_records_before_after": [
+      4123,
+      4174
+    ],
+    "source_urls_before_after": [
+      5052,
+      5090
+    ],
+    "not_added_before_after": [
+      2332,
+      2354
+    ],
+    "themes_before_after": [
+      609,
+      609
+    ],
+    "distinct_decisions_added": 46
+  },
+  "core_id_mapping": {
+    "F7-001": "L56-001",
+    "F7-002": "L56-002",
+    "F7-003": "L56-003",
+    "F7-004": "L56-004",
+    "F7-005": "L56-005",
+    "F7-006": "L56-006",
+    "F7-007": "L56-007",
+    "F7-008": "L56-008",
+    "F7-009": "L56-009",
+    "F7-010": "L56-010",
+    "F7-011": "L56-011",
+    "F7-012": "L56-012",
+    "F7-013": "L56-013",
+    "F7-014": "L56-014",
+    "F7-015": "L56-015",
+    "F7-016": "L56-016",
+    "F7-017": "L56-017",
+    "F7-018": "L56-018",
+    "F7-019": "L56-019",
+    "F7-020": "L56-020",
+    "F7-021": "L56-021",
+    "F7-022": "H56-001",
+    "F7-023": "H56-002",
+    "F7-024": "H56-003",
+    "F7-025": "H56-004",
+    "F7-026": "H56-005",
+    "F7-027": "H56-006",
+    "F8-001": "S56-001",
+    "F8-002": "S56-002",
+    "F8-003": "S56-003",
+    "F8-004": "S56-004",
+    "F8-005": "S56-005",
+    "F8-006": "S56-006",
+    "F8-007": "S56-007",
+    "F8-008": "S56-008",
+    "F8-009": "S56-009",
+    "F8-010": "S56-010",
+    "F8-011": "S56-011",
+    "F8-012": "S56-012",
+    "F8-013": "S56-013",
+    "F8-014": "S56-014",
+    "F8-015": "S56-015",
+    "F8-016": "P56-001",
+    "F8-017": "P56-002",
+    "F8-018": "P56-003",
+    "F8-020": "P56-004",
+    "F8-021": "P56-005",
+    "F8-022": "P56-006",
+    "F8-023": "P56-007",
+    "F8-024": "P56-008",
+    "F8-026": "P56-009"
+  },
+  "rejected_core_mapping": {
+    "F8-019": "P56-NA001",
+    "F8-025": "P56-NA002"
+  },
+  "source_id_mapping": {
+    "F7-S001": [
+      "L56-S001"
+    ],
+    "F7-S002": [
+      "L56-S002"
+    ],
+    "F7-S003": [
+      "L56-S003"
+    ],
+    "F7-S004": [
+      "L56-S004"
+    ],
+    "F7-S005": [
+      "L56-S005"
+    ],
+    "F7-S006": [
+      "L56-S006"
+    ],
+    "F7-S007": [
+      "L56-S007"
+    ],
+    "F7-S008": [
+      "L56-S008"
+    ],
+    "F7-S009": [
+      "L56-S009"
+    ],
+    "F7-S010": [
+      "L56-S010"
+    ],
+    "F7-S011": [
+      "L56-S011"
+    ],
+    "F7-S012": [
+      "L56-S012"
+    ],
+    "F7-S013": [
+      "L56-S013"
+    ],
+    "F7-S014": [
+      "L56-S014"
+    ],
+    "F7-S015": [
+      "H56-S001"
+    ],
+    "F7-S016": [
+      "H56-S002"
+    ],
+    "F7-S017": [
+      "H56-S003"
+    ],
+    "F7-S018": [
+      "H56-S004"
+    ],
+    "F8-S001": [
+      "S56-S001"
+    ],
+    "F8-S002": [
+      "S56-S002"
+    ],
+    "F8-S003": [
+      "S56-S003"
+    ],
+    "F8-S004": [
+      "S56-S004"
+    ],
+    "F8-S005": [
+      "S56-S005"
+    ],
+    "F8-S006": [
+      "S56-S006"
+    ],
+    "F8-S007": [
+      "S56-S007"
+    ],
+    "F8-S008": [
+      "S56-S008"
+    ],
+    "F8-S009": [
+      "S56-S009"
+    ],
+    "F8-S010": [
+      "S56-S010"
+    ],
+    "F8-S011": [
+      "S56-S011"
+    ],
+    "F8-S012": [
+      "P56-S001"
+    ],
+    "F8-S013": [
+      "P56-S002"
+    ],
+    "F8-S014": [
+      "P56-S003"
+    ],
+    "F8-S015": [
+      "P56-S004"
+    ],
+    "F8-S016": [
+      "P56-S005"
+    ],
+    "F8-S017": [
+      "P56-S006"
+    ],
+    "F8-S018": [
+      "P56-S007"
+    ],
+    "F8-S019": [
+      "P56-S008"
+    ],
+    "F8-S020": [
+      "P56-S009"
+    ],
+    "F8-S021": [
+      "P56-S010"
+    ],
+    "F8-S022": [
+      "P56-S011"
+    ],
+    "F8-S023": [
+      "S56-S012"
+    ],
+    "F8-S024": [
+      "P56-S012"
+    ]
+  },
+  "not_added_mapping": {
+    "F7-NA001": "L56-NA001",
+    "F7-NA002": "L56-NA002",
+    "F7-NA003": "L56-NA003",
+    "F7-NA004": "L56-NA004",
+    "F7-NA005": "L56-NA005",
+    "F7-NA006": "L56-NA006",
+    "F7-NA007": "L56-NA007",
+    "F7-NA008": "L56-NA008",
+    "F7-NA009": "H56-NA001",
+    "F7-NA010": "L56-NA009",
+    "F8-019": "P56-NA001",
+    "F8-025": "P56-NA002",
+    "F8-NA001": "S56-NA001",
+    "F8-NA002": "S56-NA002",
+    "F8-NA003": "S56-NA003",
+    "F8-NA004": "S56-NA004",
+    "F8-NA005": "S56-NA005",
+    "F8-NA006": "S56-NA006",
+    "F8-NA007": "P56-NA003",
+    "F8-NA008": "P56-NA004",
+    "F8-NA009": "S56-NA007",
+    "F8-NA010": "P56-NA005"
+  },
+  "adopted_but_unused": [
+    "L56-006",
+    "L56-009",
+    "P56-006",
+    "P56-007",
+    "P56-008",
+    "P56-009"
+  ],
+  "source_fixes": [
+    {
+      "proposal_source": "F7-S011",
+      "change": "不另立來源：網址 https://pmc.ncbi.nlm.nih.gov/articles/PMC3827335/ 與池中 SRC-18dda7ff6a6b1fc1 完全相同（同一篇 do Amaral 等 2013 PLOS ONE）。以新的閱讀紀錄（全文、Europe PMC fullTextXML）掛回 SRC-18dda7ff6a6b1fc1。",
+      "why": "已比對 pool.json 的 url；舊紀錄只讀摘要、前言與討論節錄，本輪讀完全文。",
+      "requested_by": "V10"
+    },
+    {
+      "proposal_source": "F7-S003",
+      "change": "不另立來源：與池中 SRC-82049bd66cb1c0a8（nature.com/articles/ncomms9638）是同一篇論文的 PMC 版，掛回舊來源 id，新增一筆閱讀紀錄即可；本輪沒有新核心用它。",
+      "why": "作者已註明；L48-004 是唯一使用者。",
+      "requested_by": "V10"
+    },
+    {
+      "proposal_source": "F7-S006、F7-S007、F7-S008、F7-S012、F7-S013",
+      "change": "read_via 改記「WebFetch 線上讀取；覆核 V10 於 2026-11-11 再以 WebFetch 要求逐字引句重讀，核心所用數字均有逐字引句」；limitations 保留「本機沒有逐字全文快取（PMC 對 curl 回驗證頁、期刊站對 curl 回 403，未繞過）」。F7-S008、F7-S012、F7-S013 加註頁面超過 100,000 字元、後段未讀（S013 的討論後半）。author_cache 的筆記檔標為筆記，不當全文快取。",
+      "why": "WebFetch 回傳是模型轉述；本輪以要求逐字引句的方式補強，但仍不是可在本機逐句核對的原文。",
+      "requested_by": "V10"
+    },
+    {
+      "proposal_source": "F7-S016",
+      "change": "canonical_url 改記 https://doi.org/10.1016/S0022-5371(74)80011-3（Loftus & Palmer 1974, Journal of Verbal Learning and Verbal Behavior 13:585–589）；url 保留實際讀到的 https://www.demenzemedicinagenerale.net/images/mens-sana/AutomobileDestruction.pdf；limitations 寫明是第三方網站存放的刊本掃描（期刊頁眉、頁碼 585–589 與版權行俱在，OCR 有錯字）。",
+      "why": "可收：讀到的是出版的原文，數字逐表核對過；但存放處不是出版社、作者或機構典藏，要如實記錄，寫稿前再以作者或出版社的副本對一次表格。",
+      "requested_by": "V10"
+    },
+    {
+      "proposal_source": "F7-S018",
+      "change": "canonical_url 改記 https://doi.org/10.1037/0278-7393.21.4.803；url 保留課程頁 HTML；limitations 寫明兩份都是大學課程頁上的副本（西北大學 Revelle 課程頁 HTML、Hanover College 的刊本 PDF），覆核已對照兩份的關鍵數字一致；Table 2、Table 3 的數值取自內文敘述。",
+      "why": "可收：兩份獨立副本互相一致，其中一份是期刊排版的 PDF。",
+      "requested_by": "V10"
+    },
+    {
+      "proposal_source": "F7-S015、F7-S017",
+      "change": "不改：共同作者（Chabris）個人網站與作者實驗室（Castel，UCLA）網站上的刊本 PDF，屬作者自存副本。",
+      "why": "今日重抓，sha256 與作者快取相同。",
+      "requested_by": "V10"
+    },
+    {
+      "proposal_source": "F7-S004、F7-S009",
+      "change": "reading_scope 維持「只讀到摘要」；F7-S004 只掛在備用核心 L56-009，F7-S009 只掛在 L56-010 當一句背景。",
+      "why": "確認快取只有摘要。",
+      "requested_by": "V10"
+    },
+    {
+      "proposal_source": "F8-S013",
+      "change": "不另立來源；以 2026-11-11 的新閱讀紀錄（§10.5 全節，Example 10.14 能量段）掛回池中 SRC-b1d348badab37f20。",
+      "why": "網址逐字相同（openstax.org/books/college-physics-2e/pages/10-5-angular-momentum-and-its-conservation），是 P027–P030 的來源。舊核心已有的句子不重算。",
+      "requested_by": "V11"
+    },
+    {
+      "proposal_source": "F8-S005",
+      "change": "不另立來源；以 2026-11-11 的新閱讀紀錄（Bulk、Orbital parameters 與表下註解；頁面標示 Last Updated 11 January 2024）掛回池中 SRC-95980f5576415af8。",
+      "why": "網址逐字相同（nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html）。池中那筆只有舊查核包的指向、沒有實讀紀錄，這次是第一筆實讀。",
+      "requested_by": "V11"
+    },
+    {
+      "proposal_source": "F8-S001",
+      "change": "limitations 補：〈Myths and Misconceptions〉與〈Flow speed and behavior〉兩節句句對泳客而寫，本池只取水流的分類與驅動來源；〈How to Spot Rip Currents〉全節不取用。",
+      "why": "G12 不得成為救生教學；避免寫稿時從同一頁順手帶入安全判斷。",
+      "requested_by": "V11"
+    },
+    {
+      "proposal_source": "F8-S002",
+      "change": "limitations 補：摘要的峰值流速 40–60 cm/s 與正文 §4.4 的 0.4–0.65 m/s 不一致；離開率 19%、14%、16% 都排除只有沿岸流的日子；離開的浮標多被撈起重放；9.5 小時是假設指數型自相關與不回流的推算。",
+      "why": "覆核逐句核對時發現，寫稿要照條件引用。",
+      "requested_by": "V11"
+    },
+    {
+      "proposal_source": "F8-S010",
+      "change": "limitations 補：375 年那句字面寫「a solar eclipse」，依上下文指日全食；只能當「NASA 科普頁的說法」引用。",
+      "why": "兒童科普頁、沒有計算來源；不可當獨立統計。",
+      "requested_by": "V11"
+    },
+    {
+      "proposal_source": "F8-S015",
+      "change": "summary／limitations 補：全身角動量在 Axel 與 Flip 之間有顯著差異（p＝0.043），Axel 平均值最高；角動量已除以體重與身高。",
+      "why": "作者的摘要寫成六種都沒有顯著差異。",
+      "requested_by": "V11"
+    },
+    {
+      "proposal_source": "F8-S016",
+      "change": "title 保留；limitations 改寫為「2007 年 9 月發射前的計畫敘述（未來式），不是飛行後量測」。",
+      "why": "派工說明裡把這份文件記成另一個任務的名字；實際讀到的是曙光號（Dawn）發射資料袋，內容與 P56-004 相符。",
+      "requested_by": "V11"
+    },
+    {
+      "proposal_source": "F8-S018",
+      "change": "limitations 補：消旋測試用工程測試機（ETU），飛行件沒做；戶外四次只有一次落在 3 rpm 內；「Total Mass of Tip Weight 154.15 g」未說明單顆或合計；纜線每公尺 21.9 公克。",
+      "why": "作者把配重寫成「兩顆合計」、把測試寫成「多次都停不準」，都比原文多說了。",
+      "requested_by": "V11"
+    },
+    {
+      "proposal_source": "F8-S022",
+      "change": "limitations 補：30 phr DOP 的 DMA Tg 為 61.31°C，仍高於室溫；純 PVC 伸長率 25.0±15.6%；phr 分級沒有引文。",
+      "why": "避免寫稿時說成玻璃轉移降到室溫以下。",
+      "requested_by": "V11"
+    },
+    {
+      "proposal_source": "F8-S023",
+      "change": "F8-025 退回後沒有核心引用這筆來源；不進來源庫，只留在未收紀錄。",
+      "why": "單位誤植、配方讀不出來。",
+      "requested_by": "V11"
+    },
+    {
+      "proposal_source": "F8-S024",
+      "change": "limitations 補：實心試片每次壓 0.5 毫米；孔隙率在方法（60–80%）與 Table 2（25–40%）前後不一；摘要把兩個時間常數分屬分子與結構兩種過程。",
+      "why": "覆核逐句核對時發現。",
+      "requested_by": "V11"
+    },
+    {
+      "proposal_source": "F8-S012、F8-S014",
+      "change": "F8-019 退回後，F8-S012 仍由 P56-001、P56-002 引用；F8-S014（UCSB 示範頁）只有定性說明，留作轉椅示範確有其事的出處，不支撐任何數字。",
+      "why": "來源角色說清楚。",
+      "requested_by": "V11"
+    }
+  ],
+  "open_data_issues": [
+    {
+      "id": "C2017-legacy-source",
+      "core": "C2017",
+      "finding": "C2017（把誰告訴自己的記錯）掛著 Deutsch 1970 音高序列記憶論文，來自第二十二批把 R22005 併入 C2017 的編輯合併；它只支持 R22005 的窄主張。",
+      "action": "與 E7006 同一種情形（tasks/open/2026-11-11-stw-pool-e7006-source-ref.md），本輪不改；G26 已把 C2017 移出題案。",
+      "status": "open"
+    }
+  ],
+  "batches": [
+    "batches/wave56-life.json",
+    "batches/wave56-human.json",
+    "batches/wave56-earth.json",
+    "batches/wave56-physics.json"
+  ],
+  "checkpoint": {
+    "file": "checkpoint-3733.json",
+    "note": "第六輪開工前的素材池快照（3,733 個入選、4,123 筆原題）。"
+  },
+  "core_reviews": [
+    {
+      "proposal_id": "L56-001",
+      "reviewer": "V10",
+      "question": "電鰻一放電，魚為什麼像雕像一樣定住，而不是亂抖或被電死？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f7src/eel_2019_frontiers.txt〈Eel High-Voltage EOD’s Temporarily Immobilize Prey〉全節、Fig 2A–B 圖說；今日以 curl 重抓 Europe PMC REST fullTextXML，sha256 與作者快取完全相同（PMC6646469、PMC7826911）",
+      "reopen_result": "3–4 ms 內自主動作停止、C 形逃跑中途也被凍住、撲空停電後多數魚立刻續逃（usually not killed or disabled）、洋菜膠隔板、破壞腦部的魚掛測力計、張力約 3 ms 升起且接近 Grass SD9 直接刺激的全身最大張力、兩側同時收縮是 Presumably：逐句都在原文。",
+      "changes_applied": {
+        "scope": "限 Catania 實驗室水族箱裡的少數圈養電鰻與金魚、螯蝦等獵物。依據是原作者 2019 年的開放全文回顧（Frontiers in Integrative Neuroscience）與 2021 年 Toxins 一文，不是 Science 2014、Current Biology 2015 原論文；各實驗的隻數、試驗次數與 p 值這兩文沒有給，片中說「作者回顧」，不補數字。不做接觸或測試教學，不比插座電壓。「兩側同時收縮所以不動」是作者的推測（presumably）。"
+      },
+      "duplicate_of": null,
+      "reason": "答案照原稿，只換範圍說明。B2301 已有「非自主收縮」的結論，本核心只算 1.5 條（定格現象與停電後續逃 1、測力計量到接近最大張力 0.5），不是作者的 2 條。",
+      "overlaps": [
+        {
+          "existing_id": "B2301",
+          "note": "B2301 一句結論（作用於運動神經引發非自主收縮）；本核心補現象與量測，不重算結論。"
+        },
+        {
+          "existing_id": "L48-NA005",
+          "note": "見 notes：重收條件的裁定。"
+        }
+      ],
+      "final_id": "L56-001",
+      "batch": "batches/wave56-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L56-002",
+      "reviewer": "V10",
+      "question": "怎麼知道電鰻電到的是獵物的神經，而不是直接電到肌肉？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "同上〈Eels Cause Muscle Tension by Remotely Activating Prey Motor Neurons〉第 1 段；f7src/eel_2021_toxins.txt Fig 1e 圖說",
+      "reopen_result": "箭毒（curare）對 sham 注射：前者收縮消失、後者照常；double-pithing 後 latency 與 tension magnitude 無差異；結論「remotely activating the peripheral branches of motor neurons」：都在原文。隻數與統計原文只寫 see Catania 2014。",
+      "changes_applied": {
+        "scope": "限 Catania 實驗室水族箱裡的少數圈養電鰻與金魚、螯蝦等獵物。依據是原作者 2019 年的開放全文回顧（Frontiers in Integrative Neuroscience）與 2021 年 Toxins 一文，不是 Science 2014、Current Biology 2015 原論文；各實驗的隻數、試驗次數與 p 值這兩文沒有給，片中說「作者回顧」，不補數字。不做接觸或測試教學，不比插座電壓。"
+      },
+      "duplicate_of": null,
+      "reason": "答案照原稿，範圍照本覆核。B2301 已有「運動神經」結論，本核心只算 1 條（箭毒對照加脊髓破壞這一組對照設計），不是 1.5 條。",
+      "overlaps": [
+        {
+          "existing_id": "B2301",
+          "note": "結論相同，新增的是對照設計；不重算結論。"
+        }
+      ],
+      "final_id": "L56-002",
+      "batch": "batches/wave56-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L56-003",
+      "reviewer": "V10",
+      "question": "電鰻放一下電，獵物的肌肉就跟著抽一下嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "同上同節第 2–4 段、Fig 2D–F 圖說；Toxins 正文 Fig 1c–e 段",
+      "reopen_result": "反覆餵蚯蚓引出連發、部分電鰻疲勞使脈衝變慢變不規則、張力線出現個別 twitch、並排兩條魚 nearly identical、each high-voltage EOD typically results in an action potential in the motor neurons、高頻融合低頻分開、TASER 與 TENS 的類比：都在原文。",
+      "changes_applied": {
+        "scope": "限 Catania 實驗室水族箱裡的少數圈養電鰻與金魚、螯蝦等獵物。依據是原作者 2019 年的開放全文回顧（Frontiers in Integrative Neuroscience）與 2021 年 Toxins 一文，不是 Science 2014、Current Biology 2015 原論文；各實驗的隻數、試驗次數與 p 值這兩文沒有給，片中說「作者回顧」，不補數字。不做接觸或測試教學，不比插座電壓。「遙控」「像動作電位穿過水」是作者的比喻；一對一是由張力紀錄推論，沒有直接記錄獵物神經。"
+      },
+      "duplicate_of": null,
+      "reason": "答案照原稿，範圍照本覆核。與 L56-002 同一套裝置，算 1 條（一個脈衝對一次抽動）。",
+      "overlaps": [
+        {
+          "existing_id": "B2301",
+          "note": "同一機制的進一步結果，不重算。"
+        }
+      ],
+      "final_id": "L56-003",
+      "batch": "batches/wave56-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L56-004",
+      "reviewer": "V10",
+      "question": "同一種脈衝，電鰻怎麼分出弱的探路和強的攻擊？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "同上〈Electric Eels Have Two Forms of EOD〉兩段、Fig 1A 圖說、〈Measuring Field Strength…〉cannot increase the magnitude 一句；Toxins「fixed high-voltage output that cannot be modulated in amplitude」",
+      "reopen_result": "兩種放電同形（monophasic、head-positive）、弱的興奮時 10–20 Hz、強的 up to 500 Hz、弱放電時動作電位送到每一個 electrocyte 但多數低於門檻、強放電靠高頻的 temporal summation、每串高壓連發前必有一個弱 EOD、強脈衝無法調大：都在原文。脈衝寬度回顧寫 roughly 1 ms，Toxins 一文寫法不同，答案不可寫死「約 1 毫秒」。門檻機制是回顧轉述 Bennett 1968、1970，那兩篇沒人讀。",
+      "changes_applied": {
+        "answer_target": "電鰻有兩種放電，波形相同，都是頭端為正的單相短脈衝（一兩毫秒），只差強度與頻率：弱的平時很慢，興奮找食物時約每秒 10–20 次；強的一串可到每秒 500 次。作者回顧引早年的生理研究說明做法：發弱脈衝時，神經其實把動作電位送到全身每一個發電細胞，但多數細胞收到的興奮不到門檻，只有一小群低門檻的細胞放電；要發強脈衝，就用很高的頻率連續送，興奮在時間上疊加，高門檻的細胞也全部啟動。所以每一串高壓連發前面，必然先有一個弱脈衝；而且強脈衝時每個細胞都已出力，電鰻沒辦法再把單一脈衝調大。",
+        "scope": "限 Catania 實驗室水族箱裡的少數圈養電鰻與金魚、螯蝦等獵物。依據是原作者 2019 年的開放全文回顧（Frontiers in Integrative Neuroscience）與 2021 年 Toxins 一文，不是 Science 2014、Current Biology 2015 原論文；各實驗的隻數、試驗次數與 p 值這兩文沒有給，片中說「作者回顧」，不補數字。不做接觸或測試教學，不比插座電壓。發電細胞門檻的機制是回顧引 Bennett 1968、1970 的結論，那兩篇原文沒讀，片中只講一兩句、不展開離子通道。"
+      },
+      "duplicate_of": null,
+      "reason": "機制是二手轉述，只算 1.5 條（兩種輸出的頻率 0.5、低門檻子群加時間疊加與輸出不可調 1）。它不滿足 L48-NA006「有新的細胞同步干預」的條件，所以不是 B2300 的重收，而是另一個問題（同一套線路怎麼出兩種強度）；B2300 從最終核心移出。",
+      "overlaps": [
+        {
+          "existing_id": "B2300",
+          "note": "B2300 問「許多細胞怎麼同時出手」，只掛新聞稿；本核心答的是兩種強度，不同答案，B2300 不再用。"
+        },
+        {
+          "existing_id": "L48-NA006",
+          "note": "重收條件（新的細胞同步干預）未滿足；本核心不以重收名義進來。"
+        }
+      ],
+      "final_id": "L56-004",
+      "batch": "batches/wave56-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L56-005",
+      "reviewer": "V10",
+      "question": "怎麼證明電鰻那兩下短短的放電，是在逼藏著的獵物自己露出位置？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "同上〈Eels Emit High-Voltage Doublets to Induce Movement in Hidden Prey〉全節、Fig 4A–E 圖說",
+      "reopen_result": "Bauer 1979（遺作）引文：角落停住、兩個高壓脈衝間隔 about 2 ms；雙脈衝引出 massive whole-body twitch；20–40 ms 後整串高壓與吸食；魚封塑膠袋、接 SD9 刺激器、由資料擷取單元監看放電決定是否觸發；沒觸發就不攻擊、never gave off doublets followed by a full volley in the absence of fish twitch；一觸發就整串攻擊；對照排除視覺與導線電訊號（細節寫 Catania 2014）：都在原文。試驗次數原文沒有。",
+      "changes_applied": {
+        "scope": "限 Catania 實驗室水族箱裡的少數圈養電鰻與金魚、螯蝦等獵物。依據是原作者 2019 年的開放全文回顧（Frontiers in Integrative Neuroscience）與 2021 年 Toxins 一文，不是 Science 2014、Current Biology 2015 原論文；各實驗的隻數、試驗次數與 p 值這兩文沒有給，片中說「作者回顧」，不補數字。不做接觸或測試教學，不比插座電壓。塑膠袋裡的魚不導電，電鰻撲過去後沒有完成最後的吸食（見 L48-004）；雙脈衝在野外用得多頻繁沒有資料；對照實驗的內容回顧只有一句。"
+      },
+      "duplicate_of": null,
+      "reason": "答案照原稿，範圍照本覆核。B2303 已有「短放電誘發抽動再定位」的結論，本核心算 2 條（20–40 毫秒的時序 0.5、塑膠袋加刺激器的設計與兩種結果 1.5），不是 2.5 條。",
+      "overlaps": [
+        {
+          "existing_id": "B2303",
+          "note": "結論相同；新增的是由實驗者決定抽不抽的干預。"
+        },
+        {
+          "existing_id": "L48-NA005",
+          "note": "重收條件裁定見 notes：實質滿足（有既有答案沒有的干預控制、可逐句核對的全文），字面未滿足（不是 2014 原論文）。"
+        },
+        {
+          "existing_id": "L48-004",
+          "note": "L48-004 用的是同一套塑膠袋裝置的下一步（導電棒）；兩者分章，不重算裝置。"
+        }
+      ],
+      "final_id": "L56-005",
+      "batch": "batches/wave56-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L56-006",
+      "reviewer": "V10",
+      "question": "電鰻攻擊連發的頭兩下，為什麼靠得特別近？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "同上 Fig 3 圖說與上下兩段；Toxins「doublets of pulses produced disproportionately strong tension responses」",
+      "reopen_result": "三條電鰻 50、約 75、115 cm，每條都是第一個間隔最短（significantly shorter）；doublet 使肌肉張力上升最快（引 Celichowski 等）；「raises the possibility」與作者自己的替代解釋（seems unlikely）：都在原文。",
+      "changes_applied": {
+        "scope": "限 Catania 實驗室水族箱裡的少數圈養電鰻與金魚、螯蝦等獵物。依據是原作者 2019 年的開放全文回顧（Frontiers in Integrative Neuroscience）與 2021 年 Toxins 一文，不是 Science 2014、Current Biology 2015 原論文；各實驗的隻數、試驗次數與 p 值這兩文沒有給，片中說「作者回顧」，不補數字。不做接觸或測試教學，不比插座電壓。「為了最快繃緊獵物」是作者的假說，有他自己列出的替代解釋；只有三條電鰻。"
+      },
+      "duplicate_of": null,
+      "reason": "可收但不進最終題案：是假說，算 1 條，留在批次備用。",
+      "overlaps": [
+        {
+          "existing_id": "B2301",
+          "note": "同一機制的延伸假說。"
+        }
+      ],
+      "final_id": "L56-006",
+      "batch": "batches/wave56-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L56-007",
+      "reviewer": "V10",
+      "question": "獵物已經咬在嘴裡，電量又調不大，彎成一圈憑什麼讓牠被電得更重？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "同上〈The Dipole Attack〉〈Measuring Field Strength During the Eel’s Curling Behavior〉、Fig 7 圖說；Toxins Fig 2 段",
+      "reopen_result": "頭正尾負的偶極、伸直時尾極 subtract、彎身後 additive、理論上 double；T 形塑膠電極架、兩圈銅線相距 1 cm、橫桿防吞、手動抖導線引出彎身；data from numerous eels、often more than doubled；輸出不能調大、像把手電筒固定的功率聚到小範圍；超過兩倍的原因是 likely（尾端幾乎貼到、頭端隔著頭與內臟）：都在原文。倍數的分布與隻數兩文都沒有。",
+      "changes_applied": {
+        "scope": "限 Catania 實驗室水族箱裡的少數圈養電鰻與金魚、螯蝦等獵物。依據是原作者 2019 年的開放全文回顧（Frontiers in Integrative Neuroscience）與 2021 年 Toxins 一文，不是 Science 2014、Current Biology 2015 原論文；各實驗的隻數、試驗次數與 p 值這兩文沒有給，片中說「作者回顧」，不補數字。不做接觸或測試教學，不比插座電壓。量的是獵物體內相距 1 公分兩點間的電位差；「超過兩倍」是「常常」，不是每次；超過兩倍的原因是作者的推測（likely）。幼鰻吃什麼都常彎身，成鰻只在獵物難纏或咬不穩時彎。"
+      },
+      "duplicate_of": null,
+      "reason": "答案照原稿，範圍照本覆核。B2302 已有「幾何關係提高場強」，L56-004 已有「輸出不可調」，本核心只算 1.5 條（T 形電極桿的量法 0.5、常超過兩倍且是重新擺放不是加大輸出 1），不是 2.5 條。",
+      "overlaps": [
+        {
+          "existing_id": "B2302",
+          "note": "結論相同；新增量測方法與結果。"
+        },
+        {
+          "existing_id": "L48-NA007",
+          "note": "重收條件裁定見 notes。"
+        }
+      ],
+      "final_id": "L56-007",
+      "batch": "batches/wave56-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L56-008",
+      "reviewer": "V10",
+      "question": "都咬住了，電鰻為什麼還要彎著身體一直電？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "同上 Fig 8 圖說、〈The Induction of Involuntary Fatigue〉全節、Fig 9 圖說；Toxins 正文（roughly 100 Hz、cannot manipulate prey without releasing their grip、trigger … is prey movement、nearly a minute、took effect faster）",
+      "reopen_result": "螯蝦的逃跑反應沒被取消、五輪各 0.5 秒 100 Hz（1 ms 脈衝）後整魚張力 dropped drastically、螯蝦尾要十輪、30 秒後 substantial recovery、彎身後半秒內調整吞食、獵物一動就再彎、比箭毒對照生效更快：都在原文。持續時間兩文不一致：回顧寫 for over a minute，Toxins 寫 for nearly a minute，原稿只取「將近一分鐘」。",
+      "changes_applied": {
+        "answer_target": "有些獵物沒那麼容易制伏：大電鰻第一擊有時攔不住大螯蝦，牠照樣做出正確方向的逃跑動作。電鰻咬住後不放口就沒辦法調整獵物的方向，一鬆口獵物又可能跑掉。彎身之後牠以每秒約 100 次連續放電，而每個脈衝都讓獵物的肌肉收縮一次，這正是實驗室研究肌肉疲勞的做法。Catania 用刺激器模擬：五輪各半秒、每秒 100 次的刺激後，整條魚的收縮力大幅下降；螯蝦尾部要十輪才降到類似程度；休息 30 秒後又明顯恢復。電鰻彎身電完，半秒內就鬆口調頭吞下，所以只需要讓肌肉短暫失靈。觸發彎身的是獵物的動作：一動就再彎再電，不動才鬆開；對大螯蝦可以連電一分鐘上下，直到螯和腳完全鬆軟。作者把它比作不用毒液的神經肌肉阻斷，而且比箭毒生效更快。",
+        "scope": "限 Catania 實驗室水族箱裡的少數圈養電鰻與金魚、螯蝦等獵物。依據是原作者 2019 年的開放全文回顧（Frontiers in Integrative Neuroscience）與 2021 年 Toxins 一文，不是 Science 2014、Current Biology 2015 原論文；各實驗的隻數、試驗次數與 p 值這兩文沒有給，片中說「作者回顧」，不補數字。不做接觸或測試教學，不比插座電壓。疲勞是用刺激器（或由電鰻脈衝觸發的刺激器）在另一缸的肌肉標本上量的，不是量被咬住那隻獵物；「像毒液」是功能上的類比。電鰻能靠嘴感覺獵物還有沒有力，是作者的推想，沒有測。對螯蝦持續多久，作者兩篇文章一說「超過一分鐘」、一說「將近一分鐘」。"
+      },
+      "duplicate_of": null,
+      "reason": "只改持續時間的說法。算 2 條（刺激器量到的疲勞與恢復 1、由獵物動作觸發且不放口無法調整 1），不是 2.5 條。",
+      "overlaps": [
+        {
+          "existing_id": "B2302",
+          "note": "B2302 只到「提高場強」；疲勞是新答案。"
+        }
+      ],
+      "final_id": "L56-008",
+      "batch": "batches/wave56-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L56-009",
+      "reviewer": "V10",
+      "question": "金屬網一靠近，電鰻為什麼不逃，反而沿著網柄跳出水面？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "同上〈Introduction〉洪堡段、〈The Leaping Attack〉〈Measuring the Potential of Leaping Eels〉、Fig 10 與 Fig 12 圖說；f7src/eel_2016_pnas.xml（只有摘要）",
+      "reopen_result": "金屬框網子、由後退轉為攻擊、下巴貼柄上竄並放長串高壓、兩片金屬板加電壓計、電位隨高度上升、等效電路與回水路徑電阻、Current peaks were approximately 43 milliamps、手臂電阻 approximately 2,100 ohms、洪堡的約 30 匹馬與騾、5 分鐘內死兩匹、撈到五條：都在回顧原文。洪堡記述沒有寫躍出水面，原文自己說明。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "可收但不進最終題案：是防禦不是捕食，原論文三篇都只有摘要。留在批次備用，算 2 條；domain 掛「動物捕食」以外請匯入時另定。",
+      "overlaps": [],
+      "final_id": "L56-009",
+      "batch": "batches/wave56-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L56-010",
+      "reviewer": "V10",
+      "question": "清潔魚一天要接多少客人？在海裡怎麼看得出牠偷咬了一口？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "PMC10024986（Bshary & Noë 2023）今日 WebFetch 線上重讀並要求逐字引句；f7src/cf_2012_unfamiliar.txt Discussion（本機全文）；f7src/cf_2003_mucus.txt（摘要）",
+      "reopen_result": "線上逐字確認：「individual cleaners have between 800 and 3000 interactions per day」（引文 67–69）；「body jolts of clients in response to cleaner fish mouth contact are reliable indications of mucus feeding」；「positive correlation between the mucus quality and client jolt frequency」「parasite load correlates negatively with client jolt frequency」。本機全文確認「approx. 2300 interactions per day」。2003 年偏好實驗只有摘要：ate more mucus and monogeneans than gnathiids，沒有數字。",
+      "changes_applied": {
+        "answer_target": "清潔魚的生意量很大：2023 年一篇回顧整理的田野資料是一隻每天 800 到 3,000 次互動。牠們其實偏好客戶身上的黏液勝過最常見的寄生蟲：2003 年的實驗把鸚哥魚黏液、兩種寄生蟲和麵糊對照放在板子上，牠們吃黏液和單殖吸蟲比吃囓蝨多（只讀到摘要，沒有數字）。在礁石上沒辦法看清牠嘴裡是什麼，研究者看的是客戶：被清潔魚的嘴碰到時，客戶身體突然一抖。回顧說這種抖動是吃黏液的可靠指標，黏液品質越好的客戶抖得越多，寄生蟲多的客戶抖得少。",
+        "scope": "限裂唇魚（Labroides dimidiatus，藍帶清潔魚）；水族箱裡用壓克力板當模型客戶、蝦泥代替偏好的黏液、魚糧代替寄生蟲，不是真客戶實驗。不替魚加道德動機。互動次數與抖動指標出自回顧引用的田野研究，原文未讀；偏好實驗只讀到摘要。另一篇論文引的「約 2,300 次」出處不同，片中只用 800–3,000 這一個說法。"
+      },
+      "duplicate_of": null,
+      "reason": "數字線上逐字確認。刪掉並列的第二個互動次數（兩個出處不混講）。偏好黏液 B2308 已有，本核心算 1.5 條（每天互動次數 0.5、抖動當偷咬指標與它隨黏液、寄生蟲的變化 1）。",
+      "overlaps": [
+        {
+          "existing_id": "B2308",
+          "note": "偏好黏液已有，不重算。"
+        },
+        {
+          "existing_id": "F7-NA005",
+          "note": "偏好實驗的數字仍缺。"
+        }
+      ],
+      "final_id": "L56-010",
+      "batch": "batches/wave56-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L56-011",
+      "reviewer": "V10",
+      "question": "客戶轉頭就走，或回頭追著打，哪一招能讓清潔魚改吃牠不愛吃的？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "PMC1626376（Bshary & Grutter 2005）今日 WebFetch 線上重讀兩次並要求逐字引句；f7src/cf_2005_punish.txt（摘要）",
+      "reopen_result": "線上逐字確認：24 adult cleaner fish；seven prawn items and seven flake items；all 24 cleaners ate more prawn items than flake items；On average, 91% of the first seven items eaten were prawn items；對照組 100% 對起初 92%（n=8，p=0.032）；client flees 板子立刻抽走、60 s 後再給（p=0.016）；client chases 追 about 1–2 s、without touching（p=0.008）；six learning trials separated by 120 min；最後測驗 once、scored the first seven items；first experimental evidence；we do not know how our experimental punishment compares in magnitude。前三次學習試驗是 2 蝦 12 魚糧、後三次才是 7:7，原稿沒寫，不影響結論。作者筆記與原頁一致。",
+      "changes_applied": {
+        "scope": "限裂唇魚（Labroides dimidiatus，藍帶清潔魚）；水族箱裡用壓克力板當模型客戶、蝦泥代替偏好的黏液、魚糧代替寄生蟲，不是真客戶實驗。不替魚加道德動機。最後測驗每組 8 隻、各一次；板子追趕的力道與真客戶相比，作者說不知道；兩組的中位數只在圖上。來源頁是 PMC 上的全文，本機沒有逐字快取（PMC 對 curl 回驗證頁），數字以本次線上重讀為準。"
+      },
+      "duplicate_of": null,
+      "reason": "答案照原稿，範圍照本覆核。B2308 已有「客戶離開或追趕」，本核心算 2 條（三組設計與 91% 偏好 1、兩種處理都讓牠少吃蝦而對照組升到 100% 1），不是 2.5 條。L40-NA005 的重收條件（既有機制未涵蓋的受控比較、可讀原文）滿足。",
+      "overlaps": [
+        {
+          "existing_id": "B2308",
+          "note": "結論已有；新增的是把兩招分開測的實驗。"
+        },
+        {
+          "existing_id": "L40-NA005",
+          "note": "重收條件滿足。"
+        }
+      ],
+      "final_id": "L56-011",
+      "batch": "batches/wave56-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L56-012",
+      "reviewer": "V10",
+      "question": "掠食性大魚也來排隊清潔，為什麼反而幾乎不會被偷咬？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "PMC10024986 今日 WebFetch 線上重讀兩次並要求逐字引句（頁面 128,207 字元，只讀到前 100,000，正文在內）",
+      "reopen_result": "線上逐字確認：piscivorous clients「characterized by the virtual absence of client jolts and high frequency of tactile stimulation」；「they touch the client with pectoral and particularly pelvic fins」「providing a kind of massage that reduces the clients' cortisol levels」；「to reconcile after the client chased the cleaner」；「residents are much more likely than visitors to respond to mucus bites by chasing the cleaner」；「Subsequently, cleaners provide a high service quality in the next interaction with the same client」；「during hundreds of observations … R.B. has never observed a predator attempting to eat a cleaner during an interaction」。原稿「在客人不擠的時候，清潔魚會讓過路客戶先」對不上：原文只說 cleaners can prioritize visitors over residents，條件寫的是 market conditions。",
+      "changes_applied": {
+        "answer_target": "2023 年一篇回顧整理的田野觀察：掠食性客戶幾乎不出現被咬的抖動，還得到特別多的「按摩」，清潔魚用胸鰭、尤其腹鰭在客戶身上碰觸；回顧引的研究說這會降低客戶的壓力荷爾蒙皮質醇。清潔魚也拿它來安撫剛追過自己的客戶。對不吃牠的客戶就看對方手上的牌：只有一站可用的定居客戶比過路客戶更常追打，被追之後，清潔魚對這位客戶下一次的服務品質會變好；過路客戶服務差或被晾著就換站，清潔魚可以讓過路客戶優先。作者之一說，他在數百次野外觀察裡沒看過掠食者在清潔時想吃清潔魚。",
+        "scope": "限裂唇魚（Labroides dimidiatus，藍帶清潔魚）；這一題是田野觀察的回顧，沒有實驗設計與數字，各項出自它引用的田野研究，原文未讀。不替魚加道德動機。「服務品質」在田野裡以抖動多寡衡量。來源只有線上重讀，本機沒有逐字快取。"
+      },
+      "duplicate_of": null,
+      "reason": "句子都在原頁，可收；改掉對不上的「客人不擠的時候」。全是回顧轉述、沒有數字，只算 1.5 條（掠食者幾乎不被咬且得到按摩 1、被追後下次服務變好與過路客戶優先 0.5）。要縮片長先刪這一章。",
+      "overlaps": [
+        {
+          "existing_id": "B2308",
+          "note": "定居與過路客戶的反應與 L56-011 共用，不重算。"
+        }
+      ],
+      "final_id": "L56-012",
+      "batch": "batches/wave56-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L56-013",
+      "reviewer": "V10",
+      "question": "兩隻清潔魚一起服務，一隻偷吃就害兩隻都沒得吃，誰來管？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f7src/cf_2012_unfamiliar.txt 全文（Methods、Results (i)、Discussion）；今日以 curl 重抓 Europe PMC REST fullTextXML，sha256 與作者快取完全相同（PMC3350686）；PMC3223671 今日線上重讀（引 2010 年研究的兩句）",
+      "reopen_result": "本機全文確認：任一隻吃蝦後實驗者立刻收走板子；隔板（temporary transparent partition，彼此看得到、仍吃同一塊板子）時母魚的魚糧對蝦比例較低（χ2=4.1，p=0.04）；罰得越兇、1 分鐘後第二次呈現時母魚越不再偷吃（χ2=3.92，p=0.048）；下一回合（隔 30–60 分鐘）無效（p=0.53）；母魚不罰公魚（引 [23]）。錯處：原稿寫「用 24 隻母魚測這個處罰有沒有用」。隔板處理只在 2011 年做，那一年是 12 對；24 是兩年合計的熟悉配對數。原稿「追咬」原文是 aggressively chasing。",
+      "changes_applied": {
+        "answer_target": "清潔魚常一公一母一起清同一位客戶，公魚比較大、佔上風。實驗裡兩隻共用一塊板子，只要其中一隻吃了蝦，板子就整塊被收走，另一隻也沒得吃。板子一收，公魚會追趕偷吃的母魚；母魚不會反過來罰公魚。Raihani 等人 2011 年用 12 對魚測這個處罰有沒有用：在兩隻魚中間插一片透明隔板，彼此看得到、還是吃同一塊板子，但公魚追不到；這時母魚吃魚糧相對吃蝦的比例變低，也就是更常偷吃（p=0.04）。公魚追得越兇，1 分鐘後第二塊板子上母魚越不會再吃蝦（p=0.048）。但隔 30 到 60 分鐘的下一回合就看不到這個效果了（p=0.53）：處罰管用，可是很短命。作者指出公魚罰母魚是為了自己：母魚守規矩，板子留得久，公魚吃得多。",
+        "scope": "限裂唇魚（Labroides dimidiatus，藍帶清潔魚）；水族箱裡用壓克力板當模型客戶、蝦泥代替偏好的黏液、魚糧代替寄生蟲，不是真客戶實驗。不替魚加道德動機。Lizard Island 一地、兩年各 12 對，隔板處理只在 2011 年；2010 年 Science 的原始實驗沒讀到全文。「為了自己多吃」是作者依前一篇研究的解釋。"
+      },
+      "duplicate_of": null,
+      "reason": "改掉樣本數（24 隻母魚 → 2011 年的 12 對）與「追咬」。算 2 條（一隻偷吃兩隻都沒得吃、公魚追母魚而反之不然 1；隔板後偷吃變多、罰得越兇 1 分鐘後越少再犯、半小時後無效 1），不是 2.5 條。",
+      "overlaps": [
+        {
+          "existing_id": "B2308",
+          "note": "B2308 只講客戶的控制；伴侶處罰是新答案。"
+        },
+        {
+          "existing_id": "F7-NA006",
+          "note": "2010 年原始實驗仍未讀。"
+        }
+      ],
+      "final_id": "L56-013",
+      "batch": "batches/wave56-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L56-014",
+      "reviewer": "V10",
+      "question": "公清潔魚每次都罰得一樣重嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "PMC3223671（Raihani 等 2012）今日 WebFetch 線上重讀並要求逐字引句；f7src/cf_2012_stakes.txt（摘要）；f7src/cf_2012_unfamiliar.txt（先雌後雄、陌生公魚）",
+      "reopen_result": "線上逐字確認：High value plates (15 × 10 cm) 八塊魚糧、兩塊蝦；Low value plates (10 × 5 cm) 四塊魚糧（蝦同為兩塊）；12 對收集、分析 11；56 trials over 5 days；實驗二 11 隻母魚、15 隻公魚、n=21；兩次呈現相隔 60 s；F1,9=10.4，p=0.01；LR=14.9，p<0.001；χ2=8.70，n=108，p=0.003；females may change sex to become a reproductive competitor if they approach or exceed the male partner in size。本機全文確認：母魚對陌生公魚吃較高比例魚糧（p=0.02）、陌生公魚更兇（p=0.002）。作者筆記與原頁一致。",
+      "changes_applied": {
+        "scope": "限裂唇魚（Labroides dimidiatus，藍帶清潔魚）；水族箱裡用壓克力板當模型客戶、蝦泥代替偏好的黏液、魚糧代替寄生蟲，不是真客戶實驗。不替魚加道德動機。實驗一只有 11 對；「體型接近威脅公魚地位」「熟悉伴侶偷吃的代價較低」是作者的解釋。高低價板的數字以本次線上重讀為準，本機沒有逐字快取。"
+      },
+      "duplicate_of": null,
+      "reason": "答案照原稿，範圍照本覆核。算 1.5 條（高價板且體型相近時罰最重、越重越少再犯 1；先雌後雄的理由與對陌生公魚更合作 0.5），不是 2 條。要縮片長時第二個刪。",
+      "overlaps": [
+        {
+          "existing_id": "B2308",
+          "note": "無重疊。"
+        }
+      ],
+      "final_id": "L56-014",
+      "batch": "batches/wave56-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L56-015",
+      "reviewer": "V10",
+      "question": "一隻凍住的林蛙，身上到底什麼停了、冰又長在哪裡？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f7src/frog_2021_storey_mito.txt §1、§2；f7src/frog_2015_costanzo.txt Results〈Responses to Freezing〉；今日以 curl 重抓 Europe PMC REST fullTextXML，sha256 與作者快取完全相同（PMC8067143、PMC4331536）",
+      "reopen_result": "no heartbeat, breathing, blood circulation, muscle movement, or detectable brain activity；up to 65–70% of total body water converted into extracellular ice, much of the water drawn out of cells；結冰多由皮膚接觸環境冰引發（體液冰點約 −2°C）、often requiring 15–20 h to reach maximum；解剖所見（皮下、體腔、後腿肌纖維間的冰，肌肉 desiccated and ruddy，肝 shrunken）：都在原文。",
+      "changes_applied": {
+        "scope": "限林蛙（Rana sylvatica）成體的實驗室受控慢速結凍或所述的田野追蹤；不外推到所有蛙、任意降溫或人體冷凍。65–70%、15–20 小時是 2021 年回顧引用舊研究的數字，原量測沒讀；解剖描述來自阿拉斯加族群凍到 −8、−16°C 的個體。"
+      },
+      "duplicate_of": null,
+      "reason": "答案照原稿，範圍照本覆核。算 2 條（停掉的功能 0.5、65–70% 的水成細胞外冰且由細胞抽出與 15–20 小時 1、解剖看到冰的位置 0.5），不是 2.5 條。",
+      "overlaps": [
+        {
+          "existing_id": "B2304",
+          "note": "B2304 只有「溶質減少細胞脫水與冰損傷」一句；本核心補冰在哪裡。"
+        },
+        {
+          "existing_id": "F7-NA007",
+          "note": "原始量熱研究仍未讀。"
+        }
+      ],
+      "final_id": "L56-015",
+      "batch": "batches/wave56-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L56-016",
+      "reviewer": "V10",
+      "question": "結凍時林蛙的器官會乾到什麼程度？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f7src/frog_2015_costanzo.txt Results〈Responses to Freezing〉、Discussion〈Organ Dehydration〉、Table 5",
+      "reopen_result": "water loss was up to 66% in liver, 41–54% in gastrocnemius, and 33–48% in gracilis；−2.5°C 時 27% in gracilis and 29% in gastrocnemius（引 2013 年 JEB）；移出的水凍在 lymph sacs, subdermal spaces, and coelom；glucose and urea jointly attained up to 2.1 M in liver and 0.2 M in muscle due to dehydration alone；Physicochemical forces … not fully understood：都在原文。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "照原稿收，算 1.5 條。−2.5°C 的數字是另一批蛙（作者引自己的前一篇），片中分開講，原稿已註明。",
+      "overlaps": [
+        {
+          "existing_id": "B2304",
+          "note": "「減少細胞脫水」是 B2304 的說法；本核心講的是器官脫水的程度與好處，角度不同，不重算 B2304 的那一句。"
+        }
+      ],
+      "final_id": "L56-016",
+      "batch": "batches/wave56-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L56-017",
+      "reviewer": "V10",
+      "question": "阿拉斯加的林蛙比較耐凍，是因為做出比較多的糖嗎？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f7src/frog_2013_costanzo.txt Methods、Results、Fig 2、Fig 5、Discussion；今日以 curl 重抓 Europe PMC REST fullTextXML，sha256 與作者快取完全相同（PMC3827335）",
+      "reopen_result": "−2.5°C、0.05°C/h、2、6、30、48 h 取樣；Alaskan 肝醣 as early as 6 h 明顯下降、Ohioan 到 30 h；by 48 h both populations had produced identical amounts of glucose（由肝醣減少量推算）；GPa 7-fold 對 4-fold within 2 h；阿拉斯加蛙 48 h 時回到基礎值、俄亥俄蛙維持；retained 37% 對 10%；Upon dissection Alaskan frogs contained relatively little ice … much more pliable，Ohioan large subcutaneous ice crystals … more rigid；cryoprotectant distribution becomes severely impaired when higher ice contents are reached：都在原文。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "照原稿收。B2305 已有「動員速度與調節差異」，本核心算 2 條（6 小時對 30 小時、48 小時產量相同 1；酵素倍數與剩餘肝醣 0.5；解剖的冰量與軟硬 0.5），不是 2.5 條。來源與池中 SRC-18dda7ff6a6b1fc1 同一頁。",
+      "overlaps": [
+        {
+          "existing_id": "B2305",
+          "note": "結論方向已有；新增時間點、酵素倍數與解剖所見。"
+        }
+      ],
+      "final_id": "L56-017",
+      "batch": "batches/wave56-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L56-018",
+      "reviewer": "V10",
+      "question": "林蛙到底能凍到多冷、凍多久？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "doi:10.1242/jeb.089342（Costanzo 等 2013 JEB）今日 WebFetch 線上重讀並要求逐字引句（頁面 178,010 字元，只讀到前 100,000，存活試驗在內）；f7src/frog_2015_costanzo.txt Introduction；f7src/frog_2013_costanzo.txt Introduction、Discussion",
+      "reopen_result": "線上逐字確認：all 10 frogs were cooled (0.05°C h−1) to −8°C，九隻 2 天內恢復翻正、第十隻在 7 天內恢復、判定存活；All five of the frogs frozen to −12°C 2 天時都恢復，其中一隻 gradually declined in condition and ultimately died；all four of the frogs frozen to −16°C … by 2 days post-thawing；−4°C 8 週四隻、three initially showed signs of viability、two ultimately met the survival criterion；12 週四隻全數 scored as mortalities；Ohioan frogs were 2.3-fold heavier and 1.2-fold longer than Alaskan frogs；tolerate freezing only to −3 to −6°C。本機全文確認：越冬處 −9 to −18°C；smaller body size confers them with reduced thermal capacitance、northern frogs would tend to freeze faster。原稿「同一批阿拉斯加蛙」線上讀不到依據。",
+      "changes_applied": {
+        "answer_target": "美國中西部北邊和加拿大南部的林蛙，實驗裡只耐到 −3 至 −6°C。阿拉斯加內陸的蛙在 2013 年的試驗裡，慢慢凍到 −8°C 的 10 隻全部存活；−12°C 的 5 隻解凍兩天時都恢復，其中 1 隻後來衰弱死亡；−16°C 的 4 隻解凍兩天後都還活著。但溫度不是唯一的限制：同一研究把阿拉斯加蛙放在 −4°C 連續凍 8 週，4 隻最後只活 2 隻；凍 12 週，4 隻全死。而牠們在野外越冬處要面對 −9 到 −18°C 的低溫。兩個族群體型也不同，俄亥俄蛙體重是阿拉斯加蛙的 2.3 倍；同實驗室另一篇論文指出，體型小的蛙熱容量小、結冰更快，留給送糖的時間更短。",
+        "scope": "限林蛙（Rana sylvatica）成體的實驗室受控慢速結凍或所述的田野追蹤；不外推到所有蛙、任意降溫或人體冷凍。各組只有 4–10 隻；俄亥俄蛙在這篇研究裡沒有做低溫存活試驗，南方族群的耐受下限引自前人；−16°C 組只觀察到解凍後 2 天。存活隻數以本次線上重讀為準，本機沒有逐字快取（期刊站對 curl 回 403），該文討論後半沒讀到。"
+      },
+      "duplicate_of": null,
+      "reason": "數字線上逐字確認；改掉「同一批」與 −12°C 組的說法，體型與結冰快慢分屬兩篇論文、分開寫。算 1.5 條（各溫度的存活 1、−4°C 凍 8 與 12 週 0.5；體型不另計）。",
+      "overlaps": [
+        {
+          "existing_id": "B2305",
+          "note": "B2305 問族群差異；本核心補存活試驗，不重算。"
+        }
+      ],
+      "final_id": "L56-018",
+      "batch": "batches/wave56-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L56-019",
+      "reviewer": "V10",
+      "question": "實驗室裡凍三個月就死，野外的林蛙憑什麼凍上半年？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "doi:10.1242/jeb.101931（Larson 等 2014 JEB）今日 WebFetch 線上重讀兩次並要求逐字引句（頁面 117,190 字元，只讀到前 100,000，正文在內）",
+      "reopen_result": "線上逐字確認：Free-living wood frogs (N=18, body mass 14±1.2 g)；2000 年 8 隻、2001 年 10 隻裝無線電發報器；small forms 4–10 cm below the top of the leaf litter；an average minimum of −14.6±2.8°C、ranged from −8.9 to −18.1°C；below their freezing point for, on average, 193±11 days (range 175–218 days)；All 18 free-living wood frogs … survived winter；葡萄糖（μmol/g 鮮重）野外肝 788、肌肉 299、心 596，實驗室（−2.5°C，24–144 h）238、23.8、60.5；early October … multiple (average of 12, range 10–17) … cycles of freezing soil temperatures during the night and thawing … during the day；假說句 If each exotherm results in a stimulus for conversion of stored glycogen to glucose … successive freeze–thaw cycles … should result in higher and higher tissue concentrations of glucose，並引前人「glucose synthesis following freezing is faster than reconversion of glucose to glycogen following thaw」。兩處要改：（1）原稿把假說寫成「解凍時循環恢復、把糖送出去」，原文的理由是做糖比解凍後收回去快；（2）另有每年兩隻、共四隻是耙開落葉找到、用來取組織的，野外組的葡萄糖樣本數要重看原表。原文還引前人實驗室研究：阿拉斯加林蛙結凍耐受以 2 個月、半數存活為限。",
+      "changes_applied": {
+        "question": "野外的林蛙凍了半年還全數存活，牠們體內的糖為什麼比實驗室凍出來的多？",
+        "answer_target": "Larson 等人在阿拉斯加費爾班克斯附近，2000、2001 兩年找到 18 隻野生林蛙的越冬處（多數靠無線電發報器追蹤）：落葉底下 4–10 公分深的小窩。窩裡的最低溫平均 −14.6°C，最冷到 −18.1°C；體溫低於冰點的日子平均 193 天。春天把牠們找回來，18 隻全部活著。更意外的是糖：自然結凍的蛙，每克肌肉的葡萄糖約 299 微莫耳，同一研究在實驗室凍到 −2.5°C 的只有約 24；肝臟約 788 對 238，心臟約 596 對 60。作者注意到野外的蛙不是一次凍到底：十月初牠們先經歷平均 12 次（10–17 次）夜裡結凍、白天解凍，之後才一直凍住。他們的假說是，每一次結凍都刺激肝臟把肝醣變成葡萄糖，而解凍後把糖收回去的速度比較慢，一次次累積起來。",
+        "scope": "限林蛙（Rana sylvatica）成體的實驗室受控慢速結凍或所述的田野追蹤；不外推到所有蛙、任意降溫或人體冷凍。野外蛙與實驗室蛙不是同一批，凍結溫度與時間也不同，差異的原因在這篇是假說；族群間的遺傳差異作者說沒有測。野外組組織葡萄糖的樣本數很小（另外找到的越冬蛙每年兩隻），寫稿前重讀原表。來源以本次線上重讀為準，本機沒有逐字快取；圖表未讀。不寫「十幾倍」這類自己算的倍數。"
+      },
+      "duplicate_of": null,
+      "reason": "數字線上逐字確認；改問句（不把另一篇的實驗室 12 週結果與本篇野外結果剪成同一個比較）、改假說的理由、補樣本數限制。算 2.5 條（越冬處溫度、193 天、全數存活 1；野外與實驗室的組織葡萄糖 1；十月的凍融次數與累積假說 0.5），不是 3 條。",
+      "overlaps": [
+        {
+          "existing_id": "B2305",
+          "note": "無重疊。"
+        }
+      ],
+      "final_id": "L56-019",
+      "batch": "batches/wave56-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L56-020",
+      "reviewer": "V10",
+      "question": "反覆凍融真的能把糖送得更遠嗎？直接凍得更冷不行嗎？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f7src/frog_2015_costanzo.txt Methods〈Freezing Experiment〉、Results、Discussion〈Glycemic Response〉",
+      "reopen_result": "0.05°C/h 直接到 −8°C（N=7，160 h）、到 −16°C（N=7，320 h）；cyclic 組 N=12，到 −4°C 後升到 4°C 停 12 h、三次後降到 −8°C，其中 7 隻解剖、5 隻觀察；全程 19 d；直接凍兩組肝醣 only ~32% of unfrozen、兩組無差別；cyclic 組 just 6%；gracilis 葡萄糖 2.3-fold higher；glucose synthesis had ceased at some temperature above −8°C；no such increase occurred in skeletal muscle … curtailed at a relatively high body temperature；五隻約 30 h 後行為正常、其後 7 週健康；never fully met：都在原文。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "照原稿收，算 2 條（直接凍到 −16°C 沒有比 −8°C 多用肝醣、肌肉的糖也沒有更多 1；凍融組肝醣剩 6%、肌肉葡萄糖 2.3 倍且五隻復原 1），不是 2.5 條。與 −2.5°C 蛙的比較是作者自己做的跨研究比較，不再換算。",
+      "overlaps": [
+        {
+          "existing_id": "B2305",
+          "note": "無重疊；這是題目「糖得先送去哪裡」的直接證據。"
+        }
+      ],
+      "final_id": "L56-020",
+      "batch": "batches/wave56-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "L56-021",
+      "reviewer": "V10",
+      "question": "糖來不及送到的地方，林蛙靠什麼撐？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f7src/frog_2015_costanzo.txt Abstract、Table 2、Table 3、Discussion〈Muscle Atrophy…〉〈Urea and Glucose in Frozen Tissues〉",
+      "reopen_result": "夏末血漿尿素 near 10 μmol/ml（表 10.6±1.6）、入冬處理後 85.5±2.9（保持有水）與 186.9±12.4（限水）；腓腸肌質量少 31–38%；coelomic fat body 49.2→5.7、1.5 mg；模擬入冬 over a 5.5-week period；DHYD 蛙肝醣庫 nearly 50% greater、HYD 蛙差異未達顯著；肝臟 82% 是葡萄糖、骨骼肌 53–57% 是尿素；sustained hyperglycemia potentially could cause glycation：都在原文。原稿「肝醣庫反而增加三到五成」只有限水組的「近五成」達顯著。",
+      "changes_applied": {
+        "answer_target": "靠結冰之前就先備好的另一種溶質：尿素。阿拉斯加林蛙夏末血漿尿素約每毫升 10 微莫耳；在實驗室模擬入秋的五週半之後，一直有水的蛙升到約 86，限水的蛙升到約 187。這筆尿素是拆自己的肌肉換來的：入冬處理後腓腸肌質量少了 31–38%，體腔的脂肪體幾乎用光，限水組的肝醣庫反而比夏末多了近五成。尿素和葡萄糖的分工很清楚：葡萄糖是結冰之後才由肝臟趕製，來不及送遠；尿素是事先累積、在各組織分布比較均勻。直接凍到 −8 或 −16°C 的蛙，肝臟裡 82% 的保護溶質是葡萄糖，骨骼肌裡卻有 53–57% 是尿素。作者也提醒，葡萄糖不能長期維持高濃度，可能使蛋白質和脂質被糖化，所以「需要時才做」有它的道理。"
+      },
+      "duplicate_of": null,
+      "reason": "只改肝醣增加的說法（原文只有限水組近五成達顯著）。算 2 條（尿素事先累積且來自拆肌肉 1、肝以葡萄糖為主而肌肉過半是尿素 1），不是 2.5 條。",
+      "overlaps": [
+        {
+          "existing_id": "B2304",
+          "note": "B2304 的「保護性溶質」沒有指明尿素；新答案。"
+        },
+        {
+          "existing_id": "B2259",
+          "note": "鯊魚以尿素平衡滲透壓，物種與用途不同，不重複。"
+        }
+      ],
+      "final_id": "L56-021",
+      "batch": "batches/wave56-life.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H56-001",
+      "reviewer": "V10",
+      "question": "一個穿大猩猩裝的人走過畫面正中央，有多少人沒看到？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f7src/mem_simons1999.txt §2、§3、§4(i)；今日 curl 重抓 chabris.com 的 PDF，sha256 與作者快取相同",
+      "reopen_result": "228 人、扣除後 192 人（每格 12 人）；影片 75 s、兩隊各三人、電梯門前；After 44–48 s 出現、the unexpected event lasted 5 s；54% noticed、46% failed：這是撐傘女子與大猩猩兩種事件合計，原文接著寫 Umbrella Woman 65% versus Gorilla 44%；Easy 64% 對 Hard 45%；Opaque 67% 對 Transparent 42%；搥胸版 9 s、62 s 影片、Twelve new observers、only 50% noticed，作者拿來比的是同條件一般版的 42%。主詞錯：原稿問「大猩猩有多少人沒看到」卻答 46%；單看大猩猩是 44% 注意到。64/45、67/42 也都是兩種事件合計。",
+      "changes_applied": {
+        "question": "專心數傳球時，有多少人沒看到從畫面中間走過去的人？",
+        "answer_target": "Simons 和 Chabris 1999 年拍了 75 秒的影片：白衣、黑衣兩隊各三人在電梯前傳籃球，受測者要默數其中一隊傳了幾次。大約 44 到 48 秒後，一位撐傘的女子或一位穿全身大猩猩裝的人從一側走到另一側，歷時 5 秒，球員照常傳球。228 人受測，扣掉事先知道這類實驗、數丟了等情形，192 人計入。看完先寫下次數，再被問有沒有注意到什麼不尋常的事。兩種意外合計只有 54% 注意到，46% 沒有；單看大猩猩，注意到的是 44%，撐傘女子 65%。作業越難越看不到：只數總次數的人 64% 注意到，要分開數彈地與空中傳球的只有 45%。演員實拍、彼此會遮擋的版本 67% 注意到，三段影像半透明疊在一起的版本 42%。他們又拍了一版：大猩猩走到正中間停下、面對鏡頭搥胸再走開，前後 9 秒；12 位新受測者裡，仍然只有一半注意到。",
+        "scope": "限所述實驗的大學生樣本與作業條件；不套固定比例到每個人，不據此判斷任何個案的記憶或證詞真假，不暗示觀眾自我診斷。有沒有注意到靠事後自陳；每格條件只有 12 人，個別格子的百分比不宜單獨引用；46% 是兩種意外事件合計，不可說成「46% 的人沒看到大猩猩」。不搬用原影片畫面，片中自製示範須標明不是實驗。來源是共同作者個人網站上的刊本 PDF。"
+      },
+      "duplicate_of": null,
+      "reason": "改掉主詞錯誤（46% 不是大猩猩的數字）。C2004 已有現象本身，本核心算 2.5 條（設計 1、合計 54% 與大猩猩 44%、難易與版本的差別 1、搥胸版 0.5），不是 3 條。A21-NA003 的重收條件是「不同答案的控制」：這裡不是新猩猩版本，而是原研究的設計與條件比較，可收。",
+      "overlaps": [
+        {
+          "existing_id": "C2004",
+          "note": "C2004 只有一句研究方向；本核心補原研究的設計與數字，現象本身不重算。"
+        },
+        {
+          "existing_id": "A21-NA003",
+          "note": "不是換角色的新版本，是原研究本身。"
+        }
+      ],
+      "final_id": "H56-001",
+      "batch": "batches/wave56-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H56-002",
+      "reviewer": "V10",
+      "question": "什麼樣的意外，比較容易闖進正在專心的人眼裡？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f7src/mem_simons1999.txt §3 末兩段、§4",
+      "reopen_result": "Black 58%, White 27%（n=48 per condition）；Umbrella Woman Black 62%, White 69%；The Gorilla was black, whereas the Umbrella Woman wore pale colors；more likely to notice an unexpected event that shares basic visual features—in this case, color；opposite of the traditional pop-out；十五個條件的點二系列相關 averaged to r = 0.15；the unexpected object more than once crossed the path of the basketball and/or a player：都在原文。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "照原稿收，算 1.5 條。要縮片長先刪這一章。",
+      "overlaps": [
+        {
+          "existing_id": "C2004",
+          "note": "同一篇研究的另一組結果。"
+        },
+        {
+          "existing_id": "L39-001",
+          "note": "找偽裝蛾的目光研究，不同作業，不重複。"
+        }
+      ],
+      "final_id": "H56-002",
+      "batch": "batches/wave56-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H56-003",
+      "reviewer": "V10",
+      "question": "天天看的蘋果標誌，有多少人畫得出來、又有多少人認得出來？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f7src/mem_blake2015.txt Exp 1A、1B；今日 curl 兩次連線被重置，WebFetch 取回同一 PDF，sha256 與作者快取相同",
+      "reopen_result": "85 名大學生（68 女）、52 strictly Apple users；testing room was free of all Apple logos；perfect score of 14 只有 1 人；only seven … minimal errors (3 or fewer)；Bite size 11.71%；eight different 圖（葉子方向、咬痕左右、底部形狀）；fewer than half (47%)；recognition 與 confidence r(83)=.062 不顯著；Exp 1B 26 人，8.58 → 5.54；metacognitive illusion of strong memory：都在原文。兩處對不上：（1）原稿寫用不用 Apple 產品「畫的分數和選對率都沒有顯著差別」，原文畫的分數是 marginal trend（p=.08），辨認依使用者的比較在核對段落沒見到；（2）範圍裡「作者說換成別家標誌辨認會好得多」全文搜不到。",
+      "changes_applied": {
+        "answer_target": "UCLA 的研究請 85 名大學生（52 人只用 Apple 產品）在沒有任何蘋果標誌的房間裡憑記憶畫出它。照 14 個特徵評分，只有 1 人全對，只有 7 人錯在 3 處以內；例如只有一成多的人畫對咬痕的大小。接著讓他們從 8 個圖裡選出真的那個，其餘是把葉子方向、咬痕左右、底部形狀對調的變造版：選對的不到一半（47%）。只用 Apple 產品的人畫得稍好，但差異沒有達到顯著。更關鍵的是信心：選對與否和自己打的信心分數沒有顯著相關。另一組 26 人在動筆之前先評自己畫得出來的把握，平均 8.58 分（滿分 10）；畫完再評，掉到 5.54 分。作者的解讀是，天天看到帶來的是「我一定記得」的錯覺，要實際去提取一次，人才知道自己其實沒存下細節。這個研究仿的是 1979 年一分錢硬幣的經典實驗。",
+        "scope": "限所述實驗的大學生樣本與作業條件；不套固定比例到每個人，不據此判斷任何個案的記憶或證詞真假，不暗示觀眾自我診斷。干擾項是刻意做得很像的變造版，辨認題難不代表認不出別家的標誌。一分錢實驗（Nickerson & Adams 1979）原文未讀，只提這項研究是仿它。不拿畫錯推論記憶有病。來源是作者實驗室網站上的刊本 PDF；單一大學、女性居多。"
+      },
+      "duplicate_of": null,
+      "reason": "改兩處對不上原文的句子。C2015 已有「看過不等於存過」，本核心算 2.5 條（85 人只有 1 人畫對 1、8 選 1 只有 47% 且與信心無關 1、動筆前後的信心 0.5），不是 3 條。",
+      "overlaps": [
+        {
+          "existing_id": "C2015",
+          "note": "C2015 一句研究方向；本核心補實驗。"
+        },
+        {
+          "existing_id": "C2013",
+          "note": "辨認題的結果替 C2013 提供例子，不另算。"
+        }
+      ],
+      "final_id": "H56-003",
+      "batch": "batches/wave56-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H56-004",
+      "reviewer": "V10",
+      "question": "問話時只換一個動詞，同一場車禍的車速會被說成差多少？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f7src/mem_loftus1974.txt Experiment I；今日 curl 重抓同一 PDF，sha256 與作者快取相同",
+      "reopen_result": "Forty-five students、Seven films、5 to 30 sec、Nine subjects 各一種動詞；Table 1：Smashed 40.5、Collided 39.3、Bumped 38.1、Hit 34.0、Contacted 31.8；四段撞擊測試片 20、30、40、40 mph，估成 37.7、36.2、39.7、36.1；The actual speed … controlled little variance；Two interpretations（response-bias 或 memory representation）：都在原文。文字層有 OCR 錯字（Sinas hed、Bumpcd），數字位置與表格一致。",
+      "changes_applied": {
+        "scope": "限所述實驗的大學生樣本與作業條件；不套固定比例到每個人，不據此判斷任何個案的記憶或證詞真假，不暗示觀眾自我診斷。1974 年的學生樣本，每個動詞只有 9 人；速度單位照原文用英里，不自行換算，也不寫「差了九英里」這類自己相減的數字；中文動詞是為說明而譯，原實驗是英文。讀的是第三方網站存放的刊本掃描（期刊頁眉與頁碼俱在），不是出版社或作者頁。"
+      },
+      "duplicate_of": null,
+      "reason": "答案照原稿，範圍補兩點。C2016 已有「問法改變回憶」，本核心算 2 條（五個動詞的平均估計 1、實際車速幾乎不影響與作者自留的兩種解釋 1）。",
+      "overlaps": [
+        {
+          "existing_id": "C2016",
+          "note": "C2016 一句研究方向；本核心補實驗一。"
+        }
+      ],
+      "final_id": "H56-004",
+      "batch": "batches/wave56-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H56-005",
+      "reviewer": "V10",
+      "question": "一個星期後，為什麼有人「記得」看到影片裡根本沒有的碎玻璃？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f7src/mem_loftus1974.txt Experiment II、Table 2、Table 3、Discussion",
+      "reopen_result": "One hundred and fifty students；film lasted less than 1 min、accident 4 sec；各 50 人（smashed、hit、不問速度）；One week later、without viewing the film again、10 題中一題 Did you see any broken glass?；There was no broken glass；Table 2：Yes 16、7、6，No 34、43、44；按速度區間分段後 The average difference … is about .12；two kinds of information … integrated … unable to tell from which source some specific detail is recalled：都在原文。",
+      "changes_applied": {
+        "scope": "限所述實驗的大學生樣本與作業條件；不套固定比例到每個人，不據此判斷任何個案的記憶或證詞真假，不暗示觀眾自我診斷。撞爛組也有 34 人答沒有，不是人人都被帶著走；「兩種資訊合成一份記憶」是作者提出的解釋架構，這篇沒有直接測來源判斷，不能拿它當 C2017（把誰告訴自己的記錯）的證據。不用它推論任何目擊者說謊。讀的是第三方網站存放的刊本掃描。"
+      },
+      "duplicate_of": null,
+      "reason": "照原稿收，算 2 條（三組設計與 16、7、6 人 1；控制速度估計後差異仍在 0.5；兩種資訊整合說 0.5），不是 2.5 條。原稿 notes 說它是 C2017 的支撐：不成立，這篇沒有測出處判斷。",
+      "overlaps": [
+        {
+          "existing_id": "C2016",
+          "note": "同一篇研究的實驗二。"
+        },
+        {
+          "existing_id": "C2017",
+          "note": "只是解釋架構提到 source，不支撐 C2017 的主張。"
+        },
+        {
+          "existing_id": "H50-NA006",
+          "note": "邊界延伸是另一種記憶錯誤，無關。"
+        }
+      ],
+      "final_id": "H56-005",
+      "batch": "batches/wave56-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "H56-006",
+      "reviewer": "V10",
+      "question": "清單裡根本沒唸過的字，為什麼會有人說「我清楚記得聽到過」？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f7src/mem_roediger1995.txt（西北大學課程頁 HTML）與 mem_roediger1995_hanover.txt（Hanover College 課程頁的刊本 PDF）兩份互相對照；今日 curl 重抓 HTML，sha256 與作者快取相同",
+      "reopen_result": "36 Rice University undergraduates、課堂上集體施測；六張清單、每張 12 詞；told not to guess；studied words .65；critical omitted word .40、與清單中段的詞相近；any other word … intruded on only 14% of the lists；hit rate 86%、critical lures .84；sure 判定 .58；Deese 1959 overlooked for the intervening 36 years；Experiment 2：30 人、16 張清單各 15 詞、false recall .55；remember judgments being made 72% of the time (i.e., .58 ÷ .81 × 100)（這是作者自己的換算，條件是先回憶過）；Not directly, of course；cannot, by itself, be taken as convincing evidence：都在原文，兩份副本的 .40、.84、.86、.58、.55、14% 一致。例詞要分清：實驗一的清單是 12 詞，bed、rest、awake 是原文摘要給的例子。",
+      "changes_applied": {
+        "scope": "限所述實驗的大學生樣本與作業條件；不套固定比例到每個人，不據此判斷任何個案的記憶或證詞真假，不暗示觀眾自我診斷。詞表是特意挑最容易引出錯誤回憶的；實驗一 36 人是修記憶課的學生、課堂集體施測，實驗二 30 人；作者自己說這些結果對治療中恢復記憶的爭議不直接適用。72% 是作者在文中自己換算的比例，條件是先回憶過清單。中文例詞為譯示，原實驗是英文。讀的是兩個大學課程頁上的刊本副本，不是出版社頁。"
+      },
+      "duplicate_of": null,
+      "reason": "答案文字不動，範圍補樣本數與 72% 的條件、來源存放處。池中沒有同答案核心。算 2.5 條（清單設計與 40% 對 14% 1、辨認 84% 對 86% 且過半確定 1、實驗二的 55% 與「記得」判定 0.5），不是 3 條。",
+      "overlaps": [
+        {
+          "existing_id": "C2017",
+          "note": "不取代 C2017 的主張（出處記錯）；本核心講的是沒發生的事被清楚記得，C2017 從最終核心移出。"
+        },
+        {
+          "existing_id": "C2009",
+          "note": "處理層次，不同答案。"
+        }
+      ],
+      "final_id": "H56-006",
+      "batch": "batches/wave56-human.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "F8-019",
+      "reviewer": "V11",
+      "question": "體操選手下槓，為什麼要抱成一團才轉得完？",
+      "verdict": "REJECT",
+      "key_source_reopened": "f8src/openstax_up_11_3.html（sha256 相符；今日重抓 200、雜湊完全相同）§11.3 Example 11.8",
+      "reopen_result": "80.0 公斤、1.8 公尺的桿、21.6 與 5.4 kg·m²、1.0→4.0 rev/s、3.0 落到 1.8 公尺約 0.5 秒、可轉兩圈，數字都在原文。",
+      "changes_applied": {},
+      "duplicate_of": "P027",
+      "reason": "轉動慣量變小所以轉得快——與 P027 同一個答案的另一個例子，而且同樣是教材設定值，不是新事實。不進池；若要用，只在滑冰章尾當一句「教材把體操下槓也當同一題」的話，不算條數。",
+      "overlaps": [],
+      "final_id": "P56-NA001",
+      "batch": "batches/wave56-physics.json",
+      "disposition": "not_added"
+    },
+    {
+      "proposal_id": "F8-025",
+      "reviewer": "V11",
+      "question": "塑化劑加到一半重量，PVC 的玻璃轉移溫度能掉到室溫以下嗎？",
+      "verdict": "REJECT",
+      "key_source_reopened": "f8src/PMC9100690.xml（sha256 相符；今日重抓 Europe PMC，200、雜湊完全相同）§2.3.7、§3.7",
+      "reopen_result": "原文：「unplasticized polyvinyl chloride corresponds to Tgt = 87.5 °C. The introduction of polyvinyl chloride 50 ppm plasticizer DOP led to a decrease…to −37 °C, that is, by 124.5 °C」。重量份寫成 ppm；同一段前面的配方說明又寫塑化劑的組成是「DOP 83.3、己二酸酯 16.7」，讀不出 −37°C 那一筆到底是純 DOP 還是混合塑化劑；作者稿的「約 87°C」「約 125°C」與原文的 87.5、124.5 也不一致。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "照作者自己的建議退回：單位寫錯、配方讀不出來、單一添加量，而且答案末句「門檻被搬到室溫底下」是作者依這一筆數字做的解讀，原文沒有。它正好是 G30 第二個轉折最需要的一句，所以更不能靠這筆。等找到同一研究、同一量法、多個添加量的資料再寫（見 F8-NA010）。",
+      "overlaps": [],
+      "final_id": "P56-NA002",
+      "batch": "batches/wave56-physics.json",
+      "disposition": "not_added"
+    },
+    {
+      "proposal_id": "S56-001",
+      "reviewer": "V11",
+      "question": "浪一直把水推上岸，多出來的水憑什麼會往外流？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f8src/nws_rip_science.html（sha256 前綴與 F8 記錄相符）；今日以一般 curl 重抓 weather.gov/safety/ripcurrent-science，200、同為 64,485 位元組，雜湊不同（動態頁），逐段比對正文相同；Where, When and Why Rip Currents Form 第 2–3 段",
+      "reopen_result": "「Breaking waves alone are not enough…alongshore variations in wave breaking」「Wave setup is often about 10% of the breaking wave height…difficult to see with the naked eye, but can be measured」「The water essentially flows downhill, along the shore from…high setup…to…lower setup, where the currents converge and flow offshore」逐句都在。原文是「tend to form」，答案的「所以離岸流出現在…」寫稿時留「常出現在」。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "照原稿收。N191 已有「由缺口集中離岸」；本核心只算增水 10% 與「沿岸差異才是必要條件、水沿岸往低處流」，算 1.5 條。",
+      "overlaps": [
+        {
+          "existing_id": "N191",
+          "note": "缺口集中離岸一事不重計；本核心算 1.5 條"
+        }
+      ],
+      "final_id": "S56-001",
+      "batch": "batches/wave56-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S56-002",
+      "reviewer": "V11",
+      "question": "一股離岸流從頭到尾長什麼樣子，哪一段最快？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f8src/nws_rip_science.html（sha256 前綴與 F8 記錄相符）；今日以一般 curl 重抓 weather.gov/safety/ripcurrent-science，200、同為 64,485 位元組，雜湊不同（動態頁），逐段比對正文相同；Structure and Circulation Patterns、Channelized rip currents、Flow speed and behavior 第 2 段",
+      "reopen_result": "供流→頸→頭→被碎浪帶回的環流胞、流速「peak about half way offshore in the rip-neck」「fastest toward the middle…maximum just below the surface」、5–100 碼寬、3–10 英尺以上深、50–500 碼間距、浪大間距常較大、停留數天到數月，都在原文。原文同一節還寫明另一種樣態是「在碎浪帶內再循環、只偶爾向外」，作者沒寫進答案，而這正是第二個轉折的官方出處，補一句。",
+      "changes_applied": {
+        "answer_target": "離岸流是近岸循環胞的一部分：沿岸的供流（feeder）從兩側匯合，轉向外形成窄而快的頸部，穿過碎浪帶後在外側減速、散開成頭部，水再被碎浪帶回岸邊。流速從供流逐漸加快，大約在頸部向外一半處最高，到頭部慢下來停住；橫向以中間最快，深度上在水面下一點最快。NWS 也寫明另一種樣態：水主要在碎浪帶內打轉，只偶爾向外流出。沙洲缺口的水道型離岸流寬約 5 到 100 碼、水道深約 3 到 10 英尺以上、相鄰兩股相隔 50 到 500 碼，浪大時間距常較大，可以停在同一處數天、數週到數月。",
+        "scope": "水道型（沙洲缺口）離岸流的概括範圍，英制原文，公制換算寫稿時做並標「約」；其他類型尺度不同。NOAA 舊頁（N191 來源）的寬度說法是另一份概括，片中只用一份並標來源。"
+      },
+      "duplicate_of": null,
+      "reason": "數字照錄；補上同節的「碎浪帶內再循環」一句，讓浮標章有官方頁的呼應。構造三段、流速分布、水道尺度各半條，算 1.5 條（作者算 2）。",
+      "overlaps": [],
+      "final_id": "S56-002",
+      "batch": "batches/wave56-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S56-003",
+      "reviewer": "V11",
+      "question": "沙灘平平的、沒有沙洲缺口，為什麼照樣有離岸流？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f8src/nws_rip_science.html（sha256 前綴與 F8 記錄相符）；今日以一般 curl 重抓 weather.gov/safety/ripcurrent-science，200、同為 64,485 位元組，雜湊不同（動態頁），逐段比對正文相同；Types of Rip Currents：Focused、Structurally-Controlled（Shadow／Deflection）、Hydrodynamically-Controlled",
+      "reopen_result": "聚焦型（海底峽谷、沒入水中的海脊或外海沙洲，位置隨浪向改變）、遮蔽型（背浪側增水較低，水沿岸流回結構物再向外）、偏轉型（斜向入浪的沿岸流被結構物折向外）都在。但「只持續幾分鐘（lasting for several minutes）」原文只形容短波峰碎浪的小渦旋合併而成的 flash／transient rip；兩組浪干涉是另一種機制，原文沒有說它只持續幾分鐘，也沒有把它叫瞬時離岸流。作者把兩種寫成同一句。原文另有第三種（沿岸流的剪切不穩定），作者未列，可不補。「位置和時間無法精確預測」原文是對整類純水動力型說的。",
+      "changes_applied": {
+        "answer_target": "沙洲缺口只是讓沿岸碎浪不均的一種原因。外海的海底峽谷、海脊或沙洲會讓浪集中在某處碎，形成位置跟著浪向移動的聚焦型；防波堤、突堤、碼頭或岬角旁有兩種：背浪側因為被遮住、浪小增水低，水沿岸流回結構物再向外（遮蔽型），迎浪側則是斜向入浪造成的沿岸流撞上結構物被折向外海（偏轉型）。連平直、沒有任何地形的海灘也會有：兩組不同方向的浪互相干涉，讓某些地方的碎浪比旁邊高，增水不均就驅動離岸流；短波峰的碎浪則會產生小渦旋，合併成只持續幾分鐘的瞬時離岸流。這一類純靠水動力的離岸流，位置和時間都無法精確預測。",
+        "scope": "分類是 NWS 依 Castelle 等 2016 的轉述（原文本輪 403 未讀），片中只說「美國國家氣象局的分類」。純水動力型的流速與持續時間，NWS 自己說因缺乏現地量測而所知較少；「幾分鐘」只屬於短波峰渦旋合併的那一種。"
+      },
+      "duplicate_of": null,
+      "reason": "把被併成一句的兩種水動力機制拆開，「幾分鐘」只留給原文所指的那一種。遮蔽型與 S56-001 同是增水差，只算半條；聚焦、偏轉、純水動力各半條，共 1.5 條（作者算 2）。",
+      "overlaps": [
+        {
+          "existing_id": "N190",
+          "note": "偏轉型用到 N190 的沿岸流；沿岸流本身不重計"
+        }
+      ],
+      "final_id": "S56-003",
+      "batch": "batches/wave56-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S56-004",
+      "reviewer": "V11",
+      "question": "同一股離岸流，為什麼忽快忽慢，還跟潮水高低有關？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f8src/nws_rip_science.html（sha256 前綴與 F8 記錄相符）；今日以一般 curl 重抓 weather.gov/safety/ripcurrent-science，200、同為 64,485 位元組，雜湊不同（動態頁），逐段比對正文相同；Rip pulsing、Tidal modulation",
+      "reopen_result": "原文：「A rip pulse is a sudden acceleration in flow speed that lasts for a short time period (30 seconds to a minute)」——30 秒到 1 分鐘是脈動持續的時間，不是「在 30 秒到 1 分鐘內加快」，作者讀反了。「can more than double」、潮差小於 6 英尺時低潮前後一兩小時較快、高潮可能完全停、大潮差海灘沙洲露出時關掉而中潮最快、「not been found to be stronger during a falling outgoing tide…only the water level…not the direction」都在。",
+      "changes_applied": {
+        "answer_target": "離岸流不穩定。一組較大的浪（浪群）碎掉時，岸邊增水升高，流速會突然加快，可以超過原來的兩倍，這樣的一次脈動持續約 30 秒到 1 分鐘。它也跟潮位有關，因為潮位決定浪在哪裡碎、碎多少：潮差小於約 6 英尺的海灘，低潮前後一兩個小時水淺、碎浪最多，常流得較快，高潮時水深、碎浪少，可能完全停掉；潮差大的海灘低潮時沙洲露出水面，離岸流反而關掉，最快出現在中潮。重點是水位，不是方向：沒有發現退潮時比漲潮時強。"
+      },
+      "duplicate_of": null,
+      "reason": "改正脈動時間的主詞。脈動 1 條、兩種潮差規律 1 條；「退潮不比漲潮強」併在潮位那條，共 2 條（作者算 2.5）。片中不得把潮位規律講成何時可以下水。",
+      "overlaps": [],
+      "final_id": "S56-004",
+      "batch": "batches/wave56-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S56-005",
+      "reviewer": "V11",
+      "question": "把 30 顆會定位的浮標丟進離岸流，它們真的一路被沖到外海嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f8src/macmahan2010_calhoun.pdf（sha256 相符）；今日重抓 calhoun.nps.edu 同一 bitstream，200、大小差 4 位元組（PDF 中繼資料），pdftotext 正文相同；讀摘要、§2.1、§3.2、§4.1–4.4、§5、Table 1",
+      "reopen_result": "「fleet of 30 position-tracking surfzone drifters」、每次 16–27 顆、定位 <40 cm、七次各約 3 小時、Monterey 2007（RCEX）、「year round persistent rip currents」、「Contrary to the classic view (Shepard et al., 1941)…semi-enclosed, large-scale vortices that retained the drifters」、§4.2「rip current pattern days and meandering current pattern days…19% per hour」、yearday 127 最高 28%、Table 1 yearday 125 為 4%、Truc Vert 14%、Perranporth 16% 都在。兩點要改：19% 與 14%、16% 都排除了「沿岸流型」的日子（那些日子幾乎沒有浮標離開，Monterey yearday 139 是 0%）；離開的浮標多數被撈起、重新投放，所以這是每小時離開率，不是追蹤到底的去向。「像高速公路」是作者的比喻，原文只說與 Shepard 1941 的經典看法相反。",
+      "changes_applied": {
+        "answer_target": "多數沒有。2007 年在加州蒙特雷一處離岸流常年存在的海灘，研究團隊每次放入 16 到 27 顆 GPS 漂流浮標（整批 30 顆，定位誤差小於 40 公分），每次約 3 小時、共 7 次。結果與「離岸流把東西一路送出去」的經典看法相反：流場是半封閉的大渦旋，浮標繞圈、留在碎浪帶內，偶爾才有一顆被一陣爆發帶出去。把出現離岸流型與蜿蜒型流場的日子合起來，平均每小時約 19% 的浮標離開碎浪帶；最高的一天 28%，有一天只有 4%。同樣的做法在法國 Truc Vert 是每小時 14%，英國 Perranporth 是 16%。",
+        "scope": "三處水道型開放海岸、各幾天的資料；三個百分比都不含只有沿岸流的日子（那些日子幾乎沒有浮標離開）。浮標代表水面漂流物，離開的浮標多被撈起重放，沒有一路追蹤。不能換成「人有幾成機會」；文中游泳者的段落本池不取用，片中不得由此推出任何自救做法。"
+      },
+      "duplicate_of": null,
+      "reason": "數字都對，補上統計的條件。方法半條、渦旋留住 1 條、三處離開率半條，共 2 條（作者算 2.5）。這是 G12 第二個轉折的唯一實測來源。",
+      "overlaps": [],
+      "final_id": "S56-005",
+      "batch": "batches/wave56-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S56-006",
+      "reviewer": "V11",
+      "question": "現場量到的離岸流有多快？被帶出去的東西會漂多遠？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f8src/macmahan2010_calhoun.pdf（sha256 相符）；今日重抓 calhoun.nps.edu 同一 bitstream，200、大小差 4 位元組（PDF 中繼資料），pdftotext 正文相同；讀摘要、§2.1、§3.2、§4.1–4.4、§5、Table 1；另讀 §4.4",
+      "reopen_result": "摘要：三小時平均離岸流速 30 cm/s、時間平均峰值 40–60 cm/s、離開者約以 20 cm/s 被帶到約 2 個碎浪帶寬度外；§3.2 碎浪帶平均寬約 135（公尺）；§2.1 水道 O(125 m)；§5「drifter exits are smallest for the largest waves, increasing for moderate waves, and decreasing again for small waves」；Hmo<1 m 時水道內幾乎不碎浪、浮標沿地形蜿蜒（yearday 139）都在。但正文 §4.4 寫的峰值是 0.4–0.65 m/s，與摘要的 40–60 不一致；另外 §4.4 自己說碎浪帶外觀測點少、顯著性低，§5 說與浪高的關係只是「唯一看起來有意義」的粗略表示。",
+      "changes_applied": {
+        "answer_target": "蒙特雷那幾次佈放，離岸流在碎浪帶內向外的流速三小時平均是每秒 30 公分，時間平均的峰值依浪與潮約每秒 40 到 60 公分（正文另一處寫到 65）。那一處碎浪帶平均寬約 135 公尺，水道大約每 125 公尺一條。少數離開碎浪帶的浮標，大約以每秒 20 公分被帶到約兩個碎浪帶寬度之外。離開的比例和浪高的關係不是越大越多：浪最大的日子離開的最少，中等浪最多，浪很小時又變少；浪小到幾乎不在水道內碎時，浮標改成沿著地形蜿蜒往下游走。作者自己說這只是粗略的趨勢。"
+      },
+      "duplicate_of": null,
+      "reason": "補上摘要與正文峰值不一致，並把作者的保留語寫進答案。流速半條、離開的距離與速度半條、浪高的非單調關係半條，共 1.5 條（作者算 2）。不得與 NWS 的每秒 1–2 英尺、最高 8 英尺相減或排成同一條線。",
+      "overlaps": [],
+      "final_id": "S56-006",
+      "batch": "batches/wave56-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S56-007",
+      "reviewer": "V11",
+      "question": "既然大部分的水在打轉，碎浪帶裡的水要多久才換掉？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f8src/macmahan2010_calhoun.pdf（sha256 相符）；今日重抓 calhoun.nps.edu 同一 bitstream，200、大小差 4 位元組（PDF 中繼資料），pdftotext 正文相同；讀摘要、§2.1、§3.2、§4.1–4.4、§5、Table 1；§4.2 第 2 段、§5 第 4 段",
+      "reopen_result": "「overall average drifter exit rate of 17% found for the three beaches…corresponds to a relaxation (e-folding) time of 9.5 h. Thus, after 9.5 h, approximately 30% of the initially present drifters are still present in the surf zone and 70% have exited, assuming no drifters returned」、Smith 與 Largier 1995 的「約 3 小時沖刷整個碎浪帶」、少數浮標離開後又回來且離岸越遠機會越小，都在。注意：原文是「假設離岸流速有指數型自相關函數」之下的推算；用每小時 17% 直接除不會得到 9.5 小時，片中不能把它講成觀眾可以自己除出來的算術，也不要重算。與 S56-005 是同一研究，但問題不同（換水時間），不算重複。",
+      "changes_applied": {
+        "answer_target": "研究者拿三處海灘合計每小時 17% 的離開率去推算，在假設離開的不再回來的前提下，得到的特徵時間是 9.5 小時：過了 9.5 小時，原本在碎浪帶內的浮標估計還有約 30% 留著，70% 已離開。這比更早一份研究估計的「約 3 小時沖刷整個碎浪帶」慢得多；作者也提到有少數離開的浮標後來又回到碎浪帶，離岸越遠回來的機會越小。",
+        "scope": "這是研究者在特定假設下的推算（原文寫明假設指數型自相關與不回流），不是量到的時間；17% 與 9.5 小時的換算照原文引用，不自行重算或解釋算法。3 小時是該文引用 Smith 與 Largier 1995 的估計，原文未讀。"
+      },
+      "duplicate_of": null,
+      "reason": "同一研究的延伸推算，只算 0.5 條（作者算 1），在片中併在浮標章之後一小段。",
+      "overlaps": [],
+      "final_id": "S56-007",
+      "batch": "batches/wave56-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S56-008",
+      "reviewer": "V11",
+      "question": "離岸流、潮流、近底回流、回沖，是同一種水流嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f8src/nws_rip_science.html（sha256 前綴與 F8 記錄相符）；今日以一般 curl 重抓 weather.gov/safety/ripcurrent-science，200、同為 64,485 位元組，雜湊不同（動態頁），逐段比對正文相同；Rip Current Myths and Misconceptions、Glossary",
+      "reopen_result": "潮汐是 6–12 小時的水位升降、海灣口與河口的強流叫潮流（tidal currents）、近底回流（undertow）是另一條回程且通常比離岸流慢、回沖（backwash）在灘面、沙洲不會崩塌而移動要幾天到幾個月（大風暴時短到幾小時）、大浪群使水位短暫升高並常伴隨一次脈動，都在原文。但這一節原文句句是對泳客說的（不會把人拉到水下、通常不構成危險、會把小孩沖倒），作者留下的「兩者都不會把東西往水下拉」「突然踩不到底」已經是安全判斷。",
+      "changes_applied": {
+        "question": "離岸流、潮流、近底回流、回沖，是同一種水流嗎？",
+        "answer_target": "不是。潮汐是 6 到 12 小時尺度的水位升降，海灣口、河口隨漲退潮出現的強流叫潮流；離岸流不是水位升降，是碎浪驅動的集中水流，只是強弱受潮位調節。碎浪帶回岸邊的水還有另一條回程：貼著底部往外流的近底回流（undertow），它通常比離岸流慢，和離岸流是兩種不同的現象。浪沖上灘面再退下來的回沖（backwash）又是另一回事，只發生在灘面附近。沙洲也不會突然崩塌：它的移動要幾天到幾個月，大風暴時也要幾小時；水突然變深，多半是一組大浪讓水位短暫升高，常伴隨一次離岸流脈動。",
+        "scope": "只做名詞辨正：各是什麼水流、由什麼驅動、多快。原文對泳客的判斷（會不會把人拉下去、危不危險、會不會把人沖倒）一律不取用，片中不得出現「不會被拉下水所以不用怕」之類的說法，也不談遇到時怎麼做。"
+      },
+      "duplicate_of": null,
+      "reason": "只留水流的分類與驅動來源，把安全判斷的句子全部拿掉。四個名詞合 0.5 條、沙洲移動的時間尺度 0.5 條，共 1 條（作者算 2）。若寫稿時做不到不帶安全暗示，整個核心刪掉，G12 仍有 12 條（8.8 分）。",
+      "overlaps": [],
+      "final_id": "S56-008",
+      "batch": "batches/wave56-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S56-009",
+      "reviewer": "V11",
+      "question": "月球軌道只歪了 5 度，為什麼就足以讓大多數新月撲空？一年有幾次機會？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f8src/gsfc_periodicity.html（sha256 相符；今日重抓 200、雜湊完全相同）§1.1–1.4 與註 1；f8src/nssdc_moonfact.html（sha256 相符；重抓雜湊相同）Orbital parameters",
+      "reopen_result": "「inclined about 5.1°」、新月在交點約 17° 內（註 1：15.39°–18.59°）、太陽每天 0.99°、穿過 34° 寬的區域要 34.5 天、朔望月 29.53 天所以「always be one and possibly two solar eclipses」、食季中點相隔 173.3 天、交點每年西退 19.3°，逐句都在；月球資料表傾角 5.145°、朔望週期 29.53 天。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "照原稿收。N248 只有「多數時候從上下方經過」。5.1° 半條、食限與 34.5 天對 29.53 天 1.5 條、173.3 天與交點西退半條，共 2.5 條（作者算 3）。",
+      "overlaps": [
+        {
+          "existing_id": "N248",
+          "note": "「新月多數時候不在交點附近」不重計"
+        }
+      ],
+      "final_id": "S56-009",
+      "batch": "batches/wave56-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S56-010",
+      "reviewer": "V11",
+      "question": "日食到底算不算稀有？一年最少幾次、最多幾次？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f8src/gsfc_secat5.html（sha256 相符；今日重抓 200、雜湊完全相同）Statistics 各表；f8src/gsfc_periodicity.html（sha256 相符；今日重抓 200、雜湊完全相同）§1.1–1.4 Table 1",
+      "reopen_result": "「a minimum of two and a maximum of five solar eclipses in every calendar year」；2 次 3,625 年（72.5%）、3 次 877 年（17.5%）、4 次 473 年（9.5%）、5 次 25 年（0.5%），五次的年份表含 1935 與 2206；相鄰間隔 1／5／6 個朔望月分別 11.4%、23.1%、65.5%，都在。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "照原稿收。每年 2–5 次的分布 1 條、相鄰間隔半條，共 1.5 條（作者算 2）。片中要說明這包含只有極區看得到的小偏食。",
+      "overlaps": [],
+      "final_id": "S56-010",
+      "batch": "batches/wave56-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S56-011",
+      "reviewer": "V11",
+      "question": "五千年將近一萬兩千次日食裡，全食占多少？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f8src/gsfc_secat5.html（sha256 相符；今日重抓 200、雜湊完全相同）Statistics 各表；f8src/nasa_eclipse_faq.html（sha256 相符；今日重抓 200、雜湊不同屬動態頁，How rare 一題逐句相同）",
+      "reopen_result": "11,898 次：偏食 4,200（35.3%）、環食 3,956（33.2%）、全食 3,173（26.7%）、全環食 569（4.8%）；FAQ「2-3 solar eclipses of all kinds each year, and about 2 total solar eclipses every 3 years」都在。FAQ 的數字轉述同一份目錄，不是第二份獨立統計。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "照原稿收，算 1 條（四種類型的次數比例；FAQ 是同一目錄的轉述不另計。作者算 1.5）。",
+      "overlaps": [
+        {
+          "existing_id": "N252",
+          "note": "全環食的成因在 N252；這裡只給 4.8% 的比例"
+        }
+      ],
+      "final_id": "S56-011",
+      "batch": "batches/wave56-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S56-012",
+      "reviewer": "V11",
+      "question": "月亮和太陽在天上明明差不多大，為什麼環食反而比全食多？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f8src/nssdc_moonfact.html、nssdc_sunfact.html、openstax_astro_4_7.html（三檔 sha256 相符；今日重抓雜湊完全相同）",
+      "reopen_result": "太陽視直徑 1 AU 時 1919、最大 1952、最小 1887 角秒；月球「Mean values at opposition from Earth」距離 378,000 公里、視直徑 1896 角秒；平均近地點 363,300、平均遠地點 405,500 公里，註解「roughly ranges from 357,000 km to 407,000 km」都在。OpenStax 原文是「Much of the time, the Moon looks slightly smaller than the Sun」——是「很多時候」，不是「多數時候」；「如果日食發生在月球比平均距離近一些的時候」才成全食也在。月球的 1896 角秒是資料表標為「衝（滿月）時的平均值」的單一條件，資料表沒有給近地點、遠地點的視直徑。",
+      "changes_applied": {
+        "answer_target": "因為兩者的視大小都在變，而月亮很多時候略小一點。NASA 資料表：太陽的視直徑在 1887 到 1952 角秒之間，1 天文單位時是 1919 角秒；月球在距地球 378,000 公里時是 1896 角秒（資料表只給這一個條件的平均值），而月地距離大致在 357,000 到 407,000 公里之間（平均近地點 363,300、平均遠地點 405,500 公里）。OpenStax 的說法是：很多時候月球看起來比太陽略小，即使完全對準也蓋不滿，成為環食；日食發生在月球比平均距離近一些的時候，本影才碰得到地面，成為全食。",
+        "scope": "視直徑各有條件（太陽 1 AU 與全年極值；月球只有 378,000 公里、衝時平均一個值）；兩張表並排時標明條件，不自行換算比例，也不自行推算近地點、遠地點的月球視直徑。「很多時候」照 OpenStax 原文，不寫成「多數時候」或百分比；環食比全食多的數字只用 S56-011 的目錄統計。"
+      },
+      "duplicate_of": null,
+      "reason": "把「多數時候」改回原文的程度。N250 已有「月地距離決定影錐到不到地面」；本核心只算視直徑與距離的數值 1 條、「很多時候略小」半條，共 1.5 條（作者算 2）。",
+      "overlaps": [
+        {
+          "existing_id": "N250",
+          "note": "月地距離決定全食或環食的機制不重計"
+        }
+      ],
+      "final_id": "S56-012",
+      "batch": "batches/wave56-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S56-013",
+      "reviewer": "V11",
+      "question": "同樣是日全食，為什麼 2024 年的全食帶比 2017 年寬那麼多、時間也長得多？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f8src/nasa_2024_vs_2017.html（sha256 相符；今日重抓 200、雜湊不同屬動態頁，段落相同）；f8src/gsfc_path2024.html（sha256 相符；重抓雜湊相同）整張路徑表",
+      "reopen_result": "NASA：2017 年月球「a little bit farther away」，食帶約 62–71 英里；2024 年北美段 108–122 英里；最長全食 2 分 42 秒（Carbondale 附近）對 4 分 28 秒（Torreón 西北）；「totality lasts the longest near the center of the path, widthwise, and decreases toward the edge」。路徑表：視直徑比 1.040–1.057、寬度 144–203 公里都在。作者寫的「往兩側邊界降到零」不在這兩份來源（作者自己說出自未立來源的名詞表），改成原文的「往邊緣遞減」。NASA 那篇是日食前的預報文。",
+      "changes_applied": {
+        "answer_target": "全食帶有多寬，看月球當時離地球多近。NASA 在 2024 年日食前比較過兩次橫越美國的日全食：2017 年 8 月 21 日那次月球稍遠，食帶約 62 到 71 英里寬，最長全食 2 分 42 秒；2024 年 4 月 8 日月球較近，北美段食帶寬 108 到 122 英里，最長 4 分 28 秒。哥達德中心的路徑表給出 2024 年那次沿線的月日視直徑比約 1.040 到 1.057，食帶從端點的 144 公里到最寬 203 公里；全食時間在食帶中央最長，往兩側邊緣遞減。",
+        "scope": "只比較這兩次；NASA 那篇是事前預報值。英里數是 NASA 科普文的說法（2024 年限北美段），公里數是路徑表全程，兩者取樣不同、不互相換算，片中各自標來源。"
+      },
+      "duplicate_of": null,
+      "reason": "刪掉沒有來源的「降到零」。N251 只有「影錐縮窄」；兩次日食的帶寬與時間 1 條、路徑表的視直徑比與沿線寬度半條，共 1.5 條（作者算 2）。",
+      "overlaps": [
+        {
+          "existing_id": "N251",
+          "note": "本影只掃過窄帶的機制不重計"
+        }
+      ],
+      "final_id": "S56-013",
+      "batch": "batches/wave56-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S56-014",
+      "reviewer": "V11",
+      "question": "全球每年都有日食，那為什麼一個地方幾百年才等到一次日全食？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f8src/openstax_astro_4_7.html；f8src/gsfc_secat5.html（sha256 相符；今日重抓 200、雜湊完全相同）Statistics 各表 Extreme Durations 表；f8src/spaceplace_ecl.html（sha256 相符；今日重抓 200、大小差 3 位元組，內文相同）",
+      "reopen_result": "OpenStax：月影尖端「sweeps eastward at about 1500 kilometers per hour along a thin band」、帶外「about 3000 kilometers on either side」看得到偏食、全食「can never exceed about 7 minutes」；目錄：最長全食 2186 Jul 16 的 7 分 29 秒、最短 0919 Feb 03 的 9 秒；Space Place：「This total eclipse happens about every year and a half somewhere on Earth」「On average, the same spot on Earth only gets to see a solar eclipse for a few minutes about every 375 years」都在。Space Place 那句字面寫的是「a solar eclipse」，從上下文才知道指日全食；頁面沒有任何計算來源或文獻。OpenStax 的「約 7 分鐘」與目錄的 7 分 29 秒要並列說明，不要讓觀眾覺得矛盾。",
+      "changes_applied": {
+        "answer_target": "因為本影落在地上只是一個小點，而且跑得很快。OpenStax：月影尖端以每小時約 1,500 公里向東掃過，畫出一條細帶，帶外兩側各約 3,000 公里只看得到偏食；全食最長大約 7 分鐘。NASA 目錄裡五千年間最長的一次是 2186 年 7 月 16 日的 7 分 29 秒，最短的只有 9 秒。所以雖然地球上平均每一年半左右某處就有一次日全食，NASA 的科普頁說，同一個地點平均要約 375 年才輪到一次、每次只有幾分鐘。",
+        "scope": "375 年只能寫成「NASA Space Place 科普頁的說法」：那是兒童科普頁，沒有列計算來源，原句字面是「日食」、依上下文指日全食；個別地點可相隔幾年或上千年。不放進標題、縮圖或章名，寫稿前要補到一手統計（Meeus 或 Espenak 的地點統計），補不到就只留「一年半一次、每次一條細帶」的定性說法。"
+      },
+      "duplicate_of": null,
+      "reason": "375 年是 NASA 官方頁上的句子，可以引用但只當一句有出處的說法，不當這一章的支柱；這一章靠影速、帶寬與時間上限站得住。影速與偏食範圍 1 條、時間上限與極值半條、375 年半條，共 2 條（作者算 2.5）。",
+      "overlaps": [],
+      "final_id": "S56-014",
+      "batch": "batches/wave56-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "S56-015",
+      "reviewer": "V11",
+      "question": "日食為什麼會隔 18 年又重演一次？重演的那一場為什麼不在原地？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f8src/gsfc_periodicity.html（sha256 相符；今日重抓 200、雜湊完全相同）§1.1–1.4 §1.4；f8src/nasa_eclipse_faq.html Saros 一題",
+      "reopen_result": "223 朔望月＝6585.3223 天、239 近點月＝6585.5375 天、242 交點月＝6585.3575 天（2000 CE 的值）、約 18 年 11 天 8 小時、多出的 1/3 天讓地球多轉約 8 小時或約 120°、食帶西移約 120°、三個沙羅約 54 年又 34 天回到大致同一區、序列歷時 1,226–1,551 年共 69–87 次、從一極開始在另一極結束，都在。但問句的前提要小心：Espenak 寫的是沙羅「最早為迦勒底人所知，是月食重複的間隔」，並說它當預報工具最大的缺點正是下一場不在同一地方；NASA FAQ 只說它「幾千年來被用來預測食」。來源沒有說古人靠它預報出某地的日食。",
+      "changes_applied": {
+        "question": "日食為什麼會隔 18 年又重演一次？重演的那一場為什麼不在原地？",
+        "answer_target": "因為月球的三個週期剛好湊得上：223 個朔望月是 6585.3223 天，239 個近點月是 6585.5375 天，242 個交點月是 6585.3575 天，都落在 6585 天多一點。隔這麼久（約 18 年 11 天 8 小時，叫一個沙羅），新月、月球遠近、相對交點的位置幾乎都回到原樣，於是出現一場很像的日食。古代的迦勒底人最早是從月食的重複認出這個間隔的。但那多出來的三分之一天，讓地球多轉了約 8 小時，下一場的食帶就落在西邊約 120° 的地方；要三個沙羅、約 54 年又 34 天，才回到大致同一區。一個沙羅序列不會永遠持續：交點每次偏一點，整個序列從一極移到另一極，歷時 1,226 到 1,551 年、共 69 到 87 次日食。",
+        "scope": "週期為西元 2000 年的值；序列統計出自同頁。只能說古人認出了這個重複的間隔（最早用在月食），不寫成古人能預報某地的日食。不涉及古代紀錄的解讀（那是池中 S51-002）。"
+      },
+      "duplicate_of": null,
+      "reason": "改掉來源不支持的「古人也能預報日食」前提。三個週期湊齊 1 條、西移 120° 與三倍沙羅 1 條、序列壽命半條，共 2.5 條（作者算 3）。",
+      "overlaps": [
+        {
+          "existing_id": "S51-002",
+          "note": "古代日食紀錄與地球自轉是 G569 的題目，本核心不碰"
+        }
+      ],
+      "final_id": "S56-015",
+      "batch": "batches/wave56-earth.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P56-001",
+      "reviewer": "V11",
+      "question": "收手後多出來的轉動動能，算得出來是多少、從哪裡來的嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f8src/openstax_up_11_3.html（sha256 相符；今日重抓 200、雜湊完全相同）§11.3 滑冰者段；f8src/openstax_cp_10_5.html（sha256 相符；重抓雜湊相同）Example 10.14；f8src/ucsb_2845.html（sha256 相符；重抓雜湊相同）",
+      "reopen_result": "University Physics：K′＝K(I/I′) 的推導、「The source of this additional rotational kinetic energy is the work required to pull her arms inward. Note that the skater’s arms do not move in a perfect circle—they spiral inward」、無摩擦時伸回去轉速與動能回到原值；College Physics Example 10.14：0.800 rev/s、2.34 與 0.363 kg·m²（「based on reasonable assumptions about a 60.0-kg skater」）、5.16 rev/s、29.6 J→191 J、「internal work that depletes some of the skater’s food energy」，都在。作者加的「肌肉一路對抗著往外甩的趨勢」兩份教材都沒有這句；「伸手是負功」也是作者的說法，教材只說伸回去會回到原來的轉速與動能。這組數字是滑冰者例題，不是轉椅。",
+      "changes_applied": {
+        "answer_target": "算得出來。沒有外力矩時 Iω 不變，所以收手後的轉動動能是原來的 I/I′ 倍：轉動慣量縮成幾分之一，動能就變成幾倍。OpenStax 的滑冰者例題（設定值）：伸臂時每秒 0.800 轉、轉動慣量 2.34 kg·m²，收臂後 0.363 kg·m²，轉速變成每秒 5.16 轉，轉動動能從 29.6 焦耳變成 191 焦耳。教材說，多出來的能量是她把手臂往內拉所做的功：手臂走的不是正圓而是向內的螺旋，這是消耗食物能量的內功。在沒有摩擦的理想情況下，把手伸回原位，轉速和動能都回到原來的值。",
+        "scope": "教材例題的設定值（依 60 公斤滑冰者的合理假設），不是實測，也不是轉椅的數字；片中轉椅示範只做定性，數字出現時要標「教材例題、滑冰者、假設值」。理想無摩擦。"
+      },
+      "duplicate_of": null,
+      "reason": "刪掉兩處教材沒有的說法。P029 已有「角動量守恆不等於動能守恆、可做內功」；本核心只算 K′/K＝I/I′ 與例題數字 1 條、螺旋路徑與可逆半條，共 1.5 條（作者算 2）。F8-S013 與池中 SRC-b1d348badab37f20 是同一頁，掛回原來源。",
+      "overlaps": [
+        {
+          "existing_id": "P029",
+          "note": "「可做內功」不重計；本核心補上 P029 自己要求的能量推導"
+        },
+        {
+          "existing_id": "P027",
+          "note": "收手變快本身不重計"
+        }
+      ],
+      "final_id": "P56-001",
+      "batch": "batches/wave56-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P56-002",
+      "reviewer": "V11",
+      "question": "角動量一點都沒少，能量有可能反而不見嗎？",
+      "verdict": "ADOPT",
+      "key_source_reopened": "f8src/openstax_up_11_3.html（sha256 相符；今日重抓 200、雜湊完全相同）§11.3 Example 11.7",
+      "reopen_result": "每分鐘 600 轉、無摩擦的飛輪，疊上轉動慣量三倍、原本靜止的飛輪，摩擦使兩者很快同速；ω＝ω0/4＝150 rev/min；「3/4 of the initial kinetic energy is lost to the coupling」；Significance 明寫拿它和滑冰者做功增加動能相比，都在。教材沒有說損失的能量變成什麼。",
+      "changes_applied": {},
+      "duplicate_of": null,
+      "reason": "照原稿收。單一理想化例題加一句對照，算 1 條（作者算 1.5）。片中不要自己補「變成熱」當成來源說的話。",
+      "overlaps": [],
+      "final_id": "P56-002",
+      "batch": "batches/wave56-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P56-003",
+      "reviewer": "V11",
+      "question": "花式滑冰多轉半圈的跳躍，是起跳時就帶了比較多的「轉」嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f8src/pmc12426178.xml（sha256 相符；今日重抓 Europe PMC 全文 XML，200、雜湊完全相同）§2.1–2.3、Table 2、Table 3、§3.2、§4.1、§4.3、§5",
+      "reopen_result": "7 名日本女子選手、冰上六種兩周跳、500 Hz、Table 2：Axel 滯空 0.493 s、700.6°、1422.6°/s；其他五種 0.419–0.481 s、463–489°、1013.4–1108.9°/s，都在。但 §3.2 寫明全身角動量在 Axel 與 Flip 之間有顯著差異（p＝0.043，其他比較 p>0.148）；Table 3 的平均值 Axel 最大（152.1，其餘 133.4–143.7，單位 ×10⁻³ s⁻¹，已除以體重與身高）。作者寫成「六種跳躍相近，Axel 並沒有顯著較大」漏了這一筆。論文自己的結論是「not significantly larger…approximately the same magnitude」。§4.3：「all relationships between the angular momentum and movement of the body discussed in this study are speculations」；收攏四肢降低轉動慣量沒有量。",
+      "changes_applied": {
+        "answer_target": "實測差得不多。日本研究者讓 7 名女子選手在冰上做六種兩周跳，用每秒 500 格的動作捕捉算出起跳瞬間全身的角動量：要轉兩周半的 Axel 平均值最高，但只和其中一種跳躍（Flip）有統計上的顯著差異，作者的結論是六種大致同一個量級。空中的表現卻差很多：其他五種跳躍滯空約 0.42 到 0.48 秒、每秒轉約 1,013 到 1,109 度；Axel 滯空 0.493 秒、轉了約 700 度、每秒 1,422.6 度。離開冰面後沒有外力矩，角動量已經固定；作者的解釋是選手在空中把四肢收向軀幹、降低轉動慣量來提高轉速，但他們自己寫明這是依前人研究的推測，這份研究沒有量空中的動作與轉動慣量。",
+        "scope": "7 人、只做兩周跳；角動量是除以體重與身高後的值；轉動慣量未直接量測；「收攏四肢所以轉得快」是論文作者的推測，片中要照實說是推測。不由兩組平均值自行算出轉動慣量的比例。"
+      },
+      "duplicate_of": null,
+      "reason": "補上 Axel 與 Flip 的顯著差異與「平均值最高」，不讓「沒有比較多」說過頭。起跳角動量的比較 1 條、滯空與轉速 1 條，共 2 條（作者算 2.5）。這是 G11 唯一的人體實測。",
+      "overlaps": [],
+      "final_id": "P56-003",
+      "batch": "batches/wave56-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P56-004",
+      "reviewer": "V11",
+      "question": "太空船發射時被轉到每分鐘 50 圈，沒有地面可以踩，要怎麼停下來？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f8src/jpl_dawn_launch.pdf（sha256 相符；今日重抓 jpl.nasa.gov，200、雜湊完全相同）第 10–11 頁 Launch Sequence；f8src/ntrs_19680018324.pdf（sha256 相符；重抓雜湊相同）I 第 1 段",
+      "reopen_result": "資料袋：太空船與 Star 48 上面級「spun up to about 50 rpm」；第三段燒完約 4.7 分鐘後 yo-yo 消旋「from about 50 rpm to zero, then ending up about 3 rpm in the opposite direction」；幾秒後分離；「xenon fuel carried onboard will still be spinning…wait 8 minutes, 20 seconds before starting to fire its thrusters」都在。Bush 1967：自旋穩定用於入軌末段的姿態維持。全部是發射前寫的計畫（未來式），不是飛行後的量測。來源沒有說「把角動量交給會離開的東西」這句話，那是作者的概括（Bush 的原文是 discards sufficient momentum）。",
+      "changes_applied": {
+        "answer_target": "把轉動丟給會離開的東西。火箭的末段常靠自旋來穩住指向（NASA 蘭利中心 1967 年的說明）。NASA 的曙光號（Dawn）2007 年發射前的任務說明寫著：太空船和第三段先被轉到每分鐘約 50 轉；第三段燒完約 4.7 分鐘後，溜溜球消旋系統把轉速從約 50 rpm 降到零，還稍微過頭、變成反方向約 3 rpm，幾秒後太空船與第三段分離。但還沒完：船體慢下來了，艙內的氙燃料卻還在轉，所以太空船要再等 8 分 20 秒，才開始用推進器把剩下的轉動停掉。",
+        "scope": "全部是發射前新聞資料袋的計畫值，片中要說「發射前的計畫是」；沒有配重與纜長數字，也沒有飛行後的實測。自旋穩定的用途出自 1967 年的一般說明，不是針對曙光號。"
+      },
+      "duplicate_of": null,
+      "reason": "數字照錄，把時態改成計畫。50→0→反向 3 rpm 一條、氙燃料還在轉半條，共 1.5 條（作者算 2）；自旋穩定那句是背景不另計。",
+      "overlaps": [],
+      "final_id": "P56-004",
+      "batch": "batches/wave56-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P56-005",
+      "reviewer": "V11",
+      "question": "每分鐘轉 141 圈、157 公斤的衛星，靠兩條纜線和末端的小配重怎麼停下來？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f8src/ntrs_19680018324.pdf I–II；f8src/ntrs_19940025142.pdf（sha256 相符；今日重抓 ntrs.nasa.gov，200、雜湊完全相同）Design Requirements、Yo-yo Despin System 參數表、Despin Testing、Conclusion",
+      "reopen_result": "Bush：兩條末端掛配重的纜線，放開後「discards sufficient momentum」；船體的動能在展開過程轉給配重與纜線，脫離時一起丟掉。SAMPEX：157 公斤、I＝9.79 kg·m²、半徑 0.38 公尺、初始 141±10 rpm、要求 3 rpm 以內、纜長 4.7 公尺、整套 1.8 公斤，都在。三處與作者不同：（1）原文是「Total Mass of Tip Weight, m = 154.15 grams」，沒有說是兩顆合計還是單顆；同表纜線每公尺 21.9 公克，兩條纜線本身就比這個數字重——「兩顆加起來一百五十幾公克就停住衛星」是作者的解讀。（2）消旋測試用的是工程測試機（ETU），不是飛行件（原文：飛行件沒做消旋測試，風險太高）；1991 年 10 月在 Wallops 戶外做四次：第一次一條纜線沒脫開，第二次（162 rpm）只降到約 4.6 rpm，第三次（192 rpm）約 8 rpm，第四次（142 rpm）約 2.3 rpm，「Only one of the despin tests performed met the ±3 rpm」，作者歸因於空氣阻力。（3）1992 年 4 月在蘭利 16 公尺直徑真空槽，ETU「despun to exactly zero rpm」。發射後只說首次地面聯絡確認機構成功運作，沒有轉速。",
+      "changes_applied": {
+        "question": "每分鐘轉 141 圈、157 公斤的衛星，靠兩條纜線和末端的小配重怎麼停下來？",
+        "answer_target": "靠把轉動轉給配重和纜線、再把它們丟掉。NASA 蘭利中心的說明：溜溜球消旋是兩條末端掛配重的纜線繞在船身上，放開後配重向外甩、纜線一圈圈展開；船體的轉動動能和動量在這過程轉移到配重與纜線，纜線展到徑向時脫鉤飛走，把這些動量一起丟掉。1992 年發射的 SAMPEX 衛星重 157 公斤、轉動慣量 9.79 kg·m²、半徑 0.38 公尺，分離時設計轉速每分鐘 141 圈，要降到 3 rpm 以內；設計表列的末端配重質量是 154.15 公克、纜線長 4.7 公尺，整套系統 1.8 公斤。用測試機在戶外做的四次消旋，只有一次落在 3 rpm 以內，設計者歸因於空氣阻力；搬進直徑 16 公尺的真空槽後，一次就降到零。",
+        "scope": "設計參數與測試機（非飛行件）的地面測試；飛行中實際的殘餘轉速文中未報。154.15 公克照原文寫「末端配重質量」，原文沒說是單顆還是兩顆合計，不寫「兩顆加起來」，也不拿它和衛星質量算倍數。配重很輕卻有效與纜長有關，但來源沒有白話解釋，寫稿時只照來源的轉移說法，不自行推導；與「伸手變慢」的類比只能當旁白的比方，不當來源的說法。"
+      },
+      "duplicate_of": null,
+      "reason": "改掉料號式的自行解讀（配重質量）與測試經過。原理半條（「丟給會離開的東西」P56-004 已算）、SAMPEX 的設計數字 1 條、空氣中與真空的測試 1 條，共 2.5 條（作者算 3）。",
+      "overlaps": [
+        {
+          "existing_id": "R21001",
+          "note": "同一原則（要改總角動量得靠外面）的不同手段，不是同答案"
+        }
+      ],
+      "final_id": "P56-005",
+      "batch": "batches/wave56-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P56-006",
+      "reviewer": "V11",
+      "question": "聚乙烯、聚苯乙烯、PET，各自在幾度過玻璃轉移、幾度才熔化？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f8src/nist_jpcrd_pe.pdf、nist_jpcrd_ps.pdf、nist_jpcrd_polyester.pdf（三檔 sha256 相符；今日重抓 srd.nist.gov，200、雜湊完全相同）",
+      "reopen_result": "聚乙烯：「equilibrium melting temperature…414.6 ± 0.5 K」、Tg「continues to be a matter of controversy…140 to 250」、熱容量分析「agree only with a glass transition of 237 K」；「Semicrystalline samples are thus two-phase structures…Below Tg both phases are solid; above Tg, but below Tm, one phase is solid (crystal), the other is liquid」。PET：正文「glass transition is reasonably well established at 342 K」、Table 1 Tm 553。聚苯乙烯：式 (1) 的 373、整排聚苯乙烯平衡熔點 516 K、「Atactic polystyrene…has no crystallinity」，都在。三點是作者加的：三份文件都沒有說塑膠袋、保麗龍杯、寶特瓶各是哪一種塑膠；「商用的」聚苯乙烯原文沒有，只說雜排的沒有結晶；「靠晶區撐住形狀」原文沒有，原文只說高於 Tg 低於 Tm 時晶體是固體、另一相是液體。與室溫 298 K 比大小是作者的比較。",
+      "changes_applied": {
+        "question": "聚乙烯、聚苯乙烯、PET，各自在幾度過玻璃轉移、幾度才熔化？",
+        "answer_target": "每種塑膠有兩個不同的溫度。美國標準參考資料期刊 1981 到 1983 年的評估值：聚乙烯玻璃轉移約 237 K、平衡熔點 414.6±0.5 K；PET 玻璃轉移 342 K、平衡熔點 553 K；聚苯乙烯玻璃轉移在分子量很大時趨近 373 K，雜排的聚苯乙烯沒有結晶，能結晶的整排聚苯乙烯平衡熔點 516 K。原文的定義：半結晶樣品是兩相結構，玻璃轉移以下兩相都是固體；高於玻璃轉移、低於熔點時，一相是固體（晶體），另一相是液體。照這些數字，室溫落在聚乙烯的兩個溫度之間，卻低於 PET 和聚苯乙烯的玻璃轉移。",
+        "scope": "1981–1983 年的評估資料；熔點是平衡晶體的外推值，商品的實際熔融溫度較低；聚乙烯的 237 K 仍有爭議（見 P56-007）。來源沒有說塑膠袋、保麗龍杯、寶特瓶是哪種塑膠，也沒有說誰「撐住形狀」；片中若要對應到日常用品，要另補來源並標材料。溫度以原文的 K 為準，攝氏換算在寫稿時做並標「約」；末句與室溫的比較是依數字排大小，原文沒有這句。"
+      },
+      "duplicate_of": null,
+      "reason": "刪掉三處來源沒有的說法。三種塑膠各兩個溫度算 1.5 條；兩相定義 H3024 已有，與室溫比大小是作者的比較，都不計（作者算 3）。",
+      "overlaps": [
+        {
+          "existing_id": "H3024",
+          "note": "玻璃轉移與熔融是兩回事、半結晶的兩相說法不重計"
+        }
+      ],
+      "final_id": "P56-006",
+      "batch": "batches/wave56-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P56-007",
+      "reviewer": "V11",
+      "question": "玻璃轉移溫度是像熔點那樣刻在材料上的一個固定數字嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f8src/nist_jpcrd_pe.pdf §1；f8src/nist_jpcrd_ps.pdf §2.1 式 (1)",
+      "reopen_result": "聚乙烯 Tg「140 to 250」各家不同、只與 237 K 相符、「the low temperature limit of the glass transition extends to…」（低溫端拖長）；聚苯乙烯 1/Tg＝(1/373)＋(0.864/M)；聚乙烯平衡晶體熔化熱 4.1±0.2 kJ/mol；非晶高分子在玻璃轉移「a significant increase in heat capacity」，都在。式 (1) 原文沒有交代 M 的適用範圍；「鏈越短 Tg 越低」是從式子讀出來的，原文沒有這句。",
+      "changes_applied": {
+        "answer_target": "不是。評估聚乙烯資料的作者直說它的玻璃轉移溫度「仍有爭議」，各研究給過 140 到 250 K；他們的熱容量分析只與 237 K 相符，而且轉移的低溫端拖得很長。聚苯乙烯的玻璃轉移會隨分子量改變，評估資料用 1/Tg＝1/373＋0.864/M 表示：分子量 M 很大時才趨近 373 K。熔融是晶體消失，要吸收熔化熱（聚乙烯平衡晶體約每莫耳 4.1 千焦）；玻璃轉移則是熱容量往上跳一階，沒有這筆熔化熱。",
+        "scope": "同上評估資料；式中 M 的適用範圍原文未說明，只引用式子，不代數字算個別分子量的 Tg。量法與升溫速率對讀數的影響本輪沒有來源，不寫。"
+      },
+      "duplicate_of": null,
+      "reason": "把作者從式子讀出的話收斂成原文有的。Tg 的範圍爭議半條、分子量依賴半條；熔化熱對台階與 H3024 的區別重疊，不另計，共 1 條（作者算 1.5）。",
+      "overlaps": [
+        {
+          "existing_id": "H3024",
+          "note": "熔融與玻璃轉移的本質區別不重計"
+        }
+      ],
+      "final_id": "P56-007",
+      "batch": "batches/wave56-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P56-008",
+      "reviewer": "V11",
+      "question": "同一種 PVC，加了塑化劑之後到底變了多少？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f8src/PMC8158838.xml（sha256 相符；今日重抓 Europe PMC，200、雜湊完全相同）§2.3、Table 2、§4.4、Table 3、§4 量測方法",
+      "reopen_result": "純 PVC 薄膜 Tg 89.16°C、加 30 phr DOP（PVC-D）61.31°C（DMA，1 Hz、每分鐘升 5°C）；Table 2：抗拉強度 35.2±0.9→30.1±0.8 MPa、拉伸模數 1427.8±34.0→396.7±16.5 MPa、斷裂伸長率 25.0±15.6%→272.2±8.6%；「As we know, PVC materials can be classified as hard PVC (0–30 phr), soft PVC (30–70 phr), and paste PVC (>80 phr)」，都在。要注意三點：（1）這份資料裡加了 30 份 DOP 的薄膜，DMA 的 Tg 仍是 61°C，高於室溫——所以不能用它說「塑化劑把玻璃轉移降到室溫以下」；它支持的是同樣沒有加熱，模數掉到約四分之一強、能拉長得多。（2）純 PVC 的斷裂伸長率 25.0% 的標準差是 15.6%，「一拉就斷」說過頭。（3）phr 分級是該文一句「如我們所知」的說法，沒有引文，不能寫成業界標準。",
+      "changes_applied": {
+        "answer_target": "一份薄膜研究的對照組給了整組數字：每一百份 PVC 樹脂加 30 份塑化劑 DOP（鄰苯二甲酸二辛酯），以動態機械分析量到的玻璃轉移溫度從純 PVC 的 89.16°C 降到 61.31°C；拉伸模數從 1,427.8 MPa 降到 396.7 MPa；拉斷前能伸長的比例從 25.0% 變成 272.2%，抗拉強度則只從 35.2 降到 30.1 MPa。也就是沒有加熱，材料就從硬而拉不長變成可以大幅拉長。該文提到的分法是：0 到 30 份算硬質，30 到 70 份算軟質，80 份以上是糊狀 PVC。",
+        "scope": "溶液澆鑄薄膜、單一添加量（30 phr）、DOP 為對照組；Tg 取自 DMA（1 Hz），量到的 61°C 仍高於室溫，片中不得說「塑化劑把玻璃轉移降到室溫以下」，只能說降了多少、材料變得多軟。純 PVC 的伸長率 25.0% 標準差 15.6%。phr 分級是該文的一句說法、未附引文。不能與別份研究的 DSC 值相減或連成曲線；不另算倍數；只講塑化機制，不延伸健康或法規。"
+      },
+      "duplicate_of": null,
+      "reason": "數字都對；補上「Tg 仍高於室溫」這個會讓整章說法出錯的條件。Tg 前後值半條、模數與伸長率 1 條、分級半條，共 2 條（作者算 2.5）。",
+      "overlaps": [
+        {
+          "existing_id": "H3025",
+          "note": "塑化劑的作用機制不重計"
+        }
+      ],
+      "final_id": "P56-008",
+      "batch": "batches/wave56-physics.json",
+      "disposition": "candidate"
+    },
+    {
+      "proposal_id": "P56-009",
+      "reviewer": "V11",
+      "question": "把一塊塑膠壓住不動，它頂回來的力多快開始變小？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "f8src/PMC9781170.xml（sha256 相符；今日重抓 Europe PMC，200、雜湊完全相同）摘要、§2.1、§2.3、§2.6、§3.3、Table 2",
+      "reopen_result": "GUR 4120 粉末平均分子量 4.7×10⁶ g/mol；「After each incremental displacement ramp of 2 mm, the crosshead was stopped and the structure was allowed to relax for 5 min」；兩項 Prony 級數；Table 2：孔隙率 0 的 τ2 為 22–24 秒、τ1 為 178–189 秒，孔隙率 25–40% 的 τ2 為 16–25 秒、τ1 為 142–162 秒；「relaxation components longer than 10⁴ s」，都在。四點與作者不同：（1）摘要把兩個過程分別叫「長的分子時間尺度（約 160 秒）」與「短的結構時間尺度（約 20 秒）」，作者寫成「這主要是分子鏈自己的重排時間」，把兩個混成一個。（2）§2.3 寫明實心試片因機台荷重上限改成每次只壓 0.5 毫米，不是 2 毫米（Table 2 卻仍用 2–8 毫米標階段）。（3）§3.3 的原話是「實心與發泡之間有小差異；發泡材料之間取不出統計上顯著的差異」，不是全部無關。（4）§2.1 說發泡材的孔隙率做在 60% 到 80%，Table 2 卻列 25、30、40%，論文自己前後不一。試驗在掃描電鏡腔內，溫度未寫。",
+      "changes_applied": {
+        "answer_target": "幾十秒內就看得到。一項研究把超高分子量聚乙烯（原料粉末平均分子量 4.7×10⁶）試片分段壓縮：每壓一段就停住、固定位置 5 分鐘，同時記錄力。位移沒有變，力卻一路往下掉；曲線要用兩個時間常數才描述得好：實心試片是約 22 到 24 秒的快過程，加上約 178 到 189 秒的慢過程。作者把慢的歸為分子層級、快的歸為結構層級的鬆弛。做成發泡材之後，兩個時間落在 16 到 25 秒與 142 到 162 秒，和實心的略有差異，但不同孔隙率之間取不出統計上顯著的差別。作者還提醒，聚合物一般另有長於一萬秒的鬆弛成分，5 分鐘的試驗看不到。",
+        "scope": "單一材料、5 分鐘時間窗的擬合值；試驗在電鏡腔內、溫度未寫。發泡試片每次壓 2 毫米、實心試片每次 0.5 毫米；論文對孔隙率的說法前後不一（方法寫 60–80%，表列 25–40%），片中不報孔隙率數字。不是設計壽命資料。"
+      },
+      "duplicate_of": null,
+      "reason": "改正被混成一個的兩個時間尺度與試驗程序。試驗程序半條、兩個時間常數 1 條；「另有更長成分」H3090 的時間依賴已含，不另計，共 1.5 條（作者算 2）。",
+      "overlaps": [
+        {
+          "existing_id": "H3090",
+          "note": "固定形變下應力鬆弛的機制不重計"
+        }
+      ],
+      "final_id": "P56-009",
+      "batch": "batches/wave56-physics.json",
+      "disposition": "candidate"
+    }
+  ],
+  "non_author_reviews": [
+    {
+      "target": "G21 獵物藏起來，電鰻怎麼逼牠露出位置？",
+      "theme_id": "G21",
+      "title": "獵物藏起來，電鰻怎麼逼牠露出位置？",
+      "reviewer": "V10",
+      "author": "F7",
+      "author_verdict": "ready",
+      "author_est_minutes": 13.7,
+      "verdict": "ready",
+      "final_core_ids": [
+        "B2303",
+        "L56-004",
+        "L56-001",
+        "B2301",
+        "L56-002",
+        "L56-003",
+        "L56-005",
+        "L48-004",
+        "B2302",
+        "L56-007",
+        "L56-008"
+      ],
+      "recount_facts": "15.5 條。舊核心三個各只有一句結論：B2303 1、B2301 1、B2302 1＝3（第一輪給四個核心 7 條，扣掉移出的 B2300，並把只有一句的答案各算 1 條）；L48-004 2（改追導電棒、拿掉導體就中止吸食與移動碳片追蹤）。新核心：L56-004 1.5、L56-001 1.5、L56-002 1、L56-003 1、L56-005 2、L56-007 1.5、L56-008 2＝10.5。合計 15.5。作者的 21.5 條把舊核心的結論與新核心的同一結論各算一次，並把同一實驗的每個數字各算一條；（15.5×140＋700）÷270＝10.6 分。",
+      "recount_fact_count": 15.5,
+      "recount_minutes": 10.6,
+      "planned_minutes": 10.5,
+      "cuts": "移出 B2300（只掛新聞稿、一句話，由 L56-004 取代）。L56-006（開頭兩下的間隔，假說）與 L56-009（躍出水面，是防禦，原論文只有摘要）收進批次備用、不進題案。加入池中既有的 L48-004：它目前只在短題 G531（short_explainer，沒有素材判定）裡，不在任何可成題的長題，可以用。作者排 11 分超過重算的 10.6 分，改排 10.5 分。",
+      "turns": [
+        "以為高壓是把獵物電昏；箭毒對照與一個脈衝一次抽動顯示牠是隔著水啟動獵物的運動神經，而同一招只放兩下時，目的反過來是逼藏著的獵物動：塑膠袋裡的魚由實驗者決定抽不抽，電鰻只在魚抽了才攻擊。",
+        "以為彎成圈是加大電量；電極量到的是輸出不變、電場被重新擺到獵物兩側（常超過兩倍），而且目的不是電得更重，是用每秒約 100 次的連發把獵物的肌肉用到沒力。"
+      ],
+      "chapter_outline": [
+        {
+          "title": "開場：看不見的獵物，先動了一下",
+          "seconds": 55,
+          "core_ids": [
+            "B2303"
+          ],
+          "new_information": "藏著的魚自己抖了一下，電鰻才撲過去；全片的問題：這一下是誰讓牠抖的。"
+        },
+        {
+          "title": "同一種脈衝，兩種強度",
+          "seconds": 65,
+          "core_ids": [
+            "L56-004"
+          ],
+          "new_information": "弱的探路、強的攻擊是同一套線路：低門檻細胞先放、高頻疊加才全開；強脈衝不能再調大。"
+        },
+        {
+          "title": "一放電，魚就定格",
+          "seconds": 70,
+          "core_ids": [
+            "L56-001"
+          ],
+          "new_information": "3–4 毫秒內定住、停電後照樣逃；測力計量到接近全身最大張力。"
+        },
+        {
+          "title": "電到的是神經：箭毒對照與一下對一下",
+          "seconds": 100,
+          "core_ids": [
+            "B2301",
+            "L56-002",
+            "L56-003"
+          ],
+          "new_information": "箭毒擋掉收縮、破壞脊髓沒差；電鰻累了脈衝變疏，看得到一個脈衝一次抽動。轉折一的前半。"
+        },
+        {
+          "title": "只放兩下：逼牠自己露出位置",
+          "seconds": 100,
+          "core_ids": [
+            "L56-005"
+          ],
+          "new_information": "雙脈衝後 20–40 毫秒才出擊；塑膠袋隔電、由實驗者決定魚抽不抽，電鰻只在魚抽了才攻擊。轉折一。"
+        },
+        {
+          "title": "衝出去以後，靠同一串電修正方向",
+          "seconds": 60,
+          "core_ids": [
+            "L48-004"
+          ],
+          "new_information": "同一套塑膠袋裝置旁放導電棒，電鰻半路改追導體：高壓同時在追蹤。"
+        },
+        {
+          "title": "彎成圈：電量沒變，電場重新擺過",
+          "seconds": 80,
+          "core_ids": [
+            "B2302",
+            "L56-007"
+          ],
+          "new_information": "T 形電極桿插在獵物體內，彎身後量到的電場常超過兩倍，輸出並沒有變大。轉折二的前半。"
+        },
+        {
+          "title": "一直電，是為了讓牠沒力",
+          "seconds": 65,
+          "core_ids": [
+            "L56-008"
+          ],
+          "new_information": "每秒約 100 次連發等於肌肉疲勞實驗；獵物一動就再彎再電。轉折二。"
+        },
+        {
+          "title": "收尾：一套放電，四種用法",
+          "seconds": 35,
+          "core_ids": [
+            "B2303",
+            "L56-005"
+          ],
+          "new_information": "回到開場那一下抽動；說明這些是不同實驗的串聯，不是同一次捕獵。"
+        }
+      ],
+      "core_question": "同一套放電系統如何先找出藏著的獵物，再處理難以制伏的目標？",
+      "connection": "沿一次捕獵的順序走：不知道在哪裡、逼出動靜、定住、追上、仍然掙扎時改變姿勢。每一章是一個不同的實驗，片中要說明這是不同研究的串聯示意，不能剪成同一次實拍捕獵。",
+      "boredom_risk": "放電動畫若每次相同就只剩奇觀；每一章要換一個看得見的裝置（測力計、塑膠袋、導電棒、T 形電極桿），讓觀眾看出問的是不同的事。",
+      "drop_if": "若要縮片長，先刪「衝出去以後」一章（L48-004），再刪「同一種脈衝」一章；兩章都刪後 12 條、8.8 分，仍過線；再少就退回後備。不以危險接觸示範補畫面，不比插座電壓。",
+      "evidence_gaps": "全片的實驗細節來自原作者 2019 年的開放全文回顧與 2021 年的 Toxins 文章，Science 2014、Current Biology 2015 原論文沒有讀到（403）：各實驗的隻數、試驗次數與 p 值沒有，片中說「作者回顧」。電細胞門檻機制是回顧轉述 Bennett 1968、1970。",
+      "still_missing": "Science 2014（doi:10.1126/science.1260807）與 Current Biology 2015 原論文仍未取得，寫稿前再試一次或在片中明說依據是作者回顧；脈衝寬度兩文說法不同，寫「一兩毫秒」；對螯蝦持續放電的時間兩文一說超過、一說將近一分鐘。B2303、B2301、B2302 仍掛 Vanderbilt 新聞稿，進稿改引回顧。L56-004、L56-008 套用本覆核改字，G21 各新核心的範圍換成本覆核的版本。",
+      "reason": "L48-NA005–007 的重收條件「可實讀原研究正文，且有既有答案未包含的干預控制」：字面上沒有滿足（讀到的不是 2014、2015 原論文）；實質上滿足一半以上：原作者自己寫的同儕審查開放全文，逐段交代箭毒對照、塑膠袋加刺激器、T 形電極桿與疲勞刺激這四組干預，本機有可逐句核對的全文，這些干預舊答案都沒有。裁定：L56-002、L56-005、L56-007、L56-008 可收，條件是範圍寫明依據是作者回顧、只用回顧給得出的數字；L48-NA006（細胞同步）沒有新的干預，不算重收，L56-004 以另一個問題收。兩個轉折成立，10.6 分過線。"
+    },
+    {
+      "target": "G20 清潔魚想偷吃，合作為什麼還能繼續？",
+      "theme_id": "G20",
+      "title": "清潔魚想偷吃，合作為什麼還能繼續？",
+      "reviewer": "V10",
+      "author": "F7",
+      "author_verdict": "ready",
+      "author_est_minutes": 12.4,
+      "verdict": "ready",
+      "final_core_ids": [
+        "B2308",
+        "L56-010",
+        "L56-011",
+        "L56-012",
+        "L40-007",
+        "L56-013",
+        "L56-014",
+        "B2309"
+      ],
+      "recount_facts": "14 條。舊核心：B2308 1.5（偏好黏液、客戶離開或追趕終止進食）、B2309 2.5（看別隻魚的結果改變合作程度、改變選客、不照抄無意義的偏好）＝4，第一輪給這兩個核心 6 條，這裡只算答案裡寫得出的；L40-007 1.5。新核心：L56-010 1.5、L56-011 2、L56-012 1.5、L56-013 2、L56-014 1.5＝8.5。合計 14。作者的 19 條把 B2308 已有的偏好與兩種客戶反應又算進新核心，並把 p 值各算一條；（14×140＋700）÷270＝9.9 分。",
+      "recount_fact_count": 14,
+      "recount_minutes": 9.9,
+      "planned_minutes": 9.5,
+      "cuts": "沒有移出舊核心。加入池中既有的 L40-007：它目前只在短題 G395（short_explainer，沒有素材判定）裡，不在任何可成題的長題，可以用。企劃原本拿三章講 B2309，改成一章。要縮片長先刪 L56-012（全是回顧轉述），再刪 L56-014；兩個都刪後 11 條、8.3 分，低於門檻，所以最多只能刪一個。全片不加其他合作動物。",
+      "turns": [
+        "以為清潔魚本來就愛吃寄生蟲；牠其實偏好黏液，合作是被客戶管出來的：板子實驗把「轉頭就走」和「回頭追打」分開測，兩招都能讓牠改吃不愛吃的，沒有後果的對照組反而全吃蝦。",
+        "以為只有客戶在管；兩隻一起清潔時，公魚會追偷吃的母魚，隔板一擋母魚就多偷吃，而且這個處罰 1 分鐘後有效、過半小時就沒用，罰多重還看賭注與體型。"
+      ],
+      "chapter_outline": [
+        {
+          "title": "開場：一天上千位客人，牠更想吃的是黏液",
+          "seconds": 60,
+          "core_ids": [
+            "B2308",
+            "L56-010"
+          ],
+          "new_information": "每天 800 到 3,000 次互動；偏好的其實是客戶的黏液。問題：那合作怎麼還在。"
+        },
+        {
+          "title": "在海裡，怎麼看得出牠偷咬了一口",
+          "seconds": 45,
+          "core_ids": [
+            "L56-010"
+          ],
+          "new_information": "看客戶身體那一抖：黏液越好抖得越多，寄生蟲多的抖得少。"
+        },
+        {
+          "title": "客戶的兩招：走人，或追打",
+          "seconds": 100,
+          "core_ids": [
+            "L56-011"
+          ],
+          "new_information": "24 隻魚、三組板子：一吃蝦就抽走 60 秒，或追牠一兩秒；兩招都讓牠改吃魚糧，對照組反而全吃蝦。轉折一。"
+        },
+        {
+          "title": "對誰偷咬，看對方手上的牌",
+          "seconds": 50,
+          "core_ids": [
+            "L56-012"
+          ],
+          "new_information": "掠食性客戶幾乎不被咬、還多得到按摩；定居客戶追打後下一次服務變好。"
+        },
+        {
+          "title": "連下一盤也會沒有",
+          "seconds": 60,
+          "core_ids": [
+            "L40-007"
+          ],
+          "new_information": "連第二盤也一起被撤時，牠在第一盤就多吃魚糧。"
+        },
+        {
+          "title": "同事也會罰：隔板後面的母魚",
+          "seconds": 95,
+          "core_ids": [
+            "L56-013"
+          ],
+          "new_information": "一隻偷吃兩隻都沒得吃；隔板讓公魚追不到，母魚就多偷吃；處罰 1 分鐘後有效、半小時後無效。轉折二。"
+        },
+        {
+          "title": "罰多重，看賭注",
+          "seconds": 50,
+          "core_ids": [
+            "L56-014"
+          ],
+          "new_information": "高價板、體型接近時罰得最重；先雌後雄，母魚長大會變成對手。"
+        },
+        {
+          "title": "幼魚光用看的，學到後果",
+          "seconds": 75,
+          "core_ids": [
+            "B2309"
+          ],
+          "new_information": "幼魚看別隻魚的互動結果，就改變合作程度與選客。"
+        },
+        {
+          "title": "收尾：誘惑還在，合作靠後果撐著",
+          "seconds": 35,
+          "core_ids": [
+            "B2308",
+            "L56-013"
+          ],
+          "new_information": "回到開場的黏液；說明都是板子實驗，不替魚加道德動機。"
+        }
+      ],
+      "core_question": "短期最想吃的東西和長期的進食機會衝突時，是什麼讓清潔魚選擇不偷吃？",
+      "connection": "沿一次清潔互動開場，再轉進研究者的模型板；每一章只換一條板子的規則（板子會走、會追、連下一盤也撤、兩隻共用、板子大小不同），觀眾看的是同一個選擇在不同後果下怎麼變。",
+      "boredom_risk": "模型板畫面容易重複；每章開頭先用一句話說清楚這次板子的規則改了什麼，並換一種圖示。",
+      "drop_if": "只能刪 L56-012 或 L56-014 其中一章；若兩章都站不住就退回後備。不加其他合作動物，不把板子實驗拍成真客戶實驗。",
+      "evidence_gaps": "三篇關鍵來源（Bshary & Grutter 2005、Raihani 等 2012 賭注、Bshary & Noë 2023）本機沒有逐字全文快取，數字由覆核線上要求逐字引句重讀確認；2010 年 Science 的原始懲罰實驗、2003 年偏好實驗全文、田野的抖動數字都沒讀到。",
+      "still_missing": "B2308、B2309 的來源 PMC7054547 的樣本、控制組與統計仍未逐主張重讀，寫稿前必須重讀。Raihani, Grutter & Bshary 2010（Science）與 Grutter & Bshary 2003 全文未取得。2005、2012（賭注）、2023 三篇寫稿前若能取得可存檔的全文（機構典藏或 Europe PMC 開放後）再對一次。L56-010、L56-012、L56-013 套用本覆核改字。",
+      "reason": "三篇 WebFetch 來源的數字全部線上逐字確認，作者筆記與原頁一致；找到的錯是 L56-013 的樣本數（24 隻母魚應為 2011 年的 12 對）、L56-012 一句對不上原文的條件。兩個轉折成立，9.9 分過線，排 9.5 分。"
+    },
+    {
+      "target": "G22 林蛙凍住還能活，保命的糖得先送去哪裡？",
+      "theme_id": "G22",
+      "title": "林蛙凍住還能活，保命的糖得先送去哪裡？",
+      "reviewer": "V10",
+      "author": "F7",
+      "author_verdict": "ready",
+      "author_est_minutes": 13.7,
+      "verdict": "ready",
+      "final_core_ids": [
+        "B2304",
+        "L56-015",
+        "L56-016",
+        "B2305",
+        "L56-017",
+        "L56-018",
+        "L56-019",
+        "L56-020",
+        "L56-021"
+      ],
+      "recount_facts": "16 條。舊核心：B2304 1（保護性溶質減少細胞脫水與冰損傷）、B2305 1.5（儲備量、動員速度與調節差異）＝2.5，第一輪給 5 條，這裡只算答案裡寫得出的。新核心：L56-015 2、L56-016 1.5、L56-017 2、L56-018 1.5、L56-019 2.5、L56-020 2、L56-021 2＝13.5。合計 16。作者的 21.5 條把 B2305 已有的「動員速度」再算進 L56-017，並把同一張表的數字各算一條；（16×140＋700）÷270＝10.9 分。",
+      "recount_fact_count": 16,
+      "recount_minutes": 10.9,
+      "planned_minutes": 10.5,
+      "cuts": "沒有移出舊核心；B2304、B2305 各當一章的框架。企劃原來第二章「糖如何參與保護」與第五章回收併進開場與收尾。作者把 L56-016 獨立成 50 秒一章，改併進第二章。要縮片長先刪 L56-018（存活試驗），刪後 14.5 條、10.1 分。",
+      "turns": [
+        "以為北方的蛙是糖比較多；同樣凍 48 小時兩個族群由肝醣算出的糖一樣多，阿拉斯加蛙贏在頭幾個小時，因為冰一多、循環一差，糖就卡在肝臟送不出去。",
+        "以為單次結凍的實驗就是牠的極限；野外的蛙低於冰點平均 193 天、18 隻全數存活，組織裡的糖遠高於實驗室凍出來的，受控實驗顯示來回凍融才把糖送得更遠（肌肉 2.3 倍）；送不到的地方，還有結冰前就先靠拆肌肉備好的尿素。"
+      ],
+      "chapter_outline": [
+        {
+          "title": "開場：凍住的蛙，什麼都停了",
+          "seconds": 55,
+          "core_ids": [
+            "B2304",
+            "L56-015"
+          ],
+          "new_information": "沒有心跳、呼吸、循環；問題：這樣怎麼還活得回來，保命的糖又得先送到哪裡。"
+        },
+        {
+          "title": "冰長在細胞外，器官先把水讓出去",
+          "seconds": 85,
+          "core_ids": [
+            "L56-015",
+            "L56-016"
+          ],
+          "new_information": "最多 65–70% 的水變成細胞外的冰，常要 15–20 小時；肝臟失水最多 66%，溶質因此變濃。"
+        },
+        {
+          "title": "北方的蛙不是糖多，是糖早",
+          "seconds": 110,
+          "core_ids": [
+            "B2305",
+            "L56-017"
+          ],
+          "new_information": "同樣凍到 −2.5°C：阿拉斯加蛙 6 小時就動用肝醣，俄亥俄蛙要 30 小時；48 小時兩群做出的糖一樣多。轉折一。"
+        },
+        {
+          "title": "能凍多冷、凍多久",
+          "seconds": 60,
+          "core_ids": [
+            "L56-018"
+          ],
+          "new_information": "−8°C 十隻全活、−16°C 四隻解凍兩天後還活著；但 −4°C 凍 12 週四隻全死。"
+        },
+        {
+          "title": "野外的蛙凍了半年",
+          "seconds": 95,
+          "core_ids": [
+            "L56-019"
+          ],
+          "new_information": "越冬處最低平均 −14.6°C、低於冰點平均 193 天、18 隻全活；組織裡的糖遠高於實驗室。轉折二的入口。"
+        },
+        {
+          "title": "每解凍一次，糖多走一段",
+          "seconds": 95,
+          "core_ids": [
+            "L56-020"
+          ],
+          "new_information": "直接凍到 −16°C 沒有比 −8°C 多用肝醣；來回凍融三次，肝醣只剩 6%，肌肉的糖 2.3 倍。轉折二。"
+        },
+        {
+          "title": "送不到的地方，早就放了尿素",
+          "seconds": 90,
+          "core_ids": [
+            "L56-021"
+          ],
+          "new_information": "入冬前血漿尿素從 10 升到 86 或 187，是拆肌肉換來的；肝以葡萄糖為主，肌肉過半是尿素。"
+        },
+        {
+          "title": "收尾：活下來有條件",
+          "seconds": 40,
+          "core_ids": [
+            "B2304",
+            "B2305"
+          ],
+          "new_information": "慢慢凍、凍前備料、凍融交替；說明都是小樣本的受控實驗與一地的田野追蹤，不外推。"
+        }
+      ],
+      "core_question": "冰形成時，保護物質必須趕在什麼條件改變之前到達細胞？送不到的地方靠什麼？",
+      "connection": "以「凍結開始到循環停止」的時間壓力串起來：冰長在哪裡、器官怎麼讓水、糖多快送出、能撐多冷多久、野外為什麼更強、反覆凍融與事先備好的尿素。",
+      "boredom_risk": "只反覆強調耐寒會在兩分鐘內講完；中段每一章要有一條時間線或一組並排比較（6 小時對 30 小時、直接凍對凍融、肝對肌肉）。",
+      "drop_if": "若寫稿時 JEB 兩篇（存活試驗、田野追蹤）無法再次讀到原頁，刪 L56-018、L56-019 後剩 12 條、8.8 分，第二個轉折只剩受控凍融實驗，仍可成題但要改寫轉折；再少就改短解說。不靠極端溫度排行撐時間。",
+      "evidence_gaps": "JEB 兩篇本機沒有逐字全文快取，數字由覆核線上要求逐字引句重讀確認，Costanzo 2013 的討論後半沒讀到；65–70%、15–20 小時是回顧引用的舊量測。所有實驗隻數都小（4–10 隻）；族群差異是否遺傳沒有證據，片中不能說「基因」。影像只能做機制示意。",
+      "still_missing": "細胞外結冰的原始量測與 Storey & Storey 2017 大回顧仍取不到（403）。Larson 2014 野外組組織葡萄糖的樣本數（另外找到的越冬蛙每年兩隻）寫稿前重讀原表；圖內數據未讀。L56-018、L56-019、L56-021 套用本覆核改字（L56-019 連問句一起改）。不寫「十幾倍」等自己算的倍數。",
+      "reason": "JEB 兩篇的數字全部線上逐字確認，作者筆記與原頁一致。找到的錯：L56-019 把假說的理由寫成「解凍時循環恢復把糖送出去」（原文是做糖比收回快）、問句把另一篇的實驗室結果與本篇野外結果剪成同一個比較、轉折裡自己算的「十幾倍」；L56-021 肝醣增加幅度寫大了；L56-018「同一批」無依據。F7-S011 與池中 SRC-18dda7ff6a6b1fc1 是同一頁，已確認。兩個轉折成立，10.9 分過線。"
+    },
+    {
+      "target": "G26 記得很清楚，就代表真的看過嗎？",
+      "theme_id": "G26",
+      "title": "記得很清楚，就代表真的看過嗎？",
+      "reviewer": "V10",
+      "author": "F7",
+      "author_verdict": "ready",
+      "author_est_minutes": 13.5,
+      "verdict": "ready",
+      "final_core_ids": [
+        "C2004",
+        "H56-001",
+        "H56-002",
+        "C2015",
+        "H56-003",
+        "C2016",
+        "H56-004",
+        "H56-005",
+        "H56-006",
+        "C2013"
+      ],
+      "recount_facts": "15.5 條。舊核心的答案都只有一句研究方向：C2004 0.5、C2015 0.5、C2016 0.5、C2013 1（回想與辨認的區分，另有教材一節）＝2.5；C2017 移出、不算。新核心：H56-001 2.5、H56-002 1.5、H56-003 2.5、H56-004 2、H56-005 2、H56-006 2.5＝13。合計 15.5。作者的 21 條把五個舊核心照第一輪的 6 條算、又把同一個實驗的每個百分比各算一條；（15.5×140＋700）÷270＝10.6 分。",
+      "recount_fact_count": 15.5,
+      "recount_minutes": 10.6,
+      "planned_minutes": 10.5,
+      "cuts": "移出 C2017（把是誰告訴自己的記錯）：它自己的來源只有教材一節，另一筆 Deutsch 1970 是合併 R22005 時帶進來的音高論文，不支持這個主張；本輪也沒有讀到任何直接測出處判斷的研究，H56-005 的討論段只是解釋架構。原企劃「出處混了」一章改由 H56-006 的錯誤回憶取代。C2013 不獨立成章。要縮片長先刪 H56-002，刪後 14 條、9.9 分。作者排 11 分超過重算的 10.6 分，改排 10.5 分。",
+      "turns": [
+        "以為沒印象就是忘了；專心數球的人有一半左右當下就沒注意到走過去的人，天天看的蘋果標誌 85 人只有 1 人畫對，而且動筆前信心最高：東西沒存進去，熟悉感卻讓人以為有。",
+        "以為記得越清楚越可靠；問話換一個動詞，一週後就多出影片裡沒有的碎玻璃，清單裡沒唸過的字 84% 被認成聽過、先回憶過時七成還附帶「記得當時情景」的判斷：生動與把握都不能當證據。"
+      ],
+      "chapter_outline": [
+        {
+          "title": "開場：走過正中間的大猩猩",
+          "seconds": 55,
+          "core_ids": [
+            "C2004",
+            "H56-001"
+          ],
+          "new_information": "專心數傳球時，畫面中間走過一個人；問題：沒印象是忘了，還是根本沒進去。"
+        },
+        {
+          "title": "192 個人，一半左右沒看到",
+          "seconds": 70,
+          "core_ids": [
+            "H56-001"
+          ],
+          "new_information": "兩種意外合計 54% 注意到，單看大猩猩 44%；作業越難越看不到；停下來搥胸 9 秒仍只有一半。"
+        },
+        {
+          "title": "漏看的不是偷懶的人",
+          "seconds": 50,
+          "core_ids": [
+            "H56-002"
+          ],
+          "new_information": "數黑衣隊的人 58% 看到黑色大猩猩，數白衣隊的 27%；看到與否和數得準不準幾乎無關。"
+        },
+        {
+          "title": "天天看的標誌，畫不出來也認不準",
+          "seconds": 110,
+          "core_ids": [
+            "C2015",
+            "H56-003",
+            "C2013"
+          ],
+          "new_information": "85 人只有 1 人畫對蘋果標誌，8 選 1 選對的 47%，而且和信心無關；動筆前 8.58 分，畫完 5.54 分。轉折一。"
+        },
+        {
+          "title": "一個動詞，車速就不一樣",
+          "seconds": 80,
+          "core_ids": [
+            "C2016",
+            "H56-004"
+          ],
+          "new_information": "撞爛 40.5、接觸 31.8 英里；實際車速幾乎不影響答案；作者自己留下兩種解釋。"
+        },
+        {
+          "title": "一週後多出來的碎玻璃",
+          "seconds": 95,
+          "core_ids": [
+            "H56-005"
+          ],
+          "new_information": "150 人，一週後問有沒有碎玻璃：撞爛組 16 人、撞上組 7 人、沒問速度的 6 人說有，影片裡沒有。"
+        },
+        {
+          "title": "沒唸過的字，清楚記得聽過",
+          "seconds": 120,
+          "core_ids": [
+            "H56-006"
+          ],
+          "new_information": "沒唸的關鍵詞 40% 被寫出來、84% 被認成聽過，過半選「確定」；先回憶過時 72% 被判為「記得當時情景」。轉折二。"
+        },
+        {
+          "title": "收尾：認得、有把握，都還不是驗證",
+          "seconds": 50,
+          "core_ids": [
+            "C2013",
+            "H56-006"
+          ],
+          "new_information": "回到開場；說明都是大學生樣本的實驗室作業，不能拿來判斷任何人的證詞或自己有沒有問題。"
+        }
+      ],
+      "core_question": "從看見一個畫面到後來說出回憶，中間哪些步驟可能讓內容沒進去、或事後被加進去？",
+      "connection": "照記憶的三個關卡排：當下有沒有注意到、看過很多次有沒有存下細節、事後的問話與聯想加了什麼；每一關用一個原研究的設計與結果，最後回到「有把握」這件事本身。",
+      "boredom_risk": "不能把幾種記憶錯誤念成清單；每章只講一個實驗、先讓觀眾自己猜結果再揭曉，數字一章不超過三個。",
+      "drop_if": "自製示範若無法清楚說明條件或暗示觀眾自我診斷就刪，不得把幾位觀眾的反應當實驗證明；Loftus & Palmer 的表格若在作者或出版社副本上對不上，兩章都拿掉（剩 11.5 條、8.6 分，貼著門檻，就退回後備）。",
+      "evidence_gaps": "Loftus & Palmer 1974 讀的是第三方網站的刊本掃描，Roediger & McDermott 1995 讀的是兩個大學課程頁上的副本；三篇經典都是幾十年前的美國大學生樣本，再現情形與不同條件下的效果大小沒有讀。來源監控的原始研究與一分錢實驗都沒讀到。",
+      "still_missing": "C2017 的來源問題（只回報，不改池）：它掛的 Deutsch 1970 音高論文是 2026-11-02 併入 R22005 當變體時帶進來的，只支持 R22005 的窄主張，不支持 C2017 的一般主張；本題不依賴 C2017，要用它得先讀 Johnson, Hashtroudi & Lindsay 1993（作者抓到的是沒有文字層的掃描檔，沒讀）或一個直接測出處判斷的實驗。Nickerson & Adams 1979 未讀。寫稿前以作者或出版社的副本再對一次 Loftus & Palmer 的 Table 1–3。H56-001、H56-003 套用本覆核改字（H56-001 連問句一起改）；章名不用「差了九英里」。",
+      "reason": "指定的數字全部在原文：192、46%（但它是兩種意外合計，不是大猩猩）、16／7／6（各 50 人）、.84 對 .86、72%（作者自己的換算，先回憶過的條件）、85 人只有 1 人畫對、47%、8.58→5.54。第三方與課程頁副本可收：讀到的是出版原文（期刊頁眉與頁碼俱在；Roediger 兩份副本互相一致），存放處如實記在來源限制，並要求寫稿前再對一次。兩個轉折成立，10.6 分過線。"
+    },
+    {
+      "target": "G12",
+      "theme_id": "G12",
+      "title": "浪都朝岸上來，海水怎麼往外拉？",
+      "reviewer": "V11",
+      "verdict": "ready",
+      "final_core_ids": [
+        "N191",
+        "S56-001",
+        "S56-002",
+        "S56-003",
+        "N190",
+        "S56-004",
+        "S56-005",
+        "S56-006",
+        "S56-007",
+        "S56-008"
+      ],
+      "recount_facts": "13 條：舊核心 N191 1 條（水由缺口集中離岸）、N190 0.5 條（只留斜向入浪產生沿岸流一句，輸沙不展開）＝1.5；S56-001 1.5、S56-002 1.5、S56-003 1.5（遮蔽型與增水差同一機制只算半條）、S56-004 2、S56-005 2、S56-006 1.5、S56-007 0.5（同一研究的推算）、S56-008 1（拿掉安全判斷後只剩名詞辨正）＝11.5。作者的 18 條把每個核心的方法、條件與重疊句都算成事實。（13×140＋700）÷270＝9.3 分。",
+      "recount_fact_count": 13,
+      "recount_minutes": 9.3,
+      "planned_minutes": 9,
+      "cuts": "刪 N189（外海的浪為何排齊）：企劃自己寫明不拿造浪知識補時，折射不影響回流水路。N190 只留沿岸流一句，接偏轉型。S56-007 縮成浮標章後的一小段；S56-008 只留水流分類，與 S56-007 合成一章。全片不得出現辨識方法、自救做法、何時下水、「不會被拉下水」之類的安全判斷；NWS 頁的 How to Spot 一節與 MacMahan 文中游泳者段落都不取用。",
+      "turns": [
+        "觀眾以為要有沙洲缺口才有離岸流：必要條件其實是沿岸的碎浪有強有弱，突堤兩側、外海地形、甚至平直海灘上兩組浪交會都會冒出離岸流；強弱看的是潮位高低，不是漲潮或退潮。",
+        "觀眾以為離岸流像一條河把東西一路送到外海：蒙特雷的 GPS 浮標多數在碎浪帶內繞圈，出現離岸流的日子平均每小時約 19% 離開，浪最大的那天反而只有 4%。"
+      ],
+      "chapter_outline": [
+        {
+          "title": "開場：浪往岸上來，水卻往外走",
+          "seconds": 55,
+          "core_ids": [
+            "N191"
+          ],
+          "new_information": "同一片海面上波峰向岸、卻有一股水向外；先點出推上岸的水得有路回去。"
+        },
+        {
+          "title": "水先被堆高，再往低處流",
+          "seconds": 75,
+          "core_ids": [
+            "S56-001"
+          ],
+          "new_information": "增水約為碎波高的 10%；光有碎浪不夠，要沿岸有強有弱，水才沿岸流向碎浪少的地方再轉向外。"
+        },
+        {
+          "title": "一股離岸流的三段：供流、頸、頭",
+          "seconds": 65,
+          "core_ids": [
+            "S56-002"
+          ],
+          "new_information": "循環胞的構造、哪一段最快、水道型的寬度間距與能停留多久；另一種樣態是在碎浪帶內打轉。"
+        },
+        {
+          "title": "沒有缺口的海灘也有",
+          "seconds": 85,
+          "core_ids": [
+            "S56-003",
+            "N190"
+          ],
+          "new_information": "轉折一：聚焦型、突堤旁的遮蔽型與偏轉型、平直海灘上的純水動力型；缺口只是其中一種。"
+        },
+        {
+          "title": "忽快忽慢，還看潮位",
+          "seconds": 75,
+          "core_ids": [
+            "S56-004"
+          ],
+          "new_information": "浪群造成持續 30 秒到 1 分鐘的脈動、流速可超過兩倍；小潮差與大潮差海灘最快的潮位不同，重點是水位不是方向。"
+        },
+        {
+          "title": "丟三十顆浮標進去",
+          "seconds": 100,
+          "core_ids": [
+            "S56-005",
+            "S56-006"
+          ],
+          "new_information": "轉折二：浮標多數繞圈留在碎浪帶內；每小時離開率、實測流速、離開者漂多遠，以及浪最大時離開的反而最少。"
+        },
+        {
+          "title": "碎浪帶的水多久換一次，這些流又各叫什麼",
+          "seconds": 45,
+          "core_ids": [
+            "S56-007",
+            "S56-008"
+          ],
+          "new_information": "研究者推算的 9.5 小時對上更早估計的 3 小時；離岸流不是潮流、近底回流或回沖。"
+        },
+        {
+          "title": "收尾：浪往岸、水往外，怎麼同時成立",
+          "seconds": 40,
+          "core_ids": [
+            "S56-001",
+            "S56-005"
+          ],
+          "new_information": "回扣增水差與繞圈兩件事，只回答開場問題，不新增事實。"
+        }
+      ],
+      "core_question": "浪一直把水推上岸，多出來的水從哪裡、用什麼方式回到外海？它真的像一條河一路流出去嗎？",
+      "connection": "固定同一張海灘平面示意：先畫碎浪強弱與增水高低，再讓水沿岸流向低處、轉向外；之後每一章只換「碎浪為什麼不均」的原因或換成浮標的實測軌跡，不換海灘。",
+      "boredom_risk": "類型一多就變成名詞清單；每一型只回答「這裡的碎浪為什麼比旁邊少」。浮標章要用軌跡畫面撐，不要念百分比。",
+      "drop_if": "若寫稿時無法在不暗示自救或辨識方法的情況下講浮標研究與潮位規律，刪掉該段；刪到不足 8.5 分就退回後備，不拿折射或輸沙補時。浮標軌跡圖、空拍與染色影像拿不到授權就改自繪示意，不引用個人提供的照片。",
+      "evidence_gaps": "官方成因說明只有 NWS 一頁（分類轉述 Castelle 等 2016，原文 403 未讀）；現地量測只有 MacMahan 等 2010 一篇、三處水道型海灘，瞬時離岸流沒有量測來源；N190、N191 的 NOAA 舊頁本輪只重抓未逐句重讀。",
+      "still_missing": "寫稿前：補讀 Castelle 等 2016 原文（或片中只說「美國國家氣象局的分類」）；重讀 NOAA 兩個舊頁；套用本覆核對 S56-002～S56-008 的改字；9.5 小時照原文引用、不重算；英制數字換公制並標「約」；素材權利未查。成片若要加任何安全提醒，須另查台灣主管機關指引並另做安全查核，本題不含。",
+      "reason": "缺口點名的官方成因說明與一篇現地觀測都補到了，嚴格重算 13 條、9.3 分，兩個轉折各有來源。餘裕不大：刪掉 S56-008 仍有 8.8 分，再刪一章就要退回後備。",
+      "author": "F8",
+      "author_verdict": "ready",
+      "author_est_minutes": 11.9
+    },
+    {
+      "target": "G09",
+      "theme_id": "G09",
+      "title": "每月都有新月，為什麼日食這麼挑？",
+      "reviewer": "V11",
+      "verdict": "ready",
+      "final_core_ids": [
+        "N248",
+        "S56-009",
+        "S56-010",
+        "S56-011",
+        "N250",
+        "S56-012",
+        "N251",
+        "S56-013",
+        "S56-014",
+        "N252",
+        "S56-015"
+      ],
+      "recount_facts": "16.5 條：舊核心 N248、N250、N251、N252 各 1 條＝4（都只有 NASA eclipse geometry 一頁的定性說法）；S56-009 2.5、S56-010 1.5、S56-011 1（FAQ 是同一目錄的轉述不另計）、S56-012 1.5（N250 已有距離決定全食或環食）、S56-013 1.5、S56-014 2（375 年只算半條）、S56-015 2.5＝12.5。作者算 21 條。（16.5×140＋700）÷270＝11.1 分。",
+      "recount_fact_count": 16.5,
+      "recount_minutes": 11.1,
+      "planned_minutes": 10.5,
+      "cuts": "不刪舊核心；N248、N250、N251 各縮成章首一句定性，數值由新核心提供。加入池中 N252（全環食，目前不在任何長題）當 40 秒短章。不與 G569／S51-002 合併（Stephenson 2016 補充表未讀），1.8 對 2.3 毫秒不出現。375 年不進標題、縮圖與章名；不寫「古人能預報日食」；不含太陽觀測或器材教學。",
+      "turns": [
+        "觀眾以為日食很稀有：全球每一年至少兩次、最多五次；稀有的是輪到同一個地方——本影只掃過一條細帶，同一地點要等幾百年。",
+        "觀眾以為日月在天上「剛好一樣大」：月亮很多時候略小一點，五千年目錄裡環食（33.2%）比全食（26.7%）多；月亮近一點，2024 年的食帶就比 2017 年寬出一截。",
+        "日食每隔約 18 年 11 天 8 小時重演，但多出的三分之一天讓下一場落在西邊約 120°。"
+      ],
+      "chapter_outline": [
+        {
+          "title": "開場：每個月都有新月，日食卻沒來",
+          "seconds": 50,
+          "core_ids": [
+            "N248"
+          ],
+          "new_information": "新月時月球多半從太陽上方或下方經過；提出「到底多常對得上」。"
+        },
+        {
+          "title": "歪 5.1 度：一年只有兩段窗口",
+          "seconds": 90,
+          "core_ids": [
+            "S56-009"
+          ],
+          "new_information": "交點前後約 17° 才碰得到；太陽穿過這段要 34.5 天，比朔望月長，所以每個食季至少一次；兩個食季相隔 173.3 天。"
+        },
+        {
+          "title": "其實每年至少兩次",
+          "seconds": 70,
+          "core_ids": [
+            "S56-010",
+            "S56-011"
+          ],
+          "new_information": "轉折一：五千年目錄每年 2 到 5 次的分布，四種日食各占多少。"
+        },
+        {
+          "title": "月亮常常小一號",
+          "seconds": 85,
+          "core_ids": [
+            "N250",
+            "S56-012"
+          ],
+          "new_information": "轉折二：日月視直徑與月地距離的數值，月亮略小時蓋不滿成環食，環食比全食多。"
+        },
+        {
+          "title": "影子落地只有一條細帶",
+          "seconds": 80,
+          "core_ids": [
+            "N251",
+            "S56-013"
+          ],
+          "new_information": "2017 與 2024 兩次的帶寬與最長全食時間；同一場沿線的視直徑比與寬度也在變。"
+        },
+        {
+          "title": "輪到你家要等多久",
+          "seconds": 70,
+          "core_ids": [
+            "S56-014"
+          ],
+          "new_information": "影速每小時約 1,500 公里、全食最長約 7 分鐘、五千年的最長與最短；NASA 科普頁說同一地點平均約 375 年一次。"
+        },
+        {
+          "title": "同一場，又全又環",
+          "seconds": 40,
+          "core_ids": [
+            "N252"
+          ],
+          "new_information": "地球是圓的，本影尖端剛好碰到地面時，同一場日食沿線有的全、有的環；這類占 4.8%。"
+        },
+        {
+          "title": "十八年後重演，卻換了地方",
+          "seconds": 100,
+          "core_ids": [
+            "S56-015"
+          ],
+          "new_information": "轉折三：三個週期湊齊成一個沙羅；多出的三分之一天讓食帶西移約 120°，三個沙羅才回到同一區；一個序列歷時一千多年。"
+        },
+        {
+          "title": "收尾：挑的是地點，不是月份",
+          "seconds": 45,
+          "core_ids": [
+            "S56-010",
+            "S56-014"
+          ],
+          "new_information": "回扣每年至少兩次與一條細帶，只回答開場問題，不新增事實。"
+        }
+      ],
+      "core_question": "每個月都有新月，日食卻不是每月都有；它到底多常發生、為什麼全食更少、又為什麼同一個地方要等那麼久？",
+      "connection": "固定一套標明不按比例的幾何示意：先看月球相對交點的位置，再看日月視大小，再看影子落在地面的範圍；每章只改一個條件，數字用同一份 NASA 五千年目錄串起來。",
+      "boredom_risk": "統計數字一多就變成唸表；每章只留一到兩個數字，其餘放畫面。沙羅章容易變成天文名詞課，三個週期只要讓觀眾看到「都是 6585 天多一點」。",
+      "drop_if": "若幾何示意分不清「從太空看」與「從地面看」就撤案。375 年補不到一手統計時只留定性說法；刪掉任何一章就照條數重算，不足 8.5 分退回後備，不補太陽月球常識。",
+      "evidence_gaps": "375 年出自 NASA 兒童科普頁、沒有計算來源；月球視直徑只有 378,000 公里一個條件的值；GSFC 兩頁是 Espenak 多年未更新的計算頁；舊核心四個都只靠 NASA eclipse geometry 一頁，本輪未重讀。",
+      "still_missing": "寫稿前：補 375 年的一手統計（Meeus 或 Espenak 的地點統計），補不到就改定性；另找 NASA 或 USNO 的月球近地點、遠地點視直徑（aa.usno.navy.mil 本輪回 500），找不到就不報範圍；重讀 science.nasa.gov/eclipses/geometry（N248、N250、N251、N252 的來源）；套用本覆核對 S56-012～S56-015 的改字；原創幾何圖與比例標示待做。原題案是 3 分 05 秒的短解說、寫明不用 N252 與真實食帶寬度，改成長題後題案欄位照本覆核更新。",
+      "reason": "缺口點名的傾角、月地距離、本影帶寬度數值都有官方或教材來源，嚴格重算 16.5 條、11.1 分，有三個轉折。最弱的 375 年即使整句拿掉（16 條、10.9 分）也不影響成題。",
+      "author": "F8",
+      "author_verdict": "ready",
+      "author_est_minutes": 13.5
+    },
+    {
+      "target": "G11",
+      "theme_id": "G11",
+      "title": "轉椅突然加速，多出來的能量哪來？",
+      "reviewer": "V11",
+      "verdict": "ready",
+      "final_core_ids": [
+        "P027",
+        "P028",
+        "P029",
+        "P56-001",
+        "P56-002",
+        "P56-003",
+        "P314",
+        "P56-004",
+        "P56-005",
+        "R21001",
+        "P030"
+      ],
+      "recount_facts": "15 條：舊核心 P027 1.5、P028 1、P029 0.5（它的內容由 P56-001 補齊，只留「角動量守恆不等於動能守恆」）、P314 1.5、P030 1＝5.5；P56-001 1.5、P56-002 1、P56-003 2、P56-004 1.5、P56-005 2.5＝8.5；R21001 1（本輪沒有新讀它的來源，只當 40 秒短章）。F8-019 退回不計。作者算 19.5 條。（15×140＋700）÷270＝10.4 分。",
+      "recount_fact_count": 15,
+      "recount_minutes": 10.4,
+      "planned_minutes": 10,
+      "cuts": "退回 F8-019（體操下槓是收手的另一個教材例子）。P030 移到收尾。R21001 只講「輪子存滿了要靠外力矩卸載」一句話的份量。轉椅段不報任何轉椅的數字與倍率；29.6 焦耳變 191 焦耳出現時標「教材例題、滑冰者、假設值」。曙光號說「發射前的計畫」，SAMPEX 說「設計值與測試機的地面測試」；不寫「兩顆加起來 154 公克」，不拿配重和衛星質量算倍數；滑冰者收攏四肢提高轉速說明是論文作者的推測。",
+      "turns": [
+        "觀眾以為「守恆」就是什麼都不變：角動量不變時，轉動動能可以因為手臂做功而變成好幾倍（教材例題 29.6 焦耳變 191 焦耳），也可以因為內部摩擦只剩四分之一。",
+        "觀眾以為在太空想停就能停：沒有外力矩時，船內怎麼動都只是交換；要讓整體慢下來，得把轉動丟給會離開的配重和纜線，或靠推進器這類外力矩。"
+      ],
+      "chapter_outline": [
+        {
+          "title": "開場：收手就變快，能量是多出來的嗎",
+          "seconds": 55,
+          "core_ids": [
+            "P027"
+          ],
+          "new_information": "轉椅收手變快的現象與角動量守恆的說法；提出動能變多了、誰付的。"
+        },
+        {
+          "title": "同樣重，放哪裡差很多",
+          "seconds": 55,
+          "core_ids": [
+            "P028"
+          ],
+          "new_information": "離軸越遠的質量對轉動慣量貢獻越大，重量本身不足以描述轉動。"
+        },
+        {
+          "title": "算一次：29.6 焦耳變 191 焦耳",
+          "seconds": 90,
+          "core_ids": [
+            "P029",
+            "P56-001"
+          ],
+          "new_information": "動能變成 I/I′ 倍；教材滑冰者例題的設定值；多出來的是手臂沿螺旋向內拉所做的內功，伸回去就還回來。"
+        },
+        {
+          "title": "反過來：角動量沒少，能量少了四分之三",
+          "seconds": 65,
+          "core_ids": [
+            "P56-002"
+          ],
+          "new_information": "轉折一：兩個飛輪靠摩擦合體，每分鐘 600 轉變 150 轉，動能只剩四分之一；守恆的是角動量，動能可增可減。"
+        },
+        {
+          "title": "離開冰面以後，只能改形狀",
+          "seconds": 85,
+          "core_ids": [
+            "P56-003"
+          ],
+          "new_information": "七名選手六種兩周跳的實測：起跳角動量大致同一量級，Axel 在空中卻轉得快得多；收攏四肢是作者的推測。"
+        },
+        {
+          "title": "扭一個輪子，椅子跟著轉",
+          "seconds": 55,
+          "core_ids": [
+            "P314"
+          ],
+          "new_information": "系統內部可以交換角動量：改變輪子的轉軸方向，人和椅子就反向轉起來。"
+        },
+        {
+          "title": "太空船怎麼停：把轉動甩出去",
+          "seconds": 115,
+          "core_ids": [
+            "P56-004",
+            "P56-005"
+          ],
+          "new_information": "轉折二：曙光號計畫從每分鐘約 50 轉降到零再反轉約 3 轉，艙內的氙還在轉；SAMPEX 的設計數字，以及空氣中測不準、真空槽一次歸零。"
+        },
+        {
+          "title": "輪子也有存滿的時候",
+          "seconds": 40,
+          "core_ids": [
+            "R21001"
+          ],
+          "new_information": "反作用輪只是把角動量暫存在船內，持續同向的擾動會把轉速餘裕用完，卸載要靠外力矩。"
+        },
+        {
+          "title": "收尾：能量是手付的，要停得靠外面",
+          "seconds": 40,
+          "core_ids": [
+            "P030"
+          ],
+          "new_information": "回扣兩個轉折：沒有外力矩就不會自己停；只回答開場問題。"
+        }
+      ],
+      "core_question": "收手讓旋轉加快，動能變多了，是誰付的？反過來，在沒有東西可以踩的地方，轉動又要怎麼停下來？",
+      "connection": "用同一本帳記兩欄：角動量一欄、動能一欄。收手、飛輪合體、空中的滑冰者、扭輪子都只動到動能或在內部交換；到太空船才第一次讓角動量那一欄真的變少——因為有東西離開了。",
+      "boredom_risk": "前半只展示轉快轉慢會變成魔術合集；每章都要回到「這次哪一欄變了、誰付的」。消旋章數字多，畫面要讓觀眾看到纜線展開，不要念參數表。",
+      "drop_if": "沒有量測就不給轉椅的精確倍率；刪掉高速或無防護的真人示範。若太空船兩章寫出來像另一支影片，就把 P56-005 的測試經過與 R21001 刪掉（剩 13 條、9.3 分），仍高於門檻；再少就退回後備。",
+      "evidence_gaps": "轉椅示範本身沒有任何可讀的實測數字（課堂示範頁只有定性說明，The Physics Teacher 的文章在付費牆後）；人體實測只有一篇 7 人的花式滑冰研究；太空船的數字是發射前計畫值與設計、地面測試值，沒有飛行實測轉速。",
+      "still_missing": "寫稿前：重讀 Exploratorium（P314 的來源）與 NASA SST SoA（R21001 的來源），本輪兩者都沒有重讀；套用本覆核對 P56-001、P56-003、P56-004、P56-005 的改字；轉椅若要有數字，只能是標明「本片自製示範」的量測（不算來源），否則全程定性；Maloney 1990、Bryant 2000 若能合法取得可補轉椅實測。",
+      "reason": "裁決：沒有轉椅實測也可以成題。第一輪要的「角速度與質量分布」是為了給轉椅報數字；本題的主軸是能量這本帳，教材已有完整推導與標明為假設的例題，真實量測改由花式滑冰的動作捕捉與太空船文件提供，而且片中轉椅段照題案自己的規則不報倍率。嚴格重算 15 條、10.4 分，兩個轉折各有來源。條件是上面三種數字各自的身分（教材假設、發射前計畫、設計與地面測試）都要在片中說出來。",
+      "author": "F8",
+      "author_verdict": "ready",
+      "author_est_minutes": 12.7
+    },
+    {
+      "target": "G30",
+      "theme_id": "G30",
+      "title": "塑膠軟了，真的就是融化了嗎？",
+      "reviewer": "V11",
+      "verdict": "reserve",
+      "final_core_ids": [
+        "H3024",
+        "P56-006",
+        "P56-007",
+        "H3025",
+        "P56-008",
+        "H3027",
+        "H3090",
+        "P56-009"
+      ],
+      "recount_facts": "11 條：舊核心 H3024 1.5、H3025 1、H3027 1、H3090 1.5＝5（前三個仍只靠 OpenStax 有機化學 31.7 一節，H3090 的來源本輪 403 沒能重讀）；P56-006 1.5（三種塑膠各兩個溫度；與室溫比大小是作者的比較、兩相定義 H3024 已有，都不計）、P56-007 1、P56-008 2、P56-009 1.5＝6。F8-025 退回不計。作者算 16.5 條。（11×140＋700）÷270＝8.3 分，不到 8.5。",
+      "recount_fact_count": 11,
+      "recount_minutes": 8.3,
+      "planned_minutes": null,
+      "cuts": "刪 H3026（橡膠為什麼縮回去，回答的是彈性從哪來）；退回 F8-025。留後備期間不排章節。",
+      "turns": [
+        "成立：軟不等於快熔了——每種塑膠有玻璃轉移與熔點兩個溫度，室溫落在聚乙烯的兩個溫度之間，卻低於 PET 與聚苯乙烯的玻璃轉移。",
+        "只成立一半：不加熱也能變軟——30 份 DOP 讓 PVC 薄膜的模數從 1,427.8 掉到 396.7 MPa、能拉長到 272.2%；但同一份資料的玻璃轉移只降到 61°C、仍高於室溫，「塑化劑把門檻搬到室溫以下」這句最關鍵的話，唯一的出處是被退回的 F8-025。"
+      ],
+      "chapter_outline": [],
+      "core_question": "同樣是「變軟」，是鏈段開始能動、鏈與鏈之間被隔開，還是整塊材料在慢慢重新分擔力量？哪一種才叫熔化？",
+      "connection": "同一條溫度軸：先標出一種塑膠的玻璃轉移與熔點，再看加了塑化劑後這條軸上的記號怎麼移動，最後換成時間軸看固定形狀下力怎麼掉。",
+      "boredom_risk": "若每章都是同一張鏈被拉開的圖，觀眾分不出玻璃轉移、熔融與鬆弛；而且現有數字都是絕對溫度與 MPa，沒有對應到觀眾手上的東西。",
+      "drop_if": "補不到「同一研究、同一量法、多個添加量」的塑化資料，就不要做「不加熱也變軟」這個轉折；補不到把日常用品對應到材料與實際軟化、熔融溫度的來源，就不要用塑膠袋、寶特瓶當例子。兩樣都補不到就維持後備或改短形式。",
+      "evidence_gaps": "Tg／Tm 是 1981–1983 年的評估值與平衡熔點，不是商品的實際熔融溫度，三份文件都沒有說哪種日常用品是哪種塑膠；塑化劑只有一個添加量、一種量法（DMA）的單點；應力鬆弛只有一種材料、5 分鐘，論文自己對孔隙率與試驗步距前後不一；H3024、H3025、H3027 仍共用 OpenStax 一節；H3090 的來源 403 未重讀。",
+      "still_missing": "（1）一份同一研究、同一量法、至少三個添加量的 PVC 塑化資料（Tg 對添加量），能不能看到 Tg 掉到室溫以下由它決定；（2）一份近年的實測（DSC 曲線或廠商資料表，含升溫速率與熱史），把聚乙烯、PET、聚苯乙烯的日常製品對應到實際的軟化與熔融溫度；（3）H3027（熱固性）自己的來源，不再只靠 OpenStax 31.7 的一兩句；（4）open.edu 可開時重讀 H3090 的來源，或以另一份多種材料、較長時間的應力鬆弛資料取代。補到（1）（2）約可再加 2.5 到 3 條（約 9.6 到 9.9 分），屆時再評。",
+      "reason": "嚴格重算只有 11 條、8.3 分，不到門檻；而且第二個轉折靠的那句話沒有可用的來源（30 份 DOP 的 Tg 仍高於室溫，−37°C 那筆有誤植）。第一輪點名的三個缺口各補到一筆，但都是單點或 40 年前的評估值，不夠撐一集。不為片長硬湊，留後備。",
+      "author": "F8",
+      "author_verdict": "ready",
+      "author_est_minutes": 11.1
+    }
+  ],
+  "reviewer_notes": {
+    "V10": "L48-NA005–007 的重收條件裁定寫在 G21 的 reason：字面未滿足（不是原論文），實質滿足（原作者自己的同儕審查開放全文、有舊答案沒有的干預、本機可逐句核對），以「範圍寫明是作者回顧、只用回顧給得出的數字」為條件收。WebFetch 重讀仍是模型回傳，雖然要求了逐字引句，G20 三篇與 G22 兩篇在來源限制裡都記為「本機沒有逐字全文快取」。L40-007、L48-004 目前各在一個短題（G395、G531，format 為 short_explainer、沒有素材判定）裡，不屬於「其他可成題長題」，照規則可用；若站主不想長題與短題共用核心，G21 拿掉 L48-004 後 13.5 條、9.6 分，G20 拿掉 L40-007 後 12.5 條、9.1 分，仍過線。估時是紙上估算，不是試讀。",
+    "V11": "結論：照原稿收 5、改字後收 19、退回 2（F8-019 與 P027 同答案；F8-025 原文誤植且配方讀不出來）。G12、G09、G11 可成題（9、10.5、10 分），G30 留後備（8.3 分）。作者的事實數（18、21、19.5、16.5）嚴格重算為 13、16.5、15、11。去重沒有發現池中已有同答案的核心（除 F8-019）；要用的舊核心沒有一個在別的可成題長題裡：R21001 在短題 G223、S51-002 在短題 G569（都沒有素材判定，且本輪不用 S51-002），N252 不在任何題。F8-S013 與 SRC-b1d348badab37f20、F8-S005 與 SRC-95980f5576415af8 網址逐字相同，確認是同一頁，掛回原來源 id；其餘 22 筆來源池中沒有同網址。派工說明提到的另一個太空任務名稱在作者稿與快取裡都不存在，G11 的任務文件實際是曙光號（Dawn）發射資料袋與 SAMPEX 機構論文，以讀到的為準。",
+    "V10_method": "沒有參與撰寫。（1）逐核心從作者快取的全文（f7src/ 下的 .txt）找出支撐句，核對數字、單位、條件、主詞；快取的 sha256 前 16 碼逐檔比對，全部與作者記錄相符。（2）重抓：Europe PMC REST fullTextXML 七篇（PMC6646469、7826911、4667699、3350686、4331536、3827335、8067143）以一般 curl 重抓，sha256 與快取完全相同；chabris.com 的 Simons 1999、第三方站的 Loftus 1974、課程頁的 Roediger 1995 重抓後 sha256 相同；UCLA 的 Blake 2015 curl 兩次連線被重置，改由 WebFetch 取回同一檔，sha256 相同。（3）作者只有筆記的五篇（PMC1626376、PMC3223671、PMC10024986、JEB 10.1242/jeb.089342、10.1242/jeb.101931）以 WebFetch 線上重讀，提示要求逐字引句與數字，共 9 次；沒有繞過任何驗證頁或 403。（4）去重：cli.mjs search（電鰻、清潔魚、黏液等）加 python 直接搜 pool.json 的 candidates 與 not_added（林蛙、尿素、凍融、大猩猩、標誌、碎玻璃、錯誤記憶、清單、出處、回想、記憶等）；cli.mjs theme G20、G21、G22、G26 現在都能跑。（5）對每個要用的舊核心查 themes.json：沒有一個在別的 material.verdict==\"ready\" 的題裡。",
+    "V11_method": "沒有參與撰寫。26 個提案逐一從作者快取的全文（f8src/）找到支撐句，核對數字、單位、條件與主詞；24 筆來源的快取 sha256 前 16 碼全部與作者紀錄相符。2026-11-11 以一般 curl（工具預設標頭）把 24 筆來源全部重抓，全部 200：18 筆雜湊與快取完全相同，6 筆（weather.gov、science.nasa.gov 兩頁、spaceplace、Calhoun PDF）大小相同或只差數位元組、雜湊不同，屬動態頁或 PDF 中繼資料，逐段比對正文相同。去重：以 cli.mjs search --all 逐關鍵字查（中英各幾種寫法），並直接掃 pool.json 全部核心的問句與答案；對每個要用的舊核心查 themes.json 的可成題長題。片長照（事實數×140＋700）÷270，舊核心已有的事實不重計。"
+  },
+  "research_blocked": [
+    "F7：pmc.ncbi.nlm.nih.gov（curl 預設標頭）：回 200 但內容是 Google reCAPTCHA 挑戰頁，不繞過；改用 Europe PMC REST fullTextXML（只有開放取用子集有）、NCBI efetch（非開放取用的只給摘要）與 WebFetch。",
+    "F7：Europe PMC fullTextXML 對非開放取用的 PMC 文章回 500：PMC4922196、PMC5637291、PMC1809949、PMC1626376、PMC3223671、PMC1691138、PMC10024986；europepmc.org 的 PDF render 端點回 403。",
+    "F7：www.science.org（Catania 2014 Science PDF）：403。",
+    "F7：www.cell.com（Current Biology 2015 彎身、2017 人臂）：403。",
+    "F7：www.pnas.org（PNAS 2016 PDF）：403。",
+    "F7：journals.biologists.com（JEB 2013、2014）：curl 403；WebFetch 可讀文章頁，但回傳是摘述且每頁只讀前 100,000 字元。",
+    "F7：journals.physiology.org（Storey & Storey 2017 Physiological Reviews）：403。",
+    "F7：www.kenstoreylab.com：TLS 憑證錯誤（self-signed），不停用驗證。",
+    "F7：webfiles.uci.edu（Loftus 的檔案區）：代理 CONNECT 502。",
+    "F7：psychnet.wustl.edu（Roediger 實驗室 PDF）：503。",
+    "F7：PMC 的掃描 PDF（Grutter & Bshary 2003、Bshary 2002）：WebFetch 只拿到「Preparing to download」頁。",
+    "F7：memlab.yale.edu 的 Johnson 等 1993 PDF 下載成功，但是沒有文字層的掃描檔，未讀。",
+    "F7：cli.mjs theme G22／G26 回「Pool drift: inputs, source packets or decisions changed」（工作樹裡 pool.json 等檔有未提交的變動），這兩題改由直接讀 themes.json 與 pool.json 取得。",
+    "V10：pmc.ncbi.nlm.nih.gov 對 curl 回驗證頁、journals.biologists.com 對 curl 回 403（沿用作者紀錄，未重試繞過）：這五篇只能 WebFetch 線上讀，沒有本機逐字快取。",
+    "V10：castel.psych.ucla.edu：curl 兩次 connection reset；WebFetch 取回同一 PDF（sha256 相同）。",
+    "V10：psychnet.wustl.edu（Roediger 實驗室副本）：connection reset，未取得。",
+    "V10：Science 2014、Current Biology 2015、PNAS 2016 原論文、Raihani 等 2010、Grutter & Bshary 2003 全文、Storey & Storey 2017、Nickerson & Adams 1979、Johnson 等 1993：本輪都沒有讀到。",
+    "V10：JEB 兩頁與 PMC10024986 超過 WebFetch 單次 100,000 字元，後段（參考文獻；jeb.089342 的討論後半）未讀。",
+    "F8：core.ac.uk/download/131014926.pdf（Castelle 2016）：403",
+    "F8：researchportal.plymouth.ac.uk/files/49380168/…-main.pdf（Castelle 2016）：403；pearl.plymouth.ac.uk/handle/10026.1/9772：404",
+    "F8：apps.dtic.mil/sti/pdfs/ADA535012.pdf（MacMahan 2010 鏡像）：403；data-ww3.ifremer.fr 鏡像逾時（改由 NPS Calhoun 典藏取得同一篇）",
+    "F8：oskar-bordeaux.fr：回應 200 但內容 0 位元組",
+    "F8：www.usla.org/page/ripcurrents 與 /page/RIPCURRENTS：403",
+    "F8：journals.ametsoc.org（JPO 直接 PDF）：403",
+    "F8：scijinks.gov/rip-currents：代理 CONNECT 502",
+    "F8：aa.usno.navy.mil/faq/eclipse_frequency：500",
+    "F8：eclipse.gsfc.nasa.gov 的 SEhelp/SEbasics.html、SEcat5/SEcatmax.html、SEhelp/SEcatkey.html：404（猜測網址，非封鎖）",
+    "F8：www.open.edu/openlearn/…/introduction-polymers（content-section-2.6 與 content-section-0 的 printable）：403",
+    "F8：www.redalyc.org/pdf/470/47053423012.pdf（PVC 塑化劑研究）：403",
+    "F8：www.epoc.u-bordeaux.fr/indiv/Castelle/Docs/027_Castelle_Bruno.pdf：404"
+  ],
+  "limits": "估時依事實數紙上估算，不是試讀；所有核心仍是選題候選，寫稿前要逐主張查核。五篇只經 WebFetch 讀取的論文、兩份非出版社副本與各題 missing 所列未重讀的舊來源，寫稿前都要重讀。本輪沒有改企劃。"
+}

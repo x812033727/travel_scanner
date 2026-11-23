@@ -1,0 +1,44 @@
+{
+  "slug": "2025-11-yunmiao",
+  "title": "茶館老闆娘活了兩千歲",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": { "min": 90, "max": 180, "chapter_finale_min": 120 },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "站主 2026-10-28：每集 3–5 個鉤子。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），可再加 extra_hooks 0–2 句；lib/validate.mjs 擋掉寫成同一件事的。"
+  },
+  "closed_ending": false,
+  "ending_note": "第五季收掉主線：她是誰揭開（第五件鎮物『燈』的燈靈）、老九是誰揭開、縫補上了；她把燈留在縫裡，自己留在茶館——沒有消失，只是不再長生。第 300 集最後一格，茶館的地板下傳來一聲很輕的裂響，阿璞抬頭：『師父，又開始了？』她說：『三百年後的事。先泡茶。』留第二部的口子。站主要收死的話，刪掉最後一格、cliffhanger 改 emotion 即可。",
+  "aspect": { "decided": null, "suggested": "16:9", "why": "照《種田娶妻打天下》的建議。" },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom）；target_minutes 填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線。",
+    "look": "真人電影感現代都市志怪：一條老街、一間茶館、一盞不滅的燈；單元案件的場景每個不同（舊樓、廟、工地、醫院、戲班），主場永遠回到茶館。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md；前 3 秒允許是『有人以為她弱而冒犯』或詭異事件的現場。",
+    "reuse": "固定場景：無事茶館（櫃台、後院、地板下的那道縫）、老街、林岸的派出所、每季一個單元案件的主場。",
+    "voice": "國語；女主平、慢、極少起伏，像在念判詞；阿璞快、碎；林岸低、穩；第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json。",
+    "per_episode": "平均約 125 秒一集 ≈ 3,200–4,000 點。",
+    "per_season": "60 集 ≈ 19–24 萬點；五季 ≈ 95–120 萬點。",
+    "levers": "志怪用光與影不用怪物特效；茶館主場一張首格＋緩推可省五成；單元場景每季一組。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包，不是逐集分鏡劇本。",
+  "reference": {
+    "work": "《雲渺》系列（2025 年紅果峰值熱度第 11，都市修仙中式志怪單元劇）",
+    "how": "只學套路：活了很久的女主行走人間收集幾件神器、順手碾平冤案與邪術、冷感高位者、絕對實力壓差、她不先出手要等惡人把謊說完、每 5–8 集一個單元案件、身分揭露、拆謊、因果報應、季末停在神器與身世的新線索。世界（無事茶館、老街、那道縫）、五件鎮物（鐘、鏡、印、尺、燈）、她的來處（燈靈）、對手老九、單元案件、劇情與台詞全部原創，不搬原劇情節。"
+  },
+  "title_candidates": ["茶館老闆娘活了兩千歲", "無事茶館", "惡人說完謊，她才動手"],
+  "title_decision": "未定；先用候選第一個，站主可改。"
+}

@@ -69,6 +69,11 @@ test("every Mokaair link carries the video's UTM once, and the same page is link
   assert.equal(urlKey("https://www.ntm.gov.tw/cp.aspx?Create=1&n=5444"), "https://www.ntm.gov.tw/cp.aspx?Create=1&n=5444");
   assert.equal(urlKey("nope"), "nope");
   assert.equal(urlKey("nope/?utm_source=x&a=1#f"), "nope?a=1");
+  const file = "https://github.com/o/r/blob/abc/74723-0.txt";
+  assert.notEqual(urlKey(`${file}#L6523-L6581`), urlKey(`${file}#L7940-L8780`), "two passages of one file are two sources");
+  assert.equal(urlKey(`${file}?utm_source=youtube#L12`), `${file}#L12`, "a line anchor is kept, the UTM is not");
+  assert.equal(urlKey(`${file}#readme`), file, "any other fragment is the same page");
+  assert.equal(unlinkedSources([{ title: "a", url: file }, { title: "b", url: `${file}#L1-L9` }, { title: "c", url: `${file}#L20-L30` }]).length, 3, "the whole file and two passages are all listed");
   const article = "https://mokaair.com/zh-TW/life/x?utm_source=youtube&utm_medium=video&utm_campaign=c";
   const body = "https://mokaair.com/zh-TW/life/x?utm_source=youtube\n鉤子。\n給誰看。\n\n完整文章：https://mokaair.com/zh-TW/life/x\n索引：https://mokaair.com/zh-TW/life/ai-terms-index\n🔗 https://mokaair.com/zh-TW/life/ai-terms-index/\n結尾。";
   assert.deepEqual(dedupeLinks(body, article), { body: "鉤子。\n給誰看。\n\n索引：https://mokaair.com/zh-TW/life/ai-terms-index\n結尾。", mentioned: false }, "link-only lines of the article and of a page already linked are dropped");
@@ -125,13 +130,26 @@ test("the title rules are warnings: width, one question, the banned shapes, list
   assert.deepEqual(youtubeWarnings({}), []);
 });
 
-test("hashtags: two topic words then the series by category or series slug; the upload keeps ten tags", () => {
-  assert.deepEqual(SERIES_HASHTAGS, { "ai-terms": "#AI名詞十分鐘", tutorial: "#AI工具教學", "ai-news": "#AI新聞拆解" });
+test("hashtags: two topic words then the series by category, series slug or episode prefix; the upload keeps ten tags", () => {
+  assert.deepEqual(SERIES_HASHTAGS, {
+    "ai-terms": "#AI名詞十分鐘",
+    tutorial: "#AI工具教學",
+    "ai-news": "#AI新聞拆解",
+    story: "#品牌故事",
+    curio: "#奇聞檔案局",
+    sothatswhy: "#原來如此事務所",
+  });
   assert.equal(seriesHashtag({ category: "ai-news" }), "#AI新聞拆解");
+  assert.equal(seriesHashtag({ category: "story" }), "#品牌故事");
   assert.equal(seriesHashtag({ category: "explainer" }), null);
+  assert.equal(seriesHashtag({ category: "explainer", slug: "curio-s42-pig-war" }), "#奇聞檔案局");
+  assert.equal(seriesHashtag({ category: "explainer", slug: "sothatswhy-p23-mirror" }), "#原來如此事務所");
+  assert.equal(seriesHashtag({ category: "explainer", slug: "story-b01-michelin" }), "#品牌故事");
+  assert.equal(seriesHashtag({ category: "explainer", series: "sothatswhy" }), "#原來如此事務所");
   assert.equal(seriesHashtag({ category: "ai-terms", series: { slug: "unknown" } }), "#AI名詞十分鐘", "a series without a row falls back to the category");
   assert.equal(seriesHashtag(), null);
   assert.deepEqual(descriptionHashtags({ tags: ["ChatGPT Go", "Plus", "Pro"], category: "tutorial" }), ["#ChatGPTGo", "#Plus", "#AI工具教學"]);
+  assert.deepEqual(descriptionHashtags({ tags: ["奇聞檔案局", "豬戰爭", "聖胡安島", "英國"], category: "explainer", slug: "curio-s42-pig-war" }), ["#豬戰爭", "#聖胡安島", "#奇聞檔案局"]);
   assert.deepEqual(descriptionHashtags({ tags: ["ChatGPT Go", "Plus", "Pro"] }), ["#ChatGPTGo", "#Plus"], "no series row: no third");
   assert.deepEqual(descriptionHashtags({ tags: ["ai名詞十分鐘", "token"], category: "ai-terms" }), ["#token", "#AI名詞十分鐘"], "the series tag is not repeated in another case");
   assert.deepEqual(descriptionHashtags({}), []);
@@ -169,9 +187,10 @@ test("the description credits the stock photos after the sources, in the vendors
   assert.ok(creditBytes(assets, "zh-TW") > 200 && creditBytes(assets, "zh-TW") < 300, `two credits cost ${creditBytes(assets, "zh-TW")} bytes`);
 });
 
-test("hashtags drop spaces and punctuation, skip repeats in any case and stop at three", () => {
+test("hashtags drop spaces and punctuation, keep combining marks, skip repeats in any case and stop at three", () => {
   assert.deepEqual(hashtagsFrom(["ChatGPT Go", "AI·廣告", "chatgpt-go", "ChatGPTGo", "Plus", "Pro"]), ["#ChatGPTGo", "#AI廣告", "#Plus"]);
-  assert.deepEqual(hashtagsFrom(["!!!", ""]), []);
+  assert.deepEqual(hashtagsFrom(["ตำนาน Frankenstein", "ปีที่ไร้ฤดูร้อน"]), ["#ตำนานFrankenstein", "#ปีที่ไร้ฤดูร้อน"], "Thai vowel and tone marks (\\p{M}) stay intact");
+  assert.deepEqual(hashtagsFrom(["!!!", "\u0301", ""]), []);
 });
 
 test("a brand story's title says so in its own language before the captions tag, once", async () => {

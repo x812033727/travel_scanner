@@ -1,0 +1,1401 @@
+{
+  "batch_id": "wave55-tech-20261111",
+  "created_on": "2026-11-11",
+  "scope": "陶瓷電容的偏壓縮水、老化與嘯叫，『兩個字算不算相同』的正規化、易混淆字與搜尋規則，以及深空雷射通訊、深空網路排程與火星中繼：替長題 G18、G02、G07 補廠商白皮書、標準文件、監察長報告與任務原文；二十五來源，其中 Unicode UAX #15、UAX #29 是池中 SRC-44f561000729bda4、SRC-8174dfd1da099164 同一版本的本輪重讀，併入原來源 id。",
+  "sources": [
+    {
+      "id": "T55-S001",
+      "url": "https://epci.eu/wp-content/uploads/2019/10/HIGH-CV-MLCC-DCAC-BIAS-AGEING-CAPACITANCE-LOSS-EXPLAINED.pdf",
+      "canonical_url": "https://epci.eu/wp-content/uploads/2019/10/HIGH-CV-MLCC-DCAC-BIAS-AGEING-CAPACITANCE-LOSS-EXPLAINED.pdf",
+      "title": "High CV MLCC DC/AC Bias Ageing Capacitance Loss Explained",
+      "publisher": "Tomas Zednicek（European Passive Components Institute, EPCI）白皮書；依 2019 PCNS 座談（AVX、Kemet、Murata Europe、Samsung Electro-Mechanics、Würth、Continental）整理",
+      "version": "update 2019-09-23",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（PDF），pdftotext 全文",
+      "reading_scope": "全文：§1–2.6 技術背景（老化、溫度、直流偏壓、交流電壓、條件相乘、廠商模擬可信度）、§3 對電路的影響（並聯電容、LC 濾波）、§4 量測",
+      "locator": "§2.3 第2–3段與 Fig.2/3/4 圖說；§2.5 條件相乘範例；§3.2 Figure 10 敘述（引 I. Novak 量測）",
+      "summary": "高介電 MLCC 的 BaTiO3 偶極被直流電場卡住，容量下降與電場（V/mm）成正比，介質越薄、單位體積容量越高越嚴重；同為 10 µF 6.3 V X7R 0805，三家廠商在額定電壓下損失 −35% 至 −65%，常見降額的 3.3 V 下也有 −12% 至 −32%。換大一號封裝或換較穩定的介質可減少損失（附 0603 vs 0805 的 10 µF 6.3 V X5R、0402 1 µF X5R vs X7R 曲線）。條件會相乘：10 µF 6.3 V X5R 0805 當 5 V 耦合電容，直流 −60%、10 mV 交流 −15%、溫度 −10%、每十倍時間老化 −5%，實際約 2.9 µF，最差可到標稱的 10%。Novak 量測 1 µF 0603 16 V X7R 與 47 µF 1206 6.3 V X5R 並聯：約 1 MHz、7 MHz 兩個串聯諧振谷與約 4 MHz 的反諧振峰，直流偏壓升高時三者都往高頻移動，表示兩顆的容量都在下降。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "產業協會白皮書，多數數字整理自廠商規格書（典型值）；三家廠商未具名；2.9 µF 為作者的示範相乘，非實測；Novak 量測為 2011 年資料，原圖未重製。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f5src/epci_hicv.pdf",
+        "sha256_prefix": "cab2a0bdf1d37303",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S002",
+      "url": "https://www.vishay.com/docs/45263/timedepcapdrix7rmlccexptoconstdcbiasvolt.pdf",
+      "canonical_url": "https://www.vishay.com/docs/45263/timedepcapdrix7rmlccexptoconstdcbiasvolt.pdf",
+      "title": "Time-Dependent Capacitance Drift of X7R MLCCs Under Exposure to a Constant DC Bias Voltage",
+      "publisher": "Vishay Vitramon 白皮書（Coppens、Bershadsky、Rogers、Ward），Document 45263",
+      "version": "Revision 14-Dec-2021",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（PDF），pdftotext 全文",
+      "reading_scope": "全文：摘要、引言、VCC 說明、老化機制、試驗設置、40% 與 100% 額定偏壓 1000 小時結果、回復、總結與結論",
+      "locator": "p.3 老化每十倍時間 1–2%、加熱過居禮點重置；p.4 試驗設置與 Fig.5 段；p.5 回復段；p.6 Summary/Conclusions",
+      "summary": "十顆 0603 X7R 100 nF 50 V（Vishay 與三家競品）先在 150 °C 去老化 1 小時，再長時間加 20 V（40%）或 50 V（100%）直流偏壓：扣掉加電當下的偏壓縮水之後，容量仍隨時間繼續下降，1000 小時時三家競品都再少 20% 以上，平均每十倍時間逾 7%，遠大於一般老化的每十倍時間 1–3%；Vishay 件只再少約 5%。偏壓越高漂移越快。拿掉偏壓並短路後容量慢慢回來，競品要 50–1000 小時才回到 95%；全部在 150 °C 加熱 1 小時後回到 100%。作者推測與長時間電場下的電域結構改變有關（加熱過居禮點可完全回復）。一般無偏壓老化約每十倍時間 1–2%（1→10 小時、10→100 小時各掉一次）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "廠商自家比較，競品未具名且有利害關係；只測一種規格；機制為作者推測；圖中各曲線數值只讀到文字敘述，未逐點讀圖。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f5src/vishay45263.pdf",
+        "sha256_prefix": "b6f8975e76785d8e",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S003",
+      "url": "https://www.murata.com/en-us/support/faqs/capacitor/ceramiccapacitor/char/0006",
+      "canonical_url": "https://www.murata.com/en-us/support/faqs/capacitor/ceramiccapacitor/char/0006",
+      "title": "Please tell us whether the capacitance of the ceramic capacitors changes with time ...（Ceramic Capacitors FAQ）",
+      "publisher": "Murata Manufacturing",
+      "version": "網頁 2026-11-11 擷取",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 HTML，去標籤全文閱讀",
+      "reading_scope": "全文：回答、老化說明、機制段",
+      "locator": "回答第1–5段；The mechanism of the aging characteristic 全段",
+      "summary": "高介電（X5R、X7R 等）陶瓷電容的容量會隨時間下降，在對數時間軸上幾乎呈直線；溫度補償型沒有老化。焊接等製程把電容加熱到居禮溫度（約 125 °C）以上時容量會回復，冷卻後老化重新開始。機制：居禮點以下 BaTiO3 變成四方晶並自發極化，起初許多細小電域在低電場下就能翻轉；放著不動，電域長大並重排到較穩定的 90° 電域、晶界空間電荷也會阻礙翻轉，低電場能翻轉的電域變少，容量就下降。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "老化曲線數值在圖中，正文無數字；未指定型號。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f5src/mfaq/0006.html",
+        "sha256_prefix": "d043cf901a17d434",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S004",
+      "url": "https://www.murata.com/en-us/support/faqs/capacitor/ceramiccapacitor/char/0001",
+      "canonical_url": "https://www.murata.com/en-us/support/faqs/capacitor/ceramiccapacitor/char/0001",
+      "title": "What is the allowable Ripple current Murata's ceramic capacitors can withstand?（Ceramic Capacitors FAQ）",
+      "publisher": "Murata Manufacturing",
+      "version": "網頁 2026-11-11 擷取",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 HTML，去標籤全文閱讀",
+      "reading_scope": "全文：回答與三類額定的條列",
+      "locator": "回答第1–3段；『Applicable to Rated Voltage of less than 100VDC』條；U2J/C0G 條",
+      "summary": "陶瓷電容沒有允許漣波電流的規格，但交流或脈衝電流流過會自我發熱，高頻或脈衝電壓下的介電損耗也會發熱；額定 100 VDC 以下的負載，應使 25 °C 環境下自我溫升低於 20 °C，且實際電路中的表面溫度不超過最高使用溫度；高壓 X7R 同樣以溫升 20 °C 為界，量測時不可開風扇；低損耗的 U2J/C0G 自我發熱低，可承受的功率比一般 X7R 高得多。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "通則性 FAQ，無特定型號的溫升數據（需另查 SimSurfing）。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f5src/mfaq/0001.html",
+        "sha256_prefix": "1ec6c7027007f079",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S005",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9147252/",
+      "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9147252/",
+      "doi": "10.3390/s22103869",
+      "title": "“Singing” Multilayer Ceramic Capacitors and Mitigation Methods—A Review",
+      "publisher": "Covaci & Gontean；Sensors (Basel) 22(10):3869 (2022)，CC BY 開放全文",
+      "version": "2022-05-19",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（PMC HTML），去標籤全文閱讀",
+      "reading_scope": "全文：§1 機制、§2 量測、§3 解法（廠商、佈局、其他）、§4 預防、結論",
+      "locator": "§1 第3–6段（壓電與電致伸縮、二次諧波、振動與容量成正比、MLCC 本身共振在 MHz）；§3.1 TI 引述的降噪 dB；§3.2 Table 1 與背對背段；§3.3 錫膏段",
+      "summary": "BaTiO3 的壓電效應與電致伸縮讓 MLCC 隨交流電壓振動；電致伸縮與電場平方成正比，直流成分不為零時會多出兩倍頻率的振動。振動程度隨層數、電壓與壓電係數增加，可說與容量成正比。MLCC 本身的振動共振在 MHz 範圍，單獨聽不到；它經焊點把伸縮傳給電路板，板子跟著振動，頻率可落進 20 Hz–20 kHz。依 TI 引述：低失真介質約降 7 dB、中介板約 13 dB、金屬端子約 25 dB，但價格高；Sun 等人量測顯示兩顆電容在板子正反面背對背、同相驅動可抵消板振，文中認為多數應用最省錢；錫膏厚度 3、4、5 mil 之間沒有明顯改善。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "文獻回顧（二手）；dB 數字轉引自 TI；Sun 等人原始論文未讀。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f5src/pmc9147252.html",
+        "sha256_prefix": "1e5ab1b5742877f4",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S006",
+      "url": "https://article.murata.com/article/measures-against-mlcc-squealing-in-laptop-battery-lines",
+      "canonical_url": "https://article.murata.com/article/measures-against-mlcc-squealing-in-laptop-battery-lines",
+      "title": "MLCC solutions for suppressing acoustic noise in the battery lines of laptop computers",
+      "publisher": "Murata Manufacturing Articles",
+      "version": "網頁 2026-11-11 擷取",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 HTML，去標籤全文閱讀",
+      "reading_scope": "全文：§1–8（易發聲的操作模式、易發聲電容、改善例、機制、評估法、電池線替換例、對策品、總結）",
+      "locator": "§1 操作模式條列；§2 『Reasons why ...』條列；§5 評估法；§6 替換例與型號；§8 機制",
+      "summary": "筆電電池線（DC-DC 轉換器一次側）電壓 10–20 V，又要供電給 CPU、相機、RF 模組，電壓容易波動；大尺寸、大容量、電壓與波動大的陶瓷電容，以及同一條線上有多顆這種電容時最容易發聲。容易出聲的操作模式：睡眠（降壓轉換器 PFM 模式）、液晶背光（升壓轉換器 PWM 調光）、相機或重載（間歇運作）。Murata 的判定法：在無響箱裡量聲壓並做 FFT，同時量電容兩端是否有 20 Hz–20 kHz 的漣波；兩者頻譜在同頻段一起升高，才能判定是電容。替換例：把典型 MLCC GRM31MR61E106KA01（1206、10 µF、25 V、X5R）依序換成金屬端子 KRM31FR61E106KH01，換得越多聲壓越低，因為同一條電池線上的電容承受幾乎相同的電壓波動，必須整條換。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "廠商技術文章兼產品推廣；聲壓與頻譜數值只在圖中，正文無具體 dB 或 Hz；未指明筆電機型。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f5src/murata_laptop.html",
+        "sha256_prefix": "04558fa265463402",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S007",
+      "url": "https://www.ti.com/lit/pdf/ssztb09",
+      "canonical_url": "https://www.ti.com/lit/pdf/ssztb09",
+      "title": "How to Reduce Acoustic Noise of MLCCs in Power Applications（SSZTB09）",
+      "publisher": "Texas Instruments 技術文章（Mingyue Zhao）",
+      "version": "2016-08（PDF 版權 2023）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（PDF），pdftotext 全文",
+      "reading_scope": "全文 4 頁：成因、三類對策、TPS51622 實驗、結論",
+      "locator": "p.1 成因條列；p.2–3 三類對策；p.3 TPS51622 實驗段",
+      "summary": "MLCC 隨電壓伸縮，單顆對人耳應該很安靜，焊在電路板上才會變大聲；開關電源輸入端的電壓起伏越大、變形越大，落在可聽頻率就越響。大尺寸、高介電常數、層數多的電容較吵。對策三類：換低失真介質、中介板或金屬端子電容（較貴）；改佈局（加厚 PCB 改變發聲頻率、放板邊、上下對稱放置讓振動抵消）；降低電容上的電壓變化幅度。實驗：用 TPS51622 Vcore 控制器以 I2C 把輸出從 0.5 V 調到 1.5 V，快（48 mV/µs）與慢（12 mV/µs）兩種斜率比較，慢斜率時輸入電容上的漣波明顯較小，聲壓也較低。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "短篇技術文章；文中聲壓寫作『from ~40dB to ~50dB』語意顛倒，具體 dB 不可引用；Table 1 與 Figure 4 數字在圖中未讀到。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f5src/ssztb09.pdf",
+        "sha256_prefix": "2ab3d067f434387b",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S008",
+      "url": "https://www.unicode.org/reports/tr15/tr15-58.html",
+      "retrieval_url": "https://www.unicode.org/reports/tr15/",
+      "canonical_url": "https://www.unicode.org/reports/tr15/tr15-58.html",
+      "title": "UAX #15: Unicode Normalization Forms",
+      "publisher": "Unicode Consortium（Ken Whistler 編）",
+      "version": "Unicode 18.0.0，revision 58，2026-08-12（tr15-58）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 HTML，轉純文字全文",
+      "reading_scope": "§1 Introduction（1.1–1.4）、§3 Versioning and Stability、§7 Design Goals、§10 Respecting Canonical Equivalence；§9 快速檢查段落；其餘實作章節略讀",
+      "locator": "§1.1 Figure 1–2；§1.2 Table 1、Figure 3–6 說明；§1.3；§1.4 Table 2；§3；§7 Goal 1；§10 Example 1",
+      "summary": "兩種等價：標準等價（Ç↔C+◌̧、q 上下點順序、가↔ᄀ+ᅡ、Ω 歐姆符號↔Ω）與較弱的相容等價（ℌ→H、NBSP→空白、①→1、ｶ→カ、¼→1/4）。正規化演算法先完全分解、依 ccc 把組合符號排成固定順序，NFC/NFKC 再組合；轉換後做位元比對即可判定等價（Goal 1 唯一性、冪等）。NFKC/NFKD 不可盲目套用於任意文字。純 ASCII 不受任何形式影響，純 Latin-1 已是 NFC。正規化結果跨版本穩定（組合版本固定為 3.1.0）。兩個正規化字串串接後不保證仍正規化。位元比較本身不尊重標準等價（埃符號 vs A+上圈）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "規範文件；不談介面或特定程式的實作；例子以拉丁、韓文為主。",
+      "refreshes_source_id": "SRC-44f561000729bda4",
+      "applies_to_candidate_ids": [
+        "L311",
+        "L313",
+        "L314",
+        "L315"
+      ],
+      "access_notes": "池中 SRC-44f561000729bda4（life-tech-20261101 節錄閱讀）的網址 tr15-58.html 正是本輪讀的 revision 58（Unicode 18.0.0）；批次來源沿用舊網址，實際下載的『最新版』網址記在 retrieval_url，本輪閱讀追加到原來源 id，不另立來源。舊核心 L311、L313–L315 已有的一行定義不重計，本輪增量由 T55-011、T55-012 承接。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/tr15.html",
+        "sha256_prefix": "efcf19da85342bd8",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S009",
+      "url": "https://www.w3.org/TR/charmod-norm/",
+      "canonical_url": "https://www.w3.org/TR/charmod-norm/",
+      "title": "Character Model for the World Wide Web: String Matching",
+      "publisher": "W3C Internationalization Working Group（Addison Phillips 編）",
+      "version": "First Public Working Draft 2026-07-16（WD-charmod-norm-20260716）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 HTML，轉純文字全文",
+      "reading_scope": "§1.4 術語、§2（2.1 大小寫折疊含 2.1.1 語言、2.2 正規化、2.3 同形字限制、2.4 正規化與折疊互動、2.6 不可見字元、2.7 emoji、2.8 舊編碼）、§3.2.1–3.2.2 比對演算法與四種正規化步驟、§3.2.7、§4.1",
+      "locator": "Example 12、15（Ǻ 五種編碼→三種序列）；§2.2.1 Example 13；§2.3 Example 16–17；§2.4 Example 18–19；§2.6 ZWNJ 波斯文例；§3.2.2.1",
+      "summary": "比對演算法：轉成碼點→展開跳脫→選定正規化步驟→（自訂）→逐碼點比對。Ǻ 至少五種編碼，正規化後只剩三種序列（全形Ａ組合保留）。W3C 建議識別字與語法內容預設『不做』大小寫折疊與正規化（Default step）；相容等價的字串『不應』被正式語言視為相同。正規化不合併同形字（拉丁 P、希臘 Ρ、西里爾 Р），也不合併功能相同的「。」與「.」。大小寫折疊後可能產生未正規化序列，必須再正規化；相容比對要折疊與正規化兩輪（㎒→MHz→mhz）。土耳其語 I/ı、İ/i 需語言特化。不可見字元（ZWNJ：波斯文 تنها「獨自」vs تن‌ها「身體們」）與 emoji 修飾序列不受正規化處理，會讓看似相同的字串比對失敗。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "工作草案，非最終建議；主要對象是格式與協定（識別字），不是使用者搜尋。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/charmod.html",
+        "sha256_prefix": "bdeb1968374c3c0b",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S010",
+      "url": "https://www.w3.org/TR/string-search/",
+      "canonical_url": "https://www.w3.org/TR/string-search/",
+      "title": "String Searching",
+      "publisher": "W3C Internationalization Working Group（Addison Phillips、Fuqiao Xue 編）",
+      "version": "Group Note Draft 2026-09-30（DNOTE-string-search-20260930）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 HTML，轉純文字全文",
+      "reading_scope": "§1.4 術語、§2 全章（2.1 搜尋敏感度、2.2.1 語言、2.2.2 大小寫、2.2.3 正規化、2.2.4–2.2.7 文字系統／寬度／異體選擇符／數字、2.2.8 拼寫變體、2.2.10 重音、2.2.11 可省字元、2.2.12 外觀相同但不等價）、§2.3",
+      "locator": "§2.1 Example 1（re-resume）；§2.2.1 Example 2（a/ä/ae、Han/Hän）與 ILIK 表；§2.2.2；§2.2.3 Example 3（K 的變體）；§2.2.5；§2.2.6 Example 6；§2.2.10 Example 12–13",
+      "summary": "瀏覽器『尋找』屬於子字串搜尋，和格式識別字的嚴格比對需求不同。建議預設：不分大小寫（用 Unicode 完整折疊，Kelvin 符號 K 對 k）、沒打重音的查詢可以找到有重音的字，但打了重音只找同樣有重音的（re-resume / re-résumé 例：輸入越費力，比對越嚴）、全形半形差異預設忽略；使用者應能要求更嚴格比對。語言期待不同：英語使用者期待 ä 對 a，德語視 ä 與 ae 相同，芬蘭語三者都不同；文件語言標記通常不影響尋找。土耳其語 ılık：部分瀏覽器 ILIK、İLİK、ilik 都只找到帶點的 ilik。IVS 異體字建議同時支援模糊與精確兩種模式。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "文件註明仍在進行中；瀏覽器行為描述為『某些瀏覽器』，未列版本，不可當成特定瀏覽器的實測。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/strsearch.html",
+        "sha256_prefix": "3e4cbd8de4457c64",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S011",
+      "url": "https://www.unicode.org/reports/tr39/",
+      "canonical_url": "https://www.unicode.org/reports/tr39/",
+      "title": "UTS #39: Unicode Security Mechanisms",
+      "publisher": "Unicode Consortium（Josh Hadley、Roozbeh Pournader 編）",
+      "version": "Version 18.0.0，revision 34，2026-08-27",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 HTML，轉純文字全文",
+      "reading_scope": "§1–2、§4 Confusable Detection（skeleton 定義、三類易混淆、資料格式）、§4.1 Whole-Script Confusables、Migration（持久資料遷移）；§3 識別字狀態表與 §5 偵測細節略讀",
+      "locator": "§4 skeleton 定義與 Definitions；§4.1 circle／сігсӀе 例；Migration「Migrating Persistent Data」",
+      "summary": "以 skeleton（把每個字對映到代表字後的字串）判定易混淆：skeleton(X)=skeleton(Y) 即 X≅Y。分三類：同文字系統（ǉeto/ljeto）、跨文字系統（paypal 與含西里爾 а 的 pаypаl）、整串換文字系統（拉丁 scope 與西里爾 ѕсоре）。skeleton 不供顯示，且跨 Unicode 版本不穩定，存進資料庫索引者升級時必須重算。整串西里爾的 сігсӀе 用在 .рф 合理，用在 .com 才可疑。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "規範文件；不代表任何瀏覽器實際採用全部規則。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/tr39.html",
+        "sha256_prefix": "aba0abe1891b47c9",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S012",
+      "url": "https://chromium.googlesource.com/chromium/src/+/main/docs/idn.md",
+      "canonical_url": "https://chromium.googlesource.com/chromium/src/+/main/docs/idn.md",
+      "title": "Internationalized Domain Names (IDN) in Google Chrome",
+      "publisher": "Chromium 專案文件（Google）",
+      "version": "main 分支，2026-11-11 讀取當下版本",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（Gitiles HTML），轉純文字全文",
+      "reading_scope": "全文：Background、How IDN works、Google Chrome's IDN policy（逐條演算法）、Additional Protections、Defensive Registrations",
+      "locator": "Background 第2段；How IDN works；policy 清單第1–14條；Additional Protections 演算法",
+      "summary": "同形攻擊：拉丁 a 與西里爾 а 相似，可註冊看似 ebay.com 的網域。網址送 DNS 前轉成以 xn-- 開頭的 punycode（öbb.at→xn--bb-eka.at）。Chrome 51 起的顯示政策不看語言設定，逐一標籤判斷：拉丁、西里爾、希臘不得混用；整串都是像拉丁的西里爾字母（аррӏе.com）且頂級網域非西里爾時顯示 punycode；去掉變音並對映 skeleton 後與熱門網域相同（googlé.com）也顯示 punycode；另有全頁『相似網址』警告，檢查都在本機完成。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "開發文件，main 分支會變動；不是使用者端實測，也不代表其他瀏覽器。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/idn.html",
+        "sha256_prefix": "1f4624af1c169488",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S013",
+      "url": "https://www.unicode.org/reports/tr10/",
+      "canonical_url": "https://www.unicode.org/reports/tr10/",
+      "title": "UTS #10: Unicode Collation Algorithm",
+      "publisher": "Unicode Consortium（Ken Whistler、Markus Scherer 編）",
+      "version": "Version 18.0.0，revision 55，2026-08-31",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 HTML，轉純文字",
+      "reading_scope": "§1.1 比較層級（Table 2）、§1.1.1、§1.2 標準等價；§8 Searching and Matching 全節（DS1–DS4、整字元條件）；其餘排序演算法章節未細讀",
+      "locator": "§1.1 Table 2；§8 Searching and Matching 第1–6段與 DS3 例",
+      "summary": "比較分層：L1 基本字母、L2 重音、L3 大小寫與變體。搜尋時排除 L3 差異＝忽略大小寫與相容格式差異，再排除 L2＝也忽略重音。在主層級 ß 與 ss 相符，丹麥語調整後 aa 與 å 相符，所以相符的兩段字串長度可以不同。使用者可能不希望查 abc 時命中 …abç…，因此有『只比完整字元』（grapheme 邊界）條件。標準等價的字串排序必須相同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "排序／搜尋規範；未讀完整演算法與 DUCET 細節。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/tr10.html",
+        "sha256_prefix": "e5ec6a9933495e32",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S014",
+      "url": "https://www.unicode.org/reports/tr29/tr29-49.html",
+      "retrieval_url": "https://www.unicode.org/reports/tr29/",
+      "canonical_url": "https://www.unicode.org/reports/tr29/tr29-49.html",
+      "title": "UAX #29: Unicode Text Segmentation",
+      "publisher": "Unicode Consortium（Josh Hadley 編）",
+      "version": "Unicode 18.0.0，revision 49，2026-09-01",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 HTML，轉純文字",
+      "reading_scope": "§3 Grapheme Cluster Boundaries 全節（含 Table 1a 與 legacy／extended 說明）；§4 以後未讀",
+      "locator": "§3 第1–8段（含 Note、backspace／delete 段）、Table 1a",
+      "summary": "『使用者感知的字』不總是一個碼點，也不是無歧義概念；grapheme cluster 是可程式化的近似。編輯介面預設以 cluster 為單位處理選取、方向鍵、向前刪除：底字＋重音時右方向鍵一次跳過全部。但也可以逐元素編輯：某系統上 backspace 可能逐碼點刪、delete 鍵刪整個 cluster；鍵盤按鍵與 cluster 沒有一一對應。extended cluster 把天城文 क्षि（4 碼點）當一個單位，legacy 不會。以 cluster 計數的上限是使用者感知上限，不是資料大小上限（300 字＋3000 位元組例）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "規範；不描述任何特定編輯器的實際刪除行為。為重讀既有 L317/L318 來源（SRC-8174dfd1da099164）之全文。",
+      "refreshes_source_id": "SRC-8174dfd1da099164",
+      "applies_to_candidate_ids": [
+        "L317",
+        "L318"
+      ],
+      "access_notes": "池中 SRC-8174dfd1da099164（life-tech-20261101 節錄閱讀）的網址 tr29-49.html 正是本輪讀的 revision 49（Unicode 18.0.0）；批次來源沿用舊網址，實際下載的『最新版』網址記在 retrieval_url，本輪閱讀追加到原來源 id，不另立來源。只有 T55-021（刪除鍵與字素群，G02 改題後不用）引用；L317、L318 已有的字素群定義不重計。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/tr29.html",
+        "sha256_prefix": "60fb49ee640a154d",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S015",
+      "url": "https://developer.apple.com/library/archive/qa/qa1173/_index.html",
+      "canonical_url": "https://developer.apple.com/library/archive/qa/qa1173/_index.html",
+      "title": "Technical Q&A QA1173: Text Encodings in VFS",
+      "publisher": "Apple Developer Documentation Archive",
+      "version": "2011-09-30 修訂（已不再更新）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 HTML，轉純文字全文",
+      "reading_scope": "全文：Precomposed versus Decomposed、Volume Format、Returning／Accepting Names、Implementation、Compatibility Notes、修訂史",
+      "locator": "Important 方框；Volume Format；Compatibility Notes 第1–3段",
+      "summary": "Mac OS X 底層把檔名當 UTF-8。HFS Plus 存『分解形』，而且是 NFD 的變體：U+2000–2FFF、U+F900–FAFF、U+2F800–2FAFF 不分解（避免與舊 Mac 編碼來回轉換出錯）；UDF 與 SMB 用組合形，NFS 沒有公認標準（Apple 的 NFS 原樣傳遞）。若程式用組合形名稱建檔，再以位元比對逐一掃目錄找它，會找不到；從 NFS 用 cp 複製也會把組合形名稱帶進來。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "已封存的開發者文件，描述 HFS+ 時代；不代表現行 macOS 預設檔案系統（見 T55-S016）。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/qa1173.html",
+        "sha256_prefix": "7930139a01e59d51",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S016",
+      "url": "https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/APFS_Guide/FAQ/FAQ.html",
+      "canonical_url": "https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/APFS_Guide/FAQ/FAQ.html",
+      "title": "Apple File System Guide — Frequently Asked Questions",
+      "publisher": "Apple Developer Documentation Archive",
+      "version": "Retired Document（macOS High Sierra／iOS 11 時期）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 HTML，轉純文字全文",
+      "reading_scope": "全文 FAQ；重點讀 Implementation「How does Apple File System handle filenames?」整段",
+      "locator": "Implementation：filenames 問答全段",
+      "summary": "APFS 只接受有效 UTF-8 檔名，保留檔名原本的大小寫與正規化形式；macOS High Sierra 起在大小寫敏感與不敏感兩種變體都『正規化不敏感』：用正規化後的雜湊比對，同一資料夾不能並存兩個只差正規化的檔名，用任一種形式都找得到。HFS+ 則把正規化後的名字存到磁碟。APFS 依 Unicode 9.0，HFS+ 依 3.2。iOS 10.3 與早期預覽版 APFS 是正規化『敏感』的，用一種形式建檔、另一種形式開檔可能得到 ENOENT（找不到檔案）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "已退役文件；之後版本行為以此文件所述為止，未查證最新 macOS 是否再改。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/apfsfaq.html",
+        "sha256_prefix": "fbbc5f030c5a581c",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S017",
+      "url": "https://www.nasa.gov/missions/psyche-mission/nasas-tech-demo-streams-first-video-from-deep-space-via-laser/",
+      "canonical_url": "https://www.nasa.gov/missions/psyche-mission/nasas-tech-demo-streams-first-video-from-deep-space-via-laser/",
+      "title": "NASA’s Tech Demo Streams First Video From Deep Space via Laser",
+      "publisher": "NASA／Jet Propulsion Laboratory 新聞稿",
+      "version": "2023-12-18",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（nasa.gov 轉載 JPL 稿；jpl.nasa.gov 原址 403），轉純文字全文",
+      "reading_scope": "全文：導言、Feline Frequency、Milestone After Milestone 前段",
+      "locator": "第2–4段；Rogalin 引言段",
+      "summary": "DSOC 在 2023-12-11 從約 1,900 萬英里（3,100 萬公里，約地月距離 80 倍）傳回 15 秒超高畫質影片（貓 Taters），訊號 101 秒到地球，以系統最高 267 Mbps 傳送，Palomar 的 Hale 望遠鏡接收後逐格經網路送到 JPL 即時播放。設計速率是現行深空無線電的 10–100 倍。影片是發射前預先存好的。JPL 說 Palomar 收到後再經網際網路送到 JPL，那段地面網路比來自深空的訊號還慢。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "技術展示，不是 Psyche 主任務的通訊鏈；影片預載非即時拍攝。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/dsoc_video.html",
+        "sha256_prefix": "500263f014efadec",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S018",
+      "url": "https://www.nasa.gov/missions/psyche-mission/nasas-optical-comms-demo-transmits-data-over-140-million-miles/",
+      "canonical_url": "https://www.nasa.gov/missions/psyche-mission/nasas-optical-comms-demo-transmits-data-over-140-million-miles/",
+      "title": "NASA’s Optical Comms Demo Transmits Data Over 140 Million Miles",
+      "publisher": "NASA／JPL 新聞稿",
+      "version": "2024-04-25",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（nasa.gov），轉純文字全文",
+      "reading_scope": "全文：導言、Surpassing Expectations、Fun With Lasers、More About the Mission",
+      "locator": "導言第1–3段；Surpassing Expectations 第2–3段；Fun With Lasers 第2–3段",
+      "summary": "2024-04-08 從 1.4 億英里（2.26 億公里，日地距離 1.5 倍）以最高 25 Mbps 傳資料，遠超在該距離證明 1 Mbps 的目標；距離變成七倍多後速率如預期下降。首次與 Psyche 的無線電系統介接，傳回約 10 分鐘重複的工程資料，同時同一批資料走無線電送到深空網路，JPL 再比對兩路。暴風雨曾讓 Table Mountain 與 Palomar 停擺；無線電多數天氣可用，光通訊需相對晴朗。把 Palomar、Goldstone 的實驗性射頻－光學天線、Table Mountain 偵測器聯合接收（arraying）可增強訊號，一站因天氣離線時其他站仍能收。往返轉送實驗單程最遠達 4.5 億公里來回。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "新聞稿；速率為『最高』值。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/dsoc_140.html",
+        "sha256_prefix": "84d0bbbb8819df6a",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S019",
+      "url": "https://www.nasa.gov/missions/psyche-mission/nasas-deep-space-communications-demo-exceeds-project-expectations/",
+      "canonical_url": "https://www.nasa.gov/missions/psyche-mission/nasas-deep-space-communications-demo-exceeds-project-expectations/",
+      "title": "NASA’s Deep Space Communications Demo Exceeds Project Expectations",
+      "publisher": "NASA／JPL 新聞稿",
+      "version": "2025-09-18",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（nasa.gov），轉純文字全文",
+      "reading_scope": "全文：導言、Record-breaking technology、How it works、Brilliant new era",
+      "locator": "Record-breaking 第2–3段；How it works 第1–3段；Biswas 引言",
+      "summary": "兩年 65 次通聯，最後一次在 2.18 億英里外收發成功；2024-12-03 從 3.07 億英里（超過地火平均距離）傳回資料，創光通訊距離紀錄；地面共收到 13.6 terabits。Table Mountain 的 3 千瓦上行雷射當信標，讓飛行端知道雷射該往哪瞄；兩者都高速移動、光要好幾分鐘才到，必須精準指向。Palomar 200 吋望遠鏡集最微弱的光子，再由高效率偵測器陣列解碼。團隊提到天氣讓地面站停擺、南加州野火也影響人員。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "新聞稿；13.6 terabits 是總量，非單次。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/dsoc_final.html",
+        "sha256_prefix": "8328aac2b8cebcc4",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S020",
+      "url": "https://oig.nasa.gov/docs/IG-23-016.pdf",
+      "canonical_url": "https://oig.nasa.gov/docs/IG-23-016.pdf",
+      "title": "Audit of NASA’s Deep Space Network (IG-23-016)",
+      "publisher": "NASA Office of Inspector General",
+      "version": "2023-07-12",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（轉址 oig.nasa.gov/wp-content/uploads/2023/12/ig-23-016.pdf），pdftotext 全文",
+      "reading_scope": "Results in Brief、Introduction、Background（DSN 組成、功能、DAEP）、第一章 Oversubscribed 全節（mission impacts、scheduling、Goldstone 停擺）；第二章 DAEP 成本進度略讀",
+      "locator": "pp.1–3（三站相距約 120 度、天線）；pp.3–4（功能清單）；pp.5（約 60 任務、77,000 小時）；pp.10–14（超額 40%、8,500–15,000 小時、Perseverance 7 次、每週約 500 項排程、2022-12 Goldstone 33 小時停擺 9,090 分鐘、JWST 在 Artemis I 期間）；p.11 圖5註（每天線 28 天約 540 小時）",
+      "summary": "深空網路三站在加州 Goldstone、西班牙 Madrid、澳洲 Canberra，沿地軸約相隔 120 度，前方站接手已沉到地平線下的站；各站有 70 公尺與多座 34 公尺天線。天線已滿載且超額：需求有時超出容量約 40%，30 多年來需求一直大於容量；過去 5 年任務少拿到 8,500–15,000 追蹤小時；約 60 個任務共用；每週約 500 項排程活動，靠任務間互相協商；Perseverance 在 21 個月內至少 7 次因超額拿不到決定下一步的資料；2022 年 12 月 Goldstone 硬體故障停擺 33 小時，各任務共失去 9,090 分鐘指令、追蹤與遙測。JWST 在 Artemis I 發射期間 DSN 時間有限只能收較低品質資料。預估 2030 年代超額需求約 50%。遙測＝科學與工程資料。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "稽核報告觀點；數字為 2023 年及之前。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/oig_dsn.pdf",
+        "sha256_prefix": "dbb77d6c39235193",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S021",
+      "url": "https://science.nasa.gov/mars/mars-relay-network/",
+      "canonical_url": "https://science.nasa.gov/mars/mars-relay-network/",
+      "title": "Mars Relay Network",
+      "publisher": "NASA Science",
+      "version": "頁面最後更新 2026-06-05",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200，轉純文字全文",
+      "reading_scope": "全文：How It Works、How We Use It、Relaying to Earth、A Critical Role、Relay Sessions and Data Volume 表、Key Terms、MAVEN 段",
+      "locator": "How It Works 第1–4段；Relaying to Earth；A Critical Role；資料量表",
+      "summary": "火星車指令和遙測可直接對地球，但科學資料改送給軌道器轉傳：軌道器天線與太陽能板大、與地球聯繫更規律。火星自轉讓火星車每天約 12 小時看不到地球；地火距離 5,460 萬–4.002 億公里（約 3–22.4 分鐘光行時）。火星車對軌道器可達 2 Mbps。2004 年以來火星表面每張影像都經中繼網路。部分軌道器可邊收邊朝地球送，其他先收再轉向地球。MAVEN 曾錄下整段著陸無線電頻譜，數小時才傳完；MAVEN 2025-12-06 失聯、2026-06-03 宣告結束，由其他軌道器補位。表列平均每日中繼量：MRO 447.5 Mb/日（2025 年前平均）、TGO 1,562.7 Mb/日。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "官方網頁，數字隨任務更新。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/marsrelay.html",
+        "sha256_prefix": "f0232e6f1db7894a",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S022",
+      "url": "https://www.nasa.gov/missions/the-mars-relay-network-connects-us-to-nasas-martian-explorers/",
+      "canonical_url": "https://www.nasa.gov/missions/the-mars-relay-network-connects-us-to-nasas-martian-explorers/",
+      "title": "The Mars Relay Network Connects Us to NASA’s Martian Explorers",
+      "publisher": "NASA／JPL 新聞稿",
+      "version": "2021-02-16",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200，轉純文字全文",
+      "reading_scope": "全文（Perseverance 著陸前的中繼安排、Science Operations）",
+      "locator": "MRO bent pipe 段；First Word From Jezero 段；Science Operations 段",
+      "summary": "著陸最後兩分鐘大部分在火星地平線後，無法直接對地球，只能經 MRO 與 MAVEN；MRO 升級軟體後以『彎管』方式收到 Perseverance 遙測立即轉發地球。訊號距離使地面得知時，著陸已發生 11 分 22 秒。MAVEN 錄下整段著陸、數小時後才送回，用來補 MRO 漏收的遙測。各車共用同一組頻率，須仔細排定軌道器與車的通話時段。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "2021 年著陸前的預告稿，部分安排之後可能調整。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/marsrelay_news.html",
+        "sha256_prefix": "849fe5f108f257a1",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S023",
+      "url": "https://publications.spaceops.org/2025/download_by_id.php?id=0189",
+      "canonical_url": "https://publications.spaceops.org/2025/download_by_id.php?id=0189",
+      "title": "Mars Relay Operations Service (MaROS): Adapting to the Needs of the Mars Relay Network",
+      "publisher": "Brandon Sauer（JPL）；SpaceOps 2025，ID 189",
+      "version": "會議論文 2025-05",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 PDF，pdftotext 全文",
+      "reading_scope": "摘要、§1 Introduction、§6 Where’s My Relay Data；中間 MPX、RTP 技術章節略讀",
+      "locator": "§1 第1段；§6 第1–3段",
+      "summary": "MaROS 自 2010 年協調火星中繼；至今超過 35,000 次軌道器飛越、從火星表面傳回逾 8 terabits。Curiosity 與 Perseverance 傳回地球的資料超過 99% 靠中繼。§6 情境：系統預估 TGO 中繼資料上午 9 點前落地，9:30 還沒到，不知卡在 TGO 到地面站還是地面處理；因此 2024 年推出追蹤資料在各保管點位置的儀表板。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "JPL 作者會議論文；§6 開頭為示意情境。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/spaceops2025.pdf",
+        "sha256_prefix": "087f1c05a2424194",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S024",
+      "url": "https://www.nasa.gov/science-research/earth-science/nasas-near-space-network-enables-pace-climate-mission-to-phone-home/",
+      "canonical_url": "https://www.nasa.gov/science-research/earth-science/nasas-near-space-network-enables-pace-climate-mission-to-phone-home/",
+      "title": "NASA’s Near Space Network Enables PACE Mission to ‘Phone Home’",
+      "publisher": "NASA Goddard（Katherine Schauer）",
+      "version": "2024-04-17",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200，轉純文字全文",
+      "reading_scope": "全文",
+      "locator": "第3–6段；PACE 位置段；新天線段",
+      "summary": "DTN 在中斷時把資料存起來、等路徑打開再轉送；近太空網路把 DTN 整合進四座新天線與 PACE 衛星。PACE 是第一個運作中使用 DTN 的科學任務，用來傳電池、軌道等營運資料；先前只在國際太空站做過展示。PACE 約在 250 英里高，每天 12–15 次下傳、每天約 3.5 TB 科學資料；新天線在阿拉斯加、維吉尼亞、智利、挪威 Svalbard。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "新聞稿；DTN 在 PACE 上用於營運資料，不等於所有科學資料。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/pace.html",
+        "sha256_prefix": "fe612153f7cd6b1e",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T55-S025",
+      "url": "https://www.nasa.gov/technology/space-comms/dtn-overview-benefits-successstories-learningresources/",
+      "canonical_url": "https://www.nasa.gov/technology/space-comms/dtn-overview-benefits-successstories-learningresources/",
+      "title": "Delay/Disruption Tolerant Networking Overview",
+      "publisher": "NASA SCaN（Katherine Schauer）",
+      "version": "2023-09-20",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200，轉純文字全文",
+      "reading_scope": "全文：定義、Benefits、Mission Types、Myths and Facts、Success Stories（Antarctica、PACE、HDTN）",
+      "locator": "定義段第1–3段；Improved Operations 段；Antarctica Demonstration",
+      "summary": "DTN 是存放再轉送架構：收到的每個資料包能轉就立即轉，否則存著等之後可轉時再送，所以只需要『下一跳』可用；適用斷線、延遲（深空）與速率不匹配。自動重傳減少排程地面站的需要——安排一次傳輸有時要五天規劃。2017-11-20 南極 McMurdo 站用 DTN 把手機自拍經 TDRS、白沙、多個 DTN 節點送到國際太空站。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "概論頁；未給 DTN 實測延遲數字。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/dtn.html",
+        "sha256_prefix": "515e2c93b41ca968",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "T55-001",
+      "question": "同一個規格的 10 µF 陶瓷電容，換一家廠商，接上同樣的電壓後剩下的容量為什麼可以差這麼多？",
+      "domain": "電子元件",
+      "mechanism_key": "capacitor.mlcc.dc_bias_vendor_spread_field_strength",
+      "answer_target": "EPCI 白皮書比較三家廠商同為 10 µF、6.3 V、X7R、0805 尺寸的積層陶瓷電容：加到額定 6.3 V 時容量少 35% 到 65%，就算只用到常見的 3.3 V 也少 12% 到 32%。原因是直流電場把鈦酸鋇裡的偶極卡住，縮水程度跟每單位厚度的電壓成正比：介質層越薄、同體積塞進越多容量，就縮得越多，所以換大一號封裝或較穩定的介質可以少縮一點。",
+      "scope": "限高介電 MLCC；數字為整理自廠商規格書的典型值，三家未具名；不可推到 C0G。",
+      "source_ids": [
+        "T55-S001"
+      ],
+      "source_locator": "S001 §2.3 第2–3段、Fig.2 與 0603/0805、X5R/X7R 比較圖說",
+      "premise_status": "screened",
+      "notes": "目標 G18 偏壓章的數字（審查缺『縮多少』）；原角色 turn。機制句 E2271 已有，本核心只算數字與『電場強度、封裝』兩條。 原提案 F5-001。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照覆核意見改字後收；數字與機制照錄；只改掉算錯的問句前提與『依規格書』的出處說法。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "標示一樣的電容，在電路裡剩多少，要看誰做的、多薄、加多少電壓。",
+        "visual": "同一顆 10 µF 標籤下並排三條縮水曲線；3.3 V 處畫垂線，標出 −12% 與 −32%。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T55-002",
+      "question": "把溫度、交流小訊號和放久的效應一起算，一顆 10 µF 電容最後可能只剩多少？",
+      "domain": "電子元件",
+      "mechanism_key": "capacitor.mlcc.capacitance_derating_factors_multiply",
+      "answer_target": "EPCI 白皮書舉例：10 µF、6.3 V、X5R、0805 的電容拿去當 5 V 的耦合電容，依廠商典型數據，直流偏壓少約 60%、10 mV 的小交流訊號再少約 15%、工作溫度再少約 10%、每過十倍時間老化再少約 5%；這些折扣是相乘的，算下來約 2.9 µF；作者說視型號與廠商，最差可能只剩標稱的一成。",
+      "scope": "作者示範的典型值相乘，不是實測；不能當任一型號的保證值。",
+      "source_ids": [
+        "T55-S001"
+      ],
+      "source_locator": "S001 §2.5 條列與相乘式",
+      "premise_status": "screened",
+      "notes": "G18 偏壓章收束句；原角色 chapter_core。與 T55-001 同源，只算『條件相乘』這條＋2.9 µF 結果。 原提案 F5-002。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照原稿收；照原文；與 T55-001 同源，G18 只算 0.5 條（條件相乘的結果），併在偏壓章。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "標籤上的 10 µF 是在特定量測條件下的數字，電路裡的條件一層層打折。",
+        "visual": "10 µF 方塊依序被切掉 60%、15%、10%、5%，剩一小塊標 2.9 µF。",
+        "seconds": [
+          30,
+          45
+        ]
+      }
+    },
+    {
+      "id": "T55-003",
+      "question": "兩顆不同的電容並聯，加上直流電壓後，為什麼整個阻抗曲線的谷底一起往高頻跑？",
+      "domain": "電子元件",
+      "mechanism_key": "capacitor.mlcc.self_resonance_shift_with_dc_bias",
+      "answer_target": "Novak 量測一顆 1 µF 0603 X7R 與一顆 47 µF 1206 X5R 並聯：約 1 MHz 是 47 µF 那顆的串聯自諧振谷，約 7 MHz 是 1 µF 的，約 4 MHz 是 1 µF 的電容和 47 µF 的寄生電感形成的反諧振峰。直流偏壓升高時三個點都往高頻移，白皮書說這代表兩顆的容量都在縮；所以偏壓一變，阻抗最低與最高的頻率位置也跟著移動。",
+      "scope": "單一量測例（2011），轉引自 EPCI 白皮書；只說方向與三個頻率位置，不引用 dB。",
+      "source_ids": [
+        "T55-S001"
+      ],
+      "source_locator": "S001 §3.2 Figure 10 敘述",
+      "premise_status": "screened",
+      "notes": "G18 把『自諧振』章（E2260）和『偏壓』章接起來的橋；原角色 turn。補審查要求的自諧振具體頻率（MT-101 本身無法重讀）。 原提案 F5-003。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照覆核意見改字後收；刪掉原文沒有的『濾波最有效頻段』推論，只說諧振點移動。算 1 條；",
+      "editorial": {
+        "role": "segment",
+        "payoff": "上一章的諧振點不是固定的，偏壓章的縮水會把它推走。",
+        "visual": "阻抗對頻率的對數圖，三個標記點隨偏壓滑桿右移。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "T55-004",
+      "question": "電容放在抽屜裡沒用，容量也會慢慢變小，那焊上板子後為什麼又變回來？",
+      "domain": "電子元件",
+      "mechanism_key": "capacitor.mlcc.aging_log_time_curie_reset",
+      "answer_target": "高介電陶瓷電容的容量會隨時間下降，在對數時間軸上幾乎是直線：Vishay 說一般約每十倍時間少 1% 到 2%，也就是 1 到 10 小時少一次、10 到 100 小時再少一次。原因是居禮點以下的鈦酸鋇電域會慢慢重排成較穩定的排列，能被小電場翻轉的電域變少。焊接時把電容加熱到居禮溫度（約 125 °C）以上，電域消失，容量回復，冷卻後老化從頭開始。溫度補償型陶瓷電容沒有這種老化。",
+      "scope": "限高介電 MLCC；1–2%/十倍時間為一般值。",
+      "source_ids": [
+        "T55-S003",
+        "T55-S002"
+      ],
+      "source_locator": "S003 回答第1–5段與機制段；S002 p.3 老化段",
+      "premise_status": "screened",
+      "notes": "G18 新增『縮水還會隨時間』章的前半；原角色 chapter_core。 原提案 F5-004。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照覆核意見改字後收；只把原文沒有的『C0G』改回『溫度補償型』。G18 最終版不用（篇幅），T55-005 自己帶一般老化 1–3% 的對照。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "電容的容量像會自己慢慢鬆掉的彈簧，加熱一次就重新上緊。",
+        "visual": "對數時間軸上一條緩降直線；焊接火焰一閃，曲線跳回起點再開始下降。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "T55-005",
+      "question": "電容一直加著直流電壓，容量除了當下縮水，還會越放越少嗎？",
+      "domain": "電子元件",
+      "mechanism_key": "capacitor.mlcc.dc_bias_aging_time_drift",
+      "answer_target": "Vishay 拿四家廠商的 0603 X7R 100 nF 50 V 電容，先加熱去老化，再長時間加 20 V（額定的四成）：扣掉加電當下的縮水後，容量還繼續往下掉，1000 小時時三家競品又少了 20% 以上，平均每十倍時間少 7% 以上，遠超過一般標示的每十倍時間 1% 到 3%；加滿 50 V 掉得更快。另一組在 50 V 下放 1000 小時再拿掉電壓，競品要 50 到 1000 小時才回到九成五，全部再加熱到 150 °C 一小時才完全回來。",
+      "scope": "廠商自家比較、單一規格；競品未具名；機制為推測。數字只用文字段落，不讀圖。",
+      "source_ids": [
+        "T55-S002"
+      ],
+      "source_locator": "S002 p.4 試驗設置與 Fig.5 段；p.5 回復段；p.6 Summary/Conclusions",
+      "premise_status": "screened",
+      "notes": "G18 『縮水還會隨時間』章的轉折：偏壓縮水不是一次性；原角色 turn。避免說成『Vishay 最好』的推薦。 原提案 F5-005。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照覆核意見改字後收；刪掉原文沒有的機制推測，並把回復數字放回它所屬的 100% 偏壓組。仍是廠商自家比較，片中不可說哪家最好。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "偏壓縮水不是加電那一刻就定了，它還會在電路裡慢慢加深。",
+        "visual": "時間軸 0.1–1000 小時，四條曲線往下分岔；最後加熱一格，全部跳回 100%。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T55-006",
+      "question": "陶瓷電容沒有標示能耐多少漣波電流，廠商怎麼判斷它熱得太過頭？",
+      "domain": "電子元件",
+      "mechanism_key": "capacitor.mlcc.self_heating_limit_dielectric_loss",
+      "answer_target": "Murata 說陶瓷電容沒有允許漣波電流的規格，但交流或脈衝電流流過會自己發熱，高頻或脈衝電壓下的介電損耗也會生熱；額定 100 V 以下的款式，判斷線是在 25 °C 環境下量，電容自己升溫要低於 20 °C，而且電路裡的表面溫度不能超過最高使用溫度。對額定 200 V 以上的高壓款，Murata 也說低損耗的 U2J、C0G 類自我發熱很低，可承受的功率比一般 X7R 高得多。",
+      "scope": "通則；不提供量測操作與市電實驗；不給特定型號數字。",
+      "source_ids": [
+        "T55-S004"
+      ],
+      "source_locator": "S004 回答第1–3段、<100 VDC 條、U2J/C0G 條",
+      "premise_status": "screened",
+      "notes": "G18 『容量一樣，熱卻不同』章（E2261）的具體標準；原角色 chapter_core。不重算 ESR 機制。 原提案 F5-006。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照覆核意見改字後收；補上 C0G 那句的適用範圍。G18 最終版不用：它只是 E2261『同容量、熱不同』的一條標準，篇幅不夠時第一個刪。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "發熱不是附帶小事，它有一條廠商畫的紅線。",
+        "visual": "電容表面溫度計從 25 °C 往上爬，到 45 °C 畫紅線；旁邊 C0G 幾乎不動。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "T55-007",
+      "question": "電容自己振動的頻率在 MHz，人根本聽不到，那嘯叫聲是從哪裡來的？",
+      "domain": "電子元件",
+      "mechanism_key": "capacitor.mlcc.mhz_resonance_board_audible_second_harmonic",
+      "answer_target": "文獻回顧整理：鈦酸鋇同時有壓電與電致伸縮效應，後者跟電場平方成正比，所以只要有直流成分，就會多出兩倍頻率的振動；振動大小隨層數與電壓增加，大致跟容量成正比。電容本體的共振在 MHz，單獨聽不見；真正出聲的是它透過焊點推拉電路板，板子的振動可以落進 20 Hz 到 20 kHz。",
+      "scope": "限含鐵電介質的 MLCC；不把所有電路異音都歸電容。",
+      "source_ids": [
+        "T55-S005"
+      ],
+      "source_locator": "S005 §1 第3–6段",
+      "premise_status": "screened",
+      "notes": "G18 嘯叫章（E2262）的補充：『為什麼是板子在叫』與二次諧波；E2262 已有『傳到板子』，此處只算 MHz 共振與二次諧波兩點中的 1 條。原角色 turn。 原提案 F5-007。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照原稿收；照錄。E2262 已有『傳到板子』，只算 1 條（MHz 本體共振＋二次諧波）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "發聲的是喇叭一樣大的電路板，電容只是那個在後面推的手。",
+        "visual": "電容放大圖每秒抖動百萬次（標 MHz），焊點把力傳出去，整片板子像鼓皮慢慢起伏（標 kHz）。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "T55-008",
+      "question": "筆電明明在睡覺，為什麼反而會聽到細細的嘰嘰聲？",
+      "domain": "電子元件",
+      "mechanism_key": "capacitor.mlcc.laptop_battery_line_sleep_pfm_noise_case",
+      "answer_target": "Murata 的筆電案例：電池線（DC-DC 轉換器前端）有 10 到 20 V，又要供電給 CPU、相機、RF 模組，電壓容易起伏；容易出聲的操作模式包括睡眠時降壓轉換器切到 PFM 模式、液晶背光用 PWM 調光、相機或重載的間歇運作。判定方法是在無響箱量聲壓頻譜，同時量電容兩端有沒有 20 Hz 到 20 kHz 的漣波，兩者在同一頻段一起升高才算是電容。他們把電池線上一顆顆典型的積層陶瓷電容換成金屬端子款，換得越多越安靜，因為同一條線上的電容承受幾乎一樣的電壓起伏，必須整條換。",
+      "scope": "廠商案例，正文沒有具體 dB 與頻率數字（在圖中）；不指名筆電機型；不教拆機。",
+      "source_ids": [
+        "T55-S006"
+      ],
+      "source_locator": "S006 §1–2 條列、§5、§6 替換例與型號",
+      "premise_status": "screened",
+      "notes": "G18 嘯叫章的具體實例（審查缺『有頻率與板子條件的實例』：本例給出電壓、操作模式、元件尺寸與判定頻段，但具體頻率仍只在圖中）；原角色 hook 或 turn（『睡著反而叫』）。 原提案 F5-008。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照覆核意見改字後收；刪掉研究者自己從型號解碼的規格；片中也不可說『睡眠最吵』，只能說『睡著時也是容易叫的模式之一』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最安靜的時候最吵：省電模式把電流切成一陣一陣，剛好落進耳朵聽得到的頻段。",
+        "visual": "筆電闔上、螢幕暗；示波器上的電壓從平滑變成一陣陣脈衝，頻譜上同一個峰同時出現在電壓與聲音兩張圖。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T55-009",
+      "question": "工程師要讓會唱歌的電容安靜下來，有哪幾條路？",
+      "domain": "電子元件",
+      "mechanism_key": "capacitor.mlcc.acoustic_noise_mitigation_close",
+      "answer_target": "TI 歸納三條路：換低失真介質、加中介板或金屬端子的電容（文獻轉引 TI 的典型降噪約 7、13、25 dB，但都較貴）；改佈局，例如把兩顆電容放在板子正反面背對背，同相時振動互相抵消；或降低電容上的電壓變化。TI 用 TPS51622 把輸出電壓從 0.5 V 調到 1.5 V，斜率從每微秒 48 mV 放慢到 12 mV，輸入電容上的漣波明顯變小、聲音也變小。",
+      "scope": "收尾用；TI 原文的 dB 數字語意有誤，不引用該句；dB 只用 S005 轉引的三個典型值。",
+      "source_ids": [
+        "T55-S007",
+        "T55-S005"
+      ],
+      "source_locator": "S007 p.2–3 三類對策與 TPS51622 實驗；S005 §3.1、§3.2",
+      "premise_status": "screened",
+      "notes": "G18 收尾章（審查缺 30–60 秒收尾）：回到核心問題——工程師把電容當成會縮、會熱、會動的實物來設計；原角色 limit/close。 原提案 F5-009。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照覆核意見改字後收；只改問句前提。G18 只當 40 秒收尾，算 0.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理想電容只是一個起點，真正的電路是在跟它的脾氣共處。",
+        "visual": "三格並列：金屬腳把電容抬離板子；正反面一對電容振動相消；電壓上升斜坡被放緩。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "T55-010",
+      "question": "同一個帶重音的字母，電腦裡到底可以有幾種存法？",
+      "domain": "文字編碼",
+      "mechanism_key": "text.unicode.equivalent_encodings_normalize_to_three",
+      "answer_target": "W3C 用字母 Ǻ（A 上有圈又有尖音）舉例：同一個字可以存成一個預組字元、A 加兩個組合符號、Å 加一個尖音、埃符號 Å 加尖音、全形Ａ加兩個組合符號——至少五種碼點序列，W3C 說它們表面上的意思都相同；直接逐碼點比對，它們全都不相等。把這五種做四種 Unicode 正規化，結果只剩三種不同的序列：預組的 Ǻ、拆開的 A 加兩個符號，以及全形Ａ加兩個符號；全形那組在 NFC、NFD 下仍和其他四種不同，要到相容形式 NFKC、NFKD 才被併進來。",
+      "scope": "W3C String Matching 草案 Example 12、15；不說五種『畫面一模一樣』（全形字較寬），不推論任何軟體的實際顯示。",
+      "source_ids": [
+        "T55-S009"
+      ],
+      "source_locator": "S009 §2.2 Example 12；§2.2.3 Example 15",
+      "premise_status": "screened",
+      "notes": "G02 重做後的開場鉤子（原角色 hook）；回應審查要求把題目改成『電腦怎麼判定兩個字相同』。 原提案 F6-001。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照覆核意見改字後收；開場鉤子成立、是 G02 改題後最好的入口；改兩處：外觀說法、全形組只在標準等價形式下不同。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看起來一樣的字，可以是五串不同的數字；整理過還剩三串。",
+        "visual": "同一個 Ǻ 拆成五排碼點方塊，經過『正規化』漏斗後掉出三排。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T55-011",
+      "question": "電腦把兩個看起來相同的字串先『整理』再比，整理的步驟是什麼？",
+      "domain": "文字編碼",
+      "mechanism_key": "text.unicode.normalization_algorithm_uniqueness",
+      "answer_target": "Unicode 正規化先把字完全拆開，再依每個組合符號的『組合類別』把它們排成固定順序（所以 q 上點下點不論輸入先後都排成同一序）；NFC 再把能合併的組回預組字元。設計目標第一條是唯一性：兩個標準等價的字串，正規化後必定一字不差，之後只要做位元比對。純 ASCII 文字不受任何正規化影響，純 Latin-1 文字本來就已是 NFC。",
+      "scope": "UAX #15 rev.58 §1.1–1.3、§7；L311、L314、L315 的機制併入此核心，不另計。",
+      "source_ids": [
+        "T55-S008"
+      ],
+      "source_locator": "S008 §1.1 Figure 1；§1.3；§7 Goal 1；§1.3 Note",
+      "premise_status": "screened",
+      "notes": "chapter_core；取代 G02 原 L311 一行定義並吸收空閒的 L314／L315（只算增量）。 原提案 F6-002。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；吸收 L311／L314／L315 的一行定義，只算增量；L311 保留為同章舊核心。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "電腦不是看圖比字，是先把字拆好、排好、合好，再一位一位比。",
+        "visual": "字母 q 帶上下兩點，拆開→排序→合併的三格動畫，最後兩條序列逐格對齊亮綠。",
+        "seconds": [
+          50,
+          70
+        ]
+      }
+    },
+    {
+      "id": "T55-012",
+      "question": "圓圈裡的①和數字1，電腦該不該當成同一個字？",
+      "domain": "文字編碼",
+      "mechanism_key": "text.unicode.compatibility_equivalence_removes_meaning",
+      "answer_target": "Unicode 另有較弱的『相容等價』：①→1、半形ｶ→カ、上標⁹→9、㌀→アパート。NFKC/NFKD 會把這些差別抹掉，但 Unicode 警告不能盲目套用在任意文字上——8½ 經相容正規化會變成 81/2，意思就變了。W3C 也建議：只在相容正規化後才相同的字串，正式格式不應把它們視為相同。",
+      "scope": "UAX #15 §1.1–1.2 與 W3C §2.2.1–2.2.3；避開 ﬁ 連字與大小寫例子（G47、G48 已用）。",
+      "source_ids": [
+        "T55-S008",
+        "T55-S009"
+      ],
+      "source_locator": "S008 §1.1 Figure 2、§1.2；S009 §2.2.1、§2.2.3 末段",
+      "premise_status": "screened",
+      "notes": "turn：『把相似都合併』會出錯；L313 空閒核心可作同義來源但不重計。 原提案 F6-003。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；第一個轉折（整理過頭會改意思）；與空閒 L313 同機制，只算 8½ 與 W3C 建議的增量。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "合併太多，8½ 就變成了 81/2。",
+        "visual": "①、ｶ、⁹ 掉進 NFKC 機器變成 1、カ、9；最後 8½ 進去，出來 81/2 亮紅。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T55-013",
+      "question": "拉丁字母 P 和西里爾字母 Р 長得一模一樣，正規化會把它們變成同一個嗎？",
+      "domain": "文字編碼",
+      "mechanism_key": "text.unicode.homographs_not_normalized_confusable_skeleton",
+      "answer_target": "不會。W3C 指出拉丁 P、希臘 Ρ、西里爾 Р 在多數字型裡一模一樣，但它們分屬三套字母，正規化不會合併；功能相同的中文句號「。」與英文句點也不會被合併。要抓這類『長得像』，Unicode 另訂易混淆偵測：把每個字對映到代表字得到 skeleton，skeleton 相同就算易混淆，例如 paypal 和把 a 換成西里爾 а 的 pаypаl、拉丁 scope 和全西里爾的 ѕсоре。",
+      "scope": "W3C §2.3 與 UTS #39 §4；skeleton 不是相等，只是警示。",
+      "source_ids": [
+        "T55-S009",
+        "T55-S011"
+      ],
+      "source_locator": "S009 §2.3 Example 16、末段；S011 §4 Definitions",
+      "premise_status": "screened",
+      "notes": "turn：『相等』和『看起來一樣』是兩套判斷；正規化管前者，安全機制管後者。 原提案 F6-004。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；與 G48 的 U4012（拉丁 B 與希臘 Beta 的大小寫對應）同屬跨文字同形字，但答案不同：本核心講正規化不合併與易混淆偵測。寫稿時不得用 B／Beta 或大小寫轉換當例子，以免與 G48 重疊。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "正規化說『不同』的兩個字，騙得過眼睛；所以要另一把尺。",
+        "visual": "三個 P 並排，掀開底下露出 U+0050、U+03A1、U+0420；再把 paypal 兩字疊在一起，只有 a 底色不同。",
+        "seconds": [
+          50,
+          65
+        ]
+      }
+    },
+    {
+      "id": "T55-014",
+      "question": "網址裡混進一個長得像 a 的外文字母，瀏覽器怎麼發現？",
+      "domain": "網路安全",
+      "mechanism_key": "text.idn.chrome_display_policy_punycode",
+      "answer_target": "網域名稱送進 DNS 前會轉成 xn-- 開頭的 punycode，例如 öbb.at 變成 xn--bb-eka.at。Chrome 的開發文件舉例：拉丁 a 和西里爾 а 長得很像，有人可以註冊用西里爾 а 的 ebаy.com，看起來就像 ebay.com。Chrome 51 起採用一套不看瀏覽器語言設定的顯示政策，對網址的每一段分別決定顯示原字還是 punycode：拉丁、西里爾、希臘字母不能混在同一段；整段都是長得像拉丁字的西里爾字母（例如 аррӏе.com），而頂級網域不是西里爾、也不是常見西里爾網域用的頂級網域時，顯示 punycode；把 googlé.com 這類名稱去掉變音、換成易混淆的 skeleton 後若和熱門網域相同，也顯示 punycode。",
+      "scope": "Chromium main 分支文件；不推論其他瀏覽器行為，不給實測截圖。",
+      "source_ids": [
+        "T55-S012"
+      ],
+      "source_locator": "S012 Background；How IDN works；Google Chrome's IDN policy 第 5、10、13 條（2026-11-11 線上重讀）",
+      "premise_status": "screened",
+      "notes": "turn（實際後果）：判斷『同一個字』錯了的代價在網址列。 原提案 F6-005。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照覆核意見改字後收；真實後果的轉折；punycode 轉換本身是空閒 U4011 的答案，只算 Chrome 規則的增量。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "瀏覽器寧可秀出一串 xn-- 亂碼，也不讓你看到那個假 a。",
+        "visual": "網址列顯示 аррӏе.com，一轉變成 xn--80ak6aa92e.com。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T55-015",
+      "question": "搜尋時不打重音也找得到 résumé，但打了重音為什麼反而找不到 resume？",
+      "domain": "文字搜尋",
+      "mechanism_key": "text.search.sensitivity_asymmetric_diacritics",
+      "answer_target": "W3C 的搜尋建議是不對稱的：預設不分大小寫；查詢沒打重音時，可以找到有重音的字；查詢打了重音，就只找同樣有重音的。文件以 re-resume、RE-RESUME、re-résumé、RE-RÉSUMÉ 為例：輸入 e 四個都中，輸入 É 只中最後一個——使用者輸入越費力，比對就越嚴。全形與半形的差別預設也忽略。",
+      "scope": "W3C String Searching §2.1、§2.2.2、§2.2.5、§2.2.10；是建議，不是瀏覽器實測。",
+      "source_ids": [
+        "T55-S010"
+      ],
+      "source_locator": "S010 §2.1 Example 1；§2.2.10 兩條建議；§2.2.5",
+      "premise_status": "screened",
+      "notes": "turn：『同一個字』依用途而變——搜尋寬鬆、識別字嚴格（接 T55-016）。 原提案 F6-006。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；第二轉折的入口；不可說任何瀏覽器實際如此。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "搜尋的『相同』是看你多用力打字。",
+        "visual": "四個 resume 排成列，輸入框逐次換成 e、E、é、É，被點亮的格子一個個減少。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T55-016",
+      "question": "同一個網頁，為什麼 W3C 叫識別字不要忽略大小寫和重音，卻叫搜尋框要忽略？",
+      "domain": "文字搜尋",
+      "mechanism_key": "text.matching.identifier_vs_search_default",
+      "answer_target": "W3C 把比對分成兩種：格式裡的識別字（例如 CSS 類別名稱）走固定流程——轉成碼點、展開跳脫、選定正規化步驟、逐碼點比對，而且建議預設不做大小寫折疊也不做正規化，由作者自己保持一致；使用者的『尋找』屬自然語言搜尋，要容忍使用者打不出或懶得打的差異。兩份文件刻意分開，因為識別字要求絕對一致，搜尋要符合使用者期待。",
+      "scope": "W3C String Matching §3.2.1–3.2.2.1 與 String Searching §2 注記。",
+      "source_ids": [
+        "T55-S009",
+        "T55-S010"
+      ],
+      "source_locator": "S009 §3.2.1、§3.2.2.1；S010 §2 Note、§2.1",
+      "premise_status": "screened",
+      "notes": "chapter_core；本片第二轉折的骨架。 原提案 F6-007。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；本片第二轉折的骨架。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "電腦沒有一個『相同』，有好幾個，看你要做什麼。",
+        "visual": "左右分割畫面：左邊程式碼 class=héllo 嚴格比對，右邊搜尋框輸入 hello 寬鬆比對。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "T55-017",
+      "question": "德國人、芬蘭人、英國人搜尋同一個 ä，期待的結果為什麼不一樣？",
+      "domain": "文字搜尋",
+      "mechanism_key": "text.search.language_dependent_equivalence",
+      "answer_target": "W3C 舉例：英語使用者把 ä 當外來字母，期待它對到 a；德語使用者認為 ä 與 ae 相同、但和 a 不同；芬蘭語使用者認為三者都不同。所以同一句芬蘭文裡的 Hän 和 Haen，芬蘭人認為是兩個字，德國人卻可能期待搜尋其中一個就找到另一個。W3C 也指出，文件的語言標記似乎不影響多數瀏覽器的尋找功能，使用者通常也沒辦法指定搜尋詞要用哪種語言的規則。",
+      "scope": "W3C String Searching §2.2.1；不用土耳其 I（G48 已用），不指名瀏覽器或版本。",
+      "source_ids": [
+        "T55-S010"
+      ],
+      "source_locator": "S010 §2.2.1 Example 2 與 ILIK 表；§2.2.2",
+      "premise_status": "screened",
+      "notes": "turn：同一把尺放到不同語言就失準；土耳其例只說『某些瀏覽器』。 原提案 F6-008。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照覆核意見改字後收；刪掉土耳其語一段；保留 ä 三語對照。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連『同一個字母』都要看你說哪國話。",
+        "visual": "三面國旗下各一個搜尋框，ä、ae、a 三顆方塊依各國規則分組。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T55-018",
+      "question": "排序程式說兩個字『相同』，是怎麼一層一層放寬的？",
+      "domain": "文字搜尋",
+      "mechanism_key": "text.collation.strength_levels_matching",
+      "answer_target": "Unicode 排序演算法把差別分層：第一層看基本字母、第二層看重音、第三層看大小寫與變體。搜尋時排除第三層差異，就同時忽略大小寫和相容格式的差別；再排除第二層，連重音也忽略。在丹麥語規則下 aa 與 å 相符，所以兩段相符的文字長度可以不同；若某語言把 ch 當成一個字母，搜尋 bac 就不該命中 bach，這要看使用者的設定，就像搜尋時的『只比完整單字』選項。",
+      "scope": "UTS #10 §8；不用 ß（G48 已用）；未讀完整演算法。",
+      "source_ids": [
+        "T55-S013"
+      ],
+      "source_locator": "S013 §1.1 Table 2；§8 第1–6段",
+      "premise_status": "screened",
+      "notes": "chapter_core（把 T55-015 的寬鬆變成可調的層級）。 原提案 F6-009。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照覆核意見改字後收；近鄰：部分重疊 U4004（空閒），只作空閒核心；與空閒 U4004（語言排序分層權重）同源機制，G02 最終不用（超出 10 分鐘上限時第一批刪）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "『相同』是一個可以轉的旋鈕，不是開關。",
+        "visual": "role / rôle / Role 三張卡，旋鈕從 L3 轉到 L1，三張卡逐一疊合。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "T55-019",
+      "question": "同一個帶重音的檔名，舊款 Mac 和其他系統為什麼可能互相找不到？",
+      "domain": "作業系統",
+      "mechanism_key": "text.filesystem.hfsplus_decomposed_names",
+      "answer_target": "Apple 給檔案系統開發者的技術問答說明：Mac 的 HFS Plus 把檔名存成『拆開』的形式（NFD 的變體，U+2000–2FFF 等範圍不拆），UDF 和 SMB 用組合形，NFS 根本沒有公認標準。理論上，若程式用組合形名稱建檔，再逐一掃目錄、用位元逐一比對找它，就會找不到；Apple 說實務上很少發生。NFS 磁碟可能和非 Mac 的電腦共用，對方建立的組合形檔名不會被拆開，用 cp 這類簡單程式複製過來，組合形名稱也會原樣帶進來。",
+      "scope": "Apple QA1173（2011 修訂，HFS+ 時代）；不推論現行 macOS 行為（見 T55-020）。",
+      "source_ids": [
+        "T55-S015"
+      ],
+      "source_locator": "S015 Important 方框；Volume Format；Compatibility Notes",
+      "premise_status": "screened",
+      "notes": "turn（現實後果）：不同系統各選一種『正確』形式，碰在一起就找不到。 原提案 F6-010。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照覆核意見改字後收；改題目與答案，補上『實務上很少發生』，不可誇大成常見故障。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩台電腦都對，合在一起就錯。",
+        "visual": "同名 café 檔案在兩個資料夾，一邊 é 是一格、一邊是 e+´ 兩格，搜尋器的放大鏡掃過去沒亮。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T55-020",
+      "question": "Apple 換新檔案系統後，同一個檔名的兩種寫法怎麼處理？",
+      "domain": "作業系統",
+      "mechanism_key": "text.filesystem.apfs_normalization_insensitive",
+      "answer_target": "APFS 保留檔名原本的形式，但從 macOS High Sierra 起是『正規化不敏感』：用正規化後的雜湊比對，所以同一資料夾不能並存兩個只差正規化的檔名，用任一種寫法都找得到；舊的 HFS+ 則直接把正規化後的名字存到磁碟。APFS 依 Unicode 9.0、HFS+ 依 3.2。早期的 iOS 10.3 版 APFS 卻是正規化敏感的，升級搬檔後用另一種形式開檔，可能得到『找不到檔案』。",
+      "scope": "Apple APFS Guide FAQ（退役文件）；未查最新版本是否再改。",
+      "source_ids": [
+        "T55-S016"
+      ],
+      "source_locator": "S016 Implementation：filenames 問答",
+      "premise_status": "screened",
+      "notes": "limit／turn：同一家公司三種做法，正說明『相同』是設計選擇。 原提案 F6-011。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；與 T55-019 合成一個真轉折：同一家公司三種做法，『相同』是設計選擇。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不改檔名，只改『怎麼比』，問題就消失。",
+        "visual": "兩張 café 檔名卡片各算出雜湊，雜湊相同，資料夾只允許一張進去。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "T55-021",
+      "question": "按一次刪除鍵，到底刪掉『一個字』還是一個碼點？",
+      "domain": "文字編輯",
+      "mechanism_key": "text.segmentation.grapheme_cluster_editing",
+      "answer_target": "UAX #29 說『使用者感知的字』本身就不是無歧義的概念；grapheme cluster 是程式能算出的近似。編輯介面預設以 cluster 為單位做選取、方向鍵與向前刪除：字母加重音時，右方向鍵一次跳過整組。但標準也允許逐元素編輯——某系統上 backspace 可能逐碼點刪、delete 鍵刪整組；按鍵和 cluster 也不是一對一。天城文 क्षि 是四個碼點，新的 extended cluster 把它當一個單位，舊的 legacy cluster 不會。",
+      "scope": "UAX #29 rev.49 §3；為 L317/L318 來源的全文重讀；不描述特定編輯器實測。",
+      "source_ids": [
+        "T55-S014"
+      ],
+      "source_locator": "S014 §3 第1、5–7段；Table 1a",
+      "premise_status": "screened",
+      "notes": "chapter_core；L317、L318 保留為同章舊核心，只算增量 1.5 條。 原提案 F6-012。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；答案正確，作為 L317／L318 的全文重讀留在池中；但它回答的是『一個字是什麼單位』，不是改題後的『兩個字算不算相同』，G02 最終不收（見 targets.cuts）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "刪除鍵刪的是哪一層，標準刻意讓介面自己決定。",
+        "visual": "é 放大成 e 與 ´ 兩塊，backspace 只敲掉 ´，delete 整塊消失；旁邊 क्षि 四塊被框成一格。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T55-022",
+      "question": "看不見的字元，怎麼讓兩個一模一樣的字串比對失敗？",
+      "domain": "文字編碼",
+      "mechanism_key": "text.unicode.invisible_characters_matching",
+      "answer_target": "有些字元看不見卻會改變比對結果。波斯文 تنها（獨自）和 تن‌ها（身體們）只差一個看不見的『零寬不連字』，意思卻不同；emoji 的膚色修飾和零寬連接序列也不會被正規化重新排序或刪除。W3C 指出，使用者通常不知道文字裡有沒有這些字元，比對就會在他們眼中『莫名其妙』地失敗。",
+      "scope": "W3C String Matching §2.6–2.7。",
+      "source_ids": [
+        "T55-S009"
+      ],
+      "source_locator": "S009 §2.6 ZWNJ 例；§2.7 末段",
+      "premise_status": "screened",
+      "notes": "limit：正規化管不到的第三類差異。 原提案 F6-013。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；空閒核心；G02 為守 10 分鐘上限不收，可留作 G47 類短片材料。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最難比的差別，是你根本看不到的那一個。",
+        "visual": "兩串波斯字並排，中間一格隱形方塊閃一下才現形。",
+        "seconds": [
+          35,
+          50
+        ]
+      }
+    },
+    {
+      "id": "T55-023",
+      "question": "易混淆字的對照表更新後，舊資料庫為什麼必須重算？",
+      "domain": "網路安全",
+      "mechanism_key": "text.unicode.skeleton_not_stable_versions",
+      "answer_target": "Unicode 正規化保證跨版本穩定：一個字串在某版正規化後，在之後所有版本都仍是正規化的（組合規則固定在 3.1.0 版）。易混淆的 skeleton 卻刻意不保證：它只是像雜湊碼的中間形式，不能拿來顯示，對照資料會隨版本改，存進資料庫索引的 skeleton 在升級 Unicode 版本時必須重算。",
+      "scope": "UAX #15 §3 與 UTS #39 §4、Migration。",
+      "source_ids": [
+        "T55-S008",
+        "T55-S011"
+      ],
+      "source_locator": "S008 §3；S011 §4 Note、Migrating Persistent Data",
+      "premise_status": "screened",
+      "notes": "limit／收尾：『相等』可以永久，『像』只能暫時。 原提案 F6-015。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；空閒核心；G02 為守上限不收。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "相等是承諾，像只是判斷。",
+        "visual": "兩條時間軸：上面 NFC 字串一路不變；下面 skeleton 每換一版就跳一次。",
+        "seconds": [
+          30,
+          45
+        ]
+      }
+    },
+    {
+      "id": "T55-024",
+      "question": "太空傳回一段貓的影片要 101 秒，那雷射通訊快在哪？",
+      "domain": "太空通訊",
+      "mechanism_key": "space.comms.dsoc_rate_vs_latency_taters",
+      "answer_target": "2023 年 12 月 11 日，搭在 Psyche 探測器上的雷射通訊實驗從約 1,900 萬英里（約地月距離 80 倍）傳回 15 秒超高畫質貓影片，以系統最高 267 Mbps 傳送；訊號花了 101 秒才到地球。快的是每秒能塞多少資料，不是訊號跑得比較快。JPL 工程師說，Palomar 天文台收到後再經網際網路送到 JPL，這段地面網路還比來自深空的那段慢。影片是發射前預先存在儀器裡的。",
+      "scope": "NASA 2023-12-18 稿；技術展示，不是 Psyche 主任務通訊。",
+      "source_ids": [
+        "T55-S017"
+      ],
+      "source_locator": "S017 第2–4段；Rogalin 引言",
+      "premise_status": "screened",
+      "notes": "G07 新開場鉤子（原 R008『不只照片』章建議刪）；R002 的速率／延遲之分由此給實數。 原提案 F6-016。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；新開場鉤子成立；R002 的速率／延遲之分由它給實數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最慢的一段，竟然在地球上。",
+        "visual": "貓影片畫格從太空飛向 Palomar 的光點計時器跳到 101 秒，接著卡在一條『地面網路』水管裡。",
+        "seconds": [
+          50,
+          65
+        ]
+      }
+    },
+    {
+      "id": "T55-025",
+      "question": "同一台雷射通訊機飛得越遠，速度為什麼掉那麼多？",
+      "domain": "太空通訊",
+      "mechanism_key": "space.comms.dsoc_rate_drops_with_distance",
+      "answer_target": "這套雷射通訊是搭在 Psyche 上的技術展示，Psyche 本身不靠它傳資料、走的是無線電。2024 年 4 月 8 日，Psyche 已在 1.4 億英里外（日地距離 1.5 倍），比傳貓影片時遠七倍多，最高速率降到 25 Mbps——NASA 說這是預期中的下降，但仍遠超在該距離證明 1 Mbps 的目標。那次 Psyche 用無線電把資料送往深空網路時，雷射也同時把其中一部分同樣的資料送到 Palomar，約 10 分鐘；JPL 收到兩邊的資料後，驗證了雷射送下來的那份。",
+      "scope": "NASA 2024-04-25 稿；速率為最高值。",
+      "source_ids": [
+        "T55-S018"
+      ],
+      "source_locator": "S018 導言、Surpassing Expectations 第2–3段",
+      "premise_status": "screened",
+      "notes": "chapter_core；回答『距離』這一關。 原提案 F6-017。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照覆核意見改字後收；補上『技術展示、Psyche 自己的資料走無線電』，改正『同一批』與『比對』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一條管子拉長七倍，水就細了十倍。",
+        "visual": "Psyche 沿軌道遠離，速率表從 267 跳到 25；旁邊無線電與雷射兩條線同時落地。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T55-026",
+      "question": "雷射光束那麼細，從幾億公里外怎麼對得準地球？",
+      "domain": "太空通訊",
+      "mechanism_key": "space.comms.dsoc_pointing_beacon",
+      "answer_target": "JPL 在 Table Mountain 用 3 千瓦的上行雷射當信標，探測器上的收發器靠它判斷要把下行雷射往哪裡瞄。兩邊都在高速移動、光要走好幾分鐘，指向必須非常精準。地面端用 Palomar 天文台 200 吋望遠鏡收集最微弱的光子，再交給高效率偵測器陣列解碼。",
+      "scope": "NASA 2025-09-18 稿；R004 機制只算增量。",
+      "source_ids": [
+        "T55-S019"
+      ],
+      "source_locator": "S019 How it works 第1–3段",
+      "premise_status": "screened",
+      "notes": "segment（R004 實例化）。 原提案 F6-018。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；描述正確；R004 機制只算增量 1 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "要先有人在地球點燈，太空那頭才知道往哪射。",
+        "visual": "地面射出一道信標光，太空端回射一道細光束，兩者都在移動、要瞄向對方『幾分鐘後』的位置。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "T55-027",
+      "question": "晴天傳得飛快的雷射通訊，遇到雲該怎麼辦？",
+      "domain": "太空通訊",
+      "mechanism_key": "space.comms.optical_weather_arraying",
+      "answer_target": "NASA 說暴風雨曾讓 Table Mountain 與 Palomar 停擺；無線電在多數天氣都能用，光通訊需要相對晴朗的天空。實驗也把 Palomar、深空網路 Goldstone 的實驗性射頻－光學天線（七面鏡共 3 英尺）和 Table Mountain 的接收器同時接收同一訊號——這種『陣列』能增強微弱訊號，一站因天氣離線時其他站仍能收。",
+      "scope": "NASA 2024-04-25、2025-09-18 稿；R003 機制只算增量。",
+      "source_ids": [
+        "T55-S018",
+        "T55-S019"
+      ],
+      "source_locator": "S018 Fun With Lasers 第3–4段；S019 Brilliant new era 第1段",
+      "premise_status": "screened",
+      "notes": "turn 的後半：好處（窄、快）換來弱點（天氣），解法是多站。 原提案 F6-019。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；R003 的實例。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雷射怕雲，所以要在不同天空下多放幾個捕手。",
+        "visual": "三個地面站頭上分別晴、陰、雨，雨的那站熄燈，另外兩站仍接住光點。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "T55-028",
+      "question": "地球一直在轉，深空網路怎麼不讓太空船斷線？",
+      "domain": "太空通訊",
+      "mechanism_key": "space.comms.dsn_three_complexes_handover",
+      "answer_target": "NASA 的深空網路三個站在加州 Goldstone、西班牙 Madrid、澳洲 Canberra，沿地球自轉軸約相隔 120 度；太空船沉到一站地平線下時，前方的站接手。每站有一座 70 公尺天線和多座 34 公尺天線，服務範圍從離地 1 萬英里到太陽系邊緣以外。",
+      "scope": "NASA OIG IG-23-016 Introduction／Background；R001 機制只算增量。",
+      "source_ids": [
+        "T55-S020"
+      ],
+      "source_locator": "S020 pp.1–2",
+      "premise_status": "screened",
+      "notes": "chapter_core（R001 給數字）。 原提案 F6-020。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；R001 給數字，只算增量。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "三個站像接力賽，把同一艘船遞過一圈。",
+        "visual": "地球自轉的俯視圖，三根天線光束依序接上同一個光點。",
+        "seconds": [
+          35,
+          50
+        ]
+      }
+    },
+    {
+      "id": "T55-029",
+      "question": "看得到太空船，就一定排得到天線嗎？",
+      "domain": "太空通訊",
+      "mechanism_key": "space.comms.dsn_oversubscription_impacts",
+      "answer_target": "不一定。NASA 監察長 2023 年報告：深空網路已滿載超額，需求有時比容量多約 40%，而且 30 多年來需求一直大於容量；約 60 個任務共用，每週約 500 項排程靠任務互相協商。過去五年任務少拿到 8,500 到 15,000 追蹤小時；Perseverance 在 21 個月內至少 7 次因此收不到決定下一步路線的資料，只能等下一個空檔。報告預估 2030 年代超額需求約 50%。",
+      "scope": "OIG 稽核觀點，數字截至 2023。",
+      "source_ids": [
+        "T55-S020"
+      ],
+      "source_locator": "S020 pp.10–14",
+      "premise_status": "screened",
+      "notes": "turn：幾何上看得到（R001）≠ 排得到；改變『接力就能全天聯繫』的結論。 原提案 F6-021。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；真轉折：看得到≠排得到。旁白須說 Perseverance 那段是任務主管的陳述。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "天線看得到你，不代表輪得到你。",
+        "visual": "排程表格滿到溢出，Perseverance 的格子被擠掉，火星車停在原地等。",
+        "seconds": [
+          50,
+          65
+        ]
+      }
+    },
+    {
+      "id": "T55-030",
+      "question": "火星車的照片，是自己直接傳回地球的嗎？",
+      "domain": "太空通訊",
+      "mechanism_key": "space.comms.mars_relay_network_share",
+      "answer_target": "大多不是。火星車的指令和遙測可以直接對地球，但科學資料改送給頭上的軌道器轉傳：軌道器的天線和太陽能板更大、與地球聯繫更規律。火星自轉讓火星車每天約 12 小時看不到地球；地火距離在約 3 到 22.4 分鐘光行時之間變化；火星車對軌道器可達 2 Mbps。JPL 論文指出 Curiosity 與 Perseverance 超過 99% 的回傳資料靠中繼，2004 年以來火星表面每張影像都走這條路。",
+      "scope": "NASA Mars Relay Network 頁（2026-06 更新）與 SpaceOps 2025 論文。",
+      "source_ids": [
+        "T55-S021",
+        "T55-S023"
+      ],
+      "source_locator": "S021 How It Works 第1–4段；S023 §1 第1段",
+      "premise_status": "screened",
+      "notes": "turn：『一路寄回』其實要先寄到半路。 原提案 F6-023。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；真轉折：『一路寄回』其實先寄到半路。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "照片先搭便車上樓，再由樓上寄回地球。",
+        "visual": "火星車把資料往上丟給軌道器，軌道器再轉向地球；旁邊計數器 99%。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T55-031",
+      "question": "軌道器收到火星車的資料，會馬上轉給地球嗎？",
+      "domain": "太空通訊",
+      "mechanism_key": "space.comms.mars_relay_bent_pipe_vs_store",
+      "answer_target": "看是哪一顆。NASA 說有幾顆軌道器能一邊和火星車通話、一邊把天線對著地球，縮短轉傳時間；其他的先收下，再轉向地球送出。Perseverance 2021 年著陸時，MRO 以『彎管』方式把遙測立即轉發；MAVEN 則錄下整段著陸無線電頻譜，資料多到要好幾個小時才傳完，用來補 MRO 漏收的部分（MAVEN 已在 2026 年 6 月被宣告任務結束）。每天平均中繼量也差很多：統計到 2025 年，MRO 約 447.5 Mb、TGO 約 1,562.7 Mb。",
+      "scope": "NASA Mars Relay Network 頁與 2021-02-16 稿。",
+      "source_ids": [
+        "T55-S021",
+        "T55-S022"
+      ],
+      "source_locator": "S021 Relaying to Earth、A Critical Role、資料量表；S022 bent pipe 段",
+      "premise_status": "screened",
+      "notes": "chapter_core；R010『先住半路』的真實版本。 原提案 F6-024。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照覆核意見改字後收；只改資料量的時間說法並補 MAVEN 已結束。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一份資料，可以直達，也可以先住一晚。",
+        "visual": "兩顆軌道器：一顆一手接一手丟（彎管），一顆先塞進背包、繞半圈再丟。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T55-032",
+      "question": "太空網路斷線時，資料怎麼不會掉？",
+      "domain": "太空通訊",
+      "mechanism_key": "space.comms.dtn_store_forward_pace",
+      "answer_target": "NASA 的延遲／中斷容忍網路（DTN）是存放再轉送：每個資料包能轉就立刻轉，不能轉就存著，等之後有路再送，所以只需要『下一跳』可用，不需要整條路同時接通。2024 年 PACE 衛星成為第一個實際使用 DTN 的科學任務，用來傳電池、軌道等營運資料；先前只在國際太空站做過展示。NASA 也說自動重傳能減少排程地面站，而安排一次傳輸有時要五天規劃。",
+      "scope": "NASA 2023-09-20 概論、2024-04-17 稿；R010 機制只算增量。",
+      "source_ids": [
+        "T55-S024",
+        "T55-S025"
+      ],
+      "source_locator": "S025 定義段、Improved Operations 段；S024 第3–6段",
+      "premise_status": "screened",
+      "notes": "segment；收尾前一章。 原提案 F6-025。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；R010 的實例；不可說 Mars Relay 用 DTN。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "只要下一站開著，資料就能往前走一步。",
+        "visual": "資料包在一串節點間跳，遇到斷掉的一段就在節點裡亮著等，連線恢復再跳。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T55-033",
+      "question": "中繼資料晚到半小時，任務團隊怎麼知道卡在哪？",
+      "domain": "太空通訊",
+      "mechanism_key": "space.comms.mars_relay_latency_tracking",
+      "answer_target": "JPL 的論文描述一個情境：系統預估 TGO 中繼的 Perseverance 資料上午 9 點前落地，9:30 還沒到，團隊不知道是卡在 TGO 到地面站，還是地面處理。遲到可能讓團隊失去最寶貴的資源——火星上的工作時間，所以 2024 年推出追蹤資料在每個保管點位置的儀表板。協調系統至今排過超過 35,000 次軌道器飛越、從火星表面傳回逾 8 terabits。",
+      "scope": "SpaceOps 2025 論文 §1、§6；§6 開頭為示意情境，需在旁白中說明。",
+      "source_ids": [
+        "T55-S023"
+      ],
+      "source_locator": "S023 §1；§6 第1–3段",
+      "premise_status": "screened",
+      "notes": "limit／收尾：存放再轉送解決斷線，但多一個環節就多一個可能卡住的地方。 原提案 F6-026。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；收尾的限制：多一個保管點就多一處可能卡住。旁白必須說『論文舉的假設情境』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "半路多一站，就多一個要找的地方。",
+        "visual": "資料包路線圖上一個個檢查點亮綠，卡在中間一格閃黃。",
+        "seconds": [
+          35,
+          50
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "T55-NA001",
+      "question": "高頻時電容為什麼像電感？（E2260/E2261 的 MT-101 逐圖重讀）",
+      "existing_ids": [
+        "E2259",
+        "E2260",
+        "E2261"
+      ],
+      "source_ids": [],
+      "reason": "analog.com 的 MT-101 PDF 與應用筆記 5527 對 curl 回 HTTP/2 INTERNAL_ERROR／empty reply，WebFetch 503；未讀，不寫核心。 原提案 F5-NA001。",
+      "reentry_condition": "能正常開啟 analog.com PDF 時逐圖重讀第 3–4 頁自諧振與 ESR 曲線。",
+      "reading_status": "未讀（連線中斷／503）"
+    },
+    {
+      "id": "T55-NA002",
+      "question": "冥王星飛掠的資料，New Horizons 花了多久才傳完？",
+      "existing_ids": [
+        "R002"
+      ],
+      "source_ids": [],
+      "reason": "可補 G07『距離→低速率』的經典例，但 nasa.gov 舊稿網址 404，未找到現行官方頁，不寫核心。 原提案 F6-NA003。",
+      "reentry_condition": "找到 NASA 或 JHUAPL 官方頁面記載下傳完成日期與速率。",
+      "reading_status": "未讀（404）"
+    },
+    {
+      "id": "T55-NA003",
+      "question": "連字 ﬁ 與德文 ß 轉大寫，能當 G02『相同』的例子嗎？",
+      "existing_ids": [
+        "U4014",
+        "U4006"
+      ],
+      "source_ids": [
+        "T55-S008",
+        "T55-S009"
+      ],
+      "reason": "UAX #15 與 W3C 都用 ﬁ→fi、ß→ss 舉例，但 G47（U4014 連字）與 G48（U4006 大寫字數增加）已用這兩個例子，同一答案算重複；G02 改用 ①、ｶ、8½、㎒ 與土耳其 I。 原提案 F6-NA004。",
+      "reentry_condition": "不需重入。",
+      "reading_status": "已讀，因去重不收"
+    },
+    {
+      "id": "T55-NA004",
+      "question": "L313、L314、L315（相容正規化、組合符號順序、NFD/NFC）要另外收進 G02 嗎？",
+      "existing_ids": [
+        "L313",
+        "L314",
+        "L315"
+      ],
+      "source_ids": [
+        "T55-S008"
+      ],
+      "reason": "三個空閒舊核心都是 UAX #15 一行定義，機制已被 T55-011、T55-012 以全文重讀的事實吸收；建議整合時掛進 G02 當同章舊核心，但不另計分鐘。 原提案 F6-NA005。",
+      "reentry_condition": "整合者決定是否掛入 G02 candidate_ids。",
+      "reading_status": "已讀"
+    },
+    {
+      "id": "T55-NA005",
+      "question": "JPL 新聞原稿（DSOC 首段、紀錄、第一階段）能直接讀嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "T55-S017",
+        "T55-S019"
+      ],
+      "reason": "jpl.nasa.gov 三篇 curl 皆 403，未繞過；改讀 nasa.gov 轉載的同篇 JPL 稿（T55-S017–S019）。 原提案 F6-NA007。",
+      "reentry_condition": "不需重入。",
+      "reading_status": "原址 403；同文改讀 nasa.gov"
+    },
+    {
+      "id": "T55-NA006",
+      "question": "忽略大小寫的比對，為什麼還要再正規化一次？",
+      "existing_ids": [
+        "U4006",
+        "U4007"
+      ],
+      "source_ids": [
+        "T55-S009"
+      ],
+      "reason": "非作者覆核 V9（2026-11-11）退回：大小寫折疊是 G48 的題目（U4006 已講大小寫映射的多字元），土耳其 I 又是 U4007 的例子；拿掉這兩者後只剩一條技術細節，對 G02 沒有轉折，淘汰。近鄰：G48 U4006／U4007 範圍。 原提案 F6-014。",
+      "reading_status": "來源已讀（T55-S009 charmod.txt §2.4、§2.1.1）；覆核重開結果：㎒→MHz→mhz 兩輪、折疊後須正規化都在原文。"
+    },
+    {
+      "id": "T55-NA007",
+      "question": "一個地面站壞掉 33 小時，太空任務會丟掉什麼？",
+      "existing_ids": [
+        "T55-029"
+      ],
+      "source_ids": [
+        "T55-S020"
+      ],
+      "reason": "非作者覆核 V9（2026-11-11）退回：數字正確，但與 T55-029 是同一個答案（排程不夠）的另一個例子，不是轉折；G07 為守 11 分鐘上限刪除。研究者自己也建議超時先併掉。若日後另起深空網路短片可再收。 原提案 F6-022。",
+      "reading_status": "來源已讀（T55-S020 oig_dsn.txt p.13 Goldstone 段）；覆核重開結果：33 小時、9,090 分鐘、國際備援來不及、JWST 低品質資料，都對。"
+    },
+    {
+      "id": "T55-NA008",
+      "question": "深空網路除了收照片，還在收什麼？",
+      "existing_ids": [
+        "R008",
+        "R009"
+      ],
+      "source_ids": [
+        "T55-S020"
+      ],
+      "reason": "非作者覆核 V9（2026-11-11）退回：服務的是被刪除的 R008『不只照片』章，與主問題（資料怎麼送到）關係弱；刪章後沒有位置，淘汰。近鄰：與 R008／R009 同機制。 原提案 F6-027。",
+      "reading_status": "來源已讀（T55-S020 oig_dsn.txt pp.3–4）；覆核重開結果：遙測、指令、追蹤、無線電科學四項功能都在原文。"
+    }
+  ]
+}

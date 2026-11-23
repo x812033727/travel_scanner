@@ -11,6 +11,7 @@ tier, so the page never says done for less than the settings ask.
 
 from __future__ import annotations
 
+import re
 from datetime import UTC, datetime, timedelta
 from typing import Any, Literal
 
@@ -21,10 +22,16 @@ from app.models import AdminAuditLog, VideoProject, VideoReview, VideoToolToken
 from app.problems import AppError
 from app.video_backup import admin_settings as backup_settings
 from app.video_backup.admin_settings import parse_time
+from app.video_backup.drive_links import BACKED_UP, drive_links, needs_drive_ids
 from app.video_backup.schemas import (
     BackupState,
     BackupView,
+    DriveIdsIn,
     ExpectedParts,
+    IndexGroup,
+    IndexRow,
+    IndexState,
+    IndexView,
     ReportIn,
     ReviewPackage,
     StatusView,
@@ -35,12 +42,14 @@ from app.video_backup.schemas import (
 from app.video_backup.target import (
     PathInvalid,
     Target,
+    ai_episode_parts,
     as_dict,
     expected_parts,
     missing_files,
     normalise_path,
     remote_prefix,
     resolve_target,
+    version_stem,
 )
 from app.video_reviews.admin_service import language_states, locale_choices, ready_to_upload
 
@@ -67,20 +76,51 @@ def _record(project: VideoProject) -> dict[str, Any]:
     return dict(project.backup) if isinstance(project.backup, dict) else {}
 
 
-def _target(project: VideoProject, config: dict[str, Any]) -> Target:
+def _target(project: VideoProject, config: dict[str, Any], superseded: bool = False) -> Target:
     return resolve_target(
         project,
         tiers=backup_settings.tiers_of(config),
         folder_names=backup_settings.mapping_of(config, "folder_names"),
+        superseded=superseded,
     )
+
+
+def superseded_among(projects: list[VideoProject]) -> set[str]:
+    """The slugs with a later version (-vN) among ``projects``: Drive files them under their
+    episode's _舊版/ so the episode folder holds the latest (docs/videos/BACKUP.md §資料夾排法)."""
+    newest: dict[str, int] = {}
+    for project in projects:
+        stem, version = version_stem(project.slug)
+        newest[stem] = max(newest.get(stem, 0), version)
+    return {
+        project.slug
+        for project in projects
+        if version_stem(project.slug)[1] < newest[version_stem(project.slug)[0]]
+    }
+
+
+async def _superseded(session: AsyncSession, project: VideoProject) -> bool:
+    """Whether a later version of ``project`` is one Drive must hold (on YouTube or ready to
+    upload): the same rule as ``superseded_among`` over ``_eligible``, for one video."""
+    stem, version = version_stem(project.slug)
+    rows = await session.scalars(select(VideoProject).where(VideoProject.slug.like(f"{stem}-v%")))
+    for other in rows.all():
+        other_stem, other_version = version_stem(other.slug)
+        if other_stem != stem or other_version <= version:
+            continue
+        if other.youtube_video_id is not None or await ready_unuploaded(session, other.slug):
+            return True
+    return False
 
 
 def _int(value: Any) -> int | None:
     return value if type(value) is int and value >= 0 else None
 
 
-def backup_view(project: VideoProject, config: dict[str, Any], now: datetime) -> BackupView:
-    target = _target(project, config)
+def backup_view(
+    project: VideoProject, config: dict[str, Any], now: datetime, superseded: bool = False
+) -> BackupView:
+    target = _target(project, config, superseded)
     record = _record(project)
     stored = record.get("state")
     copied_tier: Literal["basic", "full"] | None = (
@@ -111,6 +151,7 @@ def backup_view(project: VideoProject, config: dict[str, Any], now: datetime) ->
                 if target.tier == "full" and copied_tier != "full":
                     missing.append("完整層級的 clips、keyframes、characters 等")
     queued_at = parse_time(record.get("queued_at"))
+    folder_url, final_url = drive_links(record, target.folder)
     return BackupView(
         slug=project.slug,
         title=project.title,
@@ -134,6 +175,8 @@ def backup_view(project: VideoProject, config: dict[str, Any], now: datetime) ->
         overdue=state in QUEUED
         and queued_at is not None
         and now - queued_at > timedelta(hours=OVERDUE_HOURS),
+        drive_folder_url=folder_url,
+        drive_final_url=final_url,
     )
 
 
@@ -197,7 +240,9 @@ async def status(session: AsyncSession, *, everything: bool = False) -> StatusVi
     config = backup_settings.config_of(row)
     enabled = backup_settings.enabled_of(row)
     now = _now()
-    views = [backup_view(project, config, now) for project in await _eligible(session)]
+    eligible = await _eligible(session)
+    older = superseded_among(eligible)
+    views = [backup_view(project, config, now, project.slug in older) for project in eligible]
     counts: dict[BackupState, int] = dict.fromkeys(STATES, 0)
     for item in views:
         counts[item.state] += 1
@@ -222,7 +267,7 @@ async def _project(session: AsyncSession, slug: str) -> VideoProject:
 async def video_status(session: AsyncSession, slug: str) -> BackupView:
     project = await _project(session, slug)
     config = backup_settings.config_of(await backup_settings.settings_row(session))
-    return backup_view(project, config, _now())
+    return backup_view(project, config, _now(), await _superseded(session, project))
 
 
 async def review_packages(
@@ -312,8 +357,9 @@ async def worker_config(session: AsyncSession) -> WorkerConfig:
     videos = []
     eligible = await _eligible(session)
     packages = await review_packages(session, eligible)
+    older = superseded_among(eligible)
     for project in eligible:
-        target = _target(project, config)
+        target = _target(project, config, project.slug in older)
         videos.append(
             WorkerVideo(
                 slug=project.slug,
@@ -329,6 +375,7 @@ async def worker_config(session: AsyncSession) -> WorkerConfig:
                 expected=ExpectedParts(**expected_parts(project)),
                 backup=project.backup if isinstance(project.backup, dict) else None,
                 review_package=packages.get(project.id),
+                needs_drive_ids=needs_drive_ids(project.backup, target.folder),
             )
         )
     return WorkerConfig(
@@ -369,7 +416,8 @@ async def report(
         )
     row = await backup_settings.settings_row(session)
     config = backup_settings.config_of(row)
-    target = _target(project, config)
+    superseded = await _superseded(session, project)
+    target = _target(project, config, superseded)
     if target.tier == "off":
         raise AppError(409, "video_backup_tier_off", "這個系列設定為不備份")
     try:
@@ -437,4 +485,117 @@ async def report(
     project.backup = record
     await backup_settings.record_space(session, payload.free_bytes, payload.total_bytes)
     await session.commit()
-    return backup_view(project, config, now)
+    return backup_view(project, config, now, superseded)
+
+
+async def record_drive_ids(
+    session: AsyncSession, slug: str, payload: DriveIdsIn
+) -> BackupView:
+    """The Drive ids the worker read for a backed-up video's folder (drive_links.py). Refused
+    for a folder that is no longer the video's, or one with no checked copy in it."""
+    project = await _project(session, slug)
+    row = await backup_settings.settings_row(session)
+    config = backup_settings.config_of(row)
+    superseded = await _superseded(session, project)
+    target = _target(project, config, superseded)
+    try:
+        folder = normalise_path(payload.folder)
+    except PathInvalid as error:
+        raise AppError(422, "video_backup_folder_invalid", str(error)) from None
+    if folder != target.folder:
+        raise AppError(
+            409,
+            "video_backup_folder_changed",
+            f"這支影片的備份資料夾是 {target.folder}，不是 {folder}；請重新讀取設定",
+        )
+    record = _record(project)
+    if record.get("state") not in BACKED_UP:
+        raise AppError(409, "video_backup_not_done", "這支影片還沒有備份完成，雲端資料夾還不能連結")
+    now = _now()
+    project.backup = {
+        **record,
+        "drive": {
+            "folder": folder,
+            "folder_id": payload.folder_id,
+            "final_file_id": payload.final_file_id,
+            "at": now.isoformat(),
+        },
+    }
+    await session.commit()
+    return backup_view(project, config, now, superseded)
+
+
+SHORTS_GROUP = "Shorts"
+
+
+def _code_sort(code: str) -> tuple[str, int, str]:
+    """H2 before H10: the letters, then the number, then the rest."""
+    match = re.match(r"^(\D*)(\d+)(.*)$", code)
+    return (match[1], int(match[2]), match[3]) if match else (code, 0, "")
+
+
+async def drive_index(session: AsyncSession) -> IndexView:
+    """Every video the owner has not dropped before it reached Drive, grouped by the series
+    Drive files it under, each row with its code, topic, state, YouTube and Drive links and
+    backup state, in episode order (drive-index.mjs writes one sheet per group)."""
+    from app.video_reviews.shelf import load_series_labels
+
+    row = await backup_settings.settings_row(session)
+    config = backup_settings.config_of(row)
+    now = _now()
+    eligible = await _eligible(session)
+    older = superseded_among(eligible)
+    ready = {project.slug for project in await ready_unuploaded(session)}
+    labels = await load_series_labels(session)
+    projects = list((await session.scalars(select(VideoProject))).all())
+    groups: dict[str, IndexGroup] = {}
+    for project in projects:
+        record = _record(project)
+        if project.dropped_at is not None and record.get("state") is None:
+            continue
+        view = backup_view(project, config, now, project.slug in older)
+        target = _target(project, config, project.slug in older)
+        short = project.shorts_line is not None
+        topic, code = (
+            (None, project.slug) if short else ai_episode_parts(project, target.series_key)
+        )
+        state: IndexState = (
+            "dropped"
+            if project.dropped_at is not None
+            else "published"
+            if project.youtube_video_id
+            else "ready"
+            if project.slug in ready
+            else "working"
+        )
+        key = SHORTS_GROUP if short else target.series_key
+        group = groups.setdefault(
+            key,
+            IndexGroup(
+                key=key,
+                name=SHORTS_GROUP if short else labels.get(key) or key,
+                rows=[],
+            ),
+        )
+        group.rows.append(
+            IndexRow(
+                slug=project.slug,
+                code=code,
+                topic=topic or project.topic,
+                title=project.title,
+                state=state,
+                youtube_url=f"https://www.youtube.com/watch?v={project.youtube_video_id}"
+                if project.youtube_video_id
+                else None,
+                folder=view.folder,
+                backup_state=view.state,
+                bytes=view.bytes,
+                backed_up_at=view.at,
+                drive_folder_url=view.drive_folder_url,
+                drive_final_url=view.drive_final_url,
+            )
+        )
+    for group in groups.values():
+        group.rows.sort(key=lambda item: (item.topic or "", _code_sort(item.code), item.slug))
+    ordered = sorted(groups.values(), key=lambda group: (group.key == SHORTS_GROUP, group.name))
+    return IndexView(path=backup_settings.path_of(config), generated_at=now, groups=ordered)

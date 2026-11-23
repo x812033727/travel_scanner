@@ -4,12 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial",
-    "ai-terms"
+    "ai-terms",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "代理式檢索增強生成（Agentic RAG）：何時需要再查一次",
@@ -76,6 +79,7 @@
           "width": 1600,
           "height": 900,
           "caption": "回到檢索的箭頭需要理由；停止不必等於回答完整。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -209,6 +213,842 @@
       "sources": [
         {
           "title": "LangGraph：Build a custom RAG agent",
+          "url": "https://docs.langchain.com/oss/python/langgraph/agentic-rag",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Asai 等：Self-RAG",
+          "url": "https://arxiv.org/abs/2310.11511",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Agentic Retrieval-Augmented Generation (Agentic RAG): When to Search Again",
+      "description": "Agentic RAG lets models make retrieval decisions, choosing sources, rewriting queries or searching further based on the question and available evidence. Using a concrete LangGraph workflow and a comparison of venue-use conditions, this article contrasts it with fixed RAG and explains stopping criteria, permissions, query logs and cost control. Learn to judge whether a task needs dynamic exploration or a predictable fixed workflow is enough.",
+      "hero": {
+        "src": "/guides/ai-term-agentic-rag/hero-en.jpg",
+        "alt": "The question, retrieval and evidence checks form a retryable loop; a separate path produces an answer when the evidence is sufficient.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Agentic Retrieval-Augmented Generation (Agentic RAG) usually refers to a RAG system in which the model decides when and where to search, and whether further retrieval is needed after obtaining information.",
+            "It expands retrieval decision-making; it does not automatically make information correct or necessarily require multiple agents. Questions that can be answered with one search may still need only one.",
+            "Each follow-up search should address an evidence gap. The application still controls read permissions and maximum runtime, and leaving items unconfirmed is also an acceptable outcome.",
+            "Clear, single-item queries can take a short path, with dynamic follow-up searches reserved for comparisons across sources. No source guarantees that an agentic approach is better for every question."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Agentic Retrieval-Augmented Generation, or Agentic RAG, usually refers to a RAG system in which the model decides when and where to search, and whether further retrieval is needed after obtaining information. It expands retrieval decision-making; it does not automatically make information correct or necessarily require multiple agents. Questions that can be answered with one search may still need only one; extra steps are justified only when a gap is found."
+        },
+        {
+          "type": "paragraph",
+          "text": "The term has no single, universally accepted algorithmic specification. This article uses the operational meaning in the official LangGraph tutorial: the model can choose to call a retrieval tool, the workflow checks passage relevance, rewrites the question if necessary, and then generates an answer. The Self-Reflective Retrieval-Augmented Generation (Self-RAG) paper also studies on-demand retrieval and self-checking, but it trains a specific mechanism using reflection tokens. Not all Agentic RAG can therefore be called Self-RAG."
+        },
+        {
+          "type": "heading",
+          "text": "Actively Choosing the Next Query",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Fixed RAG often sends the user's question to a predefined retriever and then passes the retrieved content to a generator. An agentic workflow allows the model to change subsequent actions based on intermediate results. For example, if the original question concerns two event venues, the model might find venue descriptions in the first search, notice that equipment rules are missing, and then query a regulations index. The value lies in filling gaps in the evidence, rather than having the model repeatedly restate what it already knows."
+        },
+        {
+          "type": "paragraph",
+          "text": "From an engineering perspective, the areas where decisions can be made freely must be explicit. The model can choose query wording and permitted data sources, but the application still controls read permissions, maximum runtime and which errors require termination. Treating the model's decisions as a complete workflow specification can turn a simple question-and-answer task into an unpredictable exploration. Agent flexibility and programmatic limits are both necessary design requirements."
+        },
+        {
+          "type": "heading",
+          "text": "Returning to Retrieval to Fill Evidence Gaps",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "An understandable loop includes listing the subquestions to answer, selecting tools to retrieve information, checking which claims the new information supports, and finally deciding whether to answer, search further or stop. A relevance check asks, \"Does this passage discuss the question?\" A sufficiency check asks, \"Is there enough information to reach a conclusion?\" A venue description may be highly relevant yet omit capacity, so these two checks must remain distinct."
+        },
+        {
+          "type": "paragraph",
+          "text": "Stopping criteria are best defined alongside the task. If all required fields have sources, the system can generate a comparison. If information conflicts, it should disclose the conflict. If queries keep returning only the same document, it can stop and list the missing items. Success does not mean continuing until the model says, \"I am very confident.\" It means that the information the reader requested in advance has supporting evidence. Tool failures must also retain their failure status; a connection error must not be misreported as no information found."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-agentic-rag/diagram-1-en.svg",
+          "alt": "After retrieving evidence, check its sufficiency: answer if sufficient, rewrite the query and retrieve again if not, and stop if the gaps cannot be filled.",
+          "width": 1600,
+          "height": 900,
+          "caption": "The arrow back to retrieval needs a reason; stopping does not necessarily mean the answer is complete.",
+          "description": "After retrieving evidence, check its sufficiency: answer if sufficient, rewrite the query and retrieve again if not, and stop if the gaps cannot be filled.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Example: Comparing Venues for Community Events",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose the input is, \"Compare Riverside Classroom and Mountain Town Hall. Which would suit a book club that needs projection equipment and an accessible entrance?\" This is a fictional teaching scenario. The first retrieval may return equipment lists for both venues, with projection equipment listed for Riverside Classroom but only photos of the space for Mountain Town Hall. The agent should identify the missing equipment evidence for Mountain Town Hall and then consult its venue-use manual. Entrance conditions should be checked against venue layouts or official descriptions, not guessed from photos."
+        },
+        {
+          "type": "paragraph",
+          "text": "The expected output is an item-by-item comparison: whether projection equipment is provided, whether the entrance meets the question's requirements, the sources for each field, and any matters that still need confirmation from venue management. If the manual only says \"assistance is available,\" that does not establish that a particular entrance is usable; it should be marked unconfirmed. An additional query may help find information, but more model reasoning cannot fill in facts that the documents do not record."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the question changes to \"Find Mountain Town Hall's contact phone number,\" fixed retrieval may be enough. Having an agent plan, check and then search could instead increase waiting time and opportunities for error. The same system can choose a path based on task complexity: clear, single-item queries take a short workflow, while comparisons across sources activate dynamic follow-up searches. This is a design trade-off; no source guarantees that an agentic approach is better for every question."
+        },
+        {
+          "type": "heading",
+          "text": "Hallucinations Are Not the Only Risk",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A common failure in agentic retrieval is query drift: a search that begins with entrance conditions turns into a general search for accessible travel after several rewrites. Another failure is repeatedly searching synonymous queries, retrieving the same content and treating it as multiple independent pieces of evidence. Keep the original question, completed fields and document identifiers so duplicate information can be recognized, and require every follow-up search to explain the specific gap it aims to resolve."
+        },
+        {
+          "type": "paragraph",
+          "text": "The model may also be overly optimistic when judging whether information is sufficient. For important fields, a program can check whether a valid source is attached, or a person can spot-check whether citations support the claims. A program can verify only the conditions it was designed to check; it does not automatically understand every semantic nuance. Missing information, contradictions and source dates must therefore remain part of the evaluation. Every tool read should respect the same user's permissions; access must not expand simply because an agent decides the next step."
+        },
+        {
+          "type": "heading",
+          "text": "Evaluating Whether Extra Loops Are Worthwhile",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "When comparing approaches, use the same document versions and questions, and separately record answer completeness, citation support, tool-call counts and waiting time for fixed RAG and the agentic workflow. If improvements occur only on questions spanning multiple documents, targeted routing can be retained without replacing the entire system. Evaluation should also include unanswerable questions to see whether the agent can stop, avoiding optimistic conclusions based solely on demonstration questions that can succeed."
+        },
+        {
+          "type": "paragraph",
+          "text": "When reading a product introduction, readers can ask to see a complete query log: what was found initially, why another search was needed, what it added and when the process stopped. Only with this information can they begin to judge whether the system's extra steps are useful. The core of Agentic RAG is adjusting retrieval in response to evidence. Scheduling, retries, monitoring and collaboration among people are engineering work that supports its operation; they should not all be lumped together as the agent's reasoning ability."
+        },
+        {
+          "type": "paragraph",
+          "text": "If a system displays query progress, an on-screen \"Verifying\" status must also correspond to actual activity. A scheduled search does not mean the tool has successfully returned results, and returned results do not mean the evidence has been fully read. Preserving these distinctions helps users understand why they are waiting and helps engineering teams identify whether the process is stuck at tool connectivity, document parsing or model judgment."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Method",
+            "Focus",
+            "What to Keep in Mind"
+          ],
+          "rows": [
+            [
+              "Fixed RAG",
+              "Retrieves along a predefined path",
+              "The workflow is easy to predict"
+            ],
+            [
+              "Agentic RAG",
+              "Chooses the next step based on intermediate evidence",
+              "Requires stopping criteria and budget limits"
+            ],
+            [
+              "Self-RAG",
+              "Trains on-demand retrieval and reflection mechanisms",
+              "A specific research method"
+            ]
+          ],
+          "caption": "Concept comparison; sources verified in month 9 of 2026."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Every Follow-up Search Must Address a Gap",
+          "text": "If you cannot explain which field the next search will fill, continuing to query is likely just adding waiting time. Leaving items unconfirmed is also an acceptable outcome."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is Retrieval-Augmented Generation (RAG)? Giving Answers Verifiable Support",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is an Agent Loop? Judgment, Action and Feedback",
+              "kind": "life",
+              "slug": "ai-term-agent-loop"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is Agent Orchestration? Assigning Work and Sequencing Deliveries",
+              "kind": "life",
+              "slug": "ai-term-agent-orchestration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI Terminology Index: From Loop Engineering to Generative AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "LangGraph: Build a custom RAG agent",
+          "url": "https://docs.langchain.com/oss/python/langgraph/agentic-rag",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Asai et al.: Self-RAG",
+          "url": "https://arxiv.org/abs/2310.11511",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "エージェント型検索拡張生成（Agentic RAG）：いつ再検索が必要か",
+      "description": "エージェント型検索拡張生成では、モデルが検索の判断に関与し、質問とすでに得られた根拠に応じて情報源の選択、クエリの書き換え、追加検索を行います。本記事では LangGraph のドキュメントにある具体的なフローを採用し、会場の利用条件の比較を例に固定型 RAG との違いを示すとともに、停止条件、権限、検索履歴、コスト管理を説明します。読後には、タスクに動的な探索が必要か、予測可能な固定フローで十分かを判断できるようになります。",
+      "hero": {
+        "src": "/guides/ai-term-agentic-rag/hero-ja.jpg",
+        "alt": "質問、検索、根拠の確認が再試行可能なループを形成し、根拠が十分なら別の経路で回答を出力する",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "エージェント型検索拡張生成（Agentic RAG）とは通常、いつ、どこを検索し、情報の取得後に追加検索が必要かを、処理の中でモデルが判断する RAG システムを指します。",
+            "拡張されるのは検索の判断であり、情報が自動的に正しくなるわけでも、必ず複数のエージェントが必要になるわけでもありません。一度の検索で答えられる質問なら、検索は一度で構いません。",
+            "追加検索は毎回、根拠の不足に対応させるべきです。読み取り権限や実行時間の上限は引き続きアプリケーションが管理し、未確認項目を残すことも適切な結果です。",
+            "明確な単一項目の検索は短いフローで処理し、複数の情報源をまたぐ比較で初めて動的な追加検索を有効にします。エージェント型の方式がすべての質問に優れると保証する出典はありません。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "エージェント型検索拡張生成は、英語では Agentic RAG といい、通常、いつ、どこを検索し、情報の取得後に追加検索が必要かを、処理の中でモデルが判断する RAG システムを指します。拡張されるのは検索の判断であり、情報が自動的に正しくなるわけでも、必ず複数のエージェントが必要になるわけでもありません。一度の検索で答えられる質問なら、検索は一度で構いません。不足が見つかったときに初めて、手順を増やす理由が生まれます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この名称には、広く合意された単一のアルゴリズム仕様がありません。本記事では LangGraph の公式チュートリアルに沿った実装上の意味を採用します。モデルが検索ツールの呼び出しを選択でき、フローが文章の関連性を確認し、必要なら質問を書き換えたうえで回答を生成するというものです。自己内省型検索拡張生成（Self-RAG）の論文も必要に応じた検索と自己確認を研究していますが、特定のリフレクショントークン（reflection tokens）を用いる仕組みを学習させるものなので、すべての Agentic RAG を Self-RAG と呼ぶことはできません。"
+        },
+        {
+          "type": "heading",
+          "text": "次のクエリを自ら決める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "固定型 RAG では多くの場合、ユーザーの質問をあらかじめ定めた検索器に送り、見つかった内容を生成器に渡します。一方、エージェント型のフローでは、モデルが途中の結果に応じて次の行動を変えられます。例えば、元の質問にイベント会場が二つ含まれており、最初に会場紹介を見つけた後、モデルが設備の利用規則が不足していると気づき、規則のインデックスを追加検索する場合です。ここでの価値は、根拠の不足に応じて情報を補うことにあり、モデルがすでに知っている内容を繰り返し言い直すことではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "実装では、自由に判断できる範囲を明確にする必要があります。モデルは検索文や許可された情報源を選べますが、読み取り権限、実行時間の上限、どのエラーで中止するかは、引き続きアプリケーションが管理します。モデルの判断をそのままフロー全体の仕様として扱うと、単純な質疑応答が見通しの立たない探索タスクに変わってしまいます。エージェントの柔軟性とプログラムによる制限は、同時に必要な設計条件です。"
+        },
+        {
+          "type": "heading",
+          "text": "根拠の不足から検索に戻る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "理解しやすいループは、回答すべき小さな問いを列挙し、ツールを選んで情報を取得し、新しい情報がどの主張を裏付けられるかを確認したうえで、回答、追加検索、停止のいずれかを決める流れです。関連性の確認が答えるのは「この文章は質問に関係する内容を扱っているか」であり、十分性の確認が答えるのは「結論を出すのに十分か」です。会場紹介は質問との関連性が高くても、収容人数が書かれていないことがあります。この二つの確認を混同してはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "停止条件はタスクと一緒に設定するのが望ましいでしょう。必要なすべての項目に出典があれば比較を生成でき、情報が互いに矛盾するなら、その食い違いを明示すべきです。検索しても同じ文書しか得られない状態が続くなら、停止して不足項目を列挙できます。成功とはモデルが「自信があります」と言うまで続けることではなく、読者が事前に求めた情報に根拠がそろうことです。ツールが失敗した場合も失敗状態を残し、接続エラーを「情報が見つからなかった」と誤って記載してはいけません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-agentic-rag/diagram-1-ja.svg",
+          "alt": "検索で根拠を取得して十分かを確認し、十分なら回答、不足ならクエリを書き換えて検索に戻り、補えない場合は停止する",
+          "width": 1600,
+          "height": 900,
+          "caption": "検索に戻る矢印には理由が必要です。停止は、回答が完全であることを意味するとは限りません。",
+          "description": "検索で根拠を取得して十分かを確認し、十分なら回答、不足ならクエリを書き換えて検索に戻り、補えない場合は停止する",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "実例：コミュニティ活動の会場を比較する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "入力を「河畔教室と山城会館を比較して、投影設備とバリアフリーの入口が必要な読書会に適しているのはどちら？」とします。これは架空の学習用シナリオです。最初の検索では二つの会場の設備一覧が得られ、河畔教室には投影設備がありますが、山城会館には室内の写真しかありません。エージェントは山城会館の設備に関する根拠が不足していると判断し、利用マニュアルを追加検索すべきです。入口の条件は会場の配置図や公式の説明で調べる必要があり、写真から推測してはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "期待される出力は、投影設備が提供されるか、入口が質問の要件を満たすか、各項目の出典、管理者への確認がまだ必要な事項を、項目ごとに比較したものです。マニュアルに「支援を提供可能」とだけ書かれていても、特定の入口が利用できる根拠としては不十分なので、未確認と明記すべきです。この場合、検索を一度追加することで情報が見つかる可能性はありますが、モデルの推論を増やしても、文書に記録されていない事実を補うことはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "質問を「山城会館の連絡先電話番号を調べて」に変えるなら、固定型の検索で十分かもしれません。エージェントが計画を立て、確認してから検索すると、かえって待ち時間や誤りの機会が増えます。同じシステムでも、タスクの複雑さに応じて経路を選べます。明確な単一項目の検索は短いフローで処理し、複数の情報源をまたぐ比較で初めて動的な追加検索を有効にします。これは設計上のトレードオフであり、エージェント型の方式がすべての質問に優れると保証する出典はありません。"
+        },
+        {
+          "type": "heading",
+          "text": "防ぐべきものはハルシネーションだけではない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "エージェント型検索でよくある失敗は、クエリのドリフトです。最初は入口の条件を調べていたのに、何度か書き換えるうちに、一般的なバリアフリー旅行の検索に変わってしまいます。別の失敗として、同じ意味の文で繰り返し検索し、同じ内容を得ているのに複数の独立した根拠として扱うことがあります。元の質問、回答済みの項目、文書の識別子を保存して重複する情報を見分けられるようにし、追加検索のたびに、どの具体的な不足を解消するのかを説明させる必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "情報が十分かどうかをモデル自身が判断する場合も、過度に楽観的になることがあります。重要な項目については、有効な出典が付いているかをプログラムで確認したり、引用が主張を裏付けているかを人が抜き取り確認したりできます。プログラムが検証できるのは設計済みの条件だけであり、あらゆる意味を自動的に理解するわけではありません。そのため、情報の不足、矛盾、出典の日付も評価に含める必要があります。ツールによる読み取りは毎回、同じユーザーの権限に従うべきであり、次の手順をエージェントが決めるからといって、アクセス範囲を広げてはいけません。"
+        },
+        {
+          "type": "heading",
+          "text": "ループを追加する価値をどう評価するか",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "方式を比較する際は、同じ版の文書と同じ質問を使い、固定型 RAG とエージェント型フローそれぞれについて、回答の網羅性、引用による裏付けの程度、ツール呼び出し回数、待ち時間を記録します。改善が複数の文書をまたぐ質問に限られるなら、対象を絞った経路の振り分けを維持すればよく、全面的に置き換える必要はありません。評価には答えのない質問も含め、エージェントが停止できるかを観察し、成功できる実演用の質問だけで楽観的な結論を出さないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "読者が製品紹介を見る際には、最初に何が見つかり、なぜ再検索し、その後何が補われ、いつ停止したかという、一連の検索履歴をすべて見せるよう求めることができます。こうした情報を表示できて初めて、システムが追加した手順が役立っているかを判断する余地が生まれます。エージェント型 RAG の核心は、根拠に応じて検索を調整することです。スケジューリング、再試行、監視、複数人での協働は、その動作を支えるエンジニアリングの仕事であり、すべてをエージェントの推論能力とひとまとめに呼ぶべきではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "システムが検索の進捗を表示するなら、画面上の「確認中」も実際の動作に対応させる必要があります。検索が予定されたことは、ツールが正常に結果を返したことを意味せず、ツールが結果を返したことも、根拠を読み終えたことを意味しません。こうした状態の違いを保つことで、ユーザーは待ち時間の理由を理解でき、開発チームもツールへの接続、文書の解析、モデルの判断のどの段階で止まっているかを把握しやすくなります。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "処理の重点",
+            "留意点"
+          ],
+          "rows": [
+            [
+              "固定型 RAG",
+              "所定の経路で検索",
+              "フローを予測しやすい"
+            ],
+            [
+              "Agentic RAG",
+              "途中で得た根拠に応じて次の手順を選択",
+              "停止条件と予算の制限が必要"
+            ],
+            [
+              "Self-RAG",
+              "必要に応じた検索と内省の仕組みを学習",
+              "特定の研究手法である"
+            ]
+          ],
+          "caption": "概念の比較。出典は 2026 年 9 月に確認。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "追加検索は毎回、具体的な不足に対応させる",
+          "text": "次の検索でどの項目を補うのか説明できないなら、検索を続けても待ち時間が増えるだけになりかねません。未確認項目を残すことも適切な結果です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "検索拡張生成（RAG）とは：回答に確認可能な根拠を添える",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "エージェントループ（Agent Loop）とは：判断、操作、フィードバック",
+              "kind": "life",
+              "slug": "ai-term-agent-loop"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "エージェントオーケストレーション（Agent Orchestration）とは：役割分担と成果物の受け渡し順序を決める",
+              "kind": "life",
+              "slug": "ai-term-agent-orchestration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 用語総索引：Loop Engineering から生成 AI まで",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "LangGraph：カスタム RAG エージェントを構築する",
+          "url": "https://docs.langchain.com/oss/python/langgraph/agentic-rag",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Asai ほか：Self-RAG",
+          "url": "https://arxiv.org/abs/2310.11511",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "에이전트형 검색 증강 생성(Agentic RAG): 언제 다시 검색해야 할까",
+      "description": "에이전트형 검색 증강 생성은 모델이 검색 결정에 참여해 질문과 이미 찾은 근거에 따라 자료 출처를 선택하거나 검색어를 재작성하거나 추가로 검색하게 합니다. 이 글은 LangGraph 문서의 구체적인 흐름을 바탕으로 장소 대관 조건 비교를 통해 고정형 RAG와의 차이를 보여 주고, 종료 조건, 권한, 검색 기록과 비용 관리를 설명합니다. 읽고 나면 작업에 동적 탐색이 필요한지, 예측 가능한 고정 절차로 충분한지 판단할 수 있습니다.",
+      "hero": {
+        "src": "/guides/ai-term-agentic-rag/hero-ko.jpg",
+        "alt": "질문, 검색, 근거 검토가 재시도 가능한 순환 구조를 이루며, 근거가 충분하면 별도 경로로 답변을 출력하는 모습",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "에이전트형 검색 증강 생성(Agentic RAG)은 일반적으로 모델이 과정 중 언제, 어디서 검색할지와 자료를 얻은 뒤 추가 검색이 필요한지를 결정하는 RAG 시스템을 뜻합니다.",
+            "확장되는 것은 검색 의사결정입니다. 자료가 자동으로 정확해진다는 뜻도, 반드시 여러 에이전트가 필요하다는 뜻도 아닙니다. 한 번의 검색으로 답할 수 있는 질문은 여전히 한 번만 검색해도 됩니다.",
+            "각 추가 검색은 근거의 빈틈을 메우기 위한 것이어야 합니다. 읽기 권한과 최대 실행 시간은 여전히 애플리케이션이 제어하며, 미확인 항목을 남기는 것도 적절한 결과입니다.",
+            "명확한 단일 항목 질문에는 짧은 절차를 쓰고, 여러 출처를 비교할 때만 동적 추가 검색을 활용합니다. 어떤 출처도 에이전트형 방식이 모든 질문에서 더 낫다고 보장하지 않습니다."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "에이전트형 검색 증강 생성은 영어로 Agentic RAG라 하며, 일반적으로 모델이 과정 중 언제, 어디서 검색할지와 자료를 얻은 뒤 추가 검색이 필요한지를 결정하는 RAG 시스템을 뜻합니다. 확장되는 것은 검색 의사결정입니다. 자료가 자동으로 정확해진다는 뜻도, 반드시 여러 에이전트가 필요하다는 뜻도 아닙니다. 한 번의 검색으로 답할 수 있는 질문은 여전히 한 번만 검색해도 됩니다. 빈틈을 발견했을 때만 단계를 늘릴 이유가 생깁니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 명칭에는 널리 합의된 단일 알고리즘 명세가 없습니다. 이 글에서는 LangGraph 공식 튜토리얼에서 제시하는 실제 구현상의 의미를 따릅니다. 모델이 검색 도구 호출 여부를 선택하고, 절차에서 문단의 관련성을 확인하며, 필요하면 질문을 재작성한 뒤 답변을 생성하는 방식입니다. 자기 성찰형 검색 증강 생성(Self-RAG) 논문도 필요에 따른 검색과 자기 점검을 연구하지만, 특정 성찰 토큰(reflection tokens) 메커니즘을 학습시키므로 모든 Agentic RAG를 Self-RAG라고 부를 수는 없습니다."
+        },
+        {
+          "type": "heading",
+          "text": "다음 검색을 능동적으로 결정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "고정형 RAG는 보통 사용자 질문을 정해진 검색기에 보내고, 찾은 내용을 생성기에 전달합니다. 에이전트형 흐름에서는 모델이 중간 결과에 따라 이후 행동을 바꿀 수 있습니다. 예를 들어 원래 질문이 행사 장소 두 곳을 다룬다면, 모델은 첫 검색에서 장소 소개를 찾은 뒤 장비 관련 규정이 빠져 있음을 발견하고 규정 인덱스를 다시 검색합니다. 여기서 가치는 근거의 빈틈에 따라 자료를 보충하는 데 있으며, 모델이 이미 아는 내용을 반복해서 말하게 하는 데 있지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "구현할 때는 모델이 자유롭게 결정할 수 있는 범위를 분명히 해야 합니다. 모델은 검색어와 허용된 자료 출처를 선택할 수 있지만, 읽기 권한, 최대 실행 시간, 어떤 오류에서 중단할지는 여전히 애플리케이션이 제어합니다. 모델의 결정을 곧바로 전체 절차의 명세로 삼으면 간단한 질의응답도 예측하기 어려운 탐색 작업이 됩니다. 에이전트의 유연성과 프로그램의 제약은 모두 필요한 설계 조건입니다."
+        },
+        {
+          "type": "heading",
+          "text": "근거의 빈틈에서 다시 검색으로",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "이해하기 쉬운 순환 절차는 다음과 같습니다. 답해야 할 하위 질문을 나열하고, 도구를 선택해 자료를 얻고, 새 자료가 어떤 주장을 뒷받침할 수 있는지 확인한 뒤, 답변할지, 추가 검색할지, 중단할지 결정합니다. 관련성 검사는 “이 문단이 질문을 다루는가”를, 충분성 검사는 “결론을 내리기에 충분한가”를 확인합니다. 장소 소개 자료는 관련성이 매우 높아도 수용 인원 정보가 없을 수 있으므로 두 검사를 혼동하면 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "종료 조건은 작업을 정할 때 함께 설정하는 것이 좋습니다. 필요한 모든 항목에 출처가 확보되면 비교 결과를 생성할 수 있습니다. 자료가 서로 모순되면 충돌을 밝혀야 하며, 계속 검색해도 같은 문서만 나오면 중단하고 부족한 항목을 나열할 수 있습니다. 성공의 기준은 모델이 “확신합니다”라고 말할 때까지 검색하는 것이 아니라, 독자가 미리 요구한 정보에 근거가 확보되었는지입니다. 도구가 실패했을 때도 실패 상태를 남겨야 하며, 연결 오류를 검색 결과가 없다는 뜻으로 잘못 기록하면 안 됩니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-agentic-rag/diagram-1-ko.svg",
+          "alt": "검색으로 근거를 확보한 뒤 충분한지 확인하고, 충분하면 답변하며, 부족하면 검색어를 재작성해 다시 검색하고, 보완할 수 없으면 중단하는 흐름",
+          "width": 1600,
+          "height": 900,
+          "caption": "검색으로 돌아가는 화살표에는 이유가 필요합니다. 중단이 반드시 완전한 답변을 뜻하지는 않습니다.",
+          "description": "검색으로 근거를 확보한 뒤 충분한지 확인하고, 충분하면 답변하며, 부족하면 검색어를 재작성해 다시 검색하고, 보완할 수 없으면 중단하는 흐름",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "예시: 커뮤니티 행사 장소 비교",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "입력 질문이 “강변 교실과 산성 회관을 비교해 주세요. 프로젝터와 무장애 출입구가 필요한 독서 모임에는 어느 곳이 적합한가요?”라고 가정해 봅시다. 이는 가상의 교육용 상황입니다. 첫 검색에서는 두 장소의 장비 목록을 얻을 수 있는데, 강변 교실에는 프로젝터 장비가 있고 산성 회관에는 공간 사진만 있습니다. 에이전트는 산성 회관의 장비 관련 근거가 부족하다는 점을 파악하고 대관 안내서를 추가로 검색해야 합니다. 출입구 조건은 장소 배치도나 공식 안내에서 확인해야 하며, 사진을 보고 추측하면 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "기대하는 출력은 항목별 비교 결과입니다. 프로젝터 제공 여부, 출입구가 질문의 요구 조건을 충족하는지, 각 항목의 출처, 관리 주체에 여전히 확인해야 할 사항을 담습니다. 안내서에 “지원 가능”이라고만 쓰여 있다면 특정 출입구를 이용할 수 있다는 근거로 충분하지 않으므로 미확인으로 표시해야 합니다. 이때 검색을 한 번 더 하면 자료를 찾는 데 도움이 될 수 있지만, 모델의 추론을 늘린다고 문서에 기록되지 않은 사실을 채울 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "질문이 “산성 회관의 연락처 전화번호를 찾아 주세요”로 바뀐다면 고정형 검색으로도 충분할 수 있습니다. 에이전트가 계획하고, 점검하고, 검색하는 단계를 거치면 오히려 대기 시간과 오류 가능성이 늘어납니다. 같은 시스템에서도 작업의 복잡도에 따라 경로를 선택할 수 있습니다. 명확한 단일 항목 질문에는 짧은 절차를 쓰고, 여러 출처를 비교할 때만 동적 추가 검색을 활용하는 방식입니다. 이는 설계상의 절충이며, 어떤 출처도 에이전트형 방식이 모든 질문에서 더 낫다고 보장하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "막아야 할 것은 환각만이 아니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "에이전트형 검색에서 흔한 실패는 검색 방향이 빗나가는 것입니다. 처음에는 출입구 조건을 찾다가 몇 차례 재작성한 뒤에는 일반적인 무장애 여행을 검색하게 되는 경우입니다. 또 다른 실패는 같은 뜻의 문장을 반복 검색해 같은 내용을 얻고도 이를 여러 개의 독립된 근거로 여기는 것입니다. 원래 질문, 답변이 완료된 항목, 문서 식별자를 남겨 중복 자료를 식별할 수 있게 하고, 추가 검색 때마다 어떤 구체적인 빈틈을 메우려는지 설명하도록 해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "모델이 스스로 자료가 충분한지 판단할 때도 지나치게 낙관적일 수 있습니다. 중요한 항목은 프로그램으로 유효한 출처가 첨부되어 있는지 확인하거나 사람이 인용이 주장을 뒷받침하는지 표본 점검할 수 있습니다. 프로그램은 설계된 조건만 검증할 수 있고 모든 의미를 자동으로 이해하지는 못하므로, 자료 누락, 모순, 출처의 날짜도 평가에 포함해야 합니다. 도구로 자료를 읽을 때마다 동일한 사용자 권한을 따라야 하며, 에이전트가 다음 단계를 결정한다는 이유로 접근 범위를 넓혀서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "반복 단계를 추가할 가치가 있는지 평가하는 법",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "방식을 비교할 때는 같은 버전의 문서와 같은 질문을 사용하고, 고정형 RAG와 에이전트형 흐름 각각의 답변 완전성, 인용이 답변을 뒷받침하는 정도, 도구 호출 횟수, 대기 시간을 기록해야 합니다. 개선이 여러 문서에 걸친 질문에서만 나타난다면 해당 질문에 맞춘 라우팅을 유지할 수 있으며, 전체를 대체할 필요는 없습니다. 평가에는 답이 없는 질문도 포함해 에이전트가 중단할 수 있는지 살펴봐야 합니다. 그래야 성공할 수 있는 예제 질문만으로 낙관적인 결론을 내리는 일을 피할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "독자는 제품 소개를 볼 때 검색 한 건의 전체 기록을 보여 달라고 요청할 수 있습니다. 처음에 무엇을 찾았는지, 왜 다시 검색했는지, 이후 무엇을 보완했는지, 언제 중단했는지를 확인하는 것입니다. 이런 자료를 볼 수 있어야 시스템의 추가 단계가 유용한지 판단할 수 있습니다. 에이전트형 RAG의 핵심은 근거에 따라 검색을 조정하는 것입니다. 스케줄링, 재시도, 모니터링, 여러 사람의 협업은 그 작동을 뒷받침하는 엔지니어링 작업이며, 모두 에이전트의 추론 능력으로 묶어 불러서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "시스템이 검색 진행 상황을 보여 준다면 화면의 “검증 중”도 실제 동작에 대응해야 합니다. 검색이 예약되었다고 도구가 성공적으로 결과를 반환한 것은 아니며, 도구가 결과를 반환했다고 근거를 모두 읽은 것도 아닙니다. 이런 상태 차이를 유지하면 사용자가 기다리는 이유를 이해할 수 있고, 엔지니어링 팀도 도구 연결, 문서 파싱, 모델 판단 중 어느 단계에서 멈췄는지 파악하기 쉽습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "방법",
+            "처리의 초점",
+            "유의할 점"
+          ],
+          "rows": [
+            [
+              "고정형 RAG",
+              "정해진 경로로 검색",
+              "절차를 예측하기 쉬움"
+            ],
+            [
+              "Agentic RAG",
+              "중간 근거에 따라 다음 단계 선택",
+              "종료 조건과 예산 한도 필요"
+            ],
+            [
+              "Self-RAG",
+              "필요에 따른 검색과 성찰 메커니즘 학습",
+              "특정 연구 방법임"
+            ]
+          ],
+          "caption": "개념 비교. 출처는 2026년 9월에 확인했습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "추가 검색마다 메울 빈틈이 있어야 한다",
+          "text": "다음 검색으로 어떤 항목을 보완할지 설명할 수 없다면, 계속 검색하는 것은 대기 시간만 늘릴 가능성이 큽니다. 미확인 항목을 남기는 것도 적절한 결과입니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "검색 증강 생성(RAG)이란: 답변에 확인 가능한 근거 붙이기",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "에이전트 루프(Agent Loop)란: 판단, 실행, 피드백",
+              "kind": "life",
+              "slug": "ai-term-agent-loop"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "에이전트 오케스트레이션(Agent Orchestration)이란: 역할 분담과 결과 전달 순서 정하기",
+              "kind": "life",
+              "slug": "ai-term-agent-orchestration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 용어 종합 색인: Loop Engineering부터 생성형 AI까지",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "LangGraph: 맞춤형 RAG 에이전트 만들기",
+          "url": "https://docs.langchain.com/oss/python/langgraph/agentic-rag",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Asai 외: Self-RAG",
+          "url": "https://arxiv.org/abs/2310.11511",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "代理式检索增强生成（Agentic RAG）：何时需要再查一次",
+      "description": "代理式检索增强生成让模型参与检索决策，根据问题与已找到的证据选择数据来源、改写查询或继续补查。本文采用 LangGraph 文档中的具体流程，以比较场地借用条件示范它和固定式 RAG 的差别，并说明停止条件、权限、查询记录及成本控制。读完能判断任务需要动态探索，还是用可预测的固定流程就足够。",
+      "hero": {
+        "src": "/guides/ai-term-agentic-rag/hero-zh-cn.jpg",
+        "alt": "问题、检索与证据检查形成可重试的循环，证据足够时由另一路径输出答案",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "代理式检索增强生成（Agentic RAG）通常指由模型在流程中决定何时搜索、去哪里搜索，以及取得资料后是否还需补查的 RAG 系统。",
+            "它扩展的是检索决策，不代表资料自动变正确，也不一定需要多个代理；一次能回答的问题仍可只查一次。",
+            "每次补查都应对应一个证据缺口，读取权限与最长运行时间仍由应用程序控制，保留未确认项也是合格结果。",
+            "明确的单项查询可走短流程，跨来源比较才开启动态补查；没有任何来源保证代理式方案对所有问题都更好。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "代理式检索增强生成，英文 Agentic RAG，通常指由模型在流程中决定何时搜索、去哪里搜索，以及取得资料后是否还需补查的 RAG 系统。它扩展的是检索决策，不代表资料自动变正确，也不一定需要多个代理。一次能回答的问题仍可只查一次；只有发现缺口时，才有理由增加步骤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这个名称没有单一公认的算法规范。本篇采用 LangGraph 官方教程中的具体含义：模型可以选择调用检索工具，流程检查段落相关性，必要时改写问题，再生成回答。自我反思式检索增强生成（Self-RAG）论文也在研究按需检索与自我检查，但它训练的是特定的反思词元（reflection tokens）机制，不能把所有 Agentic RAG 都说成 Self-RAG。"
+        },
+        {
+          "type": "heading",
+          "text": "主动决定下一个查询",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "固定式 RAG 常把用户问题送进既定检索器，再把找到的内容交给生成器。代理式流程则允许模型根据中间结果改变后续行动。例如原问题包含两个活动场地，第一次找到场地介绍后，模型发现缺少设备规则，便再向规章索引查询。这里的价值在于根据证据缺口补充资料，而不是让模型反复重述自己已知的内容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "工程上要把可以自由决定的地方说清楚。模型可以选择查询文本与获准使用的数据来源，但读取权限、最长运行时间、哪些错误应中止，仍由应用程序控制。把模型决定直接当成完整流程规范，会让一个简单问答变成难以预估的探索任务。代理的灵活性与程序的限制是同时需要的设计条件。"
+        },
+        {
+          "type": "heading",
+          "text": "从证据缺口回到检索",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一个易于理解的循环包括：列出待回答的子问题、选择工具获取资料、检查新资料能支持哪些主张，最后决定回答、补查或停止。相关性检查回答的是“这段有没有谈到问题”，充分性检查则是“已经足够作结论吗”。一份场地介绍可能高度相关，却没有容纳人数，两种检查不能混在一起。"
+        },
+        {
+          "type": "paragraph",
+          "text": "停止条件最好与任务一起设定。若所有必要字段已有来源，可以生成比较；若资料互相矛盾，应披露冲突；若查询持续只得到同一份文档，可以停止并列出缺失项。成功并不意味着一直查到模型说“我很有把握”，而是读者事先要求的信息已有依据。工具失败也要保留失败状态，不能把连接错误误写成未查到资料。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-agentic-rag/diagram-1-zh-cn.svg",
+          "alt": "检索取得证据后检查是否充分，充分则回答，不足则改写查询回到检索，无法补足时停止",
+          "width": 1600,
+          "height": 900,
+          "caption": "回到检索的箭头需要理由；停止不一定意味着回答完整。",
+          "description": "检索取得证据后检查是否充分，充分则回答，不足则改写查询回到检索，无法补足时停止",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "示范：比较社群活动场地",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "假设输入是“比较河畔教室和山城会馆，哪些适合需要投影与无障碍入口的读书会？”这是虚构教学情境。第一次检索可取得两个场地的设备表，其中河畔教室有投影设备，山城会馆只有空间照片。代理应识别山城缺少设备证据，再查借用手册；入口条件则到场地布局或官方说明中查，不能从照片猜测。"
+        },
+        {
+          "type": "paragraph",
+          "text": "预期输出是一份逐项比较：是否提供投影、入口是否符合题目需求、各栏的来源，以及仍需向管理单位确认的事项。若手册只写“可提供辅助”，不足以证明特定入口可用，应标为未确认。这时多一次查询可以帮助找到资料，但更多模型推理不能填补文档未记录的事实。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若把题目改成“找出山城会馆的联系电话”，固定检索可能就够。代理先规划、再检查、再搜索，反而增加等待与出错机会。同一系统可以按任务复杂度选择路径：明确的单项查询走短流程，跨来源比较才开启动态补查。这是设计上的取舍，没有任何来源保证代理式方案对所有问题都更好。"
+        },
+        {
+          "type": "heading",
+          "text": "需要防止的不只是幻觉",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "代理式检索常见的失败是查询漂移：原本查入口条件，改写几次后变成搜索一般无障碍旅游。另一种失败是反复查询同义句，取得相同内容却把它们当成多份独立证据。要保留原始问题、已回答字段与文档标识符，让重复资料可以被识别，并要求每次补查说明要解决哪一个具体缺口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型自行判断资料充分也可能过度乐观。对重要字段，可由程序检查是否附有有效来源，或者由人工抽查引用是否支持主张。程序只能验证已设计的条件，不会自动理解所有语义，因此仍要把资料缺失、矛盾与来源日期纳入评估。每次通过工具读取资料都应遵守同一用户权限，不能因为下一步由代理决定就扩大访问范围。"
+        },
+        {
+          "type": "heading",
+          "text": "如何评估是否值得增加循环",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "比较方案时，要使用相同文档版本与相同问题，分别记录固定 RAG 和代理式流程的答案完整性、引用支持度、工具调用次数与等待时间。若改善只出现在跨文档题目，就可保留针对性的路由，不必全面替换。评估也要包含无答案题，观察代理是否能停止，避免只在可以成功的示范题上得出乐观结论。"
+        },
+        {
+          "type": "paragraph",
+          "text": "读者看产品介绍时，可以要求展示一次完整查询记录：最初找到什么、为什么再查、后来补上什么，以及何时停止。能显示这些资料，才有机会判断系统的额外步骤是否有用。代理式 RAG 的核心是让检索随证据调整；调度、重试、监控与多人协作则是支撑它运行的工程工作，不应全部混称为代理的推理能力。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若系统提供查询进度，界面上的“正在查证”也要对应实际动作。已安排搜索不等于工具已成功返回，工具返回也不等于证据已读完。保留这些状态差异，能让用户理解等待的原因，也方便工程团队识别卡在工具连接、文档解析或模型判断的哪个阶段。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "处理重点",
+            "需要留意"
+          ],
+          "rows": [
+            [
+              "固定式 RAG",
+              "按既定路径检索",
+              "容易预估流程"
+            ],
+            [
+              "Agentic RAG",
+              "根据中间证据选择下一步",
+              "需要停止条件与预算限制"
+            ],
+            [
+              "Self-RAG",
+              "训练按需检索及反思机制",
+              "是特定研究方法"
+            ]
+          ],
+          "caption": "概念对照；来源查证于 2026 年 9 月。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "每次补查都要对应一个缺口",
+          "text": "若无法说明下一次搜索要补上哪个字段，继续查询很可能只是增加等待。保留未确认项也是合格结果。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "检索增强生成（RAG）是什么：让回答附上可查的依据",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "代理循环（Agent Loop）是什么：判断、操作与反馈",
+              "kind": "life",
+              "slug": "ai-term-agent-loop"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "代理协调（Agent Orchestration）是什么：安排分工与交付顺序",
+              "kind": "life",
+              "slug": "ai-term-agent-orchestration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 术语总索引：从 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "LangGraph：构建自定义 RAG 代理",
           "url": "https://docs.langchain.com/oss/python/langgraph/agentic-rag",
           "checked_on": "2026-09-14"
         },

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { ChevronDown, Rss } from "lucide-react";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { GuideCard } from "@/components/guides/card";
+import { ChannelGuide } from "@/components/guides/channel-guide";
 import { ListingEmpty, ListingToolbar } from "@/components/guides/listing-toolbar";
 import { NewsList } from "@/components/guides/news-list";
 import { SeriesRow } from "@/components/guides/series-row";
@@ -10,8 +12,9 @@ import { SiteHeader } from "@/components/site-header";
 import { StructuredData } from "@/components/structured-data";
 import { Link } from "@/i18n/navigation";
 import { locales, type Locale } from "@/i18n/routing";
+import { ARTICLE_OG_HEIGHT, ARTICLE_OG_WIDTH, topicOgImagePath } from "@/lib/article-og";
 import {
-  guideHref, guideTopicHref, isGuideListSort, isNewsTopic, sectionHubHref, topicLocales,
+  guideHref, guideTopicHref, isGuideListSort, isNewsTopic, sectionHubHref, topicLocales, visibleGuideHero,
   type GuideListSort, type GuideSection, type GuideTopic,
 } from "@/lib/guides";
 import type { SeriesSummary } from "@/lib/guide-series";
@@ -22,6 +25,14 @@ import { breadcrumbs, itemList } from "@/lib/structured-data";
 export type TopicHubRoute = { locale: Locale; section: GuideSection; topic: string; cursor?: string; sort?: string };
 
 const PAGE_SIZE = 24;
+
+/** Each desk draws its illustrated companion from a topic with guides in the reader's language. */
+function companionTopic(route: TopicHubRoute) {
+  if (route.section !== "life" || route.cursor || route.sort) return null;
+  if (route.topic === "ai-news") return "ai-terms";
+  if (route.topic === "tech-news") return "gadgets";
+  return null;
+}
 
 /** A topic's own order, the one its address carries without `?sort=`. A news topic is
  *  ordered by the day the news happened; everything else newest first, because a topic mixes
@@ -79,6 +90,7 @@ export async function topicHubMetadata(route: TopicHubRoute): Promise<Metadata> 
   const t = await getTranslations({ locale: route.locale, namespace: "metadata" });
   const label = topic?.label ?? route.topic;
   const path = guideTopicHref(route.section, route.topic);
+  const news = isNewsTopic(route.section, route.topic);
   // Published-in-this-language decides the index, from the vocabulary's own counts; only when
   // an older API sends none does the listing's emptiness decide, and only a complete answer
   // may say empty (`hubIsEmpty`). A `?cursor=` page is the same collection further down,
@@ -86,9 +98,33 @@ export async function topicHubMetadata(route: TopicHubRoute): Promise<Metadata> 
   const empty = topic?.count !== undefined ? topic.count === 0 : hubIsEmpty(list);
   const noindex = !topic || empty || Boolean(route.cursor) || Boolean(route.sort);
   const published = topic ? topicLocales(topic, locales) : [];
+  const leadStory = !noindex && companionTopic(route) ? list.articles.find((article) => article.news_date) : null;
+  const leadImage = visibleGuideHero(leadStory?.hero);
+  const title = t(news ? `newsTopic-${route.topic}-title` : "topicHubTitle", { topic: label });
+  const description = topic?.description || (news
+    ? t(`newsTopic-${route.topic}-description`)
+    : t("topicHubDescription", { topic: label }));
+  const images = leadImage
+    ? [{ url: leadImage.src, width: leadImage.width, height: leadImage.height, alt: leadImage.alt }]
+    : !noindex
+      ? [{
+          url: topicOgImagePath(route.locale, route.section, route.topic),
+          width: ARTICLE_OG_WIDTH,
+          height: ARTICLE_OG_HEIGHT,
+          alt: title,
+        }]
+      : null;
   return {
-    title: t("topicHubTitle", { topic: label }),
-    description: topic?.description || t("topicHubDescription", { topic: label }),
+    title,
+    description,
+    ...(images ? {
+      openGraph: {
+        type: "website", siteName: "Mokaair", title, description, url: localeUrl(route.locale, path), images,
+        locale: route.locale.replace("-", "_"),
+        alternateLocale: published.filter((locale) => locale !== route.locale).map((locale) => locale.replace("-", "_")),
+      },
+      twitter: { card: "summary_large_image", title, description, images },
+    } : {}),
     alternates: {
       canonical: localeUrl(route.locale, path),
       // Only the languages with something under the topic, for the reason an article page
@@ -99,6 +135,15 @@ export async function topicHubMetadata(route: TopicHubRoute): Promise<Metadata> 
             languages: {
               ...Object.fromEntries(published.map((locale) => [locale, localeUrl(locale, path)])),
               ...(published.includes(HREFLANG_DEFAULT) ? { "x-default": localeUrl(HREFLANG_DEFAULT, path) } : {}),
+            },
+          }
+        : {}),
+      ...(news && !route.cursor && !route.sort
+        ? {
+            types: {
+              "application/atom+xml": [
+                { url: localeUrl(route.locale, `${path}/feed.xml`), title: t("topicHubTitle", { topic: label }) },
+              ],
             },
           }
         : {}),
@@ -115,11 +160,14 @@ export async function renderTopicHub(
   featured?: (topics: GuideTopic[]) => Promise<ReactNode>,
 ) {
   const { locale, section } = route;
-  const [[vocabulary, list], registry, t, nav] = await Promise.all([
+  const guideTopic = companionTopic(route);
+  const [[vocabulary, list], registry, t, nav, meta, guidePicks] = await Promise.all([
     reads(route),
     getSeriesIndex(locale),
     getTranslations({ locale, namespace: "common" }),
     getTranslations({ locale, namespace: "navigation" }),
+    getTranslations({ locale, namespace: "metadata" }),
+    guideTopic ? getGuideList(locale, { kind: "life", topic: guideTopic, sort: "curated" }, 6) : null,
   ]);
   const topic = resolve(vocabulary.topics, vocabulary.available, route.topic);
   const top = featured && !route.cursor && !route.sort ? await featured(vocabulary.topics) : null;
@@ -127,8 +175,13 @@ export async function renderTopicHub(
   const label = topic?.label ?? route.topic;
   const sectionTitle = section === "life" ? t("guides.lifeHubTitle") : t("guides.hubTitle");
   const sectionLead = section === "life" ? t("guides.lifeHubIntro") : t("guides.hubIntro");
-  const lead = topic?.description || parent?.description || sectionLead;
+  const news = isNewsTopic(section, route.topic);
+  const lead = topic?.description || (news ? meta(`newsTopic-${route.topic}-description`) : parent?.description || sectionLead);
   const path = guideTopicHref(section, route.topic);
+  const channelFront = Boolean(guideTopic && topic && list.articles.length);
+  const otherChannel = channelFront && vocabulary.topics.find((item) =>
+    item.slug === (route.topic === "ai-news" ? "tech-news" : "ai-news") && item.count !== 0,
+  );
   const cardLabels = { intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life") };
   const toolbarLabels = {
     allTopics: t("guides.allTopics"), topicsLabel: t("guides.topicsLabel"), subtopics: t("guides.subtopics"),
@@ -136,7 +189,6 @@ export async function renderTopicHub(
     sortLabel: t("guides.sortLabel"), sortCurated: t("guides.sortCurated"), sortLatest: t("guides.sortLatest"),
   };
   const searchLabels = { label: t("guides.searchLabel"), placeholder: t("guides.searchPlaceholder"), submit: t("guides.searchSubmit") };
-  const news = isNewsTopic(section, route.topic);
   const sort = sortOf(route);
   // The hub's own address is its default order; the other order rides on `?sort=`.
   const view = (value: GuideListSort) => (value === defaultSortOf(route) ? path : `${path}?sort=${value}`);
@@ -147,6 +199,16 @@ export async function renderTopicHub(
     ...(parent ? [{ name: parent.label, path: guideTopicHref(section, parent.slug) }] : []),
     { name: label, path },
   ];
+  const toolbar = (
+    <ListingToolbar
+      section={section}
+      topics={vocabulary.topics}
+      active={route.topic}
+      allHref={sectionHubHref(section)}
+      sort={news ? null : { current: sort, hrefs: { curated: view("curated"), latest: view("latest") } }}
+      labels={toolbarLabels}
+    />
+  );
 
   return (
     <>
@@ -157,20 +219,46 @@ export async function renderTopicHub(
           itemList(locale, list.articles.map((article) => ({ name: article.title, path: guideHref(article.kind, article.slug) }))),
         ]}
       />
-      <main className="mx-auto max-w-5xl px-5 py-10 md:px-8">
+      <main className="mx-auto max-w-5xl px-5 py-6 sm:py-10 md:px-8">
         <nav aria-label={t("guides.breadcrumb")} className="text-[length:var(--text-meta)] text-[var(--muted)]">
-          <ol className="flex flex-wrap items-center gap-1">
+          <ol className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5">
             {trail.slice(0, -1).map((crumb) => (
-              <li key={crumb.path} className="flex items-center gap-1">
-                <Link className="inline-flex min-h-11 items-center underline underline-offset-4" href={crumb.path}>{crumb.name}</Link>
+              <li key={crumb.path} className="flex items-center gap-1.5">
+                <Link className="inline-flex min-h-11 items-center underline decoration-[var(--line)] underline-offset-4 transition-colors hover:text-[var(--teal)] hover:decoration-[var(--teal)]" href={crumb.path}>{crumb.name}</Link>
                 <span aria-hidden>›</span>
               </li>
             ))}
-            <li aria-current="page" className="inline-flex min-h-11 items-center">{label}</li>
+            <li aria-current="page" className="line-clamp-1 py-1.5 font-medium text-[var(--ink)] sm:line-clamp-none">{label}</li>
           </ol>
         </nav>
-        <h1 className="text-4xl font-bold tracking-tight">{label}</h1>
-        <p className="mt-4 max-w-2xl text-lg leading-8 text-[var(--muted)]">{lead}</p>
+        <header className={channelFront
+          ? "mt-2 grid gap-4 border-y border-[var(--line)] py-4 sm:py-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-8 md:[&>aside]:w-64"
+          : "portal-hero-shell mt-2 rounded-3xl p-5 sm:p-7 md:p-8"}>
+          <div className="min-w-0">
+            <h1 className="text-2xl font-extrabold leading-[1.26] tracking-tight sm:text-3xl md:text-4xl">{label}</h1>
+            <p className="mt-2.5 max-w-2xl text-sm leading-6 text-[var(--muted)] sm:mt-3 sm:text-base sm:leading-7 md:text-lg md:leading-8">{lead}</p>
+            {news ? (
+              <div className="mt-3 flex flex-wrap items-center gap-2">
+                {otherChannel ? (
+                  <Link href={guideTopicHref("life", otherChannel.slug)}
+                    className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] px-3.5 text-sm font-semibold text-[var(--ink)] hover:border-[var(--teal)] hover:text-[var(--teal-dark)]">
+                    {otherChannel.label}
+                  </Link>
+                ) : null}
+                <a
+                  href={`/${locale}${path}/feed.xml`}
+                  className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--surface)] px-3.5 text-sm font-semibold text-[var(--ink)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
+                >
+                  <Rss size={15} aria-hidden />
+                  {t("guides.rssSubscribe")}
+                </a>
+              </div>
+            ) : null}
+          </div>
+          {channelFront && guidePicks ? (
+            <ChannelGuide articles={guidePicks.articles} news={list.articles} label={t("guides.illustratedGuide")} />
+          ) : null}
+        </header>
 
         {!vocabulary.available ? (
           <p className="mt-6 leading-7 text-[var(--muted)]">{t("guides.topicUnavailable")}</p>
@@ -183,20 +271,21 @@ export async function renderTopicHub(
 
         {top}
 
-        <ListingToolbar
-          section={section}
-          topics={vocabulary.topics}
-          active={route.topic}
-          allHref={sectionHubHref(section)}
-          sort={news ? null : { current: sort, hrefs: { curated: view("curated"), latest: view("latest") } }}
-          labels={toolbarLabels}
-        />
+        {news && topic && list.articles.length > 0 ? (
+          <details className="group mt-4">
+            <summary className="inline-flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 text-sm font-semibold text-[var(--ink)] hover:border-[var(--teal)] hover:text-[var(--teal-dark)] [&::-webkit-details-marker]:hidden">
+              {t("guides.browseTopics")}
+              <ChevronDown size={16} aria-hidden className="text-[var(--muted)] group-open:rotate-180" />
+            </summary>
+            {toolbar}
+          </details>
+        ) : toolbar}
 
         {list.articles.length ? (
           news ? (
-            <NewsList articles={list.articles} className="mt-6" />
+            <NewsList articles={list.articles} className="mt-6" channelFront={channelFront} showDescription />
           ) : (
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+            <ul className="mt-6 grid gap-4 sm:grid-cols-2">
               {list.articles.map((article) => (
                 <GuideCard key={`${article.kind}:${article.slug}`} article={article} labels={cardLabels} />
               ))}
@@ -212,7 +301,7 @@ export async function renderTopicHub(
 
         {list.next_cursor ? (
           <p className="mt-8">
-            <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={`${next}${encodeURIComponent(list.next_cursor)}`}>
+            <Link className="inline-flex min-h-11 items-center rounded-full border border-[var(--teal)] bg-[var(--surface)] px-5 text-sm font-semibold text-[var(--teal)] shadow-[var(--shadow-sm)] transition-colors hover:bg-[var(--teal-soft)]" href={`${next}${encodeURIComponent(list.next_cursor)}`}>
               {t("guides.more")}
             </Link>
           </p>

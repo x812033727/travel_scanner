@@ -7,8 +7,8 @@
 // one series is never overwritten by another's.
 import { CURIO_MUSIC } from "../core/curio.mjs";
 import { explainerCardTemplates } from "../core/drama.mjs";
-import { OPENING_CHAPTER_SECONDS } from "../core/lint.mjs";
-import { CONDENSATION_RULE, NARRATIVE_RULES, STORY_OPENING_RULE, TOLD_TO_ONE_VIEWER } from "./register.mjs";
+import { STORY_OPENING_CHAPTER_SECONDS } from "../core/lint.mjs";
+import { STORY_OPENING_RULE, TEN_STEP_NARRATIVE_RULES, STORY_SERIES_SCREEN_RULE, TOLD_TO_ONE_VIEWER } from "./register.mjs";
 
 /**
  * The prompt variants of an explainer, by style preset: the one-off's bible ("planner:<bible>"),
@@ -60,26 +60,34 @@ curious viewer would ask, answered`,
   likeness of a real person, living or dead, no logos, no product likenesses and no brand-like
   packaging in a picture; invented people and plain unbranded objects stand in. Nothing a
   synthetic-media disclosure would not cover.`,
-  shape: `- Structure (docs/videos/so-thats-why/README.md §一集長什麼樣), in this order. The lengths
-  are for the 10-minute target; with another "target_minutes" the condensation and the close keep
-  theirs and the three middle parts scale in the same proportion. The parts together reach
-  the target and never fall under 8 minutes.
-  1. The condensation, ${OPENING_CHAPTER_SECONDS[0]} to ${OPENING_CHAPTER_SECONDS[1]} seconds: the question put the counter-intuitive way
-     over the most striking picture, then three or four of the reasons' most surprising facts,
-     each over the picture of the chapter that pays it off and left without its why, then the
-     promise that the viewer will know why. No greeting. The channel intro plays after it.
-  2. The story goes on from where the condensation stopped, about 2 minutes: what people assumed,
-     and what was found instead.
-  3. Three or four chapters, 6 to 7 minutes together, one reason of the brief's 原因 each, in the
-     brief's order; a timeline, a number or a contrast goes on a card where it must be read.
-  4. The answer, about a minute: the brief's one-sentence answer said plainly, on a "big" card.
-  5. The close, about 20 seconds: the answer, one question for the comments and an invitation to
-     subscribe. It never says what the next episode is about.
+  shape: `- Structure (owner, 2026-11-19: 黑猫研究院's ten steps of the series shape rule below, in place of
+  the condensation), in this order. The lengths are for the 10-minute target; with another
+  "target_minutes" the first chapter and the close keep theirs and the parts between scale in
+  the same proportion. The parts together reach the target and never fall under 8 minutes.
+  For a "why" question the ten steps of the shape rule below read this way: the era and the
+  origin are where the thing began; its protagonist is the thing itself or the people who made it;
+  the escalating stages are the brief's reasons; the biggest turn is the most surprising reason.
+  1. The first chapter, ${STORY_OPENING_CHAPTER_SECONDS[0]} to ${STORY_OPENING_CHAPTER_SECONDS[1]} seconds, aimed at about a minute: the hook and the promise (steps 1 and 2). ONE
+     question put the counter-intuitive way over the most striking picture, never a menu of
+     questions (at most one follow-up); its contrast (what everybody assumes against what is
+     true, with a number); at most one or two later moments named and cut off before their
+     results; then 「今天我們就來聊聊…」 with the question. No greeting and no intro: the first
+     line plays at 0:00.
+  2. Where it began, about 1.5 minutes (step 3): when and where the thing came about, the
+     problem people had then and who set out to solve it.
+  3. The reasons told as a story, 6 to 7 minutes (steps 4 to 7): the first attempt and why it
+     fell short, then the brief's 3 or 4 reasons, one chapter each in the brief's order, each a
+     problem, what was done about it and what came of it (a number), with a small turn every 40
+     to 70 seconds; the biggest surprise comes last and pays off the hook by name (「還記得…嗎？」).
+  4. The answer and 「故事還沒結束」, about 1.5 minutes (steps 8 and 9): the brief's one-sentence
+     answer said plainly, what changed since, then back to the hook's picture or number.
+  5. The close, about 20 seconds (step 10): one question about the viewer's own life for the
+     comments and an invitation to subscribe. It never says what the next episode is about.
   "chapter" (the scene field) sits on the first scene of each part, and of each chapter inside
   part 3 (so part 3 carries three or four of them, not one). Each stretch a marker opens is at
   least 10 s and is named by what happens in it, as a viewer would search for it, never 背景,
-  結論 or any other word for a section's job. The series' intro and
-  outro clips are added by the tool: do not write them; the "outro" card is yours.`,
+  結論 or any other word for a section's job. There is no intro (owner, 2026-11-19) and the
+  series' outro clip is added by the tool: do not write either; the "outro" card is yours.`,
   thumbnailGuide: `"thumbnail": {template: "thumb", data: {headline: the question
   shortened, at most 2 lines of ≤ 10 characters (\\n between them, **one word** stressed), tag: the
   pillar's name (商業, 科學, 旅遊 or 科技), pillar: business|science|travel|tech (the one
@@ -89,7 +97,15 @@ curious viewer would ask, answered`,
   surprising fact or number instead of the question}, C {headline: ≤ 6 characters in one line
   contrasting two things ("圓窗 vs 方窗"), sub: ≤ 12 characters, shot: another shot showing
   both}}.`,
-  titleGuide: `youtube.title is the question followed by 「｜原來如此事務所」`,
+  titleGuide: `youtube.title is the question followed by 「｜原來如此事務所」, written the way 黑猫研究院
+  writes its most watched titles (owner, 2026-11-19): the thing everybody knows in the first six
+  characters (QR Code, 冰箱門, 羽絨衣), one surprise or stake word (竟然、還能、反而、根本、憑什麼、從來),
+  a number only where it is useful and sourced, one question mark (none only where the title
+  sets a contrast, 「不是…而是…」「…卻…」); at most 38 characters before
+  the suffix, with the surprise inside the first 18 (a phone cuts there) (「QR Code 沾到咖啡，
+  竟然還能嗶？」「冰箱門一關，燈竟然真的會熄？」); the thumbnail headline says what the title does not; never a
+  calm reading question or a summary (「QR Code 的原理是什麼」「冰箱的故事」); lint warns
+  (narrative.mjs titleProblems)`,
   descriptionGuide: `description is the body only`,
   music: "light, curious, no vocals",
   shortOne: "Short 1 is the hook and the answer in brief",
@@ -101,12 +117,20 @@ type it, and what most people wrongly assume.
 ## 原因 3 or 4 reasons, each one sentence with the source page that supports it.
 ## 大綱 ONE outline: the spine in one sentence (「主線：…」: who or what, from which moment,
 to which answer); 3 to 5 turns in the order they happened (「轉折：…」, each with the chapter
-that reveals it); the opening hook as the first spoken line; the ONE scene the condensation
-tells, in order, up to the first fact that makes no sense, then the three or four later moments
-it teases, each cut off before its result (「開場濃縮：…」, no later chapter's result given
-away); the open loops it plants (「鉤子：<what is held back> → 第 N 章回收」, at least three,
-the condensation's teasers among them); the chapters (one reason each, in
-the order of 原因) with estimated seconds (each ≥ 10 s; 250 spoken characters a minute; the whole
+that reveals it); where the sources carry them, also 「舊世界：…」 (what was unbearable before the
+protagonist came, told first in the era chapter), 「對手的理由：…」 (the sound reason that bound
+the rival or the old way), 「二次反轉：…」 (what the half-informed believe, overturned
+mid-episode), 「彩蛋：…」 (the second-biggest surprise, kept for 「故事還沒結束」 at about three
+quarters), 「概念詞：…」 (our own four-to-six-character name for the mechanism), on a technical
+topic 「比喻：…」 (the one everyday metaphor) and 「現在：…」 (the form the viewer uses today, for
+the epilogue), and 「岔題：第 N 章」「清單：第 N 章」 where the one aside or the one counted list
+goes, each line left out rather than invented; the hook as the first spoken line, ONE question or situation the viewer knows
+and never a menu of questions; its contrast, what everybody assumes against what is true, with at
+most one or two later moments named and cut off before their results (「鉤子：…」); the promise
+sentence 「今天我們就來聊聊…」 with the question (「承諾句：…」); the open loops (「鉤子：<what is
+held back> → 第 N 章回收」, at least three, the hook's contrast and the promise's question among
+them); the chapters of the ten steps (where it began, then the reasons, one chapter each in
+the order of 原因, then the answer and what changed since, then the close) with estimated seconds (each ≥ 10 s; 250 spoken characters a minute; the whole
 aimed at "series.target_minutes", never under 8 minutes; over it is fine); each chapter's key
 pictures as "picture: one person doing one thing, and where / camera"; where a number, a timeline
 or a contrast card sits; and the closing (the answer, the comment question and the subscribe
@@ -127,6 +151,19 @@ likeness or anything written on; a character, a clip or a card template this for
 have; and a card number that disagrees with the narration. An invented cartoon person in a
 prompt is not a fault: the series draws them.`,
   refusals: "a cast, dialogue, a mascot, a real person or a logo drawn",
+  // The owner (2026-11-19) moved new episodes to 黑猫研究院's ten steps, as 奇聞檔案局 tells them:
+  // a one-question hook and the promise in place of the condensation, no intro, told to one viewer.
+  storyRules: `Hooks (owner, 2026-11-19: the same cadence as 黑猫研究院's ten steps; these replace the
+60-to-90-second cadence and the three-loops-for-ten-minutes minimum of the hook rules above;
+every other hook rule stands):
+- About every 30 to 45 seconds of the body (about 130 to 200 spoken characters) at least one
+  question is left hanging: a wrong guess not yet overturned, a number not yet explained, a
+  "但這還不是最怪的", holding back the why, or a turn. No stretch of the body runs longer than 45
+  seconds without one; lint warns past it. "loops" lists at least 8 for ten minutes.
+- Every chapter but the close ends on one concrete, unanswered question, and the next chapter's
+  first sentence picks it up, so the viewer is never dropped between two parts.
+${STORY_OPENING_RULE}
+${TOLD_TO_ONE_VIEWER}`,
 };
 
 const MYSTERY = {
@@ -134,6 +171,10 @@ const MYSTERY = {
   series: "奇聞檔案局",
   docs: "docs/videos/history-curiosity/",
   thumbnail: "channel",
+  // No card and no word on screen (owner, 2026-11-05): the shared texts below read it.
+  noWords: true,
+  screen: "with no card and no word on screen (numbers are said and drawn)",
+  noText: "- No text, letters or numbers inside an illustration and no card: the narration and the captions\n  carry the words, the YouTube description the chapter names, the thumbnail its headline.",
   pillars: [
     { id: "H", name: "歷史懸案", tag: "歷史懸案" },
     { id: "M", name: "奇異現象與科學", tag: "奇異現象" },
@@ -143,9 +184,9 @@ const MYSTERY = {
   ],
   opening: `You work on ONE zh-TW (Traditional Chinese, Taiwan) episode of 奇聞檔案局, the history-and-curiosity
 series on the Mokaair channel (docs/videos/history-curiosity/): ONE file (a historical mystery, a
-strange phenomenon, a prophecy, a UFO or space case, or an urban legend) opened and told in three
-steps, the version that circulates, what the records hold and the explanation that stands best
-today,`,
+strange phenomenon, a prophecy, a UFO or space case, or an urban legend) opened and told as one
+story, in which the version that circulates, what the records hold and the explanation that
+stands best today each have their place,`,
   contentRules: `- The series tells a file, not a verdict. A prophecy, a conspiracy theory or a paranormal claim is
   always told in three steps: what was said at the time (流傳的版本), what evidence is left
   (紀錄裡有什麼), what explains it best today (目前最站得住的解釋). A prophecy is never told as
@@ -164,45 +205,44 @@ today,`,
   lookRules: `- The pictures are a cute cartoon, and simple chibi people doing one concrete thing are wanted;
   a person's expression (surprised, afraid, smug) often carries the picture. The series has no
   mascot and no host: nobody is carried from picture to picture as a named character.
-- A real person who died more than 70 years ago may be drawn as a cartoon figure, described by
-  era, role and clothing and never by name ("a bearded sixteenth-century scholar in a dark
-  robe"); the narration or a card names them. A living person, or one who died within the last
-  70 years, is never drawn as that person: when the story needs them in the picture they are
-  an invented generic figure seen from behind or small in the distance, described by a common
-  role and plain clothing only ("a man in a cardigan", "two elderly men in flat caps"), never
-  by name, never by a feature, hairstyle, build, uniform or office that would identify them;
-  or they are left out. When "sources" do not give the year of death, treat the person as
-  recent. No logos and no product likenesses. Nothing a synthetic-media disclosure would not
+- A real person who died more than 70 years ago (before 1956) may be drawn as a cartoon
+  figure, described by era, role and clothing and never by name ("a bearded sixteenth-century
+  scholar in a dark robe"); the narration names them. A living person, or one who died within
+  the last 70 years (in 1956 or later), is never drawn as that person, not even as a figure
+  standing for them: when the story reaches them, the picture is an object of the story, or a
+  plainly ordinary anonymous person doing the thing a viewer would do (a shopper, a clerk, a
+  passer-by) who is not them, described by a common role and plain clothing only, never by
+  name, never by a feature, hairstyle, build, uniform or office that would identify them. When
+  "sources" do not give the year of death, treat the person as recent. No logos and no product likenesses. Nothing a synthetic-media disclosure would not
   cover.`,
-  shape: `- Structure (docs/videos/history-curiosity/README.md §一集長什麼樣), in this order. The lengths
-  are for the 10-minute target; with another "target_minutes" the condensation and the close keep
-  theirs and the three middle parts scale in the same proportion. The parts together reach
-  the target and never fall under 8 minutes.
-  1. The condensation, ${OPENING_CHAPTER_SECONDS[0]} to ${OPENING_CHAPTER_SECONDS[1]} seconds, as the series opening rule
-     below says: the stakes told to the viewer with their number, then ONE scene of the file told
-     in order up to the first fact that makes no sense, at most two later moments cut off before
-     what explains them (each over the picture of the chapter that pays it off), one promise
-     sentence naming the file and its scale, then the question the episode answers. No greeting.
-     The channel intro plays after it.
-  2. The story goes on from where the condensation stopped, about 1.5 minutes: the version people
-     have heard, told as a story and named as the version that circulates.
-  3. The records, 6 to 7 minutes: one chapter for each 「紀錄：」 line of the brief's 原因 (two to
-     four), in the brief's order, each told as what happened next in the same story: the report
-     made at the time, later research, what the people involved said. Dates, places and counts
-     go on cards.
-  4. What stands best today, about 1.5 minutes: the records gathered into one sentence on a
-     "big" card; where nothing is settled, 「目前主流解釋是…，還沒解釋的是…」.
-  5. The close, about 20 seconds: the file is closed as 「存檔」 (settled) or 「未結」 (open), as
-     the brief's closing says, on a "big" or the "outro" card, then one question for the comments
-     and an invitation to subscribe. It never says what the next file or the next episode is
-     about (owner, 2026-10-13).
-  "chapter" (the scene field) sits on the first scene of each part, and of each chapter inside
-  part 3 (so part 3 carries one for each 「紀錄：」 line, not one for the whole part). Each
-  stretch a marker opens is at least 10 s and is named by what happens in it, as a viewer would
-  search for it (「1994 年空軍怎麼解釋」「DNA 比對的結果」), never 流傳的版本, 背景, 結論 or
-     any other word for a section's job. Every chapter has one medium
-  shot whose point is a person's expression. The channel's intro and outro clips are added by
-  the tool: do not write them; the "outro" card is yours.`,
+  shape: `- Structure (owner, 2026-11-05: the ten steps of the series shape rule below, which replace the
+  file told in three sections), in this order. The lengths are for the 10-minute target; with
+  another "target_minutes" the first chapter and the close keep theirs and the parts between
+  scale in the same proportion. The parts together reach the target and
+  never fall under 8 minutes.
+  1. The first chapter, ${STORY_OPENING_CHAPTER_SECONDS[0]} to ${STORY_OPENING_CHAPTER_SECONDS[1]} seconds: the hook and the promise (steps 1 and 2).
+     No greeting and no intro: the first line plays at 0:00.
+  2. The era and the origin, about 1.5 minutes (step 3): the year, the place and how things
+     stood, then the people the file is about.
+  3. The story of the file, 6 to 7 minutes (steps 4 to 7): its first rise and fall, two to four
+     escalating stages and its biggest turn, told in the order it happened. The version that
+     circulates, each record the sources hold (the report made at the time, later research,
+     what the people involved said) and the explanation that stands best today are told where
+     they fall in that story, each named for what it is: the brief's lines of 原因 are what the
+     story must carry, not its chapters.
+  4. 「故事還沒結束」 and the theme, about 1.5 minutes (steps 8 and 9): what came after, then back
+     to the hook's image or number. The file is closed as 「存檔」 (settled) or 「未結」 (open), as
+     the brief's closing says; where nothing is settled, 「目前主流解釋是…，還沒解釋的是…」.
+  5. The close, about 20 seconds (step 10): one question for the comments and an invitation to
+     subscribe, over a picture. It never says what the next file or the next episode is about
+     (owner, 2026-10-13).
+  "chapter" (the scene field) sits on the first scene of each part, and on the first scene of
+  each turn inside part 3 (so part 3 carries two to four of them, not one). Each stretch a
+  marker opens is at least 10 s and is named by what happens in it, as a viewer would search
+  for it (「1994 年空軍怎麼解釋」「DNA 比對的結果」), never 流傳的版本, 背景, 結論 or any other word
+  for a section's job; the chapter names reach the viewer only in the YouTube description. Every
+  chapter has one medium shot whose point is a person's expression. There is no intro (owner,
+  2026-11-19) and the channel's outro clip is added by the tool: do not write either.`,
   thumbnailGuide: `"thumbnail": {template: "thumb", data: {headline: at most 6
   characters in all, on one line or on two lines of at most 3 with \\n where a word ends (a
   Chinese character counts one; a number or a Latin word counts one, and at most two of those;
@@ -216,7 +256,8 @@ today,`,
   history channels with hundreds of thousands of views write theirs (2026-10-25): the name
   everybody knows in the first six characters (the ship, the place, the person, the event), one
   stake word that says what was at risk or what nobody expects (消失、不敢、騙過、差點、全部、
-  真相、憑什麼), a number or a year, a question mark; at most 30 characters before the suffix
+  真相、憑什麼), a number or a year where it helps, a question mark (none only where the title
+  sets a contrast, 「不是…而是…」「…卻…」); at most 38 characters before the suffix
   (「十個人全部消失，1872 年這艘船為什麼還在走？」「曹操自己放的火？赤壁真正燒船的人是誰」),
   never a calm reading question (「燈塔的故事改了哪裡」)`,
   descriptionGuide: `description is the body only, ending on 「資料截至 YYYY-MM-DD」 with "today"'s
@@ -241,13 +282,15 @@ every other hook rule stands):
 - A hook stands on a fact of this file: a date, a number, one person's decision, something that
   should not have been there. Never an empty promise (「接下來更精采」「後面還有更驚人的」) and never
   a table of contents. At most one forward hook in the whole episode says so out loud, and
-  「還記得…」 at most five times.
+  「還記得…」 at most twice, not the five above (lint warns past two).
 - "loops" lists at least 8 for ten minutes of narration (about one for every 75 seconds), at
-  least 3 of them planted in the condensation, and every one is paid off.
+  least 2 of them planted in the first chapter (the hook's contrast and the promise's question; one
+  climax label may add a third, never a menu of questions), and every one is paid off.
 - The series has a music bed under the whole narration, as the brand stories do: when
   "drama_settings.music_enabled" is true, "music" is never left out.
 ${STORY_OPENING_RULE}
-${TOLD_TO_ONE_VIEWER}`,
+${TOLD_TO_ONE_VIEWER}
+${STORY_SERIES_SCREEN_RULE}`,
   shortOne: "Short 1 is the hook and how the file closes (存檔 or 未結) in brief",
   bibleOf: "ONE 奇聞檔案局 file",
   premiseIs: `"premise" is the file (an event, a claim or a legend, or a question about one)`,
@@ -269,26 +312,34 @@ with its label and names the source page that supports it:
   open.
 ## 大綱 ONE outline: the spine in one sentence (「主線：…」: who or what, from which moment,
 to which answer); 3 to 5 turns in the order they happened (「轉折：…」, each with the chapter
-that reveals it); the opening hook as the first spoken line (a year or a place and somebody
-doing one concrete thing); the ONE scene the condensation tells, in order, up to the first fact
-that makes no sense, then the three or four later moments it teases, each cut off before its
-result (「開場濃縮：…」, no later chapter's result given away); the open loops it plants
-(「鉤子：<what is held back> → 第 N 章回收」, at least eight for ten minutes, about one for every
-75 seconds of the body, the condensation's teasers among them); then one chapter for each line of
-原因, in the same order, with estimated seconds (each ≥ 10 s; 250 spoken characters a minute; the
+that reveals it); where the sources carry them, also 「舊世界：…」 (what was unbearable before the
+protagonist came, told first in the era chapter), 「對手的理由：…」 (the sound reason that bound
+the rival or the old way), 「二次反轉：…」 (what the half-informed believe, overturned
+mid-episode), 「彩蛋：…」 (the second-biggest surprise, kept for 「故事還沒結束」 at about three
+quarters), 「概念詞：…」 (our own four-to-six-character name for the mechanism), on a technical
+topic 「比喻：…」 (the one everyday metaphor) and 「現在：…」 (the form the viewer uses today, for
+the epilogue), and 「岔題：第 N 章」「清單：第 N 章」 where the one aside or the one counted list
+goes, each line left out rather than invented; the hook as the first spoken line (a question or a situation the viewer knows,
+which tells a newcomer what this is and why it is worth watching); the hook's contrast, how big
+it ended up against how small it started, with at most one or two climaxes named and cut off
+before their results, never the plot (「鉤子：…」); the promise sentence 「今天我們就來聊聊…」 with
+the question (「承諾句：…」); the open loops (「鉤子：<what is held back> → 第 N 章回收」,
+at least eight for ten minutes, about one for every 75 seconds of the body, at least two of them
+planted in the first chapter: the hook's contrast and the promise's question); then the chapters of the ten steps (the era and the origin, the first rise and
+fall, two to four escalating stages, the biggest turn, the comeback, 「故事還沒結束」, the theme,
+the close), telling every line of 原因 where it falls in time, with estimated seconds (each ≥ 10 s; 250 spoken characters a minute; the
 whole aimed at "series.target_minutes", never under 8 minutes; over it is fine); each chapter's
-key pictures as "picture: one person doing one thing, and where / camera"; where a number, a
-timeline or a contrast card sits; and the closing: 「存檔」 when the records settle it, 「未結」
-when they do not, then the comment question and the subscribe invitation; never what the next
-file is about.
+key pictures as "picture: one subject doing one thing, and where / camera" (a number drawn as a
+picture, never a card); and the closing: 「存檔」 when the records settle it, 「未結」 when they do
+not, then the comment question and the subscribe invitation; never what the next file is about.
 ## 素材 the source pages, primary records first (declassified files, investigation and court
 records, journal papers, official releases; an encyclopedia page only as an index), and the
 pictures that must appear.
 ## 不做的事 what this episode leaves out, and which of the series' rules it touches (a person
 not drawn, a claim told only as a claim).`,
   bibleJson: `body_json: {"characters": [] (always empty: the narrator tells it), "acts": [{"number", "title":
-the chapter as a viewer would search for it, "summary": the line of 原因 it tells, "shots": int}]
-(one act for each line of 原因, in order), "outline": {"title": the question, "logline": the
+the chapter as a viewer would search for it, "summary": what happens in it and the lines of 原因
+it carries, "shots": int}] (one act for each chapter of the outline, in order), "outline": {"title": the question, "logline": the
 one-sentence answer, "question": the question, "answer": the one-sentence answer, "reasons":
 [the 4 to 6 lines of 原因 as sentences, labels included, in order; their pages go in "sources"], "hook": the first spoken line, "closing":
 text that starts with 「存檔」 or 「未結」, "pillar": "H"|"M"|"P"|"U"|"L" (歷史懸案, 奇異現象與科學,
@@ -301,7 +352,7 @@ unexplained where the sources leave it open`,
 evidence; a hedge the sources need but the line lacks; a picture prompt that names a real person,
 or depicts a person who is living or died within the last 70 years of "today" (or whose year of
 death "sources" do not give) by name, by face or by any feature that identifies them, a logo, a
-product likeness, gore or anything written on; a thumbnail that carries a "pillar" field (the
+product likeness, gore or anything written on; any card (the series puts no word on screen); a thumbnail that carries a "pillar" field (the
 series wears the channel's thumbnail, which has none); a character, a
 clip or a card template this format does not have; and a card number that disagrees with the
 narration. An invented cartoon person in a prompt is not a fault, and neither is a cartoon of a
@@ -320,8 +371,8 @@ const common = (p) => `
 ${p.opening} with a 10-minute production target (or the explicit "target_minutes"; actual narration
 body and finished cut must each be at least 8 minutes, excluding intro/outro from the body) by a
 single narrator in synthesized Taiwanese Mandarin over cute cartoon illustrations drawn by an
-image model, a new picture about every 4 to 7 seconds, with cards for numbers and contrasts between
-them and switchable captions (CC) in four languages; nothing is burned into the picture. There is
+image model, a new picture about every 4 to 7 seconds, ${p.screen ?? `with cards for numbers and contrasts between
+them`} and switchable captions (CC) in four languages; nothing is burned into the picture. There is
 NO cast and no dialogue: a picture may show people, but nobody speaks and nobody is a character;
 the narrator tells it.
 Expand explanations, concrete comparisons and verified examples toward the target. Running over
@@ -337,7 +388,7 @@ below.
 Rules that never bend:
 ${p.contentRules}
 ${p.lookRules}
-- No text, letters or numbers inside an illustration: the cards and the captions carry words.
+${p.noText ?? "- No text, letters or numbers inside an illustration: the cards and the captions carry words."}
 - The owner's opinion (站主觀點) appears only where the payload gives one, marked as the owner's;
   never invent an experience of the owner.
 - Verification never enters the narration; nobody's personal data anywhere.
@@ -428,13 +479,12 @@ not the text, its characters or its clips):
 - "format": "drama"; "look": {"preset": "${p.preset}"} and nothing else (no style and no negative:
   the series' look is fixed, and the tool puts it back); "characters": [] (always empty); every
   line has "speaker": "narrator" or none.
-${PICTURE_RULES}
-${cardRules(cards)}
+${p.noWords ? NO_WORDS_PICTURE_RULES : PICTURE_RULES}
+${p.noWords ? NO_CARDS : cardRules(cards)}
 ${p.shape}
-- ${CONDENSATION_RULE}
-${NARRATIVE_RULES}${p.storyRules ? `
+${TEN_STEP_NARRATIVE_RULES}${p.storyRules ? `
 ${p.storyRules}` : ""}
-${LINE_RULES}
+${p.noWords ? NO_WORDS_LINE_RULES : LINE_RULES}
 - "music": {prompt (English: ${p.music})} when "drama_settings.music_enabled";
   "subtitles": {"burn_in": false}; ${p.thumbnailGuide}
 - ${p.titleGuide}, ≤ 100 characters and best within 36 full-width
@@ -464,6 +514,55 @@ characters (the look and the image model take the rest of the model's limit): a 
 beats a fuller one. Change only the named targets (a shot too long may be split into two with
 fresh ids from "line_ids"); keep every other scene, line and id exactly as it is; return the
 whole corrected video.json.`;
+
+// A series whose profile says "noWords" (奇聞檔案局; owner, 2026-11-05; register.mjs
+// STORY_SERIES_SCREEN_RULE) shows no card and no word on screen: its writer is offered no card,
+// and its pictures, names and fixes follow the series rule. Lint still accepts the cards
+// (explainerCardTemplates) for the episodes made before.
+const NO_CARDS = `- No cards: every scene is a "shot". Lint still accepts the card templates for the episodes made
+  before 2026-11-05; a new episode writes none, the close included (its last scenes are shots).`;
+
+/** A no-words series' pictures: PICTURE_RULES as the series rule of 2026-11-05 reads it for MiniMax image-01. */
+const NO_WORDS_PICTURE_RULES = `
+- A shot is a scene with "template": "shot" and data {prompt, camera, visual: "still" (always),
+  transition? (cut|dissolve)}. No motion, end_frame, start_frame or characters.
+- "prompt" is English, 100 to 200 characters, and at most "prompt_budget_chars" when the payload
+  or a fix target gives one (the look and the image model take the rest of the model's limit; a
+  shorter prompt beats a fuller one). The image model draws from these words alone: it is shown
+  no reference picture, it has no list of things to avoid, and it holds one subject doing one
+  thing. Write ONE picture, in this order: the shot size (wide, medium, close-up, overhead), a
+  bright daytime place, ONE person doing ONE concrete thing, one or two props.
+  - Faces go in medium shots; a close-up is for hands and objects, never a face in extreme
+    close-up.
+  - Never a still life or an empty scene on its own: the model draws a face onto an object left
+    alone (a tent, a hull, a pillow). Give the object one person (hands holding it, someone
+    beside it).
+  - Never two people doing something to each other in detail: a second person is "small in the
+    background" at most, and three people arguing are three pictures.
+  - Daytime and bright: a night or lamp-lit scene comes back as a 3D render.
+  - The words no, not, without, text and blank are never written: the model draws what they
+    negate. A prop that grows lettering (a calendar, a report, a sign, a button, a price tag, a
+    newspaper, a laptop's logo) becomes a picture that needs none (a jar, a pie, a queue, a pile
+    of folders); a screen says what it shows ("a phone showing a simple map with a blue route
+    line and a red pin").
+  - No style words and no colour names, nothing the look already says (cartoon, chibi, outlines,
+    flat colours, the palette, 16:9): the look adds them to every picture, and a prompt that
+    repeats them pins every picture to one finish (lint warns).
+  - Keep the subject in the middle third of the frame: a Short crops the picture to 9:16.
+- "camera" is one of push in, pull out, pan left, pan right, tilt up, tilt down, drift, chosen
+  for the picture (push in on the object, pull out to reveal the place, pan along a row, tilt up
+  a tall thing, drift on a quiet moment); never the move of the shot before, and lint refuses
+  three in a row.
+- A shot carries one spoken sentence, two only when both are short: about 4 to 7 seconds (a line
+  of 24 characters takes about 7; lint refuses more than 12, warns over 10). One idea per
+  picture; a long explanation is more pictures.
+  Alternate wide (the place), medium (a person doing something) and close-up (hands, an
+  object); give each chapter its own place and props.
+`.trim();
+
+const NO_WORDS_LINE_RULES = LINE_RULES.replace("A foreign name is said in its usual Chinese form; every\n  Latin-letter word is in \"lexicon\" or lexicon_additions.", "A Latin-letter name is said as written, never in a Chinese\n  transliteration, unless Taiwan uses a formal Chinese name for it (三星, 華為, 維基百科); every\n  Latin-letter word is in \"lexicon\" or lexicon_additions (null for one read as written).");
+const NO_WORDS_FIXING = FIXING.replace("writing seen in a\npicture means the prompt described something written on, so make it plain or blank;", "writing seen in a\npicture means the prompt named a prop that grows lettering, so draw a thing that needs none;");
+if (NO_WORDS_LINE_RULES === LINE_RULES || NO_WORDS_FIXING === FIXING) throw new Error("explainer-series.mjs: the no-words rules no longer find the sentences they replace");
 
 /** The bible's two forms, as the bible's planner writes them and as its discussion keeps them. */
 const bibleShape = (p) => `body_md sections, in this order:
@@ -520,7 +619,7 @@ Return {"video": <video.json object>, "claims": "claims.md", "lexicon_additions"
   own words and the model's limit take the rest). It never raises the 400 of the picture rules
   below; a target in "fix.targets" may carry a smaller one of its own for that shot.
 ${SHORTS(p)}
-${FIXING}
+${p.noWords ? NO_WORDS_FIXING : FIXING}
 
 ${guide}`,
 

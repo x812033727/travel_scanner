@@ -20,6 +20,7 @@ import {
   speechHash,
   spokenUnits,
   TAIL_MS,
+  pausesOf,
   pictureHash,
   picturesBound,
   visualHash,
@@ -259,4 +260,70 @@ test("picturesBound keeps keyframes drawn under either card look, before and aft
   assert.equal(picturesBound(pictureHash(paper), changed), false);
   assert.equal(picturesBound(undefined, paper), false);
   assert.equal(picturesBound("", paper), false);
+});
+
+test("a video may tighten the pauses between lines and scenes, never lengthen them", async () => {
+  const { PAUSE_LIMITS, validateVideo } = await import("./schema.mjs");
+  assert.deepEqual(PAUSE_LIMITS, { line_ms: DEFAULT_PAUSE_MS, scene_ms: SCENE_GAP_MS });
+  const doc = fixture();
+  const samples = estimatedSamples(doc);
+  const loose = buildTimeline(doc, samples);
+  const tight = { ...structuredClone(doc), pauses: { line_ms: 0, scene_ms: 100 } };
+  assert.deepEqual(validateVideo(tight), []);
+  const built = buildTimeline(tight, samples);
+  assert.ok(built.total_frames < loose.total_frames, "tighter pauses make a shorter timeline");
+  assert.deepEqual(pausesOf(tight), { line: 0, scene: 100 });
+  assert.deepEqual(pausesOf(doc), { line: DEFAULT_PAUSE_MS, scene: SCENE_GAP_MS });
+  assert.notEqual(speechHash(tight), speechHash(doc), "the narration's timing changed");
+  assert.equal(speechHash({ ...structuredClone(doc) }), speechHash(doc), "a video without pauses hashes as before");
+  for (const pauses of [{ line_ms: 301 }, { scene_ms: 701 }, { scene_ms: -1 }, { line_ms: 1.5 }, {}, { gap: 1 }]) {
+    assert.ok(validateVideo({ ...structuredClone(doc), pauses }).some((error) => error.path.startsWith("pauses")), JSON.stringify(pauses));
+  }
+});
+
+// The split thumbnail layout (2026-11-08) is drawn on thumbnail.jpg alone: choosing it, or its
+// focus, after the storyboard is approved leaves the pictures' hash where it was; any other layout
+// still moves it, so no video already shot changes hash.
+test("visualHash leaves out the split thumbnail layout and its focus, and nothing else", async () => {
+  const { visualHash } = await import("./timeline.mjs");
+  const base = { schema_version: 1, slug: "curio-x", thumbnail: { template: "thumb", data: { headline: "a\n**b**", sub: "c", shot: "s1" } }, scenes: [{ id: "s1", template: "shot", data: { prompt: "p" }, lines: [{ id: "t001", text: "x" }] }] };
+  const withData = (extra) => ({ ...base, thumbnail: { ...base.thumbnail, data: { ...base.thumbnail.data, ...extra } } });
+  const plain = visualHash(base);
+  assert.equal(visualHash(withData({ layout: "e" })), plain);
+  assert.equal(visualHash(withData({ layout: "e", focus: 80 })), plain);
+  assert.equal(visualHash(withData({ focus: 30 })), plain);
+  assert.equal(visualHash(withData({ brand: "Crocs" })), plain, "the brand rule stands");
+  assert.notEqual(visualHash(withData({ layout: "d" })), plain, "another layout still moves the hash");
+  assert.notEqual(visualHash(withData({ layout: "ai" })), plain);
+  assert.notEqual(visualHash(withData({ headline: "x" })), plain, "the words on the thumbnail still count");
+});
+
+test("thumbnail.replaces moves visualHash for render while keeping unchanged pictures and cuts bound", async () => {
+  const { cutVisualBound, pictureHash, picturesBound, visualHash } = await import("./timeline.mjs");
+  const { validateVideo } = await import("./schema.mjs");
+  const oldThumb = { template: "thumb", data: { tag: "冷知識", headline: "舊標題", sub: "舊副標", shot: "s1", subject: "right" } };
+  const before = { ...fixture(), thumbnail: oldThumb };
+  const recordedVisual = visualHash(before);
+  const recordedPictures = pictureHash(before);
+  const upgraded = {
+    ...fixture(),
+    thumbnail: {
+      template: "thumb",
+      data: { layout: "heimao", headline: "新滿版標題", sub: "新副標", asset: "docs/videos/demo/thumbnail-bg.jpg" },
+      replaces: oldThumb,
+    },
+  };
+  assert.deepEqual(validateVideo(upgraded), []);
+  assert.notEqual(visualHash(upgraded), recordedVisual, "frames/manifest.json must still go stale so render redraws thumbnails");
+  assert.equal(visualHash(upgraded), visualHash({ ...upgraded, thumbnail: { template: upgraded.thumbnail.template, data: upgraded.thumbnail.data } }), "replaces itself is not part of the active visual hash");
+  assert.equal(picturesBound(recordedPictures, upgraded), true, "unchanged keyframes and clips stay bound");
+  assert.equal(cutVisualBound(recordedVisual, upgraded), true, "unchanged assembled cut stays bound");
+
+  const mutatedScene = structuredClone(upgraded);
+  mutatedScene.scenes[1].data.items[0] = "改動場景";
+  assert.equal(picturesBound(recordedPictures, mutatedScene), false, "any scene edit invalidates keyframes and clips");
+  assert.equal(cutVisualBound(recordedVisual, mutatedScene), false, "any scene edit invalidates the cut");
+
+  const mutatedTheme = { ...upgraded, theme: "paper" };
+  assert.equal(cutVisualBound(recordedVisual, mutatedTheme), false, "a card theme change invalidates the cut");
 });

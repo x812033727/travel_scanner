@@ -1,0 +1,1044 @@
+{
+  "batch": "batches/wave42-20261112.json",
+  "reviewed_on": "2026-11-12",
+  "method": "八位沒有參與研究的覆核代理（R421–R428 依序覆核 I1–I8）逐題至少重開一個關鍵來源、讀研究代理的工具紀錄逐筆核對網址來源、grep 批次檔去重、對照系列不收清單與 8 分鐘門檻；修改直接寫進批次的題目欄位，覆核新讀的來源編入該研究代理的來源序號。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 38,
+    "NEEDS_CHECK": 4
+  },
+  "source_renames": {
+    "R421-S001": "I1-S028",
+    "R421-S002": "I1-S029",
+    "R421-S003": "I1-S030",
+    "R422-S001": "I2-S020",
+    "R422-S002": "I2-S021",
+    "R422-S003": "I2-S022",
+    "R422-S004": "I2-S023",
+    "R423-S001": "I3-S035",
+    "R423-S002": "I3-S036",
+    "R423-S003": "I3-S037",
+    "R423-S004": "I3-S038",
+    "R424-S001": "I4-S027",
+    "R424-S002": "I4-S028",
+    "R424-S003": "I4-S029",
+    "R424-S004": "I4-S030",
+    "R424-S005": "I4-S031",
+    "R425-S001": "I5-S027",
+    "R426-S001": "I6-S024",
+    "R426-S002": "I6-S025",
+    "R426-S003": "I6-S026",
+    "R426-S004": "I6-S027",
+    "R426-S005": "I6-S028",
+    "R426-S006": "I6-S029",
+    "R427-S001": "I7-S028",
+    "R427-S002": "I7-S029",
+    "R428-S001": "I8-S031",
+    "R428-S002": "I8-S032",
+    "R428-S003": "I8-S033",
+    "R428-S004": "I8-S034",
+    "R428-S005": "I8-S035"
+  },
+  "verdicts": [
+    {
+      "id": "N4481",
+      "agent": "I1",
+      "reviewer": "R421",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I1-S001 https://archive.org/details/s2id13301860（Archaeologia III pp.278–284）；I1-S002 https://archive.org/details/s2id13276630（Archaeologia V pp.81–84）；I1-S003 https://west-penwith.org.uk/paul3.htm（自己的搜尋結果）",
+      "reopen_result": "頁面上確實寫了：1773 年 3 月 31 日信開頭『what I conceive to be the last spark of the Cornish tongue』；1768 年 Mousehole：『I desired to be introduced as a person who had laid a wager that there was no one who could converse in Cornish』，她『in an angry tone of voice for two or three minutes』；兩位婦人『could not speak it readily; but that they understood it, being only ten or twelve years younger』；轉來的信『being in her eighty-seventh year』『She is positive, however, that there is neither in Mousehole, or in any other part of the county, any person who knows any thing of it, or at least can converse in it』『fortune-telling, and gabbling of Cornish』；結尾『are not now above 77 or 78 years of age…so that the whole does not depend upon the life of this Cornish Sibyl, as she is willing to insinuate』。1776 年：『is still alive, being supposed to be ninety』『conceived by some, to be the only person now existing』、Jane Cock、Jane Woolcock；Bodener『sixty-five』『four or five other persons still living in the village of Mousehole』，信中『there is not more than four or five in our town can talk Cornish now / old people four score years old』；1777 年 6 月 16 日 Nancarrow『not more than forty years of age』。Lake：碑文『who died in 1778, said to have been the last person who conversed in the ancient Cornish』、『her 102nd year』、『fabulous story』、登記簿 1777 年 12 月 27 日條。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial",
+        "risk",
+        "source_ids",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json、batches/*.json（含 not_added）、reviews 與原來如此事務所池都 grep 不到 Pentreath／Pentraeth；Cornish／康瓦爾只命中 Botathen 鬼、Lyonesse、Perceval 之夢等不同案。前提與三個轉折都成立（同信打折、1776 年漁夫雙語信、1860 碑文的『據說』與碑年／登記簿差一年）。研究稿錯處：『八十七歲』原文是『第八十七年』、『102 歲』原文是『第 102 年』；鉤子的『倫敦來的』沒出處、『故意說了一句』與原文不符。Barrington 卒年 1800 在 DWB 頁確認，可入畫。片長 8–9.5 分鐘。"
+    },
+    {
+      "id": "N4482",
+      "agent": "I1",
+      "reviewer": "R421",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "I1-S024 https://archive.org/details/anetymodictofthenornlanginshet（Part I 導論 p.XIX）；I1-S023 https://archive.org/details/cu31924026356406（pp.10–11）",
+      "reopen_result": "頁面上確實寫了：『The last man in Unst who is said to have been able to speak Norn, Walter Sutherland from Skaw, died about 1850. In Foula, on the other hand, men who were living much later than the middle of the present (19th) century are said to have been able to speak Norn.』同頁前段『it is very doubtful whether the old dialect held its own longer in Unst than it did in the lonely island of Foula』，後段 Yell、Fetlar、Conningsburgh，以及『The statement that the Norn died out in the previous century must not, however, be taken too literally』。1897 講稿 pp.10–11：『even in the beginning of this century a dialect called Norn, although improperly…was spoken in outlying places — such as the North Isles (especially the north of Unst), but longest in Foula』、1774 年 Foula 老人翻不出全意；全書 grep 無 Sutherland（Skaw 只出現在地名條）。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial",
+        "risk",
+        "source_ids",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep Norn（整字）、Walter Sutherland、Shetland、Unst、Foula 在 pool.json、batches、原來如此事務所池都沒有同案。引文成立，兩個轉折在同一段裡。待查理由：英譯本 1928 是 1908 年起丹麥文辭典的翻譯（I1-S029），1897 年的丹麥文博士論文也沒讀，『目前讀到最早』只能說到英譯本；流傳版本只有 Heddle 一個可讀出處。鉤子的『一百年後』是換算，已改。只撐 4–4.5 分鐘，只能接 N4481。"
+    },
+    {
+      "id": "N4483",
+      "agent": "I1",
+      "reviewer": "R421",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I1-S011 https://archive.org/details/das-dalmatische（Bartoli 1906 §§14–16、25–34、38–40）",
+      "reopen_result": "頁面上確實寫了：§16『Am Abend des 10. Juni 1893』（OCR；註為 La Sera, Supplemento serale al Mattino, Trieste, 14 Giugno 1898，『Die übrigen istrianischen und dalmatinischen Zeitungen hatten die Nachricht nicht』），引文『uccidendo quasi sul colpo certo Antonio Udina, buon vecchietto di 77 anni』；§14 1897（September）、1899（Oktober）、1901（August）；§25 『der alte Udina-Bürbur, der letzte Vegliote, nicht nur nicht gestorben war — wie, allzufrüh, das Gerücht behauptete』、天剛亮進小旅館以 vegliotisch 打招呼；§26『ein schlechtes Subjekt!』，『Ein starkes Gedächtnis und eine leichte Taubheit, das waren seine guten Eigenschaften』；§27『Seine Eltern sprachen jedoch venetisch mit ihm, dagegen mit einander vegliotisch』、祖母、osterie 與 mora（vom 18. bis über das 25. Jahr）；§28 弗留利工人『während 30 Jahren』；§30 Glöckner、Orgelblasezieher、『ein wenig taub』；§32 牙齒全掉；§33『seit ca. 20 Jahren nicht gesprochen』『meistens venetisch unter vegliotischer Verkappung』；§34 塞爾維亞－克羅埃西亞語轉問與旅館公務員；§38『mehr als 30』；§40『Die Epigonen können nicht sprechen…sie verstehen meistens nicht, was sie sagen!』",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial",
+        "risk",
+        "source_ids",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：Udaina、Dalmat、Veglia、Krk、Bartoli 在池中都沒有（Udina 只命中原來如此事務所池一個英文字裡的拼字）。三個轉折成立。研究稿錯處：把『有點聾』列進缺點（Bartoli 說是他少數的好特質）；『他死後又找了三十多位』原文沒說時間；鉤子『世界上只剩他會說』誇大。Bartoli 卒年 1946 在搜尋結果頁確認。克羅埃西亞／義大利認同爭議已在 scope 排除。"
+    },
+    {
+      "id": "N4484",
+      "agent": "I1",
+      "reviewer": "R421",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I1-S006 https://archive.org/details/lettersfromgentl00burt（Letter XII pp.280–283）；I1-S007 https://archive.org/details/tourinscotland1700pennuoft（pp.154–155）；I1-S008 https://archive.org/details/lettersondemonol00scotrich（pp.338–339）；I1-S009 https://www.goblinshead.co.uk/bogles/janet-horne-1722-1727/（自己的搜尋結果）",
+      "reopen_result": "頁面上確實寫了：Burt『In the Beginning of the Year 1727, two poor Highland Women (Mother and Daughter) in the Shire of Sutherland were accused of Witchcraft, tried and condemned…in a Court held by the Deputy Sheriff. The young one made her Escape out of Prison…in June following, at Dornoch』，及『In this County of Sutherland, as I have been assured, several others have undergone the same Fate within the Compass of no great Number of Years』，無名字、無 Loth。Pennant：『not far from thence the spot where an unhappy creature had been burnt, if I mistake not, in the year 1727, for the imaginary crime of witchcraft』，腳註『This is the last instance of these frantic executions in the north of Scotland, as that in the south was at Paisley in 1696』。Scott：『In the year 1722, a Sheriff-depute of Sutherland, Captain David Ross of Littledean…to pronounce the last sentence of death for witchcraft which was ever passed in Scotland』、Loth、pony、女兒之子受 Marchioness of Stafford 救濟。Coventry：『all versions until the twentieth century made no reference to her name. It may well be that the name is fictitious as Jenny Horne is the north-east term for a witch』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：Janet Horne、Dornoch、Horne 在池中都沒有同案（最近 N204 Helen Duncan 1944 年，不同案不同答案）。三個轉折成立。研究稿錯處：『Pennant 1772 年加的腳註』沒讀初版不能說『加』；名字『二十世紀以前沒有』只是 Coventry 一人的說法，問題改成本輪自己讀到的三份文字都沒名字；鉤子『修路的英格蘭人』『有了遺言』沒有可靠出處。排除線：處決只一句、婦人與女兒不入畫、瀝青桶與火的句子都不進旁白；Burt、Pennant、Scott 卒年本輪沒在頁面確認，不畫成可辨識的人。"
+    },
+    {
+      "id": "N4485",
+      "agent": "I1",
+      "reviewer": "R421",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I1-S014 https://archive.org/details/chronicaminorasa11momm（Marcellinus a.454、475、476、480 與 Mommsen 序）；I1-S015 https://archive.org/details/chronicaminorasa09momm（p.308–310 並排頁）",
+      "reopen_result": "頁面上確實寫了：454.2『Aetius magna Occidentalis rei publicae salus et regi Attilae terror a Valentiniano imperatore…in palatio trucidatur, atque cum ipso Hesperium cecidit regnum nec hactenus valuit relevari』；475.2『Nepote Orestes protinus effugato Augustulum filium suum in imperium conlocavit』；476.2『Odoacar rex Gothorum Romam optinuit…Augustulum filium Orestis Odoacer in Lucullano Campaniae castello exilii poena damnavit. Hesperium Romanae gentis imperium…cum hoc Augustulo periit…Gothorum dehinc regibus Romam tenentibus』；480.2『Nepos, quem dudum Orestes imperio abdicaverat…haut longe a Salonis sua in villa occisus est』。Mommsen：『cum referat primum deduxisse se opus ad a. 518, deinde auctarium adiecisse annorum 519—534…edidit igitur libellum regnante Iustino, id est ante a. 527』。Auct. Havn.：Nepos『ad Dalmatias navigans fugit V k. Septemb. ibique per quinquennium recuperandae spei fiduciam promittens Dalmatis imperavit』；Heruli『regem creant nomine Odoacrem』。Anon. Vales. §38：『deposuit Augustulum de regno, cuius infantiae misertus concessit ei sanguinem, et quia pulcher erat, tamen donans ei reditum sex milia solidos misit eum intra Campaniam cum parentibus suis libere vivere』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：Augustulus、Romulus、Odoacer、Nepos、Marcellinus、西羅馬在池中都沒有同案。研究代理的拉丁文自譯對原文大致正確；三個轉折成立。改的是鉤子裡原文沒有的『十幾歲』『終身年金』『海邊別墅』，『長得好看』補回『可憐他年幼』，發行年代改照 Mommsen，族屬補 Auctarium 的 Heruli 說。5–6 世紀人物可畫卡通，不畫殺害。"
+    },
+    {
+      "id": "N4486",
+      "agent": "I1",
+      "reviewer": "R421",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I1-S018 https://archive.org/details/dli.ministry.16096（Lays of the Deer Forest vol.II pp.243–247）；I1-S007 Pennant Fort William 段腳註；I1-S021 https://col.rct.uk/collection/1075694/vestiarium-scoticum-from-the-manuscript-formerly-in-the-library-of-the-scots（自己的搜尋結果）",
+      "reopen_result": "頁面上確實寫了：『Thus in Loch-Aber, the last of that country is said to have been killed by Sir Ewen Cameron in 1680, which Pennant misunderstood to have been the “last” of the species in Scotland. Every district, however, has its—“last wolf”—and there were probably several which were later than that killed by Sir Ewen Cameron』；Strath-Glass、Glen-Urchard；『the last of the Findhorn—and also, as there seems every reason to believe, the “last” of his species in Scotland—at a place between Fi-Giuthas and Pall-a’-chrocain, and, according to popular chronology, no longer ago than the year 1743』；MacQueen『who died in the year 1797』『six feet seven inches』；黑獸咬死從 Calder 翻山的兩個孩子；『Ciod e a chabhag?—What was the hurry?』；『drew the black bloody head of the wolf from under his arm—Sin e dhiabh!—There it is for you!』；『gave him the land called Sean-achan for meat to his dogs』。Pennant 腳註『Who is said to have killed the last Wolf in Scotland, about the year 1680』。RCT：『Later proven to have been an elaborate hoax by the brothers John Carter Allen and Charles Manning Allen, who claimed to be descended from Prince Charles Edward Stuart』，作者欄『(1795?-1872)』，1829 年 Lauder 致 Scott 信。",
+      "changed_fields": [
+        "axis",
+        "question",
+        "answer_target",
+        "scope",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：last wolf、最後一頭狼、Findhorn、Sobieski、Vestiarium、tartan 在池中都沒有；MacQueen 只命中 Macqueen-Pope。三個轉折成立，引文逐字一致。改軸別為 M，與 N2944／N2945／N2946『最後一隻』系列並排（不合併：N2946 已預定接 N2944，N4486 本身 8–9.5 分鐘）。『自稱孫子』改照 RCT『後裔』。wave43 P1 若做《Vestiarium Scoticum》，與本題共用人物、答案不同，建議連排。"
+    },
+    {
+      "id": "N4501",
+      "agent": "I2",
+      "reviewer": "R422",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I2-S001 https://wordhistories.net/2018/06/15/ghost-walks-origin/（全文）；I2-S002 https://barrypopik.com/blog/the_ghost_walks（全文）；I2-S003 archive.org nineyearsofactor00dyeriala（metadata 後下載清單所列 djvu.txt，p.53 與註 (13)）；I2-S005 archive.org adictionaryofsla01barriala（同法，Ghost walking 條）",
+      "reopen_result": "頁面上確實寫了：《Atlas》1831-05-29『On Saturday the actors at Drury Lane were struck with horror to find that no “ghost walked;” that is, that the treasury was shut』，800l.／400l.、Polhill 與 Lee、rival queens 都在，Tréguer 與 Popik 所錄 OED 例句文字一致；Dyer p.53『Mrs. Dyer and myself were engaged on a salary of £3. per week』『it was a matter of indifference whether “the ghost” (13) walked on Saturday or not』，註 (13)『I suppose from the uncertainty of its appearance, or that when it does appear, it is usually about 12 o'clock』；Barrère『a term originally applied by an impecunious stroller in a sharing company…“Has the ghost walked?” or “What! has this thing appeared again?” (Shakspeare)』；Hendrickson 故事（經 Tréguer）：Hamlet『Perchance 'twill walk again』，演鬼的『No, I'll be damned if the ghost walks any more until our salaries are paid』，Tréguer 說他『neither the date nor the location』，故事裡演員沒有名字；2022-12-10 推文『after one, in 1831 in Drury Lane, refused to go on stage as Hamlet's father until accounts were settled』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複（pool、batches 含 not_added、reviews、同批檔與原來如此池都 grep 不到 ghost walk／發薪／Polhill）。前提成立、兩個轉折成立。改正：題目說罷演的鬼演員在語源書裡『有名有姓地登場』是錯的——Hendrickson 的演員沒有名字、沒有日期地點；『1831 年已是要解釋給讀者聽的行話』是研究者觀察，已標明；補上 Dyer 用的是『我想』。片長只有 5–6 分鐘：接 N2303 時間壓得進 13 分鐘，但核心答案不同（只是同類劇場禁忌），建議改接 N4502（同一個問題：演哈姆雷特鬼魂的那個演員的故事是誰加的）。不入畫者照舊用通用角色。"
+    },
+    {
+      "id": "N4502",
+      "agent": "I2",
+      "reviewer": "R422",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I2-S007 https://www.gutenberg.org/files/16275/16275-8.txt（Rowe 正文與 Monk 導言）；I2-S008 archive.org dictionaryofnati0051sidn（metadata 後下載 djvu.txt，Shakespeare's rôles 段與 1596 年段）；I2-S009 archive.org ulyssesshake1922_hmp（同法，pp.180–182、pp.205–206）",
+      "reopen_result": "頁面上確實寫了：Rowe『if not as an extraordinary Actor, yet as an excellent Writer…tho' I have inquir'd, I could never meet with any further Account of him this way, than that the top of his Performance was the Ghost in his own Hamlet』，Betterton『a Journey into Warwickshire』段沒提鬼；Monk『the unreliability of most of the local traditions that Betterton reported from Warwickshire』。DNB：『Although the old actor William Beeston asserted that Shakespeare “did act exceedingly well” (Aubrey), the rôles in which he distinguished himself are very imperfectly recorded』……『Rowe identified only one of Shakespeare's parts, “the Ghost in his own Hamlet,” which Rowe asserted to be “the top of his performance.”』——asserted 同時用在 Beeston；Hamnet『buried in the parish church…eleven and a half years old』在另一段。Ulysses：『the player is Shakespeare…To a son he speaks…and to the son of his body, Hamnet Shakespeare』；『Do you believe your own theory? — No, Stephen said promptly.』緊接著 Stephen 心裡『I believe, O Lord, help my unbelief. That is, help me to believe or help me to unbelieve?』，再說『For a guinea…you can publish this interview』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "editorial",
+        "risk",
+        "notes",
+        "source_ids",
+        "source_locator"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複（Hamnet、Betterton 在池中零命中；wave30 not_added 的《哈姆雷特》鬼魂來源題核心不同）。改正兩處：（1）研究稿的轉折二『DNB 把 Rowe 的「只找得到」改寫成「Rowe 宣稱」』不成立，DNB 同段對 Beeston 也用 asserted，而且明寫角色『記載很不完整』，已刪除這個轉折，改成 DNB 照錄、不連 Hamnet；（2）漏讀 Stephen 說『不』之後緊接的『我信，主啊，求你幫助我的不信』與一個基尼的玩笑，已補，結論改成『嘴上說不信、心裡搖擺』。剩兩個翻轉（Rowe 的保留話、最早連起來的是小說人物）。刪掉轉折後約 6–8 分鐘，不到 8 分鐘，改 chapter，建議與 N4501 合一集。卒年：Rowe 1718（I2-S021）、Joyce 1941（I2-S023）均在搜尋結果連到的頁面確認。1709–1922 之間有沒有傳記先把演鬼接上 Hamnet 沒有系統查，『本輪讀到最早』必須保留，排題前補查。"
+    },
+    {
+      "id": "N4503",
+      "agent": "I2",
+      "reviewer": "R422",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I2-S013 archive.org lenouveloprade01garn（metadata 後下載清單所列 djvu.txt，〈De la construction de la cuve〉pp.217–228 全章）；I2-S014 https://www.gutenberg.org/cache/epub/62215/pg62215-images.html（前言註、cuve 段、Philippe Garnier 句）；I2-S016 https://www.france.fr/en/article/unusual-stories-opera-garnier/（Carp lake 段）",
+      "reopen_result": "頁面上確實寫了：Garnier『depuis vingt ans déjà』；cuve『entouré d'eau de toutes parts. Je sais bien qu'ordinairement une cuve a de l'eau en dedans』；『cinq mètres environ au-dessous du niveau moyen』；『double enveloppe』；泵增到七台，『la cour du Louvre…une élévation double de celle des tours Notre-Dame』；『deux mois consécutifs』與後文『cinq mois』；停泵當晚『quelques flaques d'eau』；『je la rejetai, ostensiblement devant tout le monde et les portes du chantier ouvertes, dans la cuve même…(sauf à mon ami Louvet)』、『chacun admira ma sagacité』、可讓槽『remplie jusqu'aux voûtes pendant un an, deux ans, trois ans même』；『il fallait que je le fisse pour cacher une défaite partielle!』；『je laisserais croire, s'il y avait encore de l'eau dans la cuve, que cela est conservé exprès pour le service d'incendie. Ce ne serait pas du reste tout à fait invraisemblable; car il en a été souvent question』，儲水池是『en cas d'interruption dans la distribution des eaux de la ville』。Leroux：『quinze mètres au-dessous des couches d'eau』『une fois et demie les tours de Notre-Dame. Tout de même, il fallut garder un lac』『demanda toute une année』，前言註『les ouvrages de Charles Garnier』，正文『Philippe Garnier』。France.fr：『took shape in 1881』『even served as a water reserve in the event of a fire』『Legend also has it that carp』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial",
+        "risk",
+        "notes",
+        "source_ids",
+        "source_locator"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複；與 N3382（1896 配重）同小說同建築，但 N3382 scope 明寫不講地下湖，核心答案不同，前後排、不合併。改正：（1）研究稿把『消防用』寫成 Garnier 預先編好、官方網站『說的正是』他的說詞，漏讀同一句後面的『也不完全是不可能，因為常被提起』，已改成『他說本來會拿來搪塞的說法，但他也承認常有人提』；（2）『槽裡第一次有水』不精確（第一次的水是漏進來的水窪），改『第一次被灌滿』；（3）補『工地大門敞開』『滿到拱頂一兩三年』原文細節；（4）鉤子照原文改成『從基坑上方看見還沒砌拱頂的後走廊、混凝土地上有幾灘水』（原文是 du haut de la fouille…couloir du fond qui n'était pas encore voûté…flaques d'eau sur le béton，『je sentis une violente commotion』），原稿『走下基坑』『心猛地一沉』與原文不完全相符；（5）Leroux 卒年 1927 已在頁面確認（I2-S022），可入畫。兩個翻轉（設計上槽是乾的；第一次灌水是掩飾）成立，8–10 分鐘。"
+    },
+    {
+      "id": "N4521",
+      "agent": "I3",
+      "reviewer": "R423",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I3-S001 https://archive.org/details/journalofproceed05linn（metadata 後下一次呼叫下載 djvu.txt，pp.217–218 與 4 月 5 日會議紀錄）；I3-S002 Romanes（Gutenberg 搜尋結果所列 40459-h.htm）；I3-S003 https://archive.org/details/antstheirwayswit00whit（pp.129–132）；I3-S005 Pliny XI.36（59131-h.htm）；I3-S004、I3-S006、I3-S007 重開",
+      "reopen_result": "原信：『[Read April 5th, 1860.]』『communicated through Robert Patterson, Esq., by the Secretary』；孩子躺上『Soldier Ants』的窩，她與保母（nurse）弄死約二十隻；『a number of, I should think, 200 bringing up the rear』；『About six would not stir from their places, and on these the others fell and killed them』；全文沒有 forty。Romanes：『Having killed a number of 'soldier ants,'』『about forty pairs』『Some six or seven of the ants had attempted to run off… caught and brought back』，並說 McCook、Treat 的記載『none of these… furnish evidence of ants burying their dead, as Pliny asserts』，又提 Farren White 1880《Leisure Hour》。White 1895：『Mrs. Hatton』『I quote now from a manuscript of the late Mr. F. Smith』『in substance as follows』，開頭有孩子被叮、『My maid at once assisted me in killing them』；Smith：『allowing something for the lady's imagination』『well known to connections of the members of the Linnaean Society』。Pliny：『Ants are the only living beings, besides man, that bestow burial on the dead.』McCook：『I did not see any of the 'cemeteries' of the agricultural ant upon the field』。Darwin 註 2：刊在 1861 年 3 月號 5:217–18。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "risk",
+        "editorial",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json、batches/*.json（含 not_added）與原來如此事務所池 grep 不到 Hutton 螞蟻、ant funeral、螞蟻葬禮（Hutton 命中都是別人）；B2317 是阿根廷蟻屍體化學訊號的機制題，本題是一則觀察的轉述史，核心不同。改正：（1）『少了弄死螞蟻的原因』只有 Romanes 版，White 1895 印的 Smith 手稿版開頭有孩子被叮與弄死螞蟻（還把保母變成女僕），題目原寫成兩書都少；（2）研究稿說 Romanes『說除了 Pliny 沒有證據』，原文是 McCook、Treat 的記載不足以證明 Pliny 說的埋葬；（3）『McCook 自己說看不到埋葬』不對，McCook 說的是野外沒見過墓地，人工巢裡螞蟻最後挖小凹放屍體；（4）補上 Romanes 提到的 Farren White 1880 年文章，旁白不說誰第一個印出四十對版本。兩個以上翻轉轉折成立，9–11 分鐘合理。"
+    },
+    {
+      "id": "N4522",
+      "agent": "I3",
+      "reviewer": "R423",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I3-S009 Pliny XXXII.1 與註 4、8、9、11（Gutenberg 搜尋結果所列 62704-h.htm）；I3-S010 IX.41 與註 2496、2501（60230-h.htm）；Gudger 改從 archive.org 的 JSTOR 典藏 jstor-2456185 重讀（I3-S035，advancedsearch→metadata→下一次呼叫下載）；I3-S012 arXiv 1905.13024 重開；I3-S013、I3-S014 重開",
+      "reopen_result": "XXXII.1：『a single fish, and that of a very diminutive size』『no more than some half foot in length』『At the battle of Actium, it is said』；Caligula『from Astura to Antium』『the emperor's five-banked galley was the only one that was making no way』『some four hundred men』『should have no such power when brought on board』『According to the persons who examined it… a large slug』；註 4『An absurd tradition, no doubt, invented, probably, to palliate the disgrace of his defeat』，註 8『a trick was played… the rowers as well as the diving sailors were privy to it』，註 11 說 Cnidos 的貝與 remora 毫無關係。IX.41：『a very small fish』；Mucianus 的 murex 擋住 Periander 的船；『Trebius Niger says that this fish is a foot in length』；註 2496 引 Cuvier『not… the slightest power over the very smallest boat』。Gudger（Am. Nat. 53, pp.446–448）：『on or about May 19, 1494』，漁人把叫 Reverso 的小魚綁尾放出，『it was a tortoise our men saw so taken… clinging about the neck of it』；並說『Ferdinand's original copy is not known, the printed text being from Ulloa's Italian translation』。arXiv：Plutarch 記 Antony 艦隊不動『at least three hours』、海平面低 75 cm、十排槳艦吃水 2.1 m、灣口部分不到 2.5 m、引 Gudger 1918『another myth of the ancients is dissipated in thin air』、尾波條紋稱 echeneidian pattern。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：歷史池與原來如此事務所池 grep 不到 remora、echeneis、擋船魚（『吸盤魚』唯一命中是 N4446 的別義）；N3882 Caligula 對海神宣戰是不同案。改正：（1）『Caligula 那條只有半呎長』是把 Pliny 對這種魚的泛稱套到那一條上，改成 Pliny 說這種魚不過半呎；（2）『一下是魚、一下是貝』改寫：Pliny 把擋船之力也歸給 Mucianus 說的一種貝，英譯註說兩者無關；（3）Gudger 來源改為 archive.org 的 JSTOR 典藏，並補上《Historie》原稿不存、只有 Ulloa 義大利譯本的提醒；（4）2019 年論文的『古代資料』明確為 Plutarch，作者群改寫為跨領域；（5）哥倫布卒年沒在頁面確認，不入畫。"
+    },
+    {
+      "id": "N4523",
+      "agent": "I3",
+      "reviewer": "R423",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I3-S015 Fabre 第三章（Gutenberg 搜尋結果所列 66762-h.htm，書目頁 1823–1915）；I3-S016 Beebe（25888-h.htm，書目頁 1877–1962）；I3-S017 LEPS-L 1999、I3-S018 Gizmodo、I3-S019 A-Z Animals 重開",
+      "reopen_result": "Fabre：『I owe this result… to pure chance』『The caterpillars often scale the sides』；『On the 30th of January, 1896, a little before twelve o'clock』；『With a thick hair-pencil I sweep away the surplus climbers; with a big brush… I carefully rub down the vase』；第一晚『The branch stands green and tempting not a hand's breadth away』；寒夜『clustered in two heaps』；『at the foot of the vase, not nine inches away, there lay a bunch of pine-needles which I had placed there』；『on the eighth day… At sunset the last of the laggards is back in the nest』；84 小時、9 cm/分、453 m、1.35 m、335 圈；『They would perish on their insidious ribbon if…』。LEPS-L：轉貼文署 Zig Ziglar，『Fabre carefully arranged them』『In the center of the flowerpot he put pine needles』『seven full days and seven full nights』『less than six inches away』；回覆者說『On the cold nights they went inside the flower pot to rest』。Beebe：『killed about three-quarters of the colony with various deadly chemicals』『a circumference of twelve hundred feet』『about two hours and a half』『some half dead Eciton straggled from the circle along the beach』『Would they die singly… or would the remnant draw together』。A-Z Animals：『only ending when the last circling ant has died』。Gizmodo：『a botanist』『in early February』『follow each other's scent, not the silk』。",
+      "changed_fields": [
+        "hook",
+        "answer_target",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：兩個池與 not_added grep 不到 Fabre、processionary、ant mill（Beebe 只命中阿肯色 Beebe 鎮）、毛蟲繞圈。研究稿大致正確，改正：（1）鉤子『坐下來等』原文沒有，改照原文的小筆刷掃掉多的、大刷子擦絲；（2）1999 年的回覆者自己也有錯（說冷夜躲進盆裡，原文是在盆緣擠成兩堆），不把它當權威；（3）Beebe 1962 年過世，確認不入畫。兩個轉折（不是他排的、第八天全部回巢；最大的螞蟻圈也是被一隻脫隊的帶走）都由原書撐住，9–11 分鐘合理。"
+    },
+    {
+      "id": "N4524",
+      "agent": "I3",
+      "reviewer": "R423",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I3-S020 Phaedo（Gutenberg 搜尋結果所列 1658-h.htm）；I3-S010 X.32 與註 2979；I3-S021 https://archive.org/details/wildfowlofunited00elli（metadata 後下一次呼叫下載 djvu.txt）；I3-S022、I3-S023 重開",
+      "reopen_result": "Phaedo：『they… do then sing more lustily than ever, rejoicing』『But men, because they are themselves afraid of death, slanderously affirm of the swans that they sing a lament at the last, not considering that no bird sings when cold, or hungry, or in pain』。Pliny X.32：『It is stated that at the moment of the swan's death, it gives utterance to a mournful song; but this is an error, in my opinion, at least I have tested the truth of the story on several occasions.』註 2979 引 Mauduit。Elliot：『generally considered one of those pleasing myths』『I had killed many Swan and never heard aught』；Currituck Sound、Mr. F. W. Leggett、『We fired at them』『the wings became fixed and he commenced at once his song… nearly half a mile away』『never before nor since』『Most plaintive in character and musical in tone… like the soft running of the notes in an octave』『We have heard the song of the dying Swan』。2015 部落格：『a member of his group shot』『sailing slowly down, began its death song』，參考列 Cornell Lab 與 Reader's Digest 鳥書；Hochbaum 引文在部落格。TIFO：whooper swan 氣管、Aesop、Aeschylus《Agamemnon》458 BC。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：天鵝命中只有醜小鴨 F10 與無關比喻，沒有天鵝之歌題。改正：（1）『最常被引』是研究者自己的判斷，改『常被引』；（2）研究稿漏讀 Elliot 原文的『Most plaintive in character』——他聽到的正是 Socrates 不信的『哀歌』，升為轉折三的落點；（3）2015 部落格的改寫不能斷定是部落客做的，它列了 Reader's Digest 鳥書，改成『誰先改的不知道』；（4）補上通俗文章說 Aeschylus 已把臨死悲歌比作天鵝，所以《斐多篇》是在反駁既有說法（原文沒讀，標明）。不畫槍、受傷與墜落的鳥。片長誠實估 8–9 分鐘，剛好壓線，池中沒有兄弟題。"
+    },
+    {
+      "id": "N4525",
+      "agent": "I3",
+      "reviewer": "R423",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I3-S024 https://archive.org/details/bim_early-english-books-1641-1700_memoirs-of-what-past-in-_temple-sir-william_1692（metadata 後下一次呼叫下載 djvu.txt）；I3-S025 Wesley 1781 PDF；I3-S026 Locke（Gutenberg 書目頁連結的 pg10615-images.html）；I3-S027 重開；另讀 I3-S036–S004 確認卒年",
+      "reopen_result": "Temple：Seneffe 之後回海牙、『about Seventy Years, and his long habits both of Gout and Stone』『before he went to his Government of Cleve』『an idle question』；『There was something true, but a great deal false, of what had been reported』；『What a Company of White Men are here?』『Some General or other』；法文問答 Marinnan、Portugez、『Je garde les Poulles』；『I set down the words of this worthy Dialogue in French, just as Prince Maurice said them to me』；『In Brasilian』，兩位通譯分開私下問；『from the first hand』『I leave it to Naturalists to reason』『relieve or enliven a busy Scene』。Wesley 引 Locke 的整段保留了『a great deal false』與『I leave it to naturalists…』，然後批評人格同一性。Gutenberg Locke（『Based on the 2nd Edition』）『rational parrot』後直接接 §10，全書沒有 Maurice。2022 部落格：沒有出處、沒有 Temple，多了『yet he could not be deceived』。1911 EB：Temple 1628–1699，《Memoirs》1672–1679 部分『published without his authority in 1691』。Encyclopedia.com：Johan Maurits 1604–1679。DNB：Wesley 1703–1791。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：鸚鵡、Maurice、Temple、Locke 在歷史池的命中都是別的題；原來如此事務所只有鸚鵡用工具等機制題。改正：（1）《Memoirs》這一部 1691 年已未經授權出版，研究稿寫 1692 年，題目改『目前讀到最早』並註明版次；（2）研究稿漏讀：洛克的轉引完整保留『大半是假的』與『交給博物學家』，所以保留語不是在洛克手上掉的，轉折三改寫；（3）2022 部落格多了原文沒有的『他不可能被騙』；（4）鉤子『來告別』改照原文『赴克萊沃任前來訪』；（5）Temple、Maurits、Wesley 卒年補到可讀頁面；Wesley 是現存宗教運動創始人，不畫成可辨識人物。"
+    },
+    {
+      "id": "N4526",
+      "agent": "I3",
+      "reviewer": "R423",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I3-S028 https://archive.org/details/b22039818_0002（metadata 後下一次呼叫下載 djvu.txt；另讀第 1 卷 b22039818_0001）；I3-S029 https://archive.org/details/illustrationsofi00couc；I3-S002 Romanes；I3-S030 Wikisource PSM 1888；I3-S031 重開",
+      "reopen_result": "Edmondston 1809（書名頁 ARTHUR EDMONDSTON, M.D.）：『This is the only species of crow constantly resident in Zetland』；貝殼從高處丟下；『I found seven pieces of potatoes and dough in a hole』；『The crows generally appear in pairs, even during winter, except when attracted… or when they assemble for the purpose of holding what is called the craws court. This latter institution…』『As soon as all the deputies have arrived, a very general noise and croaking ensue, and, shortly after, the whole fall upon one or two individuals… When this has been accomplished, they quietly disperse』；下一段鷹、渡鴉、烏鴉頭的獎金。Couch 1847：『It is not known what enormities led to the institution of another tribunal… called the Crow Court; but, according to Dr. Edmonson…』『the whole of the court—judges, barristers, ushers, audience and all, fall upon the two or three prisoners at the bar』。Romanes 照抄 Couch，再加『In the northern parts of Scotland (says Dr. Edmonson), and in the Faroe Islands… others seem as grave as judges… to find one or two left dead on the spot』；1809 年兩卷 OCR 都找不到 drooping、as judges。PSM 1888：『can not yet be accepted as established by competent observation』，接著『Dr. Edmondson describes… the entire assemblage, \"judges, barristers, ushers, audience and all, fall upon…\"』，另收 Cox 牧師、瑞士渡鴉、Bengal 紅鶴。2010 部落格：crow jury、chief judge、four or more sentry crows、specific formation。",
+      "changed_fields": [
+        "answer_target",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：兩個池 grep 不到 crow court、craws court、Edmondston、烏鴉法庭；Couch 命中是別的詞。改正：（1）1809 年原文已用『institution』『deputies』，轉折一補上，避免說成『最早完全沒有法庭味』；（2）『每一則都只有一位目擊者』是研究者推論，改為『都是單一轉述』；（3）覆核補下載第 1 卷，確認兩卷都沒有 Romanes 的 Faroe 段。群鳥殺同類全程不畫，含附帶故事。"
+    },
+    {
+      "id": "N4541",
+      "agent": "I4",
+      "reviewer": "R424",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I4-S002 https://archive.org/details/horseinmotionass01stil（metadata 後下一次呼叫下載 horseinmotionass01stil_djvu.txt：序、Appendix pp.123–124）；另重開 I4-S003 gri_33125012264293_djvu.txt（導言）、I4-S004／S005／S007（loc.gov 頁 fo=json 所列 tile.loc.gov 全文）、I4-S006 ramsaye_book_1926_djvu.txt、I4-S001 skullsinthestars",
+      "reopen_result": "頁面上確實寫了：1882 附錄開頭『The following account … was furnished by Mr. E. J. Muybridge』，接著『Some time in 1872 Mr. Stanford, being desirous of settling some controverted questions as to the action of the trotting horse, conceived the idea … The experiments made at that time were inconclusive』『one of these, representing him with all his feet clear of the ground, was enlarged, retouched, and distributed』，下一頁 Stanford『assumed … why not an indefinite number』、1878 年完成準備。1902 印本：『The attention of the author was directed to this controversy, and he immediately resolved to attempt its settlement』『the question settled for once and for all time』『It then occurred to him that a series …』。Day Book 1912-11-11（Gertrude M. Price）：『as the result of a wager between Leland Stanford … and Eadweard Muybridge』『no animal has all its feet off the ground at one time except when jumping』。Ramsaye：『It was a right princely bet, too, being in the sum of $25,000, good California gold. The traditional story always refers to it as a wager』『Muybridge inevitably failed』。1873 轉錄：『the artist said he believed it impossible』『spokes of the wheels of the sulky were caught as if they were not in motion』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，但研究稿把 1882 附錄寫成『出資者的書』對『攝影師的書』；附錄明寫是 Muybridge 提供的說明，所以真正的矛盾是同一人 1882 與晚年兩個版本，已改寫轉折三。補 Ramsaye 自稱『傳統的說法』、『Muybridge 失敗了』與 1882 年把多台相機的念頭歸給 Stanford。『普遍印象來自 1877/1878』標為研究者推論。Stanford 卒年 1893 在搜尋結果頁確認，可入畫。去重無既有 Muybridge／奔馬題（含原來如此事務所池）。"
+    },
+    {
+      "id": "N4542",
+      "agent": "I4",
+      "reviewer": "R424",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I4-S008 https://archive.org/details/quandjetaisphoto00nada（metadata 後下載 quandjetaisphoto00nada_djvu.txt，pp.5–8）；另重開 I4-S009 lacomdiehumain18balz_djvu.txt（pp.129–132）、I4-S010 lithub、I4-S011 substack",
+      "reopen_result": "頁面上確實寫了：『Je crois me bien rappeler avoir vu sa théorie … Je n'ai pas loisir de l'y rechercher』『chaque corps dans la nature se trouve composé de séries de spectres … foliacées en pellicules infinitésimales』『perte évidente d'un de ses spectres, c'est-à-dire d'une part de son essence constitutive』『Sincère, Balzac n'eût eu là que gagner à perdre … Prétendre qu'elle fut simulée serait délicat, sans oublier pourtant que le désir d'étonner fut très longtemps le péché courant de nos esprits d'élite』『ce Daguerréotype unique que je possédai après Gavarni et Silvy』。《Cousin Pons》：『tous les objets existants y ont un spectre saisissable, perceptible』『ce spectre saisi par le daguerréotype qui l'arrête au passage』。Lithub：『published in 1900』『his 1847 novel Cousin Pons』『spectral intangible double』『likely derived from … Lucretius』『reportedly … taken by Louis-Auguste Bisson』。Substack 公開段落有『the very essence of life』『I for one believe it was sincere』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立。研究稿漏讀同一句的後半：Nadar 說『說是裝的會有點冒失』之後立刻提醒『想讓人吃驚是菁英的通病』並數落『擺姿態』，等於暗示可能是裝的，已補成轉折；『我相信是真的』在法文是『若是真心的……』的玩笑假設。鉤子把當年的 Nadar 寫成『攝影師』本輪無法核對，改『年輕朋友』；『每個人』改回『每個物體』。巴爾札克 1850 年過世已在搜尋結果頁確認，可入畫。"
+    },
+    {
+      "id": "N4543",
+      "agent": "I4",
+      "reviewer": "R424",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I4-S013 https://archive.org/details/comptesrendusheb10scie（metadata 後下載 djvu.txt：2 月 10 日 p.247、3 月 2 日 pp.374–375、3 月 16 日 p.478）；另重開 I4-S012 comptesrendusheb09acad_djvu.txt、I4-S014 Luminous-Lint、I4-S015 JSTOR",
+      "reopen_result": "頁面上確實寫了：2 月 10 日 Biot『ce qui au reste a été obtenu depuis long-temps par M. Bayard, au moyen de procédés qu'il n'a pas jusqu'ici fait connaître』；3 月 2 日 Lassaigne『Les procédés photogéniques que viennent de publier MM. Bayard et Vérignon … le 8 avril 1839』與 Biot 的回應；3 月 16 日〈Note historique sur la Photographie〉『Le procédé indiqué par MM. Vérignon et Bayard ne diffère en rien de celui de M. Lassaigne, que M. Fyfe … le 17 avril 1839』，該則沒有署名。1839 年 11 月 11 日會議『L'Académie accepte le dépôt de trois paquets cachetés … M. Bayard (procédé de photographie sur papier)』。題字開頭『inventeur du procédé dont vous venez de voir, ou dont vous allez voir les merveilleux résultats』、『ne lui a pas valu un liard』『a dit ne pouvoir rien faire pour M. Bayard et le malheureux s'est noyé』；JSTOR 英譯『threw himself into the water in despair』、署名『H.B. 18 October, 1840』、『first known instance of a faked photograph』。",
+      "changed_fields": [
+        "hook",
+        "answer_target",
+        "scope",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提與日期都對得上。轉折一原本拿題字結尾（陳屍所段落）當證據，違反自己的 scope，改用題字開頭；『直接正像』改回原文的『明暗位置正確』；照片日期改標 JSTOR 的說法。Bayard 1887、Daguerre 1851 卒年在搜尋結果頁確認，可畫成卡通人物但不畫照片姿勢。"
+    },
+    {
+      "id": "N4544",
+      "agent": "I4",
+      "reviewer": "R424",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I4-S017 https://fentonletterbooks.dmu.ac.uk/annTranscripts.php?letterNo=10（全信）；另重開 I4-S016 letterNo=7、I4-S018 Tate、I4-S019 PhotographyTalk",
+      "reopen_result": "頁面上確實寫了：『I got Sir John to lend me a couple of mules to take my caravan down to a ravine known by the name of the valley of the shadow of Death from the quantity of Russian balls which have fallen in it』『It was plain that the line of fire was upon the very spot I had chosen, so very reluctantly I put up with another reach of the valley about 100 yds short of the best point』『while levelling it another ball … came down right to us stopping at our feet. I picked it up put it into the van & hope to make you a present of it』『We were there an hour & a half an [sic] got 2 good pictures』。4–5 月信：『a ravine called the Valley of Death』『they had made a garden in front forming the borders of the beds of cannon balls』。PhotographyTalk：『an early example of staging in war photography』『Not every scholar accepts Morris's order』『He died in 1869』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立。改正：不是『被逼退一百碼』而是『火線落在選好的點，只好改到差約一百碼處』；鉤子的『馬拉、倒進』改成信裡的『借兩頭騾』；『最早的擺拍』改『早期』；新增轉折：Fenton 第一封信自己就叫它『Valley of Death』。PhotographyTalk 對輕騎兵那條谷位置的描述無法核對，不引用。Fenton 1869 年過世已確認，可入畫；Sontag、Morris 不入畫。"
+    },
+    {
+      "id": "N4545",
+      "agent": "I4",
+      "reviewer": "R424",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I4-S025 https://www.loc.gov/resource/sn83026172/1852-10-08/ed-1/?sp=2（頁 fo=json 所列 tile.loc.gov 全文）；另重開 I4-S023、I4-S024 同法、I4-S026 American Heritage",
+      "reopen_result": "頁面上確實寫了：1852『On a previous visit a year since he showed me no specimens of his discovery … I could not then testify to its actuality from personal knowledge』『The most of these were, like all those of M. St. Victor, copies of colored engravings. They were taken by the camera, and not … mere transfers of colored prints』『the most brilliant … were obtained in two SECONDS』。1851 年 6 月：『Many affect to doubt … but I have every reason to believe it strictly true』『after seven hours' drive』『(April 18,) … saw trotting down the road … what he at first supposed to be a black cow, but which proved to be an enormous bear』。1851 年 3 月：『a somewhat more extended account … than that which we quoted from the Daguerreian Journal』『A yellow appears on the plate as a buff color』。American Heritage：62 片『copies of tinted engravings』、1933 年捐贈、Davie 委員會『deluded himself』、1865 年 2 月 15 日訃聞『done by an accidental combination of chemicals which he could not, for the life of him, again produce』、Swan『not a standard (mercury-developed) daguerreotype』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "premise_status",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "研究稿把 3 月那則當成 Hill『最早的信』，原文寫明先前另有一則，改『目前讀到最早的詳細說明』；『黃色出不來』改回『呈淺黃褐』。補上已讀到的 1865 年訃聞作第三轉折，並把只見於維基與摘要的 2007 年分析從答案刪除——題目不再依賴未讀來源，改 screened。單獨只有 7–8 分鐘，維持 chapter，接 N4546。"
+    },
+    {
+      "id": "N4546",
+      "agent": "I4",
+      "reviewer": "R424",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "I4-S020 https://luminous-lint.com/phoenix.php/images/single/54155347977195408479/std；另重開 I4-S022 Fstoppers",
+      "reopen_result": "頁面上確實寫了：『The day before yesterday, the 7th, I called on M. Daguerre, at his rooms in the Diorama』『By the assistance of a powerful lens, which magnified 50 times … every letter was clearly and distinctly legible』『The Boulevard … was perfectly solitary, except an individual who was having his boots brushed … his boots and legs are well defined, but he is without body or head, because these were in motion』『the great building of the Diorama, with his own house, all his beautiful works … becoming the prey of the flames』；出處標『The Farmers' Register, Vol.VII, No.5, May 31, 1839, p.258』。Fstoppers：1838、中午一片留存、傍晚一片已失、1839 年 10 月送 Ludwig I、1970 年借給 Munich 市立博物館後修復失敗、Newhall 1936 或 1937、水泵說；沒有附出處。",
+      "changed_fields": [
+        "hook",
+        "answer_target",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "Morse 信的轉折成立，但板子的下落、今天這片與 Morse 所見是否同一片，只有一篇沒附出處的通俗文章，維持待查。鉤子的『劇場後屋』與『放大鏡下的空大道』是自擬，已照原信改。只有 4–5 分鐘，chapter 接 N4545。"
+    },
+    {
+      "id": "N4561",
+      "agent": "I5",
+      "reviewer": "R425",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I5-S001 https://archive.org/download/LovsamlingforIsl000195669v2IslaReyk/LovsamlingforIsl000195669v2IslaReyk_orig_djvu.txt（先叫 metadata，下一次呼叫才下載；pp.605–610）；I5-S002 Sturlunga（pp.lxx–lxxi、245–247、283）；I5-S003、I5-S004 Jón Árnason I pp.218–220、II p.570；I5-S005 國家圖書館頁；I5-S006 Mental Floss、I5-S007 Guide to Iceland",
+      "reopen_result": "1746 條例第 8 條原文：『dog skal al Slag i Hovedet, og at slaa i en ubesindig Vrede, hermed aldeles være forbuden, saa og den daarlige Vane, som hist og her skal være brugelig i Landet, at forfærde Børn med den saa kaldede Juule-Sven, eller Spøgelser, aldeles være afskaffede』——Juule-Sven 與『不准打頭』在同一句。第 7 條是『forfængelige Historier, eller saa kaldede Bøger, og letfærdige Digte』。Mental Floss 寫的是『1746 年政府頒令禁止父母用 Yule Lads 的故事嚇孩子』（因為故事太血腥，轉述 Atlas Obscura），不是 Grýla。Sturlunga c.44：Loptr 帶不少於一百人『er Loptr reið í túnit, kvað hann þetta: Hér ferr Grýla í garð ofan, ok hefir á sér hala fimmtán』，接著『Þá hringði til messu』、Sæmundr 喊和，之後才開打（Björn 受致命傷）；c.74 是 Jón 叫割草工回家時 Guðmundr Galtason 唸『Vitu rekkar nú nokkut nýlegs um för Grýlu?』，不是對手互罵。Jón I：前幾個世紀關於她的故事與長詩很多、Grýla『主要被拿來嚇孩子』、『segja sumir, að þeir hafi ekki verið fleiri en 9』。Jón II：『svo hann tók (át?) þá, eða að minnsta kosti jólarefinn þeirra』，註腳還有 13 晚或 9 晚兩說。國家圖書館：1932、Páll Jónsson (1812-1889)、『má segja að Jóhannes hafi sett í fastar skorður nöfn jólasveinanna, fjölda þeirra og í hvaða röð』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json、batches/*.json（含 not_added，到 wave40）、原來如此池、curio41／43／44 都 grep 不到 Grýla、jólasvein、Yule Lad、聖誕貓、Leppalúði（cli search 回 Index is stale，以 grep 為主）。原題最大的錯：鉤子與題目說『冰島人說國王禁止用 Grýla』，可流傳版本（I5-S006）講的是禁止 Yule Lads，而條例確實點名了 Juule-Sven——原來的反轉是打稻草人；改成條例把它和『不准打孩子的頭』寫在同一句、沒有血腥的理由。Sturlunga 第 74 章不是對手間的嘲諷，第 44 章唸詩後是敲鐘做彌撒與喊和，都照原文改。兩個轉折：（一）最早的 Grýla 是出事前一句『十五條尾巴』，沒有孩子與聖誕；（二）13 個 Yule Lads 在 1862 年還有人說 9 個、名單不同，1932 年才固定。事實約 14 條，9–10.5 分鐘。"
+    },
+    {
+      "id": "N4562",
+      "agent": "I5",
+      "reviewer": "R425",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I5-S008 https://archive.org/download/danmarksfolkesa00thiegoog/danmarksfolkesa00thiegoog_djvu.txt（先叫 metadata，下一次呼叫才下載；I pp.17–20）；I5-S009 SDU 引文頁；I5-S010 Kronborg 官方頁；新讀 I5-S027 Henningsen 1985（覆核自己 WebSearch 結果所列 tidsskrift.dk PDF）",
+      "reopen_result": "Thiele 1843：奴隸『vovede ikke at give ham Haanden, rakte ham derfor en Jernstang』，Holger 說『Nu! det glæder mig, at der dog endnu er Mænd i Danmark!』；註：『I Omegnen af Slagelse fortælles omtrent det samme Sagn, men der lader man ham sidde i Havrebjerg … cfr. Boesens Beskriv. over Helsingør, 94』——『參見』寫在 Havrebjerg 句之後；Møgeltønder 一說出處 Antiq. Ann. III 149；註末另有 Bohuslän 巨人要人握手、他們遞上船鉤被他捏扁（Faye《Norske Sagn》17）。第三種說法其實讀得出：『當丹麥的男人少到圍不滿一條 Taudebaand 時我們才來』。Henningsen 1985：『Hvorfor og hvornår sagnet har anbragt ham i Kronborgs kasematter, vides ikke. I Boesens Helsingørs beskrivelse (1757) er han allerede vel etableret dér i almuens tro, og Thieles Danske folkesagn (1818) og H.C. Andersens historie »Holger Danske« (1846) har yderligere slået denne sene tradition fast』；又說 Holger『sikkert ganske uhistorisk』；Pedersen-Dan 1907 年石膏原型同年放進地窖，1985 年換混凝土翻模。SDU 頁標題『Quote from \"Holger Danske\" (1845)』；Kronborg 頁寫 1846。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json、batches、原來如此、curio41／43／44 都沒有 Holger、Ogier、Kronborg（pool.json 的 Holger 命中只是書目字串）。最大的改正：原題把 Thiele 1843 當成『比安徒生早』的主證據，覆核找到 1985 年海事博物館年刊明寫 Thiele 1818 年初版已收、1757 年 Boesen 時已是『百姓信仰』、何時何故放進 Kronborg『沒人知道』，改成目前知道最早的是 1757 年、而且那時已成形；Thiele 註裡的 Boesen 是『參見』且寫在 Havrebjerg 之後，不再說它就是鐵棒故事的出處；補上 Thiele 自己記的 Bohuslän 船鉤同型故事。兩個轉折：（一）放進 Kronborg 的不是安徒生，1757 年已是民間信仰；（二）丹麥英雄最早是法國史詩裡查理曼的部下，而鐵棒情節是北歐流傳母題。安徒生卒年未在可讀頁確認，改成不入畫。事實約 15 條，8–10 分鐘。"
+    },
+    {
+      "id": "N4563",
+      "agent": "I5",
+      "reviewer": "R425",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I5-S013 https://archive.org/download/jucewicz-wspomnienia-zmudzi/Jucewicz%2C%20Wspomnienia%20%C5%BBmudzi_djvu.txt（先叫 metadata，下一次呼叫才下載；pp.103–110）；I5-S014 https://www.journals.vu.lt/literatura/en/article/view/30618/29618（HTML 全文，grep 定位：初刊、書評、1963、Narbutt、Kolberg、Babickas、Dundulienė）",
+      "reopen_result": "Jucewicz 1842：題獻『Helenie z Frejendów Hrabini Kiejserling』；註『Chlechda znaczy tradycję; słowo to nie tylko w północnych pisarzach dostrzedz można, ale Macpherson w wydaniu, Denis w tłómaczeniu Ossiana używa』；比目魚註『Lud litewski wspólnie ze Żmudzią mniemają, iż flonderki dla tego jedno mają oko』；結局『uderzył w mieszkanie królowej, samą zabił … Rybaka zaś, Praamżimas przykuł na dnie morza do skały, i położył przed nim trup jego kochanki』。Burba：書目『N. N. [Jucewicz] 1839. Królowa morza Bałtyckiego. Klechda, przypisana na pamiątkę JW. Helenie z Frejendów Górskiej. Tygodnik Petersburski. Rok 10, 33, 185–186』，情節摘述（含雷殺女王、漁夫被鎖）引 N. N. 1839；書評原文『Klechda ta, jeżeli jest utworem wyobraźni autora – bez wątpienia wielką dla niego robi zaletę』，另兩位書評只說故事美；1963『tik iš literatūrinių šaltinių yra žinomas padavimas』，『Jokie vėlesni tyrimai šio tvirtinimo nepaneigė』；Dundulienė 1969、1989 主張古老根源，『dauguma mokslininkų tokių idėjų nepalaikė』；Narbutt『dailias, iki pusės nuogas』；Kolberg 的出處其實講鯡魚。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json、batches、原來如此、curio41／43／44 都沒有 Jūratė、Jurata、Kastytis、Jucewicz（pool 的『琥珀宮』是二戰失蹤的 Amber Room，不同題）。改正：反轉結局在 1839 年初刊就是如此（照 Burba 引 N. N. 1839 的摘述），題目原寫成 1842 年才有；補上兩版題獻對象不同、比目魚一眼被作者標為『百姓相信』、Kolberg 標的出處講鯡魚、少數學者主張古老根源。民族歸屬：Burba 文中沒有立陶宛與波蘭爭奪這個故事的內容，scope 維持『只照事實說作品用波蘭文寫、作者是立陶宛人，不評論』即可，不需另改。兩個轉折：（一）『古老神話』目前讀到最早只到 1839 年，一出來書評就懷疑是想像；（二）今天的結局跟最早的版本顛倒，原結局被旅遊頁當成地方版。Maironis 卒年未在可讀頁確認，改不入畫。8.5–10 分鐘。"
+    },
+    {
+      "id": "N4564",
+      "agent": "I5",
+      "reviewer": "R425",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "I5-S019 https://archive.org/download/heligabirgittas03bridgoog/heligabirgittas03bridgoog_djvu.txt（先叫 metadata，下一次呼叫才下載；Bok 6 kap. 78, pp.197–198）；I5-S020 https://www.helsinki.fi/assets/drupal/2024-04/Viktor%20Rydbergs%20Tomten%20s%2042-45.pdf",
+      "reopen_result": "Birgitta：『thy at the dyrka ok hedhra tompta gudhi ok gaa ey til kirkio vtan for manna blygdh』、『forlatin the ormana som j skänken miölk ok görin ey tompta gudhom min tionda aff idhro fää ok swinom ok ey aff brödhe alla vini alla androm dryk』——gudhom 是複數與格，收供品的是複數的宅地之神；同一段緊接著要求『不要說祭台上只是一小片麵包』，之後『aff vngnenom hwarifra diäfullin gaff andswar hördhis röst sighiande Ey häuir jak längir här stadh』。Burman：『den först trycktes i Ny Illustrerad Tidskrift i februari 1881, alltså inte alls vid jultider』、起初『knappast tolkades som en juldikt』；1881-01-27 致 Beckman 信『Tomtarne äro i allmänhet små positivister före Comte』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "premise_status",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複（pool 裡的 Birgitta 是 N3826 的 1651 年婦人；nisse 命中都是 Geheimnisse）。文字前提成立，但：（一）把 tompta gudhi 當成 tomte 的前身，研究稿只有通俗文章（I5-S021）支撐，缺學術出處，所以原鉤子『第一次出現在文字裡』改成『最常被引的那段』；（二）原文是複數『宅地的神』；（三）這段是聖人的啟示，同段還有聖餐要求與魔鬼從爐子離開，依不收清單只能講一兩句、不畫 Birgitta；（四）『詩裡的 tomte 沒有送禮』沒讀詩全文，刪掉。只撐 6–7.5 分鐘，與 N4561 合計超過 13 分鐘，L25 紅衣聖誕老人答的是另一件事，找不到同核心兄弟題。建議暫緩，或在 N4561 結尾一句帶過，或轉 Shorts。兩個轉折（若做）：『敕令』其實是一戶人家的啟示故事；讓 tomte 走進聖誕的詩二月刊出、起初不被當聖誕詩。"
+    },
+    {
+      "id": "N4565",
+      "agent": "I5",
+      "reviewer": "R425",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I5-S024 https://www.folklorefellows.fi/the-five-performances-of-the-kalevala（§11、§15–16、§22、§27、§32–35）；I5-S023 https://kalevalaseura.fi/en/elias-lonnrots-kalevala-process/",
+      "reopen_result": "Honko §22：『A draft of a letter dated July reveals that Lönnrot has, by way of experiment, “put together or continued” the poems about Lemminkäinen, thus arriving at “825 verses about him without adding a single word of my own”』；§15：『The longest cycle noted down is probably the 565-line Creator’s Song … I personally am prepared to believe that much longer episodes were performed』；§16：『the longest Sampo episode is only 402 lines』；§32：『One of the reasons for his method was … a desire to avoid the criticism levelled at James MacPherson』；§33：『Long epic is always the product of a single mind, not of tradition』；§27：耶穌與聖母『in all but the last poem』。學會頁：舊 Kalevala『in two parts, the first part in December 1835; the second part in March 1836 … 32 poems and 12,078 lines. Only 500 copies』；新版『50 poems, reaching up to 22,795 lines』；Kaukonen『similar in the epic and in folk poetry (33 %)…(50 %)…(14 %)…(3 %)』，接著『the percentages do not tell us everything』；Lemminkäinen 與 Kaukomieli『as one and the same … 825-line story』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json、batches、原來如此、curio41／43／44 都沒有 Kalevala、Lönnrot、Väinämöinen；N2602 Ossian 的核心是 Macpherson 的真偽之爭，N4565 的核心是一部大致有民間來源的史詩誰給了它結構，答案不同。改正：鉤子『第二版比第一版多了快一萬行』是研究代理自算且算錯（實為一萬多行），換成首數；Kaukonen 的『similar』不是『一模一樣』；Ossian 是『原因之一』；『825 行沒加一個字』那一次就合併了兩個角色，升為轉折一。二手來源能不能撐：Honko（FF 國際民俗學者網絡，論點有頁碼出處）與 Kalevala 學會兩者獨立、數字吻合，一手書信沒讀已寫進 scope；判可收。兩個轉折：（一）『沒加我一個字』的同一次就把兩個角色合成一人；（二）民間最長的 Sampo 段 402 行，長篇是 Lönnrot 想要的形式，五個版本各不相同。8–10 分鐘。"
+    },
+    {
+      "id": "N4581",
+      "agent": "I6",
+      "reviewer": "R426",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I6-S009 Valerius 1.7.1 拉丁原文（覆核自己的搜尋結果 attalus valerius1a.html → 頁上 Latin 連結 penelope …/Valerius_Maximus/1*.html）；I6-S024 Pliny 7.148 Rackham 譯（搜尋結果）與 I6-S025 拉丁原文（頁上 L 連結）；I6-S029 attalus Valerius 說明頁；I6-S008 Velleius II.70 與 Loeb 導言、I6-S005／S006／S007 以研究代理的下載檔逐字對照",
+      "reopen_result": "Valerius：『eius medico Artorio somnum capienti nocte, quam dies insecutus est, quo in campis Philippiis…Minervae species oborta praecepit ut illum gravi morbo implicitum moneret ne propter adversam valitudinem proximo proelio non interesset. quod cum Caesar audisset, lectica se in aciem deferri iussit…castra eius a Bruto capta sunt』——研究代理自譯正確。Velleius：『oratus etiam ab Artorio medico, ne in castris remaneret, manifesta denuntiatione quietis territo』；Loeb 導言『consulship for the year A.D. 30 of…Marcus Vinicius』。attalus：Valerius『in about 30 A.D.』。Plutarch Brut. 41.4『as he himself tells us in his Commentaries…Marcus Artorius』；Ant. 22.2『narrowly escaped his pursuers by secret flight; although he himself says in his Memoirs that he withdrew before the battle in consequence of a friend's dream』。Pliny 7.148『fuga et triduo in palude aegroti et (ut fatentur Agrippa ac Maecenas) aqua subter cutem fusa turgidi latebra』；Rackham『(as stated by Agrippa and Maecenas)』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，五個版本都對得上原文；但研究稿的演變方向講反：把『醫生名字與女神』說成後來作家加的、Suetonius 較原始，其實 Velleius 與 Valerius（約公元 30 年）是本輪最早的現存文字，已有醫生 Artorius，Plutarch、Suetonius 較晚。Pliny 的『ut fatentur Agrippa ac Maecenas』是一個新轉折（屋大維最親近的兩人『承認』），研究稿只當成水腫的出處；覆核對拉丁原文後照實寫並標明括號範圍不確定。刪『同時代流傳的另一版本』（Pliny 非同時代）。兩個翻轉結論的轉折：同一個夢一說叫他離營、一說叫他上戰線；夢是屋大維自己的說法，另一條記載只有逃跑與沼澤。片長 8–10 分鐘誠實。排除線：不畫死傷、不說他說謊，照守。"
+    },
+    {
+      "id": "N4582",
+      "agent": "I6",
+      "reviewer": "R426",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I6-S011 Cicero De div. 1.49（覆核自己的搜尋結果 penelope …/de_Divinatione/home.html → 頁上 E/…/1*.html 連結；L 版連結回 404）；I6-S026 Nepos Hann. 13.3（搜尋結果 dcc.dickinson.edu/node/231）；I6-S009 Valerius 1.7.ext.1 拉丁原文（同上 N4581 路徑）；I6-S012／S013／S014 以研究代理下載檔逐字對照",
+      "reopen_result": "Cicero：『Another story of Hannibal is found in the history written in Greek by Silenus, whom Coelius follows, and who, by the way, was a very painstaking student of Hannibal's career. After his capture of Saguntum Hannibal dreamed that Jupiter summoned him to a council of the gods…a horrible beast of enormous size, enveloped with snakes…the desolation of Italy』。Nepos：『duo, qui cum eo in castris fuerunt simulque vixerunt…Silenus et Sosylus Lacedaemonius』。Valerius ext.1：『certae praedictionis somnium…hausit enim proposito et votis suis convenientem imaginem…Italiae vides vastitatem: proinde sile et cetera tacitis permitte fatis』。Livy 英譯『There he saw in a dream, so the story goes, a youth of godlike shape』；Dio『Hannibal, they are on their way to help you in the sack of Italy』；Polybius『had not some god or hero met Hannibal's forces and showed them the way』『deus ex machina』『gone over the Alpine pass myself』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "引文都對得上。改正：題目『漢尼拔隨軍的史家 Silenus』原本沒有來源（研究代理自己說 Nepos 不引），覆核讀到 Nepos 13.3 補成 I6-S026，轉折一因此站得住；payoff『戰後才寫給世人看』無來源，刪；『羅馬作家寫成毀滅預言、Dio 寫成助陣』過度對立（各版本對漢尼拔都是吉兆，Livy 寫他受鼓舞），改成『怪物本身的讀法不同』；Livy『據說』標明是英譯；Polybius 講的是翻越阿爾卑斯的引路，推論照標；『最早、最接近事件的完整史書』刪。加入 Valerius『合乎他計畫與心願的形象』。兩個翻轉轉折：源頭在漢尼拔軍營；親自走過山口的史家說神明引路的寫法荒謬（推論已標）。片長 8–10。排除線：不畫死傷，照守。"
+    },
+    {
+      "id": "N4583",
+      "agent": "I6",
+      "reviewer": "R426",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I6-S016 Hilprecht 1893 Old Babylonian Inscriptions（覆核自己用 archive.org advancedsearch → metadata → 下一次呼叫下載清單所列 djvu.txt）；I6-S019 UPenn 檔案說明頁（覆核自己的搜尋結果）；I6-S015 Newbold 以研究代理下載檔逐字對照",
+      "reopen_result": "序言：『It was thus that I myself, after the printing had begun, was enabled to recognize the connection of Pl. 21, No. 41 and No. 46, and between Pl. 22, No. 50, and Pl. 26, No. 74』；『until the commencement of the printing, in October of last year』；落款『Philadelphia, January 1, 1893』。No.50：『afterwards cut in 3 pieces…For the centre part see Pl. 26, No. 74. The last part has not been found.』UPenn：『He died in Philadelphia on March 19, 1925.』Newbold：Hilprecht 自述寫於『August 8th, 1893, before the more complete confirmation』；『before I placed my mark of approval under the last correction in the book』；『you never will find it』；Peters『told Professor Hilprecht all these facts as long ago as 1891』；君士坦丁堡補述落款『November 10th, 1895』；SPR 第 78 次大會 1896 年 3 月 13 日由 Myers 代讀。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "source_locator",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，核心落差（序言落款 1893-01-01 vs 夢在 3 月中、『尚未找到』vs『永遠找不到』）在原書確認，只陳述不判造假。改正：『最早寫下』改『最早發表』（最早寫下的是 Hilprecht 1893 年 8 月自述）；補序言『印刷始於去年 10 月』、序言把認出歸功於斷口畫法、3 月時書仍在最後校正（給落差一個中性背景）；顏色矛盾出自 Peters 的描述；研究稿來源摘要把 1895-11-10 誤當 Newbold 註日期（實為 Hilprecht 補述），請整合時一併改 I6-S015。卒年：Hilprecht 1925 在覆核自己的搜尋結果頁確認；Newbold、Peters 等未查，不入畫。兩個翻轉轉折：首位發表者就給了聯想推理解釋並有 Peters 1891；書的序言與圖版說明對不上夢。片長 8–10。"
+    },
+    {
+      "id": "N4584",
+      "agent": "I6",
+      "reviewer": "R426",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I6-S027 Noble 1787 第二版掃描（覆核自己用 archive.org advancedsearch → metadata → 下一次呼叫下載 djvu.txt）；I6-S020 Heath 1663、I6-S022 Noble 第三版、I6-S023 American Cyclopaedia 以研究代理下載檔逐字對照",
+      "reopen_result": "Noble（兩版相同）：『It is more certain, that Oliver averred, that he saw a gigantic figure, which came and opened the curtains of his bed, and told him, that he should be the greatest person in the kingdom, but did not mention the word king』；腳註『The rev. dr. Lort's M.S.S., from papers communicated by mr. Audley』；『Some pretend the vision was seen by Oliver when he was walking ; the Flagellum gives it as a dream』；卒年『sept. 3, 1658』。Heath：『Dreamed, or a Familiar rather instincted him and put it into his Head, that He should be King of England』『caused Dr. Beard to Whip him for it』，書名頁『The Second Edition Enlarged』『The late Usurper』。American Cyclopaedia：『A gigantic female figure drew his bed curtains, and told him that he should become the greatest man in England, but did not mention the word king』，前一句『most of which were probably coined after he had risen to distinction』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，三層版本都對得上。改正：Noble 腳註研究稿譯成『醒著時看見』，兩份獨立掃描 OCR 都作『walking』（走路時），改照原字；刪無頁面依據的『19 世紀』（百科出版年）與『王政復辟之後』；『女人是後來加的』改『本輪讀到的版本中最早見於』；補 Heath 自己的理由（夢與占卜早已不靈）。克倫威爾卒年 1658 在 Noble 書中重開確認。兩個翻轉轉折：最早版本說的就是『國王』且出自敵意傳記；『沒說國王』與『不是夢』出自 1787 年引的手稿。片長 8–9，略緊但有三層演變撐得住；不碰政治評價，照守。"
+    },
+    {
+      "id": "N4585",
+      "agent": "I6",
+      "reviewer": "R426",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I6-S001 de la Pryme 日記（覆核自己用 archive.org advancedsearch → metadata → 下一次呼叫下載 djvu.txt，記為 I6-S028）；I6-S002 Jacobs 注、I6-S004 堂區頁以研究代理下載檔逐字對照",
+      "reopen_result": "日記：『Constant tradition says that there lived in former times, in Sotfham, alias Sopham, in Norfolk, a certain pedlar…his dream being dubled and trebled upon him…I'm wiser…found a prodigious great treasure…to this day there is his statue therein, cut in stone, with his pack at his back, and his dogg at his heels』；書名頁『VOL. LIV. FOR THE YEAR MDCCCLXIX』。Jacobs：『Source.—Diary of Abraham de la Pryme (Surtees Soc.) under date 10th November, 1699, but rewritten by Mr. Nutt』『the pedlar, whose name is John Chapman』『Masnávi of the Persian port Jalaluddin, whose floruit is 1260』『Prof. Cowell suggests that it was possibly adapted at the latter place to account for the effigy of the pedlar and his dog』。堂區：『the present building…dates from 1454』『John Chapman was churchwarden during the rebuilding and is remembered as “the Pedlar of Swaffham” in carved representations of him with his muzzled dog on the pew ends』。",
+      "changed_fields": [
+        "axis",
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立。改正：研究稿說小販的名字來自『比日記晚出版的地方志傳統』——講反了：日記寫於 1699 年，卻是 1869 年度的 Surtees Society 叢刊才印出，Twysden／Blomefield 本輪沒讀，先後不能排；『早就在《一千零一夜》』的『早就』無依據，刪；補 de la Pryme 寫『石像』而堂區今天說的是長椅端雕刻（只陳述）。軸別建議改 F：流傳版本出自英格蘭童話集，答案是故事類型的原典與在地化，夢是指路不是預見，合 F 軸『童話與怪談的原版』。魯米只當故事流傳的文本，不碰其宗教內容。兩個翻轉轉折：最早文字自己說是傳說、無名無年；同一情節見於《一千零一夜》與 Jacobs 指向的 Masnavi／Dort。片長 8–9。"
+    },
+    {
+      "id": "N4601",
+      "agent": "I7",
+      "reviewer": "R427",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I7-S003 https://archive.org/details/relationdeschose00land（metadata 後下載 relationdeschose00land_djvu.txt，§II p.6–8、前言生平、導言注 (2)、p.9759 行注）；另重開 I7-S001 historiadelosind00moto（p.196、導言 p.XXX–XXXI）、I7-S002 historigeneralde01lprich（cap. LII、導言）、I7-S004 verdaderahistori01dazd（p.15–16、35–36、42、cap. XVIII p.74–77）、I7-S007 loscomentariosre01vega（cap. V）",
+      "reopen_result": "Motolinía：『A este Campeche llamaron los Españoles al principio… Yucatan… mas tal nombre no se hallará en todas estas tierras… respondían: Tectetan, Tectetan, que quiere decir No te entiendo』，獻辭『24 de Febrero de 1541』於 Tehuacan，1858 年 García Icazbalceta 印行，一致。Gómara：漁夫答『cotohe… pensando que les preguntaban por el lugar para ir allá』，問大村名答『tectetan… no te entiendo… corrompiendo el vocablo, llamaron siempre Yucatán』；導言『En 1552, y en la ciudad de Zaragoza』，說譯成法、義、拉丁文多版（不是『暢銷』）。Landa：Co[t]och＝『nuestras casas y nuestra patria』、『ci u than que quiere dezir, dizen lo… y que esto se entendió de uno de los conquistadores viejos llamado Blas Hernández que fueron con el adelantado la primera vez』——Blas Hernández 是隨 adelantado（Montejo）第一次去的人，不是 1517 年 Córdoba 船上的人；『1566, où écrivait Landa』是 Brasseur 由年代計算的推定；前言說 Landa 被召回西班牙說明、1573 年才以 Mérida 第二任主教回去、1579 年卒——研究稿『1566 年在當地寫書的主教』兩處不成立。Bernal：『Con escotoch… andad acá á mis casas… Punta de Cotoche, y así está en las cartas de marear』；『yuca con tale, quiere decir Yucatán… que en propia lengua no se dice así』；『yo riyendo le respondí que quién le puso nombre Yucatán; que allí no le llaman así. E dijo: Melchorejo, el que trujistes, lo dice』，一致。第十八章『en lo de Francisco Fernández de Córdoba, habiendo él descubierto lo de Yucatán, lo pasa por alto』指的是他讀到的那部『habla de las conquistas de Méjico y Nueva-España』的書，而 Tectetan 段在《印度通史》第五十二章正是寫 Córdoba，研究稿引這句會誤導，已刪。Garcilaso 第五章『las saqué aquí como él lo dice… Hasta aquí es de Francisco López de Gomara, sacado a la letra』，一致。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立、四種 16 世紀說法都讀到原頁；改正 Landa 的身分、地點與 Blas Hernández 是誰，刪掉會誤導的 Bernal『略過不提』，『暢銷』改照導言原話。7.5–9 分鐘，單集或接 N4602。"
+    },
+    {
+      "id": "N4602",
+      "agent": "I7",
+      "reviewer": "R427",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I7-S008 https://archive.org/details/narrativeofproce00anda（metadata 後下載 narrativeofproce00anda_djvu.txt，p.40–42、導言）；另重開 I7-S007 loscomentariosre01vega（cap. IV–VI 與注 2、8）、I7-S002（p.114『río del Perú』）",
+      "reopen_result": "Andagoya：『In the year 1522, being Inspector-General of the Indians… These invaders came from a province called Birú, the name of which has been corrupted to Pirú… marched for six or seven days, until I reached that province, which was called Birú… received accounts… as far as Cuzco』；研究稿漏讀同一段後面那句『the province was called Pirú, because one of the letters of Birú has been corrupted, and so we call it Pirú, but in reality there is no country of that name』，升為轉折二的核心。Markham 導言：Birú 在『south of the isthmus, and between the river Atrato and the Pacific』，帝國『erroneously called Peru, owing to a confusion』。研究稿稱『1522 年親自走到那裡的 Andagoya 寫』——行程是 1522 年，自述是事後寫的（提到後來建的 San Juan 城與『since discovered』到庫斯科），寫作年份頁上沒有，已改。Garcilaso：漁夫『nombró su propio nombre, diciendo Berú, y añadió otro, y dijo Pelú… el año de mil y quinientos y quince, o diez y seis』、『há setenta y dos años que se conquistó, no toman este nombre en la boca』、Valera『apruebo de muy buena gana』穀倉說、Garcilaso『es más verosímil… Berú, o… Pelú』，另有佛羅里達印第安人答主人名字的旁例，一致並補入。Urteaga 注 (2) 引 Andagoya『aquella Provincia que se dice Birú』、Oviedo 的 Becerra 1514–15，注 (8) Paz Soldán 說 Valera 的『河』義『no tiene apoyo』，一致。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.minutes",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立；補上 Andagoya 自己說『實際上並沒有叫這個名字的國家』與 Birú 的位置，最大轉折因此有一手原話；自述寫作年份未讀到，不寫成 1522 年寫。5–6.5 分鐘，章節題，接 N4601。"
+    },
+    {
+      "id": "N4603",
+      "agent": "I7",
+      "reviewer": "R427",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I7-S010 https://archive.org/details/geographicdictio00bake（metadata 後下載 geographicdictio00bake_djvu.txt，『Nome; cape』『Nome; mining camp』條）；另重開 I7-S012 https://www.loc.gov/resource/sn85035661/1902-01-18/ed-1/?sp=3（加文件記載的 fo=json，再取頁面 JSON 列的 fulltext_file）、I7-S013 fromparistonewyo00dewiiala（p.275–276、序末）；I7-S011 只在研究代理下載的同一份 PDF 的 pdftotext 本機副本上核對（500MB，未重下載）",
+      "reopen_result": "Baker：『The name Nome first appears on British Admiralty charts, after the Franklin search expeditions, and was given by Kellett, in 1849. Sir William Wharton… writing in April, 1901, says: “…first appears on our charts from an original of Kelletts in 1849. I suppose the town gets its name from the same source, but what that is we have nothing to show.” Prof. George Davidson says that this nameless cape on the original sheet bore the memorandum “?Name” which the draftsman interpreted to be C. Nome』；礦營條『first called Anvil City, now officially Nome… Gold was found here in June, 1898, and on October 18, 1898』，一致。Jamesburg Record 1902-01-18 第 3 頁補白原文一致（『according to inquiries recently made by Prof. Davidson, of the University of California』），沒有署轉載出處；研究代理也只讀到這一份（Seattle 1900、華府 1899 兩個搜尋命中與 Davidson 無關），『各地報紙轉載』刪。De Windt：『Cape Nome derives its name from the Indian word “No-me,” which signifies in English, “I don't know.”… meaning that they did not understand』，序『October 1903』，旅程 1902 年，一致。Orth：『“C[ape] Nome” appears on the 1853 Brit. Adm. Chart 2172. Its origin is generally attributed to an Admirality draftsman's misinterpretation of “? name”… H.M.S. Herald about 1850-1852… explanation given by the Chief Cartographer of the British Admirality in 1900』，頁碼在 695 附近。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，Wharton 那句是最大轉折、原文確認；報紙只讀到一份，改寫；補 Baker 自己寫的『Kellett 給的』。Davidson 卒年 1911 確認，Kellett、Wharton 未確認不入畫。5.5–7 分鐘，章節題。"
+    },
+    {
+      "id": "N4604",
+      "agent": "I7",
+      "reviewer": "R427",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I7-S015 https://archive.org/details/voyagesofjacques0000hpbi（metadata 後下載 voyagesofjacques0000hpbi_djvu.txt，詞彙表、『province of Canada』段、注 91、導言、Canada 字源注）；另重開 I7-S016 newdiscovery01hennuoft（chap. XII 與注、Thwaites 導言）、I7-S017 https://dchp.arts.ubc.ca/entries/Canada、I7-S018 natural-resources.canada.ca 頁",
+      "reopen_result": "Biggar 詞彙表『Ilz appellent une ville.』／『They call a town. Canada. [M. Kanata]』，『Above this tributary lies the province of Canada where live several tribes in open villages… within the limits of Canada』，一致；但導言說本書是以手稿 B 為底、方括號補 1545 年本與手稿 A、C 的合校本，頁上沒說詞彙表在 1545 年印本裡，研究稿『1545 年印出的詞彙表白紙黑字』刪；字源注另說『MS. C has the expression Canada undagneny… meaning “Whence come you?”』，補入；注 91 原文是『It seems to be due to the misunderstanding of this heading』，保留『似乎』。Cartier 卒年注『Cartier died on the first of September, 1557』。Hennepin『call'd it Il Capo di Nada; that is, A Cape of Nothing; hence by corruption sprung the Word Canada, which we use in all our Maps』，Thwaites 注『most historical writers regard it as meaning “village,” but some think that it means “lake”』，導言說 Hennepin 卒地卒年不詳、最後蹤跡 1701 年。DCHP-1（pre-1967）條：『by no means clearly established… most of them fanciful』，1754［Quoting an earlier source］Aca nada、1791 Capa di Nada、1811 can a day、1896 Kanatats，義項 1 的 1536 引文『nous les avions prins le premier voyage a Can[a]da』，一致。政府頁：『they were actually referring to the village of Stadacona… For lack of another name, Cartier used the word “Canada”… maps in 1547…』，頁上無 misunderstand 字樣，一致；『actually referring』照引。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.minutes",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立；刪掉讀到的本子撐不住的『1545 年印出』，補 MS. C 的『你從哪裡來？』，研究者推論『他知道意思還照用』刪；Hennepin 卒年不詳依規不入畫。不碰原住民權益與魁北克政治。7–8.5 分鐘，單集。"
+    },
+    {
+      "id": "N4605",
+      "agent": "I7",
+      "reviewer": "R427",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "I7-S020 https://archive.org/details/coleccibonviages04navarich（metadata 後下載 coleccibonviages04navarich_djvu.txt，第 6430–6450 行導言注 4、第 16340–16352 行 Albo 1520-01-10）",
+      "reopen_result": "Albo：『en derecho del cabo hay una montaña hecha como un sombrero, al cual le pusimos nombre Monte Vidi, corrutamente llaman ahora Santo Vidio (ahora Montevideo)』，括號是編者加的；Navarrete 注 4：『apreciable por ser el único que nos ha quedado para conocer la derrota de la expedición de Magallanes… luego desde la época de la expedición hasta que se escribió el Diario hubo un intervalo de tiempo en que tuvo lugar la corrupción de aquel nombre』，一致。流傳版本兩個網站未重開。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "一手日誌讀到且一致，但『Monte vide eu』目前讀到最早的出處與日誌抄本年代仍缺，只剩一個轉折，3–4 分鐘；維持待查，只能當章節（接 N4603）或 Shorts。wave40 U1 的 not_added 同題未展開，不算重複。"
+    },
+    {
+      "id": "N4606",
+      "agent": "I7",
+      "reviewer": "R427",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I7-S024 https://www.loc.gov/resource/sn84022135/1876-01-04/ed-1/?sp=2（加 fo=json，再取頁面 JSON 列的 fulltext_file）；另重開 I7-S025 quarterlyoforego18oreg（p.83–90）",
+      "reopen_result": "Stoddard 信：『my eccentric friend, the late Dr. George M. Willing, was the first delegate to Congress from the young mining community… “Ida, ho, come and see me.”… “Gem of the Mountains,” replied the quick-witted Doctor… Dr. Willing told me about it at the time, or soon afterward… and I have often heard him rehearse the story. William O. Stoddard. No. 434 Canal St., New York, Dec 8』，一致並補『常聽他重講』。報社反駁：『Your “eccentric friend” was never in Idaho… The first Delegate to Congress was Wallace… Stoddard… has probably got things mixed up… The story about a “Dr. George M Willing” is a myth』，接著是『Uncle George Baldwin… was with Joaquin Miller when that long-haired poetical galoot named the Territory “Idaho,”… a Shoshone word meaning “Gem of the mountains,” and that he… can whip the man that says Joaquin didn't』——研究稿漏讀這段玩笑，補為轉折二；研究稿說報社『把科羅拉多跟愛達荷混在一起、自己也說錯』是研究者推論，報社講的愛達荷第一位代表 Wallace 並沒錯，改為『兩邊說的不是同一塊地』。Rees：『Ee-dah-how… “Behold! the sun coming down the mountain.”』；Miller『perhaps I may have been the first to give it its present spelling, but I certainly did not originate the word』，一致。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.minutes",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立；補上報社反駁本身也是個玩笑的轉折，刪掉研究者對報社『也說錯』的推論。Stoddard 卒 1925，但頁面沒把他連到 1875 年的紐約，寫信人不畫成具名人物。7–8.5 分鐘，單集。"
+    },
+    {
+      "id": "N4621",
+      "agent": "I8",
+      "reviewer": "R428",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I8-S001 https://fgh.perseids.org/read/greekLit/tlg0007/tlg032/perseus-eng2/12.1-12.7；I8-S002 https://www.gutenberg.org/cache/epub/57493/pg57493-images.html（卷二第 59 章與注 2577）；I8-S003 https://classics.mit.edu/Aristotle/meteorology.mb.txt；I8-S005 https://plato.stanford.edu/entries/anaxagoras/",
+      "reopen_result": "頁面上確實寫了：Plutarch『And some say also that the falling of the stone was a portent of this disaster; for according to the common belief, a stone of vast size had fallen from heaven at Aegospotami』，譯注『In 468-7 B.C., according to the Parian marble (ep. 57) and Pliny』；『Anaxagoras is said to have predicted that if the heavenly bodies should be loosened…』；『But Daimachus… supports the view of Anaxagoras』。Pliny（Bostock）『The Greeks boast that Anaxagoras… had predicted, that at a certain time, a stone would fall from the sun… But to believe that this had been predicted would be to admit… were we to suppose either that the sun is itself composed of stone』。Aristotle『when the stone at Aegospotami fell out of the air—it had been carried up by a wind and fell down in the daytime—then too a comet happened to have appeared in the west』。SEP『(i.e. 466 BCE)』『Of course, he did not predict the fall of a token meteorite』『Halley's comet would have been visible across the Mediterranean from June through August in 466 BCE… disconfirms Anaxagoras' theory of comets, even though it confirms his theory of meteorites』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.payoff",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "核心轉折成立（Pliny 自己不信、Plutarch 只說一般性預言、Aristotle 的風捲說、468/7 vs 466）。改正：hook『史上第一個預言隕石的人』違反自己的 scope；Halley 彗星不只是部落格的推測，SEP 原文寫了 466 夏 Halley 可見、而且否證了 Anaxagoras 的彗星理論——研究代理把它降成『有研究者提出 Daimachus 火雲可能是 Halley』，漏了更好的轉折；漏讀 Plutarch 同段『有些人說落石是海戰慘敗的預兆』與他自己偏好的流星說；『算出哪幾天』改照所讀譯本『某個時候』；Plutarch 不是 Pliny 的『同時代』而是稍晚。兩個以上翻轉轉折，8–10 分鐘可撐。"
+    },
+    {
+      "id": "N4622",
+      "agent": "I8",
+      "reviewer": "R428",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I8-S008 https://www.gutenberg.org/ebooks/12582.epub.noimages（卷 29 各段）；I8-S009 https://www.livius.org/sources/content/herodian-s-roman-history/herodian-1.11/；I8-S011 https://www.theoi.com/Text/OvidFasti4.html（查譯者與 Claudia 段）",
+      "reopen_result": "頁面上確實寫了：Livy『a prediction in the Sibylline books, which had been inspected on account of there having been so many showers of stones this year』『putting into their hands a sacred stone, which the inhabitants said was the mother of the gods』『Claudia Quinta… Her fame, which, as it is recorded, was before that time dubious』，迎神段沒有船擱淺。Herodian 1.11.1『They say that this statue of the goddess fell from the sky… it is not certain that the statue was the work of human hands』；1.11.2 另說 Ilus 與 Tantalus 之戰『a large number of men fell on both sides; this disaster gave the region its name』；1.11.3『they easily got it』；1.11.4『one of the Vestal Virgins, who was charged with breaking her oath of chastity』，名字只在編者注『The Virgin's name was Claudia』。theoi 頁首『FASTI BOOK 4, TRANSLATED BY JAMES G. FRAZER』，Claudia『Chaste was she, though not reputed so』『stepped forth from the procession of the chaste matrons』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.payoff",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立：Livy 只說『聖石』，石頭雨才是從天上掉的；Herodian 才寫神像從天而降。改正：Herodian 自己同時給了另一個『戰死者倒下』的地名由來（研究代理只把多說法歸給 Ammianus）；Herodian 沒寫 Vestal 的名字；Phrygia 人『很容易』交出與 Ovid 的 Attalus 拒絕相反，補上；Ovid 譯者 Frazer 明寫在頁首。Magna Mater 是古代已消失的宗教，題只談文本、不碰教義，合乎守則。兩個轉折（石頭雨／聖石→天降；貴婦→Vestal），8.5–10 分鐘。"
+    },
+    {
+      "id": "N4623",
+      "agent": "I8",
+      "reviewer": "R428",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I8-S016 https://opac.geologie.ac.at/ais312/dokumente/Haidinger_1859_Meteoreisenfall%20Hraschina%20bei%20Agram.pdf（pp. 361–369 全讀）；I8-S017 https://www.zobodat.at/pdf/OOE-GEO_32_0003-0024.pdf（pp. 3–4）",
+      "reopen_result": "頁面上確實寫了：拉丁『Quod cum fama ad nos perlatum fuisset duo quasi formam cujusdam metalli praeseferentia frusta… de Coelo decidisse』，德文『das gericht, und gemeine Reden』；證人依序為 Pfarrer Marsich 39 歲、Knecht Kollar 24 歲、Koturnass 26 歲、Paul Prelok 約 50、Johann Prelok 21、Susanna Prelok 45、Anna Szekovanich 約 40，共七人，另一僕人『vom Hauss abwesend… nicht Können Examinirt werden』；鐵送交『Herrn Bischoffen, so sich auf den Jezigen Landtag Befindet… Ihro Kays. und König. Majestäten gehorsamst repraesentiren』，沒有皇帝下令；Haidinger『Am 6. Juli wurde das Protokoll aufgenommen』『Abbé Andreas Stütz… gab endlich eine deutsche Übersetzung… „Über einige vorgeblich vom Himmel gefallene Steine“… 1790』，Güssmann『Lithophylacium Mitisianum… 178[5]』為最早印刷記載、Partsch 注『früher als Chladni』。2017 文章引 Stütz 1790 S. 407『in unseren Zeiten wäre es unverzeihlich, solche Märchen auch nur wahrscheinlich zu finden』，Stütz（1747-1806）。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "risk",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "核心（風聞→七名證人、沒有皇帝下令、保管人嘲笑卻保存）逐字成立。改正：Stütz 只是『第一個德文譯本』，最早印刷記載是 1780 年代 Güssmann，而且據 Partsch 注他比 Chladni 更早把火球與隕石連在一起——這是研究代理讀到卻沒放進題的轉折；補未訊問的第八人與 7 月 6 日；Haidinger 卒年 1871 已在可讀頁面核到。Stütz『童話』只有 2017 年二手轉引，已標明；它是轉折之一而非唯一支柱（Haidinger 自己也寫『die Thatsachen würden nie bezweifelt worden sein』）。8–10 分鐘。"
+    },
+    {
+      "id": "N4624",
+      "agent": "I8",
+      "reviewer": "R428",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I8-S020 https://archive.org/download/jstor-107071/107071_djvu.txt（先叫 metadata）；I8-S021 https://archive.org/download/tuzukijahangirio53716gut/53716.txt（先叫 metadata）；I8-S022 https://asia-archive.si.edu/object/F1955.27a-b/；I8-S018（Chladni 1819 Jalandhar 條，先叫 metadata）",
+      "reopen_result": "頁面上確實寫了：Greville『a new evidence has lately fallen into my hands, and is the only one I have met with that ascertains the origin of native iron』『for the Emperor Jehangire was not a prince on whom his courtiers would idly venture to impose』；Kirkpatrick『three parts of the iron of lightning were mixed with one part of common iron』，注『A tolah is about 180 grains, Troy weight』『or A.D. 1620』『This expression is equivalent to our term thunder-bolt』。Rogers『(about 10 April, 1621)』『I ordered Master (Ustad) Da'ud to make a sword, a dagger, and a knife… it would not stand below the hammer, and fell to pieces… two swords, one dagger, and one knife』，注 508『Friday, April 10, 1621, O.S.… nearly 5.271 pounds troy』。Chladni 1819『eine Eisenmasse von 37 englischen Pfunden, nach der Berechnung… vom Prof. Gilbert… Die von Anderen angegebene Jahrzahl 1620 ist nicht genau』『160 Tolahs (55 engl. Pfund)』。Freer 標題『Knife made for Jahangir, partially of meteoric iron』、Medium『Meteoric iron, with gold inlay』、Provenance『Provenance research underway』，展籤『this dagger's blade, forged from the glittering meteorite』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "risk",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "三份閃電鐵一份普通鐵、Greville 1803、5.271 磅 vs 37／55 英磅、館方標題與展籤矛盾都逐字成立。改正：題目與鉤子把 Greville 個人在論文裡的判斷寫成『英國皇家學會把它當證據／證明鐵會從天上掉下來』，是誇大；『1955 年購入』頁面沒寫，是從館藏編號推的；補皇帝原令三件、結果四件，以及 Chladni 明說 1620 不準確；Jahangir（1627）、Greville（1809）卒年已核，Kirkpatrick 未核不入畫。排除線：只講日記與刀，不評價 Jahangir 或帝國，不碰印巴或宗教爭議。8–9.5 分鐘。"
+    },
+    {
+      "id": "N4625",
+      "agent": "I8",
+      "reviewer": "R428",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "I8-S026 https://archive.org/download/sim_annalen-der-physik_1812_42/sim_annalen-der-physik_1812_42_djvu.txt（先叫 metadata；pp. 197–206）；I8-S018 Chladni 1819（p. 73–74 Elbogen 段）",
+      "reopen_result": "頁面上確實寫了：Neumann『Eine metallische Masse, die seit unbekannter Zeit in Ellbogen… unter dem Namen der verwünschte Burggraf aufbewahrt wird』『wenn ein eingefallenes Regenwetter meinen ersten Aufenthalt in Ellbogen nicht… verlängert hätte. Ich kam am 9ten Oct. 1811』；Schaller『Johann von Werth, k.k. Feldherr, ließ diesen Klumpen in den Schloßbrunnen werfen』；Kopetzky『von 191 Pfund Schwere』『konnte ihre ersten Privilegien und mehrere der wichtigsten Dokumente nicht bewahren』『in der letzten Hälfte des 14ten oder im ersten Drittel des 15ten Jahrhunderts… denn nur während dieser Zeit saßen kais. Burggrafen auf dem Schlosse』『bis zum J. 1742 auf dem Schlosse in einem Gewölbe gelegen… 22 Klafter tiefen Schloßbrunnen… französische Truppen… Durch die Volksmeinung gereizt, stürzten sie… Die Masse blieb darin bis zum Jahre 1776, nach erschöpftem Brunnen』，鐘的說法在『In den folgenden Jahren』。Chladni 1819『die Volkssage, dass ein tyrannischer Burggraf, in Elbogen, durch eine herabgefallene Eisenmasse soll getötet worden sein』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "risk",
+        "source_locator",
+        "editorial.payoff",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "市長筆記、文件毀於戰火、伯爵駐城年代、1742 法軍丟井、1776 撈起都逐字成立。改正：『1812 年第一個認出』——Neumann 1811 年 10 月認出、1812 年發表，『第一個』沒有來源；題目的『約 1400 年』兩個流傳來源都沒有這個數字（只有 14 世紀、1350–1430），改照來源；補 Chladni 1819 把『伯爵被落下的鐵打死』列為民間傳說，而 1812 年 Kopetzky 記的傳說裡沒有這個天降版本（覆核比對，標明）；Neumann（K. A. Neumann 1771–1866）與 Chladni（1827）卒年已核。8–10 分鐘。"
+    }
+  ],
+  "theme_suggestions": [
+    {
+      "ids": [
+        "N4481",
+        "N4482"
+      ],
+      "shared_question": "『某某語言的最後一位母語者』這個封號，是誰、在哪一份文字裡封的？",
+      "why_it_flows": "同一個方法、同一個答案形狀：N4481 的『最後一人』是 1860 年碑上的『據說』，記錄者 Barrington 當年就打了折扣；N4482 的『最後一人』是辭典導論裡只講一座島的『據說』，下一句就寫了更晚的人。N4481 壓到 8 分鐘、N4482 4–4.5 分鐘，合計 12–12.5 分鐘；N4482 仍待查丹麥文原版，查完才能成題。N4483（達爾馬提亞語）答案不同（使用者本人並非母語者），建議排在這兩題之後的下一集，不合併。"
+    },
+    {
+      "ids": [
+        "N4502",
+        "N4501"
+      ],
+      "shared_question": "『演哈姆雷特鬼魂的那個演員』的故事——莎士比亞為亡子演鬼、演鬼的人不發薪就罷演——是誰、在哪份文字裡加上去的？",
+      "why_it_flows": "兩題都在拆同一個角色背後的傳說：N4502 走作者本人（1709 Rowe 的保留話→1897 DNB 照錄不連 Hamnet→1922 Joyce 的 Stephen 說『不』→2020 小說與電影），N4501 接劇場後台（1831《Atlas》關著的帳房→1833 演員自己猜『十二點』→1889 辭典的哈姆雷特笑話→2008 年才出現的罷演鬼演員→2022 推文搬回 1831）。方法相同、時間都順著往下，結論一致：當年的紀錄裡沒有那個演員的故事。合計 6–8 加 5–6，壓到 12–13 分鐘；排題前補查 1709–1922 之間的莎士比亞傳記。"
+    },
+    {
+      "ids": [
+        "N3382",
+        "N4503"
+      ],
+      "shared_question": "（排序建議，不合併）《歌劇魅影》裡的真實建築：吊燈和地下湖各是從哪份紀錄長出來的？",
+      "why_it_flows": "同一部小說、同一棟建築，N3382 是事故被小說放大，N4503 是建築師自承的掩飾被小說與觀光文案接手；兩題各自 8–10 分鐘、核心答案不同，前後排成系列即可。"
+    },
+    {
+      "ids": [
+        "N4545",
+        "N4546"
+      ],
+      "shared_question": "發明電報的 Morse 兩次替早期照片作證——1839 年他親眼看了 Daguerre 的板子，1851 年他替 Hill 的彩色照片背書——他到底看到了什麼？",
+      "why_it_flows": "同一位證人、同一個問題：1839 年他看到了，寫下一個『只有腿、沒有身體也沒有頭』的擦鞋客（N4546）；1851 年他沒看到，卻說『有充分理由相信』，一年後才承認第一次一件標本也沒看（N4545）。時間順著走，合計約 11–13 分鐘；N4546 的板子下落待查，排題前要補一手或館方紀錄，否則只講 Morse 的信、不講 Munich 原板。"
+    },
+    {
+      "ids": [
+        "N2602",
+        "N4565",
+        "N4563"
+      ],
+      "shared_question": "十九世紀被當成『古老民間傳統』的作品，哪些字是歌者的、哪些是編者的？",
+      "why_it_flows": "系列排序建議（不合併）：N2602 Macpherson 自稱『翻譯者』被拆穿；N4565 的 Lönnrot 照 Honko 的說法正是為了避開 Macpherson 的下場，才只接歌者的詩行、不自己寫，但五個版本結構各不相同；N4563 的 Jucevičius 在書裡自己拿 Ossian 用過的詞稱呼他的 klechda，書評當年就懷疑是想像。三題各自 8.5–10 分鐘，順序由『編造』到『編排』再到『創作被當傳說』，不靠補料。N2444（Hanka 手稿）可接在 N4563 之後當延伸（Jucevičius 寫過信給 Hanka），但兩題核心答案不同，只建議相鄰排。"
+    },
+    {
+      "ids": [
+        "N4581",
+        "N3781"
+      ],
+      "shared_question": "Philippi 決戰前夜，兩位統帥各自遇到的異象，是誰、在什麼時候說出來的？",
+      "why_it_flows": "同一場戰役、同一部 Plutarch〈布魯圖傳〉：N3781 是布魯圖看見的『惡靈』，N4581 是屋大維這一邊的救命夢，兩題都是『最早的出處說的跟流傳的不一樣』，各自 8–10 分鐘，排成系列不合併。"
+    },
+    {
+      "ids": [
+        "N4581",
+        "N4582",
+        "N2906"
+      ],
+      "shared_question": "羅馬人收集的『應驗的夢』，是誰先說、後來怎麼被加料的？",
+      "why_it_flows": "Valerius Maximus 1.7〈論夢〉把屋大維（1.7.1）、Calpurnia（1.7.2，N2906 已提到 Valerius）與漢尼拔（1.7.ext.1）的夢排在同一章；三題答案各自獨立，作系列用 Valerius 這一章當串場，不合併。"
+    },
+    {
+      "ids": [
+        "N4601",
+        "N4602"
+      ],
+      "shared_question": "『當地人答非所問，名字就這樣留下來』——猶加敦和秘魯這兩個最有名的例子，是誰、哪一年寫下的？親自到過那裡的人又寫了什麼？",
+      "why_it_flows": "Garcilaso 1609 年的原書就把兩題並排：他講完秘魯的漁夫，緊接著照字抄 Gómara 的 Tectetan 一段，說『在印第安各地很多地方都發生了跟秘魯一樣的事』。所以一集可以從 Yucatán 的四種 16 世紀說法（Motolinía、Gómara、Landa、Bernal）走到 Garcilaso 這本書，再翻到秘魯，用 Andagoya『其實並沒有叫這個名字的國家』收尾；兩題都是『親歷者的版本與被重印的版本不同』。N4601 取 7.5 分鐘（Cotoche 兩說只留一句）、N4602 取 5 分鐘，合計約 12.5–13 分鐘，不需補料。"
+    },
+    {
+      "ids": [
+        "N4623",
+        "N3503"
+      ],
+      "shared_question": "隕石被科學界承認之前，親眼看見它落下的證詞為什麼會被專家否決，又靠什麼留下來？",
+      "why_it_flows": "N4623 是 1751 年教會證詞被 1790 年保管人稱為『童話』卻沒丟掉鐵，N3503 接著是 1768 年法國院士化驗後判定『沒有從天上掉下』、到 1803 年 Biot 去 L'Aigle 翻案；同一個問題、時間順著往下，兩題都是 episode_core，排成兩集的系列而不合併。"
+    },
+    {
+      "ids": [
+        "N4621",
+        "N4623",
+        "N4624",
+        "N3503"
+      ],
+      "shared_question": "被科學界承認之前的隕石：古人、教士、皇帝與院士各自怎麼記下天上掉下來的東西？",
+      "why_it_flows": "系列排序：N4621（古希臘，預言是後人加的）→ N4623（1751 教會證詞與 1790 的嘲笑）→ N4624（1621 皇帝日記在 1803 年被 Greville 當成證據）→ N3503（1803 Biot 與 L'Aigle）；N4624 與 N3503 同在 1803 年，可前後接。各題都撐得起 8 分鐘，只建議成系列不合併。N2185（Ensisheim 鐵鏈）答案是展示方式的後加細節，可當系列外篇。"
+    },
+    {
+      "ids": [
+        "N4625",
+        "N3605"
+      ],
+      "shared_question": "一件被傳說包住的老東西，到底是不是天上掉下來的——Chladni 1819 年怎麼判？",
+      "why_it_flows": "方向相反的一對：N3605 傳說說龍石天降、Chladni 說『很可疑』；N4625 傳說說是被詛咒的伯爵、1811 年化學教授認出是隕鐵，Chladni 1819 卻把『被落下的鐵打死』列為民間傳說。同一本 Chladni 1819 連起兩題，各自成集。"
+    }
+  ],
+  "rule1_record": [
+    "I5（研究）違規：第 75 次呼叫，搜尋結果給的是 gutenberg.org/ebooks/75742.kf8.images，研究代理自己加了 www. 又把格式字尾換成 .epub.noimages 才抓（換主機加改網址）；抓到的書沒有列成來源、沒進任何題目，覆核 R425 另從 Klemming 編本重開核對 Birgitta 引文，內容一致。",
+    "I4（研究）灰色地帶：自報試用「EN.wikipedia.com」轉址網域加 action=raw 讀條目，被權限分類器拒絕、沒讀到內容；覆核 R424 查明這個網址原樣出現在前一筆搜尋結果裡、只是加了參數，記為灰色地帶不算違規。",
+    "I1、I2、I3、I6、I7、I8（研究）：覆核 R421、R422、R423、R426、R427、R428 逐筆讀工具紀錄（119、133、143、132、135、127 次呼叫），沒有發現猜測、拼湊或改參數的網址；archive.org 都是先叫 metadata、下一次呼叫才下載。",
+    "灰色地帶（不算違規）：I2 的 Python 被 loc.gov 回 403 後改用 curl 預設標頭（覆核建議下一批寫明遇 403 就停）；I3 自己替 Gutenberg 書目頁加 www.（同站標準轉址）；I5 Birgitta 五卷同一次叫 metadata、下一次用迴圈下載清單所列檔名；I7 自己組 loc.gov 的 Chronicling America 搜尋網址（文件記載的 fo=json 端點）並有一次 http 改 https 同主機；I8 讀 brewminate 依 CC BY-NC-SA 的轉載（只當流傳說法出處）。",
+    "本批中途子代理共用的 WebSearch 額度用完，後半段的研究與覆核只重開已列網址與 archive.org API，卒年補不到的人一律不入畫。",
+    "覆核者本身都沒有拼網址；卒年只在搜尋結果連到的可讀頁面確認，確認不到的人一律不畫成具名人物。"
+  ],
+  "reviewer_notes": {
+    "R421": {
+      "rule1_record": [
+        "I1（研究）：覆核 R421 逐筆讀工具紀錄（119 次呼叫，其中 WebSearch 12 次、WebFetch 2 次），沒有發現猜測、拼湊、改參數或換主機的網址。所有網頁（west-penwith、cornwalls、penwithlocalhistorygroup、goblinshead、burialsandbeyond、theneweuropean、lingodeer、history.com、livius、treesforlife、scotclans、col.rct.uk、graveyardsofscotland、abdn.ac.uk、core.ac.uk、britishlistedbuildings、gutenberg 13621／41419／40804、batharchives 等）都能在之前的 WebSearch 結果裡找到同一網址；15 個 archive.org identifier 都出自 advancedsearch 結果，14 次下載的檔名都列在前一次呼叫的 metadata 檔案清單裡，沒有在同一個指令裡串 metadata 與下載。",
+        "灰色地帶（不算違規）：sources 的 url 欄用 archive.org/details/<identifier>（由搜尋結果的 identifier 組成、沒有實際開啟，與前幾批做法相同）；I1-S009、I1-S012、I1-S019、I1-S020、I1-S021 的 reading_scope 寫『全文』或『館藏說明全文』，實際只印出關鍵字前後 2,500–5,000 字；core.ac.uk PDF 在 curl 拿到 HTML 後用 WebFetch 再抓同一網址遇 403 即停。",
+        "覆核者 R421 自己：archive.org 先跑 advancedsearch 取得 identifier、再叫 metadata、下一次呼叫才下載清單所列檔名（Jakobsen 1897 第一次下載回 500，用同一清單網址重抓一次）；網頁只開自己 WebSearch 結果列出的網址；卒年只在搜尋結果連到的頁面確認（Barrington 1800、Bartoli 1946、Jakobsen 1918、John Sobieski Stuart 1872 見 RCT 作者欄）；nationalgalleries.org 遇 Cloudflare 即停。Burt、Pennant、Scott、Bonaparte、David Ross、Sir Ewen Cameron 的卒年本輪沒確認，一律不畫成可辨識人物。"
+      ],
+      "reviewer_notes": "去重：grep pool.json、batches/*.json（含 not_added）、reviews/*.json、原來如此事務所 pool.json：Dolly Pentreath、Pentraeth、Cornish、康瓦爾、Norn（整字）、Walter Sutherland、Dalmatian、Udaina、Udina、Janet Horne、Dornoch、Romulus Augustulus、Augustulus、Odoacer／Odoacar、last wolf、最後一頭狼、MacQueen、Sobieski、Vestiarium、tartan、格紋，都沒有同案（命中的都是不相干題：Botathen、Lyonesse、Perceval、Macqueen-Pope）。N2944 旅鴿（M，8–10 分）、N2946 袋狼（M，chapter 3.5–5 分，wave27 覆核已建議接 N2944）與 N4486 同屬『最後一隻』，答案不同，排序相鄰即可。curio43 研究檔：目前只有 p1 工作目錄（含 1842、1848 年 Vestiarium 相關文本），沒有 JSON 輸出；若 wave43 P1 收《Vestiarium Scoticum》，與 N4486 共用 Allen 兄弟、答案不同，已寫進 N4486 notes。cli.mjs search 本輪沒用（依 BRIEF 以 grep 為主）。",
+      "blocked_sites": [
+        "nationalgalleries.org（Cloudflare）"
+      ]
+    },
+    "R422": {
+      "rule1_record": {
+        "agent": "I2",
+        "log": "/tmp/claude-0/-home-user-travel-scanner/1d8cbe05-355f-537a-9349-fec9ea4f8166/tasks/a3d8b9f70111026dc.output",
+        "calls_read": 133,
+        "violations": [],
+        "checked": "逐筆對照：每個 curl／WebFetch 的網址都出現在先前的 WebSearch 結果、頁面連結或 API 回應裡。archive.org 的 7 個 identifier（nineyearsofactor00dyeriala、sim_household-words…1853-09-24_8_183、adictionaryofsla01barriala、cu31924031245487、bookofplaystudie00cookuoft、ulyssesshake1922_hmp、dictionaryofnati0051sidn、lenouveloprade01garn）都先出現在 advancedsearch 結果，metadata 與 djvu.txt 下載都分在不同呼叫，檔名都在 metadata 清單裡；loc.gov 的 resource 網址都來自 Chronicling America 搜尋 JSON 的結果，只加了文件記載的 fo=json，全文檔用頁面 JSON 給的 fulltext_file；Gutenberg #62215 的 HTML 來自書目頁上的相對連結；zh.wikisource《錄曲餘談》網址在搜尋結果裡，action=raw 屬 BRIEF 列舉的 MediaWiki 參數；Papers Past／dynamic-rsnz 網址都在搜尋結果裡。各來源的 read_via 與實際路徑相符。",
+        "gray_areas": [
+          "第 38→39 次呼叫：研究代理自寫的 Python 腳本用 urllib（預設標頭 Python-urllib）抓 loc.gov 頁面 JSON 被回 403，隨即把腳本改成呼叫 curl（預設標頭，沒有 -A、沒有自訂 User-Agent）而成功。覆核判斷：沒有改 User-Agent，curl 也是它在第 33–37 次就一直用來讀 loc.gov 的同一個工具，不算違規；但『被某種用戶端擋下就換另一種用戶端』很接近繞過，記為灰色地帶，下一批應寫明遇 403 就停、不換工具重試。這些 loc.gov 頁面都沒有成為來源（只用在 notes 的『沒找到』）。",
+          "第 19→20 次呼叫：curl 讀 Papers Past 回空頁後，立刻用 WebFetch 再抓同一網址（也是空）；當時還沒發現是 Incapsula，第 32 次看到驗證頁後就停了、沒有繞過，記入 blocked_sites。灰色地帶，不算違規。",
+          "online-literature.com 回 Cloudflare 驗證頁後沒有重試，改讀 archive.org 1922 年初版；folklore.usc.edu TLS 失敗沒有關閉驗證。皆合規。"
+        ]
+      },
+      "blocked_sites": [
+        "www.britannica.com（Gaston Leroux 條回 403，未繞過，改讀同一搜尋結果的 EBSCO 頁）",
+        "opentextbc.ca（Joyce 生平回 403，未繞過，改讀 poets.org）"
+      ]
+    },
+    "R423": {
+      "rule1_record": {
+        "agent_calls": 143,
+        "method": "用 python 從工具紀錄 JSONL 抽出 143 次 tool_use 的指令與 22 次 WebSearch 的結果網址，逐筆比對每個 curl／WebFetch 網址是否出現在先前的搜尋結果、頁面連結或 archive.org metadata 檔案清單。",
+        "violations": [],
+        "gray_areas": [
+          "第 126 次呼叫在一個迴圈裡抓 https://www.gutenberg.org/ebooks/{25888,66762,40459,1658}：66762 的 www 網址在搜尋結果裡，但 25888、40459、1658 的搜尋結果是不帶 www 的 gutenberg.org/ebooks/<n>（另有 m.gutenberg.org）。等於自己在主機名前加了 www。同一網站的標準轉址，算輕微灰色地帶，不判違規；來源欄 I3-S033、I3-S034 寫的是搜尋結果原網址，而且覆核用自己的搜尋結果重讀了 25888、40459 書目頁的生卒，內容一致。1658 的書目頁沒有進來源。",
+          "I3-S011 Gudger 1919 讀的是 georgehbalazs.com 個人網站轉存的 PDF（網址出自搜尋結果）。這篇是 1919 年 JSTOR Early Journal Content，首頁明文寫可自由轉貼，不屬於『有版權書籍的未授權轉存』；但它不是典藏原件，覆核改用 archive.org 的 JSTOR 典藏 jstor-2456185（R423-S001）並重讀確認引文。",
+          "I3-S017 LEPS-L 1999：是 Yale 郵件論壇自己的公開封存，裡面轉寄了一篇署名 Zig Ziglar、出處不明的勵志短文。只用來證明這個版本流傳過，不是轉存書籍；rights 維持只連結＋摘要，題目只引一兩句。",
+          "I3-S025 Wesley PDF 放在 wesleyscholar.com，是 19 世紀《Wesley 文集》的 Google 掃描（公有領域），網址出自搜尋結果，可用。",
+          "第 129 次呼叫用 archive.org/metadata/<id>/metadata 讀作者生卒：這是文件記載的 metadata API 子路徑，id 都來自先前的搜尋或 advancedsearch，可接受。",
+          "archive.org 九個 identifier（journalofproceed06linn、journalofproceed05linn、antstheirwayswit00whit、wildfowlofunited00elli、anessayconcerni05lockgoog、Temple 1692、b22039818_0001、b22039818_0002、illustrationsofi00couc、speakingparrotss00russ）都是先叫 metadata、看到檔案清單後，下一次呼叫才下載清單所列的 djvu.txt；identifier 都來自搜尋結果或 advancedsearch。",
+          "其他 curl 網址（Darwin Project、Fraval PDF、Gutenberg 純文字與 HTML、penelope、azpest、arXiv、pantheon、CAMWS、LEPS-L、Gizmodo、AMNH、A-Z Animals、joelgbirds、rexbrasher、wesleyscholar、thriftyscissors、scielo、Wikisource PSM、Yorkshire Post、questionsnthat、todayifoundout）都逐字出現在先前的搜尋結果；Locke 的 pg10615-images.html 來自書目頁上的連結。read_via 與實際路徑一致。"
+        ],
+        "reviewer_self_report": "覆核自己：Romanes、Pliny 三卷、Fabre、Beebe、Phaedo 的 Gutenberg 網址與書目頁都取自覆核自己的搜尋結果；Gudger 的 jstor-2456185 來自覆核自己跑的 advancedsearch，先叫 metadata、下一次呼叫才下載；I3 來源的六個 archive.org identifier 都先叫 metadata、下一次呼叫才下載。灰色地帶：Edmondston 第 1 卷（b22039818_0001）的 identifier 與 Locke 書目頁 https://www.gutenberg.org/ebooks/10615 是照研究代理工具紀錄裡的搜尋或 advancedsearch 結果開的，覆核自己沒有重搜；第 1 卷也是先叫 metadata 再下載。其餘重開的網址都是 I3.json 各來源 url 欄的原網址。沒有自己拼任何網址。"
+      },
+      "dedupe_note": "grep pool.json、batches/*.json（含 not_added）、原來如此事務所 pool.json 與 batches，以及同目錄 I1、I5、I6、I8：ant funeral、Hutton、remora、echeneis、擋船／吸盤魚、Fabre、processionary、ant mill、Beebe、swan song、天鵝、Phaedo、Maurice、Temple、鸚鵡、Locke、crow court、craws court、Edmondston、Couch、Romanes 都沒有同案；Hutton、Maurice、Temple、Couch、Beebe、Romanes 的命中都是其他人或其他題。N382、N2824、N3501、N3822、N129、N163、N703、G18 的 not_added 判斷照讀過的題目核對無誤。原來如此事務所 B2317（阿根廷蟻屍體化學訊號）與 N4521 核心不同；B2292（杜鵑雛鳥推蛋）只牽涉 not_added。素材池 cli.mjs search 本輪沒用（BRIEF 以 grep 為主）。"
+    },
+    "R424": {
+      "rule1_record": [
+        "I4（研究）：覆核 R424 用 python 抽工具紀錄 a08c7de460935c3c6（114 次呼叫：Bash 為主、WebSearch 12 次、WebFetch 0 次），逐筆比對每個抓取網址在先前輸出中的出處。網頁（skullsinthestars、lithub、worldhistory.substack、accueilmaisondebalzac、www.maisondebalzac.paris.fr、luminous-lint 兩頁、about.jstor.org、fentonletterbooks 首頁、rct.uk、tate、photographytalk、gutenberg pg11018.txt、niepce-letters-and-documents、news.artnet、smithsonianmag、fstoppers、siarchives、americanheritage、blog.library.si.edu）都能在之前的 WebSearch 結果找到同一網址；fentonletterbooks 的 letterNo=7 出自首頁 href，letterNo=10 出自第 7 封頁面的信件清單；loc.gov 是 BRIEF 列舉的 chronicling-america 搜尋 fo=json，結果頁加 fo=json、tile.loc.gov 全文連結取自頁面 JSON（含第 #14 筆 1872-11-16 那頁，出自 r2 搜尋結果）；en.wikipedia.org/wiki/The_Horse_in_Motion 出自搜尋結果、加 BRIEF 列舉的 action=raw。archive.org 七個 identifier：五個出自 advancedsearch 結果（gri_33125012264293、horseinmotionass01stil、ramsaye_book_1926、comptesrendusheb09acad、comptesrendusheb10scie），每次都先叫 metadata、下一次呼叫才下載清單所列 _djvu.txt。沒有發現改參數、填相鄰頁碼、換主機或自擬頂層網址。",
+        "研究代理自報的 #71（灰色地帶，未執行成功）：curl『https://EN.wikipedia.com/wiki/Valley_of_the_Shadow_of_Death_(Roger_Fenton)?action=raw』。核實：這個大寫主機名的網址原樣出現在第 #65 筆 WebSearch 結果裡（不是研究代理自己把主機換掉），研究代理只在後面加了 BRIEF 列舉的 action=raw；被本機權限分類器以 Containment Escape 拒絕，沒有讀到任何內容，也沒有任何來源或主張建立在它上面。判為灰色地帶而非違規：網址本身來自搜尋結果，但 wikipedia.com 是轉址網域、不是 MediaWiki 主機本身，對轉址網域加 action=raw 等於假設轉址後參數會保留，超出『文件記載的 API』的字面範圍；而且維基只能當索引。研究代理在回報中照實寫了這件事。",
+        "其他灰色地帶（研究代理沒自報）：quandjetaisphoto00nada 與 lacomdiehumain18balz 兩個 identifier 不是來自 advancedsearch，而是從 WebSearch 結果裡的 archive.org/download/<id>/<id>.pdf 連結取出 identifier 再叫 metadata API；metadata 是 BRIEF 列舉的公開 API、identifier 原樣出自搜尋結果，與前幾批做法相同，不算違規。sources 的 url 欄寫 archive.org/details/<identifier>，沒有實際開過該頁（前幾批同樣做法）。#30 一筆 sleep 指令被拒，與網址無關。",
+        "覆核者 R424 自己：archive.org 只用 I4 sources 已列的 identifier，先叫 metadata、下一次呼叫才下載清單所列 _djvu.txt；loc.gov 對 I4 sources 已列的頁面加 fo=json，再抓頁面 JSON 所列 tile.loc.gov 全文連結；其餘網頁只重開 I4 sources 已列（原本出自搜尋結果）的網址。卒年只在自己 WebSearch 結果連到的頁面確認：Balzac 1850（encyclopedia.com）、Daguerre 1851（micro.magnet.fsu.edu）、Bayard 1887（arthistoryunstuffed.com）、Stanford 1893（governors.library.ca.gov）、Fenton 1869（iphf.org，另 I4-S019 也寫 1869）。britannica.com 兩頁回 Cloudflare 驗證頁、collection.sciencemuseumgroup.org.uk 回 403、universalis.fr 回壓縮亂碼，皆即停不繞過。Gautier、Nerval、Isaacs、Biot 等卒年沒查，一律不畫成可辨識人物。"
+      ],
+      "reviewer_notes": "六題四題修改後通過、N4545 補讀到的訃聞後由 needs_check 改 screened、N4546 維持待查。最重要的改正：N4541 的 1882 附錄是 Muybridge 自己提供的說明（矛盾是他前後兩個版本）；N4542 漏讀 Nadar 暗示『可能是擺姿態』的後半句；N4543 轉折一誤用陳屍所段落；N4544『被逼退』其實是改換位置；N4545 的『最早的信』前面還有一則，『黃色出不來』原文是『呈淺黃褐』。去重：pool.json、batches/*.json（含 not_added）、原來如此事務所池、同目錄其他研究檔皆無 Muybridge／Stanford 賭注／Nadar／Balzac／Bayard 照片／Fenton／Hillotype／Boulevard du Temple 的同案；L28（仙子照片）、G02（芒勒靈魂照片）、N1544、N2243、N3922 皆為不同案、不同答案。cli.mjs 回 Index is stale，未重建。",
+      "blocked_sites": [
+        "britannica.com（Cloudflare 驗證頁）",
+        "collection.sciencemuseumgroup.org.uk（403）",
+        "universalis.fr（回傳壓縮內容無法讀，未繞過）"
+      ]
+    },
+    "R425": {
+      "rule1_record": "逐筆讀研究代理工具紀錄（約 118 次呼叫：Bash 約 100、WebSearch 12、其餘為檔案與交件），把每個 curl 網址對回它之前的工具結果：（一）違規 1 筆：#75 WebSearch（\"tompta gudhi\" Birgitta…）結果給的是 https://gutenberg.org/ebooks/75742.kf8.images，研究代理抓的是 https://www.gutenberg.org/ebooks/75742.epub.noimages——自己加了 www. 又把格式字尾換掉，屬於改網址／換主機；之前沒有任何結果或頁面列出這個網址。下載到的《Den heliga Birgitta》（g75742.txt）沒有列成來源，也沒有進任何題目，Birgitta 的文字來自 Klemming 編本（I5-S019），覆核已另行重開核對一致。（二）合規：archive.org 七個 identifier 都來自 advancedsearch 結果，每個都先叫 metadata、下一次呼叫才下載 metadata 檔案清單上的檔名；Birgitta 五卷在 #89 同一次呼叫裡逐一叫 metadata，#90 下一次呼叫用 ${id}_djvu.txt 迴圈下載——迴圈拼出的五個檔名都和 #89 印出的清單逐字相同，算合規，但寫法接近『照樣式拼檔名』，記為灰色地帶；#35 下載回 500，#38 重送同一網址，合規；Christiern Pedersen 卷 bub_gb_F7cCfd0Woh8C 來自 #63 搜尋結果；Boesen 手稿 BSGMS3588 只叫了 metadata 沒下載。（三）其他網址：althingi.is、smithsonianmag.com、blogs.transparent.com、ancientpages.com、Europeana、mentalfloss、guidetoiceland、landsbokasafn（伺服器 301 後同網址加 -L）、kronborg.dk、gradynewsource、howtoliveindenmark、andersen.sdu.dk、kalevalaseura、folklorefellows、runeberg.org、routesnorth、gutenberg 25953、helsinki.fi PDF、swedishpress、scandinavianchristmastraditions、visit-palanga、amberlita、zurnalai.vu.lt PDF、journals.vu.lt 文章頁都在 WebSearch 結果裡；journals.vu.lt 的 /en/…/30618/29618 是文章頁上的 HTML 全文連結；fi.wikisource.org/wiki/Kalevala 是 runeberg.org 頁上的連結；兩處 Cloudflare（althingi、smithsonian）與維護頁沒有繞過。read_via 的寫法與紀錄相符，沒發現謊報。（四）覆核自己：只開了 I5 來源欄（皆可對回其搜尋結果或頁面連結）與自己 WebSearch 結果所列的網址（tidsskrift.dk 年刊、kalevalaseura 的 Lönnrot 生平頁、lex.dk 的 Thiele、vrsidor.se 的 Rydberg、maironiomuziejus.lt）；archive.org 七個檔先叫 metadata、下一次呼叫才下載。卒年：Lönnrot 1884、Thiele 1874、Rydberg 1895、Jucevičius 1846、Páll Jónsson 1889 在可讀頁上確認；安徒生、Maironis、Jóhannes úr Kötlum、Christian 六世沒在可讀頁上確認（WebSearch 額度在本輪用完），照規則判不入畫。"
+    },
+    "R426": {
+      "rule1_record": "逐筆讀了研究代理工具紀錄（agent-aa33a37c80f03ddf1.jsonl，358 行、132 個工具呼叫），用腳本把每個 curl／WebFetch 網址對回它之前所有呼叫的完整結果。結論：沒有找到猜測或拼湊網址的違規。細項：(1) 直接抓取的網頁（sacred-texts meft21、SurLaLune、Gutenberg 14241／47475／3438／60230／44125、BHO node/67943、NHE MNF2698、achurchnearyou、lexundria 三頁、attalus valerius1a、textbase.scriptorium.ro Dio 13、futilitycloset 兩篇、thepenngazette、chestofbooks American Cyclopaedia 與 Myers Part 5／6、archives.upenn.edu、attalus sosylus）都逐字出現在先前的 WebSearch 結果。(2) attalus valerius1b.html 來自 valerius1a 頁上的連結（#51 印出『valerius1b.html#c7 Of Dreams』）；LacusCurtius Valerius 拉丁頁與 Cicero De div. 卷一來自 valerius1a 頁上的 Latin 與『Cicero Div_1.92』連結，read_via 照實。(3) archive.org：diaryofabrahamde00dela（#17 搜尋結果）、livybook2125seco00livy（#58）、compendiumofroma00velluoft（#68）的 identifier 都在搜尋結果；proceedingsofsoc12soci、old-babylonian-inscriptions…、Flagellum、Kimber、Noble、flowingstreamsto0000flor 來自 advancedsearch（BRIEF 列為公開 API）。每個 identifier 都先叫 metadata，下一次呼叫才下載清單所列的 djvu.txt（#18→#19、#59→#60、#69→#70、#87→#88、#92→#93、#101→#102、#107→#108、#112→#113）；#101 在同一個指令裡迴圈叫兩個 identifier 的 metadata，沒有下載，合規。(4) #80 自己組 loc.gov Chronicling America 的 fo=json 查詢（BRIEF 第 3 條列為公開格式參數），回空，沒有作為來源。(5) 被擋的網站（BHO 401、NHE 503、sacred-texts 403、SurLaLune 404、attalus valerius1b 機器驗證頁、Penn Gazette 406、Flowing Stream 借閱限定）都沒有重試繞過、沒有改 User-Agent，blocked_sites 照實記錄。(6) 卒年：研究代理沒有自己打維基網址；Hilprecht 卒年取自搜尋結果的 UPenn 頁，Cromwell 卒年取自搜尋結果的 American Cyclopaedia 頁。(7) 素材池 CLI 研究代理沒用。read_via 的小瑕疵：I6-S015、S020–S022 寫『advancedsearch 找到 identifier』屬實；沒有謊報路徑。覆核自己：所有網址都來自覆核自己的 WebSearch 結果或結果頁上的連結（attalus hn7b → 頁上 L 連結到 LacusCurtius Pliny 7；attalus valerius1a → Latin 連結與 ../info/valerius.html；LacusCurtius Cicero home → 頁上 E 與 L 卷一連結，L 回 404 未再試），archive.org 一律 advancedsearch → metadata → 下一次呼叫下載；cli.mjs search 前景加 timeout 150 跑一次，回 Pool drift／stale 訊息，未重建，去重以 grep 為主。",
+      "blocked_sites": [
+        "penelope.uchicago.edu/Thayer/L/Roman/Texts/Cicero/de_Divinatione/1*.html（home 頁上的連結，回 404，未改網址重試）",
+        "American Cyclopaedia Cromwell 條目：覆核自己的搜尋沒找到（研究代理經搜尋結果讀到的 chestofbooks 頁內容以下載檔對照）"
+      ]
+    },
+    "R427": {
+      "rule1_record": [
+        "I7（研究）：覆核 R427 逐筆讀工具紀錄（135 次呼叫，其中 WebSearch 10 次、WebFetch 2 次、其餘 Bash），沒有發現猜測、拼湊或改參數的網址。所有一般網頁的起點都在先前 WebSearch 的結果裡（history.com、spanish.academy、howtoperu、larepublica、gi.alaska.edu、pubs.usgs.gov、en.wikipedia.org/wiki/Cape_Nome、billiken、ryo.co、dchp、thecanadianencyclopedia、grunge、isb.idaho.gov、barrypopik、boisestatepublicradio）；USGS PDF 取自 pp567 頁面的 href；nrcan 網址取自 grunge 頁的 href、跟隨轉址到 natural-resources.canada.ca，read_via 照實寫。",
+        "archive.org：14 個 identifier 都是先叫 metadata、看到檔案清單，下一次呼叫才下載 _djvu.txt（19→20、23→24、29→30、32→33、41→42、46→47、64→65、67→68、69→70、78→79、85→86、88→89、94→95、104→105）；identifier 全來自 advancedsearch 結果或搜尋結果頁上的連結（geographicdictio00bake 首見於 Cape_Nome 條目頁，nomenuggetssomeo00fren 首見於搜尋結果的 PDF 連結）。",
+        "灰色地帶（判為合規，不算違規）：研究代理自承的 loc.gov 搜尋網址（/collections/chronicling-america/?q=…&dates=…&fo=json，呼叫 73、108、109）是自己組的查詢字串；BRIEF 第 3 條把 loc.gov 的 fo=json 列為文件記載的 API，loc.gov JSON API 也公開記載這個搜尋端點與 q、dates 參數，性質與 archive.org advancedsearch 自擬查詢字串相同，wave39 G4 亦同此判；搜尋只用來取得報紙頁面網址，頁面網址照搜尋結果原樣使用，全文網址取自頁面 JSON 的 fulltext_file。",
+        "灰色地帶（不算違規）：搜尋結果給的是 http://www.loc.gov/resource/… 網址，研究代理加上 fo=json 用 http 抓回非 JSON 而失敗後，改用 https 同主機同路徑再抓（呼叫 74→75，兩頁），與 wave39 G1 同類；108 的 loc.gov 搜尋回非 JSON，等 5 秒用同一網址重試一次（109）；thecanadianencyclopedia.ca 回 CloudFront 403 後沒有重試或繞過，記在 blocked_sites；I7-S012、S023、S024 的 read_via『loc_gov_search_json_then_page_json_then_fulltext』與紀錄相符。",
+        "覆核者 R427 本身：archive.org 12 個 identifier 取自 I7.json 的來源網址，先叫 metadata、下一次呼叫才下載清單上的 _djvu.txt；loc.gov 兩頁用 I7.json 所列頁面網址加文件記載的 fo=json，全文網址取自回傳 JSON；dchp 與 natural-resources.canada.ca 用研究稿所列（原出自搜尋結果與頁面連結）網址；卒年用 WebSearch 結果連到的頁面（abrahamlincoln.org、faculty.evansville.edu；mdshs.org 回 404）與 archive.org 館藏著錄（wave40 U10 前例）、原書導言與注確認；沒有拼網址。"
+      ],
+      "reviewer_notes": [
+        "去重：grep pool.json 與 batches/*.json（含 not_added）：Yucat／猶加敦只命中 Landa 書當別題來源、Chicxulub、Chilam Balam 等；Tectetan、Cotoch、Birú／Berú、Kanata、Cape Nome 名字由來、Montevideo 都沒有既有題；『蒙特維』只命中 wave40 U1 的 not_added（未展開、無 existing_ids）；Idaho／愛達荷只命中 Bear Lake、Arnold、Kincaid 的地點；原來如此事務所池無相關題。素材池 CLI 回『Index is stale』，依 BRIEF 不重建、改用 grep。",
+        "系列排序（不必合併）：N2786（Kangaroo，Cook 記對了字）→ T：N4601＋N4602（『我聽不懂』最早是誰寫的）→ N4603（『? Name』與 No-me）可排成『被誤聽的名字』三集；N2583＋N2584 已是現成一集（Patagonia 來自騎士小說、Brasil 來自商品名），核心是『從舊世界帶來的名字』，不是誤聽，可作系列的鄰集但不要寫成同一個問題。N2786 已 8.5–9.5 分鐘，不與 N4603 合併（超過 13 分鐘）。",
+        "N4603＋N4605 若 N4605 補到『vide eu』最早出處，可合成『名字是抄錯的，還是喊出來的？』約 9–11 分鐘（海圖與航海日誌上的名字 vs 流傳的『當地人一句話』／『水手一聲喊』）；在那之前 N4603 暫無兄弟題，建議暫緩或排在 N2786 系列後當 Shorts 長度的延伸，不硬湊。",
+        "排除線：Denali 已由研究代理排除；Canada、Montevideo 題的 scope 已寫明不碰原住民權益與國界；殖民者對原住民的說法只當引述；1956 年後過世者無人入畫。"
+      ],
+      "blocked_sites": [
+        "mdshs.org（Davidson 紀念頁，搜尋結果所列網址回 404）"
+      ]
+    },
+    "R428": {
+      "rule1_record": [
+        "I8（研究）：覆核逐筆讀工具紀錄（127 次呼叫，以腳本比對每個抓取網址是否先出現在之前的搜尋結果或頁面輸出），沒有發現猜測、拼湊、改參數、換主機或自填頁碼的網址。逐筆：fgh.perseids.org 三頁、classics.mit.edu、plato.stanford.edu、livius.org 1.11、bkv.unifr.ch、theoi.com、poetryintranslation.com、imperiumromanum.pl、brewminate.com、symbolreader.net、worldhistory.org（403）、opac.geologie.ac.at 的 Haidinger PDF（搜尋結果中為空格，curl 以 %20 編碼，同一網址）、zobodat、nhm.at 兩頁、visitingvienna、lindahall、makingscience、jimclifford.ca、sanweb.lib.msu.edu、cambridge.org、freersackler（伺服器轉址到 asia-archive.si.edu）、asia-archive 部落格、homegrown、stardate、lostfort、khaleejtimes、gutenberg 60230／12582 epub 都在搜尋結果裡；gutenberg cache/epub/57493 頁取自 ebooks/57493 書目頁的 href（書目頁本身在搜尋結果）；livius herodian-5.3 取自 1.11 頁的目錄 href。",
+        "archive.org：jstor-102298（識別碼來自搜尋結果的 jimclifford.ca 網址）、s3id13207800、chladni_feuer_meteore_german、tuzukijahangirio53716gut、jstor-107071、sim_annalen-der-physik_1812_42 都是 advancedsearch → metadata 列出檔名 → 下一次呼叫才下載，沒有在同一指令串接，下載檔名皆見於 metadata 檔案清單。",
+        "授權判斷（不算違規）：worldhistory.org 403 後改讀 brewminate.com 轉載——該網址在搜尋結果裡，頁面寫『Originally published by the Ancient History Encyclopedia, 02.04.2015, under a Creative Commons: Attribution-NonCommercial-ShareAlike 3.0 Unported license』並署原作者，屬依 CC 授權標示的轉載而非無授權轉存；但它是帶廣告的網站，是否符合 NC 條款無法確認，且只當『流傳說法』出處，可接受。theoi.com 的 Ovid 是 James G. Frazer（1941 年卒）1931 年 Loeb 譯本，頁首明寫譯者，屬公有領域譯本的正規收錄；研究代理寫『沒看到譯者署名』不正確（已在 N4622 改）。archive.org 的 jstor-107071／jstor-102298 屬 collection『jstor_ejc』＝JSTOR 自己公開釋出的 Early Journal Content（1923 年前、1696 與 1803 年文本），不是版權不明的上傳；chladni_feuer_meteore_german 為 CC0 重排本；sim_annalen 為 1812 年期刊、access-restricted 欄為空；tuzukijahangirio53716gut 是 Project Gutenberg 鏡像。",
+        "出處寫法：I8-S011 limitations 寫『擷取文字中沒有看到譯者署名』與頁面不符（頁首有 Frazer）；I8-S022 read_via 照實寫了轉址。其餘 read_via 與紀錄相符。研究代理另抓過 symbolreader.net、poetryintranslation.com、chs.harvard.edu、search.library.wisc.edu、nhm.at、makingscience、jimclifford.ca 等頁但沒有列為來源，無妨。",
+        "覆核 R428 自己：重開的來源網址皆為研究代理已列、可追溯的來源網址；archive.org 三筆先叫 metadata、下一次呼叫才下載（chladni 另叫一次 metadata 後下載）；卒年頁面全部取自覆核自己的 WebSearch 結果（encyclopedia.com、lindahall.org、pictures.royalsociety.org、en.banglapedia.org、wikipedia.com→轉址、en.wikipedia.org Elbogen 條）；britannica.com 回 403，沒有繞過。"
+      ],
+      "blocked_sites": [
+        "www.britannica.com（403，未繞過）"
+      ]
+    }
+  }
+}

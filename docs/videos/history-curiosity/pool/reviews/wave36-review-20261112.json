@@ -1,0 +1,473 @@
+{
+  "batch": "batches/wave36-20261112.json",
+  "reviewed_on": "2026-11-12",
+  "method": "四位沒有參與研究的覆核代理（R361：C1；R362：C2；R363：C3；R364：C4）逐題至少重開一個關鍵來源、每個關鍵字跑一次素材池搜尋並 grep 批次檔去重、對照系列不收清單與 8 分鐘門檻；修改直接寫進批次的題目欄位，覆核新讀的來源編入該研究代理的來源序號。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 17,
+    "NEEDS_CHECK": 4
+  },
+  "source_renames": {
+    "R361-S001": "C1-S031",
+    "R361-S002": "C1-S032",
+    "R362-S001": "C2-S028",
+    "R362-S002": "C2-S029",
+    "R362-S003": "C2-S030",
+    "R362-S004": "C2-S031",
+    "R362-S005": "C2-S032",
+    "R362-S006": "C2-S033",
+    "R362-S007": "C2-S034",
+    "R362-S008": "C2-S035",
+    "R362-S009": "C2-S036",
+    "R362-S010": "C2-S037",
+    "R362-S011": "C2-S038",
+    "R363-S001": "C3-S018",
+    "R363-S002": "C3-S019",
+    "R363-S003": "C3-S020",
+    "R364-S001": "C4-S026"
+  },
+  "verdicts": [
+    {
+      "id": "N3601",
+      "agent": "C1",
+      "reviewer": "R361",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "C1-S003 https://archive.org/details/lifeofsircharles00stoe（metadata 檔案清單所列 djvu.txt，pp.72–73 與 pp.390–395）；另重開 C1-S001 Seba 1734（djvu.txt 第 48470–48570 行，拉丁與荷蘭兩欄）、C1-S002 林奈 1735（Paradoxa 欄）、C1-S004 Linnean Society、C1-S005 Gizmodo",
+      "reopen_result": "頁面上確實寫了：Seba『anno 1720』外國紳士、牧師 Eibsen、『Dreyern & Hambel, mercatoribus Hamburgensibus』、Königsmarck→『Cognatum ejus』Leeuwenhaupt、『decem millium florenorum』（荷文『tien duizend guldens Hollandsch geldt』）、Natorp『naturae, non artis, opus esse affirmabat』、Gessner 1530 威尼斯七頭水蛇 6000 杜卡特『incredibile … videtur rerum naturalium peritis』。林奈 1735：『Natura sibi semper similis plura capita in uno corpore nunquam produxit naturaliter. Fraudem & artificium, cum ipsi vidimus, dentes ferino-mustelini, ab Amphibiorum dentibus diversi, facillime detexerunt』。Stoever pp.72–73：Spreckelsen、『jaw bones of weasels artfully covered with serpent's skin』、『pledged security for a loan of ten thousand marks … scarcely worth one hundred』、『academical Forum』、Jaenisch『quit Hamburgh with all possible speed』。書末報導譯文（腳註 Hamburgische Berichte 1734 No.59, 1735 No.47）p.394 開頭：『Linnaeus with his travelling companion left this city (Hamburgh) with great satisfaction』，接著『thought himself extremely happy, in obtaining a sight of the seven-headed Hydra, which the celebrated Seba at Amsterdam inserted in his Thesaurus』、商人家、一厄爾半長的盒子、牙像鼬、布拉格天主教堂祭壇、Königsmarck、Frederick IV 出價被拒、不超過 2000 元的宮廷。Gizmodo 確有『monastery or church … keep them pious』『didn't please the local clergy』『get out of town quick』；Linnean Society 確有『wild stoat … combined with snake skins』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep pool.json、batches/*.json（含 not_added）、原來如此事務所 pool.json 與同批 C2–C4，比對 hydra、Hamburg、Seba、Linnaeus／林奈、Scheuchzer、diluvii、Andrias、Aldrovandi、Bologna／波隆那、dragon／龍、bird(s) of paradise／天堂鳥、apoda、Lucerne／Luzern／琉森、Drachenstein／龍石、Stronsa(y)、Halsydrus、basking／姥鯊、Barclay、Everard Home、Natorp、Spreckelsen、Oeningen、Manucodiata、Mamuco，並讀 N309、N310、N382、N383、N721、N2523、N2625、N2684、N2942、N3242、N3243、N3244、N3503 的題目；沒有同案。cli.mjs search 沒用（依說明以 grep 為主）。前提成立。最大的改正：研究稿說當年報導只是『沒有逃走』，其實同一段報導明寫林奈『懷著極大的滿足』離開漢堡，與 Stoever 自己的『盡快離開』正面矛盾，升為轉折三。另刪『林奈日後引用的那本圖鑑』（沒有可讀依據）與『連夜』（沒有任何來源）；Gizmodo 的修道院說找不到 18 世紀出處已標明，但與 1735 年報導轉述的『布拉格教堂祭壇』分開，不能說整段教會說法都是現代杜撰；補註林奈的 Amphibia 包括蛇。流傳版本有兩個可讀出處（Linnean Society、Gizmodo）。8–10 分鐘，兩個以上翻轉結論的轉折。"
+    },
+    {
+      "id": "N3602",
+      "agent": "C1",
+      "reviewer": "R361",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "C1-S008 https://archive.org/details/recherchessurles09cuviuoft（metadata 清單所列 djvu.txt 與 PDF；PDF 第 883 頁＝印本 p.371 以 pdftoppm 轉成影像目視）；另重開 C1-S006 1812 年 t.4（djvu.txt）、C1-S009 Physica sacra Tab. XLIX",
+      "reopen_result": "頁面影像清楚印著『M'étant trouvé à Harlem en mai 1811, le savant M. Van Marum, directeur du Musée』（OCR 的 1871 是錯字），前一段『(disais-je dans ma première édition) … j'invitais les propriétaires』、『J'ai eu depuis lors l'avantage de le faire moi-même』。pp.372–374：Van den Ende 在場、『Nous avions placé devant nous un dessin du squelette de la salamandre … à mesure que le ciseau enlevait un éclat de pierre, nous voyions paraître … quelqu'un des os que ce dessin avait annoncé d'avance』、『gravée et regravée vingt fois depuis un siècle』、兩排小牙證明圓形是顎、短肋、雙枕髁、肩胛與肱骨『comme dans les salamandres aquatiques』、1818 年在大英博物館看 Ammann 標本；pp.369–370 Camper 給 Burtin 的信『un lézard pétrifié a pu passer pour un anthropolite』。1812 版：『pendant plus de trente ans, aucun doute』、『Jean Gesner le cite encore pour tel … imprimé à Leyde en 1758』（OCR i^SS）、『Il paroît cependant que ce savant … fut ensuite le premier à élever des doutes』、Karg 看過 Ammann 標本仍『ne doute pas que le fossile ne soit un silure』、『je n'eus pas plutôt jeté les yeux sur la figure de l'échantillon d'Ammann donnée par M. Karg, que j'aperçus dans les vestiges de pieds de derrière, et dans la queue』、Kielmeyer、『Je ne puis qu'inviter les propriétaires』。Physica sacra：『Sed A. 1725 … Museo meo ex Oeningensi dioeceseos Constantiensis Lapicidina illatum … quia indubium』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep pool.json、batches/*.json（含 not_added）、原來如此事務所 pool.json 與同批 C2–C4，比對 hydra、Hamburg、Seba、Linnaeus／林奈、Scheuchzer、diluvii、Andrias、Aldrovandi、Bologna／波隆那、dragon／龍、bird(s) of paradise／天堂鳥、apoda、Lucerne／Luzern／琉森、Drachenstein／龍石、Stronsa(y)、Halsydrus、basking／姥鯊、Barclay、Everard Home、Natorp、Spreckelsen、Oeningen、Manucodiata、Mamuco，並讀 N309、N310、N382、N383、N721、N2523、N2625、N2684、N2942、N3242、N3243、N3244、N3503 的題目；沒有同案。cli.mjs search 沒用（依說明以 grep 為主）。前提成立，最近的既有題 N2523 Beringer 答案不同。1811 年已在頁面影像確認，scope 原本『依上下文判讀』的保留可拿掉；鉤子原寫『大家都說上面是一個人的半具骨架』，與居維葉說的『先當人、再當魚』不合，改寫；Gesner 首先懷疑一句居維葉用『看來』，已標；補上 Karg 看過 Ammann 標本仍說是鯰魚、1818 年大英博物館。Scheuchzer 卒年改用 Deutsche Biographie（C1-S032）。流傳版本只有一個可讀出處（Books Tell You Why）；『1758 年 Gessner 說是魚』這個說法另見 Smithsonian（403 沒讀到），寫稿時把流傳版本說成『一篇常見的整理寫……』，不說『大家都說』。"
+    },
+    {
+      "id": "N3603",
+      "agent": "C1",
+      "reviewer": "R361",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "C1-S011 https://archive.org/details/UlyssisAldrovanIAldr（metadata 清單所列 djvu.txt，第 36095–36185 行，p.402–404）；另重開 C1-S013 Edward Worth 頁面全文與註",
+      "reopen_result": "1640 年原書確實寫：『anno … septuagesimo secundo supra millesimum & quingentesimum, III. Idus Maij tempore creationis Summi Pontificis Gregorij Decimitertij Bononiensis, hic Draco bipes, more Serpentino sibilans se manifestavit』、Petronius de Dossis 的小莊園、『post diem Ascensionis … hora decima septima in via publica iuxta sepem … a quodam bubulco Baptista nominato de Camaldulo deprehensus』、牛『genuflexi』不肯走、『capite belluae percusso animal interfecit』、白蠟樹（fraxinus）的效力、『anteriorem Draconis pedem abscidit』、『biduo ibi iacuit』、Horatius Fontana、『primo ad vivum pingi, deinde summa industria exsiccari, & in Musaeo appendi curavit; quemadmodum etiam hodie unusquisque illum intueri potest』、家徽之龍與天龍座的詩。Edward Worth：Senter 等人說頭尾像 Natrix natrix、中段可能是河鱸（Perca fluviatilis，或鯉魚、金魚）、前腳像 Bufo bufo；『Did Aldrovandi know … Almost certainly』；Senter 認為 Aldrovandi 的描述把各部位比成三種動物、在暗示；Findlen『nature's fecundity』；1602 年 10 月 20 日給 Albergati 的信（畫、經過、五卷 Dracologia、San Sisto 樞機不感興趣）；『by 1602 the object itself had disappeared due to curatorial neglect (or perhaps, as Ruffini suggests … disintegrated)』引 Ruffini 2009 p.95 注 40；Sega 1572 年 6 月 1 日的信。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep pool.json、batches/*.json（含 not_added）、原來如此事務所 pool.json 與同批 C2–C4，比對 hydra、Hamburg、Seba、Linnaeus／林奈、Scheuchzer、diluvii、Andrias、Aldrovandi、Bologna／波隆那、dragon／龍、bird(s) of paradise／天堂鳥、apoda、Lucerne／Luzern／琉森、Drachenstein／龍石、Stronsa(y)、Halsydrus、basking／姥鯊、Barclay、Everard Home、Natorp、Spreckelsen、Oeningen、Manucodiata、Mamuco，並讀 N309、N310、N382、N383、N721、N2523、N2625、N2684、N2942、N3242、N3243、N3244、N3503 的題目；沒有同案。cli.mjs search 沒用（依說明以 grep 為主）。前提成立。改正與補料：Senter 等人的『魚』是河鱸（可能），研究稿只寫『魚』；補上 Senter 讀出 Aldrovandi 描述本身在暗示三種動物，成為第三個翻轉（寫下那段文字的人很可能早知道），以及 Findlen 的解讀與 Sega 1572 年的信。『1602 年以前不見』仍只經 Edward Worth 轉述 Ruffini，已在題目與 scope 標明。『Aldrovandi 是教宗表親』只有 Edward Worth 一說，不入稿。片長 8–9 分鐘，補料後較穩但仍偏緊；兩個以上轉折。"
+    },
+    {
+      "id": "N3604",
+      "agent": "C1",
+      "reviewer": "R361",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "C1-S015 https://archive.org/details/firstvoyageround00piga（metadata 清單所列 djvu.txt，p.143 前後）；另重開 C1-S016 Wikisource 的 Maximilianus 信、C1-S017 Tradescant 1656、C1-S018 林奈 1758、C1-S019 Wallace（archive metadata：1869 年 Harper 紐約版）",
+      "reopen_result": "Pigafetta（12 月，Tidore）：『He also gave us for the King of Spain two most beautiful dead birds. These birds are as large as thrushes; they have small heads, long beaks, legs slender like a writing pen, and a span in length; they have no wings, but instead of them long feathers of different colours … they never fly, except when the wind blows … they call them \"bolon dinata\" that is divine birds.』Maximilianus：『never rested upon the ground nor upon anything that grew upon it; but they sometimes saw it fall dead』『Mamuco Diata』『Of which five were sent, and one I obtained from the captain (con gran prieghi)』，信末『Vallisoleti, 23rd of October, 1522』『Cologne … 1523, in the month of January』，並說內容是船長與歸國船員講給他聽的。Tradescant（M.DC.LVI）：『Birds of Paradise, or Manucodiata, whereof divers sorts, some with, some without leggs.』林奈 1758：『PARADISÆA … apoda. 1.』Wallace p.556 前後：Linschoten 1598、『no perfect specimen had been seen in Europe』、『The native mode of preserving them is to cut off the wings and feet … Some of these native skins are very clean, and often have wings and feet left on』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep pool.json、batches/*.json（含 not_added）、原來如此事務所 pool.json 與同批 C2–C4，比對 hydra、Hamburg、Seba、Linnaeus／林奈、Scheuchzer、diluvii、Andrias、Aldrovandi、Bologna／波隆那、dragon／龍、bird(s) of paradise／天堂鳥、apoda、Lucerne／Luzern／琉森、Drachenstein／龍石、Stronsa(y)、Halsydrus、basking／姥鯊、Barclay、Everard Home、Natorp、Spreckelsen、Oeningen、Manucodiata、Mamuco，並讀 N309、N310、N382、N383、N721、N2523、N2625、N2684、N2942、N3242、N3243、N3244、N3503 的題目；沒有同案。cli.mjs search 沒用（依說明以 grep 為主）。前提成立，最近的既有題 N310 斐濟美人魚答案不同。最大的錯：研究稿鉤子寫 1522 年帶回的鳥皮『牠們沒有腳』，同一支船隊的 Pigafetta 寫的正是『腿細得像筆』，鉤子改寫。『第一位親眼看到的歐洲人』沒有依據（Public Domain Review 自己提到 1513 年的葡萄牙記載），改為『同一支船隊、親手接過』；『Wallace 1869 年在 Aru 看到』改成書 1869 年出版。Wallace 卒年 1913 已在我自己搜尋結果連到的 Dictionary of Welsh Biography 頁面逐字讀到，可入畫。流傳版本有 Maximilianus 原信與 Linschoten（經 Wallace）兩個可讀出處。"
+    },
+    {
+      "id": "N3605",
+      "agent": "C1",
+      "reviewer": "R361",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "C1-S023 https://archive.org/details/bub_gb_Eok5AAAAcAAJ（metadata 清單所列 djvu.txt，pp.203–204）；另重開 C1-S021 館方教師 PDF、C1-S022《Märchenforum》PDF",
+      "reopen_result": "Chladni：『Bey Lucern scheint, vermuthlich in demselben Jahrhunderte, ein Stein mit einem Feuer-Meteor, welches für einen fliegenden Drachen gehalten worden ist, herabgefallen zu seyn』、Cysat 1661《Beschreibung des Lucerner- oder Vierwaldstätter-Sees》由 Blumenbach 借給他、『mit vielen fabelhaften Einmengungen』、Kircher 說見過、Scheuchzer 的地圖；『Ob der Stein meteorisch sey, ist zweifelhaft; … die kugelrunde Gestalt ist ihm unstreitig durch Kunst gegeben, so wie auch die darauf befindlichen Figuren eingekünstelt sind. Er soll in Hinsicht auf die Materie einem verhärteten Thon ähnlich seyn.』Blumenbach『als von Meteor-Steinen noch nicht die Rede war』在琉森『bey dem Doctor Beatus F. Maria Lang (Car. Nic. Fil.)』家看過。館方 PDF：『Computertomographie 2006 an der EMPA … nicht um einen Stein, auch nicht (wie vermutet) um einen lehmummantelten Meteoriten, sondern um eine bemalte, gebrannte Lehmkugel』、1420 Stämpfli、1509 Schriber、1523 Schultheiss und Rat、『nicht ausschliessen … vertauscht』、1929、Scheuchzer『merkwürdigste aller Merkwürdigkeiten aller Museen』。《Märchenforum》：『Denn so beurteilte ihn der deutsche Physiker Ernst F. F. Chladni (1756 – 1827)』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "editorial",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep pool.json、batches/*.json（含 not_added）、原來如此事務所 pool.json 與同批 C2–C4，比對 hydra、Hamburg、Seba、Linnaeus／林奈、Scheuchzer、diluvii、Andrias、Aldrovandi、Bologna／波隆那、dragon／龍、bird(s) of paradise／天堂鳥、apoda、Lucerne／Luzern／琉森、Drachenstein／龍石、Stronsa(y)、Halsydrus、basking／姥鯊、Barclay、Everard Home、Natorp、Spreckelsen、Oeningen、Manucodiata、Mamuco，並讀 N309、N310、N382、N383、N721、N2523、N2625、N2684、N2942、N3242、N3243、N3244、N3503 的題目；沒有同案。cli.mjs search 沒用（依說明以 grep 為主）。前提成立，最近的既有題 N3244、N3503 答案不同。改正：Chladni 寫的 Lang 醫生是 Karl Nikolaus Lang 的兒子，研究稿把 1670–1741 年的 Lang 接在後面，容易混成一人；payoff『第一個寫下陶土球的人』沒有依據，刪；證書是『市長與市議會』；補上館方也寫『原先猜是裹泥的隕石』，流傳說法有兩個可讀出處。EMPA 原報告仍沒讀到，掃描結果只經館方與雜誌兩份摘要，已在 scope 標明。8–9 分鐘，三個轉折。"
+    },
+    {
+      "id": "N3606",
+      "agent": "C1",
+      "reviewer": "R361",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "C1-S026 https://archive.org/details/memoirsofwerneri11811wern（metadata 清單所列 djvu.txt，pp.418–437）；另重開 C1-S025 https://archive.org/details/philtrans09108093（09108093_djvu.txt）",
+      "reopen_result": "Barclay：『he seems to be convinced, that the animal of Stronsa is a Squalus maximus』、頭 5.5 呎對 12 吋、近頭脊椎 7 吋對第一節頸椎 2 吋、55 呎、Home『entitled to the credit of having discovered … a new and remarkable variety of the human species, inhabiting the Orkneys』、『Our own opinion is, that the facts before us lead to nothing precise and determinate as to the species or genus of the animal; and that if … this animal a Squalus, we may as soon get acquainted with nature through the dreams of cosmogony, or the tales of a tub』。證詞：Kirkwall 1808-11-10 Fotheringhame『measured its length with a foot-rule … fifty-five feet』、看了圖說『the neck appeared to him to be too long』、鬃『luminous in the dark, while they continued wet』；11-19 John Peace『26th day of September』、海鳥、『one of which he raised with his boat-hook』、約十天後東南風、『about fifty-four or fifty-five feet』、『six arms, or wings as they are called on the island』。Home：10 月 7 日 Rothiesholm、『eleven days before』、『six weeks after』、『holders, which were mistaken for legs』、『the drawing was made from memory six weeks after』、『mistaken for a perfect animal … supposed to be a sea snake』、背鰭『mistaken for a mane, and, from want of accurate observation』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep pool.json、batches/*.json（含 not_added）、原來如此事務所 pool.json 與同批 C2–C4，比對 hydra、Hamburg、Seba、Linnaeus／林奈、Scheuchzer、diluvii、Andrias、Aldrovandi、Bologna／波隆那、dragon／龍、bird(s) of paradise／天堂鳥、apoda、Lucerne／Luzern／琉森、Drachenstein／龍石、Stronsa(y)、Halsydrus、basking／姥鯊、Barclay、Everard Home、Natorp、Spreckelsen、Oeningen、Manucodiata、Mamuco，並讀 N309、N310、N382、N383、N721、N2523、N2625、N2684、N2942、N3242、N3243、N3244、N3503 的題目；沒有同案。cli.mjs search 沒用（依說明以 grep 為主）。前提成立，兩份一手文獻都逐字對上，補上 Home 的完整論證（圖是六週後憑記憶畫的、腿是鰭與鰭腳）與證人看過圖、Barclay 本人結論是『不能確定種屬』——這與 Jenkins 摘要『Barclay 宣布是大海蛇的證據』要分開說。仍待查：『現在怎麼解釋』只有 1809 年 Home 一說與 Jenkins 摘要；NMS 館藏紀錄（機器驗證）、The Scotsman（403）、Jenkins 全文（403）都讀不到，我另做一次搜尋也沒有新的可讀來源。補到現代鑑定後可改 screened；8–9 分鐘。"
+    },
+    {
+      "id": "N3621",
+      "agent": "C2",
+      "reviewer": "R362",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "C2-S004 https://www.gutenberg.org/files/2866/2866.txt（第 VI 章全章）；另重開 C2-S001、C2-S002、C2-S003 vol. II pp.16–18、C2-S005、C2-S006，並新讀 C2-S028 Folger 導言、C2-S029 Q1 第 18 景、C2-S030 Ainsworth 年表",
+      "reopen_result": "Ainsworth 第 VI 章：Cutbeard 講 Richard 二世時年輕守林人 Herne 帶兩隻 Saint Hubert 種黑獵犬、被同僚嫉恨；雄鹿撞倒國王的馬、Herne 替國王挨角；Urswick 割下鹿頭綁在他頭上；痊癒後國王『hung a chain of gold round his neck』（銀號角賞給 Urswick）；他失去本事、面臨撤職，戴鹿角頭骨掛生鏽絞架鎖鏈，被發現『suspended by a rope from a branch of the oak-tree』，屍體消失、雷劈橡樹；鬼魂要舊同僚帶馬和黑獵犬來，組成『a band for Herne the Hunter』。也就是今天的故事線整條在小說裡，研究稿只算了一半。Folger：『first published in a quarto of 1602 … a little more than half the length』of the 1623 Folio，很多人認為四開本是憑記憶重建的對開本，也可能是另一版本；RSC 把對開本那段當約 1597 年原戲。研究稿把四開本當早層、對開本當加料，不成立。Q1 第 15 景 Horne 三行、Ireland 1792（MDCCXCII）pp.16–17 上吊一句逐字相符。戲裡是兩位太太。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立、去重乾淨（唯一 herne 命中是 Saitaphernes）。改正：四開本／對開本的先後關係不能講成層層加料；『三位太太』改兩位；Ainsworth 1843 的範圍擴大到整條故事線（金鏈、被嫉妒、丟差事、吊在橡樹、帶獵隊），並標出小說裡沒有誣陷盜獵、銀號角不是給 Herne；1842 年起連載；Ireland、Ainsworth 卒年在可讀頁面確認後可入畫。上吊兩處只用一句旁白、不畫。"
+    },
+    {
+      "id": "N3622",
+      "agent": "C2",
+      "reviewer": "R362",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "C2-S007 https://archive.org/download/descriptionofpar02brayuoft/descriptionofpar02brayuoft_djvu.txt（vol. II，1836，pp. 299–300、315–321）；另重開 C2-S008、C2-S009、C2-S010、C2-S011、C2-S012",
+      "reopen_result": "扉頁『LONDON: JOHN MURRAY … MDCCCXXXVI』，信是寫給 Robert Southey。Bray：『since that tale appeared, many things in it, purely fictions of my own, are now told as traditions of Tavistock!』；她所知的是『doomed to run in the shape of a hound』、叼草、草盡世界終結；『Dr. Jago, the clergyman of Milton Abbot, however, told me that occasionally she was said to ride in a coach of bones up the West-street』，另有一位老人說同一件事、『seen her in it scores of times』。她『give her a real hound … instead of turning her into one』，丈夫把獵犬取名 Redfang。Colling：『most have seen her as a greyhound, and very often in the coach of bones, as described by you in Fitz of Fitz-ford』。vol. III：『the wife of four husbands』，無骨頭馬車。Baring-Gould 註：『sung fifty years ago by Anne Bickle … the Hela of Norse mythology … from Okehampton Castle to Fitzford Gate … in a coach of bones … I have added verses 4, 5, and part of 6』；歌詞第一節是『sable coach』『The driver hath no head』。1905 修訂版：『Originally issued in Four Parts in 1890』『New and Revised Edition October 1905』，〈My Lady's Coach〉在刪去名單。legendarydartmoor：四任丈夫骨頭、四角頭骨、停門口就有人死、1671 年 10 月 17 日 75 歲。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "核心轉折（作者自承小說被當傳說）逐字成立。改正：骨頭馬車不是『牧師一句話』，是牧師與一位老人；鉤子『鎮上的人講給她聽』改成原話的『被當成傳說流傳』；歌裡的馬車是黑色（sable），骨頭只在註；修訂版 1905、初版 1890 起分冊；Bray、Southey、Baring-Gould 卒年確認可入畫。"
+    },
+    {
+      "id": "N3623",
+      "agent": "C2",
+      "reviewer": "R362",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "C2-S013 https://www.loc.gov/resource/sn83021205/1872-11-06/ed-1/?sp=2（加文件記載的 fo=json，再讀頁面 JSON 的 fulltext_file）；同法重開 C2-S014、C2-S027；另重開 C2-S015、C2-S016、C2-S017",
+      "reopen_result": "Worcester Daily Spy 1872-11-06 社論〈Railroad Romance and Superstition〉：『every year, on the 27th of April, about midnight, a phantom train passes over the road bearing the body of the murdered President Lincoln』、黑飄帶、樂隊、『grinning skeletons』、黑地毯、藍衣士兵；『We need not caution our readers…』『far surpassing … the comparatively puerile legends of midnight hunts and headless horsemen. A ruder and more credulous state of society would find material and suggestion here for a cherished national superstition.』沒有鐘錶。New Northwest（Portland, Or.）1872-12-06：『A writer in the Albany (N.Y.) Evening Times…』『Clocks and watches always stop … from five to eight minutes behind』。Portland Daily Press 1872-05-29：芝加哥西北鐵路、26 哩、『change their whisky』。Pomeroy PDF：4 月 14 日遇刺、4 月 21 日出發、4 月 25 日下午 4 點離紐約、8 點前經 Hyde Park、黑地毯、標誌頒給 Hudson Valley Railroad Society。Lincoln Lore 1957 年 5 月：1,662 哩、Willie 的小棺。RailTarget：『In some cases … exactly six minutes』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "引文、日期全部對得上。改正：『全部慢六分鐘』改『有的說』；刪掉沒有依據的『標誌寫的是…另一條鐵路』；鉤子改回社論原意（不是『國寶』）；刪研究者推論『被當成新的狂獵』；補社論標題與威士忌那則的報名。與真實喪禮列車的關係：史實段只用路線、日期與哩數，棺木只遠景、不畫遺體；遇刺一句帶過、不畫；骷髏改用樂隊黑影。"
+    },
+    {
+      "id": "N3624",
+      "agent": "C2",
+      "reviewer": "R362",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "C2-S018 https://archive.org/download/fairylegendsand00unkngoog/fairylegendsand00unkngoog_djvu.txt（Part II，MDCCCXXVIII）；C2-S019；C2-S020 Yeats 1888；新讀 C2-S038（1825 第一部）",
+      "reopen_result": "Croker 1828 扉頁『PART II. LONDON. JOHN MURRAY. MDCCCXXVIII』。O'Reilly：『Dulachan (in Irish Dubhlachan) signifies a dark, sullen person』，另說 Durrach 來自『anger』，Croker 疑後者、說『Dubh, black, is evidently a component part』。Castle Hyde 黑馬車、Doneraile 開門潑『a basin of blood』、『the Headless Coach … a sign of death』、1826 年 1 月 Glasgow Chronicle 的 Paisley 絲織工。詩：『Their spokes are of dead men's thigh bones, And the pole is the spine of the back!』『Two hollow skulls hang up for lamps!』『having no heads of our own, We seek the Old Head of Kinsale』，另有『Since headlong their horses can't run, Nor coachman be heady from beer』等雙關。註：『Coach a bower』、午夜、鞭響是死兆；Cork 附近女士：『most marvellously long whip, with which he can whip the eyes out of any one … that dares to look at him』。Yeats：『an immense black coach, mounted by a coffin … driven by a Dullahan … according to Croker, a basin of blood』。Croker 那一節沒有棺材、沒有金、沒有喊名字。1825 第一部 OCR 檢索沒有命中。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "source_ids",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "內容逐字正確，小改字源句與 Yeats 棺材的說法，補 1825 檢索與 Croker、Yeats 卒年。仍待查：網站說的 1802 年文字覆核另搜一次仍查不到出處；若找到，『目前讀到最早』要改。"
+    },
+    {
+      "id": "N3625",
+      "agent": "C2",
+      "reviewer": "R362",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "C2-S023 https://archive.org/download/catholiconangli00herr/catholiconangli00herr_djvu.txt（G 字頭與註 2）；另重開 C2-S024 pp.128–131、C2-S025 p.106 與 Note IV、C2-S026",
+      "reopen_result": "Catholicon：『Gabrielle rache (Gabriel raches A.); camalion』，註：『A Rache is a scenting hound … Gabrielle rache thus is equivalent to Gabriel Hounds』，引 Kennett MS. Lansd. 1033 的 Wednesbury 礦工與『wild geese』，《Medulla》Camalon『quoddam quod vivit in aere』。Wordsworth 1807：『Doom'd, with their impious Lord, the flying Hart』，Note IV：『prevalent in the midland Counties … the same as the one upon which the German Poet, Burger, has founded his Ballad of the Wild Huntsman』。Henderson 1879（序言說初版 1866）：Wordsworth『evidently connecting it with the German legend』；Durham 與約克郡部分地方『monstrous human-headed dogs』、停在屋上有死亡；Holland 1861-03-28 的信；Yarrell 說是 bean-geese；Leeds『Gabble retchet』。Sheffield Tribune：『Led by the Archangel Gabriel』『first recorded in 1665』、把 gabrielle rache 解作『corpse-hound』，均無出處。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "editorial.minutes",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "事實大致正確，改掉研究者推論『從德國敘事詩借來』與鉤子把北英格蘭死兆和中部礦工手稿混在一起的寫法。長度只有 5–7 分鐘：接 N3621（9–11）或 N2641（9–11）都超過 13 分鐘，而且核心問題不完全相同，判暫緩；可改做 Shorts。"
+    },
+    {
+      "id": "N3641",
+      "agent": "C3",
+      "reviewer": "R363",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "C3-S002 https://archive.org/details/sim_london-magazine-enlarged-and-improved_1779-12_48（metadata 列出 PDF 後下載，看第 11–12 頁影像，pp.535–536）；另重開 C3-S003（Hill 本 vol. IV djvu.txt pp.298–299 與註）、C3-S004（GM 1815-06 djvu.txt pp.597–598）、C3-S005（GM 1816-11 djvu.txt pp.421–422）",
+      "reopen_result": "London Magazine p.535：『On Thursday morning, the 25th of November last, his lordship mentioned at breakfast to Mrs. Flood … fancied he saw a beautiful lady, dressed in white, with a bird on her hand, who desired he would settle his affairs … the vision answered, \"Not three days.\"』；『It was remarkable likewise, that his lordship endeavoured to account for his having dreamed of the bird, by saying that a few days before, being in his green-house, at Pitt place, with Mrs. D——, he had taken some pains to catch a robin, which had been let in, and which he had set at liberty』；另一派『real disorder was a polypus on the heart』；p.536『We see nothing supernatural in all this』，並記做夢當晚他在上議院講了兩次話。GM 1815：床尾腳步聲、『angelic female figure』、『on such a night, and at the hour of twelve』、鐘錶由管家撥快、Andrews 在 Dartford 見到他、當天四點收到死訊——沒有鳥。GM 1816：『see Admiral Wolseley's account』、Hill-street、『he saw a Bird fluttering, and afterwards a Woman appeared in white apparel』、『I have jockied the ghost』、枕頭太高下巴壓脖子。Hill：Johnson『the most extraordinary thing that has happened in my day. I heard it with my own ears, from his uncle, Lord Westcote』，Hill 註引 Walpole 給 Mason 的信說幽靈得扮成 robin-red-breast。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json、batches/*.json（含 not_added）只有 wave26、wave27 的 not_added 提過 Lyttelton 三天夢兆（當時缺原文，本輪已補），池中另一個 Lyttelton 是 50 Berkeley Square 題的讀者。前提成立，研究稿大致對得上原頁，但有幾處要改：in my day 譯成『這輩子』不準；1815 年版本沒有鳥（是腳步聲），這正好讓『鳥不見了』成為轉折；Dartford 的形影原文只是『同一夜』；1816 年文件標明是 Admiral Wolseley 的在場記述；London Magazine 說的是他逗姪女、自己在房裡手舞足蹈。是 1779 年 12 月號，不是 1780 年。事實約 15 條，8–10 分合理。"
+    },
+    {
+      "id": "N3642",
+      "agent": "C3",
+      "reviewer": "R363",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "C3-S008 https://marktwainproject.org/letters/uccl00016/；另重開 C3-S006 https://www.marktwainproject.org/writings/autobiography3/autobiography/autobio_dictations/autobio1_1906-01-13/、C3-S007 https://marktwainproject.org/writings/autobiography3/autobiography/autobio_dictations/autobio1_1906-01-15/、C3-S009（curl 直接讀到全文）；新讀 C3-S018",
+      "reopen_result": "1858-06-18 信：『There are 32 scalded men in that room』、『Yesterday a beautiful girl of 15 stooped timidly down by his side and handed him a pretty bouquet … \"God bless you, Miss,\" and he burst into tears』（對象是 second Mate）、『P. S. I got here two days after Henry.』，全信沒有 dream。1906-01-13：『The date of my memorable dream was about the beginning of May, 1858』『metallic burial case … a suit of my clothing … mainly white roses, with a red rose in the centre. The casket stood upon a couple of chairs』『It is impossible that I can ever have published it … because I never wanted my mother to know about that dream』；編者註：口述時他沒在任何地方寫過這個夢、1907 年 4 月刊於 NAR；Annie Moffett 1946 年回憶：『Jane Clemens did know of the dream, and often talked about it. He had told them about it before he went away … They said his dream occurred in the daytime … My grandmother said he went back and dreamed the same dream a second and third time, but I think that was her embellishment』；嗎啡『has not been confirmed』。1906-01-15：Burton『one part fact … and twenty-four parts embroidery』、『seventy or eighty times … that's a conservative estimate』、兩張椅子。Psi Encyclopedia：『A month later, Henry was fatally injured』，條目首段寫 Mark Twain (1835–1910)。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json、batches 裡的 Twain 只有 wave29 一份無關來源，Henry Clemens、Pennsylvania 號都沒有。研究稿事實大致正確，兩處要改：鉤子『三十二個燙傷工人』原文是 scalded men；研究只讀了 6 月 18 日那封信，編者註還列了 6 月 15–21 日給 Moffett 的信，所以只能說『這封信』沒提夢。流傳版原本只經摘要讀到——我用 curl 直接讀到 Psi Encyclopedia 全文，另找到 Futility Closet 2008 年短文為第二個可讀出處（同樣寫 A month later），前提成立。研究稿漏掉同一頁編者註裡最大的轉折：外甥女 1946 年回憶說家人事前就聽過、夢是白天做的、祖母講成連做三次——跟 Twain『從不想讓母親知道』衝突，而且她自己也說是加油添醋。事實約 16 條，8–10 分。"
+    },
+    {
+      "id": "N3643",
+      "agent": "C3",
+      "reviewer": "R363",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "C3-S010 https://archive.org/details/bwb_S0-DRI-740（metadata 列出 djvu.txt 後下載）；另重開 C3-S011（https://www.loc.gov/resource/sn83030272/1902-05-10/ed-1/?sp=1&fo=json 的 fulltext_file）、C3-S012 https://archive.org/details/proceedingsofsoc05soci（djvu.txt）",
+      "reopen_result": "Dunne 1938 年第四版（版權頁：Published March, 1927）pp.46–51：『In the spring of 1902 I was encamped with the 6th Mounted Infantry near the ruins of Lindley』『the four thousand (I knew the number)』『I am not certain now when we received our next batch of papers』『PROBABLE LOSS OF OVER 40,000 LIVES』『I was out by a nought … I did not know it was really 40,000 until I copied out the paragraph fifteen years later』『Identifying Paramnesia』；第七章開頭『the next experience, which occurred some two years later, completely squashed the \"Identifying Paramnesia\" theory』；p.67 SPR 案例是『instances of my \"effect\"—simple dreams associated merely with the coming personal experience of reading the news』；牛津 22 位志願者紀錄『To satisfy S.P.R. demands』寄到 SPR。《The Sun》頭版：『25000 STRUCK DEAD』與 Ocean Traveller『about a mile away saw the volcano of Mont Pelé explode』。Sidgwick：1888-04-13 Westminster Town Hall 大會宣讀一部分；『does not seem to me sufficient to warrant a conclusion in favour of the reality of premonitions』『some 240 … about 66 per cent are dreams』『there is only one in which any record written before the event seems to have been preserved』；結論『if … the apparitions and dreams being carefully recorded before the fulfilment—my conclusion … might have been different』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：Experiment with Time、Sidgwick 的預知報告在池中都沒有（Dunne 只在 wave34 的出版商 M. W. Dunne，Sidgwick 只當其他題的評論者）。與 Y4 的 N3341（Pelée 囚犯版本演變）同一場災難、可能共用《The Sun》1902-05-10，但核心不同（囚犯證詞 vs. 預知夢的紀錄時序），scope 已寫兩題共用素材的分工。研究稿最重要的錯：只寫 Dunne『當場懷疑是 Paramnesia』，漏了他下一章就說兩年後的夢『完全推翻』這個懷疑，並把 SPR 案例解讀成他的預知『效應』而不是『普通夢』——原稿會讓觀眾以為他自己否定了預知。『幾天後報紙』原文沒有。兩人卒年已在搜尋結果連到的 Psi Encyclopedia 頁確認。維持整集 9–11 分，不拆。"
+    },
+    {
+      "id": "N3644",
+      "agent": "C3",
+      "reviewer": "R363",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "C3-S014 https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cicero/de_Divinatione/2%2A.html；另重開 C3-S013（1%2A.html）、C3-S015 https://oaj.fupress.net/index.php/prometheus/article/download/730/730/720",
+      "reopen_result": "卷一 56–57：『who can make light of the two following dreams which are so often recounted by Stoic writers? The first one is about Simonides …』，Megara 一則講完才問『What stronger proof of a divinely inspired dream than this can be given?』。卷二 134–135：『instead of being as plainly directed as Simonides was … obscure messages by means of dreams are utterly inconsistent with the dignity of gods』；136：『But these are other people's dreams and hence we know nothing about them and some of them are fabrications perhaps. For who stands sponsor for them?』；143：『But by what law of nature did Simonides receive that vision which forbade him to sail?』與 Alcibiades 斗篷。Davies p.277：『Cicero de divinatione 1.56 (our earliest allusion to the story of Simonides and the grateful dead)』『No-one has seriously argued that the story actually occurred in a poem by Simonides himself; Cicero did not invent it』、Chrysippus (d. 208/4 B.C.)；註 2：古代各版本在 Boas 1905 平行排列『to emphasise their near-identicality of content』；p.278 Scopas 故事『look like variants or doublets of the same idea』。",
+      "changed_fields": [
+        "answer_target",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池中的 Simonides 是 19 世紀偽造者 Constantine Simonides（wave23、wave33）；De Divinatione 只在 N2906 用過卷一 119、卷二 36–37。前提成立，只改了引句歸屬（Quintus 那句是講完 Megara 才問）並補上卷二 136『誰替它們擔保』。但只有 6–7.5 分；研究代理建議與 N3643 的 Sidgwick 部分合成一集（合計約 10–12.5 分，核心問題相通），覆核不採：拆掉 Sidgwick 會讓 N3643 只剩約 6 分的 Dunne，等於用一題孤兒換另一題孤兒；接 N2906 或 N3645 都超過 13 分或核心不同。建議暫緩，等同核心的古代兄弟題。"
+    },
+    {
+      "id": "N3645",
+      "agent": "C3",
+      "reviewer": "R363",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "C3-S016 https://archive.org/details/williamofmalmesb1847will（metadata 列出 djvu.txt 後下載，pp.343–346、譯者序 p.vii）；另重開 C3-S017 https://www.gutenberg.org/cache/epub/657/pg657.html（A.D. 1100）",
+      "reopen_result": "Malmesbury：『in the county of Berks, at the village of Finchhampstead, a fountain so plentifully flowed with blood for fifteen whole days, that it discoloured a neighbouring pool. The king heard of it and laughed』『The day before the king died, he dreamed that he was let blood by a surgeon』『He is a monk, and dreams for money like a monk: give him a hundred shillings』『Walter … unknowingly, and without power to prevent it … pierced his breast with a fatal arrow』『Next year, the tower fell; though I forbear to mention the different opinions on this subject』，頁下註『It fell A.D. 1107. An. Winton.』；Hardy 註引 Suger『jurejurando saepius audivimus … quod ea die nec in eam partem silvae, in qua rex venebatur, venerit, nec eum in silva omnino viderit』；譯者序：『Histories of the Kings … were completed in the year 1125』。ASC：『at Pentecost was seen in Berkshire at a certain town blood to well from the earth; as many said that should see it … shot in hunting, by an arrow from his own men … odious to God, as his end testified』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池中 Rufus 都是其他人名（Tineius Rufus、天文學家 Rufus），William Rufus、New Forest 之死沒有題；grep 到的 Tirel 是 entirely 等字的子字串。前提成立，改正兩處：塔『第二年倒』只是 Malmesbury 的說法，同頁註依《溫徹斯特年鑑》是 1107 年；ASC 的血泉帶『許多人這麼說』。新增轉折：Malmesbury 把模糊的『某鎮』寫成 Finchampstead、血流十五天。片長 6.5–8 分仍不足；沒有 ≤13 分的同核心兄弟題（N2906 已 8–9.5 分），建議補讀 Orderic Vitalis 後再判，否則暫緩。"
+    },
+    {
+      "id": "N3661",
+      "agent": "C4",
+      "reviewer": "R364",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "C4-S003（Thomas 1894 pp.636–643）、C4-S001、C4-S002、C4-S004、C4-S005",
+      "reopen_result": "Thomas p.642：『nearly all the letter characters of the \"cremation scene\"... may be found on page 1766 of Webster's Unabridged Dictionary, edition of 1872』、兩種『Gallic O』並排、結論 p.642–643『these relics are frauds: that is, they are modern productions made to deceive』；p.643 Gass『considered a man of honesty』、『Nor is there any reason to doubt that these tablets were taken from the mounds substantially in the manner recorded』、學會成員『with the single exception named』都信；Tiffany 1882 信只說石灰岩板假、接受煤頁岩板。Proceedings p.82 Parry 動議一致通過稱『Gass tablets』，p.97『about five o'clock in the afternoon』。Putnam 1885：『ornithologist』出自條件句的註；『misfortune...neither elephant pipes nor inscribed tablets』屬實。SI Spring 1981：『thoroughly documented as a hoax made by members of the Davenport Academy of Science in the fall of 1876』、1960 年代自白。書評原文是『pranksters who overestimated their ability to take a joke』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "一手紀錄扎實，Webster 1766 頁、圓規同心圓、Tiffany 信都逐字對上。改正：書評譯反了（惡作劇者高估自己而非低估對方）；Putnam 的鳥類學家說法是條件句反諷；Farquharson 那句不在開頭；補 Thomas 認為 Gass 誠實、石板確是照記載挖出——這正是『被騙的是 Gass』的伏筆；Fell 的『三語碑』改成 McKusick 轉述。McKusick 的設局說只有他本人的短文與書評，片中寫成『McKusick 說』。"
+    },
+    {
+      "id": "N3662",
+      "agent": "C4",
+      "reviewer": "R364",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "C4-S008（Gill, Lepper & Marley 2021 全文）、C4-S007、C4-S009",
+      "reopen_result": "JOA 8:1–17：1860 年 6 月下旬 Keystone 出自小圍牆的凹地；29 個字母『shaped exactly like typeface Hebrew』、每句擠向右邊『carved from left to right』；Decalogue 1860-11-01；1865-05-10 刻字人頭的五個字母為 J. H. NiCoL（McCulloch 指出）；Whittlesey 1881 引 Nicol『to show how easily people could be deceived』；McCulloch 1992 年轉寫的『could only have been made when the text was written in standard Hebrew letters』；Cross 1991『certainly correct』、『at least three additional places』；大選推論原文是『the particular agenda we infer』。Whittlesey 1876 年 11 月小冊：一小時內看到、McCarty 同日下午讀出、Nichols 當場指控、死後找到『an old Hebrew Bible』。McCulloch 頁：Wyrick 1863-04-13 致 Henry 信原句屬實。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "字形與由左往右、NiCoL、Wyrick 信都逐字對上。改正：Keystone 不是挖自土墩內；Whittlesey 1866 判它是近代遺物，不能說『在場考古學者都信是真的』；McCulloch 引句是 1992 年；Cross 是『至少三處』。宗教界線：十誡只當刻文，1860 年的人類同源之爭是歷史議題，今天不是兩群人的爭端；不提 1980 年支持者的宗教立場。"
+    },
+    {
+      "id": "N3663",
+      "agent": "C4",
+      "reviewer": "R364",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "C4-S015（Arizona Highways 2002）、C4-S010、C4-S011、C4-S012、C4-S013、C4-S014（loc.gov fo=json→OCR）",
+      "reopen_result": "AH 2002：1924-09-13 野餐回程；第一個十字架 64 磅、撬開後見拉丁文與『A.D. 790』；Cummings『I don't see how they can be fakes』；三本文法書與事典、Fowler『earliest edition... 1864』；1930 年 1 月四頁聲明、Bisbee 銅礦、type metal、引句『I do not feel justified in advising the State Museum to purchase』；Cummings 1954 年過世享年 93。Evening Star 1925-12-14：Sarle 775 年說、Cummings『closely resembled that in use about 775 A.D.』、Hay『impressed him as fraudulent』、Gottheil『regarded the thing as a hoax』。Coconino Sun 1925-03-13 的『A. D. 800 Jan. 1』只是譯文樣本之一。Douglas Dispatch 1926-01-20 Ruiz 原話屬實。IJN 1925-12-24 p.7『from about 700 to 900』、p.4 Spiegleman 專欄『highly improbable』。",
+      "changed_fields": [
+        "hook",
+        "question",
+        "answer_target",
+        "scope",
+        "risk",
+        "premise_status",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "鉤子事實錯：把 1925 年 3 月報導的譯文樣本 800 年 1 月 1 日說成第一個十字架上的字，第一個十字架的年份照 AH 是 790 年。刪掉摩門經 Lamanite 說（現存宗教經典的歷史性）。判偽的拉丁文法書、Bisbee 銅礦、鉛字合金與 1930 年聲明都只有 2002 年雜誌一個來源；覆核用 loc.gov 搜 1929–1931 年報紙沒找到聲明的報導。補到聲明原文或第二個來源前，這一題標待查。"
+    },
+    {
+      "id": "N3664",
+      "agent": "C4",
+      "reviewer": "R364",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "C4-S017（《游宦紀聞》卷八 action=raw）、C4-S019、C4-S021",
+      "reopen_result": "卷八：『何賢良名致字子一嘉定壬申游南嶽……讀之得古篆五十餘……歸旅舍方湊成本……以一獻曹十連彦約……禹碑自昔人罕見之反疑何取之他處以誑曹何遂刻之岳麓書院後巨石』；《皇霸文紀》提要（乾隆四十五年二月）：『何致之偽岣嶁碑楊慎之偽石鼓文益出近代』；新浪 2012（錢江晚報）：曹錦炎 1996《鳥蟲書通考》說為春秋戰國刻石、前 16 字『唯王二月丁酉，承嗣越臣宪亘朱句』、明代釋文『附會大禹治水，穿凿牵强，自不可据』。覆核搜尋曹錦炎原書與論文，沒有找到可讀版本。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "editorial",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "韓愈詩、何致 1212 年拓碑、楊慎 77 字、四庫提要、朱彝尊都在維基文庫原文對上。改正：『第一個拓碑的人』改成目前讀到最早；《游宦紀聞》沒說是誰懷疑；『哥德巴赫猜想』只出自一篇晚報，標成報紙說法。曹錦炎說只讀到報紙轉述，片中標『據報導』。沒有族群或兩國爭議。片長照素材下修為 8–10 分。"
+    },
+    {
+      "id": "N3665",
+      "agent": "C4",
+      "reviewer": "R364",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "C4-S023（cihm_02280 全文）、C4-S025（館方 PDF）",
+      "reopen_result": "Brown 1898 小冊：Phillips『In 1875 a rubbing... was placed in my hands』、自承原本『prejudiced against the authenticity of any inscription... from the Norsemen』、『like a kaleidoscope』、『HARKUSSEN MEN VARU』、Harki、『I confess that I was staggered』、『if not absolutely convincing』；Jeffery 1897 年為延長海堤翻出；Brown『advertising dodge for the benefit of the lessee of the park』、以 magistrate 身分讓他宣誓；『The first 13 glyphs... identical in form』、多 3 個；Farish 1824 年的回憶。館方 PDF：1812、400 磅、13 個記號、Campbell 1896、Fell 1976、Esmiol 1974、Ladd『It was always said in the family that he (Dr. Fletcher) did it as a joke』、Webster、Olsen 與 Liestøl 判非符文，皆無日期出處。",
+      "changed_fields": [
+        "hook",
+        "answer_target",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "一手的 1898 年 Herald 小冊對得上。改正：鉤子刪掉研究者換算的『六十多年後』；Phillips 的讀法是 1875 年，館方寫 1884 年是重刊年；補 Jeffery 為延長海堤翻到石頭、最後幾個字是匆忙點刻的。合併：H38 已經排在題案 T09（北歐人比哥倫布早到美洲，660 秒），研究代理提的『H38＋本題另成一集』會把 H38 拆出 T09，不採用；改成 T09 的第四個證據章，約 120 秒，T09 合計約 13 分。判定方（家族說法、Webster、挪威學者）只經館方說明，片中說『館方記下』。"
+    }
+  ],
+  "theme_suggestions": [
+    {
+      "ids": [
+        "N3665",
+        "H37",
+        "H38",
+        "S22"
+      ],
+      "shared_question": "北歐人比哥倫布早到美洲：哪些證據站不住、哪個是真的？（既有題案 T09）",
+      "why_it_flows": "Yarmouth 石是第三件被讀成北歐銘文的『假證據』，但翻法不同：同一行刻痕被讀成四種語言，1897 年又冒出一塊前 13 個記號相同的石頭，發現者家族卻說是玩笑。放在肯辛頓章之後約 120 秒，T09 由 660 秒增為約 780 秒（13 分），不需補料。"
+    }
+  ],
+  "rule1_record": [
+    "C1、C2、C3、C4（研究）：覆核 R361–R364 逐筆讀工具紀錄（約 136、121、125、113 次呼叫），沒有發現猜測、拼湊或改參數的網址。連續第二批四位研究代理都沒有違規。",
+    "灰色地帶（不算違規）：C2、C3 有幾次在同一個指令裡先叫 metadata 再下載，檔名是程式從檔案清單原樣取出，不是照樣式拼；覆核建議之後分成兩次呼叫。",
+    "出處寫得不精確（不算違規）：C3-S001 說 Yale 書信頁沒出現在搜尋結果，其實第二次搜尋列出了三頁；C1-S019 的 Wallace 是 1869 年紐約 Harper 單冊版。",
+    "覆核者本身都沒有拼網址；卒年都在搜尋結果連到的可讀頁面確認。"
+  ],
+  "reviewer_notes": {
+    "R361": {
+      "rule1_record": [
+        "C1（研究）：逐筆讀工具紀錄（117 次 Bash、19 次 WebSearch）。每個直接抓取的網址都先出現在 WebSearch 結果裡（Royal Society 部落格、Linnean Society、Gizmodo、Smithsonian、GSL、Books Tell You Why、DigitalCommons、NYAM、Edward Worth、Jason Colavito、NMS、Scotsman、HMB、Wikisource、Public Domain Review、Märchenforum、museumluzern 兩份 PDF、luzern.com、UCMP 兩頁、Scienza Giovane、Mineralogical Record）；Wikisource 的 Maximilianus 信先出現在 pool.json 的既有來源，再出現在 WebSearch #78 的結果裡。沒有發現猜測、拼湊或改參數的網址。",
+        "archive.org：每個 identifier 都先出現在 advancedsearch 結果裡，每個 _djvu.txt 檔名都在先前另一個指令的 metadata 檔案清單裡看到才下載（09108093_djvu.txt 這種不照樣式的檔名也是照清單）；/metadata/<id>/metadata 子路徑屬文件記載的 metadata API。",
+        "C1-S027：Crossref 公開 REST API（api.crossref.org/works/<DOI>）依 DOI 取中繼資料，DOI 來自 WebSearch 結果（x-mol.com 條目標題）；之後抓的 royalsocietypublishing.org PDF 網址是 Crossref 中繼資料 link 欄位列出的，回 403 沒有繞過。Europe PMC REST 依 DOI 查詢屬文件記載的 API。照實記在 read_via，不算違規。",
+        "出處寫得不精確（不算違規）：C1-S019 只寫『1869，archive.org 藏本』，metadata 是 1869 年 New York: Harper 的單冊版；C1-S008 的年份 OCR 問題，覆核已以同一份 PDF 第 883 頁影像確認為 1811。",
+        "覆核者 R361：archive.org 只用研究稿 sources 裡的 identifier，先單獨叫 metadata 看到檔案清單，再下載清單上的 djvu.txt 與 PDF；其他網址都來自研究稿已核實的出處或我自己 WebSearch 的結果（biography.wales、deutsche-biographie.de）。沒有拼網址。"
+      ],
+      "reviewer_notes": [
+        "系列排序建議（不必合併，合計都超過 13 分鐘，所以不提新題案）：N3601 與 N2942（拼裝的『蛇』：1735 年漢堡七頭蛇→1845 年 Hydrarchos）；N3602→N2523（1726 年的兩種『大洪水遺物』化石）；N3603、N3605 與 N3244（三件『龍的遺物』，答案各不相同）；N3606 與 N2942、N2684（海蛇的證據）。",
+        "N3602：1812 年第一版（t.4）在 1811 年 5 月鑿石之後印出，結尾卻仍只寫『邀請持有人』，可能是沿用更早寫好的稿子；寫稿前若要講版本先後，要查這一章最早何時發表。"
+      ]
+    },
+    "R362": {
+      "rule1_record": [
+        "C2（研究）：覆核逐筆讀了工具紀錄（121 次呼叫，其中 WebSearch 7 次、沒有用 WebFetch）。所有網頁網址（ISE、Gutenberg 23044 與 2866、RSC、Countryfile、berkshirehistory、genuki、visitdartmoor、legendarydartmoor、toadhall、letslearnirish、theghostinmymachine、friendsofthelincolncollection、wgpfoundation、railtarget、sheffieldtribune、shakespeare.folger.edu）都出現在之前那次搜尋的結果裡。archive.org 的識別碼都先出現在 advancedsearch 結果，OCR 檔名都先在 metadata 檔案清單看到；#102、#109、#112 在同一指令裡叫 metadata 再下載，但檔名是程式從清單取出，不是照樣式拼，不算違規。loc.gov 的頁面網址取自搜尋 fo=json 結果的 url 欄（含 q 參數），只加文件記載的 fo=json，OCR 用頁面 JSON 的 fulltext_file。沒有發現猜測、拼湊或改參數的網址。",
+        "出處寫得不精確（不算違規）：C2-S013、S014、S027 的 read_via 沒寫報名與標題，已在 N3623 補上。",
+        "R362（覆核）：重開來源都用研究稿記錄的網址（皆可追到搜尋或 API 結果）；新讀的 Folger 導言、Q1 第 18 景是研究代理搜尋結果裡的連結；卒年頁面都取自覆核自己的搜尋結果；Croker 1825 先叫 metadata 看到檔名再下載。覆核沒有拼網址。"
+      ]
+    },
+    "R363": {
+      "rule1_record": [
+        "C3（研究）：覆核用程式逐筆抽出工具紀錄 a52d1dcfb15ca34fb（125 次呼叫：約 95 次 Bash、11 次 WebSearch、1 次 WebFetch），每個開啟的網址都能對回較早的搜尋結果、頁面連結或文件記載的 API：Yale Walpole 33/157 與 28/117、28/289、29/014 都在 WebSearch 結果裡；Gutenberg 4773、1564、66048、657、25853（m.gutenberg）都原樣出現在搜尋結果；psi-encyclopedia 條目與 twain_mark-869.pdf（回 404）在搜尋結果裡；marktwainproject 1906-01-15、uccl00016、uccl00017 在搜尋結果裡，1906-01-13 的 www 網址取自 1906-01-15 頁上的 href；penelope 1%2A.html 在搜尋結果、2*.html 取自 1 頁上相對連結配 BASE HREF；fupress PDF、Spectator 頁在搜尋結果；loc.gov 走 collections 搜尋 fo=json → 結果列出的 resource 網址 → 頁面 JSON 的 fulltext_service 連結；archive.org 識別碼都出自 advancedsearch 結果，檔名都取自 metadata 的檔案清單。",
+        "灰色但不算違規：#39、#78、#83、#111 在同一個指令裡先叫 metadata、再下載——但檔名是程式從 metadata 回傳的清單原樣取出（[f['name'] … endswith('_djvu.txt')][0]），不是照樣式拼出來的，與 wave34 被記的『照樣式拼檔名』不同；建議下一批仍分成兩次呼叫。",
+        "出處寫得不精確（不算違規）：C3-S001 的 limitations 說『Yale 第 28–29 卷的對應頁沒有在搜尋結果出現』，其實第二次搜尋列出了 28/117、28/289、29/014，研究代理也下載讀了（都不是那封信）——應寫成『搜尋結果列出的三頁都不是 1779 年 12 月那幾封』。C3-S014 的 url 欄寫成 2%2A，實際開的是 2*（同一頁）。C3-S006 publisher 說連結取自 1906-01-15 頁的 Previous 連結，該網址同時也在第一次 WebSearch 結果裡。",
+        "覆核者 R363 本身：所有網址都取自研究代理的來源欄（其本身出自搜尋結果）、archive.org metadata 檔案清單、loc.gov 頁面 JSON 的 fulltext_file，或我自己 WebSearch 的結果（Futility Closet、Psi Encyclopedia 的 Twain／Dunne／Sidgwick 條目）；沒有拼網址、沒有改參數；卒年都在搜尋結果連到的可讀頁面上確認。C3-S009 那頁現在用 curl 可直接讀到全文，覆核已逐字核對，建議把 read_via 改成 direct_fetch（覆核讀）。"
+      ],
+      "blocked_sites": [
+        "collection.sciencemuseumgroup.org.uk（Dunne 人物頁回 CloudFront 403，未繞過，改用 Psi Encyclopedia 確認卒年）",
+        "archive.org 下載偶發 500（重試同一網址成功，沒有改網址）"
+      ]
+    },
+    "R364": {
+      "rule1_record": "逐筆讀了研究代理工具紀錄（a75d0f34120a718b7，113 次工具呼叫：100 次 Bash、10 次 WebSearch，沒有用 WebFetch）。所有抓取網址都對回來源：archive.org 識別碼都出自 advancedsearch 結果（#16、#27、#42、#88、#94），djvu 檔名都在前一個指令的 metadata 檔案清單裡看到，再在下一個指令下載（#17→#18、#28→#29、#43→#44、#89→#90、#95→#96）；cfi p14/p46、tn.gov、thecrimson、littlevillagemag、arizonahighways、yarmouthcountymuseum PDF、ohioarchaeology 卷頁、McCulloch 頁、新浪／網易／中國日報、journals.uio.no 都出自 WebSearch 結果；BHA PDF 出自 DOI 頁的 citation_pdf_url（#37→#38）；ohioarchaeology 的 file_download 連結同時出現在搜尋結果與卷頁連結（#47、#48）；loc.gov 頁面 id 都出自 collections 搜尋 API，加 fo=json 屬文件記載的格式參數，tile.loc.gov 全文網址取自頁面 JSON 的 fulltext_file；維基文庫的五個頁名都在 MediaWiki 搜尋 API（#60）的結果裡，『/全覽』與『/卷01–卷10』取自《游宦紀聞》首頁的 SK list 連結（#61→#78、#79），action=raw 屬文件記載的參數。#106、#107 只在本機比對字串，沒有抓取。read_via 與 reading_scope 的寫法與紀錄一致。未發現違規。覆核本人的抓取：archive.org 先叫 metadata、看到檔案清單後另一個指令下載；其他網址都是 C4.json 列出的來源網址、研究代理紀錄中由頁面取得的連結（BHA PDF），或 loc.gov 搜尋 API 結果加 fo=json；卒年只取自 archive.org metadata（經搜尋 API 取得的識別碼）與 Arizona Highways 頁面。",
+      "blocked_sites": [
+        "曹錦炎《鳥蟲書通考》原書與相關論文：兩次搜尋都沒有可讀版本",
+        "1930 年 1 月 Cummings 四頁聲明原文：loc.gov 1929–1931 年報紙搜尋沒有找到相關報導"
+      ]
+    }
+  }
+}

@@ -32,9 +32,10 @@ export async function loadAiHubRails(locale: Locale, topics: readonly GuideTopic
     Promise.all(wanted.map((topic) => getGuideList(locale, { kind: "life", topic: topic.slug, sort: "curated" }, PER_RAIL))),
     news ? getGuideList(locale, { kind: "life", topic: news.slug, sort: "news" }, NEWS_ROWS) : Promise.resolve(null),
   ]);
+  const stories = newsList?.articles.filter((article) => article.news_date) ?? [];
   return {
     rails: wanted.map((topic, index) => ({ topic, articles: lists[index].articles })).filter((rail) => rail.articles.length),
-    news: news && newsList?.articles.length ? { topic: news, articles: newsList.articles } : null,
+    news: news && stories.length ? { topic: news, articles: stories } : null,
   };
 }
 
@@ -46,22 +47,26 @@ export function AiHubRails({ rails, news, labels }: {
   if (!rails.length && !news) return null;
   return (
     <section aria-labelledby="ai-hub-rails" className="mt-10" data-testid="ai-hub-rails">
-      <h2 id="ai-hub-rails" className="text-2xl font-bold tracking-tight">{labels.heading}</h2>
-      <nav aria-label={labels.heading} className="mt-4 flex flex-wrap gap-2">
+      <h2 id="ai-hub-rails" className="portal-section-heading text-2xl font-extrabold tracking-tight">{labels.heading}</h2>
+      <nav aria-label={labels.heading} className="portal-scroll-strip mt-4 flex items-center gap-2 sm:flex-wrap sm:overflow-visible">
         {[...(news ? [news] : []), ...rails].map((rail) => (
-          <a key={rail.topic.slug} href={`#rail-${rail.topic.slug}`} className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] px-4 text-sm font-semibold hover:border-[var(--teal)] hover:text-[var(--teal)]">
+          <a
+            key={rail.topic.slug}
+            href={`#rail-${rail.topic.slug}`}
+            className="inline-flex min-h-11 shrink-0 snap-start items-center whitespace-nowrap rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 text-sm font-semibold text-[var(--ink)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
+          >
             {rail.topic.label}
           </a>
         ))}
       </nav>
       {news ? (
         <Rail rail={news} seeAll={labels.seeAll}>
-          <NewsList articles={news.articles} className="mt-4" />
+          <NewsList articles={news.articles} className="mt-4" leadHeading="h4" />
         </Rail>
       ) : null}
       {rails.map((rail) => (
         <Rail key={rail.topic.slug} rail={rail} seeAll={labels.seeAll}>
-          <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+          <ul className="mt-4 grid gap-4 sm:grid-cols-2">
             {rail.articles.map((article) => (
               <GuideCard key={`${article.kind}:${article.slug}`} article={article} labels={labels.cards} />
             ))}
@@ -76,13 +81,16 @@ function Rail({ rail, seeAll, children }: { rail: AiHubRail; seeAll: string; chi
   const id = `rail-${rail.topic.slug}`;
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="mt-10 scroll-mt-24">
-      <div className="flex flex-wrap items-baseline justify-between gap-3">
-        <h3 id={`${id}-title`} className="text-xl font-bold">{rail.topic.label}</h3>
-        <Link href={guideTopicHref("life", rail.topic.slug)} className="inline-flex min-h-11 items-center text-[var(--teal)] underline">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--line)] pb-2.5">
+        <h3 id={`${id}-title`} className="portal-section-heading text-xl font-extrabold tracking-tight">{rail.topic.label}</h3>
+        <Link
+          href={guideTopicHref("life", rail.topic.slug)}
+          className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 text-sm font-semibold text-[var(--teal)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)]"
+        >
           {seeAll}
         </Link>
       </div>
-      {rail.topic.description ? <p className="mt-1 max-w-2xl leading-7 text-[var(--muted)]">{rail.topic.description}</p> : null}
+      {rail.topic.description ? <p className="mt-2.5 max-w-2xl leading-7 text-[var(--muted)]">{rail.topic.description}</p> : null}
       {children}
     </section>
   );

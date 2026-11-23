@@ -1,0 +1,587 @@
+{
+  "batch": "batches/wave34-20261112.json",
+  "reviewed_on": "2026-11-12",
+  "method": "四位沒有參與研究的覆核代理（R341：A1；R342：A2；R343：A3；R344：A4）逐題至少重開一個關鍵來源、每個關鍵字跑一次素材池搜尋並 grep 批次檔去重、對照系列不收清單與 8 分鐘門檻；修改直接寫進批次的題目欄位，覆核新讀的來源編入該研究代理的來源序號。",
+  "counts": {
+    "NEEDS_CHECK": 4,
+    "ADOPT_WITH_CHANGES": 13,
+    "REJECT": 3
+  },
+  "source_renames": {
+    "R341-S001": "A1-S023",
+    "R341-S002": "A1-S024",
+    "R341-S003": "A1-S025",
+    "R341-S004": "A1-S026",
+    "R341-S005": "A1-S027",
+    "R341-S006": "A1-S028",
+    "R341-S007": "A1-S029",
+    "R342-S001": "A2-S022",
+    "R342-S002": "A2-S023",
+    "R342-S003": "A2-S024",
+    "R342-S004": "A2-S025",
+    "R343-S001": "A3-S031",
+    "R343-S002": "A3-S032",
+    "R343-S003": "A3-S033",
+    "R344-S001": "A4-S029",
+    "R344-S002": "A4-S030",
+    "R344-S003": "A4-S031",
+    "R344-S004": "A4-S032",
+    "R344-S005": "A4-S033",
+    "R344-S006": "A4-S034",
+    "R344-S007": "A4-S035",
+    "R344-S008": "A4-S036"
+  },
+  "verdicts": [
+    {
+      "id": "N3441",
+      "agent": "A1",
+      "reviewer": "R341",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "A1-S001 https://zenodo.org/records/1431163/files/article.pdf（搜尋結果列出的同一網址，curl＋pdftotext）；A1-S003 https://www.gutenberg.org/ebooks/22472.txt.utf-8（Fort 第 25 章 1882 段）；另以三次搜尋找 The Observatory 39:213 原刊，沒有任何結果連到 ADS 或其他全文",
+      "reopen_result": "Capron 頁面確實寫：《Times》『published two letters only out of a “great number”』、『a schedule of twenty-six observations at home and abroad』；他用 Browning 分光鏡看到『principal citron auroral line (W.L. 5569)』加淡連續光譜、『no trace whatever of Fraunhofer dark lines』；Cory 給《Knowledge》的信說『the torpedo-shaped body … and the aurora, as the spectroscopic examination gave the same line for both』；summary『(a) Character, auroral … (c) Time of flight, about 75 seconds. (d) … 27° x 3½° (e) … magnetic E. to W.』；形容詞清單逐字相符；高度 44 哩、200 哩、133 哩；速度約每秒 10 哩，對比火流星 40–130 哩；Groneman 的『cosmic dust』『théorie cosmique』。Fort 頁面確實寫『My own acceptance is that, upon Nov. 17, 1882, a vast dirigible crossed England』、引 Maunder（Observatory 39-214）『a third of a century later … just like a Zeppelin』、『Nevertheless, Maunder says that this thing had no relation to auroral phenomena』，以及『according to Capron's spectroscopic observations the phenomenon was nothing but a beam of auroral light』。Menzel 章是 Metabunk 論壇使用者上傳的 1953 年有版權書籍掃描，屬非授權副本，覆核移除；Maunder 1916 原刊沒有讀到。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "premise_status",
+        "editorial.payoff",
+        "editorial.visual",
+        "editorial.minutes",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提（Fort 把一道被分光鏡認成極光的光寫成飛船）由 Capron 1883 與 Fort 1919 兩份實讀來源撐住，但原稿最大的轉折『Fort 把 Maunder 的立場說反』只靠被移除的 Menzel 論壇掃描，Maunder 1916 原刊沒讀到。改用 Fort 自己承認 Capron 分光結論仍接受飛船的轉折後題目仍成立，但只到 7–9 分鐘，且『飛碟』一層刪除。補讀 Observatory 39:213–215 合法全文後可升為 screened。"
+    },
+    {
+      "id": "N3442",
+      "agent": "A1",
+      "reviewer": "R341",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A1-S007 https://archive.org/download/kingsmirrorspecu00konuuoft/kingsmirrorspecu00konuuoft_djvu.txt（覆核自己先跑 advancedsearch 與 metadata API 取得檔名）；A1-S008 https://journals.lib.unb.ca/index.php/MCR/article/download/17808/22180?inline=1；另以 curl 逐字讀 AncientPages 與 Offaly（A1-S023、S002）",
+      "reopen_result": "Larson pp.116–117 確實寫：教堂『dedicated to the memory of a saint named Kiranus』；『an anchor was dropped from the sky as if thrown from a ship … one of the flukes of the anchor got caught in the arch above the church door』；主教禁止抓人，『it might prove fatal as when one is held under water』；『the anchor has remained in the church since then as a testimony』；腳註『Kuno Meyer identifies Cloena with Clomnacnois. Ériu, IV, 12』、Irish Nennius 211–213 的 Teltown 版『I am being drowned』、『Congalach was an Irish king (944-956)』。McCaughan 確實寫 Ulster 749『laconically record』、Teltown 版譯自『late fourteenth-century Book of Ballymote and originally based on ninth-century Latin text by Nennius』、Book of Leinster 三艘船（Domnall mac Murchada, A.D. 763）、Speculum Regale『written circa A.D. 1250』且 Meyer 認為『entirely based on oral information obtained in Ireland itself』、Jackson 本『For God's sake let me go! … for you are drowning me』。AncientPages 預覽確實寫『back in 950 A.D.』『a small village』『a large metal anchor』『wooden door』『men and women were leaning over the railing』。Offaly 確實寫『743, 744, or 749』與『actual airships or perhaps UFOs?』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "核心事實都對得上，但原稿說錨故事『目前讀到最早』是約 1250 年的《王鏡》，池中 wave24 已記 Gervase of Tilbury 約 1211 年的英格蘭版本（本輪沒讀），不能稱最早；『Cloena 就是 Clonmacnoise 是 20 世紀學者認出來的』誇大（原文寫聖 Kiranus 的教堂）；『8 世紀的年鑑』不準；『950 接近 Congalach 年代』是研究者推測；兩個網文來源原為摘要工具讀，覆核逐字重讀並補上網文新增的細節，刪去沒核對的 #ufo 標籤。與 N2681 答案不同，不重複。"
+    },
+    {
+      "id": "N3443",
+      "agent": "A1",
+      "reviewer": "R341",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A1-S011 https://api.parliament.uk/historic-hansard/commons/1912/nov/18/zeppelin-airships-sheerness；A1-S012 https://api.parliament.uk/historic-hansard/commons/1912/nov/27/airships；A1-S013 https://api.parliament.uk/historic-hansard/commons/1912/dec/05/unknown-airship-at-sheerness；A1-S014 https://airminded.org/2007/10/14/the-sheerness-incident/（含註腳）；A1-S015 https://airminded.org/2013/02/13/thursday-13-february-1913/",
+      "reopen_result": "Hansard 確實寫：Joynson-Hicks『a Zeppelin dirigible passing over Sheerness on the night of the 14th October, about 8 p.m.?』；Seely『they have no definite information』；Churchill『I should like notice of that question』；11/27 Churchill『an unknown aircraft was heard over Sheerness about 7 p.m. … There is nothing in the evidence to indicate the nationality of the aircraft』『I know that it was not one of our own airships』『in case they might give assistance to aerial travellers in difficulties』『No, I cannot say which it was. I do not know.』，Crooks『Was it anything?』；12/5 Middlemore『an unknown airship of Foreign nationality passed over Sheerness on 14th October last』、Churchill『All necessary precautions are being taken.』Holman 確實寫 L1『ended its flight at Johannistal, near Berlin, at 3.30pm, 3 hours before』、24 小時改時之說、CID 1912-12-06『very little doubt … a German vessel』、註 5 的 Hansa 4 p.m. 在 Gotha、『rather lame』；並寫『Although the bill was in preparation before Sheerness, the incident was mentioned in CID discussions as further justification』。1913 年那篇確實寫法案被『rushed』、午夜後一次過完、Seely 的『mischievous persons』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "國會原話逐字相符，但原稿有三處錯：『三週後的帝國國防委員會』（11/27 到 12/6 只隔九天）；『催生了一條禁飛法』（Holman 明寫法案在 Sheerness 前就在準備，事件只是額外理由）；『1913 年恐慌的第一案』（來源沒這樣寫）。改後可收。與 U10（報紙造假與誤認）、N2805（煙火氣球、當天就解）答案都不同，不是重複。"
+    },
+    {
+      "id": "N3444",
+      "agent": "A1",
+      "reviewer": "R341",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "A1-S016 https://www.jasoncolavito.com/blog/did-ufos-buzz-straslund-on-april-8-1665（curl 逐字讀）；A1-S017 https://www.smb.museum/en/exhibitions/detail/a-ufo-in-1665/（覆核 curl 回 503，沒有重試繞過）",
+      "reopen_result": "Colavito 確實寫：傳抄線 von Ludwiger 1998 → Vallée 與 Aubeck 2009 → Aubeck 與 Shough 2015《EdgeScience》；1665 萊比錫傳單德文『eine runde platte Form wie ein Teller und wie ein grosser Mannshut … von Farben eben als wenn der Mond verfinstert wird … über der St. Niclas-Kirche … biß auff den Abend』，漁夫『voller Angst und Furcht』回小屋、『in nachfolgenden Tagen』發抖不適；『According to all the texts the authors present, the only witnesses were six sailors on a boat』；Mannshut 是寬邊的 Cavalier hat，1671 拉丁本『pilei vulgaris』；Aubeck 與 Shough『unusually tricky』；他傾向生病幻象。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "editorial.minutes",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "維持 needs_check：1665 傳單與 Francisci 原書沒讀，德文只經 Colavito；博物館頁覆核打不開，研究稿『海戰的大氣反射』只出自摘要工具、沒交代哪場海戰，已刪。改正『隔天發抖』（原文是之後幾天）與『所有版本都說』的誤述。接 U24（legacy chapter 3–4 分鐘）合計 7–10 分鐘，≤13 可行；但兩個 chapter 合起來要到 8 分鐘以上仍偏薄。"
+    },
+    {
+      "id": "N3445",
+      "agent": "A1",
+      "reviewer": "R341",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "A1-S018 https://zh.wikisource.org/wiki/搜神記_(四庫全書本)/全覽；A1-S019 https://zh.wikisource.org/wiki/晉書_(四庫全書本)/卷012；A1-S020 太平御覽/0007 action=raw；A1-S021 譚苑醍醐 (四庫全書本)/卷1 action=raw（網址都與研究稿同一筆，原本即來自搜尋結果或 MediaWiki 搜尋 API）",
+      "reopen_result": "《搜神記》卷八確實寫『吳以草創之國…邊屯守將皆質其妻子名曰保質…孫休永安三年三月有一異兒長四尺餘年可六七嵗衣青衣…眼有光芒爚爚外射…我非人也乃熒惑星也將有以吿爾三公歸於司馬…聳身而踓即以化矣仰而視之若曳一疋練以登天…時吳政峻急莫敢宣也後四年而蜀亡六年而魏廢二十一年而吳平是歸於司馬也』（四庫本作『踓』）；《晉書》卷十二『凡五星盈縮失位其精降于地為人…熒惑降為童兒歌謡嬉戲』；《太平御覽》卷七引《宋書》作『吳孫休永安元年…我熒惑也，將示爾三公歸於司馬…後四年蜀亡，六年魏廢，二十一年吳平』；楊慎『史謂童謡乃熒惑星變為小兒造謡審如此熒惑星亦不識古文也』，例子是吳元濟『小兒天上口』、董卓『千里草十日卜』、王恭『黃頭小人』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "editorial.minutes",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "文本都對得上，但『今天被當成外星人』的流傳版本研究代理與覆核都找不到可讀出處，U 軸的鉤子不成立，已改問法；鉤子的『邊城』原文沒有；『踊』應作『踓』。研究代理建議接 N2702，但 N2702 是 9.5–11 分鐘的 episode_core，加本題 4–6 分鐘超過 13 分鐘，不可行，建議暫緩。"
+    },
+    {
+      "id": "N3461",
+      "agent": "A2",
+      "reviewer": "R342",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A2-S007 https://lab.ndl.go.jp/dl/api/page/931062_532（並以 API 說明頁第 4 節記載的 IIIF 影像核對同一コマ）；A2-S008 https://lab.ndl.go.jp/dl/api/page/3441719_188 與 _13；A2-S001 877538_6",
+      "reopen_result": "頁面影像寫「我在世之間。殺生爲事。依其業報。堕於惡趣。一日之中。三度受苦。劍林置身。鐵杵碎骨…摠爲侍臣。不擧惡眼。況於寶體。豈有邪心乎」——「三度」接的是受苦，不是殺生；引句有「豈」。柿村註引扶桑略記延長四年七月四日條「宇多法皇爲故左大臣源融朝臣、於七箇寺、被修誦經」、公卿補任寬平七年八月廿五日薨，確認。江談抄（資仲卿曰）有「融候。欲賜御休所」、「靈物乍恐抱法皇御腰」，結尾已有「法皇依先世業行、爲日本國王、雖去寶位、神祇奉守護、追退融靈了。其戶面有打物跡」；古事談第一幾乎同文。今昔27-2：「日の裝束直しくしたる人の大刀帶て笏取り」「此の家の主に候ふ翁也」，院答「大臣の子孫の得させたれはこそ住め…」，靈「搔消つ樣に失にけり」，確認。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "risk",
+        "editorial.payoff",
+        "editorial.minutes",
+        "source_ids",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立、兩個翻轉有據；但研究稿把諷誦文的「一日之中三度受苦」誤成「三度殺生」、漏「豈」字，把江談抄已有的神祇守護結語說成古事談加的，hook 的「每天運海水燒鹽」不在今昔原文，payoff 說「一百多年」（926 到古事談的鎌倉前期遠不止），risk 的「清行為淨藏之父」在所引頁面上沒有。已改正並補今昔、古事談成書年的來源。性意涵句「令行房內之事」整句不上稿，排除線守住。片長 8–10 分。"
+    },
+    {
+      "id": "N3462",
+      "agent": "A2",
+      "reviewer": "R342",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A2-S001 https://lab.ndl.go.jp/dl/api/page/877538_59、_60；A2-S002 2596378_16、_17；A2-S005 1183913_73、_74；A2-S003 1906532_30",
+      "reopen_result": "今昔27-43：季武「袖の上に子を受取て」，回館「右の袖を披たれは木の葉なむ少し有ける」；結語「此の產女と云ふハ狐の人謀らむとて爲ると云ふ人も有り、女の子産むとて死たるが靈に成たると云ふ人も有り」，確認。和漢三才圖會（OCR）：「相傳曰産後死婦所化也、蓋此附會之説焉」；九州人說「小雨闇夜…必有燐火…状如鷗而大」，「能變爲婦負子遇人…強剛者諾負之則無害、將近人家乃背輕而無物」，「未聞畿内近國狐狸之外如此者」，確認；IIIF 影像下載不完整，未能對影像。柳田 1926：「古い人たちは斷定してしまつたやうだが、それでは說明の出來ない著しい特徴」、「段々と重くなつて」、「五十人百人力の力量を授けられたと云ふ例も多かつたことが、佐々木君の東奧異聞などには見えて居る」，確認。金井 1937 所引林羅山《梅村載筆》「うぶめは靑鷺なりとある人語りき」，確認。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "editorial.payoff",
+        "source_ids",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "三個轉折都對得上頁面；改正：題目把「附會」寫成像是指姑獲鳥的對應，原文被說成附會的是「產後死婦所化」，引文改回「蓋此附會之說」；柳田「說錯重點」改為他自己的「說明不了」；「怪力是最晚才加上去的」改為「目前讀到最晚出現」，並寫明柳田說這是各地昔話。今昔成書年改由 A2-S022 支撐。難產死亡：scope 不畫生產、遺體、血，「以血點衣」不講，產女畫成看不清臉的抱襁褓影子，守得住。片長 8–10 分。"
+    },
+    {
+      "id": "N3463",
+      "agent": "A2",
+      "reviewer": "R342",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A2-S010 https://lab.ndl.go.jp/dl/api/page/877638_9、_10（並以資料內檢索查全冊「茨木」「羅生門」）；A2-S012 1452950_13–20；A2-S013 JAANUS Modoribashi",
+      "reopen_result": "〈劍卷〉：「一條堀川の戻橋を渡りける時、東のつめに、齡二十餘と見えたる女の、膚は雪の如くにて…紅梅の打衣に守り懸け」，「我等は五條わたりに侍り…送りて給ひなんや」，「正親町へ今一二段が程」處說住所在都外，「いざ我行く處は愛宕山ぞ」，綱以鬚切「空ざまに鬼が手をふつと切る」落北野社廻廊；晴明令七日物忌、講讀仁王經；第六日「養母渡部に在りけるが」，即伯母；前段「宇治の橋姫とは是なるべし」。全冊資料內檢索「茨木」「羅生門」都是 0。島津 1929：「此の綱の鬼退治の場所は羅生門と固定してゐない」、太平記是「大和國宇多の郡の森で牛鬼の腕を斬る」、「謠曲『羅生門』」為代表文獻、謠曲到「時節を待ちて又取るべし」為止、『茨木』『綱館』補後半；都良香「氷消浪洗舊苔鬚」出自『十訓抄』『江談抄』，玄象出自『今昔』，羅城門常與朱雀門混同，「室町時代には…兇猛な惡魔」；右手左手「原傳說では纔に『太平記』が右としてゐるだけ」，確認。JAANUS：「Heike monogatari… met a beautiful woman who suddenly changed into the evil spirit of Ibaraki Dōji」、綱 953–1024，確認。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial.visual",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "核心（地點、鬼的身分與名字的遷移）成立，與 N1044（安義橋骨架）、N406（酒吞童子起源）不同核心。改正：女子原文是膚白如雪、穿紅梅打衣，hook 與畫面寫成「白衣女子」不對；「走不到兩條街」改原文；「平安時代羅城門的鬼是風雅的」改為島津說的古老逸話並補出處；「以羅生門聞名是因為謠曲」改為島津原話。橋姬成鬼的作法不講不畫，斷臂不畫血，守得住。片長 8–10 分。"
+    },
+    {
+      "id": "N3464",
+      "agent": "A2",
+      "reviewer": "R342",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A2-S014 https://lab.ndl.go.jp/dl/api/page/991106_440；A2-S015 769639_24、_25；A2-S012 1452950_194；A2-S017 876567_25、_37；A2-S016 文化遺產オンライン 274072",
+      "reopen_result": "今昔14-42：「早ウ人ニハ非デ鬼共也ケリ。樣ミノ怖シ氣ナル形也」——有寫「各種可怕的樣子」；「尊勝眞言ノ御マス也ケリ」後「多ク燃タル火ヲ一度ニ打消ツ」，確認。好古小錄：「陰陽雜記曰器物百年をへて化して精靈を得てより人のこゝろを誑すこれを付喪神と號す…世俗每年立春に先立て人家の具足をはらひいたして路次にすつること侍りこれを煤拂といふ…百年に一年たらぬ付喪神の災難にあはしと也」，藤貞幹按「和歌ニ百年ニ一年タラヌツクモガミト云即是也」，確認。島津稱之「近古の化物繪卷で名高い『付喪神』」，繪卷內容（煤拂丟棄的古道具、百鬼夜行、一條通關白行列、尊勝陀羅尼護符發火、剃髮出家）確認；島津也寫「一年足らぬ九十九髪」。謠曲評釋：「伊勢物語にある業平の歌、百年の百の字の頭なる一を除けば白の字となる、つくもは海藻の名」，確認。文化遺產オンライン：「全国で60以上の諸本が確認されており…4種類に分類」，確認。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "editorial.payoff",
+        "editorial.minutes",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立。改正：「沒寫鬼長什麼樣／看不清形狀」與今昔原文「樣々の怖しげなる形」不符；「第九十九年把舊東西丟掉」是研究者推論，改回原文（每年立春前丟、避百年少一年之災）；「室町」沒有讀到出處，改「中世」並引島津「近古」；「道具大遊行來自真珠庵本系統、60 以上摹本」改回解說原話。尊勝陀羅尼只講說話裡怎麼寫，不教持誦；忌夜行日不列日期；伊勢物語老婦求愛一段不講，守得住。片長覆核估 8–9 分。"
+    },
+    {
+      "id": "N3465",
+      "agent": "A2",
+      "reviewer": "R342",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "A2-S008 https://lab.ndl.go.jp/dl/api/page/3441719_189；A2-S019 1194081_56、_137；A2-S020 765986_38",
+      "reopen_result": "江談抄：〈野篁並高藤卿遇百鬼夜行事〉後接〈野篁爲閻魔廳第二冥官事〉：「其後經五六ヶ日…於陽明門前、爲高藤卿被切車簾…篁參高藤祖父冬嗣亭、令申仔細之間、高藤俄以頓滅…篁卽以高藤手引發、仍蘇生。高藤下庭拜篁云、不覺俄到閻魔廳」，確認；五六日是在遇百鬼夜行之後、割車簾之前。山州名跡志〈生六道〉：「小野篁は平世心に任て地府に往來せり。其行には洛東珍皇寺の側より至り還には卽此所に現ず」；珍皇寺條有篁像、篁社、閻魔堂閻王像傳篁作，無井。都名所圖會：「篁堂には小野篁の像を安置す、此所より冥土へ通ひし道なりとぞ」，無井。刊年：NDL Search 書誌《山州名跡志》1711（刊記正德元年七月）、《都名所圖會》安永9（1780）。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "editorial.minutes",
+        "source_ids",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "讀到的部分對得上，但題目的核心「井最早出現在哪本書」仍未找到，今天「兩口井」的說法只有經摘要工具讀到的導覽頁，《今昔》卷20第45話也沒讀；題目裡 1711、1780 原稿沒有頁上出處，覆核已補書誌來源；hook 時序寫錯已改。片長覆核估 4–6 分，接 N3464（8–9 分）合計 12–15 分，上限超過 13 分鐘，建議暫緩：先不排進 N3464，冥官一條可在 N3464 結尾一兩句帶到。現行宗教活動（六道參り、迎鐘）只講紀錄，守得住。"
+    },
+    {
+      "id": "N3481",
+      "agent": "A3",
+      "reviewer": "R343",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "New York Herald 1872-08-12 第 10 版〈Played-Out Plantamour〉（覆核經 loc.gov 搜尋 API 結果取得，A3-S031）；另重開 A3-S003（8-11 第 5 版）、A3-S004（8-12 第 4 版）、A3-S006（Evening Star 11-29）、A3-S007（Plantamour 訃聞 PDF）",
+      "reopen_result": "8-12 第 10 版 Winlock 說『The story is an entire fabrication from beginning to end』，『I understand that the Swiss astronomer has publicly declared that he never made any such prediction; and I don't believe he ever did』；記者第一次去是『a few days ago』，職員說教授『absent for a few days on a pleasure excursion』；文中另提 Millerite 營會講道。8-11 第 5 版：標題『How It Split Into Two in 1846 and Has Only Been Seen Once Since』，正文稱他『third rate savant』『subsided into silence』、Donati 在 Nazione of the 4th March；第 4 版社論『none but very old women have been scared』；Sands 報告『making the whole number observed 720』『moving in the orbit of Biela's comet』；訃聞：Königsberg 隨 Bessel、論文用 Olbers 方法由三次觀測定彗星軌道、1839 年回日內瓦、選『the orbits of Comets』、1846 年 Biela 分裂、Klinkerfues 12 月 2 日電報『Biela touched earth on November 27, search near θ centauri』。A3-S001、A3-S002 的 loc.gov JSON 這次回傳不完整，沒有重讀。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立、兩個轉折（借名的是彗星專家；同年真的穿過 Biela 碎屑）有一手來源，8–10 分鐘撐得起。改正：（一）研究代理寫『他是否公開否認本輪沒讀到』、payoff 寫『他一句話也沒說』，但第 10 版 Winlock 明說聽說他已公開否認——改成兩種說法並陳；（二）A3-S005 的網址是自己把 sp=4 改成 sp=10 探出來的，違規，換成覆核經搜尋結果取得的 A3-S031；（三）鉤子的『櫃台』原文沒有、日子是 12 日前幾天，改正；（四）Herald 8-11 其實把責任算在 Plantamour 頭上（三流學者），『當年報紙自己就懷疑他沒說過』只對《紐約時報》與 Winlock 成立，已改寫；（五）Biela『1852』是研究代理對 OCR『1862』的推斷，改用報紙標題『1846 年裂開後只再被看到一次』。教派營會講道維持不提。"
+    },
+    {
+      "id": "N3482",
+      "agent": "A3",
+      "reviewer": "R343",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A3-S008 小冊 OCR（archive.org b30362362，經 metadata API 列出的 djvu.txt）；A3-S009 Luttrell 第 6 卷 OCR；1742 年信（A3-S032，經 metadata 清單重取）；A3-S011 Schaff-Herzog 條；另讀 Schaff-Herzog〈Inspired, The〉（A3-S033）",
+      "reopen_result": "小冊：『Thursday January 1. 1707. Spoken in the Presence of a great Assembly, by J. P.』，抽搐、喉嚨如被掐，『Five Months from that Day, The Twenty Fifth Day of May, you shall behold him rise again. One Month above the Number of Days that Lazarus was in his Grave. The very Hour he was put in the Earth shall he arise』，接著對 J. L. 說『from Twelve at Noon, until Six in the Evening』『Provide no Cloathing for my Servant… to walk Naked unto his Habitation』；12 月 25 日 J. P.『More fat, and more fair』；12 月 23 日『A. M. K. a Child of Twelve Years old』；『By the Hand of my Servant Lacy, will I raise the Body』。Luttrell Saturday 22 May：『two regiments of our train'd bands are ordered upon the guard during the holydayes, to prevent any disorder which may happen by the mobb』；11 Decemb. 1707：女王命檢察總長起訴 Lacy 與 Bulkley。1742 信 p.54–55：『the Queen's Guards… posted in Bunhillfields, where were assembled together, no less than Twenty thousand People』、『some Persons now living in New-England』。Schaff：1707 年先知們被定罪上枷，對 Lacy、Bulkeley 的起訴被撤銷；Lacy 小冊《The Mighty Miracle》邀眾人到 Bunhill Fields。〈Inspired〉條：Camisard 先知 1711 年到德國，1714 年在 Wetterau 形成 inspirational community。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.minutes",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，預言寫得具體、當時紀錄與 34 年後的數字對比清楚。改正：（一）5 月 25 日的預言是元旦（舊年號 1707）由 John Potter 說的，研究代理寫成 12 月 28 日、鉤子跟著錯；（二）十二點到六點、不準備衣服在 1708 年小冊原件就有，不是後來摘錄才出現；（三）1742 信的 OCR 檔是拼檔名取得（違規），覆核循 metadata 清單重讀後列 A3-S032 取代 A3-S010。宗教界線：英國的法國先知派已不存在，但它影響了德國的 Inspired 團體，該團體延續為今天美國的 Amana（後半只見搜尋摘要），scope 加上『不提這條傳承、不當成現存教義』；題目講的是一個已消失團體的一次具體預言與官府的應對，不碰現存教義，scope 守住不畫遺體與開棺。片長 8–9 分鐘，沒有餘裕。"
+    },
+    {
+      "id": "N3483",
+      "agent": "A3",
+      "reviewer": "R343",
+      "verdict": "REJECT",
+      "key_source_reopened": "A3-S017 Evelyn 日記第 1 卷 OCR（metadata 清單取得）；A3-S015 Folger〈Black Monday〉；A3-S016 Alice Thornton 計畫部落格",
+      "reopen_result": "Evelyn 這個版本把『29th March, 1652』給了 Usher 講道，日食條目印為『2pth April, 1652』，前後條目是 4 月 25 日與 5 月 10 日——是版本編排的問題，不是可以講的史實轉折。Folger：全食帶在蘇格蘭，倫敦是偏食，『it was still light enough to read indoors (as another observer recorded)』——『室內能讀書』是另一位觀察者記的，不是《Black Munday turn'd white》本身的話。Thornton 部落格：丈夫『could not see to eat his breakfast without a candle』、『stars appeared, and a cold storm』，寫成『no earlier than 1669』；部落格說日食『cast complete darkness over Scotland and much of northern England』。",
+      "changed_fields": [],
+      "duplicate_of": "P12",
+      "reason": "同型同答案：這已是第三次判這題（wave26 K3、wave32 Y3）。本題的核心答案仍是『占星小冊預告大變、當天無事、作者被嘲笑、恐慌記載多出自嘲笑者』，與 P12（1524 年倫敦洪水）、N2704（1588）相同。研究代理提出的三個『翻轉』撐不起不同答案：Evelyn 的『差一個月』是 1901 年版本的條目編排問題，拿來當轉折會誤導觀眾；『最嚇人的字句出自匿名小冊而非 Lilly』仍是同一種占星小冊筆戰；約克郡真的看見星星只說明日食本身是真的（從沒人懷疑），不翻轉預言落空的結論。另外『室內能讀書』被錯歸到《Black Munday turn'd white》。Thornton 的早餐蠟燭可以當 N3323（1715 Halley 日食地圖）或 P12 片中的一句對照，不另立題。"
+    },
+    {
+      "id": "N3484",
+      "agent": "A3",
+      "reviewer": "R343",
+      "verdict": "REJECT",
+      "key_source_reopened": "A3-S018《Punch》1842 年第 2 卷 OCR（metadata 清單取得）；比對池中 N2402 全文",
+      "reopen_result": "Punch：〈The Approaching Earthquake〉『definitively fixed for Wednesday next』；〈Intended Route〉『start early in the morning on the 16th from Downing-street… Sir Robert Peel』；啟事『the Earthquake, advertised to take place on the 16th inst.』；〈Earthquakeiana〉『the excitement of last Thursday』；〈The Anticipated Earthquake〉提『the Monk of Dee』。N2402 的 answer_target 已有『翻轉三：Mackay 同一章還記了 1842 年一則說 3 月 17 日倫敦地震的流言…蘇格蘭國家圖書館藏的一張沒有年份的街頭歌謠』，並列了同一張 NLS 歌謠（74896026）當來源；N2402 的 risk 寫『若製作前補不到 1842 年報紙就縮成一句』。",
+      "changed_fields": [],
+      "duplicate_of": "N2402",
+      "reason": "N2402（8.5–10 分鐘）已把 1842 年倫敦地震流言當翻轉三，而且用的是同一張 Seven Dials 歌謠；本題 4–6 分鐘接上去合計 12.5–16 分鐘，超過 13 分鐘上限，獨立又只有一句非諷刺的新聞（Baton-Rouge Gazette）。不另立題，改當 N2402 寫稿的補充：把 A3-S018（Punch：日子 16 日星期三、『上週四的騷動』）、A3-S020（『一些愚蠢輕信的人離開倫敦』）、A3-S021 加進 N2402 翻轉三的來源，讓那一段從『只有 Mackay 與無年份歌謠』升級成『當年諷刺週刊與一則新聞』，旁白約 1 分鐘；N2402 寫的『3 月 17 日』與 Punch 的 16 日不同，寫稿時兩個日子並陳。A3-S022 部落格的細節（愛爾蘭人、布萊頓線、女王接見）都未證實，不用。"
+    },
+    {
+      "id": "N3485",
+      "agent": "A3",
+      "reviewer": "R343",
+      "verdict": "REJECT",
+      "key_source_reopened": "A3-S023 Patrick Vincent〈On this Day: 18 July 1816〉PDF（libra.unine.ch）；比對池中 M17 的 scope",
+      "reopen_result": "Vincent：『an astronomer in Bologna had predicted that the sun would die out on that day』（引 Jeffrey Vail 等）；Pictet〈Tableau des observations météorologiques faites au Jardin Botanique de Genève〉：『On July 17th… 10 degrees and raining, on the 18th it warmed to 16 degrees at 2pm but was still overcast, and the next day… 20 degrees』；《Gazette de Lausanne》1816-07-19 第 1 頁法文原句『une crainte presque générale de la prochaine extinction de ce flambeau… et par conséquent de la fin du monde, M. Rouy a cru devoir contribuer à dissiper les craintes chimériques que la malveillance et la superstition se plaisent à propager』，Vincent 稱 Rouy 為 Parisian astronomer，但報紙沒說示範在巴黎；West 1826 年轉述拜倫的『dark day』，Vincent『I have come across no other evidence』。M17 的 scope 明列『當時的人都以為是世界末日（沒查）』不能講。",
+      "changed_fields": [],
+      "duplicate_of": "M17",
+      "reason": "wave29 已判『1816 逐項細節是 M17 寫稿時的工作』，本題正好是 M17 scope 裡那條『當時的人都以為是世界末日（沒查）』的查核，不是新的核心問題；預言者名字與原文仍無出處、《Gazette de Lausanne》原刊沒讀到，只有 Vincent 一篇二手轉引，獨立成題太薄，接進 M17 又會讓 M17（legacy，已是完整一集）超過 13 分鐘。處置：不另立題，交給 M17 寫稿當補充——可以把『當時有沒有人怕世界末日』從『不能講』改成『可以講一句：1816 年 7 月 19 日的《Gazette de Lausanne》說人們普遍害怕太陽熄滅，Rouy 每晚加演黑子示範來安撫（據 Vincent 轉引）』，以及 7 月 18 日日內瓦陰天 16 度；來源 A3-S023、A3-S025、A3-S026。『波隆那天文學家』名字、暴動、自殺、派兵、《Literary Panorama》標題都不講。研究代理畫面寫的『巴黎小劇場』沒有根據，不用。"
+    },
+    {
+      "id": "N3501",
+      "agent": "A4",
+      "reviewer": "R344",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A4-S002／A4-S003 的兩期《Zoologist》改循 metadata API 重新取得（A4-S029 https://archive.org/download/per_the-zoologist_the-zoologist_1859-05_17_203/per_the-zoologist_the-zoologist_1859-05_17_203_djvu.txt、A4-S030 …1859-06_17_204_djvu.txt）；重開 A4-S001（1859-04 djvu.txt）、A4-S004 https://djo.org.uk/all-the-year-round/volume-viii/page-256.html、A4-S006 https://www.nhmag.com/picks-from-the-past/271577/rains-of-fishes 第 1、6、9 頁",
+      "reopen_result": "Griffith 證詞逐字相符（bucketful、80×12 碼、兩陣、11 a.m. 早班車、『They came down with the rain in a body like』、寄十八到二十條給 Owen 的朋友之請）。Gray：『very young minnows』『a practical joke of the mates of John Lewis, who seem to have thrown a pailful of water with the fish in it over him』；Newman：水槽裡『one only of these is a minnow, the rest are the smooth-tailed stickleback』，但『Dr. Gray is without doubt correct』。Drane 信署『Cardiff, May 18, 1859』，刊 6 月號，『three individuals, resident some distance from each other』，沒有『會員』身分。《All the Year Round》p. 256：『There are two savans against a sawyer and a vicar』，作者接著說『I confess I incline less to the authority of the savans than to the testimony of the sawyer as reported by the vicar』——結論就在 A4 讀過的這一頁，下一篇〈THE BLEEDING DIAMOND〉同頁開始。Gudger（頁首標 Picks from the Past: November–December 1921）第 1 頁最早一條是 Athenaeus，1666 Cranstead 是第二條；第 9 頁『There is left to us but one other explanation,—the action of heavy winds, whirlwinds, and waterspouts』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "editorial.minutes",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立。改正：Drane 5 月寫、6 月刊；『住得很遠』→『彼此住得有段距離』；刪無出處的『會員』；補上 Dickens 週刊作者偏向鋸木工的結論（原稿誤說在下一頁未讀），成為第三個轉折；刪掉只有編者摘要、地點不明的 Darwin 書信線索；Gudger 最早一條是 Athenaeus。兩個違規取得的來源換成覆核重新取得的版本。加上週刊結論後撐得起 8–9.5 分鐘，三個轉折（惡作劇→魚種對不上→地方與週刊站到鋸木工）都會改變觀眾結論。與 T118（N2685＋N2686，9–11 分）同類不同答案，T118 再加一章會超過 13 分，單獨成集。"
+    },
+    {
+      "id": "N3502",
+      "agent": "A4",
+      "reviewer": "R344",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A4-S011 https://pmc.ncbi.nlm.nih.gov/articles/PMC6545352（Materials、Taxonomic treatment 的 Holotype 段）；A4-S007 https://archive.org/stream/voyageofdiscover02ross/voyageofdiscover02ross_djvu.txt（pp. 138–140、Appendix III、書末名錄）；A4-S008 https://jimclifford.ca/philosophical-transactions-ocr-1665-1869/articles/jstor-107554/；A4-S009 https://www.lindahall.org/about/news/scientist-of-the-day/george-cruikshank",
+      "reopen_result": "2019 論文：Ross 1818 樣本是『One of the first field samples of red snow』；1851 年 Ehrenberg 收藏樣本採自 Crimson Cliffs『though a bit further north of the location, from where the Ross type sample of 1818 originated』，只『also able to investigate』並量細胞大小；『Unfortunately, the latter material was not traceable』；新種 Sanguina nivaloides 的 Holotype 是『CCCryo RS_0015–2010』，模式產地是挪威 Svalbard、2010 年 8 月 4 日採——不是 1851 年那份。『it is not possible to prove that Uredo nivalis F.A.Bauer 1819 is conspecific with our recent findings』相符。Ross：『it was at once determined it could not be the dung of birds』、midshipman Ross 與 Beverley 上岸、110 倍、『muddy port wine』、『Dr. Wollaston seems to concur』相符；附錄 Wollaston：『devoured by the myriads of water-fowl』（水鳥）、『I am strongly inclined to think it to be of vegetable origin』、白灰、結語相符；書裡只稱『Dr. Wollaston』。Bauer：鐵絲鳥籠、N.W. aspect、12 月 10 日、1 月 10 日小金字塔、『more than double』、兩杯凍裂都相符；論文沒寫實驗地點。Linda Hall：版畫 1819-01-18、桶裝紅雪標明送大英博物館相符。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "editorial.minutes",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，但原稿最大的轉折寫錯：新屬新種不是用 1851 年 Crimson Cliffs 樣本命名（模式標本是 2010 年 Svalbard），1851 年的採點也不是『同一段懸崖』而是略北；payoff 整句重寫。另改：海鳥→水鳥；刪『最有名的化學家』（書裡只寫 Dr. Wollaston）；刪『倫敦』（Bauer 沒寫地點）。原來如此事務所池沒有紅雪或雪藻題，本題講化驗與命名史，不同核心。8–9.5 分鐘可撐。"
+    },
+    {
+      "id": "N3503",
+      "agent": "A4",
+      "reviewer": "R344",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "Biot 1803 原版掃描 A4-S032 https://archive.org/download/biot-orne/BIOT_RELATION_D_UN_VOYAGE_djvu.txt（advancedsearch → metadata 所列）；A4-S015 https://jimclifford.ca/philosophical-transactions-ocr-1665-1869/articles/jstor-107118/",
+      "reopen_result": "原版書名頁：Baudouin、Thermidor an XI、『Lu … le 29 messidor an 11』。序『l'ignorant croit, le demi-savant décide, l'homme instruit examine』與『c'est l'envie de tout expliquer qui l'a fait rejeter si long-temps』相符；茅屋農民（Sainte-Gauburge 村外）手上本來就有一塊，『il la reconnut aussitôt pour être tombée du ciel』，妻子在門前撿的；Gibon 64 歲；星期日 L'Aigle 廣場訪問，看到落石的都在界線內、『Il n'y eut point d'exception à cette règle』；最大 8.5 kg、最小 7–8 g、『deux ou trois mille』；結語『Je me suis borné … à un simple exposé des faits … Je laisse à la sagacité des physiciens』，與 CC0 重排版一致。Howard：『Whence their origin … is yet, in my judgment, involved in complete obscurity』；1768 院士結論『that it did not fall from heaven』『nothing but a species of pyrites』；Siena 信『My first objection was to the fact itself; but of this there are so many eye witnesses…』是 Bristol 伯爵 1794 年信的末句（Howard 標 Phil. Trans. for 1795 p. 103）；Wold Cottage 56 磅、12 吋土 6 吋白堊、冒煙硫磺味、『not any thunder or lightning』，展覽反而無助於取信。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，原版掃描找到並核對。改正：『我第一個反對的是事實本身』確認是 Bristol 伯爵信的末句；鉤子的『從屋裡拿出』與原文不符（他手上本來就有）；『流傳的說法』原稿以 Linda Hall 頁概括成『證明來自外太空』，兩頁都沒這麼說，改用 DSB『讓法國相信隕石真實性』；補星期日廣場的界線驗證與 Wold Cottage 展覽。與原來如此事務所 N052–N058（隕石機制）不同核心；與 N3062、N2185 同類不同答案。8.5–11 分鐘可撐。"
+    },
+    {
+      "id": "N3504",
+      "agent": "A4",
+      "reviewer": "R344",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A4-S035 https://zh.wikisource.org/wiki/%E8%AB%96%E8%A1%A1/19（由搜尋結果的〈論衡〉目錄頁連入，另讀 /18〈異虛〉）；A4-S020 https://zh.wikisource.org/wiki/%E5%BE%8C%E6%BC%A2%E6%9B%B8/%E5%8D%B71%E4%B8%8B（搜尋結果直接列出）",
+      "reopen_result": "《後漢書》：『是夏，蝗。…是歲，陳留雨穀，形如稗實。〈杜預注《左傳》云：「稗，草之似穀者。」〉』相符，頁面沒標注者名。〈感虛〉：『夫見天雨粟、鬼夜哭，實也。言其應倉頡作書，虛也』『或時倉頡適作書，天適雨粟，鬼偶夜哭』；『建武三十一年中，陳留雨谷，谷下蔽地。案視谷形，若茨而黑，有似於稗實也』；『因與疾風俱飄，參於天，集於地』『星不更生於地，谷何獨生於天乎』；同篇燕太子丹『天雨粟』王充判『此言虛也』。〈異虛〉『天雨谷者凶』『夫雨谷吉凶未可定』相符。",
+      "changed_fields": [
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "引文成立；改正倉頡一句的原文、刪無出處的『開封一帶』、補燕太子丹段避免誇大。只有 4–6 分鐘。接 N2262 不可行：N2262 是 8–11 分鐘的單集、不在題案，答案方向（地底沖出）也不同，合起來 12–17 分鐘超過上限；接 N3501 也會到 12.5–15.5 分鐘。內容可收，但建議暫緩排題，等同核心的短兄弟題。"
+    },
+    {
+      "id": "N3505",
+      "agent": "A4",
+      "reviewer": "R344",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A4-S021 https://www.loc.gov/resource/sn85033673/1877-01-16/ed-1/?sp=3、A4-S024 https://www.loc.gov/resource/sn85033673/1877-02-01/ed-1/?sp=3、A4-S023 https://www.loc.gov/resource/sn83045160/1877-01-23/ed-1/?sp=1（覆核自跑 loc.gov 搜尋 fo=json，讀 JSON 所列 OCR XML）；A4-S025、A4-S026 全文重開",
+      "reopen_result": "Ledger 1-16：『a heavy fall of small live snakes』、Goslee street south of Vance、quart bottle、一呎到一呎半、『in the larger ones, which are nearly as large as the ordinary red-worm, small black spots are visible』、『millions of them』、waterspout『thousands of miles away』相符。Appeal 1-23：『The New York World discredits the snake story our Associated Press reporter sent over the wires on Thursday last … under pressure of Kentucky Bourbon』。Herald（Ledger 轉載）：Reiche & Brothers、Dr. Scherer、signal service observer、Sergeant McElroy、10:20 a.m.、十五到二十分鐘、『long worms (or snakes if you will)』、knitting needle、hoop shape、Vance between Goslee and Lauderdale、『the snakes turn out to be worms』相符，另有『the press agent at Memphis did not ‘have them’』。WKNO：『no one said that they saw snakes falling from the sky』（Dowdy 轉述）、前一天近半吋雨相符；Memphis Magazine：『Not one single person saw these snakes actually fall』、horsehair worms 到 leeches、『no clear answer』相符，但它把時間寫成下午。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.minutes",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立。改正：『紐約報紙說記者喝多』只是 Appeal 轉述《紐約世界報》，問句改寫；鉤子的雨長與時刻照觀測員；刪無出處的『被一再寫進奇聞書』；補《先驅報》替記者平反與觀測員描述沒有落下目擊。8–9.5 分鐘可撐。《紐約先驅報》1 月 29 日原版面在 LOC 搜尋結果裡，但覆核讀取逾時，仍只靠 Ledger 轉載。"
+    }
+  ],
+  "theme_suggestions": [
+    {
+      "ids": [
+        "U24",
+        "N3444"
+      ],
+      "shared_question": "一張 16、17 世紀的天兆傳單，是怎麼在 20 世紀被讀成 UFO 的？",
+      "why_it_flows": "U24（1561 紐倫堡，勸人悔改的傳單→1958 年 Jung 的飛碟書）與 N3444（1665 Stralsund，『像盤子、像大男帽』的凶兆→1998 年後 UFO 書與 2023 年展覽名）回答同一個問題、時間順著接；合計 7–10 分鐘，≤13。前提是 N3444 先補讀 1665 傳單或 Francisci 原件、博物館頁逐字，否則只能放 U24 一句旁證。"
+    },
+    {
+      "ids": [
+        "N3443",
+        "N2805"
+      ],
+      "shared_question": "一場沒有來的空襲，是怎麼被官方和報紙當真的？",
+      "why_it_flows": "同屬 1910 年代『沒來的空襲』而答案相反：N2805 渥太華 1915 年當天就由對岸的煙火氣球解開，N3443 Sheerness 1912 年國會逐字紀錄裡從頭到尾『不知道』、至今未解卻被拿來支持立法；N3443 8 分鐘＋N2805 4.5 分鐘約 12.5 分鐘，若 N3443 用到 9 分鐘就要把 N2805 壓到 4 分鐘以內，否則各自成集。"
+    },
+    {
+      "ids": [
+        "N3463",
+        "N1044"
+      ],
+      "shared_question": "渡邊綱斬鬼手、鬼扮親人取回的故事，每個零件（橋、門、鬼的名字、扮成誰）是哪一份文字放進去的？",
+      "why_it_flows": "N1044 講《今昔》安義橋已有「斬手後扮親人上門」的骨架，N3463 接著講〈劍卷〉的戻橋、太平記的大和森林、謠曲的羅生門與歌舞伎的茨木；同一個方法順著時間往下，不靠補料。兩題各 8 分以上，適合排成上下集或同一播放清單，不合併成一支。"
+    },
+    {
+      "ids": [
+        "N3481",
+        "N2841"
+      ],
+      "shared_question": "報紙說某位天文學家算出彗星會在某天撞地球——他本人真的這樣說過嗎？",
+      "why_it_flows": "兩題都是天文學家的名字被借去當末日預言的保證（1773 年 Lalande 的論文根本沒念；1872 年 Plantamour 被瑞士報紙借名，同行說他已否認），而且都碰到 Biela 這一系的彗星恐慌（N2841 尾聲的 1832 年），接起來是同一個問題的兩個答案，不需補料。"
+    }
+  ],
+  "rule1_record": [
+    "A3（研究）：兩處。把 loc.gov 頁面網址的 sp=4 自己改成 sp=10 先探再讀（改參數推網址，A3-S005 作廢，R343 循搜尋 API 合法重取為 R343-S001）；在同一指令裡還沒看到 metadata 檔案清單就照 <id>_djvu.txt 樣式拼 OCR 網址（A3-S010 作廢，R343 從清單重讀為 R343-S002）。",
+    "A4（研究）：下載 1859 年《Zoologist》兩期時沒查 metadata、照 ${id}_djvu.txt 拼出網址，出處欄還寫「同上方式取得」（不實）；R344 循 advancedsearch 與 metadata 重下逐字讀，以 R344-S001、S002 取代 A4-S002、S003。A4-S006 的取得路徑寫錯（實為搜尋結果），不算違規。",
+    "A1、A2：覆核 R341、R342 逐筆讀工具紀錄（101、105 次呼叫），沒有發現違規。A2 用的 NDL Lab API 經 R342 確認為公開文件記載，書目 id 都先出現在檢索結果；一個 id 先從池中舊批次檔得知，再經檢索確認，回報說法不完全準確。A1 的 Menzel 掃描因版權疑慮移除，不算規則 1 違規。",
+    "依前幾批慣例不整份重做：所有被採用的內容都已由覆核循公開連結重讀。覆核者本身都沒有拼網址。"
+  ],
+  "reviewer_notes": {
+    "R341": {
+      "rule1_record": {
+        "research_agent_A1": "覆核用 python 抽出研究代理工具紀錄的全部 101 次呼叫，逐筆核對 31 個開啟過的網址：Metabunk、Zenodo（含 records/1431163/files/article.pdf，原樣出現在搜尋結果）、Gutenberg 22472.txt.utf-8（出現在搜尋結果摘要文字）、Science Museum、Linda Hall、ADS 摘要頁、CELT 五頁（text319、320、326、G100001A/text315、T100005A/text057 全都在同一筆搜尋結果的連結清單裡）、維基文庫《搜神記》全覽、《晉書》卷012 與 zh/卷011、《宋書》卷026（都在搜尋結果裡）、太平御覽/0007、譚苑醍醐卷1、文獻通考卷280、太平御覽(四部叢刊本)/卷第七（頁名都出自 MediaWiki 搜尋 API，action=raw 屬允許的格式參數）、theworldofchinese、bannedbook（403，未繞過）、Colavito 兩頁、archive.org（advancedsearch → metadata → djvu.txt）、AncientPages、seamussweeney、collections.mun.ca PDF（取自 seamussweeney 頁面連結，連不上）、medievalists.net（同頁連結）、UNB、Offaly、Hansard 三頁、Airminded 兩頁、英文維基 Stralsund 條（搜尋結果）、smb.museum（取自該維基條目參考文獻）。沒有發現猜測或拼湊網址，各來源的 read_via／publisher 寫法與實際取得路徑一致。素材池 CLI 沒有用。另記：A1-S002 取得路徑合法，但內容是論壇上傳的有版權書籍掃描，覆核依版權疑慮移除（不屬規則 1 違規）。",
+        "reviewer_R341": "覆核開啟的網址：研究稿列出的來源網址（原本即來自搜尋結果）；archive.org advancedsearch 與 metadata API 列出的檔名；WebSearch 結果裡的 ras.ac.uk、normandyhistorians、newnetherlandinstitute、tate.org.uk、nobelprize.org（403）、britannica（403）、cbdb（未載入）、inventaire、arxiv、futilitycloset、ADS 摘要頁（405）；en.wikipedia.com/wiki/Yang_Shen 是搜尋結果連結，伺服器 301 轉到 en.wikipedia.org 後照 Location 開啟。沒有自己輸入或拼湊任何網址；ADS 的 1916Obs....39..213M 因沒有任何搜尋結果或頁面連到，沒有去開。smb.museum 回 503、Science Museum 回 403，都沒有重試繞過。"
+      },
+      "removed_sources": [
+        {
+          "id": "A1-S002",
+          "reason": "Menzel 1953《Flying Saucers》一章，Metabunk 論壇使用者上傳的有版權書籍掃描（非授權副本），依規定不可當來源；N3441 已不再引用。"
+        },
+        {
+          "id": "A1-S009",
+          "reason": "原為摘要工具讀到，由 R341-S001（覆核 curl 逐字讀同一網址）取代。"
+        },
+        {
+          "id": "A1-S010",
+          "reason": "原為摘要工具讀到，由 R341-S002（覆核 curl 逐字讀同一網址）取代。"
+        },
+        {
+          "id": "A1-S004",
+          "reason": "覆核 curl 回 403；Maunder 卒年改用 R341-S003。可保留為備查，但 N3441 已不引用。"
+        }
+      ],
+      "blocked_sites": [
+        "smb.museum（覆核 curl 回 503）",
+        "collection.sciencemuseumgroup.org.uk（curl 回 403）",
+        "ui.adsabs.harvard.edu（WebFetch 回 405）",
+        "nobelprize.org、britannica.com（403）",
+        "bannedbook.org（研究代理 403）",
+        "collections.mun.ca（研究代理連不上）"
+      ]
+    },
+    "R342": {
+      "rule1_record": {
+        "research_agent_A2": "覆核逐筆讀了 A2 的工具紀錄（105 次呼叫：94 Bash、7 WebSearch、2 WebFetch）。NDL Lab：tsugidigi_en 英文介紹頁出現在 WebSearch 結果（呼叫 18），其頁面 href 列有 /service/tsugidigi/apiinfo/（呼叫 20），API 說明頁（呼叫 21）確實記載資料檢索 /dl/api/book/search?keyword=、資料メタデータ /dl/api/book/<PID>、資料內檢索 /dl/api/page/search?f-book=&q-contents=、ページ取得 /dl/api/page/<PID>_<コマ>，以及 IIIF 影像網址的組法——算公開文件記載的 API。所用 27 個 PID 都先出現在之前的資料檢索結果裡（例如 877538 來自 keyword=産女，931062／3441719 來自 本朝文粹／江談抄 檢索，1452950／1460119／769639 來自 付喪神記／陰陽雑記 檢索）；唯一例外是 1108723（宇治拾遺）：呼叫 92 在同一條指令裡先跑 keyword=宇治拾遺物語 再跑 f-book=1108723，PID 是事前從舊批次檔 wave7 X5-S020 的公開網址得知，檢索結果同時列出它；不算猜網址，但交付訊息說「舊批次檔裡有現成的 NDL 網址，也沒有直接拿來用」不完全準確。コマ號多來自資料內檢索的命中，另有讀命中頁前後幾コマ（58、60、186、190、441、例言 4–9 等）——這是 API 文件定義的參數（PID_コマ），等同在同一本書翻頁，判不違規，但記在這裡。其餘網址：matthewmeyer、nichibun／icu／kokubunken 的 PDF、兵庫縣博 PDF、JAANUS、文化遺產オンライン、京阪頁都出現在先前的 WebSearch 結果；JAIRO Cloud 停機頁沒有繞過。read_via 與實際取得路徑相符（S006、S021 照實標 search_snippet_only）。沒有發現猜測或拼湊網址。",
+        "reviewer_R342": "覆核從 WebSearch 結果先前出現過的 tsugidigi_en 頁取 href 進 API 說明頁，只用文件記載的 API 與研究稿列出的 PID／コマ；IIIF 影像照說明頁第 4 節的組法（PID＋R+7 位コマ號），和漢三才圖會那張傳輸不完整、沒有重試別的尺寸參數。コトバンク、筑摩書房、NDL Search、japanknowledge 頁都來自 WebSearch 結果（japanknowledge 回 301，照轉址讀，頁上沒有江談抄成書年）；文化遺產オンライン 205950 的 WebFetch 逾時未重試。沒有自己輸入或拼湊任何網址；卒年只用到研究稿已列、頁上可讀的部分（JAANUS 綱 953–1024、公卿補任源融薨年），未另查新的卒年。"
+      },
+      "dedup_record": "grep pool.json、batches/*.json（含 not_added）與 ../topics-fg.json：河原院、川原院、源融、融左大臣、產女、産女、うぶめ、ウブメ、姑獲、ubume、茨木、羅生門、戾橋、付喪神、九十九神、つくも、小野篁、野篁、珍皇、六道、尊勝、Ibaraki、Rashomon、Takamura、tsukumogami、Hyakki 都是 0；渡邊綱／渡辺綱／戻橋只命中 N1044（wave10，安義橋骨架，不同核心）；羅城門只命中 wave29 的 Tylor 暹羅城門（無關）；百鬼夜行只命中 wave5 轆轤首題提到 1776《畫圖百鬼夜行》（無關）。N406（酒吞童子起源）、N2241（道真落雷）、F37／N685（牡丹燈記）、G23（娜娜克）、N2364（晴明）都與本批五題不同核心。同目錄 A1、A3、A4、r341 檔對上述關鍵字 0 命中。素材池 cli 未跑（簡報規定以 grep 為主）。",
+      "blocked_sites": [
+        "dl.ndl.go.jp IIIF 影像 2596378/R0000016（兩次都傳輸不完整，未能對影像）",
+        "online.bunka.go.jp/db/heritages/detail/205950（WebFetch 逾時）"
+      ],
+      "method": "逐題以 NDL 次世代デジタルライブラリー公開 API（說明頁由 lab.ndl.go.jp 英文介紹頁的連結進入）重開關鍵コマ，N3461 的諷誦文另以 API 說明頁第 4 節記載的 IIIF 影像網址對頁面影像；成書年與刊年以 WebSearch 結果連到的コトバンク、筑摩書房、NDL Search 頁補；去重 grep pool.json、batches/*.json（含 not_added）、topics-fg.json 與同目錄 A1／A3／A4／r341 檔；工具紀錄以 python 抽出 105 次呼叫與結果逐筆對網址與 PID 的來源。",
+      "counts": {
+        "ADOPT": 0,
+        "ADOPT_WITH_CHANGES": 4,
+        "NEEDS_CHECK": 1,
+        "REJECT": 0
+      }
+    },
+    "R343": {
+      "rule1_record": [
+        {
+          "call": 25,
+          "url": "https://www.loc.gov/resource/sn83030313/1872-08-12/ed-1/?sp=10&fo=json 與 ?sp=10",
+          "what": "同一期的搜尋結果只列 sp=2、4、8；研究代理在第 4 版的目錄文字看到『10—Telegraphs…Played-Out Plantamour』，便把網址的 sp=4 自己改成 sp=10，先用 curl -w %{http_code} 探到 200 再讀。屬改參數推算網址（rule 1），即使頁面存在也不算來源。",
+          "effect": "A3-S005 作廢；覆核以搜尋 API 結果（q=Winlock+comet）合法取得同頁，列為 R343-S001。"
+        },
+        {
+          "call": 51,
+          "url": "https://archive.org/download/wonderfulnarrat00chaugoog/wonderfulnarrat00chaugoog_djvu.txt",
+          "what": "同一個指令裡先叫 metadata API、印出清單，但下載網址在看到清單之前就照 <id>/<id>_djvu.txt 的樣式寫好；wave32 已明列『自己拼 archive.org 的 OCR 檔名』算猜。",
+          "effect": "A3-S010 作廢；覆核循 metadata 清單重讀，列為 R343-S002。"
+        },
+        {
+          "call": "其他",
+          "url": "—",
+          "what": "逐筆比對其餘 50 餘個抓取網址：loc.gov 資源頁都在先前的搜尋 API 結果裡，fo=json 屬文件記載參數；archive.org 的 metadata／advancedsearch 為文件記載 API，其餘 djvu.txt 下載檔名在先前的 metadata 輸出裡出現過或由程式從清單取出（第 77、96、105 筆）；spectator、cambridge PDF、grubstreet、ccel、journals.ku.edu、folger、thornton、ota.bodleian、unine、clim-past／copernicus、leeds、english-heritage、nls、sciper、djo、londonist、victoriancalendar 都在先前的 WebSearch 結果或頁面連結裡。未發現改 User-Agent 或繞過驗證頁。sources 的 archive.org/details/<identifier> 網址是由 API 取得的 identifier 組成、沒有被抓取，照以往批次的慣例不計違規。",
+          "effect": "無"
+        }
+      ],
+      "blocked_sites": [
+        "loc.gov 資源頁 fo=json 對 Springfield Weekly Republican 1872-03-01 與 Daily Dispatch 1872-03-07 兩頁這次回傳截斷的 JSON，A3-S001、A3-S002 沒有重讀（不是機器驗證，沒有重試繞過）"
+      ]
+    },
+    "R344": {
+      "rule1_record": [
+        {
+          "agent": "A4",
+          "severity": "violation",
+          "tool_call": "A4 工具紀錄第 24 個呼叫（Bash，Download Zoologist monthly 1859 issues）",
+          "what": "對 per_the-zoologist_the-zoologist_1859-05_17_203 與 …1859-06_17_204 兩個項目，沒有先讀 archive.org metadata，直接用 `${id}_djvu.txt` 的命名規則拼出下載網址（第 21 個呼叫只查了 zoologist17lond、1859-03、1859-04 三個項目的 metadata）。這就是 wave32 明列的『自己拼 archive.org 的 OCR 檔名』。",
+          "affected_sources": [
+            "A4-S002",
+            "A4-S003"
+          ],
+          "misreport": "兩筆來源的 publisher 寫『同上方式取得 djvu.txt』，也就是『metadata API 所列的 djvu.txt』，與實際路徑不符，屬出處寫法不實。",
+          "remedy": "覆核自跑 advancedsearch 取得兩個識別碼，再由 archive.org/metadata 確認檔名後重新下載逐字讀，內容與 A4 摘要一致；以 R344-S001、R344-S002 取代 A4-S002、A4-S003。依規定，A4 的整份產出應由主 session 決定是否重做；覆核已把受影響的兩筆換成合規來源。"
+        },
+        {
+          "agent": "A4",
+          "severity": "inaccurate_read_via",
+          "tool_call": "第 30、32 個呼叫",
+          "what": "A4-S006 寫『第 6、9 頁由文章頁上的分頁連結進入』；實際上第 6 頁的網址（?page=6）來自第 15 個呼叫的搜尋結果，第 1、9 頁才是第 31 個呼叫列出的分頁連結。來源本身合規，只是取得路徑描述不精確。",
+          "affected_sources": [
+            "A4-S006"
+          ]
+        },
+        {
+          "agent": "A4",
+          "severity": "note_not_violation",
+          "tool_call": "第 54 個呼叫",
+          "what": "Princeton 頁 TLS 失敗後改用環境說明的 /root/.ccr/ca-bundle.crt 再試（仍失敗，記為 blocked），沒有關閉驗證，不算繞過。"
+        },
+        {
+          "agent": "A4",
+          "severity": "checked_ok",
+          "what": "其餘逐筆核對：djo、darwinproject、nhmag ?page=6、ctext、PMC6545352、PMC10435113、sharetngov、digitalnc、scientificamerican、nature、paperspast、jimclifford 三篇、heidelberg、amnh、lindahall 四頁、anbg、makingscience、mathshistory、biographi、popsci、wknofm、memphismagazine、britishmuseum、princeton、rmg 都在當次 WebSearch 結果裡；zoologist17lond 與 1859-03／04、biot 項目的 djvu.txt 都由 metadata 列出；維基文庫的〈論衡 (四部叢刊本)/卷第五〉〈論衡 (四庫全書本)/卷05〉標題來自 MediaWiki 搜尋 API，〈後漢書/卷1下〉來自〈卷2〉頁面連結；action=raw、action=parse、Europe PMC REST、loc.gov fo=json 與 JSON 所列 tile.loc.gov XML 都是文件記載的 API；PMC PDF 網址由頁面 href 解析；europepmc ?pdf=render 由 REST 的 fullTextUrlList 列出。"
+        },
+        {
+          "agent": "R344",
+          "severity": "self_check",
+          "what": "覆核自己開的網址：archive.org advancedsearch／metadata 所列檔名、A4 經搜尋取得的同一批頁面、WebSearch 結果（RCP Wollaston、Wikisource DNB Gray、hao.ucar、sciencemuseumgroup、zh.wikisource〈論衡〉目錄頁與〈後漢書/卷1下〉），〈論衡/19〉〈論衡/18〉由目錄頁連結進入，loc.gov 資源由自跑的 fo=json 搜尋取得。沒有自己拼網址；djo 的 page-257 連結有看到但沒有開。"
+        }
+      ],
+      "theme_notes": "不提題案：N3501 與 T118（N2685＋N2686，9–11 分）同類但再加一章會超過 13 分；N3503 與 N3062（8–9.5 分）、N2185（8–11 分）都是單集長度，合併過長，只建議排片順序 N2185 → N3503 → N3062；N3504 接 N2262 或 N3501 都會超過上限，暫緩；N3505 不塞進已 10–13 分的 T38。",
+      "death_years_checked": {
+        "J. E. Gray": "1800–1875（R344-S006，可入畫）",
+        "W. H. Wollaston": "1766–1828（R344-S005；Ross 書只寫 Dr. Wollaston，身分為推定，不做可辨認的本人）",
+        "Owen、Drane、Griffith、Newman、Gudger、McElroy、Chladni": "未在頁面確認，不入畫"
+      },
+      "blocked_sites": [
+        "loc.gov 資源 JSON（New York Herald 1877-01-29 sp=6，讀取逾時）",
+        "zh.wikisource.org MediaWiki 搜尋 API（回非 JSON，疑似限流；改走 WebSearch 結果的目錄頁）"
+      ]
+    }
+  }
+}

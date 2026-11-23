@@ -6,8 +6,8 @@ import { StructuredData } from "@/components/structured-data";
 import { VideoCard } from "@/components/videos/video-card";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
-import { breadcrumbs } from "@/lib/structured-data";
-import { isVideoKind, videosHref, type VideoKind } from "@/lib/videos";
+import { breadcrumbs, videoObject } from "@/lib/structured-data";
+import { isVideoKind, videoArticleHref, videosHref, type VideoKind } from "@/lib/videos";
 import { getVideos } from "@/lib/videos.server";
 
 type Params = { locale: Locale };
@@ -23,13 +23,18 @@ export async function generateMetadata(
   { params, searchParams }: { params: Promise<Params>; searchParams: Promise<Search> },
 ): Promise<Metadata> {
   const [{ locale }, search] = await Promise.all([params, searchParams]);
-  const t = await getTranslations({ locale, namespace: "metadata" });
   const filtered = Boolean(search.category || search.kind || search.cursor);
+  const [t, list] = await Promise.all([
+    getTranslations({ locale, namespace: "metadata" }),
+    filtered ? Promise.resolve(null) : getVideos(locale, {}),
+  ]);
+  const empty = Boolean(list && list.available && list.videos.length === 0);
   return {
     title: t("videosTitle"),
     description: t("videosDescription"),
-    // A filtered or paged view is the same library cut differently; the plain page ranks.
-    ...(filtered ? { robots: { index: false, follow: true } } : {}),
+    // A filtered or paged view is the same library cut differently, and a locale with no
+    // published videos yet is a soft 404 until its first video ships; both stay `follow`.
+    ...(filtered || empty ? { robots: { index: false, follow: true } } : {}),
   };
 }
 
@@ -59,10 +64,21 @@ export default async function VideosPage(
   return (
     <>
       <SiteHeader />
-      <StructuredData data={[breadcrumbs(locale, [{ name: nav("home"), path: "/" }, { name: t("videos.title"), path: "/videos" }])]} />
+      <StructuredData
+        data={[
+          breadcrumbs(locale, [{ name: nav("home"), path: "/" }, { name: t("videos.title"), path: "/videos" }]),
+          ...page.videos.map((video) => videoObject(locale, {
+            slug: video.slug,
+            title: video.title,
+            youtubeVideoId: video.youtube_video_id,
+            publishedAt: video.published_at,
+            articlePath: videoArticleHref(video),
+          })),
+        ]}
+      />
       <main className="mx-auto max-w-6xl px-5 py-10 md:px-8">
-        <header className="rounded-3xl border border-[var(--line)] bg-[var(--paper)] p-6 md:p-10">
-          <h1 className="text-4xl font-bold tracking-tight md:text-5xl">{t("videos.title")}</h1>
+        <header className="portal-hero-shell rounded-3xl p-6 md:p-10">
+          <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">{t("videos.title")}</h1>
           <p className="mt-4 max-w-2xl text-lg leading-8 text-[var(--muted)]">{t("videos.intro")}</p>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--muted)]">{t("videos.privacy")}</p>
         </header>

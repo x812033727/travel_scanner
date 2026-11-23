@@ -8,6 +8,7 @@
 | --- | --- | --- | --- |
 | 0 | 鎖定包定稿正文；首格裁兩份：960×544（第一段）、1312×736（第二段 keyframe） | `fit_first_frame.sh`（或 ffmpeg cover-crop）、`h3.sh check` | 格式錯誤在本機擋掉 |
 | 1 | H3 生成 960×544，`hero`（20 步、不掛 LoRA、CFG 1）、seed 固定 | `H3_PROFILE=hero bootstrap.sh patch`；`COLAB_GPU=G4 h3.sh batch --manifest st1.json …` | **關卡 1**：構圖、動作、嘴；不過換 seed 只重做這一段 |
+| 1.5 | 找出 Ref2VA 在一支裡自己多切的鏡（場景分數 ≥ 0.15），剪回切點前最後一個 17k+5 格；剪完太短的鏡重買 | `h3.sh cuts --input-dir out/ --output-dir trimmed/ --manifest st1.json`（本機、免費；第二段改吃 `trimmed/`） | 結束碼 3＝有鏡剪完不夠長 |
 | 2 | 拉伸到 1312×736，從 σ0.5 重算 10 步，首格當 frame 0 keyframe | `h3.sh refine --manifest st2.json --output-dir refined/` | **關卡 2**：臉與第一段同一張、第 0 格 PSNR ≥ 22 |
 | 3 | SeedVR2 7B 到短邊 1080，剪掉 prepend 的格，置中裁成 1920×1080 | `h3.sh upscale --input-dir refined/ --output-dir final/` | 幀數＝輸入；皮膚是否補得太寫實 |
 | 4 | 進產線 | `clips import`（凍格、切鏡、第 0 格 PSNR）→ `music` → `assemble` | 既有規則 |
@@ -43,6 +44,7 @@ H3 的 video flow shift 是 12（ComfyUI `supported_models`：shift 12.0、audio
 | 「從第 10 步接著算」把動作改掉 | shift 12，第 10 步 σ≈0.92 | 用 `sigma_start`（第二節） |
 | SeedVR2 輸出多 4 格（158 → 162） | `--prepend_frames 4` 的倒放格 CLI 沒移除 | `seedvr2_upscale.ipynb` 剪掉並核對幀數，不符就停 |
 | SeedVR2 短邊 1080 時寬是 1925 | 1312×736 不是精確 16:9 | 置中裁 1920×1080 |
+| 直式（9:16）片段放大後被裁壞 | 筆記本原本一律「高度 1080、裁 1920×1080」 | 2026-11-10 起依片段方向：高大於寬就「寬度 1080、裁 1080×1920」；三段畫布用 544×960 → 736×1312 → 1080×1920 |
 | `colab upload … /content/dir/x.mp4` 回 500 | upload 不會建資料夾 | 傳到 `/content/s3in__x.mp4`，notebook 再搬 |
 | notebook 載的不是 BF16 | 上游選 `fl2va_pruned_int8_convrot`（CUDA 13）與 `qwen3vl_32b … nvfp4_awq` | 數字都以這組量化權重為準；BF16 沒量過 |
 

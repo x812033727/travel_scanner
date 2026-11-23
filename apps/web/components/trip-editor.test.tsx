@@ -1,5 +1,5 @@
 import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { TripEditor } from "./trip-editor";
 import type { Trip } from "@/lib/trip-types";
 import trips from "@/messages/zh-TW/trips.json";
@@ -105,7 +105,16 @@ function intentPreview(version: number) {
   };
 }
 
+// The fixture trips are dated 2026-11-11 and 11-12, and the editor treats today and past days
+// differently, so these tests broke the day the dates arrived. Only Date is faked: the
+// timers testing-library waits on stay real.
+beforeEach(() => {
+  vi.useFakeTimers({ toFake: ["Date"] });
+  vi.setSystemTime(new Date("2026-11-01T03:00:00Z"));
+});
+
 afterEach(() => {
+  vi.useRealTimers();
   window.localStorage.clear();
   window.history.replaceState({}, "", window.location.href);
   vi.unstubAllGlobals();

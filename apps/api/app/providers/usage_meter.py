@@ -47,6 +47,8 @@ AZURE_SPEECH_PROVIDER = "azure_speech"
 # Gemini narration shares the speech meter under its own key; ``total`` counts the text
 # characters sent, since Gemini bills tokens that cannot be known before the call.
 GEMINI_SPEECH_PROVIDER = "gemini_speech"
+# MiniMax narration likewise, counting the text characters sent.
+MINIMAX_SPEECH_PROVIDER = "minimax_speech"
 # Azure bills speech per calendar month in UTC; ``total`` counts billable characters and the
 # operation field counts requests.
 AZURE_SPEECH_BILLING_TIMEZONE = ZoneInfo("UTC")

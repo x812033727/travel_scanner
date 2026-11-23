@@ -43,12 +43,13 @@ export function MobileNav() {
     return () => window.clearTimeout(reset);
   }, [pathname, discovery.enabled, discovery.loading]);
 
+  const memberFeaturesVisible = featureVisible(visibility, "member_features");
   // The bottom tab bar carries only five destinations; flight status, airfares and plans
   // used to be unreachable on a phone without typing the URL. The sheet carries every group
   // of the desktop header, each with its hub first and its pages under it.
   const groups = navGroups
-    .filter((group) => !group.travelToolsOnly || !community.flags.enabled)
-    .map((group) => ({ ...group, items: group.items.filter((item) => !item.feature || featureVisible(visibility, item.feature)) }))
+    .filter((group) => (!group.feature || featureVisible(visibility, group.feature)) && (!group.travelToolsOnly || !community.flags.enabled))
+    .map((group) => ({ ...group, items: group.items.filter((item) => (!item.feature || featureVisible(visibility, item.feature)) && (item.feature !== "trips" || memberFeaturesVisible)) }))
     .filter((group) => group.href || group.items.length);
 
   useEffect(() => {
@@ -65,13 +66,16 @@ export function MobileNav() {
   if (discovery.loading) return <div className="flex items-center gap-1 lg:hidden"><LanguageSwitcher compact /><div aria-hidden className="h-11 w-24 rounded-xl bg-[var(--paper)]" /></div>;
   if (discovery.enabled) return <div className="flex items-center gap-1 lg:hidden">
     <LanguageSwitcher compact />
+    {user?.is_admin && <Link href="/admin" aria-label={nav("admin")} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] hover:bg-[var(--teal-soft)]">
+      <ShieldCheck size={21} />
+    </Link>}
     {/* Without this the phone header had no sign-in entry at all: a visitor had to
         guess that "my" leads somewhere with a login link at the bottom of a list. */}
-    <Link href={status === "authenticated" ? "/account" : "/login"} aria-label={status === "authenticated" ? nav("account") : nav("login")} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] hover:bg-[var(--teal-soft)]">
+    {(memberFeaturesVisible || status === "authenticated") && <Link href={status === "authenticated" ? "/account" : "/login"} aria-label={status === "authenticated" ? nav("account") : nav("login")} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] hover:bg-[var(--teal-soft)]">
       {status === "authenticated" ? <CircleUserRound size={21} /> : <LogIn size={21} />}
-    </Link>
+    </Link>}
     <Link href="/explore" aria-label={flowCopy.explore} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] focus-visible:outline focus-visible:outline-2"><Search size={21} aria-hidden /></Link>
-    <Link href="/my" aria-label={flowCopy.my} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] focus-visible:outline focus-visible:outline-2"><CircleUserRound size={21} aria-hidden /></Link>
+    {memberFeaturesVisible && <Link href="/my" aria-label={flowCopy.my} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] focus-visible:outline focus-visible:outline-2"><CircleUserRound size={21} aria-hidden /></Link>}
     {/* This branch returns before the menu sheet is rendered, so the guides section would
         be unreachable on a phone in discovery mode without its own entry here. */}
     <Link href="/guides" aria-label={nav("guides")} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] focus-visible:outline focus-visible:outline-2"><BookOpen size={21} aria-hidden /></Link>
@@ -104,9 +108,9 @@ export function MobileNav() {
     {user?.is_admin && <Link href="/admin" aria-label={nav("admin")} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] hover:bg-[var(--teal-soft)]">
       <ShieldCheck size={21} />
     </Link>}
-    <Link href={status === "authenticated" ? "/account" : "/login"} aria-label={status === "authenticated" ? nav("account") : nav("login")} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] hover:bg-[var(--teal-soft)]">
+    {(memberFeaturesVisible || status === "authenticated") && <Link href={status === "authenticated" ? "/account" : "/login"} aria-label={status === "authenticated" ? nav("account") : nav("login")} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] hover:bg-[var(--teal-soft)]">
       {status === "authenticated" ? <CircleUserRound size={21} /> : <LogIn size={21} />}
-    </Link>
+    </Link>}
     {/* The desktop search box is hidden below lg; this opens the same search as a sheet. */}
     <button type="button" aria-label={nav("openSearch")} onClick={openSiteSearch} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] hover:bg-[var(--teal-soft)]">
       <TextSearch size={21} />
@@ -142,7 +146,7 @@ export function MobileNav() {
           {/* The sheet only opens when discovery is off (see `open` above), so anything
               guarded by discovery.enabled here could never render. Removed rather than
               left to mislead the next reader into thinking these links exist. */}
-          {community.flags.enabled && [["/community", "title"], ["/pet-friendly", "pets"], ...(!discovery.enabled ? [["/my", "my"]] : [])].map(([href, key]) => <Link key={href} href={href} onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-semibold hover:bg-[var(--teal-soft)]">{tc(key)}</Link>)}
+          {community.flags.enabled && [["/community", "title"], ["/pet-friendly", "pets"], ...(!discovery.enabled && memberFeaturesVisible ? [["/my", "my"]] : [])].map(([href, key]) => <Link key={href} href={href} onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-semibold hover:bg-[var(--teal-soft)]">{tc(key)}</Link>)}
           {groups.map((group) => group.items.length ? (
             <section key={group.key} aria-labelledby={`mobile-nav-${group.key}`} className="mt-2 border-t border-[var(--line)] pt-2 first:mt-0 first:border-t-0 first:pt-0">
               {group.href ? (

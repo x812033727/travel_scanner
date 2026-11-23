@@ -60,12 +60,23 @@ export const TEMPLATES = [
   "outro",
 ];
 export const THUMBNAIL_TEMPLATES = ["thumb"];
-export const VOICE_PROVIDERS = ["azure", "gemini"];
+export const VOICE_PROVIDERS = ["azure", "gemini", "minimax"];
 // Mirrors the model list and the voice-name pattern in apps/api/app/video_speech/gemini.py.
 export const GEMINI_MODELS = ["gemini-3.8-flash-tts", "gemini-3.8-flash-lite-tts"];
 const GEMINI_VOICE = /^[A-Za-z][A-Za-z0-9_-]{1,79}$/;
+// Mirrors MINIMAX_TTS_MODELS and the voice-id pattern in apps/api/app/video_speech/minimax.py.
+export const MINIMAX_MODELS = ["speech-2.8-hd", "speech-2.8-turbo"];
+const MINIMAX_VOICE = /^[A-Za-z][A-Za-z0-9 ()_.-]{1,81}$/;
 const STYLE_MAX = 400;
+// Pitch-preserving speech speedup (`tts/tempo.mjs`): >= 1 so tempo only tightens pace, never pads length.
+export const VOICE_TEMPO_MIN = 1;
+export const VOICE_TEMPO_MAX = 1.5;
 export const MAX_PAUSE_MS = 5000;
+// The defaults `pauses` may only tighten: timeline.mjs DEFAULT_PAUSE_MS and SCENE_GAP_MS (a test
+// keeps them equal; timeline.mjs imports this module, so it is not imported back).
+export const PAUSE_LIMITS = Object.freeze({ line_ms: 300, scene_ms: 700 });
+// The motion profiles `still_motion` may name: assemble/drama.mjs STILL_MOTIONS (a test keeps them equal).
+export const STILL_MOTION_NAMES = Object.freeze(["beat"]);
 export const DEFAULT_TARGET_MINUTES = [8, 12];
 // The owner's rule (2026-10-01): every episode runs at least eight minutes, except a drama's.
 // The explainer (原來如此事務所) is held to it too; drama.mjs's needsMinimumLength says which.
@@ -139,11 +150,15 @@ const TOP_KEYS = new Set([
   // A narrated video's open loops (script-writing.md §故事主線與鉤子): the line that plants each
   // hook, the line that pays it off, and what it holds back; validated in validateLoops.
   "loops",
+  // Shorter silences between lines and between scenes (timeline.mjs pausesOf).
+  "pauses",
+  // How a still is moved under the narration: "beat" holds, then punches in (assemble/drama.mjs).
+  "still_motion",
 ]);
 const LOOP_KEYS = new Set(["setup", "payoff", "what"]);
 /** The most characters a loop's "what" may have: one phrase naming what is held back. */
 export const LOOP_WHAT_MAX = 40;
-const VOICE_KEYS = new Set(["provider", "name", "rate", "lang", "style", "model"]);
+const VOICE_KEYS = new Set(["provider", "name", "rate", "lang", "style", "model", "tempo"]);
 const YOUTUBE_KEYS = new Set([
   "category_id",
   "made_for_kids",
@@ -189,6 +204,9 @@ export function validateVoice(voice, errors, where = "voice", locale = NARRATION
   if (voice.rate !== undefined && !RATE.test(voice.rate)) {
     errors.push({ path: `${where}.rate`, message: 'must look like "+5%" or "-10%"' });
   }
+  if (voice.tempo !== undefined && !(typeof voice.tempo === "number" && Number.isFinite(voice.tempo) && voice.tempo >= VOICE_TEMPO_MIN && voice.tempo <= VOICE_TEMPO_MAX)) {
+    errors.push({ path: `${where}.tempo`, message: `must be a number from ${VOICE_TEMPO_MIN} to ${VOICE_TEMPO_MAX} (tempo only speeds speech up, never pads duration)` });
+  }
   if (voice.provider === "gemini") {
     if (isText(voice.name) && !GEMINI_VOICE.test(voice.name)) {
       errors.push({ path: `${where}.name`, message: "a Gemini voice is a name like Sulafat or a voice_... id, without the gemini: prefix" });
@@ -199,8 +217,16 @@ export function validateVoice(voice, errors, where = "voice", locale = NARRATION
     if (voice.model !== undefined && !GEMINI_MODELS.includes(voice.model)) {
       errors.push({ path: `${where}.model`, message: `must be one of ${GEMINI_MODELS.join(", ")}` });
     }
+  } else if (voice.provider === "minimax") {
+    if (isText(voice.name) && !(MINIMAX_VOICE.test(voice.name) && voice.name === voice.name.trim())) {
+      errors.push({ path: `${where}.name`, message: "a MiniMax voice is a voice id like Chinese (Mandarin)_News_Anchor, without the minimax: prefix" });
+    }
+    if (voice.style !== undefined) errors.push({ path: `${where}.style`, message: "MiniMax takes no written style; set its pace with rate" });
+    if (voice.model !== undefined && !MINIMAX_MODELS.includes(voice.model)) {
+      errors.push({ path: `${where}.model`, message: `must be one of ${MINIMAX_MODELS.join(", ")}` });
+    }
   } else if (voice.style !== undefined || voice.model !== undefined) {
-    errors.push({ path: where, message: "style and model are for Gemini voices only" });
+    errors.push({ path: where, message: "style is for Gemini voices only, and model for Gemini or MiniMax voices" });
   }
   if (voice.style !== undefined && !(isText(voice.style) && voice.style.length <= STYLE_MAX)) {
     errors.push({ path: `${where}.style`, message: `must be text of at most ${STYLE_MAX} characters` });
@@ -345,6 +371,18 @@ export function validateVideo(doc) {
     errors.push({ path: "slug", message: "must be lowercase words joined by hyphens" });
   }
   if (!FORMATS.includes(doc.format)) errors.push({ path: "format", message: `must be one of ${FORMATS.join(", ")}` });
+  if (doc.still_motion !== undefined && !STILL_MOTION_NAMES.includes(doc.still_motion)) errors.push({ path: "still_motion", message: `must be ${STILL_MOTION_NAMES.map((name) => `"${name}"`).join(" or ")}, or left out for the gliding move` });
+  if (doc.pauses !== undefined) {
+    const limits = PAUSE_LIMITS;
+    if (!isObject(doc.pauses) || !Object.keys(doc.pauses).length) errors.push({ path: "pauses", message: "must be an object with line_ms and/or scene_ms" });
+    else {
+      unknownKeys(doc.pauses, new Set(Object.keys(limits)), "pauses", errors);
+      for (const [key, max] of Object.entries(limits)) {
+        const value = doc.pauses[key];
+        if (value !== undefined && !(Number.isInteger(value) && value >= 0 && value <= max)) errors.push({ path: `pauses.${key}`, message: `must be an integer from 0 to ${max} (the default): pauses only tighten` });
+      }
+    }
+  }
   if (doc.theme !== undefined && !THEMES.includes(doc.theme)) errors.push({ path: "theme", message: `must be ${THEMES.map((theme) => `"${theme}"`).join(" or ")} (docs/videos/PAPER.md), or left out for the dark theme` });
   if (doc.narration_locale !== undefined && !NARRATION_LOCALES.includes(doc.narration_locale)) {
     errors.push({ path: "narration_locale", message: `must be one of ${NARRATION_LOCALES.join(", ")}; leave it out for ${NARRATION_LOCALE}` });
@@ -375,8 +413,11 @@ export function validateVideo(doc) {
   if (!compilation || doc.voice !== undefined) validateVoice(doc.voice, errors, "voice", locale);
   validateYoutube(doc.youtube, errors, locale);
   if (doc.thumbnail !== undefined) {
-    if (!isObject(doc.thumbnail) || !THUMBNAIL_TEMPLATES.includes(doc.thumbnail.template) || !isObject(doc.thumbnail.data)) {
+    const validThumbShape = (value) => isObject(value) && THUMBNAIL_TEMPLATES.includes(value.template) && isObject(value.data) && Object.keys(value).every((key) => ["template", "data", "variants", "replaces"].includes(key));
+    if (!validThumbShape(doc.thumbnail)) {
       errors.push({ path: "thumbnail", message: `must be { template: ${THUMBNAIL_TEMPLATES.join("|")}, data: {...} }` });
+    } else if (doc.thumbnail.replaces !== undefined && !validThumbShape(doc.thumbnail.replaces)) {
+      errors.push({ path: "thumbnail.replaces", message: `must be { template: ${THUMBNAIL_TEMPLATES.join("|")}, data: {...} }` });
     }
   }
   if (doc.sources !== undefined) {

@@ -1,0 +1,637 @@
+{
+  "batch_id": "wave66-food-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第十六輪從零研究的新長題：冷凍肉解凍那灘水是冰晶刺破細胞嗎（C12-01，作者 F27，覆核 V30），後備。",
+  "sources": [
+    {
+      "id": "K66-S001",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8564323/fullTextXML",
+      "canonical_url": "https://doi.org/10.5851/kosfa.2021.e52",
+      "title": "Evaluation of the Relationship between Freezing Rate and Quality Characteristics to Establish a New Standard for the Rapid Freezing of Pork",
+      "publisher": "Yun YC, Kim H, Ramachandraiah K, Hong GP.（世宗大學（韓國）Hong GP 研究群）／Food science of animal resources",
+      "version": "期刊正式全文（PMC）；Food science of animal resources 41(6):1012-1021, 2021；授權 cc by-nc",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST 搜尋 API 找到（isOpenAccess=Y），以文件記載的 fullTextXML 端點 curl 取得全文 XML，轉成文字存檔",
+      "reading_scope": "全文",
+      "locator": "Abstract；Results「Freezing rate and ice crystal size」段與 Fig. 2；「Thawing loss and cooking loss」第 1 段與 Fig. 3；Conclusion",
+      "summary": "豬里肌 3 公分肉塊，在 -20、-30、-40°C 配 0、1.5、3 m/s 風速冷凍，冷凍速率 0.26–1.42 cm/h。慢凍（<0.5 cm/h）冰晶等效半徑 42.5–47.6 μm，快凍 23.8–31.2 μm；0.63–1.42 cm/h 之間冰晶大小沒有差別。解凍損失 1.72–4.35%，隨冷凍速率線性下降；不含冷凍儲存期。0.6–0.7 cm/h 組（照傳統 0.5 cm/h 標準算快凍）品質與慢凍分不開，作者建議以 0.96 cm/h 為新門檻。風速不影響解凍損失（ANOVA）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "每組 n=3 重複、4 條豬里肌；不含儲存期，作者自己說解凍損失比含 6 個月儲存的文獻（約 10%，轉述）低；與 F27-S002 同一研究群，兩篇合計封頂。",
+      "author_cache": {
+        "file": "f27src/PMC8564323.xml",
+        "sha256_prefix": "7d63bcaf23d2f16c",
+        "text_file": "f27src/PMC8564323.txt",
+        "text_sha256_prefix": "50b39935f3ef2c5d",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K66-S002",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5112428/fullTextXML",
+      "canonical_url": "https://doi.org/10.5851/kosfa.2016.36.5.650",
+      "title": "Effects of Artificial Supercooling Followed by Slow Freezing on the Microstructure and Qualities of Pork Loin",
+      "publisher": "Kim Y, Hong GP.（世宗大學（韓國）Hong GP 研究群（與 F27-S001 同群））／Korean journal for food science of animal resources",
+      "version": "期刊正式全文（PMC）；Korean journal for food science of animal resources 36(5):650-655, 2016；授權 cc by-nc",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST 搜尋 API 找到（isOpenAccess=Y），以文件記載的 fullTextXML 端點 curl 取得全文 XML，轉成文字存檔",
+      "reading_scope": "全文",
+      "locator": "Abstract；Results 冷凍曲線段（過冷 1.4°C、相變 3.07→2.23 h）；Fig. 2 顯微結構段；Table 1 與「water-holding capacity」段（6.73%、4.44–4.49%、對照 3.35%）",
+      "summary": "7 條豬里肌分四組：4°C 24 小時對照、-18°C 靜止空氣慢凍、-30°C 酒精浸泡急凍、先人工過冷再 -18°C 靜止空氣冷凍。過冷組過冷 1.4°C，相變時間由 3.07 小時縮為 2.23 小時；冷凍乾燥切面接近急凍組。解凍損失：慢凍 6.73%（最高），急凍與過冷組 4.44–4.49%，未冷凍對照在冰箱 24 小時滴失 3.35%（後三者差異不顯著）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "肉塊最短邊 2 cm；n=7；與 F27-S001 同一研究群，兩篇合計封頂 2.0 條。",
+      "author_cache": {
+        "file": "f27src/PMC5112428.xml",
+        "sha256_prefix": "0ebebd07c66a34f6",
+        "text_file": "f27src/PMC5112428.txt",
+        "text_sha256_prefix": "70ecee6c12c12efc",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K66-S003",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4662192/fullTextXML",
+      "canonical_url": "https://doi.org/10.5851/kosfa.2014.34.6.777",
+      "title": "Effect of Novel Quick Freezing Techniques Combined with Different Thawing Processes on Beef Quality",
+      "publisher": "Jo YJ, Jang MY, Jung YK, Kim JH, Sim JB, Chun JY, Yoo SM, Han GJ, Min SG.（建國大學（韓國）Min SG 研究室）／Korean journal for food science of animal resources",
+      "version": "期刊正式全文（PMC）；Korean journal for food science of animal resources 34(6):777-783, 2014；授權 cc by-nc",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST 搜尋 API 找到（isOpenAccess=Y），以文件記載的 fullTextXML 端點 curl 取得全文 XML，轉成文字存檔",
+      "reading_scope": "全文",
+      "locator": "Abstract；Results 冷凍時間段（55、18、3 分鐘）；Table 1 與其上一段（解凍損失 2.3–4.5%）；Light microscopy 段",
+      "summary": "牛肉條以自然對流（-24°C）、-45°C 送風、液氮蒸氣（-100°C）冷凍到中心 -12°C，存 -24°C，再以自然對流或流水解凍到 5°C。冷凍時間 55、18、3 分鐘。解凍損失 2.3–4.5%，多數組合間差異不顯著；光學顯微鏡下凍過的肉肌纖維明顯失去完整，但作者寫這沒有造成品質的顯著改變；摘要結論：品質受解凍溫度影響大於解凍速度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "樣本小、只做一次儲存條件；與 F27-S009 同校不同研究室（第一作者 Jo YJ 後來與 Choi MJ 合作），保守起見兩篇合計封頂 1.75 條。 覆核 V30（2026-11-12）：summary 改為「光學顯微鏡下多數冷凍組合出現肌纖維斷裂與壞死，液氮組大致保持原狀（正文）；摘要寫 excessive loss of integrity」；補「解凍損失只有 IQF/NCT 4.46% 與 CF/RT 2.33% 顯著不同；肉條 1×1×5 公分、9 克；冷凍後只在 -24°C 放 24 小時」。",
+      "author_cache": {
+        "file": "f27src/PMC4662192.xml",
+        "sha256_prefix": "5a36f61562938a08",
+        "text_file": "f27src/PMC4662192.txt",
+        "text_sha256_prefix": "452e2183c7140737",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K66-S004",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7694958/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/foods9111624",
+      "title": "Effect of Different Combinations of Freezing and Thawing Rates on the Shelf-Life and Oxidative Stability of Ostrich Moon Steaks (&lt;i&gt;M. Femorotibialis medius&lt;/i&gt;) under Retail Display Conditions",
+      "publisher": "Leygonie C, Hoffman LC.（斯泰倫博斯大學（南非）Hoffman LC 研究群）／Foods (Basel, Switzerland)",
+      "version": "期刊正式全文（PMC）；Foods (Basel, Switzerland) 9(11):E1624, 2020；授權 cc by",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST 搜尋 API 找到（isOpenAccess=Y），以文件記載的 fullTextXML 端點 curl 取得全文 XML，轉成文字存檔",
+      "reading_scope": "全文",
+      "locator": "Abstract；Materials 冷凍與解凍處理段；Table 2（解凍損失 2.57–6.24%）；Results「moisture loss」三段（展示期 drip、FR_1h 第 6–10 天最多、thaw 與 drip 互為消長）；cooking loss 段（R²=0.402）",
+      "summary": "125 隻鴕鳥的整塊腿肉，5 種冷凍速率（0 到 -7°C 費時 1、2、4、8、24 小時）×5 種解凍速率（1.5–21 小時），-20°C 存 30 天。解凍速率對任何品質指標都沒有影響。解凍損失 1 小時組 2.57%、24 小時組 6.24%；但之後在 4°C 展示 10 天，最快凍的組從第 6 到第 10 天滴失顯著多於其他組，最慢凍的包裝滴水最少。作者解釋：肉裡可流出的水有限，解凍時流掉多的，展示時就流得少；急凍組可能是蛋白質受損較重（假說）。烹調損失與展示滴失負相關。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "鴕鳥肉、整塊肌肉；急凍組的蛋白質受損是作者引前作的解釋，非本文量測；與 Jo 2014 的「解凍溫度有影響」相反，片中兩者並列，不說誰對。 覆核 V30（2026-11-12）：summary 補「解凍速度在展示第 2、4 天顯著影響滴失（水浴解凍組較少）；FR_2h 解凍損失與 FR_1h 同低、展示滴失卻最慢，是作者自己寫明的例外；原文第 152 與 157 行對誰展示滴失最少前後不一」；儲存期寫「方法段 30 天、討論段 4 週」。",
+      "author_cache": {
+        "file": "f27src/PMC7694958.xml",
+        "sha256_prefix": "3f25cfa6fa430386",
+        "text_file": "f27src/PMC7694958.txt",
+        "text_sha256_prefix": "b73b2ecc9e69dd8d",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K66-S005",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9597754/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/ani12202830",
+      "title": "A Comparison of Fresh and Frozen Lamb Meat-Differences in Technological Meat Quality and Sensory Attributes",
+      "publisher": "Stenberg E, Arvidsson-Segerkvist K, Karlsson AH, Ólafsdóttir A, Hilmarsson ÓÞ, Gudjónsdóttir M, Thorkelsson G.（瑞典農業科學大學（SLU））／Animals : an open access journal from MDPI",
+      "version": "期刊正式全文（PMC）；Animals : an open access journal from MDPI 12(20):2830, 2022；授權 cc by",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST 搜尋 API 找到（isOpenAccess=Y），以文件記載的 fullTextXML 端點 curl 取得全文 XML，轉成文字存檔",
+      "reading_scope": "全文",
+      "locator": "Simple Summary；Abstract；Materials 2.2（-24°C 三個月、4°C 過夜解凍）；Table 1（fluid loss 15 vs 27%）；Table 2 與其上一段（juicy 49 vs 35、tender 48 vs 50）；Discussion 4.5 LF-NMR 段",
+      "summary": "10 對雙胞胎公羔羊，一側里脊鮮測，另一側 -24°C 冷凍三個月後解凍再測。解凍加烹調的失水 15% 對 27%；受訓評審 6–10 人：多汁 49 對 35（0–100 分，p=0.0001），嫩度 48 對 50 無差異；冷凍組脂肪味、煎烤味、酸味、肝味分數較高。低場核磁共振：肌原纖維外的水比例上升、弛豫時間變短，作者解讀為冷凍儲存期間肌肉部分降解或變性。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "羊肉、兩家屠宰場處理不同（有交互作用）；評審是描述型受訓小組，不是一般消費者。 覆核 V30（2026-11-12）：summary 改為「鮮肉只量烹調損失 15%，冷凍肉量解凍加烹調合計 27%」；補「冰島品種雙胞胎公羔羊，每隻左側鮮測、右側冷凍；WBSF 冷凍組有偏高趨勢（p=0.084）」。",
+      "author_cache": {
+        "file": "f27src/PMC9597754.xml",
+        "sha256_prefix": "fbdfdf25c98ef5df",
+        "text_file": "f27src/PMC9597754.txt",
+        "text_sha256_prefix": "e2428083ab05d550",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K66-S006",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11408046/fullTextXML",
+      "canonical_url": "https://doi.org/10.1016/j.fochx.2024.101804",
+      "title": "Meat exudate metabolomics reveals the impact of freeze-thaw cycles on meat quality in pork loins",
+      "publisher": "Yu Q, Liu S, Liu Q, Wen R, Sun C.（煙台大學（中國））／Food chemistry: X",
+      "version": "期刊正式全文（PMC）；Food chemistry: X 24:101804, 2024；授權 cc by-nc-nd",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST 搜尋 API 找到（isOpenAccess=Y），以文件記載的 fullTextXML 端點 curl 取得全文 XML，轉成文字存檔",
+      "reading_scope": "全文",
+      "locator": "Abstract；2.1 樣品與凍融處理段（-20°C 48 h＋4°C 12 h）；Table 1 與 3.1 段（3.07→11.60%、73.09→68.40%、其餘失水不顯著）；3.2 shear force 與 MFI 段",
+      "summary": "豬里肌排真空包裝，每個凍融循環是 -20°C 48 小時加 4°C 12 小時，做 1 到 5 次。凍融失重由 1 次的 3.07% 升到 5 次的 11.60%，含水率 73.09% 降到 68.40%；每次解凍後另量的滴失、離心失水、烹調失水則沒有顯著差異。剪切力下降（肉變軟）、肌原纖維斷裂指數上升；肌原纖維蛋白螢光與二級結構改變；滲出液鑑定 501 種代謝物。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "凍融失重的計算基準（是否為累計）原文只寫凍前與解凍後重量，片中只講「5 次後 11.60%」不換算每次；n=6 頭豬。",
+      "author_cache": {
+        "file": "f27src/PMC11408046.xml",
+        "sha256_prefix": "ebff2a8dfd57a699",
+        "text_file": "f27src/PMC11408046.txt",
+        "text_sha256_prefix": "192779b89a588a73",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K66-S007",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8255891/fullTextXML",
+      "canonical_url": "https://doi.org/10.5713/ajas.20.0416",
+      "title": "Influence of freeze-thawed cycles on pork quality",
+      "publisher": "Tippala T, Koomkrong N, Kayan A.（農業大學 Kasetsart（泰國））／Animal bioscience",
+      "version": "期刊正式全文（PMC）；Animal bioscience 34(8):1375-1381, 2021；授權 cc by",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST 搜尋 API 找到（isOpenAccess=Y），以文件記載的 fullTextXML 端點 curl 取得全文 XML，轉成文字存檔",
+      "reading_scope": "全文",
+      "locator": "Abstract；Materials（-20°C 6 個月、4°C 24 h 解凍）；Results「Drip loss and thawing loss」（5.81%、7.72%）；「Citrate synthase activity」段（0.105、0.338、0.604）；肌纖維組織學段",
+      "summary": "20 頭豬的里肌排 -20°C 凍 6 個月，4°C 解凍 24 小時為一次凍融，再做第二次。解凍損失 1 次 5.81%、2 次 7.72%。滲出液中的檸檬酸合成酶（作者寫明是粒線體酵素）活性：鮮肉 0.105、1 次 0.338、2 次 0.604 μmol/mL/min。組織切片：肌纖維截面積與直徑變小，肌束膜、肌內膜變厚，作者描述可見肌纖維斷裂。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只到兩次循環；檸檬酸合成酶的來源解釋是作者引前作。 覆核 V30（2026-11-12）：summary 補「同文鮮肉 drip loss 3.88%」；「作者寫明是粒線體酵素」改「作者引前作說明」。",
+      "author_cache": {
+        "file": "f27src/PMC8255891.xml",
+        "sha256_prefix": "533878c3764ddba4",
+        "text_file": "f27src/PMC8255891.txt",
+        "text_sha256_prefix": "f64c038bdd6d2d97",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K66-S008",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7005396/fullTextXML",
+      "canonical_url": "https://doi.org/10.2141/jpsa.0180106",
+      "title": "Changes in the Quality of Chicken Breast Meat due to Superchilling and Temperature Fluctuations during Storage",
+      "publisher": "Kaewthong P, Pomponio L, Carrascal JR, Knøchel S, Wattanachant S, Karlsson AH.（哥本哈根大學（丹麥）與宋卡王子大學（泰國））／The journal of poultry science",
+      "version": "期刊正式全文（PMC）；The journal of poultry science 56(4):308-317, 2019；授權 cc by-nc-sa",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST 搜尋 API 找到（isOpenAccess=Y），以文件記載的 fullTextXML 端點 curl 取得全文 XML，轉成文字存檔",
+      "reading_scope": "全文",
+      "locator": "Abstract；Materials 溫度波動設計段（核心 -20→-5°C）；Table 3 與其上一段（weight loss 3.25 vs 5.21%，其他指標不變）；Conclusion",
+      "summary": "真空包裝雞胸 -20°C 冷凍；波動組把冷凍雞胸放進 4°C 冰箱直到中心升到 -5°C，再凍回 -20°C，做 1、2、3 次。三次波動後失重 5.21%，恆溫冷凍 3.25%（1、2 次的 4.18%、4.34% 與兩者都不顯著不同）；剪切力、顏色、pH、蛋白溶解度、肌原纖維粒徑、脂質氧化都沒變。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "沒有真正解凍，最高只到 -5°C；只量失重沒有量冰晶。",
+      "author_cache": {
+        "file": "f27src/PMC7005396.xml",
+        "sha256_prefix": "a20acbf773f0f5e1",
+        "text_file": "f27src/PMC7005396.txt",
+        "text_sha256_prefix": "ce859ff72272265c",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K66-S009",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8144256/fullTextXML",
+      "canonical_url": "https://doi.org/10.1007/s10068-021-00896-x",
+      "title": "Deep freezing to maintain the freshness of pork loin during long-term storage",
+      "publisher": "Lee S, Kim EJ, Park DH, Ji YR, Kang G, Choi MJ.（建國大學（韓國）Choi MJ 研究室）／Food science and biotechnology",
+      "version": "期刊正式全文（PMC）；Food science and biotechnology 30(5):701-710, 2021；授權 cc by",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST 搜尋 API 找到（isOpenAccess=Y），以文件記載的 fullTextXML 端點 curl 取得全文 XML，轉成文字存檔",
+      "reading_scope": "全文",
+      "locator": "Abstract；3.2「Thawing loss, WHC, and shear force」第 1 段（約 4%、13.92%、約 5%）；Table 1",
+      "summary": "30 mm 豬里肌塊放在有空氣的盒子裡，分別存 -60、-50、-18°C 六個月，4°C 解凍。第 0 個月解凍損失都約 4%；-18°C 組隨儲存逐漸上升，6 個月達 13.92%，3 個月起表面脫水、變色；-60 與 -50°C 組 6 個月仍約 5%。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "包裝含空氣（表面會脫水），數字不可與真空包裝的研究相比；與 F27-S003 同校，合計封頂。 覆核 V30（2026-11-12）：limitations 補「研究經費來自 LG 電子冰箱研究部門，並有一位 LG 的共同作者；解凍損失以冷凍包裝前鮮重計，含冷凍期間表面脫水」。",
+      "author_cache": {
+        "file": "f27src/PMC8144256.xml",
+        "sha256_prefix": "12a2c9f9cdf94e74",
+        "text_file": "f27src/PMC8144256.txt",
+        "text_sha256_prefix": "370ad505ad577078",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K66-S010",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9329981/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/foods11152175",
+      "title": "Effect of Different Degrees of Deep Freezing on the Quality of Snowflake Beef during Storage",
+      "publisher": "Chang Y, Liu Y, Bai Y, Teng S, Guo Y, Dou H, Ye K.（南京農業大學國家肉品質量安全控制工程技術研究中心（中國））／Foods (Basel, Switzerland)",
+      "version": "期刊正式全文（PMC）；Foods (Basel, Switzerland) 11(15):2175, 2022；授權 cc by",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST 搜尋 API 找到（isOpenAccess=Y），以文件記載的 fullTextXML 端點 curl 取得全文 XML，轉成文字存檔",
+      "reading_scope": "全文",
+      "locator": "Abstract；3.2「Freezing Temperature Profile and Drip Loss」段與 Fig. 3A",
+      "summary": "雪花牛肉存 -18、-40、-60°C：-40 與 -60°C 通過最大冰晶生成帶的時間比 -18°C 短 2–6 小時；短期儲存中 -40、-60°C 組組織較完整、滴失較低，滴失只有 -18 與 -60°C 之間差異顯著；-40 與 -60°C 之間多數指標沒有差別。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀到圖的趨勢與摘要的比較，沒有逐點數字；雪花牛肉（大理石紋多）不代表一般肉。 覆核 V30（2026-11-12）：reading_scope 改「全文讀過，但滴失只有圖，沒有逐點數字；只用正文的顯著性敘述」；summary 改為「滴失只有 -18 與 -60°C 在第 30、60、90、173 天顯著不同，-40°C 未寫與 -18°C 顯著；三組滴失先升後降（第 90 天顯著低於第 60 天），長期因表面脫水再升；-40 與 -60°C 無差是對氧化與風味說的」。",
+      "author_cache": {
+        "file": "f27src/PMC9329981.xml",
+        "sha256_prefix": "ee966d16b13c57e7",
+        "text_file": "f27src/PMC9329981.txt",
+        "text_sha256_prefix": "274efb96be910aab",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K66-S011",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8313846/fullTextXML",
+      "canonical_url": "https://doi.org/10.1016/j.psj.2021.101305",
+      "title": "Effects of freezing temperatures and storage times on the quality and safety of raw turkey meat and sausage products",
+      "publisher": "Kluth IK, Teuteberg V, Ploetz M, Krischek C.（漢諾威獸醫大學（德國））／Poultry science",
+      "version": "期刊正式全文（PMC）；Poultry science 100(9):101305, 2021；授權 cc by-nc-nd",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST 搜尋 API 找到（isOpenAccess=Y），以文件記載的 fullTextXML 端點 curl 取得全文 XML，轉成文字存檔",
+      "reading_scope": "全文",
+      "locator": "Abstract；Materials（-18 與 -80°C、12 與 24 週）；Results Table 2 與其上一段（2.6、1.2、1.9、1.3%）；Discussion 首段",
+      "summary": "火雞胸肉在 -18°C 或 -80°C 存 12 或 24 週。解凍損失：12 週時 -18°C 2.6%、-80°C 1.2%（顯著）；24 週時 1.9% 與 1.3%，冷凍溫度已無顯著影響。烹調損失與剪切力各組間沒有差異。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "每組 3 次獨立重複；主題是做香腸，香腸的結果不用。 覆核 V30（2026-11-12）：summary 補「未冷凍對照肉 24 小時 drip loss 0.9%」。",
+      "author_cache": {
+        "file": "f27src/PMC8313846.xml",
+        "sha256_prefix": "df7b07051d4dd0ed",
+        "text_file": "f27src/PMC8313846.txt",
+        "text_sha256_prefix": "fb1bbf694c77b080",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K66-S012",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11647404/fullTextXML",
+      "canonical_url": "https://doi.org/10.5187/jast.2023.e125",
+      "title": "Taste-related and volatile organic compounds of fresh and frozen-thawed chicken breast meat",
+      "publisher": "Shin DJ, Jo C, Kim D, Jung Y, Lee JH, Nam KC, Choo HJ, Jang A.（江原大學（韓國）Jang A 研究室）／Journal of animal science and technology",
+      "version": "期刊正式全文（PMC）；Journal of animal science and technology 66(6):1221-1236, 2024；授權 cc by-nc",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST 搜尋 API 找到（isOpenAccess=Y），以文件記載的 fullTextXML 端點 curl 取得全文 XML，轉成文字存檔",
+      "reading_scope": "全文",
+      "locator": "Abstract；2.1 樣品（-18°C 2 個月、4°C 16 h）；3.1 核苷酸段（IMP 降、inosine 升）；3.2 游離胺基酸段；3.5 Sensory evaluation 段與 Table 5",
+      "summary": "雞胸 -18°C 凍 2 個月、4°C 解凍 16 小時，與鮮雞胸比：IMP 下降、肌苷上升，游離胺基酸普遍上升，偵測到 95 種揮發物、多變量分析分得開兩組。但 15 人九點喜好量表的顏色、香氣、味道、風味、整體接受度都沒有顯著差異（有偏低趨勢）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "喜好量表，與 F27-S005 的描述型受訓評審方法不同，兩者不比分數。 覆核 V30（2026-11-12）：summary 改為「九點量表：香氣、味道、風味、整體接受度無顯著差；口感（texture）顯著較低 6.53 對 4.87；顏色冷凍組較高（不顯著）；多汁 6.80 對 5.67（不顯著）」；補「20 隻肉雞，一半鮮測、一半整隻冷凍」。",
+      "author_cache": {
+        "file": "f27src/PMC11647404.xml",
+        "sha256_prefix": "bf4ca122cf4a845c",
+        "text_file": "f27src/PMC11647404.txt",
+        "text_sha256_prefix": "002e20e3fd20182e",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K66-S013",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10387603/fullTextXML",
+      "canonical_url": "https://doi.org/10.1016/j.psj.2023.102894",
+      "title": "Impact of frozen storage on some functional properties and sensory evaluation of goose meat",
+      "publisher": "Wereńska M, Okruszek A.（弗羅茨瓦夫經濟大學（波蘭））／Poultry science",
+      "version": "期刊正式全文（PMC）；Poultry science 102(10):102894, 2023；授權 cc by",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST 搜尋 API 找到（isOpenAccess=Y），以文件記載的 fullTextXML 端點 curl 取得全文 XML，轉成文字存檔",
+      "reading_scope": "全文",
+      "locator": "Abstract；Materials 解凍損失算法；Discussion 第 2 段（270 天 1.60%、365 天 1.87%）；Sensory evaluation 段",
+      "summary": "真空包裝鵝胸、鵝腿 -20°C 存 30 到 365 天。解凍損失隨時間上升，鵝胸 270 天 1.60%、365 天 1.87%，高於較短期；9 人受訓小組給的氣味、味道、質地、外觀分數顯著下降；作者建議不超過 180 天。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "一個品種、單一溫度；數字絕對值小，作者說是冷凍做得好。 覆核 V30（2026-11-12）：summary 刪「作者建議不超過 180 天」（保存期限建議不進片），感官下降改為「第 270 天起氣味與質地顯著下降」；補鵝胸解凍損失 30 天 0.87%。",
+      "author_cache": {
+        "file": "f27src/PMC10387603.xml",
+        "sha256_prefix": "b10b50704184f96a",
+        "text_file": "f27src/PMC10387603.txt",
+        "text_sha256_prefix": "715065906ff2d0c2",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "K66-001",
+      "question": "新鮮的肉放在冰箱裡，沒冷凍過也會滴水嗎？解凍滴出來的水大概多少？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.meat_fresh_drip_baseline_vs_thaw_loss",
+      "answer_target": "會。韓國世宗大學一組豬里肌實驗，把沒冷凍、真空包裝的肉塊放 4°C 冰箱 24 小時當對照，滴失約 3.35%；同一篇用 -18°C 靜止空氣慢慢凍的肉，解凍損失 6.73%，急凍組約 4.4–4.5%，和對照在統計上分不開。所以盤子裡那灘水不全是冷凍造成的：肉本來就會滴，冷凍是在上面再加一筆。鮮肉自己滴多少，隨肉的種類和量法差很多，3.35% 只是這個實驗的數字。",
+      "scope": "數字只限該篇豬里肌；刪掉作者把 F27-S001 的 1.72–4.35% 放在同一段（不同實驗、不同肉塊，觀眾會拿來和 3.35% 比）；不說「冷凍多出幾倍」；不把 3.35% 說成一般鮮肉的滴失率。",
+      "source_ids": [
+        "K66-S002",
+        "K66-S001"
+      ],
+      "source_locator": "F27-S002 Table 1 與 water-holding capacity 段；F27-S001 Thawing loss 段第 1 句",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：新事實只有「未冷凍對照也滴 3.35%」；6.73% 在 F27-003 計。Hong 研究群（S001、S002）三核心合計 1.5。 原提案 F27-001（目標 C12-01，原角色 hook；依本池欄位記為 segment）。非作者覆核 V30（2026-11-12）改字後收；數字對上，但作者把另一篇的 1.72–4.35% 放進同一個答案，畫面上會被拿來比；刪掉並補上鮮肉自滴量因研究而異的限制。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "解凍那灘水，有一部分是肉本來就要流的。",
+        "visual": "兩盤肉並排：一盤鮮肉在冰箱放一天、一盤解凍肉，盤底各一灘水，旁邊一個秤。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "K66-002",
+      "question": "冷凍得越快，冰晶就越小、出水就越少嗎？「每小時凍進 0.5 公分」就算急速冷凍嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.meat_freezing_rate_ice_size_plateau_quality_threshold",
+      "answer_target": "方向對，但有門檻，而且差異沒有想像中整齊。世宗大學把 3 公分豬里肌塊在 -20 到 -40°C、加不同風速冷凍，冷凍速率每小時 0.26 到 1.42 公分、不含冷凍儲存期。慢凍（低於每小時 0.5 公分）的冰晶等效半徑約 42.5 到 47.6 微米，快凍約 23.8 到 31.2 微米；可是快凍的各組之間（每小時 0.63 到 1.42 公分）冰晶大小沒有差別，作者解讀成冰晶有一個縮不下去的大小。解凍損失在各組間大多不顯著，只有每小時 0.96 公分以上那一級明顯比一般冷凍少；照傳統「每小時 0.5 公分」標準算急凍的那一級（0.6–0.7），品質和慢凍分不出來，作者因此建議把 0.96 當新門檻。",
+      "scope": "限豬里肌 3 公分肉塊、不含儲存期、每組 3 次重複；「冰晶有臨界大小」是作者解讀，0.63 cm/h 組的冰晶也和慢凍分不開（標準差大），片中照說；0.96 是作者建議，不是法定標準；不談家用冷凍庫型號或設定。",
+      "source_ids": [
+        "K66-S001"
+      ],
+      "source_locator": "F27-S001 Abstract；Freezing rate and ice crystal size 段與 Fig. 2；Thawing loss 段；Conclusion",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：同一實驗的冰晶平台與 0.96 門檻合一條，且平台本身有原文寫明的例外；Hong 研究群合計 1.5。 原提案 F27-002（目標 C12-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V30（2026-11-12）改字後收；作者把「快凍區冰晶一樣大」講成乾淨的平台，略去同段 0.63 cm/h 也與慢凍分不開、解凍損失多數組間不顯著兩句；補上並下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「急凍」不是越快越好，而是要越過某個速度；傳統的 0.5 公分標準不夠。",
+        "visual": "冰晶大小對冷凍速率的散布圖，前半段下降、後半段變平；一條 0.5、一條 0.96 的直線。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "K66-003",
+      "question": "同一台慢慢冷的冷凍庫，有辦法凍出像急凍一樣的肉嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.meat_artificial_supercooling_mass_nucleation",
+      "answer_target": "實驗室裡做到了。世宗大學先把豬里肌放慢降溫，讓它在零度以下維持不結冰（過冷 1.4°C），再放進 -18°C 靜止空氣冷凍。肉從 -0.6°C 降到 -5°C 的相變時間由 3.07 小時縮短為 2.23 小時；冷凍乾燥後的切面看起來接近 -30°C 酒精浸泡急凍的樣子。解凍損失：一般慢凍 6.73%，急凍與先過冷的組 4.44% 到 4.49%。作者的解釋是過冷讓大量冰核同時出現、潛熱一次放掉，冰晶來不及長大；他們也說過冷程度怎麼影響冰晶數目和大小還沒弄清楚。",
+      "scope": "是實驗室控溫（預冷速度刻意放慢）的人工過冷，不是家電功能；切面是低倍照片、沒有量冰晶；不說家裡怎麼做；n=7。",
+      "source_ids": [
+        "K66-S002"
+      ],
+      "source_locator": "F27-S002 Abstract；冷凍曲線段；Fig. 2 顯微結構段；Table 1",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）；6.73% 與 3.35% 不重算。 原提案 F27-003（目標 C12-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V30（2026-11-12）改字後收；數字無誤；補上「過冷需要刻意放慢預冷」與作者自承機制未明，避免被聽成冷凍庫的功能。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冰晶大小取決於一開始同時冒出多少冰核，不只取決於冷凍庫多冷。",
+        "visual": "兩條溫度曲線：一條在 -0.6°C 停很久，一條先往下掉一點再一口氣結冰。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "K66-004",
+      "question": "顯微鏡下肌肉纖維都被凍得亂七八糟，出的水就一定比較多嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.meat_visible_fiber_damage_not_matching_thaw_loss",
+      "answer_target": "這個研究裡關係沒有那麼直接。韓國建國大學把 9 克的牛肉條用一般冷凍（-24°C，約 55 分鐘）、-45°C 送風（18 分鐘）和液氮蒸氣（-100°C，3 分鐘）凍到中心 -12°C，在 -24°C 放一天，再用 4°C 空氣或流水解凍到 5°C。光學顯微鏡下，多數冷凍組合的肌纖維出現斷裂和壞死，液氮那組則大致保持原狀。解凍損失 2.3% 到 4.5%，六種組合裡只有最高（送風凍加冷空氣解凍，4.46%）和最低（液氮加流水，2.33%）兩組有顯著差，其餘彼此分不開。作者在摘要說組織雖然受損，沒有造成品質的顯著改變，品質受解凍溫度的影響大於解凍速度。",
+      "scope": "9 克小肉條、只存一天；顯微鏡結果不是「凍過的全都破碎」；「解凍溫度大於速度」是作者摘要的結論，片中照原文說，不推薦解凍方法。",
+      "source_ids": [
+        "K66-S003"
+      ],
+      "source_locator": "F27-S003 Abstract；冷凍時間段；Table 1 上一段；Light microscopy 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：原文的顯微鏡結果與作者寫的相反一部分，轉折力道變弱；建國大學兩篇（S003、S009）合計 1.0。 原提案 F27-004（目標 C12-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V30（2026-11-12）改字後收；作者把摘要的「失去完整」寫成所有冷凍組，漏掉正文「液氮組保持原狀」與最高、最低兩組解凍損失的顯著差；改寫後由轉折降為一般段落。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看得見的破壞和流掉的水，不是一對一。",
+        "visual": "六根解凍損失長條，只有最高與最低兩根標出顯著差；旁邊兩張切片：液氮組較完整、一般冷凍組有斷裂。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "K66-005",
+      "question": "解凍時滴得比較少，就代表肉把水留住了嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.meat_fast_freeze_low_thaw_loss_later_display_drip",
+      "answer_target": "不一定，有時水只是晚點才流。南非斯泰倫博斯大學用 125 隻鴕鳥的整塊腿肉，做 5 種冷凍速度（中心從 0 降到 -7°C 費時 1 到 24 小時）乘 5 種解凍速度，-20°C 存約一個月。解凍損失隨冷凍變慢而上升：最快那組 2.57%、最慢那組 6.24%。可是解凍後在 4°C 展示 10 天，最快凍的那組從第 6 天到第 10 天滴得都顯著比其他組多，最慢凍的那組展示時滴得少。作者的解釋是肉裡能流走的水有限，解凍時流掉多的，之後就流得少。但這不是規律：費時 2 小時那組解凍損失一樣低，展示時也滴得慢。",
+      "scope": "鴕鳥整塊肌肉；FR_2h 的例外必須講；解凍速度只在展示第 2、4 天影響滴失，片中不說「解凍速度完全沒影響」；「急凍組蛋白質受損較重」是作者引前作的假說；不推薦冷凍或解凍方法。",
+      "source_ids": [
+        "K66-S004"
+      ],
+      "source_locator": "F27-S004 Abstract；Table 2；Results moisture loss 三段",
+      "premise_status": "screened",
+      "notes": "算 1.0（作者 1.25）：同一實驗的解凍損失梯度與展示期反轉合計；反轉有例外，不給 1.25。 原提案 F27-005（目標 C12-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V30（2026-11-12）改字後收；數字對，但作者略去 FR_2h 例外與解凍速度在展示第 2、4 天的顯著影響，把「換時間流」講成通則；補上。轉折仍成立（最快凍組確實反轉）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "只看解凍那一刻的水，會把帳算錯：有的水只是換時間流。",
+        "visual": "兩條線：解凍當下的長條一高一低，接著十天的滴水曲線交叉。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "K66-006",
+      "question": "凍過三個月的肉，吃起來真的分得出來嗎？差在哪？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.meat_frozen_storage_juiciness_drop_extramyofibrillar_water",
+      "answer_target": "受過訓練的評審分得出來，差在多汁，不在嫩。瑞典農業科學大學與冰島團隊用 10 對冰島綿羊的雙胞胎公羔羊，每隻一側里脊新鮮測、另一側 -24°C 冷凍三個月後解凍再測。鮮肉烹調掉 15% 的水；冷凍肉從解凍到煮好合計掉 27%。受訓評審給的多汁分數 49 對 35（滿分 100），嫩度 48 對 50 沒有差別；冷凍組的脂肪味、煎烤味、酸味和肝味分數較高。低場核磁共振看到水的弛豫時間變短、肌原纖維外面的水比例上升，作者解讀為冷凍儲存期間肌肉部分降解或變性。",
+      "scope": "15% 只含烹調、27% 含解凍加烹調，片中不能說成「同一種失水」或相減；羊肉、描述型受訓小組，不是一般消費者；兩家屠宰場有交互作用，片中不細分。",
+      "source_ids": [
+        "K66-S005"
+      ],
+      "source_locator": "F27-S005 Abstract；Table 1；Table 2 與其上一段；Discussion LF-NMR 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：失水兩邊量法不同，只能當「冷凍組總失水較多」；感官與 NMR 同一實驗合計。 原提案 F27-006（目標 C12-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V30（2026-11-12）改字後收；作者把鮮肉的烹調損失和冷凍肉的解凍加烹調損失並排成「失水 15% 對 27%」，觀眾會以為量的是同一件事；改寫並下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冷凍真正偷走的是「多汁」，不是「嫩」。",
+        "visual": "兩塊煮好的羊排切面，一個量表上多汁分數一高一低、嫩度幾乎一樣。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "K66-007",
+      "question": "冷凍讓雞肉裡的鮮味成分和香氣都變了，吃的人分得出來嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.meat_freeze_thaw_chemistry_shift_vs_hedonic_panel",
+      "answer_target": "香氣和味道分不太出來，口感分得出來。韓國江原大學把整隻肉雞 -18°C 凍 2 個月、4°C 解凍 16 小時，和新鮮雞胸比：鮮味核苷酸 IMP 下降、肌苷上升，游離胺基酸普遍增加，測到 95 種揮發物，統計上兩組分得很開。可是 15 位評審用九點量表打分時，香氣、味道、風味和整體接受度都沒有顯著差異；只有口感分數明顯較低（6.53 對 4.87）。",
+      "scope": "喜好量表與 F27-006 的描述型受訓評審方法不同，兩篇分數不比較；只說「這一組評審」；不能說「吃不出來」。",
+      "source_ids": [
+        "K66-S012"
+      ],
+      "source_locator": "F27-S012 Abstract；核苷酸與胺基酸段；Sensory evaluation 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）。原提案的輔助轉折「儀器量得到、嘴巴吃不出來」不成立，改為「香氣化學變很多，評審抓到的卻是口感」。 原提案 F27-007（目標 C12-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V30（2026-11-12）改字後收；作者漏讀 Table 5：口感有顯著差，顏色冷凍組反而較高；「吃不出來」與「都偏低」都錯，輔助轉折改寫。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "儀器量到的是香氣化學的大改變，評審抓到的反而是口感。",
+        "visual": "左邊化學圖譜兩組分得很開，右邊評分長條幾乎一樣高。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "K66-008",
+      "question": "解凍流出來的汁裡，有細胞「裡面」的東西嗎？凍越多次越多嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.meat_exudate_citrate_synthase_rises_with_cycles",
+      "answer_target": "驗得到粒線體裡的酵素，而且凍越多次越多。泰國農業大學（Kasetsart）把豬里肌排 -20°C 凍 6 個月、4°C 解凍 24 小時算一次，再做第二次。解凍損失一次 5.81%、兩次 7.72%。滲出液裡的檸檬酸合成酶活性，鮮肉 0.105、凍融一次 0.338、兩次 0.604 μmol/mL/min；作者引前人說明這是粒線體裡的酵素，細胞被冰晶弄破才會跑出來。組織切片上肌纖維截面變小、包住肌纖維的膜層變厚，纖維有撕裂。",
+      "scope": "只到兩次；「酵素外漏代表胞器受損」是作者引前作的解釋；與 X34-005 並用時，X34-005 只講「魚也一樣」一句，不重算。",
+      "source_ids": [
+        "K66-S007"
+      ],
+      "source_locator": "F27-S007 Abstract；Drip loss and thawing loss 段；Citrate synthase activity 段；肌纖維段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：機制方向 X34-005 已有，新增的是豬肉、次數劑量關係與組織學。 原提案 F27-008（目標 C12-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V30（2026-11-12）改字後收；數字無誤；與 X34-005 機制重疊，下修 0.5；把「作者寫明是粒線體酵素」改成「作者引前人說明」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "汁裡驗得到只該待在粒線體裡的酵素，代表真的有細胞內部被打開。",
+        "visual": "一杯解凍汁倒進試管，三支試管顏色由淺到深（鮮肉、一次、兩次）。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "K66-009",
+      "question": "肉凍了又解、解了又凍，水會越流越多嗎？肉會變硬嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.meat_repeated_freeze_thaw_loss_accumulates_softens",
+      "answer_target": "水越流越多，但肉反而變軟。中國煙台大學把真空包裝的豬里肌排以「-20°C 48 小時加 4°C 12 小時」為一次凍融，做 1 到 5 次。凍融失重由 1 次的 3.07% 升到 5 次的 11.60%，肉的含水率由 73.09% 降到 68.40%；但每次解凍後另外量的滴失、離心失水和烹調失水沒有顯著差異。剪切力隨次數下降、肌原纖維斷裂指數上升，也就是肉變軟；主要肌原纖維蛋白的電泳條帶沒有大變化。",
+      "scope": "失重的計算基準原文只寫凍前與解凍後重量，片中只講 1 次與 5 次的數字，不換算每次；不給任何「能不能再凍」的建議。",
+      "source_ids": [
+        "K66-S006"
+      ],
+      "source_locator": "F27-S006 2.1 樣品段；Table 1 與 3.1 段；3.2 shear force 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：同一實驗兩個結果。 原提案 F27-009（目標 C12-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V30（2026-11-12）改字後收；數字無誤；刪掉說過頭的「蛋白質結構同時改變」，補上電泳主要條帶沒有大變化；下修 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "凍融把水擠出去、也把纖維打斷，所以「變乾」和「變軟」可以同時發生。",
+        "visual": "五塊肉排由左到右，盤底水越來越多，一把刀切下去越來越輕。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "K66-010",
+      "question": "沒有真正解凍，只是冷凍庫溫度忽高忽低，肉也會出水嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.meat_subzero_fluctuation_weight_loss_only",
+      "answer_target": "會，而且只看到失重。哥本哈根大學與泰國宋卡王子大學把真空包裝雞胸 -20°C 冷凍 30 天；波動組放進 4°C 冰箱，等中心升到 -5°C 就再凍回 -20°C，做 1 到 3 次。三次波動後失重 5.21%，一直恆溫冷凍的是 3.25%（一、兩次的 4.18%、4.34% 和兩者都沒有顯著不同）；質地、顏色、pH、蛋白溶解度、肌原纖維斷裂指數和脂質氧化都沒有改變。",
+      "scope": "最高只到 -5°C；只量失重，沒有量冰晶；30 天、n=10；不說家用冷凍庫的實際溫度，不給保存建議。",
+      "source_ids": [
+        "K66-S008"
+      ],
+      "source_locator": "F27-S008 Abstract；溫度波動設計段；Table 3 與其上一段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：單一顯著結果（3 次對恆溫）。 原提案 F27-010（目標 C12-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V30（2026-11-12）改字後收；數字無誤；只有三次對恆溫一項顯著，下修 0.5；補上儲存 30 天與樣本數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "肉沒解凍、只是在冰點以下忽冷忽熱，水也會被一點一點擠出去。",
+        "visual": "溫度曲線在 -20 和 -5 之間鋸齒狀起伏，旁邊秤上的數字往下跳。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "K66-011",
+      "question": "冷凍庫溫度設得越低，凍久了肉就越不會出水嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.meat_deep_freeze_storage_thaw_loss_divergence",
+      "answer_target": "有兩個研究看到較冷的比較少，但不是一路越冷越好。韓國建國大學把 30 毫米豬里肌塊放在有空氣的盒子裡，分別存 -60、-50、-18°C 六個月：剛開始解凍損失都約 4%；-18°C 組逐月上升，6 個月達 13.92%，3 個月起表面脫水、變色；-60、-50°C 組 6 個月仍約 5%。這個損失是和冷凍前比的重量，包含冷凍期間表面乾掉的水。南京農業大學把雪花牛肉存 -18、-40、-60°C：較冷的兩組通過最大冰晶生成帶的時間短 2 到 6 小時；滴失只有 -18 與 -60°C 之間差異顯著，-40°C 並沒有和 -18°C 拉開；而且三組的滴失都是先升後降、放很久又因表面脫水升高。",
+      "scope": "建國大學的包裝含空氣，數字不能和真空包裝研究比，該研究由冰箱廠商資助、片中須說明，且不得出現任何品牌或「深冷冷凍庫」產品訴求；南京那篇只有正文與圖、沒有逐點數字，片中不得報滴失百分比；兩研究數字不相加不相減；不建議家庭冷凍溫度。",
+      "source_ids": [
+        "K66-S009",
+        "K66-S010"
+      ],
+      "source_locator": "F27-S009 3.2 段與 Table 1；F27-S010 Abstract 與 3.2 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：建國大學 0.5、南京 0.25（只讀到圖的趨勢與正文的顯著性敘述，依規則降分）。建國大學兩篇合計 1.0。可配 D2022（包裝擋不住水蒸氣）講表面脫水。 原提案 F27-011（目標 C12-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V30（2026-11-12）改字後收；作者對南京那篇說過頭（-40°C 並未顯著優於 -18°C、滴失非單調），也漏記建國大學研究的冰箱廠商資助與「損失含表面脫水」；改寫並下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "溫度越低在某些實驗確實比較好，但 -40 和 -60 已經差不多。",
+        "visual": "三個冷凍庫溫度計並排，下面六個月的解凍損失曲線一條往上翹、兩條平。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "K66-012",
+      "question": "那超低溫的好處會一直維持嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.meat_ultralow_storage_advantage_fades_turkey",
+      "answer_target": "這個研究裡沒有。德國漢諾威獸醫大學把火雞胸肉存在 -18°C 或 -80°C：存 12 週時，解凍損失 -18°C 組 2.6%、-80°C 組 1.2%，差異顯著；存到 24 週變成 1.9% 和 1.3%，冷凍溫度已經沒有顯著影響。烹調損失和剪切力在各組之間也沒有差別。",
+      "scope": "火雞胸、每組 3 次獨立重複；與 011 的結論方向不同，片中並列並說「研究結論不一致」。",
+      "source_ids": [
+        "K66-S011"
+      ],
+      "source_locator": "F27-S011 Abstract；Table 2 與其上一段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：一個顯著、一個不顯著，合為一條半；答案文字照作者。 原提案 F27-012（目標 C12-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V30（2026-11-12）照原稿收；數字與條件都對；答案不改，計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「越冷越好」在不同肉、不同包裝、不同時間長度下，答案不一樣。",
+        "visual": "兩組長條：12 週差一截，24 週幾乎齊高。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "K66-013",
+      "question": "肉冷凍放一整年，會越放越出水嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.meat_frozen_storage_year_goose_defrost_loss",
+      "answer_target": "會，但這個研究的量不大。波蘭弗羅茨瓦夫經濟大學把真空包裝鵝胸、鵝腿存在 -20°C 30 到 365 天：鵝胸的解凍損失由 30 天的 0.87% 一路升到 365 天的 1.87%；從第 270 天起，9 人受訓小組給的氣味和質地分數顯著下降。作者說損失這麼小，代表冰晶只稍微傷到組織。",
+      "scope": "一個品種、單一溫度；刪掉作者的「不超過 180 天」——那是保存期限建議，不進片；不轉成家庭建議。",
+      "source_ids": [
+        "K66-S013"
+      ],
+      "source_locator": "F27-S013 Abstract；Discussion 第 2 段；Sensory evaluation 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）：只加時間尺度。 原提案 F27-013（目標 C12-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V30（2026-11-12）改字後收；數字對；刪去保存期限建議，並把感官下降的時間點改成原文的第 270 天。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "時間本身也在出力：同一個溫度放越久，留下的帳越多。",
+        "visual": "月曆一頁頁翻過，旁邊解凍盤的水慢慢多一點。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "K66-NA001",
+      "question": "微波爐為什麼熱不均勻？轉盤中間是冷點嗎？（家用微波爐熱點與轉盤擺位）",
+      "existing_ids": [
+        "LEG-S13",
+        "P25001"
+      ],
+      "source_ids": [],
+      "reason": "去重通過（池中只有金屬火花與葡萄熱點），但能讀到的開放原研究多是工業加熱模擬或特殊載具；唯一直接量家用微波爐、結論是「放轉盤邊緣比中心均勻」的內布拉斯加大學會議論文 digitalcommons.unl.edu 對 curl 與 WebFetch 都回 Cloudflare/403，未繞過；MDPI 原站回 Akamai 403（Europe PMC 有 Taghian Dinani 2021 的全文但那是實驗室磁控管與固態源系統）。不夠兩個研究群的家用量測，未選題。 原提案 F27-NA001。",
+      "reentry_condition": "能合法讀到兩篇以上不同研究群的家用微波爐實測（熱點分布、轉盤擺位、冷凍食物失控加熱）時重議。",
+      "reading_status": "讀不到（403）／只讀到搜尋摘要"
+    },
+    {
+      "id": "K66-NA002",
+      "question": "core.ac.uk 上的豬里肌「蛋白質變性 vs 冰晶」解凍損失研究（搜尋結果 core.ac.uk/download/328854342.pdf）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "core.ac.uk 回 Cloudflare「Just a moment」403，未繞過；只讀到搜尋摘要（慢凍多約 28% 解凍損失、作者說冰晶與解凍損失的關係是「一般相信」），不收。 原提案 F27-NA002。",
+      "reentry_condition": "能從出版社或作者典藏讀到全文時，可補 C12-01「冰晶還是蛋白質」那一段約 0.5 條。",
+      "reading_status": "只讀到搜尋摘要"
+    },
+    {
+      "id": "K66-NA003",
+      "question": "Meat and Muscle Biology（iastatedigitalpress.com）羔羊與牛肉冷凍冰晶研究",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "網站回 Anubis 機器驗證「Access Denied」，未繞過。 原提案 F27-NA003。",
+      "reentry_condition": "期刊頁可正常讀取時重讀。",
+      "reading_status": "讀不到（機器驗證）"
+    },
+    {
+      "id": "K66-NA004",
+      "question": "冷凍豬肉不同解凍方式（微波真空、遠紅外等）對水分移動的影響（Guo 等 2025，PMC12357279）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "全文讀過，但內容是比較工業解凍設備優劣，放進片中會變成解凍方法建議（含室溫解凍等食安議題），依規則不收；本機快取已刪。 原提案 F27-NA005。",
+      "reentry_condition": "不重入。",
+      "reading_status": "全文讀過"
+    }
+  ]
+}

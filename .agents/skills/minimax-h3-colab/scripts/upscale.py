@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Stage 3 of the three-stage H3 route: SeedVR2 refined clips to exactly 1920x1080 on one Colab session.
+"""Stage 3 of the three-stage H3 route: SeedVR2 refined clips to exactly 1920x1080 (1080x1920 for vertical clips) on one Colab session.
 
 Uploads every MP4 named on the command line (or found in --input-dir), runs
 assets/seedvr2_upscale.ipynb (numz's SeedVR2 CLI at a pinned commit; the notebook trims the frames

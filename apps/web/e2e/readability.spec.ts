@@ -517,6 +517,9 @@ async function plannerReadabilityFixture(page: Page, theme: "light" | "dark" | "
     if (path === `/api/travel/trips/${trip.id}`) return route.fulfill({ json: trip });
     return route.fulfill({ status: 404, json: { detail: "No additional fixture endpoint" } });
   });
+  // The forecast fixture covers 2026-11-11–12 (Asia/Tokyo) and marks 11-11 as today; pin the clock to its retrieval time
+  // so the summary for 2026-11-11 is not dropped as a past day once the real date moves on.
+  await page.clock.setFixedTime(new Date("2026-11-11T03:15:00Z"));
   await page.goto(`/zh-TW/trips/${trip.id}`);
   await expect(page.locator("html")).toHaveAttribute("data-theme", theme === "light" ? "light" : "dark");
   await page.getByRole("button", { name: "開啟旅程工具", exact: true }).click();

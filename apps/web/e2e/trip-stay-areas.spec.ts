@@ -118,6 +118,8 @@ test.beforeEach(async ({ page }) => {
     if (url.pathname.endsWith(`/trips/${tripId}`)) return json(selected ? chosenTrip : trip);
     return route.fulfill({ status: 404, contentType: "application/json", body: JSON.stringify({ code: "not_found" }) });
   });
+  // The trip and stay are dated 2026-11-11–12; pin the clock so the trip is not treated as past once that date goes by.
+  await page.clock.setFixedTime(new Date("2026-11-01T03:00:00Z"));
 });
 
 test("recommends stay areas, compares prices and sets the chosen hotel as primary lodging", async ({ page }) => {

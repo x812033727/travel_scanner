@@ -1,0 +1,299 @@
+{
+  "batch_id": "wave55-human-20261111",
+  "created_on": "2026-11-11",
+  "scope": "牛奶、鮮奶油、冰淇淋與奶油的法定乳脂、冰淇淋的空氣、熟成、冷凍比例、冰晶大小與溫度來回：替長題 G25 補美國法規原文、威斯康辛大學論文與同步輻射斷層研究，取代來源未實讀的舊核心；六來源，其中威斯康辛乳品研究中心〈Butter Science 101〉是池中 SRC-e0b800864a06d0e9 同一頁的本輪全文重讀，併入同一來源 id。",
+  "sources": [
+    {
+      "id": "H55-S001",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-131",
+      "canonical_url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-131",
+      "title": "21 CFR Part 131 — Milk and Cream",
+      "publisher": "美國 eCFR（National Archives／GPO），FDA 規章",
+      "version": "eCFR current（2026-11-11 擷取）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（eCFR renderer API HTML），去標籤閱讀相關各節",
+      "reading_scope": "§131.3、§131.110、§131.150、§131.155、§131.157 全文",
+      "locator": "§131.3(a)；§131.110(a)；§131.150(a)；§131.155(a)；§131.157(a)",
+      "summary": "美國標準：飲用乳乳脂不低於 3.25%、非脂乳固形物不低於 8.25%，可均質；鮮奶油（cream）乳脂不低於 18%；淡奶油 18% 以上未滿 30%；淡打發奶油 30% 以上未滿 36%；重奶油（heavy cream）不低於 36%，均可均質。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "美國法規下限，不代表台灣或其他國家；產品實際脂肪可高於下限。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f5src/ecfr131.html",
+        "sha256_prefix": "8ae3795ebd03b361",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H55-S002",
+      "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-135",
+      "canonical_url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-135",
+      "title": "21 CFR Part 135 — Frozen Desserts",
+      "publisher": "美國 eCFR（National Archives／GPO），FDA 規章",
+      "version": "eCFR current（2026-11-11 擷取）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（eCFR renderer API HTML），去標籤閱讀",
+      "reading_scope": "§135.110(a) 冰淇淋；§135.140 雪酪段對照",
+      "locator": "§135.110(a)(2)",
+      "summary": "美國冰淇淋標準：乳脂不低於 10%、非脂乳固形物不低於 10%（乳脂每多 1% 可相應降低），每加侖總固形物不少於 1.6 磅，且每加侖重量不少於 4.5 磅；雪酪（sherbet）乳脂只有 1–2%，每加侖不少於 6 磅。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "美國法規；『每加侖 4.5 磅』如何限制打氣量見 S005（法規本身未寫 overrun）。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f5src/ecfr135.html",
+        "sha256_prefix": "17fd63bc31932117",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H55-S003",
+      "url": "https://www.law.cornell.edu/uscode/text/21/321a",
+      "canonical_url": "https://www.law.cornell.edu/uscode/text/21/321a",
+      "title": "21 U.S. Code § 321a — “Butter” defined",
+      "publisher": "Cornell LII 轉載美國法典",
+      "version": "2026-11-11 擷取",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 HTML，去標籤閱讀",
+      "reading_scope": "條文全文",
+      "locator": "§321a 條文",
+      "summary": "美國法典定義奶油：只用牛乳或鮮奶油（或兩者）製成，可加鹽與色素，乳脂按重量不低於 80%（已計入容許誤差）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "美國法規；LII 為轉載站，條文與 uscode.house.gov 相同（未另行比對）。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f5src/usc321a.html",
+        "sha256_prefix": "1801541a6fa70c65",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H55-S004",
+      "url": "https://cdr.wisc.edu/butter-science-101",
+      "canonical_url": "https://cdr.wisc.edu/butter-science-101",
+      "title": "Butter Science 101",
+      "publisher": "Center for Dairy Research, University of Wisconsin–Madison",
+      "version": "網頁 2026-11-11 擷取（池內已有同一來源 SRC-e0b800864a06d0e9，本次重讀全文）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 HTML，去標籤全文閱讀",
+      "reading_scope": "全文：定義與組成、原料奶油品質、乳脂成分、製程（殺菌、發酵、回溫、攪乳、加工、冷卻）",
+      "locator": "第2段組成；第3段原料脂肪 35–40%；攪乳 phase inversion 段；冷卻段",
+      "summary": "奶油典型組成：脂肪 80–82%、水 16–17.5%、鹽 1.5%、乳固形物 1%；做奶油的鮮奶油脂肪宜為 35–40%。攪乳時鮮奶油由水包油乳化液轉為油包水的奶油（相轉換），脂肪球聚集成粒並排出白脫乳；冷卻太快會使質地短脆，回溫期形成的晶核在冷卻時長大、可能降低塗抹性。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與池內 D2028/D2029 同一來源，攪乳與回溫機制不重計，只取組成數字。",
+      "refreshes_source_id": "SRC-e0b800864a06d0e9",
+      "applies_to_candidate_ids": [
+        "D2028",
+        "D2029",
+        "D2030",
+        "D2031",
+        "D2032"
+      ],
+      "access_notes": "與池中 SRC-e0b800864a06d0e9（wave2-everyday-engineering-20261101 節錄閱讀）是同一頁；以同一網址追加本輪全文重讀紀錄，不另立來源。舊核心 D2028、D2029 已有的攪乳相轉換與回溫調軟硬不重計，本輪只取奶油的組成數字，由 H55-001 承接。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f5src/wisc_butter.html",
+        "sha256_prefix": "3076444df5bc64d3",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H55-S005",
+      "url": "https://asset.library.wisc.edu/1711.dl/YXGSBY5CAAGZG8K/R/file-ed9d1.pdf",
+      "canonical_url": "https://asset.library.wisc.edu/1711.dl/YXGSBY5CAAGZG8K/R/file-ed9d1.pdf",
+      "title": "Understanding Melt Behavior of Ice Cream: Influence of the Microstructure and Composition on Drip-Through Rate of Ice Cream Products",
+      "publisher": "Maya M. Warren，威斯康辛大學麥迪遜分校食品科學博士論文（指導 Richard W. Hartel），UW–Madison 圖書館典藏",
+      "version": "2015",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（PDF 258 頁），pdftotext；讀第 2 章文獻回顧",
+      "reading_scope": "第 2 章 §2.1（成分：脂肪、空氣、水與冰、MSNF、甜味劑、安定劑、乳化劑）、§2.2（製程：殺菌、均質、冷卻熟成、冷凍、硬化）、§2.3（物理結構：未凍相、冰晶、氣泡）；第 3–5 章實驗未讀",
+      "locator": "§2.1.2 式(2.1) 與 Table 2.2；§2.1.3；§2.1.6；§2.2.2–2.2.5；§2.3.2",
+      "summary": "冰淇淋由冰晶、氣泡、脂肪球與部分聚結的脂肪球分散在未凍的濃縮糖液中；以體積計空氣常是最大成分。打氣量（overrun）＝（混料重−冰淇淋重）÷冰淇淋重×100%；美國標準要求成品每公升不少於 0.54 kg（4.5 lb/gal），等於限制最高打氣量；概略分級：經濟型達法定上限、標準型 100–120%、高級 60–90%、超高級 25–50%。均質把脂肪球打到約 2 µm 以下（常見第一段 2000 psi、第二段 500 psi）；混料冷到 4 °C 熟成 4–24 小時，期間脂肪開始結晶、乳化劑取代脂肪球表面的蛋白質、安定劑水合增稠，促成冷凍時的部分聚結。冷凍桶外有 −22 至 −32 °C 冷媒，刮刀一面打入空氣、一面把桶壁結成的冰刮下拌入；部分聚結的脂肪幫忙穩住小氣泡。出機約 −5 至 −6 °C，只有約 50% 的水結冰，仍是半固體；再在 −25 至 −30 °C 硬化 12–24 小時，約 95% 的水結冰。冰晶出機平均 15–30 µm，硬化後長到 35–45 µm；多數冰晶小於約 50 µm 才滑順，大量超過 50 µm 或出現 100 µm 以上就粗糙。安定劑（0.25–1%）增加未凍相黏度、延緩儲存時冰晶長大。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "博士論文的文獻回顧，數值多轉引自 Goff & Hartel (2013)《Ice Cream》等；美國法規與工業條件；分級打氣量為概略值。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f5src/wisc_ed9d1.pdf",
+        "sha256_prefix": "6a031f2a418b3430",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H55-S006",
+      "url": "https://discovery.ucl.ac.uk/id/eprint/10053478/1/Lee_Revealing%20the%20microstructural%20stability%20of%20a%20three-phase%20soft%20solid%20(ice%20cream)%20by%204D%20synchrotron%20X-ray%20tomography_AAM.pdf",
+      "canonical_url": "https://discovery.ucl.ac.uk/id/eprint/10053478/1/Lee_Revealing%20the%20microstructural%20stability%20of%20a%20three-phase%20soft%20solid%20(ice%20cream)%20by%204D%20synchrotron%20X-ray%20tomography_AAM.pdf",
+      "identity_urls": [
+        "https://discovery.ucl.ac.uk/id/eprint/10053478/"
+      ],
+      "title": "Revealing the microstructural stability of a three-phase soft solid (ice cream) by 4D synchrotron X-ray tomography",
+      "publisher": "Guo, Kazantsev, Mo, Bent, Van Dalen, Schuetz, Rockett, StJohn & Lee（曼徹斯特大學、Unilever R&D 等）；投稿 Journal of Food Engineering（2018），UCL Discovery 作者接受稿",
+      "version": "作者接受稿（AAM）2018-01",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（PDF 36 頁），pdftotext",
+      "reading_scope": "摘要、引言、§2 材料方法、§3.1–3.2（整體演變、冰晶演變）、結論",
+      "locator": "摘要；引言第4段（前作 ex situ 結果）；§2.1；§3.2 Fig.5 敘述；結論",
+      "summary": "Unilever 製 5% 脂肪冰淇淋，先在 −15 與 −5 °C 之間循環七次，再用同步輻射 X 光斷層即時觀察一次升降溫（0.05 °C/min）：冰晶平均等效直徑由 −15 °C 的 101 µm 升溫到 −5 °C 降為 87 µm，再冷回 −15 °C 時長到約 103 µm，一個循環淨增約 2 µm，機制是熔化—再結晶；氣泡則主要靠相鄰氣泡合併而變粗。前作 ex situ 結果：循環到 14 次冰晶持續變大（7 次後變慢），氣泡 7 次前大致仍是球形，14 次後長成彼此相連的不規則通道。作者指出溫度來回擺動比恆溫儲存的變粗速度高得多；未凍相在維持結構上扮演重要角色。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "作者接受稿，非出版社排版版；只一種配方（5% 脂肪，低於美國冰淇淋 10% 標準）；樣品為 3 mm 小管，循環幅度刻意放大。",
+      "access_notes": "作者原記的 eprint 首頁（identity_urls）2026-11-11 對一般請求回 Cloudflare『Just a moment』挑戰頁（403）；同站的直接 PDF 連結一般請求就是 200，覆核 V8 下載檔與作者快取 sha256 相同，所以是正常取得，來源網址改記直接 PDF。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f5src/ucl_icecream.pdf",
+        "sha256_prefix": "7ccf1b06c7cbfdb3",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "H55-001",
+      "question": "牛奶、鮮奶油、冰淇淋、奶油，乳脂到底差多少？",
+      "domain": "食品科學",
+      "mechanism_key": "dairy.fat_content_legal_ladder_us",
+      "answer_target": "以美國標準為例：飲用乳乳脂至少 3.25%；淡奶油 18% 到未滿 30%，打發用 30% 到未滿 36%，重奶油至少 36%；冰淇淋乳脂至少 10%；奶油至少 80%。威斯康辛大學乳品研究中心說奶油典型是脂肪 80–82%、水 16–17.5%，做奶油用的鮮奶油脂肪約 35–40%。從牛奶到奶油，脂肪從百分之三多一路變成八成。",
+      "scope": "美國法規下限，不代表台灣；奶油組成為典型值。",
+      "source_ids": [
+        "H55-S001",
+        "H55-S002",
+        "H55-S003",
+        "H55-S004"
+      ],
+      "source_locator": "S001 §131.110(a)、§131.150–157(a)；S002 §135.110(a)(2)；S003 條文；S004 第2–3段",
+      "premise_status": "screened",
+      "notes": "G25 開場或第一章的數字骨架（審查缺『各自的脂肪比例數字』）；原角色 hook。CDR 為池內既有來源，本次重讀，只取組成數字。 原提案 F5-017。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照原稿收；照錄；美國標準要標明。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一種脂肪，從 3% 到 80%，但差別不只是多寡，還有排列。",
+        "visual": "四個容器一字排開，乳脂比例長條 3.25 → 36 → 10 → 80；冰淇淋那格特意比鮮奶油低。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "H55-002",
+      "question": "冰淇淋裡有一半是空氣，法律怎麼管？貴的冰淇淋反而空氣比較少？",
+      "domain": "食品科學",
+      "mechanism_key": "dairy.ice_cream.overrun_legal_weight_floor_categories",
+      "answer_target": "打氣量（overrun）是混料打進空氣後體積增加的比例，以重量算就是（混料重減成品重）除以成品重；以體積計，空氣常是冰淇淋最大的成分。美國標準規定冰淇淋每加侖至少重 4.5 磅、固形物至少 1.6 磅，等於限制了最多能打多少氣。依 Goff 與 Hartel 的概略分級，經濟型打到法定上限，標準型 100–120%，高級 60–90%，超高級只有 25–50%。",
+      "scope": "美國法規與業界概略分級；不推論營養或價格因果。",
+      "source_ids": [
+        "H55-S005",
+        "H55-S002"
+      ],
+      "source_locator": "S005 §2.1.2 式(2.1) 與 Table 2.2；S002 §135.110(a)(2)",
+      "premise_status": "screened",
+      "notes": "G25『再加進冰與空氣』章，取代來源未實讀的 D2040；原角色 turn（越貴空氣越少）。 原提案 F5-018。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照原稿收；照錄。取代來源未實讀的 D2040；",
+      "editorial": {
+        "role": "segment",
+        "payoff": "空氣是冰淇淋的原料之一，而且是用秤管著的。",
+        "visual": "兩盒同體積的冰淇淋放上秤，一盒輕一盒重；剖面圖顯示氣泡多寡不同。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "H55-003",
+      "question": "冰淇淋原料混好，為什麼要先冰一整晚才拿去打？",
+      "domain": "食品科學",
+      "mechanism_key": "dairy.ice_cream.mix_ageing_fat_crystallization",
+      "answer_target": "混料均質後冷到 4 °C 熟成 4 到 24 小時：這段時間脂肪開始結晶，乳化劑取代脂肪球表面原本的蛋白質，安定劑吸水讓混料變稠；這些變化讓脂肪球在之後的攪拌冷凍中比較容易局部黏在一起（部分聚結）。沒熟成好，冰淇淋容易塌、融得快。",
+      "scope": "工業條件；家庭製作不另推論。",
+      "source_ids": [
+        "H55-S005"
+      ],
+      "source_locator": "S005 §2.2.3",
+      "premise_status": "screened",
+      "notes": "G25『再加進冰與空氣』章前段，給 D2041 熟成一個實讀來源；原角色 chapter_core。 原提案 F5-019。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照原稿收；答案和既有的 D2041 相同（D2041 未被任何 ready 題或 POOL_SUPPORT 使用）；H55-003 是它的實讀版本，G25 用 H55-003，不可再加 D2041。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "打之前先讓脂肪『半凝固』，它才抓得住空氣。",
+        "visual": "脂肪球內部從液態慢慢長出小晶體，表面的蛋白質被小分子乳化劑擠走。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "H55-004",
+      "question": "冰淇淋從機器出來已經能吃，為什麼裡面只有一半的水結冰？",
+      "domain": "食品科學",
+      "mechanism_key": "dairy.ice_cream.scraped_surface_freezing_partial_coalescence",
+      "answer_target": "冰淇淋機的桶外有 −22 到 −32 °C 的冷媒，水先在桶壁結冰，刮刀一邊把冰刮下拌進中間，一邊打入空氣；攪拌時部分脂肪球黏在一起成團，幫忙撐住小氣泡。出機時約 −5 到 −6 °C，糖等溶質讓凝固點下降，只有約一半的水結冰，所以還是軟的；再放進 −25 到 −30 °C 硬化 12 到 24 小時，才有約 95% 的水結冰。",
+      "scope": "工業製程典型值；不教設備操作。",
+      "source_ids": [
+        "H55-S005"
+      ],
+      "source_locator": "S005 §2.1.3、§2.2.4、§2.2.5、§2.3",
+      "premise_status": "screened",
+      "notes": "G25『再加進冰與空氣』章主體，取代來源未實讀的 D2042；原角色 chapter_core。 原提案 F5-020。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照覆核意見改字後收；只改一個原文沒有的比喻。取代 D2042，且已含 D2043（硬化）的答案，兩者都不可再加。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冰淇淋是半結冰的東西：冰、空氣、脂肪網和一灘濃糖水。",
+        "visual": "冷凍桶剖面：桶壁長出冰層、刮刀刮下；一個水分子計數器 50% → 95%。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "H55-005",
+      "question": "冰淇淋吃起來滑不滑，冰晶要小到幾微米？",
+      "domain": "食品科學",
+      "mechanism_key": "dairy.ice_cream.ice_crystal_size_smoothness_stabilizer",
+      "answer_target": "冰晶在出機時平均 15 到 30 微米，硬化後長到 35 到 45 微米；多數冰晶小於約 50 微米吃起來才滑，大量超過 50 微米或出現 100 微米以上就會粗粗冰冰的。安定劑（約 0.25% 到 1%）讓未結冰的糖液變稠，延緩儲存時冰晶長大。",
+      "scope": "典型值，轉引 Goff & Hartel；不推論特定品牌。",
+      "source_ids": [
+        "H55-S005"
+      ],
+      "source_locator": "S005 §2.1.3、§2.1.6、§2.3.2",
+      "premise_status": "screened",
+      "notes": "G25『放回冰箱為什麼也可能變粗』章的數字門檻，替 D2045 補實讀來源；原角色 chapter_core。 原提案 F5-021。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照覆核意見改字後收；刪掉來源沒有的半句；『擋不住溫度來回』由 H55-006 的實驗承擔。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "滑順與粗糙的分界線大約是 50 微米。",
+        "visual": "尺標上 15、30、45、50、100 µm 的冰晶圓點；舌頭剖面示意在 50 µm 處變色。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "H55-006",
+      "question": "冰淇淋拿出來又放回冰箱，裡面的冰晶和氣泡到底怎麼變？",
+      "domain": "食品科學",
+      "mechanism_key": "dairy.ice_cream.thermal_cycling_recrystallization_air_coalescence_tomography",
+      "answer_target": "曼徹斯特大學與 Unilever 用同步輻射 X 光斷層，即時看一塊 5% 脂肪的冰淇淋在 −15 與 −5 °C 之間升降溫：冰晶平均直徑從 101 微米縮到 87 微米，冷回去又長到約 103 微米，一圈淨長約 2 微米，因為小冰晶先融、水再結到大冰晶上；氣泡則是相鄰的合併變大。他們先前的實驗中，循環到 14 次冰晶持續變大，氣泡在 7 次前大致還是球形，14 次後長成彼此相連的通道。溫度來回擺動比一直放在同一溫度變粗得快。",
+      "scope": "單一配方（5% 脂肪，低於美國冰淇淋標準）；循環幅度為實驗放大；作者接受稿。",
+      "source_ids": [
+        "H55-S006"
+      ],
+      "source_locator": "S006 摘要；引言第4段；§3.2 Fig.5 敘述；結論",
+      "premise_status": "screened",
+      "notes": "G25 最後一章的轉折：變粗不是放久而已，是溫度來回；原角色 turn。與 D2045 的安定劑核心互補，不重計安定劑。 原提案 F5-022。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V8（2026-11-11）照原稿收；照錄。來源紀錄要改：H55-S006 記的網址是 eprint 首頁，那頁今天對一般請求回 Cloudflare 挑戰頁（403）；",
+      "editorial": {
+        "role": "segment",
+        "payoff": "每開一次冷凍庫，冰晶就偷偷長大一點。",
+        "visual": "3D 斷層渲染：冰晶在升溫時變藍變小、降溫時變紅變大；氣泡兩兩合併成通道。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "H55-NA001",
+      "question": "冰淇淋為什麼要打進空氣、刮桶壁、加安定劑仍會變粗？（密西根化工百科）",
+      "existing_ids": [
+        "D2040",
+        "D2042",
+        "D2045"
+      ],
+      "source_ids": [],
+      "reason": "encyclopedia.che.engin.umich.edu 仍 403；Guelph 電子書冰淇淋章 403。改由 Warren 2015（Hartel 實驗室）與 Guo 等的斷層掃描論文支持，見 H55-002～H55-006。 原提案 F5-NA003。",
+      "reentry_condition": "兩站可正常開啟時作第二來源。",
+      "reading_status": "未讀（403）"
+    }
+  ]
+}

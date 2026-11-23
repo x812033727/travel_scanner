@@ -8,11 +8,14 @@ import ArticleSearchPage, { generateMetadata } from "./page";
  * and keeping every result set reachable without JavaScript.
  */
 
-const mocks = vi.hoisted(() => ({ search: vi.fn(), topics: vi.fn(), series: vi.fn() }));
+const mocks = vi.hoisted(() => ({ search: vi.fn(), topics: vi.fn(), series: vi.fn(), trending: vi.fn() }));
 vi.mock("@/components/site-header", () => ({ SiteHeader: () => null }));
 vi.mock("@/lib/guides.server", async (original) => ({
   ...await original<typeof import("@/lib/guides.server")>(),
-  getGuideSearch: mocks.search, getGuideTopics: mocks.topics, getSeriesIndex: mocks.series,
+  getGuideSearch: mocks.search,
+  getGuideTopics: mocks.topics,
+  getSeriesIndex: mocks.series,
+  getTrendingGuides: mocks.trending,
 }));
 
 const hit = (slug: string, title: string, kind: "intel" | "howto" | "life" = "howto") => ({
@@ -34,6 +37,7 @@ beforeEach(() => {
   mocks.search.mockResolvedValue(answer());
   mocks.topics.mockResolvedValue([]);
   mocks.series.mockResolvedValue([]);
+  mocks.trending.mockResolvedValue({ articles: [], next_cursor: null, available: true });
 });
 afterEach(cleanup);
 
@@ -98,14 +102,21 @@ describe("/search/articles", () => {
     expect(screen.queryByRole("navigation", { name: "結果分頁" })).toBeNull();
   });
 
-  it("says nothing matched and offers the topics and series to browse instead", async () => {
+  it("says nothing matched and offers trending, topics and series to browse instead", async () => {
     mocks.search.mockResolvedValue(answer({ total: 0, results: [] }));
+    mocks.trending.mockResolvedValue({
+      articles: [hit("esim-guide", "日本 eSIM 怎麼選", "howto")],
+      next_cursor: null,
+      available: true,
+    });
     mocks.topics.mockImplementation(async (_locale: string, section: string) => section === "travel"
       ? [{ slug: "transport", label: "交通", section: "travel", parent: null, count: 3 }, { slug: "beach", label: "海灘", parent: null, count: 0 }]
       : [{ slug: "ai", label: "AI", section: "life", parent: null, count: 5 }, { slug: "ai-terms", label: "名詞", parent: "ai", count: 2 }]);
     mocks.series.mockResolvedValue([{ slug: "codex", section: "life", hub: { kind: "life", slug: "codex-hub", title: "Codex 教學" }, source: "api-series", topic: "ai", entries: 20 }]);
     render(await page({ q: "zzz" }));
     expect(screen.getByRole("heading", { level: 2, name: "找不到符合「zzz」的文章。" })).toBeTruthy();
+    expect(within(screen.getByTestId("search-trending-section")).getByRole("link", { name: /日本 eSIM 怎麼選/ }).getAttribute("href"))
+      .toBe("/guides/howto/esim-guide");
     expect(screen.getByRole("link", { name: /交通/ }).getAttribute("href")).toBe("/guides/topics/transport");
     expect(screen.getByRole("link", { name: /^AI/ }).getAttribute("href")).toBe("/ai");
     // Only top-level topics with something under them.
@@ -134,5 +145,24 @@ describe("/search/articles", () => {
     expect(screen.getByRole("search")).toBeTruthy();
     expect(screen.getByText("輸入關鍵字開始搜尋，或先從主題與系列瀏覽。")).toBeTruthy();
     expect(screen.getAllByRole("link", { name: /^AI/ }).length).toBeGreaterThan(0);
+  });
+
+  it("passes optional topic and sort=latest to the search API and preserves them on sort/pagination links", async () => {
+    mocks.search.mockResolvedValue(answer({ total: 25, offset: 0, next_offset: 10 }));
+    render(await page({ q: "Gemini教學", section: "life", topic: "ai-news", sort: "latest" }));
+    expect(mocks.search).toHaveBeenCalledWith("zh-TW", {
+      q: "Gemini教學",
+      section: "life",
+      topic: "ai-news",
+      sort: "latest",
+      offset: 0,
+    });
+    const sortNav = screen.getByRole("navigation", { name: "排序" });
+    expect(within(sortNav).getByRole("link", { name: "最新發布" }).getAttribute("aria-current")).toBe("page");
+    expect(within(sortNav).getByRole("link", { name: "關聯度優先" }).getAttribute("href"))
+      .toBe("/search/articles?q=Gemini%E6%95%99%E5%AD%B8&section=life&topic=ai-news");
+    const pagination = screen.getByRole("navigation", { name: "結果分頁" });
+    expect(within(pagination).getByRole("link", { name: "下一頁" }).getAttribute("href"))
+      .toBe("/search/articles?q=Gemini%E6%95%99%E5%AD%B8&section=life&topic=ai-news&sort=latest&offset=10");
   });
 });

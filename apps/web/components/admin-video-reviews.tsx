@@ -12,19 +12,26 @@ import {
   useRefresh, useWhen, NARRATION_LOCALES, youtubeSyncStuck,
 } from "@/components/admin-video-review-card";
 import { DeleteVideo } from "@/components/admin-video-delete";
+import { ShortManualUpload } from "@/components/admin-video-manual-upload";
 import { AdminVideoSeries, DocPanel, type Series } from "@/components/admin-video-series";
 import { AdminVideoSettings } from "@/components/admin-video-settings";
 import { AdminVideoRenewal } from "@/components/admin-video-renewal";
 import { AdminVideoShorts } from "@/components/admin-video-shorts";
 import { AdminVideoPlans } from "@/components/admin-video-plans";
+import { AdminVideoPools } from "@/components/admin-video-pools";
+import { AdminVideoDramas } from "@/components/admin-video-dramas";
+import { canRecordShortUpload, handPushedShort, ShortLinkForm } from "@/components/admin-video-short-link";
 import { stateTone } from "@/components/admin-video-shorts-data";
 import { SlidesRequests } from "@/components/admin-video-slides-requests";
 import { DiscussionThread, scriptSubject } from "@/components/admin-video-thread";
+import { UnlinkYoutube } from "@/components/admin-video-unlink-youtube";
 import { syncRunning, useYoutubeConnection, YoutubeChannelCard, type YoutubeConnection, YoutubeLinkHint, YoutubePublishForm, YoutubeSyncPanel } from "@/components/admin-video-youtube";
 import { Button, Tabs } from "@/components/community/ui";
 import { useAdminQueryState, useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { api } from "@/lib/api";
 import { videoPlansCopy } from "@/lib/video-plans-copy";
+import { videoPoolsCopy } from "@/lib/video-pools-copy";
+import { videoDramasCopy } from "@/lib/video-dramas-copy";
 
 // The review card, the gate bodies and the shared types live in admin-video-review-card.tsx;
 // these two are re-exported so older imports keep working. The drama tab (series and one-off
@@ -435,6 +442,8 @@ function ProjectDetail({ slug, onBack, onOpen }: { slug: string; onBack: () => v
   // a drama Short, cut from an episode, may carry that episode's languages as its own.
   const short = Boolean(project?.shorts_line);
   const ownLanguages = !short || project?.shorts_line === "drama";
+  // The owner uploads a hand-pushed Short: the page offers nothing that sends it to YouTube.
+  const handPushed = project ? handPushedShort(project) : false;
   // The owner may upload the final cut as private as soon as the upload confirmation is approved;
   // only its scheduling waits for the languages (docs/videos/LANGUAGES.md).
   return <section className="mt-6 grid gap-5">
@@ -467,15 +476,18 @@ function ProjectDetail({ slug, onBack, onOpen }: { slug: string; onBack: () => v
       </section>}
       <RetryVideo project={project} canManage={manage.allowed} onRequested={load} />
       <AdminVideoRenewal key={project.slug} project={project} canManage={manage.allowed} onSubmitted={load} />
+      {manage.allowed && <UnlinkYoutube project={project} onUnlinked={load} />}
       {project.youtube_sync && <YoutubeSyncPanel slug={slug} sync={project.youtube_sync} canManage={manage.allowed && !dropped} onChange={load} />}
-      {readyToUpload(project) && manage.allowed && <SendToYoutube slug={slug} confirmation={approvedPackage(project.reviews)} connection={connection} sync={project.youtube_sync} mp4Gone={retired} onSent={load} />}
+      {readyToUpload(project) && !handPushed && manage.allowed && <SendToYoutube slug={slug} confirmation={approvedPackage(project.reviews)} connection={connection} sync={project.youtube_sync} mp4Gone={retired} onSent={load} />}
       {pendingFinal && !dropped && !short && !project.youtube_video_id && !approvedPackage(project.reviews) && !syncRunning(project.youtube_sync) && connection?.linked && manage.allowed
         && <UploadedForm slug={slug} onLinked={load} privateOnly />}
-      {project.youtube_video_id && !dropped && manage.allowed && connection?.linked && approvedPackage(project.reviews) && !syncRunning(project.youtube_sync) && <details className="rounded-2xl border border-[var(--line)] p-4">
+      {project.youtube_video_id && !handPushed && !dropped && manage.allowed && connection?.linked && approvedPackage(project.reviews) && !syncRunning(project.youtube_sync) && <details className="rounded-2xl border border-[var(--line)] p-4">
         <summary className="cursor-pointer font-bold">{ty("resendTitle")}</summary>
         <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{ty("resendHelp")}</p>
         <div className="mt-3"><YoutubePublishForm key={project.youtube_sync?.finished_at ?? "resend"} slug={slug} review={approvedPackage(project.reviews)} connection={connection} canUpload={false} videoId={project.youtube_video_id} previous={project.youtube_sync?.request ?? null} onSent={load} /></div>
       </details>}
+      {short && !project.youtube_video_id && <ShortManualUpload project={project} />}
+      {manage.allowed && canRecordShortUpload(project) && <ShortLinkForm key={slug} project={project} onLinked={load} />}
       {!dropped && ownLanguages && <LanguagePanel slug={slug} project={project} canManage={manage.allowed} onSaved={load} />}
       {live.length === 0 && !dropped && <p className="text-[var(--muted)]">{t("noPending")}</p>}
       {live.map((review) => <ReviewCard key={review.id} slug={slug} review={review} canManage={manage.allowed && !dropped} onDecided={load} mp4Gone={retired} discussion={discussion(review)} vertical={short} />)}
@@ -600,21 +612,25 @@ function ProjectList({ onOpen }: { onOpen: (slug: string) => void }) {
   </div>;
 }
 
-const TABS = ["reviews", "drama", "shorts", "settings", "plans"] as const;
+const TABS = ["reviews", "drama", "shorts", "settings", "plans", "pools", "scripts"] as const;
 
 export function AdminVideoReviews() {
   const t = useTranslations("admin.videoReviews");
   const plans = videoPlansCopy(useLocale());
+  const pools = videoPoolsCopy(useLocale());
+  const scripts = videoDramasCopy(useLocale());
   const [slug, setSlug] = useAdminQueryValue("video", "", (value) => SLUG.test(value));
   const [tab, setTab] = useAdminQueryState("tab", TABS, "reviews");
   if (slug) return <ProjectDetail slug={slug} onBack={() => setSlug("")} onOpen={setSlug} />;
   return <div className="mt-6">
     <Tabs value={tab} onChange={(value) => setTab(value as (typeof TABS)[number])} label={t("tabsLabel")}
-      items={[{ value: "reviews", label: t("tabReviews") }, { value: "drama", label: t("tabDrama") }, { value: "shorts", label: t("tabShorts") }, { value: "settings", label: t("tabSettings") }, { value: "plans", label: plans.tab }]}>
+      items={[{ value: "reviews", label: t("tabReviews") }, { value: "drama", label: t("tabDrama") }, { value: "shorts", label: t("tabShorts") }, { value: "settings", label: t("tabSettings") }, { value: "plans", label: plans.tab }, { value: "pools", label: pools.tab }, { value: "scripts", label: scripts.tab }]}>
       {tab === "reviews" && <ProjectList onOpen={setSlug} />}
       {tab === "drama" && <AdminVideoSeries onOpenVideo={setSlug} />}
       {tab === "shorts" && <AdminVideoShorts onOpenVideo={setSlug} />}
       {tab === "plans" && <AdminVideoPlans />}
+      {tab === "pools" && <AdminVideoPools />}
+      {tab === "scripts" && <AdminVideoDramas />}
       {tab === "settings" && <><div className="mt-6"><YoutubeChannelCard /></div><AdminVideoSettings /></>}
     </Tabs>
   </div>;

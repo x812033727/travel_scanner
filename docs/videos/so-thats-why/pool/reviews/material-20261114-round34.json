@@ -1,0 +1,3128 @@
+{
+  "reviewed_on": "2026-11-14",
+  "round": 34,
+  "previous_round": "docs/videos/so-thats-why/pool/reviews/material-20261114-round33.json",
+  "owner_instruction": [
+    "繼續擴充奇聞跟原來如此的池",
+    "整個結束後繼續再跑四輪"
+  ],
+  "bar": "同前幾輪：可成題要有至少 8.5 分鐘素材（≥11.4 條加權事實）與兩個改變結論的轉折；只算有可讀紀錄的外部全文來源；只讀到摘要或簡報的不計；來源必須循公開連結取得；直接合著即併入同一研究網、每網封頂 2.0。可成題長題另要經獨立觀眾初評、改寫、複評且 ≥ 6.5。",
+  "method": "第三十四輪：在 5,181 題存檔點上續跑，針對入選核心與可成題長題數最少的四個分類，由四位作者（F164–F167）動筆前先以 JATS 作者群＋Europe PMC（Crossref 可用時補查）逐對確認研究網互不合著，再從零研究四個新長題；四位未參與撰寫的獨立覆核者（V184–V187）核對請求紀錄與快取雜湊、重抓全文、重拆作者群複查合著、逐卡對全文並重算分鐘，覆核結論優先。通過素材審視的四題再經獨立觀眾初評（A3）、改寫（W2）、複評（A4）。上一輪覆核抓到的通病已寫進本輪作者工作單。",
+  "policies": {
+    "source_access": "新來源循 Europe PMC REST JATS XML 全文取得，請求帶 Mokaair-editorial/1.0、不帶個人資訊。本輪 Europe PMC 全文端點大面積回 HTTP 500／503（非 429／403）：作者 F164 有 5 篇、F165 有 2 篇改由 NCBI efetch 取得同一份 PMC JATS，來源的 url／read_via 寫的是實際成功的網址；F164 之後在 eutils.ncbi.nlm.nih.gov 首遇 429 即停，覆核者都沒有再碰該主機。作者對 5xx 的重試偏多（F165、F166 對單一編號最多三次；F164 有一段連續 12 筆 503 沒有中途停），照實記錄，下一輪工作單改為 5xx 最多重試一次。覆核重抓：V184 取得 5 篇（工作單要求至少 6 篇）、V185 8 篇、V186 8 篇、V187 9 篇位元組與 SHA-256 相同或逐字相符，其餘以作者快取核對。V187 的重抓腳本被中止後仍在執行，與重啟的程序重疊約一分鐘，兩篇各被請求三次，超出「最多重試一次」，已寫進其紀錄。",
+    "common": "不做健康醫療與食安建議、不教危險或明火自製實驗、不教人分辨或挑選商品、不出現商用品牌與型號、不出現在世或 1956 年後過世學者的姓名與冠名；畫面描述不放文字、數字與人物面孔。",
+    "ready_conditions": "見 new_themes 與各題 material；四組都過 8.50 分素材門檻（8.94–9.33 分），餘裕比上一輪薄。",
+    "close_or_split": "無素材後備題。退回三張卡：F164-008（沒有結晶量測）、F165-010（依變項全是疼痛）、F166-014（建立在明火做法上）。"
+  },
+  "counts": {
+    "research_proposals": 59,
+    "research_sources_read": 59,
+    "cores_added": 56,
+    "cores_rejected": 3,
+    "verdicts": {
+      "ADOPT_WITH_CHANGES": 48,
+      "ADOPT": 8,
+      "REJECT": 3
+    },
+    "not_added_records": 33,
+    "targets_ready": [
+      "G653",
+      "G654",
+      "G655",
+      "G656"
+    ],
+    "targets_reserve": [],
+    "ready_long_themes_before_after": [
+      99,
+      103
+    ],
+    "pool_selected_before_after": [
+      5181,
+      5237
+    ],
+    "themes_before_after": [
+      652,
+      656
+    ]
+  },
+  "core_id_mapping": {
+    "F164-001": "K84-001",
+    "F164-002": "K84-002",
+    "F164-003": "K84-003",
+    "F164-004": "K84-004",
+    "F164-005": "K84-005",
+    "F164-006": "K84-006",
+    "F164-007": "K84-007",
+    "F164-009": "K84-008",
+    "F164-010": "K84-009",
+    "F164-011": "K84-010",
+    "F164-012": "K84-011",
+    "F164-013": "K84-012",
+    "F164-014": "K84-013",
+    "F165-001": "H84-001",
+    "F165-002": "H84-002",
+    "F165-003": "H84-003",
+    "F165-004": "H84-004",
+    "F165-005": "H84-005",
+    "F165-006": "H84-006",
+    "F165-007": "H84-007",
+    "F165-008": "H84-008",
+    "F165-009": "H84-009",
+    "F165-011": "H84-010",
+    "F165-012": "H84-011",
+    "F165-013": "H84-012",
+    "F165-014": "H84-013",
+    "F165-015": "H84-014",
+    "F166-001": "T84-001",
+    "F166-002": "T84-002",
+    "F166-003": "T84-003",
+    "F166-004": "T84-004",
+    "F166-005": "T84-005",
+    "F166-006": "T84-006",
+    "F166-007": "T84-007",
+    "F166-008": "T84-008",
+    "F166-009": "T84-009",
+    "F166-010": "T84-010",
+    "F166-011": "T84-011",
+    "F166-012": "T84-012",
+    "F166-013": "T84-013",
+    "F166-015": "T84-014",
+    "F167-001": "T84-015",
+    "F167-002": "T84-016",
+    "F167-003": "T84-017",
+    "F167-004": "T84-018",
+    "F167-005": "T84-019",
+    "F167-006": "T84-020",
+    "F167-007": "T84-021",
+    "F167-008": "T84-022",
+    "F167-009": "T84-023",
+    "F167-010": "T84-024",
+    "F167-011": "T84-025",
+    "F167-012": "T84-026",
+    "F167-013": "T84-027",
+    "F167-014": "T84-028",
+    "F167-015": "T84-029"
+  },
+  "rejected_core_mapping": {
+    "F164-008": "退回（見未收紀錄）",
+    "F165-010": "退回（見未收紀錄）",
+    "F166-014": "退回（見未收紀錄）"
+  },
+  "source_id_mapping": {
+    "F164-S001": [
+      "K84-S001"
+    ],
+    "F164-S002": [
+      "K84-S002"
+    ],
+    "F164-S003": [
+      "K84-S003"
+    ],
+    "F164-S004": [
+      "K84-S004"
+    ],
+    "F164-S005": [
+      "K84-S005"
+    ],
+    "F164-S006": [
+      "K84-S006"
+    ],
+    "F164-S007": [
+      "K84-S007"
+    ],
+    "F164-S009": [
+      "K84-S008"
+    ],
+    "F164-S010": [
+      "K84-S009"
+    ],
+    "F164-S011": [
+      "K84-S010"
+    ],
+    "F164-S012": [
+      "K84-S011"
+    ],
+    "F164-S013": [
+      "K84-S012"
+    ],
+    "F164-S014": [
+      "K84-S013"
+    ],
+    "F165-S001": [
+      "H84-S001"
+    ],
+    "F165-S002": [
+      "H84-S002"
+    ],
+    "F165-S003": [
+      "H84-S003"
+    ],
+    "F165-S004": [
+      "H84-S004"
+    ],
+    "F165-S005": [
+      "H84-S005"
+    ],
+    "F165-S006": [
+      "H84-S006"
+    ],
+    "F165-S007": [
+      "H84-S007"
+    ],
+    "F165-S008": [
+      "H84-S008"
+    ],
+    "F165-S009": [
+      "H84-S009"
+    ],
+    "F165-S011": [
+      "H84-S010"
+    ],
+    "F165-S012": [
+      "H84-S011"
+    ],
+    "F165-S013": [
+      "H84-S012"
+    ],
+    "F165-S014": [
+      "H84-S013"
+    ],
+    "F165-S015": [
+      "H84-S014"
+    ],
+    "F166-S001": [
+      "T84-S001"
+    ],
+    "F166-S002": [
+      "T84-S002"
+    ],
+    "F166-S003": [
+      "T84-S003"
+    ],
+    "F166-S004": [
+      "T84-S004"
+    ],
+    "F166-S005": [
+      "T84-S005"
+    ],
+    "F166-S006": [
+      "T84-S006"
+    ],
+    "F166-S007": [
+      "T84-S007"
+    ],
+    "F166-S008": [
+      "T84-S008"
+    ],
+    "F166-S009": [
+      "T84-S009"
+    ],
+    "F166-S010": [
+      "T84-S010"
+    ],
+    "F166-S011": [
+      "T84-S011"
+    ],
+    "F166-S012": [
+      "T84-S012"
+    ],
+    "F166-S013": [
+      "T84-S013"
+    ],
+    "F166-S015": [
+      "T84-S014"
+    ],
+    "F167-S001": [
+      "T84-S015"
+    ],
+    "F167-S002": [
+      "T84-S016"
+    ],
+    "F167-S003": [
+      "T84-S017"
+    ],
+    "F167-S004": [
+      "T84-S018"
+    ],
+    "F167-S005": [
+      "T84-S019"
+    ],
+    "F167-S006": [
+      "T84-S020"
+    ],
+    "F167-S007": [
+      "T84-S021"
+    ],
+    "F167-S008": [
+      "T84-S022"
+    ],
+    "F167-S009": [
+      "T84-S023"
+    ],
+    "F167-S010": [
+      "T84-S024"
+    ],
+    "F167-S011": [
+      "T84-S025"
+    ],
+    "F167-S012": [
+      "T84-S026"
+    ],
+    "F167-S013": [
+      "T84-S027"
+    ],
+    "F167-S014": [
+      "T84-S028"
+    ],
+    "F167-S015": [
+      "T84-S029"
+    ]
+  },
+  "not_added_mapping": {
+    "F164-NA001": "K84-NA001",
+    "F164-NA002": "K84-NA002",
+    "F164-NA003": "K84-NA003",
+    "F164-NA004": "K84-NA004",
+    "F164-NA005": "K84-NA005",
+    "F164-NA006": "K84-NA006",
+    "F164-NA007": "K84-NA007",
+    "F164-NA008": "K84-NA008",
+    "F164-NA009": "K84-NA009",
+    "F165-NA001": "H84-NA001",
+    "F165-NA002": "H84-NA002",
+    "F165-NA003": "H84-NA003",
+    "F165-NA004": "H84-NA004",
+    "F165-NA005": "H84-NA005",
+    "F165-NA006": "H84-NA006",
+    "F165-NA007": "H84-NA007",
+    "F165-NA008": "H84-NA008",
+    "F165-NA009": "H84-NA009",
+    "F166-NA001": "T84-NA001",
+    "F166-NA002": "T84-NA002",
+    "F166-NA003": "T84-NA003",
+    "F166-NA004": "T84-NA004",
+    "F166-NA005": "T84-NA005",
+    "F166-NA006": "T84-NA006",
+    "F166-NA007": "T84-NA007",
+    "F167-NA001": "T84-NA008",
+    "F167-NA002": "T84-NA009",
+    "F167-NA003": "T84-NA010",
+    "F167-NA004": "T84-NA011",
+    "F167-NA005": "T84-NA012",
+    "F167-NA006": "T84-NA013",
+    "F167-NA007": "T84-NA014",
+    "F167-NA008": "T84-NA015"
+  },
+  "new_themes": [
+    {
+      "id": "G653",
+      "proposal_id": "F164-T1",
+      "category": "飲食與廚房科學",
+      "title": "蜂蜜變白變硬，是被摻了糖嗎？",
+      "target_minutes": 9.0,
+      "est_minutes": 8.94,
+      "audience_first": 8.8,
+      "audience_rescored": 8.97,
+      "audience_adopted_rewrite": true,
+      "audience_final": 8.97
+    },
+    {
+      "id": "G654",
+      "proposal_id": "F165-T1",
+      "category": "人體感官與日常行為",
+      "title": "兩個都不燙，放在一起為什麼變熱？",
+      "target_minutes": 9.0,
+      "est_minutes": 9.33,
+      "audience_first": 8.5,
+      "audience_rescored": 9.18,
+      "audience_adopted_rewrite": true,
+      "audience_final": 9.18
+    },
+    {
+      "id": "G655",
+      "proposal_id": "F166-T1",
+      "category": "建築交通與商業制度",
+      "title": "粗木頭燒起來外面焦黑、裡面還白，那層炭擋住了什麼、又在哪裡擋不住？",
+      "target_minutes": 9.0,
+      "est_minutes": 9.07,
+      "audience_first": 6.8,
+      "audience_rescored": 6.17,
+      "audience_adopted_rewrite": false,
+      "audience_final": 6.8
+    },
+    {
+      "id": "G656",
+      "proposal_id": "F167-T1",
+      "category": "數位科技與通訊工程",
+      "title": "LED 電開越大越偷懶，兇手是誰？",
+      "target_minutes": 9.5,
+      "est_minutes": 9.07,
+      "audience_first": 4.7,
+      "audience_rescored": 6.58,
+      "audience_adopted_rewrite": true,
+      "audience_final": 6.58
+    }
+  ],
+  "reserve_records": {},
+  "reviews_summary": {
+    "V184": {
+      "report_id": "wave84-food-F164-V184-review-20261114",
+      "reviewed_on": "2026-11-14",
+      "round": 34,
+      "wave": "wave84",
+      "reviewer": "V184",
+      "author": "F164",
+      "category": "飲食與廚房科學",
+      "proposal_id": "F164-T1",
+      "verdict": "ready",
+      "title_author": "蜂蜜放久了整罐變白變硬，是壞了、摻了糖，還是它本來就會這樣？",
+      "title_reviewed": "蜂蜜放久了整罐變白變硬，是摻了糖，還是它本來就會這樣？",
+      "author_networks": 13,
+      "reviewer_networks": 12,
+      "author_fact_count": 13.75,
+      "author_minutes": 9.72,
+      "recount_fact_count": 12.25,
+      "recount_minutes": 8.94,
+      "target_minutes": 9.0,
+      "chapter_seconds_total": 540,
+      "minutes_formula": "(12.25 * 140 + 700) / 270 = 2415 / 270 = 8.94444 -> 8.94 (>= 8.50 min ready threshold; weighted_facts 12.25 >= 11.4)",
+      "turning_points": [
+        "轉折一：「結晶＝摻糖」在受控對照裡反了——同一款蜂蜜沒摻的整罐結晶，摻了 5%–30% 糖漿的反而只部分結晶並分層（K84-004；配合 K84-003 的洋槐蜜與油菜蜜對比）",
+        "轉折二：晶體溶得回去，但加熱留下量得到的改變——把結晶蜜溶回液體的兩篇已看到受熱指標、顏色與微量成分的變化（K84-006、K84-007）；另兩篇未量結晶的加熱研究顯示受熱指標在存放中繼續上升、40 °C 的溫和加熱也分得出來（K84-008、K84-009）"
+      ],
+      "sensitivity_notes": "基準核定：12 個研究網、12.25 條、8.94 分鐘（高於門檻 +0.44 分鐘，即 +0.85 條餘裕），排片由 9.5 分鐘（570 秒）改為 9.0 分鐘（540 秒）。V184 已做的調整：F164-008 整張剔除（離題且重複，−1.00）；K84-006（論文內部多處不一致）與 K84-009（統計分類模型為主、假重複、測試組小）各由 1.00 折為 0.75（−0.50）；K84-005 維持作者自折的 0.75；合著複查無併網。敏感度測試：（1）K84-S006 與 K84-S013 若日後查到合著而併網 → 0.75 + 1.00 = 1.75，仍在封頂內，12.25 條不變；（2）再把報告品質普通的 K84-003（標準差不合理、文字與表格不一致）、K84-010（單位前後不一、樣品 3 g）、K84-013（未報告蜂蜜組成、對照說法前後不一）各折 0.25 → 11.50 條＝8.56 分鐘，勉強過；（3）在（2）之上再折任何一張 0.25 → 11.25 條＝8.43 分鐘，不過線；（4）單獨把未量結晶的間接卡 K84-011（黏度）或 K84-008（加熱後存放）整張剔除 → 11.25 條＝8.43 分鐘，低於門檻 0.15 條，改列 reserve；單獨剔除 K84-009（0.75）→ 11.50 條＝8.56 分鐘，仍過；（5）只算「直接量到結晶或溶晶」的卡（K84-001、002、003、004、005、006、007、011、013、014）為 9.50 條＝7.52 分鐘，本題要靠三張間接卡（009、010、012，共 2.75 條）才過線；（6）反向：若協調者認為 F164-008 不算離題而恢復為 1.00 → 13.25 條＝9.46 分鐘。判讀：ready，但餘裕很薄，結論對「間接卡算不算數」敏感。補強最有效的是一篇獨立研究網、直接比較不同存放溫度下結晶快慢或逐日追蹤結晶度的開放全文實驗（同時補上本題最大的證據缺口）；其次是作者未取得全文的兩篇花種糖組成研究（PMC11425160、PMC12071508，可撐第二章）。",
+      "task1_access_and_refetch_audit": {
+        "f164_access_log_total_requests": 235,
+        "f164_seq_continuous_1_to_235": true,
+        "f164_host_breakdown": {
+          "www.ebi.ac.uk": 228,
+          "eutils.ncbi.nlm.nih.gov": 7
+        },
+        "f164_status_breakdown": {
+          "200": 209,
+          "503": 15,
+          "500": 10,
+          "429": 1
+        },
+        "f164_non_200_entries": [
+          {
+            "seq": [
+              21,
+              22,
+              24,
+              25,
+              31,
+              39,
+              49,
+              50,
+              51
+            ],
+            "host": "www.ebi.ac.uk",
+            "status": 500,
+            "note": "Europe PMC fullTextXML 伺服器錯誤（非封鎖）；PMC12173665 試了兩次（seq=22、39）、PMC9587987 第二次成功（seq=49 → 52），其餘各一次"
+          },
+          {
+            "seq": [
+              45
+            ],
+            "host": "www.ebi.ac.uk",
+            "status": 500,
+            "note": "一筆搜尋回 500"
+          },
+          {
+            "seq": [
+              47
+            ],
+            "host": "eutils.ncbi.nlm.nih.gov",
+            "status": 429,
+            "note": "esummary 回 429；之後紀錄中沒有任何 eutils 請求，blocked_hosts.json 有記錄，零重試屬實"
+          },
+          {
+            "seq": "78–80、193–204",
+            "host": "www.ebi.ac.uk",
+            "status": 503,
+            "note": "合著查詢 15 筆回 503（伺服器忙碌、非封鎖），15 筆都在之後以同一網址各重送一次並成功，作者說明屬實。流程瑕疵：seq=193–204 連續 12 筆 503 沒有中途停下，迴圈未在第一次非 200 時暫停（503 不在「第一次就停」的規定內，但不符合「每筆之後檢查」的精神）"
+          }
+        ],
+        "f164_all_cache_files_hash_check": "209 筆 HTTP 200 的存檔全部存在，位元組數與 sha256 逐列相符（0 筆不符）",
+        "f164_request_spacing": "235 筆請求依紀錄時間戳的最短間隔為 1 秒，沒有小於 1 秒者",
+        "f164_urls_and_pii": "網址只有 Europe PMC REST（search、fullTextXML）與 NCBI E-utilities（efetch、esearch、esummary）三類文件記載的 API，無拼湊的出版社網址；無 mailto、email、api_key 或其他個人資訊",
+        "efetch_sources_check": "K84-S002、S006、S007、S009、S014 五筆來源的 url 欄寫的是實際成功的 efetch 網址（seq=44、41、42、43、40，皆 HTTP 200），不是失敗的 Europe PMC 網址；read_via 如實寫了 Europe PMC 先回 500、改用 efetch、且早於 seq=47 的 429；五筆的位元組數與 sha256 前 16 碼都與紀錄相符。efetch 請求在 20:26:26–20:26:39 之間、429 發生在 20:27:59，時序屬實",
+        "source_read_via_matches_log": "14 個來源的 read_via（seq、位元組數）、url 與 author_cache.sha256_prefix 逐一對上 access_log",
+        "v184_refetch": {
+          "endpoint": "Europe PMC /webservices/rest/PMC<id>/fullTextXML（未碰 eutils.ncbi.nlm.nih.gov）",
+          "attempted": 14,
+          "max_attempts_each": 2,
+          "identical_bytes_and_sha256": [
+            "PMC9587987",
+            "PMC8066198",
+            "PMC9966662",
+            "PMC6352288"
+          ],
+          "identical_count": 4,
+          "content_identical_different_serialization": {
+            "PMC9440417": "Europe PMC 版 42551 位元組（sha256 前 16 碼 01ebaff0999e6e44），作者的 efetch 版 40632 位元組；兩份轉成純文字後正文逐字相同，差異只在圖表標記的編排，卡片引用的 11 個數字兩邊都有"
+          },
+          "not_refetched": {
+            "PMC11079870": "Europe PMC fullTextXML 兩次皆回 HTTP 500 或 503（伺服器端錯誤，非 429／403），第二次後停止；以作者快取（雜湊已對 access_log）核對內容",
+            "PMC9861181": "Europe PMC fullTextXML 兩次皆回 HTTP 500 或 503（伺服器端錯誤，非 429／403），第二次後停止；以作者快取（雜湊已對 access_log）核對內容",
+            "PMC6603282": "Europe PMC fullTextXML 兩次皆回 HTTP 500 或 503（伺服器端錯誤，非 429／403），第二次後停止；以作者快取（雜湊已對 access_log）核對內容",
+            "PMC11011302": "Europe PMC fullTextXML 兩次皆回 HTTP 500 或 503（伺服器端錯誤，非 429／403），第二次後停止；以作者快取（雜湊已對 access_log）核對內容",
+            "PMC8623053": "Europe PMC fullTextXML 兩次皆回 HTTP 500 或 503（伺服器端錯誤，非 429／403），第二次後停止；以作者快取（雜湊已對 access_log）核對內容",
+            "PMC8193605": "Europe PMC fullTextXML 兩次皆回 HTTP 500 或 503（伺服器端錯誤，非 429／403），第二次後停止；以作者快取（雜湊已對 access_log）核對內容",
+            "PMC4745488": "Europe PMC fullTextXML 兩次皆回 HTTP 500 或 503（伺服器端錯誤，非 429／403），第二次後停止；以作者快取（雜湊已對 access_log）核對內容",
+            "PMC9818981": "Europe PMC fullTextXML 兩次皆回 HTTP 500 或 503（伺服器端錯誤，非 429／403），第二次後停止；以作者快取（雜湊已對 access_log）核對內容",
+            "PMC12173665": "Europe PMC fullTextXML 兩次皆回 HTTP 500 或 503（伺服器端錯誤，非 429／403），第二次後停止；以作者快取（雜湊已對 access_log）核對內容"
+          },
+          "shortfall": "工作單要求重抓至少 6 篇，實得 5 篇（4 篇位元組相同、1 篇內容相同）；Europe PMC 全文端點本輪大面積故障，依派工指示每篇不重試超過一次，未達 6 篇照實記錄"
+        },
+        "v184_requests": {
+          "total": 118,
+          "status": {
+            "200": 91,
+            "500": 18,
+            "503": 9
+          },
+          "hosts": {
+            "www.ebi.ac.uk": 114,
+            "api.crossref.org": 4
+          },
+          "note": "全部帶 Mokaair-editorial/1.0，不帶個人資訊，每筆之後停 1.2 秒；沒有 429 或 403；seq=106 為補登（背景行程在寫入紀錄前被中止，依回應內容為 Europe PMC 錯誤頁推定為 500）；Crossref 4 筆皆 200"
+        }
+      },
+      "task2_coauthorship_audit": {
+        "reviewed_on": "2026-11-14",
+        "method": "作者 F164 的審計見 author_method／author_queries。覆核 V184 獨立重做：自行由 14 篇 JATS 的 article-meta 重拆作者（contrib-type 為 author，或所在 contrib-group 標為 author；排除 MDPI 學術編輯共 10 人次：K84-S003 一人、S004 二人、S007 二人、S009 三人、S013 二人），共 57 位不重複作者，與作者稿的名單逐一相符。以 13 個研究網兩兩共 78 組配對查 Europe PMC，每筆查詢把兩邊「全部作者」的全名、姓加全部名字縮寫、姓加首字縮寫，以及去變音符號、土耳其文與阿拉伯文轉寫變體、名姓順序變體一併以 OR 相連後取 AND，pageSize=1000、resultType=lite，78 筆全部一次取完（無分頁截斷）；再以程式逐筆比對作者字串兩邊是否各有「姓相同且名字首字相同」的人。78 組合計命中 1862 筆（其中 141 筆是把合作者名單編入索引的大型聯盟署名，作者字串中兩邊都對不上）；兩邊姓名皆對上的 1721 筆：作者數超過 500 的 1666 筆（高能物理合作組等）、41–500 人的 12 筆（基因體、神經影像、臨床試驗聯盟與會議摘要集）、40 人以下的 43 筆，後者逐筆以名字縮寫、期刊領域判讀，並對其中 3 筆取回 resultType=core 的全名與機構消歧。另以 Crossref works?query.author 抽查 4 組（耶爾德茲科技大學合作者對 K84-S013 兩位作者、阿威羅／布拉干薩對伊達爾戈／阿爾加維、阿威羅／斯洛伐克對熱舒夫），各取前 40 筆，皆 0 筆同列；Crossref 未回 429。限制：Europe PMC 對地區性食品與養蜂期刊收錄不全，Crossref 抽查是模糊比對且只看前 40 筆，不能完全排除未被索引的合著。",
+        "authors_total": 57,
+        "academic_editors_excluded": 10,
+        "author_list_matches_proposal": true,
+        "network_pairs_checked": 78,
+        "europe_pmc_hits_total": 1862,
+        "pairs_with_hits": 31,
+        "name_matched_on_both_sides": 1721,
+        "name_matched_breakdown": {
+          "author_list_over_500": 1666,
+          "author_list_41_to_500": 12,
+          "author_list_40_or_fewer": 43
+        },
+        "true_direct_coauthorships": [],
+        "homonyms_ruled_out": [
+          "2022 年歐洲蜜蜂族群結構研究（編號 35205227，Genes）：同列 Meixner M 與 Chen C，全名與機構為德國基希海因蜜蜂研究所的 Marina Meixner 與北京一所農業科學院蜜蜂研究所的 Chao Chen，不是 K84-S002／S013 的 Mario Meixner（安哈特應用科學大學）與 K84-S005 的 Chiachung Chen（中興大學生物產業機電）。",
+          "2021 年紡織廢水電化學氧化研究（編號 34534120）：同列 Yildirim R 與 Saleh M，全名與機構為梅爾辛大學環境工程系的 Rabia Yildirim 與 Mohammed Saleh，不是 K84-S013 的 Rusen Metin Yildirim（耶爾德茲科技大學食品工程）與 K84-S006 的 Mohammed Saleh（約旦大學營養與食品科技）。",
+          "2024 年利什曼病問卷研究（編號 39926594）：同列 Almajwal AM 與 Chen CC，前者確為 K84-S006 的合作者（沙烏地一所大學社區健康科學系），後者全名 Chien-Chin Chen、任職嘉義一所醫院病理科，不是 K84-S005 的 Chiachung Chen；即使誤併，0.75 + 0.75 也在封頂內。",
+          "Weber M／Weber MA 對 Schwarz T／Schwarz TJ、Yücel S、Saleh M、Seifert A、Calvo J、Zarei M 等 20 餘筆：骨科、放射科、眼科、血液腫瘤與安寧照護論文，名字縮寫或領域與本題作者不符（本題的 Mareike Weber 為食品科學、Tim M Schwarz 為材料物理、Sevil Yücel 為工程）。",
+          "Chen C／Chen CH／Chen CY 等對各網的命中：皆為醫學、物理或大型聯盟署名；K84-S005 的單一作者在 Europe PMC 的縮寫為 Chen C，逐筆無一為農業工程領域。",
+          "Saxena S 對 Seifert AW（4 筆）：再生生物學論文的 Sandeep Saxena 與 Ashley W. Seifert，不是孟買原子能研究中心的 Sudhanshu Saxena 與聖塞巴斯提安的 Andreas Seifert。"
+        ],
+        "same_institution_not_merged": "K84-S006 的合作者之一與 K84-S013 的多數作者同屬耶爾德茲科技大學（該文未註明系所），Europe PMC 與 Crossref 抽查均無合著，依規則（共同作者或直接合著才併網）不併；即使併網，0.75 + 1.00 = 1.75 不影響總數。",
+        "crossref": "抽查 4 組（seq=115–118），各取前 40 筆，0 筆同列；未遇 429",
+        "author_audit_check": "作者稿的三輪查詢（精確全名 78 筆、姓加縮寫 78 筆、變體 6 筆、檢核 6 筆，另 15 筆 503 重送）與紀錄相符；其結論（0 筆跨網合著）經 V184 獨立重做後維持。作者稿把學術編輯記為 5 人次，實為 10 人次（漏記 K84-S007 二人、S009 三人），但作者名單本身無誤",
+        "networks_merged": [],
+        "networks_removed": [
+          "NET_11_Ahvaz（F164-008 剔除）"
+        ],
+        "limitation": "Europe PMC 對地區性食品與養蜂期刊收錄不全；Crossref 只做模糊抽查；OpenAlex 未請求"
+      },
+      "task3_fulltext_verification": {
+        "cards_checked": 14,
+        "method": "14 篇全部以作者快取的完整 JATS（雜湊已對 access_log；其中 4 篇經 V184 重抓位元組相同、1 篇內容相同）轉成純文字後逐節重讀或逐表比對，核對卡片與題案 connection、chapters 引用的每個數字、單位、方向、條件、樣本數與表圖號",
+        "numbers_wrong_or_unsupported": [
+          "K84-011：「由 25 降到 5 °C 黏度約變成 5 到 13 倍」是作者依活化能自行換算，原文只有圖；「沒有結晶」「不像水那樣在零度結冰」原文都沒有寫——全部刪除",
+          "K84-003：「洋槐蜜九個月都沒有結晶」——3.8 節顯微觀察有細小晶粒且對照組數量變多；對照組羥甲基糠醛「增 5%–30%」與 Table 1 不符（表中約 5%–13%）",
+          "K84-013：「加晶種各組都在第 9 天達到最高」——原文是第 9 與第 12 天最高、兩天無顯著差異；畫面「湯匙立得穩穩的」與原文堅實度（加晶種者較低）相反",
+          "K84-005：畫面把結晶蜜畫成水活性較高——原文只比斜率、截距不可得",
+          "K84-007：把 6 種成分統稱「來自花的微量成分」——其中 1 種是人工香料乙基香草醛",
+          "K84-001：「同樣急凍的飽和葡萄糖溶液看不到分相」——是前一篇研究的結果，本篇沒有做",
+          "K84-004：「表示葡萄糖集中到下層」——原文未直接量各層葡萄糖；漏記兩層水活性幾乎相同",
+          "K84-012：「每次攪多久幾乎沒差」略過頭（攪拌結束當下有顯著差異、30 天後縮小）；晶核數量的說法出自導論而非量測"
+        ],
+        "direction_errors": 1,
+        "direction_error_detail": "K84-013 畫面（加晶種的比較硬）與 Table 1 堅實度方向相反；其餘升降與正反比無誤",
+        "folded_to_0_75": [
+          "K84-006",
+          "K84-009"
+        ],
+        "kept_at_0_75": [
+          "K84-005"
+        ],
+        "rejected": [
+          "F164-008"
+        ],
+        "abstract_only_or_review_articles": 0,
+        "quality_judgements": "K84-006（約旦）：內部不一致共八處，折 0.75、只引五張表；K84-003（羅馬尼亞）：標準差不合理、文字與表格兩處不一致，只用平均值與定性觀察，維持 1.00；K84-010（墨西哥）：單位 µm²／µm 前後不一，只比相對大小，維持 1.00；K84-013（土耳其）：對照「無結晶」與亮度上升不一致，卡片改以亮度與黏度為主，維持 1.00；後三篇列入敏感度測試",
+        "mechanism_strength": "「約 14 °C 最容易結晶、太冷反而慢」沒有任何一篇直接量測：K84-012 量的是 14／18 °C／室溫下的結晶粗細，K84-011 只量黏度。原稿第六章白話「蜂蜜越冷越稠……所以不是越冷就結得越快」、boredom_risk「十四度最剛好、再冷只是變稠」、connection「直接證據來自攪拌試驗」都超出證據，已刪改；drop_if 新增第（14）條",
+        "water_activity": "三篇說法不一致，已改為並陳：K84-004 兩層含水量不同但水活性幾乎相同（0.629 對 0.631）、K84-005 斜率不同但截距不可得、K84-003 九個月不變；沒有任何一篇量過發酵或腐敗，稿中不談"
+      },
+      "task4_pool_dedup_and_redline_audit": {
+        "editorial_role_all_theme_seed": true,
+        "candidate_source_one_to_one": true,
+        "chapters_cover_all_cards_once": true,
+        "chapter_seconds": [
+          75,
+          70,
+          100,
+          80,
+          105,
+          110
+        ],
+        "cli_search": "依派工說明直接以 python 讀 pool.json（5,410 筆核心、3,239 筆未收、6,504 筆來源）、themes.json（652 組）、batches/*.json，並 grep THEMES.md、QUESTIONS.md 與奇聞池 QUESTIONS.md；未使用 cli.mjs",
+        "source_url_collisions_with_pool_or_batches": 0,
+        "mechanism_key_collisions": 0,
+        "keywords": "蜂蜜、honey、結晶、葡萄糖、過飽和、晶種、成核、羥甲基糠醛、HMF、水活性、玻璃轉移、奶油蜂蜜",
+        "legacy_adjacent_cards": "G617（驗出是純蜂蜜就真的沒摻糖嗎）與 G328、X34-001、H59-004、H60-001 講的是同位素與糖漿指紋的驗真方法，本題不談檢驗、只談結晶這個物理化學現象，來源零重疊；X34-NA001「蜂蜜結晶就表示加了糖？」過去因沒有受控對照而未收，本題以 K84-004 的受控對照滿足其再入條件；P232（過飽和溶液為何暫時透明）、P57-023（暖暖包晶種）、F4010（糖果換入其他糖減少砂糖晶粒）為機制鄰近但主角不同；作者的去重紀錄漏列 F4011（有結晶的軟糖為什麼滑順：控制成核數量得到許多小晶體），與本題收尾章同一類機制，已補進 K84-NA001。奇聞池 QUESTIONS.md 以「蜂蜜」「結晶」檢索無相關題。判定不撞題",
+        "same_wave_authors": "F165（人體感官：涼的加溫的為什麼摸起來會燙）、F166（建築交通：粗木梁在火裡為什麼不會一下就垮）的 proposal.json 中「蜂蜜」「honey」「結晶」皆 0 次，來源 PMCID 零重疊；F167（數位科技）覆核當時尚無 proposal.json，其 cache 資料夾與本題 14 篇 PMCID 零重疊，題目是否相鄰未能查核",
+        "title_overpromise_fix": "原題名「是壞了、摻了糖，還是它本來就會這樣？」承諾回答「是不是壞了」，但 14 篇沒有一篇量過腐敗或發酵與結晶的關係（作者自己在 K84-NA008 也承認）；題名刪去「是壞了」，第一章標題由「那層白不是壞掉」改為「那層白是什麼」，connection 與結論同步刪除「不是壞掉」，drop_if 新增第（12）條",
+        "redline_scan": "全稿（不含 networks 與 coauthorship_audit 的作者姓名清單、rejected 欄位）無蜂蜜、糖漿、儀器、家電的品牌與廠商名；無在世或 1956 年後過世學者的姓名與冠名（以人名冠稱的三所大學與研究中心都已用泛稱；色度尺、酵素活性單位、黏度模型的人名都未出現）；editorial.visual 13 則皆無文字、數字、人物面孔",
+        "consumer_advice_and_food_safety": "「摻糖」只寫成受控對照裡的現象，drop_if 第（5）條加上「全片不得出現教觀眾分辨或挑選蜂蜜的句子」；「受熱指標超標／超過法規上限」在答案、亮點句與章節白話一律改為「超過國際標準訂的品質界線」，drop_if 新增第（13）條禁止延伸成不合格、有害或不能吃；無健康宣稱（抗菌、抗氧化、致癌說法全數不用；刪去「蜂蜜不容易壞」）",
+        "dangerous_diy_check": "原稿沒有教觀眾加熱、微波或自製奶油蜂蜜的句子，但第四章白話「結晶泡在溫水裡會慢慢溶回去，只是溫水要泡上十六個小時」與第六章「這時候丟一點已經結晶的蜂蜜進去當種子」讀起來像可以照做的訣竅，已全部改寫成「研究者把……」「養蜂人……」的實驗與業界描述；K84-007、K84-012 的題目同步改寫",
+        "chapters_plain_language": "六章白話皆無數字堆疊與術語；第二章由「主要看蜜蜂採的是哪一種花」改為「在這七種蜂蜜裡……」；第三章水活性改為「幾份研究的說法並不一致」"
+      },
+      "core_verdicts": [
+        {
+          "id": "K84-001",
+          "source_id": "K84-S001",
+          "pmcid": "PMC9587987",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_12_Stuttgart",
+          "changed_fields": [
+            "answer_target",
+            "editorial.payoff",
+            "K84-S001.summary",
+            "K84-S001.limitations",
+            "notes",
+            "chapters[0].new_information"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "富糖區 77.45%／液相 67.03%、6 個團簇、4.36–15.78 nm、12–567 nm³、3 組資料等全數相符；「飽和葡萄糖溶液未見偏析」其實是該團隊前作的結果，答案與摘要改寫；亮點句小盒尺寸照原文。1.00。"
+        },
+        {
+          "id": "K84-002",
+          "source_id": "K84-S002",
+          "pmcid": "PMC9440417",
+          "verdict": "ADOPT",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_01_Anhalt",
+          "changed_fields": [
+            "notes",
+            "K84-S002.limitations"
+          ],
+          "refetch_sha256_match": "content_identical_different_serialization",
+          "reason": "離心攤開法的全部步驟與驗證數字（276–321 µm、跨日 303.8 ± 36.0 µm、日內 6.9–13.8%、果糖 6 次低於偵測極限）逐一相符，卡片內容未改。1.00（與 K84-012 同網，合計封頂 2.00）。"
+        },
+        {
+          "id": "K84-003",
+          "source_id": "K84-S003",
+          "pmcid": "PMC8066198",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_06_Suceava",
+          "changed_fields": [
+            "answer_target",
+            "editorial.payoff",
+            "editorial.visual",
+            "K84-S003.locator",
+            "K84-S003.summary",
+            "K84-S003.limitations",
+            "notes",
+            "chapters[1].new_information"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "Table 1 逐列重算相符；改正「洋槐蜜九個月都沒有結晶」（3.8 節顯微鏡下有細小晶粒、對照組數量變多）與對照組羥甲基糠醛「5%–30%」（表中只有約 5%–13%）；亮點句改為「硬度變成原來的三倍多」。1.00；表中標準差不合理屬報告品質問題，列入敏感度。"
+        },
+        {
+          "id": "K84-004",
+          "source_id": "K84-S004",
+          "pmcid": "PMC9966662",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_07_Rzeszow",
+          "changed_fields": [
+            "answer_target",
+            "editorial.payoff",
+            "K84-S004.locator",
+            "K84-S004.limitations",
+            "notes",
+            "chapters[2].new_information"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "Table 1 全部數字相符；補上兩層水活性幾乎相同（0.629 對 0.631）、糖漿含水 29%–30%，「葡萄糖集中到下層」改為與半定量比值相符的解讀；亮點句「只結一小半」改為「只結了一部分」。1.00。"
+        },
+        {
+          "id": "K84-005",
+          "source_id": "K84-S005",
+          "pmcid": "PMC6352288",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 0.75,
+          "reviewer_facts": 0.75,
+          "network": "NET_08_NCHU",
+          "changed_fields": [
+            "answer_target",
+            "K84-S005.summary",
+            "editorial.visual",
+            "K84-S005.limitations",
+            "notes",
+            "chapters[2].new_information"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "斜率 0.016905 對 0.012995、Table 3、166 個樣品相符；原畫面把結晶蜜畫成水活性較高，原文只比斜率、截距不可得，畫面與答案改寫，並補上導論引述的反例；刪去「蜂蜜不容易壞」。維持 0.75（二手資料再分析）。"
+        },
+        {
+          "id": "K84-006",
+          "source_id": "K84-S006",
+          "pmcid": "PMC11079870",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 0.75,
+          "network": "NET_03_JUST",
+          "changed_fields": [
+            "answer_target",
+            "editorial.payoff",
+            "K84-S006.summary",
+            "K84-S006.limitations",
+            "notes",
+            "networks.weights",
+            "chapters[3].new_information"
+          ],
+          "refetch_sha256_match": false,
+          "reason": "960／380／50／23 分鐘、6.79 → 55.11 mg/kg、L* 41.61 → 31.84、8.23 → 6.20 全數相符；但全文另有五處作者未列的內部不一致（羥甲基糠醛段落混入別的實驗條件、黏度文字與表格差一萬倍、感官標準差不合理、類黃酮文字與表格互換、結晶天數前後不一），連同已知三處，從嚴折為 0.75；「法規上限」改為「國際食品標準訂的品質界線」。"
+        },
+        {
+          "id": "K84-007",
+          "source_id": "K84-S007",
+          "pmcid": "PMC9861181",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_04_Pardubice",
+          "changed_fields": [
+            "question",
+            "answer_target",
+            "editorial.payoff",
+            "K84-S007.summary",
+            "K84-S007.limitations",
+            "notes",
+            "chapters[3].new_information"
+          ],
+          "refetch_sha256_match": false,
+          "reason": "Table 2、Table 3 全數相符；6 種成分裡有 1 種是人工香料乙基香草醛，不能統稱「來自花的成分」；個別成分由 −72.4% 到 +11.7%，已補；題目由「哪個改變比較小」改為「各少了多少」。1.00。"
+        },
+        {
+          "id": "F164-008",
+          "source_id": "F164-S008",
+          "pmcid": "PMC6603282",
+          "verdict": "REJECT",
+          "author_facts": 1.0,
+          "reviewer_facts": 0.0,
+          "network": "NET_11_Ahvaz（剔除）",
+          "changed_fields": [
+            "moved_to_not_added:K84-NA009"
+          ],
+          "refetch_sha256_match": false,
+          "reason": "數字（+81.3%／+85.6%／+108.3%、18.1 與 11.2 mg/kg、含水 −0.4 至 −0.56 個百分點、總酚三組）全數相符，但全文沒有任何結晶量測，題目前提「加熱是為了溶晶核」只是導論引用；拿掉前提後只剩「加熱後羥甲基糠醛上升」，與 K84-006、K84-008 重複，對本題沒有新資訊。離題且重複，移入 K84-NA009，不計。"
+        },
+        {
+          "id": "K84-008",
+          "source_id": "K84-S008",
+          "pmcid": "PMC11011302",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_10_Aveiro",
+          "changed_fields": [
+            "answer_target",
+            "editorial.payoff",
+            "K84-S008.limitations",
+            "notes",
+            "chapters[4].new_information"
+          ],
+          "refetch_sha256_match": false,
+          "reason": "6.69、46.37、57.16 mg/kg、−6.5% 與 −15.5%、含水 14.50% 全數相符；未量結晶，屬間接卡，但提供別張卡沒有的資訊（加熱後存放中的後續），保留；答案限定「在這一批蜂蜜裡」，「超標」改為「超過品質界線」。1.00。"
+        },
+        {
+          "id": "K84-009",
+          "source_id": "K84-S009",
+          "pmcid": "PMC8623053",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 0.75,
+          "network": "NET_13_SanSebastian",
+          "changed_fields": [
+            "answer_target",
+            "editorial.payoff",
+            "K84-S009.limitations",
+            "notes",
+            "networks.weights",
+            "chapters[4].new_information"
+          ],
+          "refetch_sha256_match": false,
+          "reason": "0.947、36／38、0.895、0.667、990 與 1050 cm⁻¹ 相符；結論完全建立在統計分類模型上，訓練與測試用同批蜂蜜的重複量測，測試組每類 11–12 個且總數前後不一（35 對 38），從嚴折為 0.75；未量結晶，屬間接卡。"
+        },
+        {
+          "id": "K84-010",
+          "source_id": "K84-S010",
+          "pmcid": "PMC8193605",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_05_Hidalgo",
+          "changed_fields": [
+            "answer_target",
+            "editorial.payoff",
+            "K84-S010.limitations",
+            "notes"
+          ],
+          "refetch_sha256_match": false,
+          "reason": "Table 2 二十個數值與顯著性字母逐一相符（M1 無顯著差異、M2 非單調）；單位在方法與表頭為 µm²、正文為 µm，卡片只比相對大小；亮點句補上「有一款的變化不顯著」。1.00。"
+        },
+        {
+          "id": "K84-011",
+          "source_id": "K84-S011",
+          "pmcid": "PMC4745488",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_09_Mumbai",
+          "changed_fields": [
+            "question",
+            "answer_target",
+            "editorial.payoff",
+            "editorial.visual",
+            "source_locator",
+            "K84-S011.summary",
+            "K84-S011.limitations",
+            "notes",
+            "K84-S011.locator",
+            "chapters[5].new_information"
+          ],
+          "refetch_sha256_match": false,
+          "reason": "Table 1–3 數字相符（活化能表列 54.0–89.0、正文 54.2–88.8）；刪除作者自行換算的「25 → 5 °C 稠 5 到 13 倍」，以及原文沒有的「沒有結晶」「不像水在零度結冰」；此卡未量結晶，題案不得用它推論存放溫度與結晶快慢，只當作「冷了變稠」這一種變硬。1.00；若判定離題剔除則全題低於門檻 0.15 條。"
+        },
+        {
+          "id": "K84-012",
+          "source_id": "K84-S012",
+          "pmcid": "PMC9818981",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_01_Anhalt",
+          "changed_fields": [
+            "question",
+            "answer_target",
+            "editorial.payoff",
+            "K84-S012.limitations",
+            "notes",
+            "chapters[5].new_information"
+          ],
+          "refetch_sha256_match": false,
+          "reason": "59／101／146 µm、17.5 ± 1.5 °C、28 天與 56 天、25 kg 全數相符；補上「量的是粗細不是快慢」、試驗 3 的存放溫度等於攪拌溫度、試驗 5 的細節、「晶核多則晶體細」出自導論而非量測；題目改為「研究者發現哪個條件」。1.00（與 K84-002 同網）。"
+        },
+        {
+          "id": "K84-013",
+          "source_id": "K84-S013",
+          "pmcid": "PMC12173665",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_02_Yildiz",
+          "changed_fields": [
+            "answer_target",
+            "editorial.payoff",
+            "editorial.visual",
+            "source_locator",
+            "K84-S013.limitations",
+            "notes",
+            "chapters[5].new_information"
+          ],
+          "refetch_sha256_match": false,
+          "reason": "13.1 → 38.5 Pa·s、194%、亮度八個數值、2756 Pa 相符；「第 9 天到頂」改為「第 9 與第 12 天最高、兩天無顯著差異」；補上流變在 25 °C 量、5% 組亮度先降後升、加晶種各組堅實度反而較低；畫面刪掉「湯匙立得穩穩的不倒」。1.00；對照「無結晶」與其亮度上升不一致，列入敏感度。"
+        }
+      ],
+      "main_corrections": [
+        "剔除 F164-008（伊朗，63 °C 加熱半小時）：全文沒有任何結晶量測，題目前提出自導論引用，內容與 K84-006、K84-008 重複，移入未收紀錄；研究網由 13 個改為 12 個。",
+        "折算：K84-006（約旦；全文共八處內部不一致，例如黏度文字與表格差一萬倍、羥甲基糠醛段落混入別的實驗條件）與 K84-009（西班牙；統計分類模型、同批蜂蜜重複量測、測試組 35 對 38 前後不一）各由 1.00 折為 0.75；全題由 13.75 條、9.72 分鐘改為 12.25 條、8.94 分鐘，排片由 570 秒改為 540 秒。",
+        "K84-011：刪除作者自行換算的「由 25 降到 5 °C 稠 5 到 13 倍」，改用原文有的量（25 °C 黏度 2.4–16.0 帕秒、活化能 54.0–89.0 kJ/mol、玻璃轉移 −44.1 至 −54.1 °C）；連帶刪掉全稿「越冷越稠所以不是越冷結得越快」「十四度最剛好」的推論——沒有任何一篇量過存放溫度與結晶快慢。",
+        "K84-003：「洋槐蜜九個月都沒有結晶」改為「作者稱沒有結晶，顯微鏡下有細小晶粒」；對照組羥甲基糠醛「增 5%–30%」與表不符（表中約 5%–13%），並列兩種說法。K84-013：「第 9 天到頂」改為「第 9 與第 12 天最高」，畫面刪掉與堅實度數據相反的「湯匙立得穩穩的」。",
+        "水活性：K84-005 的畫面把結晶蜜畫成水活性較高，原文只比斜率（0.016905 對 0.012995）、截距不可得；補上 K84-004 兩層水活性幾乎相同（0.629 對 0.631），三篇改為並陳。K84-007 的 6 種「來自花的成分」裡有 1 種是人工香料，改稱「追蹤的六種微量成分」。",
+        "題名刪去「是壞了」（沒有任何一篇量過腐敗或發酵），第一章標題同步改；「超過法規上限／超標」一律改為「超過國際標準訂的品質界線」；六章白話改成研究者與養蜂業的做法描述，drop_if 新增三條（腐敗與發酵、受熱指標不等於食安、存放溫度）。"
+      ],
+      "residual_concerns": [
+        "餘裕只有 0.85 條：本題靠三張未量結晶的間接卡（K84-008、010、012，共 2.75 條）才過線，任何一張計 1.00 的間接卡若被判離題就低於門檻 0.15 條",
+        "核心機制仍薄：沒有任何開放全文直接比較冷藏、室溫、冷凍的結晶快慢；第二章「花種決定快慢」只靠一篇七種蜂蜜，且該篇報告品質普通",
+        "Europe PMC 全文端點故障，14 篇只重抓到 5 篇（未達工作單的 6 篇）；K84-S006、S007、S009、S010、S011、S012、S013、S014 只以作者快取核對，其中 4 篇的作者快取來自 NCBI efetch",
+        "各篇補充資料均未取得；K84-009 另外兩種蜂蜜的分類結果、K84-007 的各成分濃度與標準差都在補充表",
+        "同輪 F167（數位科技）的 proposal.json 覆核時尚未寫出，未能查撞題（分類不同，風險低）",
+        "與既有題案 G617（蜂蜜驗真）同屬蜂蜜題，製作時要避免兩支都花篇幅講「摻糖」；本題只講結晶，不講檢驗"
+      ],
+      "networks": [
+        {
+          "id": "NET_01_Anhalt",
+          "source_ids": [
+            "K84-S002",
+            "K84-S012"
+          ],
+          "authors": [
+            "Mario Meixner",
+            "Mareike Weber",
+            "Sebastian Lella",
+            "Wilfried Rozhon",
+            "Margot Dasbach",
+            "Reinhard Dasbach"
+          ],
+          "weights": {
+            "K84-002": 1.0,
+            "K84-012": 1.0
+          },
+          "capped_total": 2.0
+        },
+        {
+          "id": "NET_02_Yildiz",
+          "source_ids": [
+            "K84-S013"
+          ],
+          "authors": [
+            "Duygu Ozmen",
+            "Hüseyin Demircan",
+            "Rusen Metin Yildirim",
+            "Muhammad Waseem",
+            "Hakan Basdogan",
+            "Omer Said Toker",
+            "Crossby Osei Tutu"
+          ],
+          "weights": {
+            "K84-013": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_03_JUST",
+          "source_ids": [
+            "K84-S006"
+          ],
+          "authors": [
+            "Taha Rababah",
+            "Muhammad Al-U’datt",
+            "Amjad Naqresh",
+            "Sana Gammoh",
+            "Ali Almajwal",
+            "Mohammed Saleh",
+            "Sevil Yücel",
+            "Yara AL-Rayyan",
+            "Numan AL-Rayyan"
+          ],
+          "weights": {
+            "K84-006": 0.75
+          },
+          "capped_total": 0.75
+        },
+        {
+          "id": "NET_04_Pardubice",
+          "source_ids": [
+            "K84-S007"
+          ],
+          "authors": [
+            "Tomáš Hájek"
+          ],
+          "weights": {
+            "K84-007": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_05_Hidalgo",
+          "source_ids": [
+            "K84-S010"
+          ],
+          "authors": [
+            "A. Peláez-Acero",
+            "J.E. Cobos-Velasco",
+            "U. González-Lemus",
+            "S.O. Espino-Manzano",
+            "G. Aguirre-Álvarez",
+            "L. González-Montiel",
+            "A.C. Figueira",
+            "R.G. Campos-Montiel"
+          ],
+          "weights": {
+            "K84-010": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_06_Suceava",
+          "source_ids": [
+            "K84-S003"
+          ],
+          "authors": [
+            "Laura Agripina Scripcă",
+            "Sonia Amariei"
+          ],
+          "weights": {
+            "K84-003": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_07_Rzeszow",
+          "source_ids": [
+            "K84-S004"
+          ],
+          "authors": [
+            "Monika Tomczyk",
+            "Anna Czerniecka-Kubicka",
+            "Michał Miłek",
+            "Ewelina Sidor",
+            "Małgorzata Dżugan"
+          ],
+          "weights": {
+            "K84-004": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_08_NCHU",
+          "source_ids": [
+            "K84-S005"
+          ],
+          "authors": [
+            "Chiachung Chen"
+          ],
+          "weights": {
+            "K84-005": 0.75
+          },
+          "capped_total": 0.75
+        },
+        {
+          "id": "NET_09_Mumbai",
+          "source_ids": [
+            "K84-S011"
+          ],
+          "authors": [
+            "Sudhanshu Saxena",
+            "Lata Panicker",
+            "Satyendra Gautam"
+          ],
+          "weights": {
+            "K84-011": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_10_Aveiro",
+          "source_ids": [
+            "K84-S008"
+          ],
+          "authors": [
+            "Hana Scepankova",
+            "Juraj Majtan",
+            "Leticia M. Estevinho",
+            "Jorge A. Saraiva"
+          ],
+          "weights": {
+            "K84-008": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_12_Stuttgart",
+          "source_ids": [
+            "K84-S001"
+          ],
+          "authors": [
+            "Tim M Schwarz",
+            "Jonas Ott",
+            "Helena Solodenko",
+            "Guido Schmitz",
+            "Patrick Stender"
+          ],
+          "weights": {
+            "K84-001": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_13_SanSebastian",
+          "source_ids": [
+            "K84-S009"
+          ],
+          "authors": [
+            "Olga Antonova",
+            "Javier Calvo",
+            "Andreas Seifert"
+          ],
+          "weights": {
+            "K84-009": 0.75
+          },
+          "capped_total": 0.75
+        }
+      ]
+    },
+    "V185": {
+      "report_id": "wave84-human-F165-V185-review-20261114",
+      "reviewed_on": "2026-11-14",
+      "round": 34,
+      "wave": "wave84",
+      "reviewer": "V185",
+      "author": "F165",
+      "category": "人體感官與日常行為",
+      "proposal_id": "F165-T1",
+      "verdict": "ready",
+      "title_author": "涼的加溫的，為什麼摸起來會燙？皮膚其實不是溫度計",
+      "title_reviewed": "涼的加溫的，為什麼摸起來反而更熱？皮膚其實不是溫度計",
+      "author_networks": 11,
+      "reviewer_networks": 10,
+      "author_fact_count": 13.75,
+      "author_minutes": 9.72,
+      "recount_fact_count": 13.0,
+      "recount_minutes": 9.33,
+      "target_minutes": 9.0,
+      "chapter_seconds_total": 540,
+      "minutes_formula": "(13.0 * 140 + 700) / 270 = 2520 / 270 = 9.3333 -> 9.33 (>= 8.50 min ready threshold; weighted_facts 13.0 >= 11.4)",
+      "turning_points": [
+        "轉折一：皮膚回報的不是「現在幾度」而是「跟剛才比」——同一個水溫在升溫與降溫途中落在舒適區的不同位置、先熱後涼時有人把涼說成暖、高強度運動後前臂要更熱才覺得暖（H84-004、005、006，另有 H84-008 的適應溫度資料）",
+        "轉折二：感覺到的溫度可以是皮膚上哪裡都沒有的溫度——比較涼的中指與旁邊兩指分不出來、20 與 40 °C 交錯卻比全 40 °C 還熱、只有交錯時視丘才有活動（H84-007、008、009）",
+        "收尾反轉：冷熱判斷還受顏色預期與聲音影響，但整間房換色光並沒有把判斷帶著走（H84-012、014、015）"
+      ],
+      "sensitivity_notes": "基準核定：10 個研究網、13.00 條、9.33 分鐘（高於門檻 +0.83 分鐘，即 +1.60 條餘裕）。V185 已做的處理：F165-010 整張不計（作者自折 0.75 → 0）；三組併網全部維持（NET_01 三篇封頂 2.00、NET_02 與 NET_03 各兩篇 2.00）。敏感度測試：（1）H84-006（13 人、幅度只在圖中、交互作用未達顯著）與 H84-014（線上聽辨加機器分類）各折 0.25 → 12.50 條＝9.07 分鐘，過線；（2）臨床參考值研究 H84-003 剔除 → 12.00 條＝8.81 分鐘，過線；（1）加（2）→ 11.50 條＝8.56 分鐘，勉強過線；（3）若 H84-S005 一位作者與林雪平同名者日後證實是同一人，H84-010 併入已封頂的 NET_01 → 12.00 條＝8.81 分鐘，過線；（2）加（3）→ 11.00 條＝8.30 分鐘，不過線，改列 reserve，差 0.40 條；（4）若以疼痛框架為由連 H84-009 也剔除（NET_03 全無）→ 11.00 條＝8.30 分鐘，不過線，差 0.40 條；（5）作者原本擔心的 H84-002 與他網併網 → 12.00 條＝8.81 分鐘，過線。不過線時的補法：自作者 H84-NA005 所列尚未讀完的獨立網候選（主動觸摸冷暖表面的腦電研究、日光顏色與冷熱感等）讀完全文、重做合著審計後補 1 條。",
+      "task1_access_and_refetch_audit": {
+        "f165_access_log_total_requests": 169,
+        "f165_seq_continuous_1_to_169": true,
+        "f165_host_breakdown": {
+          "www.ebi.ac.uk": 164,
+          "eutils.ncbi.nlm.nih.gov": 3,
+          "api.crossref.org": 2
+        },
+        "f165_non_200_entries": "14 筆，全為 Europe PMC 的 HTTP 500（12 筆）與 503（2 筆）：全文端點 13 筆（seq=14、16、17、19、30、33–39、47）、檢索端點 1 筆（seq=140，隨後 seq=141 重送成功）。沒有任何 429／403，blocked_hosts.json 為空清單屬實。",
+        "f165_retry_count_on_5xx": {
+          "PMC7237526": "三次（seq=14 於 20:21:23、seq=34 於 20:27:35、seq=38 於 20:28:18，皆 500），之後改用 NCBI efetch（seq=137）",
+          "PMC9824675": "三次（seq=19 於 20:24:19 回 500、seq=35 於 20:27:36 回 503、seq=39 於 20:28:21 回 500），之後改用 NCBI efetch（seq=138）",
+          "PMC6175302": "兩次（seq=16、36），未取得",
+          "PMC6102275": "兩次（seq=30、37），未取得",
+          "PMC11900864、PMC7416916、PMC6412694": "各一次；PMC7416916 另由 NCBI efetch 取得（seq=139，未收）",
+          "judgement": "500／503 是伺服器端錯誤，不在「429／403 第一次就停」的規定內，沒有違規；但同一網址試到第三次、且第三次距第二次只有約 45 秒，比前幾輪覆核的慣例（至多重試一次）多，照實記錄，建議日後 5xx 也以一次重試為限。"
+        },
+        "f165_all_cache_files_hash_check": "169 列中成功的 155 列存檔全部存在，位元組數與 sha256 逐列相符；14 列失敗回應的本體已移到 errors/，雜湊與紀錄相符（seq=140 的原檔名被重送結果覆寫，失敗本體另存 errors/q075_0.503.json）。",
+        "f165_request_spacing": "169 筆請求相鄰時間戳最短間隔 1 秒，符合規定",
+        "f165_urls_and_pii": "網址皆為 Europe PMC REST search／fullTextXML、NCBI E-utilities efetch.fcgi（db=pmc）與 Crossref works?query.author，全是文件記載的端點，無拼湊的出版社網址，無 mailto、email 或其他個人資訊",
+        "source_read_via_matches_log": "15 個來源的 url 與 access_log 中實際回 200 的那一筆網址逐字相同，read_via 的 seq、位元組數與 author_cache.sha256_prefix 逐一對上；改用 NCBI 的兩篇（F165-S010、S012）url 寫的是實際成功的 efetch 網址，read_via 也載明 Europe PMC 的失敗經過。",
+        "v185_refetch": {
+          "attempted": 15,
+          "identical_bytes_and_sha256": [
+            "PMC3214046",
+            "PMC5209941",
+            "PMC4080700",
+            "PMC6133911",
+            "PMC8303551",
+            "PMC7177974",
+            "PMC5579939",
+            "PMC11399116"
+          ],
+          "identical_count": 8,
+          "not_refetched": {
+            "PMC10695924": "Europe PMC 兩次皆回 HTTP 500（seq=1、115），停止",
+            "PMC8657088": "兩次皆回 HTTP 500（seq=2、116），停止",
+            "PMC11332243": "第一次 HTTP 500（seq=5）、第二次逾時無回應（seq=119），停止",
+            "PMC5075768": "兩次皆回 HTTP 500（seq=7、121），停止",
+            "PMC11327021": "兩次皆回 HTTP 500（seq=13、124），停止",
+            "PMC7237526": "一次 HTTP 500（seq=15），未重試；作者檔案來自 NCBI efetch，覆核依規定未碰該主機",
+            "PMC9824675": "一次 HTTP 500（seq=14），未重試；該篇已整張不計"
+          },
+          "note": "未能重抓的 7 篇一律以作者快取核對（快取雜湊已對上作者的 access_log）。第一輪 12 篇回 500 之中，6 篇在約 20 分鐘後的第二次請求成功，位元組與雜湊與作者快取相同。"
+        },
+        "v185_own_requests": {
+          "total": 124,
+          "hosts": {
+            "www.ebi.ac.uk": 120,
+            "api.crossref.org": 4
+          },
+          "non_200": "Europe PMC HTTP 500 共 28 筆（全文 16、檢索 12）、逾時 1 筆、Crossref HTTP 400 一筆（覆核自己的網址未編碼，未重送）；無 429／403；未請求 eutils.ncbi.nlm.nih.gov",
+          "max_attempts_per_url": 2
+        }
+      },
+      "task2_coauthorship_audit": {
+        "reviewed_by": "V185",
+        "reviewed_on": "2026-11-14",
+        "papers": 14,
+        "unique_authors": 56,
+        "networks_after_merging": 10,
+        "pairs_checked": 45,
+        "source_pairs_checked": 105,
+        "direct_cross_network_coauthorships": 0,
+        "method": "覆核 V185 自行由 15 篇 JATS 的 article-meta／contrib-group 重拆作者（contrib-type=\"author\" 或未標示者；contrib-type=\"editor\" 的 PLoS Editor 1 位與 MDPI Academic Editor 5 位已排除；特倫托 2024 年那篇 XML 把姓與名填反，已更正），共 59 位不重複作者（剔除熱柵棋盤那篇後為 14 篇 56 位），與作者稿逐一相符。依第一次出現的論文排序，對每一位作者送 Europe PMC 查詢：（此人的全部姓名異寫，OR 連接）AND（排序在後、且與此人沒有同列任何一篇的全部作者之全部姓名異寫，OR 連接，每 70 個詞一段），因此 15 篇兩兩 105 組配對的每一對跨篇作者都恰被查到一次；姓名異寫含完整縮寫與單一縮寫、帶或不帶變音符號（另加 oe 拼法）、複姓的各種拆法、連字號有無；pageSize=100、resultType=lite，命中超過 100 筆的以 cursorMark 翻頁看完。命中紀錄以程式比對兩邊姓與首字母，再人工逐筆看期刊、題目、作者數與完整縮寫；拿不準的以 resultType=core 與研究者識別碼查詢調出全名、單位與識別碼。Crossref 本輪可用，補查四位（一筆因網址未編碼回 HTTP 400，未重送）。",
+        "seq": "V185 access_log：配對查詢 seq=21–96（53 位作者、66 段查詢成功；另 4 段因 Europe PMC 連續兩次 HTTP 500 未完成）與改以每段 40 個詞重切後補查那三位作者的 seq=97–105（9 段全部成功）；試查 seq=16–20；消歧 seq=106–110；Crossref seq=111–114",
+        "europe_pmc_queries_ok": 75,
+        "europe_pmc_hits_total": 892,
+        "name_matched_on_both_sides": 609,
+        "merges_confirmed": [
+          {
+            "between": [
+              "H84-S005",
+              "H84-S007"
+            ],
+            "evidence": "PMID 39185673（2024，六位作者，含 H84-S005 的三位作者與 H84-S007 的通訊作者）及其 2023 年預印本；PMID 30063258（2018，PMC6175302）與 PMID 29886058（2018）：H84-S005 通訊作者與 H84-S007 通訊作者",
+            "action": "維持併為 NET_01_UCL_AARHUS_ATSUGI（作者只列了 2018 年一篇，覆核補上 2024 年與另一篇 2018 年）"
+          },
+          {
+            "between": [
+              "H84-S007",
+              "H84-S012"
+            ],
+            "evidence": "PMID 27935970（2016，五位作者）：H84-S007 通訊作者與 H84-S012 的兩位作者",
+            "action": "維持併為 NET_01_UCL_AARHUS_ATSUGI"
+          },
+          {
+            "between": [
+              "H84-S003",
+              "H84-S009"
+            ],
+            "evidence": "PMID 40444291（2025，六位作者，文類為期刊社論）：H84-S003 第二作者（于默奧）與 H84-S009 的一位作者（單位欄為一家儀器公司的實驗室，與 H84-S009 利益衝突聲明所載相符）",
+            "action": "維持併為 NET_03_UMEA_KAROLINSKA；雖是社論而非研究論文，仍屬直接合著，從嚴併網"
+          },
+          {
+            "between": [
+              "H84-S001",
+              "H84-S013"
+            ],
+            "evidence": "三位作者重疊",
+            "action": "維持 NET_02_TRENTO"
+          }
+        ],
+        "homonyms_ruled_out": [
+          "H84-S005 的一位作者（研究者識別碼 0000-0002-1702-7424，全名帶中間名，單位為奧胡斯與隆德）與瑞典林雪平大學一位同姓、名字首字母相同的觸覺研究者（識別碼 0000-0003-2803-3069，該識別碼名下 35 筆著作皆無奧胡斯團隊的論文）是不同人；後者與 H84-S010 的一位作者合著 PMID 35942875（2022）與 PMID 32443443（2020）。作者稿的查詢只用了帶中間名縮寫的寫法，沒有查到這一組；覆核查到後以識別碼、全名與單位消歧，不併網。",
+          "H84-S005 第一作者與「Jones H」同列的 PMID 36529083（2023）：對方全名與單位為巴斯大學心理系的另一人，不是 H84-S006 的利物浦作者（作者稿已核對，覆核複查相同）。",
+          "H84-S002 兩位韓國作者：以全名查兩人同列的 15 筆全是職業熱生理、防護裝備與高地運動研究，共同作者無一屬於其餘各網；以「姓＋縮寫」查到與他網姓名同列的 728 筆（其中 456 筆是數百人的大型聯名論文），逐一看縮寫、期刊與領域（奈米材料、腎臟生理、放射腫瘤、微生物、臨床登錄研究等）皆為同名者。",
+          "H84-S005 一位作者的單一縮寫寫法與他網「Carter H」「Thomas S」「Jones H」同列的 23 筆，縮寫不同（MJ、MS、MT、MW 對 MG）或領域無關（衛生經濟、微生物、病理），皆為同名者。",
+          "被剔除的 F165-S010 第一作者與 H84-S012 一位作者姓加縮寫同列的 12 筆，全是日本靜脈血栓登錄研究（28–32 位作者）的同名者。",
+          "H84-S008 第一作者的姓與美國一位同姓、縮寫多一個字母的神經科學家相同（覆核查到 2 筆，都不是與本人同列），不併網。"
+        ],
+        "crossref": [
+          {
+            "seq": 111,
+            "author_of": "H84-S002",
+            "works_with_surname": 67,
+            "cross_network_coauthors": 0
+          },
+          {
+            "seq": 112,
+            "author_of": "H84-S011",
+            "works_with_surname": 65,
+            "cross_network_coauthors": 0
+          },
+          {
+            "seq": 114,
+            "author_of": "H84-S008",
+            "works_with_surname": 171,
+            "cross_network_coauthors": 0
+          },
+          {
+            "seq": 113,
+            "author_of": "H84-S004",
+            "status": "HTTP 400（網址含未編碼字元，覆核自己的錯），未重送"
+          }
+        ],
+        "limits": "Europe PMC 對工程與人因類期刊收錄不全；未被 Europe PMC 與 Crossref 收錄的會議論文、學位論文中的合著查不到。常見姓名（H84-S002 兩位作者、H84-S005 與 H84-S006 的幾位作者）只能靠縮寫、領域與單位排除同名。",
+        "author_audit_summary": {
+          "pairs_checked": 55,
+          "networks_after_merging": 11,
+          "direct_cross_network_coauthorships": 0,
+          "note": "作者稿的審計紀錄（111 筆查詢、三筆身分核對、兩筆 Crossref）保存在 F165/audit/，結論與覆核一致；差別只有覆核補查到上述一組同名並予排除，以及補上 H84-S005 與 H84-S007 之間 2024 年的合著證據。"
+        }
+      },
+      "task3_fulltext_verification": {
+        "cards_checked": 15,
+        "method": "15 篇全部打開作者快取的完整 JATS 全文（其中 8 篇經 V185 重抓位元組與 sha256 相符）與其純文字轉檔，以全文字串逐一比對卡片的 question、answer_target、payoff、source_locator 與題案 connection、chapters 引用的每個數字、單位、方向、條件、樣本數與表圖號。",
+        "numbers_wrong_or_unsupported": [
+          "H84-007：「補滿」與原文相反——作者明寫結果不支持補滿假說，主張空間加總；摘要把實驗 2 的顯著差異（39.0 對 40.1 °C）寫成「沒有比較弱很多」",
+          "H84-007：亮點句與串講用的 4.5／0.1 °C 是單一名（不參加正式實驗者）的熱像，12 人實測為中指與外側兩指相差 2.0 ± 0.8 °C",
+          "H84-013：「白光實驗」全文查無，原文只稱先前實驗為無色光；Table 4 的 0.40 °C 與 H84-S001 自報的 0.38 °C 不同",
+          "H84-002：167 W/m² 與 1.6 分是十個部位合計的平均差，亮點句與第二章寫成「全身都是／全身沒有例外」",
+          "H84-003：漏了原文例外（上臂暖門檻高於大腿）；「全身沒有一處」只量了四肢八處",
+          "H84-005：32 °C 是基準不是「升到」；對比值的最低溫是受試者按鈕當下的溫度",
+          "H84-006：漏了交互作用 p = 0.210（未達顯著）",
+          "H84-011：暖圓柱 +5% 未達顯著（p = 0.08 趨勢），原摘要寫「暖的也多 5%」",
+          "H84-001：「自認怕冷或怕熱」原文是環境溫度偏好",
+          "H84-S004：limitations 的「相差約 1–2 °C」原文是進出水溫差"
+        ],
+        "direction_errors": 0,
+        "folded_to_0_75": [],
+        "rejected": [
+          "F165-010"
+        ],
+        "abstract_only_or_review_articles": 0,
+        "figure_only_values": "H84-002（逐部位數值）、H84-006（升高幅度）兩張卡都沒有寫出只在圖表影像裡的數字，只寫正文有的數字與方向，確認無誤；F165-010 全部數值都在圖中，已整張不計。",
+        "conclusion_strength": "H84-008（機制寫成本研究結論）、H84-009（「至少有一部分是在腦裡」）、H84-010（把作者推測寫成原因）三張卡的答案開頭比原文強，已改；H84-013 的「變鈍」原已寫明是跨實驗比較、原因為推測；「三盆水」示範在稿中只出現在 drop_if 與 evidence_gaps 的禁止說明，沒有被描述。"
+      },
+      "task4_pool_dedup_and_redline_audit": {
+        "editorial_role_all_theme_seed": true,
+        "candidate_source_one_to_one": true,
+        "chapters_cover_all_cards_once": true,
+        "chapter_seconds": [
+          70,
+          75,
+          105,
+          100,
+          70,
+          120
+        ],
+        "cli_search": "依派工說明未等 cli.mjs search，直接以 python 讀 pool.json（5,410 筆核心）、themes.json（652 組）並 grep THEMES.md、QUESTIONS.md 與奇聞池 QUESTIONS.md",
+        "source_url_collisions_with_pool_or_batches": 0,
+        "mechanism_key_collisions": 0,
+        "same_wave_authors": "F164（蜂蜜結晶）、F166（木梁耐火）、F167（LED 效率下降）的 proposal.json 中「錯覺」「熱柵」皆 0 次，來源 PMCID 零重疊，題目不相鄰。",
+        "legacy_adjacent_cards": "本分類 59 組題案沒有以溫度感覺為題的。鄰近舊卡：LEG-S77（金屬比木頭冰，材料帶走熱的快慢）——本題不重講材料導熱；LEG-S38／LEG-S08（薄荷、辣椒素打開溫度受器）——本題全用真實溫度刺激、不談受器分子；G574／H51-003（手指怎麼量出濕，涼加摩擦被拼成濕）——本題不碰濕感；G578（閉眼摸東西）沒有溫度一章；G221／G465／A21002／R44002（大小—重量錯覺）與 H84-010、012（溫度—重量錯覺）成因不同，稿中只可一句對照；G468（皮膚距離錯覺）、G159（多感官加權）不重疊。作者的 H84-NA001 已逐一寫明邊界，覆核複查相同，判定不撞題。製作時若 LEG-S77 先做，本題開場可承接一句。",
+        "title_and_hook_fix": "題名由「為什麼摸起來會燙」改為「為什麼摸起來反而更熱」：136 人全體回報的是「暖或熱」且強度高於全 40 °C，勾選「灼熱」者 57 人、「痛」者 41 人（痛的評分中位數 0）。第四章標題與白話同步改，不再出現「三成的人說會痛」「人人說熱」「燙」。",
+        "pain_and_clinical_redline": "逐卡判斷：H84-003 為臨床參考值研究，但資料是健康受試者對無害溫度的主觀回報，可留（剔除仍過線）；H84-005（方法取自神經病變研究的測試流程）、H84-008（原題為性別差異與痛閾）、H84-009（疼痛造影框架）都是健康成人的基礎研究，可留，但所有熱痛／冷痛門檻數值、痛的評分、疾病類比已自卡片答案、摘要與定位拿掉；H84-006、H84-011 的痛閾敘述一併刪除；F165-010 全部以「痛」作答，整張不計。題案 connection 與第四章白話沒有疼痛機制、臨床應用或診斷用途的說法；drop_if 第 8 條改寫、新增第 13–15 條。",
+        "redline_scan": "candidates 與 theme 全文無儀器、探頭、熱像儀、握力計、磁振造影儀的品牌與型號，無儀器公司名；無在世或 1956 年後過世學者的姓名與冠名（錯覺、量表、檢定皆以描述取代，十九世紀學者也不寫姓氏）；機構：以在世人士命名的兩所大學已用泛稱，企業附設研究所改為「日本一所企業附設的基礎研究所」（原稿寫出行業別），儀器公司只在 networks／合著審計的作者單位說明中以「一家儀器公司」出現；14 則 editorial.visual 皆無文字、數字、人物面孔。",
+        "dangerous_diy_check": "原稿沒有教觀眾用冷熱水或加熱物品做實驗的句子，但第三、四、五、六章白話有幾句讀起來像可以照做（「讓貼身的水溫……」「把一根涼、一根溫的管子交錯排好，手掌放上去」「把一枚涼硬幣放在額頭上」「把整個房間的燈換成紅的」），已全部改寫成「實驗裡……」「研究者……」的描述；drop_if 新增第 13 條明列不得出現的操作句型（含倒熱水聽聲音）。",
+        "small_sample_wording": "單一受試者的熱像數字（H84-007）不再當群體結果；11–13 人的研究在 connection 中標出人數；H84-013 的「故意反著答」寫明是一位受試者的自述。"
+      },
+      "core_verdicts": [
+        {
+          "id": "H84-001",
+          "source_id": "H84-S001",
+          "pmcid": "PMC10695924",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_02_TRENTO",
+          "changed_fields": [
+            "H84-S001.limitations",
+            "H84-S001.summary",
+            "answer_target",
+            "notes"
+          ],
+          "refetch_sha256_match": false,
+          "reason": "0.38／0.92 °C、+0.80／−0.91 °C、3,120 筆、26 人、每間 5 秒、相對濕度 45%、局部探頭對照值（1.48–2.65 °C）皆與 Abstract、Table 4–6、Discussion 相符。「自認怕冷或怕熱的人表現相近」原文是自述的環境溫度偏好，改寫；補記同一批資料在 H84-S013 被重估為 0.40／0.97 °C。1.00。"
+        },
+        {
+          "id": "H84-002",
+          "source_id": "H84-S002",
+          "pmcid": "PMC8657088",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_04_KYUNGHEE",
+          "changed_fields": [
+            "H84-S002.limitations",
+            "answer_target",
+            "editorial.payoff",
+            "editorial.visual",
+            "notes",
+            "chapters[1].new_information"
+          ],
+          "refetch_sha256_match": false,
+          "reason": "167 W/m²、1.6 分、信度 0.826–0.906、前額最敏感皆相符；卡片沒有寫出任何只在 Table 1／Figure 1–2 影像裡的逐部位數字。亮點句與畫面把「十個部位合計的平均差」寫成「全身都是冷比暖靈」，超出原文，改為「整體平均下來」。兩位常見韓文姓名作者已用全名查詢與領域消歧，獨立網。1.00。"
+        },
+        {
+          "id": "H84-003",
+          "source_id": "H84-S003",
+          "pmcid": "PMC6133911",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_03_UMEA_KAROLINSKA",
+          "changed_fields": [
+            "H84-S003.limitations",
+            "H84-S003.summary",
+            "answer_target",
+            "editorial.payoff",
+            "notes",
+            "chapters[1].new_information"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "Table 2 十六個平均值、68 人、43 人、32 °C、每秒 1 °C 全數相符。補原文例外（上臂暖門檻高於大腿）；「全身沒有一處」改為「量過的八個部位」。臨床參考值研究，但受試者為自述健康者、刺激無害、量的是主觀回報，判定可留，年齡與檢查判讀內容不得入稿；剔除時的重算列在敏感度。1.00（NET_03 封頂內）。"
+        },
+        {
+          "id": "H84-004",
+          "source_id": "H84-S004",
+          "pmcid": "PMC8303551",
+          "verdict": "ADOPT",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_05_LJUBLJANA",
+          "changed_fields": [
+            "H84-S004.limitations",
+            "notes",
+            "chapters[2].new_information"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "舒適區上下界、中性點 30 與 36 °C、34.7／34.1 °C、0.73／0.84、每分鐘 1.2 °C 皆相符，機制已標明是假說。卡片欄位未改；只改正來源 limitations 一句（「1–2 °C」是進出水溫差，不是水溫與皮膚的差）。1.00。"
+        },
+        {
+          "id": "H84-005",
+          "source_id": "H84-S005",
+          "pmcid": "PMC11332243",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_01_UCL_AARHUS_ATSUGI",
+          "changed_fields": [
+            "H84-S005.limitations",
+            "H84-S005.locator",
+            "H84-S005.summary",
+            "answer_target",
+            "notes"
+          ],
+          "refetch_sha256_match": false,
+          "reason": "208 人、三組卡方檢定、勝算比 13.48（5.20–34.99）、17／208、6% 至 75% 皆相符。改正 32 °C 是基準而非「升到」；補上對比值的最低溫是受試者按鈕當下的溫度；「冷痛門檻」等字眼拿掉，只留無痛版本。原始 1.00，NET_01 三篇封頂 2.00。"
+        },
+        {
+          "id": "H84-006",
+          "source_id": "H84-S006",
+          "pmcid": "PMC7177974",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_06_LIVERPOOL",
+          "changed_fields": [
+            "H84-S006.limitations",
+            "H84-S006.summary",
+            "answer_target",
+            "notes",
+            "scope",
+            "source_locator"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "功率、基準溫度、p = 0.017 皆相符，沒有寫出圖中才有的幅度。補原文同句的交互作用 p = 0.210（未達顯著）；熱痛門檻（45–48 °C，有害溫度範圍）的敘述自答案、摘要、範圍與定位刪除。13 人、幅度不可讀，仍計 1.00，敏感度另列折 0.25。"
+        },
+        {
+          "id": "H84-007",
+          "source_id": "H84-S007",
+          "pmcid": "PMC5075768",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_01_UCL_AARHUS_ATSUGI",
+          "changed_fields": [
+            "H84-S007.limitations",
+            "H84-S007.summary",
+            "answer_target",
+            "editorial.payoff",
+            "editorial.visual",
+            "notes",
+            "chapters[3]"
+          ],
+          "refetch_sha256_match": false,
+          "reason": "數字皆相符，但解讀寫反：原稿說溫度訊號會「補滿」，原文明寫結果不支持補滿假說（中指被遮時整體強度顯著較低，39.0 對 40.1 °C），主張的是空間加總；答案、摘要、畫面、串講全改。4.5／0.1 °C 是單一名受試者的熱像，亮點句改用 12 人實測的 2.0 ± 0.8 °C。原始 1.00，NET_01 封頂內。"
+        },
+        {
+          "id": "H84-008",
+          "source_id": "H84-S008",
+          "pmcid": "PMC5579939",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_07_MUNICH",
+          "changed_fields": [
+            "H84-S008.limitations",
+            "H84-S008.summary",
+            "answer_target",
+            "editorial.payoff",
+            "notes",
+            "question",
+            "chapters[3]"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "136 人、中位數 35／30／50／30、41／57／84 人、Table 3 二十個門檻值皆相符。答案第一句把機制寫成本研究結論，改為「量到的是感覺本身」；補「痛的評分中位數 0、不舒服 20」；問題與亮點句不再用「燙」「三成說會痛」。1.00。"
+        },
+        {
+          "id": "H84-009",
+          "source_id": "H84-S009",
+          "pmcid": "PMC3214046",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_03_UMEA_KAROLINSKA",
+          "changed_fields": [
+            "H84-S009.limitations",
+            "H84-S009.summary",
+            "answer_target",
+            "notes",
+            "question",
+            "source_locator",
+            "chapters[3]"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "銀條規格、溫度、不舒服評分檢定、Table 2–4 皆相符。健康成人的基礎造影研究，可留；熱痛與冷痛門檻數值、痛的評分自卡片拿掉，只留「事先確認無害」與不舒服評分；答案開頭「至少有一部分是在腦裡」比原文強，改寫，問題同步改。1.00（NET_03 封頂內）。"
+        },
+        {
+          "id": "F165-010",
+          "source_id": "F165-S010",
+          "pmcid": "PMC9824675",
+          "verdict": "REJECT",
+          "author_facts": 0.75,
+          "reviewer_facts": 0.0,
+          "network": "（剔除，原 NET_08_KUMAMOTO）",
+          "changed_fields": [
+            "整張移入 not_added（H84-NA009）"
+          ],
+          "refetch_sha256_match": false,
+          "reason": "整張不計：作答標準與三個依變項全是「痛」，無法改寫成不談痛的卡片；樣本 7 人與 5 人且兩個實驗都在看過資料後剔除離群者（實際 5 人與 4 人）才達顯著；全部數值只在圖中、正文無可核對數字；「痛出在交界」是作者猜測。作者自折 0.75 → 0。移入 not_added（H84-NA009）。"
+        },
+        {
+          "id": "H84-010",
+          "source_id": "H84-S010",
+          "pmcid": "PMC5209941",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_09_WSU",
+          "changed_fields": [
+            "H84-S010.limitations",
+            "answer_target",
+            "notes",
+            "chapters[4].new_information"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "71.8／90／77.3／94.6%、16.4／31.8%、神經壓迫前後四個比例、4／9 皆相符。答案第一句把作者推測寫成原因，改為「研究者的推測是」。1.00。"
+        },
+        {
+          "id": "H84-011",
+          "source_id": "H84-S011",
+          "pmcid": "PMC7237526",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_10_KIEL",
+          "changed_fields": [
+            "H84-S011.limitations",
+            "H84-S011.summary",
+            "answer_target",
+            "notes",
+            "source_locator",
+            "chapters[4].new_information"
+          ],
+          "refetch_sha256_match": false,
+          "reason": "31.37／34.93／33.05 牛頓、p = 0.012、+0.9 牛頓約 10%、+1.5%、19／21 皆相符。補事後比較（只有 700 公克冷圓柱達顯著，暖的 +5% 未達顯著）；痛覺門檻數值拿掉。全文由作者自美國國家醫學圖書館端點取得，覆核重抓 Europe PMC 一次回 500，依作者快取核對。1.00。"
+        },
+        {
+          "id": "H84-012",
+          "source_id": "H84-S012",
+          "pmcid": "PMC4080700",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_01_UCL_AARHUS_ATSUGI",
+          "changed_fields": [
+            "H84-S012.limitations",
+            "H84-S012.publisher",
+            "H84-S012.summary",
+            "answer_target",
+            "notes",
+            "chapters[5].new_information"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "32.8 對 32.2 °C、32.1 對 32.6 °C、約 0.5 °C、12 人與 11 人皆相符，方向無誤。機構寫法改為不含商號與行業別的泛稱。原始 1.00，NET_01 封頂內。"
+        },
+        {
+          "id": "H84-013",
+          "source_id": "H84-S013",
+          "pmcid": "PMC11399116",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_02_TRENTO",
+          "changed_fields": [
+            "H84-S013.limitations",
+            "H84-S013.summary",
+            "answer_target",
+            "notes",
+            "chapters[5].new_information"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "p = 0.29、Table 4 六個門檻值、p = 0.08、16 對 10 人皆相符；「變鈍」原已寫明是跨實驗比較、原因為推測。「白光實驗」原文無此說法（只稱無色光），改掉；補記 0.40 與 H84-S001 的 0.38 °C 出入。1.00（NET_02 封頂內）。"
+        },
+        {
+          "id": "H84-014",
+          "source_id": "H84-S014",
+          "pmcid": "PMC11327021",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_11_HERZLIYA",
+          "changed_fields": [
+            "H84-S014.limitations",
+            "answer_target",
+            "notes",
+            "chapters[5].new_information"
+          ],
+          "refetch_sha256_match": false,
+          "reason": "80%、41 人、26／31／71／72%、94.5%、聲學特徵段皆相符；補 10 °C 組顯著水準較弱（p < 0.05）。計條的是 41 人線上聽辨，照計 1.00，敏感度另列折 0.25。"
+        }
+      ],
+      "main_corrections": [
+        "剔除一張卡：熱柵棋盤實驗（原 F165-010）全部以「痛」作答、7 人與 5 人、事後剔除離群者才顯著、數值全在圖中，作者自折 0.75 改為整張不計；全題由 15 篇 13.75 條、9.72 分鐘改為 14 篇 13.00 條、9.33 分鐘，排片由 9.5 下修為 9.0 分鐘（540 秒）。",
+        "H84-007 解讀寫反：原稿說中指的暖是被「補滿」，原文明寫結果不支持補滿假說（中指被遮時整體強度顯著較低，39.0 對 40.1 °C），主張的是空間加總；亮點句的「一度都沒升」來自單一受試者熱像（4.5 對 0.1 °C），改用 12 人實測的中指比外側兩指涼 2.0 ± 0.8 °C。",
+        "「痛」的處理：題名由「會燙」改為「反而更熱」；H84-008 補上「痛的評分中位數 0、不舒服 20」，亮點句不再說「三成說會痛」；H84-009、006、012、005 的熱痛／冷痛門檻數值（45.0 °C、14／20 人到 0 °C、43.6 與 14.1 °C 等）與痛的評分自卡片拿掉；H84-008、009、011 把機制或作者推測寫成結論的開頭句改寫。",
+        "H84-013 的「白光實驗」原文查無（只稱無色光），改掉；前一實驗的七成五門檻在兩篇論文不同（H84-S001 寫 0.38 °C，H84-S013 Table 4 重估為 0.40 °C），兩卡各用各的出處並加註。",
+        "過度概括：H84-002 的 167 W/m² 與 1.6 分是十個部位合計的平均差，不是「全身都是」；H84-003 只量四肢八處且有例外（上臂暖門檻 3.3 °C 高於大腿 2.7 °C）；H84-006 漏了交互作用 p = 0.210；H84-011 暖圓柱的 +5% 未達顯著。",
+        "合著：三組併網全部維持，並補上 H84-S005 與 H84-S007 之間 2024 年的合著（三位作者同列）；覆核另查到作者漏查的一組姓名相同者（H84-S005 一位作者對林雪平一位與 H84-S010 作者合著過兩篇的研究者），以研究者識別碼、全名與單位判定為不同人，不併網。取得管道：作者對兩篇在 Europe PMC 的 500／503 各試了三次，照實記錄。"
+      ],
+      "residual_concerns": [
+        "覆核重抓只有 8 篇成功，H84-S001、S002、S005、S007、S012、S015 六篇因 Europe PMC 回 500 或逾時，只以作者快取核對；H84-S011 的全文來自 NCBI 端點，覆核依規定未碰該主機，無法獨立重抓",
+        "同名消歧靠的是 Europe PMC 上的研究者識別碼與單位欄；若林雪平那位研究者其實與 H84-S005 的作者為同一人（判斷為否），H84-010 須併入 NET_01，全題降為 12.00 條、8.81 分鐘，仍過線",
+        "本題多數來源的原文以疼痛或臨床為框架（H84-003、005、008、009）；卡片已清乾淨，但寫稿者回頭讀原文時容易把痛閾與疾病類比帶回來，須照 drop_if 第 8、13–15 條把關",
+        "H84-006（13 人、幅度只在圖中、交互作用未達顯著）與 H84-014（線上聽辨）偏弱；兩張各折 0.25 仍過線，但若再加上剔除 H84-003，餘裕只剩 0.10 條",
+        "多篇補充資料未下載；H84-005「一般冷覺門檻不足以預測」的數值在補充表",
+        "H84-014 與「皮膚不是溫度計」的主線距離較遠（聽覺），是收尾卡；若觀眾初評覺得離題，可縮成一句"
+      ],
+      "networks": [
+        {
+          "id": "NET_01_UCL_AARHUS_ATSUGI",
+          "source_ids": [
+            "H84-S005",
+            "H84-S007",
+            "H84-S012"
+          ],
+          "authors": [
+            "Alexandra G Mitchell",
+            "Jesper Fischer Ehmsen",
+            "Małgorzata Basińska",
+            "Arthur S Courtin",
+            "Rebecca A Böhme",
+            "Camila Sardeto Deolindo",
+            "Micah G Allen",
+            "Kristian Sandberg",
+            "Francesca Fardo",
+            "Antonio Cataldo",
+            "Elisa Raffaella Ferrè",
+            "Giuseppe di Pellegrino",
+            "Patrick Haggard",
+            "Hsin-Ni Ho",
+            "Daisuke Iwai",
+            "Yuki Yoshikawa",
+            "Junji Watanabe",
+            "Shin'ya Nishida"
+          ],
+          "weights": {
+            "H84-005": 1.0,
+            "H84-007": 1.0,
+            "H84-012": 1.0
+          },
+          "capped_total": 2.0
+        },
+        {
+          "id": "NET_02_TRENTO",
+          "source_ids": [
+            "H84-S001",
+            "H84-S013"
+          ],
+          "authors": [
+            "Laura Battistel",
+            "Andrea Vilardi",
+            "Massimiliano Zampini",
+            "Riccardo Parin",
+            "Claudio Zandonella Callegher"
+          ],
+          "weights": {
+            "H84-001": 1.0,
+            "H84-013": 1.0
+          },
+          "capped_total": 2.0
+        },
+        {
+          "id": "NET_03_UMEA_KAROLINSKA",
+          "source_ids": [
+            "H84-S003",
+            "H84-S009"
+          ],
+          "authors": [
+            "Victoria Heldestad Lilliesköld",
+            "Erik Nordh",
+            "Fredrik Lindstedt",
+            "Bo Johansson",
+            "Sofia Martinsen",
+            "Eva Kosek",
+            "Peter Fransson",
+            "Martin Ingvar"
+          ],
+          "weights": {
+            "H84-003": 1.0,
+            "H84-009": 1.0
+          },
+          "capped_total": 2.0
+        },
+        {
+          "id": "NET_04_KYUNGHEE",
+          "source_ids": [
+            "H84-S002"
+          ],
+          "authors": [
+            "Yongsuk Seo",
+            "Jung-Hyun Kim"
+          ],
+          "weights": {
+            "H84-002": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_05_LJUBLJANA",
+          "source_ids": [
+            "H84-S004"
+          ],
+          "authors": [
+            "Igor B Mekjavic",
+            "Daniel Yogev",
+            "Urša Ciuha"
+          ],
+          "weights": {
+            "H84-004": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_06_LIVERPOOL",
+          "source_ids": [
+            "H84-S006"
+          ],
+          "authors": [
+            "Samuel D Thomas",
+            "Howard H Carter",
+            "Helen Jones",
+            "Dick H J Thijssen",
+            "David A Low"
+          ],
+          "weights": {
+            "H84-006": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_07_MUNICH",
+          "source_ids": [
+            "H84-S008"
+          ],
+          "authors": [
+            "Beate Averbeck",
+            "Lena Seitz",
+            "Florian P Kolb",
+            "Dieter F Kutz"
+          ],
+          "weights": {
+            "H84-008": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_09_WSU",
+          "source_ids": [
+            "H84-S010"
+          ],
+          "authors": [
+            "James S Dunn",
+            "David A Mahns",
+            "Saad S Nagi"
+          ],
+          "weights": {
+            "H84-010": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_10_KIEL",
+          "source_ids": [
+            "H84-S011"
+          ],
+          "authors": [
+            "Johann P Kuhtz-Buschbeck",
+            "Johanna Hagenkamp"
+          ],
+          "weights": {
+            "H84-011": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_11_HERZLIYA",
+          "source_ids": [
+            "H84-S014"
+          ],
+          "authors": [
+            "Mohr Wenger",
+            "Amber Maimon",
+            "Or Yizhar",
+            "Adi Snir",
+            "Yonatan Sasson",
+            "Amir Amedi"
+          ],
+          "weights": {
+            "H84-014": 1.0
+          },
+          "capped_total": 1.0
+        }
+      ]
+    },
+    "V186": {
+      "report_id": "wave84-arch-F166-V186-review-20261114",
+      "reviewed_on": "2026-11-14",
+      "round": 34,
+      "wave": "wave84",
+      "reviewer": "V186",
+      "author": "F166",
+      "category": "建築交通與商業制度",
+      "proposal_id": "F166-T1",
+      "verdict": "ready",
+      "title_author": "木頭會燒、鋼不會燒，大火裡的粗木梁為什麼不會一下就垮？",
+      "title_reviewed": "粗木頭燒起來外面焦黑、裡面還白，那層炭擋住了什麼、又在哪裡擋不住？",
+      "author_networks": 13,
+      "reviewer_networks": 13,
+      "author_cards": 15,
+      "reviewer_cards": 14,
+      "author_fact_count": 13.75,
+      "author_minutes": 9.72,
+      "recount_fact_count": 12.5,
+      "recount_minutes": 9.07,
+      "target_minutes": 9.0,
+      "chapter_seconds_total": 540,
+      "minutes_formula": "(12.5 * 140 + 700) / 270 = 2450 / 270 = 9.07407 -> 9.07 (>= 8.50 min ready threshold; weighted_facts 12.5 >= 11.4)",
+      "turning_points": [
+        "轉折一：「會不會燒」不是重點，重點是受熱以後還剩多少能受力的截面——不會燒的鋼 600 °C 降伏強度不到一半，木頭則是外圈成炭、裡面慢慢變細（T84-004、005；前提 T84-001、002、003）",
+        "轉折二：「每分鐘零點幾毫米」只是平均，試驗裡的構件壞在縫、金屬件與膠這些熱走捷徑的地方（T84-005 空心梁、006、007、008）"
+      ],
+      "sensitivity_notes": "基準核定：13 個研究網、14 張卡、12.50 條、9.07 分鐘（高於門檻 +0.57 分鐘，即 +1.10 條餘裕）。V186 已做的調整：T84-004（實驗與建模並重、引用的分鐘數為模擬）由 1.00 折為 0.75（−0.25）；F166-014（明火工藝操作描述、離題）剔除，NET_13 由封頂 2.00 降為 1.00（−1.00）；作者自折 0.75 的五張（T84-005、010、011、012、013）維持。敏感度測試：（1）最壞情形 NET_07（德勒斯登等）、NET_08（波茲南）、NET_13（芬蘭）日後證實三網相連 → 3.00 封頂為 2.00，全題 11.50 條＝8.56 分鐘，仍過，餘裕只剩 0.10 條；（2）純模擬的 T84-012 整張不計 → 11.75 條＝8.69 分鐘，仍過；（3）T84-014 視為離題不計 → 11.50 條＝8.56 分鐘，仍過（此時 NET_07＋NET_08 就算相連也不再扣）；（4）再把 T84-001（資料論文、每種擺法僅重複一次）折為 0.75 → 12.25 條＝8.94 分鐘，仍過；（5）上述（1）（2）（3）任兩項同時成立（(1)+(2)＝10.75、(2)+(3)＝10.75），或（1）加任何一張再折 0.25（11.25 條＝8.43 分鐘），即跌破 11.4 條，改列 reserve——屆時要補一到兩篇歐洲木材圈以外、獨立研究網的實驗論文，首選作者因伺服器錯誤沒讀到的「熱通量對雲杉炭化速率的影響」（PMC11435462，須先讀完全文並做合著稽核）；（6）NET_12 併入 NET_01（同校同中心）不影響總數（1.75 未達上限）。結論：單一不利情形都還過線，兩個同時發生就不過；判 ready，但餘裕比上一輪薄，已寫進 evidence_gaps。",
+      "task1_access_and_refetch_audit": {
+        "f166_access_log_total_rows": 189,
+        "f166_seq_continuous": "否：seq=41 出現兩列（PMC9460003 與另一筆同秒寫入）、seq=42 從缺，應為兩個程序同時寫紀錄造成的編號競爭；其餘 1–189 連續。不影響任何收錄來源（15 篇的 seq 皆唯一）。",
+        "f166_host_breakdown": {
+          "www.ebi.ac.uk": 157,
+          "api.crossref.org": 32
+        },
+        "f166_status_breakdown": {
+          "www.ebi.ac.uk 200": 115,
+          "www.ebi.ac.uk 500": 19,
+          "www.ebi.ac.uk 503": 23,
+          "api.crossref.org 200": 25,
+          "api.crossref.org 400": 7
+        },
+        "f166_429_403": "0 筆；blocked_hosts.json 為空屬實。Europe PMC 500／503 共 42 筆與作者自述相符。",
+        "f166_retries_on_5xx": "全文端點同一編號最多請求 3 次（PMC9003275：500、500、200；PMC7240737：500 ×3；PMC9411536：503、500、500）；第一輪 17 筆合著查詢回 503 後整批重送成功。5xx 不在「429／403 第一次就停」的規則內，但同一編號打到第三次偏多，照實記錄。",
+        "f166_crossref_400": "7 筆因網址含未編碼的變音字母回 400（用戶端格式錯誤，不是封鎖），改用去變音符號拼法重送成功。",
+        "f166_cache_hash_check": "140 列 HTTP 200 的存檔全部存在，位元組與 sha256 逐列相符者 139 列，唯一不符是 seq=158（audit/cr_krystofiak_wieruszewski.json，6953 位元組）——同一檔名在 seq=159 以 rows=40 重抓後被覆寫（16044 位元組，與 seq=159 相符），屬覆寫而非竄改。49 列非 200 的錯誤回應頁多已被後來成功的重試覆寫或未留檔，不列入比對。",
+        "f166_request_spacing": "相鄰請求最短間隔 0 秒 1 次（即 seq=41 的重號那一對），其餘皆 ≥ 1 秒。",
+        "f166_urls_and_pii": "網址皆為 Europe PMC REST search／fullTextXML 與 Crossref works?query.author，無拼湊的出版社網址，無 mailto、email 或其他個人資訊；未碰 eutils 與 OpenAlex。前 3 筆搜尋（seq=1–3）是作者改題前的冷鋪面／屋頂題檢索，與定稿無關。",
+        "source_read_via_matches_log": "15 個來源的 read_via（seq、位元組數）與 author_cache.sha256_prefix 逐一對上 access_log",
+        "v186_refetch": {
+          "attempted": 15,
+          "identical_bytes_and_sha256": [
+            "PMC10532819",
+            "PMC12349689",
+            "PMC13515012",
+            "PMC6891677",
+            "PMC7345967",
+            "PMC8160771",
+            "PMC8836681",
+            "PMC9737049"
+          ],
+          "identical_count": 8,
+          "not_refetched": {
+            "PMC12813490": "Europe PMC fullTextXML 兩次皆回 HTTP 500 或 503（伺服器端錯誤，非 429／403），依派工規定第二次後停止；以作者快取（雜湊已對 access_log）核對內容",
+            "PMC11197656": "Europe PMC fullTextXML 兩次皆回 HTTP 500 或 503（伺服器端錯誤，非 429／403），依派工規定第二次後停止；以作者快取（雜湊已對 access_log）核對內容",
+            "PMC9782050": "Europe PMC fullTextXML 兩次皆回 HTTP 500 或 503（伺服器端錯誤，非 429／403），依派工規定第二次後停止；以作者快取（雜湊已對 access_log）核對內容",
+            "PMC10358616": "Europe PMC fullTextXML 兩次皆回 HTTP 500 或 503（伺服器端錯誤，非 429／403），依派工規定第二次後停止；以作者快取（雜湊已對 access_log）核對內容",
+            "PMC9414900": "Europe PMC fullTextXML 兩次皆回 HTTP 500 或 503（伺服器端錯誤，非 429／403），依派工規定第二次後停止；以作者快取（雜湊已對 access_log）核對內容",
+            "PMC6926742": "Europe PMC fullTextXML 兩次皆回 HTTP 500 或 503（伺服器端錯誤，非 429／403），依派工規定第二次後停止；以作者快取（雜湊已對 access_log）核對內容",
+            "PMC8639102": "Europe PMC fullTextXML 兩次皆回 HTTP 500 或 503（伺服器端錯誤，非 429／403），依派工規定第二次後停止；以作者快取（雜湊已對 access_log）核對內容"
+          },
+          "note": "V186 開工時 Europe PMC 全文與搜尋端點同時故障約十分鐘，前六篇在這段時間用掉兩次機會；服務恢復後其餘九篇有八篇一次或兩次內取得。失敗回應的錯誤頁已移到 V186/cache_failed/，access_log 的檔名欄仍記原路徑。"
+        },
+        "v186_own_log": "V186/access_log.jsonl 共 93 列、seq 連續：Europe PMC 46 筆（200：28；500：9；503：9）、Crossref 47 筆（全 200）；429／403 為 0，blocked_hosts.json 為空；每筆間隔 ≥ 1.1 秒，User-Agent 為 Mokaair-editorial/1.0，無個人資訊。"
+      },
+      "task2_coauthorship_audit": {
+        "reviewer": "V186",
+        "reviewed_on": "2026-11-14",
+        "source_pairs_checked": 105,
+        "cross_network_source_pairs": 103,
+        "direct_cross_network_coauthorships": 0,
+        "confirmed_within_network": [
+          "T84-S003 × T84-S007（PMID 36499881）",
+          "F166-S014 × T84-S014（PMID 30355998；F166-S014 已剔除）"
+        ],
+        "method": "自行由 15 篇 JATS 的 article-meta/contrib-group 重拆作者（64 位；另排除 11 位學術編輯）。Europe PMC：每篇一筆查詢，（本篇全部作者的 AUTH 變體）AND（其餘 14 篇全部作者的 AUTH 變體），resultType=core 取回作者全名與機構，15 筆查詢涵蓋 105 組論文配對；姓名一律去變音符號（帶變音符號的查詢會回 0 筆），歐洲姓名用「姓＋全部縮寫」「姓＋首字縮寫」與全名，連字號姓氏另列空格拼法，中文姓名用全名（含連字號與連寫兩種）。66 筆不重複命中中兩邊都對上姓名的 29 筆逐筆判讀。Crossref：對 37 位歐洲與臺灣作者各抓一份著作清單（query.author，每頁 500 筆，三位另抓第二頁，七個姓氏加抓去變音符號拼法；共 47 筆請求，無 429），以「姓＋名首字」比對所有其他研究網作者。",
+        "homonyms_ruled_out": "Europe PMC 27 筆跨網命中全為同名異人：香港理工大學電機系的鈣鈦礦太陽能電池論文群、昆明與北京等地醫院的臨床論文、西北工業大學的起落架故障診斷、加州大學爾灣分校的疫苗輿情分析等，機構與領域都與本題作者（蘭州大學資源環境、揚州大學土木、西南林業大學土木、遼寧工程技術大學安全工程）不符。Crossref 7 筆命中為 1,700 位以上作者的心臟臨床試驗群組論文與一本 5,425 位作者的糖尿病年會摘要集，屬同姓同首字的他人。",
+        "limits": "Europe PMC 對木材科學與土木工程期刊收錄不全；Crossref 收不到沒有 DOI 的地方期刊，常見姓名的清單只取相關度前 500 筆（已以對方的完整清單交叉補足罕見姓氏的配對）；中文姓名只用全名查，缺全名欄位的舊紀錄可能漏掉。OpenAlex 與 eutils 未使用。",
+        "files": "V186/audit/ep_S0xx_p0.json（15 筆）、V186/audit/cra_*.json（47 筆）、V186/audit/authors_raw.json"
+      },
+      "task3_fulltext_verification": {
+        "cards_checked": 15,
+        "method": "15 篇全部打開作者快取的完整 JATS 全文（其中 8 篇經 V186 重抓位元組與 sha256 相同），自行轉成純文字後以字串逐一比對卡片、來源摘要與題案 connection、chapters 引用的每個數字、單位、方向、條件、樣本數與表圖號；表格（T84-S004 Table 3、S005 Table 5–8、S006 Table 4 與 6、S007 Table 6、S008 Table 4–5、S009 Table 3、S012 Table 1）逐列讀完。",
+        "numbers_wrong_or_unsupported": [
+          "T84-001：每次試驗不是「三根雲杉柱」，A 擺法是兩柱一梁、B 擺法才是三柱",
+          "T84-004：「沒有防火被覆」全文查無（鋼溫是依設計規範算的，原文未交代被覆）；「整根很快一起熱」原文沒有",
+          "T84-005：「約三成破壞荷載」是原文的說法，但 13 kN／55.90 kN 只有約 23%，改為並列",
+          "T84-011：475 秒是襯板「開始塌落」，不是「八分鐘整片燒塌」",
+          "T84-013：「約第 17 分鐘燒穿」與同文 6.2 節（2600–2800 秒）相差近半小時，不採用",
+          "T84-014：「火焰炭化在兩種樹、兩種菌下都低於未處理」——結果段明寫樺木火焰炭化與未處理無顯著差異、白腐菌組兩種炭化之間無顯著差異",
+          "T84-S006 摘要：「12 個裡只有 2 個沒燒穿」——另有 2 個剛好 50 毫米",
+          "T84-S009 limitations：「試片 12 片」——方法段為當代 6＋歷史 12，Table 3 各組重複數合計 28"
+        ],
+        "author_flagged_internal_inconsistencies": {
+          "T84-006 不合格比例": "屬實（10／12、8／12、9／12、75%、67%、83% 並存）；卡片改用表列 8／11，正確",
+          "T84-007 的 7.2 節對 Table 6": "屬實（63／78／82 對 64／74／83）；卡片採 Table 6，正確",
+          "T84-008 兩種聚氨酯標示對調": "屬實；卡片合稱，正確；另發現實木比值欄 0.62 對 0.66",
+          "T84-013 燒穿時間": "屬實；原稿選了第 17 分鐘，覆核改為不採用"
+        },
+        "direction_errors": 0,
+        "folded_to_0_75": [
+          "T84-004（覆核新折）",
+          "T84-005",
+          "T84-010",
+          "T84-011",
+          "T84-012",
+          "T84-013（後五張為作者自折，維持）"
+        ],
+        "rejected": [
+          "F166-014"
+        ],
+        "abstract_only_or_review_articles": 0,
+        "cross_study_comparisons_removed": "T84-004 與 T84-011 的畫面各有一處把不同研究的構件放在同一場火裡並排，已拿掉；connection 與第三、五章白話改寫為「條件不同，只並排看」",
+        "indirect_or_author_interpretation_wording": "T84-001（裂縫讓氧氣進更深）、002（裂縫為氣體通道）、006（火從縫鑽入）、009（表面而非年紀）、013（礦棉過濾）、015（菌絲經裂縫進入）在答案、章節白話與 drop_if 第（6）條都標為研究者的解釋"
+      },
+      "task4_pool_dedup_and_redline_audit": {
+        "editorial_role_all_theme_seed": true,
+        "candidate_source_one_to_one": true,
+        "chapters_cover_all_cards_once": true,
+        "chapter_seconds": [
+          60,
+          75,
+          80,
+          100,
+          95,
+          80,
+          50
+        ],
+        "cli_search": "依派工說明未等 cli.mjs，直接以 python 讀 pool.json（13,867 筆含 id 的紀錄）、themes.json（652 組）、batches/*.json，並 grep THEMES.md、奇聞池 QUESTIONS.md",
+        "source_url_collisions_with_pool_or_batches": 0,
+        "mechanism_key_collisions": 0,
+        "same_wave_authors": "F164（蜂蜜結晶）、F165（溫度感覺）、F167（LED 效率下降）的 proposal.json 皆已存在：來源 PMCID 零重疊，「木材」「炭」「耐火」皆 0 次",
+        "legacy_adjacent_cards": "LEG-S77（金屬比木頭冰：常溫導熱與觸感）、LEG-S48（火焰為什麼向上）、P187（蠟燭熔化與燃燒）、D2099–D2101（鋼筋混凝土的常溫耐久，D2101 的「碳化」是混凝土中性化，與木材炭化無關）、D2179（灑水頭逐顆觸發）、R29003／R29004（考古焦屑）皆不回答本題的問題，邊界照作者 T84-NA001 所寫成立。D2107（木板翹曲與年輪方向）原與 F166-014 相鄰，該卡已剔除。作者漏列一張真正相鄰的卡：B4040（石膏板遇火為什麼釋水並延緩升溫）與 T84-012 相鄰——判定不撞題（B4040 講石膏板自己的機制，T84-012 只問板後細木立柱在模擬裡剩多少），但稿中石膏板釋水只可一句帶過；已補進 T84-NA001。題案層級：themes.json 652 組沒有任何一組談木材受火或構件耐火（G363／G365 是史前用火考古、G647 是石灰）。",
+        "title_overpromise_fix": "原題名「木頭會燒、鋼不會燒，大火裡的粗木梁為什麼不會一下就垮？」承諾了兩件證據沒有的事：木與鋼的對比（沒有同條件並列試驗）與「大火裡不會一下就垮」（木梁只有一根、試驗因火焰竄出中止）。改為「粗木頭燒起來外面焦黑、裡面還白，那層炭擋住了什麼、又在哪裡擋不住？」；核心追問拿掉「木造的梁柱在火裡是怎麼壞的」，改問「實驗裡的木構件受熱以後從哪裡先出問題」；第三章題名由「鋼不會燒，為什麼反而怕火？」改為「不會燒的鋼，加熱以後還剩多少力氣？」並明說兩個實驗不能比誰久；第四章題名拿掉「夠粗就安全嗎」。",
+        "safety_conclusion_check": "全稿沒有「木造房子失火比較安全／危險」的句子；drop_if 第（3）條新增這一句型並禁止鋼木並排的畫面；第六章題名原為「細木頭怎麼辦？先穿一件不會燒的外衣，再早一點發現」，讀起來像做法建議，改為描述句，兩張卡的白話都寫成研究者的模擬與單次試驗。",
+        "redline_scan": "全稿（不含 networks 與 coauthorship_audit 的作者姓名清單）：無木材、膠、塗料、防火板、感測器、儀器、軟體的品牌或商品名（原文裡的膠、防火漆、礦棉、定向纖維板、室內感測器、有限元素軟體廠牌皆未入稿）；公開資料庫名稱 2 處改泛稱；來源 limitations 與 not_added 裡 5 處在世作者姓名（合著說明用）改為職稱。芬蘭那所以 1976 年過世人物冠名的大學：全檔含 networks、coauthorship_audit 以不分大小寫搜尋校名 0 次，一律是「芬蘭赫爾辛基都會區一所大學」。布爾諾那所大學以 1884 年過世者冠名，可保留。單位只用到帕（MPa）、瓦、伏特、焦耳，皆 1956 年前過世者。T84-006 樹種照原文寫「cedar（Cedrus）」未改譯。editorial.visual 14 則皆無文字、數字、人物面孔。",
+        "dangerous_diy_check": "F166-014 的卡片與畫面描述明火工藝的配置、點火位置與時間，判定越線並離題，剔除（T84-NA007）。T84-014 保留但刪去噴槍操作時間、問題句改為「那層炭擋得住腐朽菌嗎」，第七章白話不提燒杉、不提怎麼把木板變黑；drop_if 第（1）條明列不得描述或鼓勵把木板燒黑。其餘各卡沒有可照做的燃燒操作。",
+        "history_disaster_narratives": "T84-010、011 來源文中的歷史火災與礦災傷亡數字全稿未引用；drop_if 第（9）條保留。"
+      },
+      "core_verdicts": [
+        {
+          "id": "T84-001",
+          "source_id": "T84-S001",
+          "pmcid": "PMC12813490",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_01_CTU_Prague",
+          "changed_fields": [
+            "answer_target",
+            "scope",
+            "editorial.payoff",
+            "notes",
+            "T84-S001.locator",
+            "T84-S001.summary",
+            "T84-S001.reading_scope",
+            "T84-S001.limitations",
+            "connection",
+            "chapters[0].new_information"
+          ],
+          "refetch_sha256_match": null,
+          "reason": "16.5／16.3 毫米、0.54 毫米／分鐘、少 15 毫米、7.9／7.3／9.1／4.4 毫米、約 820 °C 皆對上原文；但每次試驗不是「三根柱」——A 擺法是兩柱一梁、B 擺法才是三柱，已更正；補上原文但書（對應只限 30 分鐘、炭化速率非定值）與原文對 A 擺法上下炭深的兩段不一致敘述；資料庫名稱改泛稱。1.00。"
+        },
+        {
+          "id": "T84-002",
+          "source_id": "T84-S002",
+          "pmcid": "PMC11197656",
+          "verdict": "ADOPT",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_02_Lanzhou",
+          "changed_fields": [],
+          "refetch_sha256_match": null,
+          "reason": "30 mg、300 °C／4 小時、失重 50%／80%、碳 47.67% ± 0.85% → >60%、氧約 48% → 約 35%、壁厚與腔面積各約 20%、300 °C／2 小時均質化、>350 °C 裂縫成通道（討論段示意）、>500 °C 灰化全數相符，未改內容。1.00。"
+        },
+        {
+          "id": "T84-003",
+          "source_id": "T84-S003",
+          "pmcid": "PMC9782050",
+          "verdict": "ADOPT",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_03_NanjingTech_Yangzhou",
+          "changed_fields": [
+            "notes",
+            "T84-S003.limitations"
+          ],
+          "refetch_sha256_match": null,
+          "reason": "353 kg/m³、含水率 10.9% → 2.9% → 0.6% → 0、162 個試件、抗彎 0.79／0.82／0.5、弦向剪 6.7／4.9／5.2／1.3 MPa 與 0.19、徑向剪 0.87／1.05／0.46、彈性模數 3.9 → 2.9 GPa 全數相符；只把來源欄位裡的在世作者姓名改為職稱。1.00（NET_03 封頂 2.00）。"
+        },
+        {
+          "id": "T84-004",
+          "source_id": "T84-S004",
+          "pmcid": "PMC10358616",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 0.75,
+          "network": "NET_04_SWFU_Kunming",
+          "changed_fields": [
+            "answer_target",
+            "scope",
+            "editorial.visual",
+            "notes",
+            "T84-S004.summary",
+            "T84-S004.limitations",
+            "weight 1.00→0.75",
+            "connection",
+            "chapters[2]"
+          ],
+          "refetch_sha256_match": null,
+          "reason": "463 MPa、Table 3 各溫度降伏強度、500 °C 潛變 1.5／3.5 小時、鋼管柱尺寸、44.7／29.1 分鐘、14.5% 皆相符。該文實驗與建模各半、引用的分鐘數全是有限元素模擬（模型只以常溫承載力試驗驗證）→ 由 1.00 折為 0.75；「沒有防火被覆」全文查無、「整根很快一起熱」原文沒有，刪；畫面拿掉與木柱同背景並排的比較。"
+        },
+        {
+          "id": "T84-005",
+          "source_id": "T84-S005",
+          "pmcid": "PMC9414900",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 0.75,
+          "reviewer_facts": 0.75,
+          "network": "NET_05_Zagreb",
+          "changed_fields": [
+            "answer_target",
+            "editorial.payoff",
+            "notes",
+            "T84-S005.summary",
+            "T84-S005.limitations",
+            "connection",
+            "chapters[2]"
+          ],
+          "refetch_sha256_match": null,
+          "reason": "Table 5–8 的時間、撓度 63.6／87.4／88.2 毫米、194.4 毫米、0.69／0.78／0.64 毫米／分鐘、中止原因皆相符；「約三成」原文有此說但 13／55.90 kN 只有約 23%，並列；亮點句補「試驗因火焰竄出而喊停」。0.75 維持（火災試驗每種一根）。"
+        },
+        {
+          "id": "T84-006",
+          "source_id": "T84-S006",
+          "pmcid": "PMC6926742",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_06_NTUST_Taipei",
+          "changed_fields": [
+            "notes",
+            "T84-S006.summary",
+            "T84-S006.limitations"
+          ],
+          "refetch_sha256_match": null,
+          "reason": "Table 4、6 逐列重數：8／11 翼板超過 300 °C（最高 486 °C）、平均炭深 30.48–46.32 毫米、最大 43–60 毫米、2 個小於 50 與 2 個等於 50、cedar 組高 22.3%、加厚 12–15.7 毫米皆相符；原文不合格比例確實五種寫法互不一致，卡片不引；只改來源摘要「只有 2 個沒燒穿」一句。1.00。"
+        },
+        {
+          "id": "T84-007",
+          "source_id": "T84-S007",
+          "pmcid": "PMC7345967",
+          "verdict": "ADOPT",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_03_NanjingTech_Yangzhou",
+          "changed_fields": [
+            "notes",
+            "T84-S007.limitations"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "Table 6 全部 27 個破壞時間與平均（37 對 64；70／64／57；64／74／83；57、77）、兩個螺桿燒斷試體、106.8／114.2 kN 皆相符；7.2 節 63／78／82 與 Table 6 不一致屬實，採表列正確；只把來源欄位的在世作者姓名改為職稱。1.00（NET_03 封頂 2.00）。"
+        },
+        {
+          "id": "T84-008",
+          "source_id": "T84-S008",
+          "pmcid": "PMC10532819",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_07_Dresden_adhesive",
+          "changed_fields": [
+            "source_locator",
+            "notes",
+            "T84-S008.limitations"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "Table 4（設定 200 °C 拉伸當下 147 °C）、Table 5 各膠強度與降幅 34／33／34／53／53／96／50% 皆相符；補記實木比值欄印 0.62、依數值應為 0.66，兩種聚氨酯列名對調屬實。與 T84-S009 複查無合著。1.00。"
+        },
+        {
+          "id": "T84-009",
+          "source_id": "T84-S009",
+          "pmcid": "PMC13515012",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_08_Poznan",
+          "changed_fields": [
+            "answer_target",
+            "notes",
+            "T84-S009.limitations"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "Table 3 引燃時間、總熱釋放、最大熱釋放率、失重 73%–74% 與密度皆相符；35 kW/m² 的引燃時間差距在標準差內，答案改為只在 50 kW/m² 說較快；「關鍵是表面」標為研究者判斷；來源的試片數寫法（方法段 6＋12 對 Table 3 的 5／6／5／6／6）照實並列。1.00。"
+        },
+        {
+          "id": "T84-010",
+          "source_id": "T84-S010",
+          "pmcid": "PMC6891677",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 0.75,
+          "reviewer_facts": 0.75,
+          "network": "NET_09_HVL_Norway",
+          "changed_fields": [
+            "question",
+            "answer_target",
+            "editorial.payoff",
+            "notes",
+            "T84-S010.summary",
+            "T84-S010.limitations",
+            "connection",
+            "chapters[4]"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "四棟住宅、均方根誤差 2.1%–2.5%、經驗式、8 分鐘／4 分鐘、15 公尺／秒皆相符；乾燥期原文兩種寫法（8–20 日、8–22 日）並列；「10 分鐘對 5 分鐘」是作者的假設舉例，明寫；問題句不再預設「大火常發生在冬天」。0.75 維持（模型＋借用縮尺試驗關係）。"
+        },
+        {
+          "id": "T84-011",
+          "source_id": "T84-S011",
+          "pmcid": "PMC8639102",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 0.75,
+          "reviewer_facts": 0.75,
+          "network": "NET_10_Liaoning",
+          "changed_fields": [
+            "question",
+            "answer_target",
+            "editorial.payoff",
+            "editorial.visual",
+            "notes",
+            "T84-S011.limitations",
+            "connection",
+            "chapters[4]"
+          ],
+          "refetch_sha256_match": null,
+          "reason": "101／224／387／475／499／620 秒、800–900 °C、6%、768／737／716 °C 皆相符；475 秒是「開始塌落」不是「整片燒塌」，亮點句與章節白話已改；與粗木柱的對照是跨研究並列，不寫成厚度的因果，畫面並排也拿掉。0.75 維持。"
+        },
+        {
+          "id": "T84-012",
+          "source_id": "T84-S012",
+          "pmcid": "PMC8836681",
+          "verdict": "ADOPT",
+          "author_facts": 0.75,
+          "reviewer_facts": 0.75,
+          "network": "NET_11_Braganca_Avila",
+          "changed_fields": [
+            "notes"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "Table 1 共 36 列逐列核對，35.86–81.35 分鐘、R30 80.89%–99.77%、R60 10.40%–86.63%（組合無誤）、5 ± 0.4 分鐘／毫米、27% 皆相符，未改內容。純模擬依門檻計 0.75；敏感度另算整張不計。"
+        },
+        {
+          "id": "T84-013",
+          "source_id": "T84-S013",
+          "pmcid": "PMC12349689",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 0.75,
+          "reviewer_facts": 0.75,
+          "network": "NET_12_UCEEB_sensors",
+          "changed_fields": [
+            "answer_target",
+            "source_locator",
+            "notes",
+            "T84-S013.summary",
+            "T84-S013.limitations",
+            "connection"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "第 6 分鐘、2.0 V、第 21 分鐘、相差 15 分鐘、礦棉空腔偵煙器未動作、18 → 24 °C 皆相符；燒穿時間原文兩處相差近半小時（6.3 節約第 17 分鐘、6.2 節 2600–2800 秒），原稿採第 17 分鐘，改為並列且不採用；首句由通則改為「在這一座試體裡」。0.75 維持。"
+        },
+        {
+          "id": "F166-014",
+          "source_id": "F166-S014",
+          "pmcid": "PMC8160771",
+          "verdict": "REJECT",
+          "author_facts": 1.0,
+          "reviewer_facts": 0.0,
+          "network": "NET_13_Brno_Salzburg_Finland",
+          "changed_fields": [
+            "moved to not_added T84-NA007",
+            "theme.candidate_ids",
+            "chapters[6]",
+            "networks"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "數字對原文皆相符，但剔除：卡片的問題、答案與畫面都建立在明火工藝的做法上（三板成筒、筒內點火、約四分鐘），拿掉操作描述後只剩炭厚與翹曲兩組數字；該文不測防火也不測腐朽，對本題因果鏈沒有貢獻；每樹種僅 6 次、無標準化條件。移入 T84-NA007，條數 −1.00。"
+        },
+        {
+          "id": "T84-014",
+          "source_id": "T84-S014",
+          "pmcid": "PMC9737049",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_13_Brno_Salzburg_Finland",
+          "changed_fields": [
+            "question",
+            "answer_target",
+            "scope",
+            "editorial.payoff",
+            "notes",
+            "T84-S014.summary",
+            "T84-S014.limitations",
+            "connection",
+            "chapters[6]"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "含碳 46.9／57.2／70.5%、失重上限 60／56 與 23／32%、相對降幅 42／70／63%、表面下 2 毫米、裂縫中的菌絲皆相符；補上原稿漏掉的兩個不顯著結果（白腐菌組兩種炭化之間；樺木火焰炭化對未處理），刪去噴槍操作時間，菌絲經裂縫進入標為研究者推論；問題句改為不帶做法。F166-014 剔除後單獨一網 1.00。"
+        }
+      ],
+      "main_corrections": [
+        "剔除 F166-014（燒杉）：卡片與畫面建立在明火工藝的做法上（三板成筒、筒內點火、約四分鐘），且該文不測防火也不測腐朽；T84-014（腐朽菌）保留為收尾，但補上兩個原稿漏掉的不顯著結果並刪去噴槍操作時間。全題由 15 張卡改為 14 張，NET_13 由 2.00 降為 1.00。",
+        "折算：T84-004 鋼材卡由 1.00 折為 0.75——該文實驗與建模各半，本題引用的 44.7／29.1 分鐘全是有限元素模擬；「沒有防火被覆」全文查無，刪。全題由 13.75 條、9.72 分鐘改為 12.50 條、9.07 分鐘，排片由 570 秒改為 540 秒。",
+        "題名與安全結論：原題名「木頭會燒、鋼不會燒，大火裡的粗木梁為什麼不會一下就垮？」承諾了沒有證據的鋼木對比，改為「粗木頭燒起來外面焦黑、裡面還白，那層炭擋住了什麼、又在哪裡擋不住？」；第三、四、六章題名與白話改寫，兩處把不同研究的構件畫在同一場火裡的畫面拿掉。",
+        "T84-001：每次試驗不是「三根雲杉柱」，其中一種擺法是兩柱一梁；補上原文但書（16.5 對 16.3 毫米的對應只限 30 分鐘、0.54 毫米／分鐘只來自一根柱、炭化速率非定值）。",
+        "T84-013：原稿採用的「約第 17 分鐘燒穿」與同文另一節的 2600–2800 秒（第 43–47 分鐘）矛盾，改為不採用；T84-011 的 475 秒是「開始塌落」不是「整片燒塌」；T84-005 的「約三成荷載」依原文數據只有約 23%，並列。",
+        "合著：重拆 64 位作者，Europe PMC 15 筆全作者查詢加 Crossref 37 位作者的著作清單，跨研究網直接合著 0 筆（27＋7 筆命中皆為同名異人），作者的 13 網劃分成立；德勒斯登膠那篇的波茲南作者與 T84-S009 四位作者查無合著。"
+      ],
+      "residual_concerns": [
+        "餘裕薄：12.50 條只比門檻多 1.10 條；最壞情形歐洲三網相連即剩 11.50 條，再有任何一項折減就跌破，建議下一輪補一篇「熱通量與炭化速率」的獨立實驗（PMC11435462 作者未讀到）。",
+        "合著稽核的盲區：Europe PMC 對木材與土木期刊收錄不全，Crossref 收不到沒有 DOI 的波蘭、捷克本地期刊；波茲南—德勒斯登、布拉格兩個單位之間的合著無法完全排除（後者併網也不影響條數）。",
+        "7 篇全文（PMC12813490、11197656、9782050、10358616、9414900、6926742、8639102）因 Europe PMC 回 500／503 未能重抓，只以作者快取核對——其中包含改動最多的 T84-001、004、005。",
+        "T84-014 與第七章仍略偏離防火主線：留作 50 秒的收尾，若製作時覺得岔題可整章拿掉（剩 11.50 條、8.56 分鐘，須同時縮短排片）。",
+        "鋼與木沒有同條件並列的試驗，第三章是全片最容易寫過頭的地方；T84-004 的模擬原文未載明有無防火被覆。",
+        "各篇補充資料與 T84-S001 的公開原始資料檔均未取得；T84-009 是 2026 年新刊，重複數與試片數原文自己對不上。"
+      ],
+      "networks": [
+        {
+          "id": "NET_01_CTU_Prague",
+          "source_ids": [
+            "T84-S001"
+          ],
+          "authors": [
+            "Jakub Šejna",
+            "Dominik Štraus",
+            "Marie Křišťanová",
+            "Simona Rušarová",
+            "Kamila Cábová",
+            "Robert Pečenko",
+            "Tomaž Hozjan",
+            "František Wald"
+          ],
+          "weights": {
+            "T84-001": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_02_Lanzhou",
+          "source_ids": [
+            "T84-S002"
+          ],
+          "authors": [
+            "Gang Li",
+            "Linlin Gao",
+            "Fengwen Liu",
+            "Menghan Qiu",
+            "Guanghui Dong"
+          ],
+          "weights": {
+            "T84-002": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_03_NanjingTech_Yangzhou",
+          "source_ids": [
+            "T84-S003",
+            "T84-S007"
+          ],
+          "authors": [
+            "Lingfeng Zhang",
+            "Biao Xu",
+            "Zhongjie Fang",
+            "Chen Li",
+            "Xijun Kong",
+            "Qianyi Li",
+            "Kai Guo",
+            "Liquan Luo",
+            "Benkai Shi",
+            "Weiqing Liu",
+            "Huifeng Yang",
+            "Zhibin Ling"
+          ],
+          "weights": {
+            "T84-003": 1.0,
+            "T84-007": 1.0
+          },
+          "capped_total": 2.0
+        },
+        {
+          "id": "NET_04_SWFU_Kunming",
+          "source_ids": [
+            "T84-S004"
+          ],
+          "authors": [
+            "Jun Zhu",
+            "Meixiu Xing",
+            "Xingbo Mao",
+            "Dongfa Sheng"
+          ],
+          "weights": {
+            "T84-004": 0.75
+          },
+          "capped_total": 0.75,
+          "note": "覆核 V186（2026-11-14）：T84-004 由 1.00 折為 0.75（實驗與建模並重，引用的分鐘數為模擬）。"
+        },
+        {
+          "id": "NET_05_Zagreb",
+          "source_ids": [
+            "T84-S005"
+          ],
+          "authors": [
+            "Nikola Perković",
+            "Vlatka Rajčić"
+          ],
+          "weights": {
+            "T84-005": 0.75
+          },
+          "capped_total": 0.75
+        },
+        {
+          "id": "NET_06_NTUST_Taipei",
+          "source_ids": [
+            "T84-S006"
+          ],
+          "authors": [
+            "Truong Di Ha Le",
+            "Meng-Ting Tsai"
+          ],
+          "weights": {
+            "T84-006": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_07_Dresden_adhesive",
+          "source_ids": [
+            "T84-S008"
+          ],
+          "authors": [
+            "Arkadiusz Bernaczyk",
+            "André Wagenführ",
+            "Christian Terfloth",
+            "Jörg Lincke",
+            "Tomasz Krystofiak",
+            "Peter Niemz"
+          ],
+          "weights": {
+            "T84-008": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_08_Poznan",
+          "source_ids": [
+            "T84-S009"
+          ],
+          "authors": [
+            "Andrzej Jurecki",
+            "Wojciech Grześkowiak",
+            "Beata Klimek",
+            "Marek Wieruszewski"
+          ],
+          "weights": {
+            "T84-009": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_09_HVL_Norway",
+          "source_ids": [
+            "T84-S010"
+          ],
+          "authors": [
+            "Torgrim Log"
+          ],
+          "weights": {
+            "T84-010": 0.75
+          },
+          "capped_total": 0.75
+        },
+        {
+          "id": "NET_10_Liaoning",
+          "source_ids": [
+            "T84-S011"
+          ],
+          "authors": [
+            "Ke Gao",
+            "Zimeng Liu",
+            "Changfa Tao",
+            "Zhiqiang Tang",
+            "Yisimayili Aiyiti",
+            "Lianzeng Shi"
+          ],
+          "weights": {
+            "T84-011": 0.75
+          },
+          "capped_total": 0.75
+        },
+        {
+          "id": "NET_11_Braganca_Avila",
+          "source_ids": [
+            "T84-S012"
+          ],
+          "authors": [
+            "Paulo A. G. Piloto",
+            "Sergio Rodríguez-del-Río",
+            "Diego Vergara"
+          ],
+          "weights": {
+            "T84-012": 0.75
+          },
+          "capped_total": 0.75
+        },
+        {
+          "id": "NET_12_UCEEB_sensors",
+          "source_ids": [
+            "T84-S013"
+          ],
+          "authors": [
+            "Kristian Prokupek",
+            "Chandana Ravikumar",
+            "Jan Vcelak"
+          ],
+          "weights": {
+            "T84-013": 0.75
+          },
+          "capped_total": 0.75
+        },
+        {
+          "id": "NET_13_Brno_Salzburg_Finland",
+          "source_ids": [
+            "T84-S014"
+          ],
+          "authors": [
+            "Maija Kymäläinen",
+            "Tiina Belt",
+            "Hanna Seppäläinen",
+            "Lauri Rautkari"
+          ],
+          "weights": {
+            "T84-014": 1.0
+          },
+          "capped_total": 1.0,
+          "note": "覆核 V186（2026-11-14）：F166-S014（布爾諾／薩爾茲堡／布拉索夫，與本網有合著 PMID 30355998）已自題案剔除（T84-NA007），本網只剩 T84-S014；網名沿用作者稿以便對照。"
+        }
+      ]
+    },
+    "V187": {
+      "report_id": "wave84-tech-F167-V187-review-20261114",
+      "reviewed_on": "2026-11-14",
+      "round": 34,
+      "wave": "wave84",
+      "reviewer": "V187",
+      "author": "F167",
+      "category": "數位科技與通訊工程",
+      "proposal_id": "F167-T1",
+      "verdict": "ready",
+      "title_author": "LED 電流開越大，每一分電換到的光為什麼越少？",
+      "title_reviewed": "LED 電流開越大，每一分電換到的光為什麼越少？",
+      "author_networks": 11,
+      "reviewer_networks": 10,
+      "author_fact_count": 14.25,
+      "author_minutes": 9.98,
+      "recount_fact_count": 12.5,
+      "recount_minutes": 9.07,
+      "target_minutes": 9.5,
+      "chapter_seconds_total": 570,
+      "minutes_formula": "(12.5 * 140 + 700) / 270 = 2450 / 270 = 9.07407 -> 9.07 (>= 8.50 min ready threshold; weighted_facts 12.5 >= 11.4)",
+      "turning_points": [
+        "轉折一：大電流端的下坡不是自熱、也不是點缺陷——短脈衝下不發熱仍衰退、推算的注入比例趨近 1（T84-015），三片點缺陷多寡不同的量子井下坡重疊（T84-016）；研究者歸因於載子太擠時的三體損耗（間接證據，稿中一律寫歸因）。覆核後措辭由「不是因為熱、也不是晶體不夠好」收斂為「短脈衝排除了自熱、點缺陷多寡改變不了下坡」，轉折仍成立",
+        "轉折二：把晶片做小躲不開——最高效率由 33.3% 掉到 18.8%、山頂右移（T84-021），邊緣晚到頂（T84-022），紅光小晶片到頂電流密度由 27 升到數百 A/cm²（T84-023），還要乘上載子壽命（T84-024）；結論改為「效率是一座兩邊都有坡的山」",
+        "收尾反轉：不衰退的光源絕對效率很低（T84-027、014），雷射一過門檻載子密度被鎖住（T84-029，模擬）"
+      ],
+      "sensitivity_notes": "基準核定：10 個研究網、12.50 條、9.07 分鐘（高於門檻 +0.57 分鐘，即 +1.10 條餘裕）。與作者稿（11 網、14.25 條、9.98 分鐘）的差異：韓國科學技術院物理系（003、010）與仁荷／韓國科學技術院電機系（004、009）查到直接合著而併成一網，四篇原始 3.50 封頂為 2.00（−1.75，其中含 003 由 1.00 折為 0.75，因封頂而不另計）。敏感度測試：（1）再把 T84-025（單一元件、兩個百分點）與 T84-028（不衰退為推算）各折 0.25 → 12.00 條＝8.81 分鐘，仍過；（2）再折 T84-015（關鍵量為等效電路推算）→ 11.75 條＝8.69 分鐘，仍過；（3）再折 T84-027（所在網 2.00→1.75）→ 11.50 條＝8.56 分鐘，勉強過；（4）在（3）之上再折任一篇 → 11.25 條＝8.43 分鐘，不過線，改列 reserve，須補備用的 PMC4669452（作者稱已讀完；V187 未逐節讀完，不代為計入）或另找一篇獨立研究網的受控實驗；（5）整張剔除沒有效率—電流曲線的 T84-020 → 11.50 條＝8.56 分鐘，勉強過；（6）若日後證實中國科學院物理所（006）與蘇州奈米所（015）直接合著（半導體所兩篇舊論文裡有一位只列縮寫、與 006 一位作者同縮寫的作者）→ 三篇封頂 2.00，全題 11.75 條＝8.69 分鐘，仍過；（7）作者估的最差情形（10.50 條、8.04 分鐘）要同時折四篇再剔一篇才會發生，V187 判斷不需要走到那一步。",
+      "task1_access_and_refetch_audit": {
+        "f167_access_log_total_requests": 324,
+        "f167_seq_continuous_1_to_324": true,
+        "f167_host_breakdown": {
+          "www.ebi.ac.uk": 288,
+          "api.crossref.org": 36
+        },
+        "f167_non_200_entries": "13 筆，全部是 Europe PMC 的暫時性伺服器錯誤（HTTP 500 五筆：seq 13、14、15、17、36；HTTP 503 八筆：seq 29、30、31、40、41、42、144、210），沒有任何 429、403 或機器驗證，blocked_hosts.json 為空屬實。全文請求：T84-S016（PMC10436346）失敗一次（seq 13）後於 seq 28 成功；T84-S017（PMC5069459）、S010（PMC9106711）、S004（PMC5388842）各失敗兩次（一次 500、一次 503）後於 seq 32、33、34 成功；PMC12879933 失敗一次（seq 36）後未再請求——與作者自述相符。作者的合著查詢腳本對非 200 會等 20 秒重試（最多三次），對象皆為 500／503，不違反「429／403 第一次就停」。",
+        "f167_cache_hash_check": "311 筆 HTTP 200 的存檔全部存在，位元組數與 sha256 逐列相符（0 筆不符）；13 筆失敗列的錯誤回應已被同名檔的後續成功下載或查詢覆寫（屬預期）",
+        "f167_request_spacing": "324 筆請求的時間戳間隔最短 1 秒",
+        "f167_urls_and_pii": "網址皆為 Europe PMC REST search／fullTextXML 與 Crossref works?query.author，無拼湊的出版社網址，無 mailto、email 或其他個人資訊；未碰 eutils.ncbi.nlm.nih.gov",
+        "source_read_via_matches_log": "15 個來源的 read_via（seq、位元組數）與 author_cache.sha256_prefix 以 ok_downloads.json 與 access_log 逐一對上",
+        "v187_refetch": {
+          "attempted": 16,
+          "identical_bytes_and_sha256": [
+            "PMC6934866",
+            "PMC10343276",
+            "PMC8888782",
+            "PMC9106711",
+            "PMC10973746",
+            "PMC10663465",
+            "PMC9654204",
+            "PMC7428337",
+            "PMC4669452"
+          ],
+          "identical_count": 9,
+          "identical_among_15_sources": 8,
+          "not_refetched": {
+            "PMC10436346": "三次請求皆回伺服器錯誤（503、500、500）",
+            "PMC5069459": "兩次皆回 HTTP 500（其中一次為補登列）",
+            "PMC5388842": "兩次皆回 HTTP 500",
+            "PMC6056468": "兩次皆回 HTTP 500",
+            "PMC4454147": "兩次皆回 HTTP 500",
+            "PMC8611052": "兩次皆回 HTTP 500",
+            "PMC5459086": "兩次皆回 HTTP 500"
+          },
+          "note": "V187 重抓時 Europe PMC 全文端點正在大量回 500／503（搜尋端點正常）。7 篇未能重抓者以作者快取核對內容；這 7 份快取的雜湊與作者 access_log 的成功列相符。"
+        },
+        "v187_access_log": {
+          "total_requests": 294,
+          "host_breakdown": {
+            "www.ebi.ac.uk": 292,
+            "api.crossref.org": 2
+          },
+          "status_counts": {
+            "200": 274,
+            "500": 18,
+            "503": 2
+          },
+          "no_429_or_403": true,
+          "min_spacing_seconds": 1.0,
+          "deviation": "重抓腳本第一次以前景執行被工具中止後其實仍在背景續跑，與 V187 重新啟動的背景程序重疊約一分鐘；因此 PMC6934866 共請求三次（500、503、200）、PMC10436346 共三次（503、500、500），超出「每筆最多重試一次」各一次；另有一筆 PMC5069459 的請求在程序被中止時仍在進行、未及寫入紀錄，已補登為 seq=7（狀態碼為事後推定）。發現後立即終止重複程序、依寫入順序重編 seq 並在每列加註；其後所有請求皆為單一程序、每筆最多重試一次。全文與合著查詢的 500／503 重試間隔 15 秒。"
+        }
+      },
+      "task2_coauthorship_audit": {
+        "reviewer": "V187",
+        "reviewed_on": "2026-11-14",
+        "authors_recounted": 106,
+        "pairs_checked": 120,
+        "pairs_among_selected_15": 105,
+        "method": "自行由 16 篇 JATS 的 article-meta／contrib-group 重拆作者（排除 content-type=\"editor\" 群組與 contrib-type=\"editor\" 條目，計 2 位 MDPI 學術編輯）；入選 15 篇共 106 位（原稿寫 105 位，逐篇名單相同，是加總之誤），備用 1 篇 9 位。120 組論文配對各做兩輪 Europe PMC 查詢，每組把兩邊全部作者以 OR 串接：（甲）全名輪 resultType=core、取回每位作者全名與機構（V187 seq=29–148，合計命中 652 筆，本機要求兩邊各有一位作者「姓相同且名字全拼相同」者 412 筆，再以題名主題或機構篩出 20 組配對逐筆判讀）；（乙）縮寫輪加氮化物、發光、磊晶等主題詞、pageSize=1000（seq=149–269，合計命中 226,289 筆，23 組超過 1000 筆只看前 1000 筆；兩邊縮寫皆對上且題名相關者 3,064 筆、1,948 篇），再以 22 筆 core 查詢（seq=270–291）調回這 1,948 篇的作者全名與機構，要求兩邊全名皆相符。另抓 T84-S025 更正啟事（seq=292）與 2 筆 Crossref 抽查（seq=293–294，皆 HTTP 200）。",
+        "true_direct_coauthorships": [
+          {
+            "pair": "T84-S017／S010 × T84-S023",
+            "europe_pmc_id": "36637103",
+            "year": 2023,
+            "journal": "Nano Letters",
+            "n_authors": 11,
+            "finding": "韓國科學技術院物理系兩篇的通訊作者（機構欄：韓國科學技術院物理系）與 T84-S023 的通訊作者及另一位同院作者（機構欄：韓國科學技術院電機學院）同列；作者稿的全名輪查詢其實已命中這一筆，但未列入判讀",
+            "action": "併網（原稿漏判）"
+          },
+          {
+            "pair": "T84-S018 × T84-S023",
+            "europe_pmc_id": "41706939",
+            "year": 2026,
+            "journal": "Optics Express",
+            "n_authors": 2,
+            "finding": "T84-S018 第一作者與 T84-S023 第三作者二人合著（原稿稱後者為「共同通訊作者」，JATS 未標示，以第三作者記）",
+            "action": "維持併網"
+          },
+          {
+            "pair": "T84-S028 × T84-S029",
+            "europe_pmc_id": "42181552",
+            "year": 2026,
+            "journal": "ACS Photonics",
+            "n_authors": 7,
+            "finding": "T84-S029 通訊作者（蘇州奈米所）與 T84-S028 的一位作者（ORCID 相符，現職劍橋大學工程系）同列",
+            "action": "維持併網"
+          },
+          {
+            "pair": "T84-S021 × T84-S027",
+            "crossref_dois": [
+              "10.1063/1.3056628",
+              "10.1109/led.2011.2144954",
+              "10.1155/2012/206174"
+            ],
+            "finding": "T84-S021 的兩位資深作者與 T84-S027 的通訊作者於 2008、2011、2012 年三篇氮化銦鎵光伏論文同列（以作者存檔的 Crossref 回應逐筆核對）",
+            "action": "維持併網"
+          }
+        ],
+        "homonyms_ruled_out": [
+          "PMID 29557788、29519065、27905321、28118019：與新墨西哥大學資深作者同列的同名者任職美國一所國家實驗室的整合奈米技術中心，不是武漢大學論文的末位作者",
+          "PMID 33623912：與劍橋作者同列的同名者機構為南京一所大學的柔性電子重點實驗室，不是中國科學院物理所的通訊作者",
+          "PMID 28322286、26193570：中國科學院半導體研究所的氮化物論文，其中與物理所一位作者同縮寫者只有縮寫、機構為半導體所，判為不同人（該所同一研究群另有同縮寫的常見作者）；兩篇確有蘇州論文的作者，若日後證實為同一人，006 與 014／015 併網、全題 11.75 條仍過線",
+          "PMID 31037936：與韓國科學技術院物理系一位作者同列的同縮寫者任職韓國一所國立研究院的複合材料研究所，不是 T84-S018 的企業作者（且兩篇已因他故同網）",
+          "PMID 18542462：與韓國科學技術院物理系通訊作者同列的是另一位同姓、名字不同的作者，不是武漢大學論文的末位作者",
+          "T84-S021 的一位作者與一位耳鼻喉科醫師同名（26 筆臨床論文，後者與 T84-S027 一位醫院作者長期合著），機構與領域皆不同",
+          "PMID 40512562 等其餘 400 餘筆全名相符者為醫學、化學、環境領域的同名異人"
+        ],
+        "limits": "Europe PMC 對應用物理、光學、電機電子類期刊收錄不全；只有縮寫的舊紀錄無法以全名消歧；Crossref 只抽查 2 組（模糊比對、前 60 筆，未見新增合著）。",
+        "merged_networks_after_review": 10,
+        "direct_cross_network_coauthorships_remaining": 0
+      },
+      "task3_fulltext_verification": {
+        "cards_checked": 15,
+        "method": "15 篇全部打開作者快取的完整 JATS 全文（其中 8 篇經 V187 重抓位元組與 sha256 相符），先以程式比對卡片答案、亮點句與定位欄的每個數字是否出現在全文（全數出現），再逐卡讀結果、討論、結論與方法段核對數字的歸屬、單位、方向、條件與圖表號；T84-S025 另讀更正啟事全文",
+        "numbers_wrong_or_unsupported": [
+          "T84-018：「衰退 38% 與 18%」原文未點名、照字面順序與結論相反，且與同文光輸出換算（約 14% 與 27%）不合，刪除",
+          "T84-022：邊緣「暗 75%、亮 40%」只是正文版本，摘要與結論為 80% 與 50%，改為並列",
+          "T84-015、011 的「藍光」與 T84-029 的「藍紫光」：正文未載明元件發光波長，刪除",
+          "T84-S017 來源摘要：「量到的內部量子效率」實為速率模型推算，改正",
+          "作者稿作者總數 105 應為 106"
+        ],
+        "direction_errors": 0,
+        "folded_to_0_75": [
+          "T84-017（V187 新折；因所在網封頂，不影響總數）",
+          "T84-016、004、015（作者已折，維持）"
+        ],
+        "rejected": [],
+        "abstract_only_or_review_articles": 0,
+        "indirect_evidence_wording": "「大電流衰退＝三體碰撞損耗」在 15 張卡與題案中一律是「研究者歸因於」「研究者的判斷」；作者稿的章節白話第二章與 connection 的轉折句有兩處寫成斷言（「下坡不是缺陷造成的，而是……太擠」「結論改成是載子太擠」），已改為研究者的判斷並註明是間接歸因；drop_if 新增第（17）條",
+        "correction_check_F167_011": "更正啟事（PMC11014829）：圖摘要、圖 2、圖 3 的圖例有誤，各換新圖，未列數值變更，原文已更新；卡片數字出自更新後正文敘述，確認為更正後版本",
+        "low_current_vs_high_current_droop": "T84-026 的 26%／34.7%／36.7%／37.2%／約 60% 是峰值到 0.01 A/cm² 的小電流側跌幅；卡片、connection、第六章白話與 drop_if 第（9）條都已標明，未與其他卡的大電流端衰退混用"
+      },
+      "task4_pool_dedup_and_redline_audit": {
+        "editorial_role_all_theme_seed": true,
+        "candidate_source_one_to_one": true,
+        "chapters_cover_all_cards_once": true,
+        "chapter_seconds": [
+          60,
+          70,
+          100,
+          75,
+          115,
+          70,
+          80
+        ],
+        "cli_search": "依派工說明直接以 python 讀 pool.json（5,410 筆核心）、themes.json（652 組）、batches/*.json 與 grep THEMES.md、奇聞池 QUESTIONS.md",
+        "source_url_collisions_with_pool_or_batches": 0,
+        "mechanism_key_collisions": 0,
+        "pool_led_cards": "池內與 LED 有關的核心為 E2245（白光怎麼來）、E2246（燈具效果）、LEG-A53（有機發光顯示烙印）、P58-004、L71-011、E74-040（把 LED 當工具或光源背景）；沒有任何題案或核心談晶片效率隨電流先升後降，作者的邊界說明屬實",
+        "g644_adjacency": "G644「光纖訊號變弱，為什麼不能把雷射開大就好？」與本題同分類、同為「開大沒用」句型、片尾都有雷射；但 G644 追問玻璃纖維裡光為什麼變暗與失真（散射、彎曲、非線性、空心光纖），本題追問半導體發光井裡電換成光的效率為什麼下降，章節零重疊、來源零重疊。判定不撞題、片名不致被當成同一支；drop_if 新增第（16）條禁止沿用 G644 的句型與比喻，並建議兩支不相鄰上架",
+        "same_wave_authors": "F164（蜂蜜結晶）、F165（冷熱錯覺）、F166（木梁耐火）的 proposal.json 來源 PMCID 零重疊；F164 稿中出現 5 次 LED 字樣皆為量測光源，與本題無關",
+        "title_check": "題名「LED 電流開越大，每一分電換到的光為什麼越少？」只承諾晶片層級的現象，未寫燈泡、螢幕、車燈；15 篇量的都是實驗室晶片或量子井樣品，題名不改",
+        "redline_scan": "全稿（不含 networks 與 coauthorship_audit 的作者姓名清單、來源英文原題）無 LED、晶片、設備、軟體的品牌與型號；無在世或 1956 年後過世學者的姓名與冠名——三體損耗、缺陷復合統計、量子井電場紅移效應、非彈性光散射光譜皆以白話描述取代（原文裡這些術語的冠名者皆於 1956 年以後過世，包括 1957 年過世的一位），單位只用安培、伏特、瓦、流明與克耳文溫標（皆 1956 年前過世者或非人名）；機構名含公司商號或商號家族冠名者皆已改泛稱（韓國一家企業的研究單位、美國一家企業的研究中心、臺灣一所大學與其醫院體系等）；editorial.visual 15 則皆無文字、數字、人物面孔，V187 另把 T84-020 畫面裡的「小燈泡」改為「小光點」",
+        "health_and_diy_check": "無健康、醫療建議（T84-S027 導言的紫外光應用背景未入稿）；無危險自製教學；章節白話沒有給觀眾的選購、調光或省電訣竅"
+      },
+      "core_verdicts": [
+        {
+          "id": "T84-015",
+          "source_id": "T84-S015",
+          "pmcid": "PMC6934866",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_01_UNM",
+          "changed_fields": [
+            "answer_target",
+            "editorial.payoff",
+            "scope",
+            "T84-S015.summary",
+            "notes",
+            "T84-S015.limitations",
+            "chapters[0].new_information"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "脈衝條件、10 A/cm²–10 kA/cm²、25–100 °C、80–90%、10^18 cm⁻3、注入效率趨近 1 與全文相符；刪去正文未載明的「藍光」，注入比例標明為擬合推算。直接量到的是脈衝下的相對效率與調變響應。1.00（列入敏感度）。"
+        },
+        {
+          "id": "T84-016",
+          "source_id": "T84-S016",
+          "pmcid": "PMC10436346",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 0.75,
+          "reviewer_facts": 0.75,
+          "network": "NET_02_MANCHESTER_CORK_CAMBRIDGE",
+          "changed_fields": [
+            "answer_target",
+            "editorial.payoff",
+            "notes",
+            "T84-S016.limitations",
+            "chapters[1].title",
+            "chapters[1].new_information"
+          ],
+          "refetch_sha256_match": false,
+          "reason": "三個生長溫度、激發範圍、1×10^19 與 3×10^19 cm⁻3、約 82,000 原子、70–80% 對 40–50% 相符；亮點句由斷言改為研究者的判斷，補上每片只量一點。維持 0.75。全文端點三次伺服器錯誤，未能重抓。"
+        },
+        {
+          "id": "T84-017",
+          "source_id": "T84-S017",
+          "pmcid": "PMC5069459",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 0.75,
+          "network": "NET_03_KAIST_INHA",
+          "changed_fields": [
+            "T84-S017.summary",
+            "editorial.payoff",
+            "notes",
+            "T84-S017.limitations",
+            "networks"
+          ],
+          "refetch_sha256_match": false,
+          "reason": "全部數字相符；卡片三組關鍵量（效率峰值、衰退、井內電場）皆為速率模型推算或計算，由 1.00 折為 0.75；來源摘要「量到的」改「推算的」。併入韓國科學技術院／仁荷網（封頂 2.00）。未能重抓。"
+        },
+        {
+          "id": "T84-018",
+          "source_id": "T84-S018",
+          "pmcid": "PMC5388842",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 0.75,
+          "reviewer_facts": 0.75,
+          "network": "NET_03_KAIST_INHA",
+          "changed_fields": [
+            "answer_target",
+            "mechanism_key",
+            "source_locator",
+            "T84-S018.summary",
+            "T84-S018.locator",
+            "notes",
+            "T84-S018.limitations",
+            "networks"
+          ],
+          "refetch_sha256_match": false,
+          "reason": "差排密度、300 mA 交叉、1007 對 960 mW、平帶電壓、井內電場相符；刪除「衰退 38% 與 18%」（未點名、照字面與結論相反、與同文光輸出換算的約 14% 與 27% 都對不上），機制鍵同步改。維持 0.75。未能重抓。"
+        },
+        {
+          "id": "T84-019",
+          "source_id": "T84-S019",
+          "pmcid": "PMC6056468",
+          "verdict": "ADOPT",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_05_WUHAN",
+          "changed_fields": [
+            "notes",
+            "T84-S019.limitations"
+          ],
+          "refetch_sha256_match": false,
+          "reason": "七組序列（坑直徑、能量差、內外部量子效率、面積佔比、衰退、順向電壓）逐項相符，方向無誤，未改字。1.00。未能重抓。"
+        },
+        {
+          "id": "T84-020",
+          "source_id": "T84-S020",
+          "pmcid": "PMC4454147",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_06_IOP_CAS",
+          "changed_fields": [
+            "editorial.visual",
+            "notes",
+            "T84-S020.limitations"
+          ],
+          "refetch_sha256_match": false,
+          "reason": "全部數字相符；畫面的「小燈泡」改「小光點」。沒有效率—電流曲線，只支撐綠色缺口背景。1.00（列入敏感度）。未能重抓。"
+        },
+        {
+          "id": "T84-021",
+          "source_id": "T84-S021",
+          "pmcid": "PMC8611052",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_07_NCHU_UVB",
+          "changed_fields": [
+            "notes",
+            "T84-S021.limitations",
+            "chapters[4].new_information"
+          ],
+          "refetch_sha256_match": false,
+          "reason": "33.3%→18.8%、理想因子、峰值波長位移相符；山頂右移原文有明寫；未改字。1.00。併網依據（三篇 Crossref 紀錄）核實。未能重抓。"
+        },
+        {
+          "id": "T84-022",
+          "source_id": "T84-S022",
+          "pmcid": "PMC10343276",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_08_XJTU",
+          "changed_fields": [
+            "answer_target",
+            "editorial.payoff",
+            "mechanism_key",
+            "T84-S022.summary",
+            "notes",
+            "T84-S022.limitations",
+            "chapters[4].new_information"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "條件與到頂激發密度相符；邊緣暗／亮的百分比摘要與結論為 80%／50%、正文為 75%／40%，無法判定，改為並列，機制鍵拿掉百分比。1.00。"
+        },
+        {
+          "id": "T84-023",
+          "source_id": "T84-S023",
+          "pmcid": "PMC8888782",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_03_KAIST_INHA",
+          "changed_fields": [
+            "notes",
+            "T84-S023.limitations",
+            "chapters[4].new_information",
+            "networks"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "到頂電流密度 27 與 302–666 A/cm²、+19.8%／+2.4%、表面復合速度皆為正文文字，相符；未改字。1.00。查到通訊作者與同校物理系通訊作者直接合著（PMID 36637103），併網。"
+        },
+        {
+          "id": "T84-024",
+          "source_id": "T84-S024",
+          "pmcid": "PMC9106711",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_03_KAIST_INHA",
+          "changed_fields": [
+            "notes",
+            "T84-S024.limitations",
+            "chapters[4].new_information",
+            "networks"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "Table 1 與正文數字、方向相符，未改字。1.00。併入韓國科學技術院／仁荷網。"
+        },
+        {
+          "id": "T84-025",
+          "source_id": "T84-S025",
+          "pmcid": "PMC10973746",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_09_WATERLOO",
+          "changed_fields": [
+            "answer_target",
+            "scope",
+            "T84-S025.summary",
+            "editorial.visual",
+            "notes",
+            "T84-S025.limitations"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "數字相符；讀了更正啟事（改的是圖摘要與圖 2、圖 3 的圖例，未列數值變更），卡片數字出自更新後正文；刪去正文未載明的「藍光」，更正說明照實改寫。1.00（列入敏感度）。"
+        },
+        {
+          "id": "T84-026",
+          "source_id": "T84-S026",
+          "pmcid": "PMC10663465",
+          "verdict": "ADOPT",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_10_AIST_TOHOKU",
+          "changed_fields": [
+            "notes",
+            "T84-S026.limitations"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "約 3 A/cm²、四個跌幅、對照組與 200 µm 晶片相符；小電流側跌幅與大電流端衰退未混用；未改字。1.00。"
+        },
+        {
+          "id": "T84-027",
+          "source_id": "T84-S027",
+          "pmcid": "PMC9654204",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_07_NCHU_UVB",
+          "changed_fields": [
+            "T84-S027.publisher",
+            "answer_target",
+            "notes",
+            "T84-S027.limitations",
+            "chapters[6].new_information"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "四個溫度的效率、衰退、溫度衰退與 500 小時相符；補上量測只到到頂電流密度約 1.3 倍，作者機構補齊。1.00（同網封頂 2.00）。"
+        },
+        {
+          "id": "T84-028",
+          "source_id": "T84-S028",
+          "pmcid": "PMC7428337",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 1.0,
+          "reviewer_facts": 1.0,
+          "network": "NET_11_NIST_SUZHOU",
+          "changed_fields": [
+            "editorial.payoff",
+            "notes",
+            "T84-S028.limitations",
+            "chapters[6].new_information"
+          ],
+          "refetch_sha256_match": true,
+          "reason": "輸出、電流密度、溫度、線寬、效率量級相符；亮點句補「推算」。直接量到的是輸出對電流近乎線性。1.00（列入敏感度）。併網依據 PMID 42181552 核實。"
+        },
+        {
+          "id": "T84-029",
+          "source_id": "T84-S029",
+          "pmcid": "PMC5459086",
+          "verdict": "ADOPT_WITH_CHANGES",
+          "author_facts": 0.75,
+          "reviewer_facts": 0.75,
+          "network": "NET_11_NIST_SUZHOU",
+          "changed_fields": [
+            "answer_target",
+            "scope",
+            "T84-S029.summary",
+            "notes",
+            "T84-S029.limitations",
+            "chapters[6].new_information"
+          ],
+          "refetch_sha256_match": false,
+          "reason": "40／130 A/cm² 與各電流分配比例相符，實測與模擬分界清楚；刪去全文未載明的「藍紫光」。維持 0.75。未能重抓。"
+        }
+      ],
+      "main_corrections": [
+        "合著：韓國科學技術院物理系兩篇（003、010）的通訊作者與同校電機系紅光論文（009）的通訊作者同列於 2023 年一篇 11 人論文（PMID 36637103），原稿列為兩個獨立網有誤；連同作者已併的仁荷那篇（004），四篇併為一網封頂 2.00。研究網由 11 個改為 10 個，全題由 14.25 條、9.98 分鐘改為 12.50 條、9.07 分鐘。",
+        "T84-018「衰退 38% 與 18%」刪除：原文沒有點名哪顆是哪個值，照字面順序是矽 38%（與結論相反），用同文的 1007、960 mW 自行換算約為 14% 與 27%，兩種歸屬都對不上。",
+        "T84-022 邊緣亮度差：原稿只引正文的「暗 75%、亮 40%」，但摘要與結論都寫 80% 與 50%，改為「七成五到八成」「四到五成」並列。",
+        "T84-015、011 的「藍光」與 T84-029 的「藍紫光」正文都沒寫，刪除；T84-017 來源摘要把模型推算的效率寫成「量到的」，改正並折為 0.75。",
+        "轉折一的措辭收斂：第二章白話與 connection 把「下坡是載子太擠」寫成定論，改為「研究者因此判斷……這是從曲線和計算推出來的，還沒有人在這些實驗裡直接看到」；第五章把光激發寫成「電小、電大」，改為「光弱、光強」；drop_if 新增四條。",
+        "T84-025 的更正啟事已讀：改的是圖摘要與圖 2、圖 3 的圖例，沒有數值變更，卡片數字出自更新後的正文；作者總數 105 更正為 106。"
+      ],
+      "residual_concerns": [
+        "Europe PMC 全文端點在覆核時大量回 500／503，7 篇（S002、S003、S004、S005、S006、S007、S015）未能重抓，只以作者快取核對（雜湊與作者紀錄相符）",
+        "V187 的重抓有一段兩個程序重疊，兩篇各多請求一次、一筆請求為補登（已照實記錄）",
+        "餘裕只有 1.10 條：再折四篇仍過、折第五篇就不過；備用的 PMC4669452 V187 沒有逐節讀完，不能代為保證可用",
+        "Europe PMC 對應用物理與光學期刊收錄不全、舊紀錄只有縮寫；中國科學院物理所（006）與蘇州奈米所（015）之間有兩筆只能依機構判為同名異人的紀錄（最壞情形 11.75 條仍過）",
+        "「大電流衰退＝三體損耗」全為間接證據，直接偵測的實驗全文未取得（T84-NA013）",
+        "T84-018 的衰退比例與 T84-022 的邊緣亮度差原文自相矛盾，稿中只能定性或並列",
+        "與 G644 同分類、句型相近，排片不宜相鄰",
+        "各篇補充資料皆未取得"
+      ],
+      "networks": [
+        {
+          "id": "NET_01_UNM",
+          "source_ids": [
+            "T84-S015"
+          ],
+          "authors": [
+            "Arman Rashidi",
+            "Morteza Monavarian",
+            "Andrew Aragon",
+            "Daniel Feezell"
+          ],
+          "weights": {
+            "T84-015": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_02_MANCHESTER_CORK_CAMBRIDGE",
+          "source_ids": [
+            "T84-S016"
+          ],
+          "authors": [
+            "R. M. Barrett",
+            "J. M. McMahon",
+            "R. Ahumada-Lazo",
+            "J. A. Alanis",
+            "P. Parkinson",
+            "S. Schulz",
+            "M. J. Kappers",
+            "R. A. Oliver",
+            "D. Binks"
+          ],
+          "weights": {
+            "T84-016": 0.75
+          },
+          "capped_total": 0.75
+        },
+        {
+          "id": "NET_03_KAIST_INHA",
+          "source_ids": [
+            "T84-S017",
+            "T84-S024",
+            "T84-S018",
+            "T84-S023"
+          ],
+          "authors": [
+            "Yang-Seok Yoo",
+            "Jong-Ho Na",
+            "Sung Jin Son",
+            "Yong-Hoon Cho",
+            "Kie Young Woo",
+            "Hyun Gyu Song",
+            "Kwanjae Lee",
+            "Young Chul Sim",
+            "H Y Ryu",
+            "K S Jeon",
+            "M G Kang",
+            "H K Yuh",
+            "Y H Choi",
+            "J S Lee",
+            "Juhyuk Park",
+            "Woojin Baek",
+            "Dae-Myeong Geum",
+            "Sanghyeon Kim"
+          ],
+          "weights": {
+            "T84-017": 0.75,
+            "T84-024": 1.0,
+            "T84-018": 0.75,
+            "T84-023": 1.0
+          },
+          "capped_total": 2.0
+        },
+        {
+          "id": "NET_05_WUHAN",
+          "source_ids": [
+            "T84-S019"
+          ],
+          "authors": [
+            "Shengjun Zhou",
+            "Xingtong Liu",
+            "Han Yan",
+            "Yilin Gao",
+            "Haohao Xu",
+            "Jie Zhao",
+            "Zhijue Quan",
+            "Chengqun Gui",
+            "Sheng Liu"
+          ],
+          "weights": {
+            "T84-019": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_06_IOP_CAS",
+          "source_ids": [
+            "T84-S020"
+          ],
+          "authors": [
+            "Yang Jiang",
+            "Yangfeng Li",
+            "Yueqiao Li",
+            "Zhen Deng",
+            "Taiping Lu",
+            "Ziguang Ma",
+            "Peng Zuo",
+            "Longgui Dai",
+            "Lu Wang",
+            "Haiqiang Jia",
+            "Wenxin Wang",
+            "Junming Zhou",
+            "Wuming Liu",
+            "Hong Chen"
+          ],
+          "weights": {
+            "T84-020": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_07_NCHU_UVB",
+          "source_ids": [
+            "T84-S021",
+            "T84-S027"
+          ],
+          "authors": [
+            "Po-Wei Chen",
+            "Po-Wen Hsiao",
+            "Hsuan-Jen Chen",
+            "Bo-Sheng Lee",
+            "Kai-Ping Chang",
+            "Chao-Chun Yen",
+            "Ray-Hua Horng",
+            "Dong-Sing Wuu",
+            "Mu-Jen Lai",
+            "Yi-Tsung Chang",
+            "Shu-Chang Wang",
+            "Shiang-Fu Huang",
+            "Rui-Sen Liu",
+            "Xiong Zhang",
+            "Lung-Chien Chen",
+            "Ray-Ming Lin"
+          ],
+          "weights": {
+            "T84-021": 1.0,
+            "T84-027": 1.0
+          },
+          "capped_total": 2.0
+        },
+        {
+          "id": "NET_08_XJTU",
+          "source_ids": [
+            "T84-S022"
+          ],
+          "authors": [
+            "Haifeng Yang",
+            "Yufeng Li",
+            "Jiawei Wang",
+            "Aixing Li",
+            "Kun Li",
+            "Chuangcheng Xu",
+            "Minyan Zhang",
+            "Zhenhuan Tian",
+            "Qiang Li",
+            "Feng Yun"
+          ],
+          "weights": {
+            "T84-022": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_09_WATERLOO",
+          "source_ids": [
+            "T84-S025"
+          ],
+          "authors": [
+            "Jian Yin",
+            "David Hwang",
+            "Hossein Zamani Siboni",
+            "Ehsanollah Fathi",
+            "Reza Chaji",
+            "Dayan Ban"
+          ],
+          "weights": {
+            "T84-025": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_10_AIST_TOHOKU",
+          "source_ids": [
+            "T84-S026"
+          ],
+          "authors": [
+            "Xuelun Wang",
+            "Xixi Zhao",
+            "Tokio Takahashi",
+            "Daisuke Ohori",
+            "Seiji Samukawa"
+          ],
+          "weights": {
+            "T84-026": 1.0
+          },
+          "capped_total": 1.0
+        },
+        {
+          "id": "NET_11_NIST_SUZHOU",
+          "source_ids": [
+            "T84-S028",
+            "T84-S029"
+          ],
+          "authors": [
+            "Babak Nikoobakht",
+            "Robin P Hansen",
+            "Yuqin Zong",
+            "Amit Agrawal",
+            "Michael Shur",
+            "Jerry Tersoff",
+            "Mei-Xin Feng",
+            "Qian Sun",
+            "Jian-Ping Liu",
+            "Zeng-Cheng Li",
+            "Yu Zhou",
+            "Hong-Wei Gao",
+            "Shu-Ming Zhang",
+            "Hui Yang"
+          ],
+          "weights": {
+            "T84-028": 1.0,
+            "T84-029": 0.75
+          },
+          "capped_total": 1.75
+        }
+      ]
+    }
+  }
+}

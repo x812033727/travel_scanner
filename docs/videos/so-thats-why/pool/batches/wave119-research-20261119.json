@@ -1,0 +1,709 @@
+{
+  "batch_id": "wave119-research-20261119",
+  "created_on": "2026-11-19",
+  "scope": "以台北松山經東京羽田至札幌新千歲的條件式示意行程，追旅客行李在起點掛牌、入境提領、再交運與終點辨識的流程。",
+  "sources": [
+    {
+      "id": "X119D-S01",
+      "url": "https://www.evaair.com/zh-tw/customer-services/faq/detail.html?FaqCategories=At-the-Airport",
+      "canonical_url": "https://www.evaair.com/zh-tw/customer-services/faq/detail.html?FaqCategories=At-the-Airport",
+      "title": "常見問答｜機場服務",
+      "publisher": "長榮航空",
+      "version": "官方旅客資訊查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文並核對所列小節、表格或表單欄位。",
+      "reading_scope": "「劃位後要注意什麼事？」及「我要如何辦理轉機？」",
+      "locator": "「劃位後要注意什麼事？」及「我要如何辦理轉機？」",
+      "summary": "旅客須核對託運收據與掛運目的地。航空公司提醒，已掛到終點的箱子仍可能須在轉機站清關。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "長榮對自家旅客的說明，未公布任何旅客的實際收據。",
+      "network": "長榮航空"
+    },
+    {
+      "id": "X119D-S02",
+      "url": "https://www.iata.org/contentassets/e7a533819be440edbb1e49da96e0f2a8/guidance-document-on-baggage-standards-for-interline.pdf",
+      "canonical_url": "https://www.iata.org/contentassets/e7a533819be440edbb1e49da96e0f2a8/guidance-document-on-baggage-standards-for-interline.pdf",
+      "title": "Interline Considerations on Baggage Standards",
+      "publisher": "國際航空運輸協會（IATA）",
+      "version": "2020 年公開指引",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文並核對所列小節、表格或表單欄位。",
+      "reading_scope": "§8.2 Baggage Acceptance 與 §8.3 Baggage Carriage，PDF 內文頁碼 13–16",
+      "locator": "§8.2 Baggage Acceptance 與 §8.3 Baggage Carriage，PDF 內文頁碼 13–16",
+      "summary": "聯運每件各掛識別標籤，十位數識別碼對應單件。若旅客要在途中提領，承運人應告知怎麼重新交運。在中轉點發現航班號錯誤等情況要先處理。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "2020 年聯運作業指引，供解釋標籤及交接的意義。各地旅客動線與本次航班另查營運方。",
+      "network": "IATA 聯運指引"
+    },
+    {
+      "id": "X119D-S03",
+      "url": "https://www.japan.travel/tw/tw/airline/",
+      "canonical_url": "https://www.japan.travel/tw/tw/airline/",
+      "title": "航空情報｜從台灣飛往日本的定期航線",
+      "publisher": "日本國家旅遊局（JNTO）",
+      "version": "官方旅客資訊查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文並核對所列小節、表格或表單欄位。",
+      "reading_scope": "關東／東京表列「松山〜羽田」",
+      "locator": "關東／東京表列「松山〜羽田」",
+      "summary": "東京欄把台北松山至羽田與桃園至羽田分列，松山一列可見日本航空及全日空航空。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "僅用以選情境起點，無特定日期的航班、機位或預訂。",
+      "network": "日本國家旅遊局"
+    },
+    {
+      "id": "X119D-S04",
+      "url": "https://www.jal.co.jp/jp/en/dom/module/",
+      "canonical_url": "https://www.jal.co.jp/jp/en/dom/module/",
+      "title": "Domestic flight reservation｜Departure and arrival airport selector",
+      "publisher": "日本航空（JAL）",
+      "version": "官方旅客資訊查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文並核對所列小節、表格或表單欄位。",
+      "reading_scope": "國內線出發／抵達機場選單 Hokkaido；選項 Sapporo (New Chitose) 與 Sapporo (Okadama)",
+      "locator": "國內線出發／抵達機場選單 Hokkaido；選項 Sapporo (New Chitose) 與 Sapporo (Okadama)",
+      "summary": "訂位選項分列札幌新千歲及札幌丘珠，選單代碼分別為 CTS 與 OKD。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "僅核對機場名稱與代碼，選單不能證明任何旅客實際訂位。",
+      "network": "日本航空"
+    },
+    {
+      "id": "X119D-S05",
+      "url": "https://www.ana.co.jp/en/jp/guide/boarding-procedures/checkin/international/notice/",
+      "canonical_url": "https://www.ana.co.jp/en/jp/guide/boarding-procedures/checkin/international/notice/",
+      "title": "Check-in & Travel notice｜International flights",
+      "publisher": "全日本空輸（ANA）",
+      "version": "官方旅客資訊查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文並核對所列小節、表格或表單欄位。",
+      "reading_scope": "Through Check-in；Through Check-in from an ANA International Flight to an ANA Japan Domestic Flight",
+      "locator": "Through Check-in；Through Check-in from an ANA International Flight to an ANA Japan Domestic Flight",
+      "summary": "適用出發站可先辦後段 ANA 日本國內線報到。國際段到日本後為清關仍要領件、再交運；此項行李承接限當日銜接。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "限 ANA 說明中的集團國際線、銜接 ANA 日本國內線，不外推其他航司。",
+      "network": "全日空集團"
+    },
+    {
+      "id": "X119D-S06",
+      "url": "https://www.customs.go.jp/english/summary/passenger.htm",
+      "canonical_url": "https://www.customs.go.jp/english/summary/passenger.htm",
+      "title": "Procedures of Passenger Clearance",
+      "publisher": "日本海關",
+      "version": "官方旅客資訊查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文並核對所列小節、表格或表單欄位。",
+      "reading_scope": "Declaration 與 The green and red channel system",
+      "locator": "Declaration 與 The green and red channel system",
+      "summary": "入境旅客均須申報隨身物品，可使用電子或紙本方式。是否帶有應課稅或管制品影響通道選擇。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "說明日本入境物品的申報，並非每位旅客都會被開箱。",
+      "network": "日本海關"
+    },
+    {
+      "id": "X119D-S07",
+      "url": "https://www.customs.go.jp/english/passenger/egate.htm",
+      "canonical_url": "https://www.customs.go.jp/english/passenger/egate.htm",
+      "title": "The Electronic Customs Declaration Gates (e-Gates) are available at 7 International Airports",
+      "publisher": "日本海關",
+      "version": "官方旅客資訊查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文並核對所列小節、表格或表單欄位。",
+      "reading_scope": "七座機場名單、Overview 1–3 與開頭「during the waiting times for checked baggage」段",
+      "locator": "七座機場名單、Overview 1–3 與開頭「during the waiting times for checked baggage」段",
+      "summary": "羽田在名單內。旅客可利用等行李的時間完成電子申報機操作，取件後依系統指示前往閘門或檢查檯。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "限提供該設備的機場及符合使用條件的旅客，現場仍可能接受檢查。",
+      "network": "日本海關"
+    },
+    {
+      "id": "X119D-S08",
+      "url": "https://tokyo-haneda.com/en/flight/transit/int_int.html",
+      "canonical_url": "https://tokyo-haneda.com/en/flight/transit/int_int.html",
+      "title": "International to International｜Use Connecting Flights",
+      "publisher": "羽田機場旅客航廈",
+      "version": "官方旅客資訊查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文並核對所列小節、表格或表單欄位。",
+      "reading_scope": "Transfer From Terminal 3 → To Terminal 3；Transfer From Terminal 3 → To Terminal 2",
+      "locator": "Transfer From Terminal 3 → To Terminal 3；Transfer From Terminal 3 → To Terminal 2",
+      "summary": "羽田提供可留在轉機區的國際轉國際動線。未完成後段報到者可向轉機櫃檯洽辦，另有取得入境資格後入境的不同流程。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "航廈圖未承諾任何航空公司都能直掛；使用轉機動線須先確認自己可以這樣轉。",
+      "network": "羽田機場"
+    },
+    {
+      "id": "X119D-S09",
+      "url": "https://www.narita-airport.jp/en/airportguide/connect/inter-inter/",
+      "canonical_url": "https://www.narita-airport.jp/en/airportguide/connect/inter-inter/",
+      "title": "Connection between international flights",
+      "publisher": "成田國際機場株式會社",
+      "version": "官方旅客資訊查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文並核對所列小節、表格或表單欄位。",
+      "reading_scope": "開頭適用對象、§3 Connection procedure、§4 Points to note when connecting flights overnight、§5 Going outside the airport",
+      "locator": "開頭適用對象、§3 Connection procedure、§4 Points to note when connecting flights overnight、§5 Going outside the airport",
+      "summary": "機場列出不入境、不領箱的國際銜接方式，請旅客出發前向航司確認。隔夜需跨越航廈空側關閉時段者要辦理入境及海關手續。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "限成田場站。隔夜入境能否成行還取決於旅客入境資格，站方未以這一條保證所有箱子一律出盤。",
+      "network": "成田機場"
+    },
+    {
+      "id": "X119D-S10",
+      "url": "https://www.evaair.com/zh-tw/fly-prepare/baggage/free-baggage/checked-baggage/",
+      "canonical_url": "https://www.evaair.com/zh-tw/fly-prepare/baggage/free-baggage/checked-baggage/",
+      "title": "託運行李｜行李直掛限制",
+      "publisher": "長榮航空",
+      "version": "官方旅客資訊查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文並核對所列小節、表格或表單欄位。",
+      "reading_scope": "「行李直掛限制」與「當旅客之行程為持兩本機票時 (Separate Tickets)」",
+      "locator": "「行李直掛限制」與「當旅客之行程為持兩本機票時 (Separate Tickets)」",
+      "summary": "官方把兩本票視為兩份運送契約，長榮只掛到其機票上的航點。同一本票與聯程夥伴、十二小時以內的條款仍受當地規則及場站限制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "本頁規則用於長榮辦理的案例。不同航空公司及不同出票安排須另查。",
+      "network": "長榮航空"
+    },
+    {
+      "id": "X119D-S11",
+      "url": "https://www.cathaypacific.com/cx/en_HK/faqs/check-in/through-check-to-final-destination-on-separate-tickets/will-my-baggage-and-i-get-through-checked-to-the-final-destination-if-my-itinerary-includes-connecting-flights.html",
+      "canonical_url": "https://www.cathaypacific.com/cx/en_HK/faqs/check-in/through-check-to-final-destination-on-separate-tickets/will-my-baggage-and-i-get-through-checked-to-the-final-destination-if-my-itinerary-includes-connecting-flights.html",
+      "title": "Will my baggage and I get through-checked to the final destination if my itinerary includes connecting flights?",
+      "publisher": "國泰航空",
+      "version": "官方旅客資訊查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文並核對所列小節、表格或表單欄位。",
+      "reading_scope": "Through-check to final destination on separate tickets；Ticket Type 表格與表下注記",
+      "locator": "Through-check to final destination on separate tickets；Ticket Type 表格與表下注記",
+      "summary": "國泰的分票直掛取決於合作協議；表格列出與寰宇一家成員的安排並註明當地海關例外。回程首段換公司要再查。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "限國泰辦理首段與適用夥伴，不據此推斷任兩家聯盟成員一定互惠。",
+      "network": "國泰航空"
+    },
+    {
+      "id": "X119D-S12",
+      "url": "https://www.flypeach.com/sg/lm/fares/multi/multiple_seg_conditions",
+      "canonical_url": "https://www.flypeach.com/sg/lm/fares/multi/multiple_seg_conditions",
+      "title": "Regarding Peach connecting flights｜About Multi-City Flights",
+      "publisher": "樂桃航空（Peach Aviation）",
+      "version": "官方旅客資訊查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文並核對所列小節、表格或表單欄位。",
+      "reading_scope": "Regarding Peach connecting flights；About Multi-City Flights reservation",
+      "locator": "Regarding Peach connecting flights；About Multi-City Flights reservation",
+      "summary": "同一訂位可選至多四段，樂桃航班之間仍需逐段報到、領行李及重新託運。文件以新千歲經關西去那霸等路線示範。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "限樂桃自營航段；同訂位是席次安排，不能由此推算它提供聯運行李服務。",
+      "network": "全日空集團"
+    },
+    {
+      "id": "X119D-S13",
+      "url": "https://tokyo-haneda.com/en/flight/transit/int_dms.html",
+      "canonical_url": "https://tokyo-haneda.com/en/flight/transit/int_dms.html",
+      "title": "International to Domestic｜Use Connecting Flights",
+      "publisher": "羽田機場旅客航廈",
+      "version": "官方旅客資訊查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文並核對所列小節、表格或表單欄位。",
+      "reading_scope": "Transfer From Terminal 3，分別見 To Terminal 1、To Terminal 2 的 Domestic Boarding Procedures",
+      "locator": "Transfer From Terminal 3，分別見 To Terminal 1、To Terminal 2 的 Domestic Boarding Procedures",
+      "summary": "第三航廈二樓設日航、全日空國內轉機櫃檯。櫃檯關閉後，日航旅客依指引到第一航廈，全日空旅客到第二航廈辦理。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "限頁中航班類別與動線；時間、櫃檯及運行方式可能調整，依當日指引。",
+      "network": "羽田機場"
+    },
+    {
+      "id": "X119D-S14",
+      "url": "https://www.jal.co.jp/jp/en/inter/airport/hnd/transit/index.html",
+      "canonical_url": "https://www.jal.co.jp/jp/en/inter/airport/hnd/transit/index.html",
+      "title": "Tokyo Haneda｜Transfers",
+      "publisher": "日本航空（JAL）",
+      "version": "官方旅客資訊查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文並核對所列小節、表格或表單欄位。",
+      "reading_scope": "Notices；International to domestic transfers，STEP2 及 International to international transfers",
+      "locator": "Notices；International to domestic transfers，STEP2 及 International to international transfers",
+      "summary": "第三航廈國內轉機櫃檯限當天出發，託運收件到國內班起飛前六十分鐘，之後僅在第一航廈受理。日航說明入境須先領件、清關後再交。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "六十分鐘是此櫃檯收件截止，亦受櫃檯營業時間限制。它並非保證剩餘時間能搭上國內線。",
+      "network": "日本航空"
+    },
+    {
+      "id": "X119D-S15",
+      "url": "https://www.hokkaido-airports.com/ja/new-chitose/airport/dmstc/arrival-step/",
+      "canonical_url": "https://www.hokkaido-airports.com/ja/new-chitose/airport/dmstc/arrival-step/",
+      "title": "国内線ご到着の流れ",
+      "publisher": "北海道エアポート株式会社／新千歲機場",
+      "version": "官方旅客資訊查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文並核對所列小節、表格或表單欄位。",
+      "reading_scope": "§2 手荷物の受け取り、§3 到着ロビー",
+      "locator": "§2 手荷物の受け取り、§3 到着ロビー",
+      "summary": "國內抵達先看航司和班號，取箱時核對引換證號碼。沒出現或受損請在場找承運航司，進入到達大廳後不能折返提領區。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "僅為新千歲國內線抵達程序，不能據此判斷哪一站弄丟了箱子。",
+      "network": "北海道機場"
+    },
+    {
+      "id": "X119D-S16",
+      "url": "https://www.ana.co.jp/guide/boarding-procedures/baggage/domestic/accident/pdf/contents_en.pdf",
+      "canonical_url": "https://www.ana.co.jp/guide/boarding-procedures/baggage/domestic/accident/pdf/contents_en.pdf",
+      "title": "Missing Property Questionnaire",
+      "publisher": "全日本空輸（ANA）",
+      "version": "ANA 國內線指南所連結的空白表單",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文並核對所列小節、表格或表單欄位。",
+      "reading_scope": "整份空白表單，Flight No / Date、Description of missing baggage、Details of contents",
+      "locator": "整份空白表單，Flight No / Date、Description of missing baggage、Details of contents",
+      "summary": "旅客可填航班日期、箱型、廠牌、顏色和材質，並逐項描述箱內物件及數量。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "空白表單用來說明可能詢問的資料，並無實際報失旅客或找回紀錄。",
+      "network": "全日空集團"
+    },
+    {
+      "id": "X119D-S17",
+      "url": "https://www.jal.co.jp/jp/en/inter/baggage/search/",
+      "canonical_url": "https://www.jal.co.jp/jp/en/inter/baggage/search/",
+      "title": "Baggage tracer for JAL international flights",
+      "publisher": "日本航空（JAL）",
+      "version": "官方旅客資訊查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文並核對所列小節、表格或表單欄位。",
+      "reading_scope": "首段 File Reference Number、Notes 與 How to use the baggage tracer STEP2–3",
+      "locator": "首段 File Reference Number、Notes 與 How to use the baggage tracer STEP2–3",
+      "summary": "符合資格的日航國際線旅客用姓名和十位英數案件編號查詢已通報的行李。這組編號和報到時發的行李收據號碼不同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "限日航國際線適用旅客；JTA 執飛不適用。若日航後又轉搭別家公司並於終點未收件，頁面指向最後搭乘的航空公司。",
+      "network": "日本航空"
+    },
+    {
+      "id": "X119D-S18",
+      "url": "https://www.ana.co.jp/en/jp/guide/boarding-procedures/baggage/domestic/accident/",
+      "canonical_url": "https://www.ana.co.jp/en/jp/guide/boarding-procedures/baggage/domestic/accident/",
+      "title": "Delayed or Missing Baggage｜Japan Domestic Flights",
+      "publisher": "全日本空輸（ANA）",
+      "version": "官方旅客資訊查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文並核對所列小節、表格或表單欄位。",
+      "reading_scope": "How to Report、Baggage Return、Contents Declaration",
+      "locator": "How to Report、Baggage Return、Contents Declaration",
+      "summary": "ANA 請旅客立即告知抵達站人員，尋件時可能詢問內容，尋獲後交付指定地點。非 ANA 或 ANA Wings 執飛時聯繫實際承運人。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "這是 ANA 日本國內線處理指引；同票含國際段會涉及國際運送條款。",
+      "network": "全日空集團"
+    },
+    {
+      "id": "X119D-S19",
+      "url": "https://www.ana.co.jp/en/jp/guide/prepare/airport-guide/international/hnd-transit/",
+      "canonical_url": "https://www.ana.co.jp/en/jp/guide/prepare/airport-guide/international/hnd-transit/",
+      "title": "Information About Connecting at Haneda Airport",
+      "publisher": "全日本空輸（ANA）",
+      "version": "官方旅客資訊查閱版",
+      "accessed_on": "2026-11-19",
+      "read_via": "開啟機構原文並核對所列小節、表格或表單欄位。",
+      "reading_scope": "Connecting between International and Domestic Flights：Terminal 2 (International) ⇒ Terminal 2 (Domestic)，STEP1–6",
+      "locator": "Connecting between International and Domestic Flights：Terminal 2 (International) ⇒ Terminal 2 (Domestic)，STEP1–6",
+      "summary": "連在同一座第二航廈轉機也要經入境、提領、海關、再交件。國際轉國內線另有第三航廈到第二航廈的說明。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "限 ANA 公布的羽田動線，不能把兩種抵達航廈當成同一航班。",
+      "network": "全日空集團"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "K119-0201",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "從松山飛札幌，中途在羽田換機，拿到行李收據時先確認哪個機場？",
+      "mechanism_key": "x119.interline.receipt_destination",
+      "answer_target": "向報到人員確認箱子掛到哪一站，也問清中途要在哪裡取件。設想這只箱掛到 CTS，這三個字母指定札幌新千歲，札幌丘珠在選單上另列 OKD。即使掛到新千歲，途中是否要為清關取件仍要另核。",
+      "scope": "假設同日、訂位確認、承運人已確認可掛到 CTS；未取得個人收據或查詢特定日期機位。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一張札幌機票可以說出旅客的目的地；要知道箱子交到哪裡，還要看報到時交到手上的行李憑證。",
+        "visual": "並列「台北松山→東京羽田→札幌新千歲」與示意行李收據，框出 CTS。",
+        "seconds": [
+          27,
+          40
+        ]
+      },
+      "source_ids": [
+        "X119D-S01",
+        "X119D-S03",
+        "X119D-S04",
+        "X119D-S05"
+      ],
+      "source_locator": "S01 劃位後與轉機兩問；S03 關東航點表；S04 札幌機場選項；S05 通程報到小節。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。"
+    },
+    {
+      "id": "K119-0202",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "一人託運兩只外觀相同的黑箱，收據要留下幾組識別號碼？",
+      "mechanism_key": "x119.interline.one_identifier_per_piece",
+      "answer_target": "IATA 聯運指引建議起運航空公司逐件掛標籤，標籤帶有十位數識別碼。兩只箱可以同掛 CTS，卻各有一組號碼，之後拿回其中一只，就用它身上的號碼與自己的憑證配對。",
+      "scope": "用兩件聯運行李說明單件識別；不同航司可能把多件明細印在同張或不同張憑證。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個人、同一個目的地，兩只箱仍要分開認。",
+        "visual": "同色雙箱、兩組遮蔽示意號碼；只留一只時圈出對應的那一組。",
+        "seconds": [
+          25,
+          38
+        ]
+      },
+      "source_ids": [
+        "X119D-S02",
+        "X119D-S15"
+      ],
+      "source_locator": "S02 §8.2 每件發標籤與十碼識別；S15 §2 引換證與實物核對。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。"
+    },
+    {
+      "id": "K119-0203",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "手上已經有札幌段的登機證，為什麼同一座羽田第二航廈裡仍要去轉盤？",
+      "mechanism_key": "x119.interline.domestic_already_checked_in",
+      "answer_target": "ANA 公告，在適用起點可預辦當日接續的日本國內線；抵達日本的國際線機場仍要取件清關、再交回。第二航廈國際轉同一航廈國內線的圖也把入境、提領、海關及交運分作四站。",
+      "scope": "限 ANA 集團國際線銜接適用的 ANA 日本國內線；同航廈流程是對照情境，未指定松山班機的抵達航廈。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把航廈間的巴士從圖上拿掉，轉盤仍留在路上。",
+        "visual": "同一棟 T2 的國際到達與國內出發，中間標記人拿起行李的地方。",
+        "seconds": [
+          28,
+          42
+        ]
+      },
+      "source_ids": [
+        "X119D-S05",
+        "X119D-S19"
+      ],
+      "source_locator": "S05 ANA International Flight to an ANA Japan Domestic Flight；S19 T2 國際轉 T2 國內 STEP1–4。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。"
+    },
+    {
+      "id": "K119-0204",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "羽田先查過護照，只帶日常用品，為什麼還有另一道手續？",
+      "mechanism_key": "x119.interline.passenger_declares",
+      "answer_target": "日本要求每位入境旅客申報攜帶物品。前段辦的是人員入境，旅客領下箱子後才攜物通關；有無應課稅或受管制物品會影響走哪個通道。即使行李標籤寫著札幌，此刻人和物已經從海外進入日本。",
+      "scope": "僅談旅客隨行物品的一般申報，不推定每人都要繳稅、逐件開箱，也不代為判斷某件物品。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個旅客要回答兩件事：誰進入日本、帶了哪些物品。",
+        "visual": "用旅行證件及箱子各畫一條線，標出在日本入境的交會處。",
+        "seconds": [
+          23,
+          37
+        ]
+      },
+      "source_ids": [
+        "X119D-S05",
+        "X119D-S06",
+        "X119D-S14"
+      ],
+      "source_locator": "S06 Declaration 及 green/red channel；S05 通程國際轉國內注意事項；S14 國際轉國內。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。"
+    },
+    {
+      "id": "K119-0205",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "在手機填完 Visit Japan Web 後，能不能讓箱子在後台直接去札幌？",
+      "mechanism_key": "x119.interline.declaration_while_waiting",
+      "answer_target": "日本海關的電子流程先產生申報用二維碼。在羽田這類設有電子閘門的機場，等箱子時可操作申報機；拿到箱子後才依指示往閘門或檢查檯。事先輸入申報資料可以利用等待時間，箱子仍要由旅客提領。",
+      "scope": "按日本海關公布的電子流程；是否使用設備、是否另行查驗，依旅客條件與現場指示。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "手機畫面完成了一件工作，轉盤上仍有另一件工作。",
+        "visual": "讓「等行李」和「操作申報機」並排，待行李抵達再接「攜物通關」。",
+        "seconds": [
+          25,
+          36
+        ]
+      },
+      "source_ids": [
+        "X119D-S07"
+      ],
+      "source_locator": "S07 名單、開頭等候行李段及 Overview 1–3。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。"
+    },
+    {
+      "id": "K119-0206",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "同樣在羽田第三航廈下機，如果下一段仍要飛國外，旅客要在哪裡轉彎？",
+      "mechanism_key": "x119.interline.airside_vs_domestic",
+      "answer_target": "若已確認可留在轉機區且行李已掛到國外終點，依國際轉機指示走。羽田列出同為第三航廈的轉機路徑，還有往第二航廈國際段的轉機交通。未完成後段報到者先向轉機櫃檯洽辦。",
+      "scope": "限航司確認有此銜接、無須入境提件者。後段是日本國內線就不能照搬。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把後段從國內班改為國際班，同一座抵達航廈出現另一條旅客路。",
+        "visual": "同一畫面兩條路，分別在「日本國內線」及「確認可留轉機區的國際線」旁標出下一步。",
+        "seconds": [
+          28,
+          46
+        ]
+      },
+      "source_ids": [
+        "X119D-S08",
+        "X119D-S09",
+        "X119D-S14"
+      ],
+      "source_locator": "S08 第三航廈出發的轉機動線；S09 首段適用前提；S14 International to international transfers。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。"
+    },
+    {
+      "id": "K119-0207",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "把國際轉國際的行程改成成田過夜，原來那條轉機路為什麼可能走不通？",
+      "mechanism_key": "x119.interline.narita_overnight",
+      "answer_target": "成田機場寫明每天航班運作時段為上午六點至午夜，時段外旅客不能留在航廈空側。若轉機需跨過夜間關閉時段，要辦理日本入境與海關手續；買票前還要確認入境資格。",
+      "scope": "限成田公布的航廈運作安排；不是羽田的關門時間。箱子在哪一站領仍要問承運人。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "航點、機票和目的地都相同，只把下一班推到隔日，旅客能留在哪裡就變了。",
+        "visual": "用成田時鐘切開空側可停留時段，另一端留白給待確認的行李安排。",
+        "seconds": [
+          24,
+          39
+        ]
+      },
+      "source_ids": [
+        "X119D-S09"
+      ],
+      "source_locator": "S09 §4 Points to note when connecting flights overnight，以及首段提醒。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。"
+    },
+    {
+      "id": "K119-0208",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "從台灣分開買了長榮和下一家航空公司的票，在長榮櫃檯該查哪一條？",
+      "mechanism_key": "x119.interline.separate_ticket_eva",
+      "answer_target": "長榮台灣站「託運行李」分開說明同票與兩本票。兩本票各有運送契約，長榮只掛到自己票上的航點，旅客要在轉機站領箱、再交下一家。即使是同票，當地法規、場站及轉機時間仍可能改變交運安排。",
+      "scope": "限長榮作為開始辦理託運的一方，並按該頁的同票與分票條款判讀。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把旅客手上的訂票資料帶進真正能查到答案的「兩本機票」段落。",
+        "visual": "原創畫面依序圈出首段航司、兩張票的終點、該公司的分票條款。",
+        "seconds": [
+          18,
+          29
+        ]
+      },
+      "source_ids": [
+        "X119D-S10"
+      ],
+      "source_locator": "S10 行李直掛限制、當旅客之行程為持兩本機票時。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。"
+    },
+    {
+      "id": "K119-0209",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "若首段換成國泰，為什麼兩張票的旅客可能得到不同答覆，回程又要重問？",
+      "mechanism_key": "x119.interline.cathay_partner_asymmetry",
+      "answer_target": "國泰的分票 FAQ 列出有直掛協議的夥伴；寰宇一家成員一欄仍註明當地海關限制。回程如果是另一家先收件，不能把國泰在去程提供的服務反過來套用。判斷自己的票，先問首段航司能否接上具名的下一家。",
+      "scope": "僅為國泰公布的分票安排，不代表台北至札幌示意航段由國泰執飛。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣兩張票，換點是誰先接下這件行李。",
+        "visual": "把兩家承運人名稱翻面，畫出「先收件」的箭頭，再對照官方表格欄名。",
+        "seconds": [
+          20,
+          30
+        ]
+      },
+      "source_ids": [
+        "X119D-S11"
+      ],
+      "source_locator": "S11 首段、Ticket Type 表格、表後聯絡說明。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。"
+    },
+    {
+      "id": "K119-0210",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "如果兩段都是樂桃，甚至放在同一筆訂位裡，還會在中途拿到箱子嗎？",
+      "mechanism_key": "x119.interline.one_booking_peach",
+      "answer_target": "樂桃的多段訂位可合併最多四個航段，行李處理則按每個航段分開。它用新千歲經關西往那霸的全國內行程示範，中途一樣要領取再託運。這裡沒有國際入境，仍會看到旅客提著行李再去報到。",
+      "scope": "樂桃官方路線例示，未聲稱有人照例購票或實際搭乘。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連全國內行程都能在中途出現轉盤，說明這次領箱來自航司的銜接方式。",
+        "visual": "三座城市放在一筆示意訂位內，在關西標出領箱和交運。",
+        "seconds": [
+          20,
+          31
+        ]
+      },
+      "source_ids": [
+        "X119D-S12"
+      ],
+      "source_locator": "S12 Regarding Peach connecting flights／Domestic→Domestic 範例及 About Multi-City Flights reservation。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。"
+    },
+    {
+      "id": "K119-0211",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "回到羽田第三航廈，海關出口旁的櫃檯關了，箱子要拉去哪一棟？",
+      "mechanism_key": "x119.interline.haneda_counter_by_carrier",
+      "answer_target": "羽田官方從 T3 分別列出接日航 T1 和全日空 T2 的旅客流程。二樓轉機櫃檯開放時可在這裡辦；櫃檯關閉，應到各自出發航廈辦理。同一海關出口，後段航空公司決定把箱子帶往哪裡。",
+      "scope": "限定官方所列 T3 抵達、續接這兩家國內線的動線；依航班與現場營運確認。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "家人在同一個海關出口會合，接不同航司時也可能拉著箱子往不同航廈。",
+        "visual": "以海關出口為共同起點，打開 T1 日航與 T2 全日空兩塊目的地指示。",
+        "seconds": [
+          28,
+          41
+        ]
+      },
+      "source_ids": [
+        "X119D-S13"
+      ],
+      "source_locator": "S13 Transfer From Terminal 3 → To Terminal 1 / To Terminal 2，各項 Domestic Boarding Procedures。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。"
+    },
+    {
+      "id": "K119-0212",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "國內班假設下午三點起飛，兩點十分抵達羽田 T3 的日航轉機櫃檯，這裡還收箱嗎？",
+      "mechanism_key": "x119.interline.jal_last_bag_time",
+      "answer_target": "日航 T3 櫃檯僅受理當日銜接、託運收件到國內班起飛前六十分鐘。在櫃檯營業的前提下，三點班機對應兩點截止；兩點十分還有五十分鐘，旅客已須帶箱前往 T1 辦。這項時間只回答去哪裡交件，仍須留意後續報到與登機期限。",
+      "scope": "使用虛構 15:00 起飛時間按日航公告推算；無實際航班、排隊時間或趕上紀錄。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "比起問「還有沒有五十分鐘」，這位旅客應先知道哪一個櫃檯還能收他的箱子。",
+        "visual": "畫出 14:00、14:10、15:00 三個節點，讓箱子從 T3 隨人移往 T1。",
+        "seconds": [
+          34,
+          49
+        ]
+      },
+      "source_ids": [
+        "X119D-S14",
+        "X119D-S13"
+      ],
+      "source_locator": "S14 Notices 與 International to domestic transfers STEP2 下的 60-minute cut-off；S13 T3 → T1。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。"
+    },
+    {
+      "id": "K119-0213",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "若通關時後段改了航班，把舊行李標籤帶到櫃檯還要對哪一欄？",
+      "mechanism_key": "x119.interline.recheck_after_change",
+      "answer_target": "IATA 的聯運指引特別提到重新交件時所見的錯誤。遇到班機取消、延誤，或行李牌上的班號不對，工作人員應先處理再把行李送下去。旅客改到下一班時，可一起出示新的航段資料和原行李收據。",
+      "scope": "聯運作業指引及依此提出的核對動作。是否換發標籤、如何改票，由當時承運人處理。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "札幌仍是同一個目的地，承運人還得把箱子接上正確的那一班。",
+        "visual": "目的地 CTS 留在畫面上，更換示意航班 A／B，再由櫃檯核對。",
+        "seconds": [
+          24,
+          38
+        ]
+      },
+      "source_ids": [
+        "X119D-S02"
+      ],
+      "source_locator": "S02 §8.3 內文頁 16，in case the agent involved with the re-check-in process 一段。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。"
+    },
+    {
+      "id": "K119-0214",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "抵達札幌新千歲，同色行李轉過來，為什麼要在離開提領區前再看一次收據？",
+      "mechanism_key": "x119.interline.carousel_before_exit",
+      "answer_target": "新千歲國內線到達指引請旅客先按航司、班號找轉盤，再核對箱上與行李引換證的號碼。箱子若沒出現或受損，備著引換證向承運航司人員反映；一旦進入到達大廳就不能走回提領區。",
+      "scope": "只談新千歲國內線到達指引。看到相似箱子或轉盤變空都無法判斷問題出在哪一站。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "那張在台北留下的小紙，在札幌拿箱前又派上用場。",
+        "visual": "分別放大轉盤螢幕上的班號和收據上的行李號，再標出去往大廳的單向箭頭。",
+        "seconds": [
+          28,
+          40
+        ]
+      },
+      "source_ids": [
+        "X119D-S15"
+      ],
+      "source_locator": "S15 §2 手荷物の受け取り，§3 到着ロビー。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。"
+    },
+    {
+      "id": "K119-0215",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "只找到兩只黑箱裡的一只，向航空公司說「另一只是黑色」還能補哪些線索？",
+      "mechanism_key": "x119.interline.missing_bag_description",
+      "answer_target": "ANA 日本國內線請旅客立即向抵達站人員反映，視情況補填遺失物問卷。表上除了航班、日期、廠牌、箱型、顏色與材質，也留了內容物種類、數量及描述。找到後才安排送往指定地點。",
+      "scope": "以 ANA 自家處理流程與未填寫表單解說，不把空白欄位編成一宗實際尋回案件。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個形容詞能對上兩只箱，單件號碼和可辨識特徵能把範圍縮到剩下的那只。",
+        "visual": "用原創空白小卡列「箱型、顏色、材質、內容」四格，對照開場兩組識別號。",
+        "seconds": [
+          20,
+          31
+        ]
+      },
+      "source_ids": [
+        "X119D-S16",
+        "X119D-S18"
+      ],
+      "source_locator": "S18 How to Report / Contents Declaration / Baggage Return；S16 Description 及 Details of contents 欄。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。"
+    },
+    {
+      "id": "K119-0216",
+      "category": "建築交通與商業制度",
+      "domain": "建築交通與商業制度",
+      "question": "如果回台灣搭的是日航國際線，報失後為什麼拿原來的行李條號碼登入會找錯欄位？",
+      "mechanism_key": "x119.interline.case_reference_return",
+      "answer_target": "日航國際線尋件頁請符合資格的旅客用姓名與 File Reference Number 查詢。這是通報後取得的十位英數案件編號；報到時拿到的行李號是單件識別。忘記案件號可問抵達機場。",
+      "scope": "另設回程日航國際線案例，不能拿此頁指引新千歲國內線旅客。JTA 執飛不適用；日航後再轉別家且終點未取件，頁面指向最後搭乘的航司。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "台北報到時已經有行李號，另一個號碼要等確有通報才會出現。",
+        "visual": "將「收件時」與「報失後」兩張憑證放在時間軸上，不輸入真實號碼。",
+        "seconds": [
+          21,
+          35
+        ]
+      },
+      "source_ids": [
+        "X119D-S17"
+      ],
+      "source_locator": "S17 首段 File Reference Number、Notes、How to use the baggage tracer。",
+      "notes": "研究題卡。路線、時刻與旅客行為若以情境演示，畫面標明示意。"
+    }
+  ],
+  "not_added": []
+}

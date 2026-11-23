@@ -1,0 +1,1375 @@
+{
+  "batch_id": "wave74-human-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第二十四輪從零研究的新長題（知覺、身體）：洋裝藍黑白金（F83／V86）、走跑轉換（F100／V103），都留後備。",
+  "sources": [
+    {
+      "id": "H74-S001",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4934678/fullTextXML",
+      "canonical_url": "https://doi.org/10.1177/2041669516645592",
+      "title": "#TheDress: The Role of Illumination Information and Individual Differences in the Psychophysics of Perceiving White–Blue Ambiguities",
+      "publisher": "i-Perception 7(2)（2016）；Hesslinger、Carbon（德國班貝格大學）",
+      "version": "出版社開放取用版（CC BY 3.0，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）：search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python -I 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、General Method、實驗 1 與 2 的方法與結果、General Discussion），參考文獻未讀",
+      "locator": "Abstract；General Method/Participants（24 對 24、Ishihara 與 Snellen 檢查）；Setting and Apparatus（校正過的 Eizo 螢幕）；Experiment 1 Results and Discussion 與 Figure 3 圖說（1–5 像素方塊差異不顯著）；Experiment 2 Results（白–藍連續色 p = .0434，金–黑無差異）；General Discussion 第 1 段",
+      "summary": "48 名色覺正常者在實驗室、經校正的螢幕上看洋裝照，恰好 24 人偏白金、24 人偏藍黑；把裁掉背景的洋裝切成小方塊打亂，方塊越小兩組對「有多藍」的評分越接近，邊長 1–5 像素時差異不顯著。另在全螢幕的白到藍、金到黑兩條色階上，藍黑組在白–藍色階（偏白那端）報出稍多的藍，金–黑色階兩組無差異。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "48 人、德國大學生年齡層；24/24 是事後依評分切分的「恰好一半」，不是母體比例。打亂方塊同時破壞形狀與光照線索，作者自己寫結果不只支持光照解釋。白–藍色階的差異很小（η² = .092），交互作用 p = .0663 未達顯著。文中「45% 首次後換看法」引自 Lafer-Sousa 2015，不是本篇資料，不算。",
+      "author_cache": {
+        "file": "f83src/PMC4934678.txt（原始 PMC4934678.xml）",
+        "sha256_prefix": "f7c71f3e53f19ed1",
+        "xml_sha256_prefix": "0d3a879ce8ce8d03",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f83src/，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S002",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5672910/fullTextXML",
+      "canonical_url": "https://doi.org/10.1167/17.12.25",
+      "title": "#TheDress: Categorical perception of an ambiguous color image",
+      "publisher": "Journal of Vision 17(12):25（2017）；Lafer-Sousa（MIT）、Conway（美國 NIH 國家眼科研究所）",
+      "version": "出版社開放取用版（CC BY-NC-ND 4.0，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）：search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python -I 去標籤轉文字",
+      "reading_scope": "摘要、前言、方法前段（受試者、實驗設定、刺激）、Results 全節（含其中的圖說）；Discussion 未讀",
+      "locator": "Abstract；Methods（2,200 名線上、53 名實驗室）；Results 第 1–11 段（k-means 與 gap 統計、約 125–180 人才看得出兩類）；第 15–20 段（換看法：一半至少換過一次、12% 常換；知道真實顏色者 42% 對 14%；影像越小越多藍黑）；第 21–25 段（洋裝上的光：白金組判冷、藍黑組判暖；背景光兩組都判暖；描述詞分類線上 84%）；第 36–40 段（只染膚色就能讓多數人照提示看）；第 29–33 段（作息時間預測力弱）",
+      "summary": "2,200 名線上受試者與 53 名實驗室受試者用取色器配洋裝四個區塊的顏色：配色資料分成兩群（白金、藍黑），藍棕不是獨立第三群而像過渡狀態；作者的抽樣分析顯示約 125–180 人以上才看得出「兩群而非一群」，早先只有 15 人的研究看成連續分布。兩組對背景光都判為暖，但對「照在洋裝上的光」判斷相反：白金組說暗、冷（像背光陰影），藍黑組說亮、暖。把洋裝原像素原封不動貼進有明確暖光或冷光的場景，多數人照場景提示看成同一種；只換成均勻色底沒有用，只把旁邊人物的膚色染成冷或暖就有用。看過這張圖的人約一半說至少換過一次看法，只有 12% 常換；第一次看成白金、後來知道真實顏色的人有 42% 換到藍黑，不知道的只有 14%；影像縮小、看過越多次都讓人群偏向藍黑。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "線上受試者螢幕未校正（作者以實驗室 53 人比對，兩者一致）。「換過看法」是受試者自述回憶。作息（早起或夜貓）只對實驗室資料有預測力，線上分類對白金組只有 20% 命中，作者結論是作息影響有限、且看法可能反過來影響自述作息——片中不能說「夜貓看藍黑」。藍棕約一成引自 2015 前報。 覆核 V86（2026-11-12）：limitations 補：「早先少於兩打受試者」是原文說法，原文沒有 15 人。",
+      "author_cache": {
+        "file": "f83src/PMC5672910.txt（原始 PMC5672910.xml）",
+        "sha256_prefix": "43b3582358388df3",
+        "xml_sha256_prefix": "e80276e4b9bb52ed",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f83src/，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S003",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5812438/fullTextXML",
+      "canonical_url": "https://doi.org/10.1167/17.9.4",
+      "title": "What #theDress reveals about the role of illumination priors in color perception and color constancy",
+      "publisher": "Journal of Vision 17(9):4（2017）；Aston、Hurlbert（英國新堡大學）",
+      "version": "作者稿（Europe PMC 作者稿，CC BY-NC-ND 4.0；出版社版在 J Vis）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）：search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python -I 去標籤轉文字",
+      "reading_scope": "摘要、前言、Results 全節、Discussion、Conclusions；Methods 未逐段讀",
+      "locator": "Abstract；Results 第 1–2 段（32 人依命名分三組，配色圓盤單獨命名時超過三分之一改叫藍金）；Results 光照配色段（光照配色第一主成分與洋裝本體配色 r = −0.395）；IDT 段（變藍的光照變化最難察覺，但與看法無關）；MEQ 段（作息與配色 r = 0.344, p = 0.054）；Discussion 第 3 段（光照配色解釋洋裝本體配色 15.52%）",
+      "summary": "32 名受試者先為洋裝命名（藍黑 13、白金 11、藍金 8），再用圓盤配出洋裝本體與蕾絲的顏色、配出照在洋裝上的光。把自己配出的圓盤單獨拿出來命名時，原本說藍黑或白金的人有超過三分之一改說藍金。光照配得越藍、越暗的人，洋裝本體配得越不藍、越亮（相關 r = −0.395，光照配色可解釋本體配色變異的 15.52%）。在一般的光照辨識測驗中，所有人都最難察覺光線「變藍」，但這個門檻高低和怎麼看洋裝無關。作息問卷與配色的相關只在 10% 水準顯著。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "樣本 32 人；作息相關未達 5% 顯著，作者也指出年齡是混淆變數，片中只能說「有一點跡象、證據弱」。配色是連續分布，與 F83-S002 的「兩群」結論不同：兩研究方法、樣本數不同，片中並列，不合併數字。作者稿非出版社排版版。",
+      "author_cache": {
+        "file": "f83src/PMC5812438.txt（原始 PMC5812438.xml）",
+        "sha256_prefix": "9c5b9d1179a04f7d",
+        "xml_sha256_prefix": "3c9a2f67a0301b6d",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f83src/，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S004",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7672784/fullTextXML",
+      "canonical_url": "https://doi.org/10.1177/0301006620963808",
+      "title": "Exploring the Determinants of Color Perception Using #Thedress and Its Variants: The Role of Spatio-Chromatic Context, Chromatic Illumination, and Material–Light Interaction",
+      "publisher": "Perception 49(11):1235–1251（2020）；Aston、Denisova、Hurlbert、Olkkonen、Pearce、Rudd、Werner、Xiao（多機構合著，含新堡大學 Hurlbert 群）",
+      "version": "出版社開放取用版（CC BY 4.0，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）：search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python -I 去標籤轉文字",
+      "reading_scope": "摘要、前言、Demo 1 全節、Demo 2 前段、註腳 1–3；其餘 demo 只讀到以關鍵字定位的圖說與結論段",
+      "locator": "Abstract；前言第 2 段與註腳 2、3（2015 年倫敦惠康收藏館活動 847 人：雙光源 46/12/42，單一白光 86/2/12；註腳寫明是未發表資料）；Demo 1 第 2–3 段（黃布底→多數藍黑、黑布底→多數白金；加入真人偏向藍黑）；Demo 2（象牙白款洋裝顏色穩定）",
+      "summary": "2015 年視覺科學年會現場用真的洋裝做示範：同時打藍、黃兩種光時，掛在黃布前多數人看成藍黑、掛在黑布前多數人看成白金；旁邊站一個真人，看法偏向藍黑。前言引用同一群作者在倫敦惠康收藏館的群眾實驗（未發表）：847 人看真洋裝，打擴散藍光加定向黃光時 46% 藍黑、12% 白金、42% 其他；單一白光下 86% 藍黑、2% 白金、12% 其他。同款的象牙白洋裝在變光下顏色看起來穩定得多。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "示範性質，多數結果是「多數觀眾」的定性描述，沒有統計；847 人的比例是本文註腳標明的未發表資料，只能說「研究者在論文中報告的未發表群眾實驗」。與 F83-S003 同屬 Hurlbert 群，兩篇合計封頂 2.0。 覆核 V86（2026-11-12）：limitations 補：847 人群眾實驗在 2015 年 5 月 1–4 日倫敦惠康收藏館「On Light」週末（註 2、3），由新堡大學 Hurlbert、Pearce、Aston 主持，註 3 標明 Unpublished data；與 VSS 2015 年會示範是不同場合。",
+      "author_cache": {
+        "file": "f83src/PMC7672784.txt（原始 PMC7672784.xml）",
+        "sha256_prefix": "1172db98ab669351",
+        "xml_sha256_prefix": "67838a7d061a60e3",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f83src/，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S005",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5739438/fullTextXML",
+      "canonical_url": "https://doi.org/10.1016/j.visres.2017.07.015",
+      "title": "The dress and individual differences in the perception of surface properties",
+      "publisher": "Vision Research 141:76–94（2017）；Witzel（吉森大學）、O'Regan（巴黎笛卡兒大學）、Hansmann-Roth（巴黎高師）",
+      "version": "出版社開放取用版（CC BY-NC-ND 4.0，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）：search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python -I 去標籤轉文字",
+      "reading_scope": "摘要、前言、線上實驗的 Discussion 與全文 Conclusion；兩個實驗的方法與結果段未逐段讀",
+      "locator": "Abstract；Introduction 第 1–6 段；線上實驗 Discussion 第 1–3 段（以為在陰影→白金、以為閃光或過曝→藍黑；看到越多光澤越偏白金）；Discussion 倒數段與 Conclusion（洋裝與色彩恆常測驗有關，但與夾克、其他雙義圖、光澤判斷彼此無關）",
+      "summary": "重分析兩個舊實驗並做兩次線上調查：認為洋裝在陰影裡的人看成白金，認為有閃光、過曝、強烈直射光的人看成藍黑；看到蕾絲越有光澤的人越偏白金，把光澤歸給布料的人偏白金、歸給強光的人偏藍黑。洋裝看法與一般色彩恆常測驗的個人差異有關；但其他也會吵的照片（夾克、另兩張洋裝照、上下顛倒的海浪）各自的個人差異彼此無關、也和原版洋裝無關。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "線上部分螢幕未校正；我只讀了討論與結論段，數字（相關係數、樣本數）未逐一核對，片中只用方向性的結論。前言「真洋裝在白光下總是藍黑」是引用（Bach 2015 等），不是本篇資料。 覆核 V86（2026-11-12）：reading_scope 改為：摘要、前言、3.1 方法摘要、3.2 線上實驗結果（覆核者補讀陰影、閃光、過曝、光澤段）、Discussion、Conclusion；本覆核已核對 t(498) = 8.0、r = 0.22、r = −0.10。",
+      "author_cache": {
+        "file": "f83src/PMC5739438.txt（原始 PMC5739438.xml）",
+        "sha256_prefix": "d925246a945bde33",
+        "xml_sha256_prefix": "6906e5ea00a77b1a",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f83src/，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S006",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7405681/fullTextXML",
+      "canonical_url": "https://doi.org/10.1167/jov.20.3.7",
+      "title": "Neural correlates of perceptual color inferences as revealed by #thedress",
+      "publisher": "Journal of Vision 20(3):7（2020）；Retter、Gwinn、O'Neil、Jiang、Webster（美國內華達大學雷諾分校）",
+      "version": "PMC 收錄 JATS 全文",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）：search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python -I 去標籤轉文字",
+      "reading_scope": "摘要、前言、方法（受試者、刺激、程序、分析）、Results 前三段；Discussion 未讀",
+      "locator": "Abstract（解碼超過 80%）；Methods/Participants（兩實驗各 14 人；白金合計 10、藍黑 17）；Results 第 1 段（藍–黃 0.44 µV 對紅–綠 0.31 µV，p = 0.043，14 人中 10 人藍黃較大）；Results 第 2 段（兩組振幅無差異）",
+      "summary": "用每秒 6 張的速度讓原版藍洋裝和每個像素色差反轉的黃洋裝交替出現，同時記錄 128 頻道腦波：藍黃交替引起的「不對稱」反應比色差量相同、只是方向不同的紅綠交替大（0.44 對 0.31 µV）。用頭皮分布的形狀，可以把白金與藍黑觀看者分開，作者在摘要寫準確率超過 80%；單看反應大小，兩組沒有差別。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "樣本小（27 人，白金 10）；解碼數字我只在摘要讀到，方法中的置換檢定段讀過但未核對最終百分比。前言中「把洋裝反轉成黃色、或轉到紅綠軸，大家就不再吵」是引用 Winkler 2015、Gegenfurtner 2015，不是本篇資料，不算。 覆核 V86（2026-11-12）：limitations 改：解碼準確率在 Results 有完整數字（藍黑 82.4%＝14/17、白金 80.0%＝8/10），不是只在摘要。",
+      "author_cache": {
+        "file": "f83src/PMC7405681.txt（原始 PMC7405681.xml）",
+        "sha256_prefix": "ece31fe0f593df44",
+        "xml_sha256_prefix": "5b0e50c623226d25",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f83src/，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S007",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5937631/fullTextXML",
+      "canonical_url": "https://doi.org/10.1177/2041669518764192",
+      "title": "Assessment of #TheDress With Traditional Color Vision Tests: Perception Differences Are Associated With Blueness",
+      "publisher": "i-Perception 9(2)（2018）；Feitosa-Santana、Lutze、Barrionuevo、Cao（伊利諾大學芝加哥分校等）",
+      "version": "出版社開放取用版（CC BY 4.0，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）：search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python -I 去標籤轉文字",
+      "reading_scope": "摘要、前言；Results 中命名比例、配色、獨特白與色彩偏好段（以關鍵字定位）；Discussion 未讀",
+      "locator": "Abstract；Results 第 1 段（52 人：藍黑 15、白金 21、其他 16）；配色段（亮區兩群有清楚分界）；Unique white 段（白金組調白時加更多藍）",
+      "summary": "52 名年輕受試者：15 人（29%）說藍黑、21 人（40%）說白金、16 人（31%）說各種藍金組合。亮區的配色沿著日光色軌跡排成連續一條，但白金與藍黑之間有清楚分界。在「把一塊色光調到看起來純白」的測驗中，白金組調出的白含較多藍；三組對淡青色色票的喜好也不同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "52 人；作息問卷有做，但我沒在讀到的段落找到結果，不引用。色票偏好的意義作者也未定論，片中不用。",
+      "author_cache": {
+        "file": "f83src/PMC5937631.txt（原始 PMC5937631.xml）",
+        "sha256_prefix": "bb60fc6d350009b0",
+        "xml_sha256_prefix": "92035665147afeda",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f83src/，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S008",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5007038/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0161090",
+      "title": "Blue-Black or White-Gold? Early Stage Processing and the Color of 'The Dress'",
+      "publisher": "PLOS ONE 11(8):e0161090（2016）；Rabin、Houser、Talbert、Patel（美國道成肉身大學驗光學院）",
+      "version": "出版社開放取用版（CC BY 4.0，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）：search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python -I 去標籤轉文字",
+      "reading_scope": "結構化摘要、Results 前四段（顯示器、黃斑色素、腦波、色度量測）；方法與討論未讀",
+      "locator": "Abstract（Purpose/Methods/Results/Conclusions）；Results 第 1 段（多數人在 iPhone、iPad、22 吋螢幕看到相同顏色）；第 2 段（黃斑色素光密度 白金 0.49 對 藍黑 0.41，p = 0.0395）；第 3 段（腦波潛時 130 對 107 毫秒）",
+      "summary": "39 名受試者在 iPhone 5、iPad、22 吋螢幕上看洋裝，絕大多數人換裝置看到的顏色不變。眼底中央黃斑區吸收藍光的色素，白金組平均光密度 0.49、藍黑組 0.41；看洋裝時的視覺誘發腦波，白金組正波出現較晚（130 對 107 毫秒）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "樣本小（白金 17、藍黑 19）；相關不等於因果，作者自己說這些結果不能完全解釋洋裝。只描述生理量測，不涉及任何健康建議。",
+      "author_cache": {
+        "file": "f83src/PMC5007038.txt（原始 PMC5007038.xml）",
+        "sha256_prefix": "00b8d27818b4b73a",
+        "xml_sha256_prefix": "5a1e168b5bbbdf53",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f83src/，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S009",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6563402/fullTextXML",
+      "canonical_url": "https://doi.org/10.1177/2041669519856037",
+      "title": "Dressing Up for a BBQ on a Blurry Street: #TheDress Is Not Only Ambiguous in Terms of Illumination But Also in Terms of Scene Content",
+      "publisher": "i-Perception 10(3)（2019）；Martinovic（英國亞伯丁大學）",
+      "version": "出版社開放取用版（CC BY 4.0，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）：search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python -I 去標籤轉文字",
+      "reading_scope": "全文（短報告，摘要至結論）",
+      "locator": "Abstract；正文第 2–4 段（140 人：藍黑 64%、白金 31%；看過的人只有 44% 知道真實顏色；光從哪來 前 29%、後 45%、側 24%；白金組較常說背光）；第 5–6 段（憑記憶描述，41% 含糊或錯；邊看邊描述 21%）",
+      "summary": "亞伯丁大學 140 名受試者（多為一年級心理系學生）：64% 看藍黑、31% 看白金、5% 其他；138 人看過這張照片，其中只有 62 人（44%）知道洋裝真正的顏色。白金組較常說光從後面來，較少說從側面來。憑記憶描述照片場景時 41% 說得含糊或錯（例如「模糊的街道」），邊看邊描述仍有 21%；但描述對錯與看到的顏色無關。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "問卷研究、單一大學學生樣本；光線方向的關聯中等（Cramer's V = 0.26）。 覆核 V86（2026-11-12）：summary 補：洋裝上光線的冷暖評分與看成什麼顏色無關（t(131) = 0.48, p = .63）。",
+      "author_cache": {
+        "file": "f83src/PMC6563402.txt（原始 PMC6563402.xml）",
+        "sha256_prefix": "de3b9bd4ab8d139f",
+        "xml_sha256_prefix": "cbc9915a16e5a220",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f83src/，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S010",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11353488/fullTextXML",
+      "canonical_url": "https://doi.org/10.1167/jov.24.8.11",
+      "title": "Perception of #TheDress in childhood is influenced by age and green-leaf preference",
+      "publisher": "Journal of Vision 24(8):11（2024）；Salcedo-Villanueva 等（墨西哥）",
+      "version": "出版社開放取用版（CC BY-NC-ND 4.0，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）：search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python -I 去標籤轉文字",
+      "reading_scope": "摘要、前言前段、Method、Results、Discussion（含限制段）",
+      "locator": "Abstract；Results 第 1–3 段（413 名 2–10 歲未看過的孩子：藍黑 204、白金 209；10 人說其他顏色；平均年齡 5.5 對 6.1 歲，p = 0.007）；logistic 迴歸段（Nagelkerke R² 0.036）",
+      "summary": "家長在網路問卷中問 2 到 10 歲、從沒看過這張照片的孩子「這件洋裝是什麼顏色」（不給選項）：413 份有效回答中 204 人說藍黑、209 人說白金，另有 10 人說紅、綠、粉紅等。說白金的孩子平均大一點（6.1 對 5.5 歲），但年齡能解釋的很少（模型 R² 只有 0.036）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "家長代問、橫斷面；只收藍黑或白金兩類答案。論文另一半是飲食（綠葉蔬菜）與看法的關聯，屬飲食與眼睛健康推論，本提案不採用、不入片。",
+      "author_cache": {
+        "file": "f83src/PMC11353488.txt（原始 PMC11353488.xml）",
+        "sha256_prefix": "c540d126f7235e3d",
+        "xml_sha256_prefix": "d38ca7feab0a440b",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f83src/，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S011",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12589789/fullTextXML",
+      "canonical_url": "https://doi.org/10.1177/20416695251388577",
+      "title": "Can DNN models simulate appearance variations of #TheDress?",
+      "publisher": "i-Perception 16(6)（2025）；Kuriki、Saito、Okubo、Kiyokawa（埼玉大學）、Shinozaki（近畿大學）",
+      "version": "出版社開放取用版（CC BY-NC 4.0，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）：search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python -I 去標籤轉文字",
+      "reading_scope": "摘要、Results 中以圖說與段落讀到的兩個實驗（藍偏圖比例、整張染色對照）；前言與方法未逐段讀",
+      "locator": "Abstract；Figure 4 圖說（藍偏圖占訓練 0–50%，40% 以上誤差趨平）；Results 補充實驗段（只把整張圖染藍或染黃，輸出不會變白金；加入 50% 藍偏圖後誤差 15.0 降到 8.16）",
+      "summary": "研究者訓練影像轉換神經網路替圖片「命名顏色」，改變訓練集中「藍天陰影下的白色東西」（雪、白衣、路標）照片的比例：比例越高，網路對洋裝照的輸出越從藍黑變成白（灰）金。若只是把整張照片染藍或染黃來訓練，輸出完全不會變成白金；加回藍偏圖才拉近白金。作者推論要有「天空藍光下明確是白色的東西」的經驗才會形成藍偏。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "電腦模型模擬，不是人類實驗；「人因為這種經驗而看成白金」是作者推論，片中要說「模型顯示這種經驗足以造成差異」。",
+      "author_cache": {
+        "file": "f83src/PMC12589789.txt（原始 PMC12589789.xml）",
+        "sha256_prefix": "d73b7e775e01ef33",
+        "xml_sha256_prefix": "469b75e40958292b",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f83src/，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S012",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7116573/fullTextXML",
+      "canonical_url": "https://doi.org/10.1016/j.visres.2020.10.007",
+      "title": "Explaining #theShoe based on the optimal color hypothesis: The role of chromaticity vs. luminance distribution in an ambiguous image",
+      "publisher": "Vision Research 178（2021）；Morimoto（牛津大學）、Fukuda（工學院大學）、Uchikawa（神奈川工科大學）",
+      "version": "作者稿（PMC 收錄，Europe PMC 標示開放取用）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）：search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python -I 去標籤轉文字",
+      "reading_scope": "摘要、前言第 1 段、Results 的光源估計與 von Kries 段、Discussion 第 1 段",
+      "locator": "Abstract；Results（估計強度越低，最適色溫從 4500 K 升到 20000 K；全域最小與局部最小誤差接近）；von Kries 段（高色溫校正→白粉、低色溫校正→灰綠松石）；Discussion 第 1 段",
+      "summary": "2017 年的「鞋子」照多數人看成灰色皮面配綠松石鞋帶，也有人看成粉紅皮面配白鞋帶。以「最適色」模型分析：假設照到鞋的光越暗，估出的光越偏藍（色溫從 4500 K 一路升到 20000 K），而且幾個候選光源的吻合度差不多；把估計的光從照片中扣掉，扣高色溫得白粉、扣低色溫得灰綠松石。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "理論模型分析與模擬，不是人類實驗；作者提醒模擬結果依螢幕與個人而異。 覆核 V86（2026-11-12）：summary 刪「2017 年」；補作者「估計色溫連續變化、不一定雙峰」的提醒；「多數人看灰綠松石」標明引自 Werner 2018。",
+      "author_cache": {
+        "file": "f83src/PMC7116573.txt（原始 PMC7116573.xml）",
+        "sha256_prefix": "3158f09189b4d059",
+        "xml_sha256_prefix": "65a1166cc8bbd598",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f83src/，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S013",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12365028/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-025-15592-7",
+      "title": "Laurel–Yanny percept affects the speech-to-song illusion, but musical anhedonia does not",
+      "publisher": "Scientific Reports 15:30325（2025）；Kathios、Kubit、Grout、Everard、Loui 等（美國東北大學）",
+      "version": "出版社開放取用版（CC BY-NC-ND 4.0，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）：search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python -I 去標籤轉文字",
+      "reading_scope": "摘要，以及以關鍵字 Laurel／Yanny 定位的前言、方法、結果、討論各段；其餘未讀",
+      "locator": "Abstract；前言第 7 段（0.9 秒錄音、中段共振峰可讀成 Laurel 第二或 Yanny 第三共振峰）；Methods/Laurel–Yanny stimulus；Results『Laurel-perceivers experience a stronger…』節（Laurel 179、Yanny 268；重複後音樂感增幅 55%/33% 對 41%/17%）",
+      "summary": "2018 年爆紅的 0.9 秒錄音，有人肯定聽到「Laurel」、有人肯定聽到「Yanny」；作者說明這段錄音中間有一個共振峰可以讀成兩個字的不同部分。這項線上研究 447 人中 179 人聽到 Laurel、268 人聽到 Yanny；聽到 Laurel 的人，在「同一句話重複播放會越聽越像唱歌」的錯覺裡，音樂感增加得比較多。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Laurel／Yanny 分組是探索性假設（非預先登記）；「Laurel 組偏重低頻」是作者解釋，作者也說還要另做頻帶加權測驗確認。說話變唱歌本身池中已有 R22001，本提案只算 Laurel／Yanny 新增的部分。此段跨到 F92 聲音領域，見回報。 覆核 V86（2026-11-12）：標明共振峰解釋出自引文 14；此來源改作 R22001／G234 的增量候選，不屬 F83-T1。",
+      "author_cache": {
+        "file": "f83src/PMC12365028.txt（原始 PMC12365028.xml）",
+        "sha256_prefix": "211d6dce8ad60c75",
+        "xml_sha256_prefix": "0818c46097929fc1",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f83src/，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S014",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6924320/fullTextXML",
+      "canonical_url": "https://doi.org/10.7717/peerj.8290",
+      "title": "Why do we transition from walking to running? Energy cost and lower leg muscle activity before and after gait transition under body weight support",
+      "publisher": "PeerJ 7:e8290（2019）；Abe、Fukuoka、Horiuchi（九州產業大學、同志社大學、山梨縣富士山科學研究所）",
+      "version": "出版社開放取用版（PMC 收錄之 JATS 全文，CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論、結論；表 1 個人資料；圖說）",
+      "locator": "Abstract；Results 第 1–3 段；Discussion 第 1–2 段與減重裝置方法學段落；Conclusions",
+      "summary": "13 名年輕男性在跑步機上：先在 4 個走速、3 個跑速量耗氧，用走路（二次曲線）與跑步（直線）的每公尺耗能曲線交點求『能量最省的換跑速度』EOTS；再以每分鐘加 1 km/h 的斜坡速度測自然換跑速度 PTS。一般條件下 PTS 1.932±0.075 m/s，EOTS 2.031±0.086 m/s，PTS 慢 5.2%（30% 減重條件下慢 11.4%）；作者結論：換跑不只是為了全身耗能最小。換成跑步後，脛前肌與比目魚肌活動下降、肌電平均功率頻率降低，作者解讀為改用較多慢縮肌纖維、『或許』為避免局部肌肉提早疲勞。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "EOTS 由外插求得（走路曲線外插到 2 m/s 以上）；只有 13 名年輕男性、跑步機。『5–6%』的舊文獻數字（Hreljac 1993 等）是前言引用，不算本篇結果。減重條件下 PTS 變快與 Kram 1997 等多數研究相反，作者歸因於自製彈簧裝置的垂直力波動（±4 kg），片中不用減重那組數字。肌纖維型態是由表面肌電頻譜推論，作者自己寫 perhaps。",
+      "author_cache": {
+        "file": "f100src/PMC6924320.txt（原始 PMC6924320.xml）",
+        "sha256_prefix": "354514c4e02fd26e",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f100src/，未進 repo；參考文獻清單在轉文字時省略。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S015",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4575035/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0138154",
+      "title": "Economical Speed and Energetically Optimal Transition Speed Evaluated by Gross and Net Oxygen Cost of Transport at Different Gradients",
+      "publisher": "PLoS One 10(9):e0138154（2015）；Abe 等（山梨縣富士山科學研究所等；與 S001 同一研究群）",
+      "version": "出版社開放取用版（PMC 收錄之 JATS 全文，CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "摘要、前言、方法（受試者、速度設定）、結果中 ES 與 EOTS 數值段落；討論只讀到第 345 行附近，其餘方法學比較（gross vs net）未細讀",
+      "locator": "Results：ES 數值段（文字檔第 182 行）、EOTS 數值段（第 338 行）；Methods 受試者段",
+      "summary": "11 名受過訓練的男性跑者在平地、上坡、下坡走 8 種速度、跑 4 種速度：走路每公里耗氧對速度呈 U 形、跑步近乎平直；平地上走路最省的速度（gross ES）約 5.15 km/h，走跑耗能交點（gross EOTS）約 7.49 km/h。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "本篇重點在 gross 與 net 耗氧算法的差異，那部分屬方法不算事實；只用平地的 ES 與 EOTS 數字當『U 形曲線』的實測例。受試者是訓練過的跑者。與 S001 同群，合計封頂 2.0。 覆核 V103（2026-11-12）：summary／limitations 加：平地最省速度 gross 5.15、net 4.09 km/h，差約 20%，是本篇主結論；『跑步 CoT 近乎不變』是前言引用，本篇結果寫『approximately linear』。",
+      "author_cache": {
+        "file": "f100src/PMC4575035.txt（原始 PMC4575035.xml）",
+        "sha256_prefix": "10cc129fccb289f0",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f100src/，未進 repo；參考文獻清單在轉文字時省略。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S016",
+      "url": "https://www.jssm.org/jssm-04-446.xml-Fulltext",
+      "canonical_url": "https://www.jssm.org/jssm-04-446.xml-Fulltext",
+      "title": "Preferred and Energetically Optimal Transition Speeds During Backward Human Locomotion",
+      "publisher": "Journal of Sports Science and Medicine 4:446–454（2005）；Hreljac、Imamura、Escamilla、Casebolt、Sison（加州州立大學沙加緬度分校）",
+      "version": "期刊開放全文 HTML（JSSM 為免費期刊）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出的 jssm.org 全文頁網址原樣以 curl（預設標頭）取得 HTML，python 去標籤轉文字",
+      "reading_scope": "全文 HTML（摘要、重點、前言、方法、結果、討論、結論）；參考文獻只掃過",
+      "locator": "Key points；Results（BPTS 與 EOTS、RPE 段）；Discussion 第 1–3 段；Conclusion",
+      "summary": "12 名大學生（7 男 5 女）倒著在跑步機上走與跑：倒退的自然換跑速度 1.63±0.11 m/s（可求交點的 10 人），明顯低於倒退走跑耗氧曲線交點 1.85±0.09 m/s（約高 13%）；在倒退換跑速度上，走與跑的自覺費力（RPE）相同，但倒退走的耗氧明顯較低。同一批人往前的換跑速度 1.99±0.20 m/s，與倒退換跑速度相關 r=0.82。作者結論：倒退時的換跑不是省能機制，和往前一樣。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "樣本小（12 人，2 人曲線不相交排除）；跑步機。倒退走是不熟悉的動作。『往前換跑速度比 EOTS 低』在本篇是前言引用前人，本篇只直接比較倒退的 BPTS 與 EOTS。 覆核 V103（2026-11-12）：limitations 加：『13%』是 EOTS 比 BPTS 高 13%（10 人），全體 12 人平均曲線是 16%；重抓 HTML sha256 前綴 72b10cd0f2eb6577，與作者 38f52a5052cf2e92 只差頁面瀏覽計數一行。",
+      "author_cache": {
+        "file": "f100src/jssm-04-446-fulltext.txt（原始 jssm-04-446-fulltext.html，sha256 前 16 碼 38f52a5052cf2e92）",
+        "sha256_prefix": "0f13e4e41daf3a55",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f100src/，未進 repo；參考文獻清單在轉文字時省略。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S017",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13751550/fullTextXML",
+      "canonical_url": "https://doi.org/10.1007/s00421-026-06363-x",
+      "title": "Energetic cost of locomotion closely aligns with the preferred uphill walk–run transition at constant vertical speed in runners",
+      "publisher": "Eur J Appl Physiol（2026，線上先刊）；Finiel、Carron、Margot、Luc、Malatesta、Borrani（洛桑大學 BIPED 實驗室）",
+      "version": "出版社開放取用版（PMC 收錄之 JATS 全文，CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論、結論）；部分方程式與圖中曲線以文字說明讀，未看圖檔",
+      "locator": "Abstract；Results 第 1–3 段；Discussion（Wint、HR、VE 段與結論段）；Introduction 第 1–3 段（只作背景）",
+      "summary": "17 名男性長跑者在特製坡度跑步機上，維持每小時爬升 800 m 的固定垂直速度（速度越快、坡越緩）走與跑：自然換跑速度 1.76 m/s（約 7.3°坡）；耗氧／能量每公尺成本與代謝功率的走跑交點 1.79–1.80 m/s，與自然換跑速度沒有顯著差異；心率交點 1.95、通氣交點 1.89、內功交點 1.90 m/s 都顯著較快；外功、總功、步長、步頻沒有交點。作者結論：在固定爬升速度的上坡，換跑點最接近能量交點。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "受試者都是訓練有素的男性跑者；PTS 取走到跑與跑到走的平均。前言提到 Giovanelli 2016（15.8°以上走路較省但受試者說會選跑）與 Brill & Kram 2021（15° 以下 PTS 仍低於代謝功率交點）都是引用，不算本篇。作者在討論中提應用建議（訓練）片中不用。 覆核 V103（2026-11-12）：limitations 加：PTS 是走到跑與跑到走的平均；能量交點與 PTS 差 0.02–0.04 m/s、95% 信賴區間約 −0.11 到 0.21；研究者原本預期交點較快；摘要 7.2°、結果 7.3°。",
+      "author_cache": {
+        "file": "f100src/PMC13751550.txt（原始 PMC13751550.xml）",
+        "sha256_prefix": "ceafcd6b8296d2cd",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f100src/，未進 repo；參考文獻清單在轉文字時省略。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S018",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9219818/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/biology11060912",
+      "title": "Achilles Tendon Mechanical Behavior and Ankle Joint Function at the Walk-to-Run Transition",
+      "publisher": "Biology (Basel) 11(6):912（2022）；Monte、Tecchio、Nardello、Zamparo（維洛納大學）",
+      "version": "出版社開放取用版（PMC 收錄之 JATS 全文，CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "全文（Simple Summary、摘要、前言、方法、結果、討論前段）；討論後段只讀到 AT 功率段",
+      "locator": "Simple Summary；Results 第 1、2、4、5 段；Discussion 第 1–2 段",
+      "summary": "10 名健康成人赤腳在地面以 5.5、6.5、7.5、8.5 km/h 走或跑，同時用超音波追蹤腓腸肌內側肌腱交界：阿基里斯腱受力在 7.5、8.5 km/h 時跑步大於走路；阿基里斯腱提供的功率占整個肌肉—肌腱單元的比例，在 7.5 與 8.5 km/h 跑步為 62% 與 64%、走路為 58% 與 55%（走路隨速度下降）；踝關節的『彈簧指數』在 7.5 km/h 以上跑步較大。作者推論換跑可能『至少部分』是為了保住腳踝的彈簧功能。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "本篇沒有實測每個人的換跑速度，7.4 km/h 是用 Froude 數 0.5 由腿長估算；只 10 人；赤腳地面試次。因果是作者推論，片中要用『可能』。 覆核 V103（2026-11-12）：summary 改：62/64% 對 58/55% 是阿基里斯腱占腓腸肌內側頭肌肉—肌腱單元功率的比例（不是整個小腿）。",
+      "author_cache": {
+        "file": "f100src/PMC9219818.txt（原始 PMC9219818.xml）",
+        "sha256_prefix": "c24e1a0b7d2d4ba3",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f100src/，未進 repo；參考文獻清單在轉文字時省略。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S019",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6224478/fullTextXML",
+      "canonical_url": "https://doi.org/10.1016/j.jbiomech.2018.09.004",
+      "title": "The scaling or ontogeny of human gait kinetics and walk-run transition: The implications of work vs. peak power minimization",
+      "publisher": "J Biomech 81:12–21（2018）；Usherwood、Hubel、Smith、Self Davies、Sobota（英國皇家獸醫學院結構與運動實驗室）",
+      "version": "出版社開放取用版（PMC 收錄之 JATS 全文，CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論）；模型方程式只讀文字說明",
+      "locator": "Abstract；Methods 受試者兩段（幼兒 18 人 602 步、科學展 487 人 861 步）；Results/Discussion 中 V^≈0.75 與幼兒連續轉換段；最後結論段",
+      "summary": "1.1–4.7 歲幼兒 18 人在測力板上自選走或跑、被父母鼓勵用各種速度前進：他們沒有明顯的走跑突變，觸地時間比例與力曲線偏斜隨速度連續改變，在成人會跑的無因次速度 0.8–1 時觸地比例仍遠高於成人；科學展上 487 名（多為 11–18 歲）參加者照指示『快走不准跑』時，速度不超過無因次速度約 0.75，與成人走跑轉換點相符。作者以『尖峰功率最小化』模型解釋幼兒、以『機械功最小化』解釋較大的孩子與成人。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "科學展組被要求『走』，與幼兒組條件不同，作者自己列出這是無法區分的解釋之一；5–8 歲之間沒有資料。V^=V/√(gL) 的 0.75 對應常見 Froude 數（平方形式）約 0.56，片中直接用『同樣以腿長換算後的速度』說明，不自行換算倍數。 覆核 V103（2026-11-12）：limitations 加：18 名幼兒的測力板資料來自同群 Hubel & Usherwood 2015，本篇是重新建模分析。",
+      "author_cache": {
+        "file": "f100src/PMC6224478.txt（原始 PMC6224478.xml）",
+        "sha256_prefix": "60aa256a186ff7c0",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f100src/，未進 repo；參考文獻清單在轉文字時省略。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S020",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3639764/fullTextXML",
+      "canonical_url": "https://doi.org/10.1098/rsbl.2012.1121",
+      "title": "Vaulting mechanics successfully predict decrease in walk–run transition speed with incline",
+      "publisher": "Biol Lett 9:20121121（2013）；Hubel、Usherwood（英國皇家獸醫學院；與 S006 同一研究群）",
+      "version": "出版社開放取用版（PMC 收錄之 JATS 全文，CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "全文（短篇：摘要、前言、模型、方法、結果與討論）",
+      "locator": "Abstract；Introduction 第 1、3 段；方法（10 人、9.8% 坡）；結果討論第 1–3 段",
+      "summary": "10 名成人（5 男 5 女）在平地與 9.8% 坡的跑步機上加速：上坡時自然換跑速度、『盡量快走』的最高速度，以及開始改成『壓低重心的順應式快走』的速度都明顯下降；倒立擺（撐竿）模型預測的上限與『開始順應式快走』的速度很吻合，而自然換跑速度落在模型上限以下；作者推測那是一種『安全邊際』。被要求盡量快走時，人可以超過模型上限，但垂直加速度幅度會突然下降，代表改成重心較平的走法。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只 10 人；『安全邊際』是作者推測。『約每 1% 坡降 1%』是模型配合步頻固定的預測，Minetti 等的 5.2%／5% 是引用，不算本篇。",
+      "author_cache": {
+        "file": "f100src/PMC3639764.txt（原始 PMC3639764.xml）",
+        "sha256_prefix": "a565b83c6988a13d",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f100src/，未進 repo；參考文獻清單在轉文字時省略。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S021",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2719915/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0006614",
+      "title": "The Apollo Number: Space Suits, Self-Support, and the Walk-Run Transition",
+      "publisher": "PLoS One 4(8):e6614（2009）；Carr、McGee（麻省理工學院）",
+      "version": "出版社開放取用版（PMC 收錄之 JATS 全文，CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論）；補充資料表 S1 未讀",
+      "locator": "Abstract；Results 第 1–2 段；Methods 步態判讀與速度來源段；Discussion 開頭與 Kram 比較段",
+      "summary": "作者從 Apollo 登月表面紀錄（Apollo Lunar Surface Journal）與 NASA 技術報告的錄音、影片中，找出 38 個能判定步態又能估速度的事件：10 次走、10 次『lope』（像單腳不換腳的蹦跳）、18 次跑。用 logistic 模型估算，穿太空衣的月面走跑轉換在 Froude 數 0.36±0.11，比由 Kram 等地面減重資料外插的『不穿太空衣在 1/6 g』預期約 0.90 低 60%；把太空衣靠內壓撐起自身重量算進去的『Apollo 數』轉換點為 0.68±0.20。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "速度取自先前重建的時間與距離，作者未自己由影片量；分類有主觀成分；只 38 事件。0.90 是作者對 Kram 1997 資料的冪律擬合外插，不是本篇量測；Kram 1997 原文（JEB）403 未讀。片中不做太空衣產品評價。 覆核 V103（2026-11-12）：limitations 改：0.9 是原文說的對 Kram 1997 資料的內插（interpolation）；轉換是『walk/lope 對 run』的二元估計；太空衣完全自撐是模型假設；『低六成』刪除。",
+      "author_cache": {
+        "file": "f100src/PMC2719915.txt（原始 PMC2719915.xml）",
+        "sha256_prefix": "c9aba063e2e61910",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f100src/，未進 repo；參考文獻清單在轉文字時省略。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S022",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5682019/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fphys.2017.00893",
+      "title": "Human Locomotion in Hypogravity: From Basic Research to Clinical Applications",
+      "publisher": "Front Physiol 8:893（2017）；Lacquaniti、Ivanenko、Sylos-Labini、La Scaleia 等（羅馬 Tor Vergata 大學、Santa Lucia 基金會）",
+      "version": "出版社開放取用版（PMC 收錄之 JATS 全文，CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "綜述全文中與走跑轉換、月面步態有關的段落（Froude 與動態相似、月面步態、太空衣、拋物線飛行、地面減重模擬、圖 4 圖說）；臨床應用段只掃過",
+      "locator": "『Simulations of hypogravity on Earth』段（文字檔第 105 行）與圖 4 圖說；月面預測段（第 62 行）；De Witt 段（第 88 行）只作背景",
+      "summary": "這是綜述。其中作者群自己先前的實驗（Ivanenko 2011、Sylos-Labini 2011／2013，以傾斜或垂直減重模擬 0.07–0.38 g）被整理為：模擬重力低於約 0.2 g 時走跑轉換發生在 Froude >0.5；有遲滯（走到跑的速度遠高於跑到走）；而且轉換是漸進的——1 g 時轉換前後一步的觸地比例、腿角與比目魚肌放電時間都有明顯跳變，在模擬月球重力 0.16 g 下則沒有顯著差異。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "綜述轉述作者群自己的原始研究，原文未讀，保守只算 0.5；De Witt 2014（拋物線飛行 Froude 1.4）、Kram 1997、Margaria 預測都是引用，不算。減重模擬與真實低重力不同，作者也指出結果受減重裝置類型影響。 覆核 V103（2026-11-12）：limitations 加：低重力下『前後一步差異不顯著』在綜述寫的是 reduced gravity，0.16 g 的平順轉換是一名代表受試者的圖例；原句只寫 leg muscle EMG，未點名比目魚肌。",
+      "author_cache": {
+        "file": "f100src/PMC5682019.txt（原始 PMC5682019.xml）",
+        "sha256_prefix": "9b859b9a6077c938",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f100src/，未進 repo；參考文獻清單在轉文字時省略。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S023",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12585888/fullTextXML",
+      "canonical_url": "https://doi.org/10.1098/rsos.251445",
+      "title": "Overground gait transitions are not sharp but involve gradually changing walk–run mixtures even over long distances",
+      "publisher": "R Soc Open Sci 12:251445（2025）；Baker、Long、Srinivasan（俄亥俄州立大學、Sinclair College）",
+      "version": "出版社開放取用版（PMC 收錄之 JATS 全文，CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、方法、模型、結果 3.1–3.6、討論）",
+      "locator": "Abstract；Table 1；Results 3.2–3.6；Discussion 第 1–2 段",
+      "summary": "14 人在 400 m 戶外跑道，被要求在指定時間內『剛好準時』走完 800 或 2400 m（平均速度 1.92–2.98 m/s，像趕赴約會），可自由選擇走、跑與速度：中間兩種平均速度（2.22、2.6 m/s）有 90% 的試次是走跑混用；平均速度約 2.5 m/s 時走與跑各占一半；沒有單一的換跑速度，只有約 1.9–3.0 m/s 的『轉換區』。每個人走的速度偏慢、跑的速度偏快，中間速度幾乎不用；平均速度提高時，跑的速度跟著提高、走的速度大致不變；四種速度中三種的換步態次數中位數是 1 次。作者的整趟耗能最小化模型在質性上預測了這些現象。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只 14 人、42 趟；走跑由研究者看影片判定（含沒有騰空的慢跑）。『換一次步態約 13.6 J/kg、走 800 m 約 2300 J/kg』是作者的估算，不當量測。『小孩、小狗、五小時馬拉松也會走跑混用』是 Long & Srinivasan 2013 的預測，尚未實測，片中只能說是預測。 覆核 V103（2026-11-12）：limitations 加：『跑』含無騰空的貼地慢跑；換步態次數中位數合計 800 與 2400 公尺趟次，2.62 m/s 為兩次；1.9 與 3.0 兩端大多為單一步態；2.5 m/s 各半是內插。",
+      "author_cache": {
+        "file": "f100src/PMC12585888.txt（原始 PMC12585888.xml）",
+        "sha256_prefix": "e536ba18fd8962a7",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f100src/，未進 repo；參考文獻清單在轉文字時省略。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S024",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4322718/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fnhum.2015.00048",
+      "title": "Identification of muscle synergies associated with gait transition in humans",
+      "publisher": "Front Hum Neurosci 9:48（2015）；Hagio、Fukuda、Kouzaki（京都大學）",
+      "version": "出版社開放取用版（PMC 收錄之 JATS 全文，CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論）；肌肉協同分析的數學細節只讀文字",
+      "locator": "Abstract；Results 第 1 段（換跑速度）與 Figure 6 相關段（受影響步數）；Discussion 第 1–2 段與總結",
+      "summary": "5 名男性在跑步機上：速度慢慢加或減時自然換步態（走到跑 6.63±0.32 km/h、跑到走 6.43±0.90 km/h），或在固定速度下聽口令換。以小腿後側肌群為主的肌肉協同，其放電時間在自然換跑時於換跑前約 3 步就開始漸漸往前移，換跑前後受影響的步數最多 8 步；聽口令換時則只在前 1 步突然改變。作者推論自然換步態是身體依感覺回饋事先準備、漸進發生的。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只 5 人；『感覺回饋觸發』是推論。受影響步數依肌肉協同與方向不同（2–8 步），片中只說『提前幾步就開始變』。 覆核 V103（2026-11-12）：limitations 改：『3 steps before』出現在跑到走（W1）的上下文；8 步是前後合計受影響步數。",
+      "author_cache": {
+        "file": "f100src/PMC4322718.txt（原始 PMC4322718.xml）",
+        "sha256_prefix": "1a265a3077d7b328",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f100src/，未進 repo；參考文獻清單在轉文字時省略。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S025",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11505887/fullTextXML",
+      "canonical_url": "https://doi.org/10.7717/peerj.18162",
+      "title": "Muscle synergies during the walk-run and run-walk transitions",
+      "publisher": "PeerJ 12:e18162（2024）；Lagos-Hausheer、Vergara、Munoz-Martel、Pequera、Bona、Biancardi（烏拉圭共和國大學、智利康塞普西翁大學等）",
+      "version": "出版社開放取用版（PMC 收錄之 JATS 全文，CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論前半）；討論後半的表 2 文獻比較只掃過",
+      "locator": "Abstract（Results、Conclusions）；Methods 轉換步分類段（類型 A–D）；Discussion 第 1 段",
+      "summary": "24 名受過訓練的男性在跑步機上，以自己換跑速度 ±10%、±20% 來回變速，多次走↔跑；以每一步的觸地時間比例突變判定換步態的那一步。作者描述四種轉換步，其中走到跑可以是『右腳像走、左腳像跑』的半走半跑步，跑到走也有『先像跑、再像走』的一步；作者結論：轉換發生在『單步』層級，轉換步由像走與像跑的步組成。轉換步的肌肉協同模組與時間在轉換時突然重組。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "跑步機、只男性；肌肉協同屬技術細節，片中只用『一步像走、下一步像跑』這一點。作者提臨床與訓練應用，片中不用。",
+      "author_cache": {
+        "file": "f100src/PMC11505887.txt（原始 PMC11505887.xml）",
+        "sha256_prefix": "a37d298e1e00d7bd",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f100src/，未進 repo；參考文獻清單在轉文字時省略。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H74-S026",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7739735/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fspor.2019.00009",
+      "title": "Assessment of IAAF Racewalk Judges' Ability to Detect Legal and Non-legal Technique",
+      "publisher": "Front Sports Act Living 1:9（2019）；Hanley、Tucker、Bissas（里茲貝克特大學）",
+      "version": "出版社開放取用版（PMC 收錄之 JATS 全文，CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 預設標頭），python 去標籤轉文字",
+      "reading_scope": "摘要全文、前言、方法（受試者、測力板、判讀問卷）；結果與討論只讀到摘要所列數字所在段落之前",
+      "locator": "Abstract；Introduction 第 1、3 段（規則 230.2、早期研究）；Methods 受試者與測力板段",
+      "summary": "競走規則要求『沒有肉眼可見的騰空』且前腿著地伸直。20 名競走選手在實驗室測力板上被錄影，83 名不同等級的裁判線上判讀：騰空時間短於 0.033 秒，只有不到 12.5% 的裁判看出；0.040–0.045 秒通常最多 8 人中 3 人看出；0.060 秒以上幾乎都看得出。另一部分以光電系統量測：男子騰空時間由 11 km/h 的 0.015 秒增加到 14 km/h 的 0.040 秒、15 km/h 的 0.044 秒；女子由 10 km/h 的 0.013 秒到 14 km/h 的 0.050 秒。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "結果與討論後半未逐段讀，只用摘要寫明的數字；屬運動規則與判讀研究，不評價規則、不給技術建議。『走路＝沒有騰空』是規則與定義，本片用它說明『走與跑的界線不只看腳離地』。 覆核 V103（2026-11-12）：limitations 加：判讀裁判摘要 83 人、表 1 與圖說 85 人；量騰空的是第三部分另一組 20 人（11 男 9 女，14 人與判讀影片重疊），在 45 公尺室內跑道以 OptoJump 量。",
+      "author_cache": {
+        "file": "f100src/PMC7739735.txt（原始 PMC7739735.xml）",
+        "sha256_prefix": "2a739c0b2ab731d7",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f100src/，未進 repo；參考文獻清單在轉文字時省略。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "H74-001",
+      "question": "大家為洋裝吵翻天，是不是因為每個人的手機螢幕顏色不一樣？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.dress_split_persists_calibrated_display_scrambling",
+      "answer_target": "不是。德國班貝格大學請 48 名視力與色覺都檢查過正常的人，在同一間固定照明的實驗室、同一台校正過的專業螢幕上，用 0（完全不藍）到 100（非常藍）替洋裝打分數；以 50 分為界，碰巧剛好 24 人落在白金那一側、24 人落在藍黑那一側，兩組分數差很大。作者寫明：校正過的螢幕上照樣分歧，表示分歧不只是各人裝置不同造成的。研究者再把裁掉背景的洋裝切成小方塊打亂：方塊越小，兩組對「有多藍」的評分越接近，切到邊長 1 到 5 像素時差異已不顯著。作者的解讀是：照片裡的光照線索是兩派分歧的重要來源之一，但也承認打亂方塊同時破壞了形狀，結果不只支持光照一種解釋。",
+      "scope": "48 人；24／24 是連續評分以 50 分切開的「碰巧一半」，不是兩派在母體裡各占一半，片中不得說「一半的人看白金」。打亂同時破壞形狀與光照線索。",
+      "source_ids": [
+        "H74-S001"
+      ],
+      "source_locator": "F83-S001：Abstract；General Method/Participants、Setting and Apparatus；Experiment 1 Results 與 Figure 3 圖說；General Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 1.0：同一實驗兩個結果（校正螢幕仍分兩派、打亂方塊差異消失）。45% 換看法是引用 Lafer-Sousa 2015，不算。 原提案 F83-001（目標 F83-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V86（2026-11-12）改字後收；數字、條件都在原文；改正：（1）24 對 24 是 0–100 藍度評分以 50 切開、作者自己寫 by chance，原稿「仍然一半人偏白金」容易被讀成人口比例，改寫；（2）把作者自己的限制（打亂也破壞形狀）寫進答案。算 1.0（同一實驗兩個結果）。Carbon 群合計 1.5（含 F83-002），照 V86 收到的 Carbon 1.5 封頂。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一台校正過的螢幕、色覺正常的人，照樣分成兩派——問題不在螢幕。",
+        "visual": "實驗室裡兩人並坐看同一台螢幕；洋裝被切成越來越小的方塊，兩組評分線收攏。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "H74-002",
+      "question": "看成藍黑的人，是不是本來就比較容易把淡藍色看成藍？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.dress_blue_black_viewers_white_blue_continuum_bias",
+      "answer_target": "只有一點點。同一批 48 人在還沒看過研究用的洋裝照之前，先替一整片均勻的純色打分數：在白到藍那條色階上，藍黑組比白金組報出稍多的「藍」，差異小但達顯著（p = .0434），而且主要出現在偏白的那一端；金到黑那條色階兩組沒有差別。作者推測（「可能」），這個很小的差別在洋裝照裡被光照線索放大。",
+      "scope": "差異小、交互作用未達顯著；「被放大」是作者推測。",
+      "source_ids": [
+        "H74-S001"
+      ],
+      "source_locator": "F83-S001：Experiment 2 Results and Discussion、Figure 5、General Discussion 第 2 段",
+      "premise_status": "screened",
+      "notes": "算 0.5：與 F83-001 同篇，同群合計 1.5。 原提案 F83-002（目標 F83-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V86（2026-11-12）改字後收；補「先做實驗 2」的條件（避免被洋裝照帶偏），保留「推測」語氣。算 0.5；Carbon 群 1.0＋0.5＝1.5 已到封頂。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩派的差別，在沒有洋裝、沒有背景的純色上幾乎看不出來。",
+        "visual": "兩條漸層色帶（白→藍、金→黑），兩條曲線只在白藍那條微微分開。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "H74-003",
+      "question": "「藍黑派」與「白金派」是社群網站二選一問出來的，還是真的有兩種看法？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.dress_categorical_two_clusters_sample_size",
+      "answer_target": "真的有兩群。麻省理工與美國國家衛生研究院的研究者讓 2,200 名線上受試者用取色器配出洋裝四個區塊的顏色，不給名稱選項；配色資料用分群統計看，兩群（白金、藍黑）比一群更合，作者把說「藍棕」的人看成兩種看法之間的過渡狀態。研究者用抽樣分析估計，要約 125 到 180 人以上，才看得出「是兩群不是一群」；他們認為，早先用不到兩打（少於 24 人）的資料得出「連續分布」的結論，可能就是人數不夠。",
+      "scope": "線上螢幕未校正，作者另有實驗室 53 人；gap 分析對上半身區塊二群與三群的數值相近，作者依方法取最小的 2。新堡大學 32 人（F83-006）與伊利諾 52 人（F83-010）看到連續或近乎分開的分布，片中並列說明人數與方法不同，不合併數字。",
+      "source_ids": [
+        "H74-S002"
+      ],
+      "source_locator": "F83-S002：Results 第 1–11 段、Figure 2、Figure 5 圖說",
+      "premise_status": "screened",
+      "notes": "算 0.5：Conway 群三個核心合計 2.0（本核心 0.5）。 原提案 F83-003（目標 F83-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V86（2026-11-12）改字後收；改正：原稿「早先只測 15 人的研究」——15 人不在 F83-S002 原文，原文只寫「less than two dozen subjects」；15 人出自被擋的 Gegenfurtner 2015，屬作者從記憶補的數字，刪。算 0.5；Conway 群三核心合計 2.0。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩派不是問卷造出來的；人數夠多時，自由配色也分成兩堆。",
+        "visual": "取色器配色散點圖慢慢累積，兩團點雲浮現；人數計數器停在 125–180 附近。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "H74-004",
+      "question": "同一件洋裝，兩派人腦中想像的燈光有什麼不同？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.dress_inferred_illumination_on_dress_shadow_vs_warm",
+      "answer_target": "兩派對房間背景光的評分沒有差別，差在「照在洋裝上的光」：看成白金的人把那裡的光評得比較暗、比較冷，研究者說這和「洋裝站在陰影裡」一致；看成藍黑的人評得比較亮、比較暖。只用受試者形容洋裝上光線的詞，就能把線上受試者的白金／藍黑分對 84%。研究者把洋裝的像素原封不動放進明顯暖光或明顯冷光的場景，多數人就照場景提示看成同一種；只換成一片均勻色底不夠，但只把穿著洋裝的那位模特兒的膚色染冷或染暖就夠了——染冷時多數人說白金、染暖時多數說藍黑。",
+      "scope": "84% 是線上描述詞分類（實驗室 100%）；膚色實驗含實驗室受試者。另一研究（F83-012，亞伯丁 140 人）用 1–5 冷暖量尺問洋裝上的光，與看成什麼顏色無關；片中要並陳，不說「每個研究都證實冷暖光」。",
+      "source_ids": [
+        "H74-S002"
+      ],
+      "source_locator": "F83-S002：Results 第 21–25 段、第 36–40 段、Figure 11–14、Figure 18 圖說",
+      "premise_status": "screened",
+      "notes": "算 0.75：Conway 群（與 F83-003、F83-005 合計 2.0）。 原提案 F83-004（目標 F83-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V86（2026-11-12）改字後收；改正：（1）「旁邊人物的膚色」→ 原文是洋裝疊在那位女性身上、染她的膚色；（2）「都說偏暖」改成「評分沒有差別」，偏暖只是作者對白金派的描述；（3）補上 F83-S009 的相反結果作為限制。算 0.75。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "白金派看到的是「陰影裡的白洋裝」，藍黑派看到的是「亮光下的藍洋裝」。",
+        "visual": "同一件洋裝分別疊上陰影濾鏡與暖光濾鏡；旁邊人臉膚色一冷一暖。",
+        "seconds": [
+          55,
+          65
+        ]
+      }
+    },
+    {
+      "id": "H74-005",
+      "question": "看成白金的人，一輩子都會是白金派嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.dress_percept_switching_knowledge_image_size",
+      "answer_target": "不一定。看過這張照片的受試者中，約一半自述至少換過一次看法，只有 12% 說常常換。第一次看成白金、後來知道洋裝真正是藍黑的人，有 42% 已經換到藍黑；同樣第一次看成白金但不知道真實顏色的人，只有 14% 換。把影像縮小、以及受試者以前看過這張照片，也都讓整群人偏向藍黑。研究者也測了「早起的人看白金、夜貓看藍黑」：用自述的起床與睡覺時間預測，實驗室樣本有一點效果，線上樣本對白金派只猜中 20%，作者自己說支持很弱。",
+      "scope": "換看法是自述回憶；「以前看過」是有或無，不是看過幾次，片中不得說「看越多次／看越久越藍黑」。作息分析線上對白金組只有 20% 命中。",
+      "source_ids": [
+        "H74-S002"
+      ],
+      "source_locator": "F83-S002：Results 第 15–20 段、第 29–33 段、Figure 8、Figure 9、Figure 16 圖說",
+      "premise_status": "screened",
+      "notes": "算 0.75：Conway 群封頂內（三核心合計 2.0）。作息只當限制說明，不另算。 原提案 F83-005（目標 F83-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V86（2026-11-12）改字後收；改正：「看過越多次」改成「以前看過」（原文是 prior exposure 有無，沒有次數或觀看時間），目標的轉折二同步刪「看久了」。數字逐一相符。算 0.75；Conway 群合計 2.0 封頂。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "陣營不是天生的：知道答案、看小圖、看久了，都可能把人推到另一邊。",
+        "visual": "人物頭上的標籤從「白金」翻到「藍黑」；42% 與 14% 兩根長條。",
+        "seconds": [
+          55,
+          65
+        ]
+      }
+    },
+    {
+      "id": "H74-006",
+      "question": "你說的「白金」，跟你配出來的顏色是同一回事嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.dress_naming_matching_dissociation_illumination_match",
+      "answer_target": "未必。英國新堡大學請 32 人先為洋裝命名，再用色盤配出洋裝的顏色和照在洋裝上的光。把光配得比平均更藍的人，洋裝配得比較不藍；把光配得比較不藍的人，洋裝配得比較藍（相關 −0.395，光的配色可解釋洋裝配色變異的 15.52%）。但把每個人自己配出的色盤單獨拿出來請他命名時，原本說藍黑或白金的人有超過三分之一改說「藍金」。另外，整體而言大家最難察覺光線「變藍」，但每個人這項敏感度的高低和怎麼看洋裝無關；作息問卷與配色的相關只在 10% 水準顯著。",
+      "scope": "32 人；這篇配色呈連續分布；作息證據弱、年齡是混淆因素。",
+      "source_ids": [
+        "H74-S003"
+      ],
+      "source_locator": "F83-S003：Results 第 1–2 段、光照配色段、IDT 段、MEQ 段；Discussion 第 3 段",
+      "premise_status": "screened",
+      "notes": "算 1.0：Hurlbert 群（與 F83-007 合計 2.0）。 原提案 F83-006（目標 F83-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V86（2026-11-12）改字後收；改正：「越暗→洋裝越亮」不是原文對這組相關的描述，刪；「所有人都最難察覺光線變藍」是組平均，改「整體而言」。算 1.0；Hurlbert 群（與 F83-007）合計 1.75。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "嘴上說的顏色和眼睛配出的顏色不完全一樣：說「白金」不等於看到純白和金。",
+        "visual": "受試者手上的圓盤色塊，離開洋裝後名字從「白」變「淡藍」。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "H74-007",
+      "question": "真的那件洋裝拿到現場，大家還會吵嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.dress_real_garment_dual_light_context",
+      "answer_target": "會，只要燈光對。2015 年視覺科學年會上，研究者把真的洋裝掛起來，同時打藍、黃兩種光：背景是黃布時，多數觀眾看成藍黑；背景是近黑的布時，多數看成白金；場景裡多一個指著洋裝的真人，看法就往藍黑偏。這些是現場示範，論文只有「多數觀眾」的描述，沒有人數統計。同一年 5 月在倫敦惠康收藏館的一場群眾實驗，新堡大學團隊讓 847 人看真洋裝，論文在註腳標明是未發表資料：打擴散藍光加定向黃光時 46% 說藍黑、12% 白金、42% 說其他顏色；只用單一白光時 86% 說藍黑、2% 白金。在劇烈變動的多色燈光示範中，同款的象牙白洋裝，觀眾一致說是白色。",
+      "scope": "示範多為定性描述；847 人是論文註腳 3 標明的未發表資料，片中只能說「研究者在論文中報告的未發表群眾實驗」；地點是倫敦惠康收藏館，不是視覺科學年會。雙光源下自由命名時看法散成三堆（46／12／42），不是一半對一半。",
+      "source_ids": [
+        "H74-S004"
+      ],
+      "source_locator": "F83-S004：前言第 2 段、註腳 2–3；Demo 1 第 2–3 段；Demo 2",
+      "premise_status": "screened",
+      "notes": "算 1.0：Hurlbert 群封頂內（與 F83-006 合計 2.0）；847 人比例限定說法。 原提案 F83-007（目標 F83-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V86（2026-11-12）改字後收；改正：（1）原稿把 847 人實驗接在「視覺科學年會」之後，讀起來像同一場；註腳 2–3 寫明是 2015 年 5 月惠康收藏館的群眾實驗，分開寫；（2）payoff「現場的人一樣分成兩派」改成「看法散開、不再一面倒」——雙光源下白金只有 12%；（3）「旁邊站一個真人」補「指著洋裝」。計數從 1.0 降為 0.75：年會示範沒有統計，847 人是未發表資料。Hurlbert 群（S003＋S004，S004 為多機構合著，Aston、Hurlbert 共同作者重疊）合計 1.75。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是照片拍壞了而已：真的洋裝在兩種光下，現場的人一樣分成兩派。",
+        "visual": "真洋裝掛在黃布前與黑布前；兩組圓餅圖（雙光源與白光）。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "H74-008",
+      "question": "覺得洋裝在陰影裡，和看到洋裝閃亮亮，跟看成白金有什麼關係？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.dress_shadow_belief_gloss_constancy_specific",
+      "answer_target": "有關，但多是弱到中等的傾向。吉森與巴黎的研究者做的線上調查（約 500 人）中，勾選「洋裝在陰影裡」的人明顯偏向白金；勾選相機閃光、日光或「照片過曝」的人偏向藍黑。覺得蕾絲比較有光澤的人也稍偏白金；把光澤歸給布料而不是燈光的人也稍偏白金（相關很弱）。洋裝的個人差異和一般色彩恆常測驗的個人差異有關；但其他也會吵的照片（一件夾克、另一件洋裝的兩張照片）和光澤、立體感等測驗的個人差異，彼此大致無關、也和原版洋裝無關。",
+      "scope": "線上、螢幕未校正；陰影效果最強（t = 8.0），光澤相關 r 只有 0.22 與 −0.10；「陰影→白金」與 F83-004 同答案，本核心只算光澤、過曝與「各照片各吵各的」的增量。上下顛倒的海浪照是形狀（shape from shading）測驗，不是顏色爭議照片，原稿列在「也會吵的照片」裡不精確。",
+      "source_ids": [
+        "H74-S005"
+      ],
+      "source_locator": "F83-S005：Abstract；線上實驗 Discussion 第 1–3 段；Conclusion",
+      "premise_status": "screened",
+      "notes": "算 1.0：O'Regan 群單篇。 原提案 F83-008（目標 F83-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V86（2026-11-12）改字後收；改正：（1）原稿「因為把光澤歸給布料的人偏白金」把兩個獨立結果接成因果，拆開；（2）「巴黎與德國做的調查」改為研究者所在地；（3）把海浪照移出「也會吵的顏色照片」；（4）語氣從「看成白金」降為「偏向」。作者 reading_scope 只寫討論與結論，本覆核已補讀結果節核實。計數從 1.0 降為 0.75：陰影→白金與 F83-004 同答案，只算增量。Witzel／O'Regan 群 0.75。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是「容易被騙的人」這種性格：會吵的照片，各吵各的。",
+        "visual": "陰影、閃光燈、亮片三個小圖示對應兩派；幾張爭議照片之間畫上「無關」的斷線。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "H74-009",
+      "question": "為什麼偏偏是藍色這麼容易吵？大腦對藍和黃反應一樣嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.dress_eeg_blue_yellow_asymmetry",
+      "answer_target": "不一樣。內華達大學讓原版藍洋裝和色差反轉的黃洋裝每秒交替出現 6 張，同時記錄腦波：藍黃交替引起的「兩張不一樣」訊號，比色差量相同、只是方向換成紅綠的一對還大（0.44 對 0.31 微伏，14 人中 10 人如此）。另一個分析裡，用後腦頭皮上這個訊號的分布形狀，能把 17 名藍黑派分對 14 人、10 名白金派分對 8 人；但單看訊號大小，兩組沒有差別。",
+      "scope": "27 人小樣本（第一個實驗 14 人）；前言「反轉成黃色大家就不吵」是引用 Winkler 2015，不算。",
+      "source_ids": [
+        "H74-S006"
+      ],
+      "source_locator": "F83-S006：Abstract；Methods/Participants；Results 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 0.75：Webster 群單篇。 原提案 F83-009（目標 F83-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V86（2026-11-12）改字後收；核實：「準確率超過 80%」不只在摘要，Results 有 82.4%（14/17）與 80.0%（8/10），作者 limitations 寫「只在摘要讀到」是低報，不是高報，改用 Results 的分數字。計數維持 0.75（小樣本）。Winkler 2015 未讀到，沒有計入、沒有當轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "大腦對「藍」和「黃」本來就不是對稱處理。",
+        "visual": "藍洋裝與黃洋裝快速閃爍，腦波頭皮圖亮起後腦區。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "H74-010",
+      "question": "用傳統色覺檢查，看得出誰是白金派嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.dress_unique_white_more_blue_whitegold",
+      "answer_target": "看得出一點線索。伊利諾大學芝加哥分校等團隊替 52 名年輕人做一系列色覺檢查：15 人（29%）說藍黑、21 人（40%）說白金、16 人（31%）說各種藍金組合。亮區的配色排成一條連續的線，但白金和藍黑之間有一條清楚的分界。在「把一小塊光調到看起來最純的白」的測驗中，白金組調出的白含有較多的藍。",
+      "scope": "52 人；色票偏好意義未定，不用。",
+      "source_ids": [
+        "H74-S007"
+      ],
+      "source_locator": "F83-S007：Abstract；Results 命名比例段、配色段、Unique white 段",
+      "premise_status": "screened",
+      "notes": "算 0.75：Cao 群單篇。 原提案 F83-010（目標 F83-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V86（2026-11-12）改字後收；內容相符。計數從 0.75 降為 0.5：命名比例只是樣本描述，「兩群有分界」與 F83-003 同答案，只算「白金派心中的白偏藍」與色盲鏡差異。Cao 群 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在白金派心中，「白」本來就帶一點藍。",
+        "visual": "兩塊「純白」色票並列，一塊微藍；三組比例條。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "H74-011",
+      "question": "眼睛本身的差異，也跟看成什麼顏色有關嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.dress_macular_pigment_vep_latency",
+      "answer_target": "有一點相關。美國一所驗光學院量了 39 人（藍黑 19、白金 17）：多數人在 iPhone、iPad、22 吋螢幕上說出的顏色都一樣；眼底中央黃斑區那層會吸收藍光的色素，白金組平均光密度 0.49、藍黑組 0.41；看閃光照亮的洋裝透明片時，白金組腦波的正波較晚出現（130 對 107 毫秒）。作者自己說這些不能完全解釋兩派。",
+      "scope": "36 人分組；相關不等於因果；只描述量測，不說色素怎麼來、怎麼改變，不給任何飲食、保健或護眼建議。",
+      "source_ids": [
+        "H74-S008"
+      ],
+      "source_locator": "F83-S008：Abstract；Results 第 1–3 段",
+      "premise_status": "screened",
+      "notes": "算 0.5：Rabin 群單篇；只講生理量測。 原提案 F83-011（目標 F83-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V86（2026-11-12）改字後收；補「透明片」條件與兩組人數。0.5。片中若有人把黃斑色素接到「吃什麼」就違反不收健康推論，drop_if 已列。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "眼睛裡吸收藍光的那層色素，也可能讓天平偏一點。",
+        "visual": "眼睛剖面圖上黃斑區的一小塊黃色濾片。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "H74-012",
+      "question": "網路吵翻天的照片，大家真的仔細看過嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.dress_scene_content_misreported_light_direction",
+      "answer_target": "很多人沒有。英國亞伯丁大學 140 名受試者中 64% 看成藍黑、31% 白金；138 人以前看過這張照片，但只有 62 人（44%）知道洋裝真正的顏色。憑記憶描述照片場景時，41% 說得含糊或錯（例如「模糊的街道」），邊看邊描述仍有 21%。白金組較常說光從洋裝後面來、較少說從側面來；但大家給洋裝上光線的冷暖評分，和看成什麼顏色無關。",
+      "scope": "單一大學、多為心理系一年級；描述對錯與顏色無關。冷暖評分無關這一點與 F83-004 相反，片中並陳。",
+      "source_ids": [
+        "H74-S009"
+      ],
+      "source_locator": "F83-S009：正文第 2–6 段",
+      "premise_status": "screened",
+      "notes": "算 0.5：Martinovic 單篇。 原提案 F83-012（目標 F83-T1，原角色 hook；依本池欄位記為 segment）。非作者覆核 V86（2026-11-12）改字後收；補上原文的冷暖無關結果，作為 F83-004 的對照限制。0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "吵了一整年，很多人連照片拍的是什麼地方都說不出來。",
+        "visual": "照片背景被打上問號：「商店？街道？鏡子？」",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "H74-013",
+      "question": "從沒看過這張照片的小孩，也會分成兩派嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.dress_children_naive_split_age",
+      "answer_target": "會。墨西哥研究者請家長問 2 到 10 歲、沒看過這張照片的孩子「這件洋裝是什麼顏色」（不給選項）：413 份回答中 204 人說藍黑、209 人說白金，另有 10 人說紅、綠、粉紅等。說白金的孩子平均大一點（6.1 對 5.5 歲），但年齡能解釋的差異很小。",
+      "scope": "家長代問；只收藍黑與白金兩類；論文中飲食相關部分不採用。",
+      "source_ids": [
+        "H74-S010"
+      ],
+      "source_locator": "F83-S010：Abstract；Results 第 1–3 段、logistic 迴歸段",
+      "premise_status": "screened",
+      "notes": "算 0.5：Salcedo-Villanueva 群單篇。 原提案 F83-013（目標 F83-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V86（2026-11-12）照原稿收；數字相符。飲食（綠葉）部分照作者排除，不入片。0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩歲小孩也分兩派：不是看了新聞才被帶風向。",
+        "visual": "一群小孩各自指著洋裝說出顏色。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "H74-014",
+      "question": "如果讓人工智慧學看顏色，它也會分成兩派嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.dress_dnn_blue_bias_training_scenes",
+      "answer_target": "模型會，看你給它看過什麼。日本埼玉大學等研究者訓練一種影像神經網路替照片逐點標顏色名，改變訓練照片中「藍天下陰影裡的白色東西」（雪、布、路標、瓷器）所占的比例：比例越高，網路對洋裝照的平均輸出越從藍黑變成白（灰）金。只把整張照片人工染藍或染黃來訓練，輸出完全不會變白金。作者據此推論，看過或留意這類場景，可能造成人看洋裝的差異——這是模型推論，不是人類實驗。",
+      "scope": "電腦模型模擬；結論是「可能」。",
+      "source_ids": [
+        "H74-S011"
+      ],
+      "source_locator": "F83-S011：Abstract；Figure 4 圖說；Results 補充實驗段",
+      "premise_status": "screened",
+      "notes": "算 0.5：Kuriki 群單篇模型研究。 原提案 F83-014（目標 F83-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V86（2026-11-12）改字後收；把「也會分成兩派」改成平均輸出隨訓練比例漸變（模型不是兩群），並把人類推論明標為推論。0.5；模擬研究不得當轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看過多少「陰影裡的白」，可能決定你把淡藍當白。",
+        "visual": "雪地陰影、白襯衫、路標照片疊成訓練集，旁邊的洋裝輸出慢慢變色。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "H74-015",
+      "question": "後來那雙「灰綠還是粉白」的鞋子，也是同一個道理嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.shoe_optimal_color_intensity_dependent_illuminant",
+      "answer_target": "可能是。鞋子照有人看成灰色鞋面配綠松石鞋帶，也有人看成粉紅鞋面配白鞋帶。日英研究者用「最適色」理論模型分析：假設照到鞋子的光越暗，模型估出的光色溫越高、越偏藍（代表點從 4,500 K 到 20,000 K），反之越偏暖；把估計的光從照片裡扣掉，扣掉高色溫的光得到白粉，扣掉低色溫的光得到灰綠松石。作者也提醒，模型算出的是連續變化，不一定是兩派。",
+      "scope": "理論模型與模擬，不是人類實驗；「多數人看灰綠松石」引自 Werner 2018，不是本篇資料。",
+      "source_ids": [
+        "H74-S012"
+      ],
+      "source_locator": "F83-S012：Abstract；Results 光源估計與 von Kries 段；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.5：Uchikawa 群單篇。 原提案 F83-015（目標 F83-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V86（2026-11-12）改字後收；刪「2017 年」（原文沒有）；補作者自己的「連續、不一定雙峰」提醒。0.5，模擬研究不當轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "鞋子照吵的也是同一件事：你以為光有多暗、多藍。",
+        "visual": "鞋子照片左右分屏，各疊一層藍光與暖光的「扣除」效果。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "H74-016",
+      "question": "競走選手時速 15 公里還算『走』，他們的腳真的一直有一隻踩在地上嗎？",
+      "domain": "身體與運動／步行力學與能量",
+      "mechanism_key": "body.gait_transition.racewalk_invisible_flight_threshold",
+      "answer_target": "不一定。2019 年英國里茲貝克特大學的研究，讓 20 名競走選手在 45 公尺室內跑道上用不同速度競走，以光電感測條量每步兩腳同時離地的時間：男子從時速 11 公里的 0.015 秒增加到時速 15 公里的 0.044 秒，女子在時速 14 公里約 0.050 秒。另一部分請八十多名裁判看選手的錄影：離地短於 0.033 秒的，不到八分之一的裁判看得出來。規則禁止的是『肉眼看得見』的離地，所以研究者估計男子約時速 14 公里、女子約 13 公里以下，多數人的離地還看不出來。",
+      "scope": "騰空量測與裁判判讀是同一篇的兩個部分、受試者部分重疊；裁判人數摘要寫 83、內文表格寫 85，片中說『八十多名』。不評價規則、裁判或電子鞋墊，不給技術建議。『走與跑的界線靠眼睛』只當旁白詮釋，不說是研究結論。",
+      "source_ids": [
+        "H74-S026"
+      ],
+      "source_locator": "Abstract（判讀門檻與騰空時間數字）；Introduction 規則 230.2 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：本題問『為什麼換跑』，這條只是開場的定義鉤子，不回答換跑的原因；兩組數字合計 0.75。Hanley 群（Leeds Beckett）新。 原提案 F100-001（目標 F100-T1，原角色 hook；依本池欄位記為 segment）。非作者覆核 V103（2026-11-12）改字後收；數字都在原文；改正『實驗室量 20 名』（量騰空的是另一組 20 人、在室內跑道）、裁判 83/85 不一致改成『八十多名』，刪掉把詮釋寫成研究結論的『用眼睛畫的線』。因不回答題目的問題，下修為 0.75。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連『走』的定義都是用眼睛畫的線：時速 15 公里的競走選手每步其實離地 0.04 秒。",
+        "visual": "高速攝影把競走選手的一步放慢，兩腳離地那一格閃一下紅框；旁邊是裁判看正常速度影片的畫面。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "H74-017",
+      "question": "走路有『最省力的速度』嗎？跑步也有嗎？",
+      "domain": "身體與運動／步行力學與能量",
+      "mechanism_key": "body.gait_transition.walking_cost_u_curve_running_flat",
+      "answer_target": "有，但只有走路有一個明顯的谷底。日本研究讓 11 名受過訓練的男性跑者在跑步機上走 8 種、跑 4 種速度並量耗氧：走路每公尺的耗氧對速度是 U 形，平地最省的速度，用總耗氧算約時速 5.15 公里，扣掉站著不動的耗氧再算則約 4.1 公里，慢了約兩成；跑步的每公尺耗氧則接近一條直線。兩條線在平地約時速 7.5 公里相交，比這更快，照算跑步比走路省。",
+      "scope": "只受訓男性跑者、跑步機；『最省速度』隨算法差約兩成，片中兩個數字一起說或只說『約時速 4 到 5 公里』；『跑步耗能幾乎不隨速度變』是前言引用，不說是本篇結果。",
+      "source_ids": [
+        "H74-S015"
+      ],
+      "source_locator": "Results：ES 與 EOTS 數值段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）：U 形與交點是已知背景，本篇只提供一組實測；Abe 群合計 2.0（封頂）。 原提案 F100-002（目標 F100-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V103（2026-11-12）改字後收；原寫只給總耗氧的 5.15 km/h，漏了本篇主結論（扣站立耗氧後慢約 20%）；『跑步每公里耗氧幾乎不隨速度變』是引用前人，本篇寫的是『近似直線』。改字後收。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "走路越快越不划算、跑步快慢都差不多貴，兩條線一定會交叉。",
+        "visual": "一條 U 形曲線（走）與一條近乎水平的線（跑），交點打上問號。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "H74-018",
+      "question": "人是在『跑步開始比走路省』的那一刻換跑的嗎？",
+      "domain": "身體與運動／步行力學與能量",
+      "mechanism_key": "body.gait_transition.preferred_below_energy_optimal_speed",
+      "answer_target": "不是，會早一點換。2019 年日本研究讓 13 名年輕男性在每分鐘加速 1 km/h 的跑步機上走，平均在每秒 1.93 公尺自己開始跑；同一批人量耗氧算出『跑步開始比較省』的交點是每秒 2.03 公尺，自然換跑速度慢了約 5%。研究者寫，這和 1990 年代以來幾個研究看到的 5–6% 一致，所以換跑不只是為了讓全身耗能最少。",
+      "scope": "13 名年輕男性、跑步機、加速協定；交點由走路曲線外插（走路只量到每秒 2.00 公尺）；減重條件那組不用。",
+      "source_ids": [
+        "H74-S014"
+      ],
+      "source_locator": "Abstract；Results 第 1 段；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 1.0（同作者）：本篇主結果。補上『與前人一致』，避免讓觀眾以為這是首次發現。轉折一的主證據之一。 原提案 F100-003（目標 F100-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V103（2026-11-12）改字後收；1.93、2.03、5.2% 都在原文；補註交點是外插值、5–6% 的落差是前人已知（本篇再證實）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為『走累了、跑比較省才跑』；實測是還沒變省就先跑了。",
+        "visual": "速度表指針往上爬，在 1.93 處小人起跑，2.03 處才亮起『跑步比較省』的燈。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "H74-019",
+      "question": "倒著走、倒著跑也一樣嗎？換跑時人覺得走和跑哪個比較累？",
+      "domain": "身體與運動／步行力學與能量",
+      "mechanism_key": "body.gait_transition.backward_transition_rpe_equal_cost_unequal",
+      "answer_target": "一樣會提早換。美國加州州立大學沙加緬度分校讓 12 名大學生在跑步機上倒退著走跑：其中能算出交點的 10 人，倒退的自然換跑速度是每秒 1.63 公尺，而倒退走與倒退跑耗氧曲線的交點在每秒 1.85 公尺，研究者寫交點比換跑速度高約 13%。在換跑的那個速度，受試者覺得倒退走和倒退跑一樣累，但量到的耗氧是倒退跑明顯較多。研究者推測，換跑可能和『覺得多費力』、尤其局部肌肉的吃力感有關。同一批人往前與倒退的換跑速度相關係數 0.82。",
+      "scope": "12 人（交點只算得出 10 人）、跑步機；倒退是不熟悉的動作；『感覺觸發換跑』是研究者的推測，片中用『可能』；往前走時『走比跑覺得更累』是本篇引用 Hreljac 1993，不算本篇結果。",
+      "source_ids": [
+        "H74-S016"
+      ],
+      "source_locator": "Key points；Results；Discussion 第 1 段；Conclusion",
+      "premise_status": "screened",
+      "notes": "算 1.0（同作者）。改正：13% 的方向（交點比換跑速度高 13%），不寫成『慢了 13%』；editorial payoff『身體換檔看的是感覺，不是帳單』改為『可能跟著感覺』。Hreljac 群新。 原提案 F100-004（目標 F100-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V103（2026-11-12）改字後收；數字在原文，但作者把『EOTS 比 BPTS 高 13%』自行改寫成『BPTS 慢了 13%』（實際約低 12%），屬自行換算方向；推測語氣補回。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "『覺得一樣累』和『實際一樣耗能』是兩回事：身體換檔看的是感覺，不是帳單。",
+        "visual": "兩個倒走的人，一個頭上冒『累度 = 累度』等號，下面耗氧計卻一高一低。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "H74-020",
+      "question": "一換成跑，小腿裡哪些肌肉鬆了一口氣？",
+      "domain": "身體與運動／步行力學與能量",
+      "mechanism_key": "body.gait_transition.shin_soleus_activity_drop_after_switch",
+      "answer_target": "小腿前面的脛前肌和後面的比目魚肌。2019 年同一個日本研究在換跑前後各約 12 秒量表面肌電：換成跑步後，脛前肌活動下降，小腿後側三條肌肉合計也下降，其中只有比目魚肌在兩種條件下都明顯下降；這兩條肌肉的肌電平均頻率也變低，研究者解讀為改由較多慢縮纖維出力，『或許』是為了避免局部肌肉太早疲勞。",
+      "scope": "表面肌電、13 人；纖維型態由頻譜推論；疲勞解釋是研究者的『或許』；脛前肌下降作者群先前已報告過。",
+      "source_ids": [
+        "H74-S014"
+      ],
+      "source_locator": "Results 第 2–3 段；Discussion 第 2–4 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）；Abe 群合計 2.0（002 0.5＋003 1.0＋005 0.5），已達封頂。 原提案 F100-005（目標 F100-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V103（2026-11-12）改字後收；數字與方向都對；補上『只有比目魚肌』與推論語氣。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "快走時最吃力的是小腿，換跑像是幫它換班。",
+        "visual": "小腿透視圖，脛前肌與比目魚肌在『走』時發紅、『跑』時轉綠。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "H74-021",
+      "question": "快走到極限時，阿基里斯腱這條彈簧發生了什麼？",
+      "domain": "身體與運動／步行力學與能量",
+      "mechanism_key": "body.gait_transition.achilles_spring_share_drops_fast_walk",
+      "answer_target": "它的彈簧作用可能變差。義大利維洛納大學讓 10 人赤腳以時速 5.5 到 8.5 公里走或跑，同時用超音波看腓腸肌與阿基里斯腱：在時速 7.5 和 8.5 公里，阿基里斯腱提供的功率占腓腸肌內側頭這條肌肉—肌腱單元的 62% 與 64%（跑），走路只有 58% 與 55%；腳踝『先吸收再放出』的彈簧指標，在這兩個速度也是跑步較高。研究者用腿長估計這群人的換跑速度約時速 7.4 公里，並推論換跑可能有一部分是為了保住腳踝的彈簧功能。",
+      "scope": "10 人；換跑速度是用 Froude 數 0.5 由腿長估的，不是實測；比較的是被要求的走與跑；因果是研究者推論，片中用『可能』；不延伸到鞋款、傷害或訓練。",
+      "source_ids": [
+        "H74-S018"
+      ],
+      "source_locator": "Simple Summary；Results 第 4–5 段；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：差距只有幾個百分點、換跑點未實測、因果是推論；『整個小腿肌肉—肌腱單元』改正為腓腸肌內側頭。Zamparo 群新。 原提案 F100-006（目標 F100-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V103（2026-11-12）改字後收；數字在原文；改正比較基準（GM MTU 而非整個小腿），把『彈簧作用變差』降為『可能』，並寫明換跑速度是由腿長估算、沒有實測，作者那句推論不能當因果。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "快走時腳踝這條彈簧被『壓不起來』，跑步才讓它重新彈。",
+        "visual": "超音波畫面中肌腱一伸一縮，旁邊彈簧動畫：走快時彈簧變軟，跑時彈回。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "H74-022",
+      "question": "換跑那一下是突然決定的嗎？",
+      "domain": "身體與運動／步行力學與能量",
+      "mechanism_key": "body.gait_transition.spontaneous_switch_prepared_steps_ahead",
+      "answer_target": "不是一瞬間。京都大學讓 5 名男性在跑步機上換步態：跑步機慢慢加速、自然換跑時，以小腿後側肌群為主的兩組肌肉協同，放電時機在換跑前後的好幾步之間一點一點往前移（前後合計受影響的步數最多約 8 步）；被口令要求在固定速度下換跑時，則只在前一步突然改變。研究者推論，自然換跑可能是依身體的感覺資訊漸進準備的。",
+      "scope": "只 5 人；不說『提前 3 步』這個數字（原文上下文是跑到走）；感覺回饋是推論。",
+      "source_ids": [
+        "H74-S024"
+      ],
+      "source_locator": "Abstract；Results（Figure 6 段）；Discussion 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）。Kouzaki 群新。 原提案 F100-007（目標 F100-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V103（2026-11-12）改字後收；作者把跑到走情境的『3 steps before』寫成走到跑的『換跑前約 3 步』，把前後合計 8 步寫成『前後最多影響 8 步』尚可但要講清楚；改字後收。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "你以為是一念之間；肌肉其實三步前就開始改節奏。",
+        "visual": "時間軸上 8 個腳印，前 3 個腳印的肌肉燈號慢慢變色，口令組只有最後一個突然變。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "H74-023",
+      "question": "從走變跑的那一跨，是走還是跑？",
+      "domain": "身體與運動／步行力學與能量",
+      "mechanism_key": "body.gait_transition.half_walk_half_run_transition_stride",
+      "answer_target": "可以一半一半。烏拉圭與智利的研究讓 24 名受訓男性在跑步機上反覆在換跑速度上下變速、來回走跑，用每一步觸地時間占比的突變找出轉換的那一跨：走到跑的轉換跨，有的是右腳那步還像走、接著左腳那步已經像跑，也有兩步都已像跑的；跑到走也有先像跑、再像走的一跨。研究者的結論是：轉換發生在『單一步』的層級。",
+      "scope": "跑步機、只男性；原文沒有各型比例，不說『多數』；肌肉協同細節不入片。",
+      "source_ids": [
+        "H74-S025"
+      ],
+      "source_locator": "Abstract；Methods 轉換步分類段；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）。Biancardi 群新。這條描述換檔『長什麼樣』，不回答『為什麼』，是全片最先可刪的核心之一。 原提案 F100-008（目標 F100-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V103（2026-11-12）改字後收；內容正確；補上『也有兩步都像跑』避免讓人以為轉換跨都是半走半跑。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "換檔不是一整步換，是左腳還在走、右腳已經在跑。",
+        "visual": "慢動作分格：左腳步態標『走』、右腳標『跑』。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "H74-024",
+      "question": "上坡為什麼更早想跑？還有沒跑的『第三種走法』？",
+      "domain": "身體與運動／步行力學與能量",
+      "mechanism_key": "body.gait_transition.incline_lowers_switch_compliant_fast_walk",
+      "answer_target": "上坡時換跑速度會下降。英國皇家獸醫學院研究讓 10 人在平地與 9.8% 坡的跑步機上加速：上坡時自然換跑速度、盡量快走的最高速度、以及開始改成『重心壓平的快走』的速度都明顯變慢；把走路當成撐竿越過支撐腿的倒立擺模型，預測的速度上限正好對上『開始壓平快走』的那一點，而人自然換跑時還在這上限之下，作者推測那是安全邊際。",
+      "scope": "10 人；安全邊際是推測；模型數字只當比較。",
+      "source_ids": [
+        "H74-S020"
+      ],
+      "source_locator": "Abstract；結果討論第 1–3 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（同作者）；Usherwood 群與 F100-011 合計 1.5。『更早』指速度較低，旁白要說『在較慢的速度就想跑』。 原提案 F100-009（目標 F100-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V103（2026-11-12）照原稿收；逐句相符；安全邊際已標推測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "走路其實是在撐竿跳過自己的腿，坡一陡，撐竿就撐不起來。",
+        "visual": "側視動畫：人像撐竿越過直腿，坡度變陡時弧線被壓扁。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "H74-025",
+      "question": "爬坡時，人換跑的時機就剛好是能量最省的那一點嗎？",
+      "domain": "身體與運動／步行力學與能量",
+      "mechanism_key": "body.gait_transition.uphill_constant_climb_matches_energy_crossover",
+      "answer_target": "在一種特別的上坡，幾乎對上了。瑞士洛桑大學讓 17 名男性長跑者在坡度跑步機上維持每小時爬升 800 公尺——走得越快、坡就越緩：他們的換步態速度（走到跑與跑到走的平均）是每秒 1.76 公尺，約 7 度坡；耗氧、每公尺耗能與代謝功率的走跑交點在每秒 1.79–1.80 公尺，差距在統計上不顯著；心跳和換氣量的交點則明顯更快。研究者原本預期能量交點會比換跑速度快，結果沒有。",
+      "scope": "受訓男性跑者、固定爬升速度、速度與坡度綁在一起；『沒有顯著差異』不等於相等（差距 0.02–0.04 m/s，信賴區間寬）；PTS 是兩個方向的平均，與 F100-003 只量走到跑的協定不同，片中不把兩篇數字直接比大小；固定坡度的 Brill & Kram 結果是引用、不算；不給訓練建議。",
+      "source_ids": [
+        "H74-S017"
+      ],
+      "source_locator": "Abstract；Results 第 1–3 段；Discussion 結論段",
+      "premise_status": "screened",
+      "notes": "算 1.0（同作者）。Borrani／Malatesta 群新。轉折一只能說『平地實驗看到提早、這個上坡實驗看到幾乎對上』，不說『上坡就會算準』。 原提案 F100-010（目標 F100-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V103（2026-11-12）改字後收；數字在原文；補上 PTS 是兩方向平均、不顯著不等於相等、與平地研究協定不同，並刪去『剛好算準』的絕對說法。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣是換跑，平地提早，上坡卻剛好算準——能量不是唯一的開關，但也不是無關。",
+        "visual": "兩張圖並排：平地小人比『省』燈早起跑；坡上小人和燈同時亮。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "H74-026",
+      "question": "小小孩也是走到某個速度『啪』一下改跑嗎？",
+      "domain": "身體與運動／步行力學與能量",
+      "mechanism_key": "body.gait_transition.toddler_continuous_no_discrete_switch",
+      "answer_target": "不是。英國皇家獸醫學院分析 18 名 1.1 到 4.7 歲幼兒在一排測力板上自由選擇走或跑的資料：觸地時間占比和腳踩地的力曲線隨速度連續變化，在成人換跑的相對速度附近也沒有突變；在成人用來慢跑的相對速度上，幼兒每步踩地的時間占比仍高得多。另一組 487 名多為 11 到 18 歲的參加者被要求『像趕公車但不准跑』地快走，速度都沒超過以腿長換算後約 0.75 的相對速度，和成人的換跑點相符。",
+      "scope": "幼兒資料是同群 2015 年量的、本篇重新分析；兩組指示不同（幼兒自由、較大孩子被要求走），研究者自己列為無法區分的解釋之一；5–8 歲沒有資料；0.75 不自行換算成其他 Froude 定義。",
+      "source_ids": [
+        "H74-S019"
+      ],
+      "source_locator": "Abstract；Methods 受試者段；Results/Discussion V^≈0.75 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：幼兒資料不是本篇新量的，較大孩子那組被要求『不准跑』，只能說不矛盾；Usherwood 群合計 1.5。轉折二中唯一不是 Srinivasan 群的實測佐證。 原提案 F100-011（目標 F100-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V103（2026-11-12）改字後收；數字在原文；補上幼兒資料來自 2015 年、本篇是重新分析，並把『在成人早已改跑的速度上』改為原文的『成人慢跑的相對速度』；下修 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "清楚的換跑檔，是長大以後才有的。",
+        "visual": "幼兒在一排測力板上搖搖晃晃加速，力曲線從 M 形慢慢變成一個峰，沒有斷點。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "H74-027",
+      "question": "登月太空人什麼時候從走變跑？和地球上一樣嗎？",
+      "domain": "身體與運動／步行力學與能量",
+      "mechanism_key": "body.gait_transition.apollo_suited_lunar_transition_froude",
+      "answer_target": "比預期早。MIT 研究者從 Apollo 登月的錄音、影片與 NASA 報告中，挑出 38 個既能判斷步態、又有先前重建的時間與距離可估速度的事件（10 次走、10 次蹦跳式的 lope、18 次跑），把『走或 lope』與『跑』之間的轉換估在 Froude 數約 0.36；而由地面減重實驗內插的『不穿太空衣、月球重力』預期值約 0.9。研究者提出的解釋是：加壓的太空衣會撐起自己一部分重量，他們假設完全自撐並據此算出的 Apollo 數，可以解釋兩者差距的六成。",
+      "scope": "速度是先前紀錄的重建；38 個事件、分類有主觀成分；0.9 是對 Kram 1997 資料的內插（原文未讀）；太空衣自撐是模型假設；不評價太空衣設計或產品；N045 只當背景，不重述。",
+      "source_ids": [
+        "H74-S021"
+      ],
+      "source_locator": "Abstract；Results 第 1–2 段；Discussion 開頭",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：主要量測只有一個 Fr* 估計值，比較基準 0.9 是引用他人資料的內插；刪掉作者自算的『低六成』。Carr 群新。 原提案 F100-012（目標 F100-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V103（2026-11-12）改字後收；數字在原文；改正：刪除自算倍數『低六成』、『外插』改『內插』、把轉換界定為『走或 lope 對跑』、太空衣自撐寫成假設與『解釋六成差距』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在月球上，換跑的時機被太空衣改寫了。",
+        "visual": "Apollo 影片風格的太空人蹦跳；畫面上方一條 Froude 尺，0.36 與 0.90 兩個標記。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "H74-028",
+      "question": "在模擬月球重力下，換跑還是『一下子』換嗎？",
+      "domain": "身體與運動／步行力學與能量",
+      "mechanism_key": "body.gait_transition.simulated_lunar_gravity_gradual_switch",
+      "answer_target": "羅馬的研究群在 2017 年的綜述裡整理他們自己 2011 年的減重模擬實驗：在地球重力下，換跑前一步和後一步的觸地占比、腳著地時腿的角度、腿部肌肉放電時間都明顯不同；在模擬的低重力下，這些前後差異都不顯著，換檔是漸進的，綜述的圖用一名受試者在模擬月球重力下的平順轉換當例子。綜述也寫，模擬重力低於約 0.2 g 時，走到跑的速度遠高於跑到走的速度。",
+      "scope": "只讀到綜述的轉述，原研究（Ivanenko 2011、Sylos-Labini 2011／2013）未讀；必須說成『研究群在綜述中寫』；地面減重模擬不等於真實月球，研究者也提醒結果受減重裝置類型影響；不寫『比目魚肌』，也不說『在 0.16 g 時都不顯著』。",
+      "source_ids": [
+        "H74-S022"
+      ],
+      "source_locator": "『Simulations of hypogravity on Earth』段與圖 4 圖說",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：二手轉述、圖例是一名代表受試者、條件不止 0.16 g；不能當轉折二的主證據，只能當旁證。Lacquaniti／Ivanenko 群 0.25。 原提案 F100-013（目標 F100-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V103（2026-11-12）改字後收；作者把綜述轉述寫成『在模擬 0.16 g 時這些差異都不顯著』並加上原文沒點名的比目魚肌；改成綜述轉述的語氣，下修為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "重力一小，走與跑就沒有那條清楚的界線。",
+        "visual": "吊帶傾斜的減重裝置示意圖，兩條步態指標曲線：1 g 有斷崖，0.16 g 平滑相連。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "H74-029",
+      "question": "真實生活中趕路，人會選一個速度一路走或一路跑嗎？",
+      "domain": "身體與運動／步行力學與能量",
+      "mechanism_key": "body.gait_transition.overground_walk_run_mixture_regime",
+      "answer_target": "多半走跑混著用。美國俄亥俄州立大學讓 14 人在 400 公尺跑道上，用規定的時間剛好走完 800 或 2400 公尺，像趕赴一個約會：在中間兩種平均速度（每秒 2.22 與 2.6 公尺）有九成的趟次走跑混用；把數據點內插，平均速度約每秒 2.5 公尺時走和跑各占一半。研究者把平均速度每秒 1.9 到 3.0 公尺稱為『轉換區』：靠近 1.9 大多在走、靠近 3.0 大多在跑，中間逐漸變化，而不是跑步機上那種一個速度點就換。",
+      "scope": "14 人 42 趟、戶外跑道、有倒數時鐘；走或跑由研究者看影片判定，『跑』包含沒有騰空、但髖部在彎曲的腿上上下起伏的貼地慢跑（與 F100-001 用騰空定義走跑不同，旁白要說清楚）；1.9–3.0 的兩端大多是單一步態，不說『1.9 到 3.0 之間都在混用』。",
+      "source_ids": [
+        "H74-S023"
+      ],
+      "source_locator": "Abstract；Results 3.2",
+      "premise_status": "screened",
+      "notes": "算 1.0（同作者）；Srinivasan 群與 F100-015 合計 1.75。轉折二的唯一主證據。 原提案 F100-014（目標 F100-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V103（2026-11-12）改字後收；數字在原文；補上 2.5 m/s 是內插、轉換區兩端以單一步態為主、『跑』的判定含無騰空的慢跑。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為有一個固定的換檔速度；在真實路上，換檔點變成一整段的走跑比例。",
+        "visual": "操場俯視：小人沿跑道，走的段藍、跑的段橘，隨平均速度增加橘色越來越長。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "H74-030",
+      "question": "走跑混用時，人會用中間的速度嗎？會一直換來換去嗎？",
+      "domain": "身體與運動／步行力學與能量",
+      "mechanism_key": "body.gait_transition.mixture_speed_gap_single_switch",
+      "answer_target": "多半不會。同一個研究中，大多數走跑混用的人，走的時候偏慢、跑的時候偏快，中間的速度幾乎沒用到——這個空檔要看個人的速度分布才明顯；平均速度提高時，跑的速度跟著變快，走的速度大致不變。換步態的次數也很少：800 與 2400 公尺的趟次合計，四種平均速度中有三種的中位數只換一次，每秒 2.62 公尺那組是兩次。研究者用『整趟耗能最少』的模型，在質性上預測了這些現象。",
+      "scope": "作者估算的換步態成本不當量測；模型只質性吻合；空檔在合併所有人的直方圖上不明顯。",
+      "source_ids": [
+        "H74-S023"
+      ],
+      "source_locator": "Results 3.3–3.6；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（同作者）；Srinivasan 群合計 1.75，未超過封頂。 原提案 F100-015（目標 F100-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V103（2026-11-12）改字後收；改正『即使走 2.4 公里…中位數一次』：中位數是 800 與 2400 公尺合計，且第四種速度是兩次；補上空檔只在個人分布上明顯。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "人不是慢慢加速到跑，而是『走一段、跳到快跑、通常只換一次』。",
+        "visual": "速度直方圖兩個峰，中間一道空隙；計數器顯示『換檔次數：1』。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "H74-NA001",
+      "question": "耳朵也有自己的「洋裝」嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "非作者覆核 V86（2026-11-12）退回：數字正確，但本篇真正的新結果是「Laurel 組的說話變唱歌錯覺較強」，那是池中 R22001（G234「同一句話，怎麼越聽越像歌？」）的增量，不回答本題「為什麼同一張洋裝照看成不同顏色」；Laurel／Yanny 為什麼分兩派的機制（共振峰）在本篇只是轉述引文 14。放在洋裝題裡是同主題清單，不入本題。可改作 G234 的增量候選（約 0.25–0.5，跨 F92 聲音領域，交該領域覆核）。 原提案 F83-016。",
+      "reentry_condition": "覆核理由所列的缺口補上後重提。",
+      "reading_status": "已讀來源，核心退回"
+    },
+    {
+      "id": "H74-NA002",
+      "question": "把洋裝照的顏色反轉成黃色，或轉到紅綠方向，大家是不是就不再吵了？（Winkler、Spillmann、Werner、Webster 2015 Curr Biol）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "原文作者稿 PMC4489998：Europe PMC fullTextXML 500，列出的 europepmc.org PDF 連結 403。Retter 2020（F83-S006）前言轉述了這個結果，但那是引用，不立核心。 原提案 F83-NA001。",
+      "reentry_condition": "讀到作者稿或出版社合法全文；約 0.75 條（Webster 群封頂內，與 F83-009 合計 1.5），可成第三個轉折「是藍色特有的」。",
+      "reading_status": "blocked（europepmc.org 403；REST 500）"
+    },
+    {
+      "id": "H74-NA003",
+      "question": "Lafer-Sousa、Hermann、Conway 2015 的首報：年長者與女性較常看白金、約一成看藍棕、45% 首看後換看法？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "作者稿 PMC4921196：REST 500、europepmc.org PDF 403。Conway 群已由 F83-S002 用滿 2.0，補到也不加條數。 原提案 F83-NA002。",
+      "reentry_condition": "只能把 F83-S002 轉述的數字升為原文，不加條數。",
+      "reading_status": "blocked（europepmc.org 403；REST 500）"
+    },
+    {
+      "id": "H74-NA004",
+      "question": "Gegenfurtner、Bloj、Toscani 2015：洋裝顏色差異主要在明暗，而且只有 15 人時看起來是連續的？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC 列的 cell.com 免費 PDF 連結 403；Toscani 等 2017 J Vis 在 Cloudflare 驗證後。 原提案 F83-NA003。",
+      "reentry_condition": "讀到任一篇合法全文；新研究群約 0.75–1.0 條。",
+      "reading_status": "blocked（cell.com 403；jov.arvojournals.org 機器驗證）"
+    },
+    {
+      "id": "H74-NA005",
+      "question": "Wallisch 2017：約 13,000 人自述「早起型較常看白金」，且假設洋裝在陰影裡的人看白金？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "doi.org 轉到 jov.arvojournals.org 回 Cloudflare 機器驗證頁（403）。F83-S002 與 F83-S003 都提到此研究，但那是轉述。 原提案 F83-NA004。",
+      "reentry_condition": "讀到合法全文；約 0.75 條，並讓「夜貓說法」在片中正反並陳。",
+      "reading_status": "blocked（Cloudflare）"
+    },
+    {
+      "id": "H74-NA006",
+      "question": "雙胞胎看洋裝的顏色比較一致嗎？（Mahroo 等 2017 J Vis）／第一次看到就定型？（Drissi Daoudi 等 2017、2020）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "J Vis 同主機機器驗證未試；Drissi-Daoudi 2020 Vision Res Europe PMC 標示需訂閱，無開放版本連結。 原提案 F83-NA005。",
+      "reentry_condition": "讀到合法全文；各約 0.5 條（兩個新研究群）。",
+      "reading_status": "未讀（主機驗證／付費）"
+    },
+    {
+      "id": "H74-NA007",
+      "question": "看洋裝的方式是否有家族遺傳？（Xiao、Cai、Zhang 2016 PLOS ONE）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "全文已快取（f83src/PMC5074562.txt，sha256 前 16 碼 fc178cc65b23f3bc），只讀摘要與前言第 1 段：四個家族的初步分離分析，模型推論多、樣本小，且容易被誤讀成「天生決定」，與本題的轉折二衝突；不立核心。 原提案 F83-NA006。",
+      "reentry_condition": "若有更大樣本的家族或雙胞胎研究開放全文再評。",
+      "reading_status": "摘要與前言第 1 段"
+    },
+    {
+      "id": "H74-NA008",
+      "question": "孩子愛吃綠葉蔬菜，就比較會把洋裝看成白金？（Salcedo-Villanueva 等 2024 的飲食部分）",
+      "existing_ids": [],
+      "source_ids": [
+        "H74-S010"
+      ],
+      "reason": "屬飲食與眼睛健康推論，依規則不收健康、飲食建議；同篇只用未看過的孩子分兩派與年齡的部分（F83-013）。 原提案 F83-NA007。",
+      "reentry_condition": "不再收。",
+      "reading_status": "已讀（全文快取）"
+    },
+    {
+      "id": "H74-NA009",
+      "question": "在真實或模擬月球重力下，人的換跑點仍是 Froude 0.5 嗎？（Kram、Domingo & Ferris 1997；De Witt 等 2014）",
+      "existing_ids": [
+        "N045"
+      ],
+      "source_ids": [],
+      "reason": "兩篇 J Exp Biol 原文經 Europe PMC 列出的 DOI 轉到 journals.biologists.com，皆回 403，未繞過；只在 S008、S009 讀到他人轉述（Fr 約 0.9 外插、拋物線飛行 1.4），不立核心。 原提案 F100-NA001。",
+      "reentry_condition": "讀到出版社或作者典藏的合法全文；Kram 1997 約 0.75、De Witt 2014 約 0.75，是低重力段第三轉折（Froude 預測在低重力失準）的直接證據。",
+      "reading_status": "blocked（journals.biologists.com 403）"
+    },
+    {
+      "id": "H74-NA010",
+      "question": "陡坡上自然換跑速度什麼時候才和能量交點重合？（Brill & Kram 2020 預印本／2021 J Exp Biol）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC 只有摘要（10 名山跑者，0°、5°、10° PTS 慢於 EOTS，15° 才重合）；DOI 轉 biorxiv.org 回 429（error code 1015），依規定停止，未改抓 Unpaywall 列出的同主機 PDF；J Exp Biol 正式版未試。只讀摘要，不算。 原提案 F100-NA002。",
+      "reentry_condition": "bioRxiv 限流解除後，用原本 DOI 連結正常下載一次；可立約 0.75（新研究群 Kram），並讓上坡段由兩篇互證。",
+      "reading_status": "abstract only（biorxiv 429）"
+    },
+    {
+      "id": "H74-NA011",
+      "question": "換跑是為了穩定，不是為了省能？跨九種哺乳類與鳥類的步伐變異（Granatosky 等 2018 Proc B）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC REST fullTextXML 回 500；API 列出的 europepmc.org PDF 連結回 403（Cloudflare 驗證頁），依規定停止，未改抓 NCBI PMC。只讀摘要。動物部分也跨到 F96／F87 領域。 原提案 F100-NA003。",
+      "reentry_condition": "出版社或典藏合法全文可讀時，約 0.75，可作為『觸發換跑的是步伐不穩』的跨物種證據。",
+      "reading_status": "abstract only（europepmc.org 403）"
+    },
+    {
+      "id": "H74-NA012",
+      "question": "低重力下模擬人會選擇蹦跳（skipping）嗎？（Ackermann & van den Bogert 2012 J Biomech）；兒童與青少年用步頻預測換跑（Ducharme 等 2021）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "兩篇在 PMC 有作者稿，但 Europe PMC REST 無 fullTextXML，europepmc.org 網站本工作階段已回 403；Unpaywall 指向 NCBI PMC，屬同一資料庫另一主機，依規定未試。未讀全文。 原提案 F100-NA004。",
+      "reentry_condition": "由出版社或作者機構典藏的合法全文讀到；各約 0.5（前者為模擬，保守）。",
+      "reading_status": "not read（host blocked）"
+    },
+    {
+      "id": "H74-NA013",
+      "question": "人在路上走跑混用，是整趟耗能最省的結果嗎？（Long & Srinivasan 2013 J R Soc Interface 120 m 版）",
+      "existing_ids": [],
+      "source_ids": [
+        "H74-S023"
+      ],
+      "reason": "與 S010 同一研究群，封頂已用 1.75；本工作階段未嘗試讀取（Europe PMC 標示非 OA）。 原提案 F100-NA005。",
+      "reentry_condition": "合法全文可讀時最多 +0.25（Srinivasan 群封頂 2.0）。",
+      "reading_status": "not attempted"
+    },
+    {
+      "id": "H74-NA014",
+      "question": "珠雞的走跑是連續的嗎？鳥類的『貼地跑』（Daley & Birn-Jeffery 2026 Biol Open）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "已取全文（f100src/PMC13617982.txt，sha256 前 16 碼 c1ea3532b0c6c291），但屬鳥類步態，是 F87 的領域；本題只談人，不收。 原提案 F100-NA006。",
+      "reentry_condition": "若站主要做『人與動物的換檔』合題，再由鳥類作者評估。",
+      "reading_status": "full text cached, not used"
+    },
+    {
+      "id": "H74-NA015",
+      "question": "人會不會因為剛剛做過同一動作而延後換姿勢（動作遲滯）？（Schütz 2026）；嬰幼兒走跑何時分化（Dewolf 等 2020 綜述）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Schütz 2026（f100src/PMC12977077.txt，56fc2eee8ed9c1d5）讀全文後發現是穿越窄門的轉身遲滯，走跑遲滯只在前言引用且寫明前人結果不一致；Dewolf 2020（f100src/PMC7248179.txt，74da3aadbdeffcb0）是綜述，幼兒相關數據都是引用他人（Vasudevan 2016 等），不算。 原提案 F100-NA007。",
+      "reentry_condition": "讀到 Vasudevan 等 2016 嬰兒支撐踏步原文，約 0.5，可補幼兒段。",
+      "reading_status": "full text read, not counted"
+    }
+  ]
+}

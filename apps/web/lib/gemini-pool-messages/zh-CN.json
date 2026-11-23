@@ -1,0 +1,46 @@
+{
+  "fields": {
+    "hotspot_guide_gemini_key_budgets_usd": {
+      "label": "Gemini 各密钥月预算（USD）",
+      "help": "可留空。直接在上方“Gemini 密钥池”按账号 A、B、C、D… 单独设置与保存；0 或留空表示不设预算。真正换密钥的依据是 Google 的拒绝：预付制储值用完时返回 402，设了月花费上限时返回 429。"
+    }
+  },
+  "secrets": {
+    "hotspot_guide_gemini_api_keys_extra": {
+      "label": "其他 Gemini 密钥（Google AI Ultra 账号）",
+      "help": "请在上方“Gemini 密钥池”按 A、B、C、D… 分槽单独输入与保存。系统会按 A → B → C → … → A 循环轮替使用（Ultra 账号每月的 Google Cloud 抵用额度），全部额度用完后才改用网站密钥。"
+    }
+  },
+  "panel": {
+    "title": "Gemini 密钥池（Google AI Ultra 分槽管理）",
+    "intro": "可按 A、B、C、D… 分槽单独输入与保存密钥，并随时按“＋ 新增账号槽”扩充。当目前账号额度不足或达花费上限时，系统自动换下一槽（A → B → C → … 到底再绕回 A），也可随时指定要从哪一个账号开始跑。",
+    "key": "密钥",
+    "order": "账号槽",
+    "spent": "本月估计",
+    "budget": "月预算 (USD)",
+    "state": "状态",
+    "actions": "操作",
+    "active": "使用中",
+    "ready": "待命",
+    "exhausted": "额度用完，休息到",
+    "busy": "繁忙，休息到",
+    "over": "已达预算",
+    "none": "未设",
+    "unconfigured": "未设置",
+    "billing": "打开 AI Studio 账单页",
+    "error": "读取不到密钥池状态",
+    "single": "目前只有一把 Gemini 密钥；在下方各槽（A、B、C…）单独填入 Ultra 账号的密钥并按保存即可启用轮替。",
+    "siteKey": "网站密钥",
+    "slotLabel": "账号",
+    "currentTurn": "目前轮到",
+    "startHere": "从此开始",
+    "saveSlot": "保存",
+    "clearSlot": "清除",
+    "addSlot": "＋ 新增账号槽",
+    "keyPlaceholder": "输入此槽的 Gemini API Key",
+    "keyConfiguredPlaceholder": "已保存，输入新密钥可更新",
+    "budgetPlaceholder": "不限",
+    "savedNotice": "已更新账号槽",
+    "turnNotice": "已指定从此账号开始："
+  }
+}

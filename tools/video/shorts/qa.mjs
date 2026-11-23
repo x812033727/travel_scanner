@@ -21,8 +21,8 @@ import { policyVerdict } from '../qa/policy.mjs';
 import { comparable } from '../tts/check.mjs';
 import { loudnessProblems, measureFinal, profileProblems } from './build.mjs';
 import { audioHash, buildClips, CHECK_FILE, phrasesHash } from './check.mjs';
-import { PROFILE, SCRIPT_FILE, callsToAction, lineOf, phrasesOf, saveJson, sha256, verifyEvidence } from './core.mjs';
-import { loopProblems, psnrText } from './motion.mjs';
+import { PROFILE, SCRIPT_FILE, SILENT_RANGE, callsToAction, isSilent, lineOf, phrasesOf, saveJson, sha256, verifyEvidence } from './core.mjs';
+import { COVER_MIN_PSNR, LOOP_MIN_PSNR, loopProblems, psnrText } from './motion.mjs';
 import { CAPTIONS_FILE, EXTRA_LOCALES, captionProblems, composeMetadata, disclosureOf, metadataProblems, sourceUrlOf } from './package.mjs';
 
 export const ITEM_IDS = Object.freeze(['profile', 'loudness', 'layout', 'narration', 'evidence', 'facts', 'policy', 'metadata', 'captions', 'links', 'variety', 'disclosure', 'grammar']);
@@ -110,6 +110,53 @@ export function narrationItem({ check, audioSha256, phrases }) {
 }
 
 /**
+ * narration of a silent drama: there is none to check, and the script says none. The music and
+ * the sound effects are the drama pipeline's, checked there (shorts-drama/REVIEW.md §3).
+ */
+export function silentNarrationItem({ phrases }) {
+  if (phrases.length) return item('narration', false, `a silent drama has ${phrases.length} phrases of narration`);
+  return item('narration', true, 'a silent drama: no narration, only music and sound effects');
+}
+
+/**
+ * facts of a silent drama: a comedy without words makes no claim to check. A verify.json, when
+ * there is one, is still read like any other.
+ */
+export function silentFactsItem({ verify, documentSha256 }) {
+  if (verify) return factsItem({ verify, documentSha256 });
+  return item('facts', true, 'a silent drama makes no claim: nothing is said and no card is shown');
+}
+
+/** captions of a silent drama: nothing is said, so no caption track and no cue. */
+export function silentCaptionsItem({ captions, timeline }) {
+  const problems = [...captions.keys()].map((locale) => `${locale}.srt is there, but a silent drama says nothing`);
+  if (timeline.cues.length) problems.push(`the timeline has ${timeline.cues.length} cues`);
+  return verdict('captions', problems, 'a silent drama: no captions, nothing is said');
+}
+
+/**
+ * grammar of a silent drama: its titles and descriptions ask the viewer for nothing. It loops by
+ * its story, the twist frozen on its last beat (shorts-drama/README.md 五拍節奏與迴圈), not by
+ * fading back to its first frame, and its cover is the frame its maker chose
+ * (shorts-drama/REVIEW.md §6 A); both are measured and recorded as warnings, neither fails it.
+ */
+export function silentGrammarItem({ doc, grammar }) {
+  const texts = [...doc.titles.map((title, index) => [`title ${index + 1}`, title]), ['description', doc.description],
+    ...Object.entries(doc.localizations ?? {}).flatMap(([locale, entry]) => [[`${locale} title`, entry.title], [`${locale} description`, entry.description]])];
+  const problems = texts.flatMap(([where, text]) => {
+    const asks = callsToAction(text);
+    return asks.length ? [`the ${where} asks the viewer to act (${asks.join('、')})`] : [];
+  });
+  const result = verdict('grammar', problems, `no call to action in ${texts.length} titles and descriptions; a silent drama loops by its story`);
+  const warnings = grammar ? [
+    ...(grammar.cover_psnr >= COVER_MIN_PSNR ? [] : [`the cover is a chosen frame, not the first (PSNR ${psnrText(grammar.cover_psnr)})`]),
+    ...(grammar.loop_psnr >= LOOP_MIN_PSNR ? [] : [`the last frame is not the first (PSNR ${psnrText(grammar.loop_psnr)}): the loop is the story's, not the picture's`]),
+  ] : [];
+  if (warnings.length) result.warnings = warnings;
+  return result;
+}
+
+/**
  * evidence: an experiment's evidence files are the ones the script names, byte for byte; a
  * highlight's or a vertical short's source is a video the site knows that is public, or whose
  * final cut is approved. `source` is the site's record, null when it has none.
@@ -190,7 +237,7 @@ export function scriptShape(doc) {
   return {
     opening: comparable(phrasesOf(doc)[0] ?? ''),
     // A scene with a camera move over its picture reads "c": two Shorts that move alike are built alike.
-    structure: doc.scenes.map((scene) => `${scene.narration.length}${scene.big ? 'b' : ''}${scene.asset ? 'a' : ''}${scene.camera ? 'c' : ''}${scene.body?.length ?? 0}${scene.note ? 'n' : ''}`).join('-'),
+    structure: (doc.scenes ?? []).map((scene) => `${scene.narration.length}${scene.big ? 'b' : ''}${scene.asset ? 'a' : ''}${scene.camera ? 'c' : ''}${scene.body?.length ?? 0}${scene.note ? 'n' : ''}`).join('-'),
   };
 }
 
@@ -305,7 +352,9 @@ export async function runQa({ directory, client = null, offline = false, setting
   // attach fresh hashes to an answer about the previous contents.
   const inputs = qaInputBindings(directory);
   const used = settings ?? (online ? (await failing(() => client.settings())).value : null) ?? {};
-  const range = { minSeconds: used.seconds_min ?? PROFILE.minSeconds, maxSeconds: used.seconds_max ?? PROFILE.maxSeconds };
+  const silent = isSilent(doc);
+  // A silent drama is held to its own length, 9 to 20 seconds, not the narrated Shorts' setting.
+  const range = silent ? SILENT_RANGE : { minSeconds: used.seconds_min ?? PROFILE.minSeconds, maxSeconds: used.seconds_max ?? PROFILE.maxSeconds };
   // The cut's two ends are measured with the rest: the cover against frame 0, frame 0 against the last.
   const measured = await measureImpl(final, tools ?? (await locateFfmpeg()), { cover: path.join(directory, 'upload', 'cover.png'), frames: timeline.frames });
 
@@ -325,7 +374,9 @@ export async function runQa({ directory, client = null, offline = false, setting
   if (online) {
     let asked;
     try {
-      asked = { value: await client.judgePolicy({ slug: doc.slug, script: phrases.join('\n'), viewpoint: '' }) };
+      // A silent drama says nothing: what a viewer reads of it is its titles and description.
+      const words = silent ? [...doc.titles, doc.description].join('\n') : phrases.join('\n');
+      asked = { value: await client.judgePolicy({ slug: doc.slug, script: words, viewpoint: '' }) };
     } catch (error) {
       // Sent, and its answer lost: Jev may have judged it, and the call was paid for. The worker's
       // check ends here, ahead of the comparison of the inputs below, so an edit made meanwhile
@@ -342,7 +393,8 @@ export async function runQa({ directory, client = null, offline = false, setting
   }
   const past = history !== undefined ? history : online ? (await failing(() => siteHistory(client))).value ?? null : null;
   const captions = new Map();
-  for (const locale of ['zh-TW', ...(used.locales ?? [])]) {
+  // A silent drama's every caption file is looked for, so one left in is named.
+  for (const locale of silent ? ['zh-TW', ...EXTRA_LOCALES] : ['zh-TW', ...(used.locales ?? [])]) {
     const file = path.join(directory, 'upload', `${locale}.srt`);
     if (existsSync(file)) captions.set(locale, readFileSync(file, 'utf8'));
   }
@@ -359,16 +411,16 @@ export async function runQa({ directory, client = null, offline = false, setting
     profileItem({ measured, frames: timeline.frames, range }),
     loudnessItem({ loudness: measured.loudness }),
     layoutItem({ checks, cues: timeline.cues.length }),
-    clips ? narrationItem({ check: readJson(path.join(directory, CHECK_FILE), null), audioSha256: audioHash(clips), phrases }) : item('narration', false, 'the clips of the phrases are missing'),
+    silent ? silentNarrationItem({ phrases }) : clips ? narrationItem({ check: readJson(path.join(directory, CHECK_FILE), null), audioSha256: audioHash(clips), phrases }) : item('narration', false, 'the clips of the phrases are missing'),
     line !== 'lab' && doc.source?.slug && !online ? item('evidence', false, OFFLINE) : evidenceItem({ doc, evidenceError, source, now: now() }),
-    factsItem({ verify: readJson(path.join(directory, VERIFY_FILE), null), documentSha256: sha256(scriptBytes) }),
+    (silent ? silentFactsItem : factsItem)({ verify: readJson(path.join(directory, VERIFY_FILE), null), documentSha256: sha256(scriptBytes) }),
     policy,
     metadataItem({ metadata }),
-    captionsItem({ captions, timeline, locales: used.locales ?? [], checks }),
+    silent ? silentCaptionsItem({ captions, timeline }) : captionsItem({ captions, timeline, locales: used.locales ?? [], checks }),
     links,
     past === null && offline ? item('variety', false, OFFLINE) : varietyItem({ doc, history: past }),
     disclosureItem({ doc }),
-    grammarItem({ doc, grammar: measured.grammar ?? null }),
+    silent ? silentGrammarItem({ doc, grammar: measured.grammar ?? null }) : grammarItem({ doc, grammar: measured.grammar ?? null }),
   ];
   if (!sameQaInputs(inputs, qaInputBindings(directory))) throw new Error('QA inputs changed while checking: run qa again');
   const report = { ...qaReport(items, finalSha, line), inputs };

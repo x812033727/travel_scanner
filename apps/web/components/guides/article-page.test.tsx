@@ -9,6 +9,9 @@ const mocks = vi.hoisted(() => ({
     async () => ({ articles: [], next_cursor: null }),
   ),
   topics: vi.fn(async (): Promise<Record<string, unknown>[]> => []),
+  trending: vi.fn<(locale: string, filters?: Record<string, string>, limit?: number) => Promise<{ articles: Record<string, unknown>[]; next_cursor: null; available: boolean }>>(
+    async () => ({ articles: [], next_cursor: null, available: true }),
+  ),
   permanentRedirect: vi.fn((url: string) => { throw new Error(`NEXT_REDIRECT ${url}`); }),
   headers: vi.fn(async () => new Headers()),
 }));
@@ -22,6 +25,7 @@ vi.mock("@/lib/guides.server", () => ({
   getGuideArticle: mocks.article, getGuideSeries: mocks.series,
   getGuideList: mocks.list,
   getGuideTopics: mocks.topics,
+  getTrendingGuides: mocks.trending,
 }));
 vi.mock("@/components/codex-learning/hub", () => ({ LearningHub: ({ entries, available }: { entries: LearningEntry[]; available: boolean }) =>
   <section aria-label="Learning directory" data-available={available}>
@@ -93,6 +97,13 @@ describe("Codex articles on the shared page", () => {
     expect(container.querySelector("details.lg\\:hidden")).not.toBeNull();
     expect(container.querySelector("aside nav.sticky")).not.toBeNull();
     expect(container.querySelectorAll('a[href="/en/life/codex-learning-hub"]').length).toBeGreaterThanOrEqual(2);
+    const graphs = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));
+    const lessonGraph = graphs.find(item => item["@type"] === "Article");
+    expect(lessonGraph.isPartOf).toEqual({
+      "@type": "CreativeWorkSeries",
+      name: "Codex hub",
+      url: expect.stringContaining("/en/life/codex-learning-hub"),
+    });
   });
   it("does not fetch a series when the hub translation is unpublished", async () => {
     mocks.article.mockResolvedValue({ ...state, status: "unpublished", document: null });
@@ -103,6 +114,25 @@ describe("Codex articles on the shared page", () => {
 });
 
 describe("further reading", () => {
+  it("keeps the chapter navigation beside a news story and moves trending links after it", async () => {
+    const slug = "ai-news-field-notes";
+    mocks.article.mockResolvedValue({
+      ...state, slug, series: null, news_date: "2026-11-17",
+      document: { ...document, title: "Field notes" },
+    });
+    mocks.trending.mockResolvedValueOnce({
+      articles: [{ kind: "life", slug: "another-story", title: "Another story", topics: [] }],
+      next_cursor: null, available: true,
+    });
+    const { container } = render(await renderGuideArticle({ locale: "en", kind: "life", slug }));
+    const story = container.querySelector("article[data-news-reading]")!;
+    expect(story.querySelector(":scope > header h1")?.textContent).toBe("Field notes");
+    expect(story.querySelector(":scope > aside nav")).not.toBeNull();
+    const trending = screen.getByRole("link", { name: "Another story" });
+    expect(story.compareDocumentPosition(trending) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(story.contains(trending)).toBe(false);
+  });
+
   const ref = (slug: string, title: string, kind: "life" | "howto" = "life") =>
     ({ kind, slug, title, description: `${title} 的描述` });
 
@@ -164,6 +194,50 @@ describe("further reading", () => {
     render(await renderGuideArticle({ locale: "en", kind: "life", slug: reference.slug }));
     expect(screen.queryByTestId("related-grid")).toBeNull();
     expect(screen.queryByTestId("backlinks")).toBeNull();
+  });
+
+  it("falls back to same-topic then same-section lifestyle articles when a standalone life article has no API related list", async () => {
+    mocks.article.mockResolvedValue({
+      ...state,
+      slug: "ai-tools-2026-overview",
+      series: null,
+      topics: [{ slug: "ai", label: "AI" }],
+      related: [],
+    });
+    mocks.list.mockImplementation(async (_locale, filters) => {
+      if (filters.section === "life" && filters.topic === "ai") {
+        return {
+          articles: [
+            { ...ref("ai-tools-2026-overview", "Self article"), topics: [{ slug: "ai", label: "AI" }] },
+            { ...ref("claude-code-mcp-guide", "Claude Code MCP 指南"), topics: [{ slug: "ai", label: "AI" }] },
+          ],
+          next_cursor: null,
+        };
+      }
+      if (filters.section === "life" && !filters.topic) {
+        return {
+          articles: [
+            { ...ref("claude-code-mcp-guide", "Claude Code MCP 指南"), topics: [{ slug: "ai", label: "AI" }] },
+            { ...ref("etf-dca-checklist", "ETF 定期定額檢查清單"), topics: [{ slug: "finance", label: "理財" }] },
+            { ...ref("tokyo-rail-pass", "東京交通票券", "howto"), topics: [{ slug: "transport", label: "交通" }] },
+          ],
+          next_cursor: null,
+        };
+      }
+      return { articles: [], next_cursor: null };
+    });
+
+    render(await renderGuideArticle({ locale: "en", kind: "life", slug: "ai-tools-2026-overview" }));
+    expect(mocks.list).toHaveBeenCalledWith("en", { section: "life", kind: "life", topic: "ai" }, 4);
+    expect(mocks.list).toHaveBeenCalledWith("en", { section: "life", kind: "life" }, 4);
+    const grid = screen.getByRole("region", { name: "同主題延伸閱讀" });
+    expect(within(grid).getAllByRole("link").map((link) => link.textContent)).toEqual([
+      "Claude Code MCP 指南",
+      "ETF 定期定額檢查清單",
+    ]);
+    expect(within(grid).queryByText("Self article")).toBeNull();
+    expect(within(grid).queryByText("東京交通票券")).toBeNull();
+    expect(screen.queryByTestId("travel-crosslinks")).toBeNull();
   });
 
   it("hands the definition-card words to the body, so a term link can show its target's description", async () => {
@@ -240,4 +314,276 @@ describe("breadcrumb, summary, FAQ and glossary markup", () => {
     expect(graphs.map(item => item["@type"])).not.toEqual(expect.arrayContaining(["FAQPage", "DefinedTerm"]));
     expect(graphs.find(item => item["@type"] === "CollectionPage" || item["@type"] === "Article")).not.toHaveProperty("abstract");
   });
+
+  it("emits NewsArticle JSON-LD and renders news_date when the article is a dated news item", async () => {
+    mocks.article.mockResolvedValue({
+      ...state,
+      slug: "claude-code-news-2026-11-12",
+      series: null,
+      news_date: "2026-11-12",
+      topics: [{ slug: "ai-news", label: "AI 新聞" }],
+    });
+    const { container } = render(await renderGuideArticle({ locale: "en", kind: "life", slug: "claude-code-news-2026-11-12" }));
+    const graphs = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));
+    expect(graphs.find(item => item["@type"] === "NewsArticle")).toBeTruthy();
+    expect(container.querySelector('time[datetime="2026-11-12"]')?.textContent).toBe("2026-11-12");
+    expect(container.querySelector("details.lg\\:hidden")).not.toBeNull();
+    expect(container.querySelector("aside nav.sticky")).not.toBeNull();
+  });
+
+  it("omits synthetic news-assets placeholder artwork from OpenGraph, Twitter and NewsArticle JSON-LD", async () => {
+    const syntheticHero = {
+      src: "/guides/news-assets/deadbeef1234567890abcdef-hero.webp",
+      alt: "Placeholder",
+      width: 1600,
+      height: 900,
+      credit: { author: "Mokaair", license: "Original editorial artwork", source_url: null },
+    };
+    mocks.article.mockResolvedValue({
+      ...state,
+      slug: "claude-code-news-2026-11-12",
+      series: null,
+      news_date: "2026-11-12",
+      topics: [{ slug: "ai-news", label: "AI 新聞" }],
+      document: { ...document, hero: syntheticHero },
+    });
+    const meta = await guideArticleMetadata({ locale: "en", kind: "life", slug: "claude-code-news-2026-11-12" });
+    const dynamicCard = "/og/en/life/claude-code-news-2026-11-12/card.png";
+    expect(meta.openGraph).toMatchObject({
+      type: "article", url: meta.alternates?.canonical, title: document.title, description: document.description,
+      publishedTime: document.published_at, section: "AI 新聞", tags: ["AI 新聞"], locale: "en_US", alternateLocale: ["ja_JP"],
+      images: [{ url: dynamicCard, width: 1200, height: 630, alt: document.title }],
+    });
+    expect(meta.twitter).toMatchObject({
+      card: "summary_large_image", title: document.title, description: document.description,
+      images: [{ url: dynamicCard, width: 1200, height: 630, alt: document.title }],
+    });
+
+    const { container } = render(await renderGuideArticle({ locale: "en", kind: "life", slug: "claude-code-news-2026-11-12" }));
+    const graphs = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));
+    const newsGraph = graphs.find(item => item["@type"] === "NewsArticle");
+    expect(newsGraph.articleSection).toBe("AI 新聞");
+    expect(newsGraph.image).toMatchObject({ "@type": "ImageObject", width: 1200, height: 630 });
+    expect(new URL(newsGraph.image.url).pathname).toBe(dynamicCard);
+    expect(container.querySelector("img")).toBeNull();
+  });
+
+  it.each(["2026-11-17", null])("offers the original body figure only for dated news (news_date=%s)", async (newsDate) => {
+    const route = { locale: "zh-TW", kind: "life", slug: "new-display" } as const;
+    const src = "/guides/new-display/ports.png";
+    mocks.article.mockResolvedValue({
+      ...state, ...route, series: null, news_date: newsDate,
+      document: { ...document, blocks: [{ type: "image", src, alt: "螢幕背面接孔圖解", width: 1600, height: 900 }] },
+    });
+    render(await renderGuideArticle(route));
+    const figure = screen.getByRole("img", { name: "螢幕背面接孔圖解" }).closest("figure")!;
+    const link = within(figure).queryByRole("link", { name: /^查看原圖/ });
+    expect(link?.getAttribute("href") ?? null).toBe(newsDate ? src : null);
+  });
+
+  it("shares the first suitable published news figure, leaving it in its original position", async () => {
+    const route = { locale: "ja", kind: "life", slug: "new-display" } as const;
+    const photo = {
+      type: "image", src: "/guides/new-display/ports.webp", alt: "背面の HDMI と USB 端子",
+      width: 1440, height: 810, credit: null,
+    };
+    const synthetic = { author: "Mokaair", license: "Original editorial artwork", source_url: null };
+    mocks.article.mockResolvedValue({
+      ...state, ...route, series: null, news_date: "2026-11-17",
+      topics: [{ slug: "hardware", label: "ハードウェア" }, { slug: "tech-news", label: "テクノロジーニュース" }],
+      document: { ...document, hero: { ...photo, credit: synthetic }, blocks: [
+        { ...photo, src: "/guides/news-assets/placeholder.webp" },
+        { ...photo, src: "/guides/new-display/placeholder.webp", credit: synthetic },
+        { ...photo, src: "/guides/new-display/diagram.svg" },
+        { ...photo, src: "https://example.com/foreign.jpg" },
+        { ...photo, src: "/guides/new-display/small.jpg", width: 1000 },
+        { ...photo, src: "/guides/new-display/portrait.jpg", height: 1600 },
+        { ...photo, src: "/guides/new-display/banner.jpg", height: 180 },
+        { ...photo, src: "/guides/new-display/decorative.jpg", alt: "  " },
+        { ...photo, src: "/guides/new-display/generic.jpg", alt: "画像" },
+        { ...photo, src: "/guides/new-display/filename.jpg", alt: "filename.jpg" },
+        { type: "paragraph", text: "Connection details" }, photo,
+        { ...photo, src: "/guides/new-display/rear.jpg", alt: "背面にある電源ボタン" },
+      ] },
+    });
+    const meta = await guideArticleMetadata(route);
+    const selected = { url: photo.src, width: photo.width, height: photo.height, alt: photo.alt };
+    expect(meta.openGraph).toMatchObject({ section: "テクノロジーニュース", images: [selected] });
+    expect(meta.twitter).toMatchObject({ card: "summary_large_image", images: [selected] });
+
+    const { container } = render(await renderGuideArticle(route));
+    const graphs = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));
+    const article = graphs.find(item => item["@type"] === "NewsArticle");
+    expect(article).toMatchObject({
+      articleSection: "テクノロジーニュース",
+      image: { "@type": "ImageObject", width: photo.width, height: photo.height },
+    });
+    expect(new URL(article.image.url).pathname).toBe(photo.src);
+    const rendered = container.querySelectorAll(`img[src="${photo.src}"]`);
+    expect(rendered).toHaveLength(1);
+    expect(screen.getByText("Connection details").compareDocumentPosition(rendered[0]) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+
+  it.each([
+    { newsDate: "2026-11-17", topic: "crypto", hasHero: true, section: "암호화폐", expectedImage: "/guides/network/cover.jpg" },
+    { newsDate: null, topic: "crypto", hasHero: false, section: "生活分享", expectedImage: null },
+    { newsDate: "2026-11-17", topic: "finance", hasHero: false, section: "生活分享", expectedImage: "/guides/network/photo.jpg" },
+  ])("keeps cover precedence and section fallbacks for $topic, newsDate=$newsDate", async ({ newsDate, topic, hasHero, section, expectedImage }) => {
+    const route = { locale: "ko", kind: "life", slug: "network" } as const;
+    const picture = { src: "/guides/network/photo.jpg", width: 1280, height: 720, alt: "데이터 센터의 네트워크 연결", credit: null };
+    mocks.article.mockResolvedValue({
+      ...state, ...route, series: null, news_date: newsDate, topics: [{ slug: topic, label: topic === "crypto" ? "암호화폐" : "금융" }],
+      document: { ...document, hero: hasHero ? { ...picture, src: "/guides/network/cover.jpg" } : null, blocks: [{ type: "image", ...picture }] },
+    });
+    const fallbackCard = "/og/ko/life/network/card.png";
+    const meta = await guideArticleMetadata(route);
+    expect(meta.openGraph).toMatchObject({ section, images: [{ url: expectedImage ?? fallbackCard }] });
+    expect(meta.twitter).toMatchObject({ images: [{ url: expectedImage ?? fallbackCard }] });
+    const { container } = render(await renderGuideArticle(route));
+    const graphs = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));
+    const article = graphs.find(item => item["@type"] === (newsDate ? "NewsArticle" : "Article"));
+    expect(article.articleSection).toBe(section);
+    expect(new URL(article.image.url).pathname).toBe(expectedImage ?? fallbackCard);
+  });
+
+  it("emits Discover max-image-preview:large metadata and renders share actions plus right-rail trending recirculation", async () => {
+    mocks.article.mockResolvedValue({
+      ...state,
+      slug: "short-news-20261113",
+      series: null,
+      news_date: "2026-11-13",
+      topics: [{ slug: "ai-news", label: "AI 新聞" }],
+      related: [
+        { kind: "life", slug: "already-related", title: "已列延伸閱讀", description: "D" },
+      ],
+      document: {
+        ...document,
+        blocks: [{ type: "heading", level: 2, text: "重點" }],
+      },
+    });
+    mocks.trending.mockImplementation(async (_locale, filters) => {
+      if (filters?.section === "life" && filters?.topic === "ai-news") {
+        return {
+          articles: [
+            {
+              slug: "short-news-20261113",
+              kind: "life",
+              destination_id: null,
+              destination_label: null,
+              topics: [{ slug: "ai-news", label: "AI 新聞" }],
+              title: "Self article should be excluded",
+              description: "D",
+              published_at: "2026-11-13T00:00:00Z",
+              valid_until: null,
+              featured: false,
+            },
+            {
+              slug: "already-related",
+              kind: "life",
+              destination_id: null,
+              destination_label: null,
+              topics: [{ slug: "ai-news", label: "AI 新聞" }],
+              title: "已列延伸閱讀",
+              description: "D",
+              published_at: "2026-11-13T00:30:00Z",
+              valid_until: null,
+              featured: false,
+            },
+            {
+              slug: "claude-code-mcp-guide",
+              kind: "life",
+              destination_id: null,
+              destination_label: null,
+              topics: [{ slug: "ai-news", label: "AI 新聞" }],
+              title: "Claude Code MCP 指南",
+              description: "D",
+              published_at: "2026-11-13T01:00:00Z",
+              valid_until: null,
+              featured: true,
+            },
+            {
+              slug: "tokyo-esim-pick",
+              kind: "howto",
+              destination_id: "tokyo",
+              destination_label: "東京",
+              topics: [{ slug: "connectivity", label: "網路" }],
+              title: "日本 eSIM 實測比較",
+              description: "D",
+              published_at: "2026-11-13T01:30:00Z",
+              valid_until: null,
+              featured: true,
+            },
+          ],
+          next_cursor: null,
+          available: true,
+        };
+      }
+      if (filters?.section === "life" && !filters?.topic) {
+        return {
+          articles: [
+            {
+              slug: "claude-code-mcp-guide",
+              kind: "life",
+              destination_id: null,
+              destination_label: null,
+              topics: [{ slug: "ai-news", label: "AI 新聞" }],
+              title: "Claude Code MCP 指南",
+              description: "D",
+              published_at: "2026-11-13T01:00:00Z",
+              valid_until: null,
+              featured: true,
+            },
+            {
+              slug: "etf-dca-checklist",
+              kind: "life",
+              destination_id: null,
+              destination_label: null,
+              topics: [{ slug: "finance", label: "理財" }],
+              title: "ETF 定期定額檢查清單",
+              description: "D",
+              published_at: "2026-11-13T02:00:00Z",
+              valid_until: null,
+              featured: false,
+            },
+          ],
+          next_cursor: null,
+          available: true,
+        };
+      }
+      return { articles: [], next_cursor: null, available: true };
+    });
+
+    const meta = await guideArticleMetadata({ locale: "en", kind: "life", slug: "short-news-20261113" });
+    expect(meta.robots).toMatchObject({
+      index: true,
+      follow: true,
+      googleBot: { "max-image-preview": "large", "max-snippet": -1 },
+    });
+
+    const { container } = render(await renderGuideArticle({ locale: "en", kind: "life", slug: "short-news-20261113" }));
+    const headerShare = screen.getByRole("group", { name: "分享文章" });
+    expect(within(headerShare).getByRole("button", { name: "複製連結" })).toBeTruthy();
+    expect(within(headerShare).getByRole("link", { name: "LINE 分享" }).getAttribute("href")).toContain("social-plugins.line.me/lineit/share");
+    expect(within(headerShare).getByRole("link", { name: "Threads" }).getAttribute("href")).toContain("threads.net/intent/post");
+    expect(within(headerShare).getByRole("link", { name: "Facebook" }).getAttribute("href")).toContain("facebook.com/sharer/sharer.php");
+    expect(within(headerShare).getByRole("link", { name: "X" }).getAttribute("href")).toContain("x.com/intent/post");
+    const footerShare = screen.getByTestId("article-share-footer");
+    const story = container.querySelector("[data-news-body]");
+    expect(story).toBeTruthy();
+    expect(story!.contains(footerShare)).toBe(false);
+    expect(within(footerShare).getByText("覺得這篇整理實用嗎？分享給需要的朋友")).toBeTruthy();
+    expect(within(footerShare).getByRole("button", { name: "複製連結" })).toBeTruthy();
+    expect(container.querySelector("div.fixed.inset-x-0.lg\\:hidden")).not.toBeNull();
+    expect(mocks.trending).toHaveBeenCalledWith("en", { section: "life", topic: "ai-news" }, 8);
+    expect(mocks.trending).toHaveBeenCalledWith("en", { section: "life" }, 10);
+    const trendingSection = screen.getByRole("region", { name: "熱門閱讀" });
+    expect(trendingSection.closest("aside")?.className).not.toContain("hidden");
+    expect(within(trendingSection).getByRole("link", { name: "Claude Code MCP 指南" })).toBeTruthy();
+    expect(within(trendingSection).getByRole("link", { name: "ETF 定期定額檢查清單" })).toBeTruthy();
+    expect(within(trendingSection).queryByText("Self article should be excluded")).toBeNull();
+    expect(within(trendingSection).queryByText("已列延伸閱讀")).toBeNull();
+    expect(within(trendingSection).queryByText("日本 eSIM 實測比較")).toBeNull();
+  });
+
 });
+

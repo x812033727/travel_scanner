@@ -3,6 +3,7 @@ from typing import Any
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.admin_ai_accounts import colab_leases
 from app.admin_ai_accounts.agent import AiAccountsAgentClient
 from app.admin_ai_accounts.schemas import (
     TERMINAL_LOGIN_STATUSES,
@@ -34,12 +35,20 @@ async def overview(*, fresh: bool = False) -> AiAccountsOverview:
     except AppError as exc:
         # The page still renders and says what is wrong instead of failing as a whole.
         return AiAccountsOverview(enabled=True, agent_reachable=False, agent_error=exc.detail)
+    # Leases live in Redis, not on the host agent: without Redis the cards still render.
+    leases_error: str | None = None
+    try:
+        leases = await colab_leases.all_leases()
+    except AppError as exc:
+        leases, leases_error = {}, exc.detail
     return AiAccountsOverview(
         enabled=True,
         agent_reachable=True,
         slots=agent.slots,
         defaults=agent.defaults,
         allowlist_configured=agent.allowlist_configured,
+        colab_leases=leases,
+        colab_leases_error=leases_error,
     )
 
 

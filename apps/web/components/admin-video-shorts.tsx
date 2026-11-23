@@ -312,13 +312,17 @@ export function AdminVideoShorts({ onOpenVideo }: { onOpenVideo: (slug: string) 
     api<Overview>("/admin/video-shorts/overview").then((value) => { setOverview(value); setError(""); }).catch((problem: unknown) => setError(message(problem)));
   }, []);
   useRefresh(load);
-  return <div className="mt-6 grid gap-6">
-    {error && <AdminErrorState title={t("loadError")} detail={error} retry={load} retryLabel={t("retry")} />}
-    {!overview && !error && <p className="text-[var(--muted)]">{t("loading")}</p>}
-    {overview && <TopRow overview={overview} canManage={manage.allowed} onChanged={load} />}
-    {overview && <Needs needs={overview.needs} onView={setView} onOpenVideo={onOpenVideo} />}
-    {overview?.channel.linked && !overview.channel.audited && <UploadsPanel canManage={manage.allowed} onClaimed={load} />}
+  // The seven views come first, above the status row and "needs you" (owner, 2026-11-21): the
+  // owner opens the page to go somewhere, and the bar is what they look for.
+  return <div className="mt-6">
     <Tabs value={view} onChange={(value) => setView(value as View)} label={t("viewsLabel")} items={VIEWS.map((each) => ({ value: each, label: t(`views.${each}`) }))}>
+      <div className="mb-6 grid gap-6 empty:hidden">
+        {error && <AdminErrorState title={t("loadError")} detail={error} retry={load} retryLabel={t("retry")} />}
+        {!overview && !error && <p className="text-[var(--muted)]">{t("loading")}</p>}
+        {overview && <TopRow overview={overview} canManage={manage.allowed} onChanged={load} />}
+        {overview && <Needs needs={overview.needs} onView={setView} onOpenVideo={onOpenVideo} />}
+        {overview?.channel.linked && !overview.channel.audited && <UploadsPanel canManage={manage.allowed} onClaimed={load} />}
+      </div>
       {view === "calendar" && <ShortsCalendar canManage={manage.allowed} onChanged={load} onOpenVideo={onOpenVideo} />}
       {view === "library" && <ShortsLibrary onOpenVideo={onOpenVideo} />}
       {view === "metrics" && <ShortsMetrics onOpenVideo={onOpenVideo} />}

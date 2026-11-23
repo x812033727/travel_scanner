@@ -9,7 +9,7 @@
 // theme.css, so a theme change fails here until they are updated. The same model says where the
 // browser breaks the headline's lines, and Intl.Segmenter (zh) says whether a break falls inside
 // a word; the writer moves it with a `\n`.
-import { AI_THUMB_HEADLINE, HEADLINE_WORD, headlineCount, THUMB_AI_LAYOUT, THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX, THUMB_SERIES, THUMB_SIZE } from "../templates/templates.mjs";
+import { AI_THUMB_HEADLINE, DRAMA_THUMB_HEADLINE, HEADLINE_WORD, headlineCount, HEIMAO_THUMB_HEADLINE, SERIES_THUMB_HEADLINE, THUMB_AI_LAYOUT, THUMB_DRAMA_LAYOUT, THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX, THUMB_HEIMAO_LAYOUT, THUMB_HEIMAO_LEFT_LAYOUT, THUMB_SERIES, THUMB_SIZE } from "../templates/templates.mjs";
 
 // Same as tools/video/render/cli.mjs THUMBNAIL_MAX_BYTES: YouTube's limit for custom thumbnails.
 export const MAX_BYTES = 2 * 1024 * 1024;
@@ -47,8 +47,21 @@ export const HEADLINE = {
   tolerance: 0.215,
 };
 // A series' thumbnail (templates.mjs THUMB_SERIES) keeps the full-width column: `.thumb` less
-// its left padding (72) and `.thumb.series`'s right padding (340), three lines high.
-export const HEADLINE_SERIES = { ...HEADLINE, maxHeight: 460, width: THUMB_SIZE.width - 72 - 340 };
+// its left padding (72) and `.thumb.series`'s right padding (340), two lines high (the stamp and
+// the series' name hold the bottom), at the series' own headline size (SERIES_THUMB_HEADLINE,
+// 150 px since the 2026-11-11 bright look).
+export const HEADLINE_SERIES = { ...HEADLINE, fontSize: SERIES_THUMB_HEADLINE.fontSize, lineHeight: SERIES_THUMB_HEADLINE.lineHeight, maxHeight: SERIES_THUMB_HEADLINE.maxHeight, width: THUMB_SIZE.width - 72 - 340 };
+// The drama layout (templates.mjs THUMB_DRAMA_LAYOUT): the headline runs across the frame in the
+// bottom third on one line, shrunk rather than wrapped; drama-craft.md asks for 4–8 characters.
+export const HEADLINE_DRAMA = {
+  ...HEADLINE,
+  fontSize: DRAMA_THUMB_HEADLINE.fontSize,
+  lineHeight: DRAMA_THUMB_HEADLINE.lineHeight,
+  maxHeight: Math.round(DRAMA_THUMB_HEADLINE.fontSize * DRAMA_THUMB_HEADLINE.lineHeight * DRAMA_THUMB_HEADLINE.maxLines),
+  width: THUMB_SIZE.width - DRAMA_THUMB_HEADLINE.left - DRAMA_THUMB_HEADLINE.right,
+};
+/** The most characters a drama headline reads at a glance (drama-craft.md: 4–8). */
+export const DRAMA_HEADLINE_MAX = 8;
 // The AI look (templates.mjs THUMB_AI_LAYOUT): one line across the frame, set at 132 px and
 // shrunk until it fits that line; a second line is an overflow, so a headline too long for one
 // line settles at the floor and fails the phone check below.
@@ -59,7 +72,34 @@ export const HEADLINE_AI = {
   maxHeight: AI_THUMB_HEADLINE.fontSize * AI_THUMB_HEADLINE.lineHeight,
   width: THUMB_SIZE.width - AI_THUMB_HEADLINE.left - AI_THUMB_HEADLINE.right,
 };
-export const headlineRule = (series = null, layout = null) => (series && Object.hasOwn(THUMB_SERIES, series) ? HEADLINE_SERIES : layout === THUMB_AI_LAYOUT ? HEADLINE_AI : HEADLINE);
+/** The most CJK characters / Latin runs a Heimao top-line headline reads at a glance (6–10). */
+export const HEIMAO_HEADLINE_MAX = 10;
+export const HEADLINE_HEIMAO = {
+  ...HEADLINE,
+  fontSize: HEIMAO_THUMB_HEADLINE.fontSize,
+  lineHeight: HEIMAO_THUMB_HEADLINE.lineHeight,
+  maxHeight: Math.round(HEIMAO_THUMB_HEADLINE.fontSize * HEIMAO_THUMB_HEADLINE.lineHeight),
+  width: THUMB_SIZE.width - HEIMAO_THUMB_HEADLINE.left - HEIMAO_THUMB_HEADLINE.right,
+};
+export const HEADLINE_HEIMAO_LEFT = {
+  ...HEADLINE_HEIMAO,
+  fontSize: HEIMAO_THUMB_HEADLINE.leftFontSize,
+  maxHeight: Math.round(HEIMAO_THUMB_HEADLINE.leftFontSize * HEIMAO_THUMB_HEADLINE.lineHeight),
+  width: THUMB_SIZE.width - 42 - HEIMAO_THUMB_HEADLINE.right,
+};
+export const isHeimaoRule = (rule) => rule === HEADLINE_HEIMAO || rule === HEADLINE_HEIMAO_LEFT;
+export const headlineRule = (series = null, layout = null) =>
+  layout === THUMB_HEIMAO_LAYOUT
+    ? HEADLINE_HEIMAO
+    : layout === THUMB_HEIMAO_LEFT_LAYOUT
+      ? HEADLINE_HEIMAO_LEFT
+      : series && Object.hasOwn(THUMB_SERIES, series)
+        ? HEADLINE_SERIES
+        : layout === THUMB_AI_LAYOUT
+          ? HEADLINE_AI
+          : layout === THUMB_DRAMA_LAYOUT
+            ? HEADLINE_DRAMA
+            : HEADLINE;
 
 /** Width, height and format from a JPEG or PNG header, or null when it is neither. */
 export function imageSize(bytes) {
@@ -242,8 +282,10 @@ export const CHANNEL_RULES_LOCALE = "zh-TW";
  * (templates.mjs THUMB_SERIES), whose wider column and own headline length apply; without it the
  * channel's rules do: at most six characters, two Latin words, no line break inside a word.
  * `locale` names a locale's own thumbnail (CHANNEL_RULES_LOCALE or null is the video's own).
- * `layout` is the thumbnail's data.layout: the AI look (THUMB_AI_LAYOUT) holds the headline to
- * one line across the frame instead of six characters in the column.
+ * `layout` is the thumbnail's layout as drawn (data.layout, or the drama layout a drama takes
+ * without one): the AI look (THUMB_AI_LAYOUT) holds the headline to one line across the frame
+ * instead of six characters in the column; the drama layout (THUMB_DRAMA_LAYOUT) to one big line
+ * across the frame and at most DRAMA_HEADLINE_MAX characters.
  */
 export function thumbnailChecks({ bytes, headline, title = null, series = null, locale = null, layout = null }) {
   const problems = [];
@@ -265,7 +307,18 @@ export function thumbnailChecks({ bytes, headline, title = null, series = null, 
     const split = headlineSplitWords(own, rule);
     if (split.length) problems.push(`a line break falls inside the word ${split.map(({ word }) => `「${word}」`).join(", ")}; put \\n where a word ends`);
   }
+  if (own && rule === HEADLINE_DRAMA && (locale === null || locale === CHANNEL_RULES_LOCALE)) {
+    const { count } = headlineCount(own);
+    if (count > DRAMA_HEADLINE_MAX) problems.push(`the headline counts ${count} characters; a drama thumbnail reads 4 to ${DRAMA_HEADLINE_MAX} at a glance, so say the episode's clash in fewer`);
+  }
   if (own && rule === HEADLINE_AI && own.includes("\n")) problems.push("the AI look takes the headline on one line: the subject, then the **hook**; remove the line break");
+  if (own && isHeimaoRule(rule)) {
+    if (own.includes("\n")) problems.push("the heimao look takes the headline on one top line (put the second line in sub); remove the line break");
+    if (locale === null || locale === CHANNEL_RULES_LOCALE) {
+      const { count } = headlineCount(own);
+      if (count > HEIMAO_HEADLINE_MAX) problems.push(`the headline counts ${count} characters (a Latin word or a number counts one); the heimao look reads at most ${HEIMAO_HEADLINE_MAX} on one top line, so shorten it`);
+    }
+  }
   if (own && typeof title === "string" && title.trim()) {
     const { shared, ratio } = titleOverlap(own, title);
     if (ratio > TITLE_OVERLAP_MAX) warnings.push(`the headline repeats the title: 「${shared}」 is in the title's first ${TITLE_HEAD_CHARS} characters; say what the title does not`);

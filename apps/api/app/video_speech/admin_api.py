@@ -23,16 +23,19 @@ from uuid import UUID, uuid4
 import httpx
 from fastapi import APIRouter, Depends, Header, Request, Response
 from fastapi.responses import JSONResponse
+from redis.asyncio import Redis
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
+from app.ai import minimax_pool
 from app.ai.jev import (
     VENDOR_MAX_REQUEST_TOKENS,
     JevError,
     JevOutcomeUncertain,
     JevRequestInvalid,
 )
+from app.ai.minimax_pool import fingerprint
 from app.auth.service import AdminUser
 from app.config import Settings
 from app.db import get_session
@@ -41,6 +44,7 @@ from app.models import AdminAuditLog, VideoToolToken
 from app.problems import AppError, app_error_handler
 from app.providers.usage_meter import (
     GEMINI_SPEECH_PROVIDER,
+    MINIMAX_SPEECH_PROVIDER,
     azure_speech_usage_snapshot,
     release_azure_speech_characters,
     reserve_azure_speech_characters,
@@ -62,6 +66,18 @@ from app.video_speech.gemini import (
     gemini_voice,
     speech_text,
 )
+from app.video_speech.minimax import (
+    DEFAULT_MINIMAX_TTS_MODEL,
+    MINIMAX_TTS_MODELS,
+    SYSTEM_VOICES,
+    MiniMaxQuota,
+    MiniMaxSpeech,
+    minimax_voice,
+    quota_url,
+    speed_from_rate,
+)
+from app.video_speech.minimax import VOICE_PREFIX as MINIMAX_VOICE_PREFIX
+from app.video_speech.minimax import speech_text as minimax_speech_text
 from app.video_speech.pairing import (
     PAIRING_TTL_SECONDS,
     POLL_INTERVAL_SECONDS,
@@ -78,6 +94,7 @@ from app.video_speech.schemas import (
     JudgeIn,
     JudgeOut,
     JudgeResult,
+    MiniMaxQuotaOut,
     PairingPollIn,
     PairingPollOut,
     PairingStarted,
@@ -212,8 +229,12 @@ def gemini_usage_cost(
     thoughts = usage.get("thoughtsTokenCount", 0)
     total = usage.get("totalTokenCount")
     if (
-        type(prompt) is not int or type(candidates) is not int or type(thoughts) is not int
-        or prompt <= 0 or candidates < 0 or thoughts < 0
+        type(prompt) is not int
+        or type(candidates) is not int
+        or type(thoughts) is not int
+        or prompt <= 0
+        or candidates < 0
+        or thoughts < 0
     ):
         return None
     output = candidates + thoughts
@@ -222,13 +243,13 @@ def gemini_usage_cost(
     if output <= 0 or prompt > maximum_input or output > maximum_output:
         return None
     if model == PILOT_GEMINI_TTS_MODEL:
-        return (
-            Decimal(prompt) * Decimal("0.50") + Decimal(output) * Decimal("9")
-        ) / Decimal(1_000_000)
+        return (Decimal(prompt) * Decimal("0.50") + Decimal(output) * Decimal("9")) / Decimal(
+            1_000_000
+        )
     if model == PILOT_TRANSCRIBE_MODEL:
-        return (
-            Decimal(prompt) * Decimal("0.75") + Decimal(output) * Decimal("3.75")
-        ) / Decimal(1_000_000)
+        return (Decimal(prompt) * Decimal("0.75") + Decimal(output) * Decimal("3.75")) / Decimal(
+            1_000_000
+        )
     return None
 
 
@@ -488,6 +509,11 @@ async def speech_status(tool: VideoTool, session: Session) -> SpeechStatus:
         redis, gemini_limit, provider=GEMINI_SPEECH_PROVIDER
     )
     gemini_ready = bool(settings.hotspot_guide_gemini_api_key)
+    minimax_limit = settings.video_speech_minimax_monthly_character_limit
+    minimax_usage = await azure_speech_usage_snapshot(
+        redis, minimax_limit, provider=MINIMAX_SPEECH_PROVIDER
+    )
+    minimax_ready = bool(settings.minimax_api_key)
     return SpeechStatus(
         configured=settings.azure_speech_configured,
         region=settings.azure_speech_region,
@@ -502,6 +528,13 @@ async def speech_status(tool: VideoTool, session: Session) -> SpeechStatus:
         gemini_voices=[f"{VOICE_PREFIX}{name}" for name in PREBUILT_VOICES] if gemini_ready else [],
         gemini_monthly_limit=gemini_limit,
         gemini_used=gemini_usage.used,
+        minimax_configured=minimax_ready,
+        minimax_models=list(MINIMAX_TTS_MODELS) if minimax_ready else [],
+        minimax_voices=(
+            [f"{MINIMAX_VOICE_PREFIX}{name}" for name in SYSTEM_VOICES] if minimax_ready else []
+        ),
+        minimax_monthly_limit=minimax_limit,
+        minimax_used=minimax_usage.used,
     )
 
 
@@ -518,7 +551,10 @@ def answer_lost(detail: str) -> AppError:
 
 
 async def _synthesize_with_gemini(
-    payload: SpeechRequest, voice: str, segments: tuple[Segment, ...], settings: Settings,
+    payload: SpeechRequest,
+    voice: str,
+    segments: tuple[Segment, ...],
+    settings: Settings,
     session: AsyncSession,
 ) -> Response:
     """The same contract as Azure's path: WAV back, characters counted against a month."""
@@ -635,6 +671,219 @@ async def _synthesize_with_gemini(
     )
 
 
+async def _minimax_synthesize_pooled(
+    redis: Redis, settings: Settings, text: str, voice: str, model: str, speed: float
+) -> bytes:
+    """Synthesize on the M Plan key the pool picks (app.ai.minimax_pool), holding a lease on it
+    for the call. A key MiniMax refuses for its plan's window or balance (429 or 402) rests and
+    the next key is tried; the last refusal is the one raised. A lost answer is never retried."""
+    tried: set[str] = set()
+    while True:
+        choice = await minimax_pool.choose(
+            redis,
+            settings,
+            lease_seconds=int(settings.video_speech_minimax_timeout_seconds) + 30,
+            wait_for_quota=True,
+            exclude=frozenset(tried),
+        )
+        if choice is None:
+            raise SpeechUpstreamError(401, "MiniMax has no key")
+        speech = MiniMaxSpeech(
+            base_url=settings.minimax_api_base_url,
+            key=choice.key,
+            timeout_seconds=settings.video_speech_minimax_timeout_seconds,
+        )
+        try:
+            return await speech.synthesize(text, voice, model, speed)
+        except SpeechAnswerLost:
+            raise
+        except SpeechUpstreamError as error:
+            if error.status not in (402, 429):
+                raise
+            await minimax_pool.rest(redis, settings, choice.fp, used_up=error.status == 402)
+            tried.add(choice.fp)
+            if len(tried) >= len(minimax_pool.pool_keys(settings)):
+                raise
+        finally:
+            await minimax_pool.release(redis, choice.fp, choice.lease)
+
+
+async def _synthesize_with_minimax(
+    payload: SpeechRequest,
+    voice: str,
+    segments: tuple[Segment, ...],
+    settings: Settings,
+    session: AsyncSession,
+) -> Response:
+    """The same contract as Gemini's path, on the site's MiniMax key (image-01's).
+
+    Whether MiniMax charges an M Plan subscription or a pay-as-you-go balance depends only on
+    the stored key, so no price is known here: a pilot film, whose every paid call needs one,
+    is refused before the call, as Azure's are.
+    """
+    key = settings.minimax_api_key
+    if not key:
+        raise AppError(
+            503,
+            "video_speech_not_configured",
+            "網站的 MiniMax 金鑰還沒設定：請在「AI 設定 → API 金鑰」填 MiniMax 金鑰",
+        )
+    if not voice:
+        raise AppError(422, "video_speech_voice_not_allowed", "MiniMax 聲音代號的格式不對")
+    if payload.style is not None:
+        raise AppError(
+            422,
+            "video_speech_style_not_supported",
+            "MiniMax 語音不吃 style 文字；語速用 rate，或改用 Gemini 聲音",
+        )
+    model = payload.model or DEFAULT_MINIMAX_TTS_MODEL
+    if model not in MINIMAX_TTS_MODELS:
+        raise AppError(
+            422,
+            "video_speech_model_not_allowed",
+            f"MiniMax 語音模型只能是 {'、'.join(MINIMAX_TTS_MODELS)}",
+        )
+    text = minimax_speech_text(segments)
+    if not text:
+        raise AppError(422, "video_speech_rejected", "這段沒有可以念的文字")
+    characters = len(text)
+    await reserve_pilot_call(
+        session, payload, category="speech_tts", provider="minimax", model=model, max_usd=None
+    )
+    limit = settings.video_speech_minimax_monthly_character_limit
+    redis = get_redis()
+    if not await reserve_azure_speech_characters(
+        redis, characters, limit, provider=MINIMAX_SPEECH_PROVIDER
+    ):
+        raise AppError(
+            429,
+            "video_speech_budget_exhausted",
+            f"本月的 MiniMax 語音字數預算（{limit} 字）不夠這次的 {characters} 字；"
+            "可調高 VIDEO_SPEECH_MINIMAX_MONTHLY_CHARACTER_LIMIT，或等下個月",
+        )
+    try:
+        audio = await _minimax_synthesize_pooled(
+            redis, settings, text, voice, model, speed_from_rate(payload.rate)
+        )
+    except SpeechAnswerLost as error:
+        # MiniMax may have narrated, and charged, this text, so its characters stay counted.
+        raise answer_lost(
+            "MiniMax 可能已合成這段語音，但回答沒有送回來；字數已計入本月預算，請勿自動重送"
+        ) from error
+    except SpeechUpstreamError as error:
+        # A refusal carries no audio and MiniMax charges only what it synthesized.
+        await release_azure_speech_characters(redis, characters, provider=MINIMAX_SPEECH_PROVIDER)
+        if error.status == 429:
+            raise AppError(
+                429,
+                "video_speech_upstream_busy",
+                "MiniMax 語音暫時忙碌，或訂閱方案這個時段的額度用完了，請稍後重試",
+                headers={"Retry-After": error.retry_after or "60"},
+            ) from error
+        if error.status == 401:
+            raise AppError(
+                502,
+                "video_speech_upstream_rejected_key",
+                "MiniMax 拒絕了網站的金鑰（語音要用 M Plan 訂閱金鑰或有餘額的 API 金鑰）",
+            ) from error
+        if error.status == 402:
+            # The tool reads this code as settled (nothing ran) and the owner's to fix, which
+            # is what a plan or balance refusal is; a new 502 code would read as possibly paid.
+            raise AppError(
+                502,
+                "video_speech_upstream_rejected_key",
+                "MiniMax 的訂閱方案或餘額付不了這次語音（方案不含這個模型、額度或餘額不足）",
+            ) from error
+        if error.status == 400:
+            raise AppError(
+                422,
+                "video_speech_rejected",
+                "MiniMax 無法用這個聲音或模型合成這段內容",
+            ) from error
+        raise AppError(502, "video_speech_upstream_failed", "MiniMax 語音暫時無法使用") from error
+    return Response(
+        content=audio,
+        media_type="audio/wav",
+        headers={"X-Billable-Characters": str(characters), "Cache-Control": "no-store"},
+    )
+
+
+# A read that costs nothing, but each one is a request on the owner's MiniMax account.
+QUOTA_REQUESTS_PER_MINUTE = 6
+
+
+@speech_router.get("/speech/minimax/quota", response_model=MiniMaxQuotaOut)
+async def minimax_quota(tool: VideoTool, session: Session) -> MiniMaxQuotaOut:
+    """What is left of the owner's MiniMax M Plan, as MiniMax reports it right now."""
+    await enforce_named_rate_limit(
+        "video_minimax_quota",
+        str(tool.id),
+        limit=QUOTA_REQUESTS_PER_MINUTE,
+        window_seconds=60,
+        retry_after=True,
+    )
+    settings = await load_runtime_settings(session)
+    # The settings read opened a transaction; return its connection before waiting on MiniMax.
+    await session.commit()
+    key = settings.minimax_api_key
+    if not key:
+        raise AppError(
+            503,
+            "video_speech_not_configured",
+            "網站的 MiniMax 金鑰還沒設定：請在「AI 設定 → API 金鑰」填 MiniMax 金鑰",
+        )
+    url = quota_url(settings.minimax_api_base_url)
+    quota = MiniMaxQuota(
+        base_url=settings.minimax_api_base_url,
+        key=key,
+        timeout_seconds=settings.video_speech_minimax_timeout_seconds,
+    )
+    try:
+        remains = await quota.remains()
+    except SpeechUpstreamError as error:
+        if error.status == 429:
+            raise AppError(
+                429,
+                "video_speech_upstream_busy",
+                "MiniMax 暫時忙碌，請稍後再查額度",
+                headers={"Retry-After": error.retry_after or "30"},
+            ) from error
+        if error.status == 402:
+            raise AppError(
+                502,
+                "video_speech_upstream_rejected_key",
+                "這把 MiniMax 金鑰沒有生效中的 M Plan 訂閱"
+                "（按量計費的 API 金鑰查不到訂閱額度，要用 M Plan 金鑰）",
+            ) from error
+        if error.status == 401:
+            raise AppError(
+                502,
+                "video_speech_upstream_rejected_key",
+                "MiniMax 拒絕了網站的金鑰",
+            ) from error
+        raise AppError(
+            502, "video_speech_upstream_failed", "MiniMax 額度暫時查不到，請稍後重試"
+        ) from error
+    accounts: list[dict[str, Any]] = [{"index": 1, "key": fingerprint(key)[-4:], "quota": remains}]
+    for index, other in enumerate(minimax_pool.pool_keys(settings)[1:], start=2):
+        entry: dict[str, Any] = {"index": index, "key": fingerprint(other)[-4:]}
+        try:
+            entry["quota"] = await MiniMaxQuota(
+                base_url=settings.minimax_api_base_url,
+                key=other,
+                timeout_seconds=settings.video_speech_minimax_timeout_seconds,
+            ).remains()
+        except SpeechUpstreamError as error:
+            entry["error"] = f"HTTP {error.status}"
+        accounts.append(entry)
+    return MiniMaxQuotaOut(
+        checked_at=datetime.now(UTC),
+        host=httpx.URL(url).host,
+        quota=remains,
+        accounts=accounts,
+    )
+
+
 @speech_router.post("/speech")
 async def synthesize_speech(payload: SpeechRequest, tool: VideoTool, session: Session) -> Response:
     _ = tool
@@ -658,6 +907,9 @@ async def synthesize_speech(payload: SpeechRequest, tool: VideoTool, session: Se
     voice = gemini_voice(payload.voice)
     if voice is not None:
         return await _synthesize_with_gemini(payload, voice, segments, settings, session)
+    minimax = minimax_voice(payload.voice)
+    if minimax is not None:
+        return await _synthesize_with_minimax(payload, minimax, segments, settings, session)
     if not (
         settings.azure_speech_configured
         and settings.azure_speech_key
@@ -767,7 +1019,8 @@ async def transcribe_narration(
         provider="gemini",
         model=settings.gemini_model,
         max_usd=PILOT_TRANSCRIBE_MAX_USD
-        if settings.gemini_model == PILOT_TRANSCRIBE_MODEL else None,
+        if settings.gemini_model == PILOT_TRANSCRIBE_MODEL
+        else None,
     )
     usage: dict[str, Any] = {}
     try:
@@ -781,9 +1034,7 @@ async def transcribe_narration(
                 usage_out=usage,
             )
         else:
-            text = await transcribe(
-                settings, wav, terms=payload.terms, language=payload.language
-            )
+            text = await transcribe(settings, wav, terms=payload.terms, language=payload.language)
     except CheckUnavailable as error:
         if reserved:
             await finish_pilot_call(session, payload, no_charge_reason="transcriber_unconfigured")

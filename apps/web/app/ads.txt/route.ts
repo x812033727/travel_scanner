@@ -41,16 +41,20 @@ async function configuredPublisherId(): Promise<string | null> {
   }
 }
 
+const ADS_TXT_HEADERS = {
+  "Content-Type": "text/plain; charset=utf-8",
+  // Google re-reads ads.txt about once a day, so an hour is nothing to a change of id and
+  // everything to a crawl that lands during a blip: whatever sits between the crawler and
+  // this server may serve its copy rather than wait on the API. The article pages read
+  // the same configuration through a one-minute cache, so the two stay within an hour.
+  "Cache-Control": "public, max-age=3600",
+} as const;
+
 export async function GET(): Promise<Response> {
   const publisherId = (await configuredPublisherId()) ?? ADS_TXT_FALLBACK_PUBLISHER_ID;
-  return new Response(`${adsTxtLine(publisherId)}\n`, {
-    headers: {
-      "Content-Type": "text/plain; charset=utf-8",
-      // Google re-reads ads.txt about once a day, so an hour is nothing to a change of id and
-      // everything to a crawl that lands during a blip: whatever sits between the crawler and
-      // this server may serve its copy rather than wait on the API. The article pages read
-      // the same configuration through a one-minute cache, so the two stay within an hour.
-      "Cache-Control": "public, max-age=3600",
-    },
-  });
+  return new Response(`${adsTxtLine(publisherId)}\n`, { headers: ADS_TXT_HEADERS });
+}
+
+export async function HEAD(): Promise<Response> {
+  return new Response(null, { status: 200, headers: ADS_TXT_HEADERS });
 }

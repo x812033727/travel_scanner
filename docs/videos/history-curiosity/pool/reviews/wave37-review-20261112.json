@@ -1,0 +1,529 @@
+{
+  "batch": "batches/wave37-20261112.json",
+  "reviewed_on": "2026-11-12",
+  "method": "四位沒有參與研究的覆核代理（R371：D1；R372：D2；R373：D3；R374：D4）逐題至少重開一個關鍵來源、每個關鍵字跑一次素材池搜尋並 grep 批次檔去重、對照系列不收清單與 8 分鐘門檻；修改直接寫進批次的題目欄位，覆核新讀的來源編入該研究代理的來源序號。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 18,
+    "NEEDS_CHECK": 2
+  },
+  "source_renames": {
+    "R371-S001": "D1-S027",
+    "R371-S002": "D1-S028",
+    "R371-S003": "D1-S029",
+    "R371-S004": "D1-S030",
+    "R371-S005": "D1-S031",
+    "R371-S006": "D1-S032",
+    "R371-S007": "D1-S033",
+    "R373-S001": "D3-S028",
+    "R373-S002": "D3-S029",
+    "R373-S003": "D3-S030",
+    "R373-S004": "D3-S031",
+    "R373-S005": "D3-S032",
+    "R373-S006": "D3-S033",
+    "R374-S001": "D4-S034",
+    "R374-S002": "D4-S035",
+    "R374-S003": "D4-S036"
+  },
+  "verdicts": [
+    {
+      "id": "N3681",
+      "agent": "D1",
+      "reviewer": "R371",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D1-S003 https://archive.org/details/questionofliving614roys（metadata 所列 djvu.txt，pp.179–198 全讀）；另重開 D1-S001 therelivingbactno58lipm（pp.1–3、17–19）、D1-S002 livingbacteriaano64farr（全文）、D1-S004／D1-S005（loc.gov 搜尋 → 頁面 fo=json 所列 fulltext_service）；新讀 D1-S027《Washington Times》1933-01-31",
+      "reopen_result": "頁面上確實寫了：Roy『started in the spring of 1933 and was completed in the summer of 1935』、Department of Hygiene and Bacteriology of the University of Chicago；卵石『Growth developed in two of the eight tubes』『identical with those of the control plate』；隕石『three of the twelve tubes』、B. subtilis 與 Staph. albus，『two of the three control plates』長出同樣兩種；Lipman 388 號『flamed for twenty seconds』、Roy 稱『a glaring contradiction』；Johnstown『some twenty-six stones』『only three were seen to fall』『not picked up for days or months』；Forest City 那塊是另一顆『three-quarters crusted』、47.14 g，吸水 1.77%；Field Museum『there is not one stone meteorite even one-fourth the size of those Lipman used which is completely crusted』；Hudson『appear to be those most frequently met as contaminants in laboratories』；Roy 致謝 Lipman 提供培養基說明。Farrell『a flight of imagination through space』、『one of the sixteen meteorites』、『8 to 65 years』、『(page 17) ... some foreign bacteria were found as contaminants』。Lipman 六條反對與答覆逐字相符。美聯社 2 月 4 日開頭逐字相符；但國際新聞社 1 月 31 日柏克萊電訊已上《Washington Times》頭版。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep pool.json、batches/*.json（含 not_added）、原來如此事務所 pool.json 與同批 D2–D4，Lipman、meteorite bacteria、living bacteria、Johnstown、Sharat、Farrell 都沒有同案（Farrell 只命中國會的 Farrelly）；cli.mjs search 回『Index is stale』，依說明不重建、以 grep 為主。前提成立、四個轉折都在原文。改正：『最早反駁的人』刪掉『最早』（Farrell 自己說別的實驗室已經重現失敗）；補 Farrell 抓到 Lipman 自己承認最後一組也有污染菌；補 Roy 指出全殼大標本本身就可疑、培養基是 Lipman 給的；泡水那塊 Forest City 是另一顆 47 克的；Hudson 的話是『看來正是』；新增國際新聞社早四天的電訊與它說 Lipman『沒下結論』的誤報。Kelvin、Helmholtz 卒年已在搜尋結果連到的頁面確認，可入畫。事實約 18 條，8–10 分鐘。"
+    },
+    {
+      "id": "N3682",
+      "agent": "D1",
+      "reviewer": "R371",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D1-S029 https://archive.org/details/comptes-rendus-hebdomadaires-academie-des-sciences_1881-11-07_93_19（Meunier pp.737–738）；D1-S028 https://archive.org/details/popularsciencere1618unse（Flight 原刊 pp.390–396）；另重開 D1-S007 Nature 1871-08-03、D1-S008 Nature 1875-01-14、D1-S010／D1-S012 重排本，新讀 D1-S030 CR 1880-02-23",
+      "reopen_result": "頁面上確實寫了：Meunier 1881『un argument décisif contre l'illusion de divers observateurs qui, à l'exemple de M. Otto Hahn, de Tubingen, attribuent à ces faisceaux cristallins ... une origine organique. Pour eux, ce sont autant de crinoïdes et de spongiaires : il est bon de noter que ces prétendus fossiles prennent naissance, avec tous leurs caractères, dans un tube de porcelaine chauffé au rouge』。Meunier 1880-02-23 想做『une sorte de givre dont la substance fût ... du bisilicate de magnésie』，沒提 Hahn。Flight 原刊（PSR New Series vol. I no. IV）與重排本一致：Helmholtz 1871 春 Heidelberg、Cologne；Zöllner 稱 Thomson 的命題『unscientific』；Helmholtz『the interior remaining cold—often very cold』與『possibilities which are not yet to be taken as probabilities』；Plymouth 會長是 Allen Thomson，William Thomson 在分組會上講；Colorado Beetle『irresistibly funny』；『Nothing bearing the semblance of a plant or even of its seed has as yet been met with in a meteorite』。Nature 1871『moss-grown fragments ... not unscientific』、『countless seed-bearing meteoric stones』；Nature 1875『at a somewhat earlier date than Sir W. Thomson ... spring of the same year, but is still unpublished』『the inner portions remaining cold, or even very cold』。Vogt 重排本：『Vers la fin de 1880』、圖說『Bras de Crinoïde Hahnien』『Corail Hahnien』、Meunier『chauffé au rouge sombre』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep 池與批次（含 not_added）、原來如此事務所與 D2–D4，Hahn、Orgueil、Knyahinya、Meunier、Vogt、Karsten、panspermia／胚種、球粒都沒有隕石化石題（Hahn 命中的是 NMR 的 Erwin Hahn；Meunier、Vogt、Karsten 都是別人）；最近的是 N3185 Bathybius（不同物件、同屬『非生物造出像生物的形狀』），只建議系列排序。來源性質：Hahn 1880、Karsten 1881、Vogt 1882、Flight 1877 四份都是 Solar Anamnesis 的現代重新排版本（LaTeX 重打、CC0），不是掃描，頁碼不能當原書頁碼。覆核用 archive.org advancedsearch 找原刊：Flight 找到 NHM 掃描的 Popular Science Review 1877 並逐字對過，換成 D1-S028；Hahn、Karsten、Vogt 找不到原書掃描（advancedsearch 只回重排本，網頁搜尋只到 Wikipedia 與 2014 年部落格，BHL 被機器驗證擋），所以三份降為『據現代重排本』、不標頁碼、不放進鉤子。核心轉折改由原刊撐：Meunier 1881 年《Comptes rendus》直接點名 Hahn、說這些化石在『燒到紅熱的瓷管』裡長得出來。研究稿的『試管』改成瓷管；『Vogt 收到剛從試管取出的霜』刪；Plymouth 那段補上是 Allen Thomson 的會長演說先提、W. Thomson 在分組會講；補 Helmholtz 自己的保留。Kelvin、Helmholtz、Hahn、Vogt 卒年都在可讀頁面確認，可入畫。事實約 16 條，8–10 分鐘。"
+    },
+    {
+      "id": "N3683",
+      "agent": "D1",
+      "reviewer": "R371",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "D1-S018 https://archive.org/details/lifelikeformsinm108ande（metadata 所列 djvu.txt：Lynch p.341、Fitch & Anders pp.495–510、Claus, Nagy & Europa pp.580–605）；另重開 D1-S016 CR 1864-07-04（Cloëz pp.37–38）、D1-S015 CR 1864-05-30（Daubrée）",
+      "reopen_result": "頁面上確實寫了：Lynch『Dr. Nagy and his co-workers ... have adequately ruled out the possibility of their origin by contamination since the meteorite fell to Earth』；Fitch & Anders『about 1700 organized elements per milligram』『common ragweed pollen grains』『actually a juniper pollen grain』，小圓粒『undoubtedly indigenous to the meteorite』但『most likely grains of minerals』，結論『It may well be that life did exist in meteorites, but we feel that the present evidence is not adequate』。研究稿沒寫的：Claus, Nagy & Europa『2 samples of the Orgueil meteorite were recently obtained from the Montauban Museum (through the courtesy of A. Cavaille) ... kept under glass jars; however, they were not stored in a sterile environment』，『identical organized elements』，被說成豚草花粉的那一種『was also found to be present in the Montauban sample. Ragweed (Ambrosia) is a native American plant. It was introduced to Europe only in the early part of the twentieth century』。Cloëz『une substance humique d'origine organique』『il ressemble à s'y méprendre à la matière humique de certains combustibles terreux』、Berzelius 一句逐字相符；Daubrée『certains lignites ternes et terreux』『une simple pluie suffit』相符。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：grep Orgueil、Montauban、Cloëz／Cloez、ragweed／豚草、Nagy（只命中 legacy 批次別的人）在池、批次與原來如此事務所都沒有；U41 ALH84001 是不同隕石、不同答案。前提的 1864 年與 1962–63 年部分都在原文；覆核補上研究稿漏讀的最大轉折：主張化石的一方 1962 年就拿 Montauban 玻璃罐裡的樣本當『不是污染』的證據。仍待查：騙局本身（種子、膠、煤粉、燈心草、1964 或 1965）只有 Museum of Hoaxes 與 Wikipedia 的摘要；覆核另搜 Anders 等 1964《Science》與 Gounelle & Zolensky 2014 全文，Science 付費、ISTEX 要登入、亞利桑那大學兩個頁面 403，都沒繞過。補到其中一份原文即可改 screened。"
+    },
+    {
+      "id": "N3684",
+      "agent": "D1",
+      "reviewer": "R371",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D1-S023 https://archive.org/details/sim_popular-astronomy_1925-12_33_10（metadata 所列 djvu.txt，Maggini pp.629–638）；另重開 D1-S022 sim_popular-astronomy_1924-02_32_2（pp.69–78）；新讀 D1-S033 RAS",
+      "reopen_result": "頁面上確實寫了：Pickering『a period of four months』『southern wall ... 29 x 37 miles』、『It is perfectly obvious that terrestrial vegetation could not exist on the Moon, and probably not on Mars. But something does nevertheless undoubtedly exist on both』、『mineral, vegetable, or animal. We can conceive of nothing else』、『only an oasis upon the Moon』、『55 different plats have been identified』、表中 Bluebell、Buttercup、Crocus；落款 Mandeville, Jamaica, December 4, 1923。Maggini『autumn of 1921』、Florence 與 Catania、『able to identify nearly all the regions observed by Professor Pickering』、『the two observers have seen in the same manner』、『I do not hesitate in finding a common origin: an optical one』、『the eye of the observer, who always wishes to see something』、『the most important role is played by our own eye』、兩塊亮區之間的暗線；但研究稿漏了同一篇後段：『we do not intend to completely deny the existence of these dark trails upon our satellite; most probably Main is a physical line and perhaps Cross and Laurel run』。RAS：Born 1858-02-15、Died 1938-01-16。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：Pickering 在池裡只出現在 E. C. Pickering 與 W. H. Pickering 的火星信號、鏡子通訊題（N3362、N2803 等，wave15／19／26／33），Eratosthenes、Maggini、月球植物都沒有。事實改正：Maggini 講的是月面的『線』（runs）與火星運河同為光學，不是說斑點或整件事都是錯覺，而且他承認 Main 大概是真的線——研究稿的問題寫成『這正好證明是眼睛造出來的』說過頭，已改；『五十多個』改成原文的 55；『出現又消失』改成『變大變小、移動位置』。長度：只有 3–4 分鐘。N141（火星運河）是 8–11 分鐘、狀態『入選』的單集，沒有進任何題案；接上去要不超過 13 分鐘就得把 N141 壓到 9 分鐘以下，和 N2022 一樣要站主決定，在那之前建議轉 Shorts。兩個轉折（自己寫了反對理由仍堅持；照畫得一樣卻說是眼睛）都在原文。"
+    },
+    {
+      "id": "N3701",
+      "agent": "D2",
+      "reviewer": "R372",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D2-S001 https://archive.org/download/proceedingsofsoc12soci/proceedingsofsoc12soci_djvu.txt（先叫 metadata 看到檔案清單，下一次呼叫才下載；pp.45–58）；另重開 D2-S003 Lang 1898（pp.353–358）、D2-S005 SPR 第一卷（pp.101、105–106、114–115）、D2-S004 SPR 第十七卷（pp.305–306、327）",
+      "reopen_result": "頁面上確實寫了：1883 報告『at the request of the Haunted House Committee, I went down to Worksop on the afternoon of Saturday, April 7th』、七位主要證人、Higgs/Currass/White 簽名；『most of the educated people in Worksop believe White himself to have caused the disturbance』；『it is hard to conceive by what mechanical appliances, under the circumstances described, the movements could have been effected』；『nearly £9』；『After her departure nothing whatever of an abnormal character took place』。Higgs 筆錄：basin『got up into the air, turning over and over… not as quickly as if it had been thrown. When it reached the ceiling it fell plump and smashed』。1896：『If my verdict on the Worksop disturbances in 1896 differs from that which I gave in 1883, it is because many things have happened since, which have taught us to discount testimony』、『Nor do I see reason now to question my original estimate of their intelligence and good faith』、『a too sympathetic reporter』、『It would be idle… to speculate on the real cause』、『she was regarded by White himself as the prime cause』、Coulter 腳註『did not at the time sufficiently realise its importance, and came to the conclusion that the man was telling a deliberate falsehood』。Lang：報紙『really March 9』、Higgs 3 月 3–8 日證詞『The basin flew up into the air obliquely, went over the doctor's head, and fell at his feet in pieces』『I had not the slightest belief in anything appertaining to the supernatural』、『The girl was eighteen years of age, was looking for a place as servant』、『as White thought she was the agent, so she suspected White』；『quite inexplicable by ordinary mechanical means』註明出自 Studies in Psychical Research p.140。1882 委員會：『perhaps more commonly than not… blunted and toned down by repetition』、『Ghosts, like aerolites, seem to be no respecters of persons』。1903（Part XLV, February 1903）：『keep a door open for some other undiscovered cause』；Podmore『tolerably commonplace』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json、batches/*.json（含 not_added）、topics-fg.json 都 grep 不到 Worksop、Eliza Rose；Podmore 只出現在 N941、N1041、N1042、N1642、N2983、N3643，答案都不同（wave28 Q2-S014 用同一篇 Podmore 論文寫的是 Resau）。CLI search 回 Index is stale，未重建，以 grep 為主。前提成立，兩個轉折都在原文：同一人 1896 年改判（並自稱『太同情的記錄者』）、Lang 翻出的案發後一週內報紙臉盆飛法不同。改正：鉤子『相反的結論』過頭（1896 年他明寫不懷疑證人的誠意），改『不同的判決』；1882 原句是『perhaps more commonly than not』，補『也許多半』；『普通機械方法完全無法解釋』是 Lang 引 Podmore 1897 年的書，不是 1883 年報告；報紙證詞是 3 月 3–8 日，不是『案發當週』；補上懷疑女孩最早出自 White、女孩也懷疑 White，scope 寫明只說『Podmore 後來懷疑』、不畫可辨識的她。片長 9–11 分鐘照舊。"
+    },
+    {
+      "id": "N3702",
+      "agent": "D2",
+      "reviewer": "R372",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D2-S008 https://archive.org/download/IAPSOP-annales_des_sciences_psychiques_v2_1892/IAPSOP-annales_des_sciences_psychiques_v2_1892_djvu.txt（pp.208–223、338–340）；另重開 D2-S009 1893 續篇（pp.65–83）、D2-S010 Flammarion 1924（章首與 pp.126–128）",
+      "reopen_result": "頁面上確實寫了：Morice 1891 年 7 月信『racontés par le propriétaire même du château, jour par jour』『une copie exacte de ce journal qui se compose d'une trentaine de pages』『M. de X. ayant vendu son château à la suite de tout cela』；屋主 8 月 3 日『remplacer par X tous ceux』；Morice『supprimer des détails que nous jugeons moins importants』；日記『semblables à ceux de 1867』『il n'y avait aucune trace de pas… J'ai tendu secrètement des fils à toutes les ouvertures : ils n'ont jamais été brisés』；10 月 13 日 M. l'abbé（précepteur）房裡『papier gommé』，abbé『entend et il croit voir son fauteuil se promener : il n'ose se lever, et sonne』，屋主進門『changé de place d'au moins un mètre』；摘要『A partir de ce moment les phénomènes ont cessé. Nous sommes au 29 janvier 1876』；屋主 8 月 6 日『le résumé complet, bien qu'abrégé』；馬『il y a un peu de vrai』『25 ou 30 années』；Morice 11 月 7 日『parfaitement certain que les phénomènes ont cessé après les exorcismes』『toujours son revolver sur lui』。Dariex 年末：『continués, avec beaucoup d'intensité, encore pendant quinze jours』『faits à la date du 14 janvier 1876』『pendant plus de 50 ans』『cette petite inexactitude due à une erreur de date; nous le faisons sans commentaires』。1893：日記末句『Nous avons fait dire une neuvaine de messes à Lourdes ; le Révérend Père a fait les exorcismes et tout a cessé』；Morice『le 14 ou le 15 janvier』『à la fin d'août et surtout en septembre』；後任神父信裡家具成『fer à cheval』、上鎖的風琴；Mme Le N. des V.『je n'avais pris que des notes très succinctes』『Je ne sais si le manuscrit de M. de X... est celui de l'abbé, revu et complété par lui, ou s'il y en avait deux』『je ne puis vous apporter le degré de certitude absolue』『J'écrivis au maire pour… connaître le nom de son propriétaire』；續篇稱兒子『Maurice』。Flammarion：『published in the Annales… of 1893』，稱讚屋主的話歸 Dariex，日記末句後加『(See below p. 128)』，p.128 印 Morice 信『By itself, the ceremony of exorcism yielded no result』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：Dariex、Calvados、château de T、Noyers、Lescaudey 在 pool.json、batches（含 not_added）、topics-fg.json 都 grep 不到；pool 的 Morice 是 H31 熱沃當的 Moriceau。最近的 N2867 Cideville、N801、N1041 答案不同。宗教界線：驅邪只當日期標記，Dariex 自己就『不加評論』把判斷交給讀者，照 N2863 Botathen 的前例可收；scope 改寫明不說『儀式失敗』、不描述程序、Lourdes 只一句。改正三處事實：(1) Mme Le N. des V. 不是『在場的女士』——她自承只有簡略筆記、給不出確定、還要寫信問鎮長屋主是誰，題目刪掉這一句、答案改成轉述；(2) Flammarion 不是『照樣印出』就算——他在末句後加『見下文』並印了 Morice 的更正，誤植的是年份與引語歸屬；(3) 膠紙實驗那晚是神父一人在房裡『以為看到』椅子在走，屋主是事後進門看到移位。另補：1891 年第一封信就說屋主因此賣了城堡；原文開頭就有 1867 年前事（D2-S012 的 1867 不全是杜撰）；續篇漏出兒子名 Maurice。兩個轉折成立：主編同年更正日期、續篇說 8–9 月再起與搬家。8–10 分鐘照舊。"
+    },
+    {
+      "id": "N3703",
+      "agent": "D2",
+      "reviewer": "R372",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D2-S013 https://archive.org/download/modernspirituali00capr/modernspirituali00capr_djvu.txt（pp.132–147）；另重開 D2-S014 Davis 1851（pp.46–48）、D2-S016 https://the-line-up.com/phelps-mansion",
+      "reopen_result": "頁面上確實寫了：『I have been allowed to examine all the records kept of the occurrences by Dr. Phelps』；3 月 10 日『Being left alone the doctor armed himself, and, selecting a secluded position, awaited the return of the burglars. There was no disturbance during the afternoon ; no sound of footfall ; all remained quiet』，家人回來後才見『a nightgown and chemise laid out with the arms folded across the breast… to represent… a corpse』；11 日傘『at least, twenty-five feet』、Phelps『There were times when they came from such directions that they might have been thrown by some person in the house』、夫婦去 Bridgeport 期間『mourning crape… mirrors… covered』、『The crape on the door Dr. Phelps did not see』；退休牧師『firmly of the opinion that the occurrences were produced… through the agency of the girl』『satisfied, before the close of the second day』『nearly three weeks』；14 日『the first images were found』；15 日『Henry, a lad then eleven and a half years of age』；16 日『numbering in all eleven or twelve』『all but one, represented females in the attitude of devotion, some having Bibles』『It does not appear that any of these images were seen in the process of construction』；『On the 26th of March Anna left… on the third of April Harry also left. No manifestations took place while both were away』。開頭家庭成員寫『the eldest a daughter aged sixteen, a son of twelve years』。Davis：『(though invariably subsequent to the arrangement,)』『a young girl and her brother』『it is consistent with reason to believe, that almost every thing developed in that house, could have been caused… by the concerted plans and inventions of some members of the family』『the only inference is… an invisible intelligence』。The Line Up：『On a Sunday in late March』，Phelps 讓家人去下午禮拜、自己等，『his dining room was filled with eleven women』、『moved away in 1858』『demolished in 1974』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：Stratford 在池中只出現於 N2604（莎士比亞偽作）、N3045（Defoe 地名）；Phelps 只在 wave26 K1-S027（Winthrop 書目）與 QWERTY 的 Hughes-Phelps；Capron 是 N3441 的 J. Rand Capron（另一人）。G01 福克斯姊妹答案不同。前提成立，覆核找到比研究稿更強的轉折：Capron 寫 3 月 10 日下午 Phelps 持械留守『整個下午沒有任何動靜』，正好推翻 The Line Up『留守的牧師走進餐廳看見十一個女人』，改為主轉折與鉤子；The Line Up 說的是『3 月底某個星期天』，研究稿寫『第一個星期天』不精確，已改。另補 Phelps 自己承認『有些可能是屋裡某人丟的』、黑紗與鏡子發生在 Phelps 夫婦外出時；Harry 年紀書中前後寫 12 與 11 歲半，片中用後者並在 scope 寫明。兩個轉折：留守那個下午什麼都沒發生；姊弟都離家時無現象＋Davis 的讓步。8–10 分鐘照舊。"
+    },
+    {
+      "id": "N3704",
+      "agent": "D2",
+      "reviewer": "R372",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D2-S017 https://archive.org/download/sim_university-magazine_1877-12_90_540/sim_university-magazine_1877-12_90_540_djvu.txt（目錄與 pp.692–701）；另重開 D2-S018 SPR 第二十五卷（pp.390–395）；卒年另從 WebSearch 結果連到的 https://psi-encyclopedia.spr.ac.uk/articles/william-f-barrett/ 確認",
+      "reopen_result": "頁面上確實寫了：目錄『The Demons of Derrygonelly. By Professor Barrett, Royal College of Science, Dublin … 692』（OCR 作『Postion Barrett, thant College』）；燭光與 Holtz 電機『on his opening the laboratory door the noisy discharges instantly ceased』；『Knock the number of fingers I have open』，三、五、（第三次只寫 correctly rapped）、六，『one in ten thousand』；『My poor wife… died in March last… On Good Friday night, just three weeks after her death』；『we are Methodists, sir, and believed the Bible would do more good. A class leader one day told us to lay the Bible on the bed』、『tore seventeen pages』；鄰居的燈『got the priest to dip it into holy water』；『The next occasion I visited the house nothing occurred』、『the president of one of our learned societies… not so loudly manifested as previously』；Epworth 註『had been read by the children of both the American and Irish farmer (in the latter case I found this supposition was correct)』；補記『The disturbances is still going on, we hear it some nights, about once in three weeks… I hope it is going away』『feebler and less frequent』『the more persistently the noises are disregarded the less troublesome they are』；『this lurking mystery that yields neither to holy water nor scientific inquiry』。全文沒有調查者讀經或禱告。1911：『No report of this case has yet appeared in our Proceedings, and I can only briefly summarize it here』；Plunkett 邀他、第一晚『a large pebble fell in my presence on to the bed』；Close『With him a day or two later』，手指測試在『The following night』『four times in succession』、『some telepathic rapport』；讀經與『when the Lord's Prayer was joined in by all, a profound stillness fell』；『I am afraid this does not sound a very scientific account, but it is a veracious one』；『the poltergeist had fled from that night onwards… feebly and furtively, but whether genuine or Maggie's Irish desire to please the visitors』；Close 腳註『died a few years ago… Journal S.P.R. for November, 1903』。Psi Encyclopedia：『Barrett died in London on 26 May 1925』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：Derrygon、Maxwell Close 在 pool.json、batches（含 not_added）、topics-fg.json 都 grep 不到；pool 的 Barrett 都是別人（N429 康伯米爾照片、N2603、N2821 書目）。前提成立而且更強。改正：研究稿說 1877 年文章『沒具名、作者依 1911 自述』錯——目錄署名 Professor Barrett；『全文沒有讀經或禱告』要限定為『沒有調查者讀經禱告』，1877 年就有農家照領班建議把聖經放床上、聖水燈，已寫入並在 scope 定界線。新增轉折：1911 年不只加了禱告，還刪掉空手而回的第二次造訪、把手指測試挪到 Close 同行的另一晚、多了一顆石子；1877 年註裡 Barrett 自己查到孩子讀過 Epworth 的故事；1911 年他自己猜後來的微弱敲擊可能是 Maggie 想討好訪客（scope 規定只引一次、不把她說成作假者）。宗教界線：只講版本差，不評禱告、聖經、聖水效力，可收。8–10 分鐘照舊。"
+    },
+    {
+      "id": "N3705",
+      "agent": "D2",
+      "reviewer": "R372",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "D2-S022 https://archive.org/download/proceedingsofsoc08soci/proceedingsofsoc08soci_djvu.txt（前言與 pp.313–322）；另重開 D2-S023 https://psi-encyclopedia.spr.ac.uk/articles/cheltenham-ghost、D2-S024 https://higgypop.com/hauntings/garden-reach，並 WebSearch 找第二個『從照片認出』的可讀出處",
+      "reopen_result": "頁面上確實寫了：Myers 前言『received in December, 1884, from Mr. J. W. Graham… had written this account out from memory』『This account, and Miss Morton's letters to Miss Campbell, which begin with the first appearance of the figure, are the earliest written records』『on May 1st, 1886, he permitted me to call』『her narrative has received no accretions since I first heard it. The name Morton is substituted for the real family name』；『myself, then aged 19』『not until the following June that I first saw the apparition』『about half a dozen times』；『fastening strings with marine glue』『from 6 inches to the height of the banisters, about 3 feet』『I have twice at least seen the figure pass through the cords』；『at Mr. Myers's suggestion, I kept a photographic camera constantly ready… I got no result』；『on every occasion when we had made special arrangements to watch for it, we never saw it』；『Although none of us had ever seen the second Mrs. S., several people who had known her identified her from our description. On being shown a photo-album… I picked out one of her sister as being most like that of the figure, and was afterwards told that the sisters were much alike』；『Up to about 1886 it was so solid and life-like』；結尾她說寫作參考了『journal letters written at the time』。Psi Encyclopedia：『The apparition was tentatively identified by Despard from a photograph as Imogen Swinhoe』，同頁也寫『Deliberate attempts to watch out for the figure never succeeded』。HiggyPop 只寫『it's believed to be her ghost』，沒提照片。WebSearch 結果另有兩頁（Medium、Gloucestershire 檔案館展示頁）抓下來都沒有照片的說法；維基百科只當索引。",
+      "changed_fields": [
+        "premise_status",
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池中只有 wave26 K4 的 not_added（同案，當時以沒有轉折不收）；Despard、Swinhoe（池中的 swinhoei 是斑鱉）、Garden Reach 都 grep 不到。重提理由只部分成立：『挑的是妹妹的照片』確實與今天『從照片認出』不同，是真的轉折；但研究稿另兩個『轉折』不成立——守夜落空今天的 SPR 百科自己就寫了，翻不了流傳版本；『最早紀錄是憑記憶寫的』漏了 Myers 同一句的後半：她從第一次目擊起寫給朋友的信也是最早紀錄，她 1892 年的稿子還參考了當時的信。所以只有一個轉折，wave26 的退回理由大半仍在。『從照片認出』的流傳說法目前只有一個可讀出處（摘要由 AI 產生的 Psi Encyclopedia；HiggyPop 沒提照片），依 wave35 教訓不足。誠實估 6–8 分鐘，池中沒有同核心兄弟題（與 N3701 不是同一個核心問題，合計也超過 13 分鐘）。待查：補第二個可讀的『從照片認出』出處與第二個轉折（例如後人 Huby 1970、MacKenzie 1988 的原文），補不到就轉 Shorts 或暫緩。"
+    },
+    {
+      "id": "N3721",
+      "agent": "D3",
+      "reviewer": "R373",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D3-S002 https://archive.org/download/jstor-1413022/1413022_djvu.txt（Sanford 1914，先叫 metadata 見檔案清單再下載）；另重開 D3-S001 https://archive.org/download/unknownguest00maetuoft/unknownguest00maetuoft_djvu.txt 與 D3-S003 https://www.zobodat.at/pdf/ZoologischerAnzeiger_43_0111-0127.pdf（從 Zobodat 第 43 卷目錄頁的連結）",
+      "reopen_result": "Sanford：Krall『a wealthy jeweler of Elberfeld』；『devoting but 13 of the more than 500 pages of his book』且『citing no detailed protocols』（書目 pp. 532）；夜間試驗『light enough to distinguish objects as small as unlighted matches』、『a lighted candle was used』；黑板上『eight or ten place numbers』，卡片上兩位數『wholly erroneous』（含黑卡貼在黑板上）；p. 20 註 6 Wigge 經 Ettlinger：Albert 放鬆韁繩就敲、3＋3 敲到 6『gave the bridle a little jerk』就停；Claparède 第一天 Krall 與馬伕出房、在場者不知答案，15376 平方根與 456976 四次方根約十秒答對，但 Claparède 獨自出 15＋7 答錯；『risks, though with some reserve』說排除暗號；第二次『obtained only negative results』、錯誤率『similar and very large』；結論『without the final solution』、『unsympathetic to the horses』。Maeterlinck：Krall『well-to-do Elberfeld manufacturer』；Weidenhof 是他住的旅館，馬敲『W E I D N H O Z』、Krall 回來說 F；自己出的大數馬『lifts his right hoof, but does not let it fall』，當時 Krall 在場催馬、轉身看題後算出沒有整數根；『fourth root of a number of six figures』31 步運算、『five or six seconds』是他的一般說法。Plate：『eine bewußte oder unbewußte Zeichengebung m. E. ausgeschlossen』『nicht imstande sind, Wurzeln zu ziehen』『durch bloßes Raten』；第一系列 1913-03-05『Ich allein mit Krall und Pferdepfleger Albert』；協議記『Hänschen erhält Schläge』；簡單題 57/126＝45%、乘除平方 25/77 一次答對。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，四個來源都對得上；但鉤子把『六位數四次方根五六秒』和『出題者不會算』接在一起，與原文相反（他出的題馬拒答），問題寫『拼了出來』也漏掉拼錯；Krall 身分兩來源不同；Claparède 的『帶保留』、15＋7、Plate 的成績比例與 Albert 在場是研究稿漏掉的轉折。改後可收，9–11 分鐘。"
+    },
+    {
+      "id": "N3722",
+      "agent": "D3",
+      "reviewer": "R373",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D3-S006 https://archive.org/download/proceedingsofsoc05soci/proceedingsofsoc05soci_djvu.txt（pp. 269–270）；另重開 D3-S005 https://archive.org/download/proceedingsofsoc01soci_0/proceedingsofsoc01soci_0_djvu.txt、D3-S007 https://psi-encyclopedia.spr.ac.uk/articles/smith-and-blackburn/、D3-S008 https://www.skeptic.org.uk/2025/06/from-the-archives-smith-and-blackburn-the-story-of-a-great-hoax/（皆由覆核自己的 WebSearch 結果取得）",
+      "reopen_result": "1888 更正逐字對上暗號表（upward look 紅心、right hand to face 王、crossing the arms J；scraping with the feet 紅心；sighing, coughing, sneezing or yawning 方塊）、『all complete failures』、『must throw discredit』、『every reader will form his own opinion』，並寫明『stress was never laid on any trials』由姊妹發送者。1882 第一報告：『Altogether 382 trials』『extended over six days』、平均『11』、『127 were successes on the first attempt』；『divulged to none of the family』只用在連中五張（『considerably over a million to 1』），『8 consecutive successes… over 142 millions to 1』是報告作者的計算；Brighton『blindfolded at his own wish… sat with his back turned』『B. holds S.'s hand』。Psi：John Bull 1908-12-05 起六篇、『bogies』、Sidgwick 死了十一年、地點不是 Blackburn 的住處、Alice Johnson 1908、書目『George Albert Smith (1864–1959)』、『The following week he replied in detail to an indignant denial by Smith』。Gardner：John Bull『December 8, 1908』、『bogus』、Smith 9 月 4 日訪問否認、Blackburn 9 月 5 日再寫、寫信時『living in South Africa』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立；鉤子把 1888 年劍橋的暗號放成像 1882 年當場；『家人都不知的六天 382 次』混了兩段；八張牌機率要標報告自算；Smith 否認日期與兩份轉錄的第三個出入補上；1888 更正自己劃的界線補進答案。Smith 1959 年死，不入畫。"
+    },
+    {
+      "id": "N3723",
+      "agent": "D3",
+      "reviewer": "R373",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D3-S010 https://www.loc.gov/resource/sn83030214/1874-11-21/ed-1/?sp=2（覆核自己的 Chronicling America 搜尋 API 結果，再用 fo=json 取 fulltext_file）；另重開 D3-S009 https://archive.org/download/studyoftrancemus00bear/studyoftrancemus00bear_djvu.txt 與 D3-S013 https://www.darwinproject.ac.uk/view/letters/DCP-LETT-13229（WebSearch 結果）",
+      "reopen_result": "Tribune 1874-11-21：十個字母放在鋼琴上，不接觸『10 times and got it right twice』，照 Brown 的方式『successful six times』，『a wire in the manner pursued by some of the faculty of Yale College』『about 10 feet long… made fast to a chair』『successful but once out of 10 times』，比純猜還差；『just as I had found it possible to deceive Brown』；『Probably the majority of persons… can do all that Brown does』。Beard 1882：『October 22d, 1874』、『fully 1,000』、九人委員會 Newton 主持、一分錢、『P in Palladium… almost out of reach』、『sixteen very small vials』、走道找人、字母測試失敗、『even if true, had not been proved』、Ann Arbor 先提過、『less than six months』、『hundreds of mind-readers』、耶魯『two hundred feet of wire』。Darwin 書信：『Bishop is a very sly dog, and has played his cards passing well』『catch good names』，註 6 Nature 1881-06-23 pp. 171–2。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "數字與引文都對得上；『sly dog』直譯成『狗』會誤導；Beard 的對照是一位女士受試、電線約 10 呎固定在椅上（不是耶魯那條兩百呎），補清楚；D3-S027 只經摘要工具讀取，移出 source_ids。Romanes、Darwin、Bishop 卒年已確認。"
+    },
+    {
+      "id": "N3724",
+      "agent": "D3",
+      "reviewer": "R373",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D3-S015 https://archive.org/download/TheTrueSecretOfMindReadingAsPerformedByTheZancigs/The%20True%20Secret%20of%20Mind%20Reading%20as%20Performed%20by%20the%20Zancigs_djvu.txt 與 D3-S014 https://archive.org/download/telepathygenuine00bagg/telepathygenuine00bagg_djvu.txt（都先叫 metadata 見檔案清單）；另重開 D3-S022 https://archive.org/download/memoirsofroberth00robe/memoirsofroberth00robe_djvu.txt",
+      "reopen_result": "Fixen：『Compiled and Copyrighted 1912 By LAURA G. FIXEN』；前言『In this booklet the true method, as revealed by them, is published for the first time』；證書『Palmistry and Telepathy』；『a letter from London, dated December 29, 1911… they would change their future acts… THE ONLY ZANCIGS』；〈THE ZANCIGS' CODE〉手跡下附『written by Julius Zancig in my presence on February 22, 1911… the code which he was using in his act at that time』，1912-01-10 Cook 郡公證；字母代碼前寫『I have combined the methods… into one system』。Baggally（1918 Marlowe 版）：同版書試驗 Julius 只喊『Ready』，作者推斷只傳頁碼與行數；支票第一次 Julius 說『This is not what we want; it is the number』，換第二張後全程沉默，四碼寫對、末碼口頭補『it was four』；Lodge 附記『Oh, surely you can do this』之後立刻答對、『utterance of some kind seemed necessary』、『ready to use any code』『I think this extremely likely』；委員會『enormous』『unique in kind』『the difficulty of suggesting… is considerable』。Robert-Houdin：『12th of February, 1846… printed in the centre of my bill』、『secret and unnoticeable correspondence』、Emile『then aged twelve』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "研究稿漏讀小冊裡最硬的一筆（Julius 親筆代碼與 1912-01-10 公證），年份 1911 應照封面頁改 1912；『I want the letter』是編者合併的系統；Baggally 的支票試驗轉述不準，且漏了 Lodge『需要說話』的轉折；Baggally 1917 年份本輪沒在頁面上看到。改後可收。"
+    },
+    {
+      "id": "N3725",
+      "agent": "D3",
+      "reviewer": "R373",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D3-S023 https://archive.org/download/jstor-1638607/1638607_djvu.txt（先叫 metadata 見檔案清單）",
+      "reopen_result": "Johnson（Science 1912-05-10 pp. 749–751）：『a German setter seven years old, belonging to the royal gamewarden Ebers at Theerhutte in Gardelegen』；Pfungst 與 Vosseler、Erich Fischer、留聲機；『If the order of questioning is varied he is called \"Kuchen\"』；『the author was unable to get even approximations to the last three words』；母音介於 o 與 u、『never makes the sound of b, d, k, l or r』；『Was?』時『only two out of sixteen answers were intelligible』；『Of 168 answers… 71 per cent. were disyllabic』；『incorrect fully as often as otherwise』；Engelhopf、Hallelujah、Huhn、Honig；夜鷹『Whip-poor-Will』；『Ruhe』首次出於主人女兒的命令；『Haberland』是回答『Wer hat den ersten Artikel über dich in die Zeitung gebracht?』、『none of the investigators could obtain from him』；Pfungst 原文刊《Vossische Zeitung》1911-04-27 第六附刊。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "內容對得上，補 Haberland 兩版出入；但研究稿說接 N129 合計 11–12 分鐘不成立：N129 已入選並與 G04 併成 T27（11–13 分鐘、目標 12），再加 3–4 分鐘超過 13 分鐘。題目本身可收（chapter），建議暫緩，等站主決定是否替換 T27 的一章或轉 Shorts。"
+    },
+    {
+      "id": "N3741",
+      "agent": "D4",
+      "reviewer": "R374",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D4-S001 https://archive.org/details/sim_naturwissenschaften_1918-10-11_6_41（metadata 後下載清單所列 djvu.txt，S.598–601 全文）；另重開 D4-S003 https://archive.org/details/londonedinburghp02lond（p.110–111、190–191）、D4-S002 https://bg.copernicus.org/articles/12/4261/2015/bg-12-4261-2015.pdf、D4-S004；新讀 D4-S034",
+      "reopen_result": "頁面上確實寫了：Wegener『Aus der Literatur kenne ich nur eine einzige Beschreibung … Sie stammt von J. F. W. Herschel』，腳註引的是 Pogg. Ann. Bd. 28（1833）的德譯；他引的譯文寫『Sonnenblumen』，也照引『viele zeigten sich beim Durchschneiden noch grün』，接著說圖『sofort die Identität』；結論『daß ein Pilz in entscheidender Weise dabei mitwirkt』。Meyer 信：木頭『von Pilzhyphen durchwuchert』，菌『vermutlich einem kleinen Askomyzeten』，『Bestimmen kann man ihn selbstverständlich nicht』。Herschel 信末署 January 12, 1833，『the majority of the stems were sound and solid, and many of them still green when cut』，『it is for botanists to decide』；Rigaud 署 Oxford, Feb. 2, 1833，冰只長在新砌的一段牆上，他猜水分來自新灰漿。2015 論文摘要：Ee『was present on all investigated samples』，菌代謝熱『very small』、『freezing rate is not influenced by the fungus activity』；p.4266『we unravelled the mystery about the whitish covering … The opinion of Wegener’s consultant, A. Meyer … has been disproved』；結論『Although the fungus effect is still a mystery』。植物園頁面：『Hair ice was described for the first time over a century ago, by Alfred Wegener』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複（pool.json、batches/*.json、原來如此 pool.json 與 D1–D3 都沒有毛冰）。前提成立。研究稿最大的錯：說 Wegener 引 Herschel 時沒注意莖是綠的，其實他自己就照引了那一句；『向日葵』是他所引 1833 年德譯本的寫法，不是他的轉述。覆核補上第二個流傳出處（植物園：毛冰由 Wegener『第一次描述』），讓轉折一變成『Herschel 1833、Rigaud 1821 比他早』；再加上 2015 論文明說推翻 Meyer『無法鑑定』的段落。『超過一半樣本只有它』改為摘要原文『所有樣本都有』。兩個翻轉都在：最早不是 Wegener；菌不加快結冰、只改形狀，機制仍是謎。8–9 分鐘可信。"
+    },
+    {
+      "id": "N3742",
+      "agent": "D4",
+      "reviewer": "R374",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D4-S006 https://archive.org/details/b22010300（Heyne 1814，p.29–30 第 VIII 節腳註）；另重開 D4-S007、D4-S008（BA Report 1851 p.32、1855 Buist 段）、D4-S009（Edinburgh New Phil. Journal 47 短訊第 2 則）、D4-S010（Fort pp.21–22、176–178）",
+      "reopen_result": "頁面上確實寫了：Heyne 腳註『in the latter part of Tippoo Sultan’s reign it is on record, and well authenticated, that a piece fell near Seringapatam of the size of an elephant』，『the effect of fire on the skin』是『a comparison naturally made by persons ignorant of the sensation of extreme frigidity』，『two days elapsed』，『fear probably occasioned the latter report』，『That this account is in the public records … I have from a gentleman … high in the civil service』。Buist 1851：『took two days to melt』，『These things, on which doubts at one time were cast, no longer seem incredible』。Buist 1855：『in the end of last century … It took three days to melt. We have no further particulars, but there is no reason whatever for our doubting the fact』；乾井一例先寫『80 miles south of Bangalore』、後寫『like that of 1852 near Belgaum』。愛丁堡期刊：『principally composed of small squares, diamond-shaped, of from 1 to 3 inches in size, all firmly congealed together』，出處『Ross-shire Advertiser.—Scotsman, August 11, 1849』。Fort：『It is said that this was homogeneous ice, except in a small part, which looked like congealed hailstones』；引 Times 1849-08-14 寫『evening of the 13th』『fell alone, or without hailstones』；Seringapatam『about the year 1800』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複（只有 wave21／wave34 not_added 的 2000 年西班牙冰塊，不同案）。前提成立，但研究稿的轉折二講錯：Heyne 1814 年原文就寫『well authenticated』，Buist 1851 年也說『不再不可信』，所以不是 1855 年才『語氣變肯定』；真正變的是兩天→三天，而 1855 年還自承『沒有進一步細節』。Heyne 對『像火燒』是給比喻的解釋、不是駁斥。新轉折三：Fort 轉述愛丁堡期刊時把『菱形小方塊牢牢凍在一起』寫成『均勻的冰』。乾井一例的地點 Buist 自己寫了兩種，並列。鉤子的『8 月』由『上週一』推不出，改『夏天』；Cellini 旁支只經二手引用，刪。8–10 分鐘。"
+    },
+    {
+      "id": "N3743",
+      "agent": "D4",
+      "reviewer": "R374",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D4-S016 https://www.zobodat.at/pdf/SVVNWK_40_0119-0144.pdf（Trabert 1900，p.135–144 全讀，含研究代理沒讀到的結語）；另重開 D4-S015（MWR 1901-03 Pernter 與編者附註）、D4-S013（MWR 1904-07 p.328–329）、D4-S017（IDEAS 摘要）",
+      "reopen_result": "頁面上確實寫了：Trabert『Ende des 18. Jahrhunderts war das Wetterschießen in Österreich, auch in Baiern … außerordentlich verbreitet. Um diese Zeit trat man aber auch allenthalben dem Wetterschießen und Wetterläuten energisch entgegen』；『Auch in Österreich wurde 1785 das Wetterschießen von Kaiser Josef II. verboten … gegen das revoltierende Volk Militär einschreiten musste, Strafen von mehreren Jahren Eisen … hat es sich in manchen Gegenden doch erhalten bis auf den heutigen Tag』；Stiger 的火車頭煙囪、1896 年沒下雹、1897-07-01、鄰村指控『habe ihnen den Hagel hingeschossen』、Casale 大會『mit Entschiedenheit』；結語『Das einfachste freilich wäre: absprechen, das Wetterschießen rundweg als Unsinn zu verwerfen … Man kann nicht sagen, die bisherigen Versuche hätten bereits seine Wirksamkeit über allen Zweifel bewiesen, aber sie ermuntern zur Fortsetzung derselben』。Pernter：Stabilini『cites 16 cases』，『too hasty a conclusion』，『smallness of the apparatus and the light charges』。1904 年短文沒有署名，寫『Steiger』，『will doubtless soon be buried and forgotten in Europe』，末句『The doubt and scepticism that scientists have shown since the beginning have not diminished, but, on the other hand, have increased among the practical farmers and planters』。2024 摘要：『a common practice among farmers, without scientific evidence to support its effectiveness』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複（pool 與原來如此都沒有驅雹炮）。前提成立。改正：1785 年禁的是射擊（敲鐘只是同時被各地反對），而且 Trabert 說某些地方一直保留到 1900 年，『被禁一百多年』是研究者換算、刪；1904 年短文未署名，不是 Abbe；Pernter『最早公開懷疑』無據。研究稿沒讀完 Trabert：他的結語是『不能斥為胡說、應繼續試驗』，與 Pernter『加大火力』合成轉折三；1904 年短文末句『懷疑在農民之間增加』與 2024 年仍在用形成對照。界線：scope 明寫不給防災、保險或農業建議，不說安全或危險，不示範射擊或火藥。"
+    },
+    {
+      "id": "N3744",
+      "agent": "D4",
+      "reviewer": "R374",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D4-S018 https://archive.org/details/histoiredelacad89hist（Tessier, Mémoires année 1789 p.628–637 全讀）；另重開 D4-S019 Météo-France 訪談全文",
+      "reopen_result": "頁面上確實寫了：Tessier『Elle occasionnoit une si grande obscurité, qu’un prêtre qui disoit la messe demanda de la lumière』；『elle tomba avec une grande abondance, seulement pendant 7 à 8 minutes, temps bien court, mais trop long, puisqu’il n’en a pas fallu davantage pour perdre toute la recolte』；雹粒『couvroient un écu de 6 liv.』、『bondissoient comme des balles de paume』；『L’année n’offroit pas en général l’espérance d’une riche récolte, sur-tout si on la comparoît à l’année précédente』；p.634『environ 12,000 carreaux de fenêtres ont été cassés dans les bâtimens du roi』，接著『Je ne pourrois dire ce qui s’est passé au moment de l’orage, que d’après le récit de personnes dignes de foi』；p.635『on pourroit partager en deux bandes les pays de la Beauce, qui ont … éprouvé l’orage ; au milieu desquelles une autre bande en a été préservée』；p.636『Il ne seroit pas impossible de calculer la perte』。Météo-France：『La plupart des historiens … mais surtout parce que sa date, un an et un jour avant la prise de la Bastille, frappe l’imaginaire collectif』；『La carte … affiche deux zones de grêle entre trois bandes de pluies fortes』；『Un rôle de « gâchette » … même si les origines en sont beaucoup plus profondes』是回答『政治後果』一問，指整段 1788–89 天氣。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複（pool 只有 Cazotte、LaPérouse 等 1788 年不同案）。前提成立，引文都對得上。研究稿漏讀 Tessier p.635：他在第一份報告就看出受災區是兩條帶夾一條倖免帶，正是後來學院地圖『兩條冰雹帶』的雛形，改成轉折二的主軸；『只能根據可信的人的敘述』指暴風雨當下，不是 12,000 塊玻璃；『扳機』指整段異常天氣。原文沒說神父在教堂，鉤子改『正在做彌撒』。Le Roy Ladurie 卒年不在可讀頁面，risk 改成未確認、不入畫。界線：只講氣象紀錄與史家原話，不評價大革命與任何派系。8–10 分鐘。"
+    },
+    {
+      "id": "N3745",
+      "agent": "D4",
+      "reviewer": "R374",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D4-S024 https://archive.org/details/ioanniskepleriss00kepl（題頁、獻詞、p.4–5）；另以 zh.wikisource 搜尋 API 取得頁名後用 action=raw 重開 D4-S022《藝文類聚》卷二、D4-S023《經義考》卷100、《太平御覽》四部叢刊本卷第十二；重開 D4-S025、D4-S026；新讀 D4-S035",
+      "reopen_result": "頁面上確實寫了：題頁『… MATHEMATICI STRENA, Seu De Nive Sexangula … Anno M.DC.XI』；獻詞『AD ILLUSTREM S.C. MAIEST. CONSILIARIUM IMPERIALEM AULICUM, D. IOANNEM MATTHAEUM WACKHERIUM a Wackhenfels … Literatorum & Philosophorum Mecaenatem, Dominum meum beneficum』；正文『pontem transeo』，雪片『omnes sexanguli, villosis radiis』，Nix／Nihil 文字遊戲。《藝文類聚》卷二〈雪〉（唐 歐陽詢 撰）：『韓詩外傳曰凡草木花多五出雪花獨六出雪花曰霙雪雲曰同雲』，同目徐陵詩『六出儛崇花』。《太平御覽》卷第十二（宋 李昉 等）同引。《經義考》：『董斯張曰世所傳韓詩外傳亦非全書』，舉文選李善注、藝文類聚（『凡草木花多五出雪花獨六出者隂極之數』）、太平御覽、佛典所引外傳文，『今本皆無之』。snowcrystals.com：『The earliest known account was in 135 B.C., when Chinese scholar Han Yin wrote …』，Kepler『presented … to his patron, Holy Roman Emperor Rudolf II』；Quanta 寫『according to Libbrecht’s research』與『as he crossed Prague’s Charles Bridge』；NYAS：『The oldest observation of snow crystals on record appears in China around 135 BC』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複（原來如此 N276 是物理答案；奇聞池的 Kepler 題都是別案）。前提成立，兩個翻轉（今本無此句；題獻對象是宮廷顧問、書裡沒寫哪座橋）都在原文上。改正：『唐初』『宋初』『清初』『明代』不在可讀頁面上，刪；董斯張舉的出處補全；Quanta 自稱依 Libbrecht，流傳版本另補 NYAS 2005；Bentley 一段與核心無關，刪。片長誠實估 7–8 分鐘，不到 8 分鐘，改 chapter，接 N3746 成一集。"
+    },
+    {
+      "id": "N3746",
+      "agent": "D4",
+      "reviewer": "R374",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D4-S029 https://archive.org/details/sim_nature-uk_1887-03-03_35_905（Nature 35: 414 'Snowflakes' 全文）；另重開 D4-S030（MWR 1915-02 p.72–73 與註腳）、D4-S031 金氏頁面；新讀 D4-S036",
+      "reopen_result": "頁面上確實寫了：Lockwood『Without vouching for the exact details I send you some statements from a letter in the New York World of to-day’s issue. The letter is dated Fort Keogh, Montana, U.S., February 13』；信中『The winter of 1886-87 will be long remembered throughout the north-west』，『Near Matt. Coleman’s ranch on January 28 the flakes were tremendous, some were larger than milk-pans. Some flakes measured 15 inches square and 8 inches thick. For miles the ground was covered with such bunches … A mail-carrier was caught in the same storm and verifies it』；署 Freehold, New Jersey, February 14。MWR 1915：『very large snowflakes were reported as having fallen on January 28, near Matt. Coleman’s ranch at Fort Keogh, Mont. In this case, which is not recorded in the Monthly Weather Review for that year … measuring 38 centimeters (15 inches) across by 20 centimeters (8 inches) thick』。金氏：『found by ranch owner Matt Coleman at Fort Keogh … he later described the flakes he’d seen as being 'larger than milk pans' in Monthly Weather Review Magazine』。Live Science 2023：Coleman『spotted huge snowflakes that had fallen onto one of his cattle pastures in western Montana … and declared them as 'larger than milk pans'』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複（只有 LEG-B59 金氏紀錄由來與 N276）。前提成立。新增轉折：原信只以 Fort Keogh 為寫信地點，『Coleman 的牧場在 Fort Keogh』是 1915 年月報加上的，Live Science 又寫成『西蒙大拿』『他宣稱』；『原信沒署名』無法確認（原刊沒讀到），改為『Lockwood 沒寫寫信的人是誰』。補第二個流傳出處 D4-S036。4–5 分鐘 chapter，接 N3745：兩題回答同一個問題（雪花的兩項『世界紀錄』——最早與最大——各是誰寫下、怎麼被轉述得比原文更整齊），合計 11–13 分鐘。"
+    }
+  ],
+  "theme_suggestions": [
+    {
+      "ids": [
+        "N3704",
+        "N421"
+      ],
+      "shared_question": "一個鬧鬼故事的敲擊聲是怎麼在不同的人手裡被重寫的？",
+      "why_it_flows": "Barrett 1877 年原文的註裡自己查到 Derrygonnelly 的孩子讀過衛理會書裡的 Epworth 故事；N421 拆 Epworth 的書信版本，N3704 接著拆 Barrett 自己的兩個版本，同一個方法、同一條衛理會的線，可做系列排序（不必合併）。"
+    },
+    {
+      "ids": [
+        "N3701",
+        "N3704"
+      ],
+      "shared_question": "同一個調查員，前後兩次寫同一件鬧鬼案，寫的有什麼不同？",
+      "why_it_flows": "Podmore 1883→1896 改的是結論，Barrett 1877→1911 改的是經過與結局；都在 SPR 會刊、都能逐字並排，適合排成連續兩集，各自成集。"
+    },
+    {
+      "ids": [
+        "N3745",
+        "N3746"
+      ],
+      "shared_question": "雪花的兩項『世界紀錄』——最早寫下六角形的人、史上最大的一片——各是誰、在哪份文字裡第一次寫下的？今天的說法比原文多了什麼？",
+      "why_it_flows": "兩題用同一個方法拆同一類流傳說法：N3745 從『西元前 135 年 Han Yin』追到唐宋類書裡今本已無的佚文、從『送給皇帝』追到 Kepler 獻給宮廷顧問的原書；N3746 從金氏紀錄追到 1915 年月報、1887 年 Nature 那封『我不擔保』的來信。兩段都以『現代網站→中間轉述→原文』倒著走，結尾都落在『原文比流傳版本更含糊』，合計 11–13 分鐘，不需補料。"
+    }
+  ],
+  "rule1_record": [
+    "D1、D2、D3、D4（研究）：覆核 R371–R374 逐筆讀工具紀錄（約 150、116、105、157 次呼叫），沒有發現猜測、拼湊或改參數的網址。連續第三批四位研究代理都沒有違規；archive.org 都是先叫 metadata、下一次呼叫才下載。",
+    "灰色地帶（不算違規）：D1、D2 用 identifier 前綴萬用字元查 archive.org 搜尋 API（字首來自搜尋結果，屬文件記載的查詢；建議改用 title／date 欄位）；D1 有一個 loc.gov 全文網址少了 &q=，同頁 JSON 也列出不帶 q 的網址。",
+    "出處不精確（不算違規）：D3 的 Fixen 小冊年份、Baggally 書的「1917 初版」；D4 的 Fort 與 Le Roy Ladurie 卒年只來自摘要或常識，覆核改為不入畫。",
+    "覆核者本身都沒有拼網址。"
+  ],
+  "reviewer_notes": {
+    "R371": {
+      "rule1_record": [
+        "D1（研究）：覆核逐筆讀工具紀錄（150 次工具呼叫：14 次 WebSearch、12 次 WebFetch、122 次 Bash（curl 與本機 grep），另 ToolSearch 與交回各一次），每個抓取的網址都對回更早的搜尋結果、頁面連結、metadata 檔案清單或 loc.gov 頁面 JSON。沒有發現猜測、拼湊或改參數的網址；archive.org 每次都是先叫 metadata、下一次呼叫才下載清單上列出的檔名。",
+        "灰色地帶（不算違規）：#31 抓 Waterbury Democrat 全文時用的是不帶 &q= 的 fulltext_service；研究代理當時被 head 截斷的輸出只看得到帶 q 的那一條，但覆核重叫該頁 fo=json，JSON 確實另列了不帶 q 的同一網址（Key West 那頁研究代理也看到了），所以是清單上的網址。#75 與 #93 在 archive.org advancedsearch 用 identifier 前綴萬用字元查詢（sim_nature-uk_1874-12-24*、sim_popular-astronomy_1925*）：這是公開文件記載的搜尋 API，日期來自 #74 搜尋摘要的書目，回傳的 identifier 才去叫 metadata，沒有直接抓推出來的網址；覆核建議之後改用 title／date 欄位查。",
+        "出處寫得不精確（不算違規）：D1-S009 寫成 Solar Anamnesis 重排本並在 notes 標明要核原書，照實；覆核已找到原刊並換成 R371-S002。D1-S013、D1-S014 寫成 search_snippet_only（經 WebFetch 摘要），覆核用 curl 逐字讀過，卒年相符。",
+        "覆核者本身沒有拼網址：所有 archive.org 下載都先叫 metadata、下一次呼叫才下載清單所列檔名；loc.gov 走搜尋 API → 頁面 fo=json → 所列 fulltext_service；其餘網址都來自 WebSearch 結果。WebFetch 遇到跨站轉址（Scientific American 部落格）是照伺服器回的 Location 再叫一次。卒年（Kelvin、Helmholtz、Pickering、Hahn、Vogt、Lipman）都在搜尋結果連到的可讀頁面上逐字確認。"
+      ],
+      "reviewer_notes": [
+        "系列排序建議（不必合併，各自 8–10 分鐘，合計超過 13 分鐘）：N3682（1871–1882 隕石化石）→ N3681（1932–1935 隕石細菌）→ N3683（Orgueil，補到 Anders 原文後）→ U41；N3682 也可與 N3185 Bathybius 排成『非生物做出像生物的形狀』。",
+        "N3684 與 N2022 都想接 N141，站主若同意把 N141 壓短，只能接其中一章。",
+        "線索（未用）：2014 年 Scientific American 部落格轉述 1881 年《Science》說 Darwin 看了 Hahn 的薄片驚呼；Darwin 給 Hahn 的回信只見部落格引文，沒讀到 Darwin Correspondence Project 的原信，不放進題目。"
+      ],
+      "blocked_sites": [
+        "www.biodiversitylibrary.org（Cloudflare 機器驗證，研究代理已記）",
+        "www.science.org（Anders 等 1964〈Contaminated Meteorite〉付費，未嘗試）",
+        "api.istex.fr（Gounelle & Zolensky 2014 全文要機構登入）",
+        "journals.uair.arizona.edu、repository.arizona.edu（403）",
+        "nature.com 1938 年 Pickering 訃聞 PDF（回傳 JS 殼頁）",
+        "mitmuseum.mit.edu（429）"
+      ]
+    },
+    "R372": {
+      "rule1_record": [
+        "D2（研究）：逐筆讀工具紀錄（116 次工具呼叫：104 次 Bash、9 次 WebSearch、1 次 WebFetch、ToolSearch 與 SubagentHandback 各 1）。沒有發現猜測、拼湊或改參數的網址。",
+        "archive.org：12 個 identifier 都先出現在 advancedsearch 結果裡（proceedingsofsoc12soci 在 #15 結果第 8167 字元處；01_0、17、25 也在 #15；08 在 #87；themakingofrelig00languoft 在 #30；兩冊 IAPSOP Annales 在 #39；Capron 與 Yale 的 Davis 在 #55；sim_university-magazine_1877-12_90_540 在 #66；journalofsociety04sociuoft 在 #76；hauntedhouses00flam_0 在 WebSearch #38 結果列出的 PDF），每個 _djvu.txt 都在先前另一次呼叫的 metadata 檔案清單裡看到後才下載（metadata 與下載都分成兩次呼叫）。",
+        "直接抓取的網頁都先出現在 WebSearch 結果：psi-encyclopedia worksop-poltergeist 與 andrew-lang（#24）、normandythenandnow ?p=5734 與 storiesofthesupernatural（#38）、NEHS 與 the-line-up（#54）、fermanaghherald、rte.ie、yourirish ?p=6818（#72）、higgypop、spookyisles、cheltenham-ghost（#92）、frank-podmore（#100）、?p=1366（#102）。loc.gov Chronicling America 的 fo=json 與 archive.org advancedsearch 屬文件記載的 API。",
+        "灰色地帶（不算違規）：#76 在 advancedsearch 裡用 identifier:journalofsociety0* 萬用字元查詢——這是搜尋 API 的查詢，不是直接開網址，字首也來自 #24 搜尋結果裡的 journalofsociety07sociuoft；回傳的 identifier 才去叫 metadata。",
+        "出處寫得不精確（不算違規）：D2-S002 的 read_via 只寫 curl，實際先用過一次 WebFetch 再 curl；D2-S010 寫『WebSearch 結果列出此 archive.org 項目的 PDF』屬實（#38）。",
+        "覆核者 R372：archive.org 只用研究稿 sources 裡的 identifier，先單獨叫 metadata 看到檔案清單，下一次呼叫才下載清單上的 djvu.txt；網頁只開研究紀錄裡已核實來自搜尋結果的網址與我自己 WebSearch 的結果（psi-encyclopedia 的 frank-podmore、andrew-lang、william-f-barrett，Medium 與 Gloucestershire 檔案館兩頁）。沒有拼網址。Podmore 1910、Lang 1912、Barrett 1925 的卒年都在搜尋結果連到的 Psi Encyclopedia 頁面上讀到；Flammarion、Dariex、Myers、Phelps、Capron、Davis 沒核，相關題一律不畫本人。"
+      ],
+      "reviewer_notes": [
+        "CLI search 對每個關鍵字都回『Index is stale』，依說明沒有重建，去重以 grep pool.json、batches/*.json（含 not_added）與 topics-fg.json 為主；原來如此事務所池裡沒有騷靈、鬼屋題。",
+        "同目錄沒有其他研究代理（Y1–Y4／D1、D3、D4）的 JSON 輸出可比對，只有下載資料夾。",
+        "研究稿 not_added 的 G08、N421、N801、N1041、N1042、N1043、N941、N202、G19、N203 都在 pool.json 確認存在且答案相符。"
+      ]
+    },
+    "R373": {
+      "rule1_record": [
+        "D3（研究）：逐筆讀工具紀錄（共 105 次呼叫：WebSearch 6 次、WebFetch 2 次，其餘 Bash）。每個直接抓取的非 archive 網址都先出現在 WebSearch 結果的 Links 裡：en.wikipedia.org/wiki/Muhamed_(horse)、paperspast OW19130730.2.240.6、zobodat PDF（#17）；psi-encyclopedia smith-and-blackburn、skeptic.org.uk（#37）；en.wikipedia.org/wiki/J._Randall_Brown（#54）；nature.com/articles/024171a0.pdf、darwinproject DCP-LETT-13229（#56）；psi-encyclopedia zancigs-telepathy-stage-act（#63）；boston1775 pig-in-city.html?m=0（#74）。沒有發現猜測、拼湊或改參數的網址。",
+        "archive.org：每個 identifier（unknownguest00maetuoft、denkendetierebei00kral、studyoftrancemus00bear、jstor-1413022、jstor-20543793、proceedingsofsoc01soci_0、proceedingsofsoc05soci、telepathygenuine00bagg、TheTrueSecretOf…Zancigs、expositorormanym00pinc、anecdotesoflearn00bosw、storyofbeautiful00roge、meinhundrolfeinr00moek、jstor-1638607、magicianamongspi00houd、memoirsofroberth00robe）都先出現在 advancedsearch 結果，每個 _djvu.txt 都在前一個指令的 metadata 檔案清單裡看到才下載（#12→#13、#19→#20、#31→#32、#66→#67、#71→#72、#79→#80、#86→#87、#91→#92）。D3-S015 的 url 由搜尋結果的 PDF 換成 metadata 清單裡的 djvu.txt，read_via 照實寫，不算違規。",
+        "loc.gov：每個 resource 網址都在 Chronicling America 搜尋 API（fo=json）回傳的 results id 裡（覆核用研究代理留下的 loc1.json、locz.json、locd.json 逐筆比對，全部命中）；之後加 fo=json 取 resource JSON、再抓 JSON 裡列的 fulltext_file，屬文件記載的格式參數。#49 把搜尋結果的 http 換成 https 再加 &fo=json，不算拼湊。",
+        "出處寫得不精確（不算違規）：D3-S015 publisher 寫『典藏標 1911』，小冊封面頁實為『Compiled and Copyrighted 1912』；D3-S014 寫『倫敦 Methuen 1917 初版』，本輪讀到的頁面上沒有；D3-S027 只經 WebFetch 摘要讀取，read_via 已照實寫 search_snippet_only，覆核把它移出 N3723 的 source_ids。",
+        "覆核者 R373：archive.org 用自己跑的 advancedsearch 結果，先單獨叫 metadata 看到檔案清單，下一個指令才下載；loc.gov 用自己跑的 Chronicling America 搜尋 API 拿到 Tribune 網址，再照 resource JSON 的 fulltext_file 取全文；Plate PDF 從自己搜尋到的 Zobodat 第 43 卷目錄頁連結取得；Psi Encyclopedia、skeptic.org.uk、Darwin 書信、NobelPrize.org、Gutenberg、ethw.org、susannahfullerton、epsilon、snaccooperative（機器驗證頁，未繞過）、britannica（403，未繞過）都來自自己的 WebSearch 結果。沒有拼網址。"
+      ],
+      "reviewer_notes": [
+        "N3721 與 N129 同屬會算數的馬，但 N129 已在 T27（滿 12 分鐘），本題不併；N3722 與 N3723 同一條讀心線、可相鄰排，合計超過 13 分鐘，不提主題合併。",
+        "N3725 建議暫緩：唯一同核心的兄弟題 N129 已鎖在 T27，加上去超過 13 分鐘。",
+        "D3-S004（Wolff 1916）、D3-S011／S012／S016–S021、D3-S024–S026 覆核未重開，相關句子照研究代理的轉述保留並都已標出處。"
+      ],
+      "blocked_sites": [
+        "snaccooperative.org（機器驗證頁，未繞過）",
+        "britannica.com（WebFetch 403，未繞過）",
+        "darwin-editorial.darwinproject.ac.uk、redux.whonamedit.com（代理 502）",
+        "gracesguide.co.uk（TLS 憑證不符，未繞過）"
+      ]
+    },
+    "R374": {
+      "rule1_record": {
+        "tool_calls_read": 157,
+        "violations": [],
+        "notes": [
+          "逐筆讀了研究代理 157 次工具呼叫，所有對外抓取都能對回來源：archive.org 一律先 advancedsearch 或 metadata，看到檔案清單後在下一次呼叫才下載清單所列的 djvu.txt（#24→#25、#58→#59、#62→#63、#66→#67、#77→#78、#79→#80、#98→#99、#120→#121、#130→#131、#135→#136）；MWR 年度目錄與各期識別碼都來自 #76 搜尋結果，Nature 1887 各期來自 #134 的 advancedsearch（識別碼萬用字元查詢屬搜尋 API）。",
+          "zh.wikisource：頁名都來自 MediaWiki 搜尋 API（#108、#114 list=search）的結果，再用 index.php?action=raw 取得（#109、#115），屬文件記載的 API。Zenodo：#72 搜尋結果給 records/2364801，#73–#74 用 Zenodo REST API 與 API 列出的檔案連結，屬文件記載的 API。",
+          "網頁來源（Biogeosciences PDF、Northern Woodlands、NASA Earth Observatory、Météo-France、Futura、Keraunos、IDEAS、zobodat 兩個 PDF、snowcrystals、Quanta、Linda Hall、MacTutor、金氏、worldatlas、spektrum、americanscientist、qdl.qa、utexas）都在先前的 WebSearch 結果裡出現過。",
+          "被擋的都沒有繞過：utexas TLS 驗證失敗（#33 後改用 /root/.ccr/ca-bundle.crt 只是照代理說明指定 CA，仍失敗，未關閉驗證）、WebFetch 503；americanscientist Cloudflare；qdl.qa 403；spektrum CloudFront 403。沒有改 User-Agent。",
+          "灰色地帶（不算違規）：D4-S022 的 url 欄用底線寫頁名，實際 curl -G 送的是空白，MediaWiki 視為同一頁；D4-S005 只確認 Wegener 1930 年 11 月出發後未歸、1931 年 5 月尋獲遺體，頁面沒有精確卒日；Fort 卒年研究稿寫『Gutenberg 題錄，見搜尋結果』，只是搜尋摘要，覆核改為未確認、不入畫；Le Roy Ladurie 卒年研究稿寫『依常識』，覆核改為未確認、不入畫。",
+          "覆核者 R374 自己的取得路徑：archive.org 14 項先叫 metadata、下一次呼叫才下載清單所列檔案；wikisource 先用搜尋 API 取得頁名再 action=raw；R374-S001、S002、S003 都來自本人 WebSearch 結果；其餘重開的網址都是研究代理已登錄、來自搜尋結果的同一網址。"
+        ]
+      },
+      "blocked_sites": [
+        "americanscientist.org（Cloudflare 機器驗證，研究代理遇到）",
+        "w3.biosci.utexas.edu（TLS 憑證驗證失敗、WebFetch 503，研究代理遇到）",
+        "qdl.qa（403，研究代理遇到）",
+        "spektrum.de（CloudFront 403，研究代理遇到）",
+        "discovermagazine.com（覆核以 curl 只取得 919 位元組的空殼頁，未繞過、未使用）"
+      ]
+    }
+  }
+}

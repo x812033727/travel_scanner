@@ -1,0 +1,628 @@
+{
+  "batch_id": "wave54-physics-20261111",
+  "created_on": "2026-11-11",
+  "scope": "沙漏的流量與卡住、糖鹽溶解度、咖啡環、擊球的幾毫秒、螺旋裂縫與太空艙入水：替組題 C2-11、C3-13、C3-10、C2-12、C3-12 與長題 G01 補原研究；十一來源。",
+  "sources": [
+    {
+      "id": "P54-S001",
+      "url": "https://arxiv.org/abs/1005.2884",
+      "canonical_url": "https://arxiv.org/abs/1005.2884",
+      "doi": "10.1103/PhysRevLett.104.238002",
+      "title": "Pressure independence of granular flow through an aperture",
+      "publisher": "Aguirre、Grande、Calvo、Pugnaloni、Géminard（布宜諾斯艾利斯大學、CONICET、里昂高師）；Physical Review Letters 104, 238002 (2010)",
+      "version": "arXiv v1 2010-05-17 作者稿",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（arXiv PDF），pdftotext 全文",
+      "reading_scope": "全文：摘要、引言、裝置、Fig.1–4 圖說、量測方法、壓力與流量討論、Beverloo 推導段、結論",
+      "locator": "p.1 摘要與引言第1–2段；p.2 Fig.2 與式(1)；p.3 Fig.4、加重實驗段與維度分析段；p.4 兩條前提與結論",
+      "summary": "水平輸送帶帶動 450 片壓克力圓盤經開口流出（二維）。流量正比於帶速，與框內圓盤數量無關，也就是與出口附近壓力無關；在每片圓盤上加重、提高壓力，流量不變。出口 A/D≥6 時流動連續、剩餘盤數對時間呈直線；更小開口會暫時或永久卡住。作者指出常見解釋（Janssen 效應讓底壓飽和→流量固定）的第二個前提『底壓固定所以流量固定』不成立：流量由出口處顆粒的速度與出口幾何決定；若流量由壓力決定，三維應得 W∝A²，與實驗的 A^{5/2} 不符。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "二維水平輸送帶裝置，出口速度由帶速強加，不是重力沙漏；A/D≤10；『Beverloo 本身已預言流量與高度無關』是作者的推論；作者另說大開口時瞬時流量仍有約 15% 標準差的漲落。",
+      "author_cache": {
+        "file": "scratchpad/stw4/f3src/1005.2884.pdf",
+        "sha256_prefix": "c05acdaba3a08a5e",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P54-S002",
+      "url": "https://arxiv.org/abs/physics/0610201",
+      "canonical_url": "https://arxiv.org/abs/physics/0610201",
+      "title": "Pressure and Motion of Dry Sand – Translation of Hagen's Paper from 1852",
+      "publisher": "Tighe & Sperl（杜克大學）英譯；原文 G. H. L. Hagen, Bericht ... Königlich Preussischen Akademie der Wissenschaften zu Berlin, pp.35–42 (1852)；譯本刊 Granular Matter 9:141–144 (2007)",
+      "version": "arXiv v1 2006-10-23 譯者稿",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（arXiv PDF），pdftotext 全文",
+      "reading_scope": "全文：譯者引言、Hagen 原文全譯（靜壓量測、六個開口的出沙量、有效半徑擬合、落下高度推算、流動觀察與沙柱收縮）",
+      "locator": "譯文 §2 第2–4頁：『the height of the filling had no influence』段、六個開口半徑與每秒出沙量表、m=k(r−x)^{5/2} 擬合、玻璃側壁觀察、沙柱收縮比 1:0.806",
+      "summary": "Hagen 1852 用六個不同半徑的銳邊開口量每秒流出的砂量：裝填高度對流量沒有影響（他說 Huber-Burnand 早已察覺）；流量與『半徑減去約一顆砂粒直徑』的 5/2 次方成正比，碰到開口邊緣的砂粒會失速並干擾鄰粒；裝填越密、每秒流出越少，久流後出口附近被攪動也會變慢；玻璃側壁看到出口正上方流得最快、側向流斷斷續續；落下的沙柱會像液體噴流一樣收縮，最細處直徑比約 1:0.806，與薄壁孔口的液體收縮比相近。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "1852 年原文的英譯；單位為普魯士舊制（譯者注 1 Loth≈14.6 g、1 Zoll≈26.15 mm）；材料是粗鐵砂，容器 4 吋寬 10 吋高，平底；不是沙漏外形；『高度無影響』是 Hagen 的觀察敘述，文中未列不同高度的數據表。",
+      "author_cache": {
+        "file": "scratchpad/stw4/f3src/physics_0610201.pdf",
+        "sha256_prefix": "a516d705f851ac6c",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P54-S003",
+      "url": "https://arxiv.org/abs/2407.21685",
+      "canonical_url": "https://arxiv.org/abs/2407.21685",
+      "doi": "10.1103/PhysRevLett.133.058201",
+      "title": "Effect of particle shape on the flow of an hourglass",
+      "publisher": "Fan、Pongó、Cruz Hidalgo、Börzsönyi（Wigner 研究中心、納瓦拉大學）；Physical Review Letters 133, 058201 (2024)",
+      "version": "arXiv v1 2024-07-31 作者稿",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（arXiv PDF），pdftotext 全文",
+      "reading_scope": "摘要、引言、實驗與 DEM 方法、Fig.1–3 圖說、結果前半",
+      "locator": "摘要；p.1–2 方法段；p.2–3 Fig.2、Fig.3 敘述",
+      "summary": "同體積的九種 POM 旋轉橢球（各 5 萬顆，等效直徑 7 mm）從直徑 172/144 mm 圓筒底孔流出、以荷重元秤重：流量隨長寬比非單調，扁豆形（a/b≈0.6）約比球多 15%，米粒形（a/b≈1.5）有較小高峰，更扁或更長（0.25、4）就變慢；原因是堆積密度與出口顆粒速度都隨形狀非單調；抗剪阻力反而隨偏離球形單調增加，與流量趨勢不一致。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "實驗室圓筒（非沙漏錐頸），塑膠顆粒；引言『與裝填高度無關』是引用前人；窄筒在某些開口出現末段湧流（引文[32]，未讀）。",
+      "author_cache": {
+        "file": "scratchpad/stw4/f3src/2407.21685.pdf",
+        "sha256_prefix": "f3e9a43c6b6b3ae3",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P54-S004",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/5988",
+      "canonical_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5988",
+      "title": "Sucrose（CID 5988）與 Sodium chloride（CID 5234）PubChem 條目 Solubility 段",
+      "publisher": "NIH／NCBI PubChem（彙整 HSDB、NTP、ILO-ICSC 等）",
+      "version": "PUG-View JSON，2026-11-11 取得",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（PUG-View REST：/rest/pug_view/data/compound/5988 與 5234 JSON?heading=Solubility）",
+      "reading_scope": "兩個條目的 Solubility 小節全部字串",
+      "locator": "Solubility 小節（HSDB 與 ICSC 條目）",
+      "summary": "蔗糖：1 g 溶於 0.5 mL 水；25 °C 水溶度約 200 g/100 mL（2.12×10⁶ mg/L）。氯化鈉：25 °C 每 100 g 水溶 36.0 g；1 g 溶於 2.8 mL 水，沸水中 1 g 溶於 2.6 mL——鹽的溶解度幾乎不隨溫度增加。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "彙整資料庫，各數值出自不同原始資料；蔗糖溫度相依未在此節列出。",
+      "also_read_urls": [
+        "https://pubchem.ncbi.nlm.nih.gov/compound/5234"
+      ],
+      "access_notes": "同一次閱讀取了兩個 PubChem 條目：蔗糖 CID 5988（本來源網址）與氯化鈉 CID 5234（also_read_urls）；兩者不是同一份文件，鹽的數值出自後者。",
+      "author_cache": {
+        "file": "scratchpad/stw4/f3src/pc5988.json",
+        "sha256_prefix": "fac48d28d1612177",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      },
+      "second_cache": {
+        "file": "scratchpad/stw4/f3src/pc5234.json",
+        "sha256_prefix": "91e2b21178624d8a",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P54-S005",
+      "url": "https://doi.org/10.1103/PhysRevE.62.756",
+      "retrieval_url": "https://public.websites.umich.edu/~rddeegan/PDF/Coffee_Rings_3_PRE.pdf",
+      "canonical_url": "https://doi.org/10.1103/PhysRevE.62.756",
+      "doi": "10.1103/PhysRevE.62.756",
+      "title": "Contact line deposits in an evaporating drop",
+      "publisher": "Deegan、Bakajin、Dupont、Huber、Nagel、Witten；Physical Review E 62, 756–765 (2000)",
+      "version": "期刊排版 PDF，第一作者 Deegan 於密西根大學個人網站公開",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（application/pdf），pdftotext -layout 全文自讀",
+      "reading_scope": "全文 pp.756–764：Abstract、§I–II 探索實驗、§III 理論、§IV 結果、§V 實驗、§VI 討論、§VII 結論；公式推導只讀結論句",
+      "locator": "§II（各種基底／溶劑／溶質、倒掛液滴、電場、局部加熱、Teflon、開孔蓋）；§IV 速度在邊緣與末期發散；§V Fig.11–12 表層 10%、成長量差 50%；§VII",
+      "summary": "接觸線被釘住且邊緣蒸發時，外流把溶質送到邊緣；從糖、染料到 10 微米球、1 毫米到 15 公分的液滴、多種基底與溶劑都成環；倒掛液滴同樣成環、電場與局部加熱不改變；光滑 Teflon（不釘住）或只在中央開孔的蓋子（壓低邊緣蒸發）都得到均勻沉積；外流速度在邊緣與乾燥末期發散；1 微米球實測環的成長只有理論約一半，另有約一成顆粒被卡在液面形成表層、後期才被拖到邊緣。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "作者自己的整理稿；1997 Nature 原文（jfi.uchicago.edu 副本 TLS 憑證鏈驗證失敗，未關驗證）未讀；理論對大顆粒只解釋約 50%；Marangoni 角色作者只定性討論。",
+      "author_cache": {
+        "file": "scratchpad/f4src/deegan_pre3.pdf",
+        "sha256_prefix": "1185389fa98d65cb",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P54-S006",
+      "url": "https://arxiv.org/abs/1107.0618",
+      "canonical_url": "https://arxiv.org/abs/1107.0618",
+      "doi": "10.1103/PhysRevLett.107.085502",
+      "title": "Order-to-disorder transition in ring-shaped colloidal stains",
+      "publisher": "Marín、Gelderblom、Lohse、Snoeijer（Twente）；Physical Review Letters 107, 085502 (2011)",
+      "version": "arXiv:1107.0618v2 作者稿，與 PRL 同一研究",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET arxiv.org/pdf 200，pdftotext 全文自讀",
+      "reading_scope": "全文 4 頁含 Fig.1–4 圖說與參考文獻；未讀補充材料",
+      "locator": "Fig.1–2 有序到無序帶；Fig.3『rush hour』速度；式(3) 臨界速度；結論段 Tetris 比喻與奈米粒子",
+      "summary": "3 微升水滴在玻璃上乾燥，環的最外幾排顆粒排成方形與六角晶格，往內突然變成雜亂堆積；原因是液滴末期接觸角趨近零、往邊緣的流速急升（rush hour）：早到的慢顆粒有時間靠布朗運動排好，末期高速顆粒來不及而卡成無序；轉變發生在沉積時間與擴散排列時間相當時，所以幾十奈米的小顆粒在液滴內到不了臨界速度、整環都結晶。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一基底與 0.5–2 微米聚苯乙烯球；臨界速度式前係數由實驗定；方形／六角交替以楔形受限解釋，引前人結果。",
+      "author_cache": {
+        "file": "scratchpad/f4src/1107.0618.pdf",
+        "sha256_prefix": "e07f618577a38aed",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P54-S007",
+      "url": "https://arxiv.org/abs/1602.07937",
+      "canonical_url": "https://arxiv.org/abs/1602.07937",
+      "doi": "10.1103/PhysRevLett.116.124501",
+      "title": "Controlled uniform coating from the interplay of Marangoni flows and surface-adsorbed macromolecules",
+      "publisher": "Kim、Boulogne、Um、Jacobi、Button、Stone（Princeton）；Physical Review Letters 116, 124501 (2016)",
+      "version": "arXiv:1602.07937v2 作者稿",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET arxiv.org/pdf 200，pdftotext 全文自讀",
+      "reading_scope": "正文 pp.1–4 與 Fig.1–4 圖說；未讀 SI 與影片",
+      "locator": "Fig.1 威士忌乾痕；Fig.2 威士忌流場 I→I1→I2→II；Fig.3 乙醇水加 SDS 仍不均勻；p.3–4 高分子吸附假說與模型液",
+      "summary": "乾掉的威士忌滴留下近乎均勻的顆粒痕，而不是咖啡環；PIV 顯示先是乙醇揮發造成的多個渦流，再是表面活性物（推測來自穀物磷脂）造成的反向循環，最後才剩下往外的毛細流；只用乙醇水不會均勻，加界面活性劑 SDS 能重現流場但接觸線後退時仍把顆粒帶走；再加會吸附在基板上的高分子（各 0.05 wt%）才得到均勻沉積，作者推測威士忌裡的天然高分子扮演這個角色。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "威士忌成分作用是推測（文獻＋模型液），非逐一鑑定；液滴約 0.6 微升、指定溫濕度；顆粒為加入的 1 微米螢光球。",
+      "author_cache": {
+        "file": "scratchpad/f4src/1602.07937.pdf",
+        "sha256_prefix": "cfe44bea65da014d",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P54-S008",
+      "url": "https://doi.org/10.1119/1.19354",
+      "retrieval_url": "https://www.physics.sydney.edu.au/~cross/PUBLICATIONS/9.%20ImpactofBall.pdf",
+      "canonical_url": "https://doi.org/10.1119/1.19354",
+      "doi": "10.1119/1.19354",
+      "title": "Impact of a ball with a bat or racket",
+      "publisher": "Rod Cross（雪梨大學）；American Journal of Physics 67(8), 692–702 (1999)",
+      "version": "期刊排版 PDF，作者雪梨大學個人網站 PUBLICATIONS 公開",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200，pdftotext 全文自讀",
+      "reading_scope": "全文：Abstract、§I、§II 梁理論、§V–VII 實驗與模型、球拍段（Figs.11–15 文字）、§X Conclusions",
+      "locator": "§I（網球拍接觸 4–5 ms、衝擊傳到手 1.5 ms；球棒 1.0–1.5 ms、0.6 ms）；Fig.8 段落（自由端與夾持端反射）；球拍段『behavior of the ball is almost totally independent of the method of support of the handle』；§X",
+      "summary": "擊球時球留在網線上約 4–5 毫秒、球棒上約 1–1.5 毫秒，撞擊造成的彎曲波傳到握把要約 1.5 毫秒（球拍）或 0.6 毫秒（球棒），從手反射回來時球差不多已要離開；鋁梁實驗與彈性梁模型都顯示，撞在離兩端夠遠的位置，回彈係數與梁長、末端怎麼支撐都無關；對球拍，握把自由或以腕為樞軸，球的回彈幾乎相同，只有不切實際的剛性夾死才會靠反射波『彈弓』多送一點。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "以鋁梁與模型為主，球拍結果為計算；低速（約 1 m/s）實驗；DOI 經 Crossref 核對。",
+      "author_cache": {
+        "file": "scratchpad/f4src/9._ImpactofBall.pdf",
+        "sha256_prefix": "beb3eee7b2afe171",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P54-S009",
+      "url": "https://doi.org/10.1119/1.2713788",
+      "retrieval_url": "https://www.physics.sydney.edu.au/~cross/PUBLICATIONS/37.%20GearEffect.pdf",
+      "canonical_url": "https://doi.org/10.1119/1.2713788",
+      "doi": "10.1119/1.2713788",
+      "title": "Experimental study of the gear effect in ball collisions",
+      "publisher": "Cross（雪梨大學）、Nathan（伊利諾大學）；American Journal of Physics 75(7), 658–664 (2007)",
+      "version": "期刊排版 PDF，Cross 個人網站公開",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200，pdftotext 全文自讀",
+      "reading_scope": "Abstract、§I、§II–III 滾球實驗、§VII、§VIII Conclusion；附錄公式只讀結論",
+      "locator": "Abstract；§I 球桿頭曲面與重心後移；§VIII 不打滑時像齒輪咬合、旋轉不對稱、高爾夫自我修正、棒球角色小",
+      "summary": "球偏離中心撞上物體時，物體繞重心轉，接觸面在球還貼著時沿表面移動；若兩面不打滑，就像兩個齒輪咬住，物體往一邊轉，球被帶著往另一邊轉。一號木桿面做成曲面、重心放在擊球面後方，就是利用這點：打偏的球先飛向一側，帶出的側旋又把它拉回球道。實驗中球的回彈旋轉對入射角正負明顯不對稱。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "實驗為網球在加速平板上與高爾夫球擺錘撞木塊，非實際揮桿；作者稱棒球中效應小。",
+      "author_cache": {
+        "file": "scratchpad/f4src/37._GearEffect.pdf",
+        "sha256_prefix": "12c2ee362ddc3f6d",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P54-S010",
+      "url": "https://arxiv.org/abs/cond-mat/0201272",
+      "canonical_url": "https://arxiv.org/abs/cond-mat/0201272",
+      "title": "Spiral cracks in drying precipitates",
+      "publisher": "Néda、Leung、Józsa、Ravasz；arXiv:cond-mat/0201272（對應 Physical Review Letters 88, 095502, 2002；DOI 10.1103/PhysRevLett.88.095502 經 Crossref 核對）",
+      "version": "arXiv v1 作者稿；期刊版未讀，期刊版本文未讀",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET arxiv.org/pdf 200，pdftotext 全文自讀",
+      "reading_scope": "全文 4 頁：實驗、Fig.1–3、對數螺線擬合、機制、模擬與理論段",
+      "locator": "Fig.1 磷酸鎳沉澱的碎片與螺旋；Fig.2 ln r 對 θ 線性；k 值列表 0.058–0.086；Fig.3 脫附前緣機制；『runs like a tunnel, 20–60% penetration』",
+      "summary": "乾燥的沉澱薄層先裂成碎片，之後碎片內又出現螺旋、圓與弧形裂縫；沒有任何扭轉。濕度沿厚度不均讓碎片邊緣捲起、從底板脫開，環形的脫附前緣往內收、在前緣產生徑向拉力；裂縫在前緣某處起裂後沿前緣單向跑，跑完一圈時前緣已內移，只好再往內轉，成了螺旋；量到的螺旋都是對數螺線，k 多在 0.06–0.08，與化合物和層厚無關；裂縫像隧道沿著層與底板界面跑，只穿透 20–60% 厚度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "作者稿；層厚 0.2–0.5 毫米、顆粒數百奈米以下；機制來自顯微觀察與粗粒化模擬。",
+      "author_cache": {
+        "file": "scratchpad/f4src/cond-mat_0201272.pdf",
+        "sha256_prefix": "f1c8aafc0d12420f",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P54-S011",
+      "url": "https://ntrs.nasa.gov/citations/20080015885",
+      "retrieval_url": "https://ntrs.nasa.gov/api/citations/20080015885/downloads/20080015885.pdf",
+      "canonical_url": "https://ntrs.nasa.gov/citations/20080015885",
+      "title": "Challenges of Roll Orientation With Respect to Vehicle Heading at Touchdown for the Orion Command Module",
+      "publisher": "Gay（NASA JSC）、Bihari（Hamilton Sundstrand）；AAS 08-068，31st AAS Guidance and Control Conference (2008)",
+      "version": "NTRS 公開 PDF（NASA 作者）",
+      "accessed_on": "2026-11-11",
+      "read_via": "NTRS API 下載 PDF 200，pdftotext 自讀",
+      "reading_scope": "Abstract、Introduction、Roll Control Overview、Why is Roll Control Needed（Fig.2–4 文字）、陸地著陸 Apollo 引文；導航控制分析略讀",
+      "locator": "‘hang angle … 28 degrees toes down’；‘slice through the water reducing impact loads’；Fig.3 有無滾轉控制的法向速度—入水角",
+      "summary": "獵戶座太空艙靠降落傘吊掛角讓艙底以約 28 度『腳尖朝下』入水，並把艙轉到順著風與浪前進，使吊掛角加上浪面角給出一個不為零的入水角，讓艙『切進』水裡降低衝擊；沒有滾轉控制時相對入水角變小、若再配上較大的垂直速度，艙體受力會顯著增加。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "2008 年設計週期的需求與蒙地卡羅分析，不是實測峰值；數字屬當時設計。",
+      "author_cache": {
+        "file": "scratchpad/f4src/ntrs_20080015885.pdf",
+        "sha256_prefix": "17b86f8a98b0226f",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P54-001",
+      "question": "都說沙漏等速是因為重量被筒壁扛走，有實驗直接測過這個說法嗎？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.orifice_flow.pressure_independent_exit_velocity_control",
+      "answer_target": "2010 年布宜諾斯艾利斯與里昂的團隊把 450 片圓盤放在水平輸送帶上，讓帶子推著它們從開口流出，這樣出口速度和壓力就能分開調。結果流量正比於帶速，卻和框裡剩多少圓盤無關：出料時壓力一路下降，流量不變；在每片圓盤上加重、把壓力調高，流量也不變。作者因此說常見的解釋——Janssen 效應讓底壓飽和，所以流量固定——第二步『底壓固定所以流量固定』不成立：決定流量的是出口處顆粒的速度與出口形狀；若真由壓力決定，三維出口流量應與口徑平方成正比，與實測的 5/2 次方不符。",
+      "scope": "二維水平裝置、出口速度由帶子強加，不是重力沙漏；『Beverloo 本來就預言流量與高度無關』是作者推論。",
+      "source_ids": [
+        "P54-S001"
+      ],
+      "source_locator": "S001 摘要；引言第1–2段；p.3 加重實驗段與維度分析段；p.4 兩條前提與結論",
+      "premise_status": "screened",
+      "notes": "目標 C2-11 第二章『重量分給了牆』之後的轉折（V5 列的直接量測缺口，Aguirre 2010 PRL）；原角色 turn。撰稿時 F10003／P53-001 的 Janssen 段只當『常見說法』，再由本核心推翻，不可兩邊都當定論。 原提案 F3-028。依本池欄位記為 segment。非作者覆核 V7（2026-11-11）照原稿收；照原文，範圍已寫明二維水平裝置、不是重力沙漏。就是 V5 點名的直接量測；",
+      "editorial": {
+        "role": "segment",
+        "payoff": "筒壁扛重量是真的，但沙漏等速不是因為它；出口那一圈決定一切。",
+        "visual": "輸送帶上的圓盤從開口流出：同一帶速下，加重圓盤與一般圓盤流出的條紋密度相同；帶速加倍、條紋加倍。",
+        "seconds": [
+          60,
+          80
+        ]
+      }
+    },
+    {
+      "id": "P54-002",
+      "question": "出口夠大時沙流一定平穩嗎？小一點又會怎樣？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.orifice_flow.fluctuation_and_intermittent_jams_2d",
+      "answer_target": "同一個輸送帶實驗把流出的圓盤直接留在帶上，一張照片就記下整段出料史：出口有 7 顆圓盤寬時，瞬時流量仍有約 15% 的標準差、最大最小差到平均的六成；出口小於約 6 顆寬時就可能暫時或永久卡住，流量分布在零附近的比例明顯變大。",
+      "scope": "二維圓盤；卡住門檻與 P53-002（約 5 倍粒徑）屬同一現象，只算 0.5 條。",
+      "source_ids": [
+        "P54-S001"
+      ],
+      "source_locator": "S001 p.2 第二種量測方法段、Fig.3–4 圖說",
+      "premise_status": "screened",
+      "notes": "目標 C2-11 第三、四章銜接（等速→間歇卡住）；只算 0.5 條。 原提案 F3-029。非作者覆核 V7（2026-11-11）照覆核意見改字後收；只改『就會』為『可能』。與 P53-002 同一現象，合計 1 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "等速只是平均；放大看，沙流一直在抖。",
+        "visual": "帶上留下的圓盤條帶（依 Fig.3a 示意）：寬口是連續帶、窄口斷成一截一截。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P54-003",
+      "question": "1852 年就有人量過沙從孔裡流出的速度，他看到高度有影響嗎？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.orifice_flow.hagen_1852_height_independence_measurement",
+      "answer_target": "據 2006 年 Tighe 與 Sperl 的英譯，1852 年以管中層流研究聞名的 Hagen 在容器底開了六個不同大小、上緣為銳邊的圓孔，裝粗鐵砂量每秒流出多少：他寫下裝填高度對流量沒有影響，並說 Huber-Burnand 更早已察覺。流量也不像他先試的『與半徑三次方成正比』，而是把半徑先扣掉約一顆砂粒直徑後的 5/2 次方；他的解釋是碰到孔邊的砂粒會失速，彈開時還干擾旁邊的砂粒。",
+      "scope": "1852 年原文英譯；普魯士舊制單位；平底容器、非沙漏外形；高度無影響是敘述，未列不同高度數據表；5/2 次方與 P53-001 的 Beverloo 式重疊，只算『最早直接量測』與『扣一顆粒徑的理由』1.5 條。",
+      "source_ids": [
+        "P54-S002"
+      ],
+      "source_locator": "S002 譯文第2頁『height of the filling had no influence』段、六孔數據表與 m=k(r−x)^{5/2} 擬合",
+      "premise_status": "screened",
+      "notes": "目標 C2-11 開場與標題前半『不會越漏越慢』的直接量測（V5 缺口，Beverloo 前一百年的原始量測）；原角色 chapter_core。 原提案 F3-030。依本池欄位記為 segment。非作者覆核 V7（2026-11-11）照覆核意見改字後收；三處歸屬改回原文並標明透過英譯。『高度無影響』是 Hagen 的敘述、沒有分高度的數據表；",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沙漏定律的早期實驗紀錄，比 Beverloo 早了一百多年；連他都說有人比他更早發現。",
+        "visual": "六個銅孔由大到小，每孔下方一秒的砂堆（依表數值比例重繪）；孔邊一圈灰色『失速帶』。",
+        "seconds": [
+          50,
+          65
+        ]
+      }
+    },
+    {
+      "id": "P54-004",
+      "question": "砂裝得越緊流得越快嗎？流出去的砂柱又像不像水柱？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.orifice_flow.packing_density_and_jet_contraction",
+      "answer_target": "Hagen 發現裝得越密，每秒流出的砂反而越少；流久了出口附近被攪動，流量也會下降。他從玻璃側壁看到，出口正上方的砂越流越快、到出口上方突然加速到看不清，側邊的砂則斷斷續續往中間流（他推測是玻璃摩擦造成）；而落下的砂柱會像液體一樣收縮，最細處直徑只有孔徑的約八成（1:0.806），和液體從薄壁孔口流出時的收縮比相近。",
+      "scope": "1852 年單一觀察；收縮比量自單一 0.335 吋孔。",
+      "source_ids": [
+        "P54-S002"
+      ],
+      "source_locator": "S002 譯文第2頁裝填密度段；第3–4頁流動觀察與收縮比段",
+      "premise_status": "screened",
+      "notes": "目標 C2-11『泡在水裡』之前的『沙像不像水』段；算 1 條（密度效應 1、收縮比當畫面補充）。 原提案 F3-031。非作者覆核 V7（2026-11-11）照覆核意見改字後收；補上原文但書並把『水柱』改回『液體』。算 1 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沙在流量上和水完全不同，出了孔卻像水一樣收腰。",
+        "visual": "玻璃側壁剖面：中央快流柱、兩側斷續；孔下砂柱收腰到 0.8 倍。",
+        "seconds": [
+          35,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P54-005",
+      "question": "換成扁豆形或米粒形的顆粒，沙漏會流得更快還是更慢？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.orifice_flow.grain_shape_nonmonotonic_rate",
+      "answer_target": "2024 年匈牙利與西班牙團隊做了九種體積相同、只有形狀不同的塑膠橢球，各五萬顆，從圓筒底孔流出並秤重：從球形變扁，流量先增加，扁豆形約比球多 15%；變長的米粒形也有一個較小的高峰；再更扁或更長就變慢。原因是堆積密度與顆粒通過出口的速度都隨形狀先升後降；而抵抗剪切的阻力卻隨形狀越偏越大，和流量趨勢不一致。",
+      "scope": "實驗室圓筒，非沙漏錐頸；塑膠顆粒；DEM 模擬同時佐證。",
+      "source_ids": [
+        "P54-S003"
+      ],
+      "source_locator": "S003 摘要；方法段；Fig.2–3 敘述",
+      "premise_status": "screened",
+      "notes": "目標 C2-11『流量由什麼決定』的第二個控制變數（出口之外的顆粒本身）；算 1 條；若片長已足可刪。 原提案 F3-032。非作者覆核 V7（2026-11-11）照原稿收；照原文；但它回答的是『形狀怎麼影響流量』，不是 C2-11 的轉折，最終組合不用以免變成變數清單，留池備用。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "稍微不圓的顆粒排得更緊、也跑得更快。",
+        "visual": "球、扁豆、米粒、針狀四種顆粒，各自流量長條（依論文趨勢示意）。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P54-006",
+      "question": "同一杯水，能溶的糖和鹽差多少？熱水能讓鹽溶得更多嗎？",
+      "domain": "化學與溶液",
+      "mechanism_key": "solution.solubility.sucrose_vs_nacl_temperature",
+      "answer_target": "PubChem 彙整的資料：1 公克蔗糖約 0.5 毫升水就能溶，另一筆資料列 25 °C 時每 100 毫升水可溶約 200 公克；食鹽在 25 °C 每 100 公克水只溶 36.0 公克，1 公克要 2.8 毫升水。換成沸水，1 公克鹽也還要 2.6 毫升水，和室溫的 2.8 毫升相差不多。",
+      "scope": "彙整資料庫數值，來源各異；蔗糖溫度相依此節未列，不可據此說熱糖水能裝多少。",
+      "source_ids": [
+        "P54-S004"
+      ],
+      "source_locator": "S004 CID 5988 與 CID 5234 Solubility 小節",
+      "premise_status": "screened",
+      "notes": "目標 G01『透明也可能藏著不穩定』章的濃度數值（審查列缺糖鹽溶解度數值來源）；原角色 chapter_core；算 1–1.5 條。 原提案 F3-033。依本池欄位記為 segment。非作者覆核 V7（2026-11-11）照覆核意見改字後收；溫度歸屬與推論句改回資料原樣。G01 仍後備，本核心入池備用。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "糖能溶的量是鹽的好幾倍，熱水救不了鹽。",
+        "visual": "兩杯水：糖堆疊成高塔仍溶完，鹽堆一小撮就到頂；加熱後鹽線幾乎不動。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P54-007",
+      "question": "咖啡、糖水、鹽水、顏料乾了都留下一圈，為什麼不是重力或靜電把東西拉到邊上？",
+      "domain": "熱與流體界面",
+      "mechanism_key": "fluids.coffee_ring.generality_and_excluded_causes",
+      "answer_target": "芝加哥大學團隊把乾痕成環的條件一一改過：玻璃、金屬、聚乙烯、雲母、陶瓷、矽都成環；水和丙酮、甲醇、甲苯、乙醇都成環；溶質從糖、染料分子到 10 微米的塑膠球，液滴從 1 毫米到 15 公分，也都成環。把液滴倒掛著乾，得到的環和正放時分不出差別；在接觸線附近加每毫米數百伏的電場、或用熱絲局部加熱，環也沒有本質改變。可見重力、靜電與溫差都不是成環的主因。",
+      "scope": "限作者所試條件；局部加熱時會出現循環流，只是不改變成環；溫度梯度在其他情況（見 X42-009）可改變內部流向。",
+      "source_ids": [
+        "P54-S005"
+      ],
+      "source_locator": "S005 §II Exploratory experiments 第1–3段",
+      "premise_status": "screened",
+      "notes": "目標 C3-13（墨水與咖啡環）開場後第一章；取代 C3-13 缺的『咖啡環基本機制原研究』。與 H3092（SIAM News，一句話機制）同主題，機制句只在 P54-008 講一次，不重算。 原提案 F4-001。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V6（2026-11-11）照原稿收；答案只說來源寫的；開場用的普遍性與排除重力、靜電、溫差都有原文。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "成環這麼普遍，因為它不靠重力或電，而靠每滴液體都會有的東西。",
+        "visual": "原創排列：同一圈出現在咖啡、鹽漬、水彩；倒掛液滴與正放液滴並排示意。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P54-008",
+      "question": "同一滴咖啡，換到光滑的鐵氟龍上或蓋上只在中間開孔的蓋子，為什麼外圈就不見了？",
+      "domain": "熱與流體界面",
+      "mechanism_key": "fluids.coffee_ring.pinning_and_edge_evaporation_required",
+      "answer_target": "成環需要兩個條件同時成立：接觸線被表面的粗糙或髒點釘住，以及邊緣的蒸發。釘住時液滴不能縮小，邊緣蒸發掉的水只能由內部往外流來補，這股外流把懸浮物帶到邊緣，理論上能把全部溶質送過去。研究者在光滑的鐵氟龍上讓液滴乾燥，接觸線不再釘住、液滴邊乾邊縮，沒有出現環；在玻璃上加一個只在液滴中央上方開小孔的蓋子，大幅減少邊緣所占的蒸發比例，乾後的沉積也變成均勻的。",
+      "scope": "限作者的探索實驗；『全部送到邊緣』是理論極限，實測見 P54-009。不是說鐵氟龍鍋上不會留水痕。",
+      "source_ids": [
+        "P54-S005"
+      ],
+      "source_locator": "S005 §I 第3段、§II 末段（Teflon、開孔蓋）、§III Fig.2",
+      "premise_status": "screened",
+      "notes": "目標 C3-13 第一個轉折：把開場的『為什麼在邊緣』變成可以關掉的兩個開關。 原提案 F4-002。作者標為轉折，依本池欄位記為 segment。非作者覆核 V6（2026-11-11）照原稿收；與池內 H3092（SIAM News 一句話機制）同原理，但本核心多了原研究的兩個反事實對照（鐵氟龍、開孔蓋），答案更完整，不算重複；同一集只用 P54-008，不再用 H3092。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是邊緣有什麼魔力，是邊緣被釘住又一直在蒸發；拿掉其中一個，環就消失。",
+        "visual": "Deegan PRE Fig.2 的釘住／不釘住示意改繪；鐵氟龍上縮小的液滴對照玻璃上的環；中央開孔蓋的蒸發箭頭示意。",
+        "seconds": [
+          60,
+          85
+        ]
+      }
+    },
+    {
+      "id": "P54-009",
+      "question": "理論和實驗都說顆粒最後幾乎全到邊緣，為什麼研究者還說理論只對了一半？",
+      "domain": "熱與流體界面",
+      "mechanism_key": "fluids.coffee_ring.late_divergence_shortfall_surface_cap",
+      "answer_target": "Deegan 等人的理論預測，往邊緣的流速在接觸線附近、以及乾燥的最後階段都會急遽變快，溶質最後幾乎全數送到邊緣；實驗也看到幾乎全數抵達。但用 1 微米塑膠球逐時計數抵達邊緣的顆粒，乾燥前期只到了理論預期的約一半，最後的衝刺卻比理論更猛，也就是顆粒比理論預期晚到。原因之一是：在較大顆粒的液滴裡，研究者直接看到液面上約八成半徑處聚著一層像固體膜的顆粒表層，約占全部溶質的一成，被向內的表面流留在中央附近，到後期才破開、被拖到邊緣。改用 0.1 微米的顆粒時，理論準確得多。",
+      "scope": "1 微米與 0.1 微米顆粒的比較來自同篇；表層歸因於溫差造成的向內表面流（Marangoni）是作者推論。末期加速與 P54-010 的『尖峰時刻』是同一現象，同一集只講一次；本核心只計 0.5 條。",
+      "source_ids": [
+        "P54-S005"
+      ],
+      "source_locator": "S005 §IV 速度發散段；§V Fig.10–12 與表面層段；§VI『50% shortfall』段",
+      "premise_status": "screened",
+      "notes": "目標 C3-13；併入 P54-010 那一章當作前導一句（理論低估了末期），不另開章。 原提案 F4-003。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V6（2026-11-11）照覆核意見改字後收；原稿把『只對了一半』寫成顆粒只到一半，並把表層放在『液面下』，兩處與原文不符，已改寫。末期加速和 P54-010 重疊，只算 0.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "外流並不是均速的，最後一刻才是大部分顆粒抵達的時候。",
+        "visual": "原創時間軸：流速曲線在末期陡升；顯微下的表面層示意。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P54-010",
+      "question": "咖啡環最外面幾排顆粒排得整整齊齊，為什麼往內一點就亂成一團？",
+      "domain": "熱與流體界面",
+      "mechanism_key": "fluids.coffee_ring.rush_hour_order_disorder",
+      "answer_target": "特溫特大學把 3 微升、帶 0.5–2 微米螢光球的水滴放在玻璃上乾燥。乾後的環最外幾排顆粒先排成方形、再排成六角晶格，往內卻突然變成雜亂堆積。同步量流速發現，液滴末期接觸角趨近零，同樣的水量要擠過越來越薄的邊緣，往外的流速急升，作者稱為『尖峰時刻』：早到的顆粒慢慢來、有時間靠布朗運動找到位置；尖峰時刻衝進來的顆粒來不及排，被卡成亂堆。轉變點落在沉積時間與擴散排列時間相當的地方，因此幾十奈米的小顆粒在液滴內達不到那個速度，整圈都能結晶。",
+      "scope": "限所測顆粒與玻璃基底；臨界速度式的前係數由實驗定。方形／六角交替是楔形受限的結果，可一句帶過。",
+      "source_ids": [
+        "P54-S006"
+      ],
+      "source_locator": "S006 Fig.1c–d、Fig.2、Fig.3、式(3)、Fig.4 與結論段",
+      "premise_status": "screened",
+      "notes": "目標 C3-13 第二個轉折：同一圈裡的排法也記錄了顆粒何時到；與 X42-005（不同粒徑停在不同帶）互補但答案不同。 原提案 F4-004。作者標為轉折，依本池欄位記為 segment。非作者覆核 V6（2026-11-11）照原稿收；數字、機制與比喻都在原文。與 X42-005（粒徑分帶）答案不同：一個答『誰擠得進』，一個答『誰何時到』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "環不只是堆在哪裡，還記下了誰先到：慢來的排隊，尖峰時刻衝進來的只能亂塞。",
+        "visual": "原刊 Fig.1d 有序→無序 SEM 帶、Fig.3 流速末期陡升；原創俄羅斯方塊比喻動畫（作者自己用此比喻）。",
+        "seconds": [
+          60,
+          80
+        ]
+      }
+    },
+    {
+      "id": "P54-011",
+      "question": "威士忌滴在玻璃上乾掉，為什麼沒有留下咖啡那樣的深色外圈？",
+      "domain": "熱與流體界面",
+      "mechanism_key": "fluids.coffee_ring.whisky_marangoni_polymer_uniform",
+      "answer_target": "普林斯頓團隊發現乾掉的威士忌滴留下近乎均勻的痕跡。追蹤流場，先是乙醇揮發造成的多個渦流把顆粒攪散，接著酒裡的表面活性物質（作者推測來自穀物的磷脂）造成反向循環，最後乙醇幾乎揮發完才剩下常見的往外毛細流。只用同比例的乙醇水不會均勻；加入界面活性劑能重現流場，但接觸線後退時仍把顆粒帶往中央。再加一點會吸附在玻璃上的高分子（兩者各約 0.05 wt%），顆粒被基板留住，才得到均勻沉積，作者推測威士忌中的天然高分子扮演這一角。",
+      "scope": "威士忌裡哪種成分起作用是推測，模型液是實證；液滴約 0.6 微升、溫濕度固定。不建議據此判酒真假。",
+      "source_ids": [
+        "P54-S007"
+      ],
+      "source_locator": "S007 Fig.1、Fig.2 regime I/I1/I2/II、Fig.3d、p.3–4 高分子假說與 Fig.4",
+      "premise_status": "screened",
+      "notes": "目標 C3-13 收尾前的生活實例與第三個轉折：要不成環，得同時攪散又把顆粒黏住，回扣 P54-008 的兩個開關。 原提案 F4-005。作者標為轉折，依本池欄位記為 segment。非作者覆核 V6（2026-11-11）照原稿收；答案與 scope 都忠於原文，推測處已標為推測。可當全片收尾的轉折：不成環要同時攪散與黏住。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不成環需要兩件事一起發生：先把顆粒攪散，再讓底板把它們抓住。",
+        "visual": "原刊 Fig.1 威士忌乾痕對照咖啡環；Fig.2 四段流場示意；原創『攪散＋黏住』兩格圖。",
+        "seconds": [
+          60,
+          80
+        ]
+      }
+    },
+    {
+      "id": "P54-012",
+      "question": "擊球那一下，手是鬆鬆拿著還是以手腕為軸握住握把，為什麼幾乎不影響球彈出去的速度？",
+      "domain": "運動中的碰撞",
+      "mechanism_key": "impact.bat_racket.contact_shorter_than_wave_roundtrip",
+      "answer_target": "雪梨大學 Cross 量測與模擬指出，網球在網線上只停約 4–5 毫秒、棒球在球棒上約 1–1.5 毫秒；撞擊引起的彎曲波傳到握把，球拍要約 1.5 毫秒、球棒約 0.6 毫秒，等它從手反射回來，球差不多已經要離開。用鋁梁做的理想化球棒，只要撞點離兩端夠遠，回彈係數與梁長、兩端怎麼支撐都無關；換成球拍的模型，握把完全放開或以握把末端為樞軸，撞在網線上時球的回彈幾乎一樣。只有把握把剛性夾死時，反射波才會影響拍面中段的回彈；作者指出真實的手和手腕比較像樞軸而不是夾鉗，所以這只有學術意義。",
+      "scope": "鋁梁實驗為低速（約 1 m/s）；球拍結果是彈性梁模型計算。不是說握法不影響揮拍速度或手腕受力（P30003 另答）。",
+      "source_ids": [
+        "P54-S008"
+      ],
+      "source_locator": "S008 §I 第2–3段；Fig.8 段；球拍段（Fig.11）；§X",
+      "premise_status": "screened",
+      "notes": "目標 C3-10（擊球幾毫秒）：替代被刪的 X41-008，成為『第二個接觸來得太晚』的轉折，與開場 X41-001（第二個接觸來得太早）成對。 原提案 F4-009。作者標為轉折，依本池欄位記為 segment。非作者覆核 V6（2026-11-11）照覆核意見改字後收；數字與結論都在原文，但原文比的是支撐方式不是握力，題目改成支撐方式，章名請改為『手的訊號來得太晚』，不寫『握多緊都沒差』。與 P30003（手受力、G299）不同答案。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "手的訊號趕不上：球在棒子『通知』到手、再傳回來之前就走了。",
+        "visual": "原創時間軸：接觸 1 ms／4 ms 長條對照彎曲波往返握把的箭頭；慢動作網拍彎曲示意（Cross Fig.12–13 改繪），標明球拍結果為模型計算。",
+        "seconds": [
+          60,
+          80
+        ]
+      }
+    },
+    {
+      "id": "P54-013",
+      "question": "高爾夫球打在桿頭偏邊的地方，為什麼飛出去偏了，後來又會自己彎回球道？",
+      "domain": "運動中的碰撞",
+      "mechanism_key": "impact.gear_effect.offcenter_clubhead_rotation_spin",
+      "answer_target": "球偏離重心撞上桿頭或木塊時，被撞的物體在接觸期間就開始繞自己的重心轉，接觸面沿表面滑動。若球與表面不打滑，兩者就像一對咬合的齒輪：物體往一邊轉，球被帶著往反方向轉。一號木桿的擊球面做成弧面、重心放在擊球面後方，正是利用這點：打偏的球先往一側飛，接觸中帶出的側旋讓它在空中彎回球道中央。Cross 與 Nathan 的擺錘實驗也量到，球的回彈旋轉對入射角的正負明顯不對稱。",
+      "scope": "實驗用高爾夫球擺錘撞木塊與平板上的網球，非實際揮桿；作者說此效應在棒球很小。飛行中彎回屬空氣力學，只一句帶過。",
+      "source_ids": [
+        "P54-S009"
+      ],
+      "source_locator": "S009 Abstract；§I 第1段；§VIII",
+      "premise_status": "screened",
+      "notes": "目標 C3-10，接在 P30004（超過剛體轉速）後：同樣是接觸期間表面在動，這次動的是球桿。 原提案 F4-010。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V6（2026-11-11）照原稿收；答案與 scope 忠於原文，飛行彎回只一句帶過。池內無齒輪效應核心（D212x 是傳動齒輪）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "打偏了也有補救：桿頭被撞轉的那一下，順手替球上了反向的旋。",
+        "visual": "原創：齒輪咬合比喻；桿頭俯視、偏心撞擊時桿頭轉向與球旋轉箭頭相反；球道曲線示意。",
+        "seconds": [
+          50,
+          70
+        ]
+      }
+    },
+    {
+      "id": "P54-014",
+      "question": "乾掉的泥層或沉澱沒有人去扭，裂縫為什麼會繞成一圈圈的螺旋？",
+      "domain": "材料與斷裂",
+      "mechanism_key": "fracture.spiral_cracks.detachment_front_drying_precipitate",
+      "answer_target": "Néda 等人讓磷酸鎳、普魯士藍等沉澱的薄層在培養皿裡乾燥：薄層先裂成碎片，碎片裡再出現螺旋、圓圈與弧形裂縫，整個過程沒有任何扭轉。顯微觀察顯示，濕度沿厚度不均讓碎片邊緣捲起、從底板脫開，環形的脫附前緣不斷往內收，在前緣產生徑向拉力；裂縫在前緣某處起裂後沿前緣往一個方向跑，等它繞完一圈，前緣已經內移，只好再往內轉，就成了螺旋。量到的螺旋都近似對數螺線，捲緊程度 k 多在 0.06–0.08，與化合物和層厚無關；裂縫像隧道一樣貼著層與底板的界面走，只穿透 20–60% 厚度。",
+      "scope": "層厚 0.2–0.5 毫米、顆粒數百奈米以下；機制依顯微觀察與粗粒化模擬。不推到骨頭的螺旋骨折（那是扭轉造成）。",
+      "source_ids": [
+        "P54-S010"
+      ],
+      "source_locator": "S010 Fig.1、Fig.2、k 值列表與觀察(iii)、Fig.3 機制段、隧道段",
+      "premise_status": "screened",
+      "notes": "目標 C2-12（裂縫挑路）：『裂縫自己挑路』的新素材，不與 G31（何時失控、增韌）重疊；作為最後一個轉折放在打結麵之前或之後。 原提案 F4-011。作者標為轉折，依本池欄位記為 segment。非作者覆核 V6（2026-11-11）照覆核意見改字後收；只改一個措辭（『都是』改『都近似』），其餘忠於原文。答的是裂縫路線，不碰 G31 的失控與增韌。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不用扭也會轉：裂縫一路追著往內縮的拉力前緣跑，就繞成了螺旋。",
+        "visual": "原刊 Fig.1c–d 螺旋顯微照與玻璃上的痕；Fig.3 脫附前緣示意；原創對數螺線疊圖。",
+        "seconds": [
+          60,
+          80
+        ]
+      }
+    },
+    {
+      "id": "P54-015",
+      "question": "太空艙落海時，為什麼要先轉好方向、斜著『切』進水裡？",
+      "domain": "流體衝擊",
+      "mechanism_key": "water_entry.capsule.hang_angle_heading_reduces_loads",
+      "answer_target": "NASA 獵戶座太空艙靠降落傘的吊掛方式讓艙底以約 28 度『腳尖朝下』的角度入水，並在落水前用推進器把艙轉到順著風與浪前進的方向，使吊掛角加上浪面角給出一個不為零的入水角，讓艙能切進水裡、降低衝擊。分析顯示沒有這種滾轉控制時，相對入水角會變小，若再碰上較大的垂直速度，艙體受力會顯著增加。",
+      "scope": "2008 年設計週期的需求與蒙地卡羅分析，不是實測峰值；只能說角度與速度組合決定受力，不給數字。",
+      "source_ids": [
+        "P54-S011"
+      ],
+      "source_locator": "S011 Why is Roll Control Needed 段與 Fig.2–3 文字",
+      "premise_status": "screened",
+      "notes": "目標 C3-12（入水撞擊峰值）的真實尺度開場；單獨只加約 1–1.5 條，仍未過線。 原提案 F4-013。作者標為開場鉤子，依本池欄位記為 segment。非作者覆核 V6（2026-11-11）照原稿收；忠於原文，且已標明是設計值與分析、不給峰值。池內無太空艙入水核心。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣落海，平拍下去和斜著切進去，受力差很多。",
+        "visual": "原創：太空艙吊掛角 28 度與浪面角相加的示意；平拍與斜切兩種入水對照。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "P54-NA001",
+      "question": "暖暖包一按金屬片就整包結晶發熱，過飽和溶液是被什麼觸發的？",
+      "existing_ids": [
+        "P232"
+      ],
+      "source_ids": [],
+      "reason": "想補 G01 成核的第二來源；找到 CrystEngComm 2021（doi 10.1039/d0ce01454k）開放全文，但 pubs.rsc.org 對 curl 回 403，只讀到搜尋摘要，不算已讀，不寫核心。 原提案 F3-NA001。",
+      "reentry_condition": "取得 RSC 全文（瀏覽器或 Europe PMC 若有收錄）並讀到金屬片晶種機制的原文段落。",
+      "reading_status": "未讀（403）"
+    },
+    {
+      "id": "P54-NA002",
+      "question": "沙漏的重量在流沙時會變嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Sack & Pöschel 的沙漏重量研究回答的是另一個問題（秤重變化），不是流量與卡住，不併入 C2-11。 原提案 F3-NA005。",
+      "reentry_condition": "另立短題時再讀。",
+      "reading_status": "只見搜尋摘要"
+    },
+    {
+      "id": "P54-NA003",
+      "question": "咖啡環的基本機制（Deegan 1997 Nature）",
+      "existing_ids": [
+        "H3092",
+        "X42-005"
+      ],
+      "source_ids": [],
+      "reason": "1997 Nature 原文的作者副本（jfi.uchicago.edu）TLS 憑證驗證失敗，未關驗證；nature.com 為訂閱頁。改讀同團隊 2000 年 PRE 全文（P54-S005），該文自述擴充並重現 1997 結果。 原提案 F4-NA002。",
+      "reentry_condition": "不需要；PRE 已足。",
+      "reading_status": "未讀。"
+    }
+  ]
+}

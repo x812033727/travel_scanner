@@ -1,0 +1,352 @@
+{
+  "batch_id": "wave55-physics-20261111",
+  "created_on": "2026-11-11",
+  "scope": "水裡的 PFAS 被活性碳、離子交換樹脂與逆滲透拿掉之後去了哪裡：替長題 G23 補 EPA 的處理技術說明、2024 年處置暫行指引與氣提法公民指南；四來源，其中 EPA〈Overview of Drinking Water Treatment Technologies〉是池中 SRC-b230cde640c14ff6 同一頁的本輪重讀，併入同一來源 id。",
+  "sources": [
+    {
+      "id": "P55-S001",
+      "url": "https://www.epa.gov/sciencematters/reducing-pfas-drinking-water-treatment-technologies",
+      "canonical_url": "https://www.epa.gov/sciencematters/reducing-pfas-drinking-water-treatment-technologies",
+      "title": "Reducing PFAS in Drinking Water with Treatment Technologies",
+      "publisher": "U.S. EPA, Science Matters",
+      "version": "2018-08-23",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200，轉純文字全文",
+      "reading_scope": "全文：導言、Activated Carbon、Ion Exchange、High-pressure Membranes",
+      "locator": "Activated Carbon 第3–5段（Speth 引言）；Ion Exchange 第2–3段；High-pressure Membranes 全段",
+      "summary": "傳統淨水無法去除 PFAS；有效的是活性碳吸附、離子交換樹脂、高壓膜。GAC『可以在一段時間內 100% 有效』，時間長短取決碳種、床深、流速、哪一種 PFAS、溫度與有機物；長鏈 PFOA、PFOS 吸附得好，短鏈 PFBS、PFBA 差。粉狀活性碳去除有限，還多出含 PFAS 的污泥。陰離子交換樹脂容量高但較貴；一次性使用後焚化樹脂，就沒有再生廢液。奈濾／逆滲透對包括短鏈在內的多種 PFAS 去除率通常超過 90%，但約 80% 進水成為處理水、約 20% 成為高濃度廢水，難處理，或許最適合家用定點。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "2018 年研究介紹；百分比為 EPA 研究員概述，非單一實驗數據。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/epapfas.html",
+        "sha256_prefix": "8deb389325247175",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P55-S002",
+      "url": "https://www.epa.gov/system/files/documents/2024-04/2024-interim-guidance-on-pfas-destruction-and-disposal.pdf",
+      "canonical_url": "https://www.epa.gov/system/files/documents/2024-04/2024-interim-guidance-on-pfas-destruction-and-disposal.pdf",
+      "title": "Interim Guidance on the Destruction and Disposal of PFAS and Materials Containing PFAS（2024 Update）",
+      "publisher": "U.S. EPA",
+      "version": "2024-04（Interim Guidance for Public Comment）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 PDF，pdftotext；讀指定章節",
+      "reading_scope": "Executive Summary 全文；§2.e Spent water treatment materials 全節（2.e.i–iv、Table 2-4）；§2.f Landfill leachate；§3.a.i.2 Carbon regeneration and reactivation units 全節",
+      "locator": "pp.1–3；pp.29–32（Table 2-4、GAC 與樹脂載量、RO 濃縮流）；p.32 §2.f；pp.48–49 §3.a.i.2",
+      "summary": "PFAS 處理廠的殘餘物去向表：廢 GAC→再活化、焚化或掩埋；離子交換廢樹脂→焚化或掩埋，再生鹽水→暫存或地下注入；RO/NF 濃水→依許可排放。截至 2023-12 美國聯邦沒有 PFAS 處置專門規定。保守高估時 GAC 載量約 2% 重量（每克碳 0.02 克 PFOS），常見情況或短鏈約每克 10⁻⁵ 克；PFAS 選擇性樹脂高估約 10%。掩埋的 GAC 碰到 PFAS 較低的水或更強吸附物時，PFAS 會脫附進滲出水；滲出水最常送到污水廠，而傳統污水處理通常無法處理 PFAS。樹脂不能像 GAC 那樣熱再活化，市場轉向一次性加焚化；若要再生需要酒精溶劑，產生高濃度鹽水，可能只能暫存而越積越多。RO 濃縮流約 20% 流量，大型系統（日處理 2,000 萬加侖→濃水 400 萬加侖）無法用效率較高的批次處理。再活化爐：乾燥 100–110°C、脫附 315–400°C、熱解至 800°C、約 800°C 氧化；後燃器設計達 99.99% 破壞去除率但以『總碳氫』計，不是針對最難破壞成分，所以對 PFAS 是否被破壞仍有不確定；全美約 17 座商用爐、4 座有 RCRA 許可。EPA 也強調『釋放』不等於『直接暴露』。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "公開徵詢意見中的暫行指引；數值多為估計範圍；未讀 §3.b 掩埋與 §3.c 注入細節。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/epadisp.pdf",
+        "sha256_prefix": "41524cfc0f570d80",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P55-S003",
+      "url": "https://www.epa.gov/sdwa/overview-drinking-water-treatment-technologies",
+      "canonical_url": "https://www.epa.gov/sdwa/overview-drinking-water-treatment-technologies",
+      "title": "Overview of Drinking Water Treatment Technologies",
+      "publisher": "U.S. EPA",
+      "version": "2026-11-11 讀取當下版本",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200，轉純文字全文（重讀既有 SRC-b230cde640c14ff6）",
+      "reading_scope": "全頁：GAC、Packed tower aeration、Multi-stage bubble aeration、Anion exchange、Cation exchange、Biological treatment、RO/NF、Adsorptive media、UVAOP、Caustic feed",
+      "locator": "各技術的 What is／Why useful／Advantages／Disadvantages 段",
+      "summary": "曝氣把揮發物從水移到空氣：塔式曝氣對多數 VOC 去除 99% 以上、不產生液體或固體殘渣，但依地點空污法規可能要加空污控制。陰離子交換可去除砷、六價鉻、硝酸鹽、過氯酸鹽、PFAS、鈾等；再生鹽水是濃縮污染物溶液，需排放或處置，換新樹脂則廢樹脂有時需危廢許可；會降低 pH。生物處理用細菌把硝酸鹽、過氯酸鹽還原，去除逾 90%，『破壞』而非移走，不產生含污染物廢流，但仍有生物質要處理、可能耗氧。RO/NF 會損失 15–30% 進水成濃水。UV 高級氧化破壞 1,4-二噁烷（>99%）、MTBE（>90%），但非選擇性氧化可能增加消毒副產物前驅物，殘留藥劑可能要再接 GAC。吸附介質去除砷可達 99% 以上，廢介質或再生液需處置。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "概論頁；去除率為技術一般能力，不代表特定廠或家用產品。",
+      "refreshes_source_id": "SRC-b230cde640c14ff6",
+      "applies_to_candidate_ids": [
+        "D2001",
+        "D2002",
+        "D2003",
+        "D2004",
+        "D2006",
+        "D2007",
+        "D2009",
+        "D2010",
+        "D2011"
+      ],
+      "access_notes": "與池中 SRC-b230cde640c14ff6（wave2-everyday-engineering-20261101 節錄閱讀）是同一頁；以同一網址追加本輪重讀紀錄，不另立來源。舊核心 D2001–D2009 已有的吸附、氣提、離子交換與濃水去向不重計，本輪只新增生物處理與紫外線氧化真的破壞污染物一句，由 P55-008 承接；同頁重讀的 P55-NA002、P55-NA003 經覆核退回。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/epaover.html",
+        "sha256_prefix": "bc0ddc1ed07fe1e9",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P55-S004",
+      "url": "https://19january2021snapshot.epa.gov/sites/static/files/2015-04/documents/a_citizens_guide_to_air_stripping.pdf",
+      "canonical_url": "https://19january2021snapshot.epa.gov/sites/static/files/2015-04/documents/a_citizens_guide_to_air_stripping.pdf",
+      "title": "A Citizen’s Guide to Air Stripping（EPA 542-F-12-002）",
+      "publisher": "U.S. EPA, Office of Solid Waste and Emergency Response",
+      "version": "2012-09（EPA 2021-01-19 網站快照存檔）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 PDF（epa.gov 原址與 semspub 404，改讀 EPA 官方快照），pdftotext 全文",
+      "reading_scope": "全文（兩頁）：What Is、How Does It Work、How Long、Is It Safe、Example、Why Use",
+      "locator": "How Does It Work 第2段；Is It Safe；Example 框（North Indian Bend Wash）",
+      "summary": "氣提把揮發性有機物從水趕到空氣；空氣與化學蒸氣在塔頂收集，濃度夠低才排放，否則先處理。範例：亞利桑那 North Indian Bend Wash 超級基金場址，地下水含工業溶劑三氯乙烯（TCE），污染約 8 平方英里、深逾 100 英尺；1994 年起四套抽出處理系統，填充塔氣提出的 VOC 蒸氣再用活性碳與紫外線氧化處理，處理後水送灌溉網與水庫；到 2011 年已移除逾 40,000 磅 TCE，預計還要運轉 40–70 年。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "2012 年資料；為地下水整治，不是一般自來水廠。",
+      "author_cache": {
+        "file": "scratchpad/stw5/f6src/airstrip.pdf",
+        "sha256_prefix": "d203da25b153f235",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P55-001",
+      "question": "同一顆活性碳，為什麼抓得住 PFOA，卻抓不太住短鏈的 PFBA？",
+      "domain": "水處理",
+      "mechanism_key": "water.pfas.gac_chain_length_breakthrough",
+      "answer_target": "EPA 說傳統淨水流程去不掉 PFAS，有效的是活性碳、離子交換樹脂和高壓膜。EPA 研究員說，顆粒活性碳『可以在一段時間內 100% 有效』，時間長短取決碳的種類、床深、流速、哪一種 PFAS、水溫和水中其他有機物；長鏈的 PFOA、PFOS 吸附得好，短鏈的 PFBS、PFBA 就差。粉狀活性碳去除有限，還會多出含 PFAS 的污泥。",
+      "scope": "EPA 2018 Science Matters；『一段時間』是研究員概述，非單一實驗。",
+      "source_ids": [
+        "P55-S001"
+      ],
+      "source_locator": "S001 Activated Carbon 第3–5段",
+      "premise_status": "screened",
+      "notes": "G23 第二轉折的起點：『哪種處理適合哪種污染物』（審查指定缺口）。 原提案 F6-038。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；審查指定的第二轉折（哪種處理配哪種污染物）起點。與空閒 D2003（其他成分競爭容量）部分相關，不重疊答案。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一種濾材，對不同污染物有不同的保存期限。",
+        "visual": "兩條 PFAS 分子鏈一長一短流過碳床，長的被黏住，短的先溜出出口。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P55-002",
+      "question": "逆滲透能擋下九成以上的 PFAS，那被擋下的去哪了？",
+      "domain": "水處理",
+      "mechanism_key": "water.pfas.ro_concentrate_20pct",
+      "answer_target": "EPA 說奈濾和逆滲透對包括短鏈在內的多種 PFAS 去除率通常超過 90%；但大約 80% 的進水變成處理水，約 20% 被留成高濃度廢水，難處理也難處置，EPA 研究員認為它或許最適合家用的定點處理，因為水量小。2024 年指引補充：這股濃縮流還含高濃度鹽類和其他污染物，大型系統每天處理 2,000 萬加侖就有 400 萬加侖濃水，量大到無法用效率較高的批次處理。",
+      "scope": "EPA 2018 稿與 2024 指引 §2.e.iii；D2009 機制只算增量。",
+      "source_ids": [
+        "P55-S001",
+        "P55-S002"
+      ],
+      "source_locator": "S001 High-pressure Membranes；S002 pp.31–32",
+      "premise_status": "screened",
+      "notes": "chapter_core（D2009 給 PFAS 實數）。 原提案 F6-039。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；D2009 給 PFAS 實數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "擋得越乾淨，另一邊就越濃。",
+        "visual": "進水管分成兩條：粗管 80% 清水、細管 20% 標著 PFAS 的深色濃水。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P55-003",
+      "question": "用來抓 PFAS 的樹脂，用完為什麼乾脆燒掉？",
+      "domain": "水處理",
+      "mechanism_key": "water.pfas.ix_single_use_incineration",
+      "answer_target": "陰離子交換樹脂抓 PFAS 的容量高，但通常比活性碳貴。EPA 2018 年的研究介紹寫道，各種樹脂用法裡，或許最有希望的是樹脂一次性使用、用完焚化，好處是不必再生，也就沒有再生廢液要處理。2024 年指引也說，樹脂不能像活性碳那樣用高溫再活化，市場因為幾個因素正轉向一次性樹脂、最後送去焚化；掩埋可能比焚化便宜，但掩埋的樹脂碰到能把 PFAS 換下來的水，PFAS 會脫附。若真要再生，除了鹽還得加酒精溶劑，產生的鹽水 PFAS 濃度很高，有時找不到去處只能暫存，日積月累可能越堆越多。",
+      "scope": "EPA 2018 稿 Ion Exchange；2024 指引 §2.e.ii；D2007 機制只算增量。",
+      "source_ids": [
+        "P55-S001",
+        "P55-S002"
+      ],
+      "source_locator": "S001 Ion Exchange 第3段；S002 p.31 §2.e.ii",
+      "premise_status": "screened",
+      "notes": "segment；D2007『再生多出一股廢水』的 PFAS 版。 原提案 F6-040。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照覆核意見改字後收；修掉因果與主詞，其餘照錄。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不洗，就沒有洗出來的髒水——但要燒掉整包。",
+        "visual": "樹脂珠滿了，一邊箭頭指向『再生→鹽水桶越堆越高』，另一邊指向焚化爐。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P55-004",
+      "question": "淨水廠拿掉 PFAS 後，留下的濾材和濃水分別送去哪？",
+      "domain": "水處理",
+      "mechanism_key": "water.pfas.residuals_table",
+      "answer_target": "EPA 2024 年指引列出 PFAS 殘餘物的去向：用過的活性碳可再活化、焚化或掩埋；離子交換的廢樹脂焚化或掩埋，再生鹽水暫存或地下注入；逆滲透和奈濾的濃水依許可排放。指引寫明，截至 2023 年 12 月，美國聯邦沒有專門的 PFAS 處置規定。濾材上有多少 PFAS 差很多：保守高估時每克活性碳約 0.02 克 PFOS（2%），常見情況或短鏈約每克 10⁻⁵ 克；選擇性樹脂高估可到 10%。",
+      "scope": "EPA 2024 暫行指引 §2.e Table 2-4 與載量段。",
+      "source_ids": [
+        "P55-S002"
+      ],
+      "source_locator": "S002 pp.29–31",
+      "premise_status": "screened",
+      "notes": "chapter_core；全片的『去向圖』骨架。 原提案 F6-041。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；全片去向圖的骨架。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "污染物不見了，其實是搬家到三個地址。",
+        "visual": "去向圖：濾材→爐子／掩埋場，樹脂→爐子／掩埋場，鹽水→儲槽／地下井，濃水→排放口。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P55-005",
+      "question": "埋進掩埋場的活性碳，PFAS 會不會又跑回水裡？",
+      "domain": "水處理",
+      "mechanism_key": "water.pfas.landfill_leachate_loop",
+      "answer_target": "可能。EPA 2024 年指引說，掩埋的活性碳碰到 PFAS 較低的水，或碰到吸附力更強、能把 PFAS 擠下來的物質時，PFAS 會從碳上脫附、進入掩埋場的滲出水，溫度越高越快；滲出水裡會有多少，依條件差很多。指引在另一節談一般掩埋場的滲出水：最常見的場外處理是送到污水處理廠和污水混合處理，但傳統污水處理一般無法處理或控制 PFAS；聯邦也沒有要求監測滲出水裡的 PFAS。指引並說，對所有類型的掩埋場，新資料顯示掩埋釋出的 PFAS 可能比 2020 年認為的多。",
+      "scope": "EPA 2024 暫行指引 §2.e.i、§2.f、執行摘要；脫附與滲出水送污水廠是兩段分開的一般性說明，不可畫成『某批廢碳→某座污水廠』的追蹤迴圈，旁白要用『另一節也說』之類的連接。",
+      "source_ids": [
+        "P55-S002"
+      ],
+      "source_locator": "S002 p.30；p.32 §2.f；p.2 Landfills 條",
+      "premise_status": "screened",
+      "notes": "turn：去向不是終點。兩段原文並列，不是 EPA 對單一場址的追蹤（V9 覆核）。 原提案 F6-042。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照覆核意見改字後收；保留，但改寫成兩段分開的 EPA 說法，並在範圍寫明不可畫成一條追蹤路線。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "從水裡抓出來，可能又從掩埋場流回水裡。",
+        "visual": "圓形箭頭：淨水廠→廢碳→掩埋場→滲出水→污水廠→河流，最後一段打問號。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P55-006",
+      "question": "把用過的活性碳送進高溫爐『再生』，上面的 PFAS 去哪了？",
+      "domain": "水處理",
+      "mechanism_key": "water.pfas.gac_reactivation_furnace",
+      "answer_target": "再活化爐讓廢碳依序經過乾燥（100–110°C）、脫附（315–400°C）、在缺氧下熱解（最高 800°C）、約 800°C 的氧化，把吸附物趕走、恢復孔洞；排氣再進後燃器，設計要破壞 99.99%。但 EPA 指出這個 99.99% 是以『總碳氫』計，不是針對最難破壞的成分，所以 PFAS 是否真被破壞仍有不確定。全美約 17 座商用再活化爐，其中 4 座有危廢許可。",
+      "scope": "EPA 2024 指引 §3.a.i.2。",
+      "source_ids": [
+        "P55-S002"
+      ],
+      "source_locator": "S002 pp.48–49",
+      "premise_status": "screened",
+      "notes": "limit：即使走『破壞』路線，證據仍不完整。 原提案 F6-043。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；限制：連『破壞』路線的證據都不完整。超時時可先刪溫度細節。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "爐子燒得很熱，但沒人逐一數過 PFAS 有沒有燒光。",
+        "visual": "廢碳顆粒經過四段溫度帶，排氣進後燃器，PFAS 分子旁邊標問號。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P55-007",
+      "question": "把揮發性溶劑從地下水吹出來，吹到空氣裡就算處理完了嗎？",
+      "domain": "水處理",
+      "mechanism_key": "water.voc.air_stripping_offgas_tce_case",
+      "answer_target": "EPA 說氣提把揮發性有機物從水趕到空氣，空氣和蒸氣在塔頂收集，濃度夠低才排放，否則先處理。亞利桑那 North Indian Bend Wash 超級基金場址的地下水含工業溶劑三氯乙烯，污染約 8 平方英里、深逾 100 英尺；1994 年起的抽出處理系統用填充塔氣提，吹出的蒸氣再用活性碳和紫外線氧化處理。到 2011 年已移除逾 4 萬磅三氯乙烯，預計還要運轉 40 到 70 年。",
+      "scope": "EPA Citizen’s Guide 2012（官方快照）；地下水整治，非一般自來水廠。",
+      "source_ids": [
+        "P55-S004"
+      ],
+      "source_locator": "S004 How Does It Work 第2段；Is It Safe；Example 框",
+      "premise_status": "screened",
+      "notes": "G23『吹出去的東西還在』章的具體污染物與去向；D2004 只算增量。 原提案 F6-044。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；D2004 的具體污染物與去向；是地下水整治場址，不是自來水廠，範圍已寫明。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "吹出水面的溶劑，最後還是要被抓進另一顆碳裡。",
+        "visual": "塔頂冒出的蒸氣被罩子收住，導進活性碳桶與紫外線燈；旁邊計數器 40,000 磅。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P55-008",
+      "question": "有沒有水處理是真的把污染物『消滅』，而不是搬走？",
+      "domain": "水處理",
+      "mechanism_key": "water.treatment.destruction_biological_uvaop",
+      "answer_target": "有。EPA 說生物處理用細菌把硝酸鹽、過氯酸鹽還原，去除超過 90%，是『破壞』而不是移走，所以不產生含污染物的廢流；但細菌會持續長出生物質要清理，處理後的水也可能缺氧、多出微生物產物，需要後處理。紫外線高級氧化能破壞 1,4-二噁烷（>99%）和 MTBE（>90%），同樣沒有含污染物廢流；但它不挑對象，可能增加消毒副產物，殘留藥劑有時還得再接活性碳。",
+      "scope": "EPA Overview 全文重讀；企劃『不加氧化段湊時』——此核心只作轉折一章，不展開氧化化學。",
+      "source_ids": [
+        "P55-S003"
+      ],
+      "source_locator": "S003 Biological treatment；UVAOP",
+      "premise_status": "screened",
+      "notes": "turn：打破前四章『污染物只會搬家』的結論；但『消滅』也有自己的副產物。 原提案 F6-046。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；真轉折：打破『只會搬家』。依企劃 drop_if，氧化只在此一句帶過。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "有的方法真的讓污染物消失——換來另一種要處理的東西。",
+        "visual": "去向圖上硝酸鹽箭頭不再指向任何地址，而是變成氣泡；旁邊多一桶『生物質』。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P55-009",
+      "question": "污染物被送去處置，就代表有人會被暴露嗎？",
+      "domain": "水處理",
+      "mechanism_key": "water.pfas.release_vs_exposure_hierarchy",
+      "answer_target": "EPA 2024 年指引建議優先選釋放潛力較低的處置方式，並列出三類：有許可的第一類地下注入井、危廢掩埋場、條件合適的高溫焚化與活性碳再活化，但每一種都有限制，實際測試資料普遍不足。指引同時提醒：PFAS『釋放』到環境，不等於直接、立即的人體暴露，也不一定對特定族群造成不可接受的風險。",
+      "scope": "EPA 2024 指引 Executive Summary。",
+      "source_ids": [
+        "P55-S002"
+      ],
+      "source_locator": "S002 pp.1–2",
+      "premise_status": "screened",
+      "notes": "收尾 limit：不給購買建議，回到『追去向』本身。 原提案 F6-048。預定角色寫在前句，依本池欄位記為 segment。非作者覆核 V9（2026-11-11）照原稿收；收尾限制，守住不給購買建議。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "追到最後一站，答案仍是『比較少釋放』，不是『完全消失』。",
+        "visual": "去向圖最後一格寫著三個選項，都打上『資料不足』小標籤。",
+        "seconds": [
+          30,
+          45
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "P55-NA001",
+      "question": "硝酸鹽離子交換樹脂用過頭，出水的硝酸鹽為什麼會比原水還高？",
+      "existing_ids": [
+        "D2006",
+        "D2007"
+      ],
+      "source_ids": [],
+      "reason": "想給 G23 的硝酸鹽情境再一個轉折（層析溢漏／nitrate dumping）。搜尋只找到 ResinTech、WaterTech 等廠商與業界文章；唯一機構來源 drinking-water.extension.org 經代理 502、WebFetch DNS 不通，未讀到全文，不寫核心。 原提案 F6-NA001。",
+      "reentry_condition": "讀到 EPA、州政府或大學推廣單位對 sulfate 置換 nitrate、出水高於原水的原文段落。",
+      "reading_status": "未讀（連線失敗）"
+    },
+    {
+      "id": "P55-NA002",
+      "question": "淨水廠的曝氣塔，什麼時候可以把吹出的氣體直接排掉？",
+      "existing_ids": [
+        "D2004",
+        "P55-007"
+      ],
+      "source_ids": [
+        "P55-S003"
+      ],
+      "reason": "非作者覆核 V9（2026-11-11）退回：是 D2004 同一頁的重讀，答案與 P55-007 的『吹出去還要處理』相同；G23 刪掉後不影響主線，淘汰以免重複。近鄰：D2004 與 P55-007。 原提案 F6-045。",
+      "reading_status": "來源已讀（P55-S003 本地 f6src/epaover.txt Packed tower aeration 段）；覆核重開結果：99% 以上、氯乙烯最易、夠高夠大也能除 1,2-二氯乙烷、不產生液固殘渣、可能要加空污設備，照錄。"
+    },
+    {
+      "id": "P55-NA003",
+      "question": "同一套離子交換設備，可以處理哪些污染物？代價是什麼？",
+      "existing_ids": [
+        "D2006",
+        "D2007",
+        "P55-003"
+      ],
+      "source_ids": [
+        "P55-S003"
+      ],
+      "reason": "非作者覆核 V9（2026-11-11）退回：答案是 D2006／D2007 的同一機制加一張清單，PFAS 版本已由 P55-003 講；G23 刪掉，不另收。近鄰：D2006／D2007、P55-003。 原提案 F6-047。",
+      "reading_status": "來源已讀（P55-S003 epaover.txt Anion exchange 段）；覆核重開結果：可去除的離子清單、氯離子交換、飽和鹽水再生、再生廢液含高溶解固體、廢樹脂可能需危廢許可、pH 下降，照錄。"
+    }
+  ]
+}

@@ -24,13 +24,26 @@ beforeEach(() => {
 });
 
 describe("/videos", () => {
-  it("lists each video with its article and plays it in place only when asked", async () => {
-    await open();
+  it("lists each video with its article, emits VideoObject JSON-LD, and plays in place only when asked", async () => {
+    const { container } = await open();
     const card = screen.getByRole("listitem");
     expect(within(card).getByRole("heading", { name: "影片 a" })).toBeTruthy();
+    expect(within(card).getByRole("link", { name: "影片 a" }).getAttribute("href")).toBe("/videos/a");
     expect(within(card).getByText("教學")).toBeTruthy();
     expect(within(card).getByRole("link", { name: "看文章版" }).getAttribute("href")).toBe("/life/cursor-editor-guide");
     expect(card.querySelector("iframe")).toBeNull();
+    const graphs = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap((script) => JSON.parse(script.textContent ?? "[]"));
+    const videoGraph = graphs.find((graph: Record<string, unknown>) => graph["@type"] === "VideoObject");
+    expect(videoGraph).toMatchObject({
+      "@type": "VideoObject",
+      name: "影片 a",
+      thumbnailUrl: "https://i.ytimg.com/vi/abcdefghijk/hqdefault.jpg",
+      uploadDate: "2026-10-01T00:00:00Z",
+      contentUrl: "https://www.youtube.com/watch?v=abcdefghijk",
+      embedUrl: "https://www.youtube-nocookie.com/embed/abcdefghijk",
+      inLanguage: "zh-TW",
+    });
+    expect(videoGraph.mainEntityOfPage).toContain("/zh-TW/life/cursor-editor-guide");
     fireEvent.click(within(card).getByRole("button", { name: "播放「影片 a」" }));
     expect(card.querySelector("iframe")?.getAttribute("src")).toBe("https://www.youtube-nocookie.com/embed/abcdefghijk?autoplay=1&rel=0");
   });
@@ -58,10 +71,18 @@ describe("/videos", () => {
     await expect(open({ cursor: "old", kind: "long" })).rejects.toThrow("NEXT_REDIRECT /zh-TW/videos?kind=long");
   });
 
-  it("keeps filtered views out of the index", async () => {
+  it("keeps filtered views and genuinely empty locales out of the index, while leaving API outages indexable", async () => {
     const plain = await generateMetadata({ params: Promise.resolve({ locale: "zh-TW" as const }), searchParams: Promise.resolve({}) });
     expect(plain.robots).toBeUndefined();
     const filtered = await generateMetadata({ params: Promise.resolve({ locale: "zh-TW" as const }), searchParams: Promise.resolve({ kind: "shorts" }) });
     expect(filtered.robots).toEqual({ index: false, follow: true });
+
+    mocks.videos.mockResolvedValueOnce(page({ videos: [], available: true }));
+    const emptyLocale = await generateMetadata({ params: Promise.resolve({ locale: "en" as const }), searchParams: Promise.resolve({}) });
+    expect(emptyLocale.robots).toEqual({ index: false, follow: true });
+
+    mocks.videos.mockResolvedValueOnce(page({ videos: [], available: false }));
+    const outage = await generateMetadata({ params: Promise.resolve({ locale: "en" as const }), searchParams: Promise.resolve({}) });
+    expect(outage.robots).toBeUndefined();
   });
 });

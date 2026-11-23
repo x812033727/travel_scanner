@@ -19,9 +19,16 @@ import json
 import os
 import random
 import subprocess
+import sys
 import time
 from pathlib import Path
 from typing import Callable
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import accounts  # noqa: E402
+
+# COLAB_ACCOUNT_SLOT picks the account this agent leased (accounts.py claim).
+accounts.activate()
 
 DONE = "COLAB_DETACHED_DONE"
 

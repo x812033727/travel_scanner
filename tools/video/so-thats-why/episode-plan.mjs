@@ -32,7 +32,7 @@ const rows = [
     evidence: '指定一組系統與裝置作主例；查官方寫入快取／移除策略及 SSD TRIM 限制，不聲稱實測過資料恢復。',
   },
   {
-    id: 'P04', title: '太空人一直在掉，火焰為什麼也變了？', topics: ['S80', 'S48'], minutes: 15, range: [14, 16], tier: 'pilot',
+    id: 'P04', title: '太空人一直在掉，火焰為什麼也變了？', topics: ['S80', 'S48'], minutes: 11, range: [10, 12], tier: 'pilot',
     question: '軌道上仍有重力，熟悉的上下為什麼卻變得不同？',
     join: '先建立共同自由落體，再把同一條件套到氣體與火焰；火焰是對理解的檢驗。',
     chapters: ['不是飛到沒有重力｜以軌道與地面落體對照重力和支撐感', '一直掉，怎麼不撞上｜用側向速度與軌道幾何補完漂浮答案', '把一團火帶入同樣條件｜比較地面浮力對流與微重力條件', '火焰變了能告訴你什麼｜看實驗影像與適用條件，分清微重力和完全無重力'],
@@ -112,17 +112,17 @@ const rows = [
     evidence: '需當期電池教材與官方管理說明；容量、阻抗與軟體行為逐項查核。',
   },
   {
-    id: 'P12', title: 'QR Code 缺一塊，為什麼還讀得出來？', topics: ['A36'], minutes: 13, range: [12, 14], tier: 'next',
+    id: 'P12', title: 'QR Code 缺一塊，為什麼還讀得出來？', topics: ['A36'], minutes: 9, range: [9, 10], tier: 'next',
     question: '它怎麼先找到方向，再從損傷裡讀回訊息？',
     join: '同一個自製無敏感資料的碼，由完整到不同位置的損傷；每次改變一個條件。',
-    chapters: ['先找到哪一塊是碼｜定位、方向與取樣先於內容', '黑白格如何承載訊息｜以短訊息示例介紹編碼與額外資訊', '缺了為什麼能補｜用小型可驗算示例理解冗餘與糾錯', '同樣遮一塊，結果為何不同｜區分損傷位置、等級與定位失敗'],
-    visual: '真正生成的 QR 與解碼結果；手畫概念碼須明標非有效 QR。',
+    chapters: ['先找到哪一塊是碼｜定位、方向與取樣先於內容', '訊息裝在哪裡｜只用公開說明講資料區與 8 位元碼字，不講沒有公開全文的遮罩與格式資訊', '缺了為什麼能補｜用小型可驗算示例理解冗餘與糾錯', '同樣遮一塊，結果為何不同｜區分損傷位置、等級與定位失敗'],
+    visual: '真正生成的 QR 與解碼結果；手畫概念碼須明標非有效 QR。自製的遮擋測試只能標「本片自製示範」，不當成研究結果引用。',
     risk: '把糾錯比例當任何遮擋都成功的保證。',
     cut: '不教行銷與支付詐騙清單；缺少成功及失敗對照就退回 treatment。',
     evidence: '查標準制定方的公開說明；實測需記錄編碼等級、資料量與遮擋位置。',
   },
   {
-    id: 'P13', title: 'GPS 差一點時間，位置怎麼差那麼遠？', topics: ['A38'], minutes: 14, range: [12, 15], tier: 'next',
+    id: 'P13', title: 'GPS 差一點時間，位置怎麼差那麼遠？', topics: ['A38'], minutes: 11, range: [10, 12], tier: 'next',
     question: '手機怎麼把收到訊號的時間，變成地圖上的位置？',
     join: '由單一訊號的距離限制，逐步加入衛星與未知時鐘誤差。',
     chapters: ['一顆衛星還不能找到你｜由傳播時間形成一組可能位置', '多加訊號怎麼縮小答案｜把位置幾何與時鐘未知量放到同一圖中', '時間和路徑如何帶偏位置｜比較授時誤差與多路徑等不同問題', '為什麼有時定位慢或飄｜回到裝置環境，分清定位與網路輔助'],
@@ -282,7 +282,7 @@ const rows = [
     evidence: '工程教材與指定車型技術資料；避免「電動車沒有變速機構」的錯誤概括。',
   },
   {
-    id: 'P29', title: '網址多一個 S，資料在路上差了什麼？', topics: ['A55'], minutes: 13, range: [12, 14], tier: 'conditional',
+    id: 'P29', title: '網址多一個 S，資料在路上差了什麼？', topics: ['A55'], minutes: 12, range: [11, 13], tier: 'conditional',
     question: '你怎麼把訊息交給對方，又不讓路上的人直接讀到？',
     join: '跟一次瀏覽器連線，從辨認對方到建立保護，再畫出保護的邊界。',
     chapters: ['資料要經過別人的設備｜先畫清威脅位置，不用駭客電影情境', '怎麼知道正在和誰說話｜引入憑證與信任，不把鎖頭當商家可信保證', '雙方怎麼建立保護｜只說足以理解握手、加密與完整性的模型', '保護在哪裡結束｜回到端點、網站內容與詐騙的不同問題'],
@@ -303,6 +303,88 @@ const rows = [
   },
 ];
 
+// The 2026-11-11 material review of the plans not yet made (docs/videos/so-thats-why/material-20261111/README.md),
+// approved by the owner the same day: the eight-minute floor stays, and a plan whose material would need padding
+// waits (reserve) or waits to be merged (merge) instead of getting a brief. est_minutes is the reviewer's estimate
+// of non-repeating lines at 4.5 characters a second, not a test read; a ready plan's `missing` names sources
+// its own rules require before writing.
+export const MATERIAL_REVIEW = Object.freeze({
+  P01: { verdict: 'ready', est_minutes: 10.7, missing: 'S78 只有 DOE 與 ENERGY STAR 兩個概論頁，缺鍋底材質、複合鍋底與爐面受熱的逐主張查核；A68、A45 的舊查核需依當期版本（ISO/IEC 14443、Qi／Qi2、Apple 支援頁）重讀' },
+  P03: { verdict: 'ready', est_minutes: 9.4, missing: '應用程式回報「完成」與實際寫入的差別，一般性來源由素材池 I3002（SQLite〈Atomic Commit〉：寫入可能停在作業系統快取，同步才送往持久儲存）補上，但它是資料庫文件，主例的 Windows／macOS 寫入快取仍要各自的官方說明；NIST SP 800-88 Rev. 2、Windows／macOS TRIM 預設需撰稿當日重查' },
+  P04: { verdict: 'ready', est_minutes: 10.6, missing: '第二輪（2026-11-11）由素材池 P52-008～010 補上（NASA 微重力頁逐主張讀過、太空站 FLEX 液滴實驗的「冷焰」）；企劃從 15 分縮成約 11 分；仍缺一句有來源的「為什麼冷焰只在微重力下看得到」，補不到就把那章收短；NASA 頁的軌道高度是 2012 年的數字，撰稿時用 NASA 原句不自算' },
+  P09: { verdict: 'ready', est_minutes: 10.6, missing: 'CDN 與邊緣快取的官方說明（決定第二章能否成立）；端到端吞吐量由最慢一段決定的教材來源；A10 的海纜數字（TeleGeography 99%、台灣海纜數）需當期重查' },
+  P10: { verdict: 'ready', est_minutes: 10.6, missing: '捲簾快門逐行曝光的來源由素材池 P20006（Axis 全域與捲簾快門白皮書）補上，燈光或螢幕頻閃條紋要從它推論，仍需一份直接講頻閃條紋的來源；A50 只有一篇摩爾紋研究，缺手機實拍成功／失敗對照的真實紀錄' },
+  P12: { verdict: 'ready', est_minutes: 9.3, missing: '第二輪（2026-11-11）由素材池 T52-005、T52-006 補上（qrcode.com 逐主張讀過的定位比例、校正圖形、4 格靜區，以及糾錯適合集中的「突發」損傷）；時序圖形、格式資訊與遮罩沒有公開全文（ISO 要付費），企劃從 13 分縮成約 9 分、第二章只講資料區；自製遮擋測試只能當示範，不算來源' },
+  P13: { verdict: 'ready', est_minutes: 11.4, missing: '第三輪（2026-11-11）由素材池 T53-012～019 補上（FAA 與 ESA Navipedia 的第四顆衛星解接收機時鐘、GPS SPS 性能標準 2020 的精度約等於測距誤差乘 DOP、gps.gov 精度頁、Blay 等 2021 年的 A-GPS）；企劃從 14 分縮成約 11 分，相對論那章縮到約 90 秒；手機約 4.9 公尺是 gps.gov 引 ION 的數字（原文沒讀），每秒時間誤差約 800 公尺是 Blay 引 van Diggelen 2009；衛星集中誤差放大要畫成示意，不說是標準原文' },
+  P16: { verdict: 'reserve', est_minutes: 6.9, missing: '合併審查（2026-11-11）不成立：建議的核心問題『長波怎麼被水深與海岸塑形』，在潮汐這半邊沒有任何現有素材回答：S82 只有兩個 NOAA 頁面，講的是引力差異與三種潮型因地而異，『潮汐也是受海盆控制的長波』那章 NOAA 教學還沒逐主張讀，港口潮位紀錄也沒有。少了這座橋，前半講月亮的引力、後半講海嘯在淺水變高，是兩個問題接在一起，『海嘯不是潮汐』只是一句命名對照，撐不起轉場。只算回答同一核心的事實（潮型因地而異加 S83 單一 JetStream 頁的傳播與淺化）約 9 條，估約 7.3 分；審查的 10.2 分是把引力模型與大小潮（大小潮的來源段落也缺）一起算進去，而且兩個海灣的近岸紀錄缺了，第四章只能靠示意圖重講。要合必須先補港口潮位紀錄與兩灣近岸紀錄，所以現在是後備。' },
+  P19: { verdict: 'reserve', est_minutes: 5.7, missing: '聲學教材或學術來源（主動噪音控制、相位抵消、延遲限制）；非單一品牌的頻率效果資料或受控實測；被動隔音的來源' },
+  P20: { verdict: 'ready', est_minutes: 9.1, missing: '尖端與間隙局部場增強的物理教材示意來源（現有查核說「尖端容易冒火」，但沒有教材級的場分布說明）；製造商使用說明需指定一組機型' },
+  P21: { verdict: 'ready', est_minutes: 10.0, missing: '視覺誘發暈動（車內看螢幕、模擬器）的權威醫學或研究來源；醫學來源需撰稿當期重查（NHS、CDC 等版本）' },
+  P22: { verdict: 'reserve', est_minutes: 5.6, missing: '硬水與肥皂（皂垢）對照的化學教材來源；界面張力、乳化與分散的教材來源；第二個轉折（目前只有「清水不是完全沒用」一個修正）' },
+  P24: { verdict: 'reserve', est_minutes: 6.3, missing: '合併審查（2026-11-11）不成立：建議的核心問題『長波怎麼被水深與海岸塑形』，在潮汐這半邊沒有任何現有素材回答：S82 只有兩個 NOAA 頁面，講的是引力差異與三種潮型因地而異，『潮汐也是受海盆控制的長波』那章 NOAA 教學還沒逐主張讀，港口潮位紀錄也沒有。少了這座橋，前半講月亮的引力、後半講海嘯在淺水變高，是兩個問題接在一起，『海嘯不是潮汐』只是一句命名對照，撐不起轉場。只算回答同一核心的事實（潮型因地而異加 S83 單一 JetStream 頁的傳播與淺化）約 9 條，估約 7.3 分；審查的 10.2 分是把引力模型與大小潮（大小潮的來源段落也缺）一起算進去，而且兩個海灣的近岸紀錄缺了，第四章只能靠示意圖重講。要合必須先補港口潮位紀錄與兩灣近岸紀錄，所以現在是後備。' },
+  P25: { verdict: 'ready', est_minutes: 11.3, missing: '500 系退役時程、N700ST 上線計畫需撰稿當日重查；鼻長數字需逐一對到車型（N700S 鼻長無一手出處）' },
+  P26: { verdict: 'ready', est_minutes: 9.1, missing: '客艙加壓與壓差數值的工程教材或主管機關來源；彗星號以外的現代窗戶設計與檢查資料（第四章的材料與製造邊界）' },
+  P27: { verdict: 'reserve', est_minutes: 6.9, missing: '授權、清算、結算各步驟的卡組織或銀行官方流程說明；取消、退款與爭議款的官方流程；指定一個制度（例如台灣收單）的來源，避免泛化' },
+  P28: { verdict: 'ready', est_minutes: 8.9, missing: '附條件的馬達與引擎轉矩－轉速曲線來源（企劃寫明沒找到曲線就暫緩）；工程教材對傳動比的說明' },
+  P29: { verdict: 'ready', est_minutes: 12.4, missing: '第三輪（2026-11-11）由素材池 T53-001～011 補上（RFC 8446 的握手、序號與 nonce、close_notify、0-RTT 重放例外，RFC 5280 信任鏈，Let\'s Encrypt 網域驗證，憑證透明度，RFC 9849 ECH）；企劃從 13 分縮成約 12 分，close_notify 縮成一句、憑證透明度約 20 秒；A55 的舊來源（Chromium 2018／2023、Let\'s Encrypt 2015、Google 2025）撰稿前重讀；缺目前瀏覽器怎麼顯示憑證錯誤的文件與 ECH 普及率；G38 的 libsodium 題由 T53 的 TLS 題取代，不合併' },
+  P30: { verdict: 'reserve', est_minutes: 7.8, missing: '左位數與郵購實驗的原文樣本與條件（現有多為書目與摘要）；先送幾格（endowed progress）原文數據未讀；把兩種機制接成同一個決定的研究或情境，避免只是兩個名詞相接' },
+});
+
+// Material from the so-thats-why topic pool (docs/videos/so-thats-why/pool) that a plan may use, named by
+// pool core id and the plan chapter it serves (2026-11-11 pool review, owner: 「企劃改動另開票做」). These are
+// selected pool cores with their own source readings; they support a chapter or fill a gap the plan's material
+// review named, and never count as a new topic or lengthen the plan. catalog.test.mjs checks each id is a
+// selected core in the pool.
+export const POOL_SUPPORT = Object.freeze({
+  P03: [
+    { id: 'I3002', chapter: '進度條到終點了', use: '寫入呼叫成功不等於資料已在持久儲存：寫入可能停在作業系統快取，同步才依序送出（SQLite〈Atomic Commit〉第 2、3.2–3.7 節）；補素材審視列的一般性來源缺口，但主例系統仍要自己的官方說明。' },
+  ],
+  P09: [
+    { id: 'I8006', chapter: '最慢的一段怎麼拖住全程', use: '路由器怎麼分辨正常突發與一直塞住的隊列（RFC 8289 CoDel 觀察一段時間內的最低排隊延遲）；給緩衝模型一個有標準文件的例子，不給設定或速度承諾。' },
+    { id: 'I8007', chapter: '最慢的一段怎麼拖住全程', use: '大檔與短訊息分隊輪流送，短流不必排在大流積壓之後（RFC 8290）；只講機制，不保證每個使用者公平。不補 CDN 缺口。' },
+  ],
+  P10: [
+    { id: 'P20006', chapter: '哪些東西是相機重建的', use: '逐行曝光讓短閃光只照到部分列（Axis 白皮書）；是捲簾快門與條紋的機制來源，燈光或螢幕頻閃仍要直接來源。' },
+    { id: 'P20001', chapter: '哪些東西是相機重建的', use: 'Bayer 陣列各點只量一種顏色，邊緣補值會冒出原本沒有的彩邊（Microsoft Research 去馬賽克論文）；把「相機重建」講具體，不把摩爾紋歸到這個原因。' },
+  ],
+  P04: [
+    { id: 'P52-008', chapter: '不是飛到沒有重力', use: '太空站高度的重力仍約地面九成（NASA〈What is microgravity〉，與 S80 同一頁的逐主張閱讀）；不另算新事實，只把 S80 的題級閱讀補成逐主張。' },
+    { id: 'P52-009', chapter: '把一團火帶入同樣條件', use: 'NASA 太空站事實頁的軌道與實驗條件；交代火焰實驗在什麼條件下做。' },
+    { id: 'P52-010', chapter: '火焰變了能告訴你什麼', use: '太空站 FLEX 液滴實驗：看得見的火焰熄滅後，看不見的「冷焰」繼續燒，氧與氦的比例改變結局（NASA 技術報告）；是素材審視要求的第二個有條件說明的燃燒結果。' },
+  ],
+  P12: [
+    { id: 'T52-005', chapter: '先找到哪一塊是碼', use: '定位圖形 1:1:3:1:1 的比例是調查印刷品後選的、校正圖形、4 格靜區（qrcode.com 逐主張閱讀）。' },
+    { id: 'T52-006', chapter: '同樣遮一塊，結果為何不同', use: '糾錯以碼字為單位，適合集中的「突發」損傷，散開的損傷更傷（qrcode.com）；自製遮擋測試只當「本片自製示範」，不當研究結果。' },
+  ],
+  P13: [
+    { id: 'T53-012', chapter: '一顆衛星還不能找到你', use: '第四顆衛星用來解接收機時鐘（FAA、ESA Navipedia）；把「三顆就夠」的直覺改掉。' },
+    { id: 'T53-013', chapter: '多加訊號怎麼縮小答案', use: '精度約等於測距誤差乘上幾何因子 DOP（GPS SPS 性能標準 2020）；衛星集中時誤差放大只畫成示意。' },
+    { id: 'T53-014', chapter: '時間和路徑如何帶偏位置', use: '衛星訊號誤差（URE）不等於使用者精度；手機約 4.9 公尺是 gps.gov 引 ION 的數字。' },
+    { id: 'T53-015', chapter: '時間和路徑如何帶偏位置', use: '多路徑：訊號被建築反射後走了更長的路（ESA Navipedia）。' },
+    { id: 'T53-016', chapter: '時間和路徑如何帶偏位置', use: '電離層延遲本身可達數十公尺、單頻接收機用 Klobuchar 模型修正（Navipedia）；不說修正後還剩數十公尺。' },
+    { id: 'T53-017', chapter: '為什麼有時定位慢或飄', use: '導航電文每秒 50 位元、一幀 30 秒（SPS 性能標準），解釋冷開機為什麼慢。' },
+    { id: 'T53-018', chapter: '為什麼有時定位慢或飄', use: 'A-GPS：網路先給星曆；一秒時間誤差約 800 公尺，所以要第五顆衛星（Blay 等 2021 引 van Diggelen 2009）。' },
+    { id: 'T53-019', chapter: '為什麼有時定位慢或飄', use: '很多「定位錯」其實是地圖錯（gps.gov）；分清定位與地圖。' },
+  ],
+  P29: [
+    { id: 'T53-001', chapter: '雙方怎麼建立保護', use: 'TLS 1.3 握手的最小模型：金鑰交換、CertificateVerify 與 Finished（RFC 8446）。' },
+    { id: 'T53-002', chapter: '怎麼知道正在和誰說話', use: '憑證把公開金鑰綁到網域名稱，不是綁到「可信的商家」（RFC 5280）。' },
+    { id: 'T53-003', chapter: '怎麼知道正在和誰說話', use: '憑證機構只驗證你控制這個網域（Let\'s Encrypt）：詐騙網站一樣拿得到鎖頭。' },
+    { id: 'T53-004', chapter: '怎麼知道正在和誰說話', use: '信任鏈從網站憑證一路到瀏覽器內建的根憑證（RFC 5280 §6.1、Let\'s Encrypt）。' },
+    { id: 'T53-005', chapter: '怎麼知道正在和誰說話', use: '要讓 Chrome、Safari 接受，憑證得登記在公開的透明度日誌（certificate.transparency.dev）；約 20 秒。' },
+    { id: 'T53-006', chapter: '雙方怎麼建立保護', use: '每筆紀錄有序號，序號混進 nonce，被重排或重放就驗不過（RFC 8446）。' },
+    { id: 'T53-007', chapter: '雙方怎麼建立保護', use: '紀錄標頭當作附加資料一起驗證；但長度不隱藏（RFC 8446）。' },
+    { id: 'T53-008', chapter: '保護在哪裡結束', use: '流量大小與時間仍看得到（RFC 8446 的限制說明）；篇幅不夠就刪。' },
+    { id: 'T53-009', chapter: '雙方怎麼建立保護', use: 'close_notify 讓對方知道是正常結束、不是被截斷（RFC 8446）；縮成一句。' },
+    { id: 'T53-010', chapter: '雙方怎麼建立保護', use: '0-RTT 是規格自己承認的重放例外（RFC 8446）。' },
+    { id: 'T53-011', chapter: '保護在哪裡結束', use: 'SNI 裡的網域名稱仍是明文，ECH 才把它藏起來；DNS 與 IP 仍可能露出（RFC 8446、RFC 9849）。' },
+  ],
+  P26: [
+    { id: 'H3060', chapter: '邊角與反覆載入遇在一起', use: '裂長、外加應力與材料斷裂韌性一起決定裂紋何時快速擴大（UNSW 材料學院教材）；接在應力集中之後，回答「已經有裂紋時何時失控」。不引用公式，不由外觀判斷實物安全。' },
+    { id: 'H3061', chapter: '圓角是不是萬能答案', use: '同樣有缺口，銅先塑性變形、玻璃直接裂（UNSW 教材的銅棒與玻璃棒對照）；把材料放回工程邊界，只作這組對照，不把所有金屬或陶瓷一概分類。' },
+  ],
+});
+
 const budgets = {
   9: [45, 90, 125, 120, 125, 35],
   11: [45, 125, 150, 155, 150, 35],
@@ -317,6 +399,8 @@ export const plans = rows.map((row) => {
   const durations = budgets[row.minutes];
   return {
     ...row, status: 'EPISODE_PLAN_NOT_SCRIPT', production_ready: false,
+    ...(MATERIAL_REVIEW[row.id] ? { material: { ...MATERIAL_REVIEW[row.id], reviewed_on: '2026-11-11', review: 'docs/videos/so-thats-why/material-20261111/review.json' } } : {}),
+    ...(POOL_SUPPORT[row.id] ? { pool_support: POOL_SUPPORT[row.id] } : {}),
     target_body_seconds: row.minutes * 60,
     planning_range_seconds: row.range.map((minutes) => minutes * 60),
     estimated_spoken_characters: [Math.round(row.minutes * 3300 / 13), Math.round(row.minutes * 3500 / 13)],

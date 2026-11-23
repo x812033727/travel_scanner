@@ -175,6 +175,15 @@ export async function push({ directory, client, log = () => {}, handPushed = fal
   const verify = path.join(directory, VERIFY_FILE);
   if (existsSync(verify)) files.push(await upload(client, slug, verify, 'evidence_verify'));
   const finalSha256 = files[0].sha256;
+  // The upload package of this cut rides on the final review too, so the owner can upload the
+  // Short by hand from its card as soon as they approve it, without a second push for the
+  // publish review (owner, 2026-11-21): metadata.json holds every language's title and
+  // description, the tags and the disclosure the guide on /admin/videos lists.
+  if (metadata && report && metadata.final_sha256 === finalSha256) {
+    const packaged = await upload(client, slug, metadataFile, 'metadata');
+    if (packaged.sha256 !== metadataSha256) return { slug, final: null, publish: null, waits: 'the upload package changed during push: run package again' };
+    files.push(packaged);
+  }
   if (staleQa() || finalSha256 !== qa.final_sha256) return { slug, final: null, publish: null, waits: 'the QA inputs changed during push: run qa and package again' };
   const review = { ...marked(finalReview({ doc, qa, usage: readJson(path.join(directory, USAGE_FILE), null), timeline, finalSha256 })), files };
   const sent = await client.submit(slug, review);

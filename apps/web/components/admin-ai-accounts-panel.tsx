@@ -14,7 +14,9 @@ type UsageWindow = { label?: string | null; window_minutes?: number | null; used
 type ComputeUnits = { balance: number; rate_per_hour?: number | null; active_assignments?: number | null };
 type Usage = { source: "live" | "snapshot"; recorded_at?: number | null; windows: UsageWindow[]; compute_units?: ComputeUnits | null };
 export type AiAccount = { tool: Tool; slot: Slot; is_default: boolean; logged_in: boolean | null; auth_method?: string | null; email?: string | null; organization?: string | null; plan?: string | null; email_allowed?: boolean | null; usage?: Usage | null; usage_error?: string | null; recorder_installed?: boolean | null; usage_refreshing?: boolean | null; checked_at?: number | null; error?: string | null; login?: Login | null };
-export type AiAccountsOverview = { enabled: boolean; agent_reachable: boolean; agent_error?: string | null; slots: AiAccount[]; defaults: Partial<Record<Tool, Slot>>; allowlist_configured: boolean };
+// Which agent leases a Colab account (skill minimax-h3-colab, accounts.py claim), by its own name.
+export type ColabLease = { slot: Slot; holder: string; token: string; acquired_at: number; expires_at: number };
+export type AiAccountsOverview = { enabled: boolean; agent_reachable: boolean; agent_error?: string | null; slots: AiAccount[]; defaults: Partial<Record<Tool, Slot>>; allowlist_configured: boolean; colab_leases?: Partial<Record<Slot, ColabLease>>; colab_leases_error?: string | null };
 
 const TOOLS: Tool[] = ["claude", "codex", "agy", "colab"];
 const TOOL_NAMES: Record<Tool, string> = { claude: "Claude Code", codex: "Codex", agy: "Antigravity", colab: "Google Colab" };
@@ -119,12 +121,31 @@ function ComputeUnitsLine({ units }: { units: ComputeUnits }) {
   </div>;
 }
 
+/** The agent working on this Colab account, and a way to take the account back from one that stopped. */
+function LeaseLine({ lease, busy, onBreak }: { lease: ColabLease; busy: boolean; onBreak: () => void }) {
+  const t = useTranslations("admin.aiAccountsPanel");
+  const locale = useLocale();
+  const [confirming, setConfirming] = useState(false);
+  const time = useMemo(() => new Intl.DateTimeFormat(locale, { month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" }), [locale]);
+  return <div className="mt-3 rounded-xl bg-[var(--paper)] p-3 text-xs leading-5">
+    <p className="break-all font-bold">{t("leaseHolder", { holder: lease.holder })}</p>
+    <p className="text-[var(--muted)]">{t("leaseDetail", { token: lease.token, time: time.format(new Date(lease.expires_at * 1000)) })}</p>
+    <div className="mt-2 flex flex-wrap items-center gap-2">
+      {confirming
+        ? <><button type="button" disabled={busy} onClick={() => { setConfirming(false); onBreak(); }} className="min-h-9 rounded-lg bg-red-600 px-3 font-bold text-white disabled:opacity-40">{t("leaseConfirmBreak")}</button><button type="button" onClick={() => setConfirming(false)} className="min-h-9 rounded-lg px-2 font-bold text-[var(--muted)]">{t("cancel")}</button></>
+        : <button type="button" disabled={busy} onClick={() => setConfirming(true)} className="min-h-9 rounded-lg border border-[var(--line)] bg-white px-3 font-bold disabled:opacity-40">{t("leaseBreak")}</button>}
+    </div>
+    {confirming && <p className="mt-1 text-[var(--muted)]">{t("leaseBreakHint")}</p>}
+  </div>;
+}
+
 type CardProps = {
-  account: AiAccount; now: number; busy: boolean;
+  account: AiAccount; now: number; busy: boolean; lease?: ColabLease;
   onLogin: (account: AiAccount) => void; onLogout: (account: AiAccount) => void; onDefault: (account: AiAccount) => void;
+  onBreakLease: (account: AiAccount) => void;
 };
 
-function AccountCard({ account, now, busy, onLogin, onLogout, onDefault }: CardProps) {
+function AccountCard({ account, now, busy, lease, onLogin, onLogout, onDefault, onBreakLease }: CardProps) {
   const t = useTranslations("admin.aiAccountsPanel");
   const [confirming, setConfirming] = useState(false);
   const signedIn = account.logged_in === true;
@@ -142,6 +163,7 @@ function AccountCard({ account, now, busy, onLogin, onLogout, onDefault }: CardP
     {account.error && <p className="mt-2 text-xs text-red-700">{account.error}</p>}
     {signedIn && account.usage?.windows.length ? <UsageBars usage={account.usage} now={now} /> : null}
     {signedIn && account.usage?.compute_units ? <ComputeUnitsLine units={account.usage.compute_units} /> : null}
+    {lease ? <LeaseLine lease={lease} busy={busy} onBreak={() => onBreakLease(account)} /> : null}
     {signedIn && account.usage_refreshing && <p role="status" className="mt-3 flex items-center gap-1.5 text-xs text-[var(--muted)]"><LoaderCircle size={13} className="animate-spin motion-reduce:animate-none" />{t("usageRefreshing")}</p>}
     {signedIn && !LIVE_USAGE.has(account.tool) && !account.usage && !account.usage_refreshing && !account.usage_error && <p className="mt-4 rounded-xl bg-[var(--paper)] p-3 text-xs leading-5 text-[var(--muted)]">{t("snapshotMissing")}</p>}
     {signedIn && account.tool === "claude" && account.recorder_installed === false && <p className="mt-2 text-xs text-amber-800">{t("recorderMissing")}</p>}
@@ -309,6 +331,10 @@ export function AdminAiAccountsPanel() {
     const done = await run(() => api(`/admin/ai-accounts/defaults/${account.tool}`, { method: "PUT", body: JSON.stringify({ slot: account.slot }) }));
     if (done) void load();
   }
+  async function breakLease(account: AiAccount) {
+    const done = await run(() => api(`/admin/ai-accounts/colab/${account.slot}/lease/break`, { method: "POST" }));
+    if (done) void load();
+  }
   function closeLogin() {
     setLogin(undefined);
     void load();
@@ -333,8 +359,9 @@ export function AdminAiAccountsPanel() {
       return <section key={tool} aria-labelledby={`ai-${tool}-title`} className="rounded-[1.75rem] border border-[var(--line)] bg-[var(--paper)] p-5 md:p-7">
         <h2 id={`ai-${tool}-title`} className="text-xl font-bold">{TOOL_NAMES[tool]}</h2>
         <p className="mt-1 flex items-start gap-1.5 text-sm text-[var(--muted)]"><TerminalSquare size={15} className="mt-0.5 shrink-0" />{t(SSH_HINTS[tool])}</p>
+        {tool === "colab" && overview.colab_leases_error ? <p className="mt-2 flex items-start gap-1.5 text-xs text-amber-800"><AlertTriangle size={13} className="mt-0.5 shrink-0" />{t("leasesUnavailable", { detail: overview.colab_leases_error })}</p> : null}
         <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-          {shown.map((account) => <AccountCard key={account.slot} account={account} now={now} busy={busy} onLogin={(item) => void startLogin(item)} onLogout={(item) => void signOut(item)} onDefault={(item) => void makeDefault(item)} />)}
+          {shown.map((account) => <AccountCard key={account.slot} account={account} now={now} busy={busy} lease={tool === "colab" ? overview.colab_leases?.[account.slot] : undefined} onLogin={(item) => void startLogin(item)} onLogout={(item) => void signOut(item)} onDefault={(item) => void makeDefault(item)} onBreakLease={(item) => void breakLease(item)} />)}
           <div className="flex flex-col items-start justify-center rounded-2xl border border-dashed border-[var(--line)] p-5">
             {free ? <>
               <button type="button" disabled={busy} onClick={() => void startLogin({ tool, slot: free, is_default: false, logged_in: false })} className="inline-flex min-h-10 items-center gap-1.5 rounded-xl bg-[var(--ink)] px-4 text-sm font-bold text-white disabled:opacity-40"><Plus size={15} />{t("addAccount")}</button>

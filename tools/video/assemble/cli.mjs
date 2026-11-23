@@ -14,7 +14,7 @@ import { hasAnimePolicy, runtimePolicyHash } from "../core/anime-policy.mjs";
 import { sha256File } from "../core/approvals.mjs";
 import { animeBodyDurationProblems, animeDurationProblems, animeRuntimeProof, animeShotFitProblems } from "../core/duration.mjs";
 import { siteBrandingNotice } from "../branding/site.mjs";
-import { INTRO_AT_START, introAtFrame, pinsDefault, placeBranding, presentationTimeline, readBranding, readDefaultBranding, selectBrandingForBuild } from "../core/branding.mjs";
+import { INTRO_AFTER_FIRST_CHAPTER, INTRO_AT_START, introAtFrame, pinsDefault, placeBranding, presentationTimeline, readBranding, readDefaultBranding, selectBrandingForBuild } from "../core/branding.mjs";
 import { productionClipProblems } from "../core/lint.mjs";
 import { audioEvidenceProblems } from "../core/audio-evidence.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
@@ -313,7 +313,7 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
   // An intro after the condensation plays at the second chapter's first frame (docs/videos/BRANDING.md).
   // A first build with a single chapter has no condensation to follow, so its intro stays first;
   // a pin or the explicit flag asking for the other placement is refused instead.
-  if (branding?.intro_at && !timeline.chapters?.[1] && !values["intro-after-condensation"] && !readBranding(workdir)?.intro_at) branding = placeBranding(branding, INTRO_AT_START);
+  if (branding?.intro_at === INTRO_AFTER_FIRST_CHAPTER && !timeline.chapters?.[1] && !values["intro-after-condensation"] && !readBranding(workdir)?.intro_at) branding = placeBranding(branding, INTRO_AT_START);
   const introAt = branding ? introAtFrame(branding, timeline) : 0;
 
   let layout;
@@ -322,7 +322,7 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
     // under their camera moves, single-state cards drifting, dissolves between pictures and a
     // hard cut into every chapter card.
     layout = drama
-      ? layoutDrama(doc, timeline, manifest, inputs.clips, inputs.keyframes, { tier: project.series?.visual_tier ?? null })
+      ? layoutDrama(doc, timeline, manifest, inputs.clips, inputs.keyframes, { tier: doc.still_motion ?? project.series?.visual_tier ?? null })
       : pictures
         ? layoutDrama(doc, timeline, manifest, null, inputs.keyframes, { transitionRule: illustratedTransition, cardMotion: true })
         : layoutScenes(timeline, manifest);

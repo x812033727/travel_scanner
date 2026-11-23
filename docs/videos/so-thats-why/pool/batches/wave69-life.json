@@ -1,0 +1,312 @@
+{
+  "batch_id": "wave69-life-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第十九輪：替後備組題 C11-02 鴿子點頭補前衝期辨形實驗與鳥類點頭綜述（作者 F34，覆核 V37），仍後備。",
+  "sources": [
+    {
+      "id": "L69-S001",
+      "url": "https://www.bio.psy.ruhr-uni-bochum.de/bpsy/mam/content/papers/jimenez2009.pdf",
+      "canonical_url": "https://doi.org/10.1007/s00221-009-1891-5",
+      "title": "Vision during head bobbing: are pigeons capable of shape discrimination during the thrust phase?",
+      "publisher": "Experimental Brain Research 199:313–321 (Springer, 2009)；Jiménez Ortega（馬德里康普頓斯大學）、Stoppa、Güntürkün（波鴻魯爾大學）、Troje（皇后大學）",
+      "version": "出版社排版 PDF（第 313–321 頁全文），由共同作者 Güntürkün 的波鴻魯爾大學生物心理學實驗室網站張貼",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 列出該實驗室新聞頁 bio.psy.ruhr-uni-bochum.de/bpsy/news/news00042.html.en；頁面上的「jimenez2009.pdf」連結（/bpsy/mam/content/papers/jimenez2009.pdf）以 curl 下載，pdftotext 轉文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論）",
+      "locator": "Abstract；Introduction p.313–314（Friedman 1975a 跑步機、Dunlap & Mowrer 蒙眼、跑與降落時 hold 改為 flexion phase）；Methods p.314–315（6 隻鴿子、66 ms 刺激、hold 平均 91 ms、thrust 120 ms）；Results p.317（側面 80/77/84%、正面 73/80/82%，均 p<0.01 高於機率；ANOVA 主效應與交互作用 p>0.3）；Discussion p.319–320（結論與保留）",
+      "summary": "5 隻自由走動的鴿子（原 6 隻，1 隻不穩定被排除）學會分辨兩個 5×5 公分形狀；測試時刺激只在停住期、只在前衝期或隨機時點亮 66 毫秒。側面視野答對率：停住期 80%、前衝期 77%、隨機 84%；正面：73%、80%、82%，都顯著高於亂猜，三種時機之間沒有差別。作者寫：前衝期辨形狀跟停住期一樣好，這挑戰了「點頭主要是為了讓頭眼穩定固定、好看清東西」的看法；鳥為什麼點頭仍沒有令人信服的解釋。作者也保留：大而高對比的圖形可能掩蓋前衝期較差的處理，不能排除更細微辨識時有某種抑制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "共同作者含 Troje（通訊作者），覆核若把它併入池中已封頂的 Troje 研究群，條數應為 0（見 F34-001 notes）；但實驗在波鴻做、第一作者屬馬德里。出版社 PDF 由共同作者實驗室網站張貼，與 L65-S001（biomotionlab.ca）同類授權判斷。只有 5 隻鴿子、兩個形狀。前言對 Frost 1978、Friedman 1975、Green 1994 的敘述屬轉述。 覆核 V37（2026-11-12）：limitations 改寫：「通訊作者 Troje，實驗典範沿用同四位作者 2008 年的前一篇；覆核 V37 併入 Troje 研究群（本題已封頂），計 0。作者自承停住期定義偏保守、可能含頭部移動（slip 約 0.013 m/s，約為先前報告的兩倍）；大而高對比的圖形；不能排除眼球掃視時的抑制。『still lack a convincing explanation』是 2009 年的說法。」summary 的「三種時機之間沒有差別」補「（3×2 重複量數 ANOVA，主效應與交互作用皆 p>0.3）」。",
+      "author_cache": {
+        "file": "f34src/jimenez2009.pdf（文字：f34src/jimenez2009.txt；連結出處頁：f34src/bochum_news00042.html）",
+        "sha256_prefix": "2022ad633af90c2b",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L69-S002",
+      "url": "https://www.reinhold-necker.de/Head%20bobbing%20print.pdf",
+      "canonical_url": "https://doi.org/10.1007/s00359-007-0281-3",
+      "title": "Head-bobbing of walking birds",
+      "publisher": "Journal of Comparative Physiology A 193:1177–1183 (Springer, 2007)；Reinhold Necker（波鴻魯爾大學動物生理學系）",
+      "version": "出版社排版 PDF（綜述，7 頁全文），由作者本人網站張貼",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 列出作者網站 reinhold-necker.de/seite10.html（頁首寫「The original publication is available as PDF file download」並連到「Head bobbing print.pdf」）；同一 PDF 網址也直接出現在搜尋結果；curl 下載、pdftotext 轉文字",
+      "reading_scope": "全文（綜述）",
+      "locator": "p.1177 Origin of head-bobbing（手持移動、跑步機、蒙眼『never』、Necker et al. 2000 與作者未發表觀察）；p.1178–1179 Functional implications for vision（運動視差、跑快與降落時無停住期、Cronin 2005、掃視約 23 ms 短於前衝 100–150 ms、Jiménez Ortega 2005）；p.1179–1180 Synchronization（Fujita 2002 重心、跑步機與蒙眼鴿子照樣保持平衡、Bangert 1960 孵化 24 小時內、暗室 14 天、限制腿 90 小時、Muir 縮短步幅）；p.1180–1181 Species dependency 與 Table 1、Fig. 4（不點頭的鵝、游泳時點頭的骨頂雞）；p.1182 Conclusions",
+      "summary": "同行審查的綜述。整理：停住期由視覺觸發（被人手持往前移也點、跑步機上不點、蒙眼的鳥從不點頭，含作者實驗室 2000 年的研究與未發表觀察）；跑步機上與蒙眼、不點頭的鴿子仍能保持平衡，頭對重心位置的貢獻小但顯著，平衡不需要點頭；小雞孵化 24 小時內就會點頭且與腳同步，暗室養 14 天或限制腿 90 小時都不影響同步，屬天生機制；哪些鳥點頭大致依目（鴿、雞、鶴、鷺點；雁鴨、紅鶴、鵜鶘、鸚鵡等不點；鷸鴴類混合），骨頂雞與紅冠水雞游泳時也點頭；黑頭鷗只在泥灘覓食、步幅變大時點頭；長頸鳥覓食時不跨步也會有前衝與停住；結論：點頭的功能仍沒有一致解釋，作者認為視覺是主要功能。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "綜述：除 Fig. 1、Fig. 4 是作者自拍影格、蒙眼與『不跨步也點』含作者本人觀察外，其餘都是轉述（Frost 1978、Friedman 1975、Bangert 1960、Fujita 2002–2006、Davies & Green 1988、Green 1994、Cronin 2005、Jiménez Ortega 2005 博士論文），各自只按轉述計低分。第十五輪 F26 曾以『授權不明』未下載此檔；本輪依據是 reinhold-necker.de 為作者本人網站（首頁列作者辦公室與退休資訊，PDF 內 e-mail 與作者同人），與 V29 對 biomotionlab.ca 的判斷同類；若覆核不接受，F34-002 至 F34-006 依賴本檔的部分全部歸零。Fig. 4 稱家鵝『non-bobbing』，與池中 L65-009（2025 年家鵝高速攝影量到前衝與停住）不一致，寫稿不得說『鵝不點頭』。 覆核 V37（2026-11-12）：version 補「作者本人網站：首頁（seite10 頁上連結 index.html）寫 Office: Lehrstuhl für Tierphysiologie, Ruhr-Universität Bochum、Retired July 2005，並有作者私人 e-mail；覆核重抓存 v37src/necker_index.html」。limitations 補：「Conclusions 也寫步幅越大越需要平衡、speaks in favor of a bio-mechanical component，不可寫『點頭與平衡無關』；p.1182『不跨步也有前衝與停住』引 Fujita & Kawakami 2003（＝池中 L65-S006，L65-008 的來源）加作者觀察；『功能解釋尚未在走路的鳥身上驗證』只出自本檔；Fig. 4 為作者自拍影格；Fujita 2002／2003 的重心測量含鴿子與小白鷺兩種。」",
+      "author_cache": {
+        "file": "f34src/necker2007.pdf（文字：f34src/necker2007.txt；連結出處頁：f34src/necker_seite10.html）",
+        "sha256_prefix": "34dd67601b0cb132",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L69-S003",
+      "url": "https://pubs.usgs.gov/publication/70031398",
+      "canonical_url": "https://doi.org/10.1007/s10336-007-0199-0",
+      "title": "Head-bobbing behavior in walking whooping cranes (Grus americana) and sandhill cranes (Grus canadensis)",
+      "publisher": "Journal of Ornithology 148 (Suppl 2):563–569 (2007)；Cronin、Kinloch、Olsen；紀錄頁為 USGS Publications Warehouse（貢獻單位 Patuxent Wildlife Research Center）",
+      "version": "美國地質調查局出版品紀錄頁（含原摘要）；期刊全文為 Springer 付費",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 列出 www.usgs.gov/publications/head-bobbing-behavior-walking-whooping-cranes-…（curl 403，WebFetch 可讀），該頁連到 pubs.usgs.gov/publication/70031398，以 curl 存檔；DOI 轉 link.springer.com，頁面標示非開放（Open Access: N）",
+      "reading_scope": "只讀到摘要（不算全文）",
+      "locator": "Abstract 全段",
+      "summary": "用撒在地上的食物讓美洲鶴與沙丘鶴走或跑：走路時點頭依四步驟順序進行，與跨步週期緊密相連；能讓視線穩住的時間隨行進速度減少，跑步的鶴完全不點頭；鶴把喙伸向地面找食物時，也會出現一連串和往前移動無關的短促點頭；作者結論：點頭是隨步態與視覺搜尋而變的彈性行為，尤其在準備用喙啄擊時。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀到摘要，數字（速度、時間比例）都沒讀到；同組 2005 年 Current Biology 短文（美洲鶴覓食時停住超過一半時間）cell.com 403、mdsoar.org 400，只經 F34-S002 轉述。與 Troje 研究群、池中各來源都不同組。 覆核 V37（2026-11-12）：author_cache 註明：覆核 2026-11-12 重抓 sha256 前綴 7fbe27bc6a5a6346（動態頁面，與作者 a8ef202ec598b20d 不同），抽出的摘要與引用文字逐字相同。reading_scope 維持『只讀到摘要』，照規定不計條數。",
+      "author_cache": {
+        "file": "f34src/pubs_70031398.html（文字：f34src/pubs_70031398.txt）",
+        "sha256_prefix": "a8ef202ec598b20d",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L69-S004",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6581236/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pbio.3000299",
+      "title": "Birds invest wingbeats to keep a steady head and reap the ultimate benefits of flying together",
+      "publisher": "PLOS Biology 17:e3000299 (2019)；Taylor 等（牛津大學、倫敦大學皇家霍洛威學院）",
+      "version": "Europe PMC REST 全文 XML（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（OPEN_ACCESS 鳥類頭部穩定關鍵字）列出 PMCID，以 fullTextXML 取得",
+      "reading_scope": "摘要、前言、結果前段",
+      "locator": "Abstract；Introduction",
+      "summary": "成對飛行的歸巢鴿把振翅頻率提高 18%，身體上下振盪減少 22%；作者『假設』這與成群飛行時更需要視覺穩定有關。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "量的是背上記錄器的身體加速度，不是頭；『保持頭穩』是作者的假設。未採用，只列在 not_added。",
+      "author_cache": {
+        "file": "f34src/taylor2019_PMC6581236.xml",
+        "sha256_prefix": "93e14b0c09312670",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "L69-001",
+      "question": "鴿子頭往前衝的那一下，是不是看不清楚東西？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "bird.headbob_thrust_phase_vision_not_suppressed",
+      "answer_target": "不是，至少分辨大圖形時不是。過去常見的解釋是：頭停住時影像穩定、看得清，往前衝時視線模糊、大腦可能暫時壓低視覺，所以鳥才要一停一衝。2009 年西班牙、德國與加拿大的研究者訓練鴿子在場地兩端來回走、邊走邊分辨螢幕上兩種 5 公分見方的圖形（6 隻受訓，1 隻表現不穩被排除，分析 5 隻），用動作捕捉即時追蹤頭部，只在停住期、只在前衝期或隨機時刻讓圖形亮 66 毫秒。圖在側面時，答對率分別是 80%、77%、84%；在正前方時是 73%、80%、82%，都明顯高於亂猜，三種時機之間統計上沒有差別。作者寫道，這挑戰了「點頭主要是為了停下來穩住頭和眼睛、好看清東西」的看法；在 2009 年發表時，他們認為鳥為什麼點頭還沒有令人信服的解釋。",
+      "scope": "只有 5 隻鴿子、兩個大而高對比的圖形；作者自己寫不能排除更細微的辨識在前衝期仍受影響，也承認停住期的定義偏保守、可能已含一點頭部移動。不可說「點頭沒有視覺功能」「停住期沒用」或「前衝期看得比停住期清楚」；不可擴及其他鳥；「還沒有好解釋」要標明是 2009 年作者的說法。",
+      "source_ids": [
+        "L69-S001"
+      ],
+      "source_locator": "F34-S001 Abstract；Results p.317（Fig. 6 答對率）；Methods p.315（66 ms、hold 91 ms、thrust 120 ms）；Discussion p.319–320",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.75）：通訊作者 Troje，典範沿用同四人 2008 年研究，併入 Troje 研究群；該群在本題已有 Troje & Frost 2000 1.0、Kroker 碩論 0.5、Theunissen 2017 0.5，V29 已判封頂。仍是一手全文，轉折三可以用，只是不加條數。若日後 Troje 群上限放寬，最多 0.75。 原提案 F34-001（目標 C11-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V37（2026-11-12）改字後收；數字逐字相符；改三處：補 6→5 隻的排除、補作者自承停住期定義偏保守、把『至今沒有答案』改成 2009 年作者的說法。計數併入已封頂的 Troje 群，0 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「停下來才看得清、衝的時候是瞎的」站不住：鴿子在前衝那一瞬間分辨大圖形一樣準，點頭為什麼存在反而更難解釋。",
+        "visual": "慢動作鴿子走路，停住期與前衝期分別閃一下圖形；兩組答對率長條並排，標『5 隻鴿子』。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "L69-002",
+      "question": "如果鴿子被蒙住眼睛、不點頭了，牠還走得穩嗎？點頭是為了平衡嗎？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "bird.headbob_not_required_for_balance",
+      "answer_target": "走得穩，但點頭可能還是幫了一點忙。德國波鴻魯爾大學的動物生理學家 Necker 在 2007 年的綜述裡整理：在跑步機上走、或被蒙住眼睛而不點頭的鴿子，照樣能保持平衡（蒙眼的部分包括他自己實驗室的研究）；另有測量發現，頭的移動對全身重心位置的影響很小，但確實有。他的結論是：平衡不需要點頭也做得到；點頭和腳步的配合也許能幫忙穩住身體，跨步越大越可能用得上，但主要功能看來在視覺。",
+      "scope": "只限鴿子；跑步機、蒙眼不點頭是 L65-003 已講過的轉述，這裡只新增「不點頭也能平衡」；重心測量是綜述轉述（Fujita 2002）。不可說「點頭和平衡完全無關」。不得給任何飼養或處理鳥的建議（例如去蒙鳥眼、讓鳥上跑步機）。",
+      "source_ids": [
+        "L69-S002"
+      ],
+      "source_locator": "F34-S002 p.1177 Origin of head-bobbing；p.1179–1180（Fujita 2002/2003 重心；跑步機與蒙眼鴿子仍保持平衡；『keeping balance can be achieved without head-bobbing』）；p.1182 Conclusions",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：新增的只有『不點頭也能平衡』一句，是綜述作者的整理（跑步機為轉述、蒙眼含作者自己 2000 年研究但本文沒有數據）；重心測量為轉述不計。 原提案 F34-002（目標 C11-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V37（2026-11-12）改字後收；答案說過頭：綜述同時主張點頭可能有生物力學的平衡成分；改成『平衡不需要點頭，但點頭可能幫一點』。計數下修為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "拆掉「點頭是為了不跌倒」的直覺：不點頭的鴿子照樣走得穩——但點頭可能還是順便幫了一點。",
+        "visual": "左右分割：點頭的鴿子與跑步機上不點頭的鴿子都走得穩，畫面標『綜述整理』。",
+        "seconds": [
+          25,
+          35
+        ]
+      }
+    },
+    {
+      "id": "L69-003",
+      "question": "小雞的點頭是學來的，還是生下來就會？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "bird.headbob_innate_within_day_of_hatching",
+      "answer_target": "看來是生下來就會。Necker 的綜述轉述一項 1960 年的家雞研究：小雞孵出 24 小時內就會點頭，而且已經和腳步同步；孵出後在暗處待了兩週、或腿的活動被限制了幾天的小雞，頭腳同步一樣正常。綜述據此認為頭腳同步是天生的機制，而點頭要不要出現，仍受眼睛看到的景物控制。",
+      "scope": "全為單一綜述的轉述（Bangert 1960、Muir 2002／2005），沒讀到原文；只限家雞；畫面標「轉述」。只描述研究結果，不得給任何飼養或處理建議（例如暗室、限制腿），也不重述限制腿的做法細節。",
+      "source_ids": [
+        "L69-S002"
+      ],
+      "source_locator": "F34-S002 p.1180 左欄（Bangert 1960；Muir and Chu 2002；Muir and Gowri 2005）",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.25）：單一綜述轉述，照 V22–V33『轉述不算』。L65-003 的 0.25 是三份互相獨立的轉述一致才給；本條只有一份。留作 F34-002 章節的一句話，不加條數。 原提案 F34-003（目標 C11-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V37（2026-11-12）改字後收；內容相符，但只有單一轉述，計 0；刪掉暗室、綁腿等操作細節的時數，避免像操作建議；補上綜述『仍受視覺控制』的那半句。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "頭腳同步是內建的；但點不點，還是眼睛說了算。",
+        "visual": "剛孵出的小雞走路示意，計時『24 小時內』，標『1960 年研究（轉述）』。",
+        "seconds": [
+          15,
+          20
+        ]
+      }
+    },
+    {
+      "id": "L69-004",
+      "question": "是不是有些鳥走路根本不點頭？骨頂雞連游泳都會點嗎？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "bird.headbob_species_orders_swimming_coot",
+      "answer_target": "大致依「家族」而分，但不是鐵律。Necker 的綜述整理過去的物種清單：鴿、雞、鶴與秧雞、鷺鸛這幾目通常會點頭；雁鴨、紅鶴、鵜鶘鸕鷀、企鵝、猛禽、貓頭鷹、鸚鵡通常被列為不點頭；鷸鴴鷗這一目有點有不點。為什麼有的點、有的不點，作者說沒有簡單答案。最有意思的例外是骨頂雞和紅冠水雞：他自己拍到牠們在水上游泳時也一伸一停地點頭，而游泳時不需要靠頭來維持平衡；他據此認為點頭的主要功能在視覺，例如在水面啄小東西時看清楚。",
+      "scope": "目別分類是綜述轉述的概況，不是規則；同一綜述的圖把家鵝當成不點頭的例子，但 L65-009（2025 年家鵝高速攝影）量到前衝與停住兩段——寫稿不得說「鵝不點頭」，只能說「雁鴨通常被列為不點頭，但有研究在家鵝身上量到類似動作」。骨頂雞游泳點頭來自作者自拍影格（Fig. 4c、d）。黑頭鷗泥灘覓食才點是轉述，與 L65-008 同方向，可省。",
+      "source_ids": [
+        "L69-S002"
+      ],
+      "source_locator": "F34-S002 p.1180 右欄–p.1181（Species dependency；Table 1；Fig. 4；黑頭鷗 Fujita 2006 轉述）",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：骨頂雞游泳點頭（作者自拍影格與觀察）0.25；目別概況與黑頭鷗為轉述，且鵝的歸類已被 L65-009 反駁，計 0。 原提案 F34-004（目標 C11-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V37（2026-11-12）改字後收；問句問『為什麼』而原文說沒有簡單答案，改問句；鵝的歸類與池中 L65-009 衝突，分類計 0；只算作者自拍的骨頂雞。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "腳不在地上也點頭——游泳的骨頂雞讓「點頭是為了走路平衡」更站不住。",
+        "visual": "三欄卡：通常點頭／通常不點／看情況，鵝那格加問號；骨頂雞在水面一伸一縮的示意。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "L69-005",
+      "question": "鳥不跨步的時候，頭還會一衝一停嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "bird.headbob_cranes_running_no_bob_bill_strike",
+      "answer_target": "會。Necker 的綜述寫，鴕鳥、孔雀、蒼鷺和鶴這些長脖子的鳥在地上找食物時，常常沒有跨步，頭也一衝一停（一部分是他自己的觀察）。美國一項美洲鶴與沙丘鶴的研究（我們只讀到摘要）也寫：鶴把喙伸向地面找食物時，會出現一連串和往前走無關的短促點頭；而跑起來的鶴完全不點頭。",
+      "scope": "「不跨步也點」是綜述作者的觀察加上 L65-008 同一篇野外研究，沒有數字；Cronin 2007 只讀到摘要、不計，畫面標「摘要」，不得自補速度或時間比例；「跑就不點」與 L65-004 同方向，只當呼應。不可把鶴的結果套成鴿子的數值。",
+      "source_ids": [
+        "L69-S003",
+        "L69-S002"
+      ],
+      "source_locator": "F34-S003 Abstract；F34-S002 p.1179 左欄（Cronin et al. 2005 轉述）、p.1182 左欄（長頸鳥不跨步的前衝與停住，作者觀察）",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：只算綜述作者本人的『不跨步也點』觀察；Cronin 2007 摘要照規定 0；Cronin 2005 速度—停住期是轉述且與 L65-004 同方向，0。 原提案 F34-005（目標 C11-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V37（2026-11-12）改字後收；主要內容只讀到摘要（不計）；『越快停越短』與 L65-004 重複；可計的只剩綜述作者的觀察，0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "腳沒在走，頭照樣一伸一停——點頭跟著『要看地上』走，不是跟著腳。",
+        "visual": "鶴低頭覓食時頭一頓一頓的示意，腳不動；標『觀察與摘要』。",
+        "seconds": [
+          25,
+          35
+        ]
+      }
+    },
+    {
+      "id": "L69-006",
+      "question": "鴿子快跑或降落時也點頭，那頭還停得住嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "bird.headbob_running_landing_no_true_hold",
+      "answer_target": "停不住。兩份文獻都轉述同一批鴿子研究：鴿子快跑或降落時頭仍一縮一伸，但身體太快，頭往後縮已經抵不掉身體往前的速度，原本的「停住期」只剩「縮回」，頭和眼睛沒有真的穩在空間裡。研究者因此提出另一種可能：一衝一縮讓近處和遠處的東西移動快慢不同，鳥可以藉此判斷距離；Necker 的綜述也提醒，這個說法還沒在走路的鳥身上用實驗驗證過。",
+      "scope": "全為轉述（Davies & Green 1988、Green 等 1994、Green & Cheng 1998），原文 JEB 403、Springer 付費，沒讀到；「判斷距離」只是假說，『尚未驗證』只出自 Necker 一份。不得給數字。",
+      "source_ids": [
+        "L69-S001",
+        "L69-S002"
+      ],
+      "source_locator": "F34-S001 p.314 左欄（hold phase is replaced with a flexion phase…head and eyes are not stabilized）；F34-S002 p.1178–1179（Pigeons head-bob without a hold phase during landing and when running fast；運動視差）、p.1182（functional interpretations have not yet been tested experimentally）",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.25）：純轉述，且『降落也點』在 L65-003、『快到沒有停住期』在 L65-004 已有；新增的『縮回不等於停住』與運動視差假說都是轉述。留作一句澄清，避免觀眾以為降落時頭也停住。 原提案 F34-006（目標 C11-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V37（2026-11-12）改字後收；作者把 Necker 一份的『尚未驗證』寫成兩份都寫；純轉述且與 L65-003、L65-004 重疊，計 0。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣在點，降落時卻沒有停住——點頭不只是一招。",
+        "visual": "鴿子降落的慢動作，頭的軌跡線沒有平台段；標『轉述』。",
+        "seconds": [
+          20,
+          25
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "L69-NA001",
+      "question": "Frost 1978（JEB 74:187）與 Davies & Green 1988（JEB 138:71）原文",
+      "existing_ids": [
+        "L65-003"
+      ],
+      "source_ids": [],
+      "reason": "doi.org/10.1242/jeb.74.1.187 轉 journals.biologists.com、搜尋列出的 cob.silverchair.com PDF，今日仍回 403，未繞過；搜尋結果另列的 1library.net 轉存標示受保護、為第三方，未開啟。內容只經 F34-S001、F34-S002 再轉述。 原提案 F34-NA001。",
+      "reentry_condition": "期刊頁可正常取得時重讀；L65-003 可由轉述升為原文（約 +0.5），Davies & Green 的跑、飛、降落資料約 +0.75。",
+      "reading_status": "只讀到他文轉述"
+    },
+    {
+      "id": "L69-NA002",
+      "question": "Friedman 1975 Nature「Visual control of head movements during avian locomotion」（腳在走但景物不動就不點、身體被移動但景物不動也不點）",
+      "existing_ids": [
+        "L65-003"
+      ],
+      "source_ids": [],
+      "reason": "搜尋列出 nature.com/articles/255067a0.pdf，回傳的是文章頁（付費預覽，只有摘要首段：頭往前衝後停住、只在環境中往前移）；未繞過。F34-S001、F34-S002 都轉述其跑步機結果，與 Frost 不同研究者，但仍是轉述。 原提案 F34-NA002。",
+      "reentry_condition": "合法全文可讀時，可把轉折二最關鍵的「腳在走、景物不動就不點」升為一手，約 +0.5。",
+      "reading_status": "只讀到摘要首段與轉述"
+    },
+    {
+      "id": "L69-NA003",
+      "question": "Cronin 等 2005 Current Biology 美洲鶴覓食時停住超過一半時間",
+      "existing_ids": [],
+      "source_ids": [
+        "L69-S002"
+      ],
+      "reason": "pubs.usgs.gov/publication/5224439 只連 DOI；DOI 經 linkinghub 以 JavaScript 轉 cell.com（上一輪已 403），未跟隨腳本組出的網址；mdsoar.org 典藏頁（搜尋列出）curl 與 WebFetch 都回 400。已由 F34-S002 轉述併入 F34-005，不另計。 原提案 F34-NA003。",
+      "reentry_condition": "合法全文可讀時，F34-005 可加原數字，約 +0.25–0.5。",
+      "reading_status": "只讀到他文轉述"
+    },
+    {
+      "id": "L69-NA004",
+      "question": "Green, Davies & Thorpe 1994（降落點頭與翅膀同步）、Necker 等 2000（蒙眼鴿子）、Fujita 2002（鴿子重心）、Fujita 2006（黑頭鷗）原文",
+      "existing_ids": [
+        "L65-003"
+      ],
+      "source_ids": [
+        "L69-S002"
+      ],
+      "reason": "Springer 與 Wiley／劍橋付費；搜尋列出的 springerlink.bibliotecabuap.elogim.com 是第三方轉存，未開啟；reinhold-necker.de 只張貼 2007 綜述與一篇德文單腳站立文章，沒有 2000 年原文。內容只經 F34-S002 轉述，分別併入 F34-002、F34-004、F34-006。 原提案 F34-NA004。",
+      "reentry_condition": "任何一篇合法開放全文可讀時，對應核心由轉述升級，各約 +0.25。",
+      "reading_status": "只讀到他文轉述（Green 1994 另見搜尋摘要）"
+    },
+    {
+      "id": "L69-NA005",
+      "question": "成對飛行的鴿子多拍翅膀是為了讓頭穩？（Taylor 等 2019 PLOS Biol）",
+      "existing_ids": [
+        "L65-010"
+      ],
+      "source_ids": [
+        "L69-S004"
+      ],
+      "reason": "全文開放已讀前段；量的是身體加速度不是頭，「讓頭穩」是作者假設，與走路點頭距離太遠。 原提案 F34-NA005。",
+      "reentry_condition": "若長題改為「鳥怎麼在動中看清楚」再考慮。",
+      "reading_status": "摘要與前言、結果前段"
+    },
+    {
+      "id": "L69-NA006",
+      "question": "天鵝的脖子像彈簧，飛行時讓頭被動穩住？（Pete 等 2015 J R Soc Interface）",
+      "existing_ids": [
+        "L65-010"
+      ],
+      "source_ids": [],
+      "reason": "搜尋結果列為 PMC 開放全文，未讀；與 L65-010 的 Kress 2015 同屬史丹佛 Lentink 研究群，且是飛行中的被動頸部，與走路點頭只是側面延伸，加入不會增加條數太多。 原提案 F34-NA006。",
+      "reentry_condition": "若需要飛行章的第二個例子再讀，最多約 0.25。",
+      "reading_status": "未讀，只看搜尋摘要"
+    },
+    {
+      "id": "L69-NA007",
+      "question": "環嘴鷗只在慢走時點頭（Lisney & Troje，Canadian Field-Naturalist）",
+      "existing_ids": [
+        "L65-008"
+      ],
+      "source_ids": [],
+      "reason": "搜尋列出 canadianfieldnaturalist.ca 全文，但屬 Troje 研究群，池中已封頂、不加條數，未下載。 原提案 F34-NA007。",
+      "reentry_condition": "Troje 群上限放寬時再讀，約 0.25。",
+      "reading_status": "未讀，只看搜尋摘要"
+    }
+  ]
+}

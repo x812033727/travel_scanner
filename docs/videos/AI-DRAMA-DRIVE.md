@@ -1,0 +1,209 @@
+# AI 劇的雲端硬碟備份：所有東西都放 AI劇/<名稱>/<集數>/
+
+站主 2026-11-10 重新規劃的備份規則，管四個系列：種田娶妻打天下（3D 原版與真人版）、恁祖媽今年18、
+原來如此事務所、奇聞檔案局。之後新開的劇也照這份。
+
+主機的影片備份怎麼複製上架包，在 [`BACKUP.md`](BACKUP.md)。奇聞檔案局與原來如此事務所的題庫快照、研究原稿與各集總表（雲端位置、YouTube ID、版本、畫風、旁白與配音聲音）
+記在 [`ai-drama-drive/BACKUP-LOG.md`](ai-drama-drive/BACKUP-LOG.md) 與 [`explainer-series/CATALOG.md`](explainer-series/CATALOG.md)。這份管的是**整個製作過程的所有檔案**：
+誰負責傳、放在哪裡、怎麼核對，還有舊的 `transfer/*` 分支怎麼收進來。
+
+## 給製作影片的 session：先讀這段
+
+1. **不要再推分支。** `transfer/*`、`claude/backup-*` 都停了，推到 `travel_scanner` 或四個備份 repo 都一樣；`tobranch.sh` 會拒絕。
+   舊分支由主機統一搬到雲端硬碟，核對後刪除，不用你處理。
+2. **所有東西都傳雲端硬碟**：重做、重拍某一鏡、回頭查決定時可能用到的全部（〈要傳什麼〉）。分不清要不要的，就傳。
+3. **傳到哪裡**：
+   - 一般 AI 劇（`種田娶妻打天下`、`種田娶妻打天下（真人版）`、`恁祖媽今年18`）：`AI劇/<名稱>/第033集/製作檔/<工作資料夾名>/`。
+   - **奇聞檔案局**與**原來如此事務所**（2026-11-13 起依分類多一層）：`AI劇/<系列>/<分類>/<代碼>/製作檔/<工作資料夾名>/`，例如 `AI劇/奇聞檔案局/H-歷史懸案/H01/製作檔/...`、`AI劇/原來如此事務所/生物動物與植物/P17/製作檔/...`。一律用題目／企劃代碼（`H01`、`B01`、`W01`、`T74`、`P07`、`G638`），不要另建 `第007集`。
+   - 跨集共用的（參考圖、音效、配樂庫、試鏡、腳本）放 `AI劇/<名稱>/_共用/製作檔/`。
+4. **怎麼傳**：Colab 用 `drive.mount()`；Claude Code 雲端 session 的環境已有 `RCLONE_CONFIG_VIDEOBACKUP_*`（〈session 用的權杖〉），裝好 rclone 後
+
+   ```bash
+   docs/videos/ai-drama-drive/todrive.sh <工作資料夾> "videobackup:AI劇/<名稱>/<集數或 分類/代碼>/製作檔/<工作資料夾名>"
+   ```
+
+   印出 `todrive: N files, 0 differences` 才算傳好。不是 0 就重傳。
+5. **什麼時候傳**：每過一關、交給站主或送上後台**之前**、session 結束前。
+6. **刪本機之前**：另一個沒參與製作的代理跑 `todrive.sh --check` 也是 0（〈怎麼確認完整〉）。
+7. 上架包、片段、逐句錄音照舊用 `import --publish` 送上站台，主機會自己備份到同一集的資料夾；`製作檔/` 是另外的、全部的檔。
+
+## 站主的規則（原話）
+
+- 「每部劇統一放 AI劇/<劇名>/<集數>/」（2026-11-10）；「現在成題越來越多，先把題目分類，奇聞跟原來都要分類，雲端硬碟會再依據分類再分資料夾放」（2026-11-13）。
+- 「備份都要備份到所有東西，之後需要重製可能的所有東西」（2026-11-10）。內容照兩份分支規則：AI 劇是
+  [`drama/BACKUP-BRANCHES.md`](drama/BACKUP-BRANCHES.md)，奇聞與原來如此是 [`explainer-series/BACKUP-BRANCHES.md`](explainer-series/BACKUP-BRANCHES.md)。
+  差別只在目的地從分支改成雲端硬碟。
+- 種田的真人重拍版（`-r2`）「當成另一部劇」；同一集的改版放同一個資料夾，舊版進 `_舊版/`。
+- 製作檔由**做片的 session 直接傳雲端硬碟**，不由主機 worker 從 GitHub 搬。
+- 舊分支先照對照表搬到雲端硬碟，核對完整後**刪除分支**。
+
+## 放在哪裡
+
+全部在 `G:\我的雲端硬碟\AI\備份\AI劇\` 底下（雲端路徑 `AI/備份/AI劇/`）：
+
+```
+AI劇/
+  種田娶妻打天下/                  ← zhong-tian-qu-qi-e001…（3D 原版，含 r2 先做的 3D 重做）
+    _共用/                         ← 參考圖各輪、試鏡、音效庫、配樂庫、小樣、腳本、不屬於單一集的 scratchpad
+      製作檔/<來源>/…
+    第033集/
+      final.mp4、字幕、配音、縮圖、metadata.json…   ← 上架包：主機 worker 照 BACKUP.md 複製
+      clips/、recordings/、recut/、keyframes/…       ← 完整層級：主機 worker
+      製作檔/<來源>/…                                ← 其他所有東西：做片的 session（這份的主題）
+      _舊版/<時間>/…                                 ← 被新檔取代的舊檔
+      _舊版/<slug>/…                                 ← 整支被新版本取代的舊版本（-v2 出來後的 v1）
+    第001-005集/                   ← 合集
+  種田娶妻打天下（真人版）/         ← zhong-tian-qu-qi-e001-r2…
+  恁祖媽今年18/                     ← tai-nainai-e001…
+  原來如此事務所/                   ← 7 個分類資料夾，裡面一律用代碼（P07、P17、G638…，不再用 第0xx集）
+    物理化學與日常材料/  P05/  P06/  P07/  P18/  P20/…
+    生物動物與植物/      P17/  G638/…
+    地球天氣與太空/      P02/  P04/  P14/  P15/  P23/…
+    數位科技與通訊工程/  P01/  P11/  P13/  P29/…
+    飲食與廚房科學/      P08/…
+    人體感官與日常行為/  P21/…
+    建築交通與商業制度/  P25/…
+  奇聞檔案局/                       ← 9 個分類資料夾（字母代號-中文名）
+    H-歷史懸案/             H01/  H02/…
+    S-歷史人物與名場面/     S01/  S10/…
+    M-奇異現象與自然/       M09/  T01/…
+    F-童話神話與怪談原版/   F01/  T12/…
+    L-都市傳說與消失地名/   L08/  T31/…
+    G-靈異與超自然公案/     G01/  T10/…
+    P-預言與末日/           P01/  T24/…
+    U-外星太空與未知訊號/   U02/  T74/…
+    W-商業與品牌奇聞/       B01/  B02/  B03/  W01/  W02/  W03/…（B01–B03 歸入 W，保留原代碼）
+```
+
+- **集數**：一般 AI 劇是 `第033集`，合集是 `第001-005集`；兩個解說系列依題庫分類放 `<分類>/<代碼>/`（例如 `H-歷史懸案/H01`、`物理化學與日常材料/P07`），分類對照表與 `apps/api/app/video_backup/target.py`、`docs/videos/{history-curiosity,so-thats-why}/pool/themes.json` 同步。什麼都沒有時用 slug。
+- **`製作檔/<來源>/`**：一個來源一個子資料夾，原樣保留，不同來源的同名檔不會互相蓋掉。session 傳的，來源寫工作資料夾的名字
+  （例如 `_live-e901`、`zhong-tian-qu-qi-e901-dh`、`_scratchpad`）；從舊分支搬來的，來源寫分支名（例如 `zt-live-e001`）。
+- **資料夾名稱**：劇名在後台「備份位置」卡的「資料夾名稱」可以改，預設是上面那幾個。已經備份到分類底下的集數不跟著改名。
+- **Shorts** 照舊放 `Shorts/<系列>/`；偶的江湖、品牌故事等不在 AI劇 的系列照舊。
+
+## 要傳什麼
+
+**一集重做、重拍某一鏡、回頭查決定時可能用到的東西，全部都傳。** 分不清要不要的，就傳。
+
+| 放在 | 內容 |
+| --- | --- |
+| `<集數>/製作檔/` | 每一支草稿（包括沒選中的）與它的提示詞、log；挑片清單、剪點、裁切；精修前後各版；剪進成片的片段（帶模型原聲）；全部錄音（逐句、各語言、重錄的）；該集配樂；剪接表；交出去的成片連同字幕、預覽、手機版；後台匯入資料夾；審片截圖；交接筆記；當時的 `docs/videos/<slug>/` 快照 |
+| `_共用/製作檔/` | 一部劇自己的音效庫、配樂庫、試鏡與參考圖各輪（包括沒選中的）、小樣、腳本、不屬於單一集的 scratchpad、合輯 |
+| `AI劇/_共用素材/<種類>/<名稱>/` | 2026-11-18 起，**好幾部劇或節目都會用到**的素材（`music/`、`sfx/`、`refs/`……），例如同一批 Flow Music 配樂只放這裡一份 |
+
+不傳的只有：密碼與權杖、可以重新安裝的套件（`node_modules`、`.venv`）；`todrive.sh` 會自己擋下來，並把它們連同原因記進清單。
+工具會重建的中間檔也傳：站主的規則是「所有東西」，重建要花錢或重建出來不一樣（隨機的音效、重新生成的配樂）時，就只剩這一份。
+
+### 清單與不重複（2026-11-18）
+
+站主 2026-11-18：規則還是「所有東西」，但**主機已經放進同一集資料夾、內容完全一樣**的檔案，不再傳第二份。
+
+- 目的地在 `<集數>/製作檔/...` 底下時，`todrive.sh` 先讀那一集的 `backup.json`（主機寫的，每個檔的 sha256）和資料夾目前的檔案清單
+  （rclone 的大小與 md5）。來源裡某個檔的 sha256 和大小跟主機記的一樣，而且資料夾裡那個位置的大小與 md5 也對得上，才算「主機已有」；
+  只對上其中一邊的照傳。主機還沒備份、或目的地是 `_共用`／`_共用素材` 時，全部照傳。
+- 每次傳完、逐檔核對 0 差異之後，`todrive.sh` 在目的地留 `_todrive/<時間>/manifest.json` 與 `SHA256SUMS`，並更新 `_todrive/latest.json`。
+  清單列出來源的**每一個檔**：大小、sha256、md5，以及去向——已上傳、主機已有（附主機那份的路徑）、排除（附原因）。
+  所以「每一個檔都在某一份清單裡」（lessons/shared.md §十三）看清單就查得到。
+- 排除只有上面那兩類；`review/`、`build/`、`segments/` 之類照傳。判斷寫在 `ai-drama-drive/todrive-plan.mjs`，測試在旁邊的 `todrive.test.mjs`。
+
+### 共用素材（2026-11-18）
+
+- 之後好幾部劇或節目共用的素材放 `AI劇/_共用素材/<種類>/<名稱>/`，用 `todrive.sh` 傳，例如
+  `todrive.sh ./flow-music "videobackup:AI劇/_共用素材/music/flow-music-20261117"`。
+- **現有的不搬**：奇聞與原來各自的 `_共用/製作檔/*-music-library/`、種田的 `_series`、祖媽的 `tn-shared` 都留在原處，
+  正在用這些路徑的工具與票照舊能找到。只屬於一部劇的素材，照舊放那部劇的 `_共用/製作檔/`。
+
+## 什麼時候傳
+
+- 每過一關傳一次（分鏡、成片、上架、語言批次），之後產生的檔補傳到同一個資料夾。
+- 交給站主或送上後台的檔，**交出去之前**先傳。
+- session 結束前一定要傳一次：雲端 session 的容器隨時會被收掉。
+
+## 怎麼傳：`todrive.sh`
+
+[`ai-drama-drive/todrive.sh`](ai-drama-drive/todrive.sh)：
+
+```bash
+docs/videos/ai-drama-drive/todrive.sh <工作資料夾> "<目的地>/AI劇/<名稱>/<集數>/製作檔/<工作資料夾名>"
+```
+
+- 用 `rclone copy --checksum`，**永遠不刪雲端上的檔**。雲端已經有同名但內容不同的檔，先移到 `_舊版/<時間>/` 再放新的。
+- 傳完用雜湊逐檔核對，印出 `todrive: N files, M differences`；M 不是 0 時以失敗結束，要重傳到 0。
+- 連結保留成連結，不跟進去；大檔整個傳，不切塊（雲端硬碟單檔上限 5 TB）。
+- 目的地不在 `AI劇/` 底下就拒絕執行。
+
+**雲端硬碟的權限**（主機那把是整個雲端硬碟的完整權限，`root_folder_id` 只設定起點，不是權限邊界；站主決定 session 也用它）：
+
+| 在哪裡做片 | 怎麼寫雲端硬碟 |
+| --- | --- |
+| Colab | `from google.colab import drive; drive.mount('/content/drive')`，站主用自己的帳號登入；目的地寫 `/content/drive/MyDrive/AI/備份/AI劇/…` |
+| Claude Code 雲端 session | 主機那把 `videobackup` 的設定放在雲端環境的環境變數 `RCLONE_CONFIG_VIDEOBACKUP_*`（下面〈session 用的權杖〉）；目的地寫 `videobackup:AI劇/…`（remote 鎖在 `AI/備份`）。權杖不進 repo、不貼進對話 |
+| 站主的電腦 | 目的地直接寫 `G:/我的雲端硬碟/AI/備份/AI劇/…` |
+
+### session 用的權杖
+
+**站主 2026-11-10：「用同一把就好」**：雲端 session 用主機那把 `videobackup`（`/etc/travel-scanner/rclone-videos/rclone.conf`，
+2026-10-22 站主建的，影片備份與舊分支搬家都用它），不另建。站主接受的代價：那把是整個雲端硬碟的完整權限，會出現在每一個雲端 session
+的環境裡；外洩時撤銷它，主機的影片備份也會停，要照 [`BACKUP.md`](BACKUP.md)〈主機設定〉重新授權後再發一次。
+（另建一把也幫不了多少：rclone 的 `drive.file` 權限看不到主機建的 `AI劇/`，所以另建的也一樣是完整權限，只差在可以單獨撤銷。）
+
+**放進雲端環境（站主做一次）**：rclone 可以完全用環境變數設定一個 remote（`RCLONE_CONFIG_<名稱>_<欄位>`），每個欄位一行，
+不需要設定檔，也不怕環境設定頁不收多行內容。用自己的終端機 SSH 到主機（埠 7788），印成這個格式：
+
+```bash
+sudo awk -F' = ' '/^\[/{next} NF==2{print "RCLONE_CONFIG_VIDEOBACKUP_" toupper($1) "=" $2}' /etc/travel-scanner/rclone-videos/rclone.conf
+```
+
+印出的 5～6 行（`RCLONE_CONFIG_VIDEOBACKUP_TYPE=drive`、`_CLIENT_ID`、`_CLIENT_SECRET`、`_SCOPE`、`_TOKEN={…}`、`_ROOT_FOLDER_ID`）原樣貼進
+Claude Code 雲端環境（例如 Mokaair）設定的環境變數，存檔；之後新開的 session 才有。不要在 Claude 的對話或 Claude app 的 Terminal 面板裡印它
+（畫面代理讀得到），也不要貼進任何對話。主機上的檔不動。
+
+**每個 session 開始時**（或寫進環境的 setup script）：
+
+```bash
+command -v rclone || curl -fsSL https://rclone.org/install.sh | sudo bash
+rclone lsd videobackup:AI劇      # 看得到各部劇就對了；看不到 videobackup 就是這個 session 沒帶到環境變數，請站主確認後重開
+docs/videos/ai-drama-drive/todrive.sh <工作資料夾> "videobackup:AI劇/<名稱>/<集數>/製作檔/<工作資料夾名>"
+```
+
+不需要 `TODRIVE_RCLONE_CONFIG`：rclone 直接從環境變數讀到 `videobackup`。remote 鎖在 `AI/備份`（`root_folder_id`），所以目的地從
+`AI劇/` 寫起。rclone 在記憶體裡更新短期的 access token，不寫任何檔、不碰主機；長期的 refresh token 兩邊共用。
+
+**外洩時**：到 myaccount.google.com/permissions 移除 `mokaair-studio-sync` 的雲端硬碟存取權，照〈主機設定〉重建主機的 `videobackup`，
+再用上面的指令印一次、把雲端環境的 `RCLONE_CONFIG_VIDEOBACKUP_*` 換掉。
+
+## 怎麼確認完整
+
+1. **逐檔核對**：`todrive.sh` 印的 differences 是 0。
+2. **涵蓋檢查**：另一個**沒參與製作**的代理，對同一個工作資料夾與目的地跑 `todrive.sh --check`，結果是 0。
+   `--check` 也會重新核對標成「主機已有」的檔：主機那份被換掉或不見了，就算差異。
+   工作區的每一個工作資料夾都要有一個對應的目的地；只做逐檔核對不夠（種田第 1 集曾漏掉另開的 `_live-e901`）。
+3. **重剪一次**：換成精簡版、或刪本機檔之前，只用雲端硬碟上的檔還原到空資料夾、重剪一次，跟交出去的成片逐位元相同。
+
+刪本機工作資料夾要三樣都成立，再加上站主在後台的關卡都決定了。
+
+## 舊的 transfer/* 分支
+
+四個備份 repo（`drama-backup-zt`、`drama-backup-tn`、`mokaair-video-backup`、`mokaair-video-backup-sothatswhy`）裡的
+132 條分支（後來補到 152 條），約 158 GB，照 [`ai-drama-drive/legacy-branches.tsv`](ai-drama-drive/legacy-branches.tsv) 搬到 `<集數>/製作檔/<分支名>/`
+（站主 2026-11-10 確認）。歸法：
+
+- 種田：`zt-cg-eNNN`、`zt-eNNN-media`、`-parity`、`-refs` 歸 3D 原版；`zt-e9NN-media*`、`zt-e001-r2-media`、`zt-cg-e001`～`e006`
+  是 r2 slug 先做的 3D 重做（檔案都在 `runpod/`），也歸 3D 原版的第 1–6 集；`zt-live-eNNN` 歸真人版；`zt-shared`、`zt-live-pilot`
+  歸真人版 `_共用/`；`zt-series-media*`、`zt-cg-shared` 歸 3D 原版 `_共用/`。
+- 一條分支包含多集的（`zt-e031-e032-media`、`zt-e043-e048-*`、`zt-e049-e052-*`、`zt-import-dubs-review-20261107`、
+  `backup-sothatswhy-p02-p05`、`-p07-p14`）：依路徑裡的集數拆到各集，看不出集數的放 `_共用/`。
+- 整個 repo 副本的五條（`zt-e001-r2-work`、`zt-e043-e048-audio`／`-cutlogs`、`zt-e049-e052-audio`／`-cutlogs`）：只取比 main 多的檔。
+- `.partNN` 切塊接回原檔（有 `.SPLIT` 的核對 sha256）再傳。
+- `tn-series-assets` 裡的種田音效庫照搬。
+
+搬家在主機上跑（主機的 rclone 權杖寫雲端硬碟、`gh` 讀私人 repo），一條分支做完逐檔核對；全部做完由另一個代理對每條分支做
+涵蓋檢查（分支最新一版的每個檔都在雲端硬碟、雜湊相同）。兩樣都是 0，把要刪的分支列給站主，站主同意後才刪。
+GitHub 刪分支之後不會馬上釋放 repo 空間。
+
+**2026-11-11 完成。** 對照表後來補了 20 條（對照表之後新推的分支、`archive/travel_scanner/*` 封存副本、travel_scanner 上
+兩條較舊的版本），共 152 條、182.7 GB、227,914 個檔，逐檔核對都是 0；另一個代理的涵蓋檢查 152 條加 travel_scanner 104 條
+全部安全，抽 69 個檔（約 4 GB）比對內容也相同。站主同意後分兩批刪除：travel_scanner 104 條、四個備份 repo 150 條。
+四個備份 repo 現在只剩一條只有 README 的 `main`（寫明雲端硬碟的位置、不要再推分支）。之後的製作檔只走雲端硬碟。
+
+主機 worker 的分支鏡像（[`BACKUP.md`](BACKUP.md)〈AI 劇的分支鏡像〉）2026-11-10 關掉，它從沒成功跑過。

@@ -26,16 +26,19 @@ export function SeriesRow({ series, labels }: { series: readonly SeriesRowItem[]
   if (!series.length) return null;
   return (
     <section aria-labelledby="series-row-heading" className="mt-10" data-testid="series-row">
-      <h2 id="series-row-heading" className="text-2xl font-bold tracking-tight">{labels.heading}</h2>
+      <h2 id="series-row-heading" className="portal-section-heading text-2xl font-extrabold tracking-tight">{labels.heading}</h2>
       <p className="mt-2 max-w-2xl leading-7 text-[var(--muted)]">{labels.lead}</p>
-      <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+      <ul className="mt-4 grid gap-4 sm:grid-cols-2">
         {series.map((item) => {
           const note = item.note ?? item.hub.description;
           return (
-            <li key={item.slug} className="rounded-2xl border border-[var(--teal)] bg-[var(--paper)] p-4">
-              <h3 className="text-lg font-bold">
+            <li
+              key={item.slug}
+              className="portal-card-surface group relative rounded-2xl border-l-4 border-l-[var(--teal)] p-5"
+            >
+              <h3 className="text-lg font-bold tracking-tight">
                 <Link
-                  className="inline-flex min-h-11 items-center text-[var(--teal)] underline-offset-4 hover:underline"
+                  className="inline-flex min-h-11 items-center text-[var(--ink)] underline-offset-4 after:absolute after:inset-0 after:content-[''] group-hover:text-[var(--teal)] group-hover:underline"
                   href={guideHref(item.hub.kind, item.hub.slug)}
                 >
                   {item.hub.title}

@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { disabledAdsense } from "@/lib/adsense";
 import { fetchAdsenseConfig } from "@/lib/adsense-config";
 import { ADS_TXT_FALLBACK_PUBLISHER_ID, adsTxtLine } from "./ads-txt";
-import { dynamic, GET } from "./route";
+import { dynamic, GET, HEAD } from "./route";
 
 vi.mock("@/lib/adsense-config", () => ({ fetchAdsenseConfig: vi.fn() }));
 
@@ -32,6 +32,14 @@ describe("/ads.txt", () => {
 
   it("lets whatever sits between the crawler and this server keep the answer for an hour", async () => {
     expect((await GET()).headers.get("Cache-Control")).toBe("public, max-age=3600");
+  });
+
+  it("answers HEAD probes with 200 and matching headers", async () => {
+    const response = await HEAD();
+    expect(response.status).toBe(200);
+    expect(response.headers.get("Content-Type")).toBe("text/plain; charset=utf-8");
+    expect(response.headers.get("Cache-Control")).toBe("public, max-age=3600");
+    expect(await response.text()).toBe("");
   });
 
   it.each([

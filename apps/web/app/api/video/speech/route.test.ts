@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { POST as judge } from "./judge/route";
 import { POST } from "./route";
+import { GET as minimaxQuota } from "./minimax-quota/route";
 import { GET } from "./status/route";
 import { POST as transcribe } from "./transcribe/route";
 
@@ -87,6 +88,18 @@ describe("video speech proxy", () => {
     vi.stubGlobal("fetch", fetchMock);
     const response = await GET(new NextRequest("https://mokaair.com/api/video/speech/status", { headers: { Authorization: `Bearer ${TOKEN}` } }));
     expect(await response.json()).toEqual({ configured: true });
+  });
+
+  it("serves the MiniMax quota with GET and no body", async () => {
+    const fetchMock = vi.fn(async (url: string, init?: RequestInit) => {
+      expect(url).toMatch(/\/api\/v1\/video\/speech\/minimax\/quota$/);
+      expect(init?.method).toBe("GET");
+      expect(init?.body).toBeUndefined();
+      return new Response('{"host":"www.minimax.io","quota":{}}', { status: 200, headers: { "Content-Type": "application/json" } });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    const response = await minimaxQuota(new NextRequest("https://mokaair.com/api/video/speech/minimax-quota", { headers: { Authorization: `Bearer ${TOKEN}` } }));
+    expect(await response.json()).toEqual({ host: "www.minimax.io", quota: {} });
   });
 
   it("lets a transcription carry a clip, while speech keeps its smaller cap", async () => {

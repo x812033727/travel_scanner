@@ -32,6 +32,9 @@ async function workspace(page: Page) {
     }
     return route.fulfill({ json: trip });
   });
+  // The fixture trip is 2026-11-11–12 in Asia/Tokyo and the editor labels the local current day
+  // "今天" instead of "DAY n"; pin the browser clock before the trip so the labels never depend on the real date.
+  await page.clock.setFixedTime(new Date("2026-11-01T03:00:00Z"));
   await page.goto("/zh-TW/trips/intuitive-trip");
   await expect(page.getByRole("heading", { name: editorFixture.name })).toBeVisible();
   return { writes, requests, current: () => trip };

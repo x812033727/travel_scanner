@@ -14,6 +14,12 @@ function stay22AllezCopy(locale: string): Stay22AllezCopy {
 
 const catalogs = { en, ja, ko, "zh-TW": tw, "zh-CN": cn };
 
+// The fixture stay is 2026-11-11 to 11-13 and the booking panel refuses a check-in before
+// today, so the partner buttons stopped opening on 2026-11-12. Pin the browser clock.
+test.beforeEach(async ({ page }) => {
+  await page.clock.setFixedTime(new Date("2026-11-01T03:00:00Z"));
+});
+
 for (const [locale, copy] of Object.entries(catalogs)) {
   test(`${locale} Klook direct hotel booking stays separate from destination discovery`, async ({ page, context }) => {
     const { clickoutOrigins } = await mock(context, false, false, true);

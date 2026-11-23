@@ -30,6 +30,34 @@
 
 ### 聲音
 
+**2026-11-12 起，八條外語配音改用 MiniMax 各語言自己的聲音；zh-TW 旁白不變，仍是 Gemini。** 站主聽過試聽後決定的，試聽紀錄在 `tasks/open/2026-11-12-dubs-in-the-eight-languages-use.md`。
+
+- **誰來唸**：網站有 MiniMax 金鑰時（`speech/status` 的 `minimax_configured`），`dub` 就用 MiniMax；沒有就照舊用 Gemini。`dub --provider gemini` 可以指定回 Gemini。
+- **聲音表**：`dubs/plan.mjs` 的 `DUB_MINIMAX_VOICES`，每個語言列出 MiniMax 系統聲音，好的排前面。
+
+  | 語言 | 第一個聲音（旁白） | 第二個聲音 |
+  |---|---|---|
+  | en | `English_CalmWoman` | `English_expressive_narrator` |
+  | ja | `Japanese_CalmLady` | `Japanese_KindLady` |
+  | ko | `Korean_GentleWoman` | `Korean_CaringWoman` |
+  | es | `Spanish_SereneWoman` | `Spanish_ThoughtfulLady` |
+  | pt | `Portuguese_SereneWoman` | `Portuguese_LovelyLady` |
+  | id | `Indonesian_ConfidentWoman` | `Indonesian_SweetGirl` |
+  | vi | `Vietnamese_kindhearted_girl`（語速 +15%） | 沒有，用 Gemini |
+  | th | `Thai_female_2_sample2` | `Thai_female_1_sample1` |
+
+- **聲音怎麼分**：影片裡不同的 zh-TW 聲音，依「旁白、投影片的搭檔、對話解說片的角色（照 `characters` 順序）」排隊，依序拿這個語言的第一、第二個 MiniMax 聲音。zh-TW 用同一個聲音的兩位說話者，配音也同一個聲音（原來如此的所長和旁白都是 `Sulafat`）。排不到 MiniMax 聲音的說話者，照舊用 Gemini 唸，例如越南文的小問。
+- **MiniMax 收不到的東西**：
+  - **風格說明**：MiniMax 不吃 `style` 文字，`--style` 只對 Gemini 有效。
+  - **zh-TW 發音提示**（`pronunciation_hints`）：MiniMax 配音不帶。
+- **語言設定**：伺服器依聲音代號帶 `language_boost`（#2084），日文才不會把漢字照中文念。
+- **有效期判斷**：配音紀錄（`timeline.json`、`fit.json`）多記 `voice_provider`，`status` 和上傳照它重算指紋。舊紀錄沒有這欄，當作 Gemini，所以已經做好的 Gemini 配音不會變成過期；要換成 MiniMax，就重跑那個語言的 `dub`。
+- **兩個主要差別**：
+  - **不再是同一位主持人**：八條音軌是八個不同的人。
+  - **長度不同**：試聽時 MiniMax 的長度是 Gemini 的 87–118%（越南文加速後 110%），1.15 倍的塞回時間軸還收得下。實際一集有塞不下的句子，照下面「塞回時間軸」的縮短流程處理。
+
+下面是 Gemini 的做法，`--provider gemini` 或網站沒有 MiniMax 金鑰時用。
+
 同一個 Gemini 聲音（`video.json` 的 `voice`，目前是 `Sulafat`）唸四種語言。Gemini TTS 自動判斷輸入語言，30 個內建聲音都能跨語言；只有 `style` 要換：zh-TW 的 style 寫著頻道的口音寫法「標準國語，咬字清楚，台北人平常說話的語調」（2026-10-03 起；舊的「台灣國語、台灣腔」送合成時會被換掉，見 [README.md](README.md) §頻道規格的「口音」列），其他語系各有一段預設 style（同樣的「輕鬆、跟朋友解釋、有起伏、中等偏快」，語言改掉）。這樣四條音軌聽起來是同一個人，是頻道聲音的延伸，不是另一個播報員。
 
 ### 兩位主持人（投影片的 `cohost`，2026-11-02）

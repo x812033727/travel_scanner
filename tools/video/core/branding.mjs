@@ -7,7 +7,7 @@ import path from "node:path";
 import { readApprovals } from "./approvals.mjs";
 import { isCompilation } from "./compilation.mjs";
 import { explainerSeries, hasCast, isDialogueExplainer, isExplainer } from "./drama.mjs";
-import { isDailyBrief } from "./narrative.mjs";
+import { isDailyBrief, isStorySeries } from "./narrative.mjs";
 import { atomicWrite, readJson, UsageError } from "./paths.mjs";
 import { isStory } from "./story.mjs";
 import { FPS, frameToMs } from "./timeline.mjs";
@@ -20,7 +20,15 @@ export const BRANDING_FILE = "branding.json";
  */
 export const INTRO_AT_START = "start";
 export const INTRO_AFTER_FIRST_CHAPTER = "after_first_chapter";
-export const INTRO_PLACEMENTS = Object.freeze([INTRO_AT_START, INTRO_AFTER_FIRST_CHAPTER]);
+/**
+ * No intro at all: the first line plays at 0:00 and only the outro is added (owner, 2026-11-19:
+ * 「以後開頭就不要有片頭了，直接開始」, for 原來如此事務所, 奇聞檔案局 and the brand stories). The
+ * package keeps its intro asset, so the pin still names the package it came from.
+ */
+export const INTRO_NONE = "none";
+export const INTRO_PLACEMENTS = Object.freeze([INTRO_AT_START, INTRO_AFTER_FIRST_CHAPTER, INTRO_NONE]);
+/** The frames the intro adds to the final: none for a placement without one. */
+export const introFrames = (branding) => (!branding || branding.intro_at === INTRO_NONE ? 0 : branding.intro_frames ?? branding.intro?.frames ?? 0);
 export const CURRENT_BRANDING_FILE = path.join("_branding", "current.json");
 export function currentBrandingFile(series = null) {
   if (series === null) return CURRENT_BRANDING_FILE;
@@ -90,8 +98,23 @@ export function narratedLong(doc, series = null) {
 /**
  * Tech Signal (a daily-ai- slug) opens on the channel intro, then the hosts' greeting: the owner
  * dropped its condensation (2026-11-03), so there is no first chapter to play the intro behind.
+ *
+ * 奇聞檔案局 (curio-) and the brand stories (story-) open on the channel intro too (owner,
+ * 2026-11-07): they dropped the condensation for 黑猫研究院's hook, so the intro plays first,
+ * then the video, then the outro.
  */
-export const defaultIntroAt = (doc, series = null) => (narratedLong(doc, series) && !isDailyBrief(doc) ? INTRO_AFTER_FIRST_CHAPTER : INTRO_AT_START);
+export const defaultIntroAt = (doc, series = null) => {
+  if (noIntroSeries(doc, series)) return INTRO_NONE;
+  return narratedLong(doc, series) && !isDailyBrief(doc) && !isStorySeries(doc) && !isStory(series) ? INTRO_AFTER_FIRST_CHAPTER : INTRO_AT_START;
+};
+
+/**
+ * The series that open straight on their first line with no intro (owner, 2026-11-19, after
+ * So That's Why's QR Code episode lost about 40% of its viewers inside the 11.9 s intro):
+ * 原來如此事務所 (sothatswhy-), 奇聞檔案局 (curio-) and the brand stories (story-, isStory).
+ * Compilations keep their bookends. A cut already pinned keeps its placement.
+ */
+export const noIntroSeries = (doc, series = null) => !isCompilation(doc) && (/^sothatswhy-/.test(doc?.slug ?? "") || isStorySeries(doc) || isStory(series));
 
 /**
  * An episode of a binge series that ends in a compilation (series.json `compilation: true`,
@@ -114,7 +137,7 @@ export function introAtFrame(branding, timeline = null) {
     if (!Number.isSafeInteger(branding.intro_at_frame) || branding.intro_at_frame < 0) throw new UsageError("branding intro_at_frame must be a non-negative integer");
     return branding.intro_at_frame;
   }
-  if ((branding.intro_at ?? INTRO_AT_START) === INTRO_AT_START) return 0;
+  if ([INTRO_AT_START, INTRO_NONE].includes(branding.intro_at ?? INTRO_AT_START)) return 0;
   const frame = timeline?.chapters?.[1]?.start_frame;
   if (!Number.isSafeInteger(frame) || frame <= 0 || (Number.isSafeInteger(timeline.total_frames) && frame >= timeline.total_frames)) {
     throw new UsageError("an intro after the first chapter needs a timeline with a second chapter; add one or keep the intro at the start");
@@ -261,7 +284,7 @@ export function presentationTimeline(timeline, branding) {
     return timeline;
   }
   // An applied record says intro_frames; a planned pin or package (tts's chapter check) says intro.frames.
-  const offset = branding.intro_frames ?? branding.intro?.frames;
+  const offset = introFrames(branding);
   const outro = branding.outro_frames ?? branding.outro?.frames;
   // Everything before the intro keeps its frame; everything from it on moves by the intro's
   // length. An end exactly at the intro stays before it, so chapter 1's last cue never spans it.
@@ -290,7 +313,7 @@ export function presentationTimeline(timeline, branding) {
  */
 export function shiftBrandingCues(cues, branding, direction = 1) {
   if (!branding) return cues;
-  const offset = frameToMs(branding.intro_frames);
+  const offset = frameToMs(introFrames(branding));
   // Caption timestamps are rounded to whole milliseconds before reaching this helper. Compare
   // against that same rounded boundary, including on the reverse path, or the first cue after an
   // intro at a non-whole-millisecond frame can be mistaken for a cue before it.

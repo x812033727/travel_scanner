@@ -31,6 +31,9 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import accounts  # noqa: E402
+
 HOME = Path(os.environ.get("MINIMAX_H3_COLAB_HOME") or Path.home() / ".cache" / "minimax-h3-colab-skill")
 NOTEBOOK = HOME / "assets" / "MiniMax_H3_Turbo_Colab.ipynb"
 H3SH = Path(__file__).resolve().parent / "h3.sh"
@@ -197,6 +200,7 @@ def run_job(session: str, job: dict, base: Path, poll_s: int, max_wait: int, att
             last_line = ""
             while time.monotonic() - t0 < max_wait:
                 time.sleep(poll_s)
+                accounts.renew_if_due(log=log)
                 st, tail = poll(session, prefix)
                 line = tail.strip().splitlines()[-1][:120] if tail.strip() else ""
                 if line != last_line:
@@ -242,6 +246,10 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--max-wait", type=int, default=2700)
     ap.add_argument("--attempts", type=int, default=3)
     a = ap.parse_args(argv)
+    slot = accounts.activate()
+    if slot:
+        log(f"Colab account {slot.upper()} (COLAB_ACCOUNT_SLOT)")
+        accounts.renew_if_due(log=log)
     mpath = Path(a.manifest).resolve()
     jobs = json.loads(mpath.read_text(encoding="utf-8"))["jobs"]
     only = {s.strip() for s in a.only.split(",") if s.strip()}

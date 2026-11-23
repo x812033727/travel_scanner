@@ -1,0 +1,205 @@
+{
+  "schema": "retrieval-source-corrections-release-evidence-v1",
+  "status": "COMPLETE_SOURCE_RELEASE_AND_BASELINE",
+  "target_sha": "693ce5bdec4633c72bf3ee2c0717244af123ddc7",
+  "completed_at": "2026-11-09T07:57:31.764434+00:00",
+  "final_host_completed_at": "2026-11-09T07:16:38.745854+00:00",
+  "locales": [
+    "zh-TW"
+  ],
+  "source_corrections": 3,
+  "draft_writes": 3,
+  "publication_writes": 3,
+  "replay_writes": 0,
+  "new_translations": 0,
+  "deployment_performed": false,
+  "migration_performed": false,
+  "provider_calls_performed": false,
+  "backup": {
+    "bytes": 625122763,
+    "sha256": "b27a16bbfbe55661053a8e33fd2fedd4d74bf0d760fe2aa6460666e3ef7a7d63",
+    "full_isolated_restore_verified": true
+  },
+  "protection": {
+    "window_start": "2026-11-09 r2 backup.before_capture",
+    "protected_rows_sha256": "d70132a345326ad7268ac9c8cb50f598dc85994883495a59eedf708c3a0b1d77",
+    "rehearsal_public_table_count": 172,
+    "rehearsal_fingerprint_algorithm": "sha256-sorted-row-digests-v2"
+  },
+  "public_acceptance": {
+    "pages": 3,
+    "original_assets": 9,
+    "original_screenshots": 6,
+    "independent_visual_reviewers": 2,
+    "supplemental_right_edge_images": 3,
+    "touch_swipe_tested": false
+  },
+  "host_acceptance": {
+    "held_pass": 10,
+    "held_fail": 1,
+    "final_pass": 11,
+    "final_fail": 0,
+    "true_child_exit_code": 0,
+    "owned_hold_cleared": true,
+    "hold_absent": true
+  },
+  "sources": [
+    {
+      "slug": "ai-term-hybrid-search",
+      "locale": "zh-TW",
+      "document_sha256": "972610411149ea1010e2e8b0a23d4086181e0cb18de0dc222ae771e43dba46c5",
+      "published_version": 12,
+      "previous_published_version": 10
+    },
+    {
+      "slug": "ai-term-knowledge-graph",
+      "locale": "zh-TW",
+      "document_sha256": "64f41fb947553be82d8eb0e8641265d8ed721ce5965875ffb09dd3df12f3f7be",
+      "published_version": 10,
+      "previous_published_version": 8
+    },
+    {
+      "slug": "ai-term-agentic-rag",
+      "locale": "zh-TW",
+      "document_sha256": "bb7772cb28692526d8ed07068bbde4f58b47f8fa59efbb19a0257d491cea0895",
+      "published_version": 10,
+      "previous_published_version": 8
+    },
+    {
+      "slug": "ai-term-graph-rag",
+      "locale": "zh-TW",
+      "previous_published_version": 8,
+      "published_version": 8,
+      "document_sha256": "1c0dea04721fd72d34051a5c46abc7db2c58e05757465ce81abf9c49636bafca",
+      "unchanged_complete_source_row": true
+    }
+  ],
+  "baseline": {
+    "sources": 4,
+    "missing_translation_documents": 16,
+    "jobs_created": 0,
+    "next_translation_batch_started": false
+  },
+  "remaining_site_localization": {
+    "captured_at_taipei": "2026-11-09T15:19:51.663634+08:00",
+    "public_articles": 2501,
+    "five_locale_public_articles": 1737,
+    "incomplete_public_articles": 764,
+    "missing_public_locale_documents": 3056,
+    "missing_by_locale": {
+      "en": 764,
+      "ja": 764,
+      "ko": 764,
+      "zh-CN": 764
+    },
+    "excluded_status_counts": {
+      "draft": 163
+    },
+    "source_sha256": "c8a7f2d9b6b67f96615e73f6016b268a964cac86cb893387b829c60f4262e6c0",
+    "metadata_only": true,
+    "body_and_artwork_quality_not_reverified": true
+  },
+  "evidence": {
+    "owner_approval": {
+      "sha256": "85c9547c9f8792400e9bd6a392c22a0bf1bf1800d7105acce54274afe41499e2",
+      "bytes": 3247
+    },
+    "action_context": {
+      "sha256": "07202782078827aaa7737839c239107beb192c2de55f2b223a408e7501250b8f",
+      "bytes": 19851
+    },
+    "backup_restore": {
+      "sha256": "f13f5aa96971aa70989e7076d064ef6b54577b58fd34ed017d5b199fe4e68976",
+      "bytes": 692044
+    },
+    "backup_review": {
+      "sha256": "4ea086f9d45df86542dc075ce81510ff50c9f2f1c3d2d58e553a137e48f914de",
+      "bytes": 9543
+    },
+    "rehearsal": {
+      "sha256": "7f1aebe5fd6ce5cf9608c9dacd48eb7c0c50be3b4c857e314a070c7b1b5fa8f8",
+      "bytes": 7561379
+    },
+    "rehearsal_review": {
+      "sha256": "e5eab3e1722e8f8f31bb9a8feedf1721a30f192423b09ee9d61e1178e2b0b7c1",
+      "bytes": 20354
+    },
+    "publication": {
+      "sha256": "1842ab4240fd07eb7a79c591157d936a71dcadc7c88f1373d0316392ff9053ed",
+      "bytes": 264491
+    },
+    "publication_review": {
+      "sha256": "c360e0382a8417670c75c8521b8c4d6d15f9de79a730bed1535a6b144deef8ac",
+      "bytes": 22972
+    },
+    "publication_gate": {
+      "sha256": "e608d93a87ecf16d4cf7d9e4994f813242ba9a3ed0859231cd39ad91d111509b",
+      "bytes": 8692
+    },
+    "public_acceptance": {
+      "sha256": "e02555c65c354ad4a7c9bd19c8b3a1e43b8e69b971fe668f8a05dacc685b2a8e",
+      "bytes": 57295
+    },
+    "public_package_review": {
+      "sha256": "d119d8d0031df53b52c86260ce9cfe86b108dbfa2b31cb8bb7fc9a869ae1fdc5",
+      "bytes": 7300
+    },
+    "public_append_review": {
+      "sha256": "6741b603320d12ebd5ad1c30715a4f54e9b6e3f27d26f7b71ebaa06f919a5eba",
+      "bytes": 5365
+    },
+    "visual_hybrid_knowledge": {
+      "sha256": "2ece35adc9328d86db0e58840be65fd0945ab9017901a5a7a6690e670038c4fc",
+      "bytes": 13273
+    },
+    "visual_agentic": {
+      "sha256": "74b345cc4bf0d0b306fcc832a86621d43ad5177f847a1f9087a871e68a841099",
+      "bytes": 9231
+    },
+    "mobile_scroll": {
+      "sha256": "647e822fb8a27cf2599d7359c76d0583309ac08f5a73ecf45d488996bd6ee80b",
+      "bytes": 25165
+    },
+    "finalization": {
+      "sha256": "596edc7bd0f99fb6e29c5a7da69fd4c8ebd4051377dd727e3c2f1435ff8b6734",
+      "bytes": 286408
+    },
+    "finalization_completion": {
+      "sha256": "fb5d2fef4580c76fdb51b91667bb2462c782edf1af2e16685a56b13f71134d5a",
+      "bytes": 1997
+    },
+    "finalization_review": {
+      "sha256": "8c805d996a1a3dc1ebcd61b08d32a8e5ae8c18930a1db2337d16de2ec6a10e9f",
+      "bytes": 23191
+    },
+    "baseline": {
+      "sha256": "872688a9d52fde51b48e122045d62b80969231277f820a179e9b2589e962703a",
+      "bytes": 113733
+    },
+    "baseline_binding": {
+      "sha256": "427ea9e1f63f1922289c688866b56eb79b90bb3762f343d25e95229ead008d93",
+      "bytes": 6766
+    },
+    "source_differences": {
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    "baseline_review": {
+      "sha256": "831d6494a27fbbc10b326a4f32534d2f7c25fd1f68a9567505ae2f6a8d6847b3",
+      "bytes": 6040
+    }
+  },
+  "retention": {
+    "prior_failures_preserved": true,
+    "backups_and_isolated_resources_retained": true,
+    "cleanup_commands_performed": false,
+    "fresh_postfinal_resource_inspection": false
+  },
+  "limitations": [
+    "The language census checks publication metadata, not current body/artwork quality.",
+    "The baseline contains exactly four sources; the native builder intermediate is not a site census.",
+    "Resource retention is supported by last accepted identities, the final receipt and the absence of cleanup commands; no new post-final resource inspection was claimed.",
+    "Static screenshots do not prove interactions; separate keyboard/end-scroll checks establish diagram reachability, not touch gestures."
+  ],
+  "private_evidence_set": "article-locales-20261029/source3-current-release-execution-20261109-02"
+}

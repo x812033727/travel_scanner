@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-19",
+  "method": "獨立覆核從嚴併網：同一政府體系、同一組織分支、同一機構算一網；needs_check 卡記 0；每網上限 2.0；門檻 11.4 條加權事實。",
+  "themes": {
+    "G746": {
+      "title": "錄影燈亮著，影片卻沒存下來？記憶卡上的 C10、U3、V30 保證了什麼，又管不到什麼",
+      "researcher": "SY6＋SY6B＋G746R＋SY6D",
+      "reviewer": "SVY6＋SVY6B＋SVG746R＋SVY6D",
+      "verdict": "ready",
+      "fact_count": 19.0,
+      "est_minutes": 14.2,
+      "new_weighted_facts": 7.0,
+      "networks": {
+        "NET_JP_KOKUSEN": [
+          "SY6D-S001",
+          "SY6D-S002",
+          "SY6D-S003"
+        ],
+        "NET_JDRC": [
+          "SY6D-S004"
+        ],
+        "NET_KR_KCA": [
+          "SY6D-S005"
+        ],
+        "NET_MINISCOPE": [
+          "SY6D-S006"
+        ],
+        "NET_PIUSBCAM": [
+          "SY6D-S007"
+        ],
+        "NET_CAU_SBC": [
+          "SY6D-S008"
+        ],
+        "NET_ETH_RISCV": [
+          "SY6D-S009"
+        ],
+        "NET_PERSONAL_SURVEY": [
+          "SY6D-S010"
+        ],
+        "NET_CR": [
+          "SY6D-S011"
+        ]
+      },
+      "turns": [
+        "觀眾以為插了速度等級不夠的卡，機器會立刻報錯或掉格；日本國民生活中心 2018 年測 12 款規定 Class 4–10 以上的行車紀錄器，插 Class 2 卡只有 1 款偵測為異常，其他照常開錄，24 小時測試期間影像正常；中心仍結論不合規格的卡可能無法正常記錄（K112-0673）。",
+        "觀眾以為卡的寫入速度是卡本身固定的、包裝上的數字就是它的速度；大學實測同一張卡在兩代主機上 16MB 循序寫 34.38 對 52.22MB/s、4KB 隨機寫 870 對 2353 次，另一個團隊只改驅動程式寫入就從 159kB/s 變 485kB/s（K112-0678、K112-0680）。舊卡 K112-0614 的『高等級卡 4KB 隨機寫最慢』可在收尾承接。"
+      ],
+      "card_verdicts": [
+        {
+          "id": "K112-0671",
+          "verdict": "keep",
+          "network": "NET_JP_KOKUSEN",
+          "weight_author": 1.0,
+          "weight_review": 1.0,
+          "note": "來源全文相符。"
+        },
+        {
+          "id": "K112-0672",
+          "verdict": "keep",
+          "network": "NET_JP_KOKUSEN",
+          "weight_author": 1.0,
+          "weight_review": 1.0,
+          "note": "數字與推測語氣相符。"
+        },
+        {
+          "id": "K112-0673",
+          "verdict": "keep",
+          "network": "NET_JP_KOKUSEN",
+          "weight_author": 1.0,
+          "weight_review": 1.0,
+          "note": "核心事實（12 款只有 1 款偵測 Class 2 卡）相符；刪去錯置的『錄到一半才偵測』（※2 屬 NO.6 容量欄）。"
+        },
+        {
+          "id": "K112-0674",
+          "verdict": "keep",
+          "network": "NET_JP_KOKUSEN",
+          "weight_author": 0.75,
+          "weight_review": 0.75,
+          "note": "表 4、表 5 相符；網已達上限，不另加分。"
+        },
+        {
+          "id": "K112-0675",
+          "verdict": "keep",
+          "network": "NET_JDRC",
+          "weight_author": 0.75,
+          "weight_review": 0.75,
+          "note": "指引原文相符，0.75 合理。"
+        },
+        {
+          "id": "K112-0676",
+          "verdict": "keep",
+          "network": "NET_KR_KCA",
+          "weight_author": 0.5,
+          "weight_review": 0.5,
+          "note": "正文相符，0.5 合理。"
+        },
+        {
+          "id": "K112-0677",
+          "verdict": "downgrade",
+          "network": "NET_MINISCOPE",
+          "weight_author": 0.75,
+          "weight_review": 0.5,
+          "note": "原文是取像時脈與寫卡速度兩項限制並列，卡改寫；主機端限制，0.75→0.5。"
+        },
+        {
+          "id": "K112-0678",
+          "verdict": "keep",
+          "network": "NET_CAU_SBC",
+          "weight_author": 1.0,
+          "weight_review": 1.0,
+          "note": "表 2、6、7 與推測句逐一相符；轉折二主卡。"
+        },
+        {
+          "id": "K112-0679",
+          "verdict": "keep",
+          "network": "NET_CAU_SBC",
+          "weight_author": 0.5,
+          "weight_review": 0.5,
+          "note": "數字相符；『將近 10 倍』標為推算（約 9.5 倍，新主機約 6 倍）。"
+        },
+        {
+          "id": "K112-0680",
+          "verdict": "downgrade",
+          "network": "NET_ETH_RISCV",
+          "weight_author": 0.75,
+          "weight_review": 0.5,
+          "note": "數字相符；『約 3 倍』標推算；2 頁延伸摘要、研究原型，0.75→0.5。"
+        },
+        {
+          "id": "K112-0681",
+          "verdict": "downgrade",
+          "network": "NET_PIUSBCAM",
+          "weight_author": 0.5,
+          "weight_review": 0.25,
+          "note": "數字相符，但掉格只在搭配特定錄影軟體時發生，與記憶卡無關的純類比，0.5→0.25。"
+        },
+        {
+          "id": "K112-0682",
+          "verdict": "keep",
+          "network": "NET_PERSONAL_SURVEY",
+          "weight_author": 0.5,
+          "weight_review": 0.5,
+          "note": "刪去原文沒有的『上百張』；個人網站已標歸屬，0.5。"
+        },
+        {
+          "id": "K112-0683",
+          "verdict": "keep",
+          "network": "NET_PERSONAL_SURVEY",
+          "weight_author": 0.25,
+          "weight_review": 0.25,
+          "note": "原文相符，0.25 合理。"
+        },
+        {
+          "id": "K112-0684",
+          "verdict": "downgrade",
+          "network": "NET_CR",
+          "weight_author": 0.5,
+          "weight_review": 0.25,
+          "note": "原文相符；雜誌選購文的整數概數，0.5→0.25。"
+        }
+      ],
+      "changes": [
+        "請求紀錄：作者 19 次請求的 cache 檔雜湊、位元組數全部與 access_log 相符；seq=16 dhs.gov 403 後即停並入封鎖名單；沒有請求封鎖名單內的網域；PMC 編號（seq 4、5）、arXiv 編號（seq 12）、指引 PDF 連結（seq 9）、報告 PDF 連結（seq 2）都在作者的搜尋回應或頁面上找得到。",
+        "K112-0673：『12 款裡只有 1 款偵測，而且是錄到一半才偵測到並停錄』錯置——表 3 的（※2）錄中停錄屬 NO.6 的容量欄（本文也寫 NO.6），NO.5 對 Class 2 卡何時偵測原文沒寫；卡與第 4 章已刪。",
+        "K112-0677：原文是『取像時脈上限』與『寫卡速度上限』兩項限制一起，卡寫成只因寫卡速度；已改，mechanism_key 同步改，0.75→0.5。",
+        "K112-0679：『差將近 10 倍』是作者換算（34.38÷3.62≈9.5；新主機 52.22÷8.63≈6），已標推算；第 6 章同步。",
+        "K112-0680：『快三倍』是換算（485÷159≈3.05），已標推算；『跳過不必要的等待』改為原文的清空管線與快取；研究原型的 2 頁延伸摘要，0.75→0.5。",
+        "K112-0681：補上掉格只在搭配某套錄影軟體時發生（換另一套軟體就達標），純類比，0.5→0.25；第 2 章同步。",
+        "K112-0682：原文沒有『上百張』，已刪。",
+        "K112-0684：雜誌整數概數 0.5→0.25。",
+        "核心追問刪去無卡可撐的『相機』。",
+        "加權：新增從嚴重算 7.0（作者 8.0）；G746 全題 12.0＋7.0＝19.0，18 網。章內實際用卡約 11.0。",
+        "章節：秒數合計 600；開場：錄影燈亮著，出事那一刻… 75 秒（35–85）OK；掉格長什麼樣：五分鐘的錄影，… 50 秒（25–55）OK；一章講完卡上的記號：C10、… 105 秒（40–135）OK；轉折一：插了等級不夠的卡，1… 85 秒（45–90）OK；不只是速度：壞掉的格子、假的… 85 秒（30–95）OK；轉折二：同一張卡，換一台機器… 90 秒（40–105）OK；要量準有多難：實驗室遷就寫卡… 55 秒（30–60）OK；收尾：同一張卡，有好幾種『快… 55 秒（45–55）OK",
+        "紅線：卡上無購買或保養建議（國民生活中心、韓國消費者院的建議段都只在 scope 註明不轉述）；無品牌、型號、作業系統名；無在世人名（S010 網頁標題含作者本名、S011 有攝影師署名與相機型號，皆未轉錄）。"
+      ],
+      "unverified": [
+        "未重抓 S001、S002、S005、S006、S009、S010、S011，以作者 cache（雜湊相符）逐句對照。",
+        "NO.5 對 Class 2 卡是開機時還是錄中偵測，原文沒寫。",
+        "NET_MINISCOPE（UCLA）與舊 NET_UCSD_FLASH（UCSD）作者合著未逐一比對（dblp 被封鎖），以不同校區、不同領域判為不併。"
+      ],
+      "note": "補研究 14 張卡全部保留（4 張降權、3 張改寫），沒有 drop；新增從嚴 7.0，全題 19.0 條加權事實、約 14.2 分鐘素材，兩個轉折都有政府機構實測與大學實測撐，章節 600 秒且每章在上下限內，可以進入最終評分（以新片名重新請觀眾評分）。"
+    }
+  }
+}

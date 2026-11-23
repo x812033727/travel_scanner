@@ -7,7 +7,7 @@ import { existsSync, mkdirSync, renameSync, rmSync, writeFileSync } from "node:f
 import path from "node:path";
 
 import { sha256File } from "../core/approvals.mjs";
-import { BRANDING_FILE, brandingHash, INTRO_AT_START, pinRecord, validateBranding } from "../core/branding.mjs";
+import { BRANDING_FILE, brandingHash, INTRO_AT_START, INTRO_NONE, introFrames, pinRecord, validateBranding } from "../core/branding.mjs";
 import { isInside, UsageError } from "../core/paths.mjs";
 import { FPS, SAMPLE_RATE, SAMPLES_PER_FRAME } from "../core/timeline.mjs";
 import { joinList } from "../compile/plan.mjs";
@@ -55,12 +55,13 @@ export function brandingSegmentArgs(source, outFile, frames) {
 export function checkedIntroAt(branding, bodyFrames, introAtFrame = 0) {
   if (!Number.isSafeInteger(introAtFrame) || introAtFrame < 0 || introAtFrame >= bodyFrames) throw new UsageError("the intro must start inside the body");
   const placement = branding.intro_at ?? INTRO_AT_START;
-  if ((placement === INTRO_AT_START) !== (introAtFrame === 0)) throw new UsageError(`branding placed ${placement} cannot put its intro at body frame ${introAtFrame}`);
+  if ([INTRO_AT_START, INTRO_NONE].includes(placement) !== (introAtFrame === 0)) throw new UsageError(`branding placed ${placement} cannot put its intro at body frame ${introAtFrame}`);
   return introAtFrame;
 }
 
 function clipsOf(bodyFile, bodyFrames, branding, introAtFrame = 0) {
   if (!Number.isInteger(bodyFrames) || bodyFrames < 1) throw new UsageError("branding needs a positive body frame count");
+  if (branding.intro_at === INTRO_NONE && !checkedIntroAt(branding, bodyFrames, introAtFrame)) return [{ file: bodyFile, frames: bodyFrames }, branding.outro];
   if (!checkedIntroAt(branding, bodyFrames, introAtFrame)) return [branding.intro, { file: bodyFile, frames: bodyFrames }, branding.outro];
   return [{ file: bodyFile, frames: introAtFrame, from: 0 }, branding.intro, { file: bodyFile, frames: bodyFrames - introAtFrame, from: introAtFrame }, branding.outro];
 }
@@ -95,7 +96,7 @@ export function brandingJoinArgs({ bodyFile, bodyFrames, branding, outFile, vide
 }
 
 function appliedRecord(branding, bodyFrames, introAtFrame = 0) {
-  return { hash: brandingHash(branding), id: branding.id, intro_frames: branding.intro.frames, outro_frames: branding.outro.frames, body_frames: bodyFrames, ...(introAtFrame > 0 ? { intro_at_frame: introAtFrame } : {}) };
+  return { hash: brandingHash(branding), id: branding.id, intro_frames: introFrames(branding), outro_frames: branding.outro.frames, body_frames: bodyFrames, ...(introAtFrame > 0 ? { intro_at_frame: introAtFrame } : {}) };
 }
 
 /**
@@ -111,7 +112,8 @@ export async function wrapVideo({ tools, exec = runTool, workdir, bodyFile, body
   const directory = path.join(workdir, "build", "branding", `${selected.hash}-${ENCODER_VERSION}`);
   mkdirSync(directory, { recursive: true });
   const pictures = [];
-  for (const role of ["intro", "outro"]) {
+  const noIntro = selected.intro_at === INTRO_NONE;
+  for (const role of noIntro ? ["outro"] : ["intro", "outro"]) {
     const clip = selected[role];
     const file = path.join(directory, `${role}.mp4`);
     if (!existsSync(file)) {
@@ -122,7 +124,8 @@ export async function wrapVideo({ tools, exec = runTool, workdir, bodyFile, body
     pictures.push(file);
   }
   const list = path.join(directory, "join.ffconcat");
-  if (checkedIntroAt(selected, bodyFrames, introAtFrame) === 0) writeFileSync(list, joinList([pictures[0], bodyFile, pictures[1]]));
+  if (noIntro && checkedIntroAt(selected, bodyFrames, introAtFrame) === 0) writeFileSync(list, joinList([bodyFile, pictures[0]]));
+  else if (checkedIntroAt(selected, bodyFrames, introAtFrame) === 0) writeFileSync(list, joinList([pictures[0], bodyFile, pictures[1]]));
   else {
     const { before, after } = bodyPictures ?? {};
     if (!Array.isArray(before) || !before.length || !Array.isArray(after) || !after.length) throw new UsageError("an intro after the first chapter needs the body's scene pictures split at that chapter");

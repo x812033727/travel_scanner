@@ -1,0 +1,514 @@
+{
+  "batch_id": "wave57-human-20261111",
+  "created_on": "2026-11-12",
+  "scope": "牆體的隔音實測與質量定律、濕熱氣候下牆內受潮：替長題 G43、G42 補加拿大國家研究院的實測報告、建築科學文摘與個案研究（作者 F9，非作者覆核 V12）；G42 仍後備。",
+  "sources": [
+    {
+      "id": "H57-S001",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nbshandbook119.pdf",
+      "canonical_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nbshandbook119.pdf",
+      "title": "Quieting: A Practical Guide to Noise Control（NBS Handbook 119；Berendt, Corliss, Ojalvo）",
+      "publisher": "U.S. National Bureau of Standards（今 NIST）",
+      "version": "1976 年版，NIST 數位典藏掃描檔",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭），pdftotext -layout 轉文字後閱讀（掃描 OCR，個別字有誤）",
+      "reading_scope": "第 3 章〈Use Sound Absorbing Materials〉一節與吸收段；第 4 章〈Sound Absorption versus Sound Insulation〉全節與 WARNING 段；其餘章節只做關鍵字檢索",
+      "locator": "p.29–34（吸收、距離、吸音材）；p.49–50（Sound Absorption versus Sound Insulation）",
+      "summary": "美國國家標準局的降噪手冊把吸音與隔音分開講：吸音磚、地毯、窗簾對控制房間內與走廊樓梯間的噪音不可或缺，但因為又軟又多孔又輕，是很差的隔音體；手冊請讀者想像一面只用吸音磚、地毯或窗簾做成的牆，幾乎擋不住聲音，磚牆則相反，吸音很差、隔音極好。比喻是吸墨紙：很會吸水，但沒有人拿它做游泳池的牆。警語：不要只為了擋住傳到隔壁的聲音而在房間內表面貼吸音材，多孔反而讓聲音更容易通過。數字：鋪在天花板、地板、牆面的吸音材可讓多數房間的噪音降約 5 到 10 dB（高音），低音只有 2 到 3 dB，而且對身在直接音場裡的機器操作員沒有保護；厚軟地毯加襯墊約吸收照到它的空氣聲能量的 50–60%，吸音天花板 50–80%。聽得到樓上走路說話時，在自己天花板貼吸音磚不會減少傳下來的聲音。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "1976 年的政府手冊，數字是概括的經驗值，沒有量測條件；OCR 文字個別處有錯字，引用句已對照上下文。全書 140 餘頁只讀上列段落。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f9src/nbs_hb119.pdf",
+        "sha256_prefix": "f9422a6333bed422",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H57-S002",
+      "url": "https://nrc-publications.canada.ca/eng/view/ft/?id=47deba40-bff7-446c-95cc-02d08a6327e0",
+      "canonical_url": "https://nrc-publications.canada.ca/eng/view/object/?id=47deba40-bff7-446c-95cc-02d08a6327e0",
+      "title": "Introduction to building acoustics（Canadian Building Digest；A.C.C. Warnock）",
+      "publisher": "National Research Council Canada, Institute for Research in Construction（NRC Publications Archive）",
+      "version": "1985 年 2 月原刊，NRC 典藏 PDF",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭），pdftotext 轉文字後全文閱讀",
+      "reading_scope": "全文",
+      "locator": "Physical Properties of Sound；Sound Perception；Reverberation and Absorption；Sound Transmission Loss；Fundamental Noise Control Procedures 與 Figure 1",
+      "summary": "加拿大國家研究院的建築文摘。吸音與傳聲損失要分清：吸音材控制的是空間內的聲音，靠讓聲音相對容易地穿進去而作用，通常多孔；傳聲損失好的材料或系統通常不透氣、是好的反射體。聲波打在隔間上使它振動，部分振動能量在另一側重新輻射成空氣聲。機器隔音罩的三要素：彈性支承、傳聲損失高的外殼、殼內吸音襯；拿掉外殼，聲音穿過吸音材幾乎不衰減；拿掉吸音材，殼內混響聲累積，外殼的效果遠不如預期。10 dB 的變化大約對應感覺響度加倍；同樣響的聲音，3 kHz 只要 54 dB、50 Hz 要 79 dB；實務上小於 3 dB 的變化不算顯著。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "1985 年的入門文摘，典藏頁註明內容可能不符現行規範。NRC 典藏檢索把這份檔案列為 Introduction to building acoustics；CBD-239 引用的 CBD-236 題名是 Fundamentals of building acoustics，兩者是否同一期未核，本紀錄以典藏題名為準。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f9src/nrc_intro_building_acoustics.pdf",
+        "sha256_prefix": "783bf35ebf662899",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H57-S003",
+      "url": "https://nrc-publications.canada.ca/eng/view/ft/?id=6f04ffd7-4531-4ea2-ada6-3df32c9674ee",
+      "canonical_url": "https://nrc-publications.canada.ca/eng/view/object/?id=6f04ffd7-4531-4ea2-ada6-3df32c9674ee",
+      "title": "Factors affecting sound transmission loss（Canadian Building Digest 239；A.C.C. Warnock）",
+      "publisher": "National Research Council Canada, Institute for Research in Construction（NRC Publications Archive）",
+      "version": "1985 年 7 月原刊，NRC 典藏 PDF",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭），pdftotext 轉文字後全文閱讀",
+      "reading_scope": "全文與表 1、表 2、圖 1、圖 2 的圖說",
+      "locator": "Mass Law 與式 (1)；Effects of Stiffness 與式 (2)、Table 1、Figure 1；Double Layer Assemblies 與 Figure 2；Gypsum Board Walls 與 Table 2；Concrete Block Walls；Flanking Transmission",
+      "summary": "質量定律：單層牆的傳聲損失近似 TL＝20 log10(ms·f)−48（ms 為面密度 kg/m²，f 為頻率 Hz），頻率或面密度每加倍約多 6 dB；要全頻多 12 dB 得把面密度變 4 倍，18 dB 要 8 倍；150 mm 澆置混凝土單層 STC 約 55，這樣的重量大致是一般施工的實務上限。巧合效應：臨界頻率 fc＝A/t，鋼 A＝12,700 Hz·mm，5 mm 鋼板 2,540 Hz；緻密混凝土 A＝18,700，100 mm 混凝土 187 Hz；石膏板 A＝39,000。圖 1 三片同為 10 kg/m² 的板：16 mm 合板 STC 21、13 mm 石膏板 STC 28、1.3 mm 鋼板 STC 30。兩層板牢牢膠合會像一片厚板、臨界頻率降低；只用螺絲鬆鬆固定則不會。雙層牆：兩層之間的空氣像彈簧，有質量—空氣—質量共振；低於共振頻率時兩層被空氣耦合、只等於質量相加；共振附近更差；高於共振才比質量定律快得多。圖 2 兩面 0.5 mm 鋼板的理想雙層牆：空氣層 100 mm 時共振 135 Hz、STC 29；空氣層 5 mm 時共振 630 Hz、STC 24；單片 1 mm 鋼板的質量定律預測是 STC 28。隔間設計應讓這個共振低於 80 Hz。表 2：木立柱加彈性槽鋼一面，1+1 層石膏板有吸音棉 STC 48、沒有 40；雙排木立柱 57 與 46。相對地，住宅常見兩面石膏板直接釘在同一排木立柱上的內牆 STC 約 33，塞吸音棉只多約 3，因為聲音經立柱直接傳過去。混凝土空心磚牆：貼板後面的空氣層太小會使傳聲損失比不貼還低；單層石膏板的空氣層要大於 60 mm 才符合 80 Hz 準則；連用黏著劑直接貼，都可能留下幾毫米的空氣膜而出現有害的共振。側向傳聲在差的設計裡可以比直接穿牆的還多。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "1985 年文摘，典藏頁註明內容可能不符現行規範；圖 1、圖 2 是理想化曲線不是單一實測；式 (3) 在轉文字時遺失，不引用公式本身。北美輕構造用語，STC 是北美單一數值評級。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f9src/nrc_cbd239_factors_tl.pdf",
+        "sha256_prefix": "3173e1dd67e3f2f3",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H57-S004",
+      "url": "https://nrc-publications.canada.ca/eng/view/ft/?id=7c9971a9-227a-433a-8c06-cd00af83a236",
+      "canonical_url": "https://doi.org/10.4224/40002867",
+      "title": "Control of sound transmission through gypsum board walls（Construction Technology Update No. 1；Warnock & Quirt）",
+      "publisher": "National Research Council Canada, Institute for Research in Construction（NRC Publications Archive）",
+      "version": "1997 年 1 月，DOI 10.4224/40002867",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭），pdftotext -layout 轉文字後全文閱讀",
+      "reading_scope": "全文與圖 1–3、表 1",
+      "locator": "首頁摘要欄；Mass of Gypsum Board 與 Figure 1；Sound-Absorbing Materials；Cavity Depth 與 Figure 2；Use of Internal Layers 與 Table 1；Summary of Findings",
+      "summary": "整理 NRC 對 250 多面石膏板牆的量測：最主要的因素是兩面板材彼此隔離；只要兩面是剛性相連，空腔裡的吸音材就失效，文中直說在剛性相連的牆裡放吸音材是浪費錢；兩面沒有剛性相連時，在空腔加吸音材約多 10 個 STC 點。在非承重鋼立柱牆（92 mm 立柱、空腔填玻璃棉）裡，石膏板總重加倍約多 10 個 STC 點，迴歸式 STC＝34.6 log10(面密度)−0.33。空腔深度加倍：填滿玻璃棉時約多 10 點，不填時只多約 4 點。在雙排立柱牆中間再加一層板反而變差：無中間層 STC 58，加 19 mm 木纖維板 54，加 15.9 mm 石膏板 55；原因是中間層剛性連到立柱、又把空腔變淺，低頻的隔音下降。吸音材種類對 STC 影響小；把棉塞得太密太硬有經棉本身傳聲的風險。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "北美木／輕鋼構石膏板牆的實驗室數據，不是台灣常見的 RC 或磚牆；STC 只到 125 Hz，不代表低音表現。圖 1、圖 2 的個別點未逐一讀數。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f9src/nrc_ctu_a.pdf",
+        "sha256_prefix": "05bfda71ff6899bd",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H57-S005",
+      "url": "https://nrc-publications.canada.ca/eng/view/ft/?id=8fe95aff-adf1-4a91-bc2e-f150870a5aee",
+      "canonical_url": "https://nrc-publications.canada.ca/eng/view/object/?id=8fe95aff-adf1-4a91-bc2e-f150870a5aee",
+      "title": "Controlling sound transmission through concrete block walls（Construction Technology Update No. 13；A.C.C. Warnock）",
+      "publisher": "National Research Council Canada, Institute for Research in Construction（NRC Publications Archive）",
+      "version": "1998 年 5 月",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭），pdftotext -layout 轉文字後全文閱讀",
+      "reading_scope": "全文與圖 1–3、表 1–3",
+      "locator": "Single-Leaf Concrete Block Walls 與 Table 1；Effect of Porosity 與 Table 2；Double-Leaf Concrete Block Walls；Concrete Block Walls with Gypsum Board Added 與 Figure 2–3；Mass-air-mass resonance frequency 方框",
+      "summary": "混凝土空心磚牆的隔音。單層磚牆最重要的是面密度，表面以油漆或粉刷封住時 STC 約 45 到 55；50% 實心的磚牆封一面後，90 mm 厚輕質磚 43、常重磚 44，290 mm 厚分別 49、51，厚度大增而 STC 只小幅增加；想靠更重的磚拿到遠高於 50 的 STC 會重到不實際。孔隙：多孔的磚不封面會漏聲，90 mm 木骨材磚不封 STC 14、一面貼石膏板 29、粉刷後 43；190 mm 輕質混凝土磚分別 42、46、49；輕質磚封面後常見多 5 到 10 點，常重磚幾乎沒差。直接黏或鎖上的石膏板封不住表面，因為它不會整面黏合、像另一層。在磚芯裡填吸音材沒有用，聲音走磚體這條更直接的路。雙層磚牆理論上很好，實際很難完全不相連：一面預期 STC 超過 70 的雙層牆，因為掉落的砂漿把兩層連起來，只量到 60；實驗室把兩層做到結構隔離時有 70 到 80。在 190 mm 磚牆一面用 13 mm 彈性槽鋼加 15.9 mm 石膏板、空腔填玻璃棉，共振落到約 100 Hz，STC 由裸牆的 50 升到 54；兩面都這樣貼，高頻更好，但共振附近大幅下降，STC 49，比裸牆還少 1 點，而且 100 Hz 附近的隔音明顯變差，原因是空腔太淺。經驗準則：石膏板面密度（kg/m²）乘空腔深度（mm）要大於 425（填吸音材）或 720（不填）。發泡聚苯乙烯這類閉孔材料吸音不顯著，不適合當空腔吸音材。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "加拿大空心混凝土磚牆的實驗室數據，不是台灣的 RC 牆或紅磚牆，只能當「重牆加薄板」的原理與量級。Figure 2、3 的曲線未逐點讀數，STC 取圖上標註與正文。 覆核 V12（2026-11-12）：read_via 補：pdftotext 預設排版把兩欄交錯，需以 -raw 重轉才讀得通；limitations 補：STC 49 是正文「比裸牆少一點」加 Figure 3 標註。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f9src/nrc_ctu_b.pdf",
+        "sha256_prefix": "30363a30c12da1bc",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H57-S006",
+      "url": "https://nrc-publications.canada.ca/eng/view/ft/?id=04ac8069-a5d2-4038-8787-da064b073e7f",
+      "canonical_url": "https://doi.org/10.4224/20331556",
+      "title": "Gypsum Board Walls: Transmission Loss Data（Internal Report IRC-IR-761；Halliwell, Nightingale, Warnock, Birta）",
+      "publisher": "National Research Council Canada, Institute for Research in Construction（NRC Publications Archive）",
+      "version": "1998 年 3 月，DOI 10.4224/20331556",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭），pdftotext -layout 轉文字後閱讀",
+      "reading_scope": "p.1–18 的說明（Introduction、Measurement Process、Precision and Reproducibility、Experimental Design、Specimen Installation）全文；個別試體資料頁只讀 p.19–21 三面牆（TL-93-176、TL-93-166、TL-93-188），其餘 300 多頁未讀",
+      "locator": "p.3 Introduction；p.4 Measurement Process；p.5–6 與 Table 1、Figure 1；p.20 試體 G13_WS90(406)_MFB90_G13（TestID TL-93-166）",
+      "summary": "350 面石膏板牆的三分之一倍頻帶傳聲損失資料（285 面來自先前只報 STC 的 IR-693，另加 65 面）。試體裝在兩間混響室之間 3.05 m×2.44 m 的開口，聲源室 65 m³、受音室 250 m³，依 ASTM E90 量 50 Hz 到 6.3 kHz。重現性：把同一種牆用同批新材料完全重建六次，一種平均 STC 46（45–46），另一種平均 STC 57（56–59）；作者說隔音越好的牆重現性可能越差。試體 TL-93-166（13 mm 石膏板＋90 mm 木立柱間距 406 mm＋90 mm 礦纖棉＋13 mm 石膏板，板直接鎖在立柱上）：STC 33；傳聲損失在 125 Hz 是 8.6 dB，1,600 Hz 是 53.9 dB，3,150 Hz 又掉到 40.4 dB，5,000 Hz 回到 49.2 dB。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀說明章與三面牆的資料頁；3,150 Hz 的低谷原文沒有標註原因，片中若稱為巧合低谷要引 F9-S009 的機制並說明是「依文摘的說法」。北美輕構造牆。資料頁文字是由圖表轉出，數字已對照同頁欄位。 覆核 V12（2026-11-12）：limitations 補：TL-93-166 的 125 Hz 與 3,150 Hz 低谷報告都沒有說明成因；該試體空腔已含 90 mm 礦纖棉。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f9src/ir761.pdf",
+        "sha256_prefix": "ec2e700e031579eb",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H57-S007",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10171418/fullTextXML",
+      "canonical_url": "https://doi.org/10.14324/111.444/ucloe.000037",
+      "title": "Moisture control design has to respond to all relevant hygrothermal loads（Künzel & Dewsbury）",
+      "publisher": "UCL Open Environment 4:e037（UCL Press），CC BY 4.0",
+      "version": "2022；DOI 10.14324/111.444/ucloe.000037；PMC10171418",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（Europe PMC REST fullTextXML，工具預設標頭），去標籤後閱讀",
+      "reading_scope": "前言、Moisture loads 全節（室外條件、風雨、日曬水汽驅動、室內氣候、施工水分、上升潮氣）、Considering construction imperfections（雨水滲漏、漏氣）到歐洲標準一節開頭；其後各國標準細節未讀",
+      "locator": "Outdoor air conditions 與 Figure 2；Wind-driven rain 與 Figure 4；Solar vapour drive；Indoor climate；Construction moisture 與 Figure 5；Rising damp；Driving rain leakage",
+      "summary": "弗勞恩霍夫建築物理研究所作者的開放取用回顧。寒冷與溫和氣候冬季室內外平均溫差常有 20 K，熱帶只有例如 5 K（室外 30°C、室內 25°C），看似溫和，但飽和水汽壓隨溫度指數上升：圖 2 的例子裡，熱帶冷房季的日平均溫差只有供暖氣候的四分之一，水汽壓差卻是三倍，方向由外往內。該例室外空氣露點低於室溫，除非把房間冷到 24°C 以下（例如冷氣由濕度控制時）否則牆內不會結露；但即使不結露，黴菌仍可能生長，該例材料層的黴菌生長界限溫度約 28°C。磚石與混凝土能吸收大量水分而不立刻出現損壞，木構則很敏感：德國磚石牆外貼保溫系統長年紀錄良好，而北美同類系統在輕構造牆上大規模損壞；德國朝西窗下的取樣也在保溫層後找到水分（最高約 10% 體積），甚至有螞蟻住在裡面。日曬水汽驅動：吸飽雨水的外飾層被太陽加熱，水會往兩個方向乾，很大一部分往牆內走；實心磚石牆也會發生，但磚石能緩衝，且與毛細液態水流相互抵消，到達室內面的水汽通常可由通風帶走；實心磚石牆室內面的水漬通常是液態雨水滲入，不是日曬水汽驅動。沒有粉刷的磚石牆很透氣，雨水可被氣壓差推過牆。室內：四口之家每天產生最多約 10 公升水。施工水分：現澆混凝土、蒸壓加氣混凝土等出廠或施工時含大量水，工期緊使它來不及乾，第一個供暖季的能耗有時高到平常的兩倍。看起來像上升潮氣的，可能是夏季結露或吸濕：鹽類進入磚石後提高表面的吸濕性，牆面潮濕甚至看似濕的，卻沒有水從地面被吸上來。ASHRAE 160 標準在沒有實測資料時，預設打到外表面的雨水有 1% 穿過外飾層。觀念由「阻隔層」改為「控制層」：限制進水並把乾燥能力最大化。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "回顧文章；圖 2 的溫濕度是作者設定的典型日平均條件，不是某棟建築的實測或模擬結果，「四分之一」「三倍」「24°C」「28°C」都只屬於該例。作者背景是德國與澳洲，沒有台灣或亞洲案例。後半各國標準未讀。 覆核 V12（2026-11-12）：limitations 補：Figure 2 的數字是作者設定的典型日平均條件；本段沒有「寒帶做法搬到濕熱氣候就錯了」這句話。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f9src/kunzel2022_pmc10171418.xml",
+        "sha256_prefix": "9fd02108732c10f0",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H57-S008",
+      "url": "https://buildingscience.com/documents/digests/bsd-106-understanding-vapor-barriers",
+      "canonical_url": "https://buildingscience.com/documents/digests/bsd-106-understanding-vapor-barriers",
+      "title": "BSD-106: Understanding Vapor Barriers（Joseph Lstiburek）",
+      "publisher": "Building Science Corporation（Building Science Digests）",
+      "version": "網頁版，Effective Date 2011-04-15",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭），去標籤後閱讀",
+      "reading_scope": "Abstract、So What is The Problem?、What Do We Really Want to Do?、定義與分級、Recommendations 的原則與 Figure 1–11 說明；其後圖例與側欄未讀",
+      "locator": "So What is The Problem?；What Do We Really Want to Do?；Class I–III 定義；Recommendations 原則四點；Figure 1–4 說明",
+      "summary": "顧問公司的技術文摘。防潮層是寒冷氣候的產物，被搬到其他氣候「多半出於無知而非需要」；它原本用來防止構造受潮，卻常常妨礙構造變乾：裝在室內側的防潮層讓牆不能往室內乾，在任何有冷氣的建築都可能出問題，外側同時也有防潮層時也是。水汽大致由暖側往冷側走，難處是哪一側算冷側要看氣候與季節。分級（ASTM E96 乾杯法）：0.1 perm 以下為第一級（防潮層），0.1 到 1.0 為第二級，1.0 到 10 為第三級，10 以上為透濕。建議原則：能用透濕材料就不用防潮層；避免兩面都是防潮層；避免在有冷氣的構造室內側裝聚乙烯膜、鋁箔面保溫材，也避免貼乙烯基（PVC）壁紙，這些做法都與發霉的建築有關聯。混凝土空心磚牆有很大的儲濕（緩衝）容量；內側保溫的磚牆要能往室內乾，所以避免乙烯基壁紙這類半不透濕的室內飾面。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "顧問公司的文摘，不是同儕審查研究；建議依美國氣候分區，作者稱各構造以 WUFI 模擬並有十年以上經驗，但文摘沒有給模擬數據。perm 是美制單位，片中只用分級概念。 覆核 V12（2026-11-12）：limitations 補：作者 Joseph Lstiburek 與 F9-S016 的個案論文是同一人；「linked with moldy buildings」引的是他自己的著作（Lstiburek 1993、2002）。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f9src/bsc_bsd106.html",
+        "sha256_prefix": "5bec732c6c3883bf",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H57-S009",
+      "url": "https://buildingscience.com/documents/digests/bsd-012-moisture-control-for-new-residential-buildings",
+      "canonical_url": "https://buildingscience.com/documents/digests/bsd-012-moisture-control-for-new-residential-buildings",
+      "title": "BSD-012: Moisture Control for New Residential Buildings（Joseph Lstiburek）",
+      "publisher": "Building Science Corporation（Building Science Digests）",
+      "version": "網頁版，Effective Date 2009-03-09",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭），去標籤後以關鍵字讀段落",
+      "reading_scope": "只讀濕熱氣候發霉機制與對策的段落（hot-humid、air-conditioned、vinyl wall covering 所在段），其餘約九成未讀",
+      "locator": "「In hot-humid climates, interior mold growth also occurs…」段到「…limited to 60% relative humidity at 75°F」",
+      "summary": "濕熱氣候裡室內發霉是因為室內表面被冷氣冷卻：室外熱空氣被冷卻時相對濕度上升，若本來就潮濕，通常會升到黴菌可生長的 70% 以上。室外濕空氣碰到被冷氣冷卻的室內石膏板的空腔側，就可能長黴；乙烯基壁紙這類不透濕飾面會把水分困在飾面與石膏板之間，使情況更糟。最實際的對策之一是不讓室外濕熱空氣接觸冷的室內面，最常見的做法是讓空調空間對室外維持約 2 到 3 Pa 的微正壓，並把室內濕度控制在 75°F（23.8°C）下 60% 以內。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀一小段，未讀全文；顧問公司文摘，數值是作者建議值不是量測。只用來補 F9-S014 的機制說明。 覆核 V12（2026-11-12）：同 F9-S014：作者 Joseph Lstiburek；黴菌界限寫的是相對濕度 70%。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f9src/bsc_bsd012.html",
+        "sha256_prefix": "4980af94e6482678",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H57-S010",
+      "url": "https://web.ornl.gov/sci/buildings/conf-archive/1992%20B5%20papers/070.pdf",
+      "canonical_url": "https://web.ornl.gov/sci/buildings/conf-archive/1992%20B5%20papers/070.pdf",
+      "title": "Two Studies of Mold and Mildew in Florida Buildings（J.W. Lstiburek）",
+      "publisher": "Thermal Performance of the Exterior Envelopes of Buildings V（1992 研討會論文集，Oak Ridge National Laboratory 會議典藏）",
+      "version": "1992，論文集 p.538–544",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭），pdftotext 轉文字後閱讀（雙欄掃描，段落順序交錯）",
+      "reading_scope": "全文：摘要、案例一（坦帕旅館）、案例二（雷克蘭安養院）的調查、量測、討論與結論",
+      "locator": "p.538 摘要與 Case Study One；p.539 Discussion and Conclusions；p.540–542 Case Study Two 的量測（Air Pressure、Air Pressurization、Tracer Gas、Rain Penetration）與 Table 1；p.543 討論",
+      "summary": "佛羅里達兩棟建築的現場調查。開頭引旅館業協會 1990 年調查：黴害每年讓業界損失約 6,800 萬美元。案例一，坦帕一棟六層旅館：混凝土構架與樓板，內牆為空心磚或金屬立柱加石膏板，所有室內石膏板面都貼不透濕的乙烯基壁紙，外牆為油漆空心磚加內側立柱、保溫與石膏板；1989 年 2 月完工，第一個夏天就出現壁紙剝落、石膏板濕、霉味，壁紙與石膏板交界處長滿黴，連室內隔間牆整面都有。外牆與屋頂看不出漏雨。第一年補外牆縫並換掉約兩成石膏板，第二個夏天又發生。量測：窗兩側氣壓差 2 到 3 Pa；在石膏板上鑽孔量牆內空腔，客房空調機運轉時空腔氣壓比室外低 10 到 15 Pa，關機後剩 3 到 4 Pa。原因是空調機外殼與風管不氣密，把包住機器的石膏板隔間抽成負壓，這些隔間又與內外牆的空腔相通（立柱有孔，磚牆上的石膏板釘在木條上也留了空腔），負壓沿牆擴散，把室外濕熱空氣經多孔的磚牆吸進牆內；濕空氣碰到被冷氣冷卻的石膏板而凝結，壁紙擋住往室內乾的路，水積在壁紙與石膏板之間。問題只在夏季冷房時出現。案例二，雷克蘭兩層安養院（空心磚承重牆、預鑄混凝土樓板，1990–91 年建）：全棟處於負壓，室內比室外低 4 到 11 Pa；把一段外牆用塑膠布圍起來注入示蹤氣體，約 34 秒後就在房內測到；注入閣樓則約一分鐘。浴室集中排風實測 3,749 與 7,960 cfm，設計上由各房的窗型熱泵補進 3,740 與 7,480 cfm，但熱泵選得太大、只運轉約兩成時間，補氣幾乎沒有；要把兩區加壓到 1 Pa 分別需送進約 4,500 與 9,000 cfm。淋水架試驗一小時後拆開外牆，空心磚外表面大片被雨水打濕；南面約五成的洩水孔被植栽與回填土蓋住。作者歸納空氣把水分由外帶進來的三個條件：外氣含水、圍護有孔洞通路、室內氣壓低於室外。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "1992 年的會議論文、兩個美國個案，作者是顧問；金屬立柱石膏板內襯與乙烯基壁紙是美國旅館做法，不是台灣住宅常見的 RC 牆直接粉刷；不能推成「貼壁紙就會發霉」或任何個案診斷。PDF 是掃描 OCR，雙欄段落交錯，個別字有誤，數字已對照上下文。cfm 為原文單位，片中換算時標「約」。 覆核 V12（2026-11-12）：title 補作者：J.W. Lstiburek（Building Science Corporation），Thermal Performance of the Exterior Envelopes of Buildings V（1992）；limitations 補：兩個個案的成因是作者的推斷（We may assume、Our hypothesis），沒有改善後的驗證；文中的黴菌界限寫 80%。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f9src/ornl_b5_070.pdf",
+        "sha256_prefix": "be7755ac5cd8909e",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "H57-001",
+      "question": "把隔間牆整面換成吸音磚、地毯或窗簾，隔壁會更安靜嗎？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.acoustics.absorber_is_not_barrier_blotter_wall",
+      "answer_target": "不會，反而幾乎擋不住。美國國家標準局 1976 年的降噪手冊請讀者想像一面只用吸音磚、地毯或窗簾做成的牆：它幾乎不擋聲音；磚牆剛好相反，吸音很差、隔音極好。手冊的比喻是吸墨紙：很會吸水，卻沒有人拿它砌游泳池。原因在吸音材怎麼工作：加拿大國家研究院的建築文摘說，吸音材靠讓聲音相對容易地穿進去而作用，所以通常多孔；隔音好的材料通常不透氣，是好的反射體。手冊因此寫了警語：不要只為了擋住傳到隔壁的聲音而在房間內表面貼吸音材，多孔反而讓聲音更容易通過；聽得到樓上走路說話時，在自己的天花板貼吸音磚也不會減少傳下來的聲音。吸音材真正做到的事有數字：鋪在天花板、地板、牆面，可以讓多數房間裡的噪音降約 5 到 10 分貝（高音），低音只有 2 到 3 分貝，而且對站在機器旁、身在直接音場裡的人沒有保護。厚軟地毯加襯墊約吸收照到它的聲音能量的 50–60%。兩者都要的時候怎麼組合，文摘用機器隔音罩說明：外殼擋、內襯吸、底下墊彈性支承；拿掉外殼，聲音穿過吸音材幾乎不衰減；拿掉內襯，殼內的聲音越積越大，外殼的效果遠不如預期。",
+      "scope": "1976 年（NBS Handbook 119）與 1985 年（NRC CBD-236）的政府文件，分貝數與吸收比例是概括的經驗值，沒有量測條件；不是任何產品的規格，也不作居家施工建議。原文舉的材料是吸音磚、地毯、窗簾，稿中不換成其他產品名。",
+      "source_ids": [
+        "H57-S001",
+        "H57-S002"
+      ],
+      "source_locator": "HB119 p.34「Use Sound Absorbing Materials」、p.49–50「Sound Absorption versus Sound Insulation」與 WARNING；CBD「Sound Transmission Loss」首段與「Fundamental Noise Control Procedures」",
+      "premise_status": "screened",
+      "notes": "補 G43 缺的「吸音與隔音由官方／教育來源說明」，並替付費的 ASHRAE 章節找到開放來源（直接音場不受吸音保護一句同時支撐 B4020）。B4020 已有直接聲與混響場之分，不重計；新增「吸音材做成牆幾乎不擋」與多孔讓聲音通過的機制（1 條）、5–10 dB 對 2–3 dB 與吸收比例（1 條）、隔音罩三要素缺一的後果（半條）。算 2.5 條。 原提案 F9-008（目標 G43，原角色 hook；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）改字後收；答案照原稿，題目改成原文舉的三種材料。B4020 已有直接聲與混響場之分，「直接音場沒有保護」不計；「吸音材做成牆幾乎不擋」與多孔的機制 1 條、5–10 對 2–3 dB 與吸收比例 0.5 條、隔音罩三要素 0.5 條，共 2 條（作者算 2.5）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "吸音是把房間裡的聲音吃掉，隔音是不讓聲音過去；一個要多孔，一個要不透氣。",
+        "visual": "同一面牆兩種材料：聲波箭頭穿過地毯牆只變細一點，撞上磚牆大半彈回；旁邊一張吸墨紙泡在水裡。",
+        "seconds": [
+          70,
+          90
+        ]
+      }
+    },
+    {
+      "id": "H57-002",
+      "question": "牆做得重一倍，隔音可以多多少？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.acoustics.mass_law_6db_per_doubling_concrete_limit",
+      "answer_target": "大約多 6 分貝，而且每多 6 分貝都要再加一倍。加拿大國家研究院的文摘給了單層牆的近似式，叫質量定律：傳聲損失≈20 log10（面密度×頻率）−48，面密度是每平方公尺幾公斤、頻率是赫茲。所以面密度加倍多約 6 分貝；同一面牆，頻率加倍也多約 6 分貝，也就是低音本來就比高音難擋。要在所有頻率都多 12 分貝，牆得重 4 倍，18 分貝要 8 倍。文摘舉的實際數字：150 毫米厚的澆置混凝土單層牆，隔音等級（STC）約 55，這樣的重量大致就是一般施工的實務上限；再往上，一直加倍厚度並不划算，要靠雙層構造。12 分貝聽起來是多少？同一系列的入門文摘說，10 分貝的變化大約對應感覺上的響度加倍，而小於 3 分貝的變化在實務上不算顯著。",
+      "scope": "質量定律是理想單層板在一定頻率範圍內的近似，文摘自己說只適用於「多數材料的某些頻率範圍」；STC 是北美的單一數值評級，只涵蓋 125–4000 Hz。不從公式替任何實際牆算數字。",
+      "source_ids": [
+        "H57-S003",
+        "H57-S002"
+      ],
+      "source_locator": "CBD-239「Mass Law」與式 (1)；CBD 入門「Physical Properties of Sound」",
+      "premise_status": "screened",
+      "notes": "補 G43 缺的「質量定律有數字」。池中沒有質量定律核心（已查 質量定律、mass law、隔音）。新增公式與每加倍 6 dB、4 倍與 8 倍（1 條）、150 mm 混凝土 STC 55 為實務上限與分貝的聽感對照（1 條）。算 2 條。 原提案 F9-009（目標 G43，原角色 segment；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）照原稿收；逐句相符，不改字。池中 P120（十分貝是十倍聲強）、P124（分貝不能直接相加）是分貝的定義題，沒有質量定律；`cli.mjs search 質量定律／mass law／隔音` 無同答案核心。公式與每加倍 6 dB、4 倍與 8 倍 1 條；150 mm 混凝土為實務上限 0.5 條；分貝的聽感對照與 P120 相鄰，不另計。共 1.5 條（作者算 2）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "牆加厚的回報越來越小，這是為什麼好的隔音牆不是一整塊，而是兩層。",
+        "visual": "一面牆變兩倍厚、四倍厚、八倍厚，旁邊的分貝條只各長一小格。",
+        "seconds": [
+          60,
+          75
+        ]
+      }
+    },
+    {
+      "id": "H57-003",
+      "question": "一面實際量過的隔間牆，低音和高音的隔音差多少？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.acoustics.ir761_stud_wall_tl_spectrum_8db_vs_54db",
+      "answer_target": "差非常多。加拿大國家研究院公開了 350 面石膏板牆的實驗室量測：牆裝在兩間混響室之間 3.05×2.44 公尺的開口，從 50 赫茲量到 6,300 赫茲。其中一面：兩面各一層 13 毫米石膏板，直接鎖在 90 毫米木立柱上，空腔塞礦纖棉，隔音等級 STC 33。同一面牆，1,600 赫茲的聲音被擋掉 53.9 分貝，125 赫茲的只被擋掉 8.6 分貝，到 3,150 赫茲又掉回 40.4 分貝，再往上才回升。一個數字的評級底下是這樣一條起伏的曲線。這份報告也量了自己的可靠度：把同一種牆用同一批新材料整面拆掉重蓋六次，一種牆的 STC 是 45 到 46，另一種隔音較好的是 56 到 59。",
+      "scope": "北美木立柱石膏板牆的實驗室數據（試體 TL-93-166），不是磚牆或 RC 牆；只是 350 面裡的一面，作為「一條真實曲線長什麼樣」的例子，不代表典型住宅。125 Hz 與 3,150 Hz 兩處低谷，報告都沒有標註成因：片中不得把 3,150 Hz 那一處叫做巧合低谷，也不得拿 F9-011 的公式替這面牆算臨界頻率（那是自己的計算）；只能說「報告沒有解釋」。這面牆已含礦纖棉而 STC 33，與 F9-012 文摘的「約 33、加棉多約 3」是兩份文件，不並列成同一面牆。片中不把分貝差換算成倍數。只讀了說明章與三面牆的資料頁。",
+      "source_ids": [
+        "H57-S006"
+      ],
+      "source_locator": "p.3–6（Introduction、Measurement Process、Table 1）；p.20 試體 G13_WS90(406)_MFB90_G13（TL-93-166）",
+      "premise_status": "screened",
+      "notes": "補 G43 缺的「特定牆體的隔音量測數字（STC 與頻譜）」，可重繪成一條 TL 曲線。新增一面牆的頻譜三個點與 STC（1 條）、量測規模與重建六次的重現性（半條）。算 1.5 條。 原提案 F9-010（目標 G43，原角色 segment；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）改字後收；數字全對；刪「最普通」，把兩處低谷都標成來源未解釋，並擋掉與 F9-011、F9-012 的串接。一面牆的頻譜與 STC 1 條；重建六次的重現性是量測品質的旁證，不另計。共 1 條（作者算 1.5）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「隔壁的低音聽得特別清楚」不是錯覺，同一面牆對低音的阻擋差了幾十分貝。",
+        "visual": "重繪這面牆的傳聲損失曲線：橫軸頻率、縱軸分貝，125 Hz 與 1,600 Hz 兩點標數字，3,150 Hz 的凹口打問號留給下一章。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "H57-004",
+      "question": "某一段音高特別漏，算得出是哪一段嗎？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.acoustics.coincidence_critical_frequency_a_over_t_examples",
+      "answer_target": "算得出大概位置，而且越厚的板漏得越低。文摘把這個現象叫巧合效應：硬的板在某個頻率範圍，傳聲損失會掉到質量定律以下。它給了估算式：臨界頻率＝A÷厚度（毫米），A 是每種材料的常數。鋼是 12,700，所以 5 毫米鋼板的低谷在 2,540 赫茲；緻密混凝土是 18,700，100 毫米的混凝土牆低谷在 187 赫茲；石膏板是 39,000，低谷相當高，對評級的影響通常較小。文摘的圖比較了三片一樣重（每平方公尺 10 公斤）的板：16 毫米合板 STC 21、13 毫米石膏板 STC 28、1.3 毫米鋼板 STC 30；重量相同、評級不同，文摘說差別來自各自的巧合效應。混凝土和合板在常用厚度下，低谷正好落在建築聲學最在意的 100 到 4,000 赫茲之間。低谷有多深，看材料本身和邊緣把振動能量耗掉多少。兩層板如果牢牢膠成一片，會像一片更厚的板，低谷往低頻移；只用螺絲鬆鬆固定、彎曲時可以互相滑動，低谷就不會下移，層間摩擦還多耗掉一些能量。",
+      "scope": "圖 1 是理想化曲線，STC 是文摘標註值；A 值是 1985 年文摘的表列常數。不替特定牆面計算低谷頻率，也不把所有「某段特別漏」都歸給巧合效應（另有共振與孔洞）。",
+      "source_ids": [
+        "H57-S003"
+      ],
+      "source_locator": "「Effects of Stiffness」全段、式 (2)、Table 1、Figure 1 圖說",
+      "premise_status": "screened",
+      "notes": "補 G43 缺的「巧合低谷有數字」；替 B4021（原來只有付費 ASHRAE 手冊的定性敘述）補上開放來源。B4021 已有機制，不重計；新增 fc＝A/t 與三個例子（1 條）、同重三片板 STC 21／28／30 與膠合對鬆鎖（半條）。算 1.5 條。 原提案 F9-011（目標 G43，原角色 segment；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）照原稿收；逐句相符，不改字。B4021 已有機制，不重計；fc＝A/t 與三個例子 1 條、同重三片板與膠合對鬆鎖 0.5 條，共 1.5 條，與作者相同。Figure 1 是理想化曲線，範圍已寫明。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣重的牆，隔音可以差九點：重量之外還要看它在哪個音高「跟著聲音一起彎」。",
+        "visual": "三片等重的板排一列，各自的曲線在不同位置凹下去；一張厚度滑桿，往厚拉時凹口往左（低頻）移。",
+        "seconds": [
+          55,
+          70
+        ]
+      }
+    },
+    {
+      "id": "H57-005",
+      "question": "在牆裡塞滿吸音棉，隔音會好多少？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.acoustics.cavity_absorber_useless_if_leaves_rigidly_connected",
+      "answer_target": "看兩面板是怎麼釘的：可能多 8 到 10 點，也可能只多 3 點。加拿大國家研究院量了 250 多面石膏板牆之後的結論是，最主要的因素是兩面板材彼此有沒有隔開。住宅裡常見的內牆，兩面石膏板直接釘在同一排木立柱上，文摘說 STC 約 33，塞吸音棉只多約 3 點，因為聲音直接經立柱從這面板傳到那面板；研究院的技術通報直說，在剛性相連的牆裡放吸音材是浪費錢，文摘把這種剛性連接比做電路的短路。兩面板隔開之後（交錯立柱、雙排立柱，或一面改釘在彈性槽鋼上），聲音主要走空腔裡的空氣，這時吸音棉才有用：文摘的表裡，木立柱加彈性槽鋼的牆沒有棉 STC 40、有棉 48；雙排立柱 46 對 57。隔開之後其他因素也才生效：通報說，輕鋼立柱牆的石膏板總重加倍約多 10 點；空腔深度加倍，填滿棉時約多 10 點，不填只多約 4 點。還有一個反直覺的結果：在雙排立柱牆的中間再加一層板，STC 從 58 掉到 55（石膏板）或 54（木纖維板）；通報給的理由是中間那層和立柱剛性相連，讓聲音繞過空腔裡的吸音材，還把一個深空腔切成兩個淺的。",
+      "scope": "北美木／輕鋼立柱石膏板牆的實驗室結果；STC 點數是該系列試體的概略值，「加棉約多 8 點」出自 1985 年文摘、「約多 10 點」出自 1997 年技術通報，兩個數字分開說。板重加倍約多 10 點是輕鋼立柱牆的結果。文摘的「約 33、加棉多 3」不與 F9-010 那面已含棉、STC 33 的試體並列。不是施工建議，也不適用於實心 RC 或磚牆（見 F9-013）。",
+      "source_ids": [
+        "H57-S003",
+        "H57-S004"
+      ],
+      "source_locator": "CBD-239「Gypsum Board Walls」與 Table 2 及其後一段；CTU-1 首頁摘要欄、Mass of Gypsum Board、Sound-Absorbing Materials、Cavity Depth、Use of Internal Layers 與 Table 1",
+      "premise_status": "screened",
+      "notes": "轉折一：吸音棉在牆「裡面」有用，但只在兩面板沒有硬連的時候。B4022 只有「空氣仍會耦合兩片已機械隔離的牆板」；新增直接釘立柱 STC 33、加棉只多 3 與隔開後 40 對 48、46 對 57（1 條）、板重與空腔深度各加倍的效果（1 條）、中間加一層反而變差（半條）。算 2.5 條。 原提案 F9-012（目標 G43，原角色 turn；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）改字後收；改三處與原文不合的說法。B4022 只有「空氣仍會耦合兩片已機械隔離的牆板」；直接釘立柱 33／＋3 與隔開後 40 對 48、46 對 57 算 1 條，板重與空腔深度 0.5 條，中間加一層反而變差 0.5 條，共 2 條（作者算 2.5）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "吸音棉不是沒用，是要先把「短路」拆掉它才有事做。",
+        "visual": "兩面牆剖面：左邊立柱把兩片板硬連，聲音箭頭走立柱、棉在旁邊閒著；右邊兩排立柱分開，箭頭只能穿過棉。",
+        "seconds": [
+          75,
+          95
+        ]
+      }
+    },
+    {
+      "id": "H57-006",
+      "question": "在水泥磚牆上再貼一層石膏板，隔音一定更好嗎？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.acoustics.block_wall_drywall_both_sides_stc_drops_mass_air_mass",
+      "answer_target": "不一定，量到過兩面都貼反而少 1 點的例子。加拿大國家研究院的技術通報報告了一面 190 毫米混凝土空心磚牆：裸牆 STC 50；一面用 13 毫米彈性槽鋼架起 15.9 毫米石膏板、空腔填玻璃棉，STC 升到 54；兩面都這樣貼，高音擋得更好，STC 卻是 49，而且 100 赫茲附近的隔音明顯變差。原因是板和牆之間那層空氣：兩層質量夾一層空氣，會像鼓皮一樣在某個頻率共振，叫質量—空氣—質量共振，這時振動經空腔裡的空氣傳到磚牆，比直接打在裸牆上還有效率。空腔越淺、板越輕，共振頻率越高，越容易落進聽得到、評級也算得到的範圍。文摘用兩面 0.5 毫米鋼板的理想雙層牆示範：空氣層 100 毫米時共振在 135 赫茲、STC 29；空氣層只有 5 毫米時共振在 630 赫茲、STC 24，比單片 1 毫米鋼板的質量定律預測（STC 28）還低。文摘說，連用黏著劑把板直接貼在混凝土上，都可能留下幾毫米厚的空氣膜而出現有害的共振；單層石膏板貼磚牆，空氣層要超過 60 毫米才能把共振壓到 80 赫茲以下。",
+      "scope": "加拿大 190 mm 空心混凝土磚牆與理想化鋼板雙層牆的數據；台灣的 RC 牆或紅磚牆沒有對應量測，只能說「重牆貼薄板」的原理相同。STC 50／54 是通報的標註與正文，49 是正文「比裸牆少一點」加 Figure 3 標註，片中說「少一點」；曲線未逐點讀數，「100 赫茲附近明顯變差」照正文，不報分貝數。不是施工建議。",
+      "source_ids": [
+        "H57-S005",
+        "H57-S003"
+      ],
+      "source_locator": "CTU-13「Concrete Block Walls with Gypsum Board Added」、Figure 3、「Mass-air-mass resonance frequency」方框；CBD-239「Double Layer Assemblies」、Figure 2 圖說、「Concrete Block Walls」",
+      "premise_status": "screened",
+      "notes": "轉折二：加一層不一定更好；也是離國內房子最近的磚石牆資料。B4022 已有「空腔內共振可增加傳聲、不能直接相加」，範圍還寫明不採低頻空氣彈簧模型，因為當時來源沒有；本核心由 NRC 文件直接補上。新增磚牆 50／54／49 的實測（1 條）、質量—空氣—質量共振與鋼板 100 mm 對 5 mm 的例子（1 條）、黏貼留空氣膜與 60 mm（半條）。算 2.5 條。 原提案 F9-013（目標 G43，原角色 turn；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）改字後收；答案照原稿，範圍補上 49 的出處。B4022 已有「空腔內共振可增加傳聲」的一般說法，質量—空氣—質量共振的機制只算 0.5 條；磚牆 50／54／少一點的實測 1 條；鋼板 100 mm 對 5 mm 與黏貼留空氣膜、60 mm 合 0.5 條，共 2 條（作者算 2.5）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "多一層材料，也多了一個會共振的空氣彈簧。",
+        "visual": "磚牆剖面一面、兩面貼板；三條傳聲損失曲線，兩面貼的那條在 100 Hz 附近沉到裸牆之下；兩塊質量中間畫一根彈簧。",
+        "seconds": [
+          75,
+          95
+        ]
+      }
+    },
+    {
+      "id": "H57-007",
+      "question": "同一種磚，有粉刷和沒粉刷，隔音會差多少？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.acoustics.porous_block_sealing_and_mortar_bridge_double_leaf",
+      "answer_target": "多孔的磚差非常多。技術通報列了兩種磚：90 毫米厚、非常多孔的木骨材磚，不封面 STC 只有 14，一面貼石膏板 29，粉刷後 43；190 毫米的輕質混凝土磚，分別是 42、46、49。輕質磚封面後多 5 到 10 點很常見，常重磚則幾乎沒差。也就是聲音會直接從磚的孔隙漏過去，和從沒填好的砂漿縫漏過去只是程度不同；直接黏或鎖上去的石膏板封不住，因為它不會整面黏合，只像另一層板。在磚的空心裡塞吸音材也沒有用，聲音走磚體那條更直接的路。那乾脆砌兩道磚牆、中間留空呢？理論上很理想，實際上很難讓兩道牆完全不相連：研究院測過一面預期 STC 超過 70 的雙層磚牆，只量到 60，原因是砌的時候掉下去的砂漿把兩層搭在一起；這種錯誤蓋好之後看不見也改不了。在實驗室把兩層做到結構完全分離時，量到 70 到 80。",
+      "scope": "加拿大混凝土磚與木骨材磚的實驗室數據；木骨材磚是通報為了對比而放的極端例子。不作任何現場診斷或施工建議。",
+      "source_ids": [
+        "H57-S005"
+      ],
+      "source_locator": "「Effect of Porosity」與 Table 2；「Single-Leaf Concrete Block Walls」末段；「Double-Leaf Concrete Block Walls」",
+      "premise_status": "screened",
+      "notes": "回到開場的「多孔」：多孔在牆面上是吸音，在牆體裡是漏聲。新增封面前後 14／29／43 與 42／46／49（1 條）、砂漿搭橋使預期 70 以上的雙層牆只剩 60（半條；側向與搭橋的概念 B4012 已有，只計實測數字）。算 1.5 條。 原提案 F9-014（目標 G43，原角色 segment；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）照原稿收；逐句相符，不改字。封面前後兩組數字 1 條；砂漿搭橋的實測 0.5 條（搭橋與側向的概念 B4012 已有）。共 1.5 條，與作者相同。木骨材磚是通報為了對比放的極端例子，範圍已寫明。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "牆上的孔會吸音，牆裡的孔會漏音；一坨掉下去的砂漿可以吃掉十點。",
+        "visual": "一塊磚的剖面：聲波從孔隙穿過；抹上一層粉刷後箭頭被擋住。兩道磚牆之間一坨砂漿把振動搭過去。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "H57-008",
+      "question": "熱帶室內外只差五度，牆裡的水汽問題為什麼不比寒帶小？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.moisture.tropics_small_dt_large_vapour_pressure_inward",
+      "answer_target": "因為推動水汽的是水汽壓差，不是溫差，而空氣能含的水汽隨溫度指數上升。弗勞恩霍夫建築物理研究所的作者舉了一組典型的日平均條件來比：寒冷或溫和氣候的冬天，室內外常差 20 度；熱帶冷房季例如室外 30°C、室內 25°C，只差 5 度。可是在他們的例子裡，熱帶這邊的溫差只有四分之一，水汽壓差卻是三倍，而且是由室外往室內。該例的室外空氣露點低於室溫，所以除非把房間冷到 24°C 以下（例如冷氣由濕度控制時），牆內不會結出水；但作者提醒，不結露不代表沒事：他們用相對濕度八成當黴菌生長的界限，在該例的條件下，材料層只要低於約 28°C 就進入這個範圍，所以只要室外的濕氣進得了牆體，就不能排除長黴的風險。",
+      "scope": "數字全部屬於原文 Figure 2 設定的「典型日平均條件」，是回顧文章作者的假設例子，不是任何建築的實測或模擬結果，也不是台灣的氣象資料；片中要說「研究者舉的例子」，不替台灣算露點或水汽壓。黴菌界限這裡用相對濕度 80%，F9-016 的文摘用 70%，兩個來源兩個數字，不合併成一句。「寒帶的防潮層做法搬到濕熱氣候方向就錯了」不是這份來源的話，要說就引 F9-016。",
+      "source_ids": [
+        "H57-S007"
+      ],
+      "source_locator": "「Outdoor air conditions」兩段與 Figure 2 圖說",
+      "premise_status": "screened",
+      "notes": "補 G42 缺的濕熱氣候來源；轉折一（冷側在室內）。池中 B4018 講夏天換氣越換越濕（通風的水分差），不是穿過牆體的水汽壓差方向，不重複。新增溫差四分之一而水汽壓差三倍、方向向內（1 條）、24°C 與 28°C 兩個界限及「不結露仍可長黴」（半條）。算 1.5 條。 原提案 F9-015（目標 G42，原角色 turn；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）改字後收；刪掉作者自己接上的最後一句（把兩份來源寫成一條因果鏈）。機制成立，但數字是假設條件：溫差四分之一而水汽壓差三倍、方向向內算 1 條；24°C 與 28°C 兩個界限是同一張示意圖的讀法，不另計。共 1 條（作者算 1.5）。B4018 講換氣的水分差，不是穿過牆體的水汽壓差，不重複。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在開冷氣的房子，牆的「冷側」是室內那一面。",
+        "visual": "兩面牆剖面並排：寒帶的箭頭由內往外，熱帶的由外往內且更粗；溫差條一短一長，水汽壓差條反過來。",
+        "seconds": [
+          65,
+          80
+        ]
+      }
+    },
+    {
+      "id": "H57-009",
+      "question": "開冷氣的房間，把牆的室內側做成不透氣的，為什麼反而容易出事？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.moisture.interior_vapor_barrier_vinyl_ac_blocks_inward_drying",
+      "answer_target": "因為那一層擋住了牆往室內乾的路，而水汽正是從外面往那一面走。美國一家建築科學顧問公司的技術文摘寫得很直接：防潮層是寒冷氣候的產物，被搬到別的氣候「多半出於無知而非需要」；它本來是為了不讓構造受潮，卻常常讓構造乾不了。裝在室內側的防潮層使牆不能往室內乾，這在任何有冷氣的建築都可能是問題；牆的外側同時也不透氣時更是。文摘把材料依透濕程度分級（0.1 perm 以下才叫防潮層，1 以下、10 以下各一級，10 以上算透濕），建議的原則是：能用透濕的就不用防潮層，不要兩面都封，也不要在有冷氣的構造室內側貼聚乙烯膜、鋁箔面保溫材或乙烯基（PVC）壁紙，這些做法都與發霉的建築有關聯。同一位作者的另一份文摘說明機制：室外的濕熱空氣一被冷卻，相對濕度就升到黴菌能長的七成以上；它碰到被冷氣吹冷的室內板材背面時，不透氣的壁紙把水分困在壁紙和板材之間。",
+      "scope": "顧問公司（Building Science Corporation）的文摘，作者 Joseph Lstiburek 與 F9-017、F9-018 的個案論文是同一人，「與發霉的建築有關聯」引的也是他自己的著作：三個核心算同一個來源群，片中不得說成多方研究一致。建議依美國氣候分區與美式構造（石膏板內襯），不是同儕審查研究，也沒有附模擬數據。perm 是美制單位，片中只講分級概念。黴菌界限這裡是相對濕度 70%，F9-015 用 80%，分開說。BSD-012 只讀了濕熱氣候發霉的段落。不作個案診斷或裝修建議。",
+      "source_ids": [
+        "H57-S008",
+        "H57-S009"
+      ],
+      "source_locator": "BSD-106「So What is The Problem?」、Class I–III 定義、Recommendations 四項原則；BSD-012「In hot-humid climates, interior mold growth also occurs…」段",
+      "premise_status": "screened",
+      "notes": "補 G42 缺的濕熱氣候／混凝土磚牆來源（文摘的 Figure 1–4 是混凝土空心磚牆）。B4004 已有「兩面都不透濕會困住水分」，不重計；新增防潮層是寒冷氣候產物、室內側防潮層在冷氣建築擋住向內乾燥（1 條）、透濕分級與乙烯基壁紙、七成相對濕度的機制（1 條）。算 2 條。 原提案 F9-016（目標 G42，原角色 segment；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）改字後收；答案照原稿，範圍補上「同一作者」這個會影響整題證據強度的事實。B4004 已有「兩面都不透濕會困住水分」；室內側防潮層在冷氣建築擋住向內乾燥 1 條，分級與乙烯基壁紙 0.5 條，共 1.5 條（作者算 2）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「防潮」那一層放錯邊，就變成「防乾」。",
+        "visual": "牆剖面：水汽箭頭由外往內，到室內側一層不透氣的膜前面堆積；把膜換成透氣的漆，箭頭穿過去被冷氣帶走。",
+        "seconds": [
+          55,
+          70
+        ]
+      }
+    },
+    {
+      "id": "H57-010",
+      "question": "一棟外牆不漏雨的新旅館，第一個夏天牆上就長滿黴，水是從哪裡來的？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.moisture.tampa_hotel_depressurized_cavity_humid_air_vinyl",
+      "answer_target": "調查者的判斷是：被空調自己吸進來的室外空氣帶來的。佛羅里達坦帕一棟六層旅館，混凝土構架、混凝土磚外牆內側是金屬立柱與石膏板，室內所有石膏板面都貼了不透氣的乙烯基壁紙，1989 年 2 月完工，第一個夏天就壁紙剝落、板材濕軟、有霉味，壁紙和石膏板之間長滿黴，連室內隔間牆也有，而且不只在與外牆相接的地方，整面都有、程度不一。外牆與屋頂看不出漏雨的痕跡；第一年補了外牆縫、換掉約兩成的板材，第二個夏天照樣發生。調查者去量氣壓：窗戶兩側只差 2 到 3 帕；但在板上鑽孔量牆裡面的空腔，客房空調機一運轉，空腔的氣壓可比室外低 10 到 15 帕，關機後剩 3 到 4 帕。空調機的外殼和風管接頭不氣密，把包住機器的隔間抽成負壓；這些隔間和內外牆的空腔是通的（立柱有孔，磚牆上的板子釘在木條上也留了空腔），負壓沿著牆擴散出去。調查者據此推斷，室外濕熱的空氣穿過外牆被吸進牆內空腔，碰到被冷氣吹冷的石膏板就凝結，壁紙又擋住往室內乾的路，水就積在壁紙背後；問題只在夏天開冷氣時出現，也支持這個推斷。作者開頭引了旅館業協會 1990 年的調查：黴害每年讓業界損失約 6,800 萬美元。",
+      "scope": "1992 年研討會論文裡的一個美國個案，作者是顧問（與 F9-016 的文摘同一人）。成因是調查者由氣壓量測作出的推斷（原文 We may assume、Our hypothesis），論文沒有報告改善後的結果，片中要說「調查者判斷」，不說成已證實。金屬立柱石膏板內襯加乙烯基壁紙是美國旅館做法。只當「水汽可以由空氣帶進牆」的實測例子，不能推成「貼壁紙就發霉」，也不作任何個案診斷。帕是原文單位。",
+      "source_ids": [
+        "H57-S010"
+      ],
+      "source_locator": "p.538 摘要與 Case Study One（建築、症狀、修繕、Survey and Field Measurements）；p.539 Discussion and Conclusions",
+      "premise_status": "screened",
+      "notes": "補 G42 缺的實測資料與濕熱氣候的混凝土／磚構案例；轉折二（不是擴散、也不是漏雨，是氣壓把濕空氣抽進牆）。B4001 已有「漏氣以空氣整體流動搬運水分」、B4003 已有牆內空腔的空氣路徑，這兩個機制不重計；新增個案經過與兩次修繕無效（1 條）、空腔 10–15 Pa 對 3–4 Pa、窗 2–3 Pa 的量測（1 條）、只在夏季發生與業界損失數字（半條）。算 2.5 條。 原提案 F9-017（目標 G42，原角色 turn；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）改字後收；把推斷標成推斷，刪掉這個個案原文沒有的「多孔」，外牆構造照原文寫。B4001、B4003 已有空氣搬運水分與牆內空腔路徑的機制，不重計；個案經過與兩次修繕無效 1 條、三組氣壓量測 1 條；只在夏季與業界損失數字不另計。共 2 條（作者算 2.5）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "封住了雨、封住了室內面，卻沒人管空氣往哪邊被吸。",
+        "visual": "旅館剖面：角落的空調機間變成藍色（負壓），藍色沿牆內空腔蔓延到隔間牆；壓力表讀數 10–15 Pa；壁紙背後一格一格變深色。",
+        "seconds": [
+          80,
+          100
+        ]
+      }
+    },
+    {
+      "id": "H57-011",
+      "question": "抽風機把空氣抽出去，補進來的空氣從哪裡來？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.moisture.lakeland_exhaust_no_makeup_tracer_gas_34s",
+      "answer_target": "設計上沒補到的，就從牆裡來。同一篇論文的第二個案例是佛羅里達雷克蘭一棟兩層安養院（混凝土磚承重牆、預鑄混凝土樓板）。浴室由集中排風機持續抽氣，實測每分鐘 3,749 與 7,960 立方英尺；設計上要靠各房穿牆安裝的熱泵機（PTHP）補進幾乎等量的外氣，但熱泵選得太大，很快就把房間吹冷而停機，只運轉大約兩成的時間，通風風門又被拆掉，補氣幾乎沒有。結果整棟樓處於負壓，室內比室外低 4 到 11 帕。調查者把一段外牆用塑膠布圍起來、注入示蹤氣體，大約 34 秒後就在房間裡測到；改注入閣樓，約一分鐘。也就是外氣穿過外牆、沿著牆內空腔和樓板接縫進到房間。同一棟樓還有雨水：用淋水架對外牆噴一小時再拆開，混凝土磚牆大片是濕的，南面約五成的洩水孔被植栽和回填土蓋住；作者說，被雨水泡濕的牆把穿過它的空氣再加濕一次。作者歸納，空氣要把水分從外面帶進來需要三個條件同時成立：外面的空氣含水多、外殼有孔洞通路、室內氣壓比室外低。",
+      "scope": "同 F9-017：1992 年的美國個案、同一位顧問作者。排風量為原文的 cfm，片中換算公制時標「約」；不替觀眾的房子判斷是否負壓，也不給調整排風或冷氣的建議。熱泵過大而短暫運轉這一點與池中 B4031（冷氣很快吹冷卻仍濕黏）是同一個現象的另一個後果，片中不重講機制。B4016 講排風使煙道逆流，是同一個負壓概念的另一個後果，不重複。",
+      "source_ids": [
+        "H57-S010"
+      ],
+      "source_locator": "p.540–542 Case Study Two（Measurements of Air Pressure、Air Pressurization、Tracer Gas、Measurements of Rain Penetration、Table 1）；p.543 Discussion",
+      "premise_status": "screened",
+      "notes": "補 G42 缺的實測資料（壓力場、示蹤氣體、淋水試驗）。新增排風實測量、熱泵只開兩成時間導致沒補氣、負壓 4–11 Pa（1 條）、示蹤氣體 34 秒與淋水試驗、三個條件（1 條）。算 2 條。 原提案 F9-018（目標 G42，原角色 segment；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）改字後收；補上被拆掉的通風風門。排風實測、補氣沒到、負壓 4–11 Pa 算 1 條；示蹤氣體 34 秒與淋水試驗 0.5 條；三個條件是 B4001 與 F9-017 已有的機制整理，不另計。共 1.5 條（作者算 2）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "房子不會只出氣不進氣；沒有安排好的進氣口，牆就是進氣口。",
+        "visual": "建築剖面的氣流箭頭：設計的兩條路是細虛線，實際五條穿牆、穿樓板縫的路是粗線；計時器 34 秒。",
+        "seconds": [
+          60,
+          75
+        ]
+      }
+    },
+    {
+      "id": "H57-012",
+      "question": "磚牆或混凝土牆吸了水，會像木構牆那樣很快出問題嗎？室內牆面的水漬又是怎麼來的？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.moisture.masonry_buffer_stains_are_rain_not_solar_drive",
+      "answer_target": "比較耐，但耐不等於沒進水。回顧文章比較了同一種外貼保溫系統在兩地的下場：北美貼在輕構造牆上，世紀之交大規模損壞，主因是窗邊與接縫漏進的雨水留在保溫層後面；德國貼在磚石牆上，幾十年紀錄良好。差別不在窗邊細部，德國朝西窗下的取樣一樣在保溫層後面找到水（最高約 10% 體積），有一處還住了螞蟻；作者說差別在承重的牆：木構對水很敏感，磚石與混凝土能吸收大量水分而不立刻出現損壞。日曬水汽驅動（吸飽雨水的外飾層被太陽加熱，水有很大一部分往牆內走）在實心磚石牆也會發生，但它通常與毛細吸力帶動的液態水流互相抵銷一部分，剩下到達室內面的水汽一般可以靠通風帶走。所以作者說，實心磚石牆室內面出現水漬，通常是液態雨水滲進來，不是日曬水汽驅動；沒有粉刷的磚石牆很透氣，雨水可以被氣壓差直接推過牆。連標準都不假設外牆滴水不進：美國的 ASHRAE 160 在沒有實測資料時，預設打到外牆的雨水有 1% 會穿過外飾層。",
+      "scope": "回顧文章的概括，德國、北美與澳洲的經驗；沒有台灣 RC 外牆貼磁磚的資料，片中不延伸到磁磚牆。「通常是雨水滲入」是作者的判斷，不是任何一面牆的診斷；不給防水施工建議。",
+      "source_ids": [
+        "H57-S007"
+      ],
+      "source_locator": "「Wind-driven rain」末兩段與 Figure 4；「Solar vapour drive」兩段；「Driving rain leakage」引 ASHRAE 160 段",
+      "premise_status": "screened",
+      "notes": "補 G42 缺的磚石／混凝土牆來源，並修正 B4005 在磚石牆上的適用範圍。B4005 已有日曬把水汽往內推的機制，不重計；新增磚石與木構對同樣漏水的不同下場（1 條）、磚石牆的日曬驅動被緩衝、室內水漬通常是液態雨水、預設 1% 雨水穿過（1 條）。算 2 條。 原提案 F9-019（目標 G42，原角色 segment；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）改字後收；把空腔牆與實心牆兩句分開。B4005 已有日曬把水汽往內推的機制，不重計；磚石與木構對同樣漏水的不同下場 1 條，室內水漬通常是液態雨水與預設 1% 0.5 條，共 1.5 條（作者算 2）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "重的牆像海綿，吸得下很多水；這讓它耐久，也讓問題晚很久才被看見。",
+        "visual": "兩面牆同樣從窗角進水：木構那面板材很快變色，磚牆那面顏色慢慢變深卻沒破壞；最後畫一條液態水從裂縫直接流到室內面。",
+        "seconds": [
+          55,
+          70
+        ]
+      }
+    },
+    {
+      "id": "H57-013",
+      "question": "新房子的牆沒有漏水也會潮嗎？牆腳一片濕，一定是地下的水往上爬嗎？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.moisture.construction_moisture_and_hygroscopic_salts_false_rising_damp",
+      "answer_target": "兩個都不一定。第一，牆自己帶著水出生：現澆混凝土、蒸壓加氣混凝土這類材料出廠或施工時含大量水，灰泥、砂漿、磚和混凝土磚也都在工地碰過水；回顧文章說，歐洲因為工期越來越緊、材料來不及乾，施工水分造成的損壞變多了。這些水往室內乾時，要靠通風或除濕帶走，否則室內濕度偏高；它還降低牆的保溫、蒸發時又要吸熱，第一個供暖季的能耗有時高到平常的兩倍。住進去之後還有人自己產生的水：文章引的數字是四口之家每天最多約 10 公升。第二，看起來像地下水沿牆往上爬的，也可能是鹽。老牆吸過融雪鹽或含硝酸鹽的污水之後，鹽留在磚石裡，提高牆面的吸濕性：牆面從空氣裡吸水，摸起來潮、甚至看起來是濕的，卻沒有任何水從地面被吸上來；因為鹽的含量由下往上遞減，樣子很像真的上升潮氣，處理方法卻完全不同。",
+      "scope": "歐洲經驗的概括敘述，「兩倍能耗」「10 公升」都是文章引用的量級，沒有條件細節，而且「第一個供暖季」是歐洲的情境；不替台灣新成屋估乾燥時間。原文說看起來像上升潮氣的也可能是夏季結露或鹽類吸濕，本核心只講後者，稿中要留「也可能是夏季結露」一句。不把鹽造成的吸濕等同於台灣俗稱的壁癌（成因另有白華、滲水等），不給除壁癌或防水的做法。",
+      "source_ids": [
+        "H57-S007"
+      ],
+      "source_locator": "「Indoor climate」首段；「Construction moisture」三段與 Figure 5；「Rising damp」段",
+      "premise_status": "screened",
+      "notes": "新角度：水不一定是「進來」的。池中沒有施工水分或鹽類吸濕的核心（已查 壁癌、白華、潮濕、防潮；D2090 是地坪毛細水與水汽之別）。新增施工水分與第一季能耗（1 條）、四口之家每日產水量（不另計）、鹽類吸濕被誤認為上升潮氣（1 條）。算 2 條。 原提案 F9-020（目標 G42，原角色 segment；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）改字後收；答案照原稿，範圍補上原文並列的另一個解釋。池中 D2092–D2094 講混凝土養護與自體乾燥，是材料強度題，不是牆體帶水；`cli.mjs search 壁癌／白華／鹽／施工水分` 無同答案核心。施工水分與能耗 1 條，鹽類吸濕被誤認為上升潮氣 0.5 條（離題案主軸較遠），共 1.5 條（作者算 2）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "牆潮的三個來源：外面來的、裡面本來就有的、還有鹽從空氣裡抓的。",
+        "visual": "一面新牆內部的藍色慢慢往兩側淡出；另一面老牆牆腳的白點從空氣中吸水，地面那條「往上爬」的箭頭打叉。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    }
+  ],
+  "not_added": []
+}

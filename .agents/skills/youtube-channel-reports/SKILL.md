@@ -1,6 +1,6 @@
 ---
 name: youtube-channel-reports
-description: 讀 Mokaair 頻道的 YouTube 數據來分析與改進影片：站台每天下載 YouTube Reporting API 的報表（觀看、engaged views、觀看時間、平均觀看百分比、縮圖曝光與點閱率、流量來源與搜尋字詞、播放位置、裝置、年齡性別、分享、字幕、片尾畫面、訂閱增減），配對過影片工具權杖的 AI 用 tools/video/youtube-reports 從站台讀原始列，不碰 Google 授權。要看某支或某批影片的成效、比較題材、標題、縮圖或 Shorts 與長片、找觀眾從哪裡來、寫成效報告或下一批的改進建議，或報表讀不到（要重新連結、要啟用 API）時，先讀這個 skill。Read the channel's YouTube Reporting API data from the site with a paired video tool token, analyse it and turn it into concrete improvements.
+description: 讀 Mokaair 頻道的 YouTube 數據來分析與改進影片：站台每天下載 YouTube Reporting API 的報表（觀看、engaged views、觀看時間、平均觀看百分比、縮圖曝光與點閱率、流量來源與搜尋字詞、播放位置、裝置、年齡性別、分享、字幕、片尾畫面、訂閱增減），以及站台即時向 YouTube Analytics API 問的單支影片觀眾續看曲線，配對過影片工具權杖的 AI 用 tools/video/youtube-reports 從站台讀原始列，不碰 Google 授權。要看某支或某批影片的成效、比較題材、標題、縮圖或 Shorts 與長片、找觀眾從哪裡來、寫成效報告或下一批的改進建議，或報表讀不到（要重新連結、要啟用 API）時，先讀這個 skill。Read the channel's YouTube Reporting API data from the site with a paired video tool token, analyse it and turn it into concrete improvements.
 metadata:
   short-description: 從站台讀 YouTube 頻道報表，分析並提出改進
 ---
@@ -24,6 +24,8 @@ node tools/video/youtube-reports/cli.mjs sync                  # 抓 YouTube 新
 | 「還沒有啟用 YouTube Reporting API」 | 站主的 Google Cloud 專案要啟用該 API（「API 和服務」→「程式庫」）。 |
 | `waiting_for_first_report` 有東西 | job 剛建，YouTube 一兩天內才產出第一份與前 30 天；先不要下結論。 |
 | exit 4、401 | 權杖失效，重新 `login`。 |
+| `retention` exit 4、`video_youtube_analytics_disabled` | 站主的 Google Cloud 專案還要另外啟用 **YouTube Analytics API**（跟 Reporting API 是兩個）。 |
+| `retention` exit 4、`video_youtube_retention_no_data` | 觀看太少或期間太短，YouTube 不回曲線；拉長期間或拿掉 `--organic`，還是沒有就寫「缺資料」。 |
 
 資料晚 48–72 小時，日期是**太平洋時間**的日。最近兩天的空白不是零。主機每天自動同步兩次，平常不必手動 `sync`。
 
@@ -43,6 +45,19 @@ node tools/video/youtube-reports/cli.mjs videos --window 28 --long --format csv 
 node tools/video/youtube-reports/cli.mjs videos --shorts --published-since 2026-10-01
 node tools/video/youtube-reports/cli.mjs traffic --slug ai-agent-vs-chatbot  # 流量來源占比，加上前十個搜尋字詞、推薦來源影片、外部網站
 ```
+
+單支影片的**觀眾續看曲線**（觀眾在哪一刻走掉）不在報表檔裡，由站台當場問 YouTube Analytics API：
+
+```bash
+node tools/video/youtube-reports/cli.mjs retention --video gkl0vABh1_c --organic        # 100 點＋第一個大掉點（秒）
+node tools/video/youtube-reports/cli.mjs retention --slug ai-agent-vs-chatbot --from 2026-11-01 --to 2026-11-09 --format csv --out "$TMPDIR/curve.csv"
+```
+
+- `audienceWatchRatio`：這一刻被看的次數 ÷ 觀看數，倒回重看會超過 1；`relativeRetentionPerformance`：0–1，
+  跟長度相近的 YouTube 影片比，0.5 是中位數。預設期間是上架日到今天；`--organic` 只看自然流量（宣傳期間一定要加）。
+- **第一個大掉點**＝前 30% 內相鄰兩點掉最多的一段，秒數用 `--duration` 或站台回的 YouTube 影片長度換算。
+  第一點是 1%，0–1% 走掉的人看不到。秒數、掉點、掉幾成都是工具算的（輸出標 self-computed），只給站主看。
+- 一次一支影片（API 的限制）；別的頻道的影片站台會拒絕。
 
 `videos` 的 `window_complete: false` 表示還沒滿那幾天，不要拿來跟滿的比。平均觀看百分比與點閱率的
 單位照 YouTube 的欄位（文件沒寫是 0–1 還是 0–100，看實際數值判斷後在報告裡寫明）。
@@ -70,8 +85,11 @@ node tools/video/youtube-reports/cli.mjs traffic --slug ai-agent-vs-chatbot  # �
 要回答的問題，依序：
 
 1. **縮圖與標題有沒有讓人點**：每支影片前 7 天的曝光次數與點閱率；點閱率低、曝光高 → 改縮圖標題。
-2. **點進來的人有沒有留下來**：平均觀看百分比與時長；長片前段掉人 → 改開場與鉤子（看
-   skill `youtube-video` 的腳本規則）。報表沒有逐秒留存曲線，需要時請站主從 Studio 匯出。
+2. **點進來的人有沒有留下來**：平均觀看百分比與時長；長片前段掉人 → 跑 `retention --organic`，
+   把第一個大掉點的秒數對回台詞：成片字幕（上傳包的 `.srt`）或工作區 `timeline.json` 找出那幾秒是哪一句，
+   再對到 `docs/videos/<slug>/video.json` 的 `scenes[].lines[]`。成片前面有頻道片頭時，YouTube 的秒數含片頭，
+   `timeline.json` 只算正文，要先扣掉。寫下掉在鉤子、承諾句還是鋪陳，再改開場（看 skill `youtube-video` 的腳本規則）。
+   每週檢討（`docs/videos/channel-changes/README.md`）對上週每支新片都這樣做一次。
 3. **觀眾從哪裡來**：搜尋（看 `traffic_source_detail` 的搜尋字詞，能變成下一支的題目與標題）、
    推薦、Shorts 動態、外部。
 4. **誰在看**：國家、年齡性別、裝置、字幕語言 → 決定配音與字幕語言、畫面字的大小。
@@ -82,7 +100,7 @@ node tools/video/youtube-reports/cli.mjs traffic --slug ai-agent-vs-chatbot  # �
 ## 4. 寫出結論
 
 - 報告寫在 `docs/videos/<批次或 slug>/metrics.md` 或對應的票，列出影片 id、時間窗、資料取得時間。
-- 每個你算出來的數字標明「依 YouTube 報表原始數據自行計算」；**不要把它當成 YouTube 的數字，
+- 每個你算出來的數字標明「依 YouTube 報表原始數據自行計算」（續看曲線的掉點與秒數也一樣）；**不要把它當成 YouTube 的數字，
   也不要放上公開網頁或影片說明**（YouTube 開發人員政策的衍生指標規定，`docs/videos/YOUTUBE-REPORTS.md`）。
 - 建議要具體到能做：哪幾支的縮圖要重做、下一批題目、標題用哪些搜尋字詞、哪個語言要配音。
   能做但這次不做的，用 `npm run tasks -- new` 開票，不要只留在對話裡。
