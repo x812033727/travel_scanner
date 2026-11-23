@@ -21,9 +21,15 @@
    - 8 語系翻譯經獨立多語審稿代理逐語挑錯並全部修正（泰語 Ada 女性語尾 `คะ`/`ค่ะ`/`นะคะ` 與 `300 ล้านครั้ง`、葡語 `lojas imitadoras`、印尼語 `dua mesin yang saling mencadangkan` 與 5,009B->4,319B、日語 `吸引ホース`/`北米`、西語時態修正、越語 `q001` 與 5,602B->4,667B、6 語標題寬度與全形 `｜` 分隔）。
    - 9 張 `heimao-left` 縮圖已渲染並逐張視覺驗收（字體清晰、無裁切、無遮擋 Ada、泰韓日越字形零破字）。
 5. **後台送審（`/admin/videos`）**：
-   - `review-push --slug curio-w25-qb-house --gate script`：`pending`
-   - `review-push --slug curio-w25-qb-house --gate storyboard`：`pending`
+   - `review-push --slug curio-w25-qb-house --gate script`：`approved`（已 `review-pull` 寫入 `approvals.json`）
+   - `review-push --slug curio-w25-qb-house --gate storyboard`：`approved`（已 `review-pull` 寫入 `approvals.json`）
 
-## 下一步（Gemini TTS 配額重置後）
+## 2026-11-23 TTS 中繼備份收據（85 / 119 句完成）
 
-- 以 Gemini `Sulafat` 合成 `119` 句繁中旁白 -> MiniMax 合成 8 語配音 -> `assemble` 成片 -> 獨立一般觀眾視角審片（`review/audience-review.md`）修正並重跑 `qa` -> Google Drive 零差異備份 -> `review-push --gate final`。
+- **Google Drive 歸位**：`W25/`（`1hvrusCImCSsxGWf7lYdysFgHYIyntVcV`）已自 `S-歷史人物與名場面` 移至 `W-商業與品牌奇聞`（`18fdlwsqUSmhNYJD2f8_SWZrBPqiVbNKI`）。
+- **Gemini `Sulafat` 中文旁白進度**：已完成 **`85 / 119` 句**（`q001.wav`–`q085.wav`，實測語速 **4.45 字／秒**，達標 `≥ 4.4`），於第 86 句觸及 Google 上游 `gemini-3.8-flash-tts` 每日 RPD 上限（`HTTP 429 video_speech_upstream_busy`）；剩餘 **`34` 句**（`q086`–`q119`）。
+- **零差異雲端備份**：`audio/`（85 個 WAV＋`cache.json`）、`approvals.json`、`state.json` 已同步備份至 `W25/製作檔/`（`1eEJvfD5qBF_XEj-XZpWlq0qO8vRfMrtg`）並完成零差異位元組核對，後續續跑不重複計費。
+
+## 下一步（Gemini TTS 上游額度重置或換金鑰後）
+
+- 以 Gemini `Sulafat` 補完剩餘 `34` 句繁中旁白 -> `check-audio` -> `music`（`--loop`）-> MiniMax 合成 8 語配音＋逐語 `check-audio` -> `clips` -> `assemble`（含 `v4-endscreen`）-> `captions` -> `qa`（11/11）-> 獨立一般觀眾視角審片（`review/audience-review.md`）修正並重過 `qa` -> `package`（4/4）-> Google Drive 零差異備份 -> `review-push --gate audio` / `final` / `dubs`。

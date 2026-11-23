@@ -50,6 +50,6 @@ npm run check:tasks && npm run test:docs-videos
 
 ## Notes
 
-- Drive folders: `W25/` (`1hvrusCImCSsxGWf7lYdysFgHYIyntVcV`), `W25/製作檔/` (`1eEJvfD5qBF_XEj-XZpWlq0qO8vRfMrtg`).
+- Drive folders (under `W-商業與品牌奇聞` `18fdlwsqUSmhNYJD2f8_SWZrBPqiVbNKI`): `W25/` (`1hvrusCImCSsxGWf7lYdysFgHYIyntVcV`), `W25/製作檔/` (`1eEJvfD5qBF_XEj-XZpWlq0qO8vRfMrtg`).
 - Full receipts recorded in `docs/videos/curio-w25-qb-house/NOTES.md`.
-- Queued behind `W08` (~24 lines left), `W24` (44 lines left), `W23` (125 lines left) for Gemini TTS `Sulafat` synthesis once daily RPD quota resets (`00:00 PST` / `08:00 UTC`).
+- 2026-11-23 checkpoint: `script` & `storyboard` approved; `85/119` `Sulafat` WAVs (`q001.wav`–`q085.wav`, measured `4.45 chars/s`) synthesized and zero-diff verified in Drive `W25/製作檔/audio/`; remaining `34` lines paused on upstream Google `gemini-3.8-flash-tts` daily RPD 429 (`00:00 PST` / `08:00 UTC` reset).
