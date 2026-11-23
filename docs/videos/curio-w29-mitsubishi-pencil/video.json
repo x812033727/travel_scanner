@@ -1,0 +1,1358 @@
+{
+  "schema_version": 1,
+  "slug": "curio-w29-mitsubishi-pencil",
+  "theme": "paper",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    10
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。絕不平、絕不像在念稿。",
+    "performance": "像跟朋友拆解百年品牌撞名奇案：開場揭穿官網撇清關係與早十年註冊反差明快；明治兩條平行線與一九零三登錄簿節奏緊湊；uni 酒紅純色彩商標與億級神筆技術亮起；二零二四年收購德國 LAMY 與最新財報沉穩有力，收尾溫暖清晰。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -18,
+    "duck_db": -8
+  },
+  "pauses": {
+    "line_ms": 0,
+    "scene_ms": 150
+  },
+  "still_motion": "beat",
+  "loops": [
+    {
+      "setup": "m004",
+      "payoff": "m029",
+      "what": "三菱鉛筆官網聲明與三菱財閥無關，為何反而是它早逾十年註冊商標"
+    },
+    {
+      "setup": "m008",
+      "payoff": "m073",
+      "what": "非財閥體系的獨立筆廠，憑什麼跨海全資買下德國名廠 LAMY"
+    },
+    {
+      "setup": "m015",
+      "payoff": "m030",
+      "what": "財閥早就名滿天下，這家鉛筆廠怎麼會陰錯陽差搶先註冊同個商標"
+    },
+    {
+      "setup": "m020",
+      "payoff": "m024",
+      "what": "新宿水車小廠剛起步慘到差點倒閉，怎麼靠中央公家大單翻身"
+    },
+    {
+      "setup": "m026",
+      "payoff": "m028",
+      "what": "拿下中央郵電部會首張訂單後，創辦人怎麼畫出跟財閥撞臉的三顆紅菱"
+    },
+    {
+      "setup": "m031",
+      "payoff": "m036",
+      "what": "三菱集團出了名護招牌、握四千五百件商標，為何百年來動不了鉛筆廠"
+    },
+    {
+      "setup": "m038",
+      "payoff": "m040",
+      "what": "改名三菱鉛筆看似白撿大招牌，為何反倒絆住它進軍歐美高級市場"
+    },
+    {
+      "setup": "m041",
+      "payoff": "m046",
+      "what": "拋開財閥標籤自創 uni 與獨家深紅酒色，能否在歐美市場殺出血路"
+    },
+    {
+      "setup": "m048",
+      "payoff": "m050",
+      "what": "Hi-uni 二十二種極端軟硬鉛筆，除了畫畫還有哪些意想不到的買家"
+    },
+    {
+      "setup": "m052",
+      "payoff": "m057",
+      "what": "兩千年前後書寫改由原子筆與自動鉛筆主導，它靠哪兩支專利筆突圍"
+    },
+    {
+      "setup": "m059",
+      "payoff": "m064",
+      "what": "自動鉛筆寫久筆芯磨斜易斷，工程師怎麼讓筆芯自己轉起來"
+    },
+    {
+      "setup": "m068",
+      "payoff": "m070",
+      "what": "手握兩大專利與純色彩商標，公司高層卻始終卡在哪一道海外關卡"
+    },
+    {
+      "setup": "m080",
+      "payoff": "m082",
+      "what": "平價高機能日本老廠拿什麼跟德國精品設計名廠 LAMY 完美互補"
+    },
+    {
+      "setup": "m084",
+      "payoff": "m092",
+      "what": "跨國併購常失靈，買下 LAMY 後德日合體真的交得出市場買單的作品嗎"
+    },
+    {
+      "setup": "m094",
+      "payoff": "m096",
+      "what": "新宿水車起家的獨立筆廠，二零二五最新財報營收與海外占比衝到多高"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-desk-pencil-hook",
+      "chapter": "官網親口撇清：這家三菱不算三菱？",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a polished wooden study desk in warm morning sunlight with a glossy wine-red hexagonal pencil and a sleek black rollerball pen beside an open notebook",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m001",
+          "text": "看看你桌上的酒紅鉛筆，或超滑原子筆。",
+          "emotion": "親切開場，直接拉進生活"
+        },
+        {
+          "id": "m002",
+          "text": "筆桿印三顆紅菱，九成人都當財閥文具。"
+        }
+      ]
+    },
+    {
+      "id": "s02-giant-conglomerate-myth",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a towering coastal industrial shipyard and gleaming glass bank towers under bright clouds with cargo vessels docked along the pier",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m003",
+          "text": "造汽車、造船又開銀行的巨頭，做筆多合理。",
+          "emotion": "放慢「你以為」語氣"
+        },
+        {
+          "id": "m004",
+          "text": "但三菱鉛筆官網明寫：與三菱集團無關！",
+          "emotion": "語調亮起反轉，帶驚訝感"
+        }
+      ]
+    },
+    {
+      "id": "s03-trademark-ledger-twist",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of two vintage brass-bound registry ledgers lying side by side on a mahogany archive table with a crimson wax seal beside the older book",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m005",
+          "text": "等等，更顛覆認知的還在後面。",
+          "emotion": "短促停一拍再升級懸念"
+        },
+        {
+          "id": "m006",
+          "text": "先註冊三菱商標的竟是筆廠，還早逾十年！",
+          "emotion": "重音落在「筆廠」與「逾十年」"
+        }
+      ]
+    },
+    {
+      "id": "s04-germany-acquisition-tease",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a burgundy wooden pencil beside a bright yellow modernist pen with a triangular grip and wire clip on a sunlit European stone terrace overlooking Heidelberg",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m007",
+          "text": "二零二四年，它竟買下德國鋼筆名廠 LAMY！",
+          "emotion": "驚奇上揚，拋出第二重反差"
+        },
+        {
+          "id": "m008",
+          "text": "非財閥體系的獨立筆廠，憑什麼做到這步？",
+          "emotion": "單一核心疑問上揚收尾"
+        }
+      ]
+    },
+    {
+      "id": "s05-ada-promise-dossier",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a slender female archive researcher with short wavy dark hair, round burgundy glasses, and a slate-green trench coat standing beside an oak desk with ledgers",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m009",
+          "text": "我們檔案局研究員翻出明治商標簿與財報。",
+          "emotion": "沉穩帶入研究員與證據"
+        },
+        {
+          "id": "m010",
+          "text": "今天我們就來聊聊，這場百年撞名與逆襲！"
+        }
+      ]
+    },
+    {
+      "id": "s06-tosa-shipping-flag",
+      "chapter": "1870 與 1887：兩條毫無交集的起跑線",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a nineteenth-century Meiji wooden steamship sailing across sunlit waves flying a white maritime pennant with an abstract red three-petal crest at the mast",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m011",
+          "text": "一八七零年，三菱創辦人岩崎彌太郎開海運公司，",
+          "emotion": "開門見山交代人物"
+        },
+        {
+          "id": "m012",
+          "text": "在船旗畫上三顆菱形，開啟日本財閥起點。"
+        }
+      ]
+    },
+    {
+      "id": "s07-mitsubishi-shokai-rise",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle shot of a bustling Meiji-era brick port warehouse district with tall cargo cranes and steam locomotives rolling along the harbor pier",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m013",
+          "text": "圖案結合舊東家葉子家紋，與自家三層菱形。"
+        },
+        {
+          "id": "m014",
+          "text": "三年後改名三菱商會，從海運一路橫掃金融！"
+        }
+      ]
+    },
+    {
+      "id": "s08-paris-expo-1878",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the grand iron-and-glass hall of the 1878 Paris Exposition filled with golden light shafts and nineteenth-century visitors admiring glass display cases",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m015",
+          "text": "財閥早就名滿天下，鉛筆廠怎會陰錯陽差先註冊？",
+          "emotion": "轉折提問，直接對齊巧合真相"
+        },
+        {
+          "id": "m016",
+          "text": "後來創辦三菱鉛筆的眞崎仁六，一八七八年赴巴黎。"
+        }
+      ]
+    },
+    {
+      "id": "s09-import-monopoly-shock",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of wooden shipping crates stamped with wax seals opening inside a Meiji trading house to reveal gleaming imported European cedar writing sticks beside silver coins",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m017",
+          "text": "他在巴黎世博首見西洋鉛筆，決心回東京仿造。"
+        },
+        {
+          "id": "m018",
+          "text": "可當年日本全靠進口，沒機台沒配方只能硬摸！",
+          "emotion": "語氣帶張力"
+        }
+      ]
+    },
+    {
+      "id": "s10-shinjuku-waterwheel-1887",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a humble wooden Meiji workshop beside a rushing creek in 1887 Tokyo with a large timber waterwheel turning steadily beneath autumn trees",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m019",
+          "text": "苦熬九年後，一八八七年他在新宿架水車量產。",
+          "emotion": "帶出年代與具體畫面"
+        },
+        {
+          "id": "m020",
+          "text": "他創辦眞崎製造所，但水車小廠剛起步順利嗎？"
+        }
+      ]
+    },
+    {
+      "id": "s11-workshop-trial-error",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a Meiji artisan's weathered hands inspecting freshly milled graphite rods and cedar slats beside a glowing brick kiln inside a timber workshop",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m021",
+          "text": "慘到差點倒閉：筆芯一寫就斷、木桿一削就裂！",
+          "emotion": "語氣略壓低，呈現挫敗感"
+        },
+        {
+          "id": "m022",
+          "text": "他咬牙苦改配方與木料十四年，品質終於追上洋貨。"
+        }
+      ]
+    },
+    {
+      "id": "s12-teishinsho-order-1901",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of three neatly bound wooden writing sticks of graduating graphite tones laid on a lacquered Meiji ministry desk beside brass postal scales and red sealing wax",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m023",
+          "text": "一九零一年轉機來了：日本郵政電信部門採用他的筆！",
+          "emotion": "關鍵突破，語調昂揚"
+        },
+        {
+          "id": "m024",
+          "text": "更一口氣訂購三種硬度，作為公家御用品。"
+        }
+      ]
+    },
+    {
+      "id": "s13-first-official-seal-spark",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a Meiji craftsman sketching three sharp geometric scales with an ink brush on parchment beside three tied cedar pencils under warm oil lamp light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m025",
+          "text": "這是日本政府首張國產訂單，他激動想做個印記。"
+        },
+        {
+          "id": "m026",
+          "text": "沒想到隨手畫下的紀念記號，竟撞出百年巧合！",
+          "emotion": "章末埋鉤，引出下一章"
+        }
+      ]
+    },
+    {
+      "id": "s14-mitsuuroko-crest-design",
+      "chapter": "1903 年登錄簿：純屬巧合卻早財閥十年",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of a Meiji drafting desk where a traditional triangular three-scale woodblock crest sketch evolves across parchment into three crimson faceted diamonds beside a dip pen",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m027",
+          "text": "他壓根沒想過財閥，只拿出自家三片龍鱗家紋。",
+          "emotion": "笑意揭曉，直奔核心"
+        },
+        {
+          "id": "m028",
+          "text": "把三鱗拉長成三顆菱形呼應三硬度，順口叫三菱！"
+        }
+      ]
+    },
+    {
+      "id": "s15-1903-trademark-18865",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a heavy Meiji-era crimson official seal pressing firmly onto thick ivory cotton registry paper beside brass inkwells in dramatic side sunlight",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m029",
+          "text": "一九零三年，他正式註冊登錄第 18865 號商標。",
+          "emotion": "關鍵年份與編號放慢咬清"
+        },
+        {
+          "id": "m030",
+          "text": "財閥早年只當標誌用，一九一四年才註冊，晚了十一年！"
+        }
+      ]
+    },
+    {
+      "id": "s16-trademark-committee-fortress",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle shot of an imposing marble corporate boardroom lined with towering shelves of leather-bound global legal dossiers and brass globes in cool window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m031",
+          "text": "問題來了：三菱集團超護招牌，沒告過它？",
+          "emotion": "語尾上揚，拋出法律懸念"
+        },
+        {
+          "id": "m032",
+          "text": "如今設商標委員會，握有四千五百件商標！"
+        }
+      ]
+    },
+    {
+      "id": "s17-warning-letters-deterrence",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of crisp formal legal folders sealed with dark red ribbon stacked on a polished mahogany conference desk under cool architectural light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m033",
+          "text": "這些商標遍布一百四十國，官網警告敢蹭就告。"
+        },
+        {
+          "id": "m034",
+          "text": "偏偏對這家鉛筆廠，三菱集團百年來動不了它！",
+          "emotion": "微帶笑意的反差感"
+        }
+      ]
+    },
+    {
+      "id": "s18-legal-peaceful-coexistence",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a balanced brass legal scale on an oak table, one pan holding a bundle of wooden writing sticks and the other holding a miniature steel cargo ship model",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m035",
+          "text": "一來鉛筆廠當年依法先註冊，站穩法律先機，"
+        },
+        {
+          "id": "m036",
+          "text": "二來始終專攻文具，與財閥重工金融零衝突。"
+        }
+      ]
+    },
+    {
+      "id": "s19-ada-name-unification-1952",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a slender female archive researcher with short wavy dark hair, round burgundy glasses, and a slate-green trench coat comparing an antique wooden factory stamp with a burgundy box",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m037",
+          "text": "一九五二年它把眞崎社名與商標統一，改三菱鉛筆。",
+          "emotion": "節奏明快推進歷史"
+        },
+        {
+          "id": "m038",
+          "text": "聽起來像白撿大招牌，但事情真有這麼美嗎？",
+          "emotion": "反問鋪墊下一景反轉"
+        }
+      ]
+    },
+    {
+      "id": "s20-postwar-reputation-crisis",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a 1950s stationery shop counter where gleaming European brass-capped imported writing tools sit under a bright spotlight while plain local wooden boxes sit dim beside them",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m039",
+          "text": "錯了！這招牌反而絆住它進歐美高級市場。",
+          "emotion": "「錯了」俐落打斷，轉入危機"
+        },
+        {
+          "id": "m040",
+          "text": "戰後日本鉛筆被嫌廉價，老外更只想到造船！"
+        }
+      ]
+    },
+    {
+      "id": "s21-uni-birth-1958",
+      "chapter": "1958 年酒紅逆襲：拋開財閥標籤自創 uni",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of a 1958 industrial design table fan-spread with dozens of hand-painted lacquer wooden dowels ranging from earthy browns to deep wine reds under a drafting lamp",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m041",
+          "text": "換作你，靠被誤認混日子，還是重打新招牌？",
+          "emotion": "直球拋給觀眾思考"
+        },
+        {
+          "id": "m042",
+          "text": "一九五八年它推高級鉛筆 uni，取獨一無二之意！"
+        }
+      ]
+    },
+    {
+      "id": "s22-160-colors-wine-red",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a master lacquer brush gliding glossy deep wine-red paint onto a finely sanded hexagonal cedar shaft catching warm rim sunlight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m043",
+          "text": "為跟歐美黃色、綠色筆桿區隔，試了一百六十色。"
+        },
+        {
+          "id": "m044",
+          "text": "它用偏褐的深紅酒色配黑金環，造獨家 uni 色！",
+          "emotion": "亮起介紹標誌配色"
+        }
+      ]
+    },
+    {
+      "id": "s23-plastic-case-hinge-boom",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a gleaming 1960s translucent dark-gold plastic dozen-stick case with tiny hand-fitted aluminum hinges opened on a wooden school desk revealing twelve wine-red hexagonal shafts",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m045",
+          "text": "但這還不是全部：當年都裝紙盒，它用轉軸硬盒！"
+        },
+        {
+          "id": "m046",
+          "text": "配滑順筆芯賣到手工裝盒都趕不及，打響頂級口碑。",
+          "emotion": "輕快驚嘆熱銷盛況"
+        }
+      ]
+    },
+    {
+      "id": "s24-hi-uni-22-grades",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of twenty-two wine-red wooden shafts fanned in a precise arc from velvet-soft dark charcoal strokes on the left to crisp masonry drafting lines on the right",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m047",
+          "text": "一九六六年推 Hi-uni，從軟 10B 到硬 10H 共二十二硬度。"
+        },
+        {
+          "id": "m048",
+          "text": "這麼極端誰用？連調音師都搶買！"
+        }
+      ]
+    },
+    {
+      "id": "s25-piano-and-brick-trivia",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of a craft workbench showing white piano key edges dusted with soft dark graphite on the left and a terracotta brick marked with a razor-fine gray line on the right",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m049",
+          "text": "公司證實：最軟筆芯石墨能潤滑鋼琴鍵側面。",
+          "emotion": "冷知識趣味感十足"
+        },
+        {
+          "id": "m050",
+          "text": "最硬那支，建築師甚至直接拿來在磚塊畫線！"
+        }
+      ]
+    },
+    {
+      "id": "s26-ballpoint-era-shift",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bustling modern office desk cluttered with notebooks, printed memos, and everyday ballpoint and mechanical pens as a lone wooden shaft sits beside them",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m051",
+          "text": "靠酒紅鉛筆撕掉財閥標籤後，到了兩千年前後，"
+        },
+        {
+          "id": "m052",
+          "text": "日常書寫已轉由原子筆與自動鉛筆主導，怎麼突圍？",
+          "emotion": "明確年代過渡並對齊兩大品類"
+        }
+      ]
+    },
+    {
+      "id": "s27-ballpoint-frustration",
+      "chapter": "兩支億級專利筆：攢出買下 LAMY 的底氣",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a frustrated office worker's hand dragging an old ballpoint pen across notebook paper leaving blotchy skips and smudged wet ink streaks under harsh desk light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m053",
+          "text": "它靠兩款賣破億支專利筆，攢出日後買 LAMY 的底氣！",
+          "emotion": "直接扣回 LAMY 主線"
+        },
+        {
+          "id": "m054",
+          "text": "回想當年寫油性筆：常卡墨結塊，手一抹就糊。"
+        }
+      ]
+    },
+    {
+      "id": "s28-jetstream-ink-lab",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of glossy jet-black ink flowing effortlessly from a gleaming microscopic tungsten steel ballpoint tip onto fine paper fibers like silk in golden laboratory light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m055",
+          "text": "水性雖滑卻慢乾，二零零六年三菱鉛筆破兩難。"
+        },
+        {
+          "id": "m056",
+          "text": "推出低黏度油性原子筆 JETSTREAM，大降阻力！",
+          "emotion": "語調俐落亮起"
+        }
+      ]
+    },
+    {
+      "id": "s29-jetstream-global-scale",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of a vibrant radial sunburst arrangement of sleek modern retractable ballpoint pens in matte olive, slate gray, coral, and ivory across a sunlit drafting studio table",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m057",
+          "text": "它做到極致滑順、速乾又濃黑，全球年賣逾一億支！"
+        },
+        {
+          "id": "m058",
+          "text": "兩年後，它把同樣死磕精神搬進了自動鉛筆。",
+          "emotion": "自然銜接第二支王牌"
+        }
+      ]
+    },
+    {
+      "id": "s30-slant-wear-problem",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of a conventional mechanical lead worn diagonally at an uneven chisel angle snapping cleanly amid tiny graphite dust particles on ruled paper",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m059",
+          "text": "你寫自動鉛筆，煩不煩筆芯磨斜變粗還斷芯？"
+        },
+        {
+          "id": "m060",
+          "text": "這種偏磨忍了幾十年，大家都靠手自己轉筆。"
+        }
+      ]
+    },
+    {
+      "id": "s31-ada-kurutoga-gears",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a slender female archive researcher with short wavy dark hair, round burgundy glasses, and a slate-green trench coat peering through a brass loupe at tiny gleaming mechanical gears",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m061",
+          "text": "但工程師超執著：手懶得轉，就讓筆芯自己轉！",
+          "emotion": "果斷點出逆向腦洞"
+        },
+        {
+          "id": "m062",
+          "text": "二零零八年 KURUTOGA 問世，筆尖塞進微縮齒輪。"
+        }
+      ]
+    },
+    {
+      "id": "s32-kurutoga-rotation-magic",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up cutaway of a translucent mechanical pencil tip revealing tiny golden angled ratchet gears rotating a razor-sharp dark graphite cone tip in crisp studio light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m063",
+          "text": "你每寫一畫抬起筆，筆壓就推動齒輪自動微轉。",
+          "emotion": "精準描繪機械快感"
+        },
+        {
+          "id": "m064",
+          "text": "筆尖永遠維持圓錐細銳，字跡清晰不髒紙面！"
+        }
+      ]
+    },
+    {
+      "id": "s33-kurutoga-17-year-crown",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a high school student writing crisp neat notes smoothly at a sunlit classroom window desk holding a sleek translucent mechanical pen",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m065",
+          "text": "累計破億支，連霸日本自動鉛筆銷冠十七年！",
+          "emotion": "關鍵數字放慢，震撼感十足"
+        },
+        {
+          "id": "m066",
+          "text": "不只靠技術稱霸，它連經典配色都鎖成護城河："
+        }
+      ]
+    },
+    {
+      "id": "s34-color-trademark-2018",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two pristine wine-red lacquer ends displaying crisp black and gold rings beneath a glowing glass dome inside a sunlit patent museum hall",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m067",
+          "text": "二零一八年獲准將 uni 酒紅黑金列色彩商標，不准抄！",
+          "emotion": "強調「純色彩商標」霸氣"
+        },
+        {
+          "id": "m068",
+          "text": "手握專利與色彩商標，高層卻卡在哪一關？"
+        }
+      ]
+    },
+    {
+      "id": "s35-europe-ceiling-map",
+      "chapter": "2024 震撼併購：反手全資買下德國名廠 LAMY",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of a polished oak strategy table displaying a classic embossed vintage map focusing on Europe beside brass dividers and neatly boxed affordable pens",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m069",
+          "text": "痛點很現實：它強平價高機能，海外靠代理商。"
+        },
+        {
+          "id": "m070",
+          "text": "隔層紗摸不透歐洲審美，打不進中高價鋼筆圈。"
+        }
+      ]
+    },
+    {
+      "id": "s36-war-chest-ready",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a modern sunlit Tokyo corporate headquarters overlooking glass towers with stacked archival books and brass scales symbolizing long-built financial independence",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m071",
+          "text": "這家獨立上市大廠靠厚實銀彈，怎麼翻盤？"
+        },
+        {
+          "id": "m072",
+          "text": "正當外界以為得慢耕，二零二四年震撼登場！"
+        }
+      ]
+    },
+    {
+      "id": "s37-2024-acquisition-shock",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of historic red-sandstone Heidelberg Castle and arched stone bridge spanning the gleaming Neckar River in golden late-winter sunlight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m073",
+          "text": "它宣布全資收購德國海德堡老牌鋼筆名廠 LAMY！",
+          "emotion": "語氣高昂揭曉重磅併購"
+        },
+        {
+          "id": "m074",
+          "text": "收購前零持股，一口氣買下百分百股權納入旗下！"
+        }
+      ]
+    },
+    {
+      "id": "s38-lamy-bauhaus-heritage",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a German modernist workshop desk featuring sleek glossy resin pens in cobalt blue, crimson, and yellow with triangular grips and bold curved steel wire clips beside calipers",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m075",
+          "text": "一九三零年創立的 LAMY 主打包浩斯機能美學。"
+        },
+        {
+          "id": "m076",
+          "text": "二三年營收近七千七百萬歐、本業賺五百九十萬。"
+        }
+      ]
+    },
+    {
+      "id": "s39-lamy-safari-1980-icon",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a sleek bright-yellow resin pen clipped firmly onto the rugged indigo pocket edge of denim jeans showing its bold curved steel wire clip and contoured triangular grip",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m077",
+          "text": "一九八零年問世的 safari，靠三角握位與大金屬夾，"
+        },
+        {
+          "id": "m078",
+          "text": "連厚牛仔褲口袋都夾得牢，紅遍全球超過四十年！",
+          "emotion": "畫面感鮮明"
+        }
+      ]
+    },
+    {
+      "id": "s40-small-buys-icon-contrast",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an architectural European stone studio doorway opening warmly onto sunlit display pedestals holding gleaming colorful minimalist pens",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m079",
+          "text": "曾被誤認成子公司的小筆廠，買下德國設計殿堂！",
+          "emotion": "強烈反差帶讚嘆語氣"
+        },
+        {
+          "id": "m080",
+          "text": "你一定好奇，平價日廠怎麼跟德國精品完美互補？",
+          "emotion": "疑問銜接，避免空檔"
+        }
+      ]
+    },
+    {
+      "id": "s41-zero-overlap-synergy",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of two contrasting trays neatly aligned side by side: left tray holding precision micro-gears and ink tubes, right tray holding stainless fountain nibs and modernist barrels",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m081",
+          "text": "把兩家攤開對照就會發現，這併購簡直天作之合。"
+        },
+        {
+          "id": "m082",
+          "text": "產品線幾乎零重疊：日本強筆芯、德國強設計通路。"
+        }
+      ]
+    },
+    {
+      "id": "s42-fountain-nib-craft",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gleaming precision-stamped stainless steel fountain pen nib resting on a jeweler's anvil under crisp warm workshop lighting with fine metal curls",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m083",
+          "text": "它更順勢拿下鋼筆金屬筆尖加工工藝，補齊拼圖。"
+        },
+        {
+          "id": "m084",
+          "text": "但跨國併購常失靈，這對德日組合真交得出好貨嗎？",
+          "emotion": "章末反問，拉高期待"
+        }
+      ]
+    },
+    {
+      "id": "s43-lamy-jetstream-2025",
+      "chapter": "德日合體實戰：海外破五成七的最新成績單",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a sleek translucent clear and cobalt-blue minimalist resin pen with a triangular grip and gleaming chrome wire clip gliding across ivory paper leaving a crisp jet-black line",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m085",
+          "text": "落地速度快到驚人！隔年一月首波合體就上架。",
+          "emotion": "明快亮起揭曉新品"
+        },
+        {
+          "id": "m086",
+          "text": "LAMY safari JETSTREAM inside 把超滑墨裝進德桿！"
+        }
+      ]
+    },
+    {
+      "id": "s44-m17-refill-compatibility",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro shot of a sleek black metal ballpoint ink refill sliding smoothly into the open barrel of an existing minimalist red German-style pen on a sunlit wooden studio desk",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m087",
+          "text": "最懂老玩家的是，它加推 M17 替芯相容舊德國筆。"
+        },
+        {
+          "id": "m088",
+          "text": "整支三千六百三日圓、替芯一千一，上市即熱賣！",
+          "emotion": "價格清晰俐落"
+        }
+      ]
+    },
+    {
+      "id": "s45-lamy-kurutoga-2026",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up cutaway visualization of a minimalist matte-black and bright-yellow triangular-grip mechanical pen on a studio table with tiny brass rotational gears illuminated beside the metal tip",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m089",
+          "text": "二零二六年三月，第二彈旋轉自動鉛筆緊接登場！"
+        },
+        {
+          "id": "m090",
+          "text": "LAMY safari KURUTOGA inside 把日本引擎帶向歐美。"
+        }
+      ]
+    },
+    {
+      "id": "s46-kurutoga-ks-engine",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a smooth seamless matte-black triangular-grip mechanical pen resting on crisp drafting paper beside fine precision micro-springs gleaming in studio light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m091",
+          "text": "它特為德國外殼重做無縫軸身，塞進低晃動引擎。"
+        },
+        {
+          "id": "m092",
+          "text": "定價四千一百八十日圓，讓兩大設計徹底合而為一！"
+        }
+      ]
+    },
+    {
+      "id": "s47-ada-fy2025-report",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a slender female archive researcher with short wavy dark hair, round burgundy glasses, and a slate-green trench coat examining a thick bound annual financial ledger on an oak table",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m093",
+          "text": "口號喊再響，得翻二零二五財年最新連結財報！"
+        },
+        {
+          "id": "m094",
+          "text": "你猜這家水車起家的筆廠，如今一年做到多大？",
+          "emotion": "引導觀眾猜數字"
+        }
+      ]
+    },
+    {
+      "id": "s48-898-billion-revenue",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a gleaming modern precision pen assembly line in a sunlit Japanese factory with rows of finished burgundy shafts and matte pens gliding along stainless conveyors",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m095",
+          "text": "全年營收衝上八百九十八億日圓，利益率破一成。",
+          "emotion": "放慢報出關鍵財報數字"
+        },
+        {
+          "id": "m096",
+          "text": "更亮眼的是，海外營收達五百一十四億破五成七！"
+        }
+      ]
+    },
+    {
+      "id": "s49-europe-top-overseas",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bustling bright European flagship stationery boutique with warm oak display walls glowing with colorful markers and sleek German-style pens as shoppers browse",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m097",
+          "text": "歐洲更貢獻逾百七十一億日圓，躍居最大金礦。"
+        },
+        {
+          "id": "m098",
+          "text": "德國有形固定資產達七十八億，僅次日本本土！"
+        }
+      ]
+    },
+    {
+      "id": "s50-headwinds-and-balance-sheet",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a calm sunlit warehouse stacked with wooden shipping crates beside brass balance weights and thick ledgers symbolizing sturdy financial reserves",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m099",
+          "text": "雖受歐洲去庫存與成本影響，營業利益回落兩成，"
+        },
+        {
+          "id": "m100",
+          "text": "但自己資本率高達七成五，財報明寫「無母公司」。",
+          "emotion": "語氣沉穩有力，呼應獨立性"
+        }
+      ]
+    },
+    {
+      "id": "s51-140th-year-horizon",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bright contemporary stationery design lab with sleek new rollerball prototypes, warm cedar wood grips, and precision stainless parts arranged on clean tables",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m101",
+          "text": "故事還沒完：它持續擴建亞洲與歐美供應鏈，"
+        },
+        {
+          "id": "m102",
+          "text": "創業百四十週年喊出挑戰九百四十億營收新高！"
+        }
+      ]
+    },
+    {
+      "id": "s52-history-mirror-contrast",
+      "chapter": "不是沾光的名字，而是磨了一百四十年的筆尖",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of a sunlit museum showcase table linking a century of craft: a rustic 1887 Meiji cedar writing stick on the left, a glossy burgundy 1958 shaft in the center, and a yellow hybrid pen on the right",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m103",
+          "text": "還記得開頭那個九成人都答錯的誤會嗎？",
+          "emotion": "溫柔回收開場懸念"
+        },
+        {
+          "id": "m104",
+          "text": "大家以為它沾財閥光環紅百年，真相其實相反。"
+        }
+      ]
+    },
+    {
+      "id": "s53-independent-craft-verdict",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a freshly sharpened burgundy hexagonal wood tip gleaming under warm golden window light with delicate fragrant cedar curls resting on crisp ivory paper",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m105",
+          "text": "百年巧合給了它響亮姓氏，卻沒替它贏得世界。"
+        },
+        {
+          "id": "m106",
+          "text": "反而是主動撕掉光環、死磕技術，才讓它站穩舞台！"
+        }
+      ]
+    },
+    {
+      "id": "s54-ada-theme-wrap",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a slender female archive researcher with short wavy dark hair, round burgundy glasses, and a slate-green trench coat closing an archival dossier gently beside a wine-red shaft and yellow pen",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m107",
+          "text": "真正讓老廠成全球巨頭的，從來不是名字像誰。",
+          "emotion": "溫暖堅定收束主題"
+        },
+        {
+          "id": "m108",
+          "text": "而是每一代肯把小小筆尖磨到極致的硬底氣。"
+        }
+      ]
+    },
+    {
+      "id": "s55-desk-closing-cta",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a sleek black ballpoint pen and a translucent mechanical pencil resting beside an open leather notebook on a sunlit oak desk with soft dust motes",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m109",
+          "text": "留言告訴我，你最愛 JETSTREAM 還是 KURUTOGA？",
+          "emotion": "親切二選一互動收尾"
+        },
+        {
+          "id": "m110",
+          "text": "喜歡拆解日常器物真相，別忘了訂閱奇聞檔案局！"
+        }
+      ]
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "layout": "heimao-left",
+      "headline": "三菱鉛筆不算三菱？",
+      "sub": "早十年先註冊還買下德國名廠",
+      "asset": "stock/c0a5fb24c95a010e319ede2b77b55a3bea05dffcf1c15ef236de341fa19217ef.jpg"
+    }
+  },
+  "assets": [
+    {
+      "path": "stock/c0a5fb24c95a010e319ede2b77b55a3bea05dffcf1c15ef236de341fa19217ef.jpg",
+      "sha256": "4a8f2b66f7b058c401907e7a05e2ae8b8cbbec01629776bc15525e02e1efadb9",
+      "credit": "Mokaair 奇聞檔案局",
+      "license": "original",
+      "source": "built-in generate_image (w29_hero_thumb_v2, $0)"
+    }
+  ],
+  "youtube": {
+    "title": "三菱鉛筆憑什麼比財閥早十年先註冊，還買下德國 LAMY？｜奇聞檔案局",
+    "description": "筆桿印著三顆紅菱的三菱鉛筆，官網竟白紙黑字聲明「與三菱集團毫無關係」——它憑什麼比大財閥更早逾十年註冊三菱商標，還在 2024 年反向全資買下德國海德堡老牌鋼筆名廠 LAMY？\n給從小寫到大都以為三菱鉛筆是財閥文具、每次買 uni 或 JETSTREAM 都好奇這家老店來頭的人。\n\n本片依三菱鉛筆株式會社（7976）官方沿革與常見問題、2025 年 12 月期連結決算短信、2024 年收購 C. Josef Lamy GmbH 公告、2025–2026 年 LAMY safari JETSTREAM inside 與 KURUTOGA inside 暨純色彩商標官方新聞稿，以及三菱集團官方網站（mitsubishi.com）沿革與商標管理說明，完整拆解 1887 年內藤新宿水車創業、1901 年遞信省公家鉛筆與 1903 年比三菱集團早逾十年註冊登錄第 18865 號三菱商標的歷史巧合、1958 年 uni 紅酒色與 2018 年純色彩商標、年銷破億支的 JETSTREAM 與連霸日本 17 年的 KURUTOGA 技術護城河，以及 2024 年全資收購 1930 年創立之德國 LAMY 後海外營收突破五成七、2026 年創業 140 週年挑戰 940 億日圓的最新實績。\n\n本頻道與片中提及品牌無合作關係。本集插圖由 AI 生成。\n資料截至 2026-11-22",
+    "tags": [
+      "奇聞檔案局",
+      "三菱鉛筆",
+      "uni",
+      "LAMY",
+      "JETSTREAM",
+      "KURUTOGA",
+      "三菱財閥",
+      "商標故事",
+      "日本商業",
+      "文具控"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "video_id": null
+  },
+  "sources": [
+    {
+      "title": "三菱鉛筆株式會社 官方沿革與商標由來（1887–2025）",
+      "url": "https://www.mpuni.co.jp/company/history.html",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "三菱鉛筆株式會社 常見問題：三菱標誌的起源與非三菱集團企業聲明",
+      "url": "https://www.mpuni.co.jp/customer/ans_133.html",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "三菱集團官方網站：三菱標誌由來與商標管理（三菱社名商標委員會）",
+      "url": "https://www.mitsubishi.com/ja/mark/",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "三菱集團官方網站：三菱沿革概要（1870 九十九商會與 1873 三菱商會）",
+      "url": "https://www.mitsubishi.com/ja/profile/history/outline/",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "三菱自動車工業官方沿革：三菱標誌由來與 1914 年三菱合資會社商標註冊",
+      "url": "https://www.mitsubishi-motors.com/jp/company/history/company/",
+      "checked_on": "2026-11-23"
+    },
+    {
+      "title": "三菱鉛筆（7976）2025年12月期 連結決算短信（2026年2月12日公告）",
+      "url": "https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20260212/20260210553727.pdf",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "三菱鉛筆官方公告：取得德國 C. Josef Lamy GmbH 100% 持分（2024年2月29日）",
+      "url": "https://www.mpuni.co.jp/company/press/20240229-53404.html",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "三菱鉛筆官方新聞稿：LAMY safari JETSTREAM inside 與 M17 替芯上市（2025年1月8日）",
+      "url": "https://www.mpuni.co.jp/pressroom/20250108-53820.html",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "三菱鉛筆官方新聞稿：LAMY safari KURUTOGA inside 上市與 KURUTOGA 連霸 17 年紀錄（2026年2月19日）",
+      "url": "https://www.mpuni.co.jp/company/press/20260219-54207.html",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "三菱鉛筆官方新聞稿：JETSTREAM 系列全球年銷逾 1 億支（2025年11月21日）",
+      "url": "https://www.mpuni.co.jp/company/press/20251121-54098.html",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "三菱鉛筆官方新聞稿：uni 與 Hi-uni 獲准註冊「純色彩商標」（2018年10月1日）",
+      "url": "https://www.mpuni.co.jp/company/press/20181001-36691.html",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "三菱鉛筆官方新聞稿：uni 160 候選色、一打塑膠盒演變與 Hi-uni 22 硬度（2014年9月29日）",
+      "url": "https://www.mpuni.co.jp/company/press/20140929-36911.html",
+      "checked_on": "2026-11-22"
+    }
+  ]
+}
