@@ -18,7 +18,8 @@ EN = {"chengshanzhang": "Headmaster Cheng", "fengxuezheng": "Examiner Feng", "we
       "shimujiang": "Carpenter Shi",  # e013 r2 (live): the carpenter speaks from e913 on
       "weishaoqing": "Wei Shaoqing", "hanghui": "the guild master",  # e020 r2 (live): both speak on screen in e920
       "zhengbo": "Steward Zheng",  # e025 r2 (live): the Tang steward speaks on screen in e925 (gen-dh.mjs's name for him)
-      "tangwanjin": "Tang Wanjin"}  # e029 r2 (live): Tang Wanjin's 「囡囡！」 on screen in e929 (gen-dh.mjs's name for him)
+      "tangwanjin": "Tang Wanjin",  # e029 r2 (live): Tang Wanjin's 「囡囡！」 on screen in e929 (gen-dh.mjs's name for him)
+      "diaoqi": "Diao Qi"}  # e037 r2 (live): Diao Qi speaks on screen from e937 on (gen-dh.mjs's name for him)
 HER = {"aling", "qinshuang", "tangxiaotang", "xiaohe", "zhifufuren"}
 BASE = json.load(open(f"{REPO}/docs/videos/zhong-tian-qu-qi-e042/video.json"))
 sys.path.insert(0, f"{REPO}/docs/videos/series-plans/zhong-tian-qu-qi/production/writer-tools/e051-e055")

@@ -1,0 +1,1024 @@
+{
+ "_note": "e937 live d1 (e936-live's way; written by mkspec.py). Tang Xiaotang from behind in s32, s34, s35 (pictures and identity sentence dropped); her silent backs s07, s09 unlisted; her voice over the insert s08; no front face of hers; every back of hers appends the owner's hair reference tangxiaotang-back-shuangji-e929-w3 (2026-11-22). The spear prop picture appended in s26, s27, s36. 'append_pictures' = [file, sentence]: prep937.sh appends the picture last, puts the sentence (N = its number) after the set clause and renumbers the header. No person sent in the inserts s08, s23 (no place sentence) and s17, s21. Xu Yan's angle-b nowhere; wides his portrait only; close-ups s03, s15, s16, s37, s38 his portrait then angle-a. Wang Erniu's angle-a becomes his portrait in s02; wides s01, s28 portrait only. A-ling never angle-b; s31 portrait only. The channel prompts lose ' below the deep pool' (every later fix must too). The clean sentence's 'clear and still' replaced in every shot (night air, lamp, torchlight, lime powder, steam, dawn). Shoes per wide (Qin Shuang's boots; straw sandals on the unnamed). Sets: see mkspec.py. No off-screen sentence (r2.py OFFSCREEN_SPEECH = False). Seeds 9371101/9371102.",
+ "seeds": [
+  9371101,
+  9371102
+ ],
+ "shots": {
+  "s01": {
+   "replace": [
+    [
+     "Besides him, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "Only Wang Erniu and the four men on the mats the composition describes, each in a different colour, are in the frame; no second copy of anyone appears."
+    ],
+    [
+     "Every person in the frame wears dark cloth shoes on both feet.",
+     "Wang Erniu wears dark cloth shoes and the four men on the mats wear worn straw sandals on both feet."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cool night air, a clean natural film image"
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his eyes toward someone out of sight beyond the left edge of the frame, never on the lens"
+    ]
+   ],
+   "drop_pictures": [
+    "erniu-angle-a-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xujia-yuan-ye-l2.png": "set-xujia-yuan-ye-dong2-zhong-l1.png"
+   }
+  },
+  "s02": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cool night air, a clean natural film image"
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, his eyes on that spot"
+    ]
+   ],
+   "swap_pictures": {
+    "set-xujia-yuan-ye-l2.png": "set-xujia-yuan-ye-dong2-shu-l1.png",
+    "erniu-angle-a-l1.png": "erniu-portrait-l1.png"
+   }
+  },
+  "s03": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cool night air, the small lamp flame swaying, a clean natural film image"
+    ]
+   ],
+   "swap_pictures": {
+    "set-xujia-yuan-ye-l2.png": "set-xujia-yuan-ye-dong2-shu-l1.png",
+    "xuyan-angle-a-l1.png": "xuyan-portrait-l1.png",
+    "xuyan-angle-b-l1.png": "angles/xuyan-angle-a-l1.png"
+   }
+  },
+  "s04": {
+   "replace": [
+    [
+     "Every person in the frame wears dark cloth shoes on both feet.",
+     "Xu Yan wears dark cloth shoes and Qin Shuang wears her leather boots."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cool night air, the small lamp flame swaying, a clean natural film image"
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png",
+    "xuyan-angle-a-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xujia-yuan-ye-l2.png": "set-xujia-yuan-ye-dong2-qiang-l1.png"
+   }
+  },
+  "s05": {
+   "replace": [
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cool night air, a clean natural film image"
+    ],
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, her eyes on that spot"
+    ]
+   ],
+   "swap_pictures": {
+    "set-xujia-yuan-ye-l2.png": "set-xujia-yuan-ye-dong2-qiang-l1.png"
+   }
+  },
+  "s06": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "Besides him, only the young woman with the high ponytail seen from behind at the right edge of the frame the composition describes is in the frame; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cool night air, the small lamp flame swaying, a clean natural film image"
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xujia-yuan-ye-l2.png": "set-xujia-yuan-ye-dong2-chai-l1.png"
+   }
+  },
+  "s07": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "Only these 2 people are in the frame, the young woman with the buns seen only from behind and Xu Yan one step beyond her in the left third of the frame; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cool night air, the small lamp flame swaying, a clean natural film image"
+    ]
+   ],
+   "append_pictures": [
+    [
+     "tangxiaotang-back-shuangji-e929-w3.png",
+     "The back of the young woman's head looks exactly like <Picture N>: the same smooth black hair parted down the middle and gathered into just two round buns, one on each side, each wrapped with one short pink silk ribbon; that picture fixes the hairstyle only, never the place or the light."
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xujia-yuan-ye-l2.png": "set-xujia-yuan-ye-dong2-wu-l1.png"
+   }
+  },
+  "s08": {
+   "replace": [
+    [
+     "the location shown in <Picture 1> is the set, keeping its layout and props.",
+     "The packed dark earth shown in <Picture 1> gives only the ground and the light of the background."
+    ],
+    [
+     "Initial composition: In the night yard of the Xu farmhouse at the third watch of the same night; cool pale moonlight from above, the yard dark and still, a faint warm glow along the house wall at the left: insert close-up",
+     "Initial composition: Insert close-up"
+    ],
+    [
+     "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. ",
+     "Throughout the shot the framing stays as it is. The picture gives the ground and the light of the background only, never the mood. "
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cool night air, a clean natural film image"
+    ],
+    [
+     "never the mood. the two small hands tigh",
+     "never the mood. The two small hands tigh"
+    ]
+   ],
+   "swap_pictures": {
+    "set-xujia-yuan-ye-l2.png": "set-xujia-yuan-ye-dong2-di-l1.png"
+   }
+  },
+  "s09": {
+   "replace": [
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "Only these 2 people are in the frame, the young woman with the buns seen only from behind and Xu Yan one step beyond her in the left third of the frame; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cool night air, the small lamp flame swaying, a clean natural film image"
+    ]
+   ],
+   "append_pictures": [
+    [
+     "tangxiaotang-back-shuangji-e929-w3.png",
+     "The back of the young woman's head looks exactly like <Picture N>: the same smooth black hair parted down the middle and gathered into just two round buns, one on each side, each wrapped with one short pink silk ribbon; that picture fixes the hairstyle only, never the place or the light."
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xujia-yuan-ye-l2.png": "set-xujia-yuan-ye-dong2-chai-l1.png"
+   }
+  },
+  "s09b": {
+   "replace": [
+    [
+     "Besides him, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "Only Xu Yan and the six men with hoes the composition describes, each in a different colour, are in the frame; no second copy of anyone appears."
+    ],
+    [
+     "Every person in the frame wears dark cloth shoes on both feet.",
+     "Xu Yan wears dark cloth shoes and the six men wear worn straw sandals on both feet."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cool night air, a clean natural film image"
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png",
+    "xuyan-angle-a-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xujia-yuan-ye-l2.png": "set-xujia-yuan-ye-dong2-l1.png"
+   }
+  },
+  "s10": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "Besides him, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "Only Xu Yan and the four men with the sacks the composition describes, each in a different colour, are in the frame; no second copy of anyone appears."
+    ],
+    [
+     "Every person in the frame wears dark cloth shoes on both feet.",
+     "Xu Yan wears dark cloth shoes and the four men with the sacks wear worn straw sandals on both feet."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cool night air, a clean natural film image"
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen left, his eyes down on the ridge before him"
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png",
+    "xuyan-angle-a-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-ye2-l1.png"
+   }
+  },
+  "s11": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cool night air, a clean natural film image"
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face lowered three-quarter to screen right, his eyes on the pit before him"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-ye2-zhuo-l1.png"
+   }
+  },
+  "s12": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cool night air, a clean natural film image"
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-ye2-geng-l1.png"
+   }
+  },
+  "s13": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "Besides her, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "Only Qin Shuang and the six men in three rows the composition describes, each in a different colour, are in the frame; no second copy of anyone appears."
+    ],
+    [
+     "Every person in the frame wears dark cloth shoes on both feet.",
+     "Qin Shuang wears her leather boots and every other person in the frame wears worn straw sandals on both feet."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cool night air, a clean natural film image"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-ye2-l1.png"
+   }
+  },
+  "s14": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "Besides her, only the shoulder of the man at the right edge of the frame the composition describes is in the frame; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cool night air, a clean natural film image"
+    ],
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her face three-quarter to screen left, her eyes on the dark field, never on the man at the edge"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-ye2-zhuo-l1.png"
+   }
+  },
+  "s15": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cool night air, a clean natural film image"
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen left, his eyes on the dark field beyond the left edge of the frame"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-ye2-tian-l1.png",
+    "xuyan-angle-a-l1.png": "xuyan-portrait-l1.png",
+    "xuyan-angle-b-l1.png": "angles/xuyan-angle-a-l1.png"
+   }
+  },
+  "s16": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cool night air, a clean natural film image"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-ye2-tian-l1.png",
+    "xuyan-angle-a-l1.png": "xuyan-portrait-l1.png",
+    "xuyan-angle-b-l1.png": "angles/xuyan-angle-a-l1.png"
+   }
+  },
+  "s16b": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cool night air, a clean natural film image"
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-ye2-tian-l1.png"
+   }
+  },
+  "s17": {
+   "replace": [
+    [
+     "the location shown in <Picture 1> is the set, keeping its layout and props.",
+     "The location shown in <Picture 1> is the set, keeping its layout and props."
+    ],
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "Besides them, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "Only the three heads and the six running shapes the composition describes are in the frame; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cold night air, the torch flames wavering, a clean natural film image"
+    ],
+    [
+     "never the mood. the long line of small f",
+     "never the mood. The long line of small f"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-ye2-zhuo-l1.png"
+   }
+  },
+  "s18": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "Besides him, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "Besides him, only the three running shapes with torches the composition describes are in the frame; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cold night air, the torch flames wavering, a clean natural film image"
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen right, his eyes on the ridge ahead of him"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-ye2-zhuo-l1.png"
+   }
+  },
+  "s19": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cool night air, a clean natural film image"
+    ],
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her face three-quarter to screen left, her eyes on the firelight beyond the left edge of the frame"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-ye2-tian-l1.png"
+   }
+  },
+  "s20": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "Besides her, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "Besides her, only the three men with sacks the composition describes are in the frame; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cool night air, a clean natural film image"
+    ],
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her face three-quarter to screen left, her eyes on the field ahead of her"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-ye2-kong-l1.png"
+   }
+  },
+  "s21": {
+   "replace": [
+    [
+     "the location shown in <Picture 1> is the set, keeping its layout and props.",
+     "The location shown in <Picture 1> is the set, keeping its layout and props."
+    ],
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "Besides them, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "Only the six dark shapes the composition describes are in the frame; no second copy of anyone appears."
+    ],
+    [
+     "Every person in the frame wears dark cloth shoes on both feet. ",
+     ""
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "fine white lime powder hanging in the cold night air, a clean natural film image"
+    ],
+    [
+     "never the mood. the thick white powdery ",
+     "never the mood. The thick white powdery "
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-ye2-zhuo-l1.png"
+   }
+  },
+  "s22": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "fine white lime powder hanging in the cold night air, a clean natural film image"
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face toward the right of the frame, his left hand over his eyes"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-ye2-zhuo-l1.png"
+   }
+  },
+  "s23": {
+   "replace": [
+    [
+     "the location shown in <Picture 1> is the set, keeping its layout and props.",
+     "The cracked dry earth shown in <Picture 1> gives only the ground and the light of the background."
+    ],
+    [
+     "Initial composition: At the new channel at the foot of the hills outside Liuxi below the deep pool in the last dark hour before dawn; cold pale moonlight, the deep blue night sky full of small stars: insert close-up",
+     "Initial composition: Insert close-up"
+    ],
+    [
+     "Throughout the shot the set layout stays as it is. The pictures fix the place and the objects only, never the mood. ",
+     "Throughout the shot the framing stays as it is. The picture gives the ground and the light of the background only, never the mood. "
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cold night air, the small flames in the straw flickering, a clean natural film image"
+    ],
+    [
+     "never the mood. the foot stamps down on ",
+     "never the mood. The foot stamps down on "
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-ye2-cao-l1.png"
+   }
+  },
+  "s24": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "fine white lime powder hanging in the cold night air, a clean natural film image"
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, his eyes on that spot"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-ye2-geng-l1.png"
+   }
+  },
+  "s25": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "Besides him, only the shoulder of the man at the right edge of the frame the composition describes is in the frame; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "fine white lime powder hanging in the cold night air, a clean natural film image"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-ye2-zhuo-l1.png"
+   }
+  },
+  "s26": {
+   "append_pictures": [
+    [
+     "prop-changqiang-l1.png",
+     "The long spear shown in <Picture N> is the one spear in this shot, keeping exactly its plain wooden shaft and its small plain iron spearhead; that picture fixes the spear only, never the place or the light."
+    ]
+   ],
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "Besides her, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "Besides her, only the one raider seen from behind the composition describes is in the frame; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "fine white lime powder hanging in the cold night air, a clean natural film image"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-ye2-geng-l1.png"
+   }
+  },
+  "s27": {
+   "append_pictures": [
+    [
+     "prop-changqiang-l1.png",
+     "The long spear shown in <Picture N> is the one spear in this shot, keeping exactly its plain wooden shaft and its small plain iron spearhead; that picture fixes the spear only, never the place or the light."
+    ]
+   ],
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "fine white lime powder hanging in the cold night air, a clean natural film image"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-ye2-geng-l1.png"
+   }
+  },
+  "s28": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "Only these 2 people are in the frame; no second copy of anyone appears.",
+     "Only these 2 people, Wang Erniu and the kneeling Diao Qi, are in the frame, with only the head of a spear at the left edge; no second copy of anyone appears."
+    ],
+    [
+     "Every person in the frame wears dark cloth shoes on both feet.",
+     "Wang Erniu wears dark cloth shoes and Diao Qi wears worn straw sandals over his black leg wraps."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "fine white lime powder hanging in the cold night air, a clean natural film image"
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face lifted three-quarter to screen left, shouting out beyond the left edge of the frame"
+    ]
+   ],
+   "drop_pictures": [
+    "erniu-angle-a-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-ye2-geng-l1.png"
+   }
+  },
+  "s29": {
+   "replace": [
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cool night air, a clean natural film image"
+    ],
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her face three-quarter to screen left, looking up toward the dark alley"
+    ]
+   ],
+   "drop_pictures": [
+    "aling-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xujia-yuan-ye-l2.png": "set-xujia-houmen-ye-men-l1.png"
+   }
+  },
+  "s30": {
+   "replace": [
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cool night air, a clean natural film image"
+    ],
+    [
+     "turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "her face in profile to screen left, her eyes on the dark alley beyond the left edge of the frame"
+    ]
+   ],
+   "drop_pictures": [
+    "aling-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xujia-yuan-ye-l2.png": "set-xujia-houmen-ye-men-l1.png"
+   }
+  },
+  "s31": {
+   "replace": [
+    [
+     "Besides her, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "Only A-ling and the eight raiders as dark shapes the composition describes are in the frame; no second copy of anyone appears."
+    ],
+    [
+     "Every person in the frame wears dark cloth shoes on both feet.",
+     "A-ling wears soft cloth shoes and the eight raiders wear worn straw sandals on both feet."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cold night air, the torch flames wavering, a clean natural film image"
+    ]
+   ],
+   "drop_pictures": [
+    "aling-angle-b-l1.png",
+    "aling-angle-a-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xujia-yuan-ye-l2.png": "set-xujia-houmen-ye-l1.png"
+   }
+  },
+  "s32": {
+   "replace": [
+    [
+     "Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen, dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a peach-pink silk brocade ruqun: a light cross-collared short jacket wrapped shut across the chest in a low closed V, its hem at the waist covering the top of a pleated skirt tied at the waist with a ribbon bow and a small gold ornament, thick opaque silk and flowing sleeves, a small gold abacus hanging at her waist; ",
+     ""
+    ],
+    [
+     "Besides her, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "Only the young woman with the buns seen only from behind and the one raider as a dark shape the composition describes are in the frame; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ],
+    [
+     "with the look of a feature film. the location shown in <Picture 4>",
+     "with the look of a feature film. The location shown in <Picture 4>"
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cold night air, the steam from the hot water curling, a clean natural film image"
+    ],
+    [
+     "never the mood. she swings the bucket fo",
+     "never the mood. She swings the bucket fo"
+    ]
+   ],
+   "drop_pictures": [
+    "tangxiaotang-portrait-l1.png",
+    "tangxiaotang-angle-a-l1.png",
+    "tangxiaotang-angle-b-l1.png"
+   ],
+   "append_pictures": [
+    [
+     "tangxiaotang-back-shuangji-e929-w3.png",
+     "The back of the young woman's head looks exactly like <Picture N>: the same smooth black hair parted down the middle and gathered into just two round buns, one on each side, each wrapped with one short pink silk ribbon; that picture fixes the hairstyle only, never the place or the light."
+    ]
+   ],
+   "swap_pictures": {
+    "set-xujia-yuan-ye-l2.png": "set-xujia-houmen-ye-xiang-l1.png"
+   }
+  },
+  "s33": {
+   "replace": [
+    [
+     "Besides her, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "Besides her, only the one raider seen from behind the composition describes is in the frame; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cool night air, a clean natural film image"
+    ]
+   ],
+   "drop_pictures": [
+    "aling-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-xujia-yuan-ye-l2.png": "set-xujia-houmen-ye-xiang-l1.png"
+   }
+  },
+  "s34": {
+   "replace": [
+    [
+     "Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen, dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a peach-pink silk brocade ruqun: a light cross-collared short jacket wrapped shut across the chest in a low closed V, its hem at the waist covering the top of a pleated skirt tied at the waist with a ribbon bow and a small gold ornament, thick opaque silk and flowing sleeves, a small gold abacus hanging at her waist; ",
+     ""
+    ],
+    [
+     "Besides her, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "Only the young woman with the buns seen only from behind and the six raiders as dark running shapes the composition describes are in the frame; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ],
+    [
+     "with the look of a feature film. the location shown in <Picture 4>",
+     "with the look of a feature film. The location shown in <Picture 4>"
+    ],
+    [
+     "Every person in the frame wears dark cloth shoes on both feet.",
+     "The young woman wears soft cloth shoes and the six raiders wear worn straw sandals on both feet."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cold night air, the torch flames wavering, a clean natural film image"
+    ],
+    [
+     "never the mood. her right hand grips the",
+     "never the mood. Her right hand grips the"
+    ]
+   ],
+   "drop_pictures": [
+    "tangxiaotang-portrait-l1.png",
+    "tangxiaotang-angle-a-l1.png",
+    "tangxiaotang-angle-b-l1.png"
+   ],
+   "append_pictures": [
+    [
+     "tangxiaotang-back-shuangji-e929-w3.png",
+     "The back of the young woman's head looks exactly like <Picture N>: the same smooth black hair parted down the middle and gathered into just two round buns, one on each side, each wrapped with one short pink silk ribbon; that picture fixes the hairstyle only, never the place or the light."
+    ]
+   ],
+   "swap_pictures": {
+    "set-xujia-yuan-ye-l2.png": "set-xujia-houmen-ye-xiang-l1.png"
+   }
+  },
+  "s35": {
+   "replace": [
+    [
+     "Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> (the same woman from several angles) keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen, dazzling glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a peach-pink silk brocade ruqun: a light cross-collared short jacket wrapped shut across the chest in a low closed V, its hem at the waist covering the top of a pleated skirt tied at the waist with a ribbon bow and a small gold ornament, thick opaque silk and flowing sleeves, a small gold abacus hanging at her waist; ",
+     ""
+    ],
+    [
+     "Besides them, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "Only Xu Yan, Qin Shuang, the young woman with the buns seen only from behind and the three men with hoes the composition describes are in the frame; the young woman with the two high round buns appears only once; no second copy of anyone appears."
+    ],
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "Every person in the frame wears dark cloth shoes on both feet.",
+     "Xu Yan and the young woman wear cloth shoes, Qin Shuang wears her leather boots and the three men wear worn straw sandals on both feet."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cold still air of dawn, a thin drift of pale powder low over the field, a clean natural film image"
+    ],
+    [
+     "never the mood. the three men lift their",
+     "never the mood. The three men lift their"
+    ]
+   ],
+   "drop_pictures": [
+    "tangxiaotang-portrait-l1.png",
+    "tangxiaotang-angle-a-l1.png",
+    "tangxiaotang-angle-b-l1.png",
+    "xuyan-angle-b-l1.png",
+    "xuyan-angle-a-l1.png"
+   ],
+   "append_pictures": [
+    [
+     "tangxiaotang-back-shuangji-e929-w3.png",
+     "The back of the young woman's head looks exactly like <Picture N>: the same smooth black hair parted down the middle and gathered into just two round buns, one on each side, each wrapped with one short pink silk ribbon; that picture fixes the hairstyle only, never the place or the light."
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-chen-l1.png"
+   }
+  },
+  "s36": {
+   "append_pictures": [
+    [
+     "prop-changqiang-l1.png",
+     "The long spear shown in <Picture N> is the one spear in this shot, keeping exactly its plain wooden shaft and its small plain iron spearhead; that picture fixes the spear only, never the place or the light."
+    ]
+   ],
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "She is the only person in the frame; no second copy of anyone appears.",
+     "Besides her, only the shoulder of the man at the left edge of the frame the composition describes is in the frame; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cold still air of dawn, a thin drift of pale powder low over the field, a clean natural film image"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-chen-tian-l1.png"
+   }
+  },
+  "s37": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cold still air of dawn, a thin drift of pale powder low over the field, a clean natural film image"
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen right toward someone out of sight beyond the right edge of the frame, his eyes on that spot"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-chen-zhuo-l1.png",
+    "xuyan-angle-a-l1.png": "xuyan-portrait-l1.png",
+    "xuyan-angle-b-l1.png": "angles/xuyan-angle-a-l1.png"
+   }
+  },
+  "s38": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "He is the only person in the frame; no second copy of anyone appears.",
+     "No second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cold still air of dawn, a clean natural film image"
+    ]
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-chen-tian-l1.png",
+    "xuyan-angle-a-l1.png": "xuyan-portrait-l1.png",
+    "xuyan-angle-b-l1.png": "angles/xuyan-angle-a-l1.png"
+   }
+  },
+  "s39": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "Besides them, only the other people the composition names are in the frame; no second copy of anyone appears.",
+     "Only Xu Yan, little Xiaohe and the two women on the bank the composition describes are in the frame; no second copy of anyone appears."
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cold still air of dawn, a clean natural film image"
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png",
+    "xuyan-angle-a-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-chen-geng-l1.png"
+   }
+  },
+  "s40": {
+   "replace": [
+    [
+     " below the deep pool",
+     ""
+    ],
+    [
+     "the air is clear and still, a clean natural film image",
+     "the cold still air of dawn, a clean natural film image"
+    ]
+   ],
+   "drop_pictures": [
+    "xuyan-angle-b-l1.png"
+   ],
+   "swap_pictures": {
+    "set-shentan-l5.png": "set-shanjiao-qu-chen-geng-l1.png"
+   }
+  }
+ }
+}
