@@ -1,0 +1,1388 @@
+{
+  "schema_version": 1,
+  "slug": "curio-w28-komeda-coffee",
+  "theme": "paper",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。絕不平、絕不像在念稿。",
+    "performance": "像跟朋友拆解顛覆咖啡常識的逆向帳本：開場免費厚片反差明快；東證批發業與定額權利金揭曉亮起；郊區熟客與疫情抗震沉穩有力；通膨調價與收尾溫暖清晰。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -18,
+    "duck_db": -8
+  },
+  "pauses": {
+    "line_ms": 0,
+    "scene_ms": 150
+  },
+  "still_motion": "beat",
+  "loops": [
+    {
+      "setup": "m004",
+      "payoff": "m018",
+      "what": "送免費早餐又不趕翻桌，為何沒被店租拖垮"
+    },
+    {
+      "setup": "m009",
+      "payoff": "m044",
+      "what": "客美多在東京證交所上市竟不屬餐飲業，究竟掛什麼業種"
+    },
+    {
+      "setup": "m012",
+      "payoff": "m013",
+      "what": "名古屋滿街送早餐，新店靠什麼殺出重圍"
+    },
+    {
+      "setup": "m016",
+      "payoff": "m018",
+      "what": "市區租金貴得嚇人，久坐不翻桌如何回本"
+    },
+    {
+      "setup": "m031",
+      "payoff": "m044",
+      "what": "門市穩賺了，為何上市竟然不算餐飲業"
+    },
+    {
+      "setup": "m036",
+      "payoff": "m038",
+      "what": "加盟主為何甘願自扛整間店成本還搶著開"
+    },
+    {
+      "setup": "m040",
+      "payoff": "m042",
+      "what": "權利金每座只收一千五百日圓，總部靠什麼賺大錢"
+    },
+    {
+      "setup": "m048",
+      "payoff": "m063",
+      "what": "客美多高獲利模式面對二零二零疫情能撐過危機嗎"
+    },
+    {
+      "setup": "m058",
+      "payoff": "m061",
+      "what": "商辦變空城卻利益率反達十八點五，憑什麼逆勢抗震"
+    },
+    {
+      "setup": "m068",
+      "payoff": "m073",
+      "what": "二零二五原物料電費齊漲，總部如何保住加盟主與獲利"
+    },
+    {
+      "setup": "m076",
+      "payoff": "m079",
+      "what": "九成八加盟下，全年五百七十二億營收怎麼來"
+    },
+    {
+      "setup": "m081",
+      "payoff": "m082",
+      "what": "日本破千家加盟店主真的穩賺嗎，最新關店率揭曉"
+    },
+    {
+      "setup": "m083",
+      "payoff": "m090",
+      "what": "走出海外能直接照抄日本的批發加盟模式嗎"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-morning-toast-hook",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a polished cedar café table as a thick buttered toasted bread slice, white porcelain mug with rising steam, boiled egg, and glossy red-bean paste arrive in morning sunlight",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m001",
+          "speaker": "narrator",
+          "text": "走進客美多咖啡，你也被免費烤厚片驚到吧？",
+          "emotion": "好奇拋問"
+        },
+        {
+          "id": "m002",
+          "speaker": "narrator",
+          "text": "十一點前點飲料，就送厚片配蛋或紅豆泥。"
+        }
+      ],
+      "chapter": "點飲料送厚片為何獲利率贏同業兩倍半？"
+    },
+    {
+      "id": "s02-velvet-sofa-stay",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a cozy Japanese retro coffeehouse filled with plush tufted crimson velvet booth sofas, warm red-brick dividers, timber arches, and unhurried morning guests reading calmly",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m003",
+          "speaker": "narrator",
+          "text": "店裡鋪滿紅絨寬沙發和隔間，坐整早不趕人。"
+        },
+        {
+          "id": "m004",
+          "speaker": "narrator",
+          "text": "送早餐又不拚翻桌，照常識早該被店租壓垮。",
+          "emotion": "拋出反差"
+        }
+      ]
+    },
+    {
+      "id": "s03-fy2026-margin-shock",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of a clean brass balance scale on a dark walnut ledger desk, with a steaming thick porcelain cup weighing down the left pan while neat wooden stacks rise high on the right",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m005",
+          "speaker": "narrator",
+          "text": "但客美多控股二零二六年度財報，數字徹底反常識。"
+        },
+        {
+          "id": "m006",
+          "speaker": "narrator",
+          "text": "全年本業淨賺九十四億日圓，遠超外界想像。",
+          "emotion": "反轉亮起"
+        }
+      ]
+    },
+    {
+      "id": "s04-doutor-contrast",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide tabletop shot contrasting two miniature wooden coffeehouse blocks on a walnut desk: a smaller brick cabin glowing brightly beside a towering tall glass café bar casting a long shadow",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m007",
+          "speaker": "narrator",
+          "text": "每做一百元生意實賺十六點五元，利益率驚人。"
+        },
+        {
+          "id": "m008",
+          "speaker": "narrator",
+          "text": "日本本土連鎖咖啡龍頭羅多倫，卻僅百分之六點四。",
+          "emotion": "對比基準"
+        }
+      ]
+    },
+    {
+      "id": "s05-ada-tse-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of Ada in her dusty green-blue trench coat standing in a dimly lit wooden archive room holding a blank leather dossier folder and a brass magnifying glass with an intrigued analytical gaze",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m009",
+          "speaker": "narrator",
+          "text": "更怪的是，它在東京證交所竟然不屬餐飲業。",
+          "emotion": "埋下伏筆"
+        },
+        {
+          "id": "m010",
+          "speaker": "narrator",
+          "text": "今天就看它怎麼把送早餐慢坐變成印鈔機。",
+          "emotion": "俐落承諾"
+        }
+      ]
+    },
+    {
+      "id": "s06-1968-nagoya-origin",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a nostalgic late-sixties Nagoya neighborhood street corner at dawn, blank woven rice sacks stacked neatly beside a humble timber coffeehouse glowing with warm indoor lamps",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m011",
+          "speaker": "narrator",
+          "text": "一九六八年客美多在名古屋創立，滿街都在送早餐。"
+        },
+        {
+          "id": "m012",
+          "speaker": "narrator",
+          "text": "同業拚翻桌比贈品，這間新店怎麼殺出重圍？",
+          "emotion": "埋下伏筆"
+        }
+      ],
+      "chapter": "一九六八名古屋起家：郊區停車場與逆寫真詐欺"
+    },
+    {
+      "id": "s07-living-room-ethos",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a warm sunlit interior corner of a wooden lodge café showing deep crimson upholstered booth seating, brass pendant lamps, and timber lattice screens framing a quiet retreat",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m013",
+          "speaker": "narrator",
+          "text": "它反其道主打無時間限制的「社區客廳」。",
+          "emotion": "回收伏筆"
+        },
+        {
+          "id": "m014",
+          "speaker": "narrator",
+          "text": "靠桌邊服務把附近鄰居養成天天報到的熟客。"
+        }
+      ]
+    },
+    {
+      "id": "s08-1970-partner-fc",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two traditional wooden shop keys and two thick porcelain mugs resting on a warm oak counter beside a blank architectural floor plan under a brass lamp",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m015",
+          "speaker": "narrator",
+          "text": "老店靠鄰居站穩了，但往外展店卻撞上致命難題："
+        },
+        {
+          "id": "m016",
+          "speaker": "narrator",
+          "text": "市區租金貴得嚇人，久坐不翻桌到底怎麼回本？"
+        }
+      ]
+    },
+    {
+      "id": "s09-1977-suburban-roadside",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide aerial shot of a quiet sunlit Japanese suburban residential boulevard showing a warm triangular-roofed brick lodge with a generous open parking lot nestled among family homes",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m017",
+          "speaker": "narrator",
+          "text": "一九七七年展店時，避開車站挑郊區配停車場。",
+          "emotion": "回收伏筆"
+        },
+        {
+          "id": "m018",
+          "speaker": "narrator",
+          "text": "郊區店租先砍掉大半，老闆就不必拿硬椅趕客人。"
+        }
+      ]
+    },
+    {
+      "id": "s10-ada-two-pillars",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of Ada in her dusty green-blue trench coat leaning thoughtfully over a warm dark oak archive desk with both hands resting calmly beside a wooden thick-bread model and miniature crimson chair",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m019",
+          "speaker": "narrator",
+          "text": "店租省下來，但免費厚片天天送不會被吃垮嗎？"
+        },
+        {
+          "id": "m020",
+          "speaker": "narrator",
+          "text": "其實這片烤厚片不是慈善，而是塞滿清晨的磁鐵。"
+        }
+      ]
+    },
+    {
+      "id": "s11-morning-cost-logic",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a crisp browned half-slice of thick toasted white bread glistening with melted butter next to a steaming dark porcelain mug and small white bowl of sweet red-bean paste on oak",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m021",
+          "speaker": "narrator",
+          "text": "單杯飲料定價不低，大量進貨讓吐司蛋成本極低。"
+        },
+        {
+          "id": "m022",
+          "speaker": "narrator",
+          "text": "清晨七點吸進長輩與家庭，冷門時段變黃金。"
+        }
+      ]
+    },
+    {
+      "id": "s12-1977-shironoir-upsell",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a freshly baked round flaky layered Danish pastry steaming gently beneath a tall glossy swirl of white soft-serve ice cream crowned with a bright red cherry on a porcelain plate",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m023",
+          "speaker": "narrator",
+          "text": "人一坐兩三小時，肚子餓了總會加點餐點吧？",
+          "emotion": "好奇拋問"
+        },
+        {
+          "id": "m024",
+          "speaker": "narrator",
+          "text": "招牌甜點「冰與火」熱丹麥配霜淇淋，份量超霸氣。",
+          "emotion": "回收伏筆"
+        }
+      ]
+    },
+    {
+      "id": "s13-reverse-photo-scam",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a delighted diner seated in a crimson velvet booth looking wide-eyed with a huge grin as a server places an astonishingly oversized crispy breaded cutlet sandwich on a wooden platter",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m025",
+          "speaker": "narrator",
+          "text": "這股霸氣紅到社群時代，被戲稱逆寫真詐欺。",
+          "emotion": "好奇拋問"
+        },
+        {
+          "id": "m026",
+          "speaker": "narrator",
+          "text": "別家縮水被罵，它卻端出比照片大一圈的巨無霸。"
+        }
+      ]
+    },
+    {
+      "id": "s14-viral-word-of-mouth",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sunlit booth where two laughing friends lean forward snapping photos with plain blank smartphones over a colossal flaky Danish pastry topped with tall white soft-serve",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m027",
+          "speaker": "narrator",
+          "text": "客人驚喜拍照免費宣傳，幫門市省下大筆廣告費。"
+        },
+        {
+          "id": "m028",
+          "speaker": "narrator",
+          "text": "高客單搭免費口碑，輕鬆補回低翻桌的營收缺口。",
+          "emotion": "回收伏筆"
+        }
+      ]
+    },
+    {
+      "id": "s15-coffee-ticket-lockin",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a neat bound booklet of warm blank vintage parchment punch coupons resting on a cedar table beside a steaming mug and a tiny porcelain dish of crunchy roasted peanuts",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m029",
+          "speaker": "narrator",
+          "text": "除了拉高單次消費，門市還賣限本店的整本咖啡券。"
+        },
+        {
+          "id": "m030",
+          "speaker": "narrator",
+          "text": "鄰居一次買整本週週報到，現金流像訂閱制。"
+        }
+      ]
+    },
+    {
+      "id": "s16-coffee-extract-1983",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a spotless Japanese coffee extraction plant showing gleaming stainless brewing vessels, glass sight tubes of rich dark liquid brew, and sealed steel supply barrels",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m031",
+          "speaker": "narrator",
+          "text": "門市穩賺了，但為何它上市竟然不算餐飲業？",
+          "emotion": "埋下伏筆"
+        },
+        {
+          "id": "m032",
+          "speaker": "narrator",
+          "text": "關鍵從一九八三年它蓋中央液態咖啡專廠說起。"
+        }
+      ],
+      "chapter": "一九八三自建工廠到二零一六東證揭開真實身分"
+    },
+    {
+      "id": "s17-simple-kitchen-ops",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a clean bright compact kitchen showing two tidy staff in dark aprons smoothly toasting freshly sliced thick loaves in a steel oven and pouring hot brew into porcelain mugs",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m033",
+          "speaker": "narrator",
+          "text": "總部統一萃取直送門市，店家免養高薪咖啡師。"
+        },
+        {
+          "id": "m034",
+          "speaker": "narrator",
+          "text": "現場加熱就一致美味，餐飲新手受訓也能上手。"
+        }
+      ]
+    },
+    {
+      "id": "s18-ada-royalty-puzzle",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of Ada in her dusty green-blue trench coat at an archive table comparing a small crimson wooden chair model in one hand with a blank rolled parchment scroll on the desk",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m035",
+          "speaker": "narrator",
+          "text": "有了中央專廠壓低門檻，它更放手大舉開放加盟。"
+        },
+        {
+          "id": "m036",
+          "speaker": "narrator",
+          "text": "等等，加盟主自扛整間店成本，為何還搶著開？",
+          "emotion": "埋下伏筆"
+        }
+      ]
+    },
+    {
+      "id": "s19-1500-yen-per-seat",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single plush tufted crimson velvet booth seat illuminated by a warm spotlight on a wooden floor, with one neat small stack of shiny brass tokens resting beside the armrest",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m037",
+          "speaker": "narrator",
+          "text": "權利金完全不抽營收，每座位月收一千五百日圓。",
+          "emotion": "反轉亮起"
+        },
+        {
+          "id": "m038",
+          "speaker": "narrator",
+          "text": "八十個座位無論多賺，每月定額只繳十二萬日圓。",
+          "emotion": "回收伏筆"
+        }
+      ]
+    },
+    {
+      "id": "s20-franchisee-upside",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cheerful shopkeeper in a crisp dark apron smiling warmly while welcoming neighborhood families into a sunlit timber-and-brick dining hall with brimming trays",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m039",
+          "speaker": "narrator",
+          "text": "多賣不用再被總部抽成，店主自然拚命養熟客。"
+        },
+        {
+          "id": "m040",
+          "speaker": "narrator",
+          "text": "問題來了：權利金這麼低，總部到底靠什麼賺？",
+          "emotion": "埋下伏筆"
+        }
+      ]
+    },
+    {
+      "id": "s21-bread-factory-2011",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a sunlit bakery workshop showing tall cooling racks stacked with pillowy thick-cut mountain loaves and flaky layered round Danish pastries lightly dusted with flour",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m041",
+          "speaker": "narrator",
+          "text": "除了液態咖啡，二零一一年它更買下麵包廠自烤。",
+          "emotion": "核心揭曉"
+        },
+        {
+          "id": "m042",
+          "speaker": "narrator",
+          "text": "把咖啡與麵包全抓在手裡，直接變身門市供應商！",
+          "emotion": "回收伏筆"
+        }
+      ]
+    },
+    {
+      "id": "s22-tse-wholesale-reveal",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle wide shot of a grand financial exchange stone hall glowing in crisp morning light, spotlighting a heavy wooden crate of roasted beans and blank flour sacks in the foreground",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m043",
+          "speaker": "narrator",
+          "text": "也因此二零一六年掛牌東證，它根本沒歸進餐飲業：",
+          "emotion": "反轉亮起"
+        },
+        {
+          "id": "m044",
+          "speaker": "narrator",
+          "text": "官方直接掛成「批發業」，靠賣食材撐起整家集團！",
+          "emotion": "回收伏筆"
+        }
+      ]
+    },
+    {
+      "id": "s23-risk-split-ledger",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium tabletop cutaway shot showing a glowing miniature brick lodge on the right carrying heavy iron blocks while a sleek polished brass gear mechanism turns effortlessly on the left",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m045",
+          "speaker": "narrator",
+          "text": "逾九成門市的店租外場全由加盟扛，總部握工廠。"
+        },
+        {
+          "id": "m046",
+          "speaker": "narrator",
+          "text": "相較大量自己開直營店的同業，差距瞬間拉開："
+        }
+      ]
+    },
+    {
+      "id": "s24-doutor-vs-komeda-cost",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a busy metropolitan train-station arcade beverage bar at rush hour with commuters lined tightly at a narrow counter beneath bright fluorescent lights and compact cramped stools",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m047",
+          "speaker": "narrator",
+          "text": "羅多倫雖然店數更多，卻擠在市區扛高租與人事。"
+        },
+        {
+          "id": "m048",
+          "speaker": "narrator",
+          "text": "利益率才差到兩倍半，但客美多能撐過危機嗎？"
+        }
+      ]
+    },
+    {
+      "id": "s25-regional-map-plants",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of a sculpted wooden relief terrain model of Japan on a walnut table, with clusters of warm glowing wooden cabin markers spreading steadily outward from Nagoya toward east and west",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m049",
+          "speaker": "narrator",
+          "text": "靠供貨循環跨區展店，它在千葉與沖繩蓋麵包廠。"
+        },
+        {
+          "id": "m050",
+          "speaker": "narrator",
+          "text": "鬆軟吐司就近鮮送省運費，一路往日本最北推進。"
+        }
+      ]
+    },
+    {
+      "id": "s26-2019-47-prefectures",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of a sunlit sculpted wooden archipelago relief map of Japan from northern snowy peaks to southern coral islets dotted evenly with tiny glowing warm lantern pins",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m051",
+          "speaker": "narrator",
+          "text": "二零一九年六月插旗青森，拼完日本四十七都道府縣。"
+        },
+        {
+          "id": "m052",
+          "speaker": "narrator",
+          "text": "沒想到才站上巔峰半年，二零二零疫情正面襲來！",
+          "emotion": "轉折預告"
+        }
+      ],
+      "chapter": "二零一九制霸全日本卻撞上疫情海嘯"
+    },
+    {
+      "id": "s27-2020-covid-storm",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty rain-slicked Tokyo financial boulevard at dusk with shuttered dark office towers and deserted glass commuter bars reflecting cold blue twilight puddles",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m053",
+          "speaker": "narrator",
+          "text": "緊急事態宣言引爆居家辦公，商辦區瞬間變空城。"
+        },
+        {
+          "id": "m054",
+          "speaker": "narrator",
+          "text": "二零二一財年疫情谷底，市區連鎖咖啡慘遭血洗！"
+        }
+      ]
+    },
+    {
+      "id": "s28-nihon-univ-study",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of an academic wooden bar-chart model on a walnut desk comparing five solid wooden columns, where one deep brick-red bar stays tall while four gray bars drop sharply",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m055",
+          "speaker": "narrator",
+          "text": "主打市區的羅多倫與聖摩珂咖啡，營收跌兩三成。"
+        },
+        {
+          "id": "m056",
+          "speaker": "narrator",
+          "text": "客美多全年營收卻只微跌百分之七點六，震撼業界！",
+          "emotion": "反轉亮起"
+        }
+      ]
+    },
+    {
+      "id": "s29-covid-18-5-margin",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a glowing brick-and-timber suburban coffeehouse standing warmly lit amid blue rainy twilight, with gentle steam curling from its chimney surrounded by calm homes",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m057",
+          "speaker": "narrator",
+          "text": "本業仍賺五十三億日圓，利益率站上百分之十八點五！"
+        },
+        {
+          "id": "m058",
+          "speaker": "narrator",
+          "text": "商辦變空城卻比疫後還高，它憑什麼逆勢抗震？",
+          "emotion": "反問驚奇"
+        }
+      ]
+    },
+    {
+      "id": "s30-suburban-wfh-windfall",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cozy partitioned crimson booth inside a timber lodge with high cedar privacy dividers where a remote worker calmly sips from a mug beside a sleek blank laptop",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m059",
+          "speaker": "narrator",
+          "text": "郊區住宅店接住居家上班族，高背沙發更天然隔開。"
+        },
+        {
+          "id": "m060",
+          "speaker": "narrator",
+          "text": "免改裝就安心久坐，門市人潮跌幅遠比市區小。"
+        }
+      ]
+    },
+    {
+      "id": "s31-low-fixed-cost-shield",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a sturdy stone lighthouse beam cutting cleanly across dark choppy twilight waves, shielding a warm miniature harbor village nestled safely in the calm cove below",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m061",
+          "speaker": "narrator",
+          "text": "加上總部直營少、固定薪資輕，利益率才不降反升！"
+        },
+        {
+          "id": "m062",
+          "speaker": "narrator",
+          "text": "加盟店業績一年就創新高，都會同業苦熬了三年。"
+        }
+      ]
+    },
+    {
+      "id": "s32-community-shield",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a warm afternoon community scene inside a neighborhood timber lodge where smiling staff hand a steaming porcelain mug and hot towel to an elderly couple in a corner booth",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m063",
+          "speaker": "narrator",
+          "text": "平常被嫌老派的紅沙發和郊區，危機全變護盾。"
+        },
+        {
+          "id": "m064",
+          "speaker": "narrator",
+          "text": "但熬過疫情衝破千店後，更硬的新考驗才剛開始。",
+          "emotion": "回收伏筆"
+        }
+      ]
+    },
+    {
+      "id": "s33-2023-thousand-stores",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide sunlit shot of an impressive bustling modern brick-and-cedar coffeehouse facade with festive blank pennant ribbons fluttering gently in a clear breeze above welcoming timber doors",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m065",
+          "speaker": "narrator",
+          "text": "憑疫情一戰成名，二零二三年七月正式突破千店。"
+        },
+        {
+          "id": "m066",
+          "speaker": "narrator",
+          "text": "但才過兩年，一場通膨風暴就來考驗這套供貨循環。",
+          "emotion": "埋下伏筆"
+        }
+      ]
+    },
+    {
+      "id": "s34-2025-inflation-storm",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a rainy evening outside a brightly lit roasting and extraction warehouse where plain burlap bean sacks stack beside glowing warm oven windows reflecting wet pavement",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m067",
+          "speaker": "narrator",
+          "text": "二零二五年日本原物料與電費齊漲，門市壓力爆表。"
+        },
+        {
+          "id": "m068",
+          "speaker": "narrator",
+          "text": "問題來了：急轉嫁成本會逼垮加盟，怎麼解套？",
+          "emotion": "埋下伏筆"
+        }
+      ],
+      "chapter": "二零二五年逆風調價守住雙贏結構"
+    },
+    {
+      "id": "s35-two-month-buffer-move",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a warm brass balance beam resting evenly on a mahogany table with a small wooden coffee sack on one side and a glowing miniature brick café on the other in balanced light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m069",
+          "speaker": "narrator",
+          "text": "六月它先調升門市價，卻刻意晚兩月才調批發。",
+          "emotion": "反轉亮起"
+        },
+        {
+          "id": "m070",
+          "speaker": "narrator",
+          "text": "先把兩個月毛利緩衝留給店主，穩住夥伴信心。"
+        }
+      ]
+    },
+    {
+      "id": "s36-collab-shironoir-boom",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a rich chocolate-drizzled round flaky Danish pastry crowned with dark cocoa soft-serve swirl and fresh strawberries gleaming under warm spotlights on a porcelain plate",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m071",
+          "speaker": "narrator",
+          "text": "調價難道不怕嚇跑老客，把門市業績拖垮嗎？",
+          "emotion": "好奇拋問"
+        },
+        {
+          "id": "m072",
+          "speaker": "narrator",
+          "text": "它同步猛推聯名冰與火，客人打卡反衝高客單。"
+        }
+      ]
+    },
+    {
+      "id": "s37-record-profit-payoff",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a warm sunlit open bakery oven glowing softly beside neatly stacked white porcelain mugs and fresh baked bread trays ready for morning service in a clean kitchen",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m073",
+          "speaker": "narrator",
+          "text": "結果既有門市批發額漲近一成，營收獲利雙創高。",
+          "emotion": "回收伏筆"
+        },
+        {
+          "id": "m074",
+          "speaker": "narrator",
+          "text": "但這套雙贏結構到底有多穩？最新年度成績見真章。",
+          "emotion": "埋下伏筆"
+        }
+      ]
+    },
+    {
+      "id": "s38-97-percent-franchise",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up of a cedar sorting tray holding hundreds of warm terracotta roof tiles on the left and only a tiny handful of dark slate roof tiles neatly separated on the right",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m075",
+          "speaker": "narrator",
+          "text": "二零二六財年日本破千店裡，總部直營僅二十二家。"
+        },
+        {
+          "id": "m076",
+          "speaker": "narrator",
+          "text": "九成八加盟下，全年五百七十二億營收怎麼來？",
+          "emotion": "驚奇強調"
+        }
+      ],
+      "chapter": "二零二六實戰檢驗：零點三關店率與海外直營紅燈"
+    },
+    {
+      "id": "s39-royalty-tiny-slice",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up of a carved wooden pie-chart model on a walnut desk: one massive warm roasted-brown wedge filling three quarters of the circle beside one slender shiny brass sliver",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m077",
+          "speaker": "narrator",
+          "text": "權利金這塊服務收入，只占總營收不到百分之七。"
+        },
+        {
+          "id": "m078",
+          "speaker": "narrator",
+          "text": "扣除直營店與加盟相關收入，最大金牛藏在批發裡！"
+        }
+      ]
+    },
+    {
+      "id": "s40-wholesale-393-billion",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a gleaming artisan bakery line where rows of freshly baked thick mountain-shaped white loaves glide smoothly out of warm brick-lined deck ovens in sunlit vapor",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m079",
+          "speaker": "narrator",
+          "text": "賣食材給門市進帳三百九十三億，占集團近七成！",
+          "emotion": "核心揭曉"
+        },
+        {
+          "id": "m080",
+          "speaker": "narrator",
+          "text": "單看日本批發本業，營業利益率竟破百分之二十二。",
+          "emotion": "驚奇強調"
+        }
+      ]
+    },
+    {
+      "id": "s41-zero-point-three-closure",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide sunset shot of a peaceful row of glowing brick-and-timber suburban neighborhood lodges standing solidly along quiet tree-lined streets with warm evening window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m081",
+          "speaker": "narrator",
+          "text": "總部賺飽了，那日本破千家加盟店主真的穩賺嗎？",
+          "emotion": "好奇拋問"
+        },
+        {
+          "id": "m082",
+          "speaker": "narrator",
+          "text": "最新年度全年只關三家，關店率僅百分之零點三！",
+          "emotion": "回收伏筆"
+        }
+      ]
+    },
+    {
+      "id": "s42-taiwan-2018-debut",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a sunlit Taipei urban street corner framed by banyan trees where a red-brick and cedar wood coffeehouse glows welcomingly as cheerful morning commuters stroll inside",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m083",
+          "speaker": "narrator",
+          "text": "日本本土穩如泰山，但走出海外能直接照抄嗎？"
+        },
+        {
+          "id": "m084",
+          "speaker": "narrator",
+          "text": "早在二零一八年二月，它就跨海開出台北首店。"
+        }
+      ]
+    },
+    {
+      "id": "s43-36-taiwan-stores",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a lively bright daytime dining room in Taipei filled with families and office workers sharing thick red-bean bread and soft-serve Danish pastries across warm cedar booths",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m085",
+          "speaker": "narrator",
+          "text": "如今台灣穩開三十六店、直營加盟剛好各半。"
+        },
+        {
+          "id": "m086",
+          "speaker": "narrator",
+          "text": "二五年更併購新加坡當地餐飲，新增三十家直營。"
+        }
+      ]
+    },
+    {
+      "id": "s44-ada-global-map",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of Ada in her dusty green-blue trench coat standing by a sunlit wooden archive globe gently placing a small crimson pin over East Asia with an attentive expression",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m087",
+          "speaker": "narrator",
+          "text": "雖衝上全球一千一百五十店、創五十八年新高，"
+        },
+        {
+          "id": "m088",
+          "speaker": "narrator",
+          "text": "整體利益率為何從上年度百分之十八點七下滑？",
+          "emotion": "埋下伏筆"
+        }
+      ]
+    },
+    {
+      "id": "s45-margin-dip-clue",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of raw green coffee beans, wheat grains, and a glowing brass pressure gauge with plain radial ticks only resting on a dark timber ledger bench under moody side lighting",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m089",
+          "speaker": "narrator",
+          "text": "除了咖啡豆大漲，剛併的新加坡直營拉低比率。"
+        },
+        {
+          "id": "m090",
+          "speaker": "narrator",
+          "text": "才讓整體利益率，降回開頭的百分之十六點五。"
+        }
+      ]
+    },
+    {
+      "id": "s46-overseas-factory-gap",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead wide shot of a sunlit miniature harbor-and-city diorama showing diverse timber lodges connected by gleaming brass sea routes across Japan, Taiwan, and Southeast Asia",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m091",
+          "speaker": "narrator",
+          "text": "海外少了密集自有工廠，直營比重高也更吃人工。"
+        },
+        {
+          "id": "m092",
+          "speaker": "narrator",
+          "text": "這反證明，日本那套批發配加盟多難直接複製。",
+          "emotion": "回收伏筆"
+        }
+      ]
+    },
+    {
+      "id": "s47-win-win-contract-lesson",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands—one wearing a dark apron cuff and one in a neat wool jacket—lightly clinking two thick steaming white porcelain mugs over a polished cedar table",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m093",
+          "speaker": "narrator",
+          "text": "正因這麼難抄，才看懂長壽連鎖帝國真正的底牌："
+        },
+        {
+          "id": "m094",
+          "speaker": "narrator",
+          "text": "從不是榨乾加盟主，而是你多賣、我多供貨的雙贏。",
+          "emotion": "俐落收拍"
+        }
+      ]
+    },
+    {
+      "id": "s48-suburban-dusk-glow",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide twilight shot of a warm red-brick triangular-roofed suburban coffeehouse glowing like a cozy lantern beside parked family cars under a soft indigo dusk sky",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m095",
+          "speaker": "narrator",
+          "text": "當快節奏城市讓人越坐越累，不趕人空間更稀缺。"
+        },
+        {
+          "id": "m096",
+          "speaker": "narrator",
+          "text": "願意為熟客慢下來，反成為它最強的商業護城河。"
+        }
+      ]
+    },
+    {
+      "id": "s49-next-morning-moment",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a browned buttered thick bread slice being gently torn open by clean fingers over a white porcelain plate, releasing warm vapor beside a dark mug in morning sunlight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m097",
+          "speaker": "narrator",
+          "text": "下次撕開熱騰騰的免費厚片，你會怎麼看這間店？",
+          "emotion": "好奇拋問"
+        },
+        {
+          "id": "m098",
+          "speaker": "narrator",
+          "text": "那不只是早餐，更是走進東證批發帝國的門票。"
+        }
+      ]
+    },
+    {
+      "id": "s50-morning-topping-poll",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up on a warm cedar tray showing three small white porcelain bowls side by side: a glossy peeled boiled egg, yellow handmade egg salad, and rich dark sweet red-bean paste",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m099",
+          "speaker": "narrator",
+          "text": "去客美多被大份量嚇過嗎？早餐你固定選哪配料？",
+          "emotion": "回到觀眾"
+        },
+        {
+          "id": "m100",
+          "speaker": "narrator",
+          "text": "經典水煮蛋、手作蛋沙拉，還是招牌小倉紅豆泥？"
+        }
+      ]
+    },
+    {
+      "id": "s51-shironoir-farewell",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cozy evening corner table inside a quiet brick-and-cedar lodge with a classic porcelain mug, warm stained-glass pendant lamp, and plush crimson booth in twilight",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m101",
+          "speaker": "narrator",
+          "text": "在留言區分享你的必點組合，聊聊最愛哪道餐點。"
+        },
+        {
+          "id": "m102",
+          "speaker": "narrator",
+          "text": "喜歡這集商業拆解，記得按讚訂閱打開小鈴鐺。"
+        }
+      ]
+    },
+    {
+      "id": "s52-ada-closing-curio",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of Ada in her dusty green-blue trench coat sitting comfortably at a sunlit wooden archive desk raising a steaming white porcelain mug with a cheerful knowing smile",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m103",
+          "speaker": "narrator",
+          "text": "每週為你翻開藏在日常裡最反常識的商業真相。"
+        },
+        {
+          "id": "m104",
+          "speaker": "narrator",
+          "text": "我是奇聞檔案局，我們下次見！",
+          "emotion": "親切道別"
+        }
+      ]
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "layout": "heimao-left",
+      "headline": "客美多送早餐賺爆？",
+      "sub": "不趕久坐反而高獲利的真相",
+      "asset": "stock/4bad8b56dbaf9d496281ca73145cde8562b8b647b43b73bd2a8655925de42dd1.jpg"
+    }
+  },
+  "assets": [
+    {
+      "path": "stock/4bad8b56dbaf9d496281ca73145cde8562b8b647b43b73bd2a8655925de42dd1.jpg",
+      "sha256": "4bad8b56dbaf9d496281ca73145cde8562b8b647b43b73bd2a8655925de42dd1",
+      "credit": "Mokaair 奇聞檔案局",
+      "license": "original",
+      "source": "built-in generate_image (w28_hero_thumb, $0)"
+    }
+  ],
+  "youtube": {
+    "title": "客美多送厚片不趕人卻超賺？上市竟不算餐飲業｜奇聞檔案局",
+    "description": "早上 11 點前點飲料就免費送烤厚片吐司配蛋或紅豆泥，還鋪滿紅絨寬沙發任你久坐不趕人，照餐飲常識早該被店租壓垮的客美多咖啡，為何母公司營業利益率卻高達 16.5% 至 18.7%，遠勝一般連鎖咖啡？\n給每次去客美多吃免費早餐或被「逆寫真詐欺」大份量嚇到，都好奇這家名古屋老店到底怎麼賺錢的人。\n\n本片依客美多控股（3543）2026 年 2 月期 IFRS 連結決算短信與有價證券報告書、東京證券交易所上市業種分類（卸売業）、羅多倫日レス控股（3087）2026 年 2 月期決算短信、客美多官方加盟募集資訊與日本加盟連鎖協會（JFA）揭露書，以及日本大學《食品經濟研究》第 53 號論文，完整拆解 1968 年名古屋米店出身創業、1977 年郊區路面旗艦店與冰與火誕生、日本國內 97.9% 加盟比率與每席月付 1,500 日圓定額權利金、自有麵包與咖啡萃取工廠占國內營收近七成五的批發引擎、年關店率僅 0.3% 的熟客生態、疫情期間 18.5% 營業利益率抗震實績，以及全球 1,150 店與台灣 36 店的跨海考驗。\n\n本頻道與片中提及品牌無合作關係。本集插圖由 AI 生成。\n資料截至 2026-11-22",
+    "tags": [
+      "奇聞檔案局",
+      "客美多咖啡",
+      "Komeda",
+      "日本商業",
+      "商業模式",
+      "加盟連鎖",
+      "批發業",
+      "商業奇聞"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "video_id": null
+  },
+  "sources": [
+    {
+      "title": "コメダホールディングス（3543）2026年2月期 決算短信〔IFRS〕（連結）",
+      "url": "https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20260408/20260408599823.pdf",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "東京證券交易所 上場会社情報サービス：コメダホールディングス（3543，卸売業）",
+      "url": "https://www2.jpx.co.jp/tseHpFront/StockSearch.do?method=&topSearchStr=3543",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "ドトール・日レスホールディングス（3087）2026年2月期 決算短信〔日本基準〕（連結）",
+      "url": "https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20260414/20260413502897.pdf",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "珈琲所コメダ珈琲店 官方フランチャイズ加盟募集（每席月額1,500日圓定額）",
+      "url": "https://fc.komeda.co.jp/",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "日本加盟連鎖協會（JFA）コメダ珈琲店 加盟契約要點與概說",
+      "url": "https://www.jfa-fc.or.jp/fc-g-misc/pdf/47-1.pdf",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "コメダ珈琲店 官方早餐服務（モーニングサービス）",
+      "url": "https://www.komeda.co.jp/menu/morning_komeda.html",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "コメダホールディングス 官方集團沿革（1968–2026）",
+      "url": "https://komeda-holdings.co.jp/history/",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "コメダホールディングス 2026年2月期 有價證券報告書（2026年5月27日提出）",
+      "url": "https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/securities-report/20260527/S100Y6O9.pdf",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "コメダホールディングス 統合報告書 2025（KOMEDA INTEGRATED REPORT 2025）",
+      "url": "https://www.komeda-holdings.co.jp/annual2025.pdf",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "コメダホールディングス 2025年2月期 決算短信〔IFRS〕（連結）",
+      "url": "https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20250409/20250408510776.pdf",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "日本大學《食品經濟研究》第53號（2025年3月）：疫情下黑字經營企業要因之解明——客美多咖啡事例",
+      "url": "https://hp.brs.nihon-u.ac.jp/~imozuru/img/file11075.pdf",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "コメダホールディングス 2021年2月期 有價證券報告書（EDINET S100LFEF）",
+      "url": "https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100LFEF.pdf",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "Foodrink News：客美多咖啡2019年6月進駐青森達成全47都道府縣制霸",
+      "url": "https://www.foodrink.co.jp/news/2019/05/29100042.html",
+      "checked_on": "2026-11-22"
+    },
+    {
+      "title": "台灣客美多咖啡官方常見問題（單店咖啡券與門市服務）",
+      "url": "https://komeda.com.tw/Qna",
+      "checked_on": "2026-11-22"
+    }
+  ]
+}
