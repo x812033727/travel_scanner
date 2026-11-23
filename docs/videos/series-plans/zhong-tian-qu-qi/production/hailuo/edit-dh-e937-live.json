@@ -7,8 +7,8 @@
  "punch": false,
  "slow_max": 1.1,
  "interpolate": false,
- "duck_ratio": 3.5,
- "duck_release_ms": 900,
+ "duck_ratio": 4,
+ "duck_release_ms": 700,
  "sfx_dirs": [
   "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx",
   "<VIDEO_WORKDIR>/_live-e937/zhong-tian-qu-qi-e937-dh/sfx-local",
@@ -21,7 +21,7 @@
    "from": "s01",
    "to": "s09b",
    "offset": 0.0,
-   "gain": -27,
+   "gain": -12,
    "fade_in": 0.3,
    "fade_out": 1.0,
    "tail": 0.0
@@ -31,7 +31,7 @@
    "from": "s10",
    "to": "s16b",
    "offset": 20.0,
-   "gain": -27,
+   "gain": -15,
    "fade_in": 1.0,
    "fade_out": 0.8,
    "tail": 0.0
@@ -41,7 +41,7 @@
    "from": "s17",
    "to": "s18",
    "offset": 0.0,
-   "gain": -24,
+   "gain": -9,
    "fade_in": 0.5,
    "fade_out": 0.4,
    "tail": 0.0
@@ -50,8 +50,8 @@
    "cue": "reveal-hit",
    "from": "s20",
    "to": "s20",
-   "offset": 1.95,
-   "gain": -17,
+   "offset": 0.55,
+   "gain": -2,
    "fade_in": 0.05,
    "fade_out": 1.2,
    "tail": 1.4
@@ -61,7 +61,7 @@
    "from": "s21",
    "to": "s26",
    "offset": 0.0,
-   "gain": -27,
+   "gain": -8,
    "fade_in": 0.8,
    "fade_out": 0.4,
    "tail": 0.0
@@ -71,7 +71,7 @@
    "from": "s27",
    "to": "s27",
    "offset": 5.85,
-   "gain": -19,
+   "gain": -4,
    "fade_in": 0.05,
    "fade_out": 0.8,
    "tail": 0.6
@@ -81,7 +81,7 @@
    "from": "s27b",
    "to": "s28",
    "offset": 20.0,
-   "gain": -26,
+   "gain": -12,
    "fade_in": 0.6,
    "fade_out": 1.0,
    "tail": 0.0
@@ -91,17 +91,18 @@
    "from": "s29",
    "to": "s34",
    "offset": 40.0,
-   "gain": -28,
+   "gain": -13,
    "fade_in": 0.6,
    "fade_out": 1.2,
-   "tail": 0.0
+   "tail": 0.6
   },
   {
    "cue": "warm",
    "from": "s35",
+   "from_off": -0.6,
    "to": "s39",
    "offset": 0.0,
-   "gain": -26,
+   "gain": -11,
    "fade_in": 0.8,
    "fade_out": 1.0,
    "tail": 0.0
@@ -112,331 +113,350 @@
    "file": "Wind",
    "at": "s01",
    "off": 0,
-   "gain": -22,
+   "gain": -8,
    "to": "s09b"
   },
   {
    "file": "drum-far",
    "at": "s01",
    "off": 0,
-   "gain": -24,
+   "gain": -18,
    "to": "s09b"
   },
   {
    "file": "Wind",
    "at": "s10",
    "off": -0.2,
-   "gain": -19,
+   "gain": -6,
    "to": "s28"
   },
   {
    "file": "murmur37",
    "at": "s17",
    "off": 0.3,
-   "gain": -17,
+   "gain": -8,
    "to": "s18"
+  },
+  {
+   "file": "fire-1",
+   "at": "s17",
+   "off": 0.0,
+   "gain": -18,
+   "to": "s18"
+  },
+  {
+   "file": "smoke-hiss",
+   "at": "s21",
+   "off": 0.0,
+   "gain": -14,
+   "to": "s21"
   },
   {
    "file": "murmur37",
    "at": "s21",
    "off": 0.0,
-   "gain": -21,
+   "gain": -10,
    "to": "s22"
   },
   {
    "file": "fire",
    "at": "s23",
    "off": 0.0,
-   "gain": -18,
+   "gain": -14,
    "to": "s23"
   },
   {
    "file": "wind1",
    "at": "s29",
    "off": -0.3,
-   "gain": -21,
-   "to": "s34"
+   "gain": -7,
+   "to": "s35"
   },
   {
    "file": "murmur37",
    "at": "s31",
    "off": 0.2,
-   "gain": -20,
+   "gain": -12,
    "to": "s31"
   },
   {
    "file": "fire-1",
    "at": "s31",
    "off": 0.0,
-   "gain": -26,
+   "gain": -18,
    "to": "s31"
   },
   {
    "file": "birds",
    "at": "s35",
-   "off": -0.3,
-   "gain": -27,
+   "off": -0.6,
+   "gain": -10,
    "to": "s40"
   },
   {
    "file": "murmur37",
    "at": "s35",
-   "off": 0.0,
-   "gain": -21,
+   "off": -0.3,
+   "gain": -4,
    "to": "s35"
-  },
-  {
-   "file": "fire-1",
-   "at": "s17",
-   "off": 0.0,
-   "gain": -28,
-   "to": "s18"
   },
   {
    "file": "impactPlank_medium_000",
    "at": "s01",
    "off": 0.05,
-   "gain": -14
+   "gain": -4
   },
   {
    "file": "footstep_grass_000",
    "at": "s01",
    "off": 0.25,
-   "gain": -18
+   "gain": 4
   },
   {
    "file": "footstep_grass_001",
    "at": "s01",
    "off": 0.6,
-   "gain": -18
+   "gain": 4
   },
   {
    "file": "cloth1",
    "at": "s09",
    "off": 0.6,
-   "gain": -22
+   "gain": 4
   },
   {
    "file": "impactSoft_heavy_000",
    "at": "s10",
    "off": 0.4,
-   "gain": -22
+   "gain": -13
   },
   {
    "file": "rustle03",
    "at": "s12",
    "off": 0.4,
-   "gain": -22
+   "gain": 5
   },
   {
    "file": "footstep_grass_000",
    "at": "s17",
    "off": 1.6,
-   "gain": -22
+   "gain": 2
   },
   {
    "file": "footstep_grass_001",
    "at": "s17",
    "off": 1.95,
-   "gain": -22
+   "gain": 2
   },
   {
    "file": "footstep_grass_000",
    "at": "s17",
    "off": 2.3,
-   "gain": -21
+   "gain": 3
   },
   {
    "file": "footstep_grass_001",
    "at": "s17",
    "off": 2.65,
-   "gain": -21
+   "gain": 3
   },
   {
    "file": "footstep_grass_000",
    "at": "s17",
    "off": 3.0,
-   "gain": -20
+   "gain": 4
   },
   {
    "file": "footstep_grass_001",
    "at": "s17",
    "off": 3.35,
-   "gain": -20
+   "gain": 4
   },
   {
-   "file": "impactSoft_heavy_000",
+   "file": "swish-11",
    "at": "s20",
-   "off": 1.3,
-   "gain": -10
+   "off": 1.45,
+   "gain": 0
   },
   {
-   "file": "impactPunch_heavy_000",
-   "at": "s20",
-   "off": 1.38,
-   "gain": -16
+   "file": "lime-puff",
+   "at": "s21",
+   "off": 0.0,
+   "gain": -2
   },
   {
    "file": "swish-11",
    "at": "s21",
    "off": 0.0,
-   "gain": -14
+   "gain": -2
   },
   {
    "file": "impactSoft_heavy_000",
    "at": "s21",
    "off": 0.05,
-   "gain": -18
+   "gain": -5
   },
   {
    "file": "impactSoft_heavy_000",
    "at": "s23",
    "off": 0.75,
-   "gain": -16
+   "gain": -9
   },
   {
    "file": "impactSoft_heavy_000",
    "at": "s23",
    "off": 1.85,
-   "gain": -16
+   "gain": -9
   },
   {
    "file": "impactSoft_heavy_000",
    "at": "s23",
    "off": 3.3,
-   "gain": -17
+   "gain": -10
   },
   {
    "file": "cloth2",
    "at": "s26",
-   "off": 0.3,
-   "gain": -18
+   "off": 0.1,
+   "gain": 7
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s26",
+   "off": 0.7,
+   "gain": -7
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s26",
+   "off": 0.9,
+   "gain": 4
   },
   {
    "file": "impactSoft_heavy_000",
    "at": "s26",
-   "off": 1.55,
-   "gain": -18
+   "off": 0.95,
+   "gain": -7
   },
   {
    "file": "impactMetal_heavy_000",
    "at": "s27",
    "off": 0.17,
-   "gain": -8
+   "gain": 4
   },
   {
    "file": "swish-9",
    "at": "s27",
    "off": 0.25,
-   "gain": -18
+   "gain": -2
   },
   {
    "file": "cloth1",
    "at": "s28",
    "off": 0.2,
-   "gain": -20
+   "gain": 6
   },
   {
    "file": "cloth2",
    "at": "s28",
    "off": 0.9,
-   "gain": -20
+   "gain": 7
   },
   {
    "file": "footstep_concrete_000",
    "at": "s31",
    "off": 0.2,
-   "gain": -22
+   "gain": -11
   },
   {
    "file": "footstep_concrete_001",
    "at": "s31",
    "off": 0.7,
-   "gain": -22
+   "gain": -11
   },
   {
    "file": "footstep_concrete_002",
    "at": "s31",
    "off": 1.2,
-   "gain": -22
+   "gain": -11
   },
   {
    "file": "splash_01",
    "at": "s32",
    "off": 2.75,
-   "gain": -10
+   "gain": 6
   },
   {
    "file": "impactWood_light_000",
    "at": "s32",
    "off": 3.6,
-   "gain": -18
+   "gain": -9
   },
   {
    "file": "impactWood_light_000",
    "at": "s33",
    "off": 1.25,
-   "gain": -12
+   "gain": -3
   },
   {
    "file": "impactWood_medium_001",
    "at": "s33",
    "off": 2.1,
-   "gain": -18
+   "gain": -9
   },
   {
    "file": "impactWood_light_001",
    "at": "s34",
    "off": 0.2,
-   "gain": -22
+   "gain": -11
   },
   {
    "file": "footstep_concrete_000",
    "at": "s34",
    "off": 0.4,
-   "gain": -24
+   "gain": -13
   },
   {
    "file": "footstep_concrete_001",
    "at": "s34",
    "off": 0.8,
-   "gain": -26
+   "gain": -15
   },
   {
    "file": "footstep_concrete_002",
    "at": "s34",
    "off": 1.2,
-   "gain": -28
+   "gain": -17
   },
   {
    "file": "footstep_grass_000",
    "at": "s39",
    "off": 0.3,
-   "gain": -22
+   "gain": 4
   },
   {
    "file": "footstep_grass_001",
    "at": "s39",
    "off": 0.7,
-   "gain": -22
+   "gain": 4
   },
   {
    "file": "footstep_grass_000",
    "at": "s39",
    "off": 1.1,
-   "gain": -22
+   "gain": 4
   },
   {
    "file": "cloth2",
    "at": "s39",
    "off": 1.6,
-   "gain": -18
+   "gain": 11
   },
   {
    "file": "drum-near",
    "at": "s40",
-   "off": 0.1,
-   "gain": -4
+   "off": 6.05,
+   "gain": 7
   }
  ],
  "frame_round": true,
@@ -447,17 +467,13 @@
  },
  "voice_until": {},
  "clip_af": {
-  "s01": {
-   "from": 0,
-   "af": "asetrate=30720,aresample=48000,atempo=1.562500,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
-  },
   "s02": {
    "from": 0,
    "af": "rubberband=pitch=1.45:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s05": {
    "from": 0,
-   "af": "rubberband=pitch=1.18:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=1.109:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s10": {
    "from": 0,
@@ -469,15 +485,15 @@
   },
   "s13": {
    "from": 0,
-   "af": "asetrate=41280,aresample=48000,atempo=1.162791,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "asetrate=41280,aresample=48000,atempo=1.162791,rubberband=pitch=0.97:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s14": {
    "from": 0,
-   "af": "rubberband=pitch=1.24:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=1.141:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s19": {
    "from": 0,
-   "af": "rubberband=pitch=1.17:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=1.147:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s24": {
    "from": 0,
@@ -489,7 +505,7 @@
   },
   "s27b": {
    "from": 0,
-   "af": "rubberband=pitch=1.21:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=1.137:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s30": {
    "from": 0,
@@ -502,24 +518,39 @@
   "s36": {
    "from": 0,
    "af": "rubberband=pitch=1.06:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s40": {
+   "from": 0,
+   "af": "volume=4.5dB,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   }
  },
  "voice_off": [
+  "s01",
   "s18",
   "s22",
   "s28"
  ],
  "move_lines": {},
- "min": {},
+ "min": {
+  "s40": 7.5
+ },
  "line_at": {
-  "zq937a26": 2.15
+  "zq937a26": 2.15,
+  "zq937a20": 0.4,
+  "zq937a01": 0.6
  },
  "line_lead": {},
  "panel_y": {},
- "panel_from": {},
+ "panel_from": {
+  "s37": 4.7
+ },
  "panel_color": {},
  "panel_until": {},
- "vf": {},
+ "vf": {
+  "s17": "eq=gamma=1.35:contrast=1.1:saturation=1.1",
+  "s21": "eq=gamma=1.35:contrast=1.1:saturation=1.1",
+  "s37": "eq=brightness=-0.06:gamma=0.85"
+ },
  "slow_shot": {},
  "subtitle_lines": [],
  "ding": {},
