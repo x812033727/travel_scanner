@@ -120,7 +120,7 @@ AIR = {
     "morn": "the cold still air of early morning, a clean natural film image",
     "noon": "the still air of midday, a clean natural film image",
     "eve": "the warm still air of late afternoon, a clean natural film image",
-    "lamp": "the still night air, the small flame on the table swaying, a clean natural film image",
+    "lamp": "the still night air, the small candle flame on the low stool swaying, a clean natural film image",
     "yard": "the cool night air, a clean natural film image",
     "road": "the cold night air, the dust of the road drifting behind the hooves, a clean natural film image",
     "torch": "the cold night air, the torch flames wavering, a clean natural film image",
@@ -293,16 +293,19 @@ for sid in AL_WIDE:
 
 SWAP = {sid: {} for sid in ids}
 PLACE = {
-    TF: {"set-xujia-tangfang-chen-chuang-l1.png": ["s01", "s02", "s04"],  # s02: review 必改 2 (-chen-men no longer sent)
-         "set-xujia-tangfang-chen-zhen-l1.png": ["s03"], "set-xujia-tangfang-xi-zhen-l1.png": ["s05", "s11"],
-         "set-xujia-tangfang-xi-chuang-l1.png": ["s06", "s07", "s08", "s10"], "set-xujia-tangfang-xi-men-l1.png": ["s09"],
-         "set-xujia-tangfang-men-l1.png": ["s12", "s13"], "set-xujia-tangfang-zhen-l1.png": ["s14"],
-         "set-xujia-tangfang-chuang-l1.png": ["s15", "s15b", "s19"]},
+    # review 必改 1: the coordinator's paid Qwen edits (no table before the bed; a stool with a candle at the bed's foot) and their
+    # free crops (kong_e938.sh); s02 review 必改 2 (-chen-men no longer sent)
+    TF: {"set-xujia-tangfang-kong-chen-chuang-l1.png": ["s01", "s02", "s04"],
+         "set-xujia-tangfang-kong-chen-zhen-l1.png": ["s03"], "set-xujia-tangfang-kong-xi-zhen-l1.png": ["s05", "s11"],
+         "set-xujia-tangfang-kong-xi-chuang-l1.png": ["s06", "s07", "s08", "s10"], "set-xujia-tangfang-kong-xi-men-l1.png": ["s09"],
+         "set-xujia-tangfang-kong-men-l1.png": ["s12", "s13"], "set-xujia-tangfang-kong-zhen-l1.png": ["s14"],
+         "set-xujia-tangfang-kong-chuang-l1.png": ["s15", "s15b", "s19"]},
     YY: {"set-xujia-yuan-ye-dong2-l1.png": ["s16"], "set-xujia-yuan-ye-dong2-wu-l1.png": ["s17"],
          "set-xujia-yuan-ye-dong2-zhong-l1.png": ["s18"]},
     ST: {"set-guandao-ye-ce2-l1.png": ["s20"], "set-guandao-ye-shu-l1.png": ["s21"],  # s20: review 必改 4
-         "set-chengmen-ye-zha-l1.png": ["s22", "s27"], "set-chengmen-ye-qiang-l1.png": ["s23", "s26"],
-         "set-chengmen-ye-men-l1.png": ["s24", "s28"], "set-chengmen-ye-lu-l1.png": ["s25"], "set-chengmen-ye-l1.png": ["s27b"],
+         # review 必改 6: the barrier across the road (the coordinator's paid Qwen edit set-chengmen-ye2-l1) and its free crops
+         "set-chengmen-ye2-zha-l1.png": ["s22", "s27"], "set-chengmen-ye2-qiang-l1.png": ["s23", "s26"],
+         "set-chengmen-ye2-men-l1.png": ["s24", "s28"], "set-chengmen-ye2-lu-l1.png": ["s25"], "set-chengmen-ye2-l1.png": ["s27b"],
          "set-yiguan-men-ye-l1.png": ["s29"], "set-yiguan-men-ye-men-l1.png": ["s30", "s33", "s36"],
          "set-yiguan-men-ye-feng-l1.png": ["s31"], "set-yiguan-men-ye-jie-l1.png": ["s32", "s35", "s37", "s38"],
          "set-yiguan-men-ye-di-l1.png": ["s34"]},
