@@ -1,0 +1,22 @@
+# curio-w28-komeda-coffee 製作筆記
+
+- **選題**：後台題目池（`/admin/videos?tab=pools` → 奇聞檔案局 → 單集題）第 7 高分 `N9076`（總分 9.47，W-商業與品牌奇聞）：客美多咖啡（Komeda Coffee）點飲料免費送厚片吐司＋紅絨沙發不趕久坐，母公司客美多控股（3543）營業利益率卻高達 16.5%–18.7%（同期日本本土連鎖咖啡龍頭羅多倫集團僅 6.4%），且在東京證交所掛牌業種竟為「批發業（卸売業）」。
+- **代號與備份目錄**：`curio-w28-komeda-coffee`。
+  - Google Drive：`AI/備份/AI劇/奇聞檔案局/W28/`（ID: `14L7D9Vop_AfYsxQyGbJ4aKD2upaBhKE6`）與 `W28/製作檔/`（ID: `1KnaVUsCuRa_n1VTXgj4K0vGAqqYQsLMS`）。
+  - GitHub 分支：`antigravity/curio-w28-komeda-coffee`。
+- **來源核實（14 筆一手／機構來源全數即時驗證 HTTP 200）**：
+  - 客美多控股（3543）2026 年 2 月期 IFRS 決算短信與有價證券報告書、2025 年 2 月期決算短信、統合報告書 2025、2021 年 2 月期有價證券報告書（EDINET S100LFEF）、集團沿革、官方早餐頁、官方加盟募集頁（每席月額 1,500 日圓定額）、台灣客美多官方 Q&A、東京證券交易所上市業種資訊（卸売業）、羅多倫日レス控股（3087）2026 年 2 月期決算短信、日本加盟連鎖協會（JFA）揭露書、日本大學《食品經濟研究》第 53 號論文（2025 年 3 月）、Foodrink News（2019-06 青森 47 都道府縣制霸）。
+  - 獨立事實查核（`verify-2.md`）：**`VERDICT: PASS`**（0 DISCREPANCY，0 NOT FOUND）。
+- **腳本與多輪獨立審查（v20 定稿）**：
+  - 52 鏡、104 句、2,005 口語字元（預估 `Sulafat` 正文 ~8.2 分鐘）、`65%` 以上無人純物件／場景鏡（`nobody: true`）、0 張字卡、`subtitles.burn_in: false`、`pauses: {line_ms: 0, scene_ms: 150}`、`still_motion: "beat"`、`music: {gain_db: -18, duck_db: -8}`、`13` 組顯式 `loops`。
+  - `node tools/video/cli.mjs lint --slug curio-w28-komeda-coffee`：**`0 errors, 0 warnings`**（全 9 語系通過）。
+  - `opening-review`：**`PASSED`**（`Newcomer 9.2 / Scroller 9.0 / Stickler 9.2`，全數 `would_stay_300: true`、`problems: []`，雜湊綁定 `review/opening-review.json`）。
+  - 官方 14 題敘事面板：`storytelling panel: passed`（雙盲讀審查員 1 與 2 雙雙 **14/14 PASS = 28/28 ALL YES**，`review/narrative.json`）。
+- **視覺合規與 2x 四象限獨立審圖（52/52 = 100% PASS）**：
+  - **1956 人物紅線**：全片 **0 名真人入鏡或點名**（創辦人加藤太郎 1929–2016 不點名不入畫），所有店長、員工與顧客皆為匿名原型角色。
+  - **畫風與角色鎖定**：2026-11-14 劇場級動畫光影 × 厚塗水粉質感；5 張 Ada 出場鏡（`s05`, `s10`, `s18`, `s44`, `s52`）與主縮圖（`w28_hero_thumb`）皆以內建 `generate_image`（`\$0`）鎖定 `ada-canon-v2.png` 生成，其餘關鍵影格採站主授權 Gemini 映像（零 MiniMax 生圖），經多輪 2x 四象限獨立審圖＋9 張 `\$0` 精修後達 **52/52 100% PASS（`Border flags: 0`、零假字／零商標／零多指）**，全數匯入（`--provider external --usd 0`）。
+- **9 語縮圖與 8 語譯文**：
+  - 8 語譯文（`en/ja/ko/es/pt/id/vi/th`）完成 `i18n-merge`、`lint` 全 9 語 `0 errors, 0 warnings`；全 9 語 `heimao-left` 縮圖第一行點名客美多／Komeda／コメダ／코메다（拉丁語系主標 <= 19 字元確保手機 `>= 24px`），9 張渲染完成並經獨立 8 語＋9 縮圖代理驗收。
+- **後台與待辦**：
+  - `/admin/videos` 已推送 `script` 與 `storyboard`（`pending`）。
+  - 待太平洋午夜（`00:00 PST`）Gemini Ultra 每日 TTS 配額重置後執行：`tts`（`zh-TW` `Sulafat`）→ `check-audio` → `music` → `clips` → `assemble --adopt-branding` → `captions` → 8 語 MiniMax `dub` → `qa` → 獨立成片觀眾評測 `review/audience-review.md` → `/admin/videos` `audio`/`final`/`dubs` 送審 → Google Drive 零差異備份。
