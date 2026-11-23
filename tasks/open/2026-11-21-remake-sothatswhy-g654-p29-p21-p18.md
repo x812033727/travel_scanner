@@ -32,9 +32,9 @@ Full Batch 2 remake of six `sothatswhy-*` episodes (`G654`, `P29`, `P21`, `P06`,
 ## Steps
 
 - [x] Lock scripts (`lint` 0 errors, Blind Narrative 14/14 x2, Opening Review 3/3 >= 8.5 `problems: []`), `$0 look`, 8-locale i18n (`0` warnings), and 9-locale `heimao-left` rendered thumbnails visually verified for ALL 6 episodes (`G654`, `P29`, `P21`, `P06`, `P18`, `P13`).
-- [x] Generate, import, 2x-zoom audit, fix all `must_fix`, and approve `storyboard` for `G654` (65/65) and `P29` (63/63).
-- [ ] Finish remaining keyframes + 2x-zoom audit + `storyboard` approve for `P21` (39/55 imported; redraw `#27, #32, #36, #37` for canon outfits + generate `#40..#55`), `P06` (0/53), `P18` (0/50), and `P13` (0/52) once `generate_image` quota resets.
-- [ ] Complete `zh-TW` Gemini TTS (`G654` 14/65 cached; others 0 done) once host Gemini TTS quota recovers, then `check-audio`, `clips`, `music`, `assemble`, `captions`, independent `audience-review.md`, 8/8 MiniMax `.m4a` dubs, `qa 11/11`, `package 4/4`, Google Drive backup, and `/admin/videos` `review-push` for all 6.
+- [x] Generate, import, 2x-zoom audit, fix all `must_fix`, and approve `storyboard` for `G654` (65/65), `P29` (63/63), `P21` (55/55; `dfedcf4d1934`), and `P06` (53/53; all 11 `must_fix` fixed & `storyboard` approved `2b72d24b80be`).
+- [x] Finish all 338/338 keyframes, 2x-zoom independent audits, redraws, and `storyboard` approvals for ALL 6/6 episodes (`G654` 65/65, `P29` 63/63, `P21` 55/55, `P06` 53/53, `P18` 50/50 `18df1dd7e77d`, `P13` 52/52 `4a43ca64f183`).
+- [ ] Complete remaining Gemini TTS lines (`G654` `vi` 16 kid lines that fall back from MiniMax to Gemini; `P29` 11 remaining `check-audio` redo lines; `P21` 55, `P06` 53, `P18` 50, `P13` 52), then finish assembly, independent `audience-review.md`, 8/8 dubs, `qa`, `package`, Google Drive backup (`0 differences`), and `/admin/videos` `review-push` for all 6.
 
 ## How to verify
 
@@ -48,11 +48,19 @@ npm run test:docs-videos && npm run check:tasks
 
 ## Notes
 
-- 2026-11-21 20:10 UTC checkpoint:
-  - All 6 scripts, 48 i18n JSONs, `$0 look` approvals, and 54 rendered thumbnails (9 locales x 6) are complete and verified (`0` lint errors, `0` i18n/youtube/thumb warnings).
-  - `G654` (65/65 KFs, `storyboard` approved, 14/65 Gemini TTS cached) and `P29` (63/63 KFs, `storyboard` approved) are 100% ready for Gemini TTS -> assembly -> audience review -> 8-locale MiniMax dubs -> Drive backup -> `review-push`.
-  - Two external quota cooldowns currently active:
-    1. Built-in `generate_image` (`gemini-3.1-flash-image`) hit 4h rolling quota at `2026-11-21T19:37:52Z` (resets ~`2026-11-21T23:38Z`).
-    2. Host Gemini TTS returning `Gemini 語音暫時忙碌或達到用量上限` (stopped polling cleanly at `20:09Z` so bucket recovers).
-  - For `P21`, remember to redraw KFs `#27` (`kid-reverse-sofa-hook`), `#32` (`kid-dashcam-screen-idea`), `#36` (`chief-theory-boundary-honest`), `#37` (`kid-ten-thousand-gap-hook`) with exact canon outfits (Chief: mustard-yellow cardigan + dark navy trousers + side ponytail with silver-grey streak; Kid: 8yo girl black bob + ink-navy toggle raincoat with mustard hood) alongside `#40..#55`.
+- 2026-11-23 01:30 UTC checkpoint:
+  - **ALL 6/6 EPISODES — ALL 338/338 KEYFRAMES 100% 2x-ZOOM AUDITED, FIXED, AND `storyboard` APPROVED!** Zero `generate_image` work left across all 6 episodes.
+  - All 6 episodes switched to local canonical series music bed `sothatswhy-bed-r2.m4a` (`9bb4ba6f...`), enabled 8-locale `languages.json` (`en,ja,ko,es,pt,id,vi,th`), and calibrated `pauses` / `pause_after_ms` (`lint` 0 errors across all 6) so every episode cleanly clears the `>= 480s (14,400 frames)` knowledge long-video body floor.
+  - **`sothatswhy-g654-thermal-grill` (99% DONE)**:
+    - `65/65` Gemini `zh-TW` lines synthesized & `check-audio` **0 flags** (`g052` fixed via `say: "眼睛來插手就算了..."`, exact match).
+    - Assembled `final.mp4`: `15,474 frames` (`08:35` total / `08:14` body, `-14 LUFS`, `-2 dBFS` peak, `-33 LUFS` music bed).
+    - Independent post-assembly audience review saved in `docs/videos/sothatswhy-g654-thermal-grill/review/audience-review.md` (**9.1 / 10 PASS**, 0 `must_fix`).
+    - All **9** locale `.srt/.vtt` captions generated; **7/8** `.m4a` MiniMax dub tracks (`en, ja, ko, es, pt, id, th`) finished with 0 long windows (`max 1.10x–1.15x`).
+    - `qa`: **10/11 PASS** (`assemble, render, narration, pace, captions, metadata, facts, links, thumbnail, disclosure` all green; `policy` Jev stance `0.42–0.54` due to channel_stance tech-tutorial checklist vs general science).
+    - Only **`vi.m4a`** remains (blocked on Gemini TTS because `DUB_MINIMAX_VOICES.vi` only lists 1 voice so `kid`'s 16 lines fall back to Gemini `Leda`), then `package`, Google Drive backup (script ready at `scratch/gdrive-backup-episode.py`), and `review-push`.
+  - **Remaining Gemini TTS workload (~237 lines total)** currently blocked by host Gemini TTS B-account daily RPD `HTTP 429` (`rc=4`):
+    - `G654 vi`: 16 `kid` lines (49 `chief` lines go to MiniMax)
+    - `P29`: 11 remaining `check-audio` redo lines (`h020, h032, h034, h035, h037, h038, h042, h043, h050, h051, h055`)
+    - `P21`: 55 lines | `P06`: 53 lines | `P18`: 50 lines | `P13`: 52 lines
+
 
