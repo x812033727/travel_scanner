@@ -24,5 +24,5 @@
   - 成片組裝：`final.mp4`（`16,667` 格，`-14 LUFS`，真峰值 `-1.9 dBFS`，配樂底噪 `-30.8 LUFS`，sha256 `db8d326bd19c`）；`captions` 零警告；印尼語縮圖改為 `3 Warna MONO Sah?` 重渲後 9 語縮圖零警告；`qa` 9/11 通過（僅待站主核准 `narration` 關卡與站台旅遊立場分數 `0.22`，`建議 0.02`、`業配 0.21`）。
   - 獨立成片一般觀眾審片（`review/audience-review.md`）：**`8.9 / 10`**（`Would watch to end: Yes`，**無阻斷瑕疵，可進入打包、備份與 `final` 送審**）。
   - 8 語 MiniMax 配音全數混音完成（均含配樂底軌）：`en.m4a`（21 MB）、`ja.m4a`（18 MB）、`ko.m4a`（19 MB）、`es.m4a`（20 MB）、`pt.m4a`（20 MB，收緊 `m062`–`m063`）、`id.m4a`（21 MB）、`vi.m4a`（21 MB）、`th.m4a`（20 MB，收緊 `m012`–`m013`、`m088`–`m089`）。
-  - `/admin/videos` 關卡：`script`（approved）、`storyboard`（approved）、`audio`（pending）、`final`（pending）、`dubs`（pending）。
-  - Google Drive 零差異備份：`W23/`（`1ZUj9glbnDjMQBenEQOuKnVsfWdNkH076`）與 `W23/製作檔/`（`1VkVuWl-_u0KIOzMi_z9mg6ZNyZfScrBu`）完整同步並經 `verify_drive_zero_diff.mjs` 驗證 `differences: 0`。
+  - `/admin/videos` 關卡：`script`、`storyboard`、`audio`、`final`（`db8d326bd19c`）、`dubs`（`99a9c9f8ea55`）皆已核准；已完成全 9 語字幕、`package`（`4/4`，`metadata.json` `88f3638e83d7`），並推送完整備份層級 `publish`（`87788407`，`97` 檔，`pending`）與 8 語 `languages`（`76fc37f8`，`3969c2925c67`，`34` 檔，`pending`）待站主於後台核准後即可上架。
+  - Google Drive 零差異備份：已移至正確分類資料夾 `AI/備份/AI劇/奇聞檔案局/W-商業與品牌奇聞/W23/`（`1ZUj9glbnDjMQBenEQOuKnVsfWdNkH076`，`40/40` `0 differences`）與 `W23/製作檔/`（`1VkVuWl-_u0KIOzMi_z9mg6ZNyZfScrBu`，`upload/`＋`captions/`＋`review/`＋`approvals.json`＋`languages.json` 皆 `0 differences`）。

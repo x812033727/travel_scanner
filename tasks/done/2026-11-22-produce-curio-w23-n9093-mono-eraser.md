@@ -1,13 +1,13 @@
 ---
 id: 2026-11-22-produce-curio-w23-n9093-mono-eraser
 title: Produce Curio W23 (N9093 MONO eraser) full episode
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: antigravity-gemini-curio
 claimed_at: 2026-11-22T05:01:53Z
 created_at: 2026-11-22T05:00:38Z
-completed_at:
+completed_at: 2026-11-23T15:31:03Z
 branch: antigravity/curio-w23-mono-eraser
 depends_on: []
 scope:
@@ -53,4 +53,5 @@ npm run check:tasks && npm run test:docs-videos
 
 - Zero real individuals named or depicted (100% compliant with 1956 redline).
 - Strict visual avoidance of Japan Trademark No. 5930334 (equal-proportion blue-white-black striped eraser sleeve) enforced and verified across thumbnail and all 63 keyframes.
-- Drive folders: `W23` (`1ZUj9glbnDjMQBenEQOuKnVsfWdNkH076`), `W23/製作檔` (`1VkVuWl-_u0KIOzMi_z9mg6ZNyZfScrBu`).
+- Drive folders: `AI/備份/AI劇/奇聞檔案局/W-商業與品牌奇聞/W23/` (`1ZUj9glbnDjMQBenEQOuKnVsfWdNkH076`, `40/40` `0 differences`), `W23/製作檔` (`1VkVuWl-_u0KIOzMi_z9mg6ZNyZfScrBu`, `upload/` + `captions/` + `review/` + `approvals.json` + `languages.json` `0 differences`).
+- 2026-11-23 final packaging & `/admin/videos` update: pulled owner approvals (`audio`, `final`, `dubs`) + 8-locale choice (`en,ja,ko,es,pt,id,vi,th`), regenerated 9-locale captions & `package` (`4/4`, `metadata.json` `88f3638e83d7`), pushed full-tier `publish` (`87788407`, 97 files, `pending`) and 8-locale `languages` (`76fc37f8`, `3969c2925c67`, 34 files, `pending`).
