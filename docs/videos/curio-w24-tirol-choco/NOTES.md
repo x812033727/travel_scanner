@@ -24,6 +24,7 @@
 4. **8 語系翻譯、獨立稽核與 9 語縮圖**：
    - `en, ja, ko, es, pt, id, vi, th` 全數完成翻譯並通過獨立 8 語系稽核（修正 `id` `Diperbesar`、`pt` `couberam`、`es/pt/vi` `23` 日圓調價一致、2018 秋葉原專賣店過去式、`ja` 四位數年份與位元組上限、`en` 語法與精準詞彙、`th` `2,003 bytes <= 2,150` 等所有項目），重併 `lint` **`0 errors, 0 warnings`**。
    - 9 張 `heimao-left` 縮圖（`thumbnail.jpg` + `thumbnails/{en,ja,ko,es,pt,id,vi,th}.jpg`）全部渲染並逐張目視驗收通過。
-5. **後台送審與配音進度**：
-   - `/admin/videos` 已推送 `script` 與 `storyboard` 關卡（`pending`）。
-   - 中文 Gemini `Sulafat` TTS 已完成並快取 **79/123 句**（剩餘 44 句待站台 API 單日配額重置後續跑；接著執行 `check-audio` → `music` → 8 語系 MiniMax `dub` → `clips` → `assemble --adopt-branding` → `captions` → `qa` 11/11 → 獨立觀眾盲評 `review/audience-review.md` → 零差異備份 → `review-push --gate final`）。
+5. **後台送審與完片上架包（2026-11-23 全數完成）**：
+   - `zh-TW` `Sulafat` TTS（123/123 句）、Lyria 配樂、組裝 `final.mp4`（`12f4d106a3c4`）、8 語 MiniMax 配音（`en,ja,ko,es,pt,id,vi,th`）與獨立觀眾審片（`review/audience-review.md`）全數完成；`/admin/videos` `script`、`storyboard`、`audio`、`final`（`12f4d106a3c4`）、`dubs`（`2a6549220155`）皆已核准並決定全 8 語系。
+   - 2026-11-23 完成全 9 語字幕、`package`（`4/4`，`metadata.json` `61b49ade530d`），推送完整備份層級 `publish`（`07669faf`，`96` 檔，`pending`）與 8 語 `languages`（`19c22563`，`417132107852`，`34` 檔，`pending`）至 `/admin/videos`。
+   - Google Drive 已移至正確分類資料夾 `AI/備份/AI劇/奇聞檔案局/W-商業與品牌奇聞/W24/`（`1TnmyGA4a1vVFSwvHGgO3teidg43yUISt`，`40/40` `0 differences`）與 `W24/製作檔/`（`10PHqGhgejPzZIxitTJncfEhc135uIbh5`，`upload/`＋`captions/`＋`review/`＋`approvals.json`＋`languages.json` 皆 `0 differences`）。
