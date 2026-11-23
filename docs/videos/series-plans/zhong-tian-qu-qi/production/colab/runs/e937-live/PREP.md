@@ -2,7 +2,7 @@
 
 - 2026-11-23，第 37 集前置代理。**沒送任何生成**（Colab、RunPod 都沒開，`zt-live2`、`zt-live3` 都沒碰）、**沒有付費圖**、沒 commit、沒改第 33–36 集的檔
   （唯一碰到的共用檔：`writer-tools/e001-r2/build-r2.py` 的 `EN` 加一個鍵 `diaoqi`，舊集逐位元重建不變；refs-live README 加一段）。
-  **獨立審稿還沒做**（提示在 scratchpad `e937prep/review-prompt.md`，由協調者派）。**站台 TTS 錄音在背景跑**（協調者准，§4）。
+  **獨立審稿還沒做**（提示在 scratchpad `e937prep/review-prompt.md`，由協調者派）。**站台 TTS 錄音 39／39 錄齊、核對完**（協調者准，§4）。
 - 依據：第 36 集前置全套（`writer-tools/e036-r2/{r2.py,review.md,review-independent.md}`、`colab/runs/e936-live/{mkspec.py,spec.json,PREP.md}`（§7 獨立審稿怎麼套、§8 開門圖）、
   `colab/runs/e936/extras.json`、scratchpad `tools/{build936.sh,prep936.sh,rec936-slow.sh,rec936-check.sh,mkhints936.py,fw936.py,f0y936.py,span936.sh,heads936.py}`、`e936d1.sh`）、
   `colab/runs/e935-live/PREP.md` §8（cinema camera）、`r2-bible-e031-e040.md`（拍法 1–43、〈接點〉36→37、〈道具〉〈人物〉〈小角色〉〈場景〉〈原版必修〉第 37 集）、
@@ -88,7 +88,17 @@ Colab 餘額以跑之前的數字為準（第 36 集收尾記約 220 CU）；**�
 - 協調者准用站台 TTS。`rec937-slow.sh` 照 `rec936-slow.sh`：一句一呼叫、**間隔 ≥ 12 秒**、失敗（429 `video_speech_upstream_busy`）等 90 秒重試、每句最多 20 次；已錄的檔跳過，重跑就續錄。
   提示 `tools/e937-tts-hints.json`（`mkhints937.py`，9 句多音字：數 shǔ a01 a33、得 děi a04 a05 a09 a15、著 zhe a15 a35、著 zháo a22、倒 dǎo a29）；聲調聽寫看不出，要人耳聽過。
 - 錄音後跑 `tools/rec937-check.sh`（聽寫 `fw937all.sh` 兩種、YIN 音高 `f0y937.py`、人聲長度 `span937.sh` 對 BUY → `tools/{fw937.txt,f0y937.txt,span937.txt,span937-buy.txt}`）。
-- 結果見下（錄音代理填）。
+- **結果（2026-11-23 01:18–01:48 UTC）**：**39／39 錄齊**（a02 遇到站台 429 `video_speech_upstream_busy` 五次、約 11 分鐘後恢復，其他一次過）；`rec937-check.sh` 跑完、**重錄 4 句**（`tools/rec937-retake.sh`，第一次的檔在 `audio/take1/`），變調 7 句。
+  全文 `~/mokaair-work/videos/zhong-tian-qu-qi-e937-dh/audio/README-retakes.txt`；聽寫 `tools/fw937.txt`（重錄 `fw937-retake.txt`、變調 `fw937-shifted.txt`）、音高 `f0y937.txt`（`-retake`、`-shifted`）、人聲長度 `span937.txt`／`span937-buy.txt`（`span937-retake.txt`）。
+  - **人聲長度對 BUY：39 句都放得下，BUY 不改**。最緊：s01 a01 5.08／6、s02 a02 4.68／6、s37 a35＋a36 5.20／8、s05 a05 重錄約 5.2／8、s24 a23 重錄約 4.6／8、s14 a14 4.06／6、s36 a34 4.13／6。
+  - **聽寫**：帶上下文 38 句 r1.00（a04 0.97、a21 0.95、a32 0.95 只差標點或漏一字）；不帶上下文聽錯的都是同音或專名（渠→曲、刁七→貂妻／標旗、陣→鎮／正、小禾→小河、閂→關），照前幾集接受。
+    **a20 秦霜「扔！」兩次都聽不出**（第一次「哼，真」、重錄「就」；一個字的短喊 whisper 解不出）：**要人耳聽**；s20 她在畫面上張嘴喊（`nospeak`），片中原聲也可以用。
+  - **重錄**：a05 秦霜 329→248 Hz（用重錄）、a18 刁七 286→211 Hz 再降 `a18-p80` 170（用）、a23 二牛 317→247 Hz（用重錄）、a20（見上）。
+  - **音高**（拍法 43，≥ 3 半音）：變調 `a19-p130`（秦霜耳語 158→210，接 s18 刁七 170：3.7）、`a25-p125`（秦霜 177→228，接 s28 二牛 180：4.1）、`a12-p80`（許硯 182→147）、`a08-p88`（唐小棠 306→272）、
+    後門 `a28-p88`（阿令 211→185）與 `a30-p115`（唐小棠 204→238）：同場阿令 185／166 對唐小棠 238／234 ≥ 4 半音。不變調：a31 二牛遠處喊 289（< 290，對 a32 唐小棠 234 有 3.7）、a39 許硯 202（慌，喊聲範圍）、a34 秦霜 166（放輕，前後 258／114）。
+    相鄰說話者全部 ≥ 3 半音（最小 a18-p80 170→a19-p130 210 3.7、a33 唐小棠 258→a34 秦霜 166 7.6）。
+  - **刁七（Fenrir）第一次量**：a21 149、a24 177、a18-p80 170 Hz，已補進聖經〈人物〉。
+  - **剪接用哪個檔**：a05、a23 用重錄；a18、a19、a25、a12、a08、a28、a30 用 `-pNN`；其他用原檔。人群聲（s35 歡呼、流寇喊殺）照站主規則用 `crowd-murmur.py 37`（39 句已齊，可以做）。
 
 39 句、7 個聲音加系統：
 
@@ -147,7 +157,7 @@ Colab 餘額以跑之前的數字為準（第 36 集收尾記約 220 CU）；**�
 ## 6. 還擋著開拍的事（要協調者／站主決定）
 
 1. **獨立分鏡審查**：派審稿代理（`e937prep/review-prompt.md`）；套用後重跑 `build937.sh`、`prep937.sh`、`DRY=1 e937d1.sh`，改前的檔留在 scratchpad `e937prep/*-before-review.*`（照第 36 集 §7）。
-2. **錄音**：見 §4 的結果；錄齊後 `rec937-check.sh`、重錄不合的、重核 BUY。
+2. ~~錄音~~：39 句錄齊、核對、重錄 4 句、變調 7 句、BUY 不改（§4）。**a20「扔！」要人耳聽**。
 3. **花錢**：`e937d1.sh` 約 23–27 CU，等協調者；先確認 `zt-live3` 上沒有別的集在跑。
 
 **fix／retake 的提醒（照第 36 集 §6）**：渠的潭字是 `mkspec.py` 拿掉的；**s10–s28、s35–s40 的每個 fix／retake spec 都要帶 `[R2.POOLMARK, ""]`**（插鏡 s23 另外要帶拿掉整句地點句的替換）；
