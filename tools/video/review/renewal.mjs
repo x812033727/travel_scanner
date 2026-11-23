@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 
 import { sha256File } from "../core/approvals.mjs";
-import { appliedBranding, brandingCurrent, presentationTimeline, readBranding, validateBranding } from "../core/branding.mjs";
+import { appliedBranding, brandingCurrent, introFrames, presentationTimeline, readBranding, validateBranding } from "../core/branding.mjs";
 import { toSrt } from "../core/captions.mjs";
 import { isCompilation } from "../core/compilation.mjs";
 import { atomicWrite, isInside, readJson, UsageError } from "../core/paths.mjs";
@@ -132,14 +132,14 @@ export async function stageRenewal({ from, out, original, body, branding, checks
   // A renewal joins the retained body after the intro; a pin placed after the first chapter needs a
   // rebuild instead, and assemble's checks.json is what shows the candidate is that rebuild.
   const assembled = checks ? appliedBranding(readJson(checks, null)) : null;
-  requireThat(!pin.intro_at || (assembled?.hash === pin.hash && assembled.body_sha256 === bodySha), "a renewal keeps the intro at the start; a branding pin with intro_at after_first_chapter needs assemble, and --checks naming that build");
+  requireThat(!pin.intro_at || (assembled?.hash === pin.hash && assembled.body_sha256 === bodySha), "a renewal keeps the intro at the start; a branding pin with intro_at after_first_chapter or none needs assemble, and --checks naming that build");
   for (const role of ["intro", "outro"]) requireThat(await sha256File(pin[role].file) === pin[role].sha256, `${role} bytes do not match the branding pin`);
   const final = path.join(sourceDir, "final.mp4");
   const finalSha = await sha256File(final);
   requireThat(finalSha !== oldSha, "candidate must contain a new cut");
   const bodyMeasurement = measureProblems(...await inspectArgs(inspect, body, env));
   const candidateMeasurement = measureProblems(...await inspectArgs(inspect, final, env));
-  const expectedSeconds = bodyMeasurement.seconds + (pin.intro.frames + pin.outro.frames) / FPS;
+  const expectedSeconds = bodyMeasurement.seconds + (introFrames(pin) + pin.outro.frames) / FPS;
   requireThat(bodyMeasurement.seconds > 0 && Math.abs(candidateMeasurement.seconds - expectedSeconds) <= 0.1, "candidate duration does not match retained body plus the new bookends");
   mkdirSync(destination, { recursive: true });
   const snapshot = path.join(destination, "final.mp4");
@@ -159,7 +159,7 @@ export async function stageRenewal({ from, out, original, body, branding, checks
   const source = { final_review_id: old.id, final_sha256: oldSha, body_sha256: bodySha };
   const candidate = { final_sha256: finalSha, branding_hash: pin.hash, final_bytes: statSync(snapshot).size };
   const review = finalReview({ meta, sha256: finalSha, ...candidateMeasurement, captions: files.some((file) => file.role === "captions_zh-TW") });
-  review.payload = { ...review.payload, manual_review: true, branding_hash: pin.hash, renewal_candidate: { source, candidate, body_seconds: bodyMeasurement.seconds, intro_frames: pin.intro.frames, outro_frames: pin.outro.frames } };
+  review.payload = { ...review.payload, manual_review: true, branding_hash: pin.hash, renewal_candidate: { source, candidate, body_seconds: bodyMeasurement.seconds, intro_frames: introFrames(pin), outro_frames: pin.outro.frames } };
   const receipt = { schema_version: 1, kind: "long-final-renewal", site: origin(site.site), slug: meta.slug, source, candidate, review: { ...review, files } };
   validateCandidate(receipt, meta.slug, site.site);
   atomicWrite(path.join(destination, "renewal-candidate.json"), `${JSON.stringify(receipt, null, 2)}\n`);

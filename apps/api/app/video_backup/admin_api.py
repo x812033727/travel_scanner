@@ -22,6 +22,8 @@ from app.video_backup import admin_settings as settings
 from app.video_backup import admin_status as status
 from app.video_backup.schemas import (
     BackupView,
+    DriveIdsIn,
+    IndexView,
     LockIn,
     ProbeAnswerIn,
     ProbeView,
@@ -88,6 +90,13 @@ async def worker_config(tool: VideoTool, session: Session) -> WorkerConfig:
     return await status.worker_config(session)
 
 
+@tool_router.get("/index", response_model=IndexView)
+async def drive_index(tool: VideoTool, session: Session) -> IndexView:
+    """Every video and its Drive copy by series, for the worker's daily index sheets."""
+    _ = tool
+    return await status.drive_index(session)
+
+
 @tool_router.post("/lock", response_model=SettingsView)
 async def report_lock(payload: LockIn, tool: VideoTool, session: Session) -> SettingsView:
     _ = tool
@@ -105,3 +114,12 @@ async def answer_test(
 @tool_router.post("/{slug}/report", response_model=BackupView)
 async def report(slug: Slug, payload: ReportIn, tool: VideoTool, session: Session) -> BackupView:
     return await status.report(session, tool, slug, payload)
+
+
+@tool_router.post("/{slug}/drive", response_model=BackupView)
+async def report_drive_ids(
+    slug: Slug, payload: DriveIdsIn, tool: VideoTool, session: Session
+) -> BackupView:
+    """The Drive ids of a backed-up video's folder and final.mp4, for the admin's links."""
+    _ = tool
+    return await status.record_drive_ids(session, slug, payload)

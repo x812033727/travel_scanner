@@ -1,9 +1,16 @@
 # 審劇本：把劇本寫成分鏡、產生鏡位與注意事項
 
 站主 2026-11-06 要的做法，跟《種田》r2 第 1–60 集實際跑過的一樣。站主說「審劇本」「審片」「審稿」「把劇本變分鏡」「產生鏡位跟注意事項」，而對象是**還沒拍的劇本或分鏡**時，照這份做。
-已經拍好的片段要審，走製作端的審片（例如 `minimax-h3-colab` 的 lessons），不是這份。
+已經拍好的片段要審，走製作端的審片（例如 `minimax-h3-colab` 的 lessons，或無語音 Shorts 的 `docs/videos/shorts-drama/REVIEW.md`），不是這份。
 
-每一鏡怎麼寫、三道檢查的細節，都在 [`storyboard-shot-spec.md`](storyboard-shot-spec.md)。這份只講**順序、分工和交辦怎麼寫**。
+> **無語音（零台詞）Shorts 短劇的審劇本與分鏡**（9:16、11–16 秒、5–7 鏡，如《汪家夫妻》《闖禍小浣熊》《網美小豬》《社畜地獄》與新零台詞系列）：
+> 不套長篇對話劇的 2.5 分鐘 45 鏡與過肩反打規格，一律改讀 Shorts 共用區與系列個別區規則：
+> - 共用總覽与分鏡／審劇本三道檢查（黃金五拍秒數、單人框鐵律、80% 鎖定機位、聲音三層結構 `music_off`＋`hold`、第 0 關 AI 6 大系統性陷阱避險、九項自檢與**獨立審稿交辦範本**）：`docs/videos/shorts-drama/README.md`、`docs/videos/shorts-drama/WRITING.md`
+> - 成片四關品管與雙人笑點審核：`docs/videos/shorts-drama/REVIEW.md`
+> - 各系列角色定妝錨點（`intros`）與專屬規則：`docs/videos/shorts-drama/series/wangjia-couple.md`、`docs/videos/shorts-drama/series/raccoon-mischief.md`、`docs/videos/shorts-drama/series/influencer-piglet.md`、`docs/videos/shorts-drama/series/shechu-hell.md`
+> - 跨系列與單系列實戰教訓：`docs/videos/lessons/shorts.md`
+
+長篇有台詞 AI 劇的每一鏡怎麼寫、三道檢查的細節，都在 [`storyboard-shot-spec.md`](storyboard-shot-spec.md)。下面講長篇有台詞 AI 劇的**順序、分工和交辦怎麼寫**。
 
 ## 產出
 

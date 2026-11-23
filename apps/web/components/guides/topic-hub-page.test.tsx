@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { renderTopicHub, topicHubMetadata } from "./topic-hub-page";
 
@@ -103,11 +103,20 @@ describe("the topic hub", () => {
     const evergreen = { ...summary, slug: "ai-news-sources-to-follow", title: "追新聞的來源", news_date: null };
     mocks.list.mockResolvedValue({ articles: [newer, evergreen], next_cursor: "c1", available: true });
     render(await renderTopicHub(route({ topic: "ai-news" })));
-    expect(mocks.list).toHaveBeenLastCalledWith("zh-TW", { section: "life", topic: "ai-news", cursor: undefined, sort: "news" }, 24);
+    expect(mocks.list).toHaveBeenCalledWith("zh-TW", { section: "life", topic: "ai-news", cursor: undefined, sort: "news" }, 24);
     const rows = within(screen.getByTestId("news-list")).getAllByRole("listitem");
     expect(rows[0].querySelector("time")?.getAttribute("dateTime")).toBe("2026-09-14");
     expect(within(rows[1]).getByRole("link", { name: "追新聞的來源" })).toBeTruthy();
     expect(rows[1].querySelector("time")).toBeNull();
+    const browse = screen.getByText("依主題瀏覽");
+    const filters = browse.closest("details");
+    expect(browse.tagName).toBe("SUMMARY");
+    expect(filters?.open).toBe(false);
+    expect(filters?.contains(rows[0])).toBe(false);
+    fireEvent.click(browse);
+    expect(filters?.open).toBe(true);
+    expect(within(screen.getByTestId("listing-toolbar")).getByRole("link", { name: "AI 名詞解釋" }).getAttribute("href"))
+      .toBe("/life/topics/ai-terms");
     // One order only: no toggle, and `?sort=` does not change what is read.
     expect(screen.queryByRole("navigation", { name: "排序" })).toBeNull();
     expect(screen.getByRole("link", { name: "看更多" }).getAttribute("href")).toBe("/life/topics/ai-news?cursor=c1");
@@ -121,6 +130,41 @@ describe("the topic hub", () => {
     expect(screen.getByRole("navigation", { name: "排序" })).toBeTruthy();
     await renderTopicHub(route({ sort: "news" }));
     expect(mocks.list).toHaveBeenLastCalledWith("zh-TW", expect.objectContaining({ topic: "ai-terms", sort: "latest" }), 24);
+  });
+
+  it.each([["ai-news", "ai-terms", "tech-news"], ["tech-news", "gadgets", "ai-news"]])(
+    "pairs the %s wire with its illustrated guides without including them in the news order", async (channel, guides, other) => {
+      const story = { ...summary, slug: "headline", title: "今日頭條", news_date: "2026-11-18" };
+      const hero = { src: "/guides/how-it-works/cover.jpg", alt: "A diagram of the settings", width: 1600, height: 900, credit: null };
+      const guide = { ...summary, slug: "how-it-works", title: "操作圖解", hero };
+      const synthetic = { ...guide, slug: "placeholder", hero: { ...hero, src: "/guides/news-assets/cover.webp" } };
+      mocks.vocabulary.mockResolvedValue({ available: true, topics: [
+        { slug: channel, label: "目前頻道", count: 4 }, { slug: other, label: "另一個頻道", count: 3 },
+      ] });
+      mocks.list.mockImplementation(async (_locale, filters) => ({
+        available: true, next_cursor: null, articles: filters.topic === guides
+          ? [synthetic, { ...guide, slug: story.slug }, { ...guide, news_date: story.news_date }, guide] : [story],
+      }));
+      const { container } = render(await renderTopicHub(route({ topic: channel })));
+      const feature = screen.getByRole("complementary", { name: "圖解指南" });
+      expect(within(feature).getByRole("img", { name: hero.alt }).getAttribute("src")).toBe(hero.src);
+      expect(within(feature).getByRole("link", { name: guide.title }).getAttribute("href")).toBe("/zh-TW/life/how-it-works");
+      expect(within(screen.getByTestId("news-list")).getByRole("heading", { name: story.title, level: 2 })).toBeTruthy();
+      expect(within(screen.getByTestId("news-list")).queryByText(guide.title)).toBeNull();
+      expect(within(container.querySelector<HTMLElement>("main header")!).getByRole("link", { name: "另一個頻道" }).getAttribute("href"))
+        .toBe(`/life/topics/${other}`);
+      expect(container.querySelector("script[type='application/ld+json']")?.textContent).not.toContain(guide.title);
+    },
+  );
+
+  it("keeps the archive compact and skips the extra guide read on subsequent pages", async () => {
+    const article = { ...summary, news_date: "2026-11-18" };
+    mocks.list.mockResolvedValue({ articles: [article], next_cursor: null, available: true });
+    render(await renderTopicHub(route({ topic: "ai-news", cursor: "next" })));
+    expect(mocks.list).toHaveBeenCalledTimes(1);
+    expect(screen.queryByRole("complementary", { name: "圖解指南" })).toBeNull();
+    expect(screen.queryByRole("heading", { name: article.title })).toBeNull();
+    expect(screen.getByRole("link", { name: article.title })).toBeTruthy();
   });
 
   it("walks the breadcrumb home › section › parent › topic, and marks the topic chip current", async () => {
@@ -159,6 +203,24 @@ describe("the topic hub", () => {
 });
 
 describe("what the topic hub tells search engines", () => {
+  it("uses the displayed lead's own art for a channel share, falls back to dynamic topic OG card over synthetic art, and skips archive pages", async () => {
+    const publishedTopic = { ...topics[2], count: 4, counts: { "zh-TW": 4, en: 1 } };
+    const hero = { src: "/guides/lead/shot.webp", width: 1600, height: 900, alt: "The model settings", credit: null };
+    const lead = { ...summary, news_date: "2026-11-18", hero };
+    mocks.vocabulary.mockResolvedValue({ topics: [publishedTopic], available: true });
+    mocks.list.mockResolvedValue({ articles: [lead], next_cursor: null });
+    const channel = route({ topic: "ai-news" });
+    const metadata = await topicHubMetadata(channel);
+    expect(metadata.openGraph).toMatchObject({ title: metadata.title, images: [{ url: hero.src, alt: hero.alt }], alternateLocale: ["en"] });
+    expect(metadata.twitter?.images).toEqual(metadata.openGraph?.images);
+    expect((await topicHubMetadata({ ...channel, cursor: "next" })).openGraph).toBeUndefined();
+    mocks.list.mockResolvedValue({ articles: [{ ...lead, hero: { ...hero, src: "/guides/news-assets/hero.webp" } }] });
+    const fallback = await topicHubMetadata(channel);
+    expect(fallback.openGraph?.images).toEqual([
+      { url: "/og/zh-TW/topics/life/ai-news/card.png", width: 1200, height: 630, alt: fallback.title },
+    ]);
+  });
+
   it("is indexable where the topic publishes, with a self canonical and only the published languages", async () => {
     const metadata = await topicHubMetadata(route({ topic: "ai" }));
     expect(metadata.title).toBe("AI 工具：文章與攻略 | Mokaair");
@@ -176,6 +238,30 @@ describe("what the topic hub tells search engines", () => {
     const metadata = await topicHubMetadata(route());
     expect(metadata.description).toBe("Mokaair 歸在「AI 名詞解釋」主題下的所有文章與攻略，依最新發布排序，每篇都附資料來源。");
     expect(metadata.alternates?.languages).toEqual({ "zh-TW": "http://localhost:3000/zh-TW/life/topics/ai-terms" });
+  });
+
+  it.each([
+    ["ai-news", "AI 新聞與趨勢", "模型發布、工具更新與價格變動", "AI 模型發布"],
+    ["tech-news", "科技新聞", "產品更新、資安與產業政策", "平台與電信服務"],
+    ["crypto", "加密貨幣與區塊鏈", "監管、技術與產業動態", "區塊鏈技術"],
+  ])("describes the %s beat in search and on the page when the catalogue supplies no lead", async (slug, label, title, excerpt) => {
+    mocks.vocabulary.mockResolvedValue({ topics: [{ slug, label, section: "life", count: 2 }], available: true });
+    const metadata = await topicHubMetadata(route({ topic: slug }));
+    expect(metadata.title).toBe(`${label}｜${title}｜Mokaair`);
+    expect(metadata.description).toContain(excerpt);
+    render(await renderTopicHub(route({ topic: slug })));
+    expect(screen.getByText(metadata.description!)).toBeTruthy();
+  });
+
+  it("uses the editor's localized news lead for both the search description and the introduction", async () => {
+    const description = "本月的 AI 產品動態與定價異動。";
+    mocks.vocabulary.mockResolvedValue({
+      topics: [{ slug: "ai-news", label: "AI 新聞", section: "life", description, count: 2 }], available: true,
+    });
+    const news = route({ topic: "ai-news" });
+    expect((await topicHubMetadata(news)).description).toBe(description);
+    render(await renderTopicHub(news));
+    expect(screen.getByText(description)).toBeTruthy();
   });
 
   it("keeps a topic with nothing published in this language out of the index, but followed, while advertising its news Atom feed", async () => {

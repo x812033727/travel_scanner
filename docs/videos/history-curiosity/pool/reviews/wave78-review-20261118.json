@@ -1,0 +1,949 @@
+{
+  "batch": "batches/wave78-20261118.json",
+  "reviewed_on": "2026-11-18",
+  "method": "十二位沒有參與研究的獨立覆核代理（R7800–R7809 依序覆核 ZW0–ZW9，R790、R791 覆核 ZX0、ZX1）逐題對照研究代理的請求紀錄與快取檔，至少重新請求一個關鍵一手／機構來源，掃描本來源至少自己轉一頁圖核對引文與頁碼，逐句核對年份、數字與引文，刪掉方向卡上沒有來源支持的預期說法，重做全池與跨系列去重，對照不收清單、1956 真人規範與 8 分鐘門檻，並把軸別改成合適的類別；修改直接寫進批次的題目與來源欄位，覆核補讀的來源編入該研究代理的來源序號，沒被收下的題引用的來源移除。",
+  "counts": {
+    "NEEDS_CHECK": 5,
+    "ADOPT_WITH_CHANGES": 37,
+    "REJECT": 1
+  },
+  "source_renames": {
+    "R7800-S001": "ZW0-S019",
+    "R7801-S001": "ZW1-S020",
+    "R7802-S001": "ZW2-S018",
+    "R7802-S002": "ZW2-S019"
+  },
+  "verdicts": [
+    {
+      "id": "N7581",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R790",
+      "author": "ZX0",
+      "key_source_reopened": "",
+      "changes": [
+        "問句『「貂蟬」這兩個字，原本是…帽子上的東西』改為『「貂」和「蟬」這兩個字，在漢朝原本是插在誰帽子上的東西』：ZX0-S006 只寫『附蟬為文，貂尾為飾』兩樣分開，原句暗示人名就是冠飾名，而沒有任何來源說人名來自冠飾。",
+        "scope 加一句：答到冠飾即止，不暗示人名由此而來。",
+        "role chapter、minutes [6,8]、screened 維持：最早的元代出處沒讀到，題目原本問的『最早出現在哪裡』答不完，不能升 episode_core。"
+      ],
+      "unverified": [
+        "人名『貂蟬』最早見於哪一部元代作品（《三國志平話》、元雜劇都沒讀到）。",
+        "『貂蟬』連成一詞指冠飾的原文用例。",
+        "ZX0-S008 的『原名任昌紅』『漢書通志』。",
+        "《後漢書·呂布傳》沒讀。"
+      ],
+      "note": "四個來源都存在，三個古籍引文我轉圖逐字核對都相符；流傳樣本『王允侍女』確實被『卓侍婢』修正，翻轉清楚。名字是否來自冠飾仍然只能並陳。"
+    },
+    {
+      "id": "N7582",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R790",
+      "author": "ZX0",
+      "key_source_reopened": "https://archive.org/metadata/06081988.cn（R790 seq 1，200，36103 bytes）：條目為浙江大學圖書館藏《三國志·吴志·卷七~卷九》，PDF 檔名 06081988.cn.pdf；sha256 前綴 12f5a69e6fea70b4 與作者 seq 2 相同。；https://archive.org/download/06081988.cn/06081988.cn.pdf（R790 seq 2，200，6194236 bytes）：sha256 前綴 84d00e3925df6511 與作者 seq 3 相同。轉第 137–139 頁 330 dpi 圖逐字讀：第 137 頁左半『備既定益州權求長沙零桂備不承旨權遣呂蒙率衆進取』；第 138 頁右半『肅住益陽與羽相拒肅邀羽相見各駐兵馬百步上但諸將軍單刀俱會肅因責數羽』；第 138 頁左半『坐有一人曰夫土地者惟德所在耳何常之有…羽操刀起謂曰此自國家事是人何知』與裴注『吳書曰肅欲與羽會語諸將疑恐有變議不可往…乃趨就羽』；第 139 頁左半『羽無以答　備遂割湘水為界於是罷軍肅年四十六建安二十二年卒』。全部相符。",
+      "changes": [
+        "演義並沒有刪掉沉默：明刊卷十四 PDF 第 18 頁有『雲長不之答』。answer_target、payoff、ZX0-S002 summary 由『刪掉羽無以答』改為『保留沉默，但從答不出來變成不屑回答，緊接周倉插話與奪刀脫身』。",
+        "周倉的話是『天上地下，惟有德者居之』，作者寫成『天下土地』，已改 ZX0-S002 locator／summary 與 answer_target。",
+        "漢典引文：『請』可能是刊本異文（網上常見『但請將軍單刀俱會』），不能說『辭書把諸改成請』；只說與這個掃描本有兩字不同，『赴會』才是與成語相同的字。改 ZX0-S003 summary、answer_target、ZX0-S001 limitations。",
+        "『割湘水為界、於是罷軍』只說『魯肅傳接著寫』，不說成會談的結果（這一段沒寫原因）。改 answer_target、payoff、scope。",
+        "『對等的、限制武力的安排』改為『雙方各自限兵的安排』（依『各駐兵馬百步上』，不靠『諸』字）。",
+        "minutes [8,10] 改 [8,9]；role episode_core 維持。",
+        "ZX0-S002 read_via 補上條目編號的出處（wave77/ZW3 cache/025）。"
+      ],
+      "unverified": [
+        "『但諸將軍』與『但請將軍』哪個是多數刊本的字（只讀了四庫薈要寫本）。",
+        "關漢卿《單刀會》原文、毛宗崗本第六十六回原文。",
+        "罷兵的真正原因（魯肅傳這段沒寫，先主傳沒讀）。"
+      ],
+      "note": "引文、頁碼經重抓與轉圖核對都相符，翻轉成立：史書裡提『單刀』條件、走過去、在吳方記載中說得關羽答不出話的都是魯肅。撐得起 episode_core，但素材在 8–9 分鐘，不到 10。『羽無以答』只出自吳方《吳書》，作者已寫明，覆核同意。與 N7553 同型但不同事件、不同翻轉，不算撞題，建議排程隔開或做成系列。"
+    },
+    {
+      "id": "N7583",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R791",
+      "author": "ZX1",
+      "key_source_reopened": "https://archive.org/download/06081990.cn/06081990.cn.pdf（R791 seq 1，200，6234592 bytes）：與作者 seq 28 的 sha256 前綴 c55e79aa9afc0008 與位元組數完全相同；轉圖重讀 PDF 第 118 頁『黃武中，鄱陽大帥彭綺作亂……乃以魴為鄱陽太守』、第 130 頁『魴在郡十三年卒……子處亦有文武材幹，天紀中為東觀令、無難督』及裴注虞預《晉書》，相符。",
+      "changes": [
+        "axis F → S（史書人物軼事，不是童話神話或怪談原版）。",
+        "question 改寫：原句『課本裡的師生是不是排反了』，課本沒寫師生，說法過頭；改成問被勸『前途尚可』的其實是中年人（長度在 40–110 字內）。",
+        "answer_target：周魴卒年（約 235–242）與周處生年下限明標『推算，書上沒寫』；周處 236 年生明標只見通俗文章轉引陸機碑文，碑文原文未讀，只當一說。",
+        "answer_target 補一句：通俗樣本 ZX1-S011 自己已寫周處『中年時期』求教晚輩，翻轉的是課本印象，不是新發現；『古代學者早就注意到』與『平原』『清河』官稱的時代錯置都不講。",
+        "hook『照史書算』改成『照史書推算』。",
+        "ZX1-S008 locator 引文『遂殺雲』訂正為『催令殺雲，時年四十二』（轉圖重讀第 74 頁）。"
+      ],
+      "unverified": [
+        "陸機〈平西將軍周府君碑〉原文、真偽與『病故』寫法（只有報紙專欄轉引）",
+        "周處 236 年生（同上）",
+        "余嘉錫《箋疏》、勞格等古人對年代的考辨",
+        "周處求教陸雲的確切年份",
+        "二陸任平原、清河內史的年份"
+      ],
+      "note": "《世說》《晉書》《三國志·周魴傳》、晉書陸雲傳都已轉圖核對，推算鏈成立且已標成推算；可當 8 分鐘主題，但正片不能說古人早有考辨、不能把碑文病故當定論。"
+    },
+    {
+      "id": "N7584",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R791",
+      "author": "ZX1",
+      "key_source_reopened": "https://archive.org/download/06081984.cn/06081984.cn.pdf（R791 seq 2，200，5047896 bytes）：與作者 seq 4 的 sha256 前綴 07cd0d1d7494e3b6 相同；轉圖重讀 PDF 第 51 頁（卷九）『為郃所破，士卒離散。亮進無所據，退軍還漢中。謖下獄物故，亮為之流涕。良死時年三十六，謖年三十九』與裴注《襄陽記》臨終書、『蔣琬後詣漢中』；第 121 頁（卷十一）『建興五年隨亮漢中。朗素與馬謖善，謖逃亡，朗知情不舉，亮恨之，免官還成都』，相符。",
+      "changes": [
+        "role episode_core → chapter，minutes [8,10] → [4,6]：結論停在『四篇用字不同、不判定死法』，沒有《資治通鑑》與『物故』訓詁的來源，撐不到 8 分鐘。",
+        "查重判定：不算撞題、不併入。S02、S05 翻轉無關；S03（空城計）的查核表 topic-checks/S03.md 第 23、38 列已列出戮謖、下獄物故、逃亡為『史料互異』，但 curio-s03 盲評第 1 輪把『馬謖下場三說』當岔題刪掉，成片沒有講。本卡角度不同（同一過程的片段＋演義怎麼縫合），可獨立成一章，適合放進諸葛亮北伐或『演義怎麼改史書』的合集；寫進 scope 與 notes。",
+        "question 去掉向朗傳沒寫的『兵敗後』，結尾改成『馬謖最後到底經歷了什麼？』。",
+        "hook『有人知道他跑去哪裡，卻沒有說』改成『有人知道他逃了，卻沒有舉報』（原文只說『知情不舉』）。",
+        "answer_target 與 payoff：『死在獄中…而不是轅門外一刀』改成『最順的排法是逃亡、下獄、死於處置；先後是推排，史書沒有轅門斬首的場面，也沒寫明怎麼處死』，不判定『物故』是否等於被斬。"
+      ],
+      "unverified": [
+        "《資治通鑑》卷七十一的寫法",
+        "學界對『物故』與『逃亡』的討論",
+        "演義電子本的底本"
+      ],
+      "note": "四處蜀志原文與演義第九十六回都已核對，引文與頁碼正確；題成立但只夠一章，不判定死法。"
+    },
+    {
+      "id": "N7585",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R7800",
+      "author": "ZW0",
+      "key_source_reopened": "https://www.upi.com/Odd_News/2004/01/28/UPI-NewsTrack-Quirks-in-the-News/32061075331270/（R7800 seq 2，200，262087 bytes）：與作者 seq 11 雜湊相同；『largest beached whale on record in Taiwan』『60-foot, 50-ton』『Shi-Tsao Natural Preserve』與教授的腐敗氣體說法相符；沒有『凌晨』，NBC（cache 001）也沒有。PopSci（cache 012）的 20 箱 50 磅炸藥、車頂被砸凹、2019 年命名相符。",
+      "changes": [
+        "hook 刪『凌晨』（NBC、UPI 都沒有）；『台灣有紀錄以來最大的鯨魚』改成『被認定為台灣有紀錄以來最大的擱淺鯨』",
+        "question 改問『肚子到底怎麼破開』：原問句承諾『科學家為什麼說鯨屍很少爆炸』，只有一篇談海中屍體的論文摘要（ZW0-S004）撐，不能推到岸上搬運的鯨屍",
+        "payoff 刪『從此改成就地掩埋』的因果（PopSci 只說今天的標準做法是掩埋）",
+        "answer_target『擱淺 3 天』改『擱淺幾天』，S004 的適用範圍寫清楚",
+        "role 改 chapter、minutes [6,8]（缺台灣紀錄，撐不到 8 分鐘）"
+      ],
+      "unverified": [
+        "台灣的一手或機構紀錄（成大、林務局、當年台灣報紙）：作者沒讀到，覆核兩次搜尋也只找到論壇與英文轉載",
+        "中文流傳樣本（『卡車顛簸／有人亂動』）沒讀到",
+        "奧勒岡段只有 PopSci 一篇，oregonencyclopedia.org 已封鎖；州政府或 1970 年報紙原件沒讀",
+        "日期 1/26 或 1/27、長度與重量各報不一"
+      ],
+      "note": "報導與 PopSci 都核得到，作者給的 needs_check 正確；要補到台灣機構紀錄或當年中文報紙才能收。",
+      "recheck": {
+        "verdict": "ADOPT_WITH_CHANGES",
+        "reviewer": "R7811",
+        "author": "ZV8",
+        "key_source_reopened": "https://web.ncku.edu.tw/p/406-1000-234552,r3375.php?Lang=zh-tw（R7811 seq 1，200，37290 bytes）：ZV8-S002：『2004 年 1 月 24 日在雲林台西死亡擱淺，同年 1 月 26 日早晨，因搬運途中鯨魚體內壓力不斷上升，在臺南西門路發生鯨魚爆炸事件』與國家地理頻道專題句皆在；位元組數與 ZV8 的 39,673 不同（頁面側欄動態內容），正文一致",
+        "changes": [
+          "premise_status 維持補查代理的 screened：成大鯨豚中心計畫頁（ZV8-S001）與成大新聞中心（ZV8-S002，覆核重抓）是機構來源，直接寫『搬運途中體內壓力不斷上升』在西門路爆開，中央社（ZV8-S003）轉述相同；流傳樣本有外電標題與公視 PNN、特展介紹",
+          "payoff 與 answer_target 刪『擱淺死亡兩天後／死後兩天』：只有成大 1/24 一說成立，路透社圖說是 1/17（相差九天），與 scope 的兩說並陳自相矛盾",
+          "scope『1 月下旬擱淺』改為『2004 年 1 月擱淺死亡、成大說 1 月 26 日早上破裂』——『下旬』等於選了成大一邊",
+          "answer_target 破裂日補 UPI『星期二』（2004-01-27）一說；註明成大自己也把它叫做『氣爆』，答案是『腐敗氣體壓力造成的破裂、不是炸藥』",
+          "visual『深夜城市街道』改『清晨』：成大寫早晨，上一輪覆核已刪『凌晨』",
+          "answer_target『血與內臟』改『內容物』（不畫血腥）",
+          "editorial.minutes [7,9] 改 [6,8]：role 仍是 chapter，上限不該超過 8",
+          "ZV8-S004 publisher 刪『公民新聞』：頁面只標『公視新聞 PNN』"
+        ],
+        "unverified": [
+          "擱淺死亡日 1/17（路透社圖說）或 1/24（成大）",
+          "破裂日 1/26（成大、路透社圖說）或 1/27（UPI『星期二』）",
+          "2004 年當年台灣報紙原件（聯合報等）",
+          "『卡車顛簸觸發』的中文樣本（tyaward、dcard、自由時報皆 403）",
+          "『爆開處就是船撞處』（只在特展介紹轉載，無出處，正片不說）",
+          "奧勒岡段仍只有 PopSci 一篇",
+          "ZV8-S001 網址在覆核的搜尋中沒有重現出處（頁面真實存在、內容與成大新聞稿一致，且 ZV8-S002 可獨立撐住同一句）"
+        ],
+        "note": "台灣機構紀錄確實補到了（成大兩頁，覆核重抓核對），翻轉『沒有炸藥，是腐敗氣體壓力撐破』撐得住 screened；日期兩說處理不一致處已改，仍是 chapter。"
+      }
+    },
+    {
+      "id": "N7586",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7800",
+      "author": "ZW0",
+      "key_source_reopened": "https://deerpark.app/api/v1/text/T2858/1（R7800 seq 1，200，31145 bytes）：sha256 前綴 56531765c3c9a2cb 與作者 seq 21 相同；『獄卒數萬餘人總是牛頭馬面』與卷末『貞明漆年辛巳歲四月十六日淨土寺學郎薛安俊寫』都在。另讀作者 cache 017、018、023、026：『獄卒名傍，牛頭人手，兩脚牛蹄』『牛頭獄卒、馬頭羅剎』『牛頭阿傍以三股鐵叉』與經目『唐 般剌蜜帝譯』相符。",
+      "changes": [
+        "question『大家都說』改『有人說』（只有一篇英文部落格樣本）",
+        "ZW0-S006 read_via 刪掉對 seq 14（tripitaka.cbeta.org，回 404、網址在快取裡找不到出處）的引用，譯者改依 deerpark 文字卷首",
+        "921 年覆核：貞明元年 915 起算第七年＝921，干支辛巳也是 921，寫進 answer_target 與 S008 limitations",
+        "axis 維持 F（是民間鬼差形象的原版考，沒有靈異公案成分）"
+      ],
+      "unverified": [
+        "題記只證明抄寫年，變文的創作年代沒讀到考證",
+        "《楞嚴經》的年代與真偽學界有爭議，本次沒讀；《罪業應報教化地獄經》的後漢譯者歸屬未考",
+        "馬面單獨最早出現的年代、台灣廟宇說法沒查"
+      ],
+      "note": "deerpark.app 的請求確實依它 llms.txt 列的端點，CBETA 文字逐句核到；chapter 合適。作者另有 seq 13–15 三個在快取裡找不到出處的網址，未當來源，只記為程序瑕疵。"
+    },
+    {
+      "id": "N7587",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7800",
+      "author": "ZW0",
+      "key_source_reopened": "https://www.thepaper.cn/newsDetail_forward_1409946（R7800 seq 3，200，61663 bytes）：與作者 seq 38 雜湊相同；『受玺以来二十七日…凡千一百二十七事』、『原本意思是…调发物资或要求服务，共计1127起』、盧植『罪过千余』、2011 年 3 月 23 日發現盜墓都在；同段另說劉賀主要問題是『行淫亂』，已補進 answer_target。；https://archive.org/advancedsearch.php?q=title%3A%28%E5%89%8D%E6%BC%A2%E6%9B%B8%29+AND+title%3A%28%E5%85%AD%E5%8D%81%E5%85%AB%29&fl%5B%5D=identifier&fl%5B%5D=title&rows=50&output=json（R7800 seq 4，200，1073 bytes）：找到 06079802.cn〈前漢書·卷六十七~卷六十八〉；https://archive.org/metadata/06079802.cn（R7800 seq 5，200，27899 bytes）：取得 06079802.cn.pdf 檔名；https://archive.org/download/06079802.cn/06079802.cn.pdf（R7800 seq 6，200，4298729 bytes）：轉圖讀 PDF 第 69–70 頁：『凡千一百二十七事』原句與注、其後夏侯勝傅嘉進諫、『荒淫迷惑失帝王禮誼亂漢制度』，補為 R7800-S001",
+      "changes": [
+        "新增 R7800-S001：覆核在 archive.org 找到四庫薈要本《前漢書》卷六十七～六十八掃描（06079802.cn），轉圖讀 PDF 第 69–70 頁，原句『受璽以來二十七日，使者旁午，持節詔諸官署徵發，凡千一百二十七事』與如淳、顏師古注都核到；ZW0-S014 的『一千一百』是轉錄差異",
+        "answer_target 補上原文順序：1127 句之後接夏侯勝、傅嘉進諫被責、傅嘉下獄，然後才總結『荒淫迷惑，失帝王禮誼，亂漢制度』",
+        "answer_target 補 ZW0-S012 同一位學者的但書：劉賀的問題不只這 1127 起，主要是『行淫亂』，避免片子講成翻案",
+        "notes 的『《漢書》原件沒讀到』改為覆核已補讀"
+      ],
+      "unverified": [
+        "奏文前段各條罪狀仍只依 ZW0-S014 轉錄",
+        "盧植『罪過千餘』（《三國志·董卓傳》裴注引《獻帝紀》）只見 ZW0-S012 轉引",
+        "海昏侯墓發掘報告、《齊論語》整理報告沒讀；衣鏡論文只讀到摘要"
+      ],
+      "note": "作者沒讀《漢書》原文是主要缺口，覆核已用掃描本補上，翻轉站得住，可收。"
+    },
+    {
+      "id": "N7588",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7800",
+      "author": "ZW0",
+      "key_source_reopened": "（作者 cache 041.bin、044.bin，未重抓）（R7800 seq None，None，None bytes）：自行 pdftoppm 110 dpi 轉 ZW0-S016 PDF 第 36 頁與 ZW0-S017 PDF 第 111 頁看圖：正文『相持百餘日其年八月亮疾病卒于軍時年五十四』、魏書／漢晉春秋／晉陽秋赤星『三投再還往大還小』／臣松之駁吐血；演義『時魏延入帳報曰魏兵至矣延腳步走急將主燈撲滅』『是吾天命已絕非文長之過也』，全部相符。",
+      "changes": [
+        "axis P 改 S：沒有預言或末日成分，是歷史人物名場面",
+        "question『《三國志》寫他死前的那一個徵兆』改成『史書注解裡記下的』：赤星在裴注引《晉陽秋》，不在陳壽正文",
+        "hook 刪『一千七百年前』與『那一夜』（晉陽秋沒說同一夜），改成『不久丞相就死了』",
+        "answer_target『魏晉時人的記載』改成『晉人的記載，不在陳壽正文裡』",
+        "risk 補：與 S04（周瑜之死）同為『小說死因 vs 史書病逝』結構，排播不要相鄰"
+      ],
+      "unverified": [
+        "《三國志平話》有沒有禳星沒讀",
+        "毛宗崗本第一〇三回字句沒讀（正片只說明代《三國志通俗演義》）",
+        "〈魏延傳〉沒讀；『一腳踢翻』說法的出處沒查",
+        "覆核只抽核了兩頁（S016 第 36 頁、S017 第 111 頁），S017 第 107、108、110 頁沿用作者讀法"
+      ],
+      "note": "覆核轉圖抽核的兩頁字句完全相符；池內與 docs/videos 查七星燈／五丈原／禳星／魏延都零筆，與三國系列 S02、S04、S05、S07 翻轉不同，不算撞題，建議併入同一系列。"
+    },
+    {
+      "id": "N7589",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7801",
+      "author": "ZW1",
+      "key_source_reopened": "https://www.mhlw.go.jp/www1/houdou/1004/h0414-2.html（R7801 seq 4，200，26270 bytes）：與作者 cache 002.bin 逐位元組相同；9,209／4,026／417（10.4%）、眼睛痛 40.5%、7.2%、暗室 31.1%／亮室 9.4%、22 人就醫、115 例中 87 例痙攣性、102 人中 98 人在 18:50 前後、B 群與 D 群定義、D 群約三成、紅紅紅藍藍與 10–15Hz 皆相符。",
+      "changes": [
+        "answer_target 末句原寫『之後日本放送業者訂了自主指引』沒有讀到出處，改成只說郵政省檢討會建議業者自訂基準（S004），不說業者訂了什麼。",
+        "作者承認的『新聞重播讓更多孩子不適』：已確認問句、hook、payoff、visual 都沒有這個說法，answer_target 與 scope 明寫不說；讀到的二次來源只有看錄影（S003、S002 八木委員）與學校傳開（S005）。",
+        "ZW1-S004 limitations 補上指引原文沒讀。"
+      ],
+      "unverified": [
+        "1998 年 NHK／民放連指引原文沒讀；Southern Medical Journal 2001 原文（sma.org 403）沒讀；『up to 12,000』的原始統計沒讀。傷病只到 685 人、重症 3、中等症 217 與問卷百分比層級，符合規定。"
+      ],
+      "note": "一手機構來源（厚生省速報、班會議事錄、電視台公告、郵政省報告）撐得住，翻轉清楚：送醫 685 人但問卷最常見是眼睛痛。"
+    },
+    {
+      "id": "N7590",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7801",
+      "author": "ZW1",
+      "key_source_reopened": "https://archive.org/metadata/02080078.cn（R7801 seq 1，200，25619 bytes）：作者自己 seq 11 檢索結果裡的《大清太祖……武皇帝實錄》條目；metadata 列出 02080078.cn.pdf（3,612,375 bytes）與 djvu.txt。；https://archive.org/download/02080078.cn/02080078.cn_djvu.txt（R7801 seq 2，200，181340 bytes）：OCR 文字層是亂碼，不可用。；https://archive.org/download/02080078.cn/02080078.cn.pdf（R7801 seq 3，200，3612375 bytes）：轉圖讀 PDF 第 53、64–67 頁：天命四年八月十九日征『夜黑』，金台石答『吾非漢人，均男子也，吾亦有手，豈肯降汝，惟有死戰而已』，要皇太極來保證才下臺，最後縱火後下臺被擒；沒有詛咒。新增為 R7801-S001。；https://en.wikisource.org/wiki/Eminent_Chinese_of_the_Ch'ing_Period/Gintaisi（R7801 seq 5，200，64854 bytes）：比作者 cache 多 1 byte（頁面動態欄位）；卒 1619-09-29、皇太極調停、與布揚古被俘處死、『Chinese sources state that Gintaisi committed suicide』、後代顯貴、慈禧以楊吉砮為遠祖皆相符，詞條無詛咒。",
+      "changes": [
+        "作者說 archive.org 找不到實錄，其實作者 seq 11 的結果就有 02080078.cn《太祖武皇帝實錄》；覆核讀了卷三征葉赫段，新增 R7801-S001：金台石拒降之言『豈肯降汝，惟有死戰』，沒有詛咒；premise_status 由 needs_check 升 screened。",
+        "問句改以實錄拒降之言為翻轉；刪原問句沒有出處的『權傾一時』。",
+        "hook 原寫『他的孫子二十幾年後正坐在北京的朝堂上』與事實不符（明珠 1644 年才九歲，1677 年任大學士），改寫。",
+        "answer_target 刪『從皇太極起每位皇帝身上都有葉赫的血』（未讀到）與『詞條根據清史稿與八旗滿洲氏族通譜』（ECCP 縮寫推論、未核對）。",
+        "scope 寫明只讀了《武皇帝實錄》一卷，不說『清代官書都沒有』；不描寫火燒與處死細節。minutes 改 [8,10]。"
+      ],
+      "unverified": [
+        "詛咒最早出處仍未找到；《滿洲實錄》《太祖高皇帝實錄》沒讀；ECCP『中文史料說他自殺』與這個實錄版本『下臺被擒』不同，正片只說城破後身亡。"
+      ],
+      "note": "補到清初官修實錄原文後，『實錄記的是拒降之言而非詛咒』成為可講的翻轉，可收。"
+    },
+    {
+      "id": "N7591",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7801",
+      "author": "ZW1",
+      "key_source_reopened": "https://archive.org/metadata/06073017.cn（R7801 seq 6，200，32425 bytes）：條目題『史記·卷六』，PDF 檔名與大小（5,705,560 bytes）與作者 seq 25 一致；PDF 本身未重下，改用作者 cache 自行轉圖讀第 63–64 頁，原文『諸生在咸陽者吾使人廉問或為訞言以亂黔首』『乃自除犯禁者四百六十餘人皆阬之咸陽』『諸生皆誦法孔子』相符；另轉圖讀 S014 第 96 頁『焚詩書阬術士』與正義注、S015 第 46 頁序文與音義／疏。",
+      "changes": [
+        "覆核自行轉圖抽核 S013 第 63–64 頁、S014 第 96 頁、S015 第 46 頁，原文相符。",
+        "S015『焚詩書在三十四年、坑儒在三十五年』是陸德明音義、非孔穎達疏，來源與答案已改。",
+        "在作者自己的《論衡》cache（S018）查到〈謝短〉『坑殺儒士』『坑儒生』、〈死偽〉『燔燒詩書，後又坑儒』：東漢已稱坑儒。原問句『坑儒兩個字是誰定下來的』會變成標題黨，改問『這個說法是怎麼來的』，答案改成『史記用諸生／阬術士 → 東漢已稱坑儒 → 尚書序四字連用』，並加入 S018 為來源。",
+        "照作者提醒保留扶蘇『諸生皆誦法孔子』，正片不說被坑的都不是儒生、也不說坑儒是捏造。",
+        "payoff 原『誘殺七百人』：衛宏說的七百是前後拜為郎的人數，改成不說人數。hook 刪『逃亡名單』的虛構細節。"
+      ],
+      "unverified": [
+        "〈尚書序〉託名的論證沒讀；『焚書坑儒』四字是否有比〈尚書序〉更早的用例沒檢索；《史記》三十四年焚書條原頁沒讀（年份依《論衡·正說》與音義）。"
+      ],
+      "note": "原文都從掃描本讀到，翻轉成立但要收斂成『史記怎麼寫、坑儒說法怎麼形成』，不能說坑儒是後人加的。"
+    },
+    {
+      "id": "N7592",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7801",
+      "author": "ZW1",
+      "key_source_reopened": "https://www.ihchina.cn/art/detail/id/30798.html（R7801 seq 7，200，49812 bytes）：正文與作者 cache 相同（只差頁面簽名時間戳）；三種日書名單、『子，鼠也』盜者條、論衡十一辰與〈言毒〉辰龍、注③南齊書相符。",
+      "changes": [
+        "role 由 episode_core 改 chapter，minutes 改 [6,8]：簡文只靠一篇 2025 年期刊論文轉引、賽跑故事沒有早期出處、出生年生肖只有一條注，撐不到 8 分鐘。",
+        "問句把引號內的『午，鹿也』『戌，老羊也』改成配對寫法（論文只逐字引『子，鼠也』）。",
+        "hook 刪沒有出處的『秦朝小官』。",
+        "answer_target 補『依于豪亮的解讀』與論文所說『王充是在轉述並反駁別人、這套十二禽在王充之前已有』；『最早完整出現』改成『現存最早湊齊的文字』。"
+      ],
+      "unverified": [
+        "睡虎地簡圖版與 1990 年整理本原頁沒讀；《南齊書·五行志》沒讀；賽跑故事最早出處沒找到（正片只說古代文獻裡找不到）。"
+      ],
+      "note": "《論衡》原文加學術論文撐得住，題目吸引力高但素材薄，收為一章。"
+    },
+    {
+      "id": "N7593",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7802",
+      "author": "ZW2",
+      "key_source_reopened": "https://www.titanicinquiry.org/USInq/AmInq09Burke01.php（R7802 seq 1，200，35778 bytes）：新來源（作者沒讀聽證原件）：Burke 證詞『He was, apparently, a Japanese and could not speak any English』與 Gracie 節錄相符；沒提推人、扮女裝。；https://www.titanicinquiry.org/USInq/AmInq09Ray01.php（R7802 seq 2，200，39225 bytes）：Ray 證詞第 1 頁，只取得第 2 頁連結。；https://www.titanicinquiry.org/USInq/AmInq09Ray02.php（R7802 seq 3，200，40659 bytes）：新來源：13 號艇『There was one Japanese』『Everybody was very orderly』，與 Gracie 書頁 288–292 節錄相符；作者漏了這段。；https://archive.org/download/lossofsstitanici00bees/lossofsstitanici00bees_djvu.txt（R7802 seq 4，200，343110 bytes）：sha256 前綴與作者 seq 17 相同；japan 全文 0 命中；書頁 192–193『four Chinamen were concealed under the feet』相符。",
+      "changes": [
+        "補讀美國聽證逐字稿轉錄：Burke（10 號艇）原話與 Gracie 節錄相符，新增來源 R7802-S001",
+        "作者漏了 Gracie 書頁 288–292：13 號艇（那位英國作者自己坐的艇）也列『One Japanese』，侍者 Ray 證詞說有個日本人且『大家都很有秩序』，新增來源 R7802-S002；answer_target、hook、payoff 改成『三艘艇上都有日本人紀錄、至少兩個不是他』",
+        "注意事項改寫：讀到的一手來源沒寫細野在哪一艘，正片不指定艇號、不說『那人不是他』",
+        "Gracie 卒年不在來源裡，正片改稱『一位倖存的美國上校』；作證船員卒年未查，一律只稱身分",
+        "ZW2-S003 的『丟了工作』改成原文的『毀了仕途』；ZW2-S005 補記 2009 年報導的『躲在裙裡』手記，列入沒有查證的流行細節",
+        "visual 換掉一個與書頁清單有關的畫面，改成三艘艇各有一個背影"
+      ],
+      "unverified": [
+        "細野實際在哪一艘（只有日文百科轉述研究者說是 10 號艇）",
+        "扮女裝的出處",
+        "日本當年報紙或教科書罵他的原文、免官文件",
+        "聽證逐字稿是民間轉錄，國會印刷本頁碼沒對到"
+      ],
+      "note": "流傳樣本合格：BRIEF 允許維基當樣本（不算來源），且另有 1997 年衛報轉載與英文部落格兩份樣本；但『英國作者的書罵他』這個說法只有日文百科轉述週刊一處，且條目本身已收錄 2011 年的反駁，翻轉並非首創。補上 13 號艇證詞後翻轉明顯變強，可收 episode_core。"
+    },
+    {
+      "id": "N7595",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7802",
+      "author": "ZW2",
+      "key_source_reopened": "https://hirise.lpl.arizona.edu/ESP_039308_1915（R7802 seq 5，200，28437 bytes）：與作者 seq 1 相同；partially deployed、2013-02-28／2014-06-29、0.3 m、『only two or three of the motorized solar panels』、RF antenna 句皆相符。；https://www.dmu.ac.uk/about-dmu/news/2016/november/dmu-may-have.aspx（R7802 seq 6，200，54537 bytes）：與作者 seq 6 相同；『at least three』『fourth panel had not opened properly』『died in May 2014』相符；payoff『三片』改『至少三片』。",
+      "changes": [
+        "payoff『打開了三片』改『至少三片』並加『最可能』",
+        "『下降途中沒有發報器』改依 Nature（不帶發報器）與 Armagh（落地前按設計不發報）的寫法",
+        "把 De Montfort 新聞稿首段『先前以為它墜毀』加進流傳說法的佐證"
+      ],
+      "unverified": [
+        "2004 年調查報告全文",
+        "第四片為什麼沒打開"
+      ],
+      "note": "幾片展開的說法不同已在注意事項裡並陳（HiRISE 只看到兩三片、可能是反光角度；大學說至少三片）；兩者都指向『沒全開所以擋住天線』，正片說『最可能的解釋』。計畫主持人 2014 年過世，卡上不點名，確認。"
+    },
+    {
+      "id": "N7596",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7802",
+      "author": "ZW2",
+      "key_source_reopened": "https://www.guancha.cn/industry-science/2021_12_06_617503.shtml?s=zwyxgtjdt（R7802 seq 7，200，61740 bytes）：位元組數與作者 seq 25（61,804）略有差異（頁面動態欄位），正文相同；日記原句、80 米、第 36 個月晝、10 月 29 日皆相符。",
+      "changes": [
+        "hook 刪掉來源沒有的『十公尺外』『駕駛員自己都笑了』，『一個月後』改『將近兩個月晝之後』",
+        "question 的『第一個問的』改『最早公布照片的官方駕駛日記自己就問了』，因為來源無法證明是第一個",
+        "answer_target 答案段改成『在讀到的報導裡都出自官方日記』"
+      ],
+      "unverified": [
+        "駕駛日記與國家航天局原文（只讀到觀察者網、21 英語網、Space.com 的轉述，三家說法一致）",
+        "EPSL 論文全文"
+      ],
+      "note": "翻轉偏弱，維持 chapter（5–7 分鐘），建議與其他月球題合併；日記原句已在觀察者網重抓核對。"
+    },
+    {
+      "id": "N7597",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7803",
+      "author": "ZW3",
+      "key_source_reopened": "https://crd.ndl.go.jp/api/refsearch?type=reference&query=question%3D%E6%BC%B1%E7%9F%B3%20and%20question%3D%E6%9C%88&results_num=20（R7803 seq 2，200，56557 bytes）：與作者 seq 6 雜湊相同；sys-id 1000160743 回答『確かな根拠を示す資料を見つけることはできませんでした』、所列書目與頁碼（金田一 p.237、珈琲店 p.236、名古屋大學 p.136、靜岡大學 p.14 腳注）全部相符。",
+      "changes": [
+        "hook：『漱石的全集、言行錄』改為『漱石的言行錄、研究他英語教學的專書』——圖書館紀錄查的是《漱石全集 別卷 漱石言行錄》，不是全集全部；『被畫成無數漫畫』無來源，改『傳遍網路』",
+        "payoff 同步改成圖書館實際查過的範圍"
+      ],
+      "unverified": [
+        "英語源頭文獻（ZW3-S002 付費牆）",
+        "1970 年代第一個掛漱石名的文獻",
+        "1958、1962、1979、1987 各書均經辭典編纂者或 PRESIDENT 專欄轉述，未讀原書；scope 已要求正片說『據一位辭典編纂者的追查』，可接受"
+      ],
+      "note": "機構來源（NDL 參考協同資料庫）讀到正文、流傳樣本兩個，『找不到出處＋同型說法早於掛名』的翻轉成立；轉引弱點已在 scope 限定說法，維持 screened、chapter 6–8 分。"
+    },
+    {
+      "id": "N7598",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R7803",
+      "author": "ZW3",
+      "key_source_reopened": "https://www.mlit.go.jp/tagengo-db/R2-01705.html（R7803 seq 1，200，29608 bytes）：觀光廳多言語解說的另一則大久野島兔子條目（網址取自搜尋結果）：只寫島上約 1000 隻野兔、無天敵、禁帶寵物與砲台歷史，同樣沒有兔子由來；不新增為來源，只作降級依據的佐證。",
+      "changes": [
+        "premise_status 改 needs_check（採納作者建議）",
+        "question 的『首任經理回憶裡的第一句』改為『當年休暇村經營者的回憶』——轉載頁本身未署名，首任經理身分只見於旅遊網站",
+        "answer_target 標明答案待查與回憶的署名問題",
+        "notes 寫明升級需補的機構或原版來源"
+      ],
+      "unverified": [
+        "『1971 年 8 隻』無官方來源（覆核加讀觀光廳 R2-01705 亦無）",
+        "戰時實驗兔的處置（『盟軍安樂死』僅見無出處網站）",
+        "經營者回憶的原刊物與作者",
+        "竹原市、休暇村或毒氣資料館的正式說法"
+      ],
+      "note": "機構來源只撐得住『由來不明、官方稱家兔』，真正的答案只有個人網站轉載的回憶與轉載報導，依規定降 needs_check。",
+      "recheck": {
+        "verdict": "ADOPT_WITH_CHANGES",
+        "reviewer": "R7811",
+        "author": "ZV8",
+        "key_source_reopened": "https://www.chugoku-np.co.jp/articles/-/265726（R7811 seq 2，200，208589 bytes）：ZV8-S010：1972 年 4 月 21 日付〈移入野ウサギが異常繁殖〉、放兔的是島內國民休暇村、『１年半前』、『白と白黒、合わせて8組のつがい』＝16 匹、1 年半 200 匹、『島のアイドルにするつもりが、害獣に』都在公開段落；其後 1,382 字會員限定，確實沒讀到；https://chushikoku.env.go.jp/okunoshima/usagi.html（R7811 seq 3，200，4548 bytes）：ZV8-S008：sha256 前綴 5c3e89e61c44107e 與 ZV8 seq 14 相同；『１９７１年に小学校で飼いきれなくなった８羽のアナウサギを放したのがきっかけといわれています』",
+        "changes": [
+          "premise_status 維持補查代理的 screened：環境省訪客中心現行頁（ZV8-S008，覆核重抓）與 2011 年刊物（ZV8-S007）、廣島縣立圖書館在國會圖書館レファ協的調查紀錄（ZV8-S009，逐條附書名頁碼與報紙版面）都是機構來源；中國新聞 2023 年查自家 1972 年紙面（ZV8-S010，覆核重抓）。各說法並陳時，『戰後為觀光或由學校帶上島的家兔、實驗兔後代被報紙稱為傳說、確切由來無定論』這個答案有機構來源撐",
+          "但『1972 年休暇村放 8 對』只有報社 2023 年轉述、原版面沒讀、該文後半會員限定沒讀：question 的『當地報紙』改『地方報紙』（指中國新聞自家紙面的第一次報導，不是所有報紙），hook 改成『地方報紙翻出自己 1972 年的舊報導』，payoff 改『報紙回顧自己最早的一篇報導』，answer_target 寫明原版面與後半沒讀、報社結論不知道，scope 規定不說成本片看過原版面或報社最終結論",
+          "hook『官方說明寫 1971 年小學放了八隻』補『據說』：環境省兩件都用『といわれています』",
+          "answer_target『這一點各來源一致』改為『大致一致（例外是 2003 年論文集與 2010 年謎團書）』：ZV8-S009 列的 2003 論文集明說可能含實驗兔後代，與『一致』衝突",
+          "editorial.minutes [7,9] 改 [6,8]，與 chapter 一致"
+        ],
+        "unverified": [
+          "中國新聞 1972-04-21 原版面（只讀到 2023 年該報回顧的公開段落）",
+          "讀賣 2016-01-01、2019-10-07 與週刊文春 2016-02-11 原版面（2019 讀賣只讀到圖書館摘錄句）",
+          "『1971 年 8 隻』的原始出處與學校名（縣立圖書館也查不到）",
+          "休暇村經營者『5 隻』回憶的原刊物與作者",
+          "戰時實驗兔戰後下落（『盟軍安樂死』無出處，正片不講）",
+          "ZV8-S010 網址在覆核的搜尋中沒有重現出處（頁面真實存在、內容切題）"
+        ],
+        "note": "補查代理說的四件都讀得到、句句對得上；各說法並陳、以歸屬寫法呈現『報紙回顧 1972 年報導』時撐得住 screened，但不能把 1972 版面當成已讀的一手定論，已照此改寫問句、開場與 payoff。"
+      }
+    },
+    {
+      "id": "N7599",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7803",
+      "author": "ZW3",
+      "key_source_reopened": "https://tile.loc.gov/text-services/word-coordinates-service?segment=/service/ndnp/oru/batch_oru_mallard_ver02/data/sn88086023/00202194497/1911062701/0043.xml&format=alto_xml&full_text=1（R7803 seq 3，200，15767 bytes）：與作者 seq 30 雜湊相同；Daily East Oregonian 1911-06-27 電訊：Eight persons were injured, one seriously / None of the guests were injured / Elizabeth Wilson … hurled from the second floor and both ankles were broken / west wing wrecked，相符；無房號、無死者。",
+      "changes": [
+        "question：『死於爆炸的女傭幽靈』是方向卡說法，讀到的樣本（Westword）反而說她在爆炸中倖存、後來才死，改成『217 號房住著一位女傭的幽靈，可是爆炸電訊裡她只是傷者』",
+        "hook：『隔天的電訊』只撐得住無人名的 8 傷簡訊，女傭細節在 6 月 27 日的電訊，改『當年的電訊』；『沒有人死』改『名單裡沒有死者』",
+        "answer_target 刪去沒有樣本的流行細節（蠟燭或乙炔燈、升領班）",
+        "risk 刪去無來源的 F.O. Stanley 卒年與女傭『1950 年代前後』的說法"
+      ],
+      "unverified": [
+        "科羅拉多當地 1911 年報紙未讀（chroniclingamerica.loc.gov 封鎖，改用 www.loc.gov 與 tile.loc.gov，屬同一機構，合規）",
+        "女傭後來的去向與卒年，維持不點名不畫臉",
+        "飯店鬼故事出現的時間線",
+        "217 是小說家房號只見 Mental Floss 一篇"
+      ],
+      "note": "LoC 掃描 OCR 與作者官網自述都讀到正文且逐句相符，翻轉（傷者變鬼、靈感來自惡夢）成立；改問句後可收，chapter 6–8 分。"
+    },
+    {
+      "id": "N7600",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7803",
+      "author": "ZW3",
+      "key_source_reopened": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/pshe/references-and-resources/chinese-history/fieldtrip1.pdf（R7803 seq 4，200，2461478 bytes）：與作者 seq 37 雜湊相同；頁 17 桐油加火、殘膏十之二三，兩份奏疏引文（鹽滷石灰、十五丈餘、車水入池、不爨自燃、退潮啟涵洞；泡以鹽滷爛以石灰），短褲赤露搜檢，二萬零二百八十三箱，相符。；https://archive.org/metadata/india.history.resource.106222（R7803 seq 5，200，6325 bytes）：條目檔案清單，取得掃描 PDF 與 page_numbers.json 的檔名。；https://archive.org/download/india.history.resource.106222/106222_page_numbers.json（R7803 seq 6，200，112179 bytes）：刊本頁 36 = leaf 45、頁 73 = leaf 83、頁 74 = leaf 84。；https://archive.org/download/india.history.resource.106222/106222.pdf（R7803 seq 7，200，37505257 bytes）：掃描本轉圖（pdftoppm PDF 第 84–85 頁）讀 Vol. VIII 頁 73–74：three large vats … say 150 feet long, 75 feet broad, and 7 deep；about five hundred workmen；sixty or eighty officers；fresh water from the brow of the hill；salt and lime；commenced on the 3d … completed by the 23d；less than 1000 chests … nearly 1300，全部與作者摘要一致。",
+      "changes": [
+        "question：『課本插圖裡的一把沖天大火』沒有讀到樣本，改用讀到的樣本『當地博物館的英文線上展都叫燒鴉片』",
+        "payoff：『英譯把火燒進大家的印象』是成因推論，軟化為『連博物館的英譯都寫成 burning』",
+        "scope 加：奏疏兩池、目擊者三池要分開說；不說課本怎麼畫",
+        "ZW3-S019 limitations 註明覆核已用掃描本轉圖核對數字"
+      ],
+      "unverified": [
+        "林則徐奏摺影本或《林則徐集》原書未讀，奏疏全依香港教育局教材轉引（教育局屬機構來源，且 1839 年 Chinese Repository 目擊與告示獨立印證方法，可接受）",
+        "『殘膏可回收十之二三』只在教育局敘述，奏疏原句未讀；scope 已要求說『據香港教育局的說明』",
+        "『燒鴉片』圖像的來歷"
+      ],
+      "note": "兩個獨立的一手或機構來源（教育局轉引奏疏、1839 年英文月刊目擊掃描）都讀到正文，覆核轉圖確認目擊數字；作者已自行修正『海水』，維持 screened、episode_core。"
+    },
+    {
+      "id": "N7601",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7804",
+      "author": "ZW4",
+      "key_source_reopened": "https://www.aozora.gr.jp/cards/000035/files/301_14912.html（R7804 seq 1，200，179475 bytes）：雜湊與作者 seq 6 相同（ffc7978c345db28c）。自己以 Shift_JIS 解碼搜尋：『すみません』3 次、『生れて』5 次，都不是『生れて、すみません』；卷末初出《展望》1948 年 6–8 月號。另用作者 cache seq 4 核〈二十世紀旗手〉副題『――（生れて、すみません。）』（全文 count=2）、seq 5 圖書卡初出《改造》1937 年 1 月與沒年 1948-06-13。",
+      "changes": [
+        "risk 的太宰卒年出處改為 ZW4-S002 作家資料欄（1948-06-13）與 ZW4-S005；原本寫 ZW4-S003，但那頁沒有卒年",
+        "hook 的『書腰印著』沒有來源，改成『介紹文案寫著』（ZW4-S005 說的是新書文案）",
+        "answer_target、payoff 裡『和《人間失格》綁在一起最早可查的線索是中文出版文案』改寫成『據一位台灣專欄作者自述』，因為那份 2010 年文案本身沒讀到",
+        "弱點逐項：青空文庫兩份全文我自己重跑字串搜尋，《人間失格》『すみません』3 次、『生れて』5 次，都不是這句；〈二十世紀旗手〉『すみません』只在標題與副題（count=2），結果一致。『原是他人一行詩』只靠講談社書摘與 udn 專欄轉述友人回憶，維持只說『據太宰一位好友的回憶』、不下抄襲定論；友人 1977 年卒（ZW4-S005 第 194 行）、詩句作者卒年不明，維持不點名不入畫；role 維持 chapter"
+      ],
+      "unverified": [
+        "山岸外史 1949 年月報原文、《讀賣新聞》2010-04-21 原報導、2010 年 7 月中文出版文案都沒讀到",
+        "寺內壽太郎的生卒年"
+      ],
+      "note": "核心翻轉（不在《人間失格》、是〈二十世紀旗手〉副題）有青空文庫一手全文撐住；詩句原作者之說是單一回憶的二手轉述，已照實標示。"
+    },
+    {
+      "id": "N7602",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7804",
+      "author": "ZW4",
+      "key_source_reopened": "https://results2021.ref.ac.uk/impact/17bc9b5b-6f50-4de1-b928-cd4108eab929?page=1（R7804 seq 2，200，46517 bytes）：雜湊與作者 seq 10 相同。原文：very shallow earth cut grave、not buried in a coffin, but in a simple shroud、grave has been disturbed、likely that his skull had been removed、Beoley 頭骨 female aged over seventy、Channel 4 GBP27,420，都對得上；沒有『深墓室』，也沒有墓穴掃描的年份。；https://archive.org/download/sim_argosy-1866_1879-10_28/sim_argosy-1866_1879-10_28.pdf（R7804 seq 5，200，18496924 bytes）：檔名取自作者 seq 16 的 metadata。掃描本轉圖核對：PDF 第 28 頁是篇名頁『HOW SHAKESPEARE'S SKULL WAS STOLEN. Circa 1794. By a Warwickshire Man』（期刊頁 268）；PDF 第 37 頁（期刊頁 277）以 pdftoppm 110 dpi 轉圖親讀：墓石上一道裂縫離聖壇欄杆那端約兩英尺、Dyer 承認只抬起一端半英寸就開始裂又放下、結尾叔父引『'Twere to consider too curiously to consider so』作答，與作者摘要一致。另以文字層確認 300 guineas（Walpole 對 George Selwyn 的懸賞）、1794 年秋。",
+      "changes": [
+        "axis G 改 H：這題講的是考古判讀與一則 1879 年故事的真假，詛咒只是開場，沒有靈異成分",
+        "question 刪掉『四百年沒人敢開』（沒有來源說墓從沒被開過，作者自己的答案也說站不住），『2016 年透地雷達掃過』改成『2016 年公布的透地雷達掃描』；REF 只說 2014 年受邀、2016 年進 Beoley 地窖，沒有寫墓穴掃描的日期",
+        "hook 的『2016 年，一台雷達』改成『幾年前』，理由同上",
+        "answer_target『修正了學界以為的深墓室』沒有來源：REF 只說『修正了先前學界的理解』，AP 寫的是家人各自淺葬『而不是同一個墓室』，照此改寫",
+        "流傳說法改以 AP 稿實際寫的（開墓的警告、1879 年起的盜頭骨說『長年被當成神話』）為樣本，刪掉『及題卡』"
+      ],
+      "unverified": [
+        "雷達報告原文（REF 引文 3.4、3.5）與 Channel 4 紀錄片沒讀，深度與圖像數字沒有",
+        "墓誌是誰寫的、為什麼寫，沒有來源；正片不說『莎士比亞親自寫的』（作者 scope 已寫）",
+        "1884 年 Beoley 頭骨續篇的出處"
+      ],
+      "note": "REF 影響力個案（機構）與 1879 年《Argosy》原刊撐住紀錄面，我把《Argosy》頁 277 轉圖核對過；雷達報告本身沒讀，正片只能說『研究團隊判讀為』。"
+    },
+    {
+      "id": "N7603",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7804",
+      "author": "ZW4",
+      "key_source_reopened": "https://repertoire-explorer.musikmph.de/prefaces/6159-vw.pdf（R7804 seq 3，200，2516837 bytes）：雜湊與作者 seq 26 相同。英文版 Introduction 對得上：1791 夏匿名代 Walsegg 伯爵（1763–1827）委託、伯爵夫人 1791-02-14 去世、打算當成自己的作品、Süßmayr 1792 年 2 月底補完並偽造『di me W. A. Mozart mpria 792』、1793-01-02 van Swieten 辦遺孀義演伯爵不知情、1793-12-14 Neukloster 伯爵指揮署名『Par Monsieur Fr. C. de Wallsegg』。對不上：Herzog 只在腳註 1 的書目裡，序言沒有說經過出自他、也沒說他是教師，已改卡。",
+      "changes": [
+        "axis G 改 S：題目講的是委託人是誰、為什麼匿名，是歷史人物與名場面，不是靈異",
+        "question 原句『莫札特臨死前說，那位匿名訂安魂曲的使者是來替他自己訂的』與 1798 年傳記不合（莫札特說的是『這首安魂曲是寫給我自己的』），改寫；『封面上寫的』改成『總譜上署的』（ZW4-S012 只說總譜上明白標示他是作者）",
+        "刪掉 answer_target 與 scope 裡『這段經過出自伯爵身邊的教師 Anton Herzog 1839 年的記述』『據伯爵身邊一位教師的記述』：我讀 ZW4-S012 原文，Herzog 只在腳註 1 的書目裡（和 Wolff 1991、Keefe 2012 並列），序言沒說哪一句出自他，也沒交代他的身分；正片改說『據今天樂譜研究者的整理』，Herzog 不點名",
+        "answer_target 的『伯爵的冒名計畫因遺孀先辦義演而落空』是推論，改成來源寫的：1793 年 1 月 2 日 van Swieten 男爵在維也納為遺孀辦義演，伯爵不知情；payoff 同步改",
+        "流傳說法刪掉沒有樣本的『灰衣』；scope 加一條正片不說使者穿灰衣、不說使者是誰",
+        "risk 刪掉 Herzog 的點名；Niemetschek 改依事件年代",
+        "payoff 原句『灰衣使者這個細節在最早的傳記裡找不到』是在推翻一個沒有樣本的說法，改成對照有樣本的黑衣蒙面版本（ZW4-S013）與 1798 年傳記『像幽靈一樣站在車邊』（ZW4-S010 頁 33）"
+      ],
+      "unverified": [
+        "使者穿灰衣：1798 年 Niemetschek 原書頁 33–36（我讀了 OCR）沒有，ZW4-S013 是黑衣面具，沒有任何灰衣樣本",
+        "使者是誰",
+        "維也納新城演出日期：ZW4-S012 寫 1793-12-14、ZW4-S011 寫 1793-02-14，維持只說 1793 年",
+        "Herzog 1839 原文與 Deutsch 1964"
+      ],
+      "note": "Niemetschek 1798 原書與樂譜序言撐得起『死神使者是遺孀轉述』『委託人想冒名』這個翻轉；作者把一份書目誤當成出處，已拿掉。和 N173（薩列里下毒）只相鄰不同題，scope 已規定不談薩列里。"
+    },
+    {
+      "id": "N7604",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7804",
+      "author": "ZW4",
+      "key_source_reopened": "https://archive.org/download/pgcommunitytexts23841gut/23841-0.txt（R7804 seq 4，200，2740678 bytes）：雜湊與作者 seq 33 相同。第 25154 行起匡衡傳；第 25283–25296 行免官經過（郡圖誤以閩佰為平陵佰、多四百頃、收租穀千余石、專地盜土以自益、勿治、丞相免為庶人終於家）逐字核對無誤，全傳無鑿壁。另以作者 cache seq 30 核《西京雜記》卷二匡衡條、seq 36 核論文腳註 5 顏師古注轉引。",
+      "changes": [
+        "hook『他為了一張畫錯的地圖，丟掉了官位』太簡化（罪名是利用地圖錯誤『專地盜土』），改成『因為一張畫錯的地圖多出來的四百頃地，丟掉了官位』",
+        "弱點逐項：我重抓 PG《漢書》本（與作者 cache 雜湊相同）逐句對過匡衡傳：庸作以供資用、建昭三年為丞相封樂安侯、郡圖誤以閩佰為平陵佰、多四百頃、收租穀千餘石、專地盜土以自益、皆不道、勿治、免為庶人終於家，都在；全傳沒有鑿壁。作者把題卡的『多占田地』改成『專地盜土、起因是郡圖錯誤』是對的，保留。顏師古注只經《清華中文學報》論文轉引（腳註 5，引王先謙《漢書補注》），正片照作者寫法說『據學術論文轉引』即可，屬開放取用的學術來源，可接受"
+      ],
+      "unverified": [
+        "顏師古注原文（未直接讀到，只有論文轉引）",
+        "PG 本與標點本未對校（『閩佰』等字形）"
+      ],
+      "note": "《漢書》《西京雜記》原文與一篇開放取用論文都讀得到，翻轉清楚，可收。"
+    },
+    {
+      "id": "N7605",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7805",
+      "author": "ZW5",
+      "key_source_reopened": "https://archive.org/download/06054527.cn/06054527.cn.pdf（R7805 seq 4，200，9092955 bytes）：位元組與 ZW5 seq 30 相同；自行轉圖：PDF 第 176 頁末行『趙高者諸趙疏遠屬也趙高昆弟數人皆生隱宮』、第 177 頁『其母被刑僇世世卑賤秦王聞高彊力通於獄法舉以為中車府令』及小注『集解徐廣曰為宦者 索隱劉氏云蓋其父犯宮刑妻子沒為奴婢…並宮之故云兄弟生於隱宮也』、第 167 頁『趙高教其女壻咸陽令閻樂』皆相符；另在第 160–161 頁讀到作者未看圖的『二世曰何哉夫高故宦人也』『李斯曰不然夫高故賤人也』。；https://www.thepaper.cn/newsDetail_forward_3408069（R7805 seq 6，200，123137 bytes）：位元組與 ZW5 seq 32 相同；胡寅／喬松年天閹說、沈家本『恐高非真宦者』、馬非百據睡虎地『隱官』校改（1978《鄭州大學學報》）、兩條簡文、盧辯『趙高，宦者』、二世『故宦人也』與李斯『故賤人也』、『說不透這個隱宮之謎』皆相符；文中沒有任何學者卒年，也沒有『2007 年』論文。",
+      "changes": [
+        "自行轉圖核對四庫本《史記》PDF 第 176–177 頁（皆生隱宮、世世卑賤、中車府令、集解索隱小注）與第 167 頁（女壻咸陽令閻樂），與作者錄文相符",
+        "在 PDF 第 160–161 頁補讀到二世『夫高，故宦人也』與李斯『夫高，故賤人也』原文，ZW5-S015 範圍與 locator 擴充，不再只依 ZW5-S016 轉引",
+        "刪掉無出處的『1984 年卒』（前輩學者）、『2007 年』論文、沈家本『1913 年卒』改成依時代判斷",
+        "answer_target／payoff 原本傾向『先成家後入宮最說得通』，屬宦官說一方的解釋；改成兩說並陳、只說『若是宦官，就是先有女兒後成為宦官』",
+        "hook 的『電視劇裡永遠尖著嗓子』無來源，改成『很多人的印象裡』"
+      ],
+      "unverified": [
+        "秦簡簡文全是轉引（ZW5-S016、ZW5-S017），沒讀簡牘整理本或圖版",
+        "非宦官說一方（馬非百 1978）原文沒讀到",
+        "『幼年被閹』在任何紀錄裡都找不到，維持列為沒找到的流行細節",
+        "史語所 2025 論文只有書目"
+      ],
+      "note": "一手原文經覆核轉圖確認，兩說並陳不判定，8–10 分鐘 episode_core 可收。"
+    },
+    {
+      "id": "N7606",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7805",
+      "author": "ZW5",
+      "key_source_reopened": "https://www.planetary.org/articles/2492（R7805 seq 1，200，78469 bytes）：與 ZW5 seq 2 位元組與雜湊前綴相同；正文『A value in a single memory location was changed from a 0 to a 1』『On May 12… full memory readout… reset the bit… Wednesday, May 19』相符。",
+      "changes": [
+        "流傳版本改成樣本實際寫的：『據德國一位專家』外加 Telegraph 只引 UFO 專家；刪掉『一位德國 UFO 作家在報上說』『Telegraph 等報轉載』等樣本沒寫的傳播細節（德文原報導沒讀到）",
+        "hook 的『飛了三十三年』改成來源寫的『自 1977 年起』；『報紙上出現外星人劫持』改成『英國報紙引用一位 UFO 專家』",
+        "payoff 的『UFO 作家的猜測』改成『報紙引用一位 UFO 專家的說法』",
+        "刪掉計畫科學家無出處的『2024 年卒』，改為卒年未讀到、只稱身分"
+      ],
+      "unverified": [
+        "德文原報導與 Telegraph 原文",
+        "翻轉的位址與原因（宇宙射線或元件損壞），官方未公布；題卡已寫不下結論",
+        "JPL 原頁 403，只讀到 ScienceDaily 轉載與 Planetary Society 引文"
+      ],
+      "note": "紀錄面四個來源逐句對得上，流傳面只有一個二手樣本，chapter 6–8 分鐘照作者判斷。"
+    },
+    {
+      "id": "N7607",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R7805",
+      "author": "ZW5",
+      "key_source_reopened": "https://archive.org/download/02084613.cn/02084613.cn.pdf（R7805 seq 5，200，3953080 bytes）：位元組與 ZW5 seq 25 相同；自行轉圖 PDF 第 122 頁：『六年丙戌…公在鄧…九月十五日作岳陽樓記中有先天下之憂而憂後天下之樂而樂之句』相符。",
+      "changes": [
+        "question 的『國文老師說』無出處，改成『常有人說』",
+        "hook 刪掉無出處的『千里外』，改說南宋人編的年譜",
+        "payoff 的『小時候在洞庭湖邊讀書』是作者自補的地理推論，改成來源寫的『少年時在湖南安鄉讀書』；『自己承認洞庭湖的景色前人之述備矣』改成原文的『岳陽樓之大觀…前人之述備矣』",
+        "自行轉圖核對年譜 PDF 第 122 頁『公在鄧』『九月十五日作岳陽樓記』相符"
+      ],
+      "unverified": [
+        "滕子京求記信原文、是否附圖、《洞庭晚秋圖》畫名的最早出處",
+        "《輿地紀勝》等地志的安鄉讀書條",
+        "范仲淹一生是否到過岳陽"
+      ],
+      "note": "『寫作時在鄧州』有一手，但卡片的核心翻轉（看畫寫作）沒有一手，維持待查。",
+      "recheck": {
+        "verdict": "ADOPT_WITH_CHANGES",
+        "reviewer": "R7812",
+        "author": "ZV9",
+        "key_source_reopened": "https://archive.org/download/06044204.cn/06044204.cn.pdf（R7812 seq 1，200，4527555 bytes）：sha256 前綴 e24d2227643dd1d0 與 ZV9 seq 25 相同；轉 PDF 第 57 頁信首『六月十五日…恭投邠府四路經略安撫資政諫議節下』、第 61 頁『謹以洞庭秋晚圖一本隨書贄獻涉毫之際或有所助』，與 ZV9-S005 相符，畫名確為『秋晚』",
+        "changes": [
+          "question 的『那封求記信真的附了畫』改成『方志收的那封求記信確實寫著附了畫』，hook 的『信裡還夾著一幅畫』改成『清代方志收錄的那封朋友來信，信末寫著隨信附上一幅畫』：信只見於清雍正《湖廣通志》，照 scope 要說明出處年代",
+          "answer_target『看著畫寫成是後人把兩件事串起來的說法』屬推論，改成『讀到的紀錄裡沒有他本人的說法』",
+          "visual『秋天的官道』改夏日（信署六月十五日；原寫法暗合流行的秋天快馬版）；『小道觀』改『讀書堂』（太平興國觀只見二手 ZW5-S013，《輿地紀勝》寫讀書堂）",
+          "risk 加王象之"
+        ],
+        "unverified": [
+          "〈求記書〉只見於清代方志，宋元收錄未讀到；《洞庭晚秋圖》字序的最早出處",
+          "范仲淹一生是否親臨岳陽樓",
+          "信寄出年份（慶曆五年說只在 notes，未進正片）"
+        ],
+        "note": "兩項缺口（滕信附圖、宋代地志安鄉條）都有掃描本一手，我自行轉圖核對相符，screened 撐得住；role 維持 chapter 6–8 分鐘合理。"
+      }
+    },
+    {
+      "id": "N7608",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7805",
+      "author": "ZW5",
+      "key_source_reopened": "https://img.dpm.org.cn/Uploads/pdf/2231/T00045_00.pdf（R7805 seq 2，200，368071 bytes）：位元組與 ZW5 seq 14 相同；自行 150 dpi 轉圖：『社會上流傳…九千九百九十九間半，其中的半間，即今天所見文華殿後文淵閣西側的樓梯間』『玉帝天宮有房屋萬間』『有根有據…仔細推敲，卻也有不盡然之處』『現在所見之文淵閣即乾隆年間為存貯四庫全書所建』『半間之說很難成立』『兩架為間…唐建中四年（783年）間架稅』皆相符；頁面無刊名，只見欄目『答讀者問』與頁碼 45；只有一頁。；https://www.dpm.org.cn/building/talk/223511.html（R7805 seq 3，200，68308 bytes）：官網『故宮建築論談』頁，標題《故宮房屋共多少間？》，內嵌上列 PDF；確認連結出處。頁面無刊名與續頁。",
+      "changes": [
+        "ZW5-S007 頁面上看不到刊名，『《紫禁城》雜誌』改成『故宮官網收錄的答讀者問』，hook 同步",
+        "『故宮自己的刊物也說是傳說』與原文不符（原文是『有根有據…卻也有不盡然之處』），改寫；『只是傳說』改標為科普媒體 ZW5-S009 的說法",
+        "『6 間是刻意的偶數』是作者推論，改成官網原話（天一閣取『天一生水，地六成之』之義、6 開間、七閣皆仿此）",
+        "刪掉無出處的 8700 餘間作者『2004 年卒』",
+        "answer_target 補上 ZW5-S007 結論未讀"
+      ],
+      "unverified": [
+        "ZW5-S007 續頁與結論",
+        "1973 年普查（無一手）",
+        "9,371 間的故宮原公告",
+        "傳說最早出處"
+      ],
+      "note": "只讀第一頁撐得起 screened：卡片只用第一頁上作者明寫的論點，未借用未讀的結論，半間與文淵閣年代另有官網全文支撐；間數兩說要以『讀到兩種說法』呈現。"
+    },
+    {
+      "id": "N7609",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7806",
+      "author": "ZW6",
+      "key_source_reopened": "https://archive.org/download/06065189.cn/06065189.cn.pdf（R7806 seq 3，200，4451611 bytes）：雜湊相同；自己 pdftoppm 轉 PDF 頁 56 成圖讀：『風俗通曰天地初開未有人女媧摶黃土為人力不暇乃引絙於泥中以為人富貴黃土人也貧賤凡庸絙人也』，與作者抄錄一致，位置是右起第 5–6 行（作者寫 4–6）。另以作者 cache/016.bin 轉頁 17–18 核對卷七十八引文『俗說天地開闢未有人民女媧摶黃土作人劇務力不暇供乃引繩於泥中舉以為人故富貴者黃土人也貧賤者絙人也』，一致。",
+      "changes": [
+        "自己轉圖抽核兩處《太平御覽》引文，字句與作者一致；S010 行號改為右起第 5–6 行",
+        "『東漢應劭』『原書已佚』沒有任何讀到的來源，question/hook/payoff 改成『宋代類書引的古書《風俗通》』，answer_target 與 scope 標明補來源前不點名作者與年代",
+        "S011 是 UCSD 中文教材的故事改寫，不是童書；question、hook、visual 的『童書／繪本』改為『今天常講的版本／故事書』",
+        "S010 summary 補註：選題卡把『凡庸』版歸在卷七十八是錯的"
+      ],
+      "unverified": [
+        "應劭與東漢年代、《風俗通義》原書已佚",
+        "學者對漢代貴賤說的解釋（作者給 chapter，維持）",
+        "《天問》原文"
+      ],
+      "note": "原文經覆核轉圖確認，翻轉（俗說、工序推出貴賤、現代改寫刪句）成立但薄，chapter 5–7 分鐘合理，可與 N7576 合集。"
+    },
+    {
+      "id": "N7610",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R7806",
+      "author": "ZW6",
+      "key_source_reopened": "https://ndlsearch.ndl.go.jp/en/books/R100000002-I000001350699（R7806 seq 4，200，261466 bytes）：雜湊相同；書目 1977.8、日本シェル出版、252p、NDC 913.6、作者標目 1914-1987 對上。書目沒有任何『源頭』『帶紅』的資訊。",
+      "changes": [
+        "選題卡預期的『這本書是女性說的源頭／把說法帶紅』沒有任何來源支持，從 question、hook、answer_target、payoff 移除，改問兩條證據的出處",
+        "question 改為：證據是西班牙信稱伯母、死因是婦人病大虫，出處查得到嗎？",
+        "S013 summary『大學圖書館多以小說類編目』過度概括，改為四館中兩館 913 開頭",
+        "S014 補推定刊出年約 2007",
+        "visual 移除作者書桌一格（避免暗示源頭人物）；case_key 改名"
+      ],
+      "unverified": [
+        "謙信死因的同時代紀錄（景勝書狀、《上杉年譜》）",
+        "西班牙文書是否存在、原文是否稱 tía",
+        "八切書的『10 個證據』內容與 1968 年初版",
+        "這本書與女性說流行的因果關係"
+      ],
+      "note": "只讀到書目與兩篇通俗文章，兩條證據沒有一手；同意作者：補不到一手不收。",
+      "recheck": {
+        "verdict": "ADOPT_WITH_CHANGES",
+        "reviewer": "R7810",
+        "author": "ZV10",
+        "key_source_reopened": "https://dl.ndl.go.jp/pid/1223516（R7810 seq 1，200，4298 bytes）：OpenSearch seq 2 的 rdfs:seeAlso 給的條目頁；是 SPA 殼，不含 manifest 連結。manifest 網址是 NDL IIIF 固定格式代入 OpenSearch 給的 pid，manifest 自身 @id／label（越佐史料. 巻5）相符，頁圖網址取自 manifest，判定不是猜的錯物件；https://dl.ndl.go.jp/api/iiif/1223516/R0000262/1100,500,1700,2800/1200,/0/default.jpg（R7810 seq 2，200，508367 bytes）：越佐史料巻五頁429：〔上杉家古文書〕（天正六）三月廿四日景勝書狀『去十三日謙信不慮之虫氣不被執直遠行』、小島六郎左衛門宛、注『石黑左近藏人ニ送リシ書狀同ジ』；卯月三日蘆名宛『去月十三謙信不慮之煩不被取直遠行』；平等寺藥師堂題書『謙信さるとんし（頓死）』。與 ZV10-S001 相符；https://dl.ndl.go.jp/api/iiif/769631/R0000019/900,2000,1000,900/full/0/default.jpg（R7810 seq 3，200，413279 bytes）：《當代記》頁31下欄行末『此春越後景虎卒』與次行『…辭世頌云、一期榮華有ニ』；https://dl.ndl.go.jp/api/iiif/769631/R0000019/900,1450,1000,800/full/0/default.jpg（R7810 seq 4，200，484074 bytes）：下欄行首『（年四十九）、大虫と云々、及ニ死後ニ辭世頌云、一期榮華有ニ一盃ニ、四十九年一炊夢、三四句は不ㇾ繼』——『大虫と云々』相符；辭世頌與 ZV10 寫的『一盃酒…一睡夢』不同，已改",
+        "changes": [
+          "question 縮成只問『大虫』（西班牙報告只有兩篇自承未確認的通俗文章，沒有一手或學術來源，不能撐起問題的一半）；西班牙報告降為流傳細節一句帶過，scope 寫明不說不存在、不加篇幅",
+          "hook 刪『親手寫』（只讀到 1930 翻刻與花押，不能說親筆）與『只有四個字』（不慮之虫氣是五字且信不止這些字），改為『署名的書狀裡寫的是另一個詞』；payoff 『親筆信』改『署名的書狀』",
+          "ZV10-S002 summary 辭世頌改為《當代記》原文『一期榮華有二一盃一、四十九年一炊夢』（補查代理寫的『一盃酒…一睡夢』是《謙信一代記》的版本）",
+          "ZV10-S001 summary：〈上杉家譜〉附錄是『俄ニ中風』，不是『卒中風』；『卒中風』只在《上杉年譜》；answer_target 同步",
+          "S001／S002 read_via 補記網址出處（OpenSearch pid → IIIF manifest 固定格式，manifest 自身 @id 相符）",
+          "premise_status 維持 screened，role chapter、5–7 分鐘不變"
+        ],
+        "unverified": [
+          "《當代記》的成書年代與作者（正片不說）",
+          "『大虫』的語義（虎的婉語或某種病）沒有辭書或論文",
+          "西班牙報告是否存在、原文是否有 tía",
+          "八切書的十個證據內容與 1968 年報紙發表"
+        ],
+        "note": "兩部一手翻刻真實存在、卷頁與引文經自抓頁圖核對相符（只差辭世頌與家譜用語兩處小誤，已改）；網址出處成立。『大虫』那半題有一手可答，西班牙那半只有通俗文章，問句縮成只問『大虫』後可收。"
+      }
+    },
+    {
+      "id": "N7611",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7806",
+      "author": "ZW6",
+      "key_source_reopened": "https://repository.library.noaa.gov/view/noaa/20461/noaa_20461_DS1.pdf（R7806 seq 1，200，1762291 bytes）：雜湊 22360819c71008a4 與作者 seq 1 相同；3.1 節 BMEWS 440 MHz 三站、Thule 最準、interpreted as jamming、potential act of war、likely culprit、bombers positioned；1.1 節 Citrone near incident 與 1980 年代文件 delicately sidesteps；3.2 節 within months 電離層科、late 1968 SESS、catalyst；結論 largest SRB of the twentieth century (at specific frequencies)。全部對上，補了『特定頻率』與『likely』的限定，1965 年秋 Ent AFB 的時序已改。論文沒提核武，屬實。",
+      "changes": [
+        "『20 世紀最大射電爆發』補論文自己的限定『在特定頻率上』",
+        "『說服高層太陽才是元凶』改為論文原話的『很可能』",
+        "太陽預報單位時序改為 1965 年秋 Ent AFB 開始、之後搬進夏延山（原寫 1965 年起在夏延山）",
+        "hook 的『五月午後』改為落日時分（論文寫 UT 傍晚落日），飛機就位標明是當事人回憶",
+        "刪除選題卡『原因至今成謎』的殘留：scope 明定不得當流傳說法；『載核武』改為『論文沒這樣寫』而不說錯（S003 這句接在第一作者受訪引語前）",
+        "visual『新墨西哥高山天文台』無來源，改為空軍太陽天文台"
+      ],
+      "unverified": [
+        "Citrone 1995 原文與 1967 年空軍原始觀測紀錄",
+        "飛機是否載核武（論文未提）",
+        "『三個站被干擾』只見於 S003"
+      ],
+      "note": "流傳樣本：『原因至今成謎』沒有樣本、已刪；S003（CSM）是讀得到的真通俗報導，作為『載核武差點三戰』的樣本合格，但與論文落差主要在措辭強度，翻轉中等。"
+    },
+    {
+      "id": "N7612",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7806",
+      "author": "ZW6",
+      "key_source_reopened": "https://archive.org/download/NASA_NTRS_Archive_19700025955/NASA_NTRS_Archive_19700025955_djvu.txt（R7806 seq 2，200，547569 bytes）：雜湊相同；第 3 章 75.9 km、3.7°、1.67 km/sec、約 7 分鐘到 10 nm、約 55 分鐘、23.5 秒 vs 45 秒、Q 3000–5000 vs 10–300、heterogeneous 與 unlike anything observed within the Earth、diffusion；摘要段 approximately an hour、80 km E 24° S。全部對上。；https://archive.org/download/bub_gb_6QAAAAAAMBAJ/bub_gb_6QAAAAAAMBAJ_djvu.txt（R7806 seq 5，200，630881 bytes）：雜湊相同；頁 57『The astounding result of that crash: The moon rang like a bell for nearly an hour, indicating some strange and unearthly underground structure』與『should really make the moon clang!』、圖說『stage crash that made moon ring like bell』對上；作者頭銜是剛從 Marshall 中心主任轉任 NASA deputy associate administrator。",
+      "changes": [
+        "question 原問『這句話到底是誰寫的？』預設有唯一作者；S008 留言引 NASA 頁說 Apollo 13 時也有『科學家說像鐘一樣響』，改為『這句話出自哪裡、報告怎麼解釋』",
+        "answer_target、payoff、scope 一律改為『目前查到最早寫下的』，不說是他發明的",
+        "專欄作者身分改為原文頭銜（前太空飛行中心主任、時任 NASA 副助理署長），正片仍不點名",
+        "visual『教堂大鐘插圖佔半頁』無來源（圖說只說撞擊），改寫"
+      ],
+      "unverified": [
+        "《Sputnik》原文與年月",
+        "1969 年 11 月記者會原話",
+        "專欄作者卒年 1977（無 cache 來源，但不點名已是保守做法）"
+      ],
+      "note": "一手數據與 PopSci 原句都經重抓核對，翻轉（比喻 vs. 散射解釋、空心說原本論據是坑淺）成立。"
+    },
+    {
+      "id": "N7613",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7807",
+      "author": "ZW7",
+      "key_source_reopened": "https://cl.site.nthu.edu.tw/var/file/401/1401/img/1473/201823656.pdf（R7807 seq 8，200，1089918 bytes）：雜湊 dc40f08ebe2b5f59 與作者 seq 18 相同；pdftotext 後核對註 108 墓誌全段（含『臘賊就擒，遷武節大夫。班師過國門，奉御筆：捕草寇宋江。不逾月，繼獲』，轉引《水滸傳資料匯編》2002 頁 23）、1939 年府谷出土、折可存卒 1126、建炎四年撰、『俘臘取江』、上苑洞、研究史 1951／1967／1978、結論『受招安、征討方臘二事俱是信史』，全部相符。另發現《東都事略》也載侯蒙上書，answer_target 的『只在侯蒙傳』已改。",
+      "changes": [
+        "answer_target『侯蒙的建議只在《宋史·侯蒙傳》』改為『據一位日本史學者，正式史書裡寫草寇宋江打方臘的只有侯蒙傳；另一篇論文指出《東都事略》也載侯蒙上書』，因為 ZW7-S011 明寫《東都事略》載有侯蒙上書"
+      ],
+      "unverified": [
+        "墓誌拓本或錄文原書未讀，只有兩處學術轉引（文字一致）",
+        "《宋史》各傳、《東都事略》、《皇宋十朝綱要》原文皆轉引",
+        "《宣和遺事》原文未讀",
+        "三種讀法並列不判定（照作者）"
+      ],
+      "note": "墓誌句與研究史在重抓的清華中文學報裡逐句對上；翻轉（正史與墓誌都沒有毒酒）站得住，學界爭議照實並列。"
+    },
+    {
+      "id": "N7614",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7807",
+      "author": "ZW7",
+      "key_source_reopened": "https://archive.org/advancedsearch.php?q=title%3A%28%E5%8C%97%E5%8F%B2%29&fl[]=identifier&fl[]=title&fl[]=imagecount&rows=50&output=json（R7807 seq 1，200，8585 bytes）：照作者建議找《北史》卷五十二：檢索到國圖明初刻本各冊與《二十四史全譯·北史》。；https://archive.org/metadata/nlc-892-cbm1007-370696（R7807 seq 2，200，5046 bytes）：明初刻本全 26 冊，metadata 給上一冊／下一冊連結。；https://archive.org/metadata/nlc-892-cbm1007-370695（R7807 seq 3，200，5046 bytes）：第 15 冊檔名。；https://archive.org/download/nlc-892-cbm1007-370695/NLC892-CBM1007-370695_北史_一百卷_明初刻本_第15冊.pdf（R7807 seq 4，200，15892819 bytes）：轉第 3 頁成圖：已是西魏北周人物（獨孤信等）傳，不是卷五十二；止步，未再下載其他冊。；https://archive.org/metadata/er-shi-si-shi-quan-yi-14-bei-shi-di-2-ce（R7807 seq 5，200，8635 bytes）：《二十四史全譯·北史》第 2 冊有 djvu.txt。；https://archive.org/download/er-shi-si-shi-quan-yi-14-bei-shi-di-2-ce/二十四史全译14 北史 第2册_djvu.txt（R7807 seq 6，000，0 bytes）：網址含空白，curl 拒絕（工具錯誤，未送出）；改用百分號編碼重發見 seq 7。；https://archive.org/download/er-shi-si-shi-quan-yi-14-bei-shi-di-2-ce/%E4%BA%8C%E5%8D%81%E5%9B%9B%E5%8F%B2%E5%85%A8%E8%AF%9114%20%E5%8C%97%E5%8F%B2%20%E7%AC%AC2%E5%86%8C_djvu.txt（R7807 seq 7，200，3396347 bytes）：目錄列『蘭陵武王高長恭』在第 1523 頁，但本冊正文到不了卷五十二，OCR 也錯字嚴重；《北史》原文仍未讀到。；https://archive.org/download/06058891.cn/06058891.cn.pdf（R7807 seq author-cache-025，200，6241799 bytes）：未重抓，用作者 cache 檔自行 pdftoppm 轉 PDF 第 123、124、125 頁（存於 R7807/img）逐字目讀：『免冑示之面，乃下弩手救之，於是大捷』『貌柔心壯，音容兼美』相符，三頁皆無面具。",
+      "changes": [
+        "question 與 hook 的『放箭』改成照原文『乃下弩手救之』的『派弩手下來救他』",
+        "hook『兩百年後唐朝人寫的書』改『兩百多年後唐朝人記錄歌舞的書』",
+        "answer_target、payoff、scope 不再說面具『最早』出現在《通典》：ZW7-S014 稱《北史》寫了戴面具、《通典》踏襲《北史》，《北史》原文作者與覆核都沒讀到，所以只說『讀到的紀錄裡』",
+        "answer_target 註明覆核自行轉圖核對 PDF 第 123–125 頁"
+      ],
+      "unverified": [
+        "《北史》卷五十二原文（覆核找到 archive.org 兩種本子，但沒讀到該卷正文）",
+        "《教坊記》《隋唐嘉話》《舊唐書·音樂志》原文",
+        "今本《北齊書》此卷是否據《北史》補"
+      ],
+      "note": "《北齊書》露臉與『貌柔心壯』自行轉圖核對無誤，翻轉成立；『面具起於何時』降成『讀到的紀錄裡唐代才有』。"
+    },
+    {
+      "id": "N7615",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R7807",
+      "author": "ZW7",
+      "key_source_reopened": "",
+      "changes": [
+        "scope 改成正片一律不提《三國志》有沒有記載（作者與覆核都沒讀到陳思王植傳）"
+      ],
+      "unverified": [
+        "四句版在《三國演義》之前的最早出處",
+        "《三國志·陳思王植傳》與裴注是否完全沒有此事",
+        "ZW7-S018 是報紙隨筆，偽作派理由屬轉述"
+      ],
+      "note": "六句本與演義的兩首詩在 cache 裡對上，翻轉成立；問句承諾的『四句版從哪來』仍缺演義之前的出處，維持 needs_check、chapter 5–7 分鐘。",
+      "recheck": {
+        "verdict": "ADOPT_WITH_CHANGES",
+        "reviewer": "R7812",
+        "author": "ZV9",
+        "key_source_reopened": "https://archive.org/download/06065887.cn/06065887.cn.pdf（R7812 seq 2，200，3982977 bytes）：sha256 前綴 d4938b4604a2fd77 與 ZV9 seq 9 相同；轉 PDF 第 7 頁善注引《世說》四句『萁在竈下然豆居釜中泣本是同根生相煎何太急』，與 ZV9-S002 相符",
+        "changes": [
+          "question 原有兩個問號，改成單一問句（問『課本這四句從哪本書開始長這樣』，答案落在 answer_target 的李善注與《太平御覽》）",
+          "payoff 的『一字不差』與事實不符：御覽末句是『相煑何大急』，改成只差末句；answer_target 同步寫明",
+          "刪去讀到的來源沒寫的『983 年成書』與『比演義早三四百年』，改成『早了好幾百年』",
+          "《三國志》本傳『根本沒有』降為『寫文帝那幾年的部分沒有看到』（太和年間裴注小字只瀏覽）",
+          "御覽『魏志曰』條補註：前半見於本傳，只有七步段本傳沒有"
+        ],
+        "unverified": [
+          "宋本《太平御覽》同條字形未親見（只有識典古籍規範化轉錄）",
+          "李善注文字在四庫六臣本中是否經後人改動",
+          "《三國志》太和年間裴注小字未逐字讀",
+          "《漫叟詩話》等宋人詩話是否更早收四句版"
+        ],
+        "note": "演義之前的四句版出處補到了兩處一手（唐李善注異文、宋初類書），我自行轉圖核對相符；翻轉從『演義改的？』變成『宋初就有』，screened 可收，role 維持 chapter。"
+      }
+    },
+    {
+      "id": "N7616",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7807",
+      "author": "ZW7",
+      "key_source_reopened": "https://www.khm.at/en/objectdb/detail/100443/（R7807 seq 9，200，184295 bytes）：雜湊 5ded5baa5771ac43 與作者 seq 1 相同；年代欄『8. Jh.』、加洛林翼矛、聖釘、身分演變到 13 世紀朗基努斯、查理四世金套全部相符；說明首句不含『八世紀』，hook 改寫。",
+      "changes": [
+        "hook『說明第一句就是八世紀的翼矛』改為『說明寫加洛林時代的翼矛，年代欄寫八世紀』（重抓頁面首句沒有八世紀）",
+        "answer_target 紀錄四、payoff：NARA 與 HistoryNet 兩篇都沒提聖矛，刪掉『檔案館寫的日期也不一樣』的對比，改說檔案館只記 8 月 7 日尋回皇冠寶物、沒提聖矛哪天落入美軍手中",
+        "answer_target『是 1970 年代一本暢銷書接上去的』改為『讀到的來源都指向那本書，書本身沒讀到』，並註明 ZW7-S008 把『歷代命定之人擁有』的系譜歸到更早的宣傳者，正片不說整個預言都是那本書發明的",
+        "question 結尾『這個預言到底是誰寫出來的？』改『希特勒和這支矛的故事到底是誰寫出來的？』，對準來源撐得住的部分"
+      ],
+      "unverified": [
+        "Ravenscroft 書內文一句都沒讀到",
+        "聖矛本身何時、被誰在紐倫堡取得，沒有一手紀錄",
+        "2003 年檢驗只有二手（7 世紀），博物館 2005 年論文集結論沒讀到；正片不引",
+        "英國法院判決原文沒讀到，只說『據報導』"
+      ],
+      "note": "博物館的 8 世紀與身分演變重抓核對無誤；希特勒聖矛故事的出處只有二手指認，已把措辭收到來源撐得住的程度。"
+    },
+    {
+      "id": "N7617",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7808",
+      "author": "ZW8",
+      "key_source_reopened": "https://nichibun.repo.nii.ac.jp/record/1085/files/symp_020__47__45_58__47_60.pdf（R7808 seq 1，200，1619467 bytes）：sha256 前綴 3741a80c73238f93 與作者 seq 1 相同；pdftotext 核對頁 47–48 生卒 701〔698〕～770、753 年第一船漂到安南、歷任安南節度使；頁 51–52《舊唐書》『放帰郷逗留不去』與《新唐書》『久乃還…天寶十二載朝衡復入朝』；頁 55『前学生阿倍朝臣仲麻呂在唐而亡』、註 16 卷 35 寶龜 10 年 5 月 26 日條、李白以為他死了而作悼詩——全部相符。",
+      "changes": [
+        "多活『約八年』改為『七、八年』，以涵蓋李白卒年 762／763 兩說（ZW8-S005）",
+        "answer_target 標明《續日本紀》與兩《唐書》原文是據荒木論文（ZW8-S001）轉引；scope 加正片說『據研究者引用』、不出示書影",
+        "刪除 scope 裡無來源的『劇作家 1991 年卒』，維持只稱身分",
+        "minutes 由 [8,10] 收為 [8,9]"
+      ],
+      "unverified": [
+        "《續日本紀》《舊唐書》《新唐書》原文未自讀（論文轉引，頁碼與註腳齊全，覆核重抓核對相符）",
+        "李白卒年只有報紙來源（通行說法，報紙並列一說）",
+        "李白寫詩的年份地點、〈望鄉詩〉是否真有其詩"
+      ],
+      "note": "作者承認的弱點逐項看過：轉引來自日文研研究者的論文、引文頁碼可核，屬機構學術來源；李白卒年是通行年份且以七、八年處理；170 人與回贈詩已只列為未證實的流行細節。素材有誤傳死訊、安南漂流、755 返長安、兩部唐書寫法相反、日本『回過一次家』傳說、《古今集》明州/蘇州，撐得起 episode_core 8–9 分鐘。"
+    },
+    {
+      "id": "N7618",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7808",
+      "author": "ZW8",
+      "key_source_reopened": "https://researchmap.jp/niheiyoshiaki/published_papers/29324404/attachment_file.pdf（R7808 seq 2，200，1188726 bytes）：雜湊與作者 seq 6 相同；英文摘要 21 個月、43 例相符；自己轉圖讀 PDF 第 5、7、8、9、10 頁：表 1 的 12/1/1/28/2/1 相符；頁 30 食行為（車前照吃、喇叭不走、被擠開）相符；另發現頁 29 研究者對計數歸類的保留與摘要稱號誌停車為典型，作者原問句的『大多數』因此改寫。；https://sora-dev.unm.edu/sites/default/files/journals/auk/v114n02/p0296-p0298.pdf（R7808 seq 4，000，0 bytes）：想補讀 1997 Auk 論文全文（網址出自搜尋結果與作者 seq 7），連線中斷，與作者相同；未再試、未找鏡像（core.ac.uk 在封鎖名單）。",
+      "changes": [
+        "問句改寫：原句說 43 次裡『大多數其實是趁沒車時丟在路上』，但論文摘要稱放在等號誌停車的車前為典型流程，頁 29 研究者也自承許多例子歸類有保留，翻轉被誇大；改成『也會挑車子得放慢的陡坡急彎，先把核桃擺在路上等』（頁 29 地點條件、表 1），這是原文撐得住的",
+        "answer_target 補入覆核自讀頁 25、29、30：A 地點 20/43 例、計數保留（14 對 31）、地點條件（路口、陡坡急彎、圓環、附近有核桃樹）、等待 25–35 分鐘、重擺行為",
+        "scope 加『正片不說比例結論』；payoff、source_locator 跟著改；visual 加一個陡坡急彎場景",
+        "ZW8-S006 的 reading_scope、locator、summary、limitations 補覆核讀到的頁面"
+      ],
+      "unverified": [
+        "論文第 12–15 頁未讀",
+        "1997 年 Auk 論文內容（覆核再試仍連線中斷），正片只能提標題",
+        "BBC 影片本身與拍攝地點年份"
+      ],
+      "note": "一手論文可讀、表 1 與食行為覆核轉圖相符；翻轉要收斂成『烏鴉挑的是車會停或慢的地方，研究沒測過燈號』而不是『大多數不是看紅燈』。chapter 6–8 分鐘合理。"
+    },
+    {
+      "id": "N7619",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7808",
+      "author": "ZW8",
+      "key_source_reopened": "https://archive.org/download/06082060.cn/06082060.cn.pdf（R7808 seq 3，200，3863716 bytes）：雜湊與作者 seq 17 相同（網址出自作者 seq 16 metadata 檔名 06082060.cn.pdf）；自己 pdftoppm 轉 PDF 第 110 頁讀，『滇王與漢使者言曰漢孰與我大及夜郎侯亦然以道不通故各自以為一州主不知漢廣大使者還因盛言滇大國足事親附天子注意焉』逐字相符，第 1 行另有『天子乃令王然于柏始昌呂越人等』；第 101 頁卷首『西南夷君長以什數夜郎最大』。",
+      "changes": [
+        "問句改寫：原句問『一個縣大』是誰說的，但來源答不出（answer_target 只能說不在原文），屬標題黨；改問司馬遷記下的問話原本在說什麼，答案（道不通、各自以為一州主、不知漢廣大、使者誇滇）在 PDF 第 110 頁",
+        "覆核自己轉圖補讀 PDF 第 101 頁卷首『西南夷君長以什數，夜郎最大』，夜郎『最大』改以《史記》自讀為據（原只靠訪談轉述）",
+        "補使者名字王然于、柏始昌、呂越人（PDF 第 110 頁第 1 行），修正作者 notes 說『那頁只寫漢使者』",
+        "刪『一個縣是後來說故事的人加的』這種無來源推斷，改為『讀到的來源沒有交代出處』；『夜郎也受金印』標為受訪研究員的說法",
+        "1958 年出土物照 ZW8-S010 寫為石寨山型銅鼓並補 1977 年 10 月 24 日；ZW8-S011 locator／summary／reading_scope 更新"
+      ],
+      "unverified": [
+        "『夜郎自大』四字最早出處",
+        "《漢書·西南夷傳》未讀",
+        "夜郎王受金印只有訪談來源（《史記》讀到的頁未見）"
+      ],
+      "note": "掃描本引文覆核轉圖逐字相符，紀錄一手且清楚；翻轉成立但『為何只剩夜郎背鍋』沒有來源，素材 6–8 分鐘，chapter 合理，axis L 維持。"
+    },
+    {
+      "id": "N7620",
+      "verdict": "REJECT",
+      "reviewer": "R7808",
+      "author": "ZW8",
+      "key_source_reopened": "",
+      "changes": [],
+      "unverified": [
+        "陳永華卒年、天地會創立年代的清代檔案、『陳近南＝陳永華』說法起源，均未讀到來源"
+      ],
+      "note": "確認作者交不收的理由屬實：seq 26 秦寶琦論文 PDF 只有摘要可讀、正文字型無對應（覆核以 pdftotext 檢視，正文為空白），且該文主題是香花僧秘典而非陳永華；seq 29 Cambridge 頁只讀到參考文獻；seq 21 京大頁是空殼、seq 22/27 連線失敗或 404、seq 28/30 archive.org 檢索沒有《平定臺灣紀略》掃描本；沒有流傳版本樣本。不是撞題，可在下一批重試。"
+    },
+    {
+      "id": "N7621",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7809",
+      "author": "ZW9",
+      "key_source_reopened": "https://archive.org/metadata/06079818.cn（R7809 seq 1，200，23932 bytes）：條目題名「前漢書·卷九十九中」、檔名 06079818.cn.pdf 與作者 seq 8 一致（作者 23,933 bytes，差 1 byte 為 metadata 動態欄位）。另以作者 cache/009.bin、006.bin 自行 pdftoppm 轉 PDF 第 7 頁與第 107 頁成圖核對：第 7 頁確有「京兆王盛為前將軍崇新公是為四將凡十一公王興者故城門令史王盛者賣餅莽按符命求得此姓名十餘人兩人容貌應卜相徑從布衣登用以視神焉」及師古注「視讀曰示」；第 107 頁確有「圖書皆書莽大臣八人又取令名王興王盛章因自竄姓名凡為十一人皆署官爵為輔佐章聞齊井石牛事下即日昏時衣黃衣持匱至高廟以付僕射…戊辰莽至高廟拜受金匱神嬗」。全文無「全國」找人字樣，卡上已改為「找到同姓名的十多人」。",
+      "changes": [
+        "answer_target 刪掉樣本裡沒有的『天命所歸』說法（那是選題卡的流傳說法，ZW9-S004 只說荒唐可笑），改成『原文明說名字是哀章挑的令名，不是先有其人』",
+        "補上顏師古注『視讀曰示』（覆核轉 PDF 第 7 頁圖讀到），並更新 ZW9-S002 limitations",
+        "ZW9-S001 limitations 註明 archive.org metadata 把撰者誤標為范蔚宗",
+        "確認卡上沒有『全國找人』：question、hook、payoff 只說找到同姓名的十多人，scope 第 4 條明令不說全國"
+      ],
+      "unverified": [
+        "王興、王盛後來的事蹟與後世史論沒查",
+        "肩水金關簡只讀到論文注腳轉述",
+        "研究者文章刊名年份 PDF 內未見"
+      ],
+      "note": "兩卷四庫薈要本《漢書》轉圖抽核兩頁原文逐字相符；『照名字找人、再用相貌占卜挑兩個』是紀錄本身的反常細節，翻轉夠，screened、episode_core 可。"
+    },
+    {
+      "id": "N7622",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7809",
+      "author": "ZW9",
+      "key_source_reopened": "https://www.city.sendai.jp/shiminkoho/shise/koho/koho/shisedayori/2017-04/date.html（R7809 seq 2，200，20632 bytes）：sha 與作者 seq 14 相同；確有「江戸時代に描かれた政宗の肖像画にそのような画像は一つもありません。映画やドラマ、ゲームなどによって広がったイメージであろうと思います」與延寶 4 年（1676）ころ伊達政宗画像配圖。沒有寫最早哪部作品。；https://www.mlit.go.jp/tagengo-db/H30-00215.html（R7809 seq 3，200，18343 bytes）：sha 相同；1652 年、死後 17 年、遺囑中委託造像「is said to」要求兩隻眼、日文「彼自身の意思により…依頼したと言われている」、右眼刻得略窄，都在。問句因此加「據說」。",
+      "changes": [
+        "question 的『連他的木像都照遺願刻了兩隻眼睛』改成『據說連他的木像都照他的意思刻了兩隻眼睛』，因瑞巖寺英日文解說都是傳聞語氣，遺囑原文沒讀到"
+      ],
+      "unverified": [
+        "1942 年電影最早讓政宗戴刀鍔眼罩，只有 Japaaan 通俗文章一個來源（『だそうで』），allcinema 已 403；卡上已只當『有一種說法』，問句的『到底是誰替他戴上的』答案以仙台市博物館學芸員的『影視遊戲傳開』為主",
+        "遺囑原文、1987 年大河劇造型資料未讀",
+        "狩野安信、賴山陽卒年未查，卡上只稱身分"
+      ],
+      "note": "『江戶肖像無眼罩』有仙台市（博物館學芸員撰文）與瑞巖寺解說兩個機構來源撐住，翻轉成立；素材短，維持 chapter 6–8 分鐘，screened 可。"
+    },
+    {
+      "id": "N7623",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7809",
+      "author": "ZW9",
+      "key_source_reopened": "https://www.vandruff.com/mlm_PG.html（R7809 seq 4，200，5766 bytes）：sha 相同；鏡像頁自述是 P&G 新聞稿 snapshot；1995-08-28 猶他聯邦地院起訴、Amvox 語音信箱、十五年、近半訴訟涉安麗經銷商、Donahue、mid-1800s、13 州、近 20 萬通、峰值 1982/1985/1990/1995、每天 22 通到近 200 通，皆相符；內容與 AP 2007 報導（1995 提告、語音信箱）互相吻合。；https://www.cbsnews.com/news/procter-gamble-wins-satanism-suit/（R7809 seq 5，200，605350 bytes）：sha 相同；1,925 萬美元、四名前安麗經銷商、1995 提告、Lanham Act、謠言最早 1981、安麗公司被排除、2003 上訴庭曾同意駁回（說謠言不構成誹謗）、寶僑再上訴恢復（被告轉述）、1980 年代多件個案最後一件 1990，皆相符。；https://content.time.com/time/magazine/article/0,9171,970867,00.html（R7809 seq 6，200，198802 bytes）：sha 相同；堪薩斯州夫婦、傳單「gave Satan all the credit for his riches」、alternative products、商標被迫撤下包裝、三次謠言追到安麗經銷商，皆相符。",
+      "changes": [
+        "answer_target『法院用的是不公平競爭與不實廣告的法律，而不是誹謗』是推論，改成『最後勝訴的是 Lanham Act 請求；據 AP，上訴法院 2003 年曾認為謠言不構成誹謗（被告轉述）』",
+        "hook『客服電話』改為『打到寶僑的消費者來電來信』，新聞稿寫的是 calls and letters / consumer contacts",
+        "謠言裡的談話節目以主持人姓名命名，主持人屬在世或 1956 年後過世範圍：scope 與 risk 改為正片不唸節目名，只說『一個全國性電視談話節目』",
+        "確認『查到謠言源頭』已改：question 是『在法院追到的散布者』，answer_target 明寫 1980 年最初源頭無人證實，只有多波個案追到經銷商（TIME 1990 寫三次、寶僑新聞稿寫近半訴訟）"
+      ],
+      "unverified": [
+        "寶僑 1995 新聞稿只讀到第三方（反直銷立場）鏡像，但內容與 AP 2007 報導一致",
+        "判決書正文未讀，只有 Leagle 頁首（2007-02-06 就 Lanham Act 批准原告簡易判決）",
+        "2007 年判決後是否上訴或和解未知，卡上只講到陪審團判賠",
+        "商標撤下包裝的確切年份只有 Snopes 的 1991 修改／1995 改字樣；TIME 1990 說 108 年歷史，與 Snopes 的 1851 不完全一致，正片只說 1800 年代"
+      ],
+      "note": "謠言樣本、寶僑否認、1990 TIME 當年報導與 2007 AP 判決報導互相吻合，翻轉（電視承認一幕從未發生、法院追到的是個別直銷商而非公司）成立，screened 可；不點名任何在世或 1956 後過世的人。"
+    },
+    {
+      "id": "N7624",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R7809",
+      "author": "ZW9",
+      "key_source_reopened": "https://www.eurekalert.org/news-releases/1048810（R7809 seq 7，200，111260 bytes）：（動態頁差 1 byte）at most 8 individuals、20 世代 200–300 頭、21 個基因組（島上 14、大陸 7）、confidently reject…doomed to go extinct for genetic reasons、probably just some random event、緩慢清除最有害突變、不含最後 300 年、something sudden，皆相符；沒有提到疾病或環境，卡上已刪。；https://su.se/english/news/new-genetic-study-reveals-the-woolly-mammoths-journey-towards-extinction-1.746552（R7809 seq 8，200，90882 bytes）：less than ten mammoths、6,000 年、約 300 頭可繁殖個體、近交衰退、滅絕前幾個世代才快速崩落、約 4,000 年前滅絕原因仍是謎，皆相符。；https://resolve.cambridge.org/core/services/aop-cambridge-core/content/view/ABEA7EE2ED024F78137A3CC4E642AAB0/S0033822200014739a.pdf/mammoth-extinction-two-continents-and-wrangel-island.pdf（R7809 seq 9，200，447291 bytes）：sha 相同；「stretched the extinction chronology of mammoths another 6 ka, into the time of the pharaohs」「20 new dates…range from 6148 to 2192 BC」「independent replications」，皆相符；沒有提金字塔，卡上已只說法老時代。",
+      "changes": [
+        "answer_target 刪掉『研究者推測可能是疾病或環境』，新聞稿只說『可能只是某個隨機事件』",
+        "risk 刪掉沒有來源的研究者卒年（2008、2010），改為卒年未查、一律只稱身分",
+        "visual 的『尼羅河畔搬運石塊的人群』改成神殿剪影與帆船，避免暗示金字塔年代",
+        "確認『比金字塔晚』已改：question、hook、payoff 都只說『法老的時代／埃及已經有法老在統治』，依 ZW9-S013 的 into the time of the pharaohs 與最晚定年約西元前 2192 年"
+      ],
+      "unverified": [
+        "2024 Cell 與 2017 PLOS Genetics 論文全文、1993 Nature 原文都沒讀；2024 的結論只靠 Cell Press 與斯德哥爾摩大學兩份機構新聞稿",
+        "侏儒說後續是否修正、人類登島年代未查"
+      ],
+      "note": "機構新聞稿（期刊出版社＋研究機構官方）加上 1995 年《Radiocarbon》期刊全文，夠撐 screened：卡上 2024 年的說法都標成『研究團隊在新聞稿中說』，且只用新聞稿明說的數字（最多 8／不到十頭、200–300 頭、21 個基因組、6,000 年、不含最後 300 年）；若日後要細講突變種類或 MHC，需補讀論文。"
+    }
+  ],
+  "process_notes": [
+    "古籍原文這一批幾乎都讀到了：zh.wikisource、ctext、github.com、kanripo.org 都在封鎖名單，研究代理改從 archive.org 的四庫薈要本、明刊本掃描 PDF 轉圖逐頁讀（《史記》《漢書》《三國志》《北齊書》《太平御覽》《三國志通俗演義》等），覆核各自轉圖抽核，沒有發現錄文錯誤；錯的多是研究代理加上的無出處細節（卒年、刊名、場景）。",
+    "覆核抓到的研究錯誤舉例：N7603 把樂譜序言書目裡的 Herzog 當成委託經過的出處；N7593 漏了 13 號艇清單也列『一個日本人』（覆核補讀美國參議院聽證後翻轉更強）；N7590 研究代理說找不到《太祖武皇帝實錄》，其實自己的檢索結果已列出，覆核轉圖讀到金台石拒降原話後由待查升為可收；N7618 原問句誇大翻轉，覆核補讀論文後改寫。",
+    "1956 真人規範：N7593 的英國作者（1967 卒）、N7595 計畫主持人（2014 卒）、N7594 的當年最高領導人（1975 卒）、N7601 的友人（1977 卒）、N7623 謠言裡以主持人命名的節目都只稱身分或不唸。",
+    "沒有發現編造的來源：十二位覆核共發 71 次重抓與補讀，位元組或正文與研究代理的快取相符。",
+    "第七十八批待查 5 題補查（ZV8–ZV10、R7810–R7812）：5 題全部補到一手或機構來源、可收，都只夠一章——N7585 台南抹香鯨（成大鯨豚中心紀錄）、N7598 大久野島兔子（環境省、廣島縣立圖書館調查與地方報紙回顧）、N7607 岳陽樓記（四庫本《湖廣通志》收滕宗諒〈求記書〉，附畫原名《洞庭秋晚圖》）、N7610 上杉謙信女性說（國會圖書館數位典藏《越佐史料》《當代記》；問句縮成只問「大虫」）、N7615 七步詩（李善注《文選》與《太平御覽》已有四句版）。 共 9 次重抓與加試。"
+  ]
+}

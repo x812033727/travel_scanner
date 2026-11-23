@@ -230,6 +230,38 @@ Drive 裡把舊資料夾整個搬過去（伺服器端搬移、不重傳；若�
    送 10 筆「排入」或補送的回報。失敗的下一輪重試；連續失敗 3 次標記為 `failed`，寫入
    稽核紀錄，之後每 6 小時再試一次。工作根目錄的 `STOP` 檔也會停止備份。
 
+## 後台直接開雲端硬碟（2026-11-18）
+
+站主 2026-11-18：從後台直接點開每支影片在雲端硬碟的資料夾與成片。
+
+- 每一輪備份之後，worker 替站台說「還沒有連結」的影片（設定裡的 `needs_drive_ids`：備份 done 或 partial，
+  但站台沒有這個資料夾的 ID）各跑兩次 `rclone lsjson --stat`，讀資料夾和 `final.mp4` 的 Drive ID，
+  送到 `POST /api/v1/video/automation/backup/{slug}/drive`。一輪最多 `DRIVE_LOOKUPS_PER_ROUND`（20）支；
+  只讀 Drive，主機已經清掉檔案的舊影片也補得到。
+- 站台存在 `video_projects.backup["drive"]`，連同讀取時的資料夾（`apps/api/app/video_backup/drive_links.py`）。
+  資料夾換了（改名、搬家）就不再顯示舊連結，下一輪 worker 會讀新的。
+- 後台的備份清單和「全部影片」每一列顯示「在雲端硬碟開啟」與「開成片」，在新分頁打開。
+  資料夾裡沒有 `final.mp4` 的（例如只有製作檔）只給資料夾連結。
+
+## 每日總表（2026-11-18）
+
+站主 2026-11-18：雲端硬碟上要有一份「有哪些東西、在哪裡」的總表。
+
+- 每一輪備份最後，worker 檢查距離上次總表是否超過 `VIDEO_BACKUP_INDEX_HOURS`（預設 24 小時，`0` 是關掉）；
+  到了就向站台要 `GET /api/v1/video/automation/backup/index`（`apps/api/app/video_backup/admin_status.py`
+  的 `drive_index`），寫成 CSV，上傳到 `<備份路徑>/_總表/`（`tools/video/automation/drive-index.mjs`）。
+- 一個節目一份試算表（名稱照後台設定的資料夾名稱），另外一份「全部」；Shorts 自成一份。
+  欄位：系列、代碼、分類、標題、狀態（製作中／可上傳／已上架／已放棄）、YouTube、雲端資料夾、成片、
+  備份狀態、大小、備份時間（台北時間）、資料夾、slug。連結欄是 `HYPERLINK`，在試算表裡直接點。
+- 上傳帶 `--drive-import-formats csv`，雲端存成 Google 試算表；也帶 `--drive-export-formats csv`，
+  已經在的試算表讀回來就是同名的 `.csv`，所以是就地更新，不會一天多一份。舊版本由雲端硬碟的版本紀錄保留。
+- 內容沒變就不上傳；站台或上傳失敗只記一行，下一輪再試，不影響任何一支影片的備份判斷與 tidy。
+  成功不寫進日誌（部署後的 `host-verify.sh` 會把陌生的 backup 行當成錯誤），而是記在工作目錄的
+  `_backup-index.json`：時間、份數、影片數與資料夾。
+- 沒有被放棄的影片都列進去；放棄的只有曾經備份過的才列。雲端連結要等 worker 讀過 ID（見上一節）才會出現。
+- 舊的 `docs/videos/ai-drama-drive/catalog.py` 仍然保留：它另外讀 repo 裡的配音、畫風、縮圖版型，
+  只涵蓋奇聞與原來，手動跑、手動放進各自的 `AI劇/<系列>/_總表/`。
+
 ## 匯入的影片與手動推送的影片
 
 雲端 session 做的影片（例如第 31 集起在 Colab 做的種田娶妻打天下）用

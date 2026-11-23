@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-17",
+  "status": "TOPIC_APPEAL_REFERENCE_NOT_FINAL_CUT_REVIEW",
+  "owner_request": "站主 2026-11-17 問怎麼有效率增加 6.5 分以上的題，選「先做 1 再做 2」：先改包裝總分 6.0–6.5 的單集題。",
+  "candidates_method": {
+    "scope": "總分 6.0–6.5 的入選單集題改包裝後的複評，第 7 輪 22 題：question、hook、payoff 由未參與研究與評分的改寫編輯重寫（問句 40–110 字、一個問號），事實與來源不動，新文字的數字與專名都在原題卡裡。複評的五項平均比原分高 0.5 以上（第 1–3 輪是「較高即採用」）的 6 題採用新包裝並以這份分數為準；其餘維持原文與原分。",
+    "persona": "台灣 25–45 歲、喜歡歷史懸案／奇聞／都市傳說長片的一般觀眾",
+    "card_fields": "題目、完整問題、開場鉤子、這集會揭曉（前 260 字）、畫面",
+    "reviewers": "兩位新評審各評一次，並放進同六題錨點；不讀 repo、不上網。各自用錨點平均與基準錨點平均的差扣掉鬆緊，再取兩人平均。五項欄位是兩人的原始平均，score 是校正後的五項平均；併入需求的總分由 build 計算。",
+    "sample_anchors": {
+      "P09": [
+        8.4,
+        8.6
+      ],
+      "N384": [
+        7.4,
+        7.8
+      ],
+      "N2843": [
+        4.7,
+        4.9
+      ],
+      "N2181": [
+        6.8,
+        6.8
+      ],
+      "N3266": [
+        5.5,
+        5.8
+      ],
+      "N142": [
+        7.2,
+        7.2
+      ]
+    },
+    "baseline_anchor_mean": 6.858,
+    "sample_offsets": {
+      "zr7-a": -0.5,
+      "zr7-b": -0.25
+    },
+    "caveat": "第 4 輪起每批除了六題錨點，另放 8 題剛評過、沒改動的對照題，用錨點與對照題的現有分數一起校正；N2501 的 answer_target 是一段覆核修訂註記而不是答案，題卡本身待修，不列入。",
+    "not_adopted": {
+      "N5964": {
+        "previous": 7.13,
+        "rescored": 7.28
+      },
+      "N103": {
+        "previous": 6.66,
+        "rescored": 5.83
+      },
+      "N425": {
+        "previous": 6.87,
+        "rescored": 5.83
+      },
+      "N2683": {
+        "previous": 6.57,
+        "rescored": 5.08
+      },
+      "N5083": {
+        "previous": 6.57,
+        "rescored": 6.08
+      },
+      "N4184": {
+        "previous": 6.92,
+        "rescored": 7.13
+      },
+      "N465": {
+        "previous": 6.91,
+        "rescored": 7.28
+      },
+      "N2423": {
+        "previous": 7.08,
+        "rescored": 6.83
+      },
+      "N5842": {
+        "previous": 6.71,
+        "rescored": 7.13
+      },
+      "N202": {
+        "previous": 6.72,
+        "rescored": 5.28
+      },
+      "N5943": {
+        "previous": 7.05,
+        "rescored": 7.43
+      },
+      "N4065": {
+        "previous": 6.81,
+        "rescored": 7.23
+      },
+      "N5965": {
+        "previous": 6.57,
+        "rescored": 6.13
+      },
+      "N624": {
+        "previous": 6.77,
+        "rescored": 7.08
+      },
+      "N6003": {
+        "previous": 6.63,
+        "rescored": 6.58
+      },
+      "N3082": {
+        "previous": 6.97,
+        "rescored": 6.88
+      }
+    }
+  },
+  "candidates": [
+    {
+      "id": "N3881",
+      "rank": 1,
+      "of": 400,
+      "score": 8.33,
+      "raw": 7.95,
+      "click": 8.5,
+      "hook": 8.5,
+      "surprise": 7.0,
+      "payoff": 7.25,
+      "share": 8.5,
+      "comment": "拿破崙被兔子圍攻誰不想點，出處可疑還有翻譯之差更妙",
+      "previous": {
+        "score": 7.06,
+        "comment": "拿破崙被兔子圍攻超想點，但變成版本校對有點掃興",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "從版本校對改成問『說故事的人是誰』，題目不再列年份與譯本；hook 用籠養兔把獵人當餵食者的畫面。"
+      }
+    },
+    {
+      "id": "N5923",
+      "rank": 2,
+      "of": 400,
+      "score": 8.13,
+      "raw": 7.75,
+      "click": 7.75,
+      "hook": 8.25,
+      "surprise": 7.75,
+      "payoff": 7.75,
+      "share": 7.25,
+      "comment": "大鐵放室內自己爛成粉好怪，不是隕石的反轉也夠力",
+      "previous": {
+        "score": 6.91,
+        "comment": "隕石進博物館自己爛掉很有畫面，可惜最後只是地球的鐵，偏科普。",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "題目把『進室內自己碎成粉』往前放並補上顏色畫面，刪掉人名與軍艦；payoff 先給『是地球的鐵』再講是誰看出來。"
+      }
+    },
+    {
+      "id": "N5524",
+      "rank": 3,
+      "of": 400,
+      "score": 7.68,
+      "raw": 7.3,
+      "click": 7.0,
+      "hook": 7.75,
+      "surprise": 7.25,
+      "payoff": 7.5,
+      "share": 7.0,
+      "comment": "客廳天花板太陽系很可愛，圖書館就有星曆表的結尾有笑點",
+      "previous": {
+        "score": 7,
+        "comment": "天花板太陽系轉了兩百多年很迷人，題目長到看不完",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "把『完工時末日早已過去』的矛盾放進題目，刪掉人名串與三層反轉的摘要；hook 改用壁櫥床與鐘擺的畫面。"
+      }
+    },
+    {
+      "id": "N663",
+      "rank": 4,
+      "of": 400,
+      "score": 7.53,
+      "raw": 7.15,
+      "click": 7.25,
+      "hook": 7.25,
+      "surprise": 7.25,
+      "payoff": 7.25,
+      "share": 6.75,
+      "comment": "寶藏最詳細的紀錄是詐欺判決，這角度新鮮，兩千人受騙有感",
+      "previous": {
+        "score": 6.83,
+        "comment": "德川埋藏金最詳細的紀錄竟是詐欺判決，這角度很妙",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "題目加上『2,189 人看廣告交錢』這個具體數字，考據腔『目前讀到最詳細』改成『查得到細節最多』；hook 用分紅 212 倍的廣告。"
+      }
+    },
+    {
+      "id": "N2382",
+      "rank": 5,
+      "of": 400,
+      "score": 7.53,
+      "raw": 7.15,
+      "click": 7.0,
+      "hook": 7.5,
+      "surprise": 7.25,
+      "payoff": 7.5,
+      "share": 6.5,
+      "comment": "堅持要證據的審判官被說魔鬼附身卻贏了，故事有英雄感",
+      "previous": {
+        "score": 6.63,
+        "comment": "要證據的審判官被說魔鬼附身，卻讓西班牙停止燒巫，有反轉",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "題目改從『要證據的人被說魔鬼附身』切入，把小冊重印移到 payoff；hook 用巡查八個月的數字。"
+      }
+    },
+    {
+      "id": "N1867",
+      "rank": 6,
+      "of": 400,
+      "score": 7.48,
+      "raw": 7.1,
+      "click": 7.25,
+      "hook": 7.0,
+      "surprise": 7.0,
+      "payoff": 7.5,
+      "share": 6.75,
+      "comment": "大岡名裁判九十則只有一則是真的，日劇迷會想看",
+      "previous": {
+        "score": 6.88,
+        "comment": "大岡越前的名案幾乎都不是他判的，看過日劇的會有感",
+        "review": "reviews/audience-20261117-one.json",
+        "changes": "題目把『約 90 則只有一則是他的』放前面並收成一個問句；hook 改用聞手找小偷的畫面。"
+      }
+    }
+  ]
+}

@@ -12,6 +12,9 @@ const featureMessageKey: Record<SiteFeature, string> = {
   flight_status: "features.flightStatus",
   airline_fares: "features.airlineFares",
   pricing: "features.pricing",
+  flight_search: "features.flightSearch",
+  videos: "features.videos",
+  member_features: "features.memberFeatures",
 };
 
 export async function PublicFeatureGate({

@@ -1,7 +1,9 @@
 import { NextRequest } from "next/server";
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { POST as drive } from "./[slug]/drive/route";
 import { POST as report } from "./[slug]/report/route";
 import { GET as config } from "./config/route";
+import { GET as index } from "./index/route";
 import { POST as lock } from "./lock/route";
 import { POST as answer } from "./test/[id]/route";
 
@@ -24,6 +26,7 @@ describe("video backup proxy", () => {
       return Response.json({ ok: true });
     }));
     const body = JSON.stringify({ state: "pending", folder: "奇聞檔案局/curio-h01", tier: "basic" });
+    const driveBody = JSON.stringify({ folder: "奇聞檔案局/curio-h01", folder_id: "1zQO3SHsHCs7jHTjWtcodlXT9nJDG2DCv" });
     const answers = await Promise.all([
       config(new NextRequest(`${BASE}/config`, { headers: auth })),
       lock(new NextRequest(`${BASE}/lock`, { method: "POST", headers: json, body: JSON.stringify({ lock_path: "AI/備份" }) })),
@@ -35,16 +38,24 @@ describe("video backup proxy", () => {
         new NextRequest(`${BASE}/curio-h01/report`, { method: "POST", headers: json, body }),
         { params: Promise.resolve({ slug: "curio-h01" }) },
       ),
+      index(new NextRequest(`${BASE}/index`, { headers: auth })),
+      drive(
+        new NextRequest(`${BASE}/curio-h01/drive`, { method: "POST", headers: json, body: driveBody }),
+        { params: Promise.resolve({ slug: "curio-h01" }) },
+      ),
     ]);
-    expect(answers.map((response) => response.status)).toEqual([200, 200, 200, 200]);
+    expect(answers.map((response) => response.status)).toEqual([200, 200, 200, 200, 200, 200]);
     const paths = calls.map((call) => `${call.method} ${new URL(call.url).pathname}`).sort();
     expect(paths).toEqual([
       "GET /api/v1/video/automation/backup/config",
+      "GET /api/v1/video/automation/backup/index",
+      "POST /api/v1/video/automation/backup/curio-h01/drive",
       "POST /api/v1/video/automation/backup/curio-h01/report",
       "POST /api/v1/video/automation/backup/lock",
       `POST /api/v1/video/automation/backup/test/${ID}`,
     ]);
     expect(calls.find((call) => call.url.endsWith("/report"))?.body).toBe(body);
+    expect(calls.find((call) => call.url.endsWith("/drive"))?.body).toBe(driveBody);
   });
 
   it("refuses a stray slug or id, and a request without a video tool token, before the API", async () => {
@@ -54,12 +65,17 @@ describe("video backup proxy", () => {
       new NextRequest(`${BASE}/..%2Fconfig/report`, { method: "POST", headers: json, body: "{}" }),
       { params: Promise.resolve({ slug: "../config" }) },
     );
+    const strayDrive = await drive(
+      new NextRequest(`${BASE}/..%2Fconfig/drive`, { method: "POST", headers: json, body: "{}" }),
+      { params: Promise.resolve({ slug: "../config" }) },
+    );
     const badId = await answer(
       new NextRequest(`${BASE}/test/not-a-uuid`, { method: "POST", headers: json, body: "{}" }),
       { params: Promise.resolve({ id: "not-a-uuid" }) },
     );
     const browser = await config(new NextRequest(`${BASE}/config`, { headers: { Cookie: "travel_access=session" } }));
-    expect([stray.status, badId.status, browser.status]).toEqual([404, 404, 401]);
+    const browserIndex = await index(new NextRequest(`${BASE}/index`, { headers: { Cookie: "travel_access=session" } }));
+    expect([stray.status, strayDrive.status, badId.status, browser.status, browserIndex.status]).toEqual([404, 404, 404, 401, 401]);
     expect(upstream).not.toHaveBeenCalled();
   });
 });

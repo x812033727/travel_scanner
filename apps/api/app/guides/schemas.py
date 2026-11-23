@@ -928,6 +928,7 @@ class SitemapCount(BaseModel):
     kind: Kind
     locale: Locale
     count: int
+    latest_modified_at: datetime | None = None
 
 
 class SitemapSummary(BaseModel):

@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-16",
+  "status": "TOPIC_APPEAL_REFERENCE_NOT_FINAL_CUT_REVIEW",
+  "owner_request": "站主 2026-11-14：擴充的成題要「經過評分，然後改進再入題」（門檻 6.5）。第四十七輪過素材門檻的長題（G692–G694）照做。",
+  "method": {
+    "first": "一位未參與撰稿、研究與覆核的獨立評審（A29）以一般觀眾身分只讀題案卡（片名、核心追問、目標分鐘、章節標題與新增理解前 220 字），五項各 1–10；同批放入基準初評的同一組錨點題原文（取自 5,869 題存檔點的改寫前文字）",
+    "rewrite": "另一位未參與撰稿與評分的改寫代理（W15）依短評只改片名、核心追問、章節標題與講法、中段章節順序；秒數、章節數與素材不變；腳本核對新文字沒有題案原文以外的數字",
+    "rescore": "再一位獨立評審（A30）用同一格式與同一組錨點評改寫版",
+    "gate": "rescore 加權總分 >= 6.5 准入題庫（本輪三題皆 >= 7.50，高於門檻）"
+  },
+  "scores": [
+    {
+      "id": "G692",
+      "theme_id": "G692",
+      "title": "身上沒有綠色色素，變色龍如何用「奈米晶體點陣」隨心所欲切換體色？",
+      "category": "生物動物與植物",
+      "target_minutes": 10.5,
+      "first_round": {
+        "reviewer": "A29",
+        "dimensions": {
+          "click": 7.3,
+          "hook": 7.1,
+          "surprise": 6.8,
+          "payoff": 6.2,
+          "share": 5.4
+        },
+        "weighted_score": 6.56,
+        "verdict": "revise",
+        "comment": "布拉格-斯涅爾定律光學公式推導略顯生硬，建議增強沙漠高溫下雙層細胞防曬降溫的生活化對比。"
+      },
+      "rewrite": {
+        "agent": "W15",
+        "changes": "將光子晶體間距調節形象比喻為拉開手風琴的風箱，增加深層晶體如同給變色龍穿上一件防曬隔熱太空衣的生動描述。"
+      },
+      "second_round": {
+        "reviewer": "A30",
+        "dimensions": {
+          "click": 8.2,
+          "hook": 8.3,
+          "surprise": 7.8,
+          "payoff": 7.6,
+          "share": 7.1
+        },
+        "weighted_score": 7.56,
+        "verdict": "pass",
+        "comment": "用大眾最熟悉的變色龍為切入點，打破傳統色素認知，將光子晶體布拉格反射與仿生變色材料講得通俗生動。"
+      }
+    },
+    {
+      "id": "G693",
+      "theme_id": "G693",
+      "title": "被揉碎也能熱水復原？記憶金屬如何用「原子無擴散剪切」記住自己的形狀？",
+      "category": "物理化學與日常材料",
+      "target_minutes": 10.5,
+      "first_round": {
+        "reviewer": "A29",
+        "dimensions": {
+          "click": 7.5,
+          "hook": 7.2,
+          "surprise": 6.8,
+          "payoff": 6.1,
+          "share": 5.5
+        },
+        "weighted_score": 6.62,
+        "verdict": "revise",
+        "comment": "相變自由能曲線與孿晶面位錯滑移概念偏抽象，建議強化心臟支架進入人體自膨脹的臨床實用細節。"
+      },
+      "rewrite": {
+        "agent": "W15",
+        "changes": "將原子無擴散相變比喻為方陣隊列士兵整齊劃一的微小斜步位移，增加心臟支架藉由人體37度體溫精準撐開血管的生動案例。"
+      },
+      "second_round": {
+        "reviewer": "A30",
+        "dimensions": {
+          "click": 8.4,
+          "hook": 8.5,
+          "surprise": 7.9,
+          "payoff": 7.6,
+          "share": 7.2
+        },
+        "weighted_score": 7.59,
+        "verdict": "pass",
+        "comment": "以熱水復原廢鐵的強烈視覺奇觀破題，把複雜的孿晶滑移與無擴散剪切相變剖析得層次分明、引人入勝。"
+      }
+    },
+    {
+      "id": "G694",
+      "theme_id": "G694",
+      "title": "跨越兩萬公里的太空微波，差分 GPS 如何用「載波相位」將誤差鎖定在公分級？",
+      "category": "數位科技與通訊工程",
+      "target_minutes": 10.5,
+      "first_round": {
+        "reviewer": "A29",
+        "dimensions": {
+          "click": 7.2,
+          "hook": 7,
+          "surprise": 6.7,
+          "payoff": 6.2,
+          "share": 5.6
+        },
+        "weighted_score": 6.54,
+        "verdict": "revise",
+        "comment": "雙頻載波色散消電離層數學推導稍顯晦澀，需加強對基準站『給周圍終端報答案對暗號』的形象比喻。"
+      },
+      "rewrite": {
+        "agent": "W15",
+        "changes": "將基準站差分比喻為考場裡已知標準答案的學霸向全班廣播修正係數，生動拆解RTK載波波長如一把19公分微觀尺子的測量原理。"
+      },
+      "second_round": {
+        "reviewer": "A30",
+        "dimensions": {
+          "click": 8.1,
+          "hook": 8.3,
+          "surprise": 7.7,
+          "payoff": 7.5,
+          "share": 7
+        },
+        "weighted_score": 7.53,
+        "verdict": "pass",
+        "comment": "從立交橋導航飄移的生活痛點破題，把抽象的載波相位整數模糊度與雙頻消電離層講得條理分明、引人入勝。"
+      }
+    }
+  ]
+}

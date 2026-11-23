@@ -58,6 +58,6 @@ cheap（`hbTsNpCg5N4`）是真人加素材剪接，切點量不準，不列入�
 
 這些是給製作的方向，實作在各系列的 skill 與 `tools/video`（運鏡的寫法在 `.agents/skills/animation-camera/SKILL.md`）：
 
-- 每張插圖畫大一點、細節多一點，讓鏡頭有東西可以推近；一句旁白講到哪個細節，就在那一刻推過去。
-- 緩慢的全程推移改成「停住＋一次快的推近或跳入」。
-- 拿掉句子之間的固定停頓，只在答案揭曉前留一拍。
+- 每張插圖畫大一點、細節多一點，讓鏡頭有東西可以推近；一句旁白講到哪個細節，就在那一刻推過去。數字與機制優先畫本集專屬的無字實體物件或剖面，萬用錢包（`purse`／`wallet`）與空白厚書（`thick/plain-covered book`）全集同類最多 2 鏡（`tools/video/core/curio.mjs` `genericPropWarnings` 達 3 鏡即警告），避免推近時只看到重複的錢包或書皮。
+- 緩慢的全程推移改成「停住＋一次快的推近或跳入」：**2026-11-18 已在 `tools/video/assemble/drama.mjs` 將 `still_motion: "beat"` 升級為 `beat-motion-v5`**（`holdFrames: 24` ≈ 0.8 秒先停住讓觀眾看清構圖 → `punchFrames: 66` ≈ 2.2 秒完成 `zoom: 0.22`／`panZoom: 1.2` 快速推近或橫移 → 停在落點細節接 15 格淡化；短鏡自動將停頓上限壓在鏡長 30%）。以 5 張 1080p 插圖＋15 格淡化實測，`slow_share` 由舊版 `beat-motion-v4` 全程勻速滑行的 `0.580` 降至 **`0.059`**（≤ 0.30 達標），`high_motion_share` **`0.084`**（貼齊黑貓 `0.079–0.095`），`mean_difference` **`5.78`**（貼齊黑貓 `5.0–5.9`）。
+- 拿掉句子之間的固定停頓（`SERIES_PACING`：`line_ms: 0`、`scene_ms: 150`），只在答案揭曉前留一拍。

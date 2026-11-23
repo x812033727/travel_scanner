@@ -82,3 +82,7 @@ row and audit after a separately bounded production operation.
   party or grant whole-feed single-source publication to resolve this case.
 - The native global SourcePatch remains a separate source configuration
   decision and cannot substitute for an audited candidate correction.
+
+### Related Decrypt source change on 2026-11-18
+
+The [Decrypt classification task](../done/2026-10-07-news-decrypt-topic-disclaimer-loop.md) records the historical Nano Banana and TikTok/Hugging Face cases, their identifiers, and the evidence archive for the news operator. The feed now uses per-story classification. This ticket continues to cover its original Gemini and Manus candidates. Recovery of an older candidate requires checking its current status and ownership.

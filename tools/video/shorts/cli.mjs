@@ -16,6 +16,8 @@ const HELP = `Shorts pipeline (docs/videos/SHORTS.md)
   package      --dir BUILD_DIR
   push         --dir BUILD_DIR
   import       --from DIR --workdir OUTSIDE_REPO      (final.mp4, zh-TW.srt, meta.json)
+               a silent drama (meta.json "line": "drama", "silent": true): final.mp4, meta.json and an
+               optional cover.png, no zh-TW.srt
   from-episode --slug EPISODE --workdir OUTSIDE_REPO [--episode-workdir DIR] [--short 1|2] [--speech ...] [--check]
                an explainer's two Shorts (docs/videos/<slug>/shorts.json) built on its keyframes
   from-drama   --slug EPISODE --from SECONDS --to SECONDS --workdir OUTSIDE_REPO [--episode-workdir DIR]
@@ -60,7 +62,10 @@ export async function main(args=process.argv.slice(2), { env = process.env, fetc
   }
   if (command==='check-audio') {
     const {checkAudio} = await import('./check.mjs');
-    const check = await checkAudio({directory:need(values,'dir'),client:await site(),lexicon:lexicon(),threshold:values.threshold===undefined?undefined:Number(values.threshold)});
+    const {isSilent} = await import('./core.mjs');
+    // A silent drama is checked without the site: it has nothing to transcribe.
+    const silent = isSilent(readJson(path.join(need(values,'dir'),'script.json'),null));
+    const check = await checkAudio({directory:need(values,'dir'),client:silent?null:await site(),lexicon:lexicon(),threshold:values.threshold===undefined?undefined:Number(values.threshold)});
     print(`${check.checked} phrases checked, ${check.flagged} flagged${check.flagged?`; next: build --redo ${values.dir}`:''}`);
     for (const line of check.flagged_lines) print(`  #${line.index}  Jev ${line.noul ?? 'no answer'}\n    script: ${line.text}\n    heard:  ${line.heard}`);
     return check.ok ? 0 : 1;

@@ -837,6 +837,18 @@
       "pricing_enabled": {
         "label": "方案与次数包",
         "help": "控制方案导航、查看次数包操作与 /pricing 页面。"
+      },
+      "flight_search_enabled": {
+        "label": "机票与住宿搜索",
+        "help": "控制前台搜索机票与住宿入口及首页搜索表单的显示。"
+      },
+      "videos_enabled": {
+        "label": "影音专区",
+        "help": "控制导航栏、首页影音快捷入口与页脚的视频链接显示。"
+      },
+      "member_features_enabled": {
+        "label": "会员功能与登录入口",
+        "help": "控制前台登录按钮、收藏、我的、我的旅程导航及卡片收藏／加入旅程操作。管理员仍可直接访问 /login 登录。"
       }
     }
   },
@@ -926,7 +938,10 @@
       "pg_dump": "备份工具",
       "github_ci": "GitHub CI",
       "api": "API",
-      "web": "Web"
+      "web": "Web",
+      "host_timer": "主机部署调度器",
+      "autodeploy_paused": "自动部署暂停",
+      "dry_run": "空跑模式"
     },
     "noSha": "尚无",
     "seconds": "{count} 秒",
@@ -968,7 +983,27 @@
     "warningBody": "部署前会创建 PostgreSQL 备份；新版本健康检查失败时只回退应用程序，不会降级 migration 或自动还原数据库。",
     "passwordLabel": "当前密码",
     "typeLabel": "输入",
-    "confirmSubmit": "确认并开始部署"
+    "confirmSubmit": "确认并开始部署",
+    "reasonTimerOffline": "主机部署调度器超过 15 分钟没有回报",
+    "reasonAutodeployPaused": "上一次自动部署失败、已暂停：先读 log、删除暂停文件后才能再部署",
+    "rebuildCurrent": "重建当前版本",
+    "rebuildTitle": "确认重建 {sha}",
+    "waitPaidWork": "有付费视频任务在运行时先不部署（建议）",
+    "hostTitle": "主机自动部署调度器",
+    "hostHint": "每天在部署时段内最多自动部署一次 main；按下按钮后约 5 分钟内由调度器接手。",
+    "hostLastReport": "最后回报",
+    "hostNever": "尚未回报",
+    "hostDryRun": "空跑模式：不会真正部署",
+    "hostWindow": "部署时段",
+    "hostWindowAny": "不限时段",
+    "hostToday": "今天自动部署次数",
+    "hostDecision": "最后决定",
+    "hostLastDeploy": "调度器最后一次部署",
+    "hostLastDeployValue": "{sha}・验证 {verify}",
+    "hostMissed": "部署时段结束却没部署",
+    "hostMissedValue": "{window}：{sha} 卡在 {gate}：{reason}",
+    "hostPaused": "自动部署已暂停",
+    "hostWarningBody": "部署脚本只在 migration 有变动时备份 PostgreSQL。所有容器都会重启（约 8 秒会出错）；部署失败会回滚并暂停自动部署。"
   },
   "aiAccountsPanel": {
     "loading": "正在读取账号状态…",
@@ -2180,6 +2215,21 @@
     "uncategorized": "未分类",
     "categoryFilter": "分类",
     "categoryAll": "全部分类",
+    "shelfFilter": "节目",
+    "shelfAll": "全部节目",
+    "shelves": {
+      "curio": "奇闻档案局",
+      "sothatswhy": "原来如此事务所",
+      "explainer": "概念解说（其他）"
+    },
+    "seriesFilter": "系列",
+    "seriesAll": "全部系列",
+    "seriesNone": "不属于系列",
+    "topicFilter": "分类",
+    "topicAll": "全部分类",
+    "topicNone": "未归类",
+    "driveFolder": "云端文件夹",
+    "driveFinal": "成片",
     "stateFilter": "状态",
     "stateAll": "全部",
     "search": "搜索",
@@ -2212,10 +2262,10 @@
     "loadError": "读取不到视频资料",
     "retry": "重试",
     "retryVideoTitle": "视频卡住了",
-        "retryVideoHelp": "确认原因已修复后，可让工作进程在下一轮重试这段视频一次。",
-        "retryVideoPending": "已请求重试，工作进程会在下一轮处理。",
-        "retryVideoButton": "重试这段视频",
-        "retryVideoError": "无法请求重试：{message}",
+    "retryVideoHelp": "确认原因已修复后，可让工作进程在下一轮重试这段视频一次。",
+    "retryVideoPending": "已请求重试，工作进程会在下一轮处理。",
+    "retryVideoButton": "重试这段视频",
+    "retryVideoError": "无法请求重试：{message}",
     "pending": "{count} 项待决定",
     "noPendingShort": "没有待决定",
     "progress": "进度 {done}/{total}",

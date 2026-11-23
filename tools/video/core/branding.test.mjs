@@ -4,7 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 
-import { adoptionRefusal, appliedBranding, brandingCurrent, brandingHash, currentBrandingFile, defaultIntroAt, episodeOfCompilation, INTRO_AFTER_FIRST_CHAPTER, INTRO_AT_START, introAtFrame, linesAcrossIntro, narratedLong, pinBranding, pinRecord, pinsDefault, placeBranding, presentationTimeline, readBranding, replacementRefusal, selectBrandingForBuild, shiftBrandingCues, validateBranding } from "./branding.mjs";
+import { adoptionRefusal, appliedBranding, brandingCurrent, brandingHash, currentBrandingFile, defaultIntroAt, episodeOfCompilation, INTRO_AFTER_FIRST_CHAPTER, INTRO_AT_START, INTRO_NONE, introAtFrame, introFrames, linesAcrossIntro, narratedLong, pinBranding, pinRecord, pinsDefault, placeBranding, presentationTimeline, readBranding, replacementRefusal, selectBrandingForBuild, shiftBrandingCues, validateBranding } from "./branding.mjs";
 
 const preset = (n = "a") => ({ schema_version: 1, id: `mokaair-${n}`, intro: { file: "intro.mp4", sha256: n.repeat(64), frames: 150 }, outro: { file: "outro.mp4", sha256: "b".repeat(64), frames: 90 } });
 const doc = { format: "slides", youtube: { video_id: null } };
@@ -211,12 +211,20 @@ test("only narrated long videos move the intro behind the condensation; casts, c
   b.current(preset());
   assert.equal((await selectBrandingForBuild({ ...b, doc })).intro_at, INTRO_AFTER_FIRST_CHAPTER);
   assert.equal((await selectBrandingForBuild({ ...b, doc: cast })).intro_at, undefined);
-  assert.equal((await selectBrandingForBuild({ ...b, doc: cast, series: story })).intro_at, undefined, "a brand story opens on the intro (owner, 2026-11-07)");
-  assert.equal(defaultIntroAt({ ...explainer, slug: "curio-w03-garmin" }), INTRO_AT_START, "a 奇聞檔案局 episode opens on the intro (owner, 2026-11-07)");
-  assert.equal(defaultIntroAt({ ...doc, slug: "story-everyday-crocs-c01" }), INTRO_AT_START, "a story- slug opens on the intro");
+  assert.equal((await selectBrandingForBuild({ ...b, doc: cast, series: story })).intro_at, INTRO_NONE, "a brand story opens on its first line with no intro (owner, 2026-11-19)");
+  assert.equal(defaultIntroAt({ ...explainer, slug: "curio-w03-garmin" }), INTRO_NONE, "a 奇聞檔案局 episode opens on its first line (owner, 2026-11-19)");
+  assert.equal(defaultIntroAt({ ...doc, slug: "story-everyday-crocs-c01" }), INTRO_NONE, "a story- slug opens on its first line");
+  assert.equal(defaultIntroAt({ ...explainer, slug: "sothatswhy-p12-qr-code", characters: [{ id: "chief" }] }), INTRO_NONE, "原來如此 opens on its first line");
+  assert.equal(defaultIntroAt({ slug: "curio-binge", format: "drama", compilation: { episodes: ["a"] } }), INTRO_AT_START, "a compilation keeps its bookends");
   assert.equal((await selectBrandingForBuild({ ...b, doc: cast })).hash, brandingHash(preset()), "a drama with a cast keeps the original hash");
   b.current(seriesPreset(), "sothatswhy");
   const series = await selectBrandingForBuild({ ...b, doc: explainer });
+  const none = placeBranding(preset(), INTRO_NONE);
+  assert.notEqual(none.hash, brandingHash(preset()), "a cut with no intro hashes apart from one that opens on it");
+  assert.equal(introFrames(none), 0);
+  assert.equal(introAtFrame(none, { chapters: [{ start_frame: 0 }, { start_frame: 900 }] }), 0);
+  const presented = presentationTimeline({ total_frames: 600, lines: [{ id: "a", start_frame: 0, end_frame: 30 }], scenes: [], chapters: [{ start_frame: 0 }] }, none);
+  assert.deepEqual([presented.lines[0].start_frame, presented.content_end_frame, presented.total_frames], [0, 600, 600 + none.outro.frames], "the first line plays at 0:00 and only the outro is added");
   assert.deepEqual([series.intro.frames, series.intro_at], [357, INTRO_AFTER_FIRST_CHAPTER], "the series' 357-frame intro moves too");
 });
 

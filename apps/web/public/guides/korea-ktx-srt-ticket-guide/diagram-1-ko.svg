@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" lang="ko" xml:lang="ko" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans CJK KR','Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif">
+  <title id="title">서울역·수서역 출발 부산행 KTX·SRT 노선도 및 요금 안내</title>
+  <desc id="desc">두 노선 비교도예요. KTX는 서울역에서 출발(청록색 선)하고 SRT는 수서역에서 출발(코랄색 선)하며, 천안아산 이후에는 같은 경부고속선을 따라 대전, 동대구, 경주(구 신경주역), 울산을 거쳐 부산으로 이어져요. KTX 서울-부산은 최단 2시간 18분, 하루 74회 운행하고 정차역이 많은 열차는 3시간 27분 걸리며 요금은 코레일 공식 사이트 기준이에요. SRT 수서-부산은 최단 2시간 11분, 하루 44회 운행하며 2026-09-01 기준 일반실 52,200원, 특실 75,700원이에요. 하단에는 수서 출발 SRT 일반실 요금이 정리돼 있어요: 천안아산 11,300원, 대전 20,100원, 동대구 37,000원, 경주 42,400원, 울산 46,400원, 부산 52,200원. 부산-경주 구간은 KTX 28~37분, SRT 일반실 10,100원이며, 서울-경주 KTX 최단 1시간 59분, 수서-경주 SRT 최단 1시간 52분이에요. 주의 사항: 서울역에서는 SRT를 살 수 없고, 수서역에는 KTX가 없으며, 코레일 패스(KORAIL PASS)로는 SRT를 탈 수 없어요.</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">서울·수서 ↔ 부산: KTX·SRT 노선과 최단 소요 시간(2026년 9월 확인)</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">KTX from Seoul Station, SRT from Suseo Station · 최단 소요 시간과 SRT 일반실 요금 비교</text>
+
+  <!-- legend (left side, cleanly clear of summary boxes) -->
+  <path d="M 60 142 L 130 142" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+  <text x="146" y="148" font-size="17" font-weight="700" fill="#102A2B">KTX(코레일)</text>
+  <path d="M 60 184 L 130 184" stroke="#B8442D" stroke-width="10" stroke-linecap="round"/>
+  <text x="146" y="190" font-size="17" font-weight="700" fill="#102A2B">SRT(SR)</text>
+
+  <!-- widened summary boxes with generous padding -->
+  <rect x="520" y="110" width="500" height="118" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="770" y="146" font-size="19" font-weight="700" fill="#0B4F4D" text-anchor="middle">KTX(코레일) 서울 → 부산 · 최단 2시간 18분</text>
+  <text x="770" y="176" font-size="15" fill="#0B4F4D" text-anchor="middle">하루 74회 운행 · 정차역 많은 열차 3시간 27분</text>
+  <text x="770" y="204" font-size="15" fill="#0B4F4D" text-anchor="middle">요금 코레일 공식 사이트 기준 · 코레일 패스 이용 가능</text>
+
+  <rect x="1044" y="110" width="516" height="118" rx="14" fill="#FBE9E4" stroke="#B8442D" stroke-width="4"/>
+  <text x="1302" y="146" font-size="19" font-weight="700" fill="#8A2E1D" text-anchor="middle">SRT(SR) 수서 → 부산 · 최단 2시간 11분</text>
+  <text x="1302" y="176" font-size="15" fill="#8A2E1D" text-anchor="middle">하루 44회 운행 · 일반실 52,200원 · 특실 75,700원</text>
+  <text x="1302" y="204" font-size="15" fill="#8A2E1D" text-anchor="middle">2026-09-01 기준 요금 · 코레일 패스 이용 불가</text>
+
+  <!-- lines: smooth merge well before x=400 so station labels have generous clearance -->
+  <path d="M 150 315 C 235 315, 250 460, 400 460" stroke="#0D6B68" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M 400 460 L 1420 460" stroke="#0D6B68" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M 150 650 C 235 650, 250 480, 400 480" stroke="#B8442D" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M 400 480 L 1420 480" stroke="#B8442D" stroke-width="10" fill="none" stroke-linecap="round"/>
+
+  <!-- origin stations: Seoul above KTX line, Suseo cleanly BELOW SRT curve -->
+  <circle cx="150" cy="315" r="20" fill="#0D6B68" stroke="#FFFFFF" stroke-width="5"/>
+  <text x="60" y="254" font-size="22" font-weight="700" fill="#102A2B">서울역 Seoul Station</text>
+  <text x="60" y="280" font-size="16" fill="#5C6B6B">KTX 출발 · 일부 열차 용산역·행신역 출발</text>
+
+  <circle cx="150" cy="650" r="20" fill="#B8442D" stroke="#FFFFFF" stroke-width="5"/>
+  <text x="60" y="704" font-size="22" font-weight="700" fill="#102A2B">수서역 Suseo Station</text>
+  <text x="60" y="730" font-size="16" fill="#5C6B6B">SRT 출발 · 지하철 3호선·수인분당선·GTX-A</text>
+
+  <!-- trunk stations -->
+  <g fill="#FFFFFF" stroke="#102A2B" stroke-width="5">
+    <circle cx="400" cy="470" r="16"/>
+    <circle cx="585" cy="470" r="16"/>
+    <circle cx="795" cy="470" r="16"/>
+    <circle cx="1000" cy="470" r="16"/>
+    <circle cx="1195" cy="470" r="16"/>
+    <circle cx="1420" cy="470" r="22"/>
+  </g>
+
+  <!-- trunk station names (Cheonan-Asan placed ABOVE, alternating cleanly clear of curves) -->
+  <g font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">
+    <text x="400" y="402">천안아산</text>
+    <text x="585" y="526">대전</text>
+    <text x="795" y="402">동대구</text>
+    <text x="1000" y="526">경주(구 신경주)</text>
+    <text x="1195" y="402">울산</text>
+    <text x="1420" y="402">부산</text>
+  </g>
+  <g font-size="15" fill="#5C6B6B" text-anchor="middle">
+    <text x="400" y="426">Cheonan-Asan</text>
+    <text x="585" y="550">Daejeon</text>
+    <text x="795" y="426">Dongdaegu</text>
+    <text x="1000" y="550">Gyeongju</text>
+    <text x="1195" y="426">Ulsan</text>
+    <text x="1420" y="426">Busan</text>
+  </g>
+
+  <!-- SRT fares row -->
+  <text x="400" y="602" font-size="16" font-weight="700" fill="#8A2E1D" text-anchor="start">SRT 수서 출발 일반실 요금(원, 2026-09-01 기준)</text>
+  <g font-size="17" font-weight="700" fill="#8A2E1D" text-anchor="middle">
+    <text x="400" y="632">11,300</text>
+    <text x="585" y="632">20,100</text>
+    <text x="795" y="632">37,000</text>
+    <text x="1000" y="632">42,400</text>
+    <text x="1195" y="632">46,400</text>
+    <text x="1420" y="632">52,200</text>
+  </g>
+
+  <!-- Busan-Gyeongju bracket -->
+  <path d="M 1000 662 L 1000 692 L 1420 692 L 1420 662" stroke="#2F6F9F" stroke-width="4" fill="none"/>
+  <text x="1210" y="722" font-size="16" font-weight="700" fill="#1F4E73" text-anchor="middle">부산 ↔ 경주 · KTX 28~37분 · SRT 일반실 10,100원</text>
+
+  <!-- notes -->
+  <text x="60" y="794" font-size="15" fill="#5C6B6B">소요 시간은 2026-09-01 시행 KTX·SRT 시간표의 최단 열차 기준이에요. 서울 → 경주 KTX 최단 1시간 59분, 수서 → 경주 SRT 최단 1시간 52분이에요.</text>
+  <text x="60" y="824" font-size="15" fill="#5C6B6B">KTX와 SRT는 운영사가 달라 서울역에서는 SRT를 살 수 없고 수서역에는 KTX가 없어요. 코레일 패스는 코레일 열차(KTX·ITX·무궁화호) 전용이에요.</text>
+  <text x="1540" y="878" font-size="15" fill="#8A8F8F" text-anchor="end">© Mokaair 제작 2026</text>
+</svg>

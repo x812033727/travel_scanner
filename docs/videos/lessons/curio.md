@@ -8,6 +8,20 @@
 這份會自動同步到雲端硬碟 `AI劇/奇聞檔案局/_規則與教訓/教訓/教訓.md`（docs/videos/rules-sync）。
 之前的教訓：`.agents/skills/curio-episode/references/w03-lessons.md`。
 
+## 2026-11-19 · 站主定：開場鉤子禁疊「問題菜單」、開頭不放片頭
+- **標題照黑貓公式，工具會檢查**：大家認得的名字放前面、一個利害或意外的字、數字（原來如此有用才加）、一個問號、後綴前 30 字內、重點在前 18 字（手機截斷處）、不跟縮圖大字重複（`narrative.mjs` `titleProblems`）。舊集改標題的交付表在 `docs/videos/packaging-refresh-20261111/`，由站主在 Studio 或主機指令換。
+- **前 300 秒觀眾審查（硬性關卡）**：警告擋不住，所以配音前加一關：三位獨立讀者用三種觀眾身分（路人、滑手機的人、挑剔的老觀眾）讀前 300 秒，三位都 ≥ 8.5、不滑走、沒有任何問題才可以 `tts`。預設由製作中的 AI 自己派三個全新子代理（`--record`，不花站台額度，作者不能當讀者）；要多一層保險就用 `--ask` 讓站台的模型跑。多人比一人好：每個身分抓的問題不一樣。
+- **開頭 15 秒接上縮圖**：觀眾是看了縮圖和標題才點進來的，開頭 15 秒沒聽到那件事，就會以為點錯（原來如此 QR Code 那集前 15 秒流失約四成）。lint：`narrative.mjs` `thumbnailEchoProblems`。現有 91 集裡有 38 集被抓到，例如 curio-s27 縮圖寫「維京盔沒有角」，開頭卻在講挪威農家挖地。
+- **開場只問一個問題**：鉤子是一個問句或觀眾熟悉的情境，接反差與承諾句；不准連丟三個以上問題把這集排成菜單（其他問題變成後面章節的 `loops`）。lint：`narrative.mjs` `questionMenuProblems`（`curio-`、`story-`、`sothatswhy-`），開場（第一章、最多 90 秒）扣掉承諾句的問句超過 2 句即警告。
+- **開頭不放片頭，第一句直接開始**：新集不再先播頻道片頭，`0:00` 就是鉤子；片尾照舊。工具已預設 `intro_at: "none"`（`core/branding.mjs` `noIntroSeries`），已 pin 的舊片不動。
+
+## 2026-11-18 · curio-w01／w02／s13-v2／s26-v2 · 對標黑猫研究院（`@qiqiqushi0`）補強旁白去但書化、禁用萬用道具與停頓快推運鏡
+對比黑猫研究院高點閱長片與本系列已交付集數（W01、W02、S13 v2、S26 v2），補齊縮圖（#2164）與需求四問（#2136）之外影響完播率與視覺重音的三處差距：
+- **旁白清掉法條但書、「查不到」與多版本史料校勘，改講人的困境與出招**：W01 旁白連講 5 次「照…的公開資料／年報寫／翻遍年報也找不到／沒有公布評審補助費／千萬別聽成…」，S 系列中段也常停下來逐條比對三四種史料版本，聽感像審計報告與文獻校勘。精準的法規適用範圍、年報附註與未公開數字一律放進 `claims.md` 與 `youtube.description`；旁白只講「誰被逼到牆角、對手出了什麼招、這一招買到或賠掉什麼」，歷史奇聞跟著當事人的抉擇走（`narrative.mjs` `caveatRecitationProblems` 全集超過 1 句即警告，盲評 `STORY_SERIES_PANEL_QUESTIONS.no_detour` 同步把關）。
+- **插圖禁用萬用「鼓扁錢包／空白厚書」洗版，同類上限 2 鏡**：W01 畫了 4 次錢包、W02 畫了 7 次錢包、S13 v2 與 S26 v2 分別畫了 9 次與 10 次素色厚書，導致觀眾每分鐘都在看同一種代替物。數字與機制優先畫該題專屬的無字實體物件、剖面或動作反差（如輪胎胎紋、黃銅閥門、封條木箱、插進鎖孔的鑰匙）；`purse`／`wallet` 與 `thick/plain-covered book` 全集同類最多 **2 鏡**（`curio.mjs` `genericPropWarnings` 達 3 鏡即警告）。
+- **合成運鏡 `still_motion: "beat"` 升級為 `beat-motion-v5`（停 0.8 秒＋快推 2.2 秒）**：舊版 `beat-motion-v4` 讓 6 秒靜圖全程勻速滑行，1080p 實測 `slow_share` 高達 `0.580`，畫面像慢慢飄；改為先停 24 格（0.8 秒）看清構圖、再用 66 格（2.2 秒）完成 `zoom: 0.22`／`panZoom: 1.2` 快推或橫移並停在特寫細節接 15 格淡化後，`slow_share` 降至 **`0.059`**（≤ 0.30 達標）、`high_motion_share` **`0.084`**、`mean_difference` **`5.78`**，貼齊黑猫實測區間。
+- 已升為規則：`tools/video/automation/register.mjs`、`tools/video/core/narrative.mjs`、`tools/video/core/curio.mjs`、`tools/video/assemble/drama.mjs`、`.agents/skills/brand-story/SKILL.md`、`.agents/skills/youtube-video/references/script-writing.md`、`.agents/skills/producer/references/pace-targets.md`。
+
 ## 2026-11-14 · curio-s10／s13／s23–s26-v2、w01、w02 · Claude（c14 重做收尾）
 八集都照 PR #2099（同節拍 2–3 句併一景、說明欄與縮圖新規則、八語系列後綴）與語速 4.4 重做完，八語 MiniMax 配音。這一輪學到的：
 - **先確認稿子版本**：W01、W02 在 main 上的 `video.json` 停在 11/04 舊稿，真正做成成片的稿子只在 Drive 製作檔的 `_repo/docs/videos/<slug>/`。拿舊稿併景、重錄會白花錢，而且 `status` 才會顯示「manifest 沒有圖」。重製前先跑 `status`：`keyframes drawn` 是 [x]、manifest 的 shot id 對得上 scene id，才動手。

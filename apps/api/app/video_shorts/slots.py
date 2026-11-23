@@ -19,7 +19,7 @@ from sqlalchemy import and_, delete, func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import AdminAuditLog, User, VideoProject, VideoReview
-from app.video_shorts import rules
+from app.video_shorts import hand_upload, rules
 from app.video_shorts.errors import ShortsRefused
 from app.video_shorts.models import (
     HOLDING_STATUSES,
@@ -54,6 +54,7 @@ class Short:
     pending: int
     approved_at: datetime | None
     hold: Hold
+    by_hand: bool = False
 
     def state_at(self, now: datetime) -> str:
         return state_of(self.project, self.pending, self.approved_at, self.hold, now)
@@ -170,14 +171,22 @@ async def shorts(
         )
     rows = list((await session.execute(statement)).all())
     held = await holds(session, [project.slug for project, _count, _at in rows])
+    by_hand = await hand_upload.hand_uploaded(session, [row[0] for row in rows])
     return [
-        Short(project, int(count), approved_at, held.get(project.slug, Hold()))
+        Short(
+            project,
+            int(count),
+            approved_at,
+            held.get(project.slug, Hold()),
+            project.slug in by_hand,
+        )
         for project, count, approved_at in rows
     ]
 
 
 def library_of(listed: Iterable[Short], now: datetime | None = None) -> list[rules.LibraryShort]:
-    """The approved Shorts that hold no slot, as the rules take them."""
+    """The approved Shorts that hold no slot and that the calendar may take, as the rules
+    take them: one the owner uploads by hand is not the site's to send."""
     moment = now or datetime.now(UTC)
     return [
         rules.LibraryShort(
@@ -187,7 +196,7 @@ def library_of(listed: Iterable[Short], now: datetime | None = None) -> list[rul
             uploaded=short.project.youtube_video_id is not None,
         )
         for short in listed
-        if short.state_at(moment) in ("library", "missed")
+        if not short.by_hand and short.state_at(moment) in ("library", "missed")
     ]
 
 
@@ -230,11 +239,15 @@ async def assign_approved(
     session: AsyncSession, project: VideoProject, now: datetime | None = None
 ) -> VideoShortsSlot | None:
     """Give a Short whose upload package was just approved its slot, when the run has one
-    for it; without a calendar it waits in the library. The caller commits."""
+    for it; without a calendar it waits in the library, and one the owner uploads by hand is
+    given none. The caller commits."""
     if project.shorts_line is None or project.dropped_at is not None:
         return None
     moment = now or datetime.now(UTC)
     with session.no_autoflush:
+        if await hand_upload.is_hand_uploaded(session, project):
+            await release(session, project.slug, moment)
+            return None
         found = await _slots_for(session, project.slug, moment)
         # A Short the worker made from a topic goes to the slot the weekly plan gave the topic.
         topic = await session.scalar(
@@ -254,8 +267,8 @@ async def assign_approved(
 
 
 async def release(session: AsyncSession, slug: str, now: datetime | None = None) -> int:
-    """Empty the slots a Short holds that are not on YouTube yet, when it is dropped. The
-    caller commits."""
+    """Empty the slots a Short holds that are not on YouTube yet, when it is dropped or is
+    the owner's to upload by hand. The caller commits."""
     moment = now or datetime.now(UTC)
     with session.no_autoflush:
         held = list(
@@ -301,13 +314,27 @@ async def unplan(session: AsyncSession, topic_slug: str, now: datetime | None = 
     return len(planned)
 
 
+async def release_hand_uploaded(session: AsyncSession, now: datetime) -> None:
+    """Give back the slots, however far ahead, of Shorts the owner uploads by hand. The
+    caller commits."""
+    held = await session.scalars(
+        select(VideoProject)
+        .join(VideoShortsSlot, VideoShortsSlot.project_slug == VideoProject.slug)
+        .where(VideoShortsSlot.status.in_(("assigned", "locked")))
+    )
+    for slug in sorted(await hand_upload.hand_uploaded(session, held.all())):
+        await release(session, slug, now)
+
+
 async def lock_due_slots(
     session: AsyncSession, now: datetime | None = None
 ) -> list[rules.SlotChange]:
     """Lock the slots whose time has come, fill the empty ones from the library, and give
-    up the ones that can no longer go out (``rules.lock_due``). The caller commits."""
+    up the ones that can no longer go out (``rules.lock_due``). The slots of Shorts the owner
+    uploads by hand are emptied first. The caller commits."""
     moment = now or datetime.now(UTC)
     row = await settings_row(session)
+    await release_hand_uploaded(session, moment)
     due = list(
         await session.scalars(
             select(VideoShortsSlot)
@@ -329,7 +356,7 @@ async def lock_due_slots(
         [
             short.project.slug
             for short in waiting
-            if short.state_at(moment) in ("library", "missed", "slotted")
+            if not short.by_hand and short.state_at(moment) in ("library", "missed", "slotted")
         ],
         moment,
         row.lock_hours,
@@ -530,6 +557,12 @@ async def _assign(session: AsyncSession, slot: VideoShortsSlot, slug: str, now: 
     if not found:
         raise ShortsRefused(404, "video_shorts_not_found", "找不到這支 Shorts，或它已經被放棄")
     short = found[0]
+    if short.by_hand:
+        raise ShortsRefused(
+            409,
+            "video_shorts_hand_upload",
+            "這支 Shorts 是手動上架，不排進月曆：請在 Studio 上傳，再到影片頁記錄連結",
+        )
     if short.state_at(now) not in ("library", "missed", "slotted"):
         raise ShortsRefused(
             409,

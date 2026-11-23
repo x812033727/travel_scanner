@@ -29,9 +29,7 @@ DeploymentReader = Annotated[User, Depends(require_capability("deploy.read"))]
 
 
 @router.get("/overview", response_model=DeploymentOverview)
-async def get_deployment_overview(
-    user: DeploymentReader, session: Session
-) -> DeploymentOverview:
+async def get_deployment_overview(user: DeploymentReader, session: Session) -> DeploymentOverview:
     _ = user
     return await deployment_overview(session)
 
@@ -39,9 +37,10 @@ async def get_deployment_overview(
 @router.post("/preflight", response_model=DeploymentPreflightResult)
 async def post_deployment_preflight(
     user: DeployAdminUser,
+    session: Session,
 ) -> DeploymentPreflightResult:
     _ = user
-    return await preflight_deployment()
+    return await preflight_deployment(session)
 
 
 @router.post("", response_model=DeploymentRunView, status_code=status.HTTP_202_ACCEPTED)

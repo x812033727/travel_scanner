@@ -179,10 +179,19 @@
   "thumbnail": {
     "template": "thumb",
     "data": {
-      "headline": "王后\n**背黑鍋？**",
-      "tag": "歷史謠言",
-      "sub": "死後48年才記到她名下",
-      "shot": "surprised"
+      "layout": "heimao-left",
+      "headline": "瑪麗皇后**背黑鍋？**",
+      "sub": "書裡那一天，比她出生早 15 年",
+      "asset": "stock/6b6f60ae5050a1f6e228665ef90a9f54c32e715da7a1d45d57eb26033abf63cf.jpg"
+    },
+    "replaces": {
+      "template": "thumb",
+      "data": {
+        "layout": "heimao",
+        "headline": "王后**背黑鍋？**",
+        "sub": "死後 48 年才記到她名下",
+        "shot": "surprised"
+      }
     }
   },
   "sources": [
@@ -257,7 +266,13 @@
       "checked_on": "2026-10-19"
     }
   ],
-  "assets": [],
+  "assets": [
+    {
+      "path": "stock/6b6f60ae5050a1f6e228665ef90a9f54c32e715da7a1d45d57eb26033abf63cf.jpg",
+      "source": "Mokaair 奇聞檔案局",
+      "license": "Mokaair"
+    }
+  ],
   "scenes": [
     {
       "id": "open-you",

@@ -9,6 +9,11 @@ import {
   DEFAULT_CADENCE,
   chapterOpenerProblems,
   HOOK_GAP_SECONDS,
+  ASIDE_GAP_SECONDS,
+  ASIDE_OPENER,
+  LIST_ITEM_OPENER,
+  callbackCountProblems,
+  TEN_STEP_CALLBACKS,
   hookCadenceProblems,
   isNarrated,
   LABEL_OPENERS,
@@ -123,6 +128,90 @@ test("the body carries an open loop at least every 90 seconds: a question, a for
     });
     assert.deepEqual(hookCadenceProblems(hooked, estimateTimeline(hooked)), [], device);
   }
+});
+
+test("where asides are read, one announced aside may run to 75 seconds and each item of the one counted list is a turn", () => {
+  assert.equal(ASIDE_GAP_SECONDS, 75);
+  for (const opener of ["這裡先稍微科普一下。", "還有一個支線故事。", "這裡先岔開講一個支線，因為後面會用到。"]) assert.match(opener, ASIDE_OPENER);
+  for (const item of ["第一個人是工程師。", "第二尊大神來了。", "第三步是關掉它。", "第一，它不用權利金。", "接著，第二步是電影院。", "第 1 步先裝解碼器。", "第一道防線是商標。"]) assert.match(item, LIST_ITEM_OPENER);
+  for (const other of ["第一次世界大戰剛結束。", "第一代機器賣得很差。", "第一名是瑞士人。"]) assert.doesNotMatch(other, LIST_ITEM_OPENER);
+  const flat = () => {
+    const doc = stretched();
+    for (const scene of padScenes(doc)) delete scene.chapter;
+    return doc;
+  };
+  const read = (doc) => hookCadenceProblems(doc, estimateTimeline(doc), TIGHT_CADENCE.gap, { asides: true });
+  const gaps = (problems) => problems.filter((problem) => /no open loop/.test(problem.message));
+  const seconds = (problems) => gaps(problems).map((problem) => Number(/\((\d+) s\)/.exec(problem.message)[1]));
+  const plain = flat();
+  const before = seconds(read(plain));
+  assert.ok(before.length > 0 && before.every((each) => each > ASIDE_GAP_SECONDS), "the fixture's flat body is one long stretch");
+  // A counted list told as events: every item closes the gap; the other narrated videos do not read it.
+  const listed = flat();
+  padScenes(listed).forEach((scene, index) => {
+    scene.lines[0].text = `第${"一二三四五六七八九十"[index % 10]}個人做了一件事。`;
+  });
+  if (padScenes(listed).length <= 10) assert.deepEqual(read(listed), []);
+  assert.ok(gaps(hookCadenceProblems(listed, estimateTimeline(listed), TIGHT_CADENCE.gap)).length > 0);
+  // A second list is a warning of its own and is not read as turns.
+  const twice = flat();
+  padScenes(twice).forEach((scene, index) => {
+    scene.lines[0].text = `第${"一二"[index % 2]}步做了一件事。`;
+  });
+  assert.ok(read(twice).some((problem) => /counted lists start in the body/.test(problem.message)));
+  // The announcement is found whatever else its sentence carries: the prompt's own example says
+  // 「後面會」, a forward hook, and still opens the aside's 75 seconds; a question asked right after
+  // it does not use them up.
+  // Each padded chapter runs about 33 s, so a question two scenes on is about 66 s away: over the 45
+  // but inside the aside's 75.
+  const padded = (first) => {
+    const doc = flat();
+    const scenes = padScenes(doc);
+    first.forEach((text, index) => {
+      scenes[0].lines[index].text = text;
+    });
+    scenes[2].lines[0].text = "那它到底怎麼做到的？";
+    return doc;
+  };
+  for (const [aside, plain] of [
+    [["這裡先岔開講一個支線，因為後面會用到。"], ["這件事後面會用到。"]],
+    [["這裡先稍微科普一下。", "什麼意思呢？"], ["這一句只是一個普通的句子。", "什麼意思呢？"]],
+  ]) {
+    assert.ok(gaps(read(padded(aside))).length < gaps(read(padded(plain))).length, aside.join(" "));
+  }
+  // Two announced asides: the second is named.
+  const two = flat();
+  padScenes(two)[0].lines[0].text = "這裡先稍微科普一下。";
+  padScenes(two).at(-1).lines[0].text = "還有一個支線故事。";
+  assert.ok(read(two).some((problem) => /2 asides are announced/.test(problem.message)));
+  assert.ok(!hookCadenceProblems(two, estimateTimeline(two), TIGHT_CADENCE.gap).some((problem) => /asides are announced/.test(problem.message)));
+});
+
+test("the ten-step series say 「還記得」 at most twice", () => {
+  assert.equal(TEN_STEP_CALLBACKS, 2);
+  const doc = stretched();
+  assert.deepEqual(callbackCountProblems(doc), []);
+  padScenes(doc).slice(0, 3).forEach((scene) => {
+    scene.lines[0].text = "還記得開頭那個數字嗎？";
+  });
+  const problems = callbackCountProblems(doc);
+  assert.equal(problems.length, 1);
+  assert.match(problems[0].message, /「還記得…」 is said in 3 lines/);
+  assert.ok(narrativeProblems(doc, estimateTimeline(doc), { cadence: TIGHT_CADENCE }).warnings.some((problem) => /「還記得…」 is said in/.test(problem.message)));
+  assert.ok(!narrativeProblems(doc, estimateTimeline(doc)).warnings.some((problem) => /「還記得…」 is said in/.test(problem.message)), "the other narrated videos keep their five");
+});
+
+test("the ten-step panel carries the owner's four decisions of 2026-11-19", () => {
+  const byId = new Map(panelQuestions({ slug: "curio-fixture" }).map((question) => [question.id, question.question]));
+  assert.match(byId.get("no_spoiler"), /可以用一句話點出答案的方向/);
+  assert.match(byId.get("no_spoiler"), /原因的細節或結局/);
+  assert.match(byId.get("no_toc"), /全片最多一段：先給總數和一個掛著的問題/);
+  assert.match(byId.get("no_detour"), /全片可以有一次預告過的岔題/);
+  assert.match(byId.get("no_recap"), /章末可以有一句定論/);
+  const explainer = new Map(panelQuestions({ slug: "sothatswhy-fixture" }).map((question) => [question.id, question.question]));
+  for (const id of ["no_spoiler", "no_toc", "no_detour", "no_recap"]) assert.equal(explainer.get(id), byId.get(id), id);
+  const other = new Map(panelQuestions({ slug: "ai-fixture" }).map((question) => [question.id, question.question]));
+  assert.doesNotMatch(other.get("no_detour"), /預告過的岔題/, "the other narrated videos keep their wording");
 });
 
 test("the loops table: enough for the length, three planted in the condensation, none in the outro", () => {
@@ -604,6 +693,8 @@ test("a curio- or story- slug reads the panel in the viewer wording, with its ow
   assert.match(questions.find((question) => question.id === "no_spoiler").question, /沒有先把劇情照順序濃縮一遍/);
   assert.match(questions.find((question) => question.id === "one_line").question, /明確的時間提示/);
   assert.match(questions.find((question) => question.id === "chapters_link").question, /沒頭沒尾/);
+  assert.match(questions.find((question) => question.id === "no_detour").question, /人的困境與出招/);
+  assert.match(questions.find((question) => question.id === "no_detour").question, /法條但書、年報揭露/);
   assert.notEqual(panelRulesSha256(curio), PANEL_RULES_SHA256);
   assert.notEqual(panelRulesSha256(curio), panelRulesSha256({ ...fixture(), category: "tutorial" }));
   assert.equal(panelRulesSha256({ ...fixture(), slug: "story-adapt-seiko" }), panelRulesSha256(curio), "both series share one contract");
@@ -614,7 +705,30 @@ test("a curio- or story- slug reads the panel in the viewer wording, with its ow
   assert.equal(narrativeReviewMatches(narrativeRecord(fixture(), verdict, 1), curio), false);
 });
 
-import { DAILY_BRIEF_PANEL_QUESTIONS, isDailyBrief } from "./narrative.mjs";
+import { CAVEAT_RECITATION_MAX, caveatRecitationProblems, DAILY_BRIEF_PANEL_QUESTIONS, isDailyBrief } from "./narrative.mjs";
+
+test("reciting statutory/filing caveats or missing-figure hedges twice or more warns the writer to tell human dilemmas instead", () => {
+  assert.equal(CAVEAT_RECITATION_MAX, 1);
+  const single = stretched();
+  single.scenes[1].lines[0].text = "照米其林的公開資料，這套評鑑一開始其實只送給買輪胎的車主。";
+  assert.deepEqual(caveatRecitationProblems(single), [], "one brief attribution across an episode is tolerated");
+
+  const repeated = stretched();
+  repeated.scenes[1].lines[0].text = "年報寫這筆授權收入創下新高，卻沒寫單筆抽成。";
+  repeated.scenes[2].lines[0].text = "我們翻遍年報也找不到那筆評審補助到底是多少。";
+  repeated.scenes[3].lines[0].text = "千萬別聽成這家協會自己出錢買單。";
+  const [warning] = caveatRecitationProblems(repeated);
+  assert.match(warning.message, /statutory\/filing caveats or missing-figure hedges recited in 3 lines/);
+  assert.match(warning.message, /年報寫/);
+  assert.match(warning.message, /翻遍年報也找不到/);
+  assert.match(warning.message, /千萬別聽成/);
+  assert.match(warning.message, /claims\.md and youtube\.description/);
+
+  const timeline = estimateTimeline(repeated);
+  const minutes = timeline.total_frames / FPS / 60;
+  assert.match(messages(narrativeProblems(repeated, timeline, { minutes, cadence: TIGHT_CADENCE }).warnings), /statutory\/filing caveats/);
+  assert.match(messages(lintVideo({ ...structuredClone(repeated), slug: "curio-w99" }, context()).warnings), /statutory\/filing caveats/);
+});
 
 test("a daily-ai- slug reads the panel in the daily brief wording, with its own contract hash; the ids and required flags do not move", () => {
   assert.equal(isDailyBrief({ slug: "daily-ai-20261028" }), true);
@@ -648,4 +762,125 @@ test("no_orphans asks every script whether anything arrives out of nowhere; a tw
   };
   assert.match(narrationText(duo, estimateTimeline(duo)), new RegExp(`\\] 小問：${firstLine.text.slice(0, 4)}`));
   assert.doesNotMatch(narrationText(base, estimateTimeline(base)), /小問：|所長：/, "one voice: no names");
+});
+
+import { isOpeningHookSeries, OPENING_QUESTION_MAX, questionMenuProblems } from "./narrative.mjs";
+
+test("the opening hook of curio-, story- and sothatswhy- asks one question, never a question menu (owner 2026-11-19)", () => {
+  assert.equal(OPENING_QUESTION_MAX, 2);
+  assert.equal(isOpeningHookSeries({ slug: "sothatswhy-p02-cloud-rain" }), true);
+  assert.equal(isOpeningHookSeries({ slug: "curio-w01" }), true);
+  assert.equal(isOpeningHookSeries({ slug: "story-adapt-seiko" }), true);
+  assert.equal(isOpeningHookSeries({ slug: "daily-ai-20261119" }), false);
+
+  const hook = stretched();
+  hook.slug = "sothatswhy-x01";
+  hook.scenes[0].lines[0].text = "雲裡面真的有水嗎？今天我們就來聊聊，雲為什麼不會掉下來？";
+  assert.deepEqual(questionMenuProblems(hook, estimateTimeline(hook)), [], "one question, the promise and one follow-up (the fixture's cd06) is a hook");
+
+  const menu = structuredClone(hook);
+  menu.scenes[0].lines[0].text = "為什麼雲會變灰？為什麼下午才下雨？雷又是從哪裡來的？";
+  const [warning] = questionMenuProblems(menu, estimateTimeline(menu));
+  assert.equal(warning.path, "scenes[0]");
+  assert.match(warning.message, /asks 4 questions/);
+  assert.match(warning.message, /question menu/);
+  assert.match(warning.message, /開場鉤子禁疊問題菜單/);
+  assert.match(messages(lintVideo({ ...structuredClone(menu), slug: "curio-w99" }, context()).warnings), /question menu/);
+
+  const later = structuredClone(hook);
+  const body = later.scenes.find((scene, index) => index > 1 && scene.chapter);
+  body.lines[0].text = "為什麼雲會變灰？為什麼下午才下雨？雷又是從哪裡來的？";
+  assert.deepEqual(questionMenuProblems(later, estimateTimeline(later)), [], "questions past the opening are the chapters' loops");
+  assert.deepEqual(questionMenuProblems({ ...structuredClone(menu), slug: "daily-ai-20261119" }, estimateTimeline(menu)), [], "other series are untouched");
+});
+
+import { thumbnailEchoProblems } from "./narrative.mjs";
+
+test("the first 15 s of curio-, story- and sothatswhy- echo the thumbnail or the title (owner 2026-11-19)", () => {
+  const doc = stretched();
+  doc.slug = "curio-s27";
+  doc.thumbnail = { template: "thumb", data: { headline: "維京盔\n**沒有角**" } };
+  doc.youtube = { ...doc.youtube, title: "維京人的頭盔，為什麼沒有角？｜奇聞檔案局" };
+  doc.scenes[0].lines[0].text = "一九四三年春天，挪威林厄里克，一個農家兒子替父母蓋房子。";
+  const [warning] = thumbnailEchoProblems(doc, estimateTimeline(doc));
+  assert.equal(warning.path, "scenes[0]");
+  assert.match(warning.message, /barely echo the thumbnail or the title/);
+  assert.match(warning.message, /「維京盔 沒有角」 0\/3/);
+
+  const echoed = structuredClone(doc);
+  echoed.scenes[0].lines[0].text = "你印象中的維京人，頭盔上是不是有兩隻角？";
+  assert.deepEqual(thumbnailEchoProblems(echoed, estimateTimeline(echoed)), [], "the thumbnail's subject in the first line");
+  assert.deepEqual(thumbnailEchoProblems({ ...structuredClone(doc), slug: "daily-ai-20261119" }, estimateTimeline(doc)), [], "other series are untouched");
+
+  const filler = structuredClone(doc);
+  filler.thumbnail = { template: "thumb", data: { headline: "飛機\n不會掉？" } };
+  filler.youtube = { ...filler.youtube, title: "為什麼飛機不會掉下來？｜原來如此事務所" };
+  filler.scenes[0].lines[0].text = "為什麼？到底為什麼它不會？真的不會嗎？";
+  assert.equal(thumbnailEchoProblems(filler, estimateTimeline(filler)).length, 1, "為什麼、不會、下來 never stand in for the subject");
+  filler.scenes[0].lines[0].text = "一架幾百噸的飛機，為什麼不會掉下來？";
+  assert.deepEqual(thumbnailEchoProblems(filler, estimateTimeline(filler)), [], "naming 飛機 echoes it");
+});
+
+import { readsTenStepPanel } from "./narrative.mjs";
+
+test("原來如此 reads the ten-step panel too, and its opening question bans a question menu (owner 2026-11-19)", () => {
+  const sothatswhy = { ...fixture(), slug: "sothatswhy-p12-qr-code" };
+  assert.equal(readsTenStepPanel(sothatswhy), true);
+  assert.equal(isStorySeries(sothatswhy), false, "look, cadence and branding rules stay apart");
+  const questions = panelQuestions(sothatswhy);
+  // The question menu is held by lint and the writer prompts; the panel wording of the two story
+  // series stays byte-identical so their saved verdicts and brand-story pilots are not re-opened.
+  assert.doesNotMatch(questions.find((question) => question.id === "opening_hooks").question, /至少三個後面才會揭曉的時刻/);
+  assert.equal(panelRulesSha256(sothatswhy), panelRulesSha256({ ...fixture(), slug: "curio-s27" }), "the three series share one contract");
+});
+
+test("原來如此 keeps the ten steps' 45-second hook cadence in lint (owner 2026-11-19)", () => {
+  const doc = stretched();
+  const required = (slug) => Number(messages(lintVideo({ ...structuredClone(doc), slug }, context()).warnings).match(/plants at least (\d+)/)?.[1]);
+  assert.equal(required("sothatswhy-x02"), required("curio-x02"), "the same loop minimum as 奇聞檔案局 (TIGHT_CADENCE)");
+  assert.ok(required("sothatswhy-x02") > required("explainer-x02"), "more than the default cadence asks");
+});
+
+test("the ten-step series plant two loops in the opening (contrast and promise), never a teaser menu (owner 2026-11-19)", () => {
+  const doc = stretched();
+  doc.slug = "sothatswhy-x03";
+  const timeline = estimateTimeline(doc);
+  const minutes = timeline.total_frames / FPS / 60;
+  const pads = padScenes(doc);
+  doc.loops = [
+    { setup: "cd06", payoff: pads[3].lines[0].id, what: "十個人去了哪裡" },
+    { setup: pads[0].lines[1].id, payoff: pads[4].lines[2].id, what: "那九個桶" },
+    { setup: pads[1].lines[0].id, payoff: pads[5].lines[0].id, what: "劍上的痕跡" },
+  ];
+  assert.match(messages(loopProblems(doc, timeline, minutes)), /the opening plants 1 loop; the hook's contrast and the promise's question are at least 2/);
+  doc.loops[1].setup = "cd04";
+  assert.doesNotMatch(messages(loopProblems(doc, timeline, minutes)), /plants \d+ loops?;/, "two are enough; the menu of three or four is not asked for");
+});
+
+import { titleProblems, TITLE_CORE_MAX } from "./narrative.mjs";
+
+test("titles of the three series follow 黑猫研究院: name up front, a stake word, a number, one question, short, not a calm reading question (owner 2026-11-19)", () => {
+  assert.equal(TITLE_CORE_MAX, 38);
+  const doc = (title, headline = "船在走 人沒了") => ({ slug: "curio-x01", youtube: { title }, thumbnail: { data: { headline } } });
+  assert.deepEqual(titleProblems(doc("十個人全部消失，1872 年這艘船為什麼還在走？｜奇聞檔案局")), [], "the series' own example passes");
+  assert.deepEqual(titleProblems(doc("賣輪胎的公司，憑什麼決定全世界最好吃的 3 星餐廳？｜品牌故事")), []);
+  const messages = (title, headline) => titleProblems(doc(title, headline)).map((problem) => problem.message).join("\n");
+  assert.match(messages("燈塔的故事改了哪裡？｜奇聞檔案局"), /calm reading question/);
+  assert.doesNotMatch(messages("燈塔的故事改了哪裡？｜奇聞檔案局"), /no number/, "a number is welcome, not required (2026-11-19)");
+  // 黑猫研究院's own shapes pass: a second clause past 30 characters, no number, and a contrast that asks nothing.
+  for (const title of [
+    "日本Seiko如何差點摧毀瑞士鐘錶帝國？石英革命完整故事",
+    "一條小小的HDMI線，憑什麼統治全世界？背後竟藏著一個收過路費的商業帝國！",
+    "一家賣輪胎的公司，為什麼能決定全世界最好吃的餐廳？",
+    "寶可夢真正的起點，不是遊戲，而是一個抓蟲少年",
+    "打贏任天堂，卻輸掉整個未來｜世嘉的自毀史",
+    "宮崎駿到底經歷了什麼？創造無數童話的男人，人生卻比電影還瘋狂！",
+  ]) assert.deepEqual(titleProblems(doc(`${title}｜奇聞檔案局`)), [], title);
+  assert.match(messages("燈塔看守人的故事｜奇聞檔案局"), /asks no question/);
+  assert.match(messages("為什麼 1872 年這艘船還在走？為什麼人不見了？｜奇聞檔案局"), /asks 2 questions/);
+  assert.match(messages("一艘在大西洋上漂流了很久很久很久很久很久很久的船上面的十個人到底去哪裡了呢你知道嗎？｜奇聞檔案局"), /characters before the series suffix/);
+  assert.match(messages("那艘在大西洋上漂了很久的船上的人去哪裡，1872 年消失？｜奇聞檔案局"), /phone cuts the title/);
+  assert.match(messages("船在走人沒了，1872 年為什麼？｜奇聞檔案局", "船在走人沒了"), /only repeats the title/);
+  assert.deepEqual(titleProblems({ slug: "daily-ai-20261119", youtube: { title: "AI 新聞" } }), [], "other series are untouched");
+  assert.deepEqual(titleProblems({ slug: "sothatswhy-x01", youtube: { title: "冰箱門一關，燈竟然真的會熄？｜原來如此事務所" } }), [], "原來如此 adds a number only where it is useful (refresh SPEC)");
 });

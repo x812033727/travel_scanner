@@ -2,9 +2,9 @@ import type { SiteFeature } from "./site-features";
 
 export const frontendDestinations: ReadonlyArray<{key: "explore" | "collections" | "trips" | "my"; href: string; feature?: SiteFeature}> = [
   { key: "explore", href: "/explore" },
-  { key: "collections", href: "/explore/collections" },
+  { key: "collections", href: "/explore/collections", feature: "member_features" },
   { key: "trips", href: "/trips", feature: "trips" as SiteFeature },
-  { key: "my", href: "/my" },
+  { key: "my", href: "/my", feature: "member_features" },
 ] as const;
 
 export function frontendActive(key: string, pathname: string) {

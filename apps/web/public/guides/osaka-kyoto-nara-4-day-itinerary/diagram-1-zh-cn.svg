@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" lang="zh-CN" xml:lang="zh-CN" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC','Microsoft YaHei',system-ui,sans-serif">
+  <title id="title">大阪、京都、奈良三角移动示意图 / Travel times between Osaka, Kyoto and Nara</title>
+  <desc id="desc">大阪与京都之间乘坐 JR 新快速约 30 分钟、阪急约 45 分钟；大阪难波到奈良乘坐近铁约 40 分钟；京都到奈良乘坐近铁约 35 到 50 分钟、JR 约 45 分钟；关西机场到难波乘坐南海电铁约 40 分钟；日本环球影城位于大阪西侧的西九条附近。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="64" y="84" font-size="40" font-weight="700" fill="#102A2B">大阪 · 京都 · 奈良　三角移动时间</text>
+  <text x="64" y="124" font-size="22" fill="#5C6B6B">Osaka / Kyoto / Nara · 大致车程，以官网时刻表为准</text>
+
+  <!-- triangle edges -->
+  <line x1="540" y1="605" x2="1090" y2="240" stroke="#6B4A3A" stroke-width="12" stroke-linecap="round"/>
+  <line x1="540" y1="605" x2="1240" y2="695" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <line x1="1090" y1="240" x2="1240" y2="695" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <!-- airport -->
+  <path d="M 260 728 C 300 660, 390 618, 494 608" fill="none" stroke="#0D6B68" stroke-width="10" stroke-dasharray="4 14" stroke-linecap="round"/>
+  <!-- USJ -->
+  <line x1="540" y1="605" x2="310" y2="505" stroke="#6B4A3A" stroke-width="8" stroke-dasharray="4 14" stroke-linecap="round"/>
+
+  <!-- nodes -->
+  <g font-weight="700" fill="#102A2B">
+    <circle cx="540" cy="605" r="46" fill="#FFFFFF" stroke="#102A2B" stroke-width="10"/>
+    <text x="540" y="615" font-size="30" text-anchor="middle">大阪</text>
+    <text x="540" y="690" font-size="21" text-anchor="middle">难波 Namba · 梅田 Umeda</text>
+
+    <circle cx="1090" cy="240" r="46" fill="#FFFFFF" stroke="#102A2B" stroke-width="10"/>
+    <text x="1090" y="250" font-size="30" text-anchor="middle">京都</text>
+    <text x="1090" y="176" font-size="21" text-anchor="middle">Kyoto · 京都站 / 河原町</text>
+
+    <circle cx="1240" cy="695" r="46" fill="#FFFFFF" stroke="#102A2B" stroke-width="10"/>
+    <text x="1240" y="705" font-size="30" text-anchor="middle">奈良</text>
+    <text x="1240" y="778" font-size="21" text-anchor="middle">Nara · 近铁奈良 / JR 奈良</text>
+
+    <circle cx="310" cy="505" r="30" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+    <text x="310" y="424" font-size="22" text-anchor="middle">日本环球影城 USJ</text>
+    <text x="310" y="452" font-size="18" font-weight="400" fill="#5C6B6B" text-anchor="middle">从大阪站换乘环状线、梦咲线</text>
+
+    <rect x="56" y="728" width="320" height="86" rx="20" fill="#0D6B68"/>
+    <text x="216" y="763" font-size="24" fill="#FFFFFF" text-anchor="middle">关西机场</text>
+    <text x="216" y="795" font-size="17" font-weight="500" fill="#E6F2F1" text-anchor="middle">KIX · 南海 → 难波 34–45 分钟</text>
+  </g>
+
+  <!-- edge labels -->
+  <g font-weight="700">
+    <rect x="560" y="352" width="460" height="92" rx="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="3"/>
+    <text x="790" y="389" font-size="21" fill="#6B4A3A" text-anchor="middle">JR 新快速 约 30 分钟</text>
+    <text x="790" y="424" font-size="20" fill="#6B4A3A" text-anchor="middle">阪急京都线 约 45 分钟（梅田 ⇄ 河原町）</text>
+
+    <rect x="695" y="692" width="390" height="92" rx="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+    <text x="890" y="729" font-size="21" fill="#0D6B68" text-anchor="middle">近铁快速急行·急行 约 35 分钟</text>
+    <text x="890" y="764" font-size="20" fill="#0D6B68" text-anchor="middle">大阪难波 ⇄ 近铁奈良</text>
+
+    <rect x="1195" y="405" width="350" height="92" rx="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+    <text x="1370" y="442" font-size="21" fill="#0D6B68" text-anchor="middle">近铁特急 约 35 分钟</text>
+    <text x="1370" y="477" font-size="20" fill="#0D6B68" text-anchor="middle">JR 都路快速 约 47 分钟</text>
+  </g>
+
+  <g font-size="20" fill="#102A2B">
+    <line x1="64" y1="860" x2="124" y2="860" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
+    <text x="136" y="867">JR / 阪急</text>
+    <line x1="300" y1="860" x2="360" y2="860" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+    <text x="372" y="867">近铁 Kintetsu / 南海 Nankai</text>
+    <text x="1540" y="867" fill="#5C6B6B" text-anchor="end">© Mokaair 制图 2026</text>
+  </g>
+</svg>

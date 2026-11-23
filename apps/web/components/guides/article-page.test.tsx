@@ -114,6 +114,25 @@ describe("Codex articles on the shared page", () => {
 });
 
 describe("further reading", () => {
+  it("keeps the chapter navigation beside a news story and moves trending links after it", async () => {
+    const slug = "ai-news-field-notes";
+    mocks.article.mockResolvedValue({
+      ...state, slug, series: null, news_date: "2026-11-17",
+      document: { ...document, title: "Field notes" },
+    });
+    mocks.trending.mockResolvedValueOnce({
+      articles: [{ kind: "life", slug: "another-story", title: "Another story", topics: [] }],
+      next_cursor: null, available: true,
+    });
+    const { container } = render(await renderGuideArticle({ locale: "en", kind: "life", slug }));
+    const story = container.querySelector("article[data-news-reading]")!;
+    expect(story.querySelector(":scope > header h1")?.textContent).toBe("Field notes");
+    expect(story.querySelector(":scope > aside nav")).not.toBeNull();
+    const trending = screen.getByRole("link", { name: "Another story" });
+    expect(story.compareDocumentPosition(trending) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(story.contains(trending)).toBe(false);
+  });
+
   const ref = (slug: string, title: string, kind: "life" | "howto" = "life") =>
     ({ kind, slug, title, description: `${title} 的描述` });
 
@@ -329,14 +348,102 @@ describe("breadcrumb, summary, FAQ and glossary markup", () => {
       document: { ...document, hero: syntheticHero },
     });
     const meta = await guideArticleMetadata({ locale: "en", kind: "life", slug: "claude-code-news-2026-11-12" });
-    expect(meta.openGraph).toBeUndefined();
-    expect(meta.twitter).toBeUndefined();
+    const dynamicCard = "/og/en/life/claude-code-news-2026-11-12/card.png";
+    expect(meta.openGraph).toMatchObject({
+      type: "article", url: meta.alternates?.canonical, title: document.title, description: document.description,
+      publishedTime: document.published_at, section: "AI 新聞", tags: ["AI 新聞"], locale: "en_US", alternateLocale: ["ja_JP"],
+      images: [{ url: dynamicCard, width: 1200, height: 630, alt: document.title }],
+    });
+    expect(meta.twitter).toMatchObject({
+      card: "summary_large_image", title: document.title, description: document.description,
+      images: [{ url: dynamicCard, width: 1200, height: 630, alt: document.title }],
+    });
 
     const { container } = render(await renderGuideArticle({ locale: "en", kind: "life", slug: "claude-code-news-2026-11-12" }));
     const graphs = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));
     const newsGraph = graphs.find(item => item["@type"] === "NewsArticle");
-    expect(newsGraph).not.toHaveProperty("image");
+    expect(newsGraph.articleSection).toBe("AI 新聞");
+    expect(newsGraph.image).toMatchObject({ "@type": "ImageObject", width: 1200, height: 630 });
+    expect(new URL(newsGraph.image.url).pathname).toBe(dynamicCard);
     expect(container.querySelector("img")).toBeNull();
+  });
+
+  it.each(["2026-11-17", null])("offers the original body figure only for dated news (news_date=%s)", async (newsDate) => {
+    const route = { locale: "zh-TW", kind: "life", slug: "new-display" } as const;
+    const src = "/guides/new-display/ports.png";
+    mocks.article.mockResolvedValue({
+      ...state, ...route, series: null, news_date: newsDate,
+      document: { ...document, blocks: [{ type: "image", src, alt: "螢幕背面接孔圖解", width: 1600, height: 900 }] },
+    });
+    render(await renderGuideArticle(route));
+    const figure = screen.getByRole("img", { name: "螢幕背面接孔圖解" }).closest("figure")!;
+    const link = within(figure).queryByRole("link", { name: /^查看原圖/ });
+    expect(link?.getAttribute("href") ?? null).toBe(newsDate ? src : null);
+  });
+
+  it("shares the first suitable published news figure, leaving it in its original position", async () => {
+    const route = { locale: "ja", kind: "life", slug: "new-display" } as const;
+    const photo = {
+      type: "image", src: "/guides/new-display/ports.webp", alt: "背面の HDMI と USB 端子",
+      width: 1440, height: 810, credit: null,
+    };
+    const synthetic = { author: "Mokaair", license: "Original editorial artwork", source_url: null };
+    mocks.article.mockResolvedValue({
+      ...state, ...route, series: null, news_date: "2026-11-17",
+      topics: [{ slug: "hardware", label: "ハードウェア" }, { slug: "tech-news", label: "テクノロジーニュース" }],
+      document: { ...document, hero: { ...photo, credit: synthetic }, blocks: [
+        { ...photo, src: "/guides/news-assets/placeholder.webp" },
+        { ...photo, src: "/guides/new-display/placeholder.webp", credit: synthetic },
+        { ...photo, src: "/guides/new-display/diagram.svg" },
+        { ...photo, src: "https://example.com/foreign.jpg" },
+        { ...photo, src: "/guides/new-display/small.jpg", width: 1000 },
+        { ...photo, src: "/guides/new-display/portrait.jpg", height: 1600 },
+        { ...photo, src: "/guides/new-display/banner.jpg", height: 180 },
+        { ...photo, src: "/guides/new-display/decorative.jpg", alt: "  " },
+        { ...photo, src: "/guides/new-display/generic.jpg", alt: "画像" },
+        { ...photo, src: "/guides/new-display/filename.jpg", alt: "filename.jpg" },
+        { type: "paragraph", text: "Connection details" }, photo,
+        { ...photo, src: "/guides/new-display/rear.jpg", alt: "背面にある電源ボタン" },
+      ] },
+    });
+    const meta = await guideArticleMetadata(route);
+    const selected = { url: photo.src, width: photo.width, height: photo.height, alt: photo.alt };
+    expect(meta.openGraph).toMatchObject({ section: "テクノロジーニュース", images: [selected] });
+    expect(meta.twitter).toMatchObject({ card: "summary_large_image", images: [selected] });
+
+    const { container } = render(await renderGuideArticle(route));
+    const graphs = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));
+    const article = graphs.find(item => item["@type"] === "NewsArticle");
+    expect(article).toMatchObject({
+      articleSection: "テクノロジーニュース",
+      image: { "@type": "ImageObject", width: photo.width, height: photo.height },
+    });
+    expect(new URL(article.image.url).pathname).toBe(photo.src);
+    const rendered = container.querySelectorAll(`img[src="${photo.src}"]`);
+    expect(rendered).toHaveLength(1);
+    expect(screen.getByText("Connection details").compareDocumentPosition(rendered[0]) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+
+  it.each([
+    { newsDate: "2026-11-17", topic: "crypto", hasHero: true, section: "암호화폐", expectedImage: "/guides/network/cover.jpg" },
+    { newsDate: null, topic: "crypto", hasHero: false, section: "生活分享", expectedImage: null },
+    { newsDate: "2026-11-17", topic: "finance", hasHero: false, section: "生活分享", expectedImage: "/guides/network/photo.jpg" },
+  ])("keeps cover precedence and section fallbacks for $topic, newsDate=$newsDate", async ({ newsDate, topic, hasHero, section, expectedImage }) => {
+    const route = { locale: "ko", kind: "life", slug: "network" } as const;
+    const picture = { src: "/guides/network/photo.jpg", width: 1280, height: 720, alt: "데이터 센터의 네트워크 연결", credit: null };
+    mocks.article.mockResolvedValue({
+      ...state, ...route, series: null, news_date: newsDate, topics: [{ slug: topic, label: topic === "crypto" ? "암호화폐" : "금융" }],
+      document: { ...document, hero: hasHero ? { ...picture, src: "/guides/network/cover.jpg" } : null, blocks: [{ type: "image", ...picture }] },
+    });
+    const fallbackCard = "/og/ko/life/network/card.png";
+    const meta = await guideArticleMetadata(route);
+    expect(meta.openGraph).toMatchObject({ section, images: [{ url: expectedImage ?? fallbackCard }] });
+    expect(meta.twitter).toMatchObject({ images: [{ url: expectedImage ?? fallbackCard }] });
+    const { container } = render(await renderGuideArticle(route));
+    const graphs = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));
+    const article = graphs.find(item => item["@type"] === (newsDate ? "NewsArticle" : "Article"));
+    expect(article.articleSection).toBe(section);
+    expect(new URL(article.image.url).pathname).toBe(expectedImage ?? fallbackCard);
   });
 
   it("emits Discover max-image-preview:large metadata and renders share actions plus right-rail trending recirculation", async () => {
@@ -457,7 +564,13 @@ describe("breadcrumb, summary, FAQ and glossary markup", () => {
     const headerShare = screen.getByRole("group", { name: "分享文章" });
     expect(within(headerShare).getByRole("button", { name: "複製連結" })).toBeTruthy();
     expect(within(headerShare).getByRole("link", { name: "LINE 分享" }).getAttribute("href")).toContain("social-plugins.line.me/lineit/share");
+    expect(within(headerShare).getByRole("link", { name: "Threads" }).getAttribute("href")).toContain("threads.net/intent/post");
+    expect(within(headerShare).getByRole("link", { name: "Facebook" }).getAttribute("href")).toContain("facebook.com/sharer/sharer.php");
+    expect(within(headerShare).getByRole("link", { name: "X" }).getAttribute("href")).toContain("x.com/intent/post");
     const footerShare = screen.getByTestId("article-share-footer");
+    const story = container.querySelector("[data-news-body]");
+    expect(story).toBeTruthy();
+    expect(story!.contains(footerShare)).toBe(false);
     expect(within(footerShare).getByText("覺得這篇整理實用嗎？分享給需要的朋友")).toBeTruthy();
     expect(within(footerShare).getByRole("button", { name: "複製連結" })).toBeTruthy();
     expect(container.querySelector("div.fixed.inset-x-0.lg\\:hidden")).not.toBeNull();
@@ -472,38 +585,5 @@ describe("breadcrumb, summary, FAQ and glossary markup", () => {
     expect(within(trendingSection).queryByText("日本 eSIM 實測比較")).toBeNull();
   });
 
-  it("opens a mobile TOC quick-jump bottom sheet once scrolled past 28% on multi-section articles", async () => {
-    const { fireEvent } = await import("@testing-library/react");
-    const { ArticleMobileProgress } = await import("@/components/guides/article-toc-rail");
-
-    Object.defineProperty(window.document.documentElement, "scrollHeight", { configurable: true, value: 2000 });
-    Object.defineProperty(window.document.documentElement, "clientHeight", { configurable: true, value: 800 });
-    Object.defineProperty(window, "scrollY", { configurable: true, value: 600 });
-
-    render(
-      <ArticleMobileProgress
-        backToTopLabel="回到頂部"
-        contentsLabel="本篇目錄"
-        closeLabel="關閉目錄"
-        headings={[
-          { id: "section-1", text: "重點比較" },
-          { id: "section-2", text: "常見問題" },
-        ]}
-      />,
-    );
-    fireEvent.scroll(window);
-
-    const trigger = screen.getByRole("button", { name: "本篇目錄" });
-    fireEvent.click(trigger);
-
-    const dialog = screen.getByRole("dialog", { name: "本篇目錄" });
-    expect(within(dialog).getByText("50%")).toBeTruthy();
-    const firstJump = within(dialog).getByRole("link", { name: /重點比較/ });
-    expect(firstJump.getAttribute("href")).toBe("#section-1");
-    fireEvent.click(firstJump);
-    expect(screen.queryByRole("dialog", { name: "本篇目錄" })).toBeNull();
-
-    Object.defineProperty(window, "scrollY", { configurable: true, value: 0 });
-  });
 });
 

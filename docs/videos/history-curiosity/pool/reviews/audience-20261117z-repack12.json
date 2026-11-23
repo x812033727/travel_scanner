@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-17",
+  "status": "TOPIC_APPEAL_REFERENCE_NOT_FINAL_CUT_REVIEW",
+  "owner_request": "站主 2026-11-17 問「還有繼續有效率的擴充嗎」，選「先評 444 題，再改包裝」：這 444 題評分後總分 6.0–6.5 的單集題改包裝。",
+  "candidates_method": {
+    "scope": "總分 6.0–6.5 的入選單集題改包裝後的複評，第 12 輪 19 題：question、hook、payoff 由未參與研究與評分的改寫編輯重寫（問句 40–110 字、一個問號），事實與來源不動，新文字的數字與專名都在原題卡裡。複評的五項平均比原分高 0.5 以上（第 1–3 輪是「較高即採用」）的 3 題採用新包裝並以這份分數為準；其餘維持原文與原分。",
+    "persona": "台灣 25–45 歲、喜歡歷史懸案／奇聞／都市傳說長片的一般觀眾",
+    "card_fields": "題目、完整問題、開場鉤子、這集會揭曉（前 260 字）、畫面",
+    "reviewers": "兩位新評審各評一次，並放進同六題錨點；不讀 repo、不上網。各自用錨點平均與基準錨點平均的差扣掉鬆緊，再取兩人平均。五項欄位是兩人的原始平均，score 是校正後的五項平均；併入需求的總分由 build 計算。",
+    "sample_anchors": {
+      "P09": [
+        7.8,
+        8.3
+      ],
+      "N384": [
+        7.3,
+        7.0
+      ],
+      "N2843": [
+        5.3,
+        5.5
+      ],
+      "N2181": [
+        7.0,
+        6.7
+      ],
+      "N3266": [
+        5.7,
+        5.4
+      ],
+      "N142": [
+        7.0,
+        7.3
+      ]
+    },
+    "baseline_anchor_mean": 6.858,
+    "sample_offsets": {
+      "zr12-a": -0.29,
+      "zr12-b": -0.17
+    },
+    "caveat": "第 10–13 輪的題都是 reviews/audience-20261117-unscored.json 第一次評分落在 6.0–6.5 的題，第一次改包裝，規則同第 8、9 輪（REWRITE2.md：可沿用原問句裡的主題名稱、地名與身分稱呼，逐題記在批次檔的 notes；數字、最高級與情節仍只能用查核內容裡有的）。每批除了六題錨點，另放 8 題沒改動的對照題一起校正。改寫交稿後主編刪去兩處查核內容沒有的時間（N303 的年份與日期、N2983 的「20 世紀初」）。H36 是舊題庫的題、不在批次檔裡，沒有送改。",
+    "not_adopted": {
+      "N102": {
+        "previous": 7.32,
+        "rescored": 7.18
+      },
+      "N5324": {
+        "previous": 7.05,
+        "rescored": 6.58
+      },
+      "N104": {
+        "previous": 7.39,
+        "rescored": 6.93
+      },
+      "N1441": {
+        "previous": 6.22,
+        "rescored": 6.03
+      },
+      "N3264": {
+        "previous": 7.29,
+        "rescored": 7.63
+      },
+      "N5543": {
+        "previous": 7.25,
+        "rescored": 6.93
+      },
+      "N5643": {
+        "previous": 7.49,
+        "rescored": 7.43
+      },
+      "N3885": {
+        "previous": 7.45,
+        "rescored": 7.63
+      },
+      "N5642": {
+        "previous": 7.2,
+        "rescored": 7.18
+      },
+      "N1081": {
+        "previous": 7.02,
+        "rescored": 7.38
+      },
+      "N3261": {
+        "previous": 7,
+        "rescored": 7.08
+      },
+      "N3104": {
+        "previous": 7.52,
+        "rescored": 7.83
+      },
+      "N4363": {
+        "previous": 7.55,
+        "rescored": 7.73
+      },
+      "N1984": {
+        "previous": 7.1,
+        "rescored": 7.18
+      },
+      "N842": {
+        "previous": 6.85,
+        "rescored": 7.03
+      },
+      "N5604": {
+        "previous": 7.12,
+        "rescored": 7.53
+      }
+    }
+  },
+  "candidates": [
+    {
+      "id": "N4223",
+      "rank": 1,
+      "of": 400,
+      "score": 7.93,
+      "raw": 7.7,
+      "click": 7.25,
+      "hook": 7.5,
+      "surprise": 8.25,
+      "payoff": 7.75,
+      "share": 7.75,
+      "comment": "集體歇斯底里看擋風玻璃，答案反轉又好懂",
+      "previous": {
+        "score": 7.22,
+        "comment": "擋風玻璃坑洞集體恐慌很有梗，大家才第一次低頭看很妙",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "把『只有前擋風玻璃出事』放進開場，題目改問『沒測到東西為何還深信不疑』，刪掉電訊日期與官員名單。"
+      }
+    },
+    {
+      "id": "N2625",
+      "rank": 2,
+      "of": 400,
+      "score": 7.93,
+      "raw": 7.7,
+      "click": 7.5,
+      "hook": 7.75,
+      "surprise": 7.75,
+      "payoff": 8.0,
+      "share": 7.5,
+      "comment": "公雞下蛋被判火刑、母雞破案，故事完整好看",
+      "previous": {
+        "score": 7.34,
+        "comment": "公雞上火刑台、母雞破案，畫面感強",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "依 scope 把巴塞爾火刑移出開場，改用『沒有蛋黃的蛋＋解剖公雞』當鉤子，題目聚焦蛇怪的變身與母雞破案。"
+      }
+    },
+    {
+      "id": "N5081",
+      "rank": 3,
+      "of": 400,
+      "score": 7.68,
+      "raw": 7.45,
+      "click": 7.5,
+      "hook": 8.0,
+      "surprise": 7.25,
+      "payoff": 7.0,
+      "share": 7.5,
+      "comment": "假新聞最後一段自招很妙，現代人也該看",
+      "previous": {
+        "score": 7.17,
+        "comment": "報紙自己最後一段招認假新聞，太像現代標題黨",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "開場直接用『同一篇最後一段自招』的反轉，題目改問恐慌細節的來源，刪掉犀牛與大象的考據串。"
+      }
+    }
+  ]
+}

@@ -8,7 +8,7 @@ import { updateAdminQuery, useAdminQueryValue } from "@/lib/admin-workspace-navi
 import { api } from "@/lib/api";
 import { videoPlansCopy, videoPlansText } from "@/lib/video-plans-copy";
 
-const CATALOGS = ["season1", "season2", "season3", "brand-stories", "ai-terms"] as const;
+const CATALOGS = ["season1", "season2", "season3", "ai-terms"] as const;
 type Catalog = (typeof CATALOGS)[number];
 type Copy = ReturnType<typeof videoPlansCopy>;
 export type VideoPlan = {

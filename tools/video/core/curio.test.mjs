@@ -1,12 +1,12 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { CURIO_MAX_CARD_RUN, CURIO_MIN_SHOT_SHARE, CURIO_MUSIC, CURIO_PRESET, curioProblems, curioWarnings, isCurio, isPacedSeries, pacingWarnings, SERIES_PACING } from "./curio.mjs";
+import { CURIO_MAX_CARD_RUN, CURIO_MIN_SHOT_SHARE, CURIO_MUSIC, CURIO_PRESET, curioProblems, curioWarnings, GENERIC_PROP_MAX, genericPropWarnings, heimaoSubjectWarnings, isCurio, isPacedSeries, pacingWarnings, SERIES_PACING } from "./curio.mjs";
 import { resolveLook } from "./drama.mjs";
 import { fixture, fixtureBrief, fixtureLexicon } from "./fixtures/load.mjs";
 import { lintVideo } from "./lint.mjs";
 
-const shot = (id) => ({ id, template: "shot", data: { prompt: "Medium shot of a sailor holding a lantern in a wet cabin at night" } });
+const shot = (id, prompt = "Medium shot of a sailor holding a lantern in a wet cabin at night") => ({ id, template: "shot", data: { prompt } });
 const card = (id) => ({ id, template: "big", data: { headline: "1872" } });
 // An episode drawn the way the delivered ones are: mostly illustrations, a card now and then.
 const episode = (scenes, look = { preset: CURIO_PRESET }) => ({ slug: "curio-x01", look, scenes });
@@ -80,4 +80,44 @@ test("a curio- or sothatswhy- drama without the series pacing is warned, with th
   assert.deepEqual(pacingWarnings({ slug: "daily-ai-20261029", format: "drama" }), []);
   const context = { lexicon: fixtureLexicon(), brief: fixtureBrief(), others: [], translations: {} };
   assert.ok(!lintVideo(fixture(), context).warnings.some((problem) => problem.path === "still_motion"));
+});
+
+test("repeating generic purse/wallet or plain-covered book stand-ins across 3+ shots warns on curio-, sothatswhy- and story- dramas", () => {
+  assert.equal(GENERIC_PROP_MAX, 2);
+  const purses = [
+    shot("p1", "Close-up of a fat leather purse bursting with gold coins on a sunny oak table"),
+    shot("p2", "Close-up of a flat leather wallet lying empty beside a brass key"),
+    shot("p3", "Medium shot of a merchant clutching a heavy purse in a bright courtyard"),
+  ];
+  const books = [
+    shot("b1", "Close-up of a thick book with a plain cover resting on a wooden desk"),
+    shot("b2", "Close-up of a plain-covered book beside a brass compass"),
+    shot("b3", "Medium shot of a clerk closing a thick plain-covered book in daylight"),
+  ];
+  assert.deepEqual(genericPropWarnings({ slug: "curio-w01", format: "drama", scenes: purses.slice(0, 2) }), [], "at most two generic stand-ins is fine");
+  for (const slug of ["curio-w02", "sothatswhy-g12", "story-everyday-crocs-c01"]) {
+    const [purseWarn] = genericPropWarnings({ slug, format: "drama", scenes: purses });
+    assert.match(purseWarn.message, /3 shots draw the generic purse\/wallet \(錢包／皮夾\) stand-in \(p1, p2, p3\)/, slug);
+    const [bookWarn] = pacingWarnings({ slug, format: "drama", ...SERIES_PACING, scenes: books });
+    assert.match(bookWarn.message, /3 shots draw the generic thick\/plain-covered book \(空白厚書\) stand-in \(b1, b2, b3\)/, slug);
+  }
+  assert.deepEqual(genericPropWarnings({ slug: "daily-ai-20261118", format: "drama", scenes: purses }), [], "other formats are untouched");
+});
+
+test("heimao thumbnails warn when line 1 hides the subject behind a nameless demonstrative or pronoun", () => {
+  const thumb = (headline, layout = "heimao-left") => ({ template: "thumb", data: { layout, headline, sub: "3 份紀錄" } });
+  for (const [slug, bad] of [
+    ["curio-s10-v2", "這句話**根本沒寫？**"],
+    ["curio-s13-v2", "這兩字**沒簽過？**"],
+    ["sothatswhy-p12-qr-code", "它髒了**照樣能掃？**"],
+    ["story-dolby", "他**憑什麼躺賺？**"],
+  ]) {
+    const [warn] = pacingWarnings({ slug, format: "drama", ...SERIES_PACING, thumbnail: thumb(bad) });
+    assert.equal(warn.path, "thumbnail.data.headline", slug);
+    assert.match(warn.message, /nameless demonstrative\/pronoun/, slug);
+  }
+  for (const good of ["本能寺**誰喊的？**", "真田幸村**叫錯了？**", "QR 髒了**照樣能掃？**", "杜比**憑什麼躺賺？**", "宮本武藏**沒遲到？**"]) {
+    assert.deepEqual(heimaoSubjectWarnings({ slug: "curio-s14", format: "drama", thumbnail: thumb(good) }), [], good);
+  }
+  assert.deepEqual(heimaoSubjectWarnings({ slug: "daily-ai-20261120", format: "drama", thumbnail: thumb("這句話**根本沒寫？**") }), [], "other series are untouched");
 });

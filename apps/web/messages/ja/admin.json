@@ -837,6 +837,18 @@
       "pricing_enabled": {
         "label": "プランと利用パック",
         "help": "料金ナビゲーション、利用パック操作、/pricing ページを制御します。"
+      },
+      "flight_search_enabled": {
+        "label": "航空券・宿泊検索",
+        "help": "航空券・宿泊検索の導線やトップページの検索フォーム表示を制御します。"
+      },
+      "videos_enabled": {
+        "label": "動画ライブラリ",
+        "help": "ナビゲーションやトップページ、フッターの動画リンク表示を制御します。"
+      },
+      "member_features_enabled": {
+        "label": "会員機能・ログイン表示",
+        "help": "ログインボタン、保存、マイページ、マイ旅行導線、カード上の保存・旅行追加ボタンを制御します。管理者は /login から直接ログインできます。"
       }
     }
   },
@@ -926,7 +938,10 @@
       "pg_dump": "バックアップツール",
       "github_ci": "GitHub CI",
       "api": "API",
-      "web": "Web"
+      "web": "Web",
+      "host_timer": "ホストのデプロイタイマー",
+      "autodeploy_paused": "自動デプロイの停止",
+      "dry_run": "ドライラン"
     },
     "noSha": "未取得",
     "seconds": "{count} 秒",
@@ -968,7 +983,27 @@
     "warningBody": "デプロイ前に PostgreSQL のバックアップを取得します。新しい版のヘルスチェックが失敗した場合はアプリケーションのみを戻し、マイグレーションの取り消しやデータベースの自動復元は行いません。",
     "passwordLabel": "現在のパスワード",
     "typeLabel": "入力",
-    "confirmSubmit": "確認してデプロイ"
+    "confirmSubmit": "確認してデプロイ",
+    "reasonTimerOffline": "ホストのデプロイタイマーから 15 分以上報告がありません",
+    "reasonAutodeployPaused": "前回の自動デプロイが失敗して停止中です。ログを確認し、停止ファイルを削除してから再実行してください",
+    "rebuildCurrent": "現在のバージョンを再ビルド",
+    "rebuildTitle": "{sha} を再ビルド",
+    "waitPaidWork": "有料の動画ジョブの実行中はデプロイしない（推奨）",
+    "hostTitle": "ホストの自動デプロイタイマー",
+    "hostHint": "デプロイ時間帯に main を 1 日 1 回まで自動デプロイします。ボタンからの依頼は約 5 分以内に処理されます。",
+    "hostLastReport": "最終報告",
+    "hostNever": "まだ報告がありません",
+    "hostDryRun": "ドライラン：実際にはデプロイしません",
+    "hostWindow": "デプロイ時間帯",
+    "hostWindowAny": "制限なし",
+    "hostToday": "今日の自動デプロイ",
+    "hostDecision": "最後の判断",
+    "hostLastDeploy": "タイマーによる最後のデプロイ",
+    "hostLastDeployValue": "{sha}・検証 {verify}",
+    "hostMissed": "デプロイされずに時間帯が終了",
+    "hostMissedValue": "{window}：{sha} は {gate} で止まりました：{reason}",
+    "hostPaused": "自動デプロイは停止中です",
+    "hostWarningBody": "デプロイスクリプトが PostgreSQL をバックアップするのは migration が変わったときだけです。すべてのコンテナが再起動し（約 8 秒エラーになります）、失敗したデプロイはロールバックされ自動デプロイが停止します。"
   },
   "aiAccountsPanel": {
     "loading": "アカウントの状態を読み込んでいます…",
@@ -2180,6 +2215,21 @@
     "uncategorized": "未分類",
     "categoryFilter": "カテゴリ",
     "categoryAll": "すべてのカテゴリ",
+    "shelfFilter": "番組",
+    "shelfAll": "すべての番組",
+    "shelves": {
+      "curio": "奇聞ファイル局",
+      "sothatswhy": "なるほど事務所",
+      "explainer": "解説（その他）"
+    },
+    "seriesFilter": "シリーズ",
+    "seriesAll": "すべてのシリーズ",
+    "seriesNone": "シリーズなし",
+    "topicFilter": "分類",
+    "topicAll": "すべての分類",
+    "topicNone": "分類なし",
+    "driveFolder": "ドライブのフォルダ",
+    "driveFinal": "完成版",
     "stateFilter": "状態",
     "stateAll": "すべて",
     "search": "検索",
@@ -2212,10 +2262,10 @@
     "loadError": "動画を読み込めませんでした",
     "retry": "再試行",
     "retryVideoTitle": "動画が停止しています",
-        "retryVideoHelp": "原因を修正したら、ワーカーにこの動画を一度だけ再試行させます。",
-        "retryVideoPending": "再試行を依頼しました。次の実行時に処理されます。",
-        "retryVideoButton": "この動画を再試行",
-        "retryVideoError": "再試行を依頼できませんでした: {message}",
+    "retryVideoHelp": "原因を修正したら、ワーカーにこの動画を一度だけ再試行させます。",
+    "retryVideoPending": "再試行を依頼しました。次の実行時に処理されます。",
+    "retryVideoButton": "この動画を再試行",
+    "retryVideoError": "再試行を依頼できませんでした: {message}",
     "pending": "判断待ち {count} 件",
     "noPendingShort": "判断待ちなし",
     "progress": "進捗 {done}/{total}",

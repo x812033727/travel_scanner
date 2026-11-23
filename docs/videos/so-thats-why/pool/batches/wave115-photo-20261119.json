@@ -1,0 +1,718 @@
+{
+  "batch_id": "wave115-photo-20261119",
+  "created_on": "2026-11-19",
+  "scope": "照片地點從拍攝、推算、相簿編輯到寄出的生命週期。以公開規格、受控比較、產品手冊和台灣公民科學作業說明撰卡。近鄰 G728 的 K108-0409、0410、0411 分別談方向、時間編碼和 JPEG 容器；本批不重收這三個答案。 另以兩份獨立的 LINE 聊天室照片實測補查原始畫質與定位欄位的關係。",
+  "sources": [
+    {
+      "id": "PX115-S01",
+      "url": "https://support.apple.com/en-ie/guide/personal-safety/ips0d7a5df82/web",
+      "canonical_url": "https://support.apple.com/en-ie/guide/personal-safety/ips0d7a5df82/web",
+      "title": "Manage location metadata in Photos",
+      "publisher": "Apple",
+      "version": "Apple Personal Safety User Guide，頁尾標 2026 年 9 月",
+      "accessed_on": "2026-11-19",
+      "read_via": "擷取公開原文（HTTP 200，183205 bytes，SHA-256 d939388b03637287be867f5e10659c8ec8912cc0f552d053070cfce6461005a2），擷取 HTML 正文文字，定位後閱讀下列段落。",
+      "reading_scope": "首段、Review photos that contain location metadata、Stop location metadata collection、Don’t share location metadata",
+      "locator": "首段、Review photos that contain location metadata、Stop location metadata collection、Don’t share location metadata",
+      "summary": "iPhone／iPad 相機取得定位存取權時可寫入拍攝位置；分享表單可只排除這次的地點。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "限本文指定的相機與「照片」分享功能，未在裝置上試按。",
+      "network": "NET_Apple"
+    },
+    {
+      "id": "PX115-S02",
+      "url": "https://www.cipa.jp/std/documents/e/DC-008-2012_E.pdf",
+      "canonical_url": "https://www.cipa.jp/std/documents/e/DC-008-2012_E.pdf",
+      "title": "Exchangeable image file format for digital still cameras: Exif Version 2.3",
+      "publisher": "Camera & Imaging Products Association 與 JEITA",
+      "version": "CIPA DC-008-Translation-2012 英譯本／JEITA CP-3451C，2012 年修訂",
+      "accessed_on": "2026-11-19",
+      "read_via": "擷取公開原文（HTTP 200，1238119 bytes，SHA-256 6072847e70a6c7e32c636ee41225fdc620085ab6427bbadf3c036b07b97bf907），用 pdftotext -layout 讀 PDF 文字層，定位後閱讀下列段落。",
+      "reading_scope": "紙頁 69–70 的 GPSLatitudeRef 至 GPSLongitude、77 的 GPSHPositioningError、表 19 的 GPS Info Tags 與 O: Optional",
+      "locator": "紙頁 69–70 的 GPSLatitudeRef 至 GPSLongitude、77 的 GPSHPositioningError、表 19 的 GPS Info Tags 與 O: Optional",
+      "summary": "經緯度搭配方向欄位，水平定位誤差另有以公尺表示的欄位。表列這些為選用。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "用來解讀 2012 規格裡已有的欄位，未以舊版推定今日設備或新版的強制條件。",
+      "network": "NET_CIPA_JEITA"
+    },
+    {
+      "id": "PX115-S03",
+      "url": "https://www.iptc.org/std/photometadata/documentation/userguide/",
+      "canonical_url": "https://www.iptc.org/std/photometadata/documentation/userguide/",
+      "title": "IPTC Photo Metadata User Guide",
+      "publisher": "International Press Telecommunications Council",
+      "version": "IPTC 線上使用指南",
+      "accessed_on": "2026-11-19",
+      "read_via": "擷取公開原文（HTTP 200，349064 bytes，SHA-256 0a8a0c47b9c3c75154b57510ea1dc8c59dcb6a1529022e43e0b3300a9cbb158b），擷取 HTML 正文文字，定位後閱讀下列段落。",
+      "reading_scope": "Guidelines for using the Location fields 中 Location Created、Location Shown in Image 及遠攝山景例",
+      "locator": "Guidelines for using the Location fields 中 Location Created、Location Shown in Image 及遠攝山景例",
+      "summary": "指南將相機所在之處與影像裡出現的地方分欄，跨界拍山是一個例子。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "這是供編輯描述影像的欄位，手機未必填寫。",
+      "network": "NET_IPTC"
+    },
+    {
+      "id": "PX115-S04",
+      "url": "https://support.google.com/photos/answer/6153599?co=GENIE.Platform%3DiOS&hl=en",
+      "canonical_url": "https://support.google.com/photos/answer/6153599?co=GENIE.Platform%3DiOS&hl=en",
+      "title": "Understand, find & edit your photos’ locations",
+      "publisher": "Google",
+      "version": "Google Photos Help，iPhone & iPad 版本",
+      "accessed_on": "2026-11-19",
+      "read_via": "擷取公開原文（HTTP 200，1654856 bytes，SHA-256 d17c3090ad19451326c617eee2059f5a159590ac27aebac307664e166b0e1361），擷取 HTML 正文文字，定位後閱讀下列段落。",
+      "reading_scope": "Manage your photos’ locations、Stop Google Photos from estimating missing locations、Share a photo with a location、Share your location details in shared albums",
+      "locator": "Manage your photos’ locations、Stop Google Photos from estimating missing locations、Share a photo with a location、Share your location details in shared albums",
+      "summary": "地點可以來自相機、人工或相簿估算；是否隨分享及下載傳遞取決於來源和途徑。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "限 Google 相簿說明的行為。未實測不同帳號、其他通訊 app 或收件裝置。",
+      "network": "NET_GOOGLE"
+    },
+    {
+      "id": "PX115-S05",
+      "url": "https://docs.digikam.org/en/geolocation_editor/geoeditor_coordinates.html",
+      "canonical_url": "https://docs.digikam.org/en/geolocation_editor/geoeditor_coordinates.html",
+      "title": "digiKam Manual — Coordinates Tools",
+      "publisher": "digiKam 專案手冊",
+      "version": "9.2.0 手冊",
+      "accessed_on": "2026-11-19",
+      "read_via": "擷取公開原文（HTTP 200，23704 bytes，SHA-256 9f25bff1202a2c5654a257d4ba30519dbad7abbbfd894da125683faff9e9ab58），擷取 HTML 正文文字，定位後閱讀下列段落。",
+      "reading_scope": "GPS Correlator 內的 Camera Time Zone、Offset of pictures、Interpolate、Max. Interpol. Time Gap",
+      "locator": "GPS Correlator 內的 Camera Time Zone、Offset of pictures、Interpolate、Max. Interpol. Time Gap",
+      "summary": "可把自己的行程軌跡與照片時間配對；沒有同時刻記錄時能用兩鄰點依時間插值。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "這是手動選擇的工作流程，不能據此推斷手機相簿都採用相同演算法。",
+      "network": "NET_KDE"
+    },
+    {
+      "id": "PX115-S06",
+      "url": "https://www.sciepublish.com/article/pii/567",
+      "canonical_url": "https://doi.org/10.70322/plfs.2025.10006",
+      "title": "Forensic Value of Exif Data: An Analytical Evaluation of Metadata Integrity across Image Transfer Methods",
+      "publisher": "Perspectives in Legal and Forensic Sciences",
+      "version": "Nishchal Soni，Perspectives in Legal and Forensic Sciences 2025, 2, 10006，DOI 10.70322/plfs.2025.10006",
+      "accessed_on": "2026-11-19",
+      "read_via": "擷取公開原文（HTTP 200，133066 bytes，SHA-256 4da8d78f30629452cd448d1a69acf260778ab7945a131aff11a2cddd5c33f147），擷取 HTML 正文文字，定位後閱讀下列段落。",
+      "reading_scope": "§4.1–4.3、§5 開頭的實驗規模、§5.2 表 2 Geolocation 列與表後 Notes 對 ✓、X 的定義",
+      "locator": "§4.1–4.3、§5 開頭的實驗規模、§5.2 表 2 Geolocation 列與表後 Notes 對 ✓、X 的定義",
+      "summary": "三種受測服務的文件模式都保留了定位欄位；圖片模式均標 X。作者對 X 的定義包含欄位已移除或研究者未能可靠讀回。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "僅涵蓋當次受控測試。表 2 沒有把欄位遭移除和無法可靠讀回分開統計。",
+      "network": "NET_SONI"
+    },
+    {
+      "id": "PX115-S07",
+      "url": "https://www.flickrhelp.com/hc/en-us/articles/4404070517908-Adding-removing-photos-to-your-map",
+      "canonical_url": "https://www.flickrhelp.com/hc/en-us/articles/4404070517908-Adding-removing-photos-to-your-map",
+      "title": "Adding & removing photos to your map",
+      "publisher": "Flickr",
+      "version": "Flickr Help Center，2026 年 8 月更新",
+      "accessed_on": "2026-11-19",
+      "read_via": "擷取公開原文（HTTP 200，44947 bytes，SHA-256 52a506d4953c335cabd2c61537654c9940874459088e20a0ed09cfe0bd641934），擷取 HTML 正文文字，定位後閱讀下列段落。",
+      "reading_scope": "Geo Preferences 的三個自動上圖設定、Note 段落",
+      "locator": "Geo Preferences 的三個自動上圖設定、Note 段落",
+      "summary": "平台可以限制地圖顯示的對象。若原檔原先附定位，還得分開考慮原圖的下載權。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "官網功能說明，未實測個別帳號、方案或相片。",
+      "network": "NET_FLICKR"
+    },
+    {
+      "id": "PX115-S08",
+      "url": "https://helpx.adobe.com/lightroom-classic/desktop/organize-photos-in-lightroom-classic/metadata-basics-actions.html",
+      "canonical_url": "https://helpx.adobe.com/lightroom-classic/desktop/organize-photos-in-lightroom-classic/metadata-basics-actions.html",
+      "title": "Metadata basics and actions in Lightroom Classic",
+      "publisher": "Adobe",
+      "version": "Adobe Lightroom Classic 官方手冊",
+      "accessed_on": "2026-11-19",
+      "read_via": "擷取公開原文（HTTP 200，274368 bytes，SHA-256 07b5620927eee931aac4f21ec40a3d65951ee40c6c19d82d1c75af1132d71c7f），擷取 HTML 正文文字，定位後閱讀下列段落。",
+      "reading_scope": "About metadata and XMP、Specify where to write metadata changes",
+      "locator": "About metadata and XMP、Specify where to write metadata changes",
+      "summary": "編輯資料先寫到目錄；另存 XMP 時，專有 RAW 的資料另有 sidecar，JPEG 等格式可寫進影像檔。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "以手冊列出的格式為限，不把變更目錄等同已改寫相機原檔。",
+      "network": "NET_ADOBE"
+    },
+    {
+      "id": "PX115-S09",
+      "url": "https://helpx.adobe.com/my_ms/lightroom-classic/desktop/manage-catalogs-and-files/create-catalogs.html",
+      "canonical_url": "https://helpx.adobe.com/my_ms/lightroom-classic/desktop/manage-catalogs-and-files/create-catalogs.html",
+      "title": "Create and manage catalogs — Lightroom Classic",
+      "publisher": "Adobe",
+      "version": "Adobe Lightroom Classic 官方手冊",
+      "accessed_on": "2026-11-19",
+      "read_via": "擷取公開原文（HTTP 200，212413 bytes，SHA-256 3e10db7de7624bf91a4ff72af6e9f004d5ac3f91de70363c297c31a734074b68），擷取 HTML 正文文字，定位後閱讀下列段落。",
+      "reading_scope": "Metadata 設定中的 Enable Reverse Geocoding of GPS Coordinates To Provide Address Suggestions 與 Export Reverse Geocoding Suggestions Whenever Address Fields Are Empty",
+      "locator": "Metadata 設定中的 Enable Reverse Geocoding of GPS Coordinates To Provide Address Suggestions 與 Export Reverse Geocoding Suggestions Whenever Address Fields Are Empty",
+      "summary": "開啟相關設定可向服務查出城市、州、國家，地址欄空白時是否帶出建議另有匯出選項。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "這個軟體使用的服務商與下張開源範例不同。",
+      "network": "NET_ADOBE"
+    },
+    {
+      "id": "PX115-S10",
+      "url": "https://nominatim.org/release-docs/5.2/api/Reverse/",
+      "canonical_url": "https://nominatim.org/release-docs/5.2/api/Reverse/",
+      "title": "Reverse — Nominatim Manual",
+      "publisher": "Nominatim 專案",
+      "version": "5.2.0 版官方手冊",
+      "accessed_on": "2026-11-19",
+      "read_via": "擷取公開原文（HTTP 200，63608 bytes，SHA-256 d9535e39ec8020a3187c19f3d9299b91da45d1202d8518ccc45ade29fe23c8f2），擷取 HTML 正文文字，定位後閱讀下列段落。",
+      "reading_scope": "How it works 的兩點限制，含 small, unnamed paths 與 dense city areas 例",
+      "locator": "How it works 的兩點限制，含 small, unnamed paths 與 dense city areas 例",
+      "summary": "依查到的最近合資格地圖物件傳回地址；密集街區的最近物件可能屬於另一條街。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "用作一種公開實作的例子，不把演算法歸給手機相簿或其他地圖服務。",
+      "network": "NET_NOMINATIM"
+    },
+    {
+      "id": "PX115-S11",
+      "url": "https://formosawatch.biowatchitnl.org/privacy",
+      "canonical_url": "https://formosawatch.biowatchitnl.org/privacy",
+      "title": "隱私 · 福爾摩沙生態守望計劃",
+      "publisher": "福爾摩沙生態守望計劃",
+      "version": "該計劃公開的隱私說明",
+      "accessed_on": "2026-11-19",
+      "read_via": "擷取公開原文（HTTP 200，36330 bytes，SHA-256 01bd5f946c7416db948761a7b74eaecad49589700f6da06630878a0d8cfe2104），擷取 HTML 正文文字，定位後閱讀下列段落。",
+      "reading_scope": "「照片怎麼處理」與「位置資料」",
+      "locator": "「照片怎麼處理」與「位置資料」",
+      "summary": "平台說明它利用拍攝時間及地點填報；對特定通報，同步模糊化公開地圖位置、移除公開相片 EXIF。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "這是網站自述的處理政策，未自行上傳或抽查照片；未公開任何真實觀測座標。",
+      "network": "NET_FORMOSA"
+    },
+    {
+      "id": "PX115-S12",
+      "url": "https://www.tbn.org.tw/about/faq/17147156",
+      "canonical_url": "https://www.tbn.org.tw/about/faq/17147156",
+      "title": "敏感資料及模糊化介紹",
+      "publisher": "台灣生物多樣性網絡",
+      "version": "台灣生物多樣性網絡 FAQ",
+      "accessed_on": "2026-11-19",
+      "read_via": "擷取公開原文（HTTP 200，22691 bytes，SHA-256 32161b077bae0749878fe33713a09bb83d104a74606c3fecd06af1af29e517b5），擷取 HTML 正文文字，定位後閱讀下列段落。",
+      "reading_scope": "首段及「觀測紀錄上的敏感資訊」六級對照表的「縣市」「座標不開放」兩列",
+      "locator": "首段及「觀測紀錄上的敏感資訊」六級對照表的「縣市」「座標不開放」兩列",
+      "summary": "前台公開的觀測資料依敏感層級降低精度，有的仍列物種、只提供縣市或完全隱去點位。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "這份資料說明的是觀測紀錄；資料庫開放程度不直接描述個別照片的 EXIF。",
+      "network": "NET_TBN"
+    },
+    {
+      "id": "PX115-S13",
+      "url": "https://iptc.org/standards/photo-metadata/social-media-sites-photo-metadata-test-results-2019/",
+      "canonical_url": "https://iptc.org/standards/photo-metadata/social-media-sites-photo-metadata-test-results-2019/",
+      "title": "Social Media Sites Photo Metadata Test Results 2019",
+      "publisher": "International Press Telecommunications Council",
+      "version": "IPTC Working Group，2019 年實測",
+      "accessed_on": "2026-11-19",
+      "read_via": "擷取公開原文（HTTP 200，168226 bytes，SHA-256 59377673eea893f53b765336df3046918a256c62cec079ecb2a03a9c6330a072），擷取 HTML 正文文字，定位後閱讀下列段落。",
+      "reading_scope": "Test Procedure 中 Save As 及平台下載的兩個問題；Flickr 免費帳號當時的 Summary",
+      "locator": "Test Procedure 中 Save As 及平台下載的兩個問題；Flickr 免費帳號當時的 Summary",
+      "summary": "測試把瀏覽器另存與平台下載分開查。當時的 Flickr 另存品不帶 XMP，仍可下載原檔。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "當年測的是 XMP；不可據此說該路徑必定去除 GPS，也不聲稱現行版相同。",
+      "network": "NET_IPTC"
+    },
+    {
+      "id": "PX115-S14",
+      "url": "https://appllio.com/line-how-to-share-location",
+      "canonical_url": "https://appllio.com/line-how-to-share-location",
+      "title": "LINEで位置情報を送る方法──相手の居場所がわかるかなど疑問点も解説",
+      "publisher": "アプリオ編集部（Vellio）",
+      "version": "2025-06-06，本文列受測 LINE iOS 15.7.2、Android 15.7.1",
+      "accessed_on": "2026-11-19",
+      "read_via": "實讀公開 HTML 原文（HTTP 200，213591 bytes，SHA-256 3aaa95cb872466ca97bc3443a4f88888129df720bfdf28c7764ad0c2263d0c32），由文字層讀取指定段落。",
+      "reading_scope": "「LINEで写真を送ると撮影場所も知られる？」的送方／收方步驟及文末「検証バージョン」",
+      "locator": "「LINEで写真を送ると撮影場所も知られる？」的送方／收方步驟及文末「検証バージョン」",
+      "summary": "從聊天室傳送本來帶拍攝位置的照片，接收者下載到裝置，打開照片詳細資訊時看不到原位置。作者記載同平台及跨平台的結果相同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "用裝置相片詳細資訊判讀，沒有底層檔案比對；這一節未列傳送畫質，也沒有用文件模式對照。",
+      "network": "NET_APPLLIO"
+    },
+    {
+      "id": "PX115-S15",
+      "url": "https://www.appps.jp/227577/",
+      "canonical_url": "https://www.appps.jp/227577/",
+      "title": "撮影日がバレちゃうぞ！LINEの「オリジナル画質」には注意が必要かも",
+      "publisher": "カミアプ",
+      "version": "2019-02-12，iPhone 照片，未列 LINE 版號",
+      "accessed_on": "2026-11-19",
+      "read_via": "實讀公開 HTML 原文（HTTP 200，340611 bytes，SHA-256 685289e7038748dbf64ee28aa69942663f1c35bcd63f4be21e4633ead66a9230），由文字層讀取指定段落。",
+      "reading_scope": "「LINEの『オリジナル画質』に要注意」中 Loooks 讀原照、送方勾原始畫質、收方選原圖下載、Loooks 重讀下載檔的段落",
+      "locator": "「LINEの『オリジナル画質』に要注意」中 Loooks 讀原照、送方勾原始畫質、收方選原圖下載、Loooks 重讀下載檔的段落",
+      "summary": "原照讀得到經緯度。選原始畫質傳送、在另一端選原圖下載後，同一款工具未顯示緯度、經度與海拔，但仍顯示拍攝日期。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "歷史單次案例，未做逐位元比較；不把工具未讀到說成底層欄位已證實刪除。",
+      "network": "NET_KAMIAP"
+    },
+    {
+      "id": "PX115-S16",
+      "url": "https://line-ja.officialblog.jp/archives/71886470.html",
+      "canonical_url": "https://line-ja.officialblog.jp/archives/71886470.html",
+      "title": "【LINEの便利ワザ】高画質な思い出を☆写真をキレイに送る方法！",
+      "publisher": "LINE 日本官方部落格",
+      "version": "2017-08-24 歷史功能說明",
+      "accessed_on": "2026-11-19",
+      "read_via": "實讀公開 HTML 原文（HTTP 200，51349 bytes，SHA-256 c119a0ca28047d0f932286889e9c77c895622313c487a8dc67aeec016d977e82），由文字層讀取指定段落。",
+      "reading_scope": "「とっておきの写真は、オリジナル画質で送信しよう」及「常に高画質で送信する設定も」",
+      "locator": "「とっておきの写真は、オリジナル画質で送信しよう」及「常に高画質で送信する設定も」",
+      "summary": "說明選取照片後可勾 ORIGINAL，接收端儲存時可指定大小，並區分「高畫質」與「原始畫質」。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "文章講的是傳送大小、畫質選擇，沒有測試或承諾 GPS 保留。",
+      "network": "NET_LINE"
+    },
+    {
+      "id": "PX115-S17",
+      "url": "https://help.line.me/line/?contentId=20007005&lang=zh-Hant",
+      "canonical_url": "https://help.line.me/line/?contentId=20007005&lang=zh-Hant",
+      "title": "傳送、分享、複製、編輯訊息的操作方法",
+      "publisher": "LINE 支援中心（繁體中文）",
+      "version": "2026-11-19 讀取的官方流程",
+      "accessed_on": "2026-11-19",
+      "read_via": "實讀公開 HTML 原文（HTTP 200，129209 bytes，SHA-256 7d1a8c61c6d7132508e27faf31d1becc89d4b9d2428e76c281155c60d0ad90fe），由文字層讀取指定段落。",
+      "reading_scope": "「傳送文字訊息以外的資訊」下的「照片、影片」及「文字或語音等檔案」，主要裝置步驟",
+      "locator": "「傳送文字訊息以外的資訊」下的「照片、影片」及「文字或語音等檔案」，主要裝置步驟",
+      "summary": "在聊天室選照片傳送，與從加號選「檔案」傳送儲存的檔案，是分開說明的操作。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "沒有文件模式接收檔的 GPS 實測，不以步驟本身判定該欄是否保留。",
+      "network": "NET_LINE"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "K115-0201",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "拍下河岸風景時，定位針怎麼跟進了照片？",
+      "mechanism_key": "x115.photo_location.capture_permission_and_location_providers",
+      "answer_target": "以 iPhone 原生相機為例，相機取得定位服務權限時，系統可綜合行動網路、Wi-Fi、GPS 和藍牙等資訊判斷拍攝位置，把座標隨照片一併保存。在此版本的「照片」地圖收藏中，收的是帶有內嵌定位的照片與影片。",
+      "scope": "Apple 使用手冊對自家相機與地圖收藏的說明。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "拍照當刻可以同時留下畫面與快門所在的位置。",
+        "visual": "手機在河岸拍下橋，燈塔般的光點和河景一同進入相片匣。",
+        "seconds": [
+          20,
+          45
+        ]
+      },
+      "source_ids": [
+        "PX115-S01"
+      ],
+      "source_locator": "PX115-S01 首段、Review photos that contain location metadata、Stop location metadata collection、Don’t share location metadata",
+      "notes": "NET_Apple；作者素材估重 1。"
+    },
+    {
+      "id": "K115-0202",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "把照片內的緯度、經度兩串數字抄下來，怎麼還可能落在地球另一邊？",
+      "mechanism_key": "x115.photo_location.exif_coordinate_representation_hemisphere",
+      "answer_target": "在 2012 年 Exif 規格裡，度、分、秒的數值和南北、東西的方向是分開記的。只抄經緯度數值，會失去區分南北半球與東西經的資訊。表 19 也把這幾欄列為選用，相片可以完全沒有這一組座標。",
+      "scope": "已讀版本的 GPSLatitudeRef／GPSLatitude／GPSLongitudeRef／GPSLongitude。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "除了兩串數字，還要有東西南北才能把針放回原處。",
+        "visual": "小地球上同時亮起兩個對稱地點，指北針轉正後只留下一點。",
+        "seconds": [
+          20,
+          45
+        ]
+      },
+      "source_ids": [
+        "PX115-S02"
+      ],
+      "source_locator": "PX115-S02 紙頁 69–70 的 GPSLatitudeRef 至 GPSLongitude、77 的 GPSHPositioningError、表 19 的 GPS Info Tags 與 O: Optional",
+      "notes": "NET_CIPA_JEITA；作者素材估重 1。"
+    },
+    {
+      "id": "K115-0203",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "照片裡的座標小數位很長，代表手機當時一定站得那麼準嗎？",
+      "mechanism_key": "x115.photo_location.exif_horizontal_error_separate_from_precise_digits",
+      "answer_target": "Exif 把水平定位誤差和座標分開記。2012 年版的 GPSHPositioningError 以公尺表示，沒有預設值，也是選用欄位。因此座標能寫得很細，卻可能完全沒有提供這次定位的水平誤差。",
+      "scope": "只說檔案如何表示誤差；不給手機定位精度的通用數字。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "標記能落在一個點上，不代表這個點的誤差已有紀錄。",
+        "visual": "地圖上的針尖後方慢慢展開半透明圓影，旁邊另有一格空白。",
+        "seconds": [
+          20,
+          45
+        ]
+      },
+      "source_ids": [
+        "PX115-S02"
+      ],
+      "source_locator": "PX115-S02 紙頁 69–70 的 GPSLatitudeRef 至 GPSLongitude、77 的 GPSHPositioningError、表 19 的 GPS Info Tags 與 O: Optional",
+      "notes": "NET_CIPA_JEITA；作者素材估重 1。"
+    },
+    {
+      "id": "K115-0204",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "人在河這一岸拍對岸的橋，照片的地點該標在哪一岸？",
+      "mechanism_key": "x115.photo_location.camera_position_not_subject_location",
+      "answer_target": "新聞圖片使用的 IPTC 欄位可以分開記兩件事：拍攝者按快門的位置，以及畫面裡景物的位置。指南舉的例子是長鏡頭拍山，攝影者甚至可能站在另一個國家；若兩者不同，就有理由分別填寫。",
+      "scope": "專業圖片的欄位語義；兩岸的橋為原創示意。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一張相片可以認真標出兩個地點，兩個都對。",
+        "visual": "河左架著相機，河右有橋拱，兩支不同顏色的針各自落下。",
+        "seconds": [
+          20,
+          45
+        ]
+      },
+      "source_ids": [
+        "PX115-S03"
+      ],
+      "source_locator": "PX115-S03 Guidelines for using the Location fields 中 Location Created、Location Shown in Image 及遠攝山景例",
+      "notes": "NET_IPTC；作者素材估重 1。"
+    },
+    {
+      "id": "K115-0205",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "旅行照沒有記座標，相簿怎麼還把它放進某個城市？",
+      "mechanism_key": "x115.photo_location.estimated_photo_location_even_without_camera_fix",
+      "answer_target": "Google 相簿說明列出三條來源：相機隨影像儲存、使用者手動加入、相簿估算。估算能參考相片裡的地標和其他已有位置的相片。於是自己的相簿顯示一處地點，也可能是相簿看圖或參考其他照片後加上的。",
+      "scope": "限 Google 相簿的公開說明，不能用來證明某一張圖實際採了哪個特徵。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "相簿可以事後推算一個看起來很合理的地點。",
+        "visual": "幾張有定位的小相片包著一張無定位河景，河景下方慢慢浮起虛線地點標記。",
+        "seconds": [
+          20,
+          45
+        ]
+      },
+      "source_ids": [
+        "PX115-S04"
+      ],
+      "source_locator": "PX115-S04 Manage your photos’ locations、Stop Google Photos from estimating missing locations、Share a photo with a location、Share your location details in shared albums",
+      "notes": "NET_GOOGLE；作者素材估重 1。"
+    },
+    {
+      "id": "K115-0206",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "老相機沒開定位，為什麼回家還能用自己那天的散步路線替照片補地點？",
+      "mechanism_key": "x115.photo_location.own_track_timestamp_correlation_timezone_offset",
+      "answer_target": "在 digiKam 的時間配對流程中，照片提供按快門的時間，另一台隨身裝置提供帶有時間的 GPX 軌跡。軌跡以 UTC 記時，相機若顯示當地時間，要先換到同一時區；相機時鐘快慢也可以另補差值。這些校正供配對使用，不會改動影像本身。",
+      "scope": "只用自有行程和照片，不推定相簿自動追蹤。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不用辨認風景，兩份記錄的時鐘對得上也能補地點。",
+        "visual": "一排鐘面從未對齊轉成同步，相機快門落在手繪路線的一格。",
+        "seconds": [
+          20,
+          45
+        ]
+      },
+      "source_ids": [
+        "PX115-S05"
+      ],
+      "source_locator": "PX115-S05 GPS Correlator 內的 Camera Time Zone、Offset of pictures、Interpolate、Max. Interpol. Time Gap",
+      "notes": "NET_KDE；作者素材估重 1。"
+    },
+    {
+      "id": "K115-0207",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "明明沿著河岸轉彎，補完定位，照片怎麼會落在水面上？",
+      "mechanism_key": "x115.photo_location.interpolated_photo_position_cuts_across_bend",
+      "answer_target": "digiKam 允許在軌跡的兩次記錄之間，依照片時間做直線內插。若快門正好在兩次記錄的時間中點，位置就落在兩點連線的中點。實際走的河岸若有大彎，這條直線可能橫過水面；軟體手冊也把近似直行列為比較合適的條件。",
+      "scope": "原創河灣圖解，由手冊明列的線性內插規則推出。未主張照片範例真的落水。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩個真的軌跡點，中間可以算出一個人沒去過的位置。",
+        "visual": "弧形河岸有腳印，直線跨過水面，兩條路在正中間拉開。",
+        "seconds": [
+          20,
+          45
+        ]
+      },
+      "source_ids": [
+        "PX115-S05"
+      ],
+      "source_locator": "PX115-S05 GPS Correlator 內的 Camera Time Zone、Offset of pictures、Interpolate、Max. Interpol. Time Gap",
+      "notes": "NET_KDE；作者素材估重 1。"
+    },
+    {
+      "id": "K115-0208",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "地圖上的針沒移動，照片下面為什麼可能寫著隔壁街？",
+      "mechanism_key": "x115.photo_location.coordinate_geocoding_nearest_address_mismatch",
+      "answer_target": "座標與顯示的地名分兩步取得。例如 Lightroom Classic 可把照片座標送去查詢城市、州或國家。另一個公開實作 Nominatim 說明它會找最近、適合檢索的地圖物件並使用其地址；街區密集時，那個物件可能屬於別條街。兩個例子分別說明為何地名需要查詢，以及查到的標籤可能錯位。",
+      "scope": "兩個不同產品的例子；Lightroom 的手冊指向自家合作的服務，並非使用 Nominatim。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "地名是另外查出來的標籤，和定位針不是同一項資料。",
+        "visual": "同一支針固定不動，隔壁街的建物像磁鐵般吸來一張地名牌。",
+        "seconds": [
+          20,
+          45
+        ]
+      },
+      "source_ids": [
+        "PX115-S09",
+        "PX115-S10"
+      ],
+      "source_locator": "PX115-S09 Metadata 設定中的 Enable Reverse Geocoding of GPS Coordinates To Provide Address Suggestions 與 Export Reverse Geocoding Suggestions Whenever Address Fields Are Empty；PX115-S10 How it works 的兩點限制，含 small, unnamed paths 與 dense city areas 例",
+      "notes": "NET_NOMINATIM；作者素材估重 1。"
+    },
+    {
+      "id": "K115-0209",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "只想這次傳照片不帶地點，要把相機定位整個關掉嗎？",
+      "mechanism_key": "x115.photo_location.share_sheet_location_toggle_single_delivery",
+      "answer_target": "iPhone／iPad 的「照片」分享表單可以在送出之前，單獨關閉「位置」，畫面會提示這批分享不含位置。停止日後相機繼續記錄位置則屬於相機定位權限。兩個控制分別作用在分享與拍攝。",
+      "scope": "只描述文件中的「照片」分享表單，不承諾任何其他 app 的行為。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "拍下的位置留不留，與這一次送出時附不附，是兩個時間點的選擇。",
+        "visual": "相片經過一道小門，定位針留在寄件者手邊，河景複本穿過門。",
+        "seconds": [
+          20,
+          45
+        ]
+      },
+      "source_ids": [
+        "PX115-S01"
+      ],
+      "source_locator": "PX115-S01 首段、Review photos that contain location metadata、Stop location metadata collection、Don’t share location metadata",
+      "notes": "NET_Apple；作者素材估重 1。"
+    },
+    {
+      "id": "K115-0210",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "同樣開了相簿的位置分享，為什麼一張有地點，另一張卻沒有？",
+      "mechanism_key": "x115.photo_location.estimate_unchanged_vs_added_location_shared",
+      "answer_target": "Google 相簿文件限定在選擇分享地點時：相機附的、手動加入的、自己編輯過的推算位置可以傳給收件者。只有相簿自行估算、使用者沒更動的地點則不隨相片分享。使用者自己看到相同的地圖外觀，對面仍可能收到不同結果。",
+      "scope": "限相簿內的分享；與下載、電郵附件不同。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "自己看得到的定位針，還有「誰放上去」的差別。",
+        "visual": "兩張同樣帶針的照片走向分享門，一支虛線針留在原處。",
+        "seconds": [
+          20,
+          45
+        ]
+      },
+      "source_ids": [
+        "PX115-S04"
+      ],
+      "source_locator": "PX115-S04 Manage your photos’ locations、Stop Google Photos from estimating missing locations、Share a photo with a location、Share your location details in shared albums",
+      "notes": "NET_GOOGLE；作者素材估重 0.5。"
+    },
+    {
+      "id": "K115-0211",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "在相簿裡補了旅行地點，下載相片寄電子郵件時，附件會照抄修改嗎？",
+      "mechanism_key": "x115.photo_location.exported_original_vs_library_location_edits",
+      "answer_target": "Google 相簿將平台內分享與下載後用電子郵件寄出列為不同情境。對下載後再寄的相片，文件說顯示的是裝置原先儲存的位置，Google 相簿裡的地點編輯不會跟著出去。這解釋了同一張圖透過相簿連結與透過下載檔分享時，文字或定位可能不同。",
+      "scope": "限說明中給出的下載再寄情境；不對任意匯出工具或收件者的顯示介面下結論。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "相簿畫面改完了，重新寄出的檔案仍可能保留另一份紀錄。",
+        "visual": "修改過的便箋黏在相簿封底，照片從抽屜抽出寄走時沒有帶走便箋。",
+        "seconds": [
+          20,
+          45
+        ]
+      },
+      "source_ids": [
+        "PX115-S04"
+      ],
+      "source_locator": "PX115-S04 Manage your photos’ locations、Stop Google Photos from estimating missing locations、Share a photo with a location、Share your location details in shared albums",
+      "notes": "NET_GOOGLE；作者素材估重 0.5。"
+    },
+    {
+      "id": "K115-0212",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "同樣的通訊軟體，點「圖片」和點「檔案」，照片的定位會有差嗎？",
+      "mechanism_key": "x115.photo_location.measured_document_vs_image_geolocation_recovery",
+      "answer_target": "2025 年一項研究用十張受控影像比較不同傳送方式。三種受測通訊服務的文件模式都保留了定位欄位。用同一服務的聊天圖片模式傳送，研究者則都沒能可靠讀回該欄。表 2 用 X 一併表示欄位已移除或無法可靠讀回。",
+      "scope": "§5.2 表 2 與表後註解。結果適用於受測路徑與版本；表格未區分 X 涵蓋的兩種情況，也無法用來確定某一壓縮方法是原因。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一幅風景換一種方式傳送，能否讀回定位欄位就可能不同。",
+        "visual": "同張河景分走相片框和文件夾兩條路，到終點時只有文件路徑的讀取窗顯示定位針。",
+        "seconds": [
+          20,
+          45
+        ]
+      },
+      "source_ids": [
+        "PX115-S06"
+      ],
+      "source_locator": "PX115-S06 §4.1–4.3、§5 開頭的實驗規模、§5.2 表 2 Geolocation 列與表後 Notes 對 ✓、X 的定義",
+      "notes": "NET_SONI；作者素材估重 1。"
+    },
+    {
+      "id": "K115-0213",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "把網路相簿的地圖設成只有自己可看，原圖的位置也就消失了嗎？",
+      "mechanism_key": "x115.photo_location.map_visibility_separate_from_original_download",
+      "answer_target": "Flickr 的地圖顯示權控制誰能在平台上看地點；若上傳的原檔本來就附有地理資訊，它仍在原始檔案的 EXIF 裡。官方另外提醒留意誰能下載原圖。因此前台地圖的可見對象和原圖可見對象，需要分別理解。",
+      "scope": "只談使用者自己發佈的檔案；未測其他平台，也不把相簿隱私選項等同改寫原檔。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "隱藏畫面裡的一支針和處理可下載的原檔，是兩個動作。",
+        "visual": "相簿的地圖蓋上布幕，旁邊保存原圖的抽屜仍有自己的門。",
+        "seconds": [
+          20,
+          45
+        ]
+      },
+      "source_ids": [
+        "PX115-S07"
+      ],
+      "source_locator": "PX115-S07 Geo Preferences 的三個自動上圖設定、Note 段落",
+      "notes": "NET_FLICKR；作者素材估重 1。"
+    },
+    {
+      "id": "K115-0214",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "相片管理軟體裡已改好的資料，為什麼只複製那張相片，另一套軟體卻仍看到舊資料？",
+      "mechanism_key": "x115.photo_location.edited_metadata_catalog_vs_raw_sidecar",
+      "answer_target": "Lightroom Classic 先把編輯資料記在自己的目錄；要讓其他應用程式讀到變更，可另寫入 XMP。遇到專有格式的相機 RAW，這些 XMP 資料放在另外的伴隨檔裡；JPEG 等支援格式則可寫進檔案。若只搬專有 RAW，留在目錄或伴隨檔的註記都沒有一同搬走。",
+      "scope": "文件說的是詮釋資料的一般工作方式；本卡作為相簿註記和檔案分開的具體旁證。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "整理相簿有時像寫目錄卡，搬照片時不一定會把卡片一起搬走。",
+        "visual": "一張照片夾著一張薄卡，照片被拿到另一個櫃子，卡仍留在舊夾。",
+        "seconds": [
+          20,
+          45
+        ]
+      },
+      "source_ids": [
+        "PX115-S08"
+      ],
+      "source_locator": "PX115-S08 About metadata and XMP、Specify where to write metadata changes",
+      "notes": "NET_ADOBE；作者素材估重 0.75。"
+    },
+    {
+      "id": "K115-0215",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "台灣公開觀測紀錄列出了哪種生物，為什麼地點有時只寫到縣市？",
+      "mechanism_key": "x115.photo_location.biodiversity_public_record_precision_levels",
+      "answer_target": "台灣生物多樣性網絡根據物種敏感狀態和紀錄本身的標示處理公開資料。「縣市」層級只顯示縣市；另一個「座標不開放」層級則遮住整個點位，仍可查到該物種存在。這時公開欄位的精細程度，反映的是資料發布決定。",
+      "scope": "這是公開觀測紀錄的層級，不據此推斷原照片的定位。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "平台可以保留生態紀錄的價值，又選擇把位置顯示得較粗。",
+        "visual": "以虛構的地圖區塊替代真實棲地，先亮起一個點，再只亮一整塊輪廓。",
+        "seconds": [
+          20,
+          45
+        ]
+      },
+      "source_ids": [
+        "PX115-S12"
+      ],
+      "source_locator": "PX115-S12 首段及「觀測紀錄上的敏感資訊」六級對照表的「縣市」「座標不開放」兩列",
+      "notes": "NET_TBN；作者素材估重 0.75。"
+    },
+    {
+      "id": "K115-0216",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "通報照片已經在地圖上模糊了地點，為什麼有的平台還得處理相片本身？",
+      "mechanism_key": "x115.photo_location.public_observation_map_and_image_both_redacted",
+      "answer_target": "福爾摩沙生態守望計劃的隱私說明把兩條路都寫了出來。通報可以用相片裡的時間和座標填表，網站也會保存精確位置。保育類、敏感或尚未辨識的動物，其公開相片會移除 EXIF，避免相片本身透露刻意模糊化的地圖位置。",
+      "scope": "該站公告的做法，未自行測試；使用虛構動物圖和虛構地圖，不展示真正敏感物種點位。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一筆紀錄有地圖也有影像，要讓公開資訊一致，兩處都得處理。",
+        "visual": "紙製小鳥站在虛構草地，兩扇窗分別把地圖與相片的定位標記收起來。",
+        "seconds": [
+          20,
+          45
+        ]
+      },
+      "source_ids": [
+        "PX115-S11"
+      ],
+      "source_locator": "PX115-S11 「照片怎麼處理」與「位置資料」",
+      "notes": "NET_FORMOSA；作者素材估重 1。"
+    },
+    {
+      "id": "K115-0217",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "從相簿網頁點「照片另存」與點「下載原圖」，怎麼知道拿到的是同一個版本？",
+      "mechanism_key": "x115.photo_location.browser_save_as_vs_site_photo_download_2019",
+      "answer_target": "IPTC 在 2019 年刻意分開測瀏覽器另存與平台下載。它在免費 Flickr 帳號測得：瀏覽器另存下來的圖片沒有 XMP 資料，而平台也提供原檔下載。同一頁看到一張相片，不代表不同下載方式取得的是同一份內容。",
+      "scope": "這是一個舊版測試的 XMP 結果，不能代換為 GPS 一定被移除，亦不描述今日同站行為。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一張網頁上的圖可能同時有預覽用與留存用的版本。",
+        "visual": "遠看相同的兩張明信片翻到背面，一張背面留有附註，一張空白。",
+        "seconds": [
+          20,
+          45
+        ]
+      },
+      "source_ids": [
+        "PX115-S13"
+      ],
+      "source_locator": "PX115-S13 Test Procedure 中 Save As 及平台下載的兩個問題；Flickr 免費帳號當時的 Summary",
+      "notes": "NET_IPTC；作者素材估重 0.75。"
+    },
+    {
+      "id": "K115-0218",
+      "category": "數位科技與通訊工程",
+      "domain": "數位科技與通訊工程",
+      "question": "在 LINE 勾「原始畫質」傳給家人，收件者下載後就能看到拍照地點嗎？",
+      "mechanism_key": "x115.photo_location.line_original_quality_recipient_geotag_observations",
+      "answer_target": "「原始畫質」說的是畫質選擇。2019 年日本媒體用 Loooks 確認一張 iPhone 原照讀得到經緯度，送方勾選原始畫質、收方也選原圖下載；用同一工具打開收到的照片，看得到拍攝日期，卻沒有顯示緯度、經度與海拔。2025 年另一組編輯實測，從 LINE 聊天室送出帶位置的照片，收方下載後在手機的照片詳細資訊看不到原位置。文末列 iOS 版 15.7.2、Android 版 15.7.1，此次未列畫質設定。",
+      "scope": "兩份實測分開解讀。前者用欄位檢視工具、未列 LINE 版號；後者只查裝置相片資訊，沒有逐欄檢查下載檔。LINE 官方另列「傳送檔案」的操作，本卡來源未實測其定位結果，也不能保證未測版本或所有傳送方式都相同。",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "segment",
+        "payoff": "收件者可以得到一張清楚、有拍攝日期的照片，當次測試裡仍讀不到它原先的經緯度。",
+        "visual": "以自繪河岸照分別呈現寄件與收件兩個畫框，兩邊都保留橋面細節；翻開收到那張的資訊卡，只亮起日曆圖示。",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "source_ids": [
+        "PX115-S14",
+        "PX115-S15",
+        "PX115-S16",
+        "PX115-S17"
+      ],
+      "source_locator": "PX115-S14 「LINEで写真を送ると撮影場所も知られる？」的送方／收方步驟及文末「検証バージョン」；PX115-S15 「LINEの『オリジナル画質』に要注意」中 Loooks 讀原照、送方勾原始畫質、收方選原圖下載、Loooks 重讀下載檔的段落；PX115-S16 「とっておきの写真は、オリジナル画質で送信しよう」及「常に高画質で送信する設定も」；PX115-S17 「傳送文字訊息以外的資訊」下的「照片、影片」及「文字或語音等檔案」，主要裝置步驟",
+      "notes": "NET_APPLLIO、NET_KAMIAP 為兩個獨立編輯實測，NET_LINE 兩頁僅說明功能；同一個問題只計一次，作者估重 0.75。近鄰 K115-0212 的受測服務沒有 LINE；本卡比較的是 LINE 原始畫質設定與接收者看得到的地點欄位。"
+    }
+  ],
+  "not_added": []
+}

@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans JP','Hiragino Sans','Noto Sans KR',system-ui,sans-serif">
+  <title id="title">釜山2泊3日モデルコース エリア別ルート図 / Busan three-day itinerary by area</title>
+  <desc id="desc">簡略化した釜山のエリア模式図（正確な縮尺ではありません）。左端の金海空港からは軽電鉄で6分の沙上駅に出て、2号線で8駅の西面へアクセス可能。空港リムジンバス海雲台線は9,500ウォン・約1時間（07:10–21:40空港発）で海雲台へ直行します。Day 1は海雲台と広安里（広安大橋の夜景）。Day 2は甘川文化村（土城駅6番出口からマウルバス沙下1-1・西区2・2-2、3–10月は09:00–18:00）と南浦洞のチャガルチ市場・BIFF広場・龍頭山公園。Day 3午前は松島海上ケーブルカー（往復19,000ウォン〜）または機張の海東龍宮寺（04:30–19:20・無料）、午後はBlueline Parkで尾浦からスカイカプセル約30分で青沙浦へ、海岸列車で松亭まで結ぶルートです。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <path d="M 0 840 C 250 810, 450 830, 700 750 C 900 680, 1020 630, 1150 590 C 1300 540, 1450 420, 1600 300 L 1600 900 L 0 900 Z" fill="#BFD9E3" opacity="0.8"/>
+  <text x="1450" y="640" font-size="18" font-weight="700" fill="#3F6C7A">바다 海 Sea</text>
+  <text x="60" y="66" font-size="36" font-weight="700" fill="#102A2B">釜山2泊3日　1日1方面、海辺は朝晩にゆったり</text>
+  <text x="60" y="100" font-size="20" fill="#5C6B6B">Busan in three days · イメージ図（非縮尺）· 料金・時間は2026年9月公式サイト確認</text>
+  <defs>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#B8442D"/></marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2E7D5B"/></marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2F6F9F"/></marker>
+  </defs>
+
+  <!-- airport limousine to Haeundae -->
+  <path d="M 175 250 C 175 130, 845 110, 1135 400" fill="none" stroke="#B8442D" stroke-width="6" stroke-dasharray="16 12" stroke-linecap="round" marker-end="url(#arrowRed)"/>
+  <text x="380" y="150" font-size="18" font-weight="700" fill="#B8442D">空港リムジン 海雲台線 9,500ウォン · 約1時間 · 07:10–21:40 空港発</text>
+
+  <!-- airport, light rail, line 2 -->
+  <rect x="45" y="250" width="235" height="90" rx="22" fill="#0D6B68"/>
+  <text x="162" y="288" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">김해공항 金海空港</text>
+  <text x="162" y="318" font-size="17" fill="#E6F2F1" text-anchor="middle">Gimhae Airport · PUS</text>
+  <line x1="280" y1="295" x2="395" y2="295" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+  <text x="338" y="278" font-size="16" font-weight="700" fill="#0D6B68" text-anchor="middle">軽電鉄 6分</text>
+  <line x1="395" y1="295" x2="510" y2="295" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
+  <text x="452" y="278" font-size="16" font-weight="700" fill="#6B4A3A" text-anchor="middle">2号線 8駅</text>
+  <circle cx="395" cy="295" r="13" fill="#FFFFFF" stroke="#0D6B68" stroke-width="6"/>
+  <text x="395" y="332" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">사상 沙上 Sasang</text>
+
+  <!-- Seomyeon -->
+  <rect x="510" y="250" width="275" height="90" rx="22" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="5"/>
+  <text x="647" y="288" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">서면 西面 Seomyeon</text>
+  <text x="647" y="318" font-size="15" fill="#5C6B6B" text-anchor="middle">宿泊・乗換拠点 · 1・2号線</text>
+
+  <!-- line 2 to Haeundae -->
+  <path d="M 785 295 C 915 295, 975 420, 1055 445" fill="none" stroke="#6B4A3A" stroke-width="8" stroke-linecap="round"/>
+  <text x="790" y="395" font-size="16" font-weight="700" fill="#6B4A3A">2号線 16駅</text>
+  <text x="790" y="418" font-size="15" font-weight="700" fill="#6B4A3A">広安・センタムシティ経由</text>
+
+  <!-- line 1 to Nampo -->
+  <line x1="640" y1="340" x2="635" y2="468" stroke="#D97A2B" stroke-width="8" stroke-linecap="round"/>
+  <text x="655" y="410" font-size="16" font-weight="700" fill="#D97A2B">1号線 8駅</text>
+
+  <!-- Haeundae: Day 1 evening, Day 3 afternoon -->
+  <rect x="1055" y="400" width="295" height="114" rx="22" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <circle cx="1055" cy="400" r="26" fill="#2F6F9F"/><text x="1055" y="406" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 1</text>
+  <circle cx="1350" cy="400" r="26" fill="#2E7D5B"/><text x="1350" y="406" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 3</text>
+  <text x="1202" y="446" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">해운대 海雲台 Haeundae</text>
+  <text x="1202" y="472" font-size="15" fill="#5C6B6B" text-anchor="middle">Day 1 夕方 ビーチ・冬柏島</text>
+  <text x="1202" y="496" font-size="15" fill="#5C6B6B" text-anchor="middle">Day 3 午後 Blueline Park</text>
+
+  <!-- Blueline Park -->
+  <path d="M 1350 472 L 1392 458 L 1468 400 L 1545 330" fill="none" stroke="#0D6B68" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="1392" cy="458" r="9" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5"/>
+  <circle cx="1468" cy="400" r="9" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5"/>
+  <circle cx="1545" cy="330" r="9" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5"/>
+  <text x="1405" y="480" font-size="15" font-weight="700" fill="#102A2B">미포 尾浦</text>
+  <text x="1483" y="414" font-size="15" font-weight="700" fill="#102A2B">청사포 青沙浦</text>
+  <text x="1530" y="316" font-size="15" font-weight="700" fill="#102A2B" text-anchor="end">송정 松亭 Songjeong</text>
+  <text x="1585" y="540" font-size="15" font-weight="700" fill="#0D6B68" text-anchor="end">スカイカプセル 尾浦↔青沙浦 約30分 · 海岸列車で松亭へ</text>
+
+  <!-- Gijang / Yonggungsa: Day 3 option B -->
+  <rect x="1260" y="148" width="310" height="104" rx="20" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="6"/>
+  <circle cx="1260" cy="148" r="26" fill="#2E7D5B"/><text x="1260" y="154" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 3</text>
+  <text x="1415" y="188" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">기장 機張 · 해동용궁사</text>
+  <text x="1415" y="214" font-size="15" fill="#5C6B6B" text-anchor="middle">海東龍宮寺 04:30–19:20 · 無料</text>
+  <text x="1415" y="237" font-size="15" fill="#5C6B6B" text-anchor="middle">プランB · 海雲台からバス</text>
+  <path d="M 1210 398 C 1235 330, 1265 300, 1300 254" fill="none" stroke="#2E7D5B" stroke-width="5" stroke-dasharray="10 8" marker-end="url(#arrowGreen)"/>
+  <text x="1268" y="325" font-size="15" font-weight="700" fill="#2E7D5B">バス</text>
+
+  <!-- Gwangalli: Day 1 night -->
+  <rect x="815" y="596" width="290" height="102" rx="22" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <circle cx="815" cy="596" r="26" fill="#2F6F9F"/><text x="815" y="602" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 1</text>
+  <text x="960" y="638" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">광안리 広安里 Gwangalli</text>
+  <text x="960" y="668" font-size="15" fill="#5C6B6B" text-anchor="middle">広安大橋の夜景 · 2号線 広安駅</text>
+  <path d="M 1165 516 C 1148 566, 1130 592, 1108 612" fill="none" stroke="#2F6F9F" stroke-width="5" stroke-dasharray="10 8" marker-end="url(#arrowBlue)"/>
+  <text x="1162" y="582" font-size="15" font-weight="700" fill="#2F6F9F">2号線 6駅</text>
+
+  <!-- Nampo: Day 2 -->
+  <rect x="490" y="470" width="285" height="110" rx="22" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+  <circle cx="490" cy="470" r="26" fill="#B8442D"/><text x="490" y="476" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 2</text>
+  <text x="632" y="510" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">남포동 南浦洞 Nampo</text>
+  <text x="632" y="536" font-size="15" fill="#5C6B6B" text-anchor="middle">チャガルチ市場 · BIFF広場 · 龍頭山</text>
+  <text x="632" y="560" font-size="15" fill="#5C6B6B" text-anchor="middle">1号線 チャガルチ駅／南浦駅</text>
+
+  <!-- Gamcheon: Day 2 -->
+  <rect x="90" y="560" width="325" height="104" rx="22" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+  <circle cx="90" cy="560" r="26" fill="#B8442D"/><text x="90" y="566" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 2</text>
+  <text x="252" y="598" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">감천문화마을 甘川文化村</text>
+  <text x="252" y="624" font-size="15" fill="#5C6B6B" text-anchor="middle">09:00–18:00（3–10月）· 無料</text>
+  <text x="252" y="648" font-size="15" fill="#5C6B6B" text-anchor="middle">土城駅6番出口からマウルバス</text>
+  <path d="M 488 540 C 466 560, 444 576, 419 590" fill="none" stroke="#B8442D" stroke-width="5" stroke-dasharray="10 8" marker-end="url(#arrowRed)"/>
+  <text x="458" y="528" font-size="15" font-weight="700" fill="#B8442D" text-anchor="end">マウルバス 沙下1-1・西区2・2-2</text>
+
+  <!-- Songdo: Day 3 option A -->
+  <rect x="70" y="720" width="335" height="104" rx="22" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="6"/>
+  <circle cx="70" cy="720" r="26" fill="#2E7D5B"/><text x="70" y="726" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 3</text>
+  <text x="237" y="758" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">송도 松島 Songdo</text>
+  <text x="237" y="785" font-size="15" fill="#5C6B6B" text-anchor="middle">海上ケーブルカー 往復19,000ウォン〜</text>
+  <text x="237" y="809" font-size="15" fill="#5C6B6B" text-anchor="middle">プランA · 南浦洞からバス／タクシー</text>
+  <path d="M 555 582 C 502 650, 444 692, 408 725" fill="none" stroke="#2E7D5B" stroke-width="5" stroke-dasharray="10 8" marker-end="url(#arrowGreen)"/>
+  <text x="506" y="672" font-size="15" font-weight="700" fill="#2E7D5B">バス／タクシー</text>
+
+  <!-- legend -->
+  <g font-size="16" fill="#102A2B">
+    <circle cx="70" cy="860" r="9" fill="#2F6F9F"/><text x="88" y="866" font-size="16">Day 1</text>
+    <circle cx="160" cy="860" r="9" fill="#B8442D"/><text x="178" y="866" font-size="16">Day 2</text>
+    <circle cx="250" cy="860" r="9" fill="#2E7D5B"/><text x="268" y="866" font-size="16">Day 3</text>
+    <line x1="340" y1="860" x2="385" y2="860" stroke="#0D6B68" stroke-width="8" stroke-linecap="round"/><text x="395" y="866" font-size="16">軽電鉄 · Blueline Park</text>
+    <line x1="595" y1="860" x2="640" y2="860" stroke="#6B4A3A" stroke-width="8" stroke-linecap="round"/><text x="650" y="866" font-size="16">地下鉄 2号線</text>
+    <line x1="775" y1="860" x2="820" y2="860" stroke="#D97A2B" stroke-width="8" stroke-linecap="round"/><text x="830" y="866" font-size="16">地下鉄 1号線</text>
+    <line x1="955" y1="860" x2="1000" y2="860" stroke="#B8442D" stroke-width="6" stroke-dasharray="14 10" stroke-linecap="round"/><text x="1010" y="866" font-size="16">バス · タクシー</text>
+    <text x="1340" y="866" font-size="16" fill="#5C6B6B">© Mokaair 制作 2026</text>
+  </g>
+</svg>

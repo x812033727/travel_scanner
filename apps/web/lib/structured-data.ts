@@ -18,19 +18,43 @@ import { localeUrl, siteUrl } from "@/lib/seo";
 const CONTEXT = "https://schema.org";
 const BRAND = "Mokaair";
 
+/** Parse comma-separated verified HTTPS entity URLs (e.g. official YouTube channel) for `sameAs`. */
+export function parseSameAs(raw: string | undefined): string[] {
+  if (!raw) return [];
+  const urls: string[] = [];
+  const seen = new Set<string>();
+  for (const part of raw.split(",")) {
+    const trimmed = part.trim();
+    if (!trimmed) continue;
+    try {
+      const parsed = new URL(trimmed);
+      if (parsed.protocol !== "https:") continue;
+      const normalized = parsed.toString();
+      if (seen.has(normalized)) continue;
+      seen.add(normalized);
+      urls.push(normalized);
+    } catch {
+      continue;
+    }
+  }
+  return urls;
+}
+
 /** The brand as a nested node. No `@context`: a node inside another graph inherits the
  *  enclosing one, and repeating it is noise a validator has to look past. */
-function brand(): object {
+function brand(sameAs?: readonly string[]): object {
+  const verified = sameAs ?? parseSameAs(process.env.NEXT_PUBLIC_SITE_SAME_AS);
   return {
     "@type": "Organization",
     name: BRAND,
     url: siteUrl,
     logo: `${siteUrl}/brand/mokaair-monogram.png`,
+    ...(verified.length ? { sameAs: verified } : {}),
   };
 }
 
-export function organization(): object {
-  return { "@context": CONTEXT, ...brand() };
+export function organization(sameAs?: readonly string[]): object {
+  return { "@context": CONTEXT, ...brand(sameAs) };
 }
 
 export function webSite(locale: Locale, searchEnabled = true): object {
@@ -72,11 +96,12 @@ export function breadcrumbs(locale: Locale, trail: readonly Crumb[]): object | n
 
 /** A list whose entries have their own pages. Entries without a URL are left unmarked: a
  *  ListItem a crawler cannot follow is not worth describing. */
-export function itemList(locale: Locale, items: readonly Crumb[]): object | null {
+export function itemList(locale: Locale, items: readonly Crumb[], name?: string): object | null {
   if (!items.length) return null;
   return {
     "@context": CONTEXT,
     "@type": "ItemList",
+    ...(name ? { name } : {}),
     itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,
@@ -380,6 +405,43 @@ export function foodEstablishments(locale: Locale, seed: unknown, awards: Awards
   const items = typeof seed === "object" && seed !== null ? (seed as { items?: unknown }).items : undefined;
   if (!Array.isArray(items)) return [];
   return (items as MerchantCard[]).map((card) => foodEstablishment(locale, card, awards));
+}
+
+/**
+ * A published YouTube video rendered on `/videos` or embedded under its source article.
+ *
+ * Every field matches what `VideoCard` renders: the title, the YouTube `hqdefault.jpg`
+ * thumbnail, the publication timestamp, the `youtube-nocookie` embed URL and the canonical
+ * watch URL. No invented duration or interaction counts.
+ */
+export function videoObject(
+  locale: Locale,
+  input: {
+    slug: string;
+    title: string;
+    youtubeVideoId: string;
+    publishedAt: string;
+    description?: string | null;
+    articlePath?: string | null;
+    pagePath?: string;
+  },
+): object {
+  const id = input.youtubeVideoId;
+  const pageUrl = localeUrl(locale, input.pagePath ?? "/videos");
+  return {
+    "@context": CONTEXT,
+    "@type": "VideoObject",
+    "@id": `${pageUrl}#video-${input.slug}`,
+    name: input.title,
+    description: input.description?.trim() || input.title,
+    thumbnailUrl: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
+    uploadDate: input.publishedAt,
+    contentUrl: `https://www.youtube.com/watch?v=${id}`,
+    embedUrl: `https://www.youtube-nocookie.com/embed/${id}`,
+    inLanguage: locale,
+    publisher: brand(),
+    ...(input.articlePath ? { mainEntityOfPage: localeUrl(locale, input.articlePath) } : {}),
+  };
 }
 
 /**

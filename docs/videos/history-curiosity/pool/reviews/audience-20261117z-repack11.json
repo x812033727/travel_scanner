@@ -1,0 +1,244 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-17",
+  "status": "TOPIC_APPEAL_REFERENCE_NOT_FINAL_CUT_REVIEW",
+  "owner_request": "站主 2026-11-17 問「還有繼續有效率的擴充嗎」，選「先評 444 題，再改包裝」：這 444 題評分後總分 6.0–6.5 的單集題改包裝。",
+  "candidates_method": {
+    "scope": "總分 6.0–6.5 的入選單集題改包裝後的複評，第 11 輪 19 題：question、hook、payoff 由未參與研究與評分的改寫編輯重寫（問句 40–110 字、一個問號），事實與來源不動，新文字的數字與專名都在原題卡裡。複評的五項平均比原分高 0.5 以上（第 1–3 輪是「較高即採用」）的 8 題採用新包裝並以這份分數為準；其餘維持原文與原分。",
+    "persona": "台灣 25–45 歲、喜歡歷史懸案／奇聞／都市傳說長片的一般觀眾",
+    "card_fields": "題目、完整問題、開場鉤子、這集會揭曉（前 260 字）、畫面",
+    "reviewers": "兩位新評審各評一次，並放進同六題錨點；不讀 repo、不上網。各自用錨點平均與基準錨點平均的差扣掉鬆緊，再取兩人平均。五項欄位是兩人的原始平均，score 是校正後的五項平均；併入需求的總分由 build 計算。",
+    "sample_anchors": {
+      "P09": [
+        8.0,
+        7.9
+      ],
+      "N384": [
+        6.7,
+        7.1
+      ],
+      "N2843": [
+        4.9,
+        5.1
+      ],
+      "N2181": [
+        6.8,
+        7.0
+      ],
+      "N3266": [
+        4.5,
+        5.0
+      ],
+      "N142": [
+        6.8,
+        6.8
+      ]
+    },
+    "baseline_anchor_mean": 6.858,
+    "sample_offsets": {
+      "zr11-a": -0.65,
+      "zr11-b": -0.47
+    },
+    "caveat": "第 10–13 輪的題都是 reviews/audience-20261117-unscored.json 第一次評分落在 6.0–6.5 的題，第一次改包裝，規則同第 8、9 輪（REWRITE2.md：可沿用原問句裡的主題名稱、地名與身分稱呼，逐題記在批次檔的 notes；數字、最高級與情節仍只能用查核內容裡有的）。每批除了六題錨點，另放 8 題沒改動的對照題一起校正。改寫交稿後主編刪去兩處查核內容沒有的時間（N303 的年份與日期、N2983 的「20 世紀初」）。H36 是舊題庫的題、不在批次檔裡，沒有送改。",
+    "not_adopted": {
+      "N6164": {
+        "previous": 7.22,
+        "rescored": 7.56
+      },
+      "N2743": {
+        "previous": 7.11,
+        "rescored": 7.31
+      },
+      "N171": {
+        "previous": 6.34,
+        "rescored": 6.26
+      },
+      "N2744": {
+        "previous": 7.57,
+        "rescored": 7.81
+      },
+      "N6061": {
+        "previous": 7.17,
+        "rescored": 6.86
+      },
+      "N6261": {
+        "previous": 7.2,
+        "rescored": 7.51
+      },
+      "N4401": {
+        "previous": 7.33,
+        "rescored": 7.76
+      },
+      "N2961": {
+        "previous": 7.05,
+        "rescored": 6.81
+      },
+      "N383": {
+        "previous": 7.3,
+        "rescored": 7.11
+      },
+      "N548": {
+        "previous": 7.35,
+        "rescored": 7.76
+      },
+      "N1443": {
+        "previous": 7.4,
+        "rescored": 7.51
+      }
+    }
+  },
+  "candidates": [
+    {
+      "id": "N4983",
+      "rank": 1,
+      "of": 400,
+      "score": 8.46,
+      "raw": 7.9,
+      "click": 8.25,
+      "hook": 8.0,
+      "surprise": 7.75,
+      "payoff": 7.5,
+      "share": 8.0,
+      "comment": "消失的旅館房間是神級都市傳說，黑天花真相很讚",
+      "previous": {
+        "score": 7.5,
+        "comment": "消失的旅館房間是經典都市傳說，追源頭很想看",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "從原題的流傳情節長句，改成『最早版本的結局完全相反』一個反轉。"
+      }
+    },
+    {
+      "id": "N5542",
+      "rank": 2,
+      "of": 400,
+      "score": 8.26,
+      "raw": 7.7,
+      "click": 7.75,
+      "hook": 7.75,
+      "surprise": 8.0,
+      "payoff": 7.75,
+      "share": 7.25,
+      "comment": "蜘蛛吃鳥大辯論，權威抓錯蜘蛛的反轉很爽",
+      "previous": {
+        "score": 7.25,
+        "comment": "權威抓錯蜘蛛還罵女畫家說謊，平反很爽。",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "拿掉論文、刊名與年份串，只留『塞蜂鳥實驗反被打臉』一個畫面。"
+      }
+    },
+    {
+      "id": "N5503",
+      "rank": 3,
+      "of": 400,
+      "score": 8.21,
+      "raw": 7.65,
+      "click": 7.75,
+      "hook": 7.25,
+      "surprise": 8.0,
+      "payoff": 7.75,
+      "share": 7.5,
+      "comment": "死人穿羊毛還能自首搶罰金，荒謬又好笑，想轉給朋友",
+      "previous": {
+        "score": 7.47,
+        "comment": "死人只准穿羊毛還能自己檢舉自己，太荒謬太好笑",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "把兩百字的法條長句換成『自己檢舉自己』這一個荒謬畫面，造紙業的理由移到開場。"
+      }
+    },
+    {
+      "id": "N611",
+      "rank": 4,
+      "of": 400,
+      "score": 8.06,
+      "raw": 7.5,
+      "click": 8.0,
+      "hook": 7.0,
+      "surprise": 7.5,
+      "payoff": 7.5,
+      "share": 7.5,
+      "comment": "裸騎夫人原來沒閉門，偷窺湯姆是後加的，好想點",
+      "previous": {
+        "score": 7.52,
+        "comment": "偷窺湯姆原本不存在，八卦感十足，很想看",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "以『市集上其實人很多』這個反差當題目核心，年份移到 payoff。"
+      }
+    },
+    {
+      "id": "N429",
+      "rank": 5,
+      "of": 400,
+      "score": 7.91,
+      "raw": 7.35,
+      "click": 7.75,
+      "hook": 7.25,
+      "surprise": 7.25,
+      "payoff": 7.25,
+      "share": 7.25,
+      "comment": "經典鬼照片被物理教授重現，靈異迷一定點",
+      "previous": {
+        "score": 6.88,
+        "comment": "鬼照片被物理教授重拍出來，長曝光解謎過癮",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "把『物理學教授重拍成功』這個解謎畫面放進題目，柯南·道爾移到 payoff。"
+      }
+    },
+    {
+      "id": "N2741",
+      "rank": 6,
+      "of": 400,
+      "score": 7.66,
+      "raw": 7.1,
+      "click": 7.25,
+      "hook": 6.5,
+      "surprise": 7.0,
+      "payoff": 7.25,
+      "share": 7.5,
+      "comment": "打噴嚏說保佑你，東漢說有人講我，超想分享",
+      "previous": {
+        "score": 7.14,
+        "comment": "打噴嚏說保佑你，生活感強好分享",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "把『有人在講我』這個東方版本與古羅馬放進題目，拿掉書名與年份串。"
+      }
+    },
+    {
+      "id": "N2621",
+      "rank": 7,
+      "of": 400,
+      "score": 7.56,
+      "raw": 7.0,
+      "click": 7.25,
+      "hook": 6.5,
+      "surprise": 7.5,
+      "payoff": 7.0,
+      "share": 6.75,
+      "comment": "小矮人騎勺子飛走超可愛，童話原版反差有梗",
+      "previous": {
+        "score": 7.06,
+        "comment": "騎湯勺飛走的小矮人，童話原版好可愛。",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "題目只留『騎湯勺飛走』這個可愛畫面，其他版本與註解移到開場與 payoff。"
+      }
+    },
+    {
+      "id": "N2443",
+      "rank": 8,
+      "of": 400,
+      "score": 7.51,
+      "raw": 6.95,
+      "click": 6.5,
+      "hook": 6.75,
+      "surprise": 7.75,
+      "payoff": 7.25,
+      "share": 6.5,
+      "comment": "課本收錄假法典還出現細菌一字，打臉很痛快",
+      "previous": {
+        "score": 7,
+        "comment": "假法典用了未來才有的字超有梗，但題目長到滑不完。",
+        "review": "reviews/audience-20261117-unscored.json",
+        "changes": "只留『1878 年才有的細菌一字』這個時代錯置，口試與課本的反轉移到 payoff。"
+      }
+    }
+  ]
+}

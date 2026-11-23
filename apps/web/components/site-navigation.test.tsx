@@ -1,7 +1,9 @@
 import { render, screen } from "@testing-library/react";
+import { renderToStaticMarkup } from "react-dom/server";
 import { StrictMode } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { closedSiteVisibility, openSiteVisibility } from "@/lib/site-features";
+import { DiscoveryStatusProvider } from "./discovery-status-provider";
 import { HeaderSessionProvider } from "./header-session";
 import { SiteNavigation } from "./site-navigation";
 import { SiteVisibilityProvider } from "./site-visibility-provider";
@@ -10,6 +12,21 @@ import { ThemeProvider } from "./theme-provider";
 afterEach(() => vi.unstubAllGlobals());
 
 describe("SiteNavigation", () => {
+  it("renders primary editorial and directory links directly in SSR HTML when seeded by DiscoveryStatusProvider", () => {
+    const html = renderToStaticMarkup(
+      <SiteVisibilityProvider state={{ status: "ready", features: openSiteVisibility }}>
+        <DiscoveryStatusProvider initialEnabled={false}>
+          <HeaderSessionProvider hasSession={false}>
+            <ThemeProvider><SiteNavigation /></ThemeProvider>
+          </HeaderSessionProvider>
+        </DiscoveryStatusProvider>
+      </SiteVisibilityProvider>,
+    );
+    for (const href of ["/ai", "/life/topics/ai-news", "/life/topics/tech-news", "/life", "/guides", "/videos", "/destinations", "/foods"]) {
+      expect(html).toContain(`href="${href}"`);
+    }
+  });
+
   it("shares one auth request across desktop and compact mobile controls", async () => {
     const fetchMock = vi.fn(async (input: RequestInfo | URL) => new Response(JSON.stringify(String(input).endsWith("/discovery/status") ? { enabled: false } : {
       id: "admin-1",

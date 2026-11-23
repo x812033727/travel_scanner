@@ -43,7 +43,7 @@ PR #871（2026-09-28 合併）交付的是本機產線：`node tools/video/short
 | 系列 | `shorts_series` | 實測線是 `daily`（台灣日常）、`blind`（成品盲選）、`prompts`（提示驗證）；另外兩條線是來源的長片或作品代號 |
 | 題庫 | `video_shorts_topics` | 還沒做的題目：15 題企劃、企劃模型每週補的新題、每支長片與每集漫劇自動生出的題目、站主自己丟的想法 |
 | 時段 | `video_shorts_slots` | 月曆上的一格：幾月幾日幾點公開一支。預設照 #871 的節奏：前 30 天每天 19:30 一支，之後 60 天單雙日輪流一支與兩支（加 12:30），共 120 格 |
-| 片庫 | 已核准、還沒排進時段的 Shorts | 庫存。少於 `stock_days` 天的量，工人就優先做 Shorts |
+| 片庫 | 已核准、還沒排進時段、不是手動上架的 Shorts | 庫存。少於 `stock_days` 天的量，工人就優先做 Shorts |
 | 上傳包 | `publish` 審核的檔案 | `final.mp4`、`zh-TW.srt`、`cover.png`、`metadata.json`、說明欄文字；實測線另有原始證據 |
 | 自動上架授權 | `video_shorts_settings.consent_*` | 站主明確同意「網站照月曆替我上傳與排程」的那一次按鈕，連同當時看到的條文雜湊 |
 | 成效快照 | `video_shorts_metrics` | 公開後第 1、3、7 天，以及最新一次讀到的 YouTube 數字，原樣存下 |
@@ -73,7 +73,7 @@ PR #871（2026-09-28 合併）交付的是本機產線：`node tools/video/short
 | --- | --- | --- | --- |
 | 製作中 | `making` | 有影片、上傳包還沒核准 | 製作中 |
 | 需要你 | `needs_you` | 有審核在等站主（品管沒過且自動修完仍不過）、卡住（同一步連續失敗、預算、缺金鑰、缺素材） | 需要你 |
-| 在片庫 | `library` | 上傳包已核准、沒有時段 | 片庫 |
+| 在片庫 | `library` | 上傳包已核准、沒有時段（手動上架的也顯示在這裡，但不算庫存、不會被排進時段） | 片庫 |
 | 已排時段 | `slotted` | 佔著一格（`assigned` 或 `locked`）、還沒排上 YouTube | 月曆；稽核前同時列在「等你上傳」 |
 | 已排程 | `scheduled` | 有影片 id、`publishAt` 在未來、同步完成 | 月曆 |
 | 已公開 | `published` | `publishAt` 已過（Y1 確認 YouTube 回報公開之後，時段也標成 `published`） | 成效 |
@@ -197,7 +197,26 @@ YouTube 的開發人員政策對「代替使用者寫入」有三條要求（原
 - 站主的最後決定權：排進時段的每一支在公開之前都能改標題與說明、換時段、抽掉；頂列的「暫停」立刻停止新的上傳與排程；「撤回已排程的」把還沒公開的影片在 YouTube 上取消排程（保持私人）。撤回會連同暫停一起做（不然下一輪又會排回去），按「繼續」之後那幾支重新送出；已經公開的不會動，每一支撤回了沒有都列出來。
 - 網站永遠不會自己把影片設成公開：它只設私人加 `publishAt`，公開由 YouTube 在那個時間做（`HANDS-OFF.md` 的規則不變）；已經公開的影片網站不改。
 
+以上都只管走月曆的 Shorts；手動上架的不在內（見下一節）。
+
 沒有授權時，Shorts 照樣製作、品管、進片庫、排時段，只是不會送 YouTube；每一支在「可以上架」等站主自己按「送到 YouTube」，跟長片一樣。
+
+### 手動上架
+
+站主 2026-11-21 的決定：手動上架的 Shorts（零台詞短劇是第一批）由站主自己在 Studio 上架，網站不自動上架。手動上架和月曆互斥，規則只有一處（`app/video_shorts/hand_upload.py`）。
+
+哪些算手動上架：
+
+- 手動推送的：待審或已核准的成片或上傳包審核帶 `hand_pushed: true`（`shorts/cli.mjs push`）。
+- 沒有已核准的上傳包時，站主就記錄了 YouTube 連結的：拿連結 audit（`video_youtube_linked`）的時間對上傳包審核當時是否已核准，不另外存標記；之後更正網址仍算，解除連結才重算。上傳包核准之後才記的連結不算（VPS 上傳完的「記錄」也是這一種），照月曆走。
+
+手動上架的 Short：
+
+- 上傳包核准了也不給時段，不算片庫的庫存，不會被拿去補空格，也不能在月曆上指派。已經佔著的 `assigned`、`locked` 時段，在核准上傳包或下一次 `tick`（約 5 分鐘內）時清出來；在那之前也不會被送出。已經是 `scheduled` 的不動，要取消用「撤回已排程的」。
+- 不在「等你上傳」，「我上傳好了」也不會認領它。
+- 自動上架授權不會替它送出或重試；還在排隊的自動排程在寫入 YouTube 之前會再查一次並停下。API 與 VPS 都不會替它上傳檔案。站主自己要求對已上傳影片做的同步不受影響。
+- 影片頁的手動上架指南讀目前成片的上傳包：先找綁著它的上傳包審核（待審或已核准），沒有才用成片審核上的 `metadata.json`。成片已核准之後再 push，包只會在上傳包審核上，核准過的成片不改。
+- 成片核准後就能在影片頁記錄 Studio 連結，不用等上傳包核准。時間可以填，留空時問 YouTube；還沒有時間時表單留著，排程或公開之後再記一次。
 
 ### 稽核通過前：站主只拖檔案
 
@@ -211,7 +230,7 @@ YouTube 的開發人員政策對「代替使用者寫入」有三條要求（原
 
 ### 稽核通過後：網站自己上傳
 
-設定分頁的「YouTube API 稽核已通過」勾起來之後，鎖定時段的那一刻網站用 `videos.insert`（續傳上傳）上傳 mp4，同時帶私人與 `publishAt`，接著送字幕。站主不用做任何事。上傳用的是自己的配額桶（每天 100 次），其餘呼叫一支約 500 單位（`videos.update` 50、一條字幕 400、讀取數次），一天兩支遠低於每日 10,000 單位。
+設定分頁的「YouTube API 稽核已通過」勾起來之後，鎖定時段的那一刻（手動上架的除外）網站用 `videos.insert`（續傳上傳）上傳 mp4，同時帶私人與 `publishAt`，接著送字幕。站主不用做任何事。上傳用的是自己的配額桶（每天 100 次），其餘呼叫一支約 500 單位（`videos.update` 50、一條字幕 400、讀取數次），一天兩支遠低於每日 10,000 單位。
 
 ### 誰在什麼時候動手
 
@@ -357,6 +376,7 @@ YouTube 的開發人員政策對「代替使用者寫入」有三條要求（原
 | `package` | 寫 `metadata.json`（標題、兩個備案、說明、標籤、分類、兒童設定、揭露、`final_sha256`、`line`、`series`、`source`）與上傳包檢查 |
 | `push` | 在站上建立或更新這支影片（`format: "shorts"`、`shorts_line`），分段上傳檔案，送 `final` 與 `publish` 兩筆審核。本機與工人用同一個指令；本機用配對好的工具權杖 |
 | `import --from <目錄>` | 把別的工具做好的 Shorts（mp4、srt、一份最小的 `meta.json`）包成同一種上傳包再 `push`。品管一樣要重跑，不信任外來的檢查結果 |
+| 零台詞短劇（2026-11-21，票 `2026-11-21-shorts-import-silent-zero-dialogue-vertical`） | [`shorts-drama/`](shorts-drama/README.md) 的無對白、無旁白、無字幕直式短劇也走 `import`：`meta.json` 寫 `"line": "drama"`、`"silent": true`，目錄只放 `final.mp4`、`meta.json` 與選好的 `cover.png`（沒有就取第 0 格），**不放 `zh-TW.srt`**（放了會被拒絕）。腳本沒有 `scenes`、時間軸沒有 cue、不必有 `source`（不是從長片剪的）；`meta.json` 可帶 `localizations: {en: {title, description}, …}`（en、ja、ko、es、pt、id、vi、th），原樣寫進 `metadata.json` 給 YouTube。`check-audio` 不連站、不付費，寫一份 0 句的 `check.json`；`qa` 的片長用短劇自己的 **9–20 秒**（`core.mjs` `SILENT_RANGE`），不看後台 Shorts 設定的最短／最長；`narration`、`facts`、`captions` 改成「沒有旁白、沒有主張、沒有字幕」且留下的字幕檔會被點名；Jev 的 `policy` 讀標題與說明；`grammar` 只擋標題與說明（含各語）裡的呼籲，選定封面不是第 0 格、末格不回第 0 格只記成 `warnings`（短劇靠劇情重播，REVIEW §3）；`layout` 跟所有匯入一樣不過，交站主用安全區看一次。`package` 不要任何 `.srt`（勾了語言也一樣，`locales` 是空的），`metadata.json` 多 `"silent": true`；`push` 不傳字幕，`format`、`shorts_line` 都是 `drama`。站上把 `｜CC字幕` 加到每個標題，零台詞短劇要拿掉，另開一張票（API 端） |
 | `motion.mjs`（2026-09-29，票 `video-shorts-motion-music`） | 畫面不再是每句一張不透明字卡硬切：**一個場景一段**，底層是這個場景的圖（長片的關鍵影格，16:9 裁成 9:16 只留中間約 32%，依 `camera` 運鏡：push in／pull out／pan left／pan right／tilt up／tilt down／drift）或主題的底色與光暈（純字卡場景，慢慢漂移），上層是每句的**透明字卡**（`sceneHtml` 的 `transparent`：有圖時內容放在半透明面板上、上下加漸層遮罩；`.content`、字幕條、計數與進度條的幾何不變，`measurePage` 與 qa 的 layout 項照舊）；場景之間從上一段的最後一格溶接 15 格，第一個場景硬切。運鏡表達式與溶接長度直接 import `assemble/drama.mjs`，跟長片一致。`checks.json` 多 `motion`（每景的 camera、背景種類、有沒有溶接）。實測線的證據圖（`asset` 沒有 `camera`）仍放在卡片裡，清楚可讀，底下是漂移的底色 |
 | 腳本格式第 2 版的 `camera`、`music`、`sfx` | 場景可寫 `camera`（上面七個詞）；文件層可寫 `music {track, sha256?, gain_db?, duck_db?}` 與 `sfx {set, gain_db?}`，都是站主放在工人主機 `<VIDEO_WORKDIR>/_music/`、`_sfx/<set>/` 的授權檔（跟長片同一份，`docs/videos/ILLUSTRATED.md` §配樂與音效），Shorts 不生成音樂。有配樂或音效時 `build` 走長片的 `measureMixArgs`／`mixArgs`（床壓在旁白下、側鏈壓低、成片 −14 LUFS、床 ≤ −24 LUFS 否則失敗），音效依 `shortSfxPlan` 放：每個場景開頭一個 stamp（第一景除外）、有 `big` 的句子一個 pop、1.5 秒內不重複。`buildId` 加配樂 sha 與音效組雜湊；`checks.json` 多 `music {track, sha256, bed_lufs}`、`sfx {set, events}`。第 1 版腳本一個位元組都不用改 |
 | `karaoke.mjs`（2026-10-05，票 `2026-10-05-shorts-karaoke-captions-estimated-timing`） | 字幕條可以**逐組亮字**（`build --captions karaoke`，沒給旗標就讀 `VIDEO_SHORTS_CAPTIONS`，再沒有就是 `plain`，舊行為一個位元組不變）：每句先切成最多兩行、一行 ≤ 15 個全形字（820 px 盒的真正上限，38 字只是格式上限），每行再切成 5–10 個顯示單位一組（拉丁字與數字不拆、標點黏前一個字、偏好在句讀收尾）；字幕層是獨立的透明 PNG（`captionHtml`，只畫字幕條、裁到 `CAPTION_BOX` 80,1430,820×165），一個亮字狀態一張，疊在卡片上（`segmentArgs` 的最後一個輸入，`overlay=80:1430`），卡片本身把字隱藏但保留盒與底色，所以 `measurePage` 的量法不變；亮組只換顏色（主題的 `highlight`，或 `colors.karaoke`）與光暈，不換版面。時間是**估算**的：伺服器只回音檔，`speechSpan` 先用每句音檔的 RMS 找到頭尾靜音，再依 `spokenUnits` 加標點的權重分攤；寫在成品的 `timing.json`（`source: "estimated"`，每句的 lines、groups、start／end、states），`checks.json.captions = {style, source, groups, states, version}`。CC 的 `zh-TW.srt` 仍一句一段（YouTube CC 沒有逐字）。`MOTION_VERSION` 升到 v2、`karaoke.mjs` 進 `codeHash`、`captions` 進 `buildId`。伺服器的字幕樣式設定延後（要 migration、schemas、後台表單與五個 admin.json）；站主先看一支樣片，滿意再在工人主機設 `VIDEO_SHORTS_CAPTIONS=karaoke`。真實字時由下一列的 `speech/align` 補（同一個 `timing.json` 形狀，`source: "aligned"`） |

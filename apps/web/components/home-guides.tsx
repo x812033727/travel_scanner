@@ -7,12 +7,12 @@ import { NEWS_TOPICS, guideTopicHref, newsOrder, type GuideSummary } from "@/lib
 import type { SeriesSummary } from "@/lib/guide-series";
 import * as guidesServer from "@/lib/guides.server";
 import { getFrontendFlowCopy } from "@/lib/frontend-flow-copy";
+import { navGroups, navItemLabelKey } from "@/lib/nav-links";
 
 export type { HomeGuideBlock };
 
 const OVERVIEW_PER_BLOCK = 4;
 const FETCH_PER_BLOCK = 8;
-const NEWS_PER_TOPIC = 10;
 const NEWS_DESK_LIMIT = 11;
 const TRENDING_FETCH_LIMIT = 18;
 const TRENDING_LIMIT = 6;
@@ -21,6 +21,7 @@ const SERIES_LIMIT = 6;
 export type HomePortalData = {
   blocks: HomeGuideBlock[];
   news: GuideSummary[];
+  newsTopics: string[];
   trending: GuideSummary[];
   software: GuideSummary[];
   series: SeriesSummary[];
@@ -49,10 +50,8 @@ async function safeSeriesIndex(locale: Locale): Promise<SeriesSummary[]> {
 }
 
 /**
- * Reads the portal homepage sections in parallel and deduplicates across them so no article
- * link appears twice on the first screen. A failed read degrades to an empty section, never
- * a thrown page, and optional server helpers are guarded so lightweight unit-test mocks that
- * only stub `getGuideList` continue to work unchanged.
+ * Read each news channel up to the full desk size. A busy channel can supply every
+ * headline, while a quieter channel still gets a direct link to its own archive.
  */
 export async function loadHomeGuides(locale: Locale): Promise<HomePortalData> {
   const [tech, travel, money, rawNews, rawSoftware, rawTrendingArticles, rawSeries] = await Promise.all([
@@ -61,7 +60,7 @@ export async function loadHomeGuides(locale: Locale): Promise<HomePortalData> {
     guidesServer.getGuideList(locale, { kind: "life", topic: "finance", sort: "curated" }, FETCH_PER_BLOCK),
     Promise.all(
       NEWS_TOPICS.map((topic) =>
-        guidesServer.getGuideList(locale, { kind: "life", topic, sort: "news" }, NEWS_PER_TOPIC),
+        guidesServer.getGuideList(locale, { kind: "life", topic, sort: "news" }, NEWS_DESK_LIMIT),
       ),
     ),
     guidesServer.getGuideList(locale, { kind: "life", topic: "software", sort: "curated" }, FETCH_PER_BLOCK),
@@ -75,47 +74,18 @@ export async function loadHomeGuides(locale: Locale): Promise<HomePortalData> {
     { key: "money", href: guideTopicHref("life", "finance"), articles: money.articles },
   ];
 
-  // Seed deduplication with the overview slice shown on the default "all" tab so items 5..8
-  // reserved for dedicated category tabs do not suppress trending or software picks.
-  const shown = new Set<string>(
-    blocks.flatMap((block) => block.articles.slice(0, OVERVIEW_PER_BLOCK).map(articleKey)),
-  );
-
+  const newsTopics = NEWS_TOPICS.filter((_, index) => rawNews[index].articles.some((article) => article.news_date));
   const newsByKey = new Map<string, GuideSummary>();
   for (const group of rawNews) {
     for (const item of group.articles) {
       const key = articleKey(item);
-      if (item.news_date && !shown.has(key) && !newsByKey.has(key)) {
+      if (item.news_date && !newsByKey.has(key)) {
         newsByKey.set(key, item);
       }
     }
   }
   const news = [...newsByKey.values()].sort(newsOrder).slice(0, NEWS_DESK_LIMIT);
-  for (const item of news) shown.add(articleKey(item));
-
-  const software: GuideSummary[] = [];
-  for (const item of rawSoftware.articles) {
-    const key = articleKey(item);
-    if (!shown.has(key) && software.length < FETCH_PER_BLOCK) {
-      if (software.length < OVERVIEW_PER_BLOCK) shown.add(key);
-      software.push(item);
-    }
-  }
-
-  const trending: GuideSummary[] = [];
-  for (const item of rawTrendingArticles) {
-    const key = articleKey(item);
-    if (!shown.has(key) && trending.length < TRENDING_LIMIT) {
-      shown.add(key);
-      trending.push(item);
-    }
-  }
-
-  const series = rawSeries
-    .filter((item) => !shown.has(`${item.hub.kind}:${item.hub.slug}`))
-    .slice(0, SERIES_LIMIT);
-
-  return { blocks, news, trending, software, series };
+  return { blocks, news, newsTopics, trending: rawTrendingArticles, software: rawSoftware.articles, series: rawSeries };
 }
 
 /**
@@ -128,28 +98,61 @@ export async function loadHomeGuides(locale: Locale): Promise<HomePortalData> {
 export function HomeGuides({
   blocks,
   news = [],
+  newsTopics = [],
   trending = [],
   software = [],
   series = [],
   hotspotsEnabled = true,
+  flightSearchEnabled = true,
+  videosEnabled = true,
 }: {
   blocks: HomeGuideBlock[];
   news?: GuideSummary[];
+  newsTopics?: string[];
   trending?: GuideSummary[];
   software?: GuideSummary[];
   series?: SeriesSummary[];
   hotspotsEnabled?: boolean;
+  flightSearchEnabled?: boolean;
+  videosEnabled?: boolean;
 }) {
   const rawLocale = useLocale();
   const locale = normalizeLocale(rawLocale);
   const t = useTranslations("search.homeGuides");
   const common = useTranslations("common");
+  const nav = useTranslations("navigation");
   const flow = getFrontendFlowCopy(rawLocale);
   const cardLabels = {
     intel: common("guides.intel"),
     howto: common("guides.howto"),
     life: common("guides.life"),
   };
+  const populatedHrefs = new Set(newsTopics.map((slug) => guideTopicHref("life", slug)));
+  const newsChannels = navGroups.flatMap((group) =>
+    group.items.filter((item) => populatedHrefs.has(item.href)).map((item) => ({
+      href: item.href, label: nav(navItemLabelKey(group.key, item.key)),
+    })),
+  );
+
+  // The overview gives dated headlines first choice. Category tabs keep the editor's
+  // complete selection, including stories already visible in the overview's news desk.
+  const shown = new Set(news.map(articleKey));
+  function takeUnseen(articles: GuideSummary[], limit: number): GuideSummary[] {
+    const picks: GuideSummary[] = [];
+    for (const article of articles) {
+      const key = articleKey(article);
+      if (shown.has(key)) continue;
+      shown.add(key);
+      picks.push(article);
+      if (picks.length === limit) break;
+    }
+    return picks;
+  }
+  const overviewBlocks = blocks.map((block) => ({ ...block, articles: takeUnseen(block.articles, OVERVIEW_PER_BLOCK) }))
+    .filter((block) => block.articles.length > 0);
+  const overviewSoftware = takeUnseen(software, OVERVIEW_PER_BLOCK);
+  const trendingPicks = takeUnseen(trending, TRENDING_LIMIT);
+  const seriesPicks = series.filter((item) => !shown.has(articleKey(item.hub))).slice(0, SERIES_LIMIT);
 
   return (
     <section aria-labelledby="home-guides-title" className="mx-auto max-w-6xl px-4 pb-12 pt-4 sm:px-5 md:px-8 md:pt-7">
@@ -159,19 +162,21 @@ export function HomeGuides({
             <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-[var(--teal)]" />
             {t("eyebrow")}
           </span>
-          <h2
+          <h1
             id="home-guides-title"
             className="mt-2.5 text-[1.45rem] font-extrabold leading-[1.28] tracking-tight sm:text-3xl md:text-[2.15rem] md:leading-[1.22]"
           >
             {t("title")}
-          </h2>
+          </h1>
         </div>
-        <Link
-          href="/search/new"
-          className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[var(--teal)] bg-[var(--surface)] px-4 py-2 text-sm font-semibold text-[var(--teal)] shadow-[var(--shadow-sm)] transition-all hover:-translate-y-0.5 hover:bg-[var(--teal-soft)]"
-        >
-          {flow.searchTrips}<ArrowRight size={17} className="shrink-0" aria-hidden />
-        </Link>
+        {flightSearchEnabled ? (
+          <Link
+            href="/search/new"
+            className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[var(--teal)] bg-[var(--surface)] px-4 py-2 text-sm font-semibold text-[var(--teal)] shadow-[var(--shadow-sm)] transition-all hover:-translate-y-0.5 hover:bg-[var(--teal-soft)]"
+          >
+            {flow.searchTrips}<ArrowRight size={17} className="shrink-0" aria-hidden />
+          </Link>
+        ) : null}
       </div>
       <p className="mt-2.5 max-w-3xl text-sm leading-6 text-[var(--muted)] sm:mt-3 sm:text-base sm:leading-7">
         {t("intro")}
@@ -234,13 +239,15 @@ export function HomeGuides({
             <Soup size={15} className="text-[var(--coral)]" aria-hidden />
             {t("quickFoodsShort")}
           </Link>
-          <Link
-            href="/videos"
-            className="inline-flex min-h-11 shrink-0 snap-start items-center gap-1.5 whitespace-nowrap rounded-full border border-[var(--line)] bg-[var(--surface)] px-3.5 text-[var(--ink)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
-          >
-            <Film size={15} className="text-[var(--teal)]" aria-hidden />
-            {t("quickVideosShort")}
-          </Link>
+          {videosEnabled ? (
+            <Link
+              href="/videos"
+              className="inline-flex min-h-11 shrink-0 snap-start items-center gap-1.5 whitespace-nowrap rounded-full border border-[var(--line)] bg-[var(--surface)] px-3.5 text-[var(--ink)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--teal)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"
+            >
+              <Film size={15} className="text-[var(--teal)]" aria-hidden />
+              {t("quickVideosShort")}
+            </Link>
+          ) : null}
           {news.length === 0 ? (
             <a
               href={`/${locale}/life/feed.xml`}
@@ -257,9 +264,12 @@ export function HomeGuides({
         locale={locale}
         blocks={blocks}
         news={news}
-        trending={trending}
+        newsChannels={newsChannels}
+        overviewBlocks={overviewBlocks}
+        overviewSoftware={overviewSoftware}
+        trending={trendingPicks}
         software={software}
-        series={series}
+        series={seriesPicks}
         labels={{
           cardLabels,
           blockTitles: {

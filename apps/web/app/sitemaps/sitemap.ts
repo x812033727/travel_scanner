@@ -11,6 +11,7 @@ import { getDiscoveryStatus } from "@/lib/discovery-status.server";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
 import { getCommunityState } from "@/lib/community/server";
 import { petPlaceSitemapEntries, type PetPlaceSitemapEntry } from "@/lib/community/public.server";
+import { getVideos } from "@/lib/videos.server";
 
 // Evaluate public switches at request time, not while building without the API.
 export const dynamic = "force-dynamic";
@@ -25,6 +26,9 @@ type SitemapRoute = {
    *  published there. Articles are published one language at a time, so the other four
    *  hubs say "nothing here yet" -- a soft 404 to offer, and nothing to rank. */
   hub?: readonly GuideKind[];
+  /** Listed per language only while `/videos` has published entries there (or on an API
+   *  outage), matching `app/[locale]/videos/page.tsx`'s `noindex, follow` empty-locale rule. */
+  videos?: true;
   /** Listed only while the discovery switch is on. Behind it the route has server-rendered
    *  content of its own; in front of it, the fallback link grid, which has nothing to rank. */
   discovery?: true;
@@ -86,6 +90,9 @@ export const SITEMAP_ROUTES: readonly SitemapRoute[] = [
   // listed as monthly below. Claiming daily for a page that changes when an editor publishes
   // would be the same invented signal the lastmod comment further down warns about.
   { path: "/life", priority: 0.6, changeFrequency: "weekly", hub: ["life"] },
+  // Published YouTube video library, listed only in locales with published videos (or on an
+  // API outage) so the sitemap agrees with `/videos`'s own empty-locale `noindex` rule.
+  { path: "/videos", priority: 0.6, changeFrequency: "weekly", videos: true },
   // The destination-scoped content. Their services pages used to follow them here and no
   // longer do; see the note above.
   ...PUBLIC_DESTINATIONS.map((id) => ({
@@ -226,10 +233,15 @@ async function staticSitemap(): Promise<MetadataRoute.Sitemap> {
   // The place enumeration starts alongside the switch reads rather than after them: it is the
   // one read here that pages, and it gates on the same request-scoped community state itself,
   // so a closed community costs it nothing.
-  const [visibility, summary, discovery, community, places] = await Promise.all([
+  const [visibility, summary, discovery, community, places, videoPages] = await Promise.all([
     getSiteVisibility(), guideSitemapSummary(), getDiscoveryStatus(), getCommunityState(), petPlaceSitemapEntries(),
+    Promise.all(locales.map((locale) => getVideos(locale, {}, 1))),
   ]);
   const communityOpen = community.status === "ready" && community.flags.enabled;
+  const videoLocales = locales.filter((_, index) => {
+    const page = videoPages[index];
+    return !page.available || page.videos.length > 0;
+  });
 
   /**
    * Which languages each hub has something to show, from the same summary the index reads,
@@ -238,10 +250,12 @@ async function staticSitemap(): Promise<MetadataRoute.Sitemap> {
    * Only an answer that arrived may remove anything. A failed read leaves every hub listed
    * for every language, which is the behaviour before this filter existed.
    */
-  const hubLocales = (route: SitemapRoute): readonly Locale[] =>
-    !route.hub || !summary.available
+  const hubLocales = (route: SitemapRoute): readonly Locale[] => {
+    if (route.videos) return videoLocales;
+    return !route.hub || !summary.available
       ? locales
       : locales.filter((locale) => publishes(summary, route.hub!, locale));
+  };
 
   const routes = SITEMAP_ROUTES.filter(
     (route) => (!route.feature || featureEnabled(visibility, route.feature))

@@ -2152,12 +2152,19 @@
   "thumbnail": {
     "template": "thumb",
     "data": {
-      "headline": "杜比\n**憑什麼？**",
-      "tag": "生意奇聞",
-      "sub": "93%營收是授權費",
-      "shot": "pipe-pool",
-      "layout": "e",
-      "focus": 60
+      "layout": "heimao-left",
+      "headline": "杜比**憑什麼躺賺？**",
+      "sub": "93% 營收靠授權，賣一台抽一筆",
+      "asset": "stock/9cb3df003312e830023b60b1728aa06ebf69ee95e8cbf638a41ee815562d2348.jpg"
+    },
+    "replaces": {
+      "template": "thumb",
+      "data": {
+        "layout": "heimao",
+        "headline": "不造硬體**躺著賺？**",
+        "sub": "93% 營收全靠專利授權費",
+        "shot": "pipe-pool"
+      }
     }
   },
   "sources": [
@@ -2257,7 +2264,13 @@
       "checked_on": "2026-10-31"
     }
   ],
-  "assets": [],
+  "assets": [
+    {
+      "path": "stock/9cb3df003312e830023b60b1728aa06ebf69ee95e8cbf638a41ee815562d2348.jpg",
+      "source": "Mokaair 奇聞檔案局",
+      "license": "Mokaair"
+    }
+  ],
   "pauses": {
     "line_ms": 0,
     "scene_ms": 150

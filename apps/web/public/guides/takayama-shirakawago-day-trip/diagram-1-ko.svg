@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" lang="ko" xml:lang="ko" role="img" aria-labelledby="title desc" font-family="'Noto Sans CJK KR','Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif">
+  <title id="title">나고야 → 다카야마 → 시라카와고 → 가나자와 교통 노선도 / Nagoya, Takayama, Shirakawa-go and Kanazawa by JR and bus</title>
+  <desc id="desc">나고야에서 다카야마까지는 두 가지 방법이 있어요. JR 특급 히다(실선, 약 140분, 보통차 지정석 특급권 2,730엔+승차권 별도)와 고속버스(점선, 약 2시간 45분, 3,600엔, 온라인 예약 3,300엔, 매일 12편, 전 좌석 예약제)예요. 나고야에서 시라카와고로 직행하는 기후버스(점선, 약 2시간 42분, 출발일에 따라 3,600~4,700엔, 예약 우선)도 있어요. 다카야마에서 시라카와고는 노히버스 등이 운행하는 시라카와고선 버스만 있으며(점선, 약 50분, 2,800엔, 전 편 예약제, 다카야마 첫차 7:20, 시라카와고발 다카야마행 막차 17:30), 같은 노선이 가나자와까지 이어져 시라카와고에서 가나자와는 약 1시간 15분(관광협회 기준 약 1시간 20분), 2,800엔이에요. 시라카와고 버스터미널 근처에는 편도 300엔의 전망대 셔틀버스가 있어요.</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="80" y="84" font-size="38" font-weight="700" fill="#102A2B">나고야 → 다카야마 → 시라카와고 → 가나자와 교통 노선도</text>
+  <text x="80" y="124" font-size="21" fill="#5C6B6B">Nagoya → Takayama → Shirakawa-go → Kanazawa · 2026년 9월 확인, 소요시간은 대략 기준(공식 시간표 참조)</text>
+
+  <!-- Gifu Bus direct: Nagoya -> Shirakawa-go (highway bus, dashed coral) -->
+  <path d="M 225 540 C 225 260, 700 210, 1160 346" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+  <!-- JR Hida: Nagoya -> Takayama (solid teal) -->
+  <line x1="380" y1="600" x2="800" y2="600" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <!-- Highway bus: Nagoya -> Takayama (dashed coral) -->
+  <path d="M 380 628 C 500 745, 680 745, 806 618" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+  <!-- Shirakawa-go line bus: Takayama -> Shirakawa-go -> Kanazawa (dashed mocha) -->
+  <line x1="836" y1="586" x2="1164" y2="362" stroke="#6B4A3A" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+  <line x1="1196" y1="338" x2="1454" y2="176" stroke="#6B4A3A" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+
+  <!-- Nagoya -->
+  <rect x="70" y="540" width="310" height="120" rx="24" fill="#0D6B68"/>
+  <text x="225" y="592" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle">나고야 Nagoya</text>
+  <text x="225" y="630" font-size="16" fill="#E6F2F1" text-anchor="middle">메이테쓰 버스센터 · JR 나고야역</text>
+
+  <!-- Takayama -->
+  <circle cx="820" cy="600" r="18" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+  <text x="852" y="652" font-size="26" font-weight="700" fill="#102A2B">다카야마 Takayama</text>
+  <text x="852" y="682" font-size="17" fill="#5C6B6B">다카야마 노히버스 센터 · JR 다카야마역</text>
+
+  <!-- Shirakawa-go -->
+  <circle cx="1180" cy="350" r="18" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+  <text x="1198" y="396" font-size="25" font-weight="700" fill="#102A2B">시라카와고 Shirakawa-go</text>
+  <text x="1198" y="426" font-size="17" fill="#5C6B6B">시라카와고 버스터미널 · 전망대 셔틀 300엔</text>
+
+  <!-- Kanazawa -->
+  <circle cx="1470" cy="166" r="18" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+  <text x="1450" y="122" font-size="25" font-weight="700" fill="#102A2B" text-anchor="middle">가나자와 Kanazawa</text>
+
+  <!-- Route labels -->
+  <text x="410" y="544" font-size="23" font-weight="700" fill="#0D6B68">JR 특급 히다 Hida · 약 140분</text>
+  <text x="410" y="574" font-size="17" fill="#5C6B6B">보통차 지정석 특급권 2,730엔+승차권 별도</text>
+
+  <text x="410" y="770" font-size="23" font-weight="700" fill="#B8442D">고속버스 Highway Bus · 약 2시간 45분</text>
+  <text x="410" y="798" font-size="17" fill="#5C6B6B">3,600엔 (온라인 예약 3,300엔) · 매일 12편 · 전 좌석 예약제</text>
+
+  <text x="430" y="200" font-size="22" font-weight="700" fill="#B8442D">기후버스 나고야-시라카와고 직행 · 약 2시간 42분</text>
+  <text x="430" y="230" font-size="17" fill="#5C6B6B">3,600~4,700엔 (출발일별 차등) · 예약 우선</text>
+
+  <text x="1000" y="546" font-size="22" font-weight="700" fill="#6B4A3A">노히버스 Nohi Bus · 약 50분 · 2,800엔</text>
+  <text x="1000" y="576" font-size="17" fill="#5C6B6B">전 편 예약제 · 다카야마 첫차 7:20 · 시라카와고 막차 17:30</text>
+
+  <text x="1310" y="302" font-size="18" font-weight="700" fill="#6B4A3A">버스 약 1시간 15분</text>
+  <text x="1310" y="328" font-size="17" fill="#5C6B6B">2,800엔 · 예약제</text>
+
+  <!-- Legend -->
+  <line x1="80" y1="852" x2="140" y2="852" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+  <text x="152" y="859" font-size="19" fill="#102A2B">JR 특급열차 JR Limited Express</text>
+  <line x1="470" y1="852" x2="530" y2="852" stroke="#B8442D" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+  <text x="542" y="859" font-size="19" fill="#102A2B">고속버스 Highway Bus (나고야 출발)</text>
+  <line x1="910" y1="852" x2="970" y2="852" stroke="#6B4A3A" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+  <text x="982" y="859" font-size="19" fill="#102A2B">시라카와고선 버스 Shirakawa-go Line</text>
+  <text x="1540" y="882" font-size="16" fill="#5C6B6B" text-anchor="end">© Mokaair 제작 2026</text>
+</svg>

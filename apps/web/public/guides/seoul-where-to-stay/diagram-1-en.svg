@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans','Noto Sans KR',system-ui,sans-serif">
+  <title id="title">Where to Stay in Seoul: 5 Areas &amp; Incheon Airport Transit Map</title>
+  <desc id="desc">Simplified schematic map of Seoul showing Incheon Airport (ICN T1/T2) on the left, Hongdae, Jongno &amp; Gwanghwamun, Myeongdong, and Dongdaemun from west to east north of the Han River, and Gangnam south of the Han River. Solid lines show AREX airport rail: the All-Stop Train runs via Gimpo Airport to Hongik Univ. Station (T1 4,650 KRW, T2 5,250 KRW) and Seoul Station (T1 4,750 KRW), while the nonstop AREX Express reaches Seoul Station for 13,000 KRW in 43 minutes from T1 or 51 minutes from T2. Dashed orange lines show airport limousine buses (17,000 KRW adult): routes 6001 and 6015 serve Seoul Station, Myeongdong (Lotte Hotel), and Dongdaemun; route 6002 serves Hongdae, Gwanghwamun, Jongno, and Dongdaemun; and KAL Limousine 6703 serves Gangnam and COEX (fare not listed online). Dotted gray lines show subway transfers from Seoul Station: Line 4 (2 stops) to Myeongdong and onward to Dongdaemun, and Line 1 to Jonggak in Jongno. District cards list local subway lines (Hongdae: Line 2 and AREX; Jongno: Lines 1, 3, and 5; Myeongdong: Line 4; Dongdaemun: Lines 2, 4, and 5; Gangnam: Lines 2, 9, and Shinbundang) and late-night buses: N6002 takes about 45 minutes to Hongdae and 60 minutes to Gwanghwamun; N6701 takes about 60 minutes to Seoul Station, 65 minutes to Euljiro, and 70 minutes to Dongdaemun Design Plaza (DDP); N6000 takes about 70 minutes to Gangnam Express Bus Terminal; and N6703 takes about 65 minutes to COEX. Adult one-way fares verified September 2026.</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#D97A2B"/></marker>
+  </defs>
+
+  <!-- Title & subtitle -->
+  <text x="60" y="64" font-size="34" font-weight="700" fill="#102A2B">Where to Stay in Seoul: 5 Areas &amp; Airport Links</text>
+  <text x="60" y="96" font-size="18" font-weight="700" fill="#5C6B6B">Schematic map, not to scale · Adult one-way fares, verified September 2026</text>
+
+  <!-- Han River -->
+  <path d="M 0 660 C 300 645, 600 682, 900 662 C 1150 646, 1380 676, 1600 666 L 1600 702 C 1380 712, 1150 682, 900 698 C 600 718, 300 681, 0 696 Z" fill="#BFD9E3" opacity="0.85"/>
+  <text x="580" y="694" font-size="17" font-weight="700" fill="#3F6C7A" text-anchor="middle">Han River · 한강</text>
+
+  <!-- Bus 6002 over the top -->
+  <path d="M 210 486 C 240 165, 520 148, 799 210" fill="none" stroke="#D97A2B" stroke-width="5" stroke-dasharray="14 10" marker-end="url(#arrowOrange)"/>
+  <path d="M 1165 218 L 1220 272" fill="none" stroke="#D97A2B" stroke-width="5" stroke-dasharray="14 10" marker-end="url(#arrowOrange)"/>
+  <text x="150" y="138" font-size="15" font-weight="700" fill="#9A4F12">Bus 6002 · 17,000 KRW → Hongdae → Gwanghwamun · Jongno → Dongdaemun</text>
+
+  <!-- Bus 6001/6015 to Myeongdong -->
+  <path d="M 210 490 C 295 270, 680 250, 954 422" fill="none" stroke="#D97A2B" stroke-width="5" stroke-dasharray="14 10" marker-end="url(#arrowOrange)"/>
+  <text x="332" y="266" font-size="15" font-weight="700" fill="#9A4F12">Bus 6001 / 6015 · Airport Limousine · 17,000 KRW</text>
+  <text x="332" y="286" font-size="15" font-weight="700" fill="#9A4F12">→ Seoul Stn · Myeongdong (Lotte Hotel) · Dongdaemun</text>
+
+  <!-- AREX All-Stop -->
+  <path d="M 210 500 L 395 500 L 590 500 L 855 560" fill="none" stroke="#0D6B68" stroke-width="6"/>
+  <text x="234" y="462" font-size="15" font-weight="700" fill="#0D6B68">AREX All-Stop</text>
+  <text x="234" y="482" font-size="15" font-weight="700" fill="#0D6B68">T1 → Hongdae 4,650 KRW</text>
+
+  <!-- AREX Express -->
+  <path d="M 210 514 C 380 622, 660 622, 855 560" fill="none" stroke="#2F6F9F" stroke-width="8"/>
+  <text x="580" y="634" font-size="15" font-weight="700" fill="#2F6F9F" text-anchor="middle">AREX Express (Nonstop to Seoul Station) · 13,000 KRW · T1 43 min / T2 51 min</text>
+
+  <!-- Bus 6703 to Gangnam -->
+  <path d="M 210 520 C 210 815, 580 820, 904 792" fill="none" stroke="#D97A2B" stroke-width="5" stroke-dasharray="14 10" marker-end="url(#arrowOrange)"/>
+  <text x="560" y="838" font-size="15" font-weight="700" fill="#9A4F12" text-anchor="middle">Bus 6703 KAL Limousine → Gangnam · COEX (fare not listed online)</text>
+
+  <!-- Subway transfer links -->
+  <g stroke="#5C6B6B" stroke-width="3" stroke-dasharray="3 7" fill="none">
+    <path d="M 855 560 L 960 495"/>
+    <path d="M 855 560 L 855 274"/>
+    <path d="M 1320 440 L 1380 360"/>
+  </g>
+  <text x="916" y="544" font-size="15" fill="#5C6B6B">Line 4 (2 stops)</text>
+  <text x="868" y="328" font-size="15" fill="#5C6B6B">Line 1 → Jonggak (종각)</text>
+  <text x="1364" y="418" font-size="15" fill="#5C6B6B">Line 4</text>
+
+  <!-- Transit nodes -->
+  <circle cx="210" cy="500" r="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/>
+  <text x="186" y="495" font-size="18" font-weight="700" fill="#102A2B" text-anchor="end">Incheon Airport</text>
+  <text x="186" y="519" font-size="15" font-weight="700" fill="#5C6B6B" text-anchor="end">인천공항 · ICN (T1/T2)</text>
+
+  <circle cx="395" cy="500" r="9" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="395" y="528" font-size="15" fill="#5C6B6B" text-anchor="middle">Gimpo Airport</text>
+  <text x="395" y="548" font-size="15" fill="#5C6B6B" text-anchor="middle">김포공항</text>
+
+  <circle cx="590" cy="500" r="10" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="590" y="528" font-size="15" fill="#5C6B6B" text-anchor="middle">Hongik Univ. Stn</text>
+  <text x="590" y="548" font-size="15" fill="#5C6B6B" text-anchor="middle">홍대입구</text>
+
+  <circle cx="855" cy="560" r="12" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/>
+  <text x="874" y="582" font-size="17" font-weight="700" fill="#102A2B">Seoul Station</text>
+  <text x="874" y="604" font-size="15" font-weight="700" fill="#5C6B6B">서울역</text>
+
+  <!-- Jongno & Gwanghwamun -->
+  <rect x="805" y="152" width="360" height="122" rx="20" fill="#FFFFFF" stroke="#7E57C2" stroke-width="5"/>
+  <text x="985" y="184" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">Jongno &amp; Gwanghwamun</text>
+  <text x="985" y="208" font-size="15" fill="#5C6B6B" text-anchor="middle">종로 · 광화문 · Lines 1, 3, 5</text>
+  <text x="985" y="232" font-size="15" fill="#5C6B6B" text-anchor="middle">Gyeongbokgung · Bukchon · Insadong</text>
+  <text x="985" y="256" font-size="15" fill="#5C6B6B" text-anchor="middle">Night N6002 → Gwanghwamun ~60 min</text>
+
+  <!-- Dongdaemun -->
+  <rect x="1225" y="232" width="350" height="128" rx="20" fill="#FFFFFF" stroke="#B8442D" stroke-width="5"/>
+  <text x="1400" y="264" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">Dongdaemun</text>
+  <text x="1400" y="288" font-size="15" fill="#5C6B6B" text-anchor="middle">동대문 · Lines 2, 4, 5</text>
+  <text x="1400" y="312" font-size="15" fill="#5C6B6B" text-anchor="middle">DDP · Wholesale Malls · Gwangjang Mkt</text>
+  <text x="1400" y="336" font-size="15" fill="#5C6B6B" text-anchor="middle">Bus 6001 · Night N6701 ~70 min (DDP)</text>
+
+  <!-- Hongdae & Yeonnam-dong -->
+  <rect x="412" y="338" width="356" height="122" rx="20" fill="#FFFFFF" stroke="#D97A2B" stroke-width="5"/>
+  <text x="590" y="370" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">Hongdae &amp; Yeonnam-dong</text>
+  <text x="590" y="394" font-size="15" fill="#5C6B6B" text-anchor="middle">홍대 · Line 2 · AREX All-Stop</text>
+  <text x="590" y="418" font-size="15" fill="#5C6B6B" text-anchor="middle">T2 → Hongdae 5,250 KRW · Bus 6002</text>
+  <text x="590" y="442" font-size="15" fill="#5C6B6B" text-anchor="middle">Night N6002 ~45 min</text>
+
+  <!-- Myeongdong -->
+  <rect x="960" y="392" width="360" height="128" rx="20" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="5"/>
+  <text x="1140" y="424" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">Myeongdong</text>
+  <text x="1140" y="448" font-size="15" fill="#5C6B6B" text-anchor="middle">명동 · Line 4</text>
+  <text x="1140" y="472" font-size="15" fill="#5C6B6B" text-anchor="middle">Namdaemun · Namsan · Cheonggyecheon</text>
+  <text x="1140" y="496" font-size="15" fill="#5C6B6B" text-anchor="middle">N6701: Seoul Stn ~60 min · Euljiro ~65 min</text>
+
+  <!-- Gangnam -->
+  <rect x="910" y="732" width="590" height="118" rx="20" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="5"/>
+  <text x="1205" y="762" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">Gangnam · 강남</text>
+  <text x="1205" y="786" font-size="15" fill="#5C6B6B" text-anchor="middle">Lines 2, 9 &amp; Shinbundang · COEX · Lotte World Tower (Jamsil)</text>
+  <text x="1205" y="810" font-size="15" fill="#5C6B6B" text-anchor="middle">No direct rail (transfer at Seoul Stn) · Daytime Bus 6703 → COEX</text>
+  <text x="1205" y="834" font-size="15" fill="#5C6B6B" text-anchor="middle">Night N6000 → Express Bus Terminal ~70 min · N6703 → COEX ~65 min</text>
+
+  <!-- Legend -->
+  <g font-size="15" fill="#102A2B">
+    <line x1="60" y1="878" x2="108" y2="878" stroke="#0D6B68" stroke-width="6"/>
+    <text x="118" y="883">AREX All-Stop</text>
+    <line x1="252" y1="878" x2="300" y2="878" stroke="#2F6F9F" stroke-width="8"/>
+    <text x="310" y="883">AREX Express</text>
+    <line x1="440" y1="878" x2="494" y2="878" stroke="#D97A2B" stroke-width="5" stroke-dasharray="14 8"/>
+    <text x="504" y="883">Airport Bus (dashed)</text>
+    <line x1="690" y1="878" x2="740" y2="878" stroke="#5C6B6B" stroke-width="3" stroke-dasharray="3 7"/>
+    <text x="750" y="883">Subway transfer from Seoul Station</text>
+    <text x="1540" y="883" fill="#8A8F8F" font-size="15" text-anchor="end">© Mokaair 2026</text>
+  </g>
+</svg>

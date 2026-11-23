@@ -837,6 +837,18 @@
       "pricing_enabled": {
         "label": "方案與次數包",
         "help": "控制方案導覽、查看次數包操作與 /pricing 頁面。"
+      },
+      "flight_search_enabled": {
+        "label": "搜尋機票與住宿",
+        "help": "控制前台搜尋機票與住宿按鈕及首頁搜尋工具的顯示。"
+      },
+      "videos_enabled": {
+        "label": "影音專區與影片",
+        "help": "控制導覽列、首頁影音專區捷徑與頁尾的影片連結顯示。"
+      },
+      "member_features_enabled": {
+        "label": "會員功能與登入入口",
+        "help": "控制前台登入按鈕、收藏、我的、我的旅程導覽與卡片收藏／加入旅程操作。站主仍可直接前往 /login 登入後台。"
       }
     }
   },
@@ -926,7 +938,10 @@
       "pg_dump": "備份工具",
       "github_ci": "GitHub CI",
       "api": "API",
-      "web": "Web"
+      "web": "Web",
+      "host_timer": "主機部署排程器",
+      "autodeploy_paused": "自動部署暫停",
+      "dry_run": "乾跑模式"
     },
     "noSha": "尚無",
     "seconds": "{count} 秒",
@@ -968,7 +983,27 @@
     "warningBody": "部署前會建立 PostgreSQL 備份；新版本健康檢查失敗時只回退應用程式，不會降級 migration 或自動還原資料庫。",
     "passwordLabel": "目前密碼",
     "typeLabel": "輸入",
-    "confirmSubmit": "確認並開始部署"
+    "confirmSubmit": "確認並開始部署",
+    "reasonTimerOffline": "主機部署排程器超過 15 分鐘沒有回報",
+    "reasonAutodeployPaused": "上一次自動部署失敗、已暫停：先讀 log、刪掉暫停檔才能再部署",
+    "rebuildCurrent": "重建目前版本",
+    "rebuildTitle": "確認重建 {sha}",
+    "waitPaidWork": "有付費影片工作在執行時先不要部署（建議）",
+    "hostTitle": "主機自動部署排程器",
+    "hostHint": "每天在部署時段內最多自動部署一次 main；按下按鈕後約 5 分鐘內由排程器接手。",
+    "hostLastReport": "最後回報",
+    "hostNever": "尚未回報",
+    "hostDryRun": "乾跑模式：不會真的部署",
+    "hostWindow": "部署時段",
+    "hostWindowAny": "不限時段",
+    "hostToday": "今天自動部署次數",
+    "hostDecision": "最後決定",
+    "hostLastDeploy": "排程器最後一次部署",
+    "hostLastDeployValue": "{sha}・驗證 {verify}",
+    "hostMissed": "部署時段結束卻沒部署",
+    "hostMissedValue": "{window}：{sha} 卡在 {gate}：{reason}",
+    "hostPaused": "自動部署已暫停",
+    "hostWarningBody": "部署腳本只在 migration 有變動時備份 PostgreSQL。所有容器都會重啟（約 8 秒會出錯）；部署失敗會回滾並暫停自動部署。"
   },
   "aiAccountsPanel": {
     "loading": "正在讀取帳號狀態…",
@@ -2180,6 +2215,21 @@
     "uncategorized": "未分類",
     "categoryFilter": "分類",
     "categoryAll": "全部分類",
+    "shelfFilter": "節目",
+    "shelfAll": "全部節目",
+    "shelves": {
+      "curio": "奇聞檔案局",
+      "sothatswhy": "原來如此事務所",
+      "explainer": "觀念解說（其他）"
+    },
+    "seriesFilter": "系列",
+    "seriesAll": "全部系列",
+    "seriesNone": "不屬於系列",
+    "topicFilter": "分類",
+    "topicAll": "全部分類",
+    "topicNone": "未歸類",
+    "driveFolder": "雲端資料夾",
+    "driveFinal": "成片",
     "stateFilter": "狀態",
     "stateAll": "全部",
     "search": "搜尋",
@@ -2212,10 +2262,10 @@
     "loadError": "讀不到影片資料",
     "retry": "重試",
     "retryVideoTitle": "影片卡住了",
-        "retryVideoHelp": "確認原因已修好後，可請工人在下一輪重試這支影片一次。",
-        "retryVideoPending": "已提出重試，工人下一輪會接手。",
-        "retryVideoButton": "重試這支影片",
-        "retryVideoError": "無法提出重試：{message}",
+    "retryVideoHelp": "確認原因已修好後，可請工人在下一輪重試這支影片一次。",
+    "retryVideoPending": "已提出重試，工人下一輪會接手。",
+    "retryVideoButton": "重試這支影片",
+    "retryVideoError": "無法提出重試：{message}",
     "pending": "{count} 項待決定",
     "noPendingShort": "沒有待決定",
     "progress": "進度 {done}／{total}",

@@ -664,8 +664,22 @@ export const THUMB_SERIES = {
 /** So That's Why's headline as THUMB_SERIES_CSS sets it (2026-11-11); qa/thumbnail.mjs measures with the same numbers. */
 export const SERIES_THUMB_HEADLINE = { fontSize: 150, lineHeight: 1.08, maxHeight: 330, bottom: 160 };
 export const THUMB_PILLARS = ["business", "science", "travel", "tech"];
-/** A series' thumbnail keeps the full-width text column and may mirror it (the stamp follows). */
-export const THUMB_SERIES_LAYOUTS = ["left", "right"];
+/**
+ * The Heimao full-bleed explainer layouts (owner, 2026-11-18, after studying 黑猫研究院
+ * @qiqiqushi0 thumbnails): the bright high-saturation 16:9 picture fills the entire frame with no
+ * side panel, no bottom dark scrim, no series stamp and no label pill; one canary-yellow headline
+ * line (#ffe600) with a thick rounded 22 px black outline sits in the clean top 30% sky, over one
+ * pure-white sub line (#ffffff) with a 15 px black outline. `"heimao"` centres the two lines
+ * across the top; `"heimao-left"` left-aligns them at the top left when a tall hero object rises
+ * into the upper-right sky. Chosen explicitly via `data.layout` on new and remade `curio-*` and
+ * `sothatswhy-*` episodes so historical delivered episodes without `data.layout` keep their frame keys.
+ */
+export const THUMB_HEIMAO_LAYOUT = "heimao";
+export const THUMB_HEIMAO_LEFT_LAYOUT = "heimao-left";
+export const THUMB_HEIMAO_LAYOUTS = [THUMB_HEIMAO_LAYOUT, THUMB_HEIMAO_LEFT_LAYOUT];
+export const HEIMAO_THUMB_HEADLINE = { fontSize: 120, leftFontSize: 110, lineHeight: 1.22, left: 40, right: 40 };
+/** A series' thumbnail keeps the full-width text column and may mirror it (the stamp follows), or opt into the full-bleed heimao layouts. */
+export const THUMB_SERIES_LAYOUTS = ["left", "right", ...THUMB_HEIMAO_LAYOUTS];
 /**
  * Where a series thumbnail's picture sits (owner 2026-11-08: 「縮圖的人可以盡量不要被字擋住嗎?」).
  * A keyframe drawn for the video centres its character, so the full-frame picture puts her under
@@ -946,10 +960,14 @@ function ownThumbnailProblems(thumbnail, series) {
   const data = thumbnail.data ?? {};
   const problems = [!isText(data.headline) && "thumbnail.data.headline is required", data.tag !== undefined && !isText(data.tag) && "thumbnail.data.tag must be text", data.sub !== undefined && !isText(data.sub) && "thumbnail.data.sub must be text"];
   const own = THUMB_SERIES[series];
-  const layouts = own ? THUMB_SERIES_LAYOUTS : [...THUMB_LAYOUTS, THUMB_BOLD_LAYOUT, THUMB_SPLIT_LAYOUT, THUMB_DRAMA_LAYOUT, THUMB_AI_LAYOUT];
+  const heimao = THUMB_HEIMAO_LAYOUTS.includes(data.layout);
+  const layouts = own ? THUMB_SERIES_LAYOUTS : [...THUMB_LAYOUTS, THUMB_BOLD_LAYOUT, THUMB_SPLIT_LAYOUT, THUMB_DRAMA_LAYOUT, THUMB_AI_LAYOUT, ...THUMB_HEIMAO_LAYOUTS];
   if (data.layout !== undefined && !layouts.includes(data.layout)) problems.push(`thumbnail.data.layout must be one of ${layouts.join(", ")}`);
-  if (data.subject !== undefined && (!own || !THUMB_SERIES_SUBJECTS.includes(data.subject))) problems.push(own ? `thumbnail.data.subject must be one of ${THUMB_SERIES_SUBJECTS.join(", ")}` : "thumbnail.data.subject is a series thumbnail's option");
+  if (data.subject !== undefined && (!own || heimao || !THUMB_SERIES_SUBJECTS.includes(data.subject))) {
+    problems.push(heimao ? "thumbnail.data.subject cannot narrow a full-bleed heimao thumbnail; remove subject" : own ? `thumbnail.data.subject must be one of ${THUMB_SERIES_SUBJECTS.join(", ")}` : "thumbnail.data.subject is a series thumbnail's option");
+  }
   if (data.layout === THUMB_AI_LAYOUT && isText(data.headline) && data.headline.includes("\n")) problems.push("thumbnail.data.headline takes one line in the AI look: the subject, then the **hook**; remove the line break");
+  if (heimao && isText(data.headline) && data.headline.includes("\n")) problems.push("thumbnail.data.headline takes one top line in the heimao look (put the second line in data.sub); remove the line break");
   if (data.focus !== undefined && !isFocus(data.focus)) problems.push("thumbnail.data.focus must be a whole number from 0 (the picture's left edge) to 100 (its right edge)");
   if (data.accent !== undefined && (own || !isAccent(data.accent))) problems.push(own ? "thumbnail.data.accent is a drama thumbnail's option" : "thumbnail.data.accent must be a colour written #rrggbb");
   if (data.tone !== undefined && !THUMB_TONES.includes(data.tone)) problems.push(`thumbnail.data.tone must be one of ${THUMB_TONES.join(", ")}`);
@@ -960,7 +978,7 @@ function ownThumbnailProblems(thumbnail, series) {
   // The channel's headline length (THUMB_HEADLINE_MAX) is the qa stage's business
   // (tools/video/qa/thumbnail.mjs), where it fails the thumbnail item: the fixtures and the
   // first batch's scripts carry longer headlines, and render still draws those.
-  if (own && isText(data.headline)) {
+  if (own && !heimao && isText(data.headline)) {
     const shape = headlineShape(data.headline);
     if (shape.lines > own.headlineLines) problems.push(`thumbnail.data.headline has ${shape.lines} lines; this series takes at most ${own.headlineLines}`);
     if (shape.chars > own.headlineMax) problems.push(`thumbnail.data.headline has a line of ${shape.chars} characters; this series takes at most ${own.headlineMax} a line, readable at phone size`);
@@ -1045,6 +1063,25 @@ const THUMB_DRAMA_CSS =
   // The mark on a dark plate: white letters alone vanished on a bright picture (a sky).
   ".thumb.column.layout-f .brand{left:auto;right:40px;top:48px;bottom:auto;font-size:26px;letter-spacing:.12em;color:#fff;background:rgba(0,0,0,.45);padding:6px 14px;border-radius:8px}";
 
+// The Heimao full-bleed explainer look (THUMB_HEIMAO_LAYOUTS): bright full-bleed 16:9 scene, zero
+// bottom dark scrim, zero badge/stamp/pill, canary-yellow top headline with 22 px rounded black
+// stroke and white sub line with 15 px rounded black stroke. `overflow:visible` keeps Chromium from
+// clipping the outer black stroke while allowing fitText to shrink long translated lines cleanly.
+const THUMB_HEIMAO_CSS =
+  ".heimao-pic{position:absolute;inset:0;overflow:hidden;background:linear-gradient(180deg,#6ec6ff 0%,#bfe9ff 42%,#fff3d6 100%)}" +
+  ".heimao-pic img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}" +
+  ".heimao-pic.from-capture img{object-position:left top}" +
+  ".heimao-top-glaze{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.14) 0%,rgba(0,0,0,0) 36%);pointer-events:none}" +
+  `.heimao-text{position:absolute;left:${HEIMAO_THUMB_HEADLINE.left}px;right:${HEIMAO_THUMB_HEADLINE.right}px;top:24px;display:flex;flex-direction:column;align-items:stretch;text-align:center;gap:2px;overflow:visible}` +
+  ".heimao-text.heimao-left{top:26px;left:42px;text-align:left}" +
+  `.heimao-h{margin:0;color:#ffe600;font-size:${HEIMAO_THUMB_HEADLINE.fontSize}px;font-weight:900;line-height:${HEIMAO_THUMB_HEADLINE.lineHeight};white-space:nowrap;overflow:visible;letter-spacing:.01em;-webkit-text-stroke:22px #000;paint-order:stroke fill;stroke-linejoin:round;text-shadow:0 6px 0 #000,-4px 5px 0 #000,4px 5px 0 #000,0 10px 22px rgba(0,0,0,.42)}` +
+  `.heimao-text.heimao-left .heimao-h{font-size:${HEIMAO_THUMB_HEADLINE.leftFontSize}px}` +
+  ".heimao-h em{color:#ffe600;font-style:normal;white-space:nowrap}" +
+  ".heimao-sub{margin:0;color:#fff;font-size:60px;font-weight:900;line-height:1.22;white-space:nowrap;overflow:visible;letter-spacing:.01em;-webkit-text-stroke:15px #000;paint-order:stroke fill;stroke-linejoin:round;text-shadow:0 4px 0 #000,-3px 4px 0 #000,3px 4px 0 #000,0 8px 18px rgba(0,0,0,.42)}" +
+  ".heimao-text.heimao-left .heimao-sub{font-size:56px}" +
+  ".heimao-sub em{color:#ffe600;font-style:normal;white-space:nowrap}" +
+  ".heimao-h:lang(th),.heimao-sub:lang(th){line-height:1.45}";
+
 const THUMB_MARQUE_CSS =
   ".thumb .marque{align-self:stretch;font-weight:900;line-height:1.05;color:var(--orange);white-space:nowrap;overflow:hidden;letter-spacing:.01em;" +
   "padding-bottom:14px;border-bottom:8px solid var(--orange);max-height:200px}";
@@ -1055,13 +1092,15 @@ const THUMB_MARQUE_CSS =
  * is: a page still is cropped to its top left corner, where the product's name and interface
  * are; a keyframe to its right side, where the writer left the subject. Without a picture the
  * subject area is a flat tone. `series` names a series' own look (THUMB_SERIES), which keeps
- * the full-width column, the scrim and the mirrored layout of docs/videos/so-thats-why/thumbnails.md.
+ * the full-width column, the scrim and the mirrored layout of docs/videos/so-thats-why/thumbnails.md
+ * unless `data.layout` opts into `heimao` or `heimao-left`.
  * `slug` and `offset` pick the channel's layout and tone (thumbnailRotation) when `data.layout`
  * and `data.tone` do not. `locale` is the caption locale a translated thumbnail is for: Korean,
  * Simplified Chinese and Japanese are set in their own font (page).
  */
 export function thumbnailHtml(thumbnail, { background = null, subject = null, series = null, locale = null, slug = null, offset = 0, aiSeries = null, drama = false } = {}) {
   const data = thumbnail.data;
+  if (THUMB_HEIMAO_LAYOUTS.includes(data.layout)) return page(heimaoThumbnailBody(data, { background, subject }), THUMB_SIZE, THUMB_HEIMAO_CSS, { locale });
   const own = THUMB_SERIES[series] ?? null;
   if (own) return page(seriesThumbnailBody(data, own, background), THUMB_SIZE, [background ? THUMB_BACKGROUND_CSS : "", background && THUMB_SERIES_SUBJECTS.includes(data.subject) ? THUMB_SUBJECT_CSS : "", data.layout === "right" ? THUMB_RIGHT_CSS : "", THUMB_SERIES_CSS[series]].join(""), { locale });
   if (data.layout === THUMB_AI_LAYOUT) return page(aiThumbnailBody(data, { background, subject, locale, slug, aiSeries }), THUMB_SIZE, THUMB_AI_CSS, { locale });
@@ -1086,6 +1125,19 @@ export function thumbnailHtml(thumbnail, { background = null, subject = null, se
     "</div>",
   ].join("");
   return page(body, THUMB_SIZE, [marque ? THUMB_MARQUE_CSS : "", split ? THUMB_SPLIT_CSS : "", dramaLook ? THUMB_DRAMA_CSS : ""].join(""), { locale });
+}
+
+function heimaoThumbnailBody(data, { background, subject }) {
+  const kind = subject === "capture" ? "capture" : "picture";
+  const left = data.layout === THUMB_HEIMAO_LEFT_LAYOUT ? " heimao-left" : "";
+  return [
+    `<div class="heimao-pic from-${kind}">${background ? `<img src="${escapeHtml(background)}" alt="">` : ""}</div>`,
+    '<div class="heimao-top-glaze"></div>',
+    `<div class="heimao-text${left}">`,
+    `<h1 class="heimao-h fit">${richText(String(data.headline).replace(/\s*\n\s*/g, " "))}</h1>`,
+    data.sub ? `<div class="heimao-sub fit">${richText(String(data.sub).replace(/\s*\n\s*/g, " "))}</div>` : "",
+    "</div>",
+  ].join("");
 }
 
 /**

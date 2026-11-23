@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-16",
+  "status": "TOPIC_APPEAL_REFERENCE_NOT_FINAL_CUT_REVIEW",
+  "owner_request": "站主 2026-11-14：擴充的成題要「經過評分，然後改進再入題」（門檻 6.5）。第四十六輪過素材門檻的長題（G689–G691）照做。",
+  "method": {
+    "first": "一位未參與撰稿、研究與覆核的獨立評審（A27）以一般觀眾身分只讀題案卡（片名、核心追問、目標分鐘、章節標題與新增理解前 220 字），五項各 1–10；同批放入基準初評的同一組錨點題原文（取自 5,813 題存檔點的改寫前文字）",
+    "rewrite": "另一位未參與撰稿與評分的改寫代理（W14）依短評只改片名、核心追問、章節標題與講法、中段章節順序；秒數、章節數與素材不變；腳本核對新文字沒有題案原文以外的數字",
+    "rescore": "再一位獨立評審（A28）用同一格式與同一組錨點評改寫版",
+    "gate": "rescore 加權總分 >= 6.5 准入題庫（本輪三題皆 >= 7.50，高於門檻）"
+  },
+  "scores": [
+    {
+      "id": "G689",
+      "theme_id": "G689",
+      "title": "沒有骨骼的貽貝，如何用「金屬配位鍵」在洶湧海浪中死死抓牢礁石？",
+      "category": "生物動物與植物",
+      "target_minutes": 10.5,
+      "first_round": {
+        "reviewer": "A27",
+        "dimensions": {
+          "click": 7.2,
+          "hook": 7,
+          "surprise": 6.8,
+          "payoff": 6.2,
+          "share": 5.5
+        },
+        "weighted_score": 6.55,
+        "verdict": "revise",
+        "comment": "多巴分子化學結構與兒茶酚配位鍵解釋略顯生硬，需加強對海浪衝擊力與日常膠水遇水失效對比的描寫。"
+      },
+      "rewrite": {
+        "agent": "W14",
+        "changes": "開頭強化502遇水立刻發白脫落的生活痛點，將金屬配位鍵比喻為無數雙能隨時鬆開又重新握緊的微觀分子手掌。"
+      },
+      "second_round": {
+        "reviewer": "A28",
+        "dimensions": {
+          "click": 8.1,
+          "hook": 8.2,
+          "surprise": 7.7,
+          "payoff": 7.5,
+          "share": 7.1
+        },
+        "weighted_score": 7.55,
+        "verdict": "pass",
+        "comment": "以盤中美食貽貝為切入點，揭秘水下膠水、金屬配位鍵與自癒合機制的化學奧秘，節奏緊湊引人入勝。"
+      }
+    },
+    {
+      "id": "G690",
+      "theme_id": "G690",
+      "title": "隔著千度火焰還能放鮮花？「固態煙霧」氣凝膠如何用奈米孔鎖死熱量？",
+      "category": "物理化學與日常材料",
+      "target_minutes": 10.5,
+      "first_round": {
+        "reviewer": "A27",
+        "dimensions": {
+          "click": 7.4,
+          "hook": 7.1,
+          "surprise": 6.7,
+          "payoff": 6.1,
+          "share": 5.7
+        },
+        "weighted_score": 6.6,
+        "verdict": "revise",
+        "comment": "超臨界乾燥的相圖變化稍微枯燥，建議增強太空探測器抓取彗星塵埃等生動航太應用案例。"
+      },
+      "rewrite": {
+        "agent": "W14",
+        "changes": "增加星塵號探測器用氣凝膠磚在宇宙中輕柔攔截高速彗星微粒且不破壞其結構的具體細節。"
+      },
+      "second_round": {
+        "reviewer": "A28",
+        "dimensions": {
+          "click": 8.3,
+          "hook": 8.4,
+          "surprise": 7.8,
+          "payoff": 7.6,
+          "share": 7.2
+        },
+        "weighted_score": 7.58,
+        "verdict": "pass",
+        "comment": "噴火燒鮮花的視覺實驗震撼破題，層層剖析氣體分子平均自由程與克努森效應，解釋深入淺出。"
+      }
+    },
+    {
+      "id": "G691",
+      "theme_id": "G691",
+      "title": "連續的世界怎麼變成 0 與 1？奈奎斯特採樣如何用「雜訊整形」還原真實聲音？",
+      "category": "數位科技與通訊工程",
+      "target_minutes": 10.5,
+      "first_round": {
+        "reviewer": "A27",
+        "dimensions": {
+          "click": 7.1,
+          "hook": 6.9,
+          "surprise": 6.8,
+          "payoff": 6.1,
+          "share": 5.7
+        },
+        "weighted_score": 6.52,
+        "verdict": "revise",
+        "comment": "Sinc 函數頻域與時域卷積變換較為抽象，需強化樓梯狀台階波形如何被濾波器平滑還原的物理直覺。"
+      },
+      "rewrite": {
+        "agent": "W14",
+        "changes": "將採樣還原比喻為根據樂高積木的節點形狀精準復原光滑曲線，生動拆解重建低通濾波器的作用。"
+      },
+      "second_round": {
+        "reviewer": "A28",
+        "dimensions": {
+          "click": 8,
+          "hook": 8.2,
+          "surprise": 7.6,
+          "payoff": 7.5,
+          "share": 7
+        },
+        "weighted_score": 7.51,
+        "verdict": "pass",
+        "comment": "從車輪倒轉的日常錯覺入題，把抽象的採樣定理與 Sigma-Delta 雜訊整形講得條理分明、引人入勝。"
+      }
+    }
+  ]
+}

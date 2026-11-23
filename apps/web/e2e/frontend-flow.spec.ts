@@ -67,7 +67,7 @@ for (const locale of ["zh-TW","zh-CN","en","ja","ko"]) {
   test(`editorial ${locale}: site context, available articles, accessible discovery, dark/large/reduced motion`, async ({page,isMobile}, info) => {
     await fixtures(page); const c = getDiscoveryCopy(locale), f = getFrontendFlowCopy(locale), n = frontendCopy(locale);
     await page.goto(`/${locale}`);
-    await expect(page.getByRole("heading", {name:f.editorial,exact:true})).toBeVisible();
+    await expect(page.getByRole("heading", {name:f.editorial,level:2,exact:true})).toBeVisible();
     const context = page.locator('section[aria-labelledby="home-guides-title"]');
     const introduction = context.locator(":scope > p");
     await expect(introduction).toBeVisible();
@@ -78,7 +78,7 @@ for (const locale of ["zh-TW","zh-CN","en","ja","ko"]) {
     await expect(search).toBeInViewport({ratio:1});
     expect((await search.boundingBox())!.height).toBeGreaterThanOrEqual(44);
     expect(await context.evaluate((node) => {
-      const feed = document.querySelector("main");
+      const feed = node.closest("main")?.querySelector("header h2");
       return Boolean(feed && (node.compareDocumentPosition(feed) & Node.DOCUMENT_POSITION_FOLLOWING));
     })).toBe(true);
     // CI seeds a real API hotspot, while local SSR fixtures can also publish guides.
@@ -96,7 +96,7 @@ for (const locale of ["zh-TW","zh-CN","en","ja","ko"]) {
         await expect(description).toHaveText(/\S/);
       }
       expect(await articles.evaluate((node) => {
-        const feed = document.querySelector("main");
+        const feed = node.closest("main")?.querySelector("header h2");
         return Boolean(feed && (node.compareDocumentPosition(feed) & Node.DOCUMENT_POSITION_FOLLOWING));
       })).toBe(true);
     }

@@ -1,6 +1,6 @@
 import type { Locale } from "@/i18n/routing";
-import { guideHref, type GuideSummary } from "@/lib/guides";
-import { localeUrl } from "@/lib/seo";
+import { guideHref, visibleGuideHero, type GuideSummary } from "@/lib/guides";
+import { localeUrl, siteUrl } from "@/lib/seo";
 
 const escapeXml = (value: string): string =>
   value
@@ -29,7 +29,8 @@ export type GuideAtomFeedInput = {
 
 /**
  * Builds a valid UTF-8 Atom 1.0 document for a locale news or topic feed.
- * Each entry uses the canonical locale-prefixed article URL as both `<link>` and `<id>`.
+ * Each entry uses the canonical locale-prefixed article URL as both `<link>` and `<id>`,
+ * and includes a Media RSS thumbnail whenever the article carries a real editorial hero.
  */
 export function buildGuideAtomFeed(input: GuideAtomFeedInput): string {
   const selfUrl = localeUrl(input.locale, input.feedPath);
@@ -43,6 +44,10 @@ export function buildGuideAtomFeed(input: GuideAtomFeedInput): string {
     const url = localeUrl(input.locale, guideHref(article.kind, article.slug));
     const entryUpdated =
       toIsoTimestamp(article.published_at) ?? toIsoTimestamp(article.news_date) ?? updated;
+    const hero = visibleGuideHero(article.hero);
+    const thumbnail = hero
+      ? `    <media:thumbnail url="${escapeXml(`${siteUrl}${hero.src}`)}" width="${hero.width}" height="${hero.height}"/>`
+      : "";
     const categories = (article.topics ?? [])
       .map((topic) => `    <category term="${escapeXml(topic.slug)}" label="${escapeXml(topic.label)}"/>`)
       .join("\n");
@@ -54,6 +59,7 @@ export function buildGuideAtomFeed(input: GuideAtomFeedInput): string {
       `    <updated>${entryUpdated}</updated>`,
       `    <published>${entryUpdated}</published>`,
       article.description ? `    <summary>${escapeXml(article.description)}</summary>` : "",
+      thumbnail,
       categories,
       "  </entry>",
     ]
@@ -63,7 +69,7 @@ export function buildGuideAtomFeed(input: GuideAtomFeedInput): string {
 
   return [
     '<?xml version="1.0" encoding="UTF-8"?>',
-    `<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="${escapeXml(input.locale)}">`,
+    `<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="${escapeXml(input.locale)}">`,
     `  <title>${escapeXml(input.title)}</title>`,
     input.subtitle ? `  <subtitle>${escapeXml(input.subtitle)}</subtitle>` : "",
     `  <id>${escapeXml(hubUrl)}</id>`,

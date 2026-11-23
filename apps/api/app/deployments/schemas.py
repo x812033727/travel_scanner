@@ -96,8 +96,46 @@ class AgentDeploymentJob(BaseModel):
     events: list[AgentDeploymentEvent] = Field(default_factory=list)
 
 
+class HostTimerDecision(BaseModel):
+    action: str | None = None
+    gate: str | None = None
+    reason: str | None = None
+    sha: str | None = None
+
+
+class HostTimerDeploy(BaseModel):
+    sha: str | None = None
+    finished_at: datetime | None = None
+    seconds: int | None = None
+    exit: int | None = None
+    verify: str | None = None
+
+
+class HostTimerMissedWindow(BaseModel):
+    window: str | None = None
+    gate: str | None = None
+    reason: str | None = None
+    sha: str | None = None
+    notified_at: datetime | None = None
+
+
+class HostTimerStatus(BaseModel):
+    """What the root auto deploy timer on the host last reported (deployment_host_status)."""
+
+    reported_at: datetime | None = None
+    responding: bool = False
+    dry_run: bool = False
+    paused_reason: str | None = None
+    deploy_windows: list[str] = Field(default_factory=list)
+    auto_deploys_today: int = 0
+    last_decision: HostTimerDecision | None = None
+    last_deploy: HostTimerDeploy | None = None
+    last_missed_window: HostTimerMissedWindow | None = None
+
+
 class DeploymentOverview(BaseModel):
     enabled: bool
+    executor: Literal["host_timer", "agent"] = "agent"
     agent_connected: bool
     deployed_sha: str | None = None
     target_sha: str | None = None
@@ -110,12 +148,17 @@ class DeploymentOverview(BaseModel):
     active_run: DeploymentRunView | None = None
     last_success: DeploymentRunView | None = None
     cooldown_until: datetime | None = None
+    host: HostTimerStatus | None = None
 
 
 class DeploymentCreateRequest(BaseModel):
     expected_target_sha: str = Field(min_length=40, max_length=40, pattern=r"^[0-9a-f]{40}$")
     password: str = Field(min_length=1, max_length=128)
     confirmation: str = Field(min_length=1, max_length=32)
+    # host_timer only: "latest" deploys the newest green main, "rebuild" rebuilds the live
+    # commit (the deploy script's --force) and so needs no new CI result.
+    mode: Literal["latest", "rebuild"] = "latest"
+    wait_for_paid_work: bool = True
 
     @field_validator("expected_target_sha")
     @classmethod

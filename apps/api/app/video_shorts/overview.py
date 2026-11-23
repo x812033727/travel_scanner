@@ -90,6 +90,7 @@ def build_needs(
             and now < slot.starts_at <= horizon
             and slot.project_slug in by_slug
             and by_slug[slot.project_slug].project.youtube_video_id is None
+            and not by_slug[slot.project_slug].by_hand
         ]
         if waiting:
             needs.append(

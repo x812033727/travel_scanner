@@ -56,7 +56,7 @@
 | 畫風 | 全部影片共用同一段風格提示詞與風格錨定圖（`look.style`、`look.style_frames`），存在作品的存檔裡 |
 | 人物 | 一支最多 3 個反覆出現的主角，寫進 `characters`，設定圖由 judge 自動選；沒有主角的故事 `characters` 是空陣列，跳過設定圖階段 |
 | 聲音 | 每一句的 `speaker` 都是 `narrator`；人物不說話 |
-| 章節 | 六段：鉤子（30–60 秒的開場濃縮，預算 45 秒：故事的第一個場景，順著講到第一個說不通的地方就停，最後一句是這支回答的問題，不講後面幾章才揭曉的結果；`script-writing.md` §開場濃縮、§故事主線與鉤子）、起點與人物、關鍵點子、生意怎麼運作、代價或反轉、現況與一句觀察 |
+| 章節 | （2026-11-05 起改照黑猫十步的鉤子＋承諾句，2026-11-19 起不放片頭；見 `script-writing.md` §奇聞檔案局與品牌故事的架構）六段：鉤子（30–60 秒的開場濃縮，預算 45 秒：故事的第一個場景，順著講到第一個說不通的地方就停，最後一句是這支回答的問題，不講後面幾章才揭曉的結果；`script-writing.md` §開場濃縮、§故事主線與鉤子）、起點與人物、關鍵點子、生意怎麼運作、代價或反轉、現況與一句觀察 |
 | 片尾 | `outro` 卡：回到開場的問題給一句答案，只給一個下一步 |
 | 字幕 | 新版正片不燒字幕；繁中 CC 一定有，英／日／韓 CC 依每支選擇。原設計的燒錄字幕只適用於舊版影片 |
 | 配樂 | 沿用漫劇的 `music`；設定關掉時沒有 |
@@ -100,7 +100,7 @@
 | `category`、`region` | `everyday`／`asia-brand`／`tech`；`global`／`jp`／`kr`／`tw` |
 | `subject` | 主題，例如「輪子行李箱」 |
 | `question` | 開場要回答的那個問題 |
-| `chapters` | 六段，各一個 `{key, point}`：`hook`、`origin`、`idea`、`engine`、`turn`、`now` |
+| `chapters` | 六段，各一個 `{key, point}`：`hook`、`origin`、`idea`、`engine`、`turn`、`now`。`point` 裡可以用標記交代這一章要講的寫法（2026-11-19）：「舊世界：」「對手的理由：」「二次反轉：」「彩蛋：」「概念詞：」「比喻：」「現在：」，以及全片各只能出現一次的「岔題：」「清單：」；撰稿提示認得它們（`story-prompts.mjs` `CHAPTER_GUIDE`），寫法見 `.agents/skills/brand-story/SKILL.md` |
 | `takeaway` | 留給觀眾的一句觀察 |
 | `must_verify` | 查核一定要對到來源的事實（年份、數字、引述），各是 `{claim, sources, core?, attributed?, reviewer_only?}`：`sources` 是 `sources` 的索引；`core` 是標題靠的那一條；`attributed` 表示旁白要說是誰的說法；`reviewer_only` 表示這一條只有工人讀不到的文件可以佐證，工人查核時以企劃為準 |
 | `sources` | 至少 3 個 `{url, publisher, kind, supports, checked}`，https。企劃時照工人的方式讀過：每個都有回應，每個必查事實至少有一頁是工人讀得到文字的 |

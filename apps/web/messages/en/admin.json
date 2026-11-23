@@ -837,6 +837,18 @@
       "pricing_enabled": {
         "label": "Plans & usage packs",
         "help": "Controls pricing navigation, usage-pack actions, and the /pricing page."
+      },
+      "flight_search_enabled": {
+        "label": "Flights & stays search",
+        "help": "Controls flights & stays search links and home search workbench entry points."
+      },
+      "videos_enabled": {
+        "label": "Videos hub",
+        "help": "Controls video navigation links, the home videos shortcut, and the footer link."
+      },
+      "member_features_enabled": {
+        "label": "Member features & sign-in",
+        "help": "Controls sign-in buttons, saved items, My space, My trips navigation, and card save/trip actions. Direct /login access remains available for admins."
       }
     }
   },
@@ -926,7 +938,10 @@
       "pg_dump": "Backup tool",
       "github_ci": "GitHub CI",
       "api": "API",
-      "web": "Web"
+      "web": "Web",
+      "host_timer": "Host deploy timer",
+      "autodeploy_paused": "Auto deploy pause",
+      "dry_run": "Dry run"
     },
     "noSha": "None yet",
     "seconds": "{count}s",
@@ -968,7 +983,27 @@
     "warningBody": "A PostgreSQL backup is taken first. If the new build fails its health checks only the application is rolled back — migrations are not downgraded and the database is not restored automatically.",
     "passwordLabel": "Your password",
     "typeLabel": "Type",
-    "confirmSubmit": "Confirm and deploy"
+    "confirmSubmit": "Confirm and deploy",
+    "reasonTimerOffline": "The host deploy timer has not reported for 15 minutes",
+    "reasonAutodeployPaused": "The last automatic deploy failed and is paused: read its log and remove the paused file first",
+    "rebuildCurrent": "Rebuild current version",
+    "rebuildTitle": "Rebuild {sha}",
+    "waitPaidWork": "Do not deploy while a paid video job is running (recommended)",
+    "hostTitle": "Host deploy timer",
+    "hostHint": "Deploys main automatically at most once a day inside the deploy window. A button request is picked up within about 5 minutes.",
+    "hostLastReport": "Last report",
+    "hostNever": "Never reported",
+    "hostDryRun": "Dry run: nothing is deployed",
+    "hostWindow": "Deploy window",
+    "hostWindowAny": "Any time",
+    "hostToday": "Automatic deploys today",
+    "hostDecision": "Last decision",
+    "hostLastDeploy": "Last deploy by the timer",
+    "hostLastDeployValue": "{sha} · verify {verify}",
+    "hostMissed": "Window closed without deploying",
+    "hostMissedValue": "{window}: {sha} was held at {gate}: {reason}",
+    "hostPaused": "Automatic deploys are paused",
+    "hostWarningBody": "The deploy script backs up PostgreSQL only when migrations change. Every container restarts (about 8 seconds of errors); a failed deploy is rolled back and pauses automatic deploys."
   },
   "aiAccountsPanel": {
     "loading": "Reading account status…",
@@ -2180,6 +2215,21 @@
     "uncategorized": "Uncategorized",
     "categoryFilter": "Category",
     "categoryAll": "All categories",
+    "shelfFilter": "Show",
+    "shelfAll": "All shows",
+    "shelves": {
+      "curio": "Curio Files",
+      "sothatswhy": "So That's Why",
+      "explainer": "Explainer (other)"
+    },
+    "seriesFilter": "Series",
+    "seriesAll": "All series",
+    "seriesNone": "Not in a series",
+    "topicFilter": "Topic",
+    "topicAll": "All topics",
+    "topicNone": "No topic",
+    "driveFolder": "Drive folder",
+    "driveFinal": "Final cut",
     "stateFilter": "State",
     "stateAll": "All",
     "search": "Search",
@@ -2212,10 +2262,10 @@
     "loadError": "Could not load the videos",
     "retry": "Retry",
     "retryVideoTitle": "Video needs attention",
-        "retryVideoHelp": "After fixing the cause, ask the worker to try this video once more.",
-        "retryVideoPending": "Retry requested. The worker will pick it up on its next run.",
-        "retryVideoButton": "Try this video again",
-        "retryVideoError": "Could not request a retry: {message}",
+    "retryVideoHelp": "After fixing the cause, ask the worker to try this video once more.",
+    "retryVideoPending": "Retry requested. The worker will pick it up on its next run.",
+    "retryVideoButton": "Try this video again",
+    "retryVideoError": "Could not request a retry: {message}",
     "pending": "{count} to decide",
     "noPendingShort": "Nothing to decide",
     "progress": "Progress {done}/{total}",

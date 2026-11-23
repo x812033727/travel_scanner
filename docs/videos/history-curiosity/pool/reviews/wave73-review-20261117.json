@@ -1,0 +1,399 @@
+{
+  "batch": "batches/wave73-20261117.json",
+  "reviewed_on": "2026-11-17",
+  "method": "四位沒有參與研究的獨立覆核代理（R731–R734 依序覆核 ZR1–ZR4）逐題對照研究代理的請求紀錄與快取檔，至少重新請求一個關鍵一手／機構來源，逐句核對年份、數字與引文，重做全池與跨系列去重，對照不收清單、1956 真人規範與 8 分鐘門檻；修改直接寫進批次的題目與來源欄位，覆核補讀的來源編入該研究代理的來源序號，沒被收下的題引用的來源移除。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 13,
+    "REJECT": 1,
+    "NEEDS_CHECK": 5
+  },
+  "source_renames": {
+    "R731-S001": "ZR1-S018",
+    "R731-S002": "ZR1-S019",
+    "R731-S003": "ZR1-S020",
+    "R732-S001": "ZR2-S020"
+  },
+  "verdicts": [
+    {
+      "id": "N7201",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R731",
+      "author": "ZR1",
+      "key_source_reopened": "https://store.steampowered.com/news/446/?l=english（R731 seq 1，200，41533 bytes）：官方公告：『will be made available…on October 12, 2005 via Steam』『for $12.95』『direct distribution channel to over 5.5 million customers』、公告日 Sep 19, 2005，都在；位元組數與作者 seq 20 相同；https://gamespot.com/news/2857298.html（R731 seq 9，403，5575 bytes）：想找 2002 年新聞稿的第二份當年報導；回 403，即停，未使用；https://www.slashgear.com/995581/this-surprising-feature-wasnt-a-part-of-steams-launch-in-2003（R731 seq 10，200，56170 bytes）：新增為 R731-S003：流傳印象的樣本與『2003 年上線時不能買遊戲』的二手說法",
+      "changes": [
+        "問句與 hook 原寫『新聞稿裡根本沒有商店這回事／從頭到尾沒提商店』：新聞稿第 2 段就寫消費者可以 purchase and start their applications，只是沒有 store 這個字；改成『推銷的對象是其他軟體公司』，答案改成『線上直接賣的念頭一開始就在，但整份稿子是對同業推銷一套管線』",
+        "補一個流傳印象的樣本與『2003 年上線時不能買遊戲』的二手說法（R731-S003，SlashGear 2022），拿掉『借來的方向，未查證』當樣本的寫法",
+        "scope 補：2002 年合作工作室只是示範測試版、不算開賣；『2003 年不能買』只當二手說法",
+        "case_key 改名（原名寫 not_store，與新聞稿內容不符）；premise_status 由 needs_check 改 screened（官方公告為一手來源、樣本已補），role 仍是 chapter、5–7 分鐘"
+      ],
+      "unverified": [
+        "2002 年新聞稿只有愛好者網站當年的轉載，官網原件沒找到（gamespot 當年報導回 403）",
+        "2003 年正式上線的官方公告沒讀到",
+        "『第一款第三方遊戲』只有 PC Gamer 2025 的說法，官方公告本身沒這樣寫"
+      ],
+      "note": "來源都真實、引文都對得上；翻轉改弱後仍成立（對同業賣管線→三年半後才賣別家遊戲），只夠一章。若主編認為核心紀錄不能靠轉載稿，可降回 needs_check。"
+    },
+    {
+      "id": "N7202",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R731",
+      "author": "ZR1",
+      "key_source_reopened": "https://patents.google.com/patent/US7666511B2/en（R731 seq 2，200，794401 bytes）：雜湊與作者 seq 3 相同。說明書首段有『claims the benefit of U.S. Provisional Application No. 60/930,808, filed May 18, 2007』；Filing date 2007-07-31、Publication 2010-02-23；背景欄『soda-lime…cannot be formed by…fusion draw and slot draw』與『liquidus viscosity of at least 130 kpoise』都在；專利沒有 Chemcor 一字",
+      "changes": [
+        "專欄原文是 was used until the early 1990s：原卡寫『賣到 1990 年代初』『賣了三十年』，改成『用到』並標二手，不當停產年份",
+        "原卡問句、答案、payoff 把這份專利直接說成『手機上那片的成分』『特地為了手機重新開過』：專利沒說是哪支手機、也沒提 Chemcor，改成『這家廠替手機蓋板玻璃申請的專利』『另一組成分範圍』",
+        "問句拿掉沒有樣本的『賣不掉、塞進抽屜的失敗品』，改用專欄撐得住的流傳版本（舊玻璃翻出來用）",
+        "2007-05-18 改引專利說明書首段的臨時申請案（不只靠 Google Patents 的推定欄位）",
+        "hook『當著記者的面』TIME 沒寫，改成『示範會上』"
+      ],
+      "unverified": [
+        "康寧官網沿革頁（403，未讀）",
+        "Chemcor 停產年份沒有一手紀錄",
+        "這份專利與實際量產配方的關係（配方是營業祕密）"
+      ],
+      "note": "TIME 1962、專利、10-K 三個一手／機構來源都對得上；翻轉成立但要守住『專利≠手機上那片』的界線。"
+    },
+    {
+      "id": "N7203",
+      "verdict": "REJECT",
+      "reviewer": "R731",
+      "author": "ZR1",
+      "key_source_reopened": "",
+      "changes": [],
+      "unverified": [
+        "『350 億』沒有任何讀到的樣本，連單位是張還是元都不確定（覆核者再搜一次也沒有找到機構來源）",
+        "『差點腰斬』沒有機構來源",
+        "年營收數字只有二手整理"
+      ],
+      "note": "來源本身真實、數字對得上（251 億張／250 億張／225.877 億張／158.8 億張），但翻轉只是『單位是張不是元』，而且要修正的那個說法沒有樣本——『350 億』很可能本來就是張數的估計，等於打稻草人；原作者 2022 年過世屬紅線，連載故事不能講，剩下的只是銷量數字。照作者自己的建議不收。"
+    },
+    {
+      "id": "N7204",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R731",
+      "author": "ZR1",
+      "key_source_reopened": "https://archive.org/advancedsearch.php?q=title%3A%28%22federal+reporter%22%29+AND+title%3A%28253%29&fl%5B%5D=identifier&fl%5B%5D=title&fl%5B%5D=year&rows=30&output=json（R731 seq 3，200，364 bytes）：找到條目 gov.uscourts.f1.253（Federal Reporter 第 253 卷）；https://archive.org/metadata/gov.uscourts.f1.253（R731 seq 4，200，4384 bytes）：條目為 West Publishing 的 Federal Reporter 第 253 卷，Public.Resource.Org 上傳，檔案 253.f1_djvu.txt；https://archive.org/download/gov.uscourts.f1.253/253.f1_djvu.txt（R731 seq 5，200，3332701 bytes）：253 F. 613–620：專利請求項、『abandoned by Edmund McIlhenny shortly after the patent was issued』、『his death in 1890』、『from 1868 until 1896』、『the pepper known in the market as Tabasco pepper』、Reversed and rendered for defendant，與作者 cache（seq 17）逐句相符；作者轉載版一處亂碼年份在此作 1896；https://archive.org/metadata/gov.uscourts.f1.265（R731 seq 6，200，4384 bytes）：條目為 Federal Reporter 第 265 卷，檔案 265.f1_djvu.txt（條目代號比照 seq 3 搜到的第 253 卷）；https://archive.org/download/gov.uscourts.f1.265/265.f1_djvu.txt（R731 seq 7，200，3508638 bytes）：265 F. 705–714：1865 或 1866、1866『Petite Anse Sauce』、1868、紐奧良同業、專利成分（vinegar, rock salt, and alcohol…bisulphate of lime…to prevent fermentation）、『until 1875 or 1876』、1906／1910、1897 與約 25 家、主文，與作者 cache（seq 18）逐句相符；摘要另寫『after four years』（非法院用語）",
+      "changes": [
+        "兩份判決另從 Internet Archive 的 West 判決匯編掃描（Federal Reporter 第 253、265 卷）逐句對照，新增來源 R731-S001、R731-S002；題卡引的年份與理由全部相符",
+        "hook『配方一個字沒改過』官網寫的是 virtually unchanged，改成『幾乎沒變』；『卷宗』改『判決書』；問句『藥劑』改『添加物』",
+        "答案『三年是後來才拉長、不是一開始就有』改成官網原意（現在才比較久）；『公司正是因為放棄專利配方才保住名字』改成法院實際的理由（名字一直用在不照專利做的醬上，專利到期與它無關）；拿掉『驕傲』",
+        "scope 補：匯編摘要寫『四年後放棄』不是法院的話，不引"
+      ],
+      "unverified": [
+        "1870 年專利原件沒讀",
+        "熟成時間何時拉長",
+        "匯編只讀 OCR 文字、沒看頁面影像"
+      ],
+      "note": "本批最紮實的一題：翻轉清楚（專利版加酒精與防發酵添加物、五六年就放棄），兩份判決有官方匯編對照。"
+    },
+    {
+      "id": "N7205",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R731",
+      "author": "ZR1",
+      "key_source_reopened": "https://www.win-rar.com/winrarlicense.html（R731 seq 8，200，29261 bytes）：『try before you buy』『a maximum of 40 days』『must purchase a license to continue using the software』、提醒視窗可含廣告、兩種授權、德國法、不同意須移除，都在；位元組數與作者 seq 11 相同",
+      "changes": [
+        "ZR1-S009 日期頁面署 2017-03-16，原寫 03-17，已改",
+        "hook『按了二十年』沒有來源，改『很多年』；問句與 hook 的『公司真正出手對付的／真的請律師出手的那一次』暗示只有一次、且是公司的一貫做法，改成『2019 年被報導的那一次』",
+        "『靠企業賺錢』在 answer_target 與 payoff 都明寫是轉述的解釋、沒有公司文件",
+        "補上報導裡公司自己的一句：沒有對每個過期繼續用的個人提告"
+      ],
+      "unverified": [
+        "『靠企業授權賺錢』沒有一手佐證",
+        "1990 年代原始授權條款",
+        "公司是否有其他法律行動"
+      ],
+      "note": "官方條款重抓逐句相符；在世個人（作者、著作權人、主管）題卡都沒點名；chapter、5–7 分鐘合理。"
+    },
+    {
+      "id": "N7221",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R732",
+      "author": "ZR2",
+      "key_source_reopened": "https://www.invent.org/blog/inventors/art-fry-post-it-notes（R732 seq 4，200，164539 bytes）：名人堂介紹文『In 1970…improve acrylate adhesives…impressively sticky and long lasting』『In 1974』『in 1977…four cities…Press ‘n Peel』『1980』相符；位元組數同作者（164,539）",
+      "changes": [
+        "premise_status 改 needs_check：專利 PDF 的網址是代入專利號得到的，作者的 cache 與 access_log 沒有任何頁面記載這個端點；覆核者重做搜尋，端點格式只出現在別的專利號的搜尋結果上，本件暫不計入來源條件",
+        "專利引文與申請日以 cache 的 PDF 轉圖逐句重核，全部相符（Filed March 9, 1970；Sept. 12, 1972；不能 rebonding 的背景；摘要的可撕、可重貼；第 2 欄 separation, repositioning and rebonding；less than about 10 psi）",
+        "hook「專利第一頁」改「說明書一開頭」；question「賣點」改「優點」",
+        "「四個城市」只有名人堂這樣寫，歷史學會寫「幾個大城市」，payoff 與 visual 不寫死；「十年以上」改「十到十二年」",
+        "role 改 chapter、minutes 6–8（公司早年的礦與題目問句無關，是湊長度）",
+        "S012 的 reading_scope 更正為第 2 欄前 8 行、summary 更正「首頁沒有受讓人欄」"
+      ],
+      "unverified": [
+        "專利 PDF 的網址來源不合規（文件本身是真的）",
+        "1968／1970、1973／1974 的出入沒有一手文件可裁決",
+        "公司自己的沿革沒有讀到（兩個公司網域都 403）",
+        "實施例與請求項沒有讀"
+      ],
+      "note": "翻轉成立、引文全對，但撐住翻轉的唯一一手來源取得方式違反不猜網址；拿掉它只剩兩篇機構二手敘述，撐不住，降待查。"
+    },
+    {
+      "id": "N7222",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R732",
+      "author": "ZR2",
+      "key_source_reopened": "https://archive.google/jobs/lunar_job.html（R732 seq 2，200，4361 bytes）：循美聯社回顧內文連結讀公司存檔的月球徵人頁：內容屬實（哥白尼中心、2007 年春末、氧氣），但沒有刊登日期，不能證明與信箱同一天；https://googlepress.blogspot.com/2004/04/google-gets-message-launches-gmail.html（R732 seq 3，200，13151 bytes）：新聞稿 sha256 前綴與作者 cache 相同；『April 1, 2004 UTC』『Millions of M&Ms later』『more than 100 times』『a handful of users』『four megabyte limit』『canned meat』逐句相符",
+      "changes": [
+        "月球徵人從 question 與 hook 拿掉；answer_target 改保守寫法：「同一天」只有二手資料庫一個依據，美聯社只說「有一年」",
+        "新增來源 R732-S001（公司存檔的徵人頁，循美聯社報導的連結取得），證明玩笑存在但無日期",
+        "question 改問「當天到底開放給了誰」（原問「怎麼安排的」沒有一手答案），case_key 隨之改名",
+        "「故意寫得像玩笑」改成「口氣俏皮」並列原句；當天樣本只有一則貼文照實註明",
+        "minutes 改 5–7，維持 chapter"
+      ],
+      "unverified": [
+        "月球徵人的刊登日期",
+        "為什麼選 4 月 1 日（只有二十年後的回顧與當事人回憶）",
+        "2007 年開放註冊的官方公告",
+        "2004 年當天的通訊社或報紙原稿"
+      ],
+      "note": "新聞稿逐句相符；翻轉中等（稿子自己俏皮、當天只給少數人測試），只夠一章。"
+    },
+    {
+      "id": "N7224",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R732",
+      "author": "ZR2",
+      "key_source_reopened": "http://www.audioblog.iis.fraunhofer.com/mp3-software-patents-licenses/（R732 seq 1，200，155765 bytes）：標題〈Alive and Kicking – mp3 Software, Patents and Licenses〉、May 18, 2017、『…is really dead now…? Of course not!』『the last patent included in the program expired. In no way does that mean that the usage permit ends.』都在；位元組數與作者的 155,621 差 144（動態頁），正文相同",
+      "changes": [
+        "hook「公告上面只有一句」不準（公告有兩句，另有背景段），改成「裡面沒有死這個字」",
+        "「兩天後」改寫成日期（5 月 18 日，相對於 5 月 16 日的樣本報導）",
+        "「當然沒死」改成原文的問答句並保留 Of course not!",
+        "「門票取消」的比喻改成不暗示完全免授權",
+        "「死訊來自…」標明是從樣本報導的寫法推的"
+      ],
+      "unverified": [
+        "最後到期的是哪一件專利與確切到期日",
+        "樣本報導轉述的電台原報導",
+        "1996 年盜刷事件只有研究所年表一句",
+        "官網公告的原始發布日期"
+      ],
+      "note": "兩份研究所文件的日期與引句都對得上，翻轉清楚，可收。"
+    },
+    {
+      "id": "N7225",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R732",
+      "author": "ZR2",
+      "key_source_reopened": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular414.pdf（R732 seq 5，200，1596084 bytes）：1937 年版 PDF，sha256 前綴與作者 cache 相同；Table 1『AAA 13 by 25』『AA 13 by 48』、Table 4 附註 T2AA 取消、AA 上限 14 by 50 相符",
+      "changes": [
+        "「只好往前疊字母」是推論、文件沒寫命名理由（1941 年版更小的電池叫 R、P、N、M、K），改成只陳述表上的事實",
+        "「1941、1947 年版沒有 AAA」改成「Table 1 沒有這一列」：1941 年版看掃描圖確認、1947 年版列名文字清楚；其餘各表只做文字搜尋，scope 寫明",
+        "1923 年「沒辦法給尺寸名稱」講的是電池組，不是單顆電池，照此改寫",
+        "S017、S018、S014 的 summary／locator／limitations 與 S019 的日期更正"
+      ],
+      "unverified": [
+        "AA 第一次出現的確切年份（1928 年版與 1931／1935 年聯邦規格沒有讀）",
+        "1924 年命名法原文",
+        "今天細長的 AAA 何時進標準",
+        "1941 年版 Table 1 的尺寸數字"
+      ],
+      "note": "「1930 只有 A–F」「1937 有 AA 與 13×25 的 AAA」「1941、1947 的 Table 1 沒有 AAA」逐一對過 cache，可以當斷言。"
+    },
+    {
+      "id": "N7241",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R733",
+      "author": "ZR3",
+      "key_source_reopened": "https://www.atpress.ne.jp/news/119279（R733 seq 6，200，278587 bytes）：位元組數與作者的 278,951 略有出入（頁面動態內容）。『1997年6月26日にバンダイ、ウィズとの協業から発売された携帯液晶玩具』『全世界累計800万個以上』『1999年にアニメ化』都在。題卡開場的『掛在腰上』『要餵要清』『頭對頭一接』不在任何來源裡，已改。",
+      "changes": [
+        "question、hook、visual：刪掉來源沒有的細節（掛在腰上／書包上、要餵要清、兩台頭對頭一接），改成新聞稿撐得住的『隨身養、養大了互相對戰』",
+        "answer_target：『新的家用主機遊戲賣得好』改成照決算資料『好調』的寫法",
+        "維持 premise_status needs_check、role chapter、minutes [5,7]"
+      ],
+      "unverified": [
+        "沒有『跟風卡通／被甩開』的流傳樣本文章",
+        "沒有 1997 年當年的新聞稿或報導",
+        "『會戰鬥的電子寵物』只有 2017 年評測記者的描述，沒有萬代文件",
+        "兩個系列的營收比較沒有一手數字"
+      ],
+      "note": "來源都是真的、事實對得上，『先有玩具、兩年後才有卡通』的翻轉也成立，所以不判 REJECT；但流傳樣本與當年文件都缺，只能當 5–7 分鐘的待查章節。"
+    },
+    {
+      "id": "N7242",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R733",
+      "author": "ZR3",
+      "key_source_reopened": "https://news.microsoft.com/source/2009/02/16/microsoft-and-gemalto-partner-to-bring-windows-live-messenger-to-the-mass-market-of-mobile-subscribers/（R733 seq 2，200，143831 bytes）：sha 前綴與作者相同（bf23ec0ceadd5c12）。『With more than 320 million active Windows Live Messenger accounts worldwide』在，是合作夥伴（智慧卡公司）主管的引言，日期 Feb. 16, 2009。口徑是『活躍帳號』，相符；題卡原稱『高點』沒有依據，已刪。；https://microsoft.com/en-us/microsoft-365/blog/2025/02/28/the-next-chapter-moving-from-skype-to-microsoft-teams（R733 seq 3，200，239805 bytes）：位元組數與作者相同（sha 前綴不同，頁面有動態內容）。datePublished 2025-02-28T14:00:00+00:00；『we will be retiring Skype in May 2025 to focus on Microsoft Teams (free)』『Skype will remain available until May 5, 2025』都在。公告日期與退役月份相符。",
+      "changes": [
+        "question：『關掉那天』改成『宣布要關的那天』（一億以上是 2012-11-06 宣布日的數字）",
+        "hook 改寫：不再說『很多人以為 2013 年才消失』，並把『換掉名字』改成『推出掛新名字的接班版本』（2006 年新聞稿沒有『改名』字樣）",
+        "answer_target：刪『高點』；寫明 3.2 億是合作夥伴主管引言裡的『活躍帳號』；寫明樣本內文的『3 億以上』是轉述別家媒體報的 2011 年每月活躍數；補 Skype 維持到 2025-05-05；『同一天的報導』改成前一天（報導 2012-11-06、微軟教育部落格 2012-11-07）",
+        "scope、source_locator、payoff 與 ZR3-S007／S008／S010／S011 的 summary、limitations 同步修正"
+      ],
+      "unverified": [
+        "『1 億以上』的口徑（報導只寫 users）",
+        "樣本轉述的『2011 年每月活躍超過 3 億』原報導沒有讀到",
+        "3.2 億是否為微軟自己的統計、是否歷來最高",
+        "Skype 部落格 2012-11-06 的公告原文"
+      ],
+      "note": "兩個數字的出處與口徑逐句核對無誤，2025 年公告日期 2025-02-28、退役 2025 年 5 月（至 5 月 5 日）相符；改掉三處超出來源的說法後可收。"
+    },
+    {
+      "id": "N7243",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R733",
+      "author": "ZR3",
+      "key_source_reopened": "https://www.site.uottawa.ca/~stan/csi2911/reCaptcha_Science.pdf（R733 seq 1，200，153370 bytes）：與作者 cache/001.bin 逐位元組相同（sha 前綴 8c59a528d8bc095f）。4 頁、Science 321 頁碼 1465–1468，確是論文全文。『more than 100 million CAPTCHAs every day』『hundreds of thousands of human hours per day』『reCAPTCHA gives the user two words』『control word／unknown word』『24,080』『99.1%…83.5%』『After exactly 1 year…1.2 billion CAPTCHAs…over 440 million suspicious words…over 17,600 books』都在。對不上的兩處：題卡寫『兩套軟體都認不出』『前三個人一致才採用』，原文是『deciphered differently by both OCR programs or…not in the English dictionary』與『at least 2.5 votes』，已改。",
+      "changes": [
+        "answer_target：『兩套軟體都認不出』『前三個人一致才採用』改成論文原文的『可疑字』定義與 2.5 票制；補 50 篇、12 億次",
+        "answer_target、scope：流傳說法改寫成『2017 年一篇報導這樣寫』，明寫不是官方說法、不當成事實",
+        "payoff、answer_target：刪『所以才換成今天的勾選和圖片題』（沒有官方文件）與『買下它就是為了掃書掃報』，照 2013、2014 年貼文與收購公告的句子收斂",
+        "question：『大家以為』改成『看起來』（沒有這個說法的樣本）",
+        "scope：訴訟一概不提、不下結論；notes 補 LEG-A04 的主軸差異",
+        "ZR3-S001 summary 與 limitations、ZR3-S005 limitations 修正"
+      ],
+      "unverified": [
+        "2017 年報導引用的那句官網文字（今天的官網頁面沒有）",
+        "勾選框與圖片題上線的官方文件",
+        "論文 supporting online text 裡 1 億次的估算方法"
+      ],
+      "note": "ZR3-S001 重抓後確認是 Science 論文期刊版全文的課程網頁副本，rights 與 limitations 如實；題卡的投票規則寫錯、兩句因果超出來源，改完可收。"
+    },
+    {
+      "id": "N7244",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R733",
+      "author": "ZR3",
+      "key_source_reopened": "https://www.sec.gov/Archives/edgar/data/1737450/000143774919007403/opra20181231_20f.htm（R733 seq 5，200，4287633 bytes）：與作者 cache/013.bin 逐位元組相同。1996、2016-11-03、US$575.0 million、326.7 million、192.6 million、58.5 million 都在。對不上的：題卡『主要在非洲與亞洲』『省流量』，原文沒有分地區人數，寫的是『efficient design and usability』，已改。",
+      "changes": [
+        "answer_target、payoff、hook：刪『三億多人主要在非洲與亞洲的手機上』『省流量』，改成 20-F 原文撐得住的『智慧型手機 1.926 億、電腦 5,850 萬；公司稱在南亞、東南亞、非洲市占領先』",
+        "scope 與 ZR3-S012 summary、limitations 同步修正",
+        "維持 premise_status needs_check、role chapter、minutes [6,8]"
+      ],
+      "unverified": [
+        "『沒人用／紅不起來』的流傳樣本文章",
+        "公司 2013-02-13 換引擎的正式公告",
+        "分頁誰先做的當年文件",
+        "各地區的使用者人數"
+      ],
+      "note": "『沒人用』對上申報文件的三億多人，翻轉成立、一手來源紮實，所以判 NEEDS_CHECK 而不是 REJECT；缺流傳樣本，先當待查章節。"
+    },
+    {
+      "id": "N7245",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R733",
+      "author": "ZR3",
+      "key_source_reopened": "https://investors.htc.com/documents/648/2010_Annual_Report_M.pdf（R733 seq 4，200，7000033 bytes）：與作者 cache/024.bin 逐位元組相同；111 頁。p.4『2,467 萬支』、p.5『2010 年合併營業收入為新台幣 2,788 億元』、p.8 沿革、p.15、p.18 原文都在，頁碼相符；另在 p.87 合併損益表找到『營業收入合計 278,761,244』仟元（p.19、p.42、p.55 同數），與 2,788 億一致。",
+      "changes": [
+        "question、hook、answer_target：『安卓之王被 Google 買走、消失了』『靠 Android 起家』沒有樣本，改標為借來的方向；問句改用樣本報導的『把手機部門賣給 Google』",
+        "answer_target：『當年仍推出新的智慧型手機』改成年報原文的『最新的 U 系列智慧型手機』；『九十分之一』補上算式並註明自算",
+        "source_locator 與 ZR3-S016：補 p.87 合併損益表的營業收入 278,761,244 仟元（覆核另行核對），頁碼逐一寫明",
+        "scope：寫明只陳述文件句子、不用『興衰』『敗』等評語；ZR3-S019 summary、limitations 改寫"
+      ],
+      "unverified": [
+        "『整家被買走、消失』『靠 Android 起家』沒有流傳樣本文章",
+        "2011 年營收高點",
+        "加入 Google 的人數",
+        "公開資訊觀測站 2017-09-21 重大訊息原文"
+      ],
+      "note": "2010 年營收的頁碼與原文、2024 年營收、11 億美元與 2018 年 1 月都核對無誤；『九十分之一』已註明自算；沒有點名台灣在世人物、沒有評論經營者。"
+    },
+    {
+      "id": "N7261",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R734",
+      "author": "ZR4",
+      "key_source_reopened": "https://segaretro.org/Press_release:_1994-12-20:_Sega_declares_third_straight_holiday_season_victory_with_robust_Christmas_sales（R734 seq 1，200，33242 bytes）：ZR4-S003 新聞稿副本：『will make 1994 the third straight year』『55 percent of all 16-bit hardware sales for 1994』『TRST data… NPD Group』『predictions』都在；位元組數與作者相同（頁面雜湊不同，內文一致）；https://www.nintendo.co.jp:443/ir/library/historical_data/pdf/consolidated_sales_e1412.pdf（R734 seq 2，200，26735 bytes）：ZR4-S002 任天堂累計出貨表：雜湊與作者 cache 相同；SNES 硬體 Japan 1,717／The Americas 2,335／Other 858／Total 4,910",
+      "changes": [
+        "question／hook：拿掉『常被引用的五成五』（55% 的流傳樣本沒讀到，樣本文章沒有數字），『連續第三年贏了』改成新聞稿的預告語氣（原文是 will make）",
+        "answer_target／scope：地區一律標為推定並寫明依據（子公司自述負責美洲、引言提到 U.S. market）；『某幾個年底』改成只講 1994；任天堂累計數字加註與單年占比不是同一口徑；市調公司的國別稿中沒寫，scope 的『美國市調公司』改掉",
+        "新聞稿註明只讀到轉存副本"
+      ],
+      "unverified": [
+        "Business Wire 原件與市調公司原始報表",
+        "1992、1993 年的市占與『連續三年』的前兩年數字",
+        "世嘉 16 位元主機官方累計銷量",
+        "新聞稿所指市場（推定美國）"
+      ],
+      "note": "年報、任天堂表、新聞稿副本逐句都對得上；翻轉是口徑題（單年、16 位元、當事人自述、含預測），成立但不算強，寫稿時靠 2001 年年報那一半撐。"
+    },
+    {
+      "id": "N7262",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R734",
+      "author": "ZR4",
+      "key_source_reopened": "http://www.qrcode.com/en/history/（R734 seq 3，200，19453 bytes）：ZR4-S005 官方沿革：雜湊與作者 cache 相同；『Although DENSO WAVE would retain the patent rights to the QR Code, it declared that it would not exercise them』、1997／1999／2000 標準化、2002 手機、Section 4『public domain』得獎理由；https://patents.google.com/patent/US5726435（R734 seq 4，503，1103 bytes）：Google Patents US5726435：再回 503，依指示停；專利首頁改用作者 cache 015 的 PDF 首頁影像目視核對",
+      "changes": [
+        "question／hook：樣本文章沒有『放棄專利』字面，改成『很多人以為它根本沒有專利』",
+        "answer_target：照實描述樣本（小標『專利缺席』，同文也承認有原始專利），補上官方沿革頁 Section 4 引用的 2012 年設計獎得獎理由『放進公有領域』當第二個樣本",
+        "加上『官網列出專利號不等於今天仍有效』（首頁那件 1995 年申請，現況未查），payoff 的『至今』改保守",
+        "『公司做的是讀碼機』改成只陳述官方問答原句、不推論動機",
+        "ZR4-S005、ZR4-S010 的 summary／locator／limitations 補記"
+      ],
+      "unverified": [
+        "『宣布不行使專利』的原始聲明與日期（只有官方沿革頁的寫法）",
+        "各件專利到期日與現況（Google Patents 兩次 503）",
+        "JIS 年份 1999 與 2004 年 11 月何者為準（題卡並列，未裁決）",
+        "字面寫『放棄專利』的流傳樣本",
+        "美國專利只讀首頁"
+      ],
+      "note": "五題裡最穩的一題：官方三頁加美國專利首頁都核對無誤，與原來如此池三題 QR（LEG-A36、T52-005、T52-006）確實不同題。"
+    },
+    {
+      "id": "N7263",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "reviewer": "R734",
+      "author": "ZR4",
+      "key_source_reopened": "https://mail.kde.org/pipermail/kfm-devel/2003-January/002446.html（R734 seq 5，200，6310 bytes）：ZR4-S011 道謝信：雜湊與作者 cache 相同；『built upon KHTML and KJS』『less than 140,000 lines of code』『pronounced \"quack\"』『a little over half the code in Safari』、信頭 Tue, 7 Jan 2003 11:31:10 -0800",
+      "changes": [
+        "question／hook：『老闆說』『舞台上說』改成『新聞稿說』（來源是新聞稿引言）；『做 Linux 桌面的志願者』改成『開源桌面專案的開發者』（來源沒有 Linux、沒有志願者）；信的時間標明是信頭的太平洋時區",
+        "answer_target：『很多人因此以為從零寫的』標明沒有獨立樣本；日期相減標明不是文件原句",
+        "scope：iPhone 只許一句帶過且不給年份機型；動機用語維持禁用",
+        "visual：志願者改開發者"
+      ],
+      "unverified": [
+        "『蘋果從零寫的』這個印象沒有獨立樣本（流傳版本只有新聞稿引言本身）",
+        "1997 年協議全文、五年期滿後怎麼收尾",
+        "手機版發表文件（未讀）",
+        "同日第二封信未讀"
+      ],
+      "note": "三份文件逐句對得上，沒有動機用語、沒有點名；弱點是流傳版本與修正出自同一篇新聞稿，若要求獨立樣本可降為待查。"
+    },
+    {
+      "id": "N7264",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R734",
+      "author": "ZR4",
+      "key_source_reopened": "https://rauch.cc/company/100-x-rauch-1919-2019/posts/the-smell-of-gummi-bears-instead-of-blackcurrant（R734 seq 6，200，49848 bytes）：ZR4-S016 果汁公司紀念文：『in the spring of 1987』『filling the first batches』『250 ml cans and 175 ml bottles』『exclusive filling partner』都在；比作者 cache 少 60 bytes，內文一致",
+      "changes": [
+        "question：拿掉罐身配色、『裝到今天還是那一家』改成果汁廠的自述、結尾改成『自己到底做了什麼』（答案在官方簡介列的四樣）",
+        "answer_target／payoff：51%／49% 限定為『沿革頁寫的成立時持股』，不寫成現況；『握著四樣』標明推論；不再說『沒有工廠大致對得上文件』",
+        "scope：不提任何家族成員、不說現在持股"
+      ],
+      "unverified": [
+        "流傳版本（『連工廠都沒有』『奧地利人發明』）沒有樣本",
+        "飲料公司自己沒有文件承認生產委外，『獨家』只有代工方 2019 年自述",
+        "奧地利公司成立年份、配方改動",
+        "兩位創辦人卒年非本輪來源所載"
+      ],
+      "note": "維持待查、chapter 6–8 分鐘；來源的事實都在，沒有健康或成分功效說法，但流傳版本無樣本、關鍵一句只有代工方單方說法。"
+    },
+    {
+      "id": "N7265",
+      "verdict": "NEEDS_CHECK",
+      "reviewer": "R734",
+      "author": "ZR4",
+      "key_source_reopened": "https://group.marshall.com/2023/06/13/zound-is-now-marshall-group-and-set-to-take-the-company-to-the-next-level/（R734 seq 7，200，56230 bytes）：ZR4-S019 集團公告：『formally changing its name to Marshall Group following the fusion… earlier this spring』『Since 2010』『around 800 employees』『USD 360 million』『head office will remain in Stockholm』都在；位元組數與作者相同",
+      "changes": [
+        "premise_status 由 screened 改 needs_check：ZR4-S021 並沒有描述『一般人以為是英國廠做的』，流傳版本其實沒有樣本",
+        "question／hook／answer_target／payoff：『反過來把老廠買了下來』改成官方『合併』與媒體『賣給』並列，『借牌子』註明出自媒體的『授權協議』說法；24% 限定為 2023 年報導轉述",
+        "hook 拿掉來源沒有的產品外觀細節"
+      ],
+      "unverified": [
+        "2010 年授權與 2023 年交易的公告原件",
+        "24% 持股與工廠地點（只有報導轉述）",
+        "2023 年之後的股權現況（覆核者印象中其後有多數股權易主的報導，但本輪沒有讀任何來源，正片的持股描述務必限定在 2023 年）",
+        "流傳版本樣本"
+      ],
+      "note": "事實鏈（2010 合作、2023 合併、改名）官方兩頁加一篇報導都對得上，但缺流傳版本樣本與公告原件；素材只夠 chapter 5–7 分鐘。"
+    }
+  ],
+  "process_notes": [
+    "N7221（便利貼）降為待查：專利 PDF 的網址是研究代理把專利號代入專利局下載端點得到的，快取與請求紀錄裡沒有任何頁面給出這個連結，不合「不猜網址」。文件本身是真的、引文相符，但主編維持保守判定；讀到一個直接連到本件專利全文的公開連結後可升回 screened。",
+    "N7262（QR code）原引用的美國專利 PDF（ZR4-S008）和 N7221 是同一種代入端點的網址，覆核沒有攔下；主編把它從來源、答案、範圍與 payoff 拿掉，題卡靠四個官方頁面仍成立。下一批的說明要把這個端點明列為「搜尋結果或頁面有給連結才可用」。",
+    "N7204（Tabasco）兩份判決原本只有第三方轉載，R731 另從 Internet Archive 讀到 Federal Reporter 第 253、265 卷的掃描文字並逐句核對。第 265 卷的條目代號是比照搜尋到的第 253 卷推得、再用 metadata API 確認存在的，如實記在這裡。",
+    "N7201（Steam）覆核補了流傳印象的樣本後改為 screened，但 2002 年新聞稿仍只有愛好者網站的轉載；素材只夠一章，沒有單獨入選。",
+    "N7223（RealPlayer）研究代理即判不收，R732 同意：沒有可被文件修正的流傳說法，又落在在世創辦人任內的隱私紛爭。",
+    "沒有發現編造的來源：四位覆核共發 28 次請求，位元組或正文與研究代理的快取相符；patents.google.com 持續回 503，改用快取核對。這一批沒有再出現「看到 403 之前已送出下一筆」的情況。主編另抽查三題各一個來源（N7224 研究所部落格的「Of course not!」、N7262 官方沿革的「retain the patent rights… would not exercise them」、N7261 任天堂累計出貨表），各發一次請求，都是 200；前兩句原句在，出貨表的檔案與覆核核對過的是同一份。"
+  ]
+}

@@ -6,8 +6,8 @@ import { StructuredData } from "@/components/structured-data";
 import { VideoCard } from "@/components/videos/video-card";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
-import { breadcrumbs } from "@/lib/structured-data";
-import { isVideoKind, videosHref, type VideoKind } from "@/lib/videos";
+import { breadcrumbs, videoObject } from "@/lib/structured-data";
+import { isVideoKind, videoArticleHref, videosHref, type VideoKind } from "@/lib/videos";
 import { getVideos } from "@/lib/videos.server";
 
 type Params = { locale: Locale };
@@ -64,7 +64,18 @@ export default async function VideosPage(
   return (
     <>
       <SiteHeader />
-      <StructuredData data={[breadcrumbs(locale, [{ name: nav("home"), path: "/" }, { name: t("videos.title"), path: "/videos" }])]} />
+      <StructuredData
+        data={[
+          breadcrumbs(locale, [{ name: nav("home"), path: "/" }, { name: t("videos.title"), path: "/videos" }]),
+          ...page.videos.map((video) => videoObject(locale, {
+            slug: video.slug,
+            title: video.title,
+            youtubeVideoId: video.youtube_video_id,
+            publishedAt: video.published_at,
+            articlePath: videoArticleHref(video),
+          })),
+        ]}
+      />
       <main className="mx-auto max-w-6xl px-5 py-10 md:px-8">
         <header className="portal-hero-shell rounded-3xl p-6 md:p-10">
           <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">{t("videos.title")}</h1>

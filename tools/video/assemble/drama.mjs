@@ -68,15 +68,18 @@ const MOTION_DRIFT_SHARE = 0.15;
 export const MOTION_MANGA_VERSION = "manga-motion-v1";
 export const MANGA_MOTION = Object.freeze({ zoom: 0.2, panZoom: 1.12, driftZoom: 0.1, driftShare: 0.3, travelSeconds: 3, travelMin: 0.6 });
 const STILL_MOTION = Object.freeze({ zoom: MOTION_ZOOM, panZoom: MOTION_PAN_ZOOM, driftZoom: MOTION_DRIFT_ZOOM, driftShare: MOTION_DRIFT_SHARE, travelSeconds: MOTION_TRAVEL_SECONDS, travelMin: MOTION_TRAVEL_MIN });
-// The beat move (video.json `still_motion: "beat"`, owner 2026-11-05, after the 黑貓研究院
-// reference): every still keeps moving for its whole length, a little further than the held shot,
-// and the stills take turns at the moves (push in, pan right, pull out, pan left, tilt up) so the
-// video never zooms in picture after picture; a still whose camera line names a move keeps it.
-// The pictures dissolve into each other (beatTransition), the way the reference changes them.
-// Measured on the reference: mean_difference 5.0-5.9 against 2.5-3.5 for our held shots
-// (.agents/skills/producer/references/pace-targets.md).
-export const MOTION_BEAT_VERSION = "beat-motion-v4";
-export const BEAT_MOTION = Object.freeze({ zoom: 0.18, panZoom: 1.16, driftZoom: 0.1, driftShare: 0.3, travelSeconds: 4, travelMin: 1 });
+// The beat move (video.json `still_motion: "beat"`, owner 2026-11-05; upgraded to hold +
+// punch-in on 2026-11-18 after measuring 黑貓研究院's pace-targets.md): instead of gliding at one
+// uniform smoothstep across the whole shot (v4 measured slow_share 0.58 on 6 s stills), each
+// still holds its framing for holdFrames (~0.8 s = 24 frames, capped at 30% of short shots) so
+// the viewer reads the picture, then executes a crisp punchFrames (~2.2 s = 66 frames) move
+// (push in, pan right, pull out, pan left, tilt up in turn) and holds the landed detail before
+// dissolving into the next picture (beatTransition). Measured on 1080p illustrations with
+// 15-frame dissolves: slow_share drops from 0.58 to 0.059 (target <= 0.30), high_motion_share
+// 0.084 (reference 0.079-0.095), mean_difference 5.78 (reference 5.0-5.9;
+// .agents/skills/producer/references/pace-targets.md).
+export const MOTION_BEAT_VERSION = "beat-motion-v5";
+export const BEAT_MOTION = Object.freeze({ zoom: 0.22, panZoom: 1.2, driftZoom: 0.12, driftShare: 0.34, travelSeconds: 3.5, travelMin: 1, holdFrames: 24, punchFrames: 66 });
 /** The moves beat stills take in turn. */
 export const BEAT_MOVES = Object.freeze(["push-in", "pan-right", "pull-out", "pan-left", "tilt-up"]);
 export const MOTION_PROFILES = Object.freeze({ manga: MANGA_MOTION, beat: BEAT_MOTION });
@@ -285,7 +288,13 @@ export function zoompanExpr(move, frames, { eased = false, travel = 1 } = {}) {
   const amounts = motionProfile(move);
   const n = Math.max(frames - 1, 1);
   const t = `on/${n}`;
-  const p = eased ? `((${t})*(${t})*(3-2*(${t})))` : t;
+  let u = t;
+  if (eased && amounts.holdFrames > 0) {
+    const hold = Math.min(amounts.holdFrames, Math.floor(n * 0.3));
+    const span = Math.max(1, Math.min(amounts.punchFrames ?? (n - hold), n - hold));
+    if (hold > 0 || span < n) u = `clip((on-${hold})/${span},0,1)`;
+  }
+  const p = eased ? `((${u})*(${u})*(3-2*(${u})))` : t;
   const run = travel === 1 ? p : `${round4(travel)}*${p}`;
   const zoom = round4(amounts.zoom * travel);
   const drift = round4(amounts.driftZoom * travel);

@@ -10,6 +10,8 @@ and deletes one already dropped.
 
 from __future__ import annotations
 
+import asyncio
+import shutil
 from typing import Annotated, Any
 from uuid import UUID
 
@@ -30,6 +32,7 @@ from app.video_media.settings import get_media_settings
 from app.video_reviews import admin_deletion, dub_retry, tool_files
 from app.video_reviews import admin_package_zip as package_zip_module
 from app.video_reviews import admin_service as service
+from app.video_reviews import shelf as shelf_rules
 from app.video_reviews.clips import SubmittedReview
 from app.video_reviews.schemas import (
     SERIES_SLUG_PATTERN,
@@ -50,10 +53,12 @@ from app.video_reviews.schemas import (
     ProjectPage,
     ProjectSummary,
     ReviewOut,
+    ShelfFilter,
     VideoFormat,
     YoutubeIn,
 )
 from app.video_reviews.storage import PART_BYTES, ReviewStore, StorageRefused
+from app.video_reviews.store_view import ReviewStoreView
 from app.video_shorts.schemas import ShortsFilter, ShortsState
 from app.video_speech.admin_api import VideoTool
 
@@ -171,25 +176,56 @@ async def list_videos(
     )
 
 
+# Declared before /{slug}, which would otherwise take "store" for a video's slug.
+@admin_router.get("/store", response_model=ReviewStoreView)
+async def review_store_status(user: ContentReader, session: Session) -> ReviewStoreView:
+    """How full the preview store is, for the 審片空間 card on the video settings tab."""
+    _ = user
+    store = await _store(session)
+    try:
+        disk = shutil.disk_usage(store.root if store.root.exists() else store.root.parent)
+        free: int | None = disk.free
+        total: int | None = disk.total
+    except OSError:
+        free = total = None
+    return ReviewStoreView(
+        used_bytes=await asyncio.to_thread(store.used_bytes),
+        max_total_bytes=store.max_total_bytes,
+        max_file_bytes=store.max_file_bytes,
+        disk_free_bytes=free,
+        disk_total_bytes=total,
+    )
+
+
 # Declared before /{slug}, which would otherwise take "browse" for a video's slug.
 @admin_router.get("/browse", response_model=ProjectPage)
 async def browse_videos(
     user: ContentReader,
     session: Session,
     category: CategoryFilter | None = None,
+    shelf: ShelfFilter | None = None,
+    series: Annotated[str | None, Query(min_length=1, max_length=40)] = None,
+    topic: Annotated[str | None, Query(min_length=1, max_length=40)] = None,
     state: BrowseState | None = None,
     q: Annotated[str | None, Query(max_length=service.BROWSE_QUERY_MAX)] = None,
     page: Annotated[int, Query(ge=1)] = 1,
     limit: Annotated[int, Query(ge=1, le=service.BROWSE_PAGE_LIMIT)] = service.BROWSE_PAGE_SIZE,
 ) -> ProjectPage:
     """One page of the review tab's catalog (tutorials and dramas, not Shorts), with the
-    counts behind its category and state filters (docs/videos/HANDS-OFF.md §影片分類).
-    ``category=none`` is the videos nobody filed yet; ``state`` here is not a Short's."""
+    counts behind its filters (docs/videos/HANDS-OFF.md §影片分類). ``shelf`` is one of the two
+    explainer shows or a category without them, ``series`` and ``topic`` narrow it (``none`` for
+    the videos without one; migration 0147); ``category`` is the older filter, read as the shelf
+    of the same name when no shelf is given. ``state`` here is not a Short's."""
     _ = user
+    # Videos from before migration 0147 are filed under their show on the first look (shelf.py).
+    await shelf_rules.heal(session)
     runtime = await load_runtime_settings(session)
     return await service.browse_projects(
         session,
         category=category,
+        shelf_code=shelf,
+        series=series,
+        topic=topic,
         state=state,
         q=q,
         page=page,

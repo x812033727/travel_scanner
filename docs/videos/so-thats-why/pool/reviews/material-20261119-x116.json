@@ -1,0 +1,435 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-19",
+  "baselines": {
+    "so_thats_why": "2026-11-19-pool-7102",
+    "curio": "2026-11-19-curio-1796"
+  },
+  "method": "非作者逐卡重開指定來源，閱讀原文與標示段落，再以題名、機制、產品／制度等中英日語詞比對兩池的原題、未收紀錄與題案，判斷新問答是否改變了所解釋的事。段落素材與八分鐘長題分別審視。",
+  "segment_reviews": [
+    {
+      "id": "K116-0001",
+      "decision": "screened",
+      "source_ids": [
+        "X116-S01",
+        "X116-S02"
+      ],
+      "checked": "日本專利 JP2001301862A 實施例與發明效果，兩片內膜退出後海苔接觸米飯；駐新加坡日本大使館 JCC 的 1970 年代包裝段補足乾脆與分離的關係。",
+      "dedup_and_scope": "奇聞 N2302 是節分惠方卷與習俗。此處只講有中央撕帶、兩片內膜的包裝。"
+    },
+    {
+      "id": "K116-0002",
+      "decision": "screened",
+      "source_ids": [
+        "X116-S03"
+      ],
+      "checked": "Tetra Pak 美國站無菌包裝 FAQ 比較 chilled 與 aseptic 的段落及紙板、聚乙烯、鋁箔的逐層說明。",
+      "dedup_and_scope": "原來如此 D2230 問充填時再污染；K108-0113 問牛奶紙盒的觸覺缺口。這張說明含鋁紙盒避光、阻氧的分層作用，未把所有紙盒都說成含鋁。"
+    },
+    {
+      "id": "K116-0003",
+      "decision": "screened",
+      "source_ids": [
+        "X116-S04"
+      ],
+      "checked": "東洋製罐碳酸飲料耐壓 PET 產品說明，POINT 1 ボトル底部形状明列五腳的耐內壓、自立兩項功能。",
+      "dedup_and_scope": "G730、K108-0601 問瓶底樹脂識別碼；新問五腳的形狀與受力，限該類瓶型。"
+    },
+    {
+      "id": "K116-0004",
+      "decision": "screened",
+      "source_ids": [
+        "X116-S05",
+        "X116-S06"
+      ],
+      "checked": "東洋製罐蓋的製程說明；JP2012035851A 日文背景技術段，鉚釘附近作支點，鼻端壓下開口片，刻痕始末兩端留距。",
+      "dedup_and_scope": "K113-0516 提到拉環留在罐上對連身瓶蓋的啟發，未解釋往上掀拉環卻把開口片往下壓。"
+    },
+    {
+      "id": "K116-0005",
+      "decision": "screened",
+      "source_ids": [
+        "X116-S07"
+      ],
+      "checked": "KOKUYO 12312 的 Features 與 Press Type 系列相互核對：無穿孔壓接，用筆蓋等硬物磨壓可拆開。",
+      "dedup_and_scope": "雙池沒有壓接式訂紙的既收問答。沒有補寫原廠未說明的紙纖維鍵結機理，也未混入切舌式設計。"
+    },
+    {
+      "id": "K116-0006",
+      "decision": "screened",
+      "source_ids": [
+        "X116-S08"
+      ],
+      "checked": "uni Singapore，Automatic revolving pencil lead innovation 一節，按壓、提起讓齒輪微幅旋轉。",
+      "dedup_and_scope": "K113-0202、K113-0204 與 LEG-S87 問筆芯成分、硬度；這支筆讓筆芯循環轉向，改變磨耗位置。"
+    },
+    {
+      "id": "K116-0007",
+      "decision": "screened",
+      "source_ids": [
+        "X116-S09",
+        "X116-S10"
+      ],
+      "checked": "Tombow c109 材料頁三層；日文 c113 收捲機構首段，供帶輪以齒輪帶動收帶輪捲回轉印後的底帶。",
+      "dedup_and_scope": "兩池沒有查到同樣的修正帶轉印問題。材料及機構兩頁屬同一原廠，不算獨立研究。"
+    },
+    {
+      "id": "K116-0008",
+      "decision": "screened",
+      "source_ids": [
+        "X116-S11"
+      ],
+      "checked": "PLUS 開發記事的直刃比較、約 30 度、對數螺線應用段。只以廠商示範的弧刃型解釋接觸點的局部交角。",
+      "dedup_and_scope": "P49-NA013 拒絕只換紙、布、塑膠；新題比較刃形能否在交點移動時維持夾角。"
+    },
+    {
+      "id": "K116-0009",
+      "decision": "screened",
+      "source_ids": [
+        "X116-S12",
+        "X116-S13"
+      ],
+      "checked": "大臺北公車「票價與繳費方式」首段說跨分段點／緩衝區加收一段；臺北市交通局 2019 年 6 月 20 日新聞稿首段說明 7 月 1 日起上下車都刷卡。",
+      "dedup_and_scope": "K105-0113 問票證離線交易；LEG-A68 問感應供電。這題只談分段收費市區路線，沒有把兩次感應當兩段票。"
+    },
+    {
+      "id": "K116-0010",
+      "decision": "screened",
+      "source_ids": [
+        "X116-S14"
+      ],
+      "checked": "中央氣象署數位科普網「傾斗式雨量儀」及下一節誤差：每翻一次送一脈衝，兩斗輪流承雨。",
+      "dedup_and_scope": "奇聞 N1501 問朝鮮測雨器發明的史料歸屬；這題把標稱雨量與翻斗計數連起來。計得的是儀器的累積讀值。"
+    }
+  ],
+  "rejected_suggestions_checked": {
+    "X116-NA001": "單獨拿進氣通道和單口瓶競爭進氣做比較，仍會大幅重講 K115-0003 的氣液共用瓶口。本批先留下裝置與答案更獨立的題。",
+    "X116-NA002": "材質換了，兩刃交角如何維持的問題相同。併在 K116-0008，承接 P49-NA013 已記錄的材料去重。",
+    "X116-NA003": "K108-0116、K108-0117 已涵蓋洗髮用品瓶身的觸覺區分，加另一個瓶身照片不再收。"
+  },
+  "scope": "十張日常素材卡分開收錄。來源頁數、卡片數不視作十組成題。",
+  "themes": {
+    "G758": {
+      "title": "0403 花蓮地震，臺北市最大震度 5 弱，為什麼兩次手機警報都跳過臺北？",
+      "researcher": "why_photo",
+      "reviewer": "why_inventory",
+      "verdict": "ready",
+      "fact_count": 12.5,
+      "author_fact_count": 14.25,
+      "est_minutes": 9.4,
+      "method": "逐卡重開 15 份原文，以每研究網最多 2 條、每條 0.75 分鐘估算。臺灣中央機關的事件、政策及國震中心的通報實測合計 2；臺北市與北捷業務紀錄合計 2。新北校方自述、乘客的第一手訪問與查核者自己核對的畫面各依原始證據計。三篇學術研究核對署名並以 OpenAlex 的已辨識作者兩兩查共同著作，三組查詢均無索引交集。",
+      "networks": {
+        "NET_TW_CENTRAL": [
+          "Q116-S01",
+          "Q116-S02",
+          "Q116-S03",
+          "Q116-S04",
+          "Q116-S05",
+          "Q116-S14"
+        ],
+        "NET_WENHU_PASSENGER": [
+          "Q116-S09"
+        ],
+        "NET_ZHENG_RUPTURE": [
+          "Q116-S07"
+        ],
+        "NET_TW_PALERT": [
+          "Q116-S06"
+        ],
+        "NET_TAIPEI_MUNICIPAL": [
+          "Q116-S08",
+          "Q116-S11"
+        ],
+        "NET_LUZHOU_SCHOOL": [
+          "Q116-S10"
+        ],
+        "NET_JMA": [
+          "Q116-S12"
+        ],
+        "NET_MINSON_USGS": [
+          "Q116-S13"
+        ],
+        "NET_TFC_VIDEO": [
+          "Q116-S15"
+        ]
+      },
+      "network_weights": {
+        "NET_TW_CENTRAL": 2.0,
+        "NET_WENHU_PASSENGER": 0.75,
+        "NET_ZHENG_RUPTURE": 1.5,
+        "NET_TW_PALERT": 1.75,
+        "NET_TAIPEI_MUNICIPAL": 2.0,
+        "NET_LUZHOU_SCHOOL": 0.75,
+        "NET_JMA": 1.75,
+        "NET_MINSON_USGS": 1.5,
+        "NET_TFC_VIDEO": 0.5
+      },
+      "card_verdicts": [
+        {
+          "id": "K116-0201",
+          "source_ids": [
+            "Q116-S01",
+            "Q116-S02"
+          ],
+          "decision": "screened",
+          "network": "NET_TW_CENTRAL",
+          "author_weight": 0.25,
+          "review_weight": 0.25,
+          "checked": "氣象署編號 019 現存觀測表的「臺北市地區最大震度」列。臺北市站 5 弱、木柵 4、陽明山 3，市內各站已有差異。兩張圖的發布名單對當日說明第 1 頁。"
+        },
+        {
+          "id": "K116-0202",
+          "source_ids": [
+            "Q116-S09"
+          ],
+          "decision": "screened",
+          "network": "NET_WENHU_PASSENGER",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "中央社當日採訪文湖線乘客段，受訪者描述行進中沒什麼感覺、停車聽廣播才知道地震。訪問沒有她的手機時間或收件狀態。"
+        },
+        {
+          "id": "K116-0203",
+          "source_ids": [
+            "Q116-S02"
+          ],
+          "decision": "screened",
+          "network": "NET_TW_CENTRAL",
+          "author_weight": 0.5,
+          "review_weight": 0.5,
+          "checked": "氣象署 4 月 3 日說明第 1 頁的兩次發布時刻及縣市名單。07:58:18 第一批四縣，07:58:24 再向八縣市發布，當時須估規模至少 5 且當地估震度至少 4，兩次均無臺北市。"
+        },
+        {
+          "id": "K116-0204",
+          "source_ids": [
+            "Q116-S03",
+            "Q116-S02",
+            "Q116-S01",
+            "Q116-S05"
+          ],
+          "decision": "screened",
+          "network": "NET_TW_CENTRAL",
+          "author_weight": 0.25,
+          "review_weight": 0.25,
+          "checked": "氣象署當日說明第 1 頁列前兩次估值 6.2、6.8。災防科技中心事件彙整及當日說明採 7.2。交通年鑑「地震測報」記載人工定位後修正為 7.1，現存編號 019 與修訂值一致。"
+        },
+        {
+          "id": "K116-0205",
+          "source_ids": [
+            "Q116-S07",
+            "Q116-S02"
+          ],
+          "decision": "screened",
+          "network": "NET_ZHENG_RUPTURE",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "Zheng 等人的圖 2、3 及震源時間函數。偏好模型的第一個釋放率峰約第 12 秒，第二峰約第 26 秒，總歷時約 48 秒。對照氣象署發震後約 8 秒第一批發布，模型數字只作事後重建。"
+        },
+        {
+          "id": "K116-0206",
+          "source_ids": [
+            "Q116-S07"
+          ],
+          "decision": "screened",
+          "network": "NET_ZHENG_RUPTURE",
+          "author_weight": 0.75,
+          "review_weight": 0.5,
+          "checked": "同文 Listric fault geometry 與補充圖 S10 至 S12，比較近場地表形變和不同方位的遠震 P 波對傾角的約束。這是模型選擇的一個例子，對當日發送決策只有間接解釋力。"
+        },
+        {
+          "id": "K116-0207",
+          "source_ids": [
+            "Q116-S06"
+          ],
+          "decision": "screened",
+          "network": "NET_TW_PALERT",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "Lin、Wu 的 P-Alert 回放圖 6。三種指標約第 8 秒各估 6.9、6.3、6.8，約第 35 秒為 7.2、7.3、7.1。這組回放另有自己的資料與估算方式。"
+        },
+        {
+          "id": "K116-0208",
+          "source_ids": [
+            "Q116-S06"
+          ],
+          "decision": "screened",
+          "network": "NET_TW_PALERT",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "同文圖 7 固定估算方式比較南、北測站子集，南側估值較低。這次地震的一個取樣對照，與前卡共用同一研究。"
+        },
+        {
+          "id": "K116-0209",
+          "source_ids": [
+            "Q116-S08"
+          ],
+          "decision": "screened",
+          "network": "NET_TAIPEI_MUNICIPAL",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "臺北捷運當日營運說明「各路線停車」及量測判讀段。行控選多處震度的眾數，當日眾數 4 級並啟動巡檢。行控有自己取得的量測及處置紀錄。"
+        },
+        {
+          "id": "K116-0210",
+          "source_ids": [
+            "Q116-S04"
+          ],
+          "decision": "screened",
+          "network": "NET_TW_CENTRAL",
+          "author_weight": 0.25,
+          "review_weight": 0.25,
+          "checked": "國震中心事件報告第 24 頁「校園地震預警通報」表與時間線，分列氣象署發出 07:58:24、國震收到 07:58:28.058 及表中 CWA 欄 07:58:28.084。這些時刻僅對應此測試管道。"
+        },
+        {
+          "id": "K116-0211",
+          "source_ids": [
+            "Q116-S10"
+          ],
+          "decision": "screened",
+          "network": "NET_LUZHOU_SCHOOL",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "新北市教育局轉錄蘆洲國中校方記錄及學生札記。第一次廣播指示就地掩護，搖晃趨緩後再次廣播疏散，有兩次校內動作可核，未載第一聲的來源與秒數。"
+        },
+        {
+          "id": "K116-0212",
+          "source_ids": [
+            "Q116-S02"
+          ],
+          "decision": "screened",
+          "network": "NET_TW_CENTRAL",
+          "author_weight": 0.25,
+          "review_weight": 0.25,
+          "checked": "氣象署 4 月 3 日說明第 1 頁「電視」及「網路」段。電視插播以估規模 5 且任一縣市估震度 3 為門檻，機構網路為估規模 4.5 且任一縣市估震度 3；手機按當地估震度 4。均為當日機制。"
+        },
+        {
+          "id": "K116-0213",
+          "source_ids": [
+            "Q116-S12"
+          ],
+          "decision": "screened",
+          "network": "NET_JMA",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "日本氣象廳 2024 年 4 月資料第 52、56 頁。同一場地震日方初次檢知 08:58:33.9、第一報提供 08:59:56.7（日本時間），相減 82.8 秒；沒有以當地開始搖晃作為起算點。"
+        },
+        {
+          "id": "K116-0214",
+          "source_ids": [
+            "Q116-S12"
+          ],
+          "decision": "screened",
+          "network": "NET_JMA",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "同一份日本氣象廳資料第 52、56 頁，日方對與那國地方預估約 5 弱，事後該國及與那國觀測最大 4。此為同一事件、同一國內的短對照，兩地震度制度各自解讀。"
+        },
+        {
+          "id": "K116-0215",
+          "source_ids": [
+            "Q116-S13"
+          ],
+          "decision": "screened",
+          "network": "NET_MINSON_USGS",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "Minson 等人完美知道震源的模型與結果段。即使先給定最終規模和震源位置，個別地點的實際地動仍有剩餘變異。這是理想輸入的假想測試。"
+        },
+        {
+          "id": "K116-0216",
+          "source_ids": [
+            "Q116-S13"
+          ],
+          "decision": "screened",
+          "network": "NET_MINSON_USGS",
+          "author_weight": 1,
+          "review_weight": 0.75,
+          "checked": "同文圖 7d 與內文的兩個分母。50% 機率門檻漏掉 72% 達標事件，已發警報中 31% 未達標；10% 門檻的相應值為 27%、70%。僅解釋調整門檻的代價，未用作臺灣實績。"
+        },
+        {
+          "id": "K116-0217",
+          "source_ids": [
+            "Q116-S14"
+          ],
+          "decision": "screened",
+          "network": "NET_TW_CENTRAL",
+          "author_weight": 0.5,
+          "review_weight": 0.5,
+          "checked": "氣象署 2024 年 8 月 30 日公布、9 月 1 日實施的並列條件，保留規模達 5 且當地估震度達 4，增設規模達 6.5 且當地估震度達 3。未提供四月各地的逐機回放。"
+        },
+        {
+          "id": "K116-0218",
+          "source_ids": [
+            "Q116-S15"
+          ],
+          "decision": "screened",
+          "network": "NET_TFC_VIDEO",
+          "author_weight": 0.5,
+          "review_weight": 0.5,
+          "checked": "台灣事實查核中心「查核爭點」中福建終端畫面及其時鐘比對。畫面顯示 07:59，主震已於 07:58 發生。查核有自己核對的畫面，但未給出臺灣手機收件或當地到震時間。"
+        },
+        {
+          "id": "K116-0219",
+          "source_ids": [
+            "Q116-S11"
+          ],
+          "decision": "screened",
+          "network": "NET_TAIPEI_MUNICIPAL",
+          "author_weight": 1,
+          "review_weight": 1,
+          "checked": "臺北市應變處置檢討報告第 3 頁「應變中心開設情形」。08:01 依速報 4 級強化三級開設，08:13 依正式報告 5 弱升二級；兩筆都是地方應變決策。"
+        }
+      ],
+      "chapter_budgets": [
+        {
+          "seconds": 65,
+          "min_seconds": 30,
+          "max_seconds": 90
+        },
+        {
+          "seconds": 90,
+          "min_seconds": 30,
+          "max_seconds": 90
+        },
+        {
+          "seconds": 120,
+          "min_seconds": 60,
+          "max_seconds": 180
+        },
+        {
+          "seconds": 110,
+          "min_seconds": 75,
+          "max_seconds": 225
+        },
+        {
+          "seconds": 55,
+          "min_seconds": 45,
+          "max_seconds": 135
+        },
+        {
+          "seconds": 70,
+          "min_seconds": 45,
+          "max_seconds": 135
+        }
+      ],
+      "turns": [
+        "約八秒就必須決定第一批發給誰；事後重建的偏好斷層模型，最大地震矩釋放率約在第十二秒才出現。",
+        "臺北不在兩批手機名單，卻有捷運、校園與市府留下不同紀錄；各機構收到、處理及現場聽到的時刻各有自己的根據。"
+      ],
+      "nearby": [
+        "原來如此 LEG-S28 及未收的 P31-NA006 均問 P、S 波到時差與近震盲區。本案回溯 0403 臺北未列兩次發送的預估與發布門檻，沒有新增快慢波通則卡。",
+        "原來如此 N121 談規模與地方震度的通則，N285 談場址差異，O3089 解釋破裂方向性。此處依測站表、研究回放與當日發送名單查一場事件的決策。",
+        "奇聞 N6967 是 1906 舊金山，N6603 是里斯本。檢索兩池原題、退件與題案，未見相同的 0403 臺北發送個案。"
+      ],
+      "changes": [
+        "將 0202、0206、0208、0211、0214、0215、0216 各減 0.25。涉及沒有手機時刻的個人經歷、間接的模型約束、單場研究的資料子集、沒有指明觸發源的校園目擊、同網的日本結果，以及兩個外國模型推論。"
+      ],
+      "unverified": [
+        "未取得四月逐機收件、居民開始搖晃或蘆洲國中第一聲的精確時間。",
+        "P-Alert 事後回放、海外研究情境及九月公告，均不能給出假設當時採新門檻會在臺北哪支手機響。",
+        "六章 510 秒為題案預算，尚無正式旁白量時。"
+      ],
+      "note": "作者 14.25 條，獨立複核 12.50 條，超過 11.4 條素材門檻 1.10 條。19 卡各進入一章，六章共 8 分 30 秒。僅就素材量和段落預算通過，長題的需求、觀眾評分與製作另計。"
+    }
+  }
+}

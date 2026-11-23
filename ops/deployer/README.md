@@ -1,5 +1,12 @@
 # Mokaair deployment agent
 
+> **Production uses `DEPLOYMENT_EXECUTOR=host_timer`, not this agent.** With that setting the
+> admin button queues a `deployment_runs` row that the root auto deploy timer (`ops/autodeploy`,
+> "The admin button" in its README) claims and runs through `/root/deploy-travel-scanner.sh`;
+> only the owner role may press it, and none of the agent settings below are needed. This agent
+> stays as `DEPLOYMENT_EXECUTOR=agent` (the default in code), which production cannot use until
+> the separate release layout below is reconciled with the script's.
+
 The deployment button never mounts the Docker socket or a Git checkout into the API container.
 This host-only agent owns those permissions and exposes only fixed deployment, verified-backup,
 and `ANALYZE` operations through a Unix socket. It does not accept SQL, repository locations,

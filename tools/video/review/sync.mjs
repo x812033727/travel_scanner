@@ -27,7 +27,7 @@ import { atomicWrite, docDir, isInside, readJson, resolveWorkBase, resolveWorkdi
 import { chosenLocales, dubRole, dubsForUpload, LANGUAGES_FILE, metadataLocalesOf, readLanguages, uncheckedDubRole } from "../core/stages.mjs";
 import { ARTIFACTS, keyframeProblems, loadProject, pipelineStatus, undrawnCharacters } from "../core/state.mjs";
 import { TARGET_LOCALES, NARRATION_LOCALE, narrationLocale, VIDEO_CATEGORIES } from "../core/schema.mjs";
-import { isDailyBrief } from "../core/narrative.mjs";
+import { isDailyBrief, openingGateProblems } from "../core/narrative.mjs";
 import { narrativeHash, scriptScenes, writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckMatches } from "../core/script-check.mjs";
 import { estimateTimeline, formatClock, speechHash } from "../core/timeline.mjs";
@@ -639,6 +639,10 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     const scenes = scriptScenes(doc);
     const lines = scenes.reduce((sum, scene) => sum + scene.lines.length, 0);
     const timeline = estimateTimeline(doc);
+    // The heimao-style series' opening is held here, before the owner and before paid audio
+    // and pictures (owner, 2026-11-19; core/narrative.mjs openingGateProblems).
+    const opening = openingGateProblems(doc, timeline, { series: project.series });
+    if (opening.length) throw new UsageError(`the script's opening is not ready for review: ${opening.map((problem) => problem.message).join("; ")}`);
     const minutes = Number((timeline.total_frames / timeline.fps / 60).toFixed(1));
     return {
       gate,

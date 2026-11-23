@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" lang="ko" xml:lang="ko" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans CJK KR','Noto Sans KR','Noto Sans','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif">
+  <title id="title">서울 5개 숙소 지역과 공항 교통 개념도 / Seoul areas to stay and airport links</title>
+  <desc id="desc">간략화한 서울 개념도예요. 왼쪽에 인천국제공항이 있고, 오른쪽에는 서쪽에서 동쪽 순으로 홍대·연남동, 종로·광화문, 명동, 동대문이, 한강 남쪽에는 강남이 배치되어 있어요. 실선은 공항철도 AREX예요. 일반열차는 김포공항을 거쳐 홍대입구역과 서울역으로 운행하며, 교통카드 기준 T1에서 홍대입구 4,650원, T2에서 홍대입구 5,250원, T1에서 서울역 4,750원이에요. 직통열차는 무정차로 서울역까지 13,000원이며 T1에서 43분, T2에서 51분 걸려요. 점선은 성인 17,000원 공항버스예요. 6001번과 6015번은 서울역을 거쳐 명동(롯데호텔)과 동대문(베이튼호텔)으로, 6002번은 홍대입구·광화문·종로·동대문·청량리로, 6703번 KAL 리무진 공항버스는 강남과 COEX 일대로 가요(6703번 요금은 공식 홈페이지 미표기). 작은 점선은 서울역 지하철 환승 경로로, 4호선 2정거장이면 명동, 1호선이면 종각에 닿아요. 각 지역 카드에는 1·2·3·4·5·9호선과 신분당선 정보 및 심야버스 소요 시간을 함께 표시했어요. N6002번은 홍대 약 45분·광화문 약 60분, N6701번은 서울역 약 60분·을지로입구 약 65분·동대문디자인플라자 약 70분, N6000번은 강남고속버스터미널 약 70분, N6703번은 COEX 약 65분이에요.</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#D97A2B"/></marker>
+  </defs>
+  <text x="60" y="64" font-size="36" font-weight="700" fill="#102A2B">서울 숙소 어디로 잡을까? 5개 지역 위치와 공항 교통</text>
+  <text x="60" y="98" font-size="20" font-weight="700" fill="#5C6B6B">Where to stay in Seoul · 위치·노선 개념도(실제 축척 아님) · 성인 편도 요금, 2026년 9월 확인</text>
+
+  <!-- Han river -->
+  <path d="M 0 662 C 300 642, 600 702, 900 672 C 1150 647, 1350 702, 1600 682 L 1600 722 C 1350 742, 1150 687, 900 712 C 600 742, 300 682, 0 702 Z" fill="#BFD9E3" opacity="0.82"/>
+  <text x="580" y="706" font-size="18" font-weight="700" fill="#3F6C7A">한강 Han River</text>
+
+  <!-- bus 6002 over the top -->
+  <path d="M 160 486 C 215 126, 695 106, 884 222" fill="none" stroke="#D97A2B" stroke-width="5" stroke-dasharray="14 10" marker-end="url(#arrowOrange)"/>
+  <path d="M 1223 224 L 1254 276" fill="none" stroke="#D97A2B" stroke-width="5" stroke-dasharray="14 10" marker-end="url(#arrowOrange)"/>
+  <text x="340" y="138" font-size="15" font-weight="700" fill="#9A4F12">6002 공항버스 17,000원 → 홍대입구 → 광화문·종로 → 동대문·청량리</text>
+
+  <!-- bus 6001/6015 to Myeongdong -->
+  <path d="M 160 488 C 345 298, 695 270, 940 428" fill="none" stroke="#D97A2B" stroke-width="5" stroke-dasharray="14 10" marker-end="url(#arrowOrange)"/>
+  <text x="340" y="302" font-size="15" font-weight="700" fill="#9A4F12">6001/6015 공항버스(공항리무진) 17,000원 → 서울역·명동(롯데호텔)·동대문</text>
+
+  <!-- AREX all-stop -->
+  <path d="M 160 500 L 390 500 L 605 500 L 900 560" fill="none" stroke="#0D6B68" stroke-width="6"/>
+  <text x="190" y="484" font-size="15" font-weight="700" fill="#0D6B68">AREX 일반열차 (T1→홍대 4,650원)</text>
+
+  <!-- AREX express -->
+  <path d="M 160 516 C 390 628, 690 628, 900 560" fill="none" stroke="#2F6F9F" stroke-width="8"/>
+  <text x="530" y="638" font-size="15" font-weight="700" fill="#2F6F9F" text-anchor="middle">AREX 직통열차: 무정차 서울역 13,000원 (T1 43분 / T2 51분)</text>
+
+  <!-- bus 6703 to Gangnam -->
+  <path d="M 160 520 C 175 840, 680 830, 942 794" fill="none" stroke="#D97A2B" stroke-width="5" stroke-dasharray="14 10" marker-end="url(#arrowOrange)"/>
+  <text x="270" y="844" font-size="15" font-weight="700" fill="#9A4F12">6703 KAL 리무진 공항버스 → 강남·COEX 일대 (공식 홈페이지 요금 미표기)</text>
+
+  <!-- subway links -->
+  <g stroke="#5C6B6B" stroke-width="3" stroke-dasharray="3 7" fill="none">
+    <path d="M 900 560 L 985 514"/>
+    <path d="M 900 560 L 905 284"/>
+    <path d="M 1250 445 L 1310 374"/>
+  </g>
+  <text x="954" y="550" font-size="15" fill="#5C6B6B">4호선 2정거장</text>
+  <text x="916" y="336" font-size="15" fill="#5C6B6B" text-anchor="start">1호선 → 종각</text>
+  <text x="1286" y="424" font-size="15" fill="#5C6B6B">4호선</text>
+
+  <!-- nodes -->
+  <circle cx="160" cy="500" r="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/>
+  <text x="136" y="493" font-size="18" font-weight="700" fill="#102A2B" text-anchor="end">인천국제공항</text>
+  <text x="136" y="517" font-size="15" font-weight="700" fill="#5C6B6B" text-anchor="end">ICN (T1/T2)</text>
+
+  <circle cx="390" cy="500" r="9" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="390" y="530" font-size="15" fill="#5C6B6B" text-anchor="middle">김포공항</text>
+
+  <circle cx="605" cy="500" r="10" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="605" y="530" font-size="15" fill="#5C6B6B" text-anchor="middle">홍대입구역</text>
+
+  <circle cx="900" cy="560" r="12" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/>
+  <text x="918" y="590" font-size="17" font-weight="700" fill="#102A2B">서울역 Seoul Station</text>
+
+  <!-- Jongno -->
+  <rect x="890" y="160" width="330" height="124" rx="20" fill="#FFFFFF" stroke="#7E57C2" stroke-width="5"/>
+  <text x="1055" y="192" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">종로·광화문</text>
+  <text x="1055" y="218" font-size="15" fill="#5C6B6B" text-anchor="middle">Jongno · 1·3·5호선</text>
+  <text x="1055" y="242" font-size="15" fill="#5C6B6B" text-anchor="middle">경복궁·북촌·인사동·청계천</text>
+  <text x="1055" y="266" font-size="15" fill="#5C6B6B" text-anchor="middle">심야 N6002 → 광화문 약 60분</text>
+
+  <!-- Dongdaemun -->
+  <rect x="1260" y="246" width="310" height="128" rx="20" fill="#FFFFFF" stroke="#B8442D" stroke-width="5"/>
+  <text x="1415" y="278" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">동대문</text>
+  <text x="1415" y="304" font-size="15" fill="#5C6B6B" text-anchor="middle">Dongdaemun · 2·4·5호선</text>
+  <text x="1415" y="328" font-size="15" fill="#5C6B6B" text-anchor="middle">DDP·도매상가·광장시장</text>
+  <text x="1415" y="352" font-size="15" fill="#5C6B6B" text-anchor="middle">6001 베이튼호텔 / 심야 N6701 약 70분</text>
+
+  <!-- Hongdae -->
+  <rect x="465" y="362" width="280" height="118" rx="20" fill="#FFFFFF" stroke="#D97A2B" stroke-width="5"/>
+  <text x="605" y="393" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">홍대·연남동</text>
+  <text x="605" y="418" font-size="15" fill="#5C6B6B" text-anchor="middle">Hongdae · 2호선·AREX</text>
+  <text x="605" y="442" font-size="15" fill="#5C6B6B" text-anchor="middle">T2→홍대 5,250원 / 6002 정차</text>
+  <text x="605" y="466" font-size="15" fill="#5C6B6B" text-anchor="middle">심야 N6002 약 45분</text>
+
+  <!-- Myeongdong -->
+  <rect x="946" y="388" width="304" height="126" rx="20" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="5"/>
+  <text x="1098" y="420" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">명동</text>
+  <text x="1098" y="445" font-size="15" fill="#5C6B6B" text-anchor="middle">Myeongdong · 4호선</text>
+  <text x="1098" y="469" font-size="15" fill="#5C6B6B" text-anchor="middle">남대문시장·남산·청계천</text>
+  <text x="1098" y="493" font-size="15" fill="#5C6B6B" text-anchor="middle">심야 N6701 · 서울역 60분 / 을지로 65분</text>
+
+  <!-- Gangnam -->
+  <rect x="950" y="736" width="510" height="120" rx="20" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="5"/>
+  <text x="1205" y="768" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">강남 Gangnam</text>
+  <text x="1205" y="793" font-size="15" fill="#5C6B6B" text-anchor="middle">2·9호선·신분당선 · COEX·잠실 롯데월드타워</text>
+  <text x="1205" y="817" font-size="15" fill="#5C6B6B" text-anchor="middle">철도 직통 없음(서울역 환승) · 주간 6703 버스 COEX행</text>
+  <text x="1205" y="841" font-size="15" fill="#5C6B6B" text-anchor="middle">심야 N6000 고속버스터미널 약 70분 · N6703 COEX 약 65분</text>
+
+  <!-- legend -->
+  <g font-size="15" fill="#102A2B">
+    <line x1="60" y1="877" x2="110" y2="877" stroke="#0D6B68" stroke-width="6"/>
+    <text x="120" y="882" font-size="15">AREX 일반열차</text>
+    <line x1="265" y1="877" x2="315" y2="877" stroke="#2F6F9F" stroke-width="8"/>
+    <text x="325" y="882" font-size="15">AREX 직통열차</text>
+    <line x1="470" y1="877" x2="526" y2="877" stroke="#D97A2B" stroke-width="5" stroke-dasharray="12 8"/>
+    <text x="536" y="882" font-size="15">공항버스 (점선)</text>
+    <line x1="690" y1="877" x2="740" y2="877" stroke="#5C6B6B" stroke-width="3" stroke-dasharray="3 7"/>
+    <text x="750" y="882" font-size="15">서울역 지하철 환승</text>
+    <text x="1540" y="882" fill="#5C6B6B" font-size="15" text-anchor="end">© Mokaair 제작 2026</text>
+  </g>
+</svg>

@@ -17,9 +17,10 @@ describe("/sitemap.xml, the index", () => {
     expect(dynamic).toBe("force-dynamic");
     vi.mocked(guideSitemapSummary).mockResolvedValue({
       counts: [
-        { kind: "intel", locale: "zh-TW", count: 2 },
+        { kind: "intel", locale: "zh-TW", count: 2, latest_modified_at: "2026-11-18T10:00:00Z" },
+        { kind: "howto", locale: "zh-TW", count: 1, latest_modified_at: "2026-11-19T12:30:00Z" },
         { kind: "howto", locale: "en", count: 1 },
-        { kind: "life", locale: "zh-TW", count: 40 },
+        { kind: "life", locale: "zh-TW", count: 40, latest_modified_at: "2026-11-20T04:15:00Z" },
         { kind: "life", locale: "ko", count: 0 },
       ],
       available: true,
@@ -35,6 +36,10 @@ describe("/sitemap.xml, the index", () => {
       "/sitemaps/sitemap/static.xml", "/sitemaps/sitemap/travel-en.xml",
       "/sitemaps/sitemap/travel-zh-TW.xml", "/sitemaps/sitemap/life-zh-TW.xml",
     ]);
+    expect(xml).toContain(`<loc>${siteUrl}/sitemaps/sitemap/static.xml</loc></sitemap>`);
+    expect(xml).toContain(`<loc>${siteUrl}/sitemaps/sitemap/travel-en.xml</loc></sitemap>`);
+    expect(xml).toContain(`<loc>${siteUrl}/sitemaps/sitemap/travel-zh-TW.xml</loc><lastmod>2026-11-19T12:30:00.000Z</lastmod></sitemap>`);
+    expect(xml).toContain(`<loc>${siteUrl}/sitemaps/sitemap/life-zh-TW.xml</loc><lastmod>2026-11-20T04:15:00.000Z</lastmod></sitemap>`);
     for (const loc of xml.matchAll(/<loc>([^<]+)<\/loc>/g)) expect(loc[1].startsWith(`${siteUrl}/`)).toBe(true);
   });
 

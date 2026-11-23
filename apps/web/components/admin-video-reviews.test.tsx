@@ -1556,7 +1556,7 @@ describe("AdminVideoReviews", () => {
     expect(downloads[1].getAttribute("href")).toBe(`/api/admin-video-files/upload-ready/${"c".repeat(64)}`);
   });
 
-  it("filters the catalog by category and state, searches it, and keeps the typed search across reloads", async () => {
+  it("filters the catalog by show and state, searches it, and keeps the typed search across reloads", async () => {
     const news = { ...summary, slug: "gemini-student", title: "Gemini 學生方案", pending: 0, category: "ai-news" };
     const unfiled = { ...summary, pending: 0 };
     const gone = { ...summary, slug: "old-tutorial", title: "舊教學", pending: 0, category: "tutorial", dropped_at: "2026-09-25T13:00:00Z" };
@@ -1567,7 +1567,7 @@ describe("AdminVideoReviews", () => {
       if (url.includes("/admin/videos/browse")) {
         urls.push(url);
         const query = new URL(url, "http://test").searchParams;
-        const matches = (item: Item, skip: string) => (skip === "category" || !query.get("category") || (item.category ?? "none") === query.get("category"))
+        const matches = (item: Item, skip: string) => (skip === "category" || !query.get("shelf") || (item.category ?? "none") === query.get("shelf"))
           && (skip === "state" || !query.get("state") || browseState(item) === query.get("state"))
           && (!query.get("q") || String(item.title).includes(query.get("q") ?? ""));
         const shown = items.filter((item) => matches(item, ""));
@@ -1585,19 +1585,23 @@ describe("AdminVideoReviews", () => {
     expect(screen.getByText("共 3 支")).toBeTruthy();
     expect(urls[0]).toContain("/admin/videos/browse?page=1&limit=30");
 
-    // The pills carry the server's counts; a category with none is not clickable.
-    const categories = screen.getByRole("group", { name: "分類" });
-    expect(within(categories).getByRole("button", { name: /^全部分類/ }).textContent).toBe("全部分類3");
+    // The pills carry the server's counts; a category with none is not clickable. This answer has no
+    // shelf facet (an API from before shows), so the categories count and the two shows are not offered.
+    const categories = screen.getByRole("group", { name: "節目" });
+    expect(within(categories).getByRole("button", { name: /^全部節目/ }).textContent).toBe("全部節目3");
+    expect(within(categories).queryByRole("button", { name: /^奇聞檔案局/ })).toBeNull();
     expect(within(categories).getByRole("button", { name: /^AI／科技時事/ }).textContent).toBe("AI／科技時事1");
     expect(within(categories).getByRole("button", { name: /^觀念解說/ })).toHaveProperty("disabled", true);
     fireEvent.click(within(categories).getByRole("button", { name: /^AI／科技時事/ }));
-    expect(window.location.search).toBe("?category=ai-news");
-    await waitFor(() => expect(urls.at(-1)).toContain("category=ai-news"));
+    expect(window.location.search).toBe("?shelf=ai-news");
+    await waitFor(() => expect(urls.at(-1)).toContain("shelf=ai-news"));
     await waitFor(() => expect(tableRows(screen.getByRole("table", { name: "全部影片" }))).toHaveLength(1));
     fireEvent.click(within(categories).getByRole("button", { name: /^未分類/ }));
-    expect(window.location.search).toBe("?category=none");
-    await waitFor(() => expect(urls.at(-1)).toContain("category=none"));
-    fireEvent.click(within(categories).getByRole("button", { name: /^全部分類/ }));
+    expect(window.location.search).toBe("?shelf=none");
+    await waitFor(() => expect(urls.at(-1)).toContain("shelf=none"));
+    expect(screen.queryByRole("group", { name: "系列" })).toBeNull();
+    expect(screen.queryByRole("group", { name: "分類" })).toBeNull();
+    fireEvent.click(within(categories).getByRole("button", { name: /^全部節目/ }));
     expect(window.location.search).toBe("");
 
     const states = screen.getByRole("group", { name: "狀態" });
@@ -1619,6 +1623,83 @@ describe("AdminVideoReviews", () => {
     fireEvent.change(screen.getByRole("searchbox", { name: "搜尋" }), { target: { value: "沒有這支" } });
     fireEvent.submit(box.closest("form") as HTMLFormElement);
     await screen.findByText("沒有符合條件的影片。");
+  });
+
+  it("files 奇聞檔案局 and 原來如此事務所 on their own, narrows a show by topic and the dramas by drama, and reads an old category link", async () => {
+    const curio = (code: string, topic: string) => ({ ...summary, slug: `curio-${code}`, title: `奇聞 ${code}`, pending: 0, category: "explainer", series_key: "curio", topic });
+    const drama = (series: string, number: number) => ({ ...summary, slug: `${series}-e00${number}`, title: `${series} ${number}`, pending: 0, category: "drama", series_key: series });
+    const items: Item[] = [
+      { ...curio("h01", "H-歷史懸案"), drive_folder_url: "https://drive.google.com/drive/folders/1AbCdEfGhIjKlMn", drive_final_url: "https://drive.google.com/file/d/9ZyXwVuTsRqPoNm/view" },
+      curio("h02", "H-歷史懸案"), curio("p01", "P-預言與末日"),
+      { ...summary, slug: "sothatswhy-p17", title: "壁虎的腳", pending: 0, category: "explainer", series_key: "sothatswhy", topic: "生物動物與植物" },
+      { ...summary, slug: "concept", title: "其他解說", pending: 0, category: "explainer" },
+      drama("tai-nainai", 1), drama("tai-nainai", 2), drama("zhong-tian-qu-qi", 1),
+    ];
+    const labels: Record<string, string> = { curio: "奇聞檔案局", sothatswhy: "原來如此事務所", "tai-nainai": "恁祖媽今年18", "zhong-tian-qu-qi": "種田娶妻打天下" };
+    const shelfOf = (item: Item) => (["curio", "sothatswhy"].includes(String(item.series_key)) ? String(item.series_key) : String(item.category ?? "none"));
+    const urls: string[] = [];
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/admin/videos/browse")) {
+        urls.push(url);
+        const query = new URL(url, "http://test").searchParams;
+        const want = (name: string, value: string) => !query.get(name) || value === query.get(name);
+        const matches = (item: Item, skip: string[]) => (skip.includes("shelf") || want("shelf", shelfOf(item)))
+          && (skip.includes("series") || want("series", String(item.series_key ?? "none")))
+          && (skip.includes("topic") || want("topic", String(item.topic ?? "none")));
+        const facet = (key: (item: Item) => string, pool: Item[], named = false) => [...new Set(pool.map(key))].map((code) => ({ code, count: pool.filter((item) => key(item) === code).length, ...(named ? { label: labels[code] ?? null } : {}) }));
+        const base = pageOf(items.filter((item) => matches(item, [])));
+        const picked = Boolean(query.get("shelf"));
+        const shelves = items.filter((item) => matches(item, ["shelf", "series", "topic"]));
+        const topics = facet((item) => String(item.topic ?? "none"), items.filter((item) => matches(item, ["topic"])));
+        return Promise.resolve(Response.json({
+          ...base,
+          facets: {
+            ...base.facets,
+            shelf: ["curio", "sothatswhy", ...VIDEO_CATEGORIES, "none"].map((code) => ({ code, count: shelves.filter((item) => shelfOf(item) === code).length })),
+            series: picked ? facet((item) => String(item.series_key ?? "none"), items.filter((item) => matches(item, ["series", "topic"])), true) : [],
+            topic: picked && topics.some((each) => each.code !== "none") ? topics : [],
+          },
+        }));
+      }
+      return Promise.resolve(Response.json(url.endsWith("/admin/videos?shorts=exclude") ? [] : { ...summary, reviews: [] }));
+    }));
+    window.history.replaceState(null, "", "/?category=explainer");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    // An old ?category= link is the shelf of the same name: 觀念解說 now holds the other explainers only.
+    await waitFor(() => expect(tableRows(screen.getByRole("table", { name: "全部影片" }))).toEqual([expect.stringContaining("其他解說")]));
+    expect(urls[0]).toContain("shelf=explainer");
+    const shows = screen.getByRole("group", { name: "節目" });
+    expect(within(shows).getByRole("button", { name: /^觀念解說（其他）/ }).getAttribute("aria-pressed")).toBe("true");
+    expect(within(shows).getByRole("button", { name: /^奇聞檔案局/ }).textContent).toBe("奇聞檔案局3");
+    expect(within(shows).getByRole("button", { name: /^原來如此事務所/ }).textContent).toBe("原來如此事務所1");
+    expect(within(shows).getByRole("button", { name: /^漫劇/ }).textContent).toBe("漫劇3");
+
+    // A show offers its topics, not a series row with itself as the one choice.
+    fireEvent.click(within(shows).getByRole("button", { name: /^奇聞檔案局/ }));
+    expect(window.location.search).toBe("?shelf=curio");
+    const topics = await screen.findByRole("group", { name: "分類" });
+    expect(screen.queryByRole("group", { name: "系列" })).toBeNull();
+    expect(within(topics).getByRole("button", { name: /^H-歷史懸案/ }).textContent).toBe("H-歷史懸案2");
+    fireEvent.click(within(topics).getByRole("button", { name: /^H-歷史懸案/ }));
+    expect(window.location.search).toBe(`?shelf=curio&topic=${encodeURIComponent("H-歷史懸案")}`);
+    await waitFor(() => expect(tableRows(screen.getByRole("table", { name: "全部影片" }))).toHaveLength(2));
+    expect(tableRows(screen.getByRole("table", { name: "全部影片" }))[0]).toContain("H-歷史懸案");
+    // A backed-up episode links its Drive folder and final cut from its row.
+    const linked = within(screen.getByRole("table", { name: "全部影片" })).getByRole("link", { name: "雲端資料夾" });
+    expect(linked.getAttribute("href")).toBe("https://drive.google.com/drive/folders/1AbCdEfGhIjKlMn");
+    expect(within(screen.getByRole("table", { name: "全部影片" })).getAllByRole("link", { name: "成片" })).toHaveLength(1);
+
+    // 漫劇 offers its dramas by name; picking a show again clears the topic and the drama.
+    fireEvent.click(within(screen.getByRole("group", { name: "節目" })).getByRole("button", { name: /^漫劇/ }));
+    expect(window.location.search).toBe("?shelf=drama");
+    const dramas = await screen.findByRole("group", { name: "系列" });
+    await waitFor(() => expect(screen.queryByRole("group", { name: "分類" })).toBeNull());
+    expect(within(dramas).getByRole("button", { name: /^恁祖媽今年18/ }).textContent).toBe("恁祖媽今年182");
+    fireEvent.click(within(dramas).getByRole("button", { name: /^種田娶妻打天下/ }));
+    expect(window.location.search).toBe("?shelf=drama&shelf_series=zhong-tian-qu-qi");
+    await waitFor(() => expect(urls.at(-1)).toContain("series=zhong-tian-qu-qi"));
+    await waitFor(() => expect(tableRows(screen.getByRole("table", { name: "全部影片" }))).toEqual([expect.stringContaining("zhong-tian-qu-qi 1")]));
   });
 
   it("pages through the catalog and falls back to the last page when the URL is past it", async () => {

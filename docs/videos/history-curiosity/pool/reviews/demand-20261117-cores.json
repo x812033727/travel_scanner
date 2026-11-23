@@ -1,0 +1,6148 @@
+{
+ "schema_version": 1,
+ "reviewed_on": "2026-11-17",
+ "method": {
+  "what": "擴充前的需求篩選：還沒進題案的入選單集題，先答四問，只替中兩題以上的補五項觀眾評分。",
+  "scope": "分類 G、P、U 且 editorial.role=episode_core、未列入任何題案的入選題，共 536 題。",
+  "questions": {
+   "east_asia": "台灣或東亞觀眾本來就認得",
+   "prophecy_ghost": "預言末日或鬼魂死後",
+   "ancient_alien": "古文明或外星",
+   "famous": "主角全世界叫得出名字"
+  },
+  "answered_by_reviewers": "east_asia、famous：五位獨立評審各讀一批題卡（分類、追問、開場一句），不讀 repo、不上網，拿不準答否；三題重複題 15 個答案全部一致。",
+  "derived_from_category": "prophecy_ghost（G、P 類為是）、ancient_alien（U 類為是）由分類推定，沒有逐題評；講古文明的預言題這類會漏算，個別題的需求分可能偏低一階。",
+  "formula": "demand = 1 + 2.25 × 答「是」的題數；有觀眾分的題 score = (五項平均 × 5 + demand) ÷ 6",
+  "basis": "docs/videos/channel-review-20261116/README.md",
+  "scored_cores": "另有 106 題是 2026-11-14 已有觀眾分、但不在上面那 536 題裡的單集題（各分類都有）。為了讓已評的題用同一把尺排名，由一位獨立評審只讀題卡答完四問，四問都是逐題答的，沒有用分類推定。",
+  "removed_unsourced": "2026-11-17：wave61–71 的題來源查無（票 2026-11-17-so-that-s-why-waves-89），已移出入選，這份紀錄裡屬於那幾批的題一併拿掉。 拿掉 64 筆。",
+  "removed_unsourced_58_60": "2026-11-17：wave58–60 的題來源查無（票 2026-11-17-so-that-s-why-waves-89），已移出入選，這份紀錄裡屬於那三批的 22 筆一併拿掉。",
+  "moved_w": "2026-11-17：商業與品牌類的 0 題改用品牌四問，答案移到 reviews/demand-20261117-w.json。"
+ },
+ "counts": {
+  "screened": 536,
+  "three_yes": 18,
+  "two_yes": 109,
+  "one_yes": 409,
+  "scored_cores_added": 106,
+  "total": 642
+ },
+ "candidates": [
+  {
+   "id": "N164",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "分類 U-外星太空與未知訊號；萬里長城人人認得"
+  },
+  {
+   "id": "N966",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "分類 P-預言與末日；首爾定都，地名人人認得"
+  },
+  {
+   "id": "N1101",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "分類 P-預言與末日；關東大地震台灣人普遍知道"
+  },
+  {
+   "id": "N2241",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "分類 G-靈異與超自然公案；菅原道真怨靈，學問之神"
+  },
+  {
+   "id": "N2482",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "分類 G-靈異與超自然公案；鍾馗家喻戶曉"
+  },
+  {
+   "id": "N2483",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "分類 G-靈異與超自然公案；搜神記課本讀過"
+  },
+  {
+   "id": "N2702",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "分類 P-預言與末日；秦始皇與亡秦者胡"
+  },
+  {
+   "id": "N3322",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "分類 P-預言與末日；康熙與湯若望的曆法官司"
+  },
+  {
+   "id": "N3463",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "分類 G-靈異與超自然公案；日本鬼話，羅生門人人聽過"
+  },
+  {
+   "id": "N3464",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "分類 G-靈異與超自然公案；日本百鬼夜行，名稱耳熟"
+  },
+  {
+   "id": "N4104",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "分類 U-外星太空與未知訊號；武王伐紂與哈雷彗星都耳熟"
+  },
+  {
+   "id": "N4141",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "分類 G-靈異與超自然公案；門神秦叔寶尉遲恭與唐太宗"
+  },
+  {
+   "id": "N4143",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "分類 G-靈異與超自然公案；皮影戲與漢武帝都認得"
+  },
+  {
+   "id": "N4144",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "分類 G-靈異與超自然公案；西遊記唐太宗遊地府"
+  },
+  {
+   "id": "N6021",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "分類 P-預言與末日；唐太宗與武則天，中國史名人"
+  },
+  {
+   "id": "N6022",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "分類 P-預言與末日；趙匡胤黃袍加身，中國史名人"
+  },
+  {
+   "id": "N6025",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "分類 P-預言與末日；唐玄宗，中國史名人"
+  },
+  {
+   "id": "P01",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "分類 P-預言與末日；諾查丹瑪斯，日本熱潮"
+  },
+  {
+   "id": "G03",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；胡迪尼是家喻戶曉的魔術師"
+  },
+  {
+   "id": "G21",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N188",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；牛頓人人叫得出名字"
+  },
+  {
+   "id": "N189",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；大金字塔人人認得"
+  },
+  {
+   "id": "N206",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N462",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N464",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；林肯人人叫得出名字"
+  },
+  {
+   "id": "N561",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N562",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N623",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 U-外星太空與未知訊號；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N683",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N684",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N703",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N704",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；克卜勒是課本裡的名字"
+  },
+  {
+   "id": "N706",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；核心是鐵達尼號沉船預言"
+  },
+  {
+   "id": "N803",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N804",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N844",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 U-外星太空與未知訊號；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N942",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N943",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N945",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N1102",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；哥倫布人人叫得出名字"
+  },
+  {
+   "id": "N1281",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N1323",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N1402",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N1521",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N1564",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N1661",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 U-外星太空與未知訊號；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N1662",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 U-外星太空與未知訊號；愛因斯坦人人叫得出名字"
+  },
+  {
+   "id": "N1683",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N1685",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N1762",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N1781",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 U-外星太空與未知訊號；東亞題，主角需要解釋"
+  },
+  {
+   "id": "N1782",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 U-外星太空與未知訊號；日本首顆衛星，名字需解釋"
+  },
+  {
+   "id": "N1803",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；日本平安朝事，主角三善清行冷門"
+  },
+  {
+   "id": "N1804",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；日本應仁之亂與野馬台詩"
+  },
+  {
+   "id": "N2024",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 U-外星太空與未知訊號；日本明治日食觀測"
+  },
+  {
+   "id": "N2121",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；江戶轉世男孩勝五郎"
+  },
+  {
+   "id": "N2123",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；日本桓武天皇與早良親王怨靈"
+  },
+  {
+   "id": "N2186",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 U-外星太空與未知訊號；朝鮮世宗的儀器，需解釋"
+  },
+  {
+   "id": "N2363",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；日本佐倉惣五郎怨靈"
+  },
+  {
+   "id": "N2401",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；清嘉慶天理教攻紫禁城"
+  },
+  {
+   "id": "N2406",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；哈雷彗星人人知道"
+  },
+  {
+   "id": "N2421",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 U-外星太空與未知訊號；特斯拉與火星訊號"
+  },
+  {
+   "id": "N2481",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；唐代牛李黨爭與周秦行紀"
+  },
+  {
+   "id": "N2484",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；宋代夷堅志，需解釋"
+  },
+  {
+   "id": "N2541",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；漢代熒惑守心，需解釋"
+  },
+  {
+   "id": "N2544",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 U-外星太空與未知訊號；通古斯大爆炸知名懸案"
+  },
+  {
+   "id": "N2561",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；新羅崔致遠雙女墳"
+  },
+  {
+   "id": "N2562",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；朝鮮檀君祭祀與怪病"
+  },
+  {
+   "id": "N2581",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；殭屍一詞人人認得"
+  },
+  {
+   "id": "N2703",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；格列佛遊記知名"
+  },
+  {
+   "id": "N2705",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；馬丁路德課本人物"
+  },
+  {
+   "id": "N2802",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 U-外星太空與未知訊號；數學家高斯課本人物"
+  },
+  {
+   "id": "N2902",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；拿破崙人人知道"
+  },
+  {
+   "id": "N2906",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；凱撒遇刺人人知道"
+  },
+  {
+   "id": "N2963",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 U-外星太空與未知訊號；青海杜立巴石盤，需解釋"
+  },
+  {
+   "id": "N2986",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；門得列夫週期表課本人物"
+  },
+  {
+   "id": "N3083",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；阿波羅登月與凡爾納"
+  },
+  {
+   "id": "N3084",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；日本報知新聞二十世紀預言"
+  },
+  {
+   "id": "N3085",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；上海陸士諤小說新中國"
+  },
+  {
+   "id": "N3221",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；清代廣東知縣藍鼎元，名字不熟"
+  },
+  {
+   "id": "N3321",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；明末北京日食與徐光啟，需解釋"
+  },
+  {
+   "id": "N3325",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；尚書羲和日食，名字需解釋"
+  },
+  {
+   "id": "N3381",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；莎士比亞《馬克白》人人聽過"
+  },
+  {
+   "id": "N3382",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；《歌劇魅影》家喻戶曉"
+  },
+  {
+   "id": "N3461",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；日本平安時代源融，名字不熟"
+  },
+  {
+   "id": "N3462",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；日本妖怪產女，需先解釋"
+  },
+  {
+   "id": "N3541",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；聖女貞德與梅林都叫得出來"
+  },
+  {
+   "id": "N3543",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；愛倫坡與大霹靂都耳熟"
+  },
+  {
+   "id": "N3623",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；林肯是人人認得的名字"
+  },
+  {
+   "id": "N3642",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；馬克吐溫是熟悉的作家"
+  },
+  {
+   "id": "N3781",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；凱撒與布魯圖人人聽過"
+  },
+  {
+   "id": "N3782",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；林肯與白宮人人認得"
+  },
+  {
+   "id": "N3785",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；倫敦塔是知名地標"
+  },
+  {
+   "id": "N3944",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；倫敦塔是知名地標"
+  },
+  {
+   "id": "N3963",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；三國術士管輅，名字不夠熟"
+  },
+  {
+   "id": "N4101",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 U-外星太空與未知訊號；後漢書客星紀錄，需解釋"
+  },
+  {
+   "id": "N4102",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 U-外星太空與未知訊號；宋代客星與金國使者，需解釋"
+  },
+  {
+   "id": "N4142",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；明成化黑眚恐慌，需解釋"
+  },
+  {
+   "id": "N4163",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；諾查丹瑪斯預言詩"
+  },
+  {
+   "id": "N4262",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 U-外星太空與未知訊號；天王星人人叫得出來"
+  },
+  {
+   "id": "N4422",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；亞歷山大大帝人人聽過"
+  },
+  {
+   "id": "N4425",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；漢尼拔是耳熟的名將"
+  },
+  {
+   "id": "N4503",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；《歌劇魅影》家喻戶曉"
+  },
+  {
+   "id": "N4582",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；漢尼拔是耳熟的名將"
+  },
+  {
+   "id": "N4662",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 G-靈異與超自然公案；維多利亞女王名字人人認得"
+  },
+  {
+   "id": "N4923",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 U-外星太空與未知訊號；哈雷彗星人人叫得出"
+  },
+  {
+   "id": "N5222",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；拿破崙之妻約瑟芬"
+  },
+  {
+   "id": "N5624",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；哈雷與哈雷彗星回歸"
+  },
+  {
+   "id": "N5841",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；諾斯特拉達姆斯大預言"
+  },
+  {
+   "id": "N5843",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；塔羅牌人人認得"
+  },
+  {
+   "id": "N6141",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；達文西家喻戶曉"
+  },
+  {
+   "id": "P04",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 P-預言與末日；千禧蟲 Y2K 廣為人知"
+  },
+  {
+   "id": "U01",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "分類 U-外星太空與未知訊號；羅斯威爾飛碟事件"
+  },
+  {
+   "id": "U37",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "分類 U-外星太空與未知訊號；主角是日本航空機長"
+  },
+  {
+   "id": "G01",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "G05",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "G06",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "G07",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "G09",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "G10",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "G23",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N141",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N142",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N143",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N144",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N201",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N202",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N203",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N204",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N205",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N401",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N403",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N421",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N422",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N424",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N425",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N426",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N427",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N465",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N521",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N522",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N523",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N527",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N528",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N564",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N584",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N585",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N624",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N626",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N681",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N682",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N687",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N701",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N702",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N705",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N707",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N801",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N802",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N805",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N843",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N941",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N962",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N963",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N964",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N981",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N983",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N984",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N985",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N1041",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N1042",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N1043",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N1045",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N1162",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N1204",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N1205",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N1282",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N1283",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N1321",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N1322",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N1344",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N1401",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N1442",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N1561",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N1565",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N1643",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N1681",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N1682",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N1761",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N1785",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N1801",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N1802",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N1882",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N1901",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N1902",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N1905",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N1921",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N1922",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N2023",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N2042",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N2043",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N2161",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N2181",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N2183",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N2185",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N2207",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N2242",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N2282",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N2323",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N2324",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N2381",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N2382",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N2384",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N2402",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N2403",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N2404",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N2405",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N2422",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N2423",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N2424",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N2425",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N2426",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N2501",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N2502",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N2542",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N2543",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N2545",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N2585",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N2641",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N2642",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N2643",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N2644",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N2646",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N2681",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N2683",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N2701",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N2704",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N2722",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N2723",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N2724",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N2801",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N2803",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N2841",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N2842",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N2863",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N2864",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N2866",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N2867",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N2881",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N2882",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N2883",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N2884",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N2886",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N2901",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N2903",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N2904",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N2905",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N2981",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N2982",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N2987",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N3041",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N3043",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N3081",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3082",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3121",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N3122",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N3123",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N3124",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N3161",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3162",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3163",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3164",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3165",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3201",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N3202",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N3281",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N3282",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N3283",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N3323",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3324",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3361",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N3362",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N3383",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N3384",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N3442",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N3443",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N3481",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3482",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3601",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N3602",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N3603",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N3604",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N3605",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N3621",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N3622",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N3641",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3643",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3681",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N3682",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N3701",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N3702",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N3703",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N3704",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N3721",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3722",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3723",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3724",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3783",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N3784",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N3801",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3802",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3803",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3804",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3805",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3921",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N3941",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N3943",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N3961",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3962",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N3964",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N4081",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N4082",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N4083",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N4084",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N4161",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N4162",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N4164",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N4261",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N4263",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N4344",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N4421",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N4423",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N4424",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N4461",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N4581",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N4583",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N4584",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N4621",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N4622",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N4623",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N4624",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N4625",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N4661",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N4663",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N4742",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N4743",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N4782",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N4841",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N4862",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N4863",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N4864",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N4921",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N4922",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N4924",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N4925",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N4981",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N4982",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5061",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N5062",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N5142",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5144",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5145",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5221",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N5223",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N5301",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5303",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5304",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5305",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5401",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N5441",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5442",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5443",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5444",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N5445",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N5484",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N5485",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N5521",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5522",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5523",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5524",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N5525",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N5564",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N5565",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N5621",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5622",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5623",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5625",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N5663",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N5664",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N5665",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N5721",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N5722",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N5723",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N5724",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N5725",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N5741",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5742",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5743",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5744",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N5745",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N5821",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N5822",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N5823",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N5824",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N5825",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N5842",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N5844",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5845",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5864",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5865",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5921",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N5922",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N5923",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N5924",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N5925",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N5942",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N5943",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N5944",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5945",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5964",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N5965",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N6023",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N6041",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N6042",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N6043",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N6121",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N6122",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N6123",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N6124",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N6142",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N6143",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N6144",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N6145",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N6221",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N6222",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N6224",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N6242",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N6243",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N6321",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N6323",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "N6341",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N6342",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "N6344",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "N6345",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 G-靈異與超自然公案"
+  },
+  {
+   "id": "P18",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "P33",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 P-預言與末日"
+  },
+  {
+   "id": "U05",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "U08",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "U31",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "U39",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "U40",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "分類 U-外星太空與未知訊號"
+  },
+  {
+   "id": "F01",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "灰姑娘人人都認得"
+  },
+  {
+   "id": "H08",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "H19",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "H31",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "L28",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "L34",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N145",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "不明飛行物目擊潮"
+  },
+  {
+   "id": "N173",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "莫札特人人都認得"
+  },
+  {
+   "id": "N185",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "花木蘭，中國故事"
+  },
+  {
+   "id": "N207",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": true
+   },
+   "demand": 7.75,
+   "reason": "曹操墓，中國考古"
+  },
+  {
+   "id": "N321",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "雍正傳位傳說"
+  },
+  {
+   "id": "N344",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N346",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N361",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "美女與野獸人人都認得"
+  },
+  {
+   "id": "N384",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N489",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N506",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "北京人化石，中國"
+  },
+  {
+   "id": "N525",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "南美古文明遺跡"
+  },
+  {
+   "id": "N607",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N621",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本八代海不知火"
+  },
+  {
+   "id": "N641",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N647",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "韓國古典興夫傳"
+  },
+  {
+   "id": "N661",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N723",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "舊石器洞穴壁畫"
+  },
+  {
+   "id": "N747",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "朝鮮宰相黃喜"
+  },
+  {
+   "id": "N783",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "偽考古恐龍陶偶"
+  },
+  {
+   "id": "N862",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N902",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1024",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1142",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1144",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "新羅古墳出土玻璃"
+  },
+  {
+   "id": "N1223",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1244",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1245",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1246",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1247",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1261",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本種子島鐵炮傳來"
+  },
+  {
+   "id": "N1342",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1462",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "韓國民間故事"
+  },
+  {
+   "id": "N1465",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本姨捨山傳說"
+  },
+  {
+   "id": "N1504",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1542",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1605",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1627",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本忠臣藏事件"
+  },
+  {
+   "id": "N1664",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "朝鮮使臣帶回望遠鏡"
+  },
+  {
+   "id": "N1704",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "韓國課本故事"
+  },
+  {
+   "id": "N1842",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1943",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1962",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N1985",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2041",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "西鄉隆盛生存流言"
+  },
+  {
+   "id": "N2202",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2343",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "日本黑船來航"
+  },
+  {
+   "id": "N2503",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2504",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2606",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2661",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2721",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2762",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "渡渡鳥人人都認得"
+  },
+  {
+   "id": "N2763",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "貝多芬人人都認得"
+  },
+  {
+   "id": "N2843",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "風暴與地震預言"
+  },
+  {
+   "id": "N2923",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N2945",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3002",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 5.5,
+   "reason": "西晉汲冢竹書出土"
+  },
+  {
+   "id": "N3025",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3061",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3062",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3064",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3266",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3401",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "阿基米德人人都認得"
+  },
+  {
+   "id": "N3423",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3502",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3563",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3564",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "一千零一夜人人都認得"
+  },
+  {
+   "id": "N3741",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3744",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3762",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": true,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "赫梯象形文字石刻"
+  },
+  {
+   "id": "N3822",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N3903",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "伽利略與比薩斜塔"
+  },
+  {
+   "id": "N4004",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4022",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4023",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4061",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4182",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4222",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4302",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4321",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "三明治的由來"
+  },
+  {
+   "id": "N4384",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4446",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4524",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4525",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4543",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4684",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4705",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4781",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "山坡上的幽靈大軍"
+  },
+  {
+   "id": "N4821",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N4861",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5001",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "伽利略與木星衛星"
+  },
+  {
+   "id": "N5023",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "唐代筆記葉限故事"
+  },
+  {
+   "id": "N5124",
+   "answers": {
+    "east_asia": true,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "山海經與孔子"
+  },
+  {
+   "id": "N5182",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5284",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 3.25,
+   "reason": "愚人節人人都認得"
+  },
+  {
+   "id": "N5325",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5341",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": false,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 1.0,
+   "reason": "四問皆否"
+  },
+  {
+   "id": "N5363",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": false
+   },
+   "demand": 3.25,
+   "reason": "溺死女孩化成的水妖"
+  },
+  {
+   "id": "P06",
+   "answers": {
+    "east_asia": false,
+    "prophecy_ghost": true,
+    "ancient_alien": false,
+    "famous": true
+   },
+   "demand": 5.5,
+   "reason": "哈雷彗星末日恐慌"
+  }
+ ]
+}
