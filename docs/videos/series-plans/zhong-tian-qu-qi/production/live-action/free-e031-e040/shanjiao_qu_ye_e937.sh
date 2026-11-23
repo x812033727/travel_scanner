@@ -31,3 +31,24 @@ ffmpeg -v error -y -i "$Y" -vf "format=rgb24,eq=gamma=1.55:saturation=0.5:bright
 c "$C" set-shanjiao-qu-chen-geng-l1 560:315:40:400
 c "$C" set-shanjiao-qu-chen-zhuo-l1 640:360:0:200
 c "$C" set-shanjiao-qu-chen-tian-l1 560:315:752:330
+# After the e037 independent review (2026-11-23, 必改 6, 7; 建議 6), new ids again (the -ye2 / -chen ones stay as they were, not
+# sent any more):
+#   shanjiao_qu_ye_clean3.py: the guard rail band blended from above to below (the old step left a bright flat strip);
+#   -ye3 the result (s10, s13), -ye3-zhuo (the field side: see r2.py PLACES), -ye3-kong (s20), -ye3-cao (s23);
+#   -geng and -tian do not reach the band (-ye2-geng, -ye2-tian stay);
+#   -chen2: the dawn grade of -ye3 with the ground less lifted (gamma 1.35, the grey-white band only over 35-50 % of the height),
+#   then destar_e937.py takes the stars out of the sky; its crops -chen2-geng, -chen2-tian, -chen2-zhuo and -chen2-kong (the
+#   sky over the pine tops, as -ye2-kong: s37's 「身後只有天邊的灰白」).
+Y3="$O/set-shanjiao-qu-ye3-l1.png"
+python3 -I "$(dirname "$0")/shanjiao_qu_ye_clean3.py" "$S" "$Y3"
+c "$Y3" set-shanjiao-qu-ye3-zhuo-l1 640:360:0:200
+c "$Y3" set-shanjiao-qu-ye3-kong-l1 640:360:240:0
+c "$Y3" set-shanjiao-qu-ye3-cao-l1  352:198:380:340
+C2="$O/set-shanjiao-qu-chen2-l1.png"
+ffmpeg -v error -y -i "$Y3" -vf "format=rgb24,eq=gamma=1.35:saturation=0.5:brightness=0.03,geq=r='min(255,r(X,Y)+70*max(0,1-abs(Y-H*0.425)/(H*0.075)))':g='min(255,g(X,Y)+72*max(0,1-abs(Y-H*0.425)/(H*0.075)))':b='min(255,b(X,Y)+66*max(0,1-abs(Y-H*0.425)/(H*0.075)))',colorbalance=rs=0.02:bs=0.04:rm=0.03:bm=0.02" -frames:v 1 -flags +bitexact -fflags +bitexact "$O/chen2-stars.png"
+python3 -I "$(dirname "$0")/destar_e937.py" "$O/chen2-stars.png" "$C2"
+rm -f "$O/chen2-stars.png"
+c "$C2" set-shanjiao-qu-chen2-geng-l1 560:315:40:400
+c "$C2" set-shanjiao-qu-chen2-zhuo-l1 640:360:0:200
+c "$C2" set-shanjiao-qu-chen2-tian-l1 560:315:752:330
+c "$C2" set-shanjiao-qu-chen2-kong-l1 640:360:240:0
