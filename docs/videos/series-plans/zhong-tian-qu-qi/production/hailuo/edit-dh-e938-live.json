@@ -107,8 +107,8 @@
    "offset": 20.0,
    "gain": -8,
    "fade_in": 0.6,
-   "fade_out": 0.05,
-   "tail": 0.0
+   "fade_out": 0.01,
+   "tail": -0.542
   }
  ],
  "sfx": [
@@ -303,7 +303,7 @@
    "file": "trot28",
    "at": "s18",
    "off": 0.0,
-   "gain": -7.4
+   "gain": -13.4
   },
   {
    "file": "zhongtian-sfx-staff-thud-01",
@@ -345,7 +345,7 @@
    "file": "trot15",
    "at": "s29",
    "off": 0.0,
-   "gain": -15.4
+   "gain": -11.4
   },
   {
    "file": "zhongtian-sfx-drag-struggle-02",
@@ -409,20 +409,20 @@
   },
   {
    "file": "creak1",
-   "at": "s34",
-   "off": 0.15,
+   "at": "s35",
+   "off": 4.75,
    "gain": -2.2
   },
   {
    "file": "creak2",
-   "at": "s34",
-   "off": 0.65,
+   "at": "s35",
+   "off": 4.95,
    "gain": -1.7
   },
   {
    "file": "creak3",
-   "at": "s34",
-   "off": 1.1,
+   "at": "s36",
+   "off": 0.25,
    "gain": -1.7
   },
   {
@@ -496,6 +496,24 @@
    "at": "s38",
    "off": 0.95,
    "gain": -0.7
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "s29",
+   "off": 2.6,
+   "gain": -17.3
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "s29",
+   "off": 3.05,
+   "gain": -19.0
+  },
+  {
+   "file": "creak3",
+   "at": "s38",
+   "off": 1.52,
+   "gain": 1.3
   }
  ],
  "frame_round": true,
@@ -543,7 +561,7 @@
   },
   "s17": {
    "from": 0,
-   "af": "rubberband=pitch=0.98:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=0.96:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s19": {
    "from": 0,
@@ -568,7 +586,9 @@
   "s37"
  ],
  "move_lines": {},
- "min": {},
+ "min": {
+  "s38": 2.083
+ },
  "line_at": {
   "zq938a22": 0.55,
   "zq938a25": 0.74,
@@ -595,10 +615,13 @@
   "s26": "crop=iw/1.65:ih/1.65:iw*0.067:0,scale=1920:1080:flags=lanczos,setsar=1",
   "s10": "crop=iw/1.35:ih/1.35:0:0,scale=1920:1080:flags=lanczos,setsar=1",
   "s13": "crop=iw/1.4:ih/1.4:0:ih*0.02,scale=1920:1080:flags=lanczos,setsar=1",
-  "s01": "crop=iw/1.12:ih/1.12:0:ih*0.05,scale=1920:1080:flags=lanczos,setsar=1"
+  "s01": "crop=iw/1.12:ih/1.12:0:ih*0.05,scale=1920:1080:flags=lanczos,setsar=1",
+  "s14": "split[s14a][s14b];[s14a]trim=end=0.875,setpts=PTS-STARTPTS[s14c];[s14b]trim=start=0.875,setpts=PTS-STARTPTS,crop=iw/1.5:ih/1.5:iw*0.30:0,scale=1920:1080:flags=lanczos,setsar=1[s14d];[s14c][s14d]concat=n=2:v=1:a=0",
+  "s08": "split[s08a][s08b];[s08a]trim=end=2.85,setpts=PTS-STARTPTS[s08c];[s08b]trim=start=2.85,setpts=PTS-STARTPTS,crop=iw/2.1:ih/2.1:iw*0.47:ih*0.524,scale=1920:1080:flags=lanczos,setsar=1[s08d];[s08c][s08d]concat=n=2:v=1:a=0",
+  "s38": "fade=t=out:st=1.541:d=0.01"
  },
  "slow_shot": {},
  "subtitle_lines": [],
  "ding": {},
- "_note": "e938 真人版第一版（2026-11-24；scratchpad e938c/：mkov938.py、levall938.sh → lev938.py＋align938.py、stage938x.py、music／beds／spots／lineat／vol.json、cutf0938.py、busmeter.py；跑法 scratchpad e938cut.sh）。全部決定、量測與已知瑕疵寫在 colab/runs/e938-live/cut-notes.md；跟挑片不同的處理在 cut-trims.tsv。\n片：picks.json＝refine-prep 照 picks-final.tsv（41 支含 s27c2），剪點不改。s27＝fix1 0–0.75＋fix2 s27c2 0.25–0.5＋s27b 頭 0.25 秒（30 格，不放慢）、s27b 從 0.25；s19 片中「哥」換 a20-p122。vf：s12 1.05 倍、s25 1.3 倍、s26 1.65 倍（裁柵）。\n聲音：隊長六句與 s30 阿令用錄音（voice_off），align938.py 逐詞組對到嘴形；唐小棠約 274、秦霜約 222、阿令約 180–200、小禾約 337、隊長約 148、白大夫約 121（門內悶聲）。配樂 undkucked 在台詞下約 11.6 dB（側鏈 ratio 4、release 700 ms）；定點音效真實庫優先，馬蹄／風／拍門／弩弦用系列庫；人群聲只用 murmur38（s24）。\n定版 run4：193.04 秒、−14.0 LUFS、LRA 5.3；cut-qa motion FAIL（照前兩集不判）、jitter s21 0.24（騎馬顛）；cut-jumps 1（s27 內刻意的剪點）；audio-qa 33 句 0 問題；CC 32 條。\nREVIEW 3（2026-11-24，兩份審片 6.5／10 合併；colab/runs/e938-live/review3-plan.md、review3-trims.tsv、fix4/）：剪點 s02 0.5–4.5、s16 3.333–6.25（只上一次馬）、s17 1.0–6.4（整句）、s18 2.0–6.5、s27b 0.25–2.25；s34 換 d1 9381101、s36 換 d1 9381102（草稿畫面，待 fix4 精修）；\nvf s10 1.35、s13 1.4、s01 1.12 倍（裁掉空床、小桌）；s27 第一刀放大 1.6 倍裁掉拿短刀的隊長；s11 面板紅框；a17 line_lead 0.85、a33 拖音 ×1.7 以 line_lead 0 鋪到片尾之後硬切；\ns27 馬蹄 c0.70 斷、戰鼓同斷、風聲、c0.91 落地悶響（起音落在 s27b 第一格）＋reveal-hit；s18 出門快馬蹄；秦霜約 205、阿令第一場約 166、阿令 s25 約 187、年輕守軍 a23-p125 原樣；a22 不放慢；所有片中原聲過限制器、s01 −1.5 dB。\n重拍 fix4（未送）：s09（床上沒有小禾）、s17（帶笑）、s22（馬嵌在柵裡），9381601／9381602，6 支 38 秒。\nREVIEW 4 / fix6（2026-11-24）：picks-final.tsv 為準（s09 s17 fix4 9381602、s18 s20 fix5 9381702、s19 fix5 9381701、s22 fix6 9381821、s29 s30 s32 fix6 9381812、s34 s36 已精修）；a22 換重錄 r5（×0.83 → 約 150）；s30 a27、s32 a29 重新對到新片的嘴形詞組；s18 快馬蹄 gallop-run 挪到 c2.8；s19 a20 照舊鋪在 c0.25、片中 0–1.40 靜音；其餘同 REVIEW 3。"
+ "_note": "e938 真人版第一版（2026-11-24；scratchpad e938c/：mkov938.py、levall938.sh → lev938.py＋align938.py、stage938x.py、music／beds／spots／lineat／vol.json、cutf0938.py、busmeter.py；跑法 scratchpad e938cut.sh）。全部決定、量測與已知瑕疵寫在 colab/runs/e938-live/cut-notes.md；跟挑片不同的處理在 cut-trims.tsv。\n片：picks.json＝refine-prep 照 picks-final.tsv（41 支含 s27c2），剪點不改。s27＝fix1 0–0.75＋fix2 s27c2 0.25–0.5＋s27b 頭 0.25 秒（30 格，不放慢）、s27b 從 0.25；s19 片中「哥」換 a20-p122。vf：s12 1.05 倍、s25 1.3 倍、s26 1.65 倍（裁柵）。\n聲音：隊長六句與 s30 阿令用錄音（voice_off），align938.py 逐詞組對到嘴形；唐小棠約 274、秦霜約 222、阿令約 180–200、小禾約 337、隊長約 148、白大夫約 121（門內悶聲）。配樂 undkucked 在台詞下約 11.6 dB（側鏈 ratio 4、release 700 ms）；定點音效真實庫優先，馬蹄／風／拍門／弩弦用系列庫；人群聲只用 murmur38（s24）。\n定版 run4：193.04 秒、−14.0 LUFS、LRA 5.3；cut-qa motion FAIL（照前兩集不判）、jitter s21 0.24（騎馬顛）；cut-jumps 1（s27 內刻意的剪點）；audio-qa 33 句 0 問題；CC 32 條。\nREVIEW 3（2026-11-24，兩份審片 6.5／10 合併；colab/runs/e938-live/review3-plan.md、review3-trims.tsv、fix4/）：剪點 s02 0.5–4.5、s16 3.333–6.25（只上一次馬）、s17 1.0–6.4（整句）、s18 2.0–6.5、s27b 0.25–2.25；s34 換 d1 9381101、s36 換 d1 9381102（草稿畫面，待 fix4 精修）；\nvf s10 1.35、s13 1.4、s01 1.12 倍（裁掉空床、小桌）；s27 第一刀放大 1.6 倍裁掉拿短刀的隊長；s11 面板紅框；a17 line_lead 0.85、a33 拖音 ×1.7 以 line_lead 0 鋪到片尾之後硬切；\ns27 馬蹄 c0.70 斷、戰鼓同斷、風聲、c0.91 落地悶響（起音落在 s27b 第一格）＋reveal-hit；s18 出門快馬蹄；秦霜約 205、阿令第一場約 166、阿令 s25 約 187、年輕守軍 a23-p125 原樣；a22 不放慢；所有片中原聲過限制器、s01 −1.5 dB。\n重拍 fix4（未送）：s09（床上沒有小禾）、s17（帶笑）、s22（馬嵌在柵裡），9381601／9381602，6 支 38 秒。\nREVIEW 4 / fix6（2026-11-24）：picks-final.tsv 為準（s09 s17 fix4 9381602、s18 s20 fix5 9381702、s19 fix5 9381701、s22 fix6 9381821、s29 s30 s32 fix6 9381812、s34 s36 已精修）；a22 換重錄 r5（×0.83 → 約 150）；s30 a27、s32 a29 重新對到新片的嘴形詞組；s18 快馬蹄 gallop-run 挪到 c2.8；s19 a20 照舊鋪在 c0.25、片中 0–1.40 靜音；其餘同 REVIEW 3。\nREVIEW 5（2026-11-24，cut-review-3 7/10）：s14 c0.875 起放大 1.5 倍（鞭子化成蠟燭的左下出框）；s08 c2.85 起切到小禾的 2.1 倍插鏡（咧嘴的臉出框，片中原聲照走）；s34 整鏡拿掉（組片用 video-no-s34.json），弩弦吱呀挪到 s35 尾、s36 頭；a19 ×1.40；片尾「放——」在 s38 c1.541 收 10 ms，接 0.54 秒黑場＋弩弦吱呀；心裡話 CC 加（）、超過 16 字的 CC 拆兩條；s29 補馬蹄與落地腳步；standoff 收在畫面最後一格。"
 }
