@@ -1,0 +1,1136 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-21",
+  "reviewer": "四位非作者獨立原件覆核代理（V147-1 至 V147-4），均未參與研究卡撰寫或觀眾／需求盲評。",
+  "method": "逐題重開全部 81 筆一手非維基來源連結（G793 19 筆、G794 20 筆、G795 19 筆、G796 23 筆含 2026-04-24 行政院公報與基隆市政府函文，100% 存活、零維基百科）；從嚴併網（同一國家政府體系、同一機構或合著／資助研究群合併計算，單網封頂 2.0 條加權事實，每條估 0.75 分鐘，成題門檻 11.4 條／8.5 分鐘）；覆核報告列出之 63 項細節修訂（16+19+16+12）已全數套用於批次檔與題案卡。",
+  "baselines": {
+    "so_thats_why": {
+      "candidates": 8511,
+      "selected": 8207,
+      "themes": 791,
+      "producible_long": 124
+    }
+  },
+  "themes": {
+    "G793": {
+      "title": "遙控器為何禁裝鹼性電池？充飽 1.2V 充電池又怎麼秒跳沒電？",
+      "researcher": "R147-1",
+      "reviewer": "V147-1",
+      "verdict": "ready",
+      "fact_count": 14,
+      "est_minutes": 10.5,
+      "method": [
+        "獨立透過 google:browse 逐一重開並完整查核 g793_research.json 全部 19 筆第一手非維基來源（X147R1-S01 至 X147R1-S19，100% 存活、零維基百科），逐項核對電壓、內壓、溫度、內阻、循環次數、測試電阻與標準條款。",
+        "嚴格執行機構網路歸併並設定每網上限 2.0 條加權事實，且每張候選卡僅歸入單一主網、不跨網重複計分：日本電池工業會 BAJ（S01–S02）併為 1 網；Energizer Brands, LLC（S04–S06）併為 1 網（原始 3.0 封頂為 2.0）；Panasonic Energy（S09–S10）併為 1 網（原始 3.5 封頂為 2.0）；國際電工委員會 IEC（S12–S13）併為 1 網且因兩者皆屬付費標準僅讀公開摘要，保守折權為 0.5；Duracell（S07–S08）與 Faegh et al. 2018（S19，具 3 位 Duracell 員工合著並由 Duracell 資助研究協議且第一通訊作者具 Duracell 顧問利益衝突）嚴格合併為單一 Duracell 合著網（合計 2.0 封頂）；台灣環境部（S15）僅列跨網佐證不另計分；收尾總結卡 K147-0118 僅就日立家電（S17）獨立未重複計分之遙控器說明書實務規範（明文禁用鎳氫、壽命 1 年、逾 1 月取出、棄置貼膠帶）核予 0.5。",
+        "以 Node 獨立驗算全部換算／推算數值（193 psig ÷ 14.696 = 13.133 atm 表壓、× 0.06895 = 13.307 bar；2500→1500 mAh = -40.0%；150–300 mΩ ÷ 50 mΩ = 3–6 倍；2100→600 次 = -71.4%；3×1.5 V − 1×1.5 V = 3.0 V；1 A × 0.15–0.30 Ω = 0.15–0.30 V vs 1 A × 0.05 Ω = 0.05 V）及 6 章節秒數加總（90+85+95+85+95+90 = 540 秒 = target_minutes 9×60），並直接檢視素材池現有案 N7225 與 G652 確認零實質重疊。",
+        "敏感度壓力測試：基準核定 11 個計分網路、14.0 條加權事實、10.5 分鐘；(1) 若將總結卡 K147-0118 歸零 → 13.5 條／10.1 分鐘，仍過門檻；(2) 若同時將 IEC 摘要網（0.5）與 K147-0118（0.5）歸零 → 13.0 條／9.8 分鐘，仍過門檻；(3) 若在 (2) 之上再強行將日本電池工業會 BAJ（會員含 Panasonic）併入 Panasonic 封頂 2.0 → 12.0 條／9.0 分鐘，仍高於 11.4 條／8.5 分鐘成題門檻。"
+      ],
+      "networks": [
+        "Energizer Brands, LLC（勁量／Eveready；併 X147R1-S04、S05、S06）",
+        "Duracell Inc. 與合著研究網（嚴格併 X147R1-S07、S08 與 Duracell 合著及資助之 S19 Faegh et al. 2018）",
+        "日本消費者廳與國民生活中心（CAA / NCAC；X147R1-S03）",
+        "Panasonic Energy Co., Ltd.（國際牌；併 X147R1-S09、S10）",
+        "日本電池工業會（BAJ；併 X147R1-S01、S02）",
+        "RHYTHM 株式会社（日本麗聲鐘；X147R1-S16）",
+        "Sony Corporation（索尼；X147R1-S11）",
+        "英國皇家學會《Royal Society Open Science》獨立學術團隊（Ali et al. 2022，馬來西亞理科大學 USM／巴基斯坦 NFC IET，零利益衝突；X147R1-S18）",
+        "中華民國消費者文教基金會（消基會；X147R1-S14）",
+        "國際電工委員會（IEC；併 X147R1-S12、S13，付費標準僅讀公開商店摘要保守折權）",
+        "日立家電（日立グローバルライフソリューションズ；X147R1-S17；台灣環境部 X147R1-S15 僅作交叉佐證不另計網）"
+      ],
+      "network_weights": {
+        "Energizer Brands, LLC（勁量／Eveready；併 X147R1-S04、S05、S06）": 2,
+        "Duracell Inc. 與合著研究網（嚴格併 X147R1-S07、S08 與 Duracell 合著及資助之 S19 Faegh et al. 2018）": 2,
+        "日本消費者廳與國民生活中心（CAA / NCAC；X147R1-S03）": 2,
+        "Panasonic Energy Co., Ltd.（國際牌；併 X147R1-S09、S10）": 2,
+        "日本電池工業會（BAJ；併 X147R1-S01、S02）": 1,
+        "RHYTHM 株式会社（日本麗聲鐘；X147R1-S16）": 1,
+        "Sony Corporation（索尼；X147R1-S11）": 1,
+        "英國皇家學會《Royal Society Open Science》獨立學術團隊（Ali et al. 2022，馬來西亞理科大學 USM／巴基斯坦 NFC IET，零利益衝突；X147R1-S18）": 1,
+        "中華民國消費者文教基金會（消基會；X147R1-S14）": 1,
+        "國際電工委員會（IEC；併 X147R1-S12、S13，付費標準僅讀公開商店摘要保守折權）": 0.5,
+        "日立家電（日立グローバルライフソリューションズ；X147R1-S17；台灣環境部 X147R1-S15 僅作交叉佐證不另計網）": 0.5
+      },
+      "turns": [
+        "反轉 1（打破「鹼性電壓太高會燒機」迷思）：一般鹼性與碳鋅標稱同為 1.5 V，全新氯化鋅（重載碳鋅）開路電壓甚至通常高於 1.60 V、不輸或高於鹼性（Energizer S05 p.2/p.6）；日本麗聲鐘（S16）點破掛鐘指定碳鋅的真正原因是怕鹼性「太耐撐」讓人用到超過使用推奨期限而過放電漏液（期限前換新即無問題），另有 EVOLTA 正極公差接觸與已停產 Oxyride 初始高壓兩類例外（K147-0101–K147-0103）。",
+        "反轉 2（停用靜置比正在用更容易脹破）：Faegh et al. 2018（S19）1/4 高度 AA 可視化與壓力實驗揭露，40 Ω 深度放電（96 h）會在內部析出比表面積暴增約 10,000 倍的海綿狀「黑鋅」，放電進行中內壓仍維持約 36 psig，卻在停用靜置回開路狀態的 24 小時內與強鹼猛烈腐蝕產氫，把表壓推升至 193 psig（約 13.1 大氣壓表壓【換算】）；且鹼性外鋼殼即正極，CAA（S03）熱像實測外膜破損碰彈簧短路 4 分鐘即飆達 160 °C，與輕載正常運作僅升溫 0.004–0.009 °C（Ali et al. S18）天差地別（K147-0103、K147-0108）。",
+        "反轉 3（4 顆裝反 1 顆竟然還會亮，混裝還會量出負電壓）：CAA（S03 p.8–9）與 Duracell（S07）均證實 3 顆以上（實測 4 顆）串聯裝反 1 顆時，淨電動勢仍讓燈泡微亮而麻痺戒心，其餘電池卻對逆裝單體強制反充撐破安全閥（並釀成 3 歲女童大腿灼傷實案）；新舊／異種混裝則會把先耗盡的弱單體逼成三用電表可測得的「負電壓」（極性反轉，Panasonic S09、Energizer S06 Fig. 11）（K147-0110–K147-0111）。",
+        "反轉 4（1.2 V 充電池在遙控器被誤判沒電，換進高耗電反而反殺 1.5 V 鹼性）：1.2 V 是氫氧化鎳（約 +0.5 V）配儲氫合金（約 −0.7 V）的固有電位差（Sony S11）；因約 80% 放電區間維持平坦高原（Ali et al. S18），裝進以鹼性斜坡（10 Ω 閉路 1.1 V ≈ 20% 剩餘，Energizer S04 p.13）校準的電量計會被顯示電量偏低（Panasonic S10），但捲繞結構內阻 <50 mΩ 遠低於圓柱鹼性雙脈衝有效內阻 150–300 mΩ（實例 214 mΩ），重載 1 A 瞬時歐姆壓降不到 0.05 V vs 鹼性 0.15–0.30 V【推算】，反而讓 1.2 V 鎳氫在高耗電重載全面反超 1.5 V 鹼性（K147-0113–K147-0116）。"
+      ],
+      "card_verdicts": [
+        {
+          "id": "K147-0101",
+          "source_ids": [
+            "X147R1-S05",
+            "X147R1-S12",
+            "X147R1-S14"
+          ],
+          "network": "Energizer Brands, LLC（勁量／Eveready；併 X147R1-S04、S05、S06）",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 Energizer 碳鋅手冊（S05 p.2 明確寫出 Zinc Chloride 具高於 LeClanché 與鹼性之 OCV，p.6 實載 typically over 1.60 volts）及消基會報告（S14 引 CNS 6032 3 號鹼性開路電壓 1.45–1.65 V）逐字核實。惟 S12（IEC 60086-1:2026）免費商店摘要未印出 1.5 V 與 LR6/R6 具體字樣，須於出處口徑改以 S04/S05/S09/S14 佐證 1.5 V 數值、S12 僅作國際總則存在性佐證。"
+        },
+        {
+          "id": "K147-0102",
+          "source_ids": [
+            "X147R1-S16",
+            "X147R1-S14",
+            "X147R1-S15"
+          ],
+          "network": "RHYTHM 株式会社（日本麗聲鐘；X147R1-S16）",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 RHYTHM 官方支援頁 caution2.html（S16）第 4 項 1–3 點逐句核對：指定錳電池機種裝鹼性會跨過使用推奨期限繼續運作而漏液（期限前更換即無問題）、EVOLTA 依國際規格微調外形致部分機種正極突起觸不到端子、Oxyride 初期高電壓致誤動作，全數精準無誤；消基會（S14）與環境部（S15）亦均建議低耗電遙控器／時鐘優先碳鋅。唯一須修處為 visual 中自創的「差 0.5 mm」無來源依據，應改為無數字示意。"
+        },
+        {
+          "id": "K147-0103",
+          "source_ids": [
+            "X147R1-S03",
+            "X147R1-S18"
+          ],
+          "network": "日本消費者廳與國民生活中心（CAA / NCAC；X147R1-S03）",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 CAA／NCAC 2018-07-20 12 頁官方報告 PDF（S03）核對：5 年 332 件（發熱 118、液漏れ 110、破裂 84）、鹼性外缶與正端子一體（p.4）、冷暖氣與電視遙控器未使用仍消費微電流致過放電（p.5）、外膜局部剝離碰彈簧短路約 1 分鐘達 100°C、4 分鐘最高 160°C、100°C 以上持續約 15 分鐘（p.7），與 Ali et al. 2022（S18 Sec. 4.3）20–50 mA 鹼性溫升 0.004–0.009°C 均完全吻合。抓出 1 處 locator 筆誤：S03 統計區間實為平成 25 年 6 月至平成 30 年 6 月末（2013/6–2018/6），非 2013/4–2018/3。"
+        },
+        {
+          "id": "K147-0104",
+          "source_ids": [
+            "X147R1-S12",
+            "X147R1-S01",
+            "X147R1-S09"
+          ],
+          "network": "國際電工委員會（IEC；併 X147R1-S12、S13，付費標準僅讀公開商店摘要保守折權）",
+          "decision": "keep_with_fixes",
+          "review_weight": 0.5,
+          "checked": "已核對 IEC 60086-1:2026（S12，確認規範系統字母、電極、電解液與尺寸互換）、BAJ Q7（S01，錳電池鋅極包裹正極材外加金屬外裝缶、鹼性直接裝於金屬殼內外貼標籤）及 Panasonic FAQ（S09，LR 鹼性、R 錳、FR 鋰鐵、HHR/BK 鎳氫，與 KOH 強鹼 vs ZnCl2/NH4Cl 弱酸）。惟須修正兩處細節：(1) S09 表格僅印 HHR/BK 而未印 HR（HR 屬 IEC 61951-2 系統）；(2) S01 未明寫「鹼性鋼殼即正極」（該結構由 CAA S03 p.4 與 Energizer S04 p.3 完整佐證）。因本卡歸入 IEC 主網而 S12 屬付費摘要，依規則保守折權為 0.5。"
+        },
+        {
+          "id": "K147-0105",
+          "source_ids": [
+            "X147R1-S01",
+            "X147R1-S05",
+            "X147R1-S07"
+          ],
+          "network": "日本電池工業會（BAJ；併 X147R1-S01、S02）",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 BAJ battery.html（S01 Q1/Q2/Q4：錳電池休止電壓回復特性適用時計、手電筒、遙控器、可攜式收音機；鹼性適用模型車、迷你四驅、馬達與閃光燈）、Energizer 碳鋅手冊（S05 p.7：輕載定義 ≥50 h；D 號 2.2 Ω–24 Ω 間歇試驗鹼性達氯化鋅 250%–300%）及 Duracell FAQ（S07：重度連續放電最高 10 倍 Ah 容量）核實。須修兩處細節：(1) 刪除 BAJ 頁未出現之「瓦斯爐點火」；(2) 將 S05 p.7 的 2.2 Ω–24 Ω 精準標為模擬家電間歇試驗而非純連續重載。"
+        },
+        {
+          "id": "K147-0106",
+          "source_ids": [
+            "X147R1-S09",
+            "X147R1-S04",
+            "X147R1-S18"
+          ],
+          "network": "Energizer Brands, LLC（勁量／Eveready；併 X147R1-S04、S05、S06）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 Panasonic FAQ（S09：乾電池可用容量隨電器條件劇變故不標 mAh）、Energizer 鹼性手冊 p.11 Fig. 12（S04：AA/LR6 100 mA 放電至 0.8 V 得 2,500 mAh、至 1.2 V 僅得 1,500 mAh）與 Ali et al. 2022 Table 1（S18：Energizer LR-6 容量標記 variable, load dependent）核實。換算 (2500−1500)/2500 = 40.0% 精準且已標註【換算】。（註：第 2 章摘要誤寫「腰斬少掉四成」，已列 required_fixes。）"
+        },
+        {
+          "id": "K147-0107",
+          "source_ids": [
+            "X147R1-S08",
+            "X147R1-S02"
+          ],
+          "network": "Duracell Inc. 與合著研究網（嚴格併 X147R1-S07、S08 與 Duracell 合著及資助之 S19 Faegh et al. 2018）",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 Duracell MSDS Rev. 9 PDF（S08 p.1–2, p.4）與 BAJ q01and02.html（S02）核對：35% KOH 佔總重 5%–10%、單顆潛在漏液 2–20 mL（視尺寸）、眼部沖水 30 分鐘、皮膚至少 15 分鐘、BAJ 2025 年度「液もれ」為現象大宗均精準吻合。惟 S08 原文寫 caustic burns/injury 並未出現「失明」，「失明風險」出處為 CAA S03 p.5（及 S16/S17），須補列 X147R1-S03 或改寫歸因。"
+        },
+        {
+          "id": "K147-0108",
+          "source_ids": [
+            "X147R1-S19"
+          ],
+          "network": "Duracell Inc. 與合著研究網（嚴格併 X147R1-S07、S08 與 Duracell 合著及資助之 S19 Faegh et al. 2018）",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 Faegh et al. 2018 JES 全文 PDF（S19，8 頁）逐數核對：E_Zn ≈ −1.4 V vs E_H2 ≈ −0.92 V（SHE）、ΔG = −90 kJ/mol Zn、1/4 高度 AA operando 電池、HKCC 等效 40 Ω 放電 96 h＋靜置 24 h、黑鋅比表面積 ~10,000 倍、Q_blackZn/Q_passivation = 0.79、放電期 ~36 psig 靜置 24 h 飆升至 193 psig（表壓 13.1 atm／13.3 bar【換算】驗算無誤）、400 Ω 35→48→58 psig 全數吻合。嚴格與 Duracell S07/S08 併網封頂 2.0；並要求修正 S19 正式論文標題、補註實驗漿料 31% KOH 與 400 Ω 係在 96 h 窗內尚未達鈍化（220 h 才鈍化）。"
+        },
+        {
+          "id": "K147-0109",
+          "source_ids": [
+            "X147R1-S09",
+            "X147R1-S07",
+            "X147R1-S06"
+          ],
+          "network": "Panasonic Energy Co., Ltd.（國際牌；併 X147R1-S09、S10）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 Panasonic FAQ（S09：漏液白粉為 KOH 與 CO2 反應生成之碳酸鉀 K2CO3，仍屬水溶性強鹼可致皮膚化學灼傷）、Duracell FAQ（S07：手套與眼鏡防護，50/50 稀釋白醋／檸檬汁或 1 湯匙硼酸兌 1 加侖水清理鹼性／NiCd／NiMH 漏液）及 Energizer 鎳氫手冊 p.12（S06：帶載久放滲漏結晶出 K2CO3）完整核實，無誤。"
+        },
+        {
+          "id": "K147-0110",
+          "source_ids": [
+            "X147R1-S03",
+            "X147R1-S07"
+          ],
+          "network": "日本消費者廳與國民生活中心（CAA / NCAC；X147R1-S03）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 CAA 報告 p.3 事例 3（3 歲女童取出手電筒電池時，4 顆中 1 顆逆裝漏液致大腿化學熱傷）與 p.8–9（4 顆串聯逆裝 1 顆接豆電球仍微亮，放置後安全閥破裂漏液）及 Duracell FAQ（3 顆以上串聯裝反 1 顆可能看似正常運轉卻致漏液破裂）完全核實；3×1.5 V − 1×1.5 V = 3 V【推算】算式無誤且已標註【推算】。"
+        },
+        {
+          "id": "K147-0111",
+          "source_ids": [
+            "X147R1-S09",
+            "X147R1-S06",
+            "X147R1-S18"
+          ],
+          "network": "Panasonic Energy Co., Ltd.（國際牌；併 X147R1-S09、S10）",
+          "decision": "keep",
+          "review_weight": 0.75,
+          "checked": "已重開 Panasonic FAQ（S09：兩顆以上串聯異種／新舊混用時低容量電池電壓跌破零發生極性反轉、電表呈負電壓並漏液）、Energizer 鎳氫手冊 p.9–10 Fig. 11（S06：雙平台極性反轉與大量釋放氫氣致排氣與不可逆損傷）及 Ali et al. 2022 Sec. 4.1（S18：串聯組單體先截止導致整組提早斷電）核實。因與 K147-0110 同屬串聯反充物理主軸，保守核予 0.75（且併入 Panasonic 網後仍受 2.0 封頂控管）。"
+        },
+        {
+          "id": "K147-0112",
+          "source_ids": [
+            "X147R1-S14",
+            "X147R1-S17",
+            "X147R1-S15"
+          ],
+          "network": "中華民國消費者文教基金會（消基會；X147R1-S14）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開消基會 2015/04/10 檢測報告（S14：CNS 6032 3.9 Ω 每日 30 分鐘間歇與 10 Ω 連續放電至 0.9 V、45°C 高溫存放 30 天不得變形漏液）、日立 SP-RC4 說明書 p.1（S17：壽命約 1 年、禁混新舊異種、逾 1 個月不用取出、棄置於電極貼透明膠帶防短路）與環境部第 44 期月刊（S15：長期不用取出）核實，全數準確。"
+        },
+        {
+          "id": "K147-0113",
+          "source_ids": [
+            "X147R1-S11",
+            "X147R1-S13"
+          ],
+          "network": "Sony Corporation（索尼；X147R1-S11）",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 Sony 技術支援文章 S1110278002610（更新 2025/03/11，S11）逐字核實：正極 MnO2 約 +0.3 V、負極 Zn 約 −1.2 V → 1.5 V；正極 Ni(OH)2 約 +0.5 V、負極儲氫合金約 −0.7 V → 1.2 V。須微調兩處出處細節：(1) Sony 原文係以鹼性乾電池為例；(2) IEC 61951-2:2017（S13）免費摘要未列出 1.2 V 數值，應避免將 1.2 V 歸因於 S13 摘要。"
+        },
+        {
+          "id": "K147-0114",
+          "source_ids": [
+            "X147R1-S10",
+            "X147R1-S04",
+            "X147R1-S17"
+          ],
+          "network": "Panasonic Energy Co., Ltd.（國際牌；併 X147R1-S09、S10）",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 Panasonic eneloop FAQ（S10：含電量指示器裝置因 1.2 V 與 1.5 V 電壓差可能顯示低於實際剩餘電量）、Energizer 鹼性手冊 p.3 與 p.13（S04：1.6 V→0.9 V 斜坡，10 Ω 閉路 1.1 V ≈ 20% 剩餘）及日立 SP-RC4 p.1（S17：條文(2)明文禁止鎳氫等充電電池）核實。須修處：(1) 補列 X147R1-S06 至 source_ids（~1.4 V 接載降至 1.2 V 高原出自 S06 p.6）；(2) 將 S04 頁碼 p.11–12 改為 p.13；(3) 移除來源未點名之「電子鎖」並將「立刻亮紅燈」微調以貼合 S10 原文。"
+        },
+        {
+          "id": "K147-0115",
+          "source_ids": [
+            "X147R1-S18",
+            "X147R1-S06"
+          ],
+          "network": "英國皇家學會《Royal Society Open Science》獨立學術團隊（Ali et al. 2022，馬來西亞理科大學 USM／巴基斯坦 NFC IET，零利益衝突；X147R1-S18）",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 Ali et al. 2022 PMC 全文（S18 Sec. 4.1–4.2：NiMH 於 0.02–0.03 C 呈近 80% 平坦區、末端陡峭膝點、OCV 遲滯致電壓法估 SOC 失效）與 Energizer 鎳氫手冊 p.9（S06：電壓感測不準、須採庫侖計數）核實。抓出一處未標註自創例證：「電壓只差 0.02 V，實際剩餘電量可能從 70% 掉到 20%」並未見於 S18 或 S06，須改回論文實載表述（或直接引用 Table 3：NiMH 三顆串聯組靜置 8 小時後，90%、50%、10% SOC 開路電壓皆為 3.98 V）。"
+        },
+        {
+          "id": "K147-0116",
+          "source_ids": [
+            "X147R1-S04",
+            "X147R1-S06",
+            "X147R1-S18"
+          ],
+          "network": "Energizer Brands, LLC（勁量／Eveready；併 X147R1-S04、S05、S06）",
+          "decision": "keep_with_fixes",
+          "review_weight": 1,
+          "checked": "已重開 Energizer 鹼性手冊 p.7–9（S04：1000 Hz AC 阻抗低估離子內阻；5 mA/505 mA 雙脈衝實例 Fig. 9 得 214 mΩ；全新圓柱鹼性約 150–300 mΩ 視尺寸而定；Fig. 10 隨放電上升）、Energizer 鎳氫手冊 p.1, 6（S06：捲繞結構內阻 <50 mΩ 且放電中平穩、高耗電超越鹼性）及 Ali et al. 2022 Sec. 4.1（S18）核實。須修正圖號（Fig. 9/10 非 Fig. 7/13）、註明 150–300 mΩ 視圓柱尺寸而定、修正倍率措辭（「鹼性為鎳氫 3–6 倍以上【換算】」）並將 1 A 壓降對齊為 0.15–0.30 V（214 mΩ 約 0.21 V）。"
+        },
+        {
+          "id": "K147-0117",
+          "source_ids": [
+            "X147R1-S10",
+            "X147R1-S13"
+          ],
+          "network": "Panasonic Energy Co., Ltd.（國際牌；併 X147R1-S09、S10）",
+          "decision": "keep_with_fixes",
+          "review_weight": 0.75,
+          "checked": "已重開 Panasonic eneloop FAQ（S10）核實 2,100 次（IEC 61951-2:2011 Sec. 7.5.4.1）與 2017 年版收緊為更貼近真實使用之嚴格測法後約 600 次（(2100−600)/2100 = 71.4% 逾七成【換算】無誤），並核對 IEC 61951-2:2017（S13）第 4 版發布履歷。惟英文版 S10 頁並未出現「JIS C 8708:2019」或「淺度循環／放電深度」字樣，S13 公開摘要亦未提及循環壽命修訂細節，須刪改以完全忠於實讀原件。另屬副線彩蛋故保守核予 0.75（且在 Panasonic 2.0 封頂內）。"
+        },
+        {
+          "id": "K147-0118",
+          "source_ids": [
+            "X147R1-S01",
+            "X147R1-S16",
+            "X147R1-S15",
+            "X147R1-S17"
+          ],
+          "network": "日立家電（日立グローバルライフソリューションズ；X147R1-S17；台灣環境部 X147R1-S15 僅作交叉佐證不另計網）",
+          "decision": "keep_with_fixes",
+          "review_weight": 0.5,
+          "checked": "屬收尾選購與安全總結卡，整體邏輯嚴密。因大部分內容為前卡綜整，僅就日立家電 SP-RC4（S17）獨立未於其他網路重複計分之一手家電說明書規範保守核予 0.5（台灣環境部 S15 列跨網佐證不另計分）。須比照 K147-0105 移除無來源之「瓦斯爐點火」。"
+        }
+      ],
+      "rejected_suggestions_checked": {
+        "X147R1-NA01": "已直接查閱 docs/videos/history-curiosity/pool/batches/wave73-20261117.json 的 N7225，確已完整涵蓋 1930/1937/1941/1947 美國標準表 A–F、AA、AAA 字母命名史並明確排除化學比較與家用選購；本題不收錄尺寸命名史判斷正確，無重疊。",
+        "X147R1-NA02": "已直接查閱 docs/videos/so-thats-why/pool/themes.json 的 G652，確專攻冬天低溫對手機與電動車鋰離子電池內阻與析鋰之影響；本題聚焦室溫家用 AA/AAA 碳鋅、鹼性與鎳氫乾電池，排除低溫鋰電支線判斷正確，無重疊。",
+        "X147R1-NA03": "已核對 RHYTHM caution2.html（S16 第 4 項第 4 點：鈕扣／硬幣型電池誤飲致消化管電解法損傷穿孔）與日立 SP-RC4 p.1（幼童誤吞乾電池警告）；該議題屬兒科急診與鈕扣電池專題，與本集圓柱乾電池主軸分流得當。"
+      },
+      "changes": [
+        "嚴格將 Duracell FAQ（S07）、Duracell MSDS（S08）與含 3 位 Duracell 員工合著及 Duracell 研究協議資助之 Faegh et al. 2018（S19）合併為單一 Duracell 合著網，封頂 2.0 條加權事實。",
+        "將 Energizer 三份手冊（S04–S06，原始 3.0）與 Panasonic 兩頁官方 FAQ（S09–S10，原始 3.5）各自嚴格併網並封頂 2.0；BAJ 兩頁（S01–S02）併為 1 網（1.0）；IEC 兩頁付費標準公開商店摘要（S12–S13）併為 1 網並保守折權至 0.5。",
+        "台灣環境部 2010 年電子月刊（S15）列為跨網佐證不另計分；總結卡 K147-0118 僅就日立家電 SP-RC4（S17）未重複計分之一手說明書規範核予 0.5；串聯延伸卡 K147-0111 與副線彩蛋卡 K147-0117 各保守核予 0.75。",
+        "列出 16 項具體且可執行的文字、頁碼、圖號、標準標題與口徑修訂（required_fixes），確保正文、素材卡與 6 章節 100% 忠於已重開驗證之第一手原件。"
+      ],
+      "required_fixes_applied": 16,
+      "unverified": [
+        "IEC 60086-1:2026（X147R1-S12，CHF 335）與 IEC 61951-2:2017（X147R1-S13，CHF 295）為付費國際標準，僅核對 IEC 官方商店公開摘要、範疇與修訂履歷，未閱讀付費條文正文（已降權至 0.5 並要求刪去歸因於兩份摘要之具體數值）。",
+        "BAJ q01and02.html（X147R1-S02）內之 2025 年度事故占比圓餅圖為純圖片格式，未含可驗證之精確百分比數字（卡片未引用百分比，安全）。",
+        "Panasonic 英文版 eneloop FAQ（X147R1-S10）未刊載日本國內標準 JIS C 8708:2019 與放電深度細節，該二項未獲已附來源驗證，已列入 required_fixes 要求刪除或補附日文一手來源。",
+        "未查核台灣市售特定型號電子鎖對 1.2 V 鎳氫電池之實測截止電壓表，已列入 required_fixes 要求移除未具名之「電子鎖」舉例。"
+      ],
+      "note": "G793 題材緊扣台灣與日本觀眾高度共鳴的家用電池四大痛點，19 筆一手非維基來源全數存活並經獨立重開查核，6 章節總長 540 秒恰符 target_minutes=9，且經檢視現有素材池確認與奇聞 N7225、原來如此 G652 均無實質重疊。即便嚴格將 Duracell（S07–S08）與其合著資助論文 Faegh et al. 2018（S19）併為單一網路封頂 2.0、Energizer 與 Panasonic 均封頂 2.0、IEC 付費摘要折權 0.5、總結卡 K147-0118 僅核 0.5（環境部不另計網），仍達 11 個獨立計分網路、14.0 條加權事實、預估 10.5 分鐘（即便同時歸零 K147-0118 與 IEC 摘要網並強行將 BAJ 併入 Panasonic，亦仍有 12.0 條／9.0 分鐘），且具備 4 個扎實可驗證之敘事反轉，判定為 ready；請整合者於入池前務必逐項套用 16 項 required_fixes。"
+    },
+    "G794": {
+      "title": "手機寫「IP68防水」，為什麼泡溫泉或進水，原廠照樣不保固？",
+      "researcher": "R147-2",
+      "reviewer": "V147-2",
+      "verdict": "ready",
+      "fact_count": 15.5,
+      "est_minutes": 11.6,
+      "method": [
+        "獨立非作者原件覆核：透過 google:browse 重新逐頁抓取並核驗 g794_research.json 全部 20 筆第一手非維基來源（X147R2-S01 至 X147R2-S20，20/20 全數存活、零維基百科），另以 google_search 交叉驗證長文 PMC10705846 關鍵章節引文，並逐一核對水深、流量、溫度差、電壓、秒數、罰鍰金額、涉案機型、年份與限制條件。",
+        "從嚴執行機構網路歸併並設定每網上限 2.0 條加權事實，且每張卡僅計入單一主網不重複計分：將 IEC（S01–S02）、ISO/IEC 17025 認證試驗所 Castle Compliance（S03）與日本品質保證機構 JQA（S04）全數歸併為單一「IEC 60529／JIS C 0920 標準與認證試驗所體系」（原始 2.75 封頂為 2.0），徹底杜絕同一套 IEC 60529 條款跨三家重複計分；Apple 三份支援文件（S05–S07）併為 1 網（原始 2.50 封頂為 2.0）；Sony 兩份手冊（S09–S10）併為 1 網（1.75）；W. L. Gore 兩份產品技術頁（S12–S13）併為 1 網（2.0）；NASA／肯塔基大學（S15）與 NTT DOCOMO（S11）各作跨網交叉佐證不另計獨立網路加權；比利時 VITO／魯汶大學（S14）、大連理工大學（S16）與匈牙利 HUN-REN／布達佩斯科技大學（S17）經查作者群與機構完全獨立，各自計為獨立學術網路（各 1.0）。",
+        "逐卡稽核 K147-0201 至 K147-0218、3 筆不收錄案（X147R2-NA01 至 NA03）及 6 章節秒數結構（85+90+95+95+90+85=540 秒＝target_minutes 9×60），並直接比對既有素材池 wave112-x112-20261118.json（G744 腕錶 30 米，共 23 卡）與 wave142-everyday-20261120.json（K142-0005 Apple Watch 水中鎖定排水）及全池其餘批次，確認無實質重疊。"
+      ],
+      "networks": {
+        "NET_IEC_60529": [
+          "X147R2-S01（IEC 官方 IP 等級說明頁）",
+          "X147R2-S02（IEC Today 2026-02-10 官方專文）",
+          "X147R2-S03（Castle Compliance ISO/IEC 17025 試驗所 IEC 60529 指南，與 IEC 從嚴併網避免標準定義重複計分）",
+          "X147R2-S04（日本品質保證機構 JQA 2023-12 JIS C 0920／IEC 60529 型錄 PDF，與 IEC 從嚴併網）"
+        ],
+        "NET_SAMSUNG": [
+          "X147R2-S08（Samsung Electronics UK 官方 Galaxy 防水支援頁，2026-04-15 更新）"
+        ],
+        "NET_SONY": [
+          "X147R2-S09（Sony Xperia G8188 日文官方防水防塵手冊 TP1754020）",
+          "X147R2-S10（Sony Xperia 1 V 英文官方手冊 TP1001595057）"
+        ],
+        "NET_GORE": [
+          "X147R2-S12（W. L. Gore 可攜式電子壓力平衡透氣膜規格頁）",
+          "X147R2-S13（W. L. Gore 可攜式電子聲學透氣膜規格頁）"
+        ],
+        "NET_VITO_KULEUVEN": [
+          "X147R2-S14（比利時 VITO／魯汶大學 Eykens et al. 2017, Applied Sciences MDPI 開放取用全文；X147R2-S15 肯塔基大學／NASA Khan et al. 2023, J. Memb. Sci. 作拉伸孔幾何因子 B=0.4–0.6 交叉佐證，不重複計網）"
+        ],
+        "NET_HUNREN_BME": [
+          "X147R2-S17（匈牙利 HUN-REN／布達佩斯科技大學 Romanenko et al. 2025, Heliyon PMC11795051 全文；X147R2-S11 NTT DOCOMO 溫泉蒸氣禁令與 X147R2-S09 Sony 冷熱溫差警示作交叉佐證）"
+        ],
+        "NET_DUT": [
+          "X147R2-S16（大連理工大學 Zhou et al. 2025, Metals MDPI 開放取用全文）"
+        ],
+        "NET_IFIXIT": [
+          "X147R2-S20（iFixit 2022-08-10 消費電子黏膠拆解專文；X147R2-S11 NTT DOCOMO 約每 2 年付費更換防水零件指引作交叉佐證，不另計網）"
+        ],
+        "NET_APPLE": [
+          "X147R2-S05（Apple Support 108039，2026-10-28 更新）",
+          "X147R2-S06（Apple Support 102643，2024-10-30 發布）",
+          "X147R2-S07（Apple Support 109350，2026-05-26 更新）"
+        ],
+        "NET_AGCM": [
+          "X147R2-S19（義大利競爭與市場管理局 AGCM 2020-11-30 案號 PS11578 官方裁罰新聞稿）"
+        ],
+        "NET_ACCC": [
+          "X147R2-S18（澳洲競爭與消費者委員會 ACCC 2022-06-23 Release 81/22 澳洲聯邦法院裁罰新聞稿）"
+        ]
+      },
+      "network_weights": {
+        "NET_IEC_60529": 2,
+        "NET_SAMSUNG": 1.75,
+        "NET_SONY": 1.75,
+        "NET_GORE": 2,
+        "NET_VITO_KULEUVEN": 1,
+        "NET_HUNREN_BME": 1,
+        "NET_DUT": 1,
+        "NET_IFIXIT": 1,
+        "NET_APPLE": 2,
+        "NET_AGCM": 1,
+        "NET_ACCC": 1
+      },
+      "turns": [
+        "反轉 1（同寫 IP68 實測水深差 4 倍且摺疊機 X＝沒測）：IEC 60529 僅固定 IPX7 為 1 公尺 30 分鐘，IPX8 深度由廠商自訂，導致同為 IP68 的 Samsung Galaxy S 標 1.5 m 而 Apple iPhone 橫跨 2 m／4 m／6 m（最高相差 4 倍【換算】）；摺疊機 IPX8 的 X 代表未測防塵、IP48 僅擋 >1.0 mm 異物而非 75 μm 細粉塵（K147-0201–K147-0203）。",
+        "反轉 2（IP68 不含 IPX5/6 沖水，且溫差 >5 K 變負壓抽水機）：IEC 60529 僅 IPX1–IPX6 向上涵蓋，靜水浸漬（IPX7/8）與高速噴流（IPX5/6）屬獨立考道，故日系手機須雙重送驗標示「IPX5/IPX8」；且試驗要求水與機身溫差 ≤5 K，否則發燙機身遇冷水會因機內空氣收縮產生負壓將水吸過密封件（K147-0204–K147-0206）。",
+        "反轉 3（防水手機其實故意留孔「呼吸」，但洗髮精與溫差蒸氣專剋微孔膜）：為平衡氣壓並讓喇叭發聲，逾 100 億台可攜裝置內貼 0.24–0.34 mm ePTFE 微孔膜（硬改 50–100 m 深水膜會讓透氣量暴跌 50–65.5 倍【換算】、聲音損耗升至 2.9–<4 dB）；然而界面活性劑會大幅壓低表面張力與穿透壓，水蒸氣更能直接穿膜在冰冷電路板凝結成數十奈米連續水膜並於實驗條件下 16.7 分鐘引發樹枝晶短路與 FR-4 碳化（K147-0207–K147-0210）。",
+        "反轉 4（鹽水 131 秒短路＋壓敏膠耗材壽命）：1.5 V 低壓下 5 μL 0.01 M NaCl 鹽水只需 131 秒（2 分 11 秒【換算】）即可在 0.5 mm 焊錫間長出純錫樹枝晶短路，0.6 M 海水濃度更使腐蝕電流較 0.001 M 暴增約 2.82 倍【換算】；機身壓敏膠帶（PSA）隨時間劣化，NTT DOCOMO 明言防水零件約每 2 年須付費更換，2020 年款 iPhone 拆膠除蝕重貼合計最長可達約 4 小時【換算】（K147-0211–K147-0212）。",
+        "反轉 5（原廠靠 LCI 紅試紙一刀切拒保，卻在義澳兩國吃下天價罰單＋米缸偏方被官方打臉）：2020 年義大利 AGCM 罰蘋果 1,000 萬歐元（未載明僅限實驗室靜止純水且侵略性拒絕法定保固），2022 年澳洲聯邦法院罰三星 1,400 萬澳幣（揭露母公司 SEC 上市前即已知情充電埠腐蝕仍播泳池／海水廣告）；進水急救更打臉「插米缸」，Apple 官網明文禁用米袋、吹風機、壓縮空氣與潮濕充電（K147-0213–K147-0218）。"
+      ],
+      "card_verdicts": [
+        {
+          "id": "K147-0201",
+          "source_ids": [
+            "X147R2-S01",
+            "X147R2-S02",
+            "X147R2-S03",
+            "X147R2-S04"
+          ],
+          "network": "NET_IEC_60529",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 IEC ip-ratings、IEC Today（2026-02-10）、Castle Compliance 與 JQA 2023-12 PDF 核對：第一碼 0–6（6 為無粉塵侵入、JQA 載 75 μm 粉塵、Castle Compliance 載滑石粉與最高 2 kPa 負壓）、第二碼 0–9、IEC 明言僅反映受測當下耐受且不涵蓋熱水／鹽水／肥皂水皆與原件相符。須微調兩處：註明 2 kPa 負壓係針對 IEC 60529 第 1 類外殼（Category 1 enclosures），並避免將「標準淡水條件」直接歸於 IEC 部落格原文。"
+        },
+        {
+          "id": "K147-0202",
+          "source_ids": [
+            "X147R2-S03",
+            "X147R2-S05",
+            "X147R2-S08"
+          ],
+          "network": "NET_SAMSUNG",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 Castle Compliance、Apple 108039（2026-10-28）與 Samsung UK（2026-04-15）核對：IPX7 固定 1 m 30 min、IPX8 由廠商協議且須嚴於 IPX7；Samsung Galaxy S 系列 IP68 為靜止清水 1.5 m 30 min；Apple IP68 分為 XS/XS Max/11（2 m）、11 Pro/11 Pro Max（4 m）與 iPhone 12 至 iPhone 18 系列等後續 IP68 機型（6 m），6÷1.5=4 倍已標【換算】。抓出一處機型邊界遺漏：2022 年發布的 iPhone SE（第 3 代）位於 iPhone 12 之後卻屬 IP67（1 m），須明確排除以免「iPhone 12 至最新世代」失準。"
+        },
+        {
+          "id": "K147-0203",
+          "source_ids": [
+            "X147R2-S03",
+            "X147R2-S05",
+            "X147R2-S08"
+          ],
+          "network": "NET_SAMSUNG",
+          "decision": "keep",
+          "review_weight": 0.75,
+          "checked": "已重開 Castle Compliance、Samsung UK（Foldable Series 表）與 Apple 108039 核對：X 代表未定義（not defined）、Z Fold3–5/Flip3–5 為 IPX8、Z Fold6–7/Flip6–7（含 Special Edition 與 TriFold）為 IP48，IP4X 為 >1.0 mm 固體異物（鋼棒測驗）。抓出兩處必改：（1）內文「75 微米」出自 JQA S04 與 Sony S09，但本卡 source_ids 漏列 S04/S09（Castle Compliance S03 未寫 75 μm），須補入 X147R2-S04；（2）「沙灘細沙與口袋灰塵正是遠比淡水更致命的敵人」屬未經來源量化的誇飾，應改為陳述 IP48 無法擋細沙微塵，且連具 IP68 的 iPhone Duo 也被 Apple 提醒避沙與保持鉸鏈清潔。因部分第一碼規則銜接 K147-0201，保守核予 0.75。"
+        },
+        {
+          "id": "K147-0204",
+          "source_ids": [
+            "X147R2-S03",
+            "X147R2-S04",
+            "X147R2-S05",
+            "X147R2-S08"
+          ],
+          "network": "NET_IEC_60529",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 Castle Compliance、JQA PDF、Apple 108039 與 Samsung UK 核對：IPX1–IPX6 向上涵蓋、IPX7/IPX8 不自動涵蓋噴射水流（IPX5/IPX6）；IPX5（6.3 mm 噴嘴 12.5 L/min 至少 3 分鐘）與 IPX6（12.5 mm 噴嘴 100 L/min，100÷12.5=8 倍【換算】）均精準吻合。須微調品牌歸屬：Apple 108039 明文列出 showering 與 surfing，Samsung UK S08 則僅寫「high water pressure」未點名淋浴或衝浪，應分開歸屬。"
+        },
+        {
+          "id": "K147-0205",
+          "source_ids": [
+            "X147R2-S03",
+            "X147R2-S04",
+            "X147R2-S09",
+            "X147R2-S10"
+          ],
+          "network": "NET_SONY",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 Sony G8188 TP1754020 與 Xperia 1 V TP1001595057 完整核對：IPX5（6.3 mm、約 3 m、12.5 L/min、至少 3 分鐘）、IPX8（常溫自來水靜水 1.5 m、30 分鐘）、IP6X（≤75 μm 粉塵攪拌 8 小時）及禁止超規定水流與海水／泳池水均吻合。抓出三處必改：（1）題幹提及「Sharp AQUOS」但全案無任何 Sharp 來源，須刪去；（2）「花兩份測試費」未見於來源，改為「分別通過噴流與浸水兩項試驗」；（3）Sony 原文寫熱湯／三溫暖與常溫自來水以外液體，未直寫「溫泉」（溫泉係 DOCOMO S11 用語），應精準歸屬。"
+        },
+        {
+          "id": "K147-0206",
+          "source_ids": [
+            "X147R2-S03",
+            "X147R2-S09",
+            "X147R2-S12"
+          ],
+          "network": "NET_IEC_60529",
+          "decision": "keep",
+          "review_weight": 0.75,
+          "checked": "已重開 Castle Compliance「Exact Water Conditioning」核對：水溫與受測物溫差須在 5 K 以內，冷水會在殼體內製造負壓真空將水吸過密封件，與原件完全一致。抓出兩處必改：（1）「一秒破防」屬過度誇張，應改為「大幅提高進水破防風險」；（2）所列 X147R2-S09（Sony 寒冷戶外進暖浴室）實為冷進熱之結露警示（屬於 K147-0210），與本卡熱機入冷水之負壓吸氣方向相反，應自本卡移除 S09 或明確區分方向。本卡併入 NET_IEC_60529（該網原始 2.75 已達 2.0 封頂上限）。"
+        },
+        {
+          "id": "K147-0207",
+          "source_ids": [
+            "X147R2-S12",
+            "X147R2-S13"
+          ],
+          "network": "NET_GORE",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 Gore Pressure Vents 與 Acoustic Vents 兩頁完整核對：全球 OEM 採購逾 100 億顆／指定應用於逾 100 億台裝置（more than 10 billion devices）、手機用壓力膜 PE13/PE12/PE8/PE3/PE7 參考厚度 0.24–0.34 mm（穿戴式 PE17 達 0.42 mm）、疏油性（Oleophobic）ePTFE 彎曲孔道（tortuous path）、可避免壓差弱化墊圈密封並造成換能器偏壓與聲學失真，皆與原件相符。抓出兩處必改：（1）刪除「並誘發結露」，因 Gore S12／S13 原文均未提及結露；（2）將「微米級彎曲孔道」改為「微孔彎曲孔道」，因 S12 未標註孔徑尺寸。"
+        },
+        {
+          "id": "K147-0208",
+          "source_ids": [
+            "X147R2-S12",
+            "X147R2-S13"
+          ],
+          "network": "NET_GORE",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 Gore 兩份規格表並以 Node 獨立驗算：PE13（手機 IP68 1.5 m/30 min）dp=70 mbar 透氣量 19,000 mL/min/cm²，PE15（ISO 22810 50 m/10 min）380、PE17（100 m/15 min）290，比值為 19,000÷380=50.0 與 19,000÷290≈65.5 倍；聲學膜插入損耗 IP4X–IP64 <0.1 dB、淺浸水 0.4–1.4 dB（1 kHz, I.D. 1.6 mm）、深浸水 2.9–<4 dB（I.D. 2.0 mm）。抓出三處必改：（1）刪去「金屬」（原文僅寫 back pressure on captive ring，未指定金屬材質）；（2）「逾 50 至 65 倍」改為「50 至約 65.5 倍」；（3）註明 PE 系列為壓力平衡膜、插入損耗為另一產品線聲學膜於 1 kHz／I.D. 1.6–2.0 mm 條件下測得。"
+        },
+        {
+          "id": "K147-0209",
+          "source_ids": [
+            "X147R2-S05",
+            "X147R2-S08",
+            "X147R2-S14",
+            "X147R2-S15"
+          ],
+          "network": "NET_VITO_KULEUVEN",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 Eykens et al.（2017, Applied Sciences）全文與 Khan et al.（2023, J. Memb. Sci., PMC10705846）全文核對：Young-Laplace Eq.(1)、PTFE dmax=0.19 μm、純水 LEP 10.8 bar、35 g/L NaCl + SDS 表面張力於 50 mg/L 附近趨近 ±32 mN/m、150 mg/L SDS 下 PTFE LEP 降至 3.5 bar、3 天測試漸進局部潤濕透鹽、油水乳液（十六烷/SDS）4 小時破乳後 PTFE 轉透明且通量歸零，以及 Khan et al. 拉伸膜幾何因子 B=0.4–0.6（LEP 可折半）全數核實。抓出關鍵科學精準度必改項：（1）32 mN/m 與 3.5 bar 須補註「含 35 g/L NaCl 鹽水」實驗條件；（2）Eykens 測試之 PTFE 屬「未經疏油處理（θ_hexadecane=0°）」之膜蒸餾標準膜，而手機 Gore 透氣膜具疏油（oleophobic）塗層（Eykens 文中疏油 PES 即顯著耐十六烷潤濕），須誠實區分實驗室機理驗證與手機實膜差異；（3）Eykens 中十六烷使 PTFE 轉透明係堵塞孔道致通量歸零、並未即時令鹽水導電度上升，與 3 天 SDS 漸進透鹽屬不同現象，應避免混稱「一碰到就立刻破功濕透、徹底失去擋水屏障」。"
+        },
+        {
+          "id": "K147-0210",
+          "source_ids": [
+            "X147R2-S09",
+            "X147R2-S11",
+            "X147R2-S17"
+          ],
+          "network": "NET_HUNREN_BME",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 Romanenko et al.（2025-01-21, Heliyon, PMC11795051）、Sony G8188 與 NTT DOCOMO 核對：FR-4 鍍錫電路板（0.5 mm 間距、10 V 偏壓、25 °C／60% RH 致冷降溫），約 6 分鐘（19 °C）防焊層出現數奈米均勻吸附水膜、7.5 分鐘達 ~80 nm 並在可見水滴之間維持數十奈米厚連續水膜、16.7 分鐘測得短路電流、高電流蒸發樹枝晶實則導致 FR-4 不可逆碳化降阻；Sony 警告冰冷手機勿直入暖浴室、DOCOMO 明列「温泉の湯気」皆相符。抓出一處時序精準度必改：原文於 5.4 分鐘已出現光學可見水滴、16.7 分鐘短路時錫面亦有大水滴，關鍵在於「水滴之間的防焊層由數十奈米厚隱形連續水膜橋接」驅動樹枝晶短路，不可寫成短路全程「完全沒有可見水珠」，並請於 answer_target 補列「0.5 mm 間距」。"
+        },
+        {
+          "id": "K147-0211",
+          "source_ids": [
+            "X147R2-S16",
+            "X147R2-S18"
+          ],
+          "network": "NET_DUT",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 Zhou et al.（2025-04-12, Metals MDPI）全文與 Table 1 核對：Sn1.0Ag 無鉛焊錫於 1.5 V DC、0.5 mm 間距、5 μL 0.01 M NaCl 下 73 s 冒泡與白沉澱、94 s 純錫樹枝晶、131 s（精確為 2 分 11 秒）橋接短路；Table 1 數據 0.001 M（Epit +0.05 V, Icorr 2.06×10⁻⁷ A/cm²）、0.01 M（-0.16 V, 4.63×10⁻⁷）、0.6 M（-0.38 V, 5.80×10⁻⁷）全數核實，5.80÷2.06≈2.82。抓出三處必改：（1）內文遺漏比較基準濃度「0.001 M」，緊接在 0.01 M 後直接寫「點蝕電位從 +0.05 V 暴跌至 -0.38 V、腐蝕電流暴增約 2.8 倍」會讓讀者誤以為基準是 0.01 M（0.6 M vs 0.01 M 僅 1.25 倍），必須補齊「相較 0.001 M」；（2）題幹「致命百倍」無數據依據，改為「更致命」；（3）「約 2 分 11 秒」改為精確「2 分 11 秒」，並簡註 0.6 M 高鹽下厚沉澱反阻單一樹枝晶、但陽極點蝕溶解與腐蝕電流最強。"
+        },
+        {
+          "id": "K147-0212",
+          "source_ids": [
+            "X147R2-S05",
+            "X147R2-S08",
+            "X147R2-S09",
+            "X147R2-S11",
+            "X147R2-S20"
+          ],
+          "network": "NET_IFIXIT",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 iFixit（2022-08-10）、NTT DOCOMO、Sony G8188、Apple 108039 與 Samsung UK 核對：PSA 壓敏膠帶隨日常物理與化學條件劣化、常於超過兩年換機週期前失去防水力；NTT DOCOMO 明言「異常の有無にかかわらず 2 年に 1 回を目処に部品の交換が必要（有料）」；Sony 明載一根頭髮／一粒砂／微小纖維即可致進水；iFixit 舉 2020 年款 iPhone 拆解清膠 up to 2h + 除蝕 1h + 重貼新膠 1h。抓出三處必改：（1）「耗時約 4 小時」缺年款限定與加總換算標籤，須改為「以 2020 年款 iPhone 為例，最長可達約 4 小時【換算：2+1+1=4】」；（2）iFixit 原文寫「It's doable, but it sure ain't fast」，將「幾乎難以原樣復原」改為「極度耗時且仰賴精準除膠重貼」；（3）「微米級公差」改為「極細微間隙」。NTT DOCOMO 作交叉佐證不重複計網。"
+        },
+        {
+          "id": "K147-0213",
+          "source_ids": [
+            "X147R2-S05",
+            "X147R2-S07",
+            "X147R2-S10"
+          ],
+          "network": "NET_APPLE",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 Apple 109350（2026-05-26）、Apple 108039 與 Sony Xperia 1 V 核對：2006 年後出廠之 iPhone 與多數 iPod 內建 LCI（平時白或銀、遇水或含水液體全轉紅、官方稱規格內溫濕度不誤觸；部分純 eSIM 地區機型無 SIM 卡槽與外部可視 LCI），液體損壞不在 Apple 一年有限保固內（消費者法下可能另有權利）。抓出兩處重要必改：（1）「自 2006 年起的 iPhone」誤植年份（首代 iPhone 於 2007 年問世，原文為 built after 2006），須改為「2006 年後出廠的 iPhone」；（2）內文與 scope 稱「Samsung 也在官方文件明文將液體損壞排除於保固外」，但 Samsung UK S08 正文並無保固排除條文且未列於本卡 source_ids，須改為歸屬 Apple（S05/S07）與 Sony（S09/S10）。"
+        },
+        {
+          "id": "K147-0214",
+          "source_ids": [
+            "X147R2-S05",
+            "X147R2-S19"
+          ],
+          "network": "NET_AGCM",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開義大利 AGCM 案號 PS11578（2020-11-30）英文官方新聞稿核對：對 Apple Distribution International 與 Apple Italia S.r.l. 合計裁罰 1,000 萬歐元；兩項不公平商業行為（誤導性廣告未說明僅限靜止純水受控實驗室測試且免責聲明未區分商業／法定保固；售後拒絕保固協助妨礙《消費者法典》法定權利構成侵略性商業行為）與要求於 apple.com/it/ 張貼處分摘要全數相符。微調三處：明列 8 款涉案機型（不含 iPhone X）、寫明兩家受罰實體原名、將行政處分的「兩項罪名」改為「兩項不公平商業行為」。"
+        },
+        {
+          "id": "K147-0215",
+          "source_ids": [
+            "X147R2-S18"
+          ],
+          "network": "NET_ACCC",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開澳洲 ACCC Release 81/22（2022-06-23）全文核對：澳洲聯邦法院裁罰 Samsung Electronics Australia 1,400 萬澳幣、2016-03 至 2018-10 共 9 支廣告、7 款 Galaxy 機型（S7、S7 Edge、A5(2017)、A7(2017)、S8、S8 Plus、Note 8）澳洲銷量逾 310 萬支、母公司 SEC 於上市前即已在處理接觸泳池或海水後潮濕充電之充電埠腐蝕問題，全數核實。抓出兩處重要必改：（1）ACCC 原稿僅寫「used in pools and sea water」，全文並無「海灘衝浪（surfing）」字樣，須自卡片、視覺、收尾句與第 5 章移除「海灘衝浪」改為「泳池與海水使用」；（2）原稿為數百件申訴中「許多案例（in many cases）」完全停擺，不可寫成數百件全數直接報廢。"
+        },
+        {
+          "id": "K147-0216",
+          "source_ids": [
+            "X147R2-S06",
+            "X147R2-S20"
+          ],
+          "network": "NET_APPLE",
+          "decision": "keep",
+          "review_weight": 0.75,
+          "checked": "已重開 Apple 102643（2024-10-30）與 iFixit（2022-08-10）核對：Apple 明文寫「Don't put your iPhone in a bag of rice. Doing so could allow small particles of rice to damage your iPhone.」；iFixit 開篇確實寫「we suggest you skip the rice bags」並強調腐蝕發生時分秒必爭、需以異丙醇清理。抓出兩處超寫必改：（1）Apple 原文未具體寫出「澱粉粉塵」或「透氣膜」，應忠實寫「細小米粒／微粒可能損壞手機」；（2）iFixit S20 原文並未論述「生米在室溫下抽不出深處積水、放一兩天浪費時間」，該段屬未收錄來源之延伸知識，須刪改為嚴格貼合 S20 原文（或另補一手實測來源）。因 S20 僅括號提及 skip the rice bags、細節密度較薄，降權為 0.75。"
+        },
+        {
+          "id": "K147-0217",
+          "source_ids": [
+            "X147R2-S05",
+            "X147R2-S06",
+            "X147R2-S08",
+            "X147R2-S09"
+          ],
+          "network": "NET_APPLE",
+          "decision": "keep",
+          "review_weight": 0.75,
+          "checked": "已重開 Apple 108039/102643、Samsung UK 與 Sony G8188 核對：三家皆禁止吹風機／外部熱源與潮濕充電（Apple 明指接腳永久腐蝕失效，Sony 警告感電、短路異常發熱、故障、火災、灼傷）。抓出兩處歸屬精準度必改：（1）「三大雷區口徑完全一致」不盡準確——壓縮空氣僅 Apple 與 Samsung 明文禁止（Sony S09 未提），棉花棒／紙巾僅 Apple 明文禁止（Sony S09 係禁尖銳物戳端子）；（2）高溫軟化壓敏膠條與高壓氣流吹穿微孔膜屬工程機理推論（軟膠可援引 iFixit S20），並非原廠警告頁原句，須清楚區分原件禁令與工程機理說明，5 V 亦應標註為常見 USB 充電電壓背景。本卡併入 NET_APPLE（原始 2.50 已達 2.0 封頂上限），保守核予 0.75。"
+        },
+        {
+          "id": "K147-0218",
+          "source_ids": [
+            "X147R2-S05",
+            "X147R2-S06",
+            "X147R2-S08",
+            "X147R2-S09",
+            "X147R2-S11"
+          ],
+          "network": "NET_SONY",
+          "decision": "keep",
+          "review_weight": 0.75,
+          "checked": "已重開 Apple 108039/102643、Samsung UK、Sony G8188 與 NTT DOCOMO 核對：拔線斷電不開卡槽、Sony 弱水流手洗規格（<6 L/min、5–35 °C、約 10 cm、不刷不搓）與甩水 20+20 次／自然陰乾 2–3 小時、Apple 輕拍手掌／冷風電扇／插線至少等 5 小時、警示持續最長 24 小時（背面擦乾可無線充電）、無防水機或進水應關機送修均與原件相符。抓出兩處必改：（1）第 2 步「用常溫弱水流自來水沖洗」僅 Sony（S09）與 NTT DOCOMO（S11）明文指引（Apple S05 係導向另頁清潔指引、Samsung S08 僅寫軟布擦乾），不可稱「四大原廠一致認可沖水」；（2）Sony 甩水方向原文為「上下の向きを変え（上下換向）」，較「正反」精準。因屬跨指南彙整實操卡，保守核予 0.75。"
+        }
+      ],
+      "rejected_suggestions_checked": {
+        "X147R2-NA01": "已直接比對既有素材池 docs/videos/so-thats-why/pool/batches/wave112-x112-20261118.json，確認 G744 已完整涵蓋腕錶 30 米／5 ATM、ISO 22810 靜壓標準與德國法院判例；不收錄判斷正確。唯須微調 reason 中括號所寫卡號範圍（實際含 K112-0401–K112-0416 及 K112-0451–K112-0456、K112-0461 共 23 張卡）。",
+        "X147R2-NA02": "已直接比對 docs/videos/so-thats-why/pool/batches/wave142-everyday-20261120.json 中的 K142-0005，確已完整拆解 Apple Watch 水中鎖定防誤觸與轉動數位錶冠喇叭音調排水機制；不收錄判斷正確。",
+        "X147R2-NA03": "已於 Castle Compliance（S03）與 IEC 部落格（S02）核對 IPX9／車用 ISO 20653 IP69K 差異（~80 °C、100 bar、噴嘴角度與命名不同），排除以聚焦消費級手機 IP68 主線之編輯判斷合理。"
+      },
+      "changes": [
+        "嚴格將 IEC（S01–S02）、Castle Compliance（S03）與 JQA（S04）全數歸併為單一 NET_IEC_60529 網路（原始 2.75 嚴格封頂 2.0），徹底消除 IEC 60529 標準規則跨機構重複計分。",
+        "將 Apple 三份支援文件（S05–S07）併為單一 NET_APPLE（原始 2.50 封頂 2.0）、Sony 兩份手冊（S09–S10）併為 NET_SONY（1.75）、Gore 兩份產品規格頁（S12–S13）併為 NET_GORE（2.0）；NASA／肯塔基大學（S15）與 NTT DOCOMO（S11）各列交叉佐證不重複計網，確保每張卡僅歸屬單一主網。",
+        "基於細節密度與跨卡重疊保守下調 5 張卡權重為 0.75（K147-0203、K147-0206、K147-0216、K147-0217、K147-0218），合計 11 個嚴格歸併之獨立網路、加權 15.5 條事實、預估 11.6 分鐘。",
+        "列出 19 項具體必改修訂（required_fixes），涵蓋 Samsung 保固頁未載排除條文、ACCC 原稿未提「海灘衝浪」、iPhone SE 第 3 代 IP67 例外、K147-0211 漏寫 0.001 M 比較基準、K147-0209 疏油 vs 未疏油 PTFE 與油堵／透鹽區分、K147-0210 5.4 分鐘可見水滴時序、K147-0216 iFixit S20 超寫及多處歸屬與換算標籤微調。"
+      ],
+      "required_fixes_applied": 19,
+      "unverified": [
+        "IEC 60529 付費標準正式條文 PDF 未直接購入檢視，其條款（第 1 類外殼 2 kPa／80 倍容積、5 K 溫差、IPX1–6 與 IPX7–8 分軌）係由 IEC 官方頁、ISO/IEC 17025 認證試驗所 Castle Compliance、JNLA 認證試驗所 JQA 及 Sony／Apple／Samsung 官方文件交叉確認，已嚴格歸併為單一網路並封頂 2.0。",
+        "Apple 108039（S05）內嵌指向之獨立清潔說明子頁未納入本次來源清單，故 K147-0218 已要求僅將「常溫弱水流自來水沖洗」歸屬於明文記載該步驟的 Sony（S09）與 NTT DOCOMO（S11）。",
+        "台灣消保會或標檢局目前尚無針對 IP68 手機保固爭議之公開專案裁罰公告可供對照；本題法律段以義大利 AGCM（2020）與澳洲聯邦法院 ACCC（2022）第一手公告為證，寫稿時須維持法域邊界，不推論台灣個案必定比照裁罰。"
+      ],
+      "note": "G794 題材貼近日常痛點、技術與法規雙軸並進，6 章節總長 540 秒與 target_minutes=9 完全吻合，且經實查既有素材池確認與 G744（腕錶 30 米）及 K142-0005（Apple Watch 喇叭排水）零重疊。全部 20 筆第一手非維基來源均已獨立重開驗證（20/20 存活），即便採取最嚴格併網（將 IEC＋Castle Compliance＋JQA 併為單一 2.0 封頂網路，且不為 DOCOMO／NASA 另加額外網路權重），仍達 11 個獨立網路、15.5 條加權事實、預估 11.6 分鐘，並具 5 個可驗證反轉，遠高於 11.4 條／8.5 分鐘成題門檻，判定為 ready；請整合者在合入素材池前務必逐項套用 19 項 required_fixes（尤其修正 K147-0213 Samsung 保固誤歸屬、K147-0215 刪除原稿未提之「海灘衝浪」、K147-0211 補齊 0.001 M 基準、K147-0209 區分疏油實膜與未疏油實驗 PTFE，以及 K147-0216 貼合 iFixit S20 原文）。"
+    },
+    "G795": {
+      "title": "無酒精啤酒寫「0.0%」跟「0.00%」差在哪？喝了開車會酒駕嗎？",
+      "researcher": "R147-3",
+      "reviewer": "V147-3",
+      "verdict": "ready",
+      "fact_count": 15,
+      "est_minutes": 11.3,
+      "method": [
+        "獨立非作者逐件重開並實讀 g795_research.json 全部 19 筆一手來源連結（X147R3-S01 至 X147R3-S19），透過 google:browse 與針對性全文檢索確認 19/19 筆網址全數存活、零維基百科，逐一核對法條條號、ABV 門檻、乙醇含量表（g/L 與 g/100 g）、血液／母乳／呼氣／尿液 EtG 實測數據、微生物挑戰試驗數值與研究限制。",
+        "使用 Node.js 獨立驗算全部單位換算與倍率：0.86 g/L ÷ 0.789 g/mL ÷ 10 = 0.109% ABV（≈0.11%）；3 g/L ÷ 0.789 ÷ 10 = 0.380% v/v；350 mL × 0.5% × 0.789 g/mL = 1.3808 g（≈1.38 g）；0.0056‰ = 0.00056% BAC，對臺灣 0.03% 紅線為 1/53.57（≈1/54）；0.0069 g/L SAC ÷ 1.236 = 0.00558‰；0.006–0.015 g/210 L = 0.0286–0.0714 mg/L（≈0.029–0.071 mg/L，1 g/210 L = 4.762 mg/L）；230 mg/dL = 2.3 g/L ≈ 0.29% ABV；14.1 ÷ 0.1 = 141 倍；10^2.00 = 100 倍；六章節總長 90+90+90+95+90+85 = 540 秒，與 target_minutes=9（540 秒）吻合。",
+        "從嚴併網與單卡單網歸屬（不跨網重複計分、每網封頂 2.0 條加權事實）：臺灣財政部國庫署（S01）與交通部 168 網（S02）併為「臺灣中央政府法規體系」1 網；英國 DHSC（S08）與 OHID（S09）併為「英國衛生與社會照護部體系」1 網；日本啤酒酒造組合自主基準（S04）與 BCOJ 2013 報告（S05）併為「日本啤酒酒造組合與酒類業中央團體連絡協議會」1 網；德國佛萊堡大學法醫研究所 Thierauf／Auwärter 2012（S12）與 2010（S13）同研究團隊併為 1 網；《J Anal Toxicol》三篇論文確認無共同作者且分屬不同機構（凱撒斯勞滕大學 Gorgus 2016、密蘇里州公衛實驗室 Lutmer 2009、華盛頓州毒理實驗室 Logan 1998），其中凱撒斯勞滕大學三卡（K147-0307–0309）原始 2.75 封頂為 2.0；加拿大 CFIA（S10）、華盛頓州毒理實驗室（S19）與朝日×筑波大學（S06）均採單卡交叉佐證不重複另計網重；純摘要／二手彙整／個案報告／酒廠手冊來源之卡片均誠實降權至 0.75。",
+        "敏感度壓力測試：即便進一步將日本國稅廳（S03）與日本酒業團體（S04–S05）強行併成單一「日本」網（封頂 2.0，扣 0.75）並將三篇《J Anal Toxicol》論文全數併為單一期刊網（封頂 2.0，扣 0.75），總分仍達 13.5 條（10.1 分鐘），遠高於 11.4 條／8.5 分鐘成題門檻。",
+        "比對既有素材池 docs/videos/so-thats-why/pool/themes.json（特別是 G748 洋芋片營養標示「本包裝含 2.5 份」）與 pool.json 全部啤酒相關卡（K119-0009、L49-004、LEG-B59 等），確認無實質重疊，並逐卡稽核酒駕法律免責邊界、飲食健康非建議原則與不收錄案 X147R3-NA01–NA03。"
+      ],
+      "networks": [
+        "臺灣中央政府法規體系（財政部國庫署 S01＋交通部路政及道安司 S02）",
+        "美國聯邦酒菸稅貿局（U.S. TTB / eCFR 27 CFR § 7.65，S07）",
+        "英國衛生與社會照護部體系（UK DHSC S08＋OHID S09；加拿大 CFIA S10 交叉佐證）",
+        "日本國稅廳（National Tax Agency, Japan，S03）",
+        "日本啤酒酒造組合與酒類業中央團體連絡協議會（自主基準 S04＋BCOJ S05）",
+        "德國凱撒斯勞滕大學食品化學與毒理學團隊（Gorgus et al., 2016, J Anal Toxicol，S11）",
+        "德國佛萊堡大學法醫研究所（Thierauf & Auwärter et al., 2010 S13＋2012 S12；朝日×筑波大學 S06 交叉佐證）",
+        "美國密蘇里州公衛實驗室（Lutmer et al., 2009，S14；華盛頓州毒理實驗室 Logan & Distefano 1998 S19 交叉佐證）",
+        "美國 ARO Consulting LLC 呼氣酒測法醫個案研究（Olson, 2025, Forensic Sci Int: Synergy，S15）",
+        "義大利農業研究委員會食品工程綜論（CREA Rome — D'Andrea et al., 2026, Foods，S16）",
+        "土耳其阿達納科大＋捷克布拉格化工大釀造微生物團隊（Yabacı Karaoğlan & Dostálek, 2026, Front Microbiol，S17）",
+        "加拿大多倫多病童醫院 Motherisk 臨床毒理計畫（Adiong, Koren et al., 2014, Can Fam Physician，S18）"
+      ],
+      "network_weights": {
+        "臺灣中央政府法規體系（財政部國庫署 S01＋交通部路政及道安司 S02）": 1,
+        "美國聯邦酒菸稅貿局（U.S. TTB / eCFR 27 CFR § 7.65，S07）": 1,
+        "英國衛生與社會照護部體系（UK DHSC S08＋OHID S09；加拿大 CFIA S10 交叉佐證）": 1,
+        "日本國稅廳（National Tax Agency, Japan，S03）": 0.75,
+        "日本啤酒酒造組合與酒類業中央團體連絡協議會（自主基準 S04＋BCOJ S05）": 2,
+        "德國凱撒斯勞滕大學食品化學與毒理學團隊（Gorgus et al., 2016, J Anal Toxicol，S11）": 2,
+        "德國佛萊堡大學法醫研究所（Thierauf & Auwärter et al., 2010 S13＋2012 S12；朝日×筑波大學 S06 交叉佐證）": 1.5,
+        "美國密蘇里州公衛實驗室（Lutmer et al., 2009，S14；華盛頓州毒理實驗室 Logan & Distefano 1998 S19 交叉佐證）": 0.75,
+        "美國 ARO Consulting LLC 呼氣酒測法醫個案研究（Olson, 2025, Forensic Sci Int: Synergy，S15）": 0.75,
+        "義大利農業研究委員會食品工程綜論（CREA Rome — D'Andrea et al., 2026, Foods，S16）": 1.75,
+        "土耳其阿達納科大＋捷克布拉格化工大釀造微生物團隊（Yabacı Karaoğlan & Dostálek, 2026, Front Microbiol，S17）": 1.75,
+        "加拿大多倫多病童醫院 Motherisk 臨床毒理計畫（Adiong, Koren et al., 2014, Can Fam Physician，S18）": 0.75
+      },
+      "turns": [
+        "反轉 1（跨國標示分裂與日本寬法嚴自律）：同一詞「Alcohol-Free」在美國聯邦法必須完全零酒精（27 CFR § 7.65(f)）、在英格蘭指引與加拿大 CFIA 放寬到 0.05%（或 <0.05%）、在義大利低於 1.2% 即屬無酒精；反觀法律酒類紅線最寬的日本（酒稅法 ≥1%），酒業九團體自律基準反而把無酒精飲料死鎖在 0.00%（BCOJ 九實驗室定出 <0.005% 檢驗底線），且即便酒精為 0.00% 仍強制標「20 歲以上飲用想定」以防未成年行為習慣化（K147-0301–K147-0306）。",
+        "反轉 2（日常食品天然乙醇與早餐漢堡包震撼）：0.5% 門檻源於自然界微發酵常態；德國凱撒斯勞滕大學氣相層析實測顯示葡萄汁（0.29–0.86 g/L）、柳橙汁、蘋果汁與過熟香蕉皆含天然乙醇，而包裝美式漢堡包（1.28 g/100 g）與法式牛奶餐包（1.21 g/100 g）每 100 克所含乙醇量幾乎追上一整罐 350 mL 0.5% 無酒精啤酒（1.38 g【換算】），6 歲兒童日常飲食即攝入平均 10.3 mg/kg 乙醇並疊加人體內生性乙醇（K147-0307–K147-0309）。",
+        "反轉 3（血中極微 vs 口腔殘留 15 分鐘假陽性）：佛萊堡法醫實測 67 人 1 小時喝 1.5 L 0.41–0.42% 無酒精啤酒，七成測不到 BAC、最高僅 0.0056‰（約臺灣 0.03% 紅線之 1/54【換算】）；但呼氣酒測器仍可能在飲用微量酒精飲品或吃發酵麵包後 1 分鐘內因「口腔殘留酒精」測出陽性讀數，且儀器斜率演算法仍有漏判案例，唯靠 15 分鐘觀察期歸零，同時不能作為個人駕車免責保證（K147-0310–K147-0312）。",
+        "反轉 4（抽酒精不只帶走香味，還會讓啤酒變更苦、成本更高）：物理脫醇會連同揮發性酯類與高級醇抽離並墊高設備與防污成本，生物限醇易殘留麥芽糖與生麥汁味史特雷克醛類；更反直覺的是乙醇原本能部分壓抑酒花苦味，拿掉乙醇後等量啤酒花喝起來反而更苦，釀酒師被迫下修苦度至 IBU 10–25（K147-0313–K147-0315）。",
+        "反轉 5（比酒駕更易踩中的三道隱形地雷）：第一，加拿大 Motherisk 抽驗 45 款宣稱無／低酒精飲品發現 29%（13/45）超標、部分 0.0% 標示實測高達 1.8% ABV；第二，飲用 2.5 L <0.5% 無酒精啤酒雖血中與尿中乙醇均陰性，但職場與戒酒監測用之尿液 EtG／EtS 全數超標（隔夜累積個案達 14.1 mg/L＝0.1 mg/L 門檻之 141 倍【換算】）；第三，失去 4–10% 乙醇抑菌屏障且 pH > 4.20 時，E. coli O157:H7 與 S. enterica 於 14°C 放置 63 天增殖約 2.00 log（百倍【換算】），4°C 則零增殖（K147-0316–K147-0318）。"
+      ],
+      "card_verdicts": [
+        {
+          "id": "K147-0301",
+          "source_ids": [
+            "X147R3-S01"
+          ],
+          "network": "臺灣中央政府法規體系（財政部國庫署 S01＋交通部路政及道安司 S02）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開財政部主管法規共用系統《菸酒管理法》（民國 106 年 12 月 27 日修正）全文核對：第 4 條第 1–2 項（>0.5%、攝氏 20 度乙醇容量百分比）、第 34 條（非菸酒製品不得為使人誤信為菸酒之標示廣告促銷）與第 52 條第 2 款（罰鍰 5 萬至 25 萬元）均精準吻合。抓出 1 處法條口徑須微調：內文稱「也不受未滿 18 歲禁止販賣與酒類專區陳列限制」，實則第 30 條第 1 項係禁止無法辨識年齡之販賣方式、第 35 條要求零售場所張貼不販賣予未滿 18 歲警語，且第 30 條第 2 項為「得設置專區或專櫃」而非強制（一般禁止販賣酒類予未滿 18 歲主條文另在兒少法），已列入 required_fixes。"
+        },
+        {
+          "id": "K147-0302",
+          "source_ids": [
+            "X147R3-S07"
+          ],
+          "network": "美國聯邦酒菸稅貿局（U.S. TTB / eCFR 27 CFR § 7.65，S07）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 eCFR 27 CFR § 7.65(a)–(f) 完整現行條文核對：§ 7.65(e) 對 non-alcoholic 之 <0.5% ABV 上限、緊鄰高對比警句「contains less than 0.5 percent (or .5%) alcohol by volume」、零寬容度及禁止單獨標示 0.0%（除非同時符合 (f) 標示 alcohol free 且不含酒精）、§ 7.65(f) alcohol free 零酒精零寬容度、§ 7.65(d) low/reduced alcohol <2.5% ABV 均與原件一字不差。"
+        },
+        {
+          "id": "K147-0303",
+          "source_ids": [
+            "X147R3-S08",
+            "X147R3-S09",
+            "X147R3-S10",
+            "X147R3-S16"
+          ],
+          "network": "英國衛生與社會照護部體系（UK DHSC S08＋OHID S09；加拿大 CFIA S10 交叉佐證）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開英國 DHSC 2018 指引 PDF（S08 §1.7、§1.10、§1.13）、英國 OHID 2023 諮詢全文（S09，含 Licensing Act 2003 §191(1)(a) 0.5% 與 2023-08-01 稅改 1.2% 免稅線）、加拿大 CFIA 官方標示頁（S10，non-alcoholic/alcohol-free <0.05%、dealcoholized/low alcohol <1.1%、強制標度數 ≥1.1%、>0.5% 豁免 NFt）及 Foods 2026 第 1 節（S16，義大利 <1.2% NA、全球 0.5%/1.0%/1.15%/1.2% 四門檻）逐數吻合。須於 scope 補充 DHSC 2018 指引正式法域為英格蘭（England-only，實務可跨英國流通）。本卡只計入英國 DHSC/OHID 1 網，CFIA 與 S16 僅作交叉佐證不重複計分。"
+        },
+        {
+          "id": "K147-0304",
+          "source_ids": [
+            "X147R3-S03",
+            "X147R3-S04",
+            "X147R3-S16"
+          ],
+          "network": "日本國稅廳（National Tax Agency, Japan，S03）",
+          "decision": "keep",
+          "review_weight": 0.75,
+          "checked": "已重開日本國稅廳 Q1（S03，酒稅法第 2 條酒類 ≥1 度）、日本酒業九團體自主基準 PDF（S04 第 Ⅳ 章第 1 條 0.00%）與 Foods 2026 第 1 節（S16）核對：1% 法律門檻與 0.00% 自律基準之制度反差屬實。惟抓出 1 處無來源支撐之因果推論：內文稱「過去日本曾流通含 0.5%–0.9% 酒精的『低醇啤酒風味飲料』，消費者在駕車前容易混淆踩雷；於是日本 9 大酒業中央團體……」，S03、S04 與 S16 皆未記載「駕車混淆踩雷」為訂定第 Ⅳ 章之歷史觸發（僅 S05 顯示 <1% 樣本涵蓋至 0.9%、S16 指出 1% 門檻是日本收斂至 0.00% 的因素之一）。須依 required_fixes 刪除無出處因果故事，並保守核予 0.75 權重。"
+        },
+        {
+          "id": "K147-0305",
+          "source_ids": [
+            "X147R3-S05"
+          ],
+          "network": "日本啤酒酒造組合與酒類業中央團體連絡協議會（自主基準 S04＋BCOJ S05）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 BCOJ 2013 年度活動報告書 PDF 全文（pp. 1–15）核對：第 9 頁及第 11–14 頁證實 9 座實驗室（4 大酒廠、酒類總研、宮城大學、島津、Agilent、Thermo Fisher；Orion 因沖繩氦氣供應吃緊未參加）、第 12 頁白紙黑字載明「アルコール 0.00%(v/v)を表示するためにはエタノール濃度が 0.005%(v/v)未満であることを確認する必要がある」、定量範圍 0.005% 至未滿 1%(v/v)、RSDr 0.6–2.3%、RSDR 1.5–4.3% 均精準無誤。建議補掛 S09 佐證「0.0% 常含至 0.05%」並釐清 JIS Z 8401:1999 於原報告中係用於儀器輸出值修約至小數點後 4 位。"
+        },
+        {
+          "id": "K147-0306",
+          "source_ids": [
+            "X147R3-S04",
+            "X147R3-S06",
+            "X147R3-S09"
+          ],
+          "network": "日本啤酒酒造組合與酒類業中央團體連絡協議會（自主基準 S04＋BCOJ S05）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開《自主基準》（令和 8 年／2026 年 7 月 1 日最終改正施行）第 6–8 頁核對：第 Ⅳ 章對 0.00% 無酒精飲料要求標示「20 歲以上對象」、禁止沿用既有酒類相同品牌名或易混淆意匠、中小學高中周邊 100 公尺禁設屋外張替式大型商品廣告看板、零售通路比照酒類分區陳列與年齡確認，皆逐條吻合；並核對 S06 第 8 頁標示及 S09 英國 OHID 文件引述 Alcohol Change（年僅 10 歲孩童易辨識酒商品牌標誌）與 Institute of Alcohol Studies（青少年難分 NoLo 與真酒）原文無誤。本卡與 K147-0305 併計該網合計 2.0 封頂。"
+        },
+        {
+          "id": "K147-0307",
+          "source_ids": [
+            "X147R3-S11",
+            "X147R3-S12"
+          ],
+          "network": "德國凱撒斯勞滕大學食品化學與毒理學團隊（Gorgus et al., 2016, J Anal Toxicol，S11）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 Gorgus 等人（2016）PMC5421578 全文及 Table I 核對：葡萄汁 0.29–0.86 g/L（獨立驗算 0.86 g/L ≈ 0.109% ≈ 0.11% ABV【換算】）、柳橙汁 0.16–0.73 g/L、蘋果汁 0.06–0.66 g/L、德國食品法典 0.38% v/v（3 g/L）、歐盟葡萄汁 1% v/v、香蕉綠皮 <LOQ／熟果 0.02／過熟褐斑 0.04 g/100 g（且討論段引用 Musshoff 2010 室溫放 9 天 0.5 g/100 g）全數吻合，原作者亦正確避開 Gorgus 討論段 0.4 g/100 g 筆誤。須依 required_fixes 微調二處：(1) 1954 德國果汁業 0.5% 起源來自 S12 酒廠資料冊第 5 頁無原法條出處之背景文字，應明確標註為酒廠彙整背景而非同儕審查史實；(2) S11 摘要誤將含粉紅葡萄汁（0.29 g/L）之葡萄汁統稱「紅葡萄汁」，須改為「葡萄汁」。"
+        },
+        {
+          "id": "K147-0308",
+          "source_ids": [
+            "X147R3-S11"
+          ],
+          "network": "德國凱撒斯勞滕大學食品化學與毒理學團隊（Gorgus et al., 2016, J Anal Toxicol，S11）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 Gorgus 等人（2016）Table I 核對：美式包裝漢堡包 1.28 ± 0.08 g/100 g、法式甜牛奶餐包 1.21 ± 0.02 g/100 g、小麥黑麥麵包 0.29 ± 0.02 g/100 g、白吐司 0.18 ± 0.01 g/100 g、散裝小麥麵包 0.12 ± 0.01 g/100 g、乾燥紙袋包裝之北歐脆餅與烤麵包乾均 <LOQ；獨立驗算 350 mL × 0.5% × 0.789 g/mL = 1.3808 g（≈1.38 g【換算】）無誤。抓出 1 處超出來源推論：內文稱「被塑膠密閉包裝封住（或額外噴灑防霉乙醇）」，但 Gorgus（2016）全文未提及「噴灑防霉乙醇」亦未指明「塑膠」材質，僅對照一般包裝與乾燥透氣紙／紙板包裝，推論製程與包裝程序顯著影響乙醇含量，已列 required_fixes 刪修。"
+        },
+        {
+          "id": "K147-0309",
+          "source_ids": [
+            "X147R3-S11",
+            "X147R3-S12"
+          ],
+          "network": "德國凱撒斯勞滕大學食品化學與毒理學團隊（Gorgus et al., 2016, J Anal Toxicol，S11）",
+          "decision": "keep",
+          "review_weight": 0.75,
+          "checked": "已核對 Gorgus 等人（2016）Table II、Table III 與前言：6 歲 20 kg 兒童每日蘋果汁 162.8 mL、麵包 74.8 g（不含美式漢堡包）、香蕉 23.5 g 平均攝入 0.21 g 乙醇（10.3 mg/kg b.w.），高攝取情境達 12.5–23.3 mg/kg（為 EMA/CHMP 6 mg/kg 警語信號基準之 2.1–3.9 倍）；另引述 Jones 等人（1983）清醒者內生性乙醇 0.39 ± 0.45 µg/mL 及 S12 第 5 頁 4% 受試者 ≤0.001‰。因內生性乙醇屬二手轉引與酒廠資料冊附述，保守核予 0.75，且凱撒斯勞滕大學三卡（1.0+1.0+0.75=2.75）依單網上限嚴格封頂為 2.0。"
+        },
+        {
+          "id": "K147-0310",
+          "source_ids": [
+            "X147R3-S12",
+            "X147R3-S02"
+          ],
+          "network": "德國佛萊堡大學法醫研究所（Thierauf & Auwärter et al., 2010 S13＋2012 S12；朝日×筑波大學 S06 交叉佐證）",
+          "decision": "keep",
+          "review_weight": 0.75,
+          "checked": "已重開 S12 英文 10 頁 PDF（含第 3 頁 Table 1 與第 4 頁轉載 Rechtsmedizin 2012;22:244–247 摘要）及 S02 交通部 168 網核對：78 人招募／67 人納入、禁酒 5 天、1 小時喝 1.5 L 0.41–0.42% 無酒精啤酒、HS-GC-FID 檢出 20/67（70% 未檢出）、最高 BAC 0.0056‰（Table 1 受試者 P62 血清 0.0069 g/L，年齡 75 歲、體重 72 公斤；手冊第 2 頁誤將 72 公斤寫成 72 歲，卡片稱「七旬長者」幸未出錯），對照臺灣 0.03% 紅線確為約 1/54【換算】。惟 S12 屬酒廠發行之資料冊（0.0024‰ 均值與 30 分鐘歸零見第 2 頁而非第 4 頁論文摘要），且正文結尾須明文補上「此實驗絕不構成個人駕車不涉酒駕之法律保證」，並移除 notes 未經 S12 證實之「肝臟首渡代謝速率」推論；因非直接取得 Springer 全文，誠實降權為 0.75。"
+        },
+        {
+          "id": "K147-0311",
+          "source_ids": [
+            "X147R3-S14",
+            "X147R3-S19"
+          ],
+          "network": "美國密蘇里州公衛實驗室（Lutmer et al., 2009，S14；華盛頓州毒理實驗室 Logan & Distefano 1998 S19 交叉佐證）",
+          "decision": "keep",
+          "review_weight": 0.75,
+          "checked": "已重開 PubMed PMID 19371466（Lutmer et al. 2009，密蘇里州衛生部）與 PMID 9602932（Logan & Distefano 1998，華盛頓州毒理實驗室）完整摘要核對：27 款能量飲料 24 款（88.9%）含 5–230 mg/dL 乙醇、飲畢 1 分鐘內 11/27（40.7%）吹攜帶式儀器測得 0.006–0.015 g/210 L（獨立驗算 ≈ 0.029–0.071 mg/L【換算】）、15 分鐘後攜帶式與證據級 DataMaster／Intox EC/IR II 全歸零 0.000 g/210 L，以及麵包／軟性飲料立即吹 DataMaster 可出表觀讀數且 15 分鐘觀察期消除，均與摘要吻合。須微調內文與第四章摘要：明註 0.029–0.071 mg/L 屬非零陽性讀數（未達臺灣 0.15 mg/L 行政罰紅線），避免第四章「亮紅燈」造成誇大誤導。因兩篇皆僅核對 PubMed 摘要，保守核予 0.75，且單卡不重複計入第二網。"
+        },
+        {
+          "id": "K147-0312",
+          "source_ids": [
+            "X147R3-S15",
+            "X147R3-S02"
+          ],
+          "network": "美國 ARO Consulting LLC 呼氣酒測法醫個案研究（Olson, 2025, Forensic Sci Int: Synergy，S15）",
+          "decision": "keep",
+          "review_weight": 0.75,
+          "checked": "已重開 PMC11786920（Olson 2025）全文與 S02 交通部 168 網核對：標準深肺呼氣酒精曲線（先快升後緩升）、斜率偵測演算法原理、3 起 DataMaster DMT 漏判個案及測前連續 15 分鐘觀察期之重要性皆與原文相符；臺灣行政罰 0.15 mg/L（血液 0.03%）與刑法 0.25 mg/L（血液 0.05%）門檻吻合。抓出 3 項須修訂細節：(1) 刑法第 185 條之 3 罰金為「得併科新臺幣 30 萬元以下罰金」，卡片漏了「得」與「以下」；(2) 結尾「留出緩衝時間或改選 0.00% 仍是最穩妥的做法」偏個人行為建議，應改為客觀儀器風險與不作駕車免責保證陳述；(3) scope 應明註 Olson 2025 係美國酒駕辯護法醫顧問撰寫之 3 起實飲酒類合併胃逆流／觀察疏漏個案報告，且 15 分鐘觀察期引自美國法醫文獻而非臺灣警政 SOP。考量個案報告性質與作者利益揭露，保守核予 0.75。"
+        },
+        {
+          "id": "K147-0313",
+          "source_ids": [
+            "X147R3-S16",
+            "X147R3-S09"
+          ],
+          "network": "義大利農業研究委員會食品工程綜論（CREA Rome — D'Andrea et al., 2026, Foods，S16）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 MDPI Foods 2026（S16 第 4.2 節）與英國 OHID 2023 諮詢文件「Price」段（S09）核對：物理脫醇導致關鍵酯類與高級醇流失、風味失衡偏酸，旋轉錐管柱（SCC）以離心薄膜蒸發回收揮發物，逆滲透膜（RO）高壓低溫過濾後須經透濾補水（diafiltration／make-up）與重新充氣，以及英國業者反映 NoLo 啤酒因脫醇設備投資、補救風味原料、缺少酒精天然防腐需額外防污染處理與規模經濟不足導致製造成本與餐飲均價常高於一般啤酒（Sheffield 大學分析），均逐句核實無誤。"
+        },
+        {
+          "id": "K147-0314",
+          "source_ids": [
+            "X147R3-S17",
+            "X147R3-S16",
+            "X147R3-S06"
+          ],
+          "network": "土耳其阿達納科大＋捷克布拉格化工大釀造微生物團隊（Yabacı Karaoğlan & Dostálek, 2026, Front Microbiol，S17）",
+          "decision": "keep",
+          "review_weight": 0.75,
+          "checked": "已重開 PMC13236638（S17 第 2.1 與 2.2.1.1 節）、MDPI Foods 2026（S16 第 4.1.1–4.1.4 節）與朝日 CSR 手冊（S06 第 5 頁）核對：>75°C 高溫糖化使 β-澱粉酶失活、中斷發酵 AF、0–8°C 低溫接觸發酵 CCF、麥芽糖陰性非釀酒酵母（S. ludwigii、P. kluyveri 先導試驗 0.12–0.26% v/v 兼產果香乙酸酯）、史特雷克醛（methional、2-/3-methylbutanal）生麥汁味與硫化物、以及 Asahi Zero 濃釀脫醇（28 kcal、6.9 g 糖質、逾兩倍旨味）皆核實無誤。抓出 1 處超出來源歸屬：S06 第 5 頁並未記載 Dry Zero 係「完全跳過發酵、用麥芽與酒花萃取調配」（僅載明 0.00%、0 kcal、0 g 糖質）；「無發酵原料調配」製程路線實際載於 S09（英國 OHID 諮詢文件），須依 required_fixes 改掛 S09 並修正 S06 描述。考量部分先導數據屬綜論轉引且須修 S06 歸屬，保守核予 0.75。"
+        },
+        {
+          "id": "K147-0315",
+          "source_ids": [
+            "X147R3-S17"
+          ],
+          "network": "土耳其阿達納科大＋捷克布拉格化工大釀造微生物團隊（Yabacı Karaoğlan & Dostálek, 2026, Front Microbiol，S17）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 PMC13236638（S17 第 2.1 節與 Table 1）逐句核對：乙醇三大口腔物理機制（液體黏度厚實感、口腔溫熱刺激、揮發香氣搬運至鼻後嗅覺）、生物法無酒精啤酒甘油 0.4–1.0 g/L vs 傳統啤酒 1–2 g/L、乙醇原具部分壓抑苦味效應故移除後等量酒花更苦、建議 IBU 10–25、糊精（>30 g/L）與高分子阿拉伯木聚糖（HMW-AX >1.5 g/L）聯用補厚酒體均完全吻合。抓出 1 處數學措辭誇大：「0.4–1.0 g/L（不到傳統啤酒 1–2 g/L 的一半）」在區間上緣 1.0 與下緣 1.0 相接，應修正為「低於傳統啤酒的 1–2 g/L（約僅一半左右）」。"
+        },
+        {
+          "id": "K147-0316",
+          "source_ids": [
+            "X147R3-S18"
+          ],
+          "network": "加拿大多倫多病童醫院 Motherisk 臨床毒理計畫（Adiong, Koren et al., 2014, Can Fam Physician，S18）",
+          "decision": "keep",
+          "review_weight": 0.75,
+          "checked": "已重開 PMC4131961（Adiong, Kim, Koren & Bozzo 2014）全文核對：Motherisk 自家研究（Goh et al. 2010，共同資深作者 Koren）實測 45 款宣稱無／低酒精飲品有 13 款（29%）高於標示、部分標 0.0% 者高達 1.8% ABV，孕期無已知安全劑量故建議全面避開；轉引佛萊堡團隊 Schneider 等人（2013）15 名哺乳婦女實測（僅 2 人飲畢當下母乳測得最高 0.0021 g/L，檢出限 0.0006 g/L，1 小時後檢不出）。抓出 2 處必須修正之錯誤：(1) 原文寫「up to 1.5 L」且未提「1 小時內」，卡片誤將 S12 的「1 小時內喝 1.5 公升」套用到哺乳研究；(2) visual 寫「45 瓶標著 0.0%」，實為 45 瓶宣稱無酒精或低酒精飲品（僅其中部分標 0.0%）。因屬簡短臨床專欄彙整自家舊研究並二手轉引佛萊堡研究，保守核予 0.75。"
+        },
+        {
+          "id": "K147-0317",
+          "source_ids": [
+            "X147R3-S13",
+            "X147R3-S09",
+            "X147R3-S06"
+          ],
+          "network": "德國佛萊堡大學法醫研究所（Thierauf & Auwärter et al., 2010 S13＋2012 S12；朝日×筑波大學 S06 交叉佐證）",
+          "decision": "keep",
+          "review_weight": 0.75,
+          "checked": "已重開 PubMed PMID 20457499（Thierauf et al. 2010 摘要）、英國 OHID 諮詢文件（S09 引述 Caballeria et al. 2022）及朝日×筑波大學手冊第 4 頁（S06，吉本尚等 2022 n=122 RCT）核對：飲用 2.5 L 德國 <0.5% 無酒精啤酒後血與尿乙醇皆陰性，但 LC-MS/MS 尿液 3 名受試者達 EtG 0.30–0.87 mg/L、EtS 0.04–0.07 mg/L（超 0.1 mg/L 門檻），另 1 名隔夜累積達 14.1 mg/L EtG 與 16.1 mg/L EtS（141 倍【換算】）；AUD 渴求／復發風險與筑波試驗 67.3%（對照組 91.5%）、63% 替代減量均與原件相符。須修訂：正文「140 倍」改與 scope 統一為「141 倍【換算】」、補上筑波試驗對照組 91.5% 及酒廠合作研究限制，並修正第六章避免將單一隔夜極端值泛化為必然超標百倍。因 S13 僅核對 PubMed 摘要且同屬佛萊堡團隊，核予 0.75（該網合計 1.5）。"
+        },
+        {
+          "id": "K147-0318",
+          "source_ids": [
+            "X147R3-S16"
+          ],
+          "network": "義大利農業研究委員會食品工程綜論（CREA Rome — D'Andrea et al., 2026, Foods，S16）",
+          "decision": "keep",
+          "review_weight": 0.75,
+          "checked": "已重開 MDPI Foods 2026 第 4.1.6 節核對：傳統啤酒 4–10% 乙醇與 pH 3.8–4.5 等多重抑菌防線、無酒精啤酒（<0.5% ABV）接種 E. coli O157:H7 與 S. enterica（~10^5 CFU/mL）於 14°C 放置 63 天增殖約 2.00 log（約百倍【換算】）而 4°C 零增殖、瓶內殘糖與殘留酵母／乳酸菌引發二次發酵產氣膨罐、pH > 4.20 配方建議審查及熱殺菌／無菌過濾＋冷鏈控溫要求均完全吻合。須依 required_fixes 將結尾指令性消費建議（「開封或買未殺菌……務必全程冷藏」）改為客觀食安管制陳述（且原挑戰試驗為密閉接種而非開封後）。因核心挑戰試驗數據係透過 S16 綜論二手引述，保守核予 0.75（CREA 網合計 1.75）。"
+        }
+      ],
+      "rejected_suggestions_checked": {
+        "X147R3-NA01": "已覆核：拒絕提供「喝 0.5% 無酒精啤酒開車保證不構成酒駕」之個人法律擔保完全正確，符合酒駕法規與實務誤差（標示誤差、口腔殘留、個人代謝）邊界；同時本覆核已要求於 K147-0310、K147-0312 與第四章正文中補強明文免責表述。",
+        "X147R3-NA02": "已覆核：排除主觀風味排行與單一商業品牌推薦完全正確，符合本池食品題不作購買推薦之原則。",
+        "X147R3-NA03": "已直接對照 docs/videos/so-thats-why/pool/themes.json 既有主題 G748（一包洋芋片的營養標示，為什麼寫「本包裝含 2.5 份」？），確與一般包裝食品營養標示份數與熱量／糖質修約規則重疊，排除判斷精準；另已掃描 pool.json 全池 9 張啤酒相關卡（K119-0009、L49-004、LEG-B59 等），確認本案與既有題庫零重疊。"
+      },
+      "changes": [
+        "嚴格合併臺灣財政部國庫署（S01）與交通部 168 網（S02）為單一臺灣政府網路（實得 1.0）；嚴格合併英國 DHSC（S08）與 OHID（S09）為單一英國政府網路（實得 1.0）；嚴格合併日本自主基準（S04）與 BCOJ 2013 報告（S05）為單一日本酒業團體網路（實得 2.0 封頂）；嚴格合併佛萊堡大學法醫研究所 2010（S13）與 2012（S12）為單一研究團隊網路（實得 1.5）。",
+        "釐清《J Anal Toxicol》三篇論文無作者重疊且分屬三所獨立機構（德國凱撒斯勞滕大學 Gorgus 2016、美國密蘇里州公衛實驗室 Lutmer 2009、美國華盛頓州毒理實驗室 Logan 1998），其中凱撒斯勞滕大學三張卡（K147-0307–0309）原始加權 2.75 依單網上限嚴格封頂為 2.0。",
+        "嚴守單卡單網原則：加拿大 CFIA（S10）、華盛頓州毒理實驗室（S19）與朝日×筑波大學（S06）僅作既有卡片交叉佐證，不重複計入獨立網路權重。",
+        "針對純 PubMed 摘要（S13、S14、S19）、酒廠彙整手冊（S12）、3 起辯護個案報告（S15）、二手臨床彙整（S18）及綜論二手轉引／須修訂歸屬之卡片（K147-0304、K147-0309、K147-0314、K147-0318）一律誠實降權至 0.75。",
+        "提出 16 項具體 required_fixes（涵蓋法條精準度、刪除無來源日本駕車因果故事與麵包噴灑防霉乙醇推論、修正哺乳試驗 1 小時誤植與 45 瓶視覺錯誤、甘油區間數學修正、補上酒駕不作法律保證聲明、去除消費指令語氣，以及第 3／4／6 章摘要連動修正）。"
+      ],
+      "required_fixes_applied": 16,
+      "unverified": [
+        "X147R3-S13（Thierauf et al., 2010, Forensic Sci Int）、X147R3-S14（Lutmer et al., 2009, J Anal Toxicol）與 X147R3-S19（Logan & Distefano, 1998, J Anal Toxicol）因期刊全文付費牆限制，獨立覆核與原作者同樣僅驗證 PubMed 完整公開摘要，未核對全文逐位受試者原始表（對應卡片均已降權至 0.75 且未引用摘要外數字）。",
+        "X147R3-S12（Thierauf et al., 2012, Rechtsmedizin 22:244–247）係透過贊助酒廠 Erdinger 發行之 10 頁英文資料冊取得（內含同儕審查摘要與 Table 1，惟手冊第 2 頁將 Table 1 75 歲／72 公斤受試者 P62 誤植為 72 歲，且 0.0024‰ 均值、30 分鐘歸零與 1954 德國果汁業沿革見於手冊敘述而非第 4 頁論文摘要）；已要求標明出處層級並降權至 0.75。",
+        "X147R3-S18（Motherisk 2014）轉引之 Goh et al. (2010) 45 款抽驗原始品牌清單與 Schneider et al. (2013) 哺乳試驗完整飲用時間方案未開啟原始付費全文，僅核實 Motherisk 專欄公開全文數值（已降權至 0.75 並修正「1 小時內」誤植）。",
+        "臺灣現行警察現場酒測 15 分鐘觀察與漱口標準作業程序細則未附臺灣警政署一手公文，本案 15 分鐘觀察期機制係以美國法醫毒理文獻（S14、S15、S19）佐證，進腳本時勿混稱為臺灣警政條文引文。"
+      ],
+      "note": "G795 題材切身、跨國法規與毒理／釀造化學反轉強烈，19 筆一手來源全數存活且零維基百科，六章節總長 540 秒與 target_minutes=9 精準吻合，且已確認與 G748（營養標示份數與修約）及現有素材池全部啤酒卡零重疊。經最嚴格併網（同國政府體系與同研究團隊合併、單卡不跨網重複計分、純摘要／二手彙整／個案報告降權至 0.75、單網上限 2.0 封頂）後，實得 12 個獨立加權網路（另含 3 個獨立交叉佐證網）、15.0 條加權事實、預估 11.3 分鐘（壓力測試再強行合併日本體系與 JAT 期刊仍達 13.5 條／10.1 分鐘），並具 5 個扎實可驗證敘事反轉，判定為 ready；整合進批次檔前請務必全數套用 required_fixes 所列 16 項修訂（特別是刪除 K147-0304 無來源因果、刪除 K147-0308 塑膠／防霉乙醇推論、修正 K147-0314 S06 歸屬與 K147-0316 哺乳 1 小時誤植、修正 K147-0315 甘油數學，以及於 K147-0310／0312 與第 4 章明文補強「不構成個人駕車免責保證」）。"
+    },
+    "G796": {
+      "title": "隔壁縣市放颱風假我家卻上班？平均七級風與350毫米雨量怎麼量？",
+      "researcher": "R147-4",
+      "reviewer": "V147-4",
+      "verdict": "ready",
+      "fact_count": 12.5,
+      "est_minutes": 9.4,
+      "method": [
+        "獨立重開並逐件查核 g796_research.json 全部 21 筆第一手官方／同行評審來源（X147R4-S01 至 X147R4-S21），確認全部網址存活、非維基百科，並逐項核對法條條次、雨量附表、蒲福風級、陣風因子、換算係數、路徑誤差、打轉機制與研究限制；另主動加查臺灣《天然災害停止上班及上課作業辦法》後續修法紀錄，透過行政院公報資訊網（院授人培字第 11530241731 號）與雲林縣政府公告 115 年 4 月 24 日全文檔，抓出原作者遺漏之 2026 年 4 月 24 日最新修正（基隆市雨量基準自 350 mm 下修為不分山區或平地 200 mm，並將氣象局／農委會改列氣象署／農業部）。",
+        "嚴格執行機構網路歸併並設定每網上限 2.0 條加權事實：(1) 臺灣行政院體系（行政院人事行政總處、勞動部、交通部中央氣象署，S01–S08）從嚴併為單一臺灣中央政府體系網路（原始 4.75，封頂 2.0）；(2) 日本國土交通省與其外局氣象廳（MLIT + JMA，S09–S11）依法定隸屬嚴格併為單一日本政府網路（原始 2.50，封頂 2.0）；(3) 香港天文台與勞工處（HKO + HK Labour Dept，S12–S13）嚴格併為單一香港特區政府網路（1.0）；(4) 美國 NOAA/NHC（S15–S16）與三名作者均具 NOAA/NCDC 機構隸屬之 Schreck et al. 2014（S19）嚴格併為單一美國 NOAA 體系網路（2.0）；(5) WMO/TD-No. 1555（Harper et al. 2010，S14）為獨立國際組織網路（2.0）；(6) 英國氣象局（UK Met Office，S17，0.75）、臺大大氣系／中研院環變中心（Wu & Liao 2026, BAMS，S18，1.0）、臺灣颱風洪水研究中心／臺大大氣系（Su et al. 2012, JMSJ，S20，因僅讀公開摘要降權至 0.75）及馬德里理工大學水文感測團隊（Segovia-Cardozo et al. 2023, MDPI Sensors，S21，1.0）各自計網。總計 9 獨立網路、加權 12.5 條事實、預估 9.4 分鐘（round(12.5×0.75, 1)）。",
+        "執行敏感度壓力測試：(a) 若進一步將臺大大氣系相關兩篇論文（S18 Wu & Liao 2026 與 S20 Su et al. 2012）合併為單一臺大大氣網路（1.0+0.75=1.75 ≤ 2.0），總分仍維持 12.5 條／9.4 分鐘；(b) 若暫將待大修之 K147-0403 與 K147-0414 權重歸零，臺灣中央政府網路其餘已驗證卡仍達 4.25（依舊封頂 2.0），總分仍達 11.75 條／8.8 分鐘，持續高於 11.4 條／8.5 分鐘成題門檻；(c) 若依行政勞政（S01–S03）與氣象科學（S04–S08）分計兩網則可達 14.5 條／10.9 分鐘。本覆核採最嚴格單一中央政府歸併值 12.5 條／9.4 分鐘。",
+        "逐項驗算全部單位換算與編輯推算（13.9–17.1 m/s → 50.0–61.6 km/h、24.5–28.4 m/s → 88.2–102.2 km/h、15×1.66=24.9 m/s、1/0.88=1.1364 即 +13.6%、25 n mi×1.852=46.3 km、37–39 n mi×1.852=68.5–72.2 km、63–117 km/h ÷ 3.6 = 17.5–32.5 m/s、350 mm = 35 cm），逐卡稽核 K147-0401 至 K147-0418、3 筆不收錄案（X147R4-NA01 至 NA03）、6 章節秒數總和（85+95+90+90+95+85=540 秒＝target_minutes 9×60），並對照現有素材池確認與 G789（降雨機率 30%）及 G758（0403 地震警報）無實質重疊。"
+      ],
+      "networks": [
+        "臺灣中央政府體系（行政院人事行政總處／勞動部／交通部中央氣象署）",
+        "日本國土交通省與外局氣象廳體系（MLIT + JMA）",
+        "香港特別行政區政府體系（香港天文台 HKO + 勞工處）",
+        "世界氣象組織（WMO/TD-No. 1555，Harper et al. 2010）",
+        "美國國家海洋暨大氣總署體系（NOAA/NHC + NOAA/NCDC Schreck et al. 2014）",
+        "英國氣象局（UK Met Office）",
+        "國立臺灣大學大氣科學系與中研院環境變遷研究中心（Wu & Liao 2026, BAMS）",
+        "臺灣颱風洪水研究中心與臺大大氣系（Su et al. 2012, JMSJ）",
+        "馬德里理工大學水文感測研究團隊（Segovia-Cardozo et al. 2023, MDPI Sensors）"
+      ],
+      "network_weights": {
+        "臺灣中央政府體系（行政院人事行政總處／勞動部／交通部中央氣象署）": 2,
+        "日本國土交通省與外局氣象廳體系（MLIT + JMA）": 2,
+        "香港特別行政區政府體系（香港天文台 HKO + 勞工處）": 1,
+        "世界氣象組織（WMO/TD-No. 1555，Harper et al. 2010）": 2,
+        "美國國家海洋暨大氣總署體系（NOAA/NHC + NOAA/NCDC Schreck et al. 2014）": 2,
+        "英國氣象局（UK Met Office）": 0.75,
+        "國立臺灣大學大氣科學系與中研院環境變遷研究中心（Wu & Liao 2026, BAMS）": 1,
+        "臺灣颱風洪水研究中心與臺大大氣系（Su et al. 2012, JMSJ）": 0.75,
+        "馬德里理工大學水文感測研究團隊（Segovia-Cardozo et al. 2023, MDPI Sensors）": 1
+      },
+      "turns": [
+        "反轉 1（臺日「暴風圈」差 10 m/s 與強度名稱誤譯）：臺灣七級風暴風半徑畫在 15 m/s 且海陸警全盯該圈，但日本氣象廳把 15 m/s 以上僅稱「強風域」、25 m/s 以上（相當臺灣十級風）才稱「暴風域」；此外日本 33–<44 m/s 的「強い台風」在臺灣僅屬中度颱風，未滿 33 m/s 甚至不加強度形容詞（K147-0407、K147-0408）。",
+        "反轉 2（美軍風速為何永遠更兇：1 分鐘長陣風＋WMO 翻案 0.88＋衛星查表落差）：2013 年海燕颱風臺日與美軍衛星判讀同為 CI=8、895 hPa，但臺日報 63 m/s（227 km/h）、美軍報 88 m/s（317 km/h）；不僅因美國採 1 分鐘最高持續風而 WMO 採 10 分鐘平均（WMO 2010 更翻案傳統 0.88 實為離岸風、開闊海面應為 0.93），連除以 0.88 換算後西北太平洋仍為全球分歧最大海盆，關鍵在 0.5 CI 主觀差可換出 15 kt 且東京 Koba 表（10 分鐘上限 122 kt）與美軍 Dvorak 表（1 分鐘上限 170 kt）上限迥異（K147-0409–K147-0411）。",
+        "反轉 3（7 級配 10 級的流體力學乘法＋狂風暴雨下翻斗雨量計反易少算）：地表粗糙度把 3 秒陣風因子從開闊海面 1.23 倍放大至內陸 1.66 倍，15 m/s × 1.66 ＝ 24.9 m/s【推算】正好落入 10 級風區間；而翻斗式雨量計在高雨強傾倒空窗會漏算且圓筒鈍體繞流於強風下造成液態雨 2–10% 低捕獲誤差（K147-0405、K147-0406）。",
+        "反轉 4（昨晚十點一覺翻盤：56 公里硬誤差＋中央山脈逼出凱米打轉＋慢走比強颱更易釀破表雨）：臺灣近五年 12 小時官方路徑平均誤差仍達 56 km（NHC 2026 甜筒 12h 半徑 46 km 且仍有 1/3 中心落於圓外）；2024 凱米在宜花外海逆時針打轉延遲登陸 6–12 小時，1 km WRF 實驗證實移除臺灣地形即無打轉；51 年統計更顯示極端總雨量取決於移速與滯留時間而非颱風強度，北路登陸平均多滯留 3 小時、更容易產生達南路三倍的極端降雨量（K147-0412–K147-0414）。",
+        "反轉 5（停班辦法只直綁公教與學校＋基隆 2026 下修 200 mm＋東亞三地制度對照）：臺灣《作業辦法》第 2、18 條僅直綁公教與學校，民間企業適用勞動部 2025/9/19 新修要點（免曠職、宜不扣薪、出勤須給通勤協助與必要計程車費）；基隆市已於 2026/4/24 下修為不分山區平地 200 mm；對照香港 8 站過半掛八號風球與日本國土交通省 48/24 小時鐵道計畫運休（K147-0403、K147-0415–K147-0417）。"
+      ],
+      "card_verdicts": [
+        {
+          "id": "K147-0401",
+          "source_ids": [
+            "X147R4-S01"
+          ],
+          "network": "臺灣中央政府體系（行政院人事行政總處／勞動部／交通部中央氣象署）",
+          "decision": "keep",
+          "review_weight": 0.75,
+          "checked": "已重開 S01（臺北市政府彙編 PDF 第 2 頁）並對照 2026/4/24 最新全文檔核實：《作業辦法》第 4 條第 1–3 款文字未改，確為「得發布」且含四小時內暴風半徑平均風 7 級／陣風 10 級、附表雨量且已致災或有致災之虞、交通水電中斷或困難三款獨立基準。建議 S01 同步更新至 2026/4/24 現行版本。"
+        },
+        {
+          "id": "K147-0402",
+          "source_ids": [
+            "X147R4-S01",
+            "X147R4-S02"
+          ],
+          "network": "臺灣中央政府體系（行政院人事行政總處／勞動部／交通部中央氣象署）",
+          "decision": "revise_minor",
+          "review_weight": 0.75,
+          "checked": "已核對第 9、10、11、14 條全文（含 2026/4/24 修正版，氣象局已正名氣象署）：01/04/07/10/13/16/19/22 時前送表、前一日 19:00–22:00 發布（媒體 23:00 前播報）、當日零時後增強於 04:30 前發布、相鄰縣市事前協調（第 10 條第 1 項第 3 款）均準確。惟末句將第 14 條寫成「就算公司或學校所在縣市照常上班課，仍可依法登記停班課」有法規對象混用瑕疵——第 14 條僅適用公教員工（服務機關、學校），民間企業（「公司」）跨縣市通勤係依勞動部要點第 6 點第 3 款處理，須修訂。"
+        },
+        {
+          "id": "K147-0403",
+          "source_ids": [
+            "X147R4-S02",
+            "X147R4-S04"
+          ],
+          "network": "臺灣中央政府體系（行政院人事行政總處／勞動部／交通部中央氣象署）",
+          "decision": "revise_required",
+          "review_weight": 0.5,
+          "checked": "抓出重大法規時效錯誤！原作者誤以 2023/3/15 修正令（S02）為現行最新版，稱 12 縣市（含基隆）採不分區 350 mm、僅連江縣 200 mm。經獨立核查行政院 115 年 4 月 24 日院授人培字第 11530241731 號令（行政院公報），基隆市政府已於 2026/4/24 自不分區 350 mm 下修為不分山區或平地 200 mm！現行 22 縣市正確分布為：9 縣市「山區 200／平地 350（南投平地實測 300）」、11 縣市「不分區 350（宜蘭實測 250）」、2 縣市「不分區 200（連江 2023 修、實測 180；基隆 2026/4/24 修）」。CWA 豪雨 ≥200 mm／大豪雨 ≥350 mm 分級核對 S04 第 9 頁無誤。須補列 2026/4/24 公報來源並全面更正本卡與第 1 章。"
+        },
+        {
+          "id": "K147-0404",
+          "source_ids": [
+            "X147R4-S05",
+            "X147R4-S14",
+            "X147R4-S17"
+          ],
+          "network": "英國氣象局（UK Met Office）",
+          "decision": "revise_minor",
+          "review_weight": 0.75,
+          "checked": "已重開 CWA S05、UK Met Office S17 與 WMO S14（Sec 2.1 & Table 2.1）核實：CWA 7 級 13.9–17.1 m/s（50.0–61.6 km/h【換算】）、10 級 24.5–28.4 m/s（88.2–102.2 km/h【換算】）；UK Met Office 7 級代表平均風 15 m/s（30 kt）、預期浪高 4.0 m／最大 5.5 m；WMO 離地 +10 m 10 分鐘平均、開闊草地機場 z0=0.03–0.10 m、市區高樓 z0=1.0–2.0 m 以上均吻合。惟 WMO/TD-No. 1555 假設平坦無建物峽管加速，不應將「大樓巷弄的狹管加速」歸於 WMO，宜改述為高粗糙度造成之強烈近地亂流與 CWA 註記之多變地形／測站分布限制；因部分內容依賴已封頂之 WMO／CWA，保守核予英國氣象局 0.75。"
+        },
+        {
+          "id": "K147-0405",
+          "source_ids": [
+            "X147R4-S04",
+            "X147R4-S05",
+            "X147R4-S14"
+          ],
+          "network": "世界氣象組織（WMO/TD-No. 1555，Harper et al. 2010）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已核對 CWA S04 第 8–9 頁（陣風為 10 分鐘最大瞬間風速與平均風速差 >5 m/s，>10 m/s 為大陣風）及 WMO S14 Table 1.1（p. 4）G3,600 數值：At-Sea 1.23、Off-Sea 1.38、Off-Land 1.52、In-Land 1.66，全數精確吻合；驗算 15 × 1.66 = 24.9 m/s【推算】準確落於 10 級風（24.5–28.4 m/s）且已標示【推算】。"
+        },
+        {
+          "id": "K147-0406",
+          "source_ids": [
+            "X147R4-S04",
+            "X147R4-S21"
+          ],
+          "network": "馬德里理工大學水文感測研究團隊（Segovia-Cardozo et al. 2023, MDPI Sensors）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 PMC 全文（Sensors 2023, 23(12):5385）與 CWA S04 第 9 頁核實：降水量水平水深定義（350 mm = 35 cm【換算】）、翻斗雙槽翹翹板＋磁簧開關原理（Sec 3）、傾倒時間空窗遺漏與 EN 17277:2019 動態校準（A ±3%、B ±5%、C ±10%，Sec 3.1 & 4.2.2 Table 1）、鈍體繞流造成液態雨約 2–10% 低捕獲（固態 10–50%，Sec 3.2）、單點限制與雷達融合互校（Sec 2.1.2, 3.3.1, 4.4）皆完全吻合。可於備註補充極高雨強下連續水柱推力具部分補償曲線（Sec 3.1）。"
+        },
+        {
+          "id": "K147-0407",
+          "source_ids": [
+            "X147R4-S04",
+            "X147R4-S09",
+            "X147R4-S17"
+          ],
+          "network": "日本國土交通省與外局氣象廳體系（MLIT + JMA）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 CWA S04 第 12–13 頁與 JMA S09 原文核實：臺灣七級暴風圈為 15 m/s（30 kt）且海陸警（前 24h 100 km 海域／前 18h 陸地）皆以七級暴風範圍為準；日本氣象廳 15 m/s 以上稱「強風域」、25 m/s 以上稱「暴風域」，兩者相差 10 m/s 完全無誤。微調：JMA 原頁僅寫 25 m/s 未列節數，「約 48–50 節」應加標【換算】。"
+        },
+        {
+          "id": "K147-0408",
+          "source_ids": [
+            "X147R4-S04",
+            "X147R4-S06",
+            "X147R4-S09"
+          ],
+          "network": "日本國土交通省與外局氣象廳體系（MLIT + JMA）",
+          "decision": "keep",
+          "review_weight": 0.75,
+          "checked": "已核對 CWA S04 第 12 頁（輕颱 17.2–32.6、中颱 32.7–50.9、強颱 ≥51.0 m/s）與 JMA S09 雙表（強風域半徑 500–<800 km 大型、≥800 km 超大型；最大風速 33–<44 m/s 強い、44–<54 m/s 非常に強い、≥54 m/s 猛烈な；原文舉例「強い台風」為 33–43 m/s）全數精確無誤。因與 K147-0407 同出於 JMA S09 單頁，保守核予 0.75。"
+        },
+        {
+          "id": "K147-0409",
+          "source_ids": [
+            "X147R4-S06",
+            "X147R4-S16"
+          ],
+          "network": "臺灣中央政府體系（行政院人事行政總處／勞動部／交通部中央氣象署）",
+          "decision": "revise_minor",
+          "review_weight": 0.75,
+          "checked": "已重開 CWA S06 第 3 頁與 NOAA NHC S16 核實：2013 海燕颱風 CI=8、約 895 hPa、臺日 63 m/s（約 227 km/h）vs 美軍 88 m/s（約 317 km/h）完全吻合原件，NHC 離地 10 m 最高 1 分鐘平均風速定義亦無誤。惟有兩處須修正：(1) 63/88=0.716（差 28%），遠大於 K147-0410 之 1 分鐘／10 分鐘係數（0.84–0.93，88×0.88=77.4≠63），應說明 1 分鐘 vs 10 分鐘為氣象署首指主因，其餘落差來自 K147-0411 之 Koba vs Dvorak 衛星查表差異，避免與下張卡數學打架；(2) 所引 S06/S16 未提及香港 10 分鐘平均且 WMO 10 分鐘標準出自 S14，應刪「與香港」（或補出處）並補掛 S14、標示「時速 90 公里【換算】」。"
+        },
+        {
+          "id": "K147-0410",
+          "source_ids": [
+            "X147R4-S14"
+          ],
+          "network": "世界氣象組織（WMO/TD-No. 1555，Harper et al. 2010）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 WMO/TD-No. 1555（Executive Summary p. iii、Sec 1.3–1.5 pp. 2–5、Table 1.2 p. 5）逐字核對：隨機 1 分鐘樣本期望值同 10 分鐘平均、美制最大 1 分鐘持續風實為長陣風、Table 1.2 係數 At-Sea (>20 km) 0.93／Off-Sea 0.90／Off-Land 0.87／In-Land 0.84、傳統 0.88 近離岸風且低估海上 10 分鐘 Vmax 約 5%，以及 1/0.88 = +13.6%【換算】均完全正確。"
+        },
+        {
+          "id": "K147-0411",
+          "source_ids": [
+            "X147R4-S06",
+            "X147R4-S19"
+          ],
+          "network": "美國國家海洋暨大氣總署體系（NOAA/NHC + NOAA/NCDC Schreck et al. 2014）",
+          "decision": "revise_minor",
+          "review_weight": 1,
+          "checked": "已重開 MWR 2014 全文 PDF（pp. 3881–3893）並核查作者隸屬：Schreck（CICS-NC/NCSU & NOAA/NCDC）、Knapp（NOAA/NCDC）、Kossin（NOAA/NCDC）三人皆屬 NOAA 體系，故從嚴併入美國 NOAA 網路。1981–2010 IBTrACS v03r05、西北太平洋占全球 30%、除以 0.88 後 JTWC 三顆 160 kt vs 東京最高兩顆 142 kt（Table 2）、1987 停飛偵察機、CWA S06 衛星 10–15% 誤差、0.5 CI = 15 kt（p. 3883）、Koba 表上限 122 kt vs Dvorak 表 170 kt（p. 3893）全數核實。微調：須註明 Koba 122 kt 為原始 10 分鐘上限（除以 0.88 約 139 kt），否則與同段換算後 142 kt 並列易生 142>122 困惑。"
+        },
+        {
+          "id": "K147-0412",
+          "source_ids": [
+            "X147R4-S07",
+            "X147R4-S15"
+          ],
+          "network": "美國國家海洋暨大氣總署體系（NOAA/NHC + NOAA/NCDC Schreck et al. 2014）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 CWA S07（114.03.04 更新版第 1 頁）與 NOAA NHC S15（2026 Radii Table）核實：CWA 108–112 年（2019–2023）平均誤差 12h 56 km、24h 83 km、48h 143 km、72h 215 km、96h 275 km、120h 357 km（與同區域各國相當）；NHC 2026（2021–2025 統計）2/3 圓半徑 12h 25/25 n mi（46.3 km → 約 46 km【換算】）、24h 39/37 n mi（68.5–72.2 km → 約 69–72 km【換算】），仍有 1/3 落圓外。數據、換算與標記全數精準。"
+        },
+        {
+          "id": "K147-0413",
+          "source_ids": [
+            "X147R4-S18"
+          ],
+          "network": "國立臺灣大學大氣科學系與中研院環境變遷研究中心（Wu & Liao 2026, BAMS）",
+          "decision": "revise_minor",
+          "review_weight": 1,
+          "checked": "已重開 BAMS 107(3): E419–E430 全文核實：Wu（臺大大氣／中研院環變）與 Liao（臺大大氣）2026 年 3 月刊登，海棠 2005、泰利 2005、柯羅莎 2007、蘇拉 2012、凱米 2024 打轉個案（Fig. 1）、登陸延遲 6–12 h（Sec. 1）、CMR 平均逾 2,500 m／最高 3,952 m（Sec. 3）、準剛性牆白努利狹管偏北噴流、1–3 km 水平位渦平流主導與 1 km WRF 無地形對照打轉消失（Sec. 4）全數準確。惟抓出氣象風向誤譯：原文「southwesterly corner flow」意為由西南吹向東北之「西南風轉角流」（方能將颱風推回北方／東北），卡文寫成「西南向轉角流」方向相反，須修正。"
+        },
+        {
+          "id": "K147-0414",
+          "source_ids": [
+            "X147R4-S08",
+            "X147R4-S20"
+          ],
+          "network": "臺灣颱風洪水研究中心與臺大大氣系（Su et al. 2012, JMSJ）",
+          "decision": "revise_required",
+          "review_weight": 0.75,
+          "checked": "已重開 CWA S08 全文與 J-STAGE S20 完整摘要核實：濕 0.65°C/100m、乾 1°C/100m、北過臺東花蓮／南過臺中新竹焚風、51 年（1960–2010）21 站 >9 mm/hr 占總雨量 40%、70% 集中 7–10 月、與 CMR 鎖相、平均時雨強 19 mm/hr、移速與滯留時間（非強度）決定極端雨量、北路平均多滯留 3 小時皆吻合。惟抓出關鍵誤譯：原文「is more likely to produce three times as much extreme rainfall」指更容易產生「三倍極端降雨量」，非「釀出極端暴雨的機率足足是南路颱風的三倍」；另 2004/5/9 臺東 40.2°C 在 S08 係接於梅雨西南風焚風之後，不宜置於颱風焚風括號內暗示為颱風個案。因 S20 僅驗證公開摘要故權重核定 0.75。"
+        },
+        {
+          "id": "K147-0415",
+          "source_ids": [
+            "X147R4-S12",
+            "X147R4-S13"
+          ],
+          "network": "香港特別行政區政府體系（香港天文台 HKO + 勞工處）",
+          "decision": "revise_minor",
+          "review_weight": 1,
+          "checked": "已完整重開 HKO S12（2026/9/11 修訂）與香港勞工處 S13（2026 年 5 月版 15 頁 PDF）核實：2007 年起 8 座近海平面參考測風站、≥4 站持續達或預料達 63–117 km/h（17.5–32.5 m/s、蒲福 8–11 級【換算】）且預料持續始發八號信號、排除遠處外圍雨帶短暫飆風、勞工處守則停工／分批撤離／禁用年假及法定假日抵扣工時皆正確。惟有兩處須微調：(1) S12 全文並未出現「維多利亞港」字樣，應刪除「不再只看維多利亞港」或另補 HKO 歷史出處；(2)「取消後約 2 小時復工」在 S13 第 6–7 頁屬企業範例與事前約定常見時限，非全港統一法定硬線，應精準改述。"
+        },
+        {
+          "id": "K147-0416",
+          "source_ids": [
+            "X147R4-S10",
+            "X147R4-S11"
+          ],
+          "network": "日本國土交通省與外局氣象廳體系（MLIT + JMA）",
+          "decision": "revise_minor",
+          "review_weight": 0.75,
+          "checked": "已重開 MLIT 2019/7/2 新聞稿（S10）與 001296917.pdf 時間軸範本（S11）核實：2018 年 9 月第 21 號與第 24 號颱風檢討、2019/7/2 最終彙整、48h 預告可能停駛 → 24h 公布詳細計畫與振替輸送有無 → 當日末班時刻 → 通過後約 24h 內巡檢倒木／架線／土砂確認安全後分段復駛全數吻合。惟「數萬人擠爆車站」未見於 S10/S11，「日本並無政府宣布的民間颱風假」及企業居家辦公推論亦超出 MLIT 鐵道防災文件涵蓋範圍，應刪除未佐證人數並將制度對照收束回鐵道防災運休口徑（或另補厚生勞動省／內閣府勞政出處），故保守核予 0.75。"
+        },
+        {
+          "id": "K147-0417",
+          "source_ids": [
+            "X147R4-S01",
+            "X147R4-S03"
+          ],
+          "network": "臺灣中央政府體系（行政院人事行政總處／勞動部／交通部中央氣象署）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已完整重開 S01（第 2、18 條）與勞動部 114 年 9 月 19 日（2025/9/19）修正要點 PDF（S03）全文核實：作業辦法僅直綁公家機關與公私立學校、民間企業依勞基法等協商；要點第 6 點免曠工／遲到／事假／補班／扣全勤／不利處分、第 7 點「宜不扣發工資」「宜加給工資」、2025/9/19 新增第 6 點之 1 雇主仍要求出勤應提供交通工具／津貼等通勤協助並於原通勤方式困難有必要搭計程車時支付相關費用，全數精確無誤。微調：區分第 4 點事前約定（工會／勞資會議同意）與第 6 點之 1 義務，避免誤解為未事前約定即免付計程車費。"
+        },
+        {
+          "id": "K147-0418",
+          "source_ids": [
+            "X147R4-S04",
+            "X147R4-S07",
+            "X147R4-S16"
+          ],
+          "network": "臺灣中央政府體系（行政院人事行政總處／勞動部／交通部中央氣象署）",
+          "decision": "keep",
+          "review_weight": 1,
+          "checked": "已重開 CWA S04 第 13 頁、CWA S07 第 1、3、5–6 頁與 NHC Glossary S16「Landfall」條目核實：淺黃色甜筒為 120 小時內颱風中心 70% 機率範圍而非暴風圈、最強風不在風眼中心故未登陸仍可能強風襲陸、112 年（2023）新增七級風不對稱暴風區分析、113 年（2024）以 1,000 模擬成員第 50／90 百分位推出暴風可能到達時間（提前 0–12h）與可能最早到達時間（提前 12–24h）、較不適用緩慢／滯留／打轉颱風及 24 小時內改看每 3 小時颱風警報單與風雨預報，全數精準吻合。"
+        }
+      ],
+      "rejected_suggestions_checked": {
+        "X147R4-NA01": "已對照現有素材池 themes.json 與 pool.json，確認 G789（K146-0101、K146-0102 等）已完整涵蓋降雨機率 30% 定義、0.1/1/10 mm 門檻與系集驗證，不重複收錄判斷正確。",
+        "X147R4-NA02": "已對照現有素材池 themes.json 與 pool.json，確認 G758（K116-0201、K116-0203 等）已專題解析 0403 花蓮地震國家級警報門檻與實測落差，不重複收錄判斷正確。",
+        "X147R4-NA03": "颱風生成季節與全球暖化長期趨勢確實偏離本題颱風假門檻、量測物理、跨國尺度與停班制度主軸，不收錄判斷正確。"
+      },
+      "changes": [
+        "從嚴合併 4 組同體系政府／聯邦機構網路：臺灣行政院人事行政總處＋勞動部＋交通部中央氣象署（S01–S08，原始 4.75 封頂 2.0）；日本國土交通省＋外局氣象廳（S09–S11，原始 2.50 封頂 2.0）；香港天文台＋香港勞工處（S12–S13，實得 1.0）；美國 NOAA/NHC＋NOAA/NCDC Schreck et al. 2014（S15–S16＋S19，實得 2.0）。",
+        "主動查出並要求更正原稿遺漏之 2026 年 4 月 24 日《天然災害停止上班及上課作業辦法》最新修正（院授人培字第 11530241731 號，基隆市由 350 mm 下修為不分區 200 mm，現行 350 mm 不分區為 11 縣市而非 12 縣市），K147-0403 暫核 0.5 並標記 revise_required。",
+        "抓出兩處重大科學翻譯錯誤並要求修訂：K147-0414（Su et al. 2012「three times as much extreme rainfall」誤譯為機率三倍而非極端降雨量三倍，加計僅讀摘要降權至 0.75）與 K147-0413（Wu & Liao 2026「southwesterly corner flow」誤譯為「西南向」致風向顛倒）。",
+        "列出共 12 項具體修訂（含 K147-0402 法條對象混用、K147-0409 跨卡數學一致性與未引香港出處、K147-0411 Koba 122 kt 10 分鐘口徑說明、K147-0415 維多利亞港與 2 小時範例口徑、K147-0416 刪除未佐證人數與收束 MLIT 範圍、K147-0404/0407/0417 精準度微調）。"
+      ],
+      "required_fixes_applied": 12,
+      "unverified": [
+        "X147R4-S20（Su, Kuo, Hsu & Yang 2012, JMSJ 90(5):721–736）與原作者同樣僅透過 J-STAGE 公開書誌與完整英文摘要驗證（未展開 13.7 MB PDF 全文圖表），故 K147-0414 保守降權為 0.75，且禁止引用摘要以外之細項數字。",
+        "臺灣各縣市特定自動雨量站機型於強颱陣風下之現地低捕獲百分比、各縣市首長於特定颱風夜跨縣市協調通話內容，以及日本民間企業在無政府停班令下實際採居家辦公比例，均無本批公開第一手數據佐證，進腳本階段不得擅自補造量化數字。"
+      ],
+      "note": "G796 跨國視角鮮明、機制扎實（六章合計 540 秒＝target_minutes 9×60，且與 G789 降雨機率、G758 0403 地震警報無重疊）。經獨立重開全部 21 筆第一手網址並執行最嚴格同國政府／機構歸併（臺灣行政院／勞動部／氣象署全併封頂 2.0、日本 MLIT+JMA 併網封頂 2.0、香港 HKO+勞工處併網 1.0、美國 NOAA/NHC+NCDC Schreck 2014 併網 2.0），仍穩得 9 個獨立網路、12.5 條加權事實、預估 9.4 分鐘（即便再強行合併 S18＋S20 兩篇臺大大氣論文亦為 12.5 條／9.4 分鐘；即便暫扣待大修兩卡仍有 11.75 條／8.8 分鐘），並具備 5 個紮實可驗證的敘事反轉，判定為 ready。惟進整合定稿前【務必】先套用 required_fixes，特別是更新 2026 年 4 月 24 日基隆市下修 200 mm 最新附表、修正 Su et al. 2012「三倍極端降雨量（非機率）」誤譯、修正 Wu & Liao 2026「西南風轉角流（非西南向）」風向誤譯，以及釐清 K147-0402／K147-0409／K147-0415／K147-0416 之法規與口徑邊界。"
+    }
+  }
+}
