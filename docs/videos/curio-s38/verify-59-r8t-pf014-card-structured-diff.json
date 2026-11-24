@@ -1,0 +1,31 @@
+{
+  "base_sha256": "f3f49ce1fdd64ac11189dbe8b64bb7bc486e4c03566795a500f9f8b636f3de34",
+  "new_sha256": "35a23a36a8503988bdb70ff2dc2c6e3bd2f02c226891a5119f3b9756b86d2532",
+  "only_changed_fields": [
+    "scenes[13].template",
+    "scenes[13].data"
+  ],
+  "reversal": "Replace the two new field values at the listed paths with the old values to restore base_sha256 byte-for-byte; raw-text reconstruction verified.",
+  "changes": [
+    {
+      "path": "scenes[13].template",
+      "id": "pf014",
+      "old": "shot",
+      "new": "big"
+    },
+    {
+      "path": "scenes[13].data",
+      "id": "pf014",
+      "old": {
+        "prompt": "Medium shot on a high stone platform at the Tower of London on 2 September 1666, one adult English man in his thirties with mature facial features and a dark wool doublet grips the stone parapet while looking worried toward smoke above distant riverside houses, soft grey morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "new": {
+        "kicker": "佩皮斯日記・中文譯文",
+        "text": "「我為橋上的米切爾和莎拉擔心」",
+        "sub": "1666．09．02"
+      }
+    }
+  ]
+}

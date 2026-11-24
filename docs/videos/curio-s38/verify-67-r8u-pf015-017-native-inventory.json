@@ -1,0 +1,105 @@
+{
+  "round": "R8u",
+  "stage": "first-chapter-pf015-017-three-related-failures-stop",
+  "at_utc": "2026-10-22T01:29:45.227Z",
+  "creative_sha256": {
+    "video.json": "2d04002c0c4642d7cbac9cf541d03fdfb09a0c39e2dacca1b1be21371ebe23e9",
+    "claims.md": "f9de8d2771b62cc327f4e599f002af8f3278cfb0f39dbed201e7fdc857201d42",
+    "script.md": "e59ec137e3de3871e3b0e5063d8f6504d3eb2adb5fe22265eb3faa3d613d5951"
+  },
+  "paper_passed_shots": [
+    "pf015",
+    "pf016",
+    "pf017",
+    "pf019"
+  ],
+  "paid_shots": [
+    "pf015",
+    "pf016",
+    "pf017"
+  ],
+  "not_generated_shots": [
+    "pf019"
+  ],
+  "rows": [
+    {
+      "id": "pf015",
+      "original_file": "keyframes/pf015-1.jpg",
+      "original_sha256": "abd7306847e6f60556c4e8bb8ae38e5c4686617313881fed626d96ed4ede378b",
+      "selected_file": "keyframes/pf015-1-trim.jpg",
+      "selected_sha256": "2cb77b8287da163b2be726665bfa98621c7f7ec18b9325a09249854ebccfb323",
+      "machine_score": 9,
+      "machine_passed": false,
+      "machine_needs_review": true,
+      "machine_problems": [
+        "style: background uses a realistic photographic cityscape rather than the flat, simple chibi explainer palette → simple clear background in flat graphic style",
+        "details: diarist is not gripping the stone parapet as requested → hands gripping the stone parapet"
+      ],
+      "human_decision": "REJECT",
+      "human_reason": "REJECT: Adult central face but photoreal blurred cityscape and dark vignetted/letterboxed top edge break the flat cute-mystery look; hands do not grip stone parapet; no confident 1666 view.",
+      "cli_exit": 1,
+      "cli_stdout_sha256": "832fbeb6f340a807c8be452192bf412049f2b8dace94a634bbbd8eb0c1954b5e",
+      "cli_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "pf016",
+      "original_file": "keyframes/pf016-1.jpg",
+      "original_sha256": "65d780cb278b27b1289b3901dcce743126fa456831a67a4e659e7fc4964c37d7",
+      "selected_file": "keyframes/pf016-1-trim.jpg",
+      "selected_sha256": "6f5147bdad0f2660f85a55dd0dc7b6a2d32d1f7c7a84122d20924782fe9d0491",
+      "machine_score": 9.29,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "machine_problems": [
+        "details: listener is visible in the foreground left rather than outside the frame → speaking to a listener entirely outside the frame"
+      ],
+      "human_decision": "REJECT",
+      "human_reason": "REJECT: Oral exchange is present, but officer reads as childlike in gold-striped near-uniform, not a mature 1666 English Tower official. Extra foreground listener is minor; no prior map or electric lamp.",
+      "cli_exit": 1,
+      "cli_stdout_sha256": "8379b8dfe21329b3842cc472a1da516fb124d3e131864e75905317462851f65e",
+      "cli_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "pf017",
+      "original_file": "keyframes/pf017-1.jpg",
+      "original_sha256": "0bfe93225da253b3e21db45bc1d669eaf3413986f074bc82dca30b17ac335525",
+      "selected_file": "keyframes/pf017-1-trim.jpg",
+      "selected_sha256": "8341392a136db1e0308a72edf7cd2b94abb7b2b13473a5f690340c44003d7cc7",
+      "machine_score": 10,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "machine_problems": [],
+      "human_decision": "REJECT",
+      "human_reason": "REJECT: Diarist holds and looks at a thick book, changing the officer’s oral account into apparent written evidence. Youthful look, photo-textured wall and original black top/bottom bars compound mismatch; crop removes bars but not the book.",
+      "cli_exit": 1,
+      "cli_stdout_sha256": "1fe3863a9bbc99c07bd84f86fa097088ab24c8e6095ef8a55552e6c882cbf7db",
+      "cli_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "ledger_before": {
+    "usd": 0.6235,
+    "images": 41,
+    "clip_seconds": 0,
+    "music": 1,
+    "judge_calls": 40,
+    "reserved": 0.0035,
+    "reservations": 1
+  },
+  "ledger_after": {
+    "usd": 0.664,
+    "images": 44,
+    "clip_seconds": 0,
+    "music": 1,
+    "judge_calls": 43,
+    "reserved": 0.0035,
+    "reservations": 1
+  },
+  "manifest_before_sha256": "121fa94cb357ee891b1c8c4b01df909753a536f9b58bc6b69d1decd39c81fcfa",
+  "manifest_after_sha256": "f7a59d911265142c53bf70c3dbdb99b6c21abd8a9321449f4a4d150036371dc1",
+  "ledger_before_sha256": "86bf09c92238cfc7ff44001955c19bf6cd5e580e64bc52e342ea91f0c1bca6c4",
+  "ledger_after_sha256": "427e1fcbf6f0be36ecd28ac66de5ed98277a195ae2a2057f648838403dd476e3",
+  "prior_nine_keep_entries_and_files_unchanged": true,
+  "prior_nine_changed": [],
+  "stop_present_after": true,
+  "full_storyboard_approved": false
+}

@@ -1,0 +1,97 @@
+{
+  "round": "R8v",
+  "stage": "pf015-017-third-final-one-take-native-review",
+  "at_utc": "2026-10-22T01:42:56.750Z",
+  "creative_sha256": {
+    "video.json": "fd506ba278ffbcbb2b17908b957eb9a2163a2d26cd3b2b78556bab365212b7f4",
+    "script.md": "e59ec137e3de3871e3b0e5063d8f6504d3eb2adb5fe22265eb3faa3d613d5951",
+    "claims.md": "f9de8d2771b62cc327f4e599f002af8f3278cfb0f39dbed201e7fdc857201d42"
+  },
+  "paid_shots": [
+    "pf015",
+    "pf016",
+    "pf017"
+  ],
+  "not_generated_shots": [
+    "pf019"
+  ],
+  "rows": [
+    {
+      "id": "pf015",
+      "original_file": "keyframes/pf015-1.jpg",
+      "original_sha256": "c72e3f9bc4a721cb5ce2183ab9864944dde73f134c1bef9c16e27ab70df4f1cf",
+      "selected_file": "keyframes/pf015-1-trim.jpg",
+      "selected_sha256": "6fcd90db587e11c9ed5e36633bb5924f2d1552337c28ae56c678e04147f16a7a",
+      "machine_score": 9.71,
+      "machine_passed": false,
+      "machine_needs_review": true,
+      "machine_problems": [
+        "anatomy: an extra hand appears on the parapet behind the character's back → remove the extra hand resting on the ledge"
+      ],
+      "human_decision": "REJECT_FINAL",
+      "human_reason": "Full original and selected crop have an extra third hand on the parapet behind the character. The 2D style and 1666 setting improved, but anatomy is visibly wrong; no fourth generation.",
+      "cli_exit": 1,
+      "cli_stdout_sha256": "4aee7cc9baf7d02e605086bf0c974b8c72f47375f0c4785205af651ac957b7b4",
+      "cli_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "pf016",
+      "original_file": "keyframes/pf016-1.jpg",
+      "original_sha256": "576dcbabf390d907bca69c38b9d6e821296dff4cbf4dea350dadf354f916393b",
+      "selected_file": "keyframes/pf016-1-trim.jpg",
+      "selected_sha256": "4c81c46f16a8a8db0185c1fd7814b86254480948f4c02144402977cea8c3e383",
+      "machine_score": 10,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "machine_problems": [],
+      "human_decision": "KEEP",
+      "human_reason": "Full original and selected crop show one clearly adult grey-bearded speaker in a stone room, one empty gesturing hand, no map, documents, pseudo text, electric lamp or uniform insignia; minor stylization of dark coat is acceptable.",
+      "cli_exit": 1,
+      "cli_stdout_sha256": "ef3512ca22b6722b411b07f866a562e76e3d73cbd02ddf5c67fdc8fdacba1cc8",
+      "cli_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "pf017",
+      "original_file": "keyframes/pf017-1.jpg",
+      "original_sha256": "ece37bffa96bdff611c8d8a4a92ac0486e38e7e433c4004da5c883c77f4f28fc",
+      "selected_file": "keyframes/pf017-1-trim.jpg",
+      "selected_sha256": "728004748d86146993ebf2a37dbccd61afa94b9663b0316308576cfd029cb1a4",
+      "machine_score": 10,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "machine_problems": [],
+      "human_decision": "KEEP",
+      "human_reason": "Full original and selected crop show one adult-coded chibi male cupping an empty hand to his ear, visibly listening, with no book, paper or false written report. The scene is dark but readable; no decisive modern object or frame bar remains.",
+      "cli_exit": 1,
+      "cli_stdout_sha256": "f29175f7f6854e3fda8c7b69671e7cb988e8b8070cb69568eda1f61b0ae5b789",
+      "cli_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "ledger_before": {
+    "usd": 0.664,
+    "images": 44,
+    "clip_seconds": 0,
+    "music": 1,
+    "judge_calls": 43,
+    "reserved": 0.0035,
+    "reservations": 1
+  },
+  "ledger_after": {
+    "usd": 0.7045,
+    "images": 47,
+    "clip_seconds": 0,
+    "music": 1,
+    "judge_calls": 46,
+    "reserved": 0.0035,
+    "reservations": 1
+  },
+  "manifest_before_sha256": "f7a59d911265142c53bf70c3dbdb99b6c21abd8a9321449f4a4d150036371dc1",
+  "manifest_after_sha256": "2517afd911a9a49a01a555718b09ca776cd95015c6f1a32b2090900754fded0a",
+  "ledger_before_sha256": "427e1fcbf6f0be36ecd28ac66de5ed98277a195ae2a2057f648838403dd476e3",
+  "ledger_after_sha256": "a40873757bb51cbba4fc0240b76c6e2641b7c626e5328f18215c0b5fc73db86b",
+  "prior_nine_keep_entries_and_files_unchanged": true,
+  "prior_nine_changed": [],
+  "stop_present_after": true,
+  "pf015_more_paid_takes_allowed": false,
+  "full_storyboard_approved": false
+}

@@ -1,0 +1,13 @@
+# S38 R8w｜PF015 同章舊視野重用，作者候選
+
+2026-10-22 UTC。R8v [原生圖終局](verify-70-r8v-final-three-native-stop.md)中，`pf015` 的第三、最後一次 MiniMax 原圖因欄後多一隻手而 **REJECT_FINAL**；不得有第四張。`pf013/014` 已是連續兩張史料引句卡。先試將 `pf015` 改第三張來源卡，雖卡數恰達三張上限，CLI 卻因移去這個 `push in` 插圖後，把前後原有 `drift` 插圖算作三張同運鏡而報一項 lint error；改 `pf016` 運鏡會破壞其剛通過的圖片請求綁定，故撤回該未凍結的卡候選。
+
+**R8w 候選：**`pf015` 保留 `shot`，只把它的 `data.prompt`／`camera` 換成同章已通過的 `pf010` **逐字相同**的窗邊舊視野。畫面重現佩皮斯在稍早窗邊看見火與屋頂的原創示意，對應本句「**剛才**的遠處紅光，現在有了街道和人家；他們要往哪裡退？」的回望部分；`pf013/014` 的日記引句仍先交代他登塔所見與對熟人的擔憂，`pf016/017` 仍接塔官口頭說法與佩皮斯聽聞。這一格是對稍早視野的明示回望，**不可當作佩皮斯登塔之後又回家看窗、也不可當作塔上新目擊的照片**。另一位書面覆核者須特別判斷觀眾是否會誤讀這個切回。
+
+固定 Pepys 日記來源為 GITenberg commit `68fcf49f70ee793b989a6fd0464264d55beb4451` 的 [1666-09-02 L65807–65831](https://github.com/GITenberg/The-Diary-of-Samuel-Pepys---Complete_4200/blob/68fcf49f70ee793b989a6fd0464264d55beb4451/4200.txt#L65807-L65831)，原始 `4200.txt` SHA-256 `3cd43a3c39ee72eb9c4a3657f1fcb1723afba291cedac176c65a39289483be5d`。日記的次序是先在住處看遠火，後來登塔看橋邊房屋，再從塔官聽火源說法、乘船才見熟人的屋已燒；R8w 沒有改這四個見聞界線或任何旁白。
+
+[可逆結構差分](verify-71-r8w-pf015-reuse-structured-diff.json)只換 `scenes[14].data.prompt` 和 `scenes[14].data.camera`，逐字逆套後還原 R8v `video.json` SHA-256 `fd506ba278ffbcbb2b17908b957eb9a2163a2d26cd3b2b78556bab365212b7f4`；R8w SHA-256 **`af739ca32d19df378b942f04118377f8357b6b16d03f07a1e3203b53182c3bc9`**。所有 `lines`、其他 111 景、`script.md` SHA `e59ec137e3de3871e3b0e5063d8f6504d3eb2adb5fe22265eb3faa3d613d5951`、`claims.md` SHA `f9de8d2771b62cc327f4e599f002af8f3278cfb0f39dbed201e7fdc857201d42` 均不變。`VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs lint --slug curio-s38 --json`：exit **0**，**0 errors／0 warnings**，112 句。正文維持 **106／111** 插圖（95.5%），最多兩張連續卡。
+
+私有圖單 `pf010` 已通過 10／10，選圖 `keyframes/pf010-1-trim.jpg` SHA-256 `5fc7fd687ced8649ecae9b392df16383047aab399a3525786a498b6efcc65850`；原圖 `pf010-1.jpg` SHA `b2fd9bdb55b158c6e942ef202dbddcea890ba5a4303670f73568e27ed0da60c0`。我直接查看了選圖：窗邊成年人物、舊式屋頂與後方火光，無現代街道或車。R8w `pf015.data` 與 `pf010.data` 完全相同，故圖像 request key 的提示詞、運鏡、畫風、seed 1 和參照相同；私有 `media/cache.json` 仍有 `pf010` 的 `417bcf79c5715425` 條目及雜湊相符原圖。**這只證明可沿用候選，尚未對新 scene ID 重跑圖單／judge，也不等於 `pf015` 已 KEEP。** 後續執行須先獨立紙審，確認 cache hit 並嚴守不購第四張；若無法保證只回收既有圖片，應停止，不能讓 CLI 默默生成。
+
+本輪無付費、無 manifest 改動。`keyframes/manifest.json` 仍為 R8v SHA `2517afd911a9a49a01a555718b09ca776cd95015c6f1a32b2090900754fded0a`，其中 `pf015` 舊退件圖 `needs_review=true`，不能送 storyboard；`pf016/017` 的原生 KEEP 雜湊保持 `4c81c46f…`／`72800474…`，須在新 binding 下逐項重核。`media/ledger.json` SHA `a40873757bb51cbba4fc0240b76c6e2641b7c626e5328f18215c0b5fc73db86b`，費用仍 **US$0.7045／47 image／46 judge／1 music**，舊 US$0.0035 reservation 未變，低於 US$4.58 上限；`STOP` 在位。`pf019` 書面 PASS 但未畫，首章及全片分鏡、網站與人耳審查、成片均仍待。
