@@ -1,0 +1,5 @@
+# R12 原圖KEEP與在途次數更正
+
+Root已查看s60016完整原圖：平雪、木橇及路旗符合安全路面前進示意，沒有先前高山群。小旗符號不作精密形制重建。Jev9.29 PASS，selected SHA 849735d479a6d83d0cdb9b69e46250c8444bad1045f107bfdb1f11a580f99fec。累計2actual，保留所有失敗。現在13KEEP。
+
+零次guard另查出s60019在前次STOP前ready1且無judge，已攔住直接恢復87景；此圖不能當零次。Root已查看其原圖，將先以原prompt快取judge，最多另2actual；其餘86景才全零。原log9new與8景明細之差來自此19，非無法解釋的摘要差異。
