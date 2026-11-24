@@ -1,0 +1,545 @@
+{
+ "tempo": 1.0,
+ "grades": {},
+ "default_grade": "dh",
+ "finish": "vignette=angle=PI/5,format=yuv420p",
+ "names": {},
+ "punch": false,
+ "slow_max": 1.1,
+ "interpolate": false,
+ "duck_ratio": 4,
+ "duck_release_ms": 700,
+ "sfx_dirs": [
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx-real-20261121",
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx",
+  "<VIDEO_WORKDIR>/zhong-tian-qu-qi-e938-dh/sfx"
+ ],
+ "name_whoosh": "swish-9",
+ "music": [
+  {
+   "cue": "farewell",
+   "from": "s01",
+   "to": "s04",
+   "offset": 0.0,
+   "gain": -12,
+   "fade_in": 1.0,
+   "fade_out": 1.2,
+   "tail": 0.0
+  },
+  {
+   "cue": "drone31",
+   "from": "s05",
+   "to": "s15b",
+   "offset": 20.0,
+   "gain": -15,
+   "fade_in": 1.0,
+   "fade_out": 0.8,
+   "tail": 0.0
+  },
+  {
+   "cue": "reveal-hit",
+   "from": "s16",
+   "from_off": 0.0,
+   "to": "s16",
+   "offset": 1.4,
+   "gain": -6,
+   "fade_in": 0.05,
+   "fade_out": 0.8,
+   "tail": 0.4
+  },
+  {
+   "cue": "tension31",
+   "from": "s16",
+   "from_off": 1.0,
+   "to": "s18",
+   "offset": 40.0,
+   "gain": -13,
+   "fade_in": 0.5,
+   "fade_out": 0.8,
+   "tail": 0.0
+  },
+  {
+   "cue": "farewell",
+   "from": "s19",
+   "to": "s19",
+   "offset": 42.0,
+   "gain": -13,
+   "fade_in": 0.8,
+   "fade_out": 1.0,
+   "tail": 0.0
+  },
+  {
+   "cue": "battle",
+   "from": "s20",
+   "to": "s31",
+   "offset": 0.0,
+   "gain": -9,
+   "fade_in": 0.3,
+   "fade_out": 0.8,
+   "tail": 0.0
+  },
+  {
+   "cue": "reveal-hit",
+   "from": "s27",
+   "to": "s27b",
+   "offset": 1.1,
+   "gain": -3,
+   "fade_in": 0.05,
+   "fade_out": 1.0,
+   "tail": 0.0
+  },
+  {
+   "cue": "standoff",
+   "from": "s32",
+   "from_off": -0.4,
+   "to": "s38",
+   "offset": 20.0,
+   "gain": -10,
+   "fade_in": 0.6,
+   "fade_out": 0.05,
+   "tail": 0.0
+  }
+ ],
+ "sfx": [
+  {
+   "file": "birds",
+   "at": "s01",
+   "off": 0,
+   "gain": -16.7,
+   "to": "s04"
+  },
+  {
+   "file": "wind1",
+   "at": "s05",
+   "off": 0,
+   "gain": -15.7,
+   "to": "s11"
+  },
+  {
+   "file": "zhongtian-sfx-night-crickets-loop",
+   "at": "s12",
+   "off": 0,
+   "gain": -15.5,
+   "to": "s15b"
+  },
+  {
+   "file": "zhongtian-sfx-night-crickets-loop",
+   "at": "s16",
+   "off": 0,
+   "gain": -11.5,
+   "to": "s18"
+  },
+  {
+   "file": "wind1",
+   "at": "s16",
+   "off": 0,
+   "gain": -11.7,
+   "to": "s18"
+  },
+  {
+   "file": "zhongtian-sfx-night-crickets-loop",
+   "at": "s19",
+   "off": 0,
+   "gain": -15.5,
+   "to": "s19"
+  },
+  {
+   "file": "Wind",
+   "at": "s20",
+   "off": 0,
+   "gain": -3.7,
+   "to": "s21"
+  },
+  {
+   "file": "hooves_gallop",
+   "at": "s20",
+   "off": 0,
+   "gain": 4.2,
+   "to": "s21"
+  },
+  {
+   "file": "wind1",
+   "at": "s22",
+   "off": 0,
+   "gain": -9.7,
+   "to": "s28"
+  },
+  {
+   "file": "zhongtian-sfx-torch-07",
+   "at": "s22",
+   "off": 0,
+   "gain": -2.6,
+   "to": "s28"
+  },
+  {
+   "file": "murmur38",
+   "at": "s24",
+   "off": 0,
+   "gain": -17.1,
+   "to": "s24"
+  },
+  {
+   "file": "wind1",
+   "at": "s29",
+   "off": 0,
+   "gain": -9.7,
+   "to": "s38"
+  },
+  {
+   "file": "zhongtian-sfx-torch-04",
+   "at": "s32",
+   "off": 0,
+   "gain": -13.6,
+   "to": "s38"
+  },
+  {
+   "file": "zhongtian-sfx-wring-cloth-03",
+   "at": "s01",
+   "off": 0.2,
+   "gain": -6.6
+  },
+  {
+   "file": "zhongtian-sfx-wring-cloth-07",
+   "at": "s01",
+   "off": 4.8,
+   "gain": -12.4
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "s02",
+   "off": 0.25,
+   "gain": -20.3
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "s02",
+   "off": 0.75,
+   "gain": -22.3
+  },
+  {
+   "file": "dishes_02",
+   "at": "s02",
+   "off": 2.2,
+   "gain": -14.3
+  },
+  {
+   "file": "dishes_01",
+   "at": "s03",
+   "off": 0.9,
+   "gain": -18.3
+  },
+  {
+   "file": "dishes_01",
+   "at": "s03",
+   "off": 3.9,
+   "gain": -18.3
+  },
+  {
+   "file": "zhongtian-sfx-girl-breath-03",
+   "at": "s05",
+   "off": 0.0,
+   "gain": -15.4
+  },
+  {
+   "file": "zhongtian-sfx-wring-cloth-05",
+   "at": "s05",
+   "off": 4.9,
+   "gain": -23.1
+  },
+  {
+   "file": "zhongtian-sfx-drag-struggle-01",
+   "at": "s08",
+   "off": 0.6,
+   "gain": -2.4
+  },
+  {
+   "file": "zhongtian-sfx-drag-struggle-01",
+   "at": "s08",
+   "off": 3.0,
+   "gain": -4.4
+  },
+  {
+   "file": "zhongtian-sfx-staff-thud-01",
+   "at": "s09",
+   "off": 0.05,
+   "gain": -7.1
+  },
+  {
+   "file": "zhongtian-sfx-wring-cloth-02",
+   "at": "s13",
+   "off": 0.1,
+   "gain": -22.1
+  },
+  {
+   "file": "swish-3",
+   "at": "s14",
+   "off": 0.2,
+   "gain": -16.7
+  },
+  {
+   "file": "zhongtian-sfx-drag-struggle-04",
+   "at": "s16",
+   "off": 0.6,
+   "gain": -4.2
+  },
+  {
+   "file": "hooves_trot",
+   "at": "s16",
+   "off": 2.6,
+   "gain": -15.4
+  },
+  {
+   "file": "hooves_trot",
+   "at": "s18",
+   "off": 0.0,
+   "gain": -7.4
+  },
+  {
+   "file": "hooves_trot",
+   "at": "s22",
+   "off": 0.0,
+   "gain": -9.4
+  },
+  {
+   "file": "zhongtian-sfx-staff-thud-01",
+   "at": "s23",
+   "off": 6.2,
+   "gain": 0.9
+  },
+  {
+   "file": "zhongtian-sfx-staff-thud-01",
+   "at": "s24",
+   "off": 0.3,
+   "gain": -5.1
+  },
+  {
+   "file": "zhongtian-sfx-armor-03",
+   "at": "s26",
+   "off": 0.2,
+   "gain": -7.3
+  },
+  {
+   "file": "hooves_gallop",
+   "at": "s27",
+   "off": 0.0,
+   "gain": -2.0
+  },
+  {
+   "file": "swish-7",
+   "at": "s27",
+   "off": 0.78,
+   "gain": -7.2
+  },
+  {
+   "file": "zhongtian-sfx-body-fall-stone-01",
+   "at": "s27",
+   "off": 0.98,
+   "gain": -2.8
+  },
+  {
+   "file": "zhongtian-sfx-drag-struggle-08",
+   "at": "s27",
+   "off": 0.78,
+   "gain": -7.6
+  },
+  {
+   "file": "hooves_gallop",
+   "at": "s27b",
+   "off": 0.15,
+   "gain": -6.0
+  },
+  {
+   "file": "zhongtian-sfx-armor-09",
+   "at": "s27b",
+   "off": 0.2,
+   "gain": -11.6
+  },
+  {
+   "file": "zhongtian-sfx-armor-05",
+   "at": "s28",
+   "off": 0.2,
+   "gain": -3.5
+  },
+  {
+   "file": "zhongtian-sfx-footsteps-group-04",
+   "at": "s28",
+   "off": 3.0,
+   "gain": -9.0
+  },
+  {
+   "file": "hooves_trot",
+   "at": "s29",
+   "off": 0.0,
+   "gain": -9.4
+  },
+  {
+   "file": "zhongtian-sfx-drag-struggle-02",
+   "at": "s29",
+   "off": 1.6,
+   "gain": 0.2
+  },
+  {
+   "file": "impactPlank_medium_000",
+   "at": "s30",
+   "off": 0.05,
+   "gain": -9.4
+  },
+  {
+   "file": "impactPlank_medium_000",
+   "at": "s30",
+   "off": 0.3,
+   "gain": -9.4
+  },
+  {
+   "file": "impactPlank_medium_000",
+   "at": "s30",
+   "off": 1.75,
+   "gain": -10.4
+  },
+  {
+   "file": "impactPlank_medium_000",
+   "at": "s30",
+   "off": 3.4,
+   "gain": -10.4
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "s31",
+   "off": 1.0,
+   "gain": -28.3
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "s31",
+   "off": 1.6,
+   "gain": -28.3
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "s31",
+   "off": 2.2,
+   "gain": -27.3
+  },
+  {
+   "file": "zhongtian-sfx-footsteps-group-05",
+   "at": "s32",
+   "off": 0.0,
+   "gain": 11.4
+  },
+  {
+   "file": "zhongtian-sfx-armor-07",
+   "at": "s32",
+   "off": 1.0,
+   "gain": -9.9
+  },
+  {
+   "file": "creak1",
+   "at": "s34",
+   "off": 0.15,
+   "gain": -2.2
+  },
+  {
+   "file": "creak2",
+   "at": "s34",
+   "off": 0.65,
+   "gain": -1.7
+  },
+  {
+   "file": "creak3",
+   "at": "s34",
+   "off": 1.1,
+   "gain": -1.7
+  },
+  {
+   "file": "zhongtian-sfx-armor-02",
+   "at": "s35",
+   "off": 0.2,
+   "gain": -13.4
+  },
+  {
+   "file": "creak3",
+   "at": "s36",
+   "off": 1.0,
+   "gain": -5.7
+  },
+  {
+   "file": "zhongtian-sfx-armor-06",
+   "at": "s37",
+   "off": 4.6,
+   "gain": 2.0
+  },
+  {
+   "file": "creak2",
+   "at": "s38",
+   "off": 0.0,
+   "gain": 2.3
+  }
+ ],
+ "frame_round": true,
+ "clip_voice": true,
+ "voice_skip": {
+  "s25": 0.3
+ },
+ "voice_until": {},
+ "clip_af": {
+  "s05": {
+   "from": 0,
+   "af": "rubberband=pitch=1.08:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s09": {
+   "from": 0,
+   "af": "rubberband=pitch=0.9:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s12": {
+   "from": 0,
+   "af": "rubberband=pitch=1.15:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s13": {
+   "from": 0,
+   "af": "rubberband=pitch=0.93:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s17": {
+   "from": 0,
+   "af": "rubberband=pitch=1.035:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s25": {
+   "from": 0,
+   "af": "rubberband=pitch=0.89:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  }
+ },
+ "voice_off": [
+  "s23",
+  "s26",
+  "s28",
+  "s30",
+  "s32",
+  "s35",
+  "s37"
+ ],
+ "move_lines": {},
+ "min": {},
+ "line_at": {
+  "zq938a22": 0.55,
+  "zq938a25": 0.74,
+  "zq938a26": 0.77,
+  "zq938a27": 0.46,
+  "zq938a29": 1.09,
+  "zq938a31": 1.52,
+  "zq938a32": 0.37,
+  "zq938a21": 2.0
+ },
+ "line_lead": {},
+ "panel_y": {},
+ "panel_from": {},
+ "panel_color": {},
+ "panel_until": {},
+ "vf": {
+  "s12": "crop=iw/1.05:ih/1.05:0:0,scale=1920:1080:flags=lanczos,setsar=1",
+  "s25": "crop=iw/1.3:ih/1.3:iw*0.095:0,scale=1920:1080:flags=lanczos,setsar=1",
+  "s26": "crop=iw/1.65:ih/1.65:iw*0.067:0,scale=1920:1080:flags=lanczos,setsar=1"
+ },
+ "slow_shot": {},
+ "subtitle_lines": [],
+ "ding": {},
+ "_note": "e938 真人版第一版（2026-11-24；scratchpad e938c/：mkov938.py、levall938.sh → lev938.py＋align938.py、stage938x.py、music／beds／spots／lineat／vol.json、cutf0938.py；跑法 scratchpad e938cut.sh）。全部決定、量測與已知瑕疵寫在 colab/runs/e938-live/cut-notes.md。"
+}
