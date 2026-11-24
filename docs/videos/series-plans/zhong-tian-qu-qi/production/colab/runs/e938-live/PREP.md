@@ -206,3 +206,31 @@ fix 也要帶 `mkspec.py` 的唐小棠背影替換（身分句、三張臉部圖
 **估價**（審稿與改圖後）：d1 仍 80 支 494 秒，約 22–25 CU。
 
 改圖後重跑（2026-11-23）：`build938.sh` 40 鏡、shot_reading 5 個（刻意／不用）；`prep938.sh` **rc=0**：免費圖 35 張逐位元重建相同（含 `kong_e938.sh` 的 14 張）、80 支 494 秒、st1／d1 preflight 0／0、`check_manifest`／`h3r` 0／0、掃描全 0；`DRY=1`、`PRECHECK_ONLY=1 e938d1.sh` 0 錯；`bundle.mjs build`／`check` PASS。
+
+## 8. 精修（refine）準備（2026-11-24，精修準備代理；**沒送、沒花錢、沒 commit**）
+
+- 腳本 scratchpad `e938refine.sh`（照 `e937refine.sh`）、`tools/heads938.py`（改寫前置代理的草稿版，舊版留在 `tools/heads938.py.bak-prep`）、`e938refine-verify.py`。
+  工作目錄 `~/mokaair-work/videos/_live-e938/zhong-tian-qu-qi-e938-dh`（`picks.json`、`live-clips-e938.json`、`runpod/a/st1/out`、`runpod/a/st2`）。
+- **選片只讀 `picks-final.tsv`**（40 鏡；`PREP=1` 先換成 `refine-prep.py` 的格式 `tools/e938refine-picks.tsv`，逐列查：種子屬於 source 那一輪、start < end_before、草稿存在、鏡次跟 clips-dh 一樣）。
+  **s27 兩刀都精修**：第一刀 fix1 9381302（0–0.75）就是 s27；第二刀 fix2 9381401（0.25–0.5）另立工作 **`s27c2`**（`refine-prep.py` 一鏡只收一個種子，所以由腳本照它的做法自己排：草稿、`picks.json`（`cut_of: s27`）、`live-clips` 一列、第一格、帶 fix2 動作句的提示詞、`st2-3.json`）；
+  腳本斷言 s27 的 note 寫著 `fix2 9381401 start 0.250 end_before 0.500`。精修本身只看整支草稿，不管剪點；兩刀合起來才 1 秒，但這是全集唯一的衝柵，品質優先就兩支都做（多 124 格，約 0.4 CU）。
+- **頭句**（精修沒有參考圖，只有草稿與第一格，`heads938.py`）：隊長單人鏡 s23 s26 s28 s35 s37 s38 換成點名隊長並補回分隔句；s27 s27b s27c2 s32 寫「阿令與隊長」；
+  **s11 s15 s15b**「許硯與身後床上睡著的小禾」、**s12**「秦霜、關著的門邊的阿令、床上睡著的小禾」（右下那條深藍布邊不點名，剪接裁）、**s14**「許硯、左緣前景只看得到背影的年輕女子、床上睡著的小禾」；
+  唐小棠五個背影鏡（s02 s04 s07 s16 s18）clips-dh 本來就是「the young woman seen only from behind … two high round buns」，不點名。retake 動作句的鞋句拿掉；fix2 s27 的 `half of that distance`（指的是沒帶過來的場景句）換成 `gains only a few strides`。
+- **PRECHECK**（`PREP=1 PRECHECK_ONLY=1`，log `e938refine-precheck.log`）**0 錯**：41 picks＝`picks-final.tsv`＋s27c2，草稿逐位元相同、motion_from＝source（retake 11 支：s01 s05 s11 s12 s14 s15 s15b s20 s27＜fix1，s22 s27c2＜fix2）；
+  41 支提示詞＝`live-clips-e938.json`＋頭句，分隔句／結尾各一次；掃描：唐小棠不點名、五個背影鏡雙丸子句在、無 stubble/beard、病房無 table、白天病房（s01–s11）沒有 flame/candle/lamp、夜裡病房（s12–s15b、s19）留著 `the small flame`、
+  s11 s12 s14 s15 s15b 有 `asleep in the bed`、s14 前景背影、s22 `Beyond the barrier`、s27 s27c2 `all four hooves on the ground`、沒有 leap/jump/rear/clear/over the barrier、馬只在馬的鏡、無 cinema camera、無鞋句與潭字、無 chopper/sword/blade/saber/smoke、GAZE_REFINE 保住、retake 動作句與靜止鏡頭帶到；
+  3 個 manifest、41 工作（種子＝挑的種子、σ 0.5、10 步、guide none）、`refine.py --check` 0 錯。反向測試（在 s05 塞 `candle flame`）會 STOP。
+- **兩批**：`route_a_st2.py` 分 20／20，腳本加 `st2-3`（s27c2）。**BATCH=1＝st2-1，20 支**（s01–s19＋s15b，3364 格 140 秒）在 `zt-live2`；**BATCH=2＝st2-2＋st2-3，21 支**（s20–s38＋s27b＋s27c2，3046 格 127 秒）在 `zt-live3`。兩批同一個 Colab 帳號同時跑。
+- **Colab 帳號由外部設定**：`COLAB_ACCOUNT_SLOT`（預設 `a`）、`COLAB_ACCOUNT_HOLDER`（預設 `claude-zt-e938`）、`PATH`（已是帳號 shim 開頭就不動，否則腳本把 `accounts/<slot>/bin` 放前面）、`REL`（slot a 預設 `colab-release-A.sh`，別的帳號要給）。
+  **2026-11-24 檢查時帳號 A 在本機沒有 token**（租約已還、`token.json` 被刪），PRECHECK 只記 NOTE，真跑會 STOP：先 `python3 .agents/skills/minimax-h3-colab/scripts/accounts.py claim --holder claude-zt-e938 --slot a`，再查 `colab usage` 餘額（剩約 100 CU 先問站主）與 `colab sessions` 沒有 `zt-live2`／`zt-live3`。
+- **怎麼跑**（協調者，付費）：
+  ```bash
+  cd /home/user/travel_scanner; SP=/tmp/claude-0/-home-user-travel-scanner/31162243-7ed2-5899-b9c2-443c1f2a5c1a/scratchpad
+  SESSION=zt-live2 BATCH=1 bash $SP/e938refine.sh > $SP/e938refine-b1.log 2>&1 &
+  SESSION=zt-live3 BATCH=2 bash $SP/e938refine.sh > $SP/e938refine-b2.log 2>&1 &
+  # 跑完：python3 $SP/e938refine-verify.py（41/41、.seed = picks = 草稿種子、1312×736、格數同草稿），草稿／精修並排看過
+  ```
+  不要在跑的時候 `PREP=1`（腳本會拒絕）。一批拿不到 G4（第 37 集 BATCH=2 第一次 `Service Unavailable`）就等 5 分鐘重跑同一行：已有 `.seed` 的跳過，缺 `.seed` 的由 seedfix 補。
+- **估價**：第 37 集精修 43 支 6794 格實花 **21.63 CU**（188.67 → 167.04；兩批同時、每批約 65–70 分鐘、G4 一台約 10 CU／時），每格約 0.0032 CU。
+  本集 41 支 **6410 格**（d1 30 支、fix1 9 支、fix2 2 支）→ **約 20–21 CU，抓 19–23 CU（約 US$2）**；時間兩批同時約 **70–80 分鐘**（BATCH=1 稍長）。拿不到 G4 的重試只多開機的零頭。
