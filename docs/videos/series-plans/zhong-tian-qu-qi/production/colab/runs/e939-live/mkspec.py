@@ -41,6 +41,7 @@ Run: python3 -I mkspec.py
 """
 import importlib.util
 import json
+import os
 import re
 from pathlib import Path
 
@@ -52,7 +53,10 @@ _spec = importlib.util.spec_from_file_location("r2_939_mkspec", PROD / "writer-t
 R2 = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(R2)
 
-HORSE_PIC = "prop-zaohongma-an-l1.png"
+HORSE_PIC = "prop-zaohongma-an-l1.png"      # head toward the LEFT: the horse tied at the post (s01, review 建議 13)
+HORSE_PIC_R = "prop-zaohongma-an-r-l1.png"  # its free horizontal flip, head toward the RIGHT: the ride back (s08-s13, review 建議 1)
+STANDIN = os.environ.get("STANDIN") == "1"  # the paid -kai pictures not installed yet: prep939.sh checks against stand-ins
+KAI = {"set-yiguan-men-ye-kai-l1.png", "set-yiguan-men-ye-kai-men-l1.png"}
 HORSE_SENT = ("The horse shown in <Picture N> is the one horse in this shot, keeping exactly its deep red-brown coat, its mane and "
               "tail of the same red-brown, its plain dark bridle and exactly its folded dark grey-brown felt saddle pad and rope girth "
               "as the picture shows them; that picture fixes the horse only, never the place or the light.")
@@ -136,9 +140,10 @@ BARN = ids[ids.index("s36"):]
 OUTSIDE = STREET_ROAD + BARN
 assert len(STREET_ROAD) == 13 and len(BARN) == 5, (STREET_ROAD, BARN)
 
-HORSE_SH = ["s08", "s09", "s10", "s11", "s13"]
+HORSE_SH = ["s08", "s09", "s10", "s11", "s12", "s13"]  # s12: review 必改 3
 for sid in HORSE_SH:
-    append_pic(sid, HORSE_PIC, HORSE_SENT)
+    append_pic(sid, HORSE_PIC_R, HORSE_SENT)
+append_pic("s01", HORSE_PIC, HORSE_SENT)
 CAP_SH = ["s02", "s03", "s09"]
 for sid in CAP_SH:
     append_pic(sid, CAP_PIC, CAP_SENT)
@@ -158,6 +163,8 @@ for sid in OUTSIDE:
     add(sid, [R2.POOLMARK, ""])
 
 # 'Only' sentences: the unnamed, the partial people and the horse the compositions describe are named here (written twice).
+add("s01", [ONLY_2, "Only these 2 people and the one horse tied at the left edge are in the frame; no second copy of anyone or of the "
+                    "horse appears."])
 add("s02", [BESIDES_HIM, "Only Doctor Bai seen from behind in the foreground, the guard captain, the six crossbowmen and the one guard "
                          "with the torch, the nine people the composition describes, are in the frame; no second copy of anyone appears."])
 add("s03", [BESIDES_THEM, "Only the guard captain and the two crossbowmen behind him the composition describes are in the frame; no "
@@ -172,10 +179,8 @@ add("s09", [BESIDES_THEM, "Only A-ling and Doctor Bai on the one horse, and far 
                           "no second copy of anyone or of the horse appears."])
 add("s11", [ONLY_SHE, "Besides her, only the white hair, the shut eyes and the two hands of the old man tied on behind her, and the one "
                       "horse, are in the frame; no second copy of anyone or of the horse appears."])
-add("s12", [ONLY_HE, "Besides him, only the back of the young woman's head in the lower left foreground the composition describes is in "
-                     "the frame; no second copy of anyone appears."])
-add("s27", [ONLY_HE, "Besides him, only the back of the young woman's head and her shoulder at the left edge of the frame the "
-                     "composition describes are in the frame; no second copy of anyone appears."])
+add("s12", [ONLY_HE, "Besides him, only the shoulder and the back of the head of the young woman in front at the right edge, and the "
+                     "top of the one horse's mane, are in the frame; no second copy of anyone or of the horse appears."])
 add("s36", [BESIDES_THEM, "Only the ten people the composition describes are in the frame: Diao Qi kneeling, the young man in rust-red "
                           "holding the rope, the broad-backed man in undyed hemp, the five others at the edge of the field, Wang Erniu "
                           "and Qin Shuang; no second copy of anyone appears."])
@@ -185,7 +190,7 @@ add("s38", [BESIDES_HIM, "Besides him, only the two men of the village at the ed
                          "frame; no second copy of anyone appears."])
 add("s40", [ONLY_HE, "He is the only person in focus; the soft shapes behind him stay faceless and blurred; no second copy of anyone "
                      "appears."])
-SPECIAL_ONLY = {"s02", "s03", "s08", "s09", "s10", "s11", "s12", "s13", "s27", "s36", "s37", "s38", "s40"}
+SPECIAL_ONLY = {"s01", "s02", "s03", "s08", "s09", "s10", "s11", "s12", "s13", "s36", "s37", "s38", "s40"}
 for sid in ids:
     sc = scenes[sid]
     if sid in SPECIAL_ONLY or len(sc["data"]["characters"]) != 1:
@@ -233,15 +238,19 @@ drop("s36", "erniu-angle-a-l1.png")
 
 SWAP = {sid: {} for sid in ids}
 PLACE = {
+    # review 必改 4: the close-ups in front of the bed get the free window-and-wall crops with no bed (-chuang2, -qiang)
     TF: {"set-xujia-tangfang-kong-zhen-l1.png": ["s14", "s18"],
-         "set-xujia-tangfang-kong-chuang-l1.png": ["s15", "s17", "s20", "s21"],
+         "set-xujia-tangfang-kong-chuang-l1.png": ["s17", "s20"], "set-xujia-tangfang-kong-chuang2-l1.png": ["s15", "s21"],
          "set-xujia-tangfang-kong-men-l1.png": ["s16", "s22", "s23"],
          "set-xujia-tangfang-kong-bei-l1.png": ["s19"],
-         "set-xujia-tangfang-kong-chen-zhen-l1.png": ["s24", "s28", "s29b", "s31", "s32"],
-         "set-xujia-tangfang-kong-chen-chuang-l1.png": ["s25", "s27", "s28b", "s29", "s30", "s33", "s35"],
+         "set-xujia-tangfang-kong-chen-zhen-l1.png": ["s24", "s32"],
+         "set-xujia-tangfang-kong-chen-qiang-l1.png": ["s28", "s29b", "s31"],
+         "set-xujia-tangfang-kong-chen-chuang-l1.png": ["s27", "s28b", "s30", "s35"],
+         "set-xujia-tangfang-kong-chen-chuang2-l1.png": ["s25", "s29", "s33"],
          "set-xujia-tangfang-kong-chen-men-l1.png": ["s26", "s34"]},
-    ST: {"set-yiguan-men-ye-men-l1.png": ["s01", "s04", "s05", "s06", "s07", "s08"],
-         "set-yiguan-men-ye-jie-l1.png": ["s02", "s03"], "set-yiguan-men-ye-l1.png": ["s09"],
+    # review 必改 1 (option A): the paid Qwen edit with the clinic's leaves pushed inward and its same-geometry -men crop
+    ST: {"set-yiguan-men-ye-kai-men-l1.png": ["s01", "s04", "s05", "s06", "s07", "s08"],
+         "set-yiguan-men-ye-jie-l1.png": ["s02", "s03"], "set-yiguan-men-ye-kai-l1.png": ["s09"],
          "set-guandao-ye-shu-l1.png": ["s10", "s11", "s12"], "set-guandao-ye-l1.png": ["s13"],
          "set-gucang-wai-l1.png": ["s36"], "set-gucang-wai-men-l1.png": ["s37", "s39"],
          "set-gucang-wai-tian-l1.png": ["s38"], "set-gucang-wai-qiang-l1.png": ["s40"]},
@@ -263,12 +272,15 @@ for sid, sw in SWAP.items():
         shots[sid]["swap_pictures"] = sw
 for v in shots.values():
     for k in v.get("swap_pictures", {}).values():
-        assert (L / k).is_file(), k
+        assert (L / k).is_file() or (STANDIN and k in KAI), k
     for k, _ in v.get("append_pictures", []):
         assert (L / k).is_file(), k
 
 spec = {
-    "_note": ("e939 live d1 (e938-live's way; written by mkspec.py). No Tang Xiaotang this episode. The saddled horse "
+    "_note": ("e939 live d1 (e938-live's way; written by mkspec.py), after the independent review (6 必改, 17 建議; PREP.md §7). No "
+              "Tang Xiaotang this episode. The clinic door shots s01, s04-s09 send the paid Qwen edit set-yiguan-men-ye-kai-l1 / its "
+              "-kai-men crop (the leaves pushed inward). The saddled horse flipped to face right, prop-zaohongma-an-r-l1, appended in "
+              "s08-s13; the original prop-zaohongma-an-l1 in s01 (tied at the post). Earlier wording: the saddled horse "
               "prop-zaohongma-an-l1 appended in s08, s09, s10, s11, s13 (its felt pad written as in the picture: e938 fix6); the guard "
               "captain's portrait duizhang-portrait-l1 in s02, s03, s09; the spear prop in s34, s36, s39. 'append_pictures' = [file, "
               "sentence]: check939.py appends the picture last, puts the sentence (N = its number) after the set clause and renumbers "

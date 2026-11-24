@@ -2,7 +2,7 @@
 
 - 2026-11-24，第 39 集前置代理。**沒送任何生成**（Colab、RunPod 都沒開，`zt-live2`、`zt-live3` 都沒碰）、**沒有付費圖**、沒改第 31–38 集的檔
   （唯一碰到的共用檔：`writer-tools/e001-r2/build-r2.py` 的 `EN` 加一個鍵 `baidaifu`，只給畫面上說話的白大夫用，舊集沒有這種鏡、逐位元重建不變；refs-live README 加一段）。
-  **獨立審稿：還沒做**（前置代理沒有派子代理的工具；交辦寫在 scratchpad `e939prep/review-prompt.md`，§7）。**站台錄音：見 §4**。
+  **獨立審稿：已做（協調者派的審稿人）、已套（§7）**；必改 1 的付費開門圖清單備好、沒跑。**站台錄音：見 §4**。
 - 依據：第 38 集前置全套與它之後的修正（`writer-tools/e038-r2/{r2.py,review.md,review-independent.md}`、`colab/runs/e938-live/{mkspec.py,spec.json,PREP.md,fix1–fix6/plan.md}`、
   `colab/runs/e938/extras.json`、scratchpad `tools/{build938.sh,prep938.sh,check938.py,rec938-slow.sh,rec938-check.sh,mkhints938.py,fw938.py,f0y938.py,span938.sh}`、`e938d1.sh`、`e938f5.sh`）、
   `r2-bible-e031-e040.md`（拍法 1–43、〈接點〉38→39 與 39→40、〈道具〉〈人物〉〈小角色〉〈場景〉〈原版必修〉第 39 集；第 41 條馬、第 33 條不掛東西、第 42 條病房、第 34 條群眾）、
@@ -162,13 +162,13 @@ bash /tmp/claude-0/-home-user-travel-scanner/31162243-7ed2-5899-b9c2-443c1f2a5c1
 
 ## 5. 還缺、要付費才補得上的（都不擋 d1；建議，不自己跑）
 
-1. **醫館兩扇門板推開的圖**：`set-yiguan-men-ye-men-l1` 上兩扇門板關著；s01、s04、s05、s07 寫推開。d1 門板讀不出推開時，付費 Qwen 只加一件事『兩扇門板往裡推開、門內油燈暖光』（約 1 CU，照 e938 qwen step3 的『加東西做得好』），再重拍那幾鏡。建議先看 d1。
+1. ~~醫館兩扇門板推開的圖~~：獨立審稿必改 1、協調者定 A：d1 前做（§7，`e939qwen.sh`）。
 2. **官道沒有坡、沒有村子**：s13 照圖寫路的盡頭一盞小燈；若讀不出『到了』，剪接用 s13 接 s14 的屋內燭火也能帶過。
 3. 病房、官道、東街偏 CG（試鏡第一、二輪的圖）；穀倉前的樹是金黃秋色（聖經接受）。
 
 ## 6. 還擋著開拍的事（要協調者／站主決定）
 
-1. **獨立分鏡審查**：§7（交辦寫好、還沒做）。
+1. **獨立分鏡審查**：已做、已套（§7）；**必改 1 的付費開門圖要先跑**（`e939qwen.sh`）。
 2. **錄音**：§4b。
 3. **花錢**：`e939d1.sh`（84 支 538 秒）約 24–28 CU，等協調者；先確認 `zt-live3`（或 `zt-live2`）上沒有別的集在跑。
 
@@ -176,7 +176,14 @@ bash /tmp/claude-0/-home-user-travel-scanner/31162243-7ed2-5899-b9c2-443c1f2a5c1
 fix 也要帶 `append_pictures`（配鞍馬、隊長、長槍：`retake.py` 不會加圖，要照 `check939.py` 的做法加在最後一張）、clear-air 逐鏡替換與鞋句、隊長單人鏡 s03 補的表情句。
 精修（refine）時隊長單人的 s03 在 clips-dh 開頭沒有分隔句（gen-dh 沒有他的人像），照第 38 集 `tools/heads938.py` 的做法換成點名隊長的開頭。
 
-## 7. 獨立審稿
+## 7. 獨立審稿怎麼套（2026-11-24，`writer-tools/e039-r2/review-independent.md`：必改 6、建議 17；協調者的決定：必改 1 走 A（付費 Qwen 開門圖，清單備好、等協調者跑），其餘必改照審稿、建議能免費做的都做，14／15 錄音後、17 d1 後）
 
-- 前置代理**沒有派子代理的工具**，獨立審稿沒做；交辦在 scratchpad `e939prep/review-prompt.md`（格式照 `writer-tools/e038-r2/review-independent.md`；輸出 `writer-tools/e039-r2/review-independent.md`）。
-- 改前的檔要備份成 `e939prep/*-before-review.*`（照第 38 集：`r2`、`mkspec`、`spec`、`PREP`、`check939`、`prep939`、`e939d1`、`refs-README`），改完重跑 `build939.sh`、`prep939.sh`（rc 0）、`DRY=1 e939d1.sh`、`node tools/video/drama-admin/bundle.mjs build`。
+逐條怎麼處理寫在 `review-independent.md` 結尾的表。改前的檔在 scratchpad `e939prep/*-before-review.*`（`r2`、`mkspec`、`spec`、`PREP`、`extras`、`check939`、`prep939`、`e939d1`、`refs-README`、`xujia_tangfang_e939`）。
+
+- **必改 1（A，要花錢，沒跑）**：`colab/runs/e939-live/qwen/jobs-a.json`（4 支，種子 9391201–9391204，底圖整張 `set-yiguan-men-ye-l1`，提示 `door-open.txt`／`negative-door-open.txt`：只改最近那扇門、兩扇門板往裡推開、門內油燈暖光；`check_images_manifest` 0／0）；驅動 scratchpad `e939qwen.sh`（`STEP=a` 畫、`STEP=pick-a PICK=<seed>` 裝成 `refs-live/set-yiguan-men-ye-kai-l1.png` 並用免費 `yiguan_kai_e939.sh` 照 e938 `-men` 的框裁 `-kai-men-l1`）。約 1–2 CU、一次 G4 開機約 10–15 分鐘。
+  s01 s04–s08 送 `-kai-men`、s09 送整張 `-kai`；s08 身後的門照新圖寫『仍往裡推開』。**圖裝好前**：`STANDIN=1 prep939.sh`（替身＝關門的原圖，放在 scratchpad `e939prep/standin-refs/`），`e939d1.sh` 真跑會拒絕替身 manifest、`DRY=1` 只提醒。
+- 其餘：房門照圖寫關著（必改 2）；s11 s12 兩人一馬補腰帶、s12 改側面加馬（必改 3）；近景改送沒有床的免費新裁切、s27 s28b 寫床上的小禾（必改 4）；`off()` 不再跟 `exactly N` 同時出現（必改 5）；s14 一塊濕布（必改 6）；配鞍馬翻成頭朝右 `prop-zaohongma-an-r-l1`（建議 1）；石階一級、s09 照圖的方向（建議 2）；建議 4–13、16 的字。
+- **免費新圖（第二批）**：`set-xujia-tangfang-kong-chuang2-l1`（296e231）、`-kong-chen-chuang2-l1`（d0005d3）= `560:315:620:60`；`-kong-qiang-l1`（6ed24bd，備用）、`-kong-chen-qiang-l1`（9f59de6）= `480:270:820:100`（`xujia_tangfang_e939.sh`）；`prop-zaohongma-an-r-l1`（4c43013，`prop_flip_e939.sh`）。`prep939.sh` 逐位元重建比對 9 張（-kai-men 裝好後 10 張）＋e938 裁切 9 張。
+- **檢查（2026-11-24 套完）**：`build939.sh` 42 鏡、storyboard-check 208 秒、shot_reading 7 個（刻意／不用）；`STANDIN=1 prep939.sh` **rc 0**：84 支 538 秒不變（BUY 沒改；s32 等錄音）；st1 與 d1 preflight 0／0、`check_manifest`／`h3r` 0／0；否定名詞、會長字的名詞、掛著的東西、舊字全 0；`check939.py` 新加的斷言（門、腰帶、床字、only／exactly、濕布、石階、s18 的光、s02 的精修開頭）全過；`DRY=1 e939d1.sh` 0 錯（提醒替身）。
+- **估價不變**：84 支 538 秒約 24–28 CU；加 Qwen 開門圖約 1–2 CU；兩人一馬預留一輪重拍 5–8 CU。
+- **跑的順序**：`STEP=a bash .../e939qwen.sh`（包在 `acctA-run.sh` 裡）→ 全尺寸挑 → `STEP=pick-a PICK=<seed> bash .../e939qwen.sh` → `bash .../e939prep/prep939.sh`（不加 STANDIN，rc 0）→ refs README 補兩行 → `e939d1.sh`。

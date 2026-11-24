@@ -1,15 +1,25 @@
 {
- "_note": "e939 live d1 (e938-live's way; written by mkspec.py). No Tang Xiaotang this episode. The saddled horse prop-zaohongma-an-l1 appended in s08, s09, s10, s11, s13 (its felt pad written as in the picture: e938 fix6); the guard captain's portrait duizhang-portrait-l1 in s02, s03, s09; the spear prop in s34, s36, s39. 'append_pictures' = [file, sentence]: check939.py appends the picture last, puts the sentence (N = its number) after the set clause and renumbers the header. No person picture in the insert s19 (no place sentence) and the captain's s03. Xu Yan's angle-b nowhere; close-ups s15, s25, s28, s29, s31, s33 his portrait then angle-a. A-ling never angle-b; the two-riders shots and the wides her portrait only. Qian Yuanwai never angle-b; Wang Erniu's portrait only in the wide. The street, road and barn prompts lose ' below the deep pool' (every later fix must too). The clean sentence's 'clear and still' replaced in every shot. Shoes per wide. Sets: see mkspec.py. No off-screen sentence (r2.py OFFSCREEN_SPEECH = False). Seeds 9391101/9391102.",
+ "_note": "e939 live d1 (e938-live's way; written by mkspec.py), after the independent review (6 必改, 17 建議; PREP.md §7). No Tang Xiaotang this episode. The clinic door shots s01, s04-s09 send the paid Qwen edit set-yiguan-men-ye-kai-l1 / its -kai-men crop (the leaves pushed inward). The saddled horse flipped to face right, prop-zaohongma-an-r-l1, appended in s08-s13; the original prop-zaohongma-an-l1 in s01 (tied at the post). Earlier wording: the saddled horse prop-zaohongma-an-l1 appended in s08, s09, s10, s11, s13 (its felt pad written as in the picture: e938 fix6); the guard captain's portrait duizhang-portrait-l1 in s02, s03, s09; the spear prop in s34, s36, s39. 'append_pictures' = [file, sentence]: check939.py appends the picture last, puts the sentence (N = its number) after the set clause and renumbers the header. No person picture in the insert s19 (no place sentence) and the captain's s03. Xu Yan's angle-b nowhere; close-ups s15, s25, s28, s29, s31, s33 his portrait then angle-a. A-ling never angle-b; the two-riders shots and the wides her portrait only. Qian Yuanwai never angle-b; Wang Erniu's portrait only in the wide. The street, road and barn prompts lose ' below the deep pool' (every later fix must too). The clean sentence's 'clear and still' replaced in every shot. Shoes per wide. Sets: see mkspec.py. No off-screen sentence (r2.py OFFSCREEN_SPEECH = False). Seeds 9391101/9391102.",
  "seeds": [
   9391101,
   9391102
  ],
  "shots": {
   "s01": {
+   "append_pictures": [
+    [
+     "prop-zaohongma-an-l1.png",
+     "The horse shown in <Picture N> is the one horse in this shot, keeping exactly its deep red-brown coat, its mane and tail of the same red-brown, its plain dark bridle and exactly its folded dark grey-brown felt saddle pad and rope girth as the picture shows them; that picture fixes the horse only, never the place or the light."
+    ]
+   ],
    "replace": [
     [
      " below the deep pool",
      ""
+    ],
+    [
+     "Only these 2 people are in the frame; no second copy of anyone appears.",
+     "Only these 2 people and the one horse tied at the left edge are in the frame; no second copy of anyone or of the horse appears."
     ],
     [
      "the air is clear and still, a clean natural film image",
@@ -24,7 +34,7 @@
     "aling-angle-b-l1.png"
    ],
    "swap_pictures": {
-    "set-shentan-l5.png": "set-yiguan-men-ye-men-l1.png"
+    "set-shentan-l5.png": "set-yiguan-men-ye-kai-men-l1.png"
    }
   },
   "s02": {
@@ -100,7 +110,7 @@
     "aling-angle-b-l1.png"
    ],
    "swap_pictures": {
-    "set-shentan-l5.png": "set-yiguan-men-ye-men-l1.png"
+    "set-shentan-l5.png": "set-yiguan-men-ye-kai-men-l1.png"
    }
   },
   "s05": {
@@ -123,7 +133,7 @@
     ]
    ],
    "swap_pictures": {
-    "set-shentan-l5.png": "set-yiguan-men-ye-men-l1.png"
+    "set-shentan-l5.png": "set-yiguan-men-ye-kai-men-l1.png"
    }
   },
   "s06": {
@@ -149,7 +159,7 @@
     "aling-angle-b-l1.png"
    ],
    "swap_pictures": {
-    "set-shentan-l5.png": "set-yiguan-men-ye-men-l1.png"
+    "set-shentan-l5.png": "set-yiguan-men-ye-kai-men-l1.png"
    }
   },
   "s07": {
@@ -172,13 +182,13 @@
     ]
    ],
    "swap_pictures": {
-    "set-shentan-l5.png": "set-yiguan-men-ye-men-l1.png"
+    "set-shentan-l5.png": "set-yiguan-men-ye-kai-men-l1.png"
    }
   },
   "s08": {
    "append_pictures": [
     [
-     "prop-zaohongma-an-l1.png",
+     "prop-zaohongma-an-r-l1.png",
      "The horse shown in <Picture N> is the one horse in this shot, keeping exactly its deep red-brown coat, its mane and tail of the same red-brown, its plain dark bridle and exactly its folded dark grey-brown felt saddle pad and rope girth as the picture shows them; that picture fixes the horse only, never the place or the light."
     ]
    ],
@@ -201,13 +211,13 @@
     "aling-angle-a-l1.png"
    ],
    "swap_pictures": {
-    "set-shentan-l5.png": "set-yiguan-men-ye-men-l1.png"
+    "set-shentan-l5.png": "set-yiguan-men-ye-kai-men-l1.png"
    }
   },
   "s09": {
    "append_pictures": [
     [
-     "prop-zaohongma-an-l1.png",
+     "prop-zaohongma-an-r-l1.png",
      "The horse shown in <Picture N> is the one horse in this shot, keeping exactly its deep red-brown coat, its mane and tail of the same red-brown, its plain dark bridle and exactly its folded dark grey-brown felt saddle pad and rope girth as the picture shows them; that picture fixes the horse only, never the place or the light."
     ],
     [
@@ -238,13 +248,13 @@
     "aling-angle-a-l1.png"
    ],
    "swap_pictures": {
-    "set-shentan-l5.png": "set-yiguan-men-ye-l1.png"
+    "set-shentan-l5.png": "set-yiguan-men-ye-kai-l1.png"
    }
   },
   "s10": {
    "append_pictures": [
     [
-     "prop-zaohongma-an-l1.png",
+     "prop-zaohongma-an-r-l1.png",
      "The horse shown in <Picture N> is the one horse in this shot, keeping exactly its deep red-brown coat, its mane and tail of the same red-brown, its plain dark bridle and exactly its folded dark grey-brown felt saddle pad and rope girth as the picture shows them; that picture fixes the horse only, never the place or the light."
     ]
    ],
@@ -277,7 +287,7 @@
   "s11": {
    "append_pictures": [
     [
-     "prop-zaohongma-an-l1.png",
+     "prop-zaohongma-an-r-l1.png",
      "The horse shown in <Picture N> is the one horse in this shot, keeping exactly its deep red-brown coat, its mane and tail of the same red-brown, its plain dark bridle and exactly its folded dark grey-brown felt saddle pad and rope girth as the picture shows them; that picture fixes the horse only, never the place or the light."
     ]
    ],
@@ -307,6 +317,12 @@
    }
   },
   "s12": {
+   "append_pictures": [
+    [
+     "prop-zaohongma-an-r-l1.png",
+     "The horse shown in <Picture N> is the one horse in this shot, keeping exactly its deep red-brown coat, its mane and tail of the same red-brown, its plain dark bridle and exactly its folded dark grey-brown felt saddle pad and rope girth as the picture shows them; that picture fixes the horse only, never the place or the light."
+    ]
+   ],
    "replace": [
     [
      " below the deep pool",
@@ -314,7 +330,7 @@
     ],
     [
      "He is the only person in the frame; no second copy of anyone appears.",
-     "Besides him, only the back of the young woman's head in the lower left foreground the composition describes is in the frame; no second copy of anyone appears."
+     "Besides him, only the shoulder and the back of the head of the young woman in front at the right edge, and the top of the one horse's mane, are in the frame; no second copy of anyone or of the horse appears."
     ],
     [
      "the air is clear and still, a clean natural film image",
@@ -322,7 +338,7 @@
     ],
     [
      "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
-     "his chin pressed against the back of her shoulder, his face turned toward her ear, his eyes shut"
+     "his chin pressed against the back of her shoulder, his face turned toward her ear, three-quarter toward us, his eyes shut"
     ]
    ],
    "swap_pictures": {
@@ -332,7 +348,7 @@
   "s13": {
    "append_pictures": [
     [
-     "prop-zaohongma-an-l1.png",
+     "prop-zaohongma-an-r-l1.png",
      "The horse shown in <Picture N> is the one horse in this shot, keeping exactly its deep red-brown coat, its mane and tail of the same red-brown, its plain dark bridle and exactly its folded dark grey-brown felt saddle pad and rope girth as the picture shows them; that picture fixes the horse only, never the place or the light."
     ]
    ],
@@ -396,7 +412,7 @@
     ]
    ],
    "swap_pictures": {
-    "set-xujia-tangfang-l2.png": "set-xujia-tangfang-kong-chuang-l1.png",
+    "set-xujia-tangfang-l2.png": "set-xujia-tangfang-kong-chuang2-l1.png",
     "xuyan-angle-a-l1.png": "xuyan-portrait-l1.png",
     "xuyan-angle-b-l1.png": "angles/xuyan-angle-a-l1.png"
    }
@@ -509,7 +525,7 @@
     ]
    ],
    "swap_pictures": {
-    "set-xujia-tangfang-l2.png": "set-xujia-tangfang-kong-chuang-l1.png"
+    "set-xujia-tangfang-l2.png": "set-xujia-tangfang-kong-chuang2-l1.png"
    }
   },
   "s22": {
@@ -579,7 +595,7 @@
     ]
    ],
    "swap_pictures": {
-    "set-xujia-tangfang-l2.png": "set-xujia-tangfang-kong-chen-chuang-l1.png",
+    "set-xujia-tangfang-l2.png": "set-xujia-tangfang-kong-chen-chuang2-l1.png",
     "xuyan-angle-a-l1.png": "xuyan-portrait-l1.png",
     "xuyan-angle-b-l1.png": "angles/xuyan-angle-a-l1.png"
    }
@@ -609,12 +625,12 @@
   "s27": {
    "replace": [
     [
-     "He is the only person in the frame; no second copy of anyone appears.",
-     "Besides him, only the back of the young woman's head and her shoulder at the left edge of the frame the composition describes are in the frame; no second copy of anyone appears."
-    ],
-    [
      "the air is clear and still, a clean natural film image",
      "the cold still air of first light, a clean natural film image"
+    ],
+    [
+     "turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person",
+     "his face three-quarter to screen left toward someone out of sight beyond the left edge of the frame, his eyes on that spot"
     ]
    ],
    "drop_pictures": [
@@ -636,17 +652,13 @@
     ]
    ],
    "swap_pictures": {
-    "set-xujia-tangfang-l2.png": "set-xujia-tangfang-kong-chen-zhen-l1.png",
+    "set-xujia-tangfang-l2.png": "set-xujia-tangfang-kong-chen-qiang-l1.png",
     "xuyan-angle-a-l1.png": "xuyan-portrait-l1.png",
     "xuyan-angle-b-l1.png": "angles/xuyan-angle-a-l1.png"
    }
   },
   "s28b": {
    "replace": [
-    [
-     "He is the only person in the frame; no second copy of anyone appears.",
-     "No second copy of anyone appears."
-    ],
     [
      "the air is clear and still, a clean natural film image",
      "the cold still air of first light, a clean natural film image"
@@ -671,7 +683,7 @@
     ]
    ],
    "swap_pictures": {
-    "set-xujia-tangfang-l2.png": "set-xujia-tangfang-kong-chen-chuang-l1.png",
+    "set-xujia-tangfang-l2.png": "set-xujia-tangfang-kong-chen-chuang2-l1.png",
     "xuyan-angle-a-l1.png": "xuyan-portrait-l1.png",
     "xuyan-angle-b-l1.png": "angles/xuyan-angle-a-l1.png"
    }
@@ -691,7 +703,7 @@
     "xuyan-angle-b-l1.png"
    ],
    "swap_pictures": {
-    "set-xujia-tangfang-l2.png": "set-xujia-tangfang-kong-chen-zhen-l1.png"
+    "set-xujia-tangfang-l2.png": "set-xujia-tangfang-kong-chen-qiang-l1.png"
    }
   },
   "s30": {
@@ -725,7 +737,7 @@
     ]
    ],
    "swap_pictures": {
-    "set-xujia-tangfang-l2.png": "set-xujia-tangfang-kong-chen-zhen-l1.png",
+    "set-xujia-tangfang-l2.png": "set-xujia-tangfang-kong-chen-qiang-l1.png",
     "xuyan-angle-a-l1.png": "xuyan-portrait-l1.png",
     "xuyan-angle-b-l1.png": "angles/xuyan-angle-a-l1.png"
    }
@@ -761,7 +773,7 @@
     ]
    ],
    "swap_pictures": {
-    "set-xujia-tangfang-l2.png": "set-xujia-tangfang-kong-chen-chuang-l1.png",
+    "set-xujia-tangfang-l2.png": "set-xujia-tangfang-kong-chen-chuang2-l1.png",
     "xuyan-angle-a-l1.png": "xuyan-portrait-l1.png",
     "xuyan-angle-b-l1.png": "angles/xuyan-angle-a-l1.png"
    }

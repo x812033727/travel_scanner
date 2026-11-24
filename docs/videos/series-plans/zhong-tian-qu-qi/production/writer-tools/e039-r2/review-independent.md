@@ -127,3 +127,32 @@
 - **站主 11-21～23 的規則**：風格句、許硯不寫鬍渣、柴刀、唐小棠不入鏡、跪姿拍到膝蓋、不掛東西、配鞍馬圖、精修文字沒漏進 d1 都做到了。門的開關兩處跟圖相反（必改 1、2）；only 句有兩鏡自相矛盾（必改 5）；第 41 條的腰帶與馬有兩鏡漏（必改 3）；同場相鄰說話者音高要等錄音。
 - **接點 38→39 接得上**（缺拴著的馬，建議 13）；**BUY** 照估法都放得下，s32 最緊，錄音後重核。
 - 改完 `r2.py`、`mkspec.py`、`extras.json`、`check939.py`、`xujia_tangfang_e939.sh`（新裁切、新 id）以後，重跑 `build939.sh`、`prep939.sh`（rc 0）、`DRY=1 e939d1.sh`；必改 1 走 A 的話先跑 Qwen、挑圖，再重跑。
+
+## 寫稿者怎麼套（2026-11-24，前置代理；協調者定：必改 1 走 A，其餘必改照審稿、建議能免費做的都做）
+
+改前的檔在 scratchpad `e939prep/*-before-review.*`。改完重跑 `build939.sh`、`STANDIN=1 prep939.sh`（rc 0；84 支 538 秒不變；st1／d1 preflight、`check_manifest`、`h3r` 0／0；掃描全 0；免費圖 9 張＋e938 裁切 9 張逐位元相同）、`DRY=1 e939d1.sh`（0 錯，提醒 manifest 是替身圖、真跑會拒絕）。
+
+| 項目 | 怎麼處理 |
+| --- | --- |
+| 必改 1 | **A**：付費 Qwen 改圖的清單寫好、**沒跑**：`colab/runs/e939-live/qwen/{jobs-a.json,door-open.txt,negative-door-open.txt}`（底圖整張 `set-yiguan-men-ye-l1`、只改最近那扇門：兩扇門板往裡推開、門內油燈暖光灑到石階；種子 9391201–9391204；`check_images_manifest` 0／0），驅動 scratchpad `e939qwen.sh`（`STEP=a`／`STEP=pick-a PICK=<seed>`，DRY 0 錯）。挑定後裝成 `set-yiguan-men-ye-kai-l1`，免費 `yiguan_kai_e939.sh` 照 e938 `-men` 的框（`640:360:672:300`）裁 `-kai-men-l1`。s01 s04 s05 s06 s07 s08 送 `-kai-men`、s09 送整張 `-kai`；s08 身後寫『醫館兩扇門板仍往裡推開、門口暖光』（照新圖：白大夫剛出門，門沒關）。在圖裝好前 `prep939.sh` 要 `STANDIN=1`（替身＝關門的原圖），`e939d1.sh` 真跑會拒絕替身 manifest |
+| 必改 2 | s16 門在身後關著；s34 秦霜第一格已經進門一步、左手按在身後關上的門板、推門往屋裡一探（運鏡改慢推）；s22 s23 s26 補寫門關著。`check939` 斷言 |
+| 必改 3 | s11 補腰帶；s12 改側面中近景（畫右緣她的肩與後腦、他在她身後、腰帶、畫右下角馬鬃），加送配鞍馬圖、`GAZE_REFINE` 跟著改；`check939` 斷言 s11 s12 有 `sash wound twice` |
+| 必改 4 | 免費新裁 `set-xujia-tangfang-kong-chuang2-l1`／`-kong-chen-chuang2-l1`（`560:315:620:60`，窗與後牆）、`-kong-qiang-l1`／`-kong-chen-qiang-l1`（`480:270:820:100`，窗右半與牆；夜的 `-kong-qiang` 備用）；s15 s21 送 `-kong-chuang2`、s25 s29 s33 送 `-kong-chen-chuang2`、s28 s29b s31 送 `-kong-chen-qiang`，s21 s31 的畫外句只寫牆，s29 s29b 身後拿掉床頭。s27 s28b 身後寫熟睡的小禾（加送她的圖、兩人）。`check939` 斷言這八鏡『behind him』裡沒有床字 |
+| 必改 5 | `off()` 加 `only=False`；s27 用它；s38 s39 照審稿改寫畫外那一側、不寫『唯一的人』；`check939` 斷言同一支不同時有 `is the only person in the frame` 與 `exactly N people` |
+| 必改 6 | s14 小禾額頭寫 `her forehead bare and damp`，濕布只有許硯手上那一塊；`check939` 斷言 |
+| 建議 1 | 免費 `prop_flip_e939.sh` → `prop-zaohongma-an-r-l1`（頭朝右；看過：毛氈墊、繩肚帶、轡頭左右對稱、沒有字），s08–s13 改送它；s01 拴著的馬送原向 |
+| 建議 2 | s09 照圖寫沿店門往鏡頭右下角衝出去、拿掉 side-on；拴馬樁『just left of the nearest door』；全場石階改『one wide low stone step』、不寫 top／lower step（`check939` 斷言） |
+| 建議 3 | 只在必改 1 走 B 時需要：走 A，不適用 |
+| 建議 4 | s18 光句改『warm candlelight from beyond the left edge』、構圖『falling on them from the left』 |
+| 建議 5 | s27 改單人中景（朝畫左外的阿令點頭），身後床上的小禾；『把外衣拉緊』拿掉 |
+| 建議 6 | s30 許硯寫不笑、動作句改 `goes still` |
+| 建議 7 | s28 第一格臉還朝左，動作轉回正面、挑眉 |
+| 建議 8 | s13 拿掉『再催馬』；s35 抱拳在第一格完成 |
+| 建議 9 | 四點都做：前景改水田、人站在水邊乾土上、壯漢五十歲、芥黃衣老漢換成背影的韓伯（白髮髻、灰長袍、竹杖；不點名、不送圖，十個人不變）；錢員外留到 s38 |
+| 建議 10 | s40 寫略仰、轉頭的人影在畫左緣、他的前側 |
+| 建議 11 | s07『背心穿好』拿掉 |
+| 建議 12 | 精修文字 s02 開頭換成『The old man seen only from behind … his back to us』（`live_clips`／`anchor_form`）；d1 照舊送定妝照，先看 d1 |
+| 建議 13 | s01 畫左緣加拴在樁上的馬頭頸、加送配鞍馬圖（原向）、二人一馬 |
+| 建議 14、15 | **錄音後**（錄音還是 0／40，站台額度 429）：s32 BUY、s19 s21 照 `span939-buy.txt` 定；s02→s03、s37→s38 量音高，撞了動隊長 |
+| 建議 16 | s24 起寫『its wick dark and unlit』；s31『his two hands closing together below the frame』；`extras.json` 把阿令身分句的『with a cloth sash』拿掉（全集：腰帶各鏡寫在構圖） |
+| 建議 17 | **d1 後**：兩支都像笑就 fix 改側後背影＋錄音 |
