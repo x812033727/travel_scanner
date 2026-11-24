@@ -1,0 +1,1373 @@
+{
+  "schema_version": 1,
+  "slug": "curio-w30-monde-selection",
+  "theme": "paper",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    10
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音。絕不平、絕不像在念稿。",
+    "performance": "像跟朋友拆解超商貨架上天天見到的比利時金獎貼紙：開場從滿街金獎、獲獎率破九成一與歐冷日熱的反差直球切入；一九六一非競賽星級規則、千歐審查費與三年沙漏節奏明快；二零零五年日本啤酒狂飆二十三倍高潮迭起；二零一八統計與二零二五廢除銀銅獎剖析犀利；上市電商囚徒困境、二零二六入圍榜台灣奪第一與三秒貨架判讀公道實用。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -18,
+    "duck_db": -8
+  },
+  "pauses": {
+    "line_ms": 0,
+    "scene_ms": 150
+  },
+  "still_motion": "beat",
+  "loops": [
+    {
+      "setup": "m004",
+      "payoff": "m019",
+      "what": "為何同一排五家競品零食能同時掛著 Monde Selection 金獎"
+    },
+    {
+      "setup": "m006",
+      "payoff": "m097",
+      "what": "比利時老牌機構為何在歐洲冷清卻在東亞爆紅"
+    },
+    {
+      "setup": "m008",
+      "payoff": "m058",
+      "what": "為何超過一半獎牌飛去日本、台灣貨架也貼滿它"
+    },
+    {
+      "setup": "m010",
+      "payoff": "m033",
+      "what": "這枚金獎貼紙如何讓亞洲廠商甘願排隊付錢"
+    },
+    {
+      "setup": "m015",
+      "payoff": "m019",
+      "what": "既要嚴格品評，為何競品仍能同時拿獎"
+    },
+    {
+      "setup": "m022",
+      "payoff": "m025",
+      "what": "不限名額又養專業評審，這門生意真正怎麼賺"
+    },
+    {
+      "setup": "m030",
+      "payoff": "m031",
+      "what": "繳完審查費是否就能終身一直貼"
+    },
+    {
+      "setup": "m034",
+      "payoff": "m049",
+      "what": "這制度在歐洲冷清，究竟是誰在 2005 年點燃亞洲金獎狂潮"
+    },
+    {
+      "setup": "m043",
+      "payoff": "m044",
+      "what": "三得利趁勝搶攻禮盒後，接著做了什麼狠事"
+    },
+    {
+      "setup": "m046",
+      "payoff": "m048",
+      "what": "靠著三連霸金字招牌，最後銷量到底飆多高"
+    },
+    {
+      "setup": "m052",
+      "payoff": "m060",
+      "what": "貨架人人有獎究竟是不是繳錢就能隨便過關"
+    },
+    {
+      "setup": "m061",
+      "payoff": "m062",
+      "what": "眼看回頭客成了最大金主，官方怎麼留住廠商"
+    },
+    {
+      "setup": "m066",
+      "payoff": "m072",
+      "what": "連總部都察覺老制度快撐不住公信力，究竟祭出什麼大改制"
+    },
+    {
+      "setup": "m076",
+      "payoff": "m078",
+      "what": "主動砍掉銀銅獎，為何反而不怕少賺報名費"
+    },
+    {
+      "setup": "m080",
+      "payoff": "m090",
+      "what": "改制都上了，企業為何仍繼續送審貼標"
+    },
+    {
+      "setup": "m098",
+      "payoff": "m106",
+      "what": "下次逛超商看到比利時金獎，消費者該怎麼三秒判讀"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01-shelf-gold-stickers",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bright convenience store snack shelf under store lights, colorful cookie boxes, tea bottles, and supplement jars bearing identical gleaming round metallic ribbon seals",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m001",
+          "text": "走進台灣超商藥妝店，貨架滿滿金獎貼紙。",
+          "emotion": "好奇帶點促狹，語氣輕快"
+        },
+        {
+          "id": "m002",
+          "text": "餅乾魚油到泡麵，全印比利時 Monde Selection。"
+        }
+      ],
+      "chapter": "超商貨架滿地金獎？這枚貼紙竟然不是比賽冠軍"
+    },
+    {
+      "id": "s02-shopper-hesitates",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young shopper standing in a bright drugstore aisle holding two plain supplement bottles, comparing a shining embossed ribbon seal against an unadorned rival bottle",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m003",
+          "text": "你以為它是食品奧運，百裡挑一的冠軍。",
+          "emotion": "放慢放輕，帶出直覺"
+        },
+        {
+          "id": "m004",
+          "text": "可同排五家競品同時拿金獎，到底憑什麼？",
+          "emotion": "語氣上揚，單一核心問句"
+        }
+      ]
+    },
+    {
+      "id": "s03-medal-overflow-scale",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of a polished oak table in bright daylight piled high with dozens of identical embossed brass medallions overflowing from a wooden tray beside a few bare tokens",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m005",
+          "text": "二零一八全球兩千八百件參評，獲獎率破九成一！",
+          "emotion": "驚訝挑眉，重音落數字"
+        },
+        {
+          "id": "m006",
+          "text": "更反常的是，這家比利時機構在歐洲竟然很冷清！",
+          "emotion": "語氣神祕，預告反差"
+        }
+      ]
+    },
+    {
+      "id": "s04-asia-vs-europe-crates",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bright European customs warehouse floor with skylights showing a towering mountain of wooden shipping crates on the right facing a tiny single stack on the left",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m007",
+          "text": "同年光日本就抱走逾一千三百件，占全球得獎過半！",
+          "emotion": "語速明快、能量拉高"
+        },
+        {
+          "id": "m008",
+          "text": "歐洲冷門貼紙，怎麼成了亞洲商場金字招牌？",
+          "emotion": "揭曉亮起，對比鮮明"
+        }
+      ]
+    },
+    {
+      "id": "s05-ada-opens-dossier",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses in a bright archive room spreading an unmarked manila folder and brass magnifying glass on a wooden desk",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m009",
+          "text": "我們檔案局研究員把規則跟報價單全攤開。",
+          "emotion": "切換說書人沉穩語氣"
+        },
+        {
+          "id": "m010",
+          "text": "今天我們就來聊聊，它怎麼讓亞洲排隊付錢。",
+          "emotion": "清晰有力，立下承諾"
+        }
+      ]
+    },
+    {
+      "id": "s06-brussels-1961-street",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a historic Brussels cobblestone square in early nineteen sixties morning daylight with ornate stone townhouses, gentle clouds, and plain unadorned shopfronts",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m011",
+          "text": "這家機構的起點，得回到一九六一年的布魯塞爾。",
+          "emotion": "沉穩展開時間線"
+        },
+        {
+          "id": "m012",
+          "text": "當時歐洲食品賽幾乎全憑主觀，缺客觀標準。"
+        }
+      ],
+      "chapter": "1961 布魯塞爾定調：過線就發與三年續約沙漏"
+    },
+    {
+      "id": "s07-subjective-contest-1960s",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of three nineteen-sixties European food judges in tweed coats seated at a bright dining hall table tasting soup from ceramic bowls while gesturing in lively debate",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m013",
+          "text": "Monde Selection 創立，現由比利時私人公司營運。"
+        },
+        {
+          "id": "m014",
+          "text": "它非詐騙，真請獨立專家盲測外觀氣味跟口感。",
+          "emotion": "語氣客觀穩重"
+        }
+      ]
+    },
+    {
+      "id": "s08-lab-beakers-tasting",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bright laboratory tasting table with spotless glass beakers, silver tasting spoons, porcelain sample dishes, and a brass thermometer in crisp morning window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m015",
+          "text": "問題來了：既要嚴格品評，為何競品能同時拿獎？",
+          "emotion": "提問上揚，拉住懸念"
+        },
+        {
+          "id": "m016",
+          "text": "關鍵在官網明寫的一條鐵則：它根本不是淘汰賽！",
+          "emotion": "刻意停一拍，吊足胃口"
+        }
+      ]
+    },
+    {
+      "id": "s09-podium-vs-stars",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a clean tabletop diorama in warm daylight showing a single lonely wooden trophy podium on the left contrasted against a glowing row of five metallic hotel stars on velvet plaques",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m017",
+          "text": "樣品從不互比名次，定位更像飯店的星級評鑑。",
+          "emotion": "揭曉亮起，咬字加重"
+        },
+        {
+          "id": "m018",
+          "text": "滿分一百，六十銅、七十銀、八十金、九十最高金獎！"
+        }
+      ]
+    },
+    {
+      "id": "s10-hotel-stars-row",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bright European boulevard lined with four distinct boutique hotel entrances, each doorway gleaming with a row of identical brass star emblems under clear blue sky",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m019",
+          "text": "同區能開十間五星飯店，百款餅乾達標全拿！",
+          "emotion": "像聊天舉例，語氣自然"
+        },
+        {
+          "id": "m020",
+          "text": "跨線就發沒上限，難怪開頭說的獲獎率破九成一！",
+          "emotion": "關鍵數字放慢唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "s11-score-gauge-threshold",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a finely crafted brass and glass vertical measuring gauge in bright window light, shimmering honey-tinted liquid rising smoothly past an upper ring marker toward a crown notch",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m021",
+          "text": "規則聽來像大放送，但它可不是在做慈善。"
+        },
+        {
+          "id": "m022",
+          "text": "既然不限名額又養專業評審，這門生意怎麼賺？",
+          "emotion": "自然轉入商業收費"
+        }
+      ]
+    },
+    {
+      "id": "s12-lab-rubric-details",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of an orderly laboratory scoring bench in crisp daylight with three neat trays holding a pastry crumb dish, a clean glass chemical vial, and an unprinted regulatory dossier",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m023",
+          "text": "答案在官網報價單：它不是按品牌，而是逐件收費！"
+        },
+        {
+          "id": "m024",
+          "text": "同一款產品只要換個口味，就得當新品再繳一份！",
+          "emotion": "客觀交代審查實質"
+        }
+      ]
+    },
+    {
+      "id": "s13-euro-fee-stack",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a warm oak accounting desk in bright window light with neat stacks of shiny metallic euro coins beside a brass balance scale and a sealed ivory envelope",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m025",
+          "text": "每款審查費一千一百到一千七百歐，約台幣四到六萬！",
+          "emotion": "語氣透出驚嘆"
+        },
+        {
+          "id": "m026",
+          "text": "這還只是入場門票，寄樣品的錢另外算。",
+          "emotion": "重音落在千歐門票"
+        }
+      ]
+    },
+    {
+      "id": "s14-ddp-airfreight-samples",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an anonymous warehouse clerk in a crisp work jacket taping a padded cardboard shipping carton filled with plain unmarked glass bottles in a bright air cargo bay",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m027",
+          "text": "廠商還得自付關稅跟空運，把整箱樣品寄去歐洲。"
+        },
+        {
+          "id": "m028",
+          "text": "為了收遍全球訂單，連不耐空運的冷藏品都有解！"
+        }
+      ]
+    },
+    {
+      "id": "s15-tokyo-special-option",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an insulated chilled shipping box beside gleaming metallic euro coins and a sealed customs dispatch card on a clean modern counter in crisp daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m029",
+          "text": "像日本冷藏食品只要加價，就能由評審在地審查！"
+        },
+        {
+          "id": "m030",
+          "text": "更狠的是，就算考過拿獎，就能終身一直貼嗎？",
+          "emotion": "語氣俐落帶點驚訝"
+        }
+      ]
+    },
+    {
+      "id": "s16-three-year-hourglass",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an antique brass and glass hourglass resting on a bright desk with fine sand nearly run out into the lower bulb while a shiny metal seal beside it dims",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m031",
+          "text": "不行！獎牌圖樣授權只給三年，到期就不能再印！",
+          "emotion": "放慢強調，揭開核心"
+        },
+        {
+          "id": "m032",
+          "text": "到期不重考重繳，所有包裝上的金獎就得全撤下！"
+        }
+      ]
+    },
+    {
+      "id": "s17-ada-checks-hourglass",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses looking amazed as she holds up a brass hourglass beside a stack of gleaming euro coins on her desk",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m033",
+          "text": "評鑑變成三年一輪的續約生意，穩穩撐過一甲子！",
+          "emotion": "亮起讚嘆，節奏明快"
+        },
+        {
+          "id": "m034",
+          "text": "既然開頭說歐洲冷清，那是誰在亞洲點燃狂潮？",
+          "emotion": "章末懸念上揚"
+        }
+      ]
+    },
+    {
+      "id": "s18-2004-quiet-brewery",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet Japanese brewery warehouse in soft twilight with towering copper mash tuns and only a modest small stack of plain wooden beer crates near the loading bay",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m035",
+          "text": "引爆點在二零零五年，三得利的頂級麥芽高價啤酒。",
+          "emotion": "帶入故事場景"
+        },
+        {
+          "id": "m036",
+          "text": "三得利的啤酒部門，六零年代起竟然長年虧損。"
+        }
+      ],
+      "chapter": "2005 日本啤酒爆衝 23 倍：一罐酒點燃亞洲金獎潮"
+    },
+    {
+      "id": "s19-struggling-beer-2004",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Japanese supermarket beverage aisle in crisp daylight where shoppers reach past a yellow unadorned beer can on the top shelf toward stacks of silver economy cans below",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m037",
+          "text": "名城大學論文寫著，這款酒零四年只賣五十萬箱。"
+        },
+        {
+          "id": "m038",
+          "text": "內部缺氣勢，隔年團隊把它送去比利時參評！",
+          "emotion": "語氣升溫，預告翻盤"
+        }
+      ]
+    },
+    {
+      "id": "s20-2005-grand-gold-spark",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a frosty tall glass of rich bronze beer with thick white foam glowing in warm bar lighting beside a gleaming embossed round metal award seal on a dark oak counter",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m039",
+          "text": "捷報傳回東京：奪日本啤酒首座最高金獎！",
+          "emotion": "興奮亮起來"
+        },
+        {
+          "id": "m040",
+          "text": "酒廠重金打廣告，主打最高金獎犒賞週末。"
+        }
+      ]
+    },
+    {
+      "id": "s21-tv-ad-weekend-toast",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cozy Japanese living room in warm evening lamplight where a smiling couple clinks two glasses of foamy lager on a low wooden table while a vintage television glows",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m041",
+          "text": "廣告一出，最高金獎招牌瞬間引爆搶購潮！",
+          "emotion": "互動反問，語調活潑"
+        },
+        {
+          "id": "m042",
+          "text": "通路瘋狂下單，工廠一度賣到缺貨被迫暫時停售！"
+        }
+      ]
+    },
+    {
+      "id": "s22-gift-box-campaign",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a neat Japanese Father's Day six-pack beer carrier beside an elegant wrapped summer gift box and brass ribbon on a bright department store display counter",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m043",
+          "text": "三得利趁勝搶攻禮盒，接著更做了什麼狠事？",
+          "emotion": "節奏明快有畫面感"
+        },
+        {
+          "id": "m044",
+          "text": "沒等剛才說的三年期滿，它零六零七照樣拚三連霸！",
+          "emotion": "拉高懸念接數字"
+        }
+      ]
+    },
+    {
+      "id": "s23-beer-sales-momentum",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an anonymous brewery master in a clean white lab coat looking focused in a bright tasting room while holding a tall glass of lager up to the window light beside golden hops",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m045",
+          "text": "哪怕原料品質年年隨氣候變動，它仍連奪三座！",
+          "emotion": "畫面感強"
+        },
+        {
+          "id": "m046",
+          "text": "靠著三連霸金字招牌，最後銷量到底飆多高？",
+          "emotion": "拉高懸念接銷量"
+        }
+      ]
+    },
+    {
+      "id": "s24-warehouse-sellout-surge",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bustling Japanese bottling factory floor in bright industrial light as a uniformed technician inspects gleaming brass-colored beverage cans streaming rapidly along stainless steel conveyors",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m047",
+          "text": "二零零八年竟衝上一千一百四十九萬箱！",
+          "emotion": "語速加快、層層疊高"
+        },
+        {
+          "id": "m048",
+          "text": "比剛才零四年銷量，短短四年暴增到近二十三倍！",
+          "emotion": "重音衝頂"
+        }
+      ]
+    },
+    {
+      "id": "s25-bar-chart-visual-crates",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an ascending staircase of five neat stacks of wooden beer crates stretching upward from a tiny single crate on the left to a colossal skyscraper stack on the right",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m049",
+          "text": "奪日本高價啤酒銷量冠軍，帶整個部門轉虧為盈！"
+        },
+        {
+          "id": "m050",
+          "text": "奇蹟震動業界，大批亞洲品牌立刻排隊送審！",
+          "emotion": "語氣轉沉，帶出代價"
+        }
+      ]
+    },
+    {
+      "id": "s26-pressure-third-year",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a busy East Asian retail aisle under bright indoor lighting where dozens of colorful plain snack packs, tea bottles, and vitamin jars shimmer with tiny embossed seals",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m051",
+          "text": "可貨架愈貼愈滿，網友也開始質疑它含金量："
+        },
+        {
+          "id": "m052",
+          "text": "貨架上人人有獎，難道真是繳錢就能隨便過關嗎？"
+        }
+      ]
+    },
+    {
+      "id": "s27-asia-gold-rush-wave",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a curious young shopper in a bright convenience store aisle pausing thoughtfully while examining two snack packs plastered with matching round brass award seals",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m053",
+          "text": "回到開頭二零一八統計，其實仍有兩百多件落榜。"
+        },
+        {
+          "id": "m054",
+          "text": "但它們絕不自爆，貨架全剩過關的倖存者！",
+          "emotion": "章末提問打破迷思"
+        }
+      ]
+    },
+    {
+      "id": "s28-2018-ledger-breakdown",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of a bright wooden sorting desk with four neat rows of gleaming medallions of descending metallic luster on the left separated cleanly from a cluster of bare grey wooden discs on the right",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m055",
+          "text": "但獲獎率這麼高，關鍵不見得是評審隨便放水！",
+          "emotion": "語氣客觀俐落"
+        },
+        {
+          "id": "m056",
+          "text": "而是考場裡早就擠滿摸透規則的回鍋老手！",
+          "emotion": "重音打破百分百迷思"
+        }
+      ],
+      "chapter": "2018 全球成績單曝光：新手 4.9% 與近六成回鍋常客"
+    },
+    {
+      "id": "s29-survivor-bias-box",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brightly lit retail display shelf featuring three glossy snack boxes wearing shiny yellow seals while behind the counter a plain unsealed cardboard carton sits quietly in shadow",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m057",
+          "text": "看開頭那份日本一千三百多件得獎名單，超直接！",
+          "emotion": "語氣銳利點破偏誤"
+        },
+        {
+          "id": "m058",
+          "text": "高達近五成九，全是熟門熟路的回鍋老客！"
+        }
+      ]
+    },
+    {
+      "id": "s30-first-timer-vs-veteran",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two glass test flasks on a bright wooden counter, a tiny drop of yellow liquid gleaming in the left flask while a taller quarter-full glowing potion shines in the right flask",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m059",
+          "text": "食品得獎品裡，新手最高金獎比率才百分之四點九！",
+          "emotion": "數字反差強烈"
+        },
+        {
+          "id": "m060",
+          "text": "但同類連續獲獎的老手，比率卻衝上兩成七！"
+        }
+      ]
+    },
+    {
+      "id": "s31-ada-checks-repeat-ratio",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses looking startled as she taps a thick closed ledger beside a stack of repeating brass tokens on her desk",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m061",
+          "text": "眼看回頭客成了最大金主，官方還怎麼留住廠商？",
+          "emotion": "語氣拉高，帶出核心證據"
+        },
+        {
+          "id": "m062",
+          "text": "二零一八年起，官方順勢加推詳細評分報告！"
+        }
+      ]
+    },
+    {
+      "id": "s32-repeat-subscription-gears",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of interlocking brass clockwork gears turning smoothly in warm afternoon window light, cycling plain embossed medallions around a circular conveyor loop continuously",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m063",
+          "text": "廠商往後照報告改配方再考，回流率越滾越高！",
+          "emotion": "回呼前文三年沙漏"
+        },
+        {
+          "id": "m064",
+          "text": "評分眉角被摸透後，達標拿金獎的名單越拉越長！"
+        }
+      ]
+    },
+    {
+      "id": "s33-feedback-report-service",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a calm food lab specialist in a clean white coat resting a silver tasting spoon beside a sealed ivory evaluation dossier and shiny euro coins on a bright bench",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m065",
+          "text": "可獎牌滿街氾濫，反而把這塊老招牌貼到貶值！"
+        },
+        {
+          "id": "m066",
+          "text": "連總部自己都察覺：老制度快撐不住公信力了？",
+          "emotion": "章末懸念切入 2024 改制"
+        }
+      ]
+    },
+    {
+      "id": "s34-brussels-headquarters-dusk",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a stately brick and stone Belgian office building in crisp late afternoon light with tall arched windows and a quiet stone courtyard",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m067",
+          "text": "二零二四年十月三日，總部連線東京開記者會。",
+          "emotion": "明確日期，新聞臨場感"
+        },
+        {
+          "id": "m068",
+          "text": "總部罕見坦言，沿用六十多年舊制常引誤解。"
+        }
+      ],
+      "chapter": "2024 總部揮刀大改制：創設 64 年首度廢除銀銅獎"
+    },
+    {
+      "id": "s35-2024-press-briefing",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sleek modern conference room podium with twin microphones and a large glowing unprinted projection screen bathed in bright daylight, empty chairs neatly lined in front",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m069",
+          "text": "外界總拿它比諾貝爾獎，讓多年舊評級頻頻挨罵。"
+        },
+        {
+          "id": "m070",
+          "text": "尤其金銀銅並存，消費者老誤認成淘汰名次賽！",
+          "emotion": "重音拉高"
+        }
+      ]
+    },
+    {
+      "id": "s36-tier-confusion-example",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of four vintage embossed medallions in descending metallic shades lined up in a row on dark green velvet under crisp studio daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m071",
+          "text": "為了切開高分跟基礎品質，總部決定動大手術！"
+        },
+        {
+          "id": "m072",
+          "text": "創設六十四年首度大改：二零二五廢除銀銅獎！",
+          "emotion": "過渡至廢除銀銅獎"
+        }
+      ]
+    },
+    {
+      "id": "s37-silver-bronze-retired",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a velvet-lined mahogany collector box in soft morning light where a silver medal and a bronze medal are gently lifted away, leaving only two brilliant gilded medals sparkling",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m073",
+          "text": "從此只留金獎系，七十分改發新標章 Nominee Label。",
+          "emotion": "俐落揭曉"
+        },
+        {
+          "id": "m074",
+          "text": "那過去已經發出去的舊銀銅獎，又該怎麼處理？"
+        }
+      ]
+    },
+    {
+      "id": "s38-old-medal-expiry",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a faded silver ribbon seal resting beside a ticking brass pocket watch on a warm wooden table as afternoon light slants across the wood grain",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m075",
+          "text": "舊銀銅獎只能用到原三年期滿，到期不再續期。"
+        },
+        {
+          "id": "m076",
+          "text": "你一定好奇：自砍兩獎項，不怕少賺報名費嗎？",
+          "emotion": "拋出商業反直覺問句"
+        }
+      ]
+    },
+    {
+      "id": "s39-scarcity-protects-value",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a gleaming embossed brass seal resting inside a pristine glass display dome illuminated by a warm beam of museum daylight on a polished marble pedestal",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m077",
+          "text": "相反！認證賣的不是貼紙，是稀缺公信力。",
+          "emotion": "沉穩點破商業核心"
+        },
+        {
+          "id": "m078",
+          "text": "砍銀銅獎護招牌，反而逼廠商拚八十分以上！"
+        }
+      ]
+    },
+    {
+      "id": "s40-three-engines-intact",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of a polished brass ruler, neat stacks of euro coins, and a small sandglass arranged in a clean triangle on a bright oak desk",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m079",
+          "text": "面子拉高了稀缺感，核心賺錢引擎卻毫髮無傷！"
+        },
+        {
+          "id": "m080",
+          "text": "問題來了：改制都上了，企業為何還繼續送審？",
+          "emotion": "承接下一章電商告白"
+        }
+      ]
+    },
+    {
+      "id": "s41-ecommerce-boardroom",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bright modern Tokyo office conference room where four anonymous business staff sit around a glass table beside plain white skincare and consumer boxes in earnest debate",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m081",
+          "text": "隔月十一月，日本財經《Diamond Online》登專欄。",
+          "emotion": "明確時序與媒體介紹"
+        },
+        {
+          "id": "m082",
+          "text": "東京主板上市電商經營者，揭開自家開會內幕。"
+        }
+      ],
+      "chapter": "上市電商的貨架囚徒困境：2026 品質標章台灣奪第一"
+    },
+    {
+      "id": "s42-staff-doubts-sticker",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an anonymous office planner in a crisp shirt frowning over a plain consumer product box and a calculator on a bright conference table",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m083",
+          "text": "員工吐槽：滿街貼 Monde Selection，花錢幹嘛？",
+          "emotion": "模仿員工吐槽口吻"
+        },
+        {
+          "id": "m084",
+          "text": "結果經營者一句反問，瞬間讓會議室鴉雀無聲。",
+          "emotion": "停頓拉高期待"
+        }
+      ]
+    },
+    {
+      "id": "s43-ada-counter-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses leaning forward over a bright table holding two identical plain glass jars, one adorned with a shiny yellow seal",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m085",
+          "text": "「我們不貼，要是對手先貼獲獎標章開賣呢？」",
+          "emotion": "精準還原原文語意，語氣犀利"
+        },
+        {
+          "id": "m086",
+          "text": "全員頓時慌了，沒人願被搶先，當場拍板送審！"
+        }
+      ]
+    },
+    {
+      "id": "s44-prisoners-dilemma-shelf",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two identical plain brown glass supplement bottles standing side by side on a bright white pharmacy shelf, the right bottle wearing a gleaming ribbon seal while the left stands bare",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m087",
+          "text": "你看懂了嗎？這正是經典的「貨架囚徒困境」！",
+          "emotion": "語氣上揚，點破機制"
+        },
+        {
+          "id": "m088",
+          "text": "逛店只有三秒決定，你不可能現場讀檢驗報告。"
+        }
+      ]
+    },
+    {
+      "id": "s45-online-trust-badge",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young consumer sitting at a bright wooden desk browsing a clean tablet displaying two plain product bottle icons while hovering a finger over the one with a tiny yellow medal",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m089",
+          "text": "網購更摸不到也吃不到，獎章成了三秒信任捷徑。",
+          "emotion": "貼近網購日常"
+        },
+        {
+          "id": "m090",
+          "text": "大廠早非爭第一，是買保險怕不貼像沒檢驗！",
+          "emotion": "犀利點出防禦心態"
+        }
+      ]
+    },
+    {
+      "id": "s46-defensive-arms-race",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bright drugstore aisle where two anonymous shoppers gaze at an illuminated retail wall packed with colorful unmarked supplement bottles sparkling with matching brass ribbon seals",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m091",
+          "text": "一家貼、兩家跟著貼，整條貨架變軍備競賽。",
+          "emotion": "層層疊高節奏"
+        },
+        {
+          "id": "m092",
+          "text": "這場亞洲內捲多誇張？看二零二六新榜最震撼！",
+          "emotion": "直接銜接 2026 名冊"
+        }
+      ]
+    },
+    {
+      "id": "s47-2026-nominee-globe",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a polished brass antique desktop globe in bright window light turned toward East Asia with small gleaming gilded pushpins clustered densely along the Pacific rim",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m093",
+          "text": "二零二六 Nominee Label 名單裡，亞洲究竟占多高？",
+          "emotion": "明確回呼開場＋名詞已先介紹"
+        },
+        {
+          "id": "m094",
+          "text": "四百一十六件上榜裡，亞洲狂占三百六十三件！"
+        }
+      ]
+    },
+    {
+      "id": "s48-taiwan-number-one-boxes",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of neatly sorted pastel shipping parcels arranged by size on a bright wooden sorting table, the largest cluster gleaming with tiny crimson wax seals dwarfing eleven parcels",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m095",
+          "text": "台灣一百二十六件第一，日本八十三、大陸六十一。",
+          "emotion": "清單節奏明快"
+        },
+        {
+          "id": "m096",
+          "text": "香港二十七、韓國十五，全歐洲竟然才十一件！",
+          "emotion": "數字對比震撼"
+        }
+      ]
+    },
+    {
+      "id": "s49-europe-quiet-contrast",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a cheerful European artisan baker standing behind a sunlit cobblestone market stall stacked with plain brown paper bags of rustic bread and cheese with bare unadorned shelves",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m097",
+          "text": "美國兩件、主辦國比利時掛零，歐美冷清得多。"
+        },
+        {
+          "id": "m098",
+          "text": "看懂整場博弈後，下次逛超商該怎麼三秒判讀？",
+          "emotion": "直接導向終章實戰"
+        }
+      ]
+    },
+    {
+      "id": "s50-check-tier-first",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brass magnifying glass hovering over three distinct unmarked ribbon seals in varying metallic shades lined up neatly on a bright wooden counter",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m099",
+          "text": "拿起貼獎包裝，先看清上頭標的是哪個級別。",
+          "emotion": "直接接住上章問題，零複誦"
+        },
+        {
+          "id": "m100",
+          "text": "最高金獎、金獎跟新制品質標章，門檻大不同。"
+        }
+      ],
+      "chapter": "翻開包裝背面奪回評審權：三秒看穿比利時金獎"
+    },
+    {
+      "id": "s51-check-award-year",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a polished wooden desk showing a brass calendar flip stand beside a gleaming embossed round metal seal in crisp morning sunlight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m101",
+          "text": "接著瞄一眼得獎年份，看是不是近幾年才拿。",
+          "emotion": "實用具體動作"
+        },
+        {
+          "id": "m102",
+          "text": "越近代表品牌持續送審，願為品質花錢背書。"
+        }
+      ]
+    },
+    {
+      "id": "s52-mental-switch-scale",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a balanced antique brass scale on a bright wooden table, a single trophy cup on the left pan clearly separated from a neat grid of stamped round medallions on the right pan",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m103",
+          "text": "心裡把貼紙當「跨過品管門檻」，別被字眼催眠。",
+          "emotion": "新說法定論，不重念規則"
+        },
+        {
+          "id": "m104",
+          "text": "它證明商品有一定水準，卻非同類唯一最佳解。"
+        }
+      ]
+    },
+    {
+      "id": "s53-smart-shopper-checks-back",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a calm smiling shopper in a bright grocery store turning an unmarked snack box around to inspect the clean reverse side carefully rather than staring at the shiny seal",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m105",
+          "text": "最關鍵一招：花三秒翻背面看成分跟口碑！",
+          "emotion": "親切叮嚀口吻"
+        },
+        {
+          "id": "m106",
+          "text": "好不好吃、值不值行銷費，評審其實是你自己！",
+          "emotion": "收尾有力、帶微笑感"
+        }
+      ]
+    },
+    {
+      "id": "s54-gold-medal-sunset-table",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single gleaming embossed metal medal resting quietly beside an unmarked snack box and a warm cup of tea on a wooden cafe table with gentle afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m107",
+          "text": "這門走過一甲子的比利時生意，賣的是三秒安心感。",
+          "emotion": "語氣溫暖收束"
+        },
+        {
+          "id": "m108",
+          "text": "拆開這層濾鏡看滿牆金獎，是不是像看商戰？"
+        }
+      ]
+    },
+    {
+      "id": "s55-archive-folder-closed",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of a tidy archive desk in warm afternoon light where a neat kraft case folder lies cleanly closed beside a brass wax stamp and a shining embossed ribbon medallion",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "m109",
+          "text": "好啦，這就是 Monde Selection 金獎貼紙的商業真相。",
+          "emotion": "輕鬆收場"
+        }
+      ]
+    },
+    {
+      "id": "s56-ada-closing-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses smiling warmly in her bright archive office, gesturing welcomingly beside her neat wooden desk",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "m110",
+          "text": "你會因金獎買單嗎？留言告訴我哪一款！",
+          "emotion": "熱情互動提問"
+        },
+        {
+          "id": "m111",
+          "text": "喜歡拆穿商業秘密，歡迎訂閱奇聞檔案局。",
+          "emotion": "親切道別"
+        }
+      ]
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "layout": "heimao-left",
+      "headline": "Monde金獎滿街都是？",
+      "sub": "過80分不限名額！單件收逾千歐",
+      "asset": "stock/c9468e2c1edab47a80154e016ee4daa58c60ae6b658613295af98551b4624a71.jpg"
+    }
+  },
+  "assets": [
+    {
+      "path": "stock/c9468e2c1edab47a80154e016ee4daa58c60ae6b658613295af98551b4624a71.jpg",
+      "sha256": "c9468e2c1edab47a80154e016ee4daa58c60ae6b658613295af98551b4624a71",
+      "credit": "Mokaair 奇聞檔案局",
+      "license": "original",
+      "source": "built-in generate_image (w30_hero_thumb, $0)"
+    }
+  ],
+  "youtube": {
+    "title": "比利時金獎憑什麼滿街貼？Monde Selection 過80分就發｜奇聞檔案局",
+    "description": "台灣超商貨架隨手一抓就是比利時金獎，為什麼主辦國比利時在 2026 官方入圍名冊（Nominee Label）竟然掛零？\n給每次逛超商或藥妝店，都被包裝上那枚閃亮金獎貼紙吸引、想知道它到底含金量有多高的人。\n\n本片依比利時 Monde Selection 官方常見問題與評鑑方法頁、日本公認代理商 Foods R&D 官方歐元審查要項與 2018 全球及日本統計、2024 年 10 月發布之 2025 年度廢除銀銅獎改制記者會新聞稿、Monde Selection 官網 Nominee Label 2026 全球 416 件名冊、名城大學《名城論叢》2005 年日本高價啤酒行銷研究論文，以及《Diamond Online》東京主板上市電商經營者專欄，按時間順序拆解 1961 年非競賽絕對分數制、單件逾千歐元審查費與三年授權沙漏、2005 年日本啤酒狂飆 23 倍的引爆點、2018 成績單與近六成回鍋率、2025 年砍掉銀銅獎護招牌，以及東亞貨架囚徒困境與三秒判讀法。\n\n本頻道與片中提及品牌無合作關係。本集插圖由 AI 生成。\n資料截至 2026-11-23",
+    "tags": [
+      "奇聞檔案局",
+      "Monde Selection",
+      "世界品質評鑑大賞",
+      "比利時金獎",
+      "商業模式",
+      "消費心理學",
+      "超商零食",
+      "保健食品",
+      "品牌故事"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "video_id": null
+  },
+  "sources": [
+    {
+      "title": "Monde Selection 官方常見問題 FAQ（非競賽星級評鑑、分數門檻、DDP 寄送與 3 年授權）",
+      "url": "https://www.monde-selection.com/faq/",
+      "checked_on": "2026-11-23"
+    },
+    {
+      "title": "Monde Selection 官方評鑑方法說明（獨立受評不互比原則）",
+      "url": "https://www.monde-selection.com/evaluations/",
+      "checked_on": "2026-11-23"
+    },
+    {
+      "title": "Monde Selection 2025 年度改制記者會新聞稿：廢除銀銅獎改設 Nominee Label（Foods R&D / atPress）",
+      "url": "https://www.atpress.ne.jp/news/412382",
+      "checked_on": "2026-11-23"
+    },
+    {
+      "title": "Monde Selection 日本公認代理商 Foods R&D 官方審查要項與歐元費用表",
+      "url": "https://mondesupport.com/-2025/index.html",
+      "checked_on": "2026-11-23"
+    },
+    {
+      "title": "Foods R&D：2018 年全球與日本 Monde Selection 獲獎商品統計調查（atPress）",
+      "url": "https://www.atpress.ne.jp/news/159262",
+      "checked_on": "2026-11-23"
+    },
+    {
+      "title": "Monde Selection 官網：Nominee Label 2026 全球完整獲選名冊（416 件）",
+      "url": "https://www.monde-selection.com/nominee-label-2026/",
+      "checked_on": "2026-11-23"
+    },
+    {
+      "title": "名城大學《名城論叢》第 12 卷第 4 號：日本高價啤酒 2005 最高金獎行銷研究論文（PDF）",
+      "url": "https://wwwbiz.meijo-u.ac.jp/SEBM/ronso/no12_4/06_OOSAKI.pdf",
+      "checked_on": "2026-11-23"
+    },
+    {
+      "title": "Diamond Online（2024-11）：東京證交所主板上市電商經營者專欄談 Monde Selection 參賽決策",
+      "url": "https://diamond.jp/articles/-/349751",
+      "checked_on": "2026-11-23"
+    }
+  ]
+}
