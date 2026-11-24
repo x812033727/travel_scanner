@@ -1,0 +1,30 @@
+{
+  "slug": "curio-s61",
+  "reviewer": "r2-isolated-blind-a",
+  "script_sha256": "1f55c9182b1aac974cecea31d7755b1c310da29db651a6993aa310da9bb63fc9",
+  "video_sha256": "800a8c7476bee77fad9b97e8a23e5b7e26007cfcf32e5ee471db371257fec134",
+  "yes_count": 6,
+  "no_count": 7,
+  "cli_exit_code": 1,
+  "official_passed": false,
+  "required_no_count": 6,
+  "advisory_no_count": 1,
+  "official_answers_input": "r2-isolated-blind-a.answers.json",
+  "official_receipt": "r2-isolated-blind-a.receipt.json",
+  "official_workdir_narrative": "r2-isolated-blind-a.official-narrative.json",
+  "answers": [
+    {"id":"scene_first","answer":true,"evidence":["[s61001] 一九一七年十二月六日，哈利法克斯的街上，剛經歷一場巨響。","[s61002] 可不到一小時，又有人喊：還有第二次爆炸。"],"reason":"A dated street moment with a person sounding a warning."},
+    {"id":"no_spoiler","answer":true,"evidence":["[s61007] 火勢真的朝火藥庫去，還是街上的人只聽見傳言？","[s61010] 第二次巨響最後有沒有來？先回到港口那一撞。"],"reason":"The opening withholds the threat assessment and outcome."},
+    {"id":"one_line","answer":true,"evidence":["[s61010] 第二次巨響最後有沒有來？先回到港口那一撞。","[s61025] 蒙布朗號起火約二十分鐘後，港口突然傳來巨響。","[s61040] 普林斯說，爆炸還不到一小時，火藥庫的消息已傳開。"],"reason":"The announced opening flashback is followed by a forward chain of disaster and response events."},
+    {"id":"no_toc","answer":false,"evidence":["[s61056] 要看清楚，得把警報、行動和結果拆成三張紙。","[s61057] 第一張是警報：普林斯說，當時有人擔心火燒近火藥庫。","[s61058] 第二張是行動：他寫，一整支砲兵隊自願去灌水。","[s61059] 第三張是結果：第二次爆炸沒有發生。"],"reason":"The script announces and numbers an explanatory list."},
+    {"id":"chapters_link","answer":false,"evidence":["[s61024] 如果第一次危險沒說清，第二次傳來時誰敢不跑？","[s61025] 蒙布朗號起火約二十分鐘後，港口突然傳來巨響。","[s61056] 要看清楚，得把警報、行動和結果拆成三張紙。","[s61057] 第一張是警報：普林斯說，當時有人擔心火燒近火藥庫。"],"reason":"One chapter returns to the first blast rather than answering the previous question; another opens a structural label."},
+    {"id":"open_loops","answer":true,"evidence":["[s61016] 兩艘船必須在同一處狹口會過；哪一個動作出錯了？","[s61039] 被警告的是什麼，離火究竟有多近？","[s61053] 更要緊的是，第二次究竟沒發生，還是我們漏看了？","[s61084] 可是空地上的人，今夜能住哪裡？"],"reason":"Open questions recur within 90 seconds in the body."},
+    {"id":"payoffs","answer":false,"evidence":["[s61007] 火勢真的朝火藥庫去，還是街上的人只聽見傳言？","[s61057] 第一張是警報：普林斯說，當時有人擔心火燒近火藥庫。","[s61062] 所以不能補出誰下令、哪個閥門開了、火離庫有幾步。","[s61030] 最先要做的是找人與滅火；少了領隊，誰來分工？","[s61067] 他們的兩位領隊在首爆失去性命，現場指揮卻重新接起來。"],"reason":"Actual fire proximity and the replacement commander are not answered."},
+    {"id":"no_recap","answer":false,"evidence":["[s61059] 第三張是結果：第二次爆炸沒有發生。","[s61097] 最後，第二次爆炸沒有在哈利法克斯發生。","[s61060] 普林斯把這個結果，歸給砲兵隊的處置。","[s61098] 普林斯把這點歸於砲兵隊灌水，而不是命運忽然放過。"],"reason":"The outcome and water attribution are stated again without explicit callback."},
+    {"id":"chapters_are_events","answer":false,"evidence":["[s61011] 這座港口在戰時忙著運補，軍需船和民用船交錯進出。"],"reason":"The chapter named 戰時港口的兩艘船 starts as setting and background rather than an event or reveal."},
+    {"id":"outro_no_next","answer":true,"evidence":["[s61997] 第二次爆炸是零次；普林斯把結果歸給火藥庫灌水。","[s61998] 如果你當時在街上，會先往空地走，還是留下幫忙？","[s61999] 想聽有出處、不把警報說成結果的歷史故事，訂閱奇聞檔案局。"],"reason":"The spoken outro contains no next-video reference."},
+    {"id":"opening_hooks","answer":true,"evidence":["[s61006] 第一次到底怎麼炸的，才讓第二個警報聽來可信？","[s61007] 火勢真的朝火藥庫去，還是街上的人只聽見傳言？","[s61009] 一條是人群如何逃，另一條是有人怎麼處理火藥庫。","[s61010] 第二次巨響最後有沒有來？先回到港口那一撞。"],"reason":"At least three distinct later moments are set up after the first scene."},
+    {"id":"one_thread","answer":false,"evidence":["[s61010] 第二次巨響最後有沒有來？先回到港口那一撞。","[s61059] 第三張是結果：第二次爆炸沒有發生。","[s61074] 救援有了落點，消息卻仍需要一條能出城的線。","[s61084] 可是空地上的人，今夜能住哪裡？"],"reason":"The warning question is resolved before the story changes to communications and shelter problems."},
+    {"id":"no_detour","answer":false,"evidence":["[s61059] 第三張是結果：第二次爆炸沒有發生。","[s61075] 普林斯說，爆後不到一小時，電報公司恢復一條外線。","[s61080] 四小時內，一列醫療列車載著傷者往特魯羅去。","[s61085] 軍方開始在公地搭起白色帳棚，先給人遮蔽。"],"reason":"The extended rescue-logistics passage comes after the main answer and does not advance the opening question."}
+  ]
+}
