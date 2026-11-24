@@ -1,0 +1,46 @@
+{
+  "slug": "curio-s59",
+  "round": "R2",
+  "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node /workspace/travel_scanner/tools/video/cli.mjs narrative --slug curio-s59 --answers /workspace/travel_scanner/docs/videos/curio-s59/review/r2-merge/merged-answers.json --workdir /tmp/curio-s59-r2-merge-formal-42DkkK --json",
+  "workdir": "/tmp/curio-s59-r2-merge-formal-42DkkK",
+  "official_record_path": "/tmp/curio-s59-r2-merge-formal-42DkkK/curio-s59/review/narrative.json",
+  "creative_sha256_before": {
+    "research.md": "ad5baec33ae786da9d103eecadca9f16c9f23f00d4041bde158e1e2697958efb",
+    "brief.md": "90024cd567cb540e92fe9d58815cb36a0d05ade7a6739ec6851a54d6d5d10b80",
+    "claims.md": "b84f891c58a937cd9fd2cfffc2aab0f14c0c652fee838f6a79bfca2b40e99bc5",
+    "video.json": "26844c8610bd399077be2f349b3c548168c5021d6c143a88610ca8138d16a435",
+    "script.md": "c74ea14ea53d7442b59d2232fd867b1ce7794aae4b2878337b693fe25a3e78a3"
+  },
+  "creative_sha256_after": {
+    "research.md": "ad5baec33ae786da9d103eecadca9f16c9f23f00d4041bde158e1e2697958efb",
+    "brief.md": "90024cd567cb540e92fe9d58815cb36a0d05ade7a6739ec6851a54d6d5d10b80",
+    "claims.md": "b84f891c58a937cd9fd2cfffc2aab0f14c0c652fee838f6a79bfca2b40e99bc5",
+    "video.json": "26844c8610bd399077be2f349b3c548168c5021d6c143a88610ca8138d16a435",
+    "script.md": "c74ea14ea53d7442b59d2232fd867b1ce7794aae4b2878337b693fe25a3e78a3"
+  },
+  "creative_unchanged": true,
+  "ballot_sha256": {
+    "a": "5dcb6fc982e4658d52f0105dd2c1230c6f6ea0c291d0075be843b2521c1e5e02",
+    "b": "e9d86cef82821b11e8a1830614efabc7428eedf562190cc627800b2dd9212bd1"
+  },
+  "merged_answers_sha256": "8f742184d9f2d49f0d98b224fc55ef5f502867980360f76fd5f2c093cc63100d",
+  "stdout_sha256": "e3a3123426bfb7f795e6c7080db546d7e2ed8f5327f6d6de9e61fea71f6d6ba6",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "official_record_sha256": "c65c9d827161e6672f2877d269bffcb997a19702ce7e8e32b63fe8f8b5350c97",
+  "exit_code": 1,
+  "cli_passed": false,
+  "cli_failed": [
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[s59079] 但「他試失敗」只說明這一次沒成功，還不能推翻普斯卡斯先前的示範。；讀者二：[s59014] 紙盤留下的是點和劃；另一台機器能把這些痕跡讀回電線嗎？"
+    }
+  ],
+  "cli_advisory": [],
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "panel_narration_sha256": "0b5a80049807e2415ed3a83ed27813beb1e0ee95eb9a4a903c84edd466d47498",
+  "narrative_hash": "590e17142cbb06ef",
+  "official_round": 1
+}

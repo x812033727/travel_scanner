@@ -1,0 +1,83 @@
+{
+  "round": "R8",
+  "parent": "R7",
+  "parent_sha256": {
+    "research.md": "39a48f08ca01dfa18009e9c1819684d03b92c52656952affd3266a574d88067d",
+    "brief.md": "9d68d7b4dad27f56b6dbc53f7890bc0db84590de3e445302f8f4836c286ac1e3",
+    "claims.md": "73711de13ce73791e409118b923eceb9d35425a84a63b6fc8b20ddba816e1c58",
+    "video.json": "c78a0329f901d05450440ac7244345e5a375ebbacf361c187cec1036bfcc767e",
+    "script.md": "d024ba3a7fed6c94b90320097de6289273278b65c7e1ebaef727b86ec861e57f"
+  },
+  "new_sha256": {
+    "research.md": "39a48f08ca01dfa18009e9c1819684d03b92c52656952affd3266a574d88067d",
+    "brief.md": "9d68d7b4dad27f56b6dbc53f7890bc0db84590de3e445302f8f4836c286ac1e3",
+    "claims.md": "aeb0cd64b8ddeb992e70c3daa813f42d475718e707e82e62f0da4a7684d95f95",
+    "video.json": "f29d9f55dbea7ee52a19e6c885ed36f26f51b30fc7fe0fa4caa87b7ea9d3a33b",
+    "script.md": "f0fd2a6069844fe99e994367f3fa8d27b36928231dc0695fd816762c18faf07b"
+  },
+  "edits": {
+    "video_json_leaves": [
+      {
+        "path": "scenes[29].lines[0].text",
+        "id": "s59030",
+        "before": "他於是畫了一台小機器，草圖上還標了給工匠的十八美元。",
+        "after": "還記得開場那張十八美元的草圖嗎？愛迪生就在這時把小機器畫了下來。"
+      },
+      {
+        "path": "scenes[32].lines[0].text",
+        "id": "s59033",
+        "before": "開場那張草圖在克呂西手裡，做成了那台手搖圓筒機的前身。",
+        "after": "克呂西照著草圖，做出了手搖圓筒機的前身。"
+      },
+      {
+        "path": "scenes[77].lines[0].text",
+        "id": "s59078",
+        "before": "科學院於是請杜蒙塞爾自己動手；若換人仍有聲音，疑問就少了一層。",
+        "after": "還記得開場輪到杜蒙塞爾嗎？只要換人也能讓機器發聲，腹語的疑問就少一層。"
+      },
+      {
+        "path": "scenes[79].lines[0].text",
+        "id": "s59080",
+        "before": "開場輪到杜蒙塞爾的那一刻，他真的沒有做出剛才的效果。",
+        "after": "他真的試了，卻沒做出剛才那個效果。"
+      }
+    ],
+    "claims_rows": [
+      {
+        "id": "s59030",
+        "before": "他於是畫了一台小機器，草圖上還標了給工匠的十八美元。",
+        "after": "還記得開場那張十八美元的草圖嗎？愛迪生就在這時把小機器畫了下來。"
+      },
+      {
+        "id": "s59033",
+        "before": "開場那張草圖在克呂西手裡，做成了那台手搖圓筒機的前身。",
+        "after": "克呂西照著草圖，做出了手搖圓筒機的前身。"
+      },
+      {
+        "id": "s59078",
+        "before": "科學院於是請杜蒙塞爾自己動手；若換人仍有聲音，疑問就少了一層。",
+        "after": "還記得開場輪到杜蒙塞爾嗎？只要換人也能讓機器發聲，腹語的疑問就少一層。"
+      },
+      {
+        "id": "s59080",
+        "before": "開場輪到杜蒙塞爾的那一刻，他真的沒有做出剛才的效果。",
+        "after": "他真的試了，卻沒做出剛才那個效果。"
+      }
+    ],
+    "research_changed": false,
+    "brief_changed": false,
+    "prompts_changed": false,
+    "cards_changed": false,
+    "other_video_json_changed": false
+  },
+  "inverse_proof": {
+    "video_sha256": "c78a0329f901d05450440ac7244345e5a375ebbacf361c187cec1036bfcc767e",
+    "claims_sha256": "73711de13ce73791e409118b923eceb9d35425a84a63b6fc8b20ddba816e1c58",
+    "script_sha256": "d024ba3a7fed6c94b90320097de6289273278b65c7e1ebaef727b86ec861e57f",
+    "script_generated_exact": true,
+    "visual_hash_before": "3e39a4b9868072e1",
+    "visual_hash_after": "3e39a4b9868072e1",
+    "narrative_hash_before": "f20dc827b7998950",
+    "narrative_hash_after": "755facc75e73fc89"
+  }
+}
