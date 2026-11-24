@@ -71,10 +71,21 @@
   {
    "cue": "battle",
    "from": "s20",
-   "to": "s31",
+   "to": "s26",
    "offset": 0.0,
    "gain": -7,
    "fade_in": 0.3,
+   "fade_out": 0.04,
+   "tail": 0.7
+  },
+  {
+   "cue": "battle",
+   "from": "s27b",
+   "from_off": -0.25,
+   "to": "s31",
+   "offset": 34.0,
+   "gain": -7,
+   "fade_in": 0.02,
    "fade_out": 0.8,
    "tail": 0.0
   },
@@ -319,36 +330,6 @@
    "gain": -7.3
   },
   {
-   "file": "hooves_gallop",
-   "at": "s27",
-   "off": 0.0,
-   "gain": -2.0
-  },
-  {
-   "file": "swish-7",
-   "at": "s27",
-   "off": 0.78,
-   "gain": -7.2
-  },
-  {
-   "file": "zhongtian-sfx-body-fall-stone-01",
-   "at": "s27",
-   "off": 0.98,
-   "gain": -2.8
-  },
-  {
-   "file": "zhongtian-sfx-drag-struggle-08",
-   "at": "s27",
-   "off": 0.78,
-   "gain": -7.6
-  },
-  {
-   "file": "hooves_gallop",
-   "at": "s27b",
-   "off": 0.15,
-   "gain": -6.0
-  },
-  {
    "file": "zhongtian-sfx-armor-09",
    "at": "s27b",
    "off": 0.2,
@@ -473,6 +454,54 @@
    "at": "s37",
    "off": 5.0,
    "gain": 0.3
+  },
+  {
+   "file": "gallop-in70",
+   "at": "s27",
+   "off": 0.0,
+   "gain": 1.0
+  },
+  {
+   "file": "swish-7",
+   "at": "s27",
+   "off": 0.72,
+   "gain": -9.2
+  },
+  {
+   "file": "zhongtian-sfx-drag-struggle-08",
+   "at": "s27",
+   "off": 0.76,
+   "gain": -9.6
+  },
+  {
+   "file": "zhongtian-sfx-body-fall-stone-01",
+   "at": "s27",
+   "off": 1.0,
+   "gain": -1.8
+  },
+  {
+   "file": "gallop-land",
+   "at": "s27",
+   "off": 1.06,
+   "gain": -5.0
+  },
+  {
+   "file": "gallop-out",
+   "at": "s18",
+   "off": 3.4,
+   "gain": -8.0
+  },
+  {
+   "file": "creak2",
+   "at": "s38",
+   "off": 0.45,
+   "gain": 2.3
+  },
+  {
+   "file": "creak3",
+   "at": "s38",
+   "off": 0.95,
+   "gain": 5.3
   }
  ],
  "frame_round": true,
@@ -488,19 +517,23 @@
   },
   "s09": {
    "from": 0,
-   "af": "rubberband=pitch=0.87:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=0.81:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s12": {
    "from": 0,
-   "af": "rubberband=pitch=1.11:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=1.03:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s13": {
    "from": 0,
-   "af": "rubberband=pitch=0.885:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=0.81:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+  },
+  "s17": {
+   "from": 0,
+   "af": "rubberband=pitch=0.93:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   },
   "s25": {
    "from": 0,
-   "af": "rubberband=pitch=0.89:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
+   "af": "rubberband=pitch=0.85:formant=preserved,alimiter=limit=0.89:attack=5:release=50:level=false:latency=1"
   }
  },
  "voice_off": [
@@ -522,18 +555,25 @@
   "zq938a29": 1.09,
   "zq938a31": 1.52,
   "zq938a32": 0.37,
-  "zq938a21": 1.5,
+  "zq938a21": 1.5
+ },
+ "line_lead": {
+  "zq938a17": 0.85,
   "zq938a33": 0.0
  },
- "line_lead": {},
  "panel_y": {},
  "panel_from": {},
- "panel_color": {},
+ "panel_color": {
+  "s11": "red"
+ },
  "panel_until": {},
  "vf": {
   "s12": "crop=iw/1.05:ih/1.05:0:0,scale=1920:1080:flags=lanczos,setsar=1",
   "s25": "crop=iw/1.3:ih/1.3:iw*0.095:0,scale=1920:1080:flags=lanczos,setsar=1",
-  "s26": "crop=iw/1.65:ih/1.65:iw*0.067:0,scale=1920:1080:flags=lanczos,setsar=1"
+  "s26": "crop=iw/1.65:ih/1.65:iw*0.067:0,scale=1920:1080:flags=lanczos,setsar=1",
+  "s10": "crop=iw/1.35:ih/1.35:0:0,scale=1920:1080:flags=lanczos,setsar=1",
+  "s13": "crop=iw/1.4:ih/1.4:0:ih*0.02,scale=1920:1080:flags=lanczos,setsar=1",
+  "s01": "crop=iw/1.12:ih/1.12:0:ih*0.05,scale=1920:1080:flags=lanczos,setsar=1"
  },
  "slow_shot": {},
  "subtitle_lines": [],
