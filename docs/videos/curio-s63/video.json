@@ -1,0 +1,2188 @@
+{
+  "schema_version": 1,
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    15
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，像跟朋友講有出處的歷史故事；自然說書，遇到被迫離散與身體危險時放慢，不擬演受難者逐字對白。",
+    "performance": "Brown／Stearns 出版敘事、編者腳註與 May 演說分開；尊重被奴役者的抉擇，避開獵奇表演。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "slug": "curio-s63",
+  "sources": [
+    {
+      "title": "Henry Box Brown / Charles Stearns, Narrative of Henry Box Brown, fixed full text",
+      "url": "https://github.com/GITenberg/Narrative-of-Henry-Box-Brown-Who-Escaped-from-Slavery-Enclosed-in-a-Box-3-Feet-Long-and-2-Wid__64992/blob/a92658e80effa4cce03bb19c13e96ffaaae5fa2b/64992-0.txt",
+      "checked_on": "2026-10-22"
+    }
+  ],
+  "assets": [],
+  "loops": [
+    {
+      "setup": "s63004",
+      "payoff": "s63108",
+      "what": "箱內是否能回答接收者"
+    },
+    {
+      "setup": "s63005",
+      "payoff": "s63032",
+      "what": "午間家人消息"
+    },
+    {
+      "setup": "s63006",
+      "payoff": "s63080",
+      "what": "船上箱子是否被倒放"
+    },
+    {
+      "setup": "s63007",
+      "payoff": "s63098",
+      "what": "華盛頓轉車能否上車"
+    },
+    {
+      "setup": "s63008",
+      "payoff": "s63122",
+      "what": "北方公開講話要質問哪種法律"
+    },
+    {
+      "setup": "s63009",
+      "payoff": "s63120",
+      "what": "出箱之後是否安全"
+    },
+    {
+      "setup": "s63020",
+      "payoff": "s63023",
+      "what": "不賣掉南希的承諾"
+    },
+    {
+      "setup": "s63025",
+      "payoff": "s63032",
+      "what": "一家能否繼續同住"
+    },
+    {
+      "setup": "s63031",
+      "payoff": "s63032",
+      "what": "布朗中午還能否見家人"
+    },
+    {
+      "setup": "s63035",
+      "payoff": "s63037",
+      "what": "送信者能否見到南希"
+    },
+    {
+      "setup": "s63039",
+      "payoff": "s63042",
+      "what": "下一位求助者是否幫忙"
+    },
+    {
+      "setup": "s63043",
+      "payoff": "s63051",
+      "what": "路邊告別如何結束"
+    },
+    {
+      "setup": "s63054",
+      "payoff": "s63063",
+      "what": "布朗的逃脫辦法"
+    },
+    {
+      "setup": "s63063",
+      "payoff": "s63069",
+      "what": "貨箱要裝的人"
+    },
+    {
+      "setup": "s63076",
+      "payoff": "s63077",
+      "what": "木箱方向會如何被放"
+    },
+    {
+      "setup": "s63089",
+      "payoff": "s63098",
+      "what": "下一班車能否裝下木箱"
+    },
+    {
+      "setup": "s63100",
+      "payoff": "s63104",
+      "what": "木箱能否到約好的費城地址"
+    },
+    {
+      "setup": "s63114",
+      "payoff": "s63120",
+      "what": "更往北仍有何風險"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s63001",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63001",
+          "text": "里奇蒙，布朗把一只做好的木箱搬到協助他的朋友面前。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, in an 1840s Richmond room before departure, one Black adult man sets an unsealed, unlettered wooden box before a helping friend who remains out of frame, soft window light.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "chapter": "布朗把木箱交到朋友面前"
+    },
+    {
+      "id": "s63002",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63002",
+          "text": "朋友還不明白箱子要載誰，布朗卻想靠它離開這座城。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, in an 1840s Richmond room before departure, one adult helper studies an unsealed, unlettered wooden box, his expression uncertain, soft window light.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63003",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63003",
+          "text": "如果箱蓋真的釘上，路上的人會把它翻成什麼方向？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, three-quarter view, in an 1840s Richmond room before departure, one Black adult man regards the loose wooden lid beside an open freight box, low afternoon light.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63004",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63004",
+          "text": "箱子外面有人叫他時，他還能回答嗎？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, in an 1840s Richmond room before departure, one Black adult man stands beside an open wooden freight box, hesitant but determined, soft sidelight.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63005",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63005",
+          "text": "他上工的那個中午，妻兒的消息追上來；回家還能見到他們嗎？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium view in 1840s Richmond at midday: one Black adult man in a plain linen work shirt pauses beside a simple plaster wall and wooden doorway, his worried face turned toward home, soft daylight.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63006",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63006",
+          "text": "他自己鑽進木箱，船上卻連哪一面朝上都不能決定。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, side view, on an 1840s steamboat freight deck, one freight worker steadies a sealed wooden box tipped on its narrow end, natural light across the scene.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63007",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63007",
+          "text": "華盛頓轉車時，箱子忽然停在月台；它還能接上那班車嗎？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium view on an 1840s Washington wooden rail platform: one porter rests a hand on a tightly shut wooden plank crate. Its solid lid lies flat, nailed flush along all four edges, in soft afternoon light.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63008",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63008",
+          "text": "即使到了北方，原主人仍能把他帶走嗎？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium view inside an 1840s Northern meeting room: one anonymous adult listener sits on a wooden bench, looking toward an unoccupied wooden lectern beside a closed door, muted window light.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63009",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63009",
+          "text": "那只木箱真能把亨利・布朗送到安全的地方嗎？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium view inside an 1840s Richmond room before departure: one Black adult man with dark brown skin rests his hand on a shut rough wooden plank box beside a plain plaster wall, quiet morning window light.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63010",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s63010",
+          "text": "木箱裡的亨利・布朗，在史登斯依他陳述筆寫的書裡，先說自己出生就被當成財產。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "text": "十九世紀出版文本",
+        "sub": "布朗陳述事實｜Charles Stearns 筆寫"
+      },
+      "chapter": "里奇蒙的家忽然消失"
+    },
+    {
+      "id": "s63011",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63011",
+          "text": "小時候母親指著秋風捲走的落葉，告訴他：被奴役的孩子也可能被人一一帶走。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, on an early 1800s Virginia farm in autumn, one African American woman points to a fallen leaf in her palm, soft afternoon light on the scene.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63012",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s63012",
+          "text": "十三歲時，主人的四個兒子分遺產；被奴役的人也被分配，母親能保住孩子嗎？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "text": "13 歲",
+        "sub": "家族分割被奴役者｜布朗被帶往里奇蒙"
+      }
+    },
+    {
+      "id": "s63013",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s63013",
+          "text": "母親哀求後才留住最小的孩子，又提醒布朗：當年那些落葉的話成真了。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "text": "最小的孩子",
+        "sub": "母親哀求後，才回到她手中"
+      }
+    },
+    {
+      "id": "s63014",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63014",
+          "text": "布朗被帶往里奇蒙，父母留在原來的農莊；一段時間裡，他見不到母親，連她的消息也很少。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, at an early 1800s Virginia farm gate, one Black woman watches the empty road toward Richmond, overcast daylight on the scene.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63015",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63015",
+          "text": "多年後，布朗仍在菸草工廠做工；男人們把處理過的菸葉捲成束，送去壓塊。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, in an 1840s Virginia tobacco factory, one Black man twists moistened tobacco leaves into a bundle at a wooden workbench, muted window light.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63016",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63016",
+          "text": "他身邊也有自由黑人做工；對布朗來說，工廠的門卻不是想出就能出。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, three-quarter angle, in an 1840s Virginia tobacco factory, one Black man pauses beside his workbench and looks toward a closed exit door, muted interior light.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63017",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63017",
+          "text": "有飯、有衣，他仍不能決定自己或家人留在哪裡；日子會因此安穩嗎？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, in an 1840s Richmond home, one African American man holds a plain coat while facing an empty doorway, warm light through a small window.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63018",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63018",
+          "text": "夏天一天十四小時、冬天十六小時；他的收入大半也得交出。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close view inside an 1840s Richmond tobacco workshop, one Black adult worker in a plain linen shirt separates tobacco leaves on a rough wooden bench; daylight falls through a high wooden window onto the hands and leaves, plain plaster wall behind.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63019",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s63019",
+          "text": "他在城裡認識南希，兩人相愛，卻連結婚都要別人點頭；這份允許能保住他們的家嗎？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "text": "南希",
+        "sub": "在里奇蒙相識"
+      }
+    },
+    {
+      "id": "s63020",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63020",
+          "text": "南希也受另一人奴役；那人先答應不會賣掉她。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, in an 1840s Virginia office, one African American man listens at a doorway with his hands held still, muted interior light.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63021",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63021",
+          "text": "那人說不該拆散家人，還要布朗的主人答應不賣布朗。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot outside a simple wooden doorway in 1840s Richmond, one Black man rests a hand on the doorpost before entering, plain plaster wall and wooden door fill the background, soft daylight.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63022",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63022",
+          "text": "布朗與南希結婚才過一年，那句「不會賣她」的承諾就被打破了。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, three-quarter angle, outside an 1840s Virginia home, one dark-skinned man draws a second chair toward a small table, natural light across the scene.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63023",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63023",
+          "text": "南希被賣給城裡一名鞍匠；布朗與她的婚姻，擋不下這筆交易。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot at an 1840s Richmond street corner, one African American woman pauses beside a wooden cart wheel with a cloth bundle, packed earth and a plain plaster wall fill the view, soft afternoon light.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63024",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63024",
+          "text": "沒想到那位鞍匠病好，竟又把南希轉賣給別人。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, at an 1840s Virginia saddler workshop, one Black woman stands beside an empty leather workbench holding a folded cloth, cloud-filtered light on the scene.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63025",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63025",
+          "text": "布朗說，他不知明天醒來時，南希又會被誰控制。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, in an 1840s Richmond rented room, one dark-skinned man sets a second place at a bare table, warm light through a small window.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63026",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63026",
+          "text": "最後一位買下南希的人，要布朗先拿五十美元協助買下她；這筆錢能保住一家嗎？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, in an 1840s Virginia office, one African American man gathers coins from his pocket beside a counter, cloud-filtered room light.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63027",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63027",
+          "text": "布朗每年還得付五十美元，才有機會與南希同住；她仍沒有得到自由。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, in an 1840s Richmond office, one Black man places coins on a wooden counter, soft light from a small window.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63028",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63028",
+          "text": "南希替人洗衣，布朗留下部分工錢；兩人靠這些照顧孩子。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, three-quarter angle, in an 1840s Virginia rented room, one dark-skinned woman wrings a garment over a washbasin, muted interior light.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63029",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63029",
+          "text": "他在城裡租了屋，付了七十二美元；一家終於有了能同住的地方。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, in an 1840s Richmond rented room, one Black man stands at the open doorway with a plain rent pouch in hand, warm light through a small window.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63030",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63030",
+          "text": "布朗說，這樣的日子只安穩了一陣；一個晴朗早晨，家又會遇上什麼？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, side view, in an 1840s Virginia rented room, one Black man pauses at a household table and looks toward the door, cloud-filtered room light.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63031",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s63031",
+          "text": "一八四八年八月的一早，布朗親吻南希和三個孩子去上工；孩子還叫他快回來。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "text": "1848 年 8 月",
+        "sub": "里奇蒙｜布朗家仍同住的早晨"
+      }
+    },
+    {
+      "id": "s63032",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63032",
+          "text": "到中午，他突然得知妻兒已被關進牢房，明天就要被送往南方。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, in an 1840s Virginia tobacco factory at midday, one African American man listens to news while a work tool hangs idle in his hand, muted interior light.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63033",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63033",
+          "text": "家人就要被帶去遠方，他還趕得及見上一面嗎？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot outdoors on an 1840s Richmond street at midday, one Black man grips his plain coat as wagon tracks stretch away across packed earth, a timber wall behind him, cloud-filtered daylight.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63034",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63034",
+          "text": "他立刻奔向牢房，路上卻有人攔住，告訴他看守也接到逮捕布朗的命令。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on an 1840s Virginia earthen road, one dark-skinned man hurries toward a distant jail gate, rough dirt and a long plain plaster wall fill the view, natural daylight.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63035",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63035",
+          "text": "他若在牢房露面，也可能被關起來，再與南希分開送走。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot on an 1840s Richmond earthen lane short of a distant jail, one African American man halts after a warning, packed earth and a plain timber wall behind him, soft afternoon light.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63036",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63036",
+          "text": "布朗不敢再往前，只好託另一名年輕人帶錢和消息給南希，說明自己沒能親自來。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium side shot outdoors on an 1840s Virginia street, one Black man extends a small coin pouch toward someone beyond the frame, packed earth underfoot and a plain plaster wall behind, daylight.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63037",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63037",
+          "text": "那人到了牢房剛問南希，就被誤認成布朗抓了進去。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, at an 1840s Richmond jail entrance, one messenger stands still as a guard's closed door blocks the way, cloud-filtered light across the scene.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63038",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63038",
+          "text": "看守發覺抓錯人，就把年輕人踢出牢房。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, outside an 1840s Virginia jail, one messenger walks away holding an unopened coin pouch, natural light across the scene.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63039",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63039",
+          "text": "這條求見家人的路也堵住了；他還能找誰？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot outdoors on an 1840s Richmond street away from the jail, one Black man waits beside a plain plaster wall after his messenger was turned away, packed earth fills the foreground, soft afternoon light.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63040",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63040",
+          "text": "布朗轉向奴役自己的人，求他把南希買下。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, three-quarter angle, in an 1840s Virginia office, one dark-skinned man holds out a small money pouch beside an empty chair, muted interior light.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "chapter": "路邊那次無聲告別"
+    },
+    {
+      "id": "s63041",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63041",
+          "text": "布朗說自己已向主人上繳五千美元，如今求他拿出一小部分買下南希，仍被拒絕。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, in an 1840s Richmond tobacco factory, one African American man studies his worn work hands above a blank wage ledger, warm light through a small window.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63042",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63042",
+          "text": "在接下來的二十四小時，他一次又一次懇求，對方始終不肯拿錢。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, side view, in an 1840s Virginia office, one Black man leans forward across a desk with an open palm, cloud-filtered room light.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63043",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63043",
+          "text": "書裡記下的答覆是：你可以再找一個妻子。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, in an 1840s Richmond office, one dark-skinned man lowers his eyes toward a closed household ledger, soft light from a small window.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63044",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63044",
+          "text": "他說，自己不要別人，只要南希和原來的家。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, outside an 1840s Virginia home, one African American man clutches a folded garment at his chest, sunlight across the scene.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63045",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63045",
+          "text": "他又求另外兩個熟人買下南希；兩人表示同情，最後仍沒有帶回她。隔天還能見到她嗎？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot outside an 1840s Richmond office, one Black man walks away from its closed wooden door, plain plaster wall and packed earth fill the view, cloud-filtered daylight.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63046",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63046",
+          "text": "隔天，他說自己站在三百五十名被帶走者將經過的路旁，等著南希和孩子。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot beside an 1840s Virginia earthen road, one dark-skinned man stands under a tree and watches the route ahead, rough dirt and tree roots fill the foreground, natural daylight.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63047",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63047",
+          "text": "五輛載著孩子的車先過去，最前面那個孩子認出路邊的布朗，叫他爸爸。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot beside an 1840s Richmond earthen road, one African American man raises one hand toward a passing wagon outside the frame, rough dirt and a wooden fence behind him, soft afternoon light.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63048",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63048",
+          "text": "孩子的車隊過後，布朗在接近的人群裡找南希的臉。她會看見路邊的他嗎？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium side shot beside an 1840s Virginia earthen road after five wagons have passed out of frame, one Black man searches toward an approaching procession entirely outside the frame, rough dirt and wooden fence behind, daylight.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63049",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63049",
+          "text": "接著，身上帶著鎖鏈的南希在隊伍裡靠近；她走到布朗身邊，他才握到她的手。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot beside an 1840s Richmond earthen road, one dark-skinned woman reaches one hand toward the edge of the frame, rough dirt and a plain wooden fence fill the background, cloud-filtered daylight.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63050",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63050",
+          "text": "他在書裡說，自己想道別，卻說不出話。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot beside an 1840s Virginia earthen road, one African American man opens his mouth but keeps his hand still, rough dirt and a plain wooden fence behind him, natural daylight.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63051",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63051",
+          "text": "他跟著她走了一小段路，手仍握著；終究只能轉身放開，隊伍繼續往前。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot beside an 1840s Richmond earthen road, one Black man slowly lowers his outstretched hand, packed earth and a simple wooden fence fill the view, soft afternoon light.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63052",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63052",
+          "text": "布朗緊接著提醒讀者：這不是虛構的場面，而是南方每天都會發生的現實。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot beside an 1840s Virginia earthen road after a forced procession has passed out of view, one Black man stands alone under a tree, rough dirt and tree roots fill the view, muted afternoon light.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63053",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63053",
+          "text": "布朗說，過去阻止自己逃走的那些顧慮，此時已經消失。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, in an 1840s Richmond rented room, one Black man turns toward a closed doorway with empty hands, muted interior light.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63054",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63054",
+          "text": "他決定離開奴役他的地方；出口會在哪裡？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, side view, in an 1840s Virginia rented room, one Black man pauses at an open window while considering escape, natural light across the scene.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63055",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63055",
+          "text": "為了爭取不上工的空檔，他弄傷一根手指。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, in an 1840s Richmond rented room, one dark-skinned man rests a bandaged finger on a worktable, soft light from a small window.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "chapter": "木匠說他活不下來"
+    },
+    {
+      "id": "s63056",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63056",
+          "text": "傷勢重到監工不得不准他暫時離開工廠；布朗立刻把這段時間用來尋找逃法。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, outside an 1840s Virginia tobacco factory, one African American man leaves the gate with a bandaged hand at his side, sunlight across the scene.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63057",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63057",
+          "text": "布朗找了好一陣，才找到一位願意幫忙的人。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot outside a plain house on an 1840s Richmond street, one Black man approaches its wooden door with a small bundle, plaster wall and packed earth fill the view, cloud-filtered daylight.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63058",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63058",
+          "text": "那人收下錢，答應替他尋找離開里奇蒙的辦法。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, three-quarter angle, in an 1840s Virginia room, one dark-skinned man sets a coin pouch on a table before a vacant chair, cloud-filtered room light.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63059",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s63059",
+          "text": "身上帶的一百六十六美元，他交出八十六元作協助費。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "text": "166 美元",
+        "sub": "布朗說交出 86 美元求協助"
+      }
+    },
+    {
+      "id": "s63060",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63060",
+          "text": "兩人想過其他辦法，卻逐一碰壁；還有什麼辦法能離開里奇蒙？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, side view, in an 1840s Virginia rented room, one Black man studies several blank route sketches on a table, muted interior light.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63061",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63061",
+          "text": "布朗甚至不肯在書中寫出那些方案，怕別的被奴役者以後也失去逃路。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, in an 1840s Richmond room, one dark-skinned man closes a blank notebook of unrecorded plans, warm light through a small window.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63062",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63062",
+          "text": "布朗向上帝懇切祈求，希望有人幫他走出這道困境。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, in an 1840s Virginia rented room, one African American man bows his head with both hands still on the table, cloud-filtered room light.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63063",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63063",
+          "text": "直到一個念頭轉向日常運貨：人能進箱子嗎？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, beside an 1840s Richmond freight depot, one Black man examines a closed unlettered wooden shipping box, soft afternoon light on the scene.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63064",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63064",
+          "text": "他去貨站查看平日會被火車運走的大木箱，回來時已知道箱子有多大。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, three-quarter angle, in an 1840s Virginia freight depot, one dark-skinned man studies the proportions of a closed wooden shipping box, muted interior light.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63065",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63065",
+          "text": "他把想要的大小告訴木匠，也說了用途。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, in an 1840s Richmond carpenter's shop, one African American man indicates the length of a closed wooden box to an unseen craftsperson, warm light through a small window.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63066",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63066",
+          "text": "木匠警告他，人恐怕沒法在裡頭活下來。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, side view, in an 1840s Virginia carpenter's shop, one carpenter pauses with a hammer beside a closed wooden box, cloud-filtered room light.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63067",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63067",
+          "text": "他想到自己追求的是自由，仍決定試一試。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, in an 1840s Richmond carpenter's workshop, one Black adult man rests a hand on a finished unlettered wooden box after hearing the warning, soft afternoon light.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63068",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63068",
+          "text": "那人問，這是要放衣服嗎？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, in an 1840s Virginia room, one helper lifts a folded shirt beside a closed wooden box, muted interior light.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63069",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63069",
+          "text": "布朗回答，箱裡要放的是亨利・布朗。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, in an 1840s Richmond room, one Black man points to himself beside a closed wooden box, warm light through a small window.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63070",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63070",
+          "text": "那名朋友聽完很驚訝；布朗堅持要進箱，他最後才同意把箱蓋釘上。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, three-quarter angle, in an 1840s Virginia room, one helper rests a hand on the unsealed wooden box lid while agreeing to help, cloud-filtered room light.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63071",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63071",
+          "text": "在布朗動身之前，費城那邊已透過通信安排好接收者，等著貨箱到來。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, in an 1840s Philadelphia home, one receiver studies a blank note beside an empty floor space, soft light from a small window.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63072",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63072",
+          "text": "原想陪著走的朋友，到了出發時卻沒跟上；在費城等著收箱的人，會收到什麼通知？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, in an 1840s Virginia telegraph office, one adult helper hesitates beside a blank telegram form, muted window light.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63073",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63073",
+          "text": "那名朋友只發了一封電報，提醒費城接收者有一只箱子正送往那裡。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, in an 1840s Richmond telegraph office, one sender passes a blank telegram across the counter, warm sidelight.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63074",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63074",
+          "text": "布朗躺進木箱，蓋子在他頭頂合上。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close-up, interior side view, in a sealed wooden shipping box in 1840s Virginia, one African American man lies still with his arms tucked close, a faint trace of light through tiny air holes.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63075",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63075",
+          "text": "他帶了一袋水，原打算發熱時濕潤脖子；箱裡的新鮮空氣僅靠三個小孔。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close-up, interior view, in a sealed wooden shipping box in 1840s Richmond, one Black man keeps a small water bladder close to his chest, a faint trace of light through tiny air holes.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63076",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63076",
+          "text": "貨運的人會照他希望的方向放箱嗎？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, three-quarter angle, outside an 1840s Virginia freight depot, one porter balances a closed unlettered wooden box on a handcart, sunlight across the scene.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63077",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63077",
+          "text": "箱身明明標著朝上、小心，搬運者在快運站卻先把他的頭倒向下方。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, in an 1840s freight room, one worker tips a sealed unlettered wooden box upside down on a trolley, warm light through a small window.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "chapter": "標了朝上，仍被倒過來"
+    },
+    {
+      "id": "s63078",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63078",
+          "text": "它先到快運辦公室，再運往鐵路車站，最後被粗魯地搬進行李車。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, side view, at an 1840s Virginia express depot, one porter rolls a sealed wooden box toward a rail baggage car, natural light across the scene.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63079",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63079",
+          "text": "第一次進車時，它碰巧轉回正面。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, in an 1840s railway baggage car, one porter steadies a sealed wooden box upright among plain parcels, soft light from a small window.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63080",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63080",
+          "text": "下一段換上蒸汽船，箱子又被豎成倒立。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, on an 1840s steamboat freight deck, one deck worker stands a sealed wooden box on its narrow end, sunlight across the scene.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63081",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63081",
+          "text": "布朗感到眼睛和頭部脹痛，擔心自己撐不住，卻決定不向外發聲。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close-up, interior view, in a closed cargo box on an 1840s steamboat, one Black man presses his aching head against the bare wooden wall, a faint trace of light through tiny air holes.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63082",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63082",
+          "text": "他先試著伸手摸臉確認狀況；又過了一陣，連雙手都已經抬不起來。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close-up, interior view, in a closed cargo box on an 1840s steamboat, one dark-skinned man keeps both hands close to his body, a faint trace of light through tiny air holes.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63083",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63083",
+          "text": "他覺得已倒吊很久；箱外的人什麼時候才會把箱轉正？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close-up, interior side view, in a closed cargo box on an 1840s steamboat, one African American man listens while the wooden walls lean at an angle, a faint trace of light through tiny air holes.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63084",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63084",
+          "text": "他仍聽得見外頭有人說話。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, side view, on an 1840s steamboat freight deck, one deck worker speaks while standing beside a sealed wooden box, sunlight across the scene.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63085",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63085",
+          "text": "箱子外面，兩個男人說，自己已走了一段路，該坐下來歇一歇了。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, on an 1840s steamboat freight deck, one freight worker stands beside an upside-down sealed wooden box, pausing to rest, sunlight across the scene.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63086",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63086",
+          "text": "就在兩人坐下、順手轉過箱子時，布朗的頭終於不再一直朝下。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, on an 1840s steamboat freight deck, one deck worker sets a sealed wooden box flat on its broad side, natural light across the scene.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63087",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63087",
+          "text": "兩人還猜這件貨裝了什麼，箱裡的人只能聽著。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close-up, interior view, in a closed cargo box on an 1840s steamboat, one Black man tilts his head toward voices outside, a faint trace of light through tiny air holes.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63088",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63088",
+          "text": "箱子轉正後，他仍得在黑暗裡等下一次搬運。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close-up, interior view, in a closed cargo box on an 1840s steamboat, one dark-skinned man waits with his cheek against the boards, a faint trace of light through tiny air holes.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63089",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63089",
+          "text": "後面還有一個轉車處，箱子會被裝上去嗎？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, at an 1840s transfer depot, one porter wheels a sealed wooden box toward another rail platform, cloud-filtered light across the scene.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63090",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63090",
+          "text": "到華盛頓，箱子從馬車上被拋下，落地時又是頭朝下，還得接著換車。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, at an 1840s Washington transfer road, one man stands beside a sealed wooden box lying head-down where it fell from a wagon, overcast daylight on the scene.",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "chapter": "華盛頓差點留下一只箱"
+    },
+    {
+      "id": "s63091",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63091",
+          "text": "箱子沿斜坡被一路滾到下一班車的月台，裡頭的布朗只能跟著翻動。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, on an 1840s Washington rail platform, one porter rolls a sealed wooden box toward the next train, soft afternoon light on the scene.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63092",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63092",
+          "text": "布朗在箱裡感到脖子喀了一下，像是差點折斷。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close-up, interior side view, in a closed cargo box at an 1840s Washington depot, one African American man holds his neck still after a rough roll, a faint trace of light through tiny air holes.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63093",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63093",
+          "text": "箱子還會再翻嗎？布朗只能等外頭的搬運者決定。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close-up, interior view, in a closed cargo box at an 1840s Washington depot, one Black man braces his body against the wooden wall, a faint trace of light through tiny air holes.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63094",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63094",
+          "text": "接著外面有人說：這班車沒有空位放箱子，恐怕只能讓它留在後面。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, three-quarter angle, on an 1840s Washington rail platform, one porter gestures toward a full baggage car beside a sealed wooden box, natural light across the scene.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63095",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63095",
+          "text": "布朗寫，他在箱裡只能祈禱，等外頭的人決定。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close-up, interior side view, in a closed cargo box at an 1840s Washington depot, one African American man folds his hands in prayer, a faint trace of light through tiny air holes.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63096",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63096",
+          "text": "如果它留下，他安排好的接收者會等到什麼？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, side view, in an 1840s Philadelphia home, one receiver checks a blank note beside an empty receiving space, muted interior light.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63097",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63097",
+          "text": "另一人堅持把箱子裝上，理由是它跟郵件同路來，應該一起往前走。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, on an 1840s Washington rail platform, one railway worker gestures toward the waiting baggage car beside a sealed wooden box, cloud-filtered light across the scene.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63098",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63098",
+          "text": "最後，裝著布朗的箱子總算進了車廂。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, in an 1840s Washington baggage car, one porter pushes a sealed wooden box into the remaining space, cloud-filtered room light.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63099",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63099",
+          "text": "箱子上車時仍頭朝下；走了一段後，又有行李加入，它才再一次轉回正面。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, in an 1840s railway baggage car, one man turns a sealed wooden box flat while more plain luggage sits nearby, muted interior light.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63100",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63100",
+          "text": "這趟路會把他送到先前說好的費城地址嗎？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, three-quarter angle, on an 1840s rail line toward Philadelphia, one rail worker steadies a sealed wooden box beside a carriage doorway, sunlight across the scene.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63101",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63101",
+          "text": "他說，火車在清晨三點到費城。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, at an 1840s Philadelphia railway depot before dawn, one station worker guides an unlettered closed crate off an arriving train, low lantern light before sunrise.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "chapter": "有人在六點來領箱"
+    },
+    {
+      "id": "s63102",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63102",
+          "text": "箱子留在貨站，並沒有立刻被開。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, side view, in an 1840s Philadelphia freight depot before dawn, one worker leaves a sealed wooden box untouched on the floor, low lantern light before sunrise.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63103",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63103",
+          "text": "清晨六點，一輛馬車駛到貨站。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, outside an 1840s Philadelphia freight depot at six in the morning, one wagon driver brings a horse cart to the freight depot, pale dawn light from one side.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63104",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63104",
+          "text": "來人問起寫有收件地址的箱子；它隨即被裝上馬車。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, outside an 1840s Philadelphia freight depot at early morning, one wagon driver loads a sealed box onto a horse cart, soft morning light on the scene.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63105",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63105",
+          "text": "馬車把箱子送到接收者住處，幾個人已在等。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, outside an 1840s Philadelphia home at morning, one wagon driver guides a sealed box toward the house doorway, soft morning light on the scene.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63106",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63106",
+          "text": "其中一人終於敲了箱蓋。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, three-quarter angle, in an 1840s Philadelphia home at morning, one receiver taps a sealed wooden box lid with one knuckle, soft morning light on the scene.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63107",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63107",
+          "text": "箱子外面的人問：裡面還好嗎？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, in an 1840s Philadelphia home at morning, one receiver leans close to a closed box after knocking, soft morning light on the scene.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63108",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63108",
+          "text": "布朗終於答了：還好。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close-up, interior view, in a closed wooden box at an 1840s Philadelphia home, one Black man raises his face toward a voice outside, a faint trace of light through tiny air holes.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63109",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63109",
+          "text": "得到箱裡回答後，等候的人才一起拿工具拆板，直到蓋子終於被打開。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, in an 1840s Philadelphia home at morning, one receiver pries a board from the freight box lid, soft morning light on the scene.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63110",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63110",
+          "text": "他站起來，身體卻撐不住，隨即暈倒。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, in an 1840s Philadelphia home at morning, one African American man rises beside an opened wooden box and sways, soft morning light on the scene.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63111",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63111",
+          "text": "等他恢復，才唱起書中刊出的感謝歌。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, in an 1840s Philadelphia home at morning, one Black man sings softly beside an opened wooden box, soft morning light on the scene.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63112",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s63112",
+          "text": "同書書末收錄的梅伊演說摘錄，說他在箱中待了二十七小時；這不是布朗自己計時。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "text": "27 小時？",
+        "sub": "Samuel J. May 演說摘錄｜非布朗本人計時"
+      }
+    },
+    {
+      "id": "s63113",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63113",
+          "text": "他在費城停留不久；友人替他籌路費，讓他能往北走。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, in an 1840s Philadelphia home, one African American man accepts a small travel purse from beyond the frame, warm light through a small window.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63114",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63114",
+          "text": "可再往北走，真的就能免於被人抓回嗎？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium side shot outside an 1840s Philadelphia home, one Black man faces the northbound earthen road with a travel bundle, plain wooden house wall beside him and packed earth underfoot, natural daylight.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63115",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63115",
+          "text": "離開費城後，布朗去了麻薩諸塞。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot on an 1840s Massachusetts earthen road, one dark-skinned man walks north carrying a modest travel bag, rough dirt and a simple wooden fence fill the background, soft afternoon light.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "chapter": "箱子外面還有一道門"
+    },
+    {
+      "id": "s63116",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63116",
+          "text": "他先在波士頓短住，再到紐貝德福待了幾週，最後聽說波士頓有一場大型廢奴集會。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot on an 1840s New Bedford street, one African American man studies the corner of a plain wooden house while holding a travel bag, timber wall and packed earth fill the view, daylight.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63117",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63117",
+          "text": "他再回到波士頓，站上廢奴集會的講台。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Wide shot, in an 1840s Boston meeting hall, one Black man steps toward an empty abolitionist lectern, warm light through a small window.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63118",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63118",
+          "text": "他第一次公開講述自己的遭遇；據他說，現場有數千人。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, three-quarter angle, in an 1840s Boston meeting hall, one dark-skinned man addresses an unseen audience from a lectern, cloud-filtered room light.",
+        "camera": "push in",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63119",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63119",
+          "text": "那次之後，他又到麻薩諸塞與緬因州多處講述；偏偏，出箱後的麻煩並未消失。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Low angle shot, in an 1840s Boston meeting hall, one African American man raises one hand as he speaks from a lectern, soft light from a small window.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63120",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63120",
+          "text": "他在書裡說，有人告訴他：依美國憲法，即使在自由州，原主人仍可能把他抓回南方。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, in an 1840s Boston room, one Black man looks beyond a window toward the street, muted interior light.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63121",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63121",
+          "text": "他特意補上一句：自己不太懂法律，只能依別人所說判斷危險是否還在。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, in an 1840s Boston lodging room, one dark-skinned man pauses beside a half-open door, warm interior light.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63122",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63122",
+          "text": "他問北方人：既說反對奴役，為何仍保留讓逃出來的人再次被帶走的規則？",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Close shot, in an 1840s Boston meeting hall, one African American man points toward the open door beyond the lectern, cloud-filtered room light.",
+        "camera": "drift right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63123",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63123",
+          "text": "書末編者腳註記下妻兒的索價：一千二百美元。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, in an 1840s Massachusetts lodging room, one Black adult man looks down at a small coin pouch on a plain table, soft light from a small window; no written numbers or imagined family portraits.",
+        "camera": "pull back",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63124",
+      "template": "big",
+      "lines": [
+        {
+          "id": "s63124",
+          "text": "布朗正設法籌錢；但這份出版文本沒有交代，他最後有沒有湊齊。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "text": "編者腳註",
+        "sub": "布朗籌錢想買下妻兒｜結果未見於本書"
+      }
+    },
+    {
+      "id": "s63125",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63125",
+          "text": "布朗還聽說，北方選民的人數是南方的兩倍。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, outside an 1840s Northern meeting hall, one Black adult man studies its open doorway, a few unmarked wooden benches visible beyond, soft daylight; no ballots or legible signs.",
+        "camera": "pan right",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63126",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63126",
+          "text": "他說，若自己有影響力，會主張廢掉這套規則，另立更好的法律。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, in an 1840s Massachusetts reading room, one Black adult man looks toward an open doorway while holding an unlettered book, warm sidelight; no written statute or enacted reform shown.",
+        "camera": "drift left",
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s63127",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "s63127",
+          "text": "喜歡有出處的歷史奇事，訂閱奇聞檔案局。",
+          "emotion": "克制、清晰地說書。"
+        }
+      ],
+      "data": {
+        "prompt": "Medium shot, in an 1840s historical reading room, one reader opens an unlettered book beside a plain oil lamp, soft light from a small window.",
+        "camera": "pan left",
+        "visual": "still"
+      }
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "出箱就安全？",
+      "tag": "里奇蒙→費城",
+      "sub": "亨利・布朗的逃亡",
+      "shot": "s63001"
+    }
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "亨利・布朗從箱子爬出來，真的就安全了嗎？｜奇聞檔案局",
+    "description": "亨利・布朗為逃離奴役，把自己藏進貨箱，沿快運、鐵路和蒸汽船抵達費城。箱蓋掀開之後，他為何仍說自己不安全？本集沿 Brown／Stearns 出版敘事追蹤家人被拆散、他的選擇和旅程，也把 Samuel J. May 書末演說摘錄的數字與布朗正文分開。原創可愛插畫只是故事示意，並非史料影像。\n\n固定 Brown／Stearns 原文：https://github.com/GITenberg/Narrative-of-Henry-Box-Brown-Who-Escaped-from-Slavery-Enclosed-in-a-Box-3-Feet-Long-and-2-Wid__64992/blob/a92658e80effa4cce03bb19c13e96ffaaae5fa2b/64992-0.txt\n奇聞檔案局：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q\n\n資料查核：2026-10-22。長片與 Short 真正上傳後才填互連的 watch URL。",
+    "tags": [
+      "亨利布朗",
+      "Henry Box Brown",
+      "美國廢奴史",
+      "十九世紀",
+      "歷史謎題",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  }
+}

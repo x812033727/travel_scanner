@@ -1,0 +1,3 @@
+# R12 窗光工坊原圖KEEP
+
+Root已查看新原圖：棕膚主角在紙木牆窗旁處理菸葉，沒有原先電線白熾燈，與工廠長工時敘事相關。匿名chibi與一般木桌／葉片細節不作精密重建。機器7.18 PASS保留原分數，不冒稱滿分，selected SHA b54f2e10f66bbfad403bedb04dfd77e0683ee0947df24ecd77ed8a8139ef5679。18共2actual餘1，不再重畫；19仍1actual原圖機器FAIL／現代路面，另有R13prompt修訂待最後兩次。

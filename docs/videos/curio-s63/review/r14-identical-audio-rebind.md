@@ -1,0 +1,3 @@
+# R14 音檔與逐句時間軸相同
+
+127句TTS全快取、0新請求；新舊timeline所有lines完整物件及total_frames精確相同，narration SHA仍16cc46865808f15c7dd0a86e3353824ec82a399d09745956fea648b5b213375f。只更新Nancy卡的scene kind。故沿用主辨識126接受＋第28句獨立SenseVoice與另一人重跑稽核，共127句跨供應商機器證據；不把原拒絕改綠或宣稱站主親聽。15KEEP保留，104剩餘景全零actual，各max3，cap4.91不變。
