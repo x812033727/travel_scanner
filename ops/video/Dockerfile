@@ -8,7 +8,7 @@
 # the same version (package-lock.json pins @playwright/test 1.64.1). Tag and digest: a tag moved
 # on the registry cannot change this image without a diff here; Dependabot (.github/dependabot.yml,
 # docker) moves the digest by pull request.
-FROM mcr.microsoft.com/playwright:v1.64.1-noble@sha256:7852dc5a7d72f5fe458a597d690f6c42fbc8e9e26ddfa95f8e6ef552558d9bbf AS worker
+FROM mcr.microsoft.com/playwright:v1.64.1-noble@sha256:2f05f8a734509a7b3f26a912639488ee08f58a7b292d14d62271bcff9038768f AS worker
 
 # git fetches the AI dramas' transfer/* backup branches that the worker mirrors to Google Drive
 # (tools/video/automation/branch-mirror.mjs, docs/videos/BACKUP.md §AI 劇的分支鏡像).
