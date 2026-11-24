@@ -1,0 +1,552 @@
+{
+  "episode": "ershou-chongsheng-e001",
+  "note": "manifest 給 .agents/skills/minimax-h3-colab 的 h3.sh batch：reference_images 的 first-frames/<id>.png 要先放好（通過 judge 的關鍵影格，或 pilot 手放的首格），prompts/<id>.txt 是鎖定檔的定稿正文原封不動（prompt_sha256 等於 e001-plan-lock.json）；1344×768、24 fps、4 秒會變 4.46 秒。",
+  "jobs": [
+    {
+      "id": "s01",
+      "title": "ershou-chongsheng-e001 s01",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s01.png"
+      ],
+      "prompt_file": "prompts/s01.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s01-t1.mp4",
+      "prompt_sha256": "7a2ec13897e2ec38b0d4dd52160cad30c319cb75abd17e23237bb6c2abe90d7f"
+    },
+    {
+      "id": "s02",
+      "title": "ershou-chongsheng-e001 s02",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s02.png"
+      ],
+      "prompt_file": "prompts/s02.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s02-t1.mp4",
+      "prompt_sha256": "81a561bd9dff0262791a4c9c4c2078fd55965428b6fdd0e7d3e93d355bdbc2d5"
+    },
+    {
+      "id": "s03",
+      "title": "ershou-chongsheng-e001 s03",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s03.png"
+      ],
+      "prompt_file": "prompts/s03.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s03-t1.mp4",
+      "prompt_sha256": "ff128794acc90af85d99ca47081adfbff8f29489160e793e70f81748b0904abc"
+    },
+    {
+      "id": "s04",
+      "title": "ershou-chongsheng-e001 s04",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s04.png"
+      ],
+      "prompt_file": "prompts/s04.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s04-t1.mp4",
+      "prompt_sha256": "195fda9b15aec386aed8e7baa3b705cf721c63a6502e7aa7ab859d21b4c563f6"
+    },
+    {
+      "id": "s05",
+      "title": "ershou-chongsheng-e001 s05",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s05.png"
+      ],
+      "prompt_file": "prompts/s05.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s05-t1.mp4",
+      "prompt_sha256": "877c2d60e6a96bfafd26368d9e310ec9220c591152a8319c590dec705725c772"
+    },
+    {
+      "id": "s06",
+      "title": "ershou-chongsheng-e001 s06",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s06.png"
+      ],
+      "prompt_file": "prompts/s06.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s06-t1.mp4",
+      "prompt_sha256": "4d16299d2f5add03aaee5f5fdce6669b844b8e8eec4a333205b32eec28a67cbb"
+    },
+    {
+      "id": "s07",
+      "title": "ershou-chongsheng-e001 s07",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s07.png"
+      ],
+      "prompt_file": "prompts/s07.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s07-t1.mp4",
+      "prompt_sha256": "7071f564441e3773b4048eb86ed6aa67ebb85f4b260730ba83b5da6d0bbca494"
+    },
+    {
+      "id": "s08",
+      "title": "ershou-chongsheng-e001 s08",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s08.png"
+      ],
+      "prompt_file": "prompts/s08.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s08-t1.mp4",
+      "prompt_sha256": "594527a8b27ba2328351f2f257ac136c3d89d7120126ae0303c5e6b1e3913ecc"
+    },
+    {
+      "id": "s09",
+      "title": "ershou-chongsheng-e001 s09",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s09.png"
+      ],
+      "prompt_file": "prompts/s09.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s09-t1.mp4",
+      "prompt_sha256": "b334689f86958836b6a710cd5587cd52ef65f9507a423aaa01307d1f396af414"
+    },
+    {
+      "id": "s10",
+      "title": "ershou-chongsheng-e001 s10",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s10.png"
+      ],
+      "prompt_file": "prompts/s10.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s10-t1.mp4",
+      "prompt_sha256": "6c8e7e464d78874a52198bbaf829a35630e42b1c3e4916264e82d1d48ec471d6"
+    },
+    {
+      "id": "s11",
+      "title": "ershou-chongsheng-e001 s11",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s11.png"
+      ],
+      "prompt_file": "prompts/s11.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s11-t1.mp4",
+      "prompt_sha256": "ba5d0efdd80b1b3640f5b76fd0e64db367ed293c3f4e2d9e71cf32a4c96053ab"
+    },
+    {
+      "id": "s13",
+      "title": "ershou-chongsheng-e001 s13",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s13.png"
+      ],
+      "prompt_file": "prompts/s13.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s13-t1.mp4",
+      "prompt_sha256": "e7202dd918ce5c7a082e488a691bf23b10b19dbb6600723817e0947cddec5015"
+    },
+    {
+      "id": "s14",
+      "title": "ershou-chongsheng-e001 s14",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s14.png"
+      ],
+      "prompt_file": "prompts/s14.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s14-t1.mp4",
+      "prompt_sha256": "0ae208bc87f6222bae7841a7df67e116be58f764275f43db2721e232fa71ebbb"
+    },
+    {
+      "id": "s15",
+      "title": "ershou-chongsheng-e001 s15",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s15.png"
+      ],
+      "prompt_file": "prompts/s15.txt",
+      "duration_seconds": 5,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s15-t1.mp4",
+      "prompt_sha256": "c8fbf3b0d337037531621db9432c71a8265d505cd4606dcd98cbeaf06e992089"
+    },
+    {
+      "id": "s16",
+      "title": "ershou-chongsheng-e001 s16",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s16.png"
+      ],
+      "prompt_file": "prompts/s16.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s16-t1.mp4",
+      "prompt_sha256": "19d828420439bc2885ac8bb430ba08f1ada23d1541aa0053e3b5dc6a8aa1d084"
+    },
+    {
+      "id": "s17",
+      "title": "ershou-chongsheng-e001 s17",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s17.png"
+      ],
+      "prompt_file": "prompts/s17.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s17-t1.mp4",
+      "prompt_sha256": "35dcdc36dc06c0b7bc74001daf4ab0114a937c226fa625cd879b97efe797aeef"
+    },
+    {
+      "id": "s19",
+      "title": "ershou-chongsheng-e001 s19",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s19.png"
+      ],
+      "prompt_file": "prompts/s19.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s19-t1.mp4",
+      "prompt_sha256": "de195c252f4d8123c2c732484a667a52e785a1f6c6c0a1c52f5f765d997f0cb7"
+    },
+    {
+      "id": "s20",
+      "title": "ershou-chongsheng-e001 s20",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s20.png"
+      ],
+      "prompt_file": "prompts/s20.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s20-t1.mp4",
+      "prompt_sha256": "f81ffd817adcfe9a3c0c2f19aa96938f630557615e63d82ae70c606cc24cea93"
+    },
+    {
+      "id": "s21",
+      "title": "ershou-chongsheng-e001 s21",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s21.png"
+      ],
+      "prompt_file": "prompts/s21.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s21-t1.mp4",
+      "prompt_sha256": "a6e6b4b46c8ded22a673906fb19859cffcfb76649dcea27221e0d7b5c7bfc070"
+    },
+    {
+      "id": "s22",
+      "title": "ershou-chongsheng-e001 s22",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s22.png"
+      ],
+      "prompt_file": "prompts/s22.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s22-t1.mp4",
+      "prompt_sha256": "62ce244f8e88ccdc9cf96f3738c8ed111203b36f938ec32520394676643e6478"
+    },
+    {
+      "id": "s23",
+      "title": "ershou-chongsheng-e001 s23",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s23.png"
+      ],
+      "prompt_file": "prompts/s23.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s23-t1.mp4",
+      "prompt_sha256": "64f5a043d15f0d1b16ade6242d773e2c78493b017af4e361ce549cd40c95cb49"
+    },
+    {
+      "id": "s24",
+      "title": "ershou-chongsheng-e001 s24",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s24.png"
+      ],
+      "prompt_file": "prompts/s24.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s24-t1.mp4",
+      "prompt_sha256": "6d0513f17a88a7829c69699e1f68968e000e5ab46be25e6ea39ea285d7598d7c"
+    },
+    {
+      "id": "s26",
+      "title": "ershou-chongsheng-e001 s26",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s26.png"
+      ],
+      "prompt_file": "prompts/s26.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s26-t1.mp4",
+      "prompt_sha256": "56f802e61c0e96a0195381a4839493da458b909b59cb509659d6f859f8bc5073"
+    },
+    {
+      "id": "s27",
+      "title": "ershou-chongsheng-e001 s27",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s27.png"
+      ],
+      "prompt_file": "prompts/s27.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s27-t1.mp4",
+      "prompt_sha256": "95f8376d5e530fc2de83a2cd7e7ed365fde572e6540db472c71e03538b7d841b"
+    },
+    {
+      "id": "s28",
+      "title": "ershou-chongsheng-e001 s28",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s28.png"
+      ],
+      "prompt_file": "prompts/s28.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s28-t1.mp4",
+      "prompt_sha256": "85855d4187ef956fadfbae5caabf46b2bdcb943beb4a279e709c16a1d26c3a19"
+    },
+    {
+      "id": "s29",
+      "title": "ershou-chongsheng-e001 s29",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s29.png"
+      ],
+      "prompt_file": "prompts/s29.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s29-t1.mp4",
+      "prompt_sha256": "f727afc6f752bb0153bdaa0e8e5122c2453c3bffee140c0daad2ff22c22751ce"
+    },
+    {
+      "id": "s30",
+      "title": "ershou-chongsheng-e001 s30",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s30.png"
+      ],
+      "prompt_file": "prompts/s30.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s30-t1.mp4",
+      "prompt_sha256": "8e3148f0bc5f8b42ece8043f941476ea9fdec79ac0d4ba6ebe9e278ad91a3a01"
+    },
+    {
+      "id": "s31",
+      "title": "ershou-chongsheng-e001 s31",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s31.png"
+      ],
+      "prompt_file": "prompts/s31.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s31-t1.mp4",
+      "prompt_sha256": "bad5cb5f035f0fa8e0842e190b47bf501b9a9773f464a63948f6903e0bc9f128"
+    },
+    {
+      "id": "s32",
+      "title": "ershou-chongsheng-e001 s32",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s32.png"
+      ],
+      "prompt_file": "prompts/s32.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s32-t1.mp4",
+      "prompt_sha256": "226b863547f1a6d7f182acedbeb270eb9f4ea9100ad838e717ef27628f82b25d"
+    },
+    {
+      "id": "s33",
+      "title": "ershou-chongsheng-e001 s33",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s33.png"
+      ],
+      "prompt_file": "prompts/s33.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s33-t1.mp4",
+      "prompt_sha256": "3eecc3231fa8a6735cba2626c0b5f535b3ed4aa4156e22c5b60c56a25c94a6d6"
+    },
+    {
+      "id": "s34",
+      "title": "ershou-chongsheng-e001 s34",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s34.png"
+      ],
+      "prompt_file": "prompts/s34.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s34-t1.mp4",
+      "prompt_sha256": "54f34553c71bc421f04c68c2af860eb6f27d2f30eb4e4f642d224ecba3d190fc"
+    },
+    {
+      "id": "s35",
+      "title": "ershou-chongsheng-e001 s35",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s35.png"
+      ],
+      "prompt_file": "prompts/s35.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s35-t1.mp4",
+      "prompt_sha256": "2b7b8c8e358349cf63a9839b28d8bb7ea847c9fdff18ae86e4590931df690954"
+    },
+    {
+      "id": "s36",
+      "title": "ershou-chongsheng-e001 s36",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s36.png"
+      ],
+      "prompt_file": "prompts/s36.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s36-t1.mp4",
+      "prompt_sha256": "07ab447eb4a92fd6fa711d7390a67e82091807de9ce50b2ab208a05b367af07b"
+    },
+    {
+      "id": "s37",
+      "title": "ershou-chongsheng-e001 s37",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s37.png"
+      ],
+      "prompt_file": "prompts/s37.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s37-t1.mp4",
+      "prompt_sha256": "ae123f3d8db538758ff34c28866095c1f6681ca72d9938fdbfeb13d11c433c1c"
+    },
+    {
+      "id": "s38",
+      "title": "ershou-chongsheng-e001 s38",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s38.png"
+      ],
+      "prompt_file": "prompts/s38.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s38-t1.mp4",
+      "prompt_sha256": "620f74ae0c4c54a82b041959befcf54765b7cda87f5c22b7f949a4afb134664c"
+    },
+    {
+      "id": "s39",
+      "title": "ershou-chongsheng-e001 s39",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s39.png"
+      ],
+      "prompt_file": "prompts/s39.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s39-t1.mp4",
+      "prompt_sha256": "23e468e72681fc7d64806ae4d5e93d67e5b5b951c77c2494e243065aca0d5622"
+    },
+    {
+      "id": "s40",
+      "title": "ershou-chongsheng-e001 s40",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s40.png"
+      ],
+      "prompt_file": "prompts/s40.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s40-t1.mp4",
+      "prompt_sha256": "316dc63ede10455c065afc705b66892921ad9c026b80437dbcd0ce87fe684be7"
+    },
+    {
+      "id": "s41",
+      "title": "ershou-chongsheng-e001 s41",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s41.png"
+      ],
+      "prompt_file": "prompts/s41.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s41-t1.mp4",
+      "prompt_sha256": "cffa64405bb44295c0ea27231468d2558ab49c151c2e99f74d263ef687ca629d"
+    },
+    {
+      "id": "s42",
+      "title": "ershou-chongsheng-e001 s42",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s42.png"
+      ],
+      "prompt_file": "prompts/s42.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s42-t1.mp4",
+      "prompt_sha256": "44b712ae7fdc8f42a5dce80fd51496bd1a142a1f78f57c3bf8047bc8434c20d5"
+    }
+  ]
+}
