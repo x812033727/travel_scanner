@@ -1,11 +1,11 @@
-"""e939 fix2 stage 2 (H3): s16 from a Qwen-painted first frame, s17 with a Qwen-painted set picture (the girl already in the bed,
-head at the right), s20 standing (fix2 prep agent, 2026-11-24). Copied from ../../e938-live/fix6 (s22 -> s16 first_frame; s29 s30
-s32 -> s17 picture swap). Stage 1 (Qwen) must have been run and picked first: <scratchpad>/e939f2-qwen.sh, STEP=a / pick-a / b /
-pick-b. Why and in what order: plan.md.
+"""e939 fix2 stage 2 (H3): s16 and s17 with Qwen-painted set pictures (the girl already in the bed, head at the right), s20
+standing (fix2 prep agent, 2026-11-24). Copied from ../../e938-live/fix6 (its s29 s30 s32 picture swap). Stage 1 (Qwen) was run
+and picked first: <scratchpad>/e939f2-qwen.sh STEP=a / pick-a (step b, a painted s16 first frame, was rejected: s16 fell back to
+the picture swap). Why and in what order: plan.md.
 
     python3 -I mkspec.py                       # -> spec.json (3 shots; seeds 9391411/9391412 for s17 s20, 9391421/9391422 for s16)
     python3 -I mkjobs.py <live>/fix2           # -> <live>/fix2/prompts/*.txt, retake.json, colab-jobs.json (6 jobs, 36 s)
-    python3 -I <scratchpad>/tools/check939f2.py <live>/fix2   # check939f1.py's assertions for s17 s20 (reference mode)
+    python3 -I <scratchpad>/tools/check939f2.py <live>/fix2   # check939f1.py's assertions for s16 s17 s20 (all reference mode)
     python3 -I ../../_scripts/preflight-prompts.py <live>/fix2/colab-jobs.json
     python3 -I <repo>/.agents/skills/minimax-h3-colab/scripts/check_manifest.py <live>/fix2/colab-jobs.json
 
@@ -16,9 +16,9 @@ put it at the left with Doctor Bai at her feet). s17 sends set-xujia-tangfang-ko
 picture decides what is in the bed (an empty bed in the picture -> an empty bed in both seeds, twice). Coat, black chest, no smile,
 eyes shut: fix1's, kept.
 
-s16 (first_frame mode, one picture: the Qwen frame fitted to 960x544, with the sleeping girl, Doctor Bai and A-ling already in it):
-the storyboard has them inside from the first frame with the door shut behind them, so nobody comes through the door. Nobody is
-named (no portrait is sent in first_frame mode; the first frame fixes the faces).
+s16 (reference mode on the fix1 9391301 job, the set picture swapped for -kong-men-xiaohe: the girl asleep in the bed, head at
+the right; 2026-11-24 after the coordinator rejected all four Qwen 1b first frames, see plan.md): Doctor Bai and A-ling already
+inside from the first frame with the door shut behind them, one chest on his back, three people, one A-ling.
 """
 import json
 import pathlib
@@ -81,42 +81,42 @@ S["s20"] = {"mode": "reference", "base": ["fix1", 9391302], "seeds": [9391411, 9
      "bending over her, from the first frame to the last;"],
 ]}
 
-S16 = (
-    "For the target video, <Picture 1> is referenced throughout.\n\n"
-    "integrated_multimodal_description: [Shot 1] Photorealistic live-action film footage of real actors in an ancient Chinese "
-    "(Song-dynasty) period drama, with the look of a feature film. The first frame shown in <Picture 1> stays exactly as it is: "
-    "its framing, the small bedroom by night, the shut plank door at the left, the cracked plaster wall, the low wooden stool with "
-    "its one burning white candle, the old man in his faded moon-white long gown and quilted cotton vest with the one square black "
-    "lacquered medicine chest on his back, the young woman in grey-white holding his arm, and at the right the wooden bed with the "
-    "little girl asleep under the pink quilted cover, her head on the pillow at the right end, preserving their appearance, their "
-    "costumes and the set layout. Initial composition: In the first bedroom of the Xu farmhouse in the third watch of the same "
-    "night, by the plank door; the one small flame on the low stool at the foot of the bed the only warm light, the corners of the "
-    "room deep in shadow: medium shot by the plank door, as in the first frame: the plank door at the left shut behind them, its "
-    "planks closed from the first frame to the last; just inside the door, already in from the first frame, the young woman in "
-    "her plain grey-white cotton dress, the long grey sash draped over her left arm, her right arm under his elbow holding him up, "
-    "her back bare of any load, carrying nothing, her face toward him, her lips closed, not smiling, never the lens; beside her, "
-    "the old man, lean, his white hair in a small topknot and his short white beard trimmed close at the chin, the black lacquered "
-    "wooden medicine chest, one square box with a lid, on its strap on his back, the one chest in the room, unsteady on his feet, "
-    "his face three-quarter to screen right toward the bed, never the lens; urgent and out of breath, not smiling: brows knotted, "
-    "lips moving fast between words; at the right, the little girl asleep in the bed under the pink quilted cover, her head on "
-    "the pillow at the right end, her eyes shut, lying still; exactly two people standing in the room, with the little girl asleep "
-    "in the bed. Only these 2 people stand in the frame, with the little girl asleep under the quilt in the bed at the right; no "
-    "second copy of anyone appears. Facial expressions follow the action and lines described below, not the first frame alone: "
-    "the first frame fixes the faces, hair and costumes, never the mood. The old man speaks a short Mandarin line, "
-    "「病人在哪？快把燈拿近一點」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, "
-    "his face three-quarter to screen right, turned toward the bed, his eyes on the sleeping girl, never looking at the camera; "
-    "the old man finds his feet, straightens and takes one step toward the bed as he speaks, the young woman letting go of his arm; "
-    "the young woman says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no "
-    f"mouthing words, {NOSMILE}; the plank door stays shut, the little girl in the bed sleeps on, still, her eyes shut, and the "
-    "small flame and the shadows stay unchanged. The camera holds a static shot. One continuous shot. The picture is clean, with "
-    "no subtitles, captions or text anywhere on screen; the still night air, the small candle flame swaying, a clean natural film "
-    "image. Natural, realistic human motion and acting of real actors: faces, hair and costumes stay as in the first frame, while "
-    "every visible face acts the emotion written above and changes with it.\n"
-    "overall_soundscape: N/A\n"
-    "non_diegetic_music: N/A"
-)
-S["s16"] = {"mode": "first_frame", "base": ["fix1", 9391301], "seeds": [9391421, 9391422], "duration_seconds": 6,
-            "first_frame": "first-frames/s16-ff.png", "prompt": S16}
+# s16: stage 1b (Qwen: Doctor Bai and A-ling painted into -kong-men-xiaohe, 9391407-9391410) was rejected by the coordinator
+# (07 nobody added; 08 two young women, no Doctor Bai; 09 10 the two look pasted in, studio-lit, and the shut door became an open
+# blue night doorway), so s16 takes the fallback of plan.md: reference mode on the fix1 9391301 job (Doctor Bai's portrait, A-ling's
+# portrait and angle, as fix1 sent) with the set picture swapped for -kong-men-xiaohe (1a 9391403: the girl asleep in the bed,
+# head on the pillow at the right, the door shut). The fix1 text kept the girl out of focus with her head beyond the right edge;
+# now she lies in the frame as the picture shows her. Three people, "only" twice; one A-ling written hard (fix1 1302 drew two).
+MEN_OLD = "set-xujia-tangfang-kong-men-l1.png"
+MEN_NEW = "set-xujia-tangfang-kong-men-xiaohe-l1.png"
+GIRL_OLD = ("and at the right, soft and out of focus, the foot of the bed with the pink quilted cover drawn up over the small shape "
+            "of a little girl of eight asleep in the bed, only the small rounded shape of her body under the quilt in the frame, her "
+            "head on the pillow at the pillow end beyond the right edge of the frame, lying still; their hands hold only what is "
+            "described here; exactly two people standing in the room, with the little girl asleep in the bed behind them, out of "
+            "focus. Only these 2 people stand in the frame, with the little girl asleep under the quilt in the bed at the right; no "
+            "second copy of anyone appears.")
+GIRL_NEW = ("and at the right the wooden bed with the little girl of eight asleep in it under the pink quilted cover, exactly as in "
+            "<Picture 4>, her head on the small pink pillow at the right end of the bed inside the frame, her eyes shut, one folded "
+            "damp white cloth on her forehead, lying still; their hands hold only what is described here; exactly three people: the "
+            "old man and the young woman standing by the door, and the little girl asleep in the bed. Only these 3 people are in the "
+            "frame: one Doctor Bai, one A-ling and one sleeping girl; A-ling is one woman, in the frame once, only at his side by the "
+            "door, the only young woman in the room; no second copy of anyone appears.")
+S["s16"] = {"mode": "reference", "base": ["fix1", 9391301], "seeds": [9391421, 9391422], "duration_seconds": 6,
+            "swap_pictures": {MEN_OLD: MEN_NEW}, "replace": [
+    [once("s16", "the location shown in <Picture 4> is the set, keeping its layout and props."),
+     "the location shown in <Picture 4> is the set, keeping its layout and props, with the little girl asleep in its bed exactly "
+     "as the picture shows her, her head on the pillow at the right end of the bed, and the plank door at the left shut."],
+    [once("s16", "just inside the door, already in from the first frame, A-ling,"),
+     "just inside the door, both already in the room from the first frame with the door shut behind them, A-ling,"],
+    [once("s16", "toward the bed beyond the right edge of the frame, never the lens;"),
+     "toward the sleeping girl in the bed at the right, never the lens;"],
+    [once("s16", GIRL_OLD), GIRL_NEW],
+    [once("s16", "his eyes on the bed beyond the right edge of the frame, never looking at the camera;"),
+     "his eyes on the sleeping girl in the bed at the right, never looking at the camera;"],
+    [once("s16", "the little girl in the bed sleeps on, still, and the small flame"),
+     "the little girl in the bed sleeps on, still, her head on the pillow at the right, only these three people are in the room "
+     "to the last frame, and the small flame"],
+]}
 
 (HERE / "spec.json").write_text(json.dumps({"shots": S}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 print(len(S), "shots ->", HERE / "spec.json", f"({2 * sum(v['duration_seconds'] for v in S.values())} s)")

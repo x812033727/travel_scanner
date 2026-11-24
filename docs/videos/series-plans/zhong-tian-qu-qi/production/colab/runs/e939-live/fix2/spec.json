@@ -69,7 +69,7 @@
       ]
     },
     "s16": {
-      "mode": "first_frame",
+      "mode": "reference",
       "base": [
         "fix1",
         9391301
@@ -79,8 +79,35 @@
         9391422
       ],
       "duration_seconds": 6,
-      "first_frame": "first-frames/s16-ff.png",
-      "prompt": "For the target video, <Picture 1> is referenced throughout.\n\nintegrated_multimodal_description: [Shot 1] Photorealistic live-action film footage of real actors in an ancient Chinese (Song-dynasty) period drama, with the look of a feature film. The first frame shown in <Picture 1> stays exactly as it is: its framing, the small bedroom by night, the shut plank door at the left, the cracked plaster wall, the low wooden stool with its one burning white candle, the old man in his faded moon-white long gown and quilted cotton vest with the one square black lacquered medicine chest on his back, the young woman in grey-white holding his arm, and at the right the wooden bed with the little girl asleep under the pink quilted cover, her head on the pillow at the right end, preserving their appearance, their costumes and the set layout. Initial composition: In the first bedroom of the Xu farmhouse in the third watch of the same night, by the plank door; the one small flame on the low stool at the foot of the bed the only warm light, the corners of the room deep in shadow: medium shot by the plank door, as in the first frame: the plank door at the left shut behind them, its planks closed from the first frame to the last; just inside the door, already in from the first frame, the young woman in her plain grey-white cotton dress, the long grey sash draped over her left arm, her right arm under his elbow holding him up, her back bare of any load, carrying nothing, her face toward him, her lips closed, not smiling, never the lens; beside her, the old man, lean, his white hair in a small topknot and his short white beard trimmed close at the chin, the black lacquered wooden medicine chest, one square box with a lid, on its strap on his back, the one chest in the room, unsteady on his feet, his face three-quarter to screen right toward the bed, never the lens; urgent and out of breath, not smiling: brows knotted, lips moving fast between words; at the right, the little girl asleep in the bed under the pink quilted cover, her head on the pillow at the right end, her eyes shut, lying still; exactly two people standing in the room, with the little girl asleep in the bed. Only these 2 people stand in the frame, with the little girl asleep under the quilt in the bed at the right; no second copy of anyone appears. Facial expressions follow the action and lines described below, not the first frame alone: the first frame fixes the faces, hair and costumes, never the mood. The old man speaks a short Mandarin line, 「病人在哪？快把燈拿近一點」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, his face three-quarter to screen right, turned toward the bed, his eyes on the sleeping girl, never looking at the camera; the old man finds his feet, straightens and takes one step toward the bed as he speaks, the young woman letting go of his arm; the young woman says nothing in this shot: her lips stay pressed together from the first frame to the last, no talking, no mouthing words, no smile at any moment, not even at the end of the shot, until the last frame; the plank door stays shut, the little girl in the bed sleeps on, still, her eyes shut, and the small flame and the shadows stay unchanged. The camera holds a static shot. One continuous shot. The picture is clean, with no subtitles, captions or text anywhere on screen; the still night air, the small candle flame swaying, a clean natural film image. Natural, realistic human motion and acting of real actors: faces, hair and costumes stay as in the first frame, while every visible face acts the emotion written above and changes with it.\noverall_soundscape: N/A\nnon_diegetic_music: N/A"
+      "swap_pictures": {
+        "set-xujia-tangfang-kong-men-l1.png": "set-xujia-tangfang-kong-men-xiaohe-l1.png"
+      },
+      "replace": [
+        [
+          "the location shown in <Picture 4> is the set, keeping its layout and props.",
+          "the location shown in <Picture 4> is the set, keeping its layout and props, with the little girl asleep in its bed exactly as the picture shows her, her head on the pillow at the right end of the bed, and the plank door at the left shut."
+        ],
+        [
+          "just inside the door, already in from the first frame, A-ling,",
+          "just inside the door, both already in the room from the first frame with the door shut behind them, A-ling,"
+        ],
+        [
+          "toward the bed beyond the right edge of the frame, never the lens;",
+          "toward the sleeping girl in the bed at the right, never the lens;"
+        ],
+        [
+          "and at the right, soft and out of focus, the foot of the bed with the pink quilted cover drawn up over the small shape of a little girl of eight asleep in the bed, only the small rounded shape of her body under the quilt in the frame, her head on the pillow at the pillow end beyond the right edge of the frame, lying still; their hands hold only what is described here; exactly two people standing in the room, with the little girl asleep in the bed behind them, out of focus. Only these 2 people stand in the frame, with the little girl asleep under the quilt in the bed at the right; no second copy of anyone appears.",
+          "and at the right the wooden bed with the little girl of eight asleep in it under the pink quilted cover, exactly as in <Picture 4>, her head on the small pink pillow at the right end of the bed inside the frame, her eyes shut, one folded damp white cloth on her forehead, lying still; their hands hold only what is described here; exactly three people: the old man and the young woman standing by the door, and the little girl asleep in the bed. Only these 3 people are in the frame: one Doctor Bai, one A-ling and one sleeping girl; A-ling is one woman, in the frame once, only at his side by the door, the only young woman in the room; no second copy of anyone appears."
+        ],
+        [
+          "his eyes on the bed beyond the right edge of the frame, never looking at the camera;",
+          "his eyes on the sleeping girl in the bed at the right, never looking at the camera;"
+        ],
+        [
+          "the little girl in the bed sleeps on, still, and the small flame",
+          "the little girl in the bed sleeps on, still, her head on the pillow at the right, only these three people are in the room to the last frame, and the small flame"
+        ]
+      ]
     }
   }
 }

@@ -1,11 +1,8 @@
 """e939 fix2 stage 2: spec.json -> <out>/prompts/ref-sNN-SEED.txt, <out>/retake.json and <out>/colab-jobs.json (6 jobs, 36 s):
-s17 s20 in reference mode on the fix1 9391302 job (sha256 checked, every fix1 edit of ../fix1/spec.json in the base; s17's set
-picture swapped for the one with the girl painted in), s16 in first_frame mode on the picked Qwen frame. Copied from
-../../e938-live/fix6/mkjobs.py.
-
-The two stage-1 pictures are read where e939f2-qwen.sh installs them: refs-live/set-xujia-tangfang-kong-chuang-xiaohe-l1.png and
-<out>/first-frames/s16-ff.png (960x544). FIX2_SET / FIX2_FF point elsewhere (only e939f2.sh's DRY stand-in run does that, into a
-separate out dir). Scans (exit 1 on a hit): negative nouns, separators once, cinema camera / props this room does not have, smile
+all three in reference mode on the fix1 job (s16 9391301, s17 s20 9391302; sha256 checked, every fix1 edit of ../fix1/spec.json in
+the base); s16's and s17's set pictures swapped for the ones with the girl painted in (stage 1a, installed by e939f2-qwen.sh
+pick-a: refs-live/set-xujia-tangfang-kong-men-xiaohe-l1.png, -kong-chuang-xiaohe-l1.png). The first_frame branch is kept from
+../../e938-live/fix6/mkjobs.py but no shot uses it since stage 1b was rejected (plan.md). Scans (exit 1 on a hit): negative nouns, separators once, cinema camera / props this room does not have, smile
 words beyond NOSMILE / not smiling, the word open, names in the first-frame shot, Xu Yan seated or on the bed's edge, the girl's
 head at the left, MUST / GONE, camera, pictures, header, the first frame's size against the canvas, seeds, seconds.
 
@@ -13,7 +10,6 @@ head at the left, MUST / GONE, camera, pictures, header, the first frame's size 
 """
 import hashlib
 import json
-import os
 import pathlib
 import re
 import subprocess
@@ -29,8 +25,7 @@ spec = json.loads((HERE / "spec.json").read_text(encoding="utf-8"))["shots"]
 SPECS = {"fix1": json.loads((HERE.parent / "fix1" / "spec.json").read_text(encoding="utf-8"))["shots"]}
 JOBS = {r: {j["id"]: j for j in json.loads((LIVE / r / "colab-jobs.json").read_text(encoding="utf-8"))["jobs"]} for r in ("fix1",)}
 SET_NEW = "set-xujia-tangfang-kong-chuang-xiaohe-l1.png"
-SETPIC = pathlib.Path(os.environ.get("FIX2_SET") or L / SET_NEW)
-FF = pathlib.Path(os.environ.get("FIX2_FF") or out / spec["s16"]["first_frame"])
+MEN_NEW = "set-xujia-tangfang-kong-men-xiaohe-l1.png"
 NOSMILE = "no smile at any moment, not even at the end of the shot, until the last frame"
 PUSH = "The camera pushes in with small amplitude at slow speed."
 STATIC_S = "The camera holds a static shot."
@@ -41,10 +36,12 @@ DUR = {"s16": 6, "s17": 6, "s20": 6}
 SEEDS = {"s16": [9391421, 9391422], "s17": [9391411, 9391412], "s20": [9391411, 9391412]}
 LINE = {"s16": "「病人在哪？快把燈拿近一點」", "s17": "「在這裡，燒了一天一夜，藥都壓不住」", "s20": "「乖，一口氣喝完，喝完就不燙了」"}
 MUST = {
-    "s16": ["The first frame shown in <Picture 1> stays exactly as it is", "its planks closed from the first frame to the last",
-            "the plank door stays shut", "the little girl in the bed sleeps on", "her head on the pillow at the right end",
-            "one square box with a lid", "the one chest in the room", "carrying nothing", "Only these 2 people stand in the frame",
-            "finds his feet, straightens and takes one step toward the bed", NOSMILE],
+    "s16": ["with the little girl asleep in its bed exactly as the picture shows her", "its planks closed from the first frame to the last",
+            "both already in the room from the first frame with the door shut behind them", "the plank door stays shut",
+            "the little girl in the bed sleeps on", "her head on the small pink pillow at the right end of the bed inside the frame",
+            CHEST, "the one chest in the room", "carrying nothing", "exactly three people", "Only these 3 people are in the frame",
+            "only these three people are in the room to the last frame", "A-ling is one woman, in the frame once",
+            "finds his feet, straightens and takes one step toward the bed", "The camera holds a static shot."],
     "s17": ["standing upright on both feet on the floor at the left, by the foot end of the bed, from the first frame to the last",
             "Xu Yan stays standing, both feet on the floor, from the first frame to the last",
             "her head on the pillow at the right end of the bed toward screen right", "beside her head at the pillow end, Doctor Bai",
@@ -56,7 +53,8 @@ MUST = {
             "the grey outer coat stays on Xu Yan's shoulders to the last frame", COAT2, HEAD, NOSMILE],
 }
 GONE = {
-    "s16": ["Doctor Bai", "A-ling", "Xiaohe", "Xu Yan", "doctor", "through the door", "comes in", "enters"],
+    "s16": ["beyond the right edge", "out of focus", "Only these 2 people", "small rounded shape", "Xiaohe", "Xu Yan", "through the door",
+            "comes in", "enters"],
     "s17": ["standing upright on his feet beside the bed", "medium shot at the bedside:", "at the right, by the pillow end",
             "holds the candle down close beside the pillow", "Xu Yan sits", "Xu Yan, sitting", "head at the left", "head toward the left"],
     "s20": ["sitting on the near edge of the bed, framed", "Xu Yan sits", "head at the left", "head toward the left"],
@@ -88,11 +86,11 @@ for sid, sp in spec.items():
         for k, v in sp["swap_pictures"].items():
             hit = [i for i, r in enumerate(refs) if r.rsplit("/", 1)[1] == k]
             assert len(hit) == 1, (sid, k)
-            refs[hit[0]] = str(SETPIC) if v == SET_NEW else str(L / v)
+            refs[hit[0]] = str(L / v)
         mode, w, h = "reference", base["width"], base["height"]
     else:
         text = sp["prompt"]
-        refs = [str(FF)]
+        refs = [str(out / sp["first_frame"])]
         mode, w, h = "first_frame", base["width"], base["height"]
     for r in refs:
         if not pathlib.Path(r).is_file():
@@ -146,11 +144,14 @@ for job in jobs:
     n = len(names)
     if job["inference_mode"] == "reference":
         want = [spec[sid]["swap_pictures"].get(x, x) for x in (pathlib.Path(r).name for r in JOBS["fix1"][f"{sid}-9391302"]["reference_images"])]
-        got = [(SET_NEW if r == str(SETPIC) else pathlib.Path(r).name) for r in job["reference_images"]]
+        got = names
         if got != want:
             hits.append(f"{jid}: pictures {got} are not {want}")
         if sid == "s17" and (got[-1] != SET_NEW or "the location shown in <Picture 5> is the set" not in text):
             hits.append(f"{jid}: the painted set is not picture 5")
+        if sid == "s16" and (got != ["baidaifu-portrait-l1.png", "aling-portrait-l1.png", "aling-angle-a-l1.png", MEN_NEW]
+                             or "the location shown in <Picture 4> is the set" not in text):
+            hits.append(f"{jid}: s16 is not fix1's three portraits + the painted -kong-men-xiaohe as picture 4")
         if sid == "s20" and SET_NEW in got:
             hits.append(f"{jid}: s20 keeps the empty -kong-chuang")
     else:

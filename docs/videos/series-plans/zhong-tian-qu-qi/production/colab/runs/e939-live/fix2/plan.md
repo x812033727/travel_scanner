@@ -7,6 +7,18 @@ fix2 準備代理 2026-11-24 寫。照第 38 集 fix6 一比一（`../../e938-li
 `minimax-h3-colab`（`h3.sh images`、first_frame 模式、`fit_first_frame.sh`）與 `animation-camera`（畫面側、一鏡一個動作）。
 **本代理沒有送 Colab、沒付費**；只寫好檔案、跑檢查與 DRY。
 
+## 結果與改動（2026-11-24，協調者跑完 1a、1b）
+
+- **1a 挑定**（協調者，d794f9c）：`set-xujia-tangfang-kong-men-xiaohe-l1` = s16-bed **9391403**（md5 a177076；四張裡唯一頭在畫右的一張；機位比 `-kong-men` 略往後拉，矮凳與蠟燭在床左邊）、
+  `set-xujia-tangfang-kong-chuang-xiaohe-l1` = chuang-bed **9391405**（md5 ccaf057）。`refs-live/README.md` 已補。
+- **1b 四張全退、不再重跑**：9391407 沒加上任何人；9391408 畫成兩個年輕女子、沒有白大夫；9391409、9391410 有白大夫與阿令，但**像貼上去的**（棚拍打光、跟燭光不合），
+  而且**關著的門被換成一個開著、透藍夜色的門洞**（門必須關著）。教訓：在已經有人的景裡再加兩個人，Qwen 不是漏人、換人，就是把人貼上去還改掉門；加一個人做得到（e938 s22），加兩個做不好。
+- **s16 改走退路**（協調者定）：**參照模式**、底稿 fix1 9391301（白大夫定妝照、阿令定妝照＋側面照，跟 fix1 送的一樣），場景圖 `-kong-men` 換成 1a 的 `-kong-men-xiaohe`（第 4 張、表頭不動）；
+  文字照 fix1 s16 改：兩人第一格已經在屋裡、門在身後關著；小禾照圖睡在床上、頭在右端的小粉枕上、**在畫框裡**（拿掉 fix1 的「虛焦、頭在右緣外」）；一只藥箱在白大夫背上、阿令什麼都不背；
+  **exactly three people**，`only` 兩次（人數句「Only these 3 people are in the frame: one Doctor Bai, one A-ling and one sleeping girl」與結尾「only these three people are in the room to the last frame」）；
+  **阿令只有一個寫死**（fix1 1302 畫了兩個）：「A-ling is one woman, in the frame once, only at his side by the door, the only young woman in the room」；小禾不點名（沒送她的定妝照，preflight 的 unpictured）。
+  種子照舊 9391421／9391422。第二階段 6 支全是參照模式、36 秒，不讀首格；下面「s16 的首格」一節是當初的選擇，留著當紀錄。
+
 ## 順序（一定照這個順序）
 
 | 步 | 指令 | 做什麼 | 產出 |
@@ -15,7 +27,7 @@ fix2 準備代理 2026-11-24 寫。照第 38 集 fix6 一比一（`../../e938-li
 | 1a' | 人挑（下面「挑圖要看什麼」）→ `STEP=pick-a PICK=<s16-bed 種子> PICKC=<chuang-bed 種子> bash <S>/e939f2-qwen.sh` | 裝成 `refs-live/set-xujia-tangfang-kong-men-xiaohe-l1.png`、`refs-live/set-xujia-tangfang-kong-chuang-xiaohe-l1.png`（另存 `fix2/qwen/PICK-*-<seed>.png`）；**手動在 `refs-live/README.md` 第 39 集那段補兩句**（來源、種子、md5） | 兩張新景 |
 | 1b | `STEP=b bash <S>/e939f2-qwen.sh` | Qwen：在剛裝好的 `-kong-men-xiaohe` 上**只加兩個人、站在關著的門內**（image 2 白大夫定妝照、image 3 阿令定妝照） | `<qw>/b/s16-ff-9391407…9391410.png` |
 | 1b' | 人挑 → `STEP=pick-b PICK=<seed> bash <S>/e939f2-qwen.sh` | 存 `fix2/qwen/PICK-s16-ff-<seed>.png`，`fit_first_frame.sh` 裁到 H3 草稿畫布 960×544 → `<live>/fix2/first-frames/s16-ff.png` | s16 首格 |
-| 2 | `bash <S>/e939f2.sh` | 用挑好的兩張圖重建 jobs（`mkspec.py`＋`mkjobs.py`）、全部檢查、送 H3：s16（首格模式）＋s17 s20（參照模式） | `<live>/fix2/out/` 6 支 |
+| 2 | `bash <S>/e939f2.sh` | 用 1a 的兩張圖重建 jobs（`mkspec.py`＋`mkjobs.py`）、全部檢查、送 H3：s16 s17 s20 全是參照模式（1b 退了，見上） | `<live>/fix2/out/` 6 支 |
 
 `<S>` = `/tmp/claude-0/-home-user-travel-scanner/31162243-7ed2-5899-b9c2-443c1f2a5c1a/scratchpad`，`<live>` = `/root/mokaair-work/videos/zhong-tian-qu-qi-e939-dh/runpod/live`，
 `<qw>` = `/root/mokaair-work/videos/zhong-tian-qu-qi-e939-dh/qwen-f2`。
@@ -24,7 +36,7 @@ fix2 準備代理 2026-11-24 寫。照第 38 集 fix6 一比一（`../../e938-li
 H3 那支由 `h3_detached.py` 跳過已有 mp4 的工作；重跑就是續跑。1a 與 1b 是兩次開機（1b 要等 1a 挑完）。
 Qwen 重試：`RETRY=1` 把種子加 30（a：9391431–9391436；b：9391437–9391440），`ONLY=chuang-bed`（或 `s16-bed`）只跑其中一組。
 
-## s16 的首格：為什麼「第一格就有兩人」，不讓他們從門走進來
+## s16 的首格：為什麼「第一格就有兩人」，不讓他們從門走進來（當初的選擇；1b 全退後改走退路，見〈結果與改動〉）
 
 選**首格裡已經有白大夫與阿令**（所以要第二步 Qwen，像 e938 fix6 的 step b），理由：
 
@@ -86,7 +98,7 @@ s20 不換圖（床向在 fix1 1302 看不出問題，換圖沒有必要）：�
 
 | 鏡 | 模式 | 底稿 | 種子 | 秒 | 改什麼 |
 |---|---|---|---|---|---|
-| s16 | **首格** | fix1 9391301 的動作 | 9391421／9391422 | 6 | 一張圖：1b' 挑好、裁成 960×544；提示詞以 `<Picture 1>` 為錨（首格照原樣：關著的門、裂紋牆、燭凳、老人與背上的一只藥箱、扶著他的女子、右邊床上睡著的女孩頭在右端）；動作照 fix1：門一直關、老人站穩往床走一步、說「病人在哪？快把燈拿近一點」、臉三分之四朝畫右看床、女子放開手不說話、NOSMILE、女孩一直睡、固定鏡。**不點名**（首格模式沒有定妝照，preflight 會警告；臉由首格決定） |
+| s16 | 參照（退路） | fix1 9391301 | 9391421／9391422 | 6 | 場景圖 `-kong-men` 換成 `-kong-men-xiaohe`（第 4 張）；場景句加「床上睡著的女孩照圖、頭在右端、門關著」；兩人「第一格已經在屋裡、門在身後關著」；白大夫看「畫右床上睡著的女孩」（拿掉右緣外）；床上的女孩在框裡、頭在右端小粉枕、閉眼、濕布；三人、`only` 兩次、阿令只有一個；一只藥箱、阿令不背東西、門一直關、固定鏡照 fix1 |
 | s17 | 參照 | fix1 9391302（剪接現用） | 9391411／9391412 | 6 | 場景圖 `-kong-chuang` 換成 `-kong-chuang-xiaohe`（同一個位置、張數不變、表頭不動）；場景句加「床上的小禾照圖、頭在右端、就是 `<Picture 3>` 那一個」；構圖句加床向（枕頭在右、床尾欄在左）；許硯「兩腳踩地站在畫左床尾那邊、從第一格到最後一格、彎腰把蠟燭湊到她臉旁」＋頭部留白句；小禾頭在畫右；白大夫「在她頭旁」坐床沿；結尾「許硯一直站著、兩腳踩地、她的頭一直在右邊的枕頭上」；外衣、黑漆方藥箱照 fix1；固定鏡 |
 | s20 | 參照 | fix1 9391302 | 9391411／9391412 | 6 | 圖不變；許硯「兩腳踩地站在床的近側、彎腰」＋頭部留白句（取代 fix1 的 sitting on the near edge）；小禾「頭朝畫右的枕頭那頭」；結尾加「許硯一直站著、兩腳踩地、彎著腰」；外衣兩次、NOSMILE、小禾閉眼到最後照 fix1；固定鏡 |
 
@@ -96,7 +108,8 @@ s20 不換圖（床向在 fix1 1302 看不出問題，換圖沒有必要）：�
 
 ### 檢查（2026-11-24，全部 0 錯）
 
-第二階段要讀挑好的圖，現在還沒有，所以 DRY 用**替身**跑完整條路（`STANDIN=1`：空的 `-kong-chuang` 改名當新景、fix1 s16 9391302 的第一格當首格，輸出到 `<live>/fix2-dry`，不碰 `<live>/fix2`）：
+第一次（1a 還沒跑）DRY 用替身跑完整條路（當時的 `STANDIN=1`，輸出 `<live>/fix2-dry`，已刪）。1a 挑定、s16 改參照模式後重跑（不再讀首格，`STANDIN` 拿掉）：
+`mkspec.py`／`mkjobs.py <live>/fix2`（scan 0）、`check939f2.py`（6 支 36 秒）、preflight 0／0、check_manifest 0／0、h3r 0／0、字詞掃描 0、`DRY=1 bash <S>/e939f2.sh` rc 0（帳號 A＋A100 也 rc 0）。下面是第一次的紀錄：
 
 ```
 STEP=a DRY=1 bash <S>/e939f2-qwen.sh                         # check_images_manifest 0/0（原清單與跳過後的清單）；rc 0
@@ -107,12 +120,12 @@ DRY=1 bash <S>/e939f2.sh                                     # 圖還沒挑：rc
 ```
 
 帳號 A（`COLAB_ACCOUNT_SLOT=a`、`GPU=A100`）兩支腳本 DRY 都 rc 0、release 自動換 `colab-release-A.sh`；`REL` 不存在時 rc 2；`STANDIN=1` 不帶 `DRY=1` 時 rc 2；`pick-a`／`pick-b`／`b` 缺前一步時 rc 2。
-`tools/check939f2.py` 由 `tools/mkcheck939f2.py` 從 `check939f1.py` 改 7 處生成（只查參照模式的 s17 s20：新景在場景圖的位置、s20 照舊送空景、許硯站著、頭在右、`edge of the bed`／`sitting` 只屬於白大夫、頭部留白句）；`check939f1.py` 重新生成後對 fix1 仍通過。
+`tools/check939f2.py` 由 `tools/mkcheck939f2.py` 從 `check939f1.py` 改 9 處生成（查參照模式的 s16 s17 s20：s16 換 `-kong-men-xiaohe`、三人、阿令一個、女孩在框裡、門關；新景在場景圖的位置、s20 照舊送空景、許硯站著、頭在右、`edge of the bed`／`sitting` 只屬於白大夫、頭部留白句）；`check939f1.py` 重新生成後對 fix1 仍通過。
 s16 的首格工作由 `mkjobs.py` 自己掃（一張圖、尺寸、`<Picture 1>`、必在／必去句、不點名、門關、一只藥箱、運鏡、笑字、open）。字詞掃描 `<S>/e939f2/scan.sh`（e939f1 的那支、改成吃資料夾參數）。
 
 ## 挑片（第二階段跑完）
 
-- s16：**床上有人**（頭與臉在右端，整鏡都在）；只有兩個站著的人、沒有第二個阿令；門整鏡關著；一只藥箱在白大夫背上；臉跟前後鏡（s13 的阿令與白大夫、s17 的白大夫）接得上（首格模式的風險）；不笑；人聲在「病人在哪」。退路：fix1 1301 start@1.500 end-before@5.250（空床）。
+- s16：**床上有人**（頭與臉在右端，整鏡都在）；只有兩個站著的人、**沒有第二個阿令**（fix1 1302）、床上的女孩也只有一個；門整鏡關著；一只藥箱在白大夫背上、阿令背上沒有；不笑；人聲在「病人在哪」。退路：fix1 1301 start@1.500 end-before@5.250（空床）。
 - s17：**頭在畫右**、白大夫坐在她頭旁；**許硯整鏡站著**（腳不離地、不坐床沿）；外衣到最後一格、黑漆方藥箱；只有一個小禾；不要左右翻轉（交領變左衽）。退路：fix1 1302 start@1.250 end-before@6.583。
 - s20：許硯整鏡站著、外衣、不笑、小禾閉眼嚥下到最後。退路：fix1 1302 start@0.500 end-before@5.500。
 - 選中的寫 `review-picks.tsv`、改 `../picks-final.tsv`（source `fix2`），再精修。
@@ -122,9 +135,9 @@ s16 的首格工作由 `mkjobs.py` 自己掃（一張圖、尺寸、`<Picture 1>
 | 項目 | CU |
 |---|---|
 | 1a 6 張（G4 一次開機、模型載入約 8 分鐘＋每張約 30 秒；e939 開門圖 4 張約 1.6 CU） | 1.6–2.4 |
-| 1b 4 張（同上） | 1.5–2.2 |
+| 1b 4 張（已花、全退） | 1.5–2.2 |
 | 第二階段 6 支 36 秒（每秒 0.043＋開機） | 1.7–2.2 |
 | 精修選中的三鏡（約 17 秒、約 410 格 × 0.0032＋開機；可跟別的精修同一批） | 1.5–2.0 |
-| **合計** | **約 6.3–8.8 CU**（不含精修約 4.8–6.8） |
+| **合計** | **約 6.3–8.8 CU**（不含精修約 4.8–6.8）；1a、1b 已花，**剩下第二階段 1.7–2.2＋精修 1.5–2.0** |
 
 （參考：第 38 集 fix6 Qwen 兩步共約 3 CU＋重試；第 37 集 fix1 118 秒 5.03 CU。）1a 或 1b 要重跑一次，各加 1.5–2.2 CU。以跑之前的餘額為準；**剩約 100 CU 時先問站主**。
