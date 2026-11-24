@@ -1,0 +1,27 @@
+{
+  "command": "node tools/video/cli.mjs narrative --slug curio-s62 --answers docs/videos/curio-s62/review/r4-formal-blind-a.raw.json --workdir /tmp/curio-s62-r4-blind-a-official-20261022 --json",
+  "exit_code": 1,
+  "exit_reason": "Two required answers are no: payoffs, no_recap.",
+  "video_sha256_before_and_after": "abed73ef3b14dcfc1b8ff1804f0234919d2f03cffa70a0b4c901a72ce6b14f92",
+  "script_sha256_before_and_after": "8343a4f903fe4b405b1e6364cd67737ed7f3aead625b5fe713bf91c873c05c14",
+  "question_file_sha256": "15cfd34356840ae8036c91bc9d8b29f210be52aa761f28379a2bd9ed263fa5ad",
+  "raw_answers_sha256": "930e30afa1e92a6e05972d85e0ee9832f3e02d40a2f830c73ecc30a0485f492c",
+  "isolation_receipt_sha256": "f12a691f208850c154171a8aa10cdb72744f57fb09b12a3cca86d7aff0c30887",
+  "cli_stdout_sha256": "88cc8a6c1ea8b2513821b1e2c6006c0163b86fef7b7c79df58e80d5388dadb85",
+  "cli_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "official_narrative_sha256": "9ba07157e7c19a0fd4f51e61eef23b5a747f03fd6f08972e2948dd8fb666e4de",
+  "official_binding": {
+    "narrative_hash": "dc5b230a7d70f26b",
+    "script_hash": "1c69c6dd6ff7a44ca1332f4726b74e05fc83799bf68e2d651b684c2699aa1a77",
+    "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+    "panel_narration_sha256": "65559d6c55df0c6e6b769330f1f9e44aa56e765393b3e3c49c01fa95378c201f",
+    "round": 1,
+    "passed": false,
+    "failed": ["payoffs", "no_recap"],
+    "advisory": []
+  },
+  "quote_audit": {
+    "answers_checked": 13,
+    "quoted_line_mismatches_against_official_narration": []
+  }
+}
