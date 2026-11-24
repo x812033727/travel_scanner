@@ -538,5 +538,5 @@
  "slow_shot": {},
  "subtitle_lines": [],
  "ding": {},
- "_note": "e938 真人版第一版（2026-11-24；scratchpad e938c/：mkov938.py、levall938.sh → lev938.py＋align938.py、stage938x.py、music／beds／spots／lineat／vol.json、cutf0938.py；跑法 scratchpad e938cut.sh）。全部決定、量測與已知瑕疵寫在 colab/runs/e938-live/cut-notes.md。"
+ "_note": "e938 真人版第一版（2026-11-24；scratchpad e938c/：mkov938.py、levall938.sh → lev938.py＋align938.py、stage938x.py、music／beds／spots／lineat／vol.json、cutf0938.py、busmeter.py；跑法 scratchpad e938cut.sh）。全部決定、量測與已知瑕疵寫在 colab/runs/e938-live/cut-notes.md；跟挑片不同的處理在 cut-trims.tsv。\n片：picks.json＝refine-prep 照 picks-final.tsv（41 支含 s27c2），剪點不改。s27＝fix1 0–0.75＋fix2 s27c2 0.25–0.5＋s27b 頭 0.25 秒（30 格，不放慢）、s27b 從 0.25；s19 片中「哥」換 a20-p122。vf：s12 1.05 倍、s25 1.3 倍、s26 1.65 倍（裁柵）。\n聲音：隊長六句與 s30 阿令用錄音（voice_off），align938.py 逐詞組對到嘴形；唐小棠約 274、秦霜約 222、阿令約 180–200、小禾約 337、隊長約 148、白大夫約 121（門內悶聲）。配樂 undkucked 在台詞下約 11.6 dB（側鏈 ratio 4、release 700 ms）；定點音效真實庫優先，馬蹄／風／拍門／弩弦用系列庫；人群聲只用 murmur38（s24）。\n定版 run4：193.04 秒、−14.0 LUFS、LRA 5.3；cut-qa motion FAIL（照前兩集不判）、jitter s21 0.24（騎馬顛）；cut-jumps 1（s27 內刻意的剪點）；audio-qa 33 句 0 問題；CC 32 條。"
 }
